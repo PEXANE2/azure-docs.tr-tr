@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 05/11/2020
 ms.author: zhshang
-ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 496d98c5faebfcef511152476b58dd6257dbbedc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67188772"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673552"
 ---
 | Kaynak | Varsayılan limit | Üst sınır | 
 | --- | --- | --- |
@@ -29,6 +29,9 @@ ms.locfileid: "67188772"
 | Ücretsiz katman için günlük birim başına bağlantı |20 |20 |
 | Standart katman için günlük birim başına bağlantı |1000 |1000|
 | Ücretsiz katman için gün başına birim başına dahil edilen ileti|20.000 |20.000 |
+| Ücretsiz katman için günlük birim başına ek iletiler|0 |0 |
 | Standart katman için gün başına birim başına dahil edilen ileti|1.000.000 |1.000.000 |
+| Standart katman için gün başına birim başına ek iletiler|Sınırsız |Sınırsız |
 
-Aboneliğinizin varsayılan sınırlarına bir güncelleştirme istemek için bir destek bileti açın. 
+Aboneliğinizin varsayılan sınırlarına bir güncelleştirme istemek için bir destek bileti açın.
+

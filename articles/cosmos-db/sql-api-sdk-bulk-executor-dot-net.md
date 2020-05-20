@@ -1,19 +1,19 @@
 ---
 title: "Azure Cosmos DB: toplu yürütücü .NET API 'SI, SDK & kaynakları"
 description: Toplu yürütücü .NET API 'SI ve SDK ve sürüm tarihleri, emeklilik tarihleri ve Azure Cosmos DB toplu yürütücü .NET SDK 'sının her sürümü arasında yapılan değişiklikler dahil olmak üzere tüm bilgileri öğrenin.
-author: tknandu
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 01/16/2020
-ms.author: ramkris
-ms.openlocfilehash: 1a8040fc397b526b540ce9343baa985cab49e2b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 23ba8b12651c4de05fd8fb0b2721839beb36a7a6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169408"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660462"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET toplu yürütücü kitaplığı: Indirme bilgileri 
 
@@ -22,8 +22,9 @@ ms.locfileid: "76169408"
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
+> * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -33,11 +34,11 @@ ms.locfileid: "76169408"
 
 | |  |
 |---|---|
-| **Açıklama**| .Net toplu yürütücü kitaplığı, istemci uygulamalarının Azure Cosmos DB hesaplarında toplu işlemler gerçekleştirmesine olanak sağlar. Bu kitaplık, BulkImport, BulkUpdate ve BulkDelete ad alanları sağlar. BulkImport modülü, bir koleksiyon için sağlanan aktarım hızı en büyük ölçüde tüketilebilmesi için belgeleri en iyi duruma getirilmiş bir şekilde toplu Içe alabilir. BulkUpdate modülü Azure Cosmos kapsayıcılarındaki mevcut verileri düzeltme eki olarak toplu güncelleştirebilir. BulkDelete modülü, bir koleksiyon için sağlanan aktarım hızı en yüksek ölçüde tüketilebilmesi için belgeleri iyileştirilmiş bir şekilde toplu olarak silebilir.|
+| **Açıklama**| .NET toplu yürütücü kitaplığı, istemci uygulamalarının Azure Cosmos DB hesaplarında toplu işlemler gerçekleştirmesine olanak sağlar. Bu kitaplık, BulkImport, BulkUpdate ve BulkDelete ad alanları sağlar. BulkImport modülü, bir koleksiyon için sağlanan aktarım hızı en büyük ölçüde tüketilebilmesi için belgeleri en iyi duruma getirilmiş bir şekilde toplu Içe alabilir. BulkUpdate modülü Azure Cosmos kapsayıcılarındaki mevcut verileri düzeltme eki olarak toplu güncelleştirebilir. BulkDelete modülü, bir koleksiyon için sağlanan aktarım hızı en yüksek ölçüde tüketilebilmesi için belgeleri iyileştirilmiş bir şekilde toplu olarak silebilir.|
 |**SDK indirmesi**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **GitHub 'da toplu yürütücü kitaplığı**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API belgeleri**|[.NET API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
-|**başlarken**|[Toplu yürütücü kitaplığı .NET SDK ile çalışmaya başlama](bulk-executor-dot-net.md)|
+|**Kullanmaya başlayın**|[Toplu yürütücü kitaplığı .NET SDK ile çalışmaya başlama](bulk-executor-dot-net.md)|
 | **Desteklenen geçerli çerçeve**| Microsoft .NET Framework 4.5.2, 4.6.1 ve .NET Standard 2,0 |
 
 > [!NOTE]
@@ -63,7 +64,7 @@ ms.locfileid: "76169408"
 
 ### <a name="210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
 
-* Bölüm anahtarını kabul etmek için SQL API hesapları için BulkDelete desteği eklendi, silinecek belge kimliği başlıkları. Bu değişiklik, 1.4.0 Release ile işlevsel olarak denk olur.
+* Bölüm anahtarını kabul etmek için SQL API hesapları için BulkDelete desteği eklendi, silinecek belge KIMLIĞI başlıkları. Bu değişiklik, 1.4.0 Release ile işlevsel olarak denk olur.
 
 ### <a name="200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
@@ -100,7 +101,7 @@ ms.locfileid: "76169408"
 ### <a name="182"></a><a name="1.8.2"/>1.8.2
 
 * Belirli senaryolarda yüksek CPU tüketimi düzeltildi.
-* İzleme artık TraceSource kullanıyor. Kullanıcılar, `BulkExecutorTrace` kaynak için dinleyicileri tanımlayabilir.
+* İzleme artık TraceSource kullanıyor. Kullanıcılar, kaynak için dinleyicileri tanımlayabilir `BulkExecutorTrace` .
 * 2 MB boyutunda bir belge gönderirken bir kilit oluşmasına neden olabilecek nadir bir senaryo düzeltildi.
 
 ### <a name="160"></a><a name="1.6.0"/>1.6.0
@@ -117,7 +118,7 @@ ms.locfileid: "76169408"
 
 ### <a name="140"></a><a name="1.4.0"/>1.4.0
 
-* Bölüm anahtarını kabul etmek için SQL API hesapları için BulkDelete desteği eklendi, silinecek belge kimliği başlıkları.
+* Bölüm anahtarını kabul etmek için SQL API hesapları için BulkDelete desteği eklendi, silinecek belge KIMLIĞI başlıkları.
 
 ### <a name="130"></a><a name="1.3.0"/>1.3.0
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b518b2b92ba6d2529ffdefce754a3b29b74fb21b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792624"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674281"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -50,7 +50,7 @@ Bu sorunun nedeni, dll 'lerde yanlış bir güvenlik ayarıdır. Bu sorun, h265 
     Get-AppxPackage -Name Microsoft.HEVCVideoExtension
     ```
   
-    Bu komut, codec bileşenini `InstallLocation` şöyle bir şekilde çıktı almalıdır:
+    Bu komut, `InstallLocation` codec bileşenini şöyle bir şekilde çıktı almalıdır:
   
     ```cmd
     InstallLocation   : C:\Program Files\WindowsApps\Microsoft.HEVCVideoExtension_1.0.23254.0_x64__5wasdgertewe
@@ -129,15 +129,15 @@ Dönüştürme işleminin yanı sıra, dönüştürülmüş modelle birlikte bir
 }
 ```
 
-Sınırlayıcı kutu, ölçüm olarak 3B alanında `min` bir `max` ve konumu olarak tanımlanır. Bu nedenle 1000,0 koordinatı, kaynağın kaynağın 1 kilometreden fazla olması anlamına gelir.
+Sınırlayıcı kutu, ölçüm olarak 3B alanında bir `min` ve konumu olarak tanımlanır `max` . Bu nedenle 1000,0 koordinatı, kaynağın kaynağın 1 kilometreden fazla olması anlamına gelir.
 
 Bu sınırlama kutusuyla ilgili olarak görünmeyen geometriye yol açabilecek iki sorun olabilir:
-* **Kutu**, en çok orta basıyor olabilir, bu nedenle nesne, uzak düzlem kırpması nedeniyle tamamen kırpıldı. Bu `boundingBox` örnekte yer alan değerler şöyle görünür: `min = [-2000, -5,-5], max = [-1990, 5,5]`, burada örnek olarak x ekseninde büyük bir konum kullanılıyor. Bu tür bir sorunu çözmek için `recenterToOrigin` [model dönüştürme yapılandırmasındaki](../how-tos/conversion/configure-model-conversion.md)seçeneği etkinleştirin.
-* **Kutu ortalanmış, ancak çok büyük boyutlu siparişler olabilir**. Bu, kameranın modelin merkezinde başladığı anlamına gelir; bu, geometrisi her yönde kırpılır. Bu `boundingBox` örnekte tipik değerler şuna benzer: `min = [-1000,-1000,-1000], max = [1000,1000,1000]`. Bu tür bir sorunun nedeni genellikle bir birim ölçek uyuşmazlığıdır. Dengelemek için, [dönüştürme sırasında bir ölçekleme değeri](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) belirtin veya kaynak modeli doğru birimlerle işaretleyin. Ölçek, çalışma zamanında model yüklenirken kök düğümüne da uygulanabilir.
+* **Kutu**, en çok orta basıyor olabilir, bu nedenle nesne, uzak düzlem kırpması nedeniyle tamamen kırpıldı. `boundingBox`Bu örnekte yer alan değerler şöyle görünür: `min = [-2000, -5,-5], max = [-1990, 5,5]` , burada örnek olarak x ekseninde büyük bir konum kullanılıyor. Bu tür bir sorunu çözmek için `recenterToOrigin` [model dönüştürme yapılandırmasındaki](../how-tos/conversion/configure-model-conversion.md)seçeneği etkinleştirin.
+* **Kutu ortalanmış, ancak çok büyük boyutlu siparişler olabilir**. Bu, kameranın modelin merkezinde başladığı anlamına gelir; bu, geometrisi her yönde kırpılır. `boundingBox`Bu örnekte tipik değerler şuna benzer: `min = [-1000,-1000,-1000], max = [1000,1000,1000]` . Bu tür bir sorunun nedeni genellikle bir birim ölçek uyuşmazlığıdır. Dengelemek için, [dönüştürme sırasında bir ölçekleme değeri](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) belirtin veya kaynak modeli doğru birimlerle işaretleyin. Ölçek, çalışma zamanında model yüklenirken kök düğümüne da uygulanabilir.
 
 **Unity oluşturma işlem hattı işleme kancalarını içermez:**
 
-Azure uzaktan Işleme, video ile çerçeve oluşturmayı ve yeniden projeksiyonu yapmak için Unity işleme ardışık düzenine takılır. Bu kancalarının mevcut olduğunu doğrulamak için, *> Analysis > Frame Debugger menü penceresini*açın. Bunu etkinleştirin ve ardışık düzende `HolographicRemotingCallbackPass` ' ın iki girişi olduğundan emin olun:
+Azure uzaktan Işleme, video ile çerçeve oluşturmayı ve yeniden projeksiyonu yapmak için Unity işleme ardışık düzenine takılır. Bu kancalarının mevcut olduğunu doğrulamak için, *> Analysis > Frame Debugger menü penceresini*açın. Bunu etkinleştirin ve `HolographicRemotingCallbackPass` ardışık düzende ' ın iki girişi olduğundan emin olun:
 
 ![Unity çerçevesi hata ayıklayıcısı](./media/troubleshoot-unity-pipeline.png)
 
@@ -150,7 +150,7 @@ Unity çözümünün *derleme türünü* **hata ayıklaması**için değiştirin
 ### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>HoloLens 2 için Unity örnekleri derlenirken derleme sorunları
 
 HoloLens 2 için Unity örneklerini (hızlı başlangıç, ShowCaseApp,..) derlemeye çalışırken silatik arızalarıyla karşılaştık. Visual Studio şikayet eden bazı dosyaları burada kopyalayamıyorum. Bu soruna ulaşırsanız:
-* Tüm geçici Unity dosyalarını projeden kaldırın ve yeniden deneyin.
+* Tüm geçici Unity dosyalarını projeden kaldırın ve yeniden deneyin. Diğer bir deyişle, Unity 'yi kapatın, proje dizinindeki geçici *kitaplığı* ve *obj* klasörlerini silip projeyi yeniden yükleyin veya oluşturun.
 * Kopyalama adımı bazen uzun dosya adlarıyla sorunlar halinde çalıştırıldıklarından, projelerin olabildiğince kısa yola sahip bir diskte dizinde bulunduğundan emin olun.
 * Bu yardım yoksa, MS Sense kopyalama adımını kesintiye uğratır. Bir özel durum ayarlamak için komut satırından bu kayıt defteri komutunu çalıştırın (yönetici hakları gerektirir):
     ```cmd
@@ -161,9 +161,9 @@ HoloLens 2 için Unity örneklerini (hızlı başlangıç, ShowCaseApp,..) derle
 
 İşlenen nesnelerin baş hareketlerle birlikte taşınması gibi görünse de, *geç aşama yeniden projeksiyonu* (LSR) ile ilgili sorunlarla karşılaşıyor olabilirsiniz. Böyle bir duruma yaklaşıma ilişkin yönergeler için, [geç aşama yeniden projeksiyonunun](../overview/features/late-stage-reprojection.md) bölümüne bakın.
 
-Kararsız hologragram (Wobbling, warping, su ya da atlama hologramlar) için başka bir neden, ağ bağlantısı yetersizliğinde veya çok yüksek gecikme süresine sahip olabilir. Ağ bağlantınızın kalitesi için iyi bir gösterge, [performans istatistikleri](../overview/features/performance-queries.md) değeridir `ARRServiceStats.VideoFramesReused`. Yeniden kullanılan çerçeveler, yeni video çerçevesi kullanılabilir olmadığından (örneğin, paket kaybı nedeniyle veya ağ gecikmede Çeşitlemeler nedeniyle), eski video çerçevesinin istemci tarafında yeniden kullanılması gereken durumları gösterir. `ARRServiceStats.VideoFramesReused` Sıfırdan sık büyükse bu bir ağ sorununu gösterir.
+Kararsız hologragram (Wobbling, warping, su ya da atlama hologramlar) için başka bir neden, ağ bağlantısı yetersizliğinde veya çok yüksek gecikme süresine sahip olabilir. Ağ bağlantınızın kalitesi için iyi bir gösterge, [performans istatistikleri](../overview/features/performance-queries.md) değeridir `ARRServiceStats.VideoFramesReused` . Yeniden kullanılan çerçeveler, yeni video çerçevesi kullanılabilir olmadığından (örneğin, paket kaybı nedeniyle veya ağ gecikmede Çeşitlemeler nedeniyle), eski video çerçevesinin istemci tarafında yeniden kullanılması gereken durumları gösterir. `ARRServiceStats.VideoFramesReused`Sıfırdan sık büyükse bu bir ağ sorununu gösterir.
 
-Bakmak için başka bir değer de `ARRServiceStats.LatencyPoseToReceiveAvg`vardır. Sürekli olarak 100 ms 'nin altında olması gerekir. Daha yüksek değerler görürseniz, bu, çok uzakta olan bir veri merkezine bağlı olduğunu gösterir.
+Bakmak için başka bir değer de vardır `ARRServiceStats.LatencyPoseToReceiveAvg` . Sürekli olarak 100 ms 'nin altında olması gerekir. Daha yüksek değerler görürseniz, bu, çok uzakta olan bir veri merkezine bağlı olduğunu gösterir.
 
 Olası azaltmaları bir liste için bkz. [ağ bağlantısı yönergeleri](../reference/network-requirements.md#guidelines-for-network-connectivity).
 

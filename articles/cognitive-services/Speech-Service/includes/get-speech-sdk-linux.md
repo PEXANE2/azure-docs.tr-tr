@@ -4,17 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: e47c8bc4dc814f1d4c5cb115a2da911544dd55f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a93c478f0621bf62b710f58f3e6f06298bad9954
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399904"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673059"
 ---
 :::row:::
     :::column span="3":::
         Konuşma SDK 'Sı, Linux ile kullanıldığında aşağıdaki hedef mimarilerde yalnızca **Ubuntu 16.04/18.04**, **delk 9**, **Red Hat Enterprise Linux (RHEL) 7/8**ve **CentOS 7/8** ' yi destekler:
-        - x64
     :::column-end:::
     :::column:::
         <br>
@@ -24,19 +23,21 @@ ms.locfileid: "81399904"
     :::column-end:::
 :::row-end:::
 
+- C++ geliştirmesi için x86 (DeARM32/Ubuntu), x64, (de/Ubuntu) ve ARM64 (de/Ubuntu)
+- Java için x64, ARM32 (de/Ubuntu) ve ARM64 (de/Ubuntu)
+- .NET Core için x64, ARM32 (de/Ubuntu) ve ARM64 (de/Ubuntu)
+- Python için x64
+
 > [!IMPORTANT]
-> Linux ARM64 hedefleme ve C# kullanarak .NET Core 3. x (DotNet-SDK-3. x paketi) gereklidir. ARM32 veya ARM64 'yi hedefliyorsanız Python desteklenmez.
+> Linux ARM64 üzerinde C# için .NET Core 3. x (DotNet-SDK-3. x paketi) gereklidir.
 
-> [!NOTE]
-> Ubuntu 16,04, Ubuntu 18,04 ve de, 9 ' un x86 mimarileri yalnızca konuşma SDK 'Sı ile C++ geliştirmeyi destekler.
+### <a name="system-requirements"></a>Sistem Gereksinimleri
 
-### <a name="system-requirements"></a>Sistem gereksinimleri
+Yerel bir uygulama için konuşma SDK 'Sı kullanır `libMicrosoft.CognitiveServices.Speech.core.so` . Hedef mimarinin (x86, x64) uygulamayla eşleştiğinden emin olun. Linux sürümüne bağlı olarak ek bağımlılıklar de gerekebilir.
 
-Yerel bir uygulama için konuşma SDK 'Sı kullanır `libMicrosoft.CognitiveServices.Speech.core.so`. Hedef mimarinin (x86, x64) uygulamayla eşleştiğinden emin olun. Linux sürümüne bağlı olarak ek bağımlılıklar de gerekebilir.
-
-- GNU C kitaplığının paylaşılan kitaplıkları (POSIX Iş parçacıkları programlama kitaplığı dahil `libpthreads`)
-- OpenSSL kitaplığı (`libssl.so.1.0.0` veya `libssl.so.1.0.2`)
-- ALSA uygulamaları için paylaşılan kitaplık (`libasound.so.2`)
+- GNU C kitaplığının paylaşılan kitaplıkları (POSIX Iş parçacıkları programlama kitaplığı dahil `libpthreads` )
+- OpenSSL kitaplığı ( `libssl.so.1.0.0` veya `libssl.so.1.0.2` )
+- ALSA uygulamaları için paylaşılan kitaplık ( `libasound.so.2` )
 
 # <a name="ubuntu-16041804"></a>[Ubuntu 16.04/18.04](#tab/ubuntu)
 
@@ -60,10 +61,8 @@ sudo yum install alsa-lib openssl
 ```
 
 > [!IMPORTANT]
-> [Konuşma SDK 'sı IÇIN RHEL/CentOS 7 ' yi yapılandırma](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)yönergelerini izleyin.
-
-> [!TIP]
-> RHEL/CentOS 8 ' de, [Linux Için OpenSSL 'yi yapılandırma](../how-to-configure-openssl-linux.md)yönergelerini izleyin.
+> - RHEL/CentOS 7 ' de, [konuşma SDK 'sı IÇIN RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)' yi yapılandırma yönergelerini izleyin.
+> - RHEL/CentOS 8 ' de, [Linux Için OpenSSL 'yi yapılandırma](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yönergelerini izleyin.
 
 ---
 

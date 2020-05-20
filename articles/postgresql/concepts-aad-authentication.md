@@ -6,22 +6,17 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fa9a4ebe64880ae136a8460d35200fb84abb6cf
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74769923"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660192"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
 Microsoft Azure Active Directory (Azure AD) kimlik doğrulaması, Azure AD 'de tanımlanan kimlikleri kullanarak PostgreSQL için Azure veritabanı 'na bağlanma mekanizmasıdır.
 Azure AD kimlik doğrulamasıyla, veritabanı kullanıcı kimliklerini ve diğer Microsoft hizmetlerini merkezi bir konumda yönetebilirsiniz ve bu da izin yönetimini basitleştirir.
-
-> [!IMPORTANT]
-> PostgreSQL için Azure veritabanı Azure AD kimlik doğrulaması şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure AD kullanmanın avantajları şunlardır:
 

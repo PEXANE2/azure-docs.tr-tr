@@ -1,19 +1,19 @@
 ---
 title: "Azure Cosmos DB: toplu yürütücü Java API 'SI, SDK & kaynakları"
 description: Toplu yürütücü Java API 'SI ve SDK ve sürüm tarihleri, emeklilik tarihleri ve Azure Cosmos DB toplu yürütücü Java SDK 'sının her sürümü arasında yapılan değişiklikler dahil olmak üzere tüm bilgileri öğrenin.
-author: milismsft
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/21/2018
-ms.author: adrianmi
-ms.openlocfilehash: 0030f974a36dc80dc8c4112000aa5934126a2482
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 6fe075d2679ec13217200bc8b0da132e8f4d9b57
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836453"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660448"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java toplu yürütücü kitaplığı: Indirme bilgileri
 
@@ -22,8 +22,9 @@ ms.locfileid: "82836453"
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
+> * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -37,7 +38,7 @@ ms.locfileid: "82836453"
 |**SDK indirmesi**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
 |**GitHub 'da toplu yürütücü kitaplığı**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API belgeleri**| [Java API başvuru belgeleri](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
-|**başlarken**|[Toplu yürütücü kitaplığı Java SDK 'sını kullanmaya başlama](bulk-executor-java.md)|
+|**Kullanmaya başlayın**|[Toplu yürütücü kitaplığı Java SDK 'sını kullanmaya başlama](bulk-executor-java.md)|
 |**Desteklenen en düşük çalışma zamanı**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>Sürüm notları

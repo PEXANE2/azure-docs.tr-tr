@@ -1,19 +1,19 @@
 ---
 title: "Azure Cosmos DB: SQL .NET Core API 'SI, SDK & kaynakları"
 description: Sürüm tarihleri, kullanımdan kaldırma tarihleri ve Azure Cosmos DB .NET Core SDK her sürümü arasında yapılan değişiklikler dahil olmak üzere SQL .NET Core API 'SI ve SDK hakkında bilgi edinin.
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 03/22/2018
-ms.author: sngun
-ms.openlocfilehash: 35c81f023726803fb2346d68ae783fdfe124143f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 3738af6349a6f71f6100c601858b39c6329d0295
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72177698"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660389"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB .NET Core SDK'sı: Sürüm notları ve kaynaklar
 > [!div class="op_single_selector"]
@@ -22,8 +22,9 @@ ms.locfileid: "72177698"
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
+> * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -36,11 +37,11 @@ ms.locfileid: "72177698"
 |**SDK indirmesi**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**API belgeleri**|[.NET API başvuru belgeleri](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Örnekler**|[.NET kod örnekleri](sql-api-dotnet-samples.md)|
-|**başlarken**|[Azure Cosmos DB .NET ile çalışmaya başlama](sql-api-sdk-dotnet.md)|
+|**Kullanmaya başlayın**|[Azure Cosmos DB .NET ile çalışmaya başlama](sql-api-sdk-dotnet.md)|
 |**Web uygulaması öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-dotnet-application.md)|
 |**Desteklenen geçerli çerçeve**|[.NET Standard 1,6 ve .NET Standard 1,5](https://www.nuget.org/packages/NETStandard.Library)|
 
-## <a name="release-notes"></a>Sürüm Notları
+## <a name="release-notes"></a>Release Notes (Sürüm Notları)
 
 > [!NOTE]
 > .NET Core kullanıyorsanız, lütfen .NET Standard hedefleyen [.NET SDK 'sının](sql-api-sdk-dotnet-standard.md)en son sürüm 3. x sürümünü inceleyin. 

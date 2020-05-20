@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/19/2020
+ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faeab07ce7ec057981d23228461c2fa07600cdc1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80744967"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660014"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>SYNAPSE SQL havuzu için veri yükleme stratejileri
 
@@ -29,7 +29,7 @@ SQL havuzu [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-wa
 PolyBase ve COPY ifadesiyle, Azure Blob depolamada depolanan dış verilere veya T-SQL dili üzerinden Azure Data Lake Store erişebilirsiniz. Yükleme sırasında en fazla esneklik için, COPY ifadesini kullanmanızı öneririz.
 
 > [!NOTE]  
-> COPY deyimleri Şu anda genel önizlemededir. Geri bildirim sağlamak için şu dağıtım listesine e-posta gönderin: sqldwcopypreview@service.microsoft.com.
+> COPY deyimleri Şu anda genel önizlemededir. Geri bildirim sağlamak için şu dağıtım listesine e-posta gönderin: sqldwcopypreview@service.microsoft.com .
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
@@ -68,7 +68,7 @@ Verileri Azure depolama 'ya taşımak için kullanabileceğiniz araçlar ve hizm
 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) hizmeti ağ aktarım hızını, performansı ve öngörülebilirlik geliştirir. ExpressRoute, verilerinizi Azure 'a adanmış bir özel bağlantıyla yönlendiren bir hizmettir. ExpressRoute bağlantıları, verileri genel İnternet üzerinden yönlendirmez. Bağlantılar, genel İnternet üzerinden tipik bağlantılardan daha fazla güvenilirlik, daha hızlı hız, daha düşük gecikme süreleri ve daha yüksek güvenlik sunar.
 - [AZCopy yardımcı programı](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , verileri genel Internet üzerinden Azure depolama 'ya taşıtabilecek. Bu, veri boyutlarınızın 10 TB 'den küçük olması durumunda geçerlidir. AZCopy ile düzenli olarak yükleme gerçekleştirmek için, kabul edilebilir olup olmadığını görmek için ağ hızını test edin.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , yerel sunucunuza yükleyebileceğiniz bir ağ geçidine sahip olabilir. Daha sonra, yerel sunucunuzdaki verileri Azure depolama 'ya taşımak için bir işlem hattı oluşturabilirsiniz. SQL Analytics ile Data Factory kullanmak için bkz. [SQL Analytics için verileri yükleme](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , yerel sunucunuza yükleyebileceğiniz bir ağ geçidine sahip olabilir. Daha sonra, yerel sunucunuzdaki verileri Azure depolama 'ya taşımak için bir işlem hattı oluşturabilirsiniz. SQL havuzu ile Data Factory kullanmak için bkz. [SQL havuzu için verileri yükleme](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. verileri yükleme için hazırlama
 
@@ -88,30 +88,43 @@ Dış tabloları tanımlama, veri kaynağını, metin dosyalarının biçimini v
 
 Parquet yüklenirken SQL veri türü eşlemesi şu şekilde olur:
 
-| **Parquet veri türü** | **SQL veri türü** |
-| :-------------------: | :---------------: |
-|        tinyint        |      tinyint      |
-|       smallint        |     smallint      |
-|          int          |        int        |
-|        bigint         |      bigint       |
-|        boole        |        bit        |
-|        double         |       float       |
-|         float         |       real        |
-|        double         |       etmenize       |
-|        double         |    küçük para     |
-|        string         |       nchar       |
-|        string         |     nvarchar      |
-|        string         |       char        |
-|        string         |      varchar      |
-|        ikili         |      ikili       |
-|        ikili         |     ikili     |
-|       timestamp       |       date        |
-|       timestamp       |   girişin   |
-|       timestamp       |     datetime2     |
-|       timestamp       |     datetime      |
-|       timestamp       |       time        |
-|         date          |       date        |
-|        decimal        |      decimal      |
+|                         Parquet türü                         |   Parquet mantıksal türü (ek açıklama)   |  SQL veri türü   |
+| :----------------------------------------------------------: | :-----------------------------------: | :--------------: |
+|                           BOOLEAN                            |                                       |       bit        |
+|                     IKILI/BYTE_ARRAY                      |                                       |    ikili     |
+|                            ÇIFT                            |                                       |      float       |
+|                            FLOAT                             |                                       |       real       |
+|                            INT32                             |                                       |       int        |
+|                            INT64                             |                                       |      bigint      |
+|                            INT96                             |                                       |    datetime2     |
+|                     FIXED_LEN_BYTE_ARRAY                     |                                       |      ikili      |
+|                            Ý                            |                 UTF8                  |     nvarchar     |
+|                            Ý                            |                DIZISINDE                 |     nvarchar     |
+|                            Ý                            |                 YARDıMıNıN                  |     nvarchar     |
+|                            Ý                            |                 EDIN                  | uniqueidentifier |
+|                            Ý                            |                KATEGORI                |     decimal      |
+|                            Ý                            |                 JSON                  |  nvarchar(MAX)   |
+|                            Ý                            |                 BSON                  |  varbinary (max)  |
+|                     FIXED_LEN_BYTE_ARRAY                     |                KATEGORI                |     decimal      |
+|                          BYTE_ARRAY                          |               ARALıĞıNDA                |  varchar (max),   |
+|                            INT32                             |             TAMSAYı (8, doğru)              |     smallint     |
+|                            INT32                             |            INT (16, doğru)            |     smallint     |
+|                            INT32                             |             INT (32, doğru)             |       int        |
+|                            INT32                             |            INT (8, false)            |     tinyint      |
+|                            INT32                             |            INT (16, false)             |       int        |
+|                            INT32                             |           INT (32, false)            |      bigint      |
+|                            INT32                             |                 DATE                  |       date       |
+|                            INT32                             |                KATEGORI                |     decimal      |
+|                            INT32                             |            SAAT (MILIMETRE)             |       time       |
+|                            INT64                             |            INT (64, true)            |      bigint      |
+|                            INT64                             |           INT (64, false)            |  ondalık (20, 0)   |
+|                            INT64                             |                KATEGORI                |     decimal      |
+|                            INT64                             |         SAAT (MIKRO S/NANOS)         |       time       |
+|                            INT64                             | ZAMAN DAMGASı (MILIMETRE/MIKRO S/NANOS) |    datetime2     |
+| [Karmaşık tür](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 LISTELE                  |   varchar(maks.)   |
+| [Karmaşık tür](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  HARITA                  |   varchar(maks.)   |
+
+
 
 Dış nesne oluşturma hakkında bir örnek için, yükleme öğreticisindeki [dış tablo oluşturma](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) adımına bakın.
 

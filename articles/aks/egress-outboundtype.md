@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) içinde özel çıkış yolu tanıml
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: babfd70a6a9732113531be13073af212a6820557
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733507"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677895"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Küme çıkışı 'nı Kullanıcı tanımlı bir yol (Önizleme) ile özelleştirme
 
@@ -23,10 +23,10 @@ Bu makalede, genel IP 'Lere izin vermeyen ve kümenin bir ağ sanal gereci (NVA)
 > * [AKS destek Ilkeleri](support-policies.md)
 > * [Azure desteği SSS](faq.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure CLı sürüm 2.0.81 veya üzeri
 * Azure CLı önizleme uzantısı sürüm 0.4.28 veya üstü
-* `2020-01-01` Veya daha büyük API sürümü
+* `2020-01-01`Veya daha büyük API sürümü
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>En son Azure CLı AKS önizleme uzantısını yükler
 Bir kümenin giden türünü ayarlamak için Azure CLı AKS önizleme uzantısı sürüm 0.4.18 veya sonraki bir sürümü gerekir. Az Extension Add komutunu kullanarak Azure CLı AKS önizleme uzantısını yükledikten sonra aşağıdaki az Extension Update komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
@@ -40,29 +40,29 @@ az extension update --name aks-preview
 ```
 
 ## <a name="limitations"></a>Sınırlamalar
-* Önizleme `outboundType` süresince yalnızca küme oluşturma zamanında tanımlanabilir ve daha sonra güncelleştirilemez.
+* Önizleme süresince `outboundType` yalnızca küme oluşturma zamanında tanımlanabilir ve daha sonra güncelleştirilemez.
 * Önizleme süresince `outboundType` aks kümelerinin Azure CNI kullanması gerekir. Kubenet yapılandırılabilir, kullanım, yol tablosunun AKS alt ağına el ile ilişkilendirmelerini gerektirir.
-* Ayar `outboundType` `vm-set-type` , `VirtualMachineScaleSets` ve `load-balancer-sku` için aks kümeleri gerektirir `Standard`.
-* Bir `outboundType` değere ayarlandığında, küme `UDR` için geçerli giden bağlantıya sahip kullanıcı tanımlı bir yol gerekir.
-* Bir `outboundType` değere `UDR` ayarlandığında, yük dengeleyicisine YÖNLENDIRILEN giriş kaynak IP 'si kümenin giden çıkış hedefi adresiyle **eşleşmeyebilir** .
+* Ayar `outboundType` , ve için AKS kümeleri `vm-set-type` gerektirir `VirtualMachineScaleSets` `load-balancer-sku` `Standard` .
+* `outboundType`Bir değere ayarlandığında `UDR` , küme için geçerli giden bağlantıya sahip kullanıcı tanımlı bir yol gerekir.
+* `outboundType`Bir değere ayarlandığında `UDR` , yük dengeleyicisine yönlendirilen giriş kaynak IP 'si kümenin giden çıkış hedefi adresiyle **eşleşmeyebilir** .
 
 ## <a name="overview-of-outbound-types-in-aks"></a>AKS 'deki giden türlere genel bakış
 
-AKS kümesi, yük dengeleyici veya Kullanıcı tanımlı yönlendirme `outboundType` türünde benzersiz bir şekilde özelleştirilebilir.
+AKS kümesi, `outboundType` yük dengeleyici veya Kullanıcı tanımlı yönlendirme türünde benzersiz bir şekilde özelleştirilebilir.
 
 > [!IMPORTANT]
 > Giden türü yalnızca kümenizin çıkış trafiğini etkiler. Daha fazla bilgi için bkz. giriş [denetleyicilerini ayarlama](ingress-basic.md) .
 
 ### <a name="outbound-type-of-loadbalancer"></a>Yük dengeleyici giden türü
 
-`loadBalancer` Ayarlanırsa, aks aşağıdaki kurulumu otomatik olarak tamamlar. Yük dengeleyici, bir AKS atanmış genel IP üzerinden çıkış için kullanılır. Giden türü, AKS kaynak sağlayıcısı tarafından oluşturulan yük dengeleyiciden çıkış `loadBalancer`bekleyen, türü Kubernetes hizmetlerini `loadBalancer` destekler.
+`loadBalancer`Ayarlanırsa, AKS aşağıdaki kurulumu otomatik olarak tamamlar. Yük dengeleyici, bir AKS atanmış genel IP üzerinden çıkış için kullanılır. Giden türü `loadBalancer` `loadBalancer` , aks kaynak sağlayıcısı tarafından oluşturulan yük dengeleyiciden çıkış bekleyen, türü Kubernetes hizmetlerini destekler.
 
 Aşağıdaki kurulum AKS tarafından yapılır.
    * Küme çıkışı için genel bir IP adresi sağlandı.
    * Genel IP adresi, yük dengeleyici kaynağına atanır.
    * Yük Dengeleyici için arka uç havuzları, kümedeki aracı düğümleri için kurulumlardır.
 
-Varsayılan olarak, AKS kümelerinde dağıtılan ve ' ı kullanan `outboundType` bir ağ topolojisi vardır. `loadBalancer`
+Varsayılan olarak, AKS kümelerinde dağıtılan ve ' ı kullanan bir ağ topolojisi vardır `outboundType` `loadBalancer` .
 
 ![OutboundType-lb](media/egress-outboundtype/outboundtype-lb.png)
 
@@ -71,7 +71,7 @@ Varsayılan olarak, AKS kümelerinde dağıtılan ve ' ı kullanan `outboundType
 > [!NOTE]
 > Giden türü kullanmak gelişmiş bir ağ senaryosudur ve uygun ağ yapılandırması gerektirir.
 
-`userDefinedRouting` Ayarlanırsa, aks çıkış yollarını otomatik olarak yapılandırmaz. Aşağıdakilerin **Kullanıcı**tarafından yapılması beklenmektedir.
+`userDefinedRouting`Ayarlanırsa, AKS çıkış yollarını otomatik olarak yapılandırmaz. Aşağıdakilerin **Kullanıcı**tarafından yapılması beklenmektedir.
 
 AKS kümesinin yapılandırılmış bir alt ağa sahip mevcut bir sanal ağa dağıtılması gerekir. Standart yük dengeleyici (SLB) mimarisi kullanılırken açık çıkış oluşturmanız gerekir. Bu, bir güvenlik duvarı, ağ geçidi, şirket içi veya çıkış isteklerinin standart yük dengeleyiciye veya belirli bir düğüme atanan bir genel IP tarafından yapılmasına izin vermek için bir gereç için çıkış istekleri gönderilmesini gerektirir.
 
@@ -119,9 +119,6 @@ DEVSUBNET_NAME="${PREFIX}dev"
 Sonra, abonelik kimliklerini ayarlayın.
 
 ```azure-cli
-# Get ARM Access Token and Subscription ID - This will be used for AuthN later.
-
-ACCESS_TOKEN=$(az account get-access-token -o tsv --query 'accessToken')
 
 # NOTE: Update Subscription Name
 # Set Default Azure Subscription to be Used via Subscription ID
@@ -301,7 +298,7 @@ Hizmet sorumlusu, AKS tarafından küme kaynakları oluşturmak için kullanıl�
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 ```
 
-Şimdi, `APPID` önceki komut `PASSWORD` çıktısı tarafından otomatik olarak oluşturulan hizmet sorumlusu uygulama kimliği ve hizmet sorumlusu parolasıyla aşağıdaki ve altındaki öğesini değiştirin. AKS 'in bu kaynaklara kaynak dağıtabilmesi için, hizmet sorumlusu için izin vermek amacıyla VNET kaynak KIMLIĞINE başvuracağız.
+Şimdi, `APPID` `PASSWORD` önceki komut çıktısı tarafından otomatik olarak oluşturulan hizmet sorumlusu uygulama kimliği ve hizmet sorumlusu parolasıyla aşağıdaki ve altındaki öğesini değiştirin. AKS 'in bu kaynaklara kaynak dağıtabilmesi için, hizmet sorumlusu için izin vermek amacıyla VNET kaynak KIMLIĞINE başvuracağız.
 
 ```azure-cli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
@@ -318,7 +315,7 @@ az role assignment list --assignee $APPID --all -o table
 
 ### <a name="deploy-aks"></a>AKS 'leri dağıtma
 
-Son olarak, AKS kümesi, küme için ayrıldığımız mevcut alt ağa dağıtılabilir. İçine dağıtılacak hedef alt ağ, `$SUBNETID`ortam değişkeni ile tanımlanmıştır. Önceki adımlarda `$SUBNETID` değişkeni tanımlamadık. Alt ağ KIMLIĞI için değeri ayarlamak için aşağıdaki komutu kullanabilirsiniz:
+Son olarak, AKS kümesi, küme için ayrıldığımız mevcut alt ağa dağıtılabilir. İçine dağıtılacak hedef alt ağ, ortam değişkeni ile tanımlanmıştır `$SUBNETID` . `$SUBNETID`Önceki adımlarda değişkeni tanımlamadık. Alt ağ KIMLIĞI için değeri ayarlamak için aşağıdaki komutu kullanabilirsiniz:
 
 ```azurecli
 SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
@@ -361,7 +358,7 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
 
 ```
 
- Yeni oluşturduğunuz Kubernetes kümenize bağlanmak üzere yapılandırmak `kubectl` için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. 
+ Yeni oluşturduğunuz Kubernetes kümenize bağlanmak üzere yapılandırmak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın `kubectl` . 
 
  ```azure-cli
  az aks get-credentials -g $RG -n $AKS_NAME
@@ -399,7 +396,7 @@ kubectl apply -f internal-lb.yaml
 
 Küme giden türü UDR olarak ayarlandığından, aracı düğümlerini yük dengeleyicinin arka uç havuzu olarak ilişkilendirmek, küme oluşturma zamanında AKS tarafından otomatik olarak tamamlanmaz. Bununla birlikte, Kubernetes hizmeti dağıtıldığında, arka uç havuzu ilişkilendirmesi Kubernetes Azure bulut sağlayıcısı tarafından işlenir.
 
-Aşağıdaki YAML 'yi adlı `example.yaml`bir dosyaya kopyalayarak Azure oylama uygulama uygulamasını dağıtın.
+Aşağıdaki YAML 'yi adlı bir dosyaya kopyalayarak Azure oylama uygulama uygulamasını dağıtın `example.yaml` .
 
 ```yaml
 apiVersion: apps/v1

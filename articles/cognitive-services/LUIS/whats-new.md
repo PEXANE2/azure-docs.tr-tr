@@ -2,13 +2,13 @@
 title: Yenilikler-Language Understanding (LUSıS)
 description: Bu makale, Azure bilişsel hizmetler Language Understanding API hakkındaki haberlerle düzenli olarak güncelleştirilir.
 ms.topic: overview
-ms.date: 05/08/2020
-ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592806"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675948"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
@@ -21,12 +21,18 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Vide
 * **Genel kullanıma açık** (GA):
     * [Language Understanding kapsayıcı](luis-container-howto.md)
     * Önizleme portalı [geçerli portala](https://www.luis.ai)yükseltildi, [önceki](https://previous.luis.ai) Portal hala kullanılabilir
-    * Yeni makine tarafından öğrenilen varlık oluşturma ve etiketleme deneyimi
-    * Bileşik ve basit varlıklardan makine tarafından öğrenilen varlıklara [yükseltme işlemi](migrate-from-composite-entity.md)
+    * Yeni makine öğrenimi varlık oluşturma ve etiketleme deneyimi
+    * Bileşik ve basit varlıklardan makine öğrenimi varlıklarına [yükseltme işlemi](migrate-from-composite-entity.md)
     * Sözcük çeşitlemelerini normalleştirime desteğini [ayarlama](how-to-application-settings-portal.md)
 * Önizleme yazma API 'SI değişiklikleri
-    * Yuvalanmış makine tarafından öğrenilen varlıklar için uygulama şeması 7. x
+    * İç içe makine öğrenimi varlıkları için uygulama şeması 7. x
     * [Gerekli özelliğe geçiş](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+* Geliştiriciler için yeni kaynaklar
+    * [Sürekli tümleştirme araçları](developer-reference-resource.md#continuous-integration-tools)
+    * Workshop- [lusıs kullanarak _doğal Language Understanding_ (NLU) için en iyi yöntemleri öğrenin](developer-reference-resource.md#workshops)
+* [Müşteri tarafından yönetilen anahtarlar](luis-encryption-of-data-at-rest.md) -halde kullandığınız tüm verileri kendi anahtarınızı kullanarak şifreleyin
+* [AI Show](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (video)-lusıs 'deki yeni özelliklere bakın
+
 
 
 ### <a name="march-2020"></a>Mart 2020
@@ -48,13 +54,13 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Vide
     * İtalyanca [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md#italian-entity-support) -yaş, para birimi, boyut, sayı ve yüzde çözünürlüğü v2 'den değiştirilmiştir.
 * [Preview.Luis.ai Portal](https://preview.luis.ai) 'da geliştirilmiş Kullanıcı deneyimi-karmaşık modellerin oluşturulmasını ve hata ayıklamasını etkinleştirmek için etiketleme deneyimidir. Önizleme portalı öğreticilerini deneyin:
     * [Yalnızca amaçlar](tutorial-intents-only.md)
-    * [Ayrıştırılmış makine tarafından öğrenilen varlık](tutorial-machine-learned-entity.md)
+    * [Birleştirilebilen makine öğrenimi varlığı](tutorial-machine-learned-entity.md)
 * Gelişmiş dil özelliklerini anlama-daha az çaba ile [Gelişmiş dil modelleri oluşturma](luis-concept-entity-types.md) .
 * Model düzeyinde makine öğrenimi özelliklerini tanımlayın ve modellerin diğer modellere sinyal olarak kullanılmasını etkinleştirin. Örneğin, varlıkları amaçlar ve diğer varlıklara özellikler olarak kullanma.
 * Yeni, genişletilmiş [sınırlar](luis-limits.md) -tümcecik listeleri ve toplam ifadeler için yüksek maksimum sınır, özellik sınırları olarak yeni model
 * Derin hiyerarşi yapısı biçimindeki metinden bilgi ayıklayın ve konuşma uygulamalarını daha güçlü hale getirir.
 
-    ![makine tarafından öğrenilen varlık görüntüsü](./media/whats-new/deep-entity-extraction-example.png)
+    ![makine öğrenimi varlık resmi](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>3 Eylül 2019
 

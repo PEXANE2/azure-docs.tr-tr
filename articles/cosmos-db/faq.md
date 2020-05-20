@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 976ff4d3be194bf33d2c01f06c66782caf8dad50
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0a890139f9d7a955a5c96262d6e5b8f275e61d0d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608056"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675943"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'deki farklı API'ler hakkında sık sorulan sorular
 
@@ -70,7 +70,7 @@ Ayrıca, Azure aboneliği oluşturmadan uygulamanızı ücretsiz olarak gelişti
 
 Teknik bir soru sormak için, bu iki sorudan birine ve yanıt forumlarından birine gönderebilirsiniz:
 
-* [MSDN forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
+* [MSDN forumu](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow, programlama sorularına en iyisidir. Sorunuzun [konuyla ilgili](https://stackoverflow.com/help/on-topic) olduğundan emin olun ve mümkün olduğunca [fazla ayrıntı sağlayın ve bu soruyu açık ve answerable](https://stackoverflow.com/help/how-to-ask)yapın.
 
 Yeni özellikler istemek için [Kullanıcı sessiyle](https://feedback.azure.com/forums/263030-azure-cosmos-db)yeni bir istek oluşturun.
@@ -173,7 +173,7 @@ SQL API hesapları tarafından desteklenen SQL sorgu dili, SQL Server tarafında
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>SQL API 'SI SQL toplama işlevlerini destekliyor mu?
 
-SQL API,,,,, `COUNT`ve `MIN` `MAX` `AVG` `SUM` SQL dilbilgisi aracılığıyla herhangi bir ölçekte düşük gecikmeli toplamayı destekler. Daha fazla bilgi için bkz. [toplama işlevleri](sql-query-aggregates.md).
+SQL API,,,,, `COUNT` `MIN` `MAX` `AVG` ve `SUM` SQL dilbilgisi aracılığıyla herhangi bir ölçekte düşük gecikmeli toplamayı destekler. Daha fazla bilgi için bkz. [toplama işlevleri](sql-query-aggregates.md).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>SQL API 'SI eşzamanlılık nasıl sağlar?
 

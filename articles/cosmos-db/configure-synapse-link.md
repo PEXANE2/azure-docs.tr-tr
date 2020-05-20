@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: 384d4ebf211c80ac069889356f269407ba7d3d75
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 24f6f77f1371157ca1b57cfd85ac196cace822fc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598727"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83676009"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı 'nı yapılandırma ve kullanma (Önizleme)
 
@@ -187,11 +187,15 @@ container.replace(containerProperties).block();
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a>Bir Synapse çalışma alanına bağlanma
 
-Azure SYNAPSE link ile Azure SYNAPSE Analytics Studio 'dan bir Azure Cosmos DB veritabanına nasıl eriştiğine ilişkin Azure [SYNAPSE Connect]() 'teki yönergeleri kullanın.
+Azure SYNAPSE link ile Azure SYNAPSE Analytics Studio 'dan bir Azure Cosmos DB veritabanına nasıl eriştiğine ilişkin Azure [SYNAPSE Connect](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md) 'teki yönergeleri kullanın.
 
 ## <a name="query-using-synapse-spark"></a><a id="query-analytical-store"></a>SYNAPSE Spark kullanarak sorgulama
 
-SYNAPSE Spark ile sorgulama hakkında [analitik depo makalesindeki sorgu Azure Cosmos DB sorgulama]() bölümündeki yönergeleri kullanın. Bu makalede, SYNAPSE hareketlerinden analitik depoyla nasıl etkileşim kurabileceğine ilişkin bazı örnekler verilmektedir. Bir kapsayıcıya sağ tıkladığınızda bu hareketler görünür. Hareketlerle hızlı bir şekilde kod oluşturabilir ve bunu gereksinimlerinize ince ayar edebilirsiniz. Tek bir tıklama ile verileri bulmak için de mükemmeldir.
+SYNAPSE Spark ile sorgulama hakkında [analitik depo makalesindeki sorgu Azure Cosmos DB sorgulama](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md) bölümündeki yönergeleri kullanın. Bu makalede, SYNAPSE hareketlerinden analitik depoyla nasıl etkileşim kurabileceğine ilişkin bazı örnekler verilmektedir. Bir kapsayıcıya sağ tıkladığınızda bu hareketler görünür. Hareketlerle hızlı bir şekilde kod oluşturabilir ve bunu gereksinimlerinize ince ayar edebilirsiniz. Tek bir tıklama ile verileri bulmak için de mükemmeldir.
+
+## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a>Azure Synpao bağlantısı ile çalışmaya başlama-örnekler
+
+[GitHub](https://aka.ms/cosmosdb-synapselink-samples)'Da Azure SYNAPSE bağlantısı ile çalışmaya başlama örneklerini bulabilirsiniz. Bu, IoT ve perakende senaryolarıyla uçtan uca çözümler sergileme.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

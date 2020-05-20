@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 714d587cc047887685f7f7c7f4f5a2bbc2310aa2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598629"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674344"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB (Önizleme) için Azure SYNAPSE bağlantısı nedir?
 
@@ -35,11 +35,11 @@ Azure Cosmos DB için Azure SYNAPSE bağlantısı, geleneksel ETL tabanlı çöz
 
 ### <a name="reduced-complexity-with-no-etl-jobs-to-manage"></a>Yönetilecek ETL işi olmayan Azaltılan karmaşıklık
 
-Azure SYNAPSE bağlantısı, karmaşık veri hareketi olmadan Azure SYNAPSE Analytics kullanarak analitik depoya doğrudan Azure Cosmos DB erişmenizi sağlar. İşletimsel verilere yapılan tüm güncelleştirmeler, bir ETL veya değişiklik akışı olmadan neredeyse gerçek zamanlı olarak analitik depoda görünür. SYNAPSE Analytics 'ten gelen ve ek veri dönüştürmesi olmadan büyük ölçekli analiz, analitik depoya karşı çalıştırabilirsiniz.
+Azure SYNAPSE bağlantısı, karmaşık veri hareketi olmadan Azure SYNAPSE Analytics kullanarak analitik depoya doğrudan Azure Cosmos DB erişmenizi sağlar. İşletimsel verilere yapılan tüm güncelleştirmeler, bir ETL veya değişiklik akışı işleri olmadan neredeyse gerçek zamanlı olarak analitik depoda görünür. SYNAPSE Analytics 'ten gelen ve ek veri dönüştürmesi olmadan büyük ölçekli analiz, analitik depoya karşı çalıştırabilirsiniz.
 
 ### <a name="near-real-time-insights-into-your-operational-data"></a>İşletimsel verileriniz hakkında neredeyse gerçek zamanlı Öngörüler
 
-Artık Azure SYNAPSE link kullanarak, neredeyse gerçek zamanlı olarak işletimsel verileriniz hakkında zengin Öngörüler elde edebilirsiniz. Çalışma verilerinin ayıklanmasına, dönüştürülmesinden ve yüklenmesine yönelik birçok katman nedeniyle, ETL tabanlı sistemler, işletimsel verilerinizi analiz etmeye yönelik daha yüksek gecikme süresine sahiptir. Azure SYNAPSE Analytics ile Azure Cosmos DB analitik deponun yerel tümleştirmesiyle, işletimsel verileri neredeyse gerçek zamanlı olarak analiz ederek yeni iş senaryolarına olanak sağlayabilirsiniz. 
+Artık Azure SYNAPSE link kullanarak, neredeyse gerçek zamanlı olarak işletimsel verileriniz hakkında zengin Öngörüler elde edebilirsiniz. İşlem verilerini ayıklamak, dönüştürmek ve yüklemek için gereken birçok katman nedeniyle, ETL tabanlı sistemler, işletimsel verilerinizi analiz etmeye yönelik daha yüksek gecikme süresine sahiptir. Azure SYNAPSE Analytics ile Azure Cosmos DB analitik deponun yerel tümleştirmesiyle, işletimsel verileri neredeyse gerçek zamanlı olarak analiz ederek yeni iş senaryolarına olanak sağlayabilirsiniz. 
 
 
 ### <a name="no-impact-on-operational-workloads"></a>İşlemsel iş yükleri üzerinde hiçbir etkisi yoktur
@@ -54,7 +54,7 @@ Azure Cosmos DB analitik depo, işlem çalıştırma sürelerine hiçbir bağım
 
 Azure SYNAPSE bağlantısı ile, işletimsel analizler için uygun maliyetli, tam olarak yönetilen bir çözüm edinebilirsiniz. İşletimsel verileri çözümlemek için geleneksel ETL işlem hatları 'nda gereken ek depolama ve işlem katmanlarını ortadan kaldırır. 
 
-Analitik depo Azure Cosmos DB, veri depolama ve analitik okuma/yazma operationkum sorguları yürütülen tüketim tabanlı fiyatlandırma modelini izler. Bu işlem, işlemsel iş yükleri için bugün yaptığınız şekilde herhangi bir üretilen iş sağlama gerektirmez. Azure SYNAPSE Analytics 'ten yüksek düzeyde esnek işlem altyapılarıyla verilerinize erişmek, depolama ve işlem çalıştırmanın genel maliyetini çok verimli hale getirir.
+Analitik depo Azure Cosmos DB, veri depolama ve analitik okuma/yazma işlemleri ve yürütülen sorguları temel alan tüketim tabanlı fiyatlandırma modelini izler. Bu işlem, işlemsel iş yükleri için bugün yaptığınız şekilde herhangi bir üretilen iş sağlama gerektirmez. Azure SYNAPSE Analytics 'ten yüksek düzeyde esnek işlem altyapılarıyla verilerinize erişmek, depolama ve işlem çalıştırmanın genel maliyetini çok verimli hale getirir.
 
 
 ### <a name="analytics-for-locally-available-globally-distributed-multi-master-data"></a>Yerel olarak kullanılabilir, global olarak dağıtılmış, çok ana veriler için analiz
@@ -99,7 +99,7 @@ Bu tümleştirme, farklı kullanıcılar için aşağıdaki HTAP senaryolarına 
 
 * El ile ETL işlemi olmadan Azure Cosmos DB kapsayıcıları üzerinde SQL veya Spark tabloları oluşturarak, müşteriler için veri erişilebilir hale getirmek isteyen bir veri mühendisi.
 
-Azure Cosmos DB için Azure SYNAPSE Analytics çalışma zamanı desteği hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics for Cosmos DB support]().
+Azure Cosmos DB için Azure SYNAPSE Analytics çalışma zamanı desteği hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics for Cosmos DB support](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md).
 
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı ne zaman kullanılır?
 
@@ -124,11 +124,11 @@ Yüksek eşzamanlılık, iş yükü yönetimi ve birden çok veri kaynağında t
 
 * SYNAPSE SQL sunucusuz ile Azure Cosmos DB analitik deposuna erişilmesi Şu anda geçitli önizleme aşamasındadır. Erişim istemek için [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com)e-posta gönderin.
 
-* Sağlanan SYNAPSE SQL ile Azure Cosmos DB Analytics deposuna erişim şu anda kullanılamıyor. 
+* Sağlanan SYNAPSE SQL ile Azure Cosmos DB Analytics deposuna erişim şu anda kullanılamıyor.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Azure SYNAPSE bağlantısının faturalandırma modeli, Azure Cosmos DB analitik mağaza ve SYNAPSE çalışma zamanını kullanarak tahakkuk eden maliyetleri dönüştürür. Daha fazla bilgi edinmek için bkz. [analitik mağaza fiyatlandırması](analytical-store-introduction.md#analytical-store-pricing) ve [Azure SYNAPSE Analytics fiyatlandırma]() makaleleri Azure Cosmos DB.
+Azure SYNAPSE bağlantısının faturalandırma modeli, Azure Cosmos DB analitik mağaza ve SYNAPSE çalışma zamanını kullanarak tahakkuk eden maliyetleri içerir. Daha fazla bilgi edinmek için bkz. [analitik mağaza fiyatlandırması](analytical-store-introduction.md#analytical-store-pricing) ve [Azure SYNAPSE Analytics fiyatlandırma](https://azure.microsoft.com/pricing/details/synapse-analytics/) makaleleri Azure Cosmos DB.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -136,9 +136,9 @@ Daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [Azure Cosmos DB analitik depoya genel bakış](analytical-store-introduction.md)
 
-* [Azure Cosmos DB için Azure SYNAPSE bağlantısı ile çalışmaya başlama](configure-synapse-link.md) 
+* [Azure Cosmos DB için Azure SYNAPSE bağlantısı ile çalışmaya başlama](configure-synapse-link.md)
  
-* [Azure SYNAPSE Analytics çalışma zamanında desteklenen özellikler]()
+* [Azure SYNAPSE Analytics çalışma zamanında desteklenen özellikler](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
 * [Azure Cosmos DB için Azure SYNAPSE bağlantısı hakkında sık sorulan sorular](synapse-link-frequently-asked-questions.md)
 

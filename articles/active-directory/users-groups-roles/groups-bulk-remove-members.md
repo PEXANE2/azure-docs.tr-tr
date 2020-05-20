@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b3c6e471a8e44236baf9bfc2c8eb6c9d5526d72
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 6d6f3a714174b2b808629e0cb41aba6f393d3410
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203479"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679225"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Azure Active Directory Grup üyelerini toplu kaldırma
 
@@ -35,7 +35,7 @@ Azure AD grup üyelerini toplu olarak başarıyla eklemek için toplu karşıya 
 İndirilen bir CSV şablonundaki satırlar aşağıdaki gibidir:
 
 - **Sürüm numarası**: sürüm numarasını içeren ilk satır, KARŞıYA yükleme CSV 'ye eklenmelidir.
-- **Sütun başlıkları**: sütun &lt;başlıklarının biçimi *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş*&gt;. Örneğin, `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir. Grup üyeliği değişiklikleri için hangi tanımlayıcıyı kullanacağınızı seçebilirsiniz: üye nesne KIMLIĞI veya Kullanıcı asıl adı.
+- **Sütun başlıkları**: sütun başlıklarının biçimi &lt; *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş* &gt; . Örneğin, `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir. Grup üyeliği değişiklikleri için hangi tanımlayıcıyı kullanacağınızı seçebilirsiniz: üye nesne KIMLIĞI veya Kullanıcı asıl adı.
 - **Örnekler satırı**: şablona her sütun için kabul edilebilir değer örneklerinin bir satırını ekledik. Örnekler satırını kaldırmalı ve kendi girişlerinizin yerine değiştirmelisiniz.
 
 ### <a name="additional-guidance"></a>Ek yönergeler
@@ -48,7 +48,7 @@ Azure AD grup üyelerini toplu olarak başarıyla eklemek için toplu karşıya 
 ## <a name="to-bulk-remove-group-members"></a>Grup üyelerini toplu olarak kaldırmak için
 
 1. [Azure Portal,](https://portal.azure.com) kuruluştaki bir kullanıcı yönetici hesabıyla oturum açın. Grup sahipleri, sahip oldukları grupların üyelerini de toplu olarak kaldırabilir.
-1. Azure AD 'de **gruplar** > **tüm gruplar**' ı seçin.
+1. Azure AD 'de **gruplar**  >  **tüm gruplar**' ı seçin.
 1. Üyelerini kaldırdığınız grubu açın ve ardından **Üyeler**' i seçin.
 1. **Üyeler** sayfasında, **üyeleri kaldır**' ı seçin.
 1. **Grup üyelerini toplu kaldırma** sayfasında, gerekli Grup ÜYESI özellikleriyle CSV dosya şablonunu almak için **İndir** ' i seçin.
@@ -57,7 +57,7 @@ Azure AD grup üyelerini toplu olarak başarıyla eklemek için toplu karşıya 
 
 1. CSV dosyasını açın ve gruptan kaldırmak istediğiniz her grup üyesi için bir satır ekleyin (gerekli değerler üye nesne KIMLIĞI veya Kullanıcı asıl adı). Ardından dosyayı kaydedin.
 
-   ![CSV dosyası, kaldırılacak üyelerin adlarını ve kimliklerini içerir](./media/groups-bulk-remove-members/csv-file.png)
+    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="CSV dosyası, kaldırılacak Grup üyelerinin adlarını ve kimliklerini içerir":::
 
 1. **Grup üyelerini toplu kaldırma** sayfasında, **CSV dosyanızı karşıya yükleyin**bölümünde dosyaya gidin. Dosyayı seçtiğinizde, CSV dosyasının doğrulanması başlar.
 1. Dosya içeriği doğrulandığında, toplu içeri aktarma sayfası **dosyayı başarıyla karşıya yüklendi**olarak görüntüler. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.

@@ -17,12 +17,12 @@ ms.date: 04/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56e44059268037cfd839fc7c877c5d6c972dead8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7f025a434c6db134237325a2f949b2a7c772672
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886050"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679173"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de etkin olmayan kullanıcı hesaplarını yönetme
 
@@ -43,7 +43,7 @@ Son başarılı oturum açma, bir kullanıcının kaynaklara erişim gereksinimi
 
 **Microsoft Graph** API 'Sinin **signeylemsizlik** kaynak türü tarafından kullanıma sunulan **lastsignındatetime** özelliğini değerlendirerek etkin olmayan hesapları tespit edersiniz. Bu özelliği kullanarak, aşağıdaki senaryolar için bir çözüm uygulayabilirsiniz:
 
-- **Ada göre kullanıcılar**: Bu senaryoda,, Lastsignındate değerini değerlendirmenizi sağlayan belirli bir kullanıcı adına göre arama yapabilirsiniz:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Ada göre kullanıcılar**: Bu senaryoda, Lastsignındatetime değerini değerlendirmenizi sağlayan belirli bir kullanıcıyı ada göre aratın:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
 - **Tarihe göre kullanıcılar**: Bu senaryoda, belirli bir tarihten önce bir Lastsignındatetime değeri olan kullanıcıların listesini istemeniz gerekir:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 

@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cf6c82b330a2672fdde39c3acf156a74cb57e34
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414281"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659987"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>Hızlı başlangıç: Fivetle veri ambarı ile çalıştırıldı 
 
@@ -66,7 +66,7 @@ Bu hızlı başlangıçta, bir SQL havuzuyla sağlanan bir Azure SYNAPSE Analyti
 
 3. Fivetran kullanıcısına uygun bir kaynak sınıfı ekleyin. Kullandığınız kaynak sınıfı, bir columnstore dizini oluşturmak için gereken belleğe bağlıdır. Örneğin, Marketo ve Salesforce gibi ürünlerle tümleştirmeler, çok sayıda sütun ve ürünlerin kullanacağı daha büyük veri hacmi nedeniyle daha yüksek bir kaynak sınıfı gerektirir. Daha yüksek bir kaynak sınıfı, columnstore dizinleri oluşturmak için daha fazla bellek gerektirir.
 
-    Statik kaynak sınıfları kullanmanızı öneririz. `staticrc20` Kaynak sınıfıyla başlayabilirsiniz. `staticrc20` Kaynak sınıfı, kullandığınız performans düzeyinden bağımsız olarak her kullanıcı IÇIN 200 MB ayırır. Columnstore dizin oluşturma ilk kaynak sınıfı düzeyinde başarısız olursa, kaynak sınıfını arttırın.
+    Statik kaynak sınıfları kullanmanızı öneririz. `staticrc20`Kaynak sınıfıyla başlayabilirsiniz. `staticrc20`Kaynak sınıfı, kullandığınız performans düzeyinden bağımsız olarak her kullanıcı için 200 MB ayırır. Columnstore dizin oluşturma ilk kaynak sınıfı düzeyinde başarısız olursa, kaynak sınıfını arttırın.
 
     ```sql
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
@@ -82,5 +82,5 @@ Fivetran hesabınızdan veri ambarınıza bağlanmak için, veri ambarınıza er
 * Ana bilgisayar (sunucunuzun adı).
 * Bağ.
 * Veritabanınızı.
-* Kullanıcı (Kullanıcı adı, *SERVER_NAME* Azure ana bilgisayar URI 'sinin bir parçası olduğu için **fivetran\@SERVER_NAME** olmalıdır: ** _sunucu\_adı_. Database.Windows.net**).
+* Kullanıcı (Kullanıcı adı, *SERVER_NAME* Azure ana bilgisayar URI 'sinin bir parçası olduğu için **fivetran \@ _SERVER_NAME_ ** olmalıdır: ** _sunucu \_ adı_. Database.Windows.net**).
 * Parolayı.

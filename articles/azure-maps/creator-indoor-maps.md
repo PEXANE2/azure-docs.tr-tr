@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 34a1495d1a14e35bc5a94bfc01f4034c6fd6de72
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb0293c66662c86723c31baebeed42dd42d33413
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598398"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677804"
 ---
 # <a name="creator-for-indoor-maps"></a>Inkapı haritaları için Oluşturucu
 
@@ -35,7 +35,7 @@ Bir çizim paketini karşıya yüklemek için [Azure Maps verilerini karşıya y
 
 ## <a name="convert-a-drawing-package"></a>Bir çizim paketini dönüştürme
 
-[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/data/conversion) karşıya yüklenen bir çizim paketini ınkapılı harita verilerine dönüştürür. Dönüştürme hizmeti Ayrıca paketi de doğrular. Doğrulama sorunları iki türe sınıflandırılır: hatalar ve uyarılar. Herhangi bir hata algılanırsa, dönüştürme işlemi başarısız olur. Uyarı algılanmalı, dönüştürme başarılı olur. Ancak, tüm uyarıları gözden geçirmeniz ve çözmeniz önerilir. Uyarı, dönüştürmenin bir kısmının yoksayıldığı veya otomatik olarak düzeltilmediği anlamına gelir. Uyarıları çözememesi, ikinci süreçlerdeki hatalara neden olabilir. Daha fazla bilgi için bkz. [paket uyarılarını ve hatalarını çizme](drawing-conversion-error-codes.md).
+[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) karşıya yüklenen bir çizim paketini ınkapılı harita verilerine dönüştürür. Dönüştürme hizmeti Ayrıca paketi de doğrular. Doğrulama sorunları iki türe sınıflandırılır: hatalar ve uyarılar. Herhangi bir hata algılanırsa, dönüştürme işlemi başarısız olur. Uyarı algılanmalı, dönüştürme başarılı olur. Ancak, tüm uyarıları gözden geçirmeniz ve çözmeniz önerilir. Uyarı, dönüştürmenin bir kısmının yoksayıldığı veya otomatik olarak düzeltilmediği anlamına gelir. Uyarıları çözememesi, ikinci süreçlerdeki hatalara neden olabilir. Daha fazla bilgi için bkz. [paket uyarılarını ve hatalarını çizme](drawing-conversion-error-codes.md).
 
 Bir hata oluştuğunda, dönüştürme hizmeti [Azure Maps çizim hatası görselleştiricisi](drawing-error-visualizer.md) tek başına Web uygulamasına bir bağlantı sağlar. Çizim [paketi uyarılarını ve](drawing-conversion-error-codes.md) dönüştürme işlemi sırasında oluşan hataları Incelemek Için çizim hatası görselleştiricisi ' nı kullanabilirsiniz. Hataları düzelttikten sonra, paketi karşıya yüklemeyi ve dönüştürmeyi deneyebilirsiniz.
 

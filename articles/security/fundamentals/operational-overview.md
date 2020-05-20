@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443876"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674236"
 ---
 # <a name="azure-operational-security-overview"></a>Azure operasyonel güvenliğe genel bakış
 
@@ -60,7 +60,7 @@ Daha fazla bilgi için [Azure Backup bileşenleri tablosuna](/azure/backup/backu
 
 -   Bulut hizmeti olarak kimlik ve erişim yönetimi (ıAM) sunar.
 -   Merkezi erişim yönetimi, çoklu oturum açma (SSO) ve raporlama sağlar.
--   Salesforce, Google Apps, Box ve Concur dahil olmak üzere Azure Marketi 'nde [binlerce uygulama](https://azure.microsoft.com/marketplace/active-directory/) için tümleşik erişim yönetimini destekler.
+-   Salesforce, Google Apps, Box ve Concur dahil olmak üzere Azure Marketi 'nde [binlerce uygulama](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) için tümleşik erişim yönetimini destekler.
 
 Azure AD, aşağıdakiler dahil olmak üzere tam [kimlik yönetimi özellikleri](/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)paketini de içerir:
 

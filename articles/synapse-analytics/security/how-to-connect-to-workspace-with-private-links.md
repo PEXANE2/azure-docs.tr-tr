@@ -7,30 +7,35 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5a00fc44021278a8b910cf454b43b0bae2c3a1f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d217e6d49f33db099d54e6521073c56ec146c0b8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81432196"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660102"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Özel bağlantıları kullanarak Azure SYNAPSE çalışma alanınıza bağlanma (Önizleme)
 
 Bu makalede, Azure SYNAPSE çalışma alanınızda özel uç nokta oluşturma hakkında öğretir. Daha fazla bilgi için bkz. [özel bağlantılar ve özel uç noktalar](https://docs.microsoft.com/azure/private-link/) .
 
-## <a name="step-1-open-your-azure-synapse-workspace-in-azure-portal"></a>1. Adım: Azure SYNAPSE çalışma alanınızı Azure portal açın
+## <a name="step-1-register-network-resource-provider"></a>1. Adım: ağ kaynak sağlayıcısını kaydetme
+
+Daha önce yapmadıysanız, ağ kaynak sağlayıcısını kaydedin. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. [Kayıt](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)sırasında kaynak sağlayıcıları listesinden *Microsoft. Network* ' ü seçin. Ağ kaynak sağlayıcısı zaten kaydedilmişse adım 2 ' ye ilerleyin.
+
+
+## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>2. Adım: Azure SYNAPSE çalışma alanınızı Azure portal açın
 
 **Güvenlik** altında **Özel uç nokta bağlantısı** ' nı seçin ve **+ Özel uç noktası**' nı seçin
 ![Azure SYNAPSE çalışma alanını Azure portal içinde açın](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1.png)
 
-## <a name="step-2-select-your-subscription-and-region-details"></a>2. Adım: aboneliğinizi ve bölge ayrıntılarınızı seçin
+## <a name="step-3-select-your-subscription-and-region-details"></a>3. Adım: aboneliğinizi ve bölge ayrıntılarınızı seçin
 
 **Özel uç nokta oluştur** penceresindeki **temel bilgiler** sekmesinde, **aboneliğiniz** ve **kaynak grubunuz**' ı seçin. Oluşturmak istediğiniz özel uç noktaya bir **ad** verin. Özel uç noktanın oluşturulmasını istediğiniz **bölgeyi** seçin.
 
 Özel uç noktalar bir alt ağda oluşturulur. Abonelik, kaynak grubu ve Seçili bölge özel uç nokta alt ağlarını filtreleyin. **İleri ' yi seçin: bittiğinde kaynak >** .
 ![Abonelik ve bölge ayrıntılarını seçin](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-2.png)
 
-## <a name="step-3-select-your-azure-synapse-workspace-details"></a>3. Adım: Azure SYNAPSE çalışma alanı ayrıntılarınızı seçin
+## <a name="step-4-select-your-azure-synapse-workspace-details"></a>4. Adım: Azure SYNAPSE çalışma alanı ayrıntılarınızı seçin
 
 **Kaynak** sekmesinde **Dizinimde bir Azure kaynağına bağlan '** ı seçin. Azure SYNAPSE çalışma alanınızı içeren **aboneliği** seçin. Azure SYNAPSE çalışma alanına özel uç noktalar oluşturmak için **kaynak türü** *Microsoft. SYNAPSE/çalışma alanlardır*.
 

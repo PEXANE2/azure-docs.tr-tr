@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: ce4e4d11ead41ee8cc4a4bd1d85f1fbad2af4b07
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: dca9babff198fc780e54df6e89149f2c4c8157bf
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982539"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677710"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 için performans ipuçları
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982539"
 > 
 
 > [!IMPORTANT]  
-> Bu makaledeki performans ipuçları yalnızca Azure Cosmos DB Java SDK v4 içindir. Daha fazla bilgi için lütfen Azure Cosmos DB Java SDK v4 sürüm notları, [Maven deposu](https://mvnrepository.com/artifact/com.azure/azure-cosmos)ve Azure Cosmos DB Java SDK 'sı v4 [sorun giderme kılavuzunu](troubleshoot-java-sdk-v4-sql.md) görüntüleyin. Şu anda v4 'den daha eski bir sürüm kullanıyorsanız, v4 'ye yükseltme konusunda yardım için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ' na bakın.
+> Bu makaledeki performans ipuçları yalnızca Azure Cosmos DB Java SDK v4 içindir. Daha fazla bilgi için lütfen Azure Cosmos DB Java SDK v4 [sürüm notları](sql-api-sdk-java-v4.md), [Maven deposu](https://mvnrepository.com/artifact/com.azure/azure-cosmos)ve Azure Cosmos DB Java SDK 'sı v4 [sorun giderme kılavuzunu](troubleshoot-java-sdk-v4-sql.md) görüntüleyin. Şu anda v4 'den daha eski bir sürüm kullanıyorsanız, v4 'ye yükseltme konusunda yardım için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ' na bakın.
 >
 
 Azure Cosmos DB, garantili gecikme ve verimlilik ile sorunsuz bir şekilde ölçeklenen hızlı ve esnek bir dağıtılmış veritabanıdır. Veritabanınızı Azure Cosmos DB ölçeklendirmek için önemli mimari değişiklikler yapmanız veya karmaşık kod yazmanız gerekmez. Ölçeği artırma ve azaltma, tek bir API çağrısı veya SDK Yöntem çağrısı yapmak kadar kolaydır. Ancak, Azure Cosmos DB ağ çağrılarıyla erişildiği için, Azure Cosmos DB Java SDK 'Sı v4 kullanırken en yüksek performans elde etmek için, istemci tarafı iyileştirmeler vardır.
@@ -92,7 +92,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     ![Azure Cosmos DB bağlantı ilkesinin çizimi](./media/performance-tips/same-region.png)
 
-    Çok bölgeli Azure Cosmos DB hesabıyla etkileşim kuran bir uygulamanın, isteklerin birlikte bulunan bir bölgeye gitmesini sağlamak için [tercih edilen konumları]() yapılandırması gerekir.
+    Çok bölgeli Azure Cosmos DB hesabıyla etkileşim kuran bir uygulamanın, isteklerin birlikte bulunan bir bölgeye gitmesini sağlamak için [tercih edilen konumları](tutorial-global-distribution-sql-api.md#preferred-locations) yapılandırması gerekir.
 
 * **Daha düşük gecikme için Azure sanal makinenizde hızlandırılmış ağı etkinleştirin.**
 
@@ -133,7 +133,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
     
     Coğrafi birlikte bulundurma, eşitleme API 'si kullanırken size daha yüksek ve daha tutarlı bir aktarım hızı sağlayabilir (bkz. [performans için aynı Azure bölgesindeki istemcileri birlikte bulma](#collocate-clients)), ancak yine de zaman uyumsuz API kullanımına izin verilmeyen aktarım hızını aşmayı beklemeden
 
-    Ayrıca, Java SDK v4 zaman uyumsuz API Azure Cosmos DB uygulamak için kullanılan reaktif akışlar çerçevesi olan [Proje reaktör](https://projectreactor.io/)ile bazı kullanıcılar da tanıdık gelebilir. Bu sorun devam ediyor ise, açıklayıcı [reaktör düzen kılavuzumuzu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) okumanızı ve daha sonra kendinizi tanımak Için bu [girişe](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) göz atmanızı öneririz. Zaten zaman uyumsuz bir arabirimle Azure Cosmos DB kullandıysanız ve kullandığınız SDK zaman uyumsuz Java SDK v2 Azure Cosmos DB, [reactivex](http://reactivex.io/)/[rxjava](https://github.com/ReactiveX/RxJava) ile ilgili bilgi sahibi olabilirsiniz ancak proje reaktörde nelerin değiştiğini tam olarak görebilirsiniz. Bu durumda, familiarized olmak için lütfen [reaktör vs. RxJava kılavuzumuza](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) göz atın.
+    Ayrıca, Java SDK v4 zaman uyumsuz API Azure Cosmos DB uygulamak için kullanılan reaktif akışlar çerçevesi olan [Proje reaktör](https://projectreactor.io/)ile bazı kullanıcılar da tanıdık gelebilir. Bu sorun devam ediyor ise, açıklayıcı [reaktör düzen kılavuzumuzu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) okumanızı ve daha sonra kendinizi tanımak Için bu [girişe](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) göz atmanızı öneririz. Zaten zaman uyumsuz bir arabirimle Azure Cosmos DB kullandıysanız ve kullandığınız SDK zaman uyumsuz Java SDK v2 Azure Cosmos DB, [reactivex](http://reactivex.io/) / [rxjava](https://github.com/ReactiveX/RxJava) ile ilgili bilgi sahibi olabilirsiniz ancak proje reaktörde nelerin değiştiğini tam olarak görebilirsiniz. Bu durumda, familiarized olmak için lütfen [reaktör vs. RxJava kılavuzumuza](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) göz atın.
 
     Aşağıdaki kod parçacıkları, sırasıyla Azure Cosmos DB istemcinizi zaman uyumsuz API veya eşitleme API 'SI işlemi için başlatmayı gösterir:
 
@@ -278,7 +278,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
         });
     ```
 
-    Çalışmanızın türüne bağlı olarak, çalışmanız için uygun olan yeniden aktör zamanlayıcısını kullanmanız gerekir. Buradan [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html)okuyun.
+    Çalışmanızın türüne bağlı olarak, çalışmanız için uygun olan yeniden aktör zamanlayıcısını kullanmanız gerekir. Buradan okuyun [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html) .
 
     Java SDK 'Sı v4 Azure Cosmos DB hakkında daha fazla bilgi için lütfen [GitHub 'Da Java monorepo Için Azure SDK 'nın Cosmos DB dizinine](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)bakın.
 
@@ -292,7 +292,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     * ***Netty 'ın günlüğünü devre dışı bırak***
 
-        Netty kitaplığı günlüğü geveze ve ek CPU maliyetlerinden kaçınmak için kapalı olması gerekir (yapılandırmada oturum açmayı gizleme yeterli olmayabilir). Hata ayıklama modunda değilseniz, netty 'ın günlüğünü tamamen devre dışı bırakın. Bu nedenle, netty 'den kaynaklanan ``org.apache.log4j.Category.callAppenders()`` ek CPU maliyetlerini kaldırmak için Log4J kullanıyorsanız, kod tabanınıza aşağıdaki satırı ekleyin:
+        Netty kitaplığı günlüğü geveze ve ek CPU maliyetlerinden kaçınmak için kapalı olması gerekir (yapılandırmada oturum açmayı gizleme yeterli olmayabilir). Hata ayıklama modunda değilseniz, netty 'ın günlüğünü tamamen devre dışı bırakın. Bu nedenle, netty 'den kaynaklanan ek CPU maliyetlerini kaldırmak için Log4J kullanıyorsanız ``org.apache.log4j.Category.callAppenders()`` , kod tabanınıza aşağıdaki satırı ekleyin:
 
         ```java
         org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
@@ -393,7 +393,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     Bir sorgunun karmaşıklığı, bir işlem için kaç istek biriminin tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
 
-    Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, bu işlemler tarafından tüketilen istek birimi sayısını ölçmek üzere [x-MS-Request-şarj](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) üst bilgisini inceleyin. Ayrıca,\<Resourceresıset> veya feedresponse\<T> ' de eşdeğer requestücretözelliğine bakabilirsiniz.
+    Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, bu işlemler tarafından tüketilen istek birimi sayısını ölçmek üzere [x-MS-Request-şarj](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) üst bilgisini inceleyin. Ayrıca, Resourceresıset \<> veya FeedResponse T> ' de eşdeğer Requestücretözelliğine bakabilirsiniz \< .
 
     #### <a name="async"></a>[Eş](#tab/api-async)
 

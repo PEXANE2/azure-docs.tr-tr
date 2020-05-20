@@ -5,17 +5,18 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 1e41eb02f4b02078dbf4d42c46cab574cf8d0701
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: monitoring
+ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204075"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675913"
 ---
-# <a name="azure-storage-analytics-logging"></a>Azure Depolama analizi günlüğü
+# <a name="azure-storage-analytics-logging"></a>Azure Depolama analizini günlüğe kaydetme
 
 Depolama Analizi, bir depolama cihazına gönderilen başarılı ve başarısız isteklerle ilgili ayrıntılı bilgileri günlüğe kaydeder. Bu bilgileri kullanarak istekleri ayrı ayrı izleyebilir ve depolama hizmetiyle ilgili sorunları tanılayabilirsiniz. İstekler en iyi çaba temelinde günlüğe kaydedilir.
 
@@ -24,7 +25,7 @@ Depolama Analizi, bir depolama cihazına gönderilen başarılı ve başarısız
  Günlük girişleri yalnızca hizmet uç noktasında yapılan istekler varsa oluşturulur. Örneğin, bir depolama hesabının kendi BLOB uç noktasında etkinliği varsa ancak tablo veya sıra uç noktalarında etkinlik varsa, yalnızca blob hizmetiyle ilgili günlükler oluşturulur.
 
 > [!NOTE]
->  Depolama Analizi günlüğe kaydetme özelliği şu anda yalnızca Blob, Kuyruk ve Tablo hizmetleri için kullanılabilir. Ancak premium depolama hesapları desteklenmez.
+>  Depolama Analizi günlüğe kaydetme özelliği şu anda yalnızca Blob, Kuyruk ve Tablo hizmetleri için kullanılabilir. Depolama Analizi günlüğe kaydetme, Premium performanslı [blok Blobstorage](../blobs/storage-blob-create-account-block-blob.md) hesapları için de kullanılabilir. Ancak, Premium performansa sahip genel amaçlı v2 hesapları için kullanılamaz.
 
 ## <a name="requests-logged-in-logging"></a>Günlüğe kaydedilen istekler
 ### <a name="logging-authenticated-requests"></a>Kimliği doğrulanmış istekleri günlüğe kaydetme
@@ -51,10 +52,10 @@ Depolama Analizi, bir depolama cihazına gönderilen başarılı ve başarısız
 
 ## <a name="how-logs-are-stored"></a>Günlüklerin nasıl depolandığı
 
-Tüm Günlükler, bir depolama hesabı için Depolama Analizi etkinleştirildiğinde otomatik olarak `$logs`oluşturulan adlı kapsayıcıda Blok Bloblarında depolanır. `$logs` Kapsayıcı, depolama hesabının blob ad alanında bulunur, örneğin: `http://<accountname>.blob.core.windows.net/$logs`. Depolama Analizi etkinleştirildikten sonra içerikleri silinebilse de bu kapsayıcı silinemez. Doğrudan kapsayıcıya gitmek için depolama tarama aracınızı kullanıyorsanız, günlüğe kaydetme verilerinizi içeren tüm Blobları görürsünüz.
+Tüm Günlükler `$logs` , bir depolama hesabı için depolama Analizi etkinleştirildiğinde otomatik olarak oluşturulan adlı kapsayıcıda Blok Bloblarında depolanır. `$logs`Kapsayıcı, depolama hesabının blob ad alanında bulunur, örneğin: `http://<accountname>.blob.core.windows.net/$logs` . Depolama Analizi etkinleştirildikten sonra içerikleri silinebilse de bu kapsayıcı silinemez. Doğrudan kapsayıcıya gitmek için depolama tarama aracınızı kullanıyorsanız, günlüğe kaydetme verilerinizi içeren tüm Blobları görürsünüz.
 
 > [!NOTE]
->  `$logs` Kapsayıcı, liste kapsayıcıları işlemi gibi bir kapsayıcı listeleme işlemi gerçekleştirildiğinde gösterilmez. Doğrudan erişilmesi gerekir. Örneğin, `$logs` kapsayıcıdaki bloblara erişmek için Blobları Listele işlemini kullanabilirsiniz.
+>  Kapsayıcı, `$logs` liste kapsayıcıları işlemi gibi bir kapsayıcı listeleme işlemi gerçekleştirildiğinde gösterilmez. Doğrudan erişilmesi gerekir. Örneğin, kapsayıcıdaki bloblara erişmek için Blobları Listele işlemini kullanabilirsiniz `$logs` .
 
 İstekler günlüğe kaydedildiğinde Depolama Analizi, ara sonuçları bloklar olarak karşıya yükler. Düzenli aralıklarla, Depolama Analizi bu blokları yapar ve bunları bir blob olarak kullanılabilir hale getirir. Depolama hizmetinin günlük yazıcılarını boşaltdığı sıklık nedeniyle, günlük verilerinin **$logs** kapsayıcısındaki bloblarda görünmesi bir saate kadar sürebilir. Aynı saat içinde oluşturulan Günlükler için yinelenen kayıtlar var olabilir. **RequestId** ve **işlem** numarasını denetleyerek bir kaydın yinelenen olup olmadığını belirleyebilirsiniz.
 
@@ -88,13 +89,13 @@ Blob 'ları program aracılığıyla listeleme hakkında bilgi için bkz. blob [
 
 |Öznitelik|Açıklama|
 |---------------|-----------------|
-|`<service-name>`|Depolama hizmetinin adı. Örneğin: `blob`, `table`, veya`queue`|
+|`<service-name>`|Depolama hizmetinin adı. Örneğin: `blob` , `table` , veya`queue`|
 |`YYYY`|Günlük için dört basamaklı yıl. Örneğin, `2011`|
 |`MM`|Günlüğün iki basamaklı ayı. Örneğin, `07`|
 |`DD`|Günlüğün iki basamaklı günü. Örneğin, `31`|
 |`hh`|24 saat UTC biçiminde Günlükler için başlangıç saatini gösteren iki basamaklı saat. Örneğin, `18`|
-|`mm`|Günlükler için başlangıç dakikasını gösteren iki basamaklı sayı. **Note:**  Bu değer, geçerli Depolama Analizi sürümünde desteklenmez ve değeri her zaman olur `00`.|
-|`<counter>`|Bir saatlik zaman diliminde depolama hizmeti için oluşturulan günlük bloblarının sayısını belirten altı basamaklı sıfır tabanlı bir sayaç. Bu sayaç tarihinde `000000`başlar. Örneğin, `000001`|
+|`mm`|Günlükler için başlangıç dakikasını gösteren iki basamaklı sayı. **Note:**  Bu değer, geçerli Depolama Analizi sürümünde desteklenmez ve değeri her zaman olur `00` .|
+|`<counter>`|Bir saatlik zaman diliminde depolama hizmeti için oluşturulan günlük bloblarının sayısını belirten altı basamaklı sıfır tabanlı bir sayaç. Bu sayaç tarihinde başlar `000000` . Örneğin, `000001`|
 
  Aşağıda, Yukarıdaki örnekleri birleştiren bir örnek günlük adı verilmiştir:
 
@@ -113,8 +114,8 @@ Blob 'ları program aracılığıyla listeleme hakkında bilgi için bkz. blob [
 |Öznitelik|Açıklama|
 |---------------|-----------------|
 |`LogType`|Günlük okuma, yazma veya silme işlemleriyle ilgili bilgiler içerip içermediğini açıklar. Bu değer, virgülle ayrılmış olarak bir tür ya da üç tane birleşimi içerebilir.<br /><br /> Örnek 1:`write`<br /><br /> Örnek 2:`read,write`<br /><br /> Örnek 3:`read,write,delete`|
-|`StartTime`|Günlükteki girdinin en erken saati, biçiminde `YYYY-MM-DDThh:mm:ssZ`. Örneğin, `2011-07-31T18:21:46Z`|
-|`EndTime`|Günlükteki bir girişin en son saati, biçiminde `YYYY-MM-DDThh:mm:ssZ`. Örneğin, `2011-07-31T18:22:09Z`|
+|`StartTime`|Günlükteki girdinin en erken saati, biçiminde `YYYY-MM-DDThh:mm:ssZ` . Örneğin, `2011-07-31T18:21:46Z`|
+|`EndTime`|Günlükteki bir girişin en son saati, biçiminde `YYYY-MM-DDThh:mm:ssZ` . Örneğin, `2011-07-31T18:22:09Z`|
 |`LogVersion`|Günlük biçiminin sürümü.|
 
  Aşağıdaki liste Yukarıdaki örnekleri kullanarak tüm örnek meta verileri görüntüler:
@@ -187,7 +188,7 @@ queueClient.SetServiceProperties(serviceProperties);
  Günlük verilerinizi görüntülemek ve analiz etmek için ilgilendiğiniz günlük verilerini içeren Blobları yerel bir makineye indirmeniz gerekir. Birçok depolama Tarama Aracı, depolama hesabınızdan blob 'ları indirmelerini sağlar; Günlük verilerinizi indirmek için Azure depolama ekibi tarafından sunulan komut satırı Azure kopyalama aracı [AzCopy](storage-use-azcopy-v10.md) ' i de kullanabilirsiniz.  
  
 >[!NOTE]
-> `$logs` Kapsayıcı Event Grid tümleştirmemişse, günlük dosyaları yazıldığında bildirim almazsınız. 
+> `$logs`Kapsayıcı Event Grid tümleştirmemişse, günlük dosyaları yazıldığında bildirim almazsınız. 
 
  İlgilendiğiniz günlük verilerini indirdiğinizden ve aynı günlük verilerinin birden çok kez indirilmesinden kaçınmak için:  
 

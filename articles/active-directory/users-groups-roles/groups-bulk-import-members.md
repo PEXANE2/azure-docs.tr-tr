@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8902c3147bbe142fc58d4e2c3fa83601c8ccbba3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 5b83b0687db72c78a0c7788933acf07f5cb9e0ed
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203547"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679324"
 ---
-# <a name="bulk-import-group-members-in-azure-active-directory"></a>Azure Active Directory Grup üyelerini Toplu içe aktarma
+# <a name="bulk-add-group-members-in-azure-active-directory"></a>Azure Active Directory Grup üyelerini toplu olarak ekle
 
 Azure Active Directory (Azure AD) portalını kullanarak Grup üyelerini toplu olarak içeri aktarmak için bir virgülle ayrılmış değerler (CSV) dosyası kullanarak gruba çok sayıda üye ekleyebilirsiniz.
 
@@ -35,7 +35,7 @@ Azure AD grup üyelerini toplu olarak başarıyla eklemek için toplu karşıya 
 İndirilen bir CSV şablonundaki satırlar aşağıdaki gibidir:
 
 - **Sürüm numarası**: sürüm numarasını içeren ilk satır, KARŞıYA yükleme CSV 'ye eklenmelidir.
-- **Sütun başlıkları**: sütun &lt;başlıklarının biçimi *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş*&gt;. Örneğin, `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir. Grup üyeliği değişiklikleri için hangi tanımlayıcıyı kullanacağınızı seçebilirsiniz: üye nesne KIMLIĞI veya Kullanıcı asıl adı.
+- **Sütun başlıkları**: sütun başlıklarının biçimi &lt; *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş* &gt; . Örneğin, `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir. Grup üyeliği değişiklikleri için hangi tanımlayıcıyı kullanacağınızı seçebilirsiniz: üye nesne KIMLIĞI veya Kullanıcı asıl adı.
 - **Örnekler satırı**: şablona her sütun için kabul edilebilir değer örneklerinin bir satırını ekledik. Örnekler satırını kaldırmalı ve kendi girişlerinizin yerine değiştirmelisiniz.
 
 ### <a name="additional-guidance"></a>Ek yönergeler
@@ -48,7 +48,7 @@ Azure AD grup üyelerini toplu olarak başarıyla eklemek için toplu karşıya 
 ## <a name="to-bulk-import-group-members"></a>Grup üyelerini toplu olarak içeri aktarmak için
 
 1. [Azure Portal,](https://portal.azure.com) kuruluştaki bir kullanıcı yönetici hesabıyla oturum açın. Grup sahipleri ayrıca sahip oldukları grupların üyelerini toplu olarak içeri aktarabilir.
-1. Azure AD 'de **gruplar** > **tüm gruplar**' ı seçin.
+1. Azure AD 'de **gruplar**  >  **tüm gruplar**' ı seçin.
 1. Üyeler eklemekte olduğunuz grubu açın ve ardından **Üyeler**' i seçin.
 1. **Üyeler** sayfasında, **üyeleri içeri aktar**' ı seçin.
 1. **Grup üyelerini toplu içeri aktar** sayfasında, gerekli Grup ÜYESI özellikleriyle CSV dosya şablonunu almak için **İndir** ' i seçin.
@@ -57,7 +57,7 @@ Azure AD grup üyelerini toplu olarak başarıyla eklemek için toplu karşıya 
 
 1. CSV dosyasını açın ve gruba aktarmak istediğiniz her grup üyesi için bir satır ekleyin (gerekli değerler **üye nesne kimliği** veya **Kullanıcı asıl adı**). Ardından dosyayı kaydedin.
 
-   ![CSV dosyası, içeri aktarılacak üyelerin adlarını ve kimliklerini içerir](./media/groups-bulk-import-members/csv-file.png)
+    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="CSV dosyası alınacak üyelerin adlarını ve kimliklerini içerir":::
 
 1. **Toplu içeri aktarma grubu üyeleri** sayfasında, **CSV dosyanızı karşıya yükleyin**bölümünde dosyaya gidin. Dosyayı seçtiğinizde, CSV dosyasının doğrulanması başlar.
 1. Dosya içeriği doğrulandığında, toplu içeri aktarma sayfası **dosyayı başarıyla karşıya yüklendi**olarak görüntüler. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.

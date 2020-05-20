@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 05/15/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 0ab7b8be8780f7edb2734d99587bc7709ced9436
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9440d5a13973a245320bc465e3997e3cdf414b3f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633357"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660316"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te iş yükü önem derecesini yapılandırma
 
@@ -24,7 +24,7 @@ Azure için SYNAPSE SQL SYNAPSE ' deki önem derecesi, sorguların zamanlamasın
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Önem derecesine sahip bir Iş yükü Sınıflandırıcısı oluşturun
 
-Genellikle bir veri ambarı senaryosunda, sorgularının hızla çalışmasını gerektiren kullanıcılarınız vardır.  Kullanıcı, raporları çalıştırması gereken şirketin Yöneticiler olabilir veya Kullanıcı geçici sorgu çalıştıran bir analist olabilir. Bir sorguya önem düzeyi atamak için bir iş yükü Sınıflandırıcısı oluşturursunuz.  Aşağıdaki örneklerde, iki sınıflandırıcı oluşturmak için yeni [iş yükü sınıflandırıcı](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdizimi kullanılır. `Membername`tek bir kullanıcı veya grup olabilir. Bireysel kullanıcı sınıflandırmaları, rol sınıflandırmalarına göre önceliklidir. Mevcut veri ambarı kullanıcılarını bulmak için şunu çalıştırın:
+Genellikle bir veri ambarı senaryosunda, kullanıcıların, sorgularını hızlı bir şekilde çalıştırması gereken, meşgul bir sistemde kullanıcıları vardır.  Kullanıcı, raporları çalıştırması gereken şirketin Yöneticiler olabilir veya Kullanıcı geçici sorgu çalıştıran bir analist olabilir. Önem derecesi atamak için bir iş yükü Sınıflandırıcısı oluşturun ve bir sorguya önem verilir.  Aşağıdaki örneklerde iki sınıflandırıcı oluşturmak için [iş yükü sınıflandırıcı sözdizimi oluştur](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanılır. `Membername`tek bir kullanıcı veya grup olabilir.  Mevcut veri ambarı kullanıcılarını bulmak için şunu çalıştırın:
 
 ```sql
 Select name from sys.sysusers
@@ -33,20 +33,19 @@ Select name from sys.sysusers
 Daha yüksek önem taşıyan bir kullanıcı için iş yükü Sınıflandırıcısı oluşturmak için:
 
 ```sql
-CREATE WORKLOAD CLASSIFIER ExecReportsClassifier  
-    WITH (WORKLOAD_GROUP = 'xlargerc'
-         ,MEMBERNAME     = 'name'  
-         ,IMPORTANCE     =  above_normal);  
-
+CREATE WORKLOAD CLASSIFIER ExecReportsClassifier
+    WITH (WORKLOAD_GROUP = 'xlargerc'
+         ,MEMBERNAME     = 'name' 
+         ,IMPORTANCE     = above_normal);
 ```
 
 Daha düşük önem taşıyan bir kullanıcı için geçici sorgular çalıştıran bir iş yükü Sınıflandırıcısı oluşturmak için:  
 
 ```sql
-CREATE WORKLOAD CLASSIFIER AdhocClassifier  
-    WITH (WORKLOAD_GROUP = 'xlargerc'
-         ,MEMBERNAME     = 'name'  
-         ,IMPORTANCE     =  below_normal);  
+CREATE WORKLOAD CLASSIFIER AdhocClassifier
+    WITH (WORKLOAD_GROUP = 'xlargerc'
+         ,MEMBERNAME     = 'name' 
+         ,IMPORTANCE     = below_normal);
 ```
 
 ## <a name="next-steps"></a>Sonraki Adımlar

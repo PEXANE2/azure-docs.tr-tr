@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1d97ae5692a4cdc328833ce4c01a8114506a960a
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 9fd7d6c6d472400afea05ac0cd87321a46dddb37
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779085"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677932"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Pod güvenliği için en iyi uygulamalar
 
@@ -30,7 +30,7 @@ Bu en iyi yöntemler makalesinde, aks 'de Pod 'nin güvenliğini sağlama konusu
 
 **En iyi Yöntem Kılavuzu** -farklı bir kullanıcı veya grup olarak çalıştırmak ve temel alınan düğüm işlemlerine ve hizmetlerine erişimi sınırlandırmak için pod güvenlik bağlamı ayarlarını tanımlayın. Gereken en az ayrıcalık sayısını atayın.
 
-Uygulamalarınızın doğru çalışması için, Pod 'lerin, *kök*olarak değil, tanımlı kullanıcı veya grup olarak çalışması gerekir. Pod `securityContext` veya Container için, uygun izinleri varsaymak üzere *RunAsUser* veya *fsgroup* gibi ayarları tanımlamanızı sağlar. Yalnızca gerekli Kullanıcı veya grup izinlerini atayın ve ek izinleri varsaymak için bir yol olarak güvenlik bağlamını kullanmayın. *RunAsUser*, ayrıcalık yükseltme ve diğer Linux özellikleri ayarları yalnızca Linux düğümlerinde ve pods 'de kullanılabilir.
+Uygulamalarınızın doğru çalışması için, Pod 'lerin, *kök*olarak değil, tanımlı kullanıcı veya grup olarak çalışması gerekir. `securityContext`Pod veya Container için, uygun izinleri varsaymak üzere *RunAsUser* veya *fsgroup* gibi ayarları tanımlamanızı sağlar. Yalnızca gerekli Kullanıcı veya grup izinlerini atayın ve ek izinleri varsaymak için bir yol olarak güvenlik bağlamını kullanmayın. *RunAsUser*, ayrıcalık yükseltme ve diğer Linux özellikleri ayarları yalnızca Linux düğümlerinde ve pods 'de kullanılabilir.
 
 Kök olmayan bir kullanıcı olarak çalıştırdığınızda, kapsayıcılar 1024 altındaki ayrıcalıklı bağlantı noktalarına bağlanamaz. Bu senaryoda, Kubernetes Hizmetleri, bir uygulamanın belirli bir bağlantı noktası üzerinde çalıştığı gerçeğini gizleyebilen şekilde kullanılabilir.
 
@@ -71,14 +71,17 @@ Hangi güvenlik bağlamı ayarlarına ihtiyacınız olduğunu belirlemek için k
 
 Uygulama kodunuzda açığa çıkarılan kimlik bilgileri riskini sınırlamak için, sabit veya paylaşılan kimlik bilgilerinin kullanılmasını önleyin. Kimlik bilgileri veya anahtarlar doğrudan kodunuza dahil edilmemelidir. Bu kimlik bilgileri açığa çıkarılabiliyorsa, uygulamanın güncelleştirilmesi ve yeniden dağıtılması gerekir. Daha iyi bir yaklaşım, kendi kimliklerini doğrulamak veya dijital bir kasadan kimlik bilgilerini otomatik olarak almak için bir yol vermektir.
 
-Aşağıdaki [ilişkili AKS açık kaynak projeleri][aks-associated-projects] , dijital bir kasadan otomatik olarak kimlik doğrulama veya kimlik bilgileri ve anahtar istekleri yapmanızı sağlar:
+### <a name="use-azure-container-compute-upstream-projects"></a>Azure Kapsayıcı Işlem yukarı akış projelerini kullanma
 
-* Azure kaynakları için Yönetilen kimlikler ve
-* [Gizli anahtar deposu için Azure Key Vault sağlayıcısı CSı sürücüsü](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
+> [!IMPORTANT]
+> İlişkili AKS açık kaynak projeleri, Azure teknik desteği tarafından desteklenmez. Bunlar, kullanıcıların kümeye kendi kendine yüklemeleri ve topluluğumuza geri bildirim toplamaları için sağlanır.
 
-İlişkili AKS açık kaynak projeleri, Azure teknik desteği tarafından desteklenmez. Topluluğumuza geri bildirim ve hata toplamak için sağlanırlar. Bu projeler üretim kullanımı için önerilmez.
+Aşağıdaki [ilişkili AKS açık kaynak projeleri][aks-associated-projects] , dijital bir kasadan otomatik olarak kimlik doğrulama veya kimlik bilgileri ve anahtar istekleri yapmanızı sağlar. Bu projeler Azure Kapsayıcı Işlem yukarı akış ekibi tarafından saklanır ve [kullanılabilecek daha geniş bir proje listesi](https://github.com/Azure/container-compute-upstream/blob/master/README.md#support)parçasıdır.
 
-### <a name="use-pod-managed-identities"></a>Pod tarafından yönetilen kimlikleri kullanma
+ * [Azure Active Directory Pod kimliği][aad-pod-identity]
+ * [Gizli anahtar deposu için Azure Key Vault sağlayıcısı CSı sürücüsü](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
+
+#### <a name="use-pod-managed-identities"></a>Pod tarafından yönetilen kimlikleri kullanma
 
 Azure kaynakları için yönetilen bir kimlik, bir pod 'ın kendisini destekleyen, depolama veya SQL gibi Azure hizmetlerinde kimlik doğrulamasını sağlar. Pod 'a Azure Active Directory kimlik doğrulaması yapan bir Azure kimliği atanır ve bir dijital belirteç alırlar. Bu dijital belirteç, Pod 'ın hizmete erişme yetkisi olup olmadığını denetleyen ve gerekli eylemleri gerçekleştiren diğer Azure hizmetlerine sunulabilir. Bu yaklaşım, örneğin veritabanı bağlantı dizeleri için gizli dizi gerekmediği anlamına gelir. Pod yönetilen kimliği için Basitleştirilmiş iş akışı aşağıdaki diyagramda gösterilmiştir:
 
@@ -88,7 +91,7 @@ Yönetilen bir kimlikle, uygulama kodunuzun Azure depolama gibi bir hizmete eri�
 
 Pod kimlikleri hakkında daha fazla bilgi için bkz. [BIR AKS kümesini Pod tarafından yönetilen kimlikleri ve uygulamalarınızla birlikte kullanmak Için yapılandırma][aad-pod-identity]
 
-### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>Gizli dizi ile Azure Key Vault kullanma CSı sürücüsü
+#### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>Gizli dizi ile Azure Key Vault kullanma CSı sürücüsü
 
 Pod Identity projesi kullanılması, Azure hizmetlerini desteklemeye karşı kimlik doğrulaması yapılmasını mümkün değildir. Azure kaynakları için yönetilen kimlikleri olmayan kendi hizmetleriniz veya uygulamalarınız için kimlik bilgilerini veya anahtarları kullanarak kimlik doğrulaması yapabilirsiniz. Bu gizli dizi içeriklerini depolamak için bir dijital kasa kullanılabilir.
 

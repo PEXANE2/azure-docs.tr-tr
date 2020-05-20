@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2020
+ms.date: 05/15/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 11a9b8609218a6cf56a789b18094d048e26d4af8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9bbf2288ac92c33c2b24af4e6a97882013a4ff1d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343346"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673467"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
@@ -86,7 +86,8 @@ Başlangıçta kimlik oluşturma hakkında [Azure Kullanıcı tarafından atanan
 
 İzinler [burada](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)ayrıntılı olarak açıklanırlar ve örnekler bunun nasıl uygulandığını gösterir.
 
-> [Note!] Daha önce AıB ile, AıB SPN 'yi kullanacaksınız ve görüntü kaynak gruplarına SPN izinleri vermelisiniz. Bu modelden daha sonraki yetenekler için izin vermek üzere taşınıyoruz. 1 Haziran 2020 ' den görüntü Oluşturucu kullanıcı tarafından atanan bir kimliğe sahip olmayan şablonları kabul etmez, var olan şablonların bir [Kullanıcı kimliği](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity)ile hizmete yeniden gönderilmesi gerekir. Burada örnek olarak, Kullanıcı tarafından atanan bir kimlik oluşturma ve bunları bir şablona ekleme işlemlerinin nasıl yapılacağı gösterilmektedir.
+> [!Note]
+> Daha önce AıB ile, AıB SPN 'yi kullanacaksınız ve görüntü kaynak gruplarına SPN izinleri vermelisiniz. Bu modelden daha sonraki yetenekler için izin vermek üzere taşınıyoruz. 26, 2020 Mayıs 'dan, görüntü Oluşturucu kullanıcı tarafından atanan bir kimliğe sahip olmayan şablonları kabul etmez, var olan şablonların bir [Kullanıcı kimliği](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity)ile hizmete yeniden gönderilmesi gerekir. Burada örnek olarak, Kullanıcı tarafından atanan bir kimlik oluşturma ve bunları bir şablona ekleme işlemlerinin nasıl yapılacağı gösterilmektedir. Daha fazla bilgi için lütfen bu [belgede bu belgeleri](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information) gözden geçirin ve güncelleştirmeleri yayınlar.
 
 ## <a name="costs"></a>Maliyetler
 Azure Image Builder ile görüntü oluştururken, derlerken ve depolarken bazı işlem, ağ ve depolama maliyetlerine tabi olursunuz. Bu maliyetler, el ile özel görüntüler oluşturma bölümünde tahakkuk eden maliyetlere benzer. Kaynaklar için Azure ücretlerinizi ücretlendirilecektir. 

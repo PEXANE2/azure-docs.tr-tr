@@ -9,12 +9,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
 ms.author: diberry
-ms.openlocfilehash: 02610e647e2138cbf52f86c22107feec2d61273b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c3631b4a2964c5e3a8d8267d1934a5822966342
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604950"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673450"
 ---
 Bilişsel hizmetler, [Language Understanding](../luis/what-is-luis.md) ve [soru-cevap oluşturma](../qnamaker/overview/overview.md)her biri farklı bir amaca sahip iki doğal dil işleme hizmeti sağlar. Her bir hizmetin ne zaman kullanılacağını ve birbirini nasıl zorluk yaptığını anlayın.
 
@@ -30,17 +30,20 @@ Language Understanding (LUSıS) ve Soru-Cevap Oluşturma farklı sorunları çö
 
 Doğru hizmeti seçmek için, istemci uygulamasından gelen Kullanıcı metnini ve istemci uygulamanın bilişsel hizmetten alınması gereken bilgileri anlamanız gerekir.
 
-Sohbet botunuzu metin `How do I get to the Human Resources building on the Seattle North campus?`alırsa, her bir hizmetin metinle nasıl çalıştığını anlamak için aşağıdaki grafiği kullanın.
+Sohbet botunuzu metin alırsa `How do I get to the Human Resources building on the Seattle North campus?` , her bir hizmetin metinle nasıl çalıştığını anlamak için aşağıdaki grafiği kullanın.
 
 |Hizmet|İstemci uygulaması şunları belirler|
 |--|--|
-|LUIS|**Kullanıcının** metin düzeyini belirler; hizmet soruya cevap vermez. Örneğin, bu metin `FindLocation` amacınızla eşleşen olarak sınıflandırılır.<br>|
-|Soru-Cevap Oluşturucu|Özel bir bilgi bankasından **sorunun yanıtını döndürür** . Örneğin, bu metin, statik metin yanıtı olan bir soru olarak belirlenir `Get on the #9 bus and get off at Franklin street`.|
+|LUIS|**Kullanıcının** metin düzeyini belirler; hizmet soruya cevap vermez. Örneğin, bu metin amacınızla eşleşen olarak sınıflandırılır `FindLocation` .<br>|
+|Soru-Cevap Oluşturucu|Özel bir bilgi bankasından **sorunun yanıtını döndürür** . Örneğin, bu metin, statik metin yanıtı olan bir soru olarak belirlenir `Get on the #9 bus and get off at Franklin street` .|
 |||
+
+> [!div class="mx-imgBorder"]
+> ![Bilgi grafiği, Lune zaman kullanılacağını ve ne zaman kullanılacağını belirleme Soru-Cevap Oluşturma](./luis-qna-maker-together-decision.png)
 
 ## <a name="when-do-you-use-luis"></a>Lune zaman kullanıyorsunuz?
 
-Sohbet botu içindeki bir işlemin parçası olarak söyleyici 'yi bilmeniz gerektiğinde LUO 'u kullanın. Örnek metin `How do I get to the Human Resources building on the Seattle North campus?`ile devam etmek için, kullanıcının amacı bir konum bulmaktan haberdar olduktan sonra, yanıtı almak için bir ulaşım sunucusu gibi başka bir hizmete söylenişi (varlıklarla kullanıma hazır) hakkındaki ayrıntıları geçirebilirsiniz.
+Sohbet botu içindeki bir işlemin parçası olarak söyleyici 'yi bilmeniz gerektiğinde LUO 'u kullanın. Örnek metin ile devam etmek `How do I get to the Human Resources building on the Seattle North campus?` için, kullanıcının amacı bir konum bulmaktan haberdar olduktan sonra, yanıtı almak için bir ulaşım sunucusu gibi başka bir hizmete söylenişi (varlıklarla kullanıma hazır) hakkındaki ayrıntıları geçirebilirsiniz.
 
 Amacı öğrenmek için LUO ve Soru-Cevap Oluşturma birleştirmeniz gerekmez.
 
@@ -50,7 +53,7 @@ Bu söylemeye yönelik iki hizmeti, sohbet botunuzun, belirli statik metin yanı
 
 Yanıt statik bilgi tabanınız varsa Soru-Cevap Oluşturma kullanın. Bu Bilgi Bankası, PDF 'ler ve URL 'Ler gibi belgelerle oluşturduğunuz gereksinimlerinize göre özel olarak tasarlanmıştır.
 
-Örnekle `How do I get to the Human Resources building on the Seattle North campus?`devam ederek, yayınlanmış soru-cevap oluşturma hizmetinize bir sorgu olarak metin gönderin ve en iyi yanıtı alın.
+Örnekle devam ederek, `How do I get to the Human Resources building on the Seattle North campus?` yayınlanmış soru-cevap oluşturma hizmetinize bir sorgu olarak metin gönderin ve en iyi yanıtı alın.
 
 Sorunun yanıtını öğrenmek için LUO ve Soru-Cevap Oluşturma birleştirmeniz gerekmez.
 
@@ -62,7 +65,7 @@ Soru-Cevap Oluşturma bilgi tabanınızı oluşturuyorsanız, ancak konu etki al
 
 İstemci uygulamanızın puanlar için LUVE Soru-Cevap Oluşturma yanıtlarını izlemesi gerekir. Soru-Cevap Oluşturma skoru rastgele bir eşiğin altındaysa, bu bilgileri bir üçüncü taraf hizmetine iletmek için LUSıS 'den döndürülen amaç ve varlık bilgilerini kullanın.
 
-Örnek metinle `How do I get to the Human Resources building on the Seattle North campus?`devam ederseniz, soru-cevap oluşturma düşük Güvenirlik puanı döndürdüğünü varsayalım. Bu bilgileri başka bir yanıt için bir eşleme `FindLocation` veya arama hizmetine göndermek için lusıs `Human Resources building` 'den `Seattle North campus`döndürülen amacı ve ayıklanan tüm varlıkları kullanın.
+Örnek metinle devam ederseniz, `How do I get to the Human Resources building on the Seattle North campus?` soru-cevap oluşturma düşük Güvenirlik puanı döndürdüğünü varsayalım. `FindLocation` `Human Resources building` `Seattle North campus` Bu bilgileri başka bir yanıt için bir eşleme veya arama HIZMETINE göndermek için lusıs 'den döndürülen amacı ve ayıklanan tüm varlıkları kullanın.
 
 Bu üçüncü taraf yanıtını doğrulama için kullanıcıya sunabilirsiniz. Kullanıcının onayını aldıktan sonra, bilginizi büyütmek üzere bilgileri eklemek için Soru-Cevap Oluşturma 'e geri dönebilirsiniz.
 
@@ -70,7 +73,7 @@ Bu üçüncü taraf yanıtını doğrulama için kullanıcıya sunabilirsiniz. K
 
 Sohbet botunuzun hizmetin sağladığından daha fazla bilgiye ihtiyacı varsa, bir karar ağacına devam etmek için her iki hizmeti kullanın ve istemci uygulamasında her iki yanıtı da işleyin.
 
-Her iki hizmet ile birlikte çalışmak üzere bir işlem oluşturmaya yardımcı olmak için bot Framework **[DISPATCH CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** aracını kullanın. Bu araç, BASıS ve Soru-Cevap Oluşturma arasında dağıtım yapan bir amaç uygulaması oluşturur.
+Her iki hizmet ile birlikte çalışmak üzere bir işlem oluşturmaya yardımcı olmak için bot Framework **[DISPATCH CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** aracını kullanın. Bu araç, BASıS ve Soru-Cevap Oluşturma arasında dağıtım yapan bir amaç uygulaması oluşturur. Lune, Soru-Cevap Oluşturma ve bot çerçevesiyle tümleştirme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs) .
 
 Bu tür bir sohbet bot 'ı uygulamak için, {1} [veya](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)' de, bot Oluşturucu örneği **olan NLP**'yi kullanın.
 

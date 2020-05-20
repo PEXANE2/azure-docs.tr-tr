@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 05/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded28ef872bbc3147793ea3d68c94f8dde35f74e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461642"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674186"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel müşteri tarafından yönetilen anahtarı ayarlama
 
@@ -27,13 +27,15 @@ ms.locfileid: "81461642"
 Bu makalede, Azure Sentinel için müşteri tarafından yönetilen bir anahtar (CMK) yapılandırma ile ilgili arka plan bilgileri ve adımlar sağlanmaktadır. CMK, Azure Sentinel 'e kaydedilmiş veya gönderilen tüm verilerin, sizin tarafınızdan oluşturulmuş veya size ait bir Azure Key Vault anahtarıyla ilgili tüm depolama kaynaklarında şifrelenmesini sağlar.
 
 > [!NOTE]
-> -   Azure Sentinel CMK özelliği yalnızca **Yeni** olan ve bu özelliğe erişim sağlayan müşteriler için Azure Özellik kaydı tarafından denetlenmektedir.İletişim azuresentinelCMK@microsoft.comkurarak erişim isteğinde bulunabilir ve kapasite kullanılabilir olduğunda bekleyen istekler onaylanır.
+> -   Azure Sentinel CMK özelliği yalnızca **Yeni** olan ve bu özelliğe erişim sağlayan müşteriler için Azure Özellik kaydı tarafından denetlenmektedir.İletişim kurarak erişim isteğinde bulunabilir azuresentinelCMK@microsoft.com ve kapasite kullanılabilir olduğunda bekleyen istekler onaylanır.
 > -   Azure Sentinel CMK özelliği yalnızca Doğu ABD, Batı ABD 2 ve Güney Orta ABD bölgelerinde kullanılabilir.
-> -   CMK özelliği yalnızca, günde 1 GB veya daha fazla TB gönderen müşteriler tarafından kullanılabilir. Azure aboneliğinizde CMK sağlamak üzere Microsoft 'a uyguladığınızda, ek fiyatlandırma hakkında bilgi alacaksınız. [Log Analytics](../azure-monitor/platform/customer-managed-keys.md#disclaimers) dolduruluyor hakkında daha fazla bilgi edinin.
+> -   CMK özelliği yalnızca, günde 1 GB veya daha fazla TB gönderen müşteriler tarafından kullanılabilir. Azure aboneliğinizde CMK sağlamak üzere Microsoft 'a uyguladığınızda, ek fiyatlandırma hakkında bilgi alacaksınız. [Log Analytics fiyatlandırması](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters)hakkında daha fazla bilgi edinin.
 
 ## <a name="how-cmk-works"></a>CMK nasıl kullanılır? 
 
-Azure Sentinel çözümü, günlük toplama ve özellikler için çeşitli depolama kaynakları kullanır, bunlar Log Analytics ve diğer depolama kaynaklarını içerir. Azure Sentinel CMK yapılandırmasının bir parçası olarak, ilgili depolama kaynaklarında CMK ayarlarını da yapılandırmanız gerekir. Log Analytics dışındaki depolama kaynaklarında kaydedilen veriler de şifrelenir.
+Azure Sentinel çözümü, Log Analytics ve diğerleri dahil olmak üzere günlük toplama ve özellikler için çeşitli depolama kaynakları kullanır. Azure Sentinel CMK yapılandırmasının bir parçası olarak, ilgili depolama kaynaklarında CMK ayarlarını da yapılandırmanız gerekir. Log Analytics dışındaki depolama kaynaklarında kaydedilen veriler de şifrelenir.
+
+[CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview)hakkında daha fazla bilgi edinin.
 
 > [!NOTE]
 > Azure Sentinel 'de CMK 'yi etkinleştirirseniz CMK 'yı desteklemeyen tüm genel Önizleme özellikleri etkinleştirilmeyecektir.

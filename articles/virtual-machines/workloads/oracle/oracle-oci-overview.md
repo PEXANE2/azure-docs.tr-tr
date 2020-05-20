@@ -11,21 +11,23 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
+ms.date: 05/12/2020
 ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: e70eedcfcdf548965b79e4a48a3a8bfa643f0396
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 077fd70f0908dcef3af0c1e037fe137d636a4ac4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687439"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660553"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Microsoft Azure ve Oracle bulut altyapısını tümleştirerek Oracle uygulama çözümleri
 
 Microsoft ve Oracle, düşük gecikme süresi, yüksek aktarım hızı arası bağlantı sağlamaya ve her iki bulutdan en iyi şekilde yararlanmanıza olanak tanıyacak. 
 
 Bu platformlar arası bağlantıyı kullanarak, veritabanı katmanınızı Oracle bulut altyapısında (OCı), uygulama ve Microsoft Azure üzerindeki diğer katmanlara çalıştırmak için çok katmanlı bir uygulamayı bölümleyebilirsiniz. Deneyim, tüm çözüm yığınını tek bir bulutta çalıştırmaya benzer. 
+
+Web Logic Server dahil olmak üzere, Azure altyapısına, ancak OCı içinde Oracle veritabanını çalıştıran bir ara yazılımı çalıştırmaya ilgileniyorsanız, bkz. [WebLogic Server Azure uygulamaları](oracle-weblogic.md).
 
 Oracle çözümlerini tamamen Azure altyapısına dağıtmaya ilgileniyorsanız, [Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı](oracle-vm-solutions.md)' na bakın.
 
@@ -44,18 +46,18 @@ Platformlar arası yapılandırmada çalıştırabileceğiniz uygulamalar şunla
 * Oracle perakende uygulamaları
 * Oracle Hyperion finans yönetimi
 
-Aşağıdaki diyagramda bağlı çözüme üst düzey bir genel bakış sunulmaktadır. Basitlik için diyagram yalnızca bir uygulama katmanını ve bir veri katmanını gösterir. Uygulama mimarisine bağlı olarak, çözümünüz Azure 'da Web katmanı gibi ek katmanlar içerebilir. Daha fazla bilgi için aşağıdaki bölümlere bakın.
+Aşağıdaki diyagramda bağlı çözüme üst düzey bir genel bakış sunulmaktadır. Basitlik için diyagram yalnızca bir uygulama katmanını ve bir veri katmanını gösterir. Uygulama mimarisine bağlı olarak, çözümünüz Azure 'da WebLogic Server kümesi veya Web katmanı gibi ek katmanlar içerebilir. Daha fazla bilgi için aşağıdaki bölümlere bakın.
 
 ![Azure OCı çözümüne genel bakış](media/oracle-oci-overview/crosscloud.png)
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği 
 
 Çapraz bulut bağlantısı aşağıdaki bölgelerle sınırlıdır:
-* Azure Doğu ABD (eastus) & OCı Ashyakma (ABD Doğu)
+* Azure Doğu ABD (EastUS) & OCı Ashburn, VA (ABD Doğu)
 * Azure UK Güney (UKGüney) & OCı Londra (UK Güney)
-* Azure Kanada Orta (canadaorta) & OCı Tora (Kanada Güneydoğu)
-* Azure Batı Avrupa (westeurope) & OCı Amsterdam (Hollanda kuzeybatı)
-* Azure Japonya Doğu (japaneast) & OCı Tokyo (Japonya Doğu)
+* Azure Kanada Orta (Canadaorta) & OCı Tora (Kanada Güneydoğu)
+* Azure Batı Avrupa (WestEurope) & OCı Amsterdam (Hollanda kuzeybatı)
+* Azure Japonya Doğu (JapanEast) & OCı Tokyo (Japonya Doğu)
 
 ## <a name="networking"></a>Ağ
 
@@ -70,10 +72,12 @@ ExpressRoute ve FastConnect kullanarak, müşteriler, özel IP adresi alanının
 Ağ güvenliği, tüm kurumsal uygulamaların önemli bir bileşenidir ve bu çoklu bulut çözümüne yönelik olarak tasarlanmıştır. ExpressRoute ve FastConnect üzerinden geçen tüm trafik özel bir ağ üzerinden geçer. Bu yapılandırma, bir Azure sanal ağı ile Oracle sanal bulut ağı arasında güvenli iletişim sağlar. Azure 'daki tüm sanal makinelere genel IP adresi sağlamanız gerekmez. Benzer şekilde, OCı 'da internet ağ geçidine gerek kalmaz. Tüm iletişimler, makinelerin özel IP adresi aracılığıyla yapılır.
 
 Ayrıca, OCı sanal bulut ağınız ve güvenlik kurallarınız (Azure [ağ güvenlik grupları](../../../virtual-network/security-overview.md)'na bağlı) üzerinde [güvenlik listelerini](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) de ayarlayabilirsiniz. Sanal ağlardaki makineler arasında akan trafiği denetlemek için bu kuralları kullanın. Ağ güvenlik kuralları bir makine düzeyinde, alt ağ düzeyinde ve sanal ağ düzeyinde eklenebilir.
+
+[WebLogic Server Azure uygulamalarının](oracle-weblogic.md) her biri, WebLogic Server 'ın bağlantı noktası yapılandırmalarıyla çalışacak şekilde önceden yapılandırılmış bir ağ güvenlik grubu oluşturur.
  
 ## <a name="identity"></a>Kimlik
 
-Kimlik, Microsoft ve Oracle arasındaki iş ortaklığının temel sıra sayısının biridir. [Oracle kimlik bulut hizmeti](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) 'ni (ıdcs) [Azure ACTIVE DIRECTORY](../../../active-directory/index.yml) (Azure AD) ile bütünleştirmek için önemli çalışmalar yapıldı. Azure AD, Microsoft 'un bulut tabanlı kimlik ve erişim yönetimi hizmetidir. Kullanıcılarınızın oturum açmasını ve çeşitli kaynaklara erişmesini sağlar. Azure AD Ayrıca kullanıcılarınızı ve bunların izinlerini yönetmenizi sağlar.
+Kimlik, Microsoft ve Oracle arasındaki iş ortaklığının temel sıra sayısının biridir. [Oracle kimlik bulut hizmeti](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) 'ni (ıdcs) [Azure ACTIVE DIRECTORY](../../../active-directory/index.yml) (Azure AD) ile bütünleştirmek için önemli çalışmalar yapıldı. Azure AD, Microsoft 'un bulut tabanlı kimlik ve erişim yönetimi hizmetidir. Kullanıcılarınız oturum açabilir ve Azure AD 'deki yardım ile çeşitli kaynaklara erişebilir. Azure AD Ayrıca kullanıcılarınızı ve bunların izinlerini yönetmenizi sağlar.
 
 Şu anda bu tümleştirme, Azure Active Directory tek bir merkezi konumda yönetmenizi sağlar. Azure AD, dizindeki tüm değişiklikleri karşılık gelen Oracle diziniyle eşitler ve platformlar arası Oracle çözümlerinde çoklu oturum açma için kullanılır.
 
