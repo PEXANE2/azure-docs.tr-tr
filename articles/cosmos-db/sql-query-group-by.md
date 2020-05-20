@@ -4,24 +4,20 @@ description: Azure Cosmos DB için GROUP BY yan tümcesi hakkında bilgi edinin.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b602b56d37cec0e23d31318f6675d031bdd6bcdb
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261610"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700996"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki GROUP BY yan tümcesi
 
 GROUP BY yan tümcesi sorgunun sonuçlarını belirtilen bir veya daha fazla özellik değerine göre böler.
 
-> [!NOTE]
-> Azure Cosmos DB Şu anda, .NET SDK 3,3 ve üzeri sürümlerde ve JavaScript SDK 3,4 ve üzeri sürümlerde grubunu desteklemektedir.
-> Diğer dil SDK desteği şu anda kullanılamıyor ancak planlanmaktadır.
-
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
 
 ```sql  
 <group_by_clause> ::= GROUP BY <scalar_expression_list>
@@ -31,7 +27,7 @@ GROUP BY yan tümcesi sorgunun sonuçlarını belirtilen bir veya daha fazla öz
         | <scalar_expression_list>, <scalar_expression>
 ```  
 
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Arguments
 
 - `<scalar_expression_list>`
 
@@ -53,10 +49,15 @@ GROUP BY yan tümcesi sorgunun sonuçlarını belirtilen bir veya daha fazla öz
 - Alt
 - Toplam sistem işlevleri (bunlar yalnızca SELECT yan tümcesinde kullanılabilir)
 
-Toplu sistem işlevine ve alt sorgusuna sahip `GROUP BY` sorgular desteklenmez. Örneğin, aşağıdaki sorgu desteklenmez:
+Toplu sistem işlevine ve alt sorgusuna sahip sorgular `GROUP BY` desteklenmez. Örneğin, aşağıdaki sorgu desteklenmez:
 
 ```sql
-SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
+SELECT COUNT(UniqueLastNames)
+FROM (
+SELECT AVG(f.age)
+FROM f
+GROUP BY f.lastName
+) AS UniqueLastNames
 ```
 
 ## <a name="examples"></a>Örnekler
@@ -74,22 +75,24 @@ GROUP BY f.foodGroup
 Bazı sonuçlar (sonuçları sınırlandırmak için TOP anahtar sözcüğü kullanılır):
 
 ```json
-[{
-  "foodGroup": "Fast Foods",
-  "foodGroupCount": 371
-},
-{
-  "foodGroup": "Finfish and Shellfish Products",
-  "foodGroupCount": 267
-},
-{
-  "foodGroup": "Meals, Entrees, and Side Dishes",
-  "foodGroupCount": 113
-},
-{
-  "foodGroup": "Sausages and Luncheon Meats",
-  "foodGroupCount": 244
-}]
+[
+    {
+        "foodGroupCount": 183,
+        "foodGroup": "Cereal Grains and Pasta"
+    },
+    {
+        "foodGroupCount": 133,
+        "foodGroup": "Nut and Seed Products"
+    },
+    {
+        "foodGroupCount": 113,
+        "foodGroup": "Meals, Entrees, and Side Dishes"
+    },
+    {
+        "foodGroupCount": 64,
+        "foodGroup": "Spices and Herbs"
+    }
+]
 ```
 
 Bu sorgu, sonuçları bölmek için kullanılan iki ifadeye sahiptir:
@@ -103,26 +106,28 @@ GROUP BY f.foodGroup, f.version
 Bazı sonuçlar şunlardır:
 
 ```json
-[{
-  "version": 1,
-  "foodGroup": "Nut and Seed Products",
-  "foodGroupCount": 133
-},
-{
-  "version": 1,
-  "foodGroup": "Finfish and Shellfish Products",
-  "foodGroupCount": 267
-},
-{
-  "version": 1,
-  "foodGroup": "Fast Foods",
-  "foodGroupCount": 371
-},
-{
-  "version": 1,
-  "foodGroup": "Sausages and Luncheon Meats",
-  "foodGroupCount": 244
-}]
+[
+    {
+        "foodGroupCount": 183,
+        "foodGroup": "Cereal Grains and Pasta",
+        "version": 1
+    },
+    {
+        "foodGroupCount": 133,
+        "foodGroup": "Nut and Seed Products",
+        "version": 1
+    },
+    {
+        "foodGroupCount": 113,
+        "foodGroup": "Meals, Entrees, and Side Dishes",
+        "version": 1
+    },
+    {
+        "foodGroupCount": 64,
+        "foodGroup": "Spices and Herbs",
+        "version": 1
+    }
+]
 ```
 
 Bu sorgu GROUP BY yan tümcesinde bir sistem işlevine sahiptir:
@@ -136,22 +141,24 @@ GROUP BY UPPER(f.foodGroup)
 Bazı sonuçlar şunlardır:
 
 ```json
-[{
-  "foodGroupCount": 371,
-  "upperFoodGroup": "FAST FOODS"
-},
-{
-  "foodGroupCount": 267,
-  "upperFoodGroup": "FINFISH AND SHELLFISH PRODUCTS"
-},
-{
-  "foodGroupCount": 389,
-  "upperFoodGroup": "LEGUMES AND LEGUME PRODUCTS"
-},
-{
-  "foodGroupCount": 113,
-  "upperFoodGroup": "MEALS, ENTREES, AND SIDE DISHES"
-}]
+[
+    {
+        "foodGroupCount": 183,
+        "upperFoodGroup": "CEREAL GRAINS AND PASTA"
+    },
+    {
+        "foodGroupCount": 133,
+        "upperFoodGroup": "NUT AND SEED PRODUCTS"
+    },
+    {
+        "foodGroupCount": 113,
+        "upperFoodGroup": "MEALS, ENTREES, AND SIDE DISHES"
+    },
+    {
+        "foodGroupCount": 64,
+        "upperFoodGroup": "SPICES AND HERBS"
+    }
+]
 ```
 
 Bu sorgu, öğe özelliği ifadesinde hem anahtar sözcükleri hem de sistem işlevlerini kullanır:
@@ -165,16 +172,18 @@ GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 Sonuçlar:
 
 ```json
-[{
-  "correctVersion": true,
-  "containsOrangeTag": false,
-  "foodGroupCount": 8608
-},
-{
-  "correctVersion": true,
-  "containsOrangeTag": true,
-  "foodGroupCount": 10
-}]
+[
+    {
+        "foodGroupCount": 10,
+        "containsOrangeTag": true,
+        "correctVersion": true
+    },
+    {
+        "foodGroupCount": 8608,
+        "containsOrangeTag": false,
+        "correctVersion": true
+    }
+]
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

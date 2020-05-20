@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a60f761e4ee575e3196bb1ccd3baa42f27221f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4c2c02e47059d73e29da705fc9075721e080e636
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588182"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701798"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarlarını yönetme 
 Bu makalede bir sınıf Laboratuvarı oluşturma ve silme açıklanmaktadır. Ayrıca, tüm sınıf laboratuvarlarını bir laboratuvar hesabında nasıl görüntüleyekullanacağınızı gösterir. 
@@ -29,18 +29,18 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
 ## <a name="create-a-classroom-lab"></a>Sınıf laboratuvarı oluşturma
 
 1. [Azure Lab Services web sitesine](https://labs.azure.com) gidin. Internet Explorer 11 henüz desteklenmiyor. 
-2. **Oturum aç**’ı seçip kimlik bilgilerinizi girin. Laboratuvar hesabındaki **Laboratuvar Oluşturucu** rolünün bir üyesi olan BIR **Kullanıcı kimliği** seçin veya girin ve parola girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler. 
-3. **Yeni laboratuvar**' ı seçin. 
+1. **Oturum aç**’ı seçip kimlik bilgilerinizi girin. Laboratuvar hesabındaki **Laboratuvar Oluşturucu** rolünün bir üyesi olan BIR **Kullanıcı kimliği** seçin veya girin ve parola girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler. 
+1. **Yeni laboratuvar**' ı seçin. 
     
     ![Sınıf laboratuvarı oluşturma](../media/tutorial-setup-classroom-lab/new-lab-button.png)
-3. **Yeni Laboratuvar** penceresinde aşağıdaki eylemleri gerçekleştirin: 
+1. **Yeni Laboratuvar** penceresinde aşağıdaki eylemleri gerçekleştirin: 
     1. Laboratuvarınız için bir **ad** belirtin. 
-    2. Sınıf için ihtiyacınız **olan sanal makinelerin boyutunu** seçin. Kullanılabilir boyutların listesi için [VM boyutları](#vm-sizes) bölümüne bakın. 
-    3. Derslik Laboratuvarı için kullanmak istediğiniz **sanal makine görüntüsünü** seçin. Bir Linux görüntüsü seçerseniz, bunun için Uzak Masaüstü bağlantısını etkinleştirme seçeneğini görürsünüz. Ayrıntılar için bkz. [Linux için Uzak Masaüstü bağlantısını etkinleştirme](how-to-enable-remote-desktop-linux.md).
+    1. Sınıf için ihtiyacınız **olan sanal makinelerin boyutunu** seçin. Kullanılabilir boyutların listesi için [VM boyutları](#vm-sizes) bölümüne bakın. 
+    1. Derslik Laboratuvarı için kullanmak istediğiniz **sanal makine görüntüsünü** seçin. Bir Linux görüntüsü seçerseniz, **Uzak Masaüstü bağlantısını etkinleştirme**seçeneğini görürsünüz. Ayrıntılar için bkz. [Linux için Uzak Masaüstü bağlantısını etkinleştirme](how-to-enable-remote-desktop-linux.md).
 
         Laboratuvar hesabı sahibi kimlik bilgilerini kullanarak oturum açtıysanız, laboratuvar için daha fazla görüntü etkinleştirme seçeneği görüntülenir. Daha fazla bilgi için bkz. [Laboratuvar oluşturma sırasında görüntüleri etkinleştirme](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation).
-    4. Sayfada gösterildiği **saat başına toplam fiyatı** gözden geçirin. 
-    6. **Kaydet**’i seçin.
+    1. Sayfada gösterildiği **saat başına toplam fiyatı** gözden geçirin. 
+    1. **Kaydet**’i seçin.
 
         ![Yeni laboratuvar penceresi](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 
@@ -70,24 +70,24 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
     ![Şablon VM oluşturma durumu](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
 8. **Şablon** sayfasında, aşağıdaki adımları uygulayın: Bu adımlar öğretici için **isteğe bağlıdır** .
 
-    2. **Bağlan**'ı seçerek şablon VM'sine bağlanın. Bir Linux şablon sanal makinesi ise, SSH veya RDP kullanarak bağlanmak isteyip istemediğinizi seçin (RDP etkinse).
+    1. **Bağlan**'ı seçerek şablon VM'sine bağlanın. Bir Linux şablon sanal makinesi ise, SSH veya GUI Uzak Masaüstü kullanarak bağlanmak isteyip istemediğinizi seçersiniz.  GUI uzak masaüstü kullanmak için ek kurulum gereklidir. Daha fazla bilgi için bkz. [Linux sanal makineleri için grafik uzak masaüstünü etkinleştirme](how-to-use-remote-desktop-linux-student.md) .
     1. VM 'nin parolasını sıfırlamak için **Parolayı Sıfırla** ' yı seçin. 
     1. Şablon VM'sinde yazılım yükleme ve yapılandırma işlemlerini gerçekleştirin. 
     1. VM'yi **durdurun**.  
     1. Şablon için bir **açıklama** girin
-10. **Şablon** sayfasında, araç çubuğunda **Yayımla** ' yı seçin. 
+9.  **Şablon** sayfasında, araç çubuğunda **Yayımla** ' yı seçin. 
 
     ![Şablon Yayımla düğmesi](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
     > [!WARNING]
     > Yayımlama işlemini geri alamazsınız. 
-8. **Şablonu Yayımla** sayfasında, laboratuvarda oluşturmak istediğiniz sanal makine sayısını girin ve ardından **Yayımla**' yı seçin. 
+10. **Şablonu Yayımla** sayfasında, laboratuvarda oluşturmak istediğiniz sanal makine sayısını girin ve ardından **Yayımla**' yı seçin. 
 
     ![Şablon yayımlama-sanal makine sayısı](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
 11. Şablonu **Yayımlama durumunu** sayfada görürsünüz. Bu işlemin tamamlanması bir saat sürebilir. 
 
     ![Şablonu yayımlama - ilerleme](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-4. Sol taraftaki menüden sanal makineler ' i seçerek veya sanal makineler Kutucuğu ' nı seçerek **sanal makine havuzu** sayfasına geçin. **Atanmamış** durumda olan sanal makineleri görtığınızdan emin olun. Bu VM’ler henüz bir öğrenciye atanmamıştır. Bu makinelerin durumu **Durduruldu** olmalıdır. Bu sayfadan bir öğrenci VM'sini başlatabilir, VM'ye bağlanabilir, VM'yi durdurabilir ve VM'yi silebilirsiniz. VM'leri bu sayfadan başlatabilir veya öğrencilerinizin başlatmasını sağlayabilirsiniz. 
+12. Sol taraftaki menüden sanal makineler ' i seçerek veya sanal makineler Kutucuğu ' nı seçerek **sanal makine havuzu** sayfasına geçin. **Atanmamış** durumda olan sanal makineleri görtığınızdan emin olun. Bu VM’ler henüz bir öğrenciye atanmamıştır. Bu makinelerin durumu **Durduruldu** olmalıdır. Bu sayfadan bir öğrenci VM'sini başlatabilir, VM'ye bağlanabilir, VM'yi durdurabilir ve VM'yi silebilirsiniz. VM'leri bu sayfadan başlatabilir veya öğrencilerinizin başlatmasını sağlayabilirsiniz. 
 
     ![Durdurulmuş durumdaki sanal makineler](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 

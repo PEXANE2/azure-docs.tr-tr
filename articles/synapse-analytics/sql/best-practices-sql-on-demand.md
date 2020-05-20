@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07ceb8eebed5657f87417dc24281008dd0863851
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0792dd98bb554b7b430676472c27274f3312d381
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650400"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701376"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te isteğe bağlı SQL (Önizleme) için en iyi uygulamalar
 
@@ -121,7 +121,7 @@ Daha fazla bilgi için [dosya adı](develop-storage-files-overview.md#filename-f
 > [!NOTE]
 > Bölüm eliminasyon, FilePath ve FileInfo için kullanılan işlevler, Azure SYNAPSE Analytics için Apache Spark oluşturulan her tablo için otomatik olarak oluşturulanlardan farklı dış tablolarda desteklenmemektedir.
 
-Depolanan verileriniz bölümlenmemişse, bu dosyaları hedefleyen sorguları iyileştirmek için bu işlevleri kullanabilmek üzere Bölümlendirmeyi düşünün. [Bölümlenmiş Spark TABLOLARıNı](develop-storage-files-spark-tables.md) SQL isteğe bağlı olarak sorgularken, sorgu yalnızca gerekli dosyaları hedefleyecek.
+Depolanan verileriniz bölümlenmemişse, bu dosyaları hedefleyen sorguları iyileştirmek için bu işlevleri kullanabilmek üzere Bölümlendirmeyi düşünün. [Azure SYNAPSE tabloları için bölümlenmiş Apache Spark](develop-storage-files-spark-tables.md) , Isteğe bağlı SQL 'de sorgulanırken sorgu otomatik olarak yalnızca gerekli dosyaları hedefleyecek.
 
 ## <a name="use-parser_version-20-for-querying-csv-files"></a>CSV dosyalarını sorgulamak için PARSER_VERSION 2,0 kullanın
 

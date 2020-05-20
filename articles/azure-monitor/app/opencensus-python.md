@@ -6,31 +6,31 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6ef0675e3ae3f7a5da38138177f3033051723411
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbc9fe8d53f231f590dba7e2bd493633c39a1383
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537117"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701528"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python uygulamanız için Azure Izleyicisini ayarlama
 
 Azure Izleyici, [Opencensus](https://opencensus.io)ile tümleştirme yoluyla, Python uygulamalarının dağıtılmış izlemeyi, ölçüm toplamayı ve günlüğe kaydedilmesini destekler. Bu makale, Python için OpenCensus ayarlama ve izleme verilerinizi Azure Izleyici 'ye gönderme sürecinde size yol gösterecektir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 - Python yüklemesi. Bu makalede [Python 3.7.0](https://www.python.org/downloads/)kullanılmaktadır, ancak önceki sürümler büyük olasılıkla küçük değişikliklerle çalışacaktır.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Azure Izleyici 'de Application Insights kaynağı oluşturma
 
 İlk olarak Azure Izleyici 'de bir Application Insights kaynak oluşturmanız gerekir ve bu işlem bir izleme anahtarı (Ikey) oluşturur. Ikey daha sonra, Azure Izleyici 'ye telemetri verileri gönderecek şekilde OpenCensus SDK 'sını yapılandırmak için kullanılır.
 
-1. **Kaynak** > oluştur**Geliştirici Araçları** > **Application Insights**seçin.
+1. **Kaynak oluştur**  >  **Geliştirici Araçları**  >  **Application Insights**seçin.
 
    ![Application Insights kaynağı ekleme](./media/opencensus-python/0001-create-resource.png)
 
@@ -55,7 +55,7 @@ python -m pip install opencensus-ext-azure
 Paketlerin ve tümleştirmelerin tam listesi için bkz. [Opencensus paketleri](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus).
 
 > [!NOTE]
-> Komutu `python -m pip install opencensus-ext-azure` , Python yüklemeniz için ayarlanmış bir `PATH` ortam değişkeni olduğunu varsayar. Bu değişkeni yapılandırmadıysanız, Python yürütülebilirinizin bulunduğu konuma tam dizin yolu sağlamanız gerekir. Sonuç şöyle bir komuttur: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`.
+> `python -m pip install opencensus-ext-azure`Komutu, `PATH` Python yüklemeniz için ayarlanmış bir ortam değişkeni olduğunu varsayar. Bu değişkeni yapılandırmadıysanız, Python yürütülebilirinizin bulunduğu konuma tam dizin yolu sağlamanız gerekir. Sonuç şöyle bir komuttur: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
 
 SDK, Azure Izleyici 'ye farklı telemetri türleri göndermek için üç Azure Izleyici dışarı aktarmak kullanır: izleme, ölçümler ve Günlükler. Bu telemetri türleri hakkında daha fazla bilgi için bkz. [veri platformuna genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Bu telemetri türlerini üç dışarı aktarmak yoluyla göndermek için aşağıdaki yönergeleri kullanın.
 
@@ -68,7 +68,7 @@ OpenCensus 'ın, Azure Izleyici 'de göreceğiniz telemetri türleriyle eşlendi
 ### <a name="trace"></a>İzleme
 
 > [!NOTE]
-> `Trace`OpenCensus ' de [Dağıtılmış izlemeyi](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ifade eder. Azure `AzureExporter` izleyici `requests` 'ye `dependency` gönderir ve telemetri sağlar.
+> `Trace`OpenCensus ' de [Dağıtılmış izlemeyi](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ifade eder. `AzureExporter` `requests` `dependency` Azure izleyici 'ye gönderir ve telemetri sağlar.
 
 1. İlk olarak, bazı izleme verilerini yerel olarak oluşturalım. Python boş veya istediğiniz Düzenleyicinizde aşağıdaki kodu girin.
 
@@ -91,7 +91,7 @@ OpenCensus 'ın, Azure Izleyici 'de göreceğiniz telemetri türleriyle eşlendi
         main()
     ```
 
-2. Kodu çalıştırmak, sürekli olarak bir değer girmenizi ister. Her giriş ile, değer kabuğa yazdırılır ve OpenCensus Python modülü buna karşılık gelen bir parçasını oluşturacaktır `SpanData`. OpenCensus projesi bir izlemeyi bir [yayılma ağacı olarak](https://opencensus.io/core-concepts/tracing/)tanımlar.
+2. Kodu çalıştırmak, sürekli olarak bir değer girmenizi ister. Her giriş ile, değer kabuğa yazdırılır ve OpenCensus Python modülü buna karşılık gelen bir parçasını oluşturacaktır `SpanData` . OpenCensus projesi bir izlemeyi bir [yayılma ağacı olarak](https://opencensus.io/core-concepts/tracing/)tanımlar.
     
     ```
     Enter a value: 4
@@ -105,7 +105,7 @@ OpenCensus 'ın, Azure Izleyici 'de göreceğiniz telemetri türleriyle eşlendi
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. Değer girilmesi, sunum amacıyla yararlı olsa da, sonunda Azure Izleyici `SpanData` 'ye yayma yapmak istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin veya bir ortam değişkeninde `APPLICATIONINSIGHTS_CONNECTION_STRING`belirtebilirsiniz. Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
+3. Değer girilmesi, sunum amacıyla yararlı olsa da, sonunda `SpanData` Azure izleyici 'ye yayma yapmak istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin veya bir ortam değişkeninde belirtebilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` . Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -132,7 +132,7 @@ OpenCensus 'ın, Azure Izleyici 'de göreceğiniz telemetri türleriyle eşlendi
         main()
     ```
 
-4. Artık Python betiğini çalıştırdığınızda, yine de değer girmeniz istenir, ancak yalnızca değeri kabukta yazdırılıyor. Oluşturulan `SpanData` Azure izleyici 'ye gönderilir. Yayınlanan yayılmış verileri ' de bulabilirsiniz `dependencies`. Giden istekler hakkında daha fazla bilgi için bkz. OpenCensus Python [bağımlılıkları](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency).
+4. Artık Python betiğini çalıştırdığınızda, yine de değer girmeniz istenir, ancak yalnızca değeri kabukta yazdırılıyor. Oluşturulan `SpanData` Azure izleyici 'ye gönderilir. Yayınlanan yayılmış verileri ' de bulabilirsiniz `dependencies` . Giden istekler hakkında daha fazla bilgi için bkz. OpenCensus Python [bağımlılıkları](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency).
 Gelen istekler hakkında daha fazla bilgi için bkz. OpenCensus Python [istekleri](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request).
 
 #### <a name="sampling"></a>Örnekleme
@@ -200,7 +200,7 @@ OpenCensus 'de örnekleme hakkında bilgi edinmek için, [opencensus 'de örnekl
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. Değer girilmesi, tanıtım amacıyla yararlı olsa da, sonunda ölçüm verilerini Azure Izleyici 'ye yayma istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin veya bir ortam değişkeninde `APPLICATIONINSIGHTS_CONNECTION_STRING`belirtebilirsiniz. Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
+3. Değer girilmesi, tanıtım amacıyla yararlı olsa da, sonunda ölçüm verilerini Azure Izleyici 'ye yayma istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin veya bir ortam değişkeninde belirtebilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` . Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
 
     ```python
     from datetime import datetime
@@ -248,11 +248,11 @@ OpenCensus 'de örnekleme hakkında bilgi edinmek için, [opencensus 'de örnekl
         main()
     ```
 
-4. Dışarı Aktarıcı, ölçüm verilerini Azure Izleyici 'ye sabit bir aralıkla gönderir. Varsayılan değer 15 saniyedir. Tek bir ölçümü izliyoruz, bu nedenle içerdiği değer ve zaman damgasıyla birlikte bu ölçüm verileri her aralığa gönderilir. Verileri altında `customMetrics`bulabilirsiniz.
+4. Dışarı Aktarıcı, ölçüm verilerini Azure Izleyici 'ye sabit bir aralıkla gönderir. Varsayılan değer 15 saniyedir. Tek bir ölçümü izliyoruz, bu nedenle içerdiği değer ve zaman damgasıyla birlikte bu ölçüm verileri her aralığa gönderilir. Verileri altında bulabilirsiniz `customMetrics` .
 
 #### <a name="standard-metrics"></a>Standart ölçümler
 
-Varsayılan olarak, ölçüm Dışarı Aktarıcı Azure Izleyici 'ye bir dizi standart ölçüm gönderir. Bunu, ölçüm verme programı oluşturucusunda `enable_standard_metrics` bayrağını olarak `False` ayarlayarak devre dışı bırakabilirsiniz.
+Varsayılan olarak, ölçüm Dışarı Aktarıcı Azure Izleyici 'ye bir dizi standart ölçüm gönderir. Bunu, `enable_standard_metrics` `False` ölçüm verme programı oluşturucusunda bayrağını olarak ayarlayarak devre dışı bırakabilirsiniz.
 
     ```python
     ...
@@ -271,7 +271,7 @@ Varsayılan olarak, ölçüm Dışarı Aktarıcı Azure Izleyici 'ye bir dizi st
 - İşlem CPU kullanımı (yüzde)
 - İşlem özel baytları (bayt)
 
-Bu ölçümleri ' de `performanceCounters`görebilmeniz gerekir. Gelen istek oranı altında `customMetrics`olur. Daha fazla bilgi için bkz. [performans sayaçları](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
+Bu ölçümleri ' de görebilmeniz gerekir `performanceCounters` . Gelen istek oranı altında olur `customMetrics` . Daha fazla bilgi için bkz. [performans sayaçları](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
 
 #### <a name="modify-telemetry"></a>Telemetriyi değiştirme
 
@@ -311,7 +311,7 @@ Bu ölçümleri ' de `performanceCounters`görebilmeniz gerekir. Gelen istek ora
     90
     ```
 
-3. Değer girilmesi, tanıtım amacıyla yararlı olsa da, sonuçta günlük verilerini Azure Izleyici 'ye yaymak istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin veya bir ortam değişkeninde `APPLICATIONINSIGHTS_CONNECTION_STRING`belirtebilirsiniz. Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
+3. Değer girilmesi, tanıtım amacıyla yararlı olsa da, sonuçta günlük verilerini Azure Izleyici 'ye yaymak istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin veya bir ortam değişkeninde belirtebilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` . Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
 
     ```python
     import logging
@@ -336,12 +336,12 @@ Bu ölçümleri ' de `performanceCounters`görebilmeniz gerekir. Gelen istek ora
         main()
     ```
 
-4. Dışarı aktarma programı günlük verilerini Azure Izleyici 'ye gönderir. Verileri altında `traces`bulabilirsiniz. 
+4. Dışarı aktarma programı günlük verilerini Azure Izleyici 'ye gönderir. Verileri altında bulabilirsiniz `traces` . 
 
 > [!NOTE]
-> `traces`Bu bağlamda ile `Tracing`aynı değildir. `traces`kullanarak Azure Izleyici 'de göreceğiniz telemetri türünü ifade eder `AzureLogHandler`. `Tracing`OpenCensus içindeki bir kavramı ifade eder ve [Dağıtılmış izleme](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ile ilgilidir.
+> `traces`Bu bağlamda ile aynı değildir `Tracing` . `traces`kullanarak Azure Izleyici 'de göreceğiniz telemetri türünü ifade eder `AzureLogHandler` . `Tracing`OpenCensus içindeki bir kavramı ifade eder ve [Dağıtılmış izleme](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ile ilgilidir.
 
-5. Günlük iletilerinizi biçimlendirmek için, yerleşik Python `formatters` [günlüğü API](https://docs.python.org/3/library/logging.html#formatter-objects)'sinde öğesini kullanabilirsiniz.
+5. Günlük iletilerinizi biçimlendirmek için, `formatters` yerleşik Python [günlüğü API](https://docs.python.org/3/library/logging.html#formatter-objects)'sinde öğesini kullanabilirsiniz.
 
     ```python
     import logging
@@ -370,7 +370,7 @@ Bu ölçümleri ' de `performanceCounters`görebilmeniz gerekir. Gelen istek ora
         main()
     ```
 
-6. Ayrıca, custom_dimensions alanını kullanarak *fazladan* anahtar sözcük bağımsız değişkenine günlük iletilerinize özel özellikler ekleyebilirsiniz. Bunlar, Azure Izleyici `customDimensions` 'de anahtar-değer çiftleri olarak görünür.
+6. Ayrıca, custom_dimensions alanını kullanarak *fazladan* anahtar sözcük bağımsız değişkenine günlük iletilerinize özel özellikler ekleyebilirsiniz. Bunlar, Azure Izleyici 'de anahtar-değer çiftleri olarak görünür `customDimensions` .
 > [!NOTE]
 > Bu özelliğin çalışması için custom_dimensions alana bir sözlük geçirmeniz gerekir. Diğer herhangi bir türün bağımsız değişkenlerini geçirirseniz, günlükçü bunları yoksayar.
 
@@ -393,7 +393,7 @@ Bu ölçümleri ' de `performanceCounters`görebilmeniz gerekir. Gelen istek ora
 
 #### <a name="sending-exceptions"></a>Özel durumlar gönderiliyor
 
-OpenCensus Python, Telemetriyi otomatik olarak `exception` izlemez ve göndermez. Bunlar, `AzureLogHandler` Python günlüğü kitaplığı aracılığıyla özel durumlar kullanılarak üzerinden gönderilir. Normal günlüğe kaydetme ile tıpkı özel özellikler ekleyebilirsiniz.
+OpenCensus Python, Telemetriyi otomatik olarak izlemez ve göndermez `exception` . Bunlar, `AzureLogHandler` Python günlüğü kitaplığı aracılığıyla özel durumlar kullanılarak üzerinden gönderilir. Normal günlüğe kaydetme ile tıpkı özel özellikler ekleyebilirsiniz.
 
     ```python
     import logging
@@ -436,9 +436,9 @@ Uygulamalarınızdan gönderilen telemetri verilerini **Günlükler (Analiz)** s
 
 **Etkin**altındaki listede:
 
-- Azure Izleyici izleme dışarı aktarıcı ile gönderilen telemetri için, gelen istekler altında `requests`görünür. Giden veya işlem içi istekler altında `dependencies`görünür.
-- Azure Izleyici ölçümleri dışarı aktarıcı ile gönderilen telemetri için, gönderilen ölçümler altında `customMetrics`görüntülenir.
-- Azure Izleyici günlükleri dışarı aktarıcı ile gönderilen telemetri için Günlükler altında `traces`görüntülenir. Özel durumlar altında `exceptions`görünür.
+- Azure Izleyici izleme dışarı aktarıcı ile gönderilen telemetri için, gelen istekler altında görünür `requests` . Giden veya işlem içi istekler altında görünür `dependencies` .
+- Azure Izleyici ölçümleri dışarı aktarıcı ile gönderilen telemetri için, gönderilen ölçümler altında görüntülenir `customMetrics` .
+- Azure Izleyici günlükleri dışarı aktarıcı ile gönderilen telemetri için Günlükler altında görüntülenir `traces` . Özel durumlar altında görünür `exceptions` .
 
 Sorguları ve günlükleri kullanma hakkında daha ayrıntılı bilgi için bkz. [Azure izleyici 'de Günlükler](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs).
 
@@ -461,4 +461,4 @@ Sorguları ve günlükleri kullanma hakkında daha ayrıntılı bilgi için bkz.
 
 * [Kullanılabilirlik testleri](../../azure-monitor/app/monitor-web-app-availability.md): Sitenizin web’de görünür olduğundan emin olmaya yönelik testler oluşturun.
 * [Akıllı tanılama](../../azure-monitor/app/proactive-diagnostics.md): Bu testler otomatik olarak çalıştığından, bunları ayarlamak için herhangi bir şey yapmanız gerekmez. Uygulamanızda olağan dışı oranda başarısız istek olup olmadığını bildirirler.
-* [Ölçüm uyarıları](../../azure-monitor/app/alerts.md): bir ölçüm bir eşiği kesiştyolursa sizi uyarmak için Uyarılar ayarlayın. Bunları, uygulamanıza kodladığınız özel ölçümlerde ayarlayabilirsiniz.
+* [Ölçüm uyarıları](../../azure-monitor/platform/alerts-log.md): bir ölçüm bir eşiği kesiştyolursa sizi uyarmak için Uyarılar ayarlayın. Bunları, uygulamanıza kodladığınız özel ölçümlerde ayarlayabilirsiniz.

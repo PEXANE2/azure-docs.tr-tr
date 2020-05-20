@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: ba21dfc900145ceeacab6c363e5de84b830282b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f65912d0e2ab322d73315828a98cc48274850fc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82109659"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696523"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM Yeniden Başlatma İşlemlerini Anlama - bakım ve kapalı kalma süresi
 Azure 'da sanal makineye etkilenmesine neden olan üç senaryo vardır: planlanmamış donanım bakımı, beklenmedik kapalı kalma süresi ve planlı bakım.
@@ -33,7 +33,7 @@ Bu olayların bir veya daha fazlası nedeniyle kapalı kalma süresinin etkisini
 * [Bir kullanılabilirlik kümesindeki birden fazla sanal makineyi yedeklilik için yapılandırma]
 * [Bir kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma]
 * [VM etkileyen olayları önceden yanıtlamak için zamanlanmış olayları kullanma](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
-* [Her uygulama katmanını ayrı kullanılabilirlik kümeleri halinde yapılandırma]
+* [Her uygulama katmanını ayrı kullanılabilirlik kümelerine yapılandırma]
 * [Yük Dengeleyiciyi kullanılabilirlik kümeleri ile birleştirme]
 * [Veri merkezi düzeyindeki hatalardan korumak için kullanılabilirlik bölgelerini kullanma]
 
@@ -91,19 +91,12 @@ VM 'Leri yönetilmeyen disklerle kullanmayı planlıyorsanız, VM 'lerin sanal s
 
 1. **Bir VM ile ilişkili tüm diskleri (işletim sistemi ve veri) aynı depolama hesabında tutma**
 2. Bir depolama hesabına daha fazla VHD eklemeden önce **bir Azure depolama hesabındaki yönetilmeyen disk sayısı [sınırlarını](../articles/storage/blobs/scalability-targets-premium-page-blobs.md) gözden geçirin**
-3. **Bir kullanılabilirlik kümesindeki her VM için ayrı bir depolama hesabı kullanın.** Depolama hesaplarını aynı Kullanılabilirlik Kümesinde birden fazla VM ile paylaşmayın. Yukarıdaki en iyi uygulamalardan sonra yönetilmeyen diskler bundan sonra ![, depolama hesaplarını paylaşmak Için farklı kullanılabilirlik kümelerindeki VM 'ler için kabul edilebilir](./media/virtual-machines-common-manage-availability/umd-updated.png)
+3. **Bir kullanılabilirlik kümesindeki her VM için ayrı bir depolama hesabı kullanın.** Depolama hesaplarını aynı Kullanılabilirlik Kümesinde birden fazla VM ile paylaşmayın. Yukarıdaki en iyi uygulamalardan sonra yönetilmeyen diskler bundan sonra, depolama hesaplarını paylaşmak için farklı kullanılabilirlik kümelerindeki VM 'Ler için kabul edilebilir ![](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>VM etkileyen olayları önceden yanıtlamak için zamanlanmış olayları kullanma
 
 [Zamanlanan olaylara](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)abone olduğunuzda, VM 'NIZ, VM 'nizi etkileyebilecek yaklaşan bakım olayları hakkında bilgilendirilir. Zamanlanan olaylar etkinleştirildiğinde, bakım etkinliği gerçekleştirilmeden önce sanal makinenize en az bir süre verilir. Örneğin, VM 'nizi etkileyebilecek ana bilgisayar işletim sistemi güncelleştirmeleri, etkiyi belirten olaylar olarak, aynı zamanda hiçbir işlem gerçekleştirilmediği zaman bakımın gerçekleştirileceği bir süre kadar sıraya alınır. Zamanlama olayları, Azure, VM 'nizi etkileyebilecek mini donanım hatası algıladığında de sıraya alınır ve bu durum, iyileştirmenin ne zaman gerçekleştirilmesi gerektiğine karar vermenize olanak tanır. Müşteriler, durumu kaydetme, ikinciye yük devretme, vb. gibi bakım öncesinde görev gerçekleştirmek için olayını kullanabilir. Bakım olayını düzgün bir şekilde işleme için mantığınızı tamamladıktan sonra, platformun bakım ile devam etmesini sağlamak için bekleyen zamanlanmış olayını onaylayabilirsiniz.
 
-## <a name="configure-each-application-tier-into-separate-availability-zones-or-availability-sets"></a>Her uygulama katmanını ayrı kullanılabilirlik bölgeleri veya kullanılabilirlik kümelerine göre yapılandırma
-Sanal makineleriniz neredeyse aynıysa ve uygulamanız için aynı amaca sahipseniz, uygulamanızın her katmanı için bir kullanılabilirlik alanı veya kullanılabilirlik kümesi yapılandırmanız önerilir.  Aynı Kullanılabilirlik bölgesine veya kümesine iki farklı katman yerleştirirseniz, aynı uygulama katmanındaki tüm sanal makineler aynı anda yeniden başlatılabilir. Bir kullanılabilirlik alanında en az iki sanal makineyi yapılandırarak veya her katman için ayarlanmış olarak, her katmanda en az bir sanal makinenin kullanılabilir olduğundan emin olursunuz.
-
-Örneğin, tüm sanal makineleri IIS, Apache ve NGINX çalıştıran uygulamanızın ön ucuna tek bir kullanılabilirlik alanına veya kümesine yerleştirebilirsiniz. Yalnızca ön uç sanal makinelerin aynı Kullanılabilirlik alanına yerleştirildiğinden veya ayarlanmış olduğundan emin olun. Benzer şekilde, çoğaltılan SQL Server sanal makineleriniz ya da MySQL sanal makineleriniz gibi yalnızca veri katmanı sanal makinelerinin kendi kullanılabilirlik bölgesine veya kümesine yerleştirildiğinden emin olun.
-
-<!--Image reference-->
-   ![Uygulama katmanları](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Bir yük dengeleyiciyi kullanılabilirlik alanları veya kümeleriyle birleştirme
 [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) bir kullanılabilirlik bölgesi ile birleştirin veya en fazla uygulama dayanıklılığı sağlamak için ayarlayın. Azure Load Balancer, birden fazla sanal makine arasında trafiği dağıtır. Standart katman sanal makinelerimize Azure Load Balancer dahildir. Tüm sanal makine katmanları Azure Load Balancer hizmetini içermez. Sanal makinelerinizde yük dengeleme hakkında daha fazla bilgi için bkz. [Sanal makinelerde yük dengeleme](../articles/virtual-machines/virtual-machines-linux-load-balance.md).
@@ -115,7 +108,6 @@ Kullanılabilirlik alanları arasında yük dengelemeye yönelik bir öğretici 
 
 <!-- Link references -->
 [Bir kullanılabilirlik kümesindeki birden fazla sanal makineyi yedeklilik için yapılandırma]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[Her uygulama katmanını ayrı kullanılabilirlik kümeleri halinde yapılandırma]: #configure-each-application-tier-into-separate-availability-zones-or-availability-sets
 [Yük Dengeleyiciyi kullanılabilirlik kümeleri ile birleştirme]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Bir kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma]: #use-managed-disks-for-vms-in-an-availability-set
