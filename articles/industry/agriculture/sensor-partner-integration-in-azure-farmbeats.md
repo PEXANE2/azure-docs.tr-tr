@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 3431576acbb01a0cc3a5f372460b28be05bf7ce7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437475"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684008"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
 
@@ -64,22 +64,27 @@ headers = {"Authorization": "Bearer " + access_token, …} 
 Aşağıdaki örnek Python kodu, Farmtts 'e yönelik sonraki API çağrıları için kullanılabilen erişim belirtecini verir.
 
 ```python
-import azure 
+import requests
+import json
+import msal
 
-from azure.common.credentials import ServicePrincipalCredentials 
-import adal 
-#FarmBeats API Endpoint 
-ENDPOINT = "https://<yourdatahub>.azurewebsites.net" [Azure website](https://<yourdatahub>.azurewebsites.net)
-CLIENT_ID = "<Your Client ID>"   
-CLIENT_SECRET = "<Your Client Secret>"   
-TENANT_ID = "<Your Tenant ID>" 
-AUTHORITY_HOST = 'https://login.microsoftonline.com' 
-AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
-#Authenticating with the credentials 
-context = adal.AuthenticationContext(AUTHORITY) 
-token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
-#Should get an access token here 
-access_token = token_response.get('accessToken') 
+# Your service principal App ID
+CLIENT_ID = "<CLIENT_ID>"
+# Your service principal password
+CLIENT_SECRET = "<CLIENT_SECRET>"
+# Tenant ID for your Azure subscription
+TENANT_ID = "<TENANT_ID>"
+
+AUTHORITY_HOST = 'https://login.microsoftonline.com'
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID
+
+ENDPOINT = "https://<yourfarmbeatswebsitename-api>.azurewebsites.net"
+SCOPE = ENDPOINT + "/.default"
+
+context = msal.ConfidentialClientApplication(CLIENT_ID, authority=AUTHORITY, client_credential=CLIENT_SECRET)
+token_response = context.acquire_token_for_client(SCOPE)
+# We should get an access token here
+access_token = token_response.get('access_token')
 ```
 
 
@@ -90,13 +95,13 @@ Farmrets veri hub 'ına bir API çağrısı yaptığınızda belirtilmesi gereke
 
 **Üst bilgi** | **Açıklama ve örnek**
 --- | ---
-İçerik Türü | İstek biçimi (Content-Type: Application/<format>). Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
+İçerik Türü | İstek biçimi (Content-Type: Application/ <format> ). Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
 Yetkilendirme | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı <erişim-belirteç>
 Kabul Et | Yanıt biçimi. Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Kabul et: uygulama/JSON
 
 **API istekleri**
 
-REST API bir istek yapmak için, HTTP (GET, POST veya PUT) yöntemini, API hizmetinin URL 'sini, bir kaynağa, veri göndermek, güncelleştirmek veya silmek için bir veya daha fazla HTTP istek üst bilgisi gönderebilirsiniz. API hizmetinin URL 'SI, sağladığınız API uç noktasıdır. Örnek: https://\<yourdatahub-website-Name>. azurewebsites.net
+REST API bir istek yapmak için, HTTP (GET, POST veya PUT) yöntemini, API hizmetinin URL 'sini, bir kaynağa, veri göndermek, güncelleştirmek veya silmek için bir veya daha fazla HTTP istek üst bilgisi gönderebilirsiniz. API hizmetinin URL 'SI, sağladığınız API uç noktasıdır. Örnek: https:// \< yourdatahub-website-name>. azurewebsites.net
 
 İsteğe bağlı olarak, filtrelemeye yönelik çağrıları al, boyut sınırını sınırla ve yanıtlarındaki verileri sıralamak için sorgu parametreleri ekleyebilirsiniz.
 
@@ -132,7 +137,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Üretici  | Üreticinin adı |
   ProductCode  | Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800. |
   Bağlantı noktaları  | Bağlantı noktası adı ve türü, dijital veya analog.  |
-  Adı  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
+  Name  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın. |
   Özellikler  | Üreticiden ek özellikler. |
   **Cihaz** |  |
@@ -141,7 +146,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Reportingınterval |Saniye cinsinden raporlama aralığı. |
   Konum    |Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden). |
   Parentdeviceıd | Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir düğüm bir ağ geçidine bağlıysa, düğümde ağ geçidi olarak Parentdeviceıd vardır. |
-  Adı  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
+  Name  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
   Açıklama  | Anlamlı bir açıklama sağlayın.  |
   Özellikler  |Üreticiden ek özellikler.  |
   **SensorModel** |  |
@@ -155,7 +160,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Sensorölçüleri > AggregationType  | Hiçbiri, ortalama, maksimum, en az veya Standartsapması.
   Sensorölçüleri > derinliği  | Algılayıcının santimetre cinsinden derinliği. Örneğin, zemin altındaki nemi 10 cm ölçümü.
   Sensorölçüleri > açıklaması  | Ölçümün anlamlı bir açıklamasını sağlayın.
-  Adı  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
+  Name  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın.
   Özellikler  | Üreticiden ek özellikler.
   **Algılayıcısı**  |  |
@@ -164,7 +169,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Konum  | Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).
   Bağlantı noktası > adı  |Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bu, cihaz modelinde tanımlananla aynı ada sahip olmalıdır.
   DeviceId  | Algılayıcıın bağlı olduğu cihazın KIMLIĞI.
-  Adı  | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.
+  Name  | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.
   Açıklama  | Anlamlı bir açıklama sağlayın.
   Özellikler  | Üreticiden ek özellikler.
 

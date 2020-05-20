@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5a7f64ead6d2e19242950002feed1cd1491dbacc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a49661ca8776f04d98cc04bbe7a07b8c388f91ee
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598769"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681682"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Inkapılı haritalar oluşturmak için Oluşturucu kullanma
 
@@ -57,7 +57,7 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
 
 4. **Üst bilgiler** sekmesinde, anahtar için bir değer belirtin `Content-Type` . Çizim paketi daraltılmış bir klasördür, bu nedenle `application/octet-stream` değerini kullanın. **Gövde** sekmesinde **ikili**' ı seçin. **Dosya Seç** ' e tıklayın ve bir çizim paketi seçin.
 
-     ![veri yönetimi](./media/tutorial-creator-indoor-maps/enter-content-type.png)
+     ![veri yönetimi](./media/tutorial-creator-indoor-maps/enter-content-type-dialog.png)
 
 5. Mavi **Gönder** düğmesine tıklayın ve isteğin işlemesini bekleyin. İstek tamamlandıktan sonra yanıtın **üstbilgiler** sekmesine gidin. Olan **konum** anahtarının değerini kopyalayın `status URL` .
 

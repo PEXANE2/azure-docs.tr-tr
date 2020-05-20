@@ -1,6 +1,6 @@
 ---
-title: Azure Otomasyonu hesabı sorunlarını giderme
-description: Azure hesabıyla ilgili sorun giderme ve sorunları çözme hakkında bilgi edinin.
+title: Azure Otomasyonu hesap sorunlarını giderme
+description: Bu makalede, Azure hesabıyla ilgili sorunları gidermeye ve gidermeye nasıl çözüm yapılacağı açıklanır.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,22 +8,22 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 6a7defdaa9b4b0f0b3580a3ac6b1a0487434a97c
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: bebc89514da7f28015da5cb145ae50bf3fccdb6a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864139"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680089"
 ---
-# <a name="troubleshoot-an-azure-automation-account"></a>Azure Otomasyonu hesabında sorun giderme
+# <a name="troubleshoot-azure-automation-account-issues"></a>Azure Otomasyonu hesap sorunlarını giderme
 
-Bu makalede, bir Azure Otomasyonu hesabı kullanırken karşılaşabileceğiniz sorunlara yönelik çözümler ele alınmaktadır. Otomasyon hesapları hakkında genel bilgi için bkz. [Azure hesabı oluşturma](../automation-quickstart-create-account.md).
+Bu makalede, bir Azure Otomasyonu hesabı kullanırken karşılaşabileceğiniz sorunlara yönelik çözümler ele alınmaktadır. Otomasyon hesapları hakkında genel bilgi için bkz. [Azure Otomasyonu hesabı kimlik doğrulamasına genel bakış](../automation-security-overview.md).
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Senaryo: abonelikler için Otomasyon kaynak sağlayıcısı kaydedilemiyor
 
 ### <a name="issue"></a>Sorun
 
-Otomasyon hesabınızda yönetim çözümleriyle çalışırken aşağıdaki hatayla karşılaşırsınız:
+Güncelleştirme Yönetimi, Otomasyon hesabınızda yönetim özellikleriyle çalışırken aşağıdaki hatayla karşılaşırsınız:
 
 ```error
 Error details: Unable to register Automation Resource Provider for subscriptions:
@@ -52,5 +52,5 @@ Otomasyon kaynak sağlayıcısını kaydetmek için Azure portal aşağıdaki ad
 Bu makale sorununuzu gidermezse, ek destek için aşağıdaki kanallardan birini deneyin:
 
 * Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
-* İle [@AzureSupport](https://twitter.com/azuresupport)bağlanın. Bu, Azure Community 'yi doğru kaynaklara bağlamaya yönelik resmi Microsoft Azure hesabıdır: yanıtlar, destek ve uzmanlar.
+* İle bağlanın [@AzureSupport](https://twitter.com/azuresupport) . Bu, Azure Community 'yi doğru kaynaklara bağlamaya yönelik resmi Microsoft Azure hesabıdır: yanıtlar, destek ve uzmanlar.
 * Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin.

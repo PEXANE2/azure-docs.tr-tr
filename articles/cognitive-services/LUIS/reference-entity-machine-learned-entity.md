@@ -1,7 +1,7 @@
 ---
-title: Makine tarafından öğrenilen varlık türü-LUSıS
+title: Makine öğrenimi varlık türü-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Makine tarafından öğrenilen varlık, LUSıS uygulamaları oluşturmak için tercih edilen varlıktır.
+description: Makine öğrenimi varlığı, LUSıS uygulamaları oluşturmak için tercih edilen varlıktır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ddaf5c921f92aeaefd8a8b0cb13602bc70a4dd5d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585598"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684568"
 ---
-# <a name="machine-learned-entity"></a>Makine tarafından öğrenilen varlık
+# <a name="machine-learning-entity"></a>Makine öğrenimi varlığı
 
-Makine tarafından öğrenilen varlık, LUSıS uygulamaları oluşturmak için tercih edilen varlıktır.
+Makine öğrenimi varlığı, LUSıS uygulamaları oluşturmak için tercih edilen varlıktır.
 
 
 ## <a name="example-json"></a>Örnek JSON
@@ -38,7 +38,7 @@ Uygulamanın, [ayrıştırılmış varlık öğreticisi](tutorial-machine-learne
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Makine tarafından öğrenilen bir varlık gerekli özelliklere sahip çok sayıda alt varlık olabileceğinden, bu yalnızca bir örnektir. Bu, varlığınızın ne kadar Dönebileceğinize ilişkin bir kılavuz olarak kabul edilmelidir.
+Machine Learning varlığının gerekli özelliklere sahip çok sayıda alt varlığı olabileceğinden, bu yalnızca bir örnektir. Bu, varlığınızın ne kadar Dönebileceğinize ilişkin bir kılavuz olarak kabul edilmelidir.
 
 Sorguyu göz önünde bulundurun:
 
@@ -348,6 +348,6 @@ Bu varlık v2 tahmin çalışma zamanında kullanılamıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Eğitim](tutorial-machine-learned-entity.md), [Kavramlar](luis-concept-entity-types.md#design-entities-for-decomposition)ve [nasıl yapılır Kılavuzu](luis-how-to-add-entities.md#create-a-machine-learned-entity)dahil olmak üzere makine tarafından öğrenilen varlık hakkında daha fazla bilgi edinin.
+[Eğitim](tutorial-machine-learned-entity.md), [Kavramlar](luis-concept-entity-types.md#design-entities-for-decomposition)ve [nasıl yapılır Kılavuzu](luis-how-to-add-entities.md#create-a-machine-learned-entity)dahil olmak üzere makine öğrenimi varlığı hakkında daha fazla bilgi edinin.
 
 [Liste](reference-entity-list.md) varlığı ve [normal ifade](reference-entity-regular-expression.md) varlığı hakkında bilgi edinin.

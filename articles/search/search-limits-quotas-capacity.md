@@ -7,34 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: b54905e201ee7a6dbf4c6837960a6e0b63057ea9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 35cac2c05a8603313bb2bbe1bde3817dc88c6ed2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549049"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682640"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki hizmet sınırları
 
 Depolama, iş yükleri ve dizin ve diğer nesneler için maksimum sınırlar, [Azure bilişsel arama](search-create-service-portal.md) **ücretsiz**, **temel**, **Standart**veya **depolama için iyileştirilmiş** fiyatlandırma katmanlarında sağlayıp sağlamadığınıza bağlıdır.
 
-+ **Ücretsiz** , Azure aboneliğinizle birlikte gelen çok kiracılı bir paylaşılan hizmettir. Dizin oluşturma ve sorgu istekleri, diğer kiracılar tarafından kullanılan çoğaltmalar ve bölümler üzerinde yürütülür.
++ **Ücretsiz** , Azure aboneliğinizle birlikte gelen çok kiracılı bir paylaşılan hizmettir. 
 
 + **Temel** , üretim iş yükleri için daha küçük bir ölçekte özel bilgi işlem kaynakları sağlar, ancak bazı ağ altyapısını diğer kiracılar ile paylaşır.
 
-+ **Standart** , her düzeyde daha fazla depolama ve işleme kapasitesine sahip adanmış makinelerde çalışır. Standart dört düzeyde gelir: S1, S2, S3 ve S3 HD.
++ **Standart** , her düzeyde daha fazla depolama ve işleme kapasitesine sahip adanmış makinelerde çalışır. Standart dört düzeyde gelir: S1, S2, S3 ve S3 HD. S3 yüksek yoğunluk (S3 HD), [çok kiracılı](search-modeling-multitenant-saas-applications.md) ve büyük miktarlarda küçük dizinler (hizmet başına 3000 dizin) için tasarlanmıştır. S3 HD, [Dizin Oluşturucu özelliğini](search-indexer-overview.md) sağlamaz ve veri alımı, verileri kaynaktan dizine ileten API 'lerden faydalamamalıdır. 
 
-+ **Depolama Için iyileştirilmiş** , ayrılmış makinelerde daha fazla toplam depolama, depolama bant genişliği ve **Standart**bellek içeren çalışır. Depolama için Iyileştirilmiş iki düzeyde gelir: L1 ve L2
-
-> [!NOTE]
-> 1 Temmuz itibariyle, depolama için Iyileştirilmiş katmanı da dahil olmak üzere tüm katmanlar genel kullanıma sunulmuştur. Fiyatlandırma [ayrıntıları](https://azure.microsoft.com/pricing/details/search/) sayfasında tüm fiyatlandırmalar bulunabilir.
-
-  S3 yüksek yoğunluk (S3 HD), belirli iş yükleri için tasarlanmıştır: [çok kiracılı](search-modeling-multitenant-saas-applications.md) ve büyük miktarlarda küçük dizinler (hizmet başına 3000 dizin). Bu katman, [Dizin Oluşturucu özelliğini](search-indexer-overview.md)sağlamıyor. S3 HD 'de veri alımı, verileri kaynaktan dizine göndermek için API çağrılarını kullanarak anında iletme yaklaşımına uymalıdır. 
-
-> [!NOTE]
-> Belirli bir katmanda bir hizmet sağlanır. Kapasite kazanmak için katman atlama, yeni bir hizmet sağlamayı içerir (yerinde yükseltme yoktur). Daha fazla bilgi için bkz. [BIR SKU veya katman seçme](search-sku-tier.md). Zaten sağladığınız bir hizmette kapasiteyi ayarlama hakkında daha fazla bilgi edinmek için bkz. [sorgu ve dizin oluşturma iş yükleri Için ölçek kaynak düzeyleri](search-capacity-planning.md).
->
++ **Depolama Için iyileştirilmiş** , ayrılmış makinelerde daha fazla toplam depolama, depolama bant genişliği ve **Standart**bellek içeren çalışır. Bu katman, büyük, yavaş değişen dizinleri hedefler. Depolama için Iyileştirilmiş iki düzeyde gelir: L1 ve L2.
 
 ## <a name="subscription-limits"></a>Abonelik sınırları
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
@@ -46,12 +37,12 @@ Depolama, iş yükleri ve dizin ve diğer nesneler için maksimum sınırlar, [A
 
 ## <a name="index-limits"></a>Dizin sınırları
 
-| Kaynak | Ücretsiz | Temel&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
+| Kaynak | Ücretsiz | Temel &nbsp; <sup>1</sup>  | S1 | S2 | S3 | S3 &nbsp; HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | En fazla dizin |3 |5 veya 15 |50 |200 |200 |Bölüm başına 1000 veya hizmet başına 3000 |10 |10 |
 | Dizin başına en fazla basit alan |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
 | Dizin başına en fazla karmaşık koleksiyon alanı |40 |40 |40 |40 |40 |40 |40 |40 |
-| Belge&nbsp;başına tüm karmaşık koleksiyonlardaki en fazla öğe<sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
+| Belge başına tüm karmaşık koleksiyonlardaki en fazla öğe &nbsp; <sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | Karmaşık alanların en büyük derinliği |10 |10 |10 |10 |10 |10 |10 |10 |
 | Dizin başına maksimum [Öneri araçları](https://docs.microsoft.com/rest/api/searchservice/suggesters) |1 |1 |1 |1 |1 |1 |1 |1 |
 | Dizin başına maksimum [Puanlama profili](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) |100 |100 |100 |100 |100 |100 |100 |100 |
@@ -59,10 +50,7 @@ Depolama, iş yükleri ve dizin ve diğer nesneler için maksimum sınırlar, [A
 
 <sup>1</sup> Aralık 2017 ' den önce oluşturulan temel hizmetler, dizinlerde alt limitlere (15 yerine 5) sahip olmalıdır. Temel katman, dizin başına 100 alan için alt sınıra sahip tek SKU.
 
-<sup>2</sup> her belge için karmaşık koleksiyonlarda çok fazla sayıda öğe olması, yüksek depolama kullanımına neden oluyor. Bu bilinen bir sorundur. Bu sırada, 3000 sınırı tüm hizmet katmanları için güvenli bir üst sınırdır. Bu sınır yalnızca karmaşık tür alanlarını (`2019-05-06`) destekleyen en erken KULLANILABILIR (GA) API sürümünü kullanan dizin oluşturma işlemleri için zorlanır. Önceki önizleme API sürümleri (karmaşık tür alanlarını destekleyen) kullanan istemcileri bozmak için, bu önizleme API sürümlerini kullanan dizin oluşturma işlemleri için bu sınırı zorlayamıyoruz. Önizleme API 'SI sürümlerinin üretim senaryolarında kullanılmadığını ve müşterilerin en son GA API sürümüne taşınmasını önerdiğimiz unutulmamalıdır.
-
-> [!NOTE]
-> Tek bir dizinin maksimum kapasitesi genellikle kullanılabilir depolama alanı ile sınırlı olsa da, tek bir dizinde depolanabilecek toplam belge sayısı üst sınırı vardır. Bu sınır, S3HD Search Services için her dizin için temel, S1, S2 ve S3 arama hizmetleri ve 2.000.000.000 belgelerinin Dizin başına yaklaşık 24.000.000.000 belgelerdir. Karmaşık koleksiyonların her öğesi, bu limitlerin amaçları doğrultusunda ayrı belgeler olarak sayılır.
+<sup>2</sup> her belge için karmaşık koleksiyonlarda çok fazla sayıda öğe olması, yüksek depolama kullanımına neden oluyor. Bu bilinen bir sorundur. Bu sırada, 3000 sınırı tüm hizmet katmanları için güvenli bir üst sınırdır. Bu sınır yalnızca karmaşık tür alanlarını () destekleyen en erken kullanılabilir (GA) API sürümünü kullanan dizin oluşturma işlemleri için zorlanır `2019-05-06` . Önceki önizleme API sürümleri (karmaşık tür alanlarını destekleyen) kullanan istemcileri bozmak için, bu önizleme API sürümlerini kullanan dizin oluşturma işlemleri için bu sınırı zorlayamıyoruz. Önizleme API 'SI sürümlerinin üretim senaryolarında kullanılmadığını ve müşterilerin en son GA API sürümüne taşınmasını önerdiğimiz unutulmamalıdır.
 
 <a name="document-limits"></a>
 
@@ -70,7 +58,10 @@ Depolama, iş yükleri ve dizin ve diğer nesneler için maksimum sınırlar, [A
 
 2018 Ekim itibariyle, hiçbir bölgede faturalandırılabilir katmanda (temel, S1, S2, S3, S3 HD) oluşturulan tüm yeni hizmetler için hiçbir belge sayısı sınırı yoktur. Ekim 2018 ' den önce oluşturulan eski hizmetler belge sayısı sınırlarına tabi olmaya devam edebilir.
 
-Hizmetinizin belge sınırlarına sahip olup olmadığını anlamak için [REST API hizmeti Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)' ı kullanın. Belge limitleri, yanıt olarak, hiçbir sınır `null` belirtilmediğini gösterecek şekilde yansıtılır.
+Hizmetinizin belge sınırlarına sahip olup olmadığını anlamak için [REST API hizmeti Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)' ı kullanın. Belge limitleri, yanıt olarak, `null` hiçbir sınır belirtilmediğini gösterecek şekilde yansıtılır.
+
+> [!NOTE]
+> Hizmet tarafından uygulanan bir belge sınırı olmasa da, temel, S1, S2 ve S3 Arama hizmetlerinde Dizin başına yaklaşık 24.000.000.000 belge sınırı vardır. S3 HD için parça sınırı, dizin başına 2.000.000.000 belgelerdir. Karmaşık bir koleksiyondaki her öğe, parça sınırları bakımından ayrı bir belge olarak sayılır.
 
 ### <a name="document-size-limits-per-api-call"></a>API çağrısı başına belge boyutu sınırları
 
@@ -78,14 +69,14 @@ Bir dizin API 'SI çağrılırken en büyük belge boyutu yaklaşık 16 megabayt
 
 Belge boyutu Aslında Dizin API 'SI istek gövdesinin boyutu için bir sınır olur. Tek seferde Dizin API 'sine birden çok belge toplu işi geçirebileceğinizden, boyut sınırı, toplu işte kaç belge olduğuna göre değişir. Tek bir belge içeren bir toplu iş için en büyük belge boyutu 16 MB 'dir.
 
-Belge boyutunu aşağı tutmak için, sorgulanabilir olmayan verileri istekten çıkarmayı unutmayın. Görüntüler ve diğer ikili veriler doğrudan sorgulanabilir değildir ve dizinde depolanmamalıdır. Sorgulanabilir olmayan verileri arama sonuçlarıyla bütünleştirmek için, kaynağa bir URL başvurusu depolayan aranabilir olmayan bir alan tanımlayın.
+Belge boyutunu tahmin etmek için, yalnızca bir arama hizmeti tarafından tüketilen alanları göz önünde bulundurun. Kaynak belgelerdeki tüm ikili veriler veya resim verileri hesaplamalarınızda atlanmalıdır.  
 
 ## <a name="indexer-limits"></a>Dizin Oluşturucu sınırları
 
 Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalışma süresi mevcuttur, ancak daha büyük veri kümelerinde izin verilen en fazla dizin oluşturma süresi daha fazla olabilir. Bir dizin oluşturma işi izin verilen en uzun süre içinde tamamlanamaz, bir zamanlamaya göre çalıştırmayı deneyin. Zamanlayıcı, dizin oluşturma durumunu izler. Zamanlanan bir dizin oluşturma işi herhangi bir nedenle kesintiye uğrarsa, Dizin Oluşturucu bir sonraki zamanlanmış çalıştırmada en son kaldığınız yeri alabilir.
 
 
-| Kaynak | Ücretsiz&nbsp;<sup>1</sup> | Temel&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
+| Kaynak | Ücretsiz &nbsp; <sup>1</sup> | Temel &nbsp; <sup>2</sup>| S1 | S2 | S3 | S3 &nbsp; HD &nbsp; <sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
 | En fazla dizin oluşturucu |3 |5 veya 15|50 |200 |200 |Yok |10 |10 |
 | En fazla veri kaynağı |3 |5 veya 15 |50 |200 |200 |Yok |10 |10 |
@@ -95,7 +86,7 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 | Maksimum çalışma süresi <sup>5</sup> | 1-3 dakika |24 saat |24 saat |24 saat |24 saat |Yok  |24 saat |24 saat |
 | Bilişsel arama becerileri için maksimum çalışma süresi veya görüntü analizi ile blob dizin oluşturma <sup>5</sup> | 3-10 dakika |2 saat |2 saat |2 saat |2 saat |Yok  |2 saat |2 saat |
 | Blob Indexer: maksimum BLOB boyutu, MB |16 |16 |128 |256 |256 |Yok  |256 |256 |
-| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32.000 |64.000 |4&nbsp;milyon |8&nbsp;milyon |16&nbsp;milyon |Yok |4&nbsp;milyon |4&nbsp;milyon |
+| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32.000 |64.000 |4 &nbsp; milyon |8 &nbsp; milyon |16 &nbsp; milyon |Yok |4 &nbsp; milyon |4 &nbsp; milyon |
 
 <sup>1</sup> ücretsiz hizmet dizin oluşturucunun en yüksek yürütme süresi olan blob kaynakları için 3 dakika ve diğer tüm veri kaynakları için 1 dakikadır. Bilişsel hizmetler 'e çağıran AI dizin oluşturma için ücretsiz hizmetler, bir işlemin, enzenginleştirme ardışık düzeninde başarıyla geçen bir belge olarak tanımlandığı gün başına 20 ücretsiz işlem ile sınırlıdır.
 
@@ -105,14 +96,14 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 
 Beceri <sup>başına en fazla</sup> 30 yetenek.
 
-<sup>5</sup> bilişsel arama iş yükleri ve Azure Blob dizinlemesi içindeki görüntü analizi, normal metin dizinlemesi dışında daha kısa çalışma zamanına sahiptir Görüntü analizi ve doğal dil işleme, yoğun şekilde yoğundur ve orantısız miktarları kullanılabilir işlem gücü kullanıyor. Kuyruktaki diğer işlere bir fırsat sağlamak için çalışma süresi düşürüldü.  
+<sup>5</sup> AI zenginleştirme ve görüntü analizi yoğun bir şekilde yoğun ve orantısız miktarları kullanılabilir işlem gücü kullanıyor. Bu iş yükleri için çalışma süresi, kuyruktaki diğer işlerin daha fazla fırsatta çalışmasına izin verecek şekilde kısaltıldı.  
 
 > [!NOTE]
-> [Dizin sınırları](#index-limits)bölümünde belirtildiği gibi, Dizin oluşturucular, karmaşık türler (`2019-05-06`) Ile bırlıkte en son GA API sürümü ile başlayarak her belge için tüm karmaşık koleksiyonlarda 3000 öğelerin üst sınırını da uygular. Yani, Dizin oluşturucuyu önceki bir API sürümüyle oluşturduysanız bu sınıra tabi olmayacaktır. En yüksek uyumluluğu korumak için, önceki bir API sürümüyle oluşturulmuş ve daha sonra bir API sürümüyle `2019-05-06` veya daha sonraki bir sürümle güncelleştirilmiş bir Dizin Oluşturucu, sınırlara **dahil** edilmez. Müşteriler çok büyük karmaşık koleksiyonlara sahip olmanın olumsuz etkisinin farkında olmalıdır (daha önce belirtildiği gibi) ve en son GA API sürümüyle yeni Dizin oluşturucular oluşturmanız önerilir.
+> [Dizin sınırları](#index-limits)bölümünde belirtildiği gibi, Dizin oluşturucular, karmaşık türler () ile birlikte en son GA API sürümü ile başlayarak her belge için tüm karmaşık koleksiyonlarda 3000 öğelerin üst sınırını da uygular `2019-05-06` . Yani, Dizin oluşturucuyu önceki bir API sürümüyle oluşturduysanız bu sınıra tabi olmayacaktır. En yüksek uyumluluğu korumak için, önceki bir API sürümüyle oluşturulmuş ve daha sonra bir API sürümüyle veya daha sonraki bir sürümle güncelleştirilmiş bir Dizin Oluşturucu, `2019-05-06` sınırlara **dahil** edilmez. Müşteriler çok büyük karmaşık koleksiyonlara sahip olmanın olumsuz etkisinin farkında olmalıdır (daha önce belirtildiği gibi) ve en son GA API sürümüyle yeni Dizin oluşturucular oluşturmanız önerilir.
 
 ## <a name="synonym-limits"></a>Eş anlamlı sınırları
 
-İzin verilen en fazla eş anlamlı eşleme sayısı fiyatlandırma katmanına göre değişir. Her kural, bir genişletmenin eşdeğer bir terim olduğu en fazla 20 genişlemeye sahip olabilir. Örneğin, "Cat", "Kitty", "Feline" ve "Felis" (kediler için Genus) ilişkisi, 3 genişletmeleri olarak sayılır.
+En fazla eş anlamlı eşleme sayısı katmana göre değişir. Her kural, bir genişletmenin eşdeğer bir terim olduğu en fazla 20 genişlemeye sahip olabilir. Örneğin, "Cat", "Kitty", "Feline" ve "Felis" (kediler için Genus) ilişkisi, 3 genişletmeleri olarak sayılır.
 
 | Kaynak | Ücretsiz | Temel | S1 | S2 | S3 | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
@@ -125,11 +116,11 @@ QPS tahminleri her müşteri tarafından bağımsız olarak geliştirilmelidir. 
 
 Tahminler, adanmış kaynaklar üzerinde (temel ve standart Katmanlar) çalışan hizmetler üzerinde hesaplandığında daha öngörülebilir hale ayarlanır. Daha fazla parametre üzerinde denetiminiz olduğundan QPS 'yi daha yakından tahmin edebilirsiniz. Tahmine yaklaşıma ilişkin yönergeler için bkz. [Azure bilişsel arama performansı ve iyileştirmesi](search-performance-optimization.md).
 
-Depolama için Iyileştirilmiş katmanlar için, standart katmanlardan daha düşük bir sorgu üretilen işi ve daha yüksek gecikme süresi beklemelisiniz.  Deneyimimiz sorgu performansını tahmin etme yöntemi, standart katmanlarla aynıdır.
+Depolama için Iyileştirilmiş Katmanlar (L1 ve L2) için, standart katmanlardan daha düşük bir sorgu üretilen işi ve daha yüksek gecikme süresi beklemelisiniz. 
 
 ## <a name="data-limits-ai-enrichment"></a>Veri limitleri (AI zenginleştirme)
 
-[Varlık tanıma](cognitive-search-skill-entity-recognition.md), [anahtar ifade ayıklama](cognitive-search-skill-keyphrases.md), yaklaşım [Analizi](cognitive-search-skill-sentiment.md), [dil algılama](cognitive-search-skill-language-detection.md)ve [PII algılama](cognitive-search-skill-pii-detection.md) için bir metin analizi kaynağına çağrılar yapan bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) veri sınırlarına tabidir. Bir kaydın en büyük boyutu, tarafından [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Bu verileri yaklaşım Çözümleyicisi 'ne göndermeden önce bölmeniz gerekirse, [metin bölünmüş yeteneği](cognitive-search-skill-textsplit.md)kullanın.
+[Varlık tanıma](cognitive-search-skill-entity-recognition.md), [anahtar ifade ayıklama](cognitive-search-skill-keyphrases.md), yaklaşım [Analizi](cognitive-search-skill-sentiment.md), [dil algılama](cognitive-search-skill-language-detection.md)ve [kişisel bilgi algılama](cognitive-search-skill-pii-detection.md) için bir metin analizi kaynağına çağrılar yapan bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) veri sınırlarına tabidir. Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Bu verileri yaklaşım Çözümleyicisi 'ne göndermeden önce bölmeniz gerekirse, [metin bölünmüş yeteneği](cognitive-search-skill-textsplit.md)kullanın.
 
 ## <a name="throttling-limits"></a>Azaltma sınırları
 

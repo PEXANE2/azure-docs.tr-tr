@@ -1,14 +1,14 @@
 ---
 title: Uyumsuzluk nedenlerini belirleme
 description: Bir kaynak uyumsuz olduğunda birçok olası neden vardır. Uyumsuzluğun ne olduğunu öğrenin.
-ms.date: 04/26/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 395c70309ceca6e38f9f62522d80fb588821b886
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b26357e9957259470049209913501cc024caeaa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182591"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684234"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Uyumsuzluk nedenlerini belirleme
 
@@ -81,7 +81,7 @@ Bu ayrıntılar, bir kaynağın Şu anda uyumsuz olduğunu, ancak kaynağın uyu
 
 Aşağıdaki matris, her olası _nedeni_ ilke tanımındaki sorumlu [koşula](../concepts/definition-structure.md#conditions) eşler:
 
-|Neden | Koşul |
+|Nedeni | Koşul |
 |-|-|
 |Geçerli değer, anahtar olarak hedef değeri içermelidir. |containsKey veya notcontainskey **değil** |
 |Geçerli değer hedef değer içermelidir. |notcontains içerir veya **içermez** |
@@ -115,11 +115,11 @@ Ayrıca, VM 'de doğrudan oturum açma erişimi de olmayabilir, ancak VM 'nin ne
 
 İlke uyumluluk ayrıntılarını görüntülemek için yukarıdaki bölümde bulunan adımları izleyerek başlayın.
 
-**Uyumluluk ayrıntıları** bölmesi görünümünde, **son değerlendirilen kaynağı**bağla ' ya tıklayın.
+Uyumluluk ayrıntıları bölmesi görünümünde, **son değerlendirilen kaynağı**bağla ' yı tıklatın.
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Auditınotexists tanım ayrıntılarını görüntüle" border="false":::
 
-**Konuk atama** sayfası tüm kullanılabilir uyumluluk ayrıntılarını görüntüler. Görünümdeki her satır, makine içinde gerçekleştirilen bir değerlendirmeyi temsil eder. **Neden** sütununda, Konuk atamasının neden _uyumlu_ olmadığı açıklayan bir ifade gösterilmektedir. Örneğin, parola ilkelerini denetleriz, **Reason** sütununda her ayar için geçerli değer de dahil olmak üzere metin görüntülenir.
+**Konuk atama** sayfası tüm kullanılabilir uyumluluk ayrıntılarını görüntüler. Görünümdeki her satır, makine içinde gerçekleştirilen bir değerlendirmeyi temsil eder. **Neden** sütununda, Konuk atamasının neden _uyumlu olmadığı açıklanamayan_bir ifade gösterilir. Örneğin, parola ilkelerini denetleriz, **Reason** sütununda her ayar için geçerli değer de dahil olmak üzere metin görüntülenir.
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Uyumluluk ayrıntılarını görüntüle" border="false":::
 

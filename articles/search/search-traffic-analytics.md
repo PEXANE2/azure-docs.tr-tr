@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 7c843b45b5a398aaaa1aab66f80961560477cf18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 794c88556fb69aae11c582afd03f548480469e34
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128108"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684715"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Arama trafiği analizi için telemetri verilerini toplama
 
@@ -48,7 +48,7 @@ Application Insights bir kaynağınız olduğunda, uygulamanızı kaydetmek içi
 
 Bazı Visual Studio proje türleri için çalışma için bir kısayol aşağıdaki adımlarda yansıtılır. Bir kaynak oluşturur ve uygulamanızı yalnızca birkaç tıklamayla kaydeder.
 
-1. Visual Studio ve ASP.NET geliştirme için çözümünüzü açın ve **Proje** > **Ekle Application Insights telemetri**' yi seçin.
+1. Visual Studio ve ASP.NET geliştirme için çözümünüzü açın ve **Proje**  >  **Ekle Application Insights telemetri**' yi seçin.
 
 1. **Başlarken**' e tıklayın.
 
@@ -236,4 +236,4 @@ Arama hizmetinize yönelik güçlü ve öngörülü veriler almak için arama uy
 
 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) hakkında daha fazla bilgi bulabilir ve farklı hizmet katmanları hakkında daha fazla bilgi edinmek için [fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/application-insights/) ziyaret edebilirsiniz.
 
-Harika raporlar oluşturma hakkında daha fazla bilgi edinin. Ayrıntılar için bkz. [Power BI Desktop kullanmaya](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) başlama.
+Harika raporlar oluşturma hakkında daha fazla bilgi edinin. Ayrıntılar için bkz. [Power BI Desktop kullanmaya](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started) başlama.

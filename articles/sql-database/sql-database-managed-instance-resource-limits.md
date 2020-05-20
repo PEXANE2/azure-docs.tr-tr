@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: b2871ec87e4d7f337c26b3ff3de83c1c3c88aea2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49a9355d0e5653ac453493a1808ab95136410d19
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80365388"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680483"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -63,7 +63,7 @@ Yönetilen örnekte iki hizmet katmanı vardır: [genel amaçlı](sql-database-s
 > [!Important]
 > İş Açısından Kritik hizmet katmanı, salt okuma iş yükü için kullanılabilen örneğin ek yerleşik kopyasını (ikincil çoğaltma) sağlar. Okuma-yazma sorgularını ve salt okunurdur/analitik/raporlama sorgularını ayırabiliyorsanız, aynı fiyat için iki sanal çekirdek ve bellek elde edersiniz. İkincil çoğaltma, birincil örnekten birkaç saniye daha fazla gecikme gösterebilir ve bu nedenle, tam olarak geçerli veri durumunu gerektirmeyen raporlama/analiz iş yükünü devretmek üzere tasarlanmıştır. Aşağıdaki tabloda, salt yazılır **sorgular** , ikincil çoğaltmada yürütülen sorgulardır.
 
-| **Özellik** | **Genel Amaçlı** | **İş Açısından Kritik** |
+| **Öne çıkan özelliği** | **Genel Amaçlı** | **İş Açısından Kritik** |
 | --- | --- | --- |
 | Sanal çekirdek sayısı\* | 4. nesil: 8, 16, 24<br/>5. nesil: 4, 8, 16, 24, 32, 40, 64, 80 | 4. nesil: 8, 16, 24 <br/> 5. nesil: 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Salt okuma sorguları için aynı sayıda sanal çekirdek ayrılmış. |
 | Maksimum bellek | 4. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>5. nesil: 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | 4. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>Okuma-yazma sorguları için 5. nesil: 20,4 GB-408 GB (5.1 GB/vCore)<br/>+ salt okuma sorguları için + ek 20,4 GB-408 GB (5.1 GB/vCore).<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
@@ -81,6 +81,7 @@ Yönetilen örnekte iki hizmet katmanı vardır: [genel amaçlı](sql-database-s
 | Bellek içi OLTP | Desteklenmiyor | Kullanılabilir, [Boyut sanal çekirdek sayısına bağlıdır](#in-memory-oltp-available-space) |
 | En fazla oturum sayısı | 30000 | 30000 |
 | [Salt okuma çoğaltmaları](sql-database-read-scale-out.md) | 0 | 1 (fiyata dahildir) |
+| İşlem yalıtımı | 5. nesil<br/>-80 sanal çekirdekler için desteklenir<br/>-diğer boyutlar için desteklenmez<br/><br/>Kullanımdan kaldırılması nedeniyle 4. nesil desteklenmiyor|5. nesil<br/>-60, 64, 80 sanal çekirdekler için desteklenir<br/>-diğer boyutlar için desteklenmez<br/><br/>Kullanımdan kaldırılması nedeniyle 4. nesil desteklenmiyor|
 
 > [!NOTE]
 > - **Şu anda kullanılabilir örnek depolama boyutu** , ayrılmış örnek boyutu ve kullanılan depolama alanı arasındaki farktır.

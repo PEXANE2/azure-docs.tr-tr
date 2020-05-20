@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: d050efe1224e2783cdad52a12c842f7abe44b7af
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597705"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682431"
 ---
 # <a name="publisher-verification-preview"></a>Yayımcı doğrulaması (Önizleme)
 
-Yayımcı doğrulaması (Önizleme), yöneticilerin ve son kullanıcıların Microsoft Identity platformu ile tümleştirerek uygulama geliştiricilerinin orijinalliğini anlamalarına yardımcı olur. Diğer bir deyişle, yayımcı bilinen bir kaynak veya kötü aktör disguising kendilerini iyi bilinen bir yayımcı olarak kullanıyor mu? Bir uygulama, yayımcı doğrulanmış olarak işaretlendiğinde, yayımcının [doğrulama](/partner-center/verification-responses) işlemini tamamlamış bir [Microsoft iş ortağı ağı](https://partner.microsoft.com/membership) hesabı kullanarak kimliğini DOĞRULADıĞıNı ve bu MPN hesabını uygulama kaydıyla ilişkilendirdiğini anlamına gelir. 
+Yayımcı doğrulaması (Önizleme), yöneticilerin ve son kullanıcıların Microsoft Identity platformu ile tümleştirerek uygulama geliştiricilerinin orijinalliğini anlamalarına yardımcı olur. Bir uygulama, yayımcı doğrulanmış olarak işaretlendiğinde, yayımcının [doğrulama](/partner-center/verification-responses) işlemini tamamlamış bir [Microsoft iş ortağı ağı](https://partner.microsoft.com/membership) hesabı kullanarak kimliğini DOĞRULADıĞıNı ve bu MPN hesabını uygulama kaydıyla ilişkilendirdiğini anlamına gelir. 
 
 Azure AD onay istemi ve diğer ekranlarda mavi "doğrulanan" bir rozet görünür: ![ onay istemi](./media/publisher-verification-overview/consent-prompt.png)
 

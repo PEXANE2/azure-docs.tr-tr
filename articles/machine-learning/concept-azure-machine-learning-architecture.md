@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/17/2020
+ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: e70401bbaa97920163f3c7e76e32b9b9be2f5e72
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 49c23774fe16c24ba90daa02cdda1688b79b12d3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871484"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683051"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -34,7 +34,7 @@ Machine Learning modeli iş akışı genellikle bu diziyi izler:
 
 1. **Paket** -tatmin edici bir çalıştırma oluşturulduktan sonra, kalıcı modeli **model kayıt defterine**kaydedin.
 
-1. **Validate** - Geçerli ve geçmişteki çalıştırmaların günlüğe kaydedilen ölçümler için denemeyi**sorgulamayı** doğrula. Ölçümler istenen sonucu belirtmezse, 1. adıma dönün ve betiklerinizde yineleme yapın.
+1. **Doğrula**  -  Geçerli ve eski çalıştırmaların günlüğe kaydedilen ölçümler için denemeyi **sorgulayın** . Ölçümler istenen sonucu belirtmezse, 1. adıma dönün ve betiklerinizde yineleme yapın.
 
 1. **Dağıtım** -modeli kullanan bir Puanlama betiği geliştirin ve modeli Azure 'da **Web hizmeti** olarak veya **IoT Edge bir cihaza** **dağıtın** .
 
@@ -48,7 +48,7 @@ Bu araçları Azure Machine Learning için kullanın:
 + [R için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)ile herhangi bir r ortamındaki hizmetle etkileşime geçin.
 + [Azure MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)ile makine öğrenimi etkinliklerinizi otomatikleştirin.
 + Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcı (Önizleme)](concept-designer.md) kullanın.
-
++ [Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmenize, çalıştırmanıza ve yönetmenize olanak sağlar.
 
 > [!NOTE]
 > Bu makalede Azure Machine Learning tarafından kullanılan hüküm ve kavramlar tanımlanmakla birlikte, Azure platformu için hüküm ve kavramlar tanımlamaz. Azure platform terminolojisi hakkında daha fazla bilgi için [Microsoft Azure sözlüğü](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)bölümüne bakın.
@@ -58,11 +58,11 @@ Bu araçları Azure Machine Learning için kullanın:
 * [Etkinlik](#activities)
 * [Çalışma alanı](#workspaces)
     * [Denemeler](#experiments)
-        * [Çalışmaz](#runs) 
+        * [Çalıştır](#runs) 
             * [Yapılandırmayı Çalıştır](#run-configurations)
             * [Anlık Görüntü](#snapshots)
             * [Git izleme](#github-tracking-and-integration)
-            * [Günlüğe Kaydetme](#logging)
+            * [Günlüğe kaydetme](#logging)
     * [ML işlem hatları](#ml-pipelines)
     * [Modeller](#models)
         * [Ortamlar](#environments)
@@ -83,7 +83,7 @@ Etkinlik uzun süren bir işlemi temsil eder. Aşağıdaki işlemler etkinlik ö
 
 Etkinlikler, bu işlemlerin ilerlemesini kolayca izleyebilmeniz için SDK veya Web Kullanıcı arabirimi aracılığıyla bildirim sağlayabilir.
 
-### <a name="workspaces"></a>Çalışma Alanları
+### <a name="workspaces"></a>Çalışma alanları
 
 [Çalışma alanı](concept-workspace.md) Azure Machine Learning için en üst düzey kaynaktır. Azure Machine Learning kullandığınızda oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Çalışma alanını başkalarıyla paylaşabilirsiniz. Çalışma alanlarının ayrıntılı bir açıklaması için bkz. [Azure Machine Learning çalışma alanı nedir?](concept-workspace.md).
 
@@ -127,7 +127,7 @@ Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başla
 
 Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](concept-train-model-git-integration.md).
 
-### <a name="logging"></a>Günlüğe Kaydetme
+### <a name="logging"></a>Günlüğe kaydetme
 
 Çözümünüzü geliştirirken, isteğe bağlı ölçümleri günlüğe kaydetmek için Python betikinizdeki Azure Machine Learning Python SDK 'sını kullanın. Çalıştırıldıktan sonra, çalıştırmanın dağıtmak istediğiniz modeli üretmediğini öğrenmek için ölçümleri sorgulayın.
 
@@ -182,7 +182,7 @@ Popüler çerçeveler ile model eğitimi kolaylaştırmak için, tahmin aracı s
 
 Pytorch, TensorFlow ve Chainer görevleri için Azure Machine Learning Ayrıca bu çerçeveleri kullanmayı basitleştirmek için, ilgili [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)ve [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) tahmini 'ı da sağlar.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * Tüm [ml modellerini tahmini ile eğitme](how-to-train-ml-models.md).
 * [Pytorch derin öğrenme modellerini Azure Machine Learning ölçeklendirirken eğitme](how-to-train-pytorch.md).
@@ -222,7 +222,7 @@ Bir **Azure Machine Learning işlem örneği** (eski adıyla Not defteri VM), ma
 
 **Azure Machine Learning veri kümeleri** (Önizleme), erişimi daha kolay hale getirir ve verilerinize çalışır. Veri kümeleri, model eğitimi ve işlem hattı oluşturma gibi çeşitli senaryolarda verileri yönetir. Azure Machine Learning SDK 'yı kullanarak, temel depolamaya erişebilir, verileri keşfedebilir ve farklı veri kümesi tanımlarının yaşam döngüsünü yönetebilirsiniz.
 
-Veri kümeleri, veya `from_delimited_files()` `to_pandas_dataframe()`kullanma gibi popüler biçimlerdeki verilerle çalışmaya yönelik yöntemler sağlar.
+Veri kümeleri, veya kullanma gibi popüler biçimlerdeki verilerle çalışmaya yönelik yöntemler sağlar `from_delimited_files()` `to_pandas_dataframe()` .
 
 Daha fazla bilgi için bkz. [Azure Machine Learning veri kümeleri oluşturma ve kaydetme](how-to-create-register-datasets.md).  Veri kümelerini kullanarak daha fazla örnek için bkz. [örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial).
 

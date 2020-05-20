@@ -3,18 +3,15 @@ author: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: include
-ms.date: 08/06/2018
+ms.date: 05/13/2019
 ms.author: celested
-ms.openlocfilehash: 2bf0c0c9a7af3ecc3b85d1bd449ac25ee211987c
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: f4abe0b4fb70726da4ede3d4b05f5214f549bf41
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "67188550"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680329"
 ---
 ## <a name="help-and-support"></a>Yardım ve destek
 
-Yardıma ihtiyacınız varsa, bir sorunu raporlamak istiyorsanız veya destek seçenekleriniz hakkında daha fazla bilgi edinmek istiyorsanız, aşağıdaki makaleye bakın:
-
-> [!div class="nextstepaction"]
-> [Geliştiriciler için yardım ve destek](../articles/active-directory/develop/developer-support-help-options.md)
+Yardıma ihtiyacınız varsa, bir sorun bildirmek veya Destek seçenekleriniz hakkında bilgi edinmek istiyorsanız bkz. [geliştiriciler Için yardım ve destek](../articles/active-directory/develop/developer-support-help-options.md).

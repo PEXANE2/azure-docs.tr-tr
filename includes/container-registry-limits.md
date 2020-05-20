@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 05/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0090f02382e024e5539383328b55d58798002d63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19d0be6a032868c6683cd5b6bbfa7f07306171fb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79117108"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683424"
 ---
 | Kaynak | Temel | Standart | Premium |
 |---|---|---|---|
@@ -26,9 +26,9 @@ ms.locfileid: "79117108"
 | Web Kancaları | 2 | 10 | 500 |
 | Coğrafi çoğaltma | Yok | Yok | [Destek][geo-replication] |
 | İçerik güveni | Yok | Yok | [Destek][content-trust] |
-| Sanal ağ erişimi | Yok | Yok | [Önizleme][vnet] |
-| Özel bağlantı tümleştirmesi | Yok | Yok | [Önizleme][plink] |
-| Müşteri tarafından yönetilen anahtarlar | Yok | Yok | [Önizleme][cmk] |
+| Özel uç noktalarla özel bağlantı | Yok | Yok | [Destek][plink] |
+| Hizmet uç noktası VNet erişimi | Yok | Yok | [Önizleme][vnet] |
+| Müşteri tarafından yönetilen anahtarlar | Yok | Yok | [Destek][cmk] |
 | Depo kapsamlı izinler | Yok | Yok | [Önizleme][token]|
 | &bull;Simgelerini | Yok | Yok | 20.000 |
 | &bull;Kapsam eşlemeleri | Yok | Yok | 20.000 |
@@ -41,7 +41,7 @@ ms.locfileid: "79117108"
 
 <sup>3</sup> [Docker Pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) , görüntüdeki katmanların sayısına ve bildirim almaya göre birden çok okuma işlemine çevrilir.
 
-<sup>4</sup> [Docker Push](https://docs.docker.com/registry/spec/api/#pushing-an-image) , itilmiş olması gereken katmanların sayısına bağlı olarak birden çok yazma işlemine çevrilir. , `docker push` Var olan bir görüntü için bildirim almak üzere *readops 'leri* içerir.
+<sup>4</sup> [Docker Push](https://docs.docker.com/registry/spec/api/#pushing-an-image) , itilmiş olması gereken katmanların sayısına bağlı olarak birden çok yazma işlemine çevrilir. , `docker push` Var olan bir görüntü için bildirim almak üzere *Readops 'leri* içerir.
 
 <!-- LINKS - External -->
 [pricing]: https://azure.microsoft.com/pricing/details/container-registry/

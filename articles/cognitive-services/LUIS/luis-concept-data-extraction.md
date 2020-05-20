@@ -4,17 +4,17 @@ description: Amaç ve varlıklar ile söylenişi metinlerdeki verileri ayıklay�
 author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 3b6b09fd1066a9caa745cddf30d76e2843c3f56c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589729"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682200"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Amaç ve varlıklar ile söylenişi metinlerinde veri ayıklama
 LUO, kullanıcının doğal dil dıklarından bilgi almanıza olanak tanır. Bilgiler, bir program, uygulama veya sohbet bot tarafından işlem gerçekleştirmek üzere kullanılabilecek şekilde ayıklanır. Aşağıdaki bölümlerde, veri ve varlıklardan JSON örnekleri ile hangi verilerin döndürüldüğünü öğrenin.
 
-Bir tam metin eşleşmesi olmadığından Ayıklanacak en zor veriler makine tarafından öğrenilen veri. Makine tarafından öğrenilen [varlıkların](luis-concept-entity-types.md) veri ayıklamasıyla, beklediğiniz verileri elde edinceye kadar, [yazma döngüsünün](luis-concept-app-iteration.md) bir parçası olması gerekir.
+Bir tam metin eşleşmesi olmadığından Ayıklanacak en zor veriler makine öğrenimi verileri. Makine öğrenimi [varlıklarının](luis-concept-entity-types.md) veri ayıklamasıyla, bekleyen verileri elde edinceye kadar, [yazma döngüsünün](luis-concept-app-iteration.md) bir parçası olması gerekir.
 
 ## <a name="data-location-and-key-usage"></a>Veri konumu ve anahtar kullanımı
 LUO, yayımlanan [uç noktada](luis-glossary.md#endpoint)kullanıcının zaman içindeki zaman içindeki verileri ayıklar. **Https isteği** (Post veya Get), hazırlama veya üretim ortamları gibi bazı isteğe bağlı yapılandırmalara sahiptir.
@@ -245,7 +245,7 @@ Bazı uygulamaların, ürünler veya şirketler gibi yeni ve gelişmekte olan ad
 
 ## <a name="patternany-entity-data"></a>Model. tüm varlık verileri
 
-[Desen. any](reference-entity-pattern-any.md) , varlığın nerede başladığını ve bittiğini işaretlemek için yalnızca bir desen şablonunda kullanılan değişken uzunluklu bir yer tutucudur. Düzenin uygulanması için, düzende kullanılan varlığın bulunması gerekir. 
+[Desen. any](reference-entity-pattern-any.md) , varlığın nerede başladığını ve bittiğini işaretlemek için yalnızca bir desen şablonunda kullanılan değişken uzunluklu bir yer tutucudur. Düzenin uygulanması için, düzende kullanılan varlığın bulunması gerekir.
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 [Yayımlama](luis-how-to-publish-app.md#sentiment-analysis)sırasında yaklaşım Analizi YAPıLANDıRıLıRSA, lusıs JSON yanıtı yaklaşım analizini içerir. [Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) belgelerindeki yaklaşım analizi hakkında daha fazla bilgi edinin.

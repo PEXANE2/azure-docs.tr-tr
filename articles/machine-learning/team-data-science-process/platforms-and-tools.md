@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88e9cdfa8ea4554a44ddfc25cde2b0eb2aed7a57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81256527"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682707"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Veri bilimi projeleri için platformlar ve araçlar
 
@@ -49,7 +49,7 @@ Ayrıca, xgboost, mxnet ve Vowpal Wabbit gibi **ml ve AI araçları** da içerir
 
 Şu anda DSVM, **Windows** ve **Linux CentOS** işletim sistemlerinde kullanılabilir. Üzerinde yürütmeyi planladığınız veri bilimi projelerinin ihtiyaçlarına göre DSVM 'nizin boyutunu (CPU çekirdeği sayısı ve bellek miktarı) seçin. 
 
-DSVM 'nin Windows sürümü hakkında daha fazla bilgi için bkz. Azure Marketi 'nde [Microsoft veri bilimi sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) . DSVM 'nin Linux sürümü için bkz. [linux veri bilimi sanal makinesi](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804).
+DSVM 'nin Windows sürümü hakkında daha fazla bilgi için bkz. Azure Marketi 'nde [Microsoft veri bilimi sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) . DSVM 'nin Linux sürümü için bkz. [linux veri bilimi sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804).
 
 DSVM 'de ortak veri bilimi görevlerinin bazılarının nasıl yürütüleceğini öğrenmek için bkz. [veri bilimi sanal makinesi üzerinde yapabileceğiniz 10 şey](../data-science-virtual-machine/vm-do-ten-things.md)
 
@@ -136,7 +136,7 @@ Git komutlarını çalıştırmak için Linux (CentOS) makineleri kullanıyorsan
 
 1. SSH *-RSA*dahil tüm SSH anahtarını kopyalayın. 
 1. Azure DevOps Services oturum açın. 
-1. Sayfanın sağ üst köşesindeki **\> adınızı<** tıklayın ve **güvenlik**' e tıklayın. 
+1. Sayfanın sağ üst köşesindeki ** \> adınızı<** tıklayın ve **güvenlik**' e tıklayın. 
     
    ![Adınızın ardından Güvenlik ' e tıklayın.](./media/platforms-and-tools/resources-2-user-setting.png)
 

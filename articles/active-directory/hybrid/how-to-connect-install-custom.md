@@ -14,12 +14,12 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5f83fa040de501adf3afa523086e100244fa619
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f96e70c6699fb7ce85bd1c01f72028f537f994f2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331797"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680297"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect özel yüklemesi
 Yükleme için daha fazla seçenek istediğinizde Azure AD Connect **Özel ayarları** kullanılır. Birden fazla ormanınız varsa veya hızlı yükleme kapsamında yer almayan isteğe bağlı özellikleri yapılandırmak istiyorsanız kullanılır. [**Hızlı yükleme**](how-to-connect-install-express.md) seçeneğinin dağıtımınız veya topolojiniz için uygun olmadığı tüm durumlarda kullanılır.
@@ -89,7 +89,7 @@ Orman adını girip **Dizin Ekle**’ye tıkladıktan sonra, bir iletişim kutus
 #### <a name="enterprise-admin-and-domain-admin-accounts-not-supported"></a>Kurumsal Yönetici ve etki alanı yönetici hesapları desteklenmiyor
 Derleme 1.4.18.0 itibariyle, artık AD DS bağlayıcı hesabı olarak bir kurumsal yönetici veya etki alanı yöneticisi hesabı kullanmak için desteklenmez.  **Mevcut hesabı kullan**' ı belirtirken Kurumsal Yönetici veya etki alanı yöneticisi olan bir hesap girmeyi denerseniz, şu hatayı alırsınız:
 
-  **"AD Ormanı hesabınız için bir kuruluş veya etki alanı yönetici hesabı kullanılmasına izin verilmiyor.  Hesabı sizin için Azure AD Connect oluşturmaya veya doğru izinlere sahip bir eşitleme hesabı belirtmenize izin verin.  &lt;Daha fazla&gt;bilgi "**
+  **"AD Ormanı hesabınız için bir kuruluş veya etki alanı yönetici hesabı kullanılmasına izin verilmiyor.  Hesabı sizin için Azure AD Connect oluşturmaya veya doğru izinlere sahip bir eşitleme hesabı belirtmenize izin verin.  &lt;Daha fazla bilgi &gt; "**
 
 ### <a name="azure-ad-sign-in-configuration"></a>Azure AD oturum açma yapılandırması
 Bu sayfa, Azure AD'de doğrulanmış olup şirket içi AD DS'de var olan UPN etki alanlarını gözden geçirmenize olanak sağlar. Ayrıca bu sayfa sayesinde userPrincipalName için kullanılacak özniteliği yapılandırabilirsiniz.
@@ -181,7 +181,7 @@ Bu ekran, belirli senaryolarınız için isteğe bağlı özellikler seçmenizi 
 | Azure AD uygulaması ve öznitelik filtreleme |Azure AD uygulaması ve öznitelik filtreleme etkinleştirilerek, eşitlenen öznitelikler kümesi uyarlanabilir. Bu seçenek sihirbaza iki yapılandırma sayfası daha ekler. Daha fazla bilgi için bkz. [Azure AD uygulaması ve öznitelik filtreleme](#azure-ad-app-and-attribute-filtering). |
 | Parola karması eşitleme |Oturum açma çözümü olarak federasyonu seçtiyseniz bu seçeneği etkinleştirebilirsiniz. Bu durumda parola karması eşitleme, bir yedekleme seçeneği olarak kullanılabilir. Ek bilgi için bkz. [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md). </br></br>Doğrudan Kimlik Doğrulama’yı seçtiyseniz bu seçenek, eski istemcilere yönelik destek sağlanması ve yedek bir seçenek olarak kullanılması için etkinleştirilebilir. Ek bilgi için bkz. [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md).|
 | Parola geri yazma |Parola geri yazma etkinleştirildiğinde Azure AD'de gerçekleşen parola değişiklikleri şirket içi dizininize geri yazılır. Daha fazla bilgi için bkz. [Parola yönetimine başlarken](../authentication/quickstart-sspr.md). |
-| Grup geri yazma |**Office 365 Grupları** özelliğini kullanıyorsanız bu gruplar şirket içi Active Directory'nizde de temsil edilir. Bu seçenek yalnızca şirket içi Active Directory'nizde Exchange varsa kullanılır. Daha fazla bilgi için bkz. [Grup geri yazma](how-to-connect-preview.md#group-writeback). |
+| Grup geri yazma |**Office 365 Grupları** özelliğini kullanıyorsanız bu gruplar şirket içi Active Directory'nizde de temsil edilir. Bu seçenek yalnızca şirket içi Active Directory'nizde Exchange varsa kullanılır. |
 | Cihaz geri yazma |Azure AD 'deki cihaz nesnelerini, koşullu erişim senaryolarında şirket içi Active Directory geri almanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure AD Connect'te cihaz geri yazma özelliğini etkinleştirme](how-to-connect-device-writeback.md). |
 | Dizin genişletme öznitelik eşitlemesi |Dizin genişletme öznitelik eşitlemesi etkinleştirildiğinde, belirtilen öznitelikler Azure AD ile eşitlenir. Daha fazla bilgi için bkz. [Dizin genişletmeleri](how-to-connect-sync-feature-directory-extensions.md). |
 
@@ -382,7 +382,7 @@ Doğrula düğmesine tıkladığınızda Azure AD Connect sizin için DNS ayarla
 
 * Federasyon FQDN'sini çözümleme: Azure AD, bağlantıdan emin olmak için Federasyon FQDN’sinin DNS ile çözümlenip çözümlenemeyeceğini denetler.
 
-![Complete](./media/how-to-connect-install-custom/completed.png)
+![Tamamla](./media/how-to-connect-install-custom/completed.png)
 
 ![Doğrulama](./media/how-to-connect-install-custom/adfs7.png)
 

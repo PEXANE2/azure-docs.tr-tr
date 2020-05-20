@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 0542106f70e96b6c2f63e8ca03d2532de191d365
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79477179"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682723"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Aerospace 'de tahmine dayalı bakım için çözüm şablonuna yönelik teknik kılavuz
 
@@ -91,7 +91,7 @@ Aerospace çözüm şablonu için tahmine dayalı bakım için, Azure Stream Ana
 Azure Stream Analytics sorgu şu şekilde bulunabilir:
 
 * Azure portal bağlanma
-* Çözüm dağıtıldığında oluşturulan Stream Analytics ![işleri Stream Analytics](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png) simgesini bulma (*Örneğin*, tahmine dayalı bakım çözümü için **maintenancesa02asapbi** ve **maintenancesa02asablob** )
+* ![Çözüm dağıtıldığında oluşturulan Stream Analytics işleri Stream Analytics simgesini bulma ](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png) (*Örneğin*, tahmine dayalı bakım çözümü için **maintenancesa02asapbi** ve **maintenancesa02asablob** )
 * Seçiminde
   
   * Sorgu girişini görüntülemek için ***girişler***
@@ -113,7 +113,7 @@ Bu bölümde [Azure Data Factory](https://azure.microsoft.com/documentation/serv
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-Bu fabrikaya ait işlem hatlarından ikisi, verileri bölümlemek ve toplamak için kullanılan [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) betikleri içerir. Not edildiğinde, betikler kurulum sırasında oluşturulan [Azure Storage](https://azure.microsoft.com/services/storage/) hesabında bulunur. Bu konum şunlardır: maintenancesascript\\\\Script\\\\Hive\\ \\ (veya https://[çözümünüz adınız]. blob. Core. Windows. net/maintenancesascript).
+Bu fabrikaya ait işlem hatlarından ikisi, verileri bölümlemek ve toplamak için kullanılan [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) betikleri içerir. Not edildiğinde, betikler kurulum sırasında oluşturulan [Azure Storage](https://azure.microsoft.com/services/storage/) hesabında bulunur. Bu konum şunlardır: maintenancesascript \\ \\ Script \\ \\ Hive \\ \\ (veya https://[çözümünüz adınız]. blob. Core. Windows. net/maintenancesascript).
 
 [Azure Stream Analytics](#azure-stream-analytics-1) sorgulara benzer şekilde, [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) betiklerinin gelen veri biçimi hakkında örtülü bilgileri vardır ve veri biçiminizdeki olarak değiştirilmesi gerekir.
 
@@ -142,7 +142,7 @@ Bu çözüm şablonu için kullanılan [Azure Machine Learning](https://azure.mi
 Veri Oluşturucu başlatıldıktan sonra, işlem hattı, veri fabrikası tarafından verilen komutları takip eden bir şekilde çalışmaya başlar ve çözümünüzün farklı bileşenleri eyleme açılır. İşlem hattını izlemenin iki yolu vardır.
 
 * Stream Analytics işlerden biri ham gelen verileri blob depolamaya yazar. Çözümü başarıyla dağıttığınızdan çözümünüzün BLOB depolama bileşeni ' ne tıklayın ve ardından sağ bölmede aç ' a tıkladığınızda, sizi [Azure Portal](https://portal.azure.com/)götürür. Bir kez daha sonra Bloblar ' a tıklayın. Sonraki panelde, kapsayıcıların bir listesini görürsünüz. **Maintenancesadata**' ye tıklayın. Sonraki panelde **rawData** klasörüdür. RawData klasörünün içinde Hour = 17 ve Hour = 18 gibi adlara sahip klasörler bulunur. Bu klasörlerin varlığı, bilgisayarınızda ham verilerin oluşturulduğunu ve BLOB depolama alanında depolandığını belirtir. CSV dosyalarını bu klasörlerde MB olarak sınırlı boyutlarda görmeniz gerekir.
-* İşlem hattının son adımı, verileri (örneğin, makine öğrenimine yönelik tahminler) SQL veritabanı 'na yazmaktır. Verilerin SQL veritabanı 'nda görünmesi için en fazla üç saat beklemeniz gerekebilir. SQL veritabanınızda kullanılabilir veri miktarını izlemenin bir yolu [Azure Portal](https://portal.azure.com/). Sol bölmede SQL VERITABANLARı ![SQL simgesini](./media/predictive-maintenance-technical-guide/icon-SQL-databases.png) bulun ve tıklatın. Daha sonra veritabanınızın **pmaintenancedb** bulun ve üzerine tıklayın. Alt kısımdaki sonraki sayfada Yönet ' e tıklayın.
+* İşlem hattının son adımı, verileri (örneğin, makine öğrenimine yönelik tahminler) SQL veritabanı 'na yazmaktır. Verilerin SQL veritabanı 'nda görünmesi için en fazla üç saat beklemeniz gerekebilir. SQL veritabanınızda kullanılabilir veri miktarını izlemenin bir yolu [Azure Portal](https://portal.azure.com/). Sol bölmede SQL VERITABANLARı ![ SQL simgesini bulun ](./media/predictive-maintenance-technical-guide/icon-SQL-databases.png) ve tıklatın. Daha sonra veritabanınızın **pmaintenancedb** bulun ve üzerine tıklayın. Alt kısımdaki sonraki sayfada Yönet ' e tıklayın.
    
     ![Yönet simgesi](./media/predictive-maintenance-technical-guide/icon-manage.png)
    
@@ -159,7 +159,7 @@ Power BI, tahmin sonuçlarının depolandığı, veri kaynağı olarak bir Azure
 
 Not: 
 1.    Çözümünüzü dağıtmaya yönelik olarak, veritabanında 3 saat içinde bir tahmin görüntülenecektir. Oluşturucu indirimiyle birlikte gelen pbix dosyası, Power BI panosunu hemen oluşturabilmeniz için bazı çekirdek verileri içerir. 
-2.    Bu adımda önkoşul, ücretsiz yazılım [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)'ı indirip yüklemektir.
+2.    Bu adımda önkoşul, ücretsiz yazılım [Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop)'ı indirip yüklemektir.
 
 Aşağıdaki adımlarda, dosya, görselleştirme için verileri (örneğin, tahmin sonuçları) içeren çözüm dağıtımı sırasında en sonunda bulunan SQL veritabanı 'na nasıl bağlayaöğreneceksiniz.
 
@@ -169,29 +169,29 @@ Aşağıdaki adımlarda, dosya, görselleştirme için verileri (örneğin, tahm
    
    * Çözüm şablonu diyagramınızdaki **' Azure SQL veritabanı '** yeşil ' i etkinleştirdikten sonra, tıklayın ve sonra **' Aç '** düğmesine tıklayın.
    * Azure portal sayfasını görüntüleyen yeni bir tarayıcı sekmesi/penceresi görürsünüz. Sol panelde **' kaynak grupları '** seçeneğine tıklayın.
-   * Çözümü dağıtmak için kullanmakta olduğunuz aboneliği seçin ve ardından **' YourSolutionName\_ResourceGroup '** öğesini seçin.
-   * Yeni açılan panelde, veritabanınıza erişmek için ![SQL simgesi](./media/predictive-maintenance-technical-guide/icon-sql.png) simgesine tıklayın. Veritabanınızın adı bu simgenin yanında (örneğin, **' pmaintenancedb '**) ve **veritabanı sunucu adı** sunucu adı özelliği altında listelenir ve **YourSolutionName.Database.Windows.net**şuna benzer görünmelidir.
+   * Çözümü dağıtmak için kullanmakta olduğunuz aboneliği seçin ve ardından **' YourSolutionName \_ ResourceGroup '** öğesini seçin.
+   * Yeni açılan panelde, ![ ](./media/predictive-maintenance-technical-guide/icon-sql.png) veritabanınıza erişmek için SQL simgesi simgesine tıklayın. Veritabanınızın adı bu simgenin yanında (örneğin, **' pmaintenancedb '**) ve **veritabanı sunucu adı** sunucu adı özelliği altında listelenir ve **YourSolutionName.Database.Windows.net**şuna benzer görünmelidir.
    * Veritabanınızın **Kullanıcı adı** ve **parolası** , çözümün dağıtımı sırasında daha önce kaydedilen Kullanıcı adı ve parola ile aynıdır.
 2. Power BI Desktop ile soğuk yol rapor dosyasının veri kaynağını güncelleştirin.
    
-   * Oluşturucu dosyasını indirdiğiniz ve sıkıştırmışın klasörde, **PowerBI\\PredictiveMaintenanceAerospace. pbix** dosyasına çift tıklayın. Dosyayı açtığınızda herhangi bir uyarı iletisi görürseniz, bunları yoksayın. Dosyanın üst kısmında **' sorguları Düzenle '** seçeneğine tıklayın.
+   * Oluşturucu dosyasını indirdiğiniz ve sıkıştırmışın klasörde, **PowerBI \\ PredictiveMaintenanceAerospace. pbix** dosyasına çift tıklayın. Dosyayı açtığınızda herhangi bir uyarı iletisi görürseniz, bunları yoksayın. Dosyanın üst kısmında **' sorguları Düzenle '** seçeneğine tıklayın.
      
      ![Sorguları Düzenle](./media/predictive-maintenance-technical-guide/edit-queries.png)
-   * **RemainingUsefulLife** ve **pmresult**olmak üzere iki tablo görürsünüz. İlk tabloyu seçin ve ![sağ **' sorgu ayarları '** panelinde **' uygulanan adımlar '** altında bulunan **' kaynak '** ' ın yanındaki sorgu ayarları simgesine](./media/predictive-maintenance-technical-guide/icon-query-settings.png) tıklayın. Görüntülenen tüm uyarı iletilerini yoksayın.
+   * **RemainingUsefulLife** ve **pmresult**olmak üzere iki tablo görürsünüz. İlk tabloyu seçin ve ![ ](./media/predictive-maintenance-technical-guide/icon-query-settings.png) sağ **' sorgu ayarları '** panelinde **' uygulanan adımlar '** altında bulunan **' kaynak '** ' ın yanındaki sorgu ayarları simgesine tıklayın. Görüntülenen tüm uyarı iletilerini yoksayın.
    * Açılan pencerede, **' sunucu '** ve **' veritabanı '** ' nı kendi sunucu ve veritabanı adlarınızla değiştirin ve ardından **' Tamam 'a**tıklayın. Sunucu adı için 1433 numaralı bağlantı noktasını (**YourSolutionName.Database.Windows.net, 1433**) belirttiğinizden emin olun. Veritabanı alanını **pmaintenancedb**olarak bırakın. Ekranda görünen uyarı iletilerini yoksayın.
    * Sonraki açılan pencerede, sol bölmede (**Windows** ve **veritabanı**) iki seçenek görürsünüz. ' **Veritabanı '** seçeneğine tıklayın, **' Kullanıcı adı '** ve **' parola '** (çözümü ilk dağıtırken girdiğiniz Kullanıcı adı ve parola) ile bir Azure SQL veritabanı oluşturduğunuzda girin. ***Bu ayarların hangi düzeye uygulanacağını seçin***bölümünde, veritabanı düzeyi seçeneğini işaretleyin. Ardından **' Bağlan**'a tıklayın.
-   * İkinci tablo **Pmresult** ' a tıklayın, ardından ![sağ](./media/predictive-maintenance-technical-guide/icon-navigation.png) **' sorgu ayarları '** panelinde **' uygulanan adımlar '** altında bulunan **' kaynak '** ' ın yanındaki Gezinti simgesi ' ne tıklayın ve sunucu ve veritabanı adlarını yukarıdaki adımlarda olduğu gibi güncelleştirin ve Tamam ' a tıklayın.
+   * İkinci tablo **Pmresult** ' a tıklayın, ardından ![ ](./media/predictive-maintenance-technical-guide/icon-navigation.png) sağ **' sorgu ayarları '** panelinde **' uygulanan adımlar '** altında bulunan **' kaynak '** ' ın yanındaki Gezinti simgesi ' ne tıklayın ve sunucu ve veritabanı adlarını yukarıdaki adımlarda olduğu gibi güncelleştirin ve Tamam ' a tıklayın.
    * Önceki sayfaya geri döndüğünüzde pencereyi kapatın. Bir ileti görüntülenir ve **Uygula**' ya tıklayın. Son olarak, değişiklikleri kaydetmek için **Kaydet** düğmesine tıklayın. Power BI dosyanız artık sunucuyla bağlantı kurdu. Görselleştirmeleriniz boşsa, göstergelerin sağ üst köşesindeki silgi simgesine tıklayarak tüm verileri görselleştirmek için görselleştirmelerin seçimlerini temizlediğinizden emin olun. Görselleştirmelerde yeni verileri yansıtmak için Yenile düğmesini kullanın. Başlangıçta, Veri Fabrikası her 3 saatte bir yenilenmek üzere zamanlandığında yalnızca görselleştirmelerinizde çekirdek verileri görürsünüz. 3 saat sonra, verileri yenilediğinizde görselleştirmelerinizde yansıtılan yeni tahminleri görürsünüz.
 3. Seçim [Power BI çevrimiçi](https://www.powerbi.com/)olarak soğuk yol panosunu yayımlayın. Bu adım bir Power BI hesabına (veya Office 365 hesabına) ihtiyaç duyuyor.
    
    * Daha sonra "Power BI başarılı yayımlama!" ile görüntülenen bir pencere görüntülenirken " **Yayımla** " ve birkaç saniye ' ne tıklayın. yeşil bir onay işareti ile. Aşağıdaki bağlantıya tıklayın. Power BI içinde PredictiveMaintenanceAerospace. pbix dosyasını açın. Ayrıntılı yönergeleri bulmak için bkz. [Power BI Desktop yayımlama](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
-   * Yeni bir pano oluşturmak için: sol bölmedeki **+** **panolar** bölümünün yanındaki işaretine tıklayın. Bu yeni Pano için "tahmine dayalı bakım tanıtımı" adını girin.
-   * Raporu açtığınızda, tüm görselleştirmeleri panonuza ![sabitlemek için](./media/predictive-maintenance-technical-guide/icon-pin.png) sabitle simgesine tıklayın. Ayrıntılı yönergeleri bulmak için bkz. bir [panodaki kutucuğu bir Power BI panoya sabitleme](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
+   * Yeni bir pano oluşturmak için: **+** sol bölmedeki **panolar** bölümünün yanındaki işaretine tıklayın. Bu yeni Pano için "tahmine dayalı bakım tanıtımı" adını girin.
+   * Raporu açtığınızda, ![ ](./media/predictive-maintenance-technical-guide/icon-pin.png) Tüm görselleştirmeleri panonuza sabitlemek için Sabitle simgesine tıklayın. Ayrıntılı yönergeleri bulmak için bkz. bir [panodaki kutucuğu bir Power BI panoya sabitleme](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
      Pano sayfasına gidin ve görselleştirmelerinizin boyutunu ve konumunu ayarlayıp başlıklarını düzenleyin. Kutucuklarınızın nasıl düzenleneceği hakkında ayrıntılı yönergeler için bkz. [kutucuğu düzenleme--yeniden boyutlandırma, taşıma, yeniden adlandırma, sabitleme, silme, köprü ekleme](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Burada, kendisine sabitlenmiş bazı soğuk yol görselleştirmeleri içeren örnek bir pano verilmiştir.  Veri oluşturucuyu ne kadar süreyle çalıştırdığınıza bağlı olarak, Görselleştirmelerde yaptığınız numaralar farklı olabilir.
      <br/>
      ![Son görünüm](./media/predictive-maintenance-technical-guide/final-view.png)
      <br/>
-   * Verilerin yenilenmesini zamanlamak için, farenizi **PredictiveMaintenanceAerospace** veri kümesinin üzerine getirin, üç nokta simgesine ![](./media/predictive-maintenance-technical-guide/icon-elipsis.png) ve sonra **yenilemeyi zamanla**' yı seçin.
+   * Verilerin yenilenmesini zamanlamak için, farenizi **PredictiveMaintenanceAerospace** veri kümesinin üzerine getirin, ![ üç nokta simgesine ](./media/predictive-maintenance-technical-guide/icon-elipsis.png) ve sonra **yenilemeyi zamanla**' yı seçin.
      <br/>
      > [!NOTE]
      > Bir uyarı iletisi görürseniz, **kimlik bilgilerini düzenle** ' ye tıklayın ve veritabanı kimlik bilgilerinizin adım 1 ' de açıklananlarla aynı olduğundan emin olun.
@@ -222,7 +222,7 @@ Aşağıdaki adımlarda, çözüm dağıtımı sırasında oluşturulan Stream A
    * Sol panel veri kümeleri bölümünde veri kümesi **aircraftmonitor** öğesine tıklayın.
    * **Çizgi grafiği** simgesine tıklayın.
    * **Görsel öğeler** bölmesinde "eksen" altında görünmesi için **alanlar** bölmesinde **işlenen** ' e tıklayın.
-   * Her ikisi de "Values" altında\_görünmesini sağlamak için "S11" ve "S11 Alert" öğesine tıklayın. **S11** ve **S11\_uyarısı**' nın yanındaki küçük oka tıklayın, "Sum" ı "Average" olarak değiştirin.
+   * \_Her ikisi de "Values" altında görünmesini sağlamak için "S11" ve "S11 Alert" öğesine tıklayın. **S11** ve **S11 \_ uyarısı**' nın yanındaki küçük oka tıklayın, "Sum" ı "Average" olarak değiştirin.
    * Üstteki **Kaydet** ' e tıklayın ve raporu "aircraftmonitor" olarak adlandırın. "Aircraftmonitor" adlı rapor, sol taraftaki **Gezgin** bölmesinde bulunan **raporlar** bölümünde gösterilir.
    * Bu çizgi grafiğin sağ üst köşesinde bulunan **görsel sabitle** simgesine tıklayın. Bir panoyu seçmeniz için "panoya sabitle" penceresi gösterilebilir. "Tahmine dayalı bakım tanıtımı" öğesini seçin ve ardından "sabitle" ye tıklayın.
    * Fare işaretçisini panoda bu kutucuğun üzerine getirin, başlığını "en sağ üst köşedeki" Düzenle "simgesine tıklayarak başlığını" bir süre içinde ortalama olarak "ESET, algılayıcı 11 ile 48,26 arasında"

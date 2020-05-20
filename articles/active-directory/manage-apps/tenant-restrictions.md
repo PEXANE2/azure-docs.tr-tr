@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecd49b340810f92727f0fc98f84031c8cbf68179
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481186"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680130"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanın
 
@@ -30,13 +30,13 @@ Bu zorluk Azure Active Directory (Azure AD) çözümü, kiracı kısıtlamaları
 
 Kiracı kısıtlamalarıyla kuruluşlar, kullanıcılarının erişmelerine izin verilen kiracılar listesini belirtebilir. Azure AD bundan sonra yalnızca izin verilen kiracılar için erişim izni verir.
 
-Bu makale, Office 365 için kiracı kısıtlamalarına odaklanır, ancak özelliği çoklu oturum açma için Azure AD ile modern kimlik doğrulama protokolleri kullanan tüm SaaS bulut uygulamaları ile birlikte çalışmalıdır. Office 365 tarafından kullanılan kiracıdan farklı bir Azure AD kiracısıyla SaaS uygulamaları kullanıyorsanız, gerekli tüm kiracılara izin olduğundan emin olun. SaaS bulut uygulamaları hakkında daha fazla bilgi için bkz. [market Active Directory](https://azure.microsoft.com/marketplace/active-directory/).
+Bu makale, Office 365 için kiracı kısıtlamalarına odaklanır, ancak özelliği çoklu oturum açma için Azure AD ile modern kimlik doğrulama protokolleri kullanan tüm SaaS bulut uygulamaları ile birlikte çalışmalıdır. Office 365 tarafından kullanılan kiracıdan farklı bir Azure AD kiracısıyla SaaS uygulamaları kullanıyorsanız, gerekli tüm kiracılara izin olduğundan emin olun. SaaS bulut uygulamaları hakkında daha fazla bilgi için bkz. [market Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
 Genel çözüm aşağıdaki bileşenleri içerir:
 
-1. **Azure AD**: `Restrict-Access-To-Tenants: <permitted tenant list>` varsa, Azure AD izin verilen kiracılar için yalnızca güvenlik belirteçleri verir.
+1. **Azure AD**: varsa `Restrict-Access-To-Tenants: <permitted tenant list>` , Azure AD izin verilen kiracılar için yalnızca güvenlik belirteçleri verir.
 
 2. **Şirket içi proxy sunucu altyapısı**: Bu altyapı, aktarım katmanı GÜVENLIĞI (TLS) denetimi yapabilen bir ara sunucu aygıtıdır. Azure AD 'ye yönelik trafiğe izin verilen kiracılar listesini içeren üstbilgiyi eklemek için proxy 'yi yapılandırmanız gerekir.
 
@@ -60,7 +60,7 @@ Kiracı kısıtlamalarını kullanmak için, istemcilerinizin kimlik doğrulamas
 
 Proxy altyapınız aracılığıyla kiracı kısıtlamalarını etkinleştirmek için aşağıdaki yapılandırma gereklidir. Bu kılavuz geneldir, bu nedenle belirli uygulama adımları için proxy satıcınızın belgelerine başvurmalısınız.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 - Ara sunucu, FQDN/URL 'Leri kullanarak TLS yakasını, HTTP üst bilgisi eklemeyi ve filtre hedeflerini gerçekleştirebilmelidir.
 
@@ -74,7 +74,7 @@ Login.microsoftonline.com, login.microsoft.com ve login.windows.net için gelen 
 
 Üst bilgiler aşağıdaki öğeleri içermelidir:
 
-- *Kısıtla-erişim-kiracılar*için, kullanıcıların erişmesine izin vermek istediğiniz kiracılar \<için virgülle ayrılmış\>bir liste olan izin verilen kiracı listesi değerini kullanın. Kiracıya kayıtlı olan herhangi bir etki alanı, bu listedeki kiracıyı belirlemek için kullanılabilir. Örneğin, hem contoso hem de fabrikam kiracılarına erişime izin vermek için ad/değer çifti şöyle görünür: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- *Kısıtla-erişim-kiracılar*için, \< \> kullanıcıların erişmesine izin vermek istediğiniz kiracılar için virgülle ayrılmış bir liste olan izin verilen kiracı listesi değerini kullanın. Kiracıya kayıtlı olan herhangi bir etki alanı, bu listedeki kiracıyı belirlemek için kullanılabilir. Örneğin, hem contoso hem de fabrikam kiracılarına erişime izin vermek için ad/değer çifti şöyle görünür: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - *Restrict-Access-Context*için, kiracı kısıtlamalarını hangi kiracının ayarlamasında olduğunu bildirmek üzere tek BIR dizin kimliği değeri kullanın. Örneğin, contoso 'yu kiracı kısıtlamaları ilkesini belirten kiracı olarak bildirmek için ad/değer çifti şöyle görünür: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
@@ -113,13 +113,13 @@ Azure portal diğer raporlar gibi, raporunuzun kapsamını belirtmek için filtr
 - **Kullanıcı**
 - **Uygulama**
 - **Durum**
-- **Tarih**
+- **Güncel**
 - **Tarih (UTC)** (UTC Eşgüdümlü Evrensel Saat)
 - **MFA auth yöntemi** (çok faktörlü kimlik doğrulama yöntemi)
 - **MFA auth ayrıntısı** (çok faktörlü kimlik doğrulama ayrıntısı)
 - **MFA sonucu**
-- **IP Adresi**
-- **İstemcilerinin**
+- **IP adresi**
+- **İstemci**
 - **Nitelen**
 - **Konum**
 - **Hedef kiracı KIMLIĞI**
@@ -155,7 +155,7 @@ Fiddler, http üst bilgilerini ekleme de dahil olmak üzere HTTP/HTTPS trafiğin
 
    1. Fiddler Web hata ayıklayıcı aracında, **kurallar** menüsünü seçin ve **kuralları Özelleştir...** seçeneğini belirleyin. CustomRules dosyasını açmak için.
 
-   2. `OnBeforeRequest` İşlevin başına aşağıdaki satırları ekleyin. Kiracı \<etki alanını\> kiracınızla kaydedilmiş bir etki alanıyla değiştirin (örneğin, `contoso.onmicrosoft.com`). Dizin \<kimliğini\> KIRACıNıZıN Azure AD GUID tanımlayıcısı ile değiştirin.
+   2. İşlevin başına aşağıdaki satırları ekleyin `OnBeforeRequest` . \<Kiracı etki alanını \> kiracınızla kaydedilmiş bir etki alanıyla değiştirin (örneğin, `contoso.onmicrosoft.com` ). \<DIZIN kimliğini \> kiracınızın Azure AD GUID tanımlayıcısı ile değiştirin.
 
       ```JScript.NET
       if (
@@ -169,7 +169,7 @@ Fiddler, http üst bilgilerini ekleme de dahil olmak üzere HTTP/HTTPS trafiğin
       }
       ```
 
-      Birden çok kiracıya izin vermeniz gerekiyorsa, kiracı adlarını ayırmak için virgül kullanın. Örneğin:
+      Birden çok kiracıya izin vermeniz gerekiyorsa, kiracı adlarını ayırmak için virgül kullanın. Örnek:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 

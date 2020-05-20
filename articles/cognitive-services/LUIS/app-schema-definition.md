@@ -3,12 +3,12 @@ title: Uygulama şeması tanımı
 description: LUO uygulaması veya ' de temsil edilir `.json` `.lu` ve tüm amaçları, varlıkları, örnek utbotları, özellikleri ve ayarları içerir.
 ms.topic: reference
 ms.date: 05/05/2020
-ms.openlocfilehash: 21b58f79ffd2baf553c6f8b07daa84473e620f77
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dbbeb4eacbe8e07cf080b3a1527ca39c2b9a5991
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599375"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684353"
 ---
 # <a name="app-schema-definition"></a>Uygulama şeması tanımı
 
@@ -25,8 +25,8 @@ Uygulamayı içeri ve dışarı aktardığınızda, veya seçeneklerinden birini
 
 ## <a name="version-7x"></a>Sürüm 7. x
 
-* 7. x sürümüne geçiş yapmak için varlıklar, iç içe yerleştirilmiş makine tarafından öğrenilen varlıklar olarak temsil edilir.
-* Aşağıdaki yazma API 'Lerinde özelliği olan iç içe makine ile öğrenilen varlıkları yazma desteği `enableNestedChildren` :
+* 7. x sürümüne geçiş yapmak için varlıklar, iç içe makine öğrenimi varlıkları olarak temsil edilir.
+* Aşağıdaki yazma API 'Lerinde özelliği ile iç içe makine öğrenimi varlıkları yazma desteği `enableNestedChildren` :
     * [Etiket ekleme](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)
     * [Batch etiketi ekle](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c09)
     * [Etiketleri gözden geçir](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c0a)
@@ -64,7 +64,7 @@ Uygulamayı içeri ve dışarı aktardığınızda, veya seçeneklerinden birini
 
 ## <a name="version-6x"></a>Sürüm 6. x
 
-* Sürüm 6. x ' e taşınıyor, varlıklarınızı temsil etmek için [makine tarafından öğrenilen yeni varlığı](reference-entity-machine-learned-entity.md) kullanın.
+* Sürüm 6. x ' e taşınıyor, varlıklarınızı temsil etmek için yeni [makine öğrenimi varlığını](reference-entity-machine-learned-entity.md) kullanın.
 
 ```json
 {

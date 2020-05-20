@@ -1,14 +1,14 @@
 ---
 title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
-ms.date: 03/23/2020
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80c69ec38a364238eb03e786c23cc927d6181062
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422450"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684312"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -55,7 +55,7 @@ Ekleme veya güncelleştirme sırasında istenen kaynağa ek alanlar eklemek iç
 
 ### <a name="append-evaluation"></a>Değerlendirme Ekle
 
-Append, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında istek bir kaynak sağlayıcısı tarafından işlenmeden önce değerlendirilir. Append, ilke kuralının **IF** koşulu karşılandığında alanları kaynağa ekler. Ekleme efekti, özgün istekteki bir değeri farklı bir değerle geçersiz kılabilir, bu durumda bir reddetme efekti görevi görür ve isteği reddeder. Varolan bir diziye yeni bir değer eklemek için diğer adın **[\*]** sürümünü kullanın.
+Append, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında istek bir kaynak sağlayıcısı tarafından işlenmeden önce değerlendirilir. Append, ilke kuralının **IF** koşulu karşılandığında alanları kaynağa ekler. Ekleme efekti, özgün istekteki bir değeri farklı bir değerle geçersiz kılabilir, bu durumda bir reddetme efekti görevi görür ve isteği reddeder. Varolan bir diziye yeni bir değer eklemek için diğer adın **[ \* ]** sürümünü kullanın.
 
 Ekleme efektini kullanan bir ilke tanımı, değerlendirme döngüsünün bir parçası olarak çalıştırıldığında, zaten mevcut olan kaynaklarda değişiklik yapmaz. Bunun yerine, **IF** koşulunu uyumlu değil olarak karşılayan herhangi bir kaynağı işaretler.
 
@@ -65,7 +65,7 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
 
 ### <a name="append-examples"></a>Ekleme örnekleri
 
-Örnek 1: bir depolama hesabında IP kuralları ayarlamak için dizi **değeri** ile **[\*]** olmayan bir [diğer ad](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **\*[]** Olmayan diğer ad bir dizi ise, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
+Örnek 1: bir depolama hesabında IP kuralları ayarlamak için dizi **değeri** ile **[ \* ]** olmayan bir [diğer ad](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[ \* ]** Olmayan diğer ad bir dizi ise, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
 
 ```json
 "then": {
@@ -80,7 +80,7 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
 }
 ```
 
-Örnek 2: bir depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** ile bir **[\*]** [diğer adı](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **\*[]** Diğer adını kullanarak, efekt **değeri** önceden var olabilecek bir diziye ekler. Dizi henüz yoksa, oluşturulur.
+Örnek 2: bir depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** ile bir **[ \* ]** [diğer adı](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[ \* ]** Diğer adını kullanarak, efekt **değeri** önceden var olabilecek bir diziye ekler. Dizi henüz yoksa, oluşturulur.
 
 ```json
 "then": {
@@ -97,7 +97,7 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
 
 ## <a name="modify"></a>Değiştir
 
-Değişiklik, oluşturma veya güncelleştirme sırasında bir kaynağa etiket eklemek, güncelleştirmek veya kaldırmak için kullanılır. Ortak bir örnek, costCenter gibi kaynaklardaki etiketleri güncelleştirmedir. Hedef kaynak bir kaynak grubu değilse `mode` , bir değiştirme ilkesi her zaman _dizinli_ olarak ayarlanmalıdır. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir. Tek bir değiştirme kuralında herhangi bir sayıda işlem olabilir.
+Değişiklik, oluşturma veya güncelleştirme sırasında bir kaynağa etiket eklemek, güncelleştirmek veya kaldırmak için kullanılır. Ortak bir örnek, costCenter gibi kaynaklardaki etiketleri güncelleştirmedir. `mode`Hedef kaynak bir kaynak grubu değilse, bir değiştirme ilkesi her zaman _dizinli_ olarak ayarlanmalıdır. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir. Tek bir değiştirme kuralında herhangi bir sayıda işlem olabilir.
 
 > [!IMPORTANT]
 > Şu anda yalnızca etiketleriyle kullanım için değiştirin. Etiketleri yönetiyorsanız, Değiştir yerine Değiştir kullanılması önerilir, ek işlem türleri ve mevcut kaynakları düzeltme yeteneği sağlar. Bununla birlikte, yönetilen bir kimlik oluşturabilebilmeniz durumunda ekleme önerilir.
@@ -130,9 +130,9 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 **Operations** özelliği dizisi, birkaç etiketi tek bir ilke tanımından farklı şekillerde değiştirmeyi mümkün kılar. Her işlem, **işlem**, **alan**ve **değer** özelliklerinden oluşur. İşlem düzeltme görevinin etiketlere ne yaptığını belirler, alan hangi etiketin değiştirilmekte olduğunu belirler ve değer bu etiketin yeni ayarını tanımlar. Aşağıdaki örnekte aşağıdaki etiket değişiklikleri yapılır:
 
-- `environment` Etiketi, farklı bir değerle zaten mevcut olsa bile "test" olarak ayarlar.
-- Etiketi `TempResource`kaldırır.
-- `Dept` Etiketi, ilke atamasında yapılandırılan _deptname_ ilke parametresi olarak ayarlar.
+- `environment`Etiketi, farklı bir değerle zaten mevcut olsa bile "test" olarak ayarlar.
+- Etiketi kaldırır `TempResource` .
+- Etiketi, `Dept` ilke atamasında yapılandırılan _deptname_ ilke parametresi olarak ayarlar.
 
 ```json
 "details": {
@@ -166,7 +166,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 ### <a name="modify-examples"></a>Örnekleri Değiştir
 
-Örnek 1: `environment` etiketi ekleyin ve var olan `environment` etiketleri "test" ile değiştirin:
+Örnek 1: etiketi ekleyin `environment` ve var olan `environment` etiketleri "test" ile değiştirin:
 
 ```json
 "then": {
@@ -186,7 +186,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 }
 ```
 
-Örnek 2: `env` etiketi kaldırın ve `environment` etiketi ekleyin ya da varolan `environment` etiketleri parametreli bir değerle değiştirin:
+Örnek 2: etiketi kaldırın `env` ve `environment` etiketi ekleyin ya da varolan `environment` etiketleri parametreli bir değerle değiştirin:
 
 ```json
 "then": {
@@ -216,7 +216,7 @@ Reddetme, bir ilke tanımı aracılığıyla tanımlı standartlarla eşleşmeye
 
 ### <a name="deny-evaluation"></a>Değerlendirmeyi Reddet
 
-Eşleşen bir kaynağı oluştururken veya güncelleştirirken reddetme, isteği kaynak sağlayıcısına gönderilmeden önce engeller. İstek bir `403 (Forbidden)`olarak döndürülür. Portalda, ilke ataması tarafından engellenmiş olan dağıtımda durum olarak yasak görüntülenir.
+Eşleşen bir kaynağı oluştururken veya güncelleştirirken reddetme, isteği kaynak sağlayıcısına gönderilmeden önce engeller. İstek bir olarak döndürülür `403 (Forbidden)` . Portalda, ilke ataması tarafından engellenmiş olan dağıtımda durum olarak yasak görüntülenir.
 
 Mevcut kaynakların değerlendirmesi sırasında, bir reddetme ilke tanımıyla eşleşen kaynaklar uyumlu değil olarak işaretlenir.
 
@@ -240,7 +240,7 @@ Denetim, uyumlu olmayan bir kaynağı değerlendirirken etkinlik günlüğünde 
 
 ### <a name="audit-evaluation"></a>Denetim değerlendirmesi
 
-Denetim, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında Azure Ilkesi tarafından denetlenen son etkiye sahiptir. Daha sonra Azure Ilkesi kaynağı kaynak sağlayıcısına gönderir. Denetim, bir kaynak isteği ve bir değerlendirme çevrimi için aynı şekilde çalışmaktadır. Azure Ilkesi, etkinlik `Microsoft.Authorization/policies/audit/action` günlüğüne bir işlem ekler ve kaynağı uyumlu değil olarak işaretler.
+Denetim, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında Azure Ilkesi tarafından denetlenen son etkiye sahiptir. Daha sonra Azure Ilkesi kaynağı kaynak sağlayıcısına gönderir. Denetim, bir kaynak isteği ve bir değerlendirme çevrimi için aynı şekilde çalışmaktadır. Azure Ilkesi `Microsoft.Authorization/policies/audit/action` , etkinlik günlüğüne bir işlem ekler ve kaynağı uyumlu değil olarak işaretler.
 
 ### <a name="audit-properties"></a>Denetim Özellikleri
 
@@ -262,7 +262,7 @@ Auditınotexists, **IF** koşuluyla eşleşen kaynaklarda denetim imkanı sunar,
 
 ### <a name="auditifnotexists-evaluation"></a>Auditınotexists değerlendirmesi
 
-Bir kaynak sağlayıcısı bir oluşturma veya güncelleştirme kaynak isteği tamamladıktan ve başarı durum kodu döndürdüğünden Auditınotexists çalışır. İlgili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa denetim gerçekleşir. Azure Ilkesi, etkinlik `Microsoft.Authorization/policies/audit/action` günlüğüne denetim efektiyle aynı şekilde bir işlem ekler. Tetiklendiğinde **, durum durumunu karşılayan** kaynak, uyumlu değil olarak işaretlenen kaynaktır.
+Bir kaynak sağlayıcısı bir oluşturma veya güncelleştirme kaynak isteği tamamladıktan ve başarı durum kodu döndürdüğünden Auditınotexists çalışır. İlgili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa denetim gerçekleşir. Azure Ilkesi, `Microsoft.Authorization/policies/audit/action` etkinlik günlüğüne denetim efektiyle aynı şekilde bir işlem ekler. Tetiklendiğinde **, durum durumunu karşılayan** kaynak, uyumlu değil olarak işaretlenen kaynaktır.
 
 ### <a name="auditifnotexists-properties"></a>Auditınotexists özellikleri
 
@@ -273,7 +273,7 @@ Auditınotexists etkilerinin **Details** özelliği, eşleştirilecek ilgili kay
   - **Ayrıntılar. Type** , **IF** koşulu kaynağı altında bir kaynak türü ise, ilke değerlendirilen kaynağın kapsamındaki bu **türden** kaynakları sorgular. Aksi takdirde, ilke, değerlendirilen kaynakla aynı kaynak grubu içinde sorgular.
 - **Ad** (isteğe bağlı)
   - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
-  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve olmalıdır `[field('name')]`. Ancak, bunun yerine bir [Denetim](#audit) etkisi göz önünde bulundurulmalıdır.
+  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve olmalıdır `[field('name')]` . Ancak, bunun yerine bir [Denetim](#audit) etkisi göz önünde bulundurulmalıdır.
 - **Resourcegroupname** (isteğe bağlı)
   - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
   - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
@@ -345,7 +345,7 @@ DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kayn
   - , **IF** koşulu kaynağı altında bir kaynağı getirmeye çalışırken başlar ve sonra, **IF** koşulu kaynağıyla aynı kaynak grubu içinde sorgular.
 - **Ad** (isteğe bağlı)
   - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
-  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve olmalıdır `[field('name')]`.
+  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve olmalıdır `[field('name')]` .
 - **Resourcegroupname** (isteğe bağlı)
   - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
   - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
@@ -372,7 +372,7 @@ DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kayn
   - Abonelik düzeyinde dağıtımlar kullanılırken _dağıtımda_ bir _konum_ özelliği belirtilmelidir.
   - Varsayılan _kaynak grubu_.
 - **Dağıtım** [gerekli]
-  - Bu özellik, `Microsoft.Resources/deployments` put API 'sine geçirilecek olan tam şablon dağıtımını içermelidir. Daha fazla bilgi için bkz. [dağıtımlar REST API](/rest/api/resources/deployments).
+  - Bu özellik, put API 'sine geçirilecek olan tam şablon dağıtımını içermelidir `Microsoft.Resources/deployments` . Daha fazla bilgi için bkz. [dağıtımlar REST API](/rest/api/resources/deployments).
 
   > [!NOTE]
   > **Dağıtım** özelliğinin içindeki tüm işlevler, ilke değil, şablonun bileşenleri olarak değerlendirilir. Özel durum, ilkeden şablona değer geçiren **Parameters** özelliğidir. Bu bölümdeki **değer** bir şablon parametresi adı altında bu değer geçişini gerçekleştirmek için kullanılır (Deployıfnotexists örneğinde bkz. _fulldbname_ ).
@@ -432,15 +432,15 @@ DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kayn
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Bu efekt, ilke tanımı *moduyla* birlikte kullanılır `Microsoft.Kubernetes.Data`. [Ilke aracısını](https://www.openpolicyagent.org/) (Opa) Azure 'da kendi kendine yönetilen Kubernetes kümelerine açmak Için [Opa kısıtlama çerçevesi](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) ile tanımlanan Gatekeeper v3 giriş denetimi kurallarını geçirmek için kullanılır.
+Bu efekt, ilke tanımı *moduyla* birlikte kullanılır `Microsoft.Kubernetes.Data` . Azure 'da Kubernetes kümelerine [Ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak Için [Opa kısıtlama çerçevesi](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) ile tanımlanan Gatekeeper v3 giriş denetimi kurallarını geçirmek için kullanılır.
 
 > [!NOTE]
-> [AKS altyapısı Için Azure Ilkesi](aks-engine.md) genel önizlemede ve yalnızca yerleşik ilke tanımlarını destekler.
+> [Kubernetes Için Azure Ilkesi](./policy-for-kubernetes.md) önizlemededir ve yalnızca Linux düğüm havuzlarını ve yerleşik ilke tanımlarını destekler.
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint değerlendirmesi
 
 Açık Ilke Aracısı giriş denetleyicisi, kümede bulunan yeni istekleri gerçek zamanlı olarak değerlendirir.
-Her 5 dakikada bir küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesine bildirilir.
+15 dakikada bir, küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesine bildirilir.
 
 ### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint özellikleri
 
@@ -449,13 +449,13 @@ EnforceOPAConstraint kısıtlama efektinin **Details** özelliği, Gatekeeper v3
 - **constraintTemplate** [gerekli]
   - Yeni kısıtlamaları tanımlayan CustomResourceDefinition (CRD) kısıtlama şablonu. Şablon rego mantığını, kısıtlama şemasını ve Azure Ilkesinden **değerler** aracılığıyla geçirilen kısıtlama parametrelerini tanımlar.
 - **kısıtlama** [gerekli]
-  - Kısıtlama şablonunun CRD uygulama. **Değerler** aracılığıyla geçirilen parametreleri kullanır `{{ .Values.<valuename> }}`. Aşağıdaki örnekte, ve `{{ .Values.cpuLimit }}` `{{ .Values.memoryLimit }}`olur.
+  - Kısıtlama şablonunun CRD uygulama. **Değerler** aracılığıyla geçirilen parametreleri kullanır `{{ .Values.<valuename> }}` . Aşağıdaki örnekte, `{{ .Values.cpuLimit }}` ve olur `{{ .Values.memoryLimit }}` .
 - **değerler** [isteğe bağlı]
   - Kısıtlamaya geçirilecek parametreleri ve değerleri tanımlar. Her değer, CRD kısıtlama şablonunda bulunmalıdır.
 
 ### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint örneği
 
-Örnek: AKS altyapısındaki kapsayıcı CPU ve bellek kaynak sınırlarını ayarlamak için ağ geçidi denetleyicisi v3 giriş denetim kuralı.
+Örnek: Kubernetes içindeki kapsayıcı CPU ve bellek kaynak sınırlarını ayarlamak için ağ geçidi denetleyicisi v3 giriş denetim kuralı.
 
 ```json
 "if": {
@@ -488,15 +488,15 @@ EnforceOPAConstraint kısıtlama efektinin **Details** özelliği, Gatekeeper v3
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-Bu efekt, ilke tanımı *moduyla* birlikte kullanılır `Microsoft.ContainerService.Data`. [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md) [ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak için [rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) ile tanımlanan Gatekeeper v2 giriş denetimi kurallarını geçirmek için kullanılır.
+Bu efekt, ilke tanımı _moduyla_ birlikte kullanılır `Microsoft.ContainerService.Data` . [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md) [ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak için [rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) ile tanımlanan Gatekeeper v2 giriş denetimi kurallarını geçirmek için kullanılır.
 
 > [!NOTE]
-> [AKS Için Azure Ilkesi](rego-for-aks.md) sınırlı önizlemededir ve yalnızca yerleşik ilke tanımlarını destekler
+> [Kubernetes Için Azure Ilkesi](./policy-for-kubernetes.md) önizlemededir ve yalnızca Linux düğüm havuzlarını ve yerleşik ilke tanımlarını destekler. Yerleşik ilke tanımları **Kubernetes** kategorisinde bulunur. **Enforceregopolicy** efektli sınırlı önizleme ilkesi tanımları ve Ilgili **Kubernetes hizmet** kategorisi _kullanım dışı_bırakılıyor. Bunun yerine, güncelleştirilmiş [Enforceopaconstraint](#enforceopaconstraint) efektini kullanın.
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy değerlendirmesi
 
 Açık Ilke Aracısı giriş denetleyicisi, kümede bulunan yeni istekleri gerçek zamanlı olarak değerlendirir.
-Her 5 dakikada bir küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesine bildirilir.
+15 dakikada bir, küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesine bildirilir.
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy özellikleri
 
@@ -538,9 +538,9 @@ EnforceRegoPolicy efektinin **Details** özelliği, Gatekeeper v2 giriş denetim
 }
 ```
 
-## <a name="layering-policies"></a>İlkeleri katmanlama
+## <a name="layering-policy-definitions"></a>İlke tanımlarını katmanlama
 
-Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örneğin:
+Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örnek:
 
 - İlke 1
   - Kaynak konumunu ' westus ' olarak kısıtlar
@@ -565,7 +565,7 @@ Bu kurulum aşağıdaki sonuca neden olur:
 - ' Westus ' içinde olmayan abonelikte bulunan yeni kaynaklar ilke 1 tarafından reddedildi
 - A aboneliğinin B kaynak grubundaki tüm yeni kaynaklar reddedildi
 
-Her atama tek tek değerlendirilir. Bu nedenle, bir kaynağın kapsamdaki farklılıklar arasından bir boşluk ile bir kaynak için bir fırsat yoktur. Katman ilkelerinin veya ilke çakışmasayısının net sonucu, **en çok kısıtlayıcı**olarak kabul edilir. Örnek olarak, hem ilke 1 hem de 2 bir reddetme efekti içeriyorsa, çakışan ve çakışan ilkeler tarafından bir kaynak engellenir. Hala hedef kapsamda oluşturulacak kaynak gerekiyorsa, doğru ilkelerin doğru kapsamları etkilediğini doğrulamak için her atamadaki dışlamaları gözden geçirin.
+Her atama tek tek değerlendirilir. Bu nedenle, bir kaynağın kapsamdaki farklılıklar arasından bir boşluk ile bir kaynak için bir fırsat yoktur. Katman ilkesi tanımlarının net sonucu, **en çok kısıtlayıcı**olarak kabul edilir. Örnek olarak, hem ilke 1 hem de 2 bir reddetme efektine sahipse, çakışan ve çakışan ilke tanımları tarafından bir kaynak engellenir. Hala hedef kapsamda oluşturulacak kaynak gerekiyorsa, doğru ilke atamalarının doğru kapsamları etkilediğini doğrulamak için her atamadaki dışlamaları gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

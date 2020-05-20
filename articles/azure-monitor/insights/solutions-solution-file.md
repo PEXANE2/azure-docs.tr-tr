@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 018fb457840e9ffe382ec1ed54df582ecfec8e49
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275184"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682848"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure 'da bir yönetim çözümü dosyası oluşturma (Önizleme)
 > [!NOTE]
@@ -63,9 +63,9 @@ Aşağıdaki tabloda bir parametresinin öznitelikleri açıklanmaktadır.
 
 | Öznitelik | Açıklama |
 |:--- |:--- |
-| type |Parametre için veri türü. Kullanıcı için görünen giriş denetimi, veri türüne bağlıdır.<br><br>bool-açılan kutusu<br>dize-metin kutusu<br>int-metin kutusu<br>SecureString-Password alanı<br> |
+| tür |Parametre için veri türü. Kullanıcı için görünen giriş denetimi, veri türüne bağlıdır.<br><br>bool-açılan kutusu<br>dize-metin kutusu<br>int-metin kutusu<br>SecureString-Password alanı<br> |
 | category |Parametre için isteğe bağlı kategori.  Aynı kategorideki parametreler birlikte gruplandırılır. |
-|  denetimi |Dize parametreleri için ek işlevsellik.<br><br>DateTime-DateTime denetimi görüntülenir.<br>GUID-GUID değeri otomatik olarak oluşturulur ve parametresi gösterilmez. |
+| denetimi |Dize parametreleri için ek işlevsellik.<br><br>DateTime-DateTime denetimi görüntülenir.<br>GUID-GUID değeri otomatik olarak oluşturulur ve parametresi gösterilmez. |
 | açıklama |Parametre için isteğe bağlı açıklama.  Parametrenin yanındaki bir bilgi balonunda görüntülenir. |
 
 ### <a name="standard-parameters"></a>Standart parametreler
@@ -161,7 +161,7 @@ Bu durumda, sözdizimi **değişkenleri (' değişken adı '). özelliği**ile �
 **Bağımlıdson** öğesi, başka bir kaynağa [bağımlılığı](../../azure-resource-manager/templates/define-resource-dependency.md) belirtir.  Çözüm yüklendiğinde, tüm bağımlılıkları oluşturuluncaya kadar bir kaynak oluşturulmaz.  Örneğin, çözümünüz bir [iş kaynağı](solutions-resources-automation.md#automation-jobs)kullanılarak yüklendiğinde [bir runbook başlatabilir](solutions-resources-automation.md#runbooks) .  İş kaynağı, runbook 'un iş oluşturulmadan önce oluşturulduğundan emin olmak için Runbook kaynağına bağımlıdır.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics çalışma alanı ve Otomasyon hesabı
-Yönetim çözümleri, runbook 'ları ve ilgili kaynakları içeren görünümler ve bir [Otomasyon hesabı](../../automation/automation-security-overview.md#automation-account-overview) içermesi için bir [Log Analytics çalışma alanı](../../azure-monitor/platform/manage-access.md) gerektirir.  Bunlar, çözümdeki kaynaklar oluşturulmadan önce kullanılabilir olmalıdır ve çözümün kendisinde tanımlanmamalıdır.  Kullanıcı çözümünüzü dağıtırken [bir çalışma alanı ve hesap belirtir](solutions.md#log-analytics-workspace-and-automation-account) , ancak yazar olarak aşağıdaki noktaları dikkate almalısınız.
+Yönetim çözümleri, runbook 'ları ve ilgili kaynakları içeren görünümler ve bir [Otomasyon hesabı](../../automation/automation-security-overview.md) içermesi için bir [Log Analytics çalışma alanı](../../azure-monitor/platform/manage-access.md) gerektirir.  Bunlar, çözümdeki kaynaklar oluşturulmadan önce kullanılabilir olmalıdır ve çözümün kendisinde tanımlanmamalıdır.  Kullanıcı çözümünüzü dağıtırken [bir çalışma alanı ve hesap belirtir](solutions.md#log-analytics-workspace-and-automation-account) , ancak yazar olarak aşağıdaki noktaları dikkate almalısınız.
 
 
 ## <a name="solution-resource"></a>Çözüm kaynağı
@@ -206,7 +206,7 @@ Her çözüm, çözümün kendisini tanımlayan **Resources** öğesinde bir kay
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| workspaceResourceId |* \<Kaynak grubu kimliği>/Providers/Microsoft.operationalinsights/Workspaces/\<çalışma alanı adı\>* formundaki Log Analytics çalışma alanının kimliği. |
+| workspaceResourceId |* \< Kaynak grubu kimliği>/Providers/Microsoft.operationalinsights/Workspaces/ \< çalışma alanı adı \> *formundaki Log Analytics çalışma alanının kimliği. |
 | referencedResources |Çözümde, çözüm kaldırıldığında kaldırılmamalıdır. |
 | containedResources |Çözümde, çözüm kaldırıldığında kaldırılması gereken kaynakların listesi. |
 
@@ -217,8 +217,8 @@ Yukarıdaki örnek, runbook 'un, zamanlamanın ve görünümün bulunduğu bir �
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| ad |Çözümün adı. |
-| version |Yazar tarafından belirlendiği şekilde çözümün sürümü. |
+| name |Çözümün adı. |
+| sürüm |Yazar tarafından belirlendiği şekilde çözümün sürümü. |
 | ürün |Çözümü tanımlayacak benzersiz dize. |
 | yayımcı |Çözümün yayımcısı. |
 

@@ -2,17 +2,17 @@
 title: İyi örnek utterer-LUSıS
 description: İfadeler kullanıcının yaptığı ve uygulamanızın yorumlaması gereken girişlerdir. Kullanıcıların girecağı tümcecikleri toplayın. Aynı şeyi gösteren, ancak sözcük uzunluğu ve sözcük yerleşimi içinde farklı şekilde oluşturulan utterleri dahil edin.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592874"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685280"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUSıS uygulamanız için nelerin iyi olduğunu anlayın
 
-**Söyleyceler** , uygulamanızın yorumlamak için gereken kullanıcıdan gelen giriştir. LUO 'dan amaçları ve varlıkları ayıklamak için, her bir amaç için çeşitli farklı örnek türlerini yakalamak önemlidir. Etkin öğrenimi veya yeni vavaslar üzerinde eğitim almaya devam etme süreci, sanal makine tarafından öğrenilen zeka 'nın sağladığı zeka açısından önemlidir.
+**Söyleyceler** , uygulamanızın yorumlamak için gereken kullanıcıdan gelen giriştir. LUO 'dan amaçları ve varlıkları ayıklamak için, her bir amaç için çeşitli farklı örnek türlerini yakalamak önemlidir. Etkin öğrenimi veya yeni vavaslar üzerinde eğitim almaya devam etme süreci, LUIN sağladığı makine öğrenimi zekası için gereklidir.
 
 Kullanıcıların girebileceği düşündüklerini toplayın. Aynı şeyi gösteren, ancak çeşitli yollarla oluşturulan utterleri dahil edin:
 
@@ -84,7 +84,7 @@ Sürüm ayarlarını,, **Yönetim** bölümünde, **uygulama ayarları** sayfas�
 
 ### <a name="word-forms"></a>Sözcük formları
 
-**Sözcük biçimlerinin** normalleştirilmesi, kökün ötesinde görüntülenen sözcüklerdeki farkları yoksayar. Örneğin,, ve, `run` `running` `runs` fiil zaman hali temel alınarak değişir.
+**Sözcük biçimlerinin** normalleştirilmesi, kökün ötesinde görüntülenen sözcüklerdeki farkları yoksayar.
 
 <a name="utterance-normalization-for-diacritics-and-punctuation"></a>
 

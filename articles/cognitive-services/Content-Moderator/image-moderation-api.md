@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd6228ea50968c98c5ba151b8af9a0c2fa829582
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81404259"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684073"
 ---
 # <a name="learn-image-moderation-concepts"></a>Görüntü denetleme kavramlarını öğrenin
 
-Yetişkin ve kcy içeriği için orta görüntülerde Content Moderator makine yardımlı görüntü denetlemesi ve [Kullanıcı döngüsü İnceleme aracını](Review-Tool-User-Guide/human-in-the-loop.md) kullanın. Metin içeriğinin görüntülerini tarayın ve bu metni ayıklayın ve yüzleri algılayın. Görüntüleri özel listelerle eşleştirebilir ve daha fazla işlem gerçekleştirebilirsiniz.
+Yetişkin ve kcy içeriği için orta görüntülerde Content Moderator makine destekli görüntü denetleme ve [Gözden geçirme aracını](Review-Tool-User-Guide/human-in-the-loop.md) kullanın. Metin içeriğinin görüntülerini tarayın ve bu metni ayıklayın ve yüzleri algılayın. Görüntüleri özel listelerle eşleştirebilir ve daha fazla işlem gerçekleştirebilirsiniz.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>Yetişkin ve kcy içeriği değerlendirmesi
 
@@ -147,4 +147,4 @@ Daha fazla bilgi sahibi olmak için Content Moderator [Gözden geçirme aracın�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Görüntü denetleme API konsolunun](try-image-api.md) sürücüsünü test edin ve REST API kod örneklerini kullanın. Ayrıca, Visual Studio ve C# hakkında bilginiz varsa [.NET SDK hızlı başlangıç](dotnet-sdk-quickstart.md) 'nin görüntü denetleme bölümüne göz atın.
+[Görüntü denetleme API konsolunun](try-image-api.md) sürücüsünü test edin ve REST API kod örneklerini kullanın. Ayrıca, insan incelemelerini ayarlamayı öğrenmek için [incelemeleri, iş akışlarını ve işleri](./review-api.md) inceleyin.

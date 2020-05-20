@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb80c3a94e63a886e4a16c0b8fa445b2a8a34e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c69a700c9bcaa018bcfc1b1e6e01e166ef2d43bf
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72515826"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680238"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS bağlayıcı hesabı Izinlerini yapılandırma 
 
@@ -32,7 +32,7 @@ Azure AD Connect Express yüklemesinde, otomatik olarak oluşturulan bir hesap (
 ### <a name="permissions-summary"></a>İzin özeti 
 Aşağıdaki tabloda AD nesnelerinde gerekli izinlerin özeti verilmiştir: 
 
-| Özellik | İzinler |
+| Öne çıkan özelliği | İzinler |
 | --- | --- |
 | ms-DS-ımlarımguıd özelliği |[Tasarım kavramları](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)bölümünde belgelenen ms-DS-ımıbu GUID özniteliğinde okuma ve yazma izinleri | 
 | Parola karması eşitleme |<li>Dizin Değişikliklerini Çoğalt</li>  <li>Dizin değişikliklerini çoğaltma |
@@ -40,7 +40,7 @@ Aşağıdaki tabloda AD nesnelerinde gerekli izinlerin özeti verilmiştir:
 | Exchange posta genel klasörü |Ortak klasörler için [Exchange posta ortak klasöründe](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) belgelenen özniteliklere yönelik okuma izinleri. | 
 | Parola geri yazma |Kullanıcılar için [parola yönetimine](../authentication/howto-sspr-writeback.md) Başlarken bölümünde belgelenen özniteliklere yönelik okuma ve yazma izinleri. |
 | Cihaz geri yazma |Cihaz nesnelerine ve [cihaz geri yazma](how-to-connect-device-writeback.md)bölümünde belgelenen kapsayıcılara yönelik okuma ve yazma izinleri. |
-| Grup geri yazma |Eşitlenmiş **Office 365 grupları**için Grup nesnelerini okuyun, oluşturun, güncelleştirin ve silin.  Daha fazla bilgi için bkz. [Grup geri yazma](how-to-connect-preview.md#group-writeback).|
+| Grup geri yazma |Eşitlenmiş **Office 365 grupları**için Grup nesnelerini okuyun, oluşturun, güncelleştirin ve silin.|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>ADSyncConfig PowerShell modülünü kullanma 
 ADSyncConfig modülü AD DS PowerShell modülüne ve araçlarına bağlı olduğundan, [AD DS için uzak sunucu yönetim araçları (RSAT)](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) gerektirir. AD DS için RSAT 'yi yüklemek için, ' yönetici olarak Çalıştır ' ile bir Windows PowerShell penceresi açın ve yürütün: 
@@ -81,15 +81,15 @@ Veya
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
 ```
 
-, Ve `<ADAccountDN>` ' ı `<ADAccountName>` `<ADDomainName>` ortamınız için uygun değerlerle değiştirdiğinizden emin olun.
+`<ADAccountName>`, Ve ' ı `<ADDomainName>` `<ADAccountDN>` ortamınız için uygun değerlerle değiştirdiğinizden emin olun.
 
-AdminSDHolder kapsayıcısında izinleri değiştirmek istemiyorsanız, anahtarını `-SkipAdminSdHolders`kullanın. 
+AdminSDHolder kapsayıcısında izinleri değiştirmek istemiyorsanız, anahtarını kullanın `-SkipAdminSdHolders` . 
 
 Varsayılan olarak, tüm küme izinleri cmdlet 'leri ormandaki her etki alanının kökünde AD DS izinleri ayarlamaya çalışır, yani PowerShell oturumunu çalıştıran kullanıcının ormandaki her etki alanında etki alanı yöneticisi hakları olması gerekir.  Bu gereksinim nedeniyle, orman kökünden Kurumsal Yönetici kullanılması önerilir. Azure AD Connect dağıtımınızda birden çok AD DS Bağlayıcısı varsa, bir AD DS Bağlayıcısı bulunan her ormanda aynı cmdlet 'i çalıştırmak gerekecektir. 
 
-Ayrıca, `-ADobjectDN` belırlı bir OU veya AD DS nesnesi üzerinde izinleri, izinleri ayarlamak istediğiniz hedef nesnenin DN 'sini kullanarak da ayarlayabilirsiniz. Bir hedef ADobjectDN kullanılırken, cmdlet yalnızca bu nesne üzerindeki izinleri ayarlar ve etki alanı kökünde veya AdminSDHolder kapsayıcısında değil. Bu parametre, izin kalıtımı devre dışı bırakılmış bazı OU 'Lar veya AD DS nesneler olduğunda yararlı olabilir (bkz. izin devralmayla AD DS nesneleri bulma devre dışı) 
+Ayrıca, belirli bir OU veya AD DS nesnesi üzerinde izinleri, `-ADobjectDN` izinleri ayarlamak istediğiniz hedef NESNENIN DN 'sini kullanarak da ayarlayabilirsiniz. Bir hedef ADobjectDN kullanılırken, cmdlet yalnızca bu nesne üzerindeki izinleri ayarlar ve etki alanı kökünde veya AdminSDHolder kapsayıcısında değil. Bu parametre, izin kalıtımı devre dışı bırakılmış bazı OU 'Lar veya AD DS nesneler olduğunda yararlı olabilir (bkz. izin devralmayla AD DS nesneleri bulma devre dışı) 
 
-Bu ortak parametrelerin özel durumları, AD DS `Set-ADSyncRestrictedPermissions` bağlayıcı hesabının kendisi üzerindeki izinleri ayarlamak için kullanılan cmdlet 'Dir ve parola karması eşitleme için gereken izinler `Set-ADSyncPasswordHashSyncPermissions` yalnızca etki alanı kökünde ayarlandıklarından cmdlet 'i, bu cmdlet `-ObjectDN` veya `-SkipAdminSdHolders` parametrelerini içermez.
+Bu ortak parametrelerin özel durumları `Set-ADSyncRestrictedPermissions` , AD DS bağlayıcı hesabının kendisi üzerindeki izinleri ayarlamak için kullanılan cmdlet 'dir ve `Set-ADSyncPasswordHashSyncPermissions` Parola karması eşitleme için gereken izinler yalnızca etki alanı kökünde ayarlandıklarından cmdlet 'i, bu cmdlet `-ObjectDN` veya `-SkipAdminSdHolders` parametrelerini içermez.
 
 ### <a name="determine-your-ad-ds-connector-account"></a>AD DS bağlayıcı hesabınızı belirleme 
 Azure AD Connect zaten yüklüyse ve şu anda Azure AD Connect tarafından kullanılan AD DS bağlayıcı hesabının ne olduğunu denetlemek istiyorsanız, cmdlet 'ini çalıştırabilirsiniz: 
@@ -136,7 +136,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 Bu cmdlet aşağıdaki izinleri ayarlar: 
  
 
-|Tür |Adı |Erişim |Uygulanan Öğe| 
+|Tür |Name |Access |Uygulanan Öğe| 
 |-----|-----|-----|-----|
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku |Alt cihaz nesneleri| 
 |İzin Ver |AD DS bağlayıcı hesabı|Tüm özellikleri oku |Alt InetOrgPerson nesneleri| 
@@ -148,7 +148,7 @@ Bu cmdlet aşağıdaki izinleri ayarlar:
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>MS-DS-tutarlılık-GUID Izinlerini yapılandırma 
-Kaynak bağlantısı olarak ms-DS-tutarlılık-GUID özniteliğini kullanırken AD DS bağlayıcı hesabı izinlerini ayarlamak için (yani, Azure 'un kaynak bağlayıcısını benim için yönetme "seçeneği), şunu çalıştırın: 
+Kaynak bağlantısı olarak ms-DS-tutarlılık-GUID özniteliği ("bana kaynak bağlayıcısını benim için Azure 'un yönetmesine Izin ver" seçeneği olarak da bilinir) kullanılırken AD DS bağlayıcı hesabı izinlerini ayarlamak için şunu çalıştırın: 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
@@ -162,7 +162,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Erişim |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver|AD DS bağlayıcı hesabı|Okuma/yazma özelliği|Alt Kullanıcı nesneleri|
 
@@ -182,7 +182,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Erişim |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Dizin değişikliklerini çoğaltma |Yalnızca bu nesne (etki alanı kökü)| 
 |İzin Ver |AD DS bağlayıcı hesabı |Dizin değişikliklerini çoğaltma |Yalnızca bu nesne (etki alanı kökü)| 
@@ -202,7 +202,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Erişim |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Parola Sıfırlama |Alt Kullanıcı nesneleri| 
 |İzin Ver |AD DS bağlayıcı hesabı |Write özelliği lockoutTime |Alt Kullanıcı nesneleri| 
@@ -222,7 +222,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Erişim |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Genel okuma/yazma |Nesne türü grubu ve alt nesnelerin tüm öznitelikleri| 
 |İzin Ver |AD DS bağlayıcı hesabı |Alt nesne Oluştur/Sil |Nesne türü grubu ve alt nesnelerin tüm öznitelikleri| 
@@ -245,7 +245,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 Bu cmdlet aşağıdaki izinleri ayarlar:  
  
 
-|Tür |Adı |Erişim |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku/yaz |Alt Kullanıcı nesneleri| 
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku/yaz |Alt InetOrgPerson nesneleri| 
@@ -267,7 +267,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Erişim |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku |Descendant PublicFolder nesneleri| 
 
@@ -292,7 +292,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Erişim |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |SİSTEM |Tam Denetim |Bu nesne 
 |İzin Ver |Enterprise Admins |Tam Denetim |Bu nesne 

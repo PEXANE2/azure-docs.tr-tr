@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
+ms.date: 05/19/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 568bcdcfd8ae50fff58964ecc74176b151db22a4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: eae10b7ae8cd14fd120e969c39c05a8ba2525003
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121329"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681550"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -26,7 +26,7 @@ Bu makalede, Azure Resource Manager şablonları kullanarak Azure Machine Learni
 
 Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -91,7 +91,6 @@ Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md
 > * Şifreleme anahtarı içeren bir Azure Key Vault var olmalıdır.
 > * __Azure Cosmos DB__ uygulamasına __Get__, __Wrap__ve __sarmalama__ erişimini sağlayan Azure Key Vault bir erişim ilkeniz olması gerekir.
 > * Azure Key Vault, Azure Machine Learning çalışma alanını oluşturmayı planladığınız bölgede olmalıdır.
-> * Aboneliğiniz, Azure Cosmos DB için __müşteri tarafından yönetilen anahtarları__ desteklemelidir.
 
 __Azure Machine Learning uygulamayı katkıda bulunan olarak eklemek için__aşağıdaki komutları kullanın:
 
@@ -134,8 +133,6 @@ __Anahtar kasasına bir erişim ilkesi eklemek için aşağıdaki komutları kul
     ```azurecli-interactive
     az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
     ```
-
-__Azure Cosmos DB için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere__ azurecosmosdbcmk@service.microsoft.com Azure abonelik Kimliğinizle posta gönderin. Daha fazla bilgi için bkz. [Azure Cosmos hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma](..//cosmos-db/how-to-setup-cmk.md).
 
 __To get the values__ `cmk_keyvault` Bu şablon için gereken (Key Vault kimliği) ve `resource_cmk_uri` (anahtar URI) parametrelerinin değerlerini almak için aşağıdaki adımları kullanın:
 

@@ -2,13 +2,13 @@
 title: Özellikler-LUSıS
 description: Etiketlemek veya sınıflandırmak istediğiniz girişin nasıl tanınılacağı hakkında ipuçları sağlamak için bir dil modeline özellikler ekleyin.
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 906876e39eb7ff31c2e6b954d1514d8afc50bf3a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/14/2020
+ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591905"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682152"
 ---
 # <a name="machine-learning-ml-features"></a>Makine öğrenimi (ML) özellikleri
 
@@ -38,9 +38,9 @@ LUSıS uygulamanızın kavram için yeni öğeleri genelleştirabilmesi ve belir
 Bir tümcecik listesi ile, LUSıS, bağlamı ve genelleştirir, ancak tam metin eşleşmesi değil, öğesine benzer öğeleri belirler.
 
 Tümcecik listesi kullanma adımları:
-* Makine tarafından öğrenilen bir varlıkla başlayın
+* Makine öğrenimi varlığı ile başlama
     * Örnek konuşmalar ekleme
-    * Makine tarafından öğrenilen bir varlıkla etiketle
+    * Makine öğrenimi varlığı ile etiketleme
 * Tümcecik listesi ekleme
     * Benzer anlamlara sahip sözcükler ekleyin; olası her sözcük veya **tümceciği eklemeyin.** Bunun yerine, bir kerede birkaç sözcük veya tümce ekleyin, sonra yeniden eğitme ve yayımlama.
     * Önerilen sözcükleri gözden geçirin ve ekleyin
@@ -54,7 +54,7 @@ Anlamlarını artırmak için bir tümcecik listesi gerektirebilecek kelimelerin
 Tıp şartlarını ayıklamak istiyorsanız:
 * İlk olarak bu söyleyler dahilinde örnek bir örnek oluşturun ve tıbbi terimleri etiketleyin.
 * Ardından, konu etki alanında yer alan koşullara örnek olarak bir tümcecik listesi oluşturun. Bu tümcecik listesi, etiketlediğiniz gerçek terimi ve aynı kavramı tanımlayan diğer terimleri içermelidir.
-* Tümcecik listesini, tümcecik listesinde kullanılan kavramı çıkaran varlığa veya alt varlığa ekleyin. En yaygın senaryo, makine tarafından öğrenilen bir varlığın bileşenidir (alt). Tümcecik listesinin tüm amaçlar veya varlıklar üzerinde uygulanması gerekiyorsa, tümcecik listesini genel ifade listesi olarak işaretleyin. `enabledForAllModels`Bayrak, bu model KAPSAMıNı API 'de denetler.
+* Tümcecik listesini, tümcecik listesinde kullanılan kavramı çıkaran varlığa veya alt varlığa ekleyin. En yaygın senaryo, makine öğrenimi varlığının bir bileşenidir (alt öğesidir). Tümcecik listesinin tüm amaçlar veya varlıklar üzerinde uygulanması gerekiyorsa, tümcecik listesini genel ifade listesi olarak işaretleyin. `enabledForAllModels`Bayrak, bu model KAPSAMıNı API 'de denetler.
 
 <a name="how-to-use-phrase-lists"></a>
 <a name="how-to-use-a-phrase-lists"></a>
@@ -88,9 +88,21 @@ Varlık (a), varlık (B) için önemli olduğunda bu varlığın (A) algılanabi
     * Ülke (alt varlık)
     * Posta kodu (alt varlık)
 
+## <a name="nested-subentities-with-features"></a>Özelliklerle iç içe geçmiş alt varlıklar
+
+Bir makine öğrenilen alt varlık, üst varlık için bir kavram olduğunu belirtir, bu üst varlığın başka bir alt varlık veya en üst varlık olup olmadığı. Alt varlığın değeri, üst öğesi için bir özellik görevi görür.
+
+Bir alt varlık bir özellik olarak hem bir özellik hem de bir model (başka bir varlık) olarak bir ifade listesi içerebilir.
+
+Alt varlık bir tümcecik listesine sahip olduğunda, bu kavram sözlüğünü artırır ancak tahmine yönelik JSON yanıtına hiçbir bilgi eklemez.
+
+Alt varlık başka bir varlık özelliğine sahip olduğunda, JSON yanıtı o varlığın ayıklanan verilerini içerir.
+
 ## <a name="required-features"></a>Gerekli özellikler
 
 Modelin tahmin uç noktasından döndürülmesi için gerekli bir özellik bulunması gerekir. Gelen verilerinizin özelliği ile eşleşmesi gerektiğini bildiğiniz durumlarda gerekli bir özelliği kullanın.
+
+Söylenişi metni gerekli özellik ile eşleşmiyorsa ayıklanmaz.
 
 **Gerekli bir özellik makine tarafından öğrenilen bir varlık kullanır**:
 * Normal ifade varlığı

@@ -2,13 +2,13 @@
 title: Değişiklikleri engellemek için kaynakları kilitle
 description: Kullanıcıların, tüm kullanıcılar ve roller için bir kilit uygulayarak kritik Azure kaynaklarını güncelleştirmesini veya silmelerini önleyin.
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: 6bd595e3c676c8521470a1f5a00fe782e83dc840
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274014"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683743"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Beklenmeyen değişiklikleri önlemek için kaynakları kilitleme
 
@@ -25,17 +25,23 @@ Rol tabanlı erişim denetiminin aksine, yönetim kilitlerini tüm kullanıcıla
 
 Resource Manager kilitleri yalnızca yönetim düzleminde gerçekleşen ve `https://management.azure.com` adresine gönderilen işlemlere uygulanır. Kilitler kaynakların kendi işlevlerini gerçekleştirmesine bir kısıtlama getirmez. Kaynak değişiklikleri kısıtlanır ama kaynak işlemleri kısıtlanmaz. Örneğin, bir SQL veritabanı üzerinde salt okunur bir kilit, veritabanını silmenizi veya değiştirmenizi önler. Veritabanında veri oluşturmanızı, mevcut verileri güncelleştirmenizi veya silmenizi engellemez. Bu işlemler `https://management.azure.com` hedefine gönderilmediğinden veri işlemlerine izin verilir.
 
-**ReadOnly** uygulamak, kaynağı değiştirmeyen bazı işlemler gerçekten kilit tarafından engellenen eylemler gerektirdiğinden beklenmedik sonuçlara neden olabilir. **Salt okunur** kilit, kaynağa veya kaynağı içeren kaynak grubuna uygulanabilir. **Salt okunur** kilit tarafından engellenen işlemlerin bazı yaygın örnekleri şunlardır:
+## <a name="considerations-before-applying-locks"></a>Kilitleri uygulamadan önce dikkat edilecek noktalar
 
-* Depolama hesabındaki bir **salt okunur** kilit, tüm kullanıcıların anahtarları listelemesine engel olur. Anahtarları listeleme işlemi bir POST isteği aracılığıyla işlenir çünkü döndürülen anahtarlar yazma işlemlerinde kullanılabilir.
+Kilitleri uygulamak, kaynağı değiştirmeyen bazı işlemler gerçekten kilit tarafından engellenen eylemler gerektirdiğinden beklenmedik sonuçlara neden olabilir. Kilitlerle engellenen işlemlerin bazı yaygın örnekleri şunlardır:
 
-* App Service bir kaynaktaki **salt okunur** kilit, bu etkileşim yazma erişimi gerektirdiğinden Visual Studio Sunucu Gezgini kaynak için dosya görüntülemesini engeller.
+* **Depolama hesabında** salt okunurdur bir kilit, tüm kullanıcıların anahtarları listelemesine engel olur. Anahtarları listeleme işlemi bir POST isteği aracılığıyla işlenir çünkü döndürülen anahtarlar yazma işlemlerinde kullanılabilir.
 
-* Bir sanal makine içeren bir kaynak grubundaki **salt okunur** kilit, tüm kullanıcıların sanal makineyi başlatmasını veya yeniden başlatmasını önler. Bu işlemler bir POST isteği gerektirir.
+* Bir **App Service** kaynağı üzerinde salt okunurdur bir kilit, bu etkileşim yazma erişimi gerektirdiğinden Visual Studio Sunucu Gezgini kaynak için dosya görüntülemesini engeller.
+
+* Bir **sanal makine** içeren bir **kaynak grubundaki** salt okunurdur bir kilit, tüm kullanıcıların sanal makineyi başlatmasını veya yeniden başlatmasını önler. Bu işlemler bir POST isteği gerektirir.
+
+* Bir **abonelikte** salt okunurdur bir kilit **Azure Advisor** 'ın düzgün çalışmasını engeller. Danışman, sorgularının sonuçlarını depolayamadı.
+
+* **Azure Backup hizmeti** tarafından oluşturulan **kaynak grubundaki** bir Delete kilidi, yedeklemelerin başarısız olmasına neden olur. Hizmet en fazla 18 geri yükleme noktasını destekler. Kilitlendiğinde, yedekleme hizmeti geri yükleme noktalarını temizleyemiyor. Daha fazla bilgi için bkz. [sık sorulan sorular-Azure sanal makinelerini yedekleme](../../backup/backup-azure-vm-backup-faq.md).
 
 ## <a name="who-can-create-or-delete-locks"></a>Kilitleri kimler oluşturabilir veya silebilir
 
-Yönetim kilitleri oluşturmak veya silmek için, `Microsoft.Authorization/*` veya `Microsoft.Authorization/locks/*` eylemlere erişiminizin olması gerekir. Yerleşik rollerden yalnızca **Sahip** ve **Kullanııcı Erişiimi Yöneticisi** bu eylemleri kullanabilir.
+Yönetim kilitleri oluşturmak veya silmek için, veya eylemlere erişiminizin olması gerekir `Microsoft.Authorization/*` `Microsoft.Authorization/locks/*` . Yerleşik rollerden yalnızca **Sahip** ve **Kullanııcı Erişiimi Yöneticisi** bu eylemleri kullanabilir.
 
 ## <a name="managed-applications-and-locks"></a>Yönetilen uygulamalar ve kilitler
 
@@ -56,10 +62,6 @@ Hizmetin **yönetilen kaynak grubu**için bir bağlantı içerdiğine dikkat edi
 Kilitli altyapı kaynak grubu dahil olmak üzere hizmetin her şeyi silmek için, hizmet için **Sil** ' i seçin.
 
 ![Hizmeti Sil](./media/lock-resources/delete-service.png)
-
-## <a name="azure-backups-and-locks"></a>Azure yedeklemeleri ve kilitleri
-
-Azure Backup hizmeti tarafından oluşturulan kaynak grubunu kilitlerseniz yedeklemeler başarısız olur. Hizmet en fazla 18 geri yükleme noktasını destekler. Bir **Cannotdelete** kilidi ile yedekleme hizmeti geri yükleme noktalarını temizleyemiyor. Daha fazla bilgi için bkz. [sık sorulan sorular-Azure sanal makinelerini yedekleme](../../backup/backup-azure-vm-backup-faq.md).
 
 ## <a name="portal"></a>Portal
 

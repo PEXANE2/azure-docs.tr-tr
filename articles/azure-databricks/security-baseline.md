@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d417f412592d87dec751b9d98a26bf786c719e5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 23057723d46ed5d9203741ab2eb1a15edb5bd510
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796856"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681704"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure Databricks için Azure Güvenlik temeli
 
@@ -146,7 +146,7 @@ Ayrıca, Azure Kaynak Yönetimi şablonları, rol tabanlı erişim denetimi (RBA
 
 **Rehberlik**: NSG 'ler ve Azure Databricks örneğiniz ile ilişkili ağ güvenliği ve trafik akışıyla ilgili diğer kaynaklar için Etiketler kullanın. Bireysel NSG kuralları için "Açıklama" alanını kullanarak ağa giden/giden trafiğe izin veren kuralların iş gereksinimini ve/veya süresini (vs.) belirtin.
 
-* [Etiketler oluşturma ve kullanma](httphttps://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

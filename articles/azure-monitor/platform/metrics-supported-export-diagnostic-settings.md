@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422119"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680679"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Izleyici platformu ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir
 
@@ -24,7 +24,10 @@ Azure Izleyici arka ucunun anormal olması nedeniyle, tüm ölçümler Tanılama
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Null değerler ve sıfır değerleri için davranışa değiştirme 
  
-Tanılama ayarları aracılığıyla verilebilen platform ölçümleri için, Azure Izleyici 'nin ' 0s ' öğesini ' nulls ' olarak yorumlaması için birkaç ölçüm vardır. Bu, gerçek ' 0s ' (kaynağa göre yayılan) ve yorumlanan ' 0s ' (null değerler) arasında karışıklık oluşmasına neden oldu. Kısa süre içinde bir değişiklik gerçekleşir ve Tanılama ayarları aracılığıyla dışarı aktarılmış platform ölçümleri, temel alınan kaynak tarafından gerçekten yayılmadığı sürece artık ' 0s ' öğesini dışarı aktarmayacaktır. Değişiklik, 1 Nisan 2020 ' de zamanlandı, ancak COVıD-19 nedeniyle öncelikli kaymalar nedeniyle ertelendi. 
+Tanılama ayarları aracılığıyla verilebilen platform ölçümleri için, Azure Izleyici 'nin ' 0s ' öğesini ' nulls ' olarak yorumlaması için birkaç ölçüm vardır. Bu, gerçek ' 0s ' (kaynağa göre yayılan) ve yorumlanan ' 0s ' (null değerler) arasında karışıklık oluşmasına neden oldu. Kısa süre içinde bir değişiklik gerçekleşir ve Tanılama ayarları aracılığıyla dışarı aktarılmış platform ölçümleri, temel alınan kaynak tarafından gerçekten yayılmadığı sürece artık ' 0s ' öğesini dışarı aktarmayacaktır. 
+
+> [!CAUTION]
+> Yukarıda açıklanan davranıştaki değişiklik 1 Haziran 2020 ' de gerçekleşecek şekilde zamanlanır.
 
 Lütfen unutmayın:
 
@@ -41,7 +44,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 - Tanılama ayarları aracılığıyla dışarı aktarılabilir mi? 
 - NULL/0 tarafından etkilendi 
 - ResourceType 
-- Ölçüm 
+- Metric 
 - MetricDisplayName
 - Birim 
 - Toplamatürü
@@ -51,7 +54,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 > Aşağıdaki tabloda, alt kısımdaki bir yatay kaydırma çubuğu olabilir. Bilgilerin eksik olduğunu düşünüyorsanız, kaydırma çubuğunun sola doğru olup olmadığını kontrol edin.  
 
 
-| Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?  | Null değerleri zaten yay |  ResourceType  |  Ölçüm  |  MetricDisplayName  |  Birim  |  Toplamatürü | 
+| Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?  | Null değerleri zaten yay |  ResourceType  |  Metric  |  MetricDisplayName  |  Birim  |  Toplamatürü | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | Evet * * * *  | Hayır |  Microsoft. AnalysisServices/sunucuları  |  CleanerCurrentPrice  |  Bellek: temizleyici geçerli fiyatı  |  Sayı  |  Ortalama | 
 | Evet * * * *  | Hayır |  Microsoft. AnalysisServices/sunucuları  |  Cleanermemorynonınkable  |  Bellek: temizleyici bellek daraltılamaz  |  Bayt  |  Ortalama | 
@@ -205,7 +208,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  QueuedTransactions  |  Kuyruğa alınmış Işlemler  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  RequestHandled  |  İşlenmiş Istekler  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  StorageUsage  |  Depolama alanı kullanımı  |  Bayt  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachehits  |  Önbellek ısabetleri  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachehits  |  İsabetli Önbellek Okuma Sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachehits0  |  Önbellek ısabetleri (parça 0)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachehits1  |  Önbellek ısabetleri (parça 1)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachehits2  |  Önbellek ısabetleri (parça 2)  |  Sayı  |  Toplam | 
@@ -217,7 +220,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachehits8  |  Önbellek ısabetleri (parça 8)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachehits9  |  Önbellek ısabetleri (parça 9)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheLatency  |  Önbellek gecikmesi mikrosaniye (Önizleme)  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheisabetsizlik  |  Önbellek Isabetsizliği  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheisabetsizlik  |  İsabetsiz Önbellek Okuma Sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachemisses0  |  Önbellekte bulunamayanlar (parça 0)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachemisses1  |  Önbellekte bulunamayanlar (parça 1)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachemisses2  |  Önbellekte bulunamayanlar (parça 2)  |  Sayı  |  Toplam | 
@@ -228,7 +231,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachemisses7  |  Önbellekte bulunamayanlar (parça 7)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachemisses8  |  Önbellekte bulunamayanlar (parça 8)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachemisses9  |  Önbellekte bulunamayanlar (parça 9)  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead  |  Önbellek Okuma  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead  |  Önbellek Okuması  |  BytesPerSecond  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead0  |  Önbellek Okuma (parça 0)  |  BytesPerSecond  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead1  |  Önbellek Okuma (parça 1)  |  BytesPerSecond  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead2  |  Önbellek Okuma (parça 2)  |  BytesPerSecond  |  Maksimum | 
@@ -239,7 +242,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead7  |  Önbellek Okuma (parça 7)  |  BytesPerSecond  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead8  |  Önbellek Okuma (parça 8)  |  BytesPerSecond  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead9  |  Önbellek Okuma (parça 9)  |  BytesPerSecond  |  Maksimum | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite  |  Önbellek yazma  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite  |  Önbellek Yazması  |  BytesPerSecond  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite0  |  Önbellek yazma (parça 0)  |  BytesPerSecond  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite1  |  Önbellek yazma (parça 1)  |  BytesPerSecond  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite2  |  Önbellek yazma (parça 2)  |  BytesPerSecond  |  Maksimum | 
@@ -250,7 +253,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite7  |  Önbellek yazma (parça 7)  |  BytesPerSecond  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite8  |  Önbellek yazma (parça 8)  |  BytesPerSecond  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite9  |  Önbellek yazma (parça 9)  |  BytesPerSecond  |  Maksimum | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedistemcileri  |  Bağlanan İstemciler  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedistemcileri  |  Bağlı İstemciler  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients0  |  Bağlı Istemciler (parça 0)  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients1  |  Bağlı Istemciler (parça 1)  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients2  |  Bağlı Istemciler (parça 2)  |  Sayı  |  Maksimum | 
@@ -262,7 +265,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients8  |  Bağlı Istemciler (parça 8)  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients9  |  Bağlı Istemciler (parça 9)  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  hatalar  |  Hatalar  |  Sayı  |  Maksimum | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  çıkarılan anahtarlar  |  Çıkarılan anahtarlar  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  çıkarılan anahtarlar  |  Çıkarılan Anahtarlar  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  evictedkeys0  |  Çıkarılan anahtarlar (parça 0)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  evictedkeys1  |  Çıkarılan anahtarlar (parça 1)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  evictedkeys2  |  Çıkarılan anahtarlar (parça 2)  |  Sayı  |  Toplam | 
@@ -273,7 +276,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  evictedkeys7  |  Çıkarılan anahtarlar (parça 7)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  evictedkeys8  |  Çıkarılan anahtarlar (parça 8)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  evictedkeys9  |  Çıkarılan anahtarlar (parça 9)  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  expiredkeys  |  Süre dolma anahtarları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  expiredkeys  |  Süresi Dolan Anahtarlar  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  expiredkeys0  |  Süre dolma anahtarları (parça 0)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  expiredkeys1  |  Süre dolma anahtarları (parça 1)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  expiredkeys2  |  Süre dolma anahtarları (parça 2)  |  Sayı  |  Toplam | 
@@ -284,7 +287,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  expiredkeys7  |  Süre dolma anahtarları (parça 7)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  expiredkeys8  |  Süre dolma anahtarları (parça 8)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  expiredkeys9  |  Süre dolma anahtarları (parça 9)  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  GetCommands  |  İyorsa  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  GetCommands  |  Alınanlar  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  getcommands0  |  Alır (parça 0)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  getcommands1  |  Alır (parça 1)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  getcommands2  |  Alır (parça 2)  |  Sayı  |  Toplam | 
@@ -295,7 +298,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  getcommands7  |  Alır (parça 7)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  getcommands8  |  Al (Shard 8)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  getcommands9  |  Alır (parça 9)  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond  |  İşlem/saniye  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond  |  Saniye Başına İşlem  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond0  |  Saniyedeki işlem (parça 0)  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond1  |  Saniyedeki işlem (parça 1)  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond2  |  Saniyedeki işlem (parça 2)  |  Sayı  |  Maksimum | 
@@ -317,7 +320,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime7  |  CPU (parça 7)  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime8  |  CPU (parça 8)  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime9  |  CPU (parça 9)  |  Yüzde  |  Maksimum | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  Sunucuyükü  |  Sunucu yükü  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  Sunucuyükü  |  Sunucu Yükü  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad0  |  Sunucu yükü (parça 0)  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad1  |  Sunucu yükü (parça 1)  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad2  |  Sunucu yükü (parça 2)  |  Yüzde  |  Maksimum | 
@@ -328,7 +331,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad7  |  Sunucu yükü (parça 7)  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad8  |  Sunucu yükü (parça 8)  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad9  |  Sunucu yükü (parça 9)  |  Yüzde  |  Maksimum | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  SetCommands  |  Ayarlar  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  SetCommands  |  Kümeler  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  setcommands0  |  Kümeler (parça 0)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  setcommands1  |  Kümeler (parça 1)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  setcommands2  |  Kümeler (parça 2)  |  Sayı  |  Toplam | 
@@ -339,7 +342,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  setcommands7  |  Kümeler (parça 7)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  setcommands8  |  Kümeler (Shard 8)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  setcommands9  |  Kümeler (parça 9)  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalcommandsişlendi  |  Toplam Işlem sayısı  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalcommandsişlendi  |  Toplam İşlem Sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalcommandsprocessed0  |  Toplam Işlem (parça 0)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalcommandsprocessed1  |  Toplam Işlem (parça 1)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalcommandsprocessed2  |  Toplam Işlem (parça 2)  |  Sayı  |  Toplam | 
@@ -361,7 +364,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys7  |  Toplam anahtar (parça 7)  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys8  |  Toplam anahtar (Shard 8)  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys9  |  Toplam anahtar (parça 9)  |  Sayı  |  Maksimum | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory  |  Kullanılan bellek  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory  |  Kullanılan Bellek  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory0  |  Kullanılan bellek (parça 0)  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory1  |  Kullanılan bellek (parça 1)  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory2  |  Kullanılan bellek (parça 2)  |  Bayt  |  Maksimum | 
@@ -372,7 +375,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory7  |  Kullanılan bellek (parça 7)  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory8  |  Kullanılan bellek (parça 8)  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory9  |  Kullanılan bellek (parça 9)  |  Bayt  |  Maksimum | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemorypercentage  |  Kullanılan bellek yüzdesi  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemorypercentage  |  Kullanılan Bellek Yüzdesi  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss  |  Kullanılan bellek RSS  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss0  |  Kullanılan bellek RSS (parça 0)  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss1  |  Kullanılan bellek RSS (parça 1)  |  Bayt  |  Maksimum | 
@@ -456,7 +459,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Biliveservices/hesapları  |  SpeechSessionDuration  |  Konuşma oturumu süresi  |  Saniye  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Biliveservices/hesapları  |  Başarılı çağrılar  |  Başarılı çağrılar  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Biliveservices/hesapları  |  Toplam çağrılar  |  Toplam çağrı sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Biliveservices/hesapları  |  Toplam hata sayısı  |  Toplam hata sayısı  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Biliveservices/hesapları  |  Toplam hata sayısı  |  Toplam Hata Sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Biliveservices/hesapları  |  TotalTokenCalls  |  Toplam belirteç çağrısı sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Biliveservices/hesapları  |  TotalTransactions  |  Toplam Işlem sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  Tüketilen CPU kredileri  |  Tüketilen CPU kredileri  |  Sayı  |  Ortalama | 
@@ -755,7 +758,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft. Devices/provisioningServices  |  AttestationAttempts  |  Kanıtlama denemeleri  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. Devices/provisioningServices  |  Deviceasyleri  |  Atanan cihazlar  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. Devices/provisioningServices  |  Registrationdenemeleri  |  Kayıt denemeleri  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  AvailableStorage  |  Kullanılabilir Depolama  |  Bayt  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  AvailableStorage  |  Kullanılabilir Depolama Alanı  |  Bayt  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Cassandraconnectionkapanışları  |  Cassandra bağlantı kapanışları  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Cassandrarequestücretleri  |  Cassandra Istek ücretleri  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  CassandraRequests  |  Cassandra Istekleri  |  Sayı  |  Sayı | 
@@ -763,7 +766,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  DeleteVirtualNetwork  |  DeleteVirtualNetwork  |  Sayı  |  Sayı | 
 | Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  DocumentCount  |  Belge sayısı  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  DocumentQuota  |  Belge kotası  |  Bayt  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Indexusage  |  Dizin kullanımı  |  Bayt  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Indexusage  |  Dizin Kullanımı  |  Bayt  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Meta veri datarequests  |  Meta veri Istekleri  |  Sayı  |  Sayı | 
 | **Evet**  | **Evet** |  Microsoft. DocumentDB/databaseAccounts  |  Mongorequestşarj  |  Mongo Istek ücreti  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequests  |  Mongo Istekleri  |  Sayı  |  Sayı | 
@@ -777,8 +780,8 @@ Tabloda aşağıdaki sütunlar bulunur.
 | Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  ServiceAvailability  |  Hizmet kullanılabilirliği  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. DocumentDB/databaseAccounts  |  TotalRequests  |  Toplam İstek Sayısı  |  Sayı  |  Sayı | 
 | **Evet**  | **Evet** |  Microsoft. DocumentDB/databaseAccounts  |  TotalRequestUnits  |  Toplam Istek birimleri  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  FailureCount  |  Hata Sayısı  |  Sayı  |  Sayı | 
-| Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  Başarılı sayısı  |  Başarı Sayısı  |  Sayı  |  Sayı | 
+| Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  FailureCount  |  Başarısız İşlem Sayısı  |  Sayı  |  Sayı | 
+| Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  Başarılı sayısı  |  Başarılı İşlem Sayısı  |  Sayı  |  Sayı | 
 | Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  Başarılı gecikme  |  Başarı gecikmesi  |  Mayacak  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  Işlem sayısı  |  İşlem sayısı  |  Sayı  |  Sayı | 
 | **Evet**  | **Evet** |  Microsoft. EventGrid/Domains  |  DeadLetteredCount  |  Kullanılmayan olaylar  |  Sayı  |  Toplam | 
@@ -876,7 +879,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Insights/bileşenler  |  Bağımlılıklar/süre  |  Bağımlılık süresi  |  Mayacak  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. Insights/bileşenler  |  Bağımlılıklar/başarısız  |  Bağımlılık çağrısı sorunları  |  Sayı  |  Sayı | 
 | Hayır  | Hayır |  Microsoft. Insights/bileşenler  |  özel durumlar/tarayıcı  |  Tarayıcı özel durumları  |  Sayı  |  Sayı | 
-| **Evet**  | **Evet** |  Microsoft. Insights/bileşenler  |  özel durumlar/say  |  Özel Durumlar  |  Sayı  |  Sayı | 
+| **Evet**  | **Evet** |  Microsoft. Insights/bileşenler  |  özel durumlar/say  |  Özel durumlar  |  Sayı  |  Sayı | 
 | Hayır  | Hayır |  Microsoft. Insights/bileşenler  |  özel durumlar/sunucu  |  Sunucu özel durumları  |  Sayı  |  Sayı | 
 | **Evet**  | **Evet** |  Microsoft. Insights/bileşenler  |  pageViews/Count  |  Sayfa görünümleri  |  Sayı  |  Sayı | 
 | **Evet**  | Hayır |  Microsoft. Insights/bileşenler  |  pageViews/Duration  |  Sayfa görünümü yükleme süresi  |  Mayacak  |  Ortalama | 

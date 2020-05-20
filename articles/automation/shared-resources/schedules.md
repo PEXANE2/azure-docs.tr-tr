@@ -1,6 +1,6 @@
 ---
 title: Azure Otomasyonu 'nda zamanlamaları yönetme
-description: Bir runbook 'u belirli bir zamanda veya yinelenen bir zamanlamaya göre otomatik olarak başlatabilmeniz için Azure Otomasyonu 'nda bir zamanlama oluşturmayı ve yönetmeyi öğrenin.
+description: Bu makalede, Azure Otomasyonu 'nda bir zamanlamaya göre nasıl oluşturulacağı ve bunlarla çalışacakları açıklanır.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,22 +9,22 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4cd6d4236b95a17f404df13e8b50daf989cf6072
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: c644333fd49c4e54a54d00e7fb033c6d4bdc158b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652102"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685345"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Otomasyonu 'nda zamanlamaları yönetme
 
 Azure Otomasyonu 'nda bir runbook 'u belirli bir zamanda başlayacak şekilde zamanlamak için, onu bir veya daha fazla zamanlamaya bağlayın. Bir zamanlama, Azure portal runbook 'lar için bir kez veya yinelenen bir saatlik ya da günlük zamanlamaya göre çalışacak şekilde yapılandırılabilir. Ayrıca, bunları haftalık, aylık, haftanın belirli günlerinde veya ayın belirli bir gününde zamanlayabilirsiniz. Bir runbook, birden çok zaman çizelgesine bağlanabilir ve bir zaman çizelgesine birden çok runbook bağlı olabilir.
 
 > [!NOTE]
-> Zamanlamalar Şu anda Azure Automation DSC yapılandırmasını desteklememektedir.
+> Azure Otomasyonu, gün ışığından yararlanma süresini destekler ve Otomasyon işlemleri için uygun şekilde zamanlar.
 
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+> [!NOTE]
+> Zamanlamalar Şu anda Azure Automation DSC yapılandırmalarında etkin değil.
 
 ## <a name="powershell-cmdlets-used-to-access-schedules"></a>Zamanlamalara erişmek için kullanılan PowerShell cmdlet 'leri
 
@@ -164,7 +164,7 @@ Bir zamanlamayı devre dışı bıraktığınızda, onunla bağlantılı tüm ru
 
 ### <a name="disable-a-schedule-with-powershell"></a>PowerShell ile zamanlamayı devre dışı bırakma
 
-Var olan bir zamanlamanın özelliklerini değiştirmek için [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini kullanın. Zamanlamayı devre dışı bırakmak için, `IsEnabled` parametre için false belirtin.
+Var olan bir zamanlamanın özelliklerini değiştirmek için [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini kullanın. Zamanlamayı devre dışı bırakmak için, parametre için false belirtin `IsEnabled` .
 
 Aşağıdaki örnek, bir Azure Resource Manager cmdlet 'i kullanarak bir runbook için zamanlamanın nasıl devre dışı bırakılacağını gösterir.
 
@@ -187,7 +187,7 @@ Zamanlamalarınızı kaldırmaya hazırsanız Azure portal veya PowerShell kulla
 
 ### <a name="remove-a-schedule-with-powershell"></a>PowerShell ile zamanlama kaldırma
 
-Varolan bir zamanlamayı silmek `Remove-AzAutomationSchedule` için cmdlet 'ini aşağıda gösterildiği gibi kullanabilirsiniz. 
+`Remove-AzAutomationSchedule`Varolan bir zamanlamayı silmek için cmdlet 'ini aşağıda gösterildiği gibi kullanabilirsiniz. 
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"

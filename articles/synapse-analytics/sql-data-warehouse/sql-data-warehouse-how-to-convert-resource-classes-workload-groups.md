@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/19/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0cc0cd7233d0c16cae8389fcddd50a16cf96bd2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383635"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683648"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Kaynak sınıflarını Iş yükü gruplarına Dönüştür
 
@@ -27,7 +27,7 @@ ms.locfileid: "81383635"
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>Mevcut kaynak sınıfı yapılandırmasını anlama
 
-İş yükü grupları, istek başına `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ayrılan toplam sistem kaynakları yüzdesini belirten adlı bir parametre gerektirir.  Kaynak ayırma, eşzamanlılık yuvaları ayırarak [kaynak sınıfları](resource-classes-for-workload-management.md#what-are-resource-classes) için yapılır.  İçin `REQUEST_MIN_RESOURCE_GRANT_PERCENT`belirtme değerini belirlemek için, sys. dm_workload_management_workload_groups_stats <link tbd> DMV kullanın.  Örneğin, aşağıdaki sorgu sorgusu, staticrc40 şuna benzer bir iş yükü grubu oluşturmak için `REQUEST_MIN_RESOURCE_GRANT_PERCENT` parametresi için kullanılabilecek bir değer döndürür.
+İş yükü grupları `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , istek başına ayrılan toplam sistem kaynakları yüzdesini belirten adlı bir parametre gerektirir.  Kaynak ayırma, eşzamanlılık yuvaları ayırarak [kaynak sınıfları](resource-classes-for-workload-management.md#what-are-resource-classes) için yapılır.  İçin belirtme değerini belirlemek için `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , sys. dm_workload_management_workload_groups_stats <link tbd> DMV kullanın.  Örneğin, aşağıdaki sorgu sorgusu, `REQUEST_MIN_RESOURCE_GRANT_PERCENT` staticrc40 şuna benzer bir iş yükü grubu oluşturmak için parametresi için kullanılabilecek bir değer döndürür.
 
 ```sql
 SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant_percent
@@ -38,13 +38,13 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 > [!NOTE]
 > İş yükü grupları, genel sistem kaynaklarının yüzdesine göre çalışır.  
 
-İş yükü grupları, ölçeği yukarı ve aşağı doğru olan genel sistem kaynaklarının yüzdesine göre çalıştığından, genel sistem kaynaklarına göre statik kaynak sınıflarına ayrılan kaynakların yüzdesi değişir.  Örneğin, staticrc40 at DW1000c genel sistem kaynaklarının% 9,6 ' i ayırır.  DW2000c adresinde% 19,2 ayrıldı.  İstek başına daha fazla kaynak ayırarak eşzamanlılık için ölçeği ölçeklendirmek istiyorsanız bu model benzerdir.
+İş yükü grupları, ölçeği yukarı ve aşağı doğru olan genel sistem kaynaklarının yüzdesine göre çalıştığından, genel sistem kaynaklarına göre statik kaynak sınıflarına ayrılan kaynakların yüzdesi değişir.  Örneğin, staticrc40 at DW1000c genel sistem kaynaklarının% 19,2 ' i ayırır.  DW2000c adresinde% 9,6 ayrıldı.  İstek başına daha fazla kaynak ayırarak eşzamanlılık için ölçeği ölçeklendirmek istiyorsanız bu model benzerdir.
 
 ## <a name="create-workload-group"></a>Iş yükü grubu oluştur
 
-Bilinen `REQUEST_MIN_RESOURCE_GRANT_PERCENT`, iş yükü grubunu oluşturmak IÇIN Iş yükü grubu <link> oluştur sözdizimini kullanabilirsiniz.  İsteğe bağlı olarak, iş `MIN_PERCENTAGE_RESOURCE` yükü grubu için kaynakları yalıtmak üzere sıfırdan büyük bir değer belirtebilirsiniz.  Ayrıca, isteğe bağlı olarak, `CAP_PERCENTAGE_RESOURCE` iş yükü grubunun kullanabileceği kaynak miktarını sınırlamak için 100 'den daha az bir süre belirtebilirsiniz.  
+Bilinen `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , <link> iş yükü grubunu oluşturmak IÇIN Iş yükü grubu oluştur sözdizimini kullanabilirsiniz.  İsteğe bağlı olarak, `MIN_PERCENTAGE_RESOURCE` iş yükü grubu için kaynakları yalıtmak üzere sıfırdan büyük bir değer belirtebilirsiniz.  Ayrıca, isteğe bağlı olarak, `CAP_PERCENTAGE_RESOURCE` iş yükü grubunun kullanabileceği kaynak miktarını sınırlamak için 100 'den daha az bir süre belirtebilirsiniz.  
 
-Aşağıdaki örnek, `MIN_PERCENTAGE_RESOURCE` sistem kaynaklarının% 9,6 ' sini olarak `wgDataLoads` bir sorgunun her zaman çalıştırabilmesini sağlayacak şekilde ' i ayarlar.  Ayrıca, `CAP_PERCENTAGE_RESOURCE` % 38,4 olarak ayarlanır ve bu iş yükü grubunu dört eşzamanlı istek ile sınırlandırır.  `QUERY_EXECUTION_TIMEOUT_SEC` Parametreyi 3600 olarak ayarlayarak 1 saatten uzun süre çalışan herhangi bir sorgu otomatik olarak iptal edilir.
+Aşağıdaki örnek, `MIN_PERCENTAGE_RESOURCE` sistem kaynaklarının% 9,6 `wgDataLoads` ' sini olarak bir sorgunun her zaman çalıştırabilmesini sağlayacak şekilde ' i ayarlar.  Ayrıca, `CAP_PERCENTAGE_RESOURCE` % 38,4 olarak ayarlanır ve bu iş yükü grubunu dört eşzamanlı istek ile sınırlandırır.  `QUERY_EXECUTION_TIMEOUT_SEC`Parametreyi 3600 olarak ayarlayarak 1 saatten uzun süre çalışan herhangi bir sorgu otomatik olarak iptal edilir.
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  
@@ -59,7 +59,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 Daha önce, sorguların kaynak sınıflarıyla eşlenmesi [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)ile yapılır.  Aynı işlevselliği elde etmek ve istekleri iş yükü gruplarıyla eşlemek için [Iş yükü SıNıFLANDıRıCıSı oluştur](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdizimini kullanın.  Sp_addrolemember kullanmak yalnızca bir oturum açma temelli kaynakları bir istek ile eşlemenizi sağlar.  Bir sınıflandırıcı, oturum açma hakkında ek seçenekler sağlar, örneğin:
     - etiket
     - oturum
-    - Aşağıdaki örnek, oturum açma verilerinden, `AdfLogin` yukarıda oluşturulan iş yükü grubuna `factloads` `wgDataLoads` ayarlanmış [seçenek etiketini](sql-data-warehouse-develop-label.md) de içeren sorguları atar.
+    - Aşağıdaki örnek, `AdfLogin` oturum açma verilerinden, yukarıda oluşturulan iş yükü grubuna ayarlanmış [seçenek etiketini](sql-data-warehouse-develop-label.md) de içeren sorguları atar `factloads` `wgDataLoads` .
 
 ```sql
 CREATE WORKLOAD CLASSIFIER wcDataLoads WITH  

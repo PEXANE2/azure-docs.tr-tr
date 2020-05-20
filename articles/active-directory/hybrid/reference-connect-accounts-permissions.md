@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253773"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681756"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Hesaplar ve izinler
 
@@ -141,7 +141,7 @@ Ayrıca gerekli izinleri verilmiş olmalıdır. Yükleme Sihirbazı izinleri do�
 
 Size gereken izinler, etkinleştirdiğiniz isteğe bağlı özelliklere bağlıdır. Birden çok etki alanı varsa, ormandaki tüm etki alanları için izinler verilmelidir. Bu özelliklerden herhangi birini etkinleştirmezseniz, varsayılan **etki alanı kullanıcı** izinleri yeterlidir.
 
-| Özellik | İzinler |
+| Öne çıkan özelliği | İzinler |
 | --- | --- |
 | ms-DS-ımlarımguıd özelliği |Tasarım kavramları bölümünde belgelenen ms-DS-ımıbu GUID özniteliğine yazma izinleri [-MS-DS-ımıbu GUID kaynağını Sourcetutturucu olarak kullanma](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Parola karması eşitleme |<li>Dizin Değişikliklerini Çoğalt</li>  <li>Dizin değişikliklerini çoğaltma |
@@ -149,9 +149,9 @@ Size gereken izinler, etkinleştirdiğiniz isteğe bağlı özelliklere bağlıd
 | Exchange posta genel klasörü |Ortak klasörler için [Exchange posta ortak klasöründe](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) belgelenen özniteliklere yönelik okuma izinleri. | 
 | Parola geri yazma |Kullanıcılar için [parola yönetimine](../authentication/howto-sspr-writeback.md) Başlarken bölümünde belgelenen özniteliklere yazma izinleri. |
 | Cihaz geri yazma |[Cihaz geri yazma](how-to-connect-device-writeback.md)bölümünde açıklandığı şekilde bir PowerShell betiğine izin verildi. |
-| Grup geri yazma |**Office 365 gruplarını** Exchange yüklü bir ormana geri almanıza olanak sağlar.  Daha fazla bilgi için bkz. [Grup geri yazma](how-to-connect-preview.md#group-writeback).|
+| Grup geri yazma |**Office 365 gruplarını** Exchange yüklü bir ormana geri almanıza olanak sağlar.|
 
-## <a name="upgrade"></a>Yükseltme
+## <a name="upgrade"></a>Upgrade
 Bir Azure AD Connect sürümünden yeni bir sürüme yükselttiğinizde, aşağıdaki izinlere sahip olmanız gerekir:
 
 >[!IMPORTANT]

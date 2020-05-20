@@ -1,17 +1,17 @@
 ---
 title: Azure Otomasyonu runbook 'larını ölçüm uyarıları ile izleme
-description: Bu makalede, ölçümleri temel alarak Azure Otomasyonu runbook 'larını izleme işlemi adım adım açıklanmaktadır
+description: Bu makalede, ölçümler temelinde runbook 'ların nasıl izleneceği açıklanır.
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: f288029bb35fe4e3c71db37a1de265edbcd913b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0d30e3d18ecb279e26731346bca7bb7c12943cb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310551"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685403"
 ---
-# <a name="monitoring-runbooks-with-metric-alerts"></a>Ölçüm uyarıları ile runbook 'ları izleme
+# <a name="monitor-runbooks-with-metric-alerts"></a>Ölçüm uyarıları ile runbook’ları izleme
 
 Bu makalede, runbook 'ların tamamlanma durumuna göre uyarı oluşturmayı öğreneceksiniz.
 
@@ -31,7 +31,7 @@ Azure portal Otomasyon hesabınıza gidin. **İzleme**altında **Uyarılar** ' �
 
 2. **Sinyal mantığını Yapılandır** sayfası, uyarıyı tetikleyen mantığı tanımladığınız yerdir. Geçmiş grafiğinde, **Runbook adı** ve **durum**olmak üzere iki boyut sunulur. Boyutlar, sonuçları filtrelemek için kullanılabilen bir ölçüm için farklı özelliklerdir. **Runbook adı**için, uyarı vermek istediğiniz runbook 'u seçin veya tüm runbook 'larda uyarı almak için boş bırakın. **Durum**için, izlemek istediğiniz açılan listeden bir durum seçin. Açılan listede görünen Runbook adı ve durum değerleri yalnızca geçen hafta çalıştırılan işler içindir.
 
-   Açılan listede görünmeyen bir durum veya Runbook üzerinde uyarı vermek istiyorsanız, boyutun **\+** yanına tıklayın. Bu eylem, bu boyut için yakın zamanda yayılmayan özel bir değer girmenizi sağlayan bir iletişim kutusu açar. Bir özellik için mevcut olmayan bir değer girerseniz, uyarılarınız tetiklenmez.
+   Açılan listede görünmeyen bir durum veya Runbook üzerinde uyarı vermek istiyorsanız, **\+** boyutun yanına tıklayın. Bu eylem, bu boyut için yakın zamanda yayılmayan özel bir değer girmenizi sağlayan bir iletişim kutusu açar. Bir özellik için mevcut olmayan bir değer girerseniz, uyarılarınız tetiklenmez.
 
    > [!NOTE]
    > **Runbookname** boyutu için bir ad uygulamazsanız, gizli sistem runbook 'larını içeren durum ölçütlerine uyan runbook 'lar varsa, bir uyarı alırsınız.
@@ -67,7 +67,7 @@ Azure portal Otomasyon hesabınıza gidin. **İzleme**altında **Uyarılar** ' �
 > [!NOTE]
 > Bir eylem grubuna e-posta adresi eklerken, adresi bir eylem grubuna eklendiğini bildiren bir bildirim e-postası gönderilir.
 
-## <a name="notification"></a>Bildirim
+## <a name="receive-notification"></a>Bildirim al
 
 Uyarı ölçütleri karşılandığında, eylem grubu tanımlanan eylemi çalıştırır. Bu makalenin örneğinde, bir e-posta gönderilir. Aşağıdaki görüntü, uyarı tetiklendikten sonra aldığınız e-postanın bir örneğidir:
 

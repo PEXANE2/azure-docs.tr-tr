@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
-ms.date: 03/24/2020
-ms.openlocfilehash: 57ca594dd067d15009de5e3abf7276fae48720d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: f259d423f465d93031c3a72855fd7aac4e320573
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238673"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684968"
 ---
 # <a name="accelerated-database-recovery"></a>Hızlandırılmış veritabanı kurtarma
 
@@ -33,7 +33,7 @@ ms.locfileid: "80238673"
 
   ADR ile, işlem günlüğü, etkin uzun süreli işlemlerin varlığına bile, denetimin dışına büyümesini önleyen bir şekilde kesilir.
 
-## <a name="the-current-database-recovery-process"></a>Geçerli veritabanı kurtarma işlemi
+## <a name="standard-database-recovery-process"></a>Standart veritabanı kurtarma işlemi
 
 SQL Server [veritabanı kurtarma, bu kurtarma modelini](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) izler ve aşağıdaki diyagramda gösterilen ve diyagramda daha ayrıntılı şekilde açıklanacak üç aşamadan oluşur.
 
@@ -95,7 +95,7 @@ ADR 'nin dört temel bileşeni şunlardır:
 
 - **Kalıcı sürüm deposu (PVS)**
 
-  Kalıcı sürüm deposu, geleneksel `tempdb` sürüm deposu yerine veritabanında oluşturulan satır sürümlerinin kalıcı hale getirilmesine yönelik yenı bir SQL veritabanı altyapısı mekanizmasıdır. PVS, kaynak yalıtımına izin verir ve okunabilir ikinciller kullanılabilirliğini geliştirir.
+  Kalıcı sürüm deposu, geleneksel sürüm deposu yerine veritabanında oluşturulan satır sürümlerinin kalıcı hale getirilmesine yönelik yeni bir SQL veritabanı altyapısı mekanizmasıdır `tempdb` . PVS, kaynak yalıtımına izin verir ve okunabilir ikinciller kullanılabilirliğini geliştirir.
 
 - **Mantıksal olarak döndürülüyor**
 

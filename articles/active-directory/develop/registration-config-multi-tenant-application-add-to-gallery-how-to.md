@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.openlocfilehash: 90f4d22ba782fd71460595f69a52e70be87a3047
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8d998d40b9920ccbdaf0079c32a0feb84bba87b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883262"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680273"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Azure AD uygulama galerisine çok kiracılı bir uygulama ekleme
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>Azure AD Uygulama Galerisi nedir?
 
-Azure Active Directory (Azure AD), bulut tabanlı bir kimlik hizmetidir. [Azure AD Uygulama Galerisi](https://azure.microsoft.com/marketplace/active-directory/all/) , tek oturum açma ve Kullanıcı sağlama için tüm uygulama bağlayıcılarının yayımlandığı Azure Marketi uygulama deposudur. Kimlik sağlayıcısı olarak Azure AD kullanan müşteriler burada yayınlanan farklı SaaS uygulaması bağlayıcılarını bulur. BT yöneticileri uygulama galerisinden bağlayıcılar ekler ve ardından çoklu oturum açma ve sağlama için bağlayıcıları yapılandırıp kullanır. Azure AD, çoklu oturum açma için SAML 2,0, OpenID Connect, OAuth ve WS-Besde dahil olmak üzere tüm önemli Federasyon protokollerini destekler. 
+Azure Active Directory (Azure AD), bulut tabanlı bir kimlik hizmetidir. [Azure AD Uygulama Galerisi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) , tek oturum açma ve Kullanıcı sağlama için tüm uygulama bağlayıcılarının yayımlandığı Azure Marketi uygulama deposudur. Kimlik sağlayıcısı olarak Azure AD kullanan müşteriler burada yayınlanan farklı SaaS uygulaması bağlayıcılarını bulur. BT yöneticileri uygulama galerisinden bağlayıcılar ekler ve ardından çoklu oturum açma ve sağlama için bağlayıcıları yapılandırıp kullanır. Azure AD, çoklu oturum açma için SAML 2,0, OpenID Connect, OAuth ve WS-Besde dahil olmak üzere tüm önemli Federasyon protokollerini destekler. 
 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Uygulamanız SAML veya Openıdconnect destekliyorsa
 Azure AD uygulama galerisinde listelenmesini istediğiniz bir çok kiracılı uygulamanız varsa, öncelikle uygulamanızın aşağıdaki çoklu oturum açma teknolojisinden birini desteklediğinden emin olmanız gerekir:

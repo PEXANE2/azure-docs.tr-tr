@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: cynthn
-ms.openlocfilehash: aeacfdc07e5349dfce45b209da1d78bddf870f33
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3d55efb15454f0b1dfe5ac1101a8a53eb1c9aa8f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83269589"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683946"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Önizleme: görüntüleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 
-Galeri görüntüleri yönetilen diskler olarak depolanır, bu nedenle otomatik olarak sunucu tarafı şifreleme kullanılarak şifrelenir. Sunucu tarafı şifreleme, 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)kullanır, en güçlü blok şifrelemeleri KULLANILABILIR ve FIPS 140-2 uyumludur. Azure yönetilen diskleri temel alan şifreleme modülleri hakkında daha fazla bilgi için bkz [. şifreleme API 'si: yeni nesil](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
+Galeri görüntüleri yönetilen diskler olarak depolanır, bu nedenle otomatik olarak sunucu tarafı şifreleme kullanılarak şifrelenir. Sunucu tarafı şifreleme, 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)kullanır, en güçlü blok şifrelemeleri KULLANILABILIR ve FIPS 140-2 uyumludur. Azure yönetilen diskleri temel alan şifreleme modülleri hakkında daha fazla bilgi için bkz [. şifreleme API 'si: yeni nesil](/windows/desktop/seccng/cng-portal)
 
 Görüntülerinizin şifrelenmesi için platform tarafından yönetilen anahtarları kullanabilir veya kendi anahtarlarınızı kullanarak şifrelemeyi yönetebilirsiniz. Şifrelemeyi kendi anahtarlarınız ile yönetmeyi seçerseniz, görüntülerinizdeki tüm diskleri şifrelemek ve şifrelerini çözmek için kullanılacak *müşteri tarafından yönetilen bir anahtar* belirtebilirsiniz. 
 
@@ -24,7 +24,7 @@ Müşteri tarafından yönetilen anahtarlar kullanılarak sunucu tarafı şifrel
 
 Görüntüler için müşteri tarafından yönetilen anahtarları kullanmak için önce bir Azure Key Vault gerekir. Daha sonra bir disk şifreleme kümesi oluşturursunuz. Daha sonra görüntü sürümlerini oluştururken disk şifreleme kümesi kullanılır.
 
-Disk şifreleme kümelerini oluşturma ve kullanma hakkında daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtarlar](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
+Disk şifreleme kümelerini oluşturma ve kullanma hakkında daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtarlar](./windows/disk-encryption.md#customer-managed-keys).
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -72,7 +72,7 @@ Döndürmezse `Registered` , sağlayıcıları kaydetmek için aşağıdakileri 
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-Bir görüntü sürümü için ayarlanmış bir disk şifrelemesi belirtmek için, parametresiyle [New-Azgallerımagedefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) komutunu kullanın `-TargetRegion` . 
+Bir görüntü sürümü için ayarlanmış bir disk şifrelemesi belirtmek için, parametresiyle [New-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion) komutunu kullanın `-TargetRegion` . 
 
 ```azurepowershell-interactive
 
@@ -194,4 +194,4 @@ Paylaşılan görüntü galerisinden bir VM oluşturabilir ve diskleri şifrelem
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Sunucu tarafı disk şifrelemesi](/windows/disk-encryption.md)hakkında daha fazla bilgi edinin.
+[Sunucu tarafı disk şifrelemesi](./windows/disk-encryption.md)hakkında daha fazla bilgi edinin.

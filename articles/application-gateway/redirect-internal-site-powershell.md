@@ -8,16 +8,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: 92fed35c828398c048d704e1ec9b537904939967
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56c7ddd6eda021c802eb256c62fcae680d573b69
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78272935"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681354"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Azure PowerShell kullanarak iç yeniden yönlendirmeye sahip bir uygulama ağ geçidi oluşturma
 
-[Uygulama ağ geçidi](overview.md)oluştururken [Web trafiği yeniden yönlendirmeyi](multiple-site-overview.md) yapılandırmak için Azure PowerShell kullanabilirsiniz. Bu öğreticide, bir sanal makine ölçek kümesi kullanarak bir arka uç havuzu tanımlarsınız. Daha sonra, Web trafiğinin uygun havuza ulaştığınızdan emin olmak için sahip olduğunuz etki alanlarını temel alan dinleyicileri ve kuralları yapılandırırsınız. Bu öğreticide, birden çok etki alanına sahip olduğunuz ve *www\.contoso.com* ve *www\.contoso.org*örneklerini kullandığınız varsayılır.
+[Uygulama ağ geçidi](overview.md)oluştururken [Web trafiği yeniden yönlendirmeyi](multiple-site-overview.md) yapılandırmak için Azure PowerShell kullanabilirsiniz. Bu öğreticide, bir sanal makine ölçek kümesi kullanarak bir arka uç havuzu tanımlarsınız. Daha sonra, Web trafiğinin uygun havuza ulaştığınızdan emin olmak için sahip olduğunuz etki alanlarını temel alan dinleyicileri ve kuralları yapılandırırsınız. Bu öğreticide, birden çok etki alanına sahip olduğunuz ve *www \. contoso.com* ve *www \. contoso.org*örneklerini kullandığınız varsayılır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -107,7 +107,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-first-listener-and-rule"></a>İlk dinleyiciyi ve kuralı oluşturma
 
-Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak içn bir dinleyici gereklidir. Bu öğreticide iki etki alanınız için iki dinleyici oluşturacaksınız. Bu örnekte, *www\.contoso.com* ve *www\.contoso.org*etki alanları için dinleyiciler oluşturulur.
+Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak içn bir dinleyici gereklidir. Bu öğreticide iki etki alanınız için iki dinleyici oluşturacaksınız. Bu örnekte, *www \. contoso.com* ve *www \. contoso.org*etki alanları için dinleyiciler oluşturulur.
 
 [Yeni-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) öğesini kullanarak, daha önce oluşturduğunuz ön uç yapılandırması ve ön uç bağlantı noktasıyla, *contosocomlistener* adlı ilk dinleyiciyi oluşturun. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)kullanarak *contosocomrule* adlı bir temel kural oluşturun.
 
@@ -292,11 +292,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Tarayıcınızın adres çubuğuna, etki alanı adınızı girin. Örneğin, [https://www.contoso.com](https://www.contoso.com).
+Tarayıcınızın adres çubuğuna, etki alanı adınızı girin. Örneğin `https://www.contoso.com`.
 
 ![Uygulama ağ geçidinde contoso test etme](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-Adresi diğer etki alanınız ile değiştirin; örneğin https://www.contoso.org , trafiğin www\.contoso.com dinleyicisine geri yönlendirildiğini görmeniz gerekir.
+Adresi diğer etki alanınız ile değiştirin; Örneğin, `https://www.contoso.org` trafiğin www contoso.com dinleyicisine geri yönlendirildiğini görmeniz gerekir \. .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

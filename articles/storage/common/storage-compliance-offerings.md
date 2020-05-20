@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 1ad41b0b7391236a15b7c1be7d42ed81aaf5b51a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f711d0dbc2df2a5ab102b520fb0d166a459383c1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61483443"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684457"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure depolama uyumluluk teklifleri
 
@@ -37,25 +37,25 @@ Azure Storage hizmetini kullanarak hizmetinizin düzenlenmiş olmasını sağlam
 ## <a name="us-government"></a>ABD Kamu
 
 * [DoD DıŞA L2, L4, L5](https://www.microsoft.com/trustcenter/compliance/disa)
-* [Tikan 10 CFR bölüm 810](https://aka.ms/AzureCompliance)
+* [DoE 10 CFR Bölüm 810](https://aka.ms/AzureCompliance)
 * [EAR (ABD yönetim düzenlemeleri dışarı aktarma)](https://aka.ms/AzureCompliance)
 * [FDA CFR başlığı 21 Bölüm 11](https://aka.ms/AzureCompliance)
 * [FedRAMP](https://www.microsoft.com/trustcenter/compliance/fedramp)
 * [FERPA](https://www.microsoft.com/trustcenter/compliance/ferpa)
-* [FıPS 140-2](https://www.microsoft.com/trustcenter/compliance/fips)
-* [NıST 800-171](https://www.microsoft.com/TrustCenter/Compliance/DISA#NISTRequirements)
+* [FIPS 140-2](https://www.microsoft.com/trustcenter/compliance/fips)
+* [NIST 800-171](https://www.microsoft.com/TrustCenter/Compliance/DISA#NISTRequirements)
 * [Bölüm 508 VPATS](https://www.microsoft.com/trustcenter/compliance/accessibility)
 
-## <a name="industry"></a>Endüstri
+## <a name="industry"></a>Sektör
 
 * [23 NYCRR bölüm 500](https://www.microsoft.com/trustcenter/compliance/NYCRR)
 * [APRA (Avustralya)](https://aka.ms/AzureCompliance)
 * [CDSA](https://www.microsoft.com/trustcenter/compliance/cdsa)
-* [DPP (UK)](https://aka.ms/AzureCompliance)
-* [OLGU (UK)](https://www.microsoft.com/trustcenter/compliance/fact)
+* [DPP (BK)](https://aka.ms/AzureCompliance)
+* [FACT (BK)](https://www.microsoft.com/trustcenter/compliance/fact)
 * [FCA (UK)](https://aka.ms/AzureCompliance)
 * [FFIEC](https://www.microsoft.com/trustcenter/compliance/FFIEC)
-* [FFC (Japonya)](https://www.microsoft.com/trustcenter/compliance/fisc)
+* [FISC (Japonya)](https://www.microsoft.com/trustcenter/compliance/fisc)
 * [GLBA](https://aka.ms/AzureCompliance)
 * [GxP](https://www.microsoft.com/TrustCenter/Compliance/FDA)
 * [HıPAA/HITECH](https://www.microsoft.com/trustcenter/compliance/hipaa)
@@ -64,20 +64,19 @@ Azure Storage hizmetini kullanarak hizmetinizin düzenlenmiş olmasını sağlam
 * [MAS + ABS (Singapur)](https://aka.ms/AzureCompliance)
 * [MPAA](https://www.microsoft.com/trustcenter/compliance/mpaa)
 * [NEN-7510 (Hollanda)](https://www.microsoft.com/trustcenter/compliance/nen-7510)
-* [NHS ıG araç seti (UK)](https://www.microsoft.com/trustcenter/Compliance/NHS)
 * [PCI DSS](https://www.microsoft.com/trustcenter/compliance/pci)
-* [Paylaşılan değerlendirmeler](https://aka.ms/AzureCompliance)
+* [Paylaşılan Değerlendirmeler](https://aka.ms/AzureCompliance)
 * [SOX](https://www.microsoft.com/trustcenter/compliance/SOX)
 
 ## <a name="regional"></a>Bölgesel
 
-* [Bir 2012 (Hollanda)](https://www.microsoft.com/TrustCenter/Compliance/bir-2012)
+* [BIR 2012 (Hollanda)](https://www.microsoft.com/TrustCenter/Compliance/bir-2012)
 * [C5 (Almanya)](https://www.microsoft.com/TrustCenter/Compliance/C5)
 * [CCSL/ıRAP (Avustralya)](https://www.microsoft.com/trustcenter/compliance/ccsl)
-* [CS Gold Işareti (Japonya)](https://www.microsoft.com/trustcenter/compliance/cloud-security-mark)
-* [CICP (Çin)](https://www.trustcenter.cn/compliance/default.html#DJCP)
-* [ENıSA ıAF (AB)](https://aka.ms/AzureCompliance)
-* [LEŞTIRIR (Ispanya)](https://www.microsoft.com/trustcenter/compliance/spainens)
+* [CS Gold Mark (Japonya)](https://www.microsoft.com/trustcenter/compliance/cloud-security-mark)
+* [DJCP (Çin)](https://www.trustcenter.cn/compliance/default.html#DJCP)
+* [ENISA IAF (AB)](https://aka.ms/AzureCompliance)
+* [ENS (İspanya)](https://www.microsoft.com/trustcenter/compliance/spainens)
 * [AB-model-yan tümceleri](https://www.microsoft.com/trustcenter/compliance/eu-model-clauses)
 * [AB-U. S. Gizlilik kalkanı](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
 * [GB 18030 (Çin)](https://www.trustcenter.cn/compliance/default.html#GB18030)
@@ -85,9 +84,9 @@ Azure Storage hizmetini kullanarak hizmetinizin düzenlenmiş olmasını sağlam
 * [It Grundschutz çalışma kitabı (Almanya)](https://www.microsoft.com/TrustCenter/Compliance/IT-Grundschutz)
 * [LOPD (Ispanya)](https://aka.ms/AzureCompliance)
 * [MTCS (Singapur)](https://www.microsoft.com/trustcenter/compliance/mtcs)
-* [Benim sayı (Japonya)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#my_number)
+* [My Number (Japonya)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#my_number)
 * [NZ CC çerçevesi (Yeni Zelanda)](https://www.microsoft.com/trustcenter/compliance/nzcc)
-* [PASF (UK)](https://aka.ms/AzureCompliance)
+* [PASF (BK)](https://aka.ms/AzureCompliance)
 * [PDPA (Arjantin)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#argentina)
 * [PDA dili (Kanada)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#canadian_privacy_laws)
 * [TRUCS (Çin)](https://www.trustcenter.cn/compliance/default.html#TCS)

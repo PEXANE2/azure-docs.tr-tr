@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7d33c2bef1cd0f7bfab4ec3c09f16c049881d1cd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0994ac1d28118869f0d5c2844a034623d101ee8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597390"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684376"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Azure SQL Edge 'in desteklenen özellikleri (Önizleme) 
 
@@ -34,7 +34,7 @@ Azure SQL Edge, iki farklı sürüm veya yazılım planlarıyla kullanılabilir.
 
 ## <a name="operating-system"></a>İşletim Sistemi
 
-Azure SQL Edge kapsayıcıları Şu anda Ubuntu (16,04 ve 18,04) tabanlıdır ve bu nedenle yalnızca Ubuntu 16,04 ve 18,04 çalıştıran Docker konaklarında çalışmak üzere desteklenir. Azure SQL Edge, diğer işletim sistemi konaklarında da çalıştırılabilir (örneğin, Linux veya Windows üzerinde diğer dağıtımlar (Docker CE veya Docker EE kullanılarak), ancak bu konfigürasyonlar Microsoft tarafından kapsamlı bir şekilde sınanmamıştır.
+Azure SQL Edge kapsayıcıları Şu anda Ubuntu 16,04 ' i temel alır ve bu nedenle yalnızca Ubuntu 16,04 (önerilen) veya Ubuntu 18,04 çalıştıran Docker konaklarında çalışmak üzere desteklenir. Azure SQL Edge, diğer işletim sistemi konaklarında da çalıştırılabilir (örneğin, Linux veya Windows üzerinde diğer dağıtımlar (Docker CE veya Docker EE kullanılarak), ancak bu konfigürasyonlar Microsoft tarafından kapsamlı bir şekilde sınanmamıştır.
 
 Azure SQL Edge Şu anda yalnızca Azure IoT Edge aracılığıyla dağıtım için desteklenir. Azure IoT Edge için desteklenen sistemler hakkında daha fazla bilgi için, [Azure IoT Edge desteklenen sistemlere](https://docs.microsoft.com/azure/iot-edge/support)bakın.
 

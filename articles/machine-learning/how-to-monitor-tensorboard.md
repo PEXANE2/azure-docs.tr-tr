@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 02/27/2020
-ms.openlocfilehash: b6b7e47acdbc5bd059e17e512731bd09c8580798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3df37126281a6654a6113f31895ddee276784c1c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78195388"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681455"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard ve Azure Machine Learning deneme çalıştırmalarını ve ölçümlerini görselleştirin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Azure Machine Learning denemeleri ile TensorBoard 'ı nasıl başladığınıza,
 > [!TIP]
 > Bu belgedeki bilgiler öncelikli olarak, model eğitimi sürecini izlemek isteyen veri bilimcileri ve geliştiricileri içindir. Kotalar, tamamlanan eğitim çalıştırmaları veya tamamlanmış model dağıtımları gibi Azure Machine Learning 'den kaynak kullanımını ve olayları izlemeyi ilgilenen bir yöneticiyseniz, bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * TensorBoard 'u başlatmak ve deneme çalışma geçmişlerinizi görüntülemek için, denemeleri ' nin, ölçümlerini ve performansını izlemek için daha önce günlüğe kaydetme özelliğinin etkinleştirilmesi gerekir.  
 
@@ -47,7 +47,7 @@ Azure Machine Learning denemeleri ile TensorBoard 'ı nasıl başladığınıza,
             * **nasıl kullanılır-azureml > izleme ve izleme-denemeleri > tensorboard. ipynb**
 
     * Kendi Juptyer Not defteri sunucunuz
-       * [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) `tensorboard` ek ile birlikte yükleyip
+       * [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) ek Ile birlikte yükleyip `tensorboard`
         * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).  
         * [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
   
@@ -87,7 +87,7 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-Bu kod dosyası mnist_with_summaries. Kopyala, `tf.summary.scalar()` `tf.summary.histogram()` `tf.summary.FileWriter()` vb. çağıran satırlar olduğunu fark edilir. Bu yöntemler, denemeleri 'in çalıştırma geçmişine yönelik anahtar ölçümlerini gruplar, günlüğe kaydeder ve Etiketler. Bu `tf.summary.FileWriter()` , özellikle de önem taşıyan deneme ölçümlerinden verileri serileştirerek, TensorBoard 'in onları kapamasını sağlar.
+Bu kod dosyası mnist_with_summaries. Kopyala, vb. çağıran satırlar olduğunu fark edilir `tf.summary.scalar()` `tf.summary.histogram()` `tf.summary.FileWriter()` . Bu yöntemler, denemeleri 'in çalıştırma geçmişine yönelik anahtar ölçümlerini gruplar, günlüğe kaydeder ve Etiketler. `tf.summary.FileWriter()`Bu, özellikle de önem taşıyan deneme ölçümlerinden verileri serileştirerek, TensorBoard 'in onları kapamasını sağlar.
 
  ### <a name="configure-experiment"></a>Deneme yapılandırma
 
@@ -150,7 +150,7 @@ compute_target.wait_for_completion(show_output=True, min_node_count=None)
 
 ### <a name="submit-run-with-tensorflow-estimator"></a>TensorFlow tahmin aracı ile çalıştırma gönder
 
-TensorFlow tahmin aracı, bir işlem hedefinde bir TensorFlow eğitim işi başlatmanın basit bir yolunu sağlar. Bu, herhangi bir çerçeveyi desteklemek [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) için kullanılabilen genel sınıf aracılığıyla uygulanır. Genel tahmin aracı kullanan eğitim modelleri hakkında daha fazla bilgi için bkz. [tahmin aracı kullanarak Azure Machine Learning modelleri eğitme](how-to-train-ml-models.md)
+TensorFlow tahmin aracı, bir işlem hedefinde bir TensorFlow eğitim işi başlatmanın basit bir yolunu sağlar. Bu, [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) herhangi bir çerçeveyi desteklemek için kullanılabilen genel sınıf aracılığıyla uygulanır. Genel tahmin aracı kullanan eğitim modelleri hakkında daha fazla bilgi için bkz. [tahmin aracı kullanarak Azure Machine Learning modelleri eğitme](how-to-train-ml-models.md)
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -166,7 +166,7 @@ run = exp.submit(tf_estimator)
 
 ### <a name="launch-tensorboard"></a>TensorBoard Başlat
 
-Çalışma sırasında veya tamamlandıktan sonra TensorBoard 'ı başlatabilirsiniz. Aşağıda, ' de `tb` `run`yüklenen deneme çalıştırması geçmişini alan ve ardından tensorboard 'ı `start()` yöntemiyle Başlatan bir tensorboard nesne örneği oluşturacağız. 
+Çalışma sırasında veya tamamlandıktan sonra TensorBoard 'ı başlatabilirsiniz. Aşağıda, ' `tb` de yüklenen deneme çalıştırması geçmişini alan `run` ve ardından tensorboard 'ı yöntemiyle Başlatan bir tensorboard nesne örneği oluşturacağız `start()` . 
   
 [Tensorboard Oluşturucusu](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py) bir çalıştırma dizisi alır, bu yüzden emin olun ve tek öğeli dizi olarak geçirin.
 
@@ -194,11 +194,11 @@ Aşağıdaki kod örnek bir deneme oluşturur, Azure Machine Learning çalışt�
 
 ### <a name="set-up-experiment"></a>Deneme ayarla
 
-Aşağıdaki kod yeni bir deneme ayarlar ve çalıştırma dizinini `root_run`adlandırır. 
+Aşağıdaki kod yeni bir deneme ayarlar ve çalıştırma dizinini adlandırır `root_run` . 
 
 ```python
 from azureml.core import Workspace, Experiment
-import azuremml.core
+import azureml.core
 
 # set experiment name and run name
 ws = Workspace.from_config()
@@ -225,7 +225,7 @@ data = {
 
 ### <a name="run-experiment-and-log-metrics"></a>Deneme ve günlük ölçümlerini çalıştırma
 
-Bu kod için, bir doğrusal regresyon modeli ve günlük anahtarı ölçümleri, alfa katsayısı `alpha`ve ortalama kare hatası `mse`, çalışma geçmişi içinde eğiyoruz.
+Bu kod için, bir doğrusal regresyon modeli ve günlük anahtarı ölçümleri, alfa katsayısı `alpha` ve ortalama kare hatası, `mse` çalışma geçmişi içinde eğiyoruz.
 
 ```Python
 from tqdm import tqdm
@@ -233,7 +233,7 @@ alphas = [.1, .2, .3, .4, .5, .6 , .7]
 # try a bunch of alpha values in a Linear Regression (aka Ridge regression) mode
 for alpha in tqdm(alphas):
   # create child runs and fit lines for the resulting models
-  with root_run.child_run("alpha" + str(alpha)) as run
+  with root_run.child_run("alpha" + str(alpha)) as run:
  
    reg = Ridge(alpha=alpha)
    reg.fit(data["train"]["x"], data["train"]["y"])    

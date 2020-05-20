@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae0632fbc3208befe197c15ffdbf2d9a4e7b2d7a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926485"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680224"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Otomatik yükseltme
 Bu özellik Build 1.1.105.0 ile tanıtılmıştır [(2016 Şubat tarihinde yayımlanmıştır)](reference-connect-version-history.md#111050).  Bu özellik [Build 1.1.561](reference-connect-version-history.md#115610) içinde güncelleştirildi ve artık daha önce desteklenmeyen ek senaryoları destekliyor.
@@ -35,15 +35,15 @@ Otomatik yükseltme, aşağıdakiler için varsayılan olarak etkindir:
 * AD hesabı, Hızlı ayarlar ve DirSync tarafından oluşturulan varsayılan MSOL_ hesabıdır.
 * Meta veri deposunda 100.000 ' den az nesne var.
 
-Otomatik yükseltmenin geçerli durumu PowerShell cmdlet 'i `Get-ADSyncAutoUpgrade`ile görüntülenebilir. Aşağıdaki durumlara sahiptir:
+Otomatik yükseltmenin geçerli durumu PowerShell cmdlet 'i ile görüntülenebilir `Get-ADSyncAutoUpgrade` . Aşağıdaki durumlara sahiptir:
 
-| Durum | Açıklama |
+| Durum | Yorum |
 | --- | --- |
 | Etkin |Otomatik yükseltme etkindir. |
 | Askıya alındı |Yalnızca sistem tarafından ayarlanır. Sistem **Şu anda** Otomatik yükseltmeleri almaya uygun değil. |
 | Devre dışı |Otomatik yükseltme devre dışı bırakıldı. |
 
-İle `Set-ADSyncAutoUpgrade` **etkin** ve **devre dışı** arasında geçiş yapabilirsiniz. Yalnızca sistem durumu **askıya alındı**olarak ayarlanmalıdır.  1.1.750.0 öncesinde, set-ADSyncAutoUpgrade cmdlet 'i, otomatik yükseltme durumu askıya alındı olarak ayarlandıysa otomatik yükseltmeyi engeller. Bu işlev artık, yeniden yükseltme engellenmemesi için değişti.
+İle **etkin** ve **devre dışı** arasında geçiş yapabilirsiniz `Set-ADSyncAutoUpgrade` . Yalnızca sistem durumu **askıya alındı**olarak ayarlanmalıdır.  1.1.750.0 öncesinde, set-ADSyncAutoUpgrade cmdlet 'i, otomatik yükseltme durumu askıya alındı olarak ayarlandıysa otomatik yükseltmeyi engeller. Bu işlev artık, yeniden yükseltme engellenmemesi için değişti.
 
 Otomatik yükseltme, yükseltme altyapısı için Azure AD Connect Health kullanıyor. Otomatik yükseltmenin çalışması için, proxy sunucunuzdaki URL 'Leri [Office 365 URL 'lerinde ve IP adresi aralıklarında](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)belgelendiği gibi **Azure AD Connect Health** açtığınızdan emin olun.
 
@@ -55,7 +55,7 @@ Connect yüklemenizin kendisi beklendiği gibi yükseltmiyorsa, nelerin yanlış
 
 İlk olarak, otomatik yükseltmenin yeni bir sürüm Yayınlanma ilk günde denenmeye yönelik olması beklenmemelidir. Yüklemenizin hemen Yükseltilmemesi durumunda, bir yükseltme denenmeye başlamadan önce kasıtlı olarak rastgele bir değer vardır.
 
-Bir şeyin doğru olmadığını düşünüyorsanız, otomatik yükseltmenin etkinleştirildiğinden emin olmak `Get-ADSyncAutoUpgrade` için ilk ' i çalıştırın.
+Bir şeyin doğru olmadığını düşünüyorsanız, `Get-ADSyncAutoUpgrade` Otomatik yükseltmenin etkinleştirildiğinden emin olmak için ilk ' i çalıştırın.
 
 Ardından, gerekli URL 'Leri ara sunucunuzda veya güvenlik duvarınızda açtığınızdan emin olun. Otomatik güncelleştirme, [genel bakış](#overview)bölümünde açıklandığı gibi Azure AD Connect Health kullanıyor. Proxy kullanıyorsanız, sistem durumunun bir [proxy sunucu](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)kullanacak şekilde yapılandırıldığından emin olun. Ayrıca, Azure AD ile [sistem durumu bağlantısını](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) test edin.
 
@@ -92,7 +92,7 @@ Burada, bulduğunuz en yaygın mesajların bir listesi verilmiştir. Tümünü l
 | Yükseltildi ınttrsupportedaddfsignınmethod | Oturum açma yöntemi olarak ADFS 'yi seçtiniz. |
 | UpgradeNotSupportedCustomizedSyncRules |Yapılandırmaya kendi özel kurallarınızı eklediniz. |
 | Yükseltildi nominal Devicewritebackenabled |[Cihaz geri yazma](how-to-connect-device-writeback.md) özelliğini etkinleştirdiniz. |
-| 2. Paydatsupportedgroupwritebackenabled |[Grup geri yazma](how-to-connect-preview.md#group-writeback) özelliğini etkinleştirdiniz. |
+| 2. Paydatsupportedgroupwritebackenabled |Grup geri yazma özelliğini etkinleştirdiniz. |
 | UpgradeNotSupportedInvalidPersistedState |Yükleme bir hızlı ayarlar veya DirSync yükseltmesi değildir. |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Meta veri deposunda 100.000 taneden fazla nesne var. |
 | 1 $ Supportedmultiforestsetup yükseltildi |Birden fazla ormana bağlanıyorsunuz. Hızlı Kurulum yalnızca bir ormana bağlanır. |

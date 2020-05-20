@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdacee476fbc25154fe225700730f1b8f7f872ec
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677997"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682283"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft Identity platform için uygulama türleri
 
@@ -25,7 +25,7 @@ Microsoft Identity platform (v 2.0) uç noktası, çeşitli modern uygulama mima
 
 ## <a name="the-basics"></a>Temel bilgiler
 
-Yeni [uygulama kayıtları portalında](https://go.microsoft.com/fwlink/?linkid=2083908)Microsoft Identity platform uç noktasını kullanan her uygulamayı kaydetmeniz gerekir. Uygulama kayıt işlemi, uygulamanız için bu değerleri toplar ve atar:
+Azure portal [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908)Microsoft Identity platform uç noktasını kullanan her uygulamayı kaydetmeniz gerekir. Uygulama kayıt işlemi, uygulamanız için bu değerleri toplar ve atar:
 
 * Uygulamanızı benzersiz bir şekilde tanımlayan bir **uygulama (istemci) kimliği**
 * Yanıtları uygulamanıza geri yönlendirmek için kullanabileceğiniz bir **yeniden yönlendirme URI 'si**
@@ -42,13 +42,19 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Tek sayfalı uygulamalar (JavaScript)
 
-Birçok modern uygulama, birincil olarak JavaScript 'te yazılmış tek sayfalı bir uygulama ön ucuna sahiptir. Genellikle, angular, tepki veya Vue gibi bir çerçeve kullanılarak yazılmıştır. Microsoft Identity platform uç noktası, [OAuth 2,0 örtük akışını](v2-oauth2-implicit-grant-flow.md)kullanarak bu uygulamaları destekler.
+Birçok modern uygulamanın, özellikle JavaScript 'te, genellikle angular, yanıt verme veya Vue gibi bir çerçeve ile yazılmış tek sayfalı bir uygulama ön ucu vardır. Microsoft Identity platform uç noktası, [OAuth 2,0 yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)kullanarak bu uygulamaları destekler.
 
-Bu akışta, uygulama, herhangi bir sunucudan sunucuya değiş tokuş olmadan belirteçleri doğrudan Microsoft Identity platform yetkilendirme uç noktasından alır. Tüm kimlik doğrulama mantığı ve oturum işleme, ek sayfa yeniden yönlendirmeleri olmadan tamamen JavaScript istemcisinde gerçekleşir.
+Bu akışta, uygulama Microsoft Identity platform uç noktasından bir kod alır `authorize` ve bunları, siteler arası Web isteklerini kullanarak belirteçler ve yenileme belirteçleri için kullanın. Yenileme belirteci her 24 saatte bir dolar ve uygulamanın başka bir kod istemesi gerekir.
 
-![Örtük kimlik doğrulama akışını gösterir](./media/v2-app-types/convergence-scenarios-implicit.svg)
+![SPA uygulamaları için kod akışı](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
 
-Bu senaryoyu eylemde görmek için [Microsoft Identity platform Başlarken](v2-overview.md#getting-started) bölümündeki tek sayfalı uygulama kodu örneklerinden birini deneyin.
+Bu senaryoyu eylemde görmek için [öğreticiye göz atın: kullanıcılar oturum açın ve kimlik doğrulama kod akışı kullanarak bir JAVASCRIPT Spa 'dan MICROSOFT Graph API 'sini çağırın](tutorial-v2-javascript-auth-code.md).
+
+### <a name="authorization-code-flow-vs-implicit-flow"></a>Yetkilendirme kodu akışı ve örtük akış karşılaştırması
+
+OAuth 2,0 geçmişinin çoğu için [örtük akış](v2-oauth2-implicit-grant-flow.md) , tek sayfalı uygulamalar oluşturmak için önerilen yoldur. [Üçüncü taraf tanımlama bilgilerinin](reference-third-party-cookies-spas.md) kaldırılmasına ve [daha fazla dikkat etmeniz](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14) sayesinde, örtülü Flow 'daki güvenlik sorunlarına yönelik olarak, tek sayfalı uygulamalar için yetkilendirme kodu akışına taşındık.
+
+Safari 'de uygulamanızın uyumluluğuna ve diğer gizliliğe duyarlı tarayıcılarda uyumluluğunu sağlamak için artık örtük akışın kullanımını önermiyoruz ve bunun yerine yetkilendirme kodu akışını öneririz.
 
 ## <a name="web-apps"></a>Web uygulamaları
 
@@ -77,7 +83,8 @@ KIMLIK belirtecini Microsoft Identity platform uç noktasından alınan bir orta
 
 Bu senaryoyu eylemde görmek için [Microsoft Identity platform Başlarken](v2-overview.md#getting-started) bölümündeki Web uygulaması oturum açma kodu örneklerinden birini deneyin.
 
-Basit oturum açma 'ya ek olarak, bir Web sunucusu uygulamasının bir REST API gibi başka bir Web hizmetine erişmesi gerekebilir. Bu durumda, Web sunucusu uygulaması, [oauth 2,0 yetkilendirme kodu akışını](active-directory-v2-protocols.md)kullanarak birleştirilmiş bir OpenID Connect ve OAuth 2,0 akışında yer geçirir. Bu senaryo hakkında daha fazla bilgi için [Web uygulamaları ve Web API 'leri ile çalışmaya başlama](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)konusunu okuyun.
+Basit oturum açma 'ya ek olarak, bir Web sunucusu uygulamasının bir REST API gibi başka bir Web hizmetine erişmesi gerekebilir. Bu durumda, Web sunucusu uygulaması, [oauth 2,0 yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)kullanarak birleştirilmiş bir OpenID Connect ve OAuth 2,0 akışında yer geçirir. Bu senaryo hakkında daha fazla bilgi için [Web uygulamaları ve Web API 'leri ile çalışmaya başlama](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)konusunu okuyun.
+
 
 ## <a name="web-apis"></a>Web API'leri
 
@@ -115,8 +122,12 @@ Bu akışta, uygulama, Kullanıcı oturum açtığında Microsoft Identity platf
 
 Uzun süre çalışan işlemlere sahip olan veya Kullanıcı etkileşimi olmadan çalışan uygulamalar, Web API 'Leri gibi güvenli kaynaklara erişmek için de bir yönteme ihtiyaç duyar. Bu uygulamalar, OAuth 2,0 istemci kimlik bilgileri akışı ile kullanıcının temsilci kimliği yerine uygulamanın kimliğini kullanarak belirteçleri doğrulayabilir ve belirteçlere alabilir. Uygulamanın kimliğini bir istemci gizli dizisi veya sertifikası kullanarak kanıtlayabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Identity platform kullanarak .NET Core Daemon konsol uygulaması](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2).
 
-Bu akışta, uygulama erişim sağlamak için `/token` uç noktayla doğrudan etkileşime girer:
+Bu akışta, uygulama `/token` erişim sağlamak için uç noktayla doğrudan etkileşime girer:
 
 ![Daemon uygulaması kimlik doğrulama akışını gösterir](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
 Bir Daemon uygulaması oluşturmak için [istemci kimlik bilgileri belgelerine](v2-oauth2-client-creds-grant-flow.md)bakın veya bir [.NET örnek uygulaması](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)deneyin.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Artık Microsoft Identity platformu tarafından desteklenen uygulama türleri hakkında bilgi edinmiş olduğunuza göre, farklı senaryolar tarafından kullanılan protokol bileşenlerini anlamak için [OAuth 2,0 ve OpenID Connect](active-directory-v2-protocols.md) hakkında daha fazla bilgi edinin.

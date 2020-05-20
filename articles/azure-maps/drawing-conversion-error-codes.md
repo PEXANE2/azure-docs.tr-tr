@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 0d73d0b395547c281a2dbbe6a6ac5e8dc6dfd849
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598902"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681969"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Dönüştürme hatalarını ve uyarılarını çizme
 
-[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/data/conversion) , karşıya yüklenen çizim paketlerini harita verilerine dönüştürmenize olanak sağlar. Çizim paketleri, [Çizim paketi gereksinimlerine](drawing-requirements.md)bağlı olmalıdır. Bir veya daha fazla gereksinim karşılanmazsa, dönüştürme hizmeti hata veya uyarı döndürür. Bu makalede, dönüştürme hatası ve uyarı kodları listelenmektedir ve bunların nasıl çözüleceği ile ilgili öneriler sunulur. Ayrıca, dönüştürme hizmetinin bu kodları döndürmesini sağlayan bazı çizimler örneklerini de sağlar.
+[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) , karşıya yüklenen çizim paketlerini harita verilerine dönüştürmenize olanak sağlar. Çizim paketleri, [Çizim paketi gereksinimlerine](drawing-requirements.md)bağlı olmalıdır. Bir veya daha fazla gereksinim karşılanmazsa, dönüştürme hizmeti hata veya uyarı döndürür. Bu makalede, dönüştürme hatası ve uyarı kodları listelenmektedir ve bunların nasıl çözüleceği ile ilgili öneriler sunulur. Ayrıca, dönüştürme hizmetinin bu kodları döndürmesini sağlayan bazı çizimler örneklerini de sağlar.
 
 Dönüştürme uyarıları varsa dönüştürme hizmeti başarılı olur. Ancak, tüm uyarıları gözden geçirmeniz ve çözmeniz önerilir. Uyarı, dönüştürmenin bir kısmının yoksayıldığını veya otomatik olarak düzeltildiği anlamına gelir. Uyarıları çözememesi, ikinci süreçlerdeki hatalara neden olabilir.
 
@@ -73,7 +73,7 @@ Her **unexpectedGeometryInLayer** uyarısını inceleyin ve uyumsuz geometriyi u
 
 Aşağıdaki görüntüde, desteklenmeyen bir varlık türü, bir etiket katmanında çok satırlı bir metin nesnesi olarak gösterilmiştir.
   
-![Etiket katmanında çok satırlı bir metin nesnesi örneği](./media/drawing-conversion-error-codes/multiline.png)
+![Etiket katmanında çok satırlı bir metin nesnesi örneği](./media/drawing-conversion-error-codes/multi-line.png)
 
 #### <a name="how-to-fix-unsupportedfeaturerepresentation"></a>*UnsupportedFeatureRepresentation nasıl düzeltilir?*
 
@@ -494,7 +494,7 @@ Aşağıdaki görüntüde, üzerinde veya altında bulunan düzeyler üzerinde �
 
 Aşağıdaki görüntüde, bitişik bir düzeyde birden fazla dikey penme alanından çakışan dikey bir penetasyon alanı gösterilmektedir.
 
-![Dikey bir sızma örneği 2](./media/drawing-conversion-error-codes/vrt.png)
+![Dikey bir sızma örneği 2](./media/drawing-conversion-error-codes/vrt-1.png)
 
 #### <a name="how-to-fix-verticalpenetrationerror"></a>Verticalpenetoytionerror nasıl düzeltilir?
 

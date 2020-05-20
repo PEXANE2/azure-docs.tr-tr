@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7dfc7b680c6b7d6b2a3641b25c0f82665143bde1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0ddfc445ee8bd67b39de4ddd013a25f20fd75315
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597425"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681241"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Azure SQL Edge 'i dağıtma (Önizleme) 
 
@@ -119,4 +119,4 @@ Bu hızlı başlangıçta, bir IoT Edge cihazında SQL Edge modülü dağıttın
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 - [SQL Edge 'de ONNX ile Machine Learning ve yapay zeka](onnx-overview.md).
-- IoT Edge kullanarak SQL Edge ile uçtan uca IoT çözümü oluşturma.
+- [IoT Edge kullanarak SQL Edge ile uçtan uca IoT çözümü oluşturma](tutorial-deploy-azure-resources.md).

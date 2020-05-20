@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: b8af654e14d8a5fa48c60ae62c590c4c99e66edb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: c5862ee90a12240e7293647fae6af4f18f30c164
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891526"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680398"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning sahip kaynaklara yönelik kotaları yönetme & artırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,15 +114,9 @@ Belirli bir abonelikte her bölge için depolama hesabı sayısı sınırı vard
 
 ## <a name="view-your-usage-and-quotas"></a>Kullanımınızı ve kotaları görüntüleme
 
-Sanal makineler, depolama, ağ gibi çeşitli kaynaklarda kotayı görüntülemek Azure portal kolaydır.
+Azure Machine Learning Işlem, aboneliğinizdeki diğer Azure Kaynak kotalarından ayrı olarak yönetilir. Bu kotayı görüntülemek için Machine Learning Hizmetleri detayına göz duyarsınız.  
 
-1. Sol bölmede, **tüm hizmetler** ' i seçin ve genel kategorisi altında **abonelikler** ' i seçin.
-
-1. Abonelikler listesinden, kotasını Aradığınız aboneliği seçin.
-
-   Özellikle Azure Machine Learning Işlem kotasını görüntülemek için **bir desteklenmediği uyarısıyla vardır**. Yukarıda belirtildiği gibi, bu kota, aboneliğinizdeki işlem kotasından ayrıdır.
-
-1. Sol bölmede **Machine Learning hizmet** ' i seçin ve gösterilen listeden herhangi bir çalışma alanı seçin
+1. Sol bölmede **Machine Learning hizmet** ' i seçin ve gösterilen listeden herhangi bir çalışma alanı seçin.
 
 1. Sonraki dikey pencerede, **destek + sorun giderme bölümü** altında, geçerli kota limitlerinizi ve kullanımınızı görüntülemek için **kullanım + kotalar** ' i seçin.
 
@@ -132,6 +126,12 @@ Sanal makineler, depolama, ağ gibi çeşitli kaynaklarda kotayı görüntüleme
     + **Abonelik görünümü:** Bu, çekirdek kota kullanımınızı VM ailesi ile görüntülemenizi, çalışma alanına göre genişletmeyi ve gerçek küme adlarına göre genişletmeyi görmenizi sağlar. Bu görünüm, belirli bir VM ailesi için temel kullanımların ayrıntılarını hızla almak ve bu çalışma alanlarının her biri için temel alınan kümeler tarafından daha fazla bilgi almak için idealdir. Bu görünümdeki genel kural (kullanım/kota) olduğundan, kullanım, en güncel ölçekli çekirdek sayısı ve kota, kaynağın ölçeklendirebileceği mantıksal maksimum çekirdek sayısıdır. Her **çalışma alanı**için kota, belırlı bir VM ailesi için ölçeklenebileceğinizi en fazla çekirdek sayısını gösteren çalışma alanı düzeyi kotası (yukarıda açıklandığı gibi) olacaktır. Benzer şekilde, kota **, kümenin max_nodes** özelliği tarafından tanımlanan en fazla düğüm sayısına göre ölçeklenebilen çekirdeklerdir.
 
     + **Çalışma alanı görünümü:** Bu, çalışma alanına göre çekirdek kotasının kullanımını görüntülemenize, VM ailesine göre genişleterek ve gerçek küme adlarına göre daha fazla genişleetmenize olanak tanır. Bu görünüm, belirli bir çalışma alanının ana kullanımının ayrıntılarını hızla almak ve bu ailelerin her biri için temel alınan kümeler tarafından daha fazla bilgi almak için idealdir.
+
+Sanal makineler, depolama, ağ gibi çeşitli Azure kaynakları için kotayı görüntülemek Azure portal kolaydır.
+
+1. Sol bölmede, **tüm hizmetler** ' i seçin ve genel kategorisi altında **abonelikler** ' i seçin.
+
+1. Abonelikler listesinden, kotasını Aradığınız aboneliği seçin.
 
 ## <a name="request-quota-increases"></a>Kota artışı isteme
 

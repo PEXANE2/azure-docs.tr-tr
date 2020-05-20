@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e1b5b16d5522285f2d028303f3295cc1fb740330
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598818"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681962"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Azure haritalar çizim hatası Görselleştiricisini Kullanma
 
-Çizim hatası görselleştiricisi çizim [paketi uyarılarını ve](drawing-conversion-error-codes.md) dönüştürme işlemi sırasında algılanan hataları görüntüleyen tek başına bir Web uygulamasıdır. Hata görselleştiricisi Web uygulaması, internet 'e bağlanmadan kullanabileceğiniz bir statik sayfadan oluşur.  Hata Görselleştiriciyi, [Çizim paketi gereksinimlerine](drawing-requirements.md)uygun olarak hataları ve uyarıları onarmak için kullanabilirsiniz. [Azure haritalar dönüştürme API 'si](https://docs.microsoft.com/rest/api/maps/data/conversion) yalnızca bir hata algılandığında yalnızca hata görselleştiricisi bağlantısı olan bir yanıt döndürür.
+Çizim hatası görselleştiricisi çizim [paketi uyarılarını ve](drawing-conversion-error-codes.md) dönüştürme işlemi sırasında algılanan hataları görüntüleyen tek başına bir Web uygulamasıdır. Hata görselleştiricisi Web uygulaması, internet 'e bağlanmadan kullanabileceğiniz bir statik sayfadan oluşur.  Hata Görselleştiriciyi, [Çizim paketi gereksinimlerine](drawing-requirements.md)uygun olarak hataları ve uyarıları onarmak için kullanabilirsiniz. [Azure haritalar dönüştürme API 'si](https://docs.microsoft.com/rest/api/maps/conversion) yalnızca bir hata algılandığında yalnızca hata görselleştiricisi bağlantısı olan bir yanıt döndürür.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -90,7 +90,7 @@ _Conversionwarningsanderrors. JSON_ dosyası yüklendikten sonra, çizim paketin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Çizim paketiniz gereksinimleri karşıladıktan](drawing-requirements.md)sonra, çizim paketini bir veri kümesine dönüştürmek Için [Azure Maps veri kümesi hizmetini](https://docs.microsoft.com/rest/api/maps/data/conversion) kullanabilirsiniz. Daha sonra, uygulamanızı geliştirmek için ınkapıharitaları Web modülünü kullanabilirsiniz. Aşağıdaki makaleleri okuyarak daha fazla bilgi edinin:
+[Çizim paketiniz gereksinimleri karşıladıktan](drawing-requirements.md)sonra, çizim paketini bir veri kümesine dönüştürmek Için [Azure Maps veri kümesi hizmetini](https://docs.microsoft.com/rest/api/maps/conversion) kullanabilirsiniz. Daha sonra, uygulamanızı geliştirmek için ınkapıharitaları Web modülünü kullanabilirsiniz. Aşağıdaki makaleleri okuyarak daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [Çizim dönüştürme hata kodları](drawing-conversion-error-codes.md)

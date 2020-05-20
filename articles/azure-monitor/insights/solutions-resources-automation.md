@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3b1b134afbc4a13d7888281a82609d444cee377
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663071"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682880"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Otomasyonu kaynaklarını bir yönetim çözümüne ekleme (Önizleme)
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "77663071"
 > Bu makaledeki örneklerde, yönetim çözümlerinde gerekli veya ortak olan ve [Azure 'da bir yönetim çözümü tasarlama ve derleme]( solutions-creating.md) konularında açıklanan parametreleri ve değişkenleri kullanır 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, aşağıdaki bilgiler hakkında bilgi sahibi olduğunuz varsayılır.
 
 - [Yönetim çözümü oluşturma]( solutions-creating.md).
@@ -33,7 +33,7 @@ Bu makalede, aşağıdaki bilgiler hakkında bilgi sahibi olduğunuz varsayılı
 - [Kaynak Yöneticisi şablonlarını yazma](../../azure-resource-manager/templates/template-syntax.md)
 
 ## <a name="automation-account"></a>Otomasyon hesabı
-Azure Otomasyonu 'ndaki tüm kaynaklar bir [Otomasyon hesabında](../../automation/automation-security-overview.md#automation-account-overview)yer alır.  [Log Analytics çalışma alanı ve Otomasyon hesabı]( solutions.md#log-analytics-workspace-and-automation-account) ' nda açıklandığı gibi, Otomasyon hesabı yönetim çözümüne dahil değildir ancak çözüm yüklenmeden önce var olmalıdır.  Kullanılabilir değilse, çözüm yüklemesi başarısız olur.
+Azure Otomasyonu 'ndaki tüm kaynaklar bir [Otomasyon hesabında](../../automation/automation-security-overview.md)yer alır.  [Log Analytics çalışma alanı ve Otomasyon hesabı]( solutions.md#log-analytics-workspace-and-automation-account) ' nda açıklandığı gibi, Otomasyon hesabı yönetim çözümüne dahil değildir ancak çözüm yüklenmeden önce var olmalıdır.  Kullanılabilir değilse, çözüm yüklemesi başarısız olur.
 
 Her Otomasyon kaynağının adı, Otomasyon hesabının adını içerir.  Bu, runbook kaynağı aşağıdaki örneğinde olduğu gibi **AccountName** parametresi ile çözümde yapılır.
 
@@ -142,7 +142,7 @@ Sertifika kaynaklarının özellikleri aşağıdaki tabloda açıklanmıştır.
 
 
 
-## <a name="credentials"></a>Kimlik Bilgileri
+## <a name="credentials"></a>Kimlik bilgileri
 [Azure Otomasyonu kimlik bilgileri](../../automation/automation-credentials.md) bir tür **Microsoft. Automation/automationaccounts/Credentials** ve aşağıdaki yapıya sahiptir.  Bu kod parçacığını kopyalayıp çözüm dosyanıza yapıştırarak parametre adlarını değiştirebilmeniz için ortak değişkenleri ve parametreleri içerir. 
 
 
@@ -264,22 +264,22 @@ Değişken kaynakların özellikleri aşağıdaki tabloda açıklanmıştır.
 |:--- |:--- |
 | açıklama | Değişken için isteğe bağlı açıklama. |
 | IsEncrypted | Değişkenin şifrelenmesi gerekip gerekmediğini belirtir. |
-| type | Bu özelliğin şu anda hiçbir etkisi yoktur.  Değişkenin veri türü başlangıçtaki değere göre belirlenir. |
+| tür | Bu özelliğin şu anda hiçbir etkisi yoktur.  Değişkenin veri türü başlangıçtaki değere göre belirlenir. |
 | value | Değişkenin değeri. |
 
 > [!NOTE]
 > **Type** özelliğinin Şu anda oluşturulmakta olan değişken üzerinde hiçbir etkisi yoktur.  Değişken için veri türü değere göre belirlenir.  
 
-Değişken için ilk değeri ayarlarsanız, doğru veri türü olarak yapılandırılmalıdır.  Aşağıdaki tabloda, izin verilen farklı veri türleri ve bunların sözdizimi verilmiştir.  JSON 'daki değerlerin tekliflerin içindeki özel karakterlerle her zaman tırnak içine alınması beklendiğini unutmayın.  Örneğin, bir dize değeri dize etrafında tırnak işaretiyle (kaçış karakteri (\\) kullanılarak), sayısal bir değer bir tırnak kümesiyle belirtiken belirtilir.
+Değişken için ilk değeri ayarlarsanız, doğru veri türü olarak yapılandırılmalıdır.  Aşağıdaki tabloda, izin verilen farklı veri türleri ve bunların sözdizimi verilmiştir.  JSON 'daki değerlerin tekliflerin içindeki özel karakterlerle her zaman tırnak içine alınması beklendiğini unutmayın.  Örneğin, bir dize değeri dize etrafında tırnak işaretiyle (kaçış karakteri ( \\ ) kullanılarak), sayısal bir değer bir tırnak kümesiyle belirtiken belirtilir.
 
 | Veri türü | Açıklama | Örnek | Çözümler |
 |:--|:--|:--|:--|
-| string   | Değeri çift tırnak içine alın.  | "\"Merhaba Dünya\"" | "Merhaba Dünya" |
+| string   | Değeri çift tırnak içine alın.  | " \" Merhaba Dünya \" " | "Merhaba Dünya" |
 | sayısal  | Tek tırnak ile sayısal değer.| "64" | 64 |
 | boole  | tırnak içinde **true** veya **false** .  Bu değerin küçük harf olması gerektiğini unutmayın. | değeri | true |
-| datetime | Serileştirilmiş tarih değeri.<br>Bu değeri belirli bir tarih için oluşturmak üzere PowerShell 'de ConvertTo-JSON cmdlet 'ini kullanabilirsiniz.<br>Örnek: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
+| datetime | Serileştirilmiş tarih değeri.<br>Bu değeri belirli bir tarih için oluşturmak üzere PowerShell 'de ConvertTo-JSON cmdlet 'ini kullanabilirsiniz.<br>Örnek: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | " \\ /Date (1495656897378) \\ /" | 2017-05-24 13:14:57 |
 
-## <a name="modules"></a>Modüller
+## <a name="modules"></a>Modül
 Yönetim çözümünüzün, her zaman Otomasyon hesabınızda kullanılabilir olacağı için Runbook 'larınız tarafından kullanılan [genel modülleri](../../automation/automation-integration-modules.md) tanımlamasına gerek yoktur.  Runbook 'larınız tarafından kullanılan başka bir modül için bir kaynak eklemeniz gerekir.
 
 [Tümleştirme modüllerinin](../../automation/automation-integration-modules.md) bir tür **Microsoft. Automation/automationaccounts/modülleri** vardır ve aşağıdaki yapıya sahiptir.  Bu kod parçacığını kopyalayıp çözüm dosyanıza yapıştırarak parametre adlarını değiştirebilmeniz için ortak değişkenleri ve parametreleri içerir.

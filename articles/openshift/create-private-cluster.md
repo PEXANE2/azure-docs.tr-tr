@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: cfc28577f089ef22457e9f66ff08106969a5a4b2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857383"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681426"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 özel kümesi oluşturma
 
@@ -28,9 +28,9 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Az
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 ### <a name="install-the-az-aro-extension"></a>' Az Aro ' uzantısını yükler
-`az aro` Uzantı, Azure CLI kullanarak doğrudan komut satırından Azure Red Hat OpenShift kümelerini oluşturmanıza, erişimlerinize ve silmesine izin verir.
+Uzantı, Azure `az aro` CLI kullanarak doğrudan komut satırından Azure Red Hat OpenShift kümelerini oluşturmanıza, erişimlerinize ve silmesine izin verir.
 
-`az aro` Uzantıyı yüklemek için aşağıdaki komutu çalıştırın.
+Uzantıyı yüklemek için aşağıdaki komutu çalıştırın `az aro` .
 
 ```azurecli-interactive
 az extension add -n aro --index https://az.aroapp.io/stable
@@ -77,7 +77,7 @@ Red hat çekme gizli dizisi, kümenizin ek içerikle birlikte Red Hat kapsayıc�
 
 Kaydedilen `pull-secret.txt` dosyayı güvenli bir yerde tutun-bu, her küme oluşturmada kullanılacaktır.
 
-`az aro create` Komutunu çalıştırırken, `--pull-secret @pull-secret.txt` parametresini kullanarak çekme gizli dizinizi başvurabilirsiniz. Dosyanızı depoladığınız dizinden yürütün `az aro create` `pull-secret.txt` Aksi takdirde, `@pull-secret.txt` ile `@<path-to-my-pull-secret-file`değiştirin.
+`az aro create`Komutunu çalıştırırken, parametresini kullanarak çekme gizli dizinizi başvurabilirsiniz `--pull-secret @pull-secret.txt` . `az aro create`Dosyanızı depoladığınız dizinden yürütün `pull-secret.txt` . Aksi takdirde, `@pull-secret.txt` ile değiştirin `@<path-to-my-pull-secret-file` .
 
 Çekme sırlarınızı kopyalıyorsunuz veya başka betiklerin içine başvuruyorsa, çekme gizli anahtarı geçerli bir JSON dizesi olarak biçimlendirilmelidir.
 
@@ -194,21 +194,23 @@ az aro create \
   --name $CLUSTER \
   --vnet aro-vnet \
   --master-subnet master-subnet \
-  --worker-subnet worker-subnet
+  --worker-subnet worker-subnet \
+  --apiserver-visibility Private \
+  --ingress-visibility Private
   # --domain foo.example.com # [OPTIONAL] custom domain
   # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
-`az aro create` Komutu yürüttükten sonra, normalde bir küme oluşturmak yaklaşık 35 dakika sürer.
+Komutu yürüttükten sonra `az aro create` , normalde bir küme oluşturmak yaklaşık 35 dakika sürer.
 
 >[!IMPORTANT]
-> Özel bir etki alanı belirtmeyi seçerseniz (örneğin, **foo.example.com**) OpenShift konsolu yerleşik etki alanı `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io`yerine, gibi bir URL 'de kullanılabilir.
+> Özel bir etki alanı belirtmeyi seçerseniz (örneğin, **foo.example.com**) OpenShift Konsolu `https://console-openshift-console.apps.foo.example.com` yerleşik etki alanı yerine, gibi bir URL 'de kullanılabilir `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 >
-> Varsayılan olarak, Openshıft, üzerinde `*.apps.<random>.<location>.aroapp.io`oluşturulan tüm yollar için otomatik olarak imzalanan sertifikalar kullanır.  Özel DNS ' i seçerseniz, kümeye bağlandıktan sonra, giriş denetleyicinizin ve [API sunucunuz için özel CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html) [IÇIN özel bir CA yapılandırmak](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) üzere OpenShift belgelerini izlemeniz gerekir.
+> Varsayılan olarak, Openshıft, üzerinde oluşturulan tüm yollar için otomatik olarak imzalanan sertifikalar kullanır `*.apps.<random>.<location>.aroapp.io` .  Özel DNS ' i seçerseniz, kümeye bağlandıktan sonra, giriş denetleyicinizin ve [API sunucunuz için özel CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html) [IÇIN özel bir CA yapılandırmak](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) üzere OpenShift belgelerini izlemeniz gerekir.
 
 ## <a name="connect-to-the-private-cluster"></a>Özel kümeye Bağlan
 
-`kubeadmin` Kullanıcıyı kullanarak kümede oturum açabilirsiniz.  `kubeadmin` Kullanıcı parolasını bulmak için aşağıdaki komutu çalıştırın.
+Kullanıcıyı kullanarak kümede oturum açabilirsiniz `kubeadmin` .  Kullanıcı parolasını bulmak için aşağıdaki komutu çalıştırın `kubeadmin` .
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -216,7 +218,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-Aşağıdaki örnek çıktı, parolasının içinde `kubeadminPassword`olacağını gösterir.
+Aşağıdaki örnek çıktı, parolasının içinde olacağını gösterir `kubeadminPassword` .
 
 ```json
 {
@@ -237,7 +239,7 @@ Aşağıdaki komutu çalıştırarak küme konsolu URL 'sini bulabilirsiniz, ş�
 >[!IMPORTANT]
 > Özel bir Azure Red Hat OpenShift kümesine bağlanmak için, oluşturduğunuz sanal ağda veya kümenin dağıtıldığı sanal ağla eşlenmiş bir sanal ağda bulunan bir ana bilgisayardan aşağıdaki adımı gerçekleştirmeniz gerekir. [peered](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)
 
-Konsol URL 'sini bir tarayıcıda başlatın ve `kubeadmin` kimlik bilgilerini kullanarak oturum açın.
+Konsol URL 'sini bir tarayıcıda başlatın ve kimlik bilgilerini kullanarak oturum açın `kubeadmin` .
 
 ![Azure Red Hat OpenShift oturum açma ekranı](media/aro4-login.png)
 
@@ -247,7 +249,7 @@ OpenShift Web konsolunda oturum **açtıktan sonra, üzerine tıklayın.** sağ 
 
 ![Azure Red Hat OpenShift oturum açma ekranı](media/aro4-download-cli.png)
 
-Ayrıca, makinenizde makinenize uygun olan CLı 'nın en son sürümünü yükleyebilirsiniz <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/>.
+Ayrıca, makinenizde makinenize uygun olan CLı 'nın en son sürümünü yükleyebilirsiniz <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> .
 
 ## <a name="connect-using-the-openshift-cli"></a>OpenShift CLı kullanarak bağlanma
 
@@ -260,7 +262,7 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 >[!IMPORTANT]
 > Özel bir Azure Red Hat OpenShift kümesine bağlanmak için, oluşturduğunuz sanal ağda veya kümenin dağıtıldığı sanal ağla eşlenmiş bir sanal ağda bulunan bir ana bilgisayardan aşağıdaki adımı gerçekleştirmeniz gerekir. [peered](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)
 
-Aşağıdaki komutu kullanarak OpenShift kümesinin API sunucusunda oturum açın. ** \<Kubeadmin Password>** yerine yeni aldığınız parolayı değiştirin.
+Aşağıdaki komutu kullanarak OpenShift kümesinin API sunucusunda oturum açın. ** \< Kubeadmin Password>** yerine yeni aldığınız parolayı değiştirin.
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
@@ -273,7 +275,7 @@ Bu makalede, OpenShift 4 çalıştıran bir Azure Red Hat OpenShift kümesi dağ
 > [!div class="checklist"]
 > * Önkoşulları kurun ve gerekli sanal ağı ve alt ağları oluşturun
 > * Küme dağıtma
-> * `kubeadmin` Kullanıcıyı kullanarak kümeye bağlanma
+> * Kullanıcıyı kullanarak kümeye bağlanma `kubeadmin`
 
 Azure Active Directory kullanarak kümeyi kimlik doğrulaması için yapılandırmayı öğrenmek üzere bir sonraki makaleye ilerleyin.
 

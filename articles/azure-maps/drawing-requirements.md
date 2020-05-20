@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: dad9bb40161a2adc8654f50de5c1d876e3344e59
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0c81f529dfc959916ff7c102b2b903a808b9672
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598804"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681895"
 ---
 # <a name="drawing-package-requirements"></a>Paket gereksinimlerini çizme
 
-[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/data/conversion) , karşıya yüklenen çizim paketlerini harita verilerine dönüştürmenize olanak sağlar. Bu makalede, dönüştürme API 'SI için çizim paketi gereksinimleri açıklanmaktadır. Örnek bir paket görüntülemek için örnek [Çizim paketini](https://github.com/Azure-Samples/am-creator-indoor-data-examples)indirebilirsiniz.
+[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) , karşıya yüklenen çizim paketlerini harita verilerine dönüştürmenize olanak sağlar. Bu makalede, dönüştürme API 'SI için çizim paketi gereksinimleri açıklanmaktadır. Örnek bir paket görüntülemek için örnek [Çizim paketini](https://github.com/Azure-Samples/am-creator-indoor-data-examples)indirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -25,7 +25,7 @@ ms.locfileid: "83598804"
 
 Çizim paketindeki çizimleri oluşturmak için herhangi bir CAD yazılımını seçebilirsiniz.  
 
-[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/data/conversion) , çizim paketini harita verilerine dönüştürür.  Dönüştürme hizmeti, AutoCAD DWG dosya biçimi kullanılarak geliştirilmiştir ve test edilmiştir. `AC1032`, DWG dosyalarının iç biçim sürümüdür. `AC1032`Iç DWG dosya biçimi sürümü için seçim yapmanız önerilir.  
+[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) , çizim paketini harita verilerine dönüştürür.  Dönüştürme hizmeti, AutoCAD DWG dosya biçimi kullanılarak geliştirilmiştir ve test edilmiştir. `AC1032`, DWG dosyalarının iç biçim sürümüdür. `AC1032`Iç DWG dosya biçimi sürümü için seçim yapmanız önerilir.  
 
 Bu belge içinde kullanılan terimler sözlüğü.
 
@@ -54,7 +54,7 @@ Her tesis düzeyi için tek bir DWG dosyası gereklidir. Düzeyin verileri tek b
 * Birden çok düzeyden Özellikler içermemelidir.
 * Birden çok tesisten Özellikler içermemelidir.
 
-[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/data/conversion) , aşağıdaki özellik SıNıFLARıNı bir DWG dosyasından ayıklayabilir:
+[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) , aşağıdaki özellik SıNıFLARıNı bir DWG dosyasından ayıklayabilir:
 
 * Düzeyler
 * Birimler
@@ -71,11 +71,11 @@ DWG katmanları da aşağıdaki ölçütlere uymalıdır:
 
 * Tüm DWG dosyaları için çizimlerin kaynakları, aynı Enlem ve Boylam ile hizalanmalıdır.
 * Her düzey, diğer düzeyler ile aynı yönde olmalıdır.
-* Kendi kendine kesişen çokgenler otomatik olarak onarılacaktır ve [Azure Maps dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/data/conversion) bir uyarı oluşturacak. Beklenen sonuçlarla eşleşmediğinden, onarılan sonuçları el ile incelemeniz önerilir.
+* Kendi kendine kesişen çokgenler otomatik olarak onarılacaktır ve [Azure Maps dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) bir uyarı oluşturacak. Beklenen sonuçlarla eşleşmediğinden, onarılan sonuçları el ile incelemeniz önerilir.
 
 Tüm katman varlıkları şu türlerden biri olmalıdır: çizgi, çoklu çizgi, Çokgen, dairesel yay, daire, metin (tek satırlı). Diğer herhangi bir varlık türü yok sayılır.
 
-Aşağıdaki tabloda, desteklenen varlık türleri ve her katman için desteklenen özellikler özetlenmektedir. Bir katmanda Desteklenmeyen varlık türleri varsa, [Azure Maps dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/data/conversion) bu varlıkları yoksayar.  
+Aşağıdaki tabloda, desteklenen varlık türleri ve her katman için desteklenen özellikler özetlenmektedir. Bir katmanda Desteklenmeyen varlık türleri varsa, [Azure Maps dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) bu varlıkları yoksayar.  
 
 | Katman | Varlık türleri | Özellikler |
 | :----- | :-------------------| :-------
@@ -167,11 +167,11 @@ Bölge etiketi katmanının bir örneği, [örnek çizim PAKETINDEKI](https://gi
 
 ## <a name="manifest-file-requirements"></a>Bildirim dosyası gereksinimleri
 
-ZIP klasörü, dizinin kök düzeyinde bir bildirim dosyası içermeli ve dosyanın **manifest. JSON**olarak adlandırılması gerekir. [Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/data/conversion) 'nin içeriklerini ayrıştırmasına izin vermek için DWG dosyalarını açıklar. Yalnızca bildirimle tanımlanan dosyalar alınır. ZIP klasöründe olan, ancak bildirimde düzgün listelenmeyen dosyalar yok sayılır.
+ZIP klasörü, dizinin kök düzeyinde bir bildirim dosyası içermeli ve dosyanın **manifest. JSON**olarak adlandırılması gerekir. [Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) 'nin içeriklerini ayrıştırmasına izin vermek için DWG dosyalarını açıklar. Yalnızca bildirimle tanımlanan dosyalar alınır. ZIP klasöründe olan, ancak bildirimde düzgün listelenmeyen dosyalar yok sayılır.
 
 Bildirim dosyasının **Buildinglevels** nesnesindeki dosya yolları ZIP klasörünün köküne göreli olmalıdır. DWG dosya adı, Tesis düzeyinin adıyla tam olarak eşleşmelidir. Örneğin, "Basement" düzeyi için bir DWG dosyası "Basement. dwg" olacaktır. Düzey 2 için bir DWG dosyası "level_2. dwg" olarak adlandırılır. Düzey adınızın bir alanı varsa alt çizgi kullanın. 
 
-Bildirim nesneleri kullanılırken gereksinimler olsa da, tüm nesneler gerekli değildir. Aşağıdaki tabloda, [Azure Maps dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/data/conversion)'nin 1,1 sürümü için gerekli ve isteğe bağlı nesneler gösterilmektedir.
+Bildirim nesneleri kullanılırken gereksinimler olsa da, tüm nesneler gerekli değildir. Aşağıdaki tabloda, [Azure Maps dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion)'nin 1,1 sürümü için gerekli ve isteğe bağlı nesneler gösterilmektedir.
 
 | Nesne | Gerekli | Açıklama |
 | :----- | :------- | :------- |
@@ -402,7 +402,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çizim paketiniz gereksinimleri karşıladıktan sonra, paketi bir harita veri kümesine dönüştürmek için [Azure Maps dönüştürme hizmetini](https://docs.microsoft.com/rest/api/maps/data/conversion) kullanabilirsiniz. Daha sonra, ınkapıharitaları modülünü kullanarak bir ınkapısı eşlemesi oluşturmak için veri kümesini kullanabilirsiniz. Aşağıdaki makaleleri okuyarak ınkapısı haritaları modülünü kullanma hakkında daha fazla bilgi edinin:
+Çizim paketiniz gereksinimleri karşıladıktan sonra, paketi bir harita veri kümesine dönüştürmek için [Azure Maps dönüştürme hizmetini](https://docs.microsoft.com/rest/api/maps/conversion) kullanabilirsiniz. Daha sonra, ınkapıharitaları modülünü kullanarak bir ınkapısı eşlemesi oluşturmak için veri kümesini kullanabilirsiniz. Aşağıdaki makaleleri okuyarak ınkapısı haritaları modülünü kullanma hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
 >[Inkapı haritaları için Oluşturucu](creator-indoor-maps.md)

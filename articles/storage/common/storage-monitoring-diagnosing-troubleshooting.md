@@ -8,12 +8,13 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: monitoring
+ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605078"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684666"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -359,7 +360,7 @@ Depolama hizmeti yalnızca başarılı istekler için **AverageE2ELatency** öl�
 #### <a name="investigating-client-performance-issues"></a>İstemci performans sorunlarını araştırma
 İstemci yavaş yanıt vermeye yönelik olası nedenler arasında sınırlı sayıda bağlantı veya iş parçacığı olması veya CPU, bellek veya ağ bant genişliği gibi kaynaklar yetersiz olabilir. İstemci kodunu daha verimli (örneğin, depolama hizmetine zaman uyumsuz çağrılar kullanarak) veya daha büyük bir sanal makine kullanarak (daha fazla çekirdek ve daha fazla bellekle) değiştirerek sorunu çözebilirsiniz.
 
-Tablo ve kuyruk Hizmetleri için, Nagle algoritması, **Averageserverlatency**ile karşılaştırıldığında yüksek **AverageE2ELatency** de olabilir: daha fazla bilgi için, [Nagle 'In algoritmasına, küçük isteklere yaklaşmayı](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)öğrenin. **System.net** ad alanındaki **ServicePointManager** sınıfını kullanarak koddaki Nagle algoritmasını devre dışı bırakabilirsiniz. Bu, zaten açık olan bağlantıları etkilemediğinden uygulamanızdaki tablo veya kuyruk hizmetlerine çağrı yapmadan önce bunu yapmalısınız. Aşağıdaki örnek, bir çalışan rolündeki **Application_Start** yönteminden gelir.
+Tablo ve kuyruk Hizmetleri için, Nagle algoritması, **Averageserverlatency**ile karşılaştırıldığında yüksek **AverageE2ELatency** de olabilir: daha fazla bilgi için, [Nagle 'In algoritmasına, küçük isteklere yaklaşmayı](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)öğrenin. **System.net** ad alanındaki **ServicePointManager** sınıfını kullanarak koddaki Nagle algoritmasını devre dışı bırakabilirsiniz. Bu, zaten açık olan bağlantıları etkilemediğinden uygulamanızdaki tablo veya kuyruk hizmetlerine çağrı yapmadan önce bunu yapmalısınız. Aşağıdaki örnek, bir çalışan rolündeki **Application_Start** yönteminden gelir.
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
@@ -516,24 +517,24 @@ Günlük girişleri:
 
 | İstek Kimliği | İşlem metni |
 | --- | --- |
-| 07b26a5d-... |İçin `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`zaman uyumlu istek başlatılıyor. |
+| 07b26a5d-... |İçin zaman uyumlu istek başlatılıyor `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = HEAD............ x-MS-Client-Request-id: 07b26a5d-.... x-MS-Date: Tue, 03 Haz 2014 10:33:11 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. ResType: Container. |
 | 07b26a5d-... |Yanıt bekleniyor. |
-| 07b26a5d-... |Yanıt alındı. Durum kodu = 200, Istek KIMLIĞI = eeead849-... Content-MD5 =, ETag = &quot;0x8d14d2dc63d059b&quot;. |
+| 07b26a5d-... |Yanıt alındı. Durum kodu = 200, Istek KIMLIĞI = eeead849-... Content-MD5 =, ETag = &quot; 0x8d14d2dc63d059b &quot; . |
 | 07b26a5d-... |Yanıt üst bilgileri başarıyla işlendi ve işlemin geri kalanı ile devam ediliyor. |
 | 07b26a5d-... |Yanıt gövdesi indiriliyor. |
 | 07b26a5d-... |İşlem başarıyla tamamlandı. |
-| 07b26a5d-... |İçin `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`zaman uyumlu istek başlatılıyor. |
+| 07b26a5d-... |İçin zaman uyumlu istek başlatılıyor `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = SIL............ x-MS-Client-Request-id: 07b26a5d-.... x-MS-Date: Tue, 03 Haz 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. ResType: Container. |
 | 07b26a5d-... |Yanıt bekleniyor. |
 | 07b26a5d-... |Yanıt alındı. Durum kodu = 202, Istek KIMLIĞI = 6ab2a4cf-..., Content-MD5 =, ETag =. |
 | 07b26a5d-... |Yanıt üst bilgileri başarıyla işlendi ve işlemin geri kalanı ile devam ediliyor. |
 | 07b26a5d-... |Yanıt gövdesi indiriliyor. |
 | 07b26a5d-... |İşlem başarıyla tamamlandı. |
-| e2d06d78-... |İçin `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`zaman uyumsuz istek başlatılıyor.</td> |
+| e2d06d78-... |İçin zaman uyumsuz istek başlatılıyor `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` .</td> |
 | e2d06d78-... |StringToSign = HEAD............ x-MS-Client-Request-id: e2d06d78-.... x-MS-Date: Tue, 03 Haz 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. ResType: Container. |
 | e2d06d78-... |Yanıt bekleniyor. |
-| de8b1c3c-... |İçin `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt`zaman uyumlu istek başlatılıyor. |
+| de8b1c3c-... |İçin zaman uyumlu istek başlatılıyor `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` . |
 | de8b1c3c-... |StringToSign = PUT... 64. qCmF + Tsqlphq/YYK50mP9ZQ = =........ x-MS-blob-türü: BlockBlob. x-MS-Client-Request-ID: de8b1c3c-.... x-MS-Date: Tue, 03 Haz 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated. txt. |
 | de8b1c3c-... |İstek verileri yazma hazırlığı yapılıyor. |
 | e2d06d78-... |Yanıt beklenirken özel durum oluştu: uzak sunucu bir hata döndürdü: (404) bulunamadı.. |
@@ -541,7 +542,7 @@ Günlük girişleri:
 | e2d06d78-... |Yanıt üst bilgileri başarıyla işlendi ve işlemin geri kalanı ile devam ediliyor. |
 | e2d06d78-... |Yanıt gövdesi indiriliyor. |
 | e2d06d78-... |İşlem başarıyla tamamlandı. |
-| e2d06d78-... |İçin `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`zaman uyumsuz istek başlatılıyor. |
+| e2d06d78-... |İçin zaman uyumsuz istek başlatılıyor `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | e2d06d78-... |StringToSign = PUT... 0........: x-MS-Client-Request-id: e2d06d78-.... x-MS-Date: Tue, 03 Haz 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. ResType: Container. |
 | e2d06d78-... |Yanıt bekleniyor. |
 | de8b1c3c-... |İstek verileri yazılıyor. |
@@ -562,7 +563,7 @@ Bu örnekte, günlük istemcisinin, **Uploadfromstream** yönteminden (de8b1c3c-
 
 Aşağıdaki tabloda, depolama günlüğü günlük dosyasından örnek bir sunucu tarafı günlüğü iletisi gösterilmektedir:
 
-| Adı | Değer |
+| Name | Değer |
 | --- | --- |
 | İstek başlangıç saati | 2014-05-30T06:17:48.4473697 Z |
 | İşlem türü     | GetBlobProperties            |
@@ -570,8 +571,8 @@ Aşağıdaki tabloda, depolama günlüğü günlük dosyasından örnek bir sunu
 | HTTP durum kodu   | 404                            |
 | Kimlik doğrulaması türü| 'Larının                          |
 | Hizmet türü       | Blob                         |
-| İstek URL'si         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
-| &nbsp;                 |   ? ZF = 2014-02-14&SR = c&sı = mypolicy&SIG = XXXXX&;api-Version = 2014-02-14 |
+| İstek URL’si         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
+| &nbsp;                 |   ? ZF = 2014-02-14&SR = c&sı = mypolicy&SIG = XXXXX &; api-Version = 2014-02-14 |
 | İstek KIMLIĞI üstbilgisi  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | İstemci istek kimliği  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
@@ -814,7 +815,7 @@ Ayrıca, performans ve kullanılabilirlik izlemenin bir parçası olarak Azure D
 Azure depolama 'da analiz hakkında daha fazla bilgi için şu kaynaklara bakın:
 
 * [Azure portalında depolama hesabını izleme](storage-monitor-storage-account.md)
-* [Depolama analizi](storage-analytics.md)
+* [Depolama Analizi](storage-analytics.md)
 * [Depolama Analizi ölçümleri](storage-analytics-metrics.md)
 * [Storage Analytics ölçüm tablosu şeması](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [Depolama analizi günlükleri](storage-analytics-logging.md)

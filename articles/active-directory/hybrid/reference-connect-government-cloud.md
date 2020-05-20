@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acdc99ca50255bd9b75828f0a051f364c5218471
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 217cf8822fcd8ef515ac9ce2dacdac3682e5fd12
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115498"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680171"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Kamu Bulutu için karma kimlik konuları
 
@@ -41,7 +41,7 @@ Doğrudan kimlik doğrulama aracısını dağıtmadan önce, sunucularınız ve 
 |URL |Nasıl kullanılır?|
 |-----|-----|
 |&#42;. msappproxy.us</br>&#42;.servicebus.usgovcloudapi.net|Aracı bu URL 'Leri Azure AD bulut hizmeti ile iletişim kurmak için kullanır. |
-|mscrl.microsoft.us:80 </br>crl.microsoft.us:80 </br>ocsp.msocsp.us:80 </br>www.microsoft.us:80| Aracı, sertifikaları doğrulamak için bu URL 'Leri kullanır.|
+|`mscrl.microsoft.us:80` </br>`crl.microsoft.us:80` </br>`ocsp.msocsp.us:80` </br>`www.microsoft.us:80`| Aracı, sertifikaları doğrulamak için bu URL 'Leri kullanır.|
 |login.windows.us </br>secure.aadcdn.microsoftonline-p.com </br>&#42;. microsoftonline.us </br>&#42;. microsoftonline-p.us </br>&#42;. msauth.net </br>&#42;. msauthimages.net </br>&#42;. msecnd.net</br>&#42;. msftauth.net </br>&#42;. msftauthimages.net</br>&#42;. phonefactor.net </br>enterpriseregistration.windows.net</br>management.azure.com </br>policykeyservice.dc.ad.msft.net</br>ctdl.windowsupdate.us:80| Aracı, kayıt işlemi sırasında bu URL 'Leri kullanır.
 
 ### <a name="install-the-agent-for-the-azure-government-cloud"></a>Azure Kamu Bulutu için aracıyı yükler
@@ -76,7 +76,7 @@ Geçiş kimlik doğrulamasını oturum açma yönteminiz olarak kullanırsanız,
 
 ### <a name="roll-out-seamless-single-sign-on"></a>Sorunsuz çoklu oturum açmayı kullanıma al
 
-Aşağıdaki yönergeleri kullanarak, kullanıcılarınız için Azure AD sorunsuz çoklu oturum açmayı kademeli olarak alabilirsiniz. Azure AD URL 'sini, [https://autologon.microsoft.us](https://autologon.microsoft.us) Active Directory Grup İlkesi kullanarak tüm kullanıcıların Intranet bölgesi ayarlarına ekleyerek başlayın.
+Aşağıdaki yönergeleri kullanarak, kullanıcılarınız için Azure AD sorunsuz çoklu oturum açmayı kademeli olarak alabilirsiniz. Azure AD URL 'sini, `https://autologon.microsoft.us` Active Directory Grup İlkesi kullanarak tüm kullanıcıların Intranet bölgesi ayarlarına ekleyerek başlayın.
 
 Ayrıca, **Grup İlkesi aracılığıyla betik aracılığıyla durum çubuğu güncelleştirmelerine Izin ver**intranet bölgesi ilkesi ayarını etkinleştirmeniz gerekir.
 
@@ -89,16 +89,16 @@ Mozilla Firefox, Kerberos kimlik doğrulamasını otomatik olarak kullanmaz. Aş
 1. Firefox 'u çalıştırın ve adres çubuğuna **about: config**yazın   . Görebileceğiniz tüm bildirimleri kapatın.
 1.  **Network. Negotiate-Auth. Trusted-uris**   tercihini arayın. Bu tercih, Kerberos kimlik doğrulaması için Firefox tarafından güvenilen siteleri listeler.
 1. Tercih adına sağ tıklayın ve ardından **Değiştir**' i seçin.
-1.  [**https://autologon.microsoft.us**](https://autologon.microsoft.us**)   Kutuya yazın.
+1. `https://autologon.microsoft.us`Kutuya yazın.
 1.  **Tamam**   ' ı seçin ve ardından tarayıcıyı yeniden açın.
 
 ### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Kmıum temelinde Microsoft Edge (tüm platformlar)
 
- `AuthNegotiateDelegateAllowlist`   Ortamınızdaki veya ilke ayarlarını geçersiz kıldıysanız `AuthServerAllowlist`   , Azure AD URL 'sini bunlara eklemediğinizden emin olun [https://autologon.microsoft.us](https://autologon.microsoft.us) .
+ `AuthNegotiateDelegateAllowlist`   Ortamınızdaki veya ilke ayarlarını geçersiz kıldıysanız `AuthServerAllowlist`   , Azure AD URL 'sini bunlara eklemediğinizden emin olun `https://autologon.microsoft.us` .
 
 ### <a name="google-chrome-all-platforms"></a>Google Chrome (tüm platformlar)
 
- `AuthNegotiateDelegateWhitelist`   Ortamınızdaki veya ilke ayarlarını geçersiz kıldıysanız `AuthServerWhitelist`   , Azure AD URL 'sini bunlara eklemediğinizden emin olun [https://autologon.microsoft.us](https://autologon.microsoft.us) .
+ `AuthNegotiateDelegateWhitelist`   Ortamınızdaki veya ilke ayarlarını geçersiz kıldıysanız `AuthServerWhitelist`   , Azure AD URL 'sini bunlara eklemediğinizden emin olun `https://autologon.microsoft.us` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

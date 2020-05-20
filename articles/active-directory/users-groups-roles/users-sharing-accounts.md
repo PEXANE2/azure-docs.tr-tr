@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37935d229f62028e074f92bb6f8b70b9eebd87dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565511"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685210"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Hesapları Azure AD ile paylaşma
 
@@ -62,13 +62,13 @@ Hesap paylaşımını etkinleştiren Azure AD özellikleri şunlardır:
 * [Uygulama kullanımı panosu/raporları](../active-directory-passwords-get-insights.md)
 * Son Kullanıcı erişim portalları
 * [Uygulama proxy 'si](../manage-apps/application-proxy.md)
-* [Active Directory marketi](https://azure.microsoft.com/marketplace/active-directory/all/)
+* [Active Directory marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
 
 ## <a name="sharing-an-account"></a>Hesap paylaşma
 
 Bir hesabı paylaşmak üzere Azure AD 'yi kullanmak için şunları yapmanız gerekir:
 
-* Uygulama uygulaması [Galerisi](https://azure.microsoft.com/marketplace/active-directory/) veya [özel uygulama](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/) ekleme
+* Uygulama uygulaması [Galerisi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) veya [özel uygulama](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/) ekleme
 * Uygulamayı parola çoklu oturum açma (SSO) için yapılandırma
 * [Grup tabanlı atamayı](groups-saasapps.md) kullanın ve paylaşılan bir kimlik bilgisi girme seçeneğini belirleyin
 

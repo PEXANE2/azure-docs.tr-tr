@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: f7e30fd0d53af7ee61d919b56e9ffcd1f1b6bd36
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 760c56ad6179a7bf94f19e004e2fbbece3908198
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207607"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683498"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu 'nda çalışma saatleri dışında VM 'Leri başlatma/durdurma
 
@@ -108,31 +108,31 @@ Tüm üst runbook 'lar `WhatIf` parametresi içerir. True olarak ayarlandığın
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Üst runbook 'tan çağırılır. Bu runbook otomatik durdurma senaryosu için kaynak temelinde uyarı oluşturur.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true veya false  | Hedeflenen abonelik veya kaynak gruplarındaki VM 'lerde Azure uyarı kuralları oluşturur veya güncelleştirir. <br> `VMList`, VM 'lerin virgülle ayrılmış listesidir. Örneğin, `vm1, vm2, vm3`.<br> `WhatIf`yürütme olmadan runbook mantığının doğrulanmasına izin vermez.|
-|AutoStop_Disable | Hiçbiri | Otomatik durdurma uyarılarını ve Varsayılan zamanlamayı devre dışı bırakır.|
+|AutoStop_Disable | Yok | Otomatik durdurma uyarılarını ve Varsayılan zamanlamayı devre dışı bırakır.|
 |AutoStop_VM_Child | WebHookData | Üst runbook 'tan çağırılır. Uyarı kuralları, klasik bir sanal makineyi durdurmak için bu runbook 'u çağırır.|
 |AutoStop_VM_Child_ARM | WebHookData |Üst runbook 'tan çağırılır. Uyarı kuralları bir sanal makineyi durdurmak için bu runbook 'u çağırır.  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Eylem: Başlat veya Durdur<br> VMList  | Cloud Services tarafından klasik VM grubunda Eylem Başlat veya durdur işlemini gerçekleştirir. |
 |ScheduledStartStop_Child | VMName <br> Eylem: Başlat veya Durdur <br> ResourceGroupName | Üst runbook 'tan çağırılır. Zamanlanan durdurma için bir Başlat veya Durdur eylemi yürütür.|
 |ScheduledStartStop_Child_Classic | VMName<br> Eylem: Başlat veya Durdur<br> ResourceGroupName | Üst runbook 'tan çağırılır. Klasik VM 'Ler için zamanlanmış durdurma için Başlat veya Durdur eylemini yürütür. |
-|ScheduledStartStop_Parent | Eylem: Başlat veya Durdur <br>VMList <br> WhatIf: true veya false | Abonelikteki tüm VM 'Leri başlatır veya sonlandırır. Değişkenleri `External_Start_ResourceGroupNames` düzenleyin ve `External_Stop_ResourceGroupNames` yalnızca bu hedeflenmiş kaynak gruplarında yürütülecek şekilde yürütün. Ayrıca, `External_ExcludeVMNames` değişkeni güncelleştirerek belirli VM 'leri hariç bırakabilirsiniz.|
-|SequencedStartStop_Parent | Eylem: Başlat veya Durdur <br> WhatIf: true veya false<br>VMList| Başlat/Durdur etkinliğini sıralamak istediğiniz her VM üzerinde **sequencestart** ve **sequencestop** adlı Etiketler oluşturur. Bu etiket adları büyük/küçük harfe duyarlıdır. Etiketin değeri, başlatmak veya durdurmak istediğiniz sıraya karşılık gelen pozitif bir tamsayı (1, 2, 3) olmalıdır. <br>**Note**: VM 'ler `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames`, ve `External_ExcludeVMNames` değişkenlerinde tanımlanan kaynak grupları içinde olmalıdır. Eylemlerin etkili olabilmesi için uygun etiketlere sahip olmaları gerekir.|
+|ScheduledStartStop_Parent | Eylem: Başlat veya Durdur <br>VMList <br> WhatIf: true veya false | Abonelikteki tüm VM 'Leri başlatır veya sonlandırır. Değişkenleri düzenleyin `External_Start_ResourceGroupNames` ve `External_Stop_ResourceGroupNames` yalnızca bu hedeflenmiş kaynak gruplarında yürütülecek şekilde yürütün. Ayrıca, değişkeni güncelleştirerek belirli VM 'Leri hariç bırakabilirsiniz `External_ExcludeVMNames` .|
+|SequencedStartStop_Parent | Eylem: Başlat veya Durdur <br> WhatIf: true veya false<br>VMList| Başlat/Durdur etkinliğini sıralamak istediğiniz her VM üzerinde **sequencestart** ve **sequencestop** adlı Etiketler oluşturur. Bu etiket adları büyük/küçük harfe duyarlıdır. Etiketin değeri, başlatmak veya durdurmak istediğiniz sıraya karşılık gelen pozitif bir tamsayı (1, 2, 3) olmalıdır. <br>**Note**: VM 'ler `External_Start_ResourceGroupNames` ,, `External_Stop_ResourceGroupNames` ve değişkenlerinde tanımlanan kaynak grupları içinde olmalıdır `External_ExcludeVMNames` . Eylemlerin etkili olabilmesi için uygun etiketlere sahip olmaları gerekir.|
 
 ### <a name="variables"></a>Değişkenler
 
-Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan değişkenler listelenmektedir. Yalnızca ile `External`önekli değişkenleri değiştirin. Ön eki olan değişkenlerin `Internal` değiştirilmesi, istenmeyen etkilere neden olur.
+Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan değişkenler listelenmektedir. Yalnızca ile önekli değişkenleri değiştirin `External` . Ön eki olan değişkenlerin değiştirilmesi, `Internal` istenmeyen etkilere neden olur.
 
 > [!NOTE]
 > VM adı ve kaynak grubuyla ilgili sınırlamalar büyük ölçüde değişken boyutunun bir sonucudur. Bkz. [Azure Otomasyonu 'Nda değişken varlıkları](https://docs.microsoft.com/azure/automation/shared-resources/variables).
 
 |Değişken | Açıklama|
 |---------|------------|
-|External_AutoStop_Condition | Bir uyarıyı tetiklemeden önce koşulu yapılandırmak için gereken koşullu işleç. Kabul edilebilir değerler `GreaterThan`, `GreaterThanOrEqual` `LessThan`,, ve `LessThanOrEqual`.|
+|External_AutoStop_Condition | Bir uyarıyı tetiklemeden önce koşulu yapılandırmak için gereken koşullu işleç. Kabul edilebilir değerler `GreaterThan` ,,, `GreaterThanOrEqual` `LessThan` ve `LessThanOrEqual` .|
 |External_AutoStop_Description | CPU yüzdesi eşiği aşarsa VM 'yi durdurma uyarısı.|
 |External_AutoStop_Frequency | Kural için değerlendirme sıklığı. Bu parametre, girişi TimeSpan biçiminde kabul eder. Olası değerler 5 dakikadan 6 saate kadar sürer. |
 |External_AutoStop_MetricName | Azure uyarı kuralının yapılandırıldığı performans ölçümünün adı.|
 |External_AutoStop_Severity | Ölçüm uyarısının önem derecesi, 0 ile 4 arasında değişebilir. |
-|External_AutoStop_Threshold | Değişkende `External_AutoStop_MetricName`belirtilen Azure uyarı kuralının eşiği. Yüzde değerleri 1 ile 100 arasındadır.|
-|External_AutoStop_TimeAggregationOperator | Koşulu değerlendirmek için seçilen pencere boyutuna uygulanan zaman toplama işleci. Kabul edilebilir değerler `Average`, `Minimum` `Maximum` `Total`,, ve `Last`.|
+|External_AutoStop_Threshold | Değişkende belirtilen Azure uyarı kuralının eşiği `External_AutoStop_MetricName` . Yüzde değerleri 1 ile 100 arasındadır.|
+|External_AutoStop_TimeAggregationOperator | Koşulu değerlendirmek için seçilen pencere boyutuna uygulanan zaman toplama işleci. Kabul edilebilir değerler `Average` ,,, `Minimum` `Maximum` `Total` ve `Last` .|
 |External_AutoStop_TimeWindow | Azure 'un bir uyarı tetiklenmesi için seçili ölçümleri analiz eden pencerenin boyutu. Bu parametre, girişi TimeSpan biçiminde kabul eder. Olası değerler 5 dakikadan 6 saate kadar sürer.|
 |External_EnableClassicVMs| Klasik VM 'Lerin çözüm tarafından hedefleneceğini belirten değer. Varsayılan değer true 'dur. Azure bulut çözümü sağlayıcısı (CSP) abonelikleri için bu değişkeni false olarak ayarlayın. Klasik VM 'Ler, [Klasik farklı çalıştır hesabı](automation-create-standalone-account.md#create-a-classic-run-as-account)gerektirir.|
 |External_ExcludeVMNames | 140 VM 'Lerle sınırlı tutulacak VM adlarının virgülle ayrılmış listesi. Listeye 140 'den fazla VM eklerseniz, dışarıda bırakılacak şekilde ayarlanan VM 'Ler istenmeden başlatılabilir veya durmuş olabilir.|
@@ -146,9 +146,9 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan değişkenler listele
 |Internal_ResourceGroupName | Otomasyon hesabı kaynak grubu adı.|
 
 >[!NOTE]
->Değişken `External_WaitTimeForVMRetryInSeconds`için, varsayılan değer 600 ' den 2100 ' e güncelleştirilmiştir. 
+>Değişken için `External_WaitTimeForVMRetryInSeconds` , varsayılan değer 600 ' den 2100 ' e güncelleştirilmiştir. 
 
-Tüm senaryolarda, `External_Start_ResourceGroupNames`ve `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` değişkenleri, **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**ve **ScheduledStartStop_Parent** runbook 'ları için virgülle ayrılmış VM listeleri hariç olmak üzere VM 'leri hedeflemek için gereklidir. Diğer bir deyişle, sanal makinelerinizin başlatma ve durdurma eylemlerinin gerçekleşmesi için hedef kaynak gruplarına ait olması gerekir. Mantığı Azure Ilkesine benzer şekilde çalışarak abonelik veya kaynak grubunu hedefleyebilir ve yeni oluşturulan VM 'Ler tarafından devralınan eylemlere sahip olabilirsiniz. Bu yaklaşım her VM için ayrı bir zamanlamanın korunmasını, sonra da her bir sanal makine için ayrı bir zamanlama olmasını önler.
+Tüm senaryolarda, ve değişkenleri, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**ve **ScheduledStartStop_Parent** runbook 'Ları Için virgülle ayrılmış VM listeleri hariç olmak üzere VM 'leri hedeflemek için gereklidir. Diğer bir deyişle, sanal makinelerinizin başlatma ve durdurma eylemlerinin gerçekleşmesi için hedef kaynak gruplarına ait olması gerekir. Mantığı Azure Ilkesine benzer şekilde çalışarak abonelik veya kaynak grubunu hedefleyebilir ve yeni oluşturulan VM 'Ler tarafından devralınan eylemlere sahip olabilirsiniz. Bu yaklaşım her VM için ayrı bir zamanlamanın korunmasını, sonra da her bir sanal makine için ayrı bir zamanlama olmasını önler.
 
 ### <a name="schedules"></a>Zamanlamalar
 
@@ -156,13 +156,13 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan varsayılan zamanlama
 
 Tüm zamanlamaları etkinleştirmeyin, çünkü bu durum çakışan zamanlama eylemleri oluşturabilir. En iyi yöntem, hangi iyileştirmelerin yapmak istediğinizi belirlemektir ve bunları uygun şekilde değiştirebilirsiniz. Daha fazla açıklama için genel bakış bölümündeki örnek senaryolar bölümüne bakın.
 
-|Zamanlama adı | Frequency | Açıklama|
+|Zamanlama adı | Sıklık | Açıklama|
 |--- | --- | ---|
-|Schedule_AutoStop_CreateAlert_Parent | 8 saatte bir | **AutoStop_CreateAlert_Parent** runbook 'u her 8 saatte bir çalıştırır ve bu da, ve `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` değişkenlerinde VM tabanlı değerleri de durduruyor. Alternatif olarak, `VMList` parametresini kullanarak, VM 'lerin virgülle ayrılmış bir listesini belirtebilirsiniz.|
+|Schedule_AutoStop_CreateAlert_Parent | 8 saatte bir | **AutoStop_CreateAlert_Parent** runbook 'u her 8 saatte bir çalıştırır ve bu da, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` ve değişkenlerinde VM tabanlı değerleri de durduruyor `External_ExcludeVMNames` . Alternatif olarak, parametresini kullanarak, VM 'lerin virgülle ayrılmış bir listesini belirtebilirsiniz `VMList` .|
 |Scheduled_StopVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook 'u `Stop` her gün belirtilen zamanda bir parametre ile çalıştırır., Değişken varlıklar tarafından tanımlanan kuralları karşılayan tüm VM 'Leri otomatik olarak sonlandırır.**Zamanlanan-StartVM**ilgili zamanlamasını etkinleştirin.|
-|Scheduled_StartVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook 'u, belirtilen saatte `Start` her gün bir parametre değeri ile çalıştırır. , Değişken varlıklar tarafından tanımlanan kuralları karşılayan tüm VM 'Leri otomatik olarak başlatır.İlgili zamanlamayı **Zamanlanmış-StopVM**' i etkinleştirin.|
-|Sıralı-StopVM | 1:00 (UTC), her Cuma | **Sequenced_StopStop_Parent** runbook 'U `Stop` her Cuma için belirtilen zamanda bir parametre değeri ile çalıştırır.Sıralı (artan), uygun değişkenler tarafından tanımlanan bir **SequenceStop** etiketine sahip tüm VM 'leri sonlandırır. Etiket değerleri ve varlık değişkenleri hakkında daha fazla bilgi için bkz. [runbook 'lar](#runbooks).**Sıralı-StartVM**ilgili zamanlamasını etkinleştirin.|
-|Sıralı-StartVM | 1:00 PM (UTC), her Pazartesi | **SequencedStopStart_Parent** runbook 'U `Start` her Pazartesi için belirtilen zamanda bir parametre değeri ile çalıştırır. Sıralı (azalan), uygun değişkenlerle tanımlanan **Sequencestart** etiketiyle tüm VM 'leri başlatır. Etiket değerleri ve değişken varlıklar hakkında daha fazla bilgi için bkz. [runbook 'lar](#runbooks). İlgili zamanlamayı, **sıralı-StopVM**'yi etkinleştirin.
+|Scheduled_StartVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook 'u, `Start` belirtilen saatte her gün bir parametre değeri ile çalıştırır. , Değişken varlıklar tarafından tanımlanan kuralları karşılayan tüm VM 'Leri otomatik olarak başlatır.İlgili zamanlamayı **Zamanlanmış-StopVM**' i etkinleştirin.|
+|Sıralı-StopVM | 1:00 (UTC), her Cuma | **Sequenced_StopStop_Parent** runbook 'U her Cuma için belirtilen zamanda bir parametre değeri ile çalıştırır `Stop` .Sıralı (artan), uygun değişkenler tarafından tanımlanan bir **SequenceStop** etiketine sahip tüm VM 'leri sonlandırır. Etiket değerleri ve varlık değişkenleri hakkında daha fazla bilgi için bkz. [runbook 'lar](#runbooks).**Sıralı-StartVM**ilgili zamanlamasını etkinleştirin.|
+|Sıralı-StartVM | 1:00 PM (UTC), her Pazartesi | **SequencedStopStart_Parent** runbook 'U her Pazartesi için belirtilen zamanda bir parametre değeri ile çalıştırır `Start` . Sıralı (azalan), uygun değişkenlerle tanımlanan **Sequencestart** etiketiyle tüm VM 'leri başlatır. Etiket değerleri ve değişken varlıklar hakkında daha fazla bilgi için bkz. [runbook 'lar](#runbooks). İlgili zamanlamayı, **sıralı-StopVM**'yi etkinleştirin.
 
 ## <a name="use-of-the-solution-with-classic-vms"></a>Klasik VM 'lerle çözüm kullanımı
 
@@ -173,7 +173,7 @@ Klasik VM 'lerle çözümü kullanmak için, varsayılan olarak oluşturulmamı�
 Bulut hizmeti başına 20 ' den fazla VM varsa, bazı öneriler aşağıda verilmiştir:
 
 * Üst runbook **ScheduledStartStop_Parent** birden çok zamanlama oluşturun ve zamanlamaya göre 20 VM 'yi belirtin. 
-* Zamanlama özelliklerinde, VM adlarını virgülle ayrılmış `VMList` bir liste olarak belirtmek için parametresini kullanın. 
+* Zamanlama özelliklerinde, `VMList` VM adlarını virgülle ayrılmış bir liste olarak belirtmek için parametresini kullanın. 
 
 Aksi takdirde, bu çözüm için Otomasyon işi üçten fazla saat çalışırsa, bu, dengeli olarak kaldırılmış veya [dengeli](automation-runbook-execution.md#fair-share) bir şekilde kaldırılır.
 
@@ -199,11 +199,11 @@ Etkinleştirildikten sonra çözüme erişmek için aşağıdaki mekanizmalardan
 
 Halka kutucuğuna tıklayarak iş kayıtlarının daha fazla analizini yapabilirsiniz. Çözüm panosu iş geçmişi ve önceden tanımlanmış günlük arama sorguları gösterir. Arama sorgularınıza göre arama yapmak için Log Analytics gelişmiş portala geçiş yapın.
 
-## <a name="update-the-solution"></a>Çözümü güncelleştirme
+## <a name="update-the-feature"></a>Özelliği güncelleştirme
 
-Bu çözümün önceki bir sürümünü dağıttıysanız, güncelleştirilmiş bir yayını dağıtmadan önce hesabınızı hesabınızdan silin. [Çözümü kaldırmak](#remove-the-solution) için adımları izleyin ve sonra [çözümü dağıtmak](automation-solution-vm-management-enable.md)için adımları izleyin.
+Bu çözümün önceki bir sürümünü dağıttıysanız, güncelleştirilmiş bir yayını dağıtmadan önce hesabınızı hesabınızdan silin. [Çözümü kaldırmak](#remove-the-feature) için adımları izleyin ve sonra [çözümü dağıtmak](automation-solution-vm-management-enable.md)için adımları izleyin.
 
-## <a name="remove-the-solution"></a>Çözümü kaldırma
+## <a name="remove-the-feature"></a>Özelliği kaldır
 
 Çözümü artık kullanmanız gerekmiyorsa, Otomasyon hesabından silebilirsiniz. Çözümün silinmesi yalnızca runbook 'ları kaldırır. Çözüm eklendiğinde oluşturulan zamanlamaları veya değişkenleri silmez. Bunları diğer runbook 'larla kullanmıyorsanız, bu varlıkları el ile kaldırın.
 

@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f77304beb598094e8dbbc51ebf624acd71b554b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875801"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681732"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory hakkında sık sorulan sorular
 Azure Active Directory (Azure AD), kimlik, erişim yönetimi ve güvenliği tüm yönleriyle kapsayan bir hizmet olarak kimlik (IDaaS) çözümüdür.
@@ -153,7 +153,7 @@ Bu, "Password" ve "123456" öğesinin herhangi bir çeşitleri gibi genel olarak
 
 **Y:** Azure AD, Microsoft'a, uygulama hizmeti sağlayıcılarına ve iş ortaklarına ait 2.600'ü aşkın önceden tümleştirilmiş uygulama içerir. Önceden tümleştirilmiş tüm uygulamalar çoklu oturum açmayı (SSO) destekler. SSO, uygulamalarınıza erişmek için kurumsal kimlik bilgilerinizi kullanmanıza olanak tanır. Uygulamalardan bazıları aynı zamanda otomatik hazırlama ve sağlamayı kaldırma özelliklerini destekler.
 
-Önceden tümleştirilmiş uygulamaların tam listesi için bkz. [Active Directory Marketi](https://azure.microsoft.com/marketplace/active-directory/).
+Önceden tümleştirilmiş uygulamaların tam listesi için bkz. [Active Directory Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
 
 ---
 **S: İhtiyacım olan uygulama Azure AD marketinde yoksa ne olur?**

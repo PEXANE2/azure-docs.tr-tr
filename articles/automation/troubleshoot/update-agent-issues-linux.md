@@ -1,6 +1,6 @@
 ---
-title: Azure Automation Güncelleştirme Yönetimi Linux Güncelleştirme Aracısı sorunlarını giderme
-description: Güncelleştirme Yönetimi çözümünü kullanarak Linux Windows Update Aracısı ile ilgili sorunları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
+title: Azure Automation 'da Linux Güncelleştirme Aracısı sorunlarını giderme
+description: Bu makalede, Güncelleştirme Yönetimi 'de Linux Windows Update Aracısı ile ilgili sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: a4082ddfd8c092a6f9223a0894f21bc734b6efb6
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997025"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680865"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Linux Güncelleştirme Aracısı sorunlarını giderme
 
@@ -22,7 +22,7 @@ Güncelleştirme Yönetimi ' de makinenizin (sağlıklı) olarak görünmesinin 
 
 * Hazırlanıyor: karma Runbook Worker dağıtıldı ve en son bir saatten önce görüldü.
 * Bağlantısı kesik: karma runbook çalışanı dağıtıldı ve en son bir saat önce görüldü.
-* Yapılandırılmadı: karma Runbook Worker bulunamadı veya ekleme bitmedi.
+* Yapılandırılmadı: karma Runbook Worker bulunamadı veya dağıtımı bitmedi.
 
 > [!NOTE]
 > Azure portal gösterdiği ve makinenin geçerli durumu arasında hafif bir gecikme olabilir.
@@ -70,7 +70,7 @@ Bu denetim, Linux için Log Analytics aracısının yüklü olmasını sağlar. 
 
 ### <a name="log-analytics-agent-status"></a>Log Analytics Aracısı durumu
 
-Bu denetim, Linux için Log Analytics aracısının çalışıyor olmasını sağlar. Aracı çalışmıyorsa, yeniden başlatmayı denemek için aşağıdaki komutu çalıştırabilirsiniz. Aracı sorunlarını giderme hakkında daha fazla bilgi için bkz. [Linux karma Runbook Worker sorunlarını giderme](hybrid-runbook-worker.md#linux).
+Bu denetim, Linux için Log Analytics aracısının çalışıyor olmasını sağlar. Aracı çalışmıyorsa, yeniden başlatmayı denemek için aşağıdaki komutu çalıştırabilirsiniz. Aracı sorunlarını giderme hakkında daha fazla bilgi için bkz. [Linux-karma Runbook Worker sorunlarını giderme](hybrid-runbook-worker.md#linux).
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -78,13 +78,13 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ### <a name="multihoming"></a>Birden çok giriş
 
-Bu denetim, aracının birden çok çalışma alanına raporlama olup olmadığını belirler. Çoklu barındırma Güncelleştirme Yönetimi tarafından desteklenmez.
+Bu denetim, aracının birden çok çalışma alanına raporlama olup olmadığını belirler. Güncelleştirme Yönetimi çoklu barındırılcıya desteklemez.
 
 ### <a name="hybrid-runbook-worker"></a>Karma Runbook Çalışanı
 
 Bu denetim, Linux için Log Analytics aracısının karma Runbook Worker paketine sahip olup olmadığını doğrular. Güncelleştirme Yönetimi çalışması için bu paket gereklidir. Daha fazla bilgi edinmek için bkz. [Linux için Log Analytics Aracısı çalışmıyor](hybrid-runbook-worker.md#oms-agent-not-running).
 
-Güncelleştirme Yönetimi, karma Runbook Worker paketlerini işlemler uç noktasından indirir. Bu nedenle, karma Runbook Worker çalışmıyorsa ve [işlemler uç noktası](#operations-endpoint) başarısız olursa, güncelleştirme başarısız olabilir.
+Güncelleştirme Yönetimi, karma Runbook Worker paketlerini işlemler uç noktasından indirir. Bu nedenle, karma Runbook Worker çalışmıyorsa ve [işlemler uç noktası](#operations-endpoint) denetimi başarısız olursa, güncelleştirme başarısız olabilir.
 
 ### <a name="hybrid-runbook-worker-status"></a>Karma Runbook Worker durumu
 
@@ -184,4 +184,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Karma runbook çalışanlarınız ile ilgili diğer sorunları gidermek için bkz. [karma runbook çalışanları sorunlarını giderme](hybrid-runbook-worker.md).
+[Karma Runbook Worker sorunlarını giderin](hybrid-runbook-worker.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure Automation Güncelleştirme Yönetimi Windows Update Aracısı sorunlarını giderme
-description: Güncelleştirme Yönetimi çözümünü kullanarak Windows Update Aracısı ile ilgili sorunları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
+title: Azure Automation 'da Windows Update Aracısı sorunlarını giderme
+description: Bu makalede, Güncelleştirme Yönetimi sırasında Windows Update Aracısı ile ilgili sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e9af9c6472f49ebccd36e8d73688636c98918ff1
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996447"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680832"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Windows Update Aracısı sorunlarını giderme
 
-Güncelleştirme Yönetimi ' de makinenizin (sağlıklı) olarak görünmesinin pek çok nedeni olabilir. Temeldeki sorunu tespit etmek için bir Windows karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bir makineye yönelik üç hazırlık durumu aşağıda verilmiştir:
+Güncelleştirme Yönetimi dağıtımı sırasında makinenizin, (sağlıklı) olarak görünmesinin pek çok nedeni olabilir. Temeldeki sorunu tespit etmek için bir Windows karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bir makineye yönelik üç hazırlık durumu aşağıda verilmiştir:
 
 * Hazırlanıyor: karma Runbook Worker dağıtıldı ve en son bir saatten önce görüldü.
 * Bağlantısı kesik: karma runbook çalışanı dağıtıldı ve en son bir saat önce görüldü.
-* Yapılandırılmadı: karma Runbook Worker bulunamadı veya ekleme bitmedi.
+* Yapılandırılmadı: karma Runbook Worker bulunamadı veya dağıtımı tamamlamadı.
 
 > [!NOTE]
 > Azure portal gösterdiği ve makinenin geçerli durumu arasında hafif bir gecikme olabilir.
@@ -34,7 +34,7 @@ Bu makalede, Azure makineler için sorun gidericinin Azure portal, [çevrimdış
 
 ## <a name="start-the-troubleshooter"></a>Sorun gidericiyi Başlat
 
-Azure makinelerinde, portalda güncelleştirme **Aracısı hazırlığı** sütununda **sorun gider** bağlantısını seçerek Güncelleştirme Aracısı sorunlarını giderme sayfasını başlatabilirsiniz. Azure dışı makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinede sorun gidermeye yönelik [çevrimdışı yönergelere](#troubleshoot-offline) bakın.
+Azure makinelerinde, portalda güncelleştirme **Aracısı hazırlığı** sütununda **sorun gider** bağlantısını seçerek Güncelleştirme Aracısı sorunlarını giderme sayfasını başlatabilirsiniz. Azure dışı makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinede sorun gidermek için bkz. [çevrimdışı sorun giderme](#troubleshoot-offline) .
 
 ![Sanal makinelerin Güncelleştirme Yönetimi listesinin ekran görüntüsü](../media/update-agent-issues/vm-list.png)
 
@@ -89,7 +89,7 @@ Proxy ve güvenlik duvarı yapılandırmalarının, karma Runbook Worker aracıs
 
 ### <a name="monitoring-agent-service-status"></a>İzleme Aracısı hizmet durumu
 
-Bu denetim, makinede Windows (`healthservice`) için Log Analytics aracısının çalışıp çalışmadığını belirler. Hizmette sorun giderme hakkında daha fazla bilgi edinmek için bkz. [Windows için Log Analytics Aracısı çalışmıyor](hybrid-runbook-worker.md#mma-not-running).
+Bu denetim, makinede Windows () için Log Analytics aracısının `healthservice` çalışıp çalışmadığını belirler. Hizmette sorun giderme hakkında daha fazla bilgi edinmek için bkz. [Windows için Log Analytics Aracısı çalışmıyor](hybrid-runbook-worker.md#mma-not-running).
 
 Windows için Log Analytics aracısını yeniden yüklemek için bkz. [Windows için aracı yükleme](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
@@ -208,4 +208,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Karma runbook çalışanları sorunlarını giderme](hybrid-runbook-worker.md)
+[Karma Runbook Worker sorunlarını giderin](hybrid-runbook-worker.md).

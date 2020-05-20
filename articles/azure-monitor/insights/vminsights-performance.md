@@ -5,17 +5,23 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: a50ba39777e6a9d3d609e584c0c7d872f2a65f35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/31/2020
+ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283727"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684385"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici ile performansı grafik oluşturma
 
 VM'ler için Azure İzleyici, bir sanal makinenin ne kadar iyi performans gösterdiğini belirlemenize yardımcı olmak üzere birkaç ana performans göstergelerini (KPI) hedefleyen bir performans grafikleri kümesi içerir. Grafikler, kaynak kullanımını her bir süre içinde gösterir; böylece, seçili ölçüm temelinde kaynak kullanımını görüntülemek için her bir makinenin bir perspektifine geçiş yapabilirsiniz. Performansla ilgilenirken göz önünde bulundurmanız gereken çok sayıda öğe olsa da, VM'ler için Azure İzleyici işlemci, bellek, ağ bağdaştırıcısı ve disk kullanımı ile ilgili anahtar işletim sistemi performans göstergelerini izler. Performans, sistem durumu izleme özelliğini tamamlar ve olası sistem bileşeni başarısızlığını belirten sorunları açığa çıkarır, verimlilik elde etmek için ayarlama ve iyileştirmeyi destekler veya Kapasite planlamasını destekler.  
+
+## <a name="limitations"></a>Sınırlamalar
+VM'ler için Azure İzleyici ile performans toplama sınırlamaları aşağıda verilmiştir.
+
+- Red Hat Linux (RHEL) 6 çalıştıran sanal makinelerde **kullanılabilir bellek** yok. Bu ölçüm, [çekirdek sürümü 3,14](http://www.man7.org/linux/man-pages/man1/free.1.html)' de tanıtılan **memavailable** öğesinden hesaplanır.
+- Ölçümler yalnızca EXT dosya sistemi ailesi (EXT2, EXT3, EXT4) kullanan Linux sanal makinelerinde veri diskleri için kullanılabilir.
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Azure Izleyici 'den çoklu VM perspektifi
 

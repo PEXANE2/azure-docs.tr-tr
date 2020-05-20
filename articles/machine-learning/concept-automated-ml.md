@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: ce51a1b25453a5bbacbd268b37f2bd21cfe37fea
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f328b86d07a997ea761b4381f1d6a2f8a1dae269
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983474"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683087"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -46,7 +46,7 @@ Sınıflandırmaya benzer şekilde, regresyon görevleri de ortak denetimli bir 
 
 Tahmin edilen çıkış değerlerinin kategorik olduğu sınıflandırmadan farklı, regresyon modelleri bağımsız tahmine göre sayısal çıkış değerlerini tahmin eder. Gerileme ' de amaç, bir değişkenin diğerlerini nasıl etkilediğini tahmin ederek bu bağımsız tahmine dayalı değişkenler arasında ilişki kurmaya yardımcı olur. Örneğin,, gaz mesafe, güvenlik derecelendirmesi vb. gibi özelliklere göre Otomobil Fiyatları. Daha fazla bilgi edinin ve [otomatik makine öğrenimine bir gerileme](tutorial-auto-train-models.md)örneği görüntüleyin.
 
-Bu Python Not defterlerindeki tahminler için gerileme ve otomatik makine öğrenimine yönelik örneklere bakın: [CPU performansı tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb), 
+Bu Python Not defterlerindeki tahminler için gerileme ve otomatik makine öğrenimine yönelik örneklere bakın: [CPU performansı tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb), 
 
 ### <a name="time-series-forecasting"></a>Zaman serisi tahmin
 
@@ -93,7 +93,7 @@ Aşağıdaki diyagramda bu işlem gösterilmektedir.
 ![Otomatik makine öğrenimi](./media/concept-automated-ml/automl-concept-diagram2.png)
 
 
-Ayrıca, çalıştırma sırasında toplanan [ölçümleri içeren](how-to-understand-automated-ml.md) günlüğe kaydedilen çalıştırma bilgilerini inceleyebilirsiniz. Eğitim çalışması, modeli ve veri ön işleme içeren`.pkl` bir Python seri hale getirilmiş nesne (dosya) oluşturur.
+Ayrıca, çalıştırma sırasında toplanan [ölçümleri içeren](how-to-understand-automated-ml.md) günlüğe kaydedilen çalıştırma bilgilerini inceleyebilirsiniz. Eğitim çalışması, `.pkl` modeli ve veri ön işleme içeren bir Python seri hale getirilmiş nesne (dosya) oluşturur.
 
 Model oluşturma otomatikleştirilmiş olsa da, [önemli veya ilgili özelliklerin oluşturulan modellere nasıl olduğunu da öğrenebilirsiniz](how-to-configure-auto-train.md#explain) .
 
@@ -110,9 +110,9 @@ Her otomatik makine öğrenimi denemesinde, verileriniz varsayılan yöntemler k
 
 ### <a name="automatic-preprocessing-standard"></a>Otomatik ön işleme (Standart)
 
-Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek için verileriniz otomatik olarak ölçeklendirilir veya normalleştirilir.  Model eğitimi sırasında, her bir modele aşağıdaki ölçeklendirmeden veya normalleştirme tekniklerinden biri uygulanır.
+Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek için verileriniz otomatik olarak ölçeklendirilir veya normalleştirilir.  Model eğitimi sırasında, her bir modele aşağıdaki ölçeklendirmeden veya normalleştirme tekniklerinden biri uygulanır. Oto ml 'nin modellerinizde [fazla sığdırma ve ıdengeli verilerin nasıl engellenmesine](concept-manage-ml-pitfalls.md) yardımcı olduğunu öğrenin.
 
-|Normalleştirme&nbsp;&&nbsp;ölçeklendiriliyor| Açıklama |
+|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Açıklama |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Ortalama ve ölçeklendirerek birim sapması arasındaki özellikleri standartlaştırın  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Her bir özelliği sütuna en düşük ve en yüksek düzeyde ölçeklendirerek özellikleri dönüştürür  |
@@ -154,7 +154,7 @@ Otomatik ML için Web arabirimi her zaman uzak bir [işlem hedefi](concept-compu
 İşlem hedefini seçerken şu faktörleri göz önünde bulundurun:
 
  * **Yerel bir Işlem seçin**: senaryonuz küçük veriler ve kısa traıns (örneğin, alt çalışma başına birkaç dakika) kullanan ilk araştırmalar veya tanıtımlar hakkında ise, yerel bilgisayarınızdaki eğitim daha iyi bir seçim olabilir.  Kurulum süresi yoktur, altyapı kaynakları (bilgisayarınız veya VM) doğrudan kullanılabilir.
- * **Bir uzak ml işlem kümesi**seçin: daha büyük veri kümeleriyle eğitim yapıyorsanız, daha uzun bir süre olması gereken modeller oluştururken, uzaktan işlem çok daha iyi uçtan uca zaman performansına sahiptir çünkü `AutoML` bu, kümenin düğümlerinde paralel hale getirmek. Uzaktan bir işlem sırasında, iç altyapının başlangıç zamanı, alt çalışma başına 1,5 dakika, ek olarak VM 'Ler henüz çalışır durumda değilse küme altyapısı için de ek dakika ekler.
+ * **Bir uzak ml işlem kümesi**seçin: daha büyük veri kümeleriyle eğitim yapıyorsanız, daha uzun bir süre olması gereken modeller oluştururken, uzaktan işlem çok daha iyi uçtan uca zaman performansına sahiptir çünkü bu, `AutoML` kümenin düğümlerinde paralel hale getirmek. Uzaktan bir işlem sırasında, iç altyapının başlangıç zamanı, alt çalışma başına 1,5 dakika, ek olarak VM 'Ler henüz çalışır durumda değilse küme altyapısı için de ek dakika ekler.
 
 ### <a name="pros-and-cons"></a>Profesyonelleri ve dezavantajları
 Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz önünde bulundurun.
@@ -168,7 +168,7 @@ Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz ön
 
  Aşağıdaki tabloda gösterildiği gibi uzak işlem kullandığınızda daha fazla özellik mevcuttur. Bu özelliklerden bazıları yalnızca bir kurumsal çalışma alanında kullanılabilir.
 
-| Özellik                                                    | Remote | Yerel | Gerektirmeyen <br>Kurumsal çalışma alanı |
+| Öne çıkan özelliği                                                    | Remote | Yerel | Gerektirmeyen <br>Kurumsal çalışma alanı |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Veri akışı (büyük veri desteği, 100 GB 'a kadar)          | ✓      |       | ✓                             |
 | DNN-BERT tabanlı metin korleştirme ve eğitim             | ✓      |       | ✓                             |
@@ -186,8 +186,19 @@ Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz ön
 | Kullanıcı arabirimindeki deneyin bilgilerini ve ölçümlerini kaydetme ve görselleştirme | ✓      | ✓     |                               |
 | Veri, guardrayları                                            | ✓      | ✓     |                               |
 
+## <a name="many-models"></a>Birçok model 
 
-## <a name="automated-ml-in-azure-machine-learning"></a>Azure Machine Learning otomatik ML
+[Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmek, işletmek ve yönetmek IÇIN otomatik ml 'yi kullanmanıza olanak sağlar.
+
+Örneğin, aşağıdaki senaryolarda __her örnek için__ bir model oluşturmak, geliştirilmiş sonuçlara yol açabilir:
+
+* Her bir mağaza için satışları tahmin etme
+* Yüzlerce yağ için tahmine dayalı bakım
+* Bireysel kullanıcılar için bir deneyim uyarlama.
+
+Daha fazla bilgi için GitHub 'daki [birçok modeller çözüm hızlandırıcısına](https://aka.ms/many-models) bakın.
+
+## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning 'de oto ml
 
 Azure Machine Learning otomatikleştirilmiş ML ile çalışmaya yönelik iki deneyim sunar
 

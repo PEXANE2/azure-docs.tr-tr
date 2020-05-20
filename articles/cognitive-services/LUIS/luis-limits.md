@@ -3,12 +3,12 @@ title: Limit-LUSıS
 description: Bu makale, Azure bilişsel hizmetler Language Understanding (LUSıS) 'nin bilinen sınırlarını içerir. LUO 'NUN birkaç sınır alanı vardır. Model sınırı denetim amaçları, varlıklar ve LUSıS 'deki Özellikler. Anahtar türüne göre kota sınırları. Klavye birleşimi LUSıS Web sitesini denetler.
 ms.topic: reference
 ms.date: 05/06/2020
-ms.openlocfilehash: 71f6126cbf9615d7f808f098202f29094a913982
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d4a6162758fab7e5c9592b98974620bbf06ba978
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593248"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684611"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUSıS modeliniz ve anahtarlarınız için sınırlar
 LUO 'NUN birkaç sınır alanı vardır. Birincisi, LUSıS 'deki amaçları, varlıkları ve özellikleri denetleyen [model limiti](#model-limits)olur. İkinci alan, anahtar türüne göre [Kota sınırlamalarıdır](#key-limits) . Limitlerin üçüncü alanı, LUSıS Web sitesini denetlemeye yönelik [klavye birleşimidir](#keyboard-controls) . Bir dördüncü alan, LUıS Authoring Web sitesi ve LUıS [uç nokta](luis-glossary.md#endpoint) API 'leri arasındaki [Dünya bölgesi eşlemesidir](luis-reference-regions.md) .
@@ -28,7 +28,7 @@ Uygulamanız LUSıS model sınırlarını aşarsa, bir [lusıs dağıtım](luis-
 | Dış varlıklar | sınırsız |
 | [Hedefler][intents]|Uygulama başına 500:499 özel amaçlar ve gerekli _hiçbiri_ amacı.<br>[Dağıtım tabanlı](https://aka.ms/dispatch-tool) uygulama karşılık gelen 500 dağıtım kaynaklarına sahiptir.|
 | [Liste varlıkları](./luis-concept-entity-types.md) | Üst: 50, alt: 20.000 öğeleri. Kurallı ad, en fazla * varsayılan karakter maks. Eş anlamlı değerlerde uzunluk kısıtlaması yok. |
-| [Makine tarafından öğrenilen varlıklar + roller](./luis-concept-entity-types.md):<br> bileşik<br>MPLE<br>varlık rolü|İlk olarak Kullanıcı isabetlerinin sınırlarını sınırlayan 100 üst varlık veya 330 varlıklarının bir sınırı. Rol, bu sınırın amacı için bir varlık olarak sayılır. Örnek, bir basit varlık olan, 2 rol içeren bir Composite örnektir: 1 bileşik + 1 basit + 2 rol = 4 varlıkların 330.<br>Alt varlıklar 5 düzeyden fazla iç içe olabilir.|
+| [makine öğrenimi varlıkları + roller](./luis-concept-entity-types.md):<br> bileşik<br>MPLE<br>varlık rolü|İlk olarak Kullanıcı isabetlerinin sınırlarını sınırlayan 100 üst varlık veya 330 varlıklarının bir sınırı. Rol, bu sınırın amacı için bir varlık olarak sayılır. Örnek, bir basit varlık olan, 2 rol içeren bir Composite örnektir: 1 bileşik + 1 basit + 2 rol = 4 varlıkların 330.<br>Alt varlıklar 5 düzeyden fazla iç içe olabilir.|
 |Özellik olarak model oluşturma| Belirli bir modelde 10 model olması için bir özellik olarak kullanılabilecek maksimum model sayısı. Belirli bir modelin 10 ifade listesi olması için bir özellik olarak kullanılan en fazla tümcecik listesi sayısı.|
 | [Önizleme-dinamik liste varlıkları](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|sorgu tahmin uç noktası isteği başına 2 adet ~ 1k liste|
 | [Desenler](luis-concept-patterns.md)|Uygulama başına 500 desen.<br>Maksimum model uzunluğu 400 karakterdir.<br>3 model. her model için tüm varlıklar<br>Düzende en fazla 2 iç içe isteğe bağlı metin|
@@ -53,7 +53,7 @@ Aynı düzeyin diğer nesneleriyle karşılaştırıldığında, nesne adları b
 |Nesneler|Kısıtlamalar|
 |--|--|
 |Amaç, varlık|Tüm amaç ve varlık adları, bir uygulamanın sürümünde benzersiz olmalıdır.|
-|ML varlık bileşenleri|Makine tarafından öğrenilen tüm varlık bileşenlerinin (alt varlıklar) aynı düzeydeki bileşenler için bu varlıkta benzersiz olması gerekir.|
+|ML varlık bileşenleri|Tüm makine öğrenimi varlık bileşenleri (alt varlıklar), aynı düzeydeki bileşenler için bu varlık dahilinde benzersiz olmalıdır.|
 |Özellikler | Tümcecik listeleri gibi tüm adlandırılmış özellikler, bir uygulamanın sürümü içinde benzersiz olmalıdır.|
 |Varlık rolleri|Bir varlık veya varlık bileşenindeki tüm roller, aynı varlık düzeyinde olduklarında benzersiz olmalıdır (üst, alt, alt alt, vb.).|
 

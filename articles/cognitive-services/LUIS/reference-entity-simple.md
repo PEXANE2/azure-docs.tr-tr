@@ -1,7 +1,7 @@
 ---
 title: Basit varlık türü-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Basit bir varlık, makine tarafından öğrenilen bağlamdaki tek bir kavramı açıklar. Sonuçları geliştirmek için basit bir varlık kullanırken bir tümcecik listesi ekleyin.
+description: Basit bir varlık, makine öğrenimi bağlamından tek bir kavramı açıklar. Sonuçları geliştirmek için basit bir varlık kullanırken bir tümcecik listesi ekleyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1b5754be3c9941101a53f332841ace93caf9acdd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74894754"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684564"
 ---
 # <a name="simple-entity"></a>Basit varlık
 
-Basit bir varlık, tek bir kavramı açıklayan ve makine tarafından öğrenilen bağlamdan öğrenilmiş genel bir varlıktır. Basit varlıklar genellikle şirket adları, ürün adları veya diğer ad kategorileri gibi adlar olduğundan, kullanılan adların sinyalini artırmak için basit bir varlık kullanırken bir [tümcecik listesi](luis-concept-feature.md) ekleyin.
+Basit bir varlık, tek bir kavramı açıklayan ve makine öğrenimi bağlamından öğrenilmiş genel bir varlıktır. Basit varlıklar genellikle şirket adları, ürün adları veya diğer ad kategorileri gibi adlar olduğundan, kullanılan adların sinyalini artırmak için basit bir varlık kullanırken bir [tümcecik listesi](luis-concept-feature.md) ekleyin.
 
 **Varlık, şu durumlarda iyi bir uyum:**
 
@@ -31,7 +31,7 @@ Basit bir varlık, tek bir kavramı açıklayan ve makine tarafından öğrenile
 
 `Bob Jones wants 3 meatball pho`
 
-Önceki deymede `Bob Jones` basit `Customer` bir varlık olarak etiketlendi.
+Önceki deymede `Bob Jones` basit bir varlık olarak etiketlendi `Customer` .
 
 Uç noktadan döndürülen veriler varlık adını, utterance 'teki bulunan metni, bulunan metnin konumunu ve puanı içerir:
 
@@ -51,7 +51,7 @@ Uç noktadan döndürülen veriler varlık adını, utterance 'teki bulunan metn
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Bu, sorgu dizesinde ayarlandıysa `verbose=false` JSON 'dir:
+Bu, `verbose=false` sorgu dizesinde AYARLANDıYSA JSON 'dir:
 
 ```json
 "entities": {

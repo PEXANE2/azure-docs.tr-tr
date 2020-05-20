@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1084be9a63e023257326de824ea200dcc1be74d9
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275574"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684637"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de Azure ağ izleme çözümleri
 
@@ -150,7 +150,7 @@ Aşağıdaki Günlükler ağ güvenlik grupları için desteklenir:
 ### <a name="install-and-configure-the-solution"></a>Çözümü yükleyip yapılandırma
 Azure ağ analizi çözümünü yüklemek ve yapılandırmak için aşağıdaki yönergeleri kullanın:
 
-1. Azure ağ güvenlik grubu Analizi çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) 'nden veya [Çözüm Galerisi Azure izleyici çözümlerini ekleme](../../azure-monitor/insights/solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
+1. [Çözüm Galerisi Azure izleyici çözümlerini ekleme](../../azure-monitor/insights/solutions.md)bölümünde açıklanan Işlemi kullanarak Azure ağ güvenlik grubu Analizi çözümünü etkinleştirin.
 2. İzlemek istediğiniz [ağ güvenlik grubu](../../virtual-network/virtual-network-nsg-manage-log.md) kaynakları için tanılama günlüğünü etkinleştirin.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Portalda Azure ağ güvenlik grubu tanılamayı etkinleştirme
@@ -218,8 +218,8 @@ Güncelleştirilmiş çözümleri kullanmak için:
      | NetworkAdapter = = "ApplicationGatewayPerformance" olduğunda Networkapplicationgateway 'ler &#124; | AzureDiagnostics &#124; WHERE ResourceType = = "APPLICATIONGATEWAY" ve OperationName = = "ApplicationGatewayPerformance" |
      | NetworkSecuritygroups | AzureDiagnostics &#124; WHERE ResourceType = = "NETWORKSECURITYGROUPS" |
 
-   + Adında \_s, \_d veya \_g sonekine sahip olan her alan için, ilk karakteri küçük harf olarak değiştirin
-   + Adında \_o soneki olan herhangi bir alan için, veriler iç içe geçmiş alan adlarına göre tek tek alanlara bölünür.
+   + \_Adında s, d veya g sonekine sahip olan her alan için \_ \_ , ilk karakteri küçük harf olarak değiştirin
+   + Adında o soneki olan herhangi bir alan için \_ , veriler iç içe geçmiş alan adlarına göre tek tek alanlara bölünür.
 4. *Azure Ağ Analizi (kullanım dışı)* çözümünü kaldırın.
    + PowerShell kullanıyorsanız, şunu kullanın`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 

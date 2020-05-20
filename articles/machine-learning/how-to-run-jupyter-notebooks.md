@@ -1,5 +1,5 @@
 ---
-title: Çalışma alanınızda Jupyıter not defterlerini çalıştırma
+title: Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning Studio 'da çalışma alanınızdan çıkmadan Jupyter Notebook nasıl çalıştıracağınızı öğrenin.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 67da2cb31d59838bb3ad2b964530d85d8be9be4c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 96e37afd8bf7d59eef4a4c0c831f535faa36d34d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783662"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681451"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyıter not defterlerini çalıştırma
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Jupyıter not defterlerinizi Azure Machine Learning Studio 'daki çalışma alanınızda doğrudan çalıştırmayı öğrenin. [Jupi](https://jupyter.org/) veya [Jupyıterlab](https://jupyterlab.readthedocs.io)'ı başlatabilmeniz sırasında, çalışma alanından çıkmadan not defterlerinizi düzenleyebilir ve çalıştırabilirsiniz.
@@ -29,7 +29,7 @@ Nasıl kullanabileceğinizi öğrenin:
 * Not defteri ortamını değiştirme
 * Not defterlerinizi çalıştırmak için kullanılan işlem örneklerinin ayrıntılarını bulun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
 * Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
@@ -62,7 +62,7 @@ Ayrıca, Not defterleri sayfasının en üstünde bulunan araçlarla Not defterl
 
 Bir örnek için bkz. [öğretici: Ilk ml denemenize oluşturma](tutorial-1st-experiment-sdk-setup.md#azure).
 
-### <a name="a-nameterminal-use-files-from-git-and-version-my-files"></a><a name="terminal">Git ve sürüm dosyalarımı dosyaları kullan
+### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a>Git ve sürüm dosyalarımı dosyaları kullan
 
 Tüm git işlemlerine, bir Terminal penceresi kullanarak erişebilirsiniz. Tüm git dosyaları ve klasörleri, çalışma alanı dosya sisteminizde depolanacak.
 
@@ -123,7 +123,7 @@ Ayrıca, Not defteri araç çubuğundan Jupyter veya JupyterLab ' i de başlatab
 
 Bir not defterinden deneme çalıştırmak için önce çalışan bir [işlem örneğine](concept-compute-instance.md)bağlanırsınız. İşlem örneğiniz yoksa, oluşturmak için aşağıdaki adımları kullanın: 
 
-1. Not **+** defteri araç çubuğundan öğesini seçin. 
+1. **+** Not defteri araç çubuğundan öğesini seçin. 
 2. Işlem adını adlandırın ve bir **sanal makine boyutu**seçin. 
 3. **Oluştur**’u seçin.
 4. İşlem örneği not defterine otomatik olarak bağlanır ve artık hücrelerden çalıştırabilirsiniz.
@@ -161,7 +161,7 @@ Not defteri, bağlı işlem örneğinde yüklü olan tüm Jupyter çekirdekler '
 
 1. Not defteri araç çubuğunda [**Terminal aç**](#terminal) ' ı seçin.
 1. Yeni bir ortam oluşturmak için Terminal penceresini kullanın.
-1. Ortamı etkinleştirin.  Örneğin, oluşturduktan sonra `newenv`:
+1. Ortamı etkinleştirin.  Örneğin, oluşturduktan sonra `newenv` :
 
     ```shell
     source activate newenv

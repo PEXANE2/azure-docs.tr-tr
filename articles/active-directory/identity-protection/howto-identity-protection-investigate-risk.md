@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23105a78e2ba34cf6a45f749ebfdd6b034ebf0dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253487"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680151"
 ---
 # <a name="how-to-investigate-risk"></a>Nasıl yapılır: riski araştırma
 
@@ -26,7 +26,7 @@ Tüm üç rapor, içindeki olayların indirilemelerine izin verir. Azure portal 
 
 Kuruluşlar, verileri bir kuruluş olarak erişimi olabilecek diğer kaynaklarla toplamak için Microsoft Graph API tümleştirmelerinden yararlanabilir.
 
-**Azure Portal** > **Azure Active Directory**Azure Active Directory > **güvenlik**bölümünde üç rapor bulunur.
+**Azure Portal**  >  **Azure Active Directory**  >  **güvenlik**bölümünde üç rapor bulunur.
 
 ## <a name="navigating-the-reports"></a>Raporlarda gezinme
 
@@ -74,6 +74,9 @@ Yöneticiler daha sonra bu olaylar üzerinde işlem yapmak için seçim yapabili
 
 - Oturum açma güvenliğini Onayla
 - Oturum açmayı güvenli Onayla
+
+> [!NOTE] 
+> Kimlik koruması, ister etkileşimli ister etkileşimli olsun, tüm kimlik doğrulama akışları için risk değerlendirir. Ancak, oturum açma raporu yalnızca etkileşimli oturum açma işlemlerini gösterir. Etkileşimli olmayan oturum açma işlemleri üzerinde gerçekleşen riskli oturum açma işlemlerini görebilirsiniz, ancak oturum açma, Azure AD oturum açma işlemleri raporunda gösterilmez.
 
 ## <a name="risk-detections"></a>Risk algılamaları
 

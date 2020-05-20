@@ -8,24 +8,72 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/08/2020
+ms.date: 05/19/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: e8c7ec6cf1d15e414a6db54d5bc2ad7e4994cd82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 346d5560d8388c8958e94efd4e149f54eb0235b7
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991305"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681778"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft kimlik platformu videoları
 
 Modern kimlik doğrulaması, Microsoft Identity platformu ve Microsoft kimlik doğrulama kitaplıkları (MSAL) hakkında temel bilgileri öğrenin.
 
+## <a name="microsoft-identity-platform-for-developers"></a>Geliştiriciler için Microsoft Identity platform
+
+Geliştiricilerin video serisi *kimliği* , uygulamanıza kimlik desteği eklemeye başlamak için bilmeniz gereken tek bir odaklanmaktadır. Platformun temel yönleri ve kimlik doğrulama kitaplıklarının nasıl kullanılacağı için ayarlanan bu, herhangi bir geliştirici için başlamak üzere iyi bir yerdir.
+___
+
+:::row:::
+    :::column:::
+        1-geliştiriciler için Microsoft Identity platform 'a genel bakış (33:55)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/zjezqZPPOfc]
+    :::column-end:::
+     :::column:::
+        2-Microsoft Identity platform (29:09) ile uygulamalarınızın kullanıcılarının kimliğini doğrulama
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/Mtpx_lpfRLs]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        3-Microsoft Identity platformunun izinleri ve onay çerçevesi (45:08)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/toAWRNqqDL4]
+    :::column-end:::
+    :::column:::
+        4-Microsoft Identity platformunu kullanarak API 'Leri koruma (33:17)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/IIQ7QW4bYqA]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        5-Microsoft Identity platformunda uygulama rolleri ve güvenlik grupları (15:52)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/-BK2iBDrmNo]
+    :::column-end:::
+    :::column:::
+        <!-- BLANK TITLE CELL -->
+    :::column-end:::
+    :::column:::
+        <!-- BLANK VIDEO CELL -->
+    :::column-end:::
+:::row-end:::
+
 ## <a name="authentication-fundamentals"></a>Kimlik doğrulama temelleri
 
-Kimlik sağlayıcıları, güvenlik belirteçleri, talepler ve hedef kitle gibi kavramlardan yeni başladıysanız, bu video serisi başlamak için iyi bir yerdir.
+Kimlik sağlayıcıları, güvenlik belirteçleri, talepler ve hedef kitle gibi kavramlardan yeni başladıysanız, bu video serisi modern kimlik doğrulamasında kavramların ve bileşenlerin temizlenme konusunda yardımcı olabilir.
 ___
 
 :::row:::

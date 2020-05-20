@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686401"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683308"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Eşleme veri akışında Özet dönüştürme
 
@@ -27,7 +27,7 @@ Tek bir sütunun benzersiz satır değerlerinden birden çok sütun oluşturmak 
 
 ### <a name="group-by"></a>Gruplandırma ölçütü:
 
-![Seçeneklere göre gruplandırma](media/data-flow/pivot2.png "[Gruplandırma ölçütü seçenekleri")
+![Seçeneklere göre gruplandırma](media/data-flow/pivot2.png "Seçeneklere göre gruplandırma")
 
 Özetleme sütunlarının toplanacak sütunları seçin. Çıkış verileri, aynı grupla birlikte tüm satırları tek bir satırda gruplar. Özetleme sütununda gerçekleştirilen toplama her bir grup üzerinde gerçekleşir.
 
@@ -63,7 +63,7 @@ Aşağıdaki yardım grafiğinde farklı Özet bileşenlerinin birbirleriyle nas
 
 Özet anahtar yapılandırmasında hiçbir değer belirtilmemişse, özetleme sütunları çalışma zamanında dinamik olarak oluşturulur. Özetleme sütunlarının sayısı, Özet sütun sayısıyla çarpılarak benzersiz Özet anahtar değerleri sayısına eşit olacaktır. Bu değişen bir sayı olabilir, bu durumda, UX sütun meta verilerini **İnceleme** sekmesinde görüntülemez ve sütun yayma olmaz. Bu sütunları dönüştürmek için veri akışının eşlenmesinin [sütun deseninin](concepts-data-flow-column-pattern.md) yeteneklerini kullanın. 
 
-Belirli Özet anahtar değerleri ayarlandıysa, özetleme sütunları meta verilerde görüntülenir. e sütun adları, Inceleme ve havuz eşlemesinde sizin için kullanılabilir olacaktır.
+Belirli Özet anahtar değerleri ayarlandıysa, özetleme sütunları meta verilerde görüntülenir. Sütun adları, Inceleme ve havuz eşlemesinde sizin için kullanılabilir olacaktır.
 
 ### <a name="generate-metadata-from-drifted-columns"></a>Düzeltebilecekler sütunlarından meta veriler oluşturma
 
@@ -73,7 +73,7 @@ Pivot, satır değerlerine göre dinamik olarak yeni sütun adları oluşturur. 
 
 ### <a name="sinking-pivoted-columns"></a>Özetlenen sütunları dök
 
-Özetleme sütunları dinamik olsa da, yine de hedef veri deponuza yazılabilir. Havuz ayarlarınızda **şema Drçıkmasına Izin ver** 'i etkinleştirin. Bu, meta verilerde bulunmayan sütunları yazmanıza izin verir. sütun meta verilerinizi, ancak şema DRFT seçeneği, verileri Land kullanmanıza olanak sağlayacak.
+Özetleme sütunları dinamik olsa da, yine de hedef veri deponuza yazılabilir. Havuz ayarlarınızda **şema Drçıkmasına Izin ver** 'i etkinleştirin. Bu, meta verilerde bulunmayan sütunları yazmanıza izin verir. Sütun meta verilerinizde yeni dinamik adlar görmezsiniz, ancak şema DRFT seçeneği, verileri Land kullanmanıza olanak sağlayacak.
 
 ### <a name="rejoin-original-fields"></a>Özgün alanları yeniden katıl
 
@@ -81,7 +81,7 @@ Pivot, satır değerlerine göre dinamik olarak yeni sütun adları oluşturur. 
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Söz dizimi
 
 ```
 <incomingStreamName>

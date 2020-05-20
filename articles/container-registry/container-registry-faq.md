@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 39b543c5f886b22d488198873b75cf76555692fa
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 005c035468a4225f96e8ef69b2ef31a82bf7eedb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731653"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682818"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -51,7 +51,7 @@ Azure CLı kullanarak kimlik bilgilerini almak için:
 az acr credential show -n myRegistry
 ```
 
-Azure PowerShell 'i kullanma:
+Azure PowerShell kullanma:
 
 ```powershell
 Invoke-AzureRmResourceAction -Action listCredentials -ResourceType Microsoft.ContainerRegistry/registries -ResourceGroupName myResourceGroup -ResourceName myRegistry
@@ -109,7 +109,7 @@ Güvenlik duvarı kuralı değişikliklerinin yayılması biraz zaman alır. Gü
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Docker kayıt defteri HTTP API v2 'ye Nasıl yaparım? erişin?
 
-ACR, Docker kayıt defteri HTTP API v2 'YI destekler. API 'Lere ' de erişilebilir `https://<your registry login server>/v2/`. Örnek: `https://mycontainerregistry.azurecr.io/v2/`
+ACR, Docker kayıt defteri HTTP API v2 'YI destekler. API 'Lere ' de erişilebilir `https://<your registry login server>/v2/` . Örnek: `https://mycontainerregistry.azurecr.io/v2/`
 
 ### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>Bir depodaki herhangi bir etiket tarafından başvurulmayan tüm bildirimler silinsin mi Nasıl yaparım??
 
@@ -125,7 +125,7 @@ PowerShell için:
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
-Note: onayı atlamak için `-y` Sil komutuna ekleyebilirsiniz.
+Note: `-y` onayı atlamak için Sil komutuna ekleyebilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure Container Registry kapsayıcı görüntülerini silme](container-registry-delete.md).
 
@@ -170,7 +170,7 @@ Docker yuvasını bağlayarak Azure CLı kapsayıcısını çalıştırmanız ge
 docker run -it -v /var/run/docker.sock:/var/run/docker.sock azuresdk/azure-cli-python:dev
 ```
 
-Kapsayıcıda şunu yüklemesi `docker`:
+Kapsayıcıda şunu yüklemesi `docker` :
 
 ```bash
 apk --update add docker
@@ -196,16 +196,16 @@ Evet, [Docker noçi](https://docs.docker.com/notary/getting_started/) tümleşik
 
 ####  <a name="where-is-the-file-for-the-thumbprint-located"></a>Parmak izi dosyası nerede bulunur?
 
-Altında `~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`:
+Altında `~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata` :
 
-* Tüm rollerin ortak anahtarları ve sertifikaları (atama rolleri hariç) içinde depolanır `root.json`.
+* Tüm rollerin ortak anahtarları ve sertifikaları (atama rolleri hariç) içinde depolanır `root.json` .
 * Ortak anahtarlar ve temsili rolünün sertifikaları, üst rolünün JSON dosyasında (örneğin `targets.json` , `targets/releases` rol için) depolanır.
 
 Bu ortak anahtarların ve sertifikaların, Docker ve Nodown istemcisi tarafından gerçekleştirilen genel olarak doğrulanması sonrasında doğrulanması önerilir.
 
 ### <a name="how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource"></a>Kayıt defteri kaynağını yönetme izni olmadan çekme veya gönderme görüntülerine erişim izni Nasıl yaparım? mı?
 
-ACR, farklı izin düzeyleri sağlayan [özel rolleri](container-registry-roles.md) destekler. Özellikle ve `AcrPull` `AcrPush` rolleri, kullanıcıların Azure 'daki kayıt defteri kaynağını yönetme izni olmadan resimleri çekmesini ve/veya gönderemelerine olanak tanır.
+ACR, farklı izin düzeyleri sağlayan [özel rolleri](container-registry-roles.md) destekler. Özellikle `AcrPull` ve `AcrPush` rolleri, kullanıcıların Azure 'daki kayıt defteri kaynağını yönetme izni olmadan resimleri çekmesini ve/veya gönderemelerine olanak tanır.
 
 * Azure portal: kayıt defteriniz > Access Control (ıAM)-> Add (rol seçin `AcrPull` `AcrPush` ).
 * Azure CLı: aşağıdaki komutu çalıştırarak kayıt defterinin kaynak KIMLIĞINI bulun:
@@ -214,7 +214,7 @@ ACR, farklı izin düzeyleri sağlayan [özel rolleri](container-registry-roles.
   az acr show -n myRegistry
   ```
   
-  Daha sonra bir kullanıcıya `AcrPull` veya `AcrPush` rolünü atayabilirsiniz (aşağıdaki örnekte kullanır `AcrPull`):
+  Daha sonra `AcrPull` `AcrPush` bir kullanıcıya veya rolünü atayabilirsiniz (aşağıdaki örnekte kullanır `AcrPull` ):
 
   ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
@@ -254,7 +254,7 @@ Görüntü karantina Şu anda ACR 'nin önizleme özelliğidir. Yalnızca güven
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>Anonim çekme erişimini etkinleştirmek Nasıl yaparım? istiyor musunuz?
 
-Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarlama Şu anda bir önizleme özelliğidir. Genel erişimi etkinleştirmek için lütfen adresinde https://aka.ms/acr/support/create-ticketbir destek bileti açın. Ayrıntılar için bkz. [Azure geri bildirim Forumu](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarlama Şu anda bir önizleme özelliğidir. Genel erişimi etkinleştirmek için lütfen adresinde bir destek bileti açın https://aka.ms/acr/support/create-ticket . Ayrıntılar için bkz. [Azure geri bildirim Forumu](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
 
 
 ## <a name="diagnostics-and-health-checks"></a>Tanılama ve durum denetimleri
@@ -278,8 +278,8 @@ Ortak ortam ve kayıt defteri sorunlarını gidermek için bkz. [Azure Container
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull hata vererek başarısız oldu: net/http: bağlantı beklenirken istek iptal edildi (üst bilgiler beklenirken Istemci. zaman aşımı aşıldı)
 
  - Bu hata geçici bir sorun ise, yeniden deneme başarılı olur.
- - Sürekli `docker pull` başarısız olursa Docker daemon ile ilgili bir sorun olabilir. Bu sorun genellikle Docker Daemon yeniden başlatılarak azaltılabilir. 
- - Docker Daemon 'ı yeniden başlattıktan sonra bu sorunu görmeye devam ederseniz, sorun makinede bazı ağ bağlantısı sorunları olabilir. Makinedeki genel ağın sağlıklı olup olmadığını denetlemek için uç nokta bağlantısını test etmek üzere aşağıdaki komutu çalıştırın. Bu bağlantı `az acr` denetimi komutunu içeren en düşük sürüm 2.2.9 ' dir. Daha eski bir sürüm kullanıyorsanız Azure CLı 'nizi yükseltin.
+ - `docker pull`Sürekli başarısız olursa Docker daemon ile ilgili bir sorun olabilir. Bu sorun genellikle Docker Daemon yeniden başlatılarak azaltılabilir. 
+ - Docker Daemon 'ı yeniden başlattıktan sonra bu sorunu görmeye devam ederseniz, sorun makinede bazı ağ bağlantısı sorunları olabilir. Makinedeki genel ağın sağlıklı olup olmadığını denetlemek için uç nokta bağlantısını test etmek üzere aşağıdaki komutu çalıştırın. `az acr`Bu bağlantı denetimi komutunu içeren en düşük sürüm 2.2.9 ' dir. Daha eski bir sürüm kullanıyorsanız Azure CLı 'nizi yükseltin.
  
   ```azurecli
   az acr check-health -n myRegistry
@@ -295,7 +295,7 @@ Makine ağ yükleme hızınızı sınamak için [Bu](http://www.azurespeed.com/A
 
 ### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>Docker Push başarılı oldu, ancak docker pull hata vererek başarısız oluyor: kimlik doğrulaması gerekli
 
-Bu hata, varsayılan olarak etkin olan Docker Daemon `--signature-verification` 'ın Red Hat sürümünde ortaya çıkabilir. Aşağıdaki komutu çalıştırarak Red Hat Enterprise Linux (RHEL) veya Fedora için Docker Daemon seçeneklerini kontrol edebilirsiniz:
+Bu hata, varsayılan olarak etkin olan Docker Daemon 'ın Red Hat sürümünde ortaya çıkabilir `--signature-verification` . Aşağıdaki komutu çalıştırarak Red Hat Enterprise Linux (RHEL) veya Fedora için Docker Daemon seçeneklerini kontrol edebilirsiniz:
 
 ```bash
 grep OPTIONS /etc/sysconfig/docker
@@ -305,7 +305,7 @@ grep OPTIONS /etc/sysconfig/docker
 
 `OPTIONS='--selinux-enabled --log-driver=journald --live-restore'`
 
-Eksik `--signature-verification=false` ile şuna `docker pull` benzer bir hata ile başarısız olur:
+`--signature-verification=false`Eksik ile `docker pull` Şuna benzer bir hata ile başarısız olur:
 
 ```output
 Trying to pull repository myregistry.azurecr.io/myimage ...
@@ -313,7 +313,7 @@ unauthorized: authentication required
 ```
 
 Hatayı gidermek için:
-1. Docker Daemon `--signature-verification=false` yapılandırma dosyasına `/etc/sysconfig/docker`seçeneğini ekleyin. Örneğin:
+1. `--signature-verification=false`Docker Daemon yapılandırma dosyasına seçeneğini ekleyin `/etc/sysconfig/docker` . Örnek:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -323,15 +323,15 @@ Hatayı gidermek için:
    sudo systemctl restart docker.service
    ```
 
-`--signature-verification` Ayrıntıları çalıştırılarak `man dockerd`bulunabilir.
+Ayrıntıları `--signature-verification` çalıştırılarak bulunabilir `man dockerd` .
 
 ### <a name="az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required"></a>az ACR oturum açma işlemi başarılı ancak Docker şu hatayla başarısız oldu: kimlik doğrulaması gerekli
 
-Örneğin `docker push myregistry.azurecr.io/myimage:latest`, kayıt defteri kaynak adı büyük harfle veya karışık durumda olsa bile, tüm küçük harfli sunucu URL 'sini kullandığınızdan emin olun `myRegistry`.
+Örneğin, `docker push myregistry.azurecr.io/myimage:latest` kayıt defteri kaynak adı büyük harfle veya karışık durumda olsa bile, tüm küçük harfli sunucu URL 'sini kullandığınızdan emin olun `myRegistry` .
 
 ### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Docker Daemon 'un hata ayıklama günlüklerini etkinleştirin ve alın    
 
-`debug` Seçeneğiyle başlayın. `dockerd` İlk olarak, mevcut değilse Docker Daemon yapılandırma dosyasını`/etc/docker/daemon.json`() oluşturun ve şu `debug` seçeneği ekleyin:
+`dockerd` `debug` Seçeneğiyle başlayın. İlk olarak, mevcut değilse Docker Daemon yapılandırma dosyasını ( `/etc/docker/daemon.json` ) oluşturun ve şu `debug` seçeneği ekleyin:
 
 ```json
 {    
@@ -347,7 +347,7 @@ sudo service docker restart
 
 Ayrıntılar [Docker belgelerinde](https://docs.docker.com/engine/admin/#enable-debugging)bulunabilir.    
 
- * Günlükler, sisteminize bağlı olarak farklı konumlarda oluşturulabilir. Örneğin, Ubuntu 14,04 için bu `/var/log/upstart/docker.log`.    
+ * Günlükler, sisteminize bağlı olarak farklı konumlarda oluşturulabilir. Örneğin, Ubuntu 14,04 için bu `/var/log/upstart/docker.log` .    
 Ayrıntılar için bkz. [Docker belgeleri](https://docs.docker.com/engine/admin/#read-the-logs) .    
 
  * Docker for Windows için Günlükler% LOCALAPPDATA%/Docker/altında oluşturulur. Ancak, henüz tüm hata ayıklama bilgilerini içermeyebilir.    
@@ -360,21 +360,21 @@ Ayrıntılar için bkz. [Docker belgeleri](https://docs.docker.com/engine/admin/
     docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh
     chroot /host
     ```
-    Şimdi, çalıştıran `dockerd`VM 'nin tüm dosyalarına erişiminiz var. Günlük `/var/log/docker.log`.
+    Şimdi, çalıştıran VM 'nin tüm dosyalarına erişiminiz var `dockerd` . Günlük `/var/log/docker.log` .
 
 ### <a name="new-user-permissions-may-not-be-effective-immediately-after-updating"></a>Yeni Kullanıcı izinleri güncelleştirmeden hemen sonra etkili olmayabilir
 
 Bir hizmet sorumlusuna yeni izinler (yeni roller) verdiğinizde, değişiklik hemen etkili olmayabilir. Olası iki neden vardır:
 
 * Rol atama gecikmesi Azure Active Directory. Normalde hızlıdır, ancak yayma gecikmesi nedeniyle birkaç dakika sürebilir.
-* ACR belirteç sunucusu 'nda izin gecikmesi. Bu işlem 10 dakikaya kadar sürebilir. Azaltmak için, 1 dakika `docker logout` sonra aynı kullanıcıyla yeniden kimlik doğrulaması yapabilir ve sonra tekrar kimlik doğrulaması yapabilirsiniz:
+* ACR belirteç sunucusu 'nda izin gecikmesi. Bu işlem 10 dakikaya kadar sürebilir. Azaltmak için, `docker logout` 1 dakika sonra aynı kullanıcıyla yeniden kimlik doğrulaması yapabilir ve sonra tekrar kimlik doğrulaması yapabilirsiniz:
 
   ```bash
   docker logout myregistry.azurecr.io
   docker login myregistry.azurecr.io
   ```
 
-Şu anda ACR, kullanıcılar tarafından giriş çoğaltmasını silmeyi desteklemez. Geçici çözüm, ana çoğaltma oluşturma işlemini şablona eklemek, ancak aşağıda gösterildiği gibi ekleyerek `"condition": false` oluşturmayı atlar:
+Şu anda ACR, kullanıcılar tarafından giriş çoğaltmasını silmeyi desteklemez. Geçici çözüm, ana çoğaltma oluşturma işlemini şablona eklemek, ancak `"condition": false` aşağıda gösterildiği gibi ekleyerek oluşturmayı atlar:
 
 ```json
 {
@@ -392,8 +392,8 @@ Bir hizmet sorumlusuna yeni izinler (yeni roller) verdiğinizde, değişiklik he
 
 ### <a name="authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls"></a>Kimlik doğrulama bilgileri doğrudan REST API çağrılarında doğru biçimde verilmez
 
-Özellikle `InvalidAuthenticationInfo` , ( `curl` `-L`yeniden `--location` yönlendirmeleri izlemek için) aracıyla birlikte kullanarak bir hatayla karşılaşabilirsiniz.
-Örneğin, WITH `-L` seçeneği ve temel kimlik `curl` doğrulaması kullanarak blobu getirme:
+`InvalidAuthenticationInfo`Özellikle, `curl` `-L` `--location` (yeniden yönlendirmeleri izlemek için) aracıyla birlikte kullanarak bir hatayla karşılaşabilirsiniz.
+Örneğin, `curl` WITH `-L` seçeneği ve temel kimlik doğrulaması kullanarak blobu getirme:
 
 ```bash
 curl -L -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest
@@ -426,22 +426,22 @@ Microsoft Edge/IE tarayıcısı kullanıyorsanız, en fazla 100 depo veya etiket
 Tarayıcı, sunucuya depo veya etiket getirme isteğini gönderemeyebilir. Şöyle çeşitli nedenlerle şunlar olabilir:
 
 * Ağ bağlantısı olmaması
-* Güvenlik duvarı
+* Güvenlik Duvarı
 * Ad engelleyiciler
 * DNS hataları
 
-Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantınızı kontrol edin. Ortamınızın Container Registry `az acr check-health -n yourRegistry` bağlanıp bağlanamadıysanız emin olmak IÇIN Azure CLI 'nizi kullanarak çalıştırmayı deneyin. Ayrıca, eski tarayıcı önbelleğinizi veya tanımlama bilgilerini önlemek için tarayıcınızda bir veya özel oturum da deneyebilirsiniz.
+Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantınızı kontrol edin. `az acr check-health -n yourRegistry`Ortamınızın Container Registry bağlanıp bağlanamadıysanız emin olmak Için Azure CLI 'nizi kullanarak çalıştırmayı deneyin. Ayrıca, eski tarayıcı önbelleğinizi veya tanımlama bilgilerini önlemek için tarayıcınızda bir veya özel oturum da deneyebilirsiniz.
 
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Neden çekme veya gönderim isteği izin verilmeyen işlemle başarısız oluyor?
 
 İşlemlere izin verilmeyen bazı senaryolar aşağıda verilmiştir:
-* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) veya Azure Portal kullanarak desteklenen bir [SKU](https://aka.ms/acr/skus) 'ya yükseltin.
+* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) veya Azure Portal kullanarak desteklenen bir [hizmet katmanına](https://aka.ms/acr/skus) yükseltin.
 * Resim veya depo silinemeyebilir veya güncelleştirilemeyebilir. Geçerli öznitelikleri görüntülemek için [az ACR Show Repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) komutunu kullanabilirsiniz.
 * Görüntü karantinaya alındı ise bazı işlemlere izin verilmez. [Karantina](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)hakkında daha fazla bilgi edinin.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 - Fiddler 'da https şifresini çözmeyi etkinleştir:<https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Docker Kullanıcı arabirimi aracılığıyla bir proxy kullanmak için Docker 'ı etkinleştirin:<https://docs.docker.com/docker-for-windows/#proxies>
@@ -479,11 +479,11 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 ### <a name="how-do-i-include-the-git-folder-in-az-acr-build-command"></a>Az ACR Build komutuna. git klasörünü dahil Nasıl yaparım?.
 
-`az acr build` Komutuna bir yerel kaynak klasörü geçirirseniz, `.git` klasör varsayılan olarak karşıya yüklenen paketten çıkarılır. Aşağıdaki ayarla bir `.dockerignore` dosya oluşturabilirsiniz. Komuta karşıya yüklenen paketteki tüm dosyaları `.git` geri yüklemesini söyler. 
+Komutuna bir yerel kaynak klasörü geçirirseniz `az acr build` , `.git` klasör varsayılan olarak karşıya yüklenen paketten çıkarılır. `.dockerignore`Aşağıdaki ayarla bir dosya oluşturabilirsiniz. Komuta karşıya yüklenen paketteki tüm dosyaları geri yüklemesini söyler `.git` . 
 
 `!.git/**`
 
-Bu ayar `az acr run` komut için de geçerlidir.
+Bu ayar komut için de geçerlidir `az acr run` .
 
 ### <a name="does-tasks-support-gitlab-for-source-triggers"></a>Görevler kaynak Tetikleyicileri için GitLab destekliyor mu?
 
@@ -502,7 +502,7 @@ Bu ayar `az acr run` komut için de geçerlidir.
 
 | Hata iletisi | Sorun giderme kılavuzu |
 |---|---|
-|VM için erişim yapılandırılmadı, bu nedenle abonelik bulunamadı|ACR görevinde kullanıyorsanız `az login --identity` bu durum oluşabilir. Bu geçici bir hatadır ve yönetilen kimliğinizin rol ataması yayılmamışsa oluşur. Yeniden denemeden önce birkaç saniye bekleniyor.|
+|VM için erişim yapılandırılmadı, bu nedenle abonelik bulunamadı|ACR görevinde kullanıyorsanız bu durum oluşabilir `az login --identity` . Bu geçici bir hatadır ve yönetilen kimliğinizin rol ataması yayılmamışsa oluşur. Yeniden denemeden önce birkaç saniye bekleniyor.|
 
 ## <a name="cicd-integration"></a>CI/CD tümleştirmesi
 

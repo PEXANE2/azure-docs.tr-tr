@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.openlocfilehash: 40b1b8d040c4b3ea76372920f88551fba35c5f26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: 01a4cd172b699cef009197d1fce1d5bae62f2925
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419451"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680644"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Görsel olarak izleme Azure Data Factory
 
@@ -132,6 +132,21 @@ Ayrıca, belirli bir işlem hattı çalıştırması için yeniden çalıştırm
 
 ![İşlem hattı çalıştırmasının geçmişini görüntüleme](media/monitor-visually/rerun-history-image2.png)
 
+## <a name="monitor-consumption"></a>Tüketimi izleme
+
+Bir işlem hattı çalıştırması tarafından tüketilen kaynakları, çalıştırmanın yanındaki tüketim simgesine tıklayarak görebilirsiniz. 
+
+![Tüketimi izleme](media/monitor-visually/monitor-consumption-1.png)
+
+Simgeye tıkladığınızda, bu işlem hattı çalıştırması tarafından kullanılan kaynakların tüketim raporu açılır. 
+
+![Tüketimi izleme](media/monitor-visually/monitor-consumption-2.png)
+
+Bu değerleri [Azure fiyatlandırması Calcula. hat işlem hattı çalıştırmasına ekleyebilirsiniz. Azure Data Factory fiyatlandırması hakkında daha fazla bilgi için bkz. [fiyatlandırmayı anlama](pricing-concepts.md).
+
+> [!NOTE]
+> Fiyatlandırma Hesaplayıcı tarafından döndürülen bu değerler bir tahmindir. Azure Data Factory, faturalandırılacaksınız tam miktarı yansıtmaz 
+
 ## <a name="gantt-views"></a>Gantt görünümleri
 
 Ardışık düzenleri ve etkinlik çalıştırmalarını hızlıca görselleştirmek için Gantt görünümlerini kullanın.
@@ -153,7 +168,7 @@ Sol alt köşedeki **bilgi** simgesini seçin. Ardından, işlem hattınızı ve
 
 ## <a name="alerts"></a>Uyarılar
 
-Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak için Data Factory izleme sayfasında,**uyarıları & ölçümleri** **izleyin** > ' ı seçin.
+Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak **Monitor**  >  için Data Factory izleme sayfasında,**uyarıları & ölçümleri** izleyin ' ı seçin.
 
 ![Data Factory Izleyici sayfası](media/monitor-visually/alerts01.png)
 

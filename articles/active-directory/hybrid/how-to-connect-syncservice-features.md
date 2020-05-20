@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b23c2b81d281f787914e32818d768d2d531537f4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80983084"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682220"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect eşitleme hizmeti özellikleri
 
@@ -34,14 +34,14 @@ Bu konu, **Azure AD Connect eşitleme hizmetinin** aşağıdaki özelliklerinin 
 
 Bu ayarlar, [Windows PowerShell için Azure Active Directory modülü](https://aka.ms/aadposh)tarafından yapılandırılır. Azure AD Connect 'den ayrı olarak indirin ve yükleyin. Bu konuda belgelenen cmdlet 'ler [2016 Mart sürümünde (derleme 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1)sunulmuştur. Bu konu başlığında belgelenmeyen cmdlet 'ler yoksa veya aynı sonucu üretmedikleri takdirde, en son sürümü çalıştırdığınızdan emin olun.
 
-Azure AD dizininizde yapılandırmayı görmek için çalıştırın `Get-MsolDirSyncFeatures`.  
+Azure AD dizininizde yapılandırmayı görmek için çalıştırın `Get-MsolDirSyncFeatures` .  
 ![Get-MsolDirSyncFeatures sonucu](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
 
 Bu ayarların birçoğu yalnızca Azure AD Connect ile değiştirilebilir.
 
-Aşağıdaki ayarlar tarafından `Set-MsolDirSyncFeature`yapılandırılabilir:
+Aşağıdaki ayarlar tarafından yapılandırılabilir `Set-MsolDirSyncFeature` :
 
-| DirSyncFeature | Açıklama |
+| DirSyncFeature | Yorum |
 | --- | --- |
 | [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |Birincil SMTP adresinin yanı sıra, nesnelerin userPrincipalName öğesine katılmasına izin verir. |
 | [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Eşitleme altyapısının yönetilen/lisanslanmış (Federe olmayan) kullanıcılar için userPrincipalName özniteliğini güncelleştirmesine izin verir. |
@@ -53,16 +53,16 @@ Bir özellik etkinleştirildikten sonra yeniden devre dışı bırakılamaz.
 > 
 > 
 
-Aşağıdaki ayarlar Azure AD Connect tarafından yapılandırılır ve şu şekilde değiştirilemez `Set-MsolDirSyncFeature`:
+Aşağıdaki ayarlar Azure AD Connect tarafından yapılandırılır ve şu şekilde değiştirilemez `Set-MsolDirSyncFeature` :
 
-| DirSyncFeature | Açıklama |
+| DirSyncFeature | Yorum |
 | --- | --- |
 | Devicegeri yazma |[Azure AD Connect: cihaz geri yazmayı etkinleştirme](how-to-connect-device-writeback.md) |
 | DirectoryExtensions |[Eşitleme Azure AD Connect: Dizin uzantıları](how-to-connect-sync-feature-directory-extensions.md) |
-| [DuplicateProxyAddressResiliency<br/>duplicateupnresiliency](#duplicate-attribute-resiliency) |Bir özniteliğin dışarı aktarma sırasında tüm nesnenin başarısız olması yerine başka bir nesnenin yinelemesi olduğunda karantinaya almasına izin verir. |
+| [DuplicateProxyAddressResiliency <br/> duplicateupnresiliency](#duplicate-attribute-resiliency) |Bir özniteliğin dışarı aktarma sırasında tüm nesnenin başarısız olması yerine başka bir nesnenin yinelemesi olduğunda karantinaya almasına izin verir. |
 | Parola Karması Eşitleme |[Azure AD Connect Sync ile parola karması eşitlemesi uygulama](how-to-connect-password-hash-synchronization.md) |
 |Doğrudan Kimlik Doğrulama|[Azure Active Directory Geçişli Kimlik Doğrulaması ile kullanıcı oturumu açma](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[Önizleme: Grup geri yazma](how-to-connect-preview.md#group-writeback) |
+| UnifiedGroupWriteback |Grup geri yazma|
 | Usergeri yazma |Şu anda desteklenmiyor. |
 
 ## <a name="duplicate-attribute-resiliency"></a>Yinelenen öznitelik dayanıklılığı

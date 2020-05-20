@@ -4,14 +4,14 @@ description: Azure Cosmos DB Tablo API'si oluşturmak ve yapılandırmak için A
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: d1675e6827f3684785d11ef6b081f166267a8283
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 5e4e514a8d39679e5a1d07b0ea7100cf4837072e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791196"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684768"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB Tablo API'si kaynaklarını yönetme
 
@@ -36,17 +36,17 @@ Aşağıdaki Azure Cosmos DB kaynaklarından herhangi birini oluşturmak için a
 
 Bu şablon, otomatik ölçeklendirme işleme içeren bir tabloyla Tablo API'si için bir Azure Cosmos hesabı oluşturur. Bu şablon, Azure hızlı başlangıç şablonları galerisinden tek tıklamayla dağıtım için de kullanılabilir.
 
-[![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table-autoscale%2Fazuredeploy.json)
+[![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table-autoscale%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-table-autoscale/azuredeploy.json":::
 
 <a id="create-manual"></a>
 
-## <a name="azure-cosmos-account-for-table-with-standard-manual-throughput"></a>Standart (el ile) aktarım hızı içeren tablo için Azure Cosmos hesabı
+## <a name="azure-cosmos-account-for-table-with-standard-provisioned-throughput"></a>Standart sağlanan aktarım hızı içeren tablo için Azure Cosmos hesabı
 
 Bu şablon, standart işleme sahip bir tabloyla Tablo API'si için bir Azure Cosmos hesabı oluşturur. Bu şablon, Azure hızlı başlangıç şablonları galerisinden tek tıklamayla dağıtım için de kullanılabilir.
 
-[![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table%2Fazuredeploy.json)
+[![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-table/azuredeploy.json":::
 

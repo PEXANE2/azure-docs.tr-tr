@@ -4,14 +4,14 @@ description: Azure Cosmos DB Cassandra API oluşturmak ve yapılandırmak için 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: f16dec74b15f4945b54fe1423835fd8f5c8d96f1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 630c965eadf17e21c75e1bd180fec4496df830e2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791281"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684831"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB Cassandra API kaynaklarını yönetme
 
@@ -33,17 +33,17 @@ Aşağıdaki Azure Cosmos DB kaynaklarından herhangi birini oluşturmak için a
 
 Bu şablon, otomatik ölçeklendirme üretilen iş için yapılandırılmış bir anahtar alanı ve tablo ile, tutarlılık ve yük devretme seçenekleriyle iki bölgede bir Azure Cosmos hesabı oluşturur. Bu şablon, Azure hızlı başlangıç şablonları galerisinden tek tıklamayla dağıtım için de kullanılabilir.
 
-[![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra-autosscale%2Fazuredeploy.json)
+[![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra-autoscale%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra-autoscale/azuredeploy.json":::
 
 <a id="create-manual"></a>
 
-## <a name="azure-cosmos-account-for-cassandra-with-standard-manual-provisioned-throughput"></a>Standart (el ile) sağlanan aktarım hızı ile Cassandra için Azure Cosmos hesabı
+## <a name="azure-cosmos-account-for-cassandra-with-standard-provisioned-throughput"></a>Standart sağlanan aktarım hızı ile Cassandra için Azure Cosmos hesabı
 
 Bu şablon, standart üretilen iş için yapılandırılmış bir anahtar uzayı ve tablo ile, tutarlılık ve yük devretme seçenekleriyle iki bölgede bir Azure Cosmos hesabı oluşturur. Bu şablon, Azure hızlı başlangıç şablonları galerisinden tek tıklamayla dağıtım için de kullanılabilir.
 
-[![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra%2Fazuredeploy.json)
+[![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json":::
 

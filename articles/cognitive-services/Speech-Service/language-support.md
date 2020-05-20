@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3fe1b999fbdc03157778a1329e05e8c342183528
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 28c5c1258c0733cd23f7c4ad3c901360461d5bdc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587383"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682146"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -24,7 +24,7 @@ Dil desteği, konuşma hizmeti işlevselliğine göre farklılık gösterir. Aş
 
 ## <a name="speech-to-text"></a>Konuşmayı metne dönüştürme
 
-Hem Microsoft konuşma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. Doğruluğu artırmak için, bir dilin bir alt kümesi için, ses + ınsan etiketli yazılı döküm veya Ilgili metin: cümleler karşıya yüklenirken özelleştirme sunulur. Telaffuz özelleştirmesi Şu anda yalnızca ve için kullanılabilir `en-US` `de-DE` . [Özelleştirme hakkında](how-to-custom-speech.md)daha fazla bilgi edinin.
+Hem Microsoft konuşma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. Doğruluğu artırmak için, bir dilin bir alt kümesi için, ses + ınsan etiketli yazılı döküm veya Ilgili metin: cümleler karşıya yüklenirken özelleştirme sunulur. Telaffuz özelleştirmesi Ilgili metnin karşıya yüklenmesi ile sunulmaktadır: telaffuz. [Özelleştirme hakkında](how-to-custom-speech.md)daha fazla bilgi edinin.
 
 <!--
 To get the AM and ML bits:
@@ -39,7 +39,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-AE` | Arapça (UAE)                      | Yes       | Hayır                                                |
 | `ar-BH` | Arapça (Bahreyn), modern standart | Yes       | Dil modeli                                    |
 | `ar-EG` | Arapça (Mısır)                    | Yes       | Dil modeli                                    |
+| `ar-IL` | Arapça (Israil)                   | Yes       | Hayır                                                |
 | `ar-KW` | Arapça (Kuveyt)                   | Yes       | Hayır                                                |
+| `ar-PS` | Arapça (Filistin Yönetimi)                | Yes       | Hayır                                                |
 | `ar-QA` | Arapça (Qtor)                    | Yes       | Hayır                                                |
 | `ar-SA` | Arapça (Suudi Arabistan)             | Yes       | Hayır                                                |
 | `ar-SY` | Arapça (Suriye)                    | Yes       | Dil modeli                                    |

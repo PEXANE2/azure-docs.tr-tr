@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 4b02039c86f43e6bebed58dfff475816f09a3da1
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890138"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679663"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure Bilişsel Arama benzerlik ve Puanlama
 
@@ -25,7 +25,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 
 Arama puanı değerleri, bir sonuç kümesi boyunca yinelenebilir. Birden çok isabetle aynı arama puanı varsa, aynı puanlanmış öğelerin sıralaması tanımlanmamıştır ve kararlı değildir. Sorguyu yeniden çalıştırın ve özellikle de ücretsiz hizmeti veya birden çok çoğaltmaya sahip faturalandırılabilir bir hizmeti kullanıyorsanız, öğelerin vardiya konumunu görebilirsiniz. Aynı puan ile iki öğe verildiğinde, ilk olarak bir tane görünecek garanti yoktur.
 
-Yinelenen puanlar arasındaki bağlamanın kesilmesini istiyorsanız, ilk sıraya puan olarak bir **$OrderBy** yan tümce ekleyebilir ve sonra başka bir sıralanabilir alana göre sıralama yapabilirsiniz (örneğin, `$orderby=search.score() desc,Rating desc`). Daha fazla bilgi için bkz. [$OrderBy](https://docs.microsoft.com/azure/search/search-query-odata-orderby).
+Yinelenen puanlar arasındaki bağlamanın kesilmesini istiyorsanız, ilk sıraya puan olarak bir **$OrderBy** yan tümce ekleyebilir ve sonra başka bir sıralanabilir alana göre sıralama yapabilirsiniz (örneğin, `$orderby=search.score() desc,Rating desc` ). Daha fazla bilgi için bkz. [$OrderBy](https://docs.microsoft.com/azure/search/search-query-odata-orderby).
 
 > [!NOTE]
 > Bir `@search.score = 1.00` puanlanmış veya derecelendirılmamış sonuç kümesini gösterir. Puan tüm sonuçlar genelinde tek bir değer. Puanlanmamış sonuçlar sorgu formu belirsiz arama, joker karakter veya Regex sorguları veya bir **$Filter** ifadesi olduğunda oluşur. 
@@ -36,7 +36,9 @@ Yinelenen puanlar arasındaki bağlamanın kesilmesini istiyorsanız, ilk sıray
 
 Puanlama profili, Dizin tanımının ağırlıklı alanlar, işlevler ve parametrelerden oluşan bir parçasıdır. Tanımlama hakkında daha fazla bilgi için bkz. [Puanlama profilleri](index-add-scoring-profiles.md).
 
-## <a name="scoring-statistics"></a>Puanlama istatistikleri
+<a name="scoring-statistics"></a>
+
+## <a name="scoring-statistics-and-sticky-sessions-preview"></a>Puanlama istatistikleri ve yapışkan oturumlar (Önizleme)
 
 Ölçeklenebilirlik için Azure Bilişsel Arama her dizini bir parçalama işlemi aracılığıyla yatay olarak dağıtır, bu da bir dizinin bölümlerinin fiziksel olarak ayrı olduğu anlamına gelir.
 
@@ -45,13 +47,21 @@ Varsayılan olarak, bir belgenin puanı *bir parça içindeki*verilerin istatist
 Puanı tüm parçalar genelinde istatistiksel özelliklere göre hesaplamak isterseniz, [sorgu parametresi](https://docs.microsoft.com/rest/api/searchservice/search-documents) olarak *scoringStatistics = Global* ekleyerek bunu yapabilirsiniz (veya *"scoringStatistics": "Global"* i [sorgu isteğinin](https://docs.microsoft.com/rest/api/searchservice/search-documents)gövde parametresi olarak ekleyebilirsiniz).
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
   Content-Type: application/json
-  api-key: [admin key]  
+  api-key: [admin or query key]  
 ```
+ScoringStatistics kullanmak, aynı çoğaltmadaki tüm parçaların aynı sonuçları sağlamasına emin olur. Yani, her zaman dizininizdeki en son değişikliklerle güncelleştirildiğinden farklı çoğaltmalar birbirinden biraz farklı olabilir. Bazı senaryolarda, kullanıcılarınızın "sorgu oturumu" sırasında daha tutarlı sonuçlar almasını isteyebilirsiniz. Bu senaryolarda, `sessionId` sorgularınızı bir parçası olarak sağlayabilirsiniz. , `sessionId` Benzersiz bir kullanıcı oturumuna başvurmak için oluşturduğunuz benzersiz bir dizedir.
+
+```http
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+  Content-Type: application/json
+  api-key: [admin or query key]  
+```
+Aynı şekilde `sessionId` kullanıldığında, kullanıcılarınızın göreceği sonuçların tutarlılığını artırarak aynı çoğaltmayı hedeflemek için bir en iyi çaba denemesi yapılır. 
 
 > [!NOTE]
-> `scoringStatistics` Parametresi için bir yönetici API anahtarı gereklidir.
+> Aynı `sessionId` değerleri tekrar tekrar kullanmak, isteklerin çoğaltmalar genelinde yük dengelenmesini etkileyebilir ve arama hizmetinin performansını olumsuz yönde etkileyebilir. SessionID olarak kullanılan değer bir ' _ ' karakteriyle başlayamaz.
 
 ## <a name="similarity-ranking-algorithms"></a>Benzerlik derecelendirme algoritmaları
 

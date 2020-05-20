@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3c917912e50c864f49abd5afcd28df4633702f0f
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 0eadb0f7ca6aad635d20148f63a204506a821d75
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993707"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681591"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -65,7 +65,7 @@ Sınıflandırma | Regresyon | Zaman Serileri Tahmini
 |[Ortalama Perceptron sınıflandırıcı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||Forekaletcn
 |[Doğrusal SVM Sınıflandırıcısı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
 
-Deneme türünü `task` belirtmek için `AutoMLConfig` oluşturucuda parametresini kullanın.
+`task` `AutoMLConfig` Deneme türünü belirtmek için oluşturucuda parametresini kullanın.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -108,24 +108,25 @@ Aşağıdaki kod örnekleri, verileri bu biçimlerde nasıl depolayabileceğiniz
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Uzaktan işlem üzerinde deneme çalıştırmak için veri getirme
 
-Uzaktan yürütmeler için eğitim verilerine uzaktan işlem üzerinden erişilebilir olması gerekir. SDK 'daki [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) sınıf şu işlevleri sunar:
+Uzaktan yürütmeler için eğitim verilerine uzaktan işlem üzerinden erişilebilir olması gerekir. [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)SDK 'daki sınıf şu işlevleri sunar:
 
 * statik dosyalardan veya URL kaynaklarından verileri çalışma alanınıza kolayca aktarın
 * bulut bilgi işlem kaynaklarında çalışırken verilerinizi eğitim betiklerine kullanılabilir hale getirme
 
-İşlem Hedefinizdeki verileri bağlamak için `Dataset` sınıfını kullanma örneği için bkz. [nasıl yapılır](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) .
+[how-to](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) `Dataset` İşlem Hedefinizdeki verileri bağlamak için sınıfını kullanma örneği için bkz. nasıl yapılır.
 
 ## <a name="train-and-validation-data"></a>Eğitim ve doğrulama verileri
 
-Doğrudan `AutoMLConfig` oluşturucuda ayrı tren ve doğrulama kümeleri belirtebilirsiniz.
+Doğrudan oluşturucuda ayrı tren ve doğrulama kümeleri belirtebilirsiniz `AutoMLConfig` .
 
 ### <a name="k-folds-cross-validation"></a>K-Fold çapraz doğrulama
 
-Çapraz `n_cross_validations` doğrulama sayısını belirtmek için ayarı kullanın. Eğitim veri kümesi rastgele eşit büyüklükte `n_cross_validations` katlara bölünecektir. Her bir çapraz doğrulama işleminde, katların biri, kalan katlara eğitilen modelin doğrulanması için kullanılacaktır. Bu işlem, her `n_cross_validations` katlama, doğrulama kümesi olarak bir kez kullanılıncaya kadar yuvarlanır. Tüm yuvarlamalar arasındaki ortalama `n_cross_validations` puanlar raporlanır ve ilgili model tüm eğitim verileri kümesinde yeniden alınacaktır.
+`n_cross_validations`Çapraz doğrulama sayısını belirtmek için ayarı kullanın. Eğitim veri kümesi rastgele `n_cross_validations` eşit büyüklükte katlara bölünecektir. Her bir çapraz doğrulama işleminde, katların biri, kalan katlara eğitilen modelin doğrulanması için kullanılacaktır. Bu işlem `n_cross_validations` , her katlama, doğrulama kümesi olarak bir kez kullanılıncaya kadar yuvarlanır. Tüm yuvarlamalar arasındaki ortalama puanlar `n_cross_validations` raporlanır ve ilgili model tüm eğitim verileri kümesinde yeniden alınacaktır.
 
+Oto [içi modelleri engellemek](concept-manage-ml-pitfalls.md#prevent-over-fitting)için, oto ml 'nin çapraz doğrulamayı nasıl uyguladığı hakkında daha fazla bilgi edinin.
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo çapraz doğrulama (yinelenen rastgele alt örnekleme)
 
-Doğrulama `validation_size` için kullanılması gereken eğitim veri kümesinin yüzdesini belirtmek için kullanın ve çapraz doğrulama sayısını belirtmek için kullanın `n_cross_validations` . Her çapraz doğrulama işleminde, kalan veriler üzerinde eğitilen `validation_size` modelin doğrulanması için bir boyut alt kümesi rastgele seçilir. Son olarak, tüm yuvarlamalar genelinde `n_cross_validations` Ortalama puanlar raporlanır ve ilgili model tüm eğitim verileri kümesine geri alınacaktır. Monte Carlo, zaman serisi tahmin için desteklenmez.
+`validation_size`Doğrulama için kullanılması gereken eğitim veri kümesinin yüzdesini belirtmek için kullanın ve `n_cross_validations` çapraz doğrulama sayısını belirtmek için kullanın. Her çapraz doğrulama işleminde, `validation_size` kalan veriler üzerinde eğitilen modelin doğrulanması için bir boyut alt kümesi rastgele seçilir. Son olarak, tüm yuvarlamalar genelinde ortalama puanlar `n_cross_validations` raporlanır ve ilgili model tüm eğitim verileri kümesine geri alınacaktır. Monte Carlo, zaman serisi tahmin için desteklenmez.
 
 ### <a name="custom-validation-dataset"></a>Özel doğrulama veri kümesi
 
@@ -135,7 +136,7 @@ Rastgele bölme kabul edilebilir değilse, genellikle zaman serisi verileri veya
 
 Ardından, modelin eğitilme yeri belirlenir. Otomatik makine öğrenimi eğitim denemesi aşağıdaki işlem seçeneklerinde çalıştırılabilir:
 * Yerel Masaüstü veya dizüstü bilgisayar gibi yerel makineniz, genellikle küçük veri kümeniz olduğunda ve araştırma aşamasında olmaya devam ediyorsa.
-* Bulutta bulunan bir uzak makine – [Azure Machine Learning yönetilen işlem](concept-compute-target.md#amlcompute) , Azure sanal makinelerinin kümelerinde makine öğrenimi modellerini eğitme olanağı sağlayan bir yönetilen hizmettir.
+* Bulutta bulunan bir uzak makine – [Azure Machine Learning yönetilen işlem](concept-compute-target.md#amlcompute) , Azure sanal makinelerinin kümelerinde makine öğrenimi modellerini eğitme olanağı sağlayan bir yönetilen hizmettir. 
 
   Yerel ve uzak işlem hedeflerine sahip Not defterleri örnekleri için bu [GitHub sitesine](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) bakın.
 
@@ -147,7 +148,7 @@ Ardından, modelin eğitilme yeri belirlenir. Otomatik makine öğrenimi eğitim
 
 ## <a name="configure-your-experiment-settings"></a>Deneme ayarlarınızı yapılandırın
 
-Otomatik makine öğrenimi denemenizi yapılandırmak için kullanabileceğiniz çeşitli seçenekler vardır. Bu parametreler bir `AutoMLConfig` nesne örneği oluşturarak ayarlanır. Parametrelerin tam listesi için bkz. [oto Mlconfig sınıfı](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) .
+Otomatik makine öğrenimi denemenizi yapılandırmak için kullanabileceğiniz çeşitli seçenekler vardır. Bu parametreler bir nesne örneği oluşturarak ayarlanır `AutoMLConfig` . Parametrelerin tam listesi için bkz. [oto Mlconfig sınıfı](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) .
 
 Bazı örnekler:
 
@@ -176,7 +177,7 @@ Bazı örnekler:
       n_cross_validations=5)
    ```
 
-Üç farklı `task` parametre değeri (üçüncü görev türü olur `forecasting`ve benzer bir algoritma havuzunu görevler olarak `regression` kullanır) uygulanacak modellerin listesini belirleme. Dahil etmek `whitelist` veya `blacklist` hariç tutmak için kullanılabilir modellerle Yinelemeleri değiştirmek için veya parametrelerini kullanın. Desteklenen modellerin listesi, [Supportedmodeller sınıfında](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) ([Sınıflandırma](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [tahmin](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)ve [gerileme](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)) bulunabilir.
+Üç farklı `task` parametre değeri (üçüncü görev türü olur `forecasting` ve benzer bir algoritma havuzunu görevler olarak kullanır `regression` ) uygulanacak modellerin listesini belirleme. `whitelist` `blacklist` Dahil etmek veya hariç tutmak için kullanılabilir modellerle Yinelemeleri değiştirmek için veya parametrelerini kullanın. Desteklenen modellerin listesi, [Supportedmodeller sınıfında](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) ([Sınıflandırma](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [tahmin](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)ve [gerileme](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)) bulunabilir.
 
 Deneme zaman aşımı hatalarından kaçınmaya yardımcı olmak için, otomatik ML 'nin doğrulama hizmeti `experiment_timeout_minutes` en az 15 dakika veya satır boyutu sütun boyutu 10.000.000 ' i aşarsa 60 dakika olarak ayarlanmalıdır.
 
@@ -197,7 +198,7 @@ Birincil ölçüm, iyileştirme için model eğitimi sırasında kullanılacak �
 
 Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bulunan özelliklerle hassas olan *belirli* algoritmalara yardımcı olacak şekilde [otomatik olarak ölçeklendirilir ve normalleştirilir](concept-automated-ml.md#preprocess) .  Ancak, eksik değerler imputation, kodlama ve dönüşümler gibi ek özellikler de sağlayabilirsiniz. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-use-automated-ml-for-ml-models.md#featurization).
 
-Denemeleri 'nizi yapılandırırken gelişmiş ayarı `featurization`etkinleştirebilirsiniz. Aşağıdaki tabloda, [oto Mlconfig sınıfında](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir.
+Denemeleri 'nizi yapılandırırken gelişmiş ayarı etkinleştirebilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig sınıfında](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir.
 
 |Korleştirme yapılandırması | Açıklama |
 | ------------- | ------------- |
@@ -250,13 +251,13 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 Enseletirme modelleri varsayılan olarak etkindir ve otomatik makine öğrenimi çalıştırmasında son çalıştırma yinelemeleri olarak görünür. Şu anda desteklenen ensesıya yöntemleri oylama ve yığınlama. Oylama, ağırlıklı ortalamalar kullanılarak geçici oylama olarak uygulanır ve yığın oluşturma işlemi, birinci katmanın oylama ile aynı modellere sahip olduğu iki katmanlı bir uygulama kullanmaktadır ve ikinci katman modeli, modellerin ilk katmandan en iyi birleşimini bulmak için kullanılır. ONNX modellerini kullanıyorsanız **veya** model-explainability etkinse, yığınlama devre dışı bırakılır ve yalnızca oylama kullanılacaktır.
 
-Varsayılan yığın ensebir davranışını değiştirmek için bir nesnede `kwargs` olarak sağlanbir `AutoMLConfig` çoklu varsayılan bağımsız değişken vardır.
+`kwargs` `AutoMLConfig` Varsayılan yığın ensebir davranışını değiştirmek için bir nesnede olarak sağlanbir çoklu varsayılan bağımsız değişken vardır.
 
-* `stack_meta_learner_type`: meta-Learner, tek tek heterojen modellerin çıktısı üzerinde eğitilen bir modeldir. Varsayılan meta öğrenenler `LogisticRegression` , sınıflandırma görevlerine (veya `LogisticRegressionCV` çapraz doğrulamanın etkin olması) ve `ElasticNet` gerileme/tahmin görevlerine (veya `ElasticNetCV` çapraz doğrulamanın etkin olması halinde) yöneliktir. Bu parametre şu dizelerden biri `LogisticRegression`olabilir:, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`, veya. `LinearRegression`
-* `stack_meta_learner_train_percentage`: meta-Learner eğitimi için ayrılacak olan eğitim kümesi oranını belirtir (eğitim ve doğrulama türünü seçerken). Varsayılan değer `0.2`.
+* `stack_meta_learner_type`: meta-Learner, tek tek heterojen modellerin çıktısı üzerinde eğitilen bir modeldir. Varsayılan meta öğrenenler, `LogisticRegression` Sınıflandırma görevlerine (veya `LogisticRegressionCV` çapraz doğrulamanın etkin olması) ve `ElasticNet` gerileme/tahmin görevlerine (veya `ElasticNetCV` çapraz doğrulamanın etkin olması halinde) yöneliktir. Bu parametre şu dizelerden biri olabilir: `LogisticRegression` , `LogisticRegressionCV` ,, `LightGBMClassifier` `ElasticNet` , `ElasticNetCV` , `LightGBMRegressor` , veya `LinearRegression` .
+* `stack_meta_learner_train_percentage`: meta-Learner eğitimi için ayrılacak olan eğitim kümesi oranını belirtir (eğitim ve doğrulama türünü seçerken). Varsayılan değer `0.2` .
 * `stack_meta_learner_kwargs`: meta-Learner başlatıcısına geçirilecek isteğe bağlı parametreler. Bu parametreler ve parametre türleri, karşılık gelen model oluşturucusundan parametreleri ve parametre türlerini yansıtır ve model oluşturucusuna iletilir.
 
-Aşağıdaki kod, bir nesnesinde özel bir `AutoMLConfig` ensebir davranışını belirtmenin bir örneğini gösterir.
+Aşağıdaki kod, bir nesnesinde özel bir ensebir davranışını belirtmenin bir örneğini gösterir `AutoMLConfig` .
 
 ```python
 ensemble_settings = {
@@ -282,7 +283,7 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
-Ensebölümlü eğitim varsayılan olarak etkindir, ancak `enable_voting_ensemble` ve `enable_stack_ensemble` Boole parametreleri kullanılarak devre dışı bırakılabilir.
+Ensebölümlü eğitim varsayılan olarak etkindir, ancak `enable_voting_ensemble` ve Boole parametreleri kullanılarak devre dışı bırakılabilir `enable_stack_ensemble` .
 
 ```python
 automl_classifier = AutoMLConfig(
@@ -299,7 +300,7 @@ automl_classifier = AutoMLConfig(
 
 ## <a name="run-experiment"></a>Deneme Çalıştır
 
-Otomatik ML için, denemeleri çalıştırmak için `Experiment` kullanılan bir `Workspace` adlandırılmış nesne olan bir nesnesi oluşturursunuz.
+Otomatik ML için, `Experiment` `Workspace` denemeleri çalıştırmak için kullanılan bir adlandırılmış nesne olan bir nesnesi oluşturursunuz.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -313,7 +314,7 @@ project_folder = './sample_projects/automl-classification'
 experiment = Experiment(ws, experiment_name)
 ```
 
-Çalıştırmak ve model oluşturmak için denemeyi gönderin. `AutoMLConfig` Modeli oluşturmak için `submit` yöntemini geçirin.
+Çalıştırmak ve model oluşturmak için denemeyi gönderin. `AutoMLConfig` `submit` Modeli oluşturmak için yöntemini geçirin.
 
 ```python
 run = experiment.submit(automl_config, show_output=True)
@@ -321,13 +322,13 @@ run = experiment.submit(automl_config, show_output=True)
 
 >[!NOTE]
 >Bağımlılıklar önce yeni bir makineye yüklenir.  Çıktının gösterilmesi 10 dakika kadar sürebilir.
->Konsolunda `show_output` gösterilen `True` çıkışın sonucu olarak ayarlanıyor.
+>`show_output` `True` Konsolunda gösterilen çıkışın sonucu olarak ayarlanıyor.
 
 ### <a name="exit-criteria"></a><a name="exit"></a>Çıkış kriterleri
 
 Denemenizin sona erdirmek için tanımlayabileceğiniz birkaç seçenek vardır.
 1. Ölçüt yok: herhangi bir çıkış parametresi tanımlamadıysanız, birincil ölçümünde başka bir ilerleme yapılıncaya kadar deneme devam edecektir.
-1. Süre geçtikten sonra çık: ayarlarınızda kullanılması `experiment_timeout_minutes` , bir deneyin çalıştırmada ne kadar süreyle devam etmesi gerektiğini tanımlamanızı sağlar.
+1. Süre geçtikten sonra çık: `experiment_timeout_minutes` ayarlarınızda kullanılması, bir deneyin çalıştırmada ne kadar süreyle devam etmesi gerektiğini tanımlamanızı sağlar.
 1. Bir puana ulaşıldıktan sonra çık: kullanmak `experiment_exit_score` , birincil ölçüm puanına ulaşıldıktan sonra denemeyi tamamlar.
 
 ### <a name="explore-model-metrics"></a>Model ölçümlerini keşfet
@@ -337,7 +338,7 @@ Bir not defteriniz varsa, eğitim sonuçlarınızı bir pencere öğesinde veya 
 ## <a name="understand-automated-ml-models"></a>Otomatik ML modellerini anlama
 
 Otomatikleştirilmiş ML kullanılarak oluşturulan herhangi bir model aşağıdaki adımları içerir:
-+ Otomatik Özellik Mühendisliği (varsa `"featurization": 'auto'`)
++ Otomatik Özellik Mühendisliği (varsa `"featurization": 'auto'` )
 + Hiper parametre değerleriyle ölçekleme/normalleştirme ve algoritma
 
 Otomatikleştirilmiş ML 'den fitted_model çıktısından bu bilgileri almak için saydam hale gelir.
@@ -350,7 +351,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Otomatik Özellik Mühendisliği
 
-Ne zaman `"featurization": 'auto'`gerçekleşen ön işleme ve [Otomatik Özellik Mühendisliği](concept-automated-ml.md#preprocess) listesine bakın.
+Ne zaman gerçekleşen ön işleme ve [Otomatik Özellik Mühendisliği](concept-automated-ml.md#preprocess) listesine bakın `"featurization": 'auto'` .
 
 Şu örneği göz önünde bulundurun:
 + Dört giriş özelliği vardır: A (sayısal), B (sayısal), C (sayısal), D (TarihSaat)
@@ -421,7 +422,7 @@ Daha fazlasını anlamak için, bu 2 API 'Leri, monte edilecek modelin ilk adım
    |Dönüşümler|Uygulanan özellikler oluşturmak için giriş özelliklerine uygulanan dönüşümlerin listesi.|
    
 ### <a name="customize-feature-engineering"></a>Özellik Mühendisliği 'nı özelleştirme
-Özellik Mühendisliği 'nı özelleştirmek için, `"featurization": FeaturizationConfig`belirtin.
+Özellik Mühendisliği 'nı özelleştirmek için, belirtin  `"featurization": FeaturizationConfig` .
 
 Desteklenen özelleştirme şunları içerir:
 
@@ -505,9 +506,9 @@ LogisticRegression
 
 ### <a name="predict-class-probability"></a>Sınıf olasılığını tahmin etme
 
-Otomatikleştirilmiş ML kullanılarak oluşturulan modellerin, açık kaynaklı kaynak sınıfından işlevselliği yansıtan sarmalayıcı nesneleri vardır. Otomatik ML tarafından döndürülen çoğu sınıflandırma modeli sarmalayıcı nesneleri, özelliklerinizin (X Values) dizi benzeri veya seyrek matris veri örneğini kabul eden `predict_proba()` işlevini uygular ve her bir örnekteki n boyutlu bir dizi ve ilgili sınıf olasılığını döndürür.
+Otomatikleştirilmiş ML kullanılarak oluşturulan modellerin, açık kaynaklı kaynak sınıfından işlevselliği yansıtan sarmalayıcı nesneleri vardır. Otomatik ML tarafından döndürülen çoğu sınıflandırma modeli sarmalayıcı nesneleri, `predict_proba()` özelliklerinizin (X Values) dizi benzeri veya seyrek matris veri örneğini kabul eden işlevini uygular ve her bir örnekteki n boyutlu bir dizi ve ilgili sınıf olasılığını döndürür.
 
-Yukarıdaki aynı çağrıları kullanarak en iyi çalıştırma ve bağlı modeli elde ettiğiniz varsayılarak, model türüne bağlı olarak uygun biçimde `predict_proba()` bir `X_test` örnek sağlayarak doğrudan monte edilen modelden çağrı yapabilirsiniz.
+Yukarıdaki aynı çağrıları kullanarak en iyi çalıştırma ve bağlı modeli elde ettiğiniz varsayılarak, `predict_proba()` `X_test` model türüne bağlı olarak uygun biçimde bir örnek sağlayarak doğrudan monte edilen modelden çağrı yapabilirsiniz.
 
 ```python
 best_run, fitted_model = automl_run.get_output()
@@ -528,6 +529,7 @@ Model açıklamalarının ve özelliklerinin önem derecesine ilişkin genel bil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bir modelin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md)hakkında daha fazla bilgi edinin.
++ [Bir modelin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md)hakkında daha fazla bilgi edinin.
 
-[Otomatik makine öğrenimi ile regresyon modelini eğitme](tutorial-auto-train-models.md) veya [uzak bir kaynakta otomatik makine öğrenimi kullanarak nasıl eğitme](how-to-auto-train-remote.md)yapılacağı hakkında daha fazla bilgi edinin.
++ [Otomatik makine öğrenimi ile regresyon modelini eğitme](tutorial-auto-train-models.md) veya [uzak bir kaynakta otomatik makine öğrenimi kullanarak nasıl eğitme](how-to-auto-train-remote.md)yapılacağı hakkında daha fazla bilgi edinin.
++ [Birçok model çözümü hızlandırıcısında](https://aka.ms/many-models), oto ml ile birden çok modeli eğitme hakkında bilgi edinin.

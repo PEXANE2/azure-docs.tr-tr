@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 3839fb325b1ed0c052f7a4e8955e9a9fda51fc5f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 291dbdd874e3d657ff171d7e08ea6a1ee7e5999f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569660"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683092"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Azure Stack Edge ve Azure Data Box Gateway için bir destek bileti açın
 
@@ -27,9 +27,9 @@ Bu makale, Azure Stack Edge/Azure Data Box Gateway hizmeti tarafından yönetile
 Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
 1. Azure Stack Edge veya Data Box Gateway sıralaması 'na gidin. **Destek + sorun giderme** Bölümü ' ne gidin ve **Yeni destek isteği**' ni seçin.
-   
+
 2. **Yeni destek isteğinde**, **temel bilgiler** sekmesinde aşağıdaki adımları uygulayın:
-    
+
     1. **Sorun türü** açılan listesinden **Teknik**' i seçin.
     2. **Aboneliğinizi**seçin.
     3. **Hizmet**altında **hizmetlerimi**denetleyin. Açılan listeden **Azure Stack Edge ve Data Box Gateway**' i seçin.
@@ -42,7 +42,7 @@ Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
         ![Temel Bilgiler](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
 3. **Ayrıntılar** sekmesinde aşağıdaki adımları uygulayın:
-    
+
     1. Sorunun başlangıç tarihini ve saatini belirtin.
     2. Sorununuz için bir **Açıklama** sağlayın.
     3. Karşıya yüklemek istediğiniz diğer dosyalara gözatabilmeniz için **karşıya dosya yükleme**bölümünde klasör simgesini seçin.
@@ -67,16 +67,16 @@ Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
 Bu bilgiler yalnızca Azure Stack cihaz için geçerlidir. Donanım sorunlarını bildirme işlemi aşağıdaki gibidir:
 
-1. Bir donanım sorunu için Azure portal bir destek bileti açın. **Sorun türü**altında **donanım Azure Stack**' yi seçin. **Sorun alt türünü** **donanım hatası**olarak seçin. 
+1. Bir donanım sorunu için Azure portal bir destek bileti açın. **Sorun türü**altında **donanım Azure Stack**' yi seçin. **Sorun alt türünü** **donanım hatası**olarak seçin.
 
     ![Donanım sorunu](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-hardware-issue-1.png)
 
-    Destek bileti oluşturduktan sonra bir destek mühendisi, isteğinize devam etmek için en kısa sürede sizinle iletişim kuracaktır. 
+    Destek bileti oluşturduktan sonra bir destek mühendisi, isteğinize devam etmek için en kısa sürede sizinle iletişim kuracaktır.
 
-2. Microsoft Desteği bunun bir donanım sorunu olduğunu belirlerse, aşağıdaki eylemden biri oluşur: 
+2. Microsoft Desteği bunun bir donanım sorunu olduğunu belirlerse, aşağıdaki eylemden biri oluşur:
 
-    - Başarısız donanım bölümü için bir alan değiştirme birimi (FRU) gönderilir. Şu anda, güç kaynağı birimi desteklenen tek FRU. 
-    - Diğer tüm bölüm hataları için, Microsoft tam sistem değişikliği (FSR) veya bir cihaz takas işlemini yapar.
+    * Başarısız donanım bölümü için bir alan değiştirme birimi (FRU) gönderilir. Şu anda, güç kaynağı birimleri ve sabit sürücüler desteklenen tek FRU 'lardır.
+    * Yalnızca FRU 'lar bir sonraki iş günü içinde değiştirilmiştir, başka her şey için bir tam sistem değişikliği (FSR) gerekir.
 
 3. Bir destek bileti 4:30 PM yerel saatinden (Pazartesi 'Den Cuma 'ya) önce ortaya çıktığında, bir FRU teknisyen, bir FRU veya tam cihaz değişikliği gerçekleştirmek için bir sonraki iş günü yerine konumunuza gönderilir.
 
@@ -84,11 +84,11 @@ Bu bilgiler yalnızca Azure Stack cihaz için geçerlidir. Donanım sorunların�
 
 Bir destek bileti oluşturduktan sonra portal üzerinden bu biletin yaşam döngüsünü yönetebilirsiniz.
 
-#### <a name="to-manage-your-support-requests"></a>Destek isteklerinizi yönetmek için
+### <a name="to-manage-your-support-requests"></a>Destek isteklerinizi yönetmek için
 
 1. Yardım ve destek sayfasına ulaşmak için, **> yardım ve destek**' e gidin.
 
-    ![Destek isteklerini yönetme](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)   
+    ![Destek isteklerini yönetme](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)
 
 2. **Son destek isteklerinin** tablolu bir listesi **Yardım + Destek**bölümünde görüntülenir.
 
@@ -96,7 +96,6 @@ Bir destek bileti oluşturduktan sonra portal üzerinden bu biletin yaşam döng
 
 3. Bir destek isteği seçin ve tıklayın. Bu istek için durumu ve ayrıntıları görüntüleyebilirsiniz. Bu istekte izlemek istiyorsanız **+ Yeni ileti** ' ya tıklayın.
 
-   
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure Stack Edge ile ilgili sorunları nasıl giderebileceğinizi](azure-stack-edge-troubleshoot.md)öğrenin.

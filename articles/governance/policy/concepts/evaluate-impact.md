@@ -1,14 +1,14 @@
 ---
 title: Yeni bir Azure Ilke tanımının etkisini değerlendirin
 description: Azure ortamınıza yeni bir ilke tanımı oluştururken izlenecek işlemi anlayın.
-ms.date: 09/23/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 394f87c0328bce46d4c7177a336a7861991ad0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9844e8435452b388c934c5969898fe01d23fb47
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187758"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684310"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Yeni bir Azure Ilke tanımının etkisini değerlendirin
 
@@ -33,8 +33,7 @@ Bu nedenle, ilke tanımlarınız sıkı bir şekilde tanımlanmalıdır ve kayna
 
 ## <a name="audit-existing-resources"></a>Mevcut kaynakları denetleme
 
-Yeni veya güncelleştirilmiş kaynakları yeni ilke tanımınızda yönetmeyi aramadan önce, bir test kaynak grubu gibi var olan kaynakların sınırlı bir alt kümesini nasıl değerlendirdiği hakkında daha iyi bir seçenektir. Tetiklemenin veya etkinlik günlüğü girişlerinin oluşturulmasını engellemek için ilke atamasındaki [zorlama modunu](./assignment-structure.md#enforcement-mode)
-_devre dışı_ (donotenzorlamalı) kullanın. [effect](./effects.md)
+Yeni veya güncelleştirilmiş kaynakları yeni ilke tanımınızda yönetmeyi aramadan önce, bir test kaynak grubu gibi var olan kaynakların sınırlı bir alt kümesini nasıl değerlendirdiği hakkında daha iyi bir seçenektir. Tetiklemenin veya etkinlik günlüğü girişlerinin oluşturulmasını engellemek için ilke atamasındaki [zorlama modunu](./assignment-structure.md#enforcement-mode) _devre dışı_ (donotenzorlamalı) kullanın. [effect](./effects.md)
 
 Bu adım, iş akışını etkilemeden mevcut kaynaklardaki yeni ilkenin uyumluluk sonuçlarını değerlendirmek için bir şans sağlar. Uyumlu olmayan bir kaynağın uyumsuz (_yanlış pozitif_) olarak işaretlenip işaretlenmediğini ve uyumlu olmadığını düşündüğünüz tüm kaynakların doğru şekilde işaretlendiğinden emin olun.
 Kaynakların ilk alt kümesi beklendiği gibi doğrulandıktan sonra, tüm mevcut kaynaklarla değerlendirmeyi yavaş genişletin.

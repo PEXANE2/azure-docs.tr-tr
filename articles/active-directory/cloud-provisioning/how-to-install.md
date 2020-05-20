@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 764071eeaf368ecf78679632cffbd6964db40aa5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263354"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681040"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect bulut sağlama aracısını yükleme
 Bu belgede Azure Active Directory (Azure AD) Connect sağlama aracısının yükleme işleminde ve bu dosyayı ilk olarak Azure portal nasıl yapılandıracağınız açıklanmaktadır.
@@ -35,7 +35,7 @@ Aracıyı yüklemek için aşağıdaki adımları izleyin.
 
 1. Kurumsal Yönetici izinleriyle kullanacağınız sunucuda oturum açın.
 1. Azure portalına gidin. Sol tarafta **Azure Active Directory**' yi seçin.
-1. **Sağlamayı Yönet (Önizleme)** > seçeneğini belirleyin**tüm aracıları gözden geçirin**.
+1. **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin  >  **tüm aracıları gözden geçirin**.
 1. Azure AD Connect sağlama aracısını Azure portal indirin.
 
    ![Şirket içi aracıyı indir](media/how-to-install/install9.png)</br>
@@ -65,7 +65,7 @@ Aracı doğrulaması Azure portal ve aracıyı çalıştıran yerel sunucu üzer
 Aracının Azure tarafından görüldüğünü doğrulamak için aşağıdaki adımları izleyin.
 
 1. Azure Portal’da oturum açın.
-1. Sol tarafta **Azure Active Directory** > **Azure AD Connect**' yı seçin. Merkezinde **Yönet sağlama (Önizleme)** öğesini seçin.
+1. Sol tarafta **Azure Active Directory**  >  **Azure AD Connect**' yı seçin. Merkezinde **Yönet sağlama (Önizleme)** öğesini seçin.
 
    ![Azure portal](media/how-to-install/install6.png)</br>
 
@@ -77,20 +77,13 @@ Aracının Azure tarafından görüldüğünü doğrulamak için aşağıdaki ad
 
    ![Şirket içi sağlama aracıları ekranı](media/how-to-install/verify1.png)</br>
 
-### <a name="verify-the-port"></a>Bağlantı noktasını doğrulama
-Azure 'un 443 numaralı bağlantı noktasını dinlediğini ve aracınızın onunla iletişim kurabildiğini doğrulamak için aşağıdaki adımları izleyin.
 
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
-
-Bu test, aracılarınızın 443 numaralı bağlantı noktası üzerinden Azure ile iletişim kurabildiğini doğrular. Bir tarayıcı açın ve aracının yüklendiği sunucudan önceki URL 'ye gidin.
-
-![Bağlantı noktası erişilebilirliği doğrulaması](media/how-to-install/verify2.png)
 
 ### <a name="on-the-local-server"></a>Yerel sunucuda
 Aracının çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
 1.  Sunucuda yönetici hesabıyla oturum açın.
-1.  Hizmetlere giderek veya Hizmetleri**Çalıştır** > **. msc** **' ye** > giderek **Hizmetleri** açın.
+1.  **Hizmetlere** giderek veya Hizmetleri **Start**  >  **Çalıştır**  >  **. msc**' ye giderek Hizmetleri açın.
 1.  **Hizmetler**' in altında **Microsoft Azure AD aracı güncelleştiricisi bağlama** ve **Microsoft Azure AD Connect sağlama aracısının** aynı olduğundan ve durumlarının *çalıştığından*emin olun.
 
     ![Hizmetler ekranı](media/how-to-troubleshoot/troubleshoot1.png)

@@ -8,17 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: bc3c572aeb72328bc4708d27052756623ccd7701
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7b75f03afc587d9616997b1df48b9c5c5166cb89
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200968"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681708"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -31,7 +30,7 @@ Konu başlığı |  Ayrıntılar
 --------- | --------- |
 Azure AD Connect yükseltme adımları | [Önceki bir sürümden en son](how-to-upgrade-previous-version.md) Azure AD Connect sürüme yükseltmek için farklı yöntemler.
 Gerekli izinler | Bir güncelleştirmeyi uygulamak için gereken izinler için bkz. [hesaplar ve izinler](reference-connect-accounts-permissions.md#upgrade).
-İndirme| [Azure AD Connect indirin](https://go.microsoft.com/fwlink/?LinkId=615771).
+İndir| [Azure AD Connect indirin](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Azure AD Connect yeni bir sürümünü serbest bırakmak, hizmetin işlem işlevlerini sağlamak için çeşitli kalite denetimi adımı gerektiren bir işlemdir ve bu işlemden sonra yeni bir yayının sürüm numarası ve yayın durumu en son durumu yansıtacak şekilde güncelleştirilir.
@@ -55,10 +54,12 @@ Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir 
 05/07/2020: indirilmek üzere yayınlandı
 
 ### <a name="fixed-issues"></a>Düzeltilen sorunlar
-- Seçilmeyen etki alanlarının sihirbaz kullanıcı arabiriminden yanlış bir şekilde seçildiği bir sorun düzeltildi.
-- ADSyncConfig PowerShell modülündeki bir sorun düzeltildi, burada set-ADSync * Permissions cmdlet 'lerinde kullanılan DSACLS komutunun çağrılması aşağıdaki hatalardan birine neden olur:
-     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
-     - `GrantAcls : No GUID Found for computer …`
+Bu düzeltme derlemesi, seçilmemiş etki alanlarının yalnızca bir alt kapsayıcı seçildiyse sihirbaz kullanıcı arabiriminden yanlış bir şekilde seçili olduğu bir sorunu düzeltir.
+
+
+>[!NOTE]
+>Bu sürüm, yeni Azure AD Connect Sync v2 uç nokta API 'sini kullanmak için gereklidir.  Daha fazla bilgi için bkz. [Sync v2 ENDPOINT API (Genel Önizleme) Azure AD Connect](how-to-connect-sync-endpoint-api-v2.md).
+
 
 ## <a name="15290"></a>1.5.29.0
 
@@ -82,7 +83,10 @@ Bu düzeltme derlemesi, **' ın ad-grup birleşimi** kuralından klonlanmış ve
 04/09/2020: indirilmek üzere yayınlandı
 
 ### <a name="fixed-issues"></a>Düzeltilen sorunlar
-Bu düzeltme derlemesi, Grup filtreleme özelliği etkinse ve kaynak bağlantısı olarak mS-DS-IM1.5.18.0 GUID kullanıyorsanız derleme ile ilgili bir sorunu düzeltir.
+- Bu düzeltme derlemesi, Grup filtreleme özelliği etkinse ve kaynak bağlantısı olarak mS-DS-IM1.5.18.0 GUID kullanıyorsanız derleme ile ilgili bir sorunu düzeltir.
+- ADSyncConfig PowerShell modülündeki bir sorun düzeltildi, burada set-ADSync * Permissions cmdlet 'lerinde kullanılan DSACLS komutunun çağrılması aşağıdaki hatalardan birine neden olur:
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 > [!IMPORTANT]
 > **' Yı ad grubu Ile Birleştir** eşitleme kuralından klondıysanız ve ' ı **ad-grup ortak** eşitleme kuralıyla klonlamadıysanız ve yükseltmeyi planlarsanız, yükseltmenin bir parçası olarak aşağıdaki adımları izleyin:
@@ -117,7 +121,6 @@ Bu düzeltme derlemesi, Grup filtreleme özelliği etkinse ve kaynak bağlantıs
 - Hesap, kullanılmadan önce tüm hizmet Çoğaltmalarından yayılmadığından, Dizin uzantılarının veya PHS 'nin etkinleştirilmesinde Azure Active Directory eşitleme hesabının oluşturulmasına neden olan bir sorun düzeltildi. 
 - Yedek karakterleri doğru bir şekilde işlemeyen Eşitleme hataları sıkıştırma yardımcı programında hata düzeltildi. 
 - Otomatik yükseltmede bir hata düzeltildi ve bu durum, Scheduler askıya alınma durumunda sunucuyu bıraktı. 
-- Etki alanı/OU filtreleme sayfasında, etki alanı ağacı, herhangi bir değişiklik yapılmadan yalnızca kısmen genişleerek bir etki alanının çalıştırma profillerini kaldıracak olan bir hata düzeltildi.
 
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Yayın durumu
@@ -567,7 +570,7 @@ Azure AD Connect AD DS hesabı oluşturduğunda [AD DS hesabına kilit kilitleme
 *   KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın. Kendi kendine geldiğinde varsayılan izinleri değiştirmeden tutmak istiyoruz.
 *   Bu özel izinleri ata:
 
-Tür     | Name                          | Erişim               | Uygulanan Öğe
+Tür     | Name                          | Access               | Uygulanan Öğe
 ---------|-------------------------------|----------------------|--------------|
 İzin Ver    | SİSTEM                        | Tam Denetim         | Bu nesne  |
 İzin Ver    | Enterprise Admins             | Tam Denetim         | Bu nesne  |
@@ -680,7 +683,7 @@ Durum: Ekim 19 2017
 * Daha önce, parola karma eşitlemesini etkinleştirmeye çalıştıysanız Azure AD Connect, AD Bağlayıcısı hesabının şirket içi AD 'den parola karmalarını eşitlemek için gerekli izinlere sahip olup olmadığını doğrulamaz. Şimdi, AD Bağlayıcısı hesabının yeterli izni yoksa Azure AD Connect sihirbaz sizi doğrular ve sizi uyarır.
 
 ### <a name="ad-fs-management"></a>AD FS Yönetimi
-#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6814]() sorunu düzeltildi
+#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6879]() sorunu düzeltildi
 * [MS-DS-ımnbu GUID 'Nin kaynak bağlantısı olarak](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) kullanımıyla ilgili bir sorun düzeltildi. Bu sorun, Kullanıcı oturum açma yöntemi olarak *AD FS Federasyonu* yapılandıran müşterileri etkiler. Sihirbazda *kaynak bağlantısını yapılandır* görevini yürüttüğünüzde, ' Azure AD Connect, ImmutableID için kaynak özniteliği olarak * ms-DS-ımıbu GUID ' i kullanarak geçiş yapar. Bu değişikliğin bir parçası olarak, Azure AD Connect AD FS ImmutableID talep kurallarını güncelleştirmeye çalışır. Ancak, Azure AD Connect AD FS yapılandırmak için gereken yönetici kimlik bilgilerine sahip olmadığı için bu adım başarısız oldu. Bu düzeltmeyle Azure AD Connect, şimdi *kaynak bağlantısını yapılandır* görevini yürüttüğünüzde AD FS için yönetici kimlik bilgilerini girmenizi ister.
 
 
@@ -1337,7 +1340,6 @@ Azure AD Eşitleme adı Azure AD Connect olarak değiştirildi.
 **Yeni Önizleme özellikleri:**
 
 * [Kullanıcı geri yazma](how-to-connect-preview.md#user-writeback)
-* [Grup geri yazma](how-to-connect-preview.md#group-writeback)
 * [Cihaz geri yazma](how-to-connect-device-writeback.md)
 * [Dizin genişletmeleri](how-to-connect-preview.md)
 

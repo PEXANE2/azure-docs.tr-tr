@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5e0043ebba1a317dcc6798d6be74aac051d97012
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597929"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685166"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de Stream Analytics işi oluşturma (Önizleme) 
 
@@ -22,6 +22,9 @@ Bu makalede, Azure SQL Edge 'de (Önizleme) bir T-SQL akış işi oluşturma iş
 
 1. Dış akış girişi ve çıkış nesneleri oluşturma
 2. Akış işi oluşturma işleminin parçası olarak akış işi sorgusunu tanımlayın.
+
+> [!NOTE]
+> Azure SQL Edge 'de T-SQL akış özelliğini etkinleştirmek için, TF 11515 ' i başlangıç seçeneği olarak etkinleştirin veya [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) komutunu kullanın. MSSQL. conf dosyasını kullanarak izleme bayraklarını etkinleştirme hakkında daha fazla bilgi için bkz. [MSSQL. conf dosyasını kullanarak yapılandırma](configure.md#configure-using-mssqlconf-file). Bu gereksinim, gelecekteki Azure SQL Edge güncelleştirmelerinde (Önizleme) kaldırılacaktır.
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>Dış akış girişi ve çıkış nesnesi yapılandırma
 

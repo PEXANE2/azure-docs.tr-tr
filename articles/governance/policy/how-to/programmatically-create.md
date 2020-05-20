@@ -1,14 +1,14 @@
 ---
 title: Programlı olarak ilkeler oluşturma
 description: Bu makalede Azure CLı, Azure PowerShell ve REST API ile Azure Ilkesi için ilkeler oluşturma ve yönetme işlemi adım adım açıklanmaktadır.
-ms.date: 01/31/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ee87ecd9e7c636b5bb63c8e94be0e353acc3e13
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264550"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682127"
 ---
 # <a name="programmatically-create-policies"></a>Programlı olarak ilkeler oluşturma
 
@@ -16,7 +16,7 @@ Bu makale, ilkeleri programlı olarak oluşturma ve yönetme konusunda size kıl
 
 Uyumluluk hakkında daha fazla bilgi için bkz. [Uyumluluk verileri alma](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -72,7 +72,7 @@ Kaynaklarınızın daha iyi görünürlüğüne yönelik ilk adım, kaynakların
    Komut, _ortak ağlarda açık olan denetim depolama hesapları_adlı bir ilke tanımı oluşturur.
    Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için, bkz. [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
 
-   Konum parametreleri olmadan çağrıldığında, varsayılan `New-AzPolicyDefinition` olarak ilke tanımını oturum bağlamının seçili aboneliğine kaydetme varsayılan değeri. Tanımı farklı bir konuma kaydetmek için aşağıdaki parametreleri kullanın:
+   Konum parametreleri olmadan çağrıldığında, `New-AzPolicyDefinition` Varsayılan olarak ilke tanımını oturum bağlamının seçili aboneliğine kaydetme varsayılan değeri. Tanımı farklı bir konuma kaydetmek için aşağıdaki parametreleri kullanın:
 
    - **SubscriptionID** -farklı bir aboneliğe kaydedin. Bir _GUID_ değeri gerektirir.
    - **ManagementGroupName** -bir yönetim grubuna kaydedin. Bir _dize_ değeri gerektirir.
@@ -87,8 +87,8 @@ Kaynaklarınızın daha iyi görünürlüğüne yönelik ilk adım, kaynakların
 
    _ContosoRG_ değerini amaçlanan kaynak grubunuzun adıyla değiştirin.
 
-   ' **Scope** Deki `New-AzPolicyAssignment` kapsam parametresi, yönetim grubu, abonelik, kaynak grubu veya tek bir kaynakla birlikte geçerlidir. Parametresi **RESOURCEID** özelliğinin `Get-AzResourceGroup` döndürdüğü tam kaynak yolunu kullanır. Her kapsayıcının **kapsam** için olan model aşağıdaki gibidir. ,,, Ve `{mgName}` ' ı kaynak adı, kaynak grubu adı, abonelik kimliği ve yönetim grubu adıyla değiştirin. `{rName}` `{rgName}` `{subId}`
-   `{rType}`kaynağın **kaynak türüyle** (örneğin, bir VM `Microsoft.Compute/virtualMachines` için) değiştirilmelidir.
+   ' Deki **kapsam** parametresi, `New-AzPolicyAssignment` Yönetim grubu, abonelik, kaynak grubu veya tek bir kaynakla birlikte geçerlidir. Parametresi **RESOURCEID** özelliğinin döndürdüğü tam kaynak yolunu kullanır `Get-AzResourceGroup` . Her kapsayıcının **kapsam** için olan model aşağıdaki gibidir. ,,, Ve ' ı `{rName}` `{rgName}` `{subId}` `{mgName}` kaynak adı, kaynak grubu adı, abonelik kimliği ve yönetim grubu adıyla değiştirin.
+   `{rType}`kaynağın **kaynak türüyle** (örneğin, `Microsoft.Compute/virtualMachines` bir VM için) değiştirilmelidir.
 
    - Kaynak`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Kaynak grubu-`/subscriptions/{subId}/resourceGroups/{rgName}`
@@ -133,10 +133,10 @@ Bir ilke tanımı oluşturmak için aşağıdaki yordamı kullanın.
 
    ```console
    # For defining a policy in a subscription
-   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
 
    # For defining a policy in a management group
-   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
    ```
 
    Önceki {SubscriptionID} öğesini aboneliğinizin KIMLIĞIYLE veya {ManagementGroupId} yerine [Yönetim GRUBUNUZUN](../../management-groups/overview.md)kimliğiyle değiştirin.
@@ -145,7 +145,7 @@ Bir ilke tanımı oluşturmak için aşağıdaki yordamı kullanın.
 
 Bir ilke ataması oluşturmak ve ilke tanımını kaynak grubu düzeyinde atamak için aşağıdaki yordamı kullanın.
 
-1. JSON ilke atama dosyası oluşturmak için aşağıdaki JSON kod parçacığını kopyalayın. Semboller içindeki &lt; &gt; örnek bilgileri kendi değerlerinizle değiştirin.
+1. JSON ilke atama dosyası oluşturmak için aşağıdaki JSON kod parçacığını kopyalayın. Semboller içindeki örnek bilgileri &lt; &gt; kendi değerlerinizle değiştirin.
 
    ```json
    {
@@ -162,10 +162,10 @@ Bir ilke ataması oluşturmak ve ilke tanımını kaynak grubu düzeyinde atamak
 1. Aşağıdaki çağrıyı kullanarak ilke atamasını oluşturun:
 
    ```console
-   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2017-06-01-preview" @<path to Assignment JSON file>
+   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2019-09-01" @<path to Assignment JSON file>
    ```
 
-   Semboller içindeki &lt; &gt; örnek bilgileri kendi değerlerinizle değiştirin.
+   Semboller içindeki örnek bilgileri &lt; &gt; kendi değerlerinizle değiştirin.
 
    REST API HTTP çağrıları yapma hakkında daha fazla bilgi için bkz. [Azure REST API kaynakları](/rest/api/resources/).
 
@@ -205,18 +205,18 @@ Bir ilke tanımı oluşturmak için aşağıdaki yordamı kullanın:
    Komut, _ortak ağlarda açık olan denetim depolama hesapları_adlı bir ilke tanımı oluşturur.
    Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için, bkz. [az Policy Definition Create](/cli/azure/policy/definition#az-policy-definition-create).
 
-   Konum parametreleri olmadan çağrıldığında, varsayılan `az policy definition creation` olarak ilke tanımını oturum bağlamının seçili aboneliğine kaydetme varsayılan değeri. Tanımı farklı bir konuma kaydetmek için aşağıdaki parametreleri kullanın:
+   Konum parametreleri olmadan çağrıldığında, `az policy definition creation` Varsayılan olarak ilke tanımını oturum bağlamının seçili aboneliğine kaydetme varsayılan değeri. Tanımı farklı bir konuma kaydetmek için aşağıdaki parametreleri kullanın:
 
-   - **--Subscription** -farklı bir aboneliğe kaydedin. Abonelik KIMLIĞI için bir _GUID_ değeri veya abonelik adı için bir _dize_ değeri gerektirir.
-   - **--Yönetim-Group** -bir yönetim grubuna Kaydet. Bir _dize_ değeri gerektirir.
+   - **abonelik** -farklı bir aboneliğe kaydedin. Abonelik KIMLIĞI için bir _GUID_ değeri veya abonelik adı için bir _dize_ değeri gerektirir.
+   - **Yönetim-grup** -bir yönetim grubuna kaydedin. Bir _dize_ değeri gerektirir.
 
-1. Bir ilke ataması oluşturmak için aşağıdaki komutu kullanın. Semboller içindeki &lt; &gt; örnek bilgileri kendi değerlerinizle değiştirin.
+1. Bir ilke ataması oluşturmak için aşağıdaki komutu kullanın. Semboller içindeki örnek bilgileri &lt; &gt; kendi değerlerinizle değiştirin.
 
    ```azurecli-interactive
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   ' Deki `az policy assignment create` **--scope** parametresi yönetim grubu, abonelik, kaynak grubu veya tek bir kaynakla birlikte geçerlidir. Parametresi tam kaynak yolunu kullanır. Her kapsayıcının **kapsam** için olan model aşağıdaki gibidir. ,,, Ve `{mgName}` ' ı kaynak adı, kaynak grubu adı, abonelik kimliği ve yönetim grubu adıyla değiştirin. `{rName}` `{rgName}` `{subId}` `{rType}`kaynağın **kaynak türüyle** (örneğin, bir VM `Microsoft.Compute/virtualMachines` için) değiştirilmelidir.
+   ' Deki **kapsam** parametresi, `az policy assignment create` Yönetim grubu, abonelik, kaynak grubu veya tek bir kaynakla birlikte geçerlidir. Parametresi tam kaynak yolunu kullanır. Her kapsayıcının **kapsam** için olan model aşağıdaki gibidir. ,,, Ve ' ı `{rName}` `{rgName}` `{subId}` `{mgName}` kaynak adı, kaynak grubu adı, abonelik kimliği ve yönetim grubu adıyla değiştirin. `{rType}`kaynağın **kaynak türüyle** (örneğin, `Microsoft.Compute/virtualMachines` bir VM için) değiştirilmelidir.
 
    - Kaynak`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Kaynak grubu-`/subscriptions/{subID}/resourceGroups/{rgName}`

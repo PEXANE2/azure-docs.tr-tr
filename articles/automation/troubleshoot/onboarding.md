@@ -1,6 +1,6 @@
 ---
-title: Azure Otomasyonu yönetim çözümlerini ekleme sorunlarını giderme
-description: Azure Otomasyonu çözüm ekleme hatalarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin.
+title: Azure Otomasyonu özelliği dağıtım sorunlarını giderme
+description: Bu makalede, Azure Otomasyonu özellikleri dağıtıldığında ortaya çıkan sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 27b93e77e7b813e73496d15c4003e999daff10d5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836538"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681273"
 ---
-# <a name="troubleshoot-solution-onboarding"></a>Çözüm ekleme sorunlarını giderme
+# <a name="troubleshoot-feature-deployment-issues"></a>Özellik dağıtım sorunlarını giderme
 
-Azure Otomasyonu Güncelleştirme Yönetimi çözümünü veya Değişiklik İzleme ve envanter çözümünü eklediğinizde hata iletileri alabilirsiniz. Bu makalede oluşabilecek çeşitli hatalar ve bunların nasıl giderileceği açıklanmaktadır.
+Azure Otomasyonu Güncelleştirme Yönetimi özelliğini veya Değişiklik İzleme ve envanter özelliğini sanal makinelerinize dağıtırken hata iletileri alabilirsiniz. Bu makalede oluşabilecek hatalar ve bunların nasıl çözümleneceği açıklanır.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
@@ -39,7 +39,7 @@ Azure Otomasyonu durum yapılandırması ' ndan düğümün kaydını kaldırın
 
 #### <a name="issue"></a>Sorun
 
-HTTPS trafiğini sonlandıran ve ardından yeni bir sertifika kullanarak trafiği yeniden şifreleyen bir ara sunucu çözümünü bağladığınızda hizmet bağlantıya izin vermez.
+HTTPS trafiğini sonlandıran ve ardından yeni bir sertifika kullanarak trafiği yeniden şifreleyen bir proxy üzerinden bağlandığınızda, hizmet bağlantıya izin vermez.
 
 #### <a name="cause"></a>Nedeni
 
@@ -51,11 +51,11 @@ Azure Otomasyonu, trafiği şifrelemek için kullanılan sertifikaların yeniden
 
 ## <a name="general-errors"></a>Genel hatalar
 
-### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Senaryo: ekleme "çözüm etkinleştirilemiyor" iletisiyle başarısız oluyor
+### <a name="scenario-feature-deployment-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Senaryo: Özellik dağıtımı "çözüm etkinleştirilemiyor" iletisiyle başarısız oluyor
 
 #### <a name="issue"></a>Sorun
 
-Bir çözüme bir VM 'yi yüklemeye çalıştığınızda aşağıdaki iletilerden birini alırsınız:
+Bir sanal makinede bir özelliği etkinleştirmeye çalıştığınızda aşağıdaki iletilerden birini alırsınız:
 
 ```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
@@ -71,13 +71,13 @@ Bu hata, VM veya çalışma alanında ya da Kullanıcı için hatalı veya eksik
 
 #### <a name="resolution"></a>Çözüm
 
-[Makineleri eklemek için gereken doğru izinlere](../automation-role-based-access-control.md#onboarding-permissions)sahip olduğunuzdan emin olun ve sonra çözümü tekrar çalıştırmayı deneyin. Hata iletisini `The solution cannot be enabled on this VM because the permission to read the workspace is missing`alırsanız, sanal makinenin bir çalışma alanına eklendi olup olmadığını `Microsoft.OperationalInsights/workspaces/read` bulmak için izninizin olduğundan emin olun.
+Doğru [özellik dağıtım izinlerine](../automation-role-based-access-control.md#onboarding-permissions)sahip olduğunuzdan emin olun ve sonra özelliği yeniden dağıtmayı deneyin. Hata iletisini alırsanız `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , `Microsoft.OperationalInsights/workspaces/read` VM 'nin bir çalışma alanı için etkinleştirilip etkinleştirilmediğini bulmak için izninizin olduğundan emin olun.
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Senaryo: ekleme işlemi "tanılama günlüğü için Otomasyon hesabı yapılandırılamadı" iletisiyle başarısız oluyor
+### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Senaryo: Özellik dağıtımı "tanılama günlüğü için Otomasyon hesabı yapılandırılamadı" iletisiyle başarısız oluyor
 
 #### <a name="issue"></a>Sorun
 
-Bir çözüme bir VM 'yi yüklemeye çalıştığınızda şu iletiyi alırsınız:
+Bir sanal makinede bir özelliği etkinleştirmeye çalıştığınızda şu iletiyi alırsınız:
 
 ```error
 Failed to configure automation account for diagnostic logging
@@ -89,13 +89,13 @@ Fiyatlandırma Katmanı aboneliğin faturalama modeliyle eşleşmezse bu hataya 
 
 #### <a name="resolution"></a>Çözüm
 
-Log Analytics çalışma alanınızı el ile oluşturun ve oluşturduğunuz çalışma alanını seçmek için ekleme işlemini tekrarlayın.
+Log Analytics çalışma alanınızı el ile oluşturun ve oluşturulan çalışma alanını seçmek için özellik dağıtım sürecini tekrarlayın.
 
 ### <a name="scenario-computergroupqueryformaterror"></a><a name="computer-group-query-format-error"></a>Senaryo: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Sorun
 
-Bu hata kodu, çözümü hedeflemek için kullanılan kayıtlı arama bilgisayar grubu sorgusunun doğru biçimlendirilmediği anlamına gelir. 
+Bu hata kodu, özelliği hedeflemek için kullanılan kayıtlı arama bilgisayar grubu sorgusunun doğru biçimlendirilmediği anlamına gelir. 
 
 #### <a name="cause"></a>Nedeni
 
@@ -103,7 +103,7 @@ Sorguyu değiştirmiş olabilirsiniz veya sistem onu değiştirmiş olabilir.
 
 #### <a name="resolution"></a>Çözüm
 
-Çözüm için sorguyu silebilir ve sonra, sorguyu yeniden oluşturan çözümü yeniden ekleyebilirsiniz. Sorgu, **kayıtlı aramalar**altında çalışma alanınızda bulunabilir. Sorgunun adı **Microsoftdefaultcomputergroup**, sorgunun kategorisi ise ilişkili çözümün adıdır. Birden çok çözüm etkinse, **Microsoftdefaultcomputergroup** sorgusu **kayıtlı aramalarda**birden çok kez görünür.
+Özelliğin sorgusunu silebilir ve sonra yeniden etkinleştirerek özelliği yeniden oluşturabilirsiniz. Sorgu, **kayıtlı aramalar**altında çalışma alanınızda bulunabilir. Sorgunun adı **Microsoftdefaultcomputergroup**, sorgunun kategorisi ise ilişkili özelliğin adıdır. Birden çok özellik etkinleştirilirse, **Microsoftdefaultcomputergroup** sorgusu **kayıtlı aramalarda**birden çok kez görünür.
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Senaryo: policyihla
 
@@ -117,10 +117,10 @@ Bir ilke işlemin tamamlanmasını engelliyor.
 
 #### <a name="resolution"></a>Çözüm
 
-Çözümü başarıyla dağıtmak için, belirtilen ilkeyi değiştirmeyi göz önünde bulundurmanız gerekir. Tanımlanabileceğinden çok sayıda farklı ilke türü olduğundan, gerekli değişiklikler ihlal edilen ilkeye göre değişir. Örneğin, bir ilke, içerilen bazı kaynakların içeriğini değiştirme iznini reddeden bir kaynak grubunda tanımlanmışsa, bu düzeltmelerden birini seçebilirsiniz:
+Özelliği başarıyla dağıtmak için, belirtilen ilkeyi değiştirmeyi göz önünde bulundurmanız gerekir. Tanımlanabileceğinden çok sayıda farklı ilke türü olduğundan, gerekli değişiklikler ihlal edilen ilkeye göre değişir. Örneğin, bir ilke, içerilen bazı kaynakların içeriğini değiştirme iznini reddeden bir kaynak grubunda tanımlanmışsa, bu düzeltmelerden birini seçebilirsiniz:
 
 * İlkeyi tamamen kaldırın.
-* Çözümü farklı bir kaynak grubuna ekleme deneyin.
+* Farklı bir kaynak grubu için özelliği etkinleştirmeyi deneyin.
 * İlkeyi belirli bir kaynak için yeniden hedefleyin, örneğin bir Otomasyon hesabı.
 * İlkenin reddedecek şekilde yapılandırıldığı kaynak kümesini gözden geçirin.
 
@@ -138,26 +138,26 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Nedeni
 
-Bu hata, Otomasyon hesabınıza ve bağlantılı Log Analytics çalışma alanına bağlı Log Analytics çalışma alanınızda hala etkin olan çözümlere sahip olduğunuzda oluşur.
+Bu hata, Otomasyon hesabınıza ve Log Analytics çalışma alanına bağlı Log Analytics çalışma alanınızda etkin olan özelliklerden hala sahip olduğunuzda oluşur.
 
 ### <a name="resolution"></a>Çözüm
 
-Aşağıdaki çözümleri kullanıyorsanız çalışma alanınızdan kaldırın:
+Aşağıdaki özelliklerle ilgili kaynakları, kullanıyorsanız, çalışma alanınızdan kaldırın:
 
 * Güncelleştirme Yönetimi
 * Değişiklik İzleme ve Stok
 * Hizmetin kapalı olduğu saatlerde Sanal Makineleri Başlatma/Durdurma
 
-Çözümleri kaldırdıktan sonra, çalışma alanınızın bağlantısını kaldırabilirsiniz. Bu çözümlerdeki mevcut yapıtları çalışma alanınızdan ve otomasyon hesabınızda temizlemeniz önemlidir:
+Özellik kaynaklarını kaldırdıktan sonra, çalışma alanınızın bağlantısını kaldırabilirsiniz. Çalışma alanınızda ve otomasyon hesabınızda bu özelliklerden var olan yapıtları temizlemek önemlidir:
 
 * Güncelleştirme Yönetimi için, Otomasyon hesabınızdan **güncelleştirme dağıtımlarını (zamanlamalar)** kaldırın.
-* VM'leri çalışma saatleri dışında Başlat/Durdur için, Otomasyon hesabınızdaki Çözüm bileşenlerinde bulunan kilitleri **Ayarlar** > **kilitleri**altında kaldırın. Daha fazla bilgi için bkz. [VM'leri çalışma saatleri dışında Başlat/Durdur çözümünü kaldırma](../automation-solution-vm-management.md#remove-the-solution).
+* VM'leri çalışma saatleri dışında Başlat/Durdur için, Otomasyon hesabınızdaki Özellik bileşenlerinde bulunan kilitleri **Ayarlar**  >  **kilitleri**altında kaldırın. Daha fazla bilgi için bkz. [özelliği kaldırma](../automation-solution-vm-management.md#remove-the-feature).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Windows uzantısı hatalarında Log Analytics
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Windows uzantısı için Log Analytics aracısının yüklemesi çeşitli nedenlerden dolayı başarısız olabilir. Aşağıdaki bölümde, Windows uzantısı için Log Analytics aracısının dağıtımı sırasında hatalara neden olabilecek ekleme sorunları açıklanmaktadır.
+Windows uzantısı için Log Analytics aracısının yüklemesi çeşitli nedenlerden dolayı başarısız olabilir. Aşağıdaki bölümde, Windows uzantısı için Log Analytics aracısının dağıtımı sırasında hatalara neden olabilecek Özellik dağıtım sorunları açıklanmaktadır.
 
 >[!NOTE]
 >Windows için Log Analytics Aracısı, şu anda Azure Otomasyonu 'nda Microsoft Monitoring Agent (MMA) için kullanılan addır.

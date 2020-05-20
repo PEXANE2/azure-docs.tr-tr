@@ -12,38 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 396e1d9e6ad474d053ca803218d55396c073845d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261287"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680189"
 ---
 # <a name="more-details-about-features-in-preview"></a>Önizlemedeki özellikler hakkında daha fazla ayrıntı
 Bu konuda, şu anda önizleme aşamasında olan özelliklerin nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="group-writeback"></a>Grup geri yazma
-İsteğe bağlı özelliklerde grup geri yazma seçeneği, Exchange yüklü bir ormana **Office 365 gruplarını** geri almanıza olanak sağlar. Bu, bulutta her zaman ana kopyalı bir gruptur. Şirket içi Exchange kullanıyorsanız, şirket içi Exchange posta kutusu olan kullanıcıların bu gruplardan e-posta gönderip alabilmesi için bu grupları şirket içinde geri yazabilirsiniz.
+## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (Genel Önizleme) 
 
-Office 365 grupları ve bunların nasıl kullanılacağı hakkında daha fazla bilgi [burada](https://aka.ms/O365g)bulunabilir.
-
-Office 365 Grubu, şirket içi AD DS dağıtım grubu olarak temsil edilir. Şirket içi Exchange Server, bu yeni grup türünü tanımak için Exchange 2013 toplu güncelleştirme 8 ' de (2015 Mart 'ta yayımlanmıştır) veya Exchange 2016 ' de olmalıdır.
-
-**Önizleme sırasında Notlar**
-
-* Adres defteri özniteliği şu anda önizlemede doldurulmamış. Bu öznitelik olmadan grup, GAL 'nda görünmez. Bu özniteliği doldurmanın en kolay yolu, Exchange PowerShell cmdlet 'ini `update-recipient`kullanmaktır.
-* Yalnızca Exchange şemasına sahip ormanlar gruplar için geçerli hedeflerdir. Exchange algılanmadığında, grup geri yazma özelliğinin etkinleştirilmesi mümkün değildir.
-* Şu anda yalnızca tek ormanlı Exchange kuruluşu dağıtımları desteklenmektedir. Şirket içinde birden fazla Exchange kuruluşunuz varsa, bu grupların diğer ormanlarınızdan görünmesi için bir şirket içi GALSync çözümüne ihtiyacınız vardır.
-* Grup geri yazma özelliği güvenlik gruplarını veya dağıtım gruplarını işlemez.
-
-> [!NOTE]
-> Grup geri yazma için Azure AD Premium bir abonelik gereklidir.
-> 
->
+Azure Active Directory için eşitleme hizmeti işlemlerinin performansını geliştiren Azure AD Connect için yeni bir uç nokta (API) dağıttık. Yeni v2 uç noktasından yararlanarak, Azure AD 'ye dışarı ve içeri aktarma sırasında dikkat çekici performans kazanımları yaşarsınız. Bu yeni uç nokta, en fazla 250 k üye içeren grupları eşitlemeyi da destekler. Bu uç noktanın kullanılması aynı zamanda, grup geri yazma özelliği etkinken, şirket içi Active Directory en fazla üyelik sınırı olmadan, daha fazla üyelik sınırı olmadan yeniden O365 Birleşik grupları yazmanızı sağlar.   Daha fazla bilgi için bkz. [Sync v2 ENDPOINT API (Genel Önizleme) Azure AD Connect](how-to-connect-sync-endpoint-api-v2.md).
 
 ## <a name="user-writeback"></a>Kullanıcı geri yazma
 > [!IMPORTANT]

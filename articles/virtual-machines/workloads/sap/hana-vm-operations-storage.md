@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/10/2020
+ms.date: 05/19/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0d8228586c0e20e4314331339aa2f2c46a38c9a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: aa3096f43952c047620b310412b27c434fc5fb06
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792165"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682593"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -55,6 +55,9 @@ Bazı depolama türleri birleştirilebilir. Örneğin,/Hana/Data ' ı Premium de
 - 16 MB ve 64 MB g/ç boyutları ile **/Hana/Data** için en az 250 MB/sn yazma etkinliğini etkinleştirin
 
 Yetersiz depolama gecikmesi DBMS sistemleri için kritik öneme sahip olduğu için, DBMS gibi SAP HANA, verileri bellekteki tut gibi. Depolama alanındaki kritik yol genellikle DBMS sistemlerinin işlem günlüğü yazmaları etrafında olur. Ayrıca, kilitlenme kurtarmasından sonra işlemi yazma veya bellek içi veri yükleme gibi işlemler önemli olabilir. Bu nedenle, **/Hana/Data** ve **/Hana/log** birimleri için Azure Premium disklerinin yararlanmak **zorunludur** . SAP tarafından istenen en düşük **/Hana/log** ve **/Hana/Data** aktarım hızını elde etmek Için, birden çok Azure Premium Depolama diski üzerinden MDADDM veya LVM kullanarak bir RAID 0 oluşturmanız gerekir. Ve RAID birimlerini **/Hana/Data** ve **/Hana/log** birimleri olarak kullanın. 
+
+> [!IMPORTANT]
+>/Data,/log ve/Shared adlı üç SAP HANA FILESYSTEMS, varsayılan veya kök birim grubuna yerleştirilmemelidir.  Genellikle/Data,/log ve/sharediçin ayrı birim grupları oluşturmak üzere Linux satıcıları kılavuzunu izlemeniz önerilir.
 
 **Öneri: RAID 0 için şerit boyutları olarak kullanım önerisi:**
 
@@ -258,13 +261,13 @@ SAP NetWeaver ve SAP HANA için Azure NetApp Files düşünürken, aşağıdaki 
 - Azure NetApp Files, [dışarı aktarma ilkesi](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)sunar: izin verilen istemcileri, erişim türünü (okuma&yazma, salt okuma, vb.) denetleyebilirsiniz. 
 - Azure NetApp Files Özellik henüz bölge farkında değildir. Şu anda Azure NetApp Files özelliği bir Azure bölgesindeki tüm kullanılabilirlik bölgelerinde dağıtılmaz. Bazı Azure bölgelerindeki olası gecikme etkilerine yönelik etkileri göz önünde bulundurun.  
 - Düşük gecikme süresi boyunca sanal makinelerin Azure NetApp depolama alanına yakın bir şekilde dağıtılmasını sağlamak önemlidir. 
-- <b>SID</b>adm IÇIN Kullanıcı kimliği ve sanal MAKINELERDEKI grup kimliği `sapsys` , Azure NetApp Files yapılandırma ile aynı olmalıdır. 
+- <b>SID</b>adm IÇIN Kullanıcı kimliği ve sanal MAKINELERDEKI grup kimliği, `sapsys` Azure NetApp Files yapılandırma ile aynı olmalıdır. 
 
 > [!IMPORTANT]
 > SAP HANA iş yükleri için düşük gecikme süresi kritik öneme sahiptir. Sanal makinelerin ve Azure NetApp Files birimlerinin yakın bir yerde dağıtıldığından emin olmak için Microsoft temsilcinizle birlikte çalışın.  
 
 > [!IMPORTANT]
-> <b>SID</b>adm Kullanıcı kimliği ve sanal makine Ile Azure NetApp yapılandırması `sapsys` arasındaki grup kimliği arasında bir uyumsuzluk varsa, sanal makinelere takılan Azure NetApp birimlerindeki dosyaların izinleri olarak `nobody`görüntülenecektir. Azure NetApp Files için [Yeni bir sistem](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) oluştururken `sapsys`, <b>SID</b>adm ve grup kimliği için doğru Kullanıcı kimliğini belirttiğinizden emin olun.
+> <b>SID</b>adm Kullanıcı kimliği ve `sapsys` sanal makine Ile Azure NetApp YAPıLANDıRMASı arasındaki grup kimliği arasında bir uyumsuzluk varsa, sanal makinelere takılan Azure NetApp birimlerindeki dosyaların izinleri olarak görüntülenecektir `nobody` . <b>sid</b> `sapsys` Azure NetApp Files için [Yeni bir sistem](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) oluştururken, SID adm ve grup kimliği için doğru Kullanıcı kimliğini belirttiğinizden emin olun.
 
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Azure NetApp Files HANA veritabanı için boyutlandırma
 
@@ -283,7 +286,7 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](https
 > [!IMPORTANT]
 > Tek bir NFS biriminde dağıttığınız kapasiteden bağımsız olarak üretilen iş, bir sanal makinedeki bir tüketici tarafından 1.2-1.4 GB/sn bant genişliği yararlanılabilir aralığında platoya 'ya bekleniyor. Bu, ANF teklifinin temel mimarisiyle ve NFS 'nin çevresindeki ilgili Linux oturum sınırlarının ile ilgilidir. [Azure NetApp Files Için performans kıyaslama test sonuçları](https://docs.microsoft.com/azure/azure-netapp-files/performance-benchmarks-linux) makalesinde belgelenen performans ve verimlilik numaraları, birden fazla istemci VM 'sine sahip BIR paylaşılan NFS biriminde ve birden çok oturumla bir sonuç olarak yapılmıştır. Bu senaryo, SAP 'de ölçüdiğimiz senaryoya göre farklılık gösteren bir senaryodur. Bir NFS birimine göre tek bir VM 'den üretilen iş verimini ölçyoruz. ANF üzerinde barındırılıyor.
 
-Veri ve günlük SAP minimum aktarım hızı gereksinimlerini karşılamak için ve yönergelerine göre `/hana/shared`, önerilen boyutlar şöyle görünür:
+Veri ve günlük SAP minimum aktarım hızı gereksinimlerini karşılamak için ve yönergelerine göre `/hana/shared` , önerilen boyutlar şöyle görünür:
 
 | Birim | Boyut<br /> Premium depolama katmanı | Boyut<br /> Ultra depolama katmanı | Desteklenen NFS Protokolü |
 | --- | --- | --- |
@@ -298,7 +301,7 @@ Veri ve günlük SAP minimum aktarım hızı gereksinimlerini karşılamak için
 Bu nedenle, zaten Ultra disk depolaması için listelenen ANF birimleri için benzer aktarım hızını dağıtmayı düşünebilirsiniz. Ayrıca, zaten Ultra disk tablolarında gerçekleştirilen farklı VM SKU 'Larının birimleri için listelenen boyutların boyutlarını göz önünde bulundurun.
 
 > [!TIP]
-> Birimlere gerek `unmount` duymadan Azure NetApp Files birimleri dinamik olarak yeniden boyutlandırabilir, sanal makineleri durdurabilir veya SAP HANA durdurabilirsiniz. Bu, uygulamanızı hem beklenen hem de öngörülemeyen üretilen iş taleplerini karşılamak için esneklik sağlar.
+> Birimlere gerek duymadan Azure NetApp Files birimleri dinamik olarak yeniden boyutlandırabilir `unmount` , sanal makineleri durdurabilir veya SAP HANA durdurabilirsiniz. Bu, uygulamanızı hem beklenen hem de öngörülemeyen üretilen iş taleplerini karşılamak için esneklik sağlar.
 
 Bir SAP HANA genişleme yapılandırması ile birlikte bekleyen bir yapılandırma, [Azure VM 'lerde bulunan ve SUSE Linux Enterprise Server Azure NetApp Files Ile Azure VM 'lerinde bekleme düğümüyle birlikte SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)olarak yayımlanmış.
 

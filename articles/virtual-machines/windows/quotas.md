@@ -8,18 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 13d9153d1bf6776b7d3d71c4a85c18d8529188b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6640640248854d91078203012a01d8865845702a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097889"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680928"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Sanal makine vCPU kotaları
 
 Sanal makineler ve sanal makine ölçek kümeleri için vCPU kotaları her bir bölgede her bir abonelik için iki katmanda düzenlenir. İlk katman toplam bölgesel vCPU sayısı ve ikinci katman D serisi vCPU 'Lar gibi çeşitli VM boyutu ailesi çekirdekleri. Yeni bir VM 'nin dağıtıldığı her zaman, sanal makine için vCPU 'Lar VM boyut ailesi için vCPU kotasını veya toplam bölgesel vCPU kotasını aşmamalıdır. Bu kotalardan biri aşılırsa, VM dağıtımına izin verilmez. Ayrıca, bölgedeki toplam sanal makine sayısı için bir kota de vardır. Bu kotaların her biri hakkındaki ayrıntılar, [Azure Portal](https://portal.azure.com) **abonelik** sayfasının **kullanım + kotalar** bölümünde görünebilir veya PowerShell kullanarak değerleri sorgulayabilirsiniz.
 
-   
+> [!NOTE]
+> Kota, birlikte kullanılan ve serbest bırakılmış toplam çekirdek sayısına göre hesaplanır. Ek çekirdeklere ihtiyacınız varsa, daha fazla ihtiyaç duyulmayan [bir kota artışı](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) veya silme VM 'leri isteyin. 
  
 ## <a name="check-usage"></a>Kullanımı denetleme
 

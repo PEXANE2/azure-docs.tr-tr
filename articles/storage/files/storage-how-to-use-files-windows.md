@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2694e0c1536064267faad10517ae58d0709ad1c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 62b3445ba841a87f04dbe8c867411814b849be07
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231773"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682453"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows ve Windows Server’da sorunsuz bir şekilde kullanılabilir. Bu makalede Azure dosya paylaşımını Windows ve Windows Server ile kullanma konusunda dikkat edilmesi gerekenler anlatılmaktadır.
@@ -40,7 +40,7 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 > [!Note]  
 > Her zaman Windows sürümünüz için en yeni KB’yi almanızı öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 * **Depolama hesabı adı**: Azure dosya paylaşımını bağlayabilmeniz için depolama hesabınızın adı gerekir.
 
 * **Depolama hesabı anahtarı**: Azure dosya paylaşımını bağlayabilmeniz için birincil (veya ikincil) depolama anahtarı gerekir. SAS anahtarları şu an bağlama için desteklenmemektedir.
@@ -80,7 +80,7 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 ## <a name="using-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 Bir Azure dosya paylaşımını Windows'da kullanmak için bağlayarak bir sürücü harfi veya bağlama noktası yolu atamanız veya [UNC adı](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx) aracılığıyla erişmeniz gerekir. 
 
-Etkileşim kurduğunuz ve Windows Server, Linux Samba sunucusu veya NAS cihazı üzerinde barındırılan diğer SMB paylaşımlarından farklı olarak Azure dosya paylaşımları şu an için Active Directory (AD) veya Azure Active Directory (AAD) kimliğiniz ile Kerberos kimlik doğrulamasını desteklemez ancak bu, [üzerinde çalıştığımız](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles) bir özelliktir. Bunun yerine Azure dosya paylaşımınıza Azure dosya paylaşımınızı içeren depolama hesabına ait depolama hesabı anahtarıyla erişmeniz gerekir. Depolama hesabı anahtarı, eriştiğiniz dosya paylaşımındaki tüm dosya ve klasörlere yönelik yönetici izinleri ve depolama hesabınızda bulunan tüm dosya paylaşımları ve diğer depolama kaynakları (blob 'lar, kuyruklar, tablolar vb.) dahil olmak üzere bir depolama hesabı için yönetici anahtarıdır. Bu özellik iş yükünüz için yeterli değilse [Azure Dosya Eşitleme](storage-sync-files-planning.md), AAD tabanlı Kerberos kimlik doğrulaması ve ACL desteği genel kullanıma sunulana kadar Kerberos kimlik doğrulamasının yokluğunu telafi edebilir.
+Bu makale, dosya paylaşımıyla erişmek için depolama hesabı anahtarını kullanır. Depolama hesabı anahtarı, eriştiğiniz dosya paylaşımındaki tüm dosya ve klasörlere yönelik yönetici izinleri ve depolama hesabınızda bulunan tüm dosya paylaşımları ve diğer depolama kaynakları (blob 'lar, kuyruklar, tablolar vb.) dahil olmak üzere bir depolama hesabı için yönetici anahtarıdır. İş yükünüz için yeterli değilse, [Azure dosya eşitleme](storage-sync-files-planning.md) KULLANILABILIR veya [SMB üzerinden kimlik tabanlı kimlik doğrulaması](storage-files-active-directory-overview.md)kullanabilirsiniz.
 
 Azure'da SMB dosya paylaşımına ihtiyaç duyan iş kolu (LOB) uygulamalarını kullanıma sunmak için sıklıkla kullanılan model, Azure dosya paylaşımını Azure VM'de ayrılmış bir Windows dosya sunucusu çalıştırmaya alternatif olarak kullanmaktır. Bir iş kolu uygulamasını, Azure dosya paylaşımını kullanacak şekilde yapılandırma sırasında dikkat edilmesi gereken önemli noktalardan biri, çoğu iş kolu uygulamasının VM'nin yönetici hesabı yerine sınırlı sistem izinlerine sahip adanmış hizmet hesabı bağlamında çalıştığıdır. Bu nedenle Azure dosya paylaşımında yönetici hesabı yerine hizmet hesabı bağlamında bağlama yaptığınızdan/kimlik bilgilerini kaydettiğinizden emin olun.
 
@@ -186,7 +186,7 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![“Ağ sürücüsüne bağlan” açılan menüsünün ekran görüntüsü](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. Sürücü harfini seçin ve UNC yolu biçiminde bir UNC yolu girin `<storageAccountName>.file.core.windows.net/<fileShareName>`. Örneğin: `anexampleaccountname.file.core.windows.net/example-share-name`.
+1. Sürücü harfini seçin ve UNC yolu biçiminde bir UNC yolu girin `<storageAccountName>.file.core.windows.net/<fileShareName>` . Örneğin: `anexampleaccountname.file.core.windows.net/example-share-name`.
     
     ![“Ağ Sürücüsüne Bağlan” iletişim kutusunun ekran görüntüsü](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 

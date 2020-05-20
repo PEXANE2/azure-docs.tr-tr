@@ -1,14 +1,14 @@
 ---
 title: İlkeyi Kod iş akışları olarak tasarklama
 description: Azure Ilke tanımlarınızı kod olarak dağıtmak ve kaynakları otomatik olarak doğrulamak için iş akışları tasarlamayı öğrenin.
-ms.date: 11/04/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fd77fdd4011c3e1e83f8dfa9f30045bb72881c25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 972ec40609c340b159d21dde2bf18ab3330bf8cd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187741"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684275"
 ---
 # <a name="design-policy-as-code-workflows"></a>İlkeyi Kod iş akışları olarak tasarklama
 
@@ -17,7 +17,7 @@ Bulut yönetimi ile yolculukta ilerleyerek, Azure portal her bir ilke tanımın�
 - Kod olarak altyapı: ortamlarınızı tanımlayan içeriği, Kaynak Yöneticisi şablonlarından her şeyi Azure Ilke tanımlarına kaynak kodu olarak Azure 'a göre değerlendirme yöntemi.
 - DevOps: son kullanıcılarımıza sürekli değer teslimi sağlayan kişiler, süreç ve ürünlerin birleşimi.
 
-Kod olarak ilke, bu fikirlerin birleşimidir. Temelde, ilke tanımlarınızı kaynak denetiminde tutun, her değişiklik yapıldığında bu değişikliği test edin ve doğrulayın. Bununla birlikte, kod veya DevOps ile altyapıyla ilke katılımı olması gerekmez.
+Kod olarak ilke, bu fikirlerin birleşimidir. Temelde, ilke tanımlarınızı kaynak denetiminde tutun, her değişiklik yapıldığında, test edin ve bu değişikliği doğrulayın. Bununla birlikte, kod veya DevOps ile altyapıyla ilke katılımı olması gerekmez.
 
 Doğrulama adımı aynı zamanda diğer sürekli tümleştirme veya sürekli dağıtım iş akışlarının bir bileşeni olmalıdır. Örnek olarak bir uygulama ortamının veya sanal altyapının dağıtımı sayılabilir. Azure Ilke doğrulamasını derleme ve dağıtım sürecinin erken bir bileşeni haline getirerek uygulama ve operasyon ekipleri, değişiklikleri çok geç olmayan ve üretimde dağıtmaya çalıştıkları zaman, daha uzun bir süre boyunca, daha fazla zaman uyumlu olup olmadığını bulur.
 
@@ -29,7 +29,7 @@ Kod olarak Ilkenin önerilen genel iş akışı şu diyagram gibi görünür:
 
 ### <a name="create-and-update-policy-definitions"></a>İlke tanımları oluşturma ve güncelleştirme
 
-İlke tanımları JSON kullanılarak oluşturulur ve kaynak denetiminde depolanır. Her ilke, aynı klasöre depolanması gereken parametreler, kurallar ve ortam parametreleri gibi kendi dosya kümesidir. Aşağıdaki yapı, ilke tanımlarınızı kaynak denetiminde tutmanın önerilen bir yoludur.
+İlke tanımları JSON kullanılarak oluşturulur ve kaynak denetiminde depolanır. Her ilkenin aynı klasöre depolanması gereken parametreler, kurallar ve ortam parametreleri gibi kendi dosya kümesi vardır. Aşağıdaki yapı, ilke tanımlarınızı kaynak denetiminde tutmanın önerilen bir yoludur.
 
 ```text
 .
@@ -87,10 +87,10 @@ Benzer şekilde, girişimlerin kendi JSON dosyası ve aynı klasörde depolanmas
 
 Otomasyon yeni oluşturulmuş veya güncelleştirilmiş ilke ya da girişim tanımlarınızı tamamladıktan sonra Azure 'daki nesne ile ilgili güncelleştirmeyi yaptıktan sonra, yapılan değişiklikleri test etmek zaman alabilir. Uygulamasının parçası olan ilke veya girişim, üretimden en uzak ortamda bulunan kaynaklara atanmalıdır. Bu ortam genellikle _dev_'dir.
 
-Atama, kaynak oluşturma ve güncelleştirmelerin engellenmemesi, ancak mevcut kaynakların güncelleştirilmiş ilke tanımıyla uyumluluk için denetlenmeye devam edebilmesi için, _Disabled_ 'ın [Enforcementmode](./assignment-structure.md#enforcement-mode) kullanması gerekir. EnforcementMode da dahil olmak üzere, atama kapsamının bir kaynak grubu ya da ilkeleri doğrulamak için özel olarak kullanılan bir abonelik olması önerilir.
+Atama, kaynak oluşturma ve güncelleştirmelerin engellenmemesi, ancak mevcut kaynakların güncelleştirilmiş ilke tanımıyla uyumluluk için denetlenmeye devam edebilmesi için, _Disabled_ 'ın [Enforcementmode](./assignment-structure.md#enforcement-mode) kullanması gerekir. EnforcementMode da dahil olmak üzere, atama kapsamının bir kaynak grubu ya da özel olarak ilkeleri doğrulamak için bir abonelik olması önerilir.
 
 > [!NOTE]
-> Zorlama modu yararlı olsa da, çeşitli koşullarda bir ilke tanımının kapsamlı bir şekilde test edilmesine yönelik bir değişiklik değildir. İlke tanımı, ile `PUT` test edilmelidir ve `PATCH` REST API çağrılarınız, uyumlu ve uyumlu olmayan kaynaklar ve uç durumları, kaynakta eksik bir özellik gibi.
+> Zorlama modu yararlı olsa da, çeşitli koşullarda bir ilke tanımının kapsamlı bir şekilde test edilmesine yönelik bir değişiklik değildir. İlke tanımı, ile test edilmelidir `PUT` ve `PATCH` REST API çağrılarınız, uyumlu ve uyumlu olmayan kaynaklar ve uç durumları, kaynakta eksik bir özellik gibi.
 
 Atama dağıtıldıktan sonra, yeni atama için [uyumluluk verilerini almak](../how-to/get-compliance-data.md) üzere ilke SDK 'sını kullanın. İlkeleri ve atamaları test etmek için kullanılan ortamda hem uyumlu hem de uyumlu olmayan kaynaklar olmalıdır. Kod için iyi bir birim testi gibi, kaynakların beklenen şekilde olduğunu ve yanlış pozitif veya yanlış-negatifler olduğunu test etmek istersiniz. Test edin ve yalnızca beklediğiniz kadar doğrulandıysanız, ilkeden beklenmedik ve tanımlanamayan etki olabilir. Daha fazla bilgi için bkz. [Yeni bir Azure ilke tanımının etkisini değerlendirme](./evaluate-impact.md).
 
@@ -99,7 +99,7 @@ Atama dağıtıldıktan sonra, yeni atama için [uyumluluk verilerini almak](../
 Atamanın doğrulanması beklentileri karşılıyorsa, sonraki adım düzeltmeyi doğrulamaktır.
 [Deployifnotexists](./effects.md#deployifnotexists) veya [MODIFY](./effects.md#modify) kullanan ilkeler bir düzeltme görevine açılabilir ve uyumlu olmayan bir durumda kaynakları doğru şekilde düzeltebilir.
 
-Bunu yapmanın ilk adımı, ilke tanımına, ilke tanımında tanımlanan rol atamasını vermek için kullanılır. Bu rol ataması, kaynağı uyumlu hale getirmek için gerekli değişiklikleri yapmak üzere ilke atama tarafından yönetilen kimliğe yeterli haklar verir.
+Kaynakları yeniden düzeltme için ilk adım, ilke tanımında tanımlanan rol ataması ilke atamasını verildir. Bu rol ataması, kaynağı uyumlu hale getirmek için gerekli değişiklikleri yapmak üzere ilke atama tarafından yönetilen kimliğe yeterli haklar verir.
 
 İlke atamasının uygun haklara sahip olması durumunda, uyumsuz olduğu bilinen bir kaynak kümesine karşı düzeltme görevi tetiklemek için Ilke SDK 'sını kullanın. Devam etmeden önce bu düzeltilen görevlerle üç test tamamlanmalıdır:
 
@@ -111,7 +111,7 @@ Hem güncelleştirilmiş ilke değerlendirme sonuçlarının hem de ortamın tes
 
 ### <a name="update-to-enforced-assignments"></a>Zorlanan atamalara güncelleştirme
 
-Tüm doğrulama kapıları tamamlandıktan sonra, _etkin_' ın **Enforcementmode** öğesini kullanmak için atamayı güncelleştirin. Bu değişiklik başlangıçta üretimden yalnızca aynı ortamda yapılmalıdır. Bu ortam beklenen şekilde doğrulandıktan sonra, bu değişiklik daha sonra, ilke üretim kaynaklarına dağıtılana kadar bir sonraki ortamı dahil edilmelidir.
+Tüm doğrulama kapıları tamamlandıktan sonra, _etkin_' ın **Enforcementmode** öğesini kullanmak için atamayı güncelleştirin. Bu değişikliği ilk olarak üretim ortamından aynı ortamda yapmanız önerilir. Bu ortam beklenildiği şekilde doğrulandıktan sonra, bu, ilke üretim kaynaklarına dağıtılana kadar, daha sonra bir sonraki ortamı dahil edilmelidir ve bu şekilde devam eder.
 
 ## <a name="process-integrated-evaluations"></a>İşlem tümleşik değerlendirmeleri
 

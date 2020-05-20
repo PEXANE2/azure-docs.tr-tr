@@ -1,14 +1,14 @@
 ---
 title: Kaynak değişikliklerini alma
 description: Bir kaynağın ne zaman değiştiğini öğrenin, değiştirilen özelliklerin bir listesini alın ve diffs 'yi değerlendirin.
-ms.date: 10/09/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d53148f302d82a7563520036f327406ca4a86040
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873038"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681057"
 ---
 # <a name="get-resource-changes"></a>Kaynak değişikliklerini alma
 
@@ -40,8 +40,8 @@ Bir kaynakta nelerin değiştiğini görmekte olan ilk adım, bu kaynakla ilgili
 
 **Resourcechanges** uç noktası, istek gövdesinde aşağıdaki parametreleri kabul eder:
 
-- **RESOURCEID** \[gerekli\]: üzerinde değişiklik aranacak Azure kaynağı.
-- **Aralık** \[gerekli\]: **Zulu saat dilimi (Z)** kullanarak bir değişiklik olayının ne zaman denetleneceği için _Başlangıç_ ve _bitiş_ tarihleri içeren bir özellik.
+- **RESOURCEID** \[ gerekli \] : üzerinde değişiklik aranacak Azure kaynağı.
+- **Aralık** \[ gerekli \] : **Zulu saat dilimi (Z)** kullanarak bir değişiklik olayının ne zaman kontrol edilecek _Başlangıç_ ve _bitiş_ tarihleri içeren bir özellik.
 - **Fetchpropertychanges** (isteğe bağlı): Response nesnesi özellik değişikliklerini içeriyorsa ayarlayan Boolean özellik.
 
 Örnek istek gövdesi:
@@ -289,3 +289,4 @@ Sonuçları karşılaştırmak için, **Resourcechanges** içindeki **Changes** 
 - Bkz. [Başlangıç sorgularında](../samples/starter.md)kullanılan dil.
 - Gelişmiş [sorgularda](../samples/advanced.md)gelişmiş kullanımlar bölümüne bakın.
 - [Kaynakları araştırma](../concepts/explore-resources.md)hakkında daha fazla bilgi edinin.
+- Yüksek bir sıklıkta sorgularla çalışmaya ilişkin yönergeler için bkz. [Kısıtlanmış istekler Için rehberlik](../concepts/guidance-for-throttled-requests.md).

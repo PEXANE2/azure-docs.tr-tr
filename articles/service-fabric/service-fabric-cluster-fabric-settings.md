@@ -3,12 +3,12 @@ title: Azure Service Fabric küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: c2e280af814a3e10ad84c5ba07fc376868fcd851
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416254"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682999"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, *Kümeconfig. JSON* dosyasını güncelleştirerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -57,7 +57,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |MinReplicaSetSize|int, varsayılan değer 0 ' dır|Statik|BackupRestoreService için MinReplicaSetSize |
 |Placementkýsýtlamalarý|dize, varsayılan değer ""|Statik|    BackupRestore hizmeti için Placementkýsýtlamalarý |
 |Secretencryptioncertparmak Izi|dize, varsayılan değer ""|Dinamik|Gizli şifreleme x509 sertifikasının parmak izi |
-|SecretEncryptionCertX509StoreName|dize, varsayılan değer "My"|    Dinamik|    Bu, yedekleme geri yükleme hizmeti tarafından kullanılan depolama kimlik bilgilerinin şifresini çözmek için kullanılan X. 509.440 sertifika deposunun kimlik bilgileri şifreleme ve şifre çözme için kullanılacak sertifikayı belirtir |
+|SecretEncryptionCertX509StoreName|dize, önerilen değer "My" (varsayılan değer yok) |    Dinamik|    Bu, yedekleme geri yükleme hizmeti tarafından kullanılan depolama kimlik bilgilerinin şifresini çözmek için kullanılan X. 509.440 sertifika deposunun kimlik bilgileri şifreleme ve şifre çözme için kullanılacak sertifikayı belirtir |
 |TargetReplicaSetSize|int, varsayılan değer 0 ' dır|Statik| BackupRestoreService için TargetReplicaSetSize |
 
 ## <a name="clustermanager"></a>ClusterManager
@@ -77,7 +77,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |MaxDataMigrationTimeout |Saniye cinsinden süre, varsayılan değer 600 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Yapı yükseltmesi gerçekleştirildikten sonra veri geçişi kurtarma işlemleri için maksimum zaman aşımı. |
 |MaxOperationRetryDelay |Saniye cinsinden süre, varsayılan değer 5 ' tir|Dinamik| Zaman aralığı değerini saniye cinsinden belirtin. Hatalarla karşılaşıldığında iç yeniden denemeler için en fazla gecikme. |
 |MaxOperationTimeout |Saniye cinsinden süre, varsayılan değer MaxValue |Dinamik| Zaman aralığı değerini saniye cinsinden belirtin. ClusterManager 'daki iç işlem işlemleri için genel zaman aşımı üst sınırı. |
-|MaxTimeoutRetryBuffer | Saniye cinsinden süre, varsayılan değer 600 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Zaman aşımları nedeniyle dahili olarak yeniden `<Original Time out> + <MaxTimeoutRetryBuffer>`denendiğinde en fazla işlem zaman aşımı. MinOperationTimeout artışlarına ek zaman aşımı eklenir. |
+|MaxTimeoutRetryBuffer | Saniye cinsinden süre, varsayılan değer 600 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Zaman aşımları nedeniyle dahili olarak yeniden denendiğinde en fazla işlem zaman aşımı `<Original Time out> + <MaxTimeoutRetryBuffer>` . MinOperationTimeout artışlarına ek zaman aşımı eklenir. |
 |MinOperationTimeout | Saniye cinsinden süre, varsayılan değer 60 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. ClusterManager 'da iç işlem işlemleri için en düşük genel zaman aşımı. |
 |MinReplicaSetSize |Int, varsayılan 3 ' dir |Izin verilmiyor|ClusterManager için MinReplicaSetSize. |
 |Placementkýsýtlamalarý | dize, varsayılan değer "" |Izin verilmiyor|ClusterManager için Placementkýsýtlamalarý. |
@@ -271,7 +271,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan, varsayılan:: TimeSpan:: FromMinutes (5)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Disk boş alana yakın olduğunda raporlama sistem durumu olayı için disk alanı denetimi arasındaki zaman aralığı. |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan, varsayılan:: TimeSpan:: FromMinutes (15)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Diskte yeterli alan olmadığında raporlama sistem durumu olayı için disk alanı denetimi arasındaki zaman aralığı. |
 |Enableımatorehealthreporting |bool, varsayılan değer doğru    |Statik|Dosya deposu hizmetinin durumunu rapor etmesi gerekip gerekmediğini öğrenmek için yapılandırma. |
-|Freediskspacenocertificate Ationsizeınkb|int64, varsayılan değer 25\*1024 |Dinamik|Sistem durumu uyarısının altında yer alan boş disk alanı boyutu. Bu yapılandırma ve Freediskspacenocertificate Ationthresholdpercentage yapılandırmasının minimum değeri, sistem durumu uyarısının gönderilmesini belirlemede kullanılır. |
+|Freediskspacenocertificate Ationsizeınkb|int64, varsayılan değer 25 \* 1024 |Dinamik|Sistem durumu uyarısının altında yer alan boş disk alanı boyutu. Bu yapılandırma ve Freediskspacenocertificate Ationthresholdpercentage yapılandırmasının minimum değeri, sistem durumu uyarısının gönderilmesini belirlemede kullanılır. |
 |Freediskspacenocertificate Ationthresholdpercentage|Double, varsayılan değer 0,02 ' dir |Dinamik|Sistem durumu uyarısının gerçekleşebileceği boş disk alanı yüzdesi. Bu yapılandırma ve Freediskspacenotifiationınmb yapılandırmasının en düşük değeri, sistem durumu uyarısının gönderilmesini belirlemede kullanılır. |
 |GenerateV1CommonNameAccount| bool, varsayılan değer doğru|Statik|Kullanıcı adı v1 oluşturma algoritması ile bir hesap oluşturulup oluşturulmayacağını belirtir. Service Fabric sürüm 6,1 ' den başlayarak; v2 oluşturma ile bir hesap her zaman oluşturulur. V1 hesabı, v2 üretimini desteklemeyen sürümlerden/sürümüne yükseltmeler için gereklidir (6,1 ' dan önce).|
 |MaxCopyOperationThreads | Uint, varsayılan 0 ' dır |Dinamik| İkincil dosyanın birincil kopyadan Kopyalaya, en fazla paralel dosya sayısı. ' 0 ' = = çekirdek sayısı. |
@@ -456,7 +456,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |MaxClientConnections |Int, varsayılan değer 1000 ' dir |Dinamik|Ağ Geçidi başına izin verilen en yüksek istemci bağlantısı sayısı. |
 |MaxFileOperationTimeout |Saniye cinsinden süre, varsayılan değer 30 ' dur |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Dosya depolama hizmeti işlemi için izin verilen en büyük zaman aşımı süresi. Daha büyük bir zaman aşımı belirten istekler reddedilir. |
 |Maxındexedemptypartitions |Int, varsayılan değer 1000 ' dir |Dinamik|Yeniden bağlanan istemcileri eşitlemek için bildirim önbelleğinde dizinli kalacak en fazla boş bölüm sayısı. Bu sayının üzerindeki boş bölümler, artan arama sürümü sırasıyla dizinden kaldırılır. İstemcilerin yeniden bağlanması, hala unutulan boş bölüm güncelleştirmelerini eşitleyebilir ve alabilir; Ancak eşitleme protokolü daha pahalı hale gelir. |
-|MaxMessageSize |Int, varsayılan değer 4\*1024\*1024 |Statik|Adlandırma kullanılırken istemci düğümü iletişimi için en büyük ileti boyutu. DOS saldırısı alleviation; Varsayılan değer 4 MB 'dir. |
+|MaxMessageSize |Int, varsayılan değer 4 \* 1024 \* 1024 |Statik|Adlandırma kullanılırken istemci düğümü iletişimi için en büyük ileti boyutu. DOS saldırısı alleviation; Varsayılan değer 4 MB 'dir. |
 |MaxNamingServiceHealthReports | Int, varsayılan değer 10 ' dur |Dinamik|Depolama hizmetini adlandıran en fazla yavaş işlem sayısı, tek seferde sağlıksız bir şekilde rapor verebilir. 0 ise; Tüm yavaş işlemler gönderilir. |
 |MaxOperationTimeout |Saniye cinsinden süre, varsayılan değer 600 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. İstemci işlemlerinde izin verilen en büyük zaman aşımı süresi. Daha büyük bir zaman aşımı belirten istekler reddedilir. |
 |MaxOutstandingNotificationsPerClient |Int, varsayılan değer 1000 ' dir |Dinamik|İstemci kaydı, ağ geçidi tarafından zorla kapatılmadan önce bekleyen en fazla bildirim sayısı. |
@@ -616,7 +616,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 
 | **Parametre** | **İzin Verilen Değerler** | **Yükseltme Ilkesi** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
-|RunAsAccountName |dize, varsayılan değer "" |Dinamik|RunAs hesabı adını gösterir. Bu yalnızca "DomainUser" veya "ManagedServiceAccount" hesap türü için gereklidir. Geçerli değerler "etkialanı \ Kullanıcı" veyauser@domain"" dir. |
+|RunAsAccountName |dize, varsayılan değer "" |Dinamik|RunAs hesabı adını gösterir. Bu yalnızca "DomainUser" veya "ManagedServiceAccount" hesap türü için gereklidir. Geçerli değerler "etkialanı \ Kullanıcı" veya " user@domain " dir. |
 |RunAsAccountType|dize, varsayılan değer "" |Dinamik|RunAs hesabı türünü gösterir. Bu, herhangi bir RunAs bölümü için gereklidir. geçerli değerler şunlardır. "DomainUser/NetworkService/ManagedServiceAccount/LocalSystem".|
 |RunAsPassword|dize, varsayılan değer "" |Dinamik|RunAs hesabı parolasını gösterir. Bu yalnızca "DomainUser" hesap türü için gereklidir. |
 
@@ -624,7 +624,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 
 | **Parametre** | **İzin Verilen Değerler** | **Yükseltme Ilkesi** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
-|RunAsAccountName |dize, varsayılan değer "" |Dinamik|RunAs hesabı adını gösterir. Bu yalnızca "DomainUser" veya "ManagedServiceAccount" hesap türü için gereklidir. Geçerli değerler "etkialanı \ Kullanıcı" veyauser@domain"" dir. |
+|RunAsAccountName |dize, varsayılan değer "" |Dinamik|RunAs hesabı adını gösterir. Bu yalnızca "DomainUser" veya "ManagedServiceAccount" hesap türü için gereklidir. Geçerli değerler "etkialanı \ Kullanıcı" veya " user@domain " dir. |
 |RunAsAccountType|dize, varsayılan değer "" |Dinamik|RunAs hesabı türünü gösterir. Bu, herhangi bir RunAs bölümü için gereklidir. geçerli değerler şunlardır "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|dize, varsayılan değer "" |Dinamik|RunAs hesabı parolasını gösterir. Bu yalnızca "DomainUser" hesap türü için gereklidir. |
 
@@ -632,7 +632,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 
 | **Parametre** | **İzin Verilen Değerler** | **Yükseltme Ilkesi** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
-|RunAsAccountName |dize, varsayılan değer "" |Dinamik|RunAs hesabı adını gösterir. Bu yalnızca "DomainUser" veya "ManagedServiceAccount" hesap türü için gereklidir. Geçerli değerler "etkialanı \ Kullanıcı" veyauser@domain"" dir. |
+|RunAsAccountName |dize, varsayılan değer "" |Dinamik|RunAs hesabı adını gösterir. Bu yalnızca "DomainUser" veya "ManagedServiceAccount" hesap türü için gereklidir. Geçerli değerler "etkialanı \ Kullanıcı" veya " user@domain " dir. |
 |RunAsAccountType|dize, varsayılan değer "" |Dinamik|RunAs hesabı türünü gösterir. Bu, herhangi bir RunAs bölümü için gereklidir. geçerli değerler şunlardır "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|dize, varsayılan değer "" |Dinamik|RunAs hesabı parolasını gösterir. Bu yalnızca "DomainUser" hesap türü için gereklidir. |
 
@@ -640,21 +640,21 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 
 | **Parametre** | **İzin Verilen Değerler** | **Yükseltme Ilkesi** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
-|RunAsAccountName |dize, varsayılan değer "" |Dinamik|RunAs hesabı adını gösterir. Bu yalnızca "DomainUser" veya "ManagedServiceAccount" hesap türü için gereklidir. Geçerli değerler "etkialanı \ Kullanıcı" veyauser@domain"" dir. |
+|RunAsAccountName |dize, varsayılan değer "" |Dinamik|RunAs hesabı adını gösterir. Bu yalnızca "DomainUser" veya "ManagedServiceAccount" hesap türü için gereklidir. Geçerli değerler "etkialanı \ Kullanıcı" veya " user@domain " dir. |
 |RunAsAccountType|dize, varsayılan değer "" |Dinamik|RunAs hesabı türünü gösterir. Bu, herhangi bir RunAs bölümü için gereklidir. geçerli değerler şunlardır "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|dize, varsayılan değer "" |Dinamik|RunAs hesabı parolasını gösterir. Bu yalnızca "DomainUser" hesap türü için gereklidir. |
 
 ## <a name="security"></a>Güvenlik
 | **Parametre** | **İzin Verilen Değerler** |**Yükseltme Ilkesi**| **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|dize, varsayılan değer ""|Statik|Azure Kamu "https:\//Login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" gibi varsayılan olmayan ortamlar Için BELIRTILEN varsayılan Azure Commercial AAD CERT uç nokta biçimi |
+|AADCertEndpointFormat|dize, varsayılan değer ""|Statik|Azure Kamu "https: \/ /login.microsoftonline.us/ {0} /FederationMetadata/2007-06/federationmetadata.xml" gibi varsayılan olmayan ortamlar için belirtilen varsayılan Azure Commercial AAD CERT uç nokta biçimi |
 |AADClientApplication|dize, varsayılan değer ""|Statik|Yapı Istemcilerini temsil eden yerel Istemci uygulama adı veya KIMLIĞI |
 |AADClusterApplication|dize, varsayılan değer ""|Statik|Kümeyi temsil eden Web API 'SI uygulama adı veya KIMLIĞI |
-|AADLoginEndpoint|dize, varsayılan değer ""|Statik|Azure Kamu "https:\//Login.microsoftonline.us" gibi varsayılan olmayan ortamlar IÇIN belirtilen AAD oturum açma uç noktası, varsayılan Azure Commercial |
+|AADLoginEndpoint|dize, varsayılan değer ""|Statik|Azure Kamu "https: \/ /login.microsoftonline.us" gibi varsayılan olmayan ortamlar için BELIRTILEN AAD oturum açma uç noktası, varsayılan Azure Commercial |
 |Aadtenantıd|dize, varsayılan değer ""|Statik|Kiracı KIMLIĞI (GUID) |
 |AcceptExpiredPinnedClusterCertificate|bool, varsayılan değer FALSE|Dinamik|Parmak izi tarafından tanımlanan, zaman aşımına uğradı küme sertifikalarının kabul edilip edilmeyeceğini belirten bayrak yalnızca küme sertifikaları için geçerlidir; Bu nedenle, kümeyi canlı tutmak için. |
 |Adminclientcertparmak Izleri|dize, varsayılan değer ""|Dinamik|Yönetici rolünde istemciler tarafından kullanılan sertifikaların parmak izleri. Bu, virgülle ayrılmış bir ad listesidir. |
-|AADTokenEndpointFormat|dize, varsayılan değer ""|Statik|Azure Kamu "https:\//Login.microsoftonline.us/{0}" gibi varsayılan olmayan ortamlar Için belirtilen AAD belirteci uç noktası, varsayılan Azure Commercial |
+|AADTokenEndpointFormat|dize, varsayılan değer ""|Statik|Azure Kamu "https: \/ /login.microsoftonline.us/" gibi varsayılan olmayan ortamlar için BELIRTILEN AAD belirteci uç noktası, varsayılan Azure Commercial {0} |
 |Adminclientclaim|dize, varsayılan değer ""|Dinamik|Yönetici istemcilerinden beklenen tüm olası talepler; Clientclaim ile aynı biçim; Bu liste, Clientclaim 'e dahili olarak eklenir; Bu nedenle, aynı girdileri Clientclaim 'e de eklemeniz gerekmez. |
 |Adminclienentidentities|dize, varsayılan değer ""|Dinamik|Yönetici rolünde doku istemcilerinin Windows kimlikleri; ayrıcalıklı yapı işlemlerine yetki vermek için kullanılır. Bu, virgülle ayrılmış bir liste; her giriş bir etki alanı hesap adı veya grup adıdır. Kolaylık sağlaması için; Fabric. exe ' yi çalıştıran hesaba otomatik olarak yönetici rolü atanır; Bu nedenle, Grup hizmeti Fabricadministrators. |
 |AppRunAsAccountGroupX509Folder|dize, varsayılan değer/Home/sfuser/sfusercerts |Statik|AppRunAsAccountGroup x509 sertifikalarının ve özel anahtarların bulunduğu klasör |
@@ -662,7 +662,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Certificatehealthreportingınterval|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (3600 * 8)|Statik|Zaman aralığı değerini saniye cinsinden belirtin. Sertifika sistem durumu raporlaması için aralığı belirtin; Varsayılan olarak 8 saat; 0 olarak ayarlandığında sertifika sistem durumu raporlaması devre dışı bırakılır |
 |Clientcertparmak Izleri|dize, varsayılan değer ""|Dinamik|İstemciler tarafından kümeyle konuşmak için kullanılan sertifikaların parmak izleri; küme, bu gelen bağlantıyı Yetkilendir bağlantısını kullanır. Bu, virgülle ayrılmış bir ad listesidir. |
 |ClientClaimAuthEnabled|bool, varsayılan değer FALSE|Statik|İstemcilerde talep tabanlı kimlik doğrulamasının etkinleştirilip etkinleştirilmediğini belirtir; Bu true ayarı açıkça Clienentrotaenabled olarak ayarlanır. |
-|Clientclaim|dize, varsayılan değer ""|Dinamik|Ağ geçidine bağlanmak için istemcilerden beklenen tüm olası talepler. Bu bir \| \| ' veya ' listesidir: claimsentry claimsentry \| \| claimsentry... Her ClaimsEntry bir "ve" listesidir: ClaimType = ClaimValue && ClaimType = ClaimValue && ClaimType = ClaimValue... |
+|Clientclaim|dize, varsayılan değer ""|Dinamik|Ağ geçidine bağlanmak için istemcilerden beklenen tüm olası talepler. Bu bir ' veya ' listesidir: ClaimsEntry \| \| claimsentry \| \| claimsentry... Her ClaimsEntry bir "ve" listesidir: ClaimType = ClaimValue && ClaimType = ClaimValue && ClaimType = ClaimValue... |
 |Clienentidentities|dize, varsayılan değer ""|Dinamik|FabricClient Windows kimlikleri; ad ağ geçidi, gelen bağlantıları yetkilendirmek için bunu kullanır. Bu, virgülle ayrılmış bir liste; her giriş bir etki alanı hesap adı veya grup adıdır. Kolaylık sağlaması için; Fabric. exe ' yi çalıştıran hesaba otomatik olarak izin verilir; Bu nedenle, Grup ServiceFabricAllowedUsers ve ServiceFabricAdministrators ' dir. |
 |Clienentrolet etkin|bool, varsayılan değer FALSE|Statik|İstemci rolünün etkinleştirilip etkinleştirilmediğini belirtir; true olarak ayarlandığında; istemcilere kimliklerine göre roller atanır. V2 için; Bunun etkinleştirilmesi AdminClientCommonNames/Adminclienentidentities içinde olmayan istemcinin yalnızca salt okuma işlemlerini yürütebileceği anlamına gelir. |
 |Clustercertparmak Izleri|dize, varsayılan değer ""|Dinamik|Kümeye katılmasına izin verilen sertifikaların parmak izleri; virgülle ayrılmış bir ad listesi. |
@@ -718,47 +718,47 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |DeleteNetwork|dize, varsayılan değer "admin" |Dinamik|Bir kapsayıcı ağını siler |
 |DeleteService |dize, varsayılan değer "admin" |Dinamik|Hizmet silme için güvenlik yapılandırması. |
 |DeleteVolume|dize, varsayılan değer "admin"|Dinamik|Bir birimi siler.| 
-|EnumerateProperties |dize, varsayılan "yönetici\|\|Kullanıcı" | Dinamik|Adlandırma özelliği numaralandırması için güvenlik yapılandırması. |
-|EnumerateSubnames |dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Adlandırma URI numaralandırması için güvenlik yapılandırması. |
+|EnumerateProperties |dize, varsayılan "yönetici \| \| Kullanıcı" | Dinamik|Adlandırma özelliği numaralandırması için güvenlik yapılandırması. |
+|EnumerateSubnames |dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Adlandırma URI numaralandırması için güvenlik yapılandırması. |
 |Dosya Içeriği |dize, varsayılan değer "admin" |Dinamik| Görüntü deposu istemci dosyası aktarımı (dış küme) için güvenlik yapılandırması. |
 |Dosya Indirme |dize, varsayılan değer "admin" |Dinamik| Görüntü deposu istemci dosyası indirme başlatma (harici küme) için güvenlik yapılandırması. |
 |FinishInfrastructureTask |dize, varsayılan değer "admin" |Dinamik| Altyapı görevlerinin tamamlanması için güvenlik yapılandırması. |
-|Birleşimi | dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Belirli bir zaman aralığı içinde Chaos durumunu getirir. |
-|GetClusterConfiguration | dize, varsayılan "yönetici\|\|Kullanıcı" | Dinamik|Bir bölümde GetClusterConfiguration. |
-|GetClusterConfigurationUpgradeStatus | dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Bir bölümde GetClusterConfigurationUpgradeStatus. |
-|GetFabricUpgradeStatus |dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Küme yükseltme durumunu yoklamaya yönelik güvenlik yapılandırması. |
+|Birleşimi | dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Belirli bir zaman aralığı içinde Chaos durumunu getirir. |
+|GetClusterConfiguration | dize, varsayılan "yönetici \| \| Kullanıcı" | Dinamik|Bir bölümde GetClusterConfiguration. |
+|GetClusterConfigurationUpgradeStatus | dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Bir bölümde GetClusterConfigurationUpgradeStatus. |
+|GetFabricUpgradeStatus |dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Küme yükseltme durumunu yoklamaya yönelik güvenlik yapılandırması. |
 |GetFolderSize |dize, varsayılan değer "admin" |Dinamik|FileStoreService 'in klasör boyutunu alma güvenlik yapılandırması |
 |UpdateApplication |dize, varsayılan değer "admin" |Dinamik| Devre dışı bırakma durumunu denetlemek için güvenlik yapılandırması. |
-|Getnodeınlationprogress | dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Düğüm geçiş komutunda ilerleme durumunu almak için güvenlik yapılandırması. |
-|GetPartitionDataLossProgress | dize, varsayılan "yönetici\|\|Kullanıcı" | Dinamik|Çağırma veri kaybı API çağrısı ilerleme durumunu getirir. |
-|GetPartitionQuorumLossProgress | dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Bir Invoke Quorum kayıp API çağrısı ilerleme durumunu getirir. |
-|GetPartitionRestartProgress | dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Yeniden başlatma bölümü API çağrısı ilerleme durumunu getirir. |
+|Getnodeınlationprogress | dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Düğüm geçiş komutunda ilerleme durumunu almak için güvenlik yapılandırması. |
+|GetPartitionDataLossProgress | dize, varsayılan "yönetici \| \| Kullanıcı" | Dinamik|Çağırma veri kaybı API çağrısı ilerleme durumunu getirir. |
+|GetPartitionQuorumLossProgress | dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Bir Invoke Quorum kayıp API çağrısı ilerleme durumunu getirir. |
+|GetPartitionRestartProgress | dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Yeniden başlatma bölümü API çağrısı ilerleme durumunu getirir. |
 |Getgizlilikler|dize, varsayılan değer "admin"|Dinamik|Gizli değerleri Al |
-|GetServiceDescription |dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Uzun yoklama hizmeti bildirimleri ve hizmet açıklamalarını okumak için güvenlik yapılandırması. |
+|GetServiceDescription |dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Uzun yoklama hizmeti bildirimleri ve hizmet açıklamalarını okumak için güvenlik yapılandırması. |
 |GetStagingLocation |dize, varsayılan değer "admin" |Dinamik| Görüntü deposu istemci hazırlama konumu alma için güvenlik yapılandırması. |
 |GetStoreLocation |dize, varsayılan değer "admin" |Dinamik| Görüntü deposu istemci deposu konum alımı için güvenlik yapılandırması. |
 |GetUpgradeOrchestrationServiceState|dize, varsayılan değer "admin"| Dinamik|Bir bölümde GetUpgradeOrchestrationServiceState |
 |GetUpgradesPendingApproval |dize, varsayılan değer "admin" |Dinamik| Bir bölümde GetUpgradesPendingApproval. |
-|GetUpgradeStatus |dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Uygulama yükseltme durumunu yoklamaya yönelik güvenlik yapılandırması. |
+|GetUpgradeStatus |dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Uygulama yükseltme durumunu yoklamaya yönelik güvenlik yapılandırması. |
 |InternalList |dize, varsayılan değer "admin" | Dinamik|Görüntü deposu istemci dosyası listesi işlemi için güvenlik yapılandırması (iç). |
 |Invokecontainerapı|dize, varsayılan değer "admin"|Dinamik|Kapsayıcı API 'sini çağır |
 |InvokeInfrastructureCommand |dize, varsayılan değer "admin" |Dinamik| Altyapı görevi yönetim komutları için güvenlik yapılandırması. |
-|InvokeInfrastructureQuery |dize, varsayılan "yönetici\|\|Kullanıcı" | Dinamik|Altyapı görevlerini sorgulamak için güvenlik yapılandırması. |
-|Liste |dize, varsayılan "yönetici\|\|Kullanıcı" | Dinamik|Görüntü deposu istemci dosyası listesi işlemi için güvenlik yapılandırması. |
+|InvokeInfrastructureQuery |dize, varsayılan "yönetici \| \| Kullanıcı" | Dinamik|Altyapı görevlerini sorgulamak için güvenlik yapılandırması. |
+|Liste |dize, varsayılan "yönetici \| \| Kullanıcı" | Dinamik|Görüntü deposu istemci dosyası listesi işlemi için güvenlik yapılandırması. |
 |MoveNextFabricUpgradeDomain |dize, varsayılan değer "admin" |Dinamik| Açık yükseltme etki alanı ile küme yükseltmelerini sürdürmek için güvenlik yapılandırması. |
 |MoveNextUpgradeDomain |dize, varsayılan değer "admin" |Dinamik| Açık yükseltme etki alanı ile uygulama yükseltmelerini sürdürmek için güvenlik yapılandırması. |
 |Movereperepcontrol |dize, varsayılan değer "admin" | Dinamik|Çoğaltmayı taşıyın. |
-|Ad var |dize, varsayılan "yönetici\|\|Kullanıcı" | Dinamik|URI varlık denetimlerini adlandırmak için güvenlik yapılandırması. |
+|Ad var |dize, varsayılan "yönetici \| \| Kullanıcı" | Dinamik|URI varlık denetimlerini adlandırmak için güvenlik yapılandırması. |
 |NodeControl |dize, varsayılan değer "admin" |Dinamik| Başlangıç için güvenlik yapılandırması; durdurulamadı ve düğümleri yeniden başlatın. |
 |NodeStateRemoved |dize, varsayılan değer "admin" |Dinamik| Raporlama düğümü durumunun güvenlik yapılandırması kaldırıldı. |
-|Ping |dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| İstemci ping işlemleri için güvenlik yapılandırması. |
+|Ping |dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| İstemci ping işlemleri için güvenlik yapılandırması. |
 |PredeployPackageToNode |dize, varsayılan değer "admin" |Dinamik| Ön dağıtım API 'si. |
-|PrefixResolveService |dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Şikayet tabanlı hizmet ön eki çözümlemesi için güvenlik yapılandırması. |
-|PropertyReadBatch |dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Adlandırma özelliği okuma işlemleri için güvenlik yapılandırması. |
+|PrefixResolveService |dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Şikayet tabanlı hizmet ön eki çözümlemesi için güvenlik yapılandırması. |
+|PropertyReadBatch |dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Adlandırma özelliği okuma işlemleri için güvenlik yapılandırması. |
 |PropertyWriteBatch |dize, varsayılan değer "admin" |Dinamik|Adlandırma özelliği yazma işlemleri için güvenlik yapılandırması. |
 |ProvisionApplicationType |dize, varsayılan değer "admin" |Dinamik| Uygulama türü sağlama için güvenlik yapılandırması. |
 |ProvisionFabric |dize, varsayılan değer "admin" |Dinamik| MSI ve/veya küme bildirimi sağlama için güvenlik yapılandırması. |
-|Sorgu |dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Sorgular için güvenlik yapılandırması. |
+|Sorgu |dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Sorgular için güvenlik yapılandırması. |
 |RecoverPartition |dize, varsayılan değer "admin" | Dinamik|Bir bölümü kurtarmak için güvenlik yapılandırması. |
 |RecoverPartitions |dize, varsayılan değer "admin" | Dinamik|Bölümleri kurtarmak için güvenlik yapılandırması. |
 |RecoverServicePartitions |dize, varsayılan değer "admin" |Dinamik| Hizmet bölümlerini kurtarmak için güvenlik yapılandırması. |
@@ -768,14 +768,14 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |ReportFault |dize, varsayılan değer "admin" |Dinamik| Raporlama hatası için güvenlik yapılandırması. |
 |Raporla |dize, varsayılan değer "admin" |Dinamik| Raporlama durumu için güvenlik yapılandırması. |
 |ReportUpgradeHealth |dize, varsayılan değer "admin" |Dinamik| Geçerli yükseltme ilerlemesiyle uygulama yükseltmelerini sürdürmek için güvenlik yapılandırması. |
-|ResetPartitionLoad |dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| FailoverUnit için sıfırlama yükünün güvenlik yapılandırması. |
-|ResolveNameOwner |dize, varsayılan "yönetici\|\|Kullanıcı" | Dinamik|Adlandırma URI 'SI sahibini çözümlemek için güvenlik yapılandırması. |
-|ResolvePartition |dize, varsayılan "yönetici\|\|Kullanıcı" | Dinamik|Sistem hizmetlerini çözümlemek için güvenlik yapılandırması. |
-|ResolveService |dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Şikayet tabanlı hizmet çözümlemesi için güvenlik yapılandırması. |
-|Resolvessystemservice|dize, varsayılan "yönetici\|\|Kullanıcı"|Dinamik| Sistem hizmetlerini çözümlemek için güvenlik yapılandırması |
+|ResetPartitionLoad |dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| FailoverUnit için sıfırlama yükünün güvenlik yapılandırması. |
+|ResolveNameOwner |dize, varsayılan "yönetici \| \| Kullanıcı" | Dinamik|Adlandırma URI 'SI sahibini çözümlemek için güvenlik yapılandırması. |
+|ResolvePartition |dize, varsayılan "yönetici \| \| Kullanıcı" | Dinamik|Sistem hizmetlerini çözümlemek için güvenlik yapılandırması. |
+|ResolveService |dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Şikayet tabanlı hizmet çözümlemesi için güvenlik yapılandırması. |
+|Resolvessystemservice|dize, varsayılan "yönetici \| \| Kullanıcı"|Dinamik| Sistem hizmetlerini çözümlemek için güvenlik yapılandırması |
 |RollbackApplicationUpgrade |dize, varsayılan değer "admin" |Dinamik| Uygulama yükseltmelerini geri alma için güvenlik yapılandırması. |
 |RollbackFabricUpgrade |dize, varsayılan değer "admin" |Dinamik| Küme yükseltmelerini geri alma için güvenlik yapılandırması. |
-|ServiceNotifications |dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Olay tabanlı hizmet bildirimleri için güvenlik yapılandırması. |
+|ServiceNotifications |dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Olay tabanlı hizmet bildirimleri için güvenlik yapılandırması. |
 |SetUpgradeOrchestrationServiceState|dize, varsayılan değer "admin"| Dinamik|Bir bölümde SetUpgradeOrchestrationServiceState |
 |Startapprove yükseltmeleri |dize, varsayılan değer "admin" |Dinamik| Bir bölümde Startapprove yükseltmeleri. |
 |StartChaos |dize, varsayılan değer "admin" |Dinamik| Zaten başlatılmamışsa, Chaos başlatır. |
@@ -786,7 +786,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Startpartitionquorumkaybetme |dize, varsayılan değer "admin" |Dinamik| Bir bölümde çekirdek kaybına yol açar. |
 |StartPartitionRestart |dize, varsayılan değer "admin" |Dinamik| Bir bölümün bazı veya tüm çoğaltmalarını eşzamanlı olarak yeniden başlatır. |
 |StopChaos |dize, varsayılan değer "admin" |Dinamik| Başlatılmışsa, Chaos 'yi durduruyor. |
-|ToggleVerboseServicePlacementHealthReporting | dize, varsayılan "yönetici\|\|Kullanıcı" |Dinamik| Ayrıntılı Serviceyerleştirmesini HealthReporting 'i değiştirmek için güvenlik yapılandırması. |
+|ToggleVerboseServicePlacementHealthReporting | dize, varsayılan "yönetici \| \| Kullanıcı" |Dinamik| Ayrıntılı Serviceyerleştirmesini HealthReporting 'i değiştirmek için güvenlik yapılandırması. |
 |UnprovisionApplicationType |dize, varsayılan değer "admin" |Dinamik| Uygulama türü sağlamayı kaldırma için güvenlik yapılandırması. |
 |UnprovisionFabric |dize, varsayılan değer "admin" |Dinamik| MSI ve/veya küme bildirimi sağlamayı kaldırma için güvenlik yapılandırması. |
 |UnreliableTransportControl |dize, varsayılan değer "admin" |Dinamik| Davranışları eklemek ve kaldırmak için güvenilir olmayan aktarım. |
@@ -877,7 +877,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |FrameHeaderErrorCheckingEnabled|bool, varsayılan değer doğru|Statik|Çerçeve üstbilgisinde güvenli olmayan modda hata denetimi için varsayılan ayar; bileşen ayarı bunu geçersiz kılar. |
 |MessageErrorCheckingEnabled|bool, varsayılan değer FALSE|Statik|İleti üst bilgisinde ve gövdesinde güvenli olmayan modda hata denetimi için varsayılan ayar; bileşen ayarı bunu geçersiz kılar. |
 |ResolveOption|dize, varsayılan değer "belirtilmemiş"|Statik|FQDN 'nin nasıl çözümlendiğini belirler.  Geçerli değerler şunlardır "belirtilmemiş/IPv4/IPv6". |
-|Binding üstündeki SendTimeout|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (300)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Takılmış bağlantıyı algılamak için zaman aşımı gönder. TCP hata raporları, bazı ortamlarda güvenilir değildir. Bunun, kullanılabilir ağ bant genişliğine ve giden verilerin boyutuna (\*MaxMessageSize\/\*sendqueuesizelimit) göre ayarlanması gerekebilir. |
+|Binding üstündeki SendTimeout|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (300)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Takılmış bağlantıyı algılamak için zaman aşımı gönder. TCP hata raporları, bazı ortamlarda güvenilir değildir. Bunun, kullanılabilir ağ bant genişliğine ve giden verilerin boyutuna ( \* MaxMessageSize \/ \* sendqueuesizelimit) göre ayarlanması gerekebilir. |
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
 

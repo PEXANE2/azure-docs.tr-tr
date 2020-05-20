@@ -1,6 +1,6 @@
 ---
 title: Azure Otomasyonu 'nda sertifikaları yönetme
-description: Azure Otomasyonu sertifikaları güvenli bir şekilde depolar, böylece runbook 'ların veya DSC yapılandırmalarının Azure ve üçüncü taraf kaynaklarda kimlik doğrulaması yapmak için bunlara erişebilmesi gerekir. Bu makalede, sertifikaların ayrıntıları ve hem metin hem de grafik yazarken bunlarla nasıl çalışılacağı açıklanmaktadır.
+description: Bu makalede runbook 'ların ve DSC yapılandırmalarının erişimine yönelik sertifikalarla nasıl çalışılacağı açıklanmaktadır.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2793679fb4588d00ea4e37340b19183398cb9d90
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: bf7e6d0ed8d6e318e6a78d25bcc7764f6302ef22
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864326"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685378"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Azure Otomasyonu 'nda sertifikaları yönetme
 
@@ -22,9 +22,6 @@ Azure Otomasyonu, Azure Resource Manager kaynakları için [Get-AzAutomationCert
 
 >[!NOTE]
 >Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağlantılar ve şifrelenmiş değişkenler içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak şifrelenir ve otomasyon 'da depolanır. Otomasyon, anahtarı sistem tarafından yönetilen Key Vault hizmetinde depolar. Güvenli bir varlık depolamadan önce, otomasyon anahtarı Key Vault ' den yükler ve ardından varlığı şifrelemek için onu kullanır. 
-
->[!NOTE]
->Bu makalede Azure PowerShell az modülünün nasıl kullanılacağı gösterilmektedir. Azurerd modülünü kullanmaya devam edebilirsiniz. Az Module ve Azurerd uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [new Azure PowerShell konusuna giriş az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="powershell-cmdlets-to-access-certificates"></a>Sertifikalara erişim için PowerShell cmdlet 'leri
 
@@ -41,14 +38,14 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon sertifikaları olu�
 
 ## <a name="internal-cmdlets-to-access-certificates"></a>Sertifikalara erişim için iç cmdlet 'ler
 
-Aşağıdaki tablodaki iç cmdlet, runbook 'larınızda sertifikalara erişmek için kullanılır. Bu cmdlet, genel modülle `Orchestrator.AssetManagement.Cmdlets`birlikte gelir. Daha fazla bilgi için bkz. [iç cmdlet 'ler](modules.md#internal-cmdlets).
+Aşağıdaki tablodaki iç cmdlet, runbook 'larınızda sertifikalara erişmek için kullanılır. Bu cmdlet, genel modülle birlikte gelir `Orchestrator.AssetManagement.Cmdlets` . Daha fazla bilgi için bkz. [iç cmdlet 'ler](modules.md#internal-cmdlets).
 
 | İç cmdlet | Açıklama |
 |:---|:---|
 |`Get-AutomationCertificate`|Runbook veya DSC yapılandırmasında kullanmak için bir sertifika alır. [System. Security. Cryptography. X509Certificates. X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) nesnesi döndürür.|
 
 > [!NOTE] 
-> Bir runbook veya DSC yapılandırmasında, `Name` `Get-AutomationCertificate` içindeki değişkenleri kullanmaktan kaçının. Bu tür değişkenler, tasarım zamanında runbook 'lar ya da DSC yapılandırması ile otomasyon değişkenleri arasındaki bağımlılıkları bulmayı karmaşıklaştırır.
+> `Name` `Get-AutomationCertificate` Bir RUNBOOK veya DSC yapılandırmasında, içindeki değişkenleri kullanmaktan kaçının. Bu tür değişkenler, tasarım zamanında runbook 'lar ya da DSC yapılandırması ile otomasyon değişkenleri arasındaki bağımlılıkları bulmayı karmaşıklaştırır.
 
 ## <a name="python-2-functions-to-access-certificates"></a>Sertifikalara erişim için Python 2 işlevleri
 
@@ -59,7 +56,7 @@ Bir Python 2 runbook 'unda sertifikalara erişmek için aşağıdaki tablodaki i
 | `automationassets.get_automation_certificate` | Bir sertifika varlığı hakkındaki bilgileri alır. |
 
 > [!NOTE]
-> Varlık işlevlerine erişmek için `automationassets` Python runbook 'ınızın başlangıcında modülünü içeri aktarmanız gerekir.
+> `automationassets`Varlık işlevlerine erişmek Için Python runbook 'ınızın başlangıcında modülünü içeri aktarmanız gerekir.
 
 ## <a name="create-a-new-certificate"></a>Yeni bir sertifika oluştur
 
@@ -67,7 +64,7 @@ Yeni bir sertifika oluşturduğunuzda, Automation 'a bir. cer veya. pfx dosyası
 
 ### <a name="create-a-new-certificate-with-the-azure-portal"></a>Azure portal yeni bir sertifika oluşturun
 
-1. Otomasyon hesabınızdan, **varlık** > **sertifikaları** > **sertifika ekle**' yi seçin.
+1. Otomasyon hesabınızdan, **varlık**  >  **sertifikaları**  >  **sertifika ekle**' yi seçin.
 1. **Ad** alanına sertifika için bir ad yazın.
 1. Bir **. cer** veya **. pfx** dosyasına gitmek Için, **sertifika dosyasını karşıya yükle**altında **bir dosya seç**' i seçin. Bir **. pfx** dosyası seçerseniz, bir parola belirtin ve verilemeyeceğini belirtin.
 1. Yeni sertifika varlığını kaydetmek için **Oluştur** ' u seçin.
@@ -146,7 +143,7 @@ Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 
 ### <a name="graphical-runbook-example"></a>Grafik runbook örneği
 
-Kitaplık bölmesinde sertifikaya sağ tıklayıp `Get-AutomationCertificate` **tuvale Ekle**' yi seçerek bir grafik runbook 'una iç cmdlet için bir etkinlik ekleyin.
+`Get-AutomationCertificate`Kitaplık bölmesinde sertifikaya sağ tıklayıp **tuvale Ekle**' yi seçerek bir grafik runbook 'una iç cmdlet için bir etkinlik ekleyin.
 
 ![Tuvale sertifika ekleme ekranının ekran görüntüsü](../media/certificates/automation-certificate-add-to-canvas.png)
 

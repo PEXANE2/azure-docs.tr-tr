@@ -15,12 +15,12 @@ ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b5ba4b84fcd9c1722e8ab2f4031ec1551357e406
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 0a574ba281a037a06ddda1981ae6fa35b905bca1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869984"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683654"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
 
@@ -30,11 +30,11 @@ Bu makalede, her zaman gelişen Azure yerleşik rolleri listelenir. En son rolle
 
 ## <a name="all"></a>Tümü
 
-Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz KIMLIĞI verilmiştir. Her rolün `Actions`, `NotActions` `DataActions`, ve `NotDataActions` listesini görmek için rol adını seçin. Bu eylemlerin ne anlama geldiğini ve bunların yönetim ve veri düzlemleri için nasıl uygulandığını hakkında bilgi için bkz. [Azure rol tanımlarını anlama](role-definitions.md).
+Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz KIMLIĞI verilmiştir. `Actions`Her rolün,, ve listesini görmek için rol adını `NotActions` seçin `DataActions` `NotDataActions` . Bu eylemlerin ne anlama geldiğini ve bunların yönetim ve veri düzlemleri için nasıl uygulandığını hakkında bilgi için bkz. [Azure rol tanımlarını anlama](role-definitions.md).
 
 
 > [!div class="mx-tableFixed"]
-> | Yerleşik rol | Açıklama | Kimlik |
+> | Yerleşik rol | Açıklama | ID |
 > | --- | --- | --- |
 > | **Genel** |  |  |
 > | [Katkıda Bulunan](#contributor) | Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -173,6 +173,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Blueprint Işleci](#blueprint-operator) | Varolan yayımlanmış şemaları atayabilir, ancak yeni şemaları oluşturamaz. Bu, yalnızca atama Kullanıcı tarafından atanan yönetilen bir kimlikle yapıldığında işe yarar. | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
 > | [Maliyet yönetimi Katılımcısı](#cost-management-contributor) | Maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir (örn. bütçeler, dışarı aktarmalar) | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | [Maliyet yönetimi okuyucusu](#cost-management-reader) | Maliyet verilerini ve yapılandırmayı görüntüleyebilir (örneğin, bütçeler, dışarı aktarmalar) | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
+> | [Hiyerarşi Ayarları Yöneticisi](#hierarchy-settings-administrator) | Kullanıcıların hiyerarşi ayarlarını düzenlemesine ve silmesine izin verir | 350f8d15-c687-4448-8ae1-157740a3936d |
 > | [Yönetilen uygulama katılımcısı rolü](#managed-application-contributor-role) | Yönetilen uygulama kaynakları oluşturulmasına izin verir. | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Yönetilen uygulama Işletmeni rolü](#managed-application-operator-role) | Yönetilen uygulama kaynakları üzerinde işlemleri okuyup gerçekleştirmenize olanak tanır | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Yönetilen uygulamalar okuyucusu](#managed-applications-reader) | Yönetilen bir uygulamadaki kaynakları okumanızı ve JıT erişimi isteğinizi yapmanızı sağlar. | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
@@ -7012,6 +7013,48 @@ Maliyet verilerini ve yapılandırmayı görüntüleyebilir (örneğin, bütçel
     }
   ],
   "roleName": "Cost Management Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="hierarchy-settings-administrator"></a>Hiyerarşi Ayarları Yöneticisi
+
+Kullanıcıların hiyerarşi ayarlarını düzenlemesine ve silmesine izin verir
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | Microsoft. Management/managementGroups/Settings/Write | Yönetim grubu hiyerarşisi ayarlarını oluşturur veya güncelleştirir. |
+> | Microsoft. Management/managementGroups/Settings/Delete | Yönetim grubu hiyerarşisi ayarlarını siler. |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows users to edit and delete Hierarchy Settings",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/350f8d15-c687-4448-8ae1-157740a3936d",
+  "name": "350f8d15-c687-4448-8ae1-157740a3936d",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Management/managementGroups/settings/write",
+        "Microsoft.Management/managementGroups/settings/delete"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Hierarchy Settings Administrator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

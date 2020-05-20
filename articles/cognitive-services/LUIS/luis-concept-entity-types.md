@@ -2,13 +2,13 @@
 title: Varlık türleri-LUSıS
 description: Bir varlık, tahmin çalışma zamanında bir Kullanıcı noktasından verileri ayıklar. _İsteğe bağlı_, ikincil amaç, varlığı bir özellik olarak kullanarak amaç veya diğer varlıkların tahminini de artırır.
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: 9d8afd5a660b3af5556256835486e984d7d657bc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/17/2020
+ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585649"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682181"
 ---
 # <a name="extract-data-with-entities"></a>Varlıkları olan verileri ayıklama
 
@@ -16,11 +16,11 @@ Bir varlık, tahmin çalışma zamanında bir Kullanıcı noktasından verileri 
 
 Birçok varlık türü vardır:
 
-* [Makine tarafından öğrenilen varlık](reference-entity-machine-learned-entity.md)
-* Makine tarafından öğrenilmeyen, tam metin eşleşmeleri, model eşleşmeleri veya önceden oluşturulmuş varlıklara göre algılama için gerekli bir [özellik](luis-concept-feature.md) olarak kullanılır
+* [makine öğrenimi varlığı](reference-entity-machine-learned-entity.md) -bu birincil varlıktır. Diğer varlıkları kullanmadan önce şemanızı bu varlık türüyle tasarlamanız gerekir.
+* Makine öğrenimi olmayan, gerekli bir [özellik](luis-concept-feature.md) olarak kullanılan-tam metin eşleşmeleri, model eşleşmeleri veya önceden oluşturulmuş varlıklar tarafından algılama için
 * Bir [düzendeki](reference-entity-pattern-any.md) kitap başlıkları gibi serbest biçimli metinleri ayıklamak için [.](#patternany-entity)
 
-Makine tarafından öğrenilen varlıklar, en geniş veri ayıklama seçeneği yelpazesi sağlar. Makine tarafından öğrenilen varlıklar, metin eşleştirme ile çalışır ve makine tarafından öğrenilen bir varlık veya amaç için [gerekli bir özellik](#design-entities-for-decomposition) olarak kullanılır.
+makine öğrenimi varlıkları, en geniş veri ayıklama seçeneklerini sağlar. Makine öğrenimi olmayan varlıklar, metin eşleştirme ile çalışır ve makine öğrenimi varlığı veya amacı için [gerekli bir özellik](#design-entities-for-decomposition) olarak kullanılır.
 
 ## <a name="entities-represent-data"></a>Varlıklar verileri temsil eder
 
@@ -51,18 +51,26 @@ Aşağıdaki dört kuralı göz önünde bulundurun:
 |--|--|--|--|
 |Yardım|Yardım|-|Ayıklanacak bir şey yok.|
 |Bir şey gönder|Sendbir şey|-|Ayıklanacak bir şey yok. Modelin bu bağlamda Ayıklanacak gerekli bir özelliği yok `something` ve belirtilen alıcı yok.|
-|Emre 'yi mevcut gönder|Sendbir şey|`Bob`, `present`|Model, `Bob` önceden oluşturulmuş varlığın gerekli bir özelliğini ekleyerek ayıklar `personName` . Ayıklamak için makine tarafından öğrenilen bir varlık kullanıldı `present` .|
-|Emre 'nin bir çikolata kutusunu Gönder|Sendbir şey|`Bob`, `box of chocolates`|İki önemli veri parçası `Bob` ve, `box of chocolates` makine tarafından öğrenilen varlıklar tarafından ayıklandı.|
+|Emre 'yi mevcut gönder|Sendbir şey|`Bob`, `present`|Model, `Bob` önceden oluşturulmuş varlığın gerekli bir özelliğini ekleyerek ayıklar `personName` . Ayıklamak için bir makine öğrenimi varlığı kullanılmıştır `present` .|
+|Emre 'nin bir çikolata kutusunu Gönder|Sendbir şey|`Bob`, `box of chocolates`|İki önemli veri parçası `Bob` ve, `box of chocolates` makine öğrenimi varlıkları tarafından ayıklanır.|
 
 ## <a name="design-entities-for-decomposition"></a>Ayrıştırma için varlıkları tasarlama
 
-Makine ile öğrenilen varlıklar, uygulama şemanızı, büyük bir kavramı alt varlıklara bölmek için, ayrıştırma için tasarlamanıza olanak sağlar.
+makine öğrenimi varlıkları, büyük bir kavramı alt varlıklara bölmek için ayrıştırma için uygulama şemanızı tasarlamanızı sağlar.
 
 Ayrıştırma için tasarlamak, LUSıS 'nin istemci uygulamanıza derin bir varlık çözümlemesi döndürmesini sağlar. Bu, istemci uygulamanızın iş kurallarına odaklanılmasını ve veri çözünürlüğünü LUO 'ya bırakmasını sağlar.
 
-Makine tarafından öğrenilen bir varlık, örnek söylemeler aracılığıyla öğrenilen bağlamı temel alır.
+Makine öğrenimi bir varlık, örnek Aralık aracılığıyla öğrenilen içeriğe göre tetikler.
 
-[**Makine tarafından öğrenilen varlıklar**](tutorial-machine-learned-entity.md) en üst düzey ayıklayıcıları. Alt varlıklar, makine tarafından öğrenilen varlıkların alt varlıklarıdır.
+[**makine öğrenimi varlıkları**](tutorial-machine-learned-entity.md) en üst düzey ayıklayıcıları. Alt varlıklar, makine öğrenimi varlıklarının alt varlıklarıdır.
+
+## <a name="effective-machine-learned-entities"></a>Etkin makine öğrenilen varlıkları
+
+Makine tarafından öğrenilen varlıkları etkin bir şekilde derlemek için:
+
+* Etiketlemenin amaç genelinde tutarlı olması gerekir. Bu, bu varlığı içeren **hiçbir** amaç içinde sağladığınız diğer nedenler dahil değildir. Aksi takdirde model sıraları etkin bir şekilde belirleyemeyecektir.
+* Alt varlıklar içeren bir makine öğrenmiş varlığınız varsa, varlığın ve alt varlıkların farklı siparişlerinin ve varyantlarındaki etiketlenmiş söyleyde sunulduğundan emin olun. Etiketlenmiş örnek, tüm geçerli formları içermeli ve görüntülenen ve olmayan varlıkları ve ayrıca utterance içinde de yeniden sipariş etmelidir.
+* Varlıkların çok sabit bir küme üzerine kaçmasını önleyin. Model iyi genelleştirilmeyen ve makine öğrenimi modellerinde yaygın bir sorun olduğunda **aşırı yerleştirme** oluşur. Bu, uygulamanın yeni verilerde yeterince çalışmayacak olması anlamına gelir. Bu durumda, uygulamanın sağladığınız sınırlı örneklerden daha fazla genelleştirebilmesi için etiketlenmiş örnek çeşitlerini de beklemelisiniz. Farklı alt varlıkların yalnızca gösterilen örnekler yerine daha fazla kavram düşünmesine yetecek şekilde değişiklik göstermesi gerekir.
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
@@ -73,7 +81,7 @@ Makine tarafından öğrenilen bir varlık, örnek söylemeler aracılığıyla 
 
 ## <a name="types-of-entities"></a>Varlık türleri
 
-Üst öğe için bir alt varlık, makine tarafından öğrenilen bir varlık olmalıdır. Alt varlık, makine tarafından öğrenilen bir varlığı [özellik](luis-concept-feature.md)olarak kullanabilir.
+Üst öğe için bir alt varlık, makine öğrenimi varlığı olmalıdır. Alt varlık, bir [özellik](luis-concept-feature.md)olarak makine öğrenimi olmayan bir varlık kullanabilir.
 
 Verilerin ayıklanabilmesi ve ayıklandıktan sonra nasıl temsil edilebilmesi gerektiğine bağlı olarak varlığı seçin.
 
@@ -85,6 +93,15 @@ Verilerin ayıklanabilmesi ve ayıklandıktan sonra nasıl temsil edilebilmesi g
 |[**Önceden oluşturulmuş**](luis-reference-prebuilt-entities.md)|URL veya e-posta gibi belirli tür verileri ayıklamak zaten eğitildi. Bu önceden oluşturulmuş varlıkların bazıları açık kaynaklı [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text) projesinde tanımlanmıştır. Belirli bir kültür veya varlığınız Şu anda desteklenmiyorsa, projeye katkıda bulunun.|
 |[**Normal ifade**](reference-entity-regular-expression.md)|**Tam metin eşleşmesi**için normal ifade kullanır.|
 
+
+## <a name="extraction-versus-resolution"></a>Ayıklama ve çözünürlükten karşılaştırması
+
+Veriler, utterde göründüğü sürece verileri ayıklar. Varlıklar verileri değiştirmez veya çözümleyemez. Metin varlık için geçerli bir değer ise varlık herhangi bir çözüm sağlamaz.
+
+Bloba çözülmesi gereken yollar vardır ancak bunun, uygulamanın çeşitliliğe ve hatalara karşı bir şekilde çıkarsanma yeteneğini sınırlayan farkında olmanız gerekir.
+
+Liste varlıkları ve normal ifade (metin eşleştirme) varlıkları, bir alt varlığa [gereken özellikler](luis-concept-feature.md#required-features) olarak kullanılabilir ve ayıklanması için bir filtre işlevi görür. Uygulamanın tahmin yeteneğini tahmin etmek için bu dikkatle kullanmanız gerekir.
+
 ## <a name="extracting-contextually-related-data"></a>Bağlamsal olarak ile ilgili veriler ayıklanıyor
 
 Söylenişi, verilerin anlamı, söylenişi içindeki bağlamı temel alan bir varlığın iki veya daha fazla örneğini içerebilir. İki coğrafi konumu, kaynağı ve hedefi olan bir uçuş sağlayan bir örnek, bir örnektir.
@@ -93,7 +110,7 @@ Söylenişi, verilerin anlamı, söylenişi içindeki bağlamı temel alan bir v
 
 İki konumun, Bilet satın almanın tamamlanabilmesi için her konumun türünü bilmesi için, istemci uygulamanın her bir konumun türünü bilmesi için ayıklanmaları gerekir.
 
-Kaynak ve hedefi ayıklamak için, Bilet siparişi makine tarafından öğrenilen varlığın bir parçası olarak iki alt varlık oluşturun. Alt varlıkların her biri için, geographyV2 kullanan gerekli bir özellik oluşturun.
+Kaynak ve hedefi ayıklamak için, Bilet siparişi makine öğrenimi varlığının bir parçası olarak iki alt varlık oluşturun. Alt varlıkların her biri için, geographyV2 kullanan gerekli bir özellik oluşturun.
 
 <a name="using-component-constraints-to-help-define-entity"></a>
 <a name="using-subentity-constraints-to-help-define-entity"></a>
@@ -124,5 +141,5 @@ Lua portalı, varlığın örnek bir değer için seçtiğiniz varlıktan farkl�
 
 LUSıS uygulamanıza varlık ekleme hakkında daha fazla bilgi edinmek için bkz. [varlık ekleme](luis-how-to-add-entities.md) .
 
-Bkz. Öğretici: makine tarafından öğrenilen varlığı kullanarak bir noktadan yapılandırılmış verilerin nasıl ayıklanacağını öğrenmek için [Language Understanding (LUA) içindeki makine tarafından öğrenilen varlıklara sahip kullanıcı aracılığıyla yapılandırılmış verileri ayıklama](tutorial-machine-learned-entity.md) .
+Bkz. Öğretici: makine öğrenimi varlığı kullanarak bir noktadan yapılandırılmış verilerin nasıl ayıklanacağını öğrenmek için [Language Understanding (lusıs) içinde makine öğrenimi varlıkları ile Kullanıcı aralarından yapılandırılmış verileri ayıklama](tutorial-machine-learned-entity.md) .
 

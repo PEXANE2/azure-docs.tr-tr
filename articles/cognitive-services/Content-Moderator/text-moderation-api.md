@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81274019"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685074"
 ---
 # <a name="learn-text-moderation-concepts"></a>Metin denetleme kavramlarını öğrenin
 
-Content Moderator makine yardımlı metin denetimi ve [insan incelemesi](Review-Tool-User-Guide/human-in-the-loop.md) yeteneklerini, orta düzey metin içeriğine göre kullanın.
+Metin içeriğini çözümlemek için Content Moderator metin denetleme modellerini kullanın.
 
-İlke ve eşiklerinize göre içerikleri engelleyebilir, onaylayabilir veya gözden geçirebilirsiniz. İş ortaklarının, çalışanların ve tüketicilerin metin içeriği oluşturduğu ortamların insan yönetimini artırmak için bu uygulamayı kullanın. Bu kapsama sohbet odaları, tartışma panoları, sohbet botları, e-ticaret katalogları ve belgeler dahildir. 
+İlkelerinize ve eşiklere göre içeriği engelleyebilir, onaylayabilir veya gözden geçirebilirsiniz (bkz. [incelemeler, iş akışları ve işlere](./review-api.md) , insan incelemelerini ayarlama hakkında bilgi edinin). İş ortakları, çalışanlar ve tüketiciler tarafından metin içeriği üreten ortamların insan yönetimini artırmak için metin denetleme modellerini kullanın. Bu kapsama sohbet odaları, tartışma panoları, sohbet botları, e-ticaret katalogları ve belgeler dahildir. 
 
 Hizmet yanıtı aşağıdaki bilgileri içerir:
 
@@ -34,7 +34,7 @@ Hizmet yanıtı aşağıdaki bilgileri içerir:
 
 ## <a name="profanity"></a>Küfür
 
-API, [desteklenen dillerin](Text-Moderation-API-Languages.md)herhangi birinde herhangi bir küfürlü terimi algılarsa, bu terimler yanıta dahil edilir. Yanıt, özgün metindeki konumunu (`Index`) da içerir. `ListId` AŞAĞıDAKI örnek JSON, varsa [özel terim listelerinde](try-terms-list-api.md) bulunan terimleri ifade eder.
+API, [desteklenen dillerin](Text-Moderation-API-Languages.md)herhangi birinde herhangi bir küfürlü terimi algılarsa, bu terimler yanıta dahil edilir. Yanıt, özgün metindeki konumunu () da içerir `Index` . `ListId`Aşağıdaki örnek JSON, varsa [özel terim listelerinde](try-terms-list-api.md) bulunan terimleri ifade eder.
 
     "Terms": [
     {
@@ -45,7 +45,7 @@ API, [desteklenen dillerin](Text-Moderation-API-Languages.md)herhangi birinde he
     }
 
 > [!NOTE]
-> **Dil** parametresi için, makine yardımlı `eng` **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler**.
+> **Dil** parametresi için, `eng` makine yardımlı **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler**.
 >
 > **Küfür terimleri** algılama için, bu makalede listelenen desteklenen dillerin [ISO 639-3 kodunu](http://www-01.sil.org/iso639-3/codes.asp) kullanın veya boş bırakın.
 
@@ -155,4 +155,4 @@ Content Moderator, özel terim listelerini yönetmeye yönelik işlemler içeren
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Metin denetleme API konsolunun](try-text-api.md) sürücüsünü test edin ve REST API kod örneklerini kullanın. Ayrıca, Visual Studio ve C# hakkında bilginiz varsa [.NET SDK hızlı başlangıç](dotnet-sdk-quickstart.md) 'nin metin denetleme bölümüne göz atın.
+[Metin denetleme API konsolu](try-text-api.md)Ile API 'leri test edin. Ayrıca, insan incelemelerini ayarlamayı öğrenmek için [incelemeleri, iş akışlarını ve işleri](./review-api.md) inceleyin.

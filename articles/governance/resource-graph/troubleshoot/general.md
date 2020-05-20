@@ -1,14 +1,14 @@
 ---
 title: Sık karşılaşılan hataları giderme
 description: Azure Resource Graph ile Azure kaynaklarını sorgularken çeşitli SDK 'lar ile ilgili sorunları nasıl giderebileceğinizi öğrenin.
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1b3758e52641bc27341c5da0ced9e811263c02b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74303906"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683224"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Kaynak Grafiği 'ni kullanarak hatalarda sorun giderme
 
@@ -19,6 +19,25 @@ Azure Kaynak Grafiği ile Azure kaynaklarını sorgularken hatalarla karşılaş
 Birçok hata, Azure Kaynak Graf ile bir sorgu çalıştırılırken bir sorunun sonucudur. Sorgu başarısız olduğunda, SDK başarısız sorguyla ilgili ayrıntıları sağlar. Bu bilgiler sorunu, düzeltilmesi ve sonraki bir sorgunun başarılı olması için gösterir.
 
 ## <a name="general-errors"></a>Genel hatalar
+
+### <a name="scenario-throttled-requests"></a><a name="throttled"></a>Senaryo: kısıtlanan istekler
+
+#### <a name="issue"></a>Sorun
+
+Büyük veya sık kullanılan kaynak sorgularını yapan müşterilerin istekleri azaltıldı.
+
+#### <a name="cause"></a>Nedeni
+
+Azure Kaynak Grafiği, bir zaman penceresine göre her bir kullanıcı için bir kota numarası ayırır. Örneğin, bir Kullanıcı, daralmadan 5 saniyelik her pencerede en fazla 15 sorgu gönderebilir. Kota değeri birçok faktöre göre belirlenir ve değişikliğe tabidir. Daha fazla bilgi için bkz. [Azure Kaynak Grafiği 'Nde azaltma](../overview.md#throttling).
+
+#### <a name="resolution"></a>Çözüm
+
+Kısıtlanmış isteklerle ilgili birkaç yöntem vardır:
+
+- [Sorguları gruplandırma](../concepts/guidance-for-throttled-requests.md#grouping-queries)
+- [Sorguları kademelendirme](../concepts/guidance-for-throttled-requests.md#staggering-queries)
+- [Paralel olarak sorgula](../concepts/guidance-for-throttled-requests.md#query-in-parallel)
+- [Mayı](../concepts/guidance-for-throttled-requests.md#pagination)
 
 ### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>Senaryo: çok fazla abonelik
 
@@ -69,7 +88,7 @@ Azure Kaynak Grafiği REST API yalnızca bir `Content-Type` **uygulama/JSON**'ı
 
 #### <a name="resolution"></a>Çözüm
 
-Azure Kaynak Grafiği 'ni sorgulamak için kullanmakta olduğunuz aracın veya aracının, **Application/JSON**için yapılandırılmış REST API `Content-Type` üst bilgisine sahip olduğunu doğrulayın.
+Azure Kaynak Grafiği 'ni sorgulamak için kullanmakta olduğunuz aracın veya aracının, `Content-Type` **Application/JSON**için yapılandırılmış REST API üst bilgisine sahip olduğunu doğrulayın.
 
 ### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>Senaryo: listedeki tüm abonelikler için okuma izni yok
 
@@ -90,5 +109,5 @@ Sorguyu çalıştıran müşterinin en azından okuma erişimine sahip olduğu a
 Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
 - Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
-- Azure Community [@AzureSupport](https://twitter.com/azuresupport) 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
+- [@AzureSupport](https://twitter.com/azuresupport)Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
 - Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.

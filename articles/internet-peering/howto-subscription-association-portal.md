@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee4fb0708d437c21bea8e77864f210c42b5df019
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75912216"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683967"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Portalı kullanarak eşdüzey ASN’yi Azure aboneliğiyle ilişkilendirme
 
@@ -55,22 +55,8 @@ Aşağıdaki adımları izleyerek aboneliğinizde eşleme kaynak sağlayıcısı
     > ![Kayıt tamamlandı](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn oluştur
-Bir otonom sistem numarası 'nı (ASN) Azure aboneliğiyle ilişkilendirmek için yeni bir PeerAsn kaynağı oluşturabilirsiniz. İlişkilendirmeniz gereken her ASN için bir **Peerasn** oluşturarak, birden fazla ASNs 'yi bir abonelikle ilişkilendirebilirsiniz.
+Bir Internet hizmet sağlayıcısı veya Internet Exchange sağlayıcısı olarak, bir Azure aboneliğiyle bir otonom sistem numarasını (ASN) ilişkilendirmek için yeni bir PeerAsn kaynağı oluşturabilirsiniz. İlişki oluşturmanız gereken her ASN için [bir PeerASN 'Yi ilişkilendir sayfasına](https://go.microsoft.com/fwlink/?linkid=2129592) giderek, birden çok ASNs 'yi bir abonelikle ilişkilendirebilirsiniz.
 
-1. **Kaynak** > oluştur ' a tıklayarak**tümünü görüntüleyin**.
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn 'de ara](./media/peerasn-seeall.png)
-
-1. Arama kutusunda *Peerasn* araması yapın ve klavyenizde *ENTER* tuşuna basın. Sonuçlardan **Peerasn** kaynağı ' na tıklayın.
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn 'yi Başlat](./media/peerasn-launch.png)
-
-1. **Peerasn** başlatıldıktan sonra **Oluştur**' a tıklayın.
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn oluştur](./media/peerasn-create.png)
 
 1. **Eş ASN 'Yi ilişkilendir** sayfasında, **temel bilgiler** sekmesinde, alanları aşağıda gösterildiği gibi doldurun.
 

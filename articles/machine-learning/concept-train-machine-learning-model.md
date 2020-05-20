@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/13/2020
+ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592398"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683000"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -111,6 +111,18 @@ Tasarımcı, Web tarayıcınızda bir sürükle ve bırak arabirimini kullanarak
 + [Sınıflandırma: dalgalanma, uygulama ve up satışı tahmin etme](how-to-designer-sample-classification-churn.md)
 + [Özel R betiği ile sınıflandırma: uçuş gecikmelerini tahmin etme](how-to-designer-sample-classification-flight-delay.md)
 + [Metin sınıflandırması: Vikipedi SP 500 veri kümesi](how-to-designer-sample-text-classification.md)
+
+## <a name="many-models-solution-accelerator"></a>Birçok modelte Çözüm Hızlandırıcısı
+
+[Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmenize, çalıştırmanıza ve yönetmenize olanak sağlar.
+
+Örneğin, aşağıdaki senaryolarda __her örnek için__ bir model oluşturmak, geliştirilmiş sonuçlara yol açabilir:
+
+* Her bir mağaza için satışları tahmin etme
+* Yüzlerce yağ için tahmine dayalı bakım
+* Bireysel kullanıcılar için bir deneyim uyarlama.
+
+Daha fazla bilgi için GitHub 'daki [birçok modeller çözüm hızlandırıcısına](https://aka.ms/many-models) bakın.
 
 ## <a name="cli"></a>CLI
 

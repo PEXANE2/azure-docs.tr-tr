@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: f396f46fa77f75452ac8ac3cd98bccd58fe0dfe4
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3852644e888fd4a7cef1d84cc4008d106a8c7910
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613311"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684336"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -78,17 +78,16 @@ Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 
 Örneğin, kaynak `Microsoft.Network/routeTables` etiketleri ve konumu destekler ve her iki modda değerlendirilir. Ancak, kaynak `Microsoft.Network/routeTables/routes` etiketlenemez ve `Indexed` modda değerlendirilmez.
 
-**Modu** `all` çoğu durumda ayarlamanız önerilir. Portal üzerinden oluşturulan tüm ilke tanımları `all` modunu kullanır. PowerShell veya Azure CLı kullanıyorsanız, **mod** parametresini el ile belirtebilirsiniz. İlke tanımı bir **mod** değeri içermiyorsa, varsayılan olarak Azure PowerShell ve `all` `null` ' de Azure CLI ' de olur. `null` Mod, geriye dönük uyumluluğu desteklemek için `indexed` kullanmayla aynıdır.
+**Modu** `all` çoğu durumda ayarlamanız önerilir. Portal üzerinden oluşturulan tüm ilke tanımları `all` modunu kullanır. PowerShell veya Azure CLı kullanıyorsanız, **mod** parametresini el ile belirtebilirsiniz. İlke tanımı bir **mod** değeri içermiyorsa, varsayılan olarak `all` Azure PowerShell ve ' de Azure CLI ' de olur `null` . `null`Mod, `indexed` geriye dönük uyumluluğu desteklemek için kullanmayla aynıdır.
 
-`indexed`Etiketler veya konumlar uygulayan ilkeler oluşturulurken kullanılmalıdır. Gerekli olmasa da, etiketleri ve konumları desteklemeyen kaynakların, uyumluluk sonuçlarında uyumlu değil olarak gösterilmesini engeller. Özel durum **kaynak grupları** ve **aboneliklerdir**. Bir kaynak grubunda veya abonelikte konum veya etiket uygulayan ilkelerin **modu** olarak `all` ayarlanması ve ya `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` da türünü hedeflemesi gerekir. Bir örnek için bkz. [kaynak grubu etiketlerini zorlama](../samples/enforce-tag-rg.md). Etiketleri destekleyen kaynakların listesi için bkz. [Azure kaynakları Için etiket desteği](../../../azure-resource-manager/management/tag-support.md).
+`indexed`Etiketler veya konumlar uygulayan ilkeler oluşturulurken kullanılmalıdır. Gerekli olmasa da, etiketleri ve konumları desteklemeyen kaynakların, uyumluluk sonuçlarında uyumlu değil olarak gösterilmesini engeller. Özel durum **kaynak grupları** ve **aboneliklerdir**. Bir kaynak grubunda veya abonelikte konum veya etiket uygulayan ilkelerin **modu** olarak ayarlanması `all` ve ya da türünü hedeflemesi gerekir `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` . Bir örnek için bkz. [kaynak grubu etiketlerini zorlama](../samples/enforce-tag-rg.md). Etiketleri destekleyen kaynakların listesi için bkz. [Azure kaynakları Için etiket desteği](../../../azure-resource-manager/management/tag-support.md).
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />Kaynak sağlayıcısı modları (Önizleme)
 
 Şu anda önizleme sırasında şu kaynak sağlayıcısı modları destekleniyor:
 
-- `Microsoft.ContainerService.Data`[Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md)giriş denetleyicisi kurallarını yönetmek için. Bu kaynak sağlayıcısı modunu kullanan ilkelerin [Enforceregopolicy](./effects.md#enforceregopolicy) efektini kullanması **gerekir** .
-- `Microsoft.Kubernetes.Data`Azure 'da kendi kendine yönetilen AKS motoru Kubernetes kümelerini yönetmek için.
-  Bu kaynak sağlayıcısı modunu kullanan ilkelerde [Enforceopaconstraint](./effects.md#enforceopaconstraint) etkisi **kullanılmalıdır** .
+- `Microsoft.ContainerService.Data`[Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md)giriş denetleyicisi kurallarını yönetmek için. Bu kaynak sağlayıcısı modunu kullanan ilkelerin [Enforceregopolicy](./effects.md#enforceregopolicy) efektini kullanması **gerekir** . Bu mod _kullanım dışı_bırakılıyor.
+- `Microsoft.Kubernetes.Data`Kubernetes kümelerinizi Azure üzerinde veya kapalı olarak yönetmek için. Bu kaynak sağlayıcısı modunu kullanan ilkelerde [Enforceopaconstraint](./effects.md#enforceopaconstraint) etkisi **kullanılmalıdır** .
 - `Microsoft.KeyVault.Data`[Azure Key Vault](../../../key-vault/general/overview.md)' deki kasaların ve sertifikaların yönetilmesi için.
 
 > [!NOTE]
@@ -96,7 +95,7 @@ Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 
 ## <a name="parameters"></a>Parametreler
 
-Parametreler, ilke tanımlarının sayısını azaltarak ilke yönetiminizi basitleştirmeye yardımcı olur. Parametreleri,, `name`,, biçiminde `address` `city`alanlar gibi düşünün. `state` Bu parametreler her zaman aynı kalır, ancak değerleri formu dolduran kişiye göre değişir.
+Parametreler, ilke tanımlarının sayısını azaltarak ilke yönetiminizi basitleştirmeye yardımcı olur. Parametreleri,,,, biçiminde alanlar gibi düşünün `name` `address` `city` `state` . Bu parametreler her zaman aynı kalır, ancak değerleri formu dolduran kişiye göre değişir.
 Parametreler, ilke oluştururken de aynı şekilde çalışır. Bir ilke tanımına parametreler ekleyerek, farklı değerler kullanarak bu ilkeyi farklı senaryolar için yeniden kullanabilirsiniz.
 
 > [!NOTE]
@@ -106,7 +105,7 @@ Parametreler, ilke oluştururken de aynı şekilde çalışır. Bir ilke tanım�
 
 Bir parametre, ilke tanımında kullanılan aşağıdaki özelliklere sahiptir:
 
-- **ad**: parametresinin adı. İlke kuralı içindeki `parameters` dağıtım işlevi tarafından kullanılır. Daha fazla bilgi için bkz. [parametre değeri kullanma](#using-a-parameter-value).
+- **ad**: parametresinin adı. `parameters`İlke kuralı içindeki dağıtım işlevi tarafından kullanılır. Daha fazla bilgi için bkz. [parametre değeri kullanma](#using-a-parameter-value).
 - `type`: Parametrenin **dize**, **dizi**, **nesne**, **Boole**, **tamsayı**, **float**veya **TarihSaat**olduğunu belirler.
 - `metadata`: Kullanıcı dostu bilgileri göstermek için öncelikle Azure portal tarafından kullanılan alt özellikleri tanımlar:
   - `description`: Parametresinin hangi amaçla kullanıldığına ilişkin açıklama. , Kabul edilebilir değer örnekleri sağlamak için kullanılabilir.
@@ -114,7 +113,7 @@ Bir parametre, ilke tanımında kullanılan aşağıdaki özelliklere sahiptir:
   - `version`: (İsteğe bağlı) bir ilke tanımının içeriğinin sürümü hakkındaki ayrıntıları Izler.
 
     > [!NOTE]
-    > Azure ilke hizmeti, bir `version`yerleşik `preview`ilke tanımına `deprecated` veya girişim ve duruma yapılan değişiklik düzeyini iletmek için, ve özelliklerini kullanır. Biçimi `version` : `{Major}.{Minor}.{Patch}`. _Kullanım dışı_ veya _Önizleme_gibi belirli durumlar, `version` özelliğe veya başka bir özellikte **Boole**olarak eklenir.
+    > Azure Ilke hizmeti `version` , `preview` `deprecated` bir yerleşik ilke tanımına veya girişim ve duruma yapılan değişiklik düzeyini iletmek için, ve özelliklerini kullanır. Biçimi `version` : `{Major}.{Minor}.{Patch}` . _Kullanım dışı_ veya _Önizleme_gibi belirli durumlar, `version` özelliğe veya başka bir özellikte **Boole**olarak eklenir.
 
   - `category`: (İsteğe bağlı) ilke tanımının Azure portal hangi kategori altında görüntülendiğini belirler.
   - `strongType`: (İsteğe bağlı) Portal üzerinden ilke tanımı atanırken kullanılır. Bağlama duyarlı bir liste sağlar. Daha fazla bilgi için bkz. [Strongtype](#strongtype).
@@ -159,7 +158,7 @@ Bu örnek, [parametre özelliklerinde](#parameter-properties)gösterilen **allow
 
 ### <a name="strongtype"></a>strongType
 
-`metadata` Özelliği içinde, Azure Portal içinde çoklu seçim listesi sağlamak Için **strongtype** kullanabilirsiniz. **strongtype** desteklenen bir _kaynak türü_ veya izin verilen bir değer olabilir. Bir _kaynak türünün_ **strongtype**için geçerli olup olmadığını anlamak Için [Get-azresourceprovider](/powershell/module/az.resources/get-azresourceprovider)' ı kullanın.
+Özelliği içinde `metadata` , Azure Portal içinde çoklu seçim listesi sağlamak Için **strongtype** kullanabilirsiniz. **strongtype** desteklenen bir _kaynak türü_ veya izin verilen bir değer olabilir. Bir _kaynak türünün_ **strongtype**için geçerli olup olmadığını anlamak Için [Get-azresourceprovider](/powershell/module/az.resources/get-azresourceprovider)' ı kullanın.
 
 **Get-AzResourceProvider** tarafından döndürülen bazı _kaynak türleri_ desteklenir. Bunlar:
 
@@ -258,14 +257,14 @@ Bir koşul, bir **alanın** veya **değer** erişimcisinin belirli ölçütlere 
 - `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
-**Daha az**, **lessotalals**, **büyüktür**ve **greaterOrEquals**için, özellik türü koşul türüyle eşleşmiyorsa bir hata oluşur. Dize karşılaştırmaları kullanılarak `InvariantCultureIgnoreCase`yapılır.
+**Daha az**, **lessotalals**, **büyüktür**ve **greaterOrEquals**için, özellik türü koşul türüyle eşleşmiyorsa bir hata oluşur. Dize karşılaştırmaları kullanılarak yapılır `InvariantCultureIgnoreCase` .
 
-**LIKE** ve **NOTLIKE** koşullarını kullanırken, değerinde bir joker karakter `*` sağlarsınız.
-Değer birden fazla joker karakter `*`içermelidir.
+**LIKE** ve **NOTLIKE** koşullarını kullanırken, değerinde bir joker karakter sağlarsınız `*` .
+Değer birden fazla joker karakter içermelidir `*` .
 
-**Match** ve **notmatch** koşullarını kullanırken, `#` bir harf `?` için, bir harf için, herhangi bir karakterle eşleşecek `.` şekilde ve diğer karakteri bu gerçek karakterle eşleşecek şekilde eşleştirin. **Eşleştirme** ve **notmatch** büyük/küçük harf duyarlı olduğu sürece, bir _StringValue_ 'yı değerlendiren diğer tüm koşullar büyük/küçük harfe duyarlıdır. Büyük/küçük harf duyarsız alternatifler **matchInsensitively** ve **notMatchInsensitively**' de mevcuttur.
+**Match** ve **notmatch** koşullarını kullanırken, bir `#` harf için, bir `?` harf için, herhangi bir karakterle eşleşecek `.` şekilde ve diğer karakteri bu gerçek karakterle eşleşecek şekilde eşleştirin. **Eşleştirme** ve **notmatch** büyük/küçük harf duyarlı olduğu sürece, bir _StringValue_ 'yı değerlendiren diğer tüm koşullar büyük/küçük harfe duyarlıdır. Büyük/küçük harf duyarsız alternatifler **matchInsensitively** ve **notMatchInsensitively**' de mevcuttur.
 
-Diğer ad dizi alanı değerinde dizideki her öğe mantıksal **ve** öğe arasında ayrı ayrı değerlendirilir. ** \[ \* \] ** Daha fazla bilgi için bkz. [ \[ \* \] diğer adı değerlendirme](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
+** \[ \* \] Diğer ad** dizi alanı değerinde dizideki her öğe mantıksal **ve** öğe arasında ayrı ayrı değerlendirilir. Daha fazla bilgi için bkz. [ \[ \* \] diğer adı değerlendirme](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ### <a name="fields"></a>Alanlar
 
@@ -285,22 +284,22 @@ Aşağıdaki alanlar desteklenir:
 - `tags`
 - `tags['<tagName>']`
   - Bu köşeli ayraç sözdizimi, noktalama işareti, nokta veya boşluk gibi noktalama işaretlerinin bulunduğu etiket adlarını destekler.
-  - Burada ** \<TagName\> ** , koşulun doğrulanması için etiketin adıdır.
+  - Burada ** \< TagName \> ** , koşulun doğrulanması için etiketin adıdır.
   - Örnekler: `tags['Acct.CostCenter']` **ACCT. costcenter** etiketin adıdır.
 - `tags['''<tagName>''']`
   - Bu köşeli ayraç sözdizimi, çift tırnak işaretiyle kaçış ile kesme işareti olan etiket adlarını destekler.
-  - Burada **'\<TagName\>'** , koşulun doğrulanması için etiketin adıdır.
-  - Örnek: `tags['''My.Apostrophe.Tag''']` burada **' My. kesme işareti. Tag '** etiketinin adıdır.
+  - Burada **' \< TagName \> '** , koşulun doğrulanması için etiketin adıdır.
+  - Örnek: `tags['''My.Apostrophe.Tag''']` burada **' My. kesme Işareti. Tag '** etiketinin adıdır.
 - Özellik diğer adları-bir liste için bkz. [diğer adlar](#aliases).
 
 > [!NOTE]
-> `tags.<tagName>`, `tags[tagName]`ve `tags[tag.with.dots]` , bir Etiketler alanı bildirmek için kabul edilebilir yollar. Ancak, tercih edilen ifadeler yukarıda listelenmiş olanlardır.
+> `tags.<tagName>`, `tags[tagName]` ve, `tags[tag.with.dots]` bir Etiketler alanı bildirmek için kabul edilebilir yollar. Ancak, tercih edilen ifadeler yukarıda listelenmiş olanlardır.
 
 #### <a name="use-tags-with-parameters"></a>Parametrelerle etiketleri kullanma
 
 Bir parametre değeri, bir etiket alanına geçirilebilir. Bir parametreyi bir etiket alanına geçirmek, ilke ataması sırasında ilke tanımının esnekliğini artırır.
 
-Aşağıdaki örnekte, `concat` **TagName** parametresinin değeri adlı etiket için bir etiket alanı araması oluşturmak üzere kullanılır. Bu etiket yoksa, `resourcegroup()` arama işlevini kullanarak, denetlenen kaynaklar üst kaynak grubunda ayarlanan aynı adlandırılmış etiketin değerini kullanarak etiketi eklemek için **değişiklik** efekti kullanılır.
+Aşağıdaki örnekte, `concat` **TagName** parametresinin değeri adlı etiket için bir etiket alanı araması oluşturmak üzere kullanılır. Bu etiket yoksa, arama işlevini kullanarak, denetlenen kaynaklar üst kaynak grubunda ayarlanan aynı adlandırılmış etiketin değerini kullanarak etiketi eklemek için **değişiklik** efekti kullanılır `resourcegroup()` .
 
 ```json
 {
@@ -334,7 +333,7 @@ Koşullar, **değer**kullanılarak da oluşturulabilir. **değer** [parametreler
 
 #### <a name="value-examples"></a>Değer örnekleri
 
-Bu ilke kuralı örneği, **value** `resourceGroup()` işlevin sonucunu ve döndürülen **ad** özelliğini **benzer** bir koşula göre `*netrg`karşılaştırmak için değeri kullanır. Kural, adı içinde `Microsoft.Network/*` **type** `*netrg`sonlanan herhangi bir kaynak grubundaki türden olmayan tüm kaynakları reddeder.
+Bu ilke kuralı örneği, **value** `resourceGroup()` işlevin sonucunu ve döndürülen **ad** özelliğini **benzer** bir koşula göre karşılaştırmak için değeri kullanır `*netrg` . Kural, `Microsoft.Network/*` adı içinde sonlanan herhangi bir kaynak grubundaki **türden** olmayan tüm kaynakları reddeder `*netrg` .
 
 ```json
 {
@@ -355,7 +354,7 @@ Bu ilke kuralı örneği, **value** `resourceGroup()` işlevin sonucunu ve dönd
 }
 ```
 
-Bu ilke kuralı örneği, birden çok iç içe işlevlerin sonucunun **eşit** `true`olup olmadığını denetlemek için **değerini** kullanır. Kural, en az üç etiketi olmayan tüm kaynakları reddeder.
+Bu ilke kuralı örneği, birden çok iç içe işlevlerin sonucunun **eşit** olup olmadığını denetlemek için **değerini** kullanır `true` . Kural, en az üç etiketi olmayan tüm kaynakları reddeder.
 
 ```json
 {
@@ -408,11 +407,11 @@ Bunun yerine **, adın ilk** üç karakterinin bir hataya neden olmak üzere ü�
 }
 ```
 
-Düzeltilen ilke kuralıyla, `if()` üç karakterden kısa bir değerde bir **name** `substring()` değer almaya çalışmadan önce adın uzunluğunu denetler. **Ad** çok kısaysa, bunun yerine "ABC ile başlamıyor" değeri döndürülür ve **ABC**ile karşılaştırılır. **ABC** ile başlamayan kısa bir ada sahip bir kaynak, hala ilke kuralına neden oluyor, ancak değerlendirme sırasında hataya neden olmaz.
+Düzeltilen ilke kuralıyla, `if()` üç karakterden kısa bir değerde bir değer almaya çalışmadan önce **adın** uzunluğunu denetler `substring()` . **Ad** çok kısaysa, bunun yerine "ABC ile başlamıyor" değeri döndürülür ve **ABC**ile karşılaştırılır. **ABC** ile başlamayan kısa bir ada sahip bir kaynak, hala ilke kuralına neden oluyor, ancak değerlendirme sırasında hataya neden olmaz.
 
 ### <a name="count"></a>Sayı
 
-Kaynak yükünde bir dizinin kaç üyesinin bir koşul ifadesini karşılayıp karşılamadığını sayan **sayı** ifadesi kullanılarak oluşturulabilir koşullar. Yaygın senaryolar ', ' ' veya ' hiçbiri ', ' tamamen ' veya ' hiçbiri ' ' veya ' hiçbiri ' olan dizi üyelerinin koşulu karşılayıp karşılamadığını kontrol etmekte. **Count** , bir koşul ifadesi için her [ \[ \* \] bir diğer ad](#understanding-the--alias) dizisi üyesini değerlendirir ve daha sonra ifade işleciyle karşılaştırılan _doğru_ sonuçları toplar. **Count** ifadeleri, tek bir **policyrule** tanımına 3 kez eklenebilir.
+Kaynak yükünde bir dizinin kaç üyesinin bir koşul ifadesini karşılayıp karşılamadığını sayan **sayı** ifadesi kullanılarak oluşturulabilir koşullar. Yaygın senaryolar ', ' ' veya ' hiçbiri ', ' tamamen ' veya ' hiçbiri ' ' veya ' hiçbiri ' olan dizi üyelerinin koşulu karşılayıp karşılamadığını kontrol etmekte. **Count** , bir koşul ifadesi için her bir [ \[ \* \] diğer ad](#understanding-the--alias) dizisi üyesini değerlendirir ve daha sonra ifade işleciyle karşılaştırılan _doğru_ sonuçları toplar. **Count** ifadeleri, tek bir **policyrule** tanımına 3 kez eklenebilir.
 
 **Count** ifadesinin yapısı:
 
@@ -431,9 +430,9 @@ Kaynak yükünde bir dizinin kaç üyesinin bir koşul ifadesini karşılayıp k
 Şu Özellikler **sayısıyla**kullanılır:
 
 - **Count. Field** (zorunlu): dizinin yolunu içerir ve bir dizi diğer adı olmalıdır. Dizi eksikse, ifade koşul ifadesi düşünülmeden _false_ olarak değerlendirilir.
-- **Count. where** (isteğe bağlı): **Count. Field**öğesinin her [ \[ \* \] bir diğer ad](#understanding-the--alias) dizisi üyesini ayrı ayrı değerlendirmek için koşul ifadesi. Bu özellik sağlanmazsa, ' Field ' yolunu taşıyan tüm dizi üyeleri _true_olarak değerlendirilir. Herhangi bir [koşul](../concepts/definition-structure.md#conditions) , bu özelliğin içinde kullanılabilir.
+- **Count. where** (isteğe bağlı): **Count. Field**öğesinin her bir [ \[ \* \] diğer ad](#understanding-the--alias) dizisi üyesini ayrı ayrı değerlendirmek için koşul ifadesi. Bu özellik sağlanmazsa, ' Field ' yolunu taşıyan tüm dizi üyeleri _true_olarak değerlendirilir. Herhangi bir [koşul](../concepts/definition-structure.md#conditions) , bu özelliğin içinde kullanılabilir.
   [Mantıksal işleçler](#logical-operators) , bu özelliğin içinde karmaşık değerlendirme gereksinimleri oluşturmak için kullanılabilir.
-- koşul (zorunlu): değer **Count. where** koşul ifadesini karşılayan öğelerin sayısıyla karşılaştırılır. ** \<\> ** Sayısal bir [koşul](../concepts/definition-structure.md#conditions) kullanılmalıdır.
+- ** \< koşul \> ** (zorunlu): değer **Count. where** koşul ifadesini karşılayan öğelerin sayısıyla karşılaştırılır. Sayısal bir [koşul](../concepts/definition-structure.md#conditions) kullanılmalıdır.
 
 #### <a name="count-examples"></a>Sayı örnekleri
 
@@ -581,7 +580,7 @@ Tüm [Kaynak Yöneticisi şablonu işlevleri](../../../azure-resource-manager/te
 - değişkenler ()
 
 > [!NOTE]
-> Bu işlevler, bir `details.deployment.properties.template` **Deployifnotexists** ilke tanımındaki şablon dağıtımının bölümünde hala kullanılabilir.
+> Bu işlevler, `details.deployment.properties.template` bir **Deployifnotexists** ilke tanımındaki şablon dağıtımının bölümünde hala kullanılabilir.
 
 Aşağıdaki işlev bir ilke kuralında kullanılabilir, ancak bir Azure Resource Manager şablonunda kullanımı farklıdır:
 
@@ -598,12 +597,12 @@ Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
   - If koşulu tarafından değerlendirilen kaynaktaki bu alanın değerini döndürür
   - `field`Öncelikle, değerlendirilen kaynaktaki alanlara başvurmak için **Auditınotexists** ve **deployifnotexists** ile birlikte kullanılır. Bu kullanım örneği, [Deployifnotexists örneğinde](effects.md#deployifnotexists-example)görülebilir.
 - `requestContext().apiVersion`
-  - İlke değerlendirmesini tetikleyen isteğin API sürümünü döndürür (örnek: `2019-09-01`).
+  - İlke değerlendirmesini tetikleyen isteğin API sürümünü döndürür (örnek: `2019-09-01` ).
     Bu, kaynak oluşturma/güncelleştirme değerlendirmesi için PUT/PATCH isteğinde kullanılan API sürümü olacaktır. En son API sürümü, mevcut kaynaklardaki uyumluluk değerlendirmesi sırasında her zaman kullanılır.
   
 #### <a name="policy-function-example"></a>İlke işlevi örneği
 
-Bu ilke kuralı örneği, kaynak `resourceGroup` adını kaynak grubu adıyla başlatmak üzere zorlayan bir `like` koşul oluşturmak için `concat` , **ad** özelliğini almak üzere Array ve Object işleviyle birlikte, kaynak işlevini kullanır.
+Bu ilke kuralı örneği, kaynak `resourceGroup` **name** `concat` `like` adını kaynak grubu adıyla başlatmak üzere zorlayan bir koşul oluşturmak için, ad özelliğini almak üzere Array ve Object işleviyle birlikte, kaynak işlevini kullanır.
 
 ```json
 {
@@ -633,7 +632,7 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
 
 - Azure Kaynak Grafiği
 
-  Bir kaynağın `project` **diğer adını** göstermek için işlecini kullanın.
+  `project`Bir kaynağın **diğer adını** göstermek için işlecini kullanın.
 
   ```kusto
   Resources
@@ -682,15 +681,15 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
 
 ### <a name="understanding-the--alias"></a>[*] Diğer adını anlama
 
-Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ** \[ \* ** ona eklenmiş bir sürümüne sahiptir. Örneğin:
+Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ona eklenmiş bir sürümüne sahiptir **\[\*\]** . Örnek:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 ' Normal ' diğer ad, alanı tek bir değer olarak temsil eder. Bu alan, tüm değer kümesinin tam olarak tanımlanmış olması, daha fazla olmaması ve daha az olmaması durumunda tam eşleşme karşılaştırma senaryolarına yöneliktir.
 
-Diğer ** \[ \* ** ad, dizideki her öğenin değerine ve her bir öğenin belirli özelliklerine göre karşılaştırma mümkün hale getirir. Bu yaklaşım, ' if None ', ' varsa ', ' veya ' varsa ' senaryolarından oluşan öğe özelliklerini karşılaştırmayı mümkün kılar. Daha karmaşık senaryolar için, [sayı](#count) koşulu ifadesini kullanın. **Iprules\[\*** kullanarak, her _eylemin_ _reddetme_, ancak kaç kuralın var olduğunu veya IP _değerinin_ ne olduğunu kaygılandığını doğrulayan bir örnektir.
-Bu örnek kural, **ıprules\[\*\]. Value** ile **10.0.4.1** arasında herhangi bir eşleşme olup olmadığını denetler **ve yalnızca en** az bir eşleşme bulmazsa, bu değeri uygular:
+**\[\*\]** Diğer ad, dizideki her öğenin değerine ve her bir öğenin belirli özelliklerine göre karşılaştırma mümkün hale getirir. Bu yaklaşım, ' if None ', ' varsa ', ' veya ' varsa ' senaryolarından oluşan öğe özelliklerini karşılaştırmayı mümkün kılar. Daha karmaşık senaryolar için, [sayı](#count) koşulu ifadesini kullanın. ** \[ \* Iprules \] **kullanarak, her _eylemin_ _reddetme_, ancak kaç kuralın var olduğunu veya IP _değerinin_ ne olduğunu kaygılandığını doğrulayan bir örnektir.
+Bu örnek kural, **ıprules \[ \* \] . Value** ile **10.0.4.1** arasında herhangi bir eşleşme olup olmadığını denetler **ve yalnızca en** az bir eşleşme bulmazsa, bu değeri uygular:
 
 ```json
 "policyRule": {
@@ -712,7 +711,7 @@ Bu örnek kural, **ıprules\[\*\]. Value** ile **10.0.4.1** arasında herhangi b
 }
 ```
 
-Daha fazla bilgi için bkz. [[\*] diğer adını değerlendirme](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
+Daha fazla bilgi için bkz. [[ \* ] diğer adını değerlendirme](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ## <a name="initiatives"></a>Girişimler
 
@@ -721,7 +720,7 @@ Girişimler, tek bir öğe olarak bir grupla birlikte çalışırken atamaları 
 > [!NOTE]
 > Bir girişim atandıktan sonra, girişim düzeyi parametreleri değiştirilemez. Bu nedenle, parametresini tanımlarken bir **DefaultValue** ayarlaması önerilir.
 
-Aşağıdaki örnek, iki etiket işlemek için bir girişim oluşturmayı gösterir: `costCenter` ve. `productName` Varsayılan etiket değerini uygulamak için iki yerleşik ilke kullanır.
+Aşağıdaki örnek, iki etiket işlemek için bir girişim oluşturmayı gösterir: `costCenter` ve `productName` . Varsayılan etiket değerini uygulamak için iki yerleşik ilke kullanır.
 
 ```json
 {

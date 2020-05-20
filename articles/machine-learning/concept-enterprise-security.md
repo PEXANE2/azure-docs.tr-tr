@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/13/2020
-ms.openlocfilehash: 3aecaf45a04c1428968791a71abece783c7eb7c0
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 05/19/2020
+ms.openlocfilehash: 36012801a2d36b75a0683db6f029a4560150ac2b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891311"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683063"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -42,7 +42,7 @@ Daha fazla bilgi için bkz. [Azure Machine Learning kaynakları ve iş akışlar
 
 Azure Machine Learning, Web Hizmetleri için iki kimlik doğrulama biçimini destekler: anahtar ve belirteç. Her Web hizmeti tek seferde yalnızca bir kimlik doğrulama biçimi etkinleştirebilir.
 
-|Kimlik doğrulama Yöntemi|Açıklama|Azure Container Instances|AKS|
+|Kimlik doğrulama yöntemi|Açıklama|Azure Container Instances|AKS|
 |---|---|---|---|
 |Anahtar|Anahtarlar statiktir ve yenilenmek zorunda değildir. Anahtarlar el ile yeniden oluşturulabilir.|Varsayılan olarak devre dışı| Varsayılan olarak etkindir|
 |Belirteç|Belirteçlerin süresi belirtilen süre geçtikten sonra ve yenilenmesi gerekiyor.| Kullanılamaz| Varsayılan olarak devre dışı |
@@ -99,7 +99,7 @@ Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları I�
 
 Yöneticilerin yönetilen kimliğin önceki tabloda bahsedilen kaynaklara erişimini iptal etmemenizi önermiyoruz. Yeniden eşitleme anahtarları işlemini kullanarak erişimi geri yükleyebilirsiniz.
 
-Azure Machine Learning, her çalışma alanı bölgesi için aboneliğinizde katkıda bulunan `aml-` düzeyinde `Microsoft-AzureML-Support-App-`erişim ile ek bir uygulama (adı ile başlar) oluşturur. Örneğin, Doğu ABD ' de bir çalışma alanınız varsa ve bir diğeri aynı abonelikte Kuzey Avrupa, bu uygulamalardan ikisini de görürsünüz. Bu uygulamalar, işlem kaynaklarını yönetmenize yardımcı olmak için Azure Machine Learning sağlar.
+Azure Machine Learning, `aml-` `Microsoft-AzureML-Support-App-` her çalışma alanı bölgesi için aboneliğinizde katkıda bulunan düzeyinde erişim ile ek bir uygulama (adı ile başlar) oluşturur. Örneğin, Doğu ABD ' de bir çalışma alanınız varsa ve bir diğeri aynı abonelikte Kuzey Avrupa, bu uygulamalardan ikisini de görürsünüz. Bu uygulamalar, işlem kaynaklarını yönetmenize yardımcı olmak için Azure Machine Learning sağlar.
 
 ## <a name="network-security"></a>Ağ güvenliği
 
@@ -116,7 +116,7 @@ Ayrıca, çalışma alanınız için Azure özel bağlantısını etkinleştireb
 > [!IMPORTANT]
 > Çalışma alanınız hassas veriler içeriyorsa, çalışma alanınızı oluştururken [hbi_workspace bayrağını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ayarlamayı öneririz. 
 
-Bayrak `hbi_workspace` , Microsoft 'un tanılama amacıyla topladığı veri miktarını denetler ve Microsoft yönetilen ortamlarında ek şifrelemeye izin vermez. Buna ek olarak, şunları da mümkün kılar:
+`hbi_workspace`Bayrak, Microsoft 'un tanılama amacıyla topladığı veri miktarını denetler ve Microsoft yönetilen ortamlarında ek şifrelemeye izin vermez. Buna ek olarak, şunları da mümkün kılar:
 
 * Bu abonelikte daha önceki kümelerin oluşturulmadığından, Amlcompute kümenizdeki yerel çalışma diskini şifrelemeye başlar. Aksi takdirde, işlem kümelerinizin karalama diskinin şifrelenmesini etkinleştirmek için bir destek bileti yükseltmeniz gerekir 
 * Çalıştırmalar arasında yerel çalışma diskinizi temizler
@@ -146,8 +146,6 @@ Azure Cosmos DB örneğini şifrelemek için kendi (müşteri tarafından yönet
 
 Abonelikinizde müşteri tarafından yönetilen anahtarlarla Cosmos DB bir örnek sağlamayı etkinleştirmek için aşağıdaki eylemleri gerçekleştirin:
 
-* Cosmos DB için müşteri tarafından yönetilen temel özellikleri etkinleştirin. Şu anda bu özelliği kullanmak için erişim istemeniz gerekir. Bunu yapmak için lütfen iletişim kurun [cosmosdbpm@microsoft.com](mailto:cosmosdbpm@microsoft.com).
-
 * Henüz yapmadıysanız, Azure Machine Learning ve Azure Cosmos DB kaynak sağlayıcılarını aboneliğinize kaydedin.
 
 * Machine Learning uygulamayı (kimlik ve erişim yönetimi 'nde) aboneliğinizde katkıda bulunan izinlerle yetkilendirin.
@@ -163,7 +161,7 @@ Abonelikinizde müşteri tarafından yönetilen anahtarlarla Cosmos DB bir örne
         > [!NOTE]
         > Bu Anahtar Kasası örneği, çalışma alanını sağladığınızda Azure Machine Learning tarafından oluşturulan anahtar kasasından farklı olabilir. Çalışma alanı için aynı Anahtar Kasası örneğini kullanmak istiyorsanız, [key_vault parametresini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)kullanarak çalışma alanını sağlarken aynı anahtar kasasını geçirin. 
 
-Bu Cosmos DB örneği, aboneliğinizdeki Microsoft tarafından yönetilen bir kaynak grubunda oluşturulur. Yönetilen kaynak grubu biçiminde `<AML Workspace Resource Group Name><GUID>`adlandırılır.
+Bu Cosmos DB örneği, aboneliğinizdeki Microsoft tarafından yönetilen bir kaynak grubunda oluşturulur. Yönetilen kaynak grubu biçiminde adlandırılır `<AML Workspace Resource Group Name><GUID>` .
 
 > [!IMPORTANT]
 > * Bu Cosmos DB örneğini silmeniz gerekiyorsa, onu kullanan Azure Machine Learning çalışma alanını silmeniz gerekir. 
@@ -188,7 +186,7 @@ Mevcut bir Azure Container Registry kullanarak çalışma alanı oluşturma örn
 
 Dağıtılan bir Azure Container Instance (acı) kaynağını, müşteri tarafından yönetilen anahtarları kullanarak şifreleyebilirsiniz. ACI için kullanılan müşteri tarafından yönetilen anahtar, çalışma alanınızın Azure Key Vault depolanabilir. Anahtar oluşturma hakkında bilgi için bkz. [müşteri tarafından yönetilen bir anahtarla verileri şifreleme](../container-instances/container-instances-encrypt-data.md#generate-a-new-key).
 
-Azure Container Instance 'a model dağıttığınızda anahtarı kullanmak için kullanarak `AciWebservice.deploy_configuration()`yeni bir dağıtım yapılandırması oluşturun. Aşağıdaki parametreleri kullanarak anahtar bilgilerini sağlayın:
+Azure Container Instance 'a model dağıttığınızda anahtarı kullanmak için kullanarak yeni bir dağıtım yapılandırması oluşturun `AciWebservice.deploy_configuration()` . Aşağıdaki parametreleri kullanarak anahtar bilgilerini sağlayın:
 
 * `cmk_vault_base_url`: Anahtarı içeren anahtar kasasının URL 'SI.
 * `cmk_key_name`: Anahtarın adı.
@@ -215,7 +213,7 @@ Bu işlem, Kubernetes kümesindeki dağıtılan sanal makinelerin hem verilerini
 
 Azure depolama 'da depolanan her işlem düğümü için işletim sistemi diski, Azure Machine Learning depolama hesaplarında Microsoft tarafından yönetilen anahtarlarla şifrelenir. Bu işlem hedefi kısa ömürlü ve hiçbir çalışma sıraya alınmaz kümeler genellikle ölçeği aşağı ölçeklendirilir. Temel alınan sanal makine de sağlanmamıştır ve işletim sistemi diski silinir. Azure disk şifrelemesi, işletim sistemi diski için desteklenmez.
 
-Her bir sanal makinenin işletim sistemi işlemleri için yerel bir geçici diski de vardır. İsterseniz eğitim verilerini hazırlamak için diski kullanabilirsiniz. Parametresi, `hbi_workspace` parametresi olarak `TRUE`ayarlanan çalışma alanları için varsayılan olarak şifrelenir. Bu ortam yalnızca çalıştırma süresince kısa ömürlü ve şifreleme desteği yalnızca sistem tarafından yönetilen anahtarlarla sınırlıdır.
+Her bir sanal makinenin işletim sistemi işlemleri için yerel bir geçici diski de vardır. İsterseniz eğitim verilerini hazırlamak için diski kullanabilirsiniz. Parametresi, parametresi olarak ayarlanan çalışma alanları için varsayılan olarak şifrelenir `hbi_workspace` `TRUE` . Bu ortam yalnızca çalıştırma süresince kısa ömürlü ve şifreleme desteği yalnızca sistem tarafından yönetilen anahtarlarla sınırlıdır.
 
 #### <a name="azure-databricks"></a>Azure Databricks
 
@@ -247,7 +245,7 @@ Microsoft, kaynak adları (örneğin, veri kümesi adı veya makine öğrenimi d
 
 Microsoft ayrıca, önemli bilgileri (örneğin, hesap anahtarı gizli dizileri) ortam değişkenlerine depolamamanızı da önerir. Ortam değişkenleri günlüğe kaydedilir, şifrelenir ve bizimle saklanır. Benzer şekilde [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)adlandırırken, Kullanıcı adları veya gizli proje adları gibi hassas bilgileri de eklemekten kaçının. Bu bilgiler, Microsoft Desteği mühendislerine erişilebilen telemetri günlüklerinde görünebilir.
 
-Çalışma alanını sağlarken parametresini olarak `hbi_workspace` `TRUE` ayarlayarak, toplanan tanılama verilerinden bu verileri devre dışı kalabilirsiniz. Bu işlev, AzureML Python SDK 'Sı, CLı, REST API 'Leri veya Azure Resource Manager şablonları kullanılırken desteklenir.
+`hbi_workspace`Çalışma alanını sağlarken parametresini olarak ayarlayarak, toplanan tanılama verilerinden bu verileri devre dışı kalabilirsiniz `TRUE` . Bu işlev, AzureML Python SDK 'Sı, CLı, REST API 'Leri veya Azure Resource Manager şablonları kullanılırken desteklenir.
 
 ### <a name="microsoft-generated-data"></a>Microsoft tarafından oluşturulan veriler
 

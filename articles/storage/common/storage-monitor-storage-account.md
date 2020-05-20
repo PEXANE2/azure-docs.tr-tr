@@ -8,12 +8,13 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: monitoring
+ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268294"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684685"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure portalında depolama hesabını izleme
 
@@ -111,10 +112,10 @@ Depolama kaynağı ölçümleri için eşiklere ulaşıldığında sizi bilgilen
 Portal panonuza herhangi bir depolama hesabınız için Azure depolama ölçümleri grafikleri ekleyebilirsiniz.
 
 1. Panonuzu [Azure Portal](https://portal.azure.com)görüntülerken **panoyu Düzenle** ' yi seçin.
-1. **Kutucuk galerisinde**, > **türe** **göre kutucukları bul**' u seçin.
-1. **Tür** > **depolama hesapları**' nı seçin.
+1. **Kutucuk galerisinde**, türe **göre kutucukları bul**' u seçin  >  **Type**.
+1. **Tür**  >  **depolama hesapları**' nı seçin.
 1. **Kaynaklar**' da, ölçümlerini panoya eklemek istediğiniz depolama hesabını seçin.
-1. **Kategori** > **izlemeyi**seçin.
+1. **Kategori**  >  **izlemeyi**seçin.
 1. Görüntülenmesini istediğiniz ölçüm için grafik kutucuğunu panonuza sürükleyip bırakın. Panoda görüntülenmesini istediğiniz tüm ölçümler için tekrarlayın. Aşağıdaki görüntüde, "blob 'Lar-toplam istek" grafiği bir örnek olarak vurgulanır, ancak tüm grafikler panonuza yerleştirme için kullanılabilir.
 
    ![Azure portal kutucuk Galerisi](./media/storage-monitor-storage-account/storage-customize-dashboard.png)

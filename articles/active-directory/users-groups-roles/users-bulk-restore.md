@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11f35c7615135f5aa6c63d5d05898d139df61d0d
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 1db23bb1176a41b4b9bac548b737fbd13fbe82c4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203325"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685215"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Azure Active Directory silinen kullanıcıları toplu geri yükleme
 
@@ -35,7 +35,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla geri yüklemenize yardımc
 İndirilen bir CSV şablonundaki satırlar aşağıdaki gibidir:
 
 - **Sürüm numarası**: sürüm numarasını içeren ilk satır, KARŞıYA yükleme CSV 'ye eklenmelidir.
-- **Sütun başlıkları**: sütun &lt;başlıklarının biçimi *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş*&gt;. Örneğin, `Object ID [objectId] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir.
+- **Sütun başlıkları**: sütun başlıklarının biçimi &lt; *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş* &gt; . Örneğin, `Object ID [objectId] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir.
 - **Örnekler satırı**: şablona her sütun için kabul edilebilir değer örneklerinin bir satırını ekledik. Örnekler satırını kaldırmalı ve kendi girişlerinizin yerine değiştirmelisiniz.
 
 ### <a name="additional-guidance"></a>Ek yönergeler
@@ -48,14 +48,14 @@ Azure AD kullanıcılarını toplu olarak başarıyla geri yüklemenize yardımc
 ## <a name="to-bulk-restore-users"></a>Kullanıcıları toplu geri yüklemek için
 
 1. Azure AD kuruluşunda Kullanıcı Yöneticisi olan bir hesapla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
-1. Azure AD 'de, silinen **Kullanıcılar** > **Deleted**' ı seçin.
+1. Azure AD 'de, silinen **Kullanıcılar**' ı seçin  >  **Deleted**.
 1. **Silinen kullanıcılar** sayfasında, kullanıcıların geri yüklenecek GEÇERLI bir CSV dosyasını karşıya yüklemek için **toplu geri yükleme** ' yi seçin.
 
-   ![Silinen kullanıcılar sayfasında toplu geri yükleme komutunu seçin](./media/users-bulk-restore/bulk-restore.png)
+    ![Silinen kullanıcılar sayfasında toplu geri yükleme komutunu seçin](./media/users-bulk-restore/bulk-restore.png)
 
 1. CSV şablonunu açın ve geri yüklemek istediğiniz her kullanıcı için bir satır ekleyin. Yalnızca **ObjectID**değeri gereklidir. Ardından dosyayı kaydedin.
 
-   ![İçinde eklemek istediğiniz kullanıcıları listeettiğiniz yerel bir CSV dosyası seçin](./media/users-bulk-restore/upload-button.png)
+    :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="İçinde eklemek istediğiniz kullanıcıları listeettiğiniz yerel bir CSV dosyası seçin":::
 
 1. **Toplu geri yükleme** sayfasında, **CSV dosyanızı karşıya yükleyin**bölümünde dosyaya gidin. Dosyayı seçip **Gönder**' e TıKLADıĞıNıZDA, CSV dosyasının doğrulanması başlar.
 1. Dosya içeriği doğrulandığında, **dosyanın başarıyla karşıya yüklendiğini**görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.

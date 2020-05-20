@@ -3,12 +3,12 @@ title: En iyi kayıt defteri uygulamalar
 description: Bu en iyi yöntemleri izleyerek Azure kapsayıcı kayıt defterinizi nasıl verimli bir şekilde kullanabileceğinizi öğrenin.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc84fb8cb98f58e28570095370d55a7358ce3a99
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247078"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682692"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry için en iyi yöntemler
 
@@ -33,7 +33,7 @@ Coğrafi çoğaltma özelliğini kullanmayı öğrenmek için [Azure Container R
 
 Depo ad alanlarından yararlanarak kuruluşunuz içinde tek bir kayıt defterinin birden çok grupta paylaşılmasına imkan tanıyabilirsiniz. Kayıt defterleri farklı dağıtımlarla ve takımlarla paylaşılabilir. İç içe ad alanlarını destekleyen Azure Container Registry, grup yalıtımı imkanı sunar.
 
-Örneğin, aşağıdaki kapsayıcı görüntüsü etiketlerini göz önünde bulundurun. Şirket genelinde `aspnetcore`kullanılan resimler kök ad alanına yerleştirilir, ancak ürünlere ve pazarlama gruplarına ait kapsayıcı görüntülerinin her biri kendi ad alanlarını kullanır.
+Örneğin, aşağıdaki kapsayıcı görüntüsü etiketlerini göz önünde bulundurun. Şirket genelinde kullanılan resimler `aspnetcore` kök ad alanına yerleştirilir, ancak ürünlere ve pazarlama gruplarına ait kapsayıcı görüntülerinin her biri kendi ad alanlarını kullanır.
 
 - *contoso.azurecr.io/aspnetcore:2.0*
 - *contoso.azurecr.io/products/widget/web:1*
@@ -59,7 +59,7 @@ Azure Container Registry kimlik doğrulaması hakkında ayrıntılı bilgi edinm
 
 ## <a name="manage-registry-size"></a>Kayıt defteri boyutunu yönetme
 
-Her bir [kapsayıcı kayıt defteri SKU][container-registry-skus] öğesinde tipik senaryolara uygun depolama alanı kısıtlamaları mevcuttur: Başlangıç için **Temel**, üretim uygulamalarının çoğu için **Standart**, çok geniş ölçekli performans ve [coğrafi çoğaltma][container-registry-geo-replication] için **Premium**. Kayıt defterinizin kullanım ömrü boyunca kullanılmayan içerikleri düzenli olarak silerek boyutunu yönetmeniz gerekir.
+Her bir [kapsayıcı kayıt defteri hizmet katmanının][container-registry-skus] depolama kısıtlamaları tipik bir senaryoya göre hizalanmaya yöneliktir: başlangıç için **temel** , üretim uygulamalarının çoğunluğu için **Standart** ve Hyper-ölçek performansı ve [coğrafi çoğaltma][container-registry-geo-replication]için **Premium** . Kayıt defterinizin kullanım ömrü boyunca kullanılmayan içerikleri düzenli olarak silerek boyutunu yönetmeniz gerekir.
 
 Kayıt defterinizin geçerli boyutunu görüntülemek için [az ACR Show-Usage][az-acr-show-usage] Azure CLI komutunu kullanın:
 
@@ -86,7 +86,7 @@ Etiketsiz (bazen "Dangling" veya "yalnız bırakılmış" olarak adlandırılır
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Container Registry, SKU adı verilen ve her biri farklı özellikler sağlayan birkaç katmanda sunulmaktadır. Sunulan SKU’lar hakkında ayrıntılı bilgi için bkz. [Azure Container Registry SKU’ları](container-registry-skus.md).
+Azure Container Registry, her birinin farklı yetenekler sağlayan birkaç katmanda (SKU olarak da bilinir) kullanılabilir. Kullanılabilir hizmet katmanları hakkında daha fazla bilgi için bkz. [Azure Container Registry hizmet katmanları](container-registry-skus.md).
 
 <!-- IMAGES -->
 [delete-repository-portal]: ./media/container-registry-best-practices/delete-repository-portal.png

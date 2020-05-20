@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Otomasyonu için bir durum açtığınızda toplanacak veriler | Microsoft Docs
-description: Bu makalede, Azure Otomasyonu için Microsoft Azure desteğiyle bir servis talebi açmadan önce toplamanız gereken bazı bilgiler açıklanmaktadır.
+title: Microsoft Azure Otomasyonu için bir servis talebi açarken toplanacak veriler | Microsoft Docs
+description: Bu makalede, Azure Otomasyonu için Microsoft Azure desteğiyle bir servis talebi açmadan önce toplanacak bilgiler açıklanmaktadır.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
-ms.openlocfilehash: e1d5d791a58f301991819b41757b9021f6e30fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679413"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684852"
 ---
-# <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Microsoft Azure Otomasyonu için bir servis talebi açtığınızda toplanan veriler
+# <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Microsoft Azure Otomasyonu için bir servis talebi açılırken toplanacak veriler
 
 Bu makalede, Azure Otomasyonu için Microsoft Azure desteğiyle bir servis talebi açmadan önce toplamanız gereken bazı bilgiler açıklanmaktadır. Bu bilgiler, durumu açmak için gerekli değildir. Ancak, Microsoft 'un sorununuzu daha hızlı çözümlemesine yardımcı olabilir. Ayrıca, büyük/küçük harf 'i açtıktan sonra bu veriler destek mühendisi tarafından istenebilir.
 
@@ -92,5 +92,5 @@ Bilgi Bankası makalesi [4034605-Azure Otomasyonu ile komut dosyalı tanılamay�
 Daha fazla yardıma ihtiyacınız varsa:
 
 * Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
-* Azure Community [@AzureSupport](https://twitter.com/azuresupport)'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport)Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
 * Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.

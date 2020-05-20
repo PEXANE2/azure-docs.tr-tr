@@ -3,12 +3,12 @@ title: Büyük veri kümeleriyle çalışma
 description: Azure Kaynak Grafında çalışırken büyük veri kümelerinde kayıtları alma, biçimlendirme, sayfa ve atlamayı anlayın.
 ms.date: 03/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: be15a6234935627ca748276e6330c50c3ee5a775
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064735"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681077"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure Kaynak veri kümeleriyle çalışma
 
@@ -21,7 +21,7 @@ Yüksek bir sıklıkta sorgularla çalışmaya ilişkin yönergeler için bkz. [
 Varsayılan olarak, kaynak Graph tüm sorgular yalnızca **100** kayıt döndürüyor şekilde kısıtlar. Bu denetim, büyük veri kümelerine yol açacak istemeden yapılan sorgulardan hem kullanıcıyı hem de hizmeti korur. Bu olay çoğu zaman bir müşteri, kaynakları belirli ihtiyaçlarına uygun şekilde bulmak ve filtrelemek için sorguları deneydiğinde oluşur. Bu denetim, sonuçları sınırlamak için [üst](/azure/kusto/query/topoperator) veya Azure Veri Gezgini Dil işleçlerini [sınırlandırtan](/azure/kusto/query/limitoperator) farklıdır.
 
 > [!NOTE]
-> **Ilk kez**kullanıldığında, veya `asc` `desc`içeren en az bir sütundan sonuçları sıralamak önerilir. Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
+> **Ilk kez**kullanıldığında, veya içeren en az bir sütundan sonuçları sıralamak önerilir `asc` `desc` . Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
 
 Varsayılan sınır, kaynak Graph ile etkileşimde bulunmak için tüm yöntemler aracılığıyla geçersiz kılınabilir. Aşağıdaki örneklerde veri kümesi boyut sınırının _200_olarak nasıl değiştirileceği gösterilmektedir:
 
@@ -37,14 +37,17 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 
 _En kısıtlayıcı_ olan denetim kazanacaktır. Örneğin, sorgunuz **top** veya **limit** işleçlerini kullanıyorsa ve **ilk**olarak daha fazla kayıt ile sonuçlanacaksa, döndürülen en fazla kayıt sayısı **birincisine**eşittir. Benzer şekilde, **top** veya **limit** **birinciden**küçükse, döndürülen kayıt kümesi **top** veya **limit**tarafından yapılandırılan daha küçük bir değer olacaktır.
 
-**Önce** Şu anda izin verilen en fazla _5000_değeri vardır.
+**İlk** olarak, en fazla izin verilen _5000_değerine sahiptir ve aynı anda [disk belleği sonuçları](#paging-results) _1000_ kayıtları elde eder.
+
+> [!IMPORTANT]
+> **İlk** olarak _1000_ kayıtlardan daha büyük olacak şekilde yapılandırıldığında, sayfalama 'nin çalışması için sorgunun **ID** alanını **projesi** gerekir. Sorguda eksik ise, yanıt [disk belleğine](#paging-results) almaz ve sonuçlar _1000_ kayıtla sınırlıdır.
 
 ## <a name="skipping-records"></a>Kayıtlar atlanıyor
 
 Büyük veri kümeleriyle çalışma için sonraki seçenek, **atlama** denetimidir. Bu denetim, sorgunuzun sonuçları döndürmeden önce tanımlanan kayıt sayısını atlamasını veya atlamasını sağlar. **Skip** , sonuçları, sonuç kümesinin ortasında bir yerde bir yere alacağınız anlamlı bir şekilde sıralayan sorgular için yararlıdır. Gereken sonuçlar döndürülen veri kümesinin sonunda ise, farklı bir sıralama yapılandırması kullanmak ve bunun yerine veri kümesinin en üstünden sonuçları almak daha etkilidir.
 
 > [!NOTE]
-> **Atla**kullanırken, sonuçları veya `asc` `desc`ile en az bir sütuna göre sıralamak önerilir. Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
+> **Atla**kullanırken, sonuçları veya ile en az bir sütuna göre sıralamak önerilir `asc` `desc` . Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
 
 Aşağıdaki örneklerde, bir sorgunun neden olacağı ilk _10_ kaydın nasıl atlanacağını, bunun yerine 11. kayıt ile döndürülen sonuç kümesini başlatmak gösterilmektedir:
 
@@ -63,7 +66,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 Bir sonuç kümesini işlenmek üzere daha küçük kayıt kümelerine bölmek gerektiğinde veya bir sonuç kümesi, döndürülen en fazla _1000_ kayıt değerini aşacağından, sayfalama kullanın. [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **queryresponse** , bir sonuç kümesinin parçalanmış olduğunu belirten değerler sağlar: **resultkesildi** ve **$skipToken**.
 **Resultkesildi** , yanıtta ek kayıtlar döndürülmediğinde tüketiciyi bildiren bir Boole değeridir. **Count** özelliği **totalRecords** özelliğinden daha az olduğunda bu durum da tanımlanabilir. **totalRecords** sorguyla eşleşen kaç kayıt olduğunu tanımlar.
 
- hiçbir `id` sütun veya bir sorgunun istediği daha az kaynak olması nedeniyle, sayfalama devre dışı bırakıldığında veya mümkün olmadığında, **resultkesilebilir** **değeri true** 'dur. **Resultkesilecek** değeri **true**olduğunda **$skipToken** özelliği ayarlı değildir.
+ hiçbir sütun veya bir sorgunun istediği daha az kaynak olması nedeniyle, sayfalama devre dışı bırakıldığında veya mümkün olmadığında, **Resultkesilebilir** **değeri true** 'dur `id` . **Resultkesilecek** değeri **true**olduğunda **$skipToken** özelliği ayarlı değildir.
 
 Aşağıdaki örneklerde, ilk 3000 kaydın nasıl atlanması ve bu kayıtlar Azure CLı ile atlandıktan sonra **ilk** 1000 kayıtlarının nasıl **döndürüleceği** ve Azure PowerShell gösterilmektedir:
 
@@ -84,7 +87,7 @@ Bir örnek için, REST API belgeleri içindeki [Sonraki sayfa sorgusuna](/rest/a
 
 Kaynak Grafiği sorgusunun sonuçları iki biçimde, _tablo_ ve _objectarray_olarak sağlanır. Biçim, istek seçeneklerinin bir parçası olarak **RESULTFORMAT** parametresi ile yapılandırılır. _Tablo_ biçimi, **RESULTFORMAT**için varsayılan değerdir.
 
-Azure CLı sonuçları JSON 'da varsayılan olarak sağlanır. Azure PowerShell sonuçları, varsayılan olarak bir **PSCustomObject** ' dir, ancak `ConvertTo-Json` cmdlet 'i KULLANıLARAK hızlı bir şekilde JSON 'a dönüştürülebilirler. Diğer SDK 'lar için, sorgu sonuçları _Objectarray_ biçiminin çıktısı olacak şekilde yapılandırılabilir.
+Azure CLı sonuçları JSON 'da varsayılan olarak sağlanır. Azure PowerShell sonuçları, varsayılan olarak bir **PSCustomObject** ' dir, ancak cmdlet 'i kullanılarak hızlı BIR şekilde JSON 'a dönüştürülebilirler `ConvertTo-Json` . Diğer SDK 'lar için, sorgu sonuçları _Objectarray_ biçiminin çıktısı olacak şekilde yapılandırılabilir.
 
 ### <a name="format---table"></a>Biçim-Tablo
 

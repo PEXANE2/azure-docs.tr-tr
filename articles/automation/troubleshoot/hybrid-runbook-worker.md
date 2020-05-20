@@ -1,6 +1,6 @@
 ---
-title: Azure Otomasyonu karma runbook çalışanları sorunlarını giderme
-description: Bu makalede, Azure Otomasyonu karma runbook çalışanları sorunlarını gidermeye yönelik bilgiler sağlanmaktadır.
+title: Azure Otomasyonu karma Runbook Worker sorunlarını giderme
+description: Bu makalede, Azure Otomasyonu karma runbook çalışanları ile ortaya çıkan sorunları giderme ve çözme işlemleri açıklanır.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d734c910cc966cfd83f1e1c7f9cbd728643fbc4
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836521"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680996"
 ---
-# <a name="troubleshoot-hybrid-runbook-workers"></a>Karma runbook çalışanları sorunlarını giderme
+# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Karma Runbook Worker sorunlarını giderme
 
-Bu makale, Azure Otomasyonu karma runbook çalışanları ile ilgili sorun giderme hakkında bilgi sağlar.
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Azure Otomasyonu hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+Bu makalede, Azure Otomasyonu karma runbook çalışanları ile ilgili sorun giderme ve sorunları çözme hakkında bilgi sağlanır. Genel bilgi için bkz. [karma Runbook Worker genel bakış](../automation-hybrid-runbook-worker.md).
 
 ## <a name="general"></a>Genel
 
@@ -55,7 +52,7 @@ Karma runbook çalışanı çalıştıran bilgisayarların, çalışan bu özell
 
 Karma Runbook Worker özelliğinin çalıştırılacağı bilgisayarın en düşük donanım gereksinimlerini karşıladığını onaylayın. Varsa, karma Runbook Worker işlemlerinin ve pencerelerinin performansı arasındaki bağıntıyı öğrenmek için CPU ve bellek kullanımını izleyin. Herhangi bir bellek veya CPU baskısı, kaynakları yükseltme gereksinimini gösterebilir. Ayrıca, iş yükü beklentilerinin gerekli olduğunu belirtmesi durumunda en düşük gereksinimleri ve ölçeği destekleyen farklı bir bilgi işlem kaynağı da seçebilirsiniz.
 
-Açıklamasıyla `Win32 Process Exited with code [4294967295]`ilgili bir olay için **Microsoft-SMA** olay günlüğü ' ne bakın. Bu hatanın nedeni, runbook 'larınızda kimlik doğrulamasını yapılandırmadığınıza veya karma Runbook Worker grubu için farklı çalıştır kimlik bilgilerini belirtmemiş olmanız olabilir. Runbook 'larınız için kimlik doğrulamasını doğru şekilde yapılandırdığınızdan emin olmak için [bir karma runbook çalışanındaki runbook 'Ların çalıştırıldığı](../automation-hrw-run-runbooks.md) runbook izinlerini gözden geçirin.
+Açıklamasıyla ilgili bir olay için **Microsoft-SMA** olay günlüğü ' ne bakın `Win32 Process Exited with code [4294967295]` . Bu hatanın nedeni, runbook 'larınızda kimlik doğrulamasını yapılandırmadığınıza veya karma Runbook Worker grubu için farklı çalıştır kimlik bilgilerini belirtmemiş olmanız olabilir. Runbook 'larınız için kimlik doğrulamasını doğru şekilde yapılandırdığınızdan emin olmak için [bir karma runbook çalışanındaki runbook 'Ların çalıştırıldığı](../automation-hrw-run-runbooks.md) runbook izinlerini gözden geçirin.
 
 ### <a name="scenario-event-15011-in-the-hybrid-runbook-worker"></a><a name="cannot-connect-signalr"></a>Senaryo: karma runbook çalışanında olay 15011
 
@@ -73,13 +70,13 @@ Karma Runbook Worker, bir sorgu sonucunun geçerli olmadığını belirten Event
 
 #### <a name="cause"></a>Nedeni
 
-Karma Runbook Worker otomatik dağıtım çözümü için doğru yapılandırılmamış. Bu çözüm, sanal makineyi Log Analytics çalışma alanına bağlayan bir bölüm içerir. PowerShell betiği, abonelik içinde sağlanan ada sahip çalışma alanını arar. Bu durumda, Log Analytics çalışma alanı farklı bir abonelikte bulunur. Betik, çalışma alanını bulamıyor ve bir tane oluşturmaya çalışıyor, ancak ad zaten alınmış. Sonuç olarak, dağıtım başarısız olur.
+Karma Runbook Worker, örneğin Güncelleştirme Yönetimi için otomatik özellik dağıtımı için doğru şekilde yapılandırılmadı. Dağıtım, VM 'yi Log Analytics çalışma alanına bağlayan bir bölüm içerir. PowerShell betiği, abonelik içinde sağlanan ada sahip çalışma alanını arar. Bu durumda, Log Analytics çalışma alanı farklı bir abonelikte bulunur. Betik, çalışma alanını bulamıyor ve bir tane oluşturmaya çalışıyor, ancak ad zaten alınmış. Sonuç olarak, dağıtım başarısız olur.
 
 #### <a name="resolution"></a>Çözüm
 
 Bu sorunu çözmek için iki seçeneğiniz vardır:
 
-* Başka bir abonelikteki Log Analytics çalışma alanını aramak için PowerShell betiğini değiştirin. Bu, gelecekte birçok karma Runbook Worker makinesi dağıtmayı planlıyorsanız iyi bir çözümdür.
+* Başka bir abonelikteki Log Analytics çalışma alanını aramak için PowerShell betiğini değiştirin. Bu, gelecekte birçok karma Runbook Worker makinesi dağıtmayı planlıyorsanız kullanmak için iyi bir çözümtir.
 
 * Çalışan makineyi bir Orchestrator korumalı alanında çalışacak şekilde el ile yapılandırın. Ardından, işlevleri test etmek için çalışan üzerinde Azure Otomasyonu hesabında oluşturulmuş bir runbook 'u çalıştırın.
 
@@ -134,7 +131,7 @@ Karma runbook çalışanınız bir Azure sanal makinesi ise bunun yerine [yönet
 Olası nedenler şunlardır:
 
 * Aracının ayarlarında yanlış yazılmış bir çalışma alanı KIMLIĞI veya çalışma alanı anahtarı (birincil) var. 
-* Karma Runbook Worker, bir hesap bağlama hatasına neden olan yapılandırmayı indiremez. Azure çözümleri etkinleştirdiğinde, yalnızca bir Log Analytics çalışma alanı ve bir Otomasyon hesabı bağlamak için yalnızca belirli bölgeleri destekler. Bilgisayarda yanlış bir tarih veya saat kümesi de mümkündür. Süre artı veya geçerli saatten 15 dakikadan fazla olursa ekleme başarısız olur.
+* Karma Runbook Worker, bir hesap bağlama hatasına neden olan yapılandırmayı indiremez. Azure makinelerde Özellikler etkinleştirdiğinde, yalnızca bir Log Analytics çalışma alanı ve bir Otomasyon hesabı bağlamak için yalnızca belirli bölgeleri destekler. Bilgisayarda yanlış bir tarih veya saat kümesi de mümkündür. Süre, geçerli zamandan itibaren +/-15 dakika ise, özellik dağıtımı başarısız olur.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -155,7 +152,7 @@ Linux hibrit Runbook Worker, çalışan, runbook işlerini alacak ve durumu rapo
 
 #### <a name="issue"></a>Sorun
 
-Linux karma `sudo` Runbook Worker için komutu çalıştırmak, parola için beklenmeyen bir istem alır.
+`sudo`Linux karma Runbook Worker için komutu çalıştırmak, parola için beklenmeyen bir istem alır.
 
 #### <a name="cause"></a>Nedeni
 
@@ -167,7 +164,7 @@ Linux için Log Analytics aracısına ait **nxautomationuser** hesabı, **sudoer
 
 * **Sudoers** dosyasındaki **nxautomationuser** hesabının yapılandırmasını doğrulayın. Bkz. [runbook 'Ları karma Runbook Worker üzerinde çalıştırma](../automation-hrw-run-runbooks.md).
 
-### <a name="scenario-the-log-analytics-agent-for-linux-isnt-running"></a><a name="oms-agent-not-running"></a>Senaryo: Linux için Log Analytics Aracısı çalışmıyor
+### <a name="scenario-log-analytics-agent-for-linux-isnt-running"></a><a name="oms-agent-not-running"></a>Senaryo: Linux için Log Analytics Aracısı çalışmıyor
 
 #### <a name="issue"></a>Sorun
 
@@ -179,7 +176,7 @@ Aracı çalışmıyorsa, Linux hibrit Runbook Worker 'ın Azure Otomasyonu ile i
 
 #### <a name="resolution"></a>Çözüm
 
- Komutu `ps -ef | grep python`girerek aracının çalıştığını doğrulayın. Aşağıdakine benzer bir çıktı görmeniz gerekir. Python, **nxautomation** kullanıcı hesabıyla işlenir. Güncelleştirme Yönetimi veya Azure Otomasyonu çözümü etkinleştirilmemişse, aşağıdaki işlemlerden hiçbiri çalışmıyor.
+ Komutu girerek aracının çalıştığını doğrulayın `ps -ef | grep python` . Aşağıdakine benzer bir çıktı görmeniz gerekir. Python, **nxautomation** kullanıcı hesabıyla işlenir. Azure Otomasyonu özelliği etkinleştirilmemişse, aşağıdaki işlemlerden hiçbiri çalışmıyor.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -190,14 +187,14 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 Aşağıdaki listede bir Linux karma Runbook Worker için başlatılan süreçler gösterilmektedir. Bunlar tamamen/var/seçenek/Microsoft/omsagent/State/automationworker/dizininde bulunur.
 
 * **OMS. conf**: Worker Manager işlemi. Doğrudan DSC 'den başlatılır.
-* **Worker. conf**: otomatik kaydedilmiş karma çalışan işlemi. Çalışan Yöneticisi tarafından başlatılır. Bu işlem, Güncelleştirme Yönetimi tarafından kullanılır ve Kullanıcı için saydamdır. Güncelleştirme Yönetimi çözümü makinede etkinleştirilmemişse bu işlem yoktur.
-* **diy/Worker. conf**: diy karma çalışan işlemi. Karma Runbook Worker 'daki Kullanıcı runbook 'larını yürütmek için DIY karma çalışan işlemi kullanılır. Bu, yalnızca farklı bir yapılandırma kullandığı anahtar ayrıntısıyla otomatik kaydedilmiş karma çalışan işleminden farklıdır. Bu işlem, Azure Otomasyonu çözümü devre dışıysa ve DIY Linux hibrit çalışanı kayıtlı değilse mevcut değildir.
+* **Worker. conf**: otomatik kaydedilmiş karma çalışan işlemi. Çalışan Yöneticisi tarafından başlatılır. Bu işlem, Güncelleştirme Yönetimi tarafından kullanılır ve Kullanıcı için saydamdır. Makinede Güncelleştirme Yönetimi etkinleştirilmemişse bu işlem yoktur.
+* **diy/Worker. conf**: diy karma çalışan işlemi. Karma Runbook Worker 'daki Kullanıcı runbook 'larını yürütmek için DIY karma çalışan işlemi kullanılır. Bu, yalnızca farklı bir yapılandırma kullandığı anahtar ayrıntısıyla otomatik kaydedilmiş karma çalışan işleminden farklıdır. Bu işlem, Azure Otomasyonu devre dışıysa ve DIY Linux hibrit Worker kayıtlı değilse yoktur.
 
-Aracı çalışmıyorsa, hizmeti başlatmak için şu komutu çalıştırın: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+Aracı çalışmıyorsa, hizmeti başlatmak için şu komutu çalıştırın: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 
 ### <a name="scenario-the-specified-class-doesnt-exist"></a><a name="class-does-not-exist"></a>Senaryo: belirtilen sınıf yok
 
-`The specified class does not exist..` **/Var/seçenek/Microsoft/omsconfig/omsconfig.log**dosyasında hata iletisini görürseniz, Linux için Log Analytics aracısının güncelleştirilmesi gerekir. Aracıyı yeniden yüklemek için aşağıdaki komutu çalıştırın.
+`The specified class does not exist..` **/Var/seçenek/Microsoft/omsconfig/omsconfig.log**dosyasında hata Iletisini görürseniz, Linux için Log Analytics aracısının güncelleştirilmesi gerekir. Aracıyı yeniden yüklemek için aşağıdaki komutu çalıştırın.
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -211,7 +208,7 @@ Windows hibrit Runbook Worker, çalışan, runbook işlerini alacak ve durumu ra
 
 #### <a name="issue"></a>Sorun
 
-`healthservice` Karma Runbook Worker makinesinde çalışmıyor.
+`healthservice`Karma Runbook Worker makinesinde çalışmıyor.
 
 #### <a name="cause"></a>Nedeni
 
@@ -219,13 +216,13 @@ Windows hizmeti için Log Analytics çalışmıyorsa, karma Runbook Worker Azure
 
 #### <a name="resolution"></a>Çözüm
 
-PowerShell 'de aşağıdaki komutu girerek aracının çalıştığını doğrulayın: `Get-Service healthservice`. Hizmet durdurulmuşsa, hizmeti başlatmak için PowerShell 'de aşağıdaki komutu girin: `Start-Service healthservice`.
+PowerShell 'de aşağıdaki komutu girerek aracının çalıştığını doğrulayın: `Get-Service healthservice` . Hizmet durdurulmuşsa, hizmeti başlatmak için PowerShell 'de aşağıdaki komutu girin: `Start-Service healthservice` .
 
 ### <a name="scenario-event-4502-in-the-operations-manager-log"></a><a name="event-4502"></a>Senaryo: Operations Manager günlüğünde olay 4502
 
 #### <a name="issue"></a>Sorun
 
-**Uygulama ve hizmetler Logs\Operations Manager** olay günlüğünde, olay 4502 ve aşağıdaki açıklamayla içeren `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` bir olay iletisi görürsünüz:<br>`The certificate presented by the service \<wsid\>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Please contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.`
+**Uygulama ve hizmetler Logs\Operations Manager** olay günlüğünde, olay 4502 ve aşağıdaki açıklamayla içeren bir olay iletisi görürsünüz `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` :<br>`The certificate presented by the service \<wsid\>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Please contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.`
 
 #### <a name="cause"></a>Nedeni
 
@@ -233,7 +230,7 @@ Bu sorunun nedeni, proxy 'niz veya ağ güvenlik duvarınız Microsoft Azure ile
 
 #### <a name="resolution"></a>Çözüm
 
-Günlükler, C:\ProgramData\Microsoft\System Center\orchestrator\7.2\sma\sandboxeson konumundaki her karma çalışan üzerinde yerel olarak depolanır. **Uygulama ve hizmetler Logs\Microsoft-SMA\Operations** ve **uygulama ve hizmetler logs\operations Manager** olay günlüklerinde bir uyarı veya hata olayı olup olmadığını doğrulayabilirsiniz. Bu Günlükler, rolün Azure Otomasyonu 'na verilmesinin veya normal işlemlerde karşılaşılan bir sorundan etkilenen bir bağlantıyı veya diğer tür bir sorunu belirtir. Log Analytics aracısıyla ilgili sorunları gidermeye yönelik ek yardım için bkz. [Log Analytics Windows Agent ile ilgili sorunları giderme](../../azure-monitor/platform/agent-windows-troubleshoot.md).
+Günlükler, C:\ProgramData\Microsoft\System Center\orchestrator\7.2\sma\sandboxeson konumundaki her karma çalışan üzerinde yerel olarak depolanır. **Uygulama ve hizmetler Logs\Microsoft-SMA\Operations** ve **uygulama ve hizmetler logs\operations Manager** olay günlüklerinde bir uyarı veya hata olayı olup olmadığını doğrulayabilirsiniz. Bu Günlükler, rolün Azure Otomasyonu 'nu etkinleştirmeyi etkileyen bir bağlantı veya diğer tür sorunu veya normal işlemlerde karşılaşılan bir sorunu gösterir. Log Analytics aracısıyla ilgili sorunları gidermeye yönelik ek yardım için bkz. [Log Analytics Windows Agent ile ilgili sorunları giderme](../../azure-monitor/platform/agent-windows-troubleshoot.md).
 
 Hibrit çalışanlar, bulutta çalışan runbook işlerinin çıkış ve mesaj gönderme gibi runbook [çıkışlarını ve Iletileri](../automation-runbook-output-and-messages.md) Azure Otomasyonu 'na gönderir. Ayrıntılı ve Ilerleme akışlarını runbook 'lar için yaptığınız gibi etkinleştirebilirsiniz.
 
@@ -253,7 +250,7 @@ Sunucu üzerindeki Active Directory Federasyon Hizmetleri (AD FS) (AD FS) bağla
 
 Komut dosyanızı PowerShell cmdlet 'leri için MSOnline modülü yerine Azure Active Directory modüllerini kullanacak şekilde geçirerek Orchestrator korumalı alanı için sorunu çözebilirsiniz. Daha fazla bilgi için bkz. [Orchestrator 'Dan Azure Otomasyonu 'na (Beta) geçiş](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration).
 
-MSOnline modülü cmdlet 'lerini kullanmaya devam etmek istiyorsanız, komut dosyanızı [Invoke-komutunu](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)kullanacak şekilde değiştirin. `ComputerName` Ve `Credential` parametreleri için değerleri belirtin. 
+MSOnline modülü cmdlet 'lerini kullanmaya devam etmek istiyorsanız, komut dosyanızı [Invoke-komutunu](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)kullanacak şekilde değiştirin. Ve parametreleri için değerleri `ComputerName` belirtin `Credential` . 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
@@ -300,7 +297,7 @@ Start-Service -Name HealthService
 
 #### <a name="issue"></a>Sorun
 
-`Add-HybridRunbookWorker` Cmdlet 'ini kullanarak bir karma Runbook Worker eklemeye çalıştığınızda aşağıdaki iletiyi alırsınız:
+Cmdlet 'ini kullanarak bir karma Runbook Worker eklemeye çalıştığınızda aşağıdaki iletiyi alırsınız `Add-HybridRunbookWorker` :
 
 ```error
 Machine is already registered
@@ -312,7 +309,7 @@ Bu sorun, makinenin farklı bir Otomasyon hesabıyla zaten kayıtlı olması vey
 
 #### <a name="resolution"></a>Çözüm
 
-Bu sorunu çözmek için, aşağıdaki kayıt defteri anahtarını kaldırın, yeniden `HealthService`başlatın ve `Add-HybridRunbookWorker` cmdlet 'i yeniden deneyin.
+Bu sorunu çözmek için, aşağıdaki kayıt defteri anahtarını kaldırın, yeniden başlatın `HealthService` ve `Add-HybridRunbookWorker` cmdlet 'i yeniden deneyin.
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 

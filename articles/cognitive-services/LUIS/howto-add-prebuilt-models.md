@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 653882db4b62d7731123faf7b177da44dbd74e3f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: abf149d621d283744a71e08ea4ac2199a1994d57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585003"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680944"
 ---
 # <a name="add-prebuilt-models-for-common-usage-scenarios"></a>Yaygın kullanım senaryoları için önceden oluşturulmuş modeller ekleyin
 
@@ -40,7 +40,7 @@ LUO, yaygın olarak kullanılan, konuşma Kullanıcı senaryolarını hızlıca 
 
 1. **Amaçlar** sayfasında, amaçlar listesinin üzerindeki araç çubuğundan **önceden oluşturulmuş etki alanı hedefi Ekle** ' yi seçin.
 
-1. Açılan iletişim kutusundan **yardımcı programlar. Cancel** hedefini seçin.
+1. Açılır iletişim kutusundan bir amaç seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Önceden oluşturulmuş amaç Ekle](./media/luis-prebuilt-domains/add-prebuilt-domain-intents.png)
@@ -61,13 +61,24 @@ LUO, yaygın olarak kullanılan, konuşma Kullanıcı senaryolarını hızlıca 
 
 1. **Done** (Bitti) öğesini seçin. Varlık eklendikten sonra, uygulamayı eğmenize gerek kalmaz.
 
+## <a name="add-a-prebuilt-domain-entity"></a>Önceden oluşturulmuş bir etki alanı varlığı ekleme
+1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
+1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
+1. Sol taraftaki **varlıkları** seçin.
+
+1. **Varlıklar** sayfasında, **önceden oluşturulmuş etki alanı varlığı Ekle**' yi seçin.
+
+1. **Önceden oluşturulmuş etki alanı modelleri ekle** iletişim kutusunda, önceden oluşturulmuş etki alanı varlığını seçin.
+
+1. **Done** (Bitti) öğesini seçin. Varlık eklendikten sonra, uygulamayı eğmenize gerek kalmaz.
+
 ## <a name="publish-to-view-prebuilt-model-from-prediction-endpoint"></a>Ön derlenmiş modeli tahmin uç noktasından görüntülemek için Yayımla
 
 Önceden oluşturulmuş bir modelin değerini görüntülemenin en kolay yolu, yayımlanan uç noktadan sorgu kullanmaktır.
 
 ## <a name="entities-containing-a-prebuilt-entity-token"></a>Önceden oluşturulmuş bir varlık belirteci içeren varlıklar
 
-Önceden oluşturulmuş bir varlık için gerekli bir özelliğe ihtiyacı olan makine tarafından öğrenilen bir varlığınız varsa, makine tarafından öğrenilen varlığa bir alt bileşen ekleyin ve ardından önceden oluşturulmuş bir varlığın _gerekli_ bir özelliğini ekleyin.
+Önceden oluşturulmuş bir varlık için gerekli bir özelliğe ihtiyacı olan bir makine öğrenimi varlığınız varsa, makine öğrenimi varlığına bir alt varlık ekleyin ve ardından önceden oluşturulmuş bir varlığın _gerekli_ bir özelliğini ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

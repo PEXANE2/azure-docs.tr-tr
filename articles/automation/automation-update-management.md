@@ -1,18 +1,18 @@
 ---
-title: Azure Otomasyonu 'nda Güncelleştirme Yönetimi
-description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri yöneten Güncelleştirme Yönetimi özelliği açıklanır.
+title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
+description: Windows ve Linux makineleriniz için güncelleştirmeleri yöneten Güncelleştirme Yönetimi özelliğine genel bakış
 services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca5d8c35aea06143e058aade473282a038212605
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: d3a3a19673ecb6edb82f0512f318298865c8ed24
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872157"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681299"
 ---
-# <a name="update-management-in-azure-automation"></a>Azure Otomasyonu 'nda Güncelleştirme Yönetimi
+# <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
 Azure 'da, şirket içi ortamlarda ve diğer bulut ortamlarında Windows ve Linux makineleriniz için işletim sistemi güncelleştirmelerini yönetmek üzere Azure Otomasyonu 'nda Güncelleştirme Yönetimi kullanabilirsiniz. Tüm aracı makinelerde kullanılabilir güncelleştirmelerin durumunu hızlı bir şekilde değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
 
@@ -83,7 +83,7 @@ Aşağıdaki tabloda güncelleştirme değerlendirmeleri için desteklenen işle
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 || 
 |Windows Server 2008 R2 (RTM ve SP1 standart)| Güncelleştirme Yönetimi yalnızca bu işletim sistemi için değerlendirmeleri destekler. [Karma Runbook Worker](automation-windows-hrw-install.md) Windows Server 2008 R2 için desteklenmediğinden düzeltme eki uygulama desteklenmez. |
-|CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir. Sınıflandırma tabanlı düzeltme eki, `yum` CentOS 'ın RTM sürümlerindeki güvenlik verilerini döndürmesini gerektirir. CentOS üzerinde sınıflandırma tabanlı düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [Linux üzerinde sınıflandırmaları güncelleştirme](automation-view-update-assessments.md#linux-2).          |
+|CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir. Sınıflandırma tabanlı düzeltme eki `yum` , CentOS 'ıN RTM sürümlerindeki güvenlik verilerini döndürmesini gerektirir. CentOS üzerinde sınıflandırma tabanlı düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [Linux üzerinde sınıflandırmaları güncelleştirme](automation-view-update-assessments.md#linux-2).          |
 |Red Hat Enterprise 6 (x86/x64) ve 7 (x64)     | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) ve 12 (x64)     | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.        |
 |Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 (x86/x64)      |Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.         |
@@ -153,7 +153,7 @@ Operations Manager yönetim grubunuz [bir Log Analytics çalışma alanına bağ
 * MP Dağıtımını güncelleştirme
 
 > [!NOTE]
-> Günlük verilerini toplamak için yönetim grubunda yapılandırılmış aracılarla bir Log Analytics çalışma alanına bağlı Operations Manager 1807 veya 2019 yönetim grubunuz varsa, parametreyi `IsAutoRegistrationEnabled` geçersiz kılmanız ve **Microsoft. ıntelligencepacks. AzureAutomation. Hybridavgent. Init** kuralında true olarak ayarlamanız gerekir.
+> Günlük verilerini toplamak için yönetim grubunda yapılandırılmış aracılarla bir Log Analytics çalışma alanına bağlı Operations Manager 1807 veya 2019 yönetim grubunuz varsa, parametreyi geçersiz kılmanız `IsAutoRegistrationEnabled` ve **Microsoft. ıntelligencepacks. AzureAutomation. Hybridavgent. Init** kuralında true olarak ayarlamanız gerekir.
 
 Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi için bkz. [Azure izleyici günlüklerine bağlanma Operations Manager](../azure-monitor/platform/om-agents.md).
 

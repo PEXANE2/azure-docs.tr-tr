@@ -4,14 +4,14 @@ description: Azure Cosmos DB Gremlin API 'SI oluşturmak ve yapılandırmak içi
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: defeec2317f47e9d79245cbde0ef81c8a3543bfb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0f807213d68e2731e784198f8ce968cdea9b3957
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791247"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684821"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB Gremlin API kaynaklarını yönetme
 
@@ -31,11 +31,9 @@ Aşağıdaki Azure Cosmos DB kaynaklarından herhangi birini oluşturmak için a
 
 ## <a name="azure-cosmos-db-account-for-gremlin-with-autoscale-provisioned-throughput"></a>Otomatik ölçeklendirme sağlanan aktarım hızı ile Gremlin için hesap Azure Cosmos DB
 
-Bu şablon, Gremlin API 'SI için bir veritabanı ve otomatik ölçeklendirme işleme içeren grafik içeren bir Azure Cosmos hesabı oluşturur.
+Bu şablon, Gremlin API 'SI için bir veritabanı ve otomatik ölçeklendirme işleme içeren grafik içeren bir Azure Cosmos hesabı oluşturur. Bu şablon, Azure hızlı başlangıç şablonları galerisinden tek tıklamayla dağıtım için de kullanılabilir.
 
-Bu şablon, Azure hızlı başlangıç şablonları galerisinden tek tıklamayla dağıtım için de kullanılabilir.
-
-[![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin-autoscale%2Fazuredeploy.json)
+[![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin-autoscale%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-gremlin-autoscale/azuredeploy.json":::
 
@@ -43,11 +41,9 @@ Bu şablon, Azure hızlı başlangıç şablonları galerisinden tek tıklamayla
 
 ## <a name="azure-cosmos-db-account-for-gremlin-with-standard-provisioned-throughput"></a>Standart sağlanan aktarım hızı ile Gremlin için hesap Azure Cosmos DB
 
-Bu şablon, Gremlin API 'SI için bir veritabanı ve standart (el ile) aktarım hızı içeren grafik içeren bir Azure Cosmos hesabı oluşturur.
+Bu şablon, Gremlin API 'SI için bir veritabanı ve standart (el ile) aktarım hızı içeren grafik içeren bir Azure Cosmos hesabı oluşturur. Bu şablon, Azure hızlı başlangıç şablonları galerisinden tek tıklamayla dağıtım için de kullanılabilir.
 
-Bu şablon, Azure hızlı başlangıç şablonları galerisinden tek tıklamayla dağıtım için de kullanılabilir.
-
-[![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin%2Fazuredeploy.json)
+[![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-gremlin/azuredeploy.json":::
 

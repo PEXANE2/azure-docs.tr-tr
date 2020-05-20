@@ -3,12 +3,12 @@ title: Modellerle tasarım-LUSıS
 description: Dil anlama çeşitli model türleri sağlar. Bazı modeller birden fazla şekilde kullanılabilir.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 933588f96570e931cdc627aaae82bee1037bbdaa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591888"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683921"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Amaç ve varlık modelleriyle tasarım
 
@@ -36,9 +36,9 @@ Aşağıdaki söylenişi, amaç için **olumlu bir örnektir** ve `OrderBook` ve
 
 ## <a name="entities-extract-data"></a>Varlıklar veri ayıklama
 
-Bir varlık, söyleyden ayıklanmasını istediğiniz bir veri birimini temsil eder. Makine tarafından öğrenilen bir varlık, alt varlıklar içeren ve ayrıca makine tarafından öğrenilen varlıklar olan üst düzey bir varlıktır.
+Bir varlık, söyleyden ayıklanmasını istediğiniz bir veri birimini temsil eder. Makine öğrenimi varlığı, aynı zamanda makine öğrenimi varlıkları olan alt varlıklar içeren en üst düzey bir varlıktır.
 
-Makine tarafından öğrenilen varlık bir örnek, düzlem bileti için bir sıradır. Kavramsal olarak, tarih, saat, bilgisayar lisansı sayısı, ilk sınıf veya Coach, kaynak konumu, hedef konumu ve yemek seçimi gibi çok daha küçük veri birimlerine sahip tek bir işlemdir.
+Makine öğrenimi varlığına bir örnek, düzlem bileti için bir sıradır. Kavramsal olarak, tarih, saat, bilgisayar lisansı sayısı, ilk sınıf veya Coach, kaynak konumu, hedef konumu ve yemek seçimi gibi çok daha küçük veri birimlerine sahip tek bir işlemdir.
 
 ## <a name="intents-versus-entities"></a>Amaçlar ve varlıklar
 
@@ -65,11 +65,11 @@ Model ayrıştırma aşağıdaki bölümlere sahiptir:
 
 * [hedefleri](#intents-classify-utterances)
     * [özelliklerinde](#features)
-* [makine tarafından öğrenilen varlıklar](reference-entity-machine-learned-entity.md)
-    * alt varlıklar (ayrıca makine tarafından öğrenilen varlıklar)
+* [makine öğrenimi varlıkları](reference-entity-machine-learned-entity.md)
+    * alt varlıklar (ayrıca makine öğrenimi varlıkları)
         * [özelliklerinde](#features)
             * [tümcecik listesi](luis-concept-feature.md)
-            * [normal ifadeler](reference-entity-regular-expression.md), [listeler](reference-entity-list.md)ve [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md) gibi [makine tarafından öğrenilen varlıklar](luis-concept-feature.md)
+            * [normal ifadeler](reference-entity-regular-expression.md), [listeler](reference-entity-list.md)ve [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md) gibi [makine öğrenimi olmayan varlıklar](luis-concept-feature.md)
 
 <a name="entities-extract-data"></a>
 <a name="machine-learned-entities"></a>

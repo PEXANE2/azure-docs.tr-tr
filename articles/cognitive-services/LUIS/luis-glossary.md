@@ -3,12 +3,12 @@ title: Sözlük-LUSıS
 description: Sözlük, LUSıS API hizmetiyle çalışırken karşılaşabileceğiniz terimleri açıklar.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: eb823e65acc55dd9d739b31e506ad27f6af9095a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589678"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681609"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil ortak Sözlük ve kavramların sözlüğünü anlama
 Language Understanding (LUSıS) sözlüğü, LUO hizmeti ile çalışırken karşılaşabileceğiniz terimleri açıklar.
@@ -139,9 +139,9 @@ Varlık şeması, alt varlıklar ile makine tarafından öğrenilen varlıklar i
 
 ### <a name="entitys-subentity"></a>Varlığın alt varlığı
 
-Alt varlık, makine tarafından öğrenilen bir varlığın alt varlıktır.
+Alt varlık, makine öğrenimi varlığının alt varlıktır.
 
-### <a name="non-machine-learned-entity"></a>Makine tarafından öğrenilen varlık
+### <a name="non-machine-learning-entity"></a>Makine öğrenimi olmayan varlık
 
 Veri ayıklamak için metin eşleştirmeyi kullanan bir varlık:
 * Liste varlığı
@@ -164,7 +164,7 @@ Liste varlığındaki bir sözcük listeye dahil edildiğinde varlık tahmin edi
 
 Machine Learning 'de bir özellik, modelin belirli bir kavramı tanımasına yardımcı olan bir özelliktir. BASıS 'nin kullanabileceği ancak sabit bir kural kullanmayan bir ipucu.
 
-Bu terim, **[makine tarafından öğrenilen bir özellik](luis-concept-feature.md)** olarak da adlandırılır.
+Bu terim **[makine öğrenimi özelliği](luis-concept-feature.md)** olarak da adlandırılır.
 
 Bu ipuçları, yeni verilerin nasıl önleyeceğinizi öğrenmek için etiketlerle birlikte kullanılır. LUSıS her iki ifade listesini destekler ve diğer modelleri özellikler olarak kullanmaktır.
 
@@ -199,6 +199,10 @@ LUSıS 'de, bir amaca veya tümceciği, bir varlıkla birlikte _pozitif_ bir ör
 ## <a name="normalized-value"></a>Normalleştirilmiş değer
 
 [Liste](#list-entity) varlıklarınızın değerlerini eklersiniz. Bu değerlerin her biri bir veya daha fazla eş anlamlı listesine sahip olabilir. Yanıtta yalnızca normalleştirilmiş değer döndürülür.
+
+## <a name="overfitting"></a>Fazla uygunluk
+
+Fazla sığdırma, model belirli örneklerde düzeltilebilir ve iyi genelleştiritemediğinde gerçekleşir.
 
 ## <a name="owner"></a>Sahip
 
@@ -260,7 +264,7 @@ LUSıS kotası, Azure abonelik katmanının kısıtlamasıdır. LUIN kotası, he
 
 ## <a name="schema"></a>Şema
 
-Şemanız, alt varlıkların yanı sıra amaçları ve varlıklarınızı içerir. Şema başlangıçta zaman içinde tekrarlandırılır. Şema uygulama ayarları, özellikler veya örnek söyleylerini içermez. 
+Şemanız, alt varlıkların yanı sıra amaçları ve varlıklarınızı içerir. Şema başlangıçta zaman içinde tekrarlandırılır. Şema uygulama ayarları, özellikler veya örnek söyleylerini içermez.
 
 ## <a name="sentiment-analysis"></a>Yaklaşım Analizi
 Yaklaşım analizi, [metin analizi](../text-analytics/overview.md)tarafından sağlanan sensülebilirlik değerlerinin pozitif veya negatif değerlerini sağlar.

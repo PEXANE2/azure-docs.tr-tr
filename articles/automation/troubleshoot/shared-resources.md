@@ -1,6 +1,6 @@
 ---
-title: Azure Otomasyonu 'nda paylaşılan kaynakların sorunlarını giderme
-description: Azure Otomasyonu paylaşılan kaynaklarıyla ilgili sorun giderme ve sorunları çözme hakkında bilgi edinin.
+title: Azure Otomasyonu paylaşılan kaynak sorunlarını giderme
+description: Bu makalede, Azure Otomasyonu paylaşılan kaynaklarıyla ilgili sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,19 +8,16 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c59e8ec67777a9cfebc12508b197e1237a61df4a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864207"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680875"
 ---
-# <a name="troubleshoot-shared-resources-in-azure-automation"></a>Azure Otomasyonu 'nda paylaşılan kaynakların sorunlarını giderme
+# <a name="troubleshoot-shared-resource-issues"></a>Paylaşılan kaynak sorunlarını giderme
 
-Bu makalede, Azure Otomasyonu 'nda [paylaşılan kaynakları](../automation-intro.md#shared-resources) kullanırken karşılaşabileceğiniz sorunlara yönelik çözümler ele alınmaktadır.
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. Şimdiki zamanda Azurerd modülünü kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+Bu makalede, Azure Otomasyonu 'nda [paylaşılan kaynaklar](../automation-intro.md#shared-resources) kullandığınızda ortaya çıkabilecek sorunlar ele alınmaktadır.
 
 ## <a name="modules"></a>Modül
 
@@ -98,7 +95,7 @@ Bu runbook için, aynı anda kaç modülün güncelleştirildiğini belirleme va
 Tüm Azurerd veya az modüllerin aynı Otomasyon hesabında gerekli olduğu yaygın değildir. Yalnızca ihtiyacınız olan belirli modülleri içeri aktarmanız gerekir.
 
 > [!NOTE]
-> Dahil edilen tüm modülleri `Az.Automation` içeri `AzureRM.Automation` aktaran tüm veya modülünü içeri aktarmaktan kaçının.
+> `Az.Automation` `AzureRM.Automation` Dahil edilen tüm modülleri içeri aktaran tüm veya modülünü içeri aktarmaktan kaçının.
 
 Güncelleştirme işlemi askıya alıyorsa, `SimultaneousModuleImportJobCount` **Update-AzureModules. ps1** betiğine parametresini ekleyin ve varsayılan 10 ' dan daha düşük bir değer sağlayın. Bu mantığı uygularsanız, 3 veya 5 değeri ile başlatmayı deneyin. `SimultaneousModuleImportJobCount`, Azure modüllerini güncelleştirmek için kullanılan **Update-AutomationAzureModulesForAccount** sistem runbook 'unun bir parametresidir. Bu ayarlamayı yaparsanız, güncelleştirme işlemi daha fazla çalışır, ancak tamamlanması daha iyi olur. Aşağıdaki örnek, parametresini ve Runbook 'a nereye yerleştirileceğini gösterir:
 
@@ -170,6 +167,6 @@ Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 Bu makale sorununuzu gidermezse, ek destek için aşağıdaki kanallardan birini deneyin:
 
 * Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
-* İle [@AzureSupport](https://twitter.com/azuresupport)bağlanın. Bu, Azure Community 'yi doğru kaynaklara bağlamaya yönelik resmi Microsoft Azure hesabıdır: yanıtlar, destek ve uzmanlar.
+* İle bağlanın [@AzureSupport](https://twitter.com/azuresupport) . Bu, Azure Community 'yi doğru kaynaklara bağlamaya yönelik resmi Microsoft Azure hesabıdır: yanıtlar, destek ve uzmanlar.
 * Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin.
 

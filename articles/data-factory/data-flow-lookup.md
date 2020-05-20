@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.date: 05/15/2020
+ms.openlocfilehash: 59c7a34e975a53226b032827feae436202c8fa30
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594330"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683338"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Eşleme veri akışında arama dönüşümü
 
@@ -41,13 +41,19 @@ Arama dönüştürmesi yalnızca eşitlik eşleşmelerini destekler. Arama ifade
 
 Her iki akıştaki tüm sütunlar çıktı verilerine dahil edilir. Yinelenen veya istenmeyen sütunları bırakmak için, arama dönüşümünüze sonra bir [seçme dönüşümü](data-flow-select.md) ekleyin. Ayrıca, bir havuz dönüşümünde sütunlar bırakılabilir veya yeniden adlandırılabilir.
 
+### <a name="non-equi-joins"></a>Eşit olmayan birleşimler
+
+Arama koşullarınıza eşit (! =) veya büyüktür (>) gibi koşullu bir işleç kullanmak için iki sütun arasındaki operatör açılan listesini değiştirin. Eşitlenmiş olmayan birleşimler, **en iyileştirme** sekmesinde **sabit** yayınlama kullanılarak yayınlanamayacak iki akışdan en az birini gerektirir.
+
+![Eşlenmemiş arama](media/data-flow/non-equi-lookup.png "Eşlenmemiş arama")
+
 ## <a name="analyzing-matched-rows"></a>Eşleşen satırlar çözümleniyor
 
-Arama dönüşümünüzün ardından işlev `isMatch()` , aramanın ayrı satırlar için eşleştirilmesinin olup olmadığını görmek için kullanılabilir.
+Arama dönüşümünüzün ardından işlev, `isMatch()` aramanın ayrı satırlar için eşleştirilmesinin olup olmadığını görmek için kullanılabilir.
 
 ![Arama kalıbı](media/data-flow/lookup111.png "Arama kalıbı")
 
-Bu modele bir örnek, `isMatch()` işlev üzerine bölünecek koşullu bölünmüş dönüştürmeyi kullanmaktır. Yukarıdaki örnekte, eşleşen satırlar üst akış ve eşleşen olmayan satırları ```NoMatch``` Stream üzerinden akar.
+Bu modele bir örnek, işlev üzerine bölünecek koşullu bölünmüş dönüştürmeyi kullanmaktır `isMatch()` . Yukarıdaki örnekte, eşleşen satırlar üst akış ve eşleşen olmayan satırları Stream üzerinden akar ```NoMatch``` .
 
 ## <a name="testing-lookup-conditions"></a>Arama koşullarını test etme
 
@@ -63,7 +69,7 @@ Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dı�
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Söz dizimi
 
 ```
 <leftStream>, <rightStream>
@@ -92,4 +98,4 @@ SQLProducts, DimProd lookup(ProductID == ProductKey,
 Sonraki adımlar
 
 * [JOIN](data-flow-join.md) ve [Exists](data-flow-exists.md) dönüştürmelerinin ikisi de birden çok akış girişi alır
-* Eşleşen ve eşleşmeyen değerlere satırları ayırmak ```isMatch()``` için ile [koşullu bölünmüş dönüşüm](data-flow-conditional-split.md) kullanın
+* Eşleşen ve eşleşmeyen değerlere satırları ayırmak için ile [koşullu bölünmüş dönüşüm](data-flow-conditional-split.md) kullanın ```isMatch()```

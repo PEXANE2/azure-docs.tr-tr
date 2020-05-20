@@ -10,12 +10,12 @@ ms.date: 05/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 65d898112396755bb2518cade0ac94c21bc52685
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c4d14c21174f9631a1ad72489d4c0bafe013572c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117725"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681342"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -138,24 +138,42 @@ Hangi yazma işlemlerinin ikincil bölgeye çoğaltıldığını öğrenmek içi
 
 ## <a name="summary-of-redundancy-options"></a>Artıklık seçeneklerinin Özeti
 
-Aşağıdaki tabloda, depolama hesabınızda hangi artıklık türünün geçerli olduğuna bağlı olarak verilerinizin belirli bir senaryoda ne kadar dayanıklı ve kullanılabilir olduğunu gösterilmektedir:
+Aşağıdaki bölümlerde yer alarak bulunan tablolar, Azure depolama için kullanılabilen artıklık seçeneklerini özetler
 
-| Senaryo                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+### <a name="durability-and-availability-parameters"></a>Dayanıklılık ve kullanılabilirlik parametreleri
+
+Aşağıdaki tabloda her artıklık seçeneği için anahtar parametreleri açıklanmaktadır:
+
+| Parametre                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir                                                                 | Yes                             | Yes                              | Yes                                  | Yes                                  |
-| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | Hayır                              | Yes                              | Yes                                  | Yes                                  |
-| Bölge genelinde kesinti meydana gelir                                                                                     | Hayır                              | Hayır                               | Yes                                  | Yes                                  |
-| Birincil bölge kullanılamaz duruma gelirse ikincil bölgedeki verilere yönelik okuma erişimi | Hayır                              | Hayır                               | Evet (RA-GRS ile)                                   | Evet (RA-GZRS ile)                                 |
 | Belirli<sup>bir yıl boyunca</sup> nesnelerin yüzde dayanıklılığı yüzdesi                                          | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |
-| Desteklenen depolama hesabı türleri<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
 | Okuma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup>  | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | GRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) | GZRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GZRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) |
 | Yazma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup>  | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) |
 
 <sup>1</sup> dayanıklılık ve kullanılabilirlik Için Azure depolama garantisi hakkında daha fazla bilgi için bkz. [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/).
 
-<sup>2</sup> depolama hesabı türleri hakkında bilgi için bkz. [depolama hesabına genel bakış](storage-account-overview.md).
+### <a name="durability-and-availability-by-outage-scenario"></a>Kesinti senaryosuna göre dayanıklılık ve kullanılabilirlik
 
-Tüm depolama hesabı türleri için tüm veriler, depolama hesabının artıklık seçeneğine göre kopyalanır. Blok Blobları, ekleme Blobları, sayfa Blobları, kuyruklar, tablolar ve dosyalar da dahil olmak üzere nesneler kopyalanır. Arşiv katmanı da dahil olmak üzere tüm katmanlardaki veriler kopyalanır. Blob katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../blobs/storage-blob-storage-tiers.md).
+Aşağıdaki tabloda, depolama hesabınız için hangi artıklık türünün geçerli olduğuna bağlı olarak verilerinizin belirli bir senaryoda dayanıklı ve kullanılabilir olup olmadığı gösterilir:
+
+| Kesinti senaryosu                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir                                                                 | Yes                             | Yes                              | Yes                                  | Yes                                 |
+| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | Hayır                              | Yes                              | Evet<sup>1</sup>                                  | Yes                                  |
+| Birincil bölgede bölge genelinde bir kesinti meydana gelir                                                                                     | Hayır                              | Hayır                               | Evet<sup>1</sup>                                  | Evet<sup>1</sup>                                  |
+| Birincil bölge kullanılamaz hale gelirse ikincil bölgeye okuma erişimi kullanılabilir | Hayır                              | Hayır                               | Evet (RA-GRS ile)                                   | Evet (RA-GZRS ile)                                 |
+
+birincil bölge kullanılamaz duruma gelirse, yazma kullanılabilirliğini geri yüklemek için <sup>1</sup> hesap yük devretmesi gerekir. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma ve depolama hesabı yük devretme](storage-disaster-recovery-guidance.md).
+
+### <a name="supported-storage-account-types"></a>Desteklenen depolama hesabı türleri
+
+Aşağıdaki tabloda, her bir depolama hesabı türü tarafından hangi artıklık seçeneklerinin desteklendiği gösterilmektedir. Depolama hesabı türleri hakkında bilgi için bkz. [depolama hesabına genel bakış](storage-account-overview.md).
+
+| LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+| :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| Genel amaçlı v2<br /> Genel amaçlı v1<br /> Blob depolamayı engelle<br /> Blob depolama<br /> Dosya depolama                | Genel amaçlı v2<br /> Blob depolamayı engelle<br /> Dosya depolama                             | Genel amaçlı v2<br /> Genel amaçlı v1<br /> Blob depolama                     | Genel amaçlı v2                     |
+
+Tüm depolama hesaplarına ait tüm veriler, depolama hesabının artıklık seçeneğine göre kopyalanır. Blok Blobları, ekleme Blobları, sayfa Blobları, kuyruklar, tablolar ve dosyalar da dahil olmak üzere nesneler kopyalanır. Arşiv katmanı da dahil olmak üzere tüm katmanlardaki veriler kopyalanır. Blob katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../blobs/storage-blob-storage-tiers.md).
 
 Her artıklık seçeneği için fiyatlandırma bilgileri için bkz. [Azure Storage fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 

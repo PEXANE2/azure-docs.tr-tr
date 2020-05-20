@@ -9,12 +9,13 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: monitoring
+ms.openlocfilehash: 9b4accd14785aedee06850d5a79dc9835086306a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610981"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680381"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Depolama ölçümlerini ve günlüğe kaydetmeyi, AzCopy’yi ve İleti Çözümleyicisi’ni kullanarak uçtan uca sorun giderme
 
@@ -85,7 +86,7 @@ Bu öğreticide, Message Analyzer 'ı üç farklı türde günlük dosyası ile 
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Sunucu tarafı günlüğe kaydetme ve ölçümleri yapılandırma
 
-İlk olarak, hizmet tarafındaki verileri analiz etmek için Azure depolama günlüğe kaydetme ve ölçümlerini yapılandırmamız gerekir. Günlük ve ölçümleri [Azure Portal](https://portal.azure.com), PowerShell kullanarak veya programlama yoluyla çeşitli yollarla yapılandırabilirsiniz. Günlüğe kaydetme ve ölçümleri yapılandırma hakkında ayrıntılı bilgi için bkz. [ölçümleri etkinleştirme](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal) ve [günlüğü etkinleştirme](storage-analytics-logging.md#enable-storage-logging) .
+İlk olarak, hizmet tarafındaki verileri analiz etmek için Azure depolama günlüğe kaydetme ve ölçümlerini yapılandırmamız gerekir. Günlük ve ölçümleri [Azure Portal](https://portal.azure.com), PowerShell kullanarak veya programlama yoluyla çeşitli yollarla yapılandırabilirsiniz. Günlüğe kaydetme ve ölçümleri yapılandırma hakkında ayrıntılı bilgi için bkz. [ölçümleri etkinleştirme](storage-analytics-metrics.md#enable-metrics-by-using-the-azure-portal) ve [günlüğü etkinleştirme](storage-analytics-logging.md#enable-storage-logging) .
 
 ### <a name="configure-net-client-side-logging"></a>.NET istemci tarafında günlüğe kaydetmeyi yapılandırma
 
@@ -113,7 +114,7 @@ Depolama Istemci kitaplığı, istemci tarafı günlük verilerini uygulamanın 
 3. İzleme oturumunu düzenlemek için **Düzenle** ' yi seçin.
 4. **Microsoft-PEF-WebProxy** ETW sağlayıcısının sağ tarafındaki **Yapılandır** bağlantısını seçin.
 5. **Gelişmiş ayarlar** Iletişim kutusunda **sağlayıcı** sekmesine tıklayın.
-6. **Ana bilgisayar adı filtresi** alanında, depolama uç noktalarınızı boşluklarla ayırarak belirtin. Örneğin, uç noktalarınızı aşağıdaki gibi belirtebilirsiniz; `storagesample` depolama hesabınızın adına geçin:
+6. **Ana bilgisayar adı filtresi** alanında, depolama uç noktalarınızı boşluklarla ayırarak belirtin. Örneğin, uç noktalarınızı aşağıdaki gibi belirtebilirsiniz; `storagesample`depolama hesabınızın adına geçin:
 
     `storagesample.blob.core.windows.net storagesample.queue.core.windows.net storagesample.table.core.windows.net`
 
@@ -141,9 +142,9 @@ Artık, eklediğiniz diğer ölçümler ile birlikte izleme grafiğinde **başar
 
 ## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>Sunucu günlüklerini yerel bir dizine kopyalamak için AzCopy kullanın
 
-Azure depolama sunucu günlük verilerini bloblara yazar, ölçümler tablolara yazılır. Günlük blob 'ları, depolama hesabınız için iyi bilinen `$logs` kapsayıcıda kullanılabilir. Günlük Blobları yıl, ay, gün ve saate göre hiyerarşik olarak adlandırılır. böylece, araştırmak istediğiniz zaman aralığını kolayca bulabilirsiniz. Örneğin, `storagesample` hesapta, 01/02/2015 için günlük blobları 8-9 ÖÖ ' den bir kapsayıcı olur `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Bu kapsayıcıdaki her bir blob, ile `000000.log`başlayarak ardışık olarak adlandırılır.
+Azure depolama sunucu günlük verilerini bloblara yazar, ölçümler tablolara yazılır. Günlük blob 'ları, `$logs` depolama hesabınız için iyi bilinen kapsayıcıda kullanılabilir. Günlük Blobları yıl, ay, gün ve saate göre hiyerarşik olarak adlandırılır. böylece, araştırmak istediğiniz zaman aralığını kolayca bulabilirsiniz. Örneğin, `storagesample` hesapta, 01/02/2015 için günlük blobları 8-9 ÖÖ ' den bir kapsayıcı olur `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800` . Bu kapsayıcıdaki her bir blob, ile başlayarak ardışık olarak adlandırılır `000000.log` .
 
-Bu sunucu tarafı günlük dosyalarını yerel makinenizde seçtiğiniz bir konuma indirmek için AzCopy komut satırı aracını kullanabilirsiniz. Örneğin, klasöre `C:\Temp\Logs\Server`2 Ocak 2015 tarihinde gerçekleşen blob işlemlerine yönelik günlük dosyalarını indirmek için aşağıdaki komutu kullanabilirsiniz; değerini `<storageaccountname>` depolama hesabınızın adıyla değiştirin:
+Bu sunucu tarafı günlük dosyalarını yerel makinenizde seçtiğiniz bir konuma indirmek için AzCopy komut satırı aracını kullanabilirsiniz. Örneğin, klasöre 2 Ocak 2015 ' de gerçekleşen blob işlemlerine yönelik günlük dosyalarını indirmek için aşağıdaki komutu kullanabilirsiniz; bunu, `C:\Temp\Logs\Server` `<storageaccountname>` depolama hesabınızın adıyla değiştirin:
 
 ```azcopy
 azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
@@ -211,7 +212,7 @@ Aşağıdaki bölümlerde, istemci istek KIMLIĞINE göre verileri ilişkilendir
 
 Ileti Çözümleyicisi için depolama varlıkları, farklı senaryolar için yararlı gruplandırmalar ve sütunlarla verilerinizi görüntülemek için kullanabileceğiniz önceden yapılandırılmış görünümler olan Azure Storage görünüm düzenlerini içerir. Ayrıca, özel görünüm düzenleri oluşturabilir ve bunları yeniden kullanmak üzere kaydedebilirsiniz.
 
-Aşağıdaki resimde, araç çubuğu şeritten **görünüm düzeni** ' ni seçerek bulunan **görünüm düzeni** menüsü gösterilmektedir. Azure depolama için görünüm düzenleri, menüdeki **Azure Storage** düğümü altında gruplandırılır. Yalnızca Azure depolama Görünüm `Azure Storage` düzenlerini filtrelemek için arama kutusunda arama yapabilirsiniz. Ayrıca bir görünüm düzeninin yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyebilir ve menünün en üstünde görüntüleyebilirsiniz.
+Aşağıdaki resimde, araç çubuğu şeritten **görünüm düzeni** ' ni seçerek bulunan **görünüm düzeni** menüsü gösterilmektedir. Azure depolama için görünüm düzenleri, menüdeki **Azure Storage** düğümü altında gruplandırılır. `Azure Storage`Yalnızca Azure depolama görünüm düzenlerini filtrelemek için arama kutusunda arama yapabilirsiniz. Ayrıca bir görünüm düzeninin yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyebilir ve menünün en üstünde görüntüleyebilirsiniz.
 
 ![Düzen menüsünü görüntüle](./media/storage-e2e-troubleshooting/view-layout-menu.png)
 
@@ -267,7 +268,7 @@ Bu filtreyi uyguladıktan sonra, istemci günlüğü bir **StatusCode** sütunu 
 Depolama varlıkları, Aradığınız hataları veya eğilimleri bulmak üzere günlük verilerini daraltmak için kullanabileceğiniz önceden tanımlanmış filtreler içerir. Daha sonra, önceden tanımlanmış iki filtre uygulayacağız: sunucu ve ağ izleme günlüklerini 404 hata için filtreleyen bir tane ve belirli bir zaman aralığındaki verileri filtreleyen bir tane.
 
 1. Henüz görüntülenmiyorsa görünüm filtre araç penceresini görüntüleyin. Araç çubuğu şeridinde **araç pencereleri**' ni ve ardından **filtre görüntüle**' yi seçin.
-2. Görünüm filtresi penceresinde **kitaplık**' ı seçin ve Azure depolama filtrelerini bulmak `Azure Storage` için arama yapın. **Tüm günlüklerde 404 (bulunamadı) iletilerini filtrele '** yi seçin.
+2. Görünüm filtresi penceresinde **kitaplık**' ı seçin ve `Azure Storage` Azure depolama filtrelerini bulmak için arama yapın. **Tüm günlüklerde 404 (bulunamadı) iletilerini filtrele '** yi seçin.
 3. **Kitaplık** menüsünü yeniden görüntüleyin ve **genel zaman filtresini**bulup seçin.
 4. Filtrede gösterilen zaman damgasını görüntülemek istediğiniz aralığa göre düzenleyin. Bu, analiz edilecek veri aralığını daraltmanıza yardımcı olur.
 5. Filtreniz aşağıdaki örneğe benzer görünmelidir. Filtreyi analiz kılavuzuna uygulamak için **Uygula** ' ya tıklayın.

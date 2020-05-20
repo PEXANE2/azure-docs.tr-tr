@@ -3,12 +3,12 @@ title: Hizmet uç noktası kullanarak erişimi kısıtlama
 description: Azure sanal ağındaki hizmet uç noktasını kullanarak bir Azure Container Registry 'ye erişimi kısıtlama
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: da5ab67d6658d8760565353e2a690c53d862d0ed
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5a3cc9638fb12853e0e26f3806c17dc47f522249
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982590"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685047"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Bir Azure sanal ağında hizmet uç noktası kullanarak bir kapsayıcı kayıt defterine erişimi kısıtlama
 
@@ -19,7 +19,7 @@ Bu makalede bir sanal ağda kapsayıcı kayıt defteri hizmeti uç noktasının 
 > [!IMPORTANT]
 > Azure Container Registry artık [Azure özel bağlantısını](container-registry-private-link.md)desteklediğinden, bir sanal ağdan bir kayıt defterine yerleştirilmesi için özel uç noktalar etkinleştiriliyor. Özel uç noktalara, özel IP adresleri kullanılarak sanal ağ içinden erişilebilir. Çoğu ağ senaryosunda hizmet uç noktaları yerine özel uç noktalar kullanmanızı öneririz.
 
-Bir kayıt defteri hizmet uç noktası yapılandırmak **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanılabilir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry katmanları](container-registry-skus.md).
+Bir kayıt defteri hizmet uç noktası yapılandırmak **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanılabilir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry hizmet katmanları](container-registry-skus.md).
 
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
@@ -32,7 +32,7 @@ Bir kayıt defteri hizmet uç noktası yapılandırmak **Premium** kapsayıcı k
 
 * Bu makalede Azure CLı adımlarını kullanmak için Azure CLı sürüm 2.0.58 veya üzeri gereklidir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
 
-* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir (Premium SKU gerekir) oluşturun ve Docker Hub 'dan gibi örnek bir görüntü gönderin `hello-world` . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun. 
+* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Docker Hub 'dan gibi örnek bir görüntü gönderin `hello-world` . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun. 
 
 * Farklı bir Azure aboneliğindeki bir hizmet uç noktası kullanarak kayıt defteri erişimini kısıtlamak istiyorsanız, bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydedin. Örnek:
 

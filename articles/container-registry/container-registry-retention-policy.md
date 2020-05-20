@@ -3,18 +3,20 @@ title: Etiketlenmemiş bildirimleri bekletme ilkesi
 description: Tanımlı bir dönemden sonra etiketlenmemiş bildirimlerin otomatik olarak silinmesi için, Azure Container kayıt defterinizde bekletme ilkesini etkinleştirmeyi öğrenin.
 ms.topic: article
 ms.date: 10/02/2019
-ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74454822"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683448"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Etiketlenmemiş bildirimler için bekletme ilkesi ayarlama
 
-Azure Container Registry, ilişkili etiketleri (*etiketlenmemiş bildirimler*) olmayan depolanan görüntü bildirimleri için bir *bekletme ilkesi* ayarlama seçeneği sunar. Bir bekletme ilkesi etkinleştirildiğinde, kayıt defterindeki etiketlenmemiş bildirimler, bir dizi gün sonra otomatik olarak silinir. Bu özellik, kayıt defterinin gerekmeyen yapıtlara doldurmasını ve depolama maliyetlerinden tasarruf etmenize yardımcı olmasını önler. Etiketlenmemiş bildirimin `delete-enabled` özniteliği olarak `false`ayarlandıysa, bildirim silinemez ve bekletme ilkesi uygulanmaz.
+Azure Container Registry, ilişkili etiketleri (*etiketlenmemiş bildirimler*) olmayan depolanan görüntü bildirimleri için bir *bekletme ilkesi* ayarlama seçeneği sunar. Bir bekletme ilkesi etkinleştirildiğinde, kayıt defterindeki etiketlenmemiş bildirimler, bir dizi gün sonra otomatik olarak silinir. Bu özellik, kayıt defterinin gerekmeyen yapıtlara doldurmasını ve depolama maliyetlerinden tasarruf etmenize yardımcı olmasını önler. `delete-enabled`Etiketlenmemiş bildirimin özniteliği olarak ayarlandıysa `false` , bildirim silinemez ve bekletme ilkesi uygulanmaz.
 
 Bu makaledeki komut örneklerini çalıştırmak için Azure CLı 'nın Azure Cloud Shell veya yerel bir yüklemesini kullanabilirsiniz. Yerel olarak kullanmak isterseniz, 2.0.74 veya üzeri sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
+
+Bekletme ilkesi, **Premium** kapsayıcı kayıt defterlerinin bir özelliğidir. Kayıt defteri hizmeti katmanları hakkında bilgi için bkz. [Azure Container Registry hizmet katmanları](container-registry-skus.md).
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme aşamasındadır ve bazı [sınırlamalar geçerlidir](#preview-limitations). Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
@@ -24,7 +26,6 @@ Bu makaledeki komut örneklerini çalıştırmak için Azure CLı 'nın Azure Cl
 
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
-* Yalnızca bir **Premium** kapsayıcı kayıt defteri, bekletme ilkesiyle yapılandırılabilir. Kayıt defteri hizmeti katmanları hakkında bilgi için bkz. [Azure Container Registry SKU 'lar](container-registry-skus.md).
 * Etiketlenmemiş bildirimler için yalnızca bir bekletme ilkesi ayarlayabilirsiniz.
 * Bekletme ilkesi Şu anda yalnızca ilke etkinleştirildikten *sonra* etiketlenmemiş bildirimler için geçerlidir. Kayıt defterindeki mevcut etiketlenmemiş bildirimler ilkeye tabi değildir. Mevcut etiketlenmemiş bildirimleri silmek için, bkz. [Azure Container Registry kapsayıcı resimlerini silme](container-registry-delete.md)örnekleri.
 
@@ -58,8 +59,8 @@ az acr config retention update --registry myregistry --status enabled --days 0 -
 
 Önceki ilkeyi 0 günlük bir bekletme süresiyle etkinleştirirseniz etiketlenmemiş bildirimlerin silindiğini hızlı bir şekilde doğrulayabilirsiniz:
 
-1. Kayıt defterinize bir test `hello-world:latest` görüntüsü görüntüsünü gönderin veya seçtiğiniz başka bir test görüntüsünü değiştirin.
-1. Örneğin, `hello-world:latest` [az ACR Repository untag][az-acr-repository-untag] komutunu kullanarak resmin etiketini kaldır. Etiketlenmemiş bildirim kayıt defterinde kalır.
+1. Kayıt defterinize bir test görüntüsü `hello-world:latest` görüntüsünü gönderin veya seçtiğiniz başka bir test görüntüsünü değiştirin.
+1. `hello-world:latest`Örneğin, [az ACR Repository untag][az-acr-repository-untag] komutunu kullanarak resmin etiketini kaldır. Etiketlenmemiş bildirim kayıt defterinde kalır.
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
     ```
@@ -73,7 +74,7 @@ Kayıt defterinde ayarlanan bekletme ilkesini görmek için [az ACR config bekle
 az acr config retention show --registry myregistry
 ```
 
-Bir kayıt defterinde bekletme ilkesini devre dışı bırakmak için [az ACR config bekletme güncelleştirme][az-acr-config-retention-update] komutunu çalıştırın ve şunları ayarlayın `--status disabled`:
+Bir kayıt defterinde bekletme ilkesini devre dışı bırakmak için [az ACR config bekletme güncelleştirme][az-acr-config-retention-update] komutunu çalıştırın ve şunları ayarlayın `--status disabled` :
 
 ```azurecli
 az acr config retention update --registry myregistry --status disabled --type UntaggedManifests

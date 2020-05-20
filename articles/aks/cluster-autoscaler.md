@@ -4,12 +4,12 @@ description: Bir Azure Kubernetes Service (AKS) kümesindeki uygulama taleplerin
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 3ebbeab82031ddc037c7885e7453e603a8f440a1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: f40d13b6b9a37f4c5efcc73e52b631bd2eec659a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509253"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683548"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak için bir kümeyi otomatik olarak ölçeklendirme
 
@@ -81,7 +81,7 @@ Kümeyi oluşturmak ve küme otomatik Scaler ayarlarını yapılandırmak birka�
 ## <a name="change-the-cluster-autoscaler-settings"></a>Küme otomatik Scaler ayarlarını değiştirme
 
 > [!IMPORTANT]
-> AKS kümenizde birden fazla düğüm havuzunuz varsa, [birden çok aracı havuzu ile otomatik ölçeklendirmeyi](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)atlayın. Birden çok aracı havuzu içeren kümeler, yerine düğüm `az aks nodepool` havuzuna özgü özellikleri değiştirmek için komut kümesini kullanmayı gerektirir `az aks`.
+> AKS kümenizde birden fazla düğüm havuzunuz varsa, [birden çok aracı havuzu ile otomatik ölçeklendirmeyi](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)atlayın. Birden çok aracı havuzu içeren kümeler, `az aks nodepool` yerine düğüm havuzuna özgü özellikleri değiştirmek için komut kümesini kullanmayı gerektirir `az aks` .
 
 Önceki adımda, bir AKS kümesi oluşturmak veya var olan bir düğüm havuzunu güncelleştirmek için, küme otomatik algılama en düşük düğüm sayısı *1*olarak ayarlanmıştır ve en fazla düğüm sayısı *3*olarak ayarlanmıştır. Uygulamanız değiştikçe değişiklik yaparken, küme otomatik Scaler düğüm sayısını ayarlamanız gerekebilir.
 
@@ -99,7 +99,7 @@ az aks update \
 Yukarıdaki örnek, *Myakscluster* içindeki tek düğümlü havuzda küme otomatik Scaler ' nı en az *1* ve en fazla *5* düğüm olarak güncelleştirir.
 
 > [!NOTE]
-> Düğüm havuzu için şu anda ayarlanmış olandan daha yüksek bir düğüm sayısı ayarlayamazsınız. Örneğin, şu anda en az *1*olarak ayarlandıysa, en az sayıyı *3*olarak güncelleştiremezsiniz.
+Küme otomatik olarak, ölçek kararlarını her düğüm havuzunda ayarlanan en düşük ve en yüksek sayımlar temelinde yapar, ancak bunları zorlamaz. Örneğin, geçerli düğüm sayısı 3 olduğunda, en az 5 sayısını ayarlamak, havuzu hemen 5 ' e kadar ölçeklendirmeyecektir. Düğüm havuzundaki minimum sayıyı geçerli düğüm sayısından daha yüksek bir değere değiştirirseniz, bu yeni sınır 2 yeni ek düğüm gerektirecek ve bir otomatik Scaler olayı tetikleyecek yeterli unschedulable Pod bulunduğunda kullanılır. Bu durum oluştuktan sonra, küme otomatik yüklemesi için yeni en düşük sayı sınırı uygulanır.
 
 Uygulamalarınızın ve hizmetlerinizin performansını izleyin ve küme otomatik Scaler düğüm sayılarını gerekli performansla eşleşecek şekilde ayarlayın.
 
@@ -145,7 +145,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örneğin:
+Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örnek:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -162,7 +162,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>AKS kümesi oluştururken küme otomatik Scaler profilini ayarlama
 
-Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örneğin:
+Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örnek:
 
 ```azurecli-interactive
 az aks create \
@@ -213,7 +213,7 @@ AKS, küme otomatik denetimini sizin adınıza yönetir ve yönetilen denetim d�
 
 Günlükleri küme otomatik Scaler 'dan Log Analytics gönderilecek şekilde yapılandırmak için aşağıdaki adımları izleyin.
 
-1. Küme otomatik Scaler günlüklerini Log Analytics 'e göndermek için kaynak günlükleri için bir kural ayarlayın. [Yönergeler burada ayrıntılı olarak verilmiştir](https://docs.microsoft.com/azure/aks/view-master-logs#enable-resource-logs), "Günlükler" için Seçenekler `cluster-autoscaler` seçerken kutuyu kontrol edin.
+1. Küme otomatik Scaler günlüklerini Log Analytics 'e göndermek için kaynak günlükleri için bir kural ayarlayın. [Yönergeler burada ayrıntılı olarak verilmiştir](https://docs.microsoft.com/azure/aks/view-master-logs#enable-resource-logs), `cluster-autoscaler` "Günlükler" için seçenekler seçerken kutuyu kontrol edin.
 1. Azure portal aracılığıyla kümenizdeki "Günlükler" bölümüne tıklayın.
 1. Aşağıdaki örnek sorguyu Log Analytics olarak girin:
 
@@ -226,7 +226,7 @@ Alınacak Günlükler olduğu sürece, aşağıdaki örneğe benzer Günlükler 
 
 ![Log Analytics günlükleri](media/autoscaler/autoscaler-logs.png)
 
-Küme otomatik olarak, adlı `cluster-autoscaler-status`bir configmap 'e sistem durumu da yazar. Bu günlükleri almak için aşağıdaki `kubectl` komutu yürütün. Küme otomatik olarak yapılandırılmış her düğüm havuzu için bir sistem durumu bildirilir.
+Küme otomatik olarak, adlı bir configmap 'e sistem durumu da yazar `cluster-autoscaler-status` . Bu günlükleri almak için aşağıdaki `kubectl` komutu yürütün. Küme otomatik olarak yapılandırılmış her düğüm havuzu için bir sistem durumu bildirilir.
 
 ```
 kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
@@ -250,7 +250,7 @@ az aks nodepool update \
   --max-count 5
 ```
 
-Küme otomatik Scaler, [az aks nodepool Update][az-aks-nodepool-update] ile devre dışı bırakılabilir ve `--disable-cluster-autoscaler` parametresi geçiliyor.
+Küme otomatik Scaler, [az aks nodepool Update][az-aks-nodepool-update] ile devre dışı bırakılabilir ve parametresi geçiliyor `--disable-cluster-autoscaler` .
 
 ```azurecli-interactive
 az aks nodepool update \

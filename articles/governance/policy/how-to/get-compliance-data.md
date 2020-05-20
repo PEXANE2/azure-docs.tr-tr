@@ -1,14 +1,14 @@
 ---
 title: İlke uyumluluk verilerini al
 description: Azure Ilke değerlendirmeleri ve etkileri uyumluluğu tespit edin. Azure kaynaklarınızın uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
-ms.date: 02/01/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: d4d9c530a7f9c4683f522a08a30e23437d1774cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c75f078cb80d5e2dbc00a69817d223d4818d55b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194015"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684529"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -26,17 +26,17 @@ Uyumluluk hakkında raporlama yöntemlerine bakmadan önce uyumluluk bilgilerini
 
 ## <a name="evaluation-triggers"></a>Değerlendirme Tetikleyicileri
 
-Tamamlanmış bir değerlendirme döngüsünün sonuçları, `Microsoft.PolicyInsights` kaynak sağlayıcıda ve `PolicyStates` `PolicyEvents` işlemler aracılığıyla kullanılabilir. Azure Policy Insights REST API işlemleri hakkında daha fazla bilgi için bkz. [Azure Ilke öngörüleri](/rest/api/policy-insights/).
+Tamamlanmış bir değerlendirme döngüsünün sonuçları, `Microsoft.PolicyInsights` kaynak sağlayıcıda `PolicyStates` ve işlemler aracılığıyla kullanılabilir `PolicyEvents` . Azure Policy Insights REST API işlemleri hakkında daha fazla bilgi için bkz. [Azure Ilke öngörüleri](/rest/api/policy-insights/).
 
 Atanan ilkelerin ve girişimlerin değerlendirmeleri çeşitli olayların sonucu olarak gerçekleşir:
 
-- Bir ilke veya girişim yeni bir kapsama atanır. Atamanın tanımlanan kapsama uygulanması 30 dakika içinde sürer. Bu bir kez uygulandıktan sonra, değerlendirme çevrimi, bu kapsamdaki kaynaklar için yeni atanan ilke veya girişim ile başlar ve ilke ya da girişim tarafından kullanılan etkilere bağlı olarak, kaynaklar uyumlu veya uyumlu değil olarak işaretlenir. Büyük bir kaynak kapsamı için değerlendirilen büyük bir ilke veya girişim zaman alabilir. Bu nedenle, değerlendirme döngüsünün tamamlandığının önceden tanımlanmış bir beklentisi yoktur. İşlem tamamlandıktan sonra portalda ve SDK 'larda güncelleştirilmiş uyumluluk sonuçları bulunur.
+- Bir ilke veya girişim yeni bir kapsama atanır. Atamanın tanımlanan kapsama uygulanması 30 dakika içinde sürer. Bu bir kez uygulandıktan sonra, değerlendirme çevrimi, bu kapsamdaki kaynaklar için yeni atanan ilke veya girişim ile başlar ve ilke ya da girişim tarafından kullanılan etkilere bağlı olarak, kaynaklar uyumlu veya uyumlu değil olarak işaretlenir. Büyük bir kaynak kapsamı için değerlendirilen büyük bir ilke veya girişim zaman alabilir. Bu nedenle, değerlendirme döngüsünün tamamlandığı zaman önceden tanımlı bir beklentisi yoktur. İşlem tamamlandıktan sonra portalda ve SDK 'larda güncelleştirilmiş uyumluluk sonuçları bulunur.
 
 - Bir kapsama zaten atanmış olan bir ilke veya girişim güncellenir. Bu senaryonun değerlendirme çevrimi ve zamanlaması, bir kapsama yönelik yeni atama ile aynıdır.
 
 - Bir kaynak, Kaynak Yöneticisi, REST, Azure CLı veya Azure PowerShell aracılığıyla atama içeren bir kapsama dağıtılır. Bu senaryoda, tek tek kaynak için etkinlik olayı (ekleme, denetim, reddetme, dağıtma) ve uyumlu durum bilgileri portalda ve bu süre içinde 15 dakika daha sonra SDK 'larda kullanılabilir hale gelir. Bu olay diğer kaynakların değerlendirilmesine neden olmaz.
 
-- Standart uyumluluk değerlendirme çevrimi. Her 24 saatte bir, atamalar otomatik olarak yeniden değerlendirilecektir. Çok sayıda kaynak için büyük bir ilke veya girişim zaman alabilir, bu nedenle değerlendirme döngüsünün tamamlanması için önceden tanımlanmış bir beklentisi yoktur. İşlem tamamlandıktan sonra portalda ve SDK 'larda güncelleştirilmiş uyumluluk sonuçları bulunur.
+- Standart uyumluluk değerlendirme çevrimi. Her 24 saatte bir, atamalar otomatik olarak yeniden değerlendirilecektir. Çok sayıda kaynak için büyük bir ilke veya girişim zaman alabilir, bu nedenle değerlendirme döngüsünün tamamlandığı zaman önceden tanımlanmış bir beklentisi yoktur. İşlem tamamlandıktan sonra portalda ve SDK 'larda güncelleştirilmiş uyumluluk sonuçları bulunur.
 
 - [Konuk yapılandırma](../concepts/guest-configuration.md) kaynak sağlayıcısı, yönetilen bir kaynak tarafından uyumluluk ayrıntılarıyla güncelleştirildi.
 
@@ -44,7 +44,41 @@ Atanan ilkelerin ve girişimlerin değerlendirmeleri çeşitli olayların sonucu
 
 ### <a name="on-demand-evaluation-scan"></a>İsteğe bağlı değerlendirme taraması
 
-Bir abonelik veya kaynak grubu için bir değerlendirme taraması, REST API çağrısıyla başlatılabilir. Bu tarama zaman uyumsuz bir işlemdir. Bu nedenle, taramanın başlaması için REST uç noktası, taramanın yanıt vermek için tamamlanana kadar beklemez. Bunun yerine, istenen değerlendirmenin durumunu sorgulamak için bir URI sağlar.
+Bir abonelik veya kaynak grubu için bir değerlendirme taraması, Azure PowerShell veya REST API çağrısıyla başlatılabilir. Bu tarama zaman uyumsuz bir işlemdir.
+
+#### <a name="on-demand-evaluation-scan---azure-powershell"></a>İsteğe bağlı değerlendirme taraması-Azure PowerShell
+
+Uyumluluk taraması [Start-Azpolicykarmaşıkancescan](/powershell/module/az.policyinsights/start-azpolicycompliancescan) cmdlet 'i ile başlatılır.
+
+Varsayılan olarak, `Start-AzPolicyComplianceScan` geçerli abonelikteki tüm kaynaklar için bir değerlendirme başlatır. Belirli bir kaynak grubunda bir değerlendirmeyi başlatmak için **Resourcegroupname** parametresini kullanın. Aşağıdaki örnek, _Myrg_ kaynak grubu için geçerli abonelikte bir uyumluluk taraması başlatır:
+
+```azurepowershell-interactive
+Start-AzPolicyComplianceScan -ResourceGroupName MyRG
+```
+
+Zaman uyumsuz çağrının sonuçları elde etmeden önce veya bir [iş](/powershell/module/microsoft.powershell.core/about/about_jobs)arka planda çalışmasını sağlamak için PowerShell 'in tamamlanmasını beklemesini sağlayabilirsiniz. Uyumluluk taramasını arka planda çalıştırmak üzere bir PowerShell işi kullanmak için, **AsJob** parametresini kullanın ve değeri bu örnekte olduğu gibi bir nesne olarak ayarlayın `$job` :
+
+```azurepowershell-interactive
+$job = Start-AzPolicyComplianceScan -AsJob
+```
+
+Nesneyi denetleyerek, işin durumunu kontrol edebilirsiniz `$job` . İş türündedir `Microsoft.Azure.Commands.Common.AzureLongRunningJob` . `Get-Member` `$job` Kullanılabilir özellikleri ve yöntemleri görmek için nesnesi üzerinde kullanın.
+
+Uyumluluk taraması çalışırken, `$job` nesne aşağıdaki gibi sonuçlar verir:
+
+```azurepowershell-interactive
+$job
+
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+2      Long Running O… AzureLongRunni… Running       True            localhost            Start-AzPolicyCompliance…
+```
+
+Uyumluluk taraması tamamlandığında **durum** özelliği _tamamlandı_olarak değişir.
+
+#### <a name="on-demand-evaluation-scan---rest"></a>İsteğe bağlı değerlendirme taraması-REST
+
+Zaman uyumsuz bir işlem olarak, taramayı başlatmak için REST uç noktası, taramanın yanıt vermesi tamamlanana kadar beklemez. Bunun yerine, istenen değerlendirmenin durumunu sorgulamak için bir URI sağlar.
 
 Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değişkenler bulunur:
 
@@ -56,22 +90,22 @@ Tarama, bir abonelikteki veya bir kaynak grubundaki kaynakların değerlendirilm
 - Abonelik
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 - Kaynak grubu
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 Çağrı, **202 kabul edilen** bir durum döndürür. Yanıt üst bilgisine eklenen bir **konum** özelliği aşağıdaki biçimdedir:
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2019-10-01
 ```
 
-`{ResourceContainerGUID}`, istenen kapsam için statik olarak oluşturulur. Bir kapsam zaten bir isteğe bağlı tarama çalıştırıyorsa yeni bir tarama başlatılmaz. Bunun yerine, yeni istek durum için aynı `{ResourceContainerGUID}` **konum** URI 'si olarak sağlanır. **Konum** URI 'sine yönelik bir REST API **Get** komutu, değerlendirme devam ederken **kabul edilen bir 202** döndürür. Değerlendirme taraması tamamlandığında, **200 bir Tamam** durumu döndürür. Tamamlanmış taramanın gövdesi, şu duruma sahip bir JSON yanıtdır:
+`{ResourceContainerGUID}`, istenen kapsam için statik olarak oluşturulur. Bir kapsam zaten bir isteğe bağlı tarama çalıştırıyorsa yeni bir tarama başlatılmaz. Bunun yerine, yeni istek `{ResourceContainerGUID}` durum için aynı **konum** URI 'si olarak sağlanır. **Konum** URI 'sine yönelik bir REST API **Get** komutu, değerlendirme devam ederken **kabul edilen bir 202** döndürür. Değerlendirme taraması tamamlandığında, **200 bir Tamam** durumu döndürür. Tamamlanmış taramanın gövdesi, şu duruma sahip bir JSON yanıtdır:
 
 ```json
 {
@@ -269,7 +303,7 @@ Sonuçlarınız aşağıdaki örneğe benzer:
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Azure Ilkesi için Azure PowerShell modülü, PowerShell Galerisi [az. Poliyghts](https://www.powershellgallery.com/packages/Az.PolicyInsights)olarak kullanılabilir.
-PowerShellGet kullanarak modülünü kullanarak `Install-Module -Name Az.PolicyInsights` yükleyebilirsiniz (en son [Azure PowerShell](/powershell/azure/install-az-ps) yüklü olduğundan emin olun):
+PowerShellGet kullanarak modülünü kullanarak yükleyebilirsiniz `Install-Module -Name Az.PolicyInsights` (en son [Azure PowerShell](/powershell/azure/install-az-ps) yüklü olduğundan emin olun):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
@@ -383,7 +417,7 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-Azure PowerShell cmdlet 'ini `Get-AzADUser`kullanarak belirli bir kullanıcıyı almak Için, **prenıd** alanı kullanılabilir. **{Prenaloıd}** değerini, önceki örnekte aldığınız Yanıtla değiştirin.
+Azure PowerShell cmdlet 'ini kullanarak belirli bir kullanıcıyı almak için, **prenıd** alanı kullanılabilir `Get-AzADUser` . **{Prenaloıd}** değerini, önceki örnekte aldığınız Yanıtla değiştirin.
 
 ```azurepowershell-interactive
 PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
@@ -392,7 +426,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 
-Aboneliğinize bağlı [etkinlik günlüğü Analizi çözümden](../../../azure-monitor/platform/activity-log-collect.md) sahip `AzureActivity` `AzureActivity` bir [Log Analytics çalışma alanınız](../../../log-analytics/log-analytics-overview.md) varsa, basit kusto sorguları ve tablosunu kullanarak, uyumluluk döngüsünden uyumsuzluk sonuçlarını da görüntüleyebilirsiniz. Azure Izleyici günlüklerindeki Ayrıntılar sayesinde, uyarılar uyumsuzluk izlemek üzere yapılandırılabilir.
+Aboneliğinize bağlı Etkinlik Günlüğü Analizi çözümden sahip bir [Log Analytics çalışma alanınız](../../../log-analytics/log-analytics-overview.md) varsa `AzureActivity` , basit kusto sorguları ve tablosunu kullanarak, uyumluluk döngüsünden uyumsuzluk sonuçlarını da görüntüleyebilirsiniz [Activity Log Analytics solution](../../../azure-monitor/platform/activity-log-collect.md) `AzureActivity` . Azure Izleyici günlüklerindeki Ayrıntılar sayesinde, uyarılar uyumsuzluk izlemek üzere yapılandırılabilir.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure Izleyici günlüklerini kullanarak Azure Ilke uyumluluğu" border="false":::
 

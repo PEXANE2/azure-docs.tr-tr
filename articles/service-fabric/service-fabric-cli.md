@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI'sı ile çalışmaya başlama
 description: Azure Service Fabric CLI’sını kullanmayı öğrenin. Kümeye bağlanmayı ve uygulamaları yönetmeyi öğrenin.
 author: jeffj6123
 ms.topic: conceptual
-ms.date: 1/16/2020
+ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258947"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681807"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI'sı
 
@@ -18,7 +18,7 @@ Azure Service Fabric komut satırı arabirimi (CLI) Service Fabric varlıklarıy
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüklemeden önce ortamınızda Python ve pip uygulamalarının yüklü olduğundan emin olun. Daha fazla bilgi için [pip hızlı başlangıç belgelerine](https://pip.pypa.io/en/latest/quickstart/) ve resmi [Python yükleme belgelerine](https://wiki.python.org/moin/BeginnersGuide/Download) bakın.
 
@@ -30,7 +30,8 @@ Service Fabric CLI, Service Fabric SDK'sının en son çalışma zamanı sürüm
 
 | CLI sürümü   | desteklenen çalışma zamanı sürümü |
 |---------------|---------------------------|
-| En son (~ = 9)  | En son (~ = 7)              |
+| En son (~ = 10) | En son (~ = 7,1)            |
+| 9.0.0         | 7.1                       |
 | 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
@@ -240,7 +241,7 @@ Belirtilen küme uç noktasının kullanılabilir olduğunu ve dinlediğini doğ
 
 ### <a name="detailed-logs"></a>Ayrıntılı günlükler
 
-Hata ayıkladığınız veya sorun bildirdiğiniz sırada ayrıntılı günlükler çoğunlukla yararlı olur. `--debug` Bayrak, çıkışın ayrıntı düzeyini artırır.
+Hata ayıkladığınız veya sorun bildirdiğiniz sırada ayrıntılı günlükler çoğunlukla yararlı olur. `--debug`Bayrak, çıkışın ayrıntı düzeyini artırır.
 
 ### <a name="command-help-and-syntax"></a>Komut yardımı ve söz dizimi
 

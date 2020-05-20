@@ -1,14 +1,14 @@
 ---
 title: Kısıtlanan istekler için yönergeler
 description: Azure Kaynak Grafiği tarafından daraltılan isteklerin önüne geçmek için, paralel olarak Grup, Stagger, sayfal ve sorgu yapmayı öğrenin.
-ms.date: 12/02/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259857"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682048"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Kaynak grafiğinde kısıtlanmış isteklere yönelik kılavuz
 
@@ -23,17 +23,17 @@ Bu makalede, Azure Kaynak Grafında sorguların oluşturulmasıyla ilgili dört 
 
 ## <a name="understand-throttling-headers"></a>Azaltma üst bilgilerini anlama
 
-Azure Kaynak Grafiği, her bir kullanıcı için kota numarasını bir zaman penceresine göre ayırır. Örneğin, bir Kullanıcı, daralmadan 5 saniyelik her pencerede en fazla 15 sorgu gönderebilir. Kota değeri birçok faktöre göre belirlenir ve değişikliğe tabidir.
+Azure Kaynak Grafiği, bir zaman penceresine göre her bir kullanıcı için bir kota numarası ayırır. Örneğin, bir Kullanıcı, daralmadan 5 saniyelik her pencerede en fazla 15 sorgu gönderebilir. Kota değeri birçok faktöre göre belirlenir ve değişikliğe tabidir.
 
 Her sorgu yanıtında, Azure Kaynak Grafiği iki daraltma üst bilgisi ekler:
 
 - `x-ms-user-quota-remaining`(int): Kullanıcı için kalan Kaynak kotası. Bu değer sorgu sayısı ile eşlenir.
 - `x-ms-user-quota-resets-after`(SS: DD: SS): kullanıcının kota tüketimi sıfırlanana kadar geçen süre.
 
-Üst bilgilerin nasıl çalıştığını görmek için, `x-ms-user-quota-remaining: 10` ve `x-ms-user-quota-resets-after: 00:00:03`değerlerini içeren bir sorgu yanıtına göz atalım.
+Üst bilgilerin nasıl çalıştığını görmek için, ve değerlerini içeren bir sorgu yanıtına göz atalım `x-ms-user-quota-remaining: 10` `x-ms-user-quota-resets-after: 00:00:03` .
 
 - Sonraki 3 saniye içinde, en fazla 10 sorgu kısıtlanmadan gönderilebilir.
-- 3 saniye içinde `x-ms-user-quota-remaining` , ve `x-ms-user-quota-resets-after` değerleri sırasıyla `15` ve `00:00:05` sırasıyla sıfırlanacak.
+- 3 saniye içinde, `x-ms-user-quota-remaining` ve değerleri `x-ms-user-quota-resets-after` `15` `00:00:05` sırasıyla ve sırasıyla sıfırlanacak.
 
 Sorgu isteklerinde _geri_ dönmek üzere üst bilgileri kullanmanın bir örneğini görmek için bkz. [sorgudaki örnek paralel](#query-in-parallel).
 
@@ -185,7 +185,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 }
 ```
 
-## <a name="pagination"></a>Sayfalandırma
+## <a name="pagination"></a>Mayı
 
 Azure Kaynak Graph tek bir sorgu yanıtında en fazla 1000 girişi döndürdüğünden, Aradığınız veri kümesini almak için sorgularınızın [sayfalanmasını](./work-with-data.md#paging-results) yapmanız gerekebilir. Ancak, bazı Azure Kaynak grafik istemcileri sayfalandırmayı diğerlerinden farklı işler.
 
@@ -228,14 +228,14 @@ Azure Kaynak Graph tek bir sorgu yanıtında en fazla 1000 girişi döndürdüğ
 
 ## <a name="still-get-throttled"></a>Hala kısıtlanıyor musunuz?
 
-Yukarıdaki önerileri kullandıktan sonra azaldıysanız, ' de [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)ekibine başvurun.
+Yukarıdaki önerileri kullandıktan sonra azaldıysanız, ' de ekibine başvurun [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com) .
 
 Şu ayrıntıları sağlayın:
 
 - Özel kullanım örneği ve iş sürücünüzün daha yüksek bir azaltma sınırı olması gerekir.
 - Kaç kaynak erişiminiz var? Tek bir sorgudan kaç tane döndürüldü?
 - Hangi kaynak türlerini ilgileniyorsunuz?
-- Sorgu deseninin anlamı nedir? Y saniye başına X sorgusu vb.
+- Sorgu deseninin anlamı nedir? Y saniye başına X sorgusu ve bu şekilde devam eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

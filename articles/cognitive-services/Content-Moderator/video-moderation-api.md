@@ -7,15 +7,15 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72755230"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685299"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C 'de sakıncalı malzeme için video içeriğini analiz etme #
 
@@ -23,7 +23,7 @@ Bu makalede, [.NET için Content moderator SDK 'yı](https://www.nuget.org/packa
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Herhangi bir [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/) sürümü
 
 ## <a name="set-up-azure-resources"></a>Azure kaynakları ayarlama
@@ -40,7 +40,7 @@ Azure portal yeni AMS aboneliğinize gidin ve Yan menüden **API erişimi** ' ni
 
 **Azure AD uygulaması** bölümünde **Yeni oluştur** ' u SEÇIN ve yeni Azure AD uygulama kaydınızı adlandırın (örneğin, "VideoModADApp"). **Kaydet** ' e tıklayın ve uygulama yapılandırıldıktan sonra birkaç dakika bekleyin. Ardından, yeni uygulama kaydınızı sayfanın **Azure AD uygulaması** bölümünde görmeniz gerekir.
 
-Uygulama kaydınızı seçin ve altındaki **Uygulamayı Yönet** düğmesine tıklayın. **Uygulama kimliği** alanındaki değeri aklınızda edin; Buna daha sonra ihtiyacınız olacak. **Ayarlar** > **anahtarlar**' ı seçin ve yeni anahtar için bir açıklama girin (örneğin, "videomodkey"). **Kaydet**' e tıklayın ve ardından yeni anahtar değerine dikkat edin. Bu dizeyi kopyalayın ve güvenli bir yere kaydedin.
+Uygulama kaydınızı seçin ve altındaki **Uygulamayı Yönet** düğmesine tıklayın. **Uygulama kimliği** alanındaki değeri aklınızda edin; Buna daha sonra ihtiyacınız olacak. **Ayarlar**  >  **anahtarlar**' ı seçin ve yeni anahtar için bir açıklama girin (örneğin, "videomodkey"). **Kaydet**' e tıklayın ve ardından yeni anahtar değerine dikkat edin. Bu dizeyi kopyalayın ve güvenli bir yere kaydedin.
 
 Yukarıdaki işlemin daha kapsamlı bir yolu için bkz. [Azure AD kimlik doğrulamasıyla çalışmaya başlama](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
 
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Kaynak başvurularını ayarlama
 
-Aşağıdaki statik alanları _program.cs_içindeki **Program** sınıfına ekleyin. Bu alanlar, AMS aboneliğinize bağlanmak için gereken bilgileri tutar. Bunları yukarıdaki adımlarda aldığınız değerlerle birlikte doldurabilirsiniz. Azure AD uygulamanızın **uygulama kimliği** değeri olduğunu ve `CLIENT_SECRET` bu uygulama Için oluşturduğunuz "videomodkey" değerinin olduğunu unutmayın. `CLIENT_ID`
+Aşağıdaki statik alanları _program.cs_içindeki **Program** sınıfına ekleyin. Bu alanlar, AMS aboneliğinize bağlanmak için gereken bilgileri tutar. Bunları yukarıdaki adımlarda aldığınız değerlerle birlikte doldurabilirsiniz. `CLIENT_ID`Azure AD uygulamanızın **uygulama kimliği** değeri olduğunu ve `CLIENT_SECRET` Bu uygulama Için oluşturduğunuz "videomodkey" değerinin olduğunu unutmayın.
 
 ```csharp
 // declare constants and globals
@@ -120,7 +120,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 Yerel bir video dosyası (en basit durum) kullanmak istiyorsanız, projeye ekleyin ve `INPUT_FILE` değerini değer olarak girin (göreli yollar yürütme dizinine göre değişir).
 
-Ayrıca, geçerli dizinde _önceden ayarlanmış. JSON_ dosyasını oluşturmanız ve bir sürüm numarası belirtmek için kullanmanız gerekir. Örneğin:
+Ayrıca, geçerli dizinde _önceden ayarlanmış. JSON_ dosyasını oluşturmanız ve bir sürüm numarası belirtmek için kullanmanız gerekir. Örnek:
 
 ```JSON
 {

@@ -1,14 +1,14 @@
 ---
 title: Kaynaklardaki dizi özellikleri için yazma ilkeleri
 description: Dizi parametreleri ve dizi dili ifadeleriyle çalışmayı öğrenin, [*] diğer adını değerlendirin ve Azure Ilke tanımı kuralları ile öğeleri ekleyin.
-ms.date: 11/26/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3d30f76d555386e5ab8041a0b8cc82b5b60e28e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280670"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684244"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
 
@@ -16,7 +16,7 @@ Azure Resource Manager özellikler genellikle dizeler ve Boole değerleri olarak
 
 - Birden çok seçenek sağlamak için bir [tanım parametresinin](../concepts/definition-structure.md#parameters)türü
 - **Ya da** **notın** koşullarını kullanan bir [ilke kuralının](../concepts/definition-structure.md#policy-rule) bir parçası
-- Değerlendirmek [ \[ \* için \] diğer adı](../concepts/definition-structure.md#understanding-the--alias) değerlendiren bir ilke kuralının parçası:
+- Değerlendirmek için [ \[ \* \] diğer adı](../concepts/definition-structure.md#understanding-the--alias) değerlendiren bir ilke kuralının parçası:
   - **Hiçbiri**, **Any**veya **Tümü** gibi senaryolar
   - **Count** ile karmaşık senaryolar
 - Var olan bir diziyi değiştirmek veya eklemek için [ekleme efekti](../concepts/effects.md#append)
@@ -103,8 +103,8 @@ Bu dizeyi her SDK ile kullanmak için aşağıdaki komutları kullanın:
 
 ### <a name="array-conditions"></a>Dizi koşulları
 
-Parametresi _dizi_
-**türünün** birlikte kullanılabileceği ilke kuralı `in` `notIn` [Koşulları](../concepts/definition-structure.md#conditions) ve ile sınırlıdır. Aşağıdaki ilke tanımını bir örnek olarak koşulla `equals` gerçekleştirin:
+Parametresi _dizi_ [conditions](../concepts/definition-structure.md#conditions) 
+ **türünün** birlikte kullanılabileceği ilke kuralı koşulları ve ile sınırlıdır `in` `notIn` . Aşağıdaki ilke tanımını `equals` bir örnek olarak koşulla gerçekleştirin:
 
 ```json
 {
@@ -136,14 +136,14 @@ Azure portal aracılığıyla bu ilke tanımını oluşturmaya çalışmak, bu h
 
 - "' {GUID} ' ilkesi doğrulama hataları nedeniyle parametreleştirimedi. İlke parametrelerinin doğru tanımlanıp tanımlanmadığından emin olun. ' [Parameters (' allowedLocations ')] ' dil ifadesinin değerlendirme sonucu, ' Array ' türü, beklenen tür ' String '. '. "
 
-Beklenen `equals` koşul **türü** _dize_. **Allowedlocations** **türü** _dizi_olarak tanımlandığından, ilke altyapısı dil ifadesini değerlendirir ve hata oluşturur. `in` Ve `notIn` koşuluyla, ilke altyapısı dil ifadesinde **tür** _dizisini_ bekler. Bu hata iletisini çözümlemek için ya da `equals` ' ya `in` geçin `notIn`.
+Beklenen koşul **türü** `equals` _dize_. **Allowedlocations** **türü** _dizi_olarak tanımlandığından, ilke altyapısı dil ifadesini değerlendirir ve hata oluşturur. `in`Ve `notIn` koşuluyla, ilke altyapısı dil ifadesinde **tür** _dizisini_ bekler. Bu hata iletisini çözümlemek için ya `equals` da ' ya geçin `in` `notIn` .
 
 ### <a name="evaluating-the--alias"></a>[*] Diğer adı değerlendiriliyor
 
-Adına ** \[ \* ** eklenmiş olan diğer adlar **türün** bir _dizi_olduğunu gösterir. Tüm dizinin ** \[ \* ** değerini değerlendirmek yerine, dizideki her öğeyi mantıksal ve aralarında tek tek değerlendirmek mümkün hale gelir. Her öğe değerlendirmesi için bu üç standart senaryo vardır: _none_, _Any_veya _All_ öğeleri eşleşir. Karmaşık senaryolar için [Count](../concepts/definition-structure.md#count)kullanın.
+Adına eklenmiş olan diğer adlar **\[\*\]** **türün** bir _dizi_olduğunu gösterir. Tüm dizinin değerini değerlendirmek yerine, **\[\*\]** dizideki her öğeyi MANTıKSAL ve aralarında tek tek değerlendirmek mümkün hale gelir. Her öğe değerlendirmesi için bu üç standart senaryo vardır: _none_, _Any_veya _All_ öğeleri eşleşir. Karmaşık senaryolar için [Count](../concepts/definition-structure.md#count)kullanın.
 
 İlke altyapısı **, yalnızca** **IF** kuralı doğru olarak değerlendirildiğinde **etkisini** tetikler.
-Bu olgu, dizinin her bir öğesini değerlendiren şekilde ** \[ \* ** anlamak için önemlidir.
+Bu olgu, **\[\*\]** dizinin her bir öğesini değerlendiren şekilde anlamak için önemlidir.
 
 Aşağıdaki senaryo tablosu için örnek ilke kuralı:
 
@@ -179,7 +179,7 @@ Aşağıdaki senaryo tablosu için örnek ilke kuralı:
 ]
 ```
 
-Aşağıdaki her koşul örneği için ile `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`değiştirin.
+Aşağıdaki her koşul örneği için ile değiştirin `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"` .
 
 Aşağıdaki sonuçlar, koşulun birleşiminin ve yukarıdaki mevcut değerlerden oluşan örnek ilke kuralının sonucudur:
 
@@ -196,10 +196,10 @@ Aşağıdaki sonuçlar, koşulun birleşiminin ve yukarıdaki mevcut değerlerde
 
 ## <a name="the-append-effect-and-arrays"></a>Ekleme efekti ve dizileri
 
-**Ayrıntılar. alanın** bir ** \[ \* ** diğer ad olmasına bağlı olarak, [ekleme efekti](../concepts/effects.md#append) farklı şekilde davranır.
+**Ayrıntılar. alanın** bir diğer ad olmasına bağlı olarak, [ekleme efekti](../concepts/effects.md#append) farklı şekilde davranır **\[\*\]** .
 
-- ** \[ \* ** Diğer ad olmadığında, append değeri tüm diziyi **değer** özelliği ile değiştirir
-- ** \[ Bir \* ** diğer ad olduğunda, append değeri, var olan diziye **değer** özelliğini ekler veya yeni diziyi oluşturur
+- **\[\*\]** Diğer ad olmadığında, Append **değeri** tüm diziyi değer özelliği ile değiştirir
+- Bir **\[\*\]** diğer ad olduğunda, append değeri, var olan diziye **değer** özelliğini ekler veya yeni diziyi oluşturur
 
 Daha fazla bilgi için bkz. [append örnekleri](../concepts/effects.md#append-examples).
 

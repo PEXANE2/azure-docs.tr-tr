@@ -1,6 +1,6 @@
 ---
 title: Azure Otomasyonu’nda modülleri yönetme
-description: Azure Otomasyonu, DSC yapılandırmalarında runbook 'larda ve DSC kaynaklarında cmdlet 'leri etkinleştirmek için PowerShell modüllerini içeri aktarmanızı sağlar.
+description: Bu makalede, DSC yapılandırmalarında runbook 'larda ve DSC kaynaklarında cmdlet 'leri etkinleştirmek için PowerShell modüllerinin nasıl kullanılacağı açıklanır.
 services: automation
 ms.service: automation
 author: mgoedtel
@@ -8,16 +8,16 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 84fdb5a9cf3c22048473cd00ee6f8e7ac36c9097
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 14b26c4c5a72ef2919aca1f872b198257b9f37f7
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864309"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685358"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Otomasyonu’nda modülleri yönetme
 
-Azure Otomasyonu, DSC yapılandırmalarında runbook 'larda ve DSC kaynaklarında cmdlet 'leri etkinleştirmek için PowerShell modüllerini içeri aktarmanızı sağlar. Azure Otomasyonu 'nda kullanılan modüller şunlardır:
+Azure Otomasyonu, DSC yapılandırmalarında runbook 'larda ve DSC kaynaklarında cmdlet 'leri etkinleştirmek için bir dizi PowerShell modülü kullanır. Desteklenen modüller şunlardır:
 
 * [Az. Automation Azure PowerShell](/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
 * [Azurerd. Automation Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0).
@@ -31,19 +31,16 @@ Bir Otomasyon hesabı oluşturduğunuzda, Azure Otomasyonu bazı modülleri vars
 Otomasyon Runbook ve DSC derleme işlerini yürüttüğünde, modülleri runbook 'ların çalıştırılabileceği ve DSC yapılandırmalarının derleyeceği sanal alanlara yükler. Otomasyon Ayrıca DSC çekme sunucusundaki modüllerde DSC kaynaklarını otomatik olarak koyar. Makineler DSC yapılandırmasını uygularsa kaynakları çekebilir.
 
 >[!NOTE]
->Yalnızca runbook 'larınızın ve DSC yapılandırmalarının gerçekten ihtiyaç duyduğu modülleri içeri aktardığınızdan emin olun. Kök az modülünün içeri aktarılmasını önermiyoruz. Bu, ihtiyacınız olmayan birçok farklı modül içerir ve bu da performans sorunlarına neden olabilir. Bunun yerine, az. COMPUTE gibi ayrı modülleri içeri aktarın.
-
->[!NOTE]
->Bu makale Azure PowerShell az Module kullanır. Azurerd modülünü kullanmaya devam edebilirsiniz. Az Module ve Azurerd uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [new Azure PowerShell konusuna giriş az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+>Yalnızca runbook 'larınızın ve DSC yapılandırmalarının gerektirdiği modülleri içeri aktardığınızdan emin olun. Kök az modülünün içeri aktarılmasını önermiyoruz. Bu, ihtiyacınız olmayan birçok farklı modül içerir ve bu da performans sorunlarına neden olabilir. Bunun yerine, az. COMPUTE gibi ayrı modülleri içeri aktarın.
 
 ## <a name="default-modules"></a>Varsayılan modüller
 
 Aşağıdaki tabloda, Otomasyon hesabınızı oluştururken Azure Automation 'ın varsayılan olarak içe aktardığı modüller listelenmektedir. Otomasyon, bu modüllerin daha yeni sürümlerini içeri aktarabilir. Ancak, daha yeni bir sürümü silseniz bile, orijinal sürümü Otomasyon hesabınızdan kaldıramazsınız. Bu varsayılan modüllerin çeşitli Azurerd modülleri olduğunu unutmayın. 
 
-Otomasyon, kök az modülünü yeni veya mevcut Otomasyon hesaplarına otomatik olarak içeri aktarmaz. Bu modüllerle çalışma hakkında daha fazla bilgi için, bkz. [az modules 'e geçme](#migrating-to-az-modules).
+Otomasyon, kök az modülünü yeni veya mevcut Otomasyon hesaplarına otomatik olarak içeri aktarmaz. Bu modüllerle çalışma hakkında daha fazla bilgi için, bkz. [az modules 'e geçme](#migrate-to-az-modules).
 
 > [!NOTE]
-> [Azure Otomasyonu 'nda VM'leri çalışma saatleri dışında Başlat/Durdur çözümü](../automation-solution-vm-management.md)içeren Otomasyon hesaplarında modül ve Runbook 'ların değiştirilmesini önermiyoruz.
+> [VM'leri çalışma saatleri dışında Başlat/Durdur](../automation-solution-vm-management.md) özelliğinin dağıtımı Için kullanılan Otomasyon hesaplarında modül ve Runbook 'ların değiştirilmesini önermiyoruz.
 
 |Modül adı|Sürüm|
 |---|---|
@@ -57,7 +54,7 @@ Otomasyon, kök az modülünü yeni veya mevcut Otomasyon hesaplarına otomatik 
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0.2 |
+| GPRegistryPolicyParser | 0,2 |
 | Microsoft. PowerShell. Core | 0 |
 | Microsoft. PowerShell. Diagnostics |  |
 | Microsoft. PowerShell. Management |  |
@@ -74,11 +71,11 @@ Otomasyon, kök az modülünü yeni veya mevcut Otomasyon hesaplarına otomatik 
 
 ## <a name="az-modules"></a>Az modüller
 
-Az. Automation için, cmdlet 'lerin çoğunluğu Azurerd modülleri için kullanılanlarla aynı adlara sahiptir, ancak *azurerd* ön ekinin *az*olarak değiştirilmesi gerekir. Bu adlandırma kuralını izlemeden az modüllerle ilgili bir liste için bkz. [özel durumlar listesi](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters).
+Az. Automation için, cmdlet 'lerin çoğunluğu Azurerd modülleri için kullanılanlarla aynı adlara sahiptir, ancak `AzureRM` öneki olarak değişir `Az` . Bu adlandırma kuralını izlemeden az modüllerle ilgili bir liste için bkz. [özel durumlar listesi](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters).
 
 ## <a name="internal-cmdlets"></a>İç cmdlet 'ler
 
-Azure Otomasyonu, varsayılan olarak `Orchestrator.AssetManagement.Cmdlets` yüklenen Windows için Log Analytics aracısına yönelik iç modülü destekler. Aşağıdaki tabloda iç cmdlet 'ler tanımlanmaktadır. Bu cmdlet 'ler, paylaşılan kaynaklarla etkileşim kurmak için Azure PowerShell cmdlet 'leri yerine kullanılmak üzere tasarlanmıştır. Şifrelenmiş değişkenlerin, kimlik bilgilerinin ve şifreli bağlantıların gizli dizilerini alabilirler.
+Azure Otomasyonu, `Orchestrator.AssetManagement.Cmdlets` Varsayılan olarak yüklenen Windows için Log Analytics aracısına yönelik iç modülü destekler. Aşağıdaki tabloda iç cmdlet 'ler tanımlanmaktadır. Bu cmdlet 'ler, paylaşılan kaynaklarla etkileşim kurmak için Azure PowerShell cmdlet 'leri yerine kullanılmak üzere tasarlanmıştır. Şifrelenmiş değişkenlerin, kimlik bilgilerinin ve şifreli bağlantıların gizli dizilerini alabilirler.
 
 >[!NOTE]
 >İç cmdlet 'ler yalnızca Azure korumalı alan ortamında veya bir Windows karma runbook Çalışanındaki runbook 'ları yürütürken kullanılabilir. 
@@ -93,7 +90,7 @@ Azure Otomasyonu, varsayılan olarak `Orchestrator.AssetManagement.Cmdlets` yük
 |Start-AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
 |Bekleme-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
-İç cmdlet 'lerin, az ve Azurermcmdlet 'lerini adlandırmada farklı olduğunu unutmayın. İç cmdlet adları, ad içinde "Azure" veya "az" gibi sözcükler içermez, ancak Word *Otomasyonu*'nu kullanır. Bir Azure korumalı alanı veya Windows karma runbook çalışanı üzerinde runbook yürütmesi sırasında az veya Azurerk cmdlet 'lerinin kullanılmasını öneririz. Daha az parametre gerektirir ve zaten çalışmakta olan işiniz bağlamında çalışır.
+İç cmdlet 'lerin, az ve Azurermcmdlet 'lerini adlandırmada farklı olduğunu unutmayın. İç cmdlet adları, adında veya adında sözcükler içermez `Azure` `Az` , ancak Word 'ü kullanır `Automation` . Bir Azure korumalı alanı veya Windows karma runbook çalışanı üzerinde runbook yürütmesi sırasında az veya Azurerk cmdlet 'lerinin kullanılmasını öneririz. Daha az parametre gerektirir ve zaten çalışmakta olan işiniz bağlamında çalışır.
 
 Otomasyon kaynaklarını bir runbook bağlamı dışında işlemek için az veya Azurerd cmdlet 'lerini kullanın. 
 
@@ -107,31 +104,18 @@ Azure Otomasyonu, runbook 'larınızla ve DSC yapılandırmalarında kullanmak i
 
 Azure Otomasyonu, cmdlet 'lerini kullanılabilir hale getirmek için özel bir modül içeri aktarabilir. Arka planda, bu modül, diğer modülleri de olduğu gibi, modülü depolar ve Azure korumalı alanında kullanır.
 
-## <a name="migrating-to-az-modules"></a>Az modüllere geçme
+## <a name="migrate-to-az-modules"></a>Az modüllere geçir
 
-### <a name="migration-considerations"></a>Geçiş fikirleri
+Bu bölüm, otomasyondaki az modüllere nasıl geçiş yapılacağını anlatır. Daha fazla bilgi için bkz. [Azurerd 'Den az ' a geçiş Azure PowerShell](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0). 
 
-Bu bölüm, Otomasyon 'daki az modüllere geçiş yaparken dikkate alınması gereken noktaları içerir. Daha fazla bilgi için bkz. [Azurerd 'Den az ' a geçiş Azure PowerShell](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0). 
+Aynı Otomasyon hesabında Azurermmodules ve az modules çalıştırılmasını önermiyoruz. Azurerd 'den az ' a geçiş yapmak istediğinizden emin olduğunuzda, tam bir geçişe tam olarak kaydedilmesi en iyisidir. Otomasyon, genellikle Otomasyon hesabı içindeki korumalı alanlar 'ı başlangıç zamanlarında kaydedilecek şekilde yeniden kullanır. Tam modül geçişi yapmazsanız, yalnızca Azurere modüllerini kullanan bir iş başlatabilir ve ardından yalnızca az modüller kullanan başka bir iş başlatabilirsiniz. Korumalı alan yakında çöker ve modüllerin uyumlu olmadığı belirten bir hata alırsınız. Bu durum, belirli bir runbook veya yapılandırma için rastgele oluşan kilitlenmelere neden olur. 
 
-#### <a name="use-of-azurerm-modules-and-az-modules-in-the-same-automation-account"></a>Aynı Otomasyon hesabında Azurermmodules ve az modül kullanımı
+>[!NOTE]
+>Yeni bir Otomasyon hesabı oluşturduğunuzda, az modüllere geçişten sonra bile Otomasyon, Azurermmodules modüllerini varsayılan olarak de yüklerse. Öğretici runbook 'ları Azurerd cmdlet 'leriyle yine de güncelleştirebilirsiniz. Ancak, bu runbook 'ları çalıştırmamanız gerekir.
 
- Aynı Otomasyon hesabında Azurermmodules ve az modules çalıştırılmasını önermiyoruz. Azurerd 'den az ' a geçiş yapmak istediğinizden emin olduğunuzda, tam bir geçişe tam olarak kaydedilmesi en iyisidir. Otomasyon, genellikle Otomasyon hesabı içindeki korumalı alanlar 'ı başlangıç zamanlarında kaydedilecek şekilde yeniden kullanır. Tam modül geçişi yapmazsanız, yalnızca Azurere modüllerini kullanan bir iş başlatabilir ve ardından yalnızca az modüller kullanan başka bir iş başlatabilirsiniz. Korumalı alan yakında çöker ve modüllerin uyumlu olmadığı belirten bir hata alırsınız. Bu durum, belirli bir runbook veya yapılandırma için rastgele oluşan kilitlenmelere neden olur. 
-
-#### <a name="importing-az-modules-into-the-powershell-session"></a>Az modules PowerShell oturumuna aktarılıyor
-
-Az modülünün Otomasyon hesabınıza aktarılması, modülün runbook 'ların kullandığı PowerShell oturumuna otomatik olarak aktarılmaz. Modüller aşağıdaki durumlarda PowerShell oturumuna aktarılır:
-
-* Bir runbook bir modülden bir cmdlet istediğinde.
-* Bir runbook, modülü [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) cmdlet 'i ile açıkça içeri aktardığında.
-* Bir runbook başka bir bağımlı modülü içeri aktardığında.
-
-#### <a name="testing-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>Modül geçişten önce runbook 'larınızı ve DSC yapılandırmasını test etme
+### <a name="test-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>Modül geçişten önce runbook 'larınızı ve DSC yapılandırmalarının sınamasını yapın
 
 Az modüllere geçirmeden önce, tüm runbook 'ları ve DSC yapılandırmalarının ayrı bir Otomasyon hesabında dikkatli bir şekilde test ettiğinizden emin olun. 
-
-#### <a name="updates-for-tutorial-runbooks"></a>Eğitim runbook 'ları için güncelleştirmeler 
-
-Yeni bir Otomasyon hesabı oluşturduğunuzda, az modüllere geçişten sonra bile Otomasyon, Azurermmodules modüllerini varsayılan olarak de yüklerse. Öğretici runbook 'ları Azurerd cmdlet 'leriyle yine de güncelleştirebilirsiniz. Ancak, bu runbook 'ları çalıştırmamanız gerekir.
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>Azurerd modülleri kullanan tüm runbook 'ları durdurma ve zamanlamayı kaldırma
 
@@ -139,18 +123,24 @@ Azurerd modüllerini kullanan mevcut runbook 'ları veya DSC yapılandırmasın�
 
 Zamanlamalarınızı kaldırmaya hazırsanız, Azure portal ya da [Remove-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) cmdlet 'ini kullanabilirsiniz. Bkz. [zamanlamayı kaldırma](schedules.md#remove-a-schedule).
 
-### <a name="remove-the-azurerm-modules"></a>Azurerd modüllerini kaldırma
+### <a name="remove-azurerm-modules"></a>Azurerd modüllerini kaldır
 
 Az modülleri içeri aktarmadan önce Azurere modüllerini kaldırmak mümkündür. Ancak, bunu yaparsanız, kaynak denetimi eşitlemesini kesintiye uğratabilir ve hala zamanlanan betiklerin başarısız olmasına neden olur. Modülleri kaldırmaya karar verirseniz, bkz. [Azurerd 'Yi kaldırma](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm).
 
-### <a name="import-the-az-modules"></a>Az modülleri içeri aktar
+### <a name="import-az-modules"></a>İçeri Aktar az Modules
+
+Az modülünün Otomasyon hesabınıza aktarılması, modülün runbook 'ların kullandığı PowerShell oturumuna otomatik olarak aktarılmaz. Modüller aşağıdaki durumlarda PowerShell oturumuna aktarılır:
+
+* Bir runbook bir modülden bir cmdlet istediğinde.
+* Bir runbook, modülü [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) cmdlet 'i ile açıkça içeri aktardığında.
+* Bir runbook başka bir bağımlı modülü içeri aktardığında.
 
 Azure portal az modülleri içeri aktarabilirsiniz. Tüm az. Automation modülünü değil, yalnızca ihtiyacınız olan az modülleri içe aktarmayı unutmayın. [Az. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) diğer az modüllerle ilgili bir bağımlılık olduğundan, bu modülü diğerlerinden önce içeri aktardığınızdan emin olun.
 
 1. Otomasyon hesabınızdan, **paylaşılan kaynaklar**altında **modüller**' i seçin. 
 2. **Galeriye gözatamazsınız**' ı seçin.  
-3. Arama çubuğuna modül adını (örneğin, `Az.Accounts`) girin. 
-4. **PowerShell modülü** sayfasında, modülü Otomasyon hesabınıza aktarmak Için **içeri aktar** ' ı seçin.
+3. Arama çubuğuna modül adını (örneğin, `Az.Accounts` ) girin. 
+4. PowerShell modülü sayfasında, modülü Otomasyon hesabınıza aktarmak için **Içeri aktar** ' ı seçin.
 
     ![Otomasyon hesabınıza modülleri içeri aktarma ekran görüntüsü](../media/modules/import-module.png)
 
@@ -160,7 +150,7 @@ Ayrıca, içeri aktarılacak modül için arama yaparak bu [PowerShell Galerisi]
 
 ### <a name="test-your-runbooks"></a>Runbook 'larınızı test edin
 
-Az modülleri Otomasyon hesabına aktardıktan sonra, yeni modülleri kullanmak için Runbook 'larınızı ve DSC yapılandırmasını düzenleyebilirsiniz. Yeni cmdlet 'leri kullanmak için Runbook 'un değiştirilmesini sınamanın bir yolu, runbook 'un başlangıcında `Enable-AzureRmAlias -Scope Process` komutunu kullanmaktır. Bu komut, runbook 'a eklenerek, betik değişiklik yapılmadan çalıştırılabilir. 
+Az modülleri Otomasyon hesabına aktardıktan sonra, yeni modülleri kullanmak için Runbook 'larınızı ve DSC yapılandırmasını düzenleyebilirsiniz. Yeni cmdlet 'leri kullanmak için Runbook 'un değiştirilmesini sınamanın bir yolu, `Enable-AzureRmAlias -Scope Process` runbook 'un başlangıcında komutunu kullanmaktır. Bu komut, runbook 'a eklenerek, betik değişiklik yapılmadan çalıştırılabilir. 
 
 ## <a name="author-modules"></a>Yazma modülleri
 
@@ -183,7 +173,7 @@ myModule
 
 ### <a name="help-information"></a>Yardım bilgileri
 
-Modülünüzün her cmdlet için bir özeti, açıklama ve yardım URI 'SI ekleyin. PowerShell 'de `Get-Help` cmdlet 'ini kullanarak cmdlet 'ler için yardım bilgilerini tanımlayabilirsiniz. Aşağıdaki örnek, bir **. psm1** modül dosyasında bir özeti ve Help URI 'sinin nasıl tanımlanacağını gösterir.
+Modülünüzün her cmdlet için bir özeti, açıklama ve yardım URI 'SI ekleyin. PowerShell 'de cmdlet 'ini kullanarak cmdlet 'ler için yardım bilgilerini tanımlayabilirsiniz `Get-Help` . Aşağıdaki örnek, bir **. psm1** modül dosyasında bir özeti ve Help URI 'sinin nasıl tanımlanacağını gösterir.
 
   ```powershell
   <#
@@ -223,7 +213,7 @@ Modülünüzün her cmdlet için bir özeti, açıklama ve yardım URI 'SI ekley
   }
   ```
 
-  Bu bilgilerin sağlanması, PowerShell konsolundaki `Get-Help` cmdlet 'i aracılığıyla yardım metnini gösterir. Bu metin de Azure portal görüntülenir.
+  Bu bilgilerin sağlanması `Get-Help` , PowerShell konsolundaki cmdlet 'i aracılığıyla yardım metnini gösterir. Bu metin de Azure portal görüntülenir.
 
   ![Tümleştirme modülü yardımı 'nın ekran görüntüsü](../media/modules/module-activity-description.png)
 
@@ -233,7 +223,7 @@ Modül bir dış hizmete bağlanıyorsa [özel bir tümleştirme modülü](#cust
 
 ![Azure portal özel bir bağlantı kullanın](../media/modules/connection-create-new.png)
 
-Aşağıdaki runbook örneği, contoso kaynaklarına erişmek ve dış hizmetten `ContosoConnection` veri döndürmek için adlı bir contoso bağlantı varlığı kullanır. Bu örnekte, alanlar bir `UserName` `Password` `PSCredential` nesnenin ve özelliklerine eşlenir ve sonra cmdlet 'e geçirilir.
+Aşağıdaki runbook örneği, `ContosoConnection` contoso kaynaklarına erişmek ve dış hizmetten veri döndürmek için adlı bir contoso bağlantı varlığı kullanır. Bu örnekte, alanlar `UserName` `Password` bir nesnenin ve özelliklerine eşlenir `PSCredential` ve sonra cmdlet 'e geçirilir.
 
   ```powershell
   $contosoConnection = Get-AutomationConnection -Name 'ContosoConnection'
@@ -252,13 +242,13 @@ Bu davranışa daha kolay ve daha iyi bir yol, bağlantı nesnesini doğrudan cm
   }
   ```
 
-Yalnızca parametreler için bağlantı alanları yerine doğrudan bir parametre olarak bir bağlantı nesnesini kabul etmesine izin vererek cmdlet 'leriniz için benzer davranışı etkinleştirebilirsiniz. Genellikle her biri için bir parametre kümesi istediğinizde, Otomasyonu kullanmayan bir kullanıcının, bağlantı nesnesi olarak davranacak bir Hashtable oluşturmadan cmdlet 'lerinizi çağırabilmesi gerekir. Parametre kümesi `UserAccount` , bağlantı alanı özelliklerini geçirmek için kullanılır. `ConnectionObject`bağlantıyı doğrudan iletmenizi sağlar.
+Yalnızca parametreler için bağlantı alanları yerine doğrudan bir parametre olarak bir bağlantı nesnesini kabul etmesine izin vererek cmdlet 'leriniz için benzer davranışı etkinleştirebilirsiniz. Genellikle her biri için bir parametre kümesi istediğinizde, Otomasyonu kullanmayan bir kullanıcının, bağlantı nesnesi olarak davranacak bir Hashtable oluşturmadan cmdlet 'lerinizi çağırabilmesi gerekir. Parametre kümesi, `UserAccount` bağlantı alanı özelliklerini geçirmek için kullanılır. `ConnectionObject`bağlantıyı doğrudan iletmenizi sağlar.
 
 ### <a name="output-type"></a>Çıkış türü
 
 Modülünüzün tüm cmdlet 'ler için çıkış türünü tanımlayın. Bir cmdlet için çıkış türü tanımlama, yazma sırasında cmdlet 'in çıkış özelliklerini belirlemesine yardımcı olmak için tasarım zamanı IntelliSense 'e izin verir. Bu uygulama, tasarım zamanı bilgisinin modülle kolay bir kullanıcı deneyimi için anahtar olduğu grafik runbook 'u yazma sırasında özellikle yararlıdır.
 
-Geçerli `[OutputType([<MyOutputType>])]`bir tür `MyOutputType` olan öğesini ekleyin. Hakkında `OutputType`daha fazla bilgi edinmek için bkz. [About Functions output typeattribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute). Aşağıdaki kod, bir cmdlet 'e ekleme `OutputType` örneğidir:
+`[OutputType([<MyOutputType>])]` `MyOutputType` Geçerli bir tür olan öğesini ekleyin. Hakkında daha fazla bilgi edinmek için `OutputType` bkz. [About Functions output typeattribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute). Aşağıdaki kod, `OutputType` bir cmdlet 'e ekleme örneğidir:
 
   ```powershell
   function Get-ContosoUser {
@@ -307,7 +297,7 @@ Modülünüzün bir konaktaki benzersiz kayıt defteri ayarlarına bağlı olmam
 
 ### <a name="module-file-paths"></a>Modül dosyası yolları
 
-Modüldeki tüm dosyaların 140 karakterden kısa olan yollara sahip olduğundan emin olun. 140 karakter üzerindeki tüm yollar runbook 'ların içeri aktarılmasıyla ilgili sorunlara neden olur. Otomasyon, 140 karakter üzerinde yol boyutu olan bir dosyayı ile `Import-Module`PowerShell oturumuna alamaz.
+Modüldeki tüm dosyaların 140 karakterden kısa olan yollara sahip olduğundan emin olun. 140 karakter üzerindeki tüm yollar runbook 'ların içeri aktarılmasıyla ilgili sorunlara neden olur. Otomasyon, 140 karakter üzerinde yol boyutu olan bir dosyayı ile PowerShell oturumuna alamaz `Import-Module` .
 
 ## <a name="import-modules"></a>Modülleri içeri aktarma
 
@@ -331,7 +321,7 @@ Azure portal bir modül içeri aktarmak için:
 New-AzAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
 ```
 
-Ayrıca, PowerShell Galerisi doğrudan bir modül içeri aktarmak için aynı cmdlet 'i de kullanabilirsiniz. `ModuleName` `ModuleVersion` [PowerShell Galerisi](https://www.powershellgallery.com)ve ' den aldığınızdan emin olun.
+Ayrıca, PowerShell Galerisi doğrudan bir modül içeri aktarmak için aynı cmdlet 'i de kullanabilirsiniz. `ModuleName`PowerShell Galerisi ve ' den aldığınızdan emin olun `ModuleVersion` . [PowerShell Gallery](https://www.powershellgallery.com)
 
 ```azurepowershell-interactive
 $moduleName = <ModuleName>
@@ -347,7 +337,7 @@ Bir modülü doğrudan PowerShell Galerisi içeri aktarmak için:
 
 1. Adresine gidin https://www.powershellgallery.com ve içeri aktarılacak modüle yönelik arama yapın.
 2. **Yükleme seçenekleri**altında **Azure Otomasyonu** sekmesinde **Azure Otomasyonu 'na dağıt**' ı seçin. Bu eylem Azure portal açar. 
-3. **Içeri aktar** sayfasında Otomasyon hesabınızı seçin ve **Tamam**' ı seçin.
+3. Içeri Aktar sayfasında Otomasyon hesabınızı seçin ve **Tamam**' ı seçin.
 
 ![PowerShell Galerisi içeri aktarma modülünün ekran görüntüsü](../media/modules/powershell-gallery.png)
 
@@ -370,7 +360,7 @@ Azure portal bir modülü kaldırmak için:
 
 1. Otomasyon hesabınıza gidin. **Paylaşılan kaynaklar**altında **modüller**' i seçin. 
 2. Kaldırmak istediğiniz modülü seçin. 
-3. **Modül** sayfasında **Sil**' i seçin. Bu modül [varsayılan modüllerden](#default-modules)biri Ise, Otomasyon hesabı oluşturulduğunda var olan sürüme geri döner.
+3. Modül sayfasında **Sil**' i seçin. Bu modül [varsayılan modüllerden](#default-modules)biri Ise, Otomasyon hesabı oluşturulduğunda var olan sürüme geri döner.
 
 ### <a name="delete-modules-by-using-powershell"></a>PowerShell kullanarak modülleri silme
 

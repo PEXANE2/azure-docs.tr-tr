@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 38088503fee016651a8c1c9a1f57ad4bbe102456
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257156"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682485"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 'da Linux Veri Bilimi Sanal Makinesi veri bilimi
 
@@ -24,14 +24,14 @@ Bu kılavuzda gösterilen veri bilimi görevleri, [ekip veri bilimi işlemi nedi
 
 Bu izlenecek yolda, [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri kümesini çözümliyoruz. Spambase, istenmeyen veya ham (istenmeyen posta değil) olarak işaretlenmiş bir e-posta kümesidir. Spambase, e-postaların içeriğiyle ilgili bazı istatistikler de içerir. Anlatımın ilerleyen kısımlarında yer aldığı istatistikleri konuşuyoruz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Linux DSVM kullanabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
 * **Azure aboneliği**. Azure aboneliği almak için, bkz. [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/free/).
-* [**Linux veri bilimi sanal makinesi**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Sanal makineyi sağlama hakkında daha fazla bilgi için bkz. [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md).
+* [**Linux veri bilimi sanal makinesi**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Sanal makineyi sağlama hakkında daha fazla bilgi için bkz. [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md).
 * [**X2Go**](https://wiki.x2go.org/doku.php) açık bir XFCE oturumuyla bilgisayarınızda yüklü. Daha fazla bilgi için bkz. [X2Go Istemcisini yükleyip yapılandırma](linux-dsvm-intro.md#x2go).
-* Daha yumuşak bir kaydırma deneyimi için DSVM 'nin Firefox Web tarayıcısında `gfx.xrender.enabled` bayrağını değiştirin. `about:config` [Daha fazla bilgi edinin](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). ' İ de `mousewheel.enable_pixel_scrolling` olarak `False`ayarlamayı düşünün. [Daha fazla bilgi edinin](https://support.mozilla.org/questions/981140).
+* Daha yumuşak bir kaydırma deneyimi için DSVM 'nin Firefox Web tarayıcısında `gfx.xrender.enabled` bayrağını değiştirin `about:config` . [Daha fazla bilgi edinin](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). ' İ de `mousewheel.enable_pixel_scrolling` olarak ayarlamayı düşünün `False` . [Daha fazla bilgi edinin](https://support.mozilla.org/questions/981140).
 * **Azure Machine Learning hesabı**. Henüz bir hesabınız yoksa, [Azure Machine Learning giriş sayfasında](https://azure.microsoft.com/free/services/machine-learning//)yeni bir hesap için kaydolun.
 
 ## <a name="download-the-spambase-dataset"></a>Spambase veri kümesini indirin
@@ -64,11 +64,11 @@ mv headers spambaseHeaders.data
 
 Veri kümesinde her e-posta için çeşitli istatistik türleri vardır:
 
-* **\_\_Sözcük FREQ sözcüğü** gibi sütunlar, e-postadaki kelimeyle eşleşen sözcüklerin yüzdesini gösterir *.* Örneğin, **sözcük\_\_FREQ** **1**ise, e-postadaki tüm sözcüklerin %1 ' i *haline*getirin.
-* Karakter **\_\_FREQ karakteri** gibi sütunlar, e-postadaki *karakter olan tüm*karakterlerin yüzdesini belirtir.
-* **büyük\_çalışma\_uzunluğu\_en uzun** , büyük harflerin bir dizisinin en uzun uzunluğudur.
-* **büyük\_çalışma\_uzunluğu\_ortalaması** , büyük harflerin tüm sıralarının ortalama uzunluğudur.
-* **sermaye\_çalışma\_uzunluğu\_toplamı** , tüm büyük harflerin tüm sıralarının toplam uzunluğudur.
+* **Sözcük \_ FREQ \_ _sözcüğü_ ** gibi sütunlar, e- *postadaki kelimeyle*eşleşen sözcüklerin yüzdesini gösterir. Örneğin, **sözcük \_ FREQ \_ ** **1**ise, e-postadaki tüm sözcüklerin %1 ' i *haline*getirin.
+* Karakter ** \_ FREQ \_ _karakteri_ ** gibi sütunlar, e-postadaki *karakter olan tüm*karakterlerin yüzdesini belirtir.
+* **büyük \_ çalışma \_ uzunluğu \_ en uzun** , büyük harflerin bir dizisinin en uzun uzunluğudur.
+* **büyük \_ çalışma \_ uzunluğu \_ ortalaması** , büyük harflerin tüm sıralarının ortalama uzunluğudur.
+* **sermaye \_ çalışma \_ uzunluğu \_ toplamı** , tüm büyük harflerin tüm sıralarının toplam uzunluğudur.
 * **istenmeyen** posta, e-postanın istenmeyen posta olarak kabul edilip edilmeyeceğini belirtir (1 = istenmeyen posta, 0 = istenmeyen posta değil).
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>R Open kullanarak veri kümesini keşfet
@@ -313,17 +313,17 @@ predictSpam.service(1, 1, 1)
 
 ### <a name="jupyterhub"></a>Jupi Terhub
 
-DSVM 'deki Anaconda dağıtımı, Python, R veya Julia kodunu ve analizini paylaşmak için platformlar arası bir ortam olan Jupyter Notebook birlikte gelir. Jupyter Notebook Jupyıterhub üzerinden erişilir. Https://\<DSVM DNS ADıNA veya IP adresine\>göre yerel Linux Kullanıcı adınızı ve parolanızı kullanarak oturum açın: 8000/. Jupi Terhub için tüm yapılandırma dosyaları/etc/jupi terhubnda bulunur.
+DSVM 'deki Anaconda dağıtımı, Python, R veya Julia kodunu ve analizini paylaşmak için platformlar arası bir ortam olan Jupyter Notebook birlikte gelir. Jupyter Notebook Jupyıterhub üzerinden erişilir. Https://dsvm DNS adına veya IP adresine göre yerel Linux Kullanıcı adınızı ve parolanızı kullanarak oturum açın \< \> : 8000/. Jupi Terhub için tüm yapılandırma dosyaları/etc/jupi terhubnda bulunur.
 
 > [!NOTE]
-> Geçerli çekirdekte bir Jupyter Notebook Python paket yöneticisini ( `pip` komutu aracılığıyla) kullanmak için, kod hücresinde bu komutu kullanın:
+> `pip`Geçerli çekirdekte bir Jupyter Notebook Python paket yöneticisini (komutu aracılığıyla) kullanmak için, kod hücresinde bu komutu kullanın:
 >
 >   ```Python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
-> Geçerli Çekirdekte bulunan bir Jupyter Notebook Conda yükleyicisini `conda` (komutu aracılığıyla) kullanmak için, bir kod hücresinde bu komutu kullanın:
+> `conda`Geçerli Çekirdekte bulunan bir Jupyter Notebook Conda yükleyicisini (komutu aracılığıyla) kullanmak için, bir kod hücresinde bu komutu kullanın:
 >
 >   ```Python
 >    import sys
@@ -368,7 +368,7 @@ Veri kümesini yüklemek ve yapılandırmak için:
 Verileri incelemek için:
 
 1. **Keşfet** sekmesini seçin.
-1. Değişken türleri ve bazı Özet istatistikleri hakkındaki bilgileri görmek için **Özet** > **yürütme**' yi seçin.
+1. Değişken türleri ve bazı Özet istatistikleri hakkındaki bilgileri görmek için **Özet**  >  **yürütme**' yi seçin.
 1. Her değişkenle ilgili diğer istatistik türlerini görüntülemek için, **açıkla** veya **temel bilgiler**gibi diğer seçenekleri belirleyin.
 
 Ayrıca, öngörülü çizimler oluşturmak için **keşfet** sekmesini de kullanabilirsiniz. Verilerin histogramını çizmek için:
@@ -400,7 +400,7 @@ Rattle, küme analizini de çalıştırabilir. Çıktının daha kolay okunması
 * word_freq_money
 * capital_run_length_longest
 * word_freq_business
-* spam
+* istenmeyen posta
 
 **Küme** sekmesine dönün. **Kortalamalar**' ı seçin ve ardından **küme sayısını** **4**olarak ayarlayın. **Yürüt**’ü seçin. Sonuçlar çıkış penceresinde görüntülenir. Bir kümede yüksek düzeyde _George_ ve _HP_vardır ve büyük olasılıkla yasal bir iş e-postadır.
 
@@ -492,17 +492,17 @@ CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all re
 
 Başlamak için, **uygulamalar** menüsünde, SQUIRREL SQL ' i açın. Sürücüyü ayarlamak için:
 
-1. **Windows** > **Görünüm sürücülerini**seçin.
+1. **Windows**  >  **Görünüm sürücülerini**seçin.
 1. **PostgreSQL** öğesine sağ tıklayıp **sürücüyü değiştir**' i seçin.
-1. **Ek sınıf yolu** > **Ekle**' yi seçin.
+1. **Ek sınıf yolu**  >  **Ekle**' yi seçin.
 1. **Dosya adı**için **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**girin.
 1. **Aç**'ı seçin.
 1. **Liste sürücülerini**seçin. **Sınıf adı**için, **org. PostgreSQL. Driver**' ı seçin ve ardından **Tamam**' ı seçin.
 
 Yerel sunucuyla bağlantı kurmak için:
 
-1. **Windows** > **Görünüm diğer adlarını seçin.**
-1. Yeni bir **+** diğer ad oluşturmak için düğmeyi seçin. Yeni diğer ad için **Istenmeyen posta veritabanı**girin. 
+1. **Windows**  >  **Görünüm diğer adlarını seçin.**
+1. **+** Yeni bir diğer ad oluşturmak için düğmeyi seçin. Yeni diğer ad için **Istenmeyen posta veritabanı**girin. 
 1. **Sürücü**Için **PostgreSQL**' i seçin.
 1. URL 'YI **JDBC: PostgreSQL://localhost/spam**olarak ayarlayın.
 1. Kullanıcı adınızı ve parolanızı girin.
@@ -513,7 +513,7 @@ Yerel sunucuyla bağlantı kurmak için:
 Bazı sorguları çalıştırmak için:
 
 1. **SQL** sekmesini seçin.
-1. **SQL** sekmesinin üst kısmındaki sorgu kutusuna, gibi `SELECT * from data;`temel bir sorgu girin.
+1. **SQL** sekmesinin üst kısmındaki sorgu kutusuna, gibi temel bir sorgu girin `SELECT * from data;` .
 1. Sorguyu çalıştırmak için CTRL + ENTER tuşlarına basın. Varsayılan olarak, SQUIRREL SQL Sorgunuzdaki ilk 100 satırı döndürür.
 
 Bu verileri araştırmak için çalıştırabileceğiniz birçok sorgu daha vardır. Örneğin *, sözcüğün sıklığı* istenmeyen ve ham nasıl farklıdır?

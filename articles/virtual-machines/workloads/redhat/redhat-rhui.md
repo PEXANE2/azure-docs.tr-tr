@@ -11,17 +11,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: aa9fd230f59b5e46576e78beb0436c85449d3c5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b46e8efb252224f83603000777b2e342f7e7ab9d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80256921"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684432"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure 'da isteğe bağlı Red Hat Enterprise Linux VM 'Ler için Red Hat güncelleştirme altyapısı
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (rhuı), Azure gibi bulut sağlayıcılarının Red Hat ile barındırılan depo içeriğini yansıtmasını, Azure 'a özgü içerikle özel depolar oluşturmasını ve Son Kullanıcı VM 'leri için kullanılabilir olmasını sağlar.
 
-Red Hat Enterprise Linux (RHEL) Kullandıkça Öde (PAYG) görüntüleri, Azure RHUı 'a erişmek için önceden yapılandırılmış olarak gelir. Ek yapılandırma gerekmez. En son güncelleştirmeleri almak için, RHEL örneğinizi hazırladıktan sonra çalıştırın `sudo yum update` . Bu hizmet RHEL PAYG yazılım masraflarının bir parçası olarak dahil edilmiştir.
+Red Hat Enterprise Linux (RHEL) Kullandıkça Öde (PAYG) görüntüleri, Azure RHUı 'a erişmek için önceden yapılandırılmış olarak gelir. Ek yapılandırma gerekmez. En son güncelleştirmeleri almak için, `sudo yum update` RHEL örneğinizi hazırladıktan sonra çalıştırın. Bu hizmet RHEL PAYG yazılım masraflarının bir parçası olarak dahil edilmiştir.
 
 Azure 'da yayımlama ve bekletme ilkeleri de dahil olmak üzere RHEL görüntüleriyle ilgili ek bilgiler [burada](./redhat-images.md)bulunabilir.
 
@@ -45,11 +45,11 @@ Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat 
 
 2019 Nisan itibariyle Azure, genişletilmiş güncelleştirme desteği (EUS) depolarına bağlı olan RHEL görüntülerini varsayılan olarak normal (EUS olmayan) depolara bağlı olan RHEL görüntülerini sağlar. RHEL EUS hakkında daha fazla ayrıntı, Red Hat 'in [Sürüm yaşam döngüsü belgelerinde](https://access.redhat.com/support/policy/updates/errata) ve [EUS belgelerinde](https://access.redhat.com/articles/rhel-eus)bulunabilir. Varsayılan davranışı, farklı `sudo yum update` depolara farklı görüntüler bağlı olduğundan, hangi RHEL görüntüsüne sahip olduğunuza bağlı olarak değişir.
 
-Tam görüntü listesi için Azure CLı kullanarak `az vm image list --publisher redhat --all` çalıştırın.
+Tam görüntü listesi için `az vm image list --publisher redhat --all` Azure CLI kullanarak çalıştırın.
 
 ### <a name="images-connected-to-non-eus-repositories"></a>DUYMSUZ depolara bağlı görüntüler
 
-Bir RHEL görüntüsünden sanal olmayan depolara bağlı bir VM sağlarsanız, çalıştırdığınızda `sudo yum update`en son RHEL alt sürümüne yükseltilecektir. Örneğin, bir RHEL 7,4 PAYG görüntüsünden bir VM sağlarsanız ve çalıştırırsanız `sudo yum update`, BIR rhel 7,7 sanal MAKINESI (RHEL7 ailesinden en son ikincil sürüm) ile biter.
+Bir RHEL görüntüsünden sanal olmayan depolara bağlı bir VM sağlarsanız, çalıştırdığınızda en son RHEL alt sürümüne yükseltilecektir `sudo yum update` . Örneğin, bir RHEL 7,4 PAYG görüntüsünden bir VM sağlarsanız ve çalıştırırsanız `sudo yum update` , BIR rhel 7,7 sanal makinesi (RHEL7 ailesinden en son ikincil sürüm) ile biter.
 
 EUS depolarından bağlantılı olan görüntüler SKU 'da küçük bir sürüm numarası içermez. SKU, URN 'deki üçüncü öğedir (görüntünün tam adı). Örneğin, aşağıdaki tüm görüntüler EUS depolarından ekli olarak sunulur:
 
@@ -66,7 +66,7 @@ SKU 'Ların 7-LVM ya da 7-RAW olduğunu unutmayın. İkincil sürüm, bu görün
 
 ### <a name="images-connected-to-eus-repositories"></a>EUS depolarıyla bağlantılı görüntüler
 
-Bir RHEL görüntüsünden, EUS depolarında bağlı bir VM sağlarsanız, çalıştırdığınızda `sudo yum update`en son RHEL alt sürümüne yükseltmeyecektir. Bunun nedeni, EUS depolarına bağlı görüntülerin aynı zamanda belirli alt sürümlerine de sürüm kilitleneceğini sağlamalarıdır.
+Bir RHEL görüntüsünden, EUS depolarında bağlı bir VM sağlarsanız, çalıştırdığınızda en son RHEL alt sürümüne yükseltmeyecektir `sudo yum update` . Bunun nedeni, EUS depolarına bağlı görüntülerin aynı zamanda belirli alt sürümlerine de sürüm kilitleneceğini sağlamalarıdır.
 
 EUS depolarıyla bağlantılı görüntüler SKU 'da küçük bir sürüm numarası içerecektir. Örneğin, aşağıdaki resimlerin hepsi, EUS depolarında ekli olarak sunulur:
 
@@ -105,7 +105,7 @@ Bir RHEL VM 'yi belirli bir alt sürüme (farklı çalıştır kökü) kilitleme
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. `releasever` Değişkeni kilitle (farklı çalıştır kökü):
+1. Değişkeni kilitle `releasever` (farklı çalıştır kökü):
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
@@ -120,7 +120,7 @@ Bir RHEL VM 'yi belirli bir alt sürüme (farklı çalıştır kökü) kilitleme
 
 ### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL VM 'yi EUS olmayan bir değere değiştirme (sürüm kilidini kaldırma)
 Aşağıdakileri kök olarak çalıştırın:
-1. `releasever` Dosyayı kaldır:
+1. Dosyayı kaldır `releasever` :
     ```bash
     rm /etc/yum/vars/releasever
      ```
@@ -144,7 +144,7 @@ Aşağıdakileri kök olarak çalıştırın:
 
 RHUı, RHEL isteğe bağlı görüntülerinin kullanılabildiği tüm bölgelerde kullanılabilir. Şu anda [Azure Durum Panosu](https://azure.microsoft.com/status/) sayfasında, Azure ABD kamu ve Microsoft Azure Almanya bölgelerinde listelenen tüm ortak bölgeleri içerir.
 
-RHEL PAYG VM 'lerinden erişimi daha fazla kısıtlamak için bir ağ yapılandırması kullanıyorsanız, aşağıdaki IP 'Lerin, içindeki ortama bağlı olarak çalışmasına izin `yum update` verildiğinden emin olun:
+RHEL PAYG VM 'lerinden erişimi daha fazla kısıtlamak için bir ağ yapılandırması kullanıyorsanız, aşağıdaki IP 'Lerin, `yum update` içindeki ortama bağlı olarak çalışmasına izin verildiğinden emin olun:
 
 
 ```
@@ -170,15 +170,15 @@ RHEL PAYG VM 'lerinden erişimi daha fazla kısıtlamak için bir ağ yapıland�
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>VM 'de RHUı istemci sertifikasını güncelleştirme zaman aşımına uğradı
 
-Daha eski bir RHEL VM görüntüsü kullanıyorsanız (örneğin, RHEL 7,4 (görüntü URN: `RedHat:RHEL:7.4:7.4.2018010506`), süresi dolan bir TLS/SSL istemci SERTIFIKASı nedeniyle rhuı ile bağlantı sorunlarıyla karşılaşırsınız. Gördüğünüz hata _"SSL eşi sertifikanıza süre geçmiş olarak reddedildi"_ veya _"hata: depo meta verileri (repomd. xml) depo için alınamıyor:... Lütfen yolunu doğrulayıp yeniden deneyin "_. Bu sorunu çözmek için lütfen aşağıdaki komutu kullanarak VM 'deki RHUı istemci paketini güncelleştirin:
+Daha eski bir RHEL VM görüntüsü kullanıyorsanız (örneğin, RHEL 7,4 (görüntü URN: `RedHat:RHEL:7.4:7.4.2018010506` ), süresi dolan BIR TLS/SSL istemci sertifikası nedenıyle rhuı ile bağlantı sorunlarıyla karşılaşırsınız. Gördüğünüz hata _"SSL eşi sertifikanıza süre geçmiş olarak reddedildi"_ veya _"hata: depo meta verileri (repomd. xml) depo için alınamıyor:... Lütfen yolunu doğrulayıp yeniden deneyin "_. Bu sorunu çözmek için lütfen aşağıdaki komutu kullanarak VM 'deki RHUı istemci paketini güncelleştirin:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 ```
 
-Alternatif olarak, `sudo yum update` aynı zamanda diğer depolar için göreceğiniz "zaman AŞıMıNA uğradı SSL sertifikası" hatalarına rağmen, çalışan istemci sertifika paketini (RHEL sürümünüze bağlı olarak) güncelleştirebilir. Bu güncelleştirme başarılı olursa diğer RHUı depolarıyla normal bağlantı geri yüklenmelidir, bu nedenle başarıyla çalıştırabileceksiniz `sudo yum update` .
+Alternatif olarak, `sudo yum update` aynı zamanda diğer depolar için göreceğiniz "zaman aşımına UĞRADı SSL sertifikası" hatalarına rağmen, çalışan istemci sertifika paketini (RHEL sürümünüze bağlı olarak) güncelleştirebilir. Bu güncelleştirme başarılı olursa diğer RHUı depolarıyla normal bağlantı geri yüklenmelidir, bu nedenle başarıyla çalıştırabileceksiniz `sudo yum update` .
 
-Çalıştıran bir `yum update`404 hatasıyla çalıştırırsanız, yum önbelleğinizi yenilemek için aşağıdakileri deneyin:
+Çalıştıran bir 404 hatasıyla çalıştırırsanız `yum update` , yum önbelleğinizi yenilemek için aşağıdakileri deneyin:
 ```bash
 sudo yum clean all;
 sudo yum makecache
@@ -189,9 +189,9 @@ Azure RHEL PAYG VM 'nizden Azure RHUı ile bağlantı sorunlarıyla karşılaş�
 
 1. Azure RHUı uç noktası için VM yapılandırmasını inceleyin:
 
-    1. `/etc/yum.repos.d/rh-cloud.repo` Dosyanın `rhui-[1-3].microsoft.com` , `baseurl` dosyanın `[rhui-microsoft-azure-rhel*]` bölümünde öğesine bir başvuru içerip içerne olduğunu denetleyin. Bu, yeni Azure RHUı kullanıyorsunuz.
+    1. Dosyanın `/etc/yum.repos.d/rh-cloud.repo` `rhui-[1-3].microsoft.com` , `baseurl` dosyanın bölümünde öğesine bir başvuru içerip içerne olduğunu denetleyin `[rhui-microsoft-azure-rhel*]` . Bu, yeni Azure RHUı kullanıyorsunuz.
 
-    1. Aşağıdaki düzene `mirrorlist.*cds[1-4].cloudapp.net`sahip bir konuma işaret ediyorsa, bir yapılandırma güncelleştirmesi gerekir. Eski VM anlık görüntüsünü kullanıyorsunuz ve yeni Azure RHUı işaret etmek için güncelleştirmeniz gerekiyor.
+    1. Aşağıdaki düzene sahip bir konuma işaret ediyorsa, `mirrorlist.*cds[1-4].cloudapp.net` bir yapılandırma güncelleştirmesi gerekir. Eski VM anlık görüntüsünü kullanıyorsunuz ve yeni Azure RHUı işaret etmek için güncelleştirmeniz gerekiyor.
 
 1. Azure 'da barındırılan RHUı erişim, [Azure veri MERKEZI IP aralıkları](https://www.microsoft.com/download/details.aspx?id=41653)Içindeki VM 'lerle sınırlıdır.
 
@@ -241,6 +241,6 @@ Bu yordam yalnızca başvuru için verilmiştir. RHEL PAYG görüntüleri, Azure
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Azure Marketi PAYG görüntüsünden bir Red Hat Enterprise Linux VM oluşturmak ve Azure 'da barındırılan RHUı kullanmak için [Azure Marketi](https://azure.microsoft.com/marketplace/partners/redhat/)' ne gidin.
+* Azure Marketi PAYG görüntüsünden bir Red Hat Enterprise Linux VM oluşturmak ve Azure 'da barındırılan RHUı kullanmak için [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RHEL_6)' ne gidin.
 * Azure 'daki Red Hat görüntüleri hakkında daha fazla bilgi edinmek için [Belgeler sayfasına](./redhat-images.md)gidin.
 * Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
