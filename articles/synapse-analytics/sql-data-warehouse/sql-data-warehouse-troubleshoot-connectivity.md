@@ -11,46 +11,46 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d69c8dd28b946df3fff500c31c7cdefa4767c0c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4fbfb65a609742105056fa7fb849f84579245cb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408165"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650492"
 ---
-# <a name="troubleshooting-connectivity-issues"></a>Bağlantı sorunlarını giderme
+# <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda bağlantı sorunlarını giderme
 
-Bu makalede, SQL Analytics veritabanınıza bağlanılmasıyla ilgili yaygın sorun giderme teknikleri listelenmektedir.
+Bu makalede, SQL havuzu veritabanınıza bağlanılmasıyla ilgili yaygın sorun giderme teknikleri listelenmektedir.
 
 ## <a name="check-service-availability"></a>Hizmet kullanılabilirliğini denetle
 
-Hizmetin kullanılabilir olup olmadığını denetleyin. Azure portal, bağlanmaya çalıştığınız SYNAPSE SQL havuzuna gidin. Sol IÇINDEKILER panelinde, **sorunları Tanıla ve çöz**' e tıklayın.
+Hizmetin kullanılabilir olup olmadığını denetleyin. Azure portal, bağlanmaya çalıştığınız SQL havuzuna gidin. Sol IÇINDEKILER panelinde, **sorunları Tanıla ve çöz**' e tıklayın.
 
 ![Kaynak durumunu seçin](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-SYNAPSE SQL havuzunuzun durumu burada gösterilir. Hizmet **kullanılabilir**olarak görüntülenmiyorsa, daha fazla adım denetleyin.
+SQL havuzunuzun durumu burada gösterilir. Hizmet **kullanılabilir**olarak görüntülenmiyorsa, daha fazla adım denetleyin.
 
 ![Hizmet kullanılabilir](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Kaynak sağlık SYNAPSE SQL havuzu örneğinizin duraklatıldığını veya ölçeklendirilmesini gösteriyorsa, örneğinizi sürdürmeye yönelik yönergeleri izleyin.
+Kaynak sistem durumunuzun SQL havuzu örneğinizin duraklatıldığını veya ölçeklendirilmesini gösteriyorsa, örneğinizi sürdürmeye yönelik yönergeleri izleyin.
 
-![Hizmet duraklatılmış](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) kaynak durumu hakkındaki ek bilgileri burada bulabilirsiniz.
+![Hizmet duraklatılmış ](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) kaynak durumu hakkındaki ek bilgileri burada bulabilirsiniz.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Duraklatılmış veya ölçeklendirilen işlemleri denetleme
 
-SYNAPSE SQL havuzu örneğinizin duraklatıldığını veya ölçeklendirilmesini görmek için portalı denetleyin.
+SQL havuzu örneğinizin duraklatıldığını veya ölçeklendirilmesini görmek için portalı denetleyin.
 
 ![Hizmet duraklatıldı](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Hizmetinizin duraklatıldığını veya ölçeklendirilmesini görürseniz, bakım zamanlamanız sırasında olup olmadığını kontrol edin. SYNAPSE SQL havuzuna *genel bakış*için portalda, seçili bakım zamanlamasını görürsünüz.
+Hizmetinizin duraklatıldığını veya ölçeklendirilmesini görürseniz, bakım zamanlamanız sırasında olup olmadığını kontrol edin. SQL havuzuna *genel bakış*için portalda, seçili bakım zamanlamasını görürsünüz.
 
 ![Genel Bakış bakım zamanlaması](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak için BT yöneticinize başvurun. SQL Analytics örneğini yeniden başlatmak için [aşağıdaki adımları](pause-and-resume-compute-portal.md)izleyin.
+Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak için BT yöneticinize başvurun. SQL havuzu örneğini yeniden başlatmak için [aşağıdaki adımları](pause-and-resume-compute-portal.md)izleyin.
 
 ## <a name="check-your-firewall-settings"></a>Güvenlik duvarı ayarlarını denetleme
 
-SQL Analytics veritabanı 1433 bağlantı noktası üzerinden iletişim kurar.Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)ulaşabilirsiniz.
+SQL havuzu veritabanı 1433 bağlantı noktası üzerinden iletişim kurar.Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)ulaşabilirsiniz.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Sanal Ağ/Hizmet Uç Noktası ayarlarınızı denetleme
 
@@ -60,7 +60,7 @@ SQL Analytics veritabanı 1433 bağlantı noktası üzerinden iletişim kurar.Bi
 
 ### <a name="software"></a>Yazılım
 
-SYNAPSE SQL havuzunuza bağlanmak için en son araçları kullandığınızdan emin olun:
+SQL havuzunuza bağlanmak için en son araçları kullandığınızdan emin olun:
 
 - SSMS
 - Azure Data Studio
@@ -105,7 +105,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Aralıklı bağlantı sorunları
 
-Sunucu üzerinde çok sayıda sıraya alınmış isteğin olduğu ağır yüklenme sorunu yaşayıp yaşamadığınızı denetleyin. Ek kaynaklar için SYNAPSE SQL havuzunuzu ölçeklendirmeniz gerekebilir.
+Sunucu üzerinde çok sayıda sıraya alınmış isteğin olduğu ağır yüklenme sorunu yaşayıp yaşamadığınızı denetleyin. Ek kaynaklar için SQL havuzunuzu ölçeklendirmeniz gerekebilir.
 
 ## <a name="common-error-messages"></a>Genel hata iletileri
 

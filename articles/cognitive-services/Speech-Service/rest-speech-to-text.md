@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: 2f102199c14ba9611a83e3ed3b31ebcd189624d6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 555ae9e48f538c1100bab8b35ce61742baa88451
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978629"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659826"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
@@ -38,12 +38,12 @@ REST API uç noktası şu biçimdedir:
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-Bu `<REGION_IDENTIFIER>` tablodaki aboneliğinizin bölgesiyle eşleşen tanımlayıcıyla değiştirin:
+`<REGION_IDENTIFIER>`Bu tablodaki aboneliğinizin bölgesiyle eşleşen tanımlayıcıyla değiştirin:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
 > [!NOTE]
-> Bir 4xx HTTP hatası almamak için dil parametresi URL 'ye eklenmelidir. Örneğin, Batı ABD uç noktası kullanılarak dil ABD Ingilizcesi olarak ayarlanmıştır: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
+> Bir 4xx HTTP hatası almamak için dil parametresi URL 'ye eklenmelidir. Örneğin, Batı ABD uç noktası kullanılarak dil ABD Ingilizcesi olarak ayarlanmıştır: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
 ## <a name="query-parameters"></a>Sorgu parametreleri
 
@@ -52,10 +52,9 @@ Bu parametreler REST isteğinin sorgu dizesine dahil edilebilir.
 | Parametre | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | `language` | Tanınmakta olan konuşulan dili tanımlar. [Desteklenen diller](language-support.md#speech-to-text)bölümüne bakın. | Gerekli |
-| `format` | Sonuç biçimini belirtir. Kabul edilen değerler `simple` şunlardır `detailed`. Basit sonuçlar, `RecognitionStatus`, `DisplayText`, `Offset`ve `Duration`içerir. Ayrıntılı yanıtlar, görüntü metninin dört farklı temsilini içerir. Varsayılan ayar `simple` değeridir. | İsteğe Bağlı |
-| `profanity` | Tanıma sonuçlarında küfür nasıl işleneceğini belirtir. Kabul edilen değerler `masked`, küfür ile bir bütün küfür kaldıran, ya `removed` `raw`da sonuçtaki küfür da dahil olmak üzere yıldız işaretiyle değiştirilir. Varsayılan ayar `masked` değeridir. | İsteğe Bağlı |
-| `pronunciationScoreParams` | Tanınma sonuçlarında telaffuz puanlarını göstermek için parametreleri belirtir; doğruluk, akıcı, tamamlanma, vb. göstergeler ile konuşma girişi için telaffuz kalitesini değerlendirir. Bu parametre, birden çok ayrıntılı parametre içeren Base64 kodlamalı JSON 'dir. Bu parametrenin nasıl oluşturulacağı için [telaffuz değerlendirmesi parametrelerine](#pronunciation-assessment-parameters) bakın. | İsteğe Bağlı |
-| `cid` | Özel modeller oluşturmak için [özel konuşma tanıma portalını](how-to-custom-speech.md) kullanırken, **dağıtım** SAYFASıNDA bulunan **uç nokta kimlikleri** aracılığıyla özel modeller kullanabilirsiniz. Sorgu dizesi parametresinin bağımsız değişkeni olarak **uç nokta kimliğini** kullanın. `cid` | İsteğe Bağlı |
+| `format` | Sonuç biçimini belirtir. Kabul edilen değerler `simple` şunlardır `detailed` . Basit sonuçlar,,, `RecognitionStatus` `DisplayText` ve içerir `Offset` `Duration` . Ayrıntılı yanıtlar, görüntü metninin dört farklı temsilini içerir. Varsayılan ayar `simple` değeridir. | İsteğe Bağlı |
+| `profanity` | Tanıma sonuçlarında küfür nasıl işleneceğini belirtir. Kabul edilen değerler `masked` , küfür ile bir `removed` bütün küfür kaldıran, ya da `raw` sonuçtaki küfür da dahil olmak üzere yıldız işaretiyle değiştirilir. Varsayılan ayar `masked` değeridir. | İsteğe Bağlı |
+| `cid` | Özel modeller oluşturmak için [özel konuşma tanıma portalını](how-to-custom-speech.md) kullanırken, **dağıtım** SAYFASıNDA bulunan **uç nokta kimlikleri** aracılığıyla özel modeller kullanabilirsiniz. Sorgu dizesi parametresinin bağımsız değişkeni olarak **uç nokta kimliğini** kullanın `cid` . | İsteğe Bağlı |
 
 ## <a name="request-headers"></a>İstek üst bilgileri
 
@@ -63,16 +62,17 @@ Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgil
 
 |Üst bilgi| Açıklama | Gerekli/Isteğe bağlı |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya `Authorization` da gerekli. |
-| `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer`. Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya `Ocp-Apim-Subscription-Key` da gerekli. |
-| `Content-type` | Belirtilen ses verilerinin biçimini ve codec 'ini açıklar. Kabul edilen değerler `audio/wav; codecs=audio/pcm; samplerate=16000` şunlardır `audio/ogg; codecs=opus`. | Gerekli |
+| `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya da `Authorization` gerekli. |
+| `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya da `Ocp-Apim-Subscription-Key` gerekli. |
+| `Pronunciation-Assessment` | Tanınma sonuçlarında telaffuz puanlarını göstermek için parametreleri belirtir; doğruluk, akıcı, tamamlanma, vb. göstergeler ile konuşma girişi için telaffuz kalitesini değerlendirir. Bu parametre, birden çok ayrıntılı parametre içeren Base64 kodlamalı JSON 'dir. Bu üstbilgiyi derlemek için [telaffuz değerlendirmesi parametrelerine](#pronunciation-assessment-parameters) bakın. | İsteğe Bağlı |
+| `Content-type` | Belirtilen ses verilerinin biçimini ve codec 'ini açıklar. Kabul edilen değerler `audio/wav; codecs=audio/pcm; samplerate=16000` şunlardır `audio/ogg; codecs=opus` . | Gerekli |
 | `Transfer-Encoding` | Tek bir dosya yerine, öbekli ses verilerinin gönderileceğini belirtir. Yalnızca ses verilerini parçalama durumunda bu üstbilgiyi kullanın. | İsteğe Bağlı |
-| `Expect` | Öbekli aktarım kullanılıyorsa, gönderin `Expect: 100-continue`. Konuşma hizmeti, ilk isteği ve bekleek verileri onaylar.| Öbekli ses verileri gönderiyorsanız gereklidir. |
-| `Accept` | Sağlanmışsa, olmalıdır `application/json`. Konuşma hizmeti, sonuçları JSON ile sağlar. Bazı istek çerçeveleri uyumsuz bir varsayılan değer sağlar. Her zaman dahil `Accept`etmek iyi bir uygulamadır. | İsteğe bağlı, ancak önerilir. |
+| `Expect` | Öbekli aktarım kullanılıyorsa, gönderin `Expect: 100-continue` . Konuşma hizmeti, ilk isteği ve bekleek verileri onaylar.| Öbekli ses verileri gönderiyorsanız gereklidir. |
+| `Accept` | Sağlanmışsa, olmalıdır `application/json` . Konuşma hizmeti, sonuçları JSON ile sağlar. Bazı istek çerçeveleri uyumsuz bir varsayılan değer sağlar. Her zaman dahil etmek iyi bir uygulamadır `Accept` . | İsteğe bağlı, ancak önerilir. |
 
 ## <a name="audio-formats"></a>Ses biçimleri
 
-HTTP `POST` isteğinin gövdesinde ses gönderilir. Bu tablodaki biçimlerden birinde olmalıdır:
+HTTP isteğinin gövdesinde ses gönderilir `POST` . Bu tablodaki biçimlerden birinde olmalıdır:
 
 | Biçimlendir | Bileşeni | Bit hızı | Örnek hız  |
 |--------|-------|----------|--------------|
@@ -89,10 +89,10 @@ Bu tabloda, telaffuz değerlendirmesi için gerekli ve isteğe bağlı parametre
 | Parametre | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | ReferenceText | Telaffuz tarafından değerlendirilecek metin. | Gerekli |
-| GradingSystem | Puan ayarlaması için nokta sistemi. Kabul edilen değerler `FivePoint` şunlardır `HundredMark`. Varsayılan ayar `FivePoint` değeridir. | İsteğe Bağlı |
-| Ayrıntı düzeyi | Değerlendirme ayrıntı düzeyi. Kabul edilen değerler `Phoneme`, tam metin ve sözcük düzeyindeki `Word` `FullText`puanı gösteren ve tam metin düzeyinde puan gösteren, Word ve Fonem düzeyindeki puanı gösteren kabul edilir. Varsayılan ayar `Phoneme` değeridir. | İsteğe Bağlı |
-| Boyut | Çıkış ölçütünü tanımlar. Kabul edilen değerler `Basic`yalnızca doğruluk puanı ' nı gösterir, daha `Comprehensive` fazla boyutlara ilişkin puanları gösterir (örneğin, tam metin düzeyinde, akıcı puan ve tamamlayıcı puanı, sözcük düzeyinde hata türü). Farklı puan boyutlarının tanımlarını ve sözcük hata türlerini görmek için [yanıt parametrelerini](#response-parameters) denetleyin. Varsayılan ayar `Basic` değeridir. | İsteğe Bağlı |
-| EnableMiscue | Hatalı işaret hesaplamasını etkinleştirilir. Bu etkinken, bulunan sözcükler başvuru metniyle karşılaştırılır ve karşılaştırmaya göre atlama/ekleme ile işaretlenir. Kabul edilen değerler `False` şunlardır `True`. Varsayılan ayar `False` değeridir. | İsteğe Bağlı |
+| GradingSystem | Puan ayarlaması için nokta sistemi. Kabul edilen değerler `FivePoint` şunlardır `HundredMark` . Varsayılan ayar `FivePoint` değeridir. | İsteğe Bağlı |
+| Ayrıntı düzeyi | Değerlendirme ayrıntı düzeyi. Kabul edilen değerler, tam metin ve sözcük düzeyindeki puanı gösteren ve tam metin düzeyinde puan gösteren, `Phoneme` Word ve Fonem düzeyindeki puanı gösteren kabul edilir `Word` `FullText` . Varsayılan ayar `Phoneme` değeridir. | İsteğe Bağlı |
+| Boyut | Çıkış ölçütünü tanımlar. Kabul edilen değerler `Basic` yalnızca doğruluk puanı ' nı gösterir, `Comprehensive` daha fazla boyutlara ilişkin puanları gösterir (örneğin, tam metin düzeyinde, akıcı puan ve tamamlayıcı puanı, sözcük düzeyinde hata türü). Farklı puan boyutlarının tanımlarını ve sözcük hata türlerini görmek için [yanıt parametrelerini](#response-parameters) denetleyin. Varsayılan ayar `Basic` değeridir. | İsteğe Bağlı |
+| EnableMiscue | Hatalı işaret hesaplamasını etkinleştirilir. Bu etkinken, bulunan sözcükler başvuru metniyle karşılaştırılır ve karşılaştırmaya göre atlama/ekleme ile işaretlenir. Kabul edilen değerler `False` şunlardır `True` . Varsayılan ayar `False` değeridir. | İsteğe Bağlı |
 | ScenarioId | Özelleştirilmiş bir nokta sistemini gösteren bir GUID. | İsteğe Bağlı |
 
 Aşağıda, telaffuz değerlendirmesi parametrelerini içeren bir JSON örneği verilmiştir:
@@ -106,13 +106,16 @@ Aşağıda, telaffuz değerlendirmesi parametrelerini içeren bir JSON örneği 
 }
 ```
 
-Aşağıdaki örnek kod, URL sorgu parametresine telaffuz değerlendirmesi parametrelerinin nasıl oluşturulacağını gösterir:
+Aşağıdaki örnek kod, üst bilgiyle telaffuz değerlendirmesi parametrelerinin nasıl oluşturulacağını gösterir `Pronunciation-Assessment` :
 
 ```csharp
-var pronunciationScoreParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
-var pronunciationScoreParamsBytes = Encoding.UTF8.GetBytes(pronunciationScoreParamsJson);
-var pronunciationScoreParams = Convert.ToBase64String(pronunciationScoreParamsBytes);
+var pronAssessmentParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
+var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson);
+var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
+
+>[!NOTE]
+>Telaffuz değerlendirmesi özelliği şu anda yalnızca `westus` ve bölgelerinde kullanılabilir `eastasia` . Bu özellik şu anda yalnızca `en-US` dilde kullanılabilir.
 
 ## <a name="sample-request"></a>Örnek istek
 
@@ -126,6 +129,12 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked
 Expect: 100-continue
+```
+
+Telaffuz değerlendirmesini etkinleştirmek için aşağıdaki üst bilgiyi ekleyebilirsiniz. Bu üstbilgiyi derlemek için [telaffuz değerlendirmesi parametrelerine](#pronunciation-assessment-parameters) bakın.
+
+```HTTP
+Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
 ## <a name="http-status-codes"></a>HTTP durum kodu
@@ -142,9 +151,9 @@ Her yanıt için HTTP durum kodu başarı veya genel hataları gösterir.
 
 ## <a name="chunked-transfer"></a>Öbekli aktarım
 
-Öbekli aktarım`Transfer-Encoding: chunked`(), tanınma gecikmesini azaltmaya yardımcı olabilir. Konuşma hizmetinin, aktarım sırasında ses dosyasını işlemeye başlamasını sağlar. REST API kısmi veya geçici sonuçlar sağlamıyor.
+Öbekli aktarım ( `Transfer-Encoding: chunked` ), tanınma gecikmesini azaltmaya yardımcı olabilir. Konuşma hizmetinin, aktarım sırasında ses dosyasını işlemeye başlamasını sağlar. REST API kısmi veya geçici sonuçlar sağlamıyor.
 
-Bu kod örneği, öbekte nasıl ses gönderileceğini gösterir. Yalnızca ilk öbek, ses dosyasının üst bilgisini içermelidir. `request`, uygun `HttpWebRequest` REST uç noktasına bağlı bir nesnedir. `audioFile`diskteki bir ses dosyasının yoludur.
+Bu kod örneği, öbekte nasıl ses gönderileceğini gösterir. Yalnızca ilk öbek, ses dosyasının üst bilgisini içermelidir. `request`, `HttpWebRequest` uygun REST uç noktasına bağlı bir nesnedir. `audioFile`diskteki bir ses dosyasının yoludur.
 
 ```csharp
 var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
@@ -178,16 +187,16 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ## <a name="response-parameters"></a>Yanıt parametreleri
 
-Sonuçlar JSON olarak sağlanır. Biçim `simple` , bu üst düzey alanları içerir.
+Sonuçlar JSON olarak sağlanır. `simple`Biçim, bu üst düzey alanları içerir.
 
 | Parametre | Açıklama  |
 |-----------|--------------|
-|`RecognitionStatus`|`Success` Başarılı tanıma gibi durum. Sonraki tabloya bakın.|
+|`RecognitionStatus`|Başarılı tanıma gibi durum `Success` . Sonraki tabloya bakın.|
 |`DisplayText`|Büyük harfler, noktalama, ters metin normalleştirmesinin ardından tanınan metin ("Doctor Smith" için "200" veya "Dr. Smith" için 200 gibi daha kısa formlara dönüştürme) ve küfür maskeleme. Yalnızca başarılı olduğunda sunun.|
 |`Offset`|Tanınan konuşmanın ses akışında başladığı zaman (100-nanosaniyelik birimi).|
 |`Duration`|Ses akışındaki tanınan konuşmanın süresi (100-nanosaniyelik birimi).|
 
-`RecognitionStatus` Alan şu değerleri içerebilir:
+`RecognitionStatus`Alan şu değerleri içerebilir:
 
 | Durum | Açıklama |
 |--------|-------------|
@@ -198,12 +207,12 @@ Sonuçlar JSON olarak sağlanır. Biçim `simple` , bu üst düzey alanları iç
 | `Error` | Tanıma hizmeti bir iç hatayla karşılaştı ve devam edemedi. Mümkünse yeniden deneyin. |
 
 > [!NOTE]
-> Ses yalnızca küfür içeriyorsa ve `profanity` sorgu parametresi olarak `remove`ayarlanırsa, hizmet bir konuşma sonucu döndürmez.
+> Ses yalnızca küfür içeriyorsa ve `profanity` sorgu parametresi olarak ayarlanırsa `remove` , hizmet bir konuşma sonucu döndürmez.
 
-Biçim `detailed` , tanınan sonuçların ek biçimlerini içerir.
-`detailed` Biçimini kullanırken, `DisplayText` `NBest` listedeki her sonuç için olarak `Display` olarak sağlanır.
+`detailed`Biçim, tanınan sonuçların ek biçimlerini içerir.
+`detailed`Biçimini kullanırken, `DisplayText` `Display` listedeki her sonuç için olarak olarak sağlanır `NBest` .
 
-`NBest` Listedeki nesne şunları içerebilir:
+`NBest`Listedeki nesne şunları içerebilir:
 
 | Parametre | Açıklama |
 |-----------|-------------|
@@ -211,16 +220,16 @@ Biçim `detailed` , tanınan sonuçların ek biçimlerini içerir.
 | `Lexical` | Tanınan metnin sözlü biçimi: tanınan gerçek sözcükler. |
 | `ITN` | Tanınan metnin, telefon numarası, sayı, kısaltmalar ("Doctor Smith" ile "Dr Smith") ve uygulanan diğer dönüşümler içeren ters metin normalleştirilmiş ("kurallı") biçimi. |
 | `MaskedITN` | İsteniyorsa, uygunsuz bir maskeleme uygulanmış ıTYPEFORM. |
-| `Display` | Tanınan metnin noktalama ve büyük harfleri eklenmiş olan görüntüleme formu. Bu parametre, biçim olarak ayarlandığında `DisplayText` belirtilen şekilde aynıdır `simple`. |
+| `Display` | Tanınan metnin noktalama ve büyük harfleri eklenmiş olan görüntüleme formu. Bu parametre, `DisplayText` biçim olarak ayarlandığında belirtilen şekilde aynıdır `simple` . |
 | `AccuracyScore` | Verilen konuşmaya ait telaffuz doğruluğunu belirten puan. |
 | `FluencyScore` | Verilen konuşmayı akıcı bir şekilde belirten puan. |
 | `CompletenessScore` | Tüm girişe doğru olan sözcük oranını hesaplayarak verilen konuşmayı belirten puan. |
-| `PronScore` | Verilen konuşmayı gösteren telaffuz kalitesini belirten genel puan. Bu `AccuracyScore`, `FluencyScore` ve `CompletenessScore` ağırlığıyla hesaplanır. |
-| `ErrorType` | Bu değer, ile karşılaştırıldığında bir sözcüğün atlanıp atlanmadığını, ekleneceğini veya hatalı bir `ReferenceText`şekilde olduğunu gösterir. Olası değerler şunlardır `None` (Yani bu sözcükte hata yok), `Omission` `Insertion` ve `Mispronunciation`. |
+| `PronScore` | Verilen konuşmayı gösteren telaffuz kalitesini belirten genel puan. Bu `AccuracyScore` , `FluencyScore` ve `CompletenessScore` ağırlığıyla hesaplanır. |
+| `ErrorType` | Bu değer, ile karşılaştırıldığında bir sözcüğün atlanıp atlanmadığını, ekleneceğini veya hatalı bir şekilde olduğunu gösterir `ReferenceText` . Olası değerler şunlardır `None` (Yani bu sözcükte hata yok), `Omission` `Insertion` ve `Mispronunciation` . |
 
 ## <a name="sample-responses"></a>Örnek yanıtlar
 
-Tanıma için `simple` tipik bir yanıt:
+Tanıma için tipik bir yanıt `simple` :
 
 ```json
 {
@@ -231,7 +240,7 @@ Tanıma için `simple` tipik bir yanıt:
 }
 ```
 
-Tanıma için `detailed` tipik bir yanıt:
+Tanıma için tipik bir yanıt `detailed` :
 
 ```json
 {

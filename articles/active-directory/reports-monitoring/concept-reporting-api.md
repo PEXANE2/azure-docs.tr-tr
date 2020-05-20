@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5dbfca54227895de53b984dcf5c7a1f8c5fbf51d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78399318"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647404"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory Reporting API 'SI ile çalışmaya başlama
 
@@ -34,12 +34,12 @@ Bu makalede, size erişme yolları dahil olmak üzere Raporlama API 'sine ilişk
 
 Sorunlarla karşılaşırsanız, bkz. [Azure Active Directory için destek alma](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Raporlama API 'sine erişmek için veya Kullanıcı müdahalesi olmadan, şunları yapmanız gerekir:
 
 1. Rol atama (güvenlik okuyucusu, Güvenlik Yöneticisi, genel yönetici)
-2. Bir uygulamayı kaydetme
+2. Uygulamaları kaydetme
 3. İzinleri verme
 4. Yapılandırma ayarlarını topla
 
@@ -47,7 +47,7 @@ Ayrıntılı yönergeler için [Azure Active Directory Raporlama API 'sine eriş
 
 ## <a name="api-endpoints"></a>API uç noktaları 
 
-Denetim günlükleri için Microsoft Graph API uç noktası `https://graph.microsoft.com/beta/auditLogs/directoryAudits` ve oturum açma işlemleri IÇIN Microsoft Graph API uç noktası. `https://graph.microsoft.com/beta/auditLogs/signIns` Daha fazla bilgi için bkz. [API başvurusunu denetleme](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) ve [oturum açma API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
+Denetim günlükleri için Microsoft Graph API uç noktası `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` ve oturum açma işlemleri için MICROSOFT Graph API uç noktası `https://graph.microsoft.com/v1.0/auditLogs/signIns` . Daha fazla bilgi için bkz. [API başvurusunu denetleme](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/directoryaudit) ve [oturum açma API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/signIn).
 
 Ayrıca, Microsoft Graph kullanarak güvenlik algılamalarından programlı erişim kazanmak için [kimlik koruması risk ALGıLAMA API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) 'sini de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması ve Microsoft Graph ile çalışmaya başlama](../identity-protection/graph-get-started.md). 
   
@@ -55,7 +55,7 @@ Ayrıca, Microsoft Graph kullanarak güvenlik algılamalarından programlı eri�
 
 Oturum açma ve denetim API 'SI verilerini doğrulamak için [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) kullanabilirsiniz. Graph Explorer Kullanıcı arabirimindeki oturum açma düğmelerinden her ikisini kullanarak hesabınızda oturum açıp **AuditLog. Read. All** ve **Directory. Read.** , kiracınız için gösterildiği gibi tüm izinleri ayarlayın.   
 
-![Graph Gezgini](./media/concept-reporting-api/graph-explorer.png)
+![Graph Explorer](./media/concept-reporting-api/graph-explorer.png)
 
 ![İzin Kullanıcı arabirimini değiştirme](./media/concept-reporting-api/modify-permissions.png)
 

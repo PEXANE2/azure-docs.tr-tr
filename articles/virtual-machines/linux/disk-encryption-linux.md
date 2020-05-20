@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 74a4c13197863d0d41e183826cafd64976b44431
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 7f1352205f3c2821a50bd39358d960ca71134a95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792590"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657454"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM'lerinde Azure Disk Şifrelemesi senaryoları
 
@@ -198,7 +198,7 @@ Aşağıdaki tabloda mevcut veya çalışan VM 'Ler için Kaynak Yöneticisi şa
 | Parametre | Açıklama |
 | --- | --- |
 | vmName | Şifreleme işleminin çalıştırılacağı sanal makinenin adı. |
-| keyVaultName | Şifreleme anahtarının karşıya yüklenmesi gereken anahtar kasasının adı. Bunu, cmdlet 'ini `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` veya Azure CLI komutunu `az keyvault list --resource-group "MyKeyVaultResourceGroupName"`kullanarak edinebilirsiniz.|
+| keyVaultName | Şifreleme anahtarının karşıya yüklenmesi gereken anahtar kasasının adı. Bunu, cmdlet 'ini `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` veya Azure CLI komutunu kullanarak edinebilirsiniz `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` .|
 | keyVaultResourceGroup | Anahtar kasasını içeren kaynak grubunun adı. |
 |  keyEncryptionKeyURL 'Si | Şifreleme anahtarını şifrelemek için kullanılan anahtar şifreleme anahtarının URL 'SI. UseExistingKek açılır listesinde **nokek** ' ı seçerseniz bu parametre isteğe bağlıdır. UseExistingKek açılır listesinde **kek** ' yi seçerseniz _Keyencryptionkeyurl_ değerini girmeniz gerekir. |
 | Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_, _veri_ve _hepsi_. 
@@ -218,7 +218,7 @@ Linux VM disk şifrelemesi şablonunu yapılandırma hakkında daha fazla bilgi 
  >Şifreleme ayarlarını güncelleştirirken bu parametreyi ayarlarsanız, gerçek şifrelemeden önce bir yeniden başlatmaya neden olabilir. Bu durumda, fstab dosyasından biçimlendirilmesini istemediğiniz diski de kaldırmak isteyeceksiniz. Benzer şekilde, şifreleme işlemini başlatmadan önce fstab dosyasına şifrelemek istediğiniz bölümü eklemeniz gerekir. 
 
 ### <a name="encryptformatall-criteria"></a>EncryptFormatAll ölçütü
-Parametresi tüm bölümlere geçer ve aşağıdaki ölçütlerin **Tümünü** karşılayan sürece bunları şifreler: 
+Parametresi tüm bölümlere geçer ve aşağıdaki ölçütlerin **Tümünü** karşılayan sürece bunları şifreler:
 - Bir kök/işletim sistemi/önyükleme bölümü değil
 - Zaten şifreli değil
 - Bir BEK birimi değil
@@ -258,36 +258,50 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -Di
 ### <a name="use-the-encryptformatall-parameter-with-logical-volume-manager-lvm"></a>Mantıksal birim Yöneticisi (LVM) ile EncryptFormatAll parametresini kullanın 
 Bir LVM-şifreli kurulum önerilir. Aşağıdaki tüm örneklerde, cihaz yolu ve bağlama noktalarını, kullanım örneklerinize uygun olacak şekilde değiştirin. Bu kurulum şu şekilde yapılabilir:
 
-- VM 'yi oluşturacak veri disklerini ekleyin.
-- Bu diskleri biçimlendirin, bağlayın ve fstab dosyasına ekleyin.
+1.  VM 'yi oluşturacak veri disklerini ekleyin.
 
-    1. Bölüm standardı seçin, tüm sürücüyü kapsayan bir bölüm oluşturun ve sonra bölümü biçimlendirin. Azure tarafından oluşturulan symbağlantıları burada kullanırız. Çözümlemeyin 'in kullanılması, cihaz adları değiştirme ile ilgili sorunları önler. Daha fazla bilgi için bkz. [cihaz adları sorunlarını giderme](troubleshoot-device-names-problems.md) makalesi.
-    
-         ```azurepowershell-interactive
-         parted /dev/disk/azure/scsi1/lun0 mklabel gpt
-         parted -a opt /dev/disk/azure/scsi1/lun0 mkpart primary ext4 0% 100%
-         
-         mkfs -t ext4 /dev/disk/azure/scsi1/lun0-part1
-         ```
-    
-    1. Diskleri bağlayın.
-         
-         `mount /dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint`
-    
-    1. Fstab öğesine ekleyin.
-         
-        `echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab`
-    
-    1. Bu diskleri şifrelemek için set-AzVMDiskEncryptionExtension PowerShell cmdlet 'ini-EncryptFormatAll ile çalıştırın.
+1. Bu diskleri biçimlendirin, bağlayın ve fstab dosyasına ekleyin.
 
-       ```azurepowershell-interactive
-       $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
-           
-       Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri  -DiskEncryptionKeyVaultId $KeyVault.ResourceId -EncryptFormatAll -SkipVmBackup -VolumeType Data
-       ```
+1. Bölüm standardı seçin, tüm sürücüyü kapsayan bir bölüm oluşturun ve sonra bölümü biçimlendirin. Azure tarafından oluşturulan symbağlantıları burada kullanırız. Çözümlemeyin 'in kullanılması, cihaz adları değiştirme ile ilgili sorunları önler. Daha fazla bilgi için bkz. [cihaz adları sorunlarını giderme](troubleshoot-device-names-problems.md) makalesi.
+    
+    ```bash
+    parted /dev/disk/azure/scsi1/lun0 mklabel gpt
+    parted -a opt /dev/disk/azure/scsi1/lun0 mkpart primary ext4 0% 100%
+    
+    mkfs -t ext4 /dev/disk/azure/scsi1/lun0-part1
+    ```
 
-    1. Bu yeni disklerin üstünde LVM 'yi ayarlayın. VM 'nin önyüklemesi bittikten sonra şifrelenmiş sürücülerin kilidinin açılacağı unutulmamalıdır. Bu nedenle, LVM bağlama de daha sonra gecikecek.
+1. Diskleri bağlama:
 
+    ```bash
+    mount /dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint
+    ````
+    
+    Fstab dosyasına Ekle:
+
+    ```bash
+    echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab
+    ```
+    
+1. Bu diskleri şifrelemek için-EncryptFormatAll ile Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-3.8.0) cmdlet 'ini çalıştırın.
+
+    ```azurepowershell-interactive
+    $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
+    
+    Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -EncryptFormatAll -SkipVmBackup -VolumeType Data
+    ```
+
+    Anahtar şifreleme anahtarı (KEK) kullanmak istiyorsanız, KEK 'nin URI 'sini ve anahtar kasanızın RESOURCEID değerini sırasıyla-KeyEncryptionKeyUrl ve-Keyencryptionkeyvaultıd parametrelerine geçirin:
+
+    ```azurepowershell-interactive
+    $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
+    $KEKKeyVault = Get-AzKeyVault -VaultName "MyKEKVault" -ResourceGroupName "MySecureGroup"
+    $KEK = Get-AzKeyVaultKey -VaultName "myKEKVault" -KeyName "myKEKName"
+    
+    Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -EncryptFormatAll -SkipVmBackup -VolumeType Data -KeyEncryptionKeyUrl $$KEK.id -KeyEncryptionKeyVaultId $KEKKeyVault.ResourceId
+    ```
+
+1. Bu yeni disklerin üstünde LVM 'yi ayarlayın. VM 'nin önyüklemesi bittikten sonra şifrelenmiş sürücülerin kilidinin açılacağı unutulmamalıdır. Bu nedenle, LVM bağlama de daha sonra gecikecek.
 
 ## <a name="new-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>Müşteri tarafından şifrelenen VHD ve şifreleme anahtarlarından oluşturulan yeni VM 'Ler
 Bu senaryoda, PowerShell cmdlet 'lerini veya CLı komutlarını kullanarak şifrelemeyi etkinleştirebilirsiniz. 

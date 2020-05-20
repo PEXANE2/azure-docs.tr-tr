@@ -3,18 +3,18 @@ title: Zaman uyumsuz Java SDK v2 Azure Cosmos DB tanılama ve sorun giderme
 description: Zaman uyumsuz Java SDK v2 'de Azure Cosmos DB sorunları tanımlamak, tanılamak ve sorunlarını gidermek için istemci tarafı günlüğe kaydetme ve diğer üçüncü taraf araçları gibi özellikleri kullanın.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 04fa8d65ffb822fcd37f6da1bf3074a4e6a1d088
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982624"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651896"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>SQL API hesaplarıyla Azure Cosmos DB zaman uyumsuz Java SDK v2 kullandığınızda oluşan sorunları giderme
 
@@ -25,7 +25,7 @@ ms.locfileid: "82982624"
 > 
 
 > [!IMPORTANT]
-> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projeniz için Azure Cosmos DB Java SDK v4 kullanmayı düşünün. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) kılavuzundaki yönergeleri izleyin. 
+> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projenizi [Java SDK v4 Azure Cosmos DB](sql-api-sdk-java-v4.md) yükseltmeniz ve ardından Azure Cosmos DB Java SDK v4 [sorun giderme kılavuzunu](troubleshoot-java-sdk-v4-sql.md)okumanız gerekir. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) kılavuzundaki yönergeleri izleyin. 
 >
 > Bu makalede yalnızca Azure Cosmos DB zaman uyumsuz Java SDK v2 için sorun giderme ele alınmaktadır. Daha fazla bilgi için bkz. Azure Cosmos DB zaman uyumsuz Java SDK v2 [sürüm notları](sql-api-sdk-async-java.md), [Maven deposu](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) ve [Performans ipuçları](performance-tips-async-java.md) .
 >
@@ -83,14 +83,14 @@ Ayrıca, [bir konak makinesindeki bağlantı sınırını](#connection-limit-on-
 
 #### <a name="http-proxy"></a>HTTP proxy 'si
 
-Bir HTTP proxy kullanıyorsanız, SDK `ConnectionPolicy`'da yapılandırılan bağlantı sayısını destekleyediğinden emin olun.
+Bir HTTP proxy kullanıyorsanız, SDK 'da yapılandırılan bağlantı sayısını destekleyediğinden emin olun `ConnectionPolicy` .
 Aksi halde bağlantı sorunlarıyla karşılaşın.
 
 #### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Geçersiz kodlama stili: Netty GÇ iş parçacığını engelleme
 
 SDK, Azure Cosmos DB iletişim kurmak için [Netty](https://netty.io/) GÇ kitaplığını kullanır. SDK 'nın zaman uyumsuz API 'ler vardır ve blok olmayan GÇ API 'Lerini kullanır. SDK 'nın GÇ işi, GÇ ağ parçacıklarında gerçekleştirilir. GÇ Netty iş parçacıklarının sayısı, uygulama makinesinin CPU çekirdekleri sayısıyla aynı olacak şekilde yapılandırılmıştır. 
 
-Netty GÇ iş parçacıklarının yalnızca engelleyici olmayan Netty GÇ işleri için kullanılması amaçlanmıştır. SDK, netty GÇ iş parçacıklarından birindeki API çağırma sonucunu uygulamanın koduna döndürür. Uygulama, netty iş parçacığında sonuçları aldıktan sonra uzun süreli bir işlem gerçekleştiriyorsa, SDK 'nın iç GÇ işlerini gerçekleştirmek için yeterli GÇ iş parçacığı olmayabilir. Bu tür uygulamalar, düşük aktarım hızı, yüksek gecikme süresi ve `io.netty.handler.timeout.ReadTimeoutException` hatalara yol açabilir. Geçici çözüm, işlemin zaman aldığını bildiğiniz zaman iş parçacığını geçeceğdir.
+Netty GÇ iş parçacıklarının yalnızca engelleyici olmayan Netty GÇ işleri için kullanılması amaçlanmıştır. SDK, netty GÇ iş parçacıklarından birindeki API çağırma sonucunu uygulamanın koduna döndürür. Uygulama, netty iş parçacığında sonuçları aldıktan sonra uzun süreli bir işlem gerçekleştiriyorsa, SDK 'nın iç GÇ işlerini gerçekleştirmek için yeterli GÇ iş parçacığı olmayabilir. Bu tür uygulamalar, düşük aktarım hızı, yüksek gecikme süresi ve hatalara yol açabilir `io.netty.handler.timeout.ReadTimeoutException` . Geçici çözüm, işlemin zaman aldığını bildiğiniz zaman iş parçacığını geçeceğdir.
 
 Örneğin, aşağıdaki kod parçacığına göz atın. Netty iş parçacığında birkaç milisaniyeye sahip olan uzun süreli işler gerçekleştirebilirsiniz. Bu durumda, sonunda GÇ işini işlemek için bir Netty GÇ iş parçacığı bulunmayan bir duruma ulaşabilirsiniz. Sonuç olarak, bir ReadTimeoutException hatası alırsınız.
 
@@ -156,7 +156,7 @@ Geçici çözüm, zaman alan iş parçacığını değiştirmek için kullanıl�
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
 ```
-Zaman alan, örneğin, yoğun bir iş veya GÇ 'yi engelleme gibi iş yapmanız gerekebilir. Bu durumda, `customScheduler` `.observeOn(customScheduler)` API 'yi kullanarak iş parçacığını tarafından sağlanmış bir çalışana geçirin.
+Zaman alan, örneğin, yoğun bir iş veya GÇ 'yi engelleme gibi iş yapmanız gerekebilir. Bu durumda, API 'yi kullanarak iş parçacığını tarafından sağlanmış bir çalışana geçirin `customScheduler` `.observeOn(customScheduler)` .
 
 ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 
@@ -170,7 +170,7 @@ createObservable
             // ...
         );
 ```
-Kullanarak `observeOn(customScheduler)`, NETTY GÇ iş parçacığını serbest bırakın ve özel Zamanlayıcı tarafından sağlanmış olan özel iş parçacığına geçiş yapın. Bu değişiklik sorunu çözer. Artık bir `io.netty.handler.timeout.ReadTimeoutException` hata almazsınız.
+Kullanarak `observeOn(customScheduler)` , netty GÇ iş parçacığını serbest bırakın ve özel Zamanlayıcı tarafından sağlanmış olan özel iş parçacığına geçiş yapın. Bu değişiklik sorunu çözer. Artık bir hata almazsınız `io.netty.handler.timeout.ReadTimeoutException` .
 
 ### <a name="connection-pool-exhausted-issue"></a>Bağlantı havuzu tükendi sorunu
 
@@ -258,7 +258,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 Daha fazla bilgi için bkz. [sfl4j Logging el kitabı](https://www.slf4j.org/manual.html).
 
 ## <a name="os-network-statistics"></a><a name="netstats"></a>İşletim sistemi ağ istatistikleri
-Ve `ESTABLISHED` `CLOSE_WAIT`gibi durumlarda birçok bağlantı olduğunu öğrenmek için netstat komutunu çalıştırın.
+Ve gibi durumlarda birçok bağlantı olduğunu öğrenmek için netstat komutunu çalıştırın `ESTABLISHED` `CLOSE_WAIT` .
 
 Linux 'ta, aşağıdaki komutu çalıştırabilirsiniz.
 ```bash
@@ -266,7 +266,7 @@ netstat -nap
 ```
 Sonucu yalnızca Azure Cosmos DB uç noktasına bağlantılarla filtreleyin.
 
-`ESTABLISHED` Durumdaki Azure Cosmos DB uç noktasına bağlantı sayısı, yapılandırılmış bağlantı havuzu boyutundan büyük olamaz.
+Durumdaki Azure Cosmos DB uç noktasına bağlantı sayısı, `ESTABLISHED` yapılandırılmış bağlantı havuzu boyutundan büyük olamaz.
 
 Azure Cosmos DB uç noktasına birçok bağlantı `CLOSE_WAIT` durumunda olabilir. 1.000 ' den fazla olabilir. Yüksek bir sayı, bağlantıların hızlı bir şekilde kurulacağını ve yırtılmış olduğunu gösterir. Bu durum potansiyel olarak soruna neden olur. Daha fazla bilgi için bkz. [genel sorunlar ve geçici çözümler] bölümü.
 

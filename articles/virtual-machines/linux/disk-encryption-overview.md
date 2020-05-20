@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f75e5c856e05cc5ce53598849a7cb11ed059827a
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 5c227c6ab24d6b71445354d1b17d238e80bf6313
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838867"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655856"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux sanal makineleri için Azure disk şifrelemesi 
 
@@ -56,7 +56,7 @@ Azure disk şifrelemesi, [Azure tarafından onaylanan Linux dağıtımların](en
 
 Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemesini desteklemez; onaylama işlemleri için, yalnızca aşağıdaki dağıtımlar ve sürümler Azure disk şifrelemesini destekler:
 
-| Yayımcı | Sunduğu | SKU | URN | Şifreleme için desteklenen birim türü |
+| Publisher | Sunduğu | SKU | URN | Şifreleme için desteklenen birim türü |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04-LTS | Kurallı: UbuntuServer: 18.04-LTS: latest | İşletim sistemi ve veri diski |
 | Canonical | Ubuntu 18.04 | 18,04-GÜNLÜK-LTS | Kurallı: UbuntuServer: 18.04-DAILY-LTS: latest | İşletim sistemi ve veri diski |
@@ -96,20 +96,30 @@ Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemes
 
 Azure disk şifrelemesi, sistemde dm-crypt ve VFAT modüllerinin bulunmasını gerektirir. VFAT 'i varsayılan görüntüden kaldırmak veya devre dışı bırakmak, sistemin anahtar birimini okumasını ve sonraki yeniden başlatmalarda disklerin kilidini açmak için gereken anahtarı almasını engeller. VFAT modülünü sistemden kaldırmak için sistem sağlamlaştırma adımları Azure disk şifrelemesi ile uyumlu değildir. 
 
-Şifrelemeyi etkinleştirmeden önce, şifrelenecek veri disklerinin/etc/fstabnda doğru şekilde listelenmesi gerekir. "/Dev/sdX" biçimindeki cihaz adları, özellikle şifreleme uygulandıktan sonra, yeniden başlatmalar genelinde aynı diskle ilişkilendirilemediğinden, bu giriş için kalıcı bir blok cihaz adı kullanın. Bu davranış hakkında daha fazla bilgi için bkz. [LINUX VM cihaz adı değişikliklerinde sorun giderme](troubleshoot-device-names-problems.md)
+Şifrelemeyi etkinleştirmeden önce, şifrelenecek veri disklerinin/etc/fstabnda doğru şekilde listelenmesi gerekir. Giriş oluştururken "NOFAIL" seçeneğini kullanın ve kalıcı bir cihaz adı seçin ("/dev/sdX" biçimindeki cihaz adları yeniden başlatmalar genelinde aynı disk ile ilişkilendirilemeyebilir, özellikle şifrelemeden sonra, bu davranış hakkında daha fazla bilgi için bkz.: [LINUX VM cihaz adı değişiklikleri sorunlarını giderme](troubleshoot-device-names-problems.md)).
 
 /Etc/fstab ayarlarının bağlama için doğru yapılandırıldığından emin olun. Bu ayarları yapılandırmak için, Mount-a komutunu çalıştırın veya VM 'yi yeniden başlatın ve bu şekilde uzak yeniden bağlama 'yı tetikleyin. Bu tamamlandıktan sonra, sürücünün hala bağlı olduğunu doğrulamak için lsblk komutunun çıkışını kontrol edin. 
+
 - /Etc/fstab dosyası Şifrelemeyi etkinleştirmeden önce sürücüyü doğru bağmazsa, Azure disk şifrelemesi onu düzgün bir şekilde bağlanamaz.
 - Azure Disk Şifrelemesi işlemi, bağlama bilgilerini şifreleme sürecinin bir parçası olarak/etc/fstab ' dan ve kendi yapılandırma dosyasına taşıyacaktır. Veri sürücüsü şifrelemesi tamamlandıktan sonra/etc/fstab içinde eksik girişi görmek için uyarıda yok.
 - Şifrelemeyi başlatmadan önce, bağlı veri disklerine yazmak ve devre dışı bırakmak için yeniden başlatmadan sonra otomatik olarak yeniden başlatabilmeleri için tüm hizmetleri ve süreçlerini durdurmayı unutmayın. Bunlar, dosyaları bu bölümlerde açık tutabilir, böylece şifreleme yordamının yeniden bağlanmasını önler ve bu da şifrelemenin başarısız olmasına neden olur. 
 - Yeniden başlatmadan sonra, Azure disk şifrelemesi işleminin yeni şifrelenmiş diskleri bağlaması zaman alır. Yeniden başlatmadan sonra hemen kullanılamayacak. İşlem, diğer işlemlerin erişebilmesi için önce şifrelenmiş sürücüleri açmak, kilitlerini açmak ve ardından bağlamak için zaman gerektirir. Bu işlem, sistem özelliklerine bağlı olarak yeniden başlatma sonrasında bir dakikadan uzun sürebilir.
 
-Veri disklerini bağlamak ve gerekli/etc/fstab girdilerini oluşturmak için kullanılabilen komutlara örnek olarak [Azure disk şifrelemesi ÖNKOŞULLARı CLI betiği](https://github.com/ejarvi/ade-cli-getting-started) (satırlar 244-248) ve [Azure disk şifrelemesi önkoşulları PowerShell betiği](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)bulunabilir. 
+Veri disklerini bağlamak ve gerekli/etc/fstab girdilerini oluşturmak için kullanılan komutlara bir örnek aşağıda verilmiştir:
 
+```bash
+UUID0="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun0)"
+UUID1="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun1)"
+mkdir /data0
+mkdir /data1
+echo "UUID=$UUID0 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab
+echo "UUID=$UUID1 /data1 ext4 defaults,nofail 0 0" >>/etc/fstab
+mount -a
+```
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
 
 Azure Disk Şifrelemesi özelliğini etkinleştirmek için Linux VM 'lerinin aşağıdaki ağ uç noktası yapılandırma gereksinimlerini karşılaması gerekir:
-  - Anahtar kasanıza bağlanma belirteci almak için, Linux VM 'nin bir Azure Active Directory uç noktasına bağlanabilmesi gerekir, \[Login.microsoftonline.com.\]
+  - Anahtar kasanıza bağlanma belirteci almak için, Linux VM 'nin bir Azure Active Directory uç noktasına bağlanabilmesi gerekir, \[ login.microsoftonline.com \] .
   - Şifreleme anahtarlarını anahtar kasanıza yazmak için, Linux VM 'nin Anahtar Kasası uç noktasına bağlanabiliyor olması gerekir.
   - Linux VM, Azure uzantı deposunu barındıran bir Azure depolama uç noktasına ve VHD dosyalarını barındıran bir Azure depolama hesabına bağlanabilmelidir.
   -  Güvenlik ilkeniz, Azure VM 'lerinden Internet 'e erişimi sınırlayıp, önceki URI 'yi çözümleyebilir ve IP 'lere giden bağlantılara izin vermek için belirli bir kuralı yapılandırabilirsin. Daha fazla bilgi için bkz. [Azure Key Vault bir güvenlik duvarı arkasında](../../key-vault/general/access-behind-firewall.md).  

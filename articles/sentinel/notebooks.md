@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/25/2019
-ms.openlocfilehash: 84b72a71ed2de910bce44b0c3f3309782f096680
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf63d5c8cb46fd791508af40dcefd7b39d4ba9de
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77581846"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652019"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Güvenlik tehditleri aramak için Jupyıter not defterlerini kullanma
 
@@ -60,9 +60,9 @@ Azure Sentinel 'ten bir not defteri doğrudan çalıştırabilir veya tüm Azure
 
 ## <a name="run-a-notebook-from-azure-sentinel"></a>Azure Sentinel 'den bir not defteri çalıştırma
  
-1. Azure Portal **Azure Sentinel** > **tehdit yönetimi** > **Not defterleri**' ne giderek Azure Sentinel 'in sağladığı not defterlerini görebilirsiniz. 
+1. Azure Portal **Azure Sentinel**  >  **tehdit yönetimi**  >  **Not defterleri**' ne giderek Azure Sentinel 'in sağladığı not defterlerini görebilirsiniz. 
 
-2. Açıklamalarını, gerekli veri türlerini ve veri kaynaklarını okumak için ayrı ayrı not defterlerini seçin. Örneğin:
+2. Açıklamalarını, gerekli veri türlerini ve veri kaynaklarını okumak için ayrı ayrı not defterlerini seçin. Örnek:
     
     > [!div class="mx-imgBorder"]
     > ![Not defterini Başlat](./media/notebooks/sentinel-azure-notebooks-launch.png)
@@ -73,7 +73,7 @@ Azure Sentinel 'ten bir not defteri doğrudan çalıştırabilir veya tüm Azure
 
 Bu yordam, sizin için Azure Sentinel not defterlerini içeren bir Azure Notebooks projesi oluşturur. Ardından, not defterlerini olduğu gibi çalıştırabilir veya bunlarda değişiklikler yapabilir ve bunları çalıştırabilirsiniz.
 
-1. Azure Portal **Azure Sentinel** > **tehdit yönetimi** > **Not defterleri** ' ne gidin ve ardından komut çubuğundan **not defterlerini Kopyala** ' yı seçin:
+1. Azure Portal **Azure Sentinel**  >  **tehdit yönetimi**  >  **Not defterleri** ' ne gidin ve ardından komut çubuğundan **not defterlerini Kopyala** ' yı seçin:
   
     > [!div class="mx-imgBorder"]
     >![Not defterlerini Kopyala seçeneği](./media/notebooks/sentinel-azure-clone-notebooks.png)
@@ -86,7 +86,7 @@ Bu yordam, sizin için Azure Sentinel not defterlerini içeren bir Azure Noteboo
 
    ![Not Defteri al](./media/notebooks/sentinel-create-project.png)
 
-4. Yeni oluşturduğunuz projeyi açın ve not defterlerini görmek için **Not defterleri** klasörünü açın. Örneğin:
+4. Yeni oluşturduğunuz projeyi açın ve not defterlerini görmek için **Not defterleri** klasörünü açın. Örnek:
 
    ![Depoyu içeri aktar](./media/notebooks/sentinel-open-notebook1.png)
 
@@ -115,17 +115,17 @@ Her not defteri, bir Hunt veya araştırma gerçekleştirme adımlarında size y
 
 3. Açmak için bir not defteri seçin.
     
-    Bir not defterini ilk açışınızda bir çekirdek sürümü seçmeniz istenebilir. İstenirse **çekirdek** >  **değişikliği çekirdeğinden**çekirdek sürümünü seçebilir ve en az 3,6 olan bir sürüm seçebilirsiniz. Seçilen çekirdek sürümü, Not defteri penceresinin sağ üst kısmında görüntülenir:
+    Bir not defterini ilk açışınızda bir çekirdek sürümü seçmeniz istenebilir. İstenirse **çekirdek**  >   **değişikliği çekirdeğinden**çekirdek sürümünü seçebilir ve en az 3,6 olan bir sürüm seçebilirsiniz. Seçilen çekirdek sürümü, Not defteri penceresinin sağ üst kısmında görüntülenir:
     
    ![Not defteri seçin](./media/notebooks/sentinel-select-kernel.png)
 
-4. İndirdiğiniz not defterinde herhangi bir değişiklik yapmadan önce, özgün not defterinin bir kopyasını oluşturmak ve kopyada çalışmak iyi bir fikirdir. Bunu yapmak için **Dosya** > **kopyasını oluştur**' u seçin. Kopyaların üzerinde çalışma, verilerinizin üzerine yazmadan, daha sonraki Not defteri sürümlerine güvenle güncelleştirme yapmanızı sağlar.
+4. İndirdiğiniz not defterinde herhangi bir değişiklik yapmadan önce, özgün not defterinin bir kopyasını oluşturmak ve kopyada çalışmak iyi bir fikirdir. Bunu yapmak için **Dosya**  >  **kopyasını oluştur**' u seçin. Kopyaların üzerinde çalışma, verilerinizin üzerine yazmadan, daha sonraki Not defteri sürümlerine güvenle güncelleştirme yapmanızı sağlar.
     
     Artık seçili Not defterini çalıştırmaya veya düzenlemeye hazırsınız.
 
 Öneri
 
-- Azure Sentinel 'de verileri sorgulamaya yönelik hızlı bir giriş için ana **Not defterleri** klasöründeki [getstarted](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) not defterine bakın. 
+- Azure Sentinel 'de verileri sorgulamaya yönelik hızlı bir giriş için ana **Not defterleri** klasöründeki [getstarted](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/345cf9f7c8f6137f5af4593a3f9d7568acd6cbc2/DeprecatedNotebooks/Get%20Started.ipynb) not defterine bakın. 
 
 - **Örnek Not defterleri** alt klasöründe ek örnek Not defterleri bulacaksınız. Bu örnek Not defterleri verilerle birlikte kaydedildiğinden, amaçlanan çıktıyı görmeniz daha kolay olur. Bu not defterlerini [nbviewer](https://nbviewer.jupyter.org/)'da görüntülemeniz önerilir. 
 

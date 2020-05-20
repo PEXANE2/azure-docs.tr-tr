@@ -11,20 +11,20 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c09e9d9f93ead6f894c954f647ebe33918cf41d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416210"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653006"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak kullanımını ve sorgu etkinliğini izleme
 
-Azure SYNAPSE Analytics, veri ambarı iş yükünüz ile ilgili öngörülere yönelik Azure portal içinde zengin bir izleme deneyimi sağlar. Azure portal, veri Ambarınızı izlerken, ölçüm ve Günlükler için yapılandırılabilir bekletme dönemleri, uyarılar, öneriler ve özelleştirilebilir grafikler ve panolar sağladığından önerilen araçtır. Portal Ayrıca, yalnızca veri Ambarınızla değil, tümleşik bir izleme deneyimi için tüm Azure Analytics platformunuzu değil, bütünsel bir izleme deneyimi sağlamak amacıyla Log Analytics ile Azure Izleyici (Günlükler) gibi diğer Azure izleme hizmetleriyle tümleştirmenize olanak sağlar. Bu belgelerde, SQL Analytics ile analiz platformunuzu iyileştirmek ve yönetmek için kullanabileceğiniz izleme özellikleri açıklanmaktadır.
+Azure SYNAPSE Analytics, veri ambarı iş yükünüz ile ilgili öngörülere yönelik Azure portal içinde zengin bir izleme deneyimi sağlar. Azure portal, veri Ambarınızı izlerken, ölçüm ve Günlükler için yapılandırılabilir bekletme dönemleri, uyarılar, öneriler ve özelleştirilebilir grafikler ve panolar sağladığından önerilen araçtır. Portal Ayrıca, yalnızca veri Ambarınızla değil, tümleşik bir izleme deneyimi için tüm Azure Analytics platformunuzu değil, bütünsel bir izleme deneyimi sağlamak amacıyla Log Analytics ile Azure Izleyici (Günlükler) gibi diğer Azure izleme hizmetleriyle tümleştirmenize olanak sağlar. Bu belgelerde, SYNAPSE SQL ile analiz platformunuzu iyileştirmek ve yönetmek için kullanabileceğiniz izleme özellikleri açıklanmaktadır.
 
 ## <a name="resource-utilization"></a>Kaynak kullanımı
 
-SQL Analytics için Azure portal aşağıdaki ölçümler mevcuttur. Bu ölçümler [Azure izleyici](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)aracılığıyla ortaya çıkmış.
+Aşağıdaki ölçümler, SYNAPSE SQL için Azure portal kullanılabilir. Bu ölçümler [Azure izleyici](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)aracılığıyla ortaya çıkmış.
 
 | Ölçüm adı             | Açıklama                                                  | Toplama Türü |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -54,13 +54,13 @@ SQL Analytics için Azure portal aşağıdaki ölçümler mevcuttur. Bu ölçüm
 
 ## <a name="query-activity"></a>Sorgu etkinliği
 
-SQL analizini T-SQL aracılığıyla izlerken bir programlama deneyimi için, hizmet bir dizi dinamik yönetim görünümü (DMVs) sağlar. Bu görünümler, iş yükünüzün performans sorunlarını etkin bir şekilde gidermeye ve tanımlamaya yönelik olarak faydalıdır.
+T-SQL aracılığıyla SYNAPSE SQL 'i izlerken bir programlama deneyimi için, hizmet bir dizi dinamik yönetim görünümü (DMVs) sağlar. Bu görünümler, iş yükünüzün performans sorunlarını etkin bir şekilde gidermeye ve tanımlamaya yönelik olarak faydalıdır.
 
 SYNAPSE SQL 'e uygulanan DMVs listesini görüntülemek için bu [belgeye](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs)bakın. 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Ölçümler ve tanılama günlükleri 
 
-Hem ölçümler hem de Günlükler Azure izleyici 'ye, özellikle de [Azure izleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bileşenine aktarılabilir ve [günlük sorgularıyla](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)programlı olarak erişilebilir. SQL Analytics için günlük gecikme süresi yaklaşık 10-15 dakikadır. Gecikme süresini etkileyen faktörler hakkında daha fazla bilgi için aşağıdaki belgeleri ziyaret edin.
+Hem ölçümler hem de Günlükler Azure izleyici 'ye, özellikle de [Azure izleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bileşenine aktarılabilir ve [günlük sorgularıyla](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)programlı olarak erişilebilir. SYNAPSE SQL için günlük gecikme süresi yaklaşık 10-15 dakikadır. Gecikme süresini etkileyen faktörler hakkında daha fazla bilgi için aşağıdaki belgeleri ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

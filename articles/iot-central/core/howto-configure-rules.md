@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f6e85ba5aafaad973d28f799a251b6f3aae548e3
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871947"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659360"
 ---
 # <a name="configure-rules"></a>Kuralları yapılandırma
 
@@ -31,7 +31,7 @@ Bu kuralın ne tür cihazlarda uygulanacağını seçmek için hedef cihazlar b�
 
 Koşullar, üzerinde hangi kuralların tetikleyeceğini de tetikler. Şu anda, bir kurala birden çok koşul eklediğinizde bunlar mantıksal olarak ve Ile birlikte yapılır. Diğer bir deyişle kuralın doğru olarak değerlendirilmesi için tüm koşulların karşılanması gerekir.  
 
-Aşağıdaki ekran görüntüsünde koşullar, sıcaklığın 70&deg; F 'den büyük olduğunu ve nem 10 ' dan küçük olduğunu denetler. Bu deyimlerden her ikisi de doğru olduğunda, kural true olarak değerlendirilir ve bir eylemi tetikler.
+Aşağıdaki ekran görüntüsünde koşullar, sıcaklığın 70 F 'den büyük olduğunu &deg; ve nem 10 ' dan küçük olduğunu denetler. Bu deyimlerden her ikisi de doğru olduğunda, kural true olarak değerlendirilir ve bir eylemi tetikler.
 
 ![Koşullar](media/howto-configure-rules/conditions.png)
 
@@ -53,7 +53,4 @@ Bir kısıtlama IoT Edge modüllerine uygulanan kurallar için geçerlidir. Fark
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Azure IoT Central uygulamanızda bir kural yapılandırmayı öğrendiğinize göre şunları yapabilirsiniz:
-
-> [!div class="nextstepaction"]
-> [Verilerinizi anında çözümleyin](howto-create-analytics.md)
+Azure IoT Central uygulamanızda bir kuralın nasıl yapılandırılacağını öğrendiğinize göre, Power otomatikleştir veya Azure Logic Apps kullanarak [Gelişmiş kuralların nasıl yapılandırılacağını](howto-configure-rules-advanced.md) öğrenebilirsiniz.

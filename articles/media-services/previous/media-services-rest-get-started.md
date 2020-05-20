@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46d00df4970a7268c9856de6d7c090f2deffc7ea
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76773675"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654530"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST kullanarak isteğe bağlı içerik sunmaya başlayın  
 
@@ -36,7 +36,7 @@ Resmi tam boyutlu görüntülemek için tıklayın.
 
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 REST API 'Leri ile Media Services geliştirmeye başlamak için aşağıdaki Önkoşullar gereklidir.
 
 * Bir Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
@@ -89,11 +89,11 @@ Media Services’de dijital dosyalar bir varlığa yüklenir. Varlık **varlığ
 
 Bir varlık oluştururken sağlamanız gereken değerlerden biri varlık oluşturma seçenekleridir. **Options** özelliği, bir varlığın oluşturulabilen şifreleme seçeneklerini açıklayan bir sabit listesi değeridir. Geçerli bir değer, bu listedeki değerlerin birleşimini değil, aşağıdaki listedeki değerlerden biridir:
 
-* **Hiçbiri** = **0** -şifreleme kullanılmaz. Bu seçeneği kullandığınızda, içeriğiniz aktarım sırasında veya depolamadaki bekleyen sırada korunmaz.
+* **Hiçbiri**  =  **0** -şifreleme kullanılmaz. Bu seçeneği kullandığınızda, içeriğiniz aktarım sırasında veya depolamadaki bekleyen sırada korunmaz.
     Aşamalı indirme kullanarak bir MP4 iletmeyi planlıyorsanız bu seçeneği kullanın.
-* **Storageencryptıon**1-AES-256 bit şifrelemesini kullanarak açık içeriğinizi yerel olarak şifreler ve sonra da bu dosyayı Rest 'te şifreli olarak depolandığı Azure depolama 'ya yükler.**1**  =  Depolama Şifrelemesi ile korunan varlıklar, kodlamadan önce otomatik olarak şifrelenerek şifrelenmiş bir dosya sistemine yerleştirilir ve yeni bir çıktı varlığı şeklinde geri yüklenmeden önce isteğe bağlı olarak yeniden şifrelenir. Depolama Şifrelemesinin birincil kullanım nedeni, yüksek kaliteli girdi medya dosyalarınızın güvenliğini güçlü şifrelemeyle diskte bekleyen konumda sağlamak istediğiniz durumdur.
-* **CommonEncryptionProtected** = **2** -daha önce şifrelenen ve Common Encryption veya PlayReady DRM ile korunan içeriği (örneğin, PlayReady DRM ile korunan kesintisiz akış) karşıya yüklüyorsanız bu seçeneği kullanın.
-* **EnvelopeEncryptionProtected** = **4** – HLS 'leri AES ile şifreli olarak karşıya yüklüyorsanız bu seçeneği kullanın. Dosyalar, Transform Manager tarafından kodlanmış ve şifrelenmiş olmalıdır.
+* **Storageşifrelendi**  =  **1** -AES-256 bit şifrelemesini kullanarak açık içeriğinizi yerel olarak şifreler ve ardından bu dosyayı Rest 'te şifreli olarak depolandığı Azure depolama 'ya yükler. Depolama Şifrelemesi ile korunan varlıklar, kodlamadan önce otomatik olarak şifrelenerek şifrelenmiş bir dosya sistemine yerleştirilir ve yeni bir çıktı varlığı şeklinde geri yüklenmeden önce isteğe bağlı olarak yeniden şifrelenir. Depolama Şifrelemesinin birincil kullanım nedeni, yüksek kaliteli girdi medya dosyalarınızın güvenliğini güçlü şifrelemeyle diskte bekleyen konumda sağlamak istediğiniz durumdur.
+* **CommonEncryptionProtected**  =  **2** -önceden şifrelenmiş ve Common Encryption veya PlayReady DRM ile korunan içeriği (örneğin, PlayReady DRM ile korunan kesintisiz akış) karşıya yüklüyorsanız bu seçeneği kullanın.
+* **EnvelopeEncryptionProtected**  =  **4** – HLS 'leri AES ile şifreli olarak karşıya yüklüyorsanız bu seçeneği kullanın. Dosyalar, Transform Manager tarafından kodlanmış ve şifrelenmiş olmalıdır.
 
 ### <a name="create-an-asset"></a>Varlık oluşturma
 Varlık, video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı altyazı dosyaları dahil olmak üzere Media Services birden çok tür veya nesne kümesi için bir kapsayıcıdır. REST API bir varlık oluşturmak için POST isteğinin Media Services gönderilmesi ve istek gövdesine varlığınızın herhangi bir özellik bilgisini yerleştirilmesi gerekir.
@@ -339,7 +339,7 @@ AccessPolicy ve Locator kümesine sahip olduğunuzda, gerçek dosya Azure depola
 Azure depolama Blobları ile çalışma hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
 ### <a name="update-the-assetfile"></a>Assetdosyasını güncelleştirme
-Dosyanızı karşıya yüklediğinize göre, Filevarlık boyutu (ve diğer) bilgilerini güncelleştirin. Örneğin:
+Dosyanızı karşıya yüklediğinize göre, Filevarlık boyutu (ve diğer) bilgilerini güncelleştirin. Örnek:
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -561,7 +561,7 @@ Başarılı olursa, aşağıdaki yanıt döndürülür:
 Herhangi bir Iş isteğinde dikkat etmeniz gereken birkaç önemli nokta vardır:
 
 * TaskBody özellikleri, giriş sayısını veya görev tarafından kullanılan çıkış varlıklarını tanımlamak için değişmez XML kullanmalıdır. Görev makalesi XML için XML şema tanımı içerir.
-* TaskBody tanımında, ve `<inputAsset>` `<outputAsset>` için her bir Iç değerin jobınputasset (değer) veya Joi putasset (değer) olarak ayarlanması gerekir.
+* TaskBody tanımında, ve için her bir iç değerin `<inputAsset>` `<outputAsset>` Jobınputasset (değer) veya Joi putasset (değer) olarak ayarlanması gerekir.
 * Bir görevde birden fazla çıkış varlığı olabilir. Bir joi Putasset (x), bir iş içindeki görevin çıktısı olarak yalnızca bir kez kullanılabilir.
 * Jobınputasset veya Joi Putasset değerini bir görevin giriş varlığı olarak belirtebilirsiniz.
 * Görevler bir bisiklet oluşturmamalıdır.
@@ -573,7 +573,7 @@ Herhangi bir Iş isteğinde dikkat etmeniz gereken birkaç önemli nokta vardır
 >
 
 * Inputmediavarlıkların, Media Services oluşturduğunuz bir veya daha fazla varlık ile eşlenir. Outputmediavarlıklar sistem tarafından oluşturulur. Mevcut bir varlığa başvurmazlar.
-* Outputmediavarlıklarının adı assetName özniteliği kullanılarak yapılabilir. Bu öznitelik yoksa, Outputmediakıymetin adı, `<outputAsset>` öğenin iç metin değerinin, iş adı değeri veya iş kimliği değeri (ad özelliğinin tanımlı olmadığı durumlarda) bir sonekine sahip olduğu her şey olur. Örneğin, assetName için bir değeri "Sample" olarak ayarlarsanız, Outputmediavarlık Name özelliği "Sample" olarak ayarlanır. Ancak, assetName için bir değer belirtmediyseniz ancak iş adını "NewJob" olarak ayarlarsanız, Outputmediavarlık adı "Joverputasset (değer) _NewJob" olacaktır.
+* Outputmediavarlıklarının adı assetName özniteliği kullanılarak yapılabilir. Bu öznitelik yoksa, Outputmediakıymetin adı, öğenin iç metin değerinin, `<outputAsset>` Iş adı değeri veya Iş kimliği değeri (ad özelliğinin tanımlı olmadığı durumlarda) bir sonekine sahip olduğu her şey olur. Örneğin, assetName için bir değeri "Sample" olarak ayarlarsanız, Outputmediavarlık Name özelliği "Sample" olarak ayarlanır. Ancak, assetName için bir değer belirtmediyseniz ancak iş adını "NewJob" olarak ayarlarsanız, Outputmediavarlık adı "Joverputasset (değer) _NewJob" olacaktır.
 
     Aşağıdaki örnekte, assetName özniteliğinin nasıl ayarlanacağı gösterilmektedir:
 
@@ -817,11 +817,11 @@ Döndürülen **yol** özelliği SAS URL 'sini içerir.
 AccessPolicy ve Locator kümesini aldıktan sonra Azure depolama REST API 'Lerini kullanarak dosyaları indirebilirsiniz.  
 
 > [!NOTE]
-> İndirmek istediğiniz dosyanın adını, önceki bölümde alınan Konumlandırıcı **yolu** değerine eklemeniz gerekir. Örneğin, https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> İndirmek istediğiniz dosyanın adını, önceki bölümde alınan Konumlandırıcı **yolu** değerine eklemeniz gerekir. Örneğin, `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4` ? . . .
 
 Azure depolama Blobları ile çalışma hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-Daha önce gerçekleştirdiğiniz kodlama işinin bir sonucu olarak (Uyarlamalı MP4 kümesine kodlama), aşamalı olarak indirebileceğiniz birden fazla MP4 dosyasına sahip olursunuz. Örneğin:    
+Daha önce gerçekleştirdiğiniz kodlama işinin bir sonucu olarak (Uyarlamalı MP4 kümesine kodlama), aşamalı olarak indirebileceğiniz birden fazla MP4 dosyasına sahip olursunuz. Örnek:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 

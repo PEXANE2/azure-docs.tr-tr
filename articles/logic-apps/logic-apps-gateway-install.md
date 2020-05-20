@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 12/05/2019
-ms.openlocfilehash: f2f8b9f207993c49201d03d3d1fed3c5800e8780
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80673826"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659263"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidi yükleme
 
@@ -26,7 +26,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliği olan bir Azure hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -37,10 +37,10 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
     > [!NOTE]
     > Yalnızca bir ağ geçidi yüklemesini ve bir Azure Gateway kaynağını birbirlerine bağlayabilirsiniz. Aynı ağ geçidi yüklemesini birden çok Azure hesabına veya Azure Gateway kaynaklarına bağlayamazsınız. Bununla birlikte, bir Azure hesabı birden çok ağ geçidi yüklemelerine ve Azure Gateway kaynaklarına bağlanabilir. Şirket içi bir tetikleyici veya eylemde, çeşitli Azure aboneliklerinizden seçim yapabilir ve ardından ilişkili bir ağ geçidi kaynağı seçebilirsiniz.
 
-  * Bir *kuruluş* hesabı olarak da bilinen bir iş hesabı veya okul hesabıyla oturum açmanız gerekir `username@contoso.com`. Azure B2B (konuk) hesaplarını veya @hotmail.com veya @outlook.comgibi kişisel Microsoft hesaplarını kullanamazsınız.
+  * Bir *kuruluş* hesabı olarak da bilinen bir iş hesabı veya okul hesabıyla oturum açmanız gerekir `username@contoso.com` . Azure B2B (konuk) hesaplarını veya veya gibi kişisel Microsoft hesaplarını kullanamazsınız @hotmail.com @outlook.com .
 
     > [!TIP]
-    > Office 365 teklifi için kaydolduysanız ve iş e-posta adresinizi sağlamadıysanız adresiniz gibi `username@domain.onmicrosoft.com`görünebilir. Hesabınız bir Azure Active Directory kiracı içinde depolanır (Azure AD). Çoğu durumda, Azure AD hesabınız için Kullanıcı asıl adı (UPN) e-posta adresiniz ile aynıdır.
+    > Office 365 teklifi için kaydolduysanız ve iş e-posta adresinizi sağlamadıysanız adresiniz gibi görünebilir `username@domain.onmicrosoft.com` . Hesabınız bir Azure Active Directory kiracı içinde depolanır (Azure AD). Çoğu durumda, Azure AD hesabınız için Kullanıcı asıl adı (UPN) e-posta adresiniz ile aynıdır.
     >
     > Bir Microsoft hesabı bağlantılı [Visual Studio standart aboneliğini](https://visualstudio.microsoft.com/vs/pricing/) kullanmak için, önce [Azure AD 'de bir kiracı oluşturun](../active-directory/develop/quickstart-create-new-tenant.md) veya varsayılan dizini kullanın. Dizine bir parolası olan bir kullanıcı ekleyin ve bu kullanıcıya Azure aboneliğinize erişim izni verin. Daha sonra bu Kullanıcı adı ve parolayla ağ geçidi yüklemesi sırasında oturum açabilirsiniz.
 
@@ -68,13 +68,15 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
     > [!TIP]
     > Gecikme süresini en aza indirmek için, ağ geçidini veri kaynağınıza veya aynı bilgisayara mümkün olduğunca yakın bir şekilde yükleyebilirsiniz.
 
-  * Ağ geçidini kablolu ağ üzerinde bulunan, internet 'e bağlı, her zaman açık olan ve uyku moduna geçmeyen bir bilgisayara yükler. Aksi takdirde, ağ geçidi çalıştırılamaz ve performans kablosuz bir ağdan düşebilir.
+  * Ağ geçidini kablolu ağ üzerinde bulunan ve internet 'e bağlı olan yerel bir bilgisayara yükler, her zaman açık ve uyku moduna geçmez. Aksi takdirde, ağ geçidi çalıştırılamaz ve performans kablosuz bir ağdan düşebilir.
 
   * Windows kimlik doğrulamasını kullanmayı planlıyorsanız, ağ geçidini, veri kaynaklarınızla aynı Active Directory ortamına üye olan bir bilgisayara yüklediğinizden emin olun.
 
   * Ağ geçidinizin yüklemeniz için seçtiğiniz bölge, daha sonra mantıksal uygulamanız için Azure Gateway kaynağını oluştururken seçmeniz gereken konumdur. Bu bölge, varsayılan olarak Azure hesabınızı yöneten Azure AD kiracınızla aynı konumdadır. Ancak, ağ geçidi yüklemesi sırasında konumu değiştirebilirsiniz.
 
-  * Ağ Geçidi yüklemenizi en son sürüme güncelleştiriyorsanız, temizleyici bir deneyim için önce geçerli ağ geçidinizi kaldırın.
+  * Ağ Geçidi yüklemenizi güncelleştiriyorsanız, temizleyici bir deneyim için önce geçerli ağ geçidinizi kaldırın.
+
+    En iyi uygulama olarak desteklenen bir sürüm kullandığınızdan emin olun. Microsoft, her ay şirket içi veri ağ geçidinde yeni bir güncelleştirme yayınlar ve şu anda yalnızca şirket içi veri ağ geçidi için son altı yayını desteklemektedir. Kullanmakta olduğunuz sürümle ilgili sorunlarla karşılaşırsanız, sorununuz en son sürümde çözümlenebildiğinden [en son sürüme yükseltmeyi](https://aka.ms/on-premises-data-gateway-installer) deneyin.
 
   * Ağ geçidinde iki mod vardır: yalnızca Power BI için geçerli olan standart mod ve kişisel mod. Aynı bilgisayarda aynı modda çalışan birden fazla ağ geçidi olamaz.
 
@@ -96,7 +98,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
    Ağ Geçidi yüklemeniz yalnızca bir Azure hesabına bağlanabilir.
 
-1.  > **Sonra** **Bu bilgisayarda yeni bir ağ geçidi Kaydet '** i seçin. Bu adım ağ geçidi yükleme cihazınızı [ağ geçidi bulut hizmetine](#gateway-cloud-service)kaydeder.
+1. Sonra **Bu bilgisayarda yeni bir ağ geçidi Kaydet '** i seçin  >  **Next**. Bu adım ağ geçidi yükleme cihazınızı [ağ geçidi bulut hizmetine](#gateway-cloud-service)kaydeder.
 
    ![Ağ geçidini yerel bilgisayara kaydet](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -162,15 +164,15 @@ Birincil ağ geçidinizi ayarladıktan sonra, başka bir ağ geçidi yüklemeye 
 
 Ağ geçidinizin konumunu değiştirmeniz gerekiyorsa, ağ geçidi yüklemenizi yeni bir bilgisayara taşıyın, hasarlı bir ağ geçidini kurtarmanız veya mevcut bir ağ geçidi için sahiplik almanız gerekiyorsa, ağ geçidi yüklemesi sırasında sağlanmış olan kurtarma anahtarına ihtiyacınız vardır.
 
-1. Ağ Geçidi yükleyicisini mevcut ağ geçidine sahip olan bilgisayarda çalıştırın. En son ağ geçidi yükleyiciniz yoksa, [en son ağ geçidi sürümünü indirin](https://aka.ms/on-premises-data-gateway-installer).
+> [!NOTE]
+> Ağ geçidini özgün ağ geçidi yüklemesi olan bilgisayara geri yüklemeden önce, önce o bilgisayardaki ağ geçidini kaldırmanız gerekir. Bu eylem, özgün ağ geçidinin bağlantısını keser.
+> Herhangi bir bulut hizmeti için bir ağ geçidi kümesini kaldırır veya silerseniz, bu kümeyi geri alamazsınız.
 
-   > [!NOTE]
-   > Ağ geçidini özgün ağ geçidi yüklemesi olan bilgisayara geri yüklemeden önce, önce o bilgisayardaki ağ geçidini kaldırmanız gerekir. Bu eylem, özgün ağ geçidinin bağlantısını keser.
-   > Herhangi bir bulut hizmeti için bir ağ geçidi kümesini kaldırır veya silerseniz, bu kümeyi geri alamazsınız.
+1. Ağ Geçidi yükleyicisini mevcut ağ geçidine sahip olan bilgisayarda çalıştırın.
 
 1. Yükleyici açıldıktan sonra, ağ geçidini yüklemek için kullanılan Azure hesabıyla oturum açın.
 
-1.  >  **Var olan bir ağ geçidini geçir, geri yükle veya****İleri**' yi seçin, örneğin:
+1. **Var olan bir ağ geçidini geçir, geri yükle veya**  >  **İleri**' yi seçin, örneğin:
 
    !["Var olan bir ağ geçidini geçir, geri yükle veya getir" i seçin](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
@@ -190,7 +192,7 @@ Bir Azure AD kiracısındaki tüm şirket içi veri ağ geçitlerine ilişkin g�
 
 ## <a name="restart-gateway"></a>Ağ geçidini yeniden başlatma
 
-Varsayılan olarak, yerel bilgisayarınızdaki ağ geçidi yüklemesi "Şirket içi veri ağ geçidi hizmeti" adlı bir Windows hizmet hesabı olarak çalışır. Ancak ağ geçidi yüklemesi, "oturum `NT SERVICE\PBIEgwService` aç" hesabı kimlik bilgileri için adı kullanır ve "hizmet olarak oturum aç" izinlerine sahiptir.
+Varsayılan olarak, yerel bilgisayarınızdaki ağ geçidi yüklemesi "Şirket içi veri ağ geçidi hizmeti" adlı bir Windows hizmet hesabı olarak çalışır. Ancak ağ geçidi yüklemesi, `NT SERVICE\PBIEgwService` "oturum aç" hesabı kimlik bilgileri için adı kullanır ve "hizmet olarak oturum aç" izinlerine sahiptir.
 
 > [!NOTE]
 > Windows hizmet hesabınız, şirket içi veri kaynaklarına bağlanmak için kullanılan hesaptan ve bulut hizmetlerinde oturum açarken kullandığınız Azure hesabından farklılık gösterir.
@@ -236,7 +238,7 @@ Microsoft bulut Hizmetleri, kullanıcıların kimliğini doğrulamak için [Azur
 
 ### <a name="what-is-my-upn"></a>UPN nedir?
 
-Bir etki alanı yöneticisi değilseniz, UPN 'nizi bilmiyor olabilirsiniz. Hesabınızın UPN 'sini bulmak için, iş istasyonunuzdan `whoami /upn` komutunu çalıştırın. Sonuç bir e-posta adresi gibi görünse de sonuç, yerel etki alanı hesabınızın UPN 'si olur.
+Bir etki alanı yöneticisi değilseniz, UPN 'nizi bilmiyor olabilirsiniz. Hesabınızın UPN 'sini bulmak için, `whoami /upn` iş istasyonunuzdan komutunu çalıştırın. Sonuç bir e-posta adresi gibi görünse de sonuç, yerel etki alanı hesabınızın UPN 'si olur.
 
 ### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Bir şirket içi Active Directory hesabını Azure AD ile eşitleme
 
@@ -258,8 +260,6 @@ Azure AD ile şirket içi Active Directory hesaplarınızı eşleşmenizin yolla
 <a name="faq"></a>
 
 ## <a name="faq-and-troubleshooting"></a>SSS ve sorun giderme
-
-Daha fazla bilgi için şu konulara bakın:
 
 * [Şirket içi veri ağ geçidi hakkında SSS](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
 * [Şirket içi veri ağ geçidinde sorun giderme](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)

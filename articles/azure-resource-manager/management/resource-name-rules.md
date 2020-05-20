@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ab012c5363de643c4cb5de8777de56fad5a9711
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086394"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653708"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -346,7 +346,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | Veritabanı hesapları | global | 3-31 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Küçük harf veya sayı ile başlayın. |
+> | Veritabanı hesapları | global | 3-44 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Küçük harf veya sayı ile başlayın. |
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
@@ -630,7 +630,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | --- | --- | --- | --- |
 > | ManagedInstances | global | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
 > | larý | global | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
-> | sunucular/Yöneticiler | sunucu |  | Olmalıdır `ActiveDirectory`. |
+> | sunucular/Yöneticiler | sunucu |  | Olmalıdır `ActiveDirectory` . |
 > | sunucular/veritabanları | sunucu | 1-128 | Şu kullanılamıyor:<br>`<>*%&:\/?`<br><br>Nokta veya boşluk ile bitemez. |
 > | sunucular/veritabanları/syncGroups | database | 1-150 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 > | sunucular/Elaun havuzları | sunucu | 1-128 | Şu kullanılamıyor:<br>`<>*%&:\/?`<br><br>Nokta veya boşluk ile bitemez. |
@@ -643,11 +643,11 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | storageAccounts | global | 3-24 | Küçük harfler ve rakamlar. |
-> | storageAccounts/blobServices | depolama hesabı |  | Olmalıdır `default`. |
+> | storageAccounts/blobServices | depolama hesabı |  | Olmalıdır `default` . |
 > | storageAccounts/blobServices/kapsayıcılar | depolama hesabı | 3-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Küçük harf veya sayı ile başlayın. Ardışık tireler kullanılamaz. |
-> | storageAccounts/fileServices | depolama hesabı |  | Olmalıdır `default`. |
+> | storageAccounts/fileServices | depolama hesabı |  | Olmalıdır `default` . |
 > | storageAccounts/Fıleservices/Shares | depolama hesabı | 3-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. Ardışık tireler kullanılamaz. |
-> | storageAccounts/managementPolicies | depolama hesabı |  | Olmalıdır `default`. |
+> | storageAccounts/managementPolicies | depolama hesabı |  | Olmalıdır `default` . |
 > | blob | kapsayıcı | 1-1024 | Herhangi bir URL karakteri, büyük/küçük harfe duyarlı |
 > | kuyruk | depolama hesabı | 3-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. Ardışık tireler kullanılamaz. |
 > | tablo | depolama hesabı | 3-63 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |

@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: d89baa069543c0571d42807f8034e6008eaddbc8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197583"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659239"
 ---
 # <a name="statistics-in-synapse-sql"></a>SYNAPSE SQL istatistikleri
 
@@ -30,11 +30,13 @@ SQL havuzu kaynağı ne kadar çok olduğunu biliyorsa, sorguları yürütebilir
 
 SQL havuzu sorgu iyileştiricisi, maliyet tabanlı bir iyileştiricudur. Çeşitli sorgu planlarının maliyetini karşılaştırır ve en düşük maliyetli planı seçer. Çoğu durumda, en hızlı yürütecektir planı seçer.
 
-Örneğin, iyileştirici sorgunun filtrelemesinin olduğu tarihin bir satır döndürür bir plan seçer. Seçili tarihin 1.000.000 satır döndüreceğini tahmin eder, farklı bir plan döndürür.
+Örneğin, iyileştirici sorgunun filtrelemesinin olduğu tarihin bir satır döndürdüğü tahmini bir plan seçer. Seçili tarihin 1.000.000 satır döndüreceğini tahmin eder, farklı bir plan döndürür.
 
 ### <a name="automatic-creation-of-statistics"></a>İstatistiklerin otomatik olarak oluşturulması
 
-Veritabanı AUTO_CREATE_STATISTICS seçeneği olarak ayarlandığında SQL havuzu eksik istatistik için gelen kullanıcı sorgularını analiz eder `ON` .  İstatistikler eksikse, sorgu iyileştiricisi sorgu koşulunda veya JOIN koşulunda tek tek sütunlarda istatistikler oluşturur. Bu işlev, sorgu planına yönelik kardinalite tahminlerini geliştirmek için kullanılır.
+Veritabanı AUTO_CREATE_STATISTICS seçeneği olarak ayarlandığında SQL havuzu eksik istatistik için gelen kullanıcı sorgularını analiz eder `ON` .  İstatistikler eksikse, sorgu iyileştiricisi sorgu koşulunda veya JOIN koşulunda tek tek sütunlarda istatistikler oluşturur. 
+
+Bu işlev, sorgu planına yönelik kardinalite tahminlerini geliştirmek için kullanılır.
 
 > [!IMPORTANT]
 > İstatistiklerin otomatik olarak oluşturulması Şu anda varsayılan olarak açıktır.
@@ -101,7 +103,9 @@ Bir sorgunun sorunlarını giderirken ilk sorulardan biri, **"istatistiklerin g�
 
 Bu soru, verilerin yaşına göre yanıtlanacak bir değildir. Temel alınan verilerde malzeme değişikliği olmadığında güncel bir istatistik nesnesi eski olabilir. Satır sayısı önemli ölçüde değiştirildiğinde veya bir sütun için değerlerin dağıtımında bir malzeme değişikliği meydana *gelirse, istatistikleri güncelleştirme zamanı geldi.*
 
-En son istatistik güncelleştirildikten sonra tablodaki verilerin değişip değişmediğini tespit etmek için kullanılabilir dinamik bir yönetim görünümü yoktur. İstatistiklerinizin yaşınızı bilmeniz, resmin bir parçasını sağlayabilir. Her tabloda istatistiklerin güncelleştirildiği son zamanı anlamak için aşağıdaki sorguyu kullanabilirsiniz.
+En son istatistik güncelleştirildikten sonra tablodaki verilerin değişip değişmediğini tespit etmek için kullanılabilir dinamik bir yönetim görünümü yoktur. İstatistiklerinizin yaşınızı bilmeniz, resmin bir parçasını sağlayabilir. 
+
+Her tabloda istatistiklerin güncelleştirildiği son zamanı anlamak için aşağıdaki sorguyu kullanabilirsiniz.
 
 > [!NOTE]
 > Bir sütunun değerlerinin dağıtımında bir malzeme değişikliği varsa, son güncelleştirilme zamanından bağımsız olarak istatistikleri güncelleştirmeniz gerekir.
@@ -137,9 +141,11 @@ WHERE
 
 Müşteri tablosundaki cinsiyet sütunundaki istatistiklerin hiçbir şekilde güncellenmesi gerekmez. Dağıtımın müşteriler arasında sabit olduğu varsayıldığında, tablo varyasyonuna yeni satırlar eklemek veri dağıtımını değiştirmez.
 
-Ancak, veri ambarınız tek bir cinsiyet içeriyorsa ve yeni bir gereksinim birden çok gende sonuçlanırsa, cinsiyet sütunundaki istatistikleri güncelleştirmeniz gerekir. Daha fazla bilgi için, [istatistik](/sql/relational-databases/statistics/statistics) makaleyi gözden geçirin.
+Ancak, veri ambarınız tek bir cinsiyet içeriyorsa ve yeni bir gereksinim birden çok gende sonuçlanırsa, cinsiyet sütunundaki istatistikleri güncelleştirmeniz gerekir. 
 
-### <a name="implementing-statistics-management"></a>İstatistik yönetimi uygulama
+Daha fazla bilgi için, [istatistik](/sql/relational-databases/statistics/statistics) makaleyi gözden geçirin.
+
+### <a name="implement-statistics-management"></a>İstatistik yönetimi Uygula
 
 Yük sonunda istatistiklerin güncelleştirildiğinden emin olmak için veri yükleme işleminizi genişletmek iyi bir fikirdir. Veri yükü, tabloların boyutunu en sık değiştiren, değerlerin dağıtılması veya her ikisi de olur. Bu nedenle, yükleme işlemi bazı yönetim işlemlerini uygulamak için mantıksal bir yerdir.
 
@@ -167,7 +173,7 @@ CREATE STATISTICS [statistics_name]
     ON [schema_name].[table_name]([column_name]);
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -184,7 +190,7 @@ CREATE STATISTICS [statistics_name]
     WITH FULLSCAN;
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -275,6 +281,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 #### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Bir veritabanındaki tüm sütunlarda istatistik oluşturmak için saklı yordam kullanma
 
 SQL havuzunda SQL Server sp_create_stats eşdeğer bir sistem saklı yordamı yoktur. Bu saklı yordam, veritabanının zaten istatistiği olmayan her sütununda tek sütunlu bir istatistik nesnesi oluşturur.
+
 Aşağıdaki örnek, veritabanı tasarımınızı kullanmaya başlamanıza yardımcı olur. Gereksinimlerinize uygun hale gelmekten çekinmeyin:
 
 ```sql
@@ -396,7 +403,7 @@ Belirli bir istatistik nesnesini güncelleştirmek için aşağıdaki sözdizimi
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -412,13 +419,15 @@ Bir tablodaki tüm istatistik nesnelerini güncelleştirmek için basit bir yön
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
 ```
 
-GÜNCELLEŞTIRME ISTATISTIKLERI bildiriminin kullanımı kolaydır. Yalnızca tablodaki *Tüm* istatistikleri güncelleştirdiğinden, daha fazla çalışma istemek gerektiğini unutmayın. Performans bir sorun değilse, bu yöntem istatistiklerin güncel olup olmadığını güvence altına almak için en kolay ve en kapsamlı yoldur.
+GÜNCELLEŞTIRME ISTATISTIKLERI bildiriminin kullanımı kolaydır. Yalnızca tablodaki *Tüm* istatistikleri güncelleştirdiğinden, daha fazla çalışma istemek gerektiğini unutmayın. 
+
+Performans bir sorun değilse, bu yöntem istatistiklerin güncel olup olmadığını güvence altına almak için en kolay ve en kapsamlı yoldur.
 
 > [!NOTE]
 > Bir tablodaki tüm İstatistikleri güncelleştirirken, SQL havuzu her bir istatistik nesnesi için tabloyu örneklemek üzere bir tarama yapar. Tablo büyükse ve çok sayıda sütun ve birçok istatistik içeriyorsa, her bir istatistiği ihtiyaya göre güncelleştirmek daha verimli olabilir.
@@ -501,7 +510,9 @@ DBCC SHOW_STATISTICS (), bir istatistik nesnesi içinde tutulan verileri göster
 - Yoğunluk vektörü
 - Histogram
 
-Üst bilgi, istatistiklerle ilgili meta verilerdir. Histogram, değerlerin dağılımını istatistik nesnesinin ilk anahtar sütununda görüntüler. Yoğunluk vektörü, çapraz sütun bağıntısını ölçer. SQL havuzu, istatistik nesnesindeki verilerle kardinalite tahminleri hesaplar.
+Üst bilgi, istatistiklerle ilgili meta verilerdir. Histogram, değerlerin dağılımını istatistik nesnesinin ilk anahtar sütununda görüntüler. 
+
+Yoğunluk vektörü, çapraz sütun bağıntısını ölçer. SQL havuzu, istatistik nesnesindeki verilerle kardinalite tahminleri hesaplar.
 
 #### <a name="show-header-density-and-histogram"></a>Üstbilgiyi, yoğunluğu ve histogramı göster
 
@@ -511,7 +522,7 @@ Bu basit örnek, bir istatistik nesnesinin üç parçasını gösterir:
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -526,7 +537,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
     WITH stat_header, histogram, density_vector
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
@@ -555,7 +566,11 @@ Sorgu performansını artırmak için bkz. [iş yükünüzü izleme](../sql-data
 
 ### <a name="why-use-statistics"></a>İstatistikleri neden kullanılmalıdır?
 
-Daha fazla SQL isteğe bağlı (Önizleme) verileriniz hakkında daha hızlı bir şekilde sorgu yürütebiliyor. Verilerinize ilişkin istatistikleri toplamak, sorgularınızı iyileştirmek için yapabileceğiniz en önemli işlemlerden biridir. SQL isteğe bağlı sorgu iyileştiricisi, maliyet tabanlı bir iyileştiricsahiptir. Çeşitli sorgu planlarının maliyetini karşılaştırır ve en düşük maliyetli planı seçer. Çoğu durumda, en hızlı yürütecektir planı seçer. Örneğin, iyileştirici sorgunun filtrelemesinin olduğu tarihin bir satır döndürür bir plan seçer. Seçili tarihin 1.000.000 satır döndüreceğini tahmin eder, farklı bir plan döndürür.
+Daha fazla SQL isteğe bağlı (Önizleme) verileriniz hakkında daha hızlı bir şekilde sorgu yürütebiliyor. Verilerinize ilişkin istatistikleri toplamak, sorgularınızı iyileştirmek için yapabileceğiniz en önemli işlemlerden biridir. 
+
+SQL isteğe bağlı sorgu iyileştiricisi, maliyet tabanlı bir iyileştiricsahiptir. Çeşitli sorgu planlarının maliyetini karşılaştırır ve en düşük maliyetli planı seçer. Çoğu durumda, en hızlı yürütecektir planı seçer. 
+
+Örneğin, iyileştirici sorgunun filtrelemesinin olduğu tarihin bir satır döndürür bir plan seçer. Seçili tarihin 1.000.000 satır döndüreceğini tahmin eder, farklı bir plan döndürür.
 
 ### <a name="automatic-creation-of-statistics"></a>İstatistiklerin otomatik olarak oluşturulması
 
@@ -570,9 +585,11 @@ SELECT deyimleri otomatik olarak istatistik oluşturmayı tetikler.
 
 ### <a name="manual-creation-of-statistics"></a>İstatistiklerin el ile oluşturulması
 
-SQL isteğe bağlı, istatistik el ile oluşturmanızı sağlar. CSV dosyaları için otomatik istatistik oluşturma özelliği açık olmadığından, CSV dosyaları için istatistikleri el ile oluşturmanız gerekir. İstatistiklerin el ile nasıl oluşturulacağı hakkında yönergeler için aşağıdaki örneklere bakın.
+SQL isteğe bağlı, istatistik el ile oluşturmanızı sağlar. CSV dosyaları için otomatik istatistik oluşturma özelliği açık olmadığından, CSV dosyaları için istatistikleri el ile oluşturmanız gerekir. 
 
-### <a name="updating-statistics"></a>İstatistikleri güncelleştirme
+İstatistiklerin el ile nasıl oluşturulacağı hakkında yönergeler için aşağıdaki örneklere bakın.
+
+### <a name="update-statistics"></a>İstatistikleri Güncelleştir
 
 Dosyalardaki verilerde yapılan değişiklikler, silme ve dosya ekleme, veri dağıtım değişikliklerine neden olur ve istatistik güncel değildir. Bu durumda, istatistiklerin güncelleştirilmesi gerekir.
 
@@ -592,9 +609,9 @@ Satır sayısı önemli ölçüde değiştirildiğinde veya bir sütun için de�
 > [!NOTE]
 > Bir sütunun değerlerinin dağıtımında bir malzeme değişikliği varsa, son güncelleştirilme zamanından bağımsız olarak istatistikleri güncelleştirmeniz gerekir.
 
-### <a name="implementing-statistics-management"></a>İstatistik yönetimi uygulama
+### <a name="implement-statistics-management"></a>İstatistik yönetimi Uygula
 
-Veriler ekleme, silme veya değişiklik aracılığıyla önemli ölçüde değiştirilmişse istatistiklerin güncelleştirilmesini sağlamak için veri işlem hattınızı genişletmek isteyebilirsiniz.
+Veriler ekleme, silme veya değişiklik aracılığıyla önemli ölçüde değiştirildiğinde istatistiklerin güncelleştirilmesini sağlamak için veri işlem hattınızı genişletmek isteyebilirsiniz.
 
 İstatistiklerinizi güncelleştirmek için aşağıdaki temel ilkeler verilmiştir:
 

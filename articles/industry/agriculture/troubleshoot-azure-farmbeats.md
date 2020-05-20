@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a40c64910260a2d63a529d25e1089fb618fcec1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113500"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656825"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
-Bu makalede, yaygın Azure Farmtts sorunlarına yönelik çözümler sağlanmaktadır. Daha fazla yardım için [destek Forumumuzu](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) veya bize e- farmbeatssupport@microsoft.composta ile iletişim kurun.
+Bu makalede, yaygın Azure Farmtts sorunlarına yönelik çözümler sağlanmaktadır. Daha fazla yardım için [destek Forumumuzu](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) veya bize e-posta ile iletişim kurun farmbeatssupport@microsoft.com .
 
 > [!NOTE]
   > Nisan sırasında Farmtts yüklediyseniz ve işleriniz boş bir hata iletisiyle başarısız oluyorsa, yüklemeniz kritik sistem durumu ve güvenlik kuruluşları için destek önceliklendirmesine yönelik herhangi bir Batch kotası ayrılmamış olabilir. Daha fazla bilgi için [buraya](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) bakın. İşleri başarıyla çalıştırmak için Batch hesabına ayrılacak VM 'Leri istemeniz gerekir.
@@ -88,11 +88,11 @@ Günlüklerin nasıl indirileceği anlamak için ["günlükleri El Ile topla"](#
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>":"<value>"
+          "<sensor measure name (as defined in the Sensor Model)>":<value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }
@@ -105,12 +105,12 @@ Günlüklerin nasıl indirileceği anlamak için ["günlükleri El Ile topla"](#
 **Düzeltici eylem**
 
 1. Datahub Swagger ' de Iş ortağı API 'sine gidin.
-2. **Al** > **Try it out**deneyin > **Çalıştır**' ı seçin.
+2. **Al**  >  **deneyin**  >  **Çalıştır**' ı seçin.
 
 > [!NOTE]
 > İlgilendiğiniz algılayıcı ortağının iş ortağı KIMLIĞI.
 
-3. Iş ortağı API 'sine dönün ve **Al/\<kimlik>**' yi seçin.
+3. Iş ortağı API 'sine dönün ve **Al/ \< kimlik>**' yi seçin.
 4. 3. adımdaki iş ortağı KIMLIĞINI belirtip **Yürüt**' ü seçin.
 
    API yanıtının Event Hubs bağlantı dizesi olmalıdır.
@@ -133,7 +133,7 @@ Bir cihazı silerken, aşağıdaki genel hata senaryolarından biriyle karşıla
 
 1. Hızlandırıcı aracılığıyla cihazla ilişkili algılayıcıları silin.  
 2. Algılayıcıları farklı bir cihazla ilişkilendirmek istiyorsanız, cihaz iş ortağınızdan aynı olduğunu sorun.  
-3. Bir `DELETE API` çağrı kullanarak cihazı silin ve zorla parametresini *doğru*olarak ayarlayın.  
+3. Bir çağrı kullanarak cihazı silin `DELETE API` ve zorla parametresini *doğru*olarak ayarlayın.  
 
 **İleti**: "cihaz cihazlarda parentdeviceıd olarak başvuruluyor: alt cihazlar olarak bu cihazla ilişkili bir veya daha fazla cihaz var. Bunları silin ve sonra bu cihazı silin. "  
 
@@ -205,7 +205,7 @@ Zaten erişim verdiyseniz ve bu hataya sahipseniz, sayfayı yenileyerek yeniden 
 
     1. [Azure Portal](https://portal.azure.com)oturum açın.
     2. **Arama** kutusunda, Farmrets Datahub kaynak grubunu arayın.
-    3. Depolama hesabı depolamayı seçin * * * * * > **kapsayıcılar** > **Batch-Prep-Files** > **to_vm** > **config. ini**
+    3. Depolama hesabı depolamayı seçin * * * * * > **kapsayıcılar**  >  **Batch-Prep-Files**  >  **to_vm**  >  **config. ini**
     4. **Düzenle** 'yi seçin
     5. Sentinel_account bölümündeki Kullanıcı adını güncelleştirin
 
@@ -250,7 +250,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: en fazla bağlantı sayısına ulaşıldı
 
-**İş hatası iletisi**: "kullanıcının kullanıcı\<adı> ' tarafından elde edilen Iki eşzamanlı akış sayısı üst sınırı."
+**İş hatası iletisi**: "kullanıcının kullanıcı adı> ' tarafından elde edilen iki eşzamanlı akış sayısı üst sınırı \< ."
 
 **Anlamı**: en fazla bağlantı sayısına ulaşıldığından bir iş başarısız olursa, birden fazla Işte aynı Sentinel hesabı kullanılıyor.
 
@@ -261,7 +261,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="sentinel-server-refused-connection"></a>Sentinel sunucu: bağlantı reddedildi
 
-**İş hatası iletisi**: "sunucu bağlantıyı reddetti: http://172.30.175.69:8983/solr/dhus."
+**İş hatası iletisi**: "sunucu bağlantıyı reddetti: http://172.30.175.69:8983/solr/dhus ."
 
 **Düzeltici eylem**: Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında meydana gelebilir.
 
@@ -285,11 +285,11 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Veri hub 'ında Azure Data Factory iş günlüklerini veya App Service günlüklerini toplayın
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmrets Datahub kaynak grubunu arayın.
-3. **Kaynak grubu** panosunda, *datahublogs\* * depolama hesabı ' nı arayın. Örneğin, *datahublogsmvxmq*.  
+3. **Kaynak grubu** panosunda, *datahublogs \* * depolama hesabı ' nı arayın. Örneğin, *datahublogsmvxmq*.  
 4. **Ad** sütununda **, depolama hesabı panosunu görüntülemek** için depolama hesabını seçin.
-5. **Açık Azure Depolama Gezgini** uygulamasını görüntülemek için **datahubbloglar\* ** bölmesinde **Explorer 'da aç** ' ı seçin.
+5. **Açık Azure Depolama Gezgini** uygulamasını görüntülemek için **datahubbloglar \* ** bölmesinde **Explorer 'da aç** ' ı seçin.
 6. Sol bölmede, **BLOB kapsayıcıları**' nı seçin ve ardından Azure Data Factory günlükleri için **iş günlükleri** ' ni veya App Service Günlükler için **appınsights günlüklerini** seçin.
 7. **Yükle** ' yi seçin ve günlükleri makinenizde yerel bir klasöre indirin.
 
@@ -297,11 +297,11 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Hızlandırıcı için Azure Data Factory iş günlüklerini veya App Service günlüklerini toplayın
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmtempts Hızlandırıcı kaynak grubunu arayın.
-3. **Kaynak grubu** panosunda, *depolama\* * depolama hesabı ' nı arayın. Örneğin, *storagedop4k\**.
+3. **Kaynak grubu** panosunda, *depolama \* * depolama hesabı ' nı arayın. Örneğin, *storagedop4k \* *.
 4. **Depolama hesabı** panosunu görüntülemek için **ad** sütunundaki depolama hesabını seçin.
-5. **Depolama\* ** bölmesinde, Azure Depolama Gezgini uygulamasını açmak için **Explorer 'da aç** ' ı seçin.
+5. **Depolama \* ** bölmesinde, Azure Depolama Gezgini uygulamasını açmak Için **Explorer 'da aç** ' ı seçin.
 6. Sol bölmede, **BLOB kapsayıcıları**' nı seçin ve ardından Azure Data Factory günlükleri için **iş günlükleri** ' ni veya App Service Günlükler için **appınsights günlüklerini** seçin.
 7. **Yükle** ' yi seçin ve günlükleri makinenizde yerel bir klasöre indirin.
 

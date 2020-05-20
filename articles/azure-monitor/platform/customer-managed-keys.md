@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/13/2020
-ms.openlocfilehash: 71a28d4a0b69b117039f998891e082740e4269a2
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: aec093d829964c770f59ec7bd328fabdd56e6e86
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402553"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654856"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Izleyici müşteri tarafından yönetilen anahtar 
 
@@ -21,7 +21,7 @@ Yapılandırmadan önce aşağıdaki [sınırlamaları ve kısıtlamaları](#lim
 
 ## <a name="disclaimers"></a>Bildirimler
 
-CMK özelliği adanmış Log Analytics kümelerine teslim edilir. [Log Analytics kümeleri fiyatlandırma modeli](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) 1000 GB/gün düzeyinden Itibaren kapasite rezervasyonları kullanır.
+CMK özelliği adanmış Log Analytics kümelerine teslim edilir. Bölgenizde gereken kapasiteye sahip olduğunuzu doğrulamak için aboneliğinizin daha önce beyaz listeye alınmasını istiyoruz. Aboneliğinizi beyaz listeye almak için Microsoft kişinizi kullanın.
 
 ## <a name="customer-managed-key-cmk-overview"></a>Müşteri tarafından yönetilen anahtar (CMK) genel bakış
 
@@ -30,6 +30,8 @@ Bekleyen şifreleme ( https://docs.microsoft.com/azure/security/fundamentals/enc
 Azure Izleyici, Azure tarafından yönetilen anahtarlar kullanılarak tüm verilerin Rest 'te şifrelenmesini sağlar. Azure Izleyici Ayrıca, [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) depolanan ve sistem tarafından atanan [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)doğrulaması kullanan depolama tarafından erişilen kendi anahtarınızı kullanarak veri şifrelemesi için bir seçenek sağlar   . Bu anahtar, [yazılım ya da donanım HSM korumalı](https://docs.microsoft.com/azure/key-vault/key-vault-overview)olabilir. 
 
 Azure Izleyici şifreleme kullanımı, [Azure depolama şifrelemesiyle](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)aynı şekilde   çalışır.
+
+CMK özelliği adanmış Log Analytics kümelerine teslim edilir. [Log Analytics kümeleri fiyatlandırma modeli](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) 1000 GB/gün düzeyinden Itibaren kapasite rezervasyonları kullanır.
 
 Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu veriler CMK yapılandırmasına bakılmaksızın Microsoft anahtarlarıyla şifreli olarak kalır, ancak SSD verileri üzerindeki denetiminiz, [anahtar iptalinde](#cmk-kek-revocation)kalır. 2020 ikinci yarısında CMK ile şifrelenen SSD verilerinin olması için çalışıyoruz.
 
@@ -67,7 +69,7 @@ Aşağıdaki kurallar geçerlidir:
 
 ## <a name="cmk-provisioning-procedure"></a>CMK sağlama prosedürü
 
-1. Abonelik beyaz listesi--Log Analytics kümesi sağlamak için bölgenizde gereken kapasiteye sahip olduğumuz güvence altına almak Için aboneliğinizi doğrulamanız ve yeniden listelemesi gerekir
+1. Abonelik beyaz listesi--CMK özelliği adanmış Log Analytics kümelerine dağıtılır. Bölgenizde gereken kapasiteye sahip olduğunuzu doğrulamak için aboneliğinizin daha önce beyaz listeye alınmasını istiyoruz. Aboneliğinizi beyaz listeye almak için Microsoft kişinizi kullanın
 2. Azure Key Vault oluşturma ve anahtar depolama
 3. *Küme* kaynağı oluşturma
 5. Key Vault izinler veriliyor
@@ -78,7 +80,7 @@ Yordam, şu anda Kullanıcı arabiriminde desteklenmez ve sağlama işlemi REST 
 > [!IMPORTANT]
 > Herhangi bir API isteği, istek üst bilgisinde bir taşıyıcı yetkilendirme belirteci içermelidir.
 
-Örneğin:
+Örnek:
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
@@ -161,7 +163,7 @@ Zaten oluşturmak için gereken bir Azure Key Vault oluşturun veya kullanın ve
 ![Geçici silme ve Temizleme koruması ayarları](media/customer-managed-keys/soft-purge-protection.png)
 
 Bu ayarlar CLı ve PowerShell aracılığıyla kullanılabilir:
-- [Geçici silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+- [Geçici Silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
 - Geçici silme işleminden sonra bile gizli/kasaların silinmesini zorlamak için [koruma koruyucuları temizle](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)
 
 ### <a name="create-cluster-resource"></a>*Küme* kaynağı oluştur
@@ -595,5 +597,5 @@ Verilerin her zaman, Key Vault ' de yeni anahtar şifreleme anahtarı (KEK) sür
 
 - Anahtar sürümünüzü Key Vault güncelleştirir ve *küme* kaynağındaki yeni anahtar tanımlayıcı ayrıntılarını güncelleştirmemeniz durumunda, Log Analytics kümesi önceki anahtarınızı kullanmaya devam eder ve verileriniz erişilemez hale gelir. Veri alımı ve veri sorgulama yeteneği sağlamak için *küme* kaynağında yeni anahtar tanımlayıcı ayrıntılarını güncelleştirin.
 
-- Müşteri tarafından yönetilen anahtarla ilgili destek ve yardım için kişilerinizi Microsoft 'a kullanın.
+- Müşteri tarafından yönetilen anahtarla ilgili destek ve yardım için, Microsoft kişinizi kullanarak bizimle iletişime geçin.
 

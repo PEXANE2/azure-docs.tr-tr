@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2f6e091b6e0285bea5fef9e4d0be40faec936c6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 469fdf19f8c5fa511070f2d809d06829578c2131
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633135"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653734"
 ---
-# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>Diğer hizmetleri bir SQL Analytics veri ambarı ile tümleştirme
+# <a name="integrate-other-services-with-a-synapse-sql-pool-data-warehouse"></a>Diğer hizmetleri bir Synapse SQL havuzuyla Tümleştirme (veri ambarı)
 
-Azure SYNAPSE Analytics içindeki SQL Analytics özelliği, kullanıcıların Azure 'daki diğer birçok hizmet ile tümleştirilmesine olanak sağlar. SQL Analytics 'i kullanarak, SQL havuzu kaynağı aracılığıyla bir veri ambarı oluşturabilirsiniz. Bu işlem, bazı ek hizmetlerden daha sonra şunlar olabilir:
+Azure SYNAPSE Analytics içindeki SQL havuzu özelliği, kullanıcıların Azure 'daki diğer birçok hizmet ile tümleşmesini sağlar. SYNAPSE SQL kullanarak, SQL havuzu kaynağı aracılığıyla bir veri ambarı oluşturabilirsiniz. Bu işlem, bazı ek hizmetlerden yararlanarak şunlar olabilir:
 
 * Power BI
 * Azure Data Factory
@@ -31,9 +31,9 @@ Azure genelinde Tümleştirme Hizmetleri hakkında daha fazla bilgi için, [Tüm
 
 ## <a name="power-bi"></a>Power BI
 
-Power BI tümleştirme, bir veri ambarının işlem gücünü Power BI dinamik raporlama ve görselleştirmesiyle birleştirmenizi sağlar. Power BI tümleştirme Şu anda şunları içerir:
+Power BI tümleştirme, bir veri ambarının işlem gücünü Power BI dinamik raporlama ve görselleştirmesiyle birleştirmenizi sağlar. Power BI tümleştirmesi şu anda aşağıdakileri içermektedir:
 
-* **Doğrudan Bağlan**: SQL havuzu kullanılarak sağlanan bir veri ambarına karşı mantıksal olarak aşağı doğru bir şekilde daha gelişmiş bir bağlantı. Aşağı itme daha büyük bir ölçekte daha hızlı analiz sağlar.
+* **Doğrudan Bağlan**: SQL havuzu kullanılarak sağlanan bir veri ambarına karşı mantıksal olarak aşağı doğru bir şekilde daha gelişmiş bir bağlantı. İtme, geniş ölçekli analiz işlemlerinin daha hızlı tamamlanmasını sağlar.
 * **Power BI açın**: ' Power BI aç ' düğmesi, bağlanmak için basitleştirilmiş bir yöntem için örnek bilgilerini Power BI geçirir.
 
 Daha fazla bilgi için bkz. [Power BI Ile tümleştirme](sql-data-warehouse-get-started-visualize-with-power-bi.md)veya [Power BI belgeleri](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).

@@ -4,12 +4,12 @@ description: İşlev yürütmeyi izlemek için Azure Application Insights Azure 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 0b4d0f43d00a919c589a11c81df2818f3a058ed8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6218e5163212540f2132020dffea520d34b77cc4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121599"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648870"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -21,7 +21,10 @@ Gerekli Application Insights izleme Azure Işlevleri 'nde yerleşik olduğundan,
 
 ## <a name="application-insights-pricing-and-limits"></a>Fiyatlandırma ve limitleri Application Insights
 
-Işlev uygulamalarıyla Application Insights tümleştirmeyi ücretsiz olarak deneyebilirsiniz. Ücretsiz olarak ne kadar veri işlenebileceğini gösteren günlük bir sınır vardır. Sınama sırasında bu sınıra ulaşırsınız. Günlük sınırınıza yaklaşdığınızda Azure, Portal ve e-posta bildirimleri sağlar. Bu uyarıları kaçırırsanız ve Sınıra ulaşırsanız yeni Günlükler Application Insights sorgularda görünmez. Gereksiz sorun giderme zamanından kaçının limiti göz önünde bulundurun. Daha fazla bilgi için bkz. [Application Insights fiyatlandırma ve veri hacmini yönetme](../azure-monitor/app/pricing.md).
+Azure Işlevleri ile Application Insights tümleştirmeyi ücretsiz olarak deneyebilirsiniz. Ücretsiz olarak ne kadar veri işlenebileceğini gösteren günlük bir sınır vardır. Sınama sırasında bu sınıra ulaşırsınız. Günlük sınırınıza yaklaşdığınızda Azure, Portal ve e-posta bildirimleri sağlar. Bu uyarıları kaçırırsanız ve Sınıra ulaşırsanız yeni Günlükler Application Insights sorgularda görünmez. Gereksiz sorun giderme zamanından kaçının limiti göz önünde bulundurun. Daha fazla bilgi için bkz. [Application Insights fiyatlandırma ve veri hacmini yönetme](../azure-monitor/app/pricing.md).
+
+> [!IMPORTANT]
+> Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Örnekleme varsayılan olarak etkindir. Eksik veri olduğunu görürseniz, örnekleme ayarlarını belirli izleme senaryonuza uyacak şekilde ayarlamanız gerekebilir. Daha fazla bilgi için bkz. [örneklemesi yapılandırma](#configure-sampling).
 
 İşlev uygulamanız için kullanılabilen Application Insights özelliklerinin tam listesi, [Azure işlevleri tarafından desteklenen özellikler için Application Insights](../azure-monitor/app/azure-functions-supported-features.md)ayrıntılı olarak açıklanmıştır.
 
@@ -63,7 +66,7 @@ Aşağıdaki Application Insights, işlevinizdeki davranış, performans ve hata
 | Araştır | Açıklama |
 | ---- | ----------- |
 | **[Hatalar](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
-| **[Mının](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri**başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu veriler, işlevlerin temeldeki kaynaklarınızın gerisinde bulunduğu hata ayıklama senaryolarında yararlı olabilir. |
+| **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri**başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu veriler, işlevlerin temeldeki kaynaklarınızın gerisinde bulunduğu hata ayıklama senaryolarında yararlı olabilir. |
 | **[Ölçümler](../azure-monitor/app/metrics-explorer.md)** | Ölçümleri temel alan grafikler ve uyarılar oluşturun. Ölçümler, işlev etkinleştirmeleri, yürütme süresi ve başarı oranları sayısını içerir. |
 | **[Canlı ölçümler](../azure-monitor/app/live-stream.md)** | Ölçüm verilerini neredeyse gerçek zamanlı olarak oluşturulan şekilde görüntüleyin. |
 
@@ -229,7 +232,7 @@ Bir kategorinin tüm günlüklerini gizlemek için günlük düzeyi ' ni kullana
 
 ## <a name="configure-the-aggregator"></a>Toplayıcısı yapılandırma
 
-Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [Host. JSON] dosyasında yapılandırabilirsiniz.  Bir örneği aşağıda verilmiştir:
+Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [Host. JSON] dosyasında yapılandırabilirsiniz.  İşte bir örnek:
 
 ```json
 {
@@ -242,7 +245,7 @@ Bir kategorinin tüm günlüklerini gizlemek için günlük düzeyi ' ni kullana
 
 ## <a name="configure-sampling"></a>Örnekleme yapılandırma
 
-Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Host. JSON]içinde örnekleme yapılandırabilirsiniz.  Bir örneği aşağıda verilmiştir:
+Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Host. JSON]içinde örnekleme yapılandırabilirsiniz.  İşte bir örnek:
 
 ### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
@@ -271,9 +274,6 @@ Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde 
   }
 }
 ```
-
-> [!NOTE]
-> [Örnekleme](../azure-monitor/app/sampling.md) varsayılan olarak etkindir. Eksik veri olduğunu görürseniz, örnekleme ayarlarını belirli izleme senaryonuza uyacak şekilde ayarlamanız gerekebilir.
 
 ## <a name="write-logs-in-c-functions"></a>C# işlevlerinde yazma günlükleri
 

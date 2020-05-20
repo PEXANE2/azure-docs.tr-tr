@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f10b987fa8783084b14774b9bce5e857f3c59c4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408038"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650485"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzundaki geçici tablolar
 Bu makale, geçici tabloları kullanmaya yönelik temel kılavuz içerir ve oturum düzeyi geçici tablolarının ilkelerini vurgular. 
@@ -29,7 +29,7 @@ Geçici tablolar yalnızca oluşturuldukları oturum için görünür ve bu otur
 
 Geçici tablolar, sonuçları uzak depolama yerine yerel olarak yazıldığı için bir performans avantajı sunar.
 
-Geçici tablolar, özellikle de ara sonuçların geçici olduğu dönüştürme sırasında verileri işlerken yararlı olur. SQL Analytics ile, geçici tablolar oturum düzeyinde bulunur.  Bunlar yalnızca oluşturuldukları oturum tarafından görülebilir. Bu nedenle, bu oturum kapattığında otomatik olarak bırakılır. 
+Geçici tablolar, özellikle de ara sonuçların geçici olduğu dönüştürme sırasında verileri işlerken yararlı olur. SQL havuzu ile, geçici tablolar oturum düzeyinde mevcuttur.  Bunlar yalnızca oluşturuldukları oturum tarafından görülebilir. Bu nedenle, bu oturum kapattığında otomatik olarak bırakılır. 
 
 ## <a name="temporary-tables-in-sql-pool"></a>SQL havuzundaki geçici tablolar
 
@@ -37,7 +37,7 @@ SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel olarak yazıldı
 
 ### <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
 
-Geçici tablolar, tablo adınızın bir `#`ile önek olarak eklenerek oluşturulur.  Örneğin:
+Geçici tablolar, tablo adınızın bir ile önek olarak eklenerek oluşturulur `#` .  Örnek:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -57,7 +57,7 @@ WITH
 )
 ```
 
-Geçici tablolar, tam olarak aynı yaklaşımla `CTAS` birlikte kullanılarak da oluşturulabilir:
+Geçici tablolar `CTAS` , tam olarak aynı yaklaşımla birlikte kullanılarak da oluşturulabilir:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -105,7 +105,7 @@ GROUP BY
 ## <a name="dropping-temporary-tables"></a>Geçici tabloları bırakma
 Yeni bir oturum oluşturulduğunda geçici tabloların olmaması gerekir.  
 
-Aynı adı taşıyan bir geçici oluşturan aynı saklı yordamı arıyorsanız, deyimlerinizin `CREATE TABLE` başarılı olmasını sağlamak için, aşağıdaki örnekte olduğu gibi basit bir ön varlık öncesi denetim `DROP` kullanılabilir:
+Aynı adı taşıyan bir geçici oluşturan aynı saklı yordamı arıyorsanız, deyimlerinizin başarılı olmasını sağlamak için, `CREATE TABLE` Aşağıdaki örnekte olduğu gibi basit bir ön varlık öncesi denetim `DROP` kullanılabilir:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -114,7 +114,7 @@ BEGIN
 END
 ```
 
-Kodlama tutarlılığı için, bu düzenin hem tablolar hem de geçici tablolar için kullanılması iyi bir uygulamadır.  Ayrıca, kodunuzda bu dosyalarla işiniz bittiğinde geçici `DROP TABLE` tabloları kaldırmak için kullanmanız iyi bir fikirdir.  
+Kodlama tutarlılığı için, bu düzenin hem tablolar hem de geçici tablolar için kullanılması iyi bir uygulamadır.  Ayrıca `DROP TABLE` , kodunuzda bu dosyalarla işiniz bittiğinde geçici tabloları kaldırmak için kullanmanız iyi bir fikirdir.  
 
 Saklı yordam geliştirmede, bu nesnelerin temizlendiğinden emin olmak için bir yordamın sonunda bırakma komutlarının birlikte paketlenmiştir.
 
@@ -203,7 +203,7 @@ Bu aşamada, oluşan tek eylem, DDL deyimleriyle #stats_ddl geçici bir tablo ol
 
 Bu saklı yordam, bir oturum içinde birden çok kez çalıştırıldığında başarısız olmamasını sağlamak için mevcut bir #stats_ddl bırakır.  
 
-Bununla birlikte, `DROP TABLE` saklı yordamın sonunda, saklı yordam tamamlandığında, saklı yordamın dışında okunabilmesi için oluşturulan tabloyu bırakır.  
+Bununla birlikte, saklı yordamın `DROP TABLE` sonunda, saklı yordam tamamlandığında, saklı yordamın dışında okunabilmesi için oluşturulan tabloyu bırakır.  
 
 SQL havuzunda, diğer SQL Server veritabanlarının aksine, geçici tabloyu onu oluşturan yordamın dışında kullanmak mümkündür.  SQL havuzu geçici tabloları, oturum içinde **herhangi bir yerde** kullanılabilir. Bu özellik aşağıdaki örnekte olduğu gibi daha modüler ve yönetilebilir koda yol açabilir:
 
@@ -233,5 +233,5 @@ Ayrıca, görünümler geçici tablolarda oluşturulamaz.  Geçici tablolar yaln
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tablo geliştirme hakkında daha fazla bilgi için [SQL Analytics kaynaklarını kullanarak tabloları tasarlama](sql-data-warehouse-tables-overview.md) makalesine bakın.
+Tablo geliştirme hakkında daha fazla bilgi edinmek için [SYNAPSE SQL kaynaklarını kullanarak tabloları tasarlama](sql-data-warehouse-tables-overview.md) makalesini inceleyin.
 

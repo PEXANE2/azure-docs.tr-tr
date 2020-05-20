@@ -3,12 +3,12 @@ title: Azure VM yedeğinden dosya ve klasörleri kurtarma
 description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klasörleri kurtarmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c518c080f3789d36d2ca600ade23a0b4b2ab385
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273312"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652119"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -53,11 +53,11 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
 
     ![Oluşturulan parola](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
-7. İndirme konumundan (genellikle Indirmeler klasörü), çalıştırılabilir veya betiğe sağ tıklayın ve yönetici kimlik bilgileriyle çalıştırın. İstendiğinde, parolayı yazın veya parolayı bellekten yapıştırın ve **ENTER**tuşuna basın. Geçerli parola girildikten sonra, komut dosyası kurtarma noktasına bağlanır.
+7. Betiği yürütmek için [doğru makineye sahip](#selecting-the-right-machine-to-run-the-script) olduğunuzdan emin olun. Doğru makine, betiği indirdiğiniz makinada sahip ise, indirme bölümüne devam edebilirsiniz. İndirme konumundan (genellikle *indirmeler* klasörü), çalıştırılabilir veya betiğe sağ tıklayın ve yönetici kimlik bilgileriyle çalıştırın. İstendiğinde, parolayı yazın veya parolayı bellekten yapıştırın ve **ENTER**tuşuna basın. Geçerli parola girildikten sonra, komut dosyası kurtarma noktasına bağlanır.
 
     ![Dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
-8. Linux makinelerinde, bir Python betiği oluşturulur. Bunlardan birinin betiği indirmesi ve ilgili/uyumlu Linux sunucusuna kopyalanması gerekir. İle ```chmod +x <python file name>```yürütmek için izinleri değiştirmeniz gerekebilir. Sonra Python dosyasını ile ```./<python file name>```çalıştırın.
+8. Linux makinelerinde, bir Python betiği oluşturulur. Bunlardan birinin betiği indirmesi ve ilgili/uyumlu Linux sunucusuna kopyalanması gerekir. İle yürütmek için izinleri değiştirmeniz gerekebilir ```chmod +x <python file name>``` . Sonra Python dosyasını ile çalıştırın ```./<python file name>``` .
 
 Betiğin başarıyla çalıştığından emin olmak için [erişim gereksinimleri](#access-requirements) bölümüne bakın.
 
@@ -65,7 +65,7 @@ Betiğin başarıyla çalıştığından emin olmak için [erişim gereksinimler
 
 #### <a name="for-windows"></a>Windows için
 
-Yürütülebilir dosyayı çalıştırdığınızda, işletim sistemi yeni birimleri takar ve sürücü harfleri atar. Bu sürücülere gözatabilmeniz için Windows Gezgini veya dosya Gezgini ' ni kullanabilirsiniz. Birimlere atanan sürücü harfleri, özgün sanal makineyle aynı harfle bulunmayabilir. Ancak, birim adı korunur. Örneğin, özgün sanal makinedeki birim "veri diski (E:`\`)" ise, bu birim yerel bilgisayara "veri diski (' herhangi bir harf ':`\`) olarak iliştirilebilir. Dosyalarınız veya klasörünüzü bulana kadar betik çıktısında bahsedilen tüm birimlere göz atabilirsiniz.  
+Yürütülebilir dosyayı çalıştırdığınızda, işletim sistemi yeni birimleri takar ve sürücü harfleri atar. Bu sürücülere gözatabilmeniz için Windows Gezgini veya dosya Gezgini ' ni kullanabilirsiniz. Birimlere atanan sürücü harfleri, özgün sanal makineyle aynı harfle bulunmayabilir. Ancak, birim adı korunur. Örneğin, özgün sanal makinedeki birim "veri diski (E: `\` )" ise, bu birim yerel bilgisayara "veri diski (' herhangi bir harf ':) olarak iliştirilebilir `\` . Dosyalarınız veya klasörünüzü bulana kadar betik çıktısında bahsedilen tüm birimlere göz atabilirsiniz.  
 
    ![Dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
@@ -84,6 +84,23 @@ Dosyaları tanımladıktan ve yerel bir depolama konumuna kopyaladıktan sonra e
 Diskler kaldırıldıktan sonra bir ileti alırsınız. Diskleri kaldırabilmeniz için yenilemenin bağlantısının yenilenmesi birkaç dakika sürebilir.
 
 Linux 'ta, kurtarma noktası bağlantısı kapatıldıktan sonra, işletim sistemi ilgili bağlama yollarını otomatik olarak kaldırmaz. Bağlama yolları "yalnız," birimleri olarak bulunur ve görünür, ancak dosyalara erişirken/yazarken bir hata oluşturur. Bunlar el ile kaldırılabilirler. Betiği çalıştırıldığında, önceki kurtarma noktalarından mevcut olan tüm birimleri tanımlar ve izin üzerine temizler.
+
+## <a name="selecting-the-right-machine-to-run-the-script"></a>Betiği çalıştırmak için doğru makineyi seçme
+
+Betik başarıyla indirildiyse, sonraki adım betiği çalıştırmayı planladığınız makinenin doğru makine olup olmadığını doğrulamadır. Makinede yerine getirilmesi gereken gereksinimler aşağıda verilmiştir.
+
+### <a name="original-backed-up-machine-versus-another-machine"></a>Yedeklenen özgün makine ve başka bir makineye karşı
+
+1. Yedeklenen makine büyük bir disk VM 'si ise, disk sayısı 16 diskten daha büyükse veya her disk 4 TB 'den büyükse, betik **başka bir makinede yürütülmelidir** ve [bu gereksinimlerin](#file-recovery-from-virtual-machine-backups-having-large-disks) karşılanması gerekir.
+1. Yedeklenen makine büyük bir disk VM 'si olmasa bile, [Bu senaryolarda](#special-configurations) betik aynı yedeklenen sanal makinede çalıştırılamaz.
+
+### <a name="os-requirements-on-the-machine"></a>Makinedeki işletim sistemi gereksinimleri
+
+Betiğin yürütülmesi gereken makinenin [Bu işletim sistemi gereksinimlerini](#system-requirements)karşılaması gerekir.
+
+### <a name="access-requirements-for-the-machine"></a>Makine için erişim gereksinimleri
+
+Betiğin yürütülmesi gereken makinenin [Bu erişim gereksinimlerini](#access-requirements)karşılaması gerekir.
 
 ## <a name="special-configurations"></a>Özel yapılandırma
 
@@ -155,7 +172,7 @@ mount [RAID Disk Path] [/mountpath]
 
 RAID diskinde yapılandırılmış başka bir LVM varsa, LVM bölümleri için önceki yordamı kullanın, ancak RAID disk adı yerine birim adını kullanın.
 
-## <a name="system-requirements"></a>Sistem gereksinimleri
+## <a name="system-requirements"></a>Sistem Gereksinimleri
 
 ### <a name="for-windows-os"></a>Windows işletim sistemi için
 
@@ -210,15 +227,13 @@ Betiği kısıtlı erişimi olan bir bilgisayarda çalıştırırsanız, erişim
 
 > [!NOTE]
 >
-> - İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Exampple için \': indirilen betik adı\'\_\'\' *ContosoVM_wcus_12345678* gibi VMName geoname _\'GUID\'ile başlar
-> - URL şöyle olur <https://pod01-rec2.wcus.backup.windowsazure.com>"
+> - İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Exampple için: indirilen betik adı \' \' \_ \' ContosoVM_wcus_12345678 gibi VMName geoname \' _ \' GUID \' *ContosoVM_wcus_12345678* ile başlar
+> - URL şöyle olur <https://pod01-rec2.wcus.backup.windowsazure.com> "
 >
 
 Linux için, betik ' Open-iSCSI ' ve ' lshw ' bileşenlerinin kurtarma noktasına bağlanmasını gerektirir. Bileşenler, betiğin çalıştırıldığı bilgisayarda yoksa, komut dosyası bileşenleri yüklemek için izin ister. Gerekli bileşenleri yüklemeye izin verin.
 
-Komut dosyasının çalıştırıldığı `download.microsoft.com` makine ve kurtarma noktasındaki veriler arasında güvenli bir kanal oluşturmak için kullanılan bileşenleri indirmek için erişim gerekir.
-
-Betiği, yedeklenen VM ile aynı (veya uyumlu) işletim sistemine sahip herhangi bir makinede çalıştırabilirsiniz. Uyumlu işletim sistemleri için [uyumlu IŞLETIM sistemi tablosuna](backup-azure-restore-files-from-vm.md#system-requirements) bakın. Korumalı Azure sanal makinesi Windows depolama alanları (Windows Azure VM 'Ler için) veya LVM/RAID dizileri (Linux VM 'Ler için) kullanıyorsa, çalıştırılabilir veya betiği aynı sanal makinede çalıştıramazsınız. Bunun yerine, çalıştırılabilir veya betiği, uyumlu bir işletim sistemi olan herhangi bir makinede çalıştırın.
+`download.microsoft.com`Komut dosyasının çalıştırıldığı makine ve kurtarma noktasındaki veriler arasında güvenli bir kanal oluşturmak için kullanılan bileşenleri indirmek için erişim gerekir.
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Büyük disklere sahip sanal makine yedeklemelerinden dosya kurtarma
 

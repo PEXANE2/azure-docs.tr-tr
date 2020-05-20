@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3336869a5f91613849cdccb67f9d804205148608
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084286"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652522"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -35,13 +35,13 @@ ms.locfileid: "82084286"
 * [HB serisi](../hb-series.md)
 * [HC serisi](../hc-series.md)
 * [LS-Serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) ve [Lsv2 serisi](../lsv2-series.md)
-* [Mv2 serisi](../mv2-series.md)
+* [M serisi](../m-series.md)
+* [Mv2-serisi](../mv2-series.md)<sup>1</sup>
 * [NCv2-Series](../ncv2-series.md) ve [NCv3 serisi](../ncv3-series.md)
 * [ND serisi](../nd-series.md)
 * [NVv3 serisi](../nvv3-series.md)
 
-> [!NOTE]
-> Mv2 serisi VM 'Ler için 2. nesil VM görüntülerinin kullanımı, Mv2 serisi yalnızca 2. nesil VM görüntüleriyle çalıştığından genel kullanıma sunulmuştur. 1. nesil VM görüntüleri Mv2 serisi VM 'lerde desteklenmez. 
+<sup>1</sup> Mv2 serisi, 1. nesil VM görüntülerini desteklemez ve yalnızca 2. nesil görüntülerin bir alt kümesini destekler. Ayrıntılar için lütfen bkz. [Mv2-Series belgeleri](https://docs.microsoft.com/azure/virtual-machines/mv2-series) .
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketi 'nde 2. nesil VM görüntüleri
 
@@ -72,9 +72,9 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. nesil ve 2. nesil Özellikler
 
-| Özellik | 1. nesil | 2. nesil |
+| Öne çıkan özelliği | 1. nesil | 2. nesil |
 |---------|--------------|--------------|
-| Başlatma             | PCAT         | UEFı |
+| Önyükleme             | PCAT         | UEFı |
 | Disk denetleyicileri | IDE          | SCSI |
 | VM boyutları         | Tüm VM boyutları | Yalnızca Premium depolamayı destekleyen VM 'Ler |
 
@@ -116,16 +116,10 @@ Aşağıda, Azure portal 'de 2. nesil (Gen2) VM oluşturma adımları verilmişt
 
 Ayrıca, 1. nesil veya 2. nesil SKU 'ya doğrudan başvurarak bir VM oluşturmak için PowerShell 'i de kullanabilirsiniz.
 
-Örneğin, `WindowsServer` teklifte SKU 'ların bir listesini almak Için aşağıdaki PowerShell cmdlet 'ini kullanın.
+Örneğin, teklifte SKU 'ların bir listesini almak için aşağıdaki PowerShell cmdlet 'ini kullanın `WindowsServer` .
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
-```
-
-Alternatif olarak, **Yayımcı**tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
-
-```azurecli
-az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 İşletim sistemi olarak Windows Server 2012 ile bir VM oluşturuyorsanız, şunun gibi bir 1. nesil (BIOS) veya 2. nesil (UEFı) VM SKU 'SU seçersiniz:
@@ -136,6 +130,14 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 Desteklenen Market görüntülerinin geçerli listesi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
+
+#### <a name="azure-cli"></a>Azure CLI
+
+Alternatif olarak, **Yayımcı**tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
 
 ### <a name="managed-image-or-managed-disk"></a>Yönetilen görüntü veya yönetilen disk
 

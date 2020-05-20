@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/18/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: e00b6dd5af1cb489aee9e8b4c9f3337eb02e4b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c2ea38dfa799239adde158506e1359fb84adcc4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878111"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650525"
 ---
 # <a name="classroom-lab-setup-guide"></a>Sınıf Laboratuvarı Kurulum Kılavuzu
 
@@ -127,7 +127,12 @@ Sınıfınızın laboratuvarınızın gereksinimlerini anladıktan sonra, ayarla
    - [Bağlantı kesildiğinde otomatik kapatmayı etkinleştirme](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 
         > [!NOTE]
-        > Zamanlamalar, Kotalar ve otomatik kapatmalar şablon VM 'ye uygulanmaz. Sonuç olarak, kullanılmayan şablon VM 'yi kapattığınızdan emin olmalısınız. Aksi takdirde, ücretlemeye devam eder. Ayrıca, varsayılan olarak, bir laboratuvar oluşturduğunuzda, şablon VM otomatik olarak başlatılır. Laboratuvarın kurulumunu hemen belirttiğinizden emin olun ve şablon VM 'yi kapatın.
+        > Zamanlamalar ve kotalar, şablon VM 'ye uygulanmaz, ancak otomatik kapatılma ayarları uygulanır. 
+        > 
+        > Laboratuvar oluşturduğunuzda, şablon VM oluşturulur ancak başlatılmaz. Bunu başlatabilir, ona bağlanabilir ve laboratuvar için önkoşul olan herhangi bir yazılımı yükleyebilir ve sonra yayımlayabilirsiniz. Şablon VM 'yi yayımladığınızda, bunu yapmadıysanız, sizin için otomatik olarak kapatılır. 
+        > 
+        > Şablon VM 'Leri çalışırken **Maliyet** doğurur, bu nedenle çalışıyor olması GEREKMIYORSA şablon VM 'nin kapatıldığından emin olun. 
+
 
 1. **Panoyu kullanın.** Yönergeler için bkz. [Laboratuvar panosunu kullanma](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard).
 

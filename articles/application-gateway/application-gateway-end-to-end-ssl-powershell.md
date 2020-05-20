@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57f2ce1fb8bf6415387eac5c760dadeb04e65648
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312508"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648426"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>PowerShell ile Application Gateway kullanarak uçtan uca TLS Yapılandırma
 
@@ -167,7 +167,9 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
    > [!NOTE]
    > Varsayılan araştırma, arka ucun IP adresindeki *varsayılan* TLS bağlamasındaki ortak anahtarı alır ve aldığı ortak anahtar değerini burada sağladığınız ortak anahtar değerine karşılaştırır. 
    > 
-   > Arka uçta ana bilgisayar üst bilgileri ve Sunucu Adı Belirtme (SNı) kullanıyorsanız, alınan ortak anahtar trafiğin akabileceği hedeflenen site olmayabilir. Şüpheniz varsa, *varsayılan* TLS bağlaması https://127.0.0.1/ için hangi sertifikanın kullanıldığını doğrulamak üzere arka uç sunucularını ziyaret edin. Bu bölümdeki bu istekten ortak anahtarı kullanın. HTTPS bağlamaları üzerinde ana bilgisayar-üst bilgileri ve SNı kullanıyorsanız ve arka uç sunucularında el ile tarayıcı isteğinden https://127.0.0.1/ bir yanıt ve sertifika almazsanız, bunlar üzerinde varsayılan bir TLS bağlaması ayarlamanız gerekir. Bunu yapmazsanız, yoklamalar başarısız olur ve arka uç daha fazla listede değildir.
+   > Arka uçta ana bilgisayar üst bilgileri ve Sunucu Adı Belirtme (SNı) kullanıyorsanız, alınan ortak anahtar trafiğin akabileceği hedeflenen site olmayabilir. Şüpheniz varsa, https://127.0.0.1/ *varsayılan* TLS bağlaması için hangi sertifikanın kullanıldığını doğrulamak üzere arka uç sunucularını ziyaret edin. Bu bölümdeki bu istekten ortak anahtarı kullanın. HTTPS bağlamaları üzerinde ana bilgisayar-üst bilgileri ve SNı kullanıyorsanız ve arka uç sunucularında el ile tarayıcı isteğinden bir yanıt ve sertifika almazsanız, https://127.0.0.1/ bunlar üzerinde varsayılan BIR TLS bağlaması ayarlamanız gerekir. Bunu yapmazsanız, yoklamalar başarısız olur ve arka uç daha fazla listede değildir.
+   
+   Application Gateway SNı hakkında daha fazla bilgi için, bkz. [TLS sonlandırmasına genel bakış ve Application Gateway ile uçtan uca TLS](ssl-overview.md).
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -200,7 +202,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Uygulama ağ geçidinin örnek boyutunu yapılandırın. Kullanılabilen boyutlar **Standart\_küçük**, **Standart\_orta**ve **\_standart boyutlardır**.  Kapasite için, kullanılabilir değerler **1** ile **10**arası değerlerdir.
+10. Uygulama ağ geçidinin örnek boyutunu yapılandırın. Kullanılabilen boyutlar **Standart \_ küçük**, **Standart \_ Orta**ve **Standart \_ boyutlardır**.  Kapasite için, kullanılabilir değerler **1** ile **10**arası değerlerdir.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -217,7 +219,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Aşağıdaki örnek, en düşük protokol sürümünü **TLSv1_2** olarak ayarlar ve **\_TLS ecdhe\_ECDSA\_'yı\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_\_ile AES\_256\_GCM\_SHA384**ve TLS **\_RSA\_ile yalnızca\_AES\_128\_GCM\_SHA256** ile etkinleştirilir.
+    Aşağıdaki örnek, en düşük protokol sürümünü **TLSv1_2** olarak ayarlar ve **TLS \_ ECDHE \_ ECDSA 'yı \_ \_ AES \_ 128 \_ GCM \_ SHA256**, **TLS \_ ECDHE \_ ECDSA ile AES \_ \_ \_ 256 \_ GCM \_ SHA384**ve TLS RSA ile yalnızca ** \_ \_ \_ AES \_ 128 \_ GCM \_ SHA256** ile etkinleştirilir.
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -310,7 +312,7 @@ Yukarıdaki adımlar, uçtan uca TLS ile bir uygulama oluşturma ve belirli TLS 
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Bir TLS ilkesi tanımlayın. Aşağıdaki örnekte, **tlsv 1.0** ve **tlsv 1.1** devre dışıdır ve şifre paketleri ile **TLS\_ecdhe\_ECDSA\_\_, aes\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_\_ile AES\_256\_GCM\_SHA384**ve **\_\_\_AES\_128\_GCM\_SHA256** olan TLS RSA, izin verilen tek alanlardır.
+2. Bir TLS ilkesi tanımlayın. Aşağıdaki örnekte, **tlsv 1.0** ve **tlsv 1.1** devre dışıdır ve şifre paketleri ile **TLS \_ ecdhe \_ ECDSA, AES \_ \_ \_ 128 \_ gcm \_ SHA256**, **TLS \_ ECDHE \_ ECDSA ile AES \_ \_ \_ 256 \_ GCM \_ SHA384**ve ** \_ \_ \_ AES \_ 128 \_ GCM \_ SHA256** olan TLS RSA, izin verilen tek alanlardır.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw

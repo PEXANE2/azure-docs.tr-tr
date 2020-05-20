@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a36ac44fa861b902bfcc370472a2a87e036e5de6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685742"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655006"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Azure üzerinde güvenli uygulamalar geliştirme
 Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -97,7 +97,7 @@ Uygulamanın parolaları otomatik olarak oluşturması gerekiyorsa, oluşturulan
 
 ### <a name="validate-file-uploads"></a>Karşıya dosya yüklemelerini doğrula
 
-Uygulamanız [dosya karşıya yüklemeye](https://www.owasp.org/index.php/Unrestricted_File_Upload)izin veriyorsa, bu riskli etkinlik için uygulayabileceğiniz önlemleri göz önünde bulundurun. Birçok saldırının ilk adımı, saldırı altında olan bir sisteme bazı kötü amaçlı kodlar almanızı sağlar. Bir dosya yükleme işleminin kullanılması, saldırganın bunu gerçekleştirmenize yardımcı olur. OWASP, karşıya yüklediğiniz dosyanın güvende olduğundan emin olmak için bir dosyayı doğrulamaya yönelik çözümler sunar.
+Uygulamanız [dosya karşıya yüklemeye](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload)izin veriyorsa, bu riskli etkinlik için uygulayabileceğiniz önlemleri göz önünde bulundurun. Birçok saldırının ilk adımı, saldırı altında olan bir sisteme bazı kötü amaçlı kodlar almanızı sağlar. Bir dosya yükleme işleminin kullanılması, saldırganın bunu gerçekleştirmenize yardımcı olur. OWASP, karşıya yüklediğiniz dosyanın güvende olduğundan emin olmak için bir dosyayı doğrulamaya yönelik çözümler sunar.
 
 Kötü amaçlı yazılımdan koruma, virüsler, casus yazılım ve diğer kötü amaçlı yazılımları belirleyip kaldırmanıza yardımcı olur. [Microsoft kötü amaçlı yazılımdan](../fundamentals/antimalware.md) koruma veya bir Microsoft iş ortağının Endpoint Protection çözümünü ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)ve [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)) yükleyebilirsiniz.
 

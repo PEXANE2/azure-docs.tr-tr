@@ -10,17 +10,59 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/4/2020
+ms.date: 5/14/2020
 ms.author: yohaddad
-ms.openlocfilehash: e74bccbd7465a8f0e0d2da0a672a88c7d70d666f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9ea1caff5a0aba99bcd0d21b97650d075b830d2a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791570"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656401"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
+
+## <a name="may-2020-guest-os"></a>Mayıs 2020 Konuk işletim sistemi
+>[!NOTE]
+>Nisan Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Nisan Konuk işletim sisteminde aşağıdaki düzeltme ekleri bulunmaktadır. Bu liste değişebilir. "
+
+| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| --- | --- | --- | --- | --- |
+|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  2,98, 3,85, 4,78  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4556813]  |  En son toplu güncelleştirme (LCU)   |  5,43  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4551853]  |  En son toplu güncelleştirme (LCU)   |  6,19  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552940]  |  Aylık toplu   |  2,98  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4556836]  |  Aylık toplu   |  2,98  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4555449]  |  Hizmet yığını güncelleştirmesi   |  2,98  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552920]  |  Aylık toplu   |  2,98  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552979]  |  Aylık toplu   |  3,85  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4556840]  |  Aylık toplu   |  3,85  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552947]  |  Aylık toplu   |  3,85  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552982]  |  Aylık toplu   |  3,85  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552946]  |  Aylık toplu   |  4,78  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4556846]  |  Aylık toplu   |  4,78  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4550994]  |  Hizmet yığını güncelleştirmesi   |  5,43  |  14 Nisan 2020  |
+|  Rel 20-05   |  [4552924]  |  Aylık toplu   |  6,19  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4549947]  |  Hizmet yığını güncelleştirmesi   |  6,19  |  14 Nisan 2020  |
+
+
+[4556798]: https://support.microsoft.com/kb/4556798
+[4556813]: https://support.microsoft.com/kb/4556813
+[4551853]: https://support.microsoft.com/kb/4551853
+[4552940]: https://support.microsoft.com/kb/4552940
+[4556836]: https://support.microsoft.com/kb/4556836
+[4555449]: https://support.microsoft.com/kb/4555449
+[4552920]: https://support.microsoft.com/kb/4552920
+[4552979]: https://support.microsoft.com/kb/4552979
+[4556840]: https://support.microsoft.com/kb/4556840
+[4552947]: https://support.microsoft.com/kb/4552947
+[4552982]: https://support.microsoft.com/kb/4552982
+[4552946]: https://support.microsoft.com/kb/4552946
+[4556846]: https://support.microsoft.com/kb/4556846
+[4550994]: https://support.microsoft.com/kb/4550994
+[4552924]: https://support.microsoft.com/kb/4552924
+[4549947]: https://support.microsoft.com/kb/4549947
+
 
 ## <a name="april-2020-guest-os"></a>Nisan 2020 Konuk işletim sistemi
 
@@ -1190,15 +1232,15 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | MS16-144 |[3204059] |Internet Explorer için toplu güvenlik güncelleştirmesi |2,58, 3,46, 4,39 |13. ara, 2016 |
-| MS16-145 |[3204062] |Microsoft Edge için toplu güvenlik güncelleştirmesi |5,4 |13. ara, 2016 |
+| MS16-145 |[3204062] |Microsoft Edge için toplu güvenlik güncelleştirmesi |5.4 |13. ara, 2016 |
 | MS16-146 |[3204066]   |Microsoft grafik bileşeni için güvenlik güncelleştirmesi|2,58, 3,46, 4,39, 5,4 |13. ara, 2016 |
 | MS16-147 |[3204063]   |Microsoft Uniscribe için güvenlik güncelleştirmesi|2,58, 3,46, 4,39, 5,4 |13. ara, 2016 |
 | MS16-149 |[3205655]   |Microsoft Windows için güvenlik güncelleştirmesi|2,58, 3,46, 4,39, 5,4 |13. ara, 2016 |
-| MS16-150 |[3205642]   |Güvenli çekirdek modu için güvenlik güncelleştirmesi |5,4 |13. ara, 2016 |
+| MS16-150 |[3205642]   |Güvenli çekirdek modu için güvenlik güncelleştirmesi |5.4 |13. ara, 2016 |
 | MS16-151.552 |[3205651]   |Çekirdek modu sürücüleri için güvenlik güncelleştirmesi|2,58, 3,46, 4,39, 5,4 |13. ara, 2016 |
-| MS16- |[3199709]   |Windows çekirdeği için güvenlik güncelleştirmesi |5,4 |13. ara, 2016 |
+| MS16- |[3199709]   |Windows çekirdeği için güvenlik güncelleştirmesi |5.4 |13. ara, 2016 |
 | MS16- |[3207328] |Ortak Günlük Dosya Sistemi sürücü için güvenlik güncelleştirmesi|2,58, 3,46, 4,39, 5,4 |13. ara, 2016 |
-| MS16-155 |[3205640]   |.NET Framework için güvenlik güncelleştirmesi |5,4 |13. ara, 2016 |
+| MS16-155 |[3205640]   |.NET Framework için güvenlik güncelleştirmesi |5.4 |13. ara, 2016 |
 | Yok |[3197868] |Windows 7 SP1 ve Windows Server 2008 R2 SP1 için Kasım 2016 güvenlik aylık kalite toplaması |2,58 |13. ara, 2016 |
 | Yok |[3197877] |Windows Server 2012 için Kasım 2016 güvenlik aylık kalite toplaması |3,46 |13. ara, 2016 |
 | Yok |[3197874] |Windows 8.1 ve Windows Server 2012 R2 için Kasım 2016 güvenlik aylık kalite toplaması |4,39 |13. ara, 2016 |

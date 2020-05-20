@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 10d3e3674aef901ad35dfb6d0b9fd13715aace55
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597614"
+ms.locfileid: "83655246"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure statik Web Apps önizleme 'de özel etki alanı ayarlama
 
@@ -80,7 +80,7 @@ Bir CNAME kaydı bir etki alanını diğerine eşler. `www.example.com`Azure sta
 
 1. **Doğrula** düğmesine tıklayın.
 
-Özel etki alanı yapılandırıldığına göre, DNS sağlayıcısının değişiklikleri Dünya çapında yaymasını birkaç saat sürebilir. [Dnspropagation.net](https://dnspropagation.net)' a giderek yayılmanın durumunu kontrol edebilirsiniz. Dahil olmak üzere etki alanı özel etki alanınızı girin `www` , açılan LISTEDEN CNAME ' i seçin ve **Başlat**' ı seçin.
+Özel etki alanı yapılandırıldığına göre, DNS sağlayıcısının değişiklikleri Dünya çapında yaymasını birkaç saat sürebilir. [Dnspropagation.net](https://dnspropagation.net)' a giderek yayılmanın durumunu kontrol edebilirsiniz. Dahil olmak üzere özel etki alanınızı girin `www` , açılan LISTEDEN CNAME ' i seçin ve **Başlat**' ı seçin.
 
 DNS değişiklikleriniz doldurulduktan sonra, Web sitesi statik Web uygulamanızın otomatik olarak oluşturulan URL 'sini (örneğin, _Random-Name-123456789c.azurestaticapps.net_) döndürür.
 
@@ -92,7 +92,7 @@ Kök etki alanları, etki alanınız, dahil olmak üzere tüm alt etki alanıdı
 
 ## <a name="map-a-wildcard-domain"></a>Joker karakter etki alanını eşleme
 
-Bazen başka bir etki alanına yönlendirmek için bir alt etki alanına gönderilen tüm trafiğin olmasını isteyebilirsiniz. Ortak bir örnek, tüm alt etki alanı trafiğini ile eşleştirmekte `www.example.com` . Bu şekilde,, yerine başka bir tür olsa da `ww.example.com` `www.example.com` , istek öğesine gönderilir `www.example.com` .
+Bazen başka bir etki alanına yönlendirmek için bir alt etki alanına gönderilen tüm trafiğin olmasını isteyebilirsiniz. Ortak bir örnek, tüm alt etki alanı trafiğini ile eşleştirmekte `www.example.com` . Bu şekilde,, yerine başka bir tür olsa da `w.example.com` `www.example.com` , istek öğesine gönderilir `www.example.com` .
 
 ### <a name="configure-dns-provider"></a>DNS sağlayıcısını Yapılandır
 

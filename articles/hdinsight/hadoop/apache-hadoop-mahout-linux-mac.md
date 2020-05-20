@@ -1,39 +1,35 @@
 ---
 title: Azure HDInsight 'ta Apache Mahout kullanarak öneriler oluşturma
-description: HDInsight (Hadoop) ile film önerileri oluşturmak için Apache Mahout Machine Learning kitaplığını nasıl kullanacağınızı öğrenin.
+description: HDInsight ile film önerileri oluşturmak için Apache Mahout Machine Learning kitaplığını nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: 33110e9f1d45fcd11e5f4cad1b589ab929a9472d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: ab4c2984bbaef84684432c660baadc78f3ef8e16
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767645"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656320"
 ---
-# <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>HDInsight 'ta Apache Hadoop ile Apache Mahout kullanarak film önerileri oluşturma (SSH)
-
-[!INCLUDE [mahout-selector](../../../includes/hdinsight-selector-mahout.md)]
+# <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Mahout kullanarak öneriler oluşturma
 
 Azure HDInsight ile [Apache Mahout](https://mahout.apache.org) Machine Learning kitaplığı 'nı kullanarak film önerileri oluşturma hakkında bilgi edinin.
 
 Mahout, Apache Hadoop için bir [makine öğrenme](https://en.wikipedia.org/wiki/Machine_learning) kitaplığıdır. Mahout, filtreleme, sınıflandırma ve kümeleme gibi verileri işlemeye yönelik algoritmalar içerir. Bu makalede, arkadaşlarınızın gördük filmlerini temel alan film önerileri oluşturmak için bir öneri altyapısı kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+HDInsight 'ta Mahout sürümü hakkında daha fazla bilgi için bkz. [HDInsight sürümleri ve Apache Hadoop bileşenleri](../hdinsight-component-versioning.md).
+
+## <a name="prerequisites"></a>Önkoşullar
 
 HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
-## <a name="apache-mahout-versioning"></a>Apache Mahout sürümü oluşturma
-
-HDInsight 'ta Mahout sürümü hakkında daha fazla bilgi için bkz. [HDInsight sürümleri ve Apache Hadoop bileşenleri](../hdinsight-component-versioning.md).
-
 ## <a name="understanding-recommendations"></a>Önerileri anlama
 
-Mahout tarafından sunulan işlevlerden biri bir öneri altyapısıdır. Bu altyapı verileri `userID`, `itemId`, ve `prefValue` biçiminde (öğe için tercih) kabul eder. Mahout daha sonra şunları tespit etmek için ortak yineleme Analizi gerçekleştirebilir: *bir öğe için bir tercihi olan kullanıcılar aynı zamanda bu diğer öğeler için bir tercihe sahiptir*. Mahout daha sonra, tercih etmek için kullanılabilecek, LIKE öğesi tercihleri olan kullanıcıları belirler.
+Mahout tarafından sunulan işlevlerden biri bir öneri altyapısıdır. Bu altyapı verileri `userID` , `itemId` , ve biçiminde `prefValue` (öğe için tercih) kabul eder. Mahout daha sonra şunları tespit etmek için ortak yineleme Analizi gerçekleştirebilir: *bir öğe için bir tercihi olan kullanıcılar aynı zamanda bu diğer öğeler için bir tercihe sahiptir*. Mahout daha sonra, tercih etmek için kullanılabilecek, LIKE öğesi tercihleri olan kullanıcıları belirler.
 
 Aşağıdaki iş akışı, film verileri kullanan Basitleştirilmiş bir örnektir:
 
@@ -45,11 +41,11 @@ Aşağıdaki iş akışı, film verileri kullanan Basitleştirilmiş bir örnekt
 
 ### <a name="understanding-the-data"></a>Verileri anlama
 
-Kolay bir şekilde [Grouplens araştırması](https://grouplens.org/datasets/movielens/) , filmler Için Mahout ile uyumlu bir biçimde derecelendirme verileri sağlar. Bu veriler, kümenizin varsayılan depolama alanı üzerinde bulunur `/HdiSamples/HdiSamples/MahoutMovieData`.
+Kolay bir şekilde [Grouplens araştırması](https://grouplens.org/datasets/movielens/) , filmler Için Mahout ile uyumlu bir biçimde derecelendirme verileri sağlar. Bu veriler, kümenizin varsayılan depolama alanı üzerinde bulunur `/HdiSamples/HdiSamples/MahoutMovieData` .
 
-İki dosya `moviedb.txt` vardır `user-ratings.txt`. `user-ratings.txt` Dosya analiz sırasında kullanılır. , `moviedb.txt` Sonuçları görüntülerken Kullanıcı dostu metin bilgileri sağlamak için kullanılır.
+İki dosya vardır `moviedb.txt` `user-ratings.txt` . `user-ratings.txt`Dosya analiz sırasında kullanılır. , `moviedb.txt` Sonuçları görüntülerken Kullanıcı dostu metin bilgileri sağlamak için kullanılır.
 
-`user-ratings.txt` İçinde bulunan veriler `userID`, her kullanıcının bir filmi derecelendirdiğini belirten, `timestamp` `movieID` `userRating`, ve yapısına sahiptir. Verilerin bir örneği aşağıda verilmiştir:
+İçinde bulunan veriler `user-ratings.txt` `userID` , `movieID` `userRating` `timestamp` her kullanıcının bir filmi derecelendirdiğini belirten,, ve yapısına sahiptir. Verilerin bir örneği aşağıda verilmiştir:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -91,7 +87,7 @@ Kolay bir şekilde [Grouplens araştırması](https://grouplens.org/datasets/mov
     4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
     ```
 
-    İlk sütun `userID`. ' [' Ve '] ' içinde yer alan değerler `movieId`:.`recommendationScore`
+    İlk sütun `userID` . ' [' Ve '] ' içinde yer alan değerler `movieId` : `recommendationScore` .
 
 2. Öneriler hakkında daha fazla bilgi sağlamak için, çıktıyı moviedb. txt ile birlikte kullanabilirsiniz. İlk olarak, aşağıdaki komutları kullanarak dosyaları yerel olarak kopyalayın:
 

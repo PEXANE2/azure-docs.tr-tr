@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 466c47492de9c2fc86f309f4cb74df1ff5411dcb
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 05/14/2020
+ms.openlocfilehash: a71d8e251de1d1aedea1d1a329a27bfa236ddfff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929307"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652391"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 genel bakış
 
@@ -94,13 +94,12 @@ HDInsight 'ın önceki sürümlerinden HDInsight 4,0 sürümüne desteklenen bir
 * Hive görünümü artık HDInsight 4,0 ' de kullanılamaz.
 * Apache Zeppelin içindeki kabuk yorumlayıcısı Spark ve etkileşimli sorgu kümelerinde desteklenmez.
 * Spark-LLAP kümesinde LLAP özelliğini *devre dışı* bırakamazsınız. LLAP özelliğini yalnızca kapatabilirsiniz.
-* Azure Data Lake Storage Gen2, Juypter notebook'larını Spark kümesine kaydedemez.
+* Azure Data Lake Storage 2., bir Spark kümesinde Jupyıter not defterlerini kaydedemez.
 * Apache Pig, tez 'de varsayılan olarak çalışır, ancak bunu MapReduce olarak değiştirebilirsiniz
 * Satır ve sütun güvenliği için Spark SQL Ranger tümleştirmesi kullanım dışıdır
-* Spark 2,4 ve Kafka 2,1, HDInsight 4,0 sürümünde sunulmaktadır. bu nedenle Spark 2,3 ve Kafka 1,1 artık desteklenmemektedir. HDInsight 4,0 içinde Spark 2,4 & Kafka 2,3 ve üstünü kullanmanızı öneririz.
-
+* Spark 2,4 ve Kafka 2,1, HDInsight 4,0 sürümünde sunulmaktadır. bu nedenle Spark 2,3 ve Kafka 1,1 artık desteklenmemektedir. HDInsight 4,0 içinde Spark 2,4 & Kafka 2,1 ve üstünü kullanmanızı öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure HDInsight Belgeleri](index.yml)
-* [Sürüm notları](hdinsight-release-notes.md)
+* [Sürüm Notları](hdinsight-release-notes.md)

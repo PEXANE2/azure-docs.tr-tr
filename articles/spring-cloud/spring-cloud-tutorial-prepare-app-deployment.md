@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731173"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657147"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
 
@@ -129,11 +129,24 @@ Spring Boot sürüm 2,2 için aşağıdaki bağımlılığı uygulama Pod dosyas
 </dependency>
 ```
 
-## <a name="other-required-dependencies"></a>Diğer gerekli bağımlılıklar
+## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Azure Spring Cloud özelliklerini etkinleştirmek için önerilen diğer bağımlılıklar
 
-Azure Spring Cloud 'ın yerleşik özelliklerini etkinleştirmek için, uygulamanız aşağıdaki bağımlılıkları içermelidir. Bu içerme, uygulamanızın her bileşenle doğru bir şekilde yapılandırmasını sağlar.
+Azure Spring Cloud 'ın yerleşik özelliklerini hizmet kayıt defterinden dağıtılmış izlemeye etkinleştirmek için, uygulamanıza aşağıdaki bağımlılıkları da dahil etmeniz gerekir. Belirli uygulamalar için ilgili özelliklere ihtiyacınız yoksa, bu bağımlılıklardan bazılarını bırakabilirsiniz.
 
-### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient ek açıklaması
+### <a name="service-registry"></a>Hizmet kayıt defteri
+
+Yönetilen Azure hizmeti kayıt defteri hizmetini kullanmak için, `spring-cloud-starter-netflix-eureka-client` bağımlılığı Pod. xml dosyasına aşağıda gösterildiği gibi ekleyin:
+
+```xml
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+```
+
+Hizmet kayıt defteri sunucusunun uç noktası, uygulamanıza ortam değişkenleri olarak otomatik olarak eklenir. Uygulamalar, kendilerini hizmet kayıt defteri sunucusuna kaydedebilir ve diğer bağımlı mikro hizmetleri bulabilir.
+
+#### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient ek açıklaması
 
 Uygulama kaynak koduna aşağıdaki ek açıklamayı ekleyin.
 ```java
@@ -159,22 +172,9 @@ public class GatewayApplication {
 }
 ```
 
-### <a name="service-registry-dependency"></a>Hizmet kayıt defteri bağımlılığı
+### <a name="distributed-configuration"></a>Dağıtılmış yapılandırma
 
-Yönetilen Azure hizmeti kayıt defteri hizmetini kullanmak için, `spring-cloud-starter-netflix-eureka-client` bağımlılığı Pod. xml dosyasına aşağıda gösterildiği gibi ekleyin:
-
-```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-```
-
-Hizmet kayıt defteri sunucusunun uç noktası, uygulamanıza ortam değişkenleri olarak otomatik olarak eklenir. Uygulamalar, kendilerini hizmet kayıt defteri sunucusuna kaydedebilir ve diğer bağımlı mikro hizmetleri bulabilir.
-
-### <a name="distributed-configuration-dependency"></a>Dağıtılmış yapılandırma bağımlılığı
-
-Dağıtılmış yapılandırmayı etkinleştirmek için, Pok. `spring-cloud-config-client` XML dosyanızın bağımlılıklar bölümüne aşağıdaki bağımlılığı ekleyin:
+Dağıtılmış yapılandırmayı etkinleştirmek için, `spring-cloud-config-client` Pok. XML dosyanızın bağımlılıklar bölümüne aşağıdaki bağımlılığı ekleyin:
 
 ```xml
 <dependency>
@@ -184,11 +184,11 @@ Dağıtılmış yapılandırmayı etkinleştirmek için, Pok. `spring-cloud-conf
 ```
 
 > [!WARNING]
-> Önyükleme yapılandırmanızda `spring.cloud.config.enabled=false` belirtmeyin. Aksi takdirde, uygulamanız yapılandırma sunucusu ile çalışmayı durduruyor.
+> `spring.cloud.config.enabled=false`Önyükleme yapılandırmanızda belirtmeyin. Aksi takdirde, uygulamanız yapılandırma sunucusu ile çalışmayı durduruyor.
 
-### <a name="metrics-dependency"></a>Ölçüm bağımlılığı
+### <a name="metrics"></a>Ölçümler
 
-Aşağıdaki şekilde `spring-boot-starter-actuator` gösterilen Pod. XML dosyanızın bağımlılıklar bölümüne bağımlılığı ekleyin:
+`spring-boot-starter-actuator`Aşağıdaki şekilde gösterilen Pod. XML dosyanızın bağımlılıklar bölümüne bağımlılığı ekleyin:
 
 ```xml
 <dependency>
@@ -199,9 +199,9 @@ Aşağıdaki şekilde `spring-boot-starter-actuator` gösterilen Pod. XML dosyan
 
  Ölçümler, JMX uç noktalarından düzenli aralıklarla çekilir. Azure portal kullanarak ölçümleri görselleştirebilirsiniz.
 
-### <a name="distributed-tracing-dependency"></a>Dağıtılmış Izleme bağımlılığı
+### <a name="distributed-tracing"></a>Dağıtılmış Izleme
 
-Pod. `spring-cloud-starter-sleuth` XML `spring-cloud-starter-zipkin` dosyanızın bağımlılıklar bölümüne aşağıdaki ve bağımlılıklarını ekleyin:
+`spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` Pod. XML dosyanızın bağımlılıklar bölümüne aşağıdaki ve bağımlılıklarını ekleyin:
 
 ```xml
 <dependency>

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: e4d578596471153e4fc0e37d3ca093685326ecc7
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0e45e832def4073f22a160b95447afb1b10ef77a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791774"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657378"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -37,10 +37,11 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 > Depolama veya işleme için daha fazla sınır gerektiren bölüm anahtarlarına sahip iş yüklerini yönetmeye yönelik en iyi yöntemler hakkında bilgi edinmek için bkz. [yapay bir bölüm anahtarı oluşturma](synthetic-partition-keys.md).
 >
 
-Cosmos kapsayıcısının (veya paylaşılan üretilen iş veritabanı) en az 400 ru işleme sahip olması gerekir. Kapsayıcı büyüdükçe, desteklenen en düşük aktarım hızı da aşağıdaki etkenlere bağlıdır:
+Cosmos kapsayıcısının (veya paylaşılan üretilen iş veritabanı) en az 400 RU/sn aktarım hızına sahip olması gerekir. Kapsayıcı büyüdükçe, desteklenen en düşük aktarım hızı da aşağıdaki etkenlere bağlıdır:
 
-* Bir kapsayıcıda ayarlayabileceğiniz en düşük aktarım hızı, kapsayıcıda sağlanan en yüksek aktarım hızına bağlıdır. Örneğin, üretilen iş hacmi 10000 ru olarak yükseldiğinde, olası en düşük sağlanan aktarım hızı 1000 RUs olur.
-* Paylaşılan bir üretilen iş veritabanında en düşük aktarım hızı, her zaman bir paylaşılan verimlilik veritabanında oluşturduğunuz ve kapsayıcı başına 100 ru ile ölçülen toplam kapsayıcı sayısına bağlıdır. Örneğin, paylaşılan bir üretilen iş veritabanı içinde beş kapsayıcı oluşturduysanız verimlilik en az 500 RUs olmalıdır
+* Kapsayıcıda şimdiye kadar sağlanan en yüksek aktarım hızı. Örneğin, verimlilik 50.000 RU/sn 'ye yükseldiğinde, olası en düşük sağlanan aktarım hızı 500 RU/s olacaktır
+* Kapsayıcıda GB cinsinden geçerli depolama alanı. Örneğin, kapsayıcınızda 100 GB depolama alanı varsa, en düşük sağlanan verimlilik 1000 RU/s olacaktır
+* Paylaşılan bir üretilen iş veritabanında en düşük aktarım hızı, her zaman bir paylaşılan üretilen iş veritabanında oluşturduğunuz toplam kapsayıcı sayısına, kapsayıcı başına 100 RU/sn ile ölçülür. Örneğin, paylaşılan bir üretilen iş veritabanı içinde beş kapsayıcı oluşturduysanız, verimlilik en az 500 RU/sn olmalıdır
 
 Kapsayıcının veya bir veritabanının geçerli ve en düşük aktarım hızı Azure portal veya SDK 'lardan alınabilir. Daha fazla bilgi için bkz. [kapsayıcılar ve veritabanları üzerinde üretilen Iş sağlama](set-throughput.md). 
 
@@ -104,7 +105,7 @@ Kullandığınız API 'ye bağlı olarak, bir Azure Cosmos öğesi koleksiyondak
 | --- | --- |
 | En büyük öğe boyutu | 2 MB (UTF-8 JSON gösteriminin uzunluğu) |
 | Bölüm anahtarı değerinin uzunluk üst sınırı | 2048 bayt |
-| Maksimum kimlik değeri uzunluğu | 1023 bayt |
+| Maksimum KIMLIK değeri uzunluğu | 1023 bayt |
 | Öğe başına en fazla özellik sayısı | Pratik sınır yok |
 | En fazla iç içe geçme derinliği | Pratik sınır yok |
 | Özellik adının uzunluk üst sınırı | Pratik sınır yok |
@@ -112,7 +113,7 @@ Kullandığınız API 'ye bağlı olarak, bir Azure Cosmos öğesi koleksiyondak
 | En fazla dize özelliği değeri uzunluğu | Pratik sınır yok |
 | Maksimum sayısal Özellik değeri uzunluğu | IEEE754 çift duyarlıklı 64 bit |
 
-Bölüm anahtarı ve kimlik değerleri için uzunluk kısıtlamaları ve 2 MB Toplam boyut kısıtlaması dışında, öğe yükleri üzerinde özellik sayısı ve iç içe geçme derinliği gibi kısıtlamalar yoktur. RU tüketimini azaltmak için büyük veya karmaşık öğe yapılarına sahip kapsayıcılar için dizin oluşturma İlkesi yapılandırmanız gerekebilir. Cosmos DB, gerçek dünyada bir örnek için bkz. [modelleme öğeleri](how-to-model-partition-example.md) ve büyük öğeleri yönetmek için desenler.
+Bölüm anahtarı ve KIMLIK değerleri için uzunluk kısıtlamaları ve 2 MB Toplam boyut kısıtlaması dışında, öğe yükleri üzerinde özellik sayısı ve iç içe geçme derinliği gibi kısıtlamalar yoktur. RU tüketimini azaltmak için büyük veya karmaşık öğe yapılarına sahip kapsayıcılar için dizin oluşturma İlkesi yapılandırmanız gerekebilir. Cosmos DB, gerçek dünyada bir örnek için bkz. [modelleme öğeleri](how-to-model-partition-example.md) ve büyük öğeleri yönetmek için desenler.
 
 ## <a name="per-request-limits"></a>İstek başına sınırlar
 
@@ -140,7 +141,16 @@ Cosmos DB, yazma işlemleri sırasında tetikleyicilerin yürütülmesini destek
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Otomatik ölçeklendirme sağlanan verimlilik için sınırlar
 
-Otomatik ölçeklendirme ile işleme ve depolama sınırları için [Otomatik ölçeklendirme](provision-throughput-autoscale.md#autoscale-limits) makalesine bakın.
+Otomatik ölçeklendirme ile işleme ve depolama limitlerinin daha ayrıntılı açıklaması için [Otomatik ölçeklendirme](provision-throughput-autoscale.md#autoscale-limits) makalesine ve [SSS](autoscale-faq.md#lowering-the-max-rus) bölümüne bakın.
+
+| Kaynak | Varsayılan limit |
+| --- | --- |
+| Sistemin ölçekleyebilir en fazla RU/sn |  `Tmax`, otomatik ölçek Kullanıcı tarafından ayarlanan en büyük RU/s|
+| Sistemin ölçekleyebilir en az RU/sn | `0.1 * Tmax`|
+| Geçerli RU/s, sistem şu şekilde ölçeklendirilir  |  `0.1*Tmax <= T <= Tmax`, kullanıma göre|
+| Saat başına minimum faturalanabilir RU/sn| `0.1 * Tmax` <br></br>Faturalandırma, sistem saatte bir veya daha yüksek olan en yüksek RU/sn için faturalandırdığınız saat başına yapılır `0.1*Tmax` . |
+| Bir kapsayıcı için en düşük otomatik ölçeklendirme en büyük RU/sn  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)`En yakın 1000 RU/sn 'ye yuvarlanır |
+| Bir veritabanı için en düşük otomatik ölçeklendirme en büyük RU/sn  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))`, en yakın 1000 RU/sn 'ye yuvarlanır. <br></br>Göz önünde, veritabanınızda 25 ' ten fazla kapsayıcı varsa, sistem ek kapsayıcı başına en az RU/sn 1000 olan en düşük otomatik ölçeklendirme sayısını artırır. Örneğin, 30 kapsayıcılarınız varsa, ayarlayabileceğiniz en düşük otomatik ölçeklendirme RU/sn, 9000 RU/sn 'dir (900-9000 RU/s arasında ölçeklenirken).
 
 ## <a name="sql-query-limits"></a>SQL sorgu sınırları
 
@@ -187,7 +197,7 @@ Aşağıdaki tabloda, [Try Azure Cosmos DB ücretsiz deneme için](https://azure
 
 Cosmos DB, genel dağıtımı yalnızca Orta ABD, Kuzey Avrupa ve Güneydoğu Asya bölgelerinde destekler. Deneme Azure Cosmos DB hesapları için Azure destek biletleri oluşturulamıyor. Ancak, mevcut destek planlarına sahip aboneler için destek sağlanır.
 
-## <a name="free-tier-account-limits"></a>Ücretsiz katman hesap limitleri
+## <a name="free-tier-account-limits"></a>Ücretsiz katmanı hesap sınırları
 Aşağıdaki tabloda [Azure Cosmos DB ücretsiz katman hesapları](optimize-dev-test.md#azure-cosmos-db-free-tier) için sınırlar listelenmektedir.
 
 | Kaynak | Varsayılan limit |

@@ -1,18 +1,18 @@
 ---
-title: Microsoft ticari Market storets 'de yayımlama seçeneğinizi belirleme
-description: Bu makalede, uygulamaları Microsoft AppSource ve Azure Market 'Te nasıl yayımlayacağınızı anlamaya çalışan iş ortakları için uygunluk ölçütleri ve yayımlama gereksinimleri açıklanmaktadır.
+title: Yayımlama seçeneğinizi belirleme-Microsoft ticari Market
+description: Bu makalede, Microsoft AppSource ve Azure Market 'Te teklifler yayımlamaya yönelik uygunluk ölçütleri ve gereksinimleri açıklanmaktadır.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: e91ca0334276dbe9118eb0e40d042f598e8b3c0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415731"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658068"
 ---
 # <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleme
 
@@ -32,7 +32,7 @@ Aşağıdaki tabloda, Microsoft AppSource ve Azure Marketi 'nde teklif türleri 
 
 |   | **Liste (kişi)**  | **Liste (deneme)**  | **Ücretsiz** | **KLG** | **Transact**|
 | :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
-| **Sanal makine** |  |  |  | Azure Market |  Azure Market |
+| **Sanal Makine** |  |  |  | Azure Market |  Azure Market |
 | **Azure uygulamaları (çoklu VM)** |  |  | Azure Market | Azure Market | Azure Market  |
 | **Kapsayıcı görüntüsü** |  |  | Azure Market | Azure Market |   |
 | **IoT Edge modülü** |  |  | Azure Market | Azure Market |   |

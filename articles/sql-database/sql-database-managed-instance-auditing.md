@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
-ms.openlocfilehash: 405ac27fad3c24d3064f11476f452ad00abb9b02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7656944af16db650ec1fea36f0bdefc81b99922e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80387776"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654635"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Veritabanı yönetilen örneğinde denetimle çalışmaya başlama
 
@@ -37,7 +37,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
    1. Denetim günlüklerinizi depolamak istediğiniz Azure depolama 'ya gidin.
 
       > [!IMPORTANT]
-      > Bölgeler arası okuma/yazma işlemlerini önlemek için yönetilen örnekle aynı bölgedeki bir depolama hesabını kullanın.
+      > Bölgeler arası okuma/yazma işlemlerini önlemek için yönetilen örnekle aynı bölgedeki bir depolama hesabını kullanın. Depolama hesabınız bir sanal ağın veya güvenlik duvarının arkasındaysa, lütfen bkz. [bir sanal ağ üzerinden erişim verme](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network).
 
    1. Depolama hesabında **Genel Bakış ' a** gidin ve **Bloblar**' a tıklayın.
 
@@ -106,7 +106,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
         GO
         ```
 
-     1. Yeni bir sunucu denetimi oluşturmak için aşağıdaki T-SQL ifadesini yürütün (kendi denetim adınızı seçin, önceki adımlarda oluşturduğunuz kapsayıcı URL 'sini kullanın). Belirtilmemişse, varsayılan 0 `RETENTION_DAYS` ' dır (sınırsız saklama):
+     1. Yeni bir sunucu denetimi oluşturmak için aşağıdaki T-SQL ifadesini yürütün (kendi denetim adınızı seçin, önceki adımlarda oluşturduğunuz kapsayıcı URL 'sini kullanın). Belirtilmemişse, `RETENTION_DAYS` varsayılan 0 ' dır (sınırsız saklama):
 
         ```SQL
         CREATE SERVER AUDIT [<your_audit_name>]
@@ -205,7 +205,7 @@ Yönetilen bir örnekten gelen denetim günlükleri, hatta hub 'Lara veya Azure 
 
 Blob denetim günlüklerini görüntülemek için kullanabileceğiniz çeşitli yöntemler vardır.
 
-- Denetim günlüğü verilerini tablosal biçiminde döndürmek için sistem işlevini `sys.fn_get_audit_file` (T-SQL) kullanın. Bu işlevi kullanma hakkında daha fazla bilgi için [sys. fn_get_audit_file belgelerine](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)bakın.
+- `sys.fn_get_audit_file`Denetim günlüğü verilerini tablosal biçiminde döndürmek için sistem işlevini (T-SQL) kullanın. Bu işlevi kullanma hakkında daha fazla bilgi için [sys. fn_get_audit_file belgelerine](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)bakın.
 
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi bir araç kullanarak denetim günlüklerini inceleyebilirsiniz. Azure depolama 'da denetim günlükleri, Denetim günlüklerini depolamak için tanımlanan bir kapsayıcı içinde blob dosyaları koleksiyonu olarak kaydedilir. Depolama klasörü, adlandırma kuralları ve günlük biçiminin hiyerarşisi hakkında daha fazla ayrıntı için bkz. [BLOB denetim günlüğü biçim başvurusu](https://go.microsoft.com/fwlink/?linkid=829599).
 
@@ -217,7 +217,7 @@ Olay Hub 'ından denetim günlükleri verilerini kullanmak için, olayları tük
 
 ### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde depolanan günlükleri tüketme ve çözümleme
 
-Denetim günlükleri Azure Izleyici günlüklerine yazılmışsa, denetim verilerinde gelişmiş aramaları çalıştırabileceğiniz Log Analytics çalışma alanında kullanılabilir. Başlangıç noktası olarak Log Analytics çalışma alanına gidin ve *genel* bölümünde *Günlükler* ' e tıklayın ve örneğin: `search "SQLSecurityAuditEvents"` denetim günlüklerini görüntülemek için basit bir sorgu girin.  
+Denetim günlükleri Azure Izleyici günlüklerine yazılmışsa, denetim verilerinde gelişmiş aramaları çalıştırabileceğiniz Log Analytics çalışma alanında kullanılabilir. Başlangıç noktası olarak Log Analytics çalışma alanına gidin ve *genel* bölümünde *Günlükler* ' e tıklayın ve örneğin: `search "SQLSecurityAuditEvents"` Denetim günlüklerini görüntülemek için basit bir sorgu girin.  
 
 Azure Izleyici günlükleri, tüm iş yüklerinizde ve sunucularınızda milyonlarca kaydı kolayca çözümlemek için tümleşik arama ve özel panolar kullanarak gerçek zamanlı operasyonel içgörüler sağlar. Azure Izleyici günlükleri arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Azure izleyici günlükleri arama başvurusu](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
@@ -227,16 +227,16 @@ Azure Izleyici günlükleri, tüm iş yüklerinizde ve sunucularınızda milyonl
 
 Azure SQL veritabanı ve SQL Server veritabanlarında bulunan veritabanlarında denetim arasındaki temel farklılıklar şunlardır:
 
-- Azure SQL veritabanı 'ndaki yönetilen örnek dağıtım seçeneği ile, denetim sunucu düzeyinde çalışmaktadır ve günlük dosyalarını Azure Blob `.xel` depolama alanında depolar.
+- Azure SQL veritabanı 'ndaki yönetilen örnek dağıtım seçeneği ile, denetim sunucu düzeyinde çalışmaktadır ve `.xel` günlük dosyalarını Azure Blob depolama alanında depolar.
 - Şirket içi/sanal makineler SQL Server, denetim sunucu düzeyinde çalışabilir, ancak olayları dosyalar sistem/Windows olay günlüklerine depolar.
 
 Yönetilen örnekteki XEvent denetimi Azure Blob depolama hedeflerini destekler. Dosya ve Windows günlükleri **desteklenmez**.
 
-Azure Blob depolamaya denetim için `CREATE AUDIT` söz diziminde önemli farklılıklar şunlardır:
+`CREATE AUDIT`Azure Blob depolamaya denetim için söz diziminde önemli farklılıklar şunlardır:
 
-- Yeni bir sözdizimi `TO URL` sağlanır ve `.xel` dosyaların yerleştirildiği Azure Blob depolama kapsayıcısının URL 'sini belirtmenize olanak sağlar.
-- Eşit hub ve `TO EXTERNAL MONITOR` Azure izleyici günlükleri hedeflerini etkinleştirmek için yeni bir sözdizimi sağlanır.
-- SQL veritabanı `TO FILE` Windows dosya paylaşımlarına erişemediğinden sözdizimi **desteklenmiyor** .
+- Yeni bir sözdizimi `TO URL` sağlanır ve dosyaların yerleştirildiği Azure Blob depolama kapsayıcısının URL 'sini belirtmenize olanak sağlar `.xel` .
+- `TO EXTERNAL MONITOR`Eşit hub ve Azure izleyici günlükleri hedeflerini etkinleştirmek için yeni bir sözdizimi sağlanır.
+- `TO FILE`SQL veritabanı Windows dosya paylaşımlarına erişemediğinden sözdizimi **desteklenmiyor** .
 - Kapalı seçeneği **desteklenmez**.
 - `queue_delay`/0 **desteklenmez**.
 

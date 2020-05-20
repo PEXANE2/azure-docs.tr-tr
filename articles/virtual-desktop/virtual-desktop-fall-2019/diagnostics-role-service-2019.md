@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e529144198d0c635e74955e98d47dd46ac4fb733
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615155"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657237"
 ---
 # <a name="identify-and-diagnose-issues"></a>Sorunları belirleme ve tanılama
 
@@ -36,7 +36,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="diagnose-issues-with-powershell"></a>PowerShell ile ilgili sorunları tanılama
 
-Windows sanal masaüstü tanılaması yalnızca bir PowerShell cmdlet 'i kullanır, ancak sorunları daraltmak ve yalıtmak için birçok isteğe bağlı parametre içerir. Aşağıdaki bölümlerde, sorunları tanılamak için çalıştırabileceğiniz cmdlet 'ler listelenmektedir. Çoğu filtre birlikte uygulanabilir. Parantez içinde listelenen değerler, gibi `<tenantName>`, durumunuza uygulanan değerlerle değiştirilmelidir.
+Windows sanal masaüstü tanılaması yalnızca bir PowerShell cmdlet 'i kullanır, ancak sorunları daraltmak ve yalıtmak için birçok isteğe bağlı parametre içerir. Aşağıdaki bölümlerde, sorunları tanılamak için çalıştırabileceğiniz cmdlet 'ler listelenmektedir. Çoğu filtre birlikte uygulanabilir. Parantez içinde listelenen değerler, gibi `<tenantName>` , durumunuza uygulanan değerlerle değiştirilmelidir.
 
 >[!IMPORTANT]
 >Tanılama özelliği, tek kullanıcılı sorun giderme içindir. PowerShell kullanan tüm sorgular *-UserName* veya *-ActivityId* parametrelerini içermelidir. İzleme özellikleri için Log Analytics kullanın. Tanılama verilerini çalışma alanınıza gönderme hakkında daha fazla bilgi için bkz. [Tanılama özelliği için Log Analytics kullanma](diagnostics-log-analytics-2019.md) . 
@@ -139,6 +139,7 @@ Aşağıdaki tabloda, yöneticilerinizin çalıştırabilecek yaygın hatalar li
 
 |Sayısal kod|Hata kodu|Önerilen çözüm|
 |---|---|---|
+|1322|Connectionfailednomappingofsıdinad|Kullanıcı Azure Active Directory üyesi değil. [Active Directory Yönetim Merkezi](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) içindeki yönergeleri izleyerek bunları ekleyin.|
 |3|UnauthorizedAccess|Yönetim PowerShell cmdlet 'ini çalıştırmaya çalışan kullanıcının Kullanıcı adını bu şekilde veya yanlış yazmış.|
 |1000|TenantNotFound|Girdiğiniz kiracı adı var olan kiracılar ile eşleşmiyor. Yazım hataları için kiracı adını gözden geçirin ve yeniden deneyin.|
 |1006|TenantCannotBeRemovedHasSessionHostPools|Bir kiracıyı nesneler içerdiği sürece silemezsiniz. Önce oturum ana bilgisayar havuzlarını silip yeniden deneyin.|
@@ -160,6 +161,7 @@ Aşağıdaki tabloda, yöneticilerinizin çalıştırabilecek yaygın hatalar li
 
 |Sayısal kod|Hata kodu|Önerilen çözüm|
 |---|---|---|
+|-2147467259|Connectionfailedadderrornosuchmember|Kullanıcı Azure Active Directory üyesi değil. [Active Directory Yönetim Merkezi](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) içindeki yönergeleri izleyerek bunları ekleyin.|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|Oturum Ana bilgisayarı Active Directory doğru şekilde katılmadı.|
 |-2146233088|Connectionfaileduserhasvalidsessionbutrdshıssağlıksız|Oturum Konağı kullanılamadığından bağlantı başarısız oldu. Oturum konağının sistem durumunu kontrol edin.|
 |-2146233088|ConnectionFailedClientDisconnect|Bu hatayla sık karşılaşırsanız, kullanıcının bilgisayarının ağa bağlı olduğundan emin olun.|

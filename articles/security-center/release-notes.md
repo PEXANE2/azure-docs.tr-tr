@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/11/2020
+ms.date: 05/15/2020
 ms.author: memildin
-ms.openlocfilehash: bfe1e5d6a0c4171a262b36387f02be356fb1d72d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f71bffd1db023ece19071bb8f71ec49a855e828b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210902"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654656"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -31,6 +31,36 @@ Bu sayfa düzenli olarak güncelleştirildiğinden, sık sık ziyaret edin. Alt�
 
 
 ## <a name="may-2020"></a>Mayıs 2020
+
+
+### <a name="alert-suppression-rules-preview"></a>Uyarı gizleme kuralları (Önizleme)
+
+Bu yeni Özellik (Şu anda önizlemede), uyarı fatıg azaltmaya yardımcı olur. Zararsız olarak bilinen veya kuruluşunuzdaki normal etkinliklerle ilgili olan uyarıları otomatik olarak gizlemek için kuralları kullanın. Bu, en ilgili tehditlere odaklanmanızı sağlar. 
+
+Etkin gizleme kuralları ile eşleşen uyarılar üretilmeye devam eder, ancak durumları kapatıldı olarak ayarlanır. Durumu Azure portal görebilirsiniz, ancak Güvenlik Merkezi güvenlik uyarılarınıza erişebilirsiniz.
+
+Gizleme kuralları, uyarıların otomatik olarak hangi ölçütlere göre kapatılacağını tanımlar. Genellikle bir gizleme kuralı kullanarak şunları yapabilirsiniz:
+
+- yanlış pozitif sonuçlar olarak belirlediğiniz uyarıları gösterme
+
+- çok sık tetiklenen uyarıları, faydalı olması için gösterme
+
+[Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gizleme hakkında daha fazla bilgi edinin](alerts-suppression-rules.md).
+
+
+### <a name="virtual-machine-vulnerability-assessment-is-now-generally-available"></a>Sanal makine güvenlik açığı değerlendirmesi genel kullanıma sunuldu
+
+Güvenlik Merkezi 'nin standart katmanı artık, ek ücret ödemeden sanal makinelere yönelik yerleşik bir güvenlik açığı değerlendirmesi içerir. Bu uzantı Qualys tarafından desteklenmektedir ancak bulgularını doğrudan güvenlik merkezi 'ne geri bildirir. Bir Qualys lisansına veya hatta bir Qualys hesabına ihtiyacınız yoktur. her şey güvenlik merkezi 'nin içinde sorunsuz bir şekilde işlenir.
+
+Yeni çözüm Güvenlik Merkezi 'nde güvenlik açıklarını bulmak ve bulguları sunmak için sanal makinelerinizi sürekli tarayabilir. 
+
+Çözümü dağıtmak için yeni güvenlik önerisini kullanın:
+
+"Yerleşik güvenlik açığı değerlendirme çözümünü sanal makinelerde etkinleştir (Qualys tarafından desteklenir)"
+
+[Daha fazla bilgi edinin](built-in-vulnerability-assessment.md).
+
+
 
 ### <a name="changes-to-just-in-time-jit-virtual-machine-vm-access"></a>Tam zamanında (JıT) sanal makine (VM) erişiminde yapılan değişiklikler
 
@@ -67,22 +97,40 @@ Güvenlik denetimleri ve bu geçiş, yeni güvenli puan deneyiminin bir parças�
 [Azure Güvenlik Merkezi 'Nde gelişmiş güvenli skor (Önizleme)](secure-score-security-controls.md)bölümünde güvenlik denetimleri hakkında daha fazla bilgi edinin.
 
 
-### <a name="account-security-recommendations-moved-to-security-best-practices-security-control"></a>Hesap güvenlik önerileri "en iyi güvenlik uygulamaları" güvenlik denetimine taşındı
+### <a name="expanded-security-control-implement-security-best-practices"></a>Genişletilmiş Güvenlik denetimi "en iyi güvenlik uygulamalarını uygulayın" 
 
-Gelişmiş güvenli puanla sunulan güvenlik denetimlerinden biri "en iyi güvenlik uygulamaları" ' dır. Bu denetimde bir öneri olduğunda, güvenli puanı etkilemez. 
+Gelişmiş güvenli puanla birlikte sunulan güvenlik denetimlerinden biri "en iyi güvenlik uygulamalarını uygulama" dir. Bu denetimde bir öneri olduğunda, güvenli puanı etkilemez. 
 
 Bu güncelleştirmeyle, üç öneri özgün olarak yerleştirildiği denetimlerden ve bu en iyi yöntemler denetimine taşınmıştır. Bu üç önerinin riskini başlangıçta düşündükten daha düşük olduğunu belirlediğimiz için bu adımı aldık.
 
-Öneriler şunlardır:
+Ayrıca, bu denetime iki yeni öneri eklenmiştir ve eklendi.
 
-- MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir (başlangıçta "MFA 'yı etkinleştir" denetiminde)
-- Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir (başlangıçta "erişim ve izinleri yönetme" denetiminde)
-- Aboneliğiniz için en fazla 3 sahip belirtilmelidir (başlangıçta "erişim ve izinleri yönetme" denetiminde)
+Taşınan üç öneri şunlardır:
+
+- **MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir** (BAŞLANGıÇTA "MFA 'yı etkinleştir" denetiminde)
+- **Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir** (başlangıçta "erişim ve izinleri yönetme" denetiminde)
+- **Aboneliğiniz için en fazla 3 sahip** belirtilmelidir (başlangıçta "erişim ve izinleri yönetme" denetiminde)
+
+Denetime eklenen iki yeni öneri şunlardır:
+
+- **[Önizleme] Konuk yapılandırma aracısının yüklü olması gerekir** . [Azure ilke Konuk yapılandırması](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) kullanılarak sanal makinelerin sunucu ve uygulama ayarlarına (yalnızca Windows) göre görünürlük sağlar.
+
+- **[Önizleme] Windows Exploit Guard etkin** olmalıdır-Windows Defender Exploit Guard, Azure Ilke Konuk yapılandırma aracısından yararlanır. Exploit Guard, kuruluşların güvenlik riskini ve üretkenlik gereksinimlerini (yalnızca Windows) dengeleyebilmesini sağlarken, cihazları birçok farklı saldırı vektörü ve çok sayıda kötü amaçlı yazılım saldırılarında yaygın olarak kullanılan blok davranışlarına karşı kilitlemek için tasarlanan dört bileşene sahiptir.
+
+[Exploit Guard Ilkesi oluşturma ve dağıtma](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)bölümünde Windows Defender Exploit Guard hakkında daha fazla bilgi edinin.
 
 [Azure Güvenlik Merkezi 'Nde gelişmiş güvenli skor (Önizleme)](secure-score-security-controls.md)bölümünde güvenlik denetimleri hakkında daha fazla bilgi edinin.
 
 
-### <a name="custom-policies-with-custom-metadata-generally-available"></a>Özel meta verileri olan özel ilkeler genel kullanıma sunuldu
+
+
+
+
+
+
+
+
+### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Özel meta verileri olan özel ilkeler artık genel kullanıma sunuldu
 
 Özel ilkeler artık Güvenlik Merkezi öneri deneyiminin, güvenli puanın ve mevzuat uyumluluk standartları panosunun bir parçasıdır. Bu özellik genel kullanıma sunulmuştur ve kuruluşunuzun güvenlik değerlendirmesi kapsamını güvenlik merkezi 'nde genişletmenizi sağlar. 
 
@@ -95,7 +143,7 @@ Artık özel öneri meta verilerini düzenleme seçeneğini de ekledik. Meta ver
 
 ## <a name="april-2020"></a>Nisan 2020
 
-### <a name="dynamic-compliance-packages-now-generally-available"></a>Dinamik uyumluluk paketleri artık genel kullanıma sunuldu
+### <a name="dynamic-compliance-packages-are-now-generally-available"></a>Dinamik uyumluluk paketleri artık genel kullanıma sunuldu
 
 Azure Güvenlik Merkezi mevzuat uyumluluk panosu artık ek sektör ve yasal standartları izlemek için **dinamik uyumluluk paketleri** (genel kullanıma sunuldu) içerir.
 
@@ -197,7 +245,7 @@ Bu öneriler artık Güvenlik Merkezi öneri listesinde görünmez. İlgili ilke
 
 ## <a name="february-2020"></a>Şubat 2020
 
-### <a name="fileless-attack-detection-for-linux-is-now-in-preview"></a>Linux için dosya daha az saldırı algılama şimdi önizlemededir
+### <a name="fileless-attack-detection-for-linux-preview"></a>Linux için dosya daha az saldırı algılama (Önizleme)
 
 Saldırganlar, algılamayı önlemek için stealthier yöntemleri kullanmayı artırarak, Azure Güvenlik Merkezi, Windows 'un yanı sıra Linux için dosya daha az saldırı algılamasını genişletmez. Dosya sistemi saldırıları Yazılım açıklarına karşı yararlanma, kötü amaçlı yükleri zararsız sistem işlemlerine ekleme ve bellekte gizleme. Bu teknikler:
 
@@ -209,7 +257,7 @@ Azure Güvenlik Merkezi, bu tehdidi ortadan silmek için, 2018 Ekim 'de Windows 
 
 ## <a name="january-2020"></a>Ocak 2020
 
-### <a name="enhanced-secure-score"></a>Gelişmiş güvenli puan
+### <a name="enhanced-secure-score-preview"></a>Gelişmiş güvenli skor (Önizleme)
 
 Azure Güvenlik Merkezi 'nin güvenli Puanlama özelliğinin gelişmiş bir sürümü artık önizlemede sunulmaktadır. Bu sürümde, çok sayıda öneri, güvenlik açıklarına karşı savunmasız saldırı yüzeylerinizi daha iyi yansıtarak (örneğin, yönetim bağlantı noktalarına erişimi kısıtla) güvenlik denetimlerinde gruplandırılır.
 

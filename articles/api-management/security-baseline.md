@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: aa59a37f3a4413c92a483746ed4a08c363ab8457
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: de3f553fd001b06d56663f63402da2489f35877d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796531"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649177"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management için Azure Güvenlik temeli
 
@@ -526,7 +526,7 @@ Geçerli bir belirtecin varlığını ve geçerliliğini zorlamaya yardımcı ol
 
 Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturun ve denetim günlüklerini ve oturum açma günlüklerini Log Analytics çalışma alanına gönderin. Log Analytics içindeki istenen uyarıları yapılandırın. Ayrıca, Log Analytics çalışma alanını Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye ekleyebilirsiniz.
 
-`log-to-eventhub` İlkeyi kullanarak API Management gelişmiş izlemeyi yapılandırın, güvenlik çözümlemesi için gereken ek bağlam bilgilerini yakalayın ve Azure Sentinel veya üçüncü taraf SIEM 'ye gönderin.
+İlkeyi kullanarak API Management gelişmiş izlemeyi yapılandırın `log-to-eventhub` , güvenlik çözümlemesi için gereken ek bağlam bilgilerini yakalayın ve Azure Sentinel veya üçüncü taraf SIEM 'ye gönderin.
 
 * [API Management Azure 'da Azure Active Directory kullanarak Geliştirici hesaplarını yetkilendirme](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
 
@@ -1070,9 +1070,9 @@ API Management hizmet yedekleme ve geri yükleme özellikleri, olağanüstü dur
 
 * [Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
 
-* [API Management yedekleme işlemini çağırma](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)
+* [API Management yedekleme işlemini çağırma](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)
 
-* [API Management geri yükleme işlemini çağırma](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+* [API Management geri yükleme işlemini çağırma](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

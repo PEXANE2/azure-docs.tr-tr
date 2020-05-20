@@ -8,20 +8,20 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3a19dc019d2566ddddb2c0ba7988b342d30a45d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45a61b5bc6f1082b84bf94db7e8ad5ce49ec068f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77192278"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648065"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Karma makineleri Azure 'a ölçeklendirmeye bağlama
 
-Gereksinimlerinize bağlı olarak çeşitli esnek seçeneklerle ortamınızda birden çok Windows veya Linux makinesi için sunucu (Önizleme) için Azure yayı 'yi etkinleştirebilirsiniz. Sağladığımız şablon betiğini kullanarak, Azure Arc bağlantısı kurulması da dahil olmak üzere, yüklemenin her adımını otomatikleştirebiliriz. Bununla birlikte, bu betiği, hedef makinede ve Azure 'da yükseltilmiş izinlere sahip bir hesapla etkileşimli olarak yürütmeniz gerekir. Makineleri sunucular için Azure yaya bağlamak için, [makineyi etkileşimli olarak bağlamak](onboard-portal.md)üzere ayrıcalıklı kimliğinizi kullanmak yerine bir Azure Active Directory [hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md) kullanabilirsiniz. Hizmet sorumlusu, yalnızca `azcmagent` komutunu kullanarak makineleri Azure 'a bağlamak için gereken en düşük izne sahip özel sınırlı bir yönetim kimliğidir. Bu, Kiracı Yöneticisi gibi daha yüksek ayrıcalıklı bir hesap kullanmaktan daha güvenlidir ve erişim denetimi güvenliği en iyi yöntemlerimizi izler. Hizmet sorumlusu yalnızca ekleme sırasında kullanılır, başka bir amaçla kullanılmaz.  
+Gereksinimlerinize bağlı olarak çeşitli esnek seçeneklerle ortamınızda birden çok Windows veya Linux makinesi için sunucu (Önizleme) için Azure yayı 'yi etkinleştirebilirsiniz. Sağladığımız şablon betiğini kullanarak, Azure Arc bağlantısı kurulması da dahil olmak üzere, yüklemenin her adımını otomatikleştirebiliriz. Bununla birlikte, bu betiği, hedef makinede ve Azure 'da yükseltilmiş izinlere sahip bir hesapla etkileşimli olarak yürütmeniz gerekir. Makineleri sunucular için Azure yaya bağlamak için, [makineyi etkileşimli olarak bağlamak](onboard-portal.md)üzere ayrıcalıklı kimliğinizi kullanmak yerine bir Azure Active Directory [hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md) kullanabilirsiniz. Hizmet sorumlusu, yalnızca komutunu kullanarak makineleri Azure 'a bağlamak için gereken en düşük izne sahip özel sınırlı bir yönetim kimliğidir `azcmagent` . Bu, Kiracı Yöneticisi gibi daha yüksek ayrıcalıklı bir hesap kullanmaktan daha güvenlidir ve erişim denetimi güvenliği en iyi yöntemlerimizi izler. Hizmet sorumlusu yalnızca ekleme sırasında kullanılır, başka bir amaçla kullanılmaz.  
 
 Bağlı makine aracısını yüklemeye ve yapılandırmaya yönelik yükleme yöntemleri, kullandığınız otomatik metodun makinelerde yönetici izinlerine sahip olmasını gerektirir. Linux 'ta, kök hesabı ve Windows üzerinde yerel Yöneticiler grubunun bir üyesi olarak.
 
-Başlamadan önce, [önkoşulları](overview.md#prerequisites) gözden geçirdiğinizden ve aboneliğinizin ve kaynaklarınızın gereksinimleri karşıladığından emin olun.
+Başlamadan önce, [önkoşulları](agent-overview.md#prerequisites) gözden geçirdiğinizden ve aboneliğinizin ve kaynaklarınızın gereksinimleri karşıladığından emin olun.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -37,7 +37,7 @@ Bu işlemin sonunda, karma makinelerinizi sunucular için Azure yaya başarıyla
 
 PowerShell kullanarak hizmet sorumlusu oluşturmak için aşağıdakileri yapın.
 
-1. Şu komutu çalıştırın. [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) Cmdlet 'in çıkışını bir değişkende depolamanız gerekir, aksi durumda daha sonraki bir adımda gereken parolayı alamazsınız.
+1. Şu komutu çalıştırın. Cmdlet 'in çıkışını bir değişkende depolamanız gerekir [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) , aksi durumda daha sonraki bir adımda gereken parolayı alamazsınız.
 
     ```azurepowershell-interactive
     $sp = New-AzADServicePrincipal -DisplayName "Arc-for-servers" -Role "Azure Connected Machine Onboarding"
@@ -54,7 +54,7 @@ PowerShell kullanarak hizmet sorumlusu oluşturmak için aşağıdakileri yapın
     Type                  :
     ```
 
-2. `$sp` Değişkende depolanan parolayı almak için aşağıdaki komutu çalıştırın:
+2. Değişkende depolanan parolayı almak için `$sp` aşağıdaki komutu çalıştırın:
 
     ```azurepowershell-interactive
     $credential = New-Object pscredential -ArgumentList "temp", $sp.Secret
@@ -63,10 +63,10 @@ PowerShell kullanarak hizmet sorumlusu oluşturmak için aşağıdakileri yapın
 
 3. Çıktıda, alan **parolasının** altındaki parola değerini bulun ve kopyalayın. Ayrıca, **applicationfield** alanının altındaki değeri bulur ve ayrıca kopyalayın. Daha sonra güvenli bir yerde saklayın. Hizmet sorumlusu Parolanızı unutur veya kaybederseniz, [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) cmdlet 'ini kullanarak sıfırlayabilirsiniz.
 
-Aşağıdaki özelliklerden alınan değerler öğesine geçirilen parametrelerle kullanılır `azcmagent`:
+Aşağıdaki özelliklerden alınan değerler öğesine geçirilen parametrelerle kullanılır `azcmagent` :
 
 * **ApplicationId** özelliğinden alınan değer `--service-principal-id` parametre değeri için kullanılır
-* **Password** özelliğinden alınan değer, aracıyı bağlamak için kullanılan `--service-principal-secret` parametresi için kullanılır.
+* **Password** özelliğinden alınan değer, `--service-principal-secret` aracıyı bağlamak için kullanılan parametresi için kullanılır.
 
 > [!NOTE]
 > **Kimlik** özelliğini değil hizmet sorumlusu **ApplicationId** özelliğini kullandığınızdan emin olun.
@@ -76,9 +76,9 @@ Aşağıdaki özelliklerden alınan değerler öğesine geçirilen parametrelerl
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>Aracıyı yükleyip Azure 'a bağlanın
 
-Aşağıdaki adımlar, [Azure Portal makalesinden karma makinelerde Azure 'A bağlanma](onboard-portal.md) bölümünde açıklanan benzer adımları gerçekleştiren betik şablonunu kullanarak, karma makinelerinize bağlı makine aracısını yükler ve yapılandırır. Fark, hizmet sorumlusunu kullanarak `azcmagent` komutu kullanarak Azure Arc bağlantısını oluşturduğunuz son adımdır. 
+Aşağıdaki adımlar, [Azure Portal makalesinden karma makinelerde Azure 'A bağlanma](onboard-portal.md) bölümünde açıklanan benzer adımları gerçekleştiren betik şablonunu kullanarak, karma makinelerinize bağlı makine aracısını yükler ve yapılandırır. Fark, `azcmagent` hizmet sorumlusunu kullanarak komutu kullanarak Azure Arc bağlantısını oluşturduğunuz son adımdır. 
 
-Aşağıda, hizmet sorumlusu için kullanmak üzere `azcmagent` komutu yapılandırdığınız ayarlar verilmiştir.
+Aşağıda, `azcmagent` hizmet sorumlusu için kullanmak üzere komutu yapılandırdığınız ayarlar verilmiştir.
 
 * `tenant-id`: Adanmış Azure AD örneğinizi temsil eden benzersiz tanımlayıcı (GUID).
 * `subscription-id`: İçinde makinelere istediğiniz Azure aboneliğinizin abonelik KIMLIĞI (GUID).
@@ -86,7 +86,7 @@ Aşağıda, hizmet sorumlusu için kullanmak üzere `azcmagent` komutu yapıland
 * `location`: [Desteklenen Azure bölgelerine](overview.md#supported-regions)bakın. Bu konum, kaynak grubunun konumuyla aynı veya farklı olabilir.
 * `resource-name`: (*Isteğe bağlı*) Şirket Içi makinenizin Azure Kaynak temsili için kullanılır. Bu değeri belirtmezseniz makine ana bilgisayar adı kullanılır.
 
-[Azcmagent başvurusunu](azcmagent-reference.md)inceleyerek `azcmagent` komut satırı aracı hakkında daha fazla bilgi edinebilirsiniz.
+`azcmagent` [Azcmagent başvurusunu](azcmagent-reference.md)inceleyerek komut satırı aracı hakkında daha fazla bilgi edinebilirsiniz.
 
 ### <a name="windows-installation-script"></a>Windows yükleme betiği
 

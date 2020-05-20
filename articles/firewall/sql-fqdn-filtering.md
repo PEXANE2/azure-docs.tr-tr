@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: 28252b42264dc6c1be403e99689f845d7143b1f7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8b67574f435681d8071eda1ad954dcafb5124cbf
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200463"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655111"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Güvenlik Duvarı uygulama kurallarını SQL FQDN 'leri ile yapılandırma
 
@@ -26,8 +26,6 @@ SQL FQDN 'leri ile trafiği filtreleyebilirsiniz:
 
 SQL FQDN filtrelemesi yalnızca [proxy modunda](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) desteklenir (bağlantı noktası 1433). Varsayılan yeniden yönlendirme modunda SQL kullanıyorsanız, [ağ kurallarının](overview.md#network-traffic-filtering-rules)bir PARÇASı olarak SQL hizmeti etiketini kullanarak erişimi filtreleyebilirsiniz.
 SQL IaaS trafiği için varsayılan olmayan bağlantı noktaları kullanırsanız, bu bağlantı noktalarını güvenlik duvarı uygulama kurallarında yapılandırabilirsiniz.
-
-SQL FQDN 'leri olan uygulama kuralları şu anda tüm bölgelerde Azure portal, Azure CLı, REST ve şablonlar aracılığıyla kullanılabilir.
 
 ## <a name="configure-using-azure-cli"></a>Azure CLı kullanarak yapılandırma
 

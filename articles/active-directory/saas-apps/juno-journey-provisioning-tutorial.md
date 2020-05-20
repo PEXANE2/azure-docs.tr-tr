@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 08de07a52d1e43dea91e6684d33027d8bcad61fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41a6cc3a4fd604c4272783f528ed3d37372044fb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641855"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647749"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Juno yolculuğu yapılandırma
 
@@ -34,23 +34,23 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Juno y
 > * Kullanıcı özniteliklerinin Azure AD ile Juno yolculuğu arasında eşitlenmiş olmasını sağlama
 > * Juno yolculukta [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/juno-journey-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
-*  Bir [Juno yolculuğu kiracısı](https://www.junojourney.com/getstartedwithjuno).
+*  Bir [Juno yolculuğu kiracısı](https://www.junojourney.com/blank).
 *  Yönetim izinlerine sahip yolculukta bir kullanıcı hesabı.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Azure AD Ile Juno yolculuğu arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı desteklemek için Juno yolculuğu yapılandırma
+## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için Juno yolculuğu yapılandırma
 
-1. **Gizli belirteç** ve **kiracı URL 'si** Için, adresindeki support@the-juno.comJuno yolculuğu destek ekibine başvurun. Bu değer, Azure portal Juno yolculuğu uygulamanızın sağlama sekmesinde sırasıyla **gizli belirteç** ve **kiracı URL 'si** alanlarına girilir. 
+1. **Gizli belirteç** ve **kiracı URL 'si** Için, adresindeki Juno yolculuğu destek ekibine başvurun support@the-juno.com . Bu değer, Azure portal Juno yolculuğu uygulamanızın sağlama sekmesinde sırasıyla **gizli belirteç** ve **kiracı URL 'si** alanlarına girilir. 
 
 ## <a name="step-3-add-juno-journey-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Juno yolculuğu ekleme
 
@@ -71,7 +71,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-juno-journey-in-azure-ad"></a>Azure AD 'de Juno yolculuğu için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

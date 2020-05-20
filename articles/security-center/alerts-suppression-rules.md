@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 5a5d6a96bd73a67c2611e7f334eba3daeda031ba
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 83ee59ca4353cd1af6c613e7624ee15f21b0a27e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007706"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650915"
 ---
 # <a name="suppressing-alerts-from-azure-security-centers-threat-protection"></a>Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gizleme
 
@@ -147,7 +147,7 @@ REST API kuralları gizleme için ilgili HTTP yöntemleri şunlardır:
 
 - **Sil**: varolan bir kuralı siler (ancak tarafından zaten kapatılan uyarıların durumunu değiştirmez).
 
-Tam ayrıntılar ve kullanım örnekleri için [API belgelerine](https://docs.microsoft.com/api/securitycenter/)bakın. 
+Tam ayrıntılar ve kullanım örnekleri için [API belgelerine](https://docs.microsoft.com/rest/api/securitycenter/)bakın. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

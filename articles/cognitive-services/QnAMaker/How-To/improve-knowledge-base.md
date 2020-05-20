@@ -3,12 +3,12 @@ title: Bilgi Bankası Soru-Cevap Oluşturma geliştirme-
 description: Etkin öğrenme ile bilgi Bankalarınızın kalitesini artırabilirsiniz. Mevcut soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin, ekleyin.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756766"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650765"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Bilgi Bankası 'nda önerilen etkin öğrenme sorularını kabul edin
 
@@ -31,7 +31,7 @@ Etkin öğrenme, öneriyi onayladıktan sonra bilgi bankasını veya Arama Hizme
 
     [![Önerilere göre filtrele ' ye tıklayarak yalnızca etkin öğrenme 'nın önerilen soru alternatiflerini görüntüleyin.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. Her bir QnA çiftiyle, soruyu kabul etmek için veya önerileri reddetmek `✔` üzere bir `x` onay işaretiyle birlikte yeni soru alternatifleri önerilir. Soruyu eklemek için onay işaretini seçin.
+1. Her bir QnA çiftiyle, `✔` soruyu kabul etmek için veya önerileri reddetmek üzere bir onay işaretiyle birlikte yeni soru alternatifleri önerilir `x` . Soruyu eklemek için onay işaretini seçin.
 
     [![Yeşil onay işaretini veya kırmızı silme işaretini seçerek, etkin öğrenimi 'nin önerilen soru alternatiflerini seçin veya reddedin.](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
@@ -50,7 +50,7 @@ Etkin öğrenme, öneriyi onayladıktan sonra bilgi bankasını veya Arama Hizme
 
 Bir bot veya diğer istemci uygulaması, etkin öğrenimi kullanmak için aşağıdaki mimari akışı kullanmalıdır:
 
-* Bot, [bilgi bankasındaki yanıtı](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) GENERATEANSWER API 'si ile alır. bu `top` özellik, bir dizi yanıt almak için özelliğini kullanarak.
+* Bot, [bilgi bankasındaki yanıtı](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) GENERATEANSWER API 'si ile alır. Bu özellik, `top` bir dizi yanıt almak için özelliğini kullanarak.
 * Bot açık geri bildirimi belirler:
     * Kendi [özel iş mantığınızı](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)kullanarak düşük puanları filtreleyin.
     * Bot veya istemci uygulamasında, kullanıcıya olası yanıtların listesini görüntüleyin ve kullanıcının seçili yanıtını alın.
@@ -59,7 +59,7 @@ Bir bot veya diğer istemci uygulaması, etkin öğrenimi kullanmak için aşağ
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Birkaç eşleşen yanıt almak için GenerateAnswer isteğindeki top özelliğini kullanın
 
-Yanıt için Soru-Cevap Oluşturma bir soru gönderilirken, JSON gövdesinin `top` özelliği döndürülecek yanıt sayısını ayarlar.
+Yanıt için Soru-Cevap Oluşturma bir soru gönderilirken, `top` JSON gövdesinin özelliği döndürülecek yanıt sayısını ayarlar.
 
 ```json
 {
@@ -71,7 +71,7 @@ Yanıt için Soru-Cevap Oluşturma bir soru gönderilirken, JSON gövdesinin `to
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>Kullanıcı gösterme yanıtlarının listesini almak için, iş mantığı ile birlikte Score özelliğini kullanın
 
-İstemci uygulaması (bir sohbet bot gibi) yanıtı aldığında, ilk 3 soru döndürülür. Puanlar arasındaki `score` yakınlığı çözümlemek için özelliğini kullanın. Bu yakınlık aralığı, kendi iş mantığınızla belirlenir.
+İstemci uygulaması (bir sohbet bot gibi) yanıtı aldığında, ilk 3 soru döndürülür. `score`Puanlar arasındaki yakınlığı çözümlemek için özelliğini kullanın. Bu yakınlık aralığı, kendi iş mantığınızla belirlenir.
 
 ```json
 {
@@ -127,10 +127,10 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP istek özelliği|Adı|Tür|Amaç|
+|HTTP istek özelliği|Name|Tür|Amaç|
 |--|--|--|--|
 |URL yol parametresi|Bilgi Bankası KIMLIĞI|string|Bilgi tabanınız için GUID.|
-|Özel alt etki alanı|QnAMaker kaynak adı|string|Kaynak adı, Soru-Cevap Oluşturma özel alt etki alanı olarak kullanılır. Bu, Bilgi Bankası 'nı yayımladıktan sonra Ayarlar sayfasında bulunur. Olarak listelenir `host`.|
+|Özel alt etki alanı|QnAMaker kaynak adı|string|Kaynak adı, Soru-Cevap Oluşturma özel alt etki alanı olarak kullanılır. Bu, Bilgi Bankası 'nı yayımladıktan sonra Ayarlar sayfasında bulunur. Olarak listelenir `host` .|
 |Üst bilgi|İçerik Türü|string|API 'ye gönderilen gövdenin medya türü. Varsayılan değer:`application/json`|
 |Üst bilgi|Yetkilendirme|string|Uç nokta anahtarınız (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Gövde gönder|JSON nesnesi|JSON|Eğitim geri bildirimi|
@@ -142,7 +142,7 @@ JSON gövdesi çeşitli ayarlara sahiptir:
 |`feedbackRecords`|array|Geri bildirim listesi.|
 |`userId`|string|Önerilen soruları kabul eden kişinin Kullanıcı KIMLIĞI. Kullanıcı KIMLIĞI biçimi size ait. Örneğin, bir e-posta adresi, mimarinizdeki geçerli bir kullanıcı KIMLIĞI olabilir. İsteğe bağlı.|
 |`userQuestion`|string|Kullanıcının sorgusunun tam metni. Gereklidir.|
-|`qnaID`|number|[Generateanswer yanıtında](metadata-generateanswer-usage.md#generateanswer-response-properties)bulunan soru kimliği. |
+|`qnaID`|sayı|[Generateanswer yanıtında](metadata-generateanswer-usage.md#generateanswer-response-properties)bulunan soru kimliği. |
 
 Örnek bir JSON gövdesi şöyle görünür:
 
@@ -162,7 +162,7 @@ Başarılı bir yanıt, 204 durumunu ve hiçbir JSON yanıt gövdesi döndürmez
 
 ### <a name="batch-many-feedback-records-into-a-single-call"></a>Tek bir çağrıda toplu işlem birçok geri bildirim kaydı
 
-Bir bot gibi istemci tarafı uygulamada, verileri saklayabilir ve `feedbackRecords` dizideki tek bir JSON gövdesinde birçok kayıt gönderebilirsiniz.
+Bir bot gibi istemci tarafı uygulamada, verileri saklayabilir ve dizideki tek bir JSON gövdesinde birçok kayıt gönderebilirsiniz `feedbackRecords` .
 
 Örnek bir JSON gövdesi şöyle görünür:
 
@@ -309,9 +309,9 @@ async callTrain(stepContext){
 
 ## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Etkin öğrenme, dışarıya kaydedilen Bilgi Bankası 'nda kaydedilir
 
-Uygulamanızda etkin öğrenme etkin olduğunda ve uygulamayı dışarı aktardığınızda, TSV dosyasındaki `SuggestedQuestions` sütun etkin öğrenme verilerini korur.
+Uygulamanızda etkin öğrenme etkin olduğunda ve uygulamayı dışarı aktardığınızda, `SuggestedQuestions` TSV dosyasındaki sütun etkin öğrenme verilerini korur.
 
-`SuggestedQuestions` Sütun örtük, `autosuggested`ve açık, `usersuggested` geri bildirimde bulunan bir JSON nesnesidir. Kullanıcı tarafından gönderilen tek bir soru `help` IÇIN bu JSON nesnesine bir örnek:
+`SuggestedQuestions`Sütun örtük, `autosuggested` ve açık, geri bildirimde bulunan bir JSON nesnesidir `usersuggested` . Kullanıcı tarafından gönderilen tek bir soru için bu JSON nesnesine bir örnek `help` :
 
 ```JSON
 [
@@ -329,11 +329,6 @@ Uygulamanızda etkin öğrenme etkin olduğunda ve uygulamayı dışarı aktard�
     }
 ]
 ```
-
-REST veya dil tabanlı SDK 'Lardan birini kullanarak bu değişiklikleri gözden geçirmek için GERI yükleme değişiklikleri API 'sini de kullanabilirsiniz:
-* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
-
 
 Bu uygulamayı yeniden içeri aktardığınızda, etkin öğrenme bilgileri toplamaya ve bilgi tabanınız için öneriler önermeye devam etmektedir.
 

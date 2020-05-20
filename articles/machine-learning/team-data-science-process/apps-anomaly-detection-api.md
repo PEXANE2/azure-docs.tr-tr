@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: a09094cf0d1bd3c2e299e968d7de8410dcd9c3cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 269cadc50d55c4b986c55f489cecd7fa17922ba8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721889"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656550"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning anomali algılama API 'SI
 
@@ -24,7 +24,7 @@ ms.locfileid: "76721889"
 > Bu öğe bakım aşamasındadır. İş, operasyonel ve IoT ölçümlerinden gelen anormallikleri algılamak için Azure bilişsel Hizmetler kapsamındaki Machine Learning algoritmalarının bir galerisiyle desteklenen [anomali ALGıLAYıCı API hizmetini](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/) kullanmanızı öneririz.
 
 ## <a name="overview"></a>Genel Bakış
-[Anomali ALGıLAMA API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) 'si, zaman serisi verilerinde zaman içinde tek bir şekilde boşluk olan sayısal değerlere sahip bozuklukları algılayan Azure Machine Learning ile oluşturulmuş bir örnektir.
+[Anomali ALGıLAMA API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) 'si, zaman serisi verilerinde zaman içinde tek bir şekilde boşluk olan sayısal değerlere sahip bozuklukları algılayan Azure Machine Learning ile oluşturulmuş bir örnektir.
 
 Bu API, zaman serisi verilerinde aşağıdaki türlerde anormal desenleri algılayabilir:
 
@@ -39,29 +39,29 @@ Anomali algılama teklifi, başlamanıza yardımcı olan yararlı araçlarla bir
 * [Web uygulaması](https://anomalydetection-aml.azurewebsites.net/) , verilerinize ait anomali algılama API 'lerinin sonuçlarını değerlendirmenize ve görselleştirmenize yardımcı olur.
 
 > [!NOTE]
-> [Bu API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) tarafından desteklenen **BT anomali Öngörüler çözümünü** deneyin
+> [Bu API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) tarafından desteklenen **BT anomali Öngörüler çözümünü** deneyin
 >
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
 -->
 
 ## <a name="api-deployment"></a>API dağıtımı
-API 'yi kullanabilmeniz için, bunu bir Azure Machine Learning Web hizmeti olarak barındırılacak Azure aboneliğinize dağıtmanız gerekir.  Bunu [Azure yapay zeka Galerisi](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)yapabilirsiniz.  Bu işlem, Azure aboneliğinize iki Azure Machine Learning Studio (klasik) Web hizmeti (ve bunların ilgili kaynaklarını) dağıtır. Bu, mevsimsellik algılama ile anomali algılama ve bir mevsimlik algılama olmadan bir tane.  Dağıtım tamamlandıktan sonra API 'lerinizi [Azure Machine Learning Studio (klasik) Web Hizmetleri](https://services.azureml.net/webservices/) sayfasından yönetebileceksiniz.  Bu sayfadan, uç nokta konumları, API anahtarlarınızın yanı sıra API 'yi çağırmak için örnek kod de bulabilirsiniz.  Daha ayrıntılı yönergeler [burada](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)bulunabilir.
+API 'yi kullanabilmeniz için, bunu bir Azure Machine Learning Web hizmeti olarak barındırılacak Azure aboneliğinize dağıtmanız gerekir.  Bunu [Azure yapay zeka Galerisi](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2)yapabilirsiniz.  Bu işlem, Azure aboneliğinize iki Azure Machine Learning Studio (klasik) Web hizmeti (ve bunların ilgili kaynaklarını) dağıtır. Bu, mevsimsellik algılama ile anomali algılama ve bir mevsimlik algılama olmadan bir tane.  Dağıtım tamamlandıktan sonra API 'lerinizi [Azure Machine Learning Studio (klasik) Web Hizmetleri](https://services.azureml.net/webservices/) sayfasından yönetebileceksiniz.  Bu sayfadan, uç nokta konumları, API anahtarlarınızın yanı sıra API 'yi çağırmak için örnek kod de bulabilirsiniz.  Daha ayrıntılı yönergeler [burada](/azure/machine-learning/studio/manage-new-webservice)bulunabilir.
 
 ## <a name="scaling-the-api"></a>API ölçeklendirme
 Varsayılan olarak, dağıtımınız 1.000 işlem/ay ve 2 işlem saati/ay içeren ücretsiz bir geliştirme/test faturalandırma planına sahip olacaktır.  Gereksinimlerinize göre başka bir plana yükseltebilirsiniz.  Farklı planların fiyatlandırmasıyla ilgili ayrıntıları [burada](https://azure.microsoft.com/pricing/details/machine-learning/) "ÜRETIM Web API fiyatlandırması" altında bulabilirsiniz.
 
 ## <a name="managing-aml-plans"></a>AML planlarını yönetme
-Faturalandırma planınızı [buradan](https://services.azureml.net/plans/)yönetebilirsiniz.  Plan adı, API 'yi dağıttığınızda seçtiğiniz kaynak grubu adına ve aboneliğinize özgü bir dizeye göre yapılır.  Planınızın nasıl yükseltileceğiyle ilgili yönergeler [burada](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice) "Faturalandırma planlarını yönetme" bölümünde bulunabilir.
+Faturalandırma planınızı [buradan](https://services.azureml.net/plans/)yönetebilirsiniz.  Plan adı, API 'yi dağıttığınızda seçtiğiniz kaynak grubu adına ve aboneliğinize özgü bir dizeye göre yapılır.  Planınızın nasıl yükseltileceğiyle ilgili yönergeler [burada](/azure/machine-learning/studio/manage-new-webservice) "Faturalandırma planlarını yönetme" bölümünde bulunabilir.
 
 ## <a name="api-definition"></a>API tanımı
 Web hizmeti, bir Web veya mobil uygulama, R, Python, Excel vb. gibi farklı yollarla tüketilen, HTTPS üzerinden REST tabanlı bir API sağlar.  Zaman serisi verilerinizi bu hizmete REST API bir çağrı aracılığıyla gönderirsiniz ve aşağıda açıklanan üç anomali türünün bir birleşimini çalıştırır.
 
 ## <a name="calling-the-api"></a>API çağırma
-API 'yi çağırmak için uç nokta konumunu ve API anahtarını bilmeniz gerekecektir.  Bu iki gereksinim, API 'yi çağırmaya yönelik örnek kodla birlikte [Azure Machine Learning Studio (klasik) Web Hizmetleri](https://services.azureml.net/webservices/) sayfasından kullanılabilir.  İstenen API 'ye gidin ve ardından bulmak için "kullanma" sekmesine tıklayın.  API 'yi bir Swagger API (URL parametresi `format=swagger`ile) veya Swagger olmayan bir API ( `format` URL parametresi olmadan) olarak çağırabilirsiniz.  Örnek kod Swagger biçimini kullanır.  Swagger olmayan biçimdeki örnek bir istek ve yanıt aşağıda verilmiştir.  Bu örnekler mevsimsellik uç noktasıdır.  Mevsimsiz olma uç noktası benzerdir.
+API 'yi çağırmak için uç nokta konumunu ve API anahtarını bilmeniz gerekecektir.  Bu iki gereksinim, API 'yi çağırmaya yönelik örnek kodla birlikte [Azure Machine Learning Studio (klasik) Web Hizmetleri](https://services.azureml.net/webservices/) sayfasından kullanılabilir.  İstenen API 'ye gidin ve ardından bulmak için "kullanma" sekmesine tıklayın.  API 'yi bir Swagger API (URL parametresi ile `format=swagger` ) veya Swagger olmayan BIR API ( `format` URL parametresi olmadan) olarak çağırabilirsiniz.  Örnek kod Swagger biçimini kullanır.  Swagger olmayan biçimdeki örnek bir istek ve yanıt aşağıda verilmiştir.  Bu örnekler mevsimsellik uç noktasıdır.  Mevsimsiz olma uç noktası benzerdir.
 
 ### <a name="sample-request-body"></a>Örnek Istek gövdesi
-İstek iki nesne içerir: `Inputs` ve. `GlobalParameters`  Aşağıdaki örnek istekte, bazı parametreler açıkça gönderilir, diğerleri değildir (her bitiş noktası için parametrelerin tam listesi için aşağı kaydırın).  İstekte açıkça gönderilmeyen parametreler aşağıda verilen varsayılan değerleri kullanır.
+İstek iki nesne içerir: `Inputs` ve `GlobalParameters` .  Aşağıdaki örnek istekte, bazı parametreler açıkça gönderilir, diğerleri değildir (her bitiş noktası için parametrelerin tam listesi için aşağı kaydırın).  İstekte açıkça gönderilmeyen parametreler aşağıda verilen varsayılan değerleri kullanır.
 
     {
                 "Inputs": {
@@ -83,7 +83,7 @@ API 'yi çağırmak için uç nokta konumunu ve API anahtarını bilmeniz gereke
     }
 
 ### <a name="sample-response"></a>Örnek Yanıt
-`ColumnNames` Alanı görmek için, ISTEĞINIZE bir URL parametresi olarak dahil `details=true` etmeniz gerekir.  Bu alanların her birinin arkasındaki anlamı görmek için aşağıdaki tablolara bakın.
+Alanı görmek için `ColumnNames` , `details=true` ISTEĞINIZE bir URL parametresi olarak dahil etmeniz gerekir.  Bu alanların her birinin arkasındaki anlamı görmek için aşağıdaki tablolara bakın.
 
     {
         "Results": {
@@ -125,8 +125,8 @@ Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda l
 | --- | --- | --- | --- | --- | --- |
 | detektorler. geçmişini penceresi |Anomali puan hesaplaması için kullanılan geçmiş (veri noktası sayısı) |500 |integer |10-2000 |Zaman serisine bağımlı |
 | algılayıcıları. spıkesdips | Yalnızca ani artışlar, yalnızca DIB 'ler veya her ikisinin de algılanmayacağı |Her ikisi de |numara |Her ikisi, ani artışlar, DIB 'Ler |Her ikisi de |
-| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
-| trendalgılayıcısı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| trendalgılayıcısı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
 | tspikealgılayıcısı. duyarlılığı |Tani algılayıcı duyarlılığı |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
 | zspikealgılayıcı. duyarlılık |Zani algılayıcısı için duyarlılık |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
 | postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |integer |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |Yok |
@@ -164,9 +164,9 @@ Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda l
 | preprocess. replaceMissing |Eksik verileri ımpute için kullanılan değerler |LKV (son bilinen değer) |numara |sıfır, LKV, ortalama |Yok |
 | detektorler. geçmişini penceresi |Anomali puan hesaplaması için kullanılan geçmiş (veri noktası sayısı) |500 |integer |10-2000 |Zaman serisine bağımlı |
 | algılayıcıları. spıkesdips | Yalnızca ani artışlar, yalnızca DIB 'ler veya her ikisinin de algılanmayacağı |Her ikisi de |numara |Her ikisi, ani artışlar, DIB 'Ler |Her ikisi de |
-| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
-| postrendalgılayıcı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
-| negtrendalgılayıcısı. duyarlılık |Negatif eğilim algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| postrendalgılayıcı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| negtrendalgılayıcısı. duyarlılık |Negatif eğilim algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
 | tspikealgılayıcısı. duyarlılığı |Tani algılayıcı duyarlılığı |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
 | zspikealgılayıcı. duyarlılık |Zani algılayıcısı için duyarlılık |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
 | mevsimsellik. etkinleştir |Mevsimsellik analizinin gerçekleştirilip gerçekleştirilmeyeceğini belirtir |true |boole |doğru, yanlış |Zaman serisine bağımlı |

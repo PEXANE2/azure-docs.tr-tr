@@ -2,20 +2,20 @@
 title: Kapsayıcılar için Azure Izleyici ile Kubernetes küme durumunu izleme | Microsoft Docs
 description: Bu makalede, kapsayıcılar için Azure Izleyici ile AKS ve AKS olmayan kümelerinizin sistem durumunu nasıl görüntüleyebileceğiniz ve çözümleyebileceğinizi anlatmaktadır.
 ms.topic: conceptual
-ms.date: 12/01/2019
-ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/18/2020
+ms.openlocfilehash: 94fdb6388134eae326ed5a8e46fbd3d13f8da2d5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843999"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649584"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme durumunu anlayın
 
 Kapsayıcılar için Azure Izleyici ile, yönetilen altyapı bileşenlerinin ve kapsayıcı için Azure Izleyici tarafından desteklenen herhangi bir Kubernetes kümesinde çalışan tüm düğümlerin sistem durumunu izler ve raporlar. Bu deneyim, [birden çok küme görünümünde](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)hesaplanan ve bildirilen küme durumu durumunun ötesine uzanır, burada kümede bir veya daha fazla düğüm kısıtlanmış olup olmadığını anlayabilir veya bir düğüm ya da Pod, seçilen ölçümleri temel alarak kümedeki çalışan bir uygulamayı etkileyebilecek bir düğüm veya Pod kullanılamaz.
 
 >[!NOTE]
->Sistem durumu özelliği şu anda genel önizlemede.
+>Sistem sağlığı özelliği, Haziran 2020 ' nin sonunda özel önizlemeye geçişe gidiyor. Daha fazla bilgi için aşağıdaki [Azure güncelleştirme duyurusunu](https://azure.microsoft.com/updates/ci-health-limited-preview/)inceleyin.
 >
 
 Kapsayıcılar için Azure Izleyicisini etkinleştirme hakkında daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyicisini](container-insights-onboard.md)ekleme.
@@ -23,7 +23,7 @@ Kapsayıcılar için Azure Izleyicisini etkinleştirme hakkında daha fazla bilg
 >[!NOTE]
 >AKS motoru kümelerini desteklemek için, aşağıdakileri karşıladığını doğrulayın:
 >- Bu, [Held istemcisinin](https://helm.sh/docs/using_helm/)en son sürümünü kullanıyor.
->- Kapsayıcılı aracı sürümü *Microsoft/OMS: ciprod11012019*. Aracıyı yükseltmek için bkz. [Kubernetes kümesinde aracıyı yükseltme](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster).
+>- Kapsayıcılı aracı sürümü *Microsoft/OMS: ciprod11012019*. Aracıyı yükseltmek için bkz. [Kubernetes kümesinde aracıyı yükseltme](container-insights-manage-agent.md#how-to-upgrade-the-azure-monitor-for-containers-agent).
 >
 
 ## <a name="overview"></a>Genel Bakış
@@ -63,7 +63,7 @@ Kapsayıcılar için Azure Izleyici sistem durumu özelliğini destekleyen her m
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın. 
+[Azure portalında](https://portal.azure.com) oturum açın. 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>AKS veya AKS olmayan kümenin durumunu görüntüleme
 

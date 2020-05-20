@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 12445ec5b14f4c274e471bf1b061a3b221664d20
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8b52102ec26ec94097e4b5b9aa1b1730787cfa4b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592313"
+ms.locfileid: "83654084"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Sözcük listesinin sinyalini artırmak için özellikleri kullanın
 
@@ -49,8 +49,23 @@ Bir özelliğin ne zaman ve neden kullanılacağını anlamak için [kavramları
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
+
 > [!Note]
 > Bir tümcecik listesini, **ml özellikleri** sayfasındaki bağlamsal araç çubuğundan silebilir veya devre dışı bırakabilirsiniz.
+
+## <a name="global-phrase-list-applies-to-entire-app"></a>Genel ifade listesi tüm uygulama için geçerlidir
+
+Bir tümcecik listesi, yardım almak için tasarlanan amaç veya varlığa uygulanmalıdır, ancak bir tümcecik listesinin tüm uygulamaya **genel** bir özellik olarak uygulanması gerektiği zamanlar olabilir.
+
+ML özellikleri sayfasında, tümcecik listesini seçin ve ardından üst bağlamsal araç çubuğunda **genel yap** ' ı seçin.
+
+## <a name="model-as-a-feature"></a>Özellik olarak model oluşturma
+
+Bir varlık bir [amaç veya varlığa yönelik bir özellik](luis-concept-feature.md)olabilir.
+
+Bir amaca özellik olarak bir varlık eklemek için amaçlar sayfasından amacı seçin ve bağlam araç çubuğunun üstünde **+ Özellik Ekle** ' yi seçin. Liste, özellik olarak uygulanabilecek tüm tümcecik listelerini ve varlıkları içerir.
+
+Bir varlığı başka bir varlığa bir özellik olarak eklemek için, [varlık paletini](label-entity-example-utterance.md#adding-entity-as-a-feature-from-the-entity-palette) kullanarak amaç ayrıntısı sayfasında özelliğini ekleyebilir veya özelliği varlık ayrıntısı sayfasına [ekleyebilirsiniz](luis-how-to-add-entities.md#add-a-feature-to-a-machine-learned-entity) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

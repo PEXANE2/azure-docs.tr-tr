@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: e0aea7e55381e9571b156701699f5f45315bb384
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4181491053dd1f8d66afcd5f1df7cb96313011da
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399688"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650594"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 
@@ -24,6 +24,8 @@ ms.locfileid: "81399688"
 Konuşma tanıma olarak da bilinen konuşma hizmetindeki konuşma metni, ses akışlarının gerçek zamanlı olarak dökümünü metne sağlar. Uygulamalarınız, araçlarınız veya cihazlarınız bu metni komut girişi olarak kullanabilir, görüntüleyebilir ve eylem gerçekleştirebilir. Bu hizmet, Microsoft 'un Cortana ve Office ürünleri için kullandığı aynı tanıma teknolojisi ile desteklenmektedir. <a href="./speech-translation.md" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Çeviri</a> ve <a href="./text-to-speech.md" target="_blank">metin okuma <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hizmeti teklifleriyle sorunsuz bir şekilde çalışır. Kullanılabilir konuşmadan metne yönelik dillerin tam listesi için bkz. [desteklenen diller](language-support.md#speech-to-text).
 
 Konuşmadan metne hizmet varsayılan olarak evrensel dil modelini kullanmaktır. Bu model, Microsoft 'a ait veriler kullanılarak eğitildi ve buluta dağıtıldı. Konuşma ve dikte senaryoları için idealdir. Benzersiz bir ortamda tanıma ve döküm için konuşmayı metne dönüştürme özelliğini kullanırken özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. Özelleştirme, çevresel gürültü veya sektöre özgü sözlük adreslemeye yardımcı olur.
+
+Giriş olarak ek başvuru metniyle birlikte, konuşmadan metne hizmet, konuşma söylenişini değerlendirmek ve konuşmaların doğruluğu ve akıcı olması ile konuşmacıya geri bildirimde bulunmak için [de sunar.](rest-speech-to-text.md#pronunciation-assessment-parameters) Telaffuz değerlendirmesi sayesinde, konuşma, anında geri bildirim alabilir ve telaffuz hale gelecek ve güvenle sunabilmeleri için söylenişlerini geliştirebilirler. Eğitimciler, birden çok konuşmacıdaki söylenişi gerçek zamanlı olarak değerlendirmek için özelliğini kullanabilir. Özelliği şu anda Amerikan Ingilizcesi 'ni destekliyor ve uzmanlar tarafından gerçekleştirilen konuşma değerlendirmelerinden yüksek oranda.
 
 > [!NOTE]
 > Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı. Uygulamalarınız, araçlarınız veya ürünleriniz Bing Konuşma API 'Leri kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
@@ -39,6 +41,8 @@ Konuşmaya metin hizmetine [konuşma SDK 'sı](speech-sdk.md)aracılığıyla ul
 
 Konuşmayı metne REST hizmetini kullanmayı tercih ediyorsanız bkz. [REST API 'leri](rest-speech-to-text.md).
 
+ - [Hızlı başlangıç: başvuru girişi ile telaffuz değerlendirmesi](rest-speech-to-text.md#pronunciation-assessment-parameters)
+
 ## <a name="tutorials-and-sample-code"></a>Öğreticiler ve örnek kod
 
 Konuşma hizmetini kullanma şansınız olduktan sonra, konuşma SDK 'sını ve LUO kullanarak konuşmayı nasıl anlayacağınızı öğreten Öğreticimizi deneyin.
@@ -49,6 +53,7 @@ Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bi
 
 - [Konuşmaya metin örnekleri (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Toplu iş dökümü örnekleri (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+- [Söyleniş değerlendirmesi örnekleri (REST)](rest-speech-to-text.md#pronunciation-assessment-parameters)
 
 ## <a name="customization"></a>Özelleştirme
 

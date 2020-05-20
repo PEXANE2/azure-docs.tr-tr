@@ -1,19 +1,19 @@
 ---
 title: Azure Blob depolamaya tam metin araması ekleme
 titleSuffix: Azure Cognitive Search
-description: Azure bilişsel aramada tam metin arama dizini oluştururken içeriği ayıklayın ve Azure bloblarına yapı ekleyin.
+description: Azure Bilişsel Arama 'de tam metin arama dizini oluştururken içeriği ayıklayın ve Azure bloblarına yapı ekleyin.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 83308f42fb1f2ea3408b5c1a63d88d21a8e7830a
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: fd405513f8bdef09e6d3ab996fc2c04bd397db13
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402089"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659432"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Azure Bilişsel Arama kullanarak Azure Blob verilerine tam metin araması ekleme
 

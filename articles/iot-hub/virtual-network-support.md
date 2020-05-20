@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/12/2020
 ms.author: jlian
-ms.openlocfilehash: c0d01ae6507864373a79282476846d6f96adf83b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61d24ac9f99a7c7b2b4d9ca6f3fd7b0a338341b8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231450"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652369"
 ---
 # <a name="iot-hub-support-for-virtual-networks"></a>Sanal ağlar için IoT Hub desteği
 
@@ -46,10 +46,7 @@ Bu makalede, IoT Hub diğer Azure kaynaklarına çıkış bağlantısı için Az
 
 ## <a name="ingress-connectivity-to-iot-hub-using-private-endpoints"></a>Özel uç noktaları kullanarak IoT Hub giriş bağlantısı
 
-Özel uç nokta, bir Azure kaynağına erişilebilen, müşterinin sahip olduğu VNET içinde ayrılmış özel bir IP adresidir. IoT Hub 'ınız için özel bir uç nokta sunarak, VNET 'iniz içinde çalışan hizmetlerin, trafiğin IoT Hub genel uç noktasına gönderilmesine gerek kalmadan IoT Hub ulaşmasına izin verebilirsiniz. Benzer şekilde, şirket içi şirketinizde çalışan cihazlar, Azure 'daki sanal ağınıza ve sonrasında IoT Hub (Özel uç noktası aracılığıyla) ile bağlantı kazanmak için [sanal özel ağ (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) veya [ExpressRoute](https://azure.microsoft.com/services/expressroute/) özel eşlemesini kullanabilir. Sonuç olarak, IoT Hub 'ının genel uç noktalarına bağlantıyı kısıtlamak (veya muhtemelen tamamen devre dışı bırakmak) isteyen müşteriler, Özel uç nokta kullanarak hub 'larıyla bağlantı tutarken [IoT Hub güvenlik duvarı kurallarını](./iot-hub-ip-filtering.md) kullanarak bu amaca ulaşabilmektedir.
-
-> [!NOTE]
-> Bu kurulumun ana odağı, şirket içi bir ağ içindeki cihazlar içindir. Bu kurulum, geniş alan ağlarda dağıtılan cihazlar için önerilmez.
+Özel uç nokta, bir Azure kaynağına erişilebilen, müşterinin sahip olduğu VNET içinde ayrılmış özel bir IP adresidir. IoT Hub 'ınız için özel bir uç nokta sunarak, VNET 'iniz içinde çalışan hizmetlerin, trafiğin IoT Hub genel uç noktasına gönderilmesine gerek kalmadan IoT Hub ulaşmasına izin verebilirsiniz. Benzer şekilde, şirket içi şirketinizde çalışan cihazlar, Azure 'daki sanal ağınıza ve sonrasında IoT Hub (Özel uç noktası aracılığıyla) ile bağlantı kazanmak için [sanal özel ağ (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) veya [ExpressRoute](https://azure.microsoft.com/services/expressroute/) özel eşlemesini kullanabilir. Sonuç olarak, IoT Hub 'ının genel uç noktalarına bağlantıyı kısıtlamak (veya muhtemelen tamamen devre dışı bırakmak) isteyen müşteriler bu hedefe [IoT Hub IP filtresi](./iot-hub-ip-filtering.md) kullanarak ve [bir verileri yerleşik uç noktaya göndermemek için yönlendirmeyi yapılandırarak](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint)elde edebilir. Bu yaklaşım, cihazlar için özel uç nokta kullanarak hub 'ına bağlantıyı korur. Bu kurulumun ana odağı, şirket içi bir ağ içindeki cihazlar içindir. Bu kurulum, geniş alan ağlarda dağıtılan cihazlar için önerilmez.
 
 ![IoT Hub ortak uç nokta](./media/virtual-network-support/virtual-network-ingress.png)
 
@@ -85,7 +82,7 @@ Aşağıdaki bölgelerde oluşturulan IoT Hub desteklenen özel uç noktalar:
     az provider register --namespace Microsoft.Devices --wait --subscription  <subscription-name>
     ```
 
-2. IoT Hub portalınızdaki **Özel uç nokta bağlantıları** sekmesine gidin (Bu sekme yalnızca [desteklenen bölgelerde](#regional-availability-private-endpoints)IoT Hub 'larda mevcuttur) ve yeni bir özel uç nokta eklemek için **+** imzala ' ya tıklayın.
+2. IoT Hub portalınızdaki **Özel uç nokta bağlantıları** sekmesine gidin (Bu sekme yalnızca [desteklenen bölgelerde](#regional-availability-private-endpoints)IoT Hub 'larda mevcuttur) ve **+** Yeni bir özel uç nokta eklemek için imzala ' ya tıklayın.
 
 3. Yeni özel bitiş noktasını oluşturmak için abonelik, kaynak grubu, ad ve bölge sağlayın (ideal olarak, Özel uç noktanın hub 'ınız ile aynı bölgede oluşturulması gerekir; daha fazla ayrıntı için [Bölgesel kullanılabilirlik bölümüne](#regional-availability-private-endpoints) bakın).
 
@@ -95,8 +92,19 @@ Aşağıdaki bölgelerde oluşturulan IoT Hub desteklenen özel uç noktalar:
 
 6. **İleri: Etiketler**' e tıklayın ve isteğe bağlı olarak kaynağınız için Etiketler sağlayın.
 
-7. Özel uç nokta kaynağını oluşturmak için **gözden geçir + oluştur** ' a tıklayın.
+7. Özel bağlantı kaynağınızı oluşturmak için **gözden geçir + oluştur** ' a tıklayın.
 
+### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>Yerleşik Olay Hub 'ı ile uyumlu uç nokta, Özel uç nokta üzerinden erişimi desteklemez
+
+[Yerleşik Olay Hub 'ı ile uyumlu uç nokta](iot-hub-devguide-messages-read-builtin.md) , Özel uç nokta üzerinden erişimi desteklemez. Yapılandırıldığında, bir IoT Hub 'ının özel uç noktası yalnızca giriş bağlantısına yöneliktir. Yerleşik Olay Hub 'ı ile uyumlu uç noktadan veri tüketme yalnızca genel İnternet üzerinden yapılabilir. 
+
+IoT Hub [IP filtresi](iot-hub-ip-filtering.md) , yerleşik uç noktaya genel erişimi de denetlemez. IoT Hub 'ınıza genel ağ erişimini tamamen engellemek için şunları yapmanız gerekir: 
+
+1. IoT Hub için özel uç nokta erişimini yapılandırma
+1. Tüm IP 'yi engellemek için IP filtresini kullanarak genel ağ erişimini devre dışı bırakın
+1. [Veri göndermemek üzere yönlendirme ayarlayarak](iot-hub-devguide-messages-d2c.md) yerleşik Olay Hub 'ı uç noktasını devre dışı bırakın
+1. [Geri dönüş yolunu](iot-hub-devguide-messages-d2c.md#fallback-route) kapat
+1. [Azure birinci taraf güvenilen hizmetlerini](#egress-connectivity-from-iot-hub-to-other-azure-resources) kullanarak çıkış diğer Azure kaynaklarına yapılandırma
 
 ### <a name="pricing-private-endpoints"></a>Fiyatlandırma (Özel uç noktalar)
 
@@ -196,7 +204,7 @@ Bir yönetilen hizmet kimliği, kaynak sağlama sırasında Hub 'ınıza atanabi
 }
 ```
 
-Kaynağınızın `name` `location`değerlerini değiştirdikten sonra, `SKU.name` ve `SKU.tier`kullanarak kaynağı var olan bir kaynak grubuna dağıtmak için Azure CLI kullanabilirsiniz:
+Kaynağınızın değerlerini değiştirdikten sonra, `name` `location` `SKU.name` ve `SKU.tier` kullanarak kaynağı var olan bir kaynak grubuna dağıtmak için Azure CLI kullanabilirsiniz:
 
 ```azurecli-interactive
 az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
@@ -297,7 +305,7 @@ Bu işlevsellik IoT Hub depolama hesabına bağlantı gerektirir. Güvenlik duva
 
 3. Depolama hesabınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver**kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
 
-Toplu içeri/dışarı aktarma işlevini kullanma hakkında bilgi için, [içeri aktarma dışarı aktarma işleri oluşturmak](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) üzere Azure IoT REST API 'yi kullanabilirsiniz. İstek gövdesini ve kullanmanız `storageAuthenticationType="identityBased"` `inputBlobContainerUri="https://..."` `outputBlobContainerUri="https://..."` gerektiğini, sırasıyla depolama hesabınızın giriş ve çıkış URL 'sini belirtmeniz gerektiğini unutmayın.
+Toplu içeri/dışarı aktarma işlevini kullanma hakkında bilgi için, [içeri aktarma dışarı aktarma işleri oluşturmak](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) üzere Azure IoT REST API 'yi kullanabilirsiniz. `storageAuthenticationType="identityBased"`İstek gövdesini ve kullanmanız gerektiğini, `inputBlobContainerUri="https://..."` `outputBlobContainerUri="https://..."` sırasıyla depolama hesabınızın giriş ve çıkış URL 'sini belirtmeniz gerektiğini unutmayın.
 
 
 Azure IoT Hub SDK 'Sı Ayrıca hizmet istemcisinin kayıt defteri yöneticisinde bu işlevselliği destekler. Aşağıdaki kod parçacığında, C# SDK 'SıNı kullanarak bir içeri aktarma işinin veya dışarı aktarma işinin nasıl başlatılacağı gösterilmektedir.
@@ -319,9 +327,9 @@ await registryManager.ExportDevicesAsync(
 
 C#, Java ve Node. js için sanal ağ desteğiyle Azure IoT SDK 'larının bu bölge sınırlı sürümünü kullanmak için:
 
-1. Adlı `EnableStorageIdentity` bir ortam değişkeni oluşturun ve değerini olarak `1`ayarlayın.
+1. Adlı bir ortam değişkeni oluşturun `EnableStorageIdentity` ve değerini olarak ayarlayın `1` .
 
-2. SDK 'yı indirin: [Java](https://aka.ms/vnetjavasdk) | [C#](https://aka.ms/vnetcsharpsdk) | [Node. js](https://aka.ms/vnetnodesdk)
+2. SDK 'yı indirin: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node. js](https://aka.ms/vnetnodesdk)
  
 Python için, GitHub 'dan sınırlı sürümümüzü indirin.
 

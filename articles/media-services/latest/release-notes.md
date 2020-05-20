@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/28/2020
 ms.author: juliako
-ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e072bcb0edc741b7843f470f14c3c37153338efb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769763"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647643"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
->Bu URL 'YI kopyalayarak ve yapıştırarak bu sayfanın ne zaman yeniden ziyaret ettikleridir hakkında bildirim `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` alın: RSS akışı okuyucusuna.
+>Bu URL 'YI kopyalayarak ve yapıştırarak bu sayfanın ne zaman yeniden ziyaret ettikleridir hakkında bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` RSS akışı okuyucusuna.
 
 En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmektedir:
 
@@ -35,6 +35,10 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 > V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md)görüntülemek, API 'lere erişim hakkında bilgi almak için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri (örneğin, dönüşümler ve Işler) için [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 Daha fazla bilgi için bkz. [Media Services V2 'den v3 'e geçiş Için geçiş kılavuzu](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="may-2020"></a>Mayıs 2020
+
+Azure Media Services artık şu bölgelerde genel kullanıma sunulmuştur: "Almanya Kuzey", "Almanya Orta Batı", "İsviçre Kuzey" ve "İsviçre Batı". Müşteriler, Azure portal kullanarak bu bölgelere Media Services dağıtabilir.
 
 ## <a name="april-2020"></a>Nisan 2020
 
@@ -245,30 +249,30 @@ CLı 2,0 modülü artık [Azure Media Services v3 GA](https://docs.microsoft.com
 #### <a name="asset-commands"></a>Varlık komutları
 
 - ```--storage-account```ve ```--container``` bağımsız değişkenler eklendi.
-- Sona erme saati (şimdi + 23h) için varsayılan değerler ve ```az ams asset get-sas-url``` komutta Izinler (okuma) eklendi.
+- Sona erme saati (şimdi + 23h) için varsayılan değerler ve komutta izinler (okuma) ```az ams asset get-sas-url``` eklendi.
 
 #### <a name="job-commands"></a>İş komutları
 
 - ```--correlation-data```ve ```--label``` eklenen bağımsız değişkenler
-- ```--output-asset-names```olarak ```--output-assets```yeniden adlandırıldı. Şimdi, ' assetName = Label ' biçiminde varlıkların boşlukla ayrılmış bir listesini kabul eder. Etiketi olmayan bir varlık şu şekilde gönderilebilir: ' assetName = '.
+- ```--output-asset-names```olarak yeniden adlandırıldı ```--output-assets``` . Şimdi, ' assetName = Label ' biçiminde varlıkların boşlukla ayrılmış bir listesini kabul eder. Etiketi olmayan bir varlık şu şekilde gönderilebilir: ' assetName = '.
 
 #### <a name="streaming-locator-commands"></a>Akış Bulucu komutları
 
-- ```az ams streaming locator```temel komut ile ```az ams streaming-locator```değiştirilmiştir.
+- ```az ams streaming locator```temel komut ile değiştirilmiştir ```az ams streaming-locator``` .
 - ```--streaming-locator-id```ve ```--alternative-media-id support``` bağımsız değişkenler eklendi.
 - ```--content-keys argument```bağımsız değişken güncelleştirildi.
-- ```--content-policy-name```olarak ```--content-key-policy-name```yeniden adlandırıldı.
+- ```--content-policy-name```olarak yeniden adlandırıldı ```--content-key-policy-name``` .
 
 #### <a name="streaming-policy-commands"></a>Akış Ilkesi komutları
 
-- ```az ams streaming policy```temel komut ile ```az ams streaming-policy```değiştirilmiştir.
+- ```az ams streaming policy```temel komut ile değiştirilmiştir ```az ams streaming-policy``` .
 - Şifreleme parametreleri desteği ```az ams streaming-policy create``` eklendi.
 
 #### <a name="transform-commands"></a>Dönüşüm komutları
 
-- ```--preset-names```bağımsız değişken ile ```--preset```değiştirilmiştir. Artık tek seferde yalnızca 1 çıkış/önayar ayarlayabilirsiniz (çalıştırmanız ```az ams transform output add```gerekir daha fazla bilgi için). Ayrıca, yolu özel JSON 'unuza geçirerek özel Standardencoderönayar ayarlayabilirsiniz.
+- ```--preset-names```bağımsız değişken ile değiştirilmiştir ```--preset``` . Artık tek seferde yalnızca 1 çıkış/önayar ayarlayabilirsiniz (çalıştırmanız gerekir daha fazla bilgi için ```az ams transform output add``` ). Ayrıca, yolu özel JSON 'unuza geçirerek özel Standardencoderönayar ayarlayabilirsiniz.
 - ```az ams transform output remove```, kaldırılacak çıkış dizini geçirerek gerçekleştirilebilir.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``````az ams transform create``` ve ```az ams transform output add``` komutlarına eklenen bağımsız değişkenler.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```ve komutlarına eklenen bağımsız değişkenler ```az ams transform create``` ```az ams transform output add``` .
 
 ## <a name="october-2018---ga"></a>Ekim 2018-GA
 

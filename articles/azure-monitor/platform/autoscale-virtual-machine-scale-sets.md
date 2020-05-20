@@ -1,15 +1,20 @@
 ---
 title: Azure sanal makinelerini kullanarak gelişmiş otomatik ölçeklendirme
 description: ", E-posta gönderen ve ölçek eylemleriyle Web kancası URL 'Lerini çağıran birden çok kural ve profille Kaynak Yöneticisi ve VM Ölçek Kümeleri kullanır."
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
-ms.date: 02/22/2016
+ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 02/22/2016
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 65182ce16b8785a3a0e497b3ed8003fa9e7b67bc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75364229"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655420"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Ölçek Kümeleri için Kaynak Yöneticisi şablonları kullanarak gelişmiş otomatik ölçeklendirme yapılandırması
 Performans ölçümü eşiklerine, yinelenen bir zamanlamaya göre veya belirli bir tarihe göre sanal makine ölçek kümelerinde ölçeklendirebilir ve genişleme yapabilirsiniz. Ayrıca, ölçek eylemleri için e-posta ve Web kancası bildirimleri de yapılandırabilirsiniz. Bu izlenecek yol, bir VM Ölçek kümesindeki bir Kaynak Yöneticisi şablonu kullanarak tüm bu nesneleri yapılandırmaya ilişkin bir örnek gösterir.
@@ -19,7 +24,7 @@ Performans ölçümü eşiklerine, yinelenen bir zamanlamaya göre veya belirli 
 >
 >
 
-## <a name="walkthrough"></a>Kılavuz
+## <a name="walkthrough"></a>İzlenecek yol
 Bu kılavuzda, bir ölçek kümesi için otomatik ölçeklendirme ayarını yapılandırmak ve güncellemek üzere [Azure Kaynak Gezgini](https://resources.azure.com/) kullanırız. Azure Kaynak Gezgini, Azure kaynaklarını Kaynak Yöneticisi şablonları aracılığıyla yönetmenin kolay bir yoludur. Azure Kaynak Gezgini araç ' i yeni kullanıyorsanız, [Bu tanıtımı](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/)okuyun.
 
 1. Temel bir otomatik ölçeklendirme ayarıyla yeni bir ölçek kümesi dağıtın. Bu makalede, temel bir otomatik ölçeklendirme şablonuyla Windows ölçek kümesine sahip olan Azure hızlı başlangıç galerisindeki bir tane kullanılmaktadır. Linux ölçek kümeleri aynı şekilde çalışır.

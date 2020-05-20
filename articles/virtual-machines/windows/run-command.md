@@ -8,18 +8,18 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6fbe66d8fbbb92c7fb668cc565da8446d97ab0a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143789"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653603"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Çalıştır komutunu kullanarak PowerShell betiklerini Windows sanal makinenizde çalıştırma
 
 Çalıştır komutu özelliği, bir Azure Windows VM içinde PowerShell betikleri çalıştırmak için sanal makine (VM) aracısını kullanır. Bu betikleri, genel makine veya uygulama yönetimi için kullanabilirsiniz. VM erişimi ve ağ sorunlarını hızla tanılamanıza ve düzeltmenize ve VM 'yi iyi bir duruma almanıza yardımcı olabilirler.
 
- 
+
 
 ## <a name="benefits"></a>Avantajlar
 
@@ -41,11 +41,11 @@ Bu özellik, bir sanal makine içinde bir komut dosyası çalıştırmak istedi�
 * Betiğin sonuçlarını döndürmek için VM 'den giden bağlantı gereklidir.
 
 > [!NOTE]
-> Doğru çalışması için, komutu çalıştırın (bağlantı noktası 443) Azure genel IP adreslerine bağlantı gerektirir. Uzantının bu uç noktalara erişimi yoksa, betikler başarıyla çalıştırılabilir, ancak sonuçları döndürmeyebilir. Sanal makinede trafiği engelliyorsanız, `AzureCloud` etiketini kullanarak Azure genel IP adreslerine giden trafiğe izin vermek için [hizmet etiketlerini](../../virtual-network/security-overview.md#service-tags) kullanabilirsiniz.
+> Doğru çalışması için, komutu çalıştırın (bağlantı noktası 443) Azure genel IP adreslerine bağlantı gerektirir. Uzantının bu uç noktalara erişimi yoksa, betikler başarıyla çalıştırılabilir, ancak sonuçları döndürmeyebilir. Sanal makinede trafiği engelliyorsanız, etiketini kullanarak Azure genel IP adreslerine giden trafiğe izin vermek için [hizmet etiketlerini](../../virtual-network/security-overview.md#service-tags) kullanabilirsiniz `AzureCloud` .
 
 ## <a name="available-commands"></a>Kullanılabilir komutlar
 
-Bu tabloda, Windows VM 'Leri için kullanılabilen komutların listesi gösterilmektedir. İstediğiniz özel bir betiği çalıştırmak için **Runpowershellscript** komutunu kullanabilirsiniz. Bir komutu çalıştırmak için Azure CLı veya PowerShell kullanırken, `--command-id` veya `-CommandId` parametresi için sağladığınız değer aşağıdaki listelenen değerlerden biri olmalıdır. Kullanılabilir bir komut olmayan bir değer belirttiğinizde şu hatayı alırsınız:
+Bu tabloda, Windows VM 'Leri için kullanılabilen komutların listesi gösterilmektedir. İstediğiniz özel bir betiği çalıştırmak için **Runpowershellscript** komutunu kullanabilirsiniz. Bir komutu çalıştırmak için Azure CLı veya PowerShell kullanırken, veya parametresi için sağladığınız değer `--command-id` `-CommandId` aşağıdaki listelenen değerlerden biri olmalıdır. Kullanılabilir bir komut olmayan bir değer belirttiğinizde şu hatayı alırsınız:
 
 ```error
 The entity was not found in this Azure location
@@ -94,7 +94,7 @@ Komutu seçtikten sonra, betiği çalıştırmak için **Çalıştır** ' ı se�
 
 ## <a name="powershell"></a>PowerShell
 
-Aşağıdaki örnek, bir Azure VM üzerinde PowerShell betiğini çalıştırmak için [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) cmdlet 'ini kullanır. Cmdlet 'i, `-ScriptPath` parametrede başvurulan betiğin, cmdlet 'in çalıştırıldığı yere yerelde olmasını bekler.
+Aşağıdaki örnek, bir Azure VM üzerinde PowerShell betiğini çalıştırmak için [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) cmdlet 'ini kullanır. Cmdlet 'i, parametrede başvurulan betiğin, `-ScriptPath` cmdlet 'in çalıştırıldığı yere yerelde olmasını bekler.
 
 ```azurepowershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
@@ -102,9 +102,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>Çalıştır komutuna erişimi sınırlandırma
 
-Çalıştırma komutlarının listelenmesi veya bir komutun ayrıntılarını göstermek abonelik düzeyinde `Microsoft.Compute/locations/runCommands/read` izin gerektirir. Yerleşik [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü ve daha yüksek düzeyler bu izne sahiptir.
+Çalıştırma komutlarının listelenmesi veya bir komutun ayrıntılarını göstermek için `Microsoft.Compute/locations/runCommands/read` izin gerekir. Yerleşik [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü ve daha yüksek düzeyler bu izne sahiptir.
 
-Bir komutu çalıştırmak için abonelik `Microsoft.Compute/virtualMachines/runCommand/action` düzeyinde izin gerekir. [Sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) rolü ve daha yüksek düzeyler bu izne sahiptir.
+Bir komutu çalıştırmak için `Microsoft.Compute/virtualMachines/runCommand/action` izin gerekir. [Sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) rolü ve daha yüksek düzeyler bu izne sahiptir.
 
 Çalıştır komutunu kullanmak için [yerleşik rollerden](../../role-based-access-control/built-in-roles.md) birini kullanabilir veya [özel bir rol](../../role-based-access-control/custom-roles.md) oluşturabilirsiniz.
 

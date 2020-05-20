@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d57f02b9aff56c83aa1c12bd441df2863f6d6fa7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884841"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658492"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) mimarisi
 
@@ -23,7 +23,7 @@ Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir a
 
  Azure SYNAPSE dört bileşene sahiptir:
 
-- SQL Analytics: tam T-SQL tabanlı analiz
+- SYNAPSE SQL: tam T-SQL tabanlı analiz
 
   - SQL Havuzu (sağlanan DWU başına ödeme) – genel olarak kullanılabilir
   - İstek üzerine SQL (işlenen TB başına ödeme) – (Önizleme)
@@ -39,7 +39,7 @@ Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir a
 
 ![Synapse SQL mimarisi](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SQL Analytics, düğüm tabanlı bir mimari kullanır. Uygulamalar, T-SQL komutlarını, SQL Analytics için tek giriş noktası olan bir denetim düğümüne bağlanır ve bu komutlara verebilir. Denetim düğümü, paralel işleme için sorguları en iyi duruma getirir ve sonra işlerini paralel olarak yapmak üzere işlem düğümlerine geçirir.
+SYNAPSE SQL, düğüm tabanlı bir mimari kullanır. Uygulamalar, T-SQL komutlarını, SYNAPSE SQL için tek giriş noktası olan bir denetim düğümüne bağlanır ve bu komutlara verebilir. Denetim düğümü, paralel işleme için sorguları en iyi duruma getirir ve sonra işlerini paralel olarak yapmak üzere işlem düğümlerine geçirir.
 
 İşlem düğümleri tüm kullanıcı verilerini Azure Depolama’da depolar ve paralel sorgular çalıştırır. Veri Taşıma Hizmeti (DMS), sorguları paralel olarak çalıştırmak ve doğru sonuçlar döndürmek için verileri düğümler arasında taşıyan, sistem düzeyindeki bir dahili hizmettir.
 
@@ -50,7 +50,7 @@ Ayrılmış depolama ve işlem ile, SYNAPSE SQL havuzu bir arada kullanıldığ�
 - Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 - Çalışma saatleri içinde işlem kapasitesini sürdürür.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
 SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
 
@@ -74,7 +74,7 @@ Veri taşıma hizmeti (DMS), Işlem düğümleri arasında veri hareketini koord
 
 ## <a name="distributions"></a>Dağıtımları
 
-Dağıtım, dağıtılmış veriler üzerinde çalışan paralel sorgular için temel depolama ve işleme birimidir. SQL Analytics bir sorgu çalıştırdığında, iş paralel olarak çalışan 60 daha küçük sorguya bölünür.
+Dağıtım, dağıtılmış veriler üzerinde çalışan paralel sorgular için temel depolama ve işleme birimidir. SYNAPSE SQL bir sorgu çalıştırdığında, iş paralel olarak çalışan 60 daha küçük sorguya bölünür.
 
 60 küçük bir sorgu, veri dağıtımlarından birinde çalışır. Her Işlem düğümü bir veya daha fazla 60 dağıtımlarını yönetir. En fazla işlem kaynağına sahip bir SQL havuzunda Işlem düğümü başına bir dağıtım vardır. En düşük işlem kaynaklarına sahip bir SQL havuzunda tek bir işlem düğümündeki tüm dağıtımlar vardır.  
 
@@ -120,5 +120,5 @@ Azure SYNAPSE hakkında biraz bilgi sahibi olduğunuza göre hızlıca [BIR SQL 
 - [Videolar](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Destek bileti oluşturun](sql-data-warehouse-get-started-create-support-ticket.md)
 - [MSDN forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
-- [Stack Overflow forumu](https://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 01/09/2020
+ms.date: 05/11/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 2b506c9d15dafcd23b24207fe15ed0532939209f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f09477eb174792d6348a6b9761a4f9e5467ec44
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310705"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649401"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Sorun giderme için bir tarayıcı izlemesi yakalama
 
@@ -24,13 +24,13 @@ Azure portal bir sorunla ilgili sorun yaşıyorsanız ve Microsoft destek 'e ba�
 
 Google Chrome ve Microsoft Edge (Kmıum), her ikisi de [kmıum açık kaynak projesine](https://www.chromium.org/Home)dayalıdır. Aşağıdaki adımlarda, iki tarayıcıda çok benzeyen Geliştirici araçlarının nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi için bkz. [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) ve [Microsoft Edge (kmıum) geliştirici araçları](/microsoft-edge/devtools-guide-chromium).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
 
 1. [Adımlar Kaydedicisi](https://support.microsoft.com/help/22878/windows-10-record-steps)'ni kullanarak portalda aldığınız adımları kaydetmeye başlayın.
 
 1. Portalda, sorunun oluştuğu yerin hemen öncesindeki adıma gidin.
 
-1. F12 tuşuna basın veya ![tarayıcı ayarları simgesinin](media/capture-browser-trace/chromium-icon-settings.png) > **diğer araçlar** > **Geliştirici Araçları**' nı seçin.
+1. F12 tuşuna basın veya ![ tarayıcı ayarları simgesinin ](media/capture-browser-trace/chromium-icon-settings.png)  >  **diğer araçlar**  >  **Geliştirici Araçları**' nı seçin.
 
 1. Varsayılan olarak tarayıcı, izleme bilgilerini yalnızca şu anda yüklü olan sayfa için tutar. Yeniden üretme, birden fazla sayfaya gitse bile tarayıcının tüm izleme bilgilerini tutabilmesi için aşağıdaki seçenekleri ayarlayın:
 
@@ -58,9 +58,9 @@ Google Chrome ve Microsoft Edge (Kmıum), her ikisi de [kmıum açık kaynak pro
 
     !["Dışarı aktarma HAR" ekran görüntüsü](media/capture-browser-trace/chromium-network-export-har.png)
 
-1. Adımları kaydediciyi durdurun ve dosyayı kaydedin.
+1. Adımları kaydediciyi durdurun ve kaydı kaydedin.
 
-1. Tarayıcı geliştirici araçları bölmesine geri dönün, **konsol** sekmesini seçin. sağ tıklayın, ardından **Farklı Kaydet...** öğesini seçin ve konsol çıkışını bir metin dosyasına kaydedin.
+1. Tarayıcı geliştirici araçları bölmesine geri dönerek **konsol** sekmesini seçin. Iletilerden birine sağ tıklayın, ardından **Farklı Kaydet...** öğesini seçin ve konsol çıkışını bir metin dosyasına kaydedin.
 
     ![Konsol çıktısının ekran görüntüsü](media/capture-browser-trace/chromium-console-select.png)
 
@@ -70,13 +70,13 @@ Google Chrome ve Microsoft Edge (Kmıum), her ikisi de [kmıum açık kaynak pro
 
 Aşağıdaki adımlarda, Microsoft Edge 'de (EdgeHTML) Geliştirici araçlarının nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi için bkz. [Microsoft Edge (EdgeHTML) geliştirici araçları](/microsoft-edge/devtools-guide).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
 
 1. [Adımlar Kaydedicisi](https://support.microsoft.com/help/22878/windows-10-record-steps)'ni kullanarak portalda aldığınız adımları kaydetmeye başlayın.
 
 1. Portalda, sorunun oluştuğu yerin hemen öncesindeki adıma gidin.
 
-1. F12 tuşuna basın veya ![tarayıcı ayarları simgesinin](media/capture-browser-trace/edge-icon-settings.png) > **diğer araçlar** > **Geliştirici Araçları**' nı seçin.
+1. F12 tuşuna basın veya ![ tarayıcı ayarları simgesinin ](media/capture-browser-trace/edge-icon-settings.png)  >  **diğer araçlar**  >  **Geliştirici Araçları**' nı seçin.
 
 1. Varsayılan olarak tarayıcı, izleme bilgilerini yalnızca şu anda yüklü olan sayfa için tutar. Yeniden üretme, birden fazla sayfaya gitse bile tarayıcının tüm izleme bilgilerini tutabilmesi için aşağıdaki seçenekleri ayarlayın:
 
@@ -104,7 +104,7 @@ Aşağıdaki adımlarda, Microsoft Edge 'de (EdgeHTML) Geliştirici araçların�
 
     !["HAR olarak dışarı aktar" ekran görüntüsü](media/capture-browser-trace/edge-network-export-har.png)
 
-1. Adımları kaydediciyi durdurun ve dosyayı kaydedin.
+1. Adımları kaydediciyi durdurun ve kaydı kaydedin.
 
 1. Tarayıcı geliştirici araçları bölmesine geri dönün, **konsol** sekmesini seçin ve pencereyi genişletin. İmlecinizi konsol çıkışının başlangıcına yerleştirin ve ardından çıktının tüm içeriğini sürükleyin ve seçin. Sağ tıklayın ve **Kopyala**' yı seçin ve konsol çıkışını bir metin dosyasına kaydedin.
 
@@ -126,7 +126,7 @@ Aşağıdaki adımlarda, Apple Safari 'de Geliştirici araçlarının nasıl kul
 
         ![Safari gelişmiş tercihlerinin ekran görüntüsü](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
 
 1. Portalda aldığınız adımları kaydetmeye başlayın. Daha fazla bilgi için bkz. [Mac 'inizde ekran kaydetme](https://support.apple.com/HT208721).
 
@@ -158,11 +158,53 @@ Aşağıdaki adımlarda, Apple Safari 'de Geliştirici araçlarının nasıl kul
 
     !["Dışarı aktar" ekran görüntüsü](media/capture-browser-trace/safari-network-export-har.png)
 
-1. Ekran kaydedicisini durdurun ve dosyayı kaydedin.
+1. Ekran kaydedicisini durdurun ve kaydı kaydedin.
 
 1. Tarayıcı geliştirici araçları bölmesine geri dönün, **konsol** sekmesini seçin ve pencereyi genişletin. İmlecinizi konsol çıkışının başlangıcına yerleştirin ve ardından çıktının tüm içeriğini sürükleyin ve seçin. Çıktıyı kopyalamak ve bir metin dosyasına kaydetmek için Command-C komutunu kullanın.
 
     ![Konsol çıktısının ekran görüntüsü](media/capture-browser-trace/safari-console-select.png)
+
+1. HAR dosyasını, konsol çıkışını ve ekran kaydını. zip gibi sıkıştırılmış bir biçimde paketleyin ve Microsoft desteği ile paylaşabilirsiniz.
+
+## <a name="firefox"></a>Firefox
+
+Aşağıdaki adımlarda, Firefox 'ta Geliştirici araçlarının nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi için bkz. [Firefox geliştirici araçları](https://developer.mozilla.org/docs/Tools).
+
+1. [Azure portalında](https://portal.azure.com) oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
+
+1. Portalda aldığınız adımları kaydetmeye başlayın. Windows 'da [Adım Kaydedicisi](https://support.microsoft.com/help/22878/windows-10-record-steps) 'ni kullanın veya [Ekran Mac 'Inizde nasıl kaydedilecek hakkında bilgi için](https://support.apple.com/HT208721)bkz..
+
+1. Portalda, sorunun oluştuğu yerin hemen öncesindeki adıma gidin.
+
+1. F12 tuşuna basın veya ![ tarayıcı ayarları simgesinin ekran görüntüsünü seçin ](media/capture-browser-trace/firefox-icon-settings.png)  >  **Web geliştirici**  >  **geçiş araçları**' nı seçin.
+
+1. Varsayılan olarak tarayıcı, izleme bilgilerini yalnızca şu anda yüklü olan sayfa için tutar. Yeniden üretme, birden fazla sayfaya gitse bile tarayıcının tüm izleme bilgilerini tutabilmesi için aşağıdaki seçenekleri ayarlayın:
+
+    1. **Ağ** sekmesini seçin ve ardından **günlükleri kalıcı**yap ' ı seçin.
+
+          !["Kalıcı günlüklerin" ekran görüntüsü](media/capture-browser-trace/firefox-network-persist-logs.png)
+
+    1. **Konsol** sekmesini seçin, **Konsol ayarları**' nı seçin ve ardından **günlükleri kalıcı**yap ' ı seçin.
+
+          !["Kalıcı günlüklerin" ekran görüntüsü](media/capture-browser-trace/firefox-console-persist-logs.png)
+
+1. **Ağ** sekmesini seçin ve ardından **Temizle**' yi seçin.
+
+    !["Clear" ekran görüntüsü](media/capture-browser-trace/firefox-clear-session.png)
+
+1. Portalda sorunu yeniden üretin. Aşağıdaki görüntüye benzer oturum çıkışını görürsünüz.
+
+    ![Tarayıcı izleme sonuçlarının ekran görüntüsü](media/capture-browser-trace/firefox-browser-trace-results.png)
+
+1. Beklenmeyen Portal davranışını yeniden oluşturduktan sonra, **har dışarı aktar/al** ' ı seçin, sonra **Tümünü har olarak kaydedin**.
+
+    !["Dışarı aktarma HAR" ekran görüntüsü](media/capture-browser-trace/firefox-network-export-har.png)
+
+1. Windows 'da veya Mac 'teki ekran kaydındaki adımları kaydediciden durdurun ve kaydı kaydedin.
+
+1. Tarayıcı geliştirici araçları bölmesine geri dönerek **konsol** sekmesini seçin. Iletilerden birine sağ tıklayın, ardından **görünür iletiyi dışarı aktar**' ı seçin ve konsol çıkışını bir metin dosyasına kaydedin.
+
+    ![Konsol çıktısının ekran görüntüsü](media/capture-browser-trace/firefox-console-select.png)
 
 1. HAR dosyasını, konsol çıkışını ve ekran kaydını. zip gibi sıkıştırılmış bir biçimde paketleyin ve Microsoft desteği ile paylaşabilirsiniz.
 

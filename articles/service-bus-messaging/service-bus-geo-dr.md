@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 04/29/2020
 ms.author: aschhab
-ms.openlocfilehash: 49748006baf779e6aea4322068ca3bd07a03a0a3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a5a1e7a7ef73825b4b13d2f36c1c8554fdc2a9b6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209409"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647869"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus coğrafi olağanüstü durum kurtarma
 
@@ -145,6 +145,43 @@ Service Bus Premium SKU, bir Azure bölgesi içinde hataya yalıtılmış konuml
 Azure portal kullanarak yalnızca yeni ad alanlarında Kullanılabilirlik Alanları etkinleştirebilirsiniz. Service Bus var olan ad alanlarının geçişini desteklemez. Ad alanınız üzerinde etkinleştirildikten sonra bölge yedekliliği devre dışı bırakılamaz.
 
 ![3][]
+
+## <a name="private-endpoints"></a>Özel uç noktalar
+Bu bölümde, Özel uç noktaları kullanan ad alanları ile coğrafi olağanüstü durum kurtarma kullanılırken ek konular sunulmaktadır. Genel olarak Service Bus özel uç noktaları kullanma hakkında bilgi edinmek için bkz. [Azure özel bağlantısı ile Azure Service Bus tümleştirme](private-link-service.md).
+
+### <a name="new-pairings"></a>Yeni eşleştirmelerinin
+Özel bir uç nokta ve ikincil ad alanı olan bir birincil ad alanı arasında özel bir uç nokta olmadan bir eşleştirme oluşturmaya çalışırsanız, eşleştirme başarısız olur. Eşleştirme yalnızca birincil ve ikincil ad alanlarının özel uç noktaları varsa başarılı olur. Birincil ve ikincil ad alanlarında ve özel uç noktaların oluşturulduğu sanal ağlarda aynı konfigürasyonları kullanmanızı öneririz. 
+
+> [!NOTE]
+> Birincil ad alanını özel bir uç nokta ve ikincil ad alanıyla eşleştirmeye çalıştığınızda, doğrulama işlemi yalnızca ikincil ad alanında özel bir uç noktanın bulunup bulunmadığını denetler. Uç noktanın çalışıp çalışmadığını denetlemez veya yük devretmeden sonra çalışır. Özel uç nokta olan ikincil ad alanının Yük devretme sonrasında beklendiği gibi çalışmasını sağlamak sizin sorumluluğunuzdadır.
+>
+> Özel uç nokta yapılandırmalarının aynı olduğunu sınamak için, sanal ağın dışından ikincil ad alanına bir [kuyruk alma](/rest/api/servicebus/queues/get) isteği gönderin ve hizmetten bir hata iletisi aldiğinizi doğrulayın.
+
+### <a name="existing-pairings"></a>Mevcut eşleştirmelerinin
+Birincil ve ikincil ad alanı arasında eşleştirme zaten varsa, birincil ad alanı üzerinde özel uç nokta oluşturma başarısız olur. Çözümlemek için, önce ikincil ad alanında özel bir uç nokta oluşturun ve ardından birincil ad alanı için bir tane oluşturun.
+
+> [!NOTE]
+> İkincil ad alanına salt okuma erişimine izin verdiğimiz için, Özel uç nokta yapılandırmalarına yönelik güncelleştirmelere izin verilir. 
+
+### <a name="recommended-configuration"></a>Önerilen yapılandırma
+Uygulamanız ve Service Bus için bir olağanüstü durum kurtarma yapılandırması oluştururken, uygulamanızın birincil ve ikincil örneklerini barındıran sanal ağlarda hem birincil hem de ikincil Service Bus ad alanları için özel uç noktalar oluşturmanız gerekir.
+
+İki sanal ağınız olduğunu varsayalım: VNET-1, VNET-2 ve bu birincil ve ikinci ad alanları: ServiceBus-Namespace1-PRIMARY, ServiceBus-Namespace2-Secondary. Aşağıdaki adımları gerçekleştirmeniz gerekir: 
+
+- ServiceBus-Namespace1-Primary üzerinde, VNET-1 ve VNET-2 ' den alt ağları kullanan iki özel uç nokta oluşturun
+- ServiceBus-Namespace2-Secondary üzerinde, VNET-1 ve VNET-2 ' den aynı alt ağları kullanan iki özel uç nokta oluşturun 
+
+![Özel uç noktalar ve sanal ağlar](./media/service-bus-geo-dr/private-endpoints-virtual-networks.png)
+
+
+Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Service Bus ad alanından bağımsız olmasını sağlayabilmektedir. Aşağıdaki senaryoları göz önünde bulundurun: 
+
+**Yalnızca uygulama yük devretmesi:** Burada uygulama VNET-1 ' de mevcut olmayacaktır, ancak VNET-2 ' ye geçmeyecektir. Hem birincil hem de ikincil ad alanları için hem VNET-1 hem de VNET-2 üzerinde hem özel uç noktalar yapılandırıldığından, uygulama çalışacaktır. 
+
+**Yalnızca ad alanı yük devretme Service Bus**: her iki özel uç nokta hem birincil hem de ikincil ad alanları için her iki sanal ağda de yapılandırıldığı için, uygulama çalışacaktır. 
+
+> [!NOTE]
+> Bir sanal ağın coğrafi olağanüstü durum kurtarma hakkında yönergeler için bkz. [sanal ağ-Iş sürekliliği](../virtual-network/virtual-network-disaster-recovery-guidance.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

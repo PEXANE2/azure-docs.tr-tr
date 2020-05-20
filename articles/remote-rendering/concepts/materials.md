@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8551e17ddd71e76aca0c85b9768f564ae0e5f049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a45dc39f5a0795684aba278391e04f6af3f7b55
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681850"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659676"
 ---
 # <a name="materials"></a>Malzemeler
 
@@ -35,9 +35,13 @@ Azure uzaktan Işleme iki ayrı malzeme türüne sahiptir:
 
 Bir malzemeyi doğrudan kafes kaynağında değiştirdiğinizde, bu değişiklik o kafesin tüm örneklerini etkiler. Ancak MeshComponent üzerinde değişiklik yapmak yalnızca bir kafes örneğini etkiler. Hangi yöntemin daha uygun olduğu, istenen davranışa bağlıdır, ancak bir MeshComponent 'un değiştirilmesi daha yaygın bir yaklaşımdır.
 
+## <a name="material-de-duplication"></a>Malzeme Çoğaltma sırası
+
+Dönüştürme sırasında aynı özelliklere ve dokularla birden çok malzeme otomatik olarak tek bir malzemeyle çoğaltılır. [Dönüştürme ayarlarında](../how-tos/conversion/configure-model-conversion.md)bu özelliği devre dışı bırakabilirsiniz, ancak en iyi performans için bu özelliği açık bırakmanızı öneririz.
+
 ## <a name="material-classes"></a>Malzeme sınıfları
 
-API tarafından sunulan tüm malzemeler taban sınıftan `Material`türetilir. Bu tür aracılığıyla `Material.MaterialSubType` veya doğrudan atama yoluyla sorgulanabilir.
+API tarafından sunulan tüm malzemeler taban sınıftan türetilir `Material` . Bu tür aracılığıyla `Material.MaterialSubType` veya doğrudan atama yoluyla sorgulanabilir.
 
 ``` cs
 void SetMaterialColorToGreen(Material material)

@@ -2,13 +2,13 @@
 title: LUSıS portalında test uygulaması
 description: Uygulamanızı iyileştirmek ve dilini anlamak için uygulamanızda sürekli çalışmak üzere Language Understanding (LUO) kullanın.
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.openlocfilehash: cb4559e6d3582a337cbc32ef986bec5db5940ef9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/17/2020
+ms.openlocfilehash: 3608bb17b6d1ea8c9095fa54324993a9e40355b6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591871"
+ms.locfileid: "83653881"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Lusıs uygulamanızı Lua portalında test etme
 
@@ -44,7 +44,7 @@ Test utterine, uygulamadaki herhangi bir örnek ile tam olarak aynı olmamalıd�
 
     ![Etkileşimli test, yanlış amacı tanımlıyor](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>Puanı İncele
+## <a name="inspect-the-prediction"></a>Tahmini inceleyin
 
 **İnceleme** panelinde test sonucunun ayrıntılarını inceleyebilirsiniz.
 
@@ -52,23 +52,21 @@ Test utterine, uygulamadaki herhangi bir örnek ile tam olarak aynı olmamalıd�
 
     ![Test sonuçlarıyla ilgili daha fazla ayrıntı görmek için Inceleme düğmesini seçin](./media/luis-how-to-interactive-test/inspect.png)
 
-1. **İnceleme** paneli görüntülenir. Panel, en iyi Puanlama amacını ve tanımlanan tüm varlıkları içerir. Panel, seçili utterlik 'in sonucunu gösterir.
+1. **İnceleme** paneli görüntülenir. Panel, en iyi Puanlama amacını ve tanımlanan tüm varlıkları içerir. Panel, seçili utterlik 'in tahminini gösterir.
 
-    ![Panel, en iyi Puanlama amacını ve tanımlanan tüm varlıkları içerir. Panel, seçili utterlik 'in sonucunu gösterir.](./media/luis-how-to-interactive-test/inspect-panel.png)
+## <a name="add-to-example-utterances"></a>Örnek utleye Ekle
 
-## <a name="correct-top-scoring-intent"></a>Doğru en iyi Puanlama hedefi
+İnceleme panelinden, **örnek Ekle**' yi seçerek test utterliğini bir amaca ekleyebilirsiniz.
 
-1. En üst Puanlama hedefi yanlış ise **Düzenle** düğmesini seçin.
+## <a name="disable-required-features"></a>Gerekli özellikleri devre dışı bırak
 
-1.  Aşağı açılan listede, utterance için doğru amacı seçin.
+Varlığın özelliği gerekmiyorsa tahmine ne olduğunu görmek için bu geçişi seçin.
 
-    ![Doğru amacı seçin](./media/luis-how-to-interactive-test/intent-select.png)
+Bu geçiş, eğitilen uygulamanın, varlıklarınızı gerekli özelliklere göre doğru şekilde tahmin etmesine olanak sağlar. Eğitilen uygulama, örnek gelişenlerin hatalı etiketlenmesini temel alarak, makine tarafından öğrenilen bir varlığı yanlış tahmin edebilir ya da gerekli özellik metinle eşleşmez.
 
 ## <a name="view-sentiment-results"></a>Yaklaşım sonuçlarını görüntüle
 
 **[Yayımlama](luis-how-to-publish-app.md#enable-sentiment-analysis)** sayfasında yaklaşım **Analizi** yapılandırılırsa, test sonuçları, utde bulunan yaklaşımı içerir.
-
-![Yaklaşım analiziyle test bölmesinin görüntüsü](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>Eşleşen düzenin hedefini düzeltin
 

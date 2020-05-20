@@ -1,5 +1,5 @@
 ---
-title: Sürüm Notları
+title: Release Notes (Sürüm Notları)
 description: Azure SQL veritabanı hizmetindeki ve Azure SQL veritabanı belgelerindeki yeni özellikler ve geliştirmeler hakkında bilgi edinin
 services: sql-database
 author: stevestein
@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3e5069c779cee0700bff6b2236f3cd36547fd623
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838493"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659610"
 ---
 # <a name="sql-database-release-notes"></a>SQL veritabanı sürüm notları
 
@@ -24,7 +24,7 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 
 ### <a name="single-database"></a>[Tek veritabanı](#tab/single-database)
 
-| Özellik | Ayrıntılar |
+| Öne çıkan özelliği | Ayrıntılar |
 | ---| --- |
 | Yeni Fsv2 serisi ve d serisi donanım nesilleri| Bilgi için bkz. [donanım nesilleri](sql-database-service-tiers-vcore.md#hardware-generations).|
 | Tek veritabanları ve elastik havuzlarla hızlandırılmış veritabanı kurtarma | Bilgi için bkz. [hızlandırılmış veritabanı kurtarma](sql-database-accelerated-database-recovery.md).|
@@ -43,7 +43,7 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 
 ### <a name="managed-instance"></a>[Yönetilen örnek](#tab/managed-instance)
 
-| Özellik | Ayrıntılar |
+| Öne çıkan özelliği | Ayrıntılar |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Örnek havuzları</a> | Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Dış SAĞLAYıCıDAN oturum oluştur</a> ekstresini kullanarak sunucu düzeyinde oturumlar oluşturun. |
@@ -78,6 +78,7 @@ Aşağıdaki özellikler, H1 2019 ' de yönetilen örnek dağıtım modelinde et
 
 |Sorun  |Keşfedilen Tarih  |Durum  |Çözümlenme tarihi  |
 |---------|---------|---------|---------|
+|[SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir](#restoring-manual-backup-without-checksum-might-fail)|Mayıs 2020|Geçici çözüm vardır| |
 |[Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mayıs 2020|Otomatik olarak azaltıldığında| |
 |[Kaynak grubundaki izinler yönetilen örneğe uygulanmadı](#permissions-on-resource-group-not-applied-to-managed-instance)|Şub 2020|Geçici çözüm vardır| |
 |[Yük devretme grupları için Portal aracılığıyla el ile yük devretme sınırlaması](#limitation-of-manual-failover-via-portal-for-failover-groups)|Ocak 2020|Geçici çözüm vardır| |
@@ -103,6 +104,12 @@ Aşağıdaki özellikler, H1 2019 ' de yönetilen örnek dağıtım modelinde et
 |Kaynak veritabanında bellek içi OLTP nesneleri varsa, İş Açısından Kritik katmanından Genel Amaçlı katmana geri yükleme işlemi başarılı olmaz.| |Çözümlendi|Eki 2019|
 |Güvenli bağlantı kullanarak harici (Azure dışı) posta sunucularıyla Veritabanı Postası özelliği| |Çözümlendi|Eki 2019|
 |Kapsanan veritabanları yönetilen örnekte desteklenmiyor| |Çözümlendi|Ağu 2019|
+
+### <a name="restoring-manual-backup-without-checksum-might-fail"></a>SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir
+
+Bazı durumlarda, yönetilen örnek için sağlama TOPLAMı olmadan gerçekleştirilen veritabanlarının el ile yedeklenmesi geri yüklenemeyebilir. Bu durumda, lütfen başarılı olana kadar yedeklemeyi geri yüklemeyi yeniden deneyin.
+
+**Geçici çözüm**: yönetilen örnek IÇIN sağlama toplamı etkin olan veritabanlarının el ile yedeklerini alın.
 
 ### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı
 
@@ -148,13 +155,13 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Boş olmayan bir dosya kaldırılmaya çalışılırken hatalı hata döndürüldü
 
-SQL Server/yönetilen örnek [, kullanıcının boş olmayan bir dosyayı bırakmaya izin vermez](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). İfadesini kullanarak `ALTER DATABASE REMOVE FILE` boş olmayan bir veri dosyasını kaldırmaya çalışırsanız, hata `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` hemen döndürülmeyecektir. Yönetilen örnek dosyayı bırakmaya çalışmaya devam edecektir ve işlem 30min ile `Internal server error`sonra başarısız olur.
+SQL Server/yönetilen örnek [, kullanıcının boş olmayan bir dosyayı bırakmaya izin vermez](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). İfadesini kullanarak boş olmayan bir veri dosyasını kaldırmaya çalışırsanız `ALTER DATABASE REMOVE FILE` , hata `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` hemen döndürülmeyecektir. Yönetilen örnek dosyayı bırakmaya çalışmaya devam edecektir ve işlem 30min ile sonra başarısız olur `Internal server error` .
 
-**Geçici çözüm**: komutunu kullanarak `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` dosyanın içeriğini kaldırın. Dosya grubunda tek dosya varsa, dosyayı daralmadan önce bu dosya grubuyla ilişkili tablodan veya bölümden verileri silmeniz ve isteğe bağlı olarak bu verileri başka bir tabloya/bölüme yüklemeniz gerekir.
+**Geçici çözüm**: komutunu kullanarak dosyanın içeriğini kaldırın `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` . Dosya grubunda tek dosya varsa, dosyayı daralmadan önce bu dosya grubuyla ilişkili tablodan veya bölümden verileri silmeniz ve isteğe bağlı olarak bu verileri başka bir tabloya/bölüme yüklemeniz gerekir.
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Hizmet katmanını değiştirme ve örnek oluşturma işlemleri sürekli veritabanı geri yükleme tarafından engelleniyor
 
-Devam `RESTORE` eden bildirim, veri geçiş hizmeti geçiş işlemi ve yerleşik nokta geri yükleme, hizmet katmanını güncelleştirmeyi veya mevcut örneği yeniden boyutlandırmayı engeller ve geri yükleme işlemi bitene kadar yeni örnekler oluşturur. Geri yükleme işlemi, geri yükleme işleminin çalıştırıldığı aynı alt ağdaki yönetilen örneklerde ve örnek havuzlardaki bu işlemleri engeller. Örnek havuzlardaki örnekler etkilenmez. Hizmet katmanı işlemleri oluşturma veya değiştirme başarısız olmayacak veya zaman aşımı-geri yükleme işlemi tamamlandıktan veya iptal edildikten sonra devam eder.
+Devam eden `RESTORE` bildirim, veri geçiş hizmeti geçiş işlemi ve yerleşik nokta geri yükleme, hizmet katmanını güncelleştirmeyi veya mevcut örneği yeniden boyutlandırmayı engeller ve geri yükleme işlemi bitene kadar yeni örnekler oluşturur. Geri yükleme işlemi, geri yükleme işleminin çalıştırıldığı aynı alt ağdaki yönetilen örneklerde ve örnek havuzlardaki bu işlemleri engeller. Örnek havuzlardaki örnekler etkilenmez. Hizmet katmanı işlemleri oluşturma veya değiştirme başarısız olmayacak veya zaman aşımı-geri yükleme işlemi tamamlandıktan veya iptal edildikten sonra devam eder.
 
 **Geçici çözüm**: geri yükleme işlemi tamamlanana kadar bekleyin veya hizmet katmanı oluşturma veya güncelleştirme işlemi daha yüksek önceliğe sahipse geri yükleme işlemini iptal edin.
 
@@ -162,23 +169,23 @@ Devam `RESTORE` eden bildirim, veri geçiş hizmeti geçiş işlemi ve yerleşik
 
 Kullanıcı iş yüküne atanan kaynakları sınırlandırmanızı sağlayan [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) özellik, yük devretme veya Kullanıcı tarafından başlatılan hizmet katmanı değişikliği sonrasında bazı Kullanıcı iş yükünü yanlış sınıflandırabilir (örneğin, en büyük Vcore veya en büyük örnek depolama boyutu değişikliği).
 
-**Geçici çözüm**: `ALTER RESOURCE GOVERNOR RECONFIGURE` [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)kullanıyorsanız, örnek başladığında SQL aracısını yürüten SQL Aracısı Işinin bir parçası olarak veya SQL Agent işinin bir parçası olarak çalıştırın.
+**Geçici çözüm**: `ALTER RESOURCE GOVERNOR RECONFIGURE` [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)kullanıyorsanız, örnek başladığında SQL aracısını yürüten SQL Aracısı işinin bir parçası olarak veya SQL Agent işinin bir parçası olarak çalıştırın.
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı yükseltmesinden sonra yeniden başlatılmalıdır
 
-Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı işlemini değiştirdikten sonra iletileri diğer veritabanlarındaki hizmetlere teslim eder. İletiler **kaybolmaz** ve gönderici kuyruğunda bulunabilir. Yönetilen örnekteki sanal çekirdeklerin veya örnek depolama boyutunun herhangi bir değişikliği, `service_broke_guid` [sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) görünümündeki değerin tüm veritabanları için değiştirilmesine neden olur. `DIALOG` Diğer veritabanındaki hizmet aracılarına başvuran [BEGIN BEGIN iletişim kutusu](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) deyimleri, hedef hizmete ileti teslim etme işlemini durdurur.
+Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı işlemini değiştirdikten sonra iletileri diğer veritabanlarındaki hizmetlere teslim eder. İletiler **kaybolmaz** ve gönderici kuyruğunda bulunabilir. Yönetilen örnekteki sanal çekirdeklerin veya örnek depolama boyutunun herhangi bir değişikliği, `service_broke_guid` [sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) görünümündeki değerin tüm veritabanları için değiştirilmesine neden olur. `DIALOG`Diğer veritabanındaki hizmet aracılarına başvuran [BEGIN BEGIN iletişim kutusu](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) deyimleri, hedef hizmete Ileti teslim etme işlemini durdurur.
 
 **Geçici çözüm:** Hizmet katmanını güncelleştirmeden önce veritabanları arası Hizmet Aracısı iletişim konuşmaları kullanan tüm etkinlikleri durdurun ve sonra yeniden başlatın. Hizmet katmanı değişikliğinden sonra teslim edilmemiş kalan iletiler varsa, kaynak kuyruktaki iletileri okuyun ve hedef sıraya yeniden gönderin.
 
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Azure AD oturum açma türleri için ımpersonbirleşme desteklenmez
 
-Aşağıdaki AAD `EXECUTE AS USER` sorumluları `EXECUTE AS LOGIN` kullanılarak veya kullanarak kimliğe bürünme desteklenmez:
--    Diğer ad AAD kullanıcıları. Bu durumda `15517`aşağıdaki hata döndürülür.
-- Aad uygulamaları ve hizmet sorumlularına göre AAD oturum açmaları ve kullanıcılar. Bu durumda `15517` ve `15406`aşağıdaki hatalar döndürülür.
+`EXECUTE AS USER`AŞAĞıDAKI AAD sorumluları kullanılarak veya kullanarak kimliğe bürünme `EXECUTE AS LOGIN` desteklenmez:
+-    Diğer ad AAD kullanıcıları. Bu durumda aşağıdaki hata döndürülür `15517` .
+- Aad uygulamaları ve hizmet sorumlularına göre AAD oturum açmaları ve kullanıcılar. Bu durumda ve aşağıdaki hatalar döndürülür `15517` `15406` .
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querysp_send_db_mail içinde parametre desteklenmiyor
 
-Sp_send_db_mail `@query` yordamındaki parametresi çalışmıyor [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) .
+`@query` [Sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) yordamındaki parametresi çalışmıyor.
 
 ### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>İşlemsel çoğaltmanın coğrafi Yük devretme sonrasında yeniden yapılandırılması gerekir
 
@@ -190,17 +197,17 @@ SQL Server Veri Araçları Azure Active Directory oturumlarını ve kullanıcıl
 
 ### <a name="temporary-database-is-used-during-restore-operation"></a>GERI yükleme işlemi sırasında geçici veritabanı kullanılıyor
 
-Bir veritabanı yönetilen örneğe geri yüklenirken, geri yükleme hizmeti öncelikle adı örnek üzerinde ayırmak için istenen ada sahip boş bir veritabanı oluşturur. Bir süre sonra, bu veritabanı bırakılır ve gerçek veritabanının geri yüklenmesi başlatılır. *Geri yükleme* durumundaki veritabanı geçici olarak ad yerine rastgele bir GUID değeri olur. Geri yükleme işlemi tamamlandıktan sonra geçici ad, `RESTORE` bildiriminde belirtilen istenen ada dönüştürülür. İlk aşamada, Kullanıcı boş veritabanına erişebilir ve hatta tablo oluşturabilir veya bu veritabanında veri yükleyebilir. Bu geçici veritabanı, geri yükleme hizmeti ikinci aşamayı başlattığında bırakılacak.
+Bir veritabanı yönetilen örneğe geri yüklenirken, geri yükleme hizmeti öncelikle adı örnek üzerinde ayırmak için istenen ada sahip boş bir veritabanı oluşturur. Bir süre sonra, bu veritabanı bırakılır ve gerçek veritabanının geri yüklenmesi başlatılır. *Geri yükleme* durumundaki veritabanı geçici olarak ad yerine rastgele bir GUID değeri olur. Geri yükleme işlemi tamamlandıktan sonra geçici ad, bildiriminde belirtilen istenen ada dönüştürülür `RESTORE` . İlk aşamada, Kullanıcı boş veritabanına erişebilir ve hatta tablo oluşturabilir veya bu veritabanında veri yükleyebilir. Bu geçici veritabanı, geri yükleme hizmeti ikinci aşamayı başlattığında bırakılacak.
 
 **Geçici çözüm**: geri yükleme işleminin tamamlandığını görene kadar geri yüklemekte olduğunuz veritabanına erişmeyin.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB yapısı ve içerik yeniden oluşturuluyor
 
-`tempdb` Veritabanı her zaman 12 veri dosyasına bölünür ve dosya yapısı değiştirilemez. Dosya başına en büyük boyut değiştirilemez ve yeni dosyalar ' a eklenemez `tempdb`. `Tempdb`örnek başlatıldığında veya başarısız olduğunda her zaman boş bir veritabanı olarak yeniden oluşturulur ve ' de `tempdb` yapılan tüm değişiklikler korunmaz.
+`tempdb`Veritabanı her zaman 12 veri dosyasına bölünür ve dosya yapısı değiştirilemez. Dosya başına en büyük boyut değiştirilemez ve yeni dosyalar ' a eklenemez `tempdb` . `Tempdb`örnek başlatıldığında veya başarısız olduğunda her zaman boş bir veritabanı olarak yeniden oluşturulur ve ' de yapılan tüm değişiklikler `tempdb` korunmaz.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Küçük veritabanı dosyalarıyla depolama alanını aşma
 
-`CREATE DATABASE`örnek `ALTER DATABASE ADD FILE`, Azure `RESTORE DATABASE` depolama sınırına ulaşabileceğinden,, ve deyimleri başarısız olabilir.
+`CREATE DATABASE``ALTER DATABASE ADD FILE` `RESTORE DATABASE` örnek, Azure depolama sınırına ulaşabileceğinden,, ve deyimleri başarısız olabilir.
 
 Her Genel Amaçlı yönetilen örnek, Azure Premium disk alanı için ayrılan 35 TB 'a kadar depolama alanı içerir. Her veritabanı dosyası ayrı bir fiziksel diske yerleştirilir. Disk boyutları 128 GB, 256 GB, 512 GB, 1 TB veya 4 TB olabilir. Diskteki kullanılmayan alan ücretlendirilmez, ancak Azure Premium disk boyutlarının toplam toplamı 35 TB 'yi aşamaz. Bazı durumlarda, toplam olarak 8 TB 'lık bir yönetilen örnek, iç parçalanma nedeniyle depolama boyutu 35 TB Azure sınırını aşabilir.
 
@@ -233,7 +240,7 @@ Yönetilen örnekte kullanılabilen hata günlükleri kalıcı değil ve boyutu 
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Aynı örnek içindeki iki veritabanında işlem kapsamı desteklenmiyor
 
-**(Mart 2020 ' de çözümlendi)** Aynı `TransactionScope` işlem kapsamında aynı örnek içindeki iki veritabanına iki sorgu gönderilirse .net 'teki sınıfı çalışmaz:
+**(Mart 2020 ' de çözümlendi)** `TransactionScope`Aynı işlem kapsamında aynı örnek içindeki iki veritabanına iki sorgu gönderilirse .net 'teki sınıfı çalışmaz:
 
 ```csharp
 using (var scope = new TransactionScope())

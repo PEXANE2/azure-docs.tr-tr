@@ -4,14 +4,14 @@ description: Bir sanal ağda özel bir IP adresi kullanarak bir Azure Cosmos hes
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/14/2020
 ms.author: thweiss
-ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ba85961ac4ec9b1b439de18a1d6da0cec4ead4f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270698"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652562"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma
 
@@ -21,10 +21,7 @@ Azure özel bağlantısı ' nı kullanarak bir Azure Cosmos hesabına özel bir 
 
 Otomatik veya el ile onay yöntemini kullanarak, özel bağlantıyla yapılandırılmış bir Azure Cosmos hesabına bağlanabilirsiniz. Daha fazla bilgi edinmek için özel bağlantı belgelerinin [onay iş akışı](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) bölümüne bakın. 
 
-Bu makalede özel bir uç nokta oluşturma adımları açıklanır. Otomatik onay yöntemini kullandığınızı varsayar.
-
-> [!NOTE]
-> Özel uç nokta desteği şu anda yalnızca ağ geçidi bağlantı modu için genel kullanıma sunulmuştur. Doğrudan mod için Önizleme özelliği olarak kullanılabilir.
+Bu makalede özel uç nokta oluşturma adımları açıklanır. Otomatik onay yöntemini kullandığınızı varsayar.
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Azure portal kullanarak özel uç nokta oluşturma
 
@@ -44,7 +41,7 @@ Azure portal kullanarak mevcut bir Azure Cosmos hesabı için özel bir uç nokt
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | Kaynak grubunu seçin.|
     | **Örnek ayrıntıları** |  |
-    | Adı | Özel uç noktanız için herhangi bir ad girin. Bu ad alındıysanız, benzersiz bir tane oluşturun. |
+    | Name | Özel uç noktanız için herhangi bir ad girin. Bu ad alındıysanız, benzersiz bir tane oluşturun. |
     |Bölge| Özel bağlantı dağıtmak istediğiniz bölgeyi seçin. Özel uç noktayı, sanal ağınızın bulunduğu aynı konumda oluşturun.|
     |||
 1. **Sonraki: kaynak**' ı seçin.
@@ -401,14 +398,14 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-PowerShell betikte, `GroupId` değişken yalnızca bir değer içerebilir. Bu değer, hesabın API türüdür. İzin verilen değerler: `Sql`, `MongoDB`, `Cassandra`, `Gremlin`, ve `Table`. Bazı Azure Cosmos hesap türlerine birden çok API aracılığıyla erişilebilir. Örneğin:
+PowerShell betikte, `GroupId` değişken yalnızca bir değer içerebilir. Bu değer, hesabın API türüdür. İzin verilen değerler: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` , ve `Table` . Bazı Azure Cosmos hesap türlerine birden çok API aracılığıyla erişilebilir. Örnek:
 
 * Gremlin API hesabına hem Gremlin hem de SQL API hesaplarından erişilebilir.
 * Tablo API'si hesaba hem tablo hem de SQL API hesaplarından erişilebilir.
 
 Bu hesaplar için, her API türü için bir özel uç nokta oluşturmanız gerekir. Karşılık gelen API türü `GroupId` dizide belirtilir.
 
-Şablon başarıyla dağıtıldıktan sonra, aşağıdaki görüntüde gösterilene benzer bir çıktı görebilirsiniz. Bu `provisioningState` değer, `Succeeded` özel uç noktaların doğru şekilde ayarlandığının değeridir.
+Şablon başarıyla dağıtıldıktan sonra, aşağıdaki görüntüde gösterilene benzer bir çıktı görebilirsiniz. Bu `provisioningState` değer, `Succeeded` Özel uç noktaların doğru şekilde ayarlandığının değeridir.
 
 ![Kaynak Yöneticisi şablonu için dağıtım çıkışı](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
 
@@ -611,7 +608,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="configure-custom-dns"></a>Özel API'yi yapılandırma
 
-Özel uç noktasını oluşturduğunuz alt ağ içinde özel bir DNS bölgesi kullanmanız gerekir. Uç noktaları, her özel IP adresinin bir DNS girdisiyle eşlenecek şekilde yapılandırın. (Daha önce `fqdns` gösterilen yanıtta özelliğine bakın.)
+Özel uç noktasını oluşturduğunuz alt ağ içinde özel bir DNS bölgesi kullanmanız gerekir. Uç noktaları, her özel IP adresinin bir DNS girdisiyle eşlenecek şekilde yapılandırın. ( `fqdns` Daha önce gösterilen yanıtta özelliğine bakın.)
 
 Özel uç noktayı oluştururken, Azure 'da özel bir DNS bölgesi ile tümleştirilebilir. Bunun yerine özel bir DNS bölgesi kullanmayı tercih ederseniz, Özel uç nokta için ayrılan tüm özel IP adresleri için DNS kayıtları eklemek üzere yapılandırmanız gerekir.
 
@@ -627,7 +624,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>Hesap oluşturma sırasında ortak ağ erişimini engelleme
 
-Önceki bölümde açıklandığı gibi, belirli güvenlik duvarı kuralları ayarlanmamışsa, özel bir uç nokta eklemek Azure Cosmos hesabınızı yalnızca özel uç noktalar aracılığıyla erişilebilir hale getirir. Bu, Azure Cosmos hesabına oluşturulduktan sonra ve özel bir uç nokta eklendikten sonra ortak trafiğinden erişilebileceği anlamına gelir. Genel ağ erişiminin özel uç noktaları oluşturmadan önce bile devre dışı bırakıldığından emin olmak için, `publicNetworkAccess` bayrağı hesap oluşturma `Disabled` sırasında ayarlayabilirsiniz. Bu bayrağın nasıl kullanılacağını gösteren bir örnek için [bu Azure Resource Manager şablonuna](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) bakın.
+Önceki bölümde açıklandığı gibi, belirli güvenlik duvarı kuralları ayarlanmamışsa, özel bir uç nokta eklemek Azure Cosmos hesabınızı yalnızca özel uç noktalar aracılığıyla erişilebilir hale getirir. Bu, Azure Cosmos hesabına oluşturulduktan sonra ve özel bir uç nokta eklendikten sonra ortak trafiğinden erişilebileceği anlamına gelir. Genel ağ erişiminin özel uç noktaları oluşturmadan önce bile devre dışı bırakıldığından emin olmak için, `publicNetworkAccess` bayrağı `Disabled` Hesap oluşturma sırasında ayarlayabilirsiniz. Bu bayrağın nasıl kullanılacağını gösteren bir örnek için [bu Azure Resource Manager şablonuna](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) bakın.
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Bölge eklediğinizde veya kaldırdığınızda özel bir uç noktayı güncelleştirme
 
@@ -643,21 +640,17 @@ Bir bölgeyi kaldırırken de aynı adımları kullanabilirsiniz. Bölge kaldır
 
 Bir Azure Cosmos hesabıyla özel bağlantı kullandığınızda aşağıdaki sınırlamalar geçerlidir:
 
-* Doğrudan mod bağlantısı kullanarak bir Azure Cosmos hesabıyla özel bağlantı kullanırken, yalnızca TCP protokolünü kullanabilirsiniz. HTTP protokolü henüz desteklenmiyor.
+* Doğrudan mod bağlantısı kullanarak bir Azure Cosmos hesabıyla özel bağlantı kullanırken, yalnızca TCP protokolünü kullanabilirsiniz. HTTP protokolü Şu anda desteklenmiyor.
 
-* Özel uç nokta desteği şu anda yalnızca ağ geçidi bağlantı modu için genel kullanıma sunulmuştur. Doğrudan mod için Önizleme özelliği olarak kullanılabilir.
+* MongoDB hesapları için Azure Cosmos DB API 'sini kullanırken, yalnızca sunucu sürümü 3,6 (yani, o şekilde, o) hesapları için özel bir uç nokta desteklenir `*.mongo.cosmos.azure.com` . Özel bağlantı, sunucu sürümü 3,2 (yani, bu uç noktayı kullanan hesaplar) hesapları için desteklenmez `*.documents.azure.com` . Özel bağlantıyı kullanmak için eski hesapları yeni sürüme geçirmeniz gerekir.
 
-* MongoDB hesapları için Azure Cosmos DB API 'sini kullanırken, yalnızca sunucu sürümü 3,6 (yani, o şekilde, o `*.mongo.cosmos.azure.com`) hesapları için özel bir uç nokta desteklenir. Özel bağlantı, sunucu sürümü 3,2 (yani, bu uç noktayı kullanan hesaplar `*.documents.azure.com`) hesapları için desteklenmez. Özel bağlantıyı kullanmak için eski hesapları yeni sürüme geçirmeniz gerekir.
-
-* Özel bağlantısı olan MongoDB hesapları için Azure Cosmos DB API 'sini kullanırken Robo 3T, Studio 3T ve Mongoose gibi araçları kullanamazsınız. Uç nokta yalnızca `appName=<account name>` parametre belirtilmişse özel bağlantı desteğine sahip olabilir. `replicaSet=globaldb&appName=mydbaccountname` bunun bir örneğidir. Bu araçlar, uygulama adını hizmete bağlantı dizesinde geçirmediği için özel bağlantıyı kullanamazsınız. Ancak, 3,6 sürümüyle SDK sürücülerini kullanarak bu hesaplara erişmeye devam edebilirsiniz.
+* Özel bağlantısına sahip MongoDB hesabı için bir Azure Cosmos DB API 'SI kullanırken, bazı araçlar ya da kitaplıklar, parametreleri otomatik olarak bağlantı dizesinden bir şekilde kullanıma açtıklarında çalışmayabilir `appName` . Bu parametre, hesaba özel bir uç nokta üzerinden bağlanmak için gereklidir. Visual Studio Code gibi bazı araçlar, bu parametreyi bağlantı dizesinden kaldırmaz ve bu nedenle uyumludur.
 
 * Özel bağlantı içeriyorsa sanal ağı taşıyamaz veya silemezsiniz.
 
-* Bir Azure Cosmos hesabını özel bir uç noktaya eklenmişse silemezsiniz.
-
 * Bir Azure Cosmos hesabını, hesaba bağlı olan tüm özel uç noktalara eşlenmemiş bir bölgeye devretmek.
 
-* Otomatik olarak onaylanan özel uç noktalar oluşturmak için Azure Cosmos hesap kapsamında en az "*/PrivateEndpointConnectionsApproval" iznine sahip bir ağ yöneticisine verilmelidir.
+* `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action`Otomatik olarak onaylanan özel uç noktalar oluşturmak için, bir ağ yöneticisine en azından Azure Cosmos hesap kapsamında izin verilmelidir.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Özel DNS bölge tümleştirmesi sınırlamaları
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f17d04d94546f31c5613fa9944c7399ea7db10ae
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 061805896203615d7673a006059080e9c4246863
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006060"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657214"
 ---
 # <a name="connect-with-the-web-client"></a>Web istemcisiyle bağlanma
 
@@ -36,16 +36,16 @@ HTML5 özellikli herhangi bir tarayıcı çalışması gerektiği sürece, aşa�
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
-| Apple Safari      | macOS                            |                     |
+| Apple Safari      | Mac OS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Sürüm 55 veya üzeri |
 | Google Chrome     | Windows, macOS, Linux, Chrome OS |                     |
 
 ## <a name="access-remote-resources-feed"></a>Uzak kaynak akışına erişin
 
-Bir tarayıcıda, [Windows Sanal Masaüstü Web istemcisine](https://rdweb.wvd.microsoft.com/arm/webclient) gidin ve Kullanıcı hesabınızla oturum açın.
+Bir tarayıcıda, üzerinde Windows sanal masaüstü web istemcisinin Azure Resource Manager tümleşik sürümüne gidin <https://rdweb.wvd.microsoft.com/arm/webclient> ve Kullanıcı hesabınızla oturum açın.
 
 >[!NOTE]
->Windows sanal masaüstü Fall 2019 sürümünü kullanıyorsanız, kaynaklarınıza bağlanmak için [Bu makaledeki](./virtual-desktop-fall-2019/connect-web-2019.md) Web istemcisi bağlantısını kullanın.
+>Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager tümleştirme olmadan kullanıyorsanız, <https://rdweb.wvd.microsoft.com/webclient> bunun yerine kaynaklarınıza bağlanın.
 
 >[!NOTE]
 >Windows sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, oturumunuzu açmanız veya özel bir tarayıcı penceresi kullanmanız gerekir.

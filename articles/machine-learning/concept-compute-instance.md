@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7afbfcc7830374c07850d1f634eb5e29fb459597
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283933"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654924"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -35,7 +35,7 @@ Bulutta tam olarak yapılandırılmış ve yönetilen geliştirme ortamınız ol
 |----|----|
 |Üretkenlik|Veri bilimcileri, tümleşik not defterlerini ve Web tarayıcılarında aşağıdaki araçları kullanarak modeller oluşturabilir ve dağıtabilir:<br/>-Jupyıter<br/>-Jupyıterlab<br/>-RStudio|
 |Yönetilen & güvenli|Güvenlik ayak izini azaltın ve kurumsal güvenlik gereksinimleriyle uyumluluk ekleyin. İşlem örnekleri, güçlü yönetim ilkeleri ve güvenli ağ yapılandırmalarının yanı sıra şunları sağlar:<br/><br/>-Kaynak Yöneticisi şablonlarından veya Azure Machine Learning SDK 'dan otomatik sağlama<br/>- [Rol tabanlı erişim denetimi (RBAC)](/azure/role-based-access-control/overview)<br/>- [Sanal ağ desteği](how-to-enable-virtual-network.md#compute-instance)<br/>-SSH erişimini etkinleştirmek/devre dışı bırakmak için SSH ilkesi|
-|Önceden&nbsp;yapılandırılmış&nbsp;veya ml|Önceden yapılandırılmış ve güncel ML paketleri, derin öğrenme çerçeveleri, GPU sürücüleri ile kurulum görevlerinde zaman kazanın.|
+|Önceden yapılandırılmış &nbsp; veya &nbsp; ml|Önceden yapılandırılmış ve güncel ML paketleri, derin öğrenme çerçeveleri, GPU sürücüleri ile kurulum görevlerinde zaman kazanın.|
 |Tamamen özelleştirilebilir|GPU 'Lar ve kalıcı alt düzey özelleştirme dahil olmak üzere Azure VM türleri için kapsamlı destek; Örneğin, paket ve sürücü yükleme, gelişmiş senaryolar için bir Breeze sağlar. |
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Araçlar ve ortamlar
@@ -51,7 +51,6 @@ Bu araçlar ve ortamlar, işlem örneğine yüklenir:
 |Intel MPı kitaplığı||
 |Azure CLI ||
 |Azure Machine Learning örnekleri ||
-|Azure Machine Learning EDAT altyapısı ||
 |Docker||
 |Nginx||
 |NCCL 2,0 ||
@@ -68,9 +67,8 @@ Bu araçlar ve ortamlar, işlem örneğine yüklenir:
 |Anaconda Python||
 |Jupi ve uzantıları||
 |Jupi terlab ve uzantıları||
-|Visual Studio Code ||
 [Python için Azure Machine Learning SDK'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>Pypı 'den|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
-|Diğer Pypı paketleri|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
+|Diğer Pypı paketleri|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda paketleri|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Derin öğrenme paketleri|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
 |ONNX paketleri|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
@@ -104,7 +102,7 @@ Dosya paylaşımındaki dosyalara aynı çalışma alanındaki tüm işlem örne
 
 Ayrıca, en son Azure Machine Learning örnekleri çalışma alanı dosya paylaşımındaki Kullanıcı dosyaları dizini altında klasörünüze kopyalayabilirsiniz.
 
-Küçük dosyaların yazılması, ağ sürücülerinde VM 'nin kendine yazılmasından daha yavaş olabilir.  Çok sayıda küçük dosya yazıyorsanız, Dizin gibi `/tmp` işlem örneğinde doğrudan bir dizin kullanmayı deneyin. Lütfen bu dosyalara çalışma alanındaki diğer işlem örneklerinden erişilemeyecek.
+Küçük dosyaların yazılması, ağ sürücülerinde VM 'nin kendine yazılmasından daha yavaş olabilir.  Çok sayıda küçük dosya yazıyorsanız, Dizin gibi işlem örneğinde doğrudan bir dizin kullanmayı deneyin `/tmp` . Lütfen bu dosyalara çalışma alanındaki diğer işlem örneklerinden erişilemeyecek.
 
 ## <a name="managing-a-compute-instance"></a>İşlem örneğini yönetme
 

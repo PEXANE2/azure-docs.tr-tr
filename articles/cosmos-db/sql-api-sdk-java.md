@@ -1,19 +1,19 @@
 ---
 title: "Azure Cosmos DB: SQL Java API 'SI, SDK & kaynakları"
 description: Sürüm tarihleri, kullanımdan kaldırma tarihleri ve SQL Java SDK Azure Cosmos DB her sürümü arasında yapılan değişiklikler dahil olmak üzere SQL Java API 'SI ve SDK hakkında bilgi edinin.
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 02/21/2020
-ms.author: sngun
-ms.openlocfilehash: e57029e53365fbf99054e2d926296ccca3360663
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 61016597310e6bb160999981216190e8caa34fc8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80983611"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656756"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Java SDK Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -21,8 +21,9 @@ ms.locfileid: "80983611"
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
+> * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -30,14 +31,18 @@ ms.locfileid: "80983611"
 > * [Toplu yürütücü-.NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
 
-SQL API Java SDK 'Sı zaman uyumlu işlemleri destekler. Zaman uyumsuz destek için, [SQL API zaman uyumsuz Java SDK 'sını](sql-api-sdk-async-java.md)kullanın. 
+Bu, zaman uyumlu işlemleri destekleyen SQL API 'SI için özgün Azure Cosmos DB eşitleme Java SDK v2 ' dir.
+
+> [!IMPORTANT]  
+> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projeniz için [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) kullanmayı düşünün. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Kılavuzu 'ndaki yönergeleri izleyin. 
+>
 
 | |  |
 |---|---|
 |**SDK Indirmesi**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API belgeleri**|[Java API başvuru belgeleri](/java/api/com.microsoft.azure.documentdb)|
 |**SDK 'ya katkıda bulunma**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**başlarken**|[Java SDK 'sını kullanmaya başlama](sql-api-java-get-started.md)|
+|**Kullanmaya başlayın**|[Java SDK 'sını kullanmaya başlama](sql-api-java-get-started.md)|
 |**Web uygulaması öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-java-application.md)|
 |**Desteklenen en düşük çalışma zamanı**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
 
@@ -81,7 +86,7 @@ SQL API Java SDK 'Sı zaman uyumlu işlemleri destekler. Zaman uyumsuz destek i�
 ### <a name="213"></a><a name="2.1.3"/>2.1.3
 * Karma v2 için PartitionKey içindeki hata düzeltildi.
 
-### <a name="212"></a><a name="2.1.2"/>2.1.2 'yi
+### <a name="212"></a><a name="2.1.2"/>2.1.2
 * Bileşik dizinler için destek eklendi.
 * Yenilemeyi zorlamak için genel uç nokta yöneticisinde hata düzeltildi.
 * Doğrudan modda ön koşullara sahip olan uptts için hata düzeltildi.
@@ -233,7 +238,7 @@ SQL API Java SDK 'Sı zaman uyumlu işlemleri destekler. Zaman uyumsuz destek i�
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
 * Jeo-uzamsal dizini destekler
-* Tüm kaynaklar için ID özelliğini doğrular. Kaynak kimlikleri,?,/, #, \, karakter içeremez veya boşluk ile bitemez.
+* Tüm kaynaklar için ID özelliğini doğrular. Kaynak kimlikleri,?,/, #, karakter içeremez \, veya boşluk ile bitemez.
 * Yeni "Dizin dönüştürme ilerlemesi" üst bilgisini Resourcereslik 'e ekler.
 
 ### <a name="110"></a><a name="1.1.0"/>1.1.0
@@ -275,7 +280,7 @@ Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet taraf�
 | [2.2.2](#2.2.2) |05 Nis, 2019 |--- |
 | [2.2.0](#2.2.0) |27 Mar, 2019 |--- |
 | [2.1.3](#2.1.3) |13 Mar, 2019 |--- |
-| [2.1.2 'yi](#2.1.2) |09 Mar, 2019 |--- |
+| [2.1.2](#2.1.2) |09 Mar, 2019 |--- |
 | [2.1.1](#2.1.1) |13. ara, 2018 |--- |
 | [2.1.0](#2.1.0) |20 Kasım 2018 |--- |
 | [2.0.0](#2.0.0) |21 Eyl, 2018 |--- |

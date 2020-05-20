@@ -11,19 +11,19 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f26aafc771998ea73d1a4f97f0e960a94f6775c3
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 193b1d5ff37eace127c8d5473b102842f4fa2a8c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626726"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654512"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>SQL Analytics için Azure Data Lake Storage verileri yükleme
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>SYNAPSE SQL için Azure Data Lake Storage verileri yükleme
 
 Bu kılavuzda, Azure Data Lake Storage verileri yüklemek için PolyBase dış tablolarının nasıl kullanılacağı özetlenmektedir. Data Lake Storage depolanan verilerde geçici sorgular çalıştırabilmenize karşın, en iyi performans için verilerin içeri aktarılmasını öneririz.
 
 > [!NOTE]  
-> Yükleme alternatifi Şu anda genel önizleme aşamasında olan [Copy deyimidir](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  COPY ifadesinde en çok esneklik sağlanır. COPY ifadesiyle geri bildirim sağlamak için şu dağıtım listesine bir e-posta gönderin: sqldwcopypreview@service.microsoft.com.
+> Yükleme alternatifi Şu anda genel önizleme aşamasında olan [Copy deyimidir](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  COPY ifadesinde en çok esneklik sağlanır. COPY ifadesiyle geri bildirim sağlamak için şu dağıtım listesine bir e-posta gönderin: sqldwcopypreview@service.microsoft.com .
 >
 > [!div class="checklist"]
 >
@@ -218,7 +218,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 Bir yükden hemen sonra tek sütunlu istatistikler oluşturmak en iyisidir. İstatistikler için bazı seçimler vardır. Örneğin, her sütunda tek sütunlu istatistikler oluşturursanız tüm istatistiklerin yeniden oluşturulması uzun sürebilir. Bazı sütunların sorgu koşullarına sahip olmadığını biliyorsanız, bu sütunlarda istatistik oluşturmayı atlayabilirsiniz.
 
-Her tablonun her sütununda tek sütunlu istatistikler oluşturmaya karar verirseniz, `prc_sqldw_create_stats` [istatistik](sql-data-warehouse-tables-statistics.md) makalesindeki saklı yordam kodu örneğini kullanabilirsiniz.
+Her tablonun her sütununda tek sütunlu istatistikler oluşturmaya karar verirseniz, istatistik makalesindeki saklı yordam kodu örneğini kullanabilirsiniz `prc_sqldw_create_stats` . [statistics](sql-data-warehouse-tables-statistics.md)
 
 Aşağıdaki örnek, istatistik oluşturmak için iyi bir başlangıç noktasıdır. Boyut tablosundaki her bir sütunda ve olgu tablolarındaki her bir birleştirme sütununda tek sütunlu istatistikler oluşturur. Daha sonra, daha sonra diğer olgu tablosu sütunlarına tek veya çok sütunlu istatistikler ekleyebilirsiniz.
 

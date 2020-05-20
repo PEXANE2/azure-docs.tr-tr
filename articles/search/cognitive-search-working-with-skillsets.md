@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b336451bde559ce773a9b611bc98b4de3f11871
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191036"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652737"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Bilişsel Arama Beceri kavramları ve bileşimi
 
@@ -32,7 +32,7 @@ Bir beceri üç özelliğe sahiptir:
 
 
 
-Becerileri, JSON içinde yazılır. [İfade dilini](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)kullanarak döngü ve [dallanma](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) ile karmaşık becerileri oluşturabilirsiniz. İfade dili, enzenginleştirme ağacındaki düğümleri tanımlamak için birkaç değişiklik ile [JSON işaretçi](https://tools.ietf.org/html/rfc6901) yolu gösterimini kullanır. ```"/"``` , Ağaçta daha düşük bir düzeye geçer ve ```"*"``` bağlamdaki her bir için bir for-each işleci görevi görür. Bu kavramlar bir örnekle en iyi şekilde açıklanmıştır. Kavramların ve yeteneklerin bazılarını göstermek için [otel İncelemeleri örnek beceri gözden geçiririz](knowledge-store-connect-powerbi.md) . Verileri içeri aktarma iş akışını beceri bir kez daha sonra görüntülemek için, [beceri almak](https://docs.microsoft.com/rest/api/searchservice/get-skillset)için bir REST API istemcisi kullanmanız gerekir.
+Becerileri, JSON içinde yazılır. [İfade dilini](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)kullanarak döngü ve [dallanma](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) ile karmaşık becerileri oluşturabilirsiniz. İfade dili, enzenginleştirme ağacındaki düğümleri tanımlamak için birkaç değişiklik ile [JSON işaretçi](https://tools.ietf.org/html/rfc6901) yolu gösterimini kullanır. ```"/"```, Ağaçta daha düşük bir düzeye geçer ve ```"*"``` bağlamdaki her bir için bir for-each işleci görevi görür. Bu kavramlar bir örnekle en iyi şekilde açıklanmıştır. Kavramların ve yeteneklerin bazılarını göstermek için [otel İncelemeleri örnek beceri gözden geçiririz](knowledge-store-connect-powerbi.md) . Verileri içeri aktarma iş akışını beceri bir kez daha sonra görüntülemek için, [beceri almak](https://docs.microsoft.com/rest/api/searchservice/get-skillset)için bir REST API istemcisi kullanmanız gerekir.
 
 ### <a name="enrichment-tree"></a>Zenginleştirme ağacı
 
@@ -54,18 +54,18 @@ Bu belgenin geri kalanında, [otel İncelemeleri örneği](https://docs.microsof
 
 ### <a name="context"></a>Bağlam
 Her yetenek bir bağlam gerektirir. Bağlam şunları belirler:
-+   Seçilen düğümlere göre yeteneğin kaç kez yürütüldüğünü. Koleksiyon türü bağlam değerleri için, sonunda bir ```/*``` eklemek, niteliğin koleksiyondaki her örnek için bir kez çağrılmasına neden olur. 
++   Seçilen düğümlere göre yeteneğin kaç kez yürütüldüğünü. Koleksiyon türü bağlam değerleri için, sonunda bir eklemek, ```/*``` niteliğin koleksiyondaki her örnek için bir kez çağrılmasına neden olur. 
 +   Enzenginleştirme ağacında, yetenek çıkışları eklenir. Çıktılar, her zaman bağlam düğümünün alt öğeleri olarak ağaca eklenir. 
 +   Girişlerin şekli. Çoklu düzey koleksiyonlar için, bağlamı üst koleksiyon olarak ayarlamak, Beceri girişinin şeklini etkiler. Örneğin, ülkelerin listesini içeren bir zenginleştirme ağacınızı kullanıyorsanız, her biri bir ZipCodes listesi içeren bir eyalet listesi ile zenginleştirir.
 
-|Bağlam|Girdi|Giriş şekli|Yetenek çağırma|
+|Bağlam|Giriş|Giriş şekli|Yetenek çağırma|
 |---|---|---|---|
 |```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Ülke içindeki tüm ZipCodes listesi |Ülke başına bir kez |
 |```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Durumdaki ZipCodes listesi | Ülke ve eyalet birleşimine göre|
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext` Yalnızca yetenek girişlerinde ve [projeksiyonde](knowledge-store-projection-overview.md)kullanılır. Çok düzeyli, iç içe geçmiş nesneler oluşturmak için kullanılır. Bilgi deposuna bir yeteneğe veya projeye giriş olarak geçirmek için yeni bir nesne oluşturmanız gerekebilir. Enzenginleştirme düğümleri, enzenginleştirme ağacında geçerli bir JSON nesnesi olmayabilir ve ağaçtaki bir düğüme başvurmak, Beceri girişleri veya projeksiyonları, iyi biçimlendirilmiş bir JSON nesnesi oluşturmanızı gerektirir. Yalnızca `sourceContext` bağlamını kullanıyorsanız, birden çok yetenek gerektiren hiyerarşik, anonim bir tür nesnesi oluşturmanız mümkün olur. Kullanmak `sourceContext` sonraki bölümde gösterilmiştir. Temel bir tür değil geçerli bir JSON nesnesi olup olmadığını öğrenmek için bir zenginleştirme oluşturan yetenek çıktısına bakın.
+`sourceContext`Yalnızca yetenek girişlerinde ve [projeksiyonde](knowledge-store-projection-overview.md)kullanılır. Çok düzeyli, iç içe geçmiş nesneler oluşturmak için kullanılır. Bilgi deposuna bir yeteneğe veya projeye giriş olarak geçirmek için yeni bir nesne oluşturmanız gerekebilir. Enzenginleştirme düğümleri, enzenginleştirme ağacında geçerli bir JSON nesnesi olmayabilir ve ağaçtaki bir düğüme başvurmak, Beceri girişleri veya projeksiyonları, iyi biçimlendirilmiş bir JSON nesnesi oluşturmanızı gerektirir. `sourceContext`Yalnızca bağlamını kullanıyorsanız, birden çok yetenek gerektiren hiyerarşik, anonim bir tür nesnesi oluşturmanız mümkün olur. Kullanmak `sourceContext` sonraki bölümde gösterilmiştir. Temel bir tür değil geçerli bir JSON nesnesi olup olmadığını öğrenmek için bir zenginleştirme oluşturan yetenek çıktısına bakın.
 
 ### <a name="projections"></a>Yansıtmalar
 
@@ -77,7 +77,7 @@ Yukarıdaki diyagramda, zenginleştirme ardışık düzeninde olduğunuz yere g�
 
 ## <a name="generate-enriched-data"></a>Zenginleştirilmiş veriler oluşturma 
 
-Şimdi de otel incelemeleriyle Beceri, beceri oluşturmak veya beceri [görüntülemek](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/samples/skillset.json) için [öğreticiyi](knowledge-store-connect-powerbi.md) izleyebilirsiniz. Şurada görüneceğiz:
+Şimdi de otel incelemeleriyle Beceri, beceri oluşturmak veya beceri [görüntülemek](https://github.com/Azure-Samples/azure-search-postman-samples/) için [öğreticiyi](knowledge-store-connect-powerbi.md) izleyebilirsiniz. Şurada görüneceğiz:
 
 * zenginleştirme ağacının her bir yeteneğin yürütülmesiyle nasıl geliştikçe 
 * bağlam ve girdilerin bir yeteneğin kaç kez çalışacağını belirleme 
@@ -89,12 +89,12 @@ Dizin Oluşturucu için ayrılmış metin ayrıştırma modunu kullandığımız
 
 ![Belge çözme sonrasında zenginleştirme ağacı](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "Belge çözme ve yetenek yürütmeden önce zenginleştirme ağacı")
 
-Yetenek bağlamı ```"/document/reviews_text"```ile, bu yetenek için bir kez yürütülür `reviews_text`. Yetenek çıkışı, 5000 karakter segmentlerinde yer `reviews_text` aldığı bir listesidir. Bölünmüş yeteneğin çıktısı adlandırılır `pages` ve zenginleştirme ağacına eklenir. `targetName` Özelliği, bir yetenek çıkışını, zenginleştirme ağacına eklenmeden önce yeniden adlandırmanızı sağlar.
+Yetenek bağlamı ile, ```"/document/reviews_text"``` Bu yetenek için bir kez yürütülür `reviews_text` . Yetenek çıkışı, `reviews_text` 5000 karakter segmentlerinde yer aldığı bir listesidir. Bölünmüş yeteneğin çıktısı adlandırılır `pages` ve zenginleştirme ağacına eklenir. `targetName`Özelliği, bir yetenek çıkışını, zenginleştirme ağacına eklenmeden önce yeniden adlandırmanızı sağlar.
 
 Zenginleştirme ağacının artık yetenek bağlamı altına yerleştirilmiş yeni bir düğümü vardır. Bu düğüm herhangi bir yetenek, projeksiyon veya çıkış alanı eşlemesinde kullanılabilir.
 
 
-Tüm zenginleştirmeleri için kök düğüm `"/document"`. Blob Dizin oluşturucularla çalışırken `"/document"` düğüm `"/document/content"` ve `"/document/normalized_images"`alt düğümlerine sahip olur. CSV verileriyle çalışırken, bu örnekte olduğu gibi, sütun adları altındaki `"/document"`düğümlerle eşlenir. Bir düğüme bir yeteneğe göre eklenen her türlü zenginleştirme için, zenginleştirme için tam yol gereklidir. Örneğin, ```pages``` düğümdeki metni başka bir beceriye girdi olarak kullanmak istiyorsanız, bunu olarak ```"/document/reviews_text/pages/*"```belirtmeniz gerekir.
+Tüm zenginleştirmeleri için kök düğüm `"/document"` . Blob Dizin oluşturucularla çalışırken `"/document"` düğüm ve alt düğümlerine sahip olur `"/document/content"` `"/document/normalized_images"` . CSV verileriyle çalışırken, bu örnekte olduğu gibi, sütun adları altındaki düğümlerle eşlenir `"/document"` . Bir düğüme bir yeteneğe göre eklenen her türlü zenginleştirme için, zenginleştirme için tam yol gereklidir. Örneğin, ```pages``` düğümdeki metni başka bir beceriye girdi olarak kullanmak istiyorsanız, bunu olarak belirtmeniz gerekir ```"/document/reviews_text/pages/*"``` .
  
  ![beceriye #1 sonra zenginleştirme ağacı](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "Beceri #1 yürütüldükten sonra zenginleştirme ağacı")
 
@@ -104,7 +104,7 @@ Tüm zenginleştirmeleri için kök düğüm `"/document"`. Blob Dizin oluşturu
  
  ### <a name="skill-3-key-phrases-skill"></a>Yetenek #3: anahtar tümceleri yeteneği 
 
-Anahtar tümceleri bağlamında belirtilen ```/document/reviews_text/pages/*``` bağlam, `pages` koleksiyondaki her öğe için bir kez çağrılacaktır. Beceriye ait çıkış, ilişkili sayfa öğesinin altındaki bir düğüm olacaktır. 
+Anahtar tümceleri bağlamında belirtilen bağlam, ```/document/reviews_text/pages/*``` koleksiyondaki her öğe için bir kez çağrılacaktır `pages` . Beceriye ait çıkış, ilişkili sayfa öğesinin altındaki bir düğüm olacaktır. 
 
  Artık beceri 'deki becerilerin geri kalanında bakabilmeniz ve zenginleştirme ağacının her bir yeteneğin yürütülmesiyle nasıl devam edeceği hakkında görselleştirmeniz gerekir. Birleştirme yeteneği ve mil başına beceri gibi bazı yetenekler de yeni düğümler oluşturur, ancak yalnızca var olan düğümlerdeki verileri kullanır ve net yeni zenginleştirme oluşturmazsınız.
 
@@ -126,7 +126,7 @@ Projeksiyon tanımlamanın iki yolu vardır. Her türlü beceriye, yansıtıyors
 
 Mil başına her yaklaşım, satır içi şekillendirenden daha ayrıntılıdır, ancak en zenginleştirme ağacının tüm mutasyonların beceriler içinde yer almasını ve çıktının yeniden kullanılabilen bir nesne olmasını sağlar. Satır içi şekillendirme, ihtiyacınız olan şekli oluşturmanıza izin verir, ancak anonim bir nesnedir ve yalnızca tanımlandığı projeksiyon için kullanılabilir. Yaklaşımlar birlikte veya ayrı bir şekilde kullanılabilir. Portal iş akışında sizin için oluşturulan beceri her ikisini de içerir. Tablo projeksiyonlar için bir Shaper kullanır, ancak anahtar tümceleri tablosunu proje için de satır içi şekillendirme kullanır.
 
-Örneği genişletmek için, satır içi şekillendirme 'yı kaldırmayı ve anahtar tümceleri için yeni bir düğüm oluşturmak üzere her beceri için bir mil kullanmayı seçebilirsiniz. ,, Ve `hotelReviewsDocument` `hotelReviewsPages` `hotelReviewsKeyPhrases`gibi üç tablo halinde tasarlanan bir şekil oluşturmak için, iki seçenek aşağıdaki bölümlerde açıklanmıştır.
+Örneği genişletmek için, satır içi şekillendirme 'yı kaldırmayı ve anahtar tümceleri için yeni bir düğüm oluşturmak üzere her beceri için bir mil kullanmayı seçebilirsiniz. ,, Ve gibi üç tablo halinde tasarlanan bir şekil oluşturmak için, `hotelReviewsDocument` `hotelReviewsPages` `hotelReviewsKeyPhrases` iki seçenek aşağıdaki bölümlerde açıklanmıştır.
 
 
 #### <a name="shaper-skill-and-projection"></a>Beceri ve projeksiyon başına mil 
@@ -204,7 +204,7 @@ Mil başına her yaklaşım, satır içi şekillendirenden daha ayrıntılıdır
 }
 ```
 
-Yukarıdaki `tableprojection` `outputs` bölümde tanımlanan düğüm ile, artık `tableprojection` düğüm parçalarını farklı tablolara proje için dilimleme özelliğini kullanabilirsiniz:
+`tableprojection`Yukarıdaki bölümde tanımlanan düğüm ile `outputs` , artık düğüm parçalarını farklı tablolara proje için dilimleme özelliğini kullanabilirsiniz `tableprojection` :
 
 > [!Note]
 > Bu, bilgi deposu yapılandırması içindeki projeksiyonun yalnızca bir parçacığı değildir.
@@ -295,7 +295,7 @@ Satır içi şekillendirme yaklaşımına, her türlü şekil gerektiği sırada
 ]
 ```
   
-Her iki yaklaşımdan bir gözlem, `"Keyphrases"` `"sourceContext"`değerlerinin kullanılarak yansıtıldır. Bir `"Keyphrases"` dize koleksiyonu içeren düğüm, kendi kendine sayfa metninin bir alt öğesidir. Ancak, projeksiyler bir JSON nesnesi gerektirdiğinden ve sayfa basit (dize) `"sourceContext"` olduğundan, anahtar tümceciğini adlandırılmış bir özelliğe sahip bir nesneye kaydırmak için kullanılır. Bu teknik, Çift temellerden bağımsız olarak yansıtılmalarını sağlar.
+Her iki yaklaşımdan bir gözlem `"Keyphrases"` , değerlerinin kullanılarak yansıtıldır `"sourceContext"` . `"Keyphrases"`Bir dize koleksiyonu içeren düğüm, kendi kendine sayfa metninin bir alt öğesidir. Ancak, projeksiyler bir JSON nesnesi gerektirdiğinden ve sayfa basit (dize) olduğundan, `"sourceContext"` anahtar tümceciğini adlandırılmış bir özelliğe sahip bir nesneye kaydırmak için kullanılır. Bu teknik, Çift temellerden bağımsız olarak yansıtılmalarını sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

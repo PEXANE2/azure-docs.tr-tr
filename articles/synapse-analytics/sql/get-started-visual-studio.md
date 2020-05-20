@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a8839609856bda5304712405ec57accb4afb095
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c8b66e42c5719203eb0f195a5b61e81da8b187e7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201686"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658138"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio ve SSDT ile SYNAPSE SQL 'e bağlanma
 > [!div class="op_single_selector"]
@@ -31,16 +31,16 @@ Azure SYNAPSE Analytics kullanarak SQL havuzunu sorgulamak için Visual Studio '
 > [!NOTE]
 > SQL isteğe bağlı (Önizleme) SSDT tarafından desteklenmiyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir:
 
 * Mevcut bir SQL Havuzu. Bir tane yoksa, bu önkoşulu gerçekleştirmek için bkz. [SQL havuzu oluşturma](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 * Visual Studio için SSDT. Visual Studio kullanıyorsanız büyük olasılıkla bu bileşene sahipsiniz demektir. Yükleme yönergeleri ve seçenekleri için bkz. [Visual Studio’yu ve SSDT’yi yükleme](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-* Tam SQL server adı. Bunu bulmak için bkz. [SQL havuzuna bağlanma](connect-overview.md).
+* Tam SQL server adı. Bu sunucu adını bulmak için bkz. [SQL havuzuna bağlanma](connect-overview.md).
 
 ## <a name="1-connect-to-sql-pool"></a>1. SQL havuzuna Bağlan
 1. Visual Studio 2019 ' i açın.
-2. SQL Server Nesne Gezgini açın. Bunu yapmak için SQL Server Nesne Gezgini **görüntüle**' yi seçin  >  **SQL Server Object Explorer**.
+2. **Görünüm**SQL Server Nesne Gezgini ' i seçerek SQL Server Nesne Gezgini açın  >  **SQL Server Object Explorer**.
    
     ![SQL Server Nesne Gezgini](./media/get-started-visual-studio/open-ssdt.png)
 3. **SQL Server ekle** simgesine tıklayın.
@@ -70,7 +70,7 @@ Artık veritabanınıza bir bağlantı kuruldığına göre bir sorgu yazacaksı
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Sorguyu çalıştırın. Bunu gerçekleştirmek için yeşil ok simgesine tıklayın veya şu kısayolu kullanın: `CTRL`+`SHIFT`+`E`.
+4. Yeşil oka tıklayarak sorguyu çalıştırın veya şu kısayolu kullanın: `CTRL` + `SHIFT` + `E` .
    
     ![Sorgu çalıştırma](./media/get-started-visual-studio/run-query.png)
 5. Sorgu sonuçlarına bakın. Bu örnekte FactInternetSales tablosunda 60398 satır var.

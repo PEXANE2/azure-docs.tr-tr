@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1b9a1771ad498fa3fb9b8294adb8a6556a00863a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02050745e7c8a9aa05d3f2de63a4bc5f1ebf8318
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190427"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654781"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için Azure Güvenlik temeli
 
@@ -573,7 +573,7 @@ Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/
 
 **Rehberlik**: MySQL Için Azure veritabanı hizmeti, bekleyen verilerin depolama ŞIFRELEMESI için FIPS 140-2 tarafından doğrulanan şifreleme modülünü kullanır. Yedeklemeler de dahil olmak üzere veriler, sorgular çalıştırılırken oluşturulan geçici dosyalar hariç olmak üzere diskte şifrelenir. Hizmet, Azure depolama şifrelemesi 'ne dahil olan AES 256 bitlik şifrelemeyi kullanır ve anahtarlar sistem tarafından yönetilir. Depolama şifrelemesi her zaman açıktır ve devre dışı bırakılamaz.
 
-MySQL için Azure veritabanı için müşteri tarafından yönetilen anahtarlarla veri şifreleme, bekleyen veri koruması için kendi anahtarınızı (BYOK) getirmenize olanak sağlar. Şu anda bu özelliği kullanmak için erişim istemeniz gerekir. Bunu yapmak için şu bağlantıya başvurun:
+MySQL için Azure Veritabanı'nda verilerin müşteri tarafından yönetilen anahtarlarla şifrelenmesini sağlayarak bekleyen veriler için kendi anahtarını getir (KAG) yaklaşımından faydalanabilirsiniz. Şu anda bu özelliği kullanmak için erişim istemeniz gerekir. Bunu yapmak için şu bağlantıya başvurun:
 
 AskAzureDBforMySQL@service.microsoft.com
 
@@ -902,7 +902,7 @@ Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama:https://docs.micro
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: kimlikleri güvenli ve otomatik olarak yönetme
 
-**Rehberlik**: MySQL Için Azure veritabanı örneği, veritabanlarına erişmek için Azure Active Directory kimlik doğrulamasını (önizlemede) destekler.  MySQL için Azure veritabanı örneği oluşturulurken, yönetici kullanıcı için kimlik bilgilerini sağlarsınız. Bu yönetici, ek veritabanı kullanıcıları oluşturmak için kullanılabilir.  
+**Rehberlik**: MySQL Için Azure veritabanı örneği, veritabanlarına erişmek için Azure Active Directory kimlik doğrulamasını destekler.  MySQL için Azure veritabanı örneği oluşturulurken, yönetici kullanıcı için kimlik bilgilerini sağlarsınız. Bu yönetici, ek veritabanı kullanıcıları oluşturmak için kullanılabilir.  
 
 MySQL için Azure veritabanı örneklerine erişmek üzere kullanılan Azure App Service üzerinde çalışan Azure sanal makineleri veya Web uygulamaları için, MySQL için Azure veritabanı örneği için kimlik bilgilerini depolamak ve almak üzere Azure Key Vault ile birlikte Yönetilen Hizmet Kimliği kullanın. Key Vault geçici silmenin etkinleştirildiğinden emin olun.
 

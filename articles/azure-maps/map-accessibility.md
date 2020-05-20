@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473328"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648583"
 ---
 # <a name="building-an-accessible-application"></a>Erişilebilir bir uygulama oluşturma
 
@@ -28,6 +28,7 @@ Azure Haritalar Web SDK 'Sı, şu gibi birçok erişilebilirlik özelliği ile �
 - Harita ne zaman taşındığını ve Kullanıcı bir denetime veya açılan pencereye odaklanmışken ekran okuyucu açıklamaları.
 - Fare, dokunmatik ve klavye desteği.
 - Yol haritası stilinde erişilebilir renk karşıtlığı desteği.
+- Yüksek Karşıtlık desteği.
 
 Tüm Microsoft ürünlerine yönelik tam erişilebilirlik uyumluluğu ayrıntıları [burada](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)bulunabilir. Azure Haritalar Web SDK 'Sı için belgeyi özel olarak bulmak üzere "Azure Maps web" araması yapın. 
 
@@ -41,10 +42,10 @@ Haritanın Yakınlaştırılıp Yakınlaştırılıp döndürülmemiş, döndür
 - Fareyi kullanarak Haritayı yakınlaştırmak için tekerleği kaydırın.
 - Dokunmatik ekran kullanarak parmakları yakınlaştırmak veya yaymak için iki parmağınızla ve Pinç ile Haritayı dokunarak bir araya geçirin.
 - Dokunmatik ekran kullanarak, bir düzey yakınlaştırmak için haritaya çift dokunun.
-- Eşleme odaklı olduğunda, bir düzey yakınlaştırmak için artı işaretini`+`() veya eşittir işaretini`=`() kullanın.
-- Eşleme odaklı olduğunda, bir düzey uzaklaştırmak için eksi işaretini, kısa`-`çizgi () veya alt`_`çizgi () kullanın.
+- Eşleme odaklı `+` olduğunda, `=` bir düzey yakınlaştırmak için artı işaretini () veya eşittir işaretini () kullanın.
+- Eşleme odaklı olduğunda, bir düzey uzaklaştırmak için eksi işaretini, kısa çizgi ( `-` ) veya alt çizgi ( `_` ) kullanın.
 - Yakınlaştırma denetimini fare, dokunmatik veya klavye ile kullanma/ENTER tuşları.
-- Düğmeye basın ve basılı `Shift` tutun ve Haritayı yakınlaştırmak için bir alan çizmek üzere, haritada sol fare düğmesine basın ve sürükleyin.
+- Düğmeye basın ve basılı tutun ve Haritayı `Shift` yakınlaştırmak için bir alan çizmek üzere, haritada sol fare düğmesine basın ve sürükleyin.
 
 **Haritayı kaydır**
 
@@ -76,7 +77,7 @@ Tüm geliştiriciler, tüm olası harita stillerinin uygulamalarıyla kullanıla
 - Harita denetimi, cihazın yüksek karşıtlık modunu izlemez. Cihaz modu değişirse, eşleme olmayacaktır. Bu nedenle, kullanıcının sayfayı yenileyerek Haritayı yeniden yüklemesi gerekir.
 - Yüksek karşıtlık algılandığında, harita stili otomatik olarak yüksek karşıtlığa geçiş yapar ve tüm yerleşik denetimler yüksek karşıtlık stilini kullanır. Örneğin, ZoomControl, Lıchcontrol, CompassControl, StyleControl ve diğer yerleşik denetimler, yüksek karşıtlık stili kullanacaktır.
 - İki tür yüksek karşıtlık, açık ve koyu. Yüksek karşıtlık türü harita denetimleri tarafından algılanıyorsa, haritanın davranışı buna uygun şekilde ayarlanacaktır. Işık ise grayscale_light harita stili yüklenir. Tür algılanamadığından veya karanlık ise high_contrast_dark stili yüklenir.
-- Özel denetimler oluşturuyorsanız, yerleşik denetimlerin yüksek karşıtlık stili kullanıp kullanmediğini bilmemiz yararlı olur. Geliştiriciler, denetlemek için harita kapsayıcısı div öğesine bir CSS sınıfı ekleyebilir. Eklenecek CSS sınıfları ve ' `high-contrast-dark` `high-contrast-light`dir. JavaScript kullanmayı denetlemek için şunu kullanın:
+- Özel denetimler oluşturuyorsanız, yerleşik denetimlerin yüksek karşıtlık stili kullanıp kullanmediğini bilmemiz yararlı olur. Geliştiriciler, denetlemek için harita kapsayıcısı div öğesine bir CSS sınıfı ekleyebilir. Eklenecek CSS sınıfları `high-contrast-dark` ve ' dir `high-contrast-light` . JavaScript kullanmayı denetlemek için şunu kullanın:
 
 ```javascript
 map.getMapContainer().classList.contains("high-contrast-dark")
@@ -105,15 +106,15 @@ Haritada, eşlemenin kullanımını kolaylaştıran yerleşik bir dizi klavye k�
 | `Shift`+ aşağı ok | Eşleme aralığını 10 derece azalt |
 | `Shift`+ sağ ok | Haritayı saat yönünde 15 derece döndürün |
 | `Shift`+ sol ok | Haritayı saatin tersi yönde 15 derece döndürün |
-| Artı işareti (`+`) veya <sup>*</sup>eşittir işareti (`=`) | Yakınlaştır |
-| Eksi işareti, kısa çizgi`-`() veya <sup>*</sup>alt çizgi`_`() | Uzaklaştır | 
+| Artı işareti ( `+` ) veya <sup>*</sup> eşittir işareti ( `=` ) | Yakınlaştır |
+| Eksi işareti, kısa çizgi ( `-` ) veya <sup>*</sup> alt çizgi ( `_` ) | Uzaklaştır | 
 | `Shift`çizim alanına haritada fare sürükleme | Alana Yakınlaştır |
 
 <sup>*</sup>Bu anahtar kısayollar genellikle klavyede aynı anahtarı paylaşır. Bu kısayollar, Kullanıcı deneyimini geliştirmek için eklenmiştir. Ayrıca, kullanıcının bu kısayollar için değil, Shift tuşunu kullanıp kullanmadığını önemli değildir.
 
 ## <a name="screen-reader-support"></a>Ekran okuyucu desteği
 
-Kullanıcılar, klavyeyi kullanarak haritada gezinebilirler. Bir ekran okuyucu çalışıyorsa, eşleme kullanıcıya durumunda değişiklikleri bilgilendirir. Örneğin, eşleme değiştirildiğinde veya yakınlaştırıldığında kullanıcılara eşleme değişiklikleri bildirilir. Eşleme, varsayılan olarak haritanın merkezinin yakınlaştırma düzeyini ve koordinatlarını hariç tutarak basit açıklamalar sağlar. Kullanıcı klavye kısa kesmeyi `Ctrl`  +  `Shift`  +  `D`kullanarak bu açıklamaların ayrıntı düzeyini değiştirebilir.
+Kullanıcılar, klavyeyi kullanarak haritada gezinebilirler. Bir ekran okuyucu çalışıyorsa, eşleme kullanıcıya durumunda değişiklikleri bilgilendirir. Örneğin, eşleme değiştirildiğinde veya yakınlaştırıldığında kullanıcılara eşleme değişiklikleri bildirilir. Eşleme, varsayılan olarak haritanın merkezinin yakınlaştırma düzeyini ve koordinatlarını hariç tutarak basit açıklamalar sağlar. Kullanıcı klavye kısa kesmeyi kullanarak bu açıklamaların ayrıntı düzeyini değiştirebilir `Ctrl`  +  `Shift`  +  `D` .
 
 Temel haritaya yerleştirilmiş ek bilgiler, ekran okuyucu kullanıcıları için ilgili metin bilgilerine sahip olmalıdır. Uygun yerlerde, [erişilebilir zengin Internet uygulamaları (ARIA)](https://www.w3.org/WAI/standards-guidelines/aria/), alt ve başlık öznitelikleri eklediğinizden emin olun. 
 
@@ -125,7 +126,7 @@ Aşağıdaki örnek, bir sembol katmanını kullanarak haritada ilgi çekici nok
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Erişilebilir bir uygulama oluşturma' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io'>codepen</a>'Da <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>erişilebilir bir uygulama oluşturma</a> . </iframe>
+<iframe height='500' scrolling='no' title='Erişilebilir bir uygulama oluşturma' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. Azure <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>Make an accessible application</a> Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) Ile <a href='https://codepen.io'>codepen</a>'da erişilebilir bir uygulama oluşturma. </iframe>
 
 <br/>
 

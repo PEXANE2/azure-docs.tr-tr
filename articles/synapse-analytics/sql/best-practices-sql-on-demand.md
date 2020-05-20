@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 86678365d1510199247e8a1aaa48ec844d07de32
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 07ceb8eebed5657f87417dc24281008dd0863851
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592942"
+ms.locfileid: "83650400"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te isteğe bağlı SQL (Önizleme) için en iyi uygulamalar
 
@@ -52,11 +52,11 @@ Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 
 ## <a name="push-wildcards-to-lower-levels-in-path"></a>Yoldaki daha düşük düzeylerde joker karakter gönder
 
-[Birden çok dosya ve klasörü sorgulamak](develop-storage-files-overview.md#query-multiple-files-or-folders)için yolunuzda joker karakterler kullanabilirsiniz. İsteğe bağlı SQL, depolama ortamınızdaki ilk * depolama API 'SI kullanılarak başlayan ve belirtilen yoldan eşleşmeyen dosyaları ortadan kaldıran dosyaları listeler. İlk joker karaktere kadar belirtilen yol ile eşleşen çok sayıda dosya varsa, ilk dosya listesini azaltmak performansı iyileştirebilir.
+[Birden çok dosya ve klasörü sorgulamak](develop-storage-files-overview.md#query-multiple-files-or-folders)için yolunuzda joker karakterler kullanabilirsiniz. İsteğe bağlı SQL, depolama ortamınızdaki ilk * depolama API 'sini kullanarak ve belirtilen yolla eşleşmeyen dosyaları ortadan kaldırarak depolama hesabınızdaki dosyaları listeler. İlk joker karaktere kadar belirtilen yol ile eşleşen çok sayıda dosya varsa, ilk dosya listesini azaltmak performansı iyileştirebilir.
 
 ## <a name="use-appropriate-data-types"></a>Uygun veri türlerini kullan
 
-Sorgunuzda kullanılan veri türleri performansı etkiler. Şunları yaparsanız daha iyi performans alabilirsiniz: 
+Sorgu etki performansı üzerinde kullandığınız veri türleri. Şunları yaparsanız daha iyi performans alabilirsiniz: 
 
 - Olası en büyük değere uyum sağlayacak en küçük veri boyutunu kullanın.
   - Maksimum karakter değeri uzunluğu 30 karakter ise, 30 uzunluğunda karakter veri türünü kullanın.
@@ -68,7 +68,7 @@ Sorgunuzda kullanılan veri türleri performansı etkiler. Şunları yaparsanız
 
 ## <a name="check-inferred-data-types"></a>Gösterilen veri türlerini denetle
 
-[Şema çıkarımı](query-parquet-files.md#automatic-schema-inference) , dosya şemasını bilmeden sorguları hızlı bir şekilde yazmanıza ve verileri araştırmanıza yardımcı olur. Bu rahatlık, çıkarsanından daha büyük olan çıkarılan veri türlerinin masrafına gelir. Uygun veri türünün kullanıldığından emin olmak için kaynak dosyalarında yeterli bilgi olmadığında gerçekleşir. Örneğin, Parquet dosyaları en fazla karakter sütun uzunluğu hakkında meta veriler içermez ve isteğe bağlı SQL bu verileri varchar (8000) olarak algılar. 
+[Şema çıkarımı](query-parquet-files.md#automatic-schema-inference) , dosya şemasını bilmeden sorguları hızlı bir şekilde yazmanıza ve verileri araştırmanıza yardımcı olur. Bu rahatlık, çıkarsanından daha büyük olan çıkarılan veri türlerinin masrafına gelir. Uygun veri türünün kullanıldığından emin olmak için kaynak dosyalarında yeterli bilgi olmadığında gerçekleşir. Örneğin, Parquet dosyaları en büyük karakter sütunu uzunluğu hakkında meta veriler içermez ve SQL isteğe bağlı olarak onu varchar (8000) olarak algılar. 
 
 [Sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15)kullanarak sorgunuzun sonuç veri türlerini kontrol edebilirsiniz.
 
@@ -92,7 +92,7 @@ Sonuç kümesini burada bulabilirsiniz.
 |0|2|pickup_datetime|datetime2 (7)|8|
 |0|3|passenger_count|int|4|
 
-Sorgu için gösterilen veri türlerini öğrendikten sonra, uygun veri türlerini belirteceğiz:
+Sorgu için gösterilen veri türlerini öğrendikten sonra uygun veri türlerini belirtebilirsiniz:
 
 ```sql  
 SELECT
@@ -143,4 +143,4 @@ Daha iyi performansa ihtiyacınız varsa, AAD geçiş performansı iyileştirile
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sık karşılaşılan sorunlar ve çözümleri için [sorun giderme](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) makalesini inceleyin. İsteğe bağlı SQL yerine SQL havuzu ile çalışıyorsanız, lütfen belirli yönergeler için [SQL havuzu Için En Iyi uygulamalar](best-practices-sql-pool.md) makalesine bakın.
+Sık karşılaşılan sorunlar ve çözümleri için [sorun giderme](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) makalesini inceleyin. SQL havuzu yerine SQL havuzu ile çalışıyorsanız, belirli bir kılavuzluk için [SQL havuzu Için En Iyi uygulamalar](best-practices-sql-pool.md) makalesine bakın.

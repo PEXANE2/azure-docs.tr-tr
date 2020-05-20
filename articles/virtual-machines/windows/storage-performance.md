@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: cd15df2a7074463789bcf4a2d4de3c41bd012bbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a093303efe63a051e8e2ff9824a35228e44e1aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100558"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652603"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 serisi sanal makinelerde performansı iyileştirin
 
@@ -21,7 +21,7 @@ Lsv2 serisi sanal makineler, çok sayıda uygulama ve sektör genelinde yerel de
 
 Lsv2 serisi sanal makinelerin (VM 'Ler) tasarımı, işlemci, bellek, NVMe cihazları ve VM 'Ler arasında en iyi performansı sağlamak için AMD EPN™ 7551 işlemcisini en üst düzeye çıkarır. Donanım performansını en üst düzeye çıkarmak için Lsv2 serisi VM 'Ler, donanım ve yazılımla daha iyi performans sağlamak üzere Windows ve Linux işletim sistemlerinin ihtiyaçlarına uygun olarak çalışacak şekilde tasarlanmıştır.
 
-Yazılım ve donanımın ayarlanması, [Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)'ın en iyi duruma getirilmiş sürümüyle sonuç2018 lanmıştır ve Lsv2 serisi VM 'lerde NVMe cihazlarda en yüksek performansı destekleyen Azure Marketi 'nde daha fazla performans sağlar.
+Yazılım ve donanımın ayarlanması, [Windows Server 2019 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)'ın en iyi duruma getirilmiş sürümüyle sonuç2018 lanmıştır ve Lsv2 serisi VM 'lerde NVMe cihazlarda en yüksek performansı destekleyen Azure Marketi 'nde daha fazla performans sağlar.
 
 Bu makalede, iş yüklerinizin ve uygulamalarınızın VM 'Lerde tasarlanan maksimum performansı elde etmelerini sağlamak için ipuçları ve öneriler sağlanmaktadır. Bu sayfadaki bilgiler, Azure Market 'e daha fazla Lsv2 iyileştirilmiş görüntü eklendikçe sürekli olarak güncelleştirilir.
 

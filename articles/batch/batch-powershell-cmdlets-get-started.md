@@ -4,12 +4,12 @@ description: Batch kaynaklarını yönetmek için kullanabileceğiniz Azure Powe
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b768fac7fa6fe0f4821a4fbaf5fa11414b10f81d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8777edbc99550b2fb1f14df00936de57801b0aab
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995326"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657307"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch kaynaklarını PowerShell cmdlet'leriyle yönetme
 
@@ -19,7 +19,7 @@ Tam Batch cmdlet’leri listesi ve ayrıntılı cmdlet sözdizimi için bkz. [Az
 
 Bu makale, az Batch Module 1.0.0 içindeki cmdlet 'lere dayalıdır. Hizmet güncelleştirmeleri ve geliştirmeleri avantajlarından yararlanmak için Azure PowerShell modüllerinizi sık sık güncelleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure PowerShell modülünü yükleyin ve yapılandırın](/powershell/azure/overview). Yayın öncesi modül gibi belirli bir Azure Batch modülünü yüklemek için [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)'ne bakın.
 
@@ -39,13 +39,13 @@ Bu makale, az Batch Module 1.0.0 içindeki cmdlet 'lere dayalıdır. Hizmet gün
 
 ### <a name="create-a-batch-account"></a>Batch hesabı oluşturma
 
-**New-AzBatchAccount** , belirtilen kaynak grubunda bir Batch hesabı oluşturur. Henüz bir kaynak grubunuz yoksa, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini çalıştırarak bir tane oluşturun. **Location** parametresinde, "Orta ABD" gibi Azure bölgelerinden birini belirtin. Örneğin:
+**New-AzBatchAccount** , belirtilen kaynak grubunda bir Batch hesabı oluşturur. Henüz bir kaynak grubunuz yoksa, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini çalıştırarak bir tane oluşturun. **Location** parametresinde, "Orta ABD" gibi Azure bölgelerinden birini belirtin. Örnek:
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
 ```
 
-Ardından, kaynak grubunda bir Batch hesabı oluşturun. <*account_name*> hesap için bir ad ve kaynak grubunuzun konumunu ve adını belirtin. Batch hesabının oluşturulması biraz zaman alabilir. Örneğin:
+Ardından, kaynak grubunda bir Batch hesabı oluşturun. <*account_name*> hesap için bir ad ve kaynak grubunuzun konumunu ve adını belirtin. Batch hesabının oluşturulması biraz zaman alabilir. Örnek:
 
 ```powershell
 New-AzBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
@@ -79,7 +79,7 @@ New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 ### <a name="delete-a-batch-account"></a>Batch hesabını silme
 
-**Remove-AzBatchAccount** bir Batch hesabını siler. Örneğin:
+**Remove-AzBatchAccount** bir Batch hesabını siler. Örnek:
 
 ```powershell
 Remove-AzBatchAccount -AccountName <account_name>
@@ -164,7 +164,7 @@ Get-AzBatchPool -Id "myPool" -BatchContext $context
 
 ### <a name="use-the-maxcount-parameter"></a>MaxCount parametresini kullanma
 
-Varsayılan olarak, her cmdlet en çok 1000 nesne döndürür. Bu sınıra ulaştıysanız, daha az nesne döndürmek için filtreyi daraltın veya **MaxCount** parametresini kullanarak kesin bir üst sınır ayarlayın. Örneğin:
+Varsayılan olarak, her cmdlet en çok 1000 nesne döndürür. Bu sınıra ulaştıysanız, daha az nesne döndürmek için filtreyi daraltın veya **MaxCount** parametresini kullanarak kesin bir üst sınır ayarlayın. Örnek:
 
 ```powershell
 Get-AzBatchTask -MaxCount 2500 -BatchContext $context
@@ -247,9 +247,10 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-Şimdi havuzu oluşturun ve paket başvuru nesnesini, `ApplicationPackageReferences` seçeneğinin bağımsız değişkeni olarak belirtin:
+Şimdi yapılandırmayı ve havuzu oluşturun. Bu örnek, **CloudServiceConfiguration** `PSCloudServiceConfiguration` `$configuration` **OSFamily** `6` ' Windows Server 2019 ' için OSFamily öğesini ve ' nin ' i ' **olarak** ayarlayan bir tür nesnesi içinde başlatılan cloudserviceconfiguration parametresini kullanır `*` . Seçeneğe bağımsız değişken olarak paket başvuru nesnesini belirtin `ApplicationPackageReferences` :
 
 ```powershell
+$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(6,"*")  # 6 = OSFamily 'Windows Server 2019'
 New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 

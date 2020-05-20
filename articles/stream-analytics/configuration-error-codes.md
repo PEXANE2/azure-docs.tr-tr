@@ -6,28 +6,16 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 9951a6ddfbd1c562184e2b7e02a9da98f7d94b12
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5aa15ae4a234a56a172a0166070c32be4f822910
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598069"
+ms.locfileid: "83650064"
 ---
 # <a name="azure-stream-analytics-configuration-error-codes"></a>Azure Stream Analytics yapılandırma hata kodları
 
 Azure Stream Analytics işinizin beklenmedik davranışlarından hata ayıklamaya yardımcı olması için etkinlik günlüklerini ve kaynak günlüklerini kullanabilirsiniz. Bu makalede, her yapılandırma hata kodu için açıklama listelenir. Yapılandırma hataları, iş yapılandırmanızla veya giriş ve çıkış konfigürasyonlarıyla ilgilidir.
-
-## <a name="kafkainvalidpermission"></a>KafkaInvalidPermission
-
-* **Neden**: Stream Analytics işi belirli eylemleri gerçekleştirmek için uygun izinlere sahip değil.
-
-## <a name="kafkainvalidconfiguration"></a>KafkaInvalidConfiguration
-
-* **Neden**: Kafka bağdaştırıcısındaki bazı konfigürasyonlar geçersiz.
-
-## <a name="kafkainvalidtimestamptype"></a>KafkaInvalidTimestampType
-
-* **Neden**: Kafka tarafından kullanılan zaman damgası türü geçersiz.
 
 ## <a name="eventhubunauthorizedaccess"></a>EventHubUnauthorizedAccess
 

@@ -7,12 +7,12 @@ ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: baabad550f5e6b0ae39936fc182e6d9789d189d8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594755"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650930"
 ---
 # <a name="disk-bursting"></a>Disk genişletme
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -24,7 +24,7 @@ VM düzeyinde burdıya desteği, bu desteklenen boyutlarda genel buluttaki tüm 
 Bu işlemi destekleyen sanal makineler için burdıya varsayılan olarak etkindir.
 
 ## <a name="disk-level-bursting"></a>Disk düzeyinde patlama
-Ayrıca, tüm bölgelerde P20 ve daha küçük bir disk boyutu için [Premium SSD](disks-types.md#premium-ssd) 'larımız de mevcuttur. Disk patlaması, bunu destekleyen disk boyutlarının yeni dağıtımları üzerinde varsayılan olarak etkindir. Disk kullanımını destekliyorsa, mevcut disk boyutları aşağıdaki yöntemlerden birini kullanarak ani bir şekilde etkinleştirebilir: 
+Ayrıca, Azure genel, kamu ve Çin bulutlarındaki tüm bölgelerde P20 ve daha küçük disk boyutları için [Premium SSD](disks-types.md#premium-ssd) 'larımız de kullanıma sunulmuştur. Disk patlaması, bunu destekleyen disk boyutlarının yeni dağıtımları üzerinde varsayılan olarak etkindir. Disk kullanımını destekliyorsa, mevcut disk boyutları aşağıdaki yöntemlerden birini kullanarak ani bir şekilde etkinleştirebilir: 
 - **VM 'yi yeniden başlatma** 
 - **Diski kullanımdan çıkarın ve yeniden bağlayın**
 

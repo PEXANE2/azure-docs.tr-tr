@@ -7,12 +7,12 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9e8dbe2021c5700fe0223ff7ce246ac54f2abbd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68726415"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650290"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>İOS 'dan blob depolamayı kullanma
 
@@ -62,14 +62,14 @@ Bu kitaplığı kullanmak için şunlar gerekir:
 Kitaplığı kullanmanın diğer yolu, çerçeveyi el ile oluşturmak için kullanılır:
 
 1. İlk olarak, [Azure-Storage-iOS depoyu](https://github.com/azure/azure-storage-ios)indirin veya kopyalayın.
-2. *Azure-Storage-iOS* -> *lib* -> *Azure depolama istemci kitaplığı*' na gidin ve Xcode 'da açın `AZSClient.xcodeproj` .
+2. *Azure-Storage-iOS*  ->  *lib*  ->  *Azure depolama istemci kitaplığı*' na gidin ve `AZSClient.xcodeproj` Xcode 'da açın.
 3. Xcode 'un sol üst kısmında, etkin düzeni "Azure Storage Istemci kitaplığı" iken "Framework" olarak değiştirin.
 4. Projeyi derleyin (⌘ + B). Bu işlem masaüstünüzde bir `AZSClient.framework` dosya oluşturur.
 
 Ardından, aşağıdaki işlemleri gerçekleştirerek Framework dosyasını uygulamanıza aktarabilirsiniz:
 
 1. Yeni bir proje oluşturun veya mevcut projenizi Xcode 'da açın.
-2. Öğesini Xcode proje `AZSClient.framework` Gezgininizi sürükleyip bırakın.
+2. Öğesini `AZSClient.framework` Xcode proje Gezgininizi sürükleyip bırakın.
 3. *Gerekirse öğeleri Kopyala*' yı seçin ve *son*' a tıklayın.
 4. Sol taraftaki gezinmede projenize tıklayın ve proje Düzenleyicisi ' nin en üstündeki *genel* sekmesine tıklayın.
 5. *Bağlantılı çerçeveler ve kitaplıklar* bölümünde Ekle düğmesine (+) tıklayın.
@@ -82,9 +82,9 @@ Ardından, aşağıdaki işlemleri gerçekleştirerek Framework dosyasını uygu
 #import <AZSClient/AZSClient.h>
 ```
 
-Swift kullanıyorsanız, bir köprü oluşturma üst bilgisi oluşturmanız ve AZSClient/AZSClient. h> \<içeri aktarmanız gerekir:
+Swift kullanıyorsanız, bir köprü oluşturma üst bilgisi oluşturmanız ve \< AZSClient/AZSClient. h> içeri aktarmanız gerekir:
 
-1. Üst bilgi dosyası `Bridging-Header.h`oluşturun ve yukarıdaki içeri aktarma ifadesini ekleyin.
+1. Üst bilgi dosyası oluşturun `Bridging-Header.h` ve yukarıdaki içeri aktarma ifadesini ekleyin.
 2. *Derleme ayarları* sekmesine gidin ve *Amaç-C köprü oluşturma üst bilgisi*için arama yapın.
 3. *Hedef-C köprüleme üst bilgisine* çift tıklayın ve yolu üst bilgi dosyanıza ekleyin:`ProjectName/Bridging-Header.h`
 4. Köprü üstbilgisinin Xcode tarafından çekildiğini doğrulamak için projeyi derleyin (⌘ + B).
@@ -392,7 +392,7 @@ Artık iOS 'dan blob Storage 'ı nasıl kullanacağınızı öğrendiğinize gö
 - [İOS için Azure depolama Istemci kitaplığı](https://github.com/azure/azure-storage-ios)
 - [Azure depolama iOS başvuru belgeleri](https://azure.github.io/azure-storage-ios/)
 - [Azure Storage Hizmetleri REST API’si](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Azure Depolama Ekibi Blogu](https://blogs.msdn.com/b/windowsazurestorage)
+- [Azure Depolama Ekibi Blogu](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 
 Bu kitaplıkla ilgili sorularınız varsa, [MSDN Azure forumumuza](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)göndermekten çekinmeyin.
 Azure depolama için özellik önerileriniz varsa lütfen [Azure Storage geri bildirimlerine](https://feedback.azure.com/forums/217298-storage/)gönderin.

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f0b0c0a7b666aed56ad24625c80c0a57683b998
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2547a0fdbfbcc143ff822de333b41198f469375c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683265"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649329"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Azure Active Directory içindeki yönetim birimlerindeki grupları ekleme ve yönetme
 
@@ -75,7 +75,7 @@ Bu örnekte, grubu yönetim birimine eklemek için Add-AzureADAdministrativeUnit
 
 Portalda **Azure AD > yönetim birimleri** ' ne gidin. Kullanıcıları listelemek istediğiniz yönetim birimini seçin. Varsayılan olarak, **tüm kullanıcılar** zaten sol panelde seçilidir. **Tüm grupları** seçin ve sağ tarafta seçili yönetim biriminin üyesi olan grupların listesini bulabilirsiniz.
 
-![Silinecek yönetim birimini seçin](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+![Yönetim birimindeki grupları listeleme](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -121,11 +121,11 @@ Azure AD portalında, **gruplar**' ı açarak bir grubun ayrıntılarını açab
 
 Azure portal bir grubu bir yönetim biriminden kaldırabilmeniz için iki yol vardır.
 
-**Azure AD** > **gruplarını** açın ve yönetim biriminden kaldırmak istediğiniz grubun profilini açın. Grubun üye olduğu tüm yönetim birimlerini listelemek için sol panelde **yönetim birimleri** ' ni seçin. Grubu kaldırmak istediğiniz yönetim birimini seçin ve ardından **Yönetim biriminden kaldır**' ı seçin.
+**Azure AD**  >  **gruplarını** açın ve yönetim biriminden kaldırmak istediğiniz grubun profilini açın. Grubun üye olduğu tüm yönetim birimlerini listelemek için sol panelde **yönetim birimleri** ' ni seçin. Grubu kaldırmak istediğiniz yönetim birimini seçin ve ardından **Yönetim biriminden kaldır**' ı seçin.
 
 ![Yönetim biriminden bir grubu kaldırma](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
 
-Alternatif olarak, **Azure AD** > **yönetim birimlerine** gidebilir ve grubun üye olduğu yönetim birimini seçebilirsiniz. Üye gruplarını listelemek için sol paneldeki **gruplar** ' ı seçin. Yönetim biriminden kaldırılacak grubu seçin ve ardından **grupları kaldır**' ı seçin.
+Alternatif olarak, **Azure AD**  >  **yönetim birimlerine** gidebilir ve grubun üye olduğu yönetim birimini seçebilirsiniz. Üye gruplarını listelemek için sol paneldeki **gruplar** ' ı seçin. Yönetim biriminden kaldırılacak grubu seçin ve ardından **grupları kaldır**' ı seçin.
 
 ![Yönetim birimindeki grupları listeleme](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 

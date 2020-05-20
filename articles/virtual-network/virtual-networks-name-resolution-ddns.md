@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79efe3cef82a166ca6b56dea5cb07f15a5325083
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60640387"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650332"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Kendi DNS sunucunuzda ana bilgisayar adlarını kaydetmek için dinamik DNS kullanma
 
@@ -33,9 +33,9 @@ Etki alanına katılmış olmayan Windows istemcileri, önyüklenirken veya IP a
 Etki alanına katılmış Windows istemcileri, IP adreslerini güvenli DDNS kullanarak etki alanı denetleyicisi ile kaydeder. Etki alanına ekleme işlemi, istemcideki birincil DNS sonekini ayarlar ve güven ilişkisini oluşturur ve korur.
 
 ## <a name="linux-clients"></a>Linux istemcileri
-Linux istemcileri başlangıçta DNS sunucusuna kayıt yaptırmaz, DHCP sunucusunun bunu yaptığı varsayılmaktadır. Azure 'un DHCP sunucularının, DNS sunucunuzdaki kayıtları kaydetme kimlik bilgileri yoktur. DDNS güncelleştirmelerini göndermek için, `nsupdate`bağlama paketine dahil edilen adlı bir aracı kullanabilirsiniz. DDNS Protokolü standartlaştırılmış olduğundan, DNS sunucusunda bağlama kullanmadığınız durumlarda `nsupdate` bile kullanabilirsiniz.
+Linux istemcileri başlangıçta DNS sunucusuna kayıt yaptırmaz, DHCP sunucusunun bunu yaptığı varsayılmaktadır. Azure 'un DHCP sunucularının, DNS sunucunuzdaki kayıtları kaydetme kimlik bilgileri yoktur. `nsupdate`DDNS güncelleştirmelerini göndermek için, bağlama paketine dahil edilen adlı bir aracı kullanabilirsiniz. DDNS Protokolü standartlaştırılmış olduğundan, `nsupdate` DNS sunucusunda bağlama kullanmadığınız durumlarda bile kullanabilirsiniz.
 
-DHCP istemcisi tarafından, DNS sunucusunda ana bilgisayar adı girişini oluşturmak ve korumak için sunulan kancaları kullanabilirsiniz. DHCP çevrimi sırasında istemci, komut dosyalarını */etc/DHCP/dhclient-Exit-kancas.d/* içinde yürütür. Kullanarak `nsupdate`yeni IP adresini kaydetmek için kancaları kullanabilirsiniz. Örneğin:
+DHCP istemcisi tarafından, DNS sunucusunda ana bilgisayar adı girişini oluşturmak ve korumak için sunulan kancaları kullanabilirsiniz. DHCP çevrimi sırasında istemci, komut dosyalarını */etc/DHCP/dhclient-Exit-kancas.d/* içinde yürütür. Kullanarak yeni IP adresini kaydetmek için kancaları kullanabilirsiniz `nsupdate` . Örnek:
 
 ```bash
 #!/bin/sh
@@ -61,11 +61,11 @@ then
 fi
 ```
 
-Güvenli DDNS güncelleştirmeleri gerçekleştirmek `nsupdate` için komutunu da kullanabilirsiniz. Örneğin, bir BIND DNS sunucusu kullanırken, ortak özel anahtar çifti [oluşturulur](http://linux.yyz.us/nsupdate/). DNS sunucusu, anahtarın genel bölümüyle [yapılandırılır](http://linux.yyz.us/dns/ddns-server.html) , böylece istekteki imzayı doğrulayabilirler. İçin `nsupdate`anahtar çiftini sağlamak üzere, DDNS Güncelleştirme isteğinin `-k` imzalanabilmesi için seçeneğini kullanın.
+`nsupdate`Güvenli DDNS güncelleştirmeleri gerçekleştirmek için komutunu da kullanabilirsiniz. Örneğin, bir BIND DNS sunucusu kullanırken, ortak özel anahtar çifti oluşturulur ( `http://linux.yyz.us/nsupdate/` ). DNS sunucusu, `http://linux.yyz.us/dns/ddns-server.html` anahtarın ortak parçası ile yapılandırılır () ve bu sayede istekteki imzayı doğrulayabilirler. İçin anahtar çiftini sağlamak üzere, `nsupdate` `-k` DDNS Güncelleştirme isteğinin imzalanabilmesi için seçeneğini kullanın.
 
-Bir Windows DNS sunucusu kullanırken, içindeki `-g` `nsupdate`parametresiyle Kerberos kimlik doğrulamasını kullanabilirsiniz, ancak Windows sürümünde kullanılamaz. `nsupdate` Kerberos 'u kullanmak için kimlik `kinit` bilgilerini yüklemek üzere kullanın. Örneğin, bir [keytab dosyasından](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)kimlik bilgilerini yükleyebilir ve sonra `nsupdate -g` önbellekten kimlik bilgilerini alabilir.
+Bir Windows DNS sunucusu kullanırken, içindeki parametresiyle Kerberos kimlik doğrulamasını kullanabilirsiniz `-g` `nsupdate` , ancak Windows sürümünde kullanılamaz `nsupdate` . Kerberos 'u kullanmak için `kinit` kimlik bilgilerini yüklemek üzere kullanın. Örneğin, bir [keytab dosyasından](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)kimlik bilgilerini yükleyebilir ve sonra `nsupdate -g` önbellekten kimlik bilgilerini alabilir.
 
-Gerekirse, sanal makinelerinize bir DNS arama son eki ekleyebilirsiniz. DNS son eki, */etc/resolv.exe* dosyasında belirtilir. Çoğu Linux, bu dosyanın içeriğini otomatik olarak yönetir, bu nedenle genellikle düzenleyemezsiniz. Ancak, DHCP istemcisinin `supersede` komutunu kullanarak soneki geçersiz kılabilirsiniz. Son eki geçersiz kılmak için, */etc/DHCP/dhclient.exe* dosyasına şu satırı ekleyin:
+Gerekirse, sanal makinelerinize bir DNS arama son eki ekleyebilirsiniz. DNS son eki, */etc/resolv.exe* dosyasında belirtilir. Çoğu Linux, bu dosyanın içeriğini otomatik olarak yönetir, bu nedenle genellikle düzenleyemezsiniz. Ancak, DHCP istemcisinin komutunu kullanarak soneki geçersiz kılabilirsiniz `supersede` . Son eki geçersiz kılmak için, */etc/DHCP/dhclient.exe* dosyasına şu satırı ekleyin:
 
 ```
 supersede domain-name <required-dns-suffix>;

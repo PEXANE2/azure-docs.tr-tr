@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 79a87f02c8730e0b2110e7475de721f11beda568
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbae67a4861d67526eb1cf4eb2bfb5d131f8e57b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120615"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649768"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme
 
@@ -22,23 +22,23 @@ Bu makalede, [Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.c
 
 [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)  |  [Geri bildirimde](https://github.com/Azure/azure-cli-extensions/issues) bulunun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
 > * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 > * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
-> * Azure CLı sürümü `2.5.1` veya üzeri.
+> * Azure CLı sürümü `2.6.0` veya üzeri.
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>Azure CLı 'nin doğru sürümünün yüklü olduğundan emin olun
 
 1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)açın veya Azure CLI 'yı yerel olarak [yüklediyseniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , Windows PowerShell gibi bir komut konsol uygulaması açın.
 
-2. Yüklü olan Azure CLı sürümünün `2.5.1` aşağıdaki komutu kullanarak veya daha yüksek olduğunu doğrulayın.
+2. Yüklü olan Azure CLı sürümünün `2.6.0` aşağıdaki komutu kullanarak veya daha yüksek olduğunu doğrulayın.
 
    ```azurecli
     az --version
    ```
-   Azure CLı sürümünüz daha düşükse `2.5.1` , daha sonra yeni bir sürüm yüklersiniz. Bkz. [Azure CLI 'Yi yüklemeyi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+   Azure CLı sürümünüz daha düşükse `2.6.0` , daha sonra yeni bir sürüm yüklersiniz. Bkz. [Azure CLI 'Yi yüklemeyi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="connect-to-the-account"></a>Hesaba Bağlan
 
@@ -311,7 +311,7 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
-* [Geri bildirim gönderme](https://github.com/Azure/azure-cli-extensions/issues)
+* [Görüş bildirin](https://github.com/Azure/azure-cli-extensions/issues)
 * [Bilinen sorunlar](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 
 

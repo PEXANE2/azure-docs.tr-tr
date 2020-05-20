@@ -1,26 +1,26 @@
 ---
-title: Azure Active Directory kullanarak Microsoft AppSource ve Azure Marketi listesini etkinleştirme | Mavisi
-description: Azure Marketi 'nde Azure Active Directory ve uygulama ve hizmet yayımcıları için AppSource kullanarak liste türünü etkinleştirin.
+title: Microsoft ticari Market teklifinizi Azure Active Directory tümleştirin
+description: Microsoft AppSource ve Azure Market tekliflerinizin kimliğini doğrulamak için Azure Active Directory kullanın.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 17cbfe92744ad96f2b5651b7e2f47a6443337068
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160622"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658050"
 ---
-# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Azure Active Directory kullanarak AppSource ve Market listesini etkinleştirme
+# <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Ticari Market listelerinizi Azure Active Directory ile tümleştirin
 
- Azure Active Directory (Azure AD), bir Microsoft hesabı kimlik doğrulamaya izin veren bir bulut kimlik hizmetidir. Azure AD, sektör standardı çerçeveler kullanır. [Azure Active Directory hakkında daha fazla bilgi edinin](https://azure.microsoft.com/services/active-directory).
+ Bu makalede, Azure Active Directory (Azure AD) ile ticari bir market listesinin veya teklifinin tümleştirilmesine yönelik gereksinimler açıklanmaktadır. Azure AD, Microsoft hesabı kimlik doğrulamasını etkinleştirmek için sektör standardı çerçeveler kullanan bir bulut kimlik hizmetidir. [Azure Active Directory hakkında daha fazla bilgi edinin](https://azure.microsoft.com/services/active-directory).
 
 ## <a name="azure-ad-benefits"></a>Azure AD avantajları
 
-Microsoft AppSource ve Azure Market müşterileri, liste kataloglarında arama yapmak için ürün içi deneyimler kullanır. Bu eylemler, müşterilerin üründe oturum açmasını gerektirir. Azure AD tümleştirmesi aşağıdaki avantajları sağlar:
+Microsoft AppSource ve Azure Market müşterileri, storefront listeleme kataloglarında arama yapmak için ürün içi deneyimler kullanır. Bu eylemler, müşterilerin üründe oturum açmasını gerektirir. Azure AD tümleştirmesi aşağıdaki avantajları sağlar:
 
 - Daha hızlı katılım ve iyileştirilmiş müşteri deneyimi
 - Milyonlarca kurumsal Kullanıcı için çoklu oturum açma (SSO)
@@ -29,7 +29,7 @@ Microsoft AppSource ve Azure Market müşterileri, liste kataloglarında arama y
 
 ## <a name="offers-that-require-azure-ad"></a>Azure AD gerektiren teklifler
 
-AppSource ve Azure Marketi için çeşitli [Listeleme seçenekleri ve teklif türleri](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) , Azure AD uygulamasına yönelik farklı gereksinimlere sahiptir. Ayrıntılar için aşağıdaki tabloya bakın:
+Çeşitli ticari Market [Listeleme seçenekleri ve teklif türleri](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) , Azure AD uygulamasına yönelik farklı gereksinimlere sahiptir. Ayrıntılar için aşağıdaki tabloya bakın.
 
 | **Teklif türü**    | **Azure AD SSO gerekli mi?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|

@@ -1,29 +1,28 @@
 ---
-title: Microsoft AppSource ve Azure Market danışmanlık hizmetleri
+title: Microsoft ticari Market 'teki danışmanlık hizmetleri
 description: Bu makalede, Microsoft AppSource ve Azure Marketi 'ndeki yeni danışmanlık hizmeti teklifleri için uygunluk ölçütü ve yayımlama gereksinimleri açıklanmaktadır.
-services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: e5f22a681a9a5cbed4eceea2f70faa1cb21c07bc
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: fc0a82617346f60b90de34b379b4a0a114faf804
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994851"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658076"
 ---
-# <a name="consulting-services-for-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource ve Azure Marketi için danışmanlık hizmetleri
+# <a name="consulting-service-offers"></a>Danışmanlık hizmeti teklifleri
 
-Microsoft AppSource ve Azure Market Danışmanlık Hizmetleri, Microsoft Sistem Tümleştirici iş ortaklarına müşterilerinin Azure kullanımını destekledikleri ve genişleten hizmetlerle bağlantı kurma avantajına sahiptir. Bu danışmanlık hizmetleri, müşterilerin iş hedeflerine ve hedeflerine ek olarak iş çözümlerini değerlendirmesine, değerlendirmesine ve dağıtmasına yardımcı olur.  
+Bu makalede, ticari Market 'e yeni danışmanlık hizmeti tekliflerini yayımlamaya yönelik uygunluk ölçütleri ve gereksinimleri açıklanmaktadır. Danışmanlık hizmeti teklifleri, Microsoft Sistem Tümleştirici iş ortaklarına müşterilerinin Azure kullanımını destekleyen ve bunları genişleten hizmetlerle bağlantı verme avantajına sahiptir. Bu danışmanlık hizmetleri, müşterilerin iş hedeflerine ve hedeflerine ek olarak iş çözümlerini değerlendirmesine, değerlendirmesine ve dağıtmasına yardımcı olur.  
 
 Danışmanlık hizmeti teklifleri müşterilere özgü görevlendirmelerdir. Yayımcılar, liste türü, kapsam, süre ve fiyatlandırma yapısını (Sabit fiyatlı veya ücretsiz) belirleme seçeneğine sahiptir. Teklifler, müşteriye teslim edilebilirler için tanımlı bir gündemi vardır. Müşteri adayları, iş ortaklarının CRM sistemlerinde bir bildirimle alınır ve iş ortakları müşterilere 48 saat içinde yanıt verir.
 
 ## <a name="compare-consulting-services"></a>Danışmanlık hizmetlerini karşılaştırın
 
-Market storetları, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için izleyiciler ve bulut ürünleriyle hizalanır. Her storefront, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. Aşağıdaki tabloda bu seçenekler özetlenmektedir:
+Ticari Market storets, Microsoft AppSource ve Azure Marketi, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için izleyiciler ve bulut ürünleriyle hizalanır. Her storefront, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. Aşağıdaki tabloda bu seçenekler özetlenmektedir:
 
 |         |Azure Market  |Microsoft AppSource |
 |---------|---------|---------|
@@ -88,21 +87,13 @@ Sistem Tümleştirici İş ortakları, aşağıdaki 21 ülkede/bölgede Danışm
 | Finlandiya  | Fransa | Almanya  | Hindistan   |
 | İtalya    | Japonya  |  Meksika  |  Hollanda  |
 |  Yeni Zelanda  |  Norveç  |  Polonya  | Güney Afrika |
-|  İspanya  | İsveç  | İsviçre  |  Amerika Birleşik Devletleri  |
+|  İspanya  | İsveç  | İsviçre  |  Birleşik Devletler  |
 | Birleşik Krallık  |
 ||
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Ticari Market 'te danışmanlık hizmetleri için kaydolun
 
 Şirket bilgilerinizi Market 'e [kaydederek](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) başlayın. Kayıt gereksinimlerinin tüm denetim listesi için bkz. [Market 'te yayımcı olma](https://docs.microsoft.com/azure/marketplace/become-publisher). 
-
-<!---
-**What to expect after registration**
-The Onboarding Team will reach out in 1 to 3 business days with a welcome email, which will include your Cloud Partner Portal sign-in information. [Cloud Partner Portal](https://cloudpartner.azure.com) is the offer listing portal where publishers submit listing information and submissions.
-
->[!Note]
->Partners need to register only once to become a publisher. After you become a publisher and receive your welcome email and Partner Center sign-in information, you don't need to re-register to publish different listing types.
---->
 
 ## <a name="prepare-your-publishing-artifacts"></a>Yayımlama yapılarınızı hazırlama
 Kaydolmadan önce, listelemesine yardımcı olacak içeriği toplamaya ve hazırlamaya başlayabilmeniz için, hedef müşterinizin hizmet ve çözümünüzün değerini ifade edin. 
@@ -171,7 +162,7 @@ Başlık alanı 50 karakterlik bir sınıra sahiptir ve arama motoru iyileştirm
 
 |Teklif türü  |Gerekli |Önerilen  |
 |---------|---------|---------|
-|**Değerlendirme**    |   Multi-Day veya Multi-Week değerlendirmeleri için ayrıntılı bir gündem ekleyin ve müşterinin beklediği teslim edilebilirini ifade edin.      |    En iyi SEO anahtar sözcüklerinizle teklif özetinizi iyileştirin.     |
+|**Değerlendirmesini**    |   Multi-Day veya Multi-Week değerlendirmeleri için ayrıntılı bir gündem ekleyin ve müşterinin beklediği teslim edilebilirini ifade edin.      |    En iyi SEO anahtar sözcüklerinizle teklif özetinizi iyileştirin.     |
 |**Bilgilendirme istemek**    |   Müşterinin beklediği teslim edilebilirini ifade edebilir. Kişi içinde *Brit* 'in sağlanması gerektiğini unutmayın. Bir sanal hizmet sağlıyorsanız, farklı bir teklif türü seçin.    |  En iyi SEO anahtar sözcüklerinizle teklif özetinizi iyileştirin.       |
 |**Uygulama**    |  Çok günlü veya çok haftaya yönelik uygulamalar için ayrıntılı bir gündem ekleyin ve müşterilerin katılım sonuçları olarak beklediği mühendislik değişikliklerini, teknik yapıtları veya diğer yapıtları ifade edin.       |    En iyi SEO anahtar sözcüklerinizle teklif özetinizi iyileştirin.     |
 |**Kavram kanıtı**    |    Müşterilerin katılım sonuçları olarak beklediği mühendislik değişikliklerini, teknik yapıtları veya diğer yapıtları ifade edebilir.     | En iyi SEO anahtar sözcüklerinizle teklif özetinizi iyileştirin.        |
@@ -181,12 +172,12 @@ Başlık alanı 50 karakterlik bir sınıra sahiptir ve arama motoru iyileştirm
 Iş Ortağı Merkezi 'nde [marklist](/contribute/markdown-reference)' i kullanarak listelemenize biçimlendirme ekleyebilirsiniz. Bu, listelemenize Lehçe eklemeye yardımcı olan hafif bir tasarım dilidir.
 
 Aşağıda bazı Markaşağı ipuçları verilmiştir:
-* *İtalik* biçimlendirme için, bir sözcük veya sözcük\*dizisinin başlangıcında ve sonunda (örneğin, bir kelimeyi \* *içerik*olarak biçimlendirmek için içerik * yazın) bir yıldız işareti (), boşluk olmadan ekleyin. *Teklif özetinizi* italik olarak biçimlendirin.
+* *İtalik* biçimlendirme için, bir \* sözcük veya sözcük dizisinin başlangıcında ve sonunda (örneğin, \* bir kelimeyi *içerik*olarak biçimlendirmek için içerik * yazın) bir yıldız işareti (), boşluk olmadan ekleyin. *Teklif özetinizi* italik olarak biçimlendirin.
 * İki nokta üst üste işaretinden sonra satır sonu Ekle (:) bir madde işaretli veya numaralı liste tanıtmak için.
-* Madde işaretli bir liste oluşturmak için, her madde işaretli\*öğe için bir yıldız işareti (), ardından bir boşluk (örneğin, \*[boşluk] ilk kelime) yazın.
-* Başlık oluşturmak için bir veya daha fazla diyez işareti (\#), ardından bir boşluk (örneğin, # # # [SPACE] Ajanda/teslim edilebilirler) yazın.
+* Madde işaretli bir liste oluşturmak için, \* her madde işaretli öğe için bir yıldız işareti (), ardından bir boşluk (örneğin, \* [boşluk] ilk kelime) yazın.
+* Başlık oluşturmak için bir veya daha fazla diyez işareti ( \# ), ardından bir boşluk (örneğin, # # # [SPACE] Ajanda/teslim edilebilirler) yazın.
 * Her başlıktan sonra bir satır sonu ekleyin.
-* **Kalın** biçimlendirme için, bir sözcüğün başında ve sonunda\*\*(örneğin \* \*, bir kelimeyi\* \* **içerik**olarak biçimlendirmek için içerik yazın), boşluk olmadan çift yıldız işareti () ekleyin.
+* **Kalın** biçimlendirme için, bir \* \* sözcüğün başında ve sonunda (örneğin, \* \* \* \* bir kelimeyi **içerik**olarak biçimlendirmek için içerik yazın), boşluk olmadan çift yıldız işareti () ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

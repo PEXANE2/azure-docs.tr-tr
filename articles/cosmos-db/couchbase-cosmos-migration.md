@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
-ms.openlocfilehash: 9713d963978e34ad874dc032676a6e1f14e4657c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248860ad6963fcd04526f0d94e52d6a6181463c5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77210950"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657351"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
 
@@ -161,7 +161,7 @@ CRUD işlemlerine yönelik kod parçacıkları aşağıda verilmiştir:
 
 ### <a name="insert-and-update-operations"></a>Ekleme ve güncelleştirme işlemleri
 
-Burada *_repo* deponun nesnesidir ve *doc* ise Pojo sınıfının nesnesidir. ' İ ( `.save` belirtilen kimliğe sahip bir belge bulunursa) eklemek veya daha fazla kullanmak için kullanabilirsiniz. Aşağıdaki kod parçacığı bir belge nesnesinin nasıl ekleneceğini veya güncelleştirilmesini göstermektedir:
+Burada *_repo* deponun nesnesidir ve *doc* ise Pojo sınıfının nesnesidir. ' İ `.save` (BELIRTILEN kimliğe sahip bir belge bulunursa) eklemek veya daha fazla kullanmak için kullanabilirsiniz. Aşağıdaki kod parçacığı bir belge nesnesinin nasıl ekleneceğini veya güncelleştirilmesini göstermektedir:
 
 ```_repo.save(doc);```
 
@@ -186,7 +186,7 @@ N1QL sorguları, Couşbase 'de sorguları tanımlamanın yoludur.
 
 |N1QL sorgusu | Azure CosmosDB sorgusu|
 |-------------------|-------------------|
-|META`TravelDocument`(). ID as ID, `TravelDocument`. * from `TravelDocument` `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" ve Country = ' Hindistan ' ve Vizas 'deki herhangi bir d 'yi karşılayan bir d. Type = = ' Multi-entry ' ve d. Country, ` Validity` DESC sınırına 25 fark 0   | C 'yi SEÇIN. c. Country = ' Hindistan ' ve c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" ve c. Country = ' Hindistan ' ve m. Type = ' Multi-entry ' ve m. Country IN (' Hindistan ', ' Bhutan ') SıRASıYLA c. geçerlilik DESC KAYMASı 0 sınır 25 ' i r. |
+|META ( `TravelDocument` ). ID as ID, `TravelDocument` . * from `TravelDocument` `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" ve Country = ' Hindistan ' ve Vizas 'deki HERHANGI bir d 'yi karşılayan bir d. Type = = ' Multi-entry ' ve d. Country, ` Validity` DESC sınırına 25 fark 0   | C 'yi SEÇIN. c. Country = ' Hindistan ' ve c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" ve c. Country = ' Hindistan ' ve m. Type = ' Multi-entry ' ve m. Country IN (' Hindistan ', ' Bhutan ') SıRASıYLA c. geçerlilik DESC KAYMASı 0 sınır 25 ' i r. |
 
 N1QL sorgularınızda aşağıdaki değişiklikleri görebilirsiniz:
 
@@ -211,7 +211,7 @@ Zaman uyumsuz Java SDK 'sını aşağıdaki adımlarla kullanın:
    </dependency>
    ```
 
-1. Aşağıdaki örnekte gösterildiği gibi `ConnectionBuilder` yöntemini kullanarak Azure Cosmos DB için bir bağlantı nesnesi oluşturun. Bu bildirimi, aşağıdaki kodun yalnızca bir kez yürütülmesi gereken şekilde çekirdeklere 'e yerleştirdiğinizden emin olun:
+1. Aşağıdaki örnekte gösterildiği gibi yöntemini kullanarak Azure Cosmos DB için bir bağlantı nesnesi oluşturun `ConnectionBuilder` . Bu bildirimi, aşağıdaki kodun yalnızca bir kez yürütülmesi gereken şekilde çekirdeklere 'e yerleştirdiğinizden emin olun:
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();
@@ -314,49 +314,33 @@ Bu, sorgular yerine arama gerçekleştirebileceğiniz basit bir iş yükü tür�
     
    ```json
    {
-       "indexingMode": "consistent",
-       "includedPaths": 
-       [
-           {
-            "path": "/*",
-            "indexes": 
-             [
-                {
-                  "kind": "Range",
-                  "dataType": "Number"
-                },
-                {
-                  "kind": "Range",
-                  "dataType": "String"
-                },
-                {
-                   "kind": "Spatial",
-                   "dataType": "Point"
-                }
-             ]
-          }
-       ],
-       "excludedPaths": 
-       [
-         {
-             "path": "/path/to/single/excluded/property/?"
-         },
-         {
-             "path": "/path/to/root/of/multiple/excluded/properties/*"
-         }
-      ]
-   }
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ]
+    }
    ````
 
    Yukarıdaki dizin oluşturma ilkesini aşağıdaki ilkeyle değiştirin:
 
    ```json
    {
-       "indexingMode": "none"
-   }
+    "indexingMode": "none",
+    "automatic": false,
+    "includedPaths": [],
+    "excludedPaths": []
+    }
    ```
 
-1. Bağlantı nesnesini oluşturmak için aşağıdaki kod parçacığını kullanın. Bağlantı nesnesi (içine @Bean yerleştirilecek veya statik hale getirmek için):
+1. Bağlantı nesnesini oluşturmak için aşağıdaki kod parçacığını kullanın. Bağlantı nesnesi (içine yerleştirilecek @Bean veya statik hale getirmek için):
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();

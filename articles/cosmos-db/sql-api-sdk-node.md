@@ -1,19 +1,19 @@
 ---
 title: "Azure Cosmos DB: SQL Node. js API 'SI, SDK & kaynakları"
 description: Sürüm tarihleri, kullanımdan kaldırma tarihleri ve Azure Cosmos DB Node. js SDK 'sının her sürümü arasında yapılan değişiklikler dahil olmak üzere SQL Node. js API 'SI ve SDK hakkında bilgi edinin.
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 09/24/2018
-ms.author: dech
-ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 645565b0033324d6edc36a73fb59fa5a5d8689ee
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982897"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650728"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Node. js SDK Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -21,8 +21,9 @@ ms.locfileid: "80982897"
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
+> * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -164,7 +165,7 @@ database.containers.create({ id: 'my-container', throughput: 10000 })
 ```
 
 ##### <a name="azurecosmos-sign"></a>@azure/cosmos-sign
-Üstbilgi belirteci oluşturma yeni bir kitaplığa bölündü @azure/cosmos-sign. Cosmos REST API çağıran herkes, içinde @azure/cosmosçağırdığımız aynı kodu kullanarak üstbilgileri imzalamak için bunu kullanabilir.
+Üstbilgi belirteci oluşturma yeni bir kitaplığa bölündü @azure/cosmos-sign . Cosmos REST API çağıran herkes, içinde çağırdığımız aynı kodu kullanarak üstbilgileri imzalamak için bunu kullanabilir @azure/cosmos .
 
 ##### <a name="uuid-for-generated-ids"></a>Oluşturulan kimlikler için UUID
 v2 öğe kimliklerini oluşturmak için özel koda sahipti. İyi bilinen ve korunan topluluk kitaplığı UUID 'sine geçtik.
@@ -225,7 +226,7 @@ Her zaman en görünür değişiklikler değildir, ancak ekibimizin daha hızlı
 * Arka bağlantı noktası uniqueKeyPolicy-v2
 * Tanıtım ve tanıtım hata ayıklama düzeltmeleri
 
-### <a name=""></a><a name="2.1.2"/>2.1.2 'yi</a>
+### <a name=""></a><a name="2.1.2"/>2.1.2</a>
 * V3 dalından geri bağlantı için düzeltme sunma
 * ExecuteNext () türü imzasında hata giderme
 * Typo düzeltmeleri
@@ -247,7 +248,7 @@ Her zaman en görünür değişiklikler değildir, ancak ekibimizin daha hızlı
 * Doğrudan GitHub 'dan yüklemeyi etkinleştir (#194)
 
 ### <a name=""></a><a name="2.0.5"/>2.0.5</a>
-* Düğüm Aracısı türü için arabirim ekler. TypeScript kullanıcılarının artık bağımlılık olarak yüklenmesi @types/node gerekmez
+* Düğüm Aracısı türü için arabirim ekler. TypeScript kullanıcılarının artık bağımlılık olarak yüklenmesi gerekmez @types/node
 * Tercih edilen konumlar artık düzgün şekilde kabul edilir
 * Katkıda bulunan geliştirici belgelerine yönelik iyileştirmeler
 * Çeşitli yazım hatası düzeltmeleri
@@ -256,14 +257,14 @@ Her zaman en görünür değişiklikler değildir, ancak ekibimizin daha hızlı
 * 2.0.3 içinde tanıtılan düzeltme türü tanım sorunu
 
 ### <a name=""></a><a name="2.0.3"/>2.0.3</a>
-* Bağımlılığı `big-integer` kaldır
+* `big-integer`Bağımlılığı kaldır
 * Asyncıtik tür için başvuru yönergelerine geçin. TypeScript kullanıcıları artık "lib" ayarını özelleştirmek zorunda değildir.
 * Typo düzeltmeleri
 
 ### <a name=""></a><a name="2.0.2"/>2.0.2</a>
 * Benioku bağlantılarını çözme
 
-### <a name=""></a><a name="2.0.1"/>desteklemez</a>
+### <a name=""></a><a name="2.0.1"/>2.0.1</a>
 * Yeniden deneme arabirimi uygulamasını onarma
 
 ### <a name=""></a><a name="2.0.0"/>2.0.0</a>
@@ -361,7 +362,7 @@ Her zaman en görünür değişiklikler değildir, ancak ekibimizin daha hızlı
 ### <a name=""></a><a name="1.5.3"/>1.5.3</a>
 * Düzeltmeler [#81](https://github.com/Azure/azure-documentdb-node/issues/81) sorun-medya kimliklerinde düzgün şekilde işleme çizgileri.
 
-### <a name=""></a><a name="1.5.2"/>1.5.2</a>
+### <a name=""></a><a name="1.5.2"/>1.5.2 planlama</a>
 * [#95](https://github.com/Azure/azure-documentdb-node/issues/95) -eventemitter dinleyicisi sızıntısı uyarısı sorununu düzeltir.
 
 ### <a name=""></a><a name="1.5.1"/>1.5.1</a>
@@ -380,7 +381,7 @@ Her zaman en görünür değişiklikler değildir, ancak ekibimizin daha hızlı
 * Soru-cevap sarmalayıcısı yeni depoya bölünür.
 * Npm kayıt defteri için paket dosyasına güncelleştir.
 
-### <a name=""></a><a name="1.2.1"/>1.2.1'i</a>
+### <a name=""></a><a name="1.2.1"/>1.2.1</a>
 * KIMLIK tabanlı yönlendirmeyi uygular.
 * [#49](https://github.com/Azure/azure-documentdb-node/issues/49) sorunu düzeltmeler-geçerli özellik geçerli () yöntemiyle çakışıyor.
 
@@ -429,14 +430,14 @@ Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet taraf�
 | [2.1.5](#2.1.5) |20 Mart 2019 |--- |
 | [2.1.4](#2.1.4) |15 Mart 2019 |--- |
 | [2.1.3](#2.1.3) |8 Mart 2019 |--- |
-| [2.1.2 'yi](#2.1.2) |28 Ocak 2019 |--- |
+| [2.1.2](#2.1.2) |28 Ocak 2019 |--- |
 | [2.1.1](#2.1.1) |5 Aralık 2018 |--- |
 | [2.1.0](#2.1.0) |4 Aralık 2018 |--- |
 | [2.0.5](#2.0.5) |7 Kasım 2018 |--- |
 | [2.0.4](#2.0.4) |30 Ekim 2018 |--- |
 | [2.0.3](#2.0.3) |30 Ekim 2018 |--- |
 | [2.0.2](#2.0.2) |10 Ekim 2018 |--- |
-| [desteklemez](#2.0.1) |25 Eylül 2018 |--- |
+| [2.0.1](#2.0.1) |25 Eylül 2018 |--- |
 | [2.0.0](#2.0.0) |Eylül 24, 2018 |--- |
 | [2.0.0-3 (RC)](#2.0.0-3) |2 Ağustos 2018 |--- |
 | [1.14.4](#1.14.4) |03 Mayıs, 2018 |30 Ağustos 2020 |
@@ -459,14 +460,14 @@ Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet taraf�
 | [1.5.6](#1.5.6) |08 Mart 2016 |30 Ağustos 2020 |
 | [1.5.5](#1.5.5) |02 Şubat 2016 |30 Ağustos 2020 |
 | [1.5.4](#1.5.4) |01 Şubat 2016 |30 Ağustos 2020 |
-| [1.5.2](#1.5.2) |26 Ocak 2016 |30 Ağustos 2020 |
-| [1.5.2](#1.5.2) |22 Ocak 2016 |30 Ağustos 2020 |
+| [1.5.2 planlama](#1.5.2) |26 Ocak 2016 |30 Ağustos 2020 |
+| [1.5.2 planlama](#1.5.2) |22 Ocak 2016 |30 Ağustos 2020 |
 | [1.5.1](#1.5.1) |4 Ocak 2016 |30 Ağustos 2020 |
 | [1.5.0](#1.5.0) |31 Aralık 2015 |30 Ağustos 2020 |
 | [1.4.0](#1.4.0) |06 Ekim 2015 |30 Ağustos 2020 |
 | [1.3.0](#1.3.0) |06 Ekim 2015 |30 Ağustos 2020 |
 | [1.2.2](#1.2.2) |10 Eylül 2015 |30 Ağustos 2020 |
-| [1.2.1'i](#1.2.1) |15 Ağustos 2015 |30 Ağustos 2020 |
+| [1.2.1](#1.2.1) |15 Ağustos 2015 |30 Ağustos 2020 |
 | [1.2.0](#1.2.0) |05 Ağustos 2015 |30 Ağustos 2020 |
 | [1.1.0](#1.1.0) |09 Temmuz 2015 |30 Ağustos 2020 |
 | [1.0.3](#1.0.3) |04 Haziran 2015 |30 Ağustos 2020 |

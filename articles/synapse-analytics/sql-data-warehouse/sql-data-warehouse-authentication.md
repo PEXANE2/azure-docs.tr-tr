@@ -12,16 +12,16 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: ed8dd902ac490b4e6a0f172029bf3ffa1d44acee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86cd3d2f7675ca5111c29be278c9433ec7f66945
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251852"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653039"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kimlik doğrulama
 
-Azure Active Directory (AAD) veya SQL Server kimlik doğrulaması kullanarak Azure 'da SQL Analytics 'te kimlik doğrulaması yapmayı öğrenin.
+Azure Active Directory (AAD) veya SQL Server kimlik doğrulaması kullanarak Azure SYNAPSE 'da SQL SYNAPSE için kimlik doğrulaması yapmayı öğrenin.
 
 Bir SQL havuzuna bağlanmak için kimlik doğrulama amacıyla güvenlik kimlik bilgilerini geçirmeniz gerekir. Bir bağlantı kurulduktan sonra, sorgu oturumunuzu oluşturma işleminin parçası olarak belirli bağlantı ayarları yapılandırılır.  
 
@@ -80,7 +80,7 @@ Azure Active Directory kimlik doğrulamasını yapılandırmak için aşağıdak
 
 ### <a name="find-the-details"></a>Ayrıntıları bul
 
-* Azure Active Directory kimlik doğrulamasını yapılandırma ve kullanma adımları Azure SYNAPSE Azure SQL veritabanı ve SQL Analytics için neredeyse aynıdır. [Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'na veya SQL Pool 'A bağlanma](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)konusundaki ayrıntılı adımları izleyin.
+* Azure Active Directory kimlik doğrulaması yapılandırma ve kullanma adımları, Azure SQL veritabanı ve SYNAPSE SQL için Azure SYNAPSE ile neredeyse aynıdır. [Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'na veya SQL Pool 'A bağlanma](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)konusundaki ayrıntılı adımları izleyin.
 * Özel veritabanı rolleri oluşturun ve rollere kullanıcı ekleyin. Ardından rollere ayrıntılı izinler verin. Daha fazla bilgi için bkz. [veritabanı altyapısı izinleri Ile çalışmaya](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)başlama.
 
 ## <a name="next-steps"></a>Sonraki adımlar

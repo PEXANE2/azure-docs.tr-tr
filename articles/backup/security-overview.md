@@ -3,12 +3,12 @@ title: Güvenlik özelliklerine genel bakış
 description: Yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan Azure Backup güvenlik özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 688573b571c6ce4473f06d4c194795a38a33244b
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 178518f9f04a789f3cb634797cab650e24864337
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743651"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653794"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup güvenlik özelliklerine genel bakış
 
@@ -40,8 +40,7 @@ Azure VM 'lerinin yedeklenmesi, sanal makinenizin diskinden kurtarma hizmetleri 
 
 Artık verilerinizi bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kasanıza güvenli bir şekilde yedeklemek için [Özel uç noktaları](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) kullanabilirsiniz. Özel uç nokta, kasalarınızın VNET adres alanından bir IP kullanır, bu nedenle sanal ağlarınızı tüm genel IP 'Lerde kullanıma sunabilmeniz gerekmez. Özel uç noktalar, Azure sanal makinelerinizin içinde çalışan SQL ve SAP HANA veritabanlarınızı yedeklemek ve geri yüklemek için kullanılabilir. Ayrıca, MARS Aracısı kullanılarak şirket içi sunucularınız için de kullanılabilir.
 
->[!NOTE]
-> Bu özellik şu anda sınırlı kullanılabilirliğe sahip. Azure Backup için özel uç noktaları kullanmak istiyorsanız lütfen [Bu anketi](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUQk5EQ1QxRzVOWDNDS1Y1Q0xLTkdLQ0U0RC4u) doldurun ve [bize e-posta gönderin](mailto:azbackupnetsec@microsoft.com) . Bu özelliği kullanma özelliği, Azure Backup hizmetinden onaylanma tabidir.
+[Azure Backup için](https://docs.microsoft.com/azure/backup/private-endpoints)özel uç noktalar hakkında daha fazla bilgi edinin.
 
 ## <a name="encryption-of-data-in-transit-and-at-rest"></a>Yoldaki ve bekleyen verilerin şifrelenmesi
 

@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28915967dc7697c08b2bbd7118f7e2377418045d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80877397"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647253"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Mevcut şirket içi proxy sunucularıyla çalışma
 
@@ -111,13 +111,13 @@ Giden ara sunucuda dikkate alınması gereken dört önemli nokta vardır:
 
 Aşağıdaki URL 'Lere erişime izin ver:
 
-| URL'si | Nasıl kullanılır? |
+| URL | Nasıl kullanılır? |
 | --- | --- |
 | \*. msappproxy.net<br>\*. servicebus.windows.net | Bağlayıcı ile uygulama proxy 'Si bulut hizmeti arasındaki iletişim |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Bağlayıcı, sertifikaları doğrulamak için bu URL 'Leri kullanır |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com<br>*. microsoftonline-p.com<br>*. msauth.net<br>*. msauthimages.net<br>*. msecnd.net<br>*. msftauth.net<br>*. msftauthimages.net<br>*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Bağlayıcı, kayıt işlemi sırasında bu URL 'Leri kullanır. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.net <br> *. msauthimages.net<br>*. msecnd.net <br> *. msftauth.net<br>*. msftauthimages.net <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Bağlayıcı, kayıt işlemi sırasında bu URL 'Leri kullanır. |
 
-Güvenlik duvarınız veya proxy 'niz DNS izin verilenler listelerini yapılandırmanıza izin veriyorsa, \*. msappproxy.net ve \*. ServiceBus.Windows.net bağlantılarına izin verebilirsiniz. Aksi takdirde, [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin vermeniz gerekir. IP aralıkları her hafta güncellenir.
+Güvenlik duvarınız veya proxy 'niz DNS izin verilenler listelerini yapılandırmanıza izin veriyorsa, \* . msappproxy.net ve. ServiceBus.Windows.net bağlantılarına izin verebilirsiniz \* . Aksi takdirde, [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin vermeniz gerekir. IP aralıkları her hafta güncellenir.
 
 FQDN ile bağlantıya izin veremiyorum ve bunun yerine IP aralıklarını belirtmeniz gerekiyorsa, şu seçenekleri kullanın:
 
@@ -144,12 +144,12 @@ Arka uç uygulamasına yönelik iletişim için bir ilet proxy kullanmak bazı o
 Bunu etkinleştirmek için lütfen sonraki adımları izleyin:
 
 ### <a name="step-1-add-the-required-registry-value-to-the-server"></a>1. Adım: gerekli kayıt defteri değerini sunucuya ekleme
-1. Varsayılan proxy 'yi kullanmayı etkinleştirmek için aşağıdaki kayıt defteri değerini (DWORD) `UseDefaultProxyForBackendRequests = 1` "HKEY_LOCAL_MACHINE \SOFTWARE\MICROSOFT\MICROSOFT AAD uygulama proxy Bağlayıcısı" konumunda bulunan bağlayıcı yapılandırması kayıt defteri anahtarına ekleyin.
+1. Varsayılan proxy 'yi kullanmayı etkinleştirmek için aşağıdaki kayıt defteri değerini (DWORD) `UseDefaultProxyForBackendRequests = 1` "HKEY_LOCAL_MACHINE \Software\Microsoft\Microsoft AAD uygulama proxy Bağlayıcısı" konumunda bulunan bağlayıcı yapılandırması kayıt defteri anahtarına ekleyin.
 
 ### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>2. Adım: netsh komutunu kullanarak proxy sunucusunu el ile yapılandırma
 1.  Grup ilkesini makine başına ara sunucu ayarları yapın ' i etkinleştirin. Bu içinde bulunur: Bilgisayar Yapılandırması \ Yönetim Şablonları \ Windows bileşenleri \ Internet Explorer Bu ilkenin Kullanıcı başına ayarlanmış olması yerine, bu ilkenin ayarlanması gerekir.
-2.  Sunucu `gpupdate /force` üzerinde çalıştırın veya güncelleştirilmiş Grup İlkesi ayarlarını kullandığından emin olmak için sunucuyu yeniden başlatın.
-3.  Yönetici haklarıyla yükseltilmiş bir komut istemi başlatın ve girin `control inetcpl.cpl`.
+2.  `gpupdate /force`Sunucu üzerinde çalıştırın veya güncelleştirilmiş Grup İlkesi ayarlarını kullandığından emin olmak için sunucuyu yeniden başlatın.
+3.  Yönetici haklarıyla yükseltilmiş bir komut istemi başlatın ve girin `control inetcpl.cpl` .
 4.  Gerekli proxy ayarlarını yapılandırın. 
 
 Bu ayarlar, bağlayıcının Azure ile iletişim için aynı ileri ara sunucusunu ve arka uç uygulamasını kullanmasını sağlar. Azure iletişimine yönelik bağlayıcı, ileri proxy veya farklı bir ileri ara sunucu gerektirmez, bunu, giden proxy 'leri atlama veya giden proxy sunucusunu kullanma bölümlerinde açıklandığı gibi ApplicationProxyConnectorService. exe. config dosyasını değiştirmeye göre ayarlayabilirsiniz.
@@ -162,7 +162,7 @@ Artık ara sunucu üzerinden akan tüm trafiği görmeniz gerekir. Sorun yaşıy
 
 Bağlayıcı bağlantı sorunlarını belirlemek ve sorunlarını gidermek için en iyi yol, bağlayıcı hizmetini başlatırken ağ yakalama işleminin sürme yoludur. Ağ izlemelerini yakalama ve filtreleme hakkında bazı hızlı ipuçları aşağıda verilmiştir.
 
-Seçtiğiniz izleme aracını kullanabilirsiniz. Bu makalenin amaçları doğrultusunda, Microsoft Message Analyzer 'ı kullandık. [Microsoft 'tan indirebilirsiniz](https://www.microsoft.com/download/details.aspx?id=44226).
+Seçtiğiniz izleme aracını kullanabilirsiniz. Bu makalenin amaçları doğrultusunda, Microsoft Message Analyzer 'ı kullandık.
 
 Aşağıdaki örnekler Ileti çözümleyici 'ye özgüdür, ancak ilkeler herhangi bir analiz aracına uygulanabilir.
 
@@ -185,7 +185,7 @@ Aşağıdaki örnekler Ileti çözümleyici 'ye özgüdür, ancak ilkeler herhan
 
 Uygulama proxy bağlayıcınızı proxy sunucularını atlayacak ve doğrudan uygulama ara sunucusu hizmetine bağlanacak şekilde yapılandırdıysanız, başarısız olan TCP bağlantı girişimleri için ağ yakalamaya bakmak isteyebilirsiniz.
 
-Bu denemeleri belirlemek için Ileti Çözümleyicisi filtresini kullanın. Filtre `property.TCPSynRetransmit` kutusuna girin ve **Uygula**' yı seçin.
+Bu denemeleri belirlemek için Ileti Çözümleyicisi filtresini kullanın. `property.TCPSynRetransmit`Filtre kutusuna girin ve **Uygula**' yı seçin.
 
 Bir SYN paketi, TCP bağlantısı kurmak için gönderilen ilk pakettir. Bu paket bir yanıt döndürmezse, SYN işlemi yeniden deneyin. Yeniden iletilen tüm sistem 'leri görmek için önceki filtreyi kullanabilirsiniz. Ardından, bu sistem 'lerin bağlayıcıyla ilgili herhangi bir trafiğe karşılık geldiğini kontrol edebilirsiniz.
 
@@ -195,7 +195,7 @@ Bağlayıcının Azure hizmetlerine doğrudan bağlantı yapmasını bekleliyors
 
 Uygulama proxy Bağlayıcısı trafiğinizi proxy sunucular üzerinden gezinmek üzere yapılandırdıysanız, proxy 'nize yönelik başarısız HTTPS bağlantılarını aramak istersiniz.
 
-Ağ yakalamayı bu bağlantı girişimleri için filtrelemek için, Ileti çözümleyici `(https.Request or https.Response) and tcp.port==8080` filtresi ' ne girin ve 8080 ' i proxy hizmeti bağlantı noktasıyla değiştirin. Filtre sonuçlarını görmek için **Uygula** ' yı seçin.
+Ağ yakalamayı bu bağlantı girişimleri için filtrelemek için, `(https.Request or https.Response) and tcp.port==8080` Ileti çözümleyici filtresi ' ne girin ve 8080 ' i proxy hizmeti bağlantı noktasıyla değiştirin. Filtre sonuçlarını görmek için **Uygula** ' yı seçin.
 
 Yukarıdaki filtrede yalnızca HTTPs istekleri ve proxy bağlantı noktasından/kaynağından gelen yanıtlar gösterilmektedir. Ara sunucu ile iletişimi gösteren bağlanma isteklerini arıyorsunuz. Başarılı olduğunda, HTTP Tamam (200) yanıtını alırsınız.
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767206"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652174"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer sık sorulan sorular
 
@@ -99,6 +99,10 @@ Ayrıntılar için bkz. [kişi](customize-person-model-overview.md), [markaları
 Evet. **Projeler** sekmesine ulaşmak için Player 'daki ekran görüntüsü ' nden veya **Düzenleyici 'de aç** düğmesinden **video Düzenle** düğmesine basın. Yeni bir proje oluşturabilir ve kitaplığınızdan daha fazla video ekleyerek bunları birlikte düzenleyebilirsiniz, işiniz bittiğinde videonuzu işleyebilir ve indirebilirsiniz. 
 
 Yeni videolarınız hakkında öngörüler elde etmek istiyorsanız, Video Indexer ile dizin oluşturup kendi içgörüleri ile kitaplığınızda görüntülenir.
+
+### <a name="can-i-index-multiple-audio-streams-or-channels"></a>Birden çok ses akışını veya kanalını dizine ekleyebilir miyim?
+
+Birden çok ses akışı varsa, Video Indexer birinciden karşılaşacaktır ve yalnızca bu akışı işleyebilir. Her ses akışı Video Indexer işlemde, farklı kanalları alır (varsa) ve bunları mono olarak birlikte işler. Akışlar/kanallar işleme için, dizin oluşturmadan önce dosya üzerinde ffmpeg komutlarını kullanabilirsiniz.
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Video Indexer SLA nedir?
 

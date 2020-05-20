@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: cb065f10664f46578f84e59501d75d510ccb3c6a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d1ec04a0c16feb6d404018ff9538b9572e1d71c2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201578"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649618"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -88,7 +88,7 @@ Bkz. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pri
 
 Azure PowerShell *serbest bırakma* ve *ayırma* yöntemleri kullanabilirsiniz.
 
-Örneğin:
+Örnek:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -129,7 +129,7 @@ Hedef IP adresi, [ıANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına �
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Bir ağ sanal gerecine Zorlamalı tünel/zincir oluşturma işlemi destekleniyor mu?
 
-Zorlamalı tünel oluşturma destekleniyor. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Zorlamalı tünel](forced-tunneling.md). 
+Yeni bir güvenlik duvarı oluşturduğunuzda Zorlamalı tünel oluşturma desteklenir. Zorlamalı tünel için mevcut bir güvenlik duvarını yapılandıramazsınız. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Zorlamalı tünel](forced-tunneling.md). 
 
 Azure Güvenlik duvarının doğrudan Internet bağlantısı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
 

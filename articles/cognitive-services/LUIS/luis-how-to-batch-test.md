@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: bfef7eae7158a05b09a3534e8fb44335333d8cf1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d3535d419b0f99491795b3920fdd295e3128299
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73904348"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653999"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Bir dizi örnek ile toplu test
 
- Toplu işlem testi, geçerli eğitilen modelinize ait, LUSıS 'deki performansını ölçecek kapsamlı bir sınamadır. Toplu iş testi için kullanılan veri kümeleri, tahmin çalışma zamanı uç noktasından alınan amaçlar veya deterlerden örnek olarak yer almamalıdır. 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+ Toplu işlem testi, geçerli eğitilen modelinize ait, LUSıS 'deki performansını ölçecek kapsamlı bir sınamadır. Toplu iş testi için kullanılan veri kümeleri, tahmin çalışma zamanı uç noktasından alınan amaçlar veya deterlerden örnek olarak yer almamalıdır.
 
 <a name="batch-testing"></a>
 
@@ -36,7 +34,7 @@ ms.locfileid: "73904348"
 
     İçeri aktarma hataları tarayıcının üst kısmındaki kırmızı bir bildirim çubuğunda raporlanır. İçeri aktarma hataları olduğunda, hiçbir veri kümesi oluşturulmaz. Daha fazla bilgi için bkz. [genel hatalar](luis-concept-batch-test.md#common-errors-importing-a-batch).
 
-3. **Veri kümesi adı** alanına veri kümesi dosyanız için bir ad girin. Veri kümesi dosyası *etiketli amaç* ve *varlıklar*da dahil olmak üzere bir **dizi** yer içerir. Sözdizimi için [örnek toplu iş dosyasını](luis-concept-batch-test.md#batch-file-format) gözden geçirin. 
+3. **Veri kümesi adı** alanına veri kümesi dosyanız için bir ad girin. Veri kümesi dosyası *etiketli amaç* ve *varlıklar*da dahil olmak üzere bir **dizi** yer içerir. Sözdizimi için [örnek toplu iş dosyasını](luis-concept-batch-test.md#batch-file-format) gözden geçirin.
 
 4. **Done** (Bitti) öğesini seçin. Veri kümesi dosyası eklenir.
 
@@ -44,13 +42,12 @@ ms.locfileid: "73904348"
 
 Veri kümesini çalıştırmak, yeniden adlandırmak, dışarı aktarmak veya silmek için veri kümesi satırının sonundaki üç nokta (***...***) düğmesini kullanın.
 
-![Veri kümesi eylemleri](./media/luis-how-to-batch-test/batch-testing-options.png)
+> [!div class="mx-imgBorder"]
+> ![Seçenekler içeren Batch testleri listesinin ekran görüntüsü](./media/luis-how-to-batch-test/batch-testing-options.png)
 
 ## <a name="run-a-batch-test-on-your-trained-app"></a>Eğitilen uygulamanızda Batch testi çalıştırma
 
-Testi çalıştırmak için veri kümesi adını seçin. Test tamamlandığında, bu satır veri kümesinin test sonucunu görüntüler.
-
-![Batch test sonucu](./media/luis-how-to-batch-test/run-test.png)
+Testi çalıştırmak için veri kümesi adını seçin, sonra bağlamsal araç çubuğundan **Çalıştır** ' ı seçin. Test tamamlandığında, bu satır veri kümesinin test sonucunu görüntüler.
 
 İndirilebilir veri kümesi, toplu test için karşıya yüklenen dosyadır.
 
@@ -62,23 +59,21 @@ Testi çalıştırmak için veri kümesi adını seçin. Test tamamlandığında
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
 
-## <a name="view-batch-test-results"></a>Batch test sonuçlarını görüntüle 
+## <a name="view-batch-test-results"></a>Batch test sonuçlarını görüntüle
 
 Batch test sonuçlarını gözden geçirmek için **sonuçları göster**' i seçin.
 
-![Batch test sonuçları](./media/luis-how-to-batch-test/run-test-results.png)
-
-<a name="filter-chart-results-by-intent-or-entity"></a>  
+<a name="filter-chart-results-by-intent-or-entity"></a>
 
 ## <a name="filter-chart-results"></a>Grafik sonuçlarını filtrele
 
-Grafiği belirli bir amaç veya varlığa göre filtrelemek için, sağ taraftaki filtreleme panelinde amacı veya varlığı seçin. Veri noktaları ve kendi dağıtım güncelleştirmeleri seçiminize göre grafiğe göre yapılır. 
- 
-![Görselleştirilen Batch test sonucu](./media/luis-how-to-batch-test/filter-by-entity.png) 
+Grafiği belirli bir amaç veya varlığa göre filtrelemek için, sağ taraftaki filtreleme panelinde amacı veya varlığı seçin. Veri noktaları ve kendi dağıtım güncelleştirmeleri seçiminize göre grafiğe göre yapılır.
+
+![Görselleştirilen Batch test sonucu](./media/luis-how-to-batch-test/filter-by-entity.png)
 
 ## <a name="view-single-point-utterance-data"></a>Tek noktalı söylenişi verilerini görüntüle
 
-Grafikte, tahminiyle ilgili belirsizlik Puanını görmek için bir veri noktasının üzerine gelin. Sayfanın alt kısmındaki utterlik listesine karşılık gelen utterlik listesini almak için bir veri noktası seçin. 
+Grafikte, tahminiyle ilgili belirsizlik Puanını görmek için bir veri noktasının üzerine gelin. Sayfanın alt kısmındaki utterlik listesine karşılık gelen utterlik listesini almak için bir veri noktası seçin.
 
 ![Seçili söylenişi](./media/luis-how-to-batch-test/selected-utterance.png)
 
@@ -88,13 +83,13 @@ Grafikte, tahminiyle ilgili belirsizlik Puanını görmek için bir veri noktas�
 
 ## <a name="view-section-data"></a>Bölüm verilerini görüntüle
 
-Dört bölümden oluşan grafikte, grafiğin sağ üst köşesinde **yanlış pozitif** gibi bölüm adını seçin. Grafiğin altında, bu bölümdeki tüm söyleymalar bir listede grafiğin altında görüntülenir. 
+Dört bölümden oluşan grafikte, grafiğin sağ üst köşesinde **yanlış pozitif** gibi bölüm adını seçin. Grafiğin altında, bu bölümdeki tüm söyleymalar bir listede grafiğin altında görüntülenir.
 
 ![Bölüme göre seçilen söyleyleri](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
 
-Bu önceki görüntüde, söylenişi `switch on` , turnallon amacına göre etiketlidir, ancak None hedefinin tahminini almış olur. Bu, beklenen tahmini yapmak için, en çok daha fazla örnek elde edilmesi gerektiğini belirten bir göstergesidir. 
+Bu önceki görüntüde, söylenişi, `switch on` turnallon amacına göre etiketlidir, ancak None hedefinin tahminini almış olur. Bu, beklenen tahmini yapmak için, en çok daha fazla örnek elde edilmesi gerektiğini belirten bir göstergesidir.
 
-Grafiğin kırmızı renkte iki bölümü, beklenen tahminiyle eşleşmeyen utterlere işaret ediyor. Bu, LUIN daha fazla eğitim ihtiyacı olan SÖYLERE işaret ediyor. 
+Grafiğin kırmızı renkte iki bölümü, beklenen tahminiyle eşleşmeyen utterlere işaret ediyor. Bu, LUIN daha fazla eğitim ihtiyacı olan SÖYLERE işaret ediyor.
 
 Yeşil renkte grafiğin iki bölümü beklenen tahminiyle eşleşiyor.
 
@@ -102,9 +97,9 @@ Yeşil renkte grafiğin iki bölümü beklenen tahminiyle eşleşiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Test, LUP uygulamanızın doğru amaçları ve varlıkları algıladığını gösteriyorsa, daha fazla yer etiketleyerek veya özellik ekleyerek LUSıS uygulamanızın performansını iyileştirebilmek için çalışabilirsiniz. 
+Test, LUP uygulamanızın doğru amaçları ve varlıkları algıladığını gösteriyorsa, daha fazla yer etiketleyerek veya özellik ekleyerek LUSıS uygulamanızın performansını iyileştirebilmek için çalışabilirsiniz.
 
-* [LUSıS ile önerilen bir şekilde etiketleme](luis-how-to-review-endpoint-utterances.md) 
-* [LUSıS uygulamanızın performansını artırmak için özellikleri kullanın](luis-how-to-add-features.md) 
+* [LUSıS ile önerilen bir şekilde etiketleme](luis-how-to-review-endpoint-utterances.md)
+* [LUSıS uygulamanızın performansını artırmak için özellikleri kullanın](luis-how-to-add-features.md)
 * [Toplu iş testini bu öğreticiyle anlayın](luis-tutorial-batch-testing.md)
 * [Batch test kavramlarını öğrenin](luis-concept-batch-test.md).

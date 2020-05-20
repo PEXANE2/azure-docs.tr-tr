@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: jingwang
-ms.openlocfilehash: 9f705a0a56975860cf07d8a9b09de9999a923501
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: b33f9a11cee08ea8c4accb683d70960d7f98e776
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891431"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659579"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory kullanarak DB2 'den veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -51,7 +51,7 @@ DB2 veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayab
 >[!TIP]
 >DB2 Bağlayıcısı DB2 için Microsoft OLE DB Sağlayıcısı üzerine kurulmuştur. DB2 bağlayıcı hatalarıyla ilgili sorunları gidermek için [veri sağlayıcısı hata kodlarına](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -69,24 +69,24 @@ Aşağıdaki özellikler DB2 bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **DB2** olarak ayarlanmalıdır | Yes |
+| tür | Type özelliği: **DB2** olarak ayarlanmalıdır | Yes |
 | Dizisi | DB2 örneğine bağlanmak için gereken bilgileri belirtin.<br/> Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 Bağlantı dizesinin içindeki tipik Özellikler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| sunucu |DB2 sunucusunun adı. Sunucu adının sonuna iki nokta üst üste ile ayrılmış bağlantı noktası numarasını belirtebilirsiniz, örneğin `server:port`. |Yes |
+| sunucu |DB2 sunucusunun adı. Sunucu adının sonuna iki nokta üst üste ile ayrılmış bağlantı noktası numarasını belirtebilirsiniz, örneğin `server:port` . |Yes |
 | database |DB2 veritabanının adı. |Yes |
 | authenticationType |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değer: **temel**. |Yes |
 | kullanıcı adı |DB2 veritabanına bağlanmak için Kullanıcı adını belirtin. |Yes |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Yes |
-| packageCollection | Veritabanı sorgulanırken, gerekli paketlerin ADF tarafından otomatik olarak oluşturulduğu yeri belirtin. | No |
-| Certificatecommonadı | Güvenli Yuva Katmanı (SSL) veya Aktarım Katmanı Güvenliği (TLS) şifrelemesini kullandığınızda, sertifika ortak adı için bir değer girmeniz gerekir. | No |
+| packageCollection | Veritabanı sorgulanırken, gerekli paketlerin ADF tarafından otomatik olarak oluşturulduğu yeri belirtin. | Hayır |
+| Certificatecommonadı | Güvenli Yuva Katmanı (SSL) veya Aktarım Katmanı Güvenliği (TLS) şifrelemesini kullandığınızda, sertifika ortak adı için bir değer girmeniz gerekir. | Hayır |
 
 > [!TIP]
-> Durumu `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`belirten bir hata iletisi alırsanız, bunun nedeni Kullanıcı için gerekli bir paket oluşturulmaz. Varsayılan olarak, ADF, DB2 'ye bağlanmak için kullandığınız kullanıcı olarak adlı koleksiyonda bir paket oluşturmaya çalışır. ADF 'nin veritabanını sorgularken gereken paketleri oluşturmasını istediğiniz yeri belirtmek için paket koleksiyonu özelliğini belirtin.
+> Durumu belirten bir hata iletisi alırsanız, bunun `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` nedeni Kullanıcı için gerekli bir paket oluşturulmaz. Varsayılan olarak, ADF, DB2 'ye bağlanmak için kullandığınız kullanıcı olarak adlı koleksiyonda bir paket oluşturmaya çalışır. ADF 'nin veritabanını sorgularken gereken paketleri oluşturmasını istediğiniz yeri belirtmek için paket koleksiyonu özelliğini belirtin.
 
 **Örneğinde**
 
@@ -96,7 +96,7 @@ Bağlantı dizesinin içindeki tipik Özellikler:
     "properties": {
         "type": "Db2",
         "typeProperties": {
-            "connectionString": "server=<server:port>; database=<database>; authenticationType=Basic;username=<username>; password=<password>; packageCollection=<packagecollection>;certificateCommonName=<certname>;"
+            "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;password=<password>;packageCollection=<packagecollection>;certificateCommonName=<certname>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -113,7 +113,7 @@ Bağlantı dizesinin içindeki tipik Özellikler:
     "properties": {
         "type": "Db2",
         "typeProperties": {
-            "connectionString": "server=<server:port>; database=<database>; authenticationType=Basic;username=<username>; packageCollection=<packagecollection>;certificateCommonName=<certname>;",
+            "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;packageCollection=<packagecollection>;certificateCommonName=<certname>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -166,12 +166,12 @@ DB2 'den veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **Db2Table** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **Db2Table** olarak ayarlanmalıdır | Yes |
 | manızı | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
-| tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni `schema` iş `table` yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
+| tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {
@@ -189,7 +189,7 @@ DB2 'den veri kopyalamak için aşağıdaki özellikler desteklenir:
 }
 ```
 
-`RelationalTable` Türü belirtilmiş veri kümesi kullanıyorsanız, hala olduğu gibi desteklenir, ancak yeni bir adım ileri kullanmanız önerilir.
+`RelationalTable`Türü belirtilmiş veri kümesi kullanıyorsanız, hala olduğu gibi desteklenir, ancak yeni bir adım ileri kullanmanız önerilir.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
@@ -201,7 +201,7 @@ DB2 'den veri kopyalamak için aşağıdaki özellikler, etkinlik **kaynağını
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **Db2Source** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Db2Source** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örneğinde**
@@ -236,7 +236,7 @@ DB2 'den veri kopyalamak için aşağıdaki özellikler, etkinlik **kaynağını
 ]
 ```
 
-Yazılan kaynağı kullanıyorsanız `RelationalSource` , hala olduğu gibi desteklenmektedir, ileri ' yi kullanmaya devam etmeniz önerilir.
+Yazılan kaynağı kullanıyorsanız, `RelationalSource` hala olduğu gibi desteklenmektedir, ileri ' yi kullanmaya devam etmeniz önerilir.
 
 ## <a name="data-type-mapping-for-db2"></a>DB2 için veri türü eşlemesi
 

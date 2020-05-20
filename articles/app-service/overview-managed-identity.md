@@ -6,24 +6,21 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 875d2bbebdfa95c6d180979399d876eb2afc01b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c9cc96af42c6cfb83b43e3a0c56f16bdb917025
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392535"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649101"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
+Bu konu, App Service ve Azure Işlevleri uygulamaları için yönetilen bir kimlik oluşturmayı ve diğer kaynaklara erişmek için nasıl kullanılacağını gösterir. 
+
 > [!Important] 
-> App Service ve Azure Işlevleri için Yönetilen kimlikler, uygulamanız abonelikler/kiracılar arasında geçirilirse beklendiği gibi davranmaz. Uygulamanın, özelliği devre dışı bırakıp yeniden etkinleştirerek yapılabilecek yeni bir kimlik alması gerekir. Aşağıdaki [kimliği kaldırma](#remove) bölümüne bakın. Aşağı akış kaynakları, yeni kimliği kullanmak için erişim ilkelerinin güncelleştirilmesini de gerekecektir.
+> App Service ve Azure Işlevleri için Yönetilen kimlikler, uygulamanız abonelikler/kiracılar arasında geçirilirse beklendiği gibi davranır. Uygulamanın, özelliği devre dışı bırakıp yeniden etkinleştirerek gerçekleştirilen yeni bir kimlik alması gerekir. Aşağıdaki [kimliği kaldırma](#remove) bölümüne bakın. Aşağı akış kaynakları, yeni kimliği kullanmak için erişim ilkelerinin güncelleştirilmesini de gerekir.
 
-Bu konu, App Service ve Azure Işlevleri uygulamaları için yönetilen bir kimlik oluşturmayı ve diğer kaynaklara erişmek için nasıl kullanılacağını gösterir. Azure Active Directory (Azure AD) tarafından yönetilen bir kimlik, uygulamanızın Azure Key Vault gibi diğer Azure AD korumalı kaynaklara kolayca erişmesini sağlar. Kimlik, Azure platformu tarafından yönetilir ve herhangi bir gizli dizi sağlamanızı veya döndürmenizi gerektirmez. Azure AD 'de Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
-
-Uygulamanıza iki tür kimlik verilebilir:
-
-- **Sistem tarafından atanan bir kimlik** uygulamanıza bağlanır ve uygulamanız silinirse silinir. Uygulamanın yalnızca bir sistem tarafından atanmış kimliği olabilir.
-- **Kullanıcı tarafından atanan bir kimlik** , uygulamanıza atanabilecek tek başına bir Azure kaynağıdır. Bir uygulamada birden çok kullanıcı tarafından atanan kimlik olabilir.
+[!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
 ## <a name="add-a-system-assigned-identity"></a>Sistem tarafından atanan kimlik ekleme
 
@@ -45,7 +42,7 @@ Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir uygu
 
 ### <a name="using-the-azure-cli"></a>Azure CLI kullanma
 
-Azure CLı kullanarak yönetilen bir kimlik ayarlamak için, mevcut bir uygulamada `az webapp identity assign` komutunu kullanmanız gerekir. Bu bölümde örnekleri çalıştırmak için üç seçeneğiniz vardır:
+Azure CLı kullanarak yönetilen bir kimlik ayarlamak için, `az webapp identity assign` mevcut bir uygulamada komutunu kullanmanız gerekir. Bu bölümde örnekleri çalıştırmak için üç seçeneğiniz vardır:
 
 - Azure portal [Azure Cloud Shell](../cloud-shell/overview.md) kullanın.
 - Aşağıdaki her kod bloğunun sağ üst köşesinde bulunan "dene" düğmesini kullanarak katıştırılmış Azure Cloud Shell kullanın.
@@ -67,7 +64,7 @@ Aşağıdaki adımlar, bir Web uygulaması oluşturma ve CLı kullanarak bir kim
     az webapp create --name myApp --resource-group myResourceGroup --plan myPlan
     ```
 
-3. Bu uygulamanın `identity assign` kimliğini oluşturmak için komutunu çalıştırın:
+3. `identity assign`Bu uygulamanın kimliğini oluşturmak için komutunu çalıştırın:
 
     ```azurecli-interactive
     az webapp identity assign --name myApp --resource-group myResourceGroup
@@ -79,7 +76,7 @@ Aşağıdaki adımlar, bir Web uygulaması oluşturma ve CLı kullanarak bir kim
 
 Aşağıdaki adımlar, bir Web uygulaması oluşturma ve Azure PowerShell kullanarak bir kimlik atama işleminde size yol gösterecektir:
 
-1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeleri kullanarak Azure PowerShell yükleyip Azure ile bağlantı oluşturmak için öğesini çalıştırın `Login-AzAccount` .
+1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
 2. Azure PowerShell kullanarak bir Web uygulaması oluşturun. App Service Azure PowerShell kullanma hakkında daha fazla örnek için bkz. [App Service PowerShell örnekleri](../app-service/samples-powershell.md):
 
@@ -94,7 +91,7 @@ Aşağıdaki adımlar, bir Web uygulaması oluşturma ve Azure PowerShell kullan
     New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
 
-3. Bu uygulamanın `Set-AzWebApp -AssignIdentity` kimliğini oluşturmak için komutunu çalıştırın:
+3. `Set-AzWebApp -AssignIdentity`Bu uygulamanın kimliğini oluşturmak için komutunu çalıştırın:
 
     ```azurepowershell-interactive
     Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
@@ -104,7 +101,7 @@ Aşağıdaki adımlar, bir Web uygulaması oluşturma ve Azure PowerShell kullan
 
 Azure Resource Manager şablonu, Azure kaynaklarınızın dağıtımını otomatikleştirmek için kullanılabilir. App Service ve Işlevlerine dağıtma hakkında daha fazla bilgi edinmek için bkz. [App Service kaynak dağıtımını otomatikleştirme](../app-service/deploy-complex-application-predictably.md) ve [Azure Işlevlerinde kaynak dağıtımını otomatikleştirme](../azure-functions/functions-infrastructure-as-code.md).
 
-Kaynak tanımına aşağıdaki özelliği `Microsoft.Web/sites` ekleyerek, herhangi bir kaynak türü bir kimlikle oluşturulabilir:
+`Microsoft.Web/sites`Kaynak tanımına aşağıdaki özelliği ekleyerek, herhangi bir kaynak türü bir kimlikle oluşturulabilir:
 
 ```json
 "identity": {
@@ -179,7 +176,7 @@ Kullanıcı tarafından atanan kimlik ile uygulama oluşturmak için kimlik olu�
 
 Azure Resource Manager şablonu, Azure kaynaklarınızın dağıtımını otomatikleştirmek için kullanılabilir. App Service ve Işlevlerine dağıtma hakkında daha fazla bilgi edinmek için bkz. [App Service kaynak dağıtımını otomatikleştirme](../app-service/deploy-complex-application-predictably.md) ve [Azure Işlevlerinde kaynak dağıtımını otomatikleştirme](../azure-functions/functions-infrastructure-as-code.md).
 
-Kaynak tanımına aşağıdaki blok `Microsoft.Web/sites` eklenerek, istenen KIMLIğIN kaynak kimliği ile değiştirilerek `<RESOURCEID>` bir kimlik ile herhangi bir kaynak oluşturulabilir:
+`Microsoft.Web/sites`Kaynak tanımına aşağıdaki blok eklenerek, `<RESOURCEID>` istenen KIMLIğIN kaynak kimliği ile değiştirilerek bir kimlik ile herhangi bir kaynak oluşturulabilir:
 
 ```json
 "identity": {
@@ -259,14 +256,14 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 **IDENTITY_ENDPOINT** , uygulamanızın belirteç isteyebileceği yerel bir URL 'dir. Bir kaynağın belirtecini almak için, bu uç noktaya yönelik bir HTTP GET isteği oluşturun ve aşağıdaki parametreleri de dahil edin:
 
-> | Parametre adı    | İçindeki     | Açıklama                                                                                                                                                                                                                                                                                                                                |
+> | Parametre adı    | İçinde     | Açıklama                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | kaynak          | Sorgu  | Belirtecin alınması gereken kaynağın Azure AD Kaynak URI 'SI. Bu, [Azure AD kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) veya DIĞER Kaynak URI 'Yi destekleyen Azure hizmetlerinden biridir.    |
 > | api-sürümü       | Sorgu  | Kullanılacak belirteç API 'sinin sürümü. Lütfen "2019-08-01" veya üstünü kullanın.                                                                                                                                                                                                                                                                 |
 > | X-ıDENTITY-HEADER | Üst bilgi | IDENTITY_HEADER ortam değişkeninin değeri. Bu üst bilgi, sunucu tarafı istek sahteciliğini önleme (ssrf) saldırılarını azaltmaya yardımcı olmak için kullanılır.                                                                                                                                                                                                    |
-> | client_id         | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin istemci KIMLIĞI. , `principal_id` `mi_res_id`, Veya `object_id`içeren bir istek üzerinde kullanılamaz. Tüm`client_id`kimlik parametreleri ( `principal_id` `object_id`,, ve `mi_res_id`) atlanırsa, sistem tarafından atanan kimlik kullanılır.                                             |
-> | principal_id      | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin asıl KIMLIĞI. `object_id`Bunun yerine kullanılabilecek bir diğer addır. Client_id, mi_res_id veya object_id içeren bir istekte kullanılamaz. Tüm`client_id`kimlik parametreleri ( `principal_id` `object_id`,, ve `mi_res_id`) atlanırsa, sistem tarafından atanan kimlik kullanılır. |
-> | mi_res_id         | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin Azure Kaynak KIMLIĞI. , `principal_id` `client_id`, Veya `object_id`içeren bir istek üzerinde kullanılamaz. Tüm`client_id`kimlik parametreleri ( `principal_id` `object_id`,, ve `mi_res_id`) atlanırsa, sistem tarafından atanan kimlik kullanılır.                                      |
+> | client_id         | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin istemci KIMLIĞI. ,, Veya içeren bir istek üzerinde kullanılamaz `principal_id` `mi_res_id` `object_id` . Tüm kimlik parametreleri (, `client_id` , `principal_id` `object_id` ve `mi_res_id` ) atlanırsa, sistem tarafından atanan kimlik kullanılır.                                             |
+> | principal_id      | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin asıl KIMLIĞI. `object_id`Bunun yerine kullanılabilecek bir diğer addır. Client_id, mi_res_id veya object_id içeren bir istekte kullanılamaz. Tüm kimlik parametreleri (, `client_id` , `principal_id` `object_id` ve `mi_res_id` ) atlanırsa, sistem tarafından atanan kimlik kullanılır. |
+> | mi_res_id         | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin Azure Kaynak KIMLIĞI. ,, Veya içeren bir istek üzerinde kullanılamaz `principal_id` `client_id` `object_id` . Tüm kimlik parametreleri (, `client_id` , `principal_id` `object_id` ve `mi_res_id` ) atlanırsa, sistem tarafından atanan kimlik kullanılır.                                      |
 
 > [!IMPORTANT]
 > Kullanıcı tarafından atanan kimlikler için belirteçleri almaya çalışıyorsanız, isteğe bağlı özelliklerden birini eklemeniz gerekir. Aksi takdirde, belirteç hizmeti sistem tarafından atanan bir kimlik için belirteç edinmeye çalışır, bu da mevcut olabilir.
@@ -277,15 +274,15 @@ Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gö
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | İstenen erişim belirteci. Çağıran Web hizmeti, alıcı Web hizmetinde kimlik doğrulaması yapmak için bu belirteci kullanabilir.                                                                                                                               |
 > | client_id     | Kullanılan kimliğin istemci KIMLIĞI.                                                                                                                                                                                                       |
-> | expires_on    | Erişim belirtecinin süresi dolduğu zaman aralığı. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin `exp` talebine karşılık gelir) için saniye sayısı olarak gösterilir.                                                                                |
-> | not_before    | Erişim belirteci yürürlüğe girer ve kabul edilebilir. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin `nbf` talebine karşılık gelir) için saniye sayısı olarak gösterilir.                                                      |
-> | kaynak      | İsteğin `resource` sorgu dizesi parametresiyle eşleşen erişim belirtecinin istendiği kaynak.                                                                                                                               |
+> | expires_on    | Erişim belirtecinin süresi dolduğu zaman aralığı. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin talebine karşılık gelir) için saniye sayısı olarak gösterilir `exp` .                                                                                |
+> | not_before    | Erişim belirteci yürürlüğe girer ve kabul edilebilir. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin talebine karşılık gelir) için saniye sayısı olarak gösterilir `nbf` .                                                      |
+> | kaynak      | İsteğin sorgu dizesi parametresiyle eşleşen erişim belirtecinin istendiği kaynak `resource` .                                                                                                                               |
 > | token_type    | Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür Ftaşıyıcı ' dır. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz. [OAuth 2,0 yetkilendirme çerçevesi: taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
 Bu yanıt, [Azure AD hizmetten hizmete erişim belirteci isteğine yönelik yanıt](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)ile aynıdır.
 
 > [!NOTE]
-> "2017-09-01" API sürümünü kullanarak bu protokolün daha eski bir sürümü, yerine `secret` üst bilgiyi kullandı `X-IDENTITY-HEADER` ve yalnızca Kullanıcı tarafından atanan `clientid` özelliği kabul eder. Ayrıca, `expires_on` bir zaman damgası biçiminde döndürülür. MSI_ENDPOINT, IDENTITY_ENDPOINT bir diğer ad olarak kullanılabilir ve MSI_SECRET IDENTITY_HEADER için bir diğer ad olarak kullanılabilir.
+> "2017-09-01" API sürümünü kullanarak bu protokolün daha eski bir sürümü, `secret` yerine üst bilgiyi kullandı `X-IDENTITY-HEADER` ve yalnızca `clientid` Kullanıcı tarafından atanan özelliği kabul eder. Ayrıca, `expires_on` bir zaman damgası biçiminde döndürülür. MSI_ENDPOINT, IDENTITY_ENDPOINT bir diğer ad olarak kullanılabilir ve MSI_SECRET IDENTITY_HEADER için bir diğer ad olarak kullanılabilir.
 
 ### <a name="rest-protocol-examples"></a>REST protokol örnekleri
 
@@ -400,7 +397,7 @@ Microsoft. Azure. Services. AppAuthentication ve sunduğu işlemler hakkında da
 
 Java uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu, [Java Için Azure SDK](https://github.com/Azure/azure-sdk-for-java)'ıdır. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
 
-1. [Azure SDK kitaplığına](https://mvnrepository.com/artifact/com.microsoft.azure/azure)bir başvuru ekleyin. Maven projeleri için, bu kod parçacığını projenin Pod dosyasının `dependencies` bölümüne ekleyebilirsiniz:
+1. [Azure SDK kitaplığına](https://mvnrepository.com/artifact/com.microsoft.azure/azure)bir başvuru ekleyin. Maven projeleri için, bu kod parçacığını `dependencies` projenin Pod dosyasının bölümüne ekleyebilirsiniz:
 
     ```xml
     <dependency>
@@ -410,7 +407,7 @@ Java uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın e
     </dependency>
     ```
 
-2. Kimlik doğrulaması `AppServiceMSICredentials` için nesnesini kullanın. Bu örnek, bu mekanizmanın Azure Key Vault çalışmak için nasıl kullanılabileceğini gösterir:
+2. `AppServiceMSICredentials`Kimlik doğrulaması için nesnesini kullanın. Bu örnek, bu mekanizmanın Azure Key Vault çalışmak için nasıl kullanılabileceğini gösterir:
 
     ```java
     import com.microsoft.azure.AzureEnvironment;

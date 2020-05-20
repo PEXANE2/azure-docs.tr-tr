@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: c7180be2afa541f743d7bd81627b93f34d9bb4eb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 44472eb697a4d191d4ed99b7879654fcca61383b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597845"
+ms.locfileid: "83655213"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için GitHub eylemleri iş akışları
 
@@ -150,7 +150,7 @@ Dağıtım her zaman `npm install` özel bir komuttan önce çağırır.
 
 | Komut            | Açıklama |
 |---------------------|-------------|
-| `app_build_command` | Statik içerik uygulamasının dağıtımı sırasında çalışacak özel bir komut tanımlar.<br><br>Örneğin, angular uygulaması için bir üretim yapısını yapılandırmak için, girin `ng build -prod` . Boş bırakılırsa, iş akışı `npm run build` veya komutlarını çalıştırmayı dener `npm run build:Azure` .  |
+| `app_build_command` | Statik içerik uygulamasının dağıtımı sırasında çalışacak özel bir komut tanımlar.<br><br>Örneğin, angular uygulaması için bir üretim yapısını yapılandırmak için, girin `ng build --prod` . Boş bırakılırsa, iş akışı `npm run build` veya komutlarını çalıştırmayı dener `npm run build:Azure` .  |
 | `api_build_command` | Azure Işlevleri API uygulaması dağıtımı sırasında çalışacak özel bir komut tanımlar. |
 
 ## <a name="route-file-location"></a>Yol dosyası konumu

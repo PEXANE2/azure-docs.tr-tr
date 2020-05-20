@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 76f920ad6aae68defb567a7a6623d1ffd488af5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1191c01ce3f62f34c351cefd29a5e40aa68bfd3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80874866"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658405"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile fazla sığdırma ve ıdengeli verileri önleme
 
@@ -58,17 +58,17 @@ Otomatikleştirilmiş ML bağlamında, yukarıdaki ilk üç öğe **en iyi uygul
 
 **Daha fazla veri** kullanmak, aşırı sığdırmayı önlemenin en basit ve en iyi yoludur ve ek bir prim genellikle doğruluğu arttırır. Daha fazla veri kullandığınızda, modelin tam desenleri daha zor hale getirmek daha zordur ve daha fazla koşullara uyum sağlamak için daha esnek çözümlere ulaşmaya zorlanır. Eğitim verilerinizin canlı tahmin verilerinde mevcut olmayan yalıtılmış desenler içermediğinden emin olmak için **istatistiksel farkı**tanımak de önemlidir. Eğeceğiniz ve test kümleriniz arasında aşırı yerleştirme bulunmayabilir, ancak canlı test verileriyle karşılaştırıldığında çok fazla sığdırma söz konusu olabileceğinden, bu senaryoya çözüm daha zor olabilir.
 
-Hedef sızıntısı, eğitim/test kümeleri arasında fazla sığdırmayı görmeyebilirsiniz, ancak bunun yerine tahmin sırasında görünmesini mümkün bir sorundur. Hedef sızıntısı, modelinize "Cheats", normalde tahmin zamanında sahip olmadığı verilere erişim izni vererek oluşur. Örneğin, sorununuz Pazartesi günü ücretlendiriyor, ancak özelliklerden biri yanlışlıkla Perşembe ' dan veri içeriyordu, ancak bu veri, bu durum, gelecekte göremeyeceği için bir tahmin süresi değildir. Hedef sızıntısı, kaçırılması kolay bir hata, ancak genellikle sorununuz için anormal ölçüde yüksek doğruluk ile ayırdedilir. Hisse senedi fiyatını tahmin etmeye ve %95 doğruluk oranında bir model eğitimeye çalışıyorsanız, özelliklerinizin bir yerinde hedef sızıntısı olabilir.
+**Hedef sızıntısı** , eğitim/test kümeleri arasında fazla sığdırmayı görmeyebilirsiniz, ancak bunun yerine tahmin sırasında görünmesini mümkün bir sorundur. Hedef sızıntısı, modelinize "Cheats", normalde tahmin zamanında sahip olmadığı verilere erişim izni vererek oluşur. Örneğin, sorununuz Pazartesi günü ücretlendiriyor, ancak özelliklerden biri yanlışlıkla Perşembe ' dan veri içeriyordu, ancak bu veri, bu durum, gelecekte göremeyeceği için bir tahmin süresi değildir. Hedef sızıntısı, kaçırılması kolay bir hata, ancak genellikle sorununuz için anormal ölçüde yüksek doğruluk ile ayırdedilir. Hisse senedi fiyatını tahmin etmeye ve %95 doğruluk oranında bir model eğitimeye çalışıyorsanız, özelliklerinizin bir yerinde hedef sızıntısı olabilir.
 
-Özelliklerin kaldırılması, modelin belirli desenleri kaldırmak için çok fazla alan kullanmasını önleyecek ve bu sayede daha esnek olmasına neden olabilir. Ölçüyü Tayana ölçmek zor olabilir, ancak özellikleri kaldırabilmeniz ve aynı doğruluğu koruuyorsanız, büyük olasılıkla modeli daha esnek hale yapmış ve fazla sığdırma riskini azaltacaksınız.
+**Özelliklerin kaldırılması** , modelin belirli desenleri kaldırmak için çok fazla alan kullanmasını önleyecek ve bu sayede daha esnek olmasına neden olabilir. Ölçüyü Tayana ölçmek zor olabilir, ancak özellikleri kaldırabilmeniz ve aynı doğruluğu koruuyorsanız, büyük olasılıkla modeli daha esnek hale yapmış ve fazla sığdırma riskini azaltacaksınız.
 
 ### <a name="best-practices-automated-ml-implements"></a>En iyi uygulamalar otomatik ML uygulamaları
 
-Düzenleme, karmaşık ve daha fazla olan modelleri sızmak için bir maliyet işlevini en aza indirmenizi sağlar. Farklı türlerde düzenleme işlevleri vardır, ancak genel olarak model katsayı boyutunu, varyansı ve karmaşıklığını tamamen penler. Otomatik ML, L1 (Kement), L2 (Ridge) ve Elaviznet (L1 ve L2 eşzamanlı) ' i, farklı birleşimlerde fazla sığdırmayı denetleyen farklı model hiper parametre ayarlarına sahip farklı bileşimlerde kullanır. Basit koşullarda, otomatik ML bir modelin ne kadarının düzenlenebilir olduğunu farklılık gösterecektir ve en iyi sonucu seçer.
+**Düzenleme** , karmaşık ve daha fazla olan modelleri sızmak için bir maliyet işlevini en aza indirmenizi sağlar. Farklı türlerde düzenleme işlevleri vardır, ancak genel olarak model katsayı boyutunu, varyansı ve karmaşıklığını tamamen penler. Otomatik ML, L1 (Kement), L2 (Ridge) ve Elaviznet (L1 ve L2 eşzamanlı) ' i, farklı birleşimlerde fazla sığdırmayı denetleyen farklı model hiper parametre ayarlarına sahip farklı bileşimlerde kullanır. Basit koşullarda, otomatik ML bir modelin ne kadarının düzenlenebilir olduğunu farklılık gösterecektir ve en iyi sonucu seçer.
 
-Otomatik ML, aşırı sığdırmayı engellemek için açık model karmaşıklığı kısıtlamalarını da uygular. Çoğu durumda bu uygulama özellikle karar ağacı veya orman algoritmalarının yanı sıra, tek tek ağaç en yüksek derinliğinin sınırlı olduğu ve ormanda kullanılan toplam ağaç sayısı veya ensesıya da zenginlik teknikleri sınırlıdır.
+Otomatik ML, aşırı sığdırmayı engellemek için açık **model karmaşıklığı kısıtlamalarını** da uygular. Çoğu durumda bu uygulama özellikle karar ağacı veya orman algoritmalarının yanı sıra, tek tek ağaç en yüksek derinliğinin sınırlı olduğu ve ormanda kullanılan toplam ağaç sayısı veya ensesıya da zenginlik teknikleri sınırlıdır.
 
-Çapraz doğrulama (CV), tam eğitim verilerinizin çok sayıda alt kümesini alma ve her bir alt kümede bir modeli eğitme işlemidir. Bu, bir modelin "Lucky" alabilir ve bir alt küme ile harika bir doğruluk elde etmenizi sağlar, ancak birçok alt küme kullanarak modelin her seferinde bu yüksek doğruluğu elde edilmeyeceği. CV 'yi yaparken, bir doğrulama veri kümesi sağlarsınız, CV katlarınızı (alt küme sayısı) belirtin ve otomatik ML, doğrulama kümenizdeki hatayı en aza indirmek için modelinize eğitme ve hiper parametreleri ayarlamanıza yardımcı olur. Bir CV katlaması daha fazla olabilir, ancak bunların çoğunu kullanarak, son modelinizin daha fazla sığdırma olasılığını azaltır. Zorunluluğunu getirir, CV 'nin bir kez eğitim sağladığından, her *n* CV alt kümesi için bir kez eğitecaksınız. 
+**Çapraz doğrulama (CV)** , tam eğitim verilerinizin çok sayıda alt kümesini alma ve her bir alt kümede bir modeli eğitme işlemidir. Bu, bir modelin "Lucky" alabilir ve bir alt küme ile harika bir doğruluk elde etmenizi sağlar, ancak birçok alt küme kullanarak modelin her seferinde bu yüksek doğruluğu elde edilmeyeceği. CV 'yi yaparken, bir doğrulama veri kümesi sağlarsınız, CV katlarınızı (alt küme sayısı) belirtin ve otomatik ML, doğrulama kümenizdeki hatayı en aza indirmek için modelinize eğitme ve hiper parametreleri ayarlamanıza yardımcı olur. Bir CV katlaması daha fazla olabilir, ancak bunların çoğunu kullanarak, son modelinizin daha fazla sığdırma olasılığını azaltır. Zorunluluğunu getirir, CV 'nin bir kez eğitim sağladığından, her *n* CV alt kümesi için bir kez eğitecaksınız. 
 
 > [!NOTE]
 > Çapraz doğrulama varsayılan olarak etkinleştirilmemiştir; Otomatik ML ayarları ' nda yapılandırılması gerekir. Ancak, çapraz doğrulama yapılandırıldıktan ve bir doğrulama veri kümesi sağlandıktan sonra, işlem sizin için otomatikleştirilir. Bkz. 

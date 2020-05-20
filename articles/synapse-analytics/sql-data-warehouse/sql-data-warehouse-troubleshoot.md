@@ -1,6 +1,6 @@
 ---
-title: Sorun giderme
-description: Azure SYNAPSE Analytics sorunlarını giderme.
+title: SYNAPSE SQL sorunlarını giderme
+description: Azure SYNAPSE Analytics 'te SYNAPSE SQL sorunlarını giderme.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 973d2339db1e55f2cca45025f2d678e5126f4317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 618ef7329d28dc8006a338d8326d790a6a9d3554
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743676"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650470"
 ---
-# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Azure 'da SQL Analytics sorunlarını giderme SYNAPSE
+# <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL sorunlarını giderme
 
-Bu makalede, yaygın sorun giderme sorusu listelenmektedir.
+Bu makalede, SYNAPSE SQL 'de genel sorun giderme sorunları listelenmektedir.
 
 ## <a name="connecting"></a>Bağlanmada
 
@@ -81,5 +81,5 @@ Sorununuzla ilgili çözüm bulma konusunda daha fazla yardım için, deneyebile
 * [Videolar](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [Destek bileti oluşturun](sql-data-warehouse-get-started-create-support-ticket.md)
 * [MSDN forumu](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
-* [Stack Overflow forumu](https://stackoverflow.com/questions/tagged/azure-sqldw)
+* [Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-sqldw)
 * [Twitter](https://twitter.com/hashtag/SQLDW)

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 70ad69c1a34f656347b0cf53b28a1c35ac6ad043
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a8699b3942fe3a4b23f1d72036b7364cdab36f8e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598244"
+ms.locfileid: "83651955"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics işinden Azure SQL veritabanına erişmek için Yönetilen kimlikler kullanma (Önizleme)
 
@@ -56,13 +56,17 @@ Yönetilen bir kimlik oluşturduktan sonra bir Active Directory Yöneticisi seç
 
    ![Active Directory yönetici sayfası](./media/sql-db-output-managed-identity/active-directory-admin-page.png)
  
-1. Active Directory yönetici sayfasında, bir kullanıcı veya grup için SQL Server Yöneticisi olacak şekilde arama yapın ve **Seç**' e tıklayın.  
+1. Active Directory yönetici sayfasında, bir kullanıcı veya grup için SQL Server Yöneticisi olacak şekilde arama yapın ve **Seç**' e tıklayın.
 
    ![Active Directory Yöneticisi ekleme](./media/sql-db-output-managed-identity/add-admin.png)
 
-1. **Active Directory yönetici** sayfasında **Kaydet** ' i seçin. Yönetici değiştirme işlemi birkaç dakika sürer.  
+   Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediği için seçilemez.  **Azure AD Features and Limitations**    [SQL veritabanı veya Azure Synapse kimlik doğrulaması Için Azure Active Directory kimlik doğrulaması kullan](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)' ın Azure AD özellikleri ve sınırlamaları bölümünde desteklenen Yöneticiler listesine bakın. Rol tabanlı erişim denetimi (RBAC) yalnızca Portal için geçerlidir ve SQL Server yayılmaz. Ayrıca, seçilen kullanıcı veya Grup, sonraki bölümde **Kapsanan Veritabanı kullanıcısını** oluşturamayacak Kullanıcı olur.
 
-## <a name="create-a-database-user"></a>Veritabanı kullanıcısı oluşturma
+1. **Active Directory yönetici** sayfasında **Kaydet** ' i seçin. Yönetici değiştirme işlemi birkaç dakika sürer.
+
+   Azure AD yöneticisi 'ni ayarlarken, yeni yönetici adı (Kullanıcı veya grup) sanal ana veritabanında SQL Server kimlik doğrulaması kullanıcısı olarak bulunamaz. Varsa, Azure AD yönetici kurulumu başarısız olur ve bir yöneticinin (ad) zaten var olduğunu belirten oluşturma işlemi geri alınır. SQL Server kimlik doğrulaması kullanıcısı Azure AD 'nin bir parçası olmadığından, bu kullanıcı başarısız olduğu için Azure AD kimlik doğrulaması kullanarak sunucuya bağlanma çabaları vardır. 
+
+## <a name="create-a-contained-database-user"></a>Kapsanan veritabanı kullanıcısı oluşturma
 
 Daha sonra, SQL veritabanınızda Azure Active Directory kimliğiyle eşlenmiş bir kapsanan veritabanı kullanıcısı oluşturun. Kapsanan Veritabanı kullanıcısının ana veritabanı için bir oturum açma işlemi yoktur, ancak veritabanıyla ilişkili dizindeki bir kimlikle eşlenir. Azure Active Directory kimliği, tek bir kullanıcı hesabı veya grup olabilir. Bu durumda, Stream Analytics işiniz için kapsanan bir veritabanı kullanıcısı oluşturmak istersiniz. 
 
@@ -92,15 +96,27 @@ Daha sonra, SQL veritabanınızda Azure Active Directory kimliğiyle eşlenmiş 
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
 
+1. Microsoft 'un Stream Analytics işinin SQL veritabanına erişimi olup olmadığını doğrulamak için Azure Active Directory, veritabanıyla iletişim kurmak için Azure Active Directory izni vermemiz gerekir. Bunu yapmak için, Azure portalındaki "güvenlik duvarları ve sanal ağ" sayfasına yeniden gidin ve "Azure hizmetleri ve kaynaklarının bu sunucuya erişmesine Izin ver" seçeneğini etkinleştirin. 
+
+   ![Güvenlik Duvarı ve sanal ağ](./media/sql-db-output-managed-identity/allow-access.png)
+
 ## <a name="grant-stream-analytics-job-permissions"></a>Stream Analytics işi izinleri verme
 
-Stream Analytics işin, SQL veritabanı kaynağına **bağlanmak** Için yönetilen kimliğin izni vardır. Büyük olasılıkla, Stream Analytics işin **Select**gibi komutları çalıştırmasına izin vermek verimli olabilir. SQL Server Management Studio kullanarak Stream Analytics işine bu izinleri verebilirsiniz. Daha fazla bilgi için bkz. [Grant (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) başvurusu.
+Bir kapsanan veritabanı kullanıcısı oluşturduktan ve önceki bölümde açıklandığı gibi portalda Azure hizmetlerine erişim izni verildiğinde, Stream Analytics işiniz yönetilen kimlik aracılığıyla SQL veritabanı kaynaklarına, yönetilen kimlik üzerinden **bağlanmak** için bir izne sahiptir. Stream Analytics iş akışında daha sonra gerekli olacağı için Stream Analytics işine seçme ve ekleme izinleri vermenizi öneririz. **Select** izni, Işin SQL veritabanındaki tabloyla bağlantısını test etmesine izin verir. **Ekleme** izni, bir GIRIŞI ve SQL veritabanı çıkışını yapılandırdıktan sonra uçtan uca Stream Analytics sorgularının test edilmesine olanak tanır. SQL Server Management Studio kullanarak Stream Analytics işine bu izinleri verebilirsiniz. Daha fazla bilgi için bkz. [Grant (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) başvurusu.
+
+Yalnızca veritabanındaki belirli bir tablo veya nesneye izin vermek için aşağıdaki T-SQL söz dizimini kullanın ve sorguyu çalıştırın. 
+
+```sql
+GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME; 
+```
 
 Alternatif olarak, SQL Server Management Studio ' de SQL veritabanınıza sağ tıklayıp **özellikler > izinler**' i seçebilirsiniz. İzinler menüsünde, daha önce eklediğiniz Stream Analytics işi görebilir ve uygun gördüğünüz şekilde izinleri el ile verebilir veya reddedebilirsiniz.
 
 ## <a name="create-an-azure-sql-database-output"></a>Azure SQL veritabanı çıkışı oluşturma
 
 Yönetilen kimliğiniz yapılandırıldığına göre, Azure SQL veritabanını Stream Analytics işinize çıktı olarak eklemeye hazırsınız.
+
+Uygun çıktı şemasıyla SQL veritabanınızda bir tablo oluşturduğunuzdan emin olun. Bu tablonun adı, SQL veritabanı çıktısını Stream Analytics işine eklediğinizde doldurulması gereken özelliklerden biridir. Ayrıca, bağlantıyı test etmek ve Stream Analytics sorguları çalıştırmak için işin **Select** ve **Insert** izinlerine sahip olduğundan emin olun. Daha önce yapmadıysanız [Stream Analytics işi Izinleri verme](#grant-stream-analytics-job-permissions) bölümüne bakın. 
 
 1. Stream Analytics işinize geri dönün ve **Iş topolojisi**altında **çıktılar** sayfasına gidin. 
 

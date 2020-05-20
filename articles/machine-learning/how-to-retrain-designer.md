@@ -5,16 +5,17 @@ description: Azure Machine Learning tasarımcısında yayımlanmış işlem hatl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: fb0122833dabe4030232efb3ca07557ce1826aff
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: designer
+ms.openlocfilehash: 7a132734c3ccb6d5d143053b83723950d154d74c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981910"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653698"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) ile modelleri yeniden eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -29,7 +30,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Eğitim işlem hattınızı yayımlayın.
 > * Modelinize yeni parametrelerle yeniden eğitme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Kurumsal SKU 'SU olan bir Azure Machine Learning çalışma alanı.
 * Bu nasıl yapılır serisinin 1. bölümünü, [tasarımcıda verileri dönüştürür](how-to-designer-transform-data.md).

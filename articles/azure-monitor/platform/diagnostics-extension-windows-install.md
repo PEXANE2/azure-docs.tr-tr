@@ -7,43 +7,68 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: dd18fd484ac456f0c38cd6d9b73a2395a08ad5d0
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: a964a28b728a2b1741fb555f47fe6e329bc9902a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883116"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655640"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma
-Azure tanılama uzantısı, Azure Izleyici 'de Konuk işletim sisteminden ve Azure sanal makinelerinin ve diğer işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Windows Tanılama uzantısı 'nı yükleme ve yapılandırma hakkında ayrıntılar ve verilerin ve Azure depolama hesabında nasıl depolandığı hakkında bir açıklama sağlanmaktadır.
+Azure [Tanılama uzantısı](diagnostics-extension-overview.md) , Azure izleyici 'de Konuk işletim sisteminden ve Azure sanal makinelerinin ve diğer işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Windows Tanılama uzantısı 'nı yükleme ve yapılandırma hakkında ayrıntılar ve verilerin ve Azure depolama hesabında nasıl depolandığı hakkında bir açıklama sağlanmaktadır.
 
 Tanılama uzantısı, Azure 'da bir [sanal makine uzantısı](../../virtual-machines/extensions/overview.md) olarak uygulanır, bu nedenle Kaynak Yöneticisi şablonları, POWERSHELL ve CLI kullanarak aynı yükleme seçeneklerini destekler. Sanal makine uzantılarının yüklenmesi ve bakımında ilgili ayrıntılar için bkz. [Windows Için sanal makine uzantıları ve özellikleri](../../virtual-machines/extensions/features-windows.md) .
+
+## <a name="overview"></a>Genel Bakış
+Windows Azure tanılama uzantısı 'nı yapılandırırken, belirtilen tüm verilerin gönderileceği bir depolama hesabı belirtmeniz gerekir. Verileri farklı konumlara göndermek için isteğe bağlı olarak daha fazla *veri havuzları* ekleyebilirsiniz.
+
+- Azure Izleyici havuzu-Azure Izleyici ölçümlerine konuk performans verileri gönderin.
+- Olay Hub 'ı havuzu-Azure 'un dışından iletmek için konuk performansı ve günlük verilerini Azure Olay Hub 'larına gönderin. Bu havuz Azure portal yapılandırılamaz.
+
 
 ## <a name="install-with-azure-portal"></a>Azure portal ile yüklensin
 Tanılama uzantısını, yapılandırma ile doğrudan çalışmaktan farklı bir arabirim sağlayan Azure portal tek bir sanal makineye yükleyebilir ve yapılandırabilirsiniz. Tanılama uzantısını etkinleştirdiğinizde, en yaygın performans sayaçları ve olayları ile otomatik olarak varsayılan bir yapılandırma kullanılır. Bu varsayılan yapılandırmayı, özel gereksinimlerinize göre değiştirebilirsiniz.
 
 > [!NOTE]
-> Azure Event Hubs 'a veri gönderme dahil Azure portal kullanarak yapılandırayükleyemezsiniz tanılama uzantısı ayarları vardır. Bu ayarlar için diğer yapılandırma yöntemlerinden birini kullanmalısınız.
+> Aşağıda, tanılama uzantısı için en yaygın ayarların açıklaması verilmiştir. Tüm yapılandırma seçenekleri hakkında ayrıntılı bilgi için bkz. [Windows Tanılama uzantısı şeması](diagnostics-extension-schema-windows.md).
 
 1. Azure portal bir sanal makinenin menüsünü açın.
+
 2. VM menüsünün **izleme** bölümünde **Tanılama ayarları** ' na tıklayın.
+
 3. Tanılama uzantısı zaten etkinleştirilmemişse **Konuk düzeyinde Izlemeyi etkinleştir** ' e tıklayın.
-4. Adlı VM için yeni bir Azure depolama hesabı oluşturulacak ve sanal makine için kaynak grubunun adını temel alır. **Aracı** SEKMESINI seçerek VM 'yi başka bir depolama hesabına ekleyebilirsiniz.
 
-![Tanılama ayarları](media/diagnostics-extension-windows-install/diagnostic-settings.png)
+   ![İzlemeyi etkinleştirme](media/diagnostics-extension-windows-install/enable-monitoring.png)
 
+4. Ada sahip VM için yeni bir Azure depolama hesabı oluşturulacak, sanal makine için kaynak grubunun adını temel alır ve varsayılan bir grup konuk performans sayacı ve günlüğü seçilir.
 
-Tanılama uzantısı etkinleştirildikten sonra varsayılan yapılandırmayı değiştirebilirsiniz. Aşağıdaki tabloda, farklı sekmelerde değiştirebileceğiniz seçenekler açıklanmaktadır. Bazı seçeneklerde, daha ayrıntılı yapılandırma belirtmenize olanak tanıyan **özel** bir komut vardır. farklı ayarlarla ilgili ayrıntılar için bkz. [Windows Tanılama uzantısı şeması](diagnostics-extension-schema-windows.md) .
+   ![Tanılama ayarları](media/diagnostics-extension-windows-install/diagnostic-settings.png)
 
-| Tab | Açıklama |
-|:---|:---|
-| Genel Bakış | Geçerli yapılandırmayı diğer sekmelerin bağlantılarıyla birlikte görüntüler. |
-| Performans sayaçları | Toplanacak performans sayaçlarını ve her birinin örnek hızını seçin.  |
-| Günlükler | Toplanacak günlük verilerini seçin. Buna Windows olay günlükleri, IIS günlükleri, .NET uygulama günlükleri ve ETW olayları dahildir.  |
-| Kilitlenme bilgi dökümleri | Farklı süreçler için kilitlenme dökümünü etkinleştirin. |
-| Yapma | Azure depolama 'ya ek olarak hedefe veri göndermek için veri havuzlarını etkinleştirin.<br>Azure Izleyici-Azure Izleyici ölçümlerine performans verileri gönderir.<br>Application Insights-verileri bir Application Insights uygulamasına gönderin. |
-| Aracı | Aracı için aşağıdaki yapılandırmayı değiştirin:<br>-Depolama hesabını değiştirin.<br>-Aracı için kullanılan en yüksek yerel diski belirtin.<br>-Aracının kendisinin sistem durumu için günlükleri yapılandırın.|
+5. **Performans sayaçları** sekmesinde, bu sanal makineden toplamak istediğiniz konuk ölçümlerini seçin. Daha gelişmiş seçim için **özel** ayarı kullanın.
 
+   ![Performans sayaçları](media/diagnostics-extension-windows-install/performance-counters.png)
+
+6. **Günlükler** sekmesinde, sanal makineden toplanacak günlükleri seçin. Günlükler depolama veya Olay Hub 'larına gönderilebilir, ancak Azure Izleyici 'ye gönderilemez. Azure Izleyici 'de Konuk günlüklerini toplamak için [Log Analytics aracısını](log-analytics-agent.md) kullanın.
+
+   ![Günlükler](media/diagnostics-extension-windows-install/logs.png)
+
+7. **Kilitlenme dökümleri** sekmesinde, kilitlenme sonrasında bellek dökümlerini toplamak için herhangi bir işlem belirtin. Veriler, tanılama ayarı için depolama hesabına yazılır ve isteğe bağlı olarak bir blob kapsayıcısı belirtebilirsiniz.
+
+   ![Kilitlenme bilgi dökümleri](media/diagnostics-extension-windows-install/crash-dumps.png)
+
+8. **Havuzlar** sekmesinde, verileri Azure depolama dışındaki konumlara göndermek isteyip istemediğinizi belirtin. **Azure izleyici**' yi seçerseniz, konuk performans verileri Azure Izleyici ölçümlerine gönderilir. Azure portal kullanarak Olay Hub 'ları havuzunu yapılandıramazsınız.
+
+   ![Yapma](media/diagnostics-extension-windows-install/sinks.png)
+   
+   Sanal makineniz için yapılandırılmış bir sistem tarafından atanan kimliği etkinleştirmediyseniz, Azure Izleyici havuzu ile bir yapılandırmayı kaydettiğinizde aşağıdaki uyarıyı görebilirsiniz. Sistem tarafından atanan kimliği etkinleştirmek için başlık üzerine tıklayın.
+   
+   ![Yönetilen varlık](media/diagnostics-extension-windows-install/managed-entity.png)
+
+9. **Aracıda**, depolama hesabını değiştirebilir, disk kotasını ayarlayabilir ve tanılama altyapısı günlüklerinin toplanmasını isteyip istemediğinizi belirtebilirsiniz.  
+
+   ![Aracı](media/diagnostics-extension-windows-install/agent.png)
+
+10. Yapılandırmayı kaydetmek için **Kaydet** ' e tıklayın. 
 
 > [!NOTE]
 > Tanılama uzantısının yapılandırması JSON veya XML içinde biçimlendirilese de, Azure portal yapılan tüm yapılandırmalar her zaman JSON olarak depolanır. Başka bir yapılandırma yöntemiyle XML kullanırsanız ve sonra Azure portal yapılandırmanızı değiştirirseniz, ayarlar JSON olarak değiştirilir.
@@ -73,6 +98,7 @@ Korunan ayarlar, yapılandırma şemasının [Privateconfig öğesinde](diagnost
     "storageAccountEndPoint": "https://mystorageaccount.blob.core.windows.net"
 }
 ```
+
 Ortak ayarlar, yapılandırma şemasının [ortak öğesinde](diagnostics-extension-schema-windows.md#publicconfig-element) tanımlanmıştır. Aşağıda, tanılama altyapı günlüklerinin toplanması, tek bir performans sayacı ve tek bir olay günlüğü sağlayan bir genel ayarlar dosyası örneği verilmiştir. Genel ayarların tüm ayrıntıları için bkz. [örnek yapılandırma](diagnostics-extension-schema-windows.md#publicconfig-element) .
 
 ```JSON
@@ -177,11 +203,11 @@ Aşağıdaki tabloda, tanılama uzantısından toplanan farklı veri türleri ve
 | Özel | Blob | Tanılama İzleyicisi tarafından izlenen dizinleri yapılandırmaya dayalı özel bir kapsayıcı.  Bu blob kapsayıcısının adı WADDirectoriesTable içinde belirtilecektir. |
 
 ## <a name="tools-to-view-diagnostic-data"></a>Tanılama verilerini görüntülemek için Araçlar
-Verileri depolama alanına aktarıldıktan sonra görüntülemek için kullanabileceğiniz çeşitli araçlar vardır. Örneğin:
+Verileri depolama alanına aktarıldıktan sonra görüntülemek için kullanabileceğiniz çeşitli araçlar vardır. Örnek:
 
 * Visual Studio 'da Sunucu Gezgini-Azure araçlarını Microsoft Visual Studio yüklediyseniz, Azure depolama hesaplarınızdan salt okunurdur blob ve tablo verilerini görüntülemek için Sunucu Gezgini Azure Storage düğümünü kullanabilirsiniz. Yerel depolama öykünücü hesabınızdan ve ayrıca Azure için oluşturduğunuz depolama hesaplarından verileri görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [Sunucu Gezgini Ile depolama kaynaklarına göz atma ve yönetme](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Microsoft Azure Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md) , Windows, OSX ve Linux 'Ta Azure Depolama verileriyle kolayca çalışabilmenizi sağlayan tek başına bir uygulamadır.
 * [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) , Azure üzerinde çalışan uygulamalar tarafından toplanan tanılama verilerini görüntülemenize, yüklemenize ve yönetmenize olanak tanıyan Azure tanılama yöneticisini içerir.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 - İzleme verilerini Azure Event Hubs 'a iletme hakkında daha fazla bilgi için bkz. [Windows Azure tanılama uzantısından veri gönderme Event Hubs](diagnostics-extension-stream-event-hubs.md) .

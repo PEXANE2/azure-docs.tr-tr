@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4249f1e9f2bf9fcb235644bb211065db460c936e
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 0e7a2e9e5feb848971c4858415510f98a7bdaf78
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869905"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655340"
 ---
-# <a name="provision-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısında üretilen iş sağlama
+# <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısında standart (el ile) aktarım hızı sağlama
 
-Bu makalede, Azure Cosmos DB bir kapsayıcı (koleksiyon, grafik veya tablo) üzerinde üretilen iş sağlama açıklanmaktadır. Tek bir kapsayıcıda üretilen iş sağlama veya [bir veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md) ve veritabanı içindeki kapsayıcılar arasında paylaşma sağlayabilirsiniz. Azure portal, Azure CLı veya Azure Cosmos DB SDK 'Ları kullanarak bir kapsayıcıda aktarım hızı sağlayabilirsiniz.
+Bu makalede, Azure Cosmos DB bir kapsayıcı (koleksiyon, grafik veya tablo) üzerinde standart (el ile) aktarım hızı sağlama açıklanmaktadır. Tek bir kapsayıcıda üretilen iş sağlama veya [bir veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md) ve veritabanı içindeki kapsayıcılar arasında paylaşma sağlayabilirsiniz. Azure portal, Azure CLı veya Azure Cosmos DB SDK 'Ları kullanarak bir kapsayıcıda aktarım hızı sağlayabilirsiniz.
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos hesabı seçin.
 
@@ -27,7 +27,7 @@ Bu makalede, Azure Cosmos DB bir kapsayıcı (koleksiyon, grafik veya tablo) üz
 
    * Yeni bir veritabanı mı yoksa var olan bir veritabanını mı kullandığınızı belirtin.
    * Bir kapsayıcı (veya tablo veya grafik) KIMLIĞI girin.
-   * Bir bölüm anahtarı değeri girin (örneğin, `/userid`).
+   * Bir bölüm anahtarı değeri girin (örneğin, `/userid` ).
    * Sağlamak istediğiniz bir üretilen iş (örneğin, 1000 ru) girin.
    * **Tamam**’ı seçin.
 
@@ -41,7 +41,7 @@ Adanmış aktarım hızı içeren bir kapsayıcı oluşturmak için bkz.
 * [PowerShell kullanarak kapsayıcı oluşturma](manage-with-powershell.md#create-container)
 
 > [!Note]
-> MongoDB için Azure Cosmos DB API 'siyle yapılandırılmış bir Azure Cosmos hesabındaki kapsayıcıda aktarım hızı sağlıyorsanız, bölüm anahtarı yolu için kullanın `/myShardKey` . Cassandra API ile yapılandırılmış bir Azure Cosmos hesabındaki kapsayıcıda aktarım hızı sağlıyorsanız, bölüm anahtarı yolu için kullanın `/myPrimaryKey` .
+> MongoDB için Azure Cosmos DB API 'siyle yapılandırılmış bir Azure Cosmos hesabındaki kapsayıcıda aktarım hızı sağlıyorsanız, `/myShardKey` bölüm anahtarı yolu için kullanın. Cassandra API ile yapılandırılmış bir Azure Cosmos hesabındaki kapsayıcıda aktarım hızı sağlıyorsanız, `/myPrimaryKey` bölüm anahtarı yolu için kullanın.
 
 ## <a name="net-sdk"></a>.NET SDK
 
@@ -123,5 +123,6 @@ session.Execute("ALTER TABLE myKeySpace.myTable WITH cosmosdb_provisioned_throug
 
 Azure Cosmos DB ' de üretilen iş sağlama hakkında bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [Bir veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md)
+* [Bir veritabanında standart (el ile) işleme sağlama](how-to-provision-database-throughput.md)
+* [Veritabanında otomatik ölçeklendirme üretilen işi sağlama](how-to-provision-autoscale-throughput.md)
 * [Azure Cosmos DB'deki istek birimleri ve aktarım hızı](request-units.md)

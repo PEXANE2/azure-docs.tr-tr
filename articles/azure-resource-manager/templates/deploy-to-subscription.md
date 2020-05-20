@@ -2,17 +2,20 @@
 title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.openlocfilehash: a48bc2fd4efb383b42fd0889df079c9a6f700dda
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 05/18/2020
+ms.openlocfilehash: 4f8bcbfc6467969c9d8ca8b1511e6e8ffff94b14
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929069"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653352"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
-Azure aboneliğinizdeki kaynakların yönetimini basitleştirmek için, abonelik genelinde [ilkeleri](../../governance/policy/overview.md) veya [rol tabanlı erişim denetimlerini](../../role-based-access-control/overview.md) tanımlayabilir ve atayabilirsiniz. Abonelik düzeyi şablonları ile, ilkeleri bir şekilde uygulayın ve aboneliğe roller atayın. Ayrıca, kaynak grupları oluşturabilir ve kaynakları dağıtabilirsiniz.
+Kaynakların yönetimini basitleştirmek için Azure aboneliğinizin düzeyindeki kaynakları dağıtabilirsiniz. Örneğin, aboneliğinize [ilke](../../governance/policy/overview.md) ve [rol tabanlı erişim denetimleri](../../role-based-access-control/overview.md) dağıtabilirsiniz ve bu kaynaklar aboneliğiniz genelinde uygulanır. Ayrıca, kaynak grupları oluşturabilir ve kaynakları bu kaynak gruplarına dağıtabilirsiniz.
+
+> [!NOTE]
+> Abonelik düzeyi dağıtımında 800 farklı kaynak grubuna dağıtım yapabilirsiniz.
 
 Şablonları abonelik düzeyinde dağıtmak için Azure CLı, PowerShell veya REST API kullanın. Azure portal, abonelik düzeyinde dağıtımı desteklemez.
 
@@ -86,7 +89,7 @@ Abonelik düzeyindeki dağıtımlar için, dağıtım için bir konum sağlaman�
 
 Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **azuredeploy. JSON** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
 
-Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu `InvalidDeploymentLocation`alırsanız, bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
+Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
 
 ## <a name="use-template-functions"></a>Şablon işlevlerini kullanma
 
@@ -130,7 +133,7 @@ Aşağıdaki şablon boş bir kaynak grubu oluşturur.
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
@@ -161,7 +164,7 @@ Birden fazla kaynak grubu oluşturmak için kaynak gruplarıyla [Kopyala öğesi
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "location": "[parameters('rgLocation')]",
       "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
       "copy": {
@@ -179,7 +182,7 @@ Kaynak yinelemesi hakkında daha fazla bilgi için bkz. [Azure Resource Manager 
 
 ## <a name="resource-group-and-resources"></a>Kaynak grubu ve kaynaklar
 
-Kaynak grubu oluşturmak ve kaynaklarına kaynak dağıtmak için, iç içe geçmiş bir şablon kullanın. İç içe şablon, kaynak grubuna dağıtılacak kaynakları tanımlar. Kaynak grubunun kaynakları dağıtımdan önce mevcut olduğundan emin olmak için, iç içe geçmiş şablonu kaynak grubuna bağımlı olarak ayarlayın.
+Kaynak grubu oluşturmak ve kaynaklarına kaynak dağıtmak için, iç içe geçmiş bir şablon kullanın. İç içe şablon, kaynak grubuna dağıtılacak kaynakları tanımlar. Kaynak grubunun kaynakları dağıtımdan önce mevcut olduğundan emin olmak için, iç içe geçmiş şablonu kaynak grubuna bağımlı olarak ayarlayın. En fazla 800 kaynak grubuna dağıtım yapabilirsiniz.
 
 Aşağıdaki örnek, bir kaynak grubu oluşturur ve kaynak grubuna bir depolama hesabı dağıtır.
 
@@ -205,14 +208,14 @@ Aşağıdaki örnek, bir kaynak grubu oluşturur ve kaynak grubuna bir depolama 
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "location": "[parameters('rgLocation')]",
       "name": "[parameters('rgName')]",
       "properties": {}
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "storageDeployment",
       "resourceGroup": "[parameters('rgName')]",
       "dependsOn": [
@@ -228,7 +231,7 @@ Aşağıdaki örnek, bir kaynak grubu oluşturur ve kaynak grubuna bir depolama 
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2017-10-01",
+              "apiVersion": "2019-06-01",
               "name": "[variables('storageName')]",
               "location": "[parameters('rgLocation')]",
               "sku": {

@@ -11,19 +11,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: fcf31fcc266358911612c25e0b73a0a9de696b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57005bc18d1eda42043236086ebbac69e54cc505
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77539049"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655791"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Azure Lab Services bir sınıf şablonu oluşturma ve yönetme
 Laboratuvardaki şablon, tüm kullanıcıların sanal makinelerinin oluşturulduğu bir temel sanal makine görüntüsüdür. Şablon sanal makinesini, tam olarak laboratuvar kullanıcılarına sağlamak istediklerinizle yapılandırılacak şekilde ayarlayın. Laboratuvar kullanıcılarının görebileceği bir ad ve açıklama belirtebilirsiniz. Daha sonra, şablon VM 'nin örneklerini laboratuvar kullanıcılarınız için kullanılabilir hale getirmek üzere şablonu yayımlayabilirsiniz. Bir şablonu yayımladığınızda Azure Lab Services, şablonu kullanarak laboratuvarda sanal makineler oluşturur. Bu işlemde oluşturulan sanal makine sayısı, laboratuvarda izin verilen maksimum kullanıcı sayısıyla aynıdır. Laboratuvarın kullanım ilkesinde bu maksimum değeri ayarlayabilirsiniz. Tüm sanal makineler, şablonla aynı yapılandırmaya sahiptir.
 
 Bu makalede, bir Azure Lab Services sınıf laboratuvarında şablon sanal makinesinin nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. 
+
+> [!NOTE]
+> Laboratuvar oluşturduğunuzda, şablon VM oluşturulur ancak başlatılmaz. Bunu başlatabilir, ona bağlanabilir ve laboratuvar için önkoşul olan herhangi bir yazılımı yükleyebilir ve sonra yayımlayabilirsiniz. Şablon VM 'yi yayımladığınızda, bunu yapmadıysanız, sizin için otomatik olarak kapatılır. 
+> 
+> Şablon VM 'Leri çalışırken **Maliyet** doğurur, bu nedenle çalışıyor olması GEREKMIYORSA şablon VM 'nin kapatıldığından emin olun. 
+
 
 ## <a name="set-or-update-template-title-and-description"></a>Şablon başlığını ve açıklamasını ayarlama veya güncelleştirme
 İlk kez başlık ve açıklama ayarlamak ve daha sonra güncelleştirmek için aşağıdaki adımları kullanın. 

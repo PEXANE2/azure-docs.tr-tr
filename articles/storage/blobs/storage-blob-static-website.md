@@ -6,14 +6,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/29/2019
+ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: 57ba59288cbf65c1ef588302965d480ee357ea4d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 6a007525f8402bb163195b623173d665f9721bff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779986"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648513"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Depolama'da statik web sitesi barındırma
 
@@ -50,24 +50,24 @@ Adım adım yönergeler için bkz. [Azure depolama 'da statik bir Web sitesi bar
 
 ## <a name="viewing-content"></a>İçeriği görüntüleme
 
-Kullanıcılar Web sitesinin genel URL 'sini kullanarak bir tarayıcıdan site içeriğini görüntüleyebilir. Azure portal, Azure CLı veya PowerShell kullanarak URL 'YI bulabilirsiniz. Bu tabloyu kılavuz olarak kullanın.
-
-|Araç| Rehber |
-|----|----|
-|**Azure portal** | [Azure portal kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure CLI** | [Azure CLı kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#cli-find-url) |
-|**Azure PowerShell modülü** | [PowerShell kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#powershell-find-url) |
-
-Sitenizin URL 'SI bölgesel bir kod içerir. Örneğin, URL `https://contosoblobaccount.z22.web.core.windows.net/` bölgesel kod `z22`içerir.
-
-Bu kodun URL 'de kalması gerekir, ancak yalnızca iç kullanım içindir ve bu kodu başka bir şekilde kullanmak zorunda kalmazsınız.
-
-Statik Web sitesi barındırmayı etkinleştirdiğinizde belirttiğiniz dizin belgesi, kullanıcılar siteyi açtıklarında ve belirli bir dosya belirtmezseniz görüntülenir (örneğin: `https://contosoblobaccount.z22.web.core.windows.net`).  
+Kullanıcılar Web sitesinin genel URL 'sini kullanarak bir tarayıcıdan site içeriğini görüntüleyebilir. Azure portal, Azure CLı veya PowerShell kullanarak URL 'YI bulabilirsiniz. Bkz. [Web sitesi URL 'Sini bulma](storage-blob-static-website-how-to.md#portal-find-url).
 
 Sunucu bir 404 hatası döndürürse ve Web sitesini etkinleştirdiğinizde bir hata belgesi belirtmediğinde, kullanıcıya varsayılan bir 404 sayfası döndürülür.
 
 > [!NOTE]
 > [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) , statik Web sitesinde desteklenmez.
+
+### <a name="regional-codes"></a>Bölgesel kodlar
+
+Sitenizin URL 'SI bölgesel bir kod içerir. Örneğin, URL `https://contosoblobaccount.z22.web.core.windows.net/` bölgesel kod içerir `z22` .
+
+Bu kodun URL 'de kalması gerekir, ancak yalnızca iç kullanım içindir ve bu kodu başka bir şekilde kullanmak zorunda kalmazsınız.
+
+Statik Web sitesi barındırmayı etkinleştirdiğinizde belirttiğiniz dizin belgesi, kullanıcılar siteyi açtıklarında ve belirli bir dosya belirtmezseniz görüntülenir (örneğin: `https://contosoblobaccount.z22.web.core.windows.net` ).  
+
+### <a name="secondary-endpoints"></a>İkincil uç noktalar
+
+[İkincil bir bölgede artıklık](../common/storage-redundancy.md#redundancy-in-a-secondary-region)ayarlarsanız, ikincil bir uç nokta kullanarak Web sitesi içeriğine de erişebilirsiniz. Veriler ikincil bölgelere zaman uyumsuz olarak çoğaltıldığından, ikincil uç noktada kullanılabilen dosyalar birincil uç noktada kullanılabilir dosyalarla her zaman eşitlenmemektedir. 
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Web kapsayıcısının genel erişim düzeyini ayarlamanın etkisi
 
@@ -79,9 +79,9 @@ Aşağıdaki ekran görüntüsünde Azure portal ortak erişim düzeyi ayarı g�
 
 Birincil statik Web sitesi uç noktası etkilenmediğinden, genel erişim düzeyinde yapılan bir değişiklik birincil blob hizmeti uç noktasını etkiler.
 
-Örneğin, **$Web** kapsayıcısının genel erişim düzeyini ( **Anonim erişim olmadan)** **BLOB 'a (yalnızca blob 'lar için anonim okuma erişimi**) değiştirirseniz, birincil statik Web sitesi uç noktasına `https://contosoblobaccount.z22.web.core.windows.net/index.html` genel erişim düzeyi değişmez.
+Örneğin, **$Web** kapsayıcısının genel erişim düzeyini ( **Anonim erişim olmadan)** **BLOB 'a (yalnızca blob 'lar için anonim okuma erişimi**) değiştirirseniz, birincil statik Web sitesi uç noktasına genel erişim düzeyi `https://contosoblobaccount.z22.web.core.windows.net/index.html` değişmez.
 
-Bununla birlikte, birincil blob hizmeti uç noktasına `https://contosoblobaccount.blob.core.windows.net/$web/index.html` genel erişim, Private iken public olarak değişir. Artık kullanıcılar bu iki uç noktanın birini kullanarak bu dosyayı açabilir.
+Bununla birlikte, birincil blob hizmeti uç noktasına genel erişim, `https://contosoblobaccount.blob.core.windows.net/$web/index.html` Private iken public olarak değişir. Artık kullanıcılar bu iki uç noktanın birini kullanarak bu dosyayı açabilir.
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Özel bir etki alanını statik bir Web sitesi URL 'siyle eşleme
 

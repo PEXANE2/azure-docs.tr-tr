@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 1a3ec22b9d1375f1c438d24791389284c1d4ee84
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 461602aee6d88f8d8f829fcf89e3433a8185e34d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982556"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658948"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB zaman uyumsuz Java SDK v2 için performans ipuçları
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982556"
 > 
 
 > [!IMPORTANT]  
-> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projeniz için Azure Cosmos DB Java SDK v4 kullanmayı düşünün. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Kılavuzu 'ndaki yönergeleri izleyin. 
+> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projenizi [Java SDK v4 Azure Cosmos DB](sql-api-sdk-java-v4.md) yükseltmeniz ve ardından Azure Cosmos DB Java SDK v4 [performansı ipuçları kılavuzunu](performance-tips-java-sdk-v4-sql.md)okumanız gerekir. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) kılavuzundaki yönergeleri izleyin. 
 > 
 > Bu makaledeki performans ipuçları yalnızca Azure Cosmos DB zaman uyumsuz Java SDK v2 içindir. Daha fazla bilgi için bkz. Azure Cosmos DB zaman uyumsuz Java SDK v2 [sürüm notları](sql-api-sdk-async-java.md), [Maven deposu](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)ve Azure Cosmos DB zaman uyumsuz Java SDK v2 [sorun giderme kılavuzu](troubleshoot-java-async-sdk.md) .
 >
@@ -154,7 +154,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
 * **Ad tabanlı adresleme kullan**
 
-    Bağlantıların `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`, bağlantıyı oluşturmak için kullanılan tüm kaynakların RESOURCEID 'lerini almaktan kaçınmak için biçimi\_ `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` olan, kendi kendini bağlayan, (self) değil, ad tabanlı adresleme kullanın. Ayrıca, bu kaynaklar yeniden oluşturulur (muhtemelen aynı ada sahip olabilir), önbelleğe alma işlemi yardımcı olmayabilir.
+    Bağlantıların, `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId` \_ `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` bağlantıyı oluşturmak için kullanılan tüm kaynakların RESOURCEID 'lerini almaktan kaçınmak için biçimi olan, kendi kendini bağlayan, (self) değil, ad tabanlı adresleme kullanın. Ayrıca, bu kaynaklar yeniden oluşturulur (muhtemelen aynı ada sahip olabilir), önbelleğe alma işlemi yardımcı olmayabilir.
 
    <a id="tune-page-size"></a>
 
@@ -209,13 +209,13 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
       });
     ```
 
-    Çalışmanızın türüne göre, çalışmanız için mevcut olan RxJava Scheduler 'ı kullanmanız gerekir. Buradan [``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html)okuyun.
+    Çalışmanızın türüne göre, çalışmanız için mevcut olan RxJava Scheduler 'ı kullanmanız gerekir. Buradan okuyun [``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html) .
 
     Daha fazla bilgi için lütfen Azure Cosmos DB zaman uyumsuz Java SDK v2 için [GitHub sayfasına](https://github.com/Azure/azure-cosmosdb-java) bakın.
 
 * **Netty 'ın günlüğünü devre dışı bırak**
 
-    Netty kitaplığı günlüğü geveze ve ek CPU maliyetlerinden kaçınmak için kapalı olması gerekir (yapılandırmada oturum açmayı gizleme yeterli olmayabilir). Hata ayıklama modunda değilseniz, netty 'ın günlüğünü tamamen devre dışı bırakın. Bu nedenle, netty 'den kaynaklanan ``org.apache.log4j.Category.callAppenders()`` ek CPU maliyetlerini kaldırmak için Log4J kullanıyorsanız, kod tabanınıza aşağıdaki satırı ekleyin:
+    Netty kitaplığı günlüğü geveze ve ek CPU maliyetlerinden kaçınmak için kapalı olması gerekir (yapılandırmada oturum açmayı gizleme yeterli olmayabilir). Hata ayıklama modunda değilseniz, netty 'ın günlüğünü tamamen devre dışı bırakın. Bu nedenle, netty 'den kaynaklanan ek CPU maliyetlerini kaldırmak için Log4J kullanıyorsanız ``org.apache.log4j.Category.callAppenders()`` , kod tabanınıza aşağıdaki satırı ekleyin:
 
     ```java
     org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
@@ -296,7 +296,7 @@ Diğer platformlar (Red hat, Windows, Mac vb.) için bu yönergelere bakınhttps
 
     Bir sorgunun karmaşıklığı, bir işlem için kaç istek biriminin tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
 
-    Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, bu işlemler tarafından tüketilen istek birimi sayısını ölçmek üzere [x-MS-Request-şarj](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) üst bilgisini inceleyin. Ayrıca,\<Resourceresıset> veya feedresponse\<T> ' de eşdeğer requestücretözelliğine bakabilirsiniz.
+    Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, bu işlemler tarafından tüketilen istek birimi sayısını ölçmek üzere [x-MS-Request-şarj](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) üst bilgisini inceleyin. Ayrıca, Resourceresıset \<> veya FeedResponse T> ' de eşdeğer Requestücretözelliğine bakabilirsiniz \< .
 
     ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-requestcharge"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 

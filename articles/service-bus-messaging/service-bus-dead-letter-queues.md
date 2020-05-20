@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: 9c1a0cb92fbaf98d25799ffb5a85e666e7c05f8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6630d96c90a221a6b0374f2e4758748a77ad0610
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158919"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647832"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus atılacak ileti sıralarına genel bakış
 
@@ -40,28 +40,27 @@ Konu düzeyinde teslim edilemeyen ileti sırasındaki ileti sayısını almak m�
 
 ![DLQ ileti sayısı](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-Ayrıca, Azure CLı komutunu kullanarak DLQ iletilerinin sayısını alabilirsiniz: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show). 
+Ayrıca, Azure CLı komutunu kullanarak DLQ iletilerinin sayısını alabilirsiniz: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show) . 
 
 ## <a name="moving-messages-to-the-dlq"></a>İletileri DLQ 'a taşıma
 
 Service Bus, iletilerin ileti altyapısı içinden DLCı 'ye itilmesine neden olan birkaç etkinlik vardır. Bir uygulama Ayrıca iletileri doğrudan DLCı 'ye taşıyabilir. 
 
-İleti, aracı tarafından taşındığında, aracı ileti üzerinde [sahipsiz](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) yöntemin iç sürümünü çağırdığı için iletiye iki özellik eklenir: `DeadLetterReason` ve. `DeadLetterErrorDescription`
+İleti, aracı tarafından taşındığında, aracı ileti üzerinde [sahipsiz](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) yöntemin iç sürümünü çağırdığı için iletiye iki özellik eklenir: `DeadLetterReason` ve `DeadLetterErrorDescription` .
 
-Uygulamalar, `DeadLetterReason` özelliği için kendi kodlarını tanımlayabilir, ancak sistem aşağıdaki değerleri ayarlar.
+Uygulamalar, özelliği için kendi kodlarını tanımlayabilir `DeadLetterReason` , ancak sistem aşağıdaki değerleri ayarlar.
 
-| Koşul | DeadLetterReason | DeadLetterErrorDescription |
-| --- | --- | --- |
-| Her zaman |Headersizeaşıldı |Bu akış için boyut kotası aşıldı. |
-| ! TopicDescription.<br />Enablefilteringiletibefoyeniden yayımlama ve SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |duruma. GetType (). Ada |duruma. İleti |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |İletinin süresi doldu ve teslim edilmeyenler sırasına eklendi. |
-| SubscriptionDescription. RequiresSession |Oturum KIMLIĞI null. |Oturumun etkin olduğu varlık, oturum tanımlayıcısı null olan bir iletiye izin vermiyor. |
-| ! atılacak ileti sırası | Maxtransferhopcountexceden | Kuyruklar arasında iletme sırasında izin verilen en fazla atlama sayısı. Değer 4 ' e ayarlanır. |
-| Uygulama açık atılacak |Uygulama tarafından belirtilen |Uygulama tarafından belirtilen |
+| DeadLetterReason | DeadLetterErrorDescription |
+| --- | --- |
+|Headersizeaşıldı |Bu akış için boyut kotası aşıldı. |
+|TTLExpiredException |İletinin süresi doldu ve teslim edilmeyenler sırasına eklendi. Ayrıntılar için [TimeToLive bölümünü aşma](#exceeding-timetolive) bölümüne bakın. |
+|Oturum KIMLIĞI null. |Oturumun etkin olduğu varlık, oturum tanımlayıcısı null olan bir iletiye izin vermiyor. |
+|Maxtransferhopcountexceden | Kuyruklar arasında iletme sırasında izin verilen en fazla atlama sayısı. Değer 4 ' e ayarlanır. |
+| MaxDeliveryCountExceededExceptionMessage | İleti, en fazla teslim denemesinden sonra tüketilmedi. Ayrıntılar için [MaxDeliveryCount aşma](#exceeding-maxdeliverycount) bölümüne bakın. |
 
 ## <a name="exceeding-maxdeliverycount"></a>MaxDeliveryCount aşılıyor
 
-Kuyruklar ve abonelikler sırasıyla bir [queuedescription. maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) ve [Subscriptiondescription. maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) özelliğine sahiptir; Varsayılan değer 10 ' dur. Bir kilit ([ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)) altına bir ileti teslim edildiğinde, ancak açıkça terk edildiğinde ya da kilidin süresi dolmuşsa, [Brokeredmessage. deliverycount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) değeri artırılır. [Deliverycount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) , [maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount)değerini aştığında, ileti, `MaxDeliveryCountExceeded` neden kodunu belirterek DLQ öğesine taşınır.
+Kuyruklar ve abonelikler sırasıyla bir [queuedescription. maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) ve [Subscriptiondescription. maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) özelliğine sahiptir; Varsayılan değer 10 ' dur. Bir kilit ([ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)) altına bir ileti teslim edildiğinde, ancak açıkça terk edildiğinde ya da kilidin süresi dolmuşsa, [Brokeredmessage. deliverycount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) değeri artırılır. [Deliverycount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) , [maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount)değerini aştığında, ileti, neden kodunu belirterek DLQ öğesine taşınır `MaxDeliveryCountExceeded` .
 
 Bu davranış devre dışı bırakılamaz, ancak [Maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) değerini büyük bir sayıya ayarlayabilirsiniz.
 
@@ -91,7 +90,7 @@ Bu kullanılmayan iletileri almak için [FormatTransferDeadletterPath](/dotnet/a
 
 ## <a name="example"></a>Örnek
 
-Aşağıdaki kod parçacığı bir ileti alıcısı oluşturur. Ana sıranın Alım döngüsünde, kod [Receive (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)ile iletiyi alır. Bu, aracıda, aracı açık bir şekilde kullanılabilir olan herhangi bir iletiyi anında döndürmesini veya sonuç olmadan dönmesini ister. Kod bir ileti alırsa, onu artıran `DeliveryCount`. Sistem iletiyi DLCı 'ye taşıdıktan sonra, [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) **null**döndürdüğünden, ana sıra boştur ve döngü çıkar.
+Aşağıdaki kod parçacığı bir ileti alıcısı oluşturur. Ana sıranın Alım döngüsünde, kod [Receive (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)ile iletiyi alır. Bu, aracıda, aracı açık bir şekilde kullanılabilir olan herhangi bir iletiyi anında döndürmesini veya sonuç olmadan dönmesini ister. Kod bir ileti alırsa, onu artıran `DeliveryCount` . Sistem iletiyi DLCı 'ye taşıdıktan sonra, [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) **null**döndürdüğünden, ana sıra boştur ve döngü çıkar.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);

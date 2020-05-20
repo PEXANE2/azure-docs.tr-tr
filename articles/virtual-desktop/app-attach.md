@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94ec85ae658ca6012cd1f1594b431d12bb73013d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3f54c296575b256339f4c22708c06e3579720e00
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121074"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647792"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
@@ -194,7 +194,7 @@ Uygulamanız ortak güvenilir olmayan ya da kendinden imzalı bir sertifika kull
 MSIX uygulama iliştirme, aşağıdaki sırayla gerçekleştirilmesi gereken dört farklı aşamaya sahiptir:
 
 1. Aşama
-2. Kaydettir
+2. Kaydol
 3. Kaydını silmek
 4. Gerçekleştirilen
 
@@ -460,4 +460,4 @@ catch [Exception]
 
 Bu özellik şu anda desteklenmemektedir, ancak [Windows sanal masaüstü techcommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)'de topluluğa soru sorabilirsiniz.
 
-Windows sanal masaüstü [Geri Bildirim Hub 'ında](https://aka.ms/MRSFeedbackHub)Windows sanal masaüstü geri bildirimini de bırakabilir veya msix uygulama ve paketleme aracı hakkında geri bildirim ' i, [maltıya Ekle geri bildirim](https://aka.ms/msixappattachfeedback) hub 'ında ve [msix paketleme aracı geri bildirim hub 'ında](https://aka.ms/msixtoolfeedback)da bırakabilirsiniz.
+Windows sanal masaüstü [Geri Bildirim Hub 'ında](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)Windows sanal masaüstü geri bildirimini de bırakabilirsiniz.

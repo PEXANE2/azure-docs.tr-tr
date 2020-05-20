@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 7e5cb997bee271a1bf1c795598d0ddfda3373264
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f48a54f2f220d83720d4a3233e2fb97a9efa64ff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197152"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654679"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri-bir başvuru kılavuzu
 
@@ -64,9 +64,9 @@ Güvenli puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısı
 
 |Öneri|Açıklama & ilgili ilke|Severity|Hızlı düzelme etkin mi? ([Daha fazla bilgi](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Kaynak türü|
 |----|----|----|----|----|
-|**Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır**|Web uygulamalarına erişimi yalnızca HTTPS üzerinden sınırlayın.<br>(İlgili ilke:)|Orta|N|App Service|
-|**İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır**|Işlev uygulamalarının erişimini yalnızca HTTPS üzerinden sınırlayın.<br>(İlgili ilke:)|Orta|N|App Service|
-|**API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır**|API Apps erişimini yalnızca HTTPS üzerinden sınırlayın.<br>(İlgili ilke:)|Orta|N|App Service|
+|**Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır**|Web uygulamaları için "yalnızca HTTPS" erişimini etkinleştirin. HTTPS kullanımı, sunucu/hizmet kimlik doğrulamasını sağlar ve ağ katmanı gizlice dinleme saldırılarına karşı geçiş sırasında verileri korur.<br>(İlgili ilke: Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır)|Orta|**E**|App Service|
+|**İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır**|İşlev uygulamaları için "yalnızca HTTPS" erişimini etkinleştirin. HTTPS kullanımı, sunucu/hizmet kimlik doğrulamasını sağlar ve ağ katmanı gizlice dinleme saldırılarına karşı geçiş sırasında verileri korur.<br>(İlgili ilke: İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır)|Orta|**E**|App Service|
+|**API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır**|API Apps erişimini yalnızca HTTPS üzerinden sınırlayın.<br>(İlgili ilke: API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır)|Orta|N|App Service|
 |**Web uygulamaları için uzaktan hata ayıklama kapatılmalıdır**|Artık kullanmanız gerekmiyorsa Web uygulamaları için hata ayıklamayı kapatın. Uzaktan hata ayıklama, gelen bağlantı noktalarının bir Web uygulamasında açılmasını gerektirir.<br>(İlgili ilke: uzaktan hata ayıklama Web uygulaması için kapalı olmalıdır)|Düşük|**E**|App Service|
 |**İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır**|Artık kullanmanız gerekmiyorsa İşlev Uygulaması için hata ayıklamayı kapatın. Uzaktan hata ayıklama, bir İşlev Uygulaması gelen bağlantı noktalarının açılmasını gerektirir.<br>(İlgili ilke: İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır)|Düşük|**E**|App Service|
 |**API uygulaması için uzaktan hata ayıklama kapatılmalıdır**|Artık kullanmanız gerekmiyorsa, API uygulaması için hata ayıklamayı kapatın. Uzaktan hata ayıklama, gelen bağlantı noktalarının bir API uygulamasında açılmasını gerektirir.<br>(İlgili ilke: API uygulaması için uzaktan hata ayıklama kapatılmalıdır)|Düşük|**E**|App Service|

@@ -4,12 +4,12 @@ description: Azure Backup performans sorunlarının nedenini tanılamanıza yard
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 5e669a68794a8622bb4a2fa55b206153717fd772
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c229bd836029226a1e042de9bfe706654f97dc26
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187911"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658936"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup’ta dosya ve klasörlerin yavaş yedekleme sorunlarını giderme
 
@@ -56,7 +56,7 @@ En iyi yedeklemeler için performans sorunlarını tanılamaya yardımcı olabil
 | Bellek--Sayfalamayan baytlar |* Havuzun %60 ' inden azı tüketildi = sağlıklı<br>* %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>* %80 taneden fazla% havuz kullanıldı = kritik veya spec dışı |
 | Bellek--havuzda disk belleğine alınan baytlar |* Havuzun %60 ' inden azı tüketildi = sağlıklı</br>* %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>* %80 taneden fazla% havuz kullanıldı = kritik veya spec dışı |
 | Bellek--kullanılabilir megabayt |* %50 boş bellek kullanılabilir veya daha fazla = sağlıklı</br>* boş belleğin %25 ' i kullanılabilir = Izleyici</br>* boş belleğin %10 ' ü kullanılabilir = uyarı</br>* 100 MB 'tan az veya kullanılabilir boş belleğin %5 ' inden az olması = kritik veya spec dışı |
-| İşlemci--\%işlemci zamanı (tüm örnekler) |* %60 daha az tüketilen = sağlıklı</br>* %61-90% tüketilen = Izleyici veya uyarı</br>* %91-100% tüketilen = kritik |
+| İşlemci-- \% Işlemci zamanı (tüm örnekler) |* %60 daha az tüketilen = sağlıklı</br>* %61-90% tüketilen = Izleyici veya uyarı</br>* %91-100% tüketilen = kritik |
 
 > [!NOTE]
 > Altyapının külün olduğunu belirlerseniz, daha iyi performans için diskleri düzenli olarak birleştirmeniz önerilir.
@@ -95,6 +95,8 @@ Aşağıdaki göstergeler, bir sonraki adımlarda performans sorunlarını ve bu
 
 * **Kullanıcı arabirimi, veri aktarımının ilerlemesini gösteriyor**. Veriler hala aktarılmakta. Ağ bant genişliği veya veri boyutu gecikmelere neden olabilir.
 * **UI veri aktarımı için ilerlemeyi gösterilmiyor**. C:\Program Files\Microsoft Azure Recovery Services \Temp dizininde bulunan günlükleri açın ve sonra günlüklerde FileProvider:: EndData girdisini kontrol edin. Bu giriş, veri aktarımının bittiğini ve Katalog işleminin gerçekleştiğini belirtir. Yedekleme işlerini iptal etmeyin. Bunun yerine, Katalog işleminin bitmesini biraz daha uzun süre bekleyin. Sorun devam ederse [Azure desteği](https://portal.azure.com/#create/Microsoft.Support)'ne başvurun.
+
+Büyük diskleri yedeklemeye çalışıyorsanız, ilk yedekleme (ilk çoğaltma) için [Azure Data Box](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box)] kullanılması önerilir.  Data Box kullanamıyoruz, ağ üzerinden uzun veri aktarımları sırasında ortamınızda gerçekleşen tüm geçici ağ sorunları yedekleme hatalarıyla sonuçlanır.  Bu hatalara karşı koruma sağlamak için, ilk yedeklemelerinize birkaç klasör ekleyebilirsiniz ve tüm klasörler başarıyla Azure 'a yedeklenene kadar daha fazla klasör eklemeye devam edebilirsiniz.  Sonraki artımlı yedeklemeler nispeten daha hızlı olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

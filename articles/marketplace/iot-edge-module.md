@@ -1,26 +1,26 @@
 ---
-title: Azure Marketi IoT Edge modülleri
-description: IoT Edge modülü, uygulama ve hizmet yayımcıları için Azure Marketi 'nde sunulur.
+title: Azure Marketi IoT Edge modülü teklifleri
+description: Azure Marketi 'nde IoT Edge modülü tekliflerini yayımlama hakkında bilgi edinin.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49f86a79eb5358d27c15d93004db396436c3e680
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684331"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657964"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge modülleri
 
-[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) platformu Azure bulutu tarafından desteklenmektedir.  Bu platform, kullanıcıların doğrudan IoT cihazlarında çalışacak bulut iş yüklerini dağıtmasına olanak sağlar.  IoT Edge bir modül çevrimdışı iş yüklerini çalıştırabilir ve veri analizini yerel olarak gerçekleştirebilir. Bu teklif türü, bant genişliğini kaydetmeye, yerel ve hassas verilerin korunmasına yardımcı olur ve düşük Gecikmeli yanıt süresi sağlar.  Artık önceden oluşturulmuş bu iş yüklerinden faydalanmak için seçenekleriniz vardır. Bu aşamada, Microsoft 'tan yalnızca birkaç birinci taraf çözüm kullanıma sunulmuştur.  Kendi özel IoT çözümlerinizi oluşturmak için zaman ve kaynakları yatırım yapmanız gerekiyordu.
+[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) platformu Microsoft Azure tarafından desteklenir.  Bu platform, kullanıcıların doğrudan IoT cihazlarında çalışacak bulut iş yüklerini dağıtmasına olanak sağlar.  IoT Edge bir modül çevrimdışı iş yüklerini çalıştırabilir ve veri analizini yerel olarak gerçekleştirebilir. Bu teklif türü, bant genişliğini kaydetmeye, yerel ve hassas verilerin korunmasına yardımcı olur ve düşük Gecikmeli yanıt süresi sağlar.  Artık önceden oluşturulmuş bu iş yüklerinden faydalanmak için seçenekleriniz vardır. Bu aşamada, Microsoft 'tan yalnızca birkaç birinci taraf çözüm kullanıma sunulmuştur.  Kendi özel IoT çözümlerinizi oluşturmak için zaman ve kaynakları yatırım yapmanız gerekiyordu.
 
-[Azure Marketi 'ndeki IoT Edge modüllerine](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)giriş yaparak artık yayımcıların IoT hedef kitlesi için çözümlerini kullanıma sunma ve satma amacıyla tek bir hedef sunuyoruz. IoT geliştiricileri, son olarak çözüm geliştirmeyi hızlandırmaya yönelik yetenekler bulabilir ve satın alabilir.  
+[Azure Marketi 'nde IoT Edge modüller](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)sayesinde, artık yayımcıların IoT hedef kitlesi için çözümlerini kullanıma sunma ve satma için tek bir hedef sunuyoruz. IoT geliştiricileri, son olarak çözüm geliştirmeyi hızlandırmaya yönelik yetenekler bulabilir ve satın alabilir.  
 
-## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Azure Marketi 'nde IoT Edge modüllerinin önemli avantajları:
+## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Azure Marketi 'nde IoT Edge modüllerinin önemli avantajları
 
 | **Yayımcılar için**    | **Müşteriler için (IoT geliştiricileri)**  |
 | :------------------- | :-------------------|

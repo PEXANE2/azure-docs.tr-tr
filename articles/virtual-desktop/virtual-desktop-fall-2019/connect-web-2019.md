@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c264006d51f8f0f9ee2a56e994a0dc52d24bd7a8
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 8b73a6bf2c8b853d9e3e939b6c8ff6fc05ac7021
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006032"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657267"
 ---
 # <a name="connect-with-the-web-client"></a>Web istemcisiyle bağlanma
 
@@ -33,16 +33,16 @@ HTML5 özellikli herhangi bir tarayıcı çalışması gerektiği sürece, aşa�
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
-| Apple Safari      | macOS                            |                     |
+| Apple Safari      | Mac OS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Sürüm 55 veya üzeri |
 | Google Chrome     | Windows, macOS, Linux, Chrome OS |                     |
 
 ## <a name="access-remote-resources-feed"></a>Uzak kaynak akışına erişin
 
-Bir tarayıcıda, [Windows Sanal Masaüstü Web istemcisine](https://rdweb.wvd.microsoft.com/webclient) gidin ve Kullanıcı hesabınızla oturum açın.
+Bir tarayıcıda, adresindeki Windows Sanal Masaüstü Web istemcisine gidin <https://rdweb.wvd.microsoft.com/webclient> ve Kullanıcı hesabınızla oturum açın.
 
 >[!NOTE]
->Windows sanal masaüstü Spring 2020 sürümünü kullanıyorsanız, kaynaklarınıza bağlanmak için [Bu makaledeki](../connect-web.md) Web istemcisi bağlantısını kullanın.
+>Azure Resource Manager tümleştirme ile Windows sanal masaüstü Spring 2020 sürümünü kullanıyorsanız, <https://rdweb.wvd.microsoft.com/arm/webclient> bunun yerine kaynaklarınıza bağlanın.
 
 >[!NOTE]
 >Windows sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, oturumunuzu açmanız veya özel bir tarayıcı penceresi kullanmanız gerekir.

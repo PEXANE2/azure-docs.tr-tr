@@ -6,21 +6,16 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1fa34deaa12400a164602d38b6b2d349a64850c6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299014"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652240"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
 Bu makale, MySQL için Azure veritabanı ile Azure Active Directory erişimi yapılandırma ve Azure AD belirteci kullanarak bağlanma adımlarında size yol gösterecektir.
-
-> [!IMPORTANT]
-> MySQL için Azure veritabanı Azure AD kimlik doğrulaması şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Azure AD yönetici kullanıcısını ayarlama
 
@@ -73,7 +68,7 @@ Bu komut, Azure AD kimlik doğrulama sayfasında bir tarayıcı penceresi başla
 
 > [!NOTE]
 > Bu adımları gerçekleştirmek için Azure Cloud Shell de kullanabilirsiniz.
-> Lütfen Azure Cloud Shell Azure AD erişim belirtecini alırken, açıkça çağırmanız `az login` ve yeniden oturum açmanız (bir kodla ayrı pencerede) gerektiğini unutmayın. `get-access-token` Komutun bu oturum açma işleminden sonra beklendiği gibi çalışacaktır.
+> Lütfen Azure Cloud Shell Azure AD erişim belirtecini alırken, açıkça çağırmanız `az login` ve yeniden oturum açmanız (bir kodla ayrı pencerede) gerektiğini unutmayın. Komutun bu oturum açma işleminden sonra `get-access-token` beklendiği gibi çalışacaktır.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>2. Adım: Azure AD erişim belirtecini alma
 
@@ -138,7 +133,7 @@ MySQL veritabanı için Azure veritabanı 'na bir Azure AD kullanıcısı ekleme
 
 1. İlk olarak Azure AD kullanıcısının `<user>@yourtenant.onmicrosoft.com` Azure AD kiracısında geçerli bir kullanıcı olduğundan emin olun.
 2. MySQL için Azure veritabanı örneğinde Azure AD Yönetici kullanıcısı olarak oturum açın.
-3. MySQL için `<user>@yourtenant.onmicrosoft.com` Azure veritabanı 'nda kullanıcı oluşturun.
+3. `<user>@yourtenant.onmicrosoft.com`MySQL Için Azure veritabanı 'nda kullanıcı oluşturun.
 
 **Örneğinde**
 
@@ -186,7 +181,7 @@ MySQL için Azure veritabanı 'nda Azure AD kimlik doğrulaması, kullanıcını
   * libmysqlclient: destekleniyor
   * MySQL-bağlayıcı-c + +: desteklenir
 * Java
-  * Bağlayıcı/J (MySQL-Connector-Java): desteklenir, `useSSL` ayar kullanılmalıdır
+  * Bağlayıcı/J (MySQL-Connector-Java): desteklenir, ayar kullanılmalıdır `useSSL`
 * Python
   * Bağlayıcı/Python: destekleniyor
 * Ruby
@@ -201,7 +196,7 @@ MySQL için Azure veritabanı 'nda Azure AD kimlik doğrulaması, kullanıcını
   * DBD:: MySQL: destekleniyor
   * Net:: MySQL: desteklenmiyor
 * Başlayın
-  * Go-SQL-Driver: desteklenir, bağlantı `?tls=true&allowCleartextPasswords=true` dizesine ekleyin
+  * Go-SQL-Driver: desteklenir, `?tls=true&allowCleartextPasswords=true` bağlantı dizesine ekleyin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

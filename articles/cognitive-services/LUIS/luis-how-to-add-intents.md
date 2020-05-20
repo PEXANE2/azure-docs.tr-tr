@@ -8,23 +8,23 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: b2cb7494ae3d26fa14bef906b8f5222b9dbc70e1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f282bb0a80226afeb314aac4e8669634327f81d2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584986"
+ms.locfileid: "83654025"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Kullanıcı amaçlarını belirleme amacını ekleyin
 
 Aynı amaca sahip olan soruların veya komutların gruplarını belirlemek için LUSıS uygulamanıza [amaçlar](luis-concept-intent.md) ekleyin.
 
-Amaçlar, üst gezinti çubuğunun **Build** bölümünden ve ardından sol bölmenin amaçlarından **yönetilir.**
+LUU portalında, amaçlar üst gezinti çubuğunun **Build** bölümünden ve ardından sol bölmenin amaçlarından **yönetilir.**
 
-## <a name="add-intent"></a>Amaç ekleme
+## <a name="add-an-intent-to-your-app"></a>Uygulamanıza bir amaç ekleyin
 
 1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
 1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
@@ -34,7 +34,7 @@ Amaçlar, üst gezinti çubuğunun **Build** bölümünden ve ardından sol böl
     > [!div class="mx-imgBorder"]
     > ![Amaç Ekle](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    Amaç, örnek söyleyeni gerektirir.
+    Amaç, yayımlanan tahmin uç noktasında yapılan noktaları tahmin etmek için [örnek](luis-concept-utterance.md) söylerinizi gerektirir.
 
 ## <a name="add-an-example-utterance"></a>Örnek bir mekan ekleyin
 
@@ -51,16 +51,16 @@ Amaçlar, üst gezinti çubuğunun **Build** bölümünden ve ardından sol böl
 
 ## <a name="intent-prediction-errors"></a>Amaç tahmin hataları
 
-Bir amaca göre örnek, bu örnekte yer aldığı amaç ve eğitim sırasında belirlenen amaç arasında bir amaç tahmin hatası olabilir.
+Amaç için eğitilen uygulamayla tahmin edildiğinde, bir amaç tahmin hatası belirlenir.
 
-Söylenişi tahmin hatalarını bulmak ve bunları sabitlemek için, **ayrıntılı görünüm**' ün **Görünüm** seçeneğiyle yanlış ve belirsiz olarak birleştirilmiş **filtre** seçeneklerini kullanın.
+1. Söylenişi tahmin hatalarını bulmak ve bunları onarmak için yanlış ve belirsiz ' ın **filtre** seçeneklerini kullanın.
 
-![Söylenişi tahmin hatalarını bulmak ve bunları onarmak için filtre seçeneğini kullanın.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+    > [!div class="mx-imgBorder"]
+    > ![Söylenişi tahmin hatalarını bulmak ve bunları onarmak için filtre seçeneğini kullanın.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-Filtreler ve görünüm uygulandığında ve hatalar ile ilgili örnek bir sorun oluşursa, örnek bir liste, söz konusu konuları ve sorunları gösterir.
+1. Amaç ayrıntıları sayfasında puan değerini görüntülemek için, **Görünüm** seçenekleri menüsünden **ayrıntı hedefini göster** ' i seçin.
 
-> [!div class="mx-imgBorder"]
-> ![! [Filtreler ve görünüm uygulandığında ve hatalar ile ilgili örnekler varsa, örnek utterler listesi, bu noktalar ve sorunları gösterir.] (./Media/Luis-How-to-add-BITS/Find-Errors-ın-utterances.exe)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+    Filtreler ve görünüm uygulandığında ve hatalar ile ilgili örnek bir sorun oluşursa, örnek bir liste, söz konusu konuları ve sorunları gösterir.
 
 Her satır, bu iki puandaki fark olan en yakın Rival 'in puanı olan utterance için geçerli eğitimin tahmin Puanını gösterir.
 

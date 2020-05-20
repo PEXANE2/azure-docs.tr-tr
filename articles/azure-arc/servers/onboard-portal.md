@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/24/2020
+ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac0a795c98673eba30531f586ff634c62673cdd6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 52c53cc10fe6517be6083a14c98daa9e6ff3b56f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980958"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648074"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Karma makineleri Azure portal Azure 'a bağlama
 
@@ -21,7 +21,7 @@ El ile bir adım kümesi gerçekleştirerek, ortamınızdaki bir veya az sayıda
 
 Bu yöntem, aracıyı yüklemek ve yapılandırmak için makinede yönetici izinlerine sahip olmanızı gerektirir. Linux 'ta, kök hesabı kullanarak ve Windows 'ta, yerel Yöneticiler grubunun üyesi olursunuz.
 
-Başlamadan önce, [önkoşulları](overview.md#prerequisites) gözden geçirdiğinizden ve aboneliğinizin ve kaynaklarınızın gereksinimleri karşıladığından emin olun.
+Başlamadan önce, [önkoşulları](agent-overview.md#prerequisites) gözden geçirdiğinizden ve aboneliğinizin ve kaynaklarınızın gereksinimleri karşıladığından emin olun.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -48,7 +48,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. **Betik oluştur** sayfasında, **işletim sistemi** açılan listesinde, betiğin üzerinde çalıştığı işletim sistemini seçin.
 
 1. Makine Internet 'e bağlanmak için bir proxy sunucusu üzerinden iletişim kurduğundan, Ileri ' yi seçin **: ara sunucu**. 
-1. **Proxy sunucusu** sekmesinde, proxy sunucusu IP adresini veya makinenin proxy sunucusuyla iletişim kurmak için kullanacağı adı ve bağlantı noktası numarasını belirtin. Değeri biçiminde `http://<proxyURL>:<proxyport>`girin. 
+1. **Proxy sunucusu** sekmesinde, proxy sunucusu IP adresini veya makinenin proxy sunucusuyla iletişim kurmak için kullanacağı adı ve bağlantı noktası numarasını belirtin. Değeri biçiminde girin `http://<proxyURL>:<proxyport>` . 
 1. **Gözden geçir + oluştur**' u seçin.
 
 1. **Gözden geçir + oluştur** sekmesinde Özet bilgilerini gözden geçirin ve ardından **İndir**' i seçin. Hala değişiklik yapmanız gerekiyorsa, **önceki**' yi seçin.
@@ -57,29 +57,29 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ### <a name="install-manually"></a>El ile yükleme
 
-Bağlı makine aracısını *AzureConnectedMachineAgent. msi*Windows Installer paketini çalıştırarak el ile yükleyebilirsiniz. 
+Bağlı makine aracısını *AzureConnectedMachineAgent. msi*Windows Installer paketini çalıştırarak el ile yükleyebilirsiniz. [Windows agent Windows Installer paketinin](https://aka.ms/AzureConnectedMachineAgent) en son sürümünü Microsoft İndirme Merkezi ' nden indirebilirsiniz. 
 
 > [!NOTE]
 > * Aracıyı yüklemek veya kaldırmak için *yönetici* izinlerinizin olması gerekir.
 > * Önce yükleyici paketini indirmeniz ve hedef sunucudaki bir klasöre veya paylaşılan bir ağ klasöründen kopyalamanız gerekir. Yükleyici paketini herhangi bir seçenek olmadan çalıştırırsanız, aracı etkileşimli olarak yüklemek için izleyebileceğiniz bir Kurulum Sihirbazı başlatılır.
 
-Makinenin bir ara sunucu üzerinden hizmete iletişim kurması gerekiyorsa, aracıyı yükledikten sonra, makalenin ilerleyen kısımlarında açıklanan bir komutu çalıştırmanız gerekir. Bu, proxy sunucu sistemi ortam değişkenini `https_proxy`ayarlar.
+Makinenin bir ara sunucu üzerinden hizmete iletişim kurması gerekiyorsa, aracıyı yükledikten sonra, makalenin ilerleyen kısımlarında açıklanan bir komutu çalıştırmanız gerekir. Bu, proxy sunucu sistemi ortam değişkenini ayarlar `https_proxy` .
 
 Windows Installer paketlerine yönelik komut satırı seçeneklerini tanımıyorsanız, [msiexec standart komut satırı seçeneklerini](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) ve [msiexec komut satırı seçeneklerini](https://docs.microsoft.com/windows/win32/msi/command-line-options)gözden geçirin.
 
-Örneğin, yardım ve hızlı başvuru seçeneğini gözden geçirmek `/?` için yükleme programını parametresiyle çalıştırın. 
+Örneğin, `/?` Yardım ve hızlı başvuru seçeneğini gözden geçirmek için yükleme programını parametresiyle çalıştırın. 
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-Aracı sessizce yüklemek ve var olan `C:\Support\Logs` klasörde bir kurulum günlük dosyası oluşturmak için aşağıdaki komutu çalıştırın.
+Aracı sessizce yüklemek ve var olan klasörde bir kurulum günlük dosyası oluşturmak için `C:\Support\Logs` aşağıdaki komutu çalıştırın.
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
 ```
 
-Bağlı makine aracısının dosyaları varsayılan olarak *C:\Program Files\AzureConnectedMachineAgent*' de yüklenir. Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*' dir.
+Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*' dir.
 
 ### <a name="install-with-the-scripted-method"></a>Komut dosyalı yöntemle Install
 
@@ -87,7 +87,9 @@ Bağlı makine aracısının dosyaları varsayılan olarak *C:\Program Files\Azu
 
 1. Yükseltilmiş bir PowerShell komut istemi açın.
 
-1. Betiği kopyaladığınız klasöre veya paylaşıma değiştirin ve `./OnboardingScript.ps1` betiği çalıştırarak sunucuda yürütün.
+1. Betiği kopyaladığınız klasöre veya paylaşıma değiştirin ve betiği çalıştırarak sunucuda yürütün `./OnboardingScript.ps1` .
+
+Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*' dir.
 
 ### <a name="configure-the-agent-proxy-setting"></a>Aracı proxy ayarını yapılandırma
 
@@ -118,7 +120,7 @@ Linux için bağlı makine Aracısı, dağıtım için tercih edilen paket biçi
 - Packages.microsoft.com adresinden Aracı paketini indirmek için konak makineyi yapılandırır.
 - Karma kaynak sağlayıcısı paketini kurar.
 
-İsteğe bağlı olarak, `--proxy "{proxy-url}:{proxy-port}"` parametresini dahil ederek aracıyı proxy bilgileriniz ile yapılandırabilirsiniz.
+İsteğe bağlı olarak, parametresini dahil ederek aracıyı proxy bilgileriniz ile yapılandırabilirsiniz `--proxy "{proxy-url}:{proxy-port}"` .
 
 Betik Ayrıca desteklenen ve desteklenmeyen dağıtımları tanımlayan mantığı içerir ve yüklemeyi gerçekleştirmek için gereken izinleri doğrular. 
 
@@ -132,7 +134,7 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-Aracıyı, proxy sunucunuz üzerinden iletişim kurmak üzere yapılandırma `--proxy` parametresi dahil olmak üzere indirmek ve yüklemek için aşağıdaki komutları çalıştırın:
+Aracıyı, `--proxy` proxy sunucunuz üzerinden iletişim kurmak üzere yapılandırma parametresi dahil olmak üzere indirmek ve yüklemek için aşağıdaki komutları çalıştırın:
 
 ```bash
 # Download the installation package.

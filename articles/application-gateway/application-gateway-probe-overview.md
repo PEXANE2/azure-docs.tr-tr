@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: c5a53167c6a4ca6c886b858a1608eaa173185bd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1afc389508eb75313d046b759bcc9c03a50daad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335853"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648399"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway sistem durumu izlemeye genel bakış
 
@@ -49,13 +49,13 @@ Aşağıdakiler eşleşen ölçütlerdir:
 
 Eşleştirme ölçütü `New-AzApplicationGatewayProbeHealthResponseMatch` cmdlet 'i kullanılarak belirtilebilir.
 
-Örneğin:
+Örnek:
 
 ```azurepowershell
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
-Eşleşme ölçütü belirtildiğinde, PowerShell 'deki bir `-Match` parametre kullanılarak araştırma yapılandırmasına eklenebilir.
+Eşleşme ölçütü belirtildiğinde, PowerShell 'deki bir parametre kullanılarak araştırma yapılandırmasına eklenebilir `-Match` .
 
 ### <a name="default-health-probe-settings"></a>Varsayılan durum araştırma ayarları
 
@@ -64,12 +64,12 @@ Eşleşme ölçütü belirtildiğinde, PowerShell 'deki bir `-Match` parametre k
 | Araştırma URL 'SI |http://127.0.0.1:\<port\>/ |URL yolu |
 | Interval |30 |Bir sonraki sistem durumu araştırması gönderilmeden önce beklenecek saniye cinsinden süre.|
 | Zaman aşımı |30 |Uygulama ağ geçidinin araştırmayı sağlıksız olarak işaretlemeden önce yoklama yanıtı için bekleyeceği saniye cinsinden süre. Bir araştırma sağlıklı olarak döndürülürse, ilgili arka uç hemen sağlıklı olarak işaretlenir.|
-| Sağlıksız durum eşiği |3 |Düzenli durum araştırmasının başarısız olması durumunda kaç yoklamanın gönderileceğini yönetir. Bu ek durum araştırmaları, arka ucun hızlı bir şekilde sistem durumunu tespit etmek ve araştırma aralığı beklemeleri için hızlı bir şekilde gönderilir. Bu, yalnızca v1 SKU 'SU olarak davrandır. V2 SKU 'SU durumunda, sistem durumu araştırmaları aralığı bekler. Arka uç sunucusu, ardışık araştırma hatası sayısı uygun olmayan eşiğe ulaştığında aşağı olarak işaretlenir. |
+| Sağlıksız durum eşiği |3 |Düzenli durum araştırmasının başarısız olması durumunda kaç yoklamanın gönderileceğini yönetir. Bu ek durum araştırmaları, arka ucun hızlı bir şekilde sistem durumunu tespit etmek ve araştırma aralığı beklemeleri için hızlı bir şekilde gönderilir. Bu davranış yalnızca v1 SKU 'SU. V2 SKU 'SU durumunda, sistem durumu araştırmaları aralığı bekler. Arka uç sunucusu, ardışık araştırma hatası sayısı uygun olmayan eşiğe ulaştığında aşağı olarak işaretlenir. |
 
 > [!NOTE]
 > Bağlantı noktası, arka uç HTTP ayarlarıyla aynı bağlantı noktasıdır.
 
-Varsayılan araştırma, sistem durumunu öğrenmek için yalnızca\/http:/\<127.0.0.1\> : bağlantı noktası ' na bakar. Sistem durumu araştırmasını özel bir URL 'ye gidecek veya diğer ayarları değiştirecek şekilde yapılandırmanız gerekiyorsa, özel araştırmaları kullanmanız gerekir.
+Varsayılan araştırma, \/ \< \> sistem durumunu öğrenmek için yalnızca http:/127.0.0.1: bağlantı noktası ' na bakar. Sistem durumu araştırmasını özel bir URL 'ye gidecek veya diğer ayarları değiştirecek şekilde yapılandırmanız gerekiyorsa, özel araştırmaları kullanmanız gerekir. HTTP araştırmaları hakkında daha fazla bilgi için bkz. [TLS sonlandırmasına genel bakış ve Application Gateway ile uçtan uca TLS](ssl-overview.md#for-probe-traffic).
 
 ### <a name="probe-intervals"></a>Araştırma aralıkları
 
@@ -87,7 +87,7 @@ Aşağıdaki tabloda özel bir sistem durumu araştırmasının özelliklerine i
 
 | Araştırma özelliği | Açıklama |
 | --- | --- |
-| Adı |Araştırmanın adı. Bu ad, arka uç HTTP ayarlarındaki araştırmayı ifade etmek için kullanılır. |
+| Name |Araştırmanın adı. Bu ad, arka uç HTTP ayarlarındaki araştırmayı ifade etmek için kullanılır. |
 | Protokol |Araştırmayı göndermek için kullanılan protokol. Araştırma, arka uç HTTP ayarlarında tanımlanan protokolü kullanır |
 | Ana bilgisayar |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca Application Gateway 'de birden çok site yapılandırıldığında uygulanabilir, aksi takdirde ' 127.0.0.1 ' kullanın. Bu değer, VM ana bilgisayar adından farklıdır. |
 | Yol |Araştırmanın göreli yolu. Geçerli yol '/' öğesinden başlar. |
@@ -97,7 +97,7 @@ Aşağıdaki tabloda özel bir sistem durumu araştırmasının özelliklerine i
 
 > [!IMPORTANT]
 > Tek bir site için Application Gateway yapılandırıldıysa, varsayılan olarak, özel araştırmata yapılandırılmadığı sürece konak adı ' 127.0.0.1 ' olarak belirtilmelidir.
-> Başvuru için, \<\>protokol://\<ana bilgisayar\>:\<bağlantı noktası\>\<yoluna\>özel bir araştırma gönderilir. Kullanılan bağlantı noktası, arka uç HTTP ayarlarında tanımlananla aynı bağlantı noktası olacaktır.
+> Başvuru için, \< Protokol \> :// \< ana bilgisayar \> : \< bağlantı noktası \> \< yoluna \> özel bir araştırma gönderilir. Kullanılan bağlantı noktası, arka uç HTTP ayarlarında tanımlananla aynı bağlantı noktası olacaktır.
 
 ## <a name="nsg-considerations"></a>NSG konuları
 

@@ -1,29 +1,34 @@
 ---
 title: Bilgi Bankası 'nda işbirliği-Soru-Cevap Oluşturma
-titleSuffix: Azure Cognitive Services
 description: Soru-Cevap Oluşturma, bir Bilgi Bankası 'nda birden çok kişinin işbirliği yapmasına izin verir. Bu özellik Azure rol tabanlı Access Control sağlanır.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/03/2020
-ms.author: diberry
-ms.openlocfilehash: b5adc7ebacde056a141ca3b361b9eb2ea7900a39
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 03/17/2020
+ms.openlocfilehash: 1a2908b4b65017f427682627ce5d83b186956a58
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75660758"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650793"
 ---
-# <a name="collaborate-on-your-knowledge-base"></a>Bilgi bankasında işbirliği yapın
+# <a name="collaboration-with-authors-and-editors"></a>Yazarlar ve düzenleyicilerle işbirliği
 
-Soru-Cevap Oluşturma, birden fazla kişinin aynı Soru-Cevap Oluşturma kaynaktaki tüm bilgi tabanlarında işbirliği yapmasına izin verir. Bu özellik Azure [rol tabanlı Access Control](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)sağlanır.
+İşbirliği, işbirliğinin rolüne bağlı olarak ortak çalışan erişimini kısıtlamanız için Soru-Cevap Oluşturma kaynak düzeyinde sağlanır. Soru-Cevap Oluşturma ortak çalışan kimlik doğrulama [kavramları](../Concepts/role-based-access-control.md)hakkında daha fazla bilgi edinin.
 
-Soru-Cevap Oluşturma hizmetinizi biriyle paylaşmak için aşağıdaki adımları gerçekleştirin:
+## <a name="add-role-based-access-rbac-to-your-qna-maker-resource"></a>Soru-Cevap Oluşturma kaynağına rol tabanlı erişim (RBAC) ekleme
 
-1. Azure portal oturum açın ve Soru-Cevap Oluşturma kaynağına gidin.
+Soru-Cevap Oluşturma, birden fazla kişinin aynı Soru-Cevap Oluşturma kaynaktaki tüm bilgi tabanlarında işbirliği yapmasına izin verir. Bu özellik Azure [rol tabanlı Access Control](../../../active-directory/role-based-access-control-configure.md)sağlanır.
+
+## <a name="access-at-the-qna-maker-resource-level"></a>Soru-Cevap Oluşturma kaynak düzeyinde erişim
+
+Soru-Cevap Oluşturma hizmetinde belirli bir Bilgi Bankası 'nı paylaşamazsınız. Daha ayrıntılı erişim denetimi istiyorsanız bilgi tabanlarınızı farklı Soru-Cevap Oluşturma kaynaklarına dağıtmayı ve ardından her kaynağa roller eklemeyi düşünün.
+
+## <a name="add-role-to-resource"></a>Kaynağa rol Ekle
+
+### <a name="add-a-user-account-to-the-qna-maker-resource"></a>Soru-Cevap Oluşturma kaynağına bir kullanıcı hesabı ekleme
+
+Aşağıdaki adımlarda ortak çalışan rolü kullanılır, ancak bu adımlar kullanılarak [Roller](../reference-role-based-access-control.md) eklenebilir
+
+1. [Azure](https://portal.azure.com/) portalında oturum açın ve soru-cevap oluşturma kaynağına gidin.
 
     ![Soru-Cevap Oluşturma kaynak listesi](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
 
@@ -35,7 +40,15 @@ Soru-Cevap Oluşturma hizmetinizi biriyle paylaşmak için aşağıdaki adımlar
 
     ![Soru-Cevap Oluşturma ıAM ekleme](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-1. **Sahibi** veya **katkıda** bulunan rolünü seçin. Rol tabanlı Access Control aracılığıyla salt okuma erişimi verilemez. Sahip ve katkıda bulunan rollerinin Soru-Cevap Oluşturma hizmetine okuma yazma erişim izinleri vardır.
+1. Aşağıdaki listeden bir rol seçin:
+
+    |Rol|
+    |--|
+    |Sahip|
+    |Katılımcı|
+    |Soru-Cevap Oluşturma okuyucu|
+    |Soru-Cevap Oluşturma Düzenleyicisi|
+    |Bilişsel hizmetler kullanıcısı|
 
     ![Soru-Cevap Oluşturma ıAM rol Ekle](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 
@@ -43,11 +56,13 @@ Soru-Cevap Oluşturma hizmetinizi biriyle paylaşmak için aşağıdaki adımlar
 
     ![Soru-Cevap Oluşturma ıAM e-posta Ekle](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
 
-Soru-Cevap Oluşturma hizmetinizi ile paylaştığınız kişi, [soru-cevap oluşturma portalında](https://qnamaker.ai) oturum açar ve bu hizmette tüm bilgi temellerini görebilirler.
-
-Bir Soru-Cevap Oluşturma hizmetinde belirli bir Bilgi Bankası 'nı paylaşacağınızı unutmayın. Daha ayrıntılı erişim denetimi istiyorsanız bilgi tabanlarınızı farklı Soru-Cevap Oluşturma hizmetlerine dağıtmayı göz önünde bulundurun.
+Soru-Cevap Oluşturma hizmetinizi paylaştığınız kişi [soru-cevap oluşturma portalında](https://qnamaker.ai)oturum açtıklarında, bu hizmet içindeki tüm bilgi temellerini kendi rollerine göre görebilirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
 > [Bilgi bankasını test etme](./test-knowledge-base.md)
+
+İşbirliği hakkında daha fazla bilgi edinin:
+* [Azure](../../../active-directory/role-based-access-control-configure.md) rol tabanlı erişim denetimi
+* Rol tabanlı erişim denetimi [kavramlarını](../Concepts/role-based-access-control.md) soru-cevap oluşturma

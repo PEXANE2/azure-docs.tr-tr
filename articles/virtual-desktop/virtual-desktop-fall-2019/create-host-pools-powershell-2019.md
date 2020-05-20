@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 284cf3792b85ce38b190290111aa70a51084d4f6
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 1d312417017676d0b0bc53e3e16e229e45f1aa17
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614856"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659422"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>PowerShell ile ana bilgisayar havuzu oluşturma
 
@@ -66,7 +66,7 @@ Bir sanal makineyi birden çok şekilde oluşturabilirsiniz:
 
 - [Azure Galeri görüntüsünden sanal makine oluşturma](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [Yönetilen görüntüden sanal makine oluşturma](../../virtual-machines/windows/create-vm-generalized-managed.md)
-- [Yönetilmeyen görüntüden sanal makine oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image.md)
+- [Yönetilmeyen görüntüden sanal makine oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
 >[!NOTE]
 >Konak işletim sistemi olarak Windows 7 ' yi kullanarak bir sanal makine dağıtıyorsanız, oluşturma ve dağıtım işlemi biraz farklı olacaktır. Daha ayrıntılı bilgi için bkz. Windows [sanal masaüstü 'Nde Windows 7 sanal makinesi dağıtma](deploy-windows-7-virtual-machine.md).

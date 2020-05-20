@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: SQL Python API, SDK & kaynakları'
 description: Sürüm tarihleri, emeklilik tarihleri ve Azure Cosmos DB Python SDK 'nın her sürümü arasında yapılan değişiklikler dahil olmak üzere SQL Python API 'SI ve SDK hakkında bilgi edinin.
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 11/29/2018
-ms.author: sngun
-ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: ce74a7b02b9c450e07402d96a1aaba2a4b704788
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982914"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650722"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Python SDK Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -21,8 +21,9 @@ ms.locfileid: "80982914"
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
+> * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -36,7 +37,7 @@ ms.locfileid: "80982914"
 |**API belgeleri**|[Python API başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**SDK yükleme yönergeleri**|[Python SDK yükleme yönergeleri](https://github.com/Azure/azure-cosmos-python)|
 |**SDK 'ya katkıda bulunma**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
-|**başlarken**|[Python SDK 'Yı kullanmaya başlama](sql-api-python-application.md)|
+|**Kullanmaya başlayın**|[Python SDK 'Yı kullanmaya başlama](sql-api-python-application.md)|
 |**Desteklenen geçerli platform**|[Python 2,7](https://www.python.org/downloads/) ve [Python 3,5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>Sürüm notları
@@ -90,7 +91,7 @@ ms.locfileid: "80982914"
 * Saklı yordam yürütülürken betik günlüğü tutmayı etkinleştirme desteği eklendi.
 * REST API sürümü bu sürümle ' 2017-01-19 ' öğesine göre tamponlanır.
 
-### <a name="201"></a><a name="2.0.1"/>desteklemez
+### <a name="201"></a><a name="2.0.1"/>2.0.1
 * Belge açıklamalarında düzenleme değişiklikleri yapıldı.
 
 ### <a name="200"></a><a name="2.0.0"/>2.0.0
@@ -125,7 +126,7 @@ ms.locfileid: "80982914"
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
 * Jeo-uzamsal dizini destekler.
-* Tüm kaynaklar için ID özelliğini doğrular. Kaynak kimlikleri,?,/, #, \, karakter içeremez veya boşluk ile bitemez.
+* Tüm kaynaklar için ID özelliğini doğrular. Kaynak kimlikleri,?,/, #, karakter içeremez \, veya boşluk ile bitemez.
 * Yeni "Dizin dönüştürme ilerlemesi" üst bilgisini Resourcereslik 'e ekler.
 
 ### <a name="110"></a><a name="1.1.0"/>1.1.0
@@ -167,7 +168,7 @@ Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet taraf�
 | [2.2.1](#2.2.1) |29 Eyl, 2017 |30 Ağustos 2020 |
 | [2.2.0](#2.2.0) |10 Mayıs 2017 |30 Ağustos 2020 |
 | [2.1.0](#2.1.0) |01 Mayıs 2017 |30 Ağustos 2020 |
-| [desteklemez](#2.0.1) |30 Ekim 2016 |30 Ağustos 2020 |
+| [2.0.1](#2.0.1) |30 Ekim 2016 |30 Ağustos 2020 |
 | [2.0.0](#2.0.0) |29 Eylül 2016 |30 Ağustos 2020 |
 | [1.9.0](#1.9.0) |07 Temmuz 2016 |30 Ağustos 2020 |
 | [1.8.0](#1.8.0) |14 Haziran 2016 |30 Ağustos 2020 |

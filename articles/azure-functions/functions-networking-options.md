@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: ce1a214d39f958af36931192aad4561459ca0573
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a2c57ca6a1f7eb50c277543e9fbe27a13f839bac
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121363"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648809"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -47,15 +47,7 @@ Daha fazla bilgi için bkz. [Azure App Service statik erişim kısıtlamaları](
 
 ## <a name="private-site-access"></a>Özel site erişimi
 
-Özel site erişimi, uygulamanızı yalnızca bir Azure sanal ağı gibi özel bir ağdan erişilebilir hale getirme anlamına gelir.
-
-* Özel site erişimi, hizmet uç noktaları yapılandırıldığında [Premium](./functions-premium-plan.md), [Tüketim](functions-scale.md#consumption-plan)ve [App Service](functions-scale.md#app-service-plan) planlarında kullanılabilir.
-    * Hizmet uç noktaları, **platform özellikleri**  >  **ağ oluşturma**  >  **erişim kısıtlamalarını yapılandırma**  >  **Kural Ekle**' nin altında uygulama temelinde yapılandırılabilir. Sanal ağlar artık bir kural türü olarak seçilebilir.
-    * Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md).
-    * Hizmet uç noktalarında, işlevinizin hala internet 'e yönelik sanal ağ tümleştirmesiyle birlikte tam giden erişimi olduğunu aklınızda bulundurun.
-* Özel site erişimi, iç yük dengeleyici (ıLB) ile yapılandırılmış bir App Service Ortamı içinde de kullanılabilir. Daha fazla bilgi için bkz. [bir App Service ortamı iç yük dengeleyici oluşturma ve kullanma](../app-service/environment/create-ilb-ase.md).
-
-Özel site erişimini ayarlamayı öğrenmek için bkz. [Azure işlevleri özel site erişimi oluşturma](functions-create-private-site-access.md).
+[!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
 
 ## <a name="virtual-network-integration"></a>Sanal ağ tümleştirmesi
 

@@ -8,13 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.custom: has-adal-ref
-ms.openlocfilehash: c2800dc361eb274eeef706556e09731da079ccab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611764"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653364"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
@@ -46,7 +45,7 @@ Her ikisi de uzamsal bağlayıcı hesabına erişim için aynı anda geçerli ol
 
 SDK, hesap anahtarları ile kimlik doğrulaması için yerleşik desteğe sahiptir; yalnızca cloudSession nesneniz üzerinde AccountKey özelliğini ayarlamanız gerekir.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
@@ -99,7 +98,7 @@ Kullanıcıları Azure Active Directory hedefleyen uygulamalar için, önerilen 
     1.  Uygulamanızı Azure AD 'ye **yerel uygulama**olarak kaydedin. Kayıt kapsamında, uygulamanızın çok kiracılı olup olmayacağını belirlemeniz ve uygulamanız için izin verilen yeniden yönlendirme URL 'Lerini sağlamanız gerekir.
         1.  **API izinleri** sekmesine geçiş yap
         2.  **Izin Ekle** seçeneğini belirleyin
-            1.  **Kuruluşumun kullandığı API 'ler** altında **karma gerçeklik kaynak sağlayıcısını** seçin
+            1.  **Kuruluşumun kullandığı API 'ler** altında **Microsoft Mixed Reality** 'yi seçin
             2.  **Temsilci izinleri** seçin
             3.  **Mixedreality** altında **mixedreality. SignIn** kutusunu işaretleyin
             4.  **Izin Ekle** seçeneğini belirleyin
@@ -112,16 +111,16 @@ Kullanıcıları Azure Active Directory hedefleyen uygulamalar için, önerilen 
             2.  **Seç** alanında, erişim atamak istediğiniz kullanıcı, Grup veya uygulama (lar) ı ve uygulamanın adını girin.
             3.  **Kaydet**'e tıklayın.
 2. Kodunuzda:
-    1.  ADAL 'da **ISTEMCI kimliği** ve **redirecturi** PARAMETRELERI olarak kendi Azure AD uygulamanızın **uygulama kimliği** ve **yeniden yönlendirme URI** 'sini kullandığınızdan emin olun
+    1.  MSAL içinde **ISTEMCI kimliği** ve **redirecturi** PARAMETRELERI olarak kendi Azure AD uygulamanızın **uygulama kimliği** ve **yeniden yönlendirme URI** 'sini kullandığınızdan emin olun
     2.  Kiracı bilgilerini ayarla:
         1.  Uygulamanız **yalnızca Kuruluşumu**destekliyorsa, bu DEĞERI **kiracı kimliğiniz** veya **kiracı adınızla** değiştirin (örneğin, contoso.Microsoft.com)
         2.  Uygulamanız **herhangi bir kuruluş dizinindeki hesapları**destekliyorsa, bu değeri **kuruluşlar** ile değiştirin
         3.  Uygulamanız **tüm Microsoft hesabı kullanıcıları**destekliyorsa, bu değeri **ortak** ile değiştirin
-    3.  Belirteç isteğiniz üzerinde **kaynağı** "https://sts.mixedreality.azure.com" olarak ayarlayın. Bu "kaynak", Azure AD 'ye, uygulamanızın Azure uzamsal bağlayıcı hizmeti için bir belirteç istediğini gösterir.
+    3.  Belirteç isteğiniz üzerinde, **kapsamı** "" olarak ayarlayın https://sts.mixedreality.azure.com//.default . Bu kapsam, Azure AD 'ye, uygulamanızın karma gerçeklik güvenlik belirteci hizmeti (STS) için bir belirteç istediğini gösterir.
 
 Bu şekilde, uygulamanız MSAL bir Azure AD belirteci ile elde edilebilir. Bu Azure AD belirtecini, bulut oturumu yapılandırma nesneniz üzerinde **Authenticationtoken** olarak ayarlayabilirsiniz.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
@@ -185,16 +184,16 @@ Azure AD erişim belirteci [msal kitaplığı](../../active-directory/develop/ms
         2.  **Seç** alanına, oluşturduğunuz ve erişim atamak istediğiniz uygulama (lar) ın adını girin. Uygulamanızın kullanıcılarının uzamsal bağlayıcı hesabına karşı farklı rollere sahip olmasını istiyorsanız, Azure AD 'de birden çok uygulamayı kaydetmeniz ve ayrı bir role atamanız gerekir. Ardından, kullanıcılarınız için doğru rolü kullanmak üzere yetkilendirme mantığınızı uygulayın.
     3.  **Kaydet**'e tıklayın.
 2.  Kodunuzda (Note: GitHub ' da bulunan hizmet örneğini kullanabilirsiniz):
-    1.  ADAL 'da istemci KIMLIĞI, gizli anahtar ve Redirecturı parametreleri olarak kendi Azure AD uygulamanızın uygulama KIMLIĞI, uygulama gizli anahtarı ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun
-    2.  Kiracı KIMLIĞINI, ADAL 'daki yetkili parametresindeki kendi AAAzure ADD kiracı KIMLIĞINIZ olarak ayarlayın
-    3.  Belirteç isteğiniz üzerinde **kaynağı** "https://sts.mixedreality.azure.com" olarak ayarlayın
+    1.  MSAL ' de istemci KIMLIĞI, gizli anahtar ve Redirecturı parametreleri olarak kendi Azure AD uygulamanızın uygulama KIMLIĞI, uygulama gizli anahtarı ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun
+    2.  Kiracı KIMLIĞINI, MSAL ' deki yetkili parametresinde bulunan Azure kiracı KIMLIĞINIZLE belirleyin.
+    3.  Belirteç isteğiniz içinde, **kapsamı** "" olarak ayarlayın https://sts.mixedreality.azure.com//.default
 
 Bu şekilde, arka uç hizmetiniz bir Azure AD belirteci alabilir. Daha sonra, istemciye geri dönecektir için bunu bir MR belirteci için değiş tokuş edebilir. Bir MR belirtecini almak için Azure AD belirtecinin kullanılması bir REST çağrısıyla yapılır. Örnek bir çağrı aşağıda verilmiştir:
 
 ```
-GET https://mrc-auth-prod.trafficmanager.net/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-Host: mrc-auth-prod.trafficmanager.net
+Host: sts.mixedreality.azure.com
 Connection: Keep-Alive
 
 HTTP/1.1 200 OK
@@ -206,13 +205,13 @@ MS-CV: 05JLqWeKFkWpbdY944yl7A.0
 {"AccessToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2MzYyMTk5ZTI2NjQxOGU4ZjE3MThlM2IyMThjZTIxIiwidHlwIjoiSldUIn0.eyJqdGkiOiJmMGFiNWIyMy0wMmUxLTQ1MTQtOWEzNC0xNzkzMTA1NTc4NzAiLCJjYWkiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJ0aWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJhaWQiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJhYW8iOi0xLCJhcHIiOiJlYXN0dXMyIiwicmlkIjoiL3N1YnNjcmlwdGlvbnMvNzIzOTdlN2EtNzA4NC00ODJhLTg3MzktNjM5Y2RmNTMxNTI0L3Jlc291cmNlR3JvdXBzL3NhbXBsZV9yZXNvdXJjZV9ncm91cC9wcm92aWRlcnMvTWljcm9zb2Z0Lk1peGVkUmVhbGl0eS9TcGF0aWFsQW5jaG9yc0FjY291bnRzL2RlbW9fYWNjb3VudCIsIm5iZiI6MTU0NDU0NzkwMywiZXhwIjoxNTQ0NjM0MzAzLCJpYXQiOjE1NDQ1NDc5MDMsImlzcyI6Imh0dHBzOi8vbXJjLWF1dGgtcHJvZC50cmFmZmljbWFuYWdlci5uZXQvIiwiYXVkIjoiaHR0cHM6Ly9tcmMtYW5jaG9yLXByb2QudHJhZmZpY21hbmFnZXIubmV0LyJ9.BFdyCX9UJj0i4W3OudmNUiuaGgVrlPasNM-5VqXdNAExD8acFJnHdvSf6uLiVvPiQwY1atYyPbOnLYhEbIcxNX-YAfZ-xyxCKYb3g_dbxU2w8nX3zDz_X3XqLL8Uha-rkapKbnNgxq4GjM-EBMCill2Svluf9crDmO-SmJbxqIaWzLmlUufQMWg_r8JG7RLseK6ntUDRyDgkF4ex515l2RWqQx7cw874raKgUO4qlx0cpBAB8cRtGHC-3fA7rZPM7UQQpm-BC3suXqRgROTzrKqfn_g-qTW4jAKBIXYG7iDefV2rGMRgem06YH_bDnpkgUa1UgJRRTckkBuLkO2FvA"}
 ```
 
-Yetkilendirme üstbilgisinin şu şekilde biçimlendirildiği konum:`Bearer <accoundId>:<accountKey>`
+Yetkilendirme üstbilgisinin şu şekilde biçimlendirildiği konum:`Bearer <Azure_AD_token>`
 
 Ve yanıt, MR belirtecini düz metin olarak içerir.
 
 Daha sonra bu MR belirteci istemciye döndürülür. İstemci uygulamanız daha sonra bunu, bulut oturumu yapılandırmasında erişim belirteci olarak ayarlayabilir.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccessToken = @"MyAccessToken";

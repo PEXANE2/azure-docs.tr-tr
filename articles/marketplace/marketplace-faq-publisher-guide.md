@@ -7,16 +7,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: be9a9d6b93068adc6d09db9b9ac23de9abd6a69f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 7e4ec8a5772f0fbc1c0e67ba07a172daeac9b91b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005165"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657894"
 ---
-# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
+# <a name="common-questions-about-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
-Bu makalede, Microsoft ticari marketi hakkında sıkça sorulan sorular yanıtlanmaktadır.
+Bu makalede ticari Market hakkında sık sorulan sorular yanıtlanmaktadır.
 
 ## <a name="general"></a>Genel
 
@@ -308,7 +308,7 @@ Müşteriler, para iadesi almak için belirtilen bir zaman çerçevesinde abonel
 
 Başlamak için bazı kaynaklar aşağıda verilmiştir:
 
-- [Microsoft ticari Market 'e giriş](https://docs.microsoft.com/learn/commercial-marketplace/intro-commercial-marketplace/intro-commercial-marketplace/)
+- [Microsoft ticari Market 'e giriş](/azure/marketplace/marketplace-publishers-guide)
 - [Microsoft ticari Market İş Ortağı Merkezi](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 - [Ticari markete hoş geldiniz](https://docs.microsoft.com/azure/marketplace/)
 

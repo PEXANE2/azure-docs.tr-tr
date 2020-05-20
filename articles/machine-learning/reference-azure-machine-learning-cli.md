@@ -1,7 +1,6 @@
 ---
-title: CLı uzantısı
-titleSuffix: Azure Machine Learning
-description: Azure CLı için Azure Machine Learning CLı uzantısı hakkında bilgi edinin. Azure CLı, Azure bulutundaki kaynaklarla çalışmanıza olanak sağlayan platformlar arası bir komut satırı yardımcı programıdır. Machine Learning uzantısı, Azure Machine Learning çalışmanıza olanak sağlar. ML CLı, çalışma alanınız, veri depoları, veri kümeleri, işlem hatları, modeller ve dağıtımlarınız gibi kaynakları oluşturur ve yönetir.
+title: "& Azure Machine Learning CLı 'yi kullanma"
+description: Çalışma alanınız, veri depoları, veri kümeleri, işlem hatları, modeller ve dağıtımlar gibi kaynakları oluşturmak ve yönetmek için Azure Machine Learning CLı uzantısını yüklemeyi ve kullanmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +10,14 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 16f9080487af95e7de5c5f8c91fd5c8d356b7bde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d401522ffc45e2e7ea20de70a59ed967dd7623ab
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618068"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659800"
 ---
-# <a name="use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning için CLı uzantısını kullanın
+# <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>& Azure Machine Learning için CLı uzantısını kullanın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning CLı, Azure platformu için platformlar arası komut satırı arabirimi olan [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)'nin bir uzantısıdır. Bu uzantı Azure Machine Learning ile çalışmaya yönelik komutlar sağlar. Machine Learning etkinliklerinizi otomatikleştirmenize olanak tanır. Aşağıdaki listede CLı uzantısıyla yapabileceğiniz bazı örnek eylemler verilmiştir:
@@ -31,7 +30,7 @@ Azure Machine Learning CLı, Azure platformu için platformlar arası komut sat�
 
 CLı Azure Machine Learning SDK 'sının yerini almaz. Otomasyonuna uygun olan yüksek parametreli görevleri işlemek için optimize edilmiş, tamamlayıcı bir araçtır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * CLı 'yi kullanmak için bir Azure aboneliğinizin olması gerekir. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -54,7 +53,7 @@ CLı 'dan Azure aboneliğinizde kimlik doğrulayabilmeniz için çeşitli yollar
 az login
 ```
 
-CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, bir tarayıcı açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Yönergeler, bir yetkilendirme koduna [https://aka.ms/devicelogin](https://aka.ms/devicelogin) göz atmaya ve girmeye yönelik bilgiler içerir.
+CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, bir tarayıcı açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Yönergeler, [https://aka.ms/devicelogin](https://aka.ms/devicelogin) bir yetkilendirme koduna göz atmaya ve girmeye yönelik bilgiler içerir.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
@@ -71,7 +70,7 @@ az extension add -n azure-cli-ml
 > [!TIP]
 > Aşağıdaki komutlarla kullanabileceğiniz örnek dosyaları [burada](https://aka.ms/azml-deploy-cloud)bulabilirsiniz.
 
-İstendiğinde, uzantıyı yüklemeyi `y` seçin.
+İstendiğinde, `y` uzantıyı yüklemeyi seçin.
 
 Uzantının yüklendiğini doğrulamak için, ML 'ye özgü alt komutların listesini göstermek üzere aşağıdaki komutu kullanın:
 
@@ -113,7 +112,7 @@ Aşağıdaki komutlar, Azure Machine Learning tarafından kullanılan kaynaklar�
     ```
 
     > [!TIP]
-    > Bu komut, temel bir sürüm çalışma alanı oluşturur. Kurumsal çalışma alanı oluşturmak için, `--sku enterprise` `az ml workspace create` komutuyla anahtarını kullanın. Azure Machine Learning sürümleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning nedir](overview-what-is-azure-ml.md#sku).
+    > Bu komut, temel bir sürüm çalışma alanı oluşturur. Kurumsal çalışma alanı oluşturmak için, `--sku enterprise` komutuyla anahtarını kullanın `az ml workspace create` . Azure Machine Learning sürümleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning nedir](overview-what-is-azure-ml.md#sku).
 
     Daha fazla bilgi için bkz. [az ml çalışma alanı oluştur](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create).
 
@@ -123,7 +122,7 @@ Aşağıdaki komutlar, Azure Machine Learning tarafından kullanılan kaynaklar�
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Bu komut, örnek `.azureml` runconfig ve Conda ortam dosyalarını içeren bir alt dizin oluşturur. Ayrıca, Azure Machine Learning çalışma `config.json` alanınız ile iletişim kurmak için kullanılan bir dosya içerir.
+    Bu komut `.azureml` , örnek runconfig ve Conda ortam dosyalarını içeren bir alt dizin oluşturur. Ayrıca `config.json` , Azure Machine Learning çalışma alanınız ile iletişim kurmak için kullanılan bir dosya içerir.
 
     Daha fazla bilgi için bkz. [az ml Folder Attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -161,18 +160,18 @@ Aşağıdaki komutlar, Azure Machine Learning tarafından kullanılan kaynaklar�
 
 ## <a name="run-experiments"></a><a id="experiments"></a>Denemeleri Çalıştır
 
-* Denemenizin bir çalıştırmasını başlatın. Bu komutu kullanırken,-c parametresine karşı runconfig dosyasının adını (dosya sisteminize bakıyorsanız \*. runconfig öğesinden önceki metin) belirtin.
+* Denemenizin bir çalıştırmasını başlatın. Bu komutu kullanırken,-c parametresine karşı runconfig dosyasının adını ( \* dosya sisteminize bakıyorsanız. runconfig öğesinden önceki metin) belirtin.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
     > [!TIP]
-    > `az ml folder attach` Komut, iki örnek `.azureml` runconfig dosyası içeren bir alt dizin oluşturur. 
+    > `az ml folder attach`Komut `.azureml` , iki örnek runconfig dosyası içeren bir alt dizin oluşturur. 
     >
     > Programlı olarak çalıştırılan bir yapılandırma nesnesi oluşturan bir Python betiğinizin olması halinde, [runconfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) komutunu bir runconfig dosyası olarak kaydetmek için kullanabilirsiniz.
     >
-    > Tam runconfig şeması bu [json dosyasında](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)bulunabilir. Şema her nesnenin `description` anahtarı aracılığıyla kendi kendine belgedir. Ayrıca, olası değerler için numaralandırmalar ve sonda bir şablon kod parçacığı vardır.
+    > Tam runconfig şeması bu [json dosyasında](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)bulunabilir. Şema her nesnenin anahtarı aracılığıyla kendi kendine belgedir `description` . Ayrıca, olası değerler için numaralandırmalar ve sonda bir şablon kod parçacığı vardır.
 
     Daha fazla bilgi için bkz. [az ml Run gönderme-betiği](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
@@ -194,7 +193,7 @@ Aşağıdaki komutlarda Azure Machine Learning içindeki veri kümeleriyle nası
     az ml dataset register -f mydataset.json
     ```
 
-    Veri kümesini tanımlamak için kullanılan JSON dosyasının biçimi hakkında bilgi için, kullanın `az ml dataset register --show-template`.
+    Veri kümesini tanımlamak için kullanılan JSON dosyasının biçimi hakkında bilgi için, kullanın `az ml dataset register --show-template` .
 
     Daha fazla bilgi için bkz. [az ml DataSet Register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
 
@@ -284,7 +283,7 @@ Aşağıdaki komutlarda, çalışma alanınız için Azure Machine Learning [ort
 
 ### <a name="environment-configuration-schema"></a>Ortam yapılandırma şeması
 
-`az ml environment scaffold` Komutunu KULLANDıYSANıZ, CLI ile özel ortam yapılandırması oluşturmak için `azureml_environment.json` değiştirilebilen ve kullanılabilecek bir şablon dosyası oluşturur. En üst düzey nesne, Python SDK 'sında [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) sınıfla eşlenir. 
+`az ml environment scaffold`Komutunu kullandıysanız, `azureml_environment.json` CLI ile özel ortam yapılandırması oluşturmak için değiştirilebilen ve kullanılabilecek bir şablon dosyası oluşturur. En üst düzey nesne, [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) Python SDK 'sında sınıfla eşlenir. 
 
 ```json
 {
@@ -328,7 +327,7 @@ Aşağıdaki komutlarda, çalışma alanınız için Azure Machine Learning [ort
 }
 ```
 
-Aşağıdaki tabloda JSON dosyasındaki her üst düzey alan, türü ve bir açıklama ayrıntıları verilmiştir. Bir nesne türü Python SDK 'dan bir sınıfa bağlanmışsa, Python sınıfında her bir JSON alanı ve genel değişken adı arasında gevşek bir 1:1 eşleşmesi vardır. Bazı durumlarda alan, sınıf değişkeni yerine bir Oluşturucu bağımsız değişkenine de eşlenir. Örneğin, `environmentVariables` alanı `environment_variables` [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) sınıfındaki değişkenle eşlenir.
+Aşağıdaki tabloda JSON dosyasındaki her üst düzey alan, türü ve bir açıklama ayrıntıları verilmiştir. Bir nesne türü Python SDK 'dan bir sınıfa bağlanmışsa, Python sınıfında her bir JSON alanı ve genel değişken adı arasında gevşek bir 1:1 eşleşmesi vardır. Bazı durumlarda alan, sınıf değişkeni yerine bir Oluşturucu bağımsız değişkenine de eşlenir. Örneğin, `environmentVariables` alanı `environment_variables` sınıfındaki değişkenle eşlenir [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) .
 
 | JSON alanı | Tür | Açıklama |
 |---|---|---|
@@ -339,7 +338,7 @@ Aşağıdaki tabloda JSON dosyasındaki her üst düzey alan, türü ve bir aç�
 | `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | Ortamın belirtimlerine göre oluşturulan Docker görüntüsünü özelleştirmek için ayarları tanımlar. |
 | `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | Bölüm Spark ayarlarını yapılandırır. Yalnızca Framework, PySpark olarak ayarlandığında kullanılır. |
 | `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | Databricks kitaplığı bağımlılıklarını yapılandırır. |
-| `inferencingStackVersion` | `string` | Görüntüye eklenen ınırm yığın sürümünü belirtir. İkinci dereceden bir yığın eklemekten kaçınmak için, bu alanı `null`bırakın. Geçerli değer: "en son". |
+| `inferencingStackVersion` | `string` | Görüntüye eklenen ınırm yığın sürümünü belirtir. İkinci dereceden bir yığın eklemekten kaçınmak için, bu alanı bırakın `null` . Geçerli değer: "en son". |
 
 ## <a name="ml-pipeline-management"></a>ML işlem hattı yönetimi
 

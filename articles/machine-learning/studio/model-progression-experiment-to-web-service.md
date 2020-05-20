@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: e6a8fe7771776a92b3c28a188bc352e3bb105313
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1618e64eba32e857ccd0ba4b5a7a656f1d954bf8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217913"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659913"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio (klasik) modelinin bir deneyden bir Web hizmetine nasıl ilerlemesi
 
@@ -34,7 +34,7 @@ Deneme hesabınızı karşıladıktan sonra, kullanıcıların yeni verileri gö
 Bu makalede, Machine Learning modelinizin bir geliştirme denemenizin bir operasyonel Web hizmetine nasıl ilerlediğini gösteren bir genel bakış sunuyoruz.
 
 > [!NOTE]
-> Makine öğrenimi modellerinin geliştirilmesi ve dağıtılması için başka yollar vardır, ancak bu makale Machine Learning Studio (klasik) ' i nasıl kullanacağınızı bir şekilde odaklanır. Örneğin, R ile klasik bir tahmine dayalı Web hizmeti oluşturma açıklamasını okumak için bkz. Web günlüğü gönderi [derlemesi & RStudio ve Azure Machine Learning Studio kullanarak tahmine dayalı Web Apps dağıtma](https://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
+> Makine öğrenimi modellerinin geliştirilmesi ve dağıtılması için başka yollar vardır, ancak bu makale Machine Learning Studio (klasik) ' i nasıl kullanacağınızı bir şekilde odaklanır. Örneğin, R ile klasik bir tahmine dayalı Web hizmeti oluşturma açıklamasını okumak için bkz. Web günlüğü gönderi [derlemesi & RStudio ve Azure Machine Learning Studio kullanarak tahmine dayalı Web Apps dağıtma](https://docs.microsoft.com/archive/blogs/machinelearning/build-deploy-predictive-web-apps-using-rstudio-and-azure-ml).
 >
 >
 

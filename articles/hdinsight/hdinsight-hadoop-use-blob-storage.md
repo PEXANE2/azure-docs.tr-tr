@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 220e73536a892e798139ca54913e09e097c22432
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c08adca17948aceb54b937526dacebbaa13a0530
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191949"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655192"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Depolama'yı kullanma
 
@@ -65,7 +65,7 @@ HDInsight kümesinden Data Lake Storage dosyalara erişmek için çeşitli yolla
 
 ### <a name="data-access-examples"></a>Veri erişimi örnekleri
 
-Örnekler, kümenin baş düğümüne bir [ssh bağlantısını](./hdinsight-hadoop-linux-use-ssh-unix.md) temel alır. Örneklerde, üç URI şeması da kullanılır. Ve `CONTAINERNAME` `STORAGEACCOUNT` değerlerini ilgili değerlerle değiştirin
+Örnekler, kümenin baş düğümüne bir [ssh bağlantısını](./hdinsight-hadoop-linux-use-ssh-unix.md) temel alır. Örneklerde, üç URI şeması da kullanılır. `CONTAINERNAME`Ve `STORAGEACCOUNT` değerlerini ilgili değerlerle değiştirin
 
 #### <a name="a-few-hdfs-commands"></a>Birkaç bir bu komut
 
@@ -104,7 +104,7 @@ HDInsight kümesinden Data Lake Storage dosyalara erişmek için çeşitli yolla
 
 #### <a name="creating-a-hive-table"></a>Hive tablosu oluşturma
 
-Üç dosya konumu tanım amacıyla gösterilmiştir. Gerçek yürütme için `LOCATION` girdilerden yalnızca birini kullanın.
+Üç dosya konumu tanım amacıyla gösterilmiştir. Gerçek yürütme için girdilerden yalnızca birini kullanın `LOCATION` .
 
 ```hql
 DROP TABLE myTable;
@@ -138,11 +138,11 @@ Microsoft, Azure depolama ile çalışmak için aşağıdaki araçları sağlar:
 
 * Yapılandırılmış varsayılan deponun tüm yolunu belirlemek için şuraya gidin:
 
-    **HDFS**Ve sonra filtre giriş kutusuna `fs.defaultFS` girin.**Configs**  > 
+    **HDFS** Bu  >  **Ve sonra** `fs.defaultFS` filtre giriş kutusuna girin.
 
 * Bellek deposunun ikincil depolama olarak yapılandırılıp yapılandırılmadığını denetlemek için şuraya gidin:
 
-    **HDFS**Ve sonra filtre giriş kutusuna `blob.core.windows.net` girin.**Configs**  > 
+    **HDFS** Bu  >  **Ve sonra** `blob.core.windows.net` filtre giriş kutusuna girin.
 
 Ambarı REST API kullanarak yolu elde etmek için bkz. [varsayılan depolamayı alma](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage).
 
@@ -158,7 +158,7 @@ Varsayılan Blob kapsayıcısı iş geçmişi ve iş günlükleri gibi kümeye �
 
 ## <a name="use-additional-storage-accounts"></a>Ek depolama hesaplarını kullanma
 
-HDInsight kümesi oluştururken ilişkilendirmek istediğiniz Azure Depolama hesabını belirtirsiniz. Ayrıca, oluşturma işlemi sırasında aynı Azure aboneliğinden veya farklı Azure aboneliklerinden ek depolama hesapları ekleyebilirsiniz. Bir küme oluşturulduktan sonra. Ek depolama hesapları ekleme hakkında yönergeler için bkz. [HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md).
+HDInsight kümesi oluştururken ilişkilendirmek istediğiniz Azure Depolama hesabını belirtirsiniz. Ayrıca, oluşturma işlemi sırasında veya bir küme oluşturulduktan sonra aynı Azure aboneliğinden veya farklı Azure aboneliklerinden ek depolama hesapları ekleyebilirsiniz. Ek depolama hesapları ekleme hakkında yönergeler için bkz. [HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md).
 
 > [!WARNING]  
 > HDInsight kümesinden farklı bir konumda ek depolama hesabının kullanılması desteklenmez.
@@ -173,5 +173,5 @@ Daha fazla bilgi için bkz.
 * [Azure Data Lake Storage kullanmaya başlayın](../data-lake-store/data-lake-store-get-started-portal.md)
 * [HDInsight'a veri yükleme](hdinsight-upload-data.md)
 * [HDInsight ile verilere erişimi kısıtlamak için Azure Depolama Paylaşılan Erişim İmzaları kullanma](hdinsight-storage-sharedaccesssignature-permissions.md)
-* [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md)
 * [Öğretici: Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri ayıklama, dönüştürme ve yükleme](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

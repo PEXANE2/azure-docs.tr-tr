@@ -1,22 +1,22 @@
 ---
-title: Tümleşik çözümler-Azure Marketi
-description: Azure Marketi ve Microsoft AppSource ile tümleşik çözümler
+title: Tümleşik bir çözüm yayımlama-Microsoft ticari Market
+description: Microsoft AppSource ve Azure Market 'Te Tümleşik çözümler yayımlamaya yönelik gereksinimleri ve adımları öğrenin.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 835aa0192dc37032a76bf3863dc1a4ac0109bb22
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: f0a3ea3aebeb9c96d7ccfba9c883ae208d93a44e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160571"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657975"
 ---
 # <a name="publish-an-integrated-solution"></a>Tümleşik bir çözüm yayımlama
 
-Tek bir paketlenmiş teklifte, tümleşik bir çözüm, yazılım satıcılarından gelen ve hizmet ortağının dağıtımı ve desteğiyle ilgili nokta çözümü teknolojilerini birleştirir. Hizmet ortağı Microsoft AppSource veya Azure Marketi 'nde teklif bir [danışmanlık hizmeti](./consulting-services.md)olarak listelenir.
+Bu makalede, ticari Market 'e tümleşik bir çözüm yayımlamaya yönelik genel işlem ve gereksinimler açıklanmaktadır. Tek bir paketlenmiş teklifte, tümleşik bir çözüm, yazılım satıcılarından gelen ve hizmet ortağının dağıtımı ve desteğiyle ilgili nokta çözümü teknolojilerini birleştirir. Hizmet ortağı Microsoft AppSource veya Azure Marketi 'nde teklif bir [danışmanlık hizmeti](./consulting-services.md)olarak listelenir.
 
 Tümleşik çözümler, belirli bir müşteri ihtiyacı veya senaryosuna yönelik olarak ele hedeflenir. Sağlayıcılar, sektör Challenge veya sorunlu noktaları anlamak için başlar. Daha sonra müşterilere yönelik Birleşik ve yinelenebilir bir dağıtım deneyimi oluşturmak için iki veya daha fazla en iyi sürümü tümleştirirler. Sağlayıcılar müşterileri hızla çalışır duruma alır. İlgili özelleştirme, danışmanlık ve çözüm desteği sunarak müşteriyle tek bir iletişim noktası sunar. Sonuç, teknoloji ve hizmetler de dahil olmak üzere tümleşik bir çözümdür.
 
@@ -48,7 +48,7 @@ Tümleşik çözümler programına genel bakış için [iş ortakları Için gen
 * Çözüm, bir bütün müşteri çözümü ve deneyimi için IP ve Hizmetleri bir araya getiren en az iki iş ortağı kuruluş içermelidir.
 * İş ortağı IP 'si Azure, Dynamics 365 veya güç platformunda oluşturulmalıdır.
 * Tümleşik çözümün IP 'si yalnızca yazılım satıcısının ve temel hizmetler-sağlayıcı tekliflerinin IP 'sinden farklılaştırmalıdır.
-* Tüm iş ortakları, listelenme ve sonunda Microsoft AppSource, Azure Marketi veya her ikisi aracılığıyla işlem yapılabilir bir yinelenebilir teklif oluşturma amacını paylaşır.
+* Tüm iş ortakları, listelenebilir ve sonunda Microsoft AppSource, Azure Marketi veya her ikisi aracılığıyla işlem yapılabilir bir yinelenebilir teklif oluşturma amacını paylaşır.
 
 ## <a name="submit-a-nomination"></a>Aday olma
 
@@ -75,7 +75,7 @@ Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek iç
     Tümleştirme yaklaşımına ilişkin tartışmanızın aşağıdaki noktaları olması gerekir:
     * Tümleştirme noktaları
     * Çözüm mimarisi
-    * Kimlik doğrulaması
+    * Kimlik Doğrulaması
     * Kullanıcı arabirimi
     * İzleme
     * Dağıtım mekanizması

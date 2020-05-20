@@ -1,6 +1,6 @@
 ---
-title: Azure Market SaaS uygulamaları yayımlama Kılavuzu
-description: Azure Market 'Te SaaS uygulamaları yayımlamak için adım adım kılavuz ve yayımlama denetim listeleri
+title: SaaS uygulamaları yayımlama Kılavuzu-Microsoft ticari Market
+description: Yayımlama SaaS uygulaması için gereksinimler ve kaynaklar Microsoft AppSource ve Azure Marketi 'ne yöneliktir.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: dsindona
 ms.service: marketplace
@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117242"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657815"
 ---
-# <a name="saas-applications-offer-publishing-guide"></a>SaaS uygulamaları için Yayımlama Kılavuzu
+# <a name="saas-applications-offer-publishing-guide"></a>SaaS uygulaması teklifi yayımlama kılavuzu
 
-SaaS uygulamaları, "benimle Iletişime geçin", "Şimdi deneyin" ve "Şimdi al" eylemine yönelik üç farklı çağrıya sahip Market 'te yayımlanabilir. Bu kılavuzda, her biri için gereksinimler dahil olmak üzere bu üç seçenek açıklanmaktadır. 
+SaaS uygulamalarını ticari markette, "benimle Iletişime geçin", "Şimdi deneyin" ve "Şimdi al" eylemleriyle yayımlayabilirsiniz. Bu makalede, her biri için gereksinimler dahil olmak üzere bu üç seçenek açıklanmaktadır. 
 
 ## <a name="offer-overview"></a>Teklifin genel bakış  
 
@@ -28,9 +28,9 @@ SaaS uygulamaları Microsoft AppSource ve Azure Marketi 'nde kullanılabilir.  H
 
 | SaaS uygulamaları teklifi | İş gereksinimleri | Teknik gereksinimler |  
 | --- | --- | --- |  
-| **Bizimle iletişime geçin** | Yes | Hayır |  
-| **PowerBI/Dynamics** | Yes | Evet (Azure AD tümleştirmesi) |  
-| **SaaS Uygulamaları**| Yes | Evet (Azure AD tümleştirmesi) |     
+| **Bize Ulaşın** | Yes | Hayır |  
+| **Power BI/Dynamics** | Yes | Evet (Azure AD tümleştirmesi) |  
+| **SaaS uygulamaları**| Yes | Evet (Azure AD tümleştirmesi) |     
 
 ## <a name="saas-list"></a>SaaS listesi
 

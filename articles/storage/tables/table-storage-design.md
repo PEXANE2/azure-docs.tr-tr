@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255151"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656899"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Ölçeklenebilir ve performansa yönelik tablolar tasarlama
 
@@ -41,7 +41,7 @@ Aşağıdaki örnek, çalışan ve departman varlıklarını depolamak için bas
 <th></th>
 </tr>
 <tr>
-<td>Pazarlama</td>
+<td>Marketing</td>
 <td>00001</td>
 <td>2014-08-22T00:50:32Z</td>
 <td>
@@ -61,7 +61,7 @@ Aşağıdaki örnek, çalışan ve departman varlıklarını depolamak için bas
 </table>
 </tr>
 <tr>
-<td>Pazarlama</td>
+<td>Marketing</td>
 <td>00002</td>
 <td>2014-08-22T00:50:34Z</td>
 <td>
@@ -81,7 +81,7 @@ Aşağıdaki örnek, çalışan ve departman varlıklarını depolamak için bas
 </table>
 </tr>
 <tr>
-<td>Pazarlama</td>
+<td>Marketing</td>
 <td>Bölüm</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
@@ -91,14 +91,14 @@ Aşağıdaki örnek, çalışan ve departman varlıklarını depolamak için bas
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>Pazarlama</td>
+<td>Marketing</td>
 <td>153</td>
 </tr>
 </table>
 </td>
 </tr>
 <tr>
-<td>Satışlar</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -132,7 +132,7 @@ Hesap adı, tablo adı ve **Partitionkey** birlikte tablo hizmetinin varlığı 
 
 Tablo hizmetinde, tek bir düğüm bir veya daha fazla tam bölüm hizmetleri ve hizmet, düğümler arasında dinamik olarak yük dengeleme bölümlerine göre ölçeklendirilir. Bir düğüm Load altındaysa, tablo hizmeti bu düğüm tarafından hizmet verilen bölümlerin aralığını farklı düğümlere *bölebilir* ; trafik alt taraflarından, hizmet, Bölüm aralıklarını sessiz düğümlerden tek bir düğüme geri *birleştirebilirler* .  
 
-Tablo hizmetinin iç ayrıntıları ve hizmetin bölümleri nasıl yönettiği hakkında daha fazla bilgi için, bkz. [Microsoft Azure depolama: güçlü tutarlılık Içeren yüksek oranda kullanılabilir bir bulut depolama hizmeti](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Tablo hizmetinin iç ayrıntıları ve hizmetin bölümleri nasıl yönettiği hakkında daha fazla bilgi için, bkz. [Microsoft Azure depolama: güçlü tutarlılık Içeren yüksek oranda kullanılabilir bir bulut depolama hizmeti](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency).  
 
 ## <a name="entity-group-transactions"></a>Varlık grubu Işlemleri
 Tablo hizmetinde, varlık grubu Işlemleri (Yumurlar), birden çok varlık arasında atomik güncelleştirmeler gerçekleştirmeye yönelik tek yerleşik mekanizmadır. Yumurtları bazen *toplu*işlem olarak da adlandırılır. Yumurtları yalnızca aynı bölümde depolanan varlıklar üzerinde çalışabilir (diğer bir deyişle, belirli bir tabloda aynı bölüm anahtarını paylaşır). Bu nedenle, birden çok varlık genelinde atomik işlem davranışına ihtiyaç duyuyorsanız, bu varlıkların aynı bölümde olduğundan emin olmanız gerekir. Bu genellikle, farklı varlık türleri için birden çok tablo kullanmayan aynı tabloda (ve bölümünde) birden çok varlık türünü tutmanın bir nedenidir. Tek bir EGT, en fazla 100 varlık üzerinde çalışabilir.  İşlenmek üzere birden çok eş zamanlı Yumurtları gönderirseniz, bu yumurtların Yumurtları genelinde ortak olan varlıklarda çalışmamaları güvence altına almak önemlidir; Aksi takdirde, işleme gecikebilir.

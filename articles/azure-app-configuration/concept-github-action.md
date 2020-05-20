@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cb1149073247b7f5fc3e74a1aef6f96388c7135
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585489"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648122"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>GitHub deponuzu uygulama yapılandırmasıyla eşitleyin
 
@@ -20,7 +20,7 @@ Mevcut kaynak denetimi uygulamalarını kullanmaya devam etmek isteyen takımlar
 &nbsp;&nbsp;&nbsp;&nbsp;• Tüm uygulamanızı yeniden dağıtmaya gerek kalmadan yapılandırmayı güncelleştirme <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• Azure App Service ve Işlevleri gibi hizmetlerle tümleştirme. 
 
-GitHub eylemleri [iş akışı](https://help.github.com/articles/about-github-actions#workflow) , GitHub deposunda otomatikleştirilmiş bir işlem tanımlar. *Azure uygulama yapılandırma eşitleme* eylemi, kaynak deposunda değişiklik yapıldığında bir uygulama yapılandırma örneği için güncelleştirmeleri tetikler. Adımları ve parametreleri tanımlamak üzere deponuzun `/.github/workflows/` yolunda bulunan bir YAML (. yıml) dosyasını kullanır. Uygulama kodu ile tıpkı uygulama yapılandırma dosyalarını gönderdiğinizde, gözden geçirirken veya dallandırdığınızda yapılandırma güncelleştirmelerini tetikleyebilirsiniz.
+GitHub eylemleri [iş akışı](https://help.github.com/articles/about-github-actions#workflow) , GitHub deposunda otomatikleştirilmiş bir işlem tanımlar. *Azure uygulama yapılandırma eşitleme* eylemi, kaynak deposunda değişiklik yapıldığında bir uygulama yapılandırma örneği için güncelleştirmeleri tetikler. `/.github/workflows/`Adımları ve parametreleri tanımlamak üzere deponuzun yolunda bulunan BIR YAML (. yıml) dosyasını kullanır. Uygulama kodu ile tıpkı uygulama yapılandırma dosyalarını gönderdiğinizde, gözden geçirirken veya dallandırdığınızda yapılandırma güncelleştirmelerini tetikleyebilirsiniz.
 
 GitHub [belgeleri](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) , GitHub iş akışlarının ve eylemlerinin ayrıntılı görünümünü sağlar. 
 
@@ -33,9 +33,9 @@ Bu GitHub eylemini kullanmaya başlamak için deponuza gidin ve **Eylemler** sek
 > ![Uygulama yapılandırma eşitleme eylemini seçin](media/app-configuration-sync-action.png)
 
 ## <a name="sync-configuration-files-after-a-push"></a>Bir gönderim sonrasında yapılandırma dosyalarını eşitleme
-Bu eylem, bir değişikliğin gönderildiği Azure uygulama yapılandırma dosyalarını eşitler `appsettings.json`. Bir geliştirici bir değişikliği uygulamasına `appsettings.json`ilettiğinde, uygulama yapılandırma eşitleme eylemi, uygulama yapılandırma örneğini yeni değerlerle güncelleştirir.
+Bu eylem, bir değişikliğin gönderildiği Azure uygulama yapılandırma dosyalarını eşitler `appsettings.json` . Bir geliştirici bir değişikliği uygulamasına ilettiğinde `appsettings.json` , uygulama yapılandırma eşitleme eylemi, uygulama yapılandırma örneğini yeni değerlerle güncelleştirir.
 
-Bu iş akışının ilk bölümü, eylemin *ana* dala `appsettings.json` sahip bir *gönderim* *üzerinde* tetikleyeceğini belirtir. İkinci bölüm, eylem tetiklendiğinde çalıştırılan işleri listeler. Eylem ilgili dosyaları denetler ve depoda gizli dizi olarak depolanan bağlantı dizesini kullanarak uygulama yapılandırma örneğini güncelleştirir.  GitHub 'da gizli dizileri kullanma hakkında daha fazla bilgi için bkz. [GitHub 'ın](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) şifrelenmiş gizli dizileri oluşturma ve kullanma hakkında daha fazla bilgi
+Bu iş akışının ilk bölümü, eylemin *on* *push* `appsettings.json` *ana* dala sahip bir gönderim üzerinde tetikleyeceğini belirtir. İkinci bölüm, eylem tetiklendiğinde çalıştırılan işleri listeler. Eylem ilgili dosyaları denetler ve depoda gizli dizi olarak depolanan bağlantı dizesini kullanarak uygulama yapılandırma örneğini güncelleştirir.  GitHub 'da gizli dizileri kullanma hakkında daha fazla bilgi için bkz. [GitHub 'ın](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) şifrelenmiş gizli dizileri oluşturma ve kullanma hakkında daha fazla bilgi
 
 ```json
 on: 
@@ -61,10 +61,123 @@ jobs:
           separator: ':' 
 ```
 
-## <a name="use-a-dynamic-label-on-sync"></a>Eşitleme sırasında dinamik etiket kullan
-Önceki eylem, her `appsettings.json` güncelleştirildiğinde uygulama yapılandırma örneğini güncelleştirir. Bu eylem, her eşitlemede bir dinamik etiket ekler ve böylece her bir eşitleme benzersiz şekilde tanımlanabilir ve kod değişikliklerinin yapılandırma değişikliklerine eşlenmesine izin verebilir.
+## <a name="use-strict-sync"></a>Katı eşitleme kullan
+Varsayılan olarak, GitHub eylemi katı modu etkinleştirmez, yani eşitlemenin yalnızca yapılandırma dosyasından uygulama yapılandırma örneğine anahtar değerleri eklemesi gerekir (anahtar-değer çiftleri silinmez). Katı modu etkinleştirmek, yapılandırma dosyası ile eşleşmesi için uygulama yapılandırma örneğinden silinmeyen anahtar-değer çiftleri anlamına gelir. Birden çok kaynaktan eşitleme yapıyorsanız veya uygulama yapılandırmasıyla Azure Key Vault kullanıyorsanız, diğer dosyalardan yapılandırma ayarlarını silme işleminin önüne geçmek için, katı eşitleme ile farklı ön ekleri veya etiketleri kullanmak isteyeceksiniz (aşağıdaki örneklere bakın). 
 
-Bu iş akışının ilk bölümü, eylemin *ana* dala `appsettings.json` sahip bir *gönderim* *üzerinde* tetikleyeceğini belirtir. İkinci bölüm, işleme karmasını temel alan yapılandırma güncelleştirmesi için benzersiz bir etiket oluşturan bir işi çalıştırır. Ardından iş, bu güncelleştirme için yeni değerlerle ve benzersiz etiketle birlikte uygulama yapılandırma örneğini güncelleştirir.
+```json
+on: 
+  push: 
+    branches: 
+      - 'master' 
+    paths: 
+      - 'appsettings.json' 
+ 
+jobs: 
+  syncconfig: 
+    runs-on: ubuntu-latest 
+    steps: 
+      # checkout done so that files in the repo can be read by the sync 
+      - uses: actions/checkout@v1 
+      - uses: azure/appconfiguration-sync@v1 
+        with: 
+          configurationFile: 'appsettings.json' 
+          format: 'json' 
+          # Replace <ConnectionString> with the name of the secret in your 
+          # repository 
+          connectionString: ${{ secrets.<ConnectionString> }}  
+          separator: ':' 
+          label: 'Label' 
+          prefix: 'Prefix:' 
+          strict: true 
+```
+## <a name="sync-multiple-files-in-one-action"></a>Birden çok dosyayı tek bir eylemde eşitleme 
+
+Yapılandırmanız birden çok dosya içinde ise, herhangi bir dosya değiştirildiğinde eşitleme tetiklemek için aşağıdaki kalıbı kullanabilirsiniz. Bu model, glob kitaplığını kullanırhttps://www.npmjs.com/package/glob 
+
+```json
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+      - 'appsettings2.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: '{appsettings.json,appsettings2.json}'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+```
+
+## <a name="sync-by-prefix-or-label"></a>Ön eke veya etikete göre Eşitle
+Eşitleme eyleinizde ön ekleri veya etiketleri belirtmek yalnızca belirli bir kümeyi eşitler. Bu, birden çok dosya ile katı eşitlemenin kullanılması için önemlidir. Yapılandırmanın nasıl ayarlandığına bağlı olarak, her bir dosya ile bir ön ek veya etiket ilişkilendirilebilir ve ardından hiçbir şeyin üzerine yazılmaması için her önek veya etiket ayrı olarak eşitlenebilir. Genellikle ön ekler farklı uygulamalar veya hizmetler için kullanılır ve Etiketler farklı ortamlar için kullanılır. 
+
+Ön eke göre Eşitle: 
+
+```json
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'appsettings.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          prefix: 'Prefix::'
+```
+
+Etikete göre Eşitle: 
+
+```json
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'appsettings.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          label: 'Label'
+
+```
+
+## <a name="use-a-dynamic-label-on-sync"></a>Eşitleme sırasında dinamik etiket kullan
+Aşağıdaki eylem her eşitlemede dinamik bir etiket ekler ve böylece her bir eşitleme benzersiz şekilde tanımlanabilir ve kod değişikliklerinin yapılandırma değişikliklerine eşlenmesine izin verebilir.
+
+Bu iş akışının ilk bölümü, eylemin *on* *push* `appsettings.json` *ana* dala sahip bir gönderim üzerinde tetikleyeceğini belirtir. İkinci bölüm, işleme karmasını temel alan yapılandırma güncelleştirmesi için benzersiz bir etiket oluşturan bir işi çalıştırır. Ardından iş, bu güncelleştirme için yeni değerlerle ve benzersiz etiketle birlikte uygulama yapılandırma örneğini güncelleştirir.
 
 ```json
 on: 
@@ -95,36 +208,45 @@ jobs:
           label: ${{ steps.determine_label.outputs.LABEL }} 
 ```
 
-## <a name="use-strict-sync"></a>Katı eşitleme kullan
-Katı mod etkinleştirildiğinde, eşitleme, uygulama yapılandırma örneğinin verilen önek ve etiket için yapılandırma dosyası ile eşleşmesini sağlar. Yapılandırma dosyasında bulunmayan aynı ön eke ve etikete sahip anahtar-değer çiftleri silinir. 
- 
-Katı mod etkinleştirilmemişse, eşitleme yalnızca yapılandırma dosyasından anahtar değerlerini ayarlar. Anahtar-değer çiftleri silinmez. 
+## <a name="use-azure-key-vault-with-github-action"></a>GitHub eylemiyle Azure Key Vault kullanma
+AppConfiguration ile Azure Key Vault kullanan geliştiriciler, genellikle bir appSettings. JSON ve secretreferences. JSON olmak üzere iki ayrı dosya kullanmalıdır. Secretreferences. JSON, Anahtar Kasası parolasının URL 'sini içerir.
+
+{"mySecret": "{ \" Uri \" : \" https://myKeyVault.vault.azure.net/secrets/mySecret "} "}
+
+GitHub eylemi daha sonra appSettings. JSON üzerinde katı bir eşitleme yapmak üzere yapılandırılabilir ve ardından secretreferences. JSON üzerinde katı olmayan bir eşitleme gelir. Aşağıdaki örnek, herhangi bir dosya güncelleştirildiği zaman bir eşitleme tetikleyecektir:
 
 ```json
-on: 
-  push: 
-    branches: 
-      - 'master' 
-    paths: 
-      - 'appsettings.json' 
- 
-jobs: 
-  syncconfig: 
-    runs-on: ubuntu-latest 
-    steps: 
-      # checkout done so that files in the repo can be read by the sync 
-      - uses: actions/checkout@v1 
-      - uses: azure/appconfiguration-sync@v1 
-        with: 
-          configurationFile: 'appsettings.json' 
-          format: 'json' 
-          # Replace <ConnectionString> with the name of the secret in your 
-          # repository 
-          connectionString: ${{ secrets.<ConnectionString> }}  
-          separator: ':' 
-          label: 'Label' 
-          prefix: 'Prefix:' 
-          strict: true 
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+      - 'secretreferences.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'appsettings.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          strict: true
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'secretreferences.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          contentType: 'application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8'
+
 ```
 
 ## <a name="use-max-depth-to-limit-github-action"></a>GitHub eylemini sınırlandırmak için maksimum derinliği kullanın

@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f75e5a28f7ec56750432e74ee48ba68491a5e481
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1110f76a792a7e3955d5fd32e01ac1566d467151
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310292"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659010"
 ---
 # <a name="configure-the-application-dashboard"></a>Uygulama panosunu yapılandırma
 
-**Pano** , uygulamaya erişimi olan KULLANıCıLAR uygulamanın URL 'sine gitince yüklenen sayfasıdır. Uygulamanızı **uygulama şablonlarından**birinde oluşturduysanız, uygulamanız başlamak için önceden tanımlanmış bir panoya sahip olur. Uygulamanızı **eski uygulama** uygulaması şablonundan oluşturduysanız, panonuz başlamak için boş olacaktır.
+**Pano** , uygulamaya erişimi olan KULLANıCıLAR uygulamanın URL 'sine gitince yüklenen sayfasıdır. Uygulamanızı **uygulama şablonlarından**birinde oluşturduysanız, uygulamanız başlamak için önceden tanımlanmış bir panoya sahip olur. Uygulamanızı **özel bir uygulama** uygulaması şablonundan oluşturduysanız, panonuz Başlarken hakkında bazı ipuçları gösterecektir.
 
 > [!NOTE]
-> Kullanıcılar, varsayılan uygulama panosuna ek olarak [birden çok Pano oluşturabilir](howto-create-personal-dashboards.md) . Bu panolar yalnızca Kullanıcı tarafından kişisel olabilir veya uygulamanın tüm kullanıcıları arasında paylaşılabilir. 
+> Kullanıcılar, varsayılan uygulama panosuna ek olarak [birden çok Pano oluşturabilir](howto-create-personal-dashboards.md) . Bu panolar yalnızca Kullanıcı tarafından kişisel olabilir veya uygulamanın tüm kullanıcıları arasında paylaşılabilir.  
 
 ## <a name="add-tiles"></a>Kutucuk ekle
 
@@ -35,22 +35,23 @@ Aşağıdaki ekran görüntüsünde, Pano **özel uygulama** şablonundan oluşt
 > ![Pano kitaplığı](media/howto-add-tiles-to-your-dashboard/dashboard-library.png)
 
 Örneğin, cihazın geçerli sıcaklığını için bir **telemetri** kutucuğu ekleyebilirsiniz. Bunu yapmak için:
+
 1. Bir **cihaz şablonu** seçin
-1. Bir pano kutucuğunda görmek istediğiniz cihaz için bir **cihaz örneği** seçin. Daha sonra, kutucukta kullanılabilecek cihaz özelliklerinin bir listesini görürsünüz.
-1. Kutucuğu panoda oluşturmak için **sıcaklık** ' ya tıklayın ve Pano alanına sürükleyin. Ayrıca, **sıcaklık** ' ın yanındaki onay kutusuna tıklayabilir ve **Birleştir**' e tıklayabilirsiniz. Aşağıdaki ekran görüntüsünde bir cihaz şablonu ve cihaz örneği seçip panoda bir sıcaklık telemetri kutucuğu oluşturma gösterilmektedir.
+1. Bir pano kutucuğunda görmek istediğiniz cihaz için **cihazlardan** bir cihaz seçin. Daha sonra, kutucukta kullanılabilecek cihaz özelliklerinin bir listesini görürsünüz.
+1. Kutucuğu panoda oluşturmak için **sıcaklık** ' ya tıklayın ve Pano alanına sürükleyin. Ayrıca, **sıcaklık** ' ın yanındaki onay kutusuna ve **kutucuk Ekle**' ye tıklayabilirsiniz. Aşağıdaki ekran görüntüsünde bir cihaz şablonu ve cihaz örneği seçip panoda bir sıcaklık telemetri kutucuğu oluşturma gösterilmektedir.
 1. Kutucuğu panoya kaydetmek için sol üst kısımdaki **Kaydet** ' i seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Ayarlar ve özellikler hakkındaki ayrıntılarla "cihaz ayrıntılarını yapılandırma" formu](media/howto-add-tiles-to-your-dashboard/device-details.png)
 
-Artık bir operatör varsayılan uygulama panosunu görüntülediğinde, cihaz için **sıcaklığa** sahip yeni kutucuğu görürler. Her kutucukta, kutucuk oluşturulduğunda görüntülenecek olan önceden seçilmiş bir grafik, grafik, vb. bulunur. Ancak, kullanıcılar bu görselleştirmeyi düzenlemeyi ve değiştirmeyi seçebilir. 
+Artık bir operatör varsayılan uygulama panosunu görüntülediğinde, cihaz için **sıcaklığa** sahip yeni kutucuğu görürler. Her kutucukta, kutucuk oluşturulduğunda görüntülenecek olan önceden seçilmiş bir grafik, grafik, vb. bulunur. Ancak, kullanıcılar bu görselleştirmeyi düzenlemeyi ve değiştirmeyi seçebilir.  
 
 > [!div class="mx-imgBorder"]
 > ![Kutucuk için görünen ayarlar ve özellikler içeren "Pano" sekmesi](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
 
 ## <a name="edit-tiles"></a>Kutucukları Düzenle
 
-Panodaki bir kutucuğu düzenlemek için, önce sayfanın sol üst kısmında **Düzenle** ' ye tıklayın, bu, pano ve tüm kutucukları için düzenleme modunu açar. 
+Panodaki bir kutucuğu düzenlemek için, önce sayfanın sol üst kısmında **Düzenle** ' ye tıklayın, bu, pano ve tüm kutucukları için düzenleme modunu açar.  
 
 > [!div class="mx-imgBorder"]
 > ![Seçili kutucuk için düzenleme modu etkinleştirilmiş Pano ekranı](media/howto-add-tiles-to-your-dashboard/edit-mode.png)
@@ -68,21 +69,34 @@ Ayrıca, kutucukta **cetvel** simgesine tıklayarak grafik görselleştirmeyi de
 ## <a name="tile-types"></a>Döşeme türleri
 
 Aşağıdaki tabloda Azure IoT Central kutucukların kullanımı özetlenmektedir:
- 
+
 | Kutucuk | Pano | Açıklama
 | ----------- | ------- | ------- |
 | İçerik | Uygulama ve cihaz kümesi panoları |Markın desteklenen kutucuklar başlık ve açıklama metnini görüntüleyen tıklatılabilir kutucuklardır. Ayrıca, bir kullanıcının uygulamanızla ilgili bir URL 'ye gitmesini sağlamak için bu kutucuğu bağlantı kutucuğu olarak da kullanabilirsiniz.|
 | Görüntü | Uygulama ve cihaz kümesi panoları |Görüntü kutucukları özel bir görüntü görüntüler ve tıklatılabilir olabilir. Panoya grafik eklemek ve isteğe bağlı olarak bir kullanıcının uygulamanızla ilgili bir URL 'ye gitmesini sağlamak için bir görüntü kutucuğu kullanın.|
 | Etiketle | Uygulama panoları |Etiket kutucukları, bir panoda özel metin görüntüler. Metnin boyutunu seçebilirsiniz. İlgili bilgileri panoya, iletişim ayrıntılarına veya yardım 'a eklemek için bir etiket kutucuğu kullanın.|
-| Eşleme | Uygulama ve cihaz panoları |Harita kutucukları bir harita üzerindeki bir cihazın konumunu görüntüler. Ayrıca, bir cihazın konum geçmişinin en fazla 100 noktasını görüntüleyebilirsiniz. Örneğin, bir cihazın geçen hafta içinde bulunduğu yere örnek bir yol görüntüleyebilirsiniz.|
+| Harita | Uygulama ve cihaz panoları |Harita kutucukları bir harita üzerindeki bir cihazın konumunu görüntüler. Ayrıca, bir cihazın konum geçmişinin en fazla 100 noktasını görüntüleyebilirsiniz. Örneğin, bir cihazın geçen hafta içinde bulunduğu yere örnek bir yol görüntüleyebilirsiniz.|
 | Çizgi grafik | Uygulama ve cihaz panoları |Çizgi grafik kutucukları bir zaman dönemi için bir cihazın toplam ölçümünün bir grafiğini görüntüler. Örneğin, son saat için bir cihazın ortalama sıcaklığını ve basıncını gösteren bir çizgi grafik görüntüleyebilirsiniz.|
 | Çubuk Grafiği | Uygulama ve cihaz panoları |Çubuk grafik kutucukları bir zaman dönemi için bir cihazın toplam ölçümlerinin bir grafiğini görüntüler. Örneğin, son saat için bir cihazın ortalama sıcaklığını ve basıncını gösteren bir çubuk grafiği görüntüleyebilirsiniz.|
 | Pasta grafik | Uygulama ve cihaz kümesi panoları |Pasta grafik kutucukları, bir zaman dönemi için bir cihazın toplam ölçümlerinin bir grafiğini görüntüler.|
-| Isı Haritası | Uygulama ve cihaz kümesi panoları |Isı haritası kutucukları, renk olarak temsil edilen cihaz kümesi hakkındaki bilgileri görüntüler.|
+| Isı Haritası | Uygulama ve cihaz kümesi panoları |Isı haritası kutucukları, cihaz hakkındaki, renkler olarak gösterilen bilgileri görüntüler.|
 | Olay geçmişi | Uygulama ve cihaz panoları |Olay geçmişi kutucukları bir zaman dönemi içinde bir cihaz için olayları görüntüler. Örneğin, son bir saat içinde bir cihaz için tüm sıcaklık değişikliklerini göstermek üzere onu kullanabilirsiniz.|
 | Durum geçmişi | Uygulama ve cihaz panoları |Durum geçmişi kutucukları bir zaman döneminin ölçüm değerlerini görüntüler. Örneğin, son bir saat içinde bir cihaz için sıcaklık değerlerini göstermek üzere onu kullanabilirsiniz.|
 | KPI | Uygulama ve cihaz panoları | KPI kutucukları bir dönem için bir toplama telemetrisi veya olay ölçümü görüntüler. Örneğin, son bir saat içinde bir cihaz için ulaşılan en fazla sıcaklık sayısını göstermek için bunu kullanabilirsiniz.|
-| Bilinen son değer | Uygulama ve cihaz panoları |Son bilinen değer kutucukları, bir telemetri veya durum ölçümü için en son değeri görüntüler. Örneğin, bu kutucuğu, bir cihaz için en son sıcaklık, basınç ve nem ölçümlerini göstermek için kullanabilirsiniz.|
+| Bilinen son değer | Uygulama ve cihaz panoları |Son bilinen değer kutucukları, bir telemetri veya durum ölçümü için en son değeri görüntüler. Örneğin, bu kutucuğu, bir cihaz için en son sıcaklık, basınç ve nem ölçümlerini göstermek için kullanabilirsiniz. |
+| Özellik | Uygulama ve cihaz panoları | Özellik kutucukları, bir cihazın Özellikler ve bulut özellikleri için geçerli değeri görüntüler. Örneğin, bu kutucuğu, cihaz için üretici veya bellenim sürümü gibi cihaz özelliklerini göstermek için kullanabilirsiniz. |
+
+### <a name="customizing-visualizations"></a>Görselleştirmeleri özelleştirme
+
+Çizgi grafikler, çubuk grafikler ve pasta grafikler için grafiğinizdeki farklı Telemetriler tarafından görüntülenmiş renkleri özelleştirebilirsiniz. Bunu yapmak için, özelleştirmek istediğiniz Telemetriyi yanındaki pageç simgesini seçin ve bir renk seçin.
+
+> [!div class="mx-imgBorder"]
+> ![Telemetri renk görüntüleme ayarları için açılan menü](media/howto-add-tiles-to-your-dashboard/color-customization.png)
+
+Telemetriler veya dize türü özellikler için, metni nasıl görselleştirmek istediğinizi seçebilirsiniz. Örneğin, cihazınız dize telemetri olarak bir URL gönderirse, bu URL 'YI tıklatılabilir bir bağlantı olarak görselleştirebilirsiniz. URL bir resme başvuruyorsa, görüntüyü bilinen son bir değer veya özellik kutucuğunda işleyebilirsiniz. Telemetri adının yanındaki dişli ' i seçerek dize telemetrinin görüntülenme şeklini değiştirebilirsiniz. Bu şekilde, metni metin, bağlantı veya görüntü olarak gösterebilirsiniz.
+
+> [!div class="mx-imgBorder"]
+> ![Dize görselleştirme ayarları için açılan menü](media/howto-add-tiles-to-your-dashboard/string-viz-customization.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

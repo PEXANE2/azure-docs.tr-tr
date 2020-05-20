@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c28872e6cffa973f01b3f5a87c423d9dd93a2aa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dfb863da9f06cfc0c81944aa4037933cdd650ad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259111"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649191"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Kullanıcı kaydı ve ürün aboneliği temsilcisi seçme
 
@@ -48,7 +48,7 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
 
 1. Aşağıdaki biçimde bir istek alın:
    
-   > *http:\//www.yourwebsite.com/apimdelegation?Operation=SignIn&ReturnUrl = {kaynak sayfasının URL 'si} &anahtar = {string} &SIG = {String}*
+   > *http: \/ /www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl = {kaynak sayfasının URL 'si} &anahtar = {String} &SIG = {String}*
    > 
    > 
    
@@ -74,7 +74,7 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
    * API Management ile [Çoklu oturum açma (SSO) belirteci isteme] REST API
    * Yukarıdaki API çağrısından aldığınız SSO URL 'sine bir returnUrl sorgu parametresi ekleyin:
      
-     > Örneğin,https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > Örneğin,`https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
      > 
      > 
    * kullanıcıyı yukarıda üretilen URL 'ye yönlendir
@@ -105,7 +105,7 @@ Ardından, yetkilendirme uç noktasının aşağıdaki eylemleri kullandığınd
 
 1. Aşağıdaki biçimde bir istek alın:
    
-   > *http:\//www.yourwebsite.com/apimdelegation? işlemi = {operation} &ProductID = {abone ol} &UserID = {User yapma isteği} &anahtar = {string} &SIG = {String}*
+   > *http: \/ /www.yourwebsite.com/apimdelegation? işlemi = {Operation} &ProductID = {abone ol} &UserID = {User yapma isteği} &anahtar = {String} &SIG = {String}*
    >
    
     Ürün abonelik durumu için sorgu parametreleri:

@@ -4,12 +4,12 @@ description: Etkinlik günlükleri aracılığıyla kaynak olaylarını nasıl a
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: msangapu
-ms.openlocfilehash: 1fd283f95823a67319dc467a3a1d6251193182da
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7075e3eacc85198e22a9aa0e53f67a22416b2678
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124746"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649063"
 ---
 # <a name="get-resource-events-in-azure-app-service"></a>Azure App Service kaynak olaylarını al
 
@@ -41,29 +41,7 @@ Etkinlik günlükleri Kullanıcı tabanlı olsa da, hem kullanıcı eylemlerini 
 
 Ayrıca Event Grid’i Logic Apps ile birlikte kullanarak kod yazmadan her yerden veri işleyebilirsiniz. Event Grid, veri kaynaklarını ve olay işleyicilerini bağlar. Event Grid’i örneğin bir blob depolama kapsayıcısına eklenen her yeni fotoğrafta görüntü analizini çalıştıracak sunucusuz bir işlev tetiklemek için kullanabilirsiniz.
 
-### <a name="supported-event-types"></a>Desteklenen Olay Türleri
-| Olay Türü |Açıklama|
-| -----------| ------------- |
-| Microsoft. Web/siteler | Web |
-| BackupOperationCompleted |WEBAPP yedeklemesi başarıyla tamamlandı|
-| Backupoperationbaşarısız oldu | WEBAPP yedeklemesi başarısız oldu|
-| RestoreOperationStarted |Yedekten geri yükleme başlatıldı|
-| RestoreOperationCompleted |Yedekten geri yükleme başarıyla tamamlandı|
-| RestoreOperationFailed |Yedekten geri yükleme başarısız|
-| SlotSwapStarted |Yuva değiştirme başlatıldı|
-| Slotswaptamamlandı |Yuva değiştirme başarıyla tamamlandı|
-| Slotswapbaşarısız oldu |Yuva değiştirme başarısız oldu|
-| Slotswapwithönizleme başlatıldı |Önizleme ile yuva değiştirme başlatıldı|
-| Slotswapwithönizlemesi Iptal edildi |Önizleme ile yuva değiştirme başarısız oldu|
-| AppUpdated | |
-| Başladığında | WEBAPP yeniden başlatıldı |
-| Durduruldu | WEBAPP durduruldu |
-| ChangedAppSettings | WEBAPP üzerindeki uygulama ayarları değiştirildi |
-| - | - |
-| Microsoft. Web/sunucugrupları | (App Service plan) |
-| AspUpdated | App Service planı güncelleştirildi. Olay nesnesi değiştirilen özellikler hakkındaki ayrıntıları içerir. |
-| Ölçeği artırın/azaltın | App Service planı yukarı veya aşağı ölçeklenir. Olay nesnesi örnek sayısını içerir.|
-
+[Azure App Service olaylar için özellikleri ve şemayı görüntüleyin.](https://docs.microsoft.com/azure/event-grid/event-schema-app-service)
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Sonraki adımlar
 * [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)

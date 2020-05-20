@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6214c7f0d7728d39e36a7b555f503e130b405e81
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743272"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653060"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak sınıflarıyla iş yükü yönetimi
 
@@ -592,4 +592,4 @@ GO
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için bkz. [SQL Analytics 'te veritabanını güvenli hale getirme](sql-data-warehouse-overview-manage-security.md). Daha büyük kaynak sınıflarının kümelenmiş columnstore dizini kalitesini nasıl iyileştirebilecek hakkında daha fazla bilgi için bkz. [columnstore sıkıştırması Için bellek iyileştirmeleri](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için bkz. [SYNAPSE SQL 'de veritabanını güvenli hale getirme](sql-data-warehouse-overview-manage-security.md). Daha büyük kaynak sınıflarının kümelenmiş columnstore dizini kalitesini nasıl iyileştirebilecek hakkında daha fazla bilgi için bkz. [columnstore sıkıştırması Için bellek iyileştirmeleri](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).

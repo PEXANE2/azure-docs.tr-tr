@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f5ff48f4d5a658a1bbb4e6b9fb4b3f0f3fb190f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a530a6f656f37657a198af85d93d5404ac88d0e1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81602685"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651015"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Katman 2 esnetilmiş ağlarını kullanarak iş yüklerini geçirme
 
@@ -73,7 +73,7 @@ Daha fazla bilgi için bkz. VMware belgelerindeki [sanal özel ağlar](https://d
 
 ### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>Tek başına ESG 'nin (L2 VPN istemcisi) dağıtıldığı şirket içi ağ
 
-| **Öğe** | **Deeri** |
+| **Öğe** | **Değer** |
 |------------|-----------------|
 | Ağ adı | MGMT_NET_VLAN469 |
 | VLAN | 469 |
@@ -83,14 +83,14 @@ Daha fazla bilgi için bkz. VMware belgelerindeki [sanal özel ağlar](https://d
 
 ### <a name="on-premises-network-to-be-stretched"></a>Uzatılmak üzere şirket içi ağ
 
-| **Öğe** | **Deeri** |
+| **Öğe** | **Değer** |
 |------------|-----------------|
 | VLAN | 472 |
 | CıDR| 10.250.3.0/24 |
 
 ### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>NSX-T Tier0 yönlendirici için özel bulut IP şeması (L2 VPN hizmeti)
 
-| **Öğe** | **Deeri** |
+| **Öğe** | **Değer** |
 |------------|-----------------|
 | Geri döngü arabirimi | 192.168.254.254/32 |
 | Tünel arabirimi | 5.5.5.1/29 |
@@ -99,7 +99,7 @@ Daha fazla bilgi için bkz. VMware belgelerindeki [sanal özel ağlar](https://d
 
 ### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Uzatılmış ağa eşlenecek özel bulut ağı
 
-| **Öğe** | **Deeri** |
+| **Öğe** | **Değer** |
 |------------|-----------------|
 | VLAN | 712 |
 | CıDR| 10.200.15.0/24 |
@@ -108,15 +108,15 @@ Daha fazla bilgi için bkz. VMware belgelerindeki [sanal özel ağlar](https://d
 
 Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yönlendirici örneğinin mantıksal yönlendirici KIMLIĞINI nasıl getirileceği gösterilmektedir. L2VPN uygularken mantıksal yönlendirici KIMLIĞI daha sonra gerekir.
 
-1. NSX-T Yöneticisi `https://*nsx-t-manager-ip-address*` ' nde oturum açın ve **ağ** > **yönlendiricileri** > **sağlayıcısı-LR** > **genel bakış**' ı seçin. **Yüksek kullanılabilirlik modu**Için **Etkin bekleme**' yı seçin. Bu eylem, Tier0 yönlendiricisinin etkin olduğu uç VM 'yi gösteren bir açılır pencere açar.
+1. NSX-T Yöneticisi ' nde oturum açın `https://*nsx-t-manager-ip-address*` ve **ağ**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **genel bakış**' ı seçin. **Yüksek kullanılabilirlik modu**Için **Etkin bekleme**' yı seçin. Bu eylem, Tier0 yönlendiricisinin etkin olduğu uç VM 'yi gösteren bir açılır pencere açar.
 
     ![Etkin bekleme seçin](media/l2vpn-fetch01.png)
 
-2. **Doku** > **Nodes**düğümleri > **kenarlarını**seçin. Önceki adımda tanımlanan etkin uç VM 'nin (Edge VM1) yönetim IP adresini bir yere göz önüne alın.
+2. **Doku**  >  **düğümleri**  >  **kenarlarını**seçin. Önceki adımda tanımlanan etkin uç VM 'nin (Edge VM1) yönetim IP adresini bir yere göz önüne alın.
 
     ![Note yönetim IP 'si](media/l2vpn-fetch02.png)
 
-3. Uç VM 'nin Yönetim IP adresine bir SSH oturumu açın. ```get logical-router``` Komutu Kullanıcı adı **yönetici** ve parola **cloudsimple 123!** ile çalıştırın.
+3. Uç VM 'nin Yönetim IP adresine bir SSH oturumu açın. ```get logical-router```Komutu Kullanıcı adı **yönetici** ve parola **cloudsimple 123!** ile çalıştırın.
 
     ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch03.png)
 
@@ -130,14 +130,14 @@ Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yö
 
     ![Kukla anahtar Ekle](media/l2vpn-fetch05.png)
 
-7. Uç VM `get logical-router` 'nin SSH oturumunda komutu yeniden çalıştırın. ' DR-Provider-LR ' mantıksal yönlendiricisinin UUID 'SI görüntülenir. L2VPN yapılandırılırken gereken UUID 'yi bir yere unutmayın.
+7. `get logical-router`Uç VM 'nın SSH oturumunda komutu yeniden çalıştırın. ' DR-Provider-LR ' mantıksal yönlendiricisinin UUID 'SI görüntülenir. L2VPN yapılandırılırken gereken UUID 'yi bir yere unutmayın.
 
     ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch06.png)
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>L2VPN için gereken mantıksal anahtar KIMLIĞINI getir
 
-1. [NSX-T Manager](https://nsx-t-manager-ip-address)'da oturum açın.
-2. **Ağ** > **anahtarlama** >   > **Overview****Switches** ** \>** anahtarları< \mantıksal anahtara genel bakış ' ı seçin. > 
+1. NSX-T Manager 'da () oturum açın `https://nsx-t-manager-ip-address` .
+2. **Ağ**  >  **anahtarlama**  >  **anahtarları**  >  **< \mantıksal anahtara \> **  >  **Genel Bakış ' ı**seçin.
 3. L2VPN yapılandırılırken gerekli olan Esnetme mantıksal anahtarının UUID 'sini bir yere unutmayın.
 
     ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch-switch01.png)
@@ -154,20 +154,20 @@ NSX-T Tier0 yönlendiricisi ve tek başına NSX Edge istemcisi arasında IPSec r
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Geri döngü arabirimi IP 'sini düşük düzenleme ağına bildirme
 
-1. Geri döngü arabirimi ağı için bir boş yol oluşturun. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendiricileri** > **sağlayıcısı-LR** > **yönlendirme** > **statik yolları**' nı seçin. **Ekle**'ye tıklayın. **Ağ**için geri döngü arabirimi IP adresini girin. **Sonraki atlamalar**Için, **Ekle**' ye tıklayın, sonraki atlama için ' null ' belirtin ve varsayılan 1 ' i yönetici uzaklığı olarak tutun.
+1. Geri döngü arabirimi ağı için bir boş yol oluşturun. NSX-T Manager 'da oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme**  >  **statik yolları**' nı seçin. **Ekle**'ye tıklayın. **Ağ**için geri döngü arabirimi IP adresini girin. **Sonraki atlamalar**Için, **Ekle**' ye tıklayın, sonraki atlama için ' null ' belirtin ve varsayılan 1 ' i yönetici uzaklığı olarak tutun.
 
     ![Statik yol Ekle](media/l2vpn-routing-security01.png)
 
-2. Bir IP ön eki listesi oluşturun. NSX-T Yöneticisi ' nde oturum açın ve **ağ** > **yönlendirme** > **yönlendiricileri** > **sağlayıcısı-LR** > **yönlendirme** > **IP öneki listeleri**' ni seçin. **Ekle**'ye tıklayın. Listeyi tanımlamak için bir ad girin. **Ön**ekler için Iki kez **Ekle** ' ye tıklayın. İlk satırda, **ağ** için ' 0.0.0.0/0 ' ve **eylem**için ' Reddet ' girin. İkinci satırda, **ağ** ve **eyleme** **izin ver** ' **i seçin.**
+2. Bir IP ön eki listesi oluşturun. NSX-T Yöneticisi ' nde oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme**  >  **IP öneki listeleri**' ni seçin. **Ekle**'ye tıklayın. Listeyi tanımlamak için bir ad girin. **Ön**ekler için Iki kez **Ekle** ' ye tıklayın. İlk satırda, **ağ** için ' 0.0.0.0/0 ' ve **eylem**için ' Reddet ' girin. İkinci satırda, **ağ** ve **eyleme** **izin ver** ' **i seçin.**
 3. IP öneki listesini hem BGP komşuları 'na (TOR) ekleyin. IP öneki listesini BGP komşusuyla eklemek, varsayılan yolun BGP 'de TOR anahtarlarına tanıtılmasını önler. Ancak, null yolu içeren diğer tüm yollar TOR anahtarlarına geri döngü arabirimi IP adresini duyuracaktır.
 
     ![IP ön eki listesi oluştur](media/l2vpn-routing-security02.png)
 
-4. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendiricileri** > **sağlayıcısı-LR** > **yönlendirme** > **BGP** > **komşuları**' nı seçin. İlk komşuyu seçin. **Adres ailelerini** **Düzenle** > ' ye tıklayın. IPv4 ailesi için, **Çıkış filtresi** sütununu düzenleyin ve oluşturduğunuz IP öneki listesini seçin. **Kaydet**’e tıklayın. İkinci komşu için bu adımı tekrarlayın.
+4. NSX-T Manager 'da oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme**  >  **BGP**  >  **komşuları**' nı seçin. İlk komşuyu seçin. **Edit**  >  **Adres ailelerini**Düzenle ' ye tıklayın. IPv4 ailesi için, **Çıkış filtresi** sütununu düzenleyin ve oluşturduğunuz IP öneki listesini seçin. **Kaydet**’e tıklayın. İkinci komşu için bu adımı tekrarlayın.
 
-    ![IP ön ek listesi Ekle](media/l2vpn-routing-security03.png) ![1 IP ön eki listesi 2](media/l2vpn-routing-security04.png)
+    ![IP ön ek listesi ekle 1 ](media/l2vpn-routing-security03.png) ![ IP ön eki listesi 2](media/l2vpn-routing-security04.png)
 
-5. Null statik yolu BGP 'ye yeniden dağıtın. Geri döngü arabirimi yolunu alt tabloya tanıtmak için null statik yolunu BGP 'ye yeniden dağıtmanız gerekir. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendiricileri** > **sağlayıcısı-LR** > **yönlendirme yönlendirmesi** > yeniden**dağıtım** > **komşuları**' nı seçin. **Sağlayıcı-LR-Route_Redistribution** seçin ve **Düzenle**' ye tıklayın. **Statik** onay kutusunu seçin ve **Kaydet**' e tıklayın.
+5. Null statik yolu BGP 'ye yeniden dağıtın. Geri döngü arabirimi yolunu alt tabloya tanıtmak için null statik yolunu BGP 'ye yeniden dağıtmanız gerekir. NSX-T Manager 'da oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme yönlendirmesi**yeniden  >  **dağıtım**  >  **komşuları**' nı seçin. **Sağlayıcı-LR-Route_Redistribution** seçin ve **Düzenle**' ye tıklayın. **Statik** onay kutusunu seçin ve **Kaydet**' e tıklayın.
 
     ![Null statik yolu BGP 'ye yeniden Dağıt](media/l2vpn-routing-security05.png)
 
@@ -195,7 +195,7 @@ Logical-Port ID :
 Peer Code :
 ```
 
-Aşağıdaki API çağrılarının tümünde IP adresini NSX-T Yöneticisi IP adresiniz ile değiştirin. Tüm bu API çağrılarını POSTMAN istemcisinden veya komutları kullanarak `curl` çalıştırabilirsiniz.
+Aşağıdaki API çağrılarının tümünde IP adresini NSX-T Yöneticisi IP adresiniz ile değiştirin. Tüm bu API çağrılarını POSTMAN istemcisinden veya komutları kullanarak çalıştırabilirsiniz `curl` .
 
 ### <a name="enable-the-ipsec-vpn-service-on-the-logical-router"></a>Mantıksal yönlendiricide IPSec VPN hizmetini etkinleştirin
 
@@ -430,7 +430,7 @@ Dağıtım öncesinde, şirket içi güvenlik duvarı kurallarınızın gelen ve
 
 2. Tüm ayıklanan dosyaların bulunduğu klasöre gidin. Büyük gereç boyutu veya NSX-l2t-Client-xlarge. MF ve NSX-l2t-client-Xlarge. ovf için tüm VMDK (NSX-l2t-Client-Large. MF ve NSX-l2t-client-large. ovf 'yi seçerek daha büyük boyutlu gereç boyutu için. **İleri**’ye tıklayın.
 
-    ![Şablon](media/l2vpn-deploy-client02.png) ![Seç şablon seçin](media/l2vpn-deploy-client03.png)
+    ![Şablon seç ](media/l2vpn-deploy-client02.png) ![ şablon seçin](media/l2vpn-deploy-client03.png)
 
 3. NSX-T bağımsız istemcisi için bir ad girin ve **İleri**' ye tıklayın.
 
@@ -460,8 +460,8 @@ Dağıtım öncesinde, şirket içi güvenlik duvarı kurallarınızın gelen ve
     * **Ön ek uzunluğu**. Yukarı bağlantı VLAN/alt ağının ön ek uzunluğunu girin.
     * **CLI Yöneticisi/etkinleştir/kök kullanıcı parolası**. Admin/Enable/root hesabının parolasını ayarlayın.
 
-      ![Şablon](media/l2vpn-deploy-client08.png)
-      ![özelleştirme şablonu özelleştirme-daha fazla](media/l2vpn-deploy-client09.png)
+      ![Şablon özelleştirme ](media/l2vpn-deploy-client08.png)
+       ![ şablonu özelleştirme-daha fazla](media/l2vpn-deploy-client09.png)
 
 7. Ayarları gözden geçirin ve **son**' a tıklayın.
 

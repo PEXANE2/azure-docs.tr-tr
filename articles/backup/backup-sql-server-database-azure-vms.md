@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerinde Azure Backup SQL Server veri
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 887f15deed74330cf132e0574d166c074d2c7cad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9becb574594672c1cf91e610b4c13f91c91aa14f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685722"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659539"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -29,7 +29,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 >Azure **VM 'de SQL Server Için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme** , artık önizleme aşamasında kullanıma sunuldu.<br>
 >Önizlemeye kaydolmak için, şurada bize yazın:AskAzureBackupTeam@microsoft.com
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir SQL Server veritabanını yedeklemek için aşağıdaki ölçütleri kontrol edin:
 
@@ -50,6 +50,16 @@ Aşağıdaki seçeneklerden birini kullanarak bağlantı kurun:
 #### <a name="allow-the-azure-datacenter-ip-ranges"></a>Azure veri merkezi IP aralıklarına izin ver
 
 Bu seçenek, indirilen dosyadaki [IP aralıklarının](https://www.microsoft.com/download/details.aspx?id=41653) kullanılmasına izin verir. Bir ağ güvenlik grubuna (NSG) erişmek için set-AzureNetworkSecurityRule cmdlet 'ini kullanın. Güvenli Alıcılar listeniz yalnızca bölgeye özgü IP 'Leri içeriyorsa, kimlik doğrulamasını etkinleştirmek için Azure Active Directory (Azure AD) hizmet etiketini güvenli alıcılar listesini de güncelleştirmeniz gerekir.
+
+Alternatif olarak, gerekli bağlantıyı kurmak için aşağıdaki FQDN 'lere erişime de izin verebilirsiniz:
+
+* `*.<datacentercode>.backup.windowsazure.com`<br>
+(Veri merkezi kodlarına [buradan](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)bakın)
+
+* `login.windows.net`
+* `*.blob.core.windows.net`
+* `*.queue.core.windows.net`
+
 
 #### <a name="allow-access-using-nsg-tags"></a>NSG etiketlerini kullanarak erişime izin ver
 
@@ -98,7 +108,7 @@ NSG hizmet etiketlerini kullanma | Aralık değişikliklerinin otomatik olarak b
 Azure Güvenlik Duvarı FQDN etiketlerini kullanma | Gerekli FQDN 'Ler otomatik olarak yönetildiğinden yönetimi daha kolay | Yalnızca Azure Güvenlik Duvarı ile kullanılabilir
 HTTP proxy kullanma | VM 'lere tek bir internet erişimi noktası <br/> | Proxy yazılımıyla VM çalıştırmak için ek maliyetler <br/> Yayımlanmış FQDN adresi yok, izin verme kuralları Azure IP adresi değişikliklerine tabi olacak
 
-#### <a name="private-endpoints"></a>Özel uç noktalar
+#### <a name="private-endpoints"></a>Özel Uç Noktalar
 
 [!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
@@ -119,7 +129,7 @@ Diğer ad, desteklenmeyen karakterler için kullanılabilir, ancak bunlardan ka�
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-## <a name="discover-sql-server-databases"></a>SQL Server veritabanlarını bul
+## <a name="discover-sql-server-databases"></a>SQL Server veritabanlarını bulma
 
 VM üzerinde çalışan veritabanlarını bulma:
 
@@ -135,7 +145,7 @@ VM üzerinde çalışan veritabanlarını bulma:
 
     ![Yedekleme için Azure VM 'de SQL Server seçin](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-5. **Yedekleme hedefi** > ' nde,**VM 'lerde veritabanlarını bulur**, abonelikteki korumasız VM 'leri aramak için **bulmayı Başlat** ' ı seçin. Bu arama, abonelikteki korumasız VM sayısına bağlı olarak biraz zaman alabilir.
+5. **Yedekleme hedefi**' nde  >  ,**VM 'lerde veritabanlarını bulur**, abonelikteki korumasız VM 'leri aramak için **bulmayı Başlat** ' ı seçin. Bu arama, abonelikteki korumasız VM sayısına bağlı olarak biraz zaman alabilir.
 
    * Korumasız VM 'Ler, ad ve kaynak grubuna göre listelenmiş bulma sonrasında listede görünmelidir.
    * Bir VM beklendiği gibi listelenmiyorsa, bir kasada zaten yedeklenmiş olup olmadığına bakın.
@@ -162,7 +172,7 @@ VM üzerinde çalışan veritabanlarını bulma:
 
 ## <a name="configure-backup"></a>Yedeklemeyi yapılandırma  
 
-1. **Yedekleme hedefi** > **Adım 2: yedeklemeyi yapılandırma**' yı seçin, yedeklemeyi **Yapılandır**' ı seçin.
+1. **Yedekleme hedefi**  >  **Adım 2: yedeklemeyi yapılandırma**' yı seçin, yedeklemeyi **Yapılandır**' ı seçin.
 
    ![Yedeklemeyi Yapılandır ' ı seçin](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
@@ -214,7 +224,7 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 
 Bir yedekleme ilkesi oluşturmak için:
 
-1. Kasada, **yedekleme ilkeleri** > **Ekle**' yi seçin.
+1. Kasada, **yedekleme ilkeleri**  >  **Ekle**' yi seçin.
 2. **Ekle**' de, ilke türünü tanımlamak IÇIN **Azure VM 'de SQL Server** ' yi seçin.
 
    ![Yeni yedekleme ilkesi için bir ilke türü seçin](./media/backup-azure-sql-database/policy-type-details.png)
@@ -242,8 +252,8 @@ Bir yedekleme ilkesi oluşturmak için:
 6. **Tam yedekleme ilkesi** menüsünde, ayarları kabul etmek için **Tamam** ' ı seçin.
 7. Bir değişiklik yedekleme ilkesi eklemek için, **fark yedeklemesi**' ni seçin.
 
-   ![Bekletme aralığı aralığı ayarları](./media/backup-azure-sql-database/retention-range-interval.png)
-   ![, fark yedekleme ilkesi menüsünü açın](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+   ![Bekletme aralığı aralığı ayarları ](./media/backup-azure-sql-database/retention-range-interval.png)
+    ![ , fark yedekleme ilkesi menüsünü açın](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
 8. **Değişiklik yedekleme ilkesinde**, sıklık ve bekletme denetimlerini açmak için **Etkinleştir** ' i seçin.
 

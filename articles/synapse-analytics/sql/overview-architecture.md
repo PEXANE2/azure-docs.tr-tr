@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 570e84b3a545736aad6983c7f0d8c0f0296ca589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d073bc82b3a9e42e443caa5d3e7855fd4eb5b98b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431819"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658906"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure SYNAPSE SQL mimarisi 
 
@@ -47,7 +47,7 @@ Ayrılmış depolama ve işlem ile, SYNAPSE SQL 'in kullanılması, depolama iht
 * Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 * Çalışma saatleri içinde işlem kapasitesini sürdürür.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır. Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. 
 
@@ -117,4 +117,4 @@ Aşağıdaki diyagramda, her işlem düğümündeki ilk dağıtım üzerinde ön
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık SYNAPSE SQL hakkında bir bit öğrenmiş olduğunuza göre hızlıca [BIR SQL havuzu oluşturmayı](../quickstart-create-sql-pool.md) ve [örnek verileri yüklemeyi](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) öğrenin (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Ya da [isteğe bağlı SQL kullanmaya](../quickstart-sql-on-demand.md)başlayabilirsiniz. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md) yararlı bulabilirsiniz. 
+Artık SYNAPSE SQL hakkında bir bit öğrenmiş olduğunuza göre hızlıca [BIR SQL havuzu oluşturmayı](../quickstart-create-sql-pool-portal.md) ve [örnek verileri yüklemeyi](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) öğrenin (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Ya da [isteğe bağlı SQL kullanmaya](../quickstart-sql-on-demand.md)başlayabilirsiniz. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md) yararlı bulabilirsiniz. 

@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Konuşmayı metne dönüştürme belgeleri
-summary: Konuşma tanıma olarak da bilinen konuşma hizmetinden konuşmaya metin, ses akışlarının gerçek zamanlı ve toplu olarak dökümünü metin halinde sağlar.
+summary: Konuşma tanıma olarak da bilinen konuşma hizmetinden konuşmaya metin, ses akışlarının gerçek zamanlı ve toplu olarak dökümünü metin halinde sağlar. Ek başvuru metin girişi ile gerçek zamanlı telaffuz değerlendirmesi de sağlar ve konuşmaların doğruluğu ve akıcı olması konusunda konuşmacı geri bildirimleri sağlar.
 metadata:
   title: Konuşmadan metne belge-öğreticiler, API başvurusu-Azure bilişsel hizmetler | Microsoft Docs
   titleSuffix: Azure Cognitive Services
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: f496ba72f4f649a3ed5146f0b74caf3d8110adf9
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: be34def3c7aacc5419071028a3d3085fe69103fa
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83201908"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83653466"
 landingContent:
 - title: Konuşmayı metne dönüştürme hakkında
   linkLists:
@@ -38,6 +38,8 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Blob depolama alanında depolanan konuşmayı tanıma
       url: quickstarts/from-blob.md
+    - text: Başvuru girişi ile telaffuz değerlendirmesi
+      url: rest-speech-to-text.md#pronunciation-assessment-parameters
 - title: Konuşmaya metin ile geliştirme
   linkLists:
   - linkListType: how-to-guide
@@ -62,7 +64,7 @@ landingContent:
       url: how-to-custom-speech-train-model.md
     - text: İnsan etiketli transkripsiyonlar oluşturma
       url: how-to-custom-speech-human-labeled-transcriptions.md
-- title: Referanslar
+- title: Başvurular
   linkLists:
   - linkListType: reference
     links:

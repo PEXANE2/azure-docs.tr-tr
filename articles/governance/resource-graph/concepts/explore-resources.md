@@ -1,14 +1,14 @@
 ---
 title: Azure kaynaklarınızı inceleme
 description: Kaynak grafik sorgu dilini kullanarak kaynaklarınızı keşfetme ve bunların nasıl bağlandığını bulma hakkında bilgi edinin.
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c191915b8c558d80ffef554ef758a35157e035c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76156990"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654492"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Kaynak Grafiği ile Azure kaynaklarınızı keşfedin
 
@@ -305,7 +305,7 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-Bu adımları `join` işleçle tek bir sorguda nasıl gerçekleştireceğinizi görmek için, [sanal makineleri ağ arabirimiyle LISTELEME ve genel IP](../samples/advanced.md#join-vmpip) örneği ' ne bakın.
+Bu adımları işleçle tek bir sorguda nasıl gerçekleştireceğinizi görmek için `join` , [sanal makineleri ağ arabirimiyle listeleme ve genel IP](../samples/advanced.md#join-vmpip) örneği ' ne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

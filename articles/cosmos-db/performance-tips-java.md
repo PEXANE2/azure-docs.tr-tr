@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 9475fce054356606c09947721019a264143a716b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 998155c2505277170518a62af4ae2481e217a1df
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982522"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650103"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Azure Cosmos DB Sync Java SDK v2 için performans ipuçları
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982522"
 > 
 
 > [!IMPORTANT]  
-> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projeniz için Azure Cosmos DB Java SDK v4 kullanmayı düşünün. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Kılavuzu 'ndaki yönergeleri izleyin. 
+> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projenizi [Java SDK v4 Azure Cosmos DB](sql-api-sdk-java-v4.md) yükseltmeniz ve ardından Azure Cosmos DB Java SDK v4 [performansı ipuçları kılavuzunu](performance-tips-java-sdk-v4-sql.md)okumanız gerekir. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) kılavuzundaki yönergeleri izleyin. 
 > 
 > Bu performans ipuçları yalnızca Azure Cosmos DB Sync Java SDK v2 içindir. Daha fazla bilgi için lütfen Azure Cosmos DB eşitleme Java SDK v2 [sürüm notları](sql-api-sdk-java.md) ve [Maven deposunu](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb) görüntüleyin.
 >
@@ -89,11 +89,11 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     Azure Cosmos DB Java SDK sürüm 1.9.0 Eşitle ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlayan paralel sorguları destekler. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) . Paralel sorgular, kendi seri karşılarındaki sorgu gecikmesini ve aktarım hızını artırmak için tasarlanmıştır.
 
-    (a) ***setmaxdegreeofparalellik\: *** Paralel sorguları ayarlama, birden çok bölümü paralel olarak sorgulayarak çalışır. Ancak, tek bir bölümlenmiş koleksiyondaki veriler, sorguya göre işlem içine alınır. Bu nedenle, en iyi performansı elde etmek için en yüksek performansa sahip bölüm sayısını ayarlamak için [Setmaxdegreeofparalellik](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) kullanın, diğer tüm sistem koşulları aynı kalır. Bölüm sayısını bilmiyorsanız, yüksek bir sayı ayarlamak için Setmaxdegreeofparalellik kullanabilirsiniz ve sistem en az paralellik derecesi olarak en düşük (bölüm sayısı, Kullanıcı tarafından girilen giriş) değerini seçer. 
+    (a) ***Setmaxdegreeofparalellik \: *** Paralel sorguları ayarlama, birden çok bölümü paralel olarak sorgulayarak çalışır. Ancak, tek bir bölümlenmiş koleksiyondaki veriler, sorguya göre işlem içine alınır. Bu nedenle, en iyi performansı elde etmek için en yüksek performansa sahip bölüm sayısını ayarlamak için [Setmaxdegreeofparalellik](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) kullanın, diğer tüm sistem koşulları aynı kalır. Bölüm sayısını bilmiyorsanız, yüksek bir sayı ayarlamak için Setmaxdegreeofparalellik kullanabilirsiniz ve sistem en az paralellik derecesi olarak en düşük (bölüm sayısı, Kullanıcı tarafından girilen giriş) değerini seçer. 
 
     Verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde paralel sorguların en iyi avantajları ürettiğine dikkat edin. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğunluğunun birkaç bölümde (en kötü durumda bir bölüm) yoğunlaşarak bir şekilde bölümlenmişse, sorgunun performansı bu bölümler tarafından bottlenecked olacaktır.
 
-    (b) ***ayarlama setmaxbuffereditemcount\: *** paralel sorgusu, geçerli sonuç toplu işi istemci tarafından işlenirken sonuçları önceden getirmek üzere tasarlanmıştır. Önceden getirme, bir sorgunun genel gecikme artışında yardımcı olur. setMaxBufferedItemCount, önceden getirilen sonuçların sayısını sınırlar. [Setmaxbuffereditemcount](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxbuffereditemcount) değerini döndürülen beklenen sonuç sayısına (veya daha yüksek bir sayıya) ayarlayarak, sorgunun ön alma işleminden en fazla avantaj almasına olanak sağlar.
+    (b) ***ayarlama setMaxBufferedItemCount \: *** paralel sorgusu, geçerli sonuç toplu işi istemci tarafından işlenirken sonuçları önceden getirmek üzere tasarlanmıştır. Önceden getirme, bir sorgunun genel gecikme artışında yardımcı olur. setMaxBufferedItemCount, önceden getirilen sonuçların sayısını sınırlar. [Setmaxbuffereditemcount](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxbuffereditemcount) değerini döndürülen beklenen sonuç sayısına (veya daha yüksek bir sayıya) ayarlayarak, sorgunun ön alma işleminden en fazla avantaj almasına olanak sağlar.
 
     Önceden getirme, Maxdegreeofparalelliği ne olursa olsun aynı şekilde çalışıyor ve tüm bölümlerdeki veriler için tek bir arabellek vardır.  
 
@@ -107,7 +107,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
 7. **Ad tabanlı adresleme kullan**
 
-    Bağlantıların `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`, bağlantıyı oluşturmak için kullanılan tüm kaynakların RESOURCEID 'lerini almaktan kaçınmak için biçimi\_ `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` olan, kendi kendini bağlayan, (self) değil, ad tabanlı adresleme kullanın. Ayrıca, bu kaynaklar yeniden oluşturulmuş (büyük olasılıkla aynı ada sahip) olduğundan, önbelleğe alma işlemi yardımcı olmayabilir.
+    Bağlantıların, `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId` \_ `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` bağlantıyı oluşturmak için kullanılan tüm kaynakların RESOURCEID 'lerini almaktan kaçınmak için biçimi olan, kendi kendini bağlayan, (self) değil, ad tabanlı adresleme kullanın. Ayrıca, bu kaynaklar yeniden oluşturulmuş (büyük olasılıkla aynı ada sahip) olduğundan, önbelleğe alma işlemi yardımcı olmayabilir.
 
    <a id="tune-page-size"></a>
 8. **Daha iyi performans için, sorguların/okunan akışların sayfa boyutunu ayarlayın**
@@ -150,7 +150,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     Bir sorgunun karmaşıklığı, bir işlem için kaç istek biriminin tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
 
-    Herhangi bir işlemin ek yükünü ölçmek için (oluşturma, güncelleştirme veya silme), bu işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere [x-MS-Request-ücret](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisini (veya [\<resourceresvert>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) veya [Feedresponse\<>T](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) ' deki eşdeğer requestücretle) inceleyin.
+    Herhangi bir işlemin ek yükünü ölçmek için (oluşturma, güncelleştirme veya silme), bu işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere [x-MS-Request-ücret](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisini (veya [resourceresvert \<>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) veya [feedresponse \<>T](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) ' deki eşdeğer requestücretle) inceleyin.
 
 
     ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-requestcharge"></a>Java SDK v2 'yi eşitleme (Maven com. Microsoft. Azure:: Azure-DocumentDB)

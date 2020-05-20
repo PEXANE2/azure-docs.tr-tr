@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: bd5686b30b07c0f7fb8961f8d1f71035cb2688a4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780343"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656436"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -47,7 +47,7 @@ Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlen
 **Desteklenen Dağıtım** | OVA şablonunu kullanarak VMware VM olarak dağıtın.<br/><br/> PowerShell yükleme betiği kullanarak VMware VM veya fiziksel makine olarak dağıtın.
 **Proje desteği** |  Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
 **Bulma sınırları** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
-**OVA şablonu** | Portalından veya sürümünden https://aka.ms/migrate/appliance/vmwareindirin.<br/><br/> İndirme boyutu 11,2 GB 'dir.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
+**OVA şablonu** | Portalından veya sürümünden indirin https://aka.ms/migrate/appliance/vmware .<br/><br/> İndirme boyutu 11,2 GB 'dir.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
 **PowerShell betiği** | Betik [indirme](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> 
 **Yazılım/donanım** |  Gereç, Windows Server 2016, 32-GB RAM, 8 vCPU ve 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir VMware VM üzerinde çalıştırırsanız, gereksinimleri karşılayan bir VM 'yi ayırmak için vCenter Server yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun. 
 **VMware gereksinimleri** | Gereci bir VMware VM 'si olarak dağıtırsanız, sürüm 5,5 veya sonraki bir sürümünü çalıştıran bir ESXi konağına dağıtılması gerekir.<br/><br/> 5,5, 6,0, 6,5 veya 6,7 vCenter Server çalışıyor.
@@ -67,7 +67,7 @@ Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlen
 **Desteklenen Dağıtım** | Bir VHD şablonu kullanarak Hyper-V VM olarak dağıtın.<br/><br/> PowerShell yükleme betiği kullanarak Hyper-V VM veya fiziksel makine olarak dağıtın.
 **Proje desteği** |  Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
 **Bulma sınırları** | Bir gereç, 5000 adede kadar Hyper-V VM 'Leri bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
-**VHD şablonu** | VHD dahil olmak üzere daraltılmış klasör. Portalından veya sürümünden https://aka.ms/migrate/appliance/hypervindirin.<br/><br/> İndirme boyutu 10 GB 'tır.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
+**VHD şablonu** | VHD dahil olmak üzere daraltılmış klasör. Portalından veya sürümünden indirin https://aka.ms/migrate/appliance/hyperv .<br/><br/> İndirme boyutu 10 GB 'tır.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
 **PowerShell betiği** | Betik [indirme](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> 
 **Yazılım/donanım***   |  Gereç, Windows Server 2016, 32-GB RAM, 8 vCPU ve 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir Hyper-V VM 'si olarak çalıştırırsanız, Hyper-V konağında, 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir harici anahtar ayırmak üzere yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun. 
 **Hyper-V gereksinimleri** | Gereci VHD şablonuyla dağıtırsanız, Azure geçişi tarafından sunulan gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/><br/> Hyper-V konağı Windows Server 2012 R2 veya üstünü çalıştırmalıdır. 
@@ -98,7 +98,7 @@ Azure geçişi gereci internet bağlantısı gerektirir.
 
 ### <a name="public-cloud-urls"></a>Genel bulut URL 'Leri
 
-**URL** | **Bilgileri**  
+**URL** | **Ayrıntılar**  
 --- | --- |
 *.portal.azure.com  | Azure portalına gidin.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Azure aboneliğinizde oturum açın.
@@ -115,7 +115,7 @@ download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
 
 ### <a name="government-cloud-urls"></a>Kamu Bulutu URL 'Leri
 
-**URL** | **Bilgileri**  
+**URL** | **Ayrıntılar**  
 --- | --- |
 *. portal.azure.us  | Azure portalına gidin.
 graph.windows.net | Azure aboneliğinizde oturum açın.
@@ -222,7 +222,7 @@ Uzak bağlantı noktası | Netstat
 Uzak IP adresi | Netstat
 TCP bağlantı durumu | Netstat
 İşlem Kimliği | Netstat
-Hayır. etkin bağlantılar | Netstat
+Etkin bağlantı sayısı | Netstat
 
 #### <a name="process-data"></a>Veri işleme
 Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir VM 'den topladığı işlem verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
@@ -230,7 +230,7 @@ Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir VM 
 **Veri** | **WMI sınıfı** | **WMI sınıfı özelliği**
 --- | --- | ---
 İşlem adı | Win32_Process | ExecutablePath
-İşlem bağımsız değişkenleri | Win32_Process | Komut satırı
+İşlem bağımsız değişkenleri | Win32_Process | CommandLine
 Uygulama adı | Win32_Process | ExecutablePath özelliğinin VersionInfo. ProductName parametresi
 
 #### <a name="linux-vm-data"></a>Linux VM verileri
@@ -244,7 +244,7 @@ Yerel IP adresi | Netstat
 Uzak bağlantı noktası | Netstat 
 Uzak IP adresi | Netstat 
 TCP bağlantı durumu | Netstat 
-Hayır. etkin bağlantılar | Netstat
+Etkin bağlantı sayısı | Netstat
 İşlem Kimliği  | Netstat 
 İşlem adı | PS
 İşlem bağımsız değişkenleri | PS
@@ -338,18 +338,18 @@ Bu, gerecin topladığı ve Azure 'a gönderdiği Linux sunucu meta verilerinin 
 **VERILERI** | **'Un** 
 --- | --- 
 FQDN | Cat/proc/sys/kernel/hostname, ana bilgisayar adı-f
-İşlemci çekirdek sayısı |  /proc/cpuinfo \| awk '/^ işlemci/{Print $3} ' \| WC-l
-Ayrılan bellek | Cat/proc/meminfo \| grep memtotal \| awk ' {printf "%. 0f", $2/1024} '
+İşlemci çekirdek sayısı |  /proc/cpuinfo \| awk '/^ işlemci/{print $3} ' \| WC-l
+Ayrılan bellek | Cat/proc/meminfo \| grep MemTotal \| awk ' {printf "%. 0f", $2/1024} '
 BIOS seri numarası | lshw \| grep "seri:" \| baş-N1 \| awk ' {Print $2} ' <br/> /usr/sbin/dmidecode-t 1 \| grep ' Serial ' \| awk ' {$1 = ""; $2 = ""; Print} '
 BıOS GUıD 'SI | Cat/sys/Class/DMI/ID/product_uuid
-Önyükleme türü | [-d/sys/firmware/EFI]  && Echo EFI \| \| Echo BIOS
+Önyükleme türü | [-d/sys/firmware/EFI]  && Echo EFı \| \| echo BIOS
 İşletim sistemi adı/sürümü | Bu dosyalara işletim sistemi sürümü ve adı için erişirsiniz:<br/><br/> /etc/OS-Release<br/> /usr/lib/OS-Release <br/> /etc/Enterprise-Release <br/> /etc/redhat-release<br/> /etc/Oracle-Release<br/>  /etc/SuSE-release<br/>  /etc/LSB-Release  <br/> /etc/debian_version
 İşletim sistemi mimarisi | UNAME-a
-Disk sayısı | Fdisk-l \| egrep ' disk. * bayt ' \| awk ' {Print $2} ' \| kes-F1-d ': '
+Disk sayısı | Fdisk-l \| egrep ' disk. * bayt ' \| awk ' {Print $2} ' \| Kes-F1-d ': '
 Önyükleme diski | df/Boot \| SED-n 2p \| awk ' {Print $1} '
 Disk boyutu | Fdisk-l \| egrep ' disk. * bayt ' \| egrep $disk: \| awk ' {Print $5} '
-NIC listesi | IP-o-4 addr awk ' {Print $2} ' göster \|
-NIC IP adresi | IP addr $nic \| grep Inet \| awk ' {Print $2} ' \| kes-F1-d "/" 
+NIC listesi | IP-o-4 addr \| awk ' {print $2} ' göster
+NIC IP adresi | IP addr $nic \| grep Inet \| awk ' {Print $2} ' \| Kes-F1-d "/" 
 NIC MAC adresi | IP addr $Nic \| grep istatistiklerinden \| awk ' {Print $2} ' öğesini göster
 
 ### <a name="windows-performance-data"></a>Windows performans verileri
@@ -377,7 +377,7 @@ Bellek kullanımı | ücretsiz \| grep mem \| awk ' {Print $3/$ 2 * 100,0} '
 NIC sayısı | lshw sınıfı ağ \| grep ETH [0-60] \| WC-l
 NIC başına alınan veri | Cat/sys/Class/net/ETH $ NIC/istatistikler/rx_bytes
 NIC başına aktarılan veriler | Cat/sys/Class/net/ETH $ NIC/istatistikler/tx_bytes
-Disk sayısı | Fdisk-l \| egrep ' disk. * bayt ' \| awk ' {Print $2} ' \| kes-F1-d ': '
+Disk sayısı | Fdisk-l \| egrep ' disk. * bayt ' \| awk ' {Print $2} ' \| Kes-F1-d ': '
 Disk ayrıntıları | Cat/proc/diskstats
 
 
@@ -410,7 +410,7 @@ Kayıt defteri anahtarını silmek için:
 Gereç Configuration Manager açmak için, bulma tamamlandıktan sonra:
 
 1. Gereç makinesinde gereç Configuration Manager açın.
-2. **Gereç Hizmetleri** > ' nde**Azure geçiş bileşenlerini otomatik güncelleştirme devre**dışıdır, otomatik güncelleştirmeyi açmak için tıklayın.
+2. **Gereç Hizmetleri**' nde  >  **Azure geçiş bileşenlerini otomatik güncelleştirme devre**dışıdır, otomatik güncelleştirmeyi açmak için tıklayın.
 
     ![Otomatik güncelleştirmeleri aç](./media/migrate-appliance/turn-on.png)
 
@@ -419,7 +419,7 @@ Gereç Configuration Manager açmak için, bulma tamamlandıktan sonra:
 Aşağıdaki yöntemlerden birini kullanarak gereç Hizmetleri sürümünü denetleyebilirsiniz:
 
 - Gereç Configuration Manager, bulma tamamlandıktan sonra.
-- Gereç makinesinde, **Denetim Masası** > **Programlar ve Özellikler**' de.
+- Gereç makinesinde, **Denetim Masası**  >  **Programlar ve Özellikler**' de.
 
 Gereç Configuration Manager iade etmek için:
 
@@ -430,7 +430,7 @@ Gereç Configuration Manager iade etmek için:
 
 Denetim masasını denetlemek için:
 
-1. Gereç üzerinde **Başlat** > **Denetim Masası** > **Programlar ve Özellikler** ' e tıklayın.
+1. Gereç üzerinde **Başlat**  >  **Denetim Masası**  >  **Programlar ve Özellikler** ' e tıklayın.
 2. Listedeki gereç Hizmetleri sürümlerini denetleyin.
 
     ![Denetim Masası 'nda sürümü denetle](./media/migrate-appliance/programs-features.png)
@@ -441,18 +441,18 @@ Bileşenlerden herhangi biri için daha eski bir sürüm çalıştırıyorsanız
 
 1. En son gereç hizmeti sürümlerini denetlemek için LatestComponents. json dosyasını [indirin](https://aka.ms/latestapplianceservices) .
 2.  İndirdikten sonra, Not defteri 'nde LatestComponents. json dosyasını açın.
-3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örneğin:
+3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örnek:
 
-    "Ad": "ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
+    "Ad": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
 4.  Güncel olmayan bir hizmetin, dosyadaki indirme bağlantısını kullanarak en son sürümünü indirin.
 5. İndirdikten sonra, indirilen MSI bütünlüğünü doğrulamak için yönetici komut penceresinde aşağıdaki komutu çalıştırın.
 
-    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Örneğin: C:\>certutil-HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
+    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Örneğin: C: \> certutil-HashFile C:\USERS\PUBLIC\DOWNLOADS\MICROSOFTAZUREAPPLIANCECONFIGURATIONMANAGER.MSI MD5
 
 5. Komut çıktısının dosyadaki hizmet için karma değer girdisiyle eşleşip eşleşmediğini denetleyin (örneğin, yukarıdaki MD5 karma değeri).
 6. Şimdi, hizmeti yüklemek için MSI 'yi çalıştırın. Bu sessiz bir yüklemedir ve yükleme penceresi bittikten sonra kapanır.
-7. Yükleme tamamlandıktan sonra, **Denetim Masası** > **Programlar ve Özellikler**' de hizmetin sürümünü denetleyin. Hizmet sürümü artık json dosyasında gösterilen en son sürüme yükseltilmelidir.
+7. Yükleme tamamlandıktan sonra, **Denetim Masası**  >  **Programlar ve Özellikler**' de hizmetin sürümünü denetleyin. Hizmet sürümü artık json dosyasında gösterilen en son sürüme yükseltilmelidir.
 
 
 

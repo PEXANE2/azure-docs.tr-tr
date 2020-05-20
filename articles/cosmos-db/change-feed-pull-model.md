@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/10/2020
+ms.date: 05/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0e6e243ceb73ca2a1180e59ba6c6b4095ed6069a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 082689dba5fdfa8505f2293223e76f2164b0df14
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116722"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655285"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB akış çekme modelini değiştirme
 
@@ -43,7 +43,7 @@ FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator();
 Bir kullanarak `FeedIterator` , kapsayıcının tüm değişiklik akışını kendi hızınızda kolayca işleyebilirsiniz. İşte bir örnek:
 
 ```csharp
-FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator<User>(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -61,7 +61,7 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 Bazı durumlarda, yalnızca belirli bir bölüm anahtarının değişikliklerini işlemek isteyebilirsiniz. `FeedIterator`Belirli bir bölüm anahtarı için bir elde edebilir ve değişiklikleri tüm kapsayıcı için kullanabileceğiniz şekilde işleyebilirsiniz:
 
 ```csharp
-FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator(new PartitionKey("myPartitionKeyValueToRead"), new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator<User>(new PartitionKey("myPartitionKeyValueToRead"), new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -98,7 +98,7 @@ Aşağıda, paralel olarak okunan iki kuramsal ayrı makine kullanarak kapsayıc
 Makine 1:
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<Person>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 while (iteratorA.HasMoreResults)
 {
    FeedResponse<User> users = await iteratorA.ReadNextAsync();
@@ -149,6 +149,8 @@ while (iterator.HasMoreResults)
 FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(continuation);
 ```
 
+Cosmos kapsayıcısı hala mevcut olduğu sürece FeedIterator 'ın devamlılık belirtecinin süresi dolmaz.
+
 ## <a name="comparing-with-change-feed-processor"></a>Değişiklik akışı işlemcisi ile karşılaştırma
 
 Pek çok senaryo değişiklik akışını [değişiklik akışı işlemcisini](change-feed-processor.md) veya çekme modelini kullanarak işleyebilir. Çekme modelinin devamlılık belirteçleri ve değişiklik akışı işlemcisinin kira kapsayıcısı, değişiklik akışındaki son işlenen öğe (veya öğe toplu işi) için hem "yer işaretleri" dir.
@@ -156,9 +158,9 @@ Ancak, devamlılık belirteçlerini bir kira kapsayıcısına dönüştüremezsi
 
 Bu senaryolarda çekme modelini kullanmayı göz önünde bulundurmanız gerekir:
 
-- Değişiklik akışında var olan verileri tek seferlik okumak istiyorsunuz
-- Yalnızca belirli bir bölüm anahtarından değişiklikleri okumak istiyorsunuz
-- Bir gönderme modeli istemezsiniz ve değişiklik akışını kendi hızınızda kullanmak isteyeceksiniz
+- Belirli bir bölüm anahtarından değişiklikler okunuyor
+- İstemcinizin işlenmek üzere değişiklikleri alacağı hızların denetlenmesi
+- Değişiklik akışında var olan verileri bir kerelik okuma işlemi yapma (örneğin, veri geçişi yapmak için)
 
 Aşağıda, değişiklik akışı işlemcisi ve çekme modeli arasındaki bazı önemli farklılıklar verilmiştir:
 

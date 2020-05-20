@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23ede806b627ad0f77e325ab391d37347f4bb29f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80744227"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650439"
 ---
 # <a name="what-is-workload-management"></a>İş yükü yönetimi nedir?
 
-Karışık iş yüklerini çalıştırmak, meşgul sistemlerdeki kaynak zorluklarını ortaya çıkarabilir.  Çözüm mimarları, turlar için yeterli kaynak olduğundan emin olmak için klasik veri ambarı etkinliklerini ayırmanın (verileri yükleme, dönüştürme ve sorgulama) yollarını arar.  
+Karışık iş yüklerini çalıştırmak, meşgul sistemlerdeki kaynak zorluklarını ortaya çıkarabilir.  Çözüm mimarları, Turs 'ye kadar yeterli kaynak olduğundan emin olmak için klasik veri ambarı etkinliklerini (verileri yükleme, dönüştürme ve sorgulama) ayırmanın yollarını arar.  
 
 Fiziksel sunucu yalıtımı, aşırı kullanılan, fazla kullanılabilir olan altyapının cep veya önbelleklerin donanım başlatma ve durdurma ile sürekli olarak bulunduğu bir durumda olmasına neden olabilir.  Başarılı bir iş yükü yönetim şeması, kaynakları etkili bir şekilde yönetir, verimli kaynak kullanımı sağlar ve yatırım getirisi (ROı) en üst düzeye çıkarır.
 
@@ -38,13 +38,13 @@ Veri ambarının performans kapasitesi, [veri ambarı birimlerine](what-is-a-dat
 
 ## <a name="workload-management-concepts"></a>İş yükü yönetimi kavramları
 
-Geçmişte, Azure 'daki SQL Analytics SYNAPSE [kaynak sınıfları](resource-classes-for-workload-management.md)aracılığıyla sorgu performansını yönetiyordunuz.  Rol üyeliğine göre bir sorguya bellek atamaya izin verilen kaynak sınıfları.  Kaynak sınıflarıyla ilgili birincil zorluk, yapılandırıldıktan sonra iş yükünü denetlemek için bir idare veya özellik yoktu.  
+Geçmişte, Azure 'da SYNAPSE SQL SYNAPSE, [kaynak sınıflar](resource-classes-for-workload-management.md)aracılığıyla sorgu performansını yönetiyordunuz.  Rol üyeliğine göre bir sorguya bellek atamaya izin verilen kaynak sınıfları.  Kaynak sınıflarıyla ilgili birincil zorluk, yapılandırıldıktan sonra iş yükünü denetlemek için bir idare veya özellik yoktu.  
 
 Örneğin, smallrc 'ye geçici bir kullanıcı rolü üyeliği verilmesi, kullanıcının sistemdeki belleğin %100 ' i kullanmasına izin verilir.  Kaynak sınıflarıyla birlikte, önemli iş yükleri için ayrılan kaynakları ayıracağından ve kaynakların kullanılabilir olduğundan emin olmanın bir yolu yoktur.
 
-Azure SYNAPSE 'de SYNAPSE SQL havuzu iş yükü yönetimi üç üst düzey kavramdan oluşur: [Iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md), [iş yükü önemi](sql-data-warehouse-workload-importance.md) ve [iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md).  Bu yetenekler, iş yükünüzün sistem kaynaklarını kullanma konusunda daha fazla denetim sağlar.
+Azure SYNAPSE 'de SYNAPSE SQL havuzu iş yükü yönetimi üç üst düzey kavramdan oluşur: [Iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md), [iş yükü önemi](sql-data-warehouse-workload-importance.md)ve [iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md).  Bu yetenekler, iş yükünüzün sistem kaynaklarını kullanma konusunda daha fazla denetim sağlar.
 
-İş yükü sınıflandırması, bir iş yükü grubuna istek atama ve önem düzeylerini ayarlama kavramıdır.  Tarihsel olarak, bu atama [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)kullanarak rol üyeliğiyle yapılır.  Bu artık [Iş yükü oluşturma CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)aracılığıyla yapılabilir.  Sınıflandırma özelliği, isteklerin sınıflandırılacağı etiket, oturum ve zaman gibi daha zengin bir seçenek kümesi sağlar.
+İş yükü sınıflandırması, bir iş yükü grubuna istek atama ve önem düzeylerini ayarlama kavramıdır.  Tarihsel olarak, bu atama [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)kullanarak rol üyeliğiyle yapılır.  Bu eylem artık [Iş yükü oluşturma CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)aracılığıyla yapılabilir.  Sınıflandırma özelliği, isteklerin sınıflandırılacağı etiket, oturum ve zaman gibi daha zengin bir seçenek kümesi sağlar.
 
 İş yükü önemi, bir isteğin kaynaklara erişim sırasındaki sırayı etkiler.  Yoğun bir sistemde, yüksek öneme sahip bir istek kaynaklara ilk kez erişebilir.  Önem derecesi Ayrıca, kilitler için sıralı erişim de sağlar.
 

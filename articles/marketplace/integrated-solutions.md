@@ -1,24 +1,23 @@
 ---
-title: Tümleşik çözümler-Azure Marketi
-description: Azure Market ve AppSource 'ta Tümleşik çözümler
+title: Tümleşik çözümler-Microsoft ticari Market
+description: Ticari Market 'te Tümleşik çözümler sunma avantajları, kaynakları ve sonraki adımlar hakkında bilgi edinin.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 4c32fe80b681e6d82d40b0f5c94d5e9288f72cd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf20473b407db1804a4275fdc6dd3d528de1f189
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684412"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657999"
 ---
-# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource ve Azure Market 'te Tümleşik çözümler
-
+# <a name="integrated-solutions-in-the-commercial-marketplace"></a>Ticari Market 'teki Tümleşik çözümler
 Tümleşik bir çözüm, Microsoft iş ortaklarından en iyi şekilde sunulan ve uzman hizmet iş ortakları tarafından sunulan danışmanın, dağıtımın ve desteklenen bir araya getirir.
 
-İki veya daha fazla Microsoft iş ortağı, müşterilerini ve hizmetlerini, müşterileri hızla çalışır hale getirmek için birleştirilmiş, sorunsuz ve yinelenebilir bir dağıtım deneyimi oluşturacak şekilde tümleştirmektedir.  Çözümdeki lider ortağı (genellikle hizmetler iş ortağı), ilgili özelleştirme, danışmanlık ve çözüme destek sağlayan müşteri için tek bir iletişim noktası sağlar.
+İki veya daha fazla Microsoft iş ortağı, kendi teknoloji ve hizmetlerini, birleştirilmiş, sorunsuz ve yinelenebilir bir dağıtım deneyimi oluşturacak şekilde tümleştirmektedir ve bu, müşterilerin hızla çalışmaya ve çalışmasına yardımcı olur.  Çözümdeki lider ortağı (genellikle hizmetler iş ortağı), ilgili özelleştirme, danışmanlık ve çözüme destek sağlayan müşteri için tek bir iletişim noktası sağlar.
 
 Diğer senaryolarda, iş ortakları, çözümlerini birlikte ortak olarak satın alıp pazarlarken, tümleşik bir çözüm, iş ortakları genelinde teknolojiyi ve Hizmetleri tümleştiren, ortaklaşa oluşturulmuş yeni bir çözümdür.
 
@@ -30,7 +29,7 @@ Tümleşik yaklaşımın avantajları şunlardır:
 * *Değer süresi*: anında avantajlara yardımcı olmaya yönelik tümleşik dağıtım yaklaşımı
 * *En iyi çözüm*: tümleşik bir satın alma ve uygulama deneyimine yönelik kolaylıklar bulma
 
-Daha fazla bilgi için bkz. [Tümleşik çözüm yayımlama](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers).
+Daha fazla bilgi için bkz. [Tümleşik çözüm yayımlama](./integrated-solutions-for-publishers.md).
 
 ## <a name="submit-a-nomination"></a>Aday olma
 

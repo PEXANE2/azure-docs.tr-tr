@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: bf690ad3ad38632834a92c4a743b1cb584beaf65
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838833"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659887"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -78,9 +78,9 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. nesil ve 2. nesil Özellikler
 
-| Özellik | 1. nesil | 2. nesil |
+| Öne çıkan özelliği | 1. nesil | 2. nesil |
 |---------|--------------|--------------|
-| Başlatma             | PCAT                      | UEFı                               |
+| Önyükleme             | PCAT                      | UEFı                               |
 | Disk denetleyicileri | IDE                       | SCSI                               |
 | VM boyutları         | Tüm VM boyutları | Yalnızca Premium depolamayı destekleyen VM 'Ler |
 
@@ -122,16 +122,10 @@ Aşağıda, Azure portal 'de 2. nesil (Gen2) VM oluşturma adımları verilmişt
 
 Ayrıca, 1. nesil veya 2. nesil SKU 'ya doğrudan başvurarak bir VM oluşturmak için PowerShell 'i de kullanabilirsiniz.
 
-Örneğin, `WindowsServer` teklifte SKU 'ların bir listesini almak Için aşağıdaki PowerShell cmdlet 'ini kullanın.
+Örneğin, teklifte SKU 'ların bir listesini almak için aşağıdaki PowerShell cmdlet 'ini kullanın `WindowsServer` .
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
-```
-
-Alternatif olarak, **Yayımcı**tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
-
-```azurecli
-az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 İşletim sistemi olarak Windows Server 2012 ile bir VM oluşturuyorsanız, 1. nesil (BIOS) veya 2. nesil (UEFı) VM SKU 'SU seçersiniz, bu da şuna benzer:
@@ -142,6 +136,14 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 Desteklenen Market görüntülerinin geçerli listesi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
+
+#### <a name="azure-cli"></a>Azure CLI
+
+Alternatif olarak, **Yayımcı**tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
 
 ### <a name="managed-image-or-managed-disk"></a>Yönetilen görüntü veya yönetilen disk
 

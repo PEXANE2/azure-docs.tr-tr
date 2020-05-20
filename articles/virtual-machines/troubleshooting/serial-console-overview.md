@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267020"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656475"
 ---
 # <a name="azure-serial-console"></a>Azure seri konsol
 
@@ -66,6 +66,10 @@ Seri konsol, ölçek kümesi içindeki her bir örnek üzerinde erişilebilir ol
   1. **Destek + sorun giderme** bölümünde **seri konsol**' yi seçin. Seri konsol ile yeni bir bölme açılır ve bağlantıyı başlatır.
 
      ![Linux sanal makine ölçek kümesi seri konsolu](./media/virtual-machines-serial-console/vmss-start-console.gif)
+
+
+### <a name="tls-12-in-serial-console"></a>Seri konsolundaki TLS 1,2
+Seri konsol, hizmet içindeki tüm iletişimleri güvenli hale getirmek için TLS 1,2 uçtan uca kullanır. Seri konsolun Kullanıcı tarafından yönetilen bir önyükleme tanılama depolama hesabına bağımlılığı vardır ve depolama hesabı için TLS 1,2 ayrı olarak yapılandırılmalıdır. Bunu yapmak için yönergeler [burada](https://docs.microsoft.com/azure/storage/common/storage-security-tls)bulunur.
 
 ## <a name="advanced-uses-for-serial-console"></a>Seri konsol için gelişmiş kullanımlar
 Sanal makinenize konsol erişiminin yanı sıra aşağıdakiler için de Azure seri konsolu 'nu kullanabilirsiniz:

@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c28e6c1edf4188cf3ea80c14565785dcf1dcbba
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78194656"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653826"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Azure yazma kaynağına geçiş adımları
 
 Language Understanding (LUSıS) portalından, Azure yazma kaynağını kullanmak için sahip olduğunuz tüm uygulamaları geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Isteğe bağlı**olarak, her uygulamayı dışarı aktararak ve dışarı aktarma [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)'sini kullanarak, bu uygulamaları lusıs portalının uygulamalar listesinden yedekleyin.
 * **Isteğe bağlı**olarak, her bir uygulamanın ortak kayıt listesini kaydedin. Tüm ortak çalışanlarla geçiş sürecinin bir parçası olarak bir e-posta gönderilebilir.
@@ -97,12 +97,12 @@ Herhangi bir LUO uygulama sahibiyseniz, geçiş işlemi kullanılabilir.
 
 1. Uygulamalarınıza erişmeden önce, yazarlarınızın bulunduğu uygulamaları görmek için abonelik ve LUSıS yazma kaynağını seçin.
 
-    ![Yazanların yazarındaki uygulamaları görmek için abonelik ve LUSıS yazma kaynağı ' nı seçin.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
-
+    > [!div class="mx-imgBorder"]
+    > ![Yazanların yazarındaki uygulamaları görmek için abonelik ve LUSıS yazma kaynağı ' nı seçin.](./media/create-app-in-portal-select-subscription-luis-resource.png)
 
 ## <a name="app-contributor-begins-the-migration-process"></a>Uygulama katılımcısı geçiş işlemini başlatır
 
-Geçiş için uygulama sahibiyle aynı adımları izleyin. İşlem, türü `LUIS.Authoring`yeni bir yazma kaynağı oluşturur.
+Geçiş için uygulama sahibiyle aynı adımları izleyin. İşlem, türü yeni bir yazma kaynağı oluşturur `LUIS.Authoring` .
 
 Başkalarının sahip olduğu geçirilmiş uygulamalara katkıda bulunan olarak eklenmek üzere hesabınızı geçirmeniz gerekir.
 
@@ -114,7 +114,7 @@ Başkalarının sahip olduğu geçirilmiş uygulamalara katkıda bulunan olarak 
 
 ## <a name="troubleshooting-errors-with-the-migration-process"></a>Geçiş işlemiyle ilgili sorun giderme hataları
 
-Geçiş işlemi sırasında bir `MissingSubscriptionRegistration` Red bildirim çubuğu ile LUI portalında bir hata alırsanız, [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)'de bir bilişsel hizmet kaynağı oluşturun. [Bu hatanın nedenleri](../../azure-resource-manager/templates/error-register-resource-provider.md#cause)hakkında daha fazla bilgi edinin.
+`MissingSubscriptionRegistration`Geçiş işlemi sırasında bir Red bildirim çubuğu Ile LUI portalında bir hata alırsanız, [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)'de bir bilişsel hizmet kaynağı oluşturun. [Bu hatanın nedenleri](../../azure-resource-manager/templates/error-register-resource-provider.md#cause)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

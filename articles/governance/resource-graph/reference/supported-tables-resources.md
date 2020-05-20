@@ -1,14 +1,14 @@
 ---
 title: Desteklenen Kaynak Yöneticisi kaynak türleri
 description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Kaynak Yöneticisi kaynak türlerinin bir listesini sağlayın.
-ms.date: 04/29/2020
+ms.date: 05/16/2020
 ms.topic: reference
-ms.openlocfilehash: 0ab079bcd1e7e8558d754a413068ca9f0ae276c6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 61b4865f695fbee7bd425429fde03bc7161043db
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594262"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655873"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -23,6 +23,10 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 ## <a name="alertsmanagementresources"></a>alertsmanagementresources
 
 - Microsoft. alertsmanagement/uyarılar
+
+## <a name="healthresources"></a>healthresources
+
+- Microsoft. resourcehealth/olayları
 
 ## <a name="maintenanceresources"></a>maintenanceresources
 
@@ -67,6 +71,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Automation/automationaccounts/Configurations
 - Microsoft. Automation/automationaccounts/runbook 'lar
 - Microsoft. autonomoussystems/çalışma alanları
+- Microsoft. AVS/privatebulutlar
 - Microsoft. azconfig/configurationmağazaları
 - Microsoft. azureactivedirectory/b2cdirectories
 - Microsoft. azuredata/datacontrollers
@@ -74,6 +79,8 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. azuredata/postgresınstances
 - Microsoft. azuredata/sqlbigdatakümeler
 - Microsoft. azuredata/SQLInstances
+- Microsoft. azuredata/sqlmanagedınstances
+- Microsoft. azuredata/sqlserverınstances
 - Microsoft. azuredata/sqlserverkayıtları
 - Microsoft. azurestack/kayıtları
 - Microsoft. azurestackhcı/kümeler
@@ -92,6 +99,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. blockzinciri/izleyicileri
 - Microsoft. botservice/botservices
 - Microsoft. Cache/redsıs
+- Microsoft. Cache/redisenterprise
 - Microsoft. CDN/cdnwebapplicationfirewallpolicies
 - Microsoft. CDN/profiller
 - Microsoft. CDN/profiller/uç noktaları
@@ -126,8 +134,10 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. COMPUTE/sharedvmımages/sürümler
 - Microsoft. COMPUTE/Snapshots
 - Microsoft. COMPUTE/sshpublickeys
+- Microsoft. COMPUTE/swiftizin
 - Microsoft. COMPUTE/virtualmachines
 - Microsoft. COMPUTE/virtualmachines/uzantıları
+- Microsoft. COMPUTE/virtualmachines/runcommands
 - Microsoft. COMPUTE/virtualmachinescalesets
 - Microsoft. containerınstance/containergroups
 - Microsoft. containerregistry/kayıt defterleri
@@ -213,6 +223,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Hydra/bileşenler
 - Microsoft. Hydra/networkscopes
 - Microsoft. ımportexport/işler
+- Microsoft. industrydatalifecycle/derivedmodeller
 - Microsoft. Insights/actiongroups
 - Microsoft. Insights/activitylogalerts
 - Microsoft. Insights/alertrules
@@ -362,6 +373,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. resourcegraph/sorgular
 - Microsoft. resources/deploymentscripts
 - Microsoft. resources/templatespec
+- Microsoft. resources/templatespec/sürümler
 - Microsoft. SaaS/uygulamalar
 - Microsoft. Scheduler/jobcollections
 - Microsoft. Search/searchservices
@@ -377,6 +389,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. servicefabrickafes/Networks
 - Microsoft. servicefabrickafes/gizlilikler
 - Microsoft. servicefabrickafes/birimleri
+- Microsoft. serviceshub/bağlayıcılar
 - Microsoft. signalrservice/SignalR
 - Microsoft. Solutions/appliancedefinitions
 - Microsoft. Solutions/gereçler
