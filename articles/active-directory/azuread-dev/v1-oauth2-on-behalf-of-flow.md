@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: a301029f30a77f4e62ad3529aac488a81c12566e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 192c91f700dd82f453d52f6891f8aaaaeef8c7ef
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154534"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642083"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Şirket adına temsilci Kullanıcı kimliği kullanan hizmetten hizmete çağrılar
 
@@ -28,13 +28,13 @@ ms.locfileid: "80154534"
 OAuth 2,0 adına (OBO) akışı, bir hizmet veya Web API 'SI çağıran bir uygulamanın, Kullanıcı kimlik doğrulamasını başka bir hizmete veya Web API 'sine geçmesini sağlar. OBO akışı, temsilci kullanıcı kimliğini ve izinleri istek zinciri aracılığıyla yayar. Orta katman hizmetin, aşağı akış hizmetine kimliği doğrulanmış istekleri yapması için Kullanıcı adına Azure Active Directory (Azure AD) ' dan bir erişim belirtecinin güvenli hale getirme yapması gerekir.
 
 > [!IMPORTANT]
-> Mayıs 2018 itibariyle, `id_token` ' ın adına akış için kullanılamaz.  Tek sayfalı uygulamalar (maça 'Lar), OBO akışlarını gerçekleştirmek için orta katmanlı gizli bir istemciye erişim belirteci iletmelidir. Adına çağrı gerçekleştirebilen istemciler hakkında daha fazla ayrıntı için bkz. [sınırlamalar](#client-limitations).
+> Mayıs 2018 itibariyle, ' ın `id_token` adına akış için kullanılamaz.  Tek sayfalı uygulamalar (maça 'Lar), OBO akışlarını gerçekleştirmek için orta katmanlı gizli bir istemciye erişim belirteci iletmelidir. Adına çağrı gerçekleştirebilen istemciler hakkında daha fazla ayrıntı için bkz. [sınırlamalar](#client-limitations).
 
 ## <a name="on-behalf-of-flow-diagram"></a>Şirket adına akış diyagramı
 
 OBO akışı, [OAuth 2,0 yetkilendirme kodu verme akışını](v1-protocols-oauth-code.md)kullanan bir uygulamada kullanıcının kimliği doğrulandıktan sonra başlar. Bu noktada, uygulama bir erişim belirteci (belirteç A), kullanıcının taleplerini ve A 'ya erişim iznini içeren orta katman Web API 'sine (API a) gönderir. Sonra, API A, aşağı akış Web API 'sine (API B) kimliği doğrulanmış bir istek yapar.
 
-Bu adımlar, şirket içi akış ' i oluşturur: ![OAuth 2.0-adına akışı içindeki adımları gösterir](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+Bu adımlar, şirket içi akış ' i oluşturur: ![ OAuth 2.0-adına akışı içindeki adımları gösterir](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. İstemci uygulaması, a belirtecine sahip a API 'sine bir istek yapar.
 1. API A, Azure AD belirteç verme uç noktasında kimlik doğrular ve API B 'ye erişmek için bir belirteç ister.
@@ -51,7 +51,7 @@ Hem orta katman hizmeti hem de istemci uygulamasını Azure AD 'ye kaydedin.
 
 ### <a name="register-the-middle-tier-service"></a>Orta katman hizmetini kaydetme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. En üstteki çubukta, hesabınızı seçin ve uygulamanız için Active Directory kiracı seçmek üzere **Dizin** listesi altına bakın.
 1. Sol bölmede **diğer hizmetler** ' i seçin ve **Azure Active Directory**' yi seçin.
 1. **Uygulama kayıtları** ve ardından **Yeni kayıt**' ı seçin.
@@ -69,7 +69,7 @@ Hem orta katman hizmeti hem de istemci uygulamasını Azure AD 'ye kaydedin.
 
 ### <a name="register-the-client-application"></a>İstemci uygulamasını kaydetme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. En üstteki çubukta, hesabınızı seçin ve uygulamanız için Active Directory kiracı seçmek üzere **Dizin** listesi altına bakın.
 1. Sol bölmede **diğer hizmetler** ' i seçin ve **Azure Active Directory**' yi seçin.
 1. **Uygulama kayıtları** ve ardından **Yeni kayıt**' ı seçin.
@@ -88,7 +88,7 @@ Bu senaryoda, orta katman hizmetinin Kullanıcı etkileşimi olmadan aşağı ak
 İstemci uygulamasının kaydını, orta katman hizmetinin kaydıyla Azure AD 'ye açıkça bağlamak için aşağıdaki adımları izleyin. Bu işlem hem istemci hem de orta katman için gereken onayı tek bir iletişim kutusuna birleştirir.
 
 1. Orta katman hizmeti kaydına gidin ve bildirim düzenleyicisini açmak için **bildirim** ' ı seçin.
-1. `knownClientApplications` Dizi özelliğini bulun ve istemci UYGULAMASıNıN istemci kimliğini bir öğesi olarak ekleyin.
+1. `knownClientApplications`Dizi özelliğini bulun ve istemci uygulamasının ISTEMCI kimliğini bir öğesi olarak ekleyin.
 1. **Kaydet**' i seçerek bildirimi kaydedin.
 
 ## <a name="service-to-service-access-token-request"></a>Hizmetten hizmete erişim belirteci isteği
@@ -117,7 +117,7 @@ Paylaşılan bir gizli dizi kullanılırken hizmetten hizmete erişim belirteci 
 
 #### <a name="example"></a>Örnek
 
-Aşağıdaki HTTP POST, https://graph.microsoft.com Web API 'si için bir erişim belirteci ister. , `client_id` Erişim belirtecini isteyen hizmeti belirler.
+Aşağıdaki HTTP POST, Web API 'SI için bir erişim belirteci ister https://graph.microsoft.com . , `client_id` Erişim belirtecini isteyen hizmeti belirler.
 
 ```
 // line breaks for legibility only
@@ -150,11 +150,11 @@ Bir sertifikaya sahip hizmetten hizmete erişim belirteci isteği aşağıdaki p
 | requested_token_use |gerekli | İsteğin nasıl işleneceğini belirtir. Şirket adına, değerin **on_behalf_of**olması gerekir. |
 | scope |gerekli | Belirteç isteği için bir alan ayrılmış kapsam listesi. OpenID Connect için, **OpenID** kapsamı belirtilmelidir.|
 
-Bu parametreler, `client_secret parameter` paylaşılan gizli dizi ile aynı şekilde, iki parametre tarafından değiştirilmeleri dışında neredeyse aynıdır: `client_assertion_type` ve. `client_assertion`
+Bu parametreler, paylaşılan gizli dizi ile aynı şekilde, `client_secret parameter` iki parametre tarafından değiştirilmeleri dışında neredeyse aynıdır: `client_assertion_type` ve `client_assertion` .
 
 #### <a name="example"></a>Örnek
 
-Aşağıdaki HTTP POST, bir sertifika ile https://graph.microsoft.com Web API 'si için bir erişim belirteci ister. , `client_id` Erişim belirtecini isteyen hizmeti belirler.
+Aşağıdaki HTTP POST, https://graph.microsoft.com bir sertifika ile Web API 'si için bir erişim belirteci ister. , `client_id` Erişim belirtecini isteyen hizmeti belirler.
 
 ```
 // line breaks for legibility only
@@ -190,7 +190,7 @@ Başarılı bir yanıt, aşağıdaki parametrelere sahip bir JSON OAuth 2,0 yan�
 
 ### <a name="success-response-example"></a>Başarı yanıtı örneği
 
-Aşağıdaki örnek, https://graph.microsoft.com Web API 'si için bir erişim belirteci isteğine yönelik başarılı yanıtı gösterir.
+Aşağıdaki örnek, Web API 'SI için bir erişim belirteci isteğine yönelik başarılı yanıtı gösterir https://graph.microsoft.com .
 
 ```json
 {
@@ -225,14 +225,14 @@ Azure AD belirteç uç noktası, koşullu erişim ilkesiyle ayarlanmış bir aş
 
 ## <a name="use-the-access-token-to-access-the-secured-resource"></a>Güvenli kaynağa erişmek için erişim belirtecini kullanma
 
-Orta katman hizmeti, `Authorization` üstbilgideki belirteci ayarlayarak aşağı AKıŞ Web API 'sine kimliği doğrulanmış istekler yapmak için alınan erişim belirtecini kullanabilir.
+Orta katman hizmeti, üstbilgideki belirteci ayarlayarak aşağı akış Web API 'sine kimliği doğrulanmış istekler yapmak için alınan erişim belirtecini kullanabilir `Authorization` .
 
 ### <a name="example"></a>Örnek
 
 ```
 GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.microsoft.com
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
+Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 ```
 
 ## <a name="saml-assertions-obtained-with-an-oauth20-obo-flow"></a>SAML onayları bir OAuth 2.0 OBO akışıyla alındı
@@ -283,9 +283,9 @@ Yanıt, UTF8 ve Base64url içinde kodlanmış bir SAML belirteci içeriyor.
 - ext_expires_in: 0
 - expires_on: 1529627844
 - Kaynak`https://api.contoso.com`
-- access_token: \<SAML onaylama\>
+- access_token: \< SAML onaylama\>
 - issued_token_type: urn: IETF: params: OAuth: Token-Type: SAML2
-- refresh_token: \<belirteci Yenile\>
+- refresh_token: \< belirteci Yenile\>
 
 ## <a name="client-limitations"></a>İstemci sınırlamaları
 

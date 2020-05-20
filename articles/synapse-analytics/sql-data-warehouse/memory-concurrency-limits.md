@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd2511dcbf2e387a6f324742219b81c927b534af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632674"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636403"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için bellek ve eşzamanlılık sınırları
 
@@ -77,7 +77,7 @@ En yüksek hizmet düzeyi, 60 Işlem düğümlerine ve Işlem düğümü başın
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Kaynak sınıfları için eşzamanlılık en yüksek UMS
 
-Her sorgunun verimli bir şekilde yürütmek için yeterli kaynağa sahip olduğundan emin olmak için Azure 'da SQL Analytics, her sorguya eşzamanlılık yuvaları atayarak kaynak kullanımını izler. Sistem, sorguları önem ve eşzamanlılık yuvaları temelinde bir kuyruğa koyar. Sorgular, yeterli eşzamanlılık yuvası olmadığından sırada bekler. [Önem](sql-data-warehouse-workload-importance.md) ve EŞZAMANLıLıK yuvaları CPU önceliği belirlemeyi tespit. Daha fazla bilgi için bkz. [iş yükünüzü çözümleme](analyze-your-workload.md)
+Her sorgunun verimli bir şekilde yürütmek için yeterli kaynağa sahip olduğundan emin olmak için, SYNAPSE SQL, her sorguya eşzamanlılık yuvaları atayarak kaynak kullanımını izler. Sistem, sorguları önem ve eşzamanlılık yuvaları temelinde bir kuyruğa koyar. Sorgular, yeterli eşzamanlılık yuvası olmadığından sırada bekler. [Önem](sql-data-warehouse-workload-importance.md) ve EŞZAMANLıLıK yuvaları CPU önceliği belirlemeyi tespit. Daha fazla bilgi için bkz. [iş yükünüzü çözümleme](analyze-your-workload.md)
 
 **Statik kaynak sınıfları**
 

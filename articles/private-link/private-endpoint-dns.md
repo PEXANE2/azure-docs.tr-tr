@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 7db02546b562f1b542080efdbda8968940655e95
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 14cb5a06e9f51269d05468d36ecb6cd2bf19e40c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121312"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643595"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure özel uç nokta DNS yapılandırması
 
@@ -105,21 +105,21 @@ Aşağıdaki diyagramda, özel DNS bölgesi kullanan sanal ağ iş yüklerinden 
 Bu model, aynı özel uç noktayla ilişkili birden fazla eşlenmiş sanal ağa genişletilebilir. Bu, tüm eşlenmiş sanal ağlar için özel DNS bölgesine [Yeni sanal ağ bağlantıları eklenerek](../dns/private-dns-virtual-network-links.md) yapılabilir.
 
 > [!IMPORTANT]
->  Bu yapılandırma için tek bir özel DNS bölgesi gereklidir, farklı sanal ağlar için aynı ada sahip birden çok bölge oluşturulması, DNS kayıtlarını birleştirmek için el ile gerçekleştirilen işlemlere ihtiyaç duyar
+> Bu yapılandırma için tek bir özel DNS bölgesi gereklidir, farklı sanal ağlar için aynı ada sahip birden çok bölge oluşturulması, DNS kayıtlarını birleştirmek için el ile gerçekleştirilen işlemlere ihtiyaç duyar
 
 Bu senaryoda, ortak bir özel bitiş noktasını paylaşan ve bağlı olan tüm sanal ağ, aynı özel DNS bölgesine bağlı olan bağlı ağ ağlarının bulunduğu bir [hub &](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) . 
 
 :::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Azure tarafından sunulan DNS ile hub ve bağlı bileşen":::
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>DNS ileticisi kullanan şirket içi iş yükleri
- 
+
 Şirket içi iş yükleri için özel bir uç noktanın FQDN 'sini özel IP adresine çözümleyebilmek üzere Azure hizmeti [Genel DNS bölgesinin](#azure-services-dns-zone-configuration) Azure 'da dağıtılan çözümlemesini yapmak IÇIN bir DNS ileticisi kullanmanız gerekir.
 
 
 Aşağıdaki senaryo, Azure 'da DNS ileticisi olan bir şirket içi ağ için uygundur. Bu, bir sunucu düzeyi ileticisi aracılığıyla tüm DNS sorgularını Azure tarafından sunulan DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 'e çözümlemeden sorumludur. 
 
 > [!NOTE]
-> Bu senaryo, Azure SQL veritabanı 'nın önerilen Özel DNS bölgeyi kullanıyor.Diğer hizmetler için, aşağıdaki referans [Azure HIZMETLERI DNS bölge yapılandırmasını](#azure-services-dns-zone-configuration)kullanarak modeli ayarlayabilirsiniz.
+> Bu senaryo, Azure SQL veritabanı 'nın önerilen Özel DNS bölgeyi kullanıyor.Diğer hizmetler için, aşağıdaki referans [Azure HIZMETLERI DNS bölge yapılandırmasını](#azure-services-dns-zone-configuration)kullanarak modeli ayarlayabilirsiniz.
 
 Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vardır:
 
@@ -129,7 +129,7 @@ Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vard
 -  [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)    [Kayıt türündeki](../dns/dns-zones-records.md#record-types) Privatelink.Database.Windows.net bölgeleri özel DNS
 - Özel uç nokta bilgileri (FQDN kayıt adı ve özel IP adresi)
 
-Aşağıdaki diyagramda, çözümlemenin bir sanal ağa bağlı özel bir DNS bölgesi tarafından yapıldığı Azure 'da dağıtılan bir DNS ileticisi kullanan bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir.
+Aşağıdaki diyagramda, çözümlemenin bir [sanal ağa bağlı](../dns/private-dns-virtual-network-links.md) özel bir DNS bölgesi tarafından yapıldığı Azure 'da DAĞıTıLAN bir DNS ileticisi kullanan bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir.
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Azure DNS kullanarak şirket içi":::
 
@@ -141,14 +141,13 @@ Bu yapılandırma, zaten bir DNS çözümü olan bir şirket içi ağ için geni
 
 Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vardır:
 
-
 - Yerinde özel bir DNS çözümü olan şirket içi ağ 
 -  [Şirket içi ağa bağlı](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) sanal ağ
 - Azure 'da dağıtılan DNS ileticisi
 -  [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)     [Kayıt türündeki](../dns/dns-zones-records.md#record-types) Privatelink.Database.Windows.net bölgeleri özel DNS
 - Özel uç nokta bilgileri (FQDN kayıt adı ve özel IP adresi)
 
-Aşağıdaki diyagramda DNS trafiğini bir sanal ağa bağlı özel bir DNS bölgesi tarafından oluşturulan Azure 'a koşullu olarak ileten bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir
+Aşağıdaki diyagramda DNS trafiğini [bir sanal ağa bağlı](../dns/private-dns-virtual-network-links.md) özel bir DNS bölgesi tarafından oluşturulan Azure 'a koşullu olarak ileten bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir.
 
 > [!IMPORTANT]
 > Koşullu iletme, [public DNS zone](#azure-services-dns-zone-configuration)    `database.windows.net`    **PRIVATELINK**. Database.Windows.net yerine genel DNS bölgesi Ex: ' a verilmelidir.

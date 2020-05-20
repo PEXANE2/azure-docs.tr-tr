@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: bdd8104200bf21507e978abacf600c4780bb3808
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82606900"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636664"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde tehdit koruması
 
@@ -29,7 +29,10 @@ Azure Güvenlik Merkezi 'nin tehdit koruması, ortamınız için kapsamlı savun
 
 * **Azure hizmet katmanları Için tehdit koruması**: Azure ağ katmanı, Azure Yönetim katmanı (Azure Resource Manager) (Önizleme) ve Azure Key Vault (Önizleme)
 
-Bir uyarının Güvenlik Merkezi tarafından oluşturulup oluşturulmadığı veya Güvenlik Merkezi tarafından farklı bir güvenlik ürününden alınıp alınmayacağı, dışarı aktarabilirsiniz. Uyarılarınızı Azure Sentinel 'e (veya bir üçüncü taraf SıEM) ya da başka bir dış araca aktarmak için [uyarıları BIR SıEM 'ye aktarma](continuous-export.md)konusundaki yönergeleri izleyin. 
+Bir uyarının Güvenlik Merkezi tarafından oluşturulup oluşturulmadığı veya Güvenlik Merkezi tarafından farklı bir güvenlik ürününden alınıp alınmayacağı, dışarı aktarabilirsiniz. Uyarılarınızı Azure Sentinel 'e, herhangi bir üçüncü taraf SıEM 'e veya herhangi bir harici araca aktarmak için [uyarıları BIR SıEM 'ye aktarma](continuous-export.md)konusundaki yönergeleri izleyin. 
+
+> [!NOTE]
+> Farklı kaynaklardaki uyarıların görünmesi farklı miktarda zaman alabilir. Örneğin, ağ trafiğinin analizini gerektiren uyarıların, sanal makinelerde çalışan şüpheli işlemlerle ilgili uyarılardan görünmesi daha uzun sürebilir.
 
 > [!TIP]
 > Güvenlik Merkezi 'nin tehdit koruması yeteneklerini etkinleştirmek için, uygun iş yüklerini içeren aboneliğe standart fiyatlandırma katmanını uygulamanız gerekir.
@@ -44,14 +47,14 @@ Bir uyarının Güvenlik Merkezi tarafından oluşturulup oluşturulmadığı ve
 
 Azure Güvenlik Merkezi, Windows tabanlı makinelerinizi izlemek ve korumak için Azure hizmetleri ile tümleşir. Güvenlik Merkezi, tüm bu hizmetlerden gelen uyarıları ve düzeltme önerilerini kullanımı kolay bir biçimde sunar.
 
-* **Microsoft Defender ATP** <a name="windows-atp"></a> -Güvenlik Merkezi, Microsoft Defender Gelişmiş tehdit koruması (ATP) ile tümleştirerek bulut iş yükü koruma platformlarını genişletir. Birlikte, kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlar.
+* **Microsoft Defender Gelişmiş tehdit koruması (ATP)** <a name="windows-atp"></a> -Güvenlik Merkezi, Microsoft Defender Gelişmiş tehdit koruması (ATP) ile tümleştirerek bulut iş yükü koruma platformlarını genişletir. Birlikte, kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlar.
 
     > [!IMPORTANT]
     > Microsoft Defender ATP algılayıcısı, güvenlik merkezi kullanan Windows sunucularında otomatik olarak etkinleştirilir.
 
     Microsoft Defender ATP bir tehdit algıladığında bir uyarı tetikler. Uyarı, güvenlik merkezi panosunda gösterilir. Panodan, Microsoft Defender ATP konsoluna Pivot verebilir ve saldırının kapsamını açığa çıkarmak için ayrıntılı bir araştırma gerçekleştirebilirsiniz. Microsoft Defender ATP hakkında daha fazla bilgi için bkz. [Microsoft Defender ATP hizmetine sunucu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)ekleme.
 
-* **Kilitlenme bilgi dökümü Analizi** <a name="windows-dump"></a> -yazılım kilitlenirse, kilitlenme bilgi döküm kilitlenme sırasında belleğin bir kısmını yakalar.
+* **Kilitlenme bilgi döküm Analizi** <a name="windows-dump"></a> -Yazılım kilitlenirse çökme dökümü kilitlenme sırasında belleğin bir kısmını yakalar.
 
     Kötü amaçlı yazılımdan koruma veya kötü amaçlı yazılım içeren bir kilitlenme oluşmuş olabilir. Güvenlik ürünleri tarafından algılanmayı önlemek için çeşitli kötü amaçlı yazılım biçimleri, diske yazmayı veya diske yazılmış yazılım bileşenlerini şifrelemeyi önleyen bir dosya daha az saldırı kullanır. Bu tür bir saldırı geleneksel disk tabanlı yaklaşımlar kullanılarak algılanarak tespit edilir.
 
@@ -59,7 +62,7 @@ Azure Güvenlik Merkezi, Windows tabanlı makinelerinizi izlemek ve korumak içi
 
     Kilitlenme bilgi döküm Analizi uyarılarının ayrıntıları için, [Uyarı tablosuna](alerts-reference.md#alerts-windows)bakın.
 
-* **Dosya daha az saldırı algılama** <a name="windows-fileless"></a> -uç noktalarınızı hedefleyen dosya daha az saldırı yaygındır. Algılamayı önlemek için, dosya daha az saldırı kötü amaçlı yükleri belleğe ekler. Saldırgan yükleri, güvenliği aşılmış işlemlerin belleğinde kalır ve çok çeşitli kötü amaçlı etkinlikler gerçekleştirir.
+* **Dosya daha az saldırı algılama** <a name="windows-fileless"></a> -Uç noktalarınızı hedefleyen dosya daha az saldırı yaygındır. Algılamayı önlemek için, dosya daha az saldırı kötü amaçlı yükleri belleğe ekler. Saldırgan yükleri, güvenliği aşılmış işlemlerin belleğinde kalır ve çok çeşitli kötü amaçlı etkinlikler gerçekleştirir.
 
     Dosya daha az saldırı algılaması sayesinde, otomatik bellek oluşturma teknikleri, dosya daha az saldırı araç takımları, teknikler ve davranışları belirler. Bu çözüm, çalışma zamanında makinenizi düzenli olarak tarar ve öngörüleri doğrudan güvenlik açısından kritik işlemlerin belleğinden ayıklar.
 
@@ -79,9 +82,9 @@ Azure Güvenlik Merkezi, Windows tabanlı makinelerinizi izlemek ve korumak içi
 
 Güvenlik Merkezi, en yaygın Linux denetim çerçevelerinden biri olan **auditd**'Yi kullanarak Linux makinelerden gelen denetim kayıtlarını toplar. auditd, ana hat çekirdekte yer yaşar. 
 
-* **Linux auditd uyarıları ve Log Analytics aracı tümleştirmesi** <a name="linux-auditd"></a> -auditd sistemi, sistem çağrılarını izlemekten sorumlu olan çekirdek düzeyindeki bir alt sistemden oluşur. Bu, belirli bir kural kümesi tarafından filtreleyerek filtre uygular ve iletileri bir yuvaya yazar. Güvenlik Merkezi, Log Analytics aracısında sestd paketinden işlevleri tümleştirir. Bu tümleştirme, tüm desteklenen Linux dağıtımlarına hiçbir önkoşul olmadan sestd olaylarının toplanmasını mümkün bir şekilde sunar.
+* **Linux auditd uyarıları ve Log Analytics aracı tümleştirmesi** <a name="linux-auditd"></a> -Auditd sistemi, sistem çağrılarını izlemekten sorumlu olan çekirdek düzeyindeki bir alt sistemden oluşur. Bu, belirli bir kural kümesi tarafından filtreleyerek filtre uygular ve iletileri bir yuvaya yazar. Güvenlik Merkezi, Log Analytics aracısında sestd paketinden işlevleri tümleştirir. Bu tümleştirme, tüm desteklenen Linux dağıtımlarına hiçbir önkoşul olmadan sestd olaylarının toplanmasını mümkün bir şekilde sunar.
 
-    auditd kayıtları, Linux Aracısı için Log Analytics Aracısı kullanılarak toplanır, zenginleştirir ve olaylara toplanır. Güvenlik Merkezi, bulut ve şirket içi Linux makinelerinde kötü amaçlı davranışları algılamak için Linux sinyalleri kullanan yeni çözümlemeler ekler. Windows özelliklerine benzer şekilde, bu analizler şüpheli işlemlere, dubemte oturum açma girişimleri, çekirdek modülü yükleme ve diğer etkinlikleri kapsar. Bu etkinlikler, bir makinenin saldırıya açık ya da ihlal edilmiş olduğunu gösterebilir.  
+    auditd kayıtları, Linux Aracısı için Log Analytics Aracısı kullanılarak toplanır, zenginleştirir ve olaylara toplanır. Güvenlik Merkezi, bulut ve şirket içi Linux makinelerinde kötü amaçlı davranışları algılamak için Linux sinyalleri kullanan yeni çözümlemeler ekler. Windows özelliklerine benzer şekilde, bu analizler şüpheli işlemlere, dubmerak eden oturum açma girişimlerini, çekirdek modülünü yüklemeyi ve diğer etkinlikleri kapsar. Bu etkinlikler, bir makinenin saldırıya açık ya da ihlal edilmiş olduğunu gösterebilir.  
 
     Linux uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-linux)bakın.
 
@@ -173,7 +176,7 @@ Azure depolama için Gelişmiş tehdit koruması Şu anda yalnızca [BLOB depola
 
 Bu hizmet tüm genel bulutlarda ve ABD kamu bulutlarında kullanılabilir, ancak başka bir egeign veya Azure Kamu bulut bölgesi yoktur.
 
-Ücretsiz 30 günlük deneme sürümü de dahil olmak üzere fiyatlandırma ayrıntıları için bkz. [Azure Güvenlik Merkezi fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+30 günlük ücretsiz deneme sürümü de dahil olmak üzere fiyatlandırma ayrıntıları için bkz. [Azure Güvenlik Merkezi fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 Daha fazla bilgi için bkz.
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 207f4aecfb57480293c138c95ed6e8f6562bbc7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529180"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638572"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Özel bir ilke kullanarak Azure Active Directory B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
 
@@ -26,11 +26,11 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
 
 [!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
-## <a name="register-an-application"></a>Bir uygulamayı kaydetme
+## <a name="register-an-application"></a>Uygulamaları kaydetme
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
@@ -86,7 +86,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
     </ClaimsTransformations>
     ```
 
-4. **DisplayName** `Local Account SignIn` olan **ClaimsProvider** öğesini bulun ve aşağıdaki teknik profili ekleyin:
+4. **DisplayName** olan **ClaimsProvider** öğesini bulun `Local Account SignIn` ve aşağıdaki teknik profili ekleyin:
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -227,7 +227,7 @@ Sonra, oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf do
 
 1. Çalışma dizininizde *Signuporsignın. xml* dosyasının bir kopyasını oluşturun ve onu *ROPC_Auth. xml*olarak yeniden adlandırın.
 2. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değere değiştirin. İlke KIMLIĞI, ilkenizin adıdır. Örneğin, **B2C_1A_ROPC_Auth**.
-3. **Defaultuseryolculuney** `ResourceOwnerPasswordCredentials`içindeki **referenceıd** özniteliğinin değerini olarak değiştirin.
+3. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini olarak değiştirin `ResourceOwnerPasswordCredentials` .
 4. **Outputclaim** öğesini yalnızca aşağıdaki talepleri içerecek şekilde değiştirin:
 
     ```XML
@@ -246,10 +246,10 @@ Sonra, oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf do
 
 Bir API çağrısı oluşturmak için en sevdiğiniz API Geliştirme uygulamanızı kullanın ve ilkenizde hata ayıklama yanıtı ' nı gözden geçirin. POST isteğinin gövdesi olarak aşağıdaki bilgilerle bu örnek gibi bir çağrı oluşturun:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Azure AD B2C `your-tenant-name` kiracınızın adıyla değiştirin.
-- Kaynak `B2C_1A_ROPC_Auth` sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
+- `<tenant-name>`Azure AD B2C kiracınızın adıyla değiştirin.
+- `B2C_1A_ROPC_Auth`Kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
 
 | Anahtar | Değer |
 | --- | ----- |
@@ -260,16 +260,16 @@ Bir API çağrısı oluşturmak için en sevdiğiniz API Geliştirme uygulamanı
 | client_id | `application-id` |
 | response_type | belirteç id_token |
 
-- Kiracınızdaki bir kullanıcı hesabının adıyla değiştirin `user-account` .
-- Kullanıcı `password1` hesabının parolasıyla değiştirin.
-- `application-id` *ROPC_AUTH_APP* kaydında uygulama kimliğiyle değiştirin.
+- `user-account`Kiracınızdaki bir kullanıcı hesabının adıyla değiştirin.
+- `password1`Kullanıcı hesabının parolasıyla değiştirin.
+- `application-id` *ROPC_Auth_app* kaydında uygulama kimliğiyle değiştirin.
 - Yenileme belirteci almak istiyorsanız *Offline_access* isteğe bağlıdır.
 
 Gerçek GÖNDERI isteği aşağıdaki örneğe benzer şekilde görünür:
 
 ```HTTPS
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -291,10 +291,10 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 Burada gösterilenler gibi bir GÖNDERI çağrısı oluşturun. İsteğin gövdesi olarak aşağıdaki tablodaki bilgileri kullanın:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Azure AD B2C `your-tenant-name` kiracınızın adıyla değiştirin.
-- Kaynak `B2C_1A_ROPC_Auth` sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
+- `<tenant-name>`Azure AD B2C kiracınızın adıyla değiştirin.
+- `B2C_1A_ROPC_Auth`Kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
 
 | Anahtar | Değer |
 | --- | ----- |
@@ -304,8 +304,8 @@ Burada gösterilenler gibi bir GÖNDERI çağrısı oluşturun. İsteğin gövde
 | kaynak | `application-id` |
 | refresh_token | `refresh-token` |
 
-- `application-id` *ROPC_AUTH_APP* kaydında uygulama kimliğiyle değiştirin.
-- Önceki `refresh-token` yanıtta geri gönderilen **refresh_token** değiştirin.
+- `application-id` *ROPC_Auth_app* kaydında uygulama kimliğiyle değiştirin.
+- `refresh-token`Önceki yanıtta geri gönderilen **refresh_token** değiştirin.
 
 Başarılı bir yanıt aşağıdaki örneğe benzer şekilde görünür:
 

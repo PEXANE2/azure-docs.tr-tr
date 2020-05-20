@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8ceaf13324864c7ec3df731c3e710815b0eba9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309776"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639617"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Oturum açma olaylarını güvenli hale getirmek için Kullanıcı başına Azure Multi-Factor Authentication etkinleştirme
 
@@ -54,7 +54,7 @@ Tüm kullanıcılar *devre dışı bırakıldı*. Kullanıcıları Azure Multi-F
 Kullanıcı durumlarını görüntüleyebileceğiniz ve yönetebileceğiniz Azure portal sayfasına erişmek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-1. *Azure Active Directory*arayıp seçin, sonra **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
+1. *Azure Active Directory*arayıp seçin, sonra **Kullanıcılar**  >  **tüm kullanıcılar**' ı seçin.
 1. **Multi-Factor Authentication**seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Tam Azure portal pencere ve menü konumunu görmek için aşağıdan örnek ekran görüntüsünü seçin:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Azure AD 'de kullanıcılar penceresinden Multi-Factor Authentication seçin")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Aşağıdaki örnekte gösterildiği gibi, Kullanıcı durumunu görüntüleyen yeni bir sayfa açılır.
    ![Azure Multi-Factor Authentication için örnek Kullanıcı durumu bilgilerini gösteren ekran görüntüsü](./media/howto-mfa-userstates/userstate1.png)
@@ -67,7 +67,7 @@ Bir kullanıcının Azure Multi-Factor Authentication durumunu değiştirmek iç
 1. Azure Multi-Factor Authentication için etkinleştirmek istediğiniz kullanıcıyı bulun. En üstteki görünümü **kullanıcılara**değiştirmeniz gerekebilir.
    ![Durumu Kullanıcı sekmesinden değiştirmek için kullanıcıyı seçin](./media/howto-mfa-userstates/enable1.png)
 1. Durumu değiştirmek için Kullanıcı (ler) in yanındaki kutuyu işaretleyin.
-1. Sağ tarafta **hızlı adımlar**altında **Etkinleştir** veya **devre dışı bırak**' ı seçin. Aşağıdaki örnekte *John Smith* kullanıcısı adının yanında bir denetim sahibi olur ve kullanım için Etkinleştiriliyor: ![hızlı adımlar menüsünde Etkinleştir ' e tıklayarak Seçili kullanıcıyı etkinleştir](./media/howto-mfa-userstates/user1.png)
+1. Sağ tarafta **hızlı adımlar**altında **Etkinleştir** veya **devre dışı bırak**' ı seçin. Aşağıdaki örnekte *John Smith* kullanıcısı adının yanında bir denetim sahibi olur ve kullanım için Etkinleştiriliyor: ![ hızlı adımlar menüsünde Etkinleştir ' e tıklayarak Seçili kullanıcıyı etkinleştir](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > *Etkin* kullanıcılar, Azure Multi-Factor Authentication kaydolduklarında otomatik olarak *zorlandı* . Kullanıcı durumunu *Zorlanmış*olarak el ile değiştirmeyin.
@@ -78,7 +78,7 @@ Kullanıcıları etkinleştirdikten sonra, e-posta ile bildirim alın. Kullanıc
 
 ## <a name="change-state-using-powershell"></a>PowerShell kullanarak durumu değiştirme
 
-Kullanıcı durumunu [Azure AD PowerShell](/powershell/azure/overview)kullanarak değiştirmek için, bir kullanıcı hesabının `$st.State` parametresini değiştirirsiniz. Bir kullanıcı hesabının üç olası durumu vardır:
+Kullanıcı durumunu [Azure AD PowerShell](/powershell/azure/overview)kullanarak değiştirmek için, `$st.State` bir kullanıcı hesabının parametresini değiştirirsiniz. Bir kullanıcı hesabının üç olası durumu vardır:
 
 * *Etkin*
 * *Uygulandı*
@@ -98,7 +98,7 @@ Sonra [Connect-MsolService](/powershell/module/msonline/connect-msolservice)kull
 Connect-MsolService
 ```
 
-Aşağıdaki örnek PowerShell betiği, adlı *bsimon@contoso.com*tek bir kullanıcı için MFA 'yı sunar:
+Aşağıdaki örnek PowerShell betiği, adlı tek bir kullanıcı için MFA 'yı sunar *bsimon@contoso.com* :
 
 ```PowerShell
 $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
@@ -110,7 +110,7 @@ $sta = @($st)
 Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
 ```
 
-Kullanıcıları toplu olarak etkinleştirmeniz gerektiğinde PowerShell kullanmak iyi bir seçenektir. Aşağıdaki betik, bir kullanıcı listesi ile döngülerinde MFA 'yı sunar. Aşağıdaki `$users` gibi ilk satırda ayarlanan Kullanıcı hesaplarını tanımlayın:
+Kullanıcıları toplu olarak etkinleştirmeniz gerektiğinde PowerShell kullanmak iyi bir seçenektir. Aşağıdaki betik, bir kullanıcı listesi ile döngülerinde MFA 'yı sunar. Aşağıdaki gibi ilk satırda ayarlanan Kullanıcı hesaplarını tanımlayın `$users` :
 
    ```PowerShell
    # Define your list of users to update state in bulk
@@ -185,4 +185,4 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 Güvenilen IP 'Ler, özel ses iletileri ve sahtekarlık uyarıları gibi Azure Multi-Factor Authentication ayarlarını yapılandırmak için bkz. [azure Multi-Factor Authentication ayarlarını yapılandırma](howto-mfa-mfasettings.md). Azure Multi-Factor Authentication Kullanıcı ayarlarını yönetmek için bkz. [azure Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme](howto-mfa-userdevicesettings.md).
 
-Bir kullanıcının neden MFA yapması istenmediğini anlamak için, bkz. [Azure Multi-Factor Authentication raporları](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+Bir kullanıcının neden MFA yapması istenmediğini anlamak için, bkz. [Azure Multi-Factor Authentication raporları](howto-mfa-reporting.md).

@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 05/14/2020
+ms.openlocfilehash: 0bf5559590b66400fc4fc4dc27ea88c3522effb1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484795"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646627"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight için varsayılan ve önerilen düğüm yapılandırması nelerdir?
 
@@ -24,9 +24,9 @@ Bu makalede, Azure HDInsight kümeleri için varsayılan ve önerilen düğüm y
 
 Aşağıdaki tablolarda HDInsight kümeleri için varsayılan ve önerilen sanal makine (VM) boyutları listelenmektedir.  Bu bilgiler, HDInsight kümelerini dağıtmak üzere PowerShell veya Azure CLı betikleri oluştururken kullanılacak VM boyutlarını anlamak için gereklidir.
 
-Bir kümede 32 ' den fazla çalışan düğümüne ihtiyacınız varsa, en az 8 çekirdeğe ve 14 GB RAM 'e sahip bir baş düğüm boyutu seçin. 
+Bir kümede 32 ' den fazla çalışan düğümüne ihtiyacınız varsa, en az 8 çekirdeğe ve 14 GB RAM 'e sahip bir baş düğüm boyutu seçin.
 
-Veri disklerine sahip tek küme türleri, hızlandırılmış yazma özelliği etkinleştirilmiş Kafka ve HBase kümelerdir. HDInsight bu senaryolarda P30 ve S30 disk boyutlarını destekler.
+Veri disklerine sahip tek küme türleri, hızlandırılmış yazma özelliği etkinleştirilmiş Kafka ve HBase kümelerdir. HDInsight bu senaryolarda P30 ve S30 disk boyutlarını destekler. Diğer tüm küme türleri için HDInsight, kümeyle yönetilen disk alanı sağlar. 11/07/2019 ' den başlayarak, yeni oluşturulan kümedeki her bir düğümün yönetilen disk boyutu 128 GB 'tır. Bu değiştirilemez.
 
 Bu belgede kullanılan en düşük önerilen sanal makine türlerinin belirtimleri aşağıdaki tabloda özetlenmiştir.
 
@@ -51,9 +51,9 @@ Her VM türünün belirtimleri hakkında daha fazla bilgi için aşağıdaki bel
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>Brezilya Güney ve Japonya Batı dışındaki tüm desteklenen bölgeler
 
 > [!Note]
-> PowerShell ve diğer betiklerdeki kullanım için SKU tanımlayıcısını almak üzere aşağıdaki tablolardaki tüm `Standard_` VM SKU 'larının başına ekleyin. Örneğin, `D12_v2` olur `Standard_D12_v2`.
+> PowerShell ve diğer betiklerdeki kullanım için SKU tanımlayıcısını almak üzere `Standard_` aşağıdaki tablolardaki tüm VM SKU 'larının başına ekleyin. Örneğin, `D12_v2` olur `Standard_D12_v2` .
 
-| Küme türü | Hadoop | HBase | Interactive Query | Storm | Spark | ML Server | Kafka |
+| Küme türü | Hadoop | HBase | Interactive Query | Fırtına | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
 | Baş: varsayılan VM boyutu | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Baş: önerilen en düşük VM boyutları | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
@@ -68,7 +68,7 @@ Her VM türünün belirtimleri hakkında daha fazla bilgi için aşağıdaki bel
 
 ### <a name="brazil-south-and-japan-west-only"></a>Brezilya Güney ve Japonya Batı
 
-| Küme türü | Hadoop | HBase | Interactive Query | Storm | Spark | ML Services |
+| Küme türü | Hadoop | HBase | Interactive Query | Fırtına | Spark | ML Services |
 |---|---|---|---|---|---|---|
 | Baş: varsayılan VM boyutu | D12 | D12 | D13 | A4_v2 | D12 | D12 |
 | Baş: önerilen en düşük VM boyutları | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |

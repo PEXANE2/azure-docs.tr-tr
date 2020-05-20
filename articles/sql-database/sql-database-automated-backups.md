@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 7cbe0015eeb9b46cd72496a220ce7f7d094cb61d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: dd5ca3c52364813a9aabe3db821c4f7e094fa637
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198568"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634144"
 ---
 # <a name="automated-backups"></a>Otomatik yedeklemeler
 
@@ -91,7 +91,7 @@ Saklama süresinden önce gerçekleşen yedeklemeler, zaman damgalarına göre o
 Azure SQL veritabanı toplam bekletme yedekleme depolama alanınızı birikimli bir değer olarak hesaplar. Her saat, bu değer Azure Faturalandırma işlem hattında raporlanır ve bu saatlik kullanımı, her ayın sonunda tüketiminizi hesaplamak için sağlamaktan sorumludur. Veritabanı bırakıldıktan sonra, tüketim yedekleme yaşı olarak azalır. Yedeklemeler, bekletme süresinden daha eski olduktan sonra faturalandırılır.
 
    > [!IMPORTANT]
-   > Veritabanı bırakılmış olsa bile, bir veritabanının yedeklemeleri belirtilen bekletme süresi boyunca tutulur. Bir veritabanını bırakma ve yeniden oluşturma işlemi genellikle depolama ve işlem maliyetlerine göre tasarruf ederken, Microsoft, her bırakıldığında bırakılan her veritabanı için belirtilen bekletme süresi (en az 7 gün) için bir yedekleme sakladığı için yedekleme depolama maliyetlerini artırabilir.
+   > Veritabanı bırakılmış olsa bile, bir veritabanının yedeklemeleri belirtilen bekletme süresi boyunca tutulur. Bir veritabanını bırakma ve yeniden oluşturma işlemi genellikle depolama ve işlem maliyetlerinde tasarruf edilirken, Microsoft, her bırakıldığında bırakılan her veritabanı için belirtilen saklama süresi için bir yedek sakladığı için yedekleme depolama maliyetlerini artırabilir.
 
 ### <a name="monitor-consumption"></a>Tüketimi izleme
 
@@ -149,6 +149,9 @@ Yedeklemeleri maksimum saklama süresinden daha uzun süre tutmanız gerekiyorsa
 
 > [!IMPORTANT]
 > SQL veritabanlarını barındıran Azure SQL Server 'ı silerseniz, sunucuya ait olan tüm elastik veritabanı havuzları ve veritabanları da silinir. Bunlar kurtarılamaz. Silinen bir sunucuyu geri alamazsınız. Ancak uzun süreli saklama yapılandırdıysanız, LTR ile veritabanlarının yedeklemeleri silinmez ve bu veritabanları geri yüklenebilir.
+
+> [!NOTE]
+> Azure portal aracılığıyla tek, havuza alınmış veritabanları ve yönetilen esnetler için yapılandırılabilen minimum yedek yedekleme saklama süresi 7 gündür. En az 1 günlük yedek saklama, yönetilen örnek için yalnızca as. SQL Module v 2.6.0 veya üzeri ile PowerShell kullanılarak yapılandırılabilir.
 
 ## <a name="encrypted-backups"></a>Şifrelenmiş yedeklemeler
 

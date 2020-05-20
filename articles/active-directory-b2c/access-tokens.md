@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8358d3378ea892ebeef653bcb51243c9f1aa0b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36027583d64ac91432888d866440932c6e1bdd07
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259779"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635441"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C erişim belirteci isteme
 
@@ -26,14 +26,14 @@ Bu makalede bir Web uygulaması ve Web API 'SI için erişim belirteci isteme y�
 > [!NOTE]
 > **Web API zincirleri (Şirket içi) Azure AD B2C tarafından desteklenmez.** -Birçok mimaride, Azure AD B2C tarafından güvenliği sağlanmış başka bir aşağı akış Web API 'sini çağırması gereken bir Web API 'SI vardır. Bu senaryo, bir Web API 'SI arka ucu olan istemcilerde yaygındır ve bu da başka bir hizmeti çağırır. Bu zincirleme Web API 'SI senaryosu, OAuth 2,0 JWT taşıyıcı kimlik bilgisi verme kullanılarak desteklenir, aksi takdirde şirket adına akış olarak bilinir. Ancak, şirket adına akış şu anda Azure AD B2C uygulanmamıştır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bir Kullanıcı akışı oluşturun](tutorial-create-user-flows.md) .
 - Daha önce yapmadıysanız, [Azure Active Directory B2C kiracınıza bir Web API uygulaması ekleyin](add-web-application.md).
 
 ## <a name="scopes"></a>Kapsamlar
 
-Kapsamlar, korunan kaynaklarla izinleri yönetmek için bir yol sağlar. Erişim belirteci istendiğinde, istemci uygulamasının isteğin **kapsam** parametresinde istenen izinleri belirtmesi gerekir. Örneğin, **uygulama KIMLIĞI URI** `https://contoso.onmicrosoft.com/api` `https://contoso.onmicrosoft.com/api/read`'si olan API 'nin `read` **kapsam değerini** belirtmek için kapsam olacaktır.
+Kapsamlar, korunan kaynaklarla izinleri yönetmek için bir yol sağlar. Erişim belirteci istendiğinde, istemci uygulamasının isteğin **kapsam** parametresinde istenen izinleri belirtmesi gerekir. Örneğin, uygulama KIMLIĞI URI 'si olan API 'nin **kapsam değerini** belirtmek için `read` **App ID URI** `https://contoso.onmicrosoft.com/api` kapsam olacaktır `https://contoso.onmicrosoft.com/api/read` .
 
 Kapsamlar web API’si tarafından kapsam tabanlı erişim denetimi uygulamak için kullanılır. Örneğin web API'sinin kullanıcıları hem okuma hem de yazma veya yalnızca okuma erişimine sahip olabilir. Aynı istekte birden çok izin almak için, isteğin tek **kapsam** parametresine, boşluklarla ayırarak birden çok giriş ekleyebilirsiniz.
 
@@ -54,11 +54,11 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_acce
 - **OpenID** -bir kimlik belirteci ister.
 - **offline_access** - [kimlik doğrulama kod akışlarını](authorization-code-flow.md)kullanarak yenileme belirteci ister.
 
-`/authorize` Bir `token`istekteki **response_type** parametresi içeriyorsa, **kapsam** parametresi, izin verilen `openid` ve `offline_access` verilecek en az bir kaynak kapsamı içermelidir. Aksi takdirde, `/authorize` istek başarısız olur.
+Bir istekteki **response_type** parametresi `/authorize` içeriyorsa `token` , **kapsam** parametresi, `openid` izin verilen ve verilecek en az bir kaynak kapsamı içermelidir `offline_access` . Aksi takdirde, `/authorize` istek başarısız olur.
 
 ## <a name="request-a-token"></a>Belirteç isteme
 
-Erişim belirteci istemek için bir yetkilendirme kodu gerekir. Bir yetkilendirme kodu için `/authorize` uç nokta isteğine bir örnek aşağıda verilmiştir. Özel etki alanları, erişim belirteçleri ile kullanım için desteklenmez. İstek URL 'sinde tenant-name.onmicrosoft.com etki alanınızı kullanın.
+Erişim belirteci istemek için bir yetkilendirme kodu gerekir. Bir `/authorize` yetkilendirme kodu için uç nokta isteğine bir örnek aşağıda verilmiştir. Özel etki alanları, erişim belirteçleri ile kullanım için desteklenmez. İstek URL 'sinde tenant-name.onmicrosoft.com etki alanınızı kullanın.
 
 Aşağıdaki örnekte, şu değerleri değiştirirsiniz:
 
@@ -85,7 +85,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 Yetkilendirme kodunu başarıyla aldıktan sonra, bir erişim belirteci istemek için bunu kullanabilirsiniz:
 
 ```HTTP
-POST <tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=<policy-name> HTTP/1.1
+POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -111,7 +111,7 @@ Aşağıdaki yanıta benzer bir şey görmeniz gerekir:
 }
 ```
 
-Döndürülen erişim https://jwt.ms belirtecini incelemek için kullanırken, aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+https://jwt.msDöndürülen erişim belirtecini incelemek için kullanırken, aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ```JSON
 {

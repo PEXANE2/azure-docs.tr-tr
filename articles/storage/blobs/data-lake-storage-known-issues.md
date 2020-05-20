@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: b02835ae3a1d7fed52f2cdb4ab25aa74ba66e8c3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4b6def2ce2b0c1ba6d3a45e64bb7f82b5948a524
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119901"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642200"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -107,11 +107,11 @@ REST API 'leri kullanan üçüncü taraf uygulamalar, bunları blob API 'Leri ç
 
 Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md) verildiyse, ACL 'lerin bu kapsayıcıya veya o kapsayıcıdaki dosyalara hiçbir etkisi olmaz.
 
-## <a name="premium-performance-block-blob-storage-accounts"></a>Premium-performans Blok Blobu depolama hesapları
+## <a name="premium-performance-blockblobstorage-storage-accounts"></a>Premium-performans BlockBlobStorage depolama hesapları
 
 ### <a name="diagnostic-logs"></a>Tanılama günlükleri
 
-Tanılama günlükleri henüz Azure portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirebilirsiniz. Örneğin:
+Tanılama günlükleri henüz Azure portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirebilirsiniz. Örnek:
 
 ```powershell
 #To login
@@ -126,7 +126,7 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri
 
-- Yaşam döngüsü yönetimi ilkeleri henüz Premium Blok Blob depolama hesaplarında desteklenmemektedir. 
+- Yaşam döngüsü yönetimi ilkeleri henüz Premium blok Blobstorage depolama hesaplarında desteklenmemektedir. 
 
 - Veriler Premium katmandan daha düşük katmanlara taşınamaz. 
 
@@ -134,11 +134,11 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="hdinsight-support"></a>HDInsight desteği
 
-N HDInsight kümesi oluşturduğunuzda, hiyerarşik ad alanı özelliği etkinleştirilmiş bir Blok Blobu depolama hesabı seçemezsiniz. Ancak, hesabı oluşturduktan sonra kümeye ekleyebilirsiniz.
+Bir n HDInsight kümesi oluşturduğunuzda, henüz hiyerarşik ad alanı özelliği etkinleştirilmiş bir blok Blobstorage hesabı seçemezsiniz. Ancak, hesabı oluşturduktan sonra kümeye ekleyebilirsiniz.
 
 ### <a name="dremio-support"></a>Dremio desteği
 
-Dremio henüz hiyerarşik ad alanı özelliği etkinleştirilmiş bir Blok Blobu depolama hesabına bağlanmıyor. 
+Dremio henüz hiyerarşik ad alanı özelliği etkinleştirilmiş olan bir BlockBlobStorage hesabına bağlanmıyor. 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Depolama Blobu (. b) sürücüsü (Data Lake Storage 2. ile desteklenmez)
 

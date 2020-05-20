@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 090fecea44c7881920fcd087304f33f935a5e907
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545861"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636254"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini yerelleştirin
 
@@ -27,10 +27,10 @@ Bu makalede, Kullanıcı bağlantısı için ilkedeki birden çok yerel ayarı v
 
 ## <a name="set-up-the-list-of-supported-languages"></a>Desteklenen dillerin listesini ayarlama
 
-İlkenizin uzantıları dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+İlkenizin uzantıları dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 
 1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
-1. `Localization` Öğeyi desteklenen dillere ekleyin: İngilizce (varsayılan) ve İspanyolca.  
+1. `Localization`Öğeyi desteklenen dillere ekleyin: İngilizce (varsayılan) ve İspanyolca.  
 
 
 ```XML
@@ -44,12 +44,12 @@ Bu makalede, Kullanıcı bağlantısı için ilkedeki birden çok yerel ayarı v
 
 ## <a name="provide-language-specific-labels"></a>Dile özgü Etiketler sağlama
 
-`Localization` Öğesinin [localizedresources](localization.md#localizedresources) 'i yerelleştirilmiş dizelerin listesini içerir. Yerelleştirilmiş kaynaklar öğesi yerelleştirilmiş kaynakları benzersiz şekilde tanımlamak için kullanılan bir tanımlayıcıya sahiptir. Bu tanımlayıcı, [İçerik tanımı](contentdefinitions.md) öğesinde daha sonra kullanılır.
+Öğesinin [Localizedresources](localization.md#localizedresources) 'i `Localization` yerelleştirilmiş dizelerin listesini içerir. Yerelleştirilmiş kaynaklar öğesi yerelleştirilmiş kaynakları benzersiz şekilde tanımlamak için kullanılan bir tanımlayıcıya sahiptir. Bu tanımlayıcı, [İçerik tanımı](contentdefinitions.md) öğesinde daha sonra kullanılır.
 
-İçerik tanımı ve desteklemek istediğiniz herhangi bir dil için yerelleştirilmiş kaynaklar öğelerini yapılandırırsınız. Ingilizce ve Ispanyolca Birleşik kaydolma veya oturum açma sayfalarını özelleştirmek için, `LocalizedResources` `</SupportedLanguages>` öğenin kapandıktan sonra aşağıdaki öğeleri eklersiniz.
+İçerik tanımı ve desteklemek istediğiniz herhangi bir dil için yerelleştirilmiş kaynaklar öğelerini yapılandırırsınız. Ingilizce ve Ispanyolca Birleşik kaydolma veya oturum açma sayfalarını özelleştirmek için, `LocalizedResources` öğenin kapandıktan sonra aşağıdaki öğeleri eklersiniz `</SupportedLanguages>` .
 
 > [!NOTE]
-> Aşağıdaki örnekte, her satırın başlangıcında kare `#` simgesini ekledik, böylece, ekranda yerelleştirilmiş Etiketler bulabilirsiniz.
+> Aşağıdaki örnekte `#` , her satırın başlangıcında kare simgesini ekledik, böylece, ekranda yerelleştirilmiş Etiketler bulabilirsiniz.
 
 ```XML
 <!--Local account sign-up or sign-in page English-->
@@ -252,10 +252,10 @@ Aşağıdaki örnekte, kayıt veya oturum açma sayfasına ve yerel hesap kaydol
 1. Karşıya yüklediğiniz ilkeyi seçin ve **Şimdi Çalıştır**' ı seçin.
 1. Yerelleştirilmiş kaydolma veya oturum açma sayfasını görebilmelisiniz.
 1. Kaydolma bağlantısına tıklayın ve yerelleştirilmiş kaydolma sayfasını görmeniz gerekir.)
-1. Tarayıcınızın varsayılan dilini Ispanyolca olarak değiştirin. Ya da sorgu dizesi parametresini `ui_locales` yetkilendirme isteğine ekleyebilirsiniz. Örneğin: 
+1. Tarayıcınızın varsayılan dilini Ispanyolca olarak değiştirin. Ya da sorgu dizesi parametresini `ui_locales` Yetkilendirme isteğine ekleyebilirsiniz. Örnek: 
 
 ```http
-https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
+https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin/oauth2/v2.0/authorize&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

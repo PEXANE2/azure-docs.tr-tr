@@ -20,7 +20,7 @@ Azure Cloud Shell başlamak için:
 | Seçenek | Örnek/bağlantı |
 |-----------------------------------------------|---|
 | Kod bloğunun sağ üst köşesindeki **Deneyin**’i seçin. **Dene** ' nin seçilmesi, kodu Cloud Shell otomatik olarak kopyalamaz. | ![Azure Cloud Shell için deneme örneği](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| Tarayıcınızda Cloud Shell [https://shell.azure.com](https://shell.azure.com)açmak için ' a gidin veya **Cloud Shell Başlat** düğmesini seçin. | [![Cloud Shell yeni bir pencerede Başlat](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| [https://shell.azure.com](https://shell.azure.com)Tarayıcınızda Cloud Shell açmak için ' a gidin veya **Cloud Shell Başlat** düğmesini seçin. | [![Cloud Shell yeni bir pencerede Başlat](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
 | [Azure Portal](https://portal.azure.com)sağ üstteki menü çubuğunda **Cloud Shell** düğmesini seçin. | ![Azure portaldaki Cloud Shell düğmesi](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
 Bu makaledeki kodu Azure Cloud Shell çalıştırmak için:
@@ -29,6 +29,6 @@ Bu makaledeki kodu Azure Cloud Shell çalıştırmak için:
 
 1. Kodu kopyalamak için bir kod bloğunda **Kopyala** düğmesini seçin.
 
-1. Windows ve Linux 'ta **CTRL**+**SHIFT**+**v** ' i seçerek veya MacOS 'ta **cmd**+**Shift**+**v** ' i seçerek kodu Cloud Shell oturumuna yapıştırın.
+1. **Ctrl** + **Shift** + Windows ve Linux 'ta CTRL SHIFT**v** ' i seçerek veya **Cmd** + **Shift** + MacOS 'ta cmd Shift**v** ' i seçerek kodu Cloud Shell oturumuna yapıştırın.
 
 1. Kodu çalıştırmak için **ENTER** ' u seçin.

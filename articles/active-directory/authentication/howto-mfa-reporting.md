@@ -1,48 +1,32 @@
 ---
-title: Azure MFA için erişim ve kullanım raporları-Azure Active Directory
-description: Bu, Azure Multi-Factor Authentication Feature-Reports 'un nasıl kullanılacağını açıklar.
+title: Azure Multi-Factor Authentication için oturum açma olayı ayrıntıları-Azure Active Directory
+description: Azure Multi-Factor Authentication olayları ve durum iletileri için oturum açma etkinliğini görüntülemeyi öğrenin.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/30/2018
+ms.date: 05/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df562d65ad064efb1be337e0b68cb8638536981
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112771"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639810"
 ---
-# <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication raporları
+# <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Azure Multi-Factor Authentication olaylarını gözden geçirmek için oturum açma işlemleri raporunu kullanın
 
-Azure Multi-Factor Authentication, sizin ve kuruluşunuzun Azure portal aracılığıyla erişilebilen çeşitli raporlar sağlar. Aşağıdaki tabloda, kullanılabilir raporlar listelenmektedir:
+Azure Multi-Factor Authentication olaylarını gözden geçirmek ve anlamak için, Azure Active Directory (Azure AD) oturum açma işlemleri raporunu kullanabilirsiniz. Bu rapor, bir kullanıcıya Multi-Factor Authentication istendiğinde ve herhangi bir koşullu erişim ilkesi kullanımda olduğunda olaylar için kimlik doğrulama ayrıntılarını gösterir. Oturum açma işlemleri raporu hakkında ayrıntılı bilgi için bkz. [Azure AD 'de oturum açma etkinlik raporlarına genel bakış](../reports-monitoring/concept-sign-ins.md).
 
-| Rapor | Konum | Açıklama |
-|:--- |:--- |:--- |
-| Engellenen Kullanıcı Geçmişi | Azure AD > güvenliği > MFA > kullanıcıları engelle/engellemesini kaldır | Kullanıcıları engellemek veya engelini kaldırmak için isteklerin geçmişini gösterir. |
-| Kullanım ve sahtekarlık uyarıları | Azure AD > oturum açma işlemleri | Genel kullanım, Kullanıcı Özeti ve kullanıcı ayrıntıları hakkında bilgi sağlar; Ayrıca, belirtilen tarih aralığı boyunca gönderilen sahtekarlık uyarılarının geçmişi. |
-| Şirket içi bileşenler için kullanım | Azure AD > güvenliği > MFA > etkinlik raporu | NPS uzantısı, ADFS ve MFA sunucusu aracılığıyla MFA için genel kullanım hakkında bilgi sağlar. |
-| Atlanan Kullanıcı Geçmişi | Azure AD > güvenliği > MFA > bir kerelik atlama | Bir kullanıcı için Multi-Factor Authentication atlama isteklerinin geçmişini sağlar. |
-| Sunucu durumu | Azure AD > güvenliği > MFA > sunucu durumu | Hesabınızla ilişkili Multi-Factor Authentication sunucularının durumunu görüntüler. |
+Bu makalede Azure portal Azure AD oturum açma raporunu ve ardından MSOnline v1 PowerShell modülünü nasıl görüntüleyebileceğiniz gösterilmektedir.
 
-## <a name="view-mfa-reports"></a>MFA raporlarını görüntüleme
+## <a name="view-the-azure-ad-sign-ins-report"></a>Azure AD oturum açma işlemleri raporunu görüntüleme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta **Azure Active Directory** > **Security** > **MFA**' yı seçin.
-3. Görüntülemek istediğiniz raporu seçin.
-
-   ![Azure portal MFA sunucu sunucusu durum raporu](./media/howto-mfa-reporting/report.png)
-
-## <a name="azure-ad-sign-ins-report"></a>Azure AD oturum açma işlemleri raporu
-
-[Azure Portal](https://portal.azure.com) **oturum açma etkinliği raporuyla** , ortamınızın nasıl çalıştığını öğrenmek için gereken bilgileri alabilirsiniz.
-
-Oturum açma işlemleri raporu, çok faktörlü kimlik doğrulaması (MFA) kullanımı hakkında bilgi içeren, yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinlikleri hakkında bilgi sunabilir. MFA verileri MFA'nın kuruluşunuzdaki kullanımı hakkında öngörüler sunar. Aşağıdaki gibi sorulara yanıt bulmanızı sağlar:
+Oturum açma işlemleri raporu, çok faktörlü kimlik doğrulaması (MFA) kullanımı hakkında bilgi içeren yönetilen uygulamaların ve Kullanıcı oturum açma etkinliklerinin kullanımı hakkında bilgi sağlar. MFA verileri MFA'nın kuruluşunuzdaki kullanımı hakkında öngörüler sunar. Aşağıdaki gibi sorulara yanıt vermenizi sağlar:
 
 - Oturum açma sırasında MFA kullanıldı mı?
 - Kullanıcı MFA'yı nasıl tamamladı?
@@ -51,94 +35,76 @@ Oturum açma işlemleri raporu, çok faktörlü kimlik doğrulaması (MFA) kulla
 - Kaç kullanıcı MFA isteğini tamamlayamadı?
 - Son kullanıcıların karşılaştığı ortak MFA sorunları nelerdir?
 
-Bu veriler [Azure Portal](https://portal.azure.com) ve [Raporlama API 'si](../reports-monitoring/concept-reporting-api.md)ile kullanılabilir.
+[Azure Portal](https://portal.azure.com)oturum açma Etkinlik raporunu görüntülemek için aşağıdaki adımları izleyin. Verileri [Raporlama API](../reports-monitoring/concept-reporting-api.md)'sini kullanarak da sorgulayabilirsiniz.
 
-![Azure portal Azure AD oturum açma işlemleri raporu](./media/howto-mfa-reporting/sign-in-report.png)
+1. *Genel yönetici* izinlerine sahip bir hesap kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **Kullanıcılar** ' ı seçin.
+1. Sol taraftaki menüden *etkinlik* ' in altında, **oturum açma**işlemleri ' ni seçin.
+1. Durum dahil, oturum açma olaylarının bir listesi gösterilir. Daha fazla ayrıntı görüntülemek için bir olay seçebilirsiniz.
 
-### <a name="sign-ins-report-structure"></a>Oturum açma raporu yapısı
+    Olay ayrıntılarının *kimlik doğrulama ayrıntıları* veya *koşullu erişim* sekmesinde, durum kodu veya MFA istemi tetiklediği ilke gösterilir.
 
-MFA hakkındaki oturum açma etkinliği raporları aşağıdaki bilgilere erişmenizi sağlar:
+    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
-**MFA gerekli:** Oturum açma işlemi için MFA'nın gerekli olup olmadığı. Kullanıcı başına MFA, koşullu erişim ya da başka nedenlerden dolayı MFA gerekli olabilir. Olası değerler **Evet** veya **Hayır**.
+Varsa, kimlik doğrulaması, metin mesajı, Microsoft Authenticator uygulama bildirimi veya telefon araması gibi gösterilir.
 
-**MFA Sonucu:** MFA'nın tamamlanıp tamamlanmadığı hakkında daha fazla bilgi:
+Aşağıdaki ayrıntılar, MFA isteğinin karşılanıp reddedildiğini gösteren bir oturum açma olayının *kimlik doğrulama ayrıntıları* penceresinde gösterilir:
 
-- MFA tamamlandıysa bu sütunda MFA'nın tamamlanma şekli hakkında daha fazla bilgi yer alır.
-   - Azure Multi-Factor Authentication
-      - bulutta tamamlandı
-      - kiracıda yapılandırılmış ilkeler nedeniyle süresi doldu
-      - kayıt istendi
-      - belirteç talebiyle gerçekleştirildi
-      - harici sağlayıcı tarafından sağlanan taleple gerçekleştirildi
-      - güçlü kimlik doğrulamasıyla gerçekleştirildi
-      - gerçekleştirilen akış Windows aracısı oturum açma akışı tarafı olduğundan atlandı
-      - uygulama parolası nedeniyle atlandı
-      - konum nedeniyle atlandı
-      - kayıtlı cihaz nedeniyle atlandı
-      - hatırlanan cihaz nedeniyle atlandı
-      - başarıyla tamamlandı
-   - Çok faktörlü kimlik doğrulaması için harici sağlayıcıya yönlendirildi
+* MFA tamamlandıysa bu sütunda MFA'nın tamamlanma şekli hakkında daha fazla bilgi yer alır.
+   * bulutta tamamlandı
+   * kiracıda yapılandırılmış ilkeler nedeniyle süresi doldu
+   * kayıt istendi
+   * belirteç talebiyle gerçekleştirildi
+   * harici sağlayıcı tarafından sağlanan taleple gerçekleştirildi
+   * güçlü kimlik doğrulamasıyla gerçekleştirildi
+   * gerçekleştirilen akış Windows aracısı oturum açma akışı tarafı olduğundan atlandı
+   * uygulama parolası nedeniyle atlandı
+   * konum nedeniyle atlandı
+   * kayıtlı cihaz nedeniyle atlandı
+   * hatırlanan cihaz nedeniyle atlandı
+   * başarıyla tamamlandı
 
-- MFA reddedildiyse bu sütunda reddedilme nedeni yer alır.
-   - Azure Multi-Factor Authentication tarafından reddedildi;
-      - kimlik doğrulaması devam ediyor
-      - yinelenen kimlik doğrulaması girişimi
-      - çok fazla kez yanlış kod girildi
-      - geçersiz kimlik doğrulaması
-      - geçersiz mobil uygulama doğrulama kodu
-      - yanlış yapılandırma
-      - telefon araması sesli mesaja düştü
-      - telefon numarası biçimi geçersiz
-      - hizmet hatası
-      - kullanıcının telefonuna ulaşılamıyor
-      - cihaza mobil uygulama bildirimi gönderilemedi
-      - mobil uygulama bildirimi gönderilemedi
-      - kullanıcı kimlik doğrulamasını reddetti
-      - kullanıcı mobil uygulama bildirimine yanıt vermedi
-      - kullanıcının kayıtlı doğrulama yöntemi yok
-      - kullanıcı hatalı kod girdi
-      - kullanıcı hatalı PIN girdi
-      - kullanıcı kimlik doğrulaması başarılı olmadan telefon aramasını sonlandırdı
-      - kullanıcı engellendi
-      - kullanıcı doğrulama kodunu hiç girmedi
-      - kullanıcı bulunamadı
-      - doğrulama kodu zaten bir kez kullanıldı
-
-**MFA kimlik doğrulama yöntemi:** Kullanıcının MFA'yı tamamlaması için kullandığı kimlik doğrulama yöntemi. Olası değerler şunlardır:
-
-- Kısa mesaj
-- Mobil uygulama bildirimi
-- Telefon araması (Kimlik doğrulama telefonu)
-- Mobil uygulama doğrulama kodu
-- Telefon araması (Ofis telefonu)
-- Telefon araması (Alternatif kimlik doğrulama telefonu)
-
-**MFA kimlik doğrulama ayrıntısı:** Telefon numarasının temizlenmiş sürümü. Örnek: +X XXXXXXXX64.
-
-**Koşullu erişim** Aşağıdakiler dahil olmak üzere oturum açma girişimini etkileyen koşullu erişim ilkeleri hakkında bilgi edinin:
-
-- İlke adı
-- Atama denetimleri
-- Oturum denetimleri
-- Sonuç
+* MFA reddedildiyse bu sütunda reddedilme nedeni yer alır.
+   * kimlik doğrulaması devam ediyor
+   * yinelenen kimlik doğrulaması girişimi
+   * çok fazla kez yanlış kod girildi
+   * geçersiz kimlik doğrulaması
+   * geçersiz mobil uygulama doğrulama kodu
+   * yanlış yapılandırma
+   * telefon araması sesli mesaja düştü
+   * telefon numarası biçimi geçersiz
+   * hizmet hatası
+   * kullanıcının telefonuna ulaşılamıyor
+   * cihaza mobil uygulama bildirimi gönderilemedi
+   * mobil uygulama bildirimi gönderilemedi
+   * kullanıcı kimlik doğrulamasını reddetti
+   * kullanıcı mobil uygulama bildirimine yanıt vermedi
+   * kullanıcının kayıtlı doğrulama yöntemi yok
+   * kullanıcı hatalı kod girdi
+   * kullanıcı hatalı PIN girdi
+   * kullanıcı kimlik doğrulaması başarılı olmadan telefon aramasını sonlandırdı
+   * kullanıcı engellendi
+   * kullanıcı doğrulama kodunu hiç girmedi
+   * kullanıcı bulunamadı
+   * doğrulama kodu zaten bir kez kullanıldı
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>MFA için kaydedilen kullanıcılarda PowerShell raporlaması
 
 İlk olarak, [MSOnline v1 PowerShell modülünün](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) yüklü olduğundan emin olun.
 
-Aşağıdaki PowerShell 'i kullanarak MFA için kaydolan kullanıcıları belirler. Bu hesaplar Azure AD 'de kimlik doğrulaması yapadıklarından, bu komut kümesi devre dışı kullanıcıları dışlar.
+Aşağıdaki PowerShell 'i kullanarak MFA için kaydolan kullanıcıları belirler. Bu hesaplar Azure AD 'de kimlik doğrulaması yapadıklarından, bu komut kümesi devre dışı kullanıcıları dışlar:
 
 ```powershell
 Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
-Aşağıdaki PowerShell kullanılarak MFA için kaydolmayan kullanıcıları belirler. Bu hesaplar Azure AD 'de kimlik doğrulaması yapadıklarından, bu komut kümesi devre dışı kullanıcıları dışlar.
+Aşağıdaki PowerShell kullanılarak MFA için kaydolmayan kullanıcıları belirler. Bu hesaplar Azure AD 'de kimlik doğrulaması yapadıklarından, bu komut kümesi devre dışı kullanıcıları dışlar:
 
 ```powershell
 Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0 -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
-Kayıtlı kullanıcıları ve çıkış yöntemlerini belirler. 
+Kayıtlı kullanıcıları ve çıkış yöntemlerini tanımla:
 
 ```powershell
 Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},
@@ -148,9 +114,9 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 @{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
 ```
 
-## <a name="possible-results-in-activity-reports"></a>Etkinlik raporlarında olası sonuçlar
+## <a name="downloaded-activity-reports-result-codes"></a>İndirilen etkinlik raporları sonuç kodları
 
-Multi-Factor Authentication etkinlik raporunun indirilen sürümünü kullanarak çok faktörlü kimlik doğrulaması sorunlarını gidermek için aşağıdaki tablo kullanılabilir. Bunlar doğrudan Azure portal görünmez.
+Aşağıdaki tablo, önceki Portal adımlarında veya PowerShell komutlarından etkinlik raporunun indirilen sürümünü kullanarak olayların sorunlarını gidermenize yardımcı olabilir. Bu sonuç kodları Azure portal doğrudan görünmez.
 
 | Çağrı sonucu | Açıklama | Geniş açıklama |
 | --- | --- | --- |
@@ -200,8 +166,17 @@ Multi-Factor Authentication etkinlik raporunun indirilen sürümünü kullanarak
 | FAILED_AUTH_RESULT_TIMEOUT | Kimlik doğrulama sonucu zaman aşımı | Kullanıcının Multi-Factor Authentication denemesini tamamlaması çok uzun sürdü. |
 | FAILED_AUTHENTICATION_THROTTLED | Kimlik doğrulaması kısıtlandı | Multi-Factor Authentication denemesi, hizmet tarafından kısıtlandı. |
 
+## <a name="additional-mfa-reports"></a>Ek MFA raporları
+
+MFA olayları da dahil olmak üzere, aşağıdaki ek bilgi ve raporlar MFA olayları için kullanılabilir:
+
+| Rapor | Konum | Açıklama |
+|:--- |:--- |:--- |
+| Engellenen Kullanıcı Geçmişi | Azure AD > güvenliği > MFA > kullanıcıları engelle/engellemesini kaldır | Kullanıcıları engellemek veya engelini kaldırmak için isteklerin geçmişini gösterir. |
+| Şirket içi bileşenler için kullanım | Azure AD > güvenliği > MFA > etkinlik raporu | NPS uzantısı, ADFS ve MFA sunucusu aracılığıyla MFA sunucusu için genel kullanım hakkında bilgi sağlar. |
+| Atlanan Kullanıcı Geçmişi | Azure AD > güvenliği > MFA > bir kerelik atlama | Bir kullanıcı için MFA 'yı atlamak için MFA sunucusu isteklerinin bir geçmişini sağlar. |
+| Sunucu durumu | Azure AD > güvenliği > MFA > sunucu durumu | Hesabınızla ilişkili MFA sunucularının durumunu görüntüler. |
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [SSPR ve MFA kullanımı ve öngörüleri raporlama](howto-authentication-methods-usage-insights.md)
-* [Kullanıcılar için](../user-help/multi-factor-authentication-end-user.md)
-* [Nereden dağıtılır](concept-mfa-whichversion.md)
+Bu makalede, oturum açma etkinliği raporuna bir genel bakış sunulmaktadır. Bu raporun neleri içerdiği ve verileri anlayabilmesi hakkında daha ayrıntılı bilgi için bkz. [Azure AD 'de oturum açma etkinliği raporları](../reports-monitoring/concept-sign-ins.md).

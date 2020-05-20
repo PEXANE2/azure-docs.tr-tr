@@ -6,18 +6,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77672387"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635961"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Tanılama uzantıya genel bakış
 Azure Tanılama uzantısı, Azure [izleyici 'de](agents-overview.md) sanal makineler dahil olmak üzere Azure işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplayan bir aracıdır. Bu makalede, desteklediği belirli işlevler ve yükleme ve yapılandırma seçenekleri de dahil olmak üzere Azure Tanılama uzantısına genel bakış sunulmaktadır. 
 
 > [!NOTE]
 > Azure Tanılama uzantısı, işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplamak için kullanılabilen aracılardan biridir. Gereksinimleriniz için uygun aracıları seçme konusunda farklı aracıların ve yönergelerin açıklaması için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) .
+
+## <a name="primary-scenarios"></a>Birincil senaryolar
+Tanılama uzantısı tarafından giderilen birincil senaryolar şunlardır:
+
+- Azure Izleyici ölçümlerine Konuk ölçümleri toplayın.
+- Arşivleme için Azure depolama 'ya Konuk günlükleri ve ölçümleri gönderin.
+- Azure 'un dışından gönderilmek üzere Azure Olay Hub 'larına Konuk günlükleri ve ölçümleri gönderin.
+
 
 ## <a name="comparison-to-log-analytics-agent"></a>Log Analytics aracısına karşılaştırma
 Azure Izleyici 'deki Log Analytics Aracısı, sanal makinelerin Konuk işletim sisteminden izleme verileri toplamak için de kullanılabilir. Gereksinimlerinize bağlı olarak ya da her ikisini de kullanmayı seçebilirsiniz. Azure izleyici aracılarının ayrıntılı bir karşılaştırması için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) . 

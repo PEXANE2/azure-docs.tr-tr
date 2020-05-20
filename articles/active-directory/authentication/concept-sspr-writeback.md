@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89431c2bf1838d3264b03c8a5f2ce62cd6df3631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42768c61cc46ba97e9bd16a06c85f20219672fdd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127839"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639795"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Self servis parola sıfırlama geri yazma özelliği Azure Active Directory nasıl çalışır?
 
@@ -56,9 +56,9 @@ Bir Federasyon veya parola karması eşitlendiğinde Kullanıcı, bulutta parola
    * Kullanıcı nesnesi Active Directory bağlayıcı alanında bulunmalıdır.
    * Kullanıcı nesnesi, karşılık gelen meta veri deposu (MV) nesnesine bağlanmalıdır.
    * Kullanıcı nesnesi, karşılık gelen Azure Active Directory bağlayıcı nesnesiyle bağlantılı olmalıdır.
-   * Active Directory bağlayıcı nesnesinden MV 'ya bağlantı, bağlantıda eşitleme kuralına `Microsoft.InfromADUserAccountEnabled.xxx` sahip olmalıdır.
+   * Active Directory bağlayıcı nesnesinden MV 'ya bağlantı, bağlantıda eşitleme kuralına sahip olmalıdır `Microsoft.InfromADUserAccountEnabled.xxx` .
 
-   Çağrı buluttan geldiğinde, eşitleme altyapısı Azure Active Directory bağlayıcı alanı nesnesini aramak için **Cloudtutturucu** özniteliğini kullanır. Daha sonra MV nesnesine geri bağlantıyı izler ve sonra Active Directory nesnesine geri bağlantıyı izler. Aynı kullanıcı için birden çok Active Directory nesne (çok ormanlı) olabileceğinden, eşitleme altyapısı doğru olanı seçmek için `Microsoft.InfromADUserAccountEnabled.xxx` bağlantıyı kullanır.
+   Çağrı buluttan geldiğinde, eşitleme altyapısı Azure Active Directory bağlayıcı alanı nesnesini aramak için **Cloudtutturucu** özniteliğini kullanır. Daha sonra MV nesnesine geri bağlantıyı izler ve sonra Active Directory nesnesine geri bağlantıyı izler. Aynı kullanıcı için birden çok Active Directory nesne (çok ormanlı) olabileceğinden, eşitleme altyapısı `Microsoft.InfromADUserAccountEnabled.xxx` doğru olanı seçmek için bağlantıyı kullanır.
 
 1. Kullanıcı hesabı bulduktan sonra, uygun Active Directory ormanında parolayı doğrudan sıfırlama girişimi yapılır.
 1. Parola ayarlama işlemi başarılı olursa, kullanıcıya parolasını değiştirme bildirilir.
@@ -141,6 +141,7 @@ Parolalar aşağıdaki durumların hiçbirinde geri yazılmadı:
 * **Desteklenmeyen yönetici işlemleri**
    * PowerShell sürüm 1, sürüm 2 veya Microsoft Graph API 'sinden yönetici tarafından başlatılan son kullanıcı parolası sıfırlanır ( [MICROSOFT Graph API Beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) desteklenir).
    * [Microsoft 365 Yönetim merkezinden](https://admin.microsoft.com)yönetici tarafından başlatılan son kullanıcı parolası sıfırlandı.
+   * Herhangi bir yönetici parola geri yazma için kendi parolasını sıfırlamak üzere parola sıfırlama aracını kullanamaz.
 
 > [!WARNING]
 > Şirket içi AD DS Active Directory Kullanıcıları ve bilgisayarları gibi yönetim araçları veya Active Directory Yönetim Merkezi Azure AD Connect önizleme özelliği olarak desteklenmek üzere "Kullanıcı bir sonraki oturum açışında parolayı değiştirmeli" onay kutusunun kullanılması. Daha fazla bilgi için bkz. [Azure AD Connect eşitleme ile parola karması eşitlemeyi uygulama](../hybrid/how-to-connect-password-hash-synchronization.md).

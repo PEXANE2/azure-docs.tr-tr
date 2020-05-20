@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 5bf26fa096058f5a73d5527c0c6adb1649c9884f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: cf50ee847bd1542a3e024cb88cf7bbc8bc283f91
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857326"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643424"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure'da SLES veya openSUSE sanal makinesi hazırlama
 
@@ -28,7 +28,7 @@ Bu makalede, bir sanal sabit diske zaten SUSE veya openSUSE Linux işletim siste
 * Azure 'daki tüm VHD 'ler, 1 MB 'a hizalanmış bir sanal boyuta sahip olmalıdır. Bir ham diskten VHD 'ye dönüştürme yaparken,, dönüştürmeden önce ham disk boyutunun 1 MB 'ın katı olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
 
 ## <a name="use-suse-studio"></a>SUSE Studio 'Yu kullanma
-[SUSE Studio](http://www.susestudio.com) , Azure ve Hyper-V IÇIN SLES ve openSUSE görüntülerinizi kolayca oluşturabilir ve yönetebilir. Bu, kendi SLES ve openSUSE görüntülerinizi özelleştirmek için önerilen yaklaşımdır.
+[SUSE Studio](https://studioexpress.opensuse.org/) , Azure ve Hyper-V IÇIN SLES ve openSUSE görüntülerinizi kolayca oluşturabilir ve yönetebilir. Bu, kendi SLES ve openSUSE görüntülerinizi özelleştirmek için önerilen yaklaşımdır.
 
 Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf)adresindeki SLES için KCG (kendi aboneliğini getir) görüntülerini da yayımlar.
 
@@ -98,7 +98,7 @@ Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin
 ## <a name="prepare-opensuse-131"></a>OpenSUSE 13.1 + hazırlama
 1. Hyper-V Yöneticisi 'nin orta bölmesinde, sanal makineyi seçin.
 2. Sanal makine penceresini açmak için **Bağlan** ' a tıklayın.
-3. Kabukta '`zypper lr`' komutunu çalıştırın. Bu komut aşağıdakine benzer bir çıktı döndürürse, depolar beklenen şekilde yapılandırılır; hiçbir ayarlama gerekmez (sürüm numaralarının değişebileceğini unutmayın):
+3. Kabukta ' ' komutunu çalıştırın `zypper lr` . Bu komut aşağıdakine benzer bir çıktı döndürürse, depolar beklenen şekilde yapılandırılır; hiçbir ayarlama gerekmez (sürüm numaralarının değişebileceğini unutmayın):
    
         # | Alias                 | Name                  | Enabled | Refresh
         --+-----------------------+-----------------------+---------+--------
@@ -112,7 +112,7 @@ Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin
         # sudo zypper ar -f https://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
-    Daha sonra '`zypper lr`' komutunu çalıştırarak depoların eklendiğini doğrulayabilirsiniz. İlgili güncelleştirme depolarından birinin etkin olmaması durumunda aşağıdaki komutla etkinleştirin:
+    Daha sonra ' ' komutunu çalıştırarak depoların eklendiğini doğrulayabilirsiniz `zypper lr` . İlgili güncelleştirme depolarından birinin etkin olmaması durumunda aşağıdaki komutla etkinleştirin:
    
         # sudo zypper mr -e [NUMBER OF REPOSITORY]
 4. Çekirdeği kullanılabilir en son sürüme güncelleştirin:

@@ -9,12 +9,13 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: designer
+ms.openlocfilehash: af676f128796c762b330d986836ea825a36cb246
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77366201"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646292"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısını kullanmak için klavye kullanma (Önizleme)
 
@@ -62,11 +63,11 @@ Modül özelliklerini ayarlamak için:
 
 ## <a name="action-shortcuts"></a>Eylem kısayolları
 
-Erişim anahtarıyla aşağıdaki kısayolları kullanın. Erişim anahtarları hakkında daha fazla bilgi için bkz https://en.wikipedia.org/wiki/Access_key..
+Erişim anahtarıyla aşağıdaki kısayolları kullanın. Erişim anahtarları hakkında daha fazla bilgi için bkz https://en.wikipedia.org/wiki/Access_key ..
 
 | U | Eylem |
 |-|-|
-| Erişim tuşu + R | Çalıştırın |
+| Erişim tuşu + R | Çalıştır |
 | Erişim tuşu + P | Yayımlama |
 | Erişim tuşu + C | Kopyalama |
 | Erişim tuşu + D | Dağıtma |

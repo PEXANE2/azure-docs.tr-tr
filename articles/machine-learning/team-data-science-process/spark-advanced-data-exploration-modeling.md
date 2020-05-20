@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c166684484b839ec661ae2e68d5a5e5253d2528f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76718660"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634505"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Spark ile gelişmiş veri keşfi ve modelleme
 
@@ -54,11 +54,11 @@ Bu izlenecek yolda, HDInsight Spark 1,6 kullanımı için kurulum adımları ve 
 
 ### <a name="spark-16-notebooks"></a>Spark 1,6 Not defterleri
 
-[Pyspark-Machine-Learning-Data-Science-Spark-gelişmiş-veri-araştırma-modelleme. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): not defteri #1 konuları ve hiper parametre ayarlama ve çapraz doğrulama kullanarak model geliştirmeyi içerir.
+[Pyspark-Machine-Learning-Data-Science-Spark-gelişmiş-veri-araştırma-modelleme. ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): not defteri #1 konuları ve hiper parametre ayarlama ve çapraz doğrulama kullanarak model geliştirmeyi içerir.
 
 ### <a name="spark-20-notebooks"></a>Spark 2,0 Not defterleri
 
-[Spark 2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-araştırmayı-Modellendirme. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Bu dosya Spark 2,0 kümelerinde veri keşif, modelleme ve Puanlama gerçekleştirme hakkında bilgi sağlar.
+[Spark 2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-araştırmayı-Modellendirme. ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Bu dosya Spark 2,0 kümelerinde veri keşif, modelleme ve Puanlama gerçekleştirme hakkında bilgi sağlar.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -116,7 +116,7 @@ Jupyter Not defterleri ile birlikte sunulan pyspark çekirdekler 'in önceden ay
 PySpark çekirdeği,%% ile çağırabilmeniz için özel komutlar olan önceden tanımlanmış bazı "mıknatıcs" sağlar. Bu kod örneklerinde kullanılan iki komut vardır.
 
 * **%% Yerel** Sonraki satırlardaki kodun yerel olarak yürütüleceğini belirtir. Kod geçerli bir Python kodu olmalıdır.
-* **%% SQL-o \<değişken adı>** SqlContext 'e karşı bir Hive sorgusu yürütür. -O parametresi geçirilirse, sorgunun sonucu%% yerel Python bağlamında Pandas DataFrame olarak kalıcı hale getirilir.
+* **%% SQL-o \< değişken adı>** SqlContext 'e karşı bir Hive sorgusu yürütür. -O parametresi geçirilirse, sorgunun sonucu%% yerel Python bağlamında Pandas DataFrame olarak kalıcı hale getirilir.
 
 Jupyter Not defterleri ve sağladıkları önceden tanımlanmış "mıknatık" hakkında daha fazla bilgi için bkz. [HDInsight 'ta HDInsight Spark Linux kümeleri içeren Jupyter Not defterleri için sunulan çekirdekler](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -197,8 +197,8 @@ Veriler Spark 'a alındıktan sonra, veri bilimi sürecinin bir sonraki adımı,
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Taksi dönüşlerin örneğinde yolcular sayısı sıklıklarının histogramını çiz
 Bu kod ve sonraki parçacıklar, verileri çizmek için örneği ve yerel Magic 'i sorgulamak için SQL Magic kullanır.
 
-* **SQL Magic (`%%sql`)** HDInsight PySpark çekirdeği, sqlContext 'e karşı kolay satır içi HiveQL sorgularını destekler. (-O VARIABLE_NAME) bağımsız değişkeni, SQL sorgusunun çıkışını jupi sunucusunda bir Pandas DataFrame olarak devam ettirir. Bu, yerel modda kullanılabildiği anlamına gelir.
-* ** `%%local` MAGIC** , HDInsight kümesinin baş düğümüne olan jupyıter sunucusunda yerel olarak kod çalıştırmak için kullanılır. Genellikle, bir sorgu `%%local` çalıştırmak için `%%sql -o` Magic kullanıldıktan sonra sihirli ' i kullanırsınız. -O parametresi, SQL sorgusunun çıkışını yerel olarak kalıcı hale getirebilecek. Sonra Magic `%%local` , yerel olarak kalıcı olan SQL sorgularının çıktısına karşı yerel olarak çalıştırılacak bir sonraki kod parçacığı kümesini tetikler. Kodu çalıştırdıktan sonra çıkış otomatik olarak görselleştirilebilir.
+* **SQL Magic ( `%%sql` )** HDInsight Pyspark çekirdeği, SqlContext 'e karşı kolay satır Içi hiveql sorgularını destekler. (-O VARIABLE_NAME) bağımsız değişkeni, SQL sorgusunun çıkışını jupi sunucusunda bir Pandas DataFrame olarak devam ettirir. Bu, yerel modda kullanılabildiği anlamına gelir.
+* ** `%%local` MAGIC** , HDInsight kümesinin baş düğümüne olan jupyıter sunucusunda yerel olarak kod çalıştırmak için kullanılır. Genellikle, `%%local` `%%sql -o` bir sorgu çalıştırmak için Magic kullanıldıktan sonra sihirli ' i kullanırsınız. -O parametresi, SQL sorgusunun çıkışını yerel olarak kalıcı hale getirebilecek. Sonra `%%local` Magic, yerel olarak kalıcı olan SQL sorgularının çıktısına karşı yerel olarak çalıştırılacak bir sonraki kod parçacığı kümesini tetikler. Kodu çalıştırdıktan sonra çıkış otomatik olarak görselleştirilebilir.
 
 Bu sorgu, döngüleri pasur sayısına göre alır. 
 
@@ -209,7 +209,7 @@ Bu sorgu, döngüleri pasur sayısına göre alır.
     SELECT passenger_count, COUNT(*) as trip_counts FROM taxi_train WHERE passenger_count > 0 and passenger_count < 7 GROUP BY passenger_count
 
 
-Bu kod, sorgu çıktısından yerel bir veri çerçevesi oluşturur ve verilerin grafiğini çizer. `%%local` Magic, Matplotlib ile çizim için kullanılabilecek bir yerel `sqlResults`veri çerçevesi oluşturur. 
+Bu kod, sorgu çıktısından yerel bir veri çerçevesi oluşturur ve verilerin grafiğini çizer. `%%local`Magic, `sqlResults` Matplotlib ile çizim için kullanılabilecek bir yerel veri çerçevesi oluşturur. 
 
 <!-- -->
 
@@ -1397,7 +1397,7 @@ R-SQR = 0.740751197012
 Hücrenin yürütülmesi için geçen süre: 69,17 saniye
 
 ### <a name="clean-up-objects-from-memory-and-print-model-locations"></a>Nesneleri bellekten Temizleme ve yazdırma modeli konumları
-Bellekte `unpersist()` önbelleğe alınan nesneleri silmek için kullanın.
+`unpersist()`Bellekte önbelleğe alınan nesneleri silmek için kullanın.
 
     # UNPERSIST OBJECTS CACHED IN MEMORY
 

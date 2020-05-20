@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/24/2020
-ms.openlocfilehash: 41688792330214943eeb116dc4b5aaf7eebfeebf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/13/2020
+ms.openlocfilehash: 0d462c76454825c3fcbe0f09f4df13c12de3d7c7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192051"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634523"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure İzleyici günlüklerini kullanarak HDInsight kümelerini izleme
 
@@ -25,7 +25,7 @@ HDInsight 'ta Hadoop kümesi işlemlerini izlemek için Azure Izleyici günlükl
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Log Analytics çalışma alanı. Bu çalışma alanını kendi veri deposu, veri kaynakları ve çözümleri olan benzersiz bir Azure Izleyici günlükleri ortamı olarak düşünebilirsiniz. Yönergeler için bkz. [Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
 
@@ -40,12 +40,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
   HDInsight kümesi oluşturma yönergeleri için bkz. [Azure HDInsight kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
 
-* Az Module Azure PowerShell.  Bkz. [yeni Azure PowerShell az modüle giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az). En son sürüme sahip olduğunuzdan emin olun. Gerekirse, öğesini çalıştırın `Update-Module -Name Az`.
+* PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/overview)gerekecektir. En son sürüme sahip olduğunuzdan emin olun. Gerekirse, öğesini çalıştırın `Update-Module -Name Az` .
+
+* Azure CLı 'yi kullanmak istiyorsanız ve henüz yüklemediyseniz, bkz. [Azure CLI 'Yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 > [!NOTE]  
 > Daha iyi performans için hem HDInsight kümesini hem de Log Analytics çalışma alanını aynı bölgeye yerleştirmeniz önerilir. Azure Izleyici günlükleri tüm Azure bölgelerinde kullanılamaz.
 
-## <a name="enable-azure-monitor-logs-by-using-the-portal"></a>Portalı kullanarak Azure Izleyici günlüklerini etkinleştirme
+## <a name="enable-azure-monitor-using-the-portal"></a>Portalı kullanarak Azure Izleyicisini etkinleştirme
 
 Bu bölümde, var olan bir HDInsight Hadoop kümesini işleri izlemek için bir Azure Log Analytics çalışma alanı kullanacak şekilde yapılandırırsınız, günlükleri hata ayıklamaktır.
 
@@ -61,7 +63,7 @@ Bu bölümde, var olan bir HDInsight Hadoop kümesini işleri izlemek için bir 
 
     ![HDInsight kümeleri için izlemeyi etkinleştir](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "HDInsight kümeleri için izlemeyi etkinleştir")
 
-## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Izleyici günlüklerini etkinleştirme
+## <a name="enable-azure-monitor-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Izleyicisini etkinleştirme
 
 Azure PowerShell az Module [Enable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) cmdlet 'Ini kullanarak Azure izleyici günlüklerini etkinleştirebilirsiniz.
 
@@ -99,6 +101,29 @@ Devre dışı bırakmak için [Disable-AzHDInsightMonitoring](https://docs.micro
 
 ```powershell
 Disable-AzHDInsightMonitoring -Name "<your-cluster>"
+```
+
+## <a name="enable-azure-monitor-using-azure-cli"></a>Azure CLı kullanarak Azure Izleyicisini etkinleştirme
+
+Azure Izleme günlüklerini Azure CLı 'yı kullanarak etkinleştirebilirsiniz `[az hdinsight monitor enable` ] (komutunu kullanabilirsiniz https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-enable) .
+
+```azurecli
+# set variables
+export resourceGroup=RESOURCEGROUPNAME
+export cluster=CLUSTERNAME
+export LAW=LOGANALYTICSWORKSPACENAME
+
+# Enable the Azure Monitor logs integration on an HDInsight cluster.
+az hdinsight monitor enable --name $cluster --resource-group $resourceGroup --workspace $LAW
+
+# Get the status of Azure Monitor logs integration on an HDInsight cluster.
+az hdinsight monitor show --name $cluster --resource-group $resourceGroup
+```
+
+Devre dışı bırakmak için komutunu kullanın [`az hdinsight monitor disable`](https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-disable) .
+
+```azurecli
+az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 ```
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>HDInsight kümesi yönetim çözümlerini yükler
