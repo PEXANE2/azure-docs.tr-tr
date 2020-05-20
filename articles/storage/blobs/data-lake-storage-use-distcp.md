@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ea7fb97b6c97a797ce99878762333833965549d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255541"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698658"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma
 
@@ -21,13 +21,13 @@ Genel amaçlı v2 depolama hesabı ile genel amaçlı v2 depolama hesabı arası
 
 DistCp, çeşitli komut satırı parametreleri sağlar ve kullanımınızı iyileştirmek için bu makaleyi okumanızı kesinlikle öneririz. Bu makalede, verileri hiyerarşik bir ad alanı etkin bir hesaba kopyalamak için kullanımına odaklanırken temel işlevsellik gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **Data Lake Storage 2. yetenekleri olmayan mevcut bir Azure depolama hesabı (hiyerarşik ad alanı) etkin**.
-* **Data Lake Storage 2. özelliği etkinleştirilmiş bir Azure depolama hesabı**. Bir oluşturma hakkında yönergeler için bkz. [Azure Data Lake Storage 2. Storage hesabı oluşturma](data-lake-storage-quickstart-create-account.md)
-* Hiyerarşik ad alanı etkinleştirilmiş depolama hesabında oluşturulmuş **bir dosya sistemi** .
-* Data Lake Storage 2. etkinleştirilmiş bir depolama hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
+* Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* Data Lake Storage 2. yetenekleri olmayan mevcut bir Azure depolama hesabı (hiyerarşik ad alanı) etkin.
+* Data Lake Storage 2. Özellikleri (hiyerarşik ad alanı) etkin bir Azure depolama hesabı. Bir oluşturma hakkında yönergeler için bkz. [Azure depolama hesabı oluşturma](../common/storage-account-create.md)
+* Hiyerarşik ad alanı etkinleştirilmiş depolama hesabında oluşturulmuş bir kapsayıcı.
+* Hiyerarşik ad alanı özelliği etkinleştirilmiş bir depolama hesabına erişimi olan bir Azure HDInsight kümesi. Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>HDInsight Linux kümesinden DistCp kullanma
 
@@ -37,25 +37,25 @@ An HDInsight küme, farklı kaynaklardaki verileri bir HDInsight kümesine kopya
 
 2. Mevcut genel amaçlı v2 hesabınıza erişip erişemeyeceğinizi doğrulayın (hiyerarşik ad alanı etkin olmadan).
 
-        hdfs dfs –ls wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/
+        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
 
-    Çıktı, kapsayıcıdaki içeriklerin bir listesini sağlamalıdır.
+   Çıktı, kapsayıcıdaki içeriklerin bir listesini sağlamalıdır.
 
 3. Benzer şekilde, küme üzerinde etkinleştirilmiş hiyerarşik ad alanı ile depolama hesabına erişip erişemeyeceğinizi doğrulayın. Şu komutu çalıştırın:
 
-        hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
+        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
-    Çıktı, Data Lake Storage hesabındaki dosyaların/klasörlerin bir listesini sağlamalıdır.
+    Çıktı, Data Lake depolama hesabındaki dosyaların/klasörlerin bir listesini sağlamalıdır.
 
 4. Verileri bir Data Lake Storage hesabına kopyalamak için DistCp kullanın.
 
-        hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
     Komut, blob depolamada **/example/Data/Gutenberg/** klasörünün içeriğini Data Lake Storage hesabındaki **/myFolder** klasörüne kopyalar.
 
 5. Benzer şekilde, Data Lake Storage hesabındaki verileri BLOB depolama alanına (. 1) kopyalamak için DistCp kullanın.
 
-        hadoop distcp abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg
+        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
 
     Komutu, Data Lake Store hesabındaki **/myFolder** içeriğini, **/example/Data/Gutenberg/** klasörüne kopyalar.
 
@@ -63,9 +63,9 @@ An HDInsight küme, farklı kaynaklardaki verileri bir HDInsight kümesine kopya
 
 DistCp 'nin en düşük ayrıntı düzeyi tek bir dosya olduğundan, en fazla eşzamanlı kopya sayısını ayarlamak, Data Lake Storage karşı iyileştirmek için en önemli parametredir. Eşzamanlı kopya sayısı, komut satırındaki mappay (**e**) parametresinin sayısına eşittir. Bu parametre, verileri kopyalamak için kullanılan en fazla Map, eşleme sayısını belirtir. Varsayılan değer 20 ' dir.
 
-**Örneğinde**
+**Örnek**
 
-    hadoop distcp -m 100 wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Nasıl yaparım? kullanılacak mapbir sayı mı var?
 
@@ -77,7 +77,7 @@ Aşağıda kullanabileceğiniz bazı yönergeler verilmiştir.
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
-**Örneğinde**
+**Örnek**
 
 Bir 4X D14v2s kümeniz olduğunu ve 10 farklı klasörden 10 TB veri aktarmaya çalıştığınız varsayıyoruz. Klasörlerin her biri farklı miktarda veri içerir ve her klasör içindeki dosya boyutları farklıdır.
 

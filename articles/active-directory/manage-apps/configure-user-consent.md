@@ -8,88 +8,210 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 05/19/2020
 ms.author: mimart
-ms.reviewer: arvindh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvindh, luleon, phsignor
+ms.openlocfilehash: 2064ac929063fcdcf15c1e7495769c7d84aeef33
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519619"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698047"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Son kullanıcıların uygulamalara nasıl izin vermesini yapılandırın
 
-Uygulamalar, kullanıcıların Azure Active Directory (Azure AD) ' deki iş veya okul hesabını kullanarak oturum açmalarına ve zengin veri odaklı deneyimler sunmak için kuruluşunuzun verilerine erişmesine olanak tanımak üzere Microsoft Identity platformu ile tümleştirilebilir. Farklı izinler, uygulamaya kullanıcılarınızın ve kuruluşunuzun verilerine farklı erişim düzeyi sağlar.
+Kullanıcılarınızın iş veya okul hesabıyla oturum açmalarına ve zengin veri odaklı deneyimler sunmak üzere kuruluşunuzun verilerine erişmesine izin vermek için uygulamalarınızı Microsoft Identity platformu ile tümleştirebilirsiniz.
 
-Varsayılan olarak, kullanıcılar kuruluşunuzun verilerine erişen uygulamalara yalnızca bazı izinler için izin verebilir. Örneğin, varsayılan olarak bir Kullanıcı, kullanıcının sahip olduğu bir ekip için kendi posta kutularına veya takımlar görüşlerine erişmesine izin verebilir, ancak kuruluştaki tüm SharePoint sitelerini okumak ve bunlara yazmak için bir uygulamanın katılımsız erişimine izin vermez. Kullanıcıların kendilerine izin vermesini sağlarken, kullanıcıların Microsoft 365, Azure ve diğer hizmetlerle tümleştirilen yararlı uygulamaları kolayca almasına izin verirken, bu, kullanılmıyorsa ve izlenmezse bir riski temsil edebilir.
+Bir uygulamanın kuruluşunuzun verilerine erişebilmesi için, kullanıcının uygulama izinlerini vermesi gerekir. Farklı izinler farklı erişim düzeylerine izin verir. Varsayılan olarak, tüm kullanıcıların, yönetici onayı gerektirmeyen izinler için uygulamalara izin verme izni verilir. Örneğin, varsayılan olarak bir Kullanıcı, bir uygulamanın posta kutularına erişmesine izin verebilir, ancak bir uygulama sınırsız erişimine izin vermeyi, kuruluşunuzdaki tüm dosyalara okuma ve yazma izni veremez.
 
-Microsoft, Surface alanınızı azaltmaya ve bu riski azaltmaya yardımcı olmak için gelecekteki Kullanıcı onay işlemlerinin devre dışı bırakılmasını öneriyor. Kullanıcı onayı devre dışıysa, önceki onay onayları yine de kabul edilir, ancak gelecekteki tüm onay işlemleri bir yönetici tarafından gerçekleştirilmelidir. Kiracı genelinde yönetici onayı, kullanıcılar tarafından tümleşik [Yönetici onay isteği iş akışı](configure-admin-consent-workflow.md) aracılığıyla veya kendi destek süreçleriniz aracılığıyla istenebilir. Daha fazla ayrıntı için [kimlik altyapınızı güvenli hale getirmenin beş adımını](../../security/fundamentals/steps-secure-identity.md) inceleyin.
+Kullanıcıların uygulamalara veri erişimi vermesini sağlayarak, kullanıcılar kolayca yararlı uygulamalar alabilir ve üretken olabilirler. Ancak, bazı durumlarda bu yapılandırma izlenmiyor ve denetlenmiyorsa riski temsil edebilir.
 
-## <a name="configure-user-consent-to-applications"></a>Uygulamalar için Kullanıcı onayı yapılandırma
-### <a name="disable-or-enable-user-consent-from-the-azure-portal"></a>Azure portal Kullanıcı onayını devre dışı bırakma veya etkinleştirme
+## <a name="user-consent-settings"></a>Kullanıcı izin ayarları
 
-Kullanıcıların kuruluşunuzun verilerine erişen uygulamalara izin verme yeteneğini devre dışı bırakmak veya etkinleştirmek için Azure portal kullanabilirsiniz:
+Kullanıcılara uygulamalara izin verebilecekleri durumları denetlemek için, tüm kullanıcılar için uygulanacak onay ilkesini seçin. Üç onay ilkesi seçeneği aşağıda verilmiştir:
+
+* **Kullanıcı onayını devre dışı bırak** -kullanıcılar uygulamalara izin veremez. Kullanıcılar, daha önce kendilerine onaylı olan veya kendi adına yöneticiler tarafından onaylanan uygulamalar üzerinde oturum açmaya devam edebilir, ancak yeni izinler veya kendi kendilerine yeni uygulamalar için izin verilmez. Yalnızca izin verme iznini içeren bir dizin rolü verilen kullanıcılar, yeni izinleri veya yeni uygulamaları kabul edebilir.
+
+* **Kullanıcılar doğrulanan yayımcıların uygulamalarına izin verebilir, ancak yalnızca seçtiğiniz izinler için (Önizleme),** tüm kullanıcılar yalnızca [doğrulanmış bir yayımcı](../develop/publisher-verification-overview.md) ve kiracınızda kayıtlı uygulamalar tarafından yayımlanan uygulamalara izin verebilir. Kullanıcılar yalnızca "düşük etki" olarak sınıflandırdığınız izinleri kabul edebilir.
+
+  Kullanıcıların izin verdiği izinleri seçmek için [izinleri sınıflandırdığınızdan](#configure-permission-classifications-preview) emin olun.
+
+* **Kullanıcılar tüm uygulamalara izin verebilir** -Bu seçenek, tüm kullanıcıların herhangi bir uygulama için yönetici onayı gerektirmeyen herhangi bir izni kabul etmesine izin verir. 
+
+   Kötü amaçlı uygulamaların, kullanıcıların kuruluşunuzun verilerine erişim izni vermesini sağlayan riski azaltmak için, yalnızca [doğrulanmış bir yayımcı](../develop/publisher-verification-overview.md)tarafından yayımlanan uygulamalar için Kullanıcı onaylamasına izin vermenizi öneririz.
+
+### <a name="configure-user-consent-settings-from-the-azure-portal"></a>Azure portal Kullanıcı izin ayarlarını yapılandırma
+
+Azure portal aracılığıyla Kullanıcı izin ayarlarını yapılandırmak için:
 
 1. [Azure Portal](https://portal.azure.com) [genel yönetici](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)olarak oturum açın.
-2. **Azure Active Directory**, ardından **Kurumsal uygulamalar**, sonra **Kullanıcı ayarları**' nı seçin.
-3. **Kullanıcıları adına şirket verilerine erişen uygulamalara izin verebilmeleri için**Kullanıcı onayı 'nı etkinleştirin veya devre dışı bırakın.
-4. Seçim Bir uygulamaya izin verilmeyen kullanıcıların onay isteyebilmesine olanak sağlamak için [yönetici onayı isteği iş akışını](configure-admin-consent-workflow.md) yapılandırın.
+1. **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **onay ve izinler**  >  **Kullanıcı izin ayarları**' nı seçin.
+1. **Uygulamalar Için kullanıcı onayı**altında, tüm kullanıcılar için yapılandırmak istediğiniz izin ayarını seçin.
+1. Ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
+
+![Kullanıcı izin ayarları](./media/configure-user-consent/configure-consent-setting-for-all-users.png)
 
 > [!TIP]
-> Kullanıcıların, kullanıcının izin vermediği bir uygulamayı (örneğin, kullanıcı onayı devre dışı bırakıldığı veya uygulama kullanıcının izin vermediği izinleri istemesi nedeniyle) bir yöneticinin gözden geçirmesine izin vermek için [yönetici onayı iş akışını yapılandırmayı](configure-admin-consent-workflow.md)düşünün.
+> Kullanıcıların, kullanıcı onayı devre dışı bırakıldığında veya bir uygulama kullanıcının izin vermediği izinleri istemesi durumunda kullanıcının izin vermediği bir uygulamanın gözden geçirilmesini ve onayını istememe olanağı tanımak için [yönetici onayı iş akışını etkinleştirmeyi](configure-admin-consent-workflow.md) düşünün.
 
-### <a name="disable-or-enable-user-consent-using-powershell"></a>PowerShell kullanarak Kullanıcı onayını devre dışı bırakma veya etkinleştirme
+### <a name="configure-user-consent-settings-using-powershell"></a>PowerShell kullanarak Kullanıcı izin ayarlarını yapılandırma
 
-Kullanıcıların kuruluşunuzun verilerine erişen uygulamalara izin verme yeteneğini etkinleştirmek veya devre dışı bırakmak için Azure AD PowerShell v1 modülünü ([MSOnline](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0)) kullanabilirsiniz.
+Uygulamalara yönelik Kullanıcı onayını hangi onay ilkesinin yöneteceğini seçmek için, en son Azure AD PowerShell önizleme modülünü [Azureadpreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)' i kullanabilirsiniz.
 
-1. Şu cmdlet 'i çalıştırarak kuruluşunuzda oturum açın:
+* **Kullanıcı onayını devre dışı** bırak-Kullanıcı onayını devre dışı bırakmak için, Kullanıcı onayını boş olacak şekilde belirleyen onay ilkelerini ayarlayın:
 
-    ```powershell
-    Connect-MsolService
-    ```
+  ```powershell
+  Set-AzureADMSAuthorizationPolicy `
+     -Id "authorizationPolicy" `
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @()
+  ```
 
-2. Bu cmdlet 'i çalıştırarak Kullanıcı izninin etkinleştirilip etkinleştirilmediğini denetleyin:
+* **Seçili izinler (Önizleme) için doğrulanan yayımcıların uygulamalara yönelik Kullanıcı onaylamasına izin** vermek için, yalnızca kiracınızda kayıtlı Yayımcılar ve uygulamalar için sınırlı Kullanıcı izni vermek ve yalnızca "düşük etki" olarak sınıflandırdığınız izinler için, şu adlı yerleşik izin ilkesini yapılandırın `microsoft-user-default-low` :
 
-    ```powershell
-    Get-MsolCompanyInformation | Format-List UsersPermissionToUserConsentToAppEnabled
-    ```
+  ```powershell
+  Set-AzureADMSAuthorizationPolicy `
+     -Id "authorizationPolicy" `
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-low")
+  ```
 
-3. Kullanıcı onayını etkinleştirin veya devre dışı bırakın. Örneğin, Kullanıcı onayını devre dışı bırakmak için şu cmdlet 'i çalıştırın:
+   Kullanıcıların izin verdiği izinleri belirlemek için [izin sınıflandırmasını](#configure-permission-classifications-preview) unutmayın.
 
-    ```powershell
-    Set-MsolCompanySettings -UsersPermissionToUserConsentToAppEnabled $false
-    ```
+* **Tüm uygulamalar için Kullanıcı onaylamasına Izin ver** -tüm uygulamalar için Kullanıcı onaylamasına izin ver:
+
+  ```powershell
+  Set-AzureADMSAuthorizationPolicy `
+     -Id "authorizationPolicy" `
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-legacy")
+  ```
+
+   Bu seçenek, tüm kullanıcıların herhangi bir uygulama için yönetici onayı gerektirmeyen herhangi bir izni kabul etmesine olanak tanır. Yalnızca uygulamaların doğrulanmış yayımcılar için Kullanıcı onay izni vermenizi öneririz.
+
+## <a name="configure-permission-classifications-preview"></a>İzin sınıflandırmalarını yapılandırma (Önizleme)
+
+İzin sınıflandırmaları, farklı izinlerin kuruluşunuzun ilkelerine ve risk değerlendirmelere göre sahip olduğu etkiyi tanımlamanızı sağlar. Örneğin, kullanıcıların izin verdiği izin kümesini belirlemek için izin sınıflandırmalar ' da izin sınıflandırmalarını kullanabilirsiniz.
+
+> [!NOTE]
+> Şu anda yalnızca "düşük etki" izin sınıflandırması desteklenir. Yalnızca yönetici onayı gerektirmeyen temsilci izinleri "düşük etki" olarak sınıflandırılabilirler.
+
+### <a name="classify-permissions-using-the-azure-portal"></a>Azure portal kullanarak izinleri sınıflandır
+
+1. [Azure Portal](https://portal.azure.com) [genel yönetici](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)olarak oturum açın.
+1. **Azure Active Directory**  >  **kurumsal uygulamaların**  >  **onay ve**izin  >  **izin sınıflandırmalarını**seçin.
+1. Başka bir izni "düşük etki" olarak sınıflandırmak için **Izin Ekle** ' yi seçin. 
+1. API 'YI seçin ve ardından temsilci izinleri seçin.
+
+Bu örnekte, çoklu oturum açma için gereken en düşük izin kümesini sınıflandırdık:
+
+![İzin sınıflandırmaları](./media/configure-user-consent/configure-permission-classifications.png)
+
+> [!TIP]
+> Microsoft Graph API 'si için, temel çoklu oturum açma için gereken en düşük izinler `openid` , ve ' `profile` dir `User.Read` `offline_access` . Bu izinlerle bir uygulama, oturum açmış kullanıcının profil ayrıntılarını okuyabilir ve Kullanıcı artık uygulamayı kullanmıyor olsa bile bu erişimi koruyabilir.
+
+### <a name="classify-permissions-using-powershell"></a>PowerShell kullanarak izinleri sınıflandır
+
+İzinleri sınıflandırmak için en son Azure AD PowerShell önizleme modülünü [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)' i kullanabilirsiniz. İzin sınıflandırmaları, izinleri yayımlayan API 'nin **ServicePrincipal** nesnesinde yapılandırılır.
+
+#### <a name="to-read-the-current-permission-classifications-for-an-api"></a>Bir API için geçerli izin sınıflandırmalarını okumak için:
+
+1. API için **ServicePrincipal** nesnesini alın. Burada Microsoft Graph API 'SI için ServicePrincipal nesnesini alıyoruz:
+
+   ```powershell
+   $api = Get-AzureADServicePrincipal `
+       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
+   ```
+
+1. API için Temsilcili izin sınıflandırmalarını okuyun:
+
+   ```powershell
+   Get-AzureADMSServicePrincipalDelegatedPermissionClassification `
+       -ServicePrincipalId $api.ObjectId | Format-Table Id, PermissionName, Classification
+   ```
+
+#### <a name="to-classify-a-permission-as-low-impact"></a>Bir izni "düşük etki" olarak sınıflandırmak için:
+
+1. API için **ServicePrincipal** nesnesini alın. Burada Microsoft Graph API 'SI için ServicePrincipal nesnesini alıyoruz:
+
+   ```powershell
+   $api = Get-AzureADServicePrincipal `
+       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
+   ```
+
+1. Sınıflandırmak istediğiniz temsilci iznini bulun:
+
+   ```powershell
+   $delegatedPermission = $api.OAuth2Permissions | Where-Object { $_.Value -eq "User.ReadBasic.All" }
+   ```
+
+1. İzin adını ve KIMLIĞINI kullanarak izin sınıflandırmasını ayarlayın:
+
+   ```powershell
+   Add-AzureADMSServicePrincipalDelegatedPermissionClassification `
+      -ServicePrincipalId $api.ObjectId `
+      -PermissionId $delegatedPermission.Id `
+      -PermissionName $delegatedPermission.Value `
+      -Classification "low"
+   ```
+
+#### <a name="to-remove-a-delegated-permission-classification"></a>Temsilci bir izin sınıflandırmasını kaldırmak için:
+
+1. API için **ServicePrincipal** nesnesini alın. Burada Microsoft Graph API 'SI için ServicePrincipal nesnesini alıyoruz:
+
+   ```powershell
+   $api = Get-AzureADServicePrincipal `
+       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
+   ```
+
+1. Kaldırmak istediğiniz Temsilcili izin sınıflandırmasını bulun:
+
+   ```powershell
+   $classifications = Get-AzureADMSServicePrincipalDelegatedPermissionClassification `
+       -ServicePrincipalId $api.ObjectId
+   $classificationToRemove = $classifications | Where-Object {$_.PermissionName -eq "User.ReadBasic.All"}
+   ```
+
+1. İzin sınıflandırmasını silin:
+
+   ```powershell
+   Remove-AzureADMSServicePrincipalDelegatedPermissionClassification `
+       -ServicePrincipalId $api.ObjectId `
+       -Id $classificationToRemove.Id
+   ```
 
 ## <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Grup verilerine erişen uygulamalar için Grup sahibi onayını yapılandırma
 
-> [!IMPORTANT]
-> Aşağıdaki bilgiler, Grup sahiplerinin uygulamalara ait verilerine erişim izni vermesini sağlayacak gelecek bir özellik içindir. Bu yetenek serbest bırakıldığında varsayılan olarak etkinleştirilir. Bu özellik henüz yaygın olarak yayınlanmasa da, bu yönergeleri kullanarak sürümünün sürümü için özelliği devre dışı bırakabilirsiniz.
+Grup sahipleri, üçüncü taraf satıcılar tarafından yayımlanan uygulamalar gibi, kuruluşunuzun bir grupla ilişkili verilerinize erişebilmesi için uygulamalara yetki verebilir. Örneğin, Microsoft ekipteki bir takım sahibi, bir uygulamanın ekipteki tüm ekip iletilerini okumasına veya bir grubun üyelerinin temel profilini listeliğine izin verebilir.
 
-Grup sahipleri, kuruluşunuzun bir grupla ilişkili verilerinize erişebilmesi için uygulamaları (örneğin, üçüncü taraf satıcılar tarafından yayımlanan uygulamalar) yetkilendirebilirler. Örneğin, takım sahibi (ekip için Office 365 grubunun sahibi olan), bir uygulamanın ekipteki tüm ekip iletilerini okumasına veya bir grubun üyelerinin temel profilini listeliğine izin verebilir.
+Hangi kullanıcıların grupların verilerine erişen uygulamalara izin verileceğini yapılandırabilir veya bu özelliği devre dışı bırakabilirsiniz.
 
-> [!NOTE]
-> Bu ayardan bağımsız olarak, Grup sahibinin her zaman başka Kullanıcı veya uygulamaları doğrudan Grup sahipleri olarak eklemesine izin verilir.
+### <a name="configure-group-owner-consent-using-the-azure-portal"></a>Azure portal kullanarak Grup sahibi onayını yapılandırma
+
+1. [Azure Portal](https://portal.azure.com) [genel yönetici](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)olarak oturum açın.
+2. **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **onay ve izinler**  >  **Kullanıcı izin ayarları**' nı seçin.
+3. **Veriye erişen uygulamalar Için Grup sahibi onayı** altında etkinleştirmek istediğiniz seçeneği belirleyin.
+4. Ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
+
+Bu örnekte, tüm Grup sahiplerinin grupların verilerine erişen uygulamalara izin vermesini sağlar:
+
+![İzin sınıflandırmaları](./media/configure-user-consent/configure-group-owner-consent.png)
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>PowerShell kullanarak Grup sahibi onayını yapılandırma
 
-Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine erişen uygulamalara izin verme özelliğini etkinleştirmek veya devre dışı bırakmak için Azure AD PowerShell önizleme modülünü ([Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)) kullanabilirsiniz.
+Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine erişen uygulamalara izin verme özelliğini etkinleştirmek veya devre dışı bırakmak için Azure AD PowerShell önizleme modülünü ( [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)) kullanabilirsiniz.
 
-1. [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modülünü kullandığınızdan emin olun (hem [azuread](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) modülünü hem de [azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modülünü yüklediyseniz bu adım önemlidir).
+1. [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modülünü kullandığınızdan emin olun. Hem [Azuread](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) modülünü hem de [azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modülünü yüklediyseniz bu adım önemlidir.
 
     ```powershell
     Remove-Module AzureAD
     Import-Module AzureADPreview
     ```
 
-2. Azure AD PowerShell 'e bağlanın.
+1. Azure AD PowerShell 'e bağlanın.
 
    ```powershell
    Connect-AzureAD
    ```
 
-3. Kiracınızdaki *Izin Ilkesi ayarları* dizin ayarları için geçerli değeri alın. Bunun için, bu özelliğin Dizin ayarlarının oluşturulup oluşturulmadığından ve ilgili dizin ayarları şablonundaki değerler kullanılarak denetlenmesi gerekir.
+1. Kiracınızdaki **Izin Ilkesi ayarları** dizin ayarları için geçerli değeri alın. Bunun için, bu özelliğin Dizin ayarlarının oluşturulup oluşturulmadığından ve ilgili dizin ayarları şablonundaki değerler kullanılarak denetlenmesi gerekir.
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings
@@ -104,14 +226,14 @@ Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine eriş
     $limitedToValue = $settings.Values | ? { $_.Name -eq "ConstrainGroupSpecificConsentToMembersOfGroupId" }
     ```
 
-4. Ayar değerlerini anlayın. Bir uygulamanın grubun verilerine erişmesine izin veren kullanıcıları tanımlayan iki ayar değeri vardır:
+1. Ayar değerlerini anlayın. Bir uygulamanın grubun verilerine erişmesine izin veren kullanıcıları tanımlayan iki ayar değeri vardır:
 
     | Ayar       | Tür         | Açıklama  |
     | ------------- | ------------ | ------------ |
-    | _Enablegroupspecificonayı_   | Boole |  Grup sahiplerinin gruba özel izinler verip vermeyeceğini belirten bayrak. |
-    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | _Enablegroupspecificonay_ değeri "true" olarak ayarlanırsa ve bu değer bir grubun nesne kimliği olarak ayarlandıysa, tanımlanan grubun üyelerinin sahip oldukları gruplara gruba özel izinler verme yetkisine sahip olur. |
+    | _Enablegroupspecificonayı_   | Boole | Grup sahiplerinin gruba özel izinler verip vermeyeceğini belirten bayrak. |
+    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | _Enablegroupspecificonay_ değeri "true" olarak ayarlanırsa ve bu değer bir grubun nesne kimliği olarak ayarlandıysa, tanımlı grubun üyelerinin sahip oldukları gruplara gruba özel izinler verme yetkisine sahip olur. |
 
-5. İstenen yapılandırma için ayar değerlerini güncelleştir:
+1. İstenen yapılandırma için ayar değerlerini güncelleştir:
 
     ```powershell
     # Disable group-specific consent entirely
@@ -131,7 +253,7 @@ Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine eriş
     $limitedToValue.Value = "{group-object-id}"
     ```
 
-6. Ayarları kaydedin.
+1. Ayarlarınızı kaydedin.
 
     ```powershell
     if ($settings.Id) {
@@ -145,22 +267,22 @@ Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine eriş
 
 ## <a name="configure-risk-based-step-up-consent"></a>Risk tabanlı adım adım onayı yapılandırma
 
-Risk tabanlı adım adım onayı, kötü amaçlı uygulamaların kullanıcı [tarafından izinsiz izin istekleri](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)yapma riskini azaltmaya yardımcı olur. Microsoft riskli bir Son Kullanıcı onay isteği algılarsa, isteğin yerine yönetici onayı için "adım adım" gerekir. Bu özellik varsayılan olarak etkindir, ancak son kullanıcı onayı etkinleştirildiğinde yalnızca bir davranış değişikliğine neden olur.
+Risk tabanlı adım adım onayı, Kullanıcı tarafından [izin istekleri](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)yapan kötü amaçlı uygulamalara yönelik pozlandırmayı azaltmaya yardımcı olur. Microsoft riskli bir Son Kullanıcı onay isteği algılarsa, isteğin yerine yönetici onayı için "adım adım" gerekir. Bu özellik varsayılan olarak etkindir, ancak son kullanıcı onayı etkinleştirildiğinde yalnızca bir davranış değişikliğine neden olur.
 
-Riskli onay isteği algılandığında, onay istemi yönetici onayının gerekli olduğunu belirten bir ileti görüntüler. [Yönetici onayı isteği iş akışı](configure-admin-consent-workflow.md) etkinleştirilirse, Kullanıcı doğrudan onay isteminden daha fazla gözden geçirmek için isteği bir yöneticiye gönderebilir. Etkinleştirilmemişse, aşağıdaki ileti görüntülenir:
+Riskli onay isteği algılandığında, onay istemi yönetici onayının gerekli olduğunu belirten bir ileti görüntüler. [Yönetici onayı isteği iş akışı](configure-admin-consent-workflow.md) etkinleştirilirse, Kullanıcı doğrudan onay isteminden daha fazla gözden geçirmek için isteği bir yöneticiye gönderebilir. Etkin değilse, aşağıdaki ileti görüntülenir:
 
-* **AADSTS90094:** &lt;clientappdisplayname&gt; , kuruluşunuzda yalnızca bir yöneticinin verebileceği kaynaklara erişmek için izne sahip olmalıdır. Kullanabilmek için önce lütfen yöneticiden bu uygulamaya izin vermesini isteyin.
+* **AADSTS90094:** &lt; clientAppDisplayName &gt; , kuruluşunuzda yalnızca bir yöneticinin verebileceği kaynaklara erişmek için izne sahip olmalıdır. Kullanabilmek için önce lütfen yöneticiden bu uygulamaya izin vermesini isteyin.
 
-Bu durumda, bir denetim olayı "ApplicationManagement" kategorisi, etkinlik türü "uygulamaya onay onayı" ve "riskli uygulama algılandı" durum nedeni ile de günlüğe kaydedilir.
+Bu durumda, bir denetim olayı "ApplicationManagement" kategorisiyle, etkinlik türü "uygulamaya onay" ve "riskli uygulama algılandı" durum nedeni ile de günlüğe kaydedilir.
 
 > [!IMPORTANT]
-> Yöneticiler, özellikle Microsoft 'un risk algıladığında [tüm izin isteklerini](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) onaylamadan önce dikkatle değerlendirmelidir.
+> Yöneticiler, özellikle Microsoft 'un risk algıladığında, isteği onaylamadan önce [tüm izin isteklerini dikkatle değerlendirmelidir](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) .
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>PowerShell kullanarak risk tabanlı adım onayını devre dışı bırakma veya yeniden etkinleştirme
 
-Microsoft 'un riski algıladığı veya daha önce devre dışı bırakılmışsa yeniden etkinleştirebileceği durumlarda yönetici onayını gerekli kılmak için Azure AD PowerShell önizleme modülünü ([Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)) kullanabilirsiniz.
+Microsoft 'un riski algıladığı veya daha önce devre dışı bırakılmışsa yeniden etkinleştirebileceği durumlarda yönetici onayını gerekli hale getirebilirsiniz. Azure AD PowerShell önizleme modülünü [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)' ı kullanarak devre dışı bırakabilirsiniz.
 
-Bu işlem, [PowerShell kullanarak Grup sahibi onayını yapılandırmak](#configure-group-owner-consent-using-powershell)için yukarıda gösterilen adımların aynısını kullanarak, farklı bir ayar değeri yerine yapılabilir. Adımlarda üç fark vardır: 
+Bunu, [PowerShell kullanarak Grup sahibi onayını yapılandırmak](#configure-group-owner-consent-using-powershell)için yukarıda gösterilen adımları kullanarak, ancak farklı bir ayar değeri yerine getirebilirsiniz. Adımlarda üç fark vardır: 
 
 1. Risk tabanlı adım onayı için ayar değerlerini anlayın:
 
@@ -168,12 +290,13 @@ Bu işlem, [PowerShell kullanarak Grup sahibi onayını yapılandırmak](#config
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Boole |  Riskli bir istek algılandığında Kullanıcı izninin engellenip engellenmediğini belirten bayrak. |
 
-2. Adım 3 ' te aşağıdaki değeri değiştirin:
+1. Adım 3 ' te aşağıdaki değeri değiştirin:
 
     ```powershell
     $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
     ```
-3. 5. adımda aşağıdakilerden birini değiştirin:
+    
+1. 5. adımda aşağıdakilerden birini değiştirin:
 
     ```powershell
     # Disable risk-based step-up consent entirely
@@ -187,12 +310,12 @@ Bu işlem, [PowerShell kullanarak Grup sahibi onayını yapılandırmak](#config
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
+Daha fazlasını öğrenin:
 
-[Uygulama onayını yönetmeyi ve izin isteklerini değerlendirmeyi öğrenin](manage-consent-requests.md)
+* [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
+* [Uygulama onayını yönetmeyi ve izin isteklerini değerlendirmeyi öğrenin](manage-consent-requests.md)
+* [Uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md)
+* [Microsoft Identity platformunda izinler ve onay](../develop/active-directory-v2-scopes.md)
 
-[Bir uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md)
-
-[Microsoft Identity platformunda izinler ve onay](../develop/active-directory-v2-scopes.md)
-
-[StackOverflow üzerinde Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+Yardım almak veya sorularınıza yanıt bulmak için:
+* [StackOverflow üzerinde Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

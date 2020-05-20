@@ -683,7 +683,7 @@ Durum: Ekim 19 2017
 * Daha önce, parola karma eşitlemesini etkinleştirmeye çalıştıysanız Azure AD Connect, AD Bağlayıcısı hesabının şirket içi AD 'den parola karmalarını eşitlemek için gerekli izinlere sahip olup olmadığını doğrulamaz. Şimdi, AD Bağlayıcısı hesabının yeterli izni yoksa Azure AD Connect sihirbaz sizi doğrular ve sizi uyarır.
 
 ### <a name="ad-fs-management"></a>AD FS Yönetimi
-#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6879]() sorunu düzeltildi
+#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6814]() sorunu düzeltildi
 * [MS-DS-ımnbu GUID 'Nin kaynak bağlantısı olarak](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) kullanımıyla ilgili bir sorun düzeltildi. Bu sorun, Kullanıcı oturum açma yöntemi olarak *AD FS Federasyonu* yapılandıran müşterileri etkiler. Sihirbazda *kaynak bağlantısını yapılandır* görevini yürüttüğünüzde, ' Azure AD Connect, ImmutableID için kaynak özniteliği olarak * ms-DS-ımıbu GUID ' i kullanarak geçiş yapar. Bu değişikliğin bir parçası olarak, Azure AD Connect AD FS ImmutableID talep kurallarını güncelleştirmeye çalışır. Ancak, Azure AD Connect AD FS yapılandırmak için gereken yönetici kimlik bilgilerine sahip olmadığı için bu adım başarısız oldu. Bu düzeltmeyle Azure AD Connect, şimdi *kaynak bağlantısını yapılandır* görevini yürüttüğünüzde AD FS için yönetici kimlik bilgilerini girmenizi ister.
 
 

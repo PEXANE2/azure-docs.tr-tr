@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c5bfb6632a22a890ac2387f06464c18be7dd714
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261270"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699065"
 ---
-# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te siparişler panosu
+# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Siparişler panosu
 
 Bu makalede, Iş Ortağı Merkezi 'nde **siparişler panosu** hakkında bilgi sağlanmaktadır. Bu Pano, siparişleriniz hakkındaki bilgileri grafik ve indirilebilir bir biçimde görüntüler.
 
@@ -104,6 +104,7 @@ Sipariş Ayrıntıları tablosu, Alım tarihine göre sıralanan 1000 üst sipar
 - Kayıt sayısı 1000 ' den küçükse veriler TSV dosyasına ayıklanabilir.
 - 1000 üzerinden kayıt numarası varsa, verilen veriler sonraki 30 güne ait bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
 - Yalnızca ilgilendiğiniz verileri göstermek için, **Sipariş Ayrıntıları tablosuna** filtreler uygulanabilir. Veriler ülke, Azure lisans türü, Market lisans türü, teklif türü, sipariş durumu, ücretsiz izler, Market abonelik KIMLIĞI, müşteri KIMLIĞI ve şirket adı ile filtrelenebilir.
+- Azure Market veya AppSource aracılığıyla satın alınan SaaS teklifleri bir Azure aboneliği gerektirmediğinden, Market abonelik KIMLIĞI **ayrıntılı siparişler verileri** bölümünde 00000000-0000-0000-0000-000000000000 olarak görünür.
 
 #### <a name="orders-page-filters"></a>Sipariş sayfası filtreleri
 

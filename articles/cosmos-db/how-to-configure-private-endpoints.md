@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: thweiss
-ms.openlocfilehash: 6ba85961ac4ec9b1b439de18a1d6da0cec4ead4f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652562"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697891"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma
 
@@ -646,11 +646,9 @@ Bir Azure Cosmos hesabıyla özel bağlantı kullandığınızda aşağıdaki s�
 
 * Özel bağlantısına sahip MongoDB hesabı için bir Azure Cosmos DB API 'SI kullanırken, bazı araçlar ya da kitaplıklar, parametreleri otomatik olarak bağlantı dizesinden bir şekilde kullanıma açtıklarında çalışmayabilir `appName` . Bu parametre, hesaba özel bir uç nokta üzerinden bağlanmak için gereklidir. Visual Studio Code gibi bazı araçlar, bu parametreyi bağlantı dizesinden kaldırmaz ve bu nedenle uyumludur.
 
-* Özel bağlantı içeriyorsa sanal ağı taşıyamaz veya silemezsiniz.
-
-* Bir Azure Cosmos hesabını, hesaba bağlı olan tüm özel uç noktalara eşlenmemiş bir bölgeye devretmek.
-
 * `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action`Otomatik olarak onaylanan özel uç noktalar oluşturmak için, bir ağ yöneticisine en azından Azure Cosmos hesap kapsamında izin verilmelidir.
+
+* Doğrudan mod, Çin tabanlı Azure bölgelerinde Şu anda desteklenmemektedir.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Özel DNS bölge tümleştirmesi sınırlamaları
 

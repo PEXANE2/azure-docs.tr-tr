@@ -12,7 +12,7 @@ ms.locfileid: "75470075"
 ---
 # <a name="overview-of-the-hipaa-hitrust-blueprint-sample"></a>HIPAA HITRUST şema örneğine genel bakış
 
-HIPAA HITRUST şema örneği, [HIPAA HITRUST](../../../policy/overview.md) kanıtlamasına yardımcı olan [Azure İlkesi](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)'ni kullanarak bir idare koruma kümesi sağlar. 
+HIPAA HITRUST şema örneği, [HIPAA HITRUST](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) kanıtlamasına yardımcı olan [Azure İlkesi](../../../policy/overview.md)'ni kullanarak bir idare koruma kümesi sağlar. 
 
 ## <a name="blueprint-sample"></a>Şema örneği
 

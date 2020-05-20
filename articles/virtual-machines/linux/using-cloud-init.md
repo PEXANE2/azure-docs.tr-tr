@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 05/18/2019
+ms.date: 05/19/2019
 ms.author: danis
-ms.openlocfilehash: 8c591efeedc87926a0ed7b42de6c3267721cebab
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 989e265c83cb2a71d93453b0c3bcbc3e41079447
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657433"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701583"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Cloud-init desteği
 Bu makalede, Azure 'da sağlama sırasında bir sanal makineyi (VM) veya sanal makine ölçek kümelerini yapılandırmak üzere [Cloud-init](https://cloudinit.readthedocs.io) için mevcut destek açıklanmaktadır. Bu Cloud-init yapılandırması, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalıştırılır.  
@@ -44,6 +44,7 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 ### <a name="canonical"></a>Canonical
 | Yayımcı/sürüm| Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
+|Kurallı 20,04 |UbuntuServer |18,04-LTS |en son |evet | evet |
 |Kurallı 18,04 |UbuntuServer |18,04-LTS |en son |evet | evet |
 |Kurallı 16,04|UbuntuServer |16.04-LTS |en son |evet | evet |
 |Kurallı 14,04|UbuntuServer |14.04.5-LTS |en son |evet | evet |
@@ -55,9 +56,10 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' den Itibaren kaldırılır) | Evet-paket sürümünden destek: *18.5 -3. EL7*|
 |RedHat 7,7 |RHEL |7-LVM | yok| Mayıs işleminin bitmesini tamamlamaya yönelik görüntü yok| Evet-paket sürümünden destek: *18.5 -3. EL7*|
 |RedHat 7,7 |RHEL |7,7 | yok| Mayıs işleminin bitmesini tamamlamaya yönelik görüntü yok | Evet-paket sürümünden destek: *18.5 -3. EL7*|
-|RedHat 7,7 (Gen1) |RHEL-byos | RHEL-lvm77 | yok|Nisan sonunu tamamlamaya yönelik resim olmayan güncelleştirme yok  | Evet-paket sürümünden destek: *18.5 -3. EL7*|
-|RedHat 8,1 (Gen1) |RHEL |8,1-CI |7.7.2019081601 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Hayır, tam destek için ETA 2020 Haziran|
-|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |7.7.2019081601 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Hayır, tam destek için ETA 2020 Haziran |
+|RedHat 7,7 (Gen1) |RHEL-byos | RHEL-lvm77 | 7.7.2020051912 | Uçuş aşamasında görüntü yok, bu durum sonunda Mayıs işleminin tamamlanmasını  | Evet-paket sürümünden destek: *18.5 -3. EL7*|
+|RedHat 7,7 (Gen2) |RHEL-byos | RHEL-lvm77 | 7.7.2020051913 |Uçuş aşamasında görüntü yok, bu durum sonunda Mayıs işleminin tamamlanmasını  | Evet-paket sürümünden destek: *18.5 -3. EL7*|
+|RedHat 8,1 (Gen1) |RHEL |8,1-CI |8.1.2020042511 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Hayır, tam destek için ETA 2020 Haziran|
+|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Hayır, tam destek için ETA 2020 Haziran |
 
 RedHat: RHEL 7,8 ve 8,2 (gen1 ve Gen2) görüntüleri Cloud-init kullanılarak sağlanır.
 
@@ -68,6 +70,8 @@ RedHat: RHEL 7,8 ve 8,2 (gen1 ve Gen2) görüntüleri Cloud-init kullanılarak s
 |OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Evet (Bu bir önizleme görüntüsüdür ve tüm CentOS 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Evet-paket sürümünden destek: *18.5 -3. EL7. CentOS*|
 
 * Cloud-init etkin olacak CentOS 7,7 görüntüleri, Haziran 2020 ' de burada güncelleştirilir 
+* CentOS 7,8 görüntüleri Cloud-init kullanılarak sağlanır.
+
 
 ### <a name="oracle"></a>Oracle
 

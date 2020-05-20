@@ -3,12 +3,12 @@ title: Azure Service Fabric genel senaryoları tanılayın
 description: Azure Service Fabric uygulamalarında yaygın izleme ve tanılama senaryolarıyla ilgili sorun giderme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76906955"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697676"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric ile yaygın senaryoları tanılayın
 
@@ -45,7 +45,7 @@ Bu makaledeki çözümler aşağıdaki araçları kullanacaktır. Bu ayarı ayar
 1. Aynı Application Insights kaynağında, özel durumlar yerine "istekler" ile filtre uygulayabilir ve yapılan tüm istekleri görüntüleyebilirsiniz
 2. Service Fabric Application Insights SDK 'sını kullanıyorsanız, hizmetlerinizin birine bağlı bir görsel temsilini ve başarılı ve başarısız isteklerin sayısını görebilirsiniz. Sol tarafta "uygulama haritası" na tıklayın
 
-    ![AI uygulama Haritası dikey](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![penceresi AI uygulama Haritası](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![AI uygulama Haritası dikey penceresi ](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![ AI uygulama Haritası](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     Uygulama haritası hakkında daha fazla bilgi için [uygulama Haritası belgelerini](../azure-monitor/app/app-map.md) ziyaret edin
 
@@ -133,7 +133,7 @@ Güvenilir [Hizmetler](service-fabric-reliable-serviceremoting-diagnostics.md) v
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ortak kod paketi etkinleştirme hatalarını ara](./service-fabric-diagnostics-code-package-errors.md)
-* Performans veya kullanımlardaki değişiklikler hakkında bildirim almak için [AI 'Deki uyarıları ayarlama](../azure-monitor/app/alerts.md)
+* Performans veya kullanımlardaki değişiklikler hakkında bildirim almak için [AI 'Deki uyarıları ayarlama](/azure/azure-monitor/platform/alerts-log)
 * [Application Insights akıllı algılama](../azure-monitor/app/proactive-diagnostics.md) , olası performans sorunları konusunda sizi uyarmak üzere AI 'ye gönderilen telemetrinin proaktif analizini yapar
 * Algılama ve tanılama konusunda yardımcı olması için Azure Izleyici günlükleri [uyarısı](../log-analytics/log-analytics-alerts.md) hakkında daha fazla bilgi edinin.
 * Azure Izleyici günlükleri, şirket içi kümeler için Azure Izleyici günlüklerine veri göndermek için kullanılabilen bir ağ geçidi (HTTP Iletme proxy) sunar. [Log Analytics ağ geçidini kullanarak Internet erişimi olmadan bilgisayarları Azure izleyici günlüklerine bağlama](../azure-monitor/platform/gateway.md) konusunda daha fazla bilgi edinin

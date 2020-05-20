@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0a890139f9d7a955a5c96262d6e5b8f275e61d0d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: a5dbdc4baea0973797427672c9171b4bf841086f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675943"
+ms.locfileid: "83701381"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'deki farklı API'ler hakkında sık sorulan sorular
 
@@ -93,7 +93,7 @@ Azure Cosmos DB aboneliklerini denemek için aşağıdaki koşullar geçerlidir:
 * Genel çoğaltma şu [Azure bölgelerinde](https://azure.microsoft.com/regions/)kullanılabilir: Orta ABD, Kuzey Avrupa ve Güneydoğu Asya
 * Kapsayıcı düzeyinde sağlandığınızda, en fazla 5 K RU/sn aktarım hızı.
 * Veritabanı düzeyinde sağlanmak üzere en fazla 20 K RU/sn aktarım hızı.
-* Abonelikler 30 gün sonra sona erer ve en fazla 31 günlük toplam olarak genişletilebilir.
+* Abonelikler 30 gün sonra sona erer ve en fazla 31 günlük toplam olarak genişletilebilir. Süre dolduktan sonra, içerilen bilgiler silinir.
 * Deneme Azure Cosmos DB hesapları için Azure destek biletleri oluşturulamıyor; Ancak, mevcut destek planlarına sahip aboneler için destek sağlanır.
 
 ## <a name="set-up-azure-cosmos-db"></a>Azure Cosmos DB ayarlama

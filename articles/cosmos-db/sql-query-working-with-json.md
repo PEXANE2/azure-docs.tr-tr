@@ -4,14 +4,14 @@ description: İç içe geçmiş JSON özelliklerine sorgu ve erişme ve Azure Co
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: d0b11cdb0cf2719b576b7a4c4f3fa534ae09dfa8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117028"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699131"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Azure Cosmos DB 'de JSON ile çalışma
 
@@ -148,13 +148,11 @@ Tırnak içine alınmış Özellik işlecini kullanarak özelliklere erişebilir
 ```json
 {
   "id": "AndersenFamily",
-  "order": [
-     {
+  "order": {
          "orderId": "12345",
          "productId": "A17849",
          "price($)": 59.33
-     }
-  ],
+   },
   "creationDate": 1431620472,
   "isRegistered": true
 }
@@ -265,7 +263,7 @@ Sonuçlar:
 
 Bir değeri boşluk, özel karakter veya ayrılmış sözcük olan bir özellik adı olarak proje için diğer adları kullanamazsınız. Bir değerin projeksiyonunu olarak değiştirmek istiyorsanız, örneğin bir boşluk içeren bir özellik adına sahip olmak için bir [JSON ifadesi](#json-expressions)kullanabilirsiniz.
 
-Bir örneği aşağıda verilmiştir:
+İşte bir örnek:
 
 ```sql
     SELECT

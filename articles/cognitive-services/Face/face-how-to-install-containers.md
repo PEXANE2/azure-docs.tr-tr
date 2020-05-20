@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 74465bddb57c14af4d02c1d3bfdc46f3ac25bef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bd1449501cdc9483621a5408a3a4926afe90212f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878553"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702159"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Yüz kapsayıcıları (Önizleme) yükleyip çalıştırma
 
@@ -24,19 +24,21 @@ Azure bilişsel hizmetler, resimlerde insan yüzlerini algılayan, Docker için 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüz hizmeti kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir.
 
 |Gerekli|Amaç|
 |--|--|
 |Docker altyapısı| Docker altyapısının bir [ana bilgisayara](#the-host-computer)yüklenmesi gerekir. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) üzerinde Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> Windows 'da Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
-|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının temel olarak anlaşılmasına ihtiyacınız vardır. Ayrıca temel `docker` komutlar hakkında bilgi sahibi olmanız gerekir.| 
+|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının temel olarak anlaşılmasına ihtiyacınız vardır. Ayrıca temel komutlar hakkında bilgi sahibi olmanız gerekir `docker` .| 
 |Yüz kaynağı |Kapsayıcıyı kullanmak için şunları yapmanız gerekir:<br><br>Bir Azure **yüz** kaynağı ve ilgili API anahtarı ve uç nokta URI 'si. Her iki değer de kaynak için **genel bakış** ve **anahtarlar** sayfalarında kullanılabilir. Kapsayıcının başlatılması gerekir.<br><br>**{API_KEY}**: **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}**: **genel bakış** sayfasında belirtilen bitiş noktası
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteme
+
+Kapsayıcıya erişim istemek için [istek formunu](https://aka.ms/VisionContainersPreview) doldurun ve iletin. 
 
 [!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -55,7 +57,7 @@ Aşağıdaki tabloda, her yüz hizmeti kapsayıcısı için ayrılacak minimum v
 * Her çekirdek en az 2,6 GHz veya daha hızlı olmalıdır.
 * Saniyedeki işlem sayısı (TPS).
 
-Çekirdek ve bellek, `--cpus` `--memory` `docker run` komutunun bir parçası olarak kullanılan ve ayarlarına karşılık gelir.
+Çekirdek ve bellek, `--cpus` `--memory` komutunun bir parçası olarak kullanılan ve ayarlarına karşılık gelir `docker run` .
 
 ## <a name="get-the-container-image-with-docker-pull"></a>docker pull kapsayıcı görüntüsünü al
 
@@ -77,14 +79,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 Kapsayıcı [ana bilgisayar](#the-host-computer)üzerinde olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Kapsayıcıyı](#run-the-container-with-docker-run) gerekli faturalandırma ayarlarıyla çalıştırın. Komuta daha fazla örnek kullanılabilir. [examples](./face-resource-container-config.md#example-docker-run-commands) `docker run` 
+1. [Kapsayıcıyı](#run-the-container-with-docker-run) gerekli faturalandırma ayarlarıyla çalıştırın. Komuta [examples](./face-resource-container-config.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir. 
 1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint). 
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı Docker Run ile çalıştırma
 
-Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Ve değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın. `{API_KEY}` `{ENDPOINT_URI}`
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Ve değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın `{ENDPOINT_URI}` `{API_KEY}` .
 
-Komut örnekleri mevcuttur. [Examples](face-resource-container-config.md#example-docker-run-commands) `docker run`
+Komut [örnekleri](face-resource-container-config.md#example-docker-run-commands) `docker run` mevcuttur.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -101,10 +103,10 @@ ApiKey={API_KEY}
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sahte TTY ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir. 
 
-Komuta daha fazla örnek kullanılabilir. [examples](./face-resource-container-config.md#example-docker-run-commands) `docker run` 
+Komuta [examples](./face-resource-container-config.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir. 
 
 > [!IMPORTANT]
-> Kapsayıcıyı `Eula`çalıştırmak `Billing`için, `ApiKey` , ve seçenekleri belirtilmelidir, aksi olarak kapsayıcı başlamamalıdır. Daha fazla bilgi için bkz. [faturalandırma](#billing).
+> `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için,, ve seçenekleri belirtilmelidir, aksi olarak kapsayıcı başlamamalıdır. Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -113,7 +115,7 @@ Komuta daha fazla örnek kullanılabilir. [examples](./face-resource-container-c
 
 Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar. 
 
-Kapsayıcı API 'Leri için `http://localhost:5000`Konağı kullanın.
+`http://localhost:5000`Kapsayıcı API 'leri için Konağı kullanın.
 
 
 <!--  ## Validate container is running -->

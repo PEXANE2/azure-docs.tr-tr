@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b7580843bc5ad90ebc394c41e81f4d16f51ccb1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80891467"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701753"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager şablonundan NSG akış günlüklerini yapılandırma
 
@@ -110,7 +110,7 @@ Aşağıda NSG akış günlüklerini ayarlamaya yönelik tüm şablonlara yönel
 ```
 
 > [!NOTE]
-> * Kaynağın adı "üst kaynak>/alt kaynak" biçimindedir. Burada, üst kaynak bölgesel ağ Izleyicisi örneğidir (Biçim: NetworkWatcher_<RegionName>. Örnek: NetworkWatcher_centraluseuap)
+> * Kaynağın adı "üst Resource_Child kaynağı" biçimindedir. Burada, üst kaynak bölgesel ağ Izleyicisi örneğidir (Biçim: NetworkWatcher_RegionName. Örnek: NetworkWatcher_centraluseuap)
 > * Targetresourceıd, hedef NSG 'nin kaynak KIMLIĞIDIR
 > * Storageıd, hedef depolama hesabının kaynak KIMLIĞIDIR
 
@@ -156,13 +156,18 @@ Aşağıda NSG akış günlüklerini ayarlamaya yönelik tüm şablonlara yönel
 ## <a name="deploying-your-azure-resource-manager-template"></a>Azure Resource Manager şablonunuzu dağıtma
 
 Bu öğreticide, akış günlüğünü etkinleştirmek için mevcut bir kaynak grubunuz ve bir NSG olduğunu varsaymaktadır.
-Yukarıdaki örnek şablonlardan herhangi birini olarak `azuredeploy.json`yerel olarak kaydedebilirsiniz. Özellik değerlerini aboneliğinizdeki geçerli kaynaklara işaret eden bir şekilde güncelleştirin.
+Yukarıdaki örnek şablonlardan herhangi birini olarak yerel olarak kaydedebilirsiniz `azuredeploy.json` . Özellik değerlerini aboneliğinizdeki geçerli kaynaklara işaret eden bir şekilde güncelleştirin.
 
 Şablonu dağıtmak için PowerShell 'de aşağıdaki komutu çalıştırın.
 ```azurepowershell
+$context = Get-AzSubscription -SubscriptionId 56acfbd6-vc72-43e9-831f-bcdb6f2c5505
+Set-AzContext $context
 New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatcherRG `
     -TemplateFile "C:\MyTemplates\azuredeploy.json"
 ```
+
+> [!NOTE]
+> Yukarıdaki komutlar, NSG 'yi içeren kaynak grubuna değil NetworkWatcherRG kaynak grubuna bir kaynak dağıtmakta
 
 
 ## <a name="verifying-your-deployment"></a>Dağıtımınız doğrulanıyor

@@ -3,12 +3,12 @@ title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 01514847dcd38842d70c4caef2e38df9df3f620a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652071"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697071"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -62,19 +62,12 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 | **Olası nedenler**    | Günlük yedekleme hedefi, backint 'ten dosya sistemine güncelleştirilmiş olabilir veya backınt yürütülebilir dosyası değiştirilmiş olabilir |
 | **Önerilen eylem** | Sorunu çözmek için bir tam yedekleme tetikleyin                   |
 
-### <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>Usererrorıncomaptıblesrctargetsystsemsforrestore
-
-| Hata İletisi      | <span style="font-weight:normal">Geri yükleme için kaynak ve hedef sistemler uyumsuz</span>    |
-| ------------------ | ------------------------------------------------------------ |
-| **Olası nedenler**    | Geri yükleme için hedef sistem kaynakla uyumsuz |
-| **Önerilen eylem** | Günümüzde desteklenen geri yükleme türleri hakkında bilgi edinmek için bkz. SAP Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) |
-
 ### <a name="usererrorsdctomdcupgradedetected"></a>Usererrorsdctomdcupgradealgılandı
 
 | Hata İletisi      | <span style="font-weight:normal">SDC 'den MDC 'ye yükseltme algılandı</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
 | **Olası nedenler**    | SAP HANA örneği SDC 'den MDC 'ye yükseltildi. Güncelleştirme sonrasında yedeklemeler başarısız olur. |
-| **Önerilen eylem** | Sorunu çözmek için [SAP HANA 1,0 ' den 2,0 ' ye yükseltme bölümünde](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) listelenen adımları izleyin. |
+| **Önerilen eylem** | Sorunu çözmek için [SDC Ile MDC yükseltmesine](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) listelenen adımları izleyin |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>Usererrorınvalidbackintconfiguration
 
@@ -88,7 +81,7 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 |Hata İletisi  |Geri yükleme için kaynak ve hedef sistemler uyumsuz  |
 |---------|---------|
 |Olası nedenler   | Geri yükleme için seçilen kaynak ve hedef sistemler uyumsuz        |
-|Önerilen eylem   |   Geri yükleme senaryolarınızın aşağıdaki olası uyumsuz geri yüklemeler listesinde olmadığından emin olun: <br><br>   **Durum 1:** Restore sırasında SYSTEMDB yeniden adlandırılamaz.  <br><br> **Durum 2:** Source-SDC ve Target-MDC: kaynak veritabanı hedef üzerinde SYSTEMDB veya kiracı DB olarak geri yüklenemez. <br><br> **Durum 3:** Source-MDC ve Target-SDC: kaynak veritabanı (SYSTEMDB veya kiracı DB) hedefe geri yüklenemez. <br><br>  Daha fazla bilgi için, [sap desteği başlatma](https://launchpad.support.sap.com)çubuğu 'ndaki 1642148 notuna bakın. |
+|Önerilen eylem   |   Geri yükleme senaryolarınızın aşağıdaki olası uyumsuz geri yüklemeler listesinde olmadığından emin olun: <br><br>   **Durum 1:** Restore sırasında SYSTEMDB yeniden adlandırılamaz.  <br><br> **Durum 2:** Source-SDC ve Target-MDC: kaynak veritabanı hedef üzerinde SYSTEMDB veya kiracı DB olarak geri yüklenemez. <br><br> **Durum 3:** Source-MDC ve Target-SDC: kaynak veritabanı (SYSTEMDB veya kiracı DB) hedefe geri yüklenemez. <br><br>  Daha fazla bilgi için bkz. [SAP support Başlatma Çubuğu](https://launchpad.support.sap.com)içindeki Not **1642148** . |
 
 ## <a name="restore-checks"></a>Geri yükleme denetimleri
 
@@ -111,25 +104,83 @@ Aşağıdaki noktalara dikkat edin:
 
 HANA için birden çok kapsayıcı veritabanında standart yapılandırma SISTEM DB + 1 veya daha fazla kiracı DBs 'dir. SAP HANA örneğinin tamamının geri yüklenmesi hem SYSTEMDB hem de kiracı veritabanlarını geri yüklemek anlamına gelir. İlk olarak SYSTEMDB 'yi geri yükler ve ardından kiracı DB 'ye devam eder. Sistem DB temelde, seçili hedefteki sistem bilgilerini geçersiz kılmak anlamına gelir. Bu geri yükleme, hedef örnekteki BackInt ile ilgili bilgileri de geçersiz kılar. Bu nedenle, sistem DB bir hedef örneğe geri yüklendikten sonra, önceden kayıt betiğini yeniden çalıştırın. Yalnızca sonraki kiracı DB geri yüklemeleri başarılı olur.
 
-## <a name="upgrading-from-sap-hana-10-to-20"></a>SAP HANA 1,0 ' den 2,0 ' ye yükseltme
+## <a name="back-up-a-replicated-vm"></a>Çoğaltılan bir VM 'yi yedekleme
 
-SAP HANA 1,0 veritabanlarını koruyorsanız ve 2,0 ' ye yükseltmek istiyorsanız aşağıdaki adımları gerçekleştirin:
+### <a name="scenario-1"></a>Senaryo 1
 
-- Eski SDC veritabanı için verileri koruyun ile [korumayı durdurun](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) .
-- Yükseltmeyi gerçekleştirin. Tamamlandıktan sonra, HANA artık sistem DB ve kiracı DB 'leri ile MDC 'dir
-- [Ön kayıt betiğini](https://aka.ms/scriptforpermsonhana) (SID ve MDC) doğru ayrıntılarla yeniden çalıştırın.
-- Azure portal aynı makine için uzantıyı yeniden Kaydet (yedekleme > görünüm ayrıntıları-> ilgili Azure VM 'yi > yeniden Kaydet ' i seçin).
-- Aynı VM için veritabanlarını yeniden keşfet ' e tıklayın. Bu eylem, 2. adımdaki yeni DBs 'Leri doğru ayrıntılarla (SDC değil, SYSTEMDB ve kiracı DB) göstermelidir.
-- Bu yeni veritabanları için yedeklemeyi yapılandırın.
+Özgün VM Azure Site Recovery veya Azure VM yedeklemesi kullanılarak çoğaltıldı. Yeni VM, eski VM 'nin benzetimini yapmak için oluşturulmuştur. Diğer bir deyişle, ayarlar tamamen aynıdır. (Bunun nedeni, özgün VM 'nin silindiği ve geri yüklemenin VM yedeklemesinden veya Azure Site Recovery) yapılmıştı.
 
-## <a name="upgrading-without-an-sid-change"></a>SID değişikliği olmadan yükseltme
+Bu senaryo iki olası durumu içerebilir. Her iki durumda da çoğaltılan VM 'yi nasıl yedekleyeceğinizi öğrenin:
 
-Bir SID değişikliğine neden olmayan işletim sistemi veya SAP HANA yükseltmeler aşağıda belirtilen şekilde işlenebilir:
+1. Oluşturulan yeni VM aynı ada sahiptir ve silinen VM ile aynı kaynak grubunda ve abonelikte bulunur.
 
-- Veritabanı için verileri tutma ile [Korumayı Durdur](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)
-- Yükseltmeyi gerçekleştirin.
-- [Ön kayıt betiğini](https://aka.ms/scriptforpermsonhana)yeniden çalıştırın. Genellikle, yükseltme işlemini görtiğimiz gerekli rolleri kaldırdık. Ön kayıt betiğini çalıştırmak, tüm gerekli rolleri doğrulamaya yardımcı olur.
-- Veritabanı için [korumayı](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) yeniden deneyin
+    - Uzantı VM 'de zaten var, ancak hiçbir hizmetten görülemez
+    - Kayıt öncesi betiği çalıştırma
+    - Azure Portal aynı makinenin uzantısını yeniden kaydedin (**yedekleme**  ->  **Görünümü ayrıntıları** -> ilgili Azure VM 'yi seçin-> yeniden kaydedin)
+    - Zaten var olan yedeklenmiş veritabanlarının (silinen VM 'den) yedeklenme sonrasında başarıyla başlatılması gerekir
+
+2. Oluşturulan yeni VM şunlardan birini içerir:
+
+    - Silinen VM 'den farklı bir ad
+    - Silinen VM ile aynı ad, ancak farklı bir kaynak grubunda veya abonelikte (silinen VM ile karşılaştırıldığında)
+
+    Bu durumda, aşağıdaki adımları uygulayın:
+
+    - Uzantı VM 'de zaten var, ancak hiçbir hizmetten görülemez
+    - Kayıt öncesi betiği çalıştırma
+    - Yeni veritabanlarını bulur ve koruyorduğunuzda, portalda yinelenen etkin veritabanları görmeye başlayabilirsiniz. Bunu önlemek için, eski veritabanları için [verileri koruyun ' i korumayı durdurun](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) . Ardından kalan adımlara devam edin.
+    - Yedeklemeyi etkinleştirmek için veritabanlarını bulma
+    - Bu veritabanlarında yedeklemeleri etkinleştir
+    - Zaten var olan yedeklenmiş veritabanları (silinen VM 'den) kasada depolanmaya devam eder (yedeklemeler ilkeye göre tutulmaktadır)
+
+### <a name="scenario-2"></a>Senaryo 2
+
+Özgün VM Azure Site Recovery veya Azure VM yedeklemesi kullanılarak çoğaltıldı. Yeni VM, bir şablon olarak kullanılacak içerikten oluşturulmuştur. Bu, yeni bir SID 'ye sahip yeni bir VM 'dir.
+
+Yeni VM 'de yedeklemeleri etkinleştirmek için şu adımları izleyin:
+
+- Uzantı VM üzerinde zaten var, ancak hizmetlerden hiçbirinde görünmüyor
+- Kayıt öncesi betiği çalıştırın. Yeni VM 'nin SID 'sine bağlı olarak iki senaryo oluşabilir:
+  - Özgün VM ve yeni VM aynı SID 'ye sahip. Ön kayıt betiği başarıyla çalışacaktır.
+  - Özgün VM ve yeni VM 'de farklı SID 'Ler vardır. Ön kayıt betiği başarısız olur. Bu senaryoda yardım almak için desteğe başvurun.
+- Yedeklemek istediğiniz veritabanlarını bulun
+- Bu veritabanlarında yedeklemeleri etkinleştir
+
+## <a name="sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm"></a>SDC sürüm yükseltmesi veya aynı VM 'de MDC sürümü yükseltme
+
+İşletim sistemine yükseltmeler, SDC sürümü değişikliği veya bir SID değişikliğine neden olmayan MDC sürümü değişikliği aşağıdaki gibi işlenebilir:
+
+- Yeni işletim sistemi sürümü, SDC veya MDC sürümünün şu anda [Azure Backup tarafından desteklendiğinden](sap-hana-backup-support-matrix.md#scenario-support) emin olun
+- Veritabanı için [verileri tutma ile korumayı durdur](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)
+- Yükseltme veya güncelleştirme gerçekleştirme
+- Ön kayıt betiğini yeniden çalıştırın. Genellikle, yükseltme işlemi gerekli rolleri kaldırır. Kayıt öncesi betiği çalıştırıldığında, tüm gerekli rollerin doğrulanması yardımcı olur
+- Veritabanı için korumayı yeniden deneyin
+
+## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>SID 'de değişiklik yapmadan SDC 'den MDC 'ye yükseltme
+
+SDC 'den MDC 'ye, SID değişikliğine neden olmayan yükseltmeler şu şekilde işlenebilir:
+
+- Yeni MDC sürümünün şu anda [Azure Backup tarafından desteklendiğinden](sap-hana-backup-support-matrix.md#scenario-support) emin olun
+- Eski SDC veritabanı için [verileri koruyun ile korumayı durdur](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)
+- Yükseltmeyi gerçekleştirin. Tamamlandıktan sonra, HANA sistemi artık bir sistem DB ve kiracı DBs ile MDC 'dir
+- [Ön kayıt betiğini](https://aka.ms/scriptforpermsonhana) yeniden çalıştır
+- Azure Portal aynı makinenin uzantısını yeniden kaydedin (**yedekleme**  ->  **Görünümü ayrıntıları** -> ilgili Azure VM 'yi seçin-> yeniden kaydedin)
+- Aynı VM için veritabanlarını **yeniden keşfet** ' e tıklayın. Bu eylem, adım 3 ' teki yeni DBs 'Leri, SDC değil, SYSTEMDB ve kiracı DB olarak göstermelidir
+- Eski SDC veritabanı kasada olmaya devam edecektir ve eski yedeklenen verilerin ilkeye göre bekletilmesi gerekir
+- Bu veritabanları için yedeklemeyi yapılandırma
+
+## <a name="sdc-to-mdc-upgrade-with-a-change-in-sid"></a>SID 'de değişiklik ile SDC 'den MDC 'ye yükseltme
+
+SDC 'den MDC 'ye yükseltme, SID değişikliğine neden olacak şekilde aşağıdaki gibi işlenebilir:
+
+- Yeni MDC sürümünün şu anda [Azure Backup tarafından desteklendiğinden](sap-hana-backup-support-matrix.md#scenario-support) emin olun
+- Eski SDC veritabanı için **verileri koruyun ile korumayı durdur**
+- Yükseltmeyi gerçekleştirin. Tamamlandıktan sonra, HANA sistemi artık bir sistem DB ve kiracı DBs ile MDC 'dir
+- [Ön kayıt betiğini](https://aka.ms/scriptforpermsonhana) doğru ayrıntılarla yeniden çalıştırın (yeni SID ve MDC). SID 'deki bir değişiklik nedeniyle, betiği başarıyla çalıştırmaya yönelik sorunlar yaşayabilirsiniz. Sorun yaşıyorsanız Azure Backup desteğe başvurun.
+- Azure Portal aynı makinenin uzantısını yeniden kaydedin (**yedekleme**  ->  **Görünümü ayrıntıları** -> ilgili Azure VM 'yi seçin-> yeniden kaydedin)
+- Aynı VM için veritabanlarını **yeniden keşfet** ' e tıklayın. Bu eylem, adım 3 ' teki yeni DBs 'Leri, SDC değil, SYSTEMDB ve kiracı DB olarak göstermelidir
+- Eski SDC veritabanı kasada olmaya devam edecektir ve eski yedeklenen verilerin ilkeye göre korunması gerekir
+- Bu veritabanları için yedeklemeyi yapılandırma
 
 ## <a name="re-registration-failures"></a>Yeniden kayıt sorunları
 

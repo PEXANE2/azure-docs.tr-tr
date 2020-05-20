@@ -4,15 +4,15 @@ description: Azure Analysis Services yönetim görevlerini otomatikleştirmek i�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ea9b978cce22ae6d99cbce5b4b85558f2a47b59
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266149"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699068"
 ---
 # <a name="automation-with-service-principals"></a>Hizmet sorumlularıyla otomasyon
 
@@ -50,7 +50,7 @@ Hizmet sorumlusu uygulama kimliği ve parolası ya da sertifikası, bir UPN ile 
 
 #### <a name="using-azanalysisservices-module"></a><a name="azmodule" />Az. AnalysisServices modülünü kullanma
 
-[Az. AnalysisServices](/powershell/module/az.analysisservices) modülüyle kaynak yönetimi işlemleri için bir hizmet sorumlusu kullanırken cmdlet 'ini kullanın `Connect-AzAccount` . 
+[Az. AnalysisServices](/powershell/module/az.analysisservices) modülüyle kaynak yönetimi işlemleri için bir hizmet sorumlusu kullanırken `Connect-AzAccount` cmdlet 'ini kullanın. 
 
 Aşağıdaki örnekte, AppID ve parola, salt okuma çoğaltmaları ve ölçeği artırma/genişletme işlemleri için denetim düzlemi işlemlerini gerçekleştirmek üzere kullanılır:
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO ve ADOMD 
 
-İstemci uygulamaları ve Web uygulamalarıyla bağlanırken, [amo ve ADOMD istemci kitaplıkları](analysis-services-data-providers.md) sürüm 15.0.2 ve bağlantı dizelerindeki NuGet destek hizmeti sorumlularını, aşağıdaki sözdizimini kullanarak ve daha fazla yüklenebilir paketler: `app:AppID` ve Password. `cert:thumbprint` 
+İstemci uygulamaları ve Web uygulamalarıyla bağlanırken, [amo ve ADOMD istemci kitaplıkları](analysis-services-data-providers.md) sürüm 15.0.2 ve bağlantı dizelerindeki NuGet destek hizmeti sorumlularını, aşağıdaki sözdizimini kullanarak ve daha fazla yüklenebilir paketler: `app:AppID` ve Password `cert:thumbprint` . 
 
 Aşağıdaki örnekte, `appID` bir `password` model veritabanı yenileme işlemi gerçekleştirmek için kullanılır:
 
@@ -110,4 +110,5 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure PowerShell oturum açın](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md)   
+[Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md)  
+[Hizmet sorumluları ile Power BI Premium çalışma alanını ve veri kümesi görevlerini otomatikleştirme](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 

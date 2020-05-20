@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 0e45e832def4073f22a160b95447afb1b10ef77a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ef7a55c81441077d2217ccfc41a2a9c9578eefe
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657378"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697554"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -188,7 +188,7 @@ Aşağıdaki tabloda, [Try Azure Cosmos DB ücretsiz deneme için](https://azure
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Deneme süresi | 30 gün (herhangi bir sayıda yenilenebilir) |
+| Deneme süresi | 30 gün (süresi dolduktan sonra yeni bir deneme istenebilir) <br> Süre dolduktan sonra, depolanan bilgiler silinir. |
 | Abonelik başına en fazla kapsayıcı (SQL, Gremlin, Tablo API'si) | 1 |
 | Abonelik başına en fazla kapsayıcı (MongoDB API) | 3 |
 | Kapsayıcı başına en fazla aktarım hızı | 5000 |

@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 543320adb490ff51b0394fb26137ebc977d2c04b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ff5d8ecaaeff67e1a97c4afd4ca8119f8ac7c1e1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679558"
+ms.locfileid: "83696952"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -369,7 +369,6 @@ Aşağıdaki SAML bağlı olan taraf (RP) senaryoları kendi meta veri uç nokta
 * Uygulama/hizmet sorumlusu nesnesinde oturum kapatma URL 'SI için çoklu oturum kapatma URL 'Leri veya GÖNDERI bağlama.
 * Uygulama/hizmet sorumlusu nesnesindeki RP isteklerini doğrulamak için imzalama anahtarını belirtin.
 * Uygulama/hizmet sorumlusu nesnesinde belirteç şifreleme anahtarını belirtin.
-* Kimlik sağlayıcısı-başlatılan oturum açma işlemleri şu anda önizleme sürümünde desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

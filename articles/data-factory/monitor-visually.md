@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 01a4cd172b699cef009197d1fce1d5bae62f2925
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9a81ab58335e968e5ce4816de85ed1b63bc93455
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680644"
+ms.locfileid: "83699597"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Görsel olarak izleme Azure Data Factory
 
@@ -142,7 +142,7 @@ Simgeye tıkladığınızda, bu işlem hattı çalıştırması tarafından kull
 
 ![Tüketimi izleme](media/monitor-visually/monitor-consumption-2.png)
 
-Bu değerleri [Azure fiyatlandırması Calcula. hat işlem hattı çalıştırmasına ekleyebilirsiniz. Azure Data Factory fiyatlandırması hakkında daha fazla bilgi için bkz. [fiyatlandırmayı anlama](pricing-concepts.md).
+Bu değerleri [Azure Fiyatlandırma Hesaplayıcı] içine ekleyebilirsiniz. (işlem https://azure.microsoft.com/pricing/details/data-factory/) hattı çalıştırmasının maliyetini tahmin etmek için. Azure Data Factory fiyatlandırması hakkında daha fazla bilgi için bkz. [fiyatlandırmayı anlama](pricing-concepts.md).
 
 > [!NOTE]
 > Fiyatlandırma Hesaplayıcı tarafından döndürülen bu değerler bir tahmindir. Azure Data Factory, faturalandırılacaksınız tam miktarı yansıtmaz 

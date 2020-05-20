@@ -12,7 +12,7 @@ ms.locfileid: "78201515"
 ---
 # <a name="overview-of-the-media-blueprint-sample"></a>Medya şema örneğine genel bakış
 
-Medya şema örneği, [Medya](../../../policy/overview.md) kanıtlamasına yardımcı olan [Azure İlkesi](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)'ni kullanarak bir idare koruma kümesi sağlar. 
+Medya şema örneği, [Medya](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) kanıtlamasına yardımcı olan [Azure İlkesi](../../../policy/overview.md)'ni kullanarak bir idare koruma kümesi sağlar. 
 
 ## <a name="blueprint-sample"></a>Şema örneği
 

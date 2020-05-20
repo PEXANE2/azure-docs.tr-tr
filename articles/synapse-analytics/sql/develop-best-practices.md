@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ed2638cfe4ab7e849e428729ccd17ffdeb6314af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 858dfa8282a06feab877bcea65de47b8455133dc
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086360"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697314"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>SYNAPSE SQL için geliştirme en iyi yöntemleri
 Bu makalede, veri ambarı Çözümünüzü geliştirirken rehberlik ve en iyi uygulamalar açıklanmaktadır. 
@@ -154,7 +154,7 @@ Sonuç olarak, daha iyi performans elde edersiniz. Daha fazla bilgi için [dosya
 
 Depolamadaki verileriniz bölümlendirilmemişse, bu dosyaları hedefleyen sorguları iyileştirmek için bu işlevleri kullanabilmeniz için Bölümlendirmeyi düşünün.
 
-İsteğe bağlı SQL 'de [bölümlenmiş Spark tabloları sorgulanırken](develop-storage-files-spark-tables.md) , sorgu yalnızca gerekli dosyaları hedefleyecek.
+[Azure SYNAPSE dış tabloları için bölümlenmiş Apache Spark](develop-storage-files-spark-tables.md) , Isteğe bağlı SQL 'de sorgulanırken sorgu otomatik olarak yalnızca gerekli dosyaları hedefleyecek.
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Sorgu performansını ve birleştirmeleri geliştirmek için CETAS kullanın
 

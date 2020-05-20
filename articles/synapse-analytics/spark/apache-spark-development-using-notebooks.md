@@ -6,15 +6,15 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 506339cefa90fb17bedfc946f70cb4d7d8047cf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430233"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702106"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure SYNAPSE Studio (Önizleme) not defterlerini oluşturma, geliştirme ve sürdürme
 
@@ -55,12 +55,12 @@ Not defterinize yeni bir hücre eklemenin birden çok yolu vardır.
 
 ### <a name="set-a-primary-language"></a>Birincil dil ayarla
 
-Azure SYNAPSE Studio Not defterleri dört Spark dilini destekler:
+Azure SYNAPSE Studio Not defterleri dört Apache Spark dili destekler:
 
-* pyspark (Python)
+* pySpark (Python)
 * Spark (Scala)
 * Mini SQL
-* Spark.NET (C#)
+* Apache Spark için .NET (C#)
 
 En üstteki komut çubuğundaki açılan listeden yeni eklenen hücreler için birincil dili ayarlayabilirsiniz.
 
@@ -75,15 +75,15 @@ Bir hücrenin başlangıcında doğru dil Magic komutunu belirterek, bir not def
 |%% pyspark| Python | Spark bağlamına karşı bir **Python** sorgusu yürütün.  |
 |%% Spark| Scala | Spark bağlamına yönelik bir **Scala** sorgusu yürütün.  |  
 |%% SQL| Mini SQL | Spark bağlamına karşı bir **mini SQL** sorgusu yürütün.  |
-|%% CSharp | Spark.NET C # | Spark bağlamına karşı bir **spark.NET C#** sorgusu yürütün. |
+|%% CSharp | Spark C için .NET # | Spark bağlamına karşı **Spark C# için .net** sorgusu yürütün. |
 
-Aşağıdaki görüntü, bir **Spark (Scala)** not defterinde%% **pyspark** Magic komutunu veya **%% SQL** Magic komutuyla bir mini SQL sorgusunu kullanarak pyspark sorgusunun nasıl yazılacağını gösteren bir örnektir. Not defteri için birincil dilin Scala olarak ayarlandığını unutmayın.
+Aşağıdaki görüntü, bir **Spark (Scala)** not defterinde%% **pyspark** Magic komutunu veya **%% SQL** Magic komutuyla bir mini SQL sorgusunu kullanarak pyspark sorgusunun nasıl yazılacağını gösteren bir örnektir. Not defteri için birincil dilin pySpark olarak ayarlandığını unutmayın.
 
    ![SYNAPSE-Spark-mıknatıcs](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
 ### <a name="use-temp-tables-to-reference-data-across-languages"></a>Diller arasında verilere başvurmak için geçici tabloları kullanma
 
-Bir Synapse Studio not defterindeki farklı dillerdeki verilere veya değişkenlere doğrudan başvurulamıyor. Spark 'ta, diller arasında geçici bir tabloya başvuru yapılabilir. Bir geçici çözüm olarak Spark geçici tablosunu kullanarak ve `Scala` `PySpark` `SparkSQL` ' de bir veri çerçevesinin nasıl okunmasına ilişkin bir örnek aşağıda verilmiştir.
+Bir Synapse Studio not defterindeki farklı dillerdeki verilere veya değişkenlere doğrudan başvurulamıyor. Spark 'ta, diller arasında geçici bir tabloya başvuru yapılabilir. Bir `Scala` `PySpark` `SparkSQL` geçici çözüm olarak Spark geçici tablosunu kullanarak ve ' de bir veri çerçevesinin nasıl okunmasına ilişkin bir örnek aşağıda verilmiştir.
 
 1. 1. hücrede, Scala kullanarak SQL havuzu bağlayıcısından bir veri çerçevesini okuyun ve geçici bir tablo oluşturun.
 
@@ -118,7 +118,7 @@ IntelliSense özellikleri farklı diller için farklı ölçü düzeyleridir. De
 |PySpark (Python)|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Spark (Scala)|Yes|Yes|Yes|Yes|-|-|-|Yes|
 |Mini SQL|Yes|Yes|-|-|-|-|-|-|
-|Spark.NET (C#)|Yes|-|-|-|-|-|-|-|
+|Spark için .NET (C#)|Yes|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Araç çubuğu düğmeleriyle metin hücresini Biçimlendir
 
@@ -267,7 +267,7 @@ Birincil depolama hesabındaki verilere doğrudan erişebilirsiniz. Gizli anahta
 
 Bir çubuk grafik, çizgi grafik, pasta grafiği, dağılım grafiği ve alan grafiği oluşturma seçeneğiyle tablolu bir sonuç görünümü sağlanır. Verilerinizi kod yazmak zorunda kalmadan görselleştirebilirsiniz. Grafikler, **grafik seçeneklerinde**özelleştirilebilir. 
 
-**%% SQL** Magic komutlarının çıkışı, işlenen tablo görünümünde varsayılan olarak görünür. İşlenmiş tablo görünümünü oluşturmak için Spark dataframe veya dayanıklı Dağıtılmış veri kümeleri (RDD) işlevinde **Display (`<DataFrame name>`)** öğesini çağırabilirsiniz.
+**%% SQL** Magic komutlarının çıkışı, işlenen tablo görünümünde varsayılan olarak görünür. İşlenmiş tablo görünümünü oluşturmak için Spark Dataframe veya dayanıklı Dağıtılmış veri kümeleri (RDD) işlevinde **Display ( `<DataFrame name>` )** öğesini çağırabilirsiniz.
 
    ![yerleşik-grafikler](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
 
@@ -339,11 +339,11 @@ Kullanılabilir hücre mıknatıcs: [%% Time](https://ipython.readthedocs.io/en/
 
 Jupyıter not defterlerine benzer şekilde, Azure SYNAPSE Studio Not defterleri de kalıcı bir kullanıcı arabirimine sahiptir. Klavye, Not defteri hücresinin bulunduğu moda bağlı olarak farklı şeyler yapar. SYNAPSE Studio Not defterleri, belirli bir kod hücresi için aşağıdaki iki modu destekler: komut modu ve düzenleme modu.
 
-1. Bir hücre, yazmanızı isteyen bir metin imleci olmadığında komut modundadır. Bir hücre komut modundayken, Not defterini tek tek hücrelere değil, bir bütün olarak düzenleyebilirsiniz. Bir hücrenin düzenleyici alanının dışına `ESC` tıklayarak ya da fareyi kullanarak komut moduna girin.
+1. Bir hücre, yazmanızı isteyen bir metin imleci olmadığında komut modundadır. Bir hücre komut modundayken, Not defterini tek tek hücrelere değil, bir bütün olarak düzenleyebilirsiniz. `ESC`Bir hücrenin düzenleyici alanının dışına tıklayarak ya da fareyi kullanarak komut moduna girin.
 
    ![komut modu](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imlece belirtilir. Bir hücre düzenleme modundayken, hücreye yazmanız yapılamaz. Bir hücrenin düzenleyici alanına tıklayarak `Enter` ya da fareyi kullanarak düzenleme modunu girin.
+2. Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imlece belirtilir. Bir hücre düzenleme modundayken, hücreye yazmanız yapılamaz. `Enter`Bir hücrenin düzenleyici alanına tıklayarak ya da fareyi kullanarak düzenleme modunu girin.
    
    ![düzenleme modu](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 
@@ -374,7 +374,7 @@ Aşağıdaki tuş vuruşu kısayollarını kullanarak, düzenleme modundayken Az
 |--|--|
 |İmleci yukarı taşı | Yukarı |
 |İmleci aşağı taşı|Aşağı|
-|Geri al|CTRL + Z|
+|Geri Al|CTRL + Z|
 |Yinele|CTRL + Y|
 |Açıklama/açıklama kaldır|CTRL +/|
 |Önceki kelimeyi Sil|CTRL + geri al|
@@ -390,5 +390,8 @@ Aşağıdaki tuş vuruşu kısayollarını kullanarak, düzenleme modundayken Az
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark Havuzu (Önizleme) oluşturma](../quickstart-apache-spark-notebook.md)
+- [Azure SYNAPSE Analytics 'te Apache Spark nedir?](apache-spark-overview.md)
+- [Azure SYNAPSE Analytics ile Apache Spark için .NET kullanın](spark-dotnet.md)
 - [Apache Spark belgeleri için .NET](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
