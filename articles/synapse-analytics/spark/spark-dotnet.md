@@ -5,19 +5,21 @@ author: mamccrea
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3882352c7e1d484818a58d7bd4410cbd66bd6637
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fcac7e47570cf10388891f2e9b81da896acc5c02
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587808"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699335"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics ile Apache Spark için .NET kullanın
 
-[Apache Spark için .net](https://dot.net/spark) , Spark için ücretsiz, açık kaynak ve platformlar arası .NET desteği sunmaktadır. .NET Apache Spark, Spark API 'Lerini C# ve F # aracılığıyla erişmenize olanak tanıyan Spark için .NET bağlamaları sağlar. Apache Spark için .NET sayesinde, .NET kullanarak Spark için Kullanıcı tanımlı işlevler yazma ve yürütme olanağınız vardır. Spark için .NET API 'Leri, Spark SQL ve yapılandırılmış akış dahil olmak üzere verilerinizi çözümlemenize yardımcı olan Spark 'ın tüm yönlerine erişmenizi sağlar.
+[Apache Spark için .net](https://dot.net/spark) , Spark için ücretsiz, açık kaynak ve platformlar arası .NET desteği sağlar. 
+
+C# ve F # aracılığıyla Spark API 'Lerine erişmenize olanak tanıyan Spark için .NET bağlamaları sağlar. Apache Spark için .NET sayesinde, .NET dilinde yazılmış Spark için Kullanıcı tanımlı işlevler yazma ve yürütme olanağınız da vardır. Spark için .NET API 'Leri, Spark SQL, Delta Gölü ve yapılandırılmış akış dahil olmak üzere verilerinizi çözümlemenize yardımcı olan Spark veri çerçevelerinin her yönüyle erişmenizi sağlar.
 
 Spark Batch iş tanımları veya etkileşimli Azure SYNAPSE Analytics Not defterleri aracılığıyla Apache Spark için .NET ile verileri analiz edebilirsiniz. Bu makalede her iki tekniği kullanarak Azure SYNAPSE Apache Spark için .NET kullanmayı öğreneceksiniz.
 
@@ -31,16 +33,10 @@ Spark Batch iş tanımları veya etkileşimli Azure SYNAPSE Analytics Not defter
 
    ```dotnetcli
    cd mySparkApp
-   dotnet publish -c Release -f netcoreapp3.0 -r ubuntu.16.04-x64
+   dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.16.04-x64
    ```
 
    **Linux 'ta:**
-
-### <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>Azure SYNAPSE Analytics not defterlerinde Apache Spark için .NET
-
-Yeni bir not defteri oluştururken, iş mantığınızı ifade etmek istediğiniz bir dil çekirdeği seçersiniz. C# dahil olmak üzere çeşitli diller için çekirdek desteği vardır.
-
-Azure SYNAPSE Analytics Not defterinizde Apache Spark için .NET kullanmak istiyorsanız, çekirdek olarak **.net Spark (C#)** öğesini seçin ve Not defterini mevcut bir Spark havuzuna ekleyin.
 
    ```bash
    zip -r publish.zip
@@ -50,7 +46,7 @@ Azure SYNAPSE Analytics Not defterinizde Apache Spark için .NET kullanmak istiy
 
 Not defterleri, Apache Spark işlem hatları ve senaryolar için .NET uygulamanızı prototip için harika bir seçenektir. Verilerinizi hızla ve verimli bir şekilde çalışmaya başlayabilir, düzenleyebilir, filtreleyerek, görüntüleyerek ve görselleştirmeyi başlatabilirsiniz. Veri mühendisleri, veri bilimcileri, iş analistleri ve makine öğrenimi mühendisleri, paylaşılan ve etkileşimli bir belge üzerinde işbirliği yapabilirler. Veri araştırmasının anında sonuçları görürsünüz ve verilerinizi aynı not defterinde görselleştirebilirsiniz.
 
-### <a name="how-to-use-notebooks"></a>Not defterlerini kullanma
+### <a name="how-to-use-net-for-apache-spark-notebooks"></a>Apache Spark Not defterleri için .NET kullanma
 
 Yeni bir not defteri oluşturduğunuzda, iş mantığınızı ifade etmek istediğiniz bir dil çekirdeği seçersiniz. C# dahil olmak üzere çeşitli diller için çekirdek desteği vardır.
 
@@ -58,7 +54,7 @@ Azure SYNAPSE Analytics Not defterinizde Apache Spark için .NET kullanmak istiy
 
 .Net Spark Not defteri, .NET etkileşimli deneyimlerine dayalıdır ve daha önceden tanımlanmış Spark oturum değişkeniyle birlikte Box for Spark for the .NET kullanma özelliği ile etkileşimli C# deneyimleri sağlar `spark` .
 
-### <a name="sparknet-c-kernel-features"></a>Spark.NET C# çekirdek özellikleri
+### <a name="net-for-apache-spark-c-kernel-features"></a>Apache Spark C# çekirdek özellikleri için .NET
 
 Azure SYNAPSE Analytics not defterinde Apache Spark için .NET kullandığınızda aşağıdaki özellikler mevcuttur:
 

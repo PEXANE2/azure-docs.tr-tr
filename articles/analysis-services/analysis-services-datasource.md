@@ -4,15 +4,15 @@ description: Azure Analysis Services tablo 1200 ve daha yüksek veri modelleri i
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71df537535003fe23902949c70b086a30a6b5049
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461666"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698145"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services’ta desteklenen veri kaynakları
 
@@ -87,17 +87,17 @@ Bir Azure Analysis Services sunucusundan şirket içi veri kaynaklarına bağlan
 
 ## <a name="understanding-providers"></a>Sağlayıcıları anlama
 
-Visual Studio 'da tablo 1400 ve üzeri model projeleri oluştururken, varsayılan olarak veri **Al**seçeneğini kullanarak bir veri kaynağına bağlanırken bir veri sağlayıcısı belirtmeyin. Tablo 1400 ve üzeri modeller, veri kaynağı ile Analysis Services arasında bağlantıları, veri sorgularını ve karmalar yönetmek için [Power Query](/power-query/power-query-what-is-power-query) bağlayıcıları kullanır. Bunlar bazen bu bağlantı özelliği ayarlarındaki *yapılandırılmış* veri kaynağı bağlantıları sizin için ayarlanmış olarak adlandırılır. Ancak, eski veri kaynaklarını etkinleştirebilirsiniz. Etkinleştirildiğinde, tablo 1200 ' de desteklenen belirli veri kaynaklarına bağlanmak için **tablo Içeri aktarma Sihirbazı** ' nı ve *eski*veya *sağlayıcı* veri kaynakları olarak daha düşük modelleri kullanabilirsiniz. Sağlayıcı veri kaynağı olarak belirtildiğinde, belirli bir veri sağlayıcısı ve diğer gelişmiş bağlantı özelliklerini belirtebilirsiniz. Örneğin, şirket içi SQL Server veri ambarına veya hatta Azure SQL veritabanı 'na eski veri kaynağı olarak bağlanabilirsiniz. Daha sonra SQL Server MSOLEDBSQL veri sağlayıcısı OLE DB sürücüsünü seçebilirsiniz. Bu durumda, bir OLE DB veri sağlayıcısı seçildiğinde Power Query Bağlayıcısı üzerinden geliştirilmiş performans sağlayabilirsiniz. 
+Visual Studio 'da tablo 1400 ve üzeri model projeleri oluştururken, varsayılan olarak veri **Al**seçeneğini kullanarak bir veri kaynağına bağlanırken bir veri sağlayıcısı belirtmeyin. Tablo 1400 ve üzeri modeller, veri kaynağı ile Analysis Services arasında bağlantıları, veri sorgularını ve karmalar yönetmek için [Power Query](/power-query/power-query-what-is-power-query) bağlayıcıları kullanır. Bunlar bazen bu bağlantı özelliği ayarlarındaki *yapılandırılmış* veri kaynağı bağlantıları sizin için ayarlanmış olarak adlandırılır. Ancak, Visual Studio 'da bir model projesi için eski veri kaynaklarını etkinleştirebilirsiniz. Etkinleştirildiğinde, tablo 1200 ' de desteklenen belirli veri kaynaklarına bağlanmak için **tablo Içeri aktarma Sihirbazı** ' nı ve *eski*veya *sağlayıcı* veri kaynakları olarak daha düşük modelleri kullanabilirsiniz. Sağlayıcı veri kaynağı olarak belirtildiğinde, belirli bir veri sağlayıcısı ve diğer gelişmiş bağlantı özelliklerini belirtebilirsiniz. Örneğin, şirket içi SQL Server veri ambarına veya hatta Azure SQL veritabanı 'na eski veri kaynağı olarak bağlanabilirsiniz. Daha sonra SQL Server MSOLEDBSQL veri sağlayıcısı OLE DB sürücüsünü seçebilirsiniz. Bu durumda, bir OLE DB veri sağlayıcısı seçildiğinde Power Query Bağlayıcısı üzerinden geliştirilmiş performans sağlayabilirsiniz. 
 
 Visual Studio 'da tablo Içeri aktarma Sihirbazı 'nı kullanırken, herhangi bir veri kaynağına yönelik bağlantılar bir veri sağlayıcısı gerektirir. Sizin için varsayılan bir veri sağlayıcısı seçilidir. Gerekirse veri sağlayıcısını değiştirebilirsiniz. Seçtiğiniz sağlayıcının türü, modelin bellek içi depolama alanı veya DirectQuery kullanıp kullanmadığını ve modelinize dağıttığınız Analysis Services platformunu kullanarak, performansa bağlı olabilir.
 
 ### <a name="specify-provider-data-sources-in-tabular-1400-and-higher-model-projects"></a>Tablo 1400 ve daha yüksek model projelerinde sağlayıcı veri kaynaklarını belirtin
 
-Sağlayıcı veri kaynaklarını etkinleştirmek için, Visual Studio 'da **Araçlar** > **Seçenekler** > **Analysis Services tablo** > **verilerini içeri aktar**' a tıklayın, **eski veri kaynaklarını etkinleştir**' i seçin.
+Sağlayıcı veri kaynaklarını etkinleştirmek için, Visual Studio 'da **Araçlar**  >  **Seçenekler**  >  **Analysis Services tablo**  >  **verilerini içeri aktar**' a tıklayın, **eski veri kaynaklarını etkinleştir**' i seçin.
 
 ![Eski veri kaynaklarını etkinleştir](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
 
-Eski veri kaynakları etkinken **tablosal Model Gezgini**' nde veri**kaynağı ' ndan (eski)** **veri kaynakları** > ' na sağ tıklayın.
+Eski veri kaynakları etkinken **tablosal Model Gezgini**' nde veri kaynağı ' **Data Sources**  >  **ndan (eski)** veri kaynakları ' na sağ tıklayın.
 
 ![Tablosal model Gezgininde eski veri kaynakları](media/analysis-services-datasource/aas-import-legacy-datasources.png)
 
@@ -107,7 +107,7 @@ Tablolu 1200 model projelerinde olduğu gibi, bir veri kaynağına bağlanmak i�
 
 
 ## <a name="impersonation"></a>Kimliğe bürünme
-Bazı durumlarda, farklı bir kimliğe bürünme hesabı belirtmek gerekli olabilir. Kimliğe bürünme hesabı, Visual Studio veya SSMS 'de belirtilebilir.
+Bazı durumlarda, farklı bir kimliğe bürünme hesabı belirtmek gerekli olabilir. Kimliğe bürünme hesabı, Visual Studio veya SQL Server Management Studio (SSMS) ' de belirtilebilir.
 
 Şirket içi veri kaynakları için:
 

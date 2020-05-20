@@ -5,14 +5,14 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 06e5a1a7b107f949dbb4945ef4d3116b9fa6d076
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d7408f3b3e955d397ba4a54d07323f80dd72c3d3
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656606"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697333"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB değişiklik akışını okuma
 
@@ -20,7 +20,7 @@ Anında iletme modeli veya çekme modeli kullanarak Azure Cosmos DB değişiklik
 
 Bir istek modeliyle sunucu, genellikle bir merkezi iş sırasından isteyerek çalışır. Bu durumda, yalnızca değişiklikleri işlemek için iş mantığı yoktur, ayrıca son işlenen değişiklik için durumu depolar, birden çok istemcide yük dengelemeyi işleme, paralel değişiklikleri işleme ve hataları işleme.
 
-Azure Cosmos DB değişiklik akışından okurken, daha fazla endişelenmenize gerek duymayacağından, anında iletme modelinin kullanılması önerilir:
+Azure Cosmos DB değişiklik akışından okurken, endişelenmenize gerek duymayabilmeniz için genellikle bir anında iletme modeli kullanmanızı öneririz:
 
 - Sonraki değişiklikler için değişiklik akışı yoklanıyor.
 - Son işlenen değişiklik için durum depolanıyor. Değişiklik akışından okurken, bu otomatik olarak bir [kira kapsayıcısında](change-feed-processor.md#components-of-the-change-feed-processor)depolanır.
@@ -41,7 +41,7 @@ Anında iletme modelinin kullanılması, değişiklik akışından okunması iç
 
 Yalnızca değişiklik akışını kullanmaya başladıysanız, Azure Işlevleri en basit seçenektir. Kolaylık nedeniyle, çoğu akış kullanım örnekleri için de önerilen seçenektir. Azure Cosmos DB için bir Azure Işlevleri tetikleyicisi oluşturduğunuzda Bağlanılacak kapsayıcıyı seçersiniz ve kapsayıcıda her değişiklik yapıldığında Azure Işlevi tetiklenir. Azure Işlevleri arka planda değişiklik akışı işlemcisini kullandığından, kapsayıcının [bölümlerinde](partition-data.md)değişiklik işlemeyi otomatik olarak paralelleştirin.
 
-Azure Işlevleri ile geliştirme, kolay bir deneyimdir ve değişiklik akışı işlemcisini kendi kendinize dağıtmaktan daha hızlı olabilir. Tetikleyiciler, Azure Işlevleri Portalı kullanılarak veya SDK 'lar ile programlı olarak oluşturulabilir. Visual Studio ve VS Code Azure Işlevleri yazmak için destek sağlar ve platformlar arası geliştirme için Azure Işlevleri CLı 'yi de kullanabilirsiniz. Masaüstünüzdeki kodu yazabilir ve hata ayıklamanıza ve sonra işlevi tek bir tıklama ile dağıtmanıza de tıklayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure işlevleri 'ni kullanarak sunucusuz veritabanı hesaplama](serverless-computing-database.md) ve [Azure işlevleri Ile değişiklik akışını kullanma](change-feed-functions.md) makaleleri.
+Azure Işlevleri ile geliştirme, kolay bir deneyimdir ve değişiklik akışı işlemcisini kendi kendinize dağıtmaktan daha hızlı olabilir. Tetikleyiciler, Azure Işlevleri Portalı kullanılarak veya SDK 'lar kullanılarak programlı bir şekilde oluşturulabilir. Visual Studio ve VS Code Azure Işlevleri yazmak için destek sağlar ve platformlar arası geliştirme için Azure Işlevleri CLı 'yi de kullanabilirsiniz. Masaüstünüzdeki kodu yazabilir ve hata ayıklamanıza ve sonra işlevi tek bir tıklama ile dağıtmanıza de tıklayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure işlevleri 'ni kullanarak sunucusuz veritabanı hesaplama](serverless-computing-database.md) ve [Azure işlevleri Ile değişiklik akışını kullanma](change-feed-functions.md) makaleleri.
 
 ### <a name="change-feed-processor-library"></a>Akış işlemcisi kitaplığını Değiştir
 

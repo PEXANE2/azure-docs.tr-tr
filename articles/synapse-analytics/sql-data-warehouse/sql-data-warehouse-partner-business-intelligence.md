@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7600eae27daf11c4fd02718abc25cef9006179e1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 23e3ccff11dc33858249565d3ad8396b19dd87c6
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683623"
+ms.locfileid: "83698883"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure SYNAPSE Analytics Business Intelligence iş ortakları
 
@@ -27,7 +27,7 @@ Azure SYNAPSE içinde SYNAPSE SQL havuzunu kullanarak tam veri ambarı çözüm�
 | ------- | ----------- | -------------------- |
 | ![Birde](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birde**<br>Bira, paylaşılan bir ortak analitik dokusunun en üstünde bulunan bir Interwoven sanallaştırılmış bı örnekleri ağı aracılığıyla kuruluşun tamamını bağlar|[Ürün sayfası](https://www.birst.com/)<br> |
 | ![Clearöykü verileri](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**Clearöykü verileri (sürekli Iş öngörüleri)**<br>Clearöykü verileri, SYNAPSE SQL havuzunda depolanan farklı veriler arasında hızlı bir şekilde analizine izin verebilir. Clearöykü 'in tümleşik Spark tabanlı platform ve analiz uygulaması, farklı veri kümelerinin veri erişimini ve uyumunu hızlandırmayı hızlandırır. Bunlar, iş kullanıcılarını hızlı öngörüler elde etmek üzere kendi kendine bağlı hale getiren hızlı, işbirliğine dayalı araştırmayı etkinleştirir. |[Ürün sayfası](https://www.clearstorydata.com/product/continuous-insights/)<br> |
-| ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas bı**<br>Dundas veri görselleştirme, Iş zekası ve veri görselleştirme yazılımının önde gelen, genel bir sağlayıcıdır.  Dundas panolar, raporlama ve Visual Data Analytics, iş uygulamalarına sorunsuz tümleştirme sağlayarak daha iyi kararlar ve daha hızlı öngörüler sağlar.|[Ürün sayfası](https://www.dundas.com/dundas-bi)<br>[Azure Market](https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/)<br> |
+| ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas bı**<br>Dundas veri görselleştirme, Iş zekası ve veri görselleştirme yazılımının önde gelen, genel bir sağlayıcıdır.  Dundas panolar, raporlama ve Visual Data Analytics, iş uygulamalarına sorunsuz tümleştirme sağlayarak daha iyi kararlar ve daha hızlı öngörüler sağlar.|[Ürün sayfası](https://www.dundas.com/dundas-bi)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/dundas.dundas-bi)<br> |
 | ![IBM Cogno 'Lar](./media/sql-data-warehouse-partner-business-intelligence/cognos_analytics_logo.png) |**IBM Cogno 'Ları Analizi**<br>Cogno 'lar analizi, büyük bir tedarik zincirindeki veya tek bir kampanyayı en iyi duruma getirmeye yönelik bir pazar sunan, deneyimli bir iş analistinin olduğunu basit, açık ve kolay bir şekilde kullanmanızı sağlayan akıllı self servis özellikleri içerir. Cogno 'lar Analytics, veri araştırmasını rehberlik etmek için büyük bir kaldırma yapmak üzere AI ve diğer akıllı özellikleri kullanır ve kullanıcıların ihtiyaç duydukları yanıtları almasını kolaylaştırır|[Ürün sayfası](https://www.ibm.com/products/cognos-analytics)<br>|
 | ![Bilgi oluşturucuları](./media/sql-data-warehouse-partner-business-intelligence/informationbuilders_logo.png) |**Bilgi oluşturucuları (WebFOCUS)**<br>WebFOCUS iş zekası, şirketlerin şirket genelinde ve bunların ötesinde verileri daha stratejik bir şekilde kullanmasına yardımcı olur. Kullanıcıların ve yöneticilerin, birden çok veri kaynağından ve biçimden içerik birleştiren panolar hızla oluşturmalarına olanak tanır. Ayrıca, herhangi bir BI ve analiz içeriğinin sorunsuz ve güvenli bir şekilde paylaşılmasını sağlayan güçlü güvenlik ve kapsamlı idare sağlar|[Ürün sayfası](https://www.informationbuilders.com/products/bi-and-analytics-platform)<br> |
 ![Jınfonet](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_logo.png) |**Jınfonet JReport**<br>JReport, kuruluş için katıştırılmaz bir BI çözümüdür. Çözüm, bulut, büyük veri ve işlem veri kaynaklarında rapor oluşturma, panolar ve veri analizi gibi çok sayıda özellik sunar. Verileri görselleştirerek, çevik ve hızlı karar alma için kendi raporlama ve veri bulgusunu gerçekleştirebilirsiniz. |[Ürün sayfası](https://www.jinfonet.com/product/jreport-designer)<br> |

@@ -4,15 +4,15 @@ description: Azure Analysis Services sunucunuzu izlemek için günlüğü ayarla
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 71a81c4a3a57c206540e20f7c7e58949c552e582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128922"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701484"
 ---
 # <a name="setup-diagnostic-logging"></a>Tanılama günlüğüne kaydetmeyi ayarlama
 
@@ -90,7 +90,7 @@ Herhangi bir Analysis Services çözümünün önemli bir kısmı, sunucuların�
 
 3. **Kaydet**’e tıklayın.
 
-    "Çalışma alanı adı için \<tanılamayı güncelleştirme> bildiren bir hata alırsanız. > abonelik \<kimliği, Microsoft. Insights 'ı kullanmak için kayıtlı değil. " hesabı kaydetmek için [sorun giderme Azure tanılama](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) yönergeleri izleyin ve bu yordamı yeniden deneyin.
+    "Çalışma alanı adı için tanılamayı güncelleştirme> bildiren bir hata alırsanız \< . > abonelik \< kimliği, Microsoft. Insights 'ı kullanmak için kayıtlı değil. " hesabı kaydetmek için [sorun giderme Azure tanılama](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) yönergeleri izleyin ve bu yordamı yeniden deneyin.
 
     Kaynak günlüklerinizin gelecekte herhangi bir noktada nasıl kaydedildiğini değiştirmek istiyorsanız, ayarları değiştirmek için bu sayfaya geri dönebilirsiniz.
 
@@ -158,7 +158,7 @@ Tanılama verilerinizi görüntülemek için, Log Analytics çalışma alanında
 
 ![Azure portal günlük arama seçenekleri](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-Sorgu tasarımcısında, **logmanagement** > **AzureDiagnostics**' ı genişletin. AzureDiagnostics, altyapı ve hizmet olaylarını içerir. Bir sorgunun açık bir şekilde oluşturulduğunu fark edin. EventClass\_s alanı xEvent adlarını içerir, bu da şirket içi günlüğe kaydetme Için XEvents kullandıysanız tanıdık görünebilir. **EventClass\_s** ' e veya olay adlarından birine tıklayın ve Log Analytics çalışma alanı bir sorgu oluşturma devam eder. Sorgularınızı daha sonra kullanmak üzere kaydetmeyi unutmayın.
+Sorgu tasarımcısında, **logmanagement**  >  **AzureDiagnostics**' ı genişletin. AzureDiagnostics, altyapı ve hizmet olaylarını içerir. Bir sorgunun açık bir şekilde oluşturulduğunu fark edin. EventClass \_ s alanı xEvent adlarını içerir, bu da şirket içi günlüğe kaydetme Için xEvents kullandıysanız tanıdık görünebilir. **EventClass \_ s** ' e veya olay adlarından birine tıklayın ve Log Analytics çalışma alanı bir sorgu oluşturma devam eder. Sorgularınızı daha sonra kullanmak üzere kaydetmeyi unutmayın.
 
 ### <a name="example-queries"></a>Örnek sorgular
 
@@ -215,7 +215,7 @@ Kullanabileceğiniz yüzlerce sorgu vardır. Sorgular hakkında daha fazla bilgi
 
 Bu hızlı öğreticide, Analysis Service sunucunuz ile aynı abonelikte ve kaynak grubunda bir depolama hesabı oluşturursunuz. Ardından, yeni depolama hesabına çıkış göndererek tanılama günlüğünü açmak için set-AzDiagnosticSetting ' i kullanabilirsiniz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklara sahip olmanız gerekir:
 
 * Mevcut bir Azure Analysis Services sunucusu. Sunucu kaynağı oluşturma hakkında yönergeler için, bkz. [Azure Portal sunucu oluşturma](analysis-services-create-server.md)veya [PowerShell kullanarak Azure Analysis Services sunucusu oluşturma](analysis-services-create-powershell.md).
@@ -251,7 +251,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 Günlükleriniz için mevcut bir depolama hesabını kullanabilirsiniz. Bu, sunucunuz ile aynı abonelikte yer verilir. Bu öğreticide, Analysis Services günlüklerine adanmış yeni bir depolama hesabı oluşturursunuz. Daha kolay hale getirmek için, depolama hesabı ayrıntılarını **sa**adlı bir değişkende depolarsınız.
 
-Ayrıca, Analysis Services sunucunuzu içeren kaynakla aynı kaynak grubunu da kullanırsınız. `awsales_resgroup`, `awsaleslogs`Ve `West Central US` değerlerini kendi değerlerinizle değiştirin:
+Ayrıca, Analysis Services sunucunuzu içeren kaynakla aynı kaynak grubunu da kullanırsınız. `awsales_resgroup`, `awsaleslogs` Ve değerlerini `West Central US` kendi değerlerinizle değiştirin:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `

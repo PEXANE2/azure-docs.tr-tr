@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: b3c6f88df151cc497f0de670d5d78a05c7477459
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791893"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700973"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container teklifi oluşturma
-
-> [!IMPORTANT]
-> Azure Container tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Teklifleriniz geçirilene kadar, tekliflerinizi yönetmek için lütfen [kapsayıcınızı hazırlama teknik varlıklarını](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) bulut iş ortağı portalı için hazırlama bölümündeki yönergeleri izleyin.
 
 Bu makalede, Azure Marketi 'nde bir kapsayıcı teklifi oluşturmanıza yardımcı olacak teknik kaynaklar ve öneriler sunulmaktadır.
 

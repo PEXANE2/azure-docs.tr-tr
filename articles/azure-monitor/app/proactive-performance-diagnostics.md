@@ -4,12 +4,12 @@ description: Application Insights, uygulama telemetrinizin akıllı analizini ya
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687684"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697164"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Akıllı algılama-performans bozuklukları
 
@@ -34,7 +34,7 @@ Hayır, bir bildirim uygulamanızın kesinlikle bir sorun olduğu anlamına gelm
 
 ## <a name="how-do-i-fix-it"></a>Nasıl düzeltebilirim?
 
-Bildirimler tanılama bilgilerini içerir. Bir örneği aşağıda verilmiştir:
+Bildirimler tanılama bilgilerini içerir. İşte bir örnek:
 
 
 ![Sunucu yanıt süresi düşme algılamasında bir örnek aşağıda verilmiştir](media/proactive-performance-diagnostics/server_response_time_degradation.png)
@@ -70,12 +70,12 @@ Akıllı algılamalar performans bozuklukları hakkındaki e-postalar Applicatio
 * *Kendi anomali algılama kurallarımı oluşturabilir veya mevcut kuralları özelleştirebilir miyim?*
 
   * Henüz değil, ancak şunları yapabilirsiniz:
-    * Bir metriğin bir eşiği ne zaman kesiştiği hakkında bilgi veren [uyarıları ayarlayın](../../azure-monitor/app/alerts.md) .
+    * Bir metriğin bir eşiği ne zaman kesiştiği hakkında bilgi veren [uyarıları ayarlayın](/azure/azure-monitor/platform/alerts-log) .
     * [Telemetriyi](../../azure-monitor/app/export-telemetry.md) bir [veritabanına](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) veya [Power BI için](../../azure-monitor/app/export-power-bi.md )kendi kendinize analiz edebilirsiniz.
 * *Analiz ne sıklıkta gerçekleştirildi?*
 
   * Analizi, önceki günün telemetri gününde (UTC saat diliminde tam gün) çalıştırdık.
-* *Bunun için [ölçüm uyarıları](../../azure-monitor/app/alerts.md)değiştirilsin mi?*
+* *Bunun için [ölçüm uyarıları](/azure/azure-monitor/platform/alerts-log)değiştirilsin mi?*
   * Hayır.  Olağan dışı olarak düşünebileceğiniz her davranışı saptamak için çalışmayız.
 
 
@@ -180,5 +180,5 @@ Bu tanılama araçları uygulamanızdan Telemetriyi incelemenize yardımcı olur
 
 Akıllı algılamalar tamamen otomatiktir. Ancak daha fazla uyarı kurmak istiyor olabilirsiniz?
 
-* [El ile yapılandırılmış ölçüm uyarıları](../../azure-monitor/app/alerts.md)
+* [El ile yapılandırılmış ölçüm uyarıları](/azure/azure-monitor/platform/alerts-log)
 * [Kullanılabilirlik web testleri](../../azure-monitor/app/monitor-web-app-availability.md)

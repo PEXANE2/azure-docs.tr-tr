@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d68c36e7d6603cb8cdc906ad2a0280094e6e0e5
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484596"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698264"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics JSON ve avro verilerini ayrıştırın
 
@@ -19,7 +19,8 @@ CSV, JSON ve avro veri biçimlerinde olayları işlemeyi destekler Azure Stream 
 
 >[!NOTE]
 >AVRO Olay Hub 'ı tarafından oluşturulan dosyalar *özel seri hale getirici* özelliğini kullanmanızı gerektiren belirli bir biçimi kullanır. Daha fazla bilgi için bkz. [.NET özel seri hale getiriciler kullanarak herhangi bir biçimde giriş okuma](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples).
-
+>
+>Stream Analytics AVRO serisini kaldırma, eşleme türünü desteklemez. EventHub yakalama eşlemesi kullandığından, Stream Analytics EventHub yakalama bloblarını okuyamıyorum.
 
 
 ## <a name="record-data-types"></a>Veri türlerini Kaydet
@@ -205,7 +206,7 @@ Ardından, JSON kayıtlarınızın alanlarına erişmek için aşağıda göster
 
 Dizi veri türleri sıralı değerler koleksiyonudur. Dizi değerlerinde bazı tipik işlemler aşağıda ayrıntılı olarak verilmiştir. Bu örnekler, [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [getarrayelements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)ve [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci işlevlerini kullanır.
 
-Tek bir olaya bir örnek aşağıda verilmiştir. Her ikisi de `CustomSensor03` dizi türündedir: **array** `SensorMetadata`
+Tek bir olaya bir örnek aşağıda verilmiştir. Her ikisi de `CustomSensor03` `SensorMetadata` **dizi**türündedir:
 
 ```json
 {

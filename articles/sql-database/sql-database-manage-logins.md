@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 0f1611e6d3524cc78fc20fed9d1aac6f3fd453fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 751c85559330272e84e628d22756d47c24b08711
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106449"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701654"
 ---
 # <a name="authorizing-database-access-to-authenticated-users-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>Oturum açma ve Kullanıcı hesaplarını kullanarak SQL veritabanı ve Azure SYNAPSE Analytics 'e veritabanı erişimi verme
 
@@ -25,7 +25,7 @@ Bu makalede şunları öğreneceksiniz:
 
 - Kullanıcıların yönetim görevleri gerçekleştirmesini ve bu veritabanlarında depolanan verilere erişimini sağlamak için Azure SQL veritabanı ve Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı) yapılandırma seçenekleri.
 - İlk olarak yeni bir Azure SQL veritabanı oluşturulduktan sonra erişim ve yetkilendirme yapılandırması
-- Ana veritabanına ve Kullanıcı hesaplarına oturum açma bilgileri ve Kullanıcı hesapları ekleme ve ardından bu hesaplara yönetici izinleri verme
+- Ana veritabanında oturum açma bilgileri ve Kullanıcı hesapları ekleme ve ardından bu hesaplara yönetici izinleri verme
 - Kullanıcı veritabanlarına, oturum açmalar veya dahil edilen kullanıcı hesaplarıyla ilişkili kullanıcı hesapları ekleme
 - Veritabanı rollerini ve açık izinleri kullanarak Kullanıcı veritabanlarında izinleri olan kullanıcı hesaplarını yapılandırma
 
@@ -57,7 +57,7 @@ Veri erişimi ve çeşitli eylemleri gerçekleştirme [**yetkilendirmesi**](sql-
 
 - Yönetim ayrıcalıklarına sahip bir SQL oturumu açma, belirttiğiniz oturum açma adı kullanılarak oluşturulur. [Oturum açma](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) , SQL veritabanı 'nda oturum açmak için bireysel bir kullanıcı hesaplarıdır.
 - Bu oturum açma, tüm veritabanlarında [sunucu düzeyi sorumlusu](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)olarak tam yönetim izinleri verilmesini ister. Bu oturum açma, SQL veritabanı 'nda kullanılabilir tüm izinlere sahip ve bunlarla sınırlı olamaz. Yönetilen bir örnekte, bu oturum açma [sysadmin sabit sunucu rolüne](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) eklenir (Bu rol, tek veya havuza alınmış veritabanlarında bulunmaz).
-- Bu oturum için her `dbo` Kullanıcı veritabanında çağrılan bir [Kullanıcı hesabı](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) oluşturulur. [Dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) kullanıcısı veritabanında tüm veritabanı izinlerine sahiptir ve `db_owner` sabit veritabanı rolüne eşlenir. Ek sabit veritabanı rolleri bu makalenin ilerleyen kısımlarında ele alınmıştır.
+- [user account](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` Bu oturum için her kullanıcı veritabanında çağrılan bir kullanıcı hesabı oluşturulur. [Dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) kullanıcısı veritabanında tüm veritabanı izinlerine sahiptir ve `db_owner` sabit veritabanı rolüne eşlenir. Ek sabit veritabanı rolleri bu makalenin ilerleyen kısımlarında ele alınmıştır.
 
 Bir veritabanının yönetici hesaplarını belirlemek için, Azure portal açın ve sunucunuzun veya yönetilen örneğinizin **Özellikler** sekmesine gidin.
 
@@ -89,12 +89,12 @@ Bu noktada, Azure SQL örneğiniz yalnızca tek bir SQL oturumu ve Kullanıcı h
 
   - Tek veya havuza alınmış bir veritabanı dağıtımı veya yönetilen örnek dağıtımı için ana veritabanında ek bir SQL oturumu oluşturun
   - Ana veritabanında bu yeni oturum açmayla ilişkili bir kullanıcı hesabı oluşturun
-  - [Alter Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) deyimini kullanarak `master` veritabanında `dbmanager`, `loginmanager` role veya her Ikisine de kullanıcı hesabını ekleyin (Azure SYNAPSE Analytics için [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) deyimini kullanın).
+  - `dbmanager` `loginmanager` Alter Server role deyimini kullanarak veritabanında, role veya her ikisine de Kullanıcı hesabını ekleyin `master` (Azure [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) SYNAPSE Analytics için [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) deyimini kullanın).
 
   > [!NOTE]
   > `dbmanager`ve `loginmanager` rolleri yönetilen örnek dağıtımlarıyla ilgili **değildir** .
 
-  Tek veya havuza alınmış veritabanları için bu [özel ana veritabanı rollerinin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) üyeleri, kullanıcıların veritabanları oluşturma ve yönetme veya oturum açma işlemleri oluşturma ve Yönetme yetkisine sahip olmasını sağlar. `dbmanager` Rolün üyesi olan bir kullanıcı tarafından oluşturulan veritabanlarında, üye `db_owner` sabit veritabanı rolüne eşlenir ve bu veritabanını oturum açıp `dbo` Kullanıcı hesabını kullanarak yönetebilir. Bu rollerin, ana veritabanı dışında açık izinleri yoktur.
+  Tek veya havuza alınmış veritabanları için bu [özel ana veritabanı rollerinin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) üyeleri, kullanıcıların veritabanları oluşturma ve yönetme veya oturum açma işlemleri oluşturma ve Yönetme yetkisine sahip olmasını sağlar. Rolün üyesi olan bir kullanıcı tarafından oluşturulan veritabanlarında `dbmanager` , üye `db_owner` sabit veritabanı rolüne eşlenir ve bu veritabanını oturum açıp `dbo` Kullanıcı hesabını kullanarak yönetebilir. Bu rollerin, ana veritabanı dışında açık izinleri yoktur.
 
   > [!IMPORTANT]
   > Tek veya havuza alınmış bir veritabanında tam yönetim izinleriyle ek bir SQL oturumu oluşturamazsınız.
@@ -116,7 +116,7 @@ Yönetici olmayan kullanıcılar için, iki yöntemden birini kullanarak hesap o
   Bu yaklaşımda, Kullanıcı kimlik doğrulama bilgileri her bir veritabanında depolanır ve coğrafi olarak çoğaltılan veritabanlarına otomatik olarak çoğaltılır. Ancak, birden çok veritabanında aynı hesap varsa ve SQL kimlik doğrulaması kullanıyorsanız, parolaları el ile eşitlenmiş tutmanız gerekir. Ayrıca, bir kullanıcının farklı parolalara sahip farklı veritabanlarında bir hesabı varsa, bu Parolaları hatırlama bir sorun haline gelebilir.
 
 > [!IMPORTANT]
-> Azure AD kimlikleriyle eşleştirilmiş kapsanan kullanıcıları oluşturmak için, SQL veritabanında yönetici olan bir Azure AD hesabı kullanarak oturum açmış olmanız gerekir. Yönetilen örnekte, `sysadmin` IZINLERLE bir SQL oturumu açma da Azure AD oturum açma veya Kullanıcı oluşturabilir.
+> Azure AD kimlikleriyle eşleştirilmiş kapsanan kullanıcıları oluşturmak için, SQL veritabanında yönetici olan bir Azure AD hesabı kullanarak oturum açmış olmanız gerekir. Yönetilen örnekte, izinlerle bir SQL oturumu açma `sysadmin` da Azure AD oturum açma veya Kullanıcı oluşturabilir.
 
 Oturum açma ve Kullanıcı oluşturma işlemlerini gösteren örnekler için bkz.:
 

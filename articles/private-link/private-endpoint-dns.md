@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 14cb5a06e9f51269d05468d36ecb6cd2bf19e40c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: af7d47c98e4716df3a6cbd222c7d3c8def48e5fc
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643595"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701647"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure özel uç nokta DNS yapılandırması
 
@@ -36,7 +36,7 @@ Uygulamalarınızın bağlantı URL 'sini değiştirmesi gerekmez. Genel bir DNS
 
 Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen bölge adlarını kullanın:
 
-| Özel bağlantı kaynak türü/alt kaynak |Özel DNS bölge adı | Genel DNS bölge adı |
+| Özel bağlantı kaynak türü/alt kaynak |Özel DNS bölge adı | Genel DNS bölgesi ileticileri |
 |---|---|---|---|
 | SQL DB (Microsoft. SQL/Servers)/SQL Server | privatelink.database.windows.net | database.windows.net |
 | Azure SYNAPSE Analytics (Microsoft. SQL/Servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
@@ -54,7 +54,7 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 | PostgreSQL için Azure veritabanı-tek sunucu (Microsoft. DBforPostgreSQL/Servers)/Postgrescollection sunucusu | privatelink.postgres.database.azure.com | postgres.database.azure.com |
 | MySQL için Azure veritabanı (Microsoft. Dbformyısql/sunucular)/mysqlServer | privatelink.mysql.database.azure.com | mysql.database.azure.com |
 | MariaDB için Azure veritabanı (Microsoft. Dbformarıdb/sunucular)/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
-| Azure Key Vault (Microsoft. Keykasası/Vaults)/kasa | privatelink.vaultcore.azure.net | vault.azure.net |
+| Azure Key Vault (Microsoft. Keykasası/Vaults)/kasa | privatelink.vaultcore.azure.net | vault.azure.net <br> vaultcore.azure.net |
 | Azure Kubernetes hizmeti-Kubernetes API (Microsoft. ContainerService/Managedkümeler)/managedCluster | Privatelink. {Region}. azmk8s. IO | {Region}. azmk8s. IO |
 | Azure Search (Microsoft. Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
 | Azure Container Registry (Microsoft. ContainerRegistry/kayýt defterleri)/kayıt defteri | privatelink.azurecr.io | azurecr.io |
@@ -150,7 +150,7 @@ Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vard
 Aşağıdaki diyagramda DNS trafiğini [bir sanal ağa bağlı](../dns/private-dns-virtual-network-links.md) özel bir DNS bölgesi tarafından oluşturulan Azure 'a koşullu olarak ileten bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir.
 
 > [!IMPORTANT]
-> Koşullu iletme, [public DNS zone](#azure-services-dns-zone-configuration)    `database.windows.net`    **PRIVATELINK**. Database.Windows.net yerine genel DNS bölgesi Ex: ' a verilmelidir.
+> Koşullu iletme, [**public DNS zone forwarder**](#azure-services-dns-zone-configuration)    `database.windows.net`    **privatelınk**. Database.Windows.net yerine önerilen genel DNS bölge ileticisi EX 'e verilmelidir.
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Azure DNS şirket içi iletme":::
 

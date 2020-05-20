@@ -2,13 +2,13 @@
 title: Özel bağlantıyı ayarla
 description: Bir kapsayıcı kayıt defterinde özel bir uç nokta ayarlama ve yerel bir sanal ağdaki özel bir bağlantı üzerinden erişimi etkinleştirme
 ms.topic: article
-ms.date: 05/07/2020
-ms.openlocfilehash: 46ec816d85a528fd3208026ef76dff8470154767
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 05/19/2020
+ms.openlocfilehash: 93cdbab8bcdaa9787373407fe8d6619dd5fd49c6
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982471"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701405"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure Container Registry için Azure özel bağlantısını yapılandırma 
 
@@ -22,11 +22,11 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 
 * Şu anda, Azure Güvenlik Merkezi 'ni kullanan görüntü tarama, özel bir uç noktayla yapılandırılmış bir kayıt defterinde kullanılamaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Bu makalede Azure CLı adımlarını kullanmak için, Azure CLı sürüm 2.2.0 veya sonraki bir sürümü önerilir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli]. Veya [Azure Cloud Shell](../cloud-shell/quickstart.md)içinde çalıştırın.
-* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Docker Hub 'dan gibi `hello-world` örnek bir görüntüyü [içeri aktarın](container-registry-import-images.md) . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun.
-* Farklı bir Azure aboneliğinde özel bir bağlantı kullanarak kayıt defteri erişimini yapılandırmak için bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydetmeniz gerekir. Örneğin:
+* Bu makalede Azure CLı adımlarını kullanmak için, Azure CLı sürüm 2.6.0 veya sonraki bir sürümü önerilir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli]. Veya [Azure Cloud Shell](../cloud-shell/quickstart.md)içinde çalıştırın.
+* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Docker Hub 'dan gibi örnek bir görüntüyü [içeri aktarın](container-registry-import-images.md) `hello-world` . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun.
+* Farklı bir Azure aboneliğinde özel bir bağlantı kullanarak kayıt defteri erişimini yapılandırmak için bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydetmeniz gerekir. Örnek:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of private link>
@@ -114,7 +114,7 @@ REGISTRY_ID=$(az acr show --name $REGISTRY_NAME \
 
 Kayıt defterinin özel uç noktasını oluşturmak için [az Network Private-ENDPOINT Create][az-network-private-endpoint-create] komutunu çalıştırın.
 
-Aşağıdaki örnek, *Myprivateendpoint* ve hizmet bağlantısı *myConnection*uç noktasını oluşturur. Uç nokta için bir kapsayıcı kayıt defteri kaynağı belirtmek için şu `--group-ids registry`geçişi yapın:
+Aşağıdaki örnek, *Myprivateendpoint* ve hizmet bağlantısı *myConnection*uç noktasını oluşturur. Uç nokta için bir kapsayıcı kayıt defteri kaynağı belirtmek için şu geçişi yapın `--group-ids registry` :
 
 ```azurecli
 az network private-endpoint create \
@@ -160,7 +160,7 @@ DATA_ENDPOINT_PRIVATE_IP=$(az resource show \
 
 ### <a name="create-dns-records-in-the-private-zone"></a>Özel bölgede DNS kayıtları oluşturma
 
-Aşağıdaki komutlar, kayıt defteri uç noktası ve veri uç noktası için özel bölgede DNS kayıtları oluşturur. Örneğin, westeurope bölgesinde *myregistry* adlı bir kayıt defteriniz varsa, uç *westeurope* nokta adları ve `myregistry.azurecr.io` `myregistry.westeurope.data.azurecr.io`' dir. 
+Aşağıdaki komutlar, kayıt defteri uç noktası ve veri uç noktası için özel bölgede DNS kayıtları oluşturur. Örneğin, *westeurope* bölgesinde *myregistry* adlı bir kayıt defteriniz varsa, uç nokta adları ve ' dir `myregistry.azurecr.io` `myregistry.westeurope.data.azurecr.io` . 
 
 > [!NOTE]
 > Kayıt defteriniz coğrafi olarak [çoğaltılırsa](container-registry-geo-replication.md), her bir çoğaltmanın veri uç noktası IP 'si için ek ton DNS kayıtları oluşturun.
@@ -207,7 +207,7 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
 
 1. Portalda bir kayıt defteri oluştururken, **temel kavramlar** sekmesinde, **SKU**' da **Premium**' u seçin.
 1. **Ağ** sekmesini seçin.
-1. **Ağ bağlantısı**' nda **Özel uç nokta** > **+ Ekle**' yi seçin.
+1. **Ağ bağlantısı**' nda **Özel uç nokta**  >  **+ Ekle**' yi seçin.
 1. Aşağıdaki bilgileri girin veya seçin:
 
     | Ayar | Değer |
@@ -282,7 +282,21 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
 
 ## <a name="disable-public-access"></a>Genel erişimi devre dışı bırak
 
-Birçok senaryo için, Ortak ağlardan kayıt defteri erişimini devre dışı bırakın. Bu yapılandırma, sanal ağın dışındaki istemcilerin kayıt defteri uç noktalarına ulaşmasını engeller. Portalı kullanarak genel erişimi devre dışı bırakmak için:
+Birçok senaryo için, Ortak ağlardan kayıt defteri erişimini devre dışı bırakın. Bu yapılandırma, sanal ağın dışındaki istemcilerin kayıt defteri uç noktalarına ulaşmasını engeller. 
+
+### <a name="disable-public-access---cli"></a>Genel erişimi devre dışı bırak-CLı
+
+Azure CLı kullanarak genel erişimi devre dışı bırakmak için [az ACR Update][az-acr-update] çalıştırın ve `--public-network-enabled` olarak ayarlayın `false` . 
+
+> [!NOTE]
+> `public-network-enabled`Bağımsız değişken Azure CLI 2.6.0 veya üstünü gerektirir. 
+
+```azurecli
+az acr update --name $REGISTRY_NAME --public-network-enabled false
+```
+
+
+### <a name="disable-public-access---portal"></a>Genel erişimi devre dışı bırak-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
 1. **Genel erişim** sekmesinde, **ortak erişime izin ver**' in altında **devre dışı**' yı seçin. Sonra **Kaydet**' i seçin.
@@ -293,7 +307,7 @@ Birçok senaryo için, Ortak ağlardan kayıt defteri erişimini devre dışı b
 
 Özel bağlantı bağlantısını doğrulamak için sanal ağda ayarladığınız sanal makineye SSH.
 
-Özel bağlantı `nslookup` üzerinden kayıt defterinizin IP adresini çözümlemek için komutunu çalıştırın:
+`nslookup`Özel bağlantı üzerinden kayıt DEFTERINIZIN IP adresini çözümlemek için komutunu çalıştırın:
 
 ```bash
 nslookup $REGISTRY_NAME.azurecr.io
@@ -308,7 +322,7 @@ Name:   myregistry.privatelink.azurecr.io
 Address: 10.0.0.6
 ```
 
-Bu sonucu, genel bir uç nokta üzerinden aynı `nslookup` kayıt defteri için ÇıKıŞDAKI genel IP adresiyle karşılaştırın:
+Bu sonucu `nslookup` , genel bir uç nokta üzerinden aynı kayıt defteri için çıkışdaki genel IP adresiyle karşılaştırın:
 
 ```console
 [...]
@@ -319,13 +333,13 @@ Address: 40.78.103.41
 
 ### <a name="registry-operations-over-private-link"></a>Özel bağlantı üzerinden kayıt defteri işlemleri
 
-Ayrıca, alt ağdaki sanal makineden kayıt defteri işlemleri gerçekleştirebildiğinizi doğrulayın. Sanal makinenize bir SSH bağlantısı oluşturun ve kayıt defterinizde oturum açmak için [az ACR LOGIN][az-acr-login] ' i çalıştırın. VM yapılandırmanıza bağlı olarak, ile `sudo`aşağıdaki komutları ön eki uygulamanız gerekebilir.
+Ayrıca, alt ağdaki sanal makineden kayıt defteri işlemleri gerçekleştirebildiğinizi doğrulayın. Sanal makinenize bir SSH bağlantısı oluşturun ve kayıt defterinizde oturum açmak için [az ACR LOGIN][az-acr-login] ' i çalıştırın. VM yapılandırmanıza bağlı olarak, ile aşağıdaki komutları ön eki uygulamanız gerekebilir `sudo` .
 
 ```bash
 az acr login --name $REGISTRY_NAME
 ```
 
-Kayıt defterinden örnek bir görüntü `docker pull` çekmek için gibi kayıt defteri işlemleri gerçekleştirin. Kayıt `hello-world:v1` defteriniz için uygun olan bir görüntüyle ve etiketle değiştirin ve kayıt defteri oturum açma sunucusu adı (tümü küçük harf) öneki:
+`docker pull`Kayıt defterinden örnek bir görüntü çekmek için gibi kayıt defteri işlemleri gerçekleştirin. Kayıt defteriniz `hello-world:v1` için uygun olan bir görüntüyle ve etiketle değiştirin ve kayıt defteri oturum açma sunucusu adı (tümü küçük harf) öneki:
 
 ```bash
 docker pull myregistry.azurecr.io/hello-world:v1
@@ -337,7 +351,7 @@ Docker görüntüyü sanal makineye başarıyla çeker.
 
 Azure portal kullanarak veya [az ACR Private-Endpoint-Connection][az-acr-private-endpoint-connection] komut grubundaki komutları kullanarak bir kayıt defterinin özel uç nokta bağlantılarını yönetin. İşlemler, bir kayıt defterinin özel uç nokta bağlantılarının onaylama, silme, listeleme, reddetme veya ayrıntılarını içerir.
 
-Örneğin, bir kayıt defterinin özel uç nokta bağlantılarını listelemek için [az ACR Private-Endpoint-Connection List][az-acr-private-endpoint-connection-list] komutunu çalıştırın. Örneğin:
+Örneğin, bir kayıt defterinin özel uç nokta bağlantılarını listelemek için [az ACR Private-Endpoint-Connection List][az-acr-private-endpoint-connection-list] komutunu çalıştırın. Örnek:
 
 ```azurecli
 az acr private-endpoint-connection list \
@@ -348,9 +362,9 @@ Bu makaledeki adımları kullanarak özel bir uç nokta bağlantısı ayarladı�
 
 ## <a name="add-zone-records-for-replicas"></a>Çoğaltmalar için bölge kayıtları ekleme
 
-Bu makalede gösterildiği gibi, bir kayıt defterine özel bir uç nokta bağlantısı eklediğinizde, `privatelink.azurecr.io` bölgedeki DNS kayıtları kayıt defteri ve kayıt defteri 'nin [çoğaltılacağı](container-registry-geo-replication.md)bölgelerdeki veri uç noktaları için oluşturulur. 
+Bu makalede gösterildiği gibi, bir kayıt defterine özel bir uç nokta bağlantısı eklediğinizde, bölgedeki DNS kayıtları kayıt defteri `privatelink.azurecr.io` ve kayıt defteri 'nin [çoğaltılacağı](container-registry-geo-replication.md)bölgelerdeki veri uç noktaları için oluşturulur. 
 
-Daha sonra yeni bir çoğaltma eklerseniz, bu bölgedeki veri uç noktası için el ile yeni bir bölge kaydı eklemeniz gerekir. Örneğin, *northeurope* konumunda `myregistry.northeurope.data.azurecr.io` *myregistry* 'nin bir çoğaltmasını oluşturursanız, için bir bölge kaydı ekleyin. Adımlar için, bu makaledeki [özel bölgede DNS kayıtları oluşturma](#create-dns-records-in-the-private-zone) bölümüne bakın.
+Daha sonra yeni bir çoğaltma eklerseniz, bu bölgedeki veri uç noktası için el ile yeni bir bölge kaydı eklemeniz gerekir. Örneğin, *northeurope* konumunda *myregistry* 'nin bir çoğaltmasını oluşturursanız, için bir bölge kaydı ekleyin `myregistry.northeurope.data.azurecr.io` . Adımlar için, bu makaledeki [özel bölgede DNS kayıtları oluşturma](#create-dns-records-in-the-private-zone) bölümüne bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

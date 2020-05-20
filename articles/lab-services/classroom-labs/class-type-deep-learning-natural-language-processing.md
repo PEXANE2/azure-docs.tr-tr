@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 1167846c399430bd2db2eaa3114628ebb63ce639
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f03d1cfeccf03614fe0a5828a05768a5ae3f56e2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592330"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699657"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Azure Lab Services kullanarak doğal dil işlemede derin öğrenmeye odaklanan bir laboratuvar kurun
 Bu makalede, Azure Lab Services kullanarak doğal dil işleme (NLP) için derin öğrenime odaklanan bir laboratuvarı nasıl ayarlayabileceğiniz gösterilmektedir. Doğal dil işleme (NLP), çeviri, konuşma tanıma ve diğer dil anlama özelliklerine sahip bilgisayarları sağlayan yapay zeka (AI) biçimidir.  
@@ -40,7 +40,9 @@ Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu �
 | ------------ | ------------------ |
 | Sanal makine (VM) boyutu | Küçük GPU (Işlem). Bu boyut, yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. |
 | VM görüntüsü | [Linux için veri bilimi sanal makinesi (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Bu görüntü, Machine Learning ve veri bilimi için derin öğrenme çerçeveleri ve araçları sağlar. Bu görüntüdeki yüklü araçların tam listesini görüntülemek için şu makaleye bakın: [DSVM 'ye nelerin dahil olduğu?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
-| Uzak Masaüstü bağlantısı 'nı etkinleştir | <p>Bu ayarın etkinleştirilmesi, eğitimciler ve öğrencilerin uzak masaüstü (RDP) kullanarak kendi sanal makinelerine (VM) bağlanmasına imkan tanır.</p><p>**Önemli**: Bu ayarı etkinleştirmek yalnızca Linux makinelerde **RDP** bağlantı noktasını açar. RDP, sanal makine görüntüsünde zaten yüklü ve yapılandırılmışsa, siz/öğrenciler ek adımları izleyerek RDP aracılığıyla VM 'lere bağlanabilir. <p>VM görüntüsünün RDP yüklemesi ve yapılandırması yoksa, Linux makinesine ilk kez SSH kullanarak bağlanmanız ve RDP ve GUI paketlerini yüklemeniz gerekir, böylelikle/öğrenciler daha sonra RDP kullanarak Linux makinesine bağlanabilir. Daha fazla bilgi için bkz. [Azure 'da bir LINUX VM 'sine bağlanmak Için uzak masaüstü 'Nü yüklemek ve yapılandırmak](../../virtual-machines/linux/use-remote-desktop.md). Daha sonra, öğrencilerin öğrenci Linux VM 'lerinde RDP kullanabilmesi için görüntüyü yayımlayın.  |
+| Uzak Masaüstü bağlantısı 'nı etkinleştir | <p>Veri bilimi görüntüsü, öğretmen ve öğrencilerin GUI Uzak Masaüstü kullanarak bağlanabilmesi için X2Go kullanmak üzere zaten yapılandırılmıştır.  X2Go, **Uzak Masaüstü bağlantısını etkinleştir** ayarının *etkinleştirilmesini gerektirmez.*  Bu ayarın, bunun yerine RDP kullanmayı tercih ediyorsanız etkinleştirilmesi gerekir.
+
+>**Önemli**: veri bilimi görüntüsüyle X2Go kullanmanız önerilir, ancak bunun yerine RDP kullanmayı tercih EDIYORSANıZ, SSH 'yi ilk kez kullanarak Linux VM 'ye BAĞLANMANıZ ve RDP ve GUI paketlerini yüklemeniz gerekir.  Daha sonra, siz/öğrenciler daha sonra RDP kullanarak Linux VM 'ye bağlanabilir.  Daha fazla bilgi için bkz. [Linux VM 'leri için grafik uzak masaüstünü etkinleştirme](how-to-enable-remote-desktop-linux.md).
 
 Linux görüntüsü için Veri Bilimi Sanal Makinesi, bu tür bir sınıf için gereken ayrıntılı öğrenme çerçevelerini ve araçları sağlar. Sonuç olarak, şablon makine oluşturulduktan sonra daha fazla özelleştirmeniz gerekmez. Bu, öğrencilerin kullanması için yayımlanabilir. Şablonu laboratuvarda yayımlamak için şablon sayfasında **Yayımla** düğmesini seçin.  
 

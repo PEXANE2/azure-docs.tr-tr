@@ -3,12 +3,12 @@ title: SSS - Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 description: Bu makalede, Azure Backup hizmetini kullanarak SAP HANA veritabanlarının yedeklenmesi hakkında sık sorulan soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: f9e0d96439a79c2c3d2cb2caa00ff09be3ff790d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 56f98dddb00eb3ffc87eb27da73066de807a1ee1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660124"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701019"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Sık sorulan sorular – Azure VM 'lerinde SAP HANA veritabanlarını yedekleyin
 
@@ -49,9 +49,9 @@ Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlend
 
 Ön kayıt betiğini çalıştırmak, Azure 'un SAP HANA veritabanlarını yedeklemesini sağlamak için gerekli izinleri ayarlar. Ön kayıt betiğini [buradan](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)daha fazla bulabilirsiniz.
 
-### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>SAP HANA 1,0 ' den 2,0 ' e geçirildikten sonra yedeklemeler çalışır mi?
+### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>SAP HANA SDC 'den MDC 'ye geçirdikten sonra yedeklemeler çalışır mi?
 
-Sorun giderme kılavuzunun [Bu bölümüne](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) bakın.
+Sorun giderme kılavuzunun [Bu bölümüne](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) bakın.
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Azure HANA yedekleme, sanal bir makine değil sanal IP 'ye (yük dengeleyici) göre ayarlanabilir mi?
 

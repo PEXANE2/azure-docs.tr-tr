@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 626dc5a7d1cd52182e68eb0d217b2ac4c653330e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 05/19/2020
+ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994345"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700968"
 ---
 # <a name="create-a-consulting-service-offer"></a>Danışmanlık hizmeti teklifi oluşturma
 
@@ -32,8 +32,8 @@ Ticari Market 'e yayımlamanın avantajları:
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market** > **genel bakış**' ı seçin.
-3. Genel Bakış sayfasında **+ yeni teklif** > **danışmanlık hizmeti**' ni seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+3. Genel Bakış sayfasında **+ yeni teklif**  >  **danışmanlık hizmeti**' ni seçin.
 
     ![Sol gezinti menüsünü gösterir.](./media/new-offer-consulting-service.png)
 
@@ -45,7 +45,7 @@ Ticari Market 'e yayımlamanın avantajları:
 Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
 
 - Bu KIMLIK, Market teklifinin Web adresinde müşteriler tarafından görülebilir.
-- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
@@ -108,7 +108,7 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 Burada, Market 'te görüntülenen teklif ayrıntılarını tanımlayacaksınız. Buna teklif adı, açıklama, görüntüler vb. dahildir. Bu teklifi yapılandırırken [ticari Market sertifika ilkeleri sayfasında](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) ayrıntılı ilkeleri izlediğinizden emin olun.
 
 > [!NOTE]
-> Teklif ayrıntılarının, tümcesiyle birlikte başlaması durumunda, &quot;bu uygulamanın yalnızca [İngilizce olmayan dil] bölümünde kullanılabilmesi için teklif ayrıntılarının İngilizce olması gerekmez. &quot; Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
+> Teklif ayrıntılarının, tümcesiyle birlikte başlaması durumunda, &quot; Bu uygulamanın yalnızca [İngilizce olmayan dil] bölümünde kullanılabilmesi için teklif ayrıntılarının İngilizce olması gerekmez. &quot; Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
 ### <a name="name"></a>Name
 
@@ -126,34 +126,13 @@ Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğund
 
 ### <a name="description"></a>Açıklama
 
-Teklifinizin en fazla 3.000 karakter uzunluğunda olması için daha uzun bir açıklama sağlayın. Bu, Market dökümüne Genel Bakış bölümündeki müşterilere görüntülenir.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Açıklamasında aşağıdakilerden birini veya birkaçını ekleyin:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Teklifinizin sağladığı değer ve önemli avantajlar
-- Kategori veya sektör ilişkilendirmeleri veya her ikisi
-- Uygulama içi satın alma fırsatları
-- Gerekli tüm kaldırlar
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
-Tanımlarınızı yazmak için bazı ipuçları aşağıda verilmiştir:
-
-- Açıklayamlarınızın ilk birkaç cümlede teklifinizin değerini açıkça açıklamalıdır. Aşağıdaki öğeleri ekleyin:
-  - Teklifin açıklaması.
-  - Tekliften faydalanan Kullanıcı türü.
-  - Müşteri ihtiyaçları veya teklif adreslerini yayınlar.
-- İlk birkaç tümcenin arama sonuçlarında görüntülenebileceğini unutmayın.
-- Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teklifinizin sağladığı değere odaklanın.
-- Sektöre özgü sözlük veya avantaj tabanlı bir ifade kullanmayı deneyin.
-
-Teklif açıklamanızı daha ilgi çekici hale getirmek için, biçimlendirme uygulamak için zengin metin düzenleyicisini kullanın.
-
-![Zengin metin düzenleyicisini kullanma](./media/rich-text-editor.png)
-
-| <center>Metin biçimini değiştir | <center>Madde işaretleri veya numaralandırma ekleme | <center>Metin girintisi ekleme veya kaldırma |
-| --- | --- | --- |
-| <center>![Metin biçimini değiştirmek için zengin metin düzenleyicisini kullanma](./media/text-editor3.png) |  <center>![Liste eklemek için zengin metin düzenleyicisini kullanma](./media/text-editor4.png) |  <center>![Girintilemek için zengin metin düzenleyicisini kullanma](./media/text-editor5.png) |
-
-### <a name="keywords"></a>Anahtar sözcükler
+### <a name="keywords"></a>Anahtar Sözcükler
 
 Birincil ürün ve danışmanlık hizmetinize uygun en fazla üç arama anahtar sözcüğü girin. Tekliflerinizi bulmayı daha kolay hale getirir.
 
@@ -174,7 +153,7 @@ Teklifiniz için PDF belgelerini destekleyen en fazla üç (ancak en az bir) ekl
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin. png biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
 >[!Note]
->Dosya yükleme sorununuz varsa, yerel ağınızın Iş Ortağı Merkezi tarafından kullanılan https://upload.xboxlive.com hizmeti engellemediğinden emin olun.
+>Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 

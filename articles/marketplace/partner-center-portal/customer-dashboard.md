@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 4d9dc0315a5c87ed67390e8edb23d44ee55f242b
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 37569eba0d351fdedcd68042af2e33b0e3947faa
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732776"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701506"
 ---
-# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te müşteri panosu
+# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Müşteri Panosu
 
 Bu makalede, Iş Ortağı Merkezi 'nde **Müşteri panosu** hakkında bilgi sağlanmaktadır. Bu Pano, bir grafik ve indirilebilir biçimde sunulan büyüme eğilimleri dahil olmak üzere müşterilerinizle ilgili bilgileri görüntüler.
 
@@ -98,6 +98,7 @@ Isı haritasını müşteri sayısını ve% müşteri ülkesini görüntüler. T
 - Kayıt sayısı 1000 ' den küçükse veriler TSV dosyasına ayıklanabilir.
 - Kayıt numarası 1000 üzerinden ise, verilen veriler sonraki 30 gün boyunca bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
 - Filtreler, yalnızca ilgilendiğiniz verileri göstermek için tabloya uygulanabilir. Veriler şirket adı, müşteri KIMLIĞI, Market abonelik KIMLIĞI, Azure lisans türü, alınma tarihi, tarih kaybı, müşteri e-postası, müşteri ülkesi/eyalet/şehir/zip, müşteri dili vb. tarafından filtrelenebilir.
+- Bir teklif, korunan bir müşteri tarafından satın alındığında, **müşterinin ayrıntılı verilerinde** bilgiler maskelenecek (* * * * * * * * * * * *).
 
 ### <a name="customer-page-filters"></a>Müşteri sayfası filtreleri
 

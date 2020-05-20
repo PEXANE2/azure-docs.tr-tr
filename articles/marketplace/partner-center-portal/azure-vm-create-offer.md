@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 31b8960f5617566a72545510cf03771f7a3bfcbd
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.date: 05/19/2020
+ms.openlocfilehash: 25b7a619f6d3e308de966ead5925133f6094d9c8
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82745017"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701085"
 ---
 # <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>Azure Marketi 'nde Azure sanal makine teklifi oluşturma
 
@@ -61,8 +61,8 @@ Mühendislik ekibiniz aşağıdaki Microsoft teknolojilerini anlamalıdır:
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market** > **genel bakış**' ı seçin.
-3. Genel Bakış sayfasında **+ yeni teklif** > **Azure sanal makinesi**' ni seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+3. Genel Bakış sayfasında **+ yeni teklif**  >  **Azure sanal makinesi**' ni seçin.
 
     ![Sol gezinti menüsünü gösterir.](./media/new-offer-azure-vm.png)
 
@@ -74,7 +74,7 @@ Mühendislik ekibiniz aşağıdaki Microsoft teknolojilerini anlamalıdır:
 Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
 
 - Bu KIMLIK, Market teklifinin Web adresindeki müşterilere ve varsa Azure PowerShell ve Azure CLı 'ye yönelik olarak görünür.
-- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, burada **Test-teklif-1** girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, burada **Test-teklif-1** girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
@@ -197,32 +197,11 @@ Teklifinizin daha uzun bir açıklamasını sağlayın. Bu, 256 karakter uzunlu�
 
 #### <a name="description"></a>Açıklama
 
-Teklifinizin, en fazla 3.000 karakter uzunluğunda ayrıntılı bir açıklama sağlayın. Bu, ticari Market dökümüne Genel Bakış bölümündeki müşterilere görüntülenir.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Açıklamasında aşağıdakilerden birini veya birkaçını ekleyin:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Teklifinizin değeri ve temel avantajları
-- Kategori veya sektör ilişkilendirmeleri veya her ikisi
-- Uygulama içi satın alma fırsatları
-- Gerekli tüm kaldırlar
-
-Tanımlarınızı yazmak için bazı ipuçları aşağıda verilmiştir:
-
-- Tanımlarınızın ilk birkaç cümlede teklifinizin değer teklifini açıkça açıklayadır. Aşağıdaki öğeleri ekleyin:
-  - Teklifinizin açıklaması.
-  - Teklifinizden faydalanan Kullanıcı türü.
-  - Müşteri ihtiyaçları veya teklifin adresleyen sorunlar.
-- İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini unutmayın.
-- Teklifinizi satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teklifinizin sağladığı değere odaklanın.
-- Sektöre özgü veya avantaj tabanlı sözcükler kullanın.
-
-Teklif açıklamanızı daha ilgi çekici hale getirmek için, biçimlendirme uygulamak için zengin metin düzenleyicisini kullanın.
-
-![Zengin metin düzenleyicisini kullanma](./media/rich-text-editor.png)
-
-| <center>Metin biçimini değiştir | <center>Madde işaretleri veya numaralandırma ekleme | <center>Metin girintisi ekleme veya kaldırma |
-| --- | --- | --- |
-| <center>![Metin biçimini değiştirmek için zengin metin düzenleyicisini kullanma](./media/text-editor3.png) |  <center>![Liste eklemek için zengin metin düzenleyicisini kullanma](./media/text-editor4.png) |  <center>![Girintilemek için zengin metin düzenleyicisini kullanma](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-link"></a>Gizlilik ilkesi bağlantısı
 
@@ -263,7 +242,7 @@ Microsoft 'un, Teklifinizle ilgili sorunlar olduğunda, sertifika sorunları da 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler gönderiminizin reddedilmesine neden olur.
 
 >[!Note]
->Dosya yükleme sorununuz varsa, yerel ağınızın Iş Ortağı Merkezi tarafından kullanılan https://upload.xboxlive.com hizmeti engellemediğinden emin olun.
+>Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="marketplace-logos"></a>Market logoları
 
@@ -527,7 +506,7 @@ Yayımlama işlemindeki **el ile doğrulama** adımı, teklifinizin ve ilişkili
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel temsili (hem tamamlandı hem de devam ediyor) ve her adımın tamamlanması için gereken süre gösterilir.
 
-Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örneğin:
+Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örnek:
 
 - Teklif bir taslak- [silme taslağı tekliftir](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)

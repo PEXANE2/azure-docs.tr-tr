@@ -3,12 +3,12 @@ title: Azure Application Insights 'de akıllı algılama | Microsoft Docs
 description: Application Insights, uygulama telemetrinizin otomatik derin analizini yapar ve olası sorunlar hakkında sizi uyarır.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: ff9f88e1d2e643d04c4417283420217e7d496caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536803"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700846"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights'da Akıllı Algılama
  Akıllı algılama, Web uygulamanızdaki olası performans sorunlarını ve hata bozuklumlarını otomatik olarak uyarır. Uygulamanızın [Application Insights](../../azure-monitor/app/app-insights-overview.md)için gönderdiği Telemetriyi proaktif analizini gerçekleştirir. Hata hızlarındaki ani bir artış veya istemci ya da sunucu performansındaki anormal desenler varsa, bir uyarı alırsınız. Bu özelliğin yapılandırması yok. Uygulamanız yeterli telemetri gönderdiğinde çalışır.
@@ -59,6 +59,6 @@ Bu tanılama araçları uygulamanızdan Telemetriyi incelemenize yardımcı olur
 
 Akıllı algılama tamamen otomatiktir. Ancak daha fazla uyarı kurmak istiyor olabilirsiniz?
 
-* [El ile yapılandırılmış ölçüm uyarıları](../../azure-monitor/app/alerts.md)
+* [El ile yapılandırılmış ölçüm uyarıları](../../azure-monitor/platform/alerts-log.md)
 * [Kullanılabilirlik web testleri](../../azure-monitor/app/monitor-web-app-availability.md) 
 

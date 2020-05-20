@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 17a6b7e46341ee0231ac88b849495cfc7e46ad88
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.date: 05/19/2020
+ms.openlocfilehash: 9c31c6ca4ccb5ff328faa5db1803134aa6b0c873
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839156"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701126"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Microsoft AppSource için Power BI uygulaması oluşturma
 
@@ -23,8 +23,8 @@ Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market** > **genel bakış**' ı seçin.
-3. Genel Bakış sayfasında **+ yeni teklif** > **Power BI hizmet uygulaması**' nı seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+3. Genel Bakış sayfasında **+ yeni teklif**  >  **Power BI hizmet uygulaması**' nı seçin.
 
    ![Sol gezinti menüsünü gösterir.](./media/new-offer-pbi-app.png)
 
@@ -39,7 +39,7 @@ Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari 
 Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
 
 - Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
-- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, burada **Test-teklif-1** girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, burada **Test-teklif-1** girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
@@ -53,7 +53,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 Bu sayfa, bu teklifi yayımlamak için gereken adımların görsel bir gösterimini gösterir (hem tamamlandı hem de yaklaşan) ve her adımın tamamlanması gereken süre.
 
-Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örneğin:
+Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örnek:
 
 - Teklif bir taslak- [silme taslağı tekliftir](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -96,7 +96,7 @@ Bu sayfa, teklifinizi Market 'te, uygulama sürümünüzde ve teklifinizi destek
 
 En az bir ve en fazla üç kategori seçin. Bu kategoriler, teklifinizi uygun Market arama alanına yerleştirmek için kullanılır ve teklif ayrıntıları sayfasında gösterilir. Teklif açıklamasında, teklifinizin bu kategorileri nasıl desteklediğini açıklayın.
 
-### <a name="industry"></a>Endüstri
+### <a name="industry"></a>Sektör
 
 İsteğe bağlı olarak, her bir sektör altında en fazla iki sektör ve iki ifade seçin. Tekliflerinizi görüntülemek için kategoriler kullanıldığında, sektör ve verticileri arama filtrelerinde kullanılır ve storefront içinde uygulanır. Teklifiniz belirli bir sektör ve/veya dikey hedefliyorsa, teklifinizin seçili sektörlerin veya maticileri nasıl desteklediğini açıklamak için teklif açıklamasını kullanın. Teklifiniz sektöre özgü değilse, bu bölümü boş bırakın.
 
@@ -104,22 +104,22 @@ En az bir ve en fazla üç kategori seçin. Bu kategoriler, teklifinizi uygun Ma
 > Teklif bulma deneyimini geliştirmek için yeni endüstriler ve tanıtımlarla karşılaşmak üzere çalışırken, bazı sektörlerin veya verticiler henüz storefront üzerinde görünmeyebilir. (*) İle işaretlenen sektörler ve verticileri, gelecekteki bir tarihte kullanılabilir. Tüm yayımlanan teklifler anahtar sözcük arama aracılığıyla bulunabilir.
 <p>&nbsp;
 
-| **Endüstri** | **Alt sektör** |
+| **Sektör** | **Alt sektör** |
 | --- | --- |
 | * Oto | * Oto |
 | Tarım | * Diğer-kesimli |
 | Dağıtım | * Toptan<br>Paket ve paket gönderimi |
-| Eğitim | *Daha yüksek<br> eğitim* Birincil ve Ikincil Eğitim/K-12<br>* Kitaplıklar ve Museums |
-| Finansal Hizmetler | *Bankacılık ve sermaye pazarlar<br> * Eleri |
-| Devlet | *Savunma ve zeka (Ulusal ve genel güvenlik olarak adlandırılır)<br> * Genel güvenlik ve adalet<br>* Cıvilian kamu |
-| Sağlık (sistem durumu olarak adlandırılabilecek şekilde kullanılır) | *Sistem durumu ödemi veya<br> * Sistem durumu sağlayıcısı<br>* İlaç |
-| Üretim ve kaynaklar (üretim olarak adlandırılabilmesi için kullanılır) | *Kimyasal ve Agrokimyasal<br> * Ayrık üretim<br>* Enerji |
-| Perakende ve tüketici malları (perakende olarak adlandırılabilmesi için kullanılır) | *Tüketici malları<br> * Tercih |
-| * Medya ve Iletişim (medya ve eğlence olarak adlandırılabilecek şekilde kullanılır) | *Medya ve eğlence<br> * Telekomünikasyon |
-| Profesyonel Hizmetler | *Yasal<br> * İş ortağı profesyonel hizmetleri |
+| Eğitim | *Daha yüksek <br> eğitim* Birincil ve Ikincil Eğitim/K-12<br>* Kitaplıklar ve Museums |
+| Finansal Hizmetler | *Bankacılık ve sermaye pazarlar <br> * Eleri |
+| Kamu | *Savunma ve zeka (Ulusal ve genel güvenlik olarak adlandırılır) <br> * Genel güvenlik ve adalet<br>* Cıvilian kamu |
+| Sağlık (sistem durumu olarak adlandırılabilecek şekilde kullanılır) | *Sistem durumu ödemi veya <br> * Sistem durumu sağlayıcısı<br>* İlaç |
+| Üretim ve kaynaklar (üretim olarak adlandırılabilmesi için kullanılır) | *Kimyasal ve Agrokimyasal <br> * Ayrık üretim<br>* Enerji |
+| Perakende ve tüketici malları (perakende olarak adlandırılabilmesi için kullanılır) | *Tüketici malları <br> * Tercih |
+| * Medya ve Iletişim (medya ve eğlence olarak adlandırılabilecek şekilde kullanılır) | *Medya ve eğlence <br> * Telekomünikasyon |
+| Profesyonel Hizmetler | *Yasal <br> * İş ortağı profesyonel hizmetleri |
 | * Mimari ve yapım (mimari Mühendisliği olarak adlandırılabilmesi için kullanılır) | * Diğer-kesimli |
-| * Hosititesi ve seyahat | *Oteller ve boş<br> * Seyahat ve ulaşım<br>* Restoranlar ve yiyecek hizmetleri |
-| * Diğer kamu sektörü endüstrileri | *Ormancılık ve balıkçılık<br> * Şartlara |
+| * Hosititesi ve seyahat | *Oteller ve boş <br> * Seyahat ve ulaşım<br>* Restoranlar ve yiyecek hizmetleri |
+| * Diğer kamu sektörü endüstrileri | *Ormancılık ve balıkçılık <br> * Şartlara |
 | * Emlak | * Diğer-kesimli |
 
 ### <a name="legal"></a>Yasal Bildirim
@@ -161,32 +161,11 @@ Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğund
 
 ### <a name="description"></a>Açıklama
 
-Teklifinizin en fazla 3.000 karakter uzunluğunda olması için daha uzun bir açıklama sağlayın. Bu, Market dökümüne Genel Bakış bölümündeki müşterilere görüntülenir.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Açıklamasında aşağıdakilerden birini veya birkaçını ekleyin:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Teklifinizin sağladığı değer ve önemli avantajlar.
-- Kategori veya sektör ilişkilendirmeleri ya da her ikisi.
-- Uygulama içi satın alma fırsatları.
-- Tüm gerekli kaldırlar.
-
-Tanımlarınızı yazmak için bazı ipuçları aşağıda verilmiştir:
-
-- Açıklayamlarınızın ilk birkaç cümlede teklifinizin değerini açıkça açıklamalıdır. Aşağıdaki öğeleri ekleyin:
-  - Teklifin açıklaması.
-  - Tekliften faydalanan Kullanıcı türü.
-  - Müşteri ihtiyaçları veya teklif adreslerini yayınlar.
-- İlk birkaç tümcenin arama sonuçlarında görüntülenebileceğini unutmayın.
-- Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teklifinizin sağladığı değere odaklanın.
-- Sektöre özgü sözlük veya avantaj tabanlı bir ifade kullanmayı deneyin.
-
-Teklif açıklamanızı daha ilgi çekici hale getirmek için, biçimlendirme uygulamak için zengin metin düzenleyicisini kullanın.
-
-![Zengin metin düzenleyicisini kullanma](./media/rich-text-editor.png)
-
-| <center>Metin biçimini değiştir | <center>Madde işaretleri veya numaralandırma ekleme | <center>Metin girintisi ekleme veya kaldırma |
-| --- | --- | --- |
-| <center>![Metin biçimini değiştirmek için zengin metin düzenleyicisini kullanma](./media/text-editor3.png) |  <center>![Liste eklemek için zengin metin düzenleyicisini kullanma](./media/text-editor4.png) |  <center>![Girintilemek için zengin metin düzenleyicisini kullanma](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="search-keywords"></a>Anahtar sözcükleri ara
 
@@ -223,7 +202,7 @@ PDF biçiminde en az bir ve en çok üç ilgili pazarlama belgesi sağlayın. Ö
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin. png biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
 >[!NOTE]
->Dosya yükleme sorununuz varsa, yerel ağınızın Iş Ortağı Merkezi tarafından kullanılan https://upload.xboxlive.com hizmeti engellemediğinden emin olun.
+>Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 5c80dc9f350fec30469a9bce2ed836c276ef3a7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75464762"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701905"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights ile olay Analizi ve görselleştirme
 
@@ -42,7 +42,7 @@ Application Insights portalının yeteneklerini daha ayrıntılı incelemek içi
 
 ### <a name="configuring-application-insights-with-eventflow"></a>EventFlow ile Application Insights yapılandırma
 
-Olayları toplamak için EventFlow kullanıyorsanız, `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`NuGet paketini içeri aktardığınızdan emin olun. *Eventflowconfig. JSON*' ın *çıktılar* bölümünde aşağıdaki kod gereklidir:
+Olayları toplamak için EventFlow kullanıyorsanız, NuGet paketini içeri aktardığınızdan emin olun `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` . *Eventflowconfig. JSON*' ın *çıktılar* bölümünde aşağıdaki kod gereklidir:
 
 ```json
 "outputs": [
@@ -73,5 +73,5 @@ Olaylarınız ve günlüklerinizin çıktısı olarak Application Insights yapı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Performans veya kullanımlardaki değişiklikler hakkında bildirim almak için [AI 'Deki uyarıları ayarlama](../azure-monitor/app/alerts.md)
+* Performans veya kullanımlardaki değişiklikler hakkında bildirim almak için [AI 'Deki uyarıları ayarlama](/azure/azure-monitor/platform/alerts-log)
 * [Application Insights akıllı algılama](../azure-monitor/app/proactive-diagnostics.md) , olası performans sorunları konusunda sizi uyarmak için Application Insights gönderilen telemetrinin proaktif analizini yapar

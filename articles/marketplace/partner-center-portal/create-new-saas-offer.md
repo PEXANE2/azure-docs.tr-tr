@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: b85846419ce5f6cd4093e198d83240817c95754a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 81b36532d09985d1e50fb3d0394d054d9a5e8250
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983066"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701165"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te yeni bir SaaS teklifi oluşturun
 
@@ -21,8 +21,8 @@ Ticari Market 'te hizmet olarak yazılım (SaaS) teklifi oluşturmaya başlamak 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market** > **genel bakış**' ı seçin.
-3. Genel Bakış sayfasında, hizmet olarak **yeni teklif** > **yazılımı**' nı seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+3. Genel Bakış sayfasında, hizmet olarak **yeni teklif**  >  **yazılımı**' nı seçin.
 
    ![Sol gezinti menüsünü gösterir.](./media/new-offer-saas.png)
 
@@ -34,7 +34,7 @@ Ticari Market 'te hizmet olarak yazılım (SaaS) teklifi oluşturmaya başlamak 
 Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
 
 - Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
-- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, burada **Test-teklif-1** girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, burada **Test-teklif-1** girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
@@ -173,7 +173,7 @@ Microsoft, standart bir sözleşme şablonu sağlar.
 
 - **Microsoft ticari Market için standart sözleşme kullanılsın mı?**
 
-Microsoft, müşterilerin tedarik sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için Microsoft ticari Market 'e yönelik standart bir sözleşme sunarak Market 'teki işlemleri kolaylaştırmaya yardımcı olur. Ticari Market yayımcıları, özel hüküm ve koşulları ortadan kaldırmaktansa, müşterilerin yalnızca her bir kez ve kabul etmesi gereken standart sözleşme altında yazılımlarını sunmayı tercih edebilir. Standart Sözleşme adresinde https://go.microsoft.com/fwlink/?linkid=2041178bulunabilir.
+Microsoft, müşterilerin tedarik sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için Microsoft ticari Market 'e yönelik standart bir sözleşme sunarak Market 'teki işlemleri kolaylaştırmaya yardımcı olur. Ticari Market yayımcıları, özel hüküm ve koşulları ortadan kaldırmaktansa, müşterilerin yalnızca her bir kez ve kabul etmesi gereken standart sözleşme altında yazılımlarını sunmayı tercih edebilir. Standart Sözleşme adresinde bulunabilir https://go.microsoft.com/fwlink/?linkid=2041178 .
 
 "Ticari Market için standart sözleşmeyi kullan" onay kutusunu seçerek, kendi özel hüküm ve koşullarınızı sağlamak yerine standart sözleşmeyi kullanmayı seçebilirsiniz.
 
@@ -227,28 +227,13 @@ Teklif ve pazarlama varlıklarınızın açıklamaları dahil olmak üzere Marke
 - **Anahtar sözcükleri ara** – müşterilerin Market 'te teklifinizi bulmak için kullanabileceği en fazla üç arama anahtar sözcüğü girin.
 - Başlarken yönergeleri (gerekli) – uygulamanızı nasıl yapılandıracağınızı ve potansiyel müşteriler için kullanmaya **başlamanızı** açıklayın.  Bu hızlı başlangıç, daha ayrıntılı çevrimiçi belgelere bağlantılar içerebilir. Bu alana en fazla 3.000 karakter metin girilebilir.
 
-#### <a name="description"></a>**Açıklama**
+#### <a name="description"></a>Açıklama
 
-Bu alan gereklidir. **Açıklamaya**eklenecek öğeler:
+Bu alan gereklidir.
 
-* Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır.  
-* İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini aklınızda bulundurun.  
-* Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teslim ettiğiniz değere odaklanın.  
-* Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın.
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-Değer teklifini temel bileşenler şunlardır:
-
-* Ürünün açıklaması
-* Üründen faydalanan Kullanıcı türü
-* Müşteri ihtiyaçları veya ürün adresleriyle ilgili bir sorun
-
-Teklif açıklamanızı daha ilgi çekici hale getirmek için, biçimlendirme uygulamak için zengin metin düzenleyicisini kullanın.
-
-![Zengin metin düzenleyicisini kullanma](./media/rich-text-editor.png)
-
-| <center>Metin biçimini değiştir | <center>Madde işaretleri veya numaralandırma ekleme | <center>Metin girintisi ekleme veya kaldırma |
-| --- | --- | --- |
-| <center>![Metin biçimini değiştirmek için zengin metin düzenleyicisini kullanma](./media/text-editor3.png) |  <center>![Liste eklemek için zengin metin düzenleyicisini kullanma](./media/text-editor4.png) |  <center>![Girintilemek için zengin metin düzenleyicisini kullanma](./media/text-editor5.png) |
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 #### <a name="links"></a>Bağlantılar
 
@@ -279,7 +264,7 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, biçimlendirme uy
 - **Videolar** (isteğe bağlı) – teklifinizi gösteren videoların bağlantılarını ekleyin. Müşteriler teklifinizle birlikte gösterilen YouTube ve/veya Vimeo videolarını içeren bağlantıları kullanabilirsiniz. Ayrıca, PNG biçiminde 1280 x 720 piksel boyutunda videonun küçük resmini de girmeniz gerekir. Her teklif için en fazla dört video görüntüleyebilirsiniz.
 
 >[!NOTE]
->Dosya yükleme sorununuz varsa, yerel ağınızın Iş Ortağı Merkezi tarafından kullanılan https://upload.xboxlive.com hizmeti engellemediğinden emin olun.
+>Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 
@@ -309,7 +294,7 @@ Bu sayfa, teklifinizi bağlamak için kullanılan teknik ayrıntıları (URL yol
 
 - **Giriş sayfası URL 'si** (gerekli) – müşterilerinizin teklifinizi Market 'ten aldıktan sonra HANGI site URL 'sini tanımlayın. Bu URL, bir müşteri sayfaya yönlendirildiğini belirteç alan uç nokta olur. Bu belirteç, karşılama API 'Lerinde çözümle kullanılarak sağlama ayrıntıları için takas edilebilir. Bu ayrıntılar ve topladığınız tüm diğerleri, kaydınızı tamamlayıp satın almasını etkinleştirmek için deneyiminizin yerleşik olduğu müşteri etkileşimli Web sayfasının bir parçası olarak kullanılabilir.
 
-- **Bağlantı Web kancası** (gerekli) – Microsoft 'un müşteri adına size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örneğin, SaaS aboneliği geçersiz oldu), bağlantı Web kancası sağlamanız gerekir. Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde işleymelidir (örneğin, https:\//prod-1westus.Logic.Azure.com:443/Work). Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Bağlantı Web kancası** (gerekli) – Microsoft 'un müşteri adına size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örneğin, SaaS aboneliği geçersiz oldu), bağlantı Web kancası sağlamanız gerekir. Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde işleymelidir (örneğin, https: \/ /prod-1westus.Logic.Azure.com:443/Work). Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **Azure AD KIRACı kimliği** (gerekli) – Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) gerekir. [KIRACı kimliğini](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)bulmak için Azure Active Directory gidin ve **Özellikler**' i seçin, ardından listelenen **dizin kimliği** numarasını arayın (örneğin, 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -402,7 +387,7 @@ Teklifinizdeki her plan için ücretsiz bir deneme yapılandırabilirsiniz. Bir 
 >[!NOTE]
 >Transactable teklifiniz ücretsiz bir deneme ile yayımlandıktan sonra bu plan için devre dışı bırakılamaz. Planı yeniden oluşturmak zorunda kalmamak için bu ayarın ilk yayımlama için doğru olduğundan emin olun.
 
-Ücretsiz bir denemeye katılmış olan müşteri abonelikleri hakkında bilgi edinmek için, doğru veya yanlış olarak işaretlenecek yeni `isFreeTrial`API özelliğini kullanın. Daha fazla bilgi için [SaaS Get abonelik API 'sine](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)bakın.
+Ücretsiz bir denemeye katılmış olan müşteri abonelikleri hakkında bilgi edinmek için, `isFreeTrial` doğru veya yanlış olarak işaretlenecek yenı API özelliğini kullanın. Daha fazla bilgi için [SaaS Get abonelik API 'sine](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)bakın.
 
 >[!NOTE]
 >Market ölçüm hizmetinden yararlanan planlar için ücretsiz denemeler desteklenmez.
@@ -419,7 +404,7 @@ Planınızı özel ve yalnızca seçtiğiniz kısıtlanmış kitlele görünür 
 
 Bu özel plana erişimi olacak hedef kitleyi atayın. Atanan her kiracı KIMLIĞININ açıklamasını ekleme seçeneğiyle kiracı kimlikleri kullanılarak erişim atanır. Bir. csv elektronik tablo dosyası içeri aktarıldıysanız, en fazla 10 Kiracı kimliği eklenebilir veya 20.000 müşteri Kiracı kimliği olabilir.
 
-Kiracı, bir GUID (genel benzersiz tanımlayıcı, kaynakları tanımlamak için kullanılan 128 bitlik bir tamsayı numarası) olarak temsil edilen KIMLIĞE sahip bir kuruluşun gösterimidir. Kuruluş veya uygulama geliştiricisi, Microsoft ile bir ilişki oluştururken bir kuruluşun veya uygulama geliştiricisinin Microsoft ile bir ilişki oluşturduğunda (örneğin, Azure için kaydolurken, Microsoft Intune veya Microsoft 365) adanmış bir Azure AD örneğidir. Her Azure AD kiracısı benzersizdir ve diğer Azure AD kiracılarından ayrıdır. Kiracıyı denetlemek için, uygulamanızı yönetirken kullanmak istediğiniz hesapla Azure portalında oturum açın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz. Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin. Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır. Ayrıca, bir etki alanı adı URL 'sini kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+Kiracı, bir GUID (genel benzersiz tanımlayıcı, kaynakları tanımlamak için kullanılan 128 bitlik bir tamsayı numarası) olarak temsil edilen KIMLIĞE sahip bir kuruluşun gösterimidir. Kuruluş veya uygulama geliştiricisi, Microsoft ile bir ilişki oluştururken bir kuruluşun veya uygulama geliştiricisinin Microsoft ile bir ilişki oluşturduğunda (örneğin, Azure için kaydolurken, Microsoft Intune veya Microsoft 365) adanmış bir Azure AD örneğidir. Her Azure AD kiracısı benzersizdir ve diğer Azure AD kiracılarından ayrıdır. Kiracıyı denetlemek için, uygulamanızı yönetirken kullanmak istediğiniz hesapla Azure portalında oturum açın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz. Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin. Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır. Ayrıca, bir etki alanı adı URL 'sini kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 
 SaaS, özel bir hedef kitle tanımlamak için kiracı kimlikleri kullanır, diğer teklif türleri de Azure abonelik kimliklerini (GUID 'Ler olarak da temsil edilir) kullanabilir.
 

@@ -4,16 +4,16 @@ description: Azure Analysis Services Server yönetici rolüne bir Automation hiz
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 925fbbb51ac240b96486a2c0aa09c850a8d164bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80408639"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697522"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme 
 
@@ -30,7 +30,7 @@ Bu görevi tamamlamadan önce, Azure Active Directory kayıtlı bir hizmet sorum
 Sunucu yöneticilerini, SQL Server Management Studio (SSMS) kullanarak yapılandırabilirsiniz. Bu görevi gerçekleştirmek için Azure 'da sunucu [Yöneticisi](analysis-services-server-admins.md) izinlerine sahip olmanız gerekir. 
 
 1. SSMS 'de, Azure 'u sunucunuza bağlayın.
-2. **Sunucu özellikleri** > **güvenlik**bölümünde **Ekle**' ye tıklayın.
+2. **Sunucu özellikleri**  >  **güvenlik**bölümünde **Ekle**' ye tıklayın.
 3. **Kullanıcı veya Grup Seç**' te, kayıtlı uygulamanızı ada göre arayın, öğesini seçin ve ardından **Ekle**' ye tıklayın.
 
     ![Hizmet sorumlusu hesabı ara](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
@@ -44,7 +44,7 @@ Sunucu yöneticilerini, SQL Server Management Studio (SSMS) kullanarak yapıland
 Ayrıca, bir Azure Resource Manager şablonu kullanarak Analysis Services sunucusunu dağıtarak sunucu yöneticilerini yapılandırabilirsiniz. Dağıtımı çalıştıran kimlik, [Azure rol tabanlı Access Control (RBAC)](../role-based-access-control/overview.md)içindeki kaynak için **katkıda** bulunan rolüne ait olmalıdır.
 
 > [!IMPORTANT]
-> Hizmet sorumlusu biçim `app:{service-principal-client-id}@{azure-ad-tenant-id}`kullanılarak eklenmelidir.
+> Hizmet sorumlusu biçim kullanılarak eklenmelidir `app:{service-principal-client-id}@{azure-ad-tenant-id}` .
 
 Aşağıdaki Kaynak Yöneticisi şablonu, Analysis Services Yönetici rolüne eklenen belirli bir hizmet sorumlusu ile bir Analysis Services sunucusu dağıtır:
 

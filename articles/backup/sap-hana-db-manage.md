@@ -3,12 +3,12 @@ title: Azure VM 'lerinde yedeklenen SAP HANA veritabanlarını yönetme
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yönetmek ve izlemek için ortak görevler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c810a049fafcbce6d4c840557b101e5226343ab7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e3705750e32b8b34ed397b8f68f22b0728129266
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660154"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701115"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Yedeklenen SAP HANA veritabanlarını yönetme ve izleme
 
@@ -208,13 +208,13 @@ Bir SAP HANA veritabanı korumasını sürdürmesini sağlamak için:
 
 * **Yedekleme ilkesi** menüsünde bir ilke seçin ve ardından **Kaydet**' i seçin.
 
-### <a name="upgrading-from-sap-hana-10-to-20"></a>SAP HANA 1,0 ' den 2,0 ' ye yükseltme
+### <a name="upgrading-from-sdc-to-mdc"></a>SDC 'den MDC 'ye yükseltme
 
-[SAP HANA 1,0 ' den 2,0 ' e yükselttikten sonra](backup-azure-sap-hana-database-troubleshoot.md#upgrading-from-sap-hana-10-to-20)bir SAP HANA veritabanı için yedeklemeye nasıl devam edeceğinizi öğrenin.
+[SDC 'den MDC 'ye yükselttikten sonra](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid)bir SAP HANA veritabanı için yedeklemeye nasıl devam edeceğinizi öğrenin.
 
-### <a name="upgrading-without-a-sid-change"></a>SID değişikliği olmadan yükseltme
+### <a name="upgrading-from-sdc-to-mdc-without-a-sid-change"></a>SDC 'den MDC 'ye bir SID değişikliği olmadan yükseltme
 
-[SID, yükseltmeden sonra değişmemiş](backup-azure-sap-hana-database-troubleshoot.md#upgrading-without-an-sid-change)bir SAP HANA veritabanının yedeğine nasıl devam edeceğinizi öğrenin.
+[SDC 'den MDC 'ye yükselttikten sonra SID 'nin değişmediğinden](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid)SAP HANA bir veritabanının yedeklenmesini devam etmeyi öğrenin.
 
 ### <a name="unregister-an-sap-hana-instance"></a>SAP HANA örneğinin kaydını silme
 

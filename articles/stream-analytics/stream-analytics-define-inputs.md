@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52f333a8e39dfd8f68666e6438a7d40414b6f958
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254475"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701423"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics giriş olarak veri akışı
 
@@ -30,7 +30,7 @@ Stream Analytics tüm veri akışı giriş kaynaklarında sıkıştırmayı dest
 
 ## <a name="create-edit-or-test-inputs"></a>Girişleri oluşturma, düzenleme veya test etme
 
-[Azure Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md)ve [Visual Studio Code](quick-create-vs-code.md) kullanarak akış işinizdeki mevcut girişleri ekleyebilir ve bunları görüntüleyebilir veya düzenleyebilirsiniz. Ayrıca, Azure portal, [Visual Studio](stream-analytics-vs-tools-local-run.md)ve [Visual Studio Code](visual-studio-code-local-run.md)örnek verilerden giriş bağlantılarını ve [Test sorgularını](stream-analytics-manage-job.md#test-your-query) test edebilirsiniz. Bir sorgu yazdığınızda FROM yan tümcesindeki girişi listeleyin. Portalda **sorgu** sayfasından kullanılabilir girişlerin listesini alabilirsiniz. Birden çok giriş kullanmak isterseniz, `JOIN` bu veya birden çok `SELECT` sorgu yazabilirsiniz.
+[Azure Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md)ve [Visual Studio Code](quick-create-vs-code.md) kullanarak akış işinizdeki mevcut girişleri ekleyebilir ve bunları görüntüleyebilir veya düzenleyebilirsiniz. Ayrıca, Azure portal, [Visual Studio](stream-analytics-vs-tools-local-run.md)ve [Visual Studio Code](visual-studio-code-local-run.md)örnek verilerden giriş bağlantılarını ve [Test sorgularını](stream-analytics-manage-job.md#test-your-query) test edebilirsiniz. Bir sorgu yazdığınızda FROM yan tümcesindeki girişi listeleyin. Portalda **sorgu** sayfasından kullanılabilir girişlerin listesini alabilirsiniz. Birden çok giriş kullanmak isterseniz, bu `JOIN` veya birden çok `SELECT` sorgu yazabilirsiniz.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Event Hubs’dan veri akışı sağlama
@@ -86,7 +86,7 @@ FROM Input
 
 Azure IoT Hub, IoT senaryoları için iyileştirilmiş, yüksek düzeyde ölçeklenebilir bir yayınla-abone ol olay alma olayıdır.
 
-Stream Analytics bir IoT Hub gelen olayların varsayılan zaman damgası, olayın IoT Hub geldiği zaman damgasıdır `EventEnqueuedUtcTime`. Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) kullanmanız gerekir.
+Stream Analytics bir IoT Hub gelen olayların varsayılan zaman damgası, olayın IoT Hub geldiği zaman damgasıdır `EventEnqueuedUtcTime` . Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) kullanmanız gerekir.
 
 ### <a name="iot-hub-consumer-groups"></a>IoT Hub 'ı tüketici grupları
 
@@ -130,11 +130,11 @@ Azure Blob depolama, bulutta depolanacak büyük miktarda yapılandırılmamış
 
 Günlük işleme, Stream Analytics ile BLOB depolama girişlerini kullanmak için yaygın olarak kullanılan bir senaryodur. Bu senaryoda telemetri veri dosyaları bir sistemden yakalanmıştır ve anlamlı verilerin ayıklanmasının ayrıştırılması ve işlenmesi gerekir.
 
-Stream Analytics blob Storage olaylarının varsayılan zaman damgası, blob 'un en son değiştirildiği zaman damgasıdır `BlobLastModifiedUtcTime`. Blob, 13:00 konumundaki bir depolama hesabına yüklenirse ve Azure Stream Analytics işi *Şu* anda 13:01 ' de seçeneği kullanılarak başlatılırsa, değiştirilen süre iş çalışma döneminin dışında kaldığında blob alınmaz.
+Stream Analytics blob Storage olaylarının varsayılan zaman damgası, blob 'un en son değiştirildiği zaman damgasıdır `BlobLastModifiedUtcTime` . Blob, 13:00 konumundaki bir depolama hesabına yüklenirse ve Azure Stream Analytics işi *Şu* anda 13:01 ' de seçeneği kullanılarak başlatılırsa, değiştirilen süre iş çalışma döneminin dışında kaldığında blob alınmaz.
 
 Bir blob, 13:00 konumundaki bir depolama hesabı kapsayıcısına yüklenirse ve Azure Stream Analytics işi 13:00 veya daha önceki bir tarihte *özel süre* kullanılarak başlatılırsa, blob, değiştirilen süre iş çalışma döneminin içinde yer aldığından alınır.
 
-Bir Azure Stream Analytics işi *Şu* anda 13:00 ' de kullanılarak başlatılırsa ve bir BLOB depolama hesabı kapsayıcısına 13:01 ' de yüklenirse, Azure Stream Analytics blobu seçer.
+Bir Azure Stream Analytics işi *Şu* anda 13:00 ' de kullanılarak başlatılırsa ve bir BLOB depolama hesabı kapsayıcısına 13:01 ' de yüklenirse, Azure Stream Analytics blobu seçer. Her bloba atanan zaman damgası yalnızca üzerine dayalıdır `BlobLastModifiedTime` . Blob 'un içinde olduğu klasörün, atanan zaman damgasıyla ilişkisi yok. Örneğin, 2019-11-11 ile bir blob *2019/10-01/00/B1. txt* varsa `BlobLastModifiedTime` , bu bloba atanan zaman damgası 2019-11-11 ' dir.
 
 Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanmanız gerekir. Blob dosyası kullanılabiliyorsa bir Stream Analytics işi her saniye Azure Blob depolama girişinden verileri çeker. Blob dosyası kullanılamıyorsa, 90 saniyelik en fazla gecikme süresine sahip bir üstel geri alma işlemi vardır.
 
@@ -143,7 +143,7 @@ CSV biçimli girişler, veri kümesi alanlarını tanımlamak için bir başlık
 > [!NOTE]
 > Stream Analytics var olan bir blob dosyasına içerik eklenmesini desteklemez. Stream Analytics her dosyayı yalnızca bir kez görüntüler ve işin ardından dosyada gerçekleşen değişiklikler verileri okuduktan sonra işlenmez. En iyi yöntem bir blob dosyası için tüm verileri bir kerede karşıya yüklemek ve sonra farklı, yeni bir blob dosyasına daha yeni olaylar eklemektir.
 
-Tek seferde çok fazla sayıda blob yüklemek Stream Analytics nadir durumlarda birkaç blob 'un okunmasını atlamasına neden olabilir. BLOB depolama alanına blob 'ları en az 2 saniye karşıya yüklemeniz önerilir. Bu seçenek uygun değilse, büyük hacimde olayları akışa almak için Event Hubs kullanabilirsiniz. 
+Birçok blob 'un sürekli olarak eklendiği ve Stream Analytics eklenen Blobların işlediği senaryolarda, bazı Blobların ayrıntı düzeyi nedeniyle nadir durumlarda atlanması mümkündür `BlobLastModifiedTime` . Blob 'ları en az iki saniye ayrı karşıya yükleyerek bunu azaltabilirsiniz. Bu seçenek uygun değilse, büyük hacimde olayları akışa almak için Event Hubs kullanabilirsiniz.
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>Blob depolamayı bir akış girişi olarak yapılandırma 
 
@@ -156,8 +156,8 @@ Aşağıdaki tabloda, blob depolamayı bir akış girişi olarak yapılandırdı
 | **Depolama hesabı** | Blob dosyalarının bulunduğu depolama hesabının adı. |
 | **Depolama hesabı anahtarı** | Depolama hesabıyla ilişkili gizli anahtar. BLOB depolama ayarlarını el ile sağlama seçeneğini seçmediğiniz takdirde bu seçenek otomatik olarak doldurulur. |
 | **Kapsayıcı** | Blob girişi için kapsayıcı. Kapsayıcılar Microsoft Azure Blob hizmetinde depolanan Bloblar için mantıksal bir gruplama sağlar. Azure Blob depolama hizmetine bir blob yüklediğinizde, o blob için bir kapsayıcı belirtmeniz gerekir. Yeni bir kapsayıcının oluşturulmasını sağlamak için **Mevcut kapsayıcıyı kullan** veya **Yeni oluştur** seçeneklerinden birini belirleyebilirsiniz.|
-| **Yol kalıbı** (isteğe bağlı) | Belirtilen kapsayıcı içindeki Blobları bulmak için kullanılan dosya yolu. Kapsayıcının kökünden blob 'ları okumak istiyorsanız, bir yol kalıbı ayarlamayın. Yol içinde, aşağıdaki üç değişkenin bir veya daha fazla örneğini belirtebilirsiniz: `{date}`, veya `{time}``{partition}`<br/><br/>Örnek 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Örnek 2:`cluster1/logs/{date}`<br/><br/>`*` Karakter, yol ön eki için izin verilen bir değer değil. Yalnızca geçerli <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob karakterlerine</a> izin verilir. Kapsayıcı adlarını veya dosya adlarını eklemeyin. |
-| **Tarih biçimi** (isteğe bağlı) | Yol içinde tarih değişkenini kullanıyorsanız, dosyaların düzenlenme tarih biçimi. Örnek: `YYYY/MM/DD` |
+| **Yol kalıbı** (isteğe bağlı) | Belirtilen kapsayıcı içindeki Blobları bulmak için kullanılan dosya yolu. Kapsayıcının kökünden blob 'ları okumak istiyorsanız, bir yol kalıbı ayarlamayın. Yol içinde, aşağıdaki üç değişkenin bir veya daha fazla örneğini belirtebilirsiniz: `{date}` , `{time}` veya`{partition}`<br/><br/>Örnek 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Örnek 2:`cluster1/logs/{date}`<br/><br/>`*`Karakter, yol ön eki için izin verilen bir değer değil. Yalnızca geçerli <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob karakterlerine</a> izin verilir. Kapsayıcı adlarını veya dosya adlarını eklemeyin. |
+| **Tarih biçimi** (isteğe bağlı) | Yol içinde tarih değişkenini kullanıyorsanız, dosyaların düzenlenme tarih biçimi. Örnek: `YYYY/MM/DD` <br/><br/> Blob girişi `{date}` `{time}` yolunda veya yolunda olduğunda, klasörler artan zaman düzeninde aranır.|
 | **Saat biçimi** (isteğe bağlı) |  Yoldaki zaman değişkenini, dosyaların düzenlenme zaman biçimini kullanırsanız. Şu anda desteklenen tek değer `HH` saattir. |
 | **Bölüm anahtarı** | Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını ekleyebilirsiniz. Bölüm anahtarları isteğe bağlıdır ve bu özellikte bir bölüm veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını artırmak için kullanılır. |
 | **Olay serileştirme biçimi** | Gelen veri akışının serileştirme biçimi (JSON, CSV, Avro veya [diğer (prototip, XML, özel...)](custom-deserializer.md)).  JSON biçiminin belirtile hizalandığından ve ondalık sayılar için öndeki 0 içermediğinden emin olun. |

@@ -7,13 +7,13 @@ manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 41b2e12a94f5751e31f482c913c71b4731b1cf6c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.date: 05/19/2020
+ms.openlocfilehash: 3d8806e34afe45e6cced3de4554b7dd365f4ddf9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871915"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701779"
 ---
 # <a name="create-a-managed-service-offer"></a>Yönetilen Hizmet teklifi oluşturma
 
@@ -24,8 +24,8 @@ Yönetilen hizmet teklifi yayımlamak için [gümüş veya altın bir bulut plat
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market** > **genel bakış**' ı seçin.
-3. Genel Bakış sayfasında **+ yeni teklif** > **yönetilen hizmet**' i seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+3. Genel Bakış sayfasında **+ yeni teklif**  >  **yönetilen hizmet**' i seçin.
 
     ![Sol gezinti menüsünü gösterir.](./media/new-offer-managed-service.png)
 
@@ -37,7 +37,7 @@ Yönetilen hizmet teklifi yayımlamak için [gümüş veya altın bir bulut plat
 Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
 
 * Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
-* Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+* Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 * Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
@@ -94,25 +94,11 @@ Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 256 karakter). Bu
 
 ### <a name="description"></a>Açıklama
 
-Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 3.000 karakter). Bu açıklama Market dökümüne Genel Bakış bölümündeki müşterilere görüntülenecektir. Teklifinizin değer teklifini, anahtar avantajlarını, kategori ve/veya sektör ilişkilendirmelerini, uygulama içi satın alma fırsatlarını ve gerekli tüm teklifleri dahil edin.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Tanımlarınızı yazmak için bazı ipuçları:  
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır. Değer teklifinde aşağıdaki öğeleri ekleyin:
-  - Teklifin açıklaması
-  - Tekliften faydalanan Kullanıcı türü
-  - Müşteri ihtiyaçları veya teklif adreslerine yönelik bir sorun
-- İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini aklınızda bulundurun.  
-- Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teslim ettiğiniz değere odaklanın.  
-- Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın.
-
-Teklif açıklamanızı daha ilgi çekici hale getirmek için, biçimlendirme uygulamak için zengin metin düzenleyicisini kullanın.
-
-![Zengin metin düzenleyicisini kullanma](./media/rich-text-editor.png)
-
-| <center>Metin biçimini değiştir | <center>Madde işaretleri veya numaralandırma ekleme | <center>Metin girintisi ekleme veya kaldırma |
-| --- | --- | --- |
-| <center>![Metin biçimini değiştirmek için zengin metin düzenleyicisini kullanma](./media/text-editor3.png) |  <center>![Liste eklemek için zengin metin düzenleyicisini kullanma](./media/text-editor4.png) |  <center>![Girintilemek için zengin metin düzenleyicisini kullanma](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="privacy-policy-link"></a>Gizlilik ilkesi bağlantısı
 
@@ -135,7 +121,7 @@ Bu bölümde, bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad,
 Bu bölümde, müşteri teklifinizi gösterirken kullanılacak logo ve görüntüler sağlayabilirsiniz. Tüm görüntülerin. png biçiminde olması gerekir.
 
 >[!NOTE]
->Dosya yükleme sorununuz varsa, yerel ağınızın Iş Ortağı Merkezi tarafından kullanılan https://upload.xboxlive.com hizmeti engellemediğinden emin olun.
+>Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="marketplace-logos"></a>Market logoları
 

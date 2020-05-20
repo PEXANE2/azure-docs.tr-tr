@@ -6,17 +6,17 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/03/2020
-ms.openlocfilehash: 22d6c37b59488633394d7f3ed5ca5b0c78371e7d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/19/2020
+ms.openlocfilehash: 55d544ecf6c96335ca65255e1af695f7757b818c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790696"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699511"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
-Bu makalede, ticari Market 'te yeni bir Azure uygulaması teklifi oluşturmaya yönelik adımlar ve noktalar açıklanmaktadır. Yeni bir Azure Uygulama teklifi oluşturmadan önce bu kavramları tanımanız gerekir. 
+Bu makalede, ticari Market 'te yeni bir Azure uygulaması teklifi oluşturmaya yönelik adımlar ve noktalar açıklanmaktadır. Yeni bir Azure Uygulama teklifi oluşturmadan önce bu kavramları tanımanız gerekir.
 
 Yeni bir Azure Uygulama teklifi yayımlayabilmeniz için önce [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) ve hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
@@ -90,7 +90,7 @@ Mevcut araçları [Azure Geliştirici Araçları](https://azure.microsoft.com/to
 
 ## <a name="technical-requirements"></a>Teknik gereksinimler
 
-Tüm Azure uygulamaları, bir `.zip` Arşiv kök klasöründe en az iki dosya içerir:
+Tüm Azure uygulamaları, bir arşiv kök klasöründe en az iki dosya içerir `.zip` :
 
 * [Maintemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)adlı bir kaynak yöneticisi şablon dosyası.  Bu şablon, müşterinin Azure aboneliğine dağıtılacak kaynakları tanımlar.  Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/resources/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
 
@@ -107,16 +107,16 @@ Her uygulama planına ilişkin gereksinimleri yayımlama hakkında bilgi edinmek
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
 
-1. Sol taraftaki menüden **ticari Market** > **genel bakış**' ı seçin.
+1. Sol taraftaki menüden **ticari Market**  >  **genel bakış**' ı seçin.
 
-1. Genel Bakış sayfasında **+ yeni teklif** > **Azure uygulaması**' nı seçin.
+1. Genel Bakış sayfasında **+ yeni teklif**  >  **Azure uygulaması**' nı seçin.
 
     ![Sol gezinti menüsünü gösterir.](./media/new-offer-azure-app.png)
 
 1. **Yeni teklif** sayfasında, BIR **teklif kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
 
      * Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
-     * Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+     * Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
      * Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 1. Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
@@ -174,26 +174,19 @@ Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığ�
 
 #### <a name="search-results-summary"></a>Arama sonuçları Özeti
 
-Teklifinizin kısa bir açıklamasını (en fazla 100 karakter) sağlayın. Bu işlem, arama sonuçlarında kullanılabilir.
+Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıklama sağlayın. Bu açıklama, arama sonuçlarında kullanılabilir.
 
 #### <a name="long-summary"></a>Uzun Özet
 
-Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 256 karakter). Bu açıklama, arama sonuçlarında kullanılabilir.
+Teklifinizin en fazla 256 karakter uzunluğunda olması için daha uzun bir açıklama sağlayın. Bu açıklama, arama sonuçlarında kullanılabilir.
 
 #### <a name="description"></a>Açıklama
 
-Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 3.000 karakter). Bu açıklama, listeye Genel Bakış bölümündeki müşterilere görüntülenecektir. Teklifinizin değer teklifini, anahtar avantajlarını, kategori ve/veya sektör ilişkilendirmelerini, uygulama içi satın alma fırsatlarını ve gerekli tüm teklifleri dahil edin.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Açıklamanızı yazmak için bazı ipuçları:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-* Tanımlarınızın ilk birkaç cümlede teklifinizin değer teklifini açıkça açıklayadır. Aşağıdaki öğeleri ekleyin:
-  * Teklifinizin açıklaması.
-  * Teklifinizden faydalanan Kullanıcı türü.
-  * Müşteri ihtiyaçları veya teklifin adresleyen sorunlar.
-* İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini unutmayın.
-* Teklifinizi satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teklifinizin sağladığı değere odaklanın.
-* Sektöre özgü veya avantaj tabanlı sözcükler kullanın.
-* Açıklamanızı daha ilgi çekici hale getirmek üzere biçimlendirmek için HTML etiketlerini kullanmayı düşünün.
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 #### <a name="search-keywords"></a>Anahtar sözcükleri ara
 
@@ -216,7 +209,7 @@ Bir **destek kişisi**, **mühendislik Iletişim**ve **CSP program kişisi**içi
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler gönderiminizin reddedilmesine neden olur.
 
 >[!Note]
->Dosya yükleme sorununuz varsa, yerel ağınızın Iş Ortağı Merkezi tarafından kullanılan https://upload.xboxlive.com hizmeti engellemediğinden emin olun.
+>Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 
@@ -422,24 +415,24 @@ Bu sekme, müşterilerin planınızı dağıtmasına olanak sağlayacak dağıt�
 
 Bu sekme, teknik yapılandırmanızın taslak sürümünü düzenlemenize olanak tanır.
 
-**Sürüm** – teknik yapılandırmanın güncel sürümünü atayın.  Bu sayfada her değişiklik yayımlaışınızda bu sürümü artırın. Sürüm biçimde `{integer}.{integer}.{integer}`olmalıdır.
+**Sürüm** – teknik yapılandırmanın güncel sürümünü atayın.  Bu sayfada her değişiklik yayımlaışınızda bu sürümü artırın. Sürüm biçimde olmalıdır `{integer}.{integer}.{integer}` .
 
-**Paket dosyası** (. zip) – Bu paket, bu plan için gereken tüm şablon dosyalarının yanı sıra `.zip` dosya olarak paketlenmiş ek kaynaklar içerir.
+**Paket dosyası** (. zip) – Bu paket, bu plan için gereken tüm şablon dosyalarının yanı sıra dosya olarak paketlenmiş ek kaynaklar içerir `.zip` .
 
-Tüm Azure uygulama planı paketleri, bir `.zip` Arşiv kök klasöründe bu iki dosyayı içermelidir:
+Tüm Azure uygulama planı paketleri, bir arşiv kök klasöründe bu iki dosyayı içermelidir `.zip` :
 
 * [Maintemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)adlı bir kaynak yöneticisi şablon dosyası. Bu şablon, müşterilerin Azure aboneliğine kaynak dağıtımını otomatikleştirir.  Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/documentation/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
 * [Createuıdefinition. JSON](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)adlı Azure uygulama oluşturma deneyimi için bir kullanıcı arabirimi tanımı.
 
 Desteklenen en büyük dosya boyutu:
 
-* Toplam sıkıştırılmış `.zip` arşiv boyutunda en fazla 1 GB
-* `.zip` Arşiv içindeki her bir sıkıştırılmamış dosya Için 1 GB 'a kadar  
+* Toplam sıkıştırılmış arşiv boyutunda en fazla 1 GB `.zip`
+* Arşiv içindeki her bir sıkıştırılmamış dosya için 1 GB 'a kadar `.zip`  
 
 Tüm yeni Azure Uygulama teklifleri Ayrıca bir [Azure iş ortağı müşteri kullanımı attributıon](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) GUID 'i de içermelidir.
 
 >[!Note]
->Dosya yükleme sorununuz varsa, yerel ağınızın Iş Ortağı Merkezi tarafından kullanılan https://upload.xboxlive.com hizmeti engellemediğinden emin olun.
+>Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 Yönetilen uygulama planları bu sekmede ek bilgi gerektirir.
 
@@ -452,13 +445,13 @@ Yönetilen uygulama planları bu sekmede ek bilgi gerektirir.
 Bu plan için tam zamanında (JıT) erişimi etkinleştirmek üzere bu seçeneği belirleyin.  JıT erişimi, sorun giderme ve bakım için yönetilen bir uygulamanın kaynaklarına yükseltilmiş erişim isteme imkanı sağlar. Kaynaklara her zaman salt okuma erişiminizin olması gerekir, ancak belirli bir süre için daha fazla erişime sahip olabilirsiniz.  Daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme](https://docs.microsoft.com/azure/managed-applications/request-just-in-time-access).  Yönetilen uygulamanızın tüketicilerinin hesabınıza kalıcı erişim vermesini gerektirmek için, bu seçeneği işaretlenmemiş olarak bırakın.
 
 >[!Note]
->Bu özelliği desteklemek için `createUiDefinition.json` dosyanızı güncelleştirdiğinizden emin olun.  
+>`createUiDefinition.json`Bu özelliği desteklemek için dosyanızı güncelleştirdiğinizden emin olun.  
 
 #### <a name="deployment-mode"></a>Dağıtım modu
 
 Bu planı dağıttığınızda, **tamamlanmış** veya **artımlı dağıtım modunun** yapılandırıp yapılandırmadığınızı seçin: 
 
-* **Tüm modda**, kaynak içinde tanımlanmazsa, uygulamanın müşteri tarafından yeniden dağıtımı yönetilen kaynak grubundaki kaynakların kaldırılmasına neden olur `mainTemplate.json`. 
+* **Tüm modda**, kaynak içinde tanımlanmazsa, uygulamanın müşteri tarafından yeniden dağıtımı yönetilen kaynak grubundaki kaynakların kaldırılmasına neden olur `mainTemplate.json` . 
 * **Artımlı modda**, uygulamanın yeniden dağıtımı mevcut kaynakları değişmeden bırakır.
 
 Dağıtım modları hakkında daha fazla bilgi için bkz. [Azure Resource Manager Dağıtım modları](https://docs.microsoft.com/azure/azure-resource-manager/deployment-modes).
@@ -469,9 +462,9 @@ Bu plan sürümünün yönetilen uygulama örneklerinde bulunan tüm CRUD işlem
 
 #### <a name="customize-allowed-customer-actions"></a>İzin verilen müşteri eylemlerini özelleştirme
 
-Müşterilerin, varsayılan olarak kullanılabilir olan "`*/read`" eylemlerine ek olarak yönetilen kaynaklarda gerçekleştirebileceği eylemleri belirtmek için bu seçeneği belirleyin. 
+Müşterilerin, `*/read` Varsayılan olarak kullanılabilir olan "" eylemlerine ek olarak yönetilen kaynaklarda gerçekleştirebileceği eylemleri belirtmek için bu seçeneği belirleyin. 
 
-Müşterinizin bu şekilde gerçekleştirmesini sağlamak istediğiniz ek eylemleri, noktalı virgülle ayırarak listeleyin.  Daha fazla bilgi için bkz. [Azure kaynakları için reddedilen atamaları anlama](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments).  Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için izin verilen `Microsoft.Compute/virtualMachines/restart/action` eylemlere ekleyin.
+Müşterinizin bu şekilde gerçekleştirmesini sağlamak istediğiniz ek eylemleri, noktalı virgülle ayırarak listeleyin.  Daha fazla bilgi için bkz. [Azure kaynakları için reddedilen atamaları anlama](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments).  Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemlere ekleyin.
 
 #### <a name="global-azure--azure-government-cloud"></a>Küresel Azure/Azure Kamu Bulutu
 
@@ -519,7 +512,7 @@ Bir sınama sürücüsünü etkinleştirmek için [teklif kurulumu](#test-drive)
 Test sürücüsünün sizin adınıza dağıtılmasına izin vermek için, ayrı ve benzersiz bir Azure aboneliği oluşturun ve sağlayın (Power BI test sürücüleri için gerekli değildir).
 
 * **Azure ABONELIK kimliği** (Azure Resource Manager ve Logic Apps için gereklidir) – Azure hesap hizmetlerinizi kaynak kullanımı raporlama ve faturalama için erişim izni vermek üzere abonelik kimliğini girin. Henüz bir tane yoksa, test sürücüleri için kullanmak üzere [ayrı bir Azure aboneliği oluşturmayı](https://docs.microsoft.com/azure/billing/billing-create-subscription) düşünmeniz önerilir. [Azure Portal](https://portal.azure.com/) oturum açarak ve sol taraftaki menüdeki **abonelikler** SEKMESINE giderek Azure abonelik kimliğinizi bulabilirsiniz. Sekmeyi seçtiğinizde, abonelik KIMLIĞINIZ görüntülenir (örneğin, "a83645ac-1234-5AB6-345-1h234g764ghty").
-* **Azure AD KIRACı kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **Özellikler**' i seçin, sonra listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın. Ayrıca, şu adreste bulunan etki alanı adı URL 'nizi kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+* **Azure AD KIRACı kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **Özellikler**' i seçin, sonra listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın. Ayrıca, şu adreste bulunan etki alanı adı URL 'nizi kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 * **Azure AD kiracı adı** (dinamik 365 için gereklidir) – Azure ACTIVE DIRECTORY (ad) adınızı girin. Bu adı bulmak için sağ üst köşedeki [Azure Portal](https://portal.azure.com/)oturum açın, kiracı adınız hesap adınızın altında listelenecektir.
 * **Azure AD uygulama kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol gezinti menüsünde Active Directory sekmesini seçin, **uygulama kayıtları**' i seçin, ardından listelenen **uygulama kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.
 * **Azure Active Directory uygulama istemci parolası** (gerekli) – Azure AD uygulamanızın [Istemci gizli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)anahtarını girin. Bu değeri bulmak için [Azure Portal](https://portal.azure.com/)oturum açın. Sol gezinti menüsünde **Azure Active Directory** sekmesini seçin, **uygulama kayıtları**' i seçin ve ardından test sürücüsü uygulamanızı seçin. Sonra **Sertifikalar ve gizlilikler**' ı seçin, **yeni istemci parolası**' nı seçin, bir açıklama girin, **süresi dolmasın**' ı seçin ve ardından **Ekle**' yi **Never** Bu sayfadan çıkmadan önce değeri kopyalamadığınızdan emin olun.)

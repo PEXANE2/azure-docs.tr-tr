@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 52f389e00d63f3659dfe79487b31ec9c3fab1ced
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 82fbc144b9b2dffdddc09900bf6ed9424b445100
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580685"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701450"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Eşleme veri akışındaki veri dönüştürme ifadeleri
 
@@ -59,6 +59,13 @@ ___
 Mantıksal AND işleci.  && ile aynı* ``and(true, false) -> false``  
 * ``true && false -> false``  
 ___
+### <code>array</code>
+<code><b>array([<i>&lt;value1&gt;</i> : any], ...) => array</b></code><br/><br/>
+Öğe dizisi oluşturur. Tüm öğeler aynı türde olmalıdır. Hiçbir öğe belirtilmemişse, boş bir dize dizisi varsayılandır. [] Oluşturma operatörüyle aynı* ``array('Seattle', 'Washington')``
+* ``['Seattle', 'Washington']``
+* ``['Seattle', 'Washington'][1]``
+* ``'Washington'``
+___
 ### <code>asin</code>
 <code><b>asin(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Ters Sinüs değerini hesaplar* ``asin(0) -> 0.0``  
@@ -79,6 +86,27 @@ Akıştaki ada göre bir sütun değeri seçer. İkinci bağımsız değişken o
 * ``toLong(byName($debtCol))``  
 * ``toString(byName('Bogus Column'))``  
 * ``toString(byName('Bogus Column', 'DeriveStream'))``  
+___
+### <code>byNames</code>
+<code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Akışta ada göre bir sütun dizisi seçin. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz. Birden çok eşleşme varsa, ilk eşleşme döndürülür. Bir sütun için eşleşme yoksa, çıktının tamamı NULL bir değerdir. Döndürülen değer bir tür dönüştürme işlevleri gerektiriyor (toDate, toString,...).  Tasarım zamanında bilinen sütun adları yalnızca adına göre değinmelidir. Hesaplanan girişler desteklenmez, ancak parametre değiştirmeler ' i kullanabilirsiniz.
+* ``toString(byNames(['parent', 'child']))``
+* ````
+* ``byNames(['parent']) ? string``
+* ````
+* ``toLong(byNames(['income']))``
+* ````
+* ``byNames(['income']) ? long``
+* ````
+* ``toBoolean(byNames(['foster']))``
+* ````
+* ``toLong(byNames($debtCols))``
+* ````
+* ``toString(byNames(['a Column']))``
+* ````
+* ``toString(byNames(['a Column'], 'DeriveStream'))``
+* ````
+* ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
@@ -119,6 +147,15 @@ ___
 Bir akış için tüm çıkış sütunlarını alır. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz.  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
+
+___
+### <code>columns</code>
+<code><b>columns([<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Bir akış için tüm çıkış sütunlarını alır. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz.   
+* ``columns()``
+* ````
+* ``columns('DeriveStream')``
+* ````
 ___
 ### <code>compare</code>
 <code><b>compare(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => integer</b></code><br/><br/>
@@ -402,7 +439,7 @@ Belirli bir uzunluğa ulaşana kadar dizeyi sağlanan doldurmaya göre aşağı 
 * ``lpad('dumbo', 4, '-') -> 'dumb'``  
 *' ' Lpad (' Dumbo ', 8, ' <> ')-> ' <><dumbo'``  
 ___
-### <code>LTrim</code>
+### <code> LTrim</code>
 <code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
 Sol karakterlerin bir dizesini sola kırpar. İkinci parametre belirtilmemişse boşluğu kırpar. Aksi takdirde, ikinci parametrede belirtilen karakterleri kırpar* ``ltrim('  dumbo  ') -> 'dumbo  '``  
 * ``ltrim('!--!du!mbo!', '-!') -> 'du!mbo!'``  
@@ -523,17 +560,17 @@ ___
 ___
 ### <code>regexExtract</code>
 <code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
-Verili bir Regex deseninin eşleşen alt dizesini ayıklayın. Son parametre, eşleşme grubunu tanımlar ve atlanırsa varsayılan olarak 1 ' e ayarlanır. Kaçış olmadan<regex>bir dizeyle eşleştirmek için ' ' (Back quote) kullanın* ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``  
+Verili bir Regex deseninin eşleşen alt dizesini ayıklayın. Son parametre, eşleşme grubunu tanımlar ve atlanırsa varsayılan olarak 1 ' e ayarlanır. <regex>Kaçış olmadan bir dizeyle eşleştirmek için ' ' (Back quote) kullanın* ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``  
 * ``regexExtract('Cost is between 600 and 800 dollars', `(\d+) and (\d+)`, 2) -> '800'``  
 ___
 ### <code>regexMatch</code>
 <code><b>regexMatch(<i>&lt;string&gt;</i> : string, <i>&lt;regex to match&gt;</i> : string) => boolean</b></code><br/><br/>
-Dizenin verilen Regex düzeniyle eşleşip eşleşmediğini denetler. Kaçış olmadan<regex>bir dizeyle eşleştirmek için ' ' (Back quote) kullanın* ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``  
+Dizenin verilen Regex düzeniyle eşleşip eşleşmediğini denetler. <regex>Kaçış olmadan bir dizeyle eşleştirmek için ' ' (Back quote) kullanın* ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``  
 * ``regexMatch('200.50', `(\d+).(\d+)`) -> true``  
 ___
 ### <code>regexReplace</code>
 <code><b>regexReplace(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, <i>&lt;substring to replace&gt;</i> : string) => string</b></code><br/><br/>
-Bir Regex deseninin tüm yinelemelerini, belirtilen dizedeki başka bir alt dizeyle Değiştir kaçış olmadan bir<regex>dizeyle eşleştirmek için ' ' (arka quote) kullanın* ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``  
+Bir Regex deseninin tüm yinelemelerini, belirtilen dizedeki başka bir alt dizeyle Değiştir <regex> kaçış olmadan bir dizeyle eşleştirmek için ' ' (arka quote) kullanın* ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``  
 * ``regexReplace('100 and 200', `(\d+)`, 'gunchus') -> 'gunchus and gunchus'``  
 ___
 ### <code>regexSplit</code>
@@ -965,7 +1002,7 @@ Geçerli satırdan sonra değerlendirilen n satıra ilk parametre değerini alı
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-NTile işlevi, her pencere bölümünün satırlarını 1 ile en çok `n` `n`arasında olacak demetlere böler. Demet değerleri en fazla 1 farklı olacaktır. Bölümdeki satır sayısı demet sayısına eşit olarak bölünmezse, ilk sepete başlayarak, geri kalan değerler her demet için bir dağıtılır. NTile işlevi, terkutucukların, kubotların ve diğer yaygın Özet istatistiğin hesaplanması için yararlıdır. İşlev, başlatma sırasında iki değişkeni hesaplar: düzenli bir demet boyutunun boyutuna eklenmiş bir ek satır olacaktır. Her iki değişken de geçerli bölümün boyutunu temel alır. Hesaplama işlemi sırasında işlev geçerli satır numarasını, geçerli demet numarasını ve demet 'in değiştirileceği satır numarasını (bucketThreshold) izler. Geçerli satır numarası demet eşiğine ulaştığında, demet değeri bir artırılır ve eşik, demet boyutu (ve geçerli demet doldurulmuş ise bir ek) ile artırılır.  
+NTile işlevi, her pencere bölümünün satırlarını `n` 1 ile en çok arasında olacak demetlere böler `n` . Demet değerleri en fazla 1 farklı olacaktır. Bölümdeki satır sayısı demet sayısına eşit olarak bölünmezse, ilk sepete başlayarak, geri kalan değerler her demet için bir dağıtılır. NTile işlevi, terkutucukların, kubotların ve diğer yaygın Özet istatistiğin hesaplanması için yararlıdır. İşlev, başlatma sırasında iki değişkeni hesaplar: düzenli bir demet boyutunun boyutuna eklenmiş bir ek satır olacaktır. Her iki değişken de geçerli bölümün boyutunu temel alır. Hesaplama işlemi sırasında işlev geçerli satır numarasını, geçerli demet numarasını ve demet 'in değiştirileceği satır numarasını (bucketThreshold) izler. Geçerli satır numarası demet eşiğine ulaştığında, demet değeri bir artırılır ve eşik, demet boyutu (ve geçerli demet doldurulmuş ise bir ek) ile artırılır.  
 * ``nTile()``  
 * ``nTile(numOfBuckets)``  
 ___

@@ -3,18 +3,18 @@ title: Azure Application Insights PowerShell ile otomatikleştirin | Microsoft D
 description: Azure Resource Manager şablonu kullanarak PowerShell 'de kaynakları, uyarıları ve kullanılabilirlik testlerini oluşturmayı ve yönetmeyi otomatikleştirin.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a6653582a990b97775976b757198f11b2a46c46b
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780513"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697912"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell kullanarak Application Insights kaynaklarını yönetme
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bu makalede, Azure Kaynak Yönetimi kullanılarak [Application Insights](../../azure-monitor/app/app-insights-overview.md) kaynaklarının otomatik olarak oluşturulmasını ve güncelleştirilmesini nasıl otomatikleştirebileceğiniz gösterilmektedir. Örneğin, bir yapı sürecinin bir parçası olarak bunu yapabilirsiniz. Temel Application Insights kaynağıyla birlikte, [kullanılabilirlik Web testleri](../../azure-monitor/app/monitor-web-app-availability.md)oluşturabilir, [uyarıları](../../azure-monitor/app/alerts.md)ayarlayabilir, [fiyatlandırma şemasını](pricing.md)ayarlayabilir ve diğer Azure kaynaklarını oluşturabilirsiniz.
+Bu makalede, Azure Kaynak Yönetimi kullanılarak [Application Insights](../../azure-monitor/app/app-insights-overview.md) kaynaklarının otomatik olarak oluşturulmasını ve güncelleştirilmesini nasıl otomatikleştirebileceğiniz gösterilmektedir. Örneğin, bir yapı sürecinin bir parçası olarak bunu yapabilirsiniz. Temel Application Insights kaynağıyla birlikte, [kullanılabilirlik Web testleri](../../azure-monitor/app/monitor-web-app-availability.md)oluşturabilir, [uyarıları](../../azure-monitor/platform/alerts-log.md)ayarlayabilir, [fiyatlandırma şemasını](pricing.md)ayarlayabilir ve diğer Azure kaynaklarını oluşturabilirsiniz.
 
 Bu kaynakları oluşturmaya yönelik anahtar, [Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md)için JSON şablonlarıdır. Temel yordam: mevcut kaynakların JSON tanımlarını indirin; adlar gibi bazı değerleri parametreleştirin; ardından, yeni bir kaynak oluşturmak istediğiniz her seferinde şablonu çalıştırın. Çeşitli kaynakları tek bir şekilde paketleyebilir, örneğin, sürekli dışa aktarma için kullanılabilirlik testleri, uyarılar ve depolama ile bir uygulama izleyicisine sahip olabilirsiniz. Burada açıklayacağımız bazı parametreler için bazı alt değişkenler vardır.
 
@@ -50,7 +50,7 @@ Bir Kaynak Yöneticisi şablonu kullanarak yeni bir Application Insights kaynağ
 
 ### <a name="create-the-azure-resource-manager-template"></a>Azure Resource Manager şablonu oluşturma
 
-Yeni bir. JSON dosyası oluşturun-Bu örnekte bunu `template1.json` çağıralım. Bu içeriği buraya kopyalayın:
+Yeni bir. JSON dosyası oluşturun-Bu örnekte bunu çağıralım `template1.json` . Bu içeriği buraya kopyalayın:
 
 ```JSON
     {
@@ -245,7 +245,7 @@ $Resource | Set-AzResource -Force
 
 ### <a name="setting-data-retention-using-rest"></a>REST kullanarak veri saklama ayarlama
 
-Application Insights kaynağınız için geçerli veri bekletmesini almak için, OSS aracı [Armclient](https://github.com/projectkudu/ARMClient)' ı kullanabilirsiniz.  ( [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ve [Daniel bowbevet](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)makalelerini kullanarak armclient hakkında daha fazla bilgi edinin.)  Aşağıda, geçerli bekletmenin `ARMClient`elde etmek için kullanılan bir örnek verilmiştir:
+Application Insights kaynağınız için geçerli veri bekletmesini almak için, OSS aracı [Armclient](https://github.com/projectkudu/ARMClient)' ı kullanabilirsiniz.  ( [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ve [Daniel bowbevet](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)makalelerini kullanarak armclient hakkında daha fazla bilgi edinin.)  Aşağıda `ARMClient` , geçerli bekletmenin elde etmek için kullanılan bir örnek verilmiştir:
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
@@ -268,7 +268,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
 
 ### <a name="setting-data-retention-using-a-powershell-script"></a>PowerShell betiği kullanarak veri saklama ayarlama
 
-Aşağıdaki betik, bekletme değiştirmek için de kullanılabilir. Bu betiği farklı `Set-ApplicationInsightsRetention.ps1`kaydet 'e kopyalayın.
+Aşağıdaki betik, bekletme değiştirmek için de kullanılabilir. Bu betiği farklı kaydet 'e kopyalayın `Set-ApplicationInsightsRetention.ps1` .
 
 ```PS
 Param(
@@ -350,7 +350,7 @@ armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="set-the-daily-cap-reset-time"></a>Günlük üst sınır sıfırlama süresini ayarlama
 
-Günlük üst sınır sıfırlama süresini ayarlamak için [Armclient](https://github.com/projectkudu/ARMClient)kullanabilirsiniz. Aşağıda, sıfırlama süresini yeni `ARMClient`bir saate ayarlamak için kullanılan bir örnek (bu örnekte 12:00 UTC) verilmiştir:
+Günlük üst sınır sıfırlama süresini ayarlamak için [Armclient](https://github.com/projectkudu/ARMClient)kullanabilirsiniz. Aşağıda `ARMClient` , sıfırlama süresini yeni bir saate ayarlamak için kullanılan bir örnek (Bu örnekte 12:00 UTC) verilmiştir:
 
 ```PS
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
@@ -365,13 +365,13 @@ Geçerli fiyatlandırma planını almak için [set-Azapplicationınsiıspricingp
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-Fiyatlandırma planını ayarlamak için, aynı cmdlet 'i `-PricingPlan` belirtilen şekilde kullanın:  
+Fiyatlandırma planını ayarlamak için, aynı cmdlet 'i belirtilen şekilde kullanın `-PricingPlan` :  
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> -PricingPlan Basic
 ```
 
-Ayrıca, yukarıdaki Kaynak Yöneticisi şablonunu kullanarak mevcut bir Application Insights kaynağı üzerinde fiyatlandırma planı ayarlayabilirsiniz. Bu, "Microsoft. Insights/bileşenler" kaynağı ve faturalandırma kaynağından `dependsOn` düğüm hariç olabilir. Örneğin, bunu GB başına plana (eski adıyla temel plan olarak adlandırılır) ayarlamak için şunu çalıştırın:
+Ayrıca, yukarıdaki Kaynak Yöneticisi şablonunu kullanarak mevcut bir Application Insights kaynağı üzerinde fiyatlandırma planı ayarlayabilirsiniz. Bu, "Microsoft. Insights/bileşenler" kaynağı ve faturalandırma kaynağından düğüm hariç olabilir `dependsOn` . Örneğin, bunu GB başına plana (eski adıyla temel plan olarak adlandırılır) ayarlamak için şunu çalıştırın:
 
 ```PS
         New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
@@ -380,7 +380,7 @@ Ayrıca, yukarıdaki Kaynak Yöneticisi şablonunu kullanarak mevcut bir Applica
                -appName myApp
 ```
 
-`priceCode` Şöyle tanımlanır:
+`priceCode`Şöyle tanımlanır:
 
 |priceCode|plan|
 |---|---|
@@ -415,19 +415,19 @@ Kullanılabilirlik testlerini otomatikleştirmek için [ölçüm uyarıları şa
 
 Herhangi bir türdeki başka bir kaynağı oluşturmayı otomatikleştirin, bir örneği el ile oluşturun ve ardından [Azure Resource Manager](https://resources.azure.com/)kodunu kopyalayın ve parametreleştirin. 
 
-1. [Azure Resource Manager](https://resources.azure.com/)açın. Uygulama kaynağına kadar `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`ilerleyin. 
+1. [Azure Resource Manager](https://resources.azure.com/)açın. `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`Uygulama kaynağına kadar ilerleyin. 
    
     ![Azure Kaynak Gezgini gezinti](./media/powershell/01.png)
    
     *Bileşenler* , uygulamaları görüntülemek için temel Application Insights kaynaklarıdır. İlişkili uyarı kuralları ve kullanılabilirlik Web testleri için ayrı kaynaklar vardır.
-2. Bileşenin JSON 'sini içinde `template1.json`uygun yere kopyalayın.
+2. Bileşenin JSON 'sini içinde uygun yere kopyalayın `template1.json` .
 3. Bu özellikleri Sil:
    
    * `id`
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. `webtests` Ve `alertrules` bölümlerini açın ve tek tek öğeler için JSON öğesini şablonunuza kopyalayın. ( `webtests` Veya `alertrules` düğümlerinden kopyalamayın: altındaki öğelere gidin.)
+4. `webtests`Ve bölümlerini açın `alertrules` ve tek tek öğeler için JSON öğesini şablonunuza kopyalayın. ( `webtests` Veya `alertrules` düğümlerinden kopyalamayın: altındaki öğelere gidin.)
    
     Her Web testinin ilişkili bir uyarı kuralı vardır, bu nedenle her ikisini de kopyalamanız gerekir.
    
@@ -439,7 +439,7 @@ Herhangi bir türdeki başka bir kaynağı oluşturmayı otomatikleştirin, bir 
 ### <a name="parameterize-the-template"></a>Şablonu Parametreleştirme
 Artık belirli adları parametrelerle değiştirmeniz gerekir. [Bir şablonu parametreleştirmek](../../azure-resource-manager/templates/template-syntax.md)için, bir [dizi yardımcı işlevi](../../azure-resource-manager/templates/template-functions.md)kullanarak ifadeleri yazarsınız. 
 
-Bir dizenin yalnızca bir kısmını parametreleştirebilirsiniz, bu nedenle dizeleri `concat()` derlemek için kullanın.
+Bir dizenin yalnızca bir kısmını parametreleştirebilirsiniz, bu nedenle `concat()` dizeleri derlemek için kullanın.
 
 Yapmak istediğiniz değişimlerin örnekleri aşağıda verilmiştir. Her değiştirmenin çeşitli oluşumları vardır. Şablonunuzda başkalarının olması gerekebilir. Bu örnekler, şablonun üst kısmında tanımladığımız parametreleri ve değişkenleri kullanır.
 

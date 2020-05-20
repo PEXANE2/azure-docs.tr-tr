@@ -3,12 +3,12 @@ title: Nasıl yaparım?... Azure Application Insights | Microsoft Docs
 description: Application Insights SSS.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536871"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701950"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights’ta nasıl ... yapabilirim?
 ## <a name="get-an-email-when-"></a>Şu durumlarda bir e-posta alın...
@@ -16,7 +16,7 @@ ms.locfileid: "81536871"
 Bir [kullanılabilirlik Web testi](../../azure-monitor/app/monitor-web-app-availability.md)ayarlayın.
 
 ### <a name="email-if-my-site-is-overloaded"></a>Sitemin aşırı yüklenmiş olması durumunda e-posta
-**Sunucu yanıt süresi**üzerinde bir [Uyarı](../../azure-monitor/app/alerts.md) ayarlayın. 1 ile 2 saniye arasında bir eşik çalışmalıdır.
+**Sunucu yanıt süresi**üzerinde bir [Uyarı](../../azure-monitor/platform/alerts-log.md) ayarlayın. 1 ile 2 saniye arasında bir eşik çalışmalıdır.
 
 ![](./media/how-do-i/030-server.png)
 
@@ -26,10 +26,10 @@ Uygulamanız hata kodları döndürerek zorlamaların işaretlerini de göstereb
 
 ### <a name="email-on-exceptions"></a>Özel durumlarla ilgili e-posta
 1. [Özel durum izlemeyi ayarlama](../../azure-monitor/app/asp-net-exceptions.md)
-2. Özel durum sayısı ölçümünde [bir uyarı ayarlayın](../../azure-monitor/app/alerts.md)
+2. Özel durum sayısı ölçümünde [bir uyarı ayarlayın](../../azure-monitor/platform/alerts-log.md)
 
 ### <a name="email-on-an-event-in-my-app"></a>Uygulamamda bir olay üzerinde e-posta
-Belirli bir olay gerçekleştiğinde bir e-posta almak istediğinizi varsayalım. Application Insights bu özelliği doğrudan sağlamaz, ancak bir [ölçüm bir eşiği aştığında uyarı gönderebilir](../../azure-monitor/app/alerts.md).
+Belirli bir olay gerçekleştiğinde bir e-posta almak istediğinizi varsayalım. Application Insights bu özelliği doğrudan sağlamaz, ancak bir [ölçüm bir eşiği aştığında uyarı gönderebilir](../../azure-monitor/platform/alerts-log.md).
 
 Özel etkinliklerde değil, [özel ölçümler](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)üzerinde de uyarı ayarlanabilir. Olay gerçekleştiğinde bir ölçümü artırmak için kod yazın:
 
@@ -65,17 +65,17 @@ Dikkat edilmesi gereken bazı noktalar:
 * E-postalar hem "uyarı" hem de "sağlıklı" olarak gönderildiğinden, tek kararlı olayınızı iki durumlu bir koşul olarak yeniden düşünmek isteyebilirsiniz. Örneğin, bir "iş tamamlandı" olayı yerine bir işin başlangıcında ve sonunda e-posta aldığınız "devam eden iş" koşulu vardır.
 
 ### <a name="set-up-alerts-automatically"></a>Uyarıları otomatik olarak ayarlama
-[PowerShell kullanarak yeni uyarılar oluşturma](../../azure-monitor/app/alerts.md#automation)
+[PowerShell kullanarak yeni uyarılar oluşturma](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Application Insights yönetmek için PowerShell 'i kullanma
 * [Yeni kaynaklar oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
-* [Yeni uyarılar oluşturma](../../azure-monitor/app/alerts.md#automation)
+* [Yeni uyarılar oluşturma](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Farklı sürümlerden telemetri ayırın
 
 * Bir uygulamada birden çok rol: tek bir Application Insights kaynağı kullanın ve [cloud_Rolename](../../azure-monitor/app/app-map.md)filtreleyin.
 * Geliştirme, test ve yayın sürümlerini ayırma: farklı Application Insights kaynakları kullanın. Web. config dosyasından izleme anahtarlarını seçin. [Daha fazla bilgi](../../azure-monitor/app/separate-resources.md)
-* Derleme sürümlerini raporlama: telemetri başlatıcısı kullanarak özellik ekleme. [Daha fazlasını öğrenin](../../azure-monitor/app/separate-resources.md)
+* Derleme sürümlerini raporlama: telemetri başlatıcısı kullanarak özellik ekleme. [Daha fazla bilgi](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>Arka uç sunucularını ve masaüstü uygulamalarını izleme
 [Windows Server SDK modülünü kullanın](../../azure-monitor/app/windows-desktop.md).
@@ -120,7 +120,7 @@ Hangi sayfaların baktığınıza veya ne sıklıkla oturum açtıklarında, ver
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Uygulamamın trafiğini Application Insights için azaltma
 * [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)dosyasında, gerek olmayan tüm modülleri (performans sayacı toplayıcısı gibi) devre dışı bırakın.
 * SDK 'da [örnekleme ve filtrelemeyi](../../azure-monitor/app/api-filtering-sampling.md) kullanın.
-* Web sayfalarınızda, her sayfa görünümü için raporlanan Ajax çağrılarının sayısını sınırlayın. Sonrasında `instrumentationKey:...` betik kod parçacığında, şunu ekleyin: `,maxAjaxCallsPerView:3` (veya uygun bir sayı).
+* Web sayfalarınızda, her sayfa görünümü için raporlanan Ajax çağrılarının sayısını sınırlayın. Sonrasında betik kod parçacığında `instrumentationKey:...` , şunu ekleyin: `,maxAjaxCallsPerView:3` (veya uygun bir sayı).
 * [Trackmetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)kullanıyorsanız, sonucu göndermeden önce ölçüm değerleri toplu iş toplamını hesaplayın. Bunun için sağlayan TrackMetric () aşırı yüklemesi vardır.
 
 [Fiyatlandırma ve Kotalar](../../azure-monitor/app/pricing.md)hakkında daha fazla bilgi edinin.
@@ -137,8 +137,8 @@ Sunucudan telemetri toplamayı ve iletimini **dinamik olarak durdurmak ve başla
 ```
 
 ### <a name="other-applications"></a>Diğer uygulamalar
-Tek bir konsolun veya ASP.NET Core uygulamaların `TelemetryConfiguration.Active` kullanılması önerilmez.
-örneği kendiniz oluşturduysanız `TelemetryConfiguration` -olarak `DisableTelemetry` `true`ayarlayın.
+`TelemetryConfiguration.Active`Tek bir konsolun veya ASP.NET Core uygulamaların kullanılması önerilmez.
+`TelemetryConfiguration`örneği kendiniz oluşturduysanız- `DisableTelemetry` olarak ayarlayın `true` .
 
 ASP.NET Core uygulamalar için, `TelemetryConfiguration` [ASP.NET Core bağımlılığı ekleme](/aspnet/core/fundamentals/dependency-injection/)kullanarak örneğe erişebilirsiniz. Lütfen [ASP.NET Core uygulamalar Için ApplicationInsights](../../azure-monitor/app/asp-net-core.md) makalesinde daha fazla ayrıntı bulabilirsiniz.
 
@@ -156,7 +156,7 @@ Standart toplayıcıları devre dışı bırakabilirsiniz (örneğin, performans
 ### <a name="if-you-see-no-performance-counter-data"></a>Performans sayacı verisi görmüyorsanız
 * Kendi makinenizde veya bir VM 'de **IIS sunucusu** . [Durum İzleyicisi 'ı yükler](../../azure-monitor/app/monitor-performance-live-website-now.md).
 * **Azure Web sitesi** -henüz performans sayaçlarını desteklemiyoruz. Azure Web sitesi Denetim Masası 'nın standart bir parçası olarak alabileceğiniz birkaç ölçüm vardır.
-* **UNIX Server** - [yüklemesi toplanan](../../azure-monitor/app/java-collectd.md)
+* **UNIX sunucusu**  -  [Toplanan 'yi yükler](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Daha fazla performans sayacı görüntüleme
 * İlk olarak, [Yeni bir grafik ekleyin](../../azure-monitor/platform/metrics-charts.md) ve sayacın sunduğumuz temel bir küme içinde olup olmadığını görün.

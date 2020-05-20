@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592194"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701819"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure bilişsel hizmetler kapsayıcıları sık sorulan sorular (SSS)
 
@@ -22,7 +22,7 @@ ms.locfileid: "83592194"
 
 **S: kullanılabilir nedir?**
 
-Y **:** Azure bilişsel hizmetler kapsayıcıları, geliştiricilerin Azure 'da kullanılabilen akıllı API 'Leri kullanmasına izin verir, ancak kapsayıcıların [avantajlarından](../cognitive-services-container-support.md#features-and-benefits) yararlanabilir. Bazı kapsayıcılar, bir uygulamanın erişimini gerektirebilecek [geçitli önizleme](../cognitive-services-gating-process.md)olarak kullanılabilir. Diğer kapsayıcılar, geçişli olmayan önizleme olarak genel kullanıma sunulmuştur veya genel kullanıma sunulmuştur. Kapsayıcıların tam listesini ve bunların kullanılabilirliğini Azure bilişsel [Hizmetler makalesinde kapsayıcı desteği](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) ' nde bulabilirsiniz. 
+Y **:** Azure bilişsel hizmetler kapsayıcıları, geliştiricilerin Azure 'da kullanılabilen akıllı API 'Leri kullanmasına izin verir, ancak kapsayıcıların [avantajlarından](../cognitive-services-container-support.md#features-and-benefits) yararlanabilir. Bazı kapsayıcılar, bir uygulamanın erişimini gerektirebilecek bir geçişli önizleme olarak kullanılabilir. Diğer kapsayıcılar, geçişli olmayan önizleme olarak genel kullanıma sunulmuştur veya genel kullanıma sunulmuştur. Kapsayıcıların tam listesini ve bunların kullanılabilirliğini Azure bilişsel [Hizmetler makalesinde kapsayıcı desteği](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) ' nde bulabilirsiniz. 
 
 **S: bilişsel hizmetler bulutu ve kapsayıcılar arasında herhangi bir fark var mı?**
 
@@ -104,7 +104,7 @@ Y **:** Müşteriler, bilişsel hizmetler bulutuna benzer şekilde tüketimine g
 
 * [Anomali Algılayıcısı][ad-containers-billing]
 * [Görüntü İşleme][cv-containers-billing]
-* [Yüz Tanıma][fa-containers-billing]
+* [Yüz][fa-containers-billing]
 * [Form Tanıma][fr-containers-billing]
 * [Language Understanding (LUIS)][lu-containers-billing]
 * [Konuşma Hizmeti API’si][sp-containers-billing]
@@ -131,7 +131,7 @@ Y **:** Bilişsel hizmetler kapsayıcıları, x64 Linux Docker kapsayıcıların
 
 * [Anomali Algılayıcısı][ad-containers-recommendations]
 * [Görüntü İşleme][cv-containers-recommendations]
-* [Yüz Tanıma][fa-containers-recommendations]
+* [Yüz][fa-containers-recommendations]
 * [Form Tanıma][fr-containers-recommendations]
 * [Language Understanding (LUIS)][lu-containers-recommendations]
 * [Konuşma Hizmeti API’si][sp-containers-recommendations]

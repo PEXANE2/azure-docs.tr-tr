@@ -3,22 +3,22 @@ title: Application Insights 'de olay sayaçları | Microsoft Docs
 description: Application Insights 'de sistem ve özel .NET/.NET Core EventCounters ' i izleyin.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: e1037766587f58a30c20f614726e1241c16e5a16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187104"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700442"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters giriş
 
 `EventCounter`, sayaçlar veya istatistikler yayımlamak ve kullanmak için .NET/.NET Core mekanizmasıdır. [Bu](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) belge, bir genel bakış `EventCounters` ve bunların nasıl yayımlanalınacağını ve kullanılacağına dair örneklere sahip olmanızı sağlar. EventCounters tüm işletim sistemi platformlarında desteklenir-Windows, Linux ve macOS. Yalnızca Windows sistemlerinde desteklenen [PerformanceCounters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) için platformlar arası eşdeğer olarak düşünülebilir.
 
-Kullanıcılar ihtiyaçlarını karşılamak için herhangi bir `EventCounters` özel yayım yaparken, .net Core 3,0 çalışma zamanı varsayılan olarak bu sayaçların bir kümesini yayımlar. Belge, Azure Application Insights toplamak ve görüntülemek `EventCounters` için gerekli adımları (sistem tanımlı veya Kullanıcı tanımlı) adım adım gösterecektir.
+Kullanıcılar ihtiyaçlarını karşılamak için herhangi bir özel yayım yaparken `EventCounters` , .NET Core 3,0 çalışma zamanı varsayılan olarak bu sayaçların bir kümesini yayımlar. Belge, Azure Application Insights toplamak ve görüntülemek için gerekli adımları `EventCounters` (sistem tanımlı veya Kullanıcı tanımlı) adım adım gösterecektir.
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>EventCounters toplamak için Application Insights kullanma
 
-Application Insights `EventCounterCollectionModule`, yeni `EventCounters` yayınlanan NuGet paketi [Microsoft. ApplicationInsights. eventcountercollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)'ın bir parçası olan ile toplamayı destekler. `EventCounterCollectionModule`, [Aspnetcore](asp-net-core.md) veya [workerservice](worker-service.md)kullanılırken otomatik olarak etkinleştirilir. `EventCounterCollectionModule`yapılandırılabilir olmayan bir koleksiyon frekansı 60 saniye olan sayaçları toplar. EventCounters toplamak için gerekli özel izinler yoktur.
+Application Insights `EventCounters` `EventCounterCollectionModule` , yeni yayınlanan NuGet paketi [Microsoft. ApplicationInsights. eventcountercollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)'ın bir parçası olan ile toplamayı destekler. `EventCounterCollectionModule`, [Aspnetcore](asp-net-core.md) veya [workerservice](worker-service.md)kullanılırken otomatik olarak etkinleştirilir. `EventCounterCollectionModule`yapılandırılabilir olmayan bir koleksiyon frekansı 60 saniye olan sayaçları toplar. EventCounters toplamak için gerekli özel izinler yoktur.
 
 ## <a name="default-counters-collected"></a>Toplanan varsayılan sayaçlar
 
@@ -55,7 +55,7 @@ Application Insights `EventCounterCollectionModule`, yeni `EventCounters` yayın
 
 ## <a name="customizing-counters-to-be-collected"></a>Toplanacak sayaçları özelleştirme
 
-Aşağıdaki örnek, sayaçların nasıl ekleneceğini/kaldırılacağını gösterir. Bu özelleştirme, `ConfigureServices` `AddApplicationInsightsTelemetry()` veya `AddApplicationInsightsWorkerService()`kullanarak Application Insights telemetri koleksiyonu etkinleştirildikten sonra uygulamanızın yönteminde yapılır. Aşağıda bir ASP.NET Core uygulamasından örnek bir kod verilmiştir. Diğer uygulama türleri için [Bu](worker-service.md#configuring-or-removing-default-telemetrymodules) belgeye başvurun.
+Aşağıdaki örnek, sayaçların nasıl ekleneceğini/kaldırılacağını gösterir. Bu özelleştirme, `ConfigureServices` veya kullanarak Application Insights telemetri koleksiyonu etkinleştirildikten sonra uygulamanızın yönteminde yapılır `AddApplicationInsightsTelemetry()` `AddApplicationInsightsWorkerService()` . Aşağıda bir ASP.NET Core uygulamasından örnek bir kod verilmiştir. Diğer uygulama türleri için [Bu](worker-service.md#configuring-or-removing-default-telemetrymodules) belgeye başvurun.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
@@ -109,7 +109,7 @@ customMetrics | summarize avg(value) by name
 > [!div class="mx-imgBorder"]
 > ![Application Insights bildirilen olay sayaçları](./media/event-counters/analytics-event-counters.png)
 
-Belirli bir sayacın (örneğin: `ThreadPool Completed Work Item Count`) bir grafiğini son döneme almak için aşağıdaki sorguyu çalıştırın.
+Belirli bir sayacın (örneğin:) bir grafiğini `ThreadPool Completed Work Item Count` son döneme almak için aşağıdaki sorguyu çalıştırın.
 
 ```Kusto
 customMetrics 
@@ -121,10 +121,10 @@ customMetrics
 > [!div class="mx-imgBorder"]
 > ![Application Insights tek bir sayaca sohbet etme](./media/event-counters/analytics-completeditems-counters.png)
 
-Diğer telemetri gibi, **Customölçümleri** de uygulamanızın çalıştırıldığı ana `cloud_RoleInstance` bilgisayar sunucusu örneğinin kimliğini belirten bir sütun içerir. Yukarıdaki sorgu, örnek başına sayaç değerini gösterir ve farklı sunucu örneklerinin performansını karşılaştırmak için kullanılabilir.
+Diğer telemetri gibi, **Customölçümleri** de `cloud_RoleInstance` uygulamanızın çalıştırıldığı ana bilgisayar sunucusu örneğinin kimliğini belirten bir sütun içerir. Yukarıdaki sorgu, örnek başına sayaç değerini gösterir ve farklı sunucu örneklerinin performansını karşılaştırmak için kullanılabilir.
 
 ## <a name="alerts"></a>Uyarılar
-Diğer ölçümler gibi, bir olay sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../../azure-monitor/app/alerts.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.
+Diğer ölçümler gibi, bir olay sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../../azure-monitor/platform/alerts-log.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
