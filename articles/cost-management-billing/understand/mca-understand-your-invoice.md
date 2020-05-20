@@ -23,7 +23,7 @@ Faturanızda ücretlerinizin özeti ve ödeme yönergeleri yer alır. [Azure por
 
 ## <a name="billing-period"></a>Faturalama dönemi
 
-Aylık olarak faturalandırılırsınız. *Azure portalında* faturalama profili özellikleri bölümünde [fatura tarihi](https://portal.azure.com/) bilgisini kontrol ederek faturaları ayın hangi günü alacağınızı öğrenebilirsiniz. Faturalama döneminin sonu ile fatura tarihi arasında gerçekleşen ücretler, sonraki faturalama döneminde yer aldığından sonraki ayın faturasına dahil edilir. Her bir fatura için faturalama dönemi başlangıç ve bitiş tarihleri, faturanın PDF dosyasında **Faturalama Özeti** bölümünün yukarısında listelenir.
+Aylık olarak faturalandırılırsınız. [Azure portalında](https://portal.azure.com/) faturalama profili özellikleri bölümünde *fatura tarihi* bilgisini kontrol ederek faturaları ayın hangi günü alacağınızı öğrenebilirsiniz. Faturalama döneminin sonu ile fatura tarihi arasında gerçekleşen ücretler, sonraki faturalama döneminde yer aldığından sonraki ayın faturasına dahil edilir. Her bir fatura için faturalama dönemi başlangıç ve bitiş tarihleri, faturanın PDF dosyasında **Faturalama Özeti** bölümünün yukarısında listelenir.
 
 ## <a name="invoice-terms-and-descriptions"></a>Fatura terimleri ve açıklamaları
 
