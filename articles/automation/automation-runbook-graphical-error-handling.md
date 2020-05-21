@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: f1aa605b3e6f32b260ea4a9eee9c056277fcd12d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a53d0cf0127ac3b66139d40dda62b64b05155bbd
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367083"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714891"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Otomasyonu grafik runbook’larında hata işleme
 
@@ -48,7 +48,7 @@ Bir hata üreten her etkinlik için başka bir etkinliğe işaret eden bir hata 
 1. Bu sorun hakkında bir bildirim gönderir.
 2. Bunun yerine otomatik olarak yeni bir VM sağlayan başka bir runbook başlatır.
 
-Bir çözüm, runbook 'ta birinci adımı işleyen bir etkinliğe işaret eden bir hata bağlantısına sahip olur. Örneğin, runbook `Write-Warning` [Start-azautomationrunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) cmdlet 'i gibi cmdlet 'ini ikinci adım için bir etkinliğe bağlayabilirler.
+Bir çözüm, runbook 'ta birinci adımı işleyen bir etkinliğe işaret eden bir hata bağlantısına sahip olur. Örneğin, runbook `Write-Warning` [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) cmdlet 'i gibi cmdlet 'ini ikinci adım için bir etkinliğe bağlayabilirler.
 
 Ayrıca, bu iki etkinliği ayrı bir hata işleme runbook 'una yerleştirerek birçok runbook 'ta kullanılmak üzere bu davranışı genelleştirebilirsiniz. Orijinal runbook 'unuzu bu hata işleme runbook 'unu çağırmadan önce, verilerinden özel bir ileti oluşturabilir ve ardından bunu runbook 'u hata işleme öğesine bir parametre olarak geçirebilir.
 
@@ -60,12 +60,12 @@ Yapılandırma ayarını etkinleştirdikten sonra, runbook 'un hatayı işleyen 
 
 Aşağıdaki örnekte, bir runbook bir sanal makinenin bilgisayar adını içeren bir değişken alır. Daha sonra VM 'yi bir sonraki etkinlikle başlatmaya çalışır.<br><br> ![Otomasyon Runbook 'u hata işleme örneği](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-`Get-AutomationVariable` Etkinlik ve [Start-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 'i, özel durumları hatalara dönüştürmek üzere yapılandırılır. Değişkeni alma veya VM 'yi başlatma sorunları varsa, kod hata oluşturur.<br><br> ![Otomasyon Runbook 'u hata işleme etkinlik ayarları](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png).
+`Get-AutomationVariable`Etkinlik ve [Start-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 'i, özel durumları hatalara dönüştürmek üzere yapılandırılır. Değişkeni alma veya VM 'yi başlatma sorunları varsa, kod hata oluşturur.<br><br> ![Otomasyon Runbook 'u hata işleme etkinlik ayarları ](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png) .
 
-Hata bağlantıları bu etkinliklerden tek `error management` bir kod etkinliğine akar. Bu etkinlik, geçerli özel durumu açıklayan iletiyi almak için ile `throw` `$Error.Exception.Message` birlikte işlemeyi durdurmak için anahtar sözcüğünü kullanan basit bir PowerShell ifadesiyle yapılandırılır.<br><br> ![Otomasyon Runbook 'u hata işleme kod örneği](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+Hata bağlantıları bu etkinliklerden tek bir `error management` kod etkinliğine akar. Bu etkinlik, `throw` `$Error.Exception.Message` geçerli özel durumu açıklayan iletiyi almak için ile birlikte işlemeyi durdurmak için anahtar sözcüğünü kullanan basit bir PowerShell ifadesiyle yapılandırılır.<br><br> ![Otomasyon Runbook 'u hata işleme kod örneği](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bağlantılar ve grafik runbook’larındaki bağlantı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu’nda grafik yazma](automation-graphical-authoring-intro.md#links-and-workflow).
+* Grafik runbook 'larında bağlantılar ve bağlantı türleri hakkında daha fazla bilgi edinmek için bkz. [iş akışı için bağlantıları kullanma](automation-graphical-authoring-intro.md#use-links-for-workflow).
 
 * Runbook yürütmesi, runbook işlerinin izlenmesi ve diğer teknik ayrıntılar hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](automation-runbook-execution.md).

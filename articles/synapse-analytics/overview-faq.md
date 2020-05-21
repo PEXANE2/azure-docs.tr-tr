@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 083bad1aa9abd2cb8efe3520b0acecc9ab00853c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: b28f34c6ee160f96a7b30ded274b030936ce3266
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983882"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701578"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure SYNAPSE Analytics (çalışma alanı önizlemesi) sık sorulan sorular
 
@@ -35,9 +35,7 @@ Y: Azure SYNAPSE, BI, AI ve sürekli zeka için tümleşik bir veri platformudur
 
 ### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>S: Azure SYNAPSE Analytics 'i kullanmaya başlama Nasıl yaparım?
 
-Y: Azure SYNAPSE Analytics 'i kullanmaya başlamak Için bir [SYNAPSE çalışma](https://portal.azure.com) alanı (ücretsiz!) oluşturun ve bu çalışma alanı altında istediğiniz kaynakları oluşturun. [SYNAPSE SQL havuzu oluşturma](quickstart-create-sql-pool.md) veya [bir çalışma alanı oluşturma](quickstart-create-workspace.md)gibi hızlı başlangıç öğreticilerimizden birini izleyerek basit kullanım ihtimaline yol gösterecektir. 
-
-Ayrıca, [depolarımızda](https://github.com/Azure/azure-synapse-analytics/tree/master/samples)örnek Not DEFTERLERI ve SQL betikleri bulabilirsiniz. Ortak bir veri kümesine bağlanmanız gerekiyorsa, aşağıdaki özniteliklere sahip yeni bir bağlı hizmet oluşturun:
+Y: Azure SYNAPSE Analytics 'i kullanmaya başlamak Için kaynak sağlayıcıları listesinden *Microsoft. SYNAPSE* ' yi seçerek [Azure SYNAPSE kaynak sağlayıcısını kaydedin](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types) . Sonra bir [SYNAPSE çalışma alanı](https://portal.azure.com) (ücretsiz!) oluşturun ve bu çalışma alanı altında istediğiniz kaynakları oluşturun. [SYNAPSE SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md) veya [bir çalışma alanı oluşturma](quickstart-create-workspace.md)gibi hızlı başlangıç öğreticilerimizden birini izleyerek basit kullanım ihtimaline yol gösterecektir. Ayrıca, [depolarımızda](https://github.com/Azure/azure-synapse-analytics/tree/master/samples)örnek Not DEFTERLERI ve SQL betikleri bulabilirsiniz. Ortak bir veri kümesine bağlanmanız gerekiyorsa, aşağıdaki özniteliklere sahip yeni bir bağlı hizmet oluşturun:
 
 - azure_storage_account_name = "azureopendatastorage"
 - azure_storage_sas_token = "" (yazma **""**)
@@ -106,6 +104,6 @@ Y: Evet, SQL Pool 'a ve isteğe bağlı SQL 'e bağlanmak için Tableau ve Power
 
 - [Çalışma alanı oluşturma](quickstart-create-workspace.md)
 - [SYNAPSE Studio 'Yu kullanma](quickstart-synapse-studio.md)
-- [SQL havuzu oluşturma](quickstart-create-sql-pool.md)
+- [SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md)
 - [İsteğe bağlı SQL kullanma](quickstart-sql-on-demand.md)
-- [Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool.md) 
+- [Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool-portal.md) 

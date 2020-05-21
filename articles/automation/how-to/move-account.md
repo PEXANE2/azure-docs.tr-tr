@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ba3ff2cc98e505486de9cf2337fe19024f97c62
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 62291505aae35b6fe334e2bdb53335a1ea3fe20b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680466"
+ms.locfileid: "83714551"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Otomasyonu hesabınızı başka bir aboneliğe taşıma
 
@@ -28,16 +28,16 @@ Otomasyon hesabı, taşıyacağınız kaynaklardan biridir. Bu makalede, Otomasy
 4. Farklı Çalıştır hesaplarını silin ve yeniden oluşturun.
 5. Özelliklerinizi yeniden etkinleştirin.
 
-## <a name="disable-features"></a>Özellikleri devre dışı bırak
+## <a name="remove-features"></a>Özellikleri Kaldır
 
-Çalışma alanınızın Otomasyon hesabınızla bağlantısını kaldırmak için, çalışma alanınızdaki Özellik kaynaklarını devre dışı bırakmanız gerekir:
+Çalışma alanınızın Otomasyon hesabınızla bağlantısını kaldırmak için, çalışma alanınızdaki Özellik kaynaklarını kaldırmanız gerekir:
 
 - Değişiklik İzleme ve Stok
 - Güncelleştirme Yönetimi
 - Hizmetin kapalı olduğu saatlerde Sanal Makineleri Başlatma/Durdurma
 
 1. Azure portalda kaynak grubunuzu bulun.
-2. Her bir özelliği bulun ve kaynakları Sil sayfasında **Sil** ' i seçin.
+2. Her bir özelliği bulun ve **kaynakları Sil** sayfasında **Sil** ' i seçin.
 
     ![Azure portal Özellik kaynaklarını silme ekran görüntüsü](../media/move-account/delete-solutions.png)
 
@@ -127,7 +127,7 @@ Artık Otomasyon hesabınızı ve Runbook 'larını taşıyabilirsiniz.
 
 ## <a name="enable-features"></a>Özellikleri etkinleştir
 
-Farklı Çalıştır hesaplarını yeniden oluşturduktan sonra, taşımadan önce devre dışı bıraktığınız özellikleri yeniden etkinleştirmeniz gerekir: 
+Farklı Çalıştır hesaplarını yeniden oluşturduktan sonra, taşımadan önce kaldırdığınız özellikleri yeniden etkinleştirmeniz gerekir:
 
 1. Değişiklik İzleme ve stoku açmak için Otomasyon hesabınızda **değişiklik izleme ve envanter** ' ı seçin. Üzerine taşıdığınız Log Analytics çalışma alanını seçin ve **Etkinleştir**' i seçin.
 
@@ -157,4 +157,4 @@ Taşıma işlemi tamamlandığında, aşağıda listelenen yeteneklerin etkinle�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure 'da kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz. [Azure 'da kaynakları taşıma](../../azure-resource-manager/management/move-support-resources.md).
+[Azure 'da kaynakları taşıma](../../azure-resource-manager/management/move-support-resources.md)

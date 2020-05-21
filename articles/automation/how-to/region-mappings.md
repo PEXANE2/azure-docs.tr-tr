@@ -1,6 +1,6 @@
 ---
-title: Bağlı Log Analytics çalışma alanı için destek bölgeleri
-description: Bu makalede, bir Otomasyon hesabı ile Log Analytics çalışma alanı arasındaki bölge eşlemelerini destekleme konusu açıklanmaktadır.
+title: Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
+description: Bu makalede bir Otomasyon hesabı ile Log Analytics çalışma alanı arasındaki desteklenen bölge eşlemeleri açıklanmaktadır.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 229fab5550d7b03fcbba80b5f4d9433d3b31e5b1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e637aec3c5105bb9628a854b0d4c73988e60daaf
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680449"
+ms.locfileid: "83714517"
 ---
-# <a name="support-regions-for-linked-log-analytics-workspace"></a>Bağlı Log Analytics çalışma alanı için destek bölgeleri
+# <a name="supported-regions-for-linked-log-analytics-workspace"></a>Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 
 Azure Otomasyonu 'nda, sanal makinelerinizin Güncelleştirme Yönetimi, Değişiklik İzleme ve envanterini ve VM'leri çalışma saatleri dışında başlat/durdur özelliklerini etkinleştirebilirsiniz. Ancak, aboneliğinizdeki bir Log Analytics çalışma alanını ve otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Bölge eşlemeleri yalnızca Otomasyon hesabı ve Log Analytics çalışma alanı için geçerlidir. Log Analytics çalışma alanı ve Otomasyon hesabı aynı abonelikte olmalıdır, ancak aynı bölgeye dağıtılmış farklı kaynak gruplarında yer alabilir. Daha fazla bilgi için bkz. [Log Analytics çalışma alanı ve Otomasyon hesabı](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
 
@@ -49,9 +49,9 @@ Log Analytics çalışma alanları için <sup>1</sup> EastUS eşlemesi, Otomasyo
 
 ## <a name="unlink-a-workspace"></a>Çalışma alanının bağlantısını kaldır
 
-Artık Otomasyon hesabınızı bir Log Analytics çalışma alanıyla tümleştirmenize karar verirseniz, Hesabınızın bağlantısını doğrudan Azure portal kaldırabilirsiniz. Devam etmeden önce, ilk olarak Güncelleştirme Yönetimi, Değişiklik İzleme ve envanteri ve bunları kullanıyorsanız VM'leri çalışma saatleri dışında başlat/durdur [devre dışı bırakmanız](move-account.md#disable-features) gerekir. Özellikleri devre dışı bırakmazsanız, bağlantıyı kaldırma işlemini tamamlayamazsınız. 
+Artık Otomasyon hesabınızı bir Log Analytics çalışma alanıyla tümleştirmenize karar verirseniz, Hesabınızın bağlantısını doğrudan Azure portal kaldırabilirsiniz. Devam etmeden önce, ilk olarak Güncelleştirme Yönetimi, Değişiklik İzleme ve envanteri ve bunları kullanıyorsanız VM'leri çalışma saatleri dışında başlat/durdur [kaldırmanız](move-account.md#remove-features) gerekir. Bunları kaldırmazsanız, bağlantı kaldırma işlemini tamamlayamazsınız. 
 
-Özellikler devre dışı bırakıldığında, Otomasyon Hesabınızın bağlantısını kaldırmak için aşağıdaki adımları izleyebilirsiniz.
+Kaldırılan özellikler ile otomasyon Hesabınızın bağlantısını kaldırmak için aşağıdaki adımları izleyebilirsiniz.
 
 > [!NOTE]
 > Azure SQL izleme çözümünün önceki sürümleri de dahil olmak üzere bazı özellikler, çalışma alanının bağlantısı kaldırılmadan önce kaldırılması gereken Otomasyon varlıklarını oluşturmuş olabilir.
@@ -80,6 +80,6 @@ Alternatif olarak, çalışma alanınızın içindeki Otomasyon hesabınızdan �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Güncelleştirme yönetimi genel bakışta](../automation-update-management.md)güncelleştirme yönetimi hakkında bilgi edinin.
-* [Değişiklik izleme ve envanterde genel bakış](../change-tracking.md)hakkında bilgi edinin değişiklik izleme.
-* [VM'leri çalışma saatleri dışında Başlat/Durdur genel bakışta](../automation-solution-vm-management.md)VM'leri çalışma saatleri dışında Başlat/Durdur hakkında bilgi edinin.
+* [Güncelleştirme Yönetimine genel bakış](../automation-update-management.md)
+* [Değişiklik İzleme ve envantere genel bakış](../change-tracking.md)
+* [VM'leri çalışma saatleri dışında başlat/durdur genel bakış](../automation-solution-vm-management.md)

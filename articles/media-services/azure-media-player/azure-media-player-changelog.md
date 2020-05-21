@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 15f8a3ac8c2777b3a878de92db495e559f64ad20
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726553"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698317"
 ---
 # <a name="changelog"></a>Değişiklik günlüğü #
 
@@ -246,7 +246,7 @@ ms.locfileid: "81726553"
 
 ### <a name="changes-211"></a>2.1.1 değişiklikleri ####
 
-- Değişebilir Widevine https gereksinimi için hata kodu eklendi: Chrome V58 itibariyle wıdevine içeriği `https://` protokol aracılığıyla yüklenmelidir/çalınmalıdır, aksi halde kayıttan yürütme başarısız olur.
+- Değişebilir Widevine https gereksinimi için hata kodu eklendi: Chrome V58 itibariyle wıdevine içeriği protokol aracılığıyla yüklenmelidir/çalınmalıdır, `https://` Aksi halde kayıttan yürütme başarısız olur.
 - Değişebilir İçerik yüklenirken yardımcı teknolojinin "video yükleme" işlemi yapabilmesi için, yükleme değiştiricisi için Aria etiketi eklendi  
 
 ## <a name="210-official-release"></a>2.1.0 (resmi sürüm) ##
@@ -577,8 +577,8 @@ ms.locfileid: "81726553"
 - [Hata düzeltildi] [AzureHtml5JS] Zaman damgasında küçük bir engel olduğunda, MPD güncelleştirmelerinde canlı kayıttan yürütme donduruyor
 - [Hata düzeltildi] [AzureHtml5JS] Birkaç canlı kayıttan yürütme sorunu azaltıldığında
 - [Hata düzeltildi] [AzureHtml5JS] Pencere boyutu buluşsal yöntemleri açık olduğunda ve daha yüksek bir çözünürlük ekranına gittiğinizde arabelleği temizle
-- [Hata düzeltildi] [AzureHtml5JS] Chrome artık tamamlandı olayını doğru şekilde gösteriyor. Chrome 'un önceki bilinen sorununa bağlı *, AzureHtml5JS kullanılırken â&euro;, endedâ&euro;Event ' i düzgün şekilde gönderemeyecektir. Temel tarayıcıda bir sorun var.*
-- [Hata düzeltildi] [AzureHtml5JS] *AzureHtml5JS Tech Ile OSX Yosemite Ile kayıttan yürütme sorununu gidermek için bu teknik Için Safari devre dışı bırakıldı. MSE uygulama sorunları vardır. Geçici risk azaltma&euro;: bu kullanıcı aracıları için â&euro;isflashssâ, â&euro;œsilverlightSSâ&euro;as Tech Order*
+- [Hata düzeltildi] [AzureHtml5JS] Chrome artık tamamlandı olayını doğru şekilde gösteriyor. AzureHtml5JS kullanılırken Chrome 'un bilinen önceki bir sorunuyla bağlantılı olarak *, son olay doğru şekilde gönderilmeyecektir. Temel tarayıcıda bir sorun var.*
+- [Hata düzeltildi] [AzureHtml5JS] *AzureHtml5JS Tech Ile OSX Yosemite Ile kayıttan yürütme sorununu gidermek için bu teknik Için Safari devre dışı bırakıldı. MSE uygulama sorunları vardır. Geçici risk azaltma: bu kullanıcı aracıları için silverlightSS olarak flashSS 'yi zorla*
 - [Hata düzeltildi] [FlashSS] loadstart hata oluştuğunda başlatıldı
 
 ## <a name="020-beta"></a>0.2.0 (Beta) ##
@@ -589,7 +589,7 @@ ms.locfileid: "81726553"
 - Özellik Süreksizlikleri işleme
 - Özellik 2 ^ 53 ' ten büyük zaman damgalarına yönelik destek
 - Özellik URL sorgu parametresi bildirim isteğine devam ederse
-- Özellik Test edilmemiş `QuickStart` Ve `HighQuality` buluşsal yöntemler profilleri desteği
+- Özellik Test edilmemiş `QuickStart`Ve `HighQuality` buluşsal yöntemler profilleri desteği
 - Özellik Test edilmemiş AzureHtml5JS ve FlashSS 'de bitücretler, genişlik ve yükseklik için video akışı bilgilerini gösterme
 - Özellik Test edilmemiş AzureHtml5JS ve FlashSS bit hızını seçin (bkz. API belgeleri)
 

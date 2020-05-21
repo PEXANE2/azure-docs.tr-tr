@@ -1,6 +1,6 @@
 ---
-title: Azure Otomasyonu durum yapılandırması raporlama verilerini Azure Izleyici günlüklerine iletme
-description: Bu makalede, Azure Otomasyonu durum yapılandırmasından Istenen durum yapılandırması (DSC) raporlama verilerinin, ek Öngörüler ve yönetim sağlamak için Azure Izleyici günlüklerine gönderilmesi gösterilmektedir.
+title: Azure Izleyici günlükleriyle tümleştirme
+description: Bu makalede, Istenen durum yapılandırması raporlama verilerinin Azure Automation durum yapılandırmasından Azure Izleyici günlüklerine nasıl gönderileceği açıklanır.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0b0ee75c39ba87503f150ffb72b7ab95aaf83999
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: cc68b53137175042f586ee83bc045f0fbbca38f7
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996044"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713293"
 ---
-# <a name="forward-state-configuration-reporting-data-to-azure-monitor-logs"></a>Durum Yapılandırması raporlama verilerini Azure İzleyici günlüklerine iletme
+# <a name="integrate-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle tümleştirme
 
 Azure Otomasyonu durum yapılandırması, düğüm durumu verilerini 30 gün boyunca tutar. Bu verileri daha uzun bir süre için tutmayı tercih ediyorsanız, Log Analytics çalışma alanınıza düğüm durumu verileri gönderebilirsiniz. Uyumluluk durumu, düğümler ve düğüm yapılandırmalarında tek DSC kaynakları için Azure portal veya PowerShell ile görünür. 
 
@@ -29,7 +29,6 @@ Azure Izleyici günlükleri, otomasyon durumu yapılandırma verilerinize daha f
 - Runbook sonuçlarınızı, runbook iş durumunu ve diğer ilgili anahtar göstergelerini veya ölçümlerini görselleştirmek için özel görünümleri ve arama sorgularını kullanın.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -60,7 +59,7 @@ Azure Otomasyonu durum yapılandırmasından Azure Izleyici günlüklerine veri 
    Get-AzResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
    ```
 
-1. Aşağıdaki PowerShell cmdlet 'ini çalıştırarak ve `<AutomationResourceId>` `<WorkspaceResourceId>` `ResourceId` değerlerini önceki adımların her biri ile değiştirin.
+1. Aşağıdaki PowerShell cmdlet 'ini çalıştırarak `<AutomationResourceId>` ve `<WorkspaceResourceId>` `ResourceId` değerlerini önceki adımların her biri ile değiştirin.
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Category 'DscNodeStatus'
@@ -88,9 +87,9 @@ Günlük araması bölmesi, Otomasyon hesabı kaynağınız kapsamındaki bir so
 
 Filtreleme ayrıntıları:
 
-* Her durum `DscNodeStatusData` yapılandırma düğümü için işlemleri döndürmek üzere filtreleyin.
-* Bu kaynağa `DscResourceStatusData` uygulanan düğüm yapılandırmasında ÇAĞRıLAN her DSC kaynağına yönelik işlemleri döndürmek için filtreleyin. 
-* Başarısız olan `DscResourceStatusData` tüm DSC kaynakları için hata bilgilerini döndürmek üzere filtreleyin.
+* `DscNodeStatusData`Her durum yapılandırma düğümü için işlemleri döndürmek üzere filtreleyin.
+* `DscResourceStatusData`Bu kaynağa uygulanan düğüm yapılandırmasında çağrılan her DSC kaynağına yönelik işlemleri döndürmek için filtreleyin. 
+* `DscResourceStatusData`Başarısız olan tüm DSC kaynakları için hata bilgilerini döndürmek üzere filtreleyin.
 
 Verileri bulmak için günlük sorguları oluşturma hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
@@ -103,7 +102,7 @@ Uyarı kuralı oluşturmak için, uyarıyı çağırması gereken durum yapılan
 1. Log Analytics çalışma alanına genel bakış sayfasında **Günlükler**' e tıklayın.
 1. Sorgu alanına aşağıdaki aramayı yazarak Uyarınız için bir günlük arama sorgusu oluşturun:`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
-   Çalışma alanınıza birden fazla otomasyon hesabından veya aboneliğine ait Günlükler ayarladıysanız, uyarılarınızı abonelik ve otomasyon hesabına göre gruplandırabilirsiniz. Otomasyon hesabı adını `Resource` `DscNodeStatusData` kayıtları aramadaki alandan türetirsiniz.
+   Çalışma alanınıza birden fazla otomasyon hesabından veya aboneliğine ait Günlükler ayarladıysanız, uyarılarınızı abonelik ve otomasyon hesabına göre gruplandırabilirsiniz. Otomasyon hesabı adını `Resource` kayıtları aramadaki alandan türetirsiniz `DscNodeStatusData` .
 1. **Kural oluştur** ekranını açmak için sayfanın üst kısmındaki **Yeni uyarı kuralı** ' na tıklayın. 
 
 Uyarıyı yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [bir uyarı kuralı oluşturma](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
@@ -127,8 +126,8 @@ Bu sorgu zaman içinde düğüm durumunun bir grafiğini görüntüler.
 
 Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi oluşturur:
 
-* Düğüm durumu verileri (`DscNodeStatusData`)
-* Kaynak durumu verileri (`DscResourceStatusData`)
+* Düğüm durumu verileri ( `DscNodeStatusData` )
+* Kaynak durumu verileri ( `DscResourceStatusData` )
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
@@ -140,7 +139,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | NodeName_s |Yönetilen düğümün adı. |
 | NodeComplianceStatus_s |Düğümün uyumlu olup olmadığını belirten durum değeri. |
 | DscReportStatus |Uyumluluk denetiminin başarıyla çalıştırılıp çalıştırılmadığını gösteren durum değeri. |
-| ConfigurationMode | Yapılandırmayı düğüme uygulamak için kullanılan mod. Olası değerler şunlardır: <ul><li>`ApplyOnly`: DSC yapılandırmayı uygular ve hedef düğüme yeni bir yapılandırma itilemez veya bir sunucudan yeni bir yapılandırma çekilmediği takdirde hiçbir şey yapmaz. Yeni yapılandırmanın ilk uygulamasından sonra DSC, daha önce yapılandırılmış bir durumdan DRFT 'yi denetlemez. DSC, `ApplyOnly` değer yürürlüğe girmeden önce başarılı olana kadar yapılandırmayı uygulamaya çalışır. </li><li>`ApplyAndMonitor`: Bu, varsayılan değerdir. LCM, yeni yapılandırma uygular. Yeni yapılandırmanın ilk uygulamasından sonra, hedef düğüm istenen durumdan Drifts, DSC, günlüklerde tutarsızlığı raporlar. DSC, `ApplyAndMonitor` değer yürürlüğe girmeden önce başarılı olana kadar yapılandırmayı uygulamaya çalışır.</li><li>`ApplyAndAutoCorrect`: DSC yeni yapılandırma uygular. Yeni bir yapılandırmanın ilk uygulamasından sonra, hedef düğüm istenen durumdan Drifts, DSC günlüklerde tutarsızlığı raporlar ve ardından geçerli yapılandırmayı yeniden uygular.</li></ul> |
+| ConfigurationMode | Yapılandırmayı düğüme uygulamak için kullanılan mod. Olası değerler şunlardır: <ul><li>`ApplyOnly`: DSC yapılandırmayı uygular ve hedef düğüme yeni bir yapılandırma itilemez veya bir sunucudan yeni bir yapılandırma çekilmediği takdirde hiçbir şey yapmaz. Yeni yapılandırmanın ilk uygulamasından sonra DSC, daha önce yapılandırılmış bir durumdan DRFT 'yi denetlemez. DSC, değer yürürlüğe girmeden önce başarılı olana kadar yapılandırmayı uygulamaya çalışır `ApplyOnly` . </li><li>`ApplyAndMonitor`: Bu, varsayılan değerdir. LCM, yeni yapılandırma uygular. Yeni yapılandırmanın ilk uygulamasından sonra, hedef düğüm istenen durumdan Drifts, DSC, günlüklerde tutarsızlığı raporlar. DSC, değer yürürlüğe girmeden önce başarılı olana kadar yapılandırmayı uygulamaya çalışır `ApplyAndMonitor` .</li><li>`ApplyAndAutoCorrect`: DSC yeni yapılandırma uygular. Yeni bir yapılandırmanın ilk uygulamasından sonra, hedef düğüm istenen durumdan Drifts, DSC günlüklerde tutarsızlığı raporlar ve ardından geçerli yapılandırmayı yeniden uygular.</li></ul> |
 | HostName_s | Yönetilen düğümün adı. |
 | IPAddress | Yönetilen düğümün IPv4 adresi. |
 | Kategori | `DscNodeStatus`. |
@@ -152,7 +151,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | ReportStartTime_t | Raporun başlatıldığı tarih ve saat. |
 | ReportEndTime_t | Raporun tamamlandığı tarih ve saat. |
 | NumberOfResources_d | Düğümde uygulanan yapılandırmada çağrılan DSC kaynaklarının sayısı. |
-| SourceSystem | Azure Izleyici günlüklerinin verileri nasıl topladığını tanımlayan kaynak sistem. Her `Azure` zaman Azure Tanılama için. |
+| SourceSystem | Azure Izleyici günlüklerinin verileri nasıl topladığını tanımlayan kaynak sistem. Her zaman `Azure` Azure Tanılama için. |
 | ResourceId |Azure Otomasyonu hesabının kaynak tanımlayıcısı. |
 | ResultDescription | Bu işlem için kaynak açıklaması. |
 | SubscriptionId | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
@@ -183,7 +182,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | ErrorCode_s | Kaynak başarısız olursa hata kodu. |
 | ErrorMessage_s |Kaynak başarısız olursa hata iletisi. |
 | DscResourceDuration_d |DSC kaynağının çalıştırıldığı saniye cinsinden süre. |
-| SourceSystem | Azure Izleyici günlükleri verileri nasıl topladı. Her `Azure` zaman Azure Tanılama için. |
+| SourceSystem | Azure Izleyici günlükleri verileri nasıl topladı. Her zaman `Azure` Azure Tanılama için. |
 | ResourceId |Azure Otomasyonu hesabının tanımlayıcısı. |
 | ResultDescription | Bu işlemin açıklaması. |
 | SubscriptionId | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |

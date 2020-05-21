@@ -7,19 +7,19 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 33fd0b6a3a07fa4fbc5448a97ca93c75a3e239d5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804478"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684226"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service Ortamı için Web Uygulaması Güvenlik Duvarı (WAF) Yapılandırma
 ## <a name="overview"></a>Genel Bakış
 
 Web uygulaması güvenlik duvarları (WAF), SQL eklemelerini, Siteler Arası Betik Kullanmayı, kötü amaçlı yazılım yüklemelerini ve uygulama DDoS ve diğer saldırıları engellemek üzere gelen web trafiğini denetleyerek web uygulamalarınızın güvenliğini sağlamaya yardımcı olur. Ayrıca, Veri Kaybı Önleme (DLP) için arka uç web sunucularından gelen yanıtları denetler. App Service Ortamlarının sağladığı yalıtım ve ek ölçeklendirme ile bir araya geldiğinde bu özellik, kötü amaçlı isteklere ve yüksek hacimli trafiğe dayanıklı olması gereken iş açısından kritik web uygulamalarını barındırmak için ideal bir ortam sağlar. Azure, [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) ile bir WAF özelliği sağlar.  App Service Ortamınızı bir Application Gateway ile tümleştirme hakkında bilgi almak için [ILB ASE’nizi bir Application Gateway ile tümleştirme](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) belgesine bakın.
 
-Azure Application Gateway’e ek olarak, [Azure Market](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/)’te [Azure için Barracuda WAF](https://www.barracuda.com/programs/azure) gibi birden çok market seçeneği mevcuttur. Bu belgenin geri kalanında App Service Ortamınızı bir Barracuda WAF cihazı ile tümleştirme işlemine odaklanılmaktadır.
+Azure Application Gateway’e ek olarak, [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice)’te [Azure için Barracuda WAF](https://www.barracuda.com/programs/azure) gibi birden çok market seçeneği mevcuttur. Bu belgenin geri kalanında App Service Ortamınızı bir Barracuda WAF cihazı ile tümleştirme işlemine odaklanılmaktadır.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 

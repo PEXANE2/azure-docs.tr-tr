@@ -1,27 +1,24 @@
 ---
 title: Azure Otomasyonu SSS | Microsoft Docs
-description: Azure Otomasyonu hakkında sık sorulan soruların yanıtları.
+description: Bu makalede, Azure Otomasyonu hakkında sık sorulan sorulara yanıtlar verilmektedir.
 services: automation
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 02/25/2020
-ms.openlocfilehash: 3fa29f3df5f0434c4c61e8d12adbb3f55156a29f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46786ff5bd158804ea5d93377fbbcc39a9c8af26
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405954"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712885"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure Otomasyonu sık sorulan sorular
 
 Bu Microsoft SSS, Azure Otomasyonu hakkında sık sorulan soruların bir listesidir. Özellikleri hakkında başka sorularınız varsa, tartışma forumuna gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
 
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
-
-## <a name="update-management-solution"></a>Güncelleştirme Yönetimi çözümü
+## <a name="update-management"></a>Güncelleştirme Yönetimi
 
 ### <a name="can-i-prevent-unexpected-os-level-upgrades"></a>Beklenmeyen işletim sistemi düzeyinde yükseltmelere engel olabilir miyim?
 
@@ -29,7 +26,7 @@ Red Hat Enterprise Linux gibi bazı Linux değişkenlerde, işletim sistemi düz
 
 İşletim sistemi sürümünün Güncelleştirme Yönetimi dağıtımlar aracılığıyla güncelleştirilmesini önlemek için **dışlama** özelliğini kullanın.
 
-Red Hat Enterprise Linux, hariç tutulacak paket adı `redhat-release-server.x86_64`.
+Red Hat Enterprise Linux, hariç tutulacak paket adı `redhat-release-server.x86_64` .
 
 ### <a name="why-arent-criticalsecurity-updates-applied"></a>Kritik/güvenlik güncelleştirmeleri neden uygulanmadı?
 
@@ -41,7 +38,7 @@ Güncelleştirme sınıflandırmasına göre güncelleştirmelerin dağıtımı,
 
 ### <a name="can-i-deploy-updates-across-azure-tenants"></a>Güncelleştirmeleri Azure kiracılarının tamamında dağıtabilir miyim?
 
-Güncelleştirme Yönetimi başka bir Azure kiracı raporlamada düzeltme eki gerektiren makineleriniz varsa, bunları zamanlanmak için aşağıdaki geçici çözümü kullanmanız gerekir. [Yeni-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini bir zamanlama oluşturmak için belirtilen `ForUpdateConfiguration` parametreyle birlikte kullanabilirsiniz. [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) cmdlet 'ini kullanabilir ve diğer Kiracıdaki makineleri `NonAzureComputer` parametresine geçirebilirsiniz. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir.
+Güncelleştirme Yönetimi başka bir Azure kiracı raporlamada düzeltme eki gerektiren makineleriniz varsa, bunları zamanlanmak için aşağıdaki geçici çözümü kullanmanız gerekir. [Yeni-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini `ForUpdateConfiguration` bir zamanlama oluşturmak için belirtilen parametreyle birlikte kullanabilirsiniz. [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) cmdlet 'ini kullanabilir ve diğer Kiracıdaki makineleri `NonAzureComputer` parametresine geçirebilirsiniz. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir.
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d4de424d5d4d6da1ee80e04b35e63ae29df57c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3cca8403897227843b088a3985d54a3b164be0d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424912"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702050"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) 
 
@@ -28,7 +28,7 @@ Her Azure SYNAPSE Analytics çalışma alanı (Önizleme), Gölü verileri sorgu
 
 İsteğe bağlı SQL Server sunucusuz, bu nedenle, bakım yapmak için kurulum veya kümelerin bir altyapısı yoktur. Bu hizmet için varsayılan bir uç nokta her Azure SYNAPSE çalışma alanı içinde sağlanır, bu sayede çalışma alanı oluşturulduktan hemen sonra verileri sorgulamaya başlayabilirsiniz. Ayrılan kaynaklar için ücret alınmaz, yalnızca çalıştırdığınız sorgular tarafından Taranan veriler için ücretlendirilirsiniz, bu nedenle bu modelin kullanım başına doğru bir ödeme modeli olması gerekir.  
 
-Veri işlem hattınızda Spark kullanıyorsanız, veri hazırlama, temizlik veya zenginleştirme için, işlemde oluşturduğunuz [Spark tablolarının tümünü](develop-storage-files-spark-tables.md) doğrudan SQL isteğe bağlı olarak sorgulayabilirsiniz. SQL isteğe bağlı uç noktanızı [yönetilen çalışma alanı sanal](../security/synapse-workspace-managed-vnet.md)ağınıza taşımak Için [özel bağlantıyı](../security/how-to-connect-to-workspace-with-private-links.md) kullanın.  
+Veri işlem hattınızda Azure SYNAPSE için Apache Spark kullanıyorsanız, veri hazırlama, temizleme veya zenginleştirme için, işlem içinde oluşturduğunuz [Harici Spark tablolarını](develop-storage-files-spark-tables.md) doğrudan SQL isteğe bağlı olarak sorgulayabilirsiniz. SQL isteğe bağlı uç noktanızı [yönetilen çalışma alanı sanal](../security/synapse-workspace-managed-vnet.md)ağınıza taşımak Için [özel bağlantıyı](../security/how-to-connect-to-workspace-with-private-links.md) kullanın.  
 
 ## <a name="who-is-sql-on-demand-for"></a>İçin SQL isteğe bağlı kim
 
@@ -42,7 +42,7 @@ Farklı profesyonel roller, isteğe bağlı SQL 'den faydalanabilir:
 
 - Veri mühendisleri gölü keşfedebilir, bu hizmeti kullanarak verileri dönüştürebilir ve hazırlayabilir ve veri dönüştürme işlem hatlarını basitleştirir. Daha fazla bilgi için bu [öğreticiye](tutorial-data-analyst.md)bakın.
 - Veri bilimcileri, OPENROWSET ve otomatik Şema çıkarımı gibi özellikler sayesinde Gölü verilerin içerikleri ve yapısı hakkında hızlı bir neden olabilir.
-- Veri analistleri, tanıdık T-SQL dili veya en sevdiğiniz araçları kullanarak veri bilimcileri veya veri mühendisleri tarafından oluşturulan [veri ve Spark tablolarını](develop-storage-files-spark-tables.md) , Isteğe bağlı SQL 'e bağlanabilecek şekilde keşfedebilir.
+- Veri analistleri, tanıdık T-SQL dili veya en sevdiğiniz araçları kullanarak veri bilimcileri veya veri mühendisleri tarafından oluşturulan [veri ve Spark dış tablolarını](develop-storage-files-spark-tables.md) , Isteğe bağlı SQL 'e bağlanabilecek şekilde keşfedebilir.
 - Bı uzmanları, Gölü ve Spark tablolarındaki verilerin üzerine hızlı [bir şekilde Power BI raporlar oluşturabilir](tutorial-connect-power-bi-desktop.md) .
 
 ## <a name="what-do-i-need-to-do-to-start-using-it"></a>Kullanmaya başlamak için ne yapmam gerekir?
@@ -84,7 +84,7 @@ Desteklenen T-SQL:
 - Görünümler ve güvenlikle ilgili olanlar dışındaki DDL deyimleri
 - DML deyimleri
 
-### <a name="extensions"></a>Uzantıları
+### <a name="extensions"></a>Uzantılar
 
 Data Lake 'teki dosyalarda bulunan verilerin yerinde sorgulanmasında sorunsuz bir deneyim sağlamak için, SQL isteğe bağlı, aşağıdaki özellikleri ekleyerek var olan [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini genişletir:
 
@@ -110,7 +110,7 @@ Verilerinize güvenli bir şekilde erişmek için SQL isteğe bağlı, mekanizma
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory tümleştirmesi ve çok faktörlü kimlik doğrulaması
 
-İsteğe bağlı SQL, veritabanı kullanıcısı ve diğer Microsoft hizmetlerinin kimliklerini [Azure Active Directory tümleştirmeyle](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)merkezi olarak yönetmenize olanak sağlar. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory (Azure AD), çoklu bir oturum açma işlemini desteklerken veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) destekler.
+İsteğe bağlı SQL, veritabanı kullanıcısı ve diğer Microsoft hizmetlerinin kimliklerini [Azure Active Directory tümleştirmeyle](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)merkezi olarak yönetmenize olanak sağlar. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory (Azure AD), çoklu bir oturum açma işlemini desteklerken veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) destekler.
 
 #### <a name="authentication"></a>Kimlik Doğrulaması
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1ac6347bd8e723f356da4803da54a6ea45a4a71a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 390f14e8369f206b2f5ffce74f0775b33e313021
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535528"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714993"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Otomasyonu runbook türleri
 
@@ -69,8 +69,8 @@ PowerShell runbook 'ları Windows PowerShell 'i temel alır. Azure portal metin 
 ### <a name="limitations"></a>Sınırlamalar
 
 * PowerShell betiği hakkında bilgi sahibi olmanız gerekir.
-* Runbook 'lar paralel olarak birden çok eylem yürütmek için [paralel işleme](automation-powershell-workflow.md#parallel-processing) kullanamaz.
-* Runbook 'lar bir hata oluşursa runbook 'u yeniden başlatmak için [denetim noktaları](automation-powershell-workflow.md#checkpoints) kullanamaz.
+* Runbook 'lar paralel olarak birden çok eylem yürütmek için [paralel işleme](automation-powershell-workflow.md#use-parallel-processing) kullanamaz.
+* Runbook 'lar bir hata oluşursa runbook 'u yeniden başlatmak için [denetim noktaları](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) kullanamaz.
 * Yeni bir iş oluşturan [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) cmdlet 'ini kullanarak yalnızca PowerShell iş akışı runbook 'larını ve grafik runbook 'larını alt runbook 'lar olarak ekleyebilirsiniz.
 
 ### <a name="known-issues"></a>Bilinen sorunlar
@@ -78,9 +78,9 @@ PowerShell runbook 'ları Windows PowerShell 'i temel alır. Azure portal metin 
 PowerShell runbook 'larında şu andaki bilinen sorunlar şunlardır:
 
 * PowerShell runbook 'ları null değeri olan şifrelenmemiş bir [değişken varlığı](automation-variables.md) alamıyor.
-* PowerShell runbook 'ları, adında bir değişken varlık `*~*` alamıyor.
+* PowerShell runbook 'ları, adında bir değişken varlık alamıyor `*~*` .
 * Bir PowerShell runbook 'unda döngüdeki bir [Get-Process](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) işlemi, 80 yinelemeden sonra çökebilir.
-* Bir PowerShell runbook 'u aynı anda çıkış akışına büyük miktarda veri yazmayı denediğinde başarısız olabilir. Genellikle bu soruna geçici bir çözüm olarak, runbook 'un büyük nesnelerle çalışması için gereken bilgileri vermesini sağlayabilirsiniz. Örneğin, hiçbir kısıtlama olmadan kullanmak `Get-Process` yerine cmdlet 'in yalnızca ' de `Get-Process | Select ProcessName, CPU`olduğu gibi gerekli parametreleri çıkışına sahip olabilirsiniz.
+* Bir PowerShell runbook 'u aynı anda çıkış akışına büyük miktarda veri yazmayı denediğinde başarısız olabilir. Genellikle bu soruna geçici bir çözüm olarak, runbook 'un büyük nesnelerle çalışması için gereken bilgileri vermesini sağlayabilirsiniz. Örneğin, hiçbir kısıtlama olmadan kullanmak yerine `Get-Process` cmdlet 'in yalnızca ' de olduğu gibi gerekli parametreleri çıkışına sahip olabilirsiniz `Get-Process | Select ProcessName, CPU` .
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell Iş akışı runbook 'ları
 
@@ -89,16 +89,16 @@ PowerShell Iş akışı runbook 'ları [Windows PowerShell Iş akışını](auto
 ### <a name="advantages"></a>Yararları
 
 * PowerShell Iş akışı kodu ile tüm karmaşık mantığı uygulayın.
-* Bir hata oluşursa, işlemi sürdürmeye yönelik [denetim noktaları](automation-powershell-workflow.md#checkpoints) kullanın.
-* Paralel olarak birden çok eylem yapmak için [paralel işleme](automation-powershell-workflow.md#parallel-processing) kullanın.
+* Bir hata oluşursa, işlemi sürdürmeye yönelik [denetim noktaları](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) kullanın.
+* Paralel olarak birden çok eylem yapmak için [paralel işleme](automation-powershell-workflow.md#use-parallel-processing) kullanın.
 * , Üst düzey iş akışları oluşturmak için alt runbook 'lar olarak diğer grafik runbook 'larını ve PowerShell Iş akışı runbook 'larını içerebilir.
 
 ### <a name="limitations"></a>Sınırlamalar
 
 * PowerShell Iş akışı hakkında bilgi sahibi olmanız gerekir.
-* Runbook 'lar, [Serisi kaldırılan nesneler](automation-powershell-workflow.md#code-changes)gibi PowerShell iş akışının ek karmaşıklığı ile uğraşmalıdır.
+* Runbook 'lar, [Serisi kaldırılan nesneler](automation-powershell-workflow.md#deserialized-objects)gibi PowerShell iş akışının ek karmaşıklığı ile uğraşmalıdır.
 * Runbook 'lar çalıştırılmadan önce derlenmesi gerektiğinden PowerShell runbook 'lardan daha uzun sürer.
-* PowerShell runbook 'larını yalnızca `Start-AzAutomationRunbook` cmdlet 'ini kullanarak alt runbook 'lar olarak ekleyebilirsiniz.
+* PowerShell runbook 'larını yalnızca cmdlet 'ini kullanarak alt runbook 'lar olarak ekleyebilirsiniz `Start-AzAutomationRunbook` .
 * Runbook 'lar Linux karma Runbook Worker üzerinde çalıştırılamaz.
 
 ## <a name="python-runbooks"></a>Python runbook 'ları

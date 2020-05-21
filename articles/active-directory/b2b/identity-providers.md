@@ -11,27 +11,41 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395473e70137ead2b7185d54d165f82e9b3f1f04
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2284d015b451872753dd0855cac42e6f1926545c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598153"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712171"
 ---
 # <a name="identity-providers-for-external-identities"></a>Dış kimlikler için kimlik sağlayıcıları
 
 Kimlik *sağlayıcısı* , uygulamalara kimlik doğrulama hizmetleri sağlarken kimlik bilgilerini oluşturur, korur ve yönetir. Uygulamalarınızı ve kaynaklarınızı dış kullanıcılarla paylaşırken Azure AD, paylaşım için varsayılan kimlik sağlayıcıdır. Bu, zaten bir Azure AD veya Microsoft hesabı bulunan dış kullanıcıları davet ettiğinizde, sizin bölümlemeden daha fazla yapılandırma olmadan otomatik olarak oturum açabilirler.
 
-Bununla birlikte, kullanıcıların çeşitli kimlik sağlayıcılarıyla oturum açmasını sağlayabilirsiniz. Örneğin, Google ve Facebook dahil olmak üzere Azure AD tarafından desteklenen sosyal kimlik sağlayıcılarıyla Federasyon oluşturabilirsiniz. SAML veya WS-Beslikli protokolleri destekleyen herhangi bir dış kimlik sağlayıcısıyla de federasyona ekleyebilirsiniz. Dış kimlik sağlayıcısı Federasyonu sayesinde, dış kullanıcılara mevcut sosyal veya kurumsal hesaplarıyla uygulamalarınızda oturum açabilme olanağı sunabilirsiniz.
+Bununla birlikte, kullanıcıların çeşitli kimlik sağlayıcılarıyla oturum açmasını sağlayabilirsiniz.
+
+- **Google**: Google Federasyonu, dış kullanıcıların kendi Gmail hesaplarıyla uygulamalarınızda oturum açarak davetlerini sizin tarafınızdan kullanmasına izin verir. Google Federation, self servis kaydolma Kullanıcı akışlarınızda da kullanılabilir.
+   > [!NOTE]
+   > Geçerli self servis kaydolma önizlemesinde, bir Kullanıcı akışı bir uygulamayla ilişkiliyse ve bu uygulamaya bir Kullanıcı daveti gönderirseniz, Kullanıcı daveti kullanmak için bir Gmail hesabı kullanamaz. Geçici bir çözüm olarak, Kullanıcı self servis kaydolma işlemini gerçekleştirebilir. Ya da, farklı bir uygulamaya erişerek veya ' de My Apps Portal ' ı kullanarak daveti kullanabilirler https://myapps.microsoft.com .
+
+- **Facebook**: bir uygulama oluştururken, self servis kaydolma 'yı yapılandırabilir ve Facebook Federasyonu 'ni etkinleştirerek kullanıcıların kendi Facebook hesaplarını kullanarak uygulamanıza kaydolmasını sağlayabilirsiniz. Facebook yalnızca self servis kaydolma Kullanıcı akışları için kullanılabilir ve kullanıcılar sizi davet etmek için bir oturum açma seçeneği olarak kullanılamaz.
+
+- **Doğrudan Federasyon**: SAML veya WS-beslikli protokolleri destekleyen herhangi bir dış kimlik sağlayıcısı ile doğrudan Federasyonu de ayarlayabilirsiniz. Doğrudan Federasyon, dış kullanıcıların uygulamalarınızı mevcut sosyal veya kurumsal hesaplarıyla oturum açarak sizin tarafınızdan davet etmesine olanak tanır. 
+   > [!NOTE]
+   > Self Servis kaydolma Kullanıcı akışlarınızda doğrudan Federasyon kimlik sağlayıcıları kullanılamaz.
+
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Azure AD dış kimlikleri, Google ve Facebook ile Federasyon için önceden yapılandırılmıştır. Azure AD kiracınızda bu kimlik sağlayıcılarını ayarlamak için her bir kimlik sağlayıcısında bir uygulama oluşturacak ve kimlik bilgilerini yapılandıracaksınız. Daha sonra Azure AD kiracınıza ekleyebileceğiniz bir istemci veya uygulama KIMLIĞI ve bir istemci ya da uygulama gizli anahtarı elde edersiniz.
+Azure AD dış kimlikleri self servis kaydolma özelliği, kullanıcıların Azure AD, Google veya Facebook hesabıyla kaydolmalarına olanak tanır. Azure AD kiracınızda sosyal kimlik sağlayıcılarını ayarlamak için her bir kimlik sağlayıcısında bir uygulama oluşturacak ve kimlik bilgilerini yapılandıracaksınız. Daha sonra Azure AD kiracınıza ekleyebileceğiniz bir istemci veya uygulama KIMLIĞI ve bir istemci ya da uygulama gizli anahtarı elde edersiniz.
 
 Azure AD kiracınıza bir kimlik sağlayıcısı ekledikten sonra:
 
 - Bir dış kullanıcıyı kuruluşunuzdaki uygulamalara veya kaynaklara davet ettiğinizde, dış Kullanıcı bu kimlik sağlayıcısıyla kendi hesabını kullanarak oturum açabilir.
-- Uygulamalarınız için [self servis kaydolma](self-service-sign-up-overview.md) özelliğini etkinleştirdiğinizde, dış kullanıcılar, eklediğiniz kimlik sağlayıcıları ile kendi hesaplarını kullanarak uygulamalarınıza kaydolabilir. 
+- Uygulamalarınız için [self servis kaydolma](self-service-sign-up-overview.md) özelliğini etkinleştirdiğinizde, dış kullanıcılar, eklediğiniz kimlik sağlayıcıları ile kendi hesaplarını kullanarak uygulamalarınıza kaydolabilir.
+
+> [!NOTE]
+> Azure AD, self servis kaydolma için varsayılan olarak etkindir, bu nedenle kullanıcılar her zaman bir Azure AD hesabı kullanarak kaydolma seçeneğine sahip olur.
 
 Davetinizi benimseyeniz veya uygulamanıza kaydolduktan sonra dış Kullanıcı oturum açma ve sosyal kimlik sağlayıcısı ile kimlik doğrulama seçeneğine sahiptir:
 

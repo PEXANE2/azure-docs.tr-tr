@@ -1,6 +1,6 @@
 ---
 title: Azure Otomasyonu durum yapılandırmasına genel bakış
-description: Azure Otomasyonu durum yapılandırmasına, koşullarına ve bilinen sorunlara genel bakış
+description: Bu makalede, Azure Otomasyonu durum yapılandırmasına genel bakış sunulmaktadır.
 keywords: PowerShell DSC, istenen durum yapılandırması, PowerShell DSC Azure
 services: automation
 ms.service: automation
@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dbe617e6614eb69f0a7f6e31c89c1f645804fe1b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: be0da641a67d532851b8d295065213016c795f01
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993865"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713191"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyonu durum yapılandırmasına genel bakış
 
@@ -88,18 +88,18 @@ Düğümleriniz özel bir ağda bulunuyorsa, aşağıdaki bağlantı noktası ve
 * Bağlantı noktası: giden internet erişimi için yalnızca TCP 443 gerekir
 * Genel URL: ***. Azure-Automation.net**
 * US Gov Virginia genel URL 'SI: ***. Azure-Automation.us**
-* Aracı hizmeti: **https://\<workspace ID\>. Agentsvc.Azure-Automation.net**
+* Aracı hizmeti: **https:// \< Workspace ıd \> . Agentsvc.Azure-Automation.net**
 
 [Waitfor * kaynakları](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)gibi düğümler arasında ILETIŞIM kuran DSC kaynakları kullanıyorsanız, düğümler arasında trafiğe de izin vermeniz gerekir. Bu ağ gereksinimlerini anlamak için her DSC kaynağına yönelik belgelere bakın.
 
 #### <a name="proxy-support"></a>Proxy desteği
 
-DSC aracısına yönelik ara sunucu desteği Windows sürüm 1809 ve sonrasında kullanılabilir. Bu seçenek, düğümleri kaydetmek için kullanılan `ProxyURL` [metaconfiguration betiğinde](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) ve `ProxyCredential` için değerleri ayarlanarak etkinleştirilir.
+DSC aracısına yönelik ara sunucu desteği Windows sürüm 1809 ve sonrasında kullanılabilir. Bu seçenek, `ProxyURL` `ProxyCredential` düğümleri kaydetmek için kullanılan [metaconfiguration betiğinin](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) ve için değerleri ayarlanarak etkinleştirilir. 
 
 >[!NOTE]
 >Azure Otomasyonu durum yapılandırması, önceki Windows sürümleri için DSC proxy desteği sağlamaz.
 
-Linux düğümleri için DSC Aracısı ara sunucuyu destekler ve URL 'YI belirlemede `http_proxy` bu değişkeni kullanır.
+Linux düğümleri için DSC Aracısı ara sunucuyu destekler ve `http_proxy` URL 'yi belirlemede bu değişkeni kullanır. Ara sunucu desteği hakkında daha fazla bilgi edinmek için bkz. [DSC metaconfigurations oluşturma](automation-dsc-onboarding.md#generate-dsc-metaconfigurations).
 
 #### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Azure Otomasyonu durum yapılandırması ağ aralıkları ve ad alanı
 

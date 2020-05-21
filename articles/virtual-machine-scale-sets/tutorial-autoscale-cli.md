@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/18/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: ba34976192d7e840f6077b13fd9aa165ed22b900
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3f51c4e50c3c5499c73e18ce40e55de6aeb54472
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195873"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700896"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 
@@ -216,8 +216,3 @@ Bu öğreticide, Azure CLI ile otomatik olarak bir ölçek kümesinin ölçeğin
 > * Otomatik ölçeklendirme kuralları oluşturma ve kullanma
 > * Sanal makine örneklerinde stres testi yapma ve otomatik ölçeklendirme kurallarını tetikleme
 > * Talep düştüğünde geriye doğru otomatik ölçeklendirme
-
-Çalışır haldeki sanal makine ölçek kümelerinin daha fazla örneğini görmek için aşağıdaki Azure CLI örnek betiklerine bakın:
-
-> [!div class="nextstepaction"]
-> [Azure CLI için ölçek kümesi betik örnekleri](cli-samples.md)

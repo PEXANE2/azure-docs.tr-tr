@@ -6,32 +6,40 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc772368de1a0f7d8a7d4f44b47ecafda70f0a70
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127688"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714857"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtma
  
 
 Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
 
-Azure CLı sürüm 2.0.70 veya üstünü yüklediğinizden ve kullanarak `az login`bir Azure hesabında oturum açtığınızdan emin olun. 
+Azure CLı sürüm 2.0.70 veya üstünü yüklediğinizden ve kullanarak bir Azure hesabında oturum açtığınızdan emin olun `az login` . 
 
 
 ## <a name="limitations"></a>Sınırlamalar
 
 - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
 - Adanmış konaklar için kullanılabilen Boyutlar ve donanım türleri bölgelere göre farklılık gösterir. Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
- 
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma 
 Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Az Group Create ile kaynak grubu oluşturun. Aşağıdaki örnek, *Doğu ABD* konumunda *mydhresourcegroup* adlı bir kaynak grubu oluşturur.
 
 ```bash
 az group create --name myDHResourceGroup --location eastus 
+```
+ 
+## <a name="list-available-host-skus-in-a-region"></a>Bir bölgedeki kullanılabilir konak SKU 'Larını listeleme
+Tüm bölgelerde ve kullanılabilirlik bölgelerinde konak SKU 'Larının tümü kullanılamaz. 
+
+Adanmış Konakları sağlamaya başlamadan önce konak kullanılabilirliğini ve tüm teklif kısıtlamalarını listeleyin. 
+
+```bash
+az vm list-skus -l eastus2  -r hostGroups/hosts  -o table  
 ```
  
 ## <a name="create-a-host-group"></a>Konak grubu oluştur 
@@ -229,7 +237,7 @@ Artık aynı parametrelerle veya bununla eşleşen bir üretim ortamıyla ek bir
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-Bu komut, `myDHResourceGroup.json` geçerli çalışma dizininizde dosyayı oluşturur. Bu şablondan bir ortam oluşturduğunuzda, sizden tüm kaynak adları istenir. `az group export` Komutuna `--include-parameter-default-value` parametresini ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz. Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten Parameters. JSON dosyası oluşturun.
+Bu komut, `myDHResourceGroup.json` geçerli çalışma dizininizde dosyayı oluşturur. Bu şablondan bir ortam oluşturduğunuzda, sizden tüm kaynak adları istenir. Komutuna parametresini ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz `--include-parameter-default-value` `az group export` . Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten Parameters. JSON dosyası oluşturun.
  
 Şablonunuzda bir ortam oluşturmak için [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create)kullanın.
 

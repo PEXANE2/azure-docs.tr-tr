@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 7afbfcc7830374c07850d1f634eb5e29fb459597
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9f10825d8f22a7ddd9858e86dc2083ae47da9a69
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654924"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712766"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -114,7 +114,7 @@ Aşağıdaki eylemleri gerçekleştirebilirsiniz:
 
 * İşlem örneği oluşturma. GPU 'Lar dahil olmak üzere Azure VM türünü belirtin (lütfen not VM türü oluşturulduktan sonra değiştirilemez), SSH erişimini etkinleştirin/devre dışı bırakın ve sanal ağ ayarlarını isteğe bağlı olarak yapılandırın. Ayrıca, tümleşik not defterlerinden, Azure portal, Kaynak Yöneticisi şablondan veya Azure Machine Learning SDK 'dan doğrudan bir örnek oluşturabilirsiniz. İşlem örneği oluşturma için geçerli olan bölge başına adanmış çekirdekler, Azure Machine Learning işlem kümesi kotasıyla birleştirilmiştir ve paylaşılır.
 * İşlem örnekleri sekmesini Yenile
-* İşlem örneğini başlatma, durdurma ve yeniden başlatma
+* Bir işlem örneğini başlatın, durdurun ve yeniden başlatın. Maliyeti azaltmak için kullanmadığınız sanal makineyi durdurun. Daha sonra ihtiyacınız olduğunda yeniden başlatın.
 * İşlem örneğini silme
 
 Çalışma alanınızdaki her bir işlem örneği için şunları yapabilirsiniz:

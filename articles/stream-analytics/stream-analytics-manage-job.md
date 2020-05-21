@@ -7,18 +7,18 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 79b8cfd3f50ffd9f1c6b36dd73942ed3ddc5929f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 577a80f04ad186ab1575fa78db3fa59402d6058f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594925"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697389"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Öğretici: Stream Analytics ile telefon araması verilerini analiz edin ve sonuçları Power BI panoda görselleştirin
 
 Bu öğreticide Azure Stream Analytics'i kullanarak telefon araması verilerini analiz etme adımları gösterilmektedir. Bir istemci uygulaması tarafından oluşturulan telefon araması verileri, Stream Analytics işi tarafından filtrelenecektir bazı sahte çağrılar içerir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Örnek telefon araması verileri oluşturma ve Azure Event Hubs'a gönderme
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Başlamadan önce aşağıdaki işlemleri yapın:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)oluşturun.
-* [Azure Portal](https://portal.azure.com/) oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 * [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) telefon araması olay oluşturucu uygulamasını Microsoft İndirme Merkezi’nden indirin veya [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator)’dan kaynak kodu edinin.
 * Power BI hesabınız olmalıdır.
 
@@ -43,15 +43,15 @@ Stream Analytics’in sahte arama veri akışını analiz edebilmesi için veril
 
 Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2.  > **Event Hubs****nesnelerin interneti** **kaynak** > oluştur ' u seçin.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+2. Event Hubs **nesnelerin interneti kaynak oluştur**' u seçin  >  **Internet of Things**  >  **Event Hubs**.
 
    ![Portalda bir Azure Olay Hub 'ı oluşturma](media/stream-analytics-manage-job/find-event-hub-resource.png)
 3. **Ad Alanı Oluştur** bölmesini aşağıdaki değerlerle doldurun:
 
    |**Ayar**  |**Önerilen değer** |**Açıklama**  |
    |---------|---------|---------|
-   |Adı     | myEventHubsNS        |  Olay hub'ı ad alanını tanımlamak için benzersiz bir ad.       |
+   |Name     | myEventHubsNS        |  Olay hub'ı ad alanını tanımlamak için benzersiz bir ad.       |
    |Abonelik     |   \<Aboneliğiniz\>      |   Olay hub'ını oluşturmak istediğiniz Azure aboneliğini seçin.      |
    |Kaynak grubu     |   MyASADemoRG      |  **Yeni Oluştur**’u seçin ve hesabınız için yeni bir kaynak grubu adı girin.       |
    |Konum     |   Batı ABD 2      |    Olay hub'ı ad alanının dağıtılabildiği konum.     |
@@ -113,7 +113,7 @@ TelcoGenerator uygulamasını başlatmadan önce bunu, daha önce oluşturduğun
 
    Birkaç saniye sonra uygulama, telefon araması kayıtlarını olay hub'ına gönderirken ekranda bu kayıtları görüntülemeye başlar. Telefon araması verileri aşağıdaki alanları içerir:
 
-   |**Kayıt**  |**Tanım**  |
+   |**Kayıtlar**  |**Tanım**  |
    |---------|---------|
    |CallrecTime    |  Arama başlangıç zamanı için zaman damgası.       |
    |SwitchNum     |  Aramayı bağlamak için kullanılan telefon anahtarı. Bu örnekte, anahtarlar menşei ülke/bölge (ABD, Çin, UK, Almanya veya Avustralya) temsil eden dizelerdir.       |
@@ -128,7 +128,7 @@ Arama olaylarından oluşan bir akışa sahip olduğunuza göre artık olay hub'
 
 1. Stream Analytics bir iş oluşturmak için [Azure Portal](https://portal.azure.com/)gidin.
 
-2. **Stream Analytics iş****nesnelerin interneti** >  **kaynak** > oluştur ' u seçin.
+2. **Create a resource**  >  **Internet of Things**  >  **Stream Analytics iş**nesnelerin interneti kaynak oluştur ' u seçin.
 
 3. **Yeni Stream Analytics işi** bölmesini aşağıdaki değerlerle doldurun:
 
@@ -175,7 +175,7 @@ Son adım, işin dönüştürülmüş verileri yazabileceği bir çıkış havuz
 
 2. Stream Analytics iş bölmesinin **İş Topolojisi** bölümünde **Çıkışlar** seçeneğini belirleyin.
 
-3. **+** > **Power BI**Ekle ' yi seçin. Ardından formu aşağıdaki bilgilerle doldurun ve **Yetkilendir**'i seçin:
+3. **+ Power BI Ekle**' yi seçin  >  **Power BI**. Ardından formu aşağıdaki bilgilerle doldurun ve **Yetkilendir**'i seçin:
 
    |**Ayar**  |**Önerilen değer**  |
    |---------|---------|
@@ -264,7 +264,7 @@ Bu örnekte sahte aramalar, aynı kullanıcı tarafından beş saniye içinde an
 
 Öğreticinin bu bölümünde, panonuzu eklemek için Power BI ekibi tarafından oluşturulan örnek bir [ASP.net](https://asp.net/) Web uygulamasını kullanacaksınız. Pano ekleme hakkında daha fazla bilgi için [Power BI ile ekleme](https://docs.microsoft.com/power-bi/developer/embedding) başlıklı makaleye bakın.
 
-Uygulamayı ayarlamak için [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub deposuna gidin ve **verilerin sahip olduğu Kullanıcı** bölümündeki yönergeleri izleyin ( **tümleştirin-Web-App** alt bölümünün altındaki yeniden yönlendirme ve ana sayfa URL 'lerini kullanın). Pano örneğini kullandığımızdan, [GitHub deposunda](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/User%20Owns%20Data/integrate-web-app)bulunan **tümleştirin-Web-App** örnek kodunu kullanın.
+Uygulamayı ayarlamak için [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub deposuna gidin ve **verilerin sahip olduğu Kullanıcı** bölümündeki yönergeleri izleyin ( **tümleştirin-Web-App** alt bölümünün altındaki yeniden yönlendirme ve ana sayfa URL 'lerini kullanın). Pano örneğini kullandığımızdan, [GitHub deposunda](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/Embed%20for%20your%20organization/integrate-web-app)bulunan **tümleştirin-Web-App** örnek kodunu kullanın.
 Uygulamayı tarayıcınızda çalıştırmaya başladıktan sonra, daha önce oluşturduğunuz panoyu web sayfasına eklemek için şu adımları uygulayın:
 
 1. **Power BI Için oturum aç**' ı seçin. Bu, uygulamaya Power BI hesabınızdaki panolara erişim izni verir.

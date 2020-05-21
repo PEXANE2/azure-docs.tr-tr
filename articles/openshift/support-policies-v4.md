@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 7bdcccee3270f9d2b611682a9a59505158a494d2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 593cca5fbf0aa6e4c162e541560763c50cbc067e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82205215"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711423"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift destek ilkesi
 
@@ -22,13 +22,13 @@ Azure Red Hat OpenShift 4 kümelerine yönelik belirli yapılandırmalarda, küm
 
 ## <a name="cluster-configuration-requirements"></a>Küme yapılandırma gereksinimleri
 
-* Tüm OpenShift kümesi işleçleri yönetilen bir durumda kalmalıdır. Küme işleçleri listesi, çalıştırılarak `oc get clusteroperators`döndürülür.
+* Tüm OpenShift kümesi işleçleri yönetilen bir durumda kalmalıdır. Küme işleçleri listesi, çalıştırılarak döndürülür `oc get clusteroperators` .
 * Prometheus ve Alertmanager hizmetlerini kaldırmayın veya değiştirmeyin.
 * Service Alertmanager kurallarını kaldırmayın.
 * OpenShift küme sürümünü değiştirmeyin.
 * Azure Red Hat OpenShift hizmet günlüğü 'nü (MDSD pods) kaldırmayın veya değiştirmeyin.
 * ' Arosvc.azurecr.io ' küme çekme parolasını kaldırmayın veya değiştirmeyin.
-* Tüm küme sanal makinelerinin, en azından Azure Resource Manager (ARM) ve hizmet günlüğü (Genfiliz) uç noktalarına giden internet erişimi olmalıdır.
+* Tüm küme sanal makinelerinin, en azından Azure Resource Manager (ARM) ve hizmet günlüğü (Genfiliz) uç noktalarına doğrudan giden internet erişimi olması gerekir.  HTTPS proxy için hiçbir form desteklenmez.
 * Azure Red Hat OpenShift hizmeti, kümenize özel bağlantı hizmeti aracılığıyla erişir.  Hizmet erişimini kaldırmayın veya değiştirmeyin.
 * RHCOS olmayan işlem düğümleri desteklenmez. Örneğin, bir RHEL işlem düğümü kullanamazsınız.
 

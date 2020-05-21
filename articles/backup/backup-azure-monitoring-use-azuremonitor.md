@@ -4,12 +4,12 @@ description: Azure Izleyici 'yi kullanarak Azure Backup iş yüklerini izleyin v
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 54a98cebc2887f7508543a4dc752b2145c3bbda2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81e4f9f63df19ed57f26be8eb246c6dab1bf512c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183662"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714840"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak ölçeğe göre izleme
 
@@ -45,6 +45,9 @@ Bir uyarının tanımlama özelliği tetikleme koşulusıdır. Aşağıdaki gör
 
 Gerekirse, kusto sorgusunu düzenleyebilirsiniz. Bir eşik, nokta ve sıklık seçin. Eşik uyarının ne zaman ortaya kaldırılacağını belirler. Süre, sorgunun çalıştırıldığı zaman penceresidir. Örneğin, eşik 0 ' dan büyükse, dönem 5 dakikadır, sıklık 5 dakikadır, bu durumda, önceki 5 dakika boyunca sorgu her 5 dakikada bir çalıştırılır. Sonuç sayısı 0 ' dan büyükse, seçili eylem grubu aracılığıyla size bildirilir.
 
+> [!NOTE]
+> Uyarı kuralını günde bir kez çalıştırmak için, belirtilen gün içinde oluşturulan tüm olaylar/günlüklerde ' period ' ve ' Frequency ' değerlerini 1440, yani 24 saat olarak değiştirin.
+
 #### <a name="alert-action-groups"></a>Uyarı eylem grupları
 
 Bir bildirim kanalı belirtmek için bir eylem grubu kullanın. Kullanılabilir bildirim mekanizmalarını görmek için, **eylem grupları**altında **Yeni oluştur**' u seçin.
@@ -64,6 +67,7 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     ````
 
@@ -72,6 +76,7 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Failed"
     ````
 
@@ -80,6 +85,7 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -96,6 +102,7 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup" and JobOperationSubType=="Log"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -112,6 +119,7 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -161,8 +169,8 @@ Kasadaki Tanılama verileri, bazı gecikmeye sahip Log Analytics çalışma alan
 Ayrıca, yedekleme başarısı gibi olaylara yönelik bildirim almak için etkinlik günlüklerini de kullanabilirsiniz. Başlamak için şu adımları izleyin:
 
 1. Azure portalda oturum açın.
-1. İlgili kurtarma hizmetleri kasasını açın.
-1. Kasanın özelliklerinde, **etkinlik günlüğü** bölümünü açın.
+2. İlgili kurtarma hizmetleri kasasını açın.
+3. Kasanın özelliklerinde, **etkinlik günlüğü** bölümünü açın.
 
 Uygun günlüğü belirlemek ve bir uyarı oluşturmak için:
 
@@ -170,9 +178,9 @@ Uygun günlüğü belirlemek ve bir uyarı oluşturmak için:
 
    ![Azure VM yedeklemeleri için etkinlik günlüklerini bulmak üzere filtreleme](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-1. İlgili ayrıntıları görmek için işlem adını seçin.
-1. **Kural oluştur** sayfasını açmak için **Yeni uyarı kuralı** ' nı seçin.
-1. [Azure izleyici 'yi kullanarak etkinlik günlüğü uyarılarını oluşturma, görüntüleme ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)bölümündeki adımları izleyerek bir uyarı oluşturun.
+2. İlgili ayrıntıları görmek için işlem adını seçin.
+3. **Kural oluştur** sayfasını açmak için **Yeni uyarı kuralı** ' nı seçin.
+4. [Azure izleyici 'yi kullanarak etkinlik günlüğü uyarılarını oluşturma, görüntüleme ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)bölümündeki adımları izleyerek bir uyarı oluşturun.
 
    ![Yeni uyarı kuralı](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 

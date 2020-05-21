@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e80194f53a406b8b378d0fb787df627937125a27
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4f9b8f3edc475ec50eaf11080020aa9f62a0d2c1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75867480"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700870"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Hızlı başlangıç: IoT Tak ve Kullan önizleme cihazı (Windows) oluşturmak için cihaz yetenek modeli kullanma
 
@@ -85,24 +85,24 @@ Bu hızlı başlangıçta, Azure IoT C cihaz SDK 'sını geliştirme ortamınız
 
 Bu hızlı başlangıçta, var olan bir örnek cihaz yetenek modeli ve ilişkili arabirimleri kullanırsınız.
 
-1. Yerel sürücünüzde `pnp_app` bir klasör oluşturun. Bu klasörü cihaz modeli dosyaları ve cihaz kodu saplaması için kullanırsınız.
+1. `pnp_app`Yerel sürücünüzde bir klasör oluşturun. Bu klasörü cihaz modeli dosyaları ve cihaz kodu saplaması için kullanırsınız.
 
-1. [Cihaz yetenek modeli ve arabirim örnek dosyalarını](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) ve [arabirim örneğini](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) indirin ve dosyaları `pnp_app` klasörüne kaydedin.
+1. [Cihaz yetenek modeli ve arabirim örnek dosyalarını](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.model.json) ve [arabirim örneğini](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) indirin ve dosyaları `pnp_app` klasörüne kaydedin.
 
     > [!TIP]
     > GitHub 'dan bir dosyayı indirmek için dosyasına gidin, **RAW**' a sağ tıklayın ve ardından **Bağlantıyı farklı kaydet**' i seçin.
 
-1. Klasörü `pnp_app` vs Code açın. IntelliSense ile dosyaları görüntüleyebilirsiniz:
+1. `pnp_app`Klasörü vs Code açın. IntelliSense ile dosyaları görüntüleyebilirsiniz:
 
     ![Cihaz yetenek modeli](media/quickstart-create-pnp-device/dcm.png)
 
-1. İndirdiğiniz dosyalarda, `@id` ve `schema` alanlarında öğesini benzersiz `<YOUR_COMPANY_NAME_HERE>` bir değerle değiştirin. Yalnızca a-z, A-Z, 0-9 ve alt çizgi karakterlerini kullanın. Daha fazla bilgi için bkz. [Digital ikizi Identifier Format](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
+1. İndirdiğiniz dosyalarda, `<YOUR_COMPANY_NAME_HERE>` `@id` ve `schema` alanlarında öğesini benzersiz bir değerle değiştirin. Yalnızca a-z, A-Z, 0-9 ve alt çizgi karakterlerini kullanın. Daha fazla bilgi için bkz. [Digital ikizi Identifier Format](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
 
 ## <a name="generate-the-c-code-stub"></a>C kodu saplaması oluşturma
 
 Artık bir DCM ve ilişkili arabirimlerinizin olduğuna göre, modeli uygulayan Cihaz kodunu oluşturabilirsiniz. VS Code ' de C kodu saplaması oluşturmak için:
 
-1. VS Code `pnp_app` klasörü açıkken, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, **IoT Tak ve kullan**girin ve **cihaz kodu saplama oluştur**' u seçin.
+1. `pnp_app`Vs Code klasörü açıkken, **CTRL + SHIFT + P** tuşlarına basarak komut paletini açın, **IoT Tak ve kullan**girin ve **cihaz kodu saplama oluştur**' u seçin.
 
     > [!NOTE]
     > IoT Tak ve Kullan CodeGen CLı 'yi ilk kez kullandığınızda, otomatik olarak indirilmek ve yüklenmesi birkaç saniye sürer.
@@ -126,7 +126,7 @@ Artık bir DCM ve ilişkili arabirimlerinizin olduğuna göre, modeli uygulayan 
 
 Oluşturulan cihaz kodu saplaması oluşturmak için Vcpkg paketini kullanın. Oluşturduğunuz uygulama, IoT Hub 'ına bağlanan bir cihaza benzetir. Uygulama telemetri ve Özellikler gönderir ve komutları alır.
 
-1. `sample_device` Klasörde bir `cmake` alt dizin oluşturun ve bu klasöre gidin:
+1. Klasörde bir `cmake` alt dizin oluşturun `sample_device` ve bu klasöre gidin:
 
     ```cmd
     mkdir cmake
@@ -169,9 +169,9 @@ Oluşturulan cihaz kodu saplaması oluşturmak için Vcpkg paketini kullanın. O
 
 **Azure IoT Explorer**ile cihaz kodunu doğrulamak için dosyaları model deposuna yayımlamanız gerekir.
 
-1. VS Code `pnp_app` klasör açıkken, komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın, **IoT tak & Play: dosyaları model deposuna gönder**' i yazın ve seçin.
+1. `pnp_app`Vs Code klasör açıkken, komut paletini açmak Için **CTRL + SHIFT + P** tuşlarını kullanın, **IoT tak & Play: dosyaları model deposuna gönder**' i yazın ve seçin.
 
-1. Ve `SampleDevice.capabilitymodel.json` `EnvironmentalSensor.interface.json` dosyalarını seçin.
+1. `SampleDevice.capabilitymodel.json`Ve `EnvironmentalSensor.interface.json` dosyalarını seçin.
 
 1. Şirket modeli deposu Bağlantı dizenizi girin.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Otomasyonu durum yapılandırması tarafından yönetim için makineleri etkinleştirme
-description: Azure Otomasyonu durum yapılandırması ile yönetim için makineleri ayarlama
+title: Azure Otomasyonu durum yapılandırmasını etkinleştirme
+description: Bu makalede, Azure Otomasyonu durum yapılandırması ile yönetim için makinelerin nasıl ayarlanacağı açıklanır.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 52cd72d1144fa2acad993e927d49545d645d596f
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: a2693803603e053f06c8b6886c6f6639f0859461
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993746"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713157"
 ---
-# <a name="enable-machines-for-management-by-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırması tarafından yönetim için makineleri etkinleştirme
+# <a name="enable-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasını etkinleştirme
 
 Bu konu başlığı altında, Azure Otomasyonu durum yapılandırması ile makinelerinizi yönetim için nasıl ayarlayabileceğinizi anlatmaktadır. Bu hizmetin ayrıntıları için bkz. [Azure Otomasyonu durum yapılandırmasına genel bakış](automation-dsc-overview.md).
 
@@ -25,8 +25,8 @@ Bu konu başlığı altında, Azure Otomasyonu durum yapılandırması ile makin
 Azure Otomasyonu durum yapılandırması, Azure portal, Azure Resource Manager şablonlarını veya PowerShell 'i kullanarak Azure sanal makinelerini yapılandırma yönetimi için kolayca etkinleştirmenizi sağlar. Yönetim altında ve bir yöneticinin bir VM 'ye uzak olarak gerek kalmadan, Azure VM Istenen durum yapılandırma uzantısı VM 'yi Azure Otomasyonu durum yapılandırması ile kaydeder. Azure uzantısı zaman uyumsuz olarak çalıştığından, ilerleme durumunu izlemek veya sorun giderme adımları için [VM kurulumu 'Nda durum yapılandırması sorunlarını giderme](#troubleshoot-vm-setup-for-state-configuration)bölümünde verilmiştir.
 
 > [!NOTE]
->DSC 'yi bir Linux düğümüne dağıtmak **/tmp** klasörünü kullanır. `nxautomation` Gibi modüller, uygun konumlarına yüklemeden önce, doğrulama için geçici olarak indirilir. Modüllerin doğru bir şekilde yüklendiğinden emin olmak için, Linux Log Analytics aracısına **/tmp** klasöründe okuma/yazma izinleri gerekir.<br><br>
->Linux için Log Analytics Aracısı `omsagent` Kullanıcı olarak çalışır. `omsagent` Kullanıcıya >yazma izni vermek için komutunu `setfacl -m u:omsagent:rwx /tmp`çalıştırın.
+>DSC 'yi bir Linux düğümüne dağıtmak **/tmp** klasörünü kullanır. Gibi modüller, `nxautomation` uygun konumlarına yüklemeden önce, doğrulama için geçici olarak indirilir. Modüllerin doğru bir şekilde yüklendiğinden emin olmak için, Linux Log Analytics aracısına **/tmp** klasöründe okuma/yazma izinleri gerekir.<br><br>
+>Linux için Log Analytics Aracısı kullanıcı olarak çalışır `omsagent` . Kullanıcıya >yazma izni vermek için `omsagent` komutunu çalıştırın `setfacl -m u:omsagent:rwx /tmp` .
 
 ### <a name="enable-a-vm-using-azure-portal"></a>Azure portal kullanarak VM 'yi etkinleştirme
 
@@ -53,7 +53,7 @@ Azure Resource Manager şablonlarını kullanarak bir VM 'yi durum yapılandırm
 VM 'Leri durum yapılandırması için etkinleştirmek üzere PowerShell 'de [register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) cmdlet 'ini kullanabilirsiniz. 
 
 > [!NOTE]
->`Register-AzAutomationDscNode` Cmdlet yalnızca Windows uzantısını tetiklediği için, yalnızca Windows çalıştıran makineler için uygulanır.
+>`Register-AzAutomationDscNode`Cmdlet yalnızca Windows uzantısını tetiklediği için, yalnızca Windows çalıştıran makineler için uygulanır.
 
 ### <a name="register-vms-across-azure-subscriptions"></a>VM 'Leri Azure abonelikleri arasında kaydetme
 
@@ -83,7 +83,7 @@ Diğer Azure aboneliklerinden VM 'Lerin kaydedileceği en iyi yol, Azure Resourc
 1. Durum yapılandırması için etkinleştirmek üzere makinelerde [Linux Için istenen en son PowerShell durum yapılandırması](https://github.com/Microsoft/PowerShell-DSC-for-Linux) sürümünün yüklü olduğundan emin olun.
 2. [POWERSHELL DSC yerel Configuration Manager varsayılan](/powershell/scripting/dsc/managing-nodes/metaConfig4) olarak kullanım durumumızdan eşleşiyorsa ve makineleri hem çekme hem de durum yapılandırmasına göre etkinleştirmek istiyorsanız:
 
-   - Etkinleştirilecek her Linux makinesinde, makineyi PowerShell DSC `Register.py` yerel Configuration Manager varsayılanlarına etkinleştirmek için kullanın.
+   - Etkinleştirilecek her Linux makinesinde, `Register.py` makineyi POWERSHELL DSC yerel Configuration Manager varsayılanlarına etkinleştirmek için kullanın.
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
@@ -110,7 +110,7 @@ Diğer Azure aboneliklerinden VM 'Lerin kaydedileceği en iyi yol, Azure Resourc
 
 7. PowerShell DSC metaconfigurations 'ı uzaktan uygulayadıysanız, uzak makinelere karşılık gelen metaconfigurations 'ı 4. adım bölümünde açıklanan klasörden Linux makinelere kopyalayın.
 
-8. Durum yapılandırmasını etkinleştirmek için `Set-DscLocalConfigurationManager.py` her bir Linux makinesinde yerel olarak çağrılacak kodu ekleyin.
+8. `Set-DscLocalConfigurationManager.py`Durum yapılandırmasını etkinleştirmek için her bir Linux makinesinde yerel olarak çağrılacak kodu ekleyin.
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 
@@ -123,7 +123,7 @@ Herhangi bir makineyi durum yapılandırması için etkinleştirmek üzere [DSC 
 > [!NOTE]
 > DSC metaconfigurations, bir Otomasyon hesabındaki bir makineyi yönetim için etkinleştirmek üzere gereken gizli dizileri içerir. Oluşturduğunuz DSC metayapılandırmalarının doğru şekilde korunmasını sağlayın veya kullandıktan sonra silin.
 
-Metaconfigurations için proxy desteği, Windows PowerShell DSC altyapısı olan LCM tarafından denetlenir. LCM, tüm hedef düğümlerde çalışır ve bir DSC metaconfiguration betiğine dahil olan yapılandırma kaynaklarını çağırmadan sorumludur. Proxy URL tanımlarını ve proxy kimlik bilgisini `ConfigurationRepositoryWeb`, `ResourceRepositoryWeb`, ve `ReportServerWeb` bloklarında gerektiği şekilde ekleyerek bir metaconfiguration 'da proxy desteği ekleyebilirsiniz. Bkz. [yerel Configuration Manager yapılandırma](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7).
+Metaconfigurations için proxy desteği, Windows PowerShell DSC altyapısı olan [yerel Configuration Manager](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7)tarafından denetlenir. LCM, tüm hedef düğümlerde çalışır ve bir DSC metaconfiguration betiğine dahil olan yapılandırma kaynaklarını çağırmadan sorumludur. `ProxyURL` `ProxyCredential` `ConfigurationRepositoryWeb` , `ResourceRepositoryWeb` , Ve blokları için gereken tanımları ve özellikleri ekleyerek bir metaconfiguration 'da proxy desteği ekleyebilirsiniz `ReportServerWeb` . URL ayarına bir örnek `ProxyURL = "http://172.16.3.6:3128";` . `ProxyCredential`Özelliği, `PSCredential` [Azure Automation 'Da kimlik bilgilerini yönetme](shared-resources/credentials.md)bölümünde açıklandığı gibi bir nesne olarak ayarlanır. 
 
 ### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>DSC yapılandırması kullanarak DSC metayapılandırmaları oluşturma
 
@@ -247,7 +247,7 @@ Metaconfigurations için proxy desteği, Windows PowerShell DSC altyapısı olan
 
 1. Makinelerin DSC durum bilgilerini Azure Automation durum yapılandırmasına bildirmesini, ancak istek temelli yapılandırma veya PowerShell modülleri olmadığını istiyorsanız, `ReportOnly` parametresini true olarak ayarlayın.
 
-1. `ReportOnly` Ayarlanmamışsa, makineler DSC durum bilgilerini Azure Otomasyonu durum yapılandırması ve çekme yapılandırması ya da PowerShell modüllerine bildirir. Parametreleri,, ve `ConfigurationRepositoryWeb` `ResourceRepositoryWeb` `ReportServerWeb` bloklarına göre ayarlayın.
+1. `ReportOnly`Ayarlanmamışsa, MAKINELER DSC durum bilgilerini Azure Otomasyonu durum yapılandırması ve çekme yapılandırması ya da PowerShell modüllerine bildirir. Parametreleri,, `ConfigurationRepositoryWeb` `ResourceRepositoryWeb` ve bloklarına göre ayarlayın `ReportServerWeb` .
 
 1. Betiği çalıştırın. Artık, etkinleştirilecek makineler için PowerShell DSC metayapılandırmalarını içeren **Dscmetaconfigs**adlı bir çalışma dizini klasörünüz olmalıdır (yönetici olarak).
 
@@ -299,11 +299,11 @@ Ek güvenlik için, bir Otomasyon hesabının birincil ve ikincil erişim anahta
 
 Bir makineyi Azure Otomasyonu durum yapılandırması 'nda DSC düğümü olarak kaydettikten sonra, bu düğümü gelecekte yeniden kaydetmeniz gerekebileceği birkaç neden vardır.
 
-- **Sertifika yenileme.** Windows Server 2019 ' den önceki Windows Server sürümleri için her düğüm, bir yıl sonra süresi dolan kimlik doğrulaması için otomatik olarak benzersiz bir sertifika olarak anlaşır. Bir sertifikanın süresi Yenilemesiz olarak dolarsa, düğüm Azure Otomasyonu ile iletişim kuramaz ve işaretlenir `Unresponsive`. Şu anda PowerShell DSC kayıt Protokolü, sertifikaları süresi dolmak üzere otomatik olarak yenileyemez ve bir yılın zamanından sonra düğümleri yeniden kaydetmeniz gerekir. Yeniden kaydolmadan önce, her bir düğümün WMF 5 RTM çalıştırdığından emin olun. 
+- **Sertifika yenileme.** Windows Server 2019 ' den önceki Windows Server sürümleri için her düğüm, bir yıl sonra süresi dolan kimlik doğrulaması için otomatik olarak benzersiz bir sertifika olarak anlaşır. Bir sertifikanın süresi Yenilemesiz olarak dolarsa, düğüm Azure Otomasyonu ile iletişim kuramaz ve işaretlenir `Unresponsive` . Şu anda PowerShell DSC kayıt Protokolü, sertifikaları süresi dolmak üzere otomatik olarak yenileyemez ve bir yılın zamanından sonra düğümleri yeniden kaydetmeniz gerekir. Yeniden kaydolmadan önce, her bir düğümün WMF 5 RTM çalıştırdığından emin olun. 
 
     Yeniden kayıt, sertifika sona erme zamanından 90 gün veya daha az bir süre önce veya sertifika geçerlilik süresi dolduktan sonra herhangi bir noktada, oluşturulup kullanılmakta olan yeni bir sertifikayla sonuçlanır. Windows Server 2019 ve üzeri sürümlerde bu soruna yönelik bir çözüm bulunur.
 
-- **DSC LCM değerlerinde yapılan değişiklikler.** Örneğin, `ConfigurationMode`düğümün ilk kaydı sırasında AYARLANMıŞ [PowerShell DSC LCM değerlerini](/powershell/scripting/dsc/managing-nodes/metaConfig4) değiştirmeniz gerekebilir. Şu anda, bu DSC Aracısı değerlerini yalnızca yeniden kayıt yoluyla değiştirebilirsiniz. Tek istisna, düğüme atanan düğüm yapılandırma değeridir. Bunu Azure Automation DSC doğrudan üzerinde değiştirebilirsiniz.
+- **DSC LCM değerlerinde yapılan değişiklikler.** Örneğin, düğümün ilk kaydı sırasında ayarlanmış [POWERSHELL DSC LCM değerlerini](/powershell/scripting/dsc/managing-nodes/metaConfig4) değiştirmeniz gerekebilir `ConfigurationMode` . Şu anda, bu DSC Aracısı değerlerini yalnızca yeniden kayıt yoluyla değiştirebilirsiniz. Tek istisna, düğüme atanan düğüm yapılandırma değeridir. Bunu Azure Automation DSC doğrudan üzerinde değiştirebilirsiniz.
 
 Bu belgede açıklanan yöntemlerden herhangi birini kullanarak düğümü başlangıçta hemen kaydettiğiniz şekilde yeniden kaydedebilirsiniz. Bir düğümün yeniden kaydolmadan önce Azure Otomasyonu durum yapılandırması 'ndan kaydını kaldırmanız gerekmez.
 

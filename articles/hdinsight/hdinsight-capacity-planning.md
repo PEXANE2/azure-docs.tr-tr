@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/07/2020
-ms.openlocfilehash: 4ede8833fdbdbd57654e6c02147f53e58a17b1de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/07/2020
+ms.openlocfilehash: 8e76f767470b9052b25cd2b2958f3f9e9780881b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887002"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714755"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight kümeleri için kapasite planlaması
 
@@ -84,7 +84,6 @@ Kümenin ömrü için ücretlendirilirsiniz. Kümeniz için gerekli olan yalnız
 
 > [!NOTE]  
 > Bir küme silindiğinde, varsayılan Hive meta veri deposu de silinir. Bir sonraki küme yeniden oluşturma için meta verileri kalıcı hale getirmek için Azure veritabanı veya [Apache Oozie](https://oozie.apache.org/)gibi bir dış meta veri deposu kullanın.
-<!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
 ### <a name="isolate-cluster-job-errors"></a>Küme işi hatalarını yalıtma
 
@@ -92,40 +91,7 @@ Bazen birden çok eşleme paralel yürütmesi ve çok düğümlü bir küme üze
 
 ## <a name="quotas"></a>Kotalar
 
-Hedef küme VM 'nizin boyutunu, ölçeğini ve türünü belirledikten sonra, aboneliğinizin geçerli kota kapasitesi sınırlarını kontrol edin. Bir kota sınırına ulaştığınızda, yeni kümeler dağıtamazsınız. Ya da daha fazla çalışan düğümü ekleyerek mevcut kümeleri ölçeklendirin. Tek kota sınırı, her abonelik için bölge düzeyinde bulunan CPU çekirdekleri kotasına yöneliktir. Örneğin, aboneliğiniz Doğu ABD bölgesinde 30 çekirdek sınırına sahip olabilir.
-
-Kullanılabilir çekirdekleri denetlemek için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. HDInsight kümesinin **genel bakış** sayfasına gidin.
-3. Sol taraftaki menüden **kota sınırları**' nı seçin.
-
-   Sayfa, kullanımdaki çekirdek sayısını, kullanılabilir çekirdek sayısını ve toplam çekirdekleri görüntüler.
-
-Bir kota artışı istemeniz gerekiyorsa, aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-1. Sayfanın sol alt tarafında **Yardım + Destek** ' i seçin.
-1. **Yeni destek isteği**’ni seçin.
-1. **Yeni destek isteği** sayfasında, **temel bilgiler** sekmesinde aşağıdaki seçenekleri belirleyin:
-
-   - **Sorun türü**: **hizmet ve abonelik limitleri (kotalar)**
-   - **Abonelik**: değiştirmek istediğiniz abonelik
-   - **Kota türü**: **HDInsight**
-
-     ![HDInsight çekirdek kotasını artırmak için bir destek isteği oluşturma](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
-
-1. **İleri ' yi seçin: çözümler >>**.
-1. **Ayrıntılar** sayfasında, sorun için bir açıklama girin, sorunun önem derecesini, tercih ettiğiniz iletişim yöntemini ve diğer gerekli alanları seçin.
-1. **İleri ' yi seçin: gözden geçir + oluştur >>**.
-1. **Gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.
-
-> [!NOTE]  
-> Özel bir bölgedeki HDInsight Core kotasını artırmanız gerekiyorsa, [bir beyaz liste isteği gönderebilirsiniz](https://aka.ms/canaryintwhitelist).
-
-[Bir kota artışı istemek için desteğe başvurabilirsiniz](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
-
-Bazı sabit kota sınırları vardır. Örneğin, tek bir Azure aboneliğinde en fazla 10.000 çekirdek bulunabilir. Bu limitlere ilişkin ayrıntılar için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+Abonelik kotalarını yönetme hakkında daha fazla bilgi için bkz. [Kota artışı isteme](quota-increase-request.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

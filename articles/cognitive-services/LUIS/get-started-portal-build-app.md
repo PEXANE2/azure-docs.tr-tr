@@ -2,13 +2,13 @@
 title: 'Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma'
 description: Bu hızlı başlangıçta, bir uygulamanın, amaçlarınızın ve varlıkların temel parçalarını ve Ayrıca Lua portalındaki örnek utbotlarla test oluşturursunuz.
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: b2ab2ec0fa5398ae8a69906aee25ef44ad5db3c9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585287"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697288"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma
 
@@ -137,7 +137,7 @@ Bu örnek, tasarıma göre aşağıdaki yollarla farklılık gösterir:
 
 1. Sol menüden **amaçlar** ' a tıklayarak varlığın **FindForm** hedefi ' nde bulunduğunu doğrulayın. Ardından **FindForm** hedefini seçin.
 
-   Varlık, örnek noktada göründüğü yerde işaretlenir. Varlık adı yerine özgün metni görmek isterseniz, **varlıklar görünümünü** araç çubuğundan değiştirin.
+   Varlık, örnek noktada göründüğü yerde işaretlenir.
 
    > [!div class="mx-imgBorder"]
    > [![Varlıklarla işaretlenmiş tüm örnek dıklarından oluşan ekran görüntüsü](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)

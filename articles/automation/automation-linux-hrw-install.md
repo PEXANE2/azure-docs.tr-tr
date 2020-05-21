@@ -1,16 +1,16 @@
 ---
-title: Azure Otomasyonu Linux Karma Runbook Çalışanı
-description: Bu makalede, Azure Otomasyonu karma Runbook Worker yükleme hakkında bilgi sağlanır. böylece, runbook 'ları yerel veri merkezinizdeki veya bulut ortamınızda Linux tabanlı bilgisayarlarda çalıştırabilirsiniz.
+title: Azure Otomasyonu 'nda Linux karma runbook çalışanı dağıtma
+description: Bu makalede, yerel veri merkezinizdeki veya bulut ortamınızdaki Linux tabanlı bilgisayarlarda runbook 'ları çalıştırmak için bir Azure Otomasyonu karma Runbook Worker nasıl yükleneceği açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82f6d9e56e5d5745077ef512cb3392c16b95961f
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 599eb527a349278caf2e4e22e9458a9cd2d08d24
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872173"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712460"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -70,23 +70,23 @@ Linux karma Runbook Worker için en düşük gereksinimler şunlardır:
 
 ## <a name="install-a-linux-hybrid-runbook-worker"></a>Linux karma Runbook Worker 'ı yükler
 
-Linux bilgisayarınızda bir karma runbook çalışanı yüklemek ve yapılandırmak için, doğrudan el ile gerçekleştirilen bir işlemi izleyin. Azure Log Analytics çalışma alanınızda Otomasyon Karma Çalışanı çözümünün etkinleştirilmesini ve sonra bilgisayarı bir çalışan olarak kaydetmek ve bir gruba eklemek için bir komut kümesi çalıştırmayı gerektirir.
+Linux bilgisayarınızda bir karma runbook çalışanı yüklemek ve yapılandırmak için, doğrudan el ile gerçekleştirilen bir işlemi izleyin. Azure Log Analytics çalışma alanınızda karma Runbook Worker etkinleştirilmesini ve sonra bilgisayarı bir çalışan olarak kaydetmek ve bir gruba eklemek için bir komut kümesi çalıştırmayı gerektirir.
 
 Devam etmeden önce Otomasyon hesabınızın bağlı olduğu Log Analytics çalışma alanını unutmayın. Ayrıca Otomasyon hesabınızın birincil anahtarını da aklınızda bulabilirsiniz. Hem Otomasyon hesabınızı seçip, çalışma alanı KIMLIĞI için **çalışma alanı** ' nı seçip birincil anahtar için **anahtarlar** ' ı seçerek Azure Portal her ikisini de bulabilirsiniz. Karma Runbook Worker için ihtiyaç duyduğunuz bağlantı noktaları ve adresler hakkında daha fazla bilgi için bkz. [ağınızı yapılandırma](automation-hybrid-runbook-worker.md#network-planning).
 
 >[!NOTE]
 > Linux hibrit Worker yüklemesi sırasında karşılık gelen sudo izinleri olan [nxautomation hesabı](automation-runbook-execution.md#log-analytics-agent-for-linux) bulunmalıdır. Çalışanı yüklemeye çalışırsanız ve hesap yoksa veya uygun izinlere sahip değilse, yükleme başarısız olur.
 
-1. Aşağıdaki yöntemlerden birini kullanarak Azure 'da Otomasyon Karma Çalışanı çözümü etkinleştirin:
+1. Aşağıdaki yöntemlerden birini kullanarak Azure 'da karma Runbook Worker 'ı etkinleştirin:
 
-   * [Azure İzleyici günlüğü çözümlerini çalışma alanınıza ekleme](../log-analytics/log-analytics-add-solutions.md)yordamını kullanarak aboneliğinize Otomasyon karma çalışanı çözümünü ekleyin.
+   * [Azure izleyici günlüklerini çalışma alanınıza ekleme](../log-analytics/log-analytics-add-solutions.md)yordamını kullanarak, karma runbook çalışanını aboneliğinize ekleyin.
    * Aşağıdaki cmdlet'i çalıştırın:
 
         ```azurepowershell-interactive
-         Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
+         Set-AzOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-1. Aşağıdaki komutu çalıştırarak Linux için Log Analytics aracısını yükler. Workspace \<ID\> ve \<WorkspaceKey\> değerlerini çalışma alanınızdan uygun değerlerle değiştirin.
+1. Aşağıdaki komutu çalıştırarak Linux için Log Analytics aracısını yükler. \< \> Workspace ID ve \< WorkspaceKey \> değerlerini çalışma alanınızdan uygun değerlerle değiştirin.
 
    [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
@@ -103,7 +103,7 @@ Devam etmeden önce Otomasyon hesabınızın bağlı olduğu Log Analytics çal�
 1. Komut tamamlandıktan sonra, Azure portal karma çalışan grupları sayfasında yeni grup ve üye sayısı gösterilir. Bu, var olan bir gruptur, üye sayısı artırılır. Karma çalışan grupları sayfasında listeden grubu seçebilir ve **hibrit çalışanlar** kutucuğunu seçebilirsiniz. Karma çalışanlar sayfasında, grubun her bir üyesini listede görürsünüz.
 
 > [!NOTE]
-> Bir Azure VM için Linux için Azure Izleyici sanal makine uzantısını kullanıyorsanız, otomatik yükseltme sürümleri karma Runbook Worker `autoUpgradeMinorVersion` ile sorun oluşmasına neden olabileceği için false olarak ayarlamayı öneririz. Uzantıyı el ile yükseltme hakkında bilgi edinmek için bkz. [Azure CLI dağıtımı](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
+> Bir Azure VM için Linux için Azure Izleyici sanal makine uzantısını kullanıyorsanız, `autoUpgradeMinorVersion` otomatik yükseltme sürümleri karma Runbook Worker ile sorun oluşmasına neden olabileceği için false olarak ayarlamayı öneririz. Uzantıyı el ile yükseltme hakkında bilgi edinmek için bkz. [Azure CLI dağıtımı](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
 
 ## <a name="turn-off-signature-validation"></a>İmza doğrulamasını kapat
 
@@ -115,7 +115,7 @@ Varsayılan olarak, Linux karma runbook çalışanları imza doğrulaması gerek
 
 ## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-linux-computer"></a><a name="remove-linux-hybrid-runbook-worker"></a>Karma runbook çalışanını şirket içi Linux bilgisayarından kaldırma
 
-Çalışma alanı KIMLIĞINI almak için `ls /var/opt/microsoft/omsagent` karma Runbook Worker üzerinde komutunu kullanabilirsiniz. Çalışma alanı KIMLIĞI ile adlandırılan bir klasör oluşturulur.
+`ls /var/opt/microsoft/omsagent`Çalışma alanı kimliğini almak Için karma Runbook Worker üzerinde komutunu kullanabilirsiniz. Çalışma alanı KIMLIĞI ile adlandırılan bir klasör oluşturulur.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
@@ -131,4 +131,4 @@ Linux bilgisayarların karma Runbook Worker grubunu kaldırmak için bir Windows
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatik hale getirmek üzere nasıl yapılandıracağınızı öğrenmek için bkz. [runbook 'Ları karma Runbook Worker üzerinde çalıştırma](automation-hrw-run-runbooks.md).
-* Karma runbook çalışanlarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. [Linux karma runbook çalışanları sorunlarını giderme](troubleshoot/hybrid-runbook-worker.md#linux)
+* Karma runbook çalışanlarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. [Linux karma runbook çalışanları sorunlarını giderme](troubleshoot/hybrid-runbook-worker.md#linux).

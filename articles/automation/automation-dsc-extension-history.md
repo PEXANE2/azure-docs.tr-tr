@@ -1,33 +1,33 @@
 ---
-description: Azure 'da Istenen durum yapılandırması (DSC) uzantısı için sürüm geçmişi hakkında bilgi edinin.
+title: Azure Istenen durum yapılandırma uzantısı sürüm geçmişi ile çalışma
+description: Bu makalede, Azure 'da Istenen durum yapılandırması (DSC) uzantısı için sürüm geçmişiyle nasıl çalışılacağı açıklanmaktadır.
 ms.date: 06/21/2018
 keywords: DSC, PowerShell, Azure, uzantı
-title: Azure DSC uzantısı sürüm geçmişi
 author: mgoedtel
 ms.author: magoedte
 services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 207b8f7467753a8693bbabe6dd3f7a890307cf21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4578e3bff7951293c5ec2f1992e597face84b716
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82120710"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713208"
 ---
-# <a name="azure-desired-state-configuration-extension-version-history"></a>Azure Istenen durum yapılandırması uzantısı sürümü geçmişi
+# <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Azure Istenen durum yapılandırma uzantısı sürüm geçmişi ile çalışma
 
 Azure Istenen durum yapılandırması (DSC) VM uzantısı, Azure, Windows Server ve Windows PowerShell 'i içeren Windows Management Framework (WMF) tarafından sunulan geliştirmeleri ve yeni özellikleri desteklemek için gereken şekilde güncelleştirilir.
 
-Bu makale, Azure DSC VM uzantısının her sürümü, desteklediği ortamlar ve yeni özellikler ya da değişiklikler hakkında açıklamalar ve açıklamalar hakkında bilgi sağlayacaktır.
+Bu makalede, Azure DSC VM uzantısının her sürümü, desteklediği ortamlar ve yeni özellikler ya da değişikliklerle ilgili açıklamalar ve açıklamalar hakkında bilgi sağlanır.
 
 ## <a name="latest-version"></a>En son sürüm
 
 ### <a name="version-276"></a>Sürüm 2,76
 
 - **Yayın tarihi:**
-  - 9 Mayıs 2018 (Azure) | 21 Haziran 2018 (Azure Çin, Azure Kamu)
+  - 9 Mayıs 2018 (Azure) | 21 Haziran 2018 (Azure Çin Vianet 21, Azure Kamu)
 - **İşletim sistemi desteği:**
   - Windows Server 2016
   - Windows Server 2012 R2
@@ -42,7 +42,7 @@ Bu makale, Azure DSC VM uzantısının her sürümü, desteklediği ortamlar ve 
   - WMF 4,0
 - **Ortamınızın**
   - Azure
-  - Azure Çin
+  - Azure Çin Vianet 21
   - Azure Kamu
 - **Açıklamalar:** Bu sürüm, Windows Server 2016 ' de yer alan DSC kullanır; diğer Windows Işletim sistemleri için [Windows Management Framework 5,1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/) (WMF yükleme için bir yeniden başlatma gerekir) yüklenir. Nano sunucu için, sanal makinede DSC rolü yüklüdür.
 - **Yeni Özellikler:**
@@ -89,7 +89,7 @@ Bu makale, Azure DSC VM uzantısının her sürümü, desteklediği ortamlar ve 
     }
     ```
 
-  - Yeni uzantı sürümünde TLS 1,2 artık zorlanır. Kaynak Yöneticisi şablonunda zaten bir oto Upgrademinorversion = true değeri varsa, uzantı dağıtımı, 2,75 'e yeniden yükseltilir. El ile güncelleştirmeler için Kaynak Yöneticisi `TypeHandlerVersion = 2.75` şablonunuzda belirtin.
+  - Yeni uzantı sürümünde TLS 1,2 artık zorlanır. Kaynak Yöneticisi şablonunda zaten bir oto Upgrademinorversion = true değeri varsa, uzantı dağıtımı, 2,75 'e yeniden yükseltilir. El ile güncelleştirmeler için `TypeHandlerVersion = 2.75` Kaynak Yöneticisi şablonunuzda belirtin.
 
 ### <a name="version-270---272"></a>Sürüm 2,70-2,72
 
@@ -181,10 +181,10 @@ Bu makale, Azure DSC VM uzantısının her sürümü, desteklediği ortamlar ve 
 - **Yayın tarihi:** 3 Haziran 2016
 - **Işletim sistemi desteği:** Windows Server 2016 Technical Preview, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1
 - **WMF desteği:** WMF 5,0 RTM, WMF 4,0 güncelleştirme, WMF 4,0
-- **Ortam:** Azure, Azure Çin, Azure Kamu
+- **Ortam:** Azure, Azure Çin Vianet 21, Azure Kamu
 - **Açıklamalar:** Bu sürüm, Windows Server 2016 Technical Preview 'a dahil edilen DSC kullanır; diğer Windows Işletim sistemleri için [Windows Management Framework 5,0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/) 'YI (WMF yüklemesi için yeniden başlatma gerekir) yüklenir.
 - **Yeni Özellikler:**
-  - DSC Uzantısı artık Azure Çin 'ye eklendi. Bu sürüm öncelikle uzantıyı Azure Çin 'de çalıştırmaya yönelik düzeltmeler içerir.
+  - DSC Uzantısı artık Azure Çin Vianet 21 ile eklendi. Bu sürüm öncelikle uzantıyı Azure Çin Vianet 21 tarihinde çalıştırmaya yönelik düzeltmeler içerir.
 
 ### <a name="version-218"></a>Sürüm 2,18
 
@@ -249,7 +249,7 @@ Bu makale, Azure DSC VM uzantısının her sürümü, desteklediği ortamlar ve 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- PowerShell DSC hakkında daha fazla bilgi için [PowerShell belge merkezine](/powershell/scripting/dsc/overview/overview)gidin.
+- PowerShell DSC hakkında daha fazla bilgi için bkz. [PowerShell belge merkezi](/powershell/scripting/dsc/overview/overview).
 - [DSC uzantısının Kaynak Yöneticisi şablonunu](/azure/virtual-machines/extensions/dsc-template)inceleyin.
 - PowerShell DSC 'yi kullanarak yönetebileceğiniz daha fazla işlevsellik ve daha fazla DSC kaynağı için [PowerShell Galerisi](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)' ne gözatabileceğinizi unutmayın.
 - Hassas parametreleri yapılandırmalara geçirme hakkında ayrıntılı bilgi için bkz. [DSC uzantı işleyicisiyle kimlik bilgilerini güvenli bir şekilde yönetme](/azure/virtual-machines/extensions/dsc-credentials).

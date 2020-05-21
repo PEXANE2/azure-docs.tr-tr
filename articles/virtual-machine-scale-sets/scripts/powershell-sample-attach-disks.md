@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: ee9348c835a30c34a45bec78cc0d6b3ee298bf08
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 39c1c534a930dae2967d982f7c175fadb3222e83
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201420"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700917"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>PowerShell ile sanal makine ölçek kümesi kullanarak veri diskleri ekleme ve kullanma
 Bu betik, sanal makine ölçek kümesi oluşturur ve veri diskleri ekleyip hazırlar.
@@ -47,5 +47,3 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
-
-Ek sanal makine ölçek kümesi PowerShell betik örnekleri, [Azure sanal makine ölçek kümesi belgelerinde](../powershell-samples.md) bulunabilir.

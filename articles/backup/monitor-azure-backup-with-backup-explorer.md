@@ -4,12 +4,12 @@ description: Bu makalede, kasaların, aboneliklerde, bölgelerde ve kiracılar g
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 87780124d531212a141520df65ff7408cc120e55
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160998"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715214"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Yedekleme Gezgini ile yedeklemelerinizi izleme
 
@@ -30,6 +30,7 @@ Bu yetenekler, Azure Kaynak Grafiği ve Azure Izleyici çalışma kitapları ile
 > * Yedekleme Gezgini Şu anda ulusal bulutlarda desteklenmiyor.
 > * Şu anda, yedekleme Gezgini şablonunun özelleştirilmesi desteklenmez.
 > * Azure Kaynak Grafiği verilerinde özel geliştirmeler yazılmasını önermiyoruz.
+> * Yedekleme Gezgini Şu anda en fazla 1000 abonelik (kiracılar arasında) üzerinde yedeklemeleri izlemenize olanak sağlar.
 
 ## <a name="get-started"></a>başlarken
 

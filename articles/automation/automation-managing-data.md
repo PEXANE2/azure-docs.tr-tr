@@ -1,23 +1,20 @@
 ---
-title: Azure Otomasyonu verilerini yönetme
-description: Bu makalede, Azure Otomasyonu ortamının yönetilmesi için birden çok konu yer almaktadır.  Şu anda Azure Otomasyonu 'nda veri saklama ve Azure Otomasyonu olağanüstü durum kurtarmayı yedekleme dahil.
+title: Azure Otomasyonu verilerinin yönetilmesi
+description: Bu makalede, veri saklama ve yedekleme dahil olmak üzere Azure Otomasyonu 'nda veri yönetimi kavramları sunulmaktadır.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: f917e9c64a932d75fd0f6b14c9e0f35808467355
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44fe626abd71c13b7f16aa07c4ddf261ff3cacea
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984666"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715435"
 ---
-# <a name="managing-azure-automation-data"></a>Azure Otomasyonu verilerini yönetme
+# <a name="management-of-azure-automation-data"></a>Azure Otomasyonu verilerinin yönetilmesi
 
-Bu makalede, verileri bir Azure Otomasyonu ortamında yönetmeye yönelik birden çok konu yer almaktadır.
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+Bu makalede, verileri bir Azure Otomasyonu ortamında yönetmeye yönelik çeşitli konular yer almaktadır.
 
 ## <a name="data-retention"></a>Veri saklama
 
@@ -31,7 +28,7 @@ Aşağıdaki tabloda, farklı kaynaklar için bekletme ilkesi özetlenmektedir.
 | Varlıklar |Bir varlık, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı varlığı tutan bir hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
 | DSC düğümleri |DSC düğümü, Windows PowerShell 'de Azure portal veya [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet 'ini kullanarak bir Otomasyon hesabından silinen 30 gün sonra kalıcı olarak kaldırılır. Düğüm, düğüm tutan hesabı sildikten sonra 30 gün sonra da kalıcı olarak kaldırılır. |
 | İşler |Bir iş silinir ve değişiklik sonrasında 30 gün sonra kalıcı olarak kaldırılır. Örneğin, iş tamamlandıktan sonra, durdurulur veya askıya alınır. |
-| Modüller |Bir modül, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı modülü tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
+| Modül |Bir modül, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı modülü tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
 | Düğüm konfigürasyonları/MOF dosyaları |Yeni bir düğüm yapılandırması oluşturulduktan sonra, eski bir düğüm yapılandırması 30 gün sonra kalıcı olarak kaldırılır. |
 | Düğüm raporları |Düğüm raporu, bu düğüm için yeni rapor oluşturulduktan 90 gün sonra kalıcı olarak kaldırılır. |
 | Runbook'lar |Bir runbook, bir Kullanıcı kaynağı sildikten 30 gün sonra veya bir Kullanıcı kaynağı tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |

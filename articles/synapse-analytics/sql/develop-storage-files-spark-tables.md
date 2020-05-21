@@ -1,5 +1,5 @@
 ---
-title: İsteğe bağlı SQL kullanarak Spark tablolarını sorgulama (Önizleme)
+title: İsteğe bağlı SQL 'de Azure SYNAPSE dış tablo tanımlarına yönelik Apache Spark eşitlemesini (Önizleme)
 description: İsteğe bağlı SQL (Önizleme) kullanarak Spark tablolarının nasıl sorgulanmasına genel bakış
 services: synapse-analytics
 author: julieMSFT
@@ -9,22 +9,26 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 210e0b240eefd2dd3f8d1ac45c781959e47ab893
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 47737489256d349ebc02c107cf8bbb2e8ec1cb7a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198486"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701973"
 ---
-# <a name="query-spark-tables-with-azure-synapse-analytics-using-sql-on-demand-preview"></a>İsteğe bağlı SQL (Önizleme) kullanarak Azure SYNAPSE Analytics ile Spark tabloları sorgulama
+# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>İsteğe bağlı SQL 'de Azure SYNAPSE dış tablo tanımlarına yönelik Apache Spark eşitlemesini (Önizleme)
 
-İsteğe bağlı SQL (Önizleme), SYNAPSE çalışma alanı (Önizleme) içindeki Spark havuzlarından meta verileri otomatik olarak eşitleyebilir. Spark havuzlarında (Önizleme) bulunan her veritabanı için bir SQL isteğe bağlı veritabanı oluşturulur. Parquet tabanlı ve Azure depolamada bulunan her Spark dış tablosu için, SQL isteğe bağlı veritabanında bir dış tablo oluşturulur. Bu nedenle Spark havuzlarınızı kapatabilir ve yine de SQL isteğe bağlı olarak Spark dış tablolarını sorgulayabilirsiniz.
+İsteğe bağlı SQL (Önizleme), Azure SYNAPSE havuzları için Apache Spark meta verileri otomatik olarak eşitleyebilir. Spark havuzlarında (Önizleme) bulunan her veritabanı için bir SQL isteğe bağlı veritabanı oluşturulur. 
+
+Parquet tabanlı ve Azure depolamada bulunan her Spark dış tablosu için, SQL isteğe bağlı veritabanında bir dış tablo oluşturulur. Bu nedenle Spark havuzlarınızı kapatabilir ve yine de SQL isteğe bağlı olarak Spark dış tablolarını sorgulayabilirsiniz.
 
 Bir tablo Spark 'ta bölümlendiğinde, depolama alanındaki dosyalar klasörlere göre düzenlenir. İsteğe bağlı SQL, Bölüm meta verilerini kullanır ve yalnızca sorgunuz için ilgili klasörleri ve dosyaları hedefleyin.
 
 Meta veri eşitleme, Azure SYNAPSE çalışma alanında sağlanan her Spark havuzu için otomatik olarak yapılandırılır. Spark dış tablolarını anında sorgulamaya başlayabilirsiniz.
 
-Azure depolama 'da bulunan her Spark Parquet dış tablosu, bir SQL isteğe bağlı veritabanına karşılık gelen bir dbo şemasında dış tablo ile temsil edilir. Spark dış tablo sorguları için, dış [spark_table] hedefleyen bir sorgu çalıştırın. Aşağıdaki örneği çalıştırmadan önce, dosyaların bulunduğu [depolama hesabına doğru erişiminizin](develop-storage-files-storage-access-control.md) olduğundan emin olun.
+Azure depolama 'da bulunan her Spark Parquet dış tablosu, bir SQL isteğe bağlı veritabanına karşılık gelen bir dbo şemasında dış tablo ile temsil edilir. 
+
+Spark dış tablo sorguları için, dış [spark_table] hedefleyen bir sorgu çalıştırın. Aşağıdaki örneği çalıştırmadan önce, dosyaların bulunduğu [depolama hesabına doğru erişiminizin](develop-storage-files-storage-access-control.md) olduğundan emin olun.
 
 ```sql
 SELECT * FROM [db].dbo.[spark_table]
@@ -42,7 +46,7 @@ SELECT * FROM [db].dbo.[spark_table]
 | DoubleType      | float                       |
 | DecimalType     | decimal                     |
 | TimestampType   | datetime2                   |
-| Tarih türü        | tarih                        |
+| Tarih türü        | date                        |
 | StringType      | varchar (max) *               |
 | BinaryType      | ikili                   |
 | BooleanType     | bit                         |

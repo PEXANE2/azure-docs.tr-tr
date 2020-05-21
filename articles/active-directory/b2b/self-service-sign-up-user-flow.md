@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd430d750b2220882479a430322f4b4c4e0c44c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597467"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712358"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme (Önizleme)
 |     |
@@ -25,7 +25,10 @@ ms.locfileid: "83597467"
 | Self Servis kaydolma, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Kullanıcı akışınızı bir uygulamayla ilişkilendirmek, bu uygulamanın kaydolmasına olanak tanır. Kullanıcı akışıyla ilişkilendirmek için birden fazla uygulama seçebilirsiniz. Kullanıcı akışını bir veya daha fazla uygulamayla ilişkilendirdikten sonra, uygulamayı ziyaret eden kullanıcılar Kullanıcı akışında yapılandırılan seçenekleri kullanarak kaydolabilir.
+Kuruluşunuz tarafından oluşturulan uygulamalar için Kullanıcı akışları oluşturabilirsiniz. Kullanıcı akışınızı bir uygulamayla ilişkilendirmek, bu uygulamanın kaydolmasına olanak tanır. Kullanıcı akışıyla ilişkilendirmek için birden fazla uygulama seçebilirsiniz. Kullanıcı akışını bir veya daha fazla uygulamayla ilişkilendirdikten sonra, uygulamayı ziyaret eden kullanıcılar, Kullanıcı akışında yapılandırılan seçenekleri kullanarak bir Konuk hesabı elde edebilir.
+
+> [!NOTE]
+> Kullanıcı akışlarını, kuruluşunuz tarafından oluşturulan uygulamalarla ilişkilendirebilirsiniz. Kullanıcı akışları, SharePoint veya takımlar gibi Microsoft uygulamaları için kullanılamaz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -33,9 +36,12 @@ Kullanıcı akışınızı bir uygulamayla ilişkilendirmek, bu uygulamanın kay
 
 Azure AD, self servis kaydolma için varsayılan kimlik sağlayıcıdır. Bu, kullanıcıların bir Azure AD hesabıyla varsayılan olarak kaydolabilebileceği anlamına gelir. Sosyal kimlik sağlayıcıları, Google ve Facebook hesaplarını desteklemek için bu kaydolma akışlarına de dahil edilebilir.
 
-- [Sosyal kimlik sağlayıcıları listenize Google ekleyin](google-federation.md)
 - [Sosyal kimlik sağlayıcıları listenize Facebook ekleyin](facebook-federation.md)
- 
+- [Sosyal kimlik sağlayıcıları listenize Google ekleyin](google-federation.md)
+
+> [!NOTE]
+> Geçerli önizlemede, bir self servis kaydolma Kullanıcı akışı bir uygulamayla ilişkiliyse ve bu uygulamaya bir Kullanıcı daveti gönderirseniz, Kullanıcı daveti kullanmak için bir Gmail hesabı kullanamaz. Geçici bir çözüm olarak, Kullanıcı self servis kaydolma işlemini gerçekleştirebilir. Ya da, farklı bir uygulamaya erişerek veya ' de My Apps Portal ' ı kullanarak daveti kullanabilirler https://myapps.microsoft.com .
+
 ### <a name="define-custom-attributes-optional"></a>Özel öznitelikleri tanımla (isteğe bağlı)
 
 Kullanıcı öznitelikleri, self servis kaydolma sırasında kullanıcıdan toplanan değerlerdir. Azure AD, yerleşik bir öznitelikler kümesiyle birlikte gelir, ancak Kullanıcı akışınızda kullanılmak üzere özel öznitelikler de oluşturabilirsiniz. Ayrıca, Microsoft Graph API 'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz. Bkz. [Kullanıcı akışları için özel öznitelikler tanımlama](user-flow-add-custom-attributes.md).

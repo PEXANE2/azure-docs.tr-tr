@@ -9,16 +9,16 @@ ms.date: 05/11/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 9f09477eb174792d6348a6b9761a4f9e5467ec44
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: dba321d055e64d62ca91f95461c3299bee5f90d2
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649401"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714228"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Sorun giderme için bir tarayıcı izlemesi yakalama
 
-Azure portal bir sorunla ilgili sorun yaşıyorsanız ve Microsoft destek 'e başvurmanız gerekiyorsa, önce bir tarayıcı izlemesi ve bazı ek bilgiler yakalamanızı öneririz. Topladığınız bilgiler, sorun gerçekleştiği sırada Portal hakkında önemli ayrıntıları sağlayabilir. Kullandığınız tarayıcıda geliştirici araçları için bu makaledeki adımları izleyin: Google Chrome veya Microsoft Edge (Kmıum), Microsoft Edge (EdgeHTML) veya Apple Safari.
+Azure portal bir sorunla ilgili sorun yaşıyorsanız ve Microsoft destek 'e başvurmanız gerekiyorsa, önce bir tarayıcı izlemesi ve bazı ek bilgiler yakalamanızı öneririz. Topladığınız bilgiler, sorun gerçekleştiği sırada Portal hakkında önemli ayrıntıları sağlayabilir. Kullandığınız tarayıcıda geliştirici araçları için bu makaledeki adımları izleyin: Google Chrome veya Microsoft Edge (Kmıum), Microsoft Edge (EdgeHTML), Apple Safari veya Firefox.
 
 ## <a name="google-chrome-and-microsoft-edge-chromium"></a>Google Chrome ve Microsoft Edge (Kmıum)
 

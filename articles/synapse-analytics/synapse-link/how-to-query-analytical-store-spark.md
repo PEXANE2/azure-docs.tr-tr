@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Analytics için Apache Spark ile analitik depoyu sorgulama Azure Cosmos DB
+title: Azure SYNAPSE Analytics için Apache Spark analitik mağaza (Önizleme) Azure Cosmos DB sorgulama
 description: Azure SYNAPSE Analytics için Apache Spark ile analitik Azure Cosmos DB sorgulama
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 05/06/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02d4b6a636bff5ef11686abba6efb52f45f04779
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5c19a3f808b85ba9e34d3304251fe8acb21204ce
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83600072"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700194"
 ---
-# <a name="query-azure-cosmos-db-analytical-store-with-apache-spark-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Apache Spark ile analitik depoyu sorgulama Azure Cosmos DB
+# <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Apache Spark analitik mağaza (Önizleme) Azure Cosmos DB sorgulama
 
 Bu makalede, SYNAPSE hareketlerinden analitik depoyla nasıl etkileşim kurabileceğine ilişkin bazı örnekler verilmektedir. Bir kapsayıcıya sağ tıkladığınızda hareketler görünür. Hareketlerle hızlı bir şekilde kod oluşturabilir ve gereksinimlerinize uyarlayabilirsiniz. Hareketler, tek bir tıklama ile verileri bulmak için de mükemmeldir.
 

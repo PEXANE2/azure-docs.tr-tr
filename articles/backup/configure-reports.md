@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c1af9a532b390b428e74957c455988dfd4df3967
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd6e0e55f471da83d15e26252b0730ab00f20d3c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184954"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713837"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -22,11 +22,12 @@ Bugün Azure Backup [Azure izleyici günlüklerini](https://docs.microsoft.com/a
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-- Yedekleme raporları Azure VM 'leri, Azure VM 'lerde SQL VM 'lerde SAP HANA/Ao, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı, Microsoft Azure Backup sunucu (MABS) ve System Center Data Protection Manager (DPM) için desteklenir. Azure dosya paylaşma yedeklemesi için veriler şu anda yedekleme raporlarında görünmüyor.
+- Yedekleme raporları Azure VM 'leri, Azure sanal makinelerinde SQL, Azure VM 'lerinde SAP HANA, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı, Microsoft Azure Backup sunucu (MABS) ve System Center Data Protection Manager (DPM) için desteklenir. Azure dosya paylaşma yedeklemesi için veriler şu anda yedekleme raporlarında görünmüyor.
 - DPM iş yükleri için yedekleme raporları, DPM sürüm 5.1.363.0 ve üzeri ve aracı sürümü 2.0.9127.0 ve üzeri için desteklenir.
 - MABS iş yükleri için yedekleme raporları, MABS sürümü 13.0.415.0 ve üzeri ve aracı sürümü 2.0.9170.0 ve üzeri için desteklenir.
 - Yedekleme raporları, verileri kullanıcının erişimi olan bir Log Analytics çalışma alanına gönderildiği sürece tüm yedekleme öğeleri, kasa, abonelik ve bölgelerde görüntülenebilir. Bir kasa kümesinin raporlarını görüntülemek için, yalnızca kasaların verilerini gönderdiği Log Analytics çalışma alanına okuyucu erişiminizin olması gerekir. Bireysel kasaların erişimine sahip olmanız gerekmez.
 - Müşterilerinizin aboneliklerine temsilci erişimi olan bir [Azure](https://docs.microsoft.com/azure/lighthouse/) açık Kullanıcı kullanıyorsanız, tüm kiracılarınızdaki raporları görüntülemek için Azure açık thouse ile bu raporları kullanabilirsiniz.
+- Şu anda, veriler en fazla 100 Log Analytics çalışma alanı (kiracılar arasında) üzerinde yedekleme raporlarında görüntülenebilir.
 - Şu anda raporlarda görüntülenmeyen günlük yedekleme işleri verileri.
 
 ## <a name="get-started"></a>başlarken
@@ -81,6 +82,9 @@ Rapor çeşitli sekmeler içerir:
 
    ![Kullanım sekmesi](./media/backup-azure-configure-backup-reports/usage.png)
 
+> [!NOTE]
+> DPM iş yükleri için, kullanıcılar, kurtarma hizmetleri Kasası Genel Bakış sekmesinde gösterilen toplu kullanım değeriyle karşılaştırıldığında, raporlarda gösterilen kullanım değerleri arasında bir hafif fark (DPM sunucusu başına 20 MB) görebilirler. Bu fark, yedekleme için kaydedilen her DPM sunucusunun, raporlama için yapıt olarak ortaya çıkmış olan ilişkili bir ' Metadata ' veri kaynağına sahip olması açısından hesaba göre belirlenir.
+
 - **İşler**: her gün başarısız iş sayısı ve iş hatasının en üst nedenleri gibi işlere yönelik uzun süreli eğilimleri görüntülemek için bu sekmeyi kullanın. Bu bilgileri hem bir toplama düzeyinde hem de yedekleme öğesi düzeyinde görüntüleyebilirsiniz. Seçili zaman aralığında o yedekleme öğesinde tetiklenen her bir işle ilgili ayrıntılı bilgileri görüntülemek için kılavuzda belirli bir yedekleme öğesini seçin.
 
    ![İşler sekmesi](./media/backup-azure-configure-backup-reports/jobs.png)
@@ -127,7 +131,7 @@ Yedekleme raporundaki pencere öğeleri, kullanıcının Log Analytics çalışm
 
 - Azure Storage hesabından veri kaynağı olan raporlama için önceki Power BI şablon uygulaması kullanımdan kaldırma yolunda yer alır. Raporları görüntülemek için Log Analytics kasa Tanılama verileri göndermeye başlayabilmeniz önerilir.
 
-- * Ayrıca, bir depolama hesabına veya bir LA çalışma alanına Tanılama verileri göndermenin [v1 şeması](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema) , kullanımdan kaldırma yolunda da olur. Bu, v1 şemasına göre özel sorgular veya bir sorgu yazdıysanız, bu sorguları şu anda desteklenen v2 şemasını kullanmak için güncelleştirmeniz önerilir.
+- Ayrıca, bir depolama hesabına veya bir LA çalışma alanına Tanılama verileri göndermenin [v1 şeması](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema) , kullanımdan kaldırma yolunda da olur. Bu, v1 şemasına göre özel sorgular veya bir sorgu yazdıysanız, bu sorguları şu anda desteklenen v2 şemasını kullanmak için güncelleştirmeniz önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

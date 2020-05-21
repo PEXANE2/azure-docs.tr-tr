@@ -4,15 +4,15 @@ description: Azure portal kullanarak Azure Analysis Services sunucu örneğini h
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4c1b22d4871d3e490f59be71b63569fdf563ce45
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 36899aa789f4947fe860621bc1795bfbe2ff1ecf
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75442832"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697476"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Hızlı başlangıç: Sunucu oluşturma - Portal
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, portalı kullanarak Azure aboneliğinizde bir Analysi
 
 ## <a name="create-a-server"></a>Sunucu oluşturma
 
-1. **+ Kaynak** > **Analizi** > **Analysis Services**oluştur ' a tıklayın.
+1. **+ Kaynak**  >  **Analizi**  >  **Analysis Services**oluştur ' a tıklayın.
 
     ![Portal](./media/analysis-services-create-server/aas-create-server-portal.png)
 
@@ -45,7 +45,7 @@ Bu hızlı başlangıçta, portalı kullanarak Azure aboneliğinizde bir Analysi
    * **Yedekleme Depolama Alanı**: İsteğe bağlıdır. [Depolama hesabınız](../storage/common/storage-introduction.md) varsa model yedekleme veritabanı olarak varsayılan yapabilirsiniz. [Yedekleme ve geri yükleme](analysis-services-backup.md) ayarlarını daha sonra da yapabilirsiniz.
    * **Depo anahtarı süre sonu**: İsteğe bağlıdır. Depo anahtarı için süre sonu belirtin.
 
-Sunucunun oluşturulması genellikle bir dakikadan kısa sürer. **Portala Ekle**'yi seçtiyseniz yeni sunucunuzu görmek için portalınıza gidin. Ya da, sunucunuzun hazırlanın olup olmadığını görmek için **tüm hizmetler** > **Analysis Services** gidin. Sunucular, 1200 ve daha yüksek uyumluluk düzeylerinde tablo modellerini destekler. Model uyumluluk düzeyi, Visual Studio veya SSMS 'de belirtilmiştir.
+Sunucunun oluşturulması genellikle bir dakikadan kısa sürer. **Portala Ekle**'yi seçtiyseniz yeni sunucunuzu görmek için portalınıza gidin. Ya da, **All services**  >  sunucunuzun hazırlanın olup olmadığını görmek için tüm hizmetler**Analysis Services** gidin. Sunucular, 1200 ve daha yüksek uyumluluk düzeylerinde tablo modellerini destekler. Model uyumluluk düzeyi, Visual Studio veya SSMS 'de belirtilmiştir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

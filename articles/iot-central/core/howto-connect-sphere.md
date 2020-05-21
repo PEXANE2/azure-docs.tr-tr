@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
-ms.openlocfilehash: cd583b79d6c73ff8da1c9770bf72b3e6990c3140
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597208"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715078"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Azure Sphere cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -20,7 +20,7 @@ ms.locfileid: "83597208"
 
 Bu makalede bir Azure Sphere (DevKit) cihazının bir Azure IoT Central uygulamasına nasıl bağlanacağı gösterilmektedir.
 
-Azure Sphere, internet 'e bağlı cihazlara yönelik yerleşik iletişim ve güvenlik özellikleriyle güvenli, üst düzey bir uygulama platformudur. Güvenli, bağlı, çapraz mikro denetleyici birimi (MCU), özel bir üst düzey Linux tabanlı işletim sistemi (OS) ve sürekli ve yenilenebilir güvenlik sağlayan bulut tabanlı bir güvenlik hizmeti içerir. Daha fazla bilgi için bkz.[Azure Sphere nedir?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere).
+Azure Sphere, internet 'e bağlı cihazlara yönelik yerleşik iletişim ve güvenlik özellikleriyle güvenli, üst düzey bir uygulama platformudur. Güvenli, bağlı, çapraz mikro denetleyici birimi (MCU), özel bir üst düzey Linux tabanlı işletim sistemi (OS) ve sürekli ve yenilenebilir güvenlik sağlayan bulut tabanlı bir güvenlik hizmeti içerir. Daha fazla bilgi için bkz. [Azure Sphere nedir?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere).
 
 [Azure Sphere geliştirme setleri](https://azure.microsoft.com/services/azure-sphere/get-started/) , prototip oluşturma ve Azure Sphere uygulamalar geliştirme için ihtiyacınız olan her şeyi sağlar. Azure Sphere ile Azure IoT Central, IoT çözümüne yönelik uçtan uca bir yığın sağlar. Azure Sphere, cihaz desteği sağlar ve sıfır kodlu bir yönetilen IoT uygulama platformu olarak IoT Central.
 
@@ -31,7 +31,7 @@ Bu nasıl yapılır makalesinde şunları yapabilirsiniz:
 - Azure Sphere DevKit 'i Azure IoT Central 'ye bağlayın.
 - IoT Central cihazda Telemetriyi görüntüleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 

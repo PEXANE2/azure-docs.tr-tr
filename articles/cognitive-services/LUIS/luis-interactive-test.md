@@ -2,13 +2,13 @@
 title: LUSıS portalında test uygulaması
 description: Uygulamanızı iyileştirmek ve dilini anlamak için uygulamanızda sürekli çalışmak üzere Language Understanding (LUO) kullanın.
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: 3608bb17b6d1ea8c9095fa54324993a9e40355b6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/20/2020
+ms.openlocfilehash: 91994418b50eb112582bbed1853dd85e9db3599d
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653881"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714449"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Lusıs uygulamanızı Lua portalında test etme
 
@@ -42,7 +42,8 @@ Test utterine, uygulamadaki herhangi bir örnek ile tam olarak aynı olmamalıd�
 
 1. Utterance, en üst amacı ve puanı, metin kutusunun altındaki söylik listesine eklenir.
 
-    ![Etkileşimli test, yanlış amacı tanımlıyor](./media/luis-how-to-interactive-test/test-weather-1.png)
+    > [!div class="mx-imgBorder"]
+    > ![Etkileşimli test, yanlış amacı tanımlıyor](./media/luis-how-to-interactive-test/test-weather-1.png)
 
 ## <a name="inspect-the-prediction"></a>Tahmini inceleyin
 
@@ -50,9 +51,13 @@ Test utterine, uygulamadaki herhangi bir örnek ile tam olarak aynı olmamalıd�
 
 1. **Test** slayt paneli açıkken, karşılaştırmak istediğiniz bir utterlik için **İncele** ' yi seçin.
 
-    ![Test sonuçlarıyla ilgili daha fazla ayrıntı görmek için Inceleme düğmesini seçin](./media/luis-how-to-interactive-test/inspect.png)
+    > [!div class="mx-imgBorder"]
+    > ![Test sonuçlarıyla ilgili daha fazla ayrıntı görmek için Inceleme düğmesini seçin](./media/luis-how-to-interactive-test/inspect.png)
 
 1. **İnceleme** paneli görüntülenir. Panel, en iyi Puanlama amacını ve tanımlanan tüm varlıkları içerir. Panel, seçili utterlik 'in tahminini gösterir.
+
+    > [!div class="mx-imgBorder"]
+    > ![Test Incelemesi bölmesinin kısmi ekran görüntüsü](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="add-to-example-utterances"></a>Örnek utleye Ekle
 
@@ -76,12 +81,14 @@ Bu geçiş, eğitilen uygulamanın, varlıklarınızı gerekli özelliklere gör
 
 Yayınlanan [uç nokta](luis-glossary.md#endpoint) sürümüyle uygulamanızın etkin sürümünü test edebilirsiniz. **İnceleme** panelinde, **yayımlandı ile karşılaştır**' ı seçin. Yayımlanan modele karşı herhangi bir test, Azure abonelik kotası bakiyesinden düşülür.
 
-![Yayımlanla Karşılaştır](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+> [!div class="mx-imgBorder"]
+> ![Yayımlanla Karşılaştır](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
 ## <a name="view-endpoint-json-in-test-panel"></a>Test panelinde Endpoint JSON görüntüleme
 Karşılaştırma için döndürülen JSON bitiş noktasını göster ' i seçerek **JSON görünümünü göster**' i seçebilirsiniz.
 
-![Yayımlanan JSON yanıtı](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+> [!div class="mx-imgBorder"]
+> ![Yayımlanan JSON yanıtı](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 ## <a name="additional-settings-in-test-panel"></a>Test panelinde ek ayarlar
 

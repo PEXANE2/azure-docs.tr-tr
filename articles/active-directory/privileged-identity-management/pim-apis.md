@@ -14,23 +14,21 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da6bffbc54bfa6e9c39ddace665eb7cfec58614
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 35d5bb13cf9c3735c61173177a3b94f4594c9272
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75638672"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714143"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Privileged Identity Management için Microsoft Graph API 'Leri (Önizleme)
 
-Azure Active Directory için [Microsoft Graph API 'lerini](https://developer.microsoft.com/graph/docs/concepts/overview) kullanarak tüm Privileged Identity Management görevlerini gerçekleştirebilirsiniz. Bu makalede Privileged Identity Management için Microsoft Graph API 'Lerini kullanmaya yönelik önemli kavramlar açıklanmaktadır.
+Azure Active Directory için [Microsoft Graph API 'lerini](https://developer.microsoft.com/graph/docs/concepts/overview) kullanarak Privileged Identity Management görevleri gerçekleştirebilirsiniz. Bu makalede Privileged Identity Management için Microsoft Graph API 'Lerini kullanmaya yönelik önemli kavramlar açıklanmaktadır.
 
 Microsoft Graph API 'Leri hakkında ayrıntılar için [Azure AD PRIVILEGED IDENTITY Management API başvurusunu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)inceleyin.
 
 > [!IMPORTANT]
 > Microsoft Graph 'deki/beta sürümündeki API 'Ler önizlemededir ve değişikliğe tabidir. Üretim uygulamalarında bu API 'lerin kullanılması desteklenmez.
->
-> Graph API Komutlarımız aracılığıyla tüm PıM işlemleri desteklense de, etkinleştirme isteklerini onaylamak için farklı bir sistem kullanıyoruz. Onay Graph API Şu anda geliştirilmektedir ve önümüzdeki birkaç ay içinde yayımlanacak.
 
 ## <a name="required-permissions"></a>Gerekli izinler
 

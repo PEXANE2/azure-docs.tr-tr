@@ -3,12 +3,12 @@ title: Azure Izleyici günlükleri veri modeli
 description: Bu makalede, Azure Backup verileri için Azure Izleyici Log Analytics veri modeli ayrıntıları hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 72484923bc94e197cd195c0192b53feb3ef457ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
+ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183696"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83707998"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup verileri için Log Analytics veri modeli
 
@@ -463,7 +463,9 @@ Aşağıda Azure Tanılama tablosunda yer alan Azure Backup verilerine sorgu yaz
 ## <a name="v1-schema-vs-v2-schema"></a>V1 şeması vs v2 şeması
 Daha önce, Azure Backup Aracısı ve Azure VM yedeklemesi için tanılama verileri ***v1 şeması***olarak adlandırılan bir şemadaki Azure tanılama tabloya gönderilmiştir. Daha sonra, diğer senaryoları ve iş yüklerini desteklemek için yeni sütunlar eklenmiştir ve Tanılama verileri ***v2 şeması***olarak adlandırılan yeni bir şemaya itildi. 
 
-Geriye dönük uyumluluk nedenleriyle, Azure Backup Aracısı ve Azure VM yedeklemesi için tanılama verileri şu anda hem v1 hem de v2 şemasında Azure Tanılama tabloya gönderilmiştir (artık kullanımdan kaldırma yolunda v1 şeması ile). Günlük sorgularınızda SchemaVersion_s = = "v1" kayıtlarını filtreleyerek Log Analytics v1 şemasında hangi kayıtların olduğunu belirleyebilirsiniz.
+Geriye dönük uyumluluk nedenleriyle, Azure Backup Aracısı ve Azure VM yedeklemesi için tanılama verileri şu anda hem v1 hem de v2 şemasında Azure Tanılama tabloya gönderilmiştir (artık kullanımdan kaldırma yolunda v1 şeması ile). Günlük sorgularınızda SchemaVersion_s = = "v1" kayıtlarını filtreleyerek Log Analytics v1 şemasında hangi kayıtların olduğunu belirleyebilirsiniz. 
+
+Yalnızca v1 şemasına ait olan sütunları belirlemek için yukarıda açıklanan [veri modelindeki](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model) ' Description ' üçüncü sütununa bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

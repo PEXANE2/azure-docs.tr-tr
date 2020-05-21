@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5d7274712f3e7f5b16dc5be28d0ad47cfefba9fa
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 40128c68caeba793919a680ba2beeb35eb3aa3be
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685159"
+ms.locfileid: "83712817"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Azure SQL Edge (Önizleme) nedir?
 
@@ -42,7 +42,7 @@ SQL Edge, iki farklı sürüm veya yazılım planlarıyla kullanılabilir. Bu s�
 
 ## <a name="pricing-and-availability"></a>Fiyatlandırma ve kullanılabilirlik
 
-Azure SQL Edge Şu anda önizleme aşamasındadır. Fiyatlandırma ve kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure SQL Edge](https://azure.microsoft.com/services/sql-database-edge/).
+Azure SQL Edge Şu anda önizleme aşamasındadır. Fiyatlandırma ve kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/).
 
 > [!IMPORTANT]
 > Azure SQL Edge ve SQL Server arasındaki özellik farklarını ve farklı Azure SQL Edge seçenekleri arasındaki farkları anlamak için bkz. [Azure SQL Edge 'In desteklenen özellikleri](features.md).

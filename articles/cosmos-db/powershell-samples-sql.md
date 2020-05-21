@@ -4,14 +4,14 @@ description: Azure Cosmos DB SQL API hesaplarında çeşitli ortak görevleri ge
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/26/2020
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: efc0ff8e6c198071d3906a0e7e999510198f73bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7cd14151d8cb0fbef7593d62eee050be7987ab18
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80366182"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713548"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>Azure Cosmos DB-SQL (Core) API Azure PowerShell örnekleri
 
@@ -20,7 +20,7 @@ Aşağıdaki tabloda, SQL (Core) API 'sine yönelik Azure Cosmos DB için yaygı
 SQL (Core) API 'SI ve belgelerinin ek Cosmos DB PowerShell örnekleri için bkz. [PowerShell kullanarak Azure Cosmos db SQL API kaynaklarını yönetme](manage-with-powershell.md). Diğer API 'Ler için Cosmos DB PowerShell örnekleri için bkz. [Cassandra API](powershell-samples-cassandra.md), [MongoDB API](powershell-samples-mongodb.md), [gremlin API](powershell-samples-gremlin.md)ve [tablo API'si](powershell-samples-table.md).
 
 > [!NOTE]
-> Örnekler [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management cmdlet 'lerini kullanır. `Az.CosmosDB` Cmdlet 'lerin hala önizlemededir ve yayından önce değişebileceğini lütfen unutmayın. Lütfen `Az.CosmosDB` düzenli olarak güncelleştirmeleri denetleyin.
+> Örnekler [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management cmdlet 'lerini kullanır. Lütfen düzenli olarak güncelleştirmeleri denetleyin `Az.CosmosDB` .
 
 | | |
 |---|---|

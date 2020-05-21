@@ -1,17 +1,17 @@
 ---
 title: Azure Hızlı Başlangıcı - Azure Otomasyonu runbook'u oluşturma | Microsoft Docs
-description: Azure Otomasyonu runbook'u oluşturmayı öğrenin
+description: Bu makale, bir Azure Otomasyonu runbook 'u oluşturmaya başlamanıza yardımcı olur.
 services: automation
 ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 250f51c9f028dd55d8327259e35b82b0c392c1f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a784ddbc2ab1298bec3e2dc21469785163d7a228
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81537007"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712001"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Otomasyonu runbook'u oluşturma
 
@@ -21,7 +21,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Adresinden https://portal.azure.comAzure 'da oturum açın.
+Adresinden Azure 'da oturum açın https://portal.azure.com .
 
 ## <a name="create-the-runbook"></a>Runbook 'u oluşturma
 
@@ -33,7 +33,7 @@ Adresinden https://portal.azure.comAzure 'da oturum açın.
 
 1. Listenin en üstünde **runbook oluştur ' a** tıklayın.
 
-1. Ad `Hello-World` alanına Runbook adı için yazın ve **Name** **runbook türü** alanı için **PowerShell** ' i seçin. 
+1. `Hello-World` **Ad** alanına Runbook adı Için yazın ve **runbook türü** alanı için **PowerShell** ' i seçin. 
 
    ![Otomasyon runbook'unuz hakkındaki bilgileri sayfaya girin](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
@@ -41,7 +41,7 @@ Adresinden https://portal.azure.comAzure 'da oturum açın.
 
     ![Runbook düzenleyicisinde PowerShell betiğini yazma](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
-1. Aşağıdaki kodu düzenleme bölmesine yazın veya kopyalayıp yapıştırın. Varsayılan değeri `Name` `World`ile çağrılan isteğe bağlı bir giriş parametresi oluşturur ve bu giriş değerini kullanan bir dize verir:
+1. Aşağıdaki kodu düzenleme bölmesine yazın veya kopyalayıp yapıştırın. Varsayılan değeri ile çağrılan isteğe bağlı bir giriş parametresi oluşturur `Name` `World` ve bu giriş değerini kullanan bir dize verir:
 
    ```powershell-interactive
    param
@@ -85,7 +85,7 @@ Runbook yayımlandıktan sonra genel bakış sayfası gösterilir.
 
    ![Runbook test işi](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
-1. İş durumu `Running` veya `Completed`olduğunda, çıkış bölmesini açmak ve Runbook çıkışını görüntülemek için **Çıkış** ' a tıklayın.
+1. İş durumu `Running` veya olduğunda, çıkış `Completed` bölmesini açmak ve Runbook çıkışını görüntülemek için **Çıkış** ' a tıklayın.
 
    ![Runbook test işi](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 

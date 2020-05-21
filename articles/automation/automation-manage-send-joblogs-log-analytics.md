@@ -1,20 +1,20 @@
 ---
 title: Azure Otomasyonu iş verilerini Azure İzleyici günlüklerine iletme
-description: Bu makalede, ek Öngörüler ve yönetim sağlamak için iş durumu ve runbook iş akışlarının Azure Izleyici günlüklerine gönderilmesi gösterilmektedir.
+description: Bu makalede, Azure Izleyici günlüklerine iş durumu ve runbook iş akışlarının nasıl gönderileceği açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
 ms.date: 02/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: a9f4e641e60d6cf1c481c445767422e8b4df683b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cd1983a6aa1ea942fb6f3154d8bb99e255f51e9
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457697"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715452"
 ---
-# <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Otomasyon 'dan Azure Izleyici günlüklerine iş durumu ve iş akışları iletme
+# <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Otomasyonu iş verilerini Azure İzleyici günlüklerine iletme
 
-Otomasyon, Log Analytics çalışma alanınıza runbook iş durumu ve iş akışları gönderebilir. Bu işlem, çalışma alanı bağlamayı içermez ve tamamen bağımsızdır. İş günlükleri ve iş akışları, bireysel işler için Azure portal veya PowerShell ile görünür ve bu, basit araştırmalar gerçekleştirmenize olanak tanır. Artık Azure Izleyici günlükleri ile şunları yapabilirsiniz:
+Azure Otomasyonu, Log Analytics çalışma alanınıza runbook iş durumu ve iş akışları gönderebilir. Bu işlem, çalışma alanı bağlamayı içermez ve tamamen bağımsızdır. İş günlükleri ve iş akışları, bireysel işler için Azure portal veya PowerShell ile görünür ve bu, basit araştırmalar gerçekleştirmenize olanak tanır. Artık Azure Izleyici günlükleri ile şunları yapabilirsiniz:
 
 * Otomasyon işlerinizin durumuyla ilgili Öngörüler elde edin.
 * Runbook iş durumunuz (örneğin, başarısız veya askıya alındı) temelinde bir e-posta veya uyarı tetikleyin.
@@ -23,9 +23,6 @@ Otomasyon, Log Analytics çalışma alanınıza runbook iş durumu ve iş akış
 * Runbook sonuçlarınızı, runbook iş durumunu ve diğer ilgili anahtar göstergelerini veya ölçümlerini görselleştirmek için özel görünümleri ve arama sorgularını kullanın.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="prerequisites-and-deployment-considerations"></a>Önkoşullar ve dağıtım konuları
 
@@ -59,7 +56,7 @@ Yukarıdaki komutların çıktısında birden fazla otomasyon hesabınız veya �
 
 ## <a name="azure-monitor-log-records"></a>Azure Izleyici günlük kayıtları
 
-Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde olarak `AzureDiagnostics`etiketlenen iki tür kayıt oluşturur. Sonraki bölümlerdeki tablolar, Azure Otomasyonu tarafından oluşturulan kayıt örnekleri ve günlük araması sonuçlarında görünen veri türleridir.
+Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde olarak etiketlenen iki tür kayıt oluşturur `AzureDiagnostics` . Sonraki bölümlerdeki tablolar, Azure Otomasyonu tarafından oluşturulan kayıt örnekleri ve günlük araması sonuçlarında görünen veri türleridir.
 
 ### <a name="job-logs"></a>İş günlükleri
 
@@ -105,7 +102,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde olarak `AzureDiagnost
 | ResourceProvider | Kaynak sağlayıcısı. Değer MICROSOFT. Otomasyon. |
 | ResourceType | Kaynak türü. Değer AUTOMATIONACCOUNTS değeridir. |
 
-## <a name="setting-up-integration-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile tümleştirmeyi ayarlama
+## <a name="set-up-integration-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile tümleştirmeyi ayarlama
 
 1. Bilgisayarınızda, **Başlangıç** ekranından Windows PowerShell ' i başlatın.
 2. Aşağıdaki PowerShell komutlarını çalıştırın, ve değerlerini `[your resource ID]` `[resource ID of the log analytics workspace]` önceki bölümdeki değerlerle düzenleyin.
@@ -117,7 +114,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde olarak `AzureDiagnost
    Set-AzDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
    ```
 
-Bu betiği çalıştırdıktan sonra, yeni `JobLogs` veya `JobStreams` yazılan Azure izleyici günlüklerinde kayıtları görmek için başlamadan önce bir saat sürebilir.
+Bu betiği çalıştırdıktan sonra, yeni veya yazılan Azure Izleyici günlüklerinde kayıtları görmek için başlamadan önce bir saat sürebilir `JobLogs` `JobStreams` .
 
 Günlükleri görmek için Log Analytics günlük aramasında aşağıdaki sorguyu çalıştırın:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
@@ -131,10 +128,10 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 
 Çıktıda şunları doğrulayın:
 
-* Altında `Logs`, değeri `Enabled` true 'dur.
-* `WorkspaceId`, Log Analytics çalışma alanınız `ResourceId` için değere ayarlanır.
+* Altında `Logs` , değeri true 'dur `Enabled` .
+* `WorkspaceId`, `ResourceId` Log Analytics çalışma alanınız için değere ayarlanır.
 
-## <a name="viewing-automation-logs-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde Otomasyon günlüklerini görüntüleme
+## <a name="view-automation-logs-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde Otomasyon günlüklerini görüntüleme
 
 Artık Otomasyon iş günlüklerinizi Azure Izleyici günlüklerine göndermeye başladığınıza göre, Azure Izleyici günlükleri içinde bu günlüklerle neler yapabileceğinizi görelim.
 
@@ -149,7 +146,7 @@ Uyarı kuralı oluşturmak için, uyarıyı çağırması gereken runbook iş ka
 1. Log Analytics çalışma alanına genel bakış sayfasında **günlükleri görüntüle**' ye tıklayın.
 2. Sorgu alanına aşağıdaki aramayı yazarak Uyarınız için bir günlük arama sorgusu oluşturun:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`<br><br>Ayrıca, kullanarak runbook adına göre gruplandırabilirsiniz:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
-   Çalışma alanınıza birden fazla otomasyon hesabından veya aboneliğine ait Günlükler ayarlarsanız, uyarılarınızı abonelik ve otomasyon hesabına göre gruplandırabilirsiniz. Otomasyon hesabı adı, arama içindeki `Resource` alanda bulunabilir. `JobLogs`
+   Çalışma alanınıza birden fazla otomasyon hesabından veya aboneliğine ait Günlükler ayarlarsanız, uyarılarınızı abonelik ve otomasyon hesabına göre gruplandırabilirsiniz. Otomasyon hesabı adı `Resource` , arama içindeki alanda bulunabilir `JobLogs` .
 3. **Kural oluştur** ekranını açmak için sayfanın üst kısmındaki **Yeni uyarı kuralı** ' na tıklayın. Uyarıyı yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [Azure 'Da günlük uyarıları](../azure-monitor/platform/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Hatalarla tamamlanan tüm işleri bul
@@ -157,7 +154,7 @@ Uyarı kuralı oluşturmak için, uyarıyı çağırması gereken runbook iş ka
 Hatalarda uyarı verme işleminin yanı sıra, bir runbook işinin Sonlandırılmamış bir hata olduğunu fark edebilirsiniz. Bu durumlarda, PowerShell bir hata akışı üretir, ancak Sonlandırılmamış hatalar işinizin askıya alınmasına veya başarısız olmasına neden olmaz.
 
 1. Log Analytics çalışma alanınızda **Günlükler**' e tıklayın.
-2. Sorgu alanına, yazın `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g`.
+2. Sorgu alanına, yazın `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` .
 3. **Ara** düğmesine tıklayın.
 
 ### <a name="view-job-streams-for-a-job"></a>İş akışlarını görüntüleme
@@ -173,7 +170,7 @@ Son olarak, zaman içinde iş geçmişinizi görselleştirmek isteyebilirsiniz. 
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`
 <br> ![Log Analytics geçmiş Iş durumu grafiği](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
-## <a name="removing-diagnostic-settings"></a>Tanılama ayarları kaldırılıyor
+## <a name="remove-diagnostic-settings"></a>Tanılama ayarlarını kaldır
 
 Otomasyon hesabından tanılama ayarını kaldırmak için aşağıdaki komutu çalıştırın:
 
@@ -182,10 +179,11 @@ $automationAccountId = "[resource ID of your Automation account]"
 
 Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 ```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Log Analytics sorun giderme konusunda yardım için bkz. [Log Analytics artık veri toplamamasının neden olduğu sorun giderme](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).
 * Farklı arama sorguları oluşturma ve Azure Izleyici günlükleriyle Otomasyon iş günlüklerini İnceleme hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md).
 * Runbook 'lardan çıkış ve hata iletilerinin nasıl oluşturulduğunu ve alınacağını anlamak için bkz. [runbook çıktısı ve iletileri](automation-runbook-output-and-messages.md).
-* Runbook yürütmesi, runbook işlerini izleme ve diğer teknik ayrıntılar hakkında daha fazla bilgi edinmek için bkz. [runbook Işini izleme](automation-runbook-execution.md).
+* Runbook yürütmesi, runbook işlerini izleme ve diğer teknik ayrıntılar hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](automation-runbook-execution.md).
 * Azure Izleyici günlükleri ve veri toplama kaynakları hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici günlüklerine Azure depolama verilerini toplama genel bakış](../azure-monitor/platform/collect-azure-metrics-logs.md).

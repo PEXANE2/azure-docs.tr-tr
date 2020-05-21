@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/28/2020
+ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: c9b5aaefeb8ab21eed850f5bf291d38981239aab
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 7723e74b9617d5e8d56dd3c3e46145c4945ca21f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508437"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698084"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure sanal ağ NAT bağlantısı sorunlarını giderme
 
@@ -31,6 +31,7 @@ Bu makale, yöneticilerin sanal ağ NAT kullanırken bağlantı sorunlarını ta
 * [ICMP ping işlemi başarısız oluyor](#icmp-ping-is-failing)
 * [Bağlantı sorunları](#connectivity-failures)
 * [IPv6 birlikte bulunma](#ipv6-coexistence)
+* [Bağlantı NAT ağ geçidi IP 'lerden kaynaklanmıyor](#connection-doesnt-originate-from-nat-gateway-ips)
 
 Bu sorunları çözmek için aşağıdaki bölümdeki adımları izleyin.
 
@@ -61,10 +62,10 @@ _**Çözüm:**_ Uygun desenleri ve en iyi uygulamaları kullanın
 - DNS, istemci DNS çözümleyiciler sonucunu önbelleğe alırken, toplu olarak birçok ayrı akış oluşturabilir. Önbelleğe almayı kullanın.
 - UDP akışları (örneğin, DNS aramaları), boşta kalma zaman aşımı süresi boyunca SNAT bağlantı noktalarını ayırır. Boşta kalma zaman aşımı, SNAT bağlantı noktalarında basınç arttıkça daha uzun olur. Kısa boşta kalma zaman aşımı (örneğin 4 dakika) kullanın.
 - Bağlantı birimlerinizi şekillendirmek için bağlantı havuzlarını kullanın.
-- Hiçbir şekilde hiçbir TCP akışını sessizce iptal edin ve akışı temizlemek için TCP zamanlayıcılarını güvenin. Bağlantıyı açık bir şekilde kapatmaya izin vermezseniz, durum ara sistemlere ve uç noktalara ayrılır ve SNAT bağlantı noktalarını diğer bağlantılar için kullanılamaz hale getirir. Bu, uygulama başarısızlıklarını ve SNAT tükenmesi 'ni tetikleyebilir. 
+- Hiçbir şekilde hiçbir TCP akışını sessizce iptal edin ve akışı temizlemek için TCP zamanlayıcılarını güvenin. Bağlantıyı açık bir şekilde kapatmaya izin vermezseniz, durum ara sistemlere ve uç noktalara ayrılır ve SNAT bağlantı noktalarını diğer bağlantılar için kullanılamaz hale getirir. Bu model, uygulama başarısızlıklarını ve SNAT tükenmesi 'ni tetikleyebilir. 
 - Uzman etkisi olmadan, işletim sistemi düzeyinde TCP ile ilgili süreölçer değerlerini değiştirmeyin. TCP yığını kurtarılarken, bir bağlantının uç noktalarında yanlış beklentiler olduğunda uygulama performansı olumsuz etkilenebilir. Zamanlayıcılarını değiştirme isteği genellikle temel alınan tasarım sorununun bir imzadır. Aşağıdaki önerileri gözden geçirin.
 
-Ayrıca, SNAT tükenmesi genellikle temeldeki uygulamadaki diğer kenar desenleriyle de dağıtılabilir. Hizmetinizin ölçeğini ve güvenilirliğini artırmak için bu ek desenleri ve en iyi uygulamaları gözden geçirin.
+SNAT tükenmesi Ayrıca, temel alınan uygulamadaki diğer kenar desenleriyle de dağıtılabilir. Hizmetinizin ölçeğini ve güvenilirliğini artırmak için bu ek desenleri ve en iyi uygulamaları gözden geçirin.
 
 - Daha önce SNAT bağlantı noktası envanterini boşaltmak için 4 dakikalık varsayılan boşta kalma zaman aşımı da dahil olmak üzere değerleri düşürmek için [TCP boşta kalma zaman aşımını](nat-gateway-resource.md#timers) azaltmanın etkisini keşfe
 - Diğer işlemlere yönelik bağlantı kaynaklarını boşaltmak için uzun süre çalışan işlemler için [zaman uyumsuz yoklama düzenlerini](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) düşünün.
@@ -116,8 +117,8 @@ Doğrulama bağlantısı için aşağıdaki gibi araçları kullanın. [ICMP pin
 
 #### <a name="configuration"></a>Yapılandırma
 
-Aşağıdakileri denetleyin:
-1. NAT ağ geçidi kaynağı en az bir genel IP kaynağına veya bir genel IP öneki kaynağına sahip mi? Giden bağlantı sağlayabilmesi için NAT ağ geçidiyle ilişkilendirilmiş en az bir IP adresiniz olması gerekir.
+Yapılandırmanızı denetleyin:
+1. NAT ağ geçidi kaynağında en az bir genel IP kaynağı veya bir genel IP ön ek kaynağı var mı? NAT ağ geçidinin giden bağlantı sağlayabilmesi için en az bir IP adresinin ilişkilendirilmiş olması gerekir.
 2. Sanal ağın alt ağı, NAT ağ geçidini kullanacak şekilde yapılandırılmış mı?
 3. UDR (Kullanıcı tanımlı yol) kullanıyor musunuz ve hedefi geçersiz kılsın mı?  NAT ağ geçidi kaynakları, yapılandırılan alt ağlarda varsayılan yol (0/0) olur.
 
@@ -129,7 +130,7 @@ Bu makaledeki [SNAT tükenmesi](#snat-exhaustion) bölümüne bakın.
 
 Azure, altyapısını büyük önem taşıyan şekilde izler ve çalışır. Geçici sorunlar ortaya çıkabilir, iletimlerin kayıpsız olduğunun garantisi yoktur.  TCP uygulamaları için SYN yeniden iletimlerine izin veren tasarım düzenlerini kullanın. Bir kayıp SYN paketinin neden olduğu geçici etkileri azaltmak için TCP SYN yeniden aktarım için yeterince büyük olan bağlantı zaman aşımlarını kullanın.
 
-_**Çözümden**_
+_**Çözüm:**_
 
 * [SNAT tükenmesi](#snat-exhaustion)olup olmadığını denetleyin.
 * SYN yeniden aktarım davranışını denetleyen bir TCP yığınındaki yapılandırma parametresi RTO ([yeniden Iletim zaman aşımı](https://tools.ietf.org/html/rfc793)) olarak adlandırılır. RTO değeri ayarlanabilir ancak varsayılan olarak üstel geri ile 1 saniye veya daha yüksektir.  Uygulamanızın bağlantı zaman aşımı çok kısaysa (örneğin 1 saniye), tek biçimli bağlantı zaman aşımları görebilirsiniz.  Uygulama bağlantısı zaman aşımını artırın.
@@ -154,7 +155,7 @@ Yukarıdaki [Azure altyapısı](#azure-infrastructure) bölümüyle aynı yöner
 
 Genellikle kaynak üzerinde paket yakalar ve hedefin ne olduğunu belirlemek için hedef (varsa) gereklidir.
 
-_**Çözümden**_
+_**Çözüm:**_
 
 * [SNAT tükenmesi](#snat-exhaustion)olup olmadığını denetleyin. 
 * Aynı bölgedeki bir uç nokta ile veya başka bir yerde karşılaştırma için bağlantıyı doğrulayın.  
@@ -170,7 +171,7 @@ Olası bir nedenden dolayı TCP bağlantısının boşta kalma süresi doldu.  B
 
 TCP sıfırlama, NAT ağ geçidi kaynaklarının genel tarafında oluşturulmaz. Hedef taraftaki TCP sıfırlamaları, NAT ağ geçidi kaynağı değil kaynak VM tarafından oluşturulur.
 
-_**Çözümden**_
+_**Çözüm:**_
 
 * [Tasarım desenleri](#design-patterns) önerilerini gözden geçirin.  
 * Gerekirse daha fazla sorun giderme için bir destek talebi açın.
@@ -182,6 +183,18 @@ _**Çözümden**_
 _**Çözüm:**_ NAT ağ geçidini IPv6 öneki olmayan bir alt ağda dağıtın.
 
 [Sanal ağ NAT UserVoice](https://aka.ms/natuservoice)aracılığıyla ek özelliklerde ilgi gösterebilirsiniz.
+
+### <a name="connection-doesnt-originate-from-nat-gateway-ips"></a>Bağlantı NAT ağ geçidi IP 'lerden kaynaklanmıyor
+
+NAT ağ geçidini, kullanılacak IP adreslerini ve bir NAT ağ geçidi kaynağı kullanması gereken alt ağı yapılandırırsınız. Ancak, NAT ağ geçidi dağıtılmadan önce var olan sanal makine örneklerinin bağlantıları IP adreslerini kullanmaz.  Bunlar, NAT ağ geçidi kaynağıyla kullanılmayan IP adreslerini kullanıyor gibi görünürler.
+
+_**Çözüm:**_
+
+[Sanal ağ NAT](nat-overview.md) , üzerinde yapılandırıldığı alt ağın giden bağlantısını değiştirir. Varsayılan SNAT veya yük dengeleyici giden SNAT 'den NAT ağ geçitleri kullanılarak geçiş yaparken yeni bağlantılar, NAT ağ geçidi kaynağıyla ilişkili IP adreslerini kullanmaya hemen başlar.  Ancak, bir sanal makine, NAT ağ geçidi kaynağına geçiş sırasında hala oluşturulmuş bir bağlantıya sahipse bağlantı oluşturulduğunda atanan eski SNAT IP adresini kullanmaya devam eder.  İşletim sistemi veya tarayıcı bir bağlantı havuzundaki bağlantıları önbelleğe alındığından, zaten var olan bir bağlantıyı yeniden kullanmak yerine yeni bir bağlantı kullandığınızdan emin olun.  Örneğin, PowerShell 'de _kıvrımlı_ kullanırken, yeni bir bağlantı zorlamak için _-disablekeepalive_ parametresini belirttiğinizden emin olun.  Bir tarayıcı kullanıyorsanız, bağlantılar da havuza alınabilir.
+
+Bir NAT ağ geçidi kaynağı için bir alt ağ yapılandırarak bir sanal makineyi yeniden başlatmak gerekli değildir.  Ancak, bir sanal makine yeniden başlatıldığında bağlantı durumu temizlenir.  Bağlantı durumu boşaltılmışsa, tüm bağlantılar NAT ağ geçidi kaynağının IP adreslerini kullanmaya başlar.  Ancak bu, yeniden başlatmanın gerekli olduğu bir gösterge değil, sanal makinenin yeniden başlatıldığı yan etkilerden oluşur.
+
+Hala sorun yaşıyorsanız, daha fazla sorun giderme için bir destek talebi açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Ölçekli yapılandırma verileri-Azure Otomasyonu
-description: Azure Automation 'da durum yapılandırması için ölçeklendirmeden verileri yapılandırmayı öğrenin.
+title: Verileri Azure Otomasyonu durum yapılandırması için ölçeklendirerek yapılandırma
+description: Bu makalede, verileri Azure Otomasyonu durum yapılandırması için ölçeklendirerek nasıl yapılandıracağınız açıklanır.
 keywords: DSC, PowerShell, yapılandırma, kurulum
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 644ea1c00af7e71ff56852298fff18e5293c137b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f6773d9f2210fd1b0342c9586d89155082bf8ff
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585566"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711457"
 ---
-# <a name="configuration-data-at-scale"></a>Uygun ölçekte yapılandırma verileri
+# <a name="configure-data-at-scale-for-azure-automation-state-configuration"></a>Verileri Azure Otomasyonu durum yapılandırması için ölçeklendirerek yapılandırma
 
 > Uygulama hedefi: Windows PowerShell 5,1
 

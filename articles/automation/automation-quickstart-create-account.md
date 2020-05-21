@@ -1,17 +1,17 @@
 ---
 title: Azure Hızlı Başlangıcı - Azure Otomasyonu hesabı oluşturma | Microsoft Docs
-description: Azure Otomasyonu hesabı oluşturmayı ve runbook çalıştırmayı öğrenin
+description: Bu makale, bir Azure Otomasyonu hesabı oluşturmaya ve Runbook çalıştırmaya başlamanıza yardımcı olur.
 services: automation
 ms.date: 04/04/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 7704f080b7c1878f2fa2b079a1f242c8c2cc87a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d4cdb87302e12c024e15f8e0a7e3854d6f707a7
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536990"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715469"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Otomasyonu hesabı oluşturma
 
@@ -63,7 +63,7 @@ Bu hızlı başlangıç, bir Otomasyon hesabı oluşturma ve hesapta runbook ça
 
     ![Runbook işi sayfası](./media/automation-quickstart-create-account/automation-tutorial-script-job.png)
 
-1. İş durumu olduktan sonra `Running`, runbook iş çıkışını görüntülemek için **Çıkış** ' a veya **Tüm Günlükler** ' e tıklayın. Bu öğretici runbook'u için çıktıda Azure kaynaklarınızın listesi yer alır.
+1. İş durumu olduktan sonra `Running` , runbook iş çıkışını görüntülemek Için **Çıkış** ' a veya **Tüm Günlükler** ' e tıklayın. Bu öğretici runbook'u için çıktıda Azure kaynaklarınızın listesi yer alır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

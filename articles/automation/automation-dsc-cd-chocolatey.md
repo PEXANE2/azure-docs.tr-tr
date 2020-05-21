@@ -1,18 +1,18 @@
 ---
-title: Chocolatey ile Azure Otomasyonu durum yapılandırması sürekli dağıtımı
-description: Chocolatey Paket Yöneticisi ile Azure Otomasyonu durum yapılandırması kullanılarak DevOps sürekli dağıtımını açıklar. Tam JSON Kaynak Yöneticisi şablonu ve PowerShell kaynağına sahip bir örnek içerir.
+title: Chocolatey ile Azure Otomasyonu sürekli dağıtımını ayarlama
+description: Bu makalede durum yapılandırması ve Chocolatey Paket Yöneticisi ile sürekli dağıtımı nasıl ayarlayacakları açıklanır.
 services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 278c6ee05fdf78cbfa8653381b65233fbb513593
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 63fd65f6a80dec582b9cecc8483bc3425d08c551
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996116"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714194"
 ---
-# <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Automation durum yapılandırması ve Chocolatey kullanarak sanal makinelere sürekli dağıtım sağlama
+# <a name="set-up-continuous-deployment-with-chocolatey"></a>Chocolatey ile sürekli dağıtım ayarlama
 
 DevOps dünyasında, sürekli tümleştirme ardışık düzeninde çeşitli noktalarda yardımcı olacak birçok araç vardır. Azure Otomasyonu [Durum Yapılandırması](automation-dsc-overview.md) , DevOps takımlarının kullanabildiği seçeneklere yeni bir hoş geldiniz. 
 
@@ -69,7 +69,7 @@ Bu kullanım örneği için tam kaynak, GitHub 'daki [Bu Visual Studio projem](h
 
 ## <a name="step-1-set-up-the-pull-server-and-automation-account"></a>1. Adım: çekme sunucusunu ve otomasyon hesabını ayarlama
 
-Kimliği doğrulanmış (`Connect-AzAccount`) PowerShell komut satırında: (çekme sunucusu ayarlandığında birkaç dakika sürebilir)
+Kimliği doğrulanmış ( `Connect-AzAccount` ) PowerShell komut satırında: (çekme sunucusu ayarlandığında birkaç dakika sürebilir)
 
 ```azurepowershell-interactive
 New-AzResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
@@ -189,7 +189,7 @@ Get-AzAutomationDscCompilationJob `
     -Id $compilationJobId
 ```
 
-Bu adımlar, **ISVBoxConfig. isvbox** adlı yeni bir düğüm yapılandırmasının çekme sunucusuna yerleştirilmesine neden olacak. Düğüm yapılandırma adı olarak `configurationName.nodeName`oluşturulur.
+Bu adımlar, **ISVBoxConfig. isvbox** adlı yeni bir düğüm yapılandırmasının çekme sunucusuna yerleştirilmesine neden olacak. Düğüm yapılandırma adı olarak oluşturulur `configurationName.nodeName` .
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>5. Adım: paket meta verilerini oluşturma ve sürdürme
 

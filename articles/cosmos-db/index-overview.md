@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 921a11d8846c868436365fe400852eac0f7dcd3e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273248"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712103"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de dizin oluşturma - Genel bakış
 
@@ -90,7 +90,7 @@ Azure Cosmos DB Şu anda üç tür dizini desteklemektedir.
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  ( `>`, `<` `>=`,,,,,,, için geçerlidir `!=` `<=`
+  (,,,,,,,, için geçerlidir `>` `<` `>=` `<=` `!=` )
 
 - Bir özelliğin varlığı denetleniyor:
 
@@ -98,7 +98,11 @@ Azure Cosmos DB Şu anda üç tür dizini desteklemektedir.
    SELECT * FROM c WHERE IS_DEFINED(c.property)
    ```
 
-- Dize öneki eşleşiyor (CONTAINS anahtar sözcüğü Aralık dizininden yararlanamaz):
+- Dize sistem işlevleri:
+
+   ```sql
+   SELECT * FROM c WHERE CONTAINS(c.property, "value")
+   ```
 
    ```sql
    SELECT * FROM c WHERE STARTSWITH(c.property, "value")
@@ -152,7 +156,7 @@ Uzamsal dizinler, doğru biçimli [geojson](geospatial.md) nesnelerinde kullanı
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Filtre ve `ORDER BY`içeren sorgular. Bu sorgular, `ORDER BY` Filter özelliği yan tümcesine eklenirse bileşik bir dizin kullanabilir.
+- Filtre ve içeren sorgular `ORDER BY` . Bu sorgular, Filter özelliği yan tümcesine eklenirse bileşik bir dizin kullanabilir `ORDER BY` .
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
@@ -173,14 +177,14 @@ Tek bir filtre koşulu Dizin türünden birini kullandığında, sorgu altyapıs
 
 ## <a name="querying-with-indexes"></a>Dizinlerle sorgulama
 
-Verileri dizinlerken ayıklanan yollar, bir sorgu işlenirken dizinde arama yapmayı kolaylaştırır. Dizinli yolların listesiyle `WHERE` bir sorgunun yan tümcesini eşleştirerek sorgu koşulunun çok çabuk eşleşen öğelerini tanımlamak mümkündür.
+Verileri dizinlerken ayıklanan yollar, bir sorgu işlenirken dizinde arama yapmayı kolaylaştırır. `WHERE`Dizinli yolların listesiyle bir sorgunun yan tümcesini eşleştirerek sorgu koşulunun çok çabuk eşleşen öğelerini tanımlamak mümkündür.
 
-Örneğin, aşağıdaki sorguyu göz önünde bulundurun: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Sorgu koşulu (herhangi bir konumda ülke olarak "Fransa" bulunduğu öğeler üzerinde filtreleme) aşağıdaki kırmızı renkle eşleşen yol ile eşleşir:
+Örneğin, aşağıdaki sorguyu göz önünde bulundurun: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Sorgu koşulu (herhangi bir konumda ülke olarak "Fransa" bulunduğu öğeler üzerinde filtreleme) aşağıdaki kırmızı renkle eşleşen yol ile eşleşir:
 
 ![Ağaç içindeki belirli bir yolu eşleştirme](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Tek `ORDER BY` bir özelliğe göre siparişlerin *her zaman* bir Aralık dizinine ihtiyacı olan ve başvurduğu yolun bir tane yoksa başarısız olacağı bir yan tümce. Benzer şekilde, `ORDER BY` birden çok özelliğe göre siparişlerin *her zaman* bir bileşik dizine ihtiyacı olan bir sorgu.
+> `ORDER BY`Tek bir özelliğe göre siparişlerin *her zaman* bir Aralık dizinine ihtiyacı olan ve başvurduğu yolun bir tane yoksa başarısız olacağı bir yan tümce. Benzer şekilde, `ORDER BY` birden çok özelliğe göre siparişlerin *her zaman* bir bileşik dizine ihtiyacı olan bir sorgu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

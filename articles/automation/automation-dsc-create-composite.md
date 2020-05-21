@@ -1,6 +1,6 @@
 ---
-title: Durum yapılandırması için yapılandırmaları bileşik kaynaklara dönüştürme-Azure Otomasyonu
-description: Azure Automation 'da durum yapılandırması için yapılandırmaları bileşik kaynaklara dönüştürmeyi öğrenin.
+title: Azure Otomasyonu durum yapılandırması için yapılandırmaları bileşik kaynaklara dönüştürme
+description: Bu makalede, Azure Otomasyonu durum yapılandırması için yapılandırmaların bileşik kaynaklara nasıl dönüştürüleceği açıklanır.
 keywords: DSC, PowerShell, yapılandırma, kurulum
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a39b038d31d1b4a614ff0acf7df2586706bb0404
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99fd7b2d0581b3eda97ec6fadeb43b55a3ad2bf0
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585524"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711338"
 ---
-# <a name="convert-configurations-to-composite-resources"></a>Yapılandırmaları bileşik kaynaklara dönüştürme
+# <a name="convert-configurations-to-composite-resources-for-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırması için yapılandırmaları bileşik kaynaklara dönüştürme
 
 > Uygulama hedefi: Windows PowerShell 5,1
 

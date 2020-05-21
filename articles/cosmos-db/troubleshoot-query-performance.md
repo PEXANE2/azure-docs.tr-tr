@@ -8,12 +8,12 @@ ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: b3c6926f17e8378fd3b53bfd59a7c5ea8141adb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 977b2fa40e2ce27a2711e5a44f5fb487433c9462
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097243"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714568"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken sorgu sorunlarını giderme
 
@@ -35,19 +35,19 @@ Bu kılavuzu okumadan önce, sorgu altyapısıyla ilgili olmayan yaygın SDK sor
 - En iyi performans için, bu [performans ipuçlarını](performance-tips.md)izleyin.
     > [!NOTE]
     > Daha iyi performans için Windows 64 bit ana bilgisayar işlemesini öneririz. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel Serviceınterop. dll dosyasını içerir. Serviceınterop. dll yalnızca Windows x64 platformunda desteklenir. Serviceınterop. dll ' nin kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır.
-- SDK, sorgunuz için bir `MaxItemCount` ayar yapılmasına izin verir, ancak en az öğe sayısını belirtemezsiniz.
-    - Kod, sıfırdan olan herhangi bir sayfa boyutunu işlemelidir `MaxItemCount`.
-    - Sayfadaki öğelerin sayısı her zaman belirtilen `MaxItemCount`değere eşit veya daha büyük olacaktır. Ancak, `MaxItemCount` tam olarak en yüksek bir değer ve bu tutardan daha az sonuç olabilir.
+- SDK, sorgunuz için bir ayar yapılmasına izin verir, `MaxItemCount` ancak en az öğe sayısını belirtemezsiniz.
+    - Kod, sıfırdan olan herhangi bir sayfa boyutunu işlemelidir `MaxItemCount` .
+    - Sayfadaki öğelerin sayısı her zaman belirtilen değere eşit veya daha büyük olacaktır `MaxItemCount` . Ancak, `MaxItemCount` tam olarak en yüksek bir değer ve bu tutardan daha az sonuç olabilir.
 - Bazen, gelecekteki bir sayfada sonuçlar olduğunda bile sorgularda boş sayfalar bulunabilir. Bunun nedenleri şunlar olabilir:
     - SDK birden çok ağ çağrısı yapıyor olabilir.
     - Sorgunun belgeleri alması uzun sürüyor olabilir.
-- Tüm sorguların, sorgunun devam etmesine izin veren bir devamlılık belirteci vardır. Sorguyu tamamen boşalttığınızdan emin olun. SDK örneklerine bakın ve tüm sorguyu boşaltmak için üzerinde `while` `FeedIterator.HasMoreResults` bir döngüsü kullanın.
+- Tüm sorguların, sorgunun devam etmesine izin veren bir devamlılık belirteci vardır. Sorguyu tamamen boşalttığınızdan emin olun. SDK örneklerine bakın ve `while` `FeedIterator.HasMoreResults` Tüm sorguyu boşaltmak için üzerinde bir döngüsü kullanın.
 
 ## <a name="get-query-metrics"></a>Sorgu ölçümlerini al
 
 Azure Cosmos DB bir sorguyu en iyileştirirken, ilk adım her zaman sorgunuzun [sorgu ölçümlerini almak](profile-sql-api-query.md) için kullanılır. Bu ölçümler Azure portal aracılığıyla da kullanılabilir. Veri Gezgini sorgunuzu çalıştırdığınızda, sorgu ölçümleri **sonuçlar** sekmesinin yanında görünür:
 
-[![Sorgu ölçümleri](./media/troubleshoot-query-performance/obtain-query-metrics.png) alma](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+[![Sorgu ölçümleri ](./media/troubleshoot-query-performance/obtain-query-metrics.png) alma](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
 
 Sorgu ölçümlerini aldıktan sonra, sorgularınızın **çıktı belge sayısıyla** **alınan belge sayısını** karşılaştırın. Bu makaleyi gözden geçirmek üzere ilgili bölümleri belirlemek için bu karşılaştırmayı kullanın.
 
@@ -135,7 +135,7 @@ Client Side Metrics
 
 ### <a name="include-necessary-paths-in-the-indexing-policy"></a>Gerekli yolları dizin oluşturma ilkesine dahil et
 
-Dizin oluşturma ilkeniz, `WHERE` yan tümceler, `ORDER BY` yan tümceler `JOIN`ve çoğu sistem işlevlerine dahil olan özellikleri kapsamalıdır. Dizin ilkesinde belirtilen yollar JSON belgelerindeki özelliklerle eşleşmelidir.
+Dizin oluşturma ilkeniz, `WHERE` yan tümceler, `ORDER BY` yan tümceler `JOIN` ve çoğu sistem işlevlerine dahil olan özellikleri kapsamalıdır. Dizin ilkesinde belirtilen yollar JSON belgelerindeki özelliklerle eşleşmelidir.
 
 > [!NOTE]
 > Azure Cosmos DB Dizin oluşturma ilkesindeki özellikler büyük/küçük harfe duyarlıdır
@@ -200,7 +200,8 @@ Bir ifade bir dize değerleri aralığına çevrilebilen dizin kullanabilir. Aks
 
 Dizin kullanan bazı yaygın dize işlevlerinin listesi aşağıdadır:
 
-- STARTSWITH(str_expr, str_expr)
+- STARTSWITH (str_expr1, str_expr2, bool_expr)  
+- IÇERIR (str_expr, str_expr, bool_expr)
 - LEFT(str_expr, num_expr) = str_expr
 - Alt DIZE (str_expr, num_expr, num_expr) = str_expr, ancak yalnızca ilk num_expr 0 ise
 
@@ -208,8 +209,7 @@ Aşağıda, dizini kullanmayan ve her bir belgeyi yüklemesi gereken bazı yayg�
 
 | **Sistem işlevi**                     | **İyileştirme için fikirler**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| CONTAINS                                | Tam metin araması için Azure Search kullanın.                        |
-| ÜST/ALT                             | Karşılaştırma sırasında verileri normalleştirmek için sistem işlevini kullanmak yerine, ekleme sırasında büyük/küçük harfleri normalleştirin. Gibi ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` bir sorgu olur ```SELECT * FROM c WHERE c.name = 'BOB'```. |
+| ÜST/ALT                             | Karşılaştırma sırasında verileri normalleştirmek için sistem işlevini kullanmak yerine, ekleme sırasında büyük/küçük harfleri normalleştirin. Gibi bir sorgu ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` olur ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
 | Matematik işlevleri (toplamasız olmayan) | Sorgunuzda sık bir değeri hesaplamanız gerekiyorsa, değeri JSON belgenizde bir özellik olarak depolamayı düşünün. |
 
 ------
@@ -220,7 +220,7 @@ Sorgunun diğer kısımları, sistem işlevleri olmasa da dizini yine de kullana
 
 Çoğu durumda, Azure Cosmos DB içindeki toplu sistem işlevleri dizini kullanır. Ancak, bir toplama sorgusunda filtrelere veya ek yan tümceciklerine bağlı olarak, çok sayıda belgeyi yüklemek için sorgu altyapısının kullanılması gerekebilir. Genellikle, sorgu altyapısı ilk olarak eşitlik ve Aralık filtrelerini uygular. Bu filtreleri uyguladıktan sonra sorgu altyapısı, ek filtreleri değerlendirebilir ve gerekirse toplamı hesaplamak için kalan belgeleri yüklemeyi çare olarak gerçekleştirebilir.
 
-Örneğin, bu iki örnek sorgu verildiğinde, bir eşitlik ve `CONTAINS` sistem işlevi filtresiyle sorgu genellikle yalnızca bir `CONTAINS` sistem işlevi filtresiyle bir sorgudan daha verimli olacaktır. Bunun nedeni, eşitlik filtresinin önce uygulandığının ve daha pahalı `CONTAINS` bir filtre için belgelerin yüklenmesi için önce dizinin kullanıldığı bir işlemdir.
+Örneğin, bu iki örnek sorgu verildiğinde, bir eşitlik ve `CONTAINS` sistem işlevi filtresiyle sorgu genellikle yalnızca bir sistem işlevi filtresiyle bir sorgudan daha verimli olacaktır `CONTAINS` . Bunun nedeni, eşitlik filtresinin önce uygulandığının ve daha pahalı bir filtre için belgelerin yüklenmesi için önce dizinin kullanıldığı bir işlemdir `CONTAINS` .
 
 Yalnızca `CONTAINS` filtre-daha yüksek ru ücreti olan sorgu:
 
@@ -260,9 +260,9 @@ WHERE udf.MyUDF("Sausages and Luncheon Meats")
 
 #### <a name="queries-with-group-by"></a>Gruplandırma ölçütü olan sorgular
 
-Yan tümcesindeki özelliklerin kardinalitesi arttıkça `GROUP BY` , Ile sorguların ru ücreti artar. `GROUP BY` Aşağıdaki sorguda, örneğin, benzersiz açıklamaların arttığı sayı olarak sorgunun RU ücreti artar.
+`GROUP BY`Yan tümcesindeki özelliklerin kardinalitesi arttıkça, ile SORGULARıN ru ücreti artar `GROUP BY` . Aşağıdaki sorguda, örneğin, benzersiz açıklamaların arttığı sayı olarak sorgunun RU ücreti artar.
 
-`GROUP BY` Yan tümce içeren bir toplama işlevinin ru ücreti, tek başına bir toplama işlevinin ru ücretinden daha yüksek olacaktır. Bu örnekte, sorgu altyapısının, RU ücretinden yüksek olması beklendiğinden `c.foodGroup = "Sausages and Luncheon Meats"` filtreyle eşleşen her belgeyi yüklemesi gerekir.
+Yan tümce içeren bir toplama işlevinin RU ücreti, `GROUP BY` tek başına bir toplama IŞLEVININ ru ücretinden daha yüksek olacaktır. Bu örnekte, sorgu altyapısının, `c.foodGroup = "Sausages and Luncheon Meats"` ru ücretinden yüksek olması beklendiğinden filtreyle eşleşen her belgeyi yüklemesi gerekir.
 
 ```sql
 SELECT COUNT(1)
@@ -308,7 +308,7 @@ Dizin oluşturma ilkesi:
 
 #### <a name="optimized"></a>İyileştirilmiş
 
-Sorgu güncelleştirildi ( `ORDER BY` yan tümcesindeki her iki özelliği de içerir):
+Sorgu güncelleştirildi (yan tümcesindeki her iki özelliği de içerir `ORDER BY` ):
 
 ```sql
 SELECT *
@@ -349,7 +349,7 @@ Dizin oluşturma ilkesi güncelleştirildi:
 
 ### <a name="optimize-join-expressions-by-using-a-subquery"></a>Alt sorgu kullanarak JOIN ifadelerini iyileştirme
 
-Çoklu değer alt sorguları, `JOIN` `WHERE` yan Tümcecikteki tüm çapraz birleşimler yerine her bir SELECT-many ifadesinden sonra koşulları ileterek ifadeleri en iyileştirebilir.
+Çoklu değer alt sorguları `JOIN` , yan Tümcecikteki tüm çapraz birleşimler yerine her bir SELECT-many ifadesinden sonra koşulları ileterek ifadeleri en iyileştirebilir `WHERE` .
 
 Şu sorguyu göz önünde bulundurun:
 
@@ -365,7 +365,7 @@ AND n.nutritionValue < 10) AND s.amount > 1
 
 **Ru ücreti:** 167,62 Rus
 
-Bu sorgu için dizin adı `infant formula`, `nutritionValue` 0 ' dan büyük ve `amount` 1 ' den büyük bir etiketi olan herhangi bir belgeyle eşleştirecektir. Buradaki `JOIN` ifade, herhangi bir filtre uygulanmadan önce, eşleşen her belge için etiketlerin, nuttastaların ve servilerlerdeki tüm öğelerin çapraz çarpımını gerçekleştirecek. `WHERE` Yan tümce daha sonra her `<c, t, n, s>` bir tanımlama grubu için filtre koşulunu uygular.
+Bu sorgu için dizin adı `infant formula` , `nutritionValue` 0 ' dan büyük ve 1 ' den büyük bir etiketi olan herhangi bir belgeyle eşleştirecektir `amount` . `JOIN`Buradaki ifade, herhangi bir filtre uygulanmadan önce, eşleşen her belge için etiketlerin, nuttastaların ve servilerlerdeki tüm öğelerin çapraz çarpımını gerçekleştirecek. `WHERE`Yan tümce daha sonra her bir tanımlama grubu için filtre koşulunu uygular `<c, t, n, s>` .
 
 Örneğin, eşleşen bir belge üç dizide her birinde 10 öğe içeriyorsa, 1 x 10 x 10 x 10 (diğer bir deyişle, 1.000) tanımlama gruplarına genişletilir. Burada alt sorgular kullanılması, birleştirilmiş dizi öğelerinin sonraki ifadeyle katılmadan önce filtrelemeye yardımcı olabilir.
 
@@ -381,11 +381,11 @@ JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 
 **Ru ücreti:** 22,17 Rus
 
-Etiketler dizisindeki yalnızca bir öğenin filtreyle eşleştiğini ve hem nutriler hem de Server dizileri için beş öğe olduğunu varsayalım. `JOIN` İfadeler, ilk sorgudaki 1.000 öğeden farklı olarak 1 x 1 x 5 x 5 = 25 öğe olacak şekilde genişletilir.
+Etiketler dizisindeki yalnızca bir öğenin filtreyle eşleştiğini ve hem nutriler hem de Server dizileri için beş öğe olduğunu varsayalım. `JOIN`İfadeler, ilk sorgudaki 1.000 öğeden farklı olarak 1 x 1 x 5 x 5 = 25 öğe olacak şekilde genişletilir.
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Alınan belge sayısı, çıkış belgesi sayısına eşit olan sorgular
 
-**Alınan belge sayısı** yaklaşık olarak **çıktı belge sayısına**eşitse, sorgu altyapısının çok sayıda gereksiz belgeyi taraması gerekmez. `TOP` Anahtar sözcüğünü kullananlar gibi birçok sorgu Için, **alınan belge sayısı** , **çıkış belgesi sayısını** 1 ' den fazla olabilir. Bunun için endişelenmeniz gerekmez.
+**Alınan belge sayısı** yaklaşık olarak **çıktı belge sayısına**eşitse, sorgu altyapısının çok sayıda gereksiz belgeyi taraması gerekmez. Anahtar sözcüğünü kullananlar gibi birçok sorgu için `TOP` , **alınan belge sayısı** , **çıkış belgesi sayısını** 1 ' den fazla olabilir. Bunun için endişelenmeniz gerekmez.
 
 ### <a name="minimize-cross-partition-queries"></a>Çapraz bölüm sorgularını en aza indir
 
@@ -401,7 +401,7 @@ FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-Bölüm anahtarı ile bir `IN` filtresi olan sorgular yalnızca ilgili fiziksel bölümleri denetleyecek ve "fan" olarak olmayacaktır:
+`IN`Bölüm anahtarı ile bir filtresi olan sorgular yalnızca ilgili fiziksel bölümleri denetleyecek ve "fan" olarak olmayacaktır:
 
 ```sql
 SELECT *

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 41de12c08dee52240f9b10c191ced4aacaea8e94
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8ec4c87dc4f19c140c5ac02779c5551016dfb0b3
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592789"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714330"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -195,10 +195,8 @@ Varsayılan olarak, metinden konuşmaya hizmeti, standart ve sinir sesler için 
 
 Şu anda, bu sinir sesleri için konuşma stil ayarlamaları desteklenir:
 * `en-US-AriaNeural`
-* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
-* `zh-CN-YunyeNeural`
 
 Değişiklikler tümce düzeyinde uygulanır ve stil sese göre farklılık gösterir. Bir stil desteklenmiyorsa, hizmet konuşmayı varsayılan nötr konuşma stilinde döndürür.
 
@@ -223,15 +221,11 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 |                         | `style="chat"`            | Rastgele ve gevşek bir tonu ifade eder                         |
 |                         | `style="cheerful"`        | Pozitif ve kutlu bir tonu ifade eder                         |
 |                         | `style="empathetic"`      | Bir fikir ve anlalama hakkında ifade eder               |
-|   `pt-BR-FranciscaNeural`| `style="calm"`      | Bir Cala tonu ifade edin               |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Anlatım haberleri için resmi ve profesyonel tonu ifade eder |
 |                         | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  |
 |                         | `style="assistant"`       | Dijital yardımcılar için bir sıcak ve gevşek tonu ifade eder    |
 |                         | `style="lyrical"`         | Bir Melodic ve sentisel şekilde ifade eder         |   
-| `zh-CN-YunyangNeural`  | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  |
-| `zh-CN-YunyeNeural`  | `style="calm"`      | Bir Cala tonu ifade edin               |  
-|                         | `style="sad"`       | Bir unmutlu ve Upset sesini ifade eder    |
-|                         | `style="serious"`         | Önemli ve zor bir ton Express        |   
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  | 
 
 **Örnek**
 

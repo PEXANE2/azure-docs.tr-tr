@@ -1,29 +1,25 @@
 ---
-title: Azure Otomasyonu runbook 'unda Azure Resource Manager şablonu dağıtma
-description: Azure depolama 'da depolanan bir Azure Resource Manager şablonunu runbook 'tan dağıtma
+title: Azure Otomasyonu PowerShell runbook’unda Azure Resource Manager şablonu dağıtma
+description: Bu makalede, bir PowerShell runbook 'tan Azure Storage 'da depolanan bir Azure Resource Manager şablonunun nasıl dağıtılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: PowerShell, runbook, JSON, Azure Otomasyonu
-ms.openlocfilehash: 1bf381499ac31fafc8aaeef2b4ee488cfa1aa5c1
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: dcb1f5919db71bb233f59cc5b5ba92648b8476d9
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994695"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714296"
 ---
-# <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Otomasyonu PowerShell runbook’unda Azure Resource Manager şablonu dağıtma
+# <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>PowerShell runbook 'unda Azure Resource Manager şablonu dağıtma
 
-Azure Kaynak [yönetimi şablonu](../azure-resource-manager/resource-manager-create-first-template.md)kullanarak Azure kaynağı dağıtan bir [Azure Otomasyonu PowerShell runbook 'u](automation-first-runbook-textual-powershell.md) yazabilirsiniz.
-
-Bunu yaptığınızda, Azure kaynaklarının dağıtımını otomatik hale getirebilirsiniz. Kaynak Yöneticisi şablonlarınızı Azure depolama gibi merkezi ve güvenli bir konumda tutabilirsiniz.
+Azure Kaynak [yönetimi şablonu](../azure-resource-manager/resource-manager-create-first-template.md)kullanarak Azure kaynağı dağıtan bir [Azure Otomasyonu PowerShell runbook 'u](automation-first-runbook-textual-powershell.md) yazabilirsiniz. Şablon kullanımı, Azure kaynaklarınızın dağıtımını otomatik hale getirmek için Azure Otomasyonu ve Azure Storage 'ı kullanmanıza olanak sağlar. Kaynak Yöneticisi şablonlarınızı Azure depolama gibi merkezi ve güvenli bir konumda tutabilirsiniz.
 
 Bu makalede, yeni bir Azure depolama hesabı dağıtmak için [Azure Storage](../storage/common/storage-introduction.md) 'da depolanan kaynak yöneticisi şablonunu kullanan bir PowerShell runbook 'u oluşturacağız.
 
 ## <a name="prerequisites"></a>Ön koşullar
-
-Bu öğreticiyi tamamlayabilmeniz için aşağıdaki öğeler gereklidir:
 
 * Azure aboneliği. Henüz bir aboneliğiniz yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) ya da [ücretsiz hesap için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 * Runbook’u tutacak ve Azure kaynaklarında kimlik doğrulamasını yapacak bir [Automation hesabı](automation-sec-configure-azure-runas-account.md).  Bu hesabın sanal makineyi başlatma ve durdurma izni olmalıdır.
@@ -222,7 +218,7 @@ $startParams = @{
 $job = Start-AzAutomationRunbook @startParams
 ```
 
-Runbook çalışır ve çalışır `$job.Status`duruma göre durumunu kontrol edebilirsiniz.
+Runbook çalışır ve çalışır duruma göre durumunu kontrol edebilirsiniz `$job.Status` .
 
 Runbook Kaynak Yöneticisi şablonunu alır ve yeni bir Azure depolama hesabı dağıtmak için onu kullanır.
 Aşağıdaki komutu çalıştırarak yeni depolama hesabının oluşturulduğunu görebilirsiniz:
@@ -231,15 +227,10 @@ Aşağıdaki komutu çalıştırarak yeni depolama hesabının oluşturulduğunu
 Get-AzStorageAccount
 ```
 
-## <a name="summary"></a>Özet
-
-İşte bu kadar! Azure Otomasyonu ve Azure Storage 'ı, tüm Azure kaynaklarınızı dağıtmak için Kaynak Yöneticisi şablonlarıyla birlikte kullanabilirsiniz.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../azure-resource-manager/management/overview.md).
-* Azure depolama 'yı kullanmaya başlamak için bkz. [Azure depolama 'Ya giriş](../storage/common/storage-introduction.md).
-* Diğer yararlı Azure Otomasyonu runbook 'larını bulmak için bkz. [Azure Otomasyonu Için runbook ve modül galerileri](automation-runbook-gallery.md).
-* Diğer kullanışlı Kaynak Yöneticisi şablonları bulmak için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* [Azure Resource Manager genel bakış](../azure-resource-manager/management/overview.md)
+* [Azure Depolama’ya giriş](../storage/common/storage-introduction.md)
+* [Azure Otomasyonu için runbook ve modül galerileri](automation-runbook-gallery.md)
+* [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/)
+* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)

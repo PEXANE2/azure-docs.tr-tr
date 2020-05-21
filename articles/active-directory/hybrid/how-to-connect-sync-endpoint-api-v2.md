@@ -8,16 +8,16 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce1168f8f95e01b6ac05e673636e02356043cf3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b5501153a9c54d4509aa7dd948e03e011b30d79e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691078"
+ms.locfileid: "83713820"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (Genel Önizleme) 
 Microsoft, Azure Active Directory için eşitleme hizmeti işlemlerinin performansını geliştiren Azure AD Connect için yeni bir uç nokta (API) dağıttı. Yeni v2 uç noktasından yararlanarak, Azure AD 'ye dışarı ve içeri aktarma sırasında dikkat çekici performans kazanımları yaşarsınız. Bu yeni uç nokta şunları destekler:
@@ -31,6 +31,9 @@ Microsoft, Azure Active Directory için eşitleme hizmeti işlemlerinin performa
 
 ## <a name="pre-requisites"></a>Ön koşullar  
 Yeni v2 uç noktasını kullanabilmek için, [Azure AD Connect sürüm 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) veya üstünü kullanmanız ve aşağıdaki dağıtım adımlarını izleyerek Azure AD Connect sunucunuz için v2 uç noktasını etkinleştirmeniz gerekir.   
+
+>[!NOTE]
+>Şu anda bu genel Önizleme yalnızca Azure genel bulutunda mevcuttur ve [Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)için kullanılamaz.
 
 ### <a name="public-preview-limitations"></a>Genel önizleme sınırlamaları  
 Bu sürümde çok sayıda test çalışırken sorunlarla karşılaşabilirsiniz. Bu genel önizleme sürümünün amaçlarından biri, bu tür sorunları bulup çözmelidir.  

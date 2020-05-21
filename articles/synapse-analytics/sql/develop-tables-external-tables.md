@@ -9,34 +9,36 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0405644af24eb277aa47db64348c9a217cf72239
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bf014c7188232f07a399cc3e438d1d894c96a233
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195959"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701432"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>SYNAPSE SQL ile dış tabloları kullanma
 
 Dış tablo, Hadoop, Azure Depolama Blobu veya Azure Data Lake Storage bulunan verilere işaret eder. Dış tablolar, dosyalardaki verileri okumak veya Azure Storage 'daki dosyalara veri yazmak için kullanılır. SYNAPSE SQL ile, dış tabloları SQL havuzuna veya isteğe bağlı SQL 'e (Önizleme) veri okumak ve yazmak için kullanabilirsiniz.
 
-## <a name="external-tables-in-synapse-sql"></a>SYNAPSE SQL 'de dış tablolar
+## <a name="external-tables-in-synapse-sql-pool-and-on-demand"></a>SYNAPSE SQL havuzundaki dış tablolar ve isteğe bağlı
 
-### <a name="sql-pool"></a>[SQL havuzu](#tab/sql-pool)
+### <a name="sql-pool"></a>[SQL havuzu](#tab/sql-pool) 
 
 SQL havuzunda, bir dış tablo kullanarak şunları yapabilirsiniz:
 
 - Azure Blob depolama ve Azure Data Lake Gen2 Transact-SQL deyimleriyle sorgulayın.
 - Azure Blob depolamadan ve Azure Data Lake Storage verileri SQL Pool 'a aktarın ve depolayın.
 
-[Create Table Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ifadesiyle birlikte kullanıldığında, dış tablo ' ın seçilmesi, verileri SQL havuzundaki bir tabloya aktarır. [Copy ifadesine](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ek olarak, dış tablolar veri yüklemek için faydalıdır. Yükleme öğreticisi için bkz. [Azure Blob depolamadan veri yüklemek Için PolyBase kullanma](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+[Create Table Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ifadesiyle birlikte kullanıldığında, dış tablo ' ın seçilmesi, verileri SQL havuzundaki bir tabloya aktarır. [Copy ifadesine](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ek olarak, dış tablolar verileri yüklemek için faydalıdır. 
 
-### <a name="sql-on-demand"></a>[İsteğe bağlı SQL](#tab/sql-ondemand)
+Yükleme öğreticisi için bkz. [Azure Blob depolamadan veri yüklemek Için PolyBase kullanma](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+
+### <a name="sql-on-demand"></a>[İsteğe bağlı SQL](#tab/sql-on-demand)
 
 İsteğe bağlı SQL için bir dış tablo kullanacaksınız:
 
 - Azure Blob depolamada veya Azure Data Lake Storage Transact-SQL deyimleriyle veri sorgulama
-- Azure Blob depolamada veya [Cetas](develop-tables-cetas.md)kullanarak Azure Data Lake Storage SQL isteğe bağlı sorgu sonuçlarını depolayın.
+- Azure Blob depolamada veya Azure Data Lake Storage [Cetas](develop-tables-cetas.md) kullanarak SQL isteğe bağlı sorgu sonuçlarını depolama
 
 Aşağıdaki adımlar aracılığıyla, SQL 'i isteğe bağlı olarak kullanarak dış tablolar oluşturabilirsiniz:
 
@@ -50,8 +52,8 @@ Aşağıdaki adımlar aracılığıyla, SQL 'i isteğe bağlı olarak kullanarak
 
 Kullanıcının `SELECT` , verileri okumak için dış tabloda izni olması gerekir.
 Dış tablo, aşağıdaki kurallar kullanılarak veri kaynağında tanımlanan veritabanı kapsamlı kimlik bilgilerini kullanarak temel Azure depolama ile erişin:
-- Kimlik bilgisi olmayan veri kaynağı, Azure depolama 'da genel kullanıma açık dosyalara erişmek için dış tabloları etkinleştirin.
-- Veri kaynağında, dış tabloların yalnızca SAS belirtecini veya çalışma alanı yönetilen kimliğini kullanarak Azure Storage 'daki dosyalara erişmesine olanak tanıyan kimlik bilgileri bulunabilir. [buraya örneklere](develop-storage-files-storage-access-control.md#examples)bakın.
+- Kimlik bilgisi olmayan veri kaynağı, dış tabloların Azure Storage 'da genel kullanıma açık dosyalara erişmesine olanak sağlar.
+- Veri kaynağında, dış tabloların yalnızca SAS belirtecini veya çalışma alanı yönetilen kimliğini kullanarak Azure Storage 'daki dosyalara erişmesine olanak tanıyan kimlik bilgileri bulunabilir; örnekler Için bkz. [depolama dosyalarını geliştirme depolama erişim denetimi](develop-storage-files-storage-access-control.md#examples) makalesi.
 
 > [!IMPORTANT]
 > SQL havuzunda, creadas olmadan DataSource, Azure AD kullanıcısının Azure AD kimliklerini kullanarak depolama dosyalarına erişmesine olanak sağlar. İsteğe bağlı SQL 'de, özelliği olan veritabanı kapsamlı kimlik bilgileriyle veri kaynağı oluşturmanız gerekir `IDENTITY='User Identity'` ; [örneklere buraya](develop-storage-files-storage-access-control.md#examples)bakın.
@@ -74,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="sql-on-demand"></a>[İsteğe bağlı SQL](#tab/sql-ondemand)
+#### <a name="sql-on-demand"></a>[İsteğe bağlı SQL](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -84,11 +86,14 @@ WITH
 )
 [;]
 ```
+
 ---
 
 ### <a name="arguments-for-create-external-data-source"></a>Dış VERI kaynağı oluşturma için bağımsız değişkenler
 
-data_source_name-veri kaynağı için Kullanıcı tanımlı adı belirtir. Ad, veritabanı içinde benzersiz olmalıdır.
+data_source_name
+
+Veri kaynağı için Kullanıcı tanımlı adı belirtir. Ad, veritabanı içinde benzersiz olmalıdır.
 
 #### <a name="location"></a>Konum
 LOCATION = `'<prefix>://<path>'` -dış veri kaynağının bağlantı protokolünü ve yolunu sağlar. Yol, biçiminde bir kapsayıcı `'<prefix>://<path>/container'` ve biçiminde bir klasör içerebilir `'<prefix>://<path>/container/folder'` .
@@ -100,7 +105,9 @@ LOCATION = `'<prefix>://<path>'` -dış veri kaynağının bağlantı protokolü
 | Azure Data Lake Store Gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
 
 #### <a name="credential"></a>Kimlik Bilgisi
-CREDENTIAL = `<database scoped credential>` Azure depolamada kimlik doğrulaması için kullanılacak isteğe bağlı kimlik bilgileridir. Kimlik bilgisi olmayan dış veri kaynağı, ortak depolama hesabına erişebilir. SQL havuzunda kimlik bilgisi olmayan dış veri kaynakları, depolamadaki dosyalara erişmek için çağıranlar Azure AD Identity 'yi de kullanabilir. Kimlik bilgisine sahip dış veri kaynağı, dosyalara erişmek için kimlik bilgilerinde belirtilen kimlik bilgisini kullanıyor.
+CREDENTIAL = `<database scoped credential>` Azure depolamada kimlik doğrulaması için kullanılacak isteğe bağlı kimlik bilgileridir. Kimlik bilgisi olmayan dış veri kaynağı, ortak depolama hesabına erişebilir. 
+
+SQL havuzunda kimlik bilgisi olmayan dış veri kaynakları, depolamadaki dosyalara erişmek için çağıranlar Azure AD Identity 'yi de kullanabilir. Kimlik bilgisine sahip dış veri kaynağı, dosyalara erişmek için kimlik bilgilerinde belirtilen kimlik bilgisini kullanıyor.
 - SQL havuzunda, veritabanı kapsamlı kimlik bilgileri özel uygulama kimliği, çalışma alanı yönetilen kimliği veya SAK anahtarı belirtebilir. 
 - İsteğe bağlı SQL 'de, veritabanı kapsamlı kimlik bilgileri çağıranın Azure AD kimliğini, çalışma alanı yönetilen kimliğini veya SAS anahtarını belirtebilir. 
 
@@ -123,7 +130,7 @@ WITH
   ) ;
 ```
 
-#### <a name="sql-on-demand"></a>[İsteğe bağlı SQL](#tab/sql-ondemand)
+#### <a name="sql-on-demand"></a>[İsteğe bağlı SQL](#tab/sql-on-demand)
 
 Aşağıdaki örnek, SAS kimlik bilgileri kullanılarak erişilebilen Azure Data Lake Gen2 için bir dış veri kaynağı oluşturur:
 
@@ -366,4 +373,4 @@ Dış tablo artık oluşturulmuştur; bu dış tablonun içeriğini daha sonra a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorgu sonuçlarının Azure Storage 'da bir dış tabloya nasıl kaydedileceği için [Cetas](develop-tables-cetas.md) makalesini denetleyin. Ya da [Spark tablolarını](develop-storage-files-spark-tables.md)sorgulamaya başlayabilirsiniz.
+Sorgu sonuçlarının Azure Storage 'da bir dış tabloya nasıl kaydedileceği için [Cetas](develop-tables-cetas.md) makalesini denetleyin. Ya da [Azure SYNAPSE dış tabloları için Apache Spark](develop-storage-files-spark-tables.md)sorgulama başlatabilirsiniz.

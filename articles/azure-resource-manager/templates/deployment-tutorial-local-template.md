@@ -1,15 +1,15 @@
 ---
 title: Öğretici-yerel bir Azure Resource Manager şablonu dağıtma
 description: Yerel bilgisayarınızdan Azure Resource Manager şablonu dağıtmayı öğrenin
-ms.date: 03/13/2020
+ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7f134bb836d05d006ef2e474ea48382a671957fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 01f04d18ae54c3c512010dd005e9d820b914e536
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188833"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714075"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Öğretici: yerel bir Azure Resource Manager şablonu dağıtma
 
@@ -25,7 +25,7 @@ Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, ba
 
 Şablonu dağıtmak için Azure PowerShell ya da Azure CLı gerekir. Yükleme yönergeleri için bkz.:
 
-- [Azure PowerShell yüklensin](/powershell/azure/install-az-ps)
+- [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps)
 - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
 - [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
 
@@ -69,7 +69,7 @@ Birden çok Azure aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin:
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-Select-AzSubscription [SubscriptionID/SubscriptionName]
+Set-AzContext [SubscriptionID/SubscriptionName]
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)

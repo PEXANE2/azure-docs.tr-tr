@@ -2,15 +2,15 @@
 title: Öğretici-& dağıtım şablonu oluşturma
 description: İlk Azure Resource Manager şablonunuzu oluşturun. Öğreticide, şablon dosyası söz dizimi ve depolama hesabı dağıtma hakkında bilgi edineceksiniz.
 author: mumian
-ms.date: 05/12/2020
+ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c07f587b8b200a6f9d686c77e5ffefa399c6e179
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2180ca80d87643eb885d814318e516b4b3c53f37
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199916"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714806"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma
 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Ayrıca, şablonu dağıtmak için Azure PowerShell ya da Azure CLı gerekir. Azure CLı kullanıyorsanız, en son sürüme sahip olmanız gerekir. Yükleme yönergeleri için bkz.:
 
-- [Azure PowerShell yüklensin](/powershell/azure/install-az-ps)
+- [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps)
 - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
 - [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
 
@@ -98,7 +98,7 @@ Birden çok Azure aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin:
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-Select-AzSubscription [SubscriptionID/SubscriptionName]
+Set-AzContext [SubscriptionID/SubscriptionName]
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -179,7 +179,7 @@ Dağıtım komutu sonuçları döndürür. `ProvisioningState`Dağıtımın baş
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol menüden **kaynak grupları**' nı seçin.
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 14fd237b6437c15ede2da7c0694004f6c22736cc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83600006"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714245"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Hızlı başlangıç: ilk statik Web uygulamanızı oluşturma
 
@@ -20,7 +20,7 @@ Azure statik Web Apps, bir GitHub deposundan uygulamalar oluşturarak web sitele
 
 Azure aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [GitHub](https://github.com) hesabı
 - [Azure](https://portal.azure.com) hesabı
@@ -81,7 +81,7 @@ Yeni uygulamanızı yapılandırıp bir GitHub deposuna bağlayarak başlayın.
 - _Azure aboneliğinizi_ seçin
 - Yeni bir _kaynak grubu_ seçin veya oluşturun
 - Uygulamanın **-First-static-Web-App**' i adlandırın.
-  - Geçerli karakterler `a-z` (büyük/küçük harf duyarsız), `0-9` ve `_` .
+  - Geçerli karakterler `a-z` (büyük/küçük harf duyarsız), `0-9` ve `-` .
 - Size en yakın _bölgeyi_ seçin
 - **Ücretsiz** _SKU 'yu_ seçin
 - GitHub ile **oturum açma** düğmesine tıklayın ve GitHub ile kimlik doğrulaması yapın
@@ -130,6 +130,8 @@ Ardından, tercih ettiğiniz ön uç çerçevesine özgü yapılandırma ayrınt
 **Gözden geçir + oluştur** düğmesine tıklayın.
 
 :::image type="content" source="media/getting-started/review-create.png" alt-text="İnceleme oluştur düğmesi":::
+
+Uygulamayı oluşturduktan sonra bu değerleri değiştirmek için [iş akışı dosyasını](github-actions-workflow.md)düzenleyebilirsiniz.
 
 ### <a name="review--create"></a>Gözden geçir + oluştur
 

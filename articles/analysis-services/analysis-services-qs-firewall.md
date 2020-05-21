@@ -4,15 +4,15 @@ description: Bu hızlı başlangıç, Azure portal kullanarak bir Azure Analysis
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 48618815519fad31bff5d6a8d2d2edc82535f437
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79205150"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697906"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Hızlı başlangıç: Sunucu güvenlik duvarını yapılandırma - Portal
 
@@ -32,7 +32,7 @@ Bu hızlı başlangıç Azure Analysis Services sunucunuz için güvenlik duvar�
 ## <a name="configure-a-firewall"></a>Güvenlik duvarını yapılandırma
 
 1. Genel Bakış sayfasını açmak için sunucunuza tıklayın. 
-2. **Ayarlar** > **güvenlik duvarı** > güvenlik**duvarını etkinleştir**bölümünde **Açık**' a tıklayın.
+2. **Ayarlar**  >  **güvenlik duvarı**güvenlik  >  **duvarını etkinleştir**bölümünde **Açık**' a tıklayın.
 3. Power BI hizmetinden DirectQuery erişimine izin vermek için, **Power BI'dan erişime izin ver** alanında **Açık** seçeneğine tıklayın.  
 4. (İsteğe bağlı) Bir veya birden çok IP adresi aralığı belirtin. Her aralık için bir ad, başlangıç ve bitiş IP adresi girin. Güvenlik duvarı kuralı adı 128 karakterle sınırlı olmalıdır ve yalnızca büyük harf, küçük harf karakter, rakam, alt çizgi ve kısa çizgi karakterlerini içerebilir. Boşluk ve diğer özel karakterlere izin verilmez.
 5. **Kaydet**’e tıklayın.

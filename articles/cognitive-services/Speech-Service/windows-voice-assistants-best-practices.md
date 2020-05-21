@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 30df02062d3b94836f0131ac1124f56d1deefb5b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997496"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714789"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Windows 10 için Tasarım Yardımcısı deneyimleri
 
@@ -63,25 +63,22 @@ Yardımcılar, müşterinin yardımcı durumunu anlayabilmesi için kritik gerib
 - Yardımcı, bir yanıtı işliyor ve hazırlıyor
 - Yardımcı yanıt veriyor
 
-Durumlar hızla değiştirilse bile, süreler Windows ekosistemi genelinde değişken olduğundan durumlar için UX sağlamak düşünülmektedir. Görsel geri bildirimin yanı sıra, korkileri de denilen &quot;&quot;kısa ses oylarından veya CHIRP 'leri çözümün parçası olabilir. Benzer şekilde, ses açıklamalarıyla bağlanmış görsel kartlar iyi yanıt seçenekleri için yapılır.
+Durumlar hızla değiştirilse bile, süreler Windows ekosistemi genelinde değişken olduğundan durumlar için UX sağlamak düşünülmektedir. Görsel geri bildirimin yanı sıra, korkileri de denilen kısa ses oylarından veya CHIRP 'leri &quot; &quot; çözümün parçası olabilir. Benzer şekilde, ses açıklamalarıyla bağlanmış görsel kartlar iyi yanıt seçenekleri için yapılır.
 
 ## <a name="design-guidance-for-in-app-voice-activation"></a>Uygulama içi ses etkinleştirme için tasarım kılavuzu
 
 Yardımcı uygulama odağa sahip olduğunda, müşteri amacı uygulamayla etkileşime geçerek tüm ses etkinleştirme deneyimlerinin ana uygulama görünümü tarafından işlenmesi gerekir. Bu görünüm müşteri tarafından yeniden boyutlandırılabilir. Yardımcı kabuk etkileşimlerinin açıklanmasına yardımcı olmak için, bu belgenin geri kalanı contoso adlı bir mali hizmet Yardımcısı 'nın somut örneğini kullanır. Bu ve sonraki diyagramlarda, müşterinin söydiği, sağ taraftaki balonlarda yardım yanıtları ile sol taraftaki konuşma balonlarında görünür.
 
-**Uygulama içi görünüm. Ses etkinleştirme başladığında ilk durum:**
-![etkinleştirmeden önce Windows 'da sesli yardımcının ekran görüntüsü](media/voice-assistants/windows_voice_assistant/initial_state.png)
+**Uygulama içi görünüm. Ses etkinleştirme başladığında ilk durum:** 
+ ![ etkinleştirmeden önce Windows 'da sesli yardımcının ekran görüntüsü](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
-**Uygulama içi görünüm. Başarılı bir ses etkinleştirme sonrasında, dinleme deneyimi başlar:**![ses Yardımcısı dinlerken Windows 'da sesli yardımcının ekran görüntüsü](media/voice-assistants/windows_voice_assistant/listening.png)
+**Uygulama içi görünüm. Başarılı bir ses etkinleştirme sonrasında, dinleme deneyimi başlar:** ![ Ses Yardımcısı dinlerken Windows 'da sesli yardımcının ekran görüntüsü](media/voice-assistants/windows_voice_assistant/listening.png)
 
-**Uygulama içi görünüm. Tüm yanıtlar uygulama deneyiminde kalır.** ![Windows 'da yardım yanıtları olarak sesli yardım 'ın ekran görüntüsü](media/voice-assistants/windows_voice_assistant/response.png)
+**Uygulama içi görünüm. Tüm yanıtlar uygulama deneyiminde kalır.** ![ Windows 'da yardım yanıtları olarak sesli yardım 'ın ekran görüntüsü](media/voice-assistants/windows_voice_assistant/response.png)
 
 ## <a name="design-guidance-for-voice-activation-above-lock"></a>Kilit üzerinde ses etkinleştirme için tasarım kılavuzu
 
 19H2 ile birlikte sunulan Windows ses etkinleştirme platformu üzerine inşa edilen yardımcılar kilit üzerinden yanıt verebilir.
-
-> [!NOTE]
-> Etkin bir sorun nedeniyle, kilit Kullanıcı arabiriminin yukarısında çizdiği yardımcılar, tüm desals için WindowService. CloseWindow () uygulamalıdır. Bu, uygulama sonlandırmasına neden olur, ancak teknik bir sorunu azaltır ve yardımcıyı temiz bir durumda tutar. Ayrıca, bir uygulama, kilit sesi etkinleştirmesinin üzerinde etkin hale geldiğinde temiz durumu korumak için, Cihaz kilitliyken kilit durumu değişikliklerini ve WindowService. CloseWindow () için dinleme yapmanız gerekir.
 
 ### <a name="customer-opt-in"></a>Müşteri katılımı
 
@@ -108,14 +105,14 @@ Bu bölümde, müşterilerin Windows bilgisayarlarını bir dahaki sefer daha ko
 - **Yukarıdaki kilidi gösteren tüm Yardımcısı** , yardımcıyı engelleyen sağ üst köşedeki bir X içermelidir.
 - **Herhangi bir tuşa basmak, yardımcı uygulamasını da kapatması gerekir**. Klavye girişi, müşterinin oturum açmak istediği geleneksel bir kilit uygulaması sinyaldir. Bu nedenle, herhangi bir klavye/metin girişinin uygulamaya yönlendirilmemelidir. Bunun yerine, klavye girişi algılandığında uygulamanın kendini kapatması gerekir, böylece müşteri cihazlarıyla kolayca oturum açabilir.
 - **Ekran kapalıysa, uygulamanın kendi kendine kapatması gerekir.** Böylece, müşterinin bir sonraki BILGISAYARı kullanması, oturum açma ekranının hazırlanmasını ve bekleme süresini sağlar.
-- Uygulama &quot;kullanımda&quot;ise kilit üzerinde devam edebilir. &quot;&quot; kullanımda herhangi bir giriş veya çıktı oluşturur. Örneğin, müzik veya video akışı yaparken uygulama kilidin üzerine devam edebilir. &quot;Takip et&quot; ve diğer çoklu açma iletişim kutusu adımlarının, uygulamayı kilidin üzerinde tutmaya izin verilir.
+- Uygulama &quot; kullanımda ise &quot; kilit üzerinde devam edebilir. &quot;kullanımda &quot; herhangi bir giriş veya çıktı oluşturur. Örneğin, müzik veya video akışı yaparken uygulama kilidin üzerine devam edebilir. &quot;Takip et &quot; ve diğer çoklu açma iletişim kutusu adımlarının, uygulamayı kilidin üzerinde tutmaya izin verilir.
 - **Uygulamanın eksik olması üzerinde uygulama ayrıntıları** [Yukarıdaki kilit uygulama kılavuzunda](windows-voice-assistants-implementation-guide.md#closing-the-application)bulunabilir.
 
 ![Etkinleştirmeden önce Windows 'da sesli yardımcının ekran görüntüsü](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
 
 ![Etkinleştirmeden önce Windows 'da sesli yardımcının ekran görüntüsü](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
 
-### <a name="privacy-amp-security-considerations-above-lock"></a>Kilit &amp; üzerinde gizlilik güvenliği konuları
+### <a name="privacy-amp-security-considerations-above-lock"></a>&amp;Kilit üzerinde gizlilik güvenliği konuları
 
 Birçok bilgisayar taşınabilir ancak her zaman müşteri erişim dahilinde değildir. Bunlar, diğer kişilerin fiziksel erişimi olduğu otel odaları, uçak veya çalışma alanları için kısa bir süre içinde olabilir. Kilidin üzerinde etkinleştirilmiş yardımcılar hazırlanmamışsa, bu, bu, yani &quot; [kapalı MAID](https://en.wikipedia.org/wiki/Evil_maid_attack) &quot; saldırılarına maruz kalabilir.
 
@@ -127,9 +124,9 @@ Bu nedenle, yardımcılar deneyim güvende tutmaya yardımcı olmak için bu bö
 
 | **Action sınıfı** | **Açıklama** | **Örnekler (tamamlanmamış bir liste değil)** |
 | --- | --- | --- |
-| Kimlik doğrulaması olmadan güvenli | Genel amaçlı bilgiler veya temel uygulama komutu ve denetimi | &quot;Saat kaç? &quot;, &quot;Sonraki parçayı oynat&quot; |
-| Konuşmacı KIMLIĞIYLE güvenli | Kimliğe bürünme riski, kişisel bilgiler görüntülenir. | &quot;Sonraki randevumu ne&#39;? &quot;, &quot;Alışveriş listemi&quot;gözden geçirin &quot;, çağrıyı yanıtlayın&quot; |
-| Yalnızca Windows kimlik doğrulamasından sonra güvenli | Bir saldırganın müşteriye zarar vermek için kullanabileceği yüksek riskli eylemler | &quot;Daha fazla Market satın&quot;alma &quot;, (önemli) randevumu&quot;silme &quot;, (Ortalama) kısa mesaj gönderme&quot;, &quot;(nefarli) Web sayfası başlatma&quot; |
+| Kimlik doğrulaması olmadan güvenli | Genel amaçlı bilgiler veya temel uygulama komutu ve denetimi | &quot;Ne zaman? &quot; , &quot; sonraki parçayı çal&quot; |
+| Konuşmacı KIMLIĞIYLE güvenli | Kimliğe bürünme riski, kişisel bilgiler görüntülenir. | &quot;Sonraki randevumın ne&#39;? &quot; , &quot; alışveriş listemi gözden geçirin &quot; , &quot; çağrıyı yanıtlayın&quot; |
+| Yalnızca Windows kimlik doğrulamasından sonra güvenli | Bir saldırganın müşteriye zarar vermek için kullanabileceği yüksek riskli eylemler | &quot;Daha fazla Market satın alma &quot; , &quot; (önemli) randevumu silme, ( &quot; &quot; Ortalama) kısa mesaj gönderme &quot; , &quot; (nefarli) Web sayfası başlatma&quot; |
 
 Contoso söz konusu olduğunda, genel stok bilgileriyle ilgili genel bilgiler kimlik doğrulaması olmadan güvenlidir. Sahip olunan paylaşımların sayısı gibi müşteriye özgü bilgiler, konuşmacı KIMLIĞIYLE güvende olabilir. Ancak, satın alma veya satış stokları Windows kimlik doğrulaması olmadan hiçbir şekilde izin vermemelidir.
 
