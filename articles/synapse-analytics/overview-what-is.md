@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c458b1c04a7f3be1a43d725591426e619286b7d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0f34b853728c91d9e3c6e32396c0f7eb427af101
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587893"
+ms.locfileid: "83656215"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Azure SYNAPSE Analytics (çalışma alanları önizlemesi) nedir?
 
@@ -63,7 +63,7 @@ Azure SYNAPSE, SQL ve Spark ile birlikte kullanma arasındaki geleneksel teknolo
 
 Azure SYNAPSE, aynı veri tümleştirme altyapısı ve deneyimleriyle Azure Data Factory ile yerleşik olarak sunulur ve ayrı bir düzenleme altyapısı kullanmadan zengin veri işlem hatları oluşturmanıza olanak sağlar.
 
-* SYNAPSE ve 85 + şirket içi veri kaynakları arasında veri taşıma
+* Verileri Azure SYNAPSE ile 90 + şirket içi veri kaynakları arasında taşıma
 * Not defterlerini, işlem hatlarını, Spark işlerini, SQL betikleri, saklı yordamları düzenleyin
 * Veri akışı etkinlikleri ile kod ücretsiz ETL
 
@@ -87,6 +87,6 @@ Azure SYNAPSE, kuruluşların analiz kaynaklarını yönetmesi, kullanımı ve e
 
 * [Çalışma alanı oluşturma](quickstart-create-workspace.md)
 * [SYNAPSE Studio 'Yu kullanma](quickstart-synapse-studio.md)
-* [SQL havuzu oluşturma](quickstart-create-sql-pool.md)
+* [SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md)
 * [İsteğe bağlı SQL kullanma](quickstart-sql-on-demand.md)
-* [Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool.md)
+* [Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool-portal.md)

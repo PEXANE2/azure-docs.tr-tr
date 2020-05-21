@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 3933edff3730b9c16ea3c129890c1a7d66cf5215
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fa1ce8516223b725c1efcb7e27d4726bbadfe62e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117946"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655059"
 ---
-# <a name="enhance-data-factory-security-and-configure-customer-managed-keys-with-azure-key-vault"></a>Data Factory güvenliği geliştirin ve müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırın
+# <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla Azure Data Factory şifreleyin
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -25,7 +25,7 @@ Azure Data Factory, varlık tanımları, çalışma sırasında önbelleğe alı
 Müşteri tarafından yönetilen anahtarları depolamak için Azure Key Vault gereklidir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Anahtar Kasası ve Data Factory aynı Azure Active Directory (Azure AD) kiracısında ve aynı bölgede olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/general/overview.md)
 
 > [!NOTE]
-> Şimdilik, müşteri tarafından yönetilen anahtar yalnızca boş bir Data Factory yapılandırılabilir: bağlı hizmet yok, işlem hattı yok, veri kümesi yok, hiçbir şey yok. Fabrika oluşturulduktan sonra müşterinin yönettiği anahtarı etkinleştirmeyi düşünün.
+> Müşteri tarafından yönetilen anahtar yalnızca boş bir veri fabrikasında yapılandırılabilir. Data Factory, bağlı hizmetler, işlem hatları ve veri akışları gibi kaynaklar içeremez. Üretici oluşturulduktan sonra müşterinin yönettiği anahtarı etkinleştirmeniz önerilir.
 
 ## <a name="about-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlar hakkında
 
@@ -54,13 +54,13 @@ Azure portal aracılığıyla yeni bir Azure Key Vault oluşturuyorsanız, __ge�
 
   ![Ekran görüntüsü Key Vault oluşturulduktan sonra geçici silme ve Temizleme korumasını etkinleştirir](media/quickstart-enable-customer-managed-key/01-enable-purge-protection.png)
 
-### <a name="grant-data-factory-access-to-key-vault"></a>Key Vault Data Factory erişim izni verin
+### <a name="grant-data-factory-access-to-azure-key-vault"></a>Azure Key Vault Data Factory erişim izni verin
 
 Azure Key Vault ve Azure Data Factory aynı Azure Active Directory (Azure AD) kiracısında ve _aynı bölgede_bulunduğundan emin olun. Azure Key Vault Access Control 'tan, Data Factory 'nin Yönetilen Hizmet Kimliği (MSI) izinlerini şu izinlerle verin: _alma_, _sarmalama_ve _sarmalama tuşu_. Bu izinler, Data Factory ' de müşteri tarafından yönetilen anahtarları etkinleştirmek için gereklidir.
 
   ![Ekran görüntüsü Key Vault Data Factory erişimi etkinleştirir](media/quickstart-enable-customer-managed-key/02-access-policy-factory-msi.png)
 
-### <a name="generate-or-upload-customer-managed-key-to-key-vault"></a>Key Vault için müşteri tarafından yönetilen anahtar oluştur veya karşıya yükle
+### <a name="generate-or-upload-customer-managed-key-to-azure-key-vault"></a>Azure Key Vault için müşteri tarafından yönetilen anahtar oluştur veya karşıya yükle
 
 Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Data Factory şifreleme ile yalnızca 2048 bitlik RSA anahtarları desteklenir. Daha fazla bilgi için bkz. [anahtarlar, gizlilikler ve sertifikalar hakkında](../key-vault/general/about-keys-secrets-certificates.md).
 
@@ -68,7 +68,7 @@ Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında sakla
 
 ## <a name="enable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları etkinleştir
 
-1. Data Factory boş olduğundan emin olun: bağlı hizmet yok, işlem hattı yok ve veri ayarlanmadı, hiçbir şey yok. Şimdilik, müşteri tarafından yönetilen anahtarı boş olmayan bir fabrikada dağıtmak hataya neden olur.
+1. Data Factory boş olduğundan emin olun. Data Factory, bağlı hizmetler, işlem hatları ve veri akışları gibi kaynaklar içeremez. Şimdilik, müşteri tarafından yönetilen anahtarı boş olmayan bir fabrikada dağıtmak hataya neden olur.
 
 1. Azure portal anahtar URI 'sini bulmak için Azure Key Vault ' a gidin ve anahtarlar ayarını seçin. İstenen anahtarı seçin ve ardından sürümlerini görüntülemek için anahtara tıklayın. Ayarları görüntülemek için bir anahtar sürüm seçin
 

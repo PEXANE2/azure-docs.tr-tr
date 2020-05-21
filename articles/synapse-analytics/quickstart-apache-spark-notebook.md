@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 27ec09f1286f4e7999db56acdedaba1a37122aad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592959"
+ms.locfileid: "83656185"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark Havuzu (Önizleme) oluşturma
 
@@ -25,11 +25,11 @@ Bu hızlı başlangıçta, Web araçlarını kullanarak Azure SYNAPSE 'de Apache
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE Analytics çalışma alanı](quickstart-create-workspace.md)
-- [Apache Spark havuzu](quickstart-create-apache-spark-pool.md)
+- [Apache Spark havuzu](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -133,7 +133,9 @@ Yapılandırılmış Sorgu Dili (SQL), verileri sorgulamak ve tanımlamak için 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Azure SYNAPSE, verilerinizi Azure Data Lake Storage kaydeder. Bir Spark örneğinin kullanımda olmadığında kapanmasına güvenle izin verebilirsiniz. Bir Azure SYNAPSE Apache Spark havuzu, kullanımda olmadığında bile çalıştığı sürece ücretlendirilirsiniz. Havuzun ücretleri depolama ücretinden çok daha fazla. Bu nedenle, Spark örneklerinin kullanımda olmadıkları sırada kapatılmasını sağlamak için ekonomik bir fikir verir.
+Azure SYNAPSE, verilerinizi Azure Data Lake Storage kaydeder. Bir Spark örneğinin kullanımda olmadığı bir şekilde kapatılmasını güvenle sağlayabilirsiniz. Bir Azure SYNAPSE Apache Spark havuzu, kullanımda olmadığında bile çalıştığı sürece ücretlendirilirsiniz. 
+
+Havuzun ücretleri depolama ücretinden çok daha fazla olduğundan, Spark örneklerinin kullanımda olmadıkları sırada kapatılmasını sağlamak için ekonomik bir fikir verir.
 
 Spark örneğinin kapatıldığından emin olmak için, bağlı olan tüm oturumları (Not defterleri) sonlandırın. Apache Spark havuzunda belirtilen **boşta kalma süresine** ulaşıldığında havuz kapanır. Not defteri 'nin altındaki durum çubuğundan **oturumu bitir** ' i de seçebilirsiniz.
 

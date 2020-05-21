@@ -1,44 +1,49 @@
 ---
-title: Azure Automation’a genel bakış
-description: Azure Otomasyonu'nu altyapı ve uygulamaların yaşam döngüsünü otomatikleştirmek için kullanmayı öğrenin.
+title: Azure Otomasyonu'na giriş
+description: Bu makalede, Azure Otomasyonu 'nun ne olduğu ve altyapı ve uygulamaların yaşam döngüsünü otomatik hale getirmek için nasıl kullanılacağı açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
 keywords: Azure Otomasyonu, DSC, PowerShell, durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, DSC, envanter, runbook 'lar, Python, grafik
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 8ee8fd4d9a81746be7b65aeb6410691a5e3aea96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5e9d680e2f7d4a0ed3439d5acb6106fa1415aec1
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010248"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712783"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Otomasyonu'na giriş
-
-Bu makale, Azure Otomasyonu'na ilişkin kısa bir genel bakış sağlar ve bazı sık sorulan soruları yanıtlar. Özellikler hakkında daha fazla bilgi almak için bu genel bakış içindeki bağlantıları ziyaret edin.
-
-## <a name="about-azure-automation"></a>Azure Otomasyonu hakkında
 
 Azure Otomasyonu, Azure ve Azure dışı ortamlarınızda tutarlı Yönetimi destekleyen bulut tabanlı bir Otomasyon ve yapılandırma hizmeti sunar. İşlem otomasyonu, yapılandırma yönetimi, güncelleştirme yönetimi, paylaşılan yetenekler ve heterojen özelliklerden oluşur. Otomasyon, dağıtım, işlemler ve iş yüklerinin ve kaynakların yetkisini alma sırasında komple denetim sağlar.
 
 ![Otomasyon Özellikleri](media/automation-overview/automation-overview.png)
 
-## <a name="process-automation"></a>Süreç otomasyonu
+## <a name="process-automation"></a>Süreç Otomasyonu
 
 Azure Otomasyonu 'nda işlem otomasyonu, sık sık, zaman alan ve hataya açık bulut yönetim görevlerini otomatikleştirmenizi sağlar. Bu hizmet, iş değeri ekleyen işe odaklanmanıza yardımcı olur. Ayrıca hataları azaltıp verimliliği artırarak, işletim maliyetlerini azaltmanıza da katkıda bulunur. İşlem otomasyonu işletim ortamı, [Azure Otomasyonu 'Nda runbook yürütme](automation-runbook-execution.md)bölümünde ayrıntılı olarak açıklanmıştır.
 
 Süreç otomasyonu, Azure hizmetlerinin ve uçtan uca işlemlerinizi dağıtmak, yapılandırmak ve yönetmek için gereken diğer genel sistemler tümleştirmesini destekler. Hizmet [runbook 'ları](automation-runbook-types.md) grafik olarak, PowerShell 'de veya Python kullanarak yazmanıza izin verir. [Karma runbook çalışanı](automation-hybrid-runbook-worker.md)kullanarak, şirket içi ortamlarda düzenleme yaparak yönetimi birleştirebilirsiniz. [Web kancaları](automation-webhooks.md) , ITSM, DevOps ve izleme sistemlerinden Otomasyon tetikleyerek istekleri karşılamanız ve sürekli teslim ve işlemler sağlar. 
 
-## <a name="configuration-management"></a>Yapılandırma yönetimi
+## <a name="configuration-management"></a>Yapılandırma Yönetimi
 
-Azure Otomasyonu [Durum Yapılandırması](automation-dsc-overview.md) , kurumsal ortamlar için hizmetler sağlayan, PowerShell istenen durum YAPıLANDıRMASı (DSC) için bulut tabanlı bir çözümdür. Bu özelliği kullanarak DSC kaynaklarınızı Azure Otomasyonu 'nda yönetebilir ve Azure buluttaki bir DSC çekme sunucusundan sanal veya fiziksel makinelere yapılandırma uygulayabilirsiniz. Windows veya Linux 'ta, bulutta veya şirket içinde bulunan fiziksel ve sanal makinelerde makine yapılandırmalarının izlenmesini ve otomatik olarak güncelleştirilmesini sağlayabilirsiniz. Envanter desteği, Konuk kaynakları yüklü uygulamalar ve diğer yapılandırma öğeleri hakkında görünürlük için sorgulamanızı sağlar.
- 
-Azure Otomasyonu durum yapılandırma hizmeti, zengin raporlama ve arama özellikleri sağlar. Bu özellikleri, bir işletim sistemi içinde nelerin yapılandırıldığına ilişkin ayrıntılı bilgileri bulmak için kullanabilirsiniz. Hizmet, istenmeyen değişiklikleri tanılamanıza ve uyarı almanıza yardımcı olması için ortamınızdaki hizmetler, Daemon 'ları, yazılım, kayıt defteri ve dosyalar arasında değişiklik izlemeyi destekler. Önemli bir ilgili özellik, büyük olayların (düğümler, kendilerine atanan yapılandırmalardan farklılık göstermesi durumunda verilen olaylar) raporlanıyor. 
+Azure Otomasyonu 'nda yapılandırma yönetimi iki özelliğe erişim sağlar:
+
+* Değişiklik İzleme ve Stok
+* Azure Otomasyonu State Configuration
+
+### <a name="change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok
+
+Değişiklik İzleme ve envanter, sanal makine ve sunucu altyapısı değişikliklerini izlemenize olanak tanımak için değişiklik izleme ve envanter işlevlerini birleştirir. Hizmet, istenmeyen değişiklikleri tanılamanıza ve uyarı almanıza yardımcı olması için ortamınızdaki hizmetler, Daemon 'ları, yazılım, kayıt defteri ve dosyalar arasında değişiklik izlemeyi destekler. Envanter desteği, Konuk kaynakları yüklü uygulamalar ve diğer yapılandırma öğeleri hakkında görünürlük için sorgulamanızı sağlar. Bu özelliğin ayrıntıları için bkz. [değişiklik izleme ve Inventory](change-tracking.md).
+
+### <a name="azure-automation-state-configuration"></a>Azure Otomasyonu State Configuration
+
+[Azure Otomasyonu durum yapılandırması](automation-dsc-overview.md) , kurumsal ortamlar için hizmetler sağlayan, PowerShell istenen durum YAPıLANDıRMASı (DSC) için bulut tabanlı bir özelliktir. Bu özelliği kullanarak DSC kaynaklarınızı Azure Otomasyonu 'nda yönetebilir ve Azure buluttaki bir DSC çekme sunucusundan sanal veya fiziksel makinelere yapılandırma uygulayabilirsiniz. 
 
 ## <a name="update-management"></a>Güncelleştirme yönetimi
 
-Azure Otomasyonu, karma ortamlarda Windows ve Linux sistemlerine yönelik [güncelleştirme yönetimi](automation-update-management.md) çözümünü içerir. Bu çözümle, Azure ve diğer bulutlarda ve şirket içinde güncelleştirme uyumluluğuna ilişkin görünürlük edinirsiniz. Güncelleştirme yönetimi, güncelleştirmeleri tanımlanan bir bakım penceresi içinde yüklemeyi düzenleyen zamanlanmış dağıtımlar oluşturmanıza olanak sağlar. Bir güncelleştirmenin bir makineye yüklenmesi gerekmemesi durumunda, güncelleştirme yönetimi özelliklerini kullanarak bir dağıtımdan hariç bırakabilirsiniz.
+Azure Otomasyonu, karma ortamlarda Windows ve Linux sistemleri için [güncelleştirme yönetimi](automation-update-management.md) özelliğini içerir. Güncelleştirme Yönetimi, Azure ve diğer bulutlarda ve şirket içinde güncelleştirme uyumluluğuna ilişkin görünürlük sağlar. Özelliği, güncelleştirmelerin tanımlı bir bakım penceresi içinde yüklenmesini düzenleyen zamanlanmış dağıtımlar oluşturmanıza olanak sağlar. Bir güncelleştirme bir makineye yüklenmemelidir, bir dağıtımdan dışlamak için Güncelleştirme Yönetimi işlevselliğini kullanabilirsiniz.
 
 ## <a name="shared-capabilities"></a>Paylaşılan özellikler
 
@@ -63,7 +68,7 @@ Azure Otomasyonu, Otomasyon hesabına ve kaynaklarına erişimi düzenlemek içi
 
 ### <a name="source-control-integration"></a>Kaynak denetimi tümleştirmesi
 
-Azure Otomasyonu, [kaynak denetimi tümleştirmesine](source-control-integration.md)izin verir. Bu özellik, yapılandırmayı runbook 'ların veya yapılandırmaların bir kaynak denetim sistemine denetlenebildiği kod olarak yükseltir.
+Azure Otomasyonu, [kaynak denetimi tümleştirmesini](source-control-integration.md)destekler. Bu özellik, yapılandırmayı runbook 'ların veya yapılandırmaların bir kaynak denetim sistemine denetlenebildiği kod olarak yükseltir.
 
 ## <a name="heterogeneous-support-windows-and-linux"></a>Heterojen destek (Windows ve Linux)
 
@@ -85,7 +90,7 @@ Azure Otomasyonu, altyapınızın ve uygulamalarınızın yaşam döngüsü boyu
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
-## <a name="pricing-for-automation"></a>Otomasyon fiyatlandırması
+## <a name="pricing-for-azure-automation"></a>Azure Otomasyonu fiyatlandırması
 
 [Fiyatlandırma](https://azure.microsoft.com/pricing/details/automation/) sayfasında Azure Otomasyonu ile ilişkili fiyatları gözden geçirebilirsiniz.
 

@@ -9,16 +9,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f90021e35b4089547b236d01b10820f6c06bd0cc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 039fdda4ab8fe636c1eab926c477aea420b59de8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195159"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647492"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) içinde dış tablolar oluşturma ve kullanma
 
-Bu bölümde, SQL isteğe bağlı (Önizleme) içinde dış tabloları oluşturmayı ve kullanmayı öğreneceksiniz. Dış tablolar, SQL isteğe bağlı SQL 'de dış verilere erişimi denetlemek istediğinizde ve Power BI gibi araçlar kullanmak istiyorsanız, isteğe bağlı SQL ile birlikte yararlı olur. Dış tablolar, iki tür depolama alanına erişebilir:
+Bu bölümde, SQL isteğe bağlı (Önizleme) içinde [dış tabloları](develop-tables-external-tables.md) oluşturmayı ve kullanmayı öğreneceksiniz. Dış tablolar, SQL isteğe bağlı SQL 'de dış verilere erişimi denetlemek istediğinizde ve Power BI gibi araçlar kullanmak istiyorsanız, isteğe bağlı SQL ile birlikte yararlı olur. Dış tablolar, iki tür depolama alanına erişebilir:
 - Kullanıcıların ortak depolama dosyalarına erişebileceği ortak depolama.
 - Kullanıcıların SAS kimlik bilgilerini, Azure AD kimliğini veya SYNAPSE çalışma alanının yönetilen kimliğini kullanarak depolama dosyalarına erişebileceği korumalı depolama.
 
@@ -61,7 +61,11 @@ Bu makaledeki sorgular, örnek veritabanınızda yürütülecektir ve bu nesnele
 
 ## <a name="create-an-external-table-on-protected-data"></a>Korumalı verilerde dış tablo oluşturma
 
-Azure depolama hesabındaki verilere erişen, Azure AD kimlik veya SAS anahtarı olan kullanıcılara erişim sağlayan dış tablolar oluşturabilirsiniz. Dış tabloları, normal SQL Server dış tablolar oluşturduğunuz şekilde oluşturabilirsiniz. Aşağıdaki sorgu, veri kaynağı kullanılarak başvuruda bulunulan ve çağrılan veritabanı kapsamlı kimlik bilgileriyle korunan SynapseSQL demo Azure Storage hesabından *popülasyon. csv* dosyasını okuyan bir dış tablo oluşturur `sqlondemanddemo` `sqlondemand` . Veri kaynağı ve veritabanı kapsamlı kimlik bilgileri [Kurulum komut](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)dosyasında oluşturulur.
+Azure depolama hesabındaki verilere erişen, Azure AD kimlik veya SAS anahtarı olan kullanıcılara erişim sağlayan dış tablolar oluşturabilirsiniz. Dış tabloları, normal SQL Server dış tablolar oluşturduğunuz şekilde oluşturabilirsiniz. 
+
+Aşağıdaki sorgu, veri kaynağı kullanılarak başvurulan ve çağrılan veritabanı kapsamlı kimlik bilgileriyle korunan SynapseSQL demo Azure Storage hesabından *popülasyon. csv* dosyasını okuyan bir dış tablo oluşturur `sqlondemanddemo` `sqlondemand` . 
+
+Veri kaynağı ve veritabanı kapsamlı kimlik bilgileri [Kurulum komut](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)dosyasında oluşturulur.
 
 > [!NOTE]
 > Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz. 
@@ -81,7 +85,6 @@ WITH (
     DATA_SOURCE = sqlondemanddemo,
     FILE_FORMAT = QuotedCSVWithHeaderFormat
 );
-GO
 ```
 
 ## <a name="create-an-external-table-on-public-data"></a>Ortak verilerde dış tablo oluşturma
@@ -105,9 +108,9 @@ CREATE EXTERNAL TABLE Taxi (
          FILE_FORMAT = ParquetFormat
 );
 ```
-## <a name="use-a-external-table"></a>Dış tablo kullan
+## <a name="use-an-external-table"></a>Dış tablo kullan
 
-Sorgularınızdaki dış tabloları, SQL Server sorgularda kullandığınız şekilde kullanabilirsiniz.
+Sorgularınızdaki [dış tabloları](develop-tables-external-tables.md) , SQL Server sorgularda kullandığınız şekilde kullanabilirsiniz.
 
 Aşağıdaki sorgu, önceki bölümde oluşturduğumuz *popülasyon* dış tablosunu kullanarak bunu gösterir. Ülke adlarını, popülasyon 2019 ' de azalan sırada döndürür.
 

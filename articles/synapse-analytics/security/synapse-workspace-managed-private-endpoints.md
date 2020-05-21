@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08c6610541d987cddd7cf2aeb71c526cb2359598
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dc748260c6e71eaaa469defb227d5cc2748a1345
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423687"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645317"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>SYNAPSE yönetilen özel uç noktaları (Önizleme)
 
@@ -30,8 +30,9 @@ Azure SYNAPSE özel bağlantıları destekler. Özel bağlantı, Azure hizmetler
 
 >[!IMPORTANT]
 >Yönetilen özel uç noktalar yalnızca yönetilen bir çalışma alanı VNet 'i olan Azure SYNAPSE çalışma alanlarında desteklenir.
+
 >[!NOTE]
->Tüm Azure veri kaynaklarınıza bağlanmak için yönetilen özel uç noktalar oluşturmanız önerilir. >yönetilen çalışma alanı VNet 'ten gelen tüm giden trafik gelecekte engellenir.
+>Yönetilen özel uç noktalar hariç yönetilen çalışma alanı VNet 'ten giden tüm trafik gelecekte engellenir. Çalışma alanı dışındaki tüm Azure veri kaynaklarınıza bağlanmak için yönetilen özel uç noktalar oluşturmanız önerilir. 
 
 Azure SYNAPSE 'de yönetilen özel uç nokta oluşturduğunuzda bir "bekleyen" durumunda özel bir uç nokta bağlantısı oluşturulur. Bir onay iş akışı başlatılır. Özel bağlantı kaynağı sahibi bağlantıyı onaylaması veya reddetmekten sorumludur.
 
@@ -47,7 +48,7 @@ Bir çalışma alanı oluşturulduğunda Azure SYNAPSE, SQL havuzunda ve bu çal
 
 Bu iki yönetilen özel uç nokta Azure SYNAPSE Studio 'da listelenmiştir. Sol gezinti bölmesinde **Yönet** ' i seçin ve ardından Studio 'da görmek Için **yönetilen sanal ağlar** ' ı seçin.
 
-SQL havuzunu hedefleyen yönetilen özel uç nokta *SYNAPSE-WS-SQL-\<-çalışmaadı\> * olarak adlandırılır ve isteğe bağlı SQL 'i hedefleyen bir tane *SYNAPSE-WS-sqlondemand--\<çalışmaadı\>* olarak adlandırılır.
+SQL havuzunu hedefleyen yönetilen özel uç nokta *SYNAPSE-WS-SQL-- \< çalışmaadı \> * olarak ADLANDıRıLıR ve isteğe bağlı SQL 'i hedefleyen bir tane *SYNAPSE-WS-sqlondemand-- \< çalışmaadı \> *olarak adlandırılır.
 ![SQL havuzu ve isteğe bağlı SQL için yönetilen özel uç noktalar](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
 Bu iki yönetilen özel uç nokta, Azure SYNAPSE çalışma alanınızı oluştururken sizin için otomatik olarak oluşturulur. Bu iki yönetilen özel uç nokta için ücret ödemeniz gerekmez.

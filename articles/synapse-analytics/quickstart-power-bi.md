@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/29/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 83e9e802d2150ee7f43f01e9f6d6827ef3acfcdd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c5b86319752fc70e754e34b787bbdc12f18636f0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204757"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656038"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-analytics-workspace-preview"></a>Hızlı başlangıç: Power BI çalışma alanını SYNAPSE Analytics çalışma alanına bağlama (Önizleme)
 
@@ -70,4 +70,4 @@ Yeni raporlar **+** , **Geliştir** sekmesinin en üstünde tıklatılarak oluş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sonra, [Azure depolama 'da depolanan dosyalarda Power BI rapor oluşturabilirsiniz](sql/tutorial-connect-power-bi-desktop.md)
+[Azure depolama 'da depolanan dosyalarda Power BI rapor oluşturma](sql/tutorial-connect-power-bi-desktop.md)hakkında daha fazla bilgi edinin.

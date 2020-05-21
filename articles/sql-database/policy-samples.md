@@ -1,18 +1,18 @@
 ---
 title: Azure SQL veritabanı için yerleşik ilke tanımları
 description: Azure SQL veritabanı için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 04/30/2020
+ms.date: 05/13/2020
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 74940313e0618e77358a522080b29dffb8b4c7eb
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 84ea8ac918a524e7cec90395ecf975151ba6a125
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983865"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657788"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-sql-database"></a>Azure SQL veritabanı için Azure Ilkesi yerleşik ilke tanımları
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2d5d508afe81975cbeda448b497a098e8a3bbcf3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 83410d5945a7fe462afa86a9d217ee7e005550f4
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589287"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696908"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için depolama hesabı erişimini denetleme (Önizleme)
 
@@ -99,7 +99,7 @@ Verilere erişmeden önce Azure depolama yöneticisinin verilere erişim için y
 
 ### <a name="anonymous-access"></a>[Anonim erişim](#tab/public-access)
 
-[Anonim erişime izin](/azure/storage/blobs/storage-manage-access-to-resources.md)veren Azure depolama hesaplarına yerleştirilmiş genel kullanıma açık dosyalara erişebilirsiniz.
+[Anonim erişime izin](/azure/storage/blobs/storage-manage-access-to-resources)veren Azure depolama hesaplarına yerleştirilmiş genel kullanıma açık dosyalara erişebilirsiniz.
 
 ---
 

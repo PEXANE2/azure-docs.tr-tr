@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 059e77c063d00ef850a171507ca2e06422ade426
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 514694dc2e3f06db2fb80f6b3ba0106343be11d8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82191779"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658510"
 ---
 # <a name="azure-synapse-analytics-preview-release-notes"></a>Azure SYNAPSE Analytics (Önizleme) sürüm notları
 
@@ -29,15 +29,15 @@ Bu makalede, Azure SYNAPSE Analytics (çalışma alanları) ile ilgili sınırla
 - Sorun ve müşteri etkisi: SDK tarafından oluşturulan çalışma alanları SYNAPSE Studio 'Yu başlatamıyor
 
 - Geçici çözüm: aşağıdaki adımları uygulayın: 
-  1.    Çalıştırarak `az synapse workspace create`çalışma alanı oluşturun.
-  2.    Çalıştırarak `$identity=$(az synapse workspace show --name {workspace name}  --resource-group {resource group name} --query "identity.principalId")`yönetilen kimlik kimliğini ayıklayın.
-  3.    Çalışma alanını, çalıştırarak ` az role assignment create --role "Storage Blob Data Contributor" --assignee-object-id {identity } --scope {storage account resource id}`depolama hesabına rol olarak ekleyin.
-  4.    Çalıştırarak ` az synapse firewall-rule create --name allowAll --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255 `güvenlik duvarı kuralı ekleyin.
+  1.    Çalıştırarak çalışma alanı oluşturun `az synapse workspace create` .
+  2.    Çalıştırarak yönetilen kimlik kimliğini ayıklayın `$identity=$(az synapse workspace show --name {workspace name}  --resource-group {resource group name} --query "identity.principalId")` .
+  3.    Çalışma alanını, çalıştırarak depolama hesabına rol olarak ekleyin ` az role assignment create --role "Storage Blob Data Contributor" --assignee-object-id {identity } --scope {storage account resource id}` .
+  4.    Çalıştırarak güvenlik duvarı kuralı ekleyin ` az synapse firewall-rule create --name allowAll --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255 ` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Çalışma alanı oluşturma](quickstart-create-workspace.md)
 * [SYNAPSE Studio 'Yu kullanma](quickstart-synapse-studio.md)
-* [SQL havuzu oluşturma](quickstart-create-sql-pool.md)
+* [SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md)
 * [İsteğe bağlı SQL kullanma](quickstart-sql-on-demand.md)
-* [Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool.md)
+* [Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool-portal.md)

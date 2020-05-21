@@ -1,30 +1,30 @@
 ---
 title: 'Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Python uygulaması oluşturma'
 description: Azure Cosmos DB SQL API'sine bağlanmak ve sorgu göndermek için kullanabileceğiniz bir Python kodu örneği sunar
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 03/09/2020
-ms.author: sngun
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 10247e22b3fbe1250a15b06a0cce974905ca6b7f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 674b9d132f96b8807355955949463c000565bb38
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78942629"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654603"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Python uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -33,8 +33,8 @@ Bu hızlı başlangıçta, Azure portal ve Visual Studio Code içinden GitHub 'd
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bir URI `https://localhost:8081` ve anahtar `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`ile de kullanabilirsiniz.
-- İçinde `python` çalıştırılabilir ile `PATH` [Python 3.6 +](https://www.python.org/downloads/).
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bir URI ve anahtar ile de kullanabilirsiniz `https://localhost:8081` `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
+- İçinde çalıştırılabilir ile [Python 3.6 +](https://www.python.org/downloads/) `python` `PATH` .
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Visual Studio Code Için Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview).
 - [Git](https://www.git-scm.com/downloads). 
@@ -47,7 +47,7 @@ Bu hızlı başlangıçta, Azure portal ve Visual Studio Code içinden GitHub 'd
 
 Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini aracı 'nı kullanabilirsiniz. 
 
-1. Yeni **Veri Gezgini** > **kapsayıcı**seçin. 
+1. Yeni **Veri Gezgini**  >  **kapsayıcı**seçin. 
     
     **Kapsayıcı Ekle** alanı en sağda görüntülenir, görmek için sağa kaydırmanız gerekebilir.
 
@@ -57,9 +57,9 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
 
     |Ayar|Önerilen değer|Açıklama
     |---|---|---|
-    |**Veritabanı Kimliği**|Görevler|Yeni veritabanınızın adı olarak *Görevler* girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve boşluk içeremez veya sonunda boşluk olamaz `/, \\, #, ?`. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
+    |**Veritabanı Kimliği**|Görevler|Yeni veritabanınızın adı olarak *Görevler* girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve `/, \\, #, ?` boşluk içeremez veya sonunda boşluk olamaz. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
     |**Aktarım hızı**|400|Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.| 
-    |**Kapsayıcı KIMLIĞI**|Öğeler|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.|
+    |**Kapsayıcı KIMLIĞI**|Öğeleri|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.|
     |**Bölüm anahtarı**| /kategori| Bu makalede açıklanan örnek, bölüm anahtarı olarak */category* kullanır.|
     
     Önceki ayarlara ek olarak, kapsayıcı için isteğe bağlı olarak **benzersiz anahtarlar** ekleyebilirsiniz. Bu örnekte bu alanı boş bırakalım. Benzersiz anahtarlar sayesinde geliştiriciler veritabanına bir veri bütünlüğü katmanı ekleyebilir. Bir kapsayıcı oluştururken benzersiz bir anahtar ilkesi oluşturarak, bölüm anahtarı başına bir veya daha fazla değerin benzersizliği olduğundan emin olursunuz. Daha fazla bilgi edinmek için [Azure Cosmos DB'de benzersiz anahtarlar](unique-keys.md) makalesine bakın.
@@ -135,31 +135,31 @@ Aşağıdaki kod parçacıklarının hepsi *cosmos_get_started. Kopyala* dosyas�
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_database_if_not_exists)]
 
-* [Sağlanan aktarım hızı](request-units.md)400 ru/sn ile yeni bir kapsayıcı oluşturulur. Bu özelliğe `lastName` filtre uygulayan etkili sorgular yapabilmemiz için [bölüm anahtarı](partitioning-overview.md#choose-partitionkey)olarak tercih ederiz. 
+* [Sağlanan aktarım hızı](request-units.md)400 ru/sn ile yeni bir kapsayıcı oluşturulur. `lastName`Bu özelliğe filtre uygulayan etkili sorgular yapabilmemiz için [bölüm anahtarı](partitioning-overview.md#choose-partitionkey)olarak tercih ederiz. 
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_container_if_not_exists)]
 
-* Kapsayıcıya bazı öğeler eklenir. Kapsayıcılar, değişen şemaya sahip olabilecek öğelerin (JSON belgeleri) bir koleksiyonudur. Yardımcı yöntemler ```get_[name]_family_item``` , Azure Cosmos DB JSON belgeleri olarak depolanan bir aileyi döndürür.
+* Kapsayıcıya bazı öğeler eklenir. Kapsayıcılar, değişen şemaya sahip olabilecek öğelerin (JSON belgeleri) bir koleksiyonudur. Yardımcı yöntemler, ```get_[name]_family_item``` Azure Cosmos DB JSON belgeleri olarak depolanan bir aileyi döndürür.
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_item)]
 
-* Nokta okuma (anahtar değeri aramaları) `read_item` yöntemi kullanılarak gerçekleştirilir. Her bir işlemin [ru ücreti](request-units.md) yazdırılsın.
+* Nokta okuma (anahtar değeri aramaları) yöntemi kullanılarak gerçekleştirilir `read_item` . Her bir işlemin [ru ücreti](request-units.md) yazdırılsın.
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=read_item)]
 
-* SQL sorgu söz dizimi kullanılarak bir sorgu gerçekleştirilir. WHERE yan tümcesinde bölüm anahtarı değerlerini kullandığımızda Azure Cosmos DB, bu sorguyu ilgili bölümlere etkin bir ```lastName``` şekilde yönlendirerek performansı geliştirir.
+* SQL sorgu söz dizimi kullanılarak bir sorgu gerçekleştirilir. WHERE yan tümcesinde bölüm anahtarı değerlerini kullandığımızda ```lastName``` Azure Cosmos DB, bu sorguyu ilgili bölümlere etkin bir şekilde yönlendirerek performansı geliştirir.
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
    
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-1. Visual Studio Code, **görüntüleme** > **komut paleti**' ni seçin. 
+1. Visual Studio Code, **görüntüleme**  >  **komut paleti**' ni seçin. 
 
 2. Komut isteminde, **Python: Yorumlayıcı Seçin** girip kullanılacak Python sürümün seçin.
 
     Visual Studio Code’daki alt bilgi, seçilen yorumlayıcıyı belirtmek için güncelleştirilir. 
 
-3. Tümleşik **View** > **terminalyi** görüntüle ' yi seçerek Visual Studio Code tümleşik Terminal ' i açın.
+3. Tümleşik **View**  >  **terminalyi** görüntüle ' yi seçerek Visual Studio Code tümleşik Terminal ' i açın.
 
 4. Tümleşik Terminal penceresinde, *Azure-Cosmos-DB-Python-alma-başlatma* klasöründe olduğunuzdan emin olun. Değilseniz, örnek klasörü değiştirmek için aşağıdaki komutu çalıştırın. 
 
@@ -181,7 +181,7 @@ Aşağıdaki kod parçacıklarının hepsi *cosmos_get_started. Kopyala* dosyas�
     python cosmos_get_started.py
     ```
 
-7. Oluşturulan ve kaydedilen yeni öğeleri onaylamak için, Azure Portal **Veri Gezgini** > **AzureSampleFamilyDatabase** > **öğelerini**seçin. Oluşturulan öğeleri görüntüleyin. Örneğin, Andersen ailesi için örnek bir JSON belgesi aşağıda verilmiştir:
+7. Oluşturulan ve kaydedilen yeni öğeleri onaylamak için, Azure Portal **Veri Gezgini**  >  **AzureSampleFamilyDatabase**  >  **öğelerini**seçin. Oluşturulan öğeleri görüntüleyin. Örneğin, Andersen ailesi için örnek bir JSON belgesi aşağıda verilmiştir:
    
    ```json
    {

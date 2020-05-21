@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: 98b0ddf345ebd19e2cd974db3891e88c9f72530d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db28455c47541b49b38ddbbc4d5e83ae20e2279d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79481696"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659167"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: .NET SDK ve Azure Cosmos DB MongoDB için API 'SI ile bir Xamarin. Forms uygulaması oluşturma
 
@@ -23,7 +23,7 @@ ms.locfileid: "79481696"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz.
@@ -84,7 +84,7 @@ Git kullanmak istemiyorsanız [projeyi ZIP dosyası olarak da indirebilirsiniz](
 
 Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz.
 
-Aşağıdaki kod parçacıkları, şu yolda bulunan `MongoService` sınıfından alınır: src/tasklist. Core/Services/MongoService. cs.
+Aşağıdaki kod parçacıkları, şu `MongoService` yolda bulunan sınıfından alınır: src/tasklist. Core/Services/MongoService. cs.
 
 * Mongo İstemcisini başlatın.
     ```cs
@@ -170,10 +170,10 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 3. Portaldan **birincil bağlantı dizesi** değerinizi kopyalayın (kopyala düğmesini kullanarak) ve **APIKeys.cs** dosyanızdaki **ConnectionString** alanının değeri olarak kullanın.
 
-4. Bağlantı `&replicaSet=globaldb` dizesinden kaldır. Bu değeri sorgu dizesinden kaldırdıysanız bir çalışma zamanı hatası alırsınız.
+4. `&replicaSet=globaldb`Bağlantı dizesinden kaldır. Bu değeri sorgu dizesinden kaldırdıysanız bir çalışma zamanı hatası alırsınız.
 
 > [!IMPORTANT]
-> Çalışma zamanı hatasından kaçınmak `&replicaSet=globaldb` için, anahtar/değer çiftini bağlantı dizesinin sorgu dizesinden kaldırmanız gerekir.
+> `&replicaSet=globaldb`Çalışma zamanı hatasından kaçınmak için, anahtar/değer çiftini bağlantı dizesinin sorgu dizesinden kaldırmanız gerekir.
 
 Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz.
 

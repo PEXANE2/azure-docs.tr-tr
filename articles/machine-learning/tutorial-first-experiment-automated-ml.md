@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 03/04/2020
-ms.openlocfilehash: b5a335a3f215ad5883b1b223245ca9d3f9967c3b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8af412fb2660625ffb413052b06d4429d7844e70
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366518"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656522"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Öğretici: Azure Machine Learning otomatik ML ile sınıflandırma modeli oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -23,6 +23,8 @@ ms.locfileid: "80366518"
 Bu öğreticide, Azure Machine Learning otomatik makine öğrenimi arabirimini kullanarak tek bir kod satırı yazmadan temel bir sınıflandırma modeli oluşturmayı öğreneceksiniz. Bu sınıflandırma modeli, bir istemci bir mali kurum ile sabit bir havale 'e abone olurken tahmin edilir.
 
 Otomatik makine öğrenimi sayesinde yoğun zamanda yoğun görevleri otomatik hale getirebilirsiniz. Otomatikleştirilmiş makine öğrenimi, seçtiğiniz başarı ölçümünü temel alarak en iyi modeli bulmanıza yardımcı olmak üzere birçok algoritma ve hiper parametre kombinasyonu üzerinde hızlı bir şekilde yinelenir.
+
+Bir zaman serisi tahmin örneği için bkz. [öğretici: talep tahmini &](tutorial-automated-ml-forecast.md).
 
 Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 
@@ -51,7 +53,7 @@ Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure porta
 
 ## <a name="create-and-run-the-experiment"></a>Deneme oluşturma ve çalıştırma
 
-Aşağıdaki deneme kurulumunu tamamlayıp, tüm beceri seviyelerinin veri bilimi senaryolarına yönelik veri bilimi senaryoları gerçekleştirmek için makine öğrenimi araçları https://ml.azure.com'nı içeren birleştirilmiş bir Web arabirimi olan Azure Machine Learning ile adımları gerçekleştirin. Bu arabirim Internet Explorer tarayıcılarında desteklenmez.
+Aşağıdaki deneme kurulumunu tamamlayıp, https://ml.azure.com tüm beceri seviyelerinin veri bilimi senaryolarına yönelik veri bilimi senaryoları gerçekleştirmek için makine öğrenimi araçları 'nı içeren birleştirilmiş bir Web arabirimi olan Azure Machine Learning ile adımları gerçekleştirin. Bu arabirim Internet Explorer tarayıcılarında desteklenmez.
 
 1. [Azure Machine Learning](https://ml.azure.com)oturum açın.
 
@@ -90,10 +92,10 @@ Aşağıdaki deneme kurulumunu tamamlayıp, tüm beceri seviyelerinin veri bilim
         Alan|Açıklama| Öğretici için değer
         ---|---|---
         Dosya biçimi|Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.| Ted
-        Sınırlayıcı|Düz metin veya diğer veri akışlarında ayrı, bağımsız&nbsp; bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
+        Sınırlayıcı|&nbsp;Düz metin veya diğer veri akışlarında ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
         Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
         Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
-        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Hiçbiri
+        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok
 
     1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. **İleri**’yi seçin.
 
@@ -115,7 +117,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp, tüm beceri seviyelerinin veri bilim
         Alan | Açıklama | Öğretici için değer
         ----|---|---
         İşlem adı |İşlem bağlamını tanımlayan benzersiz bir ad.|Oto ml-işlem
-        Sanal&nbsp;makine&nbsp;boyutu| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
+        Sanal &nbsp; makine &nbsp; boyutu| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
         En az/en fazla düğüm (Gelişmiş ayarlarda)| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
   
         1. İşlem hedefini almak için **Oluştur** ' u seçin. 
@@ -133,14 +135,14 @@ Aşağıdaki deneme kurulumunu tamamlayıp, tüm beceri seviyelerinin veri bilim
         >[!NOTE]
         > Bu öğreticide, yineleme eşiğine göre ölçüm puanı veya en fazla çekirdek ayarlayamayacağız. Ya da algoritmaların test edilmeye engel olursunuz.
    
-        Ek&nbsp;yapılandırma|Açıklama|Öğretici&nbsp;için&nbsp;değer
+        Ek &nbsp; yapılandırma|Açıklama|&nbsp;Öğretici için &nbsp; değer
         ------|---------|---
         Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
-        Otomatik olarak korleştirme| Ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştirme
-        Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Hiçbiri
-        Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim&nbsp;işi&nbsp;süresi (saat): 1 <br> Ölçüm&nbsp;puan&nbsp;eşiği: yok
+        Otomatik olarak korleştirme| Ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştir
+        Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Yok
+        Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim &nbsp; işi &nbsp; süresi (saat): 1 <br> Ölçüm &nbsp; puan &nbsp; eşiği: yok
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 2
-        Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En&nbsp;fazla&nbsp;eşzamanlı yineleme: 5
+        Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 5
         
         **Kaydet**’i seçin.
 
@@ -201,7 +203,7 @@ Dağıtım dosyaları veri ve deneme dosyalarından daha büyüktür, bu nedenle
 
 ### <a name="delete-the-deployment-instance"></a>Dağıtım örneğini silme
 
-Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma\/alanını tutmak istiyorsanız, yalnızca https:/ml.azure.com/konumundaki Azure Machine Learning dağıtım örneğini silin. 
+\/Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma alanını tutmak istiyorsanız, yalnızca https:/ml.Azure.com/konumundaki Azure Machine Learning dağıtım örneğini silin. 
 
 1. [Azure Machine Learning](https://ml.azure.com/)gidin. Çalışma alanınıza gidin ve **varlıklar** bölmesinin sol tarafında **uç noktalar**' ı seçin. 
 
@@ -221,7 +223,8 @@ Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluş
 > [Bir web hizmetini kullanma](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
-+ Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesi. + [korleştirme](how-to-use-automated-ml-for-ml-models.md#featurization)hakkında daha fazla bilgi edinin.
++ Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesi.
++ [Korleştirme](how-to-use-automated-ml-for-ml-models.md#featurization)hakkında daha fazla bilgi edinin.
 + [Veri profili oluşturma](how-to-use-automated-ml-for-ml-models.md#profile)hakkında daha fazla bilgi edinin.
 
 

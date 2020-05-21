@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 535cf95216cca210b5add5ca22cd6e5b1b997541
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 3177de6816dd690514620098e79db844077fbaf6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779032"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655435"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Öğretici: Python SDK ile ilk ML denemenizi oluşturmaya başlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,9 @@ Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure porta
 
 Bu öğretici, bir yüklemeden ücretsiz ve önceden yapılandırılmış bir deneyim için çalışma alanınızdaki bulut Not defteri sunucusunu kullanır. Ortamınız, paketler ve bağımlılıklarınız üzerinde denetim sahibi olmayı tercih ediyorsanız [kendi ortamınızı](how-to-configure-environment.md#local) kullanın.
 
- Öğreticiyi çalışma alanınızdan kopyalamak ve çalıştırmak için aşağıdaki ayrıntılı adımları kullanın. 
+ Bu videoyla birlikte izleyin veya öğreticiyi çalışma alanınızdan çalıştırmak ve çalıştırmak için aşağıdaki ayrıntılı adımları kullanın. 
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
 ### <a name="clone-a-notebook-folder"></a>Not defteri klasörünü Kopyala
 
@@ -110,7 +112,7 @@ Bu öğreticide, şu görevleri tamamladınız:
 * Azure Machine Learning çalışma alanı oluşturuldu.
 * Çalışma alanınızda bir bulut Not defteri sunucusu oluşturulup yapılandırıldı.
 
-Öğreticinin **ikinci bölümünde** , bir makine öğrenimi modelini eğitebilmeniz `tutorial-1st-experiment-sdk-train.ipynb` için kodu çalıştırırsınız. 
+Öğreticinin **ikinci bölümünde** , `tutorial-1st-experiment-sdk-train.ipynb` bir makine öğrenimi modelini eğitebilmeniz için kodu çalıştırırsınız. 
 
 > [!div class="nextstepaction"]
 > [Öğretici: ilk modelinizi eğitme](tutorial-1st-experiment-sdk-train.md)

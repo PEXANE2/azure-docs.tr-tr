@@ -2,19 +2,19 @@
 title: SQL isteğe bağlı Önizleme) kendi kendine yardım
 description: Bu bölüm, isteğe bağlı SQL (Önizleme) ile ilgili sorunları gidermenize yardımcı olabilecek bilgiler içerir.
 services: synapse analytics
-author: vvasic-msft
+author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: vvasic
+ms.date: 05/15/2020
+ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e2c262915c928cf487cb84aeb3423d67e7a96e97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b2a9b6c5324240d71a80cde904057757d6ef421
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424835"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658883"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için kendi kendine yardım (Önizleme)
 
@@ -29,17 +29,47 @@ SYNAPSE Studio isteğe bağlı SQL bağlantısı kuramazsa, isteğe bağlı SQL 
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>Dosya açılamadığından sorgu başarısız oluyor
 
-Sorgunuz mevcut olmadığı veya başka bir işlem tarafından kullanıldığı için ' dosya açılamıyor ' hatası ile başarısız olursa ve her iki dosyanın da mevcut olduğundan ve bu dosya başka bir işlem tarafından kullanılmadığından, SQL isteğe bağlı olarak dosyaya erişemez demektir. Bu sorun genellikle Azure Active Directory kimliğiniz dosyaya erişim haklarına sahip olmadığı için oluşur. Varsayılan olarak, SQL isteğe bağlı, Azure Active Directory kimliğinizi kullanarak dosyaya erişmeye çalışıyor. Bu sorunu çözmek için, dosyaya erişmek için uygun haklara sahip olmanız gerekir. En kolay yol, sorgulama yapmaya çalıştığınız depolama hesabında kendinize ait ' Depolama Blobu veri katılımcısı ' rolünü vermaktır. [Daha fazla bilgi için Azure Active Directory Access Control hakkında tam kılavuzu ziyaret edin](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
+Sorgunuz mevcut olmadığı veya başka bir işlem tarafından kullanıldığı için ' dosya açılamıyor ' hatası ile başarısız olursa ve her iki dosyanın da mevcut olduğundan ve bu dosya başka bir işlem tarafından kullanılmadığından, SQL isteğe bağlı olarak dosyaya erişemez demektir. Bu sorun genellikle Azure Active Directory kimliğiniz dosyaya erişim haklarına sahip olmadığı için oluşur. Varsayılan olarak, SQL isteğe bağlı, Azure Active Directory kimliğinizi kullanarak dosyaya erişmeye çalışıyor. Bu sorunu çözmek için, dosyaya erişmek için uygun haklara sahip olmanız gerekir. En kolay yol sorgulamaya çalıştığınız depolama hesabı üzerinde kendinize 'Depolama Blob Verilerine Katkıda Bulunan' rolü vermektir. [Depolama için Azure Active Directory erişim denetimiyle ilgili tam kılavuzu ziyaret ederek daha fazla bilgi edinebilirsiniz](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>Geçerli kaynak kısıtlamaları nedeniyle yürütülemediğinden sorgu başarısız oldu 
 
-Sorgunuz hata iletisiyle başarısız olursa, ' Bu sorgu geçerli kaynak kısıtlamaları nedeniyle yürütülemiyor ', kaynak kısıtlamaları nedeniyle SQL OD 'nin şu anda yürütemediği anlamına gelir: 
+Sorgunuz hata iletisiyle başarısız olursa, ' Bu sorgu geçerli kaynak kısıtlamaları nedeniyle yürütülemiyor ', kaynak kısıtlamaları nedeniyle isteğe bağlı SQL 'in Şu anda yürütemeyeceği anlamına gelir: 
 
-- Lütfen makul boyutlarda veri türlerinin kullanıldığından emin olun. Ayrıca, varsayılan olarak VARCHAR (8000) olacak şekilde dize sütunları için Parquet dosyaları için şema belirtin. 
+- Makul boyutlardaki veri türlerinin kullanıldığından emin olun. Ayrıca varsayılan olarak VARCHAR(8000) türünde olacak dize sütunlarının Parquet dosyaları için şemayı belirtin. 
 
 - Sorgunuz CSV dosyalarını hedefliyorsa, [istatistik oluşturmayı](develop-tables-statistics.md#statistics-in-sql-on-demand-preview)düşünün. 
 
 - Sorguyu iyileştirmek için [isteğe bağlı SQL için en iyi performans uygulamalarını](best-practices-sql-on-demand.md) ziyaret edin.  
+
+## <a name="create-statement-is-not-supported-in-master-database"></a>Ana veritabanında ' DEYIM' oluşturma desteklenmiyor
+
+Sorgunuz hata iletisiyle başarısız olursa:
+
+> ' Sorgu yürütülemedi. Hata: dış tablo/VERI kaynağı/VERITABANı KAPSAMLı KIMLIK BILGILERI/dosya BIÇIMI oluşturma ana veritabanında desteklenmiyor. ' 
+
+Bu, SQL isteğe bağlı SQL 'teki ana veritabanının oluşturmayı desteklemediği anlamına gelir:
+  - Dış tablolar
+  - Dış veri kaynakları
+  - Veritabanı kapsamlı kimlik bilgileri
+  - Dış dosya biçimleri
+
+Çözüm:
+
+  1. Bir kullanıcı veritabanı oluşturun:
+
+```sql
+CREATE DATABASE <DATABASE_NAME>
+```
+
+  2. Create ifadesini, daha önce ana veritabanı için başarısız olan <DATABASE_NAME> bağlamında yürütün. 
+  
+  Dış dosya biçimi oluşturma örneği:
+    
+```sql
+USE <DATABASE_NAME>
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] 
+WITH ( FORMAT_TYPE = PARQUET)
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

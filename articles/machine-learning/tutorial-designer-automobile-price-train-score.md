@@ -9,12 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
-ms.openlocfilehash: d730eb64f5025daa740e4fad0fce0a95300363e1
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: designer
+ms.openlocfilehash: 16f281cce70fb8d2a943b62c796c3037649c3c72
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983406"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656590"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: tasarımcı ile otomobil fiyatını tahmin etme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,7 +70,7 @@ Enterprise sürümü olan bir Azure Machine Learning çalışma alanınız varsa
 
 Her modülün varsayılan olarak aynı işlem hedefini kullanmasını söyleyecek tüm işlem hattı için **varsayılan bir işlem hedefi** ayarlayabilirsiniz. Ancak, işlem hedeflerini modül başına temelinde belirtebilirsiniz.
 
-1. İşlem hattı adının yanında, **tuval simgesinin en** ![üstündeki dişli](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) simgesi ekran görüntüsünü seçerek **Ayarlar** bölmesini açın.
+1. İşlem hattı adının yanında, **Gear icon** ![ tuval simgesinin en üstündeki dişli simgesi ekran görüntüsünü seçerek ](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) **Ayarlar** bölmesini açın.
 
 1. Tuvalin sağındaki **Ayarlar** bölmesinde, **işlem hedefini seç**' i seçin.
 
@@ -139,7 +140,7 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
 1. **Ekle**' nin yanındaki **sütun adları** açılan ' i genişletin ve **tüm sütunlar**' ı seçin.
 
-1. Yeni bir **+** kural eklemek için öğesini seçin.
+1. **+** Yeni bir kural eklemek için öğesini seçin.
 
 1. Aşağı açılan menülerden **Dışla** ve **sütun adlarını**seçin.
     
@@ -217,7 +218,7 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Algoritma, eğitim veri
     
     Bu seçenek, öğrenme algoritmalarını başlatmak için kullanabileceğiniz birkaç modül kategorisini görüntüler.
 
-1. **Regresyon** > **Doğrusal regresyon**' i seçin ve işlem hattı tuvaline sürükleyin.
+1. **Regresyon**  >  **Doğrusal regresyon**' i seçin ve işlem hattı tuvaline sürükleyin.
 
 1. **Doğrusal regresyon** modülünün çıkışını **eğitme modeli** modülünün sol girişine bağlayın.
 
@@ -292,7 +293,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
 1. Çıktısını görüntülemek için **puan modeli** modülünü seçin.
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, sonuçları görüntülemek için **çıktılar + günlükler** > grafik simgesi ![Görselleştir simgesini](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) seçin.
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, sonuçları görüntülemek için **çıktılar + günlükler** > grafik simgesi ![ Görselleştir simgesini seçin ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) .
 
     Burada, tahmin edilen fiyatları ve test verilerinin gerçek fiyatlarını görebilirsiniz.
 
@@ -304,7 +305,7 @@ Eğitim modelinin test veri kümesinde ne kadar iyi gerçekleştirildiğini gör
 
 1. Çıktısını görüntülemek için **modeli değerlendir** modülünü seçin.
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, sonuçları görüntülemek için **çıktılar + günlükler** > grafik simgesi ![Görselleştir simgesini](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) seçin.
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, sonuçları görüntülemek için **çıktılar + günlükler** > grafik simgesi ![ Görselleştir simgesini seçin ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) .
 
 Modeliniz için aşağıdaki istatistikler gösterilmektedir:
 

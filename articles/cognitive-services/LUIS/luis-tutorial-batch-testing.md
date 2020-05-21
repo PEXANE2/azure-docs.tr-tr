@@ -3,12 +3,12 @@ title: 'Öğretici: sorunları bulmak için Batch testi-LUSıS'
 description: Bu öğreticide, Language Understanding (LUSıS) uygulamanızın kalitesini doğrulamak için Batch test kullanımı gösterilmektedir.
 ms.topic: tutorial
 ms.date: 05/07/2020
-ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592602"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681639"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Öğretici: Batch test veri kümeleri
 
@@ -49,13 +49,13 @@ Gibi bir pizza sırası alan bir uygulamayı içeri aktarın `1 pepperoni pizza 
 
 ## <a name="what-should-the-batch-file-utterances-include"></a>Toplu iş dosyası dıksları neleri içerir?
 
-Toplu iş dosyası, başlangıç ve bitiş konumu dahil olmak üzere, en üst düzey makine tarafından öğrenilen varlıklar ile utterslar içermelidir. Söyleyler uygulamada zaten bulunan örneklerin bir parçası olmamalıdır. Bu, amaç ve varlıklar için olumlu tahmin etmek istediğiniz söyler olmalıdır.
+Toplu iş dosyası, başlangıç ve bitiş konumu dahil olmak üzere en üst düzey makine öğrenimi varlıklarıyla birlikte yer almalıdır. Söyleyler uygulamada zaten bulunan örneklerin bir parçası olmamalıdır. Bu, amaç ve varlıklar için olumlu tahmin etmek istediğiniz söyler olmalıdır.
 
 Testleri amaç ve/veya varlığa göre ayırabilir veya aynı dosyadaki tüm testlere (1000 ' e kadar) sahip olabilirsiniz.
 
 ## <a name="batch-file"></a>Toplu iş dosyası
 
-JSON örneği, bir test dosyasının nasıl göründüğünü göstermek için etiketlenmiş bir varlığa sahip bir söylenişi içerir. Kendi testlerinizde, doğru amaç ve makine tarafından öğrenilen varlık etiketli birçok kullanım sahibi olmanız gerekir.
+JSON örneği, bir test dosyasının nasıl göründüğünü göstermek için etiketlenmiş bir varlığa sahip bir söylenişi içerir. Kendi testlerinizde, etiketli doğru amaç ve makine öğrenimi varlığı ile birçok söyleyün olması gerekir.
 
 1. `pizza-with-machine-learned-entity-test.json`Bir metin düzenleyicisinde oluşturun veya [indirin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) .
 

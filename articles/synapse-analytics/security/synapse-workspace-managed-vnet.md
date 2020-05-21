@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 162d96244b01f8c5e1acf224475aadb9508f0aa5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 623b6325b88f42f0076c84a221864762cd3918f9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423638"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645228"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure SYNAPSE Analytics yönetilen sanal ağ (Önizleme)
 
@@ -40,6 +40,8 @@ SQL havuzu ve isteğe bağlı SQL, çok kiracılı bir yetenektir ve bu nedenle 
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-vnet"></a>Yönetilen çalışma alanı VNet ile Azure SYNAPSE çalışma alanı oluşturma
 
+Daha önce yapmadıysanız, ağ kaynak sağlayıcısını kaydedin. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. [Kayıt](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)sırasında kaynak sağlayıcıları listesinden *Microsoft. Network* ' ü seçin.
+
 İlişkili bir yönetilen çalışma alanı VNet 'i olan bir Azure SYNAPSE çalışma alanı oluşturmak için, Azure portal ' deki **güvenlik + ağ** sekmesini seçin ve **yönetilen sanal ağı etkinleştir** onay kutusunu işaretleyin.
 
 Onay kutusunu işaretlenmemiş olarak bırakırsanız, çalışma alanınızın kendisiyle ilişkili bir VNet 'i olmayacaktır.
@@ -50,7 +52,7 @@ Onay kutusunu işaretlenmemiş olarak bırakırsanız, çalışma alanınızın 
 ![Yönetilen çalışma alanı VNet 'i etkinleştir](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
 >[!NOTE]
->Yönetilen çalışma alanı VNet 'ten gelen tüm giden trafik gelecekte engellenir. Yönetilen özel uç noktaları kullanarak tüm veri kaynaklarınıza bağlanmanız önerilir.
+>Yönetilen özel uç noktalar hariç yönetilen çalışma alanı VNet 'ten giden tüm trafik gelecekte engellenir. Çalışma alanı dışındaki tüm Azure veri kaynaklarınıza bağlanmak için yönetilen özel uç noktalar oluşturmanız önerilir. 
 
 Azure portal ' den **Genel Bakış ' ı** seçerek Azure SYNAPSE çalışma alanınızın yönetilen bir çalışma alanı VNET ile ilişkili olup olmadığını kontrol edebilirsiniz.
 

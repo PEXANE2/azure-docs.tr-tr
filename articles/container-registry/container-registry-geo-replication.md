@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: ea5e3dffaafb691a667bad3ef0014389e1604e27
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: bea71695c66c77a8e9fff3cb708113a04f24ed96
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682794"
+ms.locfileid: "83711576"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry coğrafi çoğaltma
 
@@ -95,7 +95,7 @@ ACR, yapılandırılmış çoğaltmalar genelinde görüntüleri eşitlemeye ba�
 * Coğrafi olarak çoğaltılan bir kayıt defterinden görüntü gönderdiğinizde veya çektiğinizde, arka planda Azure Traffic Manager, isteği ağ gecikmesi açısından en yakın bölgede bulunan kayıt defterine gönderir.
 * En yakın bölgeye bir görüntü veya etiket güncelleştirmesi gönderdikten sonra, Azure Container Registry bildirimlerin ve katmanların seçtiğiniz kalan bölgelere çoğaltılması biraz zaman alır. Daha büyük resimler daha küçük olanlara çoğaltılmak için daha uzun sürer. Görüntüler ve Etiketler, son tutarlılık modeliyle çoğaltma bölgeleri arasında eşitlenir.
 * Coğrafi olarak çoğaltılan bir kayıt defterine gönderim güncelleştirmelerine bağlı olan iş akışlarını yönetmek için, [Web kancalarını](container-registry-webhook.md) anında iletme olaylarına yanıt verecek şekilde yapılandırmanızı öneririz. Coğrafi olarak çoğaltılan bölgelerde gerçekleştirilen anında iletme olaylarını izlemek için coğrafi olarak çoğaltılan bir kayıt defteri içinde bölgesel Web kancaları oluşturabilirsiniz.
-* İçerik katmanlarını temsil eden bloblara hizmeti sağlamak için Azure Container kayıt defteri veri uç noktalarını kullanır. Kayıt defterinizin coğrafi olarak çoğaltılan bölgelerindeki her birinde kayıt defteriniz için [adanmış veri uç noktalarını](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints-preview) etkinleştirebilirsiniz. Bu uç noktalar sıkı kapsamlı güvenlik duvarı erişim kuralları yapılandırmasına izin verir.
+* İçerik katmanlarını temsil eden bloblara hizmeti sağlamak için Azure Container kayıt defteri veri uç noktalarını kullanır. Kayıt defterinizin coğrafi olarak çoğaltılan bölgelerindeki her birinde kayıt defteriniz için [adanmış veri uç noktalarını](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) etkinleştirebilirsiniz. Bu uç noktalar sıkı kapsamlı güvenlik duvarı erişim kuralları yapılandırmasına izin verir.
 * Bir sanal ağdaki özel uç noktaları kullanarak kayıt defteriniz için [özel bir bağlantı](container-registry-private-link.md) yapılandırırsanız, coğrafi olarak çoğaltılan bölgelerin her birinde ayrılmış veri uç noktaları varsayılan olarak etkinleştirilir. 
 
 ## <a name="delete-a-replica"></a>Bir çoğaltmayı sil

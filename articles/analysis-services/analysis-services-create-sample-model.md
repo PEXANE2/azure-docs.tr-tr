@@ -4,15 +4,15 @@ description: Bu öğretici derste, Azure Analysis Services'e örnek model ekleme
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a72236843c13e139f33a669b54f108e91679c8c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74326572"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697512"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Öğretici: Portaldan bir örnek model ekleme
 
@@ -43,7 +43,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
     ![Örnek model oluşturma](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. **Yeni modelde** > **bir veri kaynağı seçin**, **örnek verilerin** seçili olduğunu doğrulayın ve ardından **Ekle**' ye tıklayın.
+2. **Yeni modelde**  >  **bir veri kaynağı seçin**, **örnek verilerin** seçili olduğunu doğrulayın ve ardından **Ekle**' ye tıklayın.
 
     ![Örnek verileri seçme](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
@@ -62,7 +62,7 @@ Bu adımlarda, SSMS kullanarak sunucudan modelin nasıl silineceği açıklanır
 
 2. **Sunucuya Bağlan** alanına sunucu adını yapıştırın, ardından **Kimlik doğrulaması** alanında **Active Directory - MFA ile Evrensel desteği**'ni seçin, kullanıcı adınızı girin ve **Bağlan**'a tıklayın.
 
-    ![Oturum açma](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
+    ![Oturum aç](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
 3. **Nesne Gezgini**’nde `adventureworks` örnek veritabanına sağ tıklayın ve sonra da **Sil**’e tıklayın.
 

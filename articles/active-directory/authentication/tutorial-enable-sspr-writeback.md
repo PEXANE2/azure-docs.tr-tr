@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4815187e829cff56893988874e4dcac3b8985e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d0ea181b0e6ac18a559614c5bce0707775acdcec
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143745"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640181"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Öğretici: şirket içi bir ortama Azure Active Directory self servis parola sıfırlama geri yazma özelliğini etkinleştirme
 
@@ -23,7 +23,7 @@ Azure Active Directory (Azure AD) self servis parola sıfırlama (SSPR) ile, kul
 
 Parola geri yazma özelliği, Azure AD 'deki parola değişikliklerini şirket içi AD DS ortamınıza geri aktarmak için kullanılabilir. Azure AD Connect, bu parola değişikliklerini Azure AD 'den mevcut bir şirket içi dizine geri göndermek için güvenli bir mekanizma sağlar.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Parola geri yazma için gerekli izinleri yapılandırın
@@ -59,11 +59,15 @@ SSPR geri yazma ile doğru şekilde çalışmak için Azure AD Connect ' de beli
 
 Bu izinleri atamadıysanız, geri yazma doğru şekilde yapılandırılmış gibi görünür, ancak kullanıcılar şirket içi parolalarını buluttan yönettiklerinde hatalarla karşılaşır. İzinler **Bu nesneye ve** "süre sonu parolasının kaldırılması" için tüm alt nesnelere uygulanmalıdır.  
 
+> [!TIP]
+>
+> Bazı Kullanıcı hesaplarının parolaları şirket içi dizine geri yazılmadıysa, şirket içi AD DS ortamındaki hesap için devralmanın devre dışı bırakılmadığından emin olun. Özelliğin düzgün çalışması için, alt nesnelere parola yazma izinlerinin uygulanması gerekir.
+
 Parola geri yazma işleminin gerçekleşmesi için uygun izinleri ayarlamak için aşağıdaki adımları izleyin:
 
 1. Şirket içi AD DS ortamınızda, uygun *etki alanı yöneticisi* izinlerine sahip bir hesapla **Active Directory Kullanıcıları ve bilgisayarları** açın.
 1. **Görünüm** menüsünde, **Gelişmiş Özellikler** ' in açık olduğundan emin olun.
-1. Sol bölmede, etki alanının kökünü temsil eden nesneyi sağ seçin ve **Özellikler** > **güvenlik** > **Gelişmiş**' i seçin.
+1. Sol bölmede, etki alanının kökünü temsil eden nesneyi sağ seçin ve **Özellikler**  >  **güvenlik**  >  **Gelişmiş**' i seçin.
 1. **İzinler** sekmesinde **Ekle**' yi seçin.
 1. **Sorumlu**için, izinlerin uygulanması gereken hesabı seçin (Azure AD Connect tarafından kullanılan hesap).
 1. **Uygulanacak** öğe açılır listesinde, alt **Kullanıcı nesneleri**' ni seçin.
@@ -79,7 +83,7 @@ Parola geri yazma işleminin gerçekleşmesi için uygun izinleri ayarlamak içi
 
 İzinleri güncelleştirdiğinizde, bu izinlerin dizininizdeki tüm nesnelere çoğaltılması bir saat veya daha fazla sürebilir.
 
-Şirket içi AD DS ortamındaki parola ilkeleri, parola sıfırlamaları 'nın doğru işlenmesini engelleyebilir. Parola geri yazma özelliğinin en verimli şekilde çalışması için, *Minimum parola yaşı* için Grup ilkesi 0 olarak ayarlanmalıdır. Bu ayar, **Windows ayarları > güvenlik ayarları > hesap ilkeleri > bilgisayar yapılandırma > ilkeleri** altında bulunabilir `gpedit.msc`.
+Şirket içi AD DS ortamındaki parola ilkeleri, parola sıfırlamaları 'nın doğru işlenmesini engelleyebilir. Parola geri yazma özelliğinin en verimli şekilde çalışması için, *Minimum parola yaşı* için Grup ilkesi 0 olarak ayarlanmalıdır. Bu ayar, **Windows ayarları > güvenlik ayarları > hesap ilkeleri > bilgisayar yapılandırma > ilkeleri** altında bulunabilir `gpedit.msc` .
 
 Grup ilkesini güncelleştirirseniz, güncelleştirilmiş ilkenin çoğaltılmasını bekleyin veya `gpupdate /force` komutunu kullanın.
 
@@ -123,7 +127,7 @@ SSPR 'de parola geri yazma özelliğini etkinleştirmek için aşağıdaki adım
 
 Bu öğreticinin bir parçası olarak yapılandırdığınız SSPR geri yazma işlevini artık kullanmak istemiyorsanız, aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory**arayıp seçin, **parola sıfırlama**' yı seçin ve ardından Şirket **içi tümleştirme**' i seçin.
 1. Şirket **içi dizininize yeniden parola yazma** seçeneğini *belirleyin.*
 1. **Kullanıcıların, parolasını sıfırlamadan hesapların kilidini açmalarına Izin ver** seçeneğini *belirleyin.*

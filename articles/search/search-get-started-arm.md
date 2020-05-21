@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/20/2020
-ms.openlocfilehash: 6da2c324872a86c2c0ce6f55801bc7b0ee8d713e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 670cebe1c0f1c9002e33b729d0db9ee9f9a01283
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80607627"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682536"
 ---
 # <a name="quickstart-deploy-cognitive-search-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Bilişsel Arama dağıtma
 
@@ -30,9 +30,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirin
 
-Bu hızlı başlangıçta kullanılan şablon [Azure şablonlarından](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchservices).
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-azure-search-create/).
 
-:::code language="json"source="~/quickstart-templates/101-azure-search-create/azuredeploy.json" range="1-86" highlight="4-50":::
+:::code language="json"source="~/quickstart-templates/101-azure-search-create/azuredeploy.json" range="1-86" highlight="4-50,70-85":::
 
 Bu şablonda tanımlanan Azure kaynağı:
 
@@ -42,7 +42,7 @@ Bu şablonda tanımlanan Azure kaynağı:
 
 Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir Azure Bilişsel Arama kaynağı oluşturur.
 
-[![Azure’a dağıtma](./media/search-get-started-arm/arm-deploybuttona.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
 
 Portal, kolayca parametre değerleri sağlamanıza olanak tanıyan bir form görüntüler. Bazı parametreler şablondaki varsayılan değerlerle önceden doldurulur. Aboneliğiniz, kaynak grubunuz, konumunuz ve hizmet adınızı sağlamanız gerekir. Bilişsel hizmetler 'i bir [AI zenginleştirme](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) ardışık düzeninde kullanmak istiyorsanız, örneğin ikili resim dosyalarını metin için çözümlemek üzere, hem bilişsel arama hem de bilişsel hizmetler sunan bir konum seçin. Her iki hizmetin de AI zenginleştirme iş yükleri için aynı bölgede olması gerekir. Formu tamamladıktan sonra, hüküm ve koşulları kabul etmeniz ve sonra dağıtımınızı tamamlayabilmeniz için satın al düğmesini seçmeniz gerekir.
 

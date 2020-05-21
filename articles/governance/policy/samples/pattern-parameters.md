@@ -1,14 +1,14 @@
 ---
 title: 'Model: bir ilke tanımındaki parametreler'
 description: Bu Azure Ilke modelinde parametrelerin bir ilke tanımında nasıl kullanılacağına ilişkin bir örnek verilmiştir.
-ms.date: 01/31/2020
+ms.date: 05/20/2020
 ms.topic: sample
-ms.openlocfilehash: 4921bb216ef67b561bc8986cf48239e6448beafc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e163a243a0dc23f04d564287b630634eb4662cda
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172810"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696730"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Ilke stili: parametreler
 
@@ -16,7 +16,10 @@ Bir ilke tanımı, [parametreleri](../concepts/definition-structure.md#parameter
 
 ## <a name="sample-1-string-parameters"></a>Örnek 1: dize parametreleri
 
-Bu ilke tanımı, ilke atamasının kaynaklar üzerinde ne kadar arama yaptığını ayarlamak için iki parametre, **TagName** ve **tagvalue** kullanır. Bu biçim, ilkenin herhangi bir sayıda etiket adı ve etiket değeri kombinasyonu için kullanılmasına izin verir, ancak yalnızca tek bir ilke tanımını korur.
+Bu ilke tanımı, ilke atamasının kaynaklar üzerinde ne kadar arama yaptığını ayarlamak için iki parametre, **TagName** ve **tagvalue** kullanır. Bu biçim, ilke tanımının herhangi bir sayıda etiket adı ve etiket değeri bileşimi için kullanılmasına izin verir, ancak yalnızca tek bir ilke tanımını korur.
+
+> [!NOTE]
+> **Modu** _Tümünü_ kullanan ve bir kaynak grubuyla birlikte çalıştırılan bir etiket örneği için bkz. [model: Etiketler-örnek #1](./pattern-tags.md#sample-1-parameterize-tags).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json":::
 
@@ -42,11 +45,27 @@ Bu ilke tanımı, Express Route bağlantı hattı ' nın bant genişliği ayarı
 
 İlke tanımının bu bölümünde, **listOfBandwidthinMbps** parametresi bir _dizi_ olarak tanımlanır ve kullanımı için bir açıklama sağlanır. Bir _dizi_olarak eşleşmesi için birden çok değer vardır.
 
-Daha sonra parametresi **Policyrule. If** bloğunda kullanılır. Bir _dizi_ parametresi olarak, bir _dizi_
-[koşulunun](../concepts/definition-structure.md#conditions)veya **in** **notın** 'in kullanılması gerekir.
+Daha sonra parametresi **Policyrule. If** bloğunda kullanılır. Bir _dizi_ parametresi olarak, bir _dizi_ 
+ [koşulunun](../concepts/definition-structure.md#conditions)veya **in** **notın** 'in kullanılması gerekir.
 Burada, tanımlı değerlerden biri olarak **ServiceProvider. bandwidthInMbps** diğer adı kullanılır.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="21-24" highlight="3":::
+
+## <a name="sample-3-parameterized-effect"></a>Örnek 3: parametreli efekt
+
+İlke tanımlarını yeniden kullanılabilir yapmanın yaygın bir yolu, efektin kendisini parametreleştirilemez. Bu örnek tek bir parametre, **efekt**kullanır. Efektin parametreleştirilmesi, farklı etkilere sahip farklı kapsamlara aynı tanımın atanmasını olanaklı kılar.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json":::
+
+### <a name="sample-3-explanation"></a>Örnek 3: Açıklama
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="11-25":::
+
+İlke tanımının bu bölümünde, **efekt** parametresi _dize_olarak tanımlanır. İlke tanımı, bir atamanın varsayılan değerini _Denetim_ için ayarlar ve diğer seçenekleri _devre dışı_ ve _Reddet_olarak kısıtlar.
+
+Daha sonra parametresi Policyrule içinde kullanılır **. daha sonra** _efekt_için blok olur.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="38-40" highlight="2":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

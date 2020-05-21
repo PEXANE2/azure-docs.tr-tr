@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 64895e5f48168305aea3e83596cdbcae982a6cb9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 182c6a20af51508c357079b9542b2bda695fdae4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692417"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658522"
 ---
-# <a name="quickstart-using-synapse-studio-preview"></a>Hızlı başlangıç: SYNAPSE Studio 'Yu kullanma (Önizleme)
+# <a name="quickstart-use-synapse-studio-preview"></a>Hızlı başlangıç: SYNAPSE Studio 'Yu kullanma (Önizleme)
 
 Bu hızlı başlangıçta, SYNAPSE Studio kullanarak dosyaları sorgulamayı öğreneceksiniz.
 
@@ -24,7 +24,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -49,10 +49,10 @@ Dosyalarınızı düzenlemek için araç çubuğundaki bağlantıları kullanara
 ## <a name="query-files-on-storage-account"></a>Depolama hesabındaki dosyaları sorgula
 
 > [!IMPORTANT]
-> Dosyaları sorgulayabilmeniz için temeldeki depolamada `Storage Blob Reader` rolün bir üyesi olmanız gerekir. [Azure depolama 'Da **Depolama Blobu veri okuyucusu** veya **Depolama Blobu veri katılımcısı** RBAC izinleri atama](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)hakkında bilgi edinin.
+> `Storage Blob Reader`Dosyaları sorgulayabilmeniz için temeldeki depolamada rolün bir üyesi olmanız gerekir. [Azure depolama 'Da **Depolama Blobu veri okuyucusu** veya **Depolama Blobu veri katılımcısı** RBAC izinleri atama](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)hakkında bilgi edinin.
 
-1. Bazı `PARQUET` dosyaları karşıya yükleyin.
-2. Bir veya daha fazla dosya seçin ve ardından dosyaların içeriğini görmek için yeni bir SQL betiği veya Spark Not defteri oluşturun. Bir not defteri oluşturmak isterseniz, [çalışma alanında Apache Spark havuzu](quickstart-create-apache-spark-pool.md)oluşturmanız gerekir.
+1. Bazı dosyaları karşıya yükleyin `PARQUET` .
+2. Bir veya daha fazla dosya seçin ve ardından dosyaların içeriğini görmek için yeni bir SQL betiği veya Spark Not defteri oluşturun. Bir not defteri oluşturmak istiyorsanız [SYNAPSE çalışma alanlarında bir Apache Spark havuzu](quickstart-create-apache-spark-pool-studio.md)oluşturmanız gerekir.
 
    ![Depolamadaki dosyaları sorgula](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
@@ -64,7 +64,7 @@ Dosyalarınızı düzenlemek için araç çubuğundaki bağlantıları kullanara
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure [depolama 'Da **Depolama Blobu veri okuyucusu** veya **Depolama Blobu veri katılımcısı** RBAC Izinleri ATAYARAK dosyaları sorgulamak için Azure AD kullanıcıları 'nı etkinleştirin](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
+- Azure [depolama 'Da **Depolama Blobu veri okuyucusu** veya **Depolama Blobu veri katılımcısı** RBAC Izinleri ATAYARAK](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role) dosyaları sorgulamak için Azure AD kullanıcıları 'nı etkinleştirin
 - [Azure depolama 'da Isteğe bağlı SQL kullanarak dosyaları sorgulama](sql/on-demand-workspace-overview.md)
-- [Azure portal kullanarak Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool.md)
+- [Azure portalını kullanarak Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool-portal.md)
 - [Azure depolama 'da depolanan dosyalar üzerinde Power BI raporu oluşturma](sql/tutorial-connect-power-bi-desktop.md)

@@ -1,5 +1,5 @@
 ---
-title: Otomatikleştirilmiş ML deneimiyle Bisiklet paylaşma talebini tahmin etme
+title: 'Öğretici: Isteğe bağlı tahmin & oto'
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning Studio 'da otomatik makine öğrenimi ile talep tahmini modeli eğitme ve dağıtmayı öğrenin.
 services: machine-learning
@@ -9,24 +9,27 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 01/27/2020
-ms.openlocfilehash: 11e0a8a0076fb2e68c379b279f471ff74846df2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/19/2020
+ms.openlocfilehash: 07450f0c1ea85f22d19e59aaa27898cbf34a7978
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77088245"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656559"
 ---
-# <a name="tutorial-forecast-bike-sharing-demand-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile Bisiklet paylaşma talebini tahmin etme
+# <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile talep tahmini
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Bu öğreticide, bir bisiklet paylaşma hizmeti için Kiralama taleplerini tahmin etmek üzere bir zaman serisi tahmin modeli oluşturmak için Azure Machine Learning Studio 'da otomatik makine öğrenimi veya otomatik ML 'yi kullanırsınız.
+
+Bir sınıflandırma modeli örneği için bkz. [öğretici: Azure Machine Learning OTOMATIK ml ile sınıflandırma modeli oluşturma](tutorial-first-experiment-automated-ml.md).
 
 Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir veri kümesi oluşturun ve yükleyin.
 > * Otomatik bir ML denemesi yapılandırın ve çalıştırın.
+> * Tahmin ayarlarını belirtin.
 > * Deneme sonuçlarını keşfet.
 > * En iyi modeli dağıtın.
 
@@ -75,10 +78,10 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
         Alan|Açıklama| Öğretici için değer
         ---|---|---
         Dosya biçimi|Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.| Ted
-        Sınırlayıcı|Düz metin veya diğer veri akışlarında ayrı, bağımsız&nbsp; bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
+        Sınırlayıcı|&nbsp;Düz metin veya diğer veri akışlarında ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
         Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
         Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| İlk dosyadaki üst bilgileri kullan
-        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Hiçbiri
+        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok
 
     1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. 
     
@@ -110,7 +113,7 @@ Verilerinizi yükleyip yapılandırdıktan sonra, uzaktan işlem hedefini ayarla
         Alan | Açıklama | Öğretici için değer
         ----|---|---
         İşlem adı |İşlem bağlamını tanımlayan benzersiz bir ad.|Bisiklet-işlem
-        Sanal&nbsp;makine&nbsp;boyutu| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
+        Sanal &nbsp; makine &nbsp; boyutu| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
         En az/en fazla düğüm (Gelişmiş ayarlarda)| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
   
         1. İşlem hedefini almak için **Oluştur** ' u seçin. 
@@ -129,19 +132,19 @@ Machine Learning görev türünü ve yapılandırma ayarlarını belirterek otom
 
 1. **Zaman sütununuz** olarak **Tarih** ' i seçin ve **grubu sütunlara göre** boş bırakın. 
 
-    1. **Ek yapılandırma ayarlarını görüntüle** ' yi seçin ve alanları aşağıdaki gibi doldurun. Bu ayarlar, eğitim işini daha iyi denetliyor. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır.
+    1. **Ek yapılandırma ayarlarını görüntüle** ' yi seçin ve alanları aşağıdaki gibi doldurun. Bu ayarlar, eğitim işini daha iyi denet, tahmininize yönelik ayarları belirtmenize yöneliktir. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır.
 
   
-        Ek&nbsp;yapılandırma|Açıklama|Öğretici&nbsp;için&nbsp;değer
+        Ek &nbsp; yapılandırma|Açıklama|&nbsp;Öğretici için &nbsp; değer
         ------|---------|---
         Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|Normalleştirilmiş kök ortalama kare hatası
-        Otomatik olarak korleştirme| Ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştirme
-        En iyi modeli açıkla (Önizleme)| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştirme
+        Otomatik olarak korleştirme| Ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştir
+        En iyi modeli açıkla (Önizleme)| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştir
         Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Aşırı rastgele ağaçlar
-        Ek tahmin ayarları| Bu ayarlar, modelinizin doğruluğunu artırmaya yardımcı olur <br><br> _**Tahmin ufku**_: gelecekte tahmin etmek istediğiniz sürenin uzunluğu <br> _**Tahmin hedefi lags:**_ hedef değişkenin lags 'ı ne kadar geri oluşturmak istiyorsunuz <br> _**Hedef sıralı pencere**_: *maksimum, en düşük* ve *Toplam*gibi özelliklerin oluşturulacağı pencere sayısını belirtir. |Tahmin ufuk: 14 <br> Tahmin&nbsp;hedefi&nbsp;lags: None <br> Hedef&nbsp;hareketli&nbsp;pencere&nbsp;boyutu: yok
-        Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim&nbsp;işi&nbsp;süresi (saat): 3 <br> Ölçüm&nbsp;puan&nbsp;eşiği: yok
+        Ek tahmin ayarları| Bu ayarlar, modelinizin doğruluğunu artırmaya yardımcı olur <br><br> _**Tahmin ufku**_: gelecekte tahmin etmek istediğiniz sürenin uzunluğu <br> _**Tahmin hedefi lags:**_ hedef değişkenin lags 'ı ne kadar geri oluşturmak istiyorsunuz <br> _**Hedef sıralı pencere**_: *maksimum, en düşük* ve *Toplam*gibi özelliklerin oluşturulacağı pencere sayısını belirtir. |Tahmin ufuk: 14 <br> Tahmin &nbsp; hedefi &nbsp; lags: None <br> Hedef &nbsp; hareketli &nbsp; pencere &nbsp; boyutu: yok
+        Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim &nbsp; işi &nbsp; süresi (saat): 3 <br> Ölçüm &nbsp; puan &nbsp; eşiği: yok
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 5
-        Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En&nbsp;fazla&nbsp;eşzamanlı yineleme: 6
+        Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 6
         
         **Kaydet**’i seçin.
 
@@ -224,6 +227,10 @@ Yeni dağıtılan Web hizmetinizin tüketimini kolaylaştırmak için Power BI d
 > [!div class="nextstepaction"]
 > [Bir web hizmetini kullanma](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
++ [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
++ Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesi.
++ [Korleştirme](how-to-use-automated-ml-for-ml-models.md#featurization)hakkında daha fazla bilgi edinin.
++ [Veri profili oluşturma](how-to-use-automated-ml-for-ml-models.md#profile)hakkında daha fazla bilgi edinin.
 
 >[!NOTE]
 > Bu bisiklet payı veri kümesi, bu öğretici için değiştirilmiştir. Bu veri kümesi, bir [kale yarışmanın](https://www.kaggle.com/c/bike-sharing-demand/data) bir parçası olarak sunulmuştur ve başlangıçta [büyük bikespaylaşımı](https://www.capitalbikeshare.com/system-data)aracılığıyla sunuldu. Ayrıca, [uMachine Learning veritabanı](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset)'nda da bulunabilir.<br><br>

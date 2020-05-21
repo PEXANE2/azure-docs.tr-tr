@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 97dfe175a609ab336206098948b4e3fcc401d8bc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1f47b4532a009694d4167c08f6f04312f8020acc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203990"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673484"
 ---
 Bu Postman tabanlı hızlı başlangıç, bilgi tabanınızdan yanıt alma konusunda size yol gösterir.
 
@@ -37,7 +37,7 @@ Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini y
 
 1. Bilgi Bankası 'nın **Ayarlar** sayfasında, bilgi bankasından yanıt oluşturmak için kullanılan yapılandırmayı görmek Için **Postman** sekmesini seçin. Postman 'da kullanmak için aşağıdaki bilgileri kopyalayın.
 
-    |Adı|Ayar|Amaç ve değer|
+    |Name|Ayar|Amaç ve değer|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Bu, URL için HTTP yöntemidir ve yoldur.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Bu, URL 'nin ana bilgisayarı. Tüm generateAnswer URL 'sini almak için Konağı ve gönderi değerlerini birleştirin.|
@@ -51,7 +51,7 @@ Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini y
 
 Önceki bir hızlı başlangıçta, iki farklı soruyu ayırt etmek için meta veriler iki QnA çiftlerine eklenmiştir. Filtreyi yalnızca ilgili QnA çiftiyle kısıtlamak için sorguya meta verileri ekleyin.
 
-1. Postman 'da, ' ın `strictFilters` `service:qna_maker`ad/değer çiftine sahip ÖZELLIĞINI ekleyerek yalnızca sorgu json ' ı değiştirin. JSON gövdesi şu olmalıdır:
+1. Postman 'da, ' `strictFilters` ın ad/değer çiftine sahip özelliğini ekleyerek yalnızca sorgu json ' ı değiştirin `service:qna_maker` . JSON gövdesi şu olmalıdır:
 
     ```json
     {
@@ -64,7 +64,7 @@ Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini y
     }
     ```
 
-    Bu soru, iki sorudan ve yanıt `size`kümelerinden birini döndürebilen yalnızca tek bir sözcüktür. `strictFilters` Dizi, yanıta yalnızca `qna_maker` yanıtları azaltmasını söyler.
+    Bu soru, `size` iki sorudan ve yanıt kümelerinden birini döndürebilen yalnızca tek bir sözcüktür. `strictFilters`Dizi, yanıta yalnızca yanıtları azaltmasını söyler `qna_maker` .
 
 1. Yanıt yalnızca filtre ölçütlerini karşılayan yanıtı içerir.
 
@@ -107,9 +107,12 @@ Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini y
 
 ## <a name="use-debug-query-property"></a>Hata ayıklama sorgu özelliğini kullan
 
-Hata ayıklama bilgileri döndürülen yanıtın nasıl belirlendiğini anlamanıza yardımcı olur. Faydalı olsa da gerekli değildir. Hata ayıklama bilgileriyle bir yanıt oluşturmak için, `debug` özelliği ekleyin:
+> [!NOTE]
+>Herhangi bir bağımlılık için hata ayıklama poreperty kullanılması önerilmez. Bu özellik, ürün ekibine sorun gidermeye yardımcı olmak için eklenmiştir. 
 
-1. Postman 'da, `debug` özelliği ekleyerek yalnızca JSON gövdesini değiştirin. JSON şu olmalıdır:
+Hata ayıklama bilgileri döndürülen yanıtın nasıl belirlendiğini anlamanıza yardımcı olur. Faydalı olsa da gerekli değildir. Hata ayıklama bilgileriyle bir yanıt oluşturmak için, özelliği ekleyin `debug` :
+
+1. Postman 'da, özelliği ekleyerek yalnızca JSON gövdesini değiştirin `debug` . JSON şu olmalıdır:
 
     ```json
     {
@@ -215,7 +218,7 @@ Hata ayıklama bilgileri döndürülen yanıtın nasıl belirlendiğini anlaman�
 
 Sınama Bilgi Bankası 'ndan bir yanıt almak istiyorsanız `isTest` Body özelliğini kullanın.
 
-Postman 'da, `isTest` özelliği ekleyerek yalnızca JSON gövdesini değiştirin. JSON şu olmalıdır:
+Postman 'da, özelliği ekleyerek yalnızca JSON gövdesini değiştirin `isTest` . JSON şu olmalıdır:
 
 ```json
 {
@@ -357,7 +360,7 @@ Yanıt için en az bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayıla
     }
     ```
 
-    Soru-Cevap Oluşturma bir puan döndürdü `0`, bu, güven anlamına gelir. Ayrıca varsayılan yanıtı da döndürür.
+    Soru-Cevap Oluşturma bir puan döndürdü `0` , bu, güven anlamına gelir. Ayrıca varsayılan yanıtı da döndürür.
 
 1. Eşik değerini %60 olarak değiştirip sorguyu yeniden isteyin:
 

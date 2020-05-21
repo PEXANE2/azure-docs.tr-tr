@@ -4,12 +4,12 @@ description: Backup ve Recovery Services ile bir Azure sanal makinesinde nasıl 
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 439ffeed7f0e37f04eda39380ddcabe1fa4e06c3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74171731"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653272"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Azure’da dosyaları sanal makineye geri yükleme
 
@@ -117,6 +117,9 @@ Dosyalarınızı geri yüklemek için Azure Backup, yerel dosya olarak kurtarma 
 ## <a name="restore-file-to-your-vm"></a>Dosyayı sanal makinenize geri yükleme
 
 Sanal makinenize kurtarma betiği kopyalandığına göre artık kurtarma noktasını bağlayabilir ve dosyaları geri yükleyebilirsiniz.
+
+>[!NOTE]
+> Devam etmeden önce betiği sanal makinenizde çalıştırıp çalıştıracağınızı görmek için [buraya](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script) bakın.
 
 1. SSH ile sanal makinenize bağlanın. *publicIpAddress* değerini, aşağıdaki şekilde sanal makinenizin genel IP adresiyle değiştirin:
 

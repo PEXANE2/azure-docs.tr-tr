@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 69e4d992e2ef89b4d3d9408d6e50591fb8166c79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9699bb0e75aac19a2d5c5c68d07e85b1c17c7cbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75385788"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650171"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Hızlı başlangıç: Ruby ile Bing Varlık Arama API'si
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-ruby"></a>Hızlı başlangıç: Ruby kullanarak Bing Varlık Arama REST API arama isteği gönderme
 
 Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit Ruby uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb)' da kullanılabilir.
 
-Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bu uygulama Ruby dilinde yazılmış olsa da, API çoğu programlama dili ile uyumlu olan bir yenilenmiş Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -31,7 +31,7 @@ Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliy
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. En sevdiğiniz IDE veya kod düzenleyicide, bir haber Ruby dosyası oluşturun ve aşağıdaki paketleri içeri aktarın.
+1. En sevdiğiniz IDE veya kod düzenleyicide, bir haber Ruby dosyası oluşturun ve aşağıdaki paketleri içeri aktarın:
 
     ```ruby
     require 'net/https'
@@ -39,7 +39,7 @@ Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliy
     require 'json'
     ```
 
-2. API uç noktanız, haber arama URL 'niz, abonelik anahtarınız ve bir arama sorgusuyla ilgili değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+2. API uç noktanız, haber arama URL 'niz, abonelik anahtarınız ve arama sorgunuz için değişkenler oluşturun. Aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -51,7 +51,7 @@ Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliy
 
 ## <a name="format-and-make-an-api-request"></a>API isteğini biçimlendirme ve API isteğinde bulunma
 
-1. Market değişkeninizi `?mkt=` parametresine ekleyerek isteğiniz için parametreler dizesini oluşturun. Sorgunuzu kodlayın ve `&q=` parametreye ekleyin. API konağını, yolunu ve isteğinizi ve parametreleri bir URI nesnesi olarak atayın.
+1. Market değişkeninizi parametresine ekleyerek isteğiniz için parametreler dizesini oluşturun `?mkt=` . Sorgunuzu kodlayın ve `&q=` parametreye ekleyin. API konağını, yolunu ve isteğinizi ve parametreleri bir URI nesnesi olarak atayın.
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + CGI.escape(query)
@@ -65,7 +65,7 @@ Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliy
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. İsteği gönder ve yanıtı Yazdır
+3. İsteği gönderin ve yanıtı yazdırın.
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -146,4 +146,4 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 > [Tek sayfalı web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Varlık Arama API'si nedir?](../search-the-web.md)
-* [Bing Varlık Arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing varlık arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

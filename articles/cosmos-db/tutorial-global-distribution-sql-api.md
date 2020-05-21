@@ -1,18 +1,18 @@
 ---
 title: "Öğretici: SQL API 'SI için Azure Cosmos DB küresel dağıtım öğreticisi"
-description: "Öğretici: .net, Java, Python ve çeşitli diğer SDK 'lar ile SQL API 'sini kullanarak Azure Cosmos DB genel dağıtımı ayarlamayı öğrenin"
+description: "Öğretici: .NET, Java, Python ve çeşitli diğer SDK 'lar ile SQL API 'sini kullanarak Azure Cosmos DB genel dağıtımı ayarlamayı öğrenin"
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 177973cf766a6215453f3062c0fb206961649272
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9fbd42b6f4ef1afd0dfb4c47b6807105ff3810ca
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80295517"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677639"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Öğretici: SQL API 'sini kullanarak genel dağıtım Azure Cosmos DB ayarlama
 
@@ -28,7 +28,7 @@ Bu makale aşağıdaki görevleri kapsar:
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>SQL API’sini kullanarak tercih edilen bir bölgeye bağlanma
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a>SQL API 'sini kullanarak tercih edilen bir bölgeye bağlanma
 
 [Genel dağıtımdan](distribute-data-globally.md) yararlanmak için istemci uygulamaları, belge işlemlerini gerçekleştirmek için kullanılacak bölgelerin tercihe göre sıralanmış listesini belirtebilir. Bağlantı ilkesi ayarlanarak bu yapılabilir. Azure Cosmos DB hesap yapılandırmasına, geçerli bölgesel kullanılabilirliğe ve belirtilen tercih listesine göre yazma ve okuma işlemlerini gerçekleştirmek için SQL SDK tarafından en iyi uç nokta seçilir.
 

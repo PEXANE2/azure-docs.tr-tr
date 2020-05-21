@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6bcdfc3eb09b6c5ed4f8dde4d48a34bee8746e1e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7971681c3f0c99a11567e6a30e61167c5d42348c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599658"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680517"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Öğretici: SQL Data Sync kullanarak SQL Edge 'den Azure SQL veritabanı 'na veri eşitleme
 
@@ -22,7 +22,7 @@ Bu öğreticide, Azure SQL Edge 'ten Azure SQL veritabanı 'na artımlı olarak 
 
 SQL Edge, [SQL Server veritabanı altyapısının](/sql/sql-server/sql-server-technical-documentation/)en son sürümlerinde oluşturulduğundan, bir şirket içi SQL Server örneği için geçerli olan herhangi bir veri eşitleme mekanizması, bir kenar cihazında çalışan bir SQL Edge örneğinden veya buradan veri eşitlemek için de kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici, [Azure SQL Data Sync Için veri eşitleme aracısıyla](../sql-database/sql-database-data-sync-agent.md)yapılandırılmış bir Windows bilgisayarı gerektirir.
 
@@ -32,7 +32,7 @@ Bu öğretici, [Azure SQL Data Sync Için veri eşitleme aracısıyla](../sql-da
 
 * Azure SQL veritabanı dağıtımınızda tabloları ve diğer gerekli nesneleri oluşturun.
 
-* Azure SQL Edge dağıtımınızda gerekli tabloları ve nesneleri oluşturun. Daha fazla bilgi için bkz. SQL [VERITABANı dac PAKETLERINI SQL Edge Ile kullanma](stream-analytics.md).
+* Azure SQL Edge dağıtımınızda gerekli tabloları ve nesneleri oluşturun. Daha fazla bilgi için bkz. SQL [VERITABANı dac PAKETLERINI SQL Edge Ile kullanma](deploy-dacpac.md).
 
 * Azure SQL Edge örneğini Azure SQL Data Sync için veri eşitleme aracısına kaydedin. Daha fazla bilgi için bkz. Şirket [içi SQL Server veritabanı ekleme](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem).
 

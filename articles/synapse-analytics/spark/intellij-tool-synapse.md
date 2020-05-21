@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 62546fc98429c3a28217b1992f803aa40ce615c8
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 4d1fafa131a39ab72f6fc09663c7eb5b06107539
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982352"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644851"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Öğretici: Spark havuzları için Apache Spark uygulamalar oluşturmak için Azure Toolkit for IntelliJ kullanma (Önizleme)
 
@@ -23,7 +23,7 @@ Bu öğreticide, Azure Toolkit for IntelliJ eklentisinin, [Scala](https://www.sc
 - Spark havuzlarınızın kaynaklarına erişin.
 - Yerel olarak bir Scala Spark uygulaması geliştirin ve çalıştırın.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 >
 > - Azure Toolkit for IntelliJ eklentisini kullanma
@@ -59,16 +59,17 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     | Özellik | Açıklama |
     | ----- | ----- |
     |Proje adı| Bir ad girin. Bu öğreticide `myApp` kullanılır.|
-    |Proje&nbsp;konumu| Projenizi kaydetmek için istenen konumu girin.|
+    |Proje &nbsp; konumu| Projenizi kaydetmek için istenen konumu girin.|
     |Proje SDK 'Sı| Bu, ilk fıkrın kullanımı üzerinde boş olabilir. **Yeni...** öğesini seçin ve JDK 'nize gidin.|
     |Spark sürümü|Oluşturma Sihirbazı Spark SDK ve Scala SDK için doğru sürümü tümleştirir. SYNAPSE yalnızca **Spark 2.4.0**destekler.|
+    |||
 
     ![Apache Spark SDK 'sını seçme](./media/intellij-tool-synapse/create-synapse-application02.png)
 
 7. **Son**' u seçin. Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir.
 8. Spark projesi sizin için otomatik olarak bir yapı oluşturur. Yapıtı görüntülemek için aşağıdaki işletim sistemlerini yapın:
 
-   a. Menü çubuğundan **Dosya** > **projesi yapısına git...**.
+   a. Menü çubuğundan **Dosya**  >  **projesi yapısına git...**.
 
    b. **Proje yapısı** penceresinde **yapıtlar**' ı seçin.
 
@@ -76,7 +77,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     ![İletişim kutusunda yapıt bilgisi](./media/intellij-tool-synapse/default-artifact-dialog.png)
 
-9.  >  **MyApp****src**> **sample****main**>  **LogQuery**  > Main > **Scala**örnek**logquery**'den logquery bulun. Bu öğretici, çalıştırmak için **Logquery** kullanır.
+9. **LogQuery** **MyApp**  >  **src**  >  **Main**  >  **Scala** >  **örnek** >  **logquery**'den logquery bulun. Bu öğretici, çalıştırmak için **Logquery** kullanır.
 
    ![Projeden bir Scala sınıfı oluşturma komutları](./media/intellij-tool-synapse/select-run-file.png)
 
@@ -86,7 +87,7 @@ Spark havuzlarınız ile bağlantı kurmak için Azure aboneliğinde oturum aç�
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Azure aboneliğinizde oturum açın
 
-1. Menü çubuğunda, **Görünüm** > **Aracı Windows** > **Azure Gezgini**' ne gidin.
+1. Menü çubuğunda, **Görünüm**  >  **Aracı Windows**  >  **Azure Gezgini**' ne gidin.
 
    ![IntelliJ fıkır Azure Gezginini gösterir](./media/intellij-tool-synapse/show-azure-explorer1.png)
 
@@ -130,7 +131,7 @@ Bir Scala uygulaması oluşturduktan sonra, uzaktan çalıştırabilirsiniz.
 
     ![Spark uygulamasını HDInsight 'a Gönder komutu](./media/intellij-tool-synapse/open-configuration-window.png)
 
-2. **Çalıştır/hata ayıkla yapılandırma** iletişim penceresinde, ve sonra **+** **SYNAPSE üzerinde Apache Spark**' yi seçin.
+2. **Çalıştır/hata ayıkla yapılandırma** iletişim penceresinde, **+** ve sonra **SYNAPSE üzerinde Apache Spark**' yi seçin.
 
     ![Spark uygulamasını HDInsight 'a Gönder komutu](./media/intellij-tool-synapse/create-synapse-configuration02.png)
 
@@ -141,7 +142,7 @@ Bir Scala uygulaması oluşturduktan sonra, uzaktan çalıştırabilirsiniz.
     |Spark havuzları|Uygulamanızı çalıştırmak istediğiniz Spark havuzlarını seçin.|
     |Göndermek için bir yapıt seçin|Varsayılan ayarı bırakın.|
     |Ana sınıf adı|Varsayılan değer, seçili dosyadaki ana sınıftır. Üç nokta (**...**) simgesini seçip başka bir sınıf seçerek sınıfı değiştirebilirsiniz.|
-    |İş yapılandırması|Varsayılan anahtar ve değerleri değiştirebilirsiniz. Daha fazla bilgi için bkz. [Apache Livy REST API](https://livy.incubator.apache.org./docs/latest/rest-api.html).|
+    |İş yapılandırması|Varsayılan anahtar ve değerleri değiştirebilirsiniz. Daha fazla bilgi için bkz. [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Komut satırı bağımsız değişkenleri|Gerekirse ana sınıf için boşlukla ayrılmış bağımsız değişkenler girebilirsiniz.|
     |Başvurulan Jliler ve başvurulan dosyalar|Varsa, başvurulan jars ve dosyalar için yollar girebilirsiniz. Yalnızca ADLS 2. kümesini destekleyen Azure sanal dosya sistemindeki dosyalara da gidebilirsiniz. Daha fazla bilgi için: yapılandırma ve [kaynakları kümeye yükleme](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) [Apache Spark](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) .|
     |İş yükleme depolaması|Ek seçenekleri açığa çıkarmak için genişletin.|
@@ -164,7 +165,7 @@ Apache Spark işiniz için yerel çalıştırmayı ve yerel hata ayıklamayı ay
 
 ### <a name="scenario-1-do-local-run"></a>Senaryo 1: Yerel çalıştırma
 
-1. **Çalıştır/hata ayıkla yapılandırma** iletişim kutusunu açın, artı işaretini (**+**) seçin. Ardından **Apache Spark on SYNAPSE** seçeneğini belirleyin. Kaydedilecek **ad**, **ana sınıf adı** bilgilerini girin.
+1. **Çalıştır/hata ayıkla yapılandırma** iletişim kutusunu açın, artı işaretini ( **+** ) seçin. Ardından **Apache Spark on SYNAPSE** seçeneğini belirleyin. Kaydedilecek **ad**, **ana sınıf adı** bilgilerini girin.
 
     ![IntelliJ hata ayıklama yapılandırmalarının yerel çalıştırma Çalıştır](./media/intellij-tool-synapse/local-run-synapse.png)
 
@@ -176,7 +177,7 @@ Apache Spark işiniz için yerel çalıştırmayı ve yerel hata ayıklamayı ay
 
     ![IntelliJ hata ayıklama yapılandırmalarının yerel çalıştırma Çalıştır](./media/intellij-tool-synapse/local-run-synapse01.png)
 
-3. Yerel çalıştırma tamamlandığında, komut dosyası çıkış içeriyorsa, çıkış dosyasını **veri** > **__varsayılanındaki__** kontrol edebilirsiniz.
+3. Yerel çalıştırma tamamlandığında, komut dosyası çıkış içeriyorsa, çıkış dosyasını **veri**  >  **__varsayılanındaki__** kontrol edebilirsiniz.
 
     ![IntelliJ projesi yerel çalıştırma sonucu](./media/intellij-tool-synapse/spark-local-run-result.png)
 
@@ -189,7 +190,7 @@ Apache Spark işiniz için yerel çalıştırmayı ve yerel hata ayıklamayı ay
 
 ## <a name="access-and-manage-synapse-workspace"></a>SYNAPSE çalışma alanına erişin ve yönetin
 
-Azure Toolkit for IntelliJ içinde Azure Explorer 'da farklı işlemler gerçekleştirebilirsiniz. Menü çubuğunda, **Görünüm** > **Aracı Windows** > **Azure Gezgini**' ne gidin.
+Azure Toolkit for IntelliJ içinde Azure Explorer 'da farklı işlemler gerçekleştirebilirsiniz. Menü çubuğunda, **Görünüm**  >  **Aracı Windows**  >  **Azure Gezgini**' ne gidin.
 
 ### <a name="launch-workspace"></a>Çalışma alanını Başlat
 
@@ -211,8 +212,8 @@ Spark yerel konsolu 'Nu (Scala) çalıştırabilir veya Spark Livy etkileşimli 
 
 WINUTILS ' i karşıladığınızı doğrulayın. EXE önkoşulu.
 
-1. Menü çubuğundan **Çalıştır** > **yapılandırma yapılandırma...**' ya gidin.
-2. **Çalıştır/hata ayıkla yapılandırma** penceresinde, sol bölmede **SYNAPSE** > **[Spark on SYNAPSE] MyApp**' de Apache Spark ' a gidin.
+1. Menü çubuğundan **Çalıştır**  >  **yapılandırma yapılandırma...**' ya gidin.
+2. **Çalıştır/hata ayıkla yapılandırma** penceresinde, sol bölmede **SYNAPSE**  >  **[Spark on SYNAPSE] MyApp**' de Apache Spark ' a gidin.
 3. Ana pencereden **yerel olarak çalıştır** sekmesini seçin.
 4. Aşağıdaki değerleri girip **Tamam**' ı seçin:
 
@@ -223,15 +224,15 @@ WINUTILS ' i karşıladığınızı doğrulayın. EXE önkoşulu.
 
     ![Yerel konsol kümesi yapılandırması](./media/intellij-tool-synapse/local-console-synapse01.png)
 
-5. Projeden **MyApp** > **src** > **main**Main > **scala**Scala > **MyApp**sayfasına gidin.
-6. Menü çubuğundan **Araçlar** > **Spark konsolu** > **Spark yerel konsoluna (Scala)** gidin.
+5. Projeden **MyApp**  >  **src**  >  **Main**  >  **Scala**  >  **MyApp**sayfasına gidin.
+6. Menü çubuğundan **Araçlar**  >  **Spark konsolu**  >  **Spark yerel konsoluna (Scala)** gidin.
 7. Ardından, bağımlılıkları otomatik olarak onarmak isteyip istemediğinizi sormak için iki iletişim kutusu görüntülenebilir. Öyleyse **otomatik çözüm**' i seçin.
 
     ![IntelliJ fıkır Spark otomatik çözüm Dialog1](./media/intellij-tool-synapse/intellij-console-autofix1.png)
 
     ![IntelliJ fıkır Spark otomatik çözüm dialog2](./media/intellij-tool-synapse/intellij-console-autofix2.png)
 
-8. Konsol aşağıdaki resme benzer görünmelidir. Konsol penceresi yazın `sc.appName`ve ardından CTRL + ENTER tuşlarına basın. Sonuç görüntülenecektir. Yerel konsolu kırmızı düğme ' ye tıklayarak durdurabilirsiniz.
+8. Konsol aşağıdaki resme benzer görünmelidir. Konsol penceresi yazın `sc.appName` ve ardından CTRL + ENTER tuşlarına basın. Sonuç görüntülenecektir. Yerel konsolu kırmızı düğme ' ye tıklayarak durdurabilirsiniz.
 
     ![IntelliJ fıkır yerel konsol sonucu](./media/intellij-tool-synapse/local-console-result.png)
 
@@ -239,9 +240,9 @@ WINUTILS ' i karşıladığınızı doğrulayın. EXE önkoşulu.
 
 Yalnızca IntelliJ 2018,2 ve 2018,3 ' de desteklenir.
 
-1. Menü çubuğundan **Çalıştır** > **yapılandırma yapılandırma...**' ya gidin.
+1. Menü çubuğundan **Çalıştır**  >  **yapılandırma yapılandırma...**' ya gidin.
 
-2. **Çalıştır/hata ayıkla yapılandırma** penceresinde, sol bölmede **SYNAPSE** > **[Spark on SYNAPSE] MyApp**' de Apache Spark ' a gidin.
+2. **Çalıştır/hata ayıkla yapılandırma** penceresinde, sol bölmede **SYNAPSE**  >  **[Spark on SYNAPSE] MyApp**' de Apache Spark ' a gidin.
 
 3. Ana pencereden, **küme Içinde uzaktan Çalıştır** sekmesini seçin.
 
@@ -254,10 +255,10 @@ Yalnızca IntelliJ 2018,2 ve 2018,3 ' de desteklenir.
 
     ![Etkileşimli konsol ayarlama yapılandırması](./media/intellij-tool-synapse/interactive-console-configuration.png)
 
-5. Projeden **MyApp** > **src** > **main**Main > **scala**Scala > **MyApp**sayfasına gidin.
+5. Projeden **MyApp**  >  **src**  >  **Main**  >  **Scala**  >  **MyApp**sayfasına gidin.
 
-6. Menü çubuğundan **Araçlar** > **Spark konsolu** > ,**Spark Livy etkileşimli oturum konsolu 'nu (Scala) çalıştırın**.
-7. Konsol aşağıdaki resme benzer görünmelidir. Konsol penceresi yazın `sc.appName`ve ardından CTRL + ENTER tuşlarına basın. Sonuç görüntülenecektir. Yerel konsolu kırmızı düğme ' ye tıklayarak durdurabilirsiniz.
+6. Menü çubuğundan **Araçlar**  >  **Spark konsolu**,  >  **Spark Livy etkileşimli oturum konsolu 'nu (Scala) çalıştırın**.
+7. Konsol aşağıdaki resme benzer görünmelidir. Konsol penceresi yazın `sc.appName` ve ardından CTRL + ENTER tuşlarına basın. Sonuç görüntülenecektir. Yerel konsolu kırmızı düğme ' ye tıklayarak durdurabilirsiniz.
 
     ![IntelliJ fıkır etkileşimli konsol sonucu](./media/intellij-tool-synapse/interactive-console-result.png)
 
@@ -270,4 +271,4 @@ Yerel konsola veya Livy etkileşimli oturum konsoluna (Scala) bazı kodlar gönd
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Azure SYNAPSE Analytics çalışma alanı için yeni bir Apache Spark havuzu oluşturma](../../synapse-analytics/quickstart-create-apache-spark-pool.md)
+- [Azure SYNAPSE Analytics çalışma alanı için yeni bir Apache Spark havuzu oluşturma](../../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)

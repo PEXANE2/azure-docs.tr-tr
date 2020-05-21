@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 5b1c6561519bc25c2b7ac77f0a25eff89413a07a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81256493"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684737"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>Öğretici: bir Machine Learning modeli oluşturmak için R kullanın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > * Veri yükleme ve eğitim için hazırlanma
 > * Verileri bir veri deposuna yükleme uzak eğitim için kullanılabilir
 > * Modeli uzaktan eğitme için bir işlem kaynağı oluşturma
-> * Fatality olasılığını `caret` tahmin etmek için bir modeli eğitme
+> * `caret`Fatality olasılığını tahmin etmek için bir modeli eğitme
 > * Tahmin uç noktası dağıtma
 > * Modeli R 'den test etme
 
@@ -121,10 +121,10 @@ Bu öğreticide geliştirme çalışmalarınız için kurulum aşağıdaki eylem
 library(azuremlsdk)
 ```
 
-Eğitim ve Puanlama betikleri (`accidents.R` ve `accident_predict.R`) bazı ek bağımlılıklara sahiptir. Bu betikleri yerel olarak çalıştırmayı planlıyorsanız, gerekli paketlerin de bulunduğundan emin olun.
+Eğitim ve Puanlama betikleri ( `accidents.R` ve `accident_predict.R` ) bazı ek bağımlılıklara sahiptir. Bu betikleri yerel olarak çalıştırmayı planlıyorsanız, gerekli paketlerin de bulunduğundan emin olun.
 
 ### <a name="load-your-workspace"></a>Çalışma alanınızı yükleme
-Mevcut çalışma alanınızdan bir çalışma alanı nesnesi örneği oluşturun. Aşağıdaki kod, **config. JSON** dosyasından çalışma alanı ayrıntılarını yükler. Ayrıca kullanarak [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html)bir çalışma alanı da alabilirsiniz.
+Mevcut çalışma alanınızdan bir çalışma alanı nesnesi örneği oluşturun. Aşağıdaki kod, **config. JSON** dosyasından çalışma alanı ayrıntılarını yükler. Ayrıca kullanarak bir çalışma alanı da alabilirsiniz [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html) .
 
 ```R
 ws <- load_workspace_from_config()
@@ -159,7 +159,7 @@ wait_for_provisioning_completion(compute_target)
 
 ## <a name="prepare-data-for-training"></a>Eğitim için verileri hazırlama
 Bu öğretici ABD [Ulusal otoyolu trafik güvenliği yönetimi](https://cdan.nhtsa.gov/tsftables/tsfar.htm) ( [Mary C. Meyer ve Tremika Finney](https://www.stat.colostate.edu/~meyer/airbags.htm)sayesinde) verilerini kullanır.
-Bu veri kümesi, Fatality olma olasılığını tahmin etmek için kullanabileceğiniz değişkenlerle birlikte ABD 'de 25.000 otomobil kilitlenmelerinden veri içerir. İlk olarak, verileri R 'ye aktarın ve analiz için yeni bir veri çerçevesine `accidents` dönüştürün ve dosyayı bir `Rdata` dosyaya dışarı aktarın.
+Bu veri kümesi, Fatality olma olasılığını tahmin etmek için kullanabileceğiniz değişkenlerle birlikte ABD 'de 25.000 otomobil kilitlenmelerinden veri içerir. İlk olarak, verileri R 'ye aktarın ve analiz için yeni bir veri çerçevesine dönüştürün `accidents` ve dosyayı bir dosyaya dışarı aktarın `Rdata` .
 
 ```R
 nassCDS <- read.csv("nassCDS.csv", 
@@ -200,11 +200,11 @@ Bu öğreticide, uzaktan işlem kümenizi kullanarak karşıya yüklenen veriler
 * İşi gönderme
 
 ### <a name="prepare-the-training-script"></a>Eğitim betiğini hazırlama
-Bu öğreticiyle aynı `accidents.R` dizinde sizin için çağrılan bir eğitim betiği sunulmaktadır. Eğitim betiğine yönelik olarak Azure Machine Learning faydalanmak için yapılan **eğitim betiği içinde** aşağıdaki ayrıntılara dikkat edin:
+`accidents.R`Bu öğreticiyle aynı dizinde sizin için çağrılan bir eğitim betiği sunulmaktadır. Eğitim betiğine yönelik olarak Azure Machine Learning faydalanmak için yapılan **eğitim betiği içinde** aşağıdaki ayrıntılara dikkat edin:
 
-* Eğitim betiği, eğitim verilerini içeren `-d` dizini bulmak için bir bağımsız değişken alır. İşinizi daha sonra tanımlayıp gönderdiğinizde, bu bağımsız değişken için veri deposuna işaret edersiniz. Azure ML, eğitim işi için depolama klasörünü uzak kümeye bağlayacaktır.
-* Eğitim betiği, kullanarak `log_metric_to_run()`Azure ML 'deki çalıştırma kaydına bir ölçüm olarak son doğruluğu günlüğe kaydeder. Azure ML SDK, eğitim çalıştırmaları sırasında çeşitli ölçümleri günlüğe kaydetmek için bir günlük API kümesi sağlar. Bu ölçümler, deneme çalıştırması kaydında kaydedilir ve kalıcı hale getirilir. Ölçümlere daha sonra istediğiniz zaman erişilebilir veya [Studio](https://ml.azure.com)'daki çalıştırma ayrıntıları sayfasında görüntüleyebilirsiniz. Günlük yöntemlerinin [reference](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) `log_*()`tamamına yönelik başvuruya bakın.
-* Eğitim betiği, modelinizi **çıktılar**adlı bir dizine kaydeder. Klasör `./outputs` , Azure ML tarafından özel bir işleme alır. Eğitim sırasında, üzerine `./outputs` yazılan dosyalar Azure ML tarafından çalıştırma kaydlarınıza otomatik olarak yüklenir ve yapıtlar olarak kalıcı hale getirilir. Eğitilen modeli uygulamasına `./outputs`kaydederek, çalışma bittikten sonra ve uzaktan eğitim ortamınıza artık erişiminiz olmadığında bile model dosyanıza erişebiliyor ve bu dosyayı alabilirsiniz.
+* Eğitim betiği, `-d` eğitim verilerini içeren dizini bulmak için bir bağımsız değişken alır. İşinizi daha sonra tanımlayıp gönderdiğinizde, bu bağımsız değişken için veri deposuna işaret edersiniz. Azure ML, eğitim işi için depolama klasörünü uzak kümeye bağlayacaktır.
+* Eğitim betiği, kullanarak Azure ML 'deki çalıştırma kaydına bir ölçüm olarak son doğruluğu günlüğe kaydeder `log_metric_to_run()` . Azure ML SDK, eğitim çalıştırmaları sırasında çeşitli ölçümleri günlüğe kaydetmek için bir günlük API kümesi sağlar. Bu ölçümler, deneme çalıştırması kaydında kaydedilir ve kalıcı hale getirilir. Ölçümlere daha sonra istediğiniz zaman erişilebilir veya [Studio](https://ml.azure.com)'daki çalıştırma ayrıntıları sayfasında görüntüleyebilirsiniz. Günlük yöntemlerinin tamamına yönelik [başvuruya](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) bakın `log_*()` .
+* Eğitim betiği, modelinizi **çıktılar**adlı bir dizine kaydeder. `./outputs`Klasör, Azure ML tarafından özel bir işleme alır. Eğitim sırasında, üzerine yazılan dosyalar `./outputs` Azure ML tarafından çalıştırma kaydlarınıza otomatik olarak yüklenir ve yapıtlar olarak kalıcı hale getirilir. Eğitilen modeli uygulamasına kaydederek `./outputs` , çalışma bittikten sonra ve uzaktan eğitim ortamınıza artık erişiminiz olmadığında bile model dosyanıza erişebiliyor ve bu dosyayı alabilirsiniz.
 
 ### <a name="create-an-estimator"></a>Tahmin aracı oluşturma
 
@@ -212,11 +212,11 @@ Azure ML tahmin aracı, işlem hedefinde bir eğitim betiği yürütmek için ge
 
 Estimator oluşturmak için şunu tanımlayın:
 
-* Eğitim (`source_directory`) için gereken betiklerinizi içeren dizin. Bu dizindeki tüm dosyalar, yürütme için küme düğümüne yüklenir. Dizin, eğitim betiğinizi ve gereken ek betikleri içermelidir.
-* Yürütülecek eğitim betiği (`entry_script`).
-* Bu durumda, daha`compute_target`önce oluşturduğunuz amlcompute kümesi, bu örnekte işlem hedefi ().
-* Eğitim betiğiyle (`script_params`) gerekli parametreler. Azure ML, eğitim betiğinizi ile `Rscript`bir komut satırı betiği olarak çalıştıracaktır. Bu öğreticide, ile erişebileceğiniz veri dizini bağlama noktası olan `ds$path(target_path)`betiğe bir bağımsız değişken belirtirsiniz.
-* Eğitim için gereken tüm ortam bağımlılıkları. Eğitim için tasarlanan varsayılan Docker görüntüsü, eğitim betiğine gereken üç paketi`caret`( `e1071`,, `optparse`ve) zaten içerir.  Bu nedenle ek bilgi belirtmeniz gerekmez. Varsayılan olarak dahil olmayan R paketleri kullanıyorsanız, ek CRAN paketleri eklemek için Estimator 'un `cran_packages` parametresini kullanın. Yapılandırılabilir seçeneklerin [`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html) tam kümesinin başvurusuna bakın.
+* Eğitim () için gereken betiklerinizi içeren dizin `source_directory` . Bu dizindeki tüm dosyalar, yürütme için küme düğümüne yüklenir. Dizin, eğitim betiğinizi ve gereken ek betikleri içermelidir.
+* Yürütülecek eğitim betiği ( `entry_script` ).
+* `compute_target`Bu durumda, daha önce oluşturduğunuz AmlCompute kümesi, bu örnekte işlem hedefi ().
+* Eğitim betiğiyle () gerekli parametreler `script_params` . Azure ML, eğitim betiğinizi ile bir komut satırı betiği olarak çalıştıracaktır `Rscript` . Bu öğreticide, ile erişebileceğiniz veri dizini bağlama noktası olan betiğe bir bağımsız değişken belirtirsiniz `ds$path(target_path)` .
+* Eğitim için gereken tüm ortam bağımlılıkları. Eğitim için tasarlanan varsayılan Docker görüntüsü, `caret` `e1071` eğitim betiğine gereken üç paketi (,, ve) zaten içerir `optparse` .  Bu nedenle ek bilgi belirtmeniz gerekmez. Varsayılan olarak dahil olmayan R paketleri kullanıyorsanız, `cran_packages` ek CRAN paketleri eklemek için Estimator 'un parametresini kullanın. [`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html)Yapılandırılabilir seçeneklerin tam kümesinin başvurusuna bakın.
 
 ```R
 est <- estimator(source_directory = ".",
@@ -252,7 +252,7 @@ Siz ve çalışma alanına erişimi olan iş arkadaşları--paralel olarak birde
 Modelinize yönelik eğitimi tamamladıktan sonra, kaydedilen tüm ölçümler ve son eğitilen model dahil olmak üzere, çalışma kaydında kalıcı olan iş yapıtlarına erişebilirsiniz.
 
 ### <a name="get-the-logged-metrics"></a>Günlüğe kaydedilen ölçümleri alın
-Eğitim betiğiyle `accidents.R`, modelinizden bir ölçüm günlüğe kaydedilir: eğitim verilerinde tahminlerinin doğruluğu. Ölçümleri [Studio](https://ml.azure.com)'da görebilir veya bir R listesi olarak yerel oturuma aşağıdaki gibi ayıklayabilirsiniz:
+Eğitim betiğiyle `accidents.R` , modelinizden bir ölçüm günlüğe kaydedilir: eğitim verilerinde tahminlerinin doğruluğu. Ölçümleri [Studio](https://ml.azure.com)'da görebilir veya bir R listesi olarak yerel oturuma aşağıdaki gibi ayıklayabilirsiniz:
 
 ```R
 metrics <- get_run_metrics(run)
@@ -262,7 +262,7 @@ metrics
 Birden çok denemeleri (örneğin, farklı değişkenler, algoritmalar veya hiper paramers kullanarak) çalıştırırsanız, üretimde kullanacağınız modeli karşılaştırmak ve seçmek için her çalıştıranların ölçümlerini kullanabilirsiniz.
 
 ### <a name="get-the-trained-model"></a>Eğitilen modeli al
-Eğitilen modeli alabilir ve yerel R oturumunuzda sonuçlara bakabilirsiniz. Aşağıdaki kod, model dosyasını içeren `./outputs` dizinin içeriğini indirir.
+Eğitilen modeli alabilir ve yerel R oturumunuzda sonuçlara bakabilirsiniz. Aşağıdaki kod, `./outputs` model dosyasını içeren dizinin içeriğini indirir.
 
 ```R
 download_files_from_run(run, prefix="outputs/")
@@ -309,7 +309,7 @@ Modelinize göre, çakışmadan ölüm tehlikini tahmin edebilirsiniz. Azure ML 
 
 ### <a name="register-the-model"></a>Modeli kaydedin
 
-İlk olarak, çalışma alanınıza indirdiğiniz modeli ile [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html)kaydedin. Kayıtlı bir model herhangi bir dosya koleksiyonu olabilir, ancak bu durumda R model nesnesi yeterlidir. Azure ML, dağıtım için kayıtlı modeli kullanır.
+İlk olarak, çalışma alanınıza indirdiğiniz modeli ile kaydedin [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html) . Kayıtlı bir model herhangi bir dosya koleksiyonu olabilir, ancak bu durumda R model nesnesi yeterlidir. Azure ML, dağıtım için kayıtlı modeli kullanır.
 
 ```R
 model <- register_model(ws, 
@@ -319,7 +319,7 @@ model <- register_model(ws,
 ```
 
 ### <a name="define-the-inference-dependencies"></a>Çıkarım bağımlılıklarını tanımlama
-Modelinize yönelik bir Web hizmeti oluşturmak için önce bir Puanlama betiği (`entry_script`) oluşturmanız gerekır (JSON biçiminde) ve modelinizden bir tahmin çıktısı alacak bir R betiği. Bu öğretici için, sunulan Puanlama dosyasını `accident_predict.R`kullanın. Puanlama betiği, modelinizi yükleyen ve `init()` giriş verilerine dayalı bir tahmin yapmak için modeli kullanan bir işlev döndüren bir yöntem içermelidir. Daha fazla bilgi için [belgelere](https://azure.github.io/azureml-sdk-for-r/reference/inference_config.html#details) bakın.
+Modelinize yönelik bir Web hizmeti oluşturmak için önce bir Puanlama betiği () oluşturmanız gerekir ( `entry_script` JSON biçiminde) ve modelinizden bir tahmin çıktısı alacak bir R betiği. Bu öğretici için, sunulan Puanlama dosyasını kullanın `accident_predict.R` . Puanlama betiği, `init()` modelinizi yükleyen ve giriş verilerine dayalı bir tahmin yapmak için modeli kullanan bir işlev döndüren bir yöntem içermelidir. Daha fazla bilgi için [belgelere](https://azure.github.io/azureml-sdk-for-r/reference/inference_config.html#details) bakın.
 
 Sonra, betiğinizin paket bağımlılıkları için bir Azure ML **ortamı** tanımlayın. Bir ortamla, betiğinizin çalışması için gereken R paketlerini (CRAN veya başka bir yerde) belirtirsiniz. Ayrıca, betiğinizin davranışını değiştirmek için başvurmasına olanak sağlayan ortam değişkenlerinin değerlerini de sağlayabilirsiniz. Varsayılan olarak, Azure ml, eğitim için tahmin aracı ile kullanılan varsayılan Docker görüntüsünü oluşturur. Öğreticinin özel gereksinimleri olmadığından, özel öznitelikleri olmayan bir ortam oluşturun.
 
@@ -327,7 +327,7 @@ Sonra, betiğinizin paket bağımlılıkları için bir Azure ML **ortamı** tan
 r_env <- r_environment(name = "basic_env")
 ```
 
-Bunun yerine dağıtım için kendi Docker görüntünüzü kullanmak istiyorsanız, `custom_docker_image` parametresini belirtin. Ortam tanımlama [`r_environment()`](https://azure.github.io/azureml-sdk-for-r/reference/r_environment.html) için yapılandırılabilir seçeneklerin tam kümesinin başvurusuna bakın.
+Bunun yerine dağıtım için kendi Docker görüntünüzü kullanmak istiyorsanız, `custom_docker_image` parametresini belirtin. [`r_environment()`](https://azure.github.io/azureml-sdk-for-r/reference/r_environment.html)Ortam tanımlama için yapılandırılabilir seçeneklerin tam kümesinin başvurusuna bakın.
 
 Artık Puanlama betiğinizi ve ortam bağımlılıklarınızı kapsüllemek için bir **çıkarım yapılandırması** oluşturmak için ihtiyacınız olan her şeye sahipsiniz.
 
@@ -338,7 +338,7 @@ inference_config <- inference_config(
 ```
 
 ### <a name="deploy-to-aci"></a>ACI'ye dağıtma
-Bu öğreticide, hizmetinizi ACI 'ye dağıtacaksınız. Bu kod, test ve hafif yüklemeler için uygun olan gelen isteklere yanıt vermek için tek bir kapsayıcı sağlar. Ek [`aci_webservice_deployment_config()`](https://azure.github.io/azureml-sdk-for-r/reference/aci_webservice_deployment_config.html) yapılandırılabilir seçenekler için bkz.. (Üretim ölçeğinde dağıtımlar için [Azure Kubernetes hizmeti](https://azure.github.io/azureml-sdk-for-r/articles/deploy-to-aks/deploy-to-aks.html)' ne de dağıtım yapabilirsiniz.)
+Bu öğreticide, hizmetinizi ACI 'ye dağıtacaksınız. Bu kod, test ve hafif yüklemeler için uygun olan gelen isteklere yanıt vermek için tek bir kapsayıcı sağlar. [`aci_webservice_deployment_config()`](https://azure.github.io/azureml-sdk-for-r/reference/aci_webservice_deployment_config.html)Ek yapılandırılabilir seçenekler için bkz.. (Üretim ölçeğinde dağıtımlar için [Azure Kubernetes hizmeti](https://azure.github.io/azureml-sdk-for-r/articles/deploy-to-aks.html)' ne de dağıtım yapabilirsiniz.)
 
 ``` R
 aci_config <- aci_webservice_deployment_config(cpu_cores = 1, memory_gb = 0.5)
@@ -358,7 +358,7 @@ wait_for_deployment(aci_service, show_output = TRUE)
 
 ## <a name="test-the-deployed-service"></a>Dağıtılan hizmeti test etme
 
-Artık modelinize bir hizmet olarak dağıtıldığına göre, hizmetini kullanarak [`invoke_webservice()`](https://azure.github.io/azureml-sdk-for-r/reference/invoke_webservice.html)R 'den test edebilirsiniz.  Tahmin edilecek yeni bir veri kümesi sağlayın, bunu JSON 'a dönüştürün ve hizmete gönderin.
+Artık modelinize bir hizmet olarak dağıtıldığına göre, hizmetini kullanarak R 'den test edebilirsiniz [`invoke_webservice()`](https://azure.github.io/azureml-sdk-for-r/reference/invoke_webservice.html) .  Tahmin edilecek yeni bir veri kümesi sağlayın, bunu JSON 'a dönüştürün ve hizmete gönderin.
 
 ```R
 library(jsonlite)

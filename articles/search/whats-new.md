@@ -7,29 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/24/2020
-ms.openlocfilehash: 0aea6a42269712e5c1e505c270f9d88635de83e5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/19/2020
+ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195277"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682472"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
 
-<a name="new-service-name"></a>
-
-## <a name="new-service-name"></a>Yeni hizmet adı
-
-Azure Search, çekirdek işlemlerde bilişsel yeteneklerin ve AI işlemenin genişletilmiş (henüz isteğe bağlı) kullanımını yansıtmak için artık **Azure bilişsel arama** olarak yeniden adlandırıldı. API sürümleri, NuGet paketleri, ad alanları ve uç noktalar değiştirilmez. Yeni ve mevcut arama çözümleri, hizmet adı değişikliğinden etkilenmez.
-
 ## <a name="feature-announcements"></a>Özellik Duyuruları
 
-### <a name="may-2020"></a>Mayıs 2020
+### <a name="may-2020-microsoft-build"></a>Mayıs 2020 (Microsoft derleme)
 
-+ Hata ayıklama oturumları özelliği şu anda önizlemededir. [Erişim istemek Için kaydolun](https://aka.ms/DebugSessions).
++ [Hata ayıklama oturumları](cognitive-search-debug-session.md) özelliği şu anda önizlemededir. [Erişim istemek Için kaydolun](https://aka.ms/DebugSessions). Hata ayıklama oturumları, beceri ile ilgili sorunları araştırmak ve çözmek için portal tabanlı bir arabirim sağlar. Hata ayıklama oturumunda oluşturulan düzeltmeler üretim becerileri kaydedilebilir. [Bu öğreticiyi](cognitive-search-tutorial-debug-sessions.md)kullanmaya başlayın.
+
++ Güvenlik geliştirmeleri, genel İnternet üzerinden erişilemeyen [bir özel arama uç noktası (Önizleme) ayarlama](service-create-private-endpoint.md) olanağını içerir. Ayrıca, [bağlantılı güvenlik duvarı desteği (Önizleme) IÇIN IP kurallarını da yapılandırabilirsiniz](service-configure-firewall.md).
+
++ Dizin oluşturmak üzere bir Azure veri kaynağıyla bağlantı kurmak için [sistem tarafından yönetilen bir kimlik (Önizleme)](search-howto-managed-identities-data-sources.md) kullanın. Azure SQL veritabanı, Azure Cosmos DB ve Azure depolama gibi Azure veri kaynaklarından içerik alan [Dizin oluşturucular](search-indexer-overview.md) için geçerlidir.
+
++ [ScoringStatistics = Global sorgu parametresini](index-similarity-and-scoring.md#scoring-statistics)kullanarak, arama puanlarının her parça başına ve tüm parçalara göre nasıl hesaplandığından bağımsız olarak değişiklik yapın.
 
 ### <a name="march-2020"></a>Mart 2020
 
@@ -77,6 +77,12 @@ Azure Search, çekirdek işlemlerde bilişsel yeteneklerin ve AI işlemenin geni
 ### <a name="july-2019"></a>Temmuz 2019
 
 + [Azure Kamu Bulutu](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)'nda genel olarak kullanılabilir.
+
+<a name="new-service-name"></a>
+
+## <a name="new-service-name"></a>Yeni hizmet adı
+
+Azure Search, çekirdek işlemlerde bilişsel yeteneklerin ve AI işlemenin genişletilmiş (henüz isteğe bağlı) kullanımını yansıtmak için artık **Azure bilişsel arama** olarak yeniden adlandırıldı. API sürümleri, NuGet paketleri, ad alanları ve uç noktalar değiştirilmez. Yeni ve mevcut arama çözümleri, hizmet adı değişikliğinden etkilenmez.
 
 ## <a name="service-updates"></a>Hizmet güncelleştirmeleri
 

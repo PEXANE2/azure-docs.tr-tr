@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3bf7ff668584a78fea6e2d787e96f36a20f12e37
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f3e53ac189e0d612b09c362e82ba5bc2fe5fec8d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197623"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696837"
 ---
 # <a name="cetas-with-synapse-sql"></a>SYNAPSE SQL ile CETAS
 
@@ -35,7 +35,7 @@ SQL havuzu, CETAS kullanımı ve sözdizimi için [dış tablo oluştur 'U seçi
 
 SQL isteğe bağlı kaynağı kullanılırken, CETAS, dış tablo oluşturmak ve sorgu sonuçlarını Azure Depolama Blobu veya Azure Data Lake Storage 2. dışarı aktarmak için kullanılır.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
 
 ```syntaxsql
 CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] table_name
@@ -89,7 +89,9 @@ CETAS 'ın çalışması için klasör içeriğini listeleme ve konum klasörün
 
 Bu örnekler, yıl ve eyalet tarafından toplanan toplam popülasyonu, population_ds veri kaynağında bulunan bir aggregated_data klasörüne kaydetmek için CETAS kullanır.
 
-Bu örnek, daha önce oluşturulan kimlik bilgisini, veri kaynağını ve dış dosya biçimini kullanır. [Dış tablolar](develop-tables-external-tables.md) belgesine bakın. Sorgu sonuçlarını aynı veri kaynağındaki farklı bir klasöre kaydetmek için konum bağımsız değişkenini değiştirin. Sonuçları farklı bir depolama hesabına kaydetmek için DATA_SOURCE bağımsız değişkeni için farklı bir veri kaynağı oluşturun ve kullanın.
+Bu örnek, daha önce oluşturulan kimlik bilgisini, veri kaynağını ve dış dosya biçimini kullanır. [Dış tablolar](develop-tables-external-tables.md) belgesine bakın. Sorgu sonuçlarını aynı veri kaynağındaki farklı bir klasöre kaydetmek için konum bağımsız değişkenini değiştirin. 
+
+Sonuçları farklı bir depolama hesabına kaydetmek için DATA_SOURCE bağımsız değişkeni için farklı bir veri kaynağı oluşturun ve kullanın.
 
 > [!NOTE]
 > Aşağıdaki örnekler, genel bir Azure açık veri depolama hesabı kullanır. Salt okunurdur. Bu sorguları yürütmek için, yazma izinlerine sahip olduğunuz veri kaynağını sağlamanız gerekir.
@@ -114,7 +116,7 @@ GO
 SELECT * FROM population_by_year_state
 ```
 
-Aşağıdaki örnek, CETAS kaynağı olarak bir dış tablo kullanır. Daha önce oluşturulan kimlik bilgisini, veri kaynağını, dış dosya biçimini ve dış tabloyu kullanır. [Dış tablolar](develop-tables-external-tables.md) belgesine bakın.
+Aşağıdaki örnek, bir dış tabloyu CETAS kaynağı olarak kullanır. Daha önce oluşturulan kimlik bilgisini, veri kaynağını, dış dosya biçimini ve dış tabloyu kullanır. [Dış tablolar](develop-tables-external-tables.md) belgesine bakın.
 
 ```sql
 -- use CETAS with select from external table
@@ -142,7 +144,7 @@ CETAS, sonuç kümelerini aşağıdaki SQL veri türleriyle depolamak için kull
 - ikili
 - char
 - varchar
-- tarih
+- date
 - time
 - datetime2
 - decimal
@@ -155,9 +157,10 @@ CETAS, sonuç kümelerini aşağıdaki SQL veri türleriyle depolamak için kull
 - tinyint
 - bit
 
-LOB 'Lar CETAS ile kullanılamaz.
+> [!NOTE]
+> LOB 'Lar CETAS ile kullanılamaz.
 
-Aşağıdaki veri türleri, CETAS 'ın SEÇIM bölümünde kullanılamaz:
+Aşağıdaki veri türleri, CETAS 'ın SELECT bölümünde kullanılamaz:
 
 - nchar
 - nvarchar
@@ -170,4 +173,4 @@ Aşağıdaki veri türleri, CETAS 'ın SEÇIM bölümünde kullanılamaz:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Spark tablolarını](develop-storage-files-spark-tables.md)sorgulamayı deneyebilirsiniz.
+[Azure SYNAPSE dış tabloları için Apache Spark](develop-storage-files-spark-tables.md)sorgulamayı deneyebilirsiniz.

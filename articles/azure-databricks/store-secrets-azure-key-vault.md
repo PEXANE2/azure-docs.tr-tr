@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 026165c7c2052992e8ab485f9ab81c8964f38235
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75889067"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647955"
 ---
-# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Öğretici: Azure Key Vault kullanarak Azure Databricks Azure Blob depolamaya erişme
+# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Öğretici: Azure Key Vault'u kullanarak Azure Databricks'ten Azure Blob Depolama'ya erişme
 
 Bu öğreticide, anahtar kasasında depolanan gizli dizileri kullanarak Azure Databricks Azure Blob depolamaya nasıl erişebileceğiniz açıklanmaktadır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Depolama hesabı ve BLOB kapsayıcısı oluşturma
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
@@ -40,7 +40,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Depolama hesabı ve BLOB kapsayıcısı oluşturma
 
-1. Azure Portal, **kaynak** > **depolama alanı**oluştur ' u seçin. Ardından **depolama hesabı**' nı seçin.
+1. Azure Portal, **kaynak**  >  **depolama alanı**oluştur ' u seçin. Ardından **depolama hesabı**' nı seçin.
 
    ![Azure depolama hesabı kaynağını bulma](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
 
@@ -76,7 +76,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
    |Özellik|Açıklama|
    |--------|-----------|
-   |Adı|Anahtar kasanızın benzersiz adı.|
+   |Name|Anahtar kasanızın benzersiz adı.|
    |Abonelik|Bir abonelik seçin.|
    |Kaynak grubu|Bir kaynak grubu seçin veya yeni bir tane oluşturun.|
    |Konum|Konum seçin.|
@@ -94,7 +94,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    |Özellik|Değer|
    |--------|-----------|
    |Karşıya yükleme seçenekleri|El ile|
-   |Adı|Depolama hesabı anahtarınız için kolay ad.|
+   |Name|Depolama hesabı anahtarınız için kolay ad.|
    |Değer|depolama hesabınızdan key1.|
 
    ![Yeni Anahtar Kasası gizli dizisi özellikleri](./media/store-secrets-azure-key-vault/create-storage-secret.png)
@@ -105,7 +105,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-an-azure-databricks-workspace-and-add-a-secret-scope"></a>Azure Databricks çalışma alanı oluşturma ve gizli dizi kapsamı ekleme
 
-1. Azure Portal, **kaynak** > **Analizi** > oluştur**Azure Databricks**' u seçin.
+1. Azure Portal, **kaynak**  >  **Analizi**oluştur  >  **Azure Databricks**' u seçin.
 
     ![Azure portal databricks](./media/store-secrets-azure-key-vault/azure-databricks-on-portal.png)
 
@@ -167,7 +167,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    ```
 
    * **takma ad** , BLOB depolama kapsayıcısının veya kapsayıcı içindeki bir klasörün (kaynakta belirtilen) nereye bağlandığını temsil eden BIR dBFS yoludur.
-   * **conf-Key** ya da `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` olabilir`fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
+   * **conf-Key** `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` ya da olabilir`fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
    * **kapsam adı** , önceki bölümde oluşturduğunuz gizli kapsamın adıdır. 
    * **anahtar adı** , anahtar kasasındaki depolama hesabı anahtarı için oluşturduğunuz gizli anahtar adı.
 
@@ -176,7 +176,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 6. BLOB depolama kapsayıcıınızda bulunan metin dosyasını bir veri çerçevesine okumak için aşağıdaki komutu çalıştırın. Komutdaki değerleri, bağlama adı ve dosya adınızla eşleşecek şekilde değiştirin.
 
    ```python
-   df = spark.read.text("mnt/<mount-name>/<file-name>")
+   df = spark.read.text("/mnt/<mount-name>/<file-name>")
    ```
 
    ![Dosyayı dataframe 'e oku](./media/store-secrets-azure-key-vault/command2.png)

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: b3a9c95233c2016dc35f4fcade3e2634e121d252
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c9e594af96fd43bc03f67caa06f585ab57b4b6e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591786"
+ms.locfileid: "83643461"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Öğretici: Bir sınıf laboratuvarı ayarlama 
 Bu öğreticide, sınıftaki öğrenciler tarafından kullanılan sanal makinelerle bir sınıf laboratuvarı ayarlayacaksınız.  
@@ -32,7 +32,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Laboratuvar için zamanlamayı ayarla
 > * Öğrenciye davetiye e-postası gönder
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticide, sınıfınız için sanal makinelerle bir laboratuvar ayarlarsınız. Laboratuvar hesabında bir derslik Laboratuvarı ayarlamak için laboratuvar hesabındaki şu rollerden birine üye olmanız gerekir: sahip, laboratuvar Oluşturucusu veya katkıda bulunan. Laboratuvar hesabı oluşturmak için kullandığınız hesap, sahip rolüne otomatik olarak eklenir. Bu nedenle, bir sınıf laboratuvarı oluşturmak için laboratuvar hesabı oluşturmak için kullandığınız kullanıcı hesabını kullanabilirsiniz. 
 
 Azure Lab Services kullanırken tipik iş akışı aşağıda verilmiştir:
@@ -70,6 +70,9 @@ Bu adımda, Azure 'da sınıfınız için bir laboratuvar oluşturacaksınız.
     1. **Bağlan**'ı seçerek şablon VM'sine bağlanın. Bir Linux şablon sanal makinesi ise, SSH veya RDP kullanarak bağlanmak isteyip istemediğinizi seçin (RDP etkinse).
     3. Şablon VM 'de sınıfınız için gereken yazılımları yükleyip yapılandırın. 
     4. Şablon VM 'yi **durdurun** .  
+
+    > [!NOTE]
+    > Şablon VM 'Leri çalışırken **Maliyet** doğurur, bu nedenle çalışıyor olması GEREKMIYORSA şablon VM 'nin kapatıldığından emin olun. 
 
 ## <a name="publish-the-template-vm"></a>Şablon VM'yi yayımlama
 Bu adımda, şablon VM 'yi yayımlarsınız. Şablon sanal makinesini yayımladığınızda, Azure Lab Services şablonu kullanarak laboratuvarda VM 'Ler oluşturur. Tüm sanal makineler, şablonla aynı yapılandırmaya sahiptir.

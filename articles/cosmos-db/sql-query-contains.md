@@ -4,32 +4,35 @@ description: Azure Cosmos DB SQL sistem işlevinin, ilk dize ifadesinin ikincisi
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c0c25b63fb6a7bf42bd2ec5b9503cac2cce7583f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0de34e6e0e238887b8f75ae2397e9e650eaac340
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78302602"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711712"
 ---
 # <a name="contains-azure-cosmos-db"></a>IÇERIR (Azure Cosmos DB)
+
  İlk dize ifadesinin ikincisini içerip içermediğini gösteren bir Boole değeri döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
-CONTAINS(<str_expr1>, <str_expr2>)  
+CONTAINS(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Arguments
   
 *str_expr1*  
    , Aranacak dize ifadesidir.  
   
 *str_expr2*  
    Bulunacak dize ifadesidir.  
+
+*bool_expr* Büyük/küçük harf yoksayma için isteğe bağlı değer. True olarak ayarlandığında, CONTAINS, büyük/küçük harf duyarsız bir arama yapılır. Belirtilmediğinde, bu değer false 'tur.
   
 ## <a name="return-types"></a>Dönüş türleri
   
@@ -40,7 +43,7 @@ CONTAINS(<str_expr1>, <str_expr2>)
   Aşağıdaki örnek, "abc" nin "AB" içerip içermediğini ve "abc" nin "d" içerip içermediğini denetler.  
   
 ```sql
-SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2 
+SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2
 ```  
   
  Sonuç kümesini burada bulabilirsiniz.  
@@ -51,7 +54,7 @@ SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

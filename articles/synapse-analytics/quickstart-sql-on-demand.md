@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb90ba81f6399d7b0e238d673c2d956911bd004
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8c87b059d94d6b3be1a4b5cf2f83007b746f4156
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201041"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658582"
 ---
-# <a name="quickstart-using-sql-on-demand"></a>Hızlı başlangıç: isteğe bağlı SQL kullanma
+# <a name="quickstart-use-sql-on-demand"></a>Hızlı başlangıç: isteğe bağlı SQL kullanma
 
 SYNAPSE SQL isteğe bağlı (Önizleme), Azure depolama 'ya yerleştirilmiş dosyalarda SQL sorguları çalıştırmanızı sağlayan sunucusuz bir sorgu hizmetidir. Bu hızlı başlangıçta, isteğe bağlı SQL kullanarak çeşitli dosya türlerini sorgulamayı öğreneceksiniz. Desteklenen biçimler [OPENROWSET](sql/develop-openrowset.md)'de listelenmiştir.
 
@@ -30,7 +30,7 @@ Sorgu vermek için bir SQL istemcisi seçin:
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) , isteğe bağlı veritabanınızda SQL sorguları ve Not defterleri çalıştırmanızı sağlayan bir istemci aracıdır.
 - [SQL Server Management Studio](sql/get-started-ssms.md) , isteğe bağlı veritabanınızda SQL sorguları çalıştırmanızı sağlayan bir istemci aracıdır.
 
-Hızlı Başlangıç parametreleri:
+Bu hızlı başlangıç için Parametreler:
 
 | Parametre                                 | Açıklama                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
@@ -89,7 +89,7 @@ SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-
 GO
 ```
 
-## <a name="querying-csv-files"></a>CSV dosyaları sorgulanıyor
+## <a name="query-csv-files"></a>CSV dosyalarını sorgula
 
 Aşağıdaki görüntüde Sorgulanacak dosyanın önizlemesi verilmiştir:
 
@@ -118,7 +118,7 @@ WHERE
 Şemayı, sorgu derleme zamanında belirtebilirsiniz.
 Daha fazla örnek için bkz. [CSV dosyasını sorgulama](sql/query-single-csv-file.md).
 
-## <a name="querying-parquet-files"></a>Parquet dosyaları sorgulanıyor
+## <a name="query-parquet-files"></a>Parquet dosyalarını sorgulama
 
 Aşağıdaki örnek, Parquet dosyalarını sorgulamak için otomatik Şema çıkarımı özelliklerini gösterir. Şemayı belirtmeden, Eylül 2017 ' deki satır sayısını döndürür.
 
@@ -136,7 +136,7 @@ FROM OPENROWSET
 
 [Parquet dosyalarını sorgulama](sql/query-parquet-files.md)hakkında daha fazla bilgi edinin.
 
-## <a name="querying-json-files"></a>JSON dosyaları sorgulanıyor
+## <a name="query-json-files"></a>JSON dosyalarını sorgulama
 
 ### <a name="json-sample-file"></a>JSON örnek dosyası
 
@@ -158,7 +158,7 @@ Dosyalar *JSON* kapsayıcısına, klasör *kitaplarına*depolanır ve aşağıda
 }
 ```
 
-### <a name="querying-json-files"></a>JSON dosyaları sorgulanıyor
+### <a name="query-json-files"></a>JSON dosyalarını sorgulama
 
 Aşağıdaki sorgu, *Cryptology 'de dayalı ve Istatistiksel Yöntemler*başlığına sahip bir kitapta skalar değerler (başlık, yayımcı) almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanmayı gösterir, seçilen makalelere giriş:
 

@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 4a2d9f382045db2aeab80d9ecf5a05b031bcbc9e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 57244c2022d06d8f1768dbe8bcc971aa59acd6a9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400094"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673144"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Android Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz.
 
@@ -47,7 +47,7 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
 
 1. Cihazınızın **cihaz Seç**altında listelenmesi gerekir. Cihazın yanındaki **Görünüm** düğmesini seçin.
 
-1. Klasör simgesini seçerek kablosuz ağınıza bağlanın ve ardından **Ayarlar** > **WLAN**' ı seçin.
+1. Klasör simgesini seçerek kablosuz ağınıza bağlanın ve ardından **Ayarlar**  >  **WLAN**' ı seçin.
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
@@ -58,7 +58,7 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
    >
    > ![Vysor dosya klasörü](../media/speech-devices-sdk/qsg-10.png)
    >
-   > **Ayarlar**' ı seçin. "MAC adresi" araması yapın ve ardından **Mac adresi** > **Gelişmiş WLAN**' ı seçin. İletişim kutusunun alt kısmına yakın görünen MAC adresini yazın.
+   > **Ayarlar**' ı seçin. "MAC adresi" araması yapın ve ardından **Mac adresi**  >  **Gelişmiş WLAN**' ı seçin. İletişim kutusunun alt kısmına yakın görünen MAC adresini yazın.
    >
    > ![Vysor MAC adresi](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -96,7 +96,7 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
     Bu satırı bağımlılıklar bölümüne ekleyerek **Build. Gradle (Module: App)** öğesini güncelleştirin. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.11.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.0'
     ```
     
 1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanımayı denemek istiyorsanız, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarınızı ve uygulama kimliğinizi da ekleyin.
@@ -124,10 +124,10 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
    > [!TIP]
    > Ayrıca, [özel bir anahtar sözcük oluşturabilirsiniz](../speech-devices-sdk-create-kws.md).
 
-   Yeni bir anahtar sözcük kullanmak için ' de `MainActivity.java`aşağıdaki iki satırı güncelleştirin ve anahtar sözcük paketini uygulamanıza kopyalayın. Örneğin, KWS-Machine. zip anahtar sözcük paketinden ' Machine ' anahtar sözcüğünü kullanmak için:
+   Yeni bir anahtar sözcük kullanmak için ' de aşağıdaki iki satırı güncelleştirin `MainActivity.java` ve anahtar sözcük paketini uygulamanıza kopyalayın. Örneğin, KWS-Machine. zip anahtar sözcük paketinden ' Machine ' anahtar sözcüğünü kullanmak için:
 
    - Anahtar sözcük paketini "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" klasörüne kopyalayın.
-   - `MainActivity.java` Anahtar sözcüğüyle ve paket adıyla güncelleştirin:
+   - `MainActivity.java`Anahtar sözcüğüyle ve paket adıyla güncelleştirin:
 
      ```java
      private static final String Keyword = "Machine";
@@ -162,7 +162,7 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
 
    ![Örnek konuşma cihazları SDK örnek uygulama ve Seçenekler](../media/speech-devices-sdk/qsg-8.png)
 
-1. Yeni konuşma dökümü tanıtımı ' nı deneyin. ' Start Session ' ile bir kopyasını başlatın. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa cihazdaki bir dosyaya `/video/participants.properties` yerleştirilebilir. Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription-service.md)konusuna bakın.
+1. Yeni konuşma dökümü tanıtımı ' nı deneyin. ' Start Session ' ile bir kopyasını başlatın. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa cihazdaki bir dosyaya yerleştirilebilir `/video/participants.properties` . Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription-service.md)konusuna bakın.
 
    ![Demo konuşma dökümü uygulaması](../media/speech-devices-sdk/qsg-15.png)
 
@@ -177,6 +177,6 @@ Konuşma cihazına bağlanamıyorsanız. Komut Istemi penceresinde aşağıdaki 
 ```
 
 > [!NOTE]
-> Bu komut, Android Studio yüklemesinin bir `adb.exe`parçası olan Android Debug Bridge kullanır. Bu araç, C:\Users\[Kullanıcı adı] \AppData\Local\Android\Sdk\platform-Tools. içinde bulunur Bu dizini, çağrılmasını `adb`daha kolay hale getirmek için yolunuza ekleyebilirsiniz. Aksi takdirde, çağıran `adb`her komutta ADB. exe yüklemenizin tam yolunu belirtmeniz gerekir.
+> Bu komut, `adb.exe` Android Studio yüklemesinin bir parçası olan Android Debug Bridge kullanır. Bu araç, C:\Users \[ Kullanıcı adı] \AppData\Local\Android\Sdk\platform-Tools. içinde bulunur Bu dizini, çağrılmasını daha kolay hale getirmek için yolunuza ekleyebilirsiniz `adb` . Aksi takdirde, çağıran her komutta ADB. exe yüklemenizin tam yolunu belirtmeniz gerekir `adb` .
 >
-> Bir hata `no devices/emulators found` GÖRÜRSENIZ, USB kablonuzun bağlı olduğunu ve yüksek kaliteli bir kablonun kullanıldığından emin olun.
+> Bir hata görürseniz, `no devices/emulators found` USB kablonuzun bağlı olduğunu ve yüksek kaliteli bir kablonun kullanıldığından emin olun.

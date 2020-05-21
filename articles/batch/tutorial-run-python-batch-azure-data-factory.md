@@ -1,5 +1,5 @@
 ---
-title: Python betiklerini Data Factory Azure Batch Python aracılığıyla çalıştırma
+title: Data Factory aracılığıyla Python betikleri çalıştırma
 description: Öğretici-Azure Batch kullanarak Azure Data Factory bir işlem hattının parçası olarak Python betikleri çalıştırmayı öğrenin.
 author: mammask
 ms.devlang: python
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
-ms.openlocfilehash: 6761896a6555c11d7957f923a5951641c1541012
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 49f675a56247433ce92763a69045fb214c7c37dc
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117072"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723077"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Öğretici: Azure Batch kullanarak Azure Data Factory Python betikleri çalıştırma
 
@@ -52,11 +52,11 @@ Bu bölümde, Azure Data Factory Işlem hattının kullanacağı toplu Iş havuz
 1. Batch Explorer için Azure kimlik bilgilerinizi kullanarak oturum açın.
 1. Batch hesabınızı seçin
 1. Sol taraftaki çubukta **havuzlar** ' ı seçerek bir havuz oluşturun, sonra arama formunun üzerindeki **Ekle** düğmesine basın. 
-    1. Bir KIMLIK ve görünen ad seçin. Bu örnek `custom-activity-pool` için kullanacağız.
+    1. Bir KIMLIK ve görünen ad seçin. `custom-activity-pool`Bu örnek için kullanacağız.
     1. Ölçek türünü **sabit boyut**olarak ayarlayın ve adanmış düğüm sayısını 2 olarak ayarlayın.
     1. **Veri bilimi**altında, işletim sistemi olarak **dsvm Windows** ' u seçin.
-    1. Sanal `Standard_f2s_v2` makine boyutu olarak seçin.
-    1. Başlangıç görevini etkinleştirin ve komutunu `cmd /c "pip install pandas"`ekleyin. Kullanıcı kimliği varsayılan **Havuz kullanıcısı**olarak kalabilir.
+    1. `Standard_f2s_v2`Sanal makine boyutu olarak seçin.
+    1. Başlangıç görevini etkinleştirin ve komutunu ekleyin `cmd /c "pip install pandas"` . Kullanıcı kimliği varsayılan **Havuz kullanıcısı**olarak kalabilir.
     1. **Tamam**’ı seçin.
 
 ## <a name="create-blob-containers"></a>Blob kapsayıcıları oluşturma
@@ -65,13 +65,13 @@ Burada, OCR toplu işi için giriş ve çıkış dosyalarınızı depolayacak bl
 
 1. Depolama Gezgini için Azure kimlik bilgilerinizi kullanarak oturum açın.
 1. Batch hesabınıza bağlı depolama hesabını kullanarak, [BLOB kapsayıcısı oluşturma](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)konumundaki adımları izleyerek iki blob kapsayıcı (bir diğeri çıkış dosyaları için bir tane) oluşturun.
-    * Bu örnekte, giriş kapsayımuzu `input`ve çıkış kapsayımuzu `output`arayacağız.
-1. `iris.csv` [BLOB kapsayıcısında blob 'ları yönetme](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) adımlarını `input` izleyerek Depolama Gezgini kullanarak giriş kapsayıcınızı karşıya yükleyin `main.py`
+    * Bu örnekte, giriş kapsayımuzu `input` ve çıkış kapsayımuzu arayacağız `output` .
+1. `main.py` `iris.csv` `input` [BLOB kapsayıcısında blob 'ları yönetme](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) adımlarını izleyerek Depolama Gezgini kullanarak giriş kapsayıcınızı karşıya yükleyin
 
 
 ## <a name="develop-a-script-in-python"></a>Python 'da betik geliştirme
 
-Aşağıdaki Python betiği, veri `iris.csv` kümesini kapsayıcılarınızdan `input` yükler, bir veri işleme işlemi gerçekleştirir ve sonuçları `output` kapsayıcıya geri kaydeder.
+Aşağıdaki Python betiği, `iris.csv` `input` veri kümesini kapsayıcılarınızdan yükler, bir veri işleme işlemi gerçekleştirir ve sonuçları kapsayıcıya geri kaydeder `output` .
 
 ``` python
 # Load libraries
@@ -125,7 +125,7 @@ Bu bölümde, Python komut dosyanızı kullanarak bir işlem hattı oluşturup d
 
     ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
-1. **Ayarlar** sekmesinde, komutunu `python main.py`girin.
+1. **Ayarlar** sekmesinde, komutunu girin `python main.py` .
 1. **Kaynak bağlı hizmeti**için, önceki adımlarda oluşturulan depolama hesabını ekleyin. Başarılı olduğundan emin olmak için bağlantıyı test edin.
 1. **Klasör yolu**' nda, Python betiğini ve ilişkili girişleri Içeren **Azure Blob depolama** kapsayıcısının adını seçin. Bu işlem, Python betiği yürütülmeden önce seçili dosyaları kapsayıcıdan havuzdan düğüm örneklerine indirir.
 
@@ -139,12 +139,12 @@ Bu bölümde, Python komut dosyanızı kullanarak bir işlem hattı oluşturup d
 
 ### <a name="monitor-the-log-files"></a>Günlük dosyalarını izleme
 
-Uyarıları veya hataları komut dosyanızın yürütülmesi tarafından üretildiğinde, günlüğe kaydedilen çıktı hakkında daha fazla bilgi alabilirsiniz `stdout.txt` `stderr.txt` .
+Uyarıları veya hataları komut dosyanızın yürütülmesi tarafından üretildiğinde, `stdout.txt` `stderr.txt` günlüğe kaydedilen çıktı hakkında daha fazla bilgi alabilirsiniz.
 
 1. Batch Explorer sol taraftaki **işleri** seçin.
-1. Veri fabrikanızın oluşturduğu işi seçin. Havuzunuzu `custom-activity-pool`adlandırdığınız varsayılarak, öğesini `adfv2-custom-activity-pool`seçin.
+1. Veri fabrikanızın oluşturduğu işi seçin. Havuzunuzu adlandırdığınız varsayılarak `custom-activity-pool` , öğesini seçin `adfv2-custom-activity-pool` .
 1. Hata çıkış kodu olan göreve tıklayın.
-1. Sorununuzu `stdout.txt` inceleyin `stderr.txt` ve tanılamanıza ve tanılayın.
+1. `stdout.txt` `stderr.txt` Sorununuzu inceleyin ve tanılamanıza ve tanılayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -153,6 +153,6 @@ Bu öğreticide, Azure Batch kullanarak Azure Data Factory bir işlem hattının
 Azure Data Factory hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Azure Data Factory](../data-factory/introduction.md)
-> İşlem[hatları ve Etkinlikler](../data-factory/concepts-pipelines-activities.md)
-> [özel etkinlikleri](../data-factory/transform-data-using-dotnet-custom-activity.md) Azure Data Factory
+> [Azure Data Factory](../data-factory/introduction.md) 
+>  İşlem [hatları ve Etkinlikler](../data-factory/concepts-pipelines-activities.md) 
+>  [Özel etkinlikler](../data-factory/transform-data-using-dotnet-custom-activity.md)

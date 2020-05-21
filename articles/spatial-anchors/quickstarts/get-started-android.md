@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376469"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652510"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla bir Android uygulaması oluşturma
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
 - <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>Içeren bir Windows veya MacOS makinesi.
   - Windows üzerinde çalışıyorsa, Windows ve <a href="https://git-lfs.github.com/">GIT LFS</a> <a href="https://git-scm.com/download/win" target="_blank">için git</a> de gerekir.
-  - MacOS üzerinde çalışıyorsa, HomeBrew aracılığıyla Git ' i alın. Terminalin tek bir satırına şu komutu girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ardından, ve `brew install git` `brew install git-lfs`öğesini çalıştırın.
+  - MacOS üzerinde çalışıyorsa, HomeBrew aracılığıyla Git ' i alın. Terminalin tek bir satırına şu komutu girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . Ardından, ve öğesini çalıştırın `brew install git` `brew install git-lfs` .
   - NDK örneğini oluşturmak için, Android Studio ' de NDK ve CMake 3,6 veya daha büyük SDK Tools yüklemeniz gerekir.
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">Geliştirici etkin</a> ve <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">korumalı</a> bir Android cihaz.
   - Bilgisayarınızın Android cihazından iletişim kurması için ek cihaz sürücüleri gerekebilir. Ek bilgi ve yönergeler için [buraya](https://developer.android.com/studio/run/device.html) bakın.
@@ -52,7 +52,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Buradan `arcore_c_api.h` indirin [here](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) ve içine `Android\NDK\libraries\include`yerleştirin.
+`arcore_c_api.h` [Buradan](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) indirin ve içine yerleştirin `Android\NDK\libraries\include` .
 
 Yeni kopyalanan deponun içinden aşağıdaki komutu çalıştırarak alt modülleri başlatın:
 
@@ -66,11 +66,11 @@ Android Studio’yu açın.
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
-**Mevcut bir Android Studio projesini aç** ' ı seçin ve konumunda `Android/Java/`bulunan projeyi seçin.
+**Mevcut bir Android Studio projesini aç** ' ı seçin ve konumunda bulunan projeyi seçin `Android/Java/` .
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
-**Mevcut bir Android Studio projesini aç** ' ı seçin ve konumunda `Android/NDK/`bulunan projeyi seçin.
+**Mevcut bir Android Studio projesini aç** ' ı seçin ve konumunda bulunan projeyi seçin `Android/NDK/` .
 
 ---
 
@@ -82,17 +82,21 @@ Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı 
 
 `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java` dosyasını açın.
 
-`SpatialAnchorsAccountKey` Alanı bulun ve hesap anahtarıyla `Set me` değiştirin.
+Alanı bulun `SpatialAnchorsAccountKey` ve `Set me` Hesap anahtarıyla değiştirin.
 
-`SpatialAnchorsAccountId` Alanı bulun ve hesap tanımlayıcısıyla `Set me` değiştirin.
+Alanı bulun `SpatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla değiştirin.
+
+`public AzureSpatialAnchorsManager(Session arCoreSession)`Hesap etki alanında yer alan aşağıdaki satırı bulun ve daha önce ekleyin: `spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");` .
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp` dosyasını açın.
 
-`SpatialAnchorsAccountKey` Alanı bulun ve hesap anahtarıyla `Set me` değiştirin.
+Alanı bulun `SpatialAnchorsAccountKey` ve `Set me` Hesap anahtarıyla değiştirin.
 
-`SpatialAnchorsAccountId` Alanı bulun ve hesap tanımlayıcısıyla `Set me` değiştirin.
+Alanı bulun `SpatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla değiştirin.
+
+`AzureSpatialAnchorsApplication::StartCloudSession()`Hesap etki alanında yer alan aşağıdaki satırı bulun ve daha önce ekleyin: `m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");` .
 
 ---
 

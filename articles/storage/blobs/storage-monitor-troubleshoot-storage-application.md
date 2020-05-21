@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 3a2381302a378e7b2635b84c32a87e844e4605a7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68844889"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652167"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Bulut depolama uygulamasını izleme ve sorunlarını giderme
 
@@ -87,9 +87,9 @@ Bu senaryoda, Azure depolama hesabınızla etkileşim kurmak için [Microsoft Me
 
 ### <a name="download-microsoft-message-analyzer"></a>Microsoft Message Analyzer’ı indirme
 
-[Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226)’ı indirip uygulamayı yükleyin.
+[Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer)’ı indirip uygulamayı yükleyin.
 
-Uygulamayı başlatın ve**diğer dosya kaynaklarından** **Dosya** > **Aç** > ' ı seçin.
+Uygulamayı başlatın ve **File**  >  **Open**  >  **diğer dosya kaynaklarından**Dosya Aç ' ı seçin.
 
 **Dosya Seçici** iletişim kutusunda **+ Azure Bağlantısı Ekle**’yi seçin. **Depolama hesabı adı** ve **hesap anahtarı** bilgilerinizi girin ve **Tamam**’a tıklayın.
 

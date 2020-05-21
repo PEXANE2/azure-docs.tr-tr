@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: ff2a55d9eb7b5c0787c5327ea34338a7efb90da0
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: a69c093320c47bf5732ddb93daea47ab6c0586af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836589"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648033"
 ---
 |Name |Açıklama |Efekt (ler) |Sürüm |GitHub |
 |---|---|---|---|---|
-|[Windows Defender Exploit Guard 'ın etkinleştirilmediği Windows VM 'lerini denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Windows Defender Exploit Guard, cihazları ve yayılmak için kötüye kullanımları kullanan kötü amaçlı yazılımlara karşı korunmaya yardımcı olur. Exploit Guard koruması, işletim sistemine veya bağımsız uygulamalara uygulanabilecek bir dizi azaltmada oluşur. Bu ilke için Windows uzantısı için Azure Ilkesi gerekir. Ayrıntılar için, adresini [https://aks.ms/gcpol](https://aks.ms/gcpol)ziyaret edin. |Auditınotexists, devre dışı |1.0.0-Önizleme |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AuditIfNotExist.json) |
+|[Windows Defender Exploit Guard 'ın etkinleştirilmediği Windows VM 'lerini denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Windows Defender Exploit Guard, cihazları ve yayılmak için kötüye kullanımları kullanan kötü amaçlı yazılımlara karşı korunmaya yardımcı olur. Exploit Guard koruması, işletim sistemine veya bağımsız uygulamalara uygulanabilecek bir dizi azaltmada oluşur. Bu ilke için Windows uzantısı için Azure Ilkesi gerekir. Ayrıntılar için, adresini ziyaret edin [https://aks.ms/gcpol](https://aks.ms/gcpol) . |Auditınotexists, devre dışı |1.0.0-Önizleme |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AuditIfNotExist.json) |
 |[Windows makinelerinde saat dilimini yapılandırın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |Bu ilke, Windows sanal makinelerinde belirtilen saat dilimini ayarlamak için bir konuk yapılandırma ataması oluşturur. |deployIfNotExists |1.0.0-Önizleme |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json) |
 |[Parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için önkoşulları dağıtın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fec49586f-4939-402d-a29e-6ff502b20592) |Bu ilke, parola olmadan hesaplardan gelen uzak bağlantılara izin veren Linux sanal makinelerini denetlemek için bir konuk yapılandırma ataması oluşturur. Ayrıca, sistem tarafından atanan bir yönetilen kimlik oluşturur ve konuk yapılandırma için VM uzantısını dağıtır. Bu ilke yalnızca bir girişimde karşılık gelen denetim ilkesi ile birlikte kullanılmalıdır. Konuk yapılandırma ilkeleri hakkında daha fazla bilgi için lütfen şu adresi ziyaret edin[https://aka.ms/gcpol](https://aka.ms/gcpol) |deployIfNotExists |1.1.0-Önizleme |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword110_Deploy.json) |
 |[Passwd dosyası izinleri 0644 olarak ayarlanan Linux sanal makinelerini denetlemek için önkoşulları dağıtın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff19aa1c1-6b91-4c27-ae6a-970279f03db9) |Bu ilke, passwd dosyası izinleri 0644 olarak ayarlanan Linux sanal makinelerini denetlemek için bir konuk yapılandırma ataması oluşturur. Ayrıca, sistem tarafından atanan bir yönetilen kimlik oluşturur ve konuk yapılandırma için VM uzantısını dağıtır. Bu ilke yalnızca bir girişimde karşılık gelen denetim ilkesi ile birlikte kullanılmalıdır. Konuk yapılandırma ilkeleri hakkında daha fazla bilgi için lütfen şu adresi ziyaret edin[https://aka.ms/gcpol](https://aka.ms/gcpol) |deployIfNotExists |1.1.0-Önizleme |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword121_Deploy.json) |

@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/20/2020
 ms.author: dsindona
-ms.openlocfilehash: 3886b29a47edcfb36114cedf8b8edb3799e0c345
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 53a22140fe62ce0db18c1d02d816eb31b12a381b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871439"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714160"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft ticari Market için standart sözleşme
 
@@ -36,7 +36,7 @@ Ticari Market yayımcıları için iki çeşit değişiklik bulunur:
 >[!Note]
 >Bu iki tür değişiklik yığını birbirlerinin üzerine. Özel değişiklik ile hedeflenen müşteriler, satın alma sırasında standart sözleşmeye evrensel değişiklik de alır.
 
-Microsoft ticari Market için standart sözleşmede aşağıdaki teklif türleri için yararlanabilirsiniz: Azure uygulamaları (çözüm şablonları ve yönetilen uygulamalar), sanal makineler, kapsayıcılar, kapsayıcı uygulamaları, IoT Edge modüller ve SaaS.
+Aşağıdaki teklif türleri için Microsoft ticari Marketi için standart sözleşme özelliğinden yararlanabilirsiniz: Azure uygulamaları (çözüm şablonları ve yönetilen uygulamalar), sanal makineler ve SaaS.
 
 ## <a name="customer-experience"></a>Müşteri deneyimi
 

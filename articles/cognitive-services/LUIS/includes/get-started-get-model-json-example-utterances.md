@@ -5,41 +5,77 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.date: 02/14/2020
+ms.date: 05/18/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: e879afdbd4c34e9d74405644de86421fb2cbab46
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: acf3968510bc45838f26c4b3cf366abdee06f298
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77279740"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655543"
 ---
 Örnek, belirli bir biçimi izler.
 
 `text` alanı, örnek konuşmanın metnini içerir. `intentName` alanı, LUIS uygulaması içindeki mevcut bir amacın adına karşılık gelmelidir. `entityLabels` alanı gereklidir. Herhangi bir varlığı etiketlemek istemiyorsanız, boş bir dizi girin.
 
-entityLabels dizisi boş değilse `startCharIndex` ve `endCharIndex` değerlerinin `entityName` alanında başvurulan varlığı işaretlemesi gerekir. Dizin sıfır tabanlıdır, yani üstteki örnekte 6 sayısı Seattle sözcüğünün baş harfi S'den önceki boşluğa değil S harfine karşılık gelmektedir. Etiketi metindeki bir boşlukla başlatır veya bitirirseniz, konuşmaları eklemek için yapılan API çağrısı başarısız olur.
+entityLabels dizisi boş değilse `startCharIndex` ve `endCharIndex` değerlerinin `entityName` alanında başvurulan varlığı işaretlemesi gerekir. Dizin sıfır tabanlıdır. Metinde bir boşluk olan etiketi başlatabilir veya sonlandırdıysanız, utsliği ekleme API çağrısı başarısız olur.
 
 ```JSON
 [
-  {
-    "text": "go to Seattle today",
-    "intentName": "BookFlight",
-    "entityLabels": [
-      {
-        "entityName": "Location::LocationTo",
-        "startCharIndex": 6,
-        "endCharIndex": 12
-      }
-    ]
-  },
-  {
-    "text": "purple dogs are difficult to work with",
-    "intentName": "BookFlight",
-    "entityLabels": []
-  }
+    {
+        "text": "order a cheese pizza",
+        "intentName": "ModifyOrder",
+        "entityLabels":[]
+    },
+    {
+        "text": "order a large pepperoni pizza",
+        "intentName": "ModifyOrder",
+        "entityLabels": [
+            {
+                "entityName": "Order",
+                "startCharIndex": 8,
+                "endCharIndex": 28
+            }
+        ]
+    },
+    {
+        "text": "order 2 large pepperoni pizzas on thin crust",
+        "intentName": "ModifyOrder",
+        "entityLabels": [
+            {
+                "entityName": "Order",
+                "startCharIndex": 6,
+                "endCharIndex": 61
+            },
+            {
+                "entityName": "FullPizzaWithModifiers",
+                "startCharIndex": 6,
+                "endCharIndex": 61
+            },
+            {
+                "entity": "Quantity",
+                "startPos": 6,
+                "endPos": 7
+            },
+            {
+                "entity": "PizzaType",
+                "startPos": 14,
+                "endPos": 22
+            },
+            {
+                "entity": "Size",
+                "startPos": 8,
+                "endPos": 12
+            },
+            {
+                "entity": "Crust",
+                "startPos": 34,
+                "endPos": 37
+            }
+        ]
+    }
 ]
 ```

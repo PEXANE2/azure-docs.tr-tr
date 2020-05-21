@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 342ae7e42c85ad661c04ba4ebb6629673f4af4dc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f0c1e9eccda8171ab816d33dac3f1947cea67eea
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77482285"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714619"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak metin ve düzen bilgilerini ayıklama
 
@@ -36,9 +36,9 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Düzeni çözümlemeye başlamak için aşağıdaki Python betiğini kullanarak Düzen API 'sini **[Çözümle](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** ' yi çağırın. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
-1. Yerel `<path to your form>` form belgenizin yoluyla değiştirin.
-1. Önceki `<subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. `<Endpoint>`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
+1. `<path to your form>`Yerel form belgenizin yoluyla değiştirin.
+1. `<subscription key>`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 
     ```python
     ########### Python Form Recognizer Async Layout #############
@@ -55,7 +55,7 @@ Düzeni çözümlemeye başlamak için aşağıdaki Python betiğini kullanarak 
     
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': 'application/json',
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     with open(source, "rb") as f:
@@ -77,7 +77,7 @@ Düzeni çözümlemeye başlamak için aşağıdaki Python betiğini kullanarak 
 1. Bir komut istemi penceresi açın.
 1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python form-recognizer-layout.py`.
 
-Komut dosyasının konsola yazdırabileceği bir `202 (Success)` **işlem konumu** üst bilgisi içeren bir yanıt alırsınız. Bu üst bilgi, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnek değerinde, sonraki `operations/` DIZE işlem kimliğidir.
+`202 (Success)`Komut dosyasının konsola yazdırabileceği bir **işlem konumu** üst bilgisi içeren bir yanıt alırsınız. Bu üst bilgi, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnek değerinde, sonraki dize `operations/` Işlem kimliğidir.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0-preview/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -115,11 +115,11 @@ while n_try < n_tries:
 ```
 
 1. Betiği kaydedin.
-1. Örneği çalıştırmak için `python` komutunu yeniden kullanın. Örneğin, `python form-recognizer-layout.py`.
+1. `python`Örneği çalıştırmak için komutunu yeniden kullanın. Örneğin, `python form-recognizer-layout.py`.
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
 
-Betik, **düzeni çözümle** işlemi tamamlanana kadar yanıtları konsola yazdırır. Daha sonra, ayıklanan verileri JSON biçiminde yazdıracaktır. `"readResults"` Düğüm, sayfada ilgili sınırlayıcı kutusu yerleşimine sahip her metin satırını içerir. `"pageResults"` Alan, her biri satır sütun koordinasyonu olan tablolardaki her metin parçasını gösterir.
+Betik, **düzeni çözümle** işlemi tamamlanana kadar yanıtları konsola yazdırır. Daha sonra, ayıklanan verileri JSON biçiminde yazdıracaktır. `"readResults"`Düğüm, sayfada ilgili sınırlayıcı kutusu yerleşimine sahip her metin satırını içerir. `"pageResults"`Alan, her biri satır sütun koordinasyonu olan tablolardaki her metin parçasını gösterir.
 
 Aşağıdaki fatura görüntüsüne ve buna karşılık gelen JSON çıktısına bakın. Çıktı basitlik için kısaltıldı.
 

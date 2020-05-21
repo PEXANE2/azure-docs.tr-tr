@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 09ccb9f095e58d8fa22ec3d119853c729f0c7026
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 328f3d0dc648b3c5fa96c3aab02e80a37cf4218f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090567"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680755"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Öğretici: Skillport ile tümleştirme Azure Active Directory
 
@@ -139,7 +139,7 @@ Azure AD çoklu oturum açmayı Skillport ile yapılandırmak için aşağıdaki
 
 ### <a name="configure-skillport-single-sign-on"></a>Skillport çoklu oturum açmayı yapılandırma
 
-**Skillport** Side çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal [Destek ekibine](https://www.skillsoft.com/contact.asp)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Skillport** Side çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal [Destek ekibine](https://www.skillsoft.com/about/contact-us)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -194,7 +194,7 @@ Bu bölümde, Skillport 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 ### <a name="create-skillport-test-user"></a>Skillport test kullanıcısı oluştur
 
-Skillport test kullanıcısı oluşturmak için, Son Kullanıcı gereksinimine göre birden çok iş senaryosu olduğundan [Skillport destek ekibine](https://www.skillsoft.com/contact.asp) başvurmanız gerekir. Bunlar, kullanıcılarla tartışmadan sonra yapılandıracaktır.
+Skillport test kullanıcısı oluşturmak için, Son Kullanıcı gereksinimine göre birden çok iş senaryosu olduğundan [Skillport destek ekibine](https://www.skillsoft.com/about/contact-us) başvurmanız gerekir. Bunlar, kullanıcılarla tartışmadan sonra yapılandıracaktır.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

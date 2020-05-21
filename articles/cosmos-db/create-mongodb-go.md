@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: 2cad73f85ce81c650e1f1ff702a099b2d6df8e16
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: ad7baea087cd6073659929cc41f626b597bbae63
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984883"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650350"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: bir Go uygulamasını MongoDB için Azure Cosmos DB API 'sine bağlama
 
@@ -23,15 +23,15 @@ ms.locfileid: "82984883"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir. Bu hızlı başlangıçta, Azure Cloud Shell kullanarak bir Azure Cosmos DB hesabı oluşturup yönetebilir, GitHub 'dan mevcut bir örnek uygulamayı klonlayabilir ve Azure Cosmos DB ile çalışacak şekilde yapılandırırsınız. 
 
-Örnek uygulama, go 'da yazılmış bir komut satırı `todo` tabanlı yönetim aracıdır. MongoDB için Azure Cosmos DB API 'SI, MongoDB [kablo protokolüyle uyumludur](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction#wire-protocol-compatibility)ve bu, herhangi bir MongoDB istemci sürücüsünün bu sunucuya bağlanmasını mümkün hale getirir. Bu uygulama, [MongoDB Için Go sürücüsünü](https://github.com/mongodb/mongo-go-driver) , verilerin bir Azure Cosmos DB veritabanında depolandığı uygulamaya saydam bir şekilde kullanır.
+Örnek uygulama, go 'da yazılmış bir komut satırı tabanlı `todo` yönetim aracıdır. MongoDB için Azure Cosmos DB API 'SI, MongoDB [kablo protokolüyle uyumludur](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction#wire-protocol-compatibility)ve bu, herhangi bir MongoDB istemci sürücüsünün bu sunucuya bağlanmasını mümkün hale getirir. Bu uygulama, [MongoDB Için Go sürücüsünü](https://github.com/mongodb/mongo-go-driver) , verilerin bir Azure Cosmos DB veritabanında depolandığı uygulamaya saydam bir şekilde kullanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bağlantı dizesiyle `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`de kullanabilirsiniz.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bağlantı dizesiyle de kullanabilirsiniz `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
 - Bilgisayarınızda yüklü ve çalışır bir go hakkında bilgi sahibi [olun](https://golang.org/) .
 - [Git](https://git-scm.com/downloads).
 - Azure Cloud Shell kullanmak istemiyorsanız, [Azure CLI 2.0 +](/cli/azure/install-azure-cli).
@@ -42,7 +42,7 @@ Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belg
 
 Örnek depoyu kopyalamak için aşağıdaki komutları çalıştırın.
 
-1. Bir komut istemi açın, adlı `git-samples`yeni bir klasör oluşturun ve ardından komut istemi ' ni kapatın.
+1. Bir komut istemi açın, adlı yeni bir klasör oluşturun `git-samples` ve ardından komut istemi ' ni kapatın.
 
     ```bash
     mkdir "C:\git-samples"
@@ -75,7 +75,7 @@ Aşağıdaki kod parçacıklarının tümü `todo.go` dosyasından alınmıştı
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Azure Cosmos DB’yi kullanarak Go uygulamasına bağlanma
 
-[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions)bir ortam değişkeni kullanılarak geçirilen Azure Cosmos DB için bağlantı dizesini kapsüller (yaklaşan bölümde Ayrıntılar). Bağlantı, `clientOptions` örneğin geçirildiği kullanılarak [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient) başlatılır. başarılı bağlantıyı onaylamak için işlev çağrıldı (başarısız-hızlı bir stratejidir) [ `Ping` ](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping)
+[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions)bir ortam değişkeni kullanılarak geçirilen Azure Cosmos DB için bağlantı dizesini kapsüller (yaklaşan bölümde Ayrıntılar). Bağlantı, [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient) `clientOptions` Örneğin geçirildiği kullanılarak başlatılır. başarılı bağlantıyı onaylamak için [ `Ping` işlev](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping) çağrıldı (başarısız-hızlı bir stratejidir)
 
 ```go
     ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
@@ -96,12 +96,12 @@ Aşağıdaki kod parçacıklarının tümü `todo.go` dosyasından alınmıştı
 ```
 
 > [!NOTE] 
-> [`SetDirect(true)`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions.SetDirect) Yapılandırmanın kullanılması önemlidir, ancak şu bağlantı hatasını alırsınız:`unable to connect connection(cdb-ms-prod-<azure-region>-cm1.documents.azure.com:10255[-4]) connection is closed`
+> Yapılandırmanın kullanılması [`SetDirect(true)`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions.SetDirect) önemlidir, ancak şu bağlantı hatasını alırsınız:`unable to connect connection(cdb-ms-prod-<azure-region>-cm1.documents.azure.com:10255[-4]) connection is closed`
 >
 
-### <a name="create-a-todo-item"></a>`todo` Öğe oluşturma
+### <a name="create-a-todo-item"></a>Öğe oluşturma `todo`
 
-Oluşturmak için `todo`, bir ' a [`mongo.Collection`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection) yönelik bir tanıtıcı alır ve [`InsertOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.InsertOne) işlevini çağırır. 
+Oluşturmak için `todo` , bir ' a yönelik bir tanıtıcı alır [`mongo.Collection`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection) ve işlevini çağırır [`InsertOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.InsertOne) . 
 
 ```go
 func create(desc string) {
@@ -116,7 +116,7 @@ func create(desc string) {
     }
 ```
 
-Açıklamayı ve durumu içeren `Todo` bir struct (başlangıçta olarak `pending`ayarlanır)
+`Todo`Açıklamayı ve durumu içeren bir struct (başlangıçta olarak ayarlanır `pending` )
 
 ```go
 type Todo struct {
@@ -127,7 +127,7 @@ type Todo struct {
 ```
 ### <a name="list-todo-items"></a>Liste `todo` öğeleri
 
-Ölçütlere göre TODOs listeliyoruz. Filtre [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) ölçütlerini kapsüllemek için bir oluşturulur
+Ölçütlere göre TODOs listeliyoruz. [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D)Filtre ölçütlerini kapsüllemek için bir oluşturulur
 
 ```go
 func list(status string) {
@@ -179,9 +179,9 @@ Son olarak, bilgiler tablolu biçimde işlenir
     table.Render()
 ```
 
-### <a name="update-a-todo-item"></a>`todo` Öğe güncelleştirme
+### <a name="update-a-todo-item"></a>Öğe güncelleştirme `todo`
 
-, `todo` `_id`' A göre güncelleştirilebilen olabilir. Bu [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) durumda yeni bir durum ( `_id` `completed` veya `pending`) olan güncelleştirilmiş bilgiler için bir filtre oluşturulur. Son olarak, [`UpdateOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.UpdateOne) işlev filtreyle ve güncelleştirilmiş belgeyle çağrılır
+`todo`, ' A göre güncelleştirilebilen olabilir `_id` . [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) `_id` Bu durumda yeni bir durum (veya) olan güncelleştirilmiş bilgiler için bir filtre oluşturulur `completed` `pending` . Son olarak, [`UpdateOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.UpdateOne) işlev filtreyle ve güncelleştirilmiş belgeyle çağrılır
 
 ```go
 func update(todoid, newStatus string) {
@@ -201,7 +201,7 @@ func update(todoid, newStatus string) {
 
 ### <a name="delete-a-todo"></a>Sil`todo`
 
-`todo` , Öğesine göre silinir `_id` ve bir [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) örnek biçiminde kapsüllenir. [`DeleteOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.DeleteOne)belgeyi silmek için çağrılır.
+, Öğesine `todo` göre silinir `_id` ve bir örnek biçiminde kapsüllenir [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) . [`DeleteOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.DeleteOne)belgeyi silmek için çağrılır.
 
 ```go
 func delete(todoid string) {
@@ -221,7 +221,7 @@ func delete(todoid string) {
 
 ## <a name="build-the-application"></a>Uygulama oluşturma
 
-Uygulamayı Klonladığınız dizine değiştirin ve oluşturun (kullanarak `go build`).
+Uygulamayı Klonladığınız dizine değiştirin ve oluşturun (kullanarak `go build` ).
 
 ```bash
 cd monogdb-go-quickstart
@@ -268,7 +268,7 @@ az group create --name myResourceGroup --location "West Europe"
 
 [Az cosmosdb Create](/cli/azure/cosmosdb#az-cosmosdb-create) komutuyla bir Cosmos hesabı oluşturun.
 
-Aşağıdaki komutta, lütfen `<cosmosdb-name>` yer tutucuyu gördüğünüz benzersiz Cosmos hesabınızın adını yerine koyun. Bu benzersiz ad Cosmos DB uç noktasının`https://<cosmosdb-name>.documents.azure.com/`bir parçası olarak kullanılır. bu nedenle, adın Azure 'Daki tüm Cosmos hesaplarında benzersiz olması gerekir. 
+Aşağıdaki komutta, lütfen yer tutucuyu gördüğünüz benzersiz Cosmos hesabınızın adını yerine koyun `<cosmosdb-name>` . Bu benzersiz ad Cosmos DB uç noktasının bir parçası olarak kullanılır `https://<cosmosdb-name>.documents.azure.com/` . bu nedenle, adın Azure 'daki tüm Cosmos hesaplarında benzersiz olması gerekir. 
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -337,10 +337,10 @@ export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PA
 ```
 
 > [!NOTE] 
-> Cosmos DB `ssl=true` gereksinimler nedeniyle bu seçenek önemlidir. Daha fazla bilgi için bkz. [bağlantı dizesi gereksinimleri](connect-mongodb-account.md#connection-string-requirements).
+> `ssl=true`Cosmos DB gereksinimler nedeniyle bu seçenek önemlidir. Daha fazla bilgi için bkz. [bağlantı dizesi gereksinimleri](connect-mongodb-account.md#connection-string-requirements).
 >
 
-`MONGODB_CONNECTION_STRING` Ortam değişkeni için, ve için `<COSMOSDB_ACCOUNT_NAME>` yer tutucuları değiştirin`<COSMOSDB_PASSWORD>`
+`MONGODB_CONNECTION_STRING`Ortam değişkeni için, ve için yer tutucuları değiştirin `<COSMOSDB_ACCOUNT_NAME>``<COSMOSDB_PASSWORD>`
 
 1. `<COSMOSDB_ACCOUNT_NAME>`: Oluşturduğunuz Azure Cosmos DB hesabının adı
 2. `<COSMOSDB_PASSWORD>`: Önceki adımda ayıklanan veritabanı anahtarı
@@ -350,7 +350,7 @@ export MONGODB_DATABASE=todo-db
 export MONGODB_COLLECTION=todos
 ```
 
-Ve `MONGODB_DATABASE` `MONGODB_COLLECTION` için tercih ettiğiniz değerleri seçebilir veya olduğu gibi bırakabilirsiniz.
+Ve için tercih ettiğiniz değerleri seçebilir `MONGODB_DATABASE` `MONGODB_COLLECTION` veya olduğu gibi bırakabilirsiniz.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -360,7 +360,7 @@ Oluşturmak için`todo`
 ./todo --create "Create an Azure Cosmos DB database account"
 ```
 
-Başarılı olursa, yeni oluşturulan belgenin MongoDB `_id` ile bir çıktı görmeniz gerekir:
+Başarılı olursa, yeni oluşturulan belgenin MongoDB ile bir çıktı görmeniz gerekir `_id` :
 
 ```bash
 added todo ObjectID("5e9fd6befd2f076d1f03bd8a")
@@ -372,7 +372,7 @@ Başka bir oluştur`todo`
 ./todo --create "Get the MongoDB connection string using the Azure CLI"
 ```
 
-Tüm `todo`öğeleri Listele
+Tüm öğeleri Listele `todo`
 
 ```bash
 ./todo --list all
@@ -391,13 +391,13 @@ Yeni ekledikleriniz gibi tablolu bir biçimde eklemiş olduklarınızı görmeni
 +----------------------------+--------------------------------+-----------+
 ```
 
-Bir a `todo` 'nın durumunu güncelleştirmek için (ör. durumu durum olarak `completed` değiştirin), `todo` kimliği kullanın
+Bir a 'nın durumunu güncelleştirmek için `todo` (ör. `completed` durumu durum olarak değiştirin), kimliği kullanın `todo`
 
 ```bash
 ./todo --update 5e9fd6b1bcd2fa6bd267d4c4,completed
 ```
 
-Yalnızca tamamlanan `todo`öğeleri Listele
+Yalnızca tamamlanan öğeleri Listele `todo`
 
 ```bash
 ./todo --list completed
@@ -425,19 +425,19 @@ Azure Cosmos DB depolanan veriler, Azure portal görüntülemek ve sorgulamak i�
 ![Yeni oluşturulan belgeyi görüntüleyen Veri Gezgini](./media/create-mongodb-go/go-cosmos-db-data-explorer.jpg)
 
 
-KIMLIĞI kullanarak `todo` bir öğesini silme
+KIMLIĞI kullanarak bir öğesini silme `todo`
 
 ```bash
 ./todo --delete 5e9fd6b1bcd2fa6bd267d4c4,completed
 ```
 
-Onaylanacak `todo`öğeleri listeleyin
+`todo`Onaylanacak öğeleri listeleyin
 
 ```bash
 ./todo --list all
 ```
 
-`todo` Yeni sildiğiniz yer bulunmamalıdır
+`todo`Yeni sildiğiniz yer bulunmamalıdır
 
 ```bash
 +----------------------------+--------------------------------+-----------+
@@ -454,7 +454,7 @@ Onaylanacak `todo`öğeleri listeleyin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure Cloud Shell kullanarak bir Azure Cosmos DB MongoDB API hesabı oluşturmayı ve yönetmek `todo`Için bir go komut satırı uygulaması oluşturmayı ve çalıştırmayı öğrendiniz. Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz.
+Bu hızlı başlangıçta, Azure Cloud Shell kullanarak bir Azure Cosmos DB MongoDB API hesabı oluşturmayı ve yönetmek için bir go komut satırı uygulaması oluşturmayı ve çalıştırmayı öğrendiniz `todo` . Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz.
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB’ye MongoDB verileri aktarma](mongodb-migrate.md)

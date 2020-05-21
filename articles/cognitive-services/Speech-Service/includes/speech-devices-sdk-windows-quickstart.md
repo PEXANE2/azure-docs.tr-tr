@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: df29ecf0a4ddb30aea1c1ab9ceed44a93fc61eb8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b22ba1df6eeddfaf04d11e542acb4f2b8ab00d76
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400118"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673127"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Windows Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Konuşma için yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) desteklenir. Diğer konuşma için, bir Microphone dizi geometrisi sağlayan doğrusal mik dizileri kullanın.
 
@@ -48,19 +48,19 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. Çok geçmeden Eclipse IDE ana penceresi görüntülenir. Varsa, Hoş Geldiniz ekranını kapatın.
 
-1. Çakışan Küreler menü çubuğunda **Dosya** > **Yeni** > **Java projesi**' ni seçerek yeni bir proje oluşturun. Kullanılabilir değilse **Proje** ' yi ve ardından **Java projesi**' ni seçin.
+1. Çakışan Küreler menü çubuğunda **Dosya**  >  **Yeni**  >  **Java projesi**' ni seçerek yeni bir proje oluşturun. Kullanılabilir değilse **Proje** ' yi ve ardından **Java projesi**' ni seçin.
 
 1. **Yeni Java proje** Sihirbazı başlatılır. Örnek projenin konumuna **gözatın** . **Son**' u seçin.
 
    ![Yeni Java Projesi sihirbazının ekran görüntüsü](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. **Paket Gezgini**' nde projenize sağ tıklayın. Bağlam menüsünden**Maven projesine dönüştürmeyi** **Yapılandır** > ' ı seçin. **Son**' u seçin.
+1. **Paket Gezgini**' nde projenize sağ tıklayın. **Configure**  >  Bağlam menüsünden**Maven projesine dönüştürmeyi** Yapılandır ' ı seçin. **Son**' u seçin.
 
    ![Paket gezgininin ekran görüntüsü](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
 1. pom.xml dosyasını açıp düzenleyin.
 
-    `</project>`Dosyanın sonunda, kapanış etiketinden önce, ve `repositories` `dependencies` öğelerini, burada gösterildiği gibi oluşturun ve geçerli sürümünüzle `version` eşleştiğinden emin olun:
+    Dosyanın sonunda, kapanış etiketinden önce, `</project>` `repositories` ve `dependencies` öğelerini, burada gösterildiği gibi oluşturun ve `version` geçerli sürümünüzle eşleştiğinden emin olun:
     ```xml
     <repositories>
          <repository>
@@ -74,20 +74,20 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.11.0</version>
+             <version>1.12.0</version>
         </dependency>
     </dependencies>
    ```
 
 1. **Windows-x64** Içeriğini Java proje konumuna kopyalayın, örneğin **C:\sdsdk\jre-Sample-Release**
 
-1. Proje klasörü **target\classes** Kopyala `kws.table` `participants.properties` `Microsoft.CognitiveServices.Speech.extension.pma.dll`
+1. `kws.table` `participants.properties` `Microsoft.CognitiveServices.Speech.extension.pma.dll` Proje klasörü **target\classes** Kopyala
 
 ## <a name="configure-the-sample-application"></a>Örnek uygulamayı yapılandırma
 
 1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanımayı denemek istiyorsanız, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarınızı ve uygulama kimliğinizi da ekleyin.
 
-   Konuşma ve LUSıS için, bilgileriniz şu şekilde olur `FunctionsList.java`:
+   Konuşma ve LUSıS için, bilgileriniz şu şekilde olur `FunctionsList.java` :
 
    ```java
     // Subscription
@@ -98,7 +98,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-   Konuşma dökümünü kullanıyorsanız, konuşma anahtarınız ve bölge bilgilerinizin de şu şekilde `Cts.java`olması gerekir:
+   Konuşma dökümünü kullanıyorsanız, konuşma anahtarınız ve bölge bilgilerinizin de şu şekilde olması gerekir `Cts.java` :
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
@@ -110,10 +110,10 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
     > [!TIP]
     > Ayrıca, [özel bir anahtar sözcük oluşturabilirsiniz](../speech-devices-sdk-create-kws.md).
 
-    Yeni bir anahtar sözcük kullanmak için ' de `FunctionsList.java`aşağıdaki satırı güncelleştirin ve anahtar sözcüğünü uygulamanıza kopyalayın. Örneğin, anahtar sözcük paketinden `machine.zip`' Machine ' anahtar sözcüğünü kullanmak için:
+    Yeni bir anahtar sözcük kullanmak için ' de aşağıdaki satırı güncelleştirin `FunctionsList.java` ve anahtar sözcüğünü uygulamanıza kopyalayın. Örneğin, anahtar sözcük paketinden ' Machine ' anahtar sözcüğünü kullanmak için `machine.zip` :
 
-   * `kws.table` Dosyayı ZIP paketinden proje klasörü **hedefi/sınıfları**içine kopyalayın.
-   * `FunctionsList.java` Anahtar sözcük adıyla güncelleştirin:
+   * `kws.table`Dosyayı ZIP paketinden proje klasörü **hedefi/sınıfları**içine kopyalayın.
+   * `FunctionsList.java`Anahtar sözcük adıyla güncelleştirin:
 
      ```java
      private static final String Keyword = "Machine";
@@ -121,7 +121,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Örnek uygulamayı tutulma 'dan çalıştırma
 
-1. Çakışan Küreler menü çubuğundan**Çalıştır** > **Java uygulaması**' nı **çalıştırın** > . Sonra **Functionslist** ve **Tamam**' ı seçin.
+1. Çakışan Küreler menü çubuğundan **Run**  >  **Çalıştır**  >  **Java uygulaması**' nı çalıştırın. Sonra **Functionslist** ve **Tamam**' ı seçin.
 
    ![Java uygulaması Seç ekranının ekran görüntüsü](../media/speech-devices-sdk/eclipse-run-sample.png)
 
@@ -129,7 +129,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
    ![Örnek konuşma cihazları SDK örnek uygulama ve Seçenekler](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. Yeni **konuşma dökümü** tanıtımı ' nı deneyin. **Oturum** > **başlatma**ile bir başlangıç yapın. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa proje klasörü `participants.properties` **hedefi/sınıflarında**bir dosyaya yerleştirilebilir. Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription-service.md)konusuna bakın.
+1. Yeni **konuşma dökümü** tanıtımı ' nı deneyin. **Oturum**başlatma ile bir başlangıç yapın  >  **Start**. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa `participants.properties` Proje klasörü **hedefi/sınıflarında**bir dosyaya yerleştirilebilir. Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription-service.md)konusuna bakın.
 
    ![Demo konuşma dökümü uygulaması](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
@@ -145,7 +145,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
    ![Runfor JAR dosya dışarı aktarma ekran görüntüsü](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
-1. Lütfen uygulama `kws.table`için `participants.properties`bu `unimic_runtime.dll`dosyalar `pma.dll` gerektiğinden `Microsoft.CognitiveServices.Speech.extension.pma.dll` ,,, ve yukarıda seçilen hedef klasöre yerleştirin.
+1. Lütfen `kws.table` `participants.properties` `unimic_runtime.dll` uygulama için bu dosyalar gerektiğinden,,, `pma.dll` ve `Microsoft.CognitiveServices.Speech.extension.pma.dll` yukarıda seçilen hedef klasöre yerleştirin.
 
 1. Tek başına uygulamayı çalıştırmak için
 

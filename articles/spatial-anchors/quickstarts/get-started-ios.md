@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1da5bd7020304c67bd9f9058612f47d528611a9e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9a726544a899df8e4013ebf91dc09994bb2f6a8a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195328"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652445"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla, Swift veya amaç-C ' d a iOS uygulaması oluşturma
 
@@ -101,6 +101,8 @@ Alanı bulun `spatialAnchorsAccountKey` ve `Set me` Hesap anahtarıyla değişti
 
 Alanı bulun `spatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla değiştirin.
 
+`startSession()`Hesap etki alanında yer alan aşağıdaki satırı bulun ve daha önce ekleyin: `cloudSession!.configuration.accountDomain = "MyAccountDomain";` .
+
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
 `iOS/Objective-C/SampleObjC/BaseViewController.m` dosyasını açın.
@@ -108,6 +110,8 @@ Alanı bulun `spatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla de
 Alanı bulun `SpatialAnchorsAccountKey` ve `Set me` Hesap anahtarıyla değiştirin.
 
 Alanı bulun `SpatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla değiştirin.
+
+`startSession()`Hesap etki alanında yer alan aşağıdaki satırı bulun ve daha önce ekleyin: `_cloudSession.configuration.accountKey = @"MyAccountDomain";` .
 
 ---
 

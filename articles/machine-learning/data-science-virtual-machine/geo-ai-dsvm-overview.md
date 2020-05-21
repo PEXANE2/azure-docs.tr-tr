@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 2cefd3c7f85e043497084e2cd2b906bd546ca10d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 333b1fd94372a79e501de6be261a4cde5c6ab074
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80282282"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658372"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Coğrafi yapay zeka Veri Bilimi Sanal Makinesi nedir?
 
-Coğrafi yapay zeka Veri Bilimi Sanal Makinesi (coğrafi AI Veri Bilimi VM'si veya coğrafi-DSVM olarak da bilinir), Azure Veri Bilimi Sanal Makinesi (DSVM) üzerinden Jeo-uzamsal analiz özellikleri sunar. Özellikle, bu VM, ESRI 'den pazar lideri ArcGIS [Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) coğrafi bilgi sistemi ekleyerek [DSVM](overview.md) 'deki AI ve veri bilimi araç kitlerinin kapsamını genişletir.
+Coğrafi yapay zeka Veri Bilimi Sanal Makinesi (coğrafi AI Veri Bilimi VM'si veya coğrafi-DSVM olarak da bilinir), Azure Veri Bilimi Sanal Makinesi (DSVM) üzerinden Jeo-uzamsal analiz özellikleri sunar. Özellikle, bu VM, Esri 'den pazar lideri ArcGIS [Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) coğrafi bilgi sistemi ekleyerek [DSVM](overview.md) 'deki AI ve veri bilimi araç kitlerinin kapsamını genişletir.
 
- Coğrafi AI Veri Bilimi VM'si, ESRI ve Microsoft arasındaki işbirliğini içermeyen bir ürün sunumudur. Sonuç, şu özelliği sağlayan güçlü bir ortamdır:
+ Coğrafi AI Veri Bilimi VM'si, Esri ve Microsoft arasındaki işbirliğini içermeyen bir ürün sunumudur. Sonuç, şu özelliği sağlayan güçlü bir ortamdır:
 
 - En popüler AI ve veri bilimi araçlarıyla verileri araştırma
 - Coğrafi veya uzamsal yönleri olan verilere istatistiksel analizler uygulama

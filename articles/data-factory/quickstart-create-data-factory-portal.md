@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 7d66d226554c4b6f84e3040cdd7c3edea0a5f054
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c54d3187af1faee3a47a794dcf5b9b91733e5592
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982182"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683346"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı başlangıç: Azure Data Factory Kullanıcı arabirimini kullanarak veri fabrikası oluşturma
 
@@ -29,7 +29,7 @@ ms.locfileid: "82982182"
 Bu hızlı başlangıçta, Azure Data Factory UI kullanarak veri fabrikasını oluşturma ve izleme işlemi açıklanır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure Blob depolama alanındaki bir klasörden başka bir klasöre *kopyalar*. Azure Data Factory kullanarak verileri *dönüştürmek* için bkz. [eşleme veri akışı](concepts-data-flow-overview.md) ve [wrangling veri akışı (Önizleme)](wrangling-data-flow-overview.md).
 
 > [!NOTE]
-> Azure Data Factory'yi kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](data-factory-introduction.md) konusuna bakın. 
+> Azure Data Factory'yi kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](introduction.md) konusuna bakın. 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -49,7 +49,7 @@ Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımc�
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. **Yeni veri fabrikası** sayfasında **Ad** için **ADFTutorialDataFactory** girin. 
  
-   Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin (örneğin, ** &lt;adınız&gt;ADFTutorialDataFactory**) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
+   Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin (örneğin, ** &lt; adınız &gt; ADFTutorialDataFactory**) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
   
    ![Bir ad kullanılamadığında alınan hata](./media/doc-common-process/name-not-available-error.png)
 1. **Abonelik** için, veri fabrikasını oluşturmak istediğiniz Azure aboneliğini seçin. 
@@ -106,7 +106,7 @@ Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş v
 
 Bağlı hizmet ayarlarında, kaynak verileri içeren Azure Depolama hesabını belirttiniz. Kaynak veri kümesi ayarlarında, kaynak verilerin tam olarak nerede durduğunu (blob kapsayıcısı, klasör ve dosya) belirtirsiniz. Havuz veri kümesi ayarlarında, verilerin nereye kopyalandığını (blob kapsayıcısı, klasör ve dosya) belirtirsiniz. 
  
-1. **+** (Artı) düğmesini seçin ve ardından **veri kümesi**' ni seçin.
+1. **+**(Artı) düğmesini seçin ve ardından **veri kümesi**' ni seçin.
 
    ![Veri kümesi oluşturma menüsü](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
 1. **Yeni veri kümesi** sayfasında **Azure Blob depolama**' yı seçin ve ardından **devam**' ı seçin. 
@@ -130,7 +130,7 @@ Bağlı hizmet ayarlarında, kaynak verileri içeren Azure Depolama hesabını b
     ![Inputdataset özelliklerini ayarlama](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
 1. Çıktı veri kümesini oluşturmak için adımları yineleyin:  
 
-    a. **+** (Artı) düğmesini seçin ve ardından **veri kümesi**' ni seçin.
+    a. **+**(Artı) düğmesini seçin ve ardından **veri kümesi**' ni seçin.
 
     b. **Yeni veri kümesi** sayfasında **Azure Blob depolama**' yı seçin ve ardından **devam**' ı seçin.
 
@@ -146,7 +146,7 @@ Bağlı hizmet ayarlarında, kaynak verileri içeren Azure Depolama hesabını b
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma 
 Bu yordamda, giriş ve çıkış veri kümelerini kullanan kopyalama etkinliğiyle bir işlem hattı oluşturur ve doğrularsınız. Kopyalama etkinliği, giriş veri kümesi ayarlarında belirttiğiniz dosyadaki verileri çıkış veri kümesi ayarlarında belirttiğiniz dosyaya kopyalar. Giriş veri kümesi yalnızca bir klasörü belirtiyorsa (dosya adını belirtmiyorsa), kopyalama etkinliği kaynak klasördeki tüm dosyaları hedefe kopyalar. 
 
-1. **+** (Artı) düğmesini seçin ve ardından işlem **hattı**' nı seçin. 
+1. **+**(Artı) düğmesini seçin ve ardından Işlem **hattı**' nı seçin. 
 
 1. **Genel** sekmesinde **Ad** için **CopyPipeline** değerini belirtin. 
 

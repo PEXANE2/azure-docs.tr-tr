@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: b9c40d93c48bcf5959b5d9651510ce6076eb789e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201763"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641114"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Öğretici: Microsoft Identity platform uç noktasını kullanan çok kiracılı bir Daemon oluşturma
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Uygulama, bir ASP.NET MVC uygulaması olarak oluşturulmuştur. Kullanıcıların oturum açması için OWIN OpenID Connect ara yazılımını kullanır.
 
-Bu örnekteki "Daemon" bileşeni bir API denetleyicisidir `SyncController.cs`. Denetleyici çağrıldığında, Microsoft Graph tarafından müşterinin Azure Active Directory (Azure AD) kiracısındaki kullanıcıların listesini alır. `SyncController.cs`Web uygulamasındaki bir AJAX çağrısıyla tetiklenir. Microsoft Graph için bir erişim belirteci almak üzere [.net Için Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md) kullanır.
+Bu örnekteki "Daemon" bileşeni bir API denetleyicisidir `SyncController.cs` . Denetleyici çağrıldığında, Microsoft Graph tarafından müşterinin Azure Active Directory (Azure AD) kiracısındaki kullanıcıların listesini alır. `SyncController.cs`Web uygulamasındaki bir AJAX çağrısıyla tetiklenir. Microsoft Graph için bir erişim belirteci almak üzere [.net Için Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md) kullanır.
 
 >[!NOTE]
 > Microsoft Identity platformu ' na yeni başladıysanız, [.NET Core Daemon hızlı](quickstart-v2-netcore-daemon.md)başlangıç ile başlamanız önerilir.
@@ -114,8 +114,8 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerde bulunan adımlar
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmak için gerekli olacaktır.
 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin. Ardından:
-   - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak **https://localhost:44316/Account/EndSession**ayarlayın.
-   - **Gelişmiş ayarlar** > **örtük verme** bölümünde, **erişim belirteçleri** ve **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması ve bir API çağırması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
+   - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın **https://localhost:44316/Account/EndSession** .
+   - **Gelişmiş ayarlar**  >  **örtük verme** bölümünde, **erişim belirteçleri** ve **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması ve bir API çağırması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
 1. **Kaydet**’i seçin.
 1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin. Ardından:
 
@@ -150,7 +150,7 @@ Kurulum betiklerini kullandıysanız, sizin için aşağıdaki değişiklikler u
 
 Oturum açtığınızda, uygulama öncelikle oturumunuzu açmak ve Kullanıcı profilinizi okumak için sizden izin ister. Bu izin, uygulamanın bir iş kullanıcısı olduğunuzdan emin olmanızı sağlar.
 
-![Kullanıcı izni](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
+![Kullanıcı onayı](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
 
 Uygulama daha sonra Microsoft Graph aracılığıyla Azure AD kiracınızdan bir kullanıcı listesini eşitlemeye çalışır. Bu, kiracınızı uygulamaya bağlamak için sizi (kiracı yöneticisi) ister.
 
@@ -199,7 +199,7 @@ Bu örnek için ilgili kod aşağıdaki dosyalardır:
 1. **Usercontroller**adlı yeni bir **MVC 5 denetleyici-boş** örnek ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
 1. **Synccontroller**adlı yeni BIR **Web API 2 denetleyicisi (boş** örnek) ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
 1. Kullanıcı arabirimi için **Views\account** klasöründe, **grantpermissions**, **Index**ve **useruyuşmazlığını**adlı üç **boş (model olmadan) görüntüleme** örnekleri ekleyin. **Views\user** klasörüne bir adlandırılmış **Dizin** ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
-1. **Paylaşılan\_Layout. cshtml** ve **home\ındex.cshtml** güncellerini, çeşitli görünümleri birbirine doğru şekilde bağlamak için güncelleştirin.
+1. **Paylaşılan \_ Layout. cshtml** ve **Home\ındex.cshtml** güncellerini, çeşitli görünümleri birbirine doğru şekilde bağlamak için güncelleştirin.
 
 ## <a name="deploy-the-sample-to-azure"></a>Örneği Azure 'a dağıtma
 
@@ -211,9 +211,9 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Bir Azure Web sitesinde DotNet-Web-Daemon-v2 oluşturma ve yayımlama
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol üst köşeden **Kaynak oluştur**'u seçin.
-1. **Web** > **Web uygulaması**' nı seçin ve ardından Web sitenize bir ad verin. Örneğin, **DotNet-Web-Daemon-v2-contoso.azurewebsites.net**olarak adlandırın.
+1. **Web**  >  **Web uygulaması**' nı seçin ve ardından Web sitenize bir ad verin. Örneğin, **DotNet-Web-Daemon-v2-contoso.azurewebsites.net**olarak adlandırın.
 1. **Abonelik**, **kaynak grubu**ve **App Service planı ve konum**bilgilerini seçin. **Işletim sistemi** **Windows**ve **Yayımlama** **kodudur**.
 1. **Oluştur** ' u seçin ve App Service 'in oluşturulmasını bekleyin.
 1. **Dağıtım başarılı** bildirimini aldığınızda, yeni oluşturulan App Service 'e gitmek Için **Kaynağa Git** ' i seçin.
@@ -224,7 +224,7 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
    1. Çözüm Gezgini projeye sağ tıklayın ve ardından **Yayımla**' yı seçin.
    1. Alt çubukta **profili Içeri aktar** ' ı seçin ve daha önce indirdiğiniz yayımlama profilini içeri aktarın.
 1. **Yapılandır**'ı seçin.
-1. **Bağlantı** sekmesinde, hedef URL 'yi "https" kullanacak şekilde güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`. **İleri**’yi seçin.
+1. **Bağlantı** sekmesinde, hedef URL 'yi "https" kullanacak şekilde güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` . **İleri**’yi seçin.
 1. **Ayarlar** sekmesinde, **Kurumsal kimlik doğrulamasını etkinleştir** ' in temizlenmiş olduğundan emin olun.
 1. **Kaydet**’i seçin. Ana ekranda **Yayımla** ' yı seçin.
 
@@ -235,10 +235,10 @@ Visual Studio projeyi yayımlayacak ve projenin URL 'sine otomatik olarak bir ta
 1. [Azure portalına](https://portal.azure.com) geri dönün.
 1. Sol bölmede **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' ı seçin.
 1. **DotNet-Web-Daemon-v2** uygulamasını seçin.
-1. Uygulamanızın **kimlik doğrulama** sayfasında, **oturum kapatma URL 'si** alanlarını hizmetinizin adresiyle güncelleştirin. Örneğin, kullanın [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net).
-1. **Marka** menüsünde, **giriş sayfası URL 'sini** hizmetinizin adresi olarak güncelleştirin. Örneğin, kullanın [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net).
+1. Uygulamanızın **kimlik doğrulama** sayfasında, **oturum kapatma URL 'si** alanlarını hizmetinizin adresiyle güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
+1. **Marka** menüsünde, **giriş sayfası URL 'sini** hizmetinizin adresi olarak güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
 1. Yapılandırmayı kaydedin.
-1. **Kimlik doğrulaması** > **yeniden yönlendirme URI** 'lerinin değerleri listesinde aynı URL 'yi ekleyin. Birden çok yeniden yönlendirme URL 'SI varsa, her yönlendirme URL 'si için App Service 'in URI 'sini kullanan yeni bir giriş olduğundan emin olun.
+1. **Kimlik doğrulaması**  >  **yeniden yönlendirme URI** 'lerinin değerleri listesinde aynı URL 'yi ekleyin. Birden çok yeniden yönlendirme URL 'SI varsa, her yönlendirme URL 'si için App Service 'in URI 'sini kullanan yeni bir giriş olduğundan emin olun.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Artık gerekli değilse, [Uygulamanızı kaydetme](#register-your-application) adımındaki oluşturduğunuz uygulama nesnesini silin.  Uygulamayı kaldırmak için [siz veya kuruluşunuz tarafından yazılmış bir uygulamayı kaldırma](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)bölümündeki yönergeleri izleyin.

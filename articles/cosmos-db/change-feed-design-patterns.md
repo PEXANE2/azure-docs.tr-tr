@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abbf5d79da033a696890566d85bd24bb54577d2c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450360"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715707"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Azure Cosmos DB akış tasarımı desenlerini değiştirme
 
@@ -29,7 +29,7 @@ Azure Cosmos DB değişiklik akışı, aşağıdaki görüntüde gösterildiği 
 
 ## <a name="event-computing-and-notifications"></a>Olay bilgi işlem ve bildirimler
 
-Azure Cosmos DB değişiklik akışı, belirli bir olaya bağlı olarak bir bildirimi veya API çağrısını tetiklemesi gereken senaryoları kolaylaştırabilir. Kapsayıcıyı değişiklik için otomatik olarak yoklamak ve her yazma veya güncelleştirme olduğunda bir dış API 'yi çağırmak için, [değişiklik akışı Işlem kitaplığını](change-feed-processor.md) kullanabilirsiniz.
+Azure Cosmos DB değişiklik akışı, bir bildirim tetiklenmesi veya belirli bir olaya göre API 'ye çağrı gönderilmesi gereken senaryoları kolaylaştırabilir. Kapsayıcıyı değişiklik için otomatik olarak yoklamak ve her yazma veya güncelleştirme olduğunda bir dış API 'yi çağırmak için, [değişiklik akışı Işlem kitaplığını](change-feed-processor.md) kullanabilirsiniz.
 
 Ayrıca, isteğe bağlı olarak bir bildirim tetikleyip belirli ölçütlere göre bir API çağrısı gönderebilirsiniz. Örneğin, [Azure işlevleri](change-feed-functions.md)'ni kullanarak değişiklik akışından okuyorsanız, yalnızca belirli bir ölçüte uyulduğunda bildirim göndermek için işlevine Logic koyabilirsiniz. Azure Işlev kodu her yazma ve güncelleştirme sırasında yürütülecektir, ancak bildirim yalnızca belirli ölçütler karşılandıysa gönderilir.
 

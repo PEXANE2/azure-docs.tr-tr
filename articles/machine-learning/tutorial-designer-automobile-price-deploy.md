@@ -9,12 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d8c38707f68b5841edb39e4527ec2cdcb1a35adf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: designer
+ms.openlocfilehash: 41b6fb38798e9aa7264000676d81101db1c83236
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983389"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656526"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,7 +38,7 @@ Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıra
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Gerçek zamanlı bir çıkarım işlem hattı oluşturma
 
-1. İşlem hattı tuvalinin üzerinde, **çıkarım ardışık düzen** > **gerçek zamanlı çıkarım işlem hattı**' nı seçin.
+1. İşlem hattı tuvalinin üzerinde, **çıkarım ardışık düzen**  >  **gerçek zamanlı çıkarım işlem hattı**' nı seçin.
 
     ![Ardışık düzen oluştur düğmesinin nerede bulunacağını gösteren ekran görüntüsü](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
@@ -68,7 +69,7 @@ Görüntülenen iletişim kutusunda, modelinizi dağıtmak için mevcut herhangi
 
 1. **İşlem** sayfasına git görüntülenen Iletişim kutusunda **işlem** ' i seçin.
 
-1. Gezinti şeridinde, **çıkarım kümeleri** > **+ Yeni**' yi seçin.
+1. Gezinti şeridinde, **çıkarım kümeleri**  >  **+ Yeni**' yi seçin.
 
     ![Yeni çıkarım kümesi bölmesine nasıl alınacağını gösteren ekran görüntüsü](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 

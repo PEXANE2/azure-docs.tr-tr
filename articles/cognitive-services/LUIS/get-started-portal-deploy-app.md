@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: LUO portalı ile uygulama dağıtma'
 description: Bu hızlı başlangıçta, bir tahmin uç noktası kaynağı oluşturarak, kaynak, eğitim ve uygulamayı yayımlamaya göre bir uygulamanın nasıl dağıtılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585119"
+ms.locfileid: "83653235"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı başlangıç: Lua portalında uygulama dağıtma
 
@@ -16,7 +16,7 @@ Lusıs uygulamanız, bir istemci uygulamasına söylenişi tahminleri (örneğin
 
 Bu hızlı başlangıçta, bir uygulamayı dağıtmayı öğreneceksiniz. Bir tahmin uç noktası kaynağı oluşturur, uygulamayı uygulamaya atayabilir, uygulamayı eğitme ve uygulamayı yayımlayabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir [Azure aboneliği](https://azure.microsoft.com/free)alın.
 * [Önceki Portal Hızlı](get-started-portal-build-app.md) başlangıcını tamamlayıp [uygulamayı indirip içeri aktarın](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
@@ -40,7 +40,8 @@ LUHER yeni yazma veya sorgu tahmini kaynağı oluşturduğunuzda, kaynağı LUO 
 
 1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. **Kaynak ata**' yı seçin.
 
-   ![Uygulamanıza bir kaynak atayın](./media/get-started-portal-deploy-app/assign-resource.png)
+   > [!div class="mx-imgBorder"]
+   > ![Uygulamanıza bir kaynak atayın](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. Uygulamanıza yazma anahtarını eklemek için aynı adımları izleyin.
 
@@ -51,11 +52,11 @@ LUHER yeni yazma veya sorgu tahmini kaynağı oluşturduğunuzda, kaynağı LUO 
 
 ## <a name="train-the-app"></a>Uygulamayı eğitme
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
+Uygulamayı en son eğitilen bu yana değiştirdiyseniz uygulamayı [eğitebilirsiniz](get-started-portal-build-app.md) .
 
 ## <a name="publish-the-app-to-the-prediction-endpoint"></a>Uygulamayı tahmin uç noktasına yayımlayın
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="prediction-endpoint-request"></a>Tahmin uç noktası isteği
 

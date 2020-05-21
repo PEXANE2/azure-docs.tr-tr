@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 05/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d19a7cc8d81f9e6e913f147b24c5cce03ff82027
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2325259cd5e613223ee77371d7e563e8ab1e94ca
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76986742"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648463"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Öğretici: Tableau Server ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -107,7 +107,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**' a tıklayın.
 
@@ -145,7 +145,7 @@ Bu bölümde, Tableau sunucusuna erişim vererek Azure çoklu oturum açma özel
 
     b. **Sunucu IÇIN SAML kimlik doğrulamasını etkinleştir**onay kutusunu seçin.
 
-    c. Tableau sunucusu dönüş URL 'SI — gibi Tableau Server kullanıcılarına erişim verilecek URL <http://tableau_server>. Kullanılması `http://localhost` önerilmez. Sondaki eğik çizgiyle (örneğin, `http://tableau_server/`) bir URL kullanılması desteklenmez. **Tableau sunucusu geri dönüş URL 'sini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde URL metin kutusunu **oturum** açmak için yapıştırın
+    c. Tableau sunucusu dönüş URL 'SI — gibi Tableau Server kullanıcılarına erişim verilecek URL <http://tableau_server> . Kullanılması `http://localhost` önerilmez. Sondaki eğik çizgiyle (örneğin,) bir URL kullanılması `http://tableau_server/` desteklenmez. **Tableau sunucusu geri dönüş URL 'sini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde URL metin kutusunu **oturum** açmak için yapıştırın
 
     d. SAML varlık KIMLIĞI — varlık KIMLIĞI, Tableau sunucu yüklemenizi IDP 'ye benzersiz şekilde tanımlar. İsterseniz Tableau sunucu URL 'nizi buraya girebilirsiniz, ancak Tableau Server URL 'niz olması gerekmez. **SAML VARLıK kimliğini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı** metin kutusuna yapıştırın
 
@@ -158,7 +158,7 @@ Bu bölümde, Tableau sunucusuna erişim vererek Azure çoklu oturum açma özel
     h. **Kaydet** 'e tıklayın
 
     > [!NOTE]
-    > Müşterinin, Tableau Server SAML SSO yapılandırmasındaki herhangi bir sertifikayı karşıya yüklemesi gerekir ve bu, SSO akışında yok sayılır. Tableau sunucusunda SAML yapılandırması için yardıma ihtiyacınız varsa lütfen [SAML 'Yi yapılandırma](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm)makalesine başvurun.
+    > Müşterinin bir. CRT uzantılı bir pek kodlu x509 sertifika dosyasını ve. Key uzantısına sahip bir RSA veya DSA özel anahtar dosyasını sertifika anahtarı dosyası olarak yüklemesi gerekir. Sertifika dosyası ve sertifika anahtar dosyası hakkında daha fazla bilgi için lütfen [Bu](https://help.tableau.com/current/server/en-us/saml_requ.htm) belgeye başvurun. Tableau sunucusunda SAML yapılandırması için yardıma ihtiyacınız varsa lütfen [sunucu GENELINDEKI SAML 'Yi yapılandırma](https://help.tableau.com/current/server/en-us/config_saml.htm)makalesine başvurun.
 
 ### <a name="create-tableau-server-test-user"></a>Tableau Server test kullanıcısı oluştur
 

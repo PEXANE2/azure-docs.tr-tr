@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
-ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b2b3ca886359a0b4c906b89ed76f57486fc2c368
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67135010"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638982"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Uzamsal bağlayıcı kaynağı oluşturma
 
@@ -42,6 +42,10 @@ Daha sonra kaynak özelliklerini görüntüleyebilirsiniz. Daha sonra ihtiyacın
 
    ![Kaynak özellikleri](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 
-**Ayarlar**altında **anahtar**' ı seçin. **Birincil anahtar** değerini bir metin düzenleyicisine kopyalayın. Bu değer, `Account Key`. Buna daha sonra ihtiyacınız olacak.
+Ayrıca, daha sonra ihtiyacınız olacak şekilde kaynağın **hesap etki alanı** değerini bir metin düzenleyicisine kopyalayın.
+
+   ![Hesap etki alanı](./media/spatial-anchors-get-started-create-resource/view-resource-domain.png)
+
+**Ayarlar**altında **anahtar**' ı seçin. **Birincil anahtar** değerini bir metin düzenleyicisine kopyalayın. Bu değer, `Account Key` . Buna daha sonra ihtiyacınız olacak.
 
    ![Hesap anahtarı](./media/spatial-anchors-get-started-create-resource/view-account-key.png)

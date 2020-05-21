@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61d401a543032b1a206a4477f04d7e8e209c0f2a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77525898"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646603"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Hızlı başlangıç: Azure 'da coğrafi yapay zeka sanal makinesi ayarlama 
 
@@ -24,7 +24,7 @@ Coğrafi-DSVM 'ye dahil edilen AI araçları şunları içerir:
 - Microsoft Cognitive Toolkit, TensorFlow, keras, Caffe2 ve Chainer gibi popüler derin öğrenme çerçevelerinin GPU sürümleri
 - Görüntü ve metin verileri alma ve ön işleme araçları
 - Microsoft Machine Learning Server Geliştirici sürümü, Anaconda Python, Python ve R için JUPITER Not defterleri, Python ve R için Ides ve SQL veritabanları gibi geliştirme etkinliklerine yönelik araçlar
-- AI uygulamalarınızdaki Jeo-uzamsal verilerle birlikte çalışan Python ve R arabirimlerinin yanı sıra ESRI 'nin Pro Desktop yazılımını argıs.
+- AI uygulamalarınızdaki Jeo-uzamsal verilerle birlikte çalışan Python ve R arabirimlerinin yanı sıra Esri 'nin Pro Desktop yazılımını argıs.
  
 
 ## <a name="create-your-geo-ai-data-science-vm"></a>Coğrafi AI Veri Bilimi VM'si oluşturma

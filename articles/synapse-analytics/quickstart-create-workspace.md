@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0bf58348d91c23db9bcc016ff6d71ce2b3804ced
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: df7753983cea2ca2cc285f04cd32da6ed065f415
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201052"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656138"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Hızlı başlangıç: Azure SYNAPSE Analytics çalışma alanı oluşturma (Önizleme)
 
@@ -25,6 +25,9 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [Azure Data Lake Storage 2. depolama hesabı](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+
+## <a name="register-azure-synapse-resource-provider"></a>Azure SYNAPSE kaynak sağlayıcısını kaydetme
+Daha önce yapmadıysanız, Azure SYNAPSE kaynak sağlayıcısını kaydedin. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Azure SYNAPSE kaynak sağlayıcısı 'nı kaydetmek için bkz. [Azure kaynak sağlayıcıları ve türleri](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types). Kayıt sırasında kaynak sağlayıcıları listesinden *Microsoft. SYNAPSE* öğesini seçin.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -43,7 +46,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
     | **Abonelik** | *Aboneliğiniz* | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
     | **Kaynak grubu** | *Herhangi bir kaynak grubu* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). |
     | **Çalışma alanı adı** | mysampleworkspace | Bağlantı uç noktaları için de kullanılacak olan çalışma alanının adını belirtir.|
-    | **Geli** | Doğu ABD 2 | Çalışma alanının konumunu belirtir.|
+    | **Bölge** | Doğu ABD 2 | Çalışma alanının konumunu belirtir.|
     | **Data Lake Storage Gen2** | Hesabı`storage account name` </br> Dosya sistemi:`root file system to use` | Birincil depolama ve kullanılacak dosya sistemi olarak kullanılacak ADLS 2. depolama hesabı adını belirtir.|
     ||||
 
@@ -82,4 +85,4 @@ Azure SYNAPSE çalışma alanını silmek istiyorsanız aşağıdaki adımları 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha sonra, verilerinizi analiz etmeye ve keşfetmeye başlamak için [SQL havuzları oluşturabilir](quickstart-create-sql-pool.md) veya [Apache Spark havuzları oluşturabilirsiniz](quickstart-create-apache-spark-pool.md) .
+Daha sonra, verilerinizi analiz etmeye ve keşfetmeye başlamak için [SQL havuzları oluşturabilir](quickstart-create-sql-pool-studio.md) veya [Apache Spark havuzları oluşturabilirsiniz](quickstart-create-apache-spark-pool-studio.md) .

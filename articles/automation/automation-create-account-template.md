@@ -1,20 +1,20 @@
 ---
-title: Otomasyon hesabı oluşturmak için Azure Resource Manager şablonları kullanma | Microsoft Docs
-description: Azure Otomasyonu hesabı oluşturmak için bir Azure Resource Manager şablonu kullanabilirsiniz.
+title: Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma | Microsoft Docs
+description: Bu makalede, bir Azure Otomasyonu hesabı oluşturmak için Azure Resource Manager şablonunun nasıl kullanılacağı açıklanır.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 949b07a16b2c2b08891d721e46948481cfe572b2
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 10b53da1ef277d7a3d6ab7c850192ce8f08ded68
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996096"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712681"
 ---
-# <a name="create-an-automation-account-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma
+# <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma
 
 Kaynak grubunuzda Azure Otomasyonu hesabı oluşturmak için [Azure Resource Manager şablonlarını](../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Bu makalede şu örnek bir şablon verilmiştir:
 
@@ -38,7 +38,7 @@ Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listele
 
 ## <a name="before-you-use-the-template"></a>Şablonu kullanmadan önce
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale Azure PowerShell az modülünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure ile bir bağlantı oluşturmak için öğesini `Connect-AzAccount` de çalıştırmanız gerekir. PowerShell ile, dağıtım [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanır.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale Azure PowerShell az modülünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için öğesini de çalıştırmanız gerekir. PowerShell ile, dağıtım [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanır.
 
 Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, sürüm 2.1.0 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLı ile bu dağıtım [az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)kullanır. 
 
@@ -310,8 +310,6 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir Otomasyon hesabınız olduğuna göre, runbook 'lar oluşturabilir ve el ile işlemleri otomatikleştirebilirsiniz.
-
-* PowerShell runbook 'larını kullanmaya başlamak için bkz. [PowerShell runbook 'U oluşturma](automation-first-runbook-textual-powershell.md).
-* PowerShell iş akışı runbook 'larını kullanmaya başlamak için bkz. [PowerShell Iş akışı runbook 'U oluşturma](automation-first-runbook-textual.md).
-* Python 2 runbook 'ları kullanmaya başlamak için bkz. [Python runbook oluşturma](automation-first-runbook-textual-python2.md).
+* [PowerShell runbook’u oluşturma](automation-first-runbook-textual-powershell.md)
+* [PowerShell Iş akışı runbook 'u oluşturma](automation-first-runbook-textual.md)
+* [Python runbook'u oluşturma](automation-first-runbook-textual-python2.md)

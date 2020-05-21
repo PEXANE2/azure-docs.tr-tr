@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 49c1a29547195ad8557550ba1bc0cb80fae40ad8
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402623"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652212"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama
 
@@ -107,9 +107,6 @@ Get-AzADGroup -SearchString <search-string>
 Id                    : 1cef38c4-388c-45a9-b5ae-3d88375e166a
 ...
 ```
-
-> [!WARNING]
-> Yönetilen kimlikleri olan Azure AD grupları, belirtecin yenilenmesi ve etkili olması için 8 saat kadar sürebilir.
 
 #### <a name="users"></a>Kullanıcılar
 
@@ -225,6 +222,9 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 Son olarak, Azure CLı [az keykasa Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutunu veya Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) cmdlet 'ini kullanarak anahtar kasanıza ad grubu izinleri verin. Örnekler için yukarıdaki [uygulama, Azure AD grubu veya Kullanıcı erişimi](#give-the-principal-access-to-your-key-vault) bölümüne bakın.
 
 Uygulamanın Ayrıca anahtar kasasına atanmış en az bir kimlik ve erişim yönetimi (ıAM) rolü olması gerekir. Aksi takdirde, oturum açamayacak ve aboneliğe erişmek için yetersiz haklarla başarısız olacak.
+
+> [!WARNING]
+> Yönetilen kimlikleri olan Azure AD grupları, belirteci yenilemek ve etkili hale gelmesi için 8 saat kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

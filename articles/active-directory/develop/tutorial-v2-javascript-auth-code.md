@@ -1,82 +1,82 @@
 ---
-title: JavaScript tek sayfalı uygulama öğreticisi 2,0-Microsoft Identity platform | Mavisi
+title: JavaScript tek sayfalı uygulama öğreticisi-kimlik doğrulama kod akışı | Mavisi
+titleSuffix: Microsoft identity platform
 description: JavaScript SPA uygulamaları, Azure Active Directory v 2.0 uç noktası tarafından erişim belirteçleri gerektiren bir API 'yi çağırmak için kimlik doğrulama kod akışını nasıl kullanabilir?
 services: active-directory
-documentationcenter: dev-center-name
 author: hahamil
 manager: CelesteDG
-ROBOTS: NOINDEX
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/19/2020
 ms.author: hahamil
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f664f5fa4219a8bcc32230b352e90cc2516faceb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.custom: aaddev
+ms.openlocfilehash: e02f6946ff6f520fec63ead7e14e94f33182357f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890374"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682381"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa---msaljs-20"></a>Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma-MSAL. js 2,0
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Öğretici: Kullanıcı oturum açma ve kimlik doğrulama kod akışı kullanarak JavaScript tek sayfalı uygulama (SPA) Microsoft Graph API 'sini çağırma
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma (GA) önce değişebilir.
 
-Bu öğretici, MSAL. js ' nin PKI ile OAuth 2,0 yetkilendirme kodu akışını kullanan bir sürümünü kullanır. Bu protokol hakkında daha fazla bilgi edinmek ve dolaylı akış ile yetkilendirme kodu akışı arasındaki farklılıkları öğrenmek için [belgelerine](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)bakın. Örtük akışı kullanan bir öğretici arıyorsanız, lütfen [msal. js v1 öğreticisine](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-spa)bakın.
+Bu öğreticide, JavaScript v 2.0 için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanan bir JavaScript tek sayfalı uygulamanın (SPA) nasıl oluşturulacağı gösterilmektedir:
 
-MSAL. js ' nin bu sürümü, geçerli msal çekirdekli kitaplıkta geliştirilir ve tarayıcıdaki yetkilendirme kodu akışını kullanır. Eski kitaplıkta kullanılabilen özelliklerin çoğu bu sürümde kullanılabilir, ancak her ikisinde de kimlik doğrulama akışı söz konusu olabilir. Bu sürüm örtük **akışı desteklemiyor.**
+> [!div class="checklist"]
+> * PCE ile OAuth 2,0 yetkilendirme kodu akışını gerçekleştirme
+> * Kişisel Microsoft hesaplarında ve iş ve okul hesaplarında oturum açın
+> * Erişim belirteci alma
+> * Microsoft Identity platform uç noktasından alınan erişim belirteçleri gerektiren Microsoft Graph veya kendi API 'nizi çağırın
 
-Bu kılavuzda bir JavaScript tek sayfalı uygulamanın (SPA) nasıl kullanılabileceğini gösterilmektedir:
-- Kişisel hesapların yanı sıra iş ve okul hesaplarında oturum açın
-- Erişim belirteci alma
-- *Microsoft Identity platform uç noktasından* erişim belirteçleri GEREKTIREN Microsoft Graph API 'sini veya diğer API 'leri çağırma
+MSAL. js 2,0, dolaylı verme akışı yerine tarayıcıda yetkilendirme kodu akışını destekleyerek MSAL. js 1,0 ' de geliştirilir. MSAL. js 2,0 örtük **akışı desteklemez.**
 
-## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Bu kılavuz tarafından oluşturulan örnek uygulamanın nasıl çalıştığı
+## <a name="how-the-tutorial-app-works"></a>Öğretici uygulamasının nasıl çalıştığı
 
-![Bu öğretici tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="Tek sayfalı bir uygulamada yetkilendirme kodu akışını gösteren diyagram":::
 
-### <a name="more-information"></a>Daha fazla bilgi
+Bu öğreticide oluşturduğunuz uygulama, JavaScript SPA 'nın, Microsoft Identity platform uç noktasından güvenlik belirteçleri alarak Microsoft Graph API 'sini sorgulamasını sağlar. Bu senaryoda, bir Kullanıcı oturum açtıktan sonra yetkilendirme üstbilgisindeki HTTP isteklerine bir erişim belirteci istenir ve eklenir. Belirteç alma ve yenileme, JavaScript (MSAL. js) için Microsoft kimlik doğrulama kitaplığı tarafından işlenir.
 
-Bu kılavuz tarafından oluşturulan örnek uygulama, JavaScript SPA 'nın Microsoft Graph API 'sini veya Microsoft Identity platform uç noktasından belirteçleri kabul eden bir Web API 'sini sorgulamasına olanak sağlar. Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgisi aracılığıyla bir erişim belirteci istenir ve HTTP isteklerine eklenir. Belirteç alma ve yenileme işlemleri Microsoft kimlik doğrulama kitaplığı (MSAL) tarafından gerçekleştirilir.
+Bu öğretici aşağıdaki kitaplığı kullanır:
 
-### <a name="libraries"></a>Kitaplıklar
-
-Bu kılavuz aşağıdaki kitaplığı kullanır:
-
-|Kitaplık|Açıklama|
+| | |
 |---|---|
-|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)|JavaScript tarayıcı paketi için Microsoft kimlik doğrulama kitaplığı|
+|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)|JavaScript v 2.0 için Microsoft kimlik doğrulama kitaplığı tarayıcı paketi|
+| | |
 
-## <a name="set-up-your-web-server-or-project"></a>Web sunucunuzu veya projenizi ayarlama
+## <a name="get-the-completed-code-sample"></a>Tamamlanan kod örneğini al
 
-Bunun yerine bu örneğin projesini indirmeyi tercih et mi? Projeyi Node. js gibi yerel bir Web sunucusu kullanarak çalıştırmak için proje dosyalarını kopyalayın:
+Bunun yerine Bu öğreticinin tamamlanmış örnek projesini indirmek ister misiniz? Projeyi Node. js gibi yerel bir Web sunucusu kullanarak çalıştırmak için [MS-Identity-JavaScript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) deposunu kopyalayın:
 
 `git clone https://github.com/Azure-Samples/ms-identity-javascript-v2`
 
-Yürütmeden önce kod örneğini yapılandırmak için [yapılandırma adımına](#register-your-application)atlayın.
+Daha sonra kod örneğini yürütmeden önce yapılandırmak için [yapılandırma adımına](#register-your-application)atlayın.
+
+Öğreticiye devam etmek ve uygulamayı kendiniz derlemek için bir sonraki bölüme [geçin.](#prerequisites)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Bu öğreticiyi çalıştırmak için [Node. js](https://nodejs.org/en/download/) veya [.NET Core](https://www.microsoft.com/net/core)gibi yerel bir Web sunucusuna ihtiyacınız vardır.
-
-* Projeyi çalıştırmak için Node. js kullanıyorsanız, proje dosyalarını düzenlemek için [Visual Studio Code](https://code.visualstudio.com/download) gibi bir tümleşik geliştirme ORTAMı (IDE) yükleyebilirsiniz.
-
-* Bu öğreticideki yönergeler Node. js ' ye dayalıdır.
+* Yerel Web sunucusu çalıştırmak için [Node. js](https://nodejs.org/en/download/)
+* [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir kod Düzenleyicisi
 
 ## <a name="create-your-project"></a>Projenizi oluşturma
 
-[Node. js](https://nodejs.org/en/download/) ' nin yüklü olduğundan emin olun ve ardından uygulamanızı barındırmak için bir klasör oluşturun. Sonra, `index.html` dosyanıza yönelik bir küçük [Express](https://expressjs.com/) Web sunucusu uygulayın.
+[Node. js](https://nodejs.org/en/download/) yüklendikten sonra, uygulamanızı barındıracak bir klasör oluşturun, örneğin, *msal-Spa-öğreticisi*.
 
-1. İlk olarak, terminalinizdeki proje klasörünüze gidin ve aşağıdaki NPM komutlarını çalıştırın.
+Sonra, *index. html* dosyanızı sağlamak için küçük bir [hızlı](https://expressjs.com/) Web sunucusu uygulayın.
+
+1. İlk olarak, terminalinizdeki proje dizininize geçin ve aşağıdaki `npm` komutları çalıştırın:
     ```console
     npm init -y
-    npm install @azure/msal-Browser
+    npm install @azure/msal-browser
     npm install express
+    npm install morgan
+    npm install yargs
     ```
-2. Ardından, *Server. js*adlı bir. js dosyası oluşturun ve ardından aşağıdaki kodu ekleyin:
+2. Sonra, *Server. js* adlı dosyayı oluşturun ve aşağıdaki kodu ekleyin:
 
    ```JavaScript
    const express = require('express');
@@ -119,48 +119,59 @@ Yürütmeden önce kod örneğini yapılandırmak için [yapılandırma adımın
    console.log(`Listening on port ${port}...`);
     ```
 
-Artık SPA 'larınızı sunacak basit bir sunucunuz var. Bu öğreticinin sonundaki amaçlanan klasör yapısı aşağıdaki gibidir:
+Artık SPA 'larınızı karşılamak için küçük bir Web sunucusu var. Öğreticinin geri kalanını tamamladıktan sonra, projenizin dosya ve klasör yapısı şuna benzer olmalıdır:
 
-![amaçlanan SPA klasör yapısının metin gösterimi](./media/tutorial-v2-javascript-spa/single-page-application-folder-structure.png)
+```
+msal-spa-tutorial/
+├── app
+│   ├── authConfig.js
+│   ├── authPopup.js
+│   ├── authRedirect.js
+│   ├── graphConfig.js
+│   ├── graph.js
+│   ├── index.html
+│   └── ui.js
+└── server.js
+```
 
 ## <a name="create-the-spa-ui"></a>SPA Kullanıcı arabirimini oluşturma
 
-1. *Uygulama* KLASÖRÜNDE JavaScript Spa 'niz için bir *index. html* dosyası oluşturun. Bu dosya, **önyükleme 4 çerçevesiyle** oluşturulmuş bir kullanıcı arabirimi uygular ve yapılandırma, kimlik doğrulama ve API çağrıları için betik dosyalarını içeri aktarır.
+1. Proje dizininizde bir *uygulama* klasörü oluşturun ve IÇINDE JavaScript Spa 'niz için bir *index. html* dosyası oluşturun. Bu dosya, **önyükleme 4 çerçevesiyle** oluşturulmuş bir kullanıcı arabirimi uygular ve yapılandırma, kimlik doğrulama ve API çağrıları için betik dosyalarını içeri aktarır.
 
-   *İndex. html* dosyasında aşağıdaki kodu ekleyin:
+    *İndex. html* dosyasında aşağıdaki kodu ekleyin:
 
-   ```html
-   <!DOCTYPE html>
-   <html lang="en">
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
       <head>
-         <meta charset="UTF-8">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-         <title>Quickstart | MSAL.JS Vanilla JavaScript SPA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Tutorial | MSAL.js JavaScript SPA</title>
 
-         <!-- IE support: add promises polyfill before msal.js  -->
-         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bluebird@3.7.2/js/browser/bluebird.min.js"></script>
-         <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.0.0-beta.0/js/msal-browser.js"></script>
+        <!-- IE support: add promises polyfill before msal.js  -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bluebird@3.7.2/js/browser/bluebird.min.js"></script>
+        <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.0.0-beta.0/js/msal-browser.js"></script>
 
-         <!-- adding Bootstrap 4 for UI components  -->
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-         <link rel="SHORTCUT ICON" href="https://c.s-microsoft.com/favicon.ico?v2" type="image/x-icon">
+        <!-- adding Bootstrap 4 for UI components  -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="SHORTCUT ICON" href="https://c.s-microsoft.com/favicon.ico?v2" type="image/x-icon">
       </head>
       <body>
-         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="/">MS Identity Platform</a>
-            <div class="btn-group ml-auto dropleft">
-               <button type="button" id="SignIn" class="btn btn-secondary" onclick="signIn()">
-                  Sign In
-               </button>
-            </div>
-         </nav>
-         <br>
-         <h5 class="card-header text-center">Vanilla JavaScript SPA calling MS Graph API with MSAL.JS</h5>
-         <br>
-         <div class="row" style="margin:auto" >
-         <div id="card-div" class="col-md-3" style="display:none">
-         <div class="card text-center">
-            <div class="card-body">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <a class="navbar-brand" href="/">Microsoft identity platform</a>
+          <div class="btn-group ml-auto dropleft">
+              <button type="button" id="SignIn" class="btn btn-secondary" onclick="signIn()">
+                Sign In
+              </button>
+          </div>
+        </nav>
+        <br>
+        <h5 class="card-header text-center">JavaScript SPA calling Microsoft Graph API with MSAL.js</h5>
+        <br>
+        <div class="row" style="margin:auto" >
+        <div id="card-div" class="col-md-3" style="display:none">
+        <div class="card text-center">
+          <div class="card-body">
             <h5 class="card-title" id="WelcomeMessage">Please sign-in to see your profile and read your mails</h5>
             <div id="profile-div"></div>
             <br>
@@ -168,188 +179,206 @@ Artık SPA 'larınızı sunacak basit bir sunucunuz var. Bu öğreticinin sonund
             <button class="btn btn-primary" id="seeProfile" onclick="seeProfile()">See Profile</button>
             <br>
             <br>
-            <button class="btn btn-primary" id="readMail" onclick="readMail()">Read Mails</button>
-            </div>
-         </div>
-         </div>
-         <br>
-         <br>
-            <div class="col-md-4">
+            <button class="btn btn-primary" id="readMail" onclick="readMail()">Read Mail</button>
+          </div>
+        </div>
+        </div>
+        <br>
+        <br>
+          <div class="col-md-4">
             <div class="list-group" id="list-tab" role="tablist">
             </div>
+          </div>
+          <div class="col-md-5">
+            <div class="tab-content" id="nav-tabContent">
             </div>
-            <div class="col-md-5">
-             <div class="tab-content" id="nav-tabContent">
-            </div>
-            </div>
-         </div>
-         <br>
-         <br>
+          </div>
+        </div>
+        <br>
+        <br>
 
-         <!-- importing bootstrap.js and supporting js libraries -->
-         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- importing bootstrap.js and supporting js libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-         <!-- importing app scripts (load order is important) -->
-         <script type="text/javascript" src="./authConfig.js"></script>
-         <script type="text/javascript" src="./graphConfig.js"></script>
-         <script type="text/javascript" src="./ui.js"></script>
+        <!-- importing app scripts (load order is important) -->
+        <script type="text/javascript" src="./authConfig.js"></script>
+        <script type="text/javascript" src="./graphConfig.js"></script>
+        <script type="text/javascript" src="./ui.js"></script>
 
-         <!-- <script type="text/javascript" src="./authRedirect.js"></script>   -->
-         <!-- uncomment the above line and comment the line below if you would like to use the redirect flow -->
-         <script type="text/javascript" src="./authPopup.js"></script>
-         <script type="text/javascript" src="./graph.js"></script>
+        <!-- <script type="text/javascript" src="./authRedirect.js"></script>   -->
+        <!-- uncomment the above line and comment the line below if you would like to use the redirect flow -->
+        <script type="text/javascript" src="./authPopup.js"></script>
+        <script type="text/javascript" src="./graph.js"></script>
       </body>
-     </html>
-     ```
+    </html>
+    ```
 
-   > [!TIP]
-   > Önceki betikteki MSAL. js sürümünü [msal. js yayınları](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)altındaki en son yayınlanan sürümle değiştirebilirsiniz.
+2. Ardından, *uygulama* klasöründe, *UI. js* adlı bir dosya oluşturun ve aşağıdaki kodu ekleyin. Bu dosya, DOM öğelerine erişir ve bu öğeleri güncelleştirir.
 
+    ```JavaScript
+    // Select DOM elements to work with
+    const welcomeDiv = document.getElementById("WelcomeMessage");
+    const signInButton = document.getElementById("SignIn");
+    const cardDiv = document.getElementById("card-div");
+    const mailButton = document.getElementById("readMail");
+    const profileButton = document.getElementById("seeProfile");
+    const profileDiv = document.getElementById("profile-div");
 
-2. Şimdi, DOM öğelerine erişecek ve güncelleştirilecek *UI. js* adlı bir. js dosyası oluşturun ve aşağıdaki kodu ekleyin:
+    function showWelcomeMessage(account) {
 
-   ```JavaScript
-   // Select DOM elements to work with
-   const welcomeDiv = document.getElementById("welcomeMessage");
-   const signInButton = document.getElementById("signIn");
-   const signOutButton = document.getElementById('signOut');
-   const cardDiv = document.getElementById("card-div");
-   const mailButton = document.getElementById("readMail");
-   const profileButton = document.getElementById("seeProfile");
-   const profileDiv = document.getElementById("profile-div");
+        // Reconfiguring DOM elements
+        cardDiv.classList.remove('d-none');
+        welcomeDiv.innerHTML = `Welcome ${account.name}`;
 
-   function showWelcomeMessage(account) {
-     // Reconfiguring DOM elements
-     cardDiv.classList.remove('d-none');
-     welcomeDiv.innerHTML = `Welcome ${account.name}`;
-     signInButton.classList.add('d-none');
-     signOutButton.classList.remove('d-none');
-   }
+        // Reconfiguring DOM elements
+        cardDiv.style.display = 'initial';
+        welcomeDiv.innerHTML = `Welcome ${account.name}`;
+        signInButton.setAttribute("onclick", "signOut();");
+        signInButton.setAttribute('class', "btn btn-success")
+        signInButton.innerHTML = "Sign Out";
+    }
 
-   function updateUI(data, endpoint) {
-     console.log('Graph API responded at: ' + new Date().toString());
+    function updateUI(data, endpoint) {
+        console.log('Graph API responded at: ' + new Date().toString());
 
-     if (endpoint === graphConfig.graphMeEndpoint) {
-       const title = document.createElement('p');
-       title.innerHTML = "<strong>Title: </strong>" + data.jobTitle;
-       const email = document.createElement('p');
-       email.innerHTML = "<strong>Mail: </strong>" + data.mail;
-       const phone = document.createElement('p');
-       phone.innerHTML = "<strong>Phone: </strong>" + data.businessPhones[0];
-       const address = document.createElement('p');
-       address.innerHTML = "<strong>Location: </strong>" + data.officeLocation;
-       profileDiv.appendChild(title);
-       profileDiv.appendChild(email);
-       profileDiv.appendChild(phone);
-       profileDiv.appendChild(address);
+        if (endpoint === graphConfig.graphMeEndpoint) {
+            const title = document.createElement('p');
+            title.innerHTML = "<strong>Title: </strong>" + data.jobTitle;
+            const email = document.createElement('p');
+            email.innerHTML = "<strong>Mail: </strong>" + data.mail;
+            const phone = document.createElement('p');
+            phone.innerHTML = "<strong>Phone: </strong>" + data.businessPhones[0];
+            const address = document.createElement('p');
+            address.innerHTML = "<strong>Location: </strong>" + data.officeLocation;
+            profileDiv.appendChild(title);
+            profileDiv.appendChild(email);
+            profileDiv.appendChild(phone);
+            profileDiv.appendChild(address);
 
-     } else if (endpoint === graphConfig.graphMailEndpoint) {
-         if (data.value.length < 1) {
-           alert("Your mailbox is empty!")
-         } else {
-           const tabList = document.getElementById("list-tab");
-           tabList.innerHTML = ''; // clear tabList at each readMail call
-           const tabContent = document.getElementById("nav-tabContent");
+        } else if (endpoint === graphConfig.graphMailEndpoint) {
+            if (data.value.length < 1) {
+                alert("Your mailbox is empty!")
+            } else {
+                const tabList = document.getElementById("list-tab");
+                tabList.innerHTML = ''; // clear tabList at each readMail call
+                const tabContent = document.getElementById("nav-tabContent");
 
-           data.value.map((d, i) => {
-             // Keeping it simple
-             if (i < 10) {
-               const listItem = document.createElement("a");
-               listItem.setAttribute("class", "list-group-item list-group-item-action")
-               listItem.setAttribute("id", "list" + i + "list")
-               listItem.setAttribute("data-toggle", "list")
-               listItem.setAttribute("href", "#list" + i)
-               listItem.setAttribute("role", "tab")
-               listItem.setAttribute("aria-controls", i)
-               listItem.innerHTML = d.subject;
-               tabList.appendChild(listItem)
+                data.value.map((d, i) => {
+                    // Keeping it simple
+                    if (i < 10) {
+                        const listItem = document.createElement("a");
+                        listItem.setAttribute("class", "list-group-item list-group-item-action")
+                        listItem.setAttribute("id", "list" + i + "list")
+                        listItem.setAttribute("data-toggle", "list")
+                        listItem.setAttribute("href", "#list" + i)
+                        listItem.setAttribute("role", "tab")
+                        listItem.setAttribute("aria-controls", i)
+                        listItem.innerHTML = d.subject;
+                        tabList.appendChild(listItem)
 
-               const contentItem = document.createElement("div");
-               contentItem.setAttribute("class", "tab-pane fade")
-               contentItem.setAttribute("id", "list" + i)
-               contentItem.setAttribute("role", "tabpanel")
-               contentItem.setAttribute("aria-labelledby", "list" + i + "list")
-               contentItem.innerHTML = "<strong> from: " + d.from.emailAddress.address + "</strong><br><br>" + d.bodyPreview + "...";
-               tabContent.appendChild(contentItem);
-             }
-           });
-         }
-     }
-   }
-   ```
+                        const contentItem = document.createElement("div");
+                        contentItem.setAttribute("class", "tab-pane fade")
+                        contentItem.setAttribute("id", "list" + i)
+                        contentItem.setAttribute("role", "tabpanel")
+                        contentItem.setAttribute("aria-labelledby", "list" + i + "list")
+                        contentItem.innerHTML = "<strong> from: " + d.from.emailAddress.address + "</strong><br><br>" + d.bodyPreview + "...";
+                        tabContent.appendChild(contentItem);
+                    }
+                });
+            }
+        }
+    }
+    ```
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-[Yeni bir tek sayfalı uygulamayı kaydetmek](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration)için yönergeleri izleyin.
+SPA 'niz için bir uygulama kaydı oluşturmak üzere [tek sayfalı uygulama: uygulama kaydı](scenario-spa-app-registration.md) bölümündeki adımları izleyin.
 
-#### <a name="set-a-redirect-url-for-nodejs"></a>Node. js için yeniden yönlendirme URL 'SI ayarlama
+[Yeniden yönlendirme URI 'si: msal. js 2,0 auth Code Flow](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow) adımla, `http://localhost:3000` Bu öğretici uygulamasının çalıştığı varsayılan konumu girin.
 
-Node. js için, *Server. js* dosyasında Web sunucusu bağlantı noktasını ayarlayabilirsiniz. Bu öğretici 3000 numaralı bağlantı noktasını kullanır, ancak kullanılabilir başka herhangi bir bağlantı noktasını kullanabilirsiniz.
-
-Uygulama kayıt bilgilerinde bir yeniden yönlendirme URL 'SI ayarlamak için, **uygulama kayıt** bölmesine dönün ve aşağıdakilerden birini kullanarak yeni bir **Spa** 'yı kaydedin:
-
-- *`http://localhost:3000/`* **Yeniden yönlendirme URL 'si**olarak ayarlayın.
-- Özel bir TCP bağlantı noktası kullanıyorsanız kullanın *`http://localhost:<port>/`* ( * \<bağlantı noktası>* özel TCP bağlantı noktası numarasıdır).
+Farklı bir bağlantı noktası kullanmak istiyorsanız `http://localhost:<port>` , `<port>` tercıh ettiğiniz TCP bağlantı noktası numaranız yazın. Dışında bir bağlantı noktası numarası belirtirseniz `3000` , *Server. js* ' yi tercih ettiğiniz bağlantı noktası numarası ile de güncelleştirin.
 
 ### <a name="configure-your-javascript-spa"></a>JavaScript SPA 'nizi yapılandırma
 
-Kimlik doğrulaması için yapılandırma parametrelerinizi içerecek şekilde *AuthConfig. js* adlı yeni bir. js dosyası oluşturun ve aşağıdaki kodu ekleyin:
+Kimlik doğrulaması için yapılandırma parametrelerinizi içerecek şekilde *uygulama* klasöründe *AuthConfig. js* adlı bir dosya oluşturun ve ardından aşağıdaki kodu ekleyin:
 
 ```javascript
-  const msalConfig = {
-    auth: {
-      clientId: "Enter_the_Application_Id_Here",
-      authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
-      redirectUri: "Enter_the_Redirect_Uri_Here",
-    },
-    cache: {
-      cacheLocation: "sessionStorage", // This configures where your cache will be stored
-      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
-    }
-  };
+const msalConfig = {
+  auth: {
+    clientId: "Enter_the_Application_Id_Here",
+    authority: "Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here",
+    redirectUri: "Enter_the_Redirect_Uri_Here",
+  },
+  cache: {
+    cacheLocation: "sessionStorage", // This configures where your cache will be stored
+    storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+  }
+};
 
-  // Add here scopes for id token to be used at MS Identity Platform endpoints.
-  const loginRequest = {
-   scopes: ["openid", "profile", "User.Read"]
-  };
+// Add scopes here for ID token to be used at Microsoft identity platform endpoints.
+const loginRequest = {
+ scopes: ["openid", "profile", "User.Read"]
+};
 
-   // Add here scopes for access token to be used at MS Graph API endpoints.
-  const tokenRequest = {
-   scopes: ["User.Read", "Mail.Read"]
-  };
-
-```
-
- Konumlar:
- - Enter_the_Application_Id_Here>, kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** . * \<*
- - Enter_the_Cloud_Instance_Id_Here>Azure bulutunun örneğidir. * \<* Ana veya küresel Azure bulutu için yalnızca girmeniz *https://login.microsoftonline.com*yeterlidir. **Ulusal** bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
- - Enter_the_Tenant_info_here>aşağıdaki seçeneklerden birine ayarlanır: * \<*
-   - Uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adı** (örneğin, *contoso.Microsoft.com*) ile değiştirin.
-   - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri **kuruluşlar**ile değiştirin.
-   - Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri **ortak**ile değiştirin. *Yalnızca kişisel Microsoft hesaplarına*yönelik desteği kısıtlamak için bu değeri **tüketicilerle**değiştirin.
-- *\ Enter_the_Redirect_Uri_Here>* portalda kaydettiğiniz bağlantı noktasıdır (*`http://localhost:3000/`*)
-
-
-Microsoft Graph API 'yi çağıran yapılandırma parametrelerinizi `graphConfig.js`içerecek adlı yeni bir. js dosyası oluşturun ve aşağıdaki kodu ekleyin:
-```javascript
-// Add here the endpoints for MS Graph API services you would like to use.
-const graphConfig = {
-    graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me",
-    graphMailEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me/messages"
+// Add scopes here for access token to be used at Microsoft Graph API endpoints.
+const tokenRequest = {
+ scopes: ["User.Read", "Mail.Read"]
 };
 ```
-- Enter_the_Graph_Endpoint_Here>MS Graph API örneğidir. * \<* Genel MS Graph API uç noktası için, bu dizeyi ile `https://graph.microsoft.com`değiştirin. Ulusal bulut dağıtımları için lütfen [Graph API belgelerine](https://docs.microsoft.com/graph/deployments)bakın.
 
-## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Kullanıcı oturumu açmak için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanın
+`msalConfig`Bölümündeki değerleri burada açıklandığı gibi değiştirin:
 
-### <a name="popup"></a>Kutu
-Oturum açma açılır penceresi için kimlik doğrulama `authPopup.js`ve belirteç alma mantığınızı içerecek adlı yeni bir. js dosyası oluşturun ve aşağıdaki kodu ekleyin:
+- `Enter_the_Application_Id_Here`: Kaydettiğiniz uygulamanın **uygulama (istemci) kimliği** .
+- `Enter_the_Cloud_Instance_Id_Here`: Uygulamanızın kaydedildiği Azure bulut örneği.
+  - Ana (veya *küresel*) Azure bulutu için girin `https://login.microsoftonline.com` .
+  - **Ulusal** bulutlar için (örneğin, Çin), [Ulusal bulutlarda](authentication-national-cloud.md)uygun değerleri bulabilirsiniz.
+- `Enter_the_Tenant_info_here`aşağıdakilerden biri olmalıdır:
+  - Uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adı**ile değiştirin. Örneğin, `contoso.microsoft.com`.
+  - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri ile değiştirin `organizations` .
+  - Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri ile değiştirin `common` .
+  - *Yalnızca kişisel Microsoft hesaplarına*yönelik desteği kısıtlamak için bu değeri ile değiştirin `consumers` .
+- `Enter_the_Redirect_Uri_Here``http://localhost:3000`.
 
-   ```JavaScript
-  // Create the main myMSALObj instance
-// configuration parameters are located at authConfig.js
+`authority`Genel Azure bulutu kullanıyorsanız, *AuthConfig. js* ' deki değer aşağıdakine benzer olmalıdır:
+
+```javascript
+authority: "https://login.microsoftonline.com/common",
+```
+
+Hala *uygulama* klasöründe *graphconfig. js*adlı bir dosya oluşturun. Uygulamanızı Microsoft Graph API çağrısı için yapılandırma parametrelerini sağlamak üzere aşağıdaki kodu ekleyin:
+
+```javascript
+// Add the endpoints here for Microsoft Graph API services you'd like to use.
+const graphConfig = {
+    graphMeEndpoint: "Enter_the_Graph_Endpoint_Here/v1.0/me",
+    graphMailEndpoint: "Enter_the_Graph_Endpoint_Here/v1.0/me/messages"
+};
+```
+
+`graphConfig`Bölümündeki değerleri burada açıklandığı gibi değiştirin:
+
+- `Enter_the_Graph_Endpoint_Here`, uygulamanın iletişim kurması gereken Microsoft Graph API örneğidir.
+  - **Genel** Microsoft Graph API uç noktası için bu dizenin her iki örneğini ile değiştirin `https://graph.microsoft.com` .
+  - **Ulusal** bulut dağıtımlarındaki uç noktalar için Microsoft Graph belgelerindeki [Ulusal bulut dağıtımları](https://docs.microsoft.com/graph/deployments) bölümüne bakın.
+
+`graphMeEndpoint` `graphMailEndpoint` Genel uç noktasını kullanıyorsanız, *graphconfig. js* ' deki ve değerleri aşağıdakine benzer olmalıdır:
+
+```javascript
+graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
+graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages"
+```
+
+## <a name="use-microsoft-authentication-library-msal-to-sign-in-user"></a>Kullanıcı oturumu açmak için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanma
+
+### <a name="pop-up"></a>Açılır pencere
+
+*Uygulama* klasöründe, *authpopup. js* adlı bir dosya oluşturun ve oturum açma açılır penceresi için aşağıdaki kimlik doğrulama ve belirteç alma kodunu ekleyin:
+
+```JavaScript
+// Create the main myMSALObj instance
+// configuration parameters are located in authConfig.js
 const myMSALObj = new msal.PublicClientApplication(msalConfig);
 
 function signIn() {
@@ -408,9 +437,11 @@ function readMail() {
             });
     }
 }
-   ```
+```
+
 ### <a name="redirect"></a>Yeniden yönlendirme
-Oturum yeniden yönlendirme için kimlik doğrulama ve `authRedirect.js`belirteç alma mantığınızı içerecek adlı yeni bir. js dosyası oluşturun ve aşağıdaki kodu ekleyin:
+
+*Uygulama* klasöründe *authredirect. js* adlı bir dosya oluşturun ve oturum yeniden yönlendirme için aşağıdaki kimlik doğrulama ve belirteç alma kodunu ekleyin:
 
 ```javascript
 // Create the main myMSALObj instance
@@ -481,19 +512,19 @@ function readMail() {
 }
 ```
 
-### <a name="more-information"></a>Daha fazla bilgi
+### <a name="how-the-code-works"></a>Kod nasıl çalışır
 
-Kullanıcı **oturum aç** düğmesini ilk kez seçtikten sonra, `signIn` yöntemi kullanıcının oturum açmasını çağırır. `loginPopup` Bu yöntem, kullanıcının kimlik bilgilerini sormak ve doğrulamak için *Microsoft Identity platform uç noktasıyla* bir açılır pencere açar. Başarılı bir oturum açma işleminden sonra, *msal. js* [yetkilendirme kodu akışını](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)başlatır.
+Bir Kullanıcı ilk kez **oturum aç** düğmesini seçtiğinde, `signIn` yöntemi `loginPopup` kullanıcının oturum açmasını çağırır. `loginPopup`Yöntemi, kullanıcının kimlik bilgilerini sormak ve doğrulamak Için *Microsoft Identity platform uç noktasıyla* bir açılır pencere açar. Başarılı bir oturum açma işleminden sonra, *msal. js* [yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)başlatır.
 
-Bu noktada, bir PCE korumalı yetkilendirme kodu CORS korumalı belirteç uç noktasına gönderilir ve belirteçler için değiştirilir. Bir KIMLIK belirteci, erişim belirteci ve yenileme belirteci alındı, *msal. js*tarafından işlenir ve belirteçte bulunan bilgiler önbelleğe alınır.
+Bu noktada, bir PCE korumalı yetkilendirme kodu CORS korumalı belirteç uç noktasına gönderilir ve belirteçler için değiştirilir. Uygulamanız tarafından bir KIMLIK belirteci, erişim belirteci ve yenileme belirteci alınır ve *msal. js*tarafından işlenir ve belirteçlerde yer alan bilgiler önbelleğe alınır.
 
-KIMLIK belirteci, kullanıcı hakkındaki görünen adları gibi temel bilgileri içerir. Bu belirteç tarafından verilen herhangi bir veriyi kullanmayı planlıyorsanız, belirtecin uygulamanız için geçerli bir kullanıcıya verildiğini garantilemek için arka uç sunucunuz tarafından doğrulanması gerekir. Yenileme belirtecinin süresi sınırlı ve 24 saat sonra dolar. Yenileme belirteci, sessizce yeni erişim belirteçleri elde etmek için kullanılabilir.
+KIMLIK belirteci, kullanıcı hakkındaki, görünen adı gibi temel bilgileri içerir. KIMLIK belirteci tarafından verilen herhangi bir veriyi kullanmayı planlıyorsanız, belirtecin uygulamanız için geçerli bir kullanıcıya verildiğini güvence altına almak için arka uç sunucunuz tarafından *doğrulanmalıdır* . Yenileme belirtecinin süresi sınırlı ve 24 saat sonra dolar. Yenileme belirteci, sessizce yeni erişim belirteçleri elde etmek için kullanılabilir.
 
-Bu kılavuz tarafından oluşturulan SPA, Kullanıcı `acquireTokenSilent` profili bilgileri IÇIN `acquireTokenPopup` Microsoft Graph API 'sini sorgulamak üzere kullanılan bir *erişim belirteci* almak için ve/veya çağırır. KIMLIK belirtecini doğrulayan bir örneğe ihtiyacınız varsa, GitHub 'da [Active-Directory-JavaScript-singlepageapp-DotNet-WebApi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) örnek uygulamasına bakın. Örnek, belirteç doğrulaması için bir ASP.NET Web API 'SI kullanır.
+Bu öğreticide oluşturduğunuz SPA, `acquireTokenSilent` `acquireTokenPopup` Kullanıcı profili bilgileri IÇIN Microsoft Graph API 'sini sorgulamak üzere kullanılan bir *erişim belirteci* almak için ve/veya çağırır. KIMLIK belirtecini doğrulayan bir örneğe ihtiyacınız varsa, GitHub 'da [Active-Directory-JavaScript-singlepageapp-DotNet-WebApi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) örnek uygulamasına bakın. Örnek, belirteç doğrulaması için bir ASP.NET Web API 'SI kullanır.
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç istemesi gerektiğinde, kullanıcılarınızın yeniden kimlik doğrulaması yapması istenmez. Bu tür yeniden kimlik doğrulama isteklerini engellemek `acquireTokenSilent`için kullanın. Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gerekebilecek bazı durumlar vardır. Örneğin:
+İlk oturum açma işleminden sonra uygulamanız, kullanıcılardan korumalı bir kaynağa erişmesi gereken her seferinde (bir belirteç istemek için) kimlik doğrulaması yapmasını istemez. Bu tür yeniden kimlik doğrulama isteklerini engellemek için çağrısı yapın `acquireTokenSilent` . Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gerekebilecek bazı durumlar vardır. Örnek:
 
 - Parolanın süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekir.
 - Uygulamanız bir kaynağa erişim istiyor ve kullanıcının izni gerekiyor.
@@ -503,23 +534,20 @@ Bu kılavuz tarafından oluşturulan SPA, Kullanıcı `acquireTokenSilent` profi
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
-Yöntemi `acquireTokenSilent` , Kullanıcı etkileşimi olmadan belirteç alımı ve yenilemeyi işler. ( `loginPopup` Veya `loginRedirect`) ilk kez yürütüldükten sonra, `acquireTokenSilent` sonraki çağrılar için korunan kaynaklara erişmek üzere kullanılan belirteçleri elde etmek için yaygın olarak kullanılan yöntemdir. (Belirteçleri istek veya yenileme çağrısı sessizce yapılır.) `acquireTokenSilent` bazı durumlarda başarısız olabilir. Örneğin, kullanıcının parolasının kullanım süreniz olabilir. Uygulamanız bu özel durumu iki şekilde işleyebilir:
+`acquireTokenSilent`Yöntemi, Kullanıcı etkileşimi olmadan belirteç alımı ve yenilemeyi işler. `loginPopup`(Veya `loginRedirect` ) ilk kez yürütüldükten sonra, `acquireTokenSilent` sonraki çağrılar için korunan kaynaklara erişmek üzere kullanılan belirteçleri elde etmek için yaygın olarak kullanılan yöntemdir. (Belirteçleri istek veya yenileme çağrısı sessizce yapılır.) `acquireTokenSilent`bazı durumlarda başarısız olabilir. Örneğin, kullanıcının parolasının kullanım süreniz olabilir. Uygulamanız bu özel durumu iki şekilde işleyebilir:
 
-1. Kullanıcı oturum açma isteğini `acquireTokenPopup` tetiklemek için hemen bir çağrı yapın. Bu model yaygın olarak, uygulamada kullanıcının kullanabileceği kimliği doğrulanmamış içerik olmayan çevrimiçi uygulamalarda kullanılır. Bu Kılavuzlu kurulum tarafından oluşturulan örnek bu düzeni kullanır.
-
-1. Kullanıcıya, kullanıcının oturum açmak için doğru zamanı belirleyebilmesi için etkileşimli bir oturum açma 'nın gerekli olduğunu ve uygulamanın daha sonra yeniden denenebilmesini `acquireTokenSilent` sağlamak için görsel olarak kullanıcıya işaret edin. Bu teknik yaygın olarak, kullanıcı uygulamanın kesintiye uğramadan diğer işlevlerini kullanabilmesi durumunda kullanılır. Örneğin, uygulamada kimliği doğrulanmamış içerik bulunabilir. Bu durumda, Kullanıcı, korunan kaynağa erişmek veya güncel olmayan bilgileri yenilemek için ne zaman oturum açmak istediğinize karar verebilir.
+1. `acquireTokenPopup`Kullanıcı oturum açma isteğini tetiklemek için hemen bir çağrı yapın. Bu model yaygın olarak, uygulamada kullanıcının kullanabileceği kimliği doğrulanmamış içerik olmayan çevrimiçi uygulamalarda kullanılır. Bu Kılavuzlu kurulum tarafından oluşturulan örnek bu düzeni kullanır.
+1. Kullanıcıya, kullanıcının oturum açmak için doğru zamanı belirleyebilmesi için etkileşimli bir oturum açma 'nın gerekli olduğunu ve uygulamanın daha sonra yeniden denenebilmesini sağlamak için görsel olarak kullanıcıya işaret edin `acquireTokenSilent` . Bu teknik yaygın olarak, kullanıcı uygulamanın kesintiye uğramadan diğer işlevlerini kullanabilmesi durumunda kullanılır. Örneğin, uygulamada kimliği doğrulanmamış içerik bulunabilir. Bu durumda, Kullanıcı, korunan kaynağa erişmek veya güncel olmayan bilgileri yenilemek için ne zaman oturum açmak istediğinize karar verebilir.
 
 > [!NOTE]
-> Bu hızlı başlangıç, `loginPopup` ve `acquireTokenPopup` yöntemlerini varsayılan olarak kullanır. Tarayıcınız olarak Internet Explorer kullanıyorsanız, Internet Explorer 'ın açılır pencereleri işleme yöntemiyle ilgili bilinen `loginRedirect` bir `acquireTokenRedirect` [sorundan](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) dolayı ve yöntemlerinin kullanılması önerilir. Yeniden yönlendirme yöntemlerini kullanarak aynı sonuca nasıl ulaşmayı görmek istiyorsanız lütfen bkz. [*Authredirect. js*](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js).
+> Bu öğretici, `loginPopup` `acquireTokenPopup` Varsayılan olarak ve yöntemlerini kullanır. Internet Explorer kullanıyorsanız, `loginRedirect` `acquireTokenRedirect` Internet Explorer ve açılır pencereler ile ilgili [bilinen bir sorun](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) nedeniyle ve yöntemlerini kullanmanızı öneririz. Yeniden yönlendirme yöntemlerini kullanarak aynı sonucu elde etmeye yönelik bir örnek için bkz. GitHub 'da [*Authredirect. js*](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js) .
 
-## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>Yeni aldığınız belirteci kullanarak Microsoft Graph API 'sini çağırın
+## <a name="call-the-microsoft-graph-api"></a>Microsoft Graph API 'sini çağırma
 
+*Uygulama* klasöründe *Graph. js* adlı dosyayı oluşturun ve Microsoft Graph API 'sine Rest çağrıları yapmak için aşağıdaki kodu ekleyin:
 
- Microsoft Graph API 'sine REST çağrısı oluşturacak *Graph. js* adlı bir. js dosyası oluşturun ve aşağıdaki kodu ekleyin:
-
-   ```javascript
-
-// Helper function to call MS Graph API endpoint
+```javascript
+// Helper function to call Microsoft Graph API endpoint
 // using authorization bearer token scheme
 function callMSGraph(endpoint, token, callback) {
     const headers = new Headers();
@@ -539,51 +567,63 @@ function callMSGraph(endpoint, token, callback) {
         .then(response => callback(response, endpoint))
         .catch(error => console.log(error));
 }
-   ```
+```
 
-### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Korunan bir API 'ye karşı REST çağrısı yapma hakkında daha fazla bilgi
-
-Bu kılavuz tarafından oluşturulan örnek uygulamada, `callMSGraph()` yöntemi, bir belirteç gerektiren korumalı bir kaynağa karşı http `GET` isteği oluşturmak için kullanılır. İstek daha sonra içeriği çağırana döndürür. Bu yöntem, alınan belirteci *http yetkilendirme üst bilgisine*ekler. Bu kılavuz tarafından oluşturulan örnek uygulama için, kaynak, kullanıcının profil bilgilerini görüntüleyen Microsoft Graph API *Me* uç noktasıdır.
-
-## <a name="test-your-code"></a>Kodunuza test etme
-
-1. Node. js için, uygulama klasörü içinden aşağıdaki komutları çalıştırarak Web sunucusunu başlatın:
-
-   ```bash
-   npm install
-   npm start
-   ```
-1. Tarayıcınızda, veya **http://localhost:3000** **http://localhost:{port}** yazın; burada *bağlantı noktası* , Web sunucunuzun dinlediği bağlantı noktasıdır. *İndex. html* dosyanızın Içeriğini ve **oturum aç** düğmesini görmeniz gerekir.
+Bu öğreticide oluşturulan örnek uygulamada, `callMSGraph()` yöntemi, `GET` bir belirteç gerektiren korumalı bir kaynağa karşı http isteği oluşturmak için kullanılır. İstek daha sonra içeriği çağırana döndürür. Bu yöntem, alınan belirteci *http yetkilendirme üst bilgisine*ekler. Bu öğreticide oluşturulan örnek uygulamada, korunan kaynak, oturum açan kullanıcının profil bilgilerini görüntüleyen Microsoft Graph API *Me* uç noktasıdır.
 
 ## <a name="test-your-application"></a>Uygulamanızı test etme
 
+Uygulamanın oluşturulmasını tamamladınız ve artık Node. js web sunucusunu başlatmaya ve uygulamanın işlevselliğini test etmeye hazır.
+
+1. Aşağıdaki komutu proje klasörünüzün kök içinden çalıştırarak Node. js web sunucusunu başlatın:
+
+   ```console
+   npm start
+   ```
+1. Tarayıcınızda, `http://localhost:3000` `http://localhost:<port>` `<port>` Web sunucunuzun dinlediği bağlantı noktası olan veya ' a gidin. *İndex. html* dosyanızın Içeriğini ve **oturum aç** düğmesini görmeniz gerekir.
+
+### <a name="sign-in-to-the-application"></a>Uygulamada oturum açma
+
 Tarayıcı *index. html* dosyanızı yükledikten sonra **oturum aç**' ı seçin. Microsoft Identity platform uç noktası ile oturum açmanız istenir:
 
-![JavaScript SPA hesabı oturum açma penceresi](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Oturum açma iletişim kutusunu görüntüleyen Web tarayıcısı":::
 
 ### <a name="provide-consent-for-application-access"></a>Uygulama erişimi için onay sağlayın
 
 Uygulamanızda ilk kez oturum açtığınızda profilinize erişim vermeniz ve oturumunuzu açmanız istenir:
 
-!["Izin isteniyor" penceresi](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Web tarayıcısında görünen içerik iletişim kutusu":::
 
-### <a name="view-application-results"></a>Uygulama sonuçlarını görüntüle
+İstenen izinleri kabul ediyorsanız web uygulamaları, başarılı bir oturum açmayı belirten Kullanıcı adınızı görüntüler:
 
-Oturum açtıktan sonra, Kullanıcı profili bilgileriniz görüntülenen Microsoft Graph API yanıtında döndürülür:
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Web tarayıcısında başarılı bir oturum açma işleminin sonuçları":::
 
-![Microsoft Graph API çağrısının sonuçları](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
+### <a name="call-the-graph-api"></a>Graph API çağırın
+
+Oturum açtıktan sonra, Microsoft Graph API 'sine yapılan çağrıdan gelen yanıtta döndürülen Kullanıcı profili bilgilerini görüntülemek için **profil** görüntüle ' yi seçin:
+
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Tarayıcıda görünen Microsoft Graph profil bilgileri":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Kapsamlar ve temsilci izinleri hakkında daha fazla bilgi
 
-Microsoft Graph API 'SI, kullanıcının profilini okumak için *Kullanıcı. Read* kapsamını gerektirir. Varsayılan olarak, bu kapsam Azure portal kayıtlı her uygulamaya otomatik olarak eklenir. Microsoft Graph için diğer API 'Ler ve arka uç sunucunuza yönelik özel API 'Ler için ek kapsamlar gerekebilir. Örneğin, Microsoft Graph API 'SI, kullanıcının postalarını listelemek için *mail. Read* kapsamını gerektirir.
+Microsoft Graph API 'SI, kullanıcının profilini okumak için *Kullanıcı. Read* kapsamını gerektirir. Varsayılan olarak, bu kapsam Azure portal kayıtlı her uygulamaya otomatik olarak eklenir. Microsoft Graph için diğer API 'Ler ve arka uç sunucunuza yönelik özel API 'Ler için ek kapsamlar gerekebilir. Örneğin, Microsoft Graph API 'SI, kullanıcının e-postasını listelemek için *mail. Read* kapsamını gerektirir.
 
-> [!NOTE]
-> Kapsamları eklerken kullanıcıdan ek onay istenebilir.
+Kapsamları eklerken, kullanıcılarınızın eklenen kapsamlar için ek onay sağlaması istenebilir.
 
-Bir arka uç API 'SI bir kapsam gerektirmiyorsa (önerilmez), belirteçleri almak için çağrılarındaki kapsam olarak *ClientID* 'yi kullanabilirsiniz.
+Bir arka uç API 'SI için gerekli olmayan bir kapsam yoksa, `clientId` belirteç almak için çağrılarında kapsam olarak kullanabilirsiniz.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Msal. js GitHub deposu](https://github.com/AzureAD/microsoft-authentication-library-for-js) ek kitaplık belgeleri içerir ve bir SSS ve sorun desteği sağlar.
+Bu öğreticide, JavaScript v 2.0 için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanan bir JavaScript tek sayfalı uygulama (SPA) oluşturdunuz:
+
+> [!div class="checklist"]
+> * PCE ile OAuth 2,0 yetkilendirme kodu akışını gerçekleştirme
+> * Kişisel Microsoft hesaplarında ve iş ve okul hesaplarında oturum açın
+> * Erişim belirteci alma
+> * Microsoft Identity platform uç noktasından alınan erişim belirteçleri gerektiren Microsoft Graph veya kendi API 'nizi çağırın
+
+Örtülü ve kimlik doğrulama kod akışları arasındaki farklılıklar da dahil olmak üzere yetkilendirme kodu akışı hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md).
+
+Microsoft Identity platformunda JavaScript tek sayfalı uygulama geliştirmeyi daha ayrıntılı bir şekilde incelemek isterseniz, çok parçalı [Senaryo: tek sayfalı uygulama](scenario-spa-overview.md) bir makale serisi, başlamanıza yardımcı olabilir.

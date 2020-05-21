@@ -1,14 +1,14 @@
 ---
 title: Çok fazla sayıda görev gönderme
 description: Tek bir Azure Batch işinde çok fazla sayıda görevi verimli bir şekilde gönderme
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/24/2018
-ms.openlocfilehash: 0be30e1a413a224d566db535d369a0b285b1f668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42b7d0586139b3d03569374615945047b42a2520
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117412"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725695"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Bir Batch işine çok sayıda görev gönderme
 
@@ -25,8 +25,8 @@ Tek bir çağrıda ekleyebileceğiniz görev koleksiyonunun en büyük boyutu, k
 * Aşağıdaki Batch API 'Leri, koleksiyonu **100 görevle**sınırlandırır. Sınır, görevlerin boyutuna bağlı olarak daha küçük olabilir. Örneğin, görevlerde çok sayıda kaynak dosyası veya ortam değişkeni varsa.
 
     * [REST API](/rest/api/batchservice/task/addcollection)
-    * [Python API’si](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
-    * [Node. js API 'SI](/javascript/api/@azure/batch/task?view=azure-node-latest)
+    * [Python API](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
+    * [Node.js API’si](/javascript/api/@azure/batch/task?view=azure-node-latest)
 
   Bu API 'Leri kullanırken, görev sayısını koleksiyon sınırını karşılayacak şekilde bölmek ve görevlerin eklenmesi durumunda hataları ve yeniden denemeleri işlemek için mantık sağlamanız gerekir. Bir görev koleksiyonu eklemek için çok büyükse istek bir hata oluşturur ve daha az görevle yeniden denenmelidir.
 
@@ -43,7 +43,7 @@ Bir işe büyük bir görev koleksiyonu eklemek biraz zaman alabilir. Örneğin,
 
 * **Görev boyutu** -büyük görevleri ekleme daha küçük olanlar eklemekten daha uzun sürer. Bir koleksiyondaki her görevin boyutunu azaltmak için, görev komut satırını basitleştirebilir, ortam değişkenlerinin sayısını azaltabilir veya görev yürütme gereksinimlerini daha verimli bir şekilde işleyebilirsiniz. Örneğin, çok sayıda kaynak dosyası kullanmak yerine, havuzdaki bir [Başlangıç görevini](batch-api-basics.md#start-task) kullanarak görev bağımlılıklarını yükler veya bir [uygulama paketi](batch-application-packages.md) veya [Docker kapsayıcısı](batch-docker-container-workloads.md)kullanın.
 
-* **Paralel Işlem sayısı** -Batch API 'sine bağlı olarak, Batch istemcisi tarafından en fazla eşzamanlı işlem sayısını artırarak aktarım hızını artırın. Bu ayarı, .NET API 'sindeki [BatchClientParallelOptions. Maxdegreeofparalellik](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) özelliğini veya Batch Python SDK uzantısında `threads` [taskoperations. add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) gibi yöntemlerin parametresini kullanarak yapılandırın. (Bu özellik yerel Batch Python SDK 'sında kullanılamaz.) Varsayılan olarak, bu özellik 1 olarak ayarlanır, ancak işlem verimini geliştirmek için daha yüksek ayarlanır. Ağ bant genişliğini ve bazı CPU performansını tüketerek artan aktarım hızına sahip olursunuz. Görev verimlilik, `MaxDegreeOfParallelism` veya `threads`100 katına kadar artar. Uygulamada, 100 altındaki eşzamanlı işlem sayısını ayarlamanız gerekir. 
+* **Paralel Işlem sayısı** -Batch API 'sine bağlı olarak, Batch istemcisi tarafından en fazla eşzamanlı işlem sayısını artırarak aktarım hızını artırın. Bu ayarı, .NET API 'sindeki [BatchClientParallelOptions. Maxdegreeofparalellik](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) özelliğini veya `threads` Batch Python SDK uzantısında [taskoperations. add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) gibi yöntemlerin parametresini kullanarak yapılandırın. (Bu özellik yerel Batch Python SDK 'sında kullanılamaz.) Varsayılan olarak, bu özellik 1 olarak ayarlanır, ancak işlem verimini geliştirmek için daha yüksek ayarlanır. Ağ bant genişliğini ve bazı CPU performansını tüketerek artan aktarım hızına sahip olursunuz. Görev verimlilik, veya 100 katına kadar artar `MaxDegreeOfParallelism` `threads` . Uygulamada, 100 altındaki eşzamanlı işlem sayısını ayarlamanız gerekir. 
  
   Batch şablonları ile Azure Batch CLı uzantısı, kullanılabilir çekirdek sayısına bağlı olarak eşzamanlı işlem sayısını otomatik olarak arttırır, ancak bu özellik CLı 'da yapılandırılamaz. 
 
@@ -53,7 +53,7 @@ Bir işe büyük bir görev koleksiyonu eklemek biraz zaman alabilir. Örneğin,
 
 Aşağıdaki C# parçacıkları Batch .NET API 'SI kullanılarak çok sayıda görev eklenirken yapılandırılacak ayarları gösterir.
 
-Görev aktarım hızını artırmak için [Batchclient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet)'ın [Maxdegreeofparallelilik](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) özelliğinin değerini artırın. Örneğin:
+Görev aktarım hızını artırmak için [Batchclient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet)'ın [Maxdegreeofparallelilik](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) özelliğinin değerini artırın. Örnek:
 
 ```csharp
 BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
@@ -63,7 +63,7 @@ BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
 ...
 ```
 [Addtaskasync](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet) veya [AddTask](/dotnet/api/microsoft.azure.batch.cloudjob.addtask?view=azure-dotnet
-) yönteminin uygun aşırı yüklemesini kullanarak işe bir görev koleksiyonu ekleyin. Örneğin:
+) yönteminin uygun aşırı yüklemesini kullanarak işe bir görev koleksiyonu ekleyin. Örnek:
 
 ```csharp
 // Add a list of tasks as a collection
@@ -77,7 +77,7 @@ await batchClient.JobOperations.AddTaskAsync(jobId, tasksToAdd, parallelOptions)
 
 [Batch CLI şablonlarıyla](batch-cli-templates.md)Azure Batch CLI uzantılarını kullanarak, bir [görev fabrikası](https://github.com/Azure/azure-batch-cli-extensions/blob/master/doc/taskFactories.md)IÇEREN bir iş şablonu JSON dosyası oluşturun. Görev fabrikası, tek bir görev tanımındaki bir iş için ilgili görevlerin bir koleksiyonunu yapılandırır.  
 
-Aşağıda, çok sayıda görev içeren tek boyutlu bir parametrik tarama işi için örnek bir iş şablonu verilmiştir; Bu durumda 250.000. Görev komut satırı basit `echo` bir komuttur.
+Aşağıda, çok sayıda görev içeren tek boyutlu bir parametrik tarama işi için örnek bir iş şablonu verilmiştir; Bu durumda 250.000. Görev komut satırı basit bir `echo` komuttur.
 
 ```json
 {
@@ -125,7 +125,7 @@ pip install azure-batch
 pip install azure-batch-extensions
 ```
 
-SDK uzantısını kullanan `BatchExtensionsClient` bir ayarlama:
+`BatchExtensionsClient`SDK uzantısını kullanan bir ayarlama:
 
 ```python
 
@@ -134,7 +134,7 @@ client = batch.BatchExtensionsClient(
 ...
 ```
 
-Bir işe eklemek için bir görev koleksiyonu oluşturun. Örneğin:
+Bir işe eklemek için bir görev koleksiyonu oluşturun. Örnek:
 
 
 ```python
@@ -143,7 +143,7 @@ tasks = list()
 ...
 ```
 
-Task [. add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)kullanarak görev koleksiyonu ekleyin. Eşzamanlı işlemlerin `threads` sayısını artırmak için parametresini ayarlayın:
+Task [. add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)kullanarak görev koleksiyonu ekleyin. `threads`Eşzamanlı işlemlerin sayısını artırmak için parametresini ayarlayın:
 
 ```python
 try:
@@ -189,7 +189,7 @@ job_json = client.job.expand_template(parameter_sweep)
 job_parameter = client.job.jobparameter_from_json(job_json)
 ```
 
-İş parametrelerini işe ekleyin. Eşzamanlı işlemlerin `threads` sayısını artırmak için parametresini ayarlayın:
+İş parametrelerini işe ekleyin. `threads`Eşzamanlı işlemlerin sayısını artırmak için parametresini ayarlayın:
 
 ```python
 try:
