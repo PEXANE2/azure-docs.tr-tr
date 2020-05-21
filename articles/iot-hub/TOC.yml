@@ -81,6 +81,11 @@
       href: tutorial-firmware-update.md
     - name: Cihaz bağlantısını test etme
       href: tutorial-connectivity.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: TLS desteği

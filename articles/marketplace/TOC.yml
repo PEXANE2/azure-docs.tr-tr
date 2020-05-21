@@ -202,26 +202,6 @@
           href: ./cloud-partner-portal/consulting-services/consulting-services-offer.md
         - name: Kapsayıcılar teklifi
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
-          items:
-            - name: Ön koşullar
-              href: ./cloud-partner-portal/containers/cpp-prerequisites.md
-            - name: Kapsayıcı teklifi oluşturma
-              href: ./cloud-partner-portal/containers/cpp-create-offer.md
-              items:
-                - name: Teklif ayarları sekmesi
-                  href: ./cloud-partner-portal/containers/cpp-offer-settings-tab.md
-                - name: SKU'lar sekmesi
-                  href: ./cloud-partner-portal/containers/cpp-skus-tab.md
-                - name: Market sekmesi
-                  href: ./cloud-partner-portal/containers/cpp-marketplace-tab.md
-                - name: Destek sekmesi
-                  href: ./cloud-partner-portal/containers/cpp-support-tab.md
-            - name: Kapsayıcı teknik varlıkları oluşturma
-              href: ./cloud-partner-portal/containers/cpp-create-technical-assets.md
-            - name: Kapsayıcı teklifini yayımlama
-              href: ./cloud-partner-portal/containers/cpp-publish-offer.md
-            - name: Mevcut teklifi güncelleştirme
-              href: ./cloud-partner-portal/containers/cpp-update-existing-offer.md
         - name: Dynamics 365 for Business Central teklifi
           href: ./cloud-partner-portal-orig/cpp-business-central-offer.md
           items:
