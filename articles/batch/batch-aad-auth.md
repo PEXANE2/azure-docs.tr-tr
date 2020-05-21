@@ -1,15 +1,15 @@
 ---
 title: Azure Active Directory ile Azure Batch hizmetlerinin kimliğini doğrulama
 description: Batch, Batch hizmetinden kimlik doğrulaması için Azure AD 'yi destekler. İki şekilde kimlik doğrulaması yapmayı öğrenin.
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3ed3db184174d0a383c5c1fbd85e69d9fef0da44
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608481"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726919"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Active Directory ile Batch hizmeti çözümlerini kimlik doğrulama
 
@@ -39,7 +39,7 @@ Azure AD ile kimlik doğrulaması yapmak için bu uç noktayı kiracı KIMLIĞI 
 > [!NOTE]
 > Hizmet sorumlusu kullanarak kimlik doğrulaması yaptığınızda kiracıya özgü uç nokta gereklidir.
 >
-> Tümleşik kimlik doğrulaması kullanarak kimlik doğrulaması yaptığınızda kiracıya özgü uç nokta isteğe bağlıdır, ancak önerilir. Ancak, Azure AD ortak uç noktasını da kullanabilirsiniz. Ortak uç nokta, belirli bir kiracı sağlanmadıysa genel bir kimlik bilgisi toplama arabirimi sağlar. Ortak uç nokta `https://login.microsoftonline.com/common`.
+> Tümleşik kimlik doğrulaması kullanarak kimlik doğrulaması yaptığınızda kiracıya özgü uç nokta isteğe bağlıdır, ancak önerilir. Ancak, Azure AD ortak uç noktasını da kullanabilirsiniz. Ortak uç nokta, belirli bir kiracı sağlanmadıysa genel bir kimlik bilgisi toplama arabirimi sağlar. Ortak uç nokta `https://login.microsoftonline.com/common` .
 >
 >
 
@@ -221,7 +221,7 @@ Bu bölümdeki kod örnekleri, tümleşik kimlik doğrulaması ve hizmet sorumlu
 
 Batch .NET 'ten tümleşik kimlik doğrulaması ile kimlik doğrulamak için [Azure Batch .net](https://www.nuget.org/packages/Microsoft.Azure.Batch/) paketine ve [adal](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) paketine başvurun.
 
-Kodunuza aşağıdaki `using` deyimleri ekleyin:
+`using`Kodunuza aşağıdaki deyimleri ekleyin:
 
 ```csharp
 using Microsoft.Azure.Batch;
@@ -294,7 +294,7 @@ public static async Task PerformBatchOperations()
 
 Batch .NET 'ten bir hizmet sorumlusu ile kimlik doğrulaması yapmak için [Azure Batch .net](https://www.nuget.org/packages/Azure.Batch/) paketine ve [adal](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) paketine başvurun.
 
-Kodunuza aşağıdaki `using` deyimleri ekleyin:
+`using`Kodunuza aşağıdaki deyimleri ekleyin:
 
 ```csharp
 using Microsoft.Azure.Batch;

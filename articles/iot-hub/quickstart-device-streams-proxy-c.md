@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 91cf594e74d91b8b4df2108d23459016fa843700
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8cba8f7a21b04dc722124eb2873c64f67fd6def
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80586622"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727145"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Hızlı başlangıç: C proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -126,7 +126,7 @@ Bu hızlı başlangıç için, [C Için Azure IoT cihaz SDK 'sını](iot-hub-dev
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 
-Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) birlikte Azure Cloud Shell kullanırsınız.
+Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) birlikte Azure Cloud Shell kullanırsınız.
 
 1. Cihaz kimliğini oluşturmak için Cloud Shell ' de aşağıdaki komutu çalıştırın:
 
@@ -157,7 +157,7 @@ Bu bölümde, SSH trafiğini tünele bir uçtan uca akış kurarsınız.
 
 ### <a name="run-the-device-local-proxy-application"></a>Cihaz yerel proxy uygulamasını çalıştırma
 
-1. Klasöründeki `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` **iothub_client_c2d_streaming_proxy_sample. c** kaynak dosyasını düzenleyin ve cihaz bağlantı DIZENIZI, hedef cihazın IP/ana bilgisayar adını ve SSH bağlantı noktasını 22:
+1. Klasöründeki **iothub_client_c2d_streaming_proxy_sample. c** kaynak dosyasını düzenleyin `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` ve cihaz Bağlantı dizenizi, hedef cihazın IP/ana BILGISAYAR adını ve SSH bağlantı noktasını 22:
 
    ```C
    /* Paste in your device connection string  */
@@ -211,7 +211,7 @@ ssh {username}@localhost -p 2222
 
 Bu noktada, SSH oturum açma penceresi, kimlik bilgilerinizi girmenizi ister.
 
-Aşağıdaki görüntüde, şu adreste `IP_address:22`ssh daemon 'a bağlanan cihaz yerel ara sunucusunda konsol çıktısı gösterilmektedir:
+Aşağıdaki görüntüde, şu adreste SSH Daemon 'a bağlanan cihaz yerel ara sunucusunda konsol çıktısı gösterilmektedir `IP_address:22` :
 
 ![Cihaz-yerel proxy çıkışı](./media/quickstart-device-streams-proxy-c/device-console-output.png)
 

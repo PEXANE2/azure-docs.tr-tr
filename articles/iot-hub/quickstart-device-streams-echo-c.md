@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 52f9e6529329c5bb1abb176082294dc26e64baa3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b5487233e2bd0e532efad4e108c41f188b51d91
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78675537"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727187"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla C 'deki bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
 
@@ -120,7 +120,7 @@ Bu hızlı başlangıç için, [C Için Azure IoT cihaz SDK 'sını](iot-hub-dev
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 
-Bağlanabilmesi için IoT Hub 'ınız ile bir cihaz kaydetmeniz gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) birlikte Azure Cloud Shell kullanırsınız.
+Bağlanabilmesi için IoT Hub 'ınız ile bir cihaz kaydetmeniz gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) birlikte Azure Cloud Shell kullanırsınız.
 
 1. Cihaz kimliğini oluşturmak için Cloud Shell ' de aşağıdaki komutu çalıştırın:
 
@@ -153,7 +153,7 @@ Bu bölümde hem cihaz tarafı uygulamasını hem de hizmet tarafı uygulamasın
 
 Cihaz tarafı uygulamasını çalıştırmak için aşağıdaki adımları izleyin:
 
-1. `iothub_client/samples/iothub_client_c2d_streaming_sample` Klasördeki **iothub_client_c2d_streaming_sample. c** kaynak dosyasını düzenleyerek ve cihaz Bağlantı dizenizi ekleyerek cihaz kimlik bilgilerinizi sağlayın.
+1. Klasördeki **iothub_client_c2d_streaming_sample. c** kaynak dosyasını düzenleyerek `iothub_client/samples/iothub_client_c2d_streaming_sample` ve cihaz Bağlantı dizenizi ekleyerek cihaz kimlik bilgilerinizi sağlayın.
 
    ```C
    /* Paste in your iothub connection string  */

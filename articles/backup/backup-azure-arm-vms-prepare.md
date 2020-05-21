@@ -3,12 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cba042efb08f121d4cd9fa5693edd69c827f1465
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273520"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727021"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -41,7 +41,7 @@ Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
 
  Kasa, zaman içinde oluşturulan yedeklemeleri ve kurtarma noktalarını depolar ve yedeklenen makinelerle ilişkili yedekleme ilkelerini depolar. Aşağıdaki gibi bir kasa oluşturun:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Arama bölümünde, **Kurtarma Hizmetleri**yazın. **Hizmetler**' in altında, **Kurtarma Hizmetleri kasaları**' na tıklayın.
 
      ![Kurtarma Hizmetleri kasalarını ara](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
@@ -91,7 +91,7 @@ Kasa için bir yedekleme ilkesi yapılandırın.
 
    ![Yedekleme düğmesi](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-2. **İş yükünüzün çalıştığı** **yedekleme hedefi** > alanında **Azure**' ı seçin. **Neleri yedeklemek istiyorsunuz?** **sanal makine** >  **Tamam ' ı**seçin. Bu, VM uzantısını kasaya kaydeder.
+2. **Backup Goal**  >  **İş yükünüzün çalıştığı** yedekleme hedefi alanında **Azure**' ı seçin. **Neleri yedeklemek istiyorsunuz?** **sanal makine**  >   **Tamam ' ı**seçin. Bu, VM uzantısını kasaya kaydeder.
 
    ![Yedekleme ve yedekleme hedef bölmeleri](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
@@ -108,6 +108,9 @@ Kasa için bir yedekleme ilkesi yapılandırın.
    * VM 'Ler yalnızca tek bir kasada yedeklenebilir.
 
      !["Sanal makine seçin" bölmesi](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
+
+    >[!NOTE]
+    > Yalnızca kasadaki aynı bölgedeki ve abonelikteki VM 'Ler, yedeklemeyi yapılandırmak için kullanılabilir olacaktır.
 
 5. **Yedekleme**'de **yedeklemeyi etkinleştir**' e tıklayın. Bu, ilkeyi kasaya ve VM 'lere dağıtır ve yedekleme uzantısını Azure VM 'de çalışan VM aracısına kurar.
 
@@ -149,7 +152,7 @@ Yeni bir yedekleme ilkesi oluşturmayı seçtiyseniz, ilke ayarlarını girin.
 3. **Yedekleme öğeleri** listesinde üç noktaya (...) tıklayın.
 4. **Şimdi Yedekle**'ye tıklayın.
 5. **Şimdi Yedekle**' de, kurtarma noktasının tutulacağı son günü seçmek için Takvim denetimini kullanın. Ardından **Tamam**'a tıklayın.
-6. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri** > **devam**ediyor. VM’nizin boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
+6. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri**  >  **devam**ediyor. VM’nizin boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
 
 ## <a name="verify-backup-job-status"></a>Yedekleme işinin durumunu doğrulama
 
@@ -168,7 +171,7 @@ Arka uçta çalışan, **yedekleme işi** ayrıntıları dikey penceresinden aş
 
 **Anlık Görüntü** | **Verileri kasaya aktar** | **İş Durumu**
 --- | --- | ---
-Tamamlandı | Devam ediyor | Devam ediyor
+Tamamlandı | Sürüyor | Sürüyor
 Tamamlandı | Atlandı | Tamamlandı
 Tamamlandı | Tamamlandı | Tamamlandı
 Tamamlandı | Başarısız | Uyarıyla tamamlandı
@@ -183,9 +186,9 @@ Kasada oluşturulan artımlı kurtarma noktası, kasada oluşturulan son kurtarm
 
 Azure Backup, makinede çalışan Azure VM aracısına bir uzantı yükleyerek Azure VM 'lerini yedekler. VM 'niz bir Azure Marketi görüntüsünden oluşturulduysa, aracı yüklenir ve çalışır. Özel bir sanal makine oluşturursanız veya şirket içi bir makineyi geçirirseniz, aracıyı tabloda özetlenen şekilde el ile yüklemeniz gerekebilir.
 
-**'Nın** | **Bilgileri**
+**'Nın** | **Ayrıntılar**
 --- | ---
-**Windows** | 1. aracı MSI dosyasını [indirip yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) .<br/><br/> 2. makinede yönetici izinleriyle Install.<br/><br/> 3. yüklemeyi doğrulayın. VM 'deki *c:\windowsazure\packages* bölümünde **waappagent. exe** > **özelliklerine**sağ tıklayın. **Ayrıntılar** sekmesinde **ürün sürümü** 2.6.1198.718 veya üzeri olmalıdır.<br/><br/> Aracıyı güncelleştiriyorsanız, hiçbir yedekleme işlemi olmadığından emin olun ve [aracıyı yeniden yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
+**Windows** | 1. aracı MSI dosyasını [indirip yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) .<br/><br/> 2. makinede yönetici izinleriyle Install.<br/><br/> 3. yüklemeyi doğrulayın. VM 'deki *c:\windowsazure\packages* bölümünde **waappagent. exe**  >  **özelliklerine**sağ tıklayın. **Ayrıntılar** sekmesinde **ürün sürümü** 2.6.1198.718 veya üzeri olmalıdır.<br/><br/> Aracıyı güncelleştiriyorsanız, hiçbir yedekleme işlemi olmadığından emin olun ve [aracıyı yeniden yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Dağıtım paketi deposundan bir RPM veya bir DEB paketini kullanarak uygulamasını yükler. Bu, Azure Linux aracısını yüklemek ve yükseltmek için tercih edilen yöntemdir. Tüm [onaylı dağıtım sağlayıcıları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , Azure Linux Aracısı paketini görüntülerle ve depolarında tümleştirin. Aracı [GitHub](https://github.com/Azure/WALinuxAgent)'da kullanılabilir ancak buradan yüklemeyi önermiyoruz.<br/><br/> Aracıyı güncelleştiriyorsanız, yedekleme işlemlerinin çalışmakta olmadığından emin olun ve ikili dosyaları güncelleştirin.
 
 >[!NOTE]

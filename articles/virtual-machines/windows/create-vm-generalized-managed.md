@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a028d597c3eb2a1c66df0e40266c2822e5cd7aab
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086326"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726970"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Yönetilen bir görüntüden VM oluşturma
 
@@ -20,6 +20,7 @@ Azure portal veya PowerShell 'i kullanarak Azure yönetilen bir VM görüntüsü
 
 Yeni bir VM oluşturmadan önce, kaynak görüntü olarak kullanmak için [yönetilen BIR VM görüntüsü oluşturmanız](capture-image-resource.md) ve görüntüde erişimi olması gereken herhangi bir kullanıcıya görüntü üzerinde okuma erişimi vermeniz gerekir. 
 
+Bir yönetilen görüntü, en fazla 20 eşzamanlı dağıtımı destekler. Aynı yönetilen görüntüden 20 ' den fazla VM oluşturmaya çalışmak, tek bir VHD 'nin depolama performans sınırlamaları nedeniyle zaman aşımları sağlamaya neden olabilir. Aynı anda 20 ' den fazla VM oluşturmak için, her 20 eş zamanlı VM dağıtımı için 1 çoğaltma ile yapılandırılmış [paylaşılan görüntü galerileri](shared-image-galleries.md) görüntüsünü kullanın.
 
 ## <a name="use-the-portal"></a>Portalı kullanma
 

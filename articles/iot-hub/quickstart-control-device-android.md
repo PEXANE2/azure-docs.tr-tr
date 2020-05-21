@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 8c3a9c6c5e835104675239882d2a1929a3c07c82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b9afd1c4ca5e4c652a03bc2ef652b8e43ea12787
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81771022"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727208"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Hızlı başlangıç: IoT Hub 'ına bağlı bir cihazı denetleme (Android)
 
@@ -123,7 +123,7 @@ Cihaz SDK örnek uygulaması, fiziksel bir Android cihazda veya bir Android öyk
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. Android Studio ' de, **File** > **Gradle dosyaları ile dosya eşitleme projesi**' ne tıklayın. Oluşturma işlemini doğrulayın.
+3. Android Studio ' de, **File**  >  **Gradle dosyaları ile dosya eşitleme projesi**' ne tıklayın. Oluşturma işlemini doğrulayın.
 
    > [!NOTE]
    > Proje eşitleme başarısız olursa, aşağıdaki nedenlerden biri olabilir:
@@ -131,7 +131,7 @@ Cihaz SDK örnek uygulaması, fiziksel bir Android cihazda veya bir Android öyk
    > * Android Studio sürümünüz için, projede başvurulan Android Gradle Plugin ve Gradle sürümleri güncel değil. Yüklemeniz için eklentinin ve Gradle sürümlerinin doğru sürümlerini başvurmak ve yüklemek için [Bu yönergeleri](https://developer.android.com/studio/releases/gradle-plugin) izleyin.
    > * Android SDK için lisans sözleşmesi imzalanmadı. Lisans sözleşmesini imzalamak ve SDK 'Yı indirmek için derleme çıktısındaki yönergeleri izleyin.
 
-4. Oluşturma işlemi tamamlandıktan sonra,**' uygulama '** **çalıştırmasını Çalıştır ' a tıklayın.** >  Uygulamayı fiziksel bir Android cihazda veya bir Android öykünücüsünde çalışacak şekilde yapılandırın. Bir Android uygulamasını fiziksel bir cihazda veya Öykünücüde çalıştırma hakkında daha fazla bilgi için bkz. [uygulamanızı çalıştırma](https://developer.android.com/training/basics/firstapp/running-app).
+4. Oluşturma işlemi tamamlandıktan sonra, **Run**  >  **' uygulama '** çalıştırmasını Çalıştır ' a tıklayın. Uygulamayı fiziksel bir Android cihazda veya bir Android öykünücüsünde çalışacak şekilde yapılandırın. Bir Android uygulamasını fiziksel bir cihazda veya Öykünücüde çalıştırma hakkında daha fazla bilgi için bkz. [uygulamanızı çalıştırma](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Uygulama yüklendikten sonra, IoT Hub telemetri göndermeye başlamak için **Başlat** düğmesine tıklayın:
 
@@ -141,7 +141,7 @@ Cihaz SDK örnek uygulaması, fiziksel bir Android cihazda veya bir Android öyk
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub’ınızdan telemetri okuma
 
-Bu bölümde, Android cihazı tarafından gönderilen iletileri izlemek için [IoT uzantısıyla](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) birlikte Azure Cloud Shell kullanacaksınız.
+Bu bölümde, Android cihazı tarafından gönderilen iletileri izlemek için [IoT uzantısıyla](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) birlikte Azure Cloud Shell kullanacaksınız.
 
 1. Azure Cloud Shell'i kullanarak, IoT hub’ınızdan gelen iletilere bağlanmak ve bu iletileri okumak için aşağıdaki komutu çalıştırın:
 
@@ -176,7 +176,7 @@ Bir IoT Hub arka uç hizmeti uygulaması genellikle bulutta çalışır, burada,
     DeviceId=MyAndroidDevice
     ```
 
-3. Android Studio ' de, **File** > **Gradle dosyaları ile dosya eşitleme projesi**' ne tıklayın. Oluşturma işlemini doğrulayın.
+3. Android Studio ' de, **File**  >  **Gradle dosyaları ile dosya eşitleme projesi**' ne tıklayın. Oluşturma işlemini doğrulayın.
 
    > [!NOTE]
    > Proje eşitleme başarısız olursa, aşağıdaki nedenlerden biri olabilir:
@@ -184,7 +184,7 @@ Bir IoT Hub arka uç hizmeti uygulaması genellikle bulutta çalışır, burada,
    > * Android Studio sürümünüz için, projede başvurulan Android Gradle Plugin ve Gradle sürümleri güncel değil. Yüklemeniz için eklentinin ve Gradle sürümlerinin doğru sürümlerini başvurmak ve yüklemek için [Bu yönergeleri](https://developer.android.com/studio/releases/gradle-plugin) izleyin.
    > * Android SDK için lisans sözleşmesi imzalanmadı. Lisans sözleşmesini imzalamak ve SDK 'Yı indirmek için derleme çıktısındaki yönergeleri izleyin.
 
-4. Oluşturma işlemi tamamlandıktan sonra,**' uygulama '** **çalıştırmasını Çalıştır ' a tıklayın.** >  Uygulamayı ayrı bir fiziksel Android cihazında veya Android öykünücüsünde çalışacak şekilde yapılandırın. Bir Android uygulamasını fiziksel bir cihazda veya Öykünücüde çalıştırma hakkında daha fazla bilgi için bkz. [uygulamanızı çalıştırma](https://developer.android.com/training/basics/firstapp/running-app).
+4. Oluşturma işlemi tamamlandıktan sonra, **Run**  >  **' uygulama '** çalıştırmasını Çalıştır ' a tıklayın. Uygulamayı ayrı bir fiziksel Android cihazında veya Android öykünücüsünde çalışacak şekilde yapılandırın. Bir Android uygulamasını fiziksel bir cihazda veya Öykünücüde çalıştırma hakkında daha fazla bilgi için bkz. [uygulamanızı çalıştırma](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Uygulama yüklendikten sonra, **set Messaging Interval** değerini **1000** olarak güncelleştirin ve **çağır**' a tıklayın.
 

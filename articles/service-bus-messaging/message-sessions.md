@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2020
+ms.date: 05/20/2020
 ms.author: aschhab
-ms.openlocfilehash: a4bc2dcfd1826623516a40be0aff7688d0b6168c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cedf3678fc73b004c142380b4ba69c10ca72ebf
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116698"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727004"
 ---
 # <a name="message-sessions"></a>İleti oturumları
-Microsoft Azure Service Bus oturumlar, sınırsız sayıda ilgili ileti dizisinin birleşme ve sıralı işlenmesini sağlar. Oturumlar ilk içinde, ilk çıkar (FıFO) ve istek-yanıt desenlerinde kullanılabilir. Bu makalede, Service Bus kullanırken bu desenleri uygulamak için oturumların nasıl kullanılacağı gösterilmektedir. 
-
-## <a name="first-in-first-out-fifo-pattern"></a>İlk ın, ilk çıkar (FıFO) deseninin
-Service Bus bir FıFO garantisi sağlamak için oturumları kullanın. Service Bus, iletiler arasındaki ilişkinin doğası hakkında değildir ve ayrıca bir ileti sırasının nerede başlatıldığını veya bittiğini belirlemek için belirli bir model tanımlamaz.
+Microsoft Azure Service Bus oturumlar, sınırsız sayıda ilgili ileti dizisinin birleşme ve sıralı işlenmesini sağlar. Oturumlar **ilk içinde, ilk çıkar (FIFO)** ve **istek-yanıt** desenlerinde kullanılabilir. Bu makalede, Service Bus kullanırken bu desenleri uygulamak için oturumların nasıl kullanılacağı gösterilmektedir. 
 
 > [!NOTE]
 > Service Bus temel katmanı oturumları desteklemez. Standart ve Premium katmanlar oturumları destekler. Bu katmanlar arasındaki farklar için bkz. [Service Bus fiyatlandırması](https://azure.microsoft.com/pricing/details/service-bus/).
+
+## <a name="first-in-first-out-fifo-pattern"></a>İlk ın, ilk çıkar (FıFO) deseninin
+Service Bus bir FıFO garantisi sağlamak için oturumları kullanın. Service Bus, iletiler arasındaki ilişkinin doğası hakkında değildir ve ayrıca bir ileti sırasının nerede başlatıldığını veya bittiğini belirlemek için belirli bir model tanımlamaz.
 
 Herhangi bir gönderen, [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) özelliğini oturum için benzersiz olan uygulama tanımlı bazı tanımlayıcılarla ayarlayarak bir konuya veya kuyruğa ileti gönderirken bir oturum oluşturabilir. AMQP 1,0 protokol düzeyinde, bu değer *Grup Kimliği* özelliğine eşlenir.
 
@@ -62,7 +62,7 @@ Oturumlar, sıralı teslimi korurken ve garanti edilirken, araya eklemeli ileti 
 
 Kuyruktan birden çok eşzamanlı alıcı geldiğinde, belirli bir oturuma ait iletiler, o oturum için kilidi Şu anda tutan belirli bir alıcıya dağıtılır. Bu işlemle, bir kuyruk veya abonelikte araya eklemeli bir ileti akışı, farklı alıcılar için düzgün şekilde devre dışı bırakılır ve kilit Yönetimi hizmet tarafı Service Bus içinde olduğundan, bu alıcılar farklı istemci makinelerde da kullanılabilir.
 
-Önceki çizimde üç eşzamanlı oturum alıcısı gösterilmektedir. = 4 olan `SessionId` bir oturumda etkin, sahip olmayan bir istemci yoktur ve bu belirli oturumdan hiçbir ileti teslim edimediği anlamına gelir. Bir oturum, alt sıra gibi birçok şekilde davranır.
+Önceki çizimde üç eşzamanlı oturum alıcısı gösterilmektedir. = 4 olan bir oturumda `SessionId` etkin, sahip olmayan bir istemci yoktur ve bu belirli oturumdan hiçbir ileti teslim edimediği anlamına gelir. Bir oturum, alt sıra gibi birçok şekilde davranır.
 
 Oturum alıcısı tarafından tutulan oturum kilidi, *Peek-kilit* kapatma modu tarafından kullanılan ileti kilitleri için bir şemsiye. Bir oturumda yalnızca bir alıcıda kilit olabilir. Bir alıcı birçok kol içi ileti içerebilir, ancak iletiler sırayla alınacaktır. Bir iletiyi terk etmek, bir sonraki alma işlemiyle aynı iletinin yeniden sunulmasını sağlar.
 
@@ -88,17 +88,17 @@ Oturum bağlamındaki ileti başına teslim sayısı tanımı, oturum yokluğund
 
 | Senaryo | İletinin teslim sayısı arttırılır |
 |----------|---------------------------------------------|
-| Oturum kabul edildi, ancak oturum kilidinin süresi dolduğunda (zaman aşımı nedeniyle) | Yes |
+| Oturum kabul edildi, ancak oturum kilidinin süresi dolduğunda (zaman aşımı nedeniyle) | Evet |
 | Oturum kabul edildi, oturumdaki iletiler (kilitli olsalar bile) tamamlanmaz ve oturum kapalı | Hayır |
 | Oturum kabul edildi, iletiler tamamlandı, sonra oturum açık olarak kapalı | Yok (Standart akışdır. Buradan iletiler oturumdan kaldırılır) |
 
 ## <a name="request-response-pattern"></a>İstek-yanıt deseninin
 [İstek-yanıt deseninin](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) , gönderen uygulamanın bir istek göndermesini sağlayan ve alıcının gönderen uygulamasına doğru bir yanıt gönderebilmesi için bir yol sağlayan iyi şekilde belirlenmiş bir tümleştirme deseninin olması önerilir. Bu model genellikle uygulamanın yanıt gönderebilmesi için kısa süreli bir kuyruk veya konuya ihtiyaç duyuyor. Bu senaryoda, oturumlar benzer anlambilimi olan basit bir alternatif çözüm sağlar. 
 
-Birden çok uygulama, kendi isteklerini tek bir istek kuyruğuna gönderebilir ve belirli bir üst bilgi parametresi, gönderen uygulamasını benzersiz şekilde tanımlamak üzere ayarlanır. Alıcı uygulaması kuyruktaki istekleri işleyebilir ve oturumlar etkin bir sıraya yanıt gönderebilir ve oturum KIMLIĞINI gönderenin istek iletisine gönderdiği benzersiz tanımlayıcıya ayarlar. İsteği gönderen uygulama, belirli bir oturum KIMLIĞINDE iletiler alabilir ve yanıtları doğru şekilde işleyebilir.
+Birden çok uygulama, kendi isteklerini tek bir istek kuyruğuna gönderebilir ve belirli bir üst bilgi parametresi, gönderen uygulamasını benzersiz şekilde tanımlamak üzere ayarlanır. Alıcı uygulaması kuyruktaki istekleri işleyebilir ve oturum etkinleştirme kuyruğuna yanıt gönderebilir ve oturum KIMLIĞINI gönderenin istek iletisine gönderdiği benzersiz tanımlayıcıya ayarlar. İsteği gönderen uygulama daha sonra belirli oturum KIMLIĞINDE iletiler alabilir ve yanıtları doğru şekilde işleyebilir.
 
 > [!NOTE]
-> İlk istekleri gönderen uygulama, oturum KIMLIĞI hakkında bilgi almalıdır ve yanıtı beklediği oturumu kilitlemek `SessionClient.AcceptMessageSession(SessionID)` için kullanır. Uygulamanın örneğini bir oturum kimliği olarak benzersiz bir şekilde tanımlayan GUID kullanmak iyi bir fikirdir. Yanıtların belirli alıcılar tarafından kilitlenmek ve `AcceptMessageSession(timeout)` işlenmek üzere kullanılabilir olduğundan emin olmak için herhangi bir oturum işleyicisi veya kuyrukta olmaması gerekir.
+> İlk istekleri gönderen uygulama, oturum KIMLIĞI hakkında bilgi almalıdır ve `SessionClient.AcceptMessageSession(SessionID)` yanıtı beklediği oturumu kilitlemek için kullanır. Uygulamanın örneğini bir oturum kimliği olarak benzersiz bir şekilde tanımlayan GUID kullanmak iyi bir fikirdir. `AcceptMessageSession(timeout)`Yanıtların belirli alıcılar tarafından kilitlenmek ve işlenmek üzere kullanılabilir olduğundan emin olmak için herhangi bir oturum işleyicisi veya kuyrukta olmaması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

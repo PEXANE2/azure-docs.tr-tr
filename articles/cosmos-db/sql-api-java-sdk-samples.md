@@ -1,0 +1,228 @@
+---
+title: 'Azure Cosmos DB SQL API: Java SDK v4 örnekleri'
+description: CRUD işlemleri gibi Azure Cosmos DB SQL API'sinin kullanıldığı yaygın görevler için GitHub'da Java örnekleri bulabilirsiniz.
+author: anfeldma-ms
+ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
+ms.topic: sample
+ms.date: 05/20/2020
+ms.author: anfeldma
+ms.openlocfilehash: db291b735ed6456a007446ad23373ff25e806aab
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727173"
+---
+# <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API: Java SDK v4 örnekleri
+
+> [!div class="op_single_selector"]
+> * [.NET v2 SDK örnekleri](sql-api-dotnet-samples.md)
+> * [.NET v3 SDK örnekleri](sql-api-dotnet-v3sdk-samples.md)
+> * [Java v4 SDK örnekleri](sql-api-java-sdk-samples.md)
+> * [Node.js Örnekleri](sql-api-nodejs-samples.md)
+> * [Python Örnekleri](sql-api-python-samples.md)
+> * [Azure Kod Örneği Galerisi](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
+> 
+> 
+
+> [!IMPORTANT]  
+> Java SDK v4 hakkında daha fazla bilgi edinmek için lütfen Azure Cosmos DB Java SDK v4 [sürüm notları](sql-api-sdk-java-v4.md), [maven deposu](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB Java SDK v4 [Performans ipuçları](performance-tips-java-sdk-v4-sql.md)ve Azure Cosmos DB Java SDK v4 [sorun giderme kılavuzu](troubleshoot-java-sdk-v4-sql.md) ' na bakın. Şu anda v4 'den daha eski bir sürüm kullanıyorsanız, v4 'ye yükseltme konusunda yardım için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ' na bakın.
+>
+
+> [!IMPORTANT]  
+>[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+>  
+>- [Visual Studio abone avantajlarını etkinleştirebilirsiniz](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): Visual Studio aboneliğiniz, her ay size ücretli Azure hizmetleri için kullanabileceğiniz krediler verir.
+>
+>[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+>
+
+[Azure-Cosmos-Java-SQL-api-Samples](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples) GitHub deposuna CRUD işlemlerini ve diğer yaygın işlemleri gerçekleştiren en son örnek uygulamalar, Azure Cosmos DB kaynaklarında bulunur. Bu makalede aşağıdakiler sunulmaktadır:
+
+* Örnek Java proje dosyalarının her birindeki görevlere bağlantılar. 
+* İlgili API başvurusu içeriğine bağlantılar.
+
+**Önkoşullar**
+
+Bu örnek uygulamayı çalıştırmanız için aşağıdakiler gereklidir:
+
+* Java Development Kit 8
+* Azure Cosmos DB Java SDK v4
+
+Projenizde kullanım için en son Azure Cosmos DB Java SDK v4 ikililerini almak üzere Maven 'yi isteğe bağlı olarak kullanabilirsiniz. Maven tüm gerekli bağımlılıkları otomatik olarak ekler. Aksi takdirde, pom.xml dosyasında listelenen bağımlılıkları doğrudan indirebilir ve derleme yolunuza ekleyebilirsiniz.
+
+```bash
+<dependency>
+    <groupId>com.azure</groupId>
+    <artifactId>azure-cosmos</artifactId>
+    <version>LATEST</version>
+</dependency>
+```
+
+**Örnek uygulamaları çalıştırma**
+
+Örnek depoyu kopyalama:
+```bash
+$ git clone https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples.git
+
+$ cd azure-cosmos-java-sql-api-samples
+```
+
+Örnekleri bir IDE (tutulma, IntelliJ veya VSCODE) kullanarak veya Maven kullanarak komut satırından çalıştırabilirsiniz.
+
+Bu ortam değişkenlerinin ayarlanması gerekir
+
+```
+ACCOUNT_HOST=your account hostname;ACCOUNT_KEY=your account master key
+```
+
+örneklere, hesabınıza okuma/yazma erişimi vermek için.
+
+Örnek çalıştırmak için, ana sınıfını belirtin 
+
+```
+com.azure.cosmos.examples.sample.synchronicity.MainClass
+```
+
+Burada *Sample. Synchronicity. MainClass* olabilir
+* crudquickstart. Sync. SampleCRUDQuickstart
+* crudquickstart. Async. SampleCRUDQuickstartAsync
+* ındexmanagement. Sync. Sampleındexmanagement
+* ındexmanagement. Async. Sampleındexmanagementasync
+* StoredProcedure. Sync. SampleStoredProcedure
+* StoredProcedure. Async. SampleStoredProcedureAsync
+* değişiklik akışı. SampleChangeFeedProcessor *(changefeed yalnızca bir zaman uyumsuz örneğe sahip, eşitleme örneği yok.)* ... vb...
+
+> [!NOTE]
+> Örnekler birbirinden bağımsızdır; kendi kendine ayarlanır ve sonra kendini temizler. Örnekler, oluşturmak için birden çok çağrı oluşturur `CosmosContainer` . Bu her yapıldığında, oluşturulan koleksiyonun performans katmanına karşılık aboneliğiniz 1 saatlik kullanım için faturalandırılır. 
+> 
+> 
+
+## <a name="database-examples"></a>Veritabanı örnekleri
+[Veritabanı CRUD örnekleri](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos veritabanları hakkında bilgi edinmek için bkz. [veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) kavramsal makalesi. 
+
+| Görev | API başvurusu |
+| --- | --- |
+| [Veritabanı oluşturma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java#L76-L84) | CosmosClient. createDatabaseIfNotExists |
+| [KIMLIĞE göre bir veritabanı oku](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java#L86-L94) | CosmosClient. getDatabase |
+| [Tüm veritabanlarını okuma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java#L96-L111) | CosmosClient. readAllDatabases |
+| [Veritabanı silme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java#L113-L122) | CosmosDatabase. Delete |
+
+## <a name="collection-examples"></a>Koleksiyon örnekleri
+[Koleksiyon CRUD örnekleri](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos koleksiyonları hakkında bilgi edinmek için bkz. [veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) kavramsal makalesi.
+
+| Görev | API başvurusu |
+| --- | --- |
+| [Koleksiyon oluşturma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L94-106) | CosmosDatabase. createContainerIfNotExists |
+| [Bir koleksiyonun yapılandırılan performansını değiştirme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L108-116) | CosmosContainer. Replaceprovisionedüretilen Iş aktarımı |
+| [KIMLIĞE göre koleksiyon al](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L118-126) | CosmosDatabase. getContainer |
+| [Veritabanındaki tüm koleksiyonları okuma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L128-143) | CosmosDatabase. readAllContainers |
+| [Koleksiyon silme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L145-154) | CosmosContainer. Delete |
+
+## <a name="autoscale-collection-examples"></a>Otomatik ölçeklendirme koleksiyonu örnekleri
+
+Bu örnekleri çalıştırmadan önce otomatik ölçeklendirme hakkında daha fazla bilgi edinmek için, [hesabınızda](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-autoscale/) ve [veritabanlarınızı ve kapsayıcılarınızda](https://docs.microsoft.com/azure/cosmos-db/provision-throughput-autoscale)otomatik ölçeklendirmeyi etkinleştirmeye yönelik bu yönergelere göz atın.
+
+[Otomatik ölçeklendirme veritabanı CRUD örnekleri](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir.
+
+| Görev | API başvurusu |
+| --- | --- |
+| [Belirtilen otomatik ölçeklendirme en fazla aktarım hızı ile veritabanı oluşturma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java#L76-L87) | CosmosClient. createDatabase<br>ThroughputProperties. Createoto Scaledüretilen Iş |
+
+[Otomatik ölçeklendirme koleksiyonu CRUD örnekleri](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. 
+
+| Görev | API başvurusu |
+| --- | --- |
+| [Belirtilen otomatik ölçeklendirme üst işleme ile bir koleksiyon oluşturun](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java#L95-L107) | CosmosDatabase. createContainerIfNotExists |
+| [Bir koleksiyonun en fazla yapılandırılan otomatik ölçeklendirme iş üretimini değiştirme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java#L109-L117) | CosmosContainer. Replaceüretilen Iş |
+| [Bir koleksiyonun otomatik ölçeklendirme üretilen iş yapılandırmasını oku](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java#L119-L130) | CosmosContainer. Readüretilen Iş |
+
+## <a name="analytical-storage-collection-examples"></a>Analitik depolama koleksiyonu örnekleri
+
+[Analitik depolama koleksiyonu CRUD örnekleri](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/analyticalcontainercrud/sync/AnalyticalContainerCRUDQuickstart.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos koleksiyonları hakkında bilgi edinmek için Azure Cosmos DB SYNAPSE ve analitik depo hakkında bilgi edinin.
+
+| Görev | API başvurusu |
+| --- | --- |
+| [Koleksiyon oluşturma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/analyticalcontainercrud/sync/AnalyticalContainerCRUDQuickstart.java#L94-L109) | CosmosDatabase. createContainerIfNotExists |
+
+## <a name="document-examples"></a>Belge örnekleri
+[Belge CRUD örnekleri](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos belgeleri hakkında bilgi edinmek için bkz. [veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) kavramsal makalesi.
+
+| Görev | API başvurusu |
+| --- | --- |
+| [Belge oluşturma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L127-L141) | CosmosContainer. CreateItem |
+| [Bir belgeyi KIMLIĞE göre oku](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L143-L154) | CosmosContainer. ReadItem |
+| [Koleksiyondaki tüm belgeleri okuma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L156-171) | CosmosContainer. Readallıtems |
+| [Belgeler için sorgu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L173-L187) | CosmosContainer. QueryItems |
+| [Belgeyi değiştirme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L189-L204) | CosmosContainer. ReplaceItem |
+| [Belgeyi upsert etme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L206-L219) | CosmosContainer. Upsertıtem |
+| [Bir belgeyi silme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L302-L310) | CosmosContainer. DeleteItem |
+| [Bir belgeyi koşullu ETag denetimi ile değiştirme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L221-L261) | AccessCondition. setType<br>AccessCondition. setCondition |
+| [Yalnızca belge değiştiğinde belgeyi okuma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L263-L300) | AccessCondition. setType<br>AccessCondition. setCondition |
+
+## <a name="indexing-examples"></a>Dizin örnekleri
+[Koleksiyon CRUD örnekleri](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkeleri](index-policy.md), [Dizin oluşturma türleri](index-types.md)ve [Dizin oluşturma yolları](index-paths.md) kavramsal makaleler. 
+
+| Görev | API başvurusu |
+| --- | --- |
+| Belgeyi dizinin dışında tutma | Excludedındex<br>IndexingPolicy |
+| Geç dizin oluşturma kullanma | Indexingpolicy. ındexingmode |
+| [Belirtilen belge yollarını dizine ekle](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/indexmanagement/sync/SampleIndexManagement.java#L142-L147) | IndexingPolicy.IncludedPaths |
+| [Belirtilen belge yollarını dizinden Dışla](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/indexmanagement/sync/SampleIndexManagement.java#L149-L154) | IndexingPolicy.ExcludedPaths |
+| [Bileşik dizin oluşturma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/indexmanagement/sync/SampleIndexManagement.java#L170-L188) | Indexingpolicy. Setcompositeındexes<br>CompositePath |
+| Karma dizin yolunda bir aralık tarama işlemini zorlama | FeedOptions.EnableScanInQuery |
+| Dizelerde Aralık dizinleri kullanma | IndexingPolicy.IncludedPaths<br>RangeIndex |
+| Dizin dönüştürme gerçekleştirme | - |
+| [Jeo-uzamsal dizin oluşturma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/indexmanagement/sync/SampleIndexManagement.java#L156-L168) | Indexingpolicy. Setspatialındexes<br>SpatialSpec<br>SpatialType |
+
+Dizin oluşturma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB dizin oluşturma ilkeleri](index-policy.md).
+
+## <a name="query-examples"></a>Sorgu örnekleri
+[Sorgu örnekleri](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java) dosyası, SQL sorgu dilbilgisini kullanarak aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB SQL sorgu başvurusu hakkında bilgi edinmek için, bkz. [SQL sorgu örnekleri Azure Cosmos DB](how-to-sql-query.md). 
+
+| Görev | API başvurusu |
+| --- | --- |
+| [Tüm belgeler için sorgu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L194-L198) | CosmosContainer. QueryItems |
+| [== kullanan eşitlik için sorgu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L279-183) | CosmosContainer. QueryItems |
+| [!= ve NOT kullanan eşitsizlik için sorgu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L285-L293) | CosmosContainer. QueryItems |
+| [>, <, >=, <= gibi aralık işleçlerini kullanarak sorgulama](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L295-L300) | CosmosContainer. QueryItems |
+| [Dizelere karşı aralık işleçlerini kullanarak sorgulama](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L302-L307) | CosmosContainer. QueryItems |
+| [SıRALAMA ölçütü olan sorgu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L309-L314) | CosmosContainer. QueryItems |
+| [FARKLı sorgu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L316-L321) | CosmosContainer. QueryItems |
+| [Toplama işlevleriyle sorgu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L323-L331) | CosmosContainer. QueryItems |
+| [alt belgelerle çalışma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L333-L341) | CosmosContainer. QueryItems |
+| [Belgeler arası Birleştirmeler ile sorgulama](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L343-L365) | CosmosContainer. QueryItems |
+| [String, Math ve Array işleçleri ile sorgu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L367-L378) | CosmosContainer. QueryItems |
+| [SqlQuerySpec kullanarak parametreli SQL ile sorgulama](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L380-L409) |CosmosContainer. QueryItems |
+| [Açık disk belleği ile sorgu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L200-L254) | CosmosContainer. QueryItems |
+| [Bölümlenmiş koleksiyonları paralel olarak sorgulama](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L256-L277) | CosmosContainer. QueryItems |
+| Bölümlenmiş koleksiyonlar için ORDER BY ile sorgu | CosmosContainer. QueryItems |
+
+## <a name="change-feed-examples"></a>Akış örneklerini değiştirme 
+[Değişiklik akışı Işlemcisi örnek](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java) dosyası, aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB akışı değiştirme hakkında bilgi edinmek için bkz. [okuma Azure Cosmos DB değiştirme akışı](read-change-feed.md) ve [akış işlemcisini değiştirme](change-feed-processor.md).
+
+| Görev | API başvurusu |
+| --- | --- |
+| [Temel değişiklik akışı işlevselliği](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java#L50-L120) |ChangeFeedProcessor. changeFeedProcessorBuilder |
+| Belirli bir zamandan değişiklik akışını okuma | ChangeFeedProcessor. changeFeedProcessorBuilder |
+| [Baştan başlayarak değişiklik akışını okuma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java#L50-L120) | - |
+
+## <a name="server-side-programming-examples"></a>Sunucu tarafı programlama örnekleri
+
+[Saklı yordam örnek](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java) dosyası, aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB sunucu tarafı programlama hakkında bilgi edinmek için, bkz. [saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler](stored-procedures-triggers-udfs.md).
+
+| Görev | API başvurusu |
+| --- | --- |
+| [Saklı yordam oluşturma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java#L124-L143) | CosmosScripts. createStoredProcedure |
+| [Saklı yordamı yürütme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java#L160-L174) | CosmosStoredProcedure. Execute |
+| [Saklı yordamı silme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java#L176-L186) | CosmosStoredProcedure. Delete |
+
+## <a name="user-management-examples"></a>Kullanıcı yönetim örnekleri
+Kullanıcı Yönetimi örnek dosyasında aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
+
+| Görev | API başvurusu |
+| --- | --- |
+| Kullanıcı oluşturma | - |
+| Koleksiyon veya belge üzerinde izinleri ayarlama | - |
+| Bir kullanıcının izinlerinin listesini alma |- |

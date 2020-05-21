@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
-ms.openlocfilehash: 2759644c68d65e76de222a0ac74f1d4900caddc0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9ebbd773d56a54114f4bbb9b0db7ffddd2fbf893
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121261"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727038"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için dinamik veri maskeleme
 
@@ -74,7 +74,7 @@ DDM öneriler altyapısı, veritabanınızdaki belirli alanları potansiyel olar
 
 Veri maskeleme ilkesini ve kurallarını programlı bir şekilde yönetmek için REST API kullanabilirsiniz. Yayımlanan REST API aşağıdaki işlemleri destekler:
 
-### <a name="data-masking-policies"></a>Veri Maskeleme İlkeleri
+### <a name="data-masking-policy"></a>Veri maskeleme Ilkesi
 
 - [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): belirtilen sütunun duyarlılık etiketini oluşturur veya güncelleştirir.
 - [Get](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get): bir veritabanı veri maskeleme ilkesi alır. 

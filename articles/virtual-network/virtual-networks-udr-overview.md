@@ -4,24 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Azure’ın sanal ağ trafiğini nasıl yönlendirdiğini ve bu yönlendirmeyi nasıl özelleştirebileceğinizi öğrenin.
 services: virtual-network
 documentationcenter: na
-author: malopMSFT
+author: KumudD
 manager: ''
-editor: v-miegge
-tags: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
-ms.author: malop
-ms.reviewer: kumud
-ms.openlocfilehash: d9ed11cd00909a104b5ea54463f8a98020837e10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: aldomel
+ms.openlocfilehash: ad0a5fc5940c36aa5d2d6912987b154532bc80a1
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80477887"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727126"
 ---
 # <a name="virtual-network-traffic-routing"></a>Sanal ağ trafiğini yönlendirme
 
@@ -39,9 +36,9 @@ Her yol, bir adres ön eki ve sonraki atlama türünü içerir. Alt ağdan ayrı
 |-------|---------                                               |---------      |
 |Varsayılan|Sanal ağa özel                           |Sanal ağ|
 |Varsayılan|0.0.0.0/0                                               |Internet       |
-|Varsayılan|10.0.0.0/8                                              |Hiçbiri           |
-|Varsayılan|192.168.0.0/16                                          |Hiçbiri           |
-|Varsayılan|100.64.0.0/10                                           |Hiçbiri           |
+|Varsayılan|10.0.0.0/8                                              |Yok           |
+|Varsayılan|192.168.0.0/16                                          |Yok           |
+|Varsayılan|100.64.0.0/10                                           |Yok           |
 
 Önceki tabloda listelenen sonraki atlama türleri, Azure’ın listelenen adres ön ekine yönelik giden trafiği nasıl yönlendirdiğini göstermektedir. Sonraki atlama türlerinin açıklamaları:
 
@@ -109,7 +106,7 @@ Sonraki atlama türleri için gösterilen ve başvurulan ad, Azure portalı ile 
 |Sanal ağ                 |VNetLocal                                       |VNETLocal (asm modunda klasik CLI’de kullanılamaz)|
 |Internet                        |Internet                                        |İnternet (asm modunda klasik CLI’de kullanılamaz)|
 |Sanal gereç               |VirtualAppliance                                |VirtualAppliance|
-|Hiçbiri                            |Hiçbiri                                            |Null (asm modunda klasik CLI’de kullanılamaz)|
+|Yok                            |Yok                                            |Null (asm modunda klasik CLI’de kullanılamaz)|
 |Sanal ağ eşleme         |VNet eşlemesi                                    |Uygulanamaz|
 |Sanal ağ hizmet uç noktaları|VirtualNetworkServiceEndpoint                   |Uygulanamaz|
 
@@ -170,7 +167,7 @@ Adres ön eki 0.0.0.0/0 olan bir yol, Azure’a bir alt ağın yol tablosundaki 
 
 Sanal ağınız bir Azure VPN ağ geçidine bağlıysa, rota tablosunu 0.0.0.0/0 hedefine sahip bir rota içeren [ağ geçidi alt ağına](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) ilişkilendirmeyin. Bunun yapılması, ağ geçidinin düzgün çalışmasını engelleyebilir. Ayrıntılı bilgi için [VPN Gateway FAQ](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports) sayfasındaki (VPN Gateway ile ilgili SSS) *Why are certain ports opened on my VPN gateway?* (VPN ağ geçidimde belirli bağlantı noktalarının açık olma nedeni nedir?) sorusuna bakın.
 
-İnternet ile Azure arasında sanal ağ geçitleri ve sanal gereçler kullanılırken uygulama ayrıntıları için [Azure ile şirket içi veri merkeziniz arasında DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Azure ile İnternet arasında DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) konularını inceleyin.
+Internet ve Azure arasında sanal ağ geçitleri kullanırken uygulama ayrıntıları için [Azure ile şirket içi veri merkeziniz arasında DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) bakın.
 
 ## <a name="routing-example"></a>Yönlendirme örneği
 
@@ -210,15 +207,15 @@ Oklar trafik akışını gösterir.
 
 Resimdeki *Subnet1* için yol tablosu aşağıdaki yolları içerir:
 
-|Kimlik  |Kaynak |Durum  |Adres ön ekleri    |Sonraki atlama türü          |Sonraki atlama IP adresi|Kullanıcı tanımlı yol adı| 
+|ID  |Kaynak |Durum  |Adres ön ekleri    |Sonraki atlama türü          |Sonraki atlama IP adresi|Kullanıcı tanımlı yol adı| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Varsayılan|Geçersiz|10.0.0.0/16         |Sanal ağ        |                   |              |
 |2   |Kullanıcı   |Etkin |10.0.0.0/16         |Sanal gereç      |10.0.100.4         |VNet1 içinde  |
 |3   |Kullanıcı   |Etkin |10.0.0.0/24         |Sanal ağ        |                   |Subnet1 içinde|
 |4   |Varsayılan|Geçersiz|10.1.0.0/16         |VNet eşlemesi           |                   |              |
 |5   |Varsayılan|Geçersiz|10.2.0.0/16         |VNet eşlemesi           |                   |              |
-|6   |Kullanıcı   |Etkin |10.1.0.0/16         |Hiçbiri                   |                   |ToVNet2-1-Bırak|
-|7   |Kullanıcı   |Etkin |10.2.0.0/16         |Hiçbiri                   |                   |ToVNet2-2-Bırak|
+|6   |Kullanıcı   |Etkin |10.1.0.0/16         |Yok                   |                   |ToVNet2-1-Bırak|
+|7   |Kullanıcı   |Etkin |10.2.0.0/16         |Yok                   |                   |ToVNet2-2-Bırak|
 |8   |Varsayılan|Geçersiz|10.10.0.0/16        |Sanal ağ geçidi|[X.X.X.X]          |              |
 |9   |Kullanıcı   |Etkin |10.10.0.0/16        |Sanal gereç      |10.0.100.4         |Şirket-İçine    |
 |10  |Varsayılan|Etkin |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
@@ -251,9 +248,9 @@ Resimdeki *Subnet2* için yol tablosu aşağıdaki yolları içerir:
 |Varsayılan |Etkin |10.2.0.0/16         |VNet eşlemesi              |                   |
 |Varsayılan |Etkin |10.10.0.0/16        |Sanal ağ geçidi   |[X.X.X.X]          |
 |Varsayılan |Etkin |0.0.0.0/0           |Internet                  |                   |
-|Varsayılan |Etkin |10.0.0.0/8          |Hiçbiri                      |                   |
-|Varsayılan |Etkin |100.64.0.0/10       |Hiçbiri                      |                   |
-|Varsayılan |Etkin |192.168.0.0/16      |Hiçbiri                      |                   |
+|Varsayılan |Etkin |10.0.0.0/8          |Yok                      |                   |
+|Varsayılan |Etkin |100.64.0.0/10       |Yok                      |                   |
+|Varsayılan |Etkin |192.168.0.0/16      |Yok                      |                   |
 
 *Subnet2* yol tablosu Azure tarafından oluşturulan tüm varsayılan yolları ve isteğe bağlı VNet eşlemesi ile Sanal ağ geçidi isteğe bağlı yollarını içerir. Sanal ağa ağ geçidi ve eşleme eklendiğinde Azure, sanal ağ içindeki tüm alt ağlara isteğe bağlı yollar eklemiştir. 0.0.0.0/0 adres ön eki için Kullanıcı tanımlı yol *Subnet1*'ye eklendiğinde Azure, 10.0.0.0/8, 192.168.0.0/16 ve 100.64.0.0/10 adres ön eklerinin yollarını *Subnet1* Route tablosundan kaldırdı.  
 
