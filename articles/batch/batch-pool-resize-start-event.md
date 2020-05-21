@@ -1,15 +1,14 @@
 ---
 title: Azure Batch havuzu yeniden boyutlandırma başlangıç olayı
 description: Batch havuzu yeniden boyutlandırma başlangıç olayı başvurusu. Örnek, el ile yeniden boyutlandırmayla 0 ' dan 2 ' ye kadar düğüm yeniden boyutlandırılması için havuz yeniden boyutlandırma başlangıç olayının gövdesini gösterir.
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: b4aa503c5dfbe00a77216277bdaf7e4c0dc3b1bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63576b04b06aad024211d0a50225907c88c138ce
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115882"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723740"
 ---
 # <a name="pool-resize-start-event"></a>Havuz yeniden boyutlandırma başlangıç olayı
 

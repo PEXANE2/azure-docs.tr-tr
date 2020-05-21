@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954262"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726205"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure Cosmos DB'yi kullanarak Azure IoT Hub cihaz bağlantısı olaylarını sıralama
 
@@ -26,7 +26,7 @@ Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük say�
 
 * Etkin bir Azure Cosmos DB SQL API hesabı. Henüz bir tane oluşturmadıysanız, bkz. bir anlatım için [veritabanı hesabı oluşturma](../cosmos-db/create-sql-api-java.md#create-a-database-account) .
 
-* Veritabanınızdaki bir koleksiyon. İzlenecek yol için [koleksiyon ekleme](../cosmos-db/create-sql-api-java.md#add-a-container) bölümüne bakın. Koleksiyonunuzu oluştururken bölüm anahtarı için kullanın `/id` .
+* Veritabanınızdaki bir koleksiyon. İzlenecek yol için [koleksiyon ekleme](../cosmos-db/create-sql-api-java.md#add-a-container) bölümüne bakın. Koleksiyonunuzu oluştururken `/id` bölüm anahtarı için kullanın.
 
 * Azure'da bir IoT Hub'ı. Henüz oluşturmadıysanız, yönergeler için bkz. [IoT Hub'ı kullanmaya başlama](iot-hub-csharp-csharp-getstarted.md).
 
@@ -34,7 +34,7 @@ Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük say�
 
 İlk olarak, bir saklı yordam oluşturun ve bunu, gelen olayların sıra numaralarını karşılaştıran ve veritabanındaki cihaz başına en son olayı kaydeden bir mantığı çalıştıracak şekilde ayarlayın.
 
-1. Cosmos db SQL API 'niz ' nde **Veri Gezgini** > **öğeleri** > **Yeni saklı yordam**' i seçin.
+1. Cosmos db SQL API 'niz ' nde **Veri Gezgini**  >  **öğeleri**  >  **Yeni saklı yordam**' i seçin.
 
    ![Saklı yordam oluştur](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
@@ -334,7 +334,7 @@ Yürütülen saklı yordamın sonuçlarını Cosmos DB belgenizde görebilirsini
 
 ## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
-[Azure Portal](https://portal.azure.com)kullanmak yerine, IoT Hub ADıMLARı Azure CLI kullanarak gerçekleştirebilirsiniz. Ayrıntılar için, [olay aboneliği oluşturmak](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) ve [IoT cihazı oluşturmak](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create)için Azure CLI sayfalarına bakın.
+[Azure Portal](https://portal.azure.com)kullanmak yerine, IoT Hub ADıMLARı Azure CLI kullanarak gerçekleştirebilirsiniz. Ayrıntılar için, [olay aboneliği oluşturmak](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) ve [IoT cihazı oluşturmak](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)için Azure CLI sayfalarına bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

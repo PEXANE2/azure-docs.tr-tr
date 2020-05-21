@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: ee600d7524af27a0e9e2ce0176e7bd4d1f60bc3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c33f29ab00605f68d41358b79284bf49188fece
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758548"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715877"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux sanal makineleri için Zamanlanan Olaylar
 
@@ -52,22 +52,22 @@ Zamanlanan olaylar şu şekilde dağıtılır:
 
 - Tek başına sanal makineler.
 - Bir bulut hizmetindeki tüm VM 'Ler.
-- Bir kullanılabilirlik kümesindeki tüm VM 'Ler.
+- Bir kullanılabilirlik kümesi/kullanılabilirlik bölgesindeki tüm VM 'Ler. 
 - Ölçek kümesi yerleştirme grubundaki tüm VM 'Ler. 
 
-Sonuç olarak, hangi VM 'Lerin `Resources` etkilendiğini belirlemek için olaydaki alanı kontrol edin.
+Sonuç olarak, `Resources` hangi VM 'lerin etkilendiğini belirlemek için olaydaki alanı kontrol edin.
 
 ### <a name="endpoint-discovery"></a>Uç nokta bulma
-VNET etkin VM 'Ler için Metadata Service statik olmayan statik bir IP 'den kullanılabilir `169.254.169.254`. Zamanlanan Olaylar en son sürümü için tam uç nokta şunlardır: 
+VNET etkin VM 'Ler için Metadata Service statik olmayan statik bir IP 'den kullanılabilir `169.254.169.254` . Zamanlanan Olaylar en son sürümü için tam uç nokta şunlardır: 
 
  > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
 
 VM bir sanal ağ içinde oluşturulmadıysa, bulut hizmetleri ve klasik VM 'Ler için varsayılan durumlar olarak, kullanılacak IP adresini bulması için ek mantık gerekir. [Konak uç noktasını bulmayı](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)öğrenmek için bu örneğe bakın.
 
 ### <a name="version-and-region-availability"></a>Sürüm ve bölge kullanılabilirliği
-Zamanlanan Olaylar hizmeti sürümlenmiş. Sürümler zorunludur; geçerli sürüm `2019-01-01`.
+Zamanlanan Olaylar hizmeti sürümlenmiş. Sürümler zorunludur; geçerli sürüm `2019-01-01` .
 
-| Sürüm | Yayın türü | Bölgeler | Sürüm Notları | 
+| Sürüm | Yayın türü | Bölgeler | Release Notes (Sürüm Notları) | 
 | - | - | - | - | 
 | 2019-01-01 | Genel kullanılabilirlik | Tümü | <li> Sanal Makine Ölçek Kümeleri için destek eklendi EventType ' Terminate ' |
 | 2017-11-01 | Genel kullanılabilirlik | Tümü | <li> Nokta VM çıkarma olay türü ' preempt ' için destek eklendi<br> | 
@@ -86,12 +86,12 @@ Zamanlanan Olaylar, ilk kez olay isteği yaptığınızda hizmetiniz için etkin
 ### <a name="user-initiated-maintenance"></a>Kullanıcı tarafından başlatılan bakım
 Azure portal, API, CLı veya PowerShell aracılığıyla Kullanıcı tarafından başlatılan VM Bakımı zamanlanmış bir olayda sonuçlanır. Daha sonra uygulamanızdaki bakım hazırlama mantığını test edebilir ve uygulamanız kullanıcı tarafından başlatılan bakım için hazırlanabilirsiniz.
 
-Bir VM 'yi yeniden başlatırsanız, türüne `Reboot` sahip bir olay zamanlanır. Bir VM 'yi yeniden dağıtırsanız, türüne `Redeploy` sahip bir olay zamanlanır.
+Bir VM 'yi yeniden başlatırsanız, türüne sahip bir olay `Reboot` zamanlanır. Bir VM 'yi yeniden dağıtırsanız, türüne sahip bir olay `Redeploy` zamanlanır.
 
-## <a name="use-the-api"></a>API’yi kullanma
+## <a name="use-the-api"></a>API'yi kullanma
 
-### <a name="headers"></a>Üst bilgiler
-Metadata Service sorgulayıp, isteğin istem dışı olarak yeniden yönlendirilmemesini sağlamak için üst bilgiyi `Metadata:true` sağlamanız gerekir. `Metadata:true` Üst bilgi tüm zamanlanmış olaylar istekleri için gereklidir. Üst bilgiyi istek içine ekleme hatası, Metadata Service ' den gelen bir "Hatalı Istek" yanıtı ile sonuçlanır.
+### <a name="headers"></a>Üst Bilgiler
+Metadata Service sorgulayıp, `Metadata:true` isteğin istem dışı olarak yeniden yönlendirilmemesini sağlamak için üst bilgiyi sağlamanız gerekir. `Metadata:true`Üst bilgi tüm zamanlanmış olaylar istekleri için gereklidir. Üst bilgiyi istek içine ekleme hatası, Metadata Service ' den gelen bir "Hatalı Istek" yanıtı ile sonuçlanır.
 
 ### <a name="query-for-events"></a>Olayları sorgula
 Aşağıdaki çağrıyı yaparak Zamanlanmış olaylar için sorgulama yapabilirsiniz:
@@ -126,7 +126,7 @@ Zamanlanan olayların olduğu durumlarda, yanıt bir olay dizisi içerir.
 | Olay türü | Bu olay nedenlerini etkiler. <br><br> Değerler: <br><ul><li> `Freeze`: Sanal makine birkaç saniye duraklamak üzere zamanlandı. CPU ve ağ bağlantısı askıya alınabilir, ancak bellekte veya açık dosyalarda bir etkisi yoktur.<li>`Reboot`: Sanal makine yeniden başlatma için zamanlandı (kalıcı olmayan bellek kaybolur). <li>`Redeploy`: Sanal makine başka bir düğüme ilerlemek üzere zamanlandı (kısa ömürlü diskler kaybolur). <li>`Preempt`: Spot sanal makine siliniyor (kısa ömürlü diskler kaybolur). <li> `Terminate`: Sanal makine silinmek üzere zamanlandı. |
 | ResourceType | Bu olayın etkilediği kaynak türü. <br><br> Değerler: <ul><li>`VirtualMachine`|
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Listenin, en çok bir [güncelleştirme etki](manage-availability.md)alanından makineler içermesi garanti edilir, ancak bu, ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| EventStatus | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, `NotBefore` özellikte belirtilen süreden sonra başlayacak şekilde zamanlandı.<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmamıştır. Olay tamamlandığında olay artık döndürülmez.
+| EventStatus | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, özellikte belirtilen süreden sonra başlayacak şekilde zamanlandı `NotBefore` .<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmamıştır. Olay tamamlandığında olay artık döndürülmez.
 | NotBefore| Bu olayın başlayabileceği zaman. <br><br> Örnek: <br><ul><li> Mon, 19 Eyl 2016 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>Olay zamanlaması
@@ -141,13 +141,13 @@ Her olay, gelecekte olay türüne göre en az bir süre zamanlanır. Bu zaman, b
 | Terminate | [Kullanıcı yapılandırılabilir](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 ila 15 dakika |
 
 > [!NOTE] 
-> Azure, bazı durumlarda ana bilgisayar başarısızlığını düşürülmüş bir donanım nedeniyle tahmin edebilir ve bir geçiş zamanlayarak hizmetinize olan kesintiyi azaltmaya çalışacaktır. Etkilenen sanal makineler, genellikle gelecekte birkaç gün olan zamanlanmış `NotBefore` bir olay alır. Gerçek süre, tahmin edilen hata riski değerlendirmesine bağlı olarak farklılık gösterir. Azure, mümkün olduğunda 7 gün daha kısa bir bildirimde bulunmaya çalışır, ancak tahmin, donanım arızalanmaya yönelik yüksek bir şansınız olması durumunda gerçek zaman değişir ve daha küçük olabilir. Sistemin sistem tarafından başlatılan geçişten önce başarısız olması durumunda hizmetinize yönelik riski en aza indirmek için, sanal makinenizi mümkün olan en kısa sürede otomatik olarak yeniden dağıtmanız önerilir.
+> Azure, bazı durumlarda ana bilgisayar başarısızlığını düşürülmüş bir donanım nedeniyle tahmin edebilir ve bir geçiş zamanlayarak hizmetinize olan kesintiyi azaltmaya çalışacaktır. Etkilenen sanal makineler, `NotBefore` genellikle gelecekte birkaç gün olan zamanlanmış bir olay alır. Gerçek süre, tahmin edilen hata riski değerlendirmesine bağlı olarak farklılık gösterir. Azure, mümkün olduğunda 7 gün daha kısa bir bildirimde bulunmaya çalışır, ancak tahmin, donanım arızalanmaya yönelik yüksek bir şansınız olması durumunda gerçek zaman değişir ve daha küçük olabilir. Sistemin sistem tarafından başlatılan geçişten önce başarısız olması durumunda hizmetinize yönelik riski en aza indirmek için, sanal makinenizi mümkün olan en kısa sürede otomatik olarak yeniden dağıtmanız önerilir.
 
 ### <a name="start-an-event"></a>Olay başlatma 
 
-Yaklaşan bir olayı öğrendikten ve düzgün kapanma için mantığınızı tamamladıktan sonra, ile `POST` `EventId`Metadata Service çağrısı yaparak bekleyen olayı onaylayabilirsiniz. Bu çağrı, Azure 'a, en düşük bildirim süresini (mümkün olduğunda) kısaltıp kısaltamayacağını gösterir. 
+Yaklaşan bir olayı öğrendikten ve düzgün kapanma için mantığınızı tamamladıktan sonra, ile Metadata Service çağrısı yaparak bekleyen olayı onaylayabilirsiniz `POST` `EventId` . Bu çağrı, Azure 'a, en düşük bildirim süresini (mümkün olduğunda) kısaltıp kısaltamayacağını gösterir. 
 
-`POST` İstek GÖVDESINDE aşağıdaki JSON örneği bekleniyor. İstek bir listesi içermelidir `StartRequests`. Her `StartRequest` biri `EventId` , hızlandırmak istediğiniz olay için içerir:
+İstek gövdesinde aşağıdaki JSON örneği bekleniyor `POST` . İstek bir listesi içermelidir `StartRequests` . Her `StartRequest` biri `EventId` , hızlandırmak istediğiniz olay için içerir:
 ```
 {
     "StartRequests" : [
@@ -164,7 +164,7 @@ curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-
 ```
 
 > [!NOTE] 
-> Bir olayı ele almak, olayın yalnızca olayı kabul eden VM `Resources` değil, olaydaki her şey için devam etmesine olanak tanır. Bu nedenle, onayı koordine etmek için bir öncü seçebilirsiniz ve bu, `Resources` alandaki ilk makine kadar kolay olabilir.
+> Bir olayı ele almak `Resources` , olayın yalnızca olayı kabul eden VM değil, olaydaki her şey için devam etmesine olanak tanır. Bu nedenle, onayı koordine etmek için bir öncü seçebilirsiniz ve bu, alandaki ilk makine kadar kolay olabilir `Resources` .
 
 ## <a name="python-sample"></a>Python örneği 
 

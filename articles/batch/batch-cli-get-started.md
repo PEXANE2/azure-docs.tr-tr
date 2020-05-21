@@ -1,15 +1,15 @@
 ---
 title: Batch için Azure CLı ile çalışmaya başlama
 description: Azure Batch hizmet kaynaklarını yönetmek üzere Azure CLI’daki Batch komutlarına hızlı bir giriş yapın
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fe73770dbe8dfe6d69cb08e1fbf44d42bff9e54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9aa9a43dd036b4a547d1bff85b4431afcf74e23
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117378"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726800"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch kaynaklarını Azure CLI ile yönetme
 
@@ -28,7 +28,7 @@ En son Azure CLI sürümünü [Azure Cloud Shell](../cloud-shell/overview.md)'de
 
 ## <a name="command-help"></a>Komut yardımı
 
-Komuttan sonra `-h` ekleyerek Azure CLI'daki her komut için yardım metni görüntüleyebilirsiniz. Diğer seçenekleri atın. Örneğin:
+Komuttan sonra `-h` ekleyerek Azure CLI'daki her komut için yardım metni görüntüleyebilirsiniz. Diğer seçenekleri atın. Örnek:
 
 * `az` komutuyla ilgili yardım almak için şunu girin: `az -h`
 * CLI’daki tüm Batch komutlarının listesini almak için şunu kullanın: `az batch -h`
@@ -111,7 +111,7 @@ Ortak görevleri gerçekleştirmek üzere Batch için [CLI betik örneklerini](c
 
 ## <a name="json-files-for-resource-creation"></a>Kaynak oluşturmak için JSON dosyaları
 
-Havuzlar ve işler gib Batch kaynakları oluşturduğunuzda parametrelerini komut satırı seçenekleri olarak geçirmek yerine yeni kaynağın yapılandırmasını içeren bir JSON dosyası belirtebilirsiniz. Örneğin:
+Havuzlar ve işler gib Batch kaynakları oluşturduğunuzda parametrelerini komut satırı seçenekleri olarak geçirmek yerine yeni kaynağın yapılandırmasını içeren bir JSON dosyası belirtebilirsiniz. Örnek:
 
 ```azurecli
 az batch pool create my_batch_pool.json

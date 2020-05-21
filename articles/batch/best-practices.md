@@ -1,14 +1,14 @@
 ---
-title: En iyi uygulamalar
+title: En iyi yöntemler
 description: Azure Batch çözümünüzü geliştirmeye yönelik en iyi yöntemleri ve yararlı ipuçlarını öğrenin.
 ms.date: 04/03/2020
-ms.topic: article
-ms.openlocfilehash: 43a0020953ea44593cf38298a78547194751fc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.openlocfilehash: f7d2add5fb30e3efdfb761364babf2211c3c254f
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117514"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725814"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -89,7 +89,7 @@ Görevler, bir işi oluşturan bireysel iş birimleridir. Görevler kullanıcı 
 ### <a name="task-lifetime"></a>Görev ömrü
 
 - **Görevleri tamamlandığında silin.**
-    Görevleri artık gerekli olmadığında silin veya bir [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) görev kısıtlaması ayarlayın. Bir `retentionTime` ayarlanmışsa, toplu iş `retentionTime` süresi dolduktan sonra görev tarafından kullanılan disk alanını otomatik olarak temizler.
+    Görevleri artık gerekli olmadığında silin veya bir [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) görev kısıtlaması ayarlayın. Bir `retentionTime` ayarlanmışsa, toplu iş süresi dolduktan sonra görev tarafından kullanılan disk alanını otomatik olarak temizler `retentionTime` .
 
     Görevleri silme işlemi iki şeyi gerçekleştirir. Bu, çalıştığınız görevi daha zor bir şekilde sorgulamayı/bulmayı (tamamlanan görevleri filtrelemeniz gerekecektir) sağlayan, iş içinde görev oluşturma işlemi yapılmasını sağlar. Ayrıca, düğümdeki karşılık gelen görev verilerini de temizler (belirtilen `retentionTime` zaten isabet mıştır). Bu, düğümlerinizin görev verileriyle doldurulmamasını ve disk alanı tükenmesini sağlar.
 
@@ -100,11 +100,11 @@ Görevler, bir işi oluşturan bireysel iş birimleridir. Görevler kullanıcı 
 
 ### <a name="task-execution"></a>Görev yürütme
 
-- **Düğüm başına en fazla görevlerinizi seçme** Batch, düğümlerde fazla abone olan görevleri destekler (bir düğümden daha fazla görev çalıştırmak çekirdekler vardır). Görevlerinizin, havuzunuzdaki düğümlere "sığması" durumunda olduğundan emin olmanız gerekir. Örneğin, her birinin tek bir düğümde (ile `maxTasksPerNode = 8`bir havuzda) %25 CPU kullanımı tükettiği sekiz görevi zamanlamaya çalışırsanız, düzeyi düşürülmüş bir deneyimle karşılaşabilirsiniz.
+- **Düğüm başına en fazla görevlerinizi seçme** Batch, düğümlerde fazla abone olan görevleri destekler (bir düğümden daha fazla görev çalıştırmak çekirdekler vardır). Görevlerinizin, havuzunuzdaki düğümlere "sığması" durumunda olduğundan emin olmanız gerekir. Örneğin, her birinin tek bir düğümde (ile bir havuzda) %25 CPU kullanımı tükettiği sekiz görevi zamanlamaya çalışırsanız, düzeyi düşürülmüş bir deneyimle karşılaşabilirsiniz `maxTasksPerNode = 8` .
 
 ### <a name="designing-for-retries-and-re-execution"></a>Yeniden denemeler ve yeniden yürütme için tasarlama
 
-Görevler, toplu Işlem tarafından otomatik olarak yeniden denenebilir. İki tür yeniden deneme vardır: Kullanıcı denetimli ve dahili. Kullanıcı denetimli yeniden denemeler, görevin [Maxtaskretrycount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)tarafından belirtilir. Görevde belirtilen bir program sıfır dışında bir çıkış kodu ile çıktığında, görev değerine kadar yeniden denenir `maxTaskRetryCount`.
+Görevler, toplu Işlem tarafından otomatik olarak yeniden denenebilir. İki tür yeniden deneme vardır: Kullanıcı denetimli ve dahili. Kullanıcı denetimli yeniden denemeler, görevin [Maxtaskretrycount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)tarafından belirtilir. Görevde belirtilen bir program sıfır dışında bir çıkış kodu ile çıktığında, görev değerine kadar yeniden denenir `maxTaskRetryCount` .
 
 Nadir olarak bir görev, işlem düğümündeki hatalar nedeniyle, görev çalışırken düğüm üzerinde iç durumu veya bir başarısızlığı güncelleştirmeme gibi yeniden deneniyor olabilir. Görev, mümkünse aynı işlem düğümünde yeniden denenecektir, bu, görevde bir süre önce bir iç sınıra kadar ve bir toplu Işlem tarafından, potansiyel olarak farklı bir işlem düğümünde yeniden zamanlanmasını ertelenir.
 
@@ -121,7 +121,7 @@ Nadir olarak bir görev, işlem düğümündeki hatalar nedeniyle, görev çalı
 - **Başlangıç görevleri ıdempotent olmalıdır** Diğer görevlere benzer şekilde, düğüm başlangıç görevi, düğüm her önyüklendiğinde yeniden çalıştırılacak şekilde ıdempotent olmalıdır. Bir ıdempotent görevi, birden çok kez çalıştırıldığında tutarlı bir sonuç üreten bir görevdir.
 
 - **İşletim sistemi Hizmetleri arabirimi aracılığıyla uzun süre çalışan hizmetleri yönetin.**
-    Bazen, düğümdeki verileri toplamak ve rapor etmek için, örneğin, düğümündeki Batch aracısının yanı sıra başka bir aracı da çalıştırmanız gerekir. Bu aracıların bir Windows hizmeti veya Linux `systemd` hizmeti gibi işletim sistemi hizmetleri olarak dağıtılmasını öneririz.
+    Bazen, düğümdeki verileri toplamak ve rapor etmek için, örneğin, düğümündeki Batch aracısının yanı sıra başka bir aracı da çalıştırmanız gerekir. Bu aracıların bir Windows hizmeti veya Linux hizmeti gibi işletim sistemi hizmetleri olarak dağıtılmasını öneririz `systemd` .
 
     Bu Hizmetleri çalıştırırken, düğüm üzerindeki toplu yönetilen dizinlerde bulunan dosyalarda dosya kilitleri almalıdır, aksi takdirde toplu Işlem dosya kilitleri nedeniyle bu dizinlerin silinmesine neden olur. Örneğin, başlangıç görevinde bir Windows hizmeti yüklüyorsanız, hizmeti doğrudan başlangıç görevi çalışma dizininden başlatmak yerine, dosyaları başka bir yere kopyalayın (dosyalar varsa yalnızca kopyayı atlayın). Hizmeti bu konumdan yükler. Batch, başlangıç görevinizi yeniden çalıştırdığınızda, başlangıç görevi çalışma dizinini siler ve yeniden oluşturur. Bu, hizmetin başlangıç görevi çalışma dizini değil diğer dizindeki dosya kilitleri olduğu için geçerlidir.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur dağıtım sorunlarını giderme
-description: Bu makalede, VM'leri çalışma saatleri dışında başlat/durdur özelliğinin dağıtımı sırasında doğan sorunları gidermeye ve çözmeye nasıl çözüm yapılacağı açıklanır.
+title: Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur sorunlarını giderme
+description: Bu makalede, VM'leri çalışma saatleri dışında başlat/durdur özelliğinin kullanımı sırasında oluşan sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bd537fd943e9a13a59c2fa630235130ce9ccfe2d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 53a7e113d64ea4cf7018d51a44f9488342f1470f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680857"
+ms.locfileid: "83715639"
 ---
-# <a name="troubleshoot-startstop-vms-during-off-hours-deployment-issues"></a>VM'leri çalışma saatleri dışında başlat/durdur dağıtım sorunlarını giderme
+# <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>VM'leri çalışma saatleri dışında başlat/durdur sorunlarını giderme
 
 Bu makalede, Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur özelliğini sanal makinelerinize dağıtırken ortaya çıkan sorunları giderme ve çözme hakkında bilgi sağlanır. 
 

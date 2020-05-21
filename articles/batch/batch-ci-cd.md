@@ -4,13 +4,13 @@ description: Azure Batch üzerinde çalışan bir HPC uygulaması için derleme/
 author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
-ms.topic: conceptual
-ms.openlocfilehash: 79c4e74086acc0f74bcc43f6b4543afe12916364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 72f976071a5fc65c8e96f6b3cd5c0094785e287b
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117395"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726851"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC çözümleri derlemek ve dağıtmak için Azure Pipelines kullanma
 
@@ -475,7 +475,7 @@ Ortam kurulduktan sonra, aşağıdaki testlerin başarıyla tamamlandıklarını
 
 PowerShell komut isteminden Azure CLı kullanarak yeni Azure Batch hesabına bağlanın.
 
-* Azure hesabınızda ile `az login` oturum açın ve kimlik doğrulaması için yönergeleri izleyin.
+* Azure hesabınızda ile oturum açın `az login` ve kimlik doğrulaması için yönergeleri izleyin.
 * Şu anda Batch hesabının kimliğini doğrulayın:`az batch account login -g <resourceGroup> -n <batchAccount>`
 
 #### <a name="list-the-available-applications"></a>Kullanılabilir uygulamaları listeleyin
@@ -490,7 +490,7 @@ az batch application list -g <resourcegroup> -n <batchaccountname>
 az batch pool list
 ```
 
-Bu komutun çıktısından değerini `currentDedicatedNodes` aklınızda edin. Bu değer bir sonraki testte ayarlanır.
+`currentDedicatedNodes`Bu komutun çıktısından değerini aklınızda edin. Bu değer bir sonraki testte ayarlanır.
 
 #### <a name="resize-the-pool"></a>Havuzu yeniden boyutlandır
 

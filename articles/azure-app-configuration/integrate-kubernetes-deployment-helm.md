@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 2aebccdf18aaba345beb344a8b6fc3b37754a4a1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793620"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725678"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Held kullanarak Kubernetes dağıtımıyla tümleştirin
 
@@ -23,7 +23,7 @@ Yayın işlemi sırasında, HELI uygulamayı çalıştırmak için uygun yapıla
 
 Held çalıştırırken komut satırına ek YAML tabanlı yapılandırma dosyaları sağlayarak *values. YAML* içinde depolanan değerleri geçersiz kılabilirsiniz. Azure Uygulama yapılandırması, yapılandırma değerlerinin YAML dosyalarına verilmesini destekler. Bu dışarı aktarma özelliğinin dağıtımınız ile tümleştirilmesi, Kubernetes uygulamalarınızın uygulama yapılandırmasında depolanan yapılandırma değerlerinden yararlanmasını sağlar.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Held kullanarak Kubernetes 'e uygulama dağıttığınızda uygulama yapılandırmasındaki değerleri kullanın.
 > * Uygulama yapılandırmasındaki bir Key Vault başvurusunu temel alarak bir Kubernetes gizli dizisi oluşturun.
@@ -41,7 +41,7 @@ Bu öğretici, Held ile Kubernetes yönetimi hakkında temel anladığını vars
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma Gezgini** > **Oluştur** ' u seçin:
+6. **Configuration Explorer**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini**Oluştur** ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
@@ -56,7 +56,7 @@ Bu öğretici, Held ile Kubernetes yönetimi hakkında temel anladığını vars
 
 3. **Yapılandırma Gezgini**' ni seçin.
 
-4. **+** > **Anahtar Kasası başvurusu**oluştur ' u seçin ve ardından aşağıdaki değerleri belirtin:
+4. **+**  >  **Anahtar Kasası başvurusu**oluştur ' u seçin ve ardından aşağıdaki değerleri belirtin:
     - **Anahtar**: **gizlilikler. Password**öğesini seçin.
     - **Etiket**: Bu değeri boş bırakın.
     - **Abonelik**, **kaynak grubu**ve **Anahtar Kasası**: önceki adımda oluşturduğunuz anahtar kasasında bunlara karşılık gelen değerleri girin.
@@ -169,7 +169,7 @@ metadata:
   name: mysecret
 type: Opaque
 data:
-  password: {{ .Values.secrets.password }}
+  password: {{ .Values.secrets.password | b64enc }}
 ```
 
 Son olarak, aşağıdaki içerikle *values. YAML* dosyasını güncelleştirin ve *dağıtım. YAML* ve *gizlilikler. YAML* dosyalarında başvurulan yapılandırma ayarları ve gizli dizileri için varsayılan değerleri sağlayın. Uygulama yapılandırmasından alınan yapılandırma ile gerçek değerlerinin üzerine yazılacak.

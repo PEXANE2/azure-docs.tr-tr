@@ -1,15 +1,15 @@
 ---
 title: PowerShell ile çalışmaya başlayın
 description: Batch kaynaklarını yönetmek için kullanabileceğiniz Azure PowerShell cmdlet'lerine hızlı bir giriş.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8777edbc99550b2fb1f14df00936de57801b0aab
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3baa69f7ad51be59390a12c62797ff78250db9c0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657307"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726562"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch kaynaklarını PowerShell cmdlet'leriyle yönetme
 
@@ -19,7 +19,7 @@ Tam Batch cmdlet’leri listesi ve ayrıntılı cmdlet sözdizimi için bkz. [Az
 
 Bu makale, az Batch Module 1.0.0 içindeki cmdlet 'lere dayalıdır. Hizmet güncelleştirmeleri ve geliştirmeleri avantajlarından yararlanmak için Azure PowerShell modüllerinizi sık sık güncelleştirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure PowerShell modülünü yükleyin ve yapılandırın](/powershell/azure/overview). Yayın öncesi modül gibi belirli bir Azure Batch modülünü yüklemek için [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)'ne bakın.
 

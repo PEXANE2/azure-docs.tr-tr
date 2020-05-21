@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc ile Azure Arc etkin bir Kubernetes kümesi bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
-ms.openlocfilehash: 9b37ad264dc8a8a6c653c25ddf6ac0fcb4065f9b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: dd4e03ac6bdf2e4554f07f2aa5ffca78b1ed1230
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680810"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725627"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
 
@@ -169,7 +169,7 @@ AzureArcTest1  eastus      AzureArcTest
 Azure Arc etkin Kubernetes, ad alanına birkaç işleç dağıtır `azure-arc` . Bu dağıtımları ve pod 'leri buradan görüntüleyebilirsiniz:
 
 ```console
-kubectl -n azure-arc get deploy,po
+kubectl -n azure-arc get deployments,pods
 ```
 
 **Çıktıların**
@@ -198,8 +198,13 @@ pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 
 Azure Arc etkin Kubernetes, kümenizde çalışan ve ad alanına dağıtılan birkaç aracıdan (işleçlerden) oluşur `azure-arc` .
 
-* `deploy/config-agent`: kümede ve güncelleştirmelerin uyumluluk durumunda uygulanan kaynak denetimi yapılandırma kaynakları için bağlı kümeyi izler
-* `deploy/controller-manager`: işleçler operatörü ve Azure Arc bileşenleri arasındaki etkileşimleri düzenler
+* `deployment.apps/config-agent`: kümede ve güncelleştirmelerin uyumluluk durumunda uygulanan kaynak denetimi yapılandırma kaynakları için bağlı kümeyi izler
+* `deployment.apps/controller-manager`: işleçler operatörü ve Azure Arc bileşenleri arasındaki etkileşimleri düzenler
+* `deployment.apps/metrics-agent`: Bu aracıların en iyi performansı sergilediğinden emin olmak için diğer yay aracılarının ölçümlerini toplar
+* `deployment.apps/cluster-metadata-operator`: küme meta verilerini toplar-küme sürümü, düğüm sayısı ve yay Aracısı sürümü
+* `deployment.apps/resource-sync-agent`: Yukarıdaki belirtilen küme meta verilerini Azure 'da eşitler
+* `deployment.apps/clusteridentityoperator`: diğer aracıların Azure ile iletişim için kullandığı yönetilen hizmet kimliği (MSI) sertifikasını tutar
+* `deployment.apps/flux-logs-agent`: kaynak denetimi yapılandırmasının bir parçası olarak dağıtılan Flox işleçlerinden günlükleri toplar
 
 ## <a name="delete-a-connected-cluster"></a>Bağlı kümeyi silme
 

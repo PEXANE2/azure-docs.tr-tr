@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti 'nde (AKS) bir kümeyi yapılandırmayı �
 services: container-service
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 94f84beee2d7a76e48ac1470a0ce0b387929cc08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe5ce13d9db8f2bc2231f87de7e602e63d239bfa
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79479169"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725155"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
@@ -31,7 +31,7 @@ az extension add --name aks-preview
 az extension list
 ```
 
-`UseCustomizedUbuntuPreview` Özelliği kaydedin:
+Özelliği kaydedin `UseCustomizedUbuntuPreview` :
 
 ```azurecli
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
@@ -49,27 +49,40 @@ Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider
 az provider register --namespace Microsoft.ContainerService
 ```
 
-Kümeyi, küme oluşturulduğunda Ubuntu 18,04 kullanacak şekilde yapılandırın. Ubuntu 18,04 ' i varsayılan işletim sistemi olarak ayarlamak için `--aks-custom-headers` bayrağını kullanın.
+### <a name="new-clusters"></a>Yeni kümeler
+
+Kümeyi, küme oluşturulduğunda Ubuntu 18,04 kullanacak şekilde yapılandırın. `--aks-custom-headers`Ubuntu 18,04 ' i varsayılan işletim sistemi olarak ayarlamak için bayrağını kullanın.
 
 ```azure-cli
 az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
 ```
 
-Normal bir Ubuntu 16,04 kümesi oluşturmak istiyorsanız, özel `--aks-custom-headers` etiketi atlayarak bunu yapabilirsiniz.
+Normal bir Ubuntu 16,04 kümesi oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
+
+### <a name="existing-clusters"></a>Mevcut kümeler
+
+Ubuntu 18,04 kullanmak için yeni bir düğüm havuzu yapılandırın. `--aks-custom-headers`Bu düğüm havuzu Için Ubuntu 18,04 ' ı varsayılan işletim sistemi olarak ayarlamak için bayrağını kullanın.
+
+```azure-cli
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
+```
+
+Normal bir Ubuntu 16,04 düğüm havuzu oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
+
 
 ## <a name="custom-resource-group-name"></a>Özel kaynak grubu adı
 
-Azure 'da bir Azure Kubernetes hizmet kümesi dağıttığınızda, çalışan düğümleri için ikinci bir kaynak grubu oluşturulur. Varsayılan olarak AKS, düğüm kaynak grubunu `MC_resourcegroupname_clustername_location`adı verir, ancak kendi adınızı de sağlayabilirsiniz.
+Azure 'da bir Azure Kubernetes hizmet kümesi dağıttığınızda, çalışan düğümleri için ikinci bir kaynak grubu oluşturulur. Varsayılan olarak AKS, düğüm kaynak grubunu adı verir `MC_resourcegroupname_clustername_location` , ancak kendi adınızı de sağlayabilirsiniz.
 
-Kendi kaynak grubu adınızı belirtmek için, aks-Preview Azure CLı uzantısı sürüm 0.3.2 veya üstünü yüklemelisiniz. Azure CLı 'yı kullanarak kaynak grubu için `--node-resource-group` özel bir ad `az aks create` belirtmek üzere komutun parametresini kullanın. AKS kümesi dağıtmak için bir Azure Resource Manager şablonu kullanıyorsanız, `nodeResourceGroup` özelliğini kullanarak kaynak grubu adını tanımlayabilirsiniz.
+Kendi kaynak grubu adınızı belirtmek için, aks-Preview Azure CLı uzantısı sürüm 0.3.2 veya üstünü yüklemelisiniz. Azure CLı 'yı kullanarak `--node-resource-group` `az aks create` kaynak grubu için özel bir ad belirtmek üzere komutun parametresini kullanın. AKS kümesi dağıtmak için bir Azure Resource Manager şablonu kullanıyorsanız, özelliğini kullanarak kaynak grubu adını tanımlayabilirsiniz `nodeResourceGroup` .
 
 ```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup --node-resource-group myNodeResourceGroup
 ```
 
-İkincil kaynak grubu, kendi aboneliğinizde Azure Kaynak sağlayıcısı tarafından otomatik olarak oluşturulur. Küme oluşturulduğunda yalnızca özel kaynak grubu adını belirleyebilirsiniz. 
+İkincil kaynak grubu, kendi aboneliğinizde Azure Kaynak sağlayıcısı tarafından otomatik olarak oluşturulur. Yalnızca küme oluşturulduğunda özel kaynak grubu adı belirtebilirsiniz. 
 
-Düğüm kaynak grubuyla çalışırken şunları yapmanız gerektiğini aklınızda bulundurun:
+Düğüm kaynak grubuyla çalışırken şunları yapamazsınız:
 
 - Düğüm kaynak grubu için mevcut bir kaynak grubu belirtin.
 - Düğüm kaynak grubu için farklı bir abonelik belirtin.
@@ -79,6 +92,6 @@ Düğüm kaynak grubuyla çalışırken şunları yapmanız gerektiğini aklın�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kümenizdeki `Kured` [Linux düğümlerine güvenlik ve çekirdek güncelleştirmeleri uygulamak](node-updates-kured.md) için kullanmayı öğrenin.
+- `Kured`Kümenizdeki [Linux düğümlerine güvenlik ve çekirdek güncelleştirmeleri uygulamak](node-updates-kured.md) için kullanmayı öğrenin.
 - Kümenizi, Kubernetes 'in en son sürümüne nasıl yükselteceğinizi öğrenmek için bkz. [Azure Kubernetes hizmeti (AKS) kümesini yükseltme](upgrade-cluster.md) .
 - Bazı yaygın AKS sorularına cevap bulmak için [aks hakkında sık sorulan soruların](faq.md) listesine bakın.

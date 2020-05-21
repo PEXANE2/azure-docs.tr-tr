@@ -10,40 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 68947895891b4875ef4c57355f1236afdb8c2c7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 31c1d50962b2710fbeb249c61c8b3c144762be43
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204824"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715656"
 ---
 # <a name="learn-the-basics-of-spx"></a>SPX hakkında temel bilgileri öğrenin
 
 Bu makalede, konuşma hizmetini kod yazmadan kullanmak için bir komut satırı aracı olan SPX 'in temel kullanım düzenlerini öğrenirsiniz. Kullanım durumlarınızın yeterince karşılanıp karşılanmadığını görmek için, geliştirme ortamları oluşturmadan veya herhangi bir kod yazmaya gerek kalmadan, konuşma hizmetinin ana özelliklerini hızlıca test edebilirsiniz. Ayrıca, SPX üretime hazırlanın ve konuşma hizmetindeki basit iş akışlarını otomatikleştirebilmek için `.bat` veya kabuk betikleri kullanılarak kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
-
-Tek önkoşul, bir Azure konuşma aboneliğudur. Henüz bir abonelik yoksa, yeni abonelik oluşturma [kılavuzuna](get-started.md#new-resource) bakın.
-
-## <a name="download-and-install"></a>İndirme ve yükleme
-
-SPX, Windows ve Linux üzerinde kullanılabilir. [Zip arşivini](https://aka.ms/speech/spx-zips.zip)indirerek başlatın, sonra ayıklayın. SPX, .NET Core veya .NET Framework çalışma zamanı gerektirir ve aşağıdaki sürümler platform tarafından desteklenir:
-
-* Windows: [.NET Framework 4,7](https://dotnet.microsoft.com/download/dotnet-framework/net471), [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-* Linux: [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-
-Bir çalışma zamanı yükledikten sonra, indirdikten sonra ayıkladığınız kök dizine gidin `spx-zips` ve ihtiyacınız olan alt dizini ayıklayın ( `spx-net471` Örneğin,). Bir komut isteminde dizini bu konum olarak değiştirip `spx` uygulamayı başlatmak için komutunu çalıştırın.
-
-## <a name="create-subscription-config"></a>Abonelik yapılandırması oluştur
-
-SPX kullanmaya başlamak için önce konuşma aboneliği anahtarınızı ve bölge bilgilerinizi girmeniz gerekir. Bölge tanımlarınızı bulmak için [bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın. Abonelik anahtarınızı ve bölge tanımlayıcıyı (örn. `eastus`, `westus` ), aşağıdaki komutları çalıştırın.
-
-```shell
-spx config @key --set YOUR-SUBSCRIPTION-KEY
-spx config @region --set YOUR-REGION-ID
-```
-
-Abonelik kimlik doğrulaması artık gelecekteki SPX istekleri için depolandı. Bu depolanmış değerlerden birini kaldırmanız gerekirse, veya ' i çalıştırın `spx config @region --clear` `spx config @key --clear` .
+[!INCLUDE [](includes/spx-setup.md)]
 
 ## <a name="basic-usage"></a>Temel kullanım
 

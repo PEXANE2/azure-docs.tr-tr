@@ -3,12 +3,12 @@ title: Azure VM yedekleme için destek matrisi
 description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ac2896b0b3b8c87ff993eddcebb063a66add1fa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 01c81257ab2cc9882ec1d388702a00f58694a7e4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659409"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724267"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -48,7 +48,7 @@ Yönetilen disklere geçtikten sonra diskleri yedekleme | Destekleniyor.<br/><br
 Kaynak grubu kilidini etkinleştirdikten sonra yönetilen diskleri yedekleme | Desteklenmiyor.<br/><br/> Azure Backup eski geri yükleme noktalarını silemiyor ve en fazla geri yükleme noktası sınırına ulaşıldığında yedeklemeler başarısız olur.
 VM için yedekleme ilkesini değiştirme | Destekleniyor.<br/><br/> VM, yeni ilkedeki zamanlama ve bekletme ayarları kullanılarak yedeklenir. Bekletme ayarları genişletilmişse, var olan kurtarma noktaları işaretlenir ve saklanır. Azaldıysanız, var olan kurtarma noktaları sonraki temizleme işinde ayıklanır ve sonunda silinir.
 Bir yedekleme işini iptal et| Anlık görüntü işlemi sırasında desteklenir.<br/><br/> Anlık görüntü kasaya aktarıldığında desteklenmez.
-VM 'yi farklı bir bölgeye veya aboneliğe yedekleme |Desteklenmiyor.
+VM 'yi farklı bir bölgeye veya aboneliğe yedekleme |Desteklenmiyor.<br><br>Başarıyla yedeklemek için, sanal makinelerin Yedekleme Kasası ile aynı abonelikte olması gerekir.
 Gün başına yedeklemeler (Azure VM Uzantısı aracılığıyla) | Gün başına bir zamanlanmış yedekleme.<br/><br/>Azure Backup hizmeti günde en fazla dokuz isteğe bağlı yedeklemeyi destekler, ancak Microsoft en iyi performansı sağlamak için dörtten fazla günlük isteğe bağlı yedeklemeyi önermez.
 Gün başına yedeklemeler (MARS Aracısı aracılığıyla) | Gün başına üç zamanlanmış yedekleme.
 Gün başına yedeklemeler (DPM/MABS aracılığıyla) | Gün başına iki zamanlanmış yedekleme.
@@ -231,10 +231,10 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 
 **Makine** | **MABS/DPM 'ye Sıkıştır (TCP)** | **Kasaya Sıkıştır (HTTPS)**
 --- | --- | ---
-DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Yes][green]
+DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Evet][green]
 Azure VM’leri | NA | NA
 DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Evet][green]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

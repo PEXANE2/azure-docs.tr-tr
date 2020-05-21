@@ -4,12 +4,12 @@ description: Azure blok zinciri hizmeti 'ne genel bakış
 ms.date: 03/30/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f70eaa0decc3d94e7bebf10a9105d32d99131398
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80529151"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715588"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blok Zinciri Hizmeti nedir?
 
@@ -75,7 +75,7 @@ Azure blok zinciri haberleri için Azure blok zinciri [blogu](https://azure.micr
 
 Microsoft mühendisleri ve Azure blok zinciri topluluk uzmanlarıyla birlikte katılın.
 
-* [Azure blok zinciri MSDN Forumu](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Azure blok zinciri soru-cevap&](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
 * [Microsoft Teknoloji Topluluğu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 

@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 05/07/2020
+ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b75f03afc587d9616997b1df48b9c5c5166cb89
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fe9c9f44c42ef1e8dd6ff3401ad7201b174aa952
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681708"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725304"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -58,8 +58,7 @@ Bu düzeltme derlemesi, seçilmemiş etki alanlarının yalnızca bir alt kapsay
 
 
 >[!NOTE]
->Bu sürüm, yeni Azure AD Connect Sync v2 uç nokta API 'sini kullanmak için gereklidir.  Daha fazla bilgi için bkz. [Sync v2 ENDPOINT API (Genel Önizleme) Azure AD Connect](how-to-connect-sync-endpoint-api-v2.md).
-
+>Bu sürüm, yeni Azure AD Connect Sync v2 uç nokta API 'sini içerir.  Bu yeni v2 uç noktası şu anda genel önizlemededir.  Yeni v2 uç nokta API 'sini kullanmak için bu sürüm veya üzeri gereklidir.  Ancak, yalnızca bu sürümü yüklemek v2 uç noktasını etkinleştirmez. V2 uç noktasını etkinleştirmediğiniz takdirde v1 uç noktasını kullanmaya devam edersiniz.  Bunu etkinleştirmek ve genel önizlemeyi kabul etmek için [Azure AD Connect Sync v2 ENDPOINT API (Genel Önizleme)](how-to-connect-sync-endpoint-api-v2.md) altındaki adımları izlemeniz gerekir.  
 
 ## <a name="15290"></a>1.5.29.0
 

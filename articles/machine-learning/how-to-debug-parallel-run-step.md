@@ -10,12 +10,12 @@ ms.reviewer: trbye, jmartens, larryfr, vaidyas
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 01/15/2020
-ms.openlocfilehash: b5431ae574f40c29368848808004a53abe43c3a8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4e2777f59bab8d7d874019004bff2e30395ab1d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680963"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723485"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Hata ayıklama ve ParallelRunStep sorunlarını giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ ParallelRunStep işlerinin dağıtılmış doğası nedeniyle, birkaç farklı k
 
 Giriş betiğinin EntryScript yardımcısını ve Print deyimlerini kullanarak oluşturulan Günlükler aşağıdaki dosyalarda bulunur:
 
-- `~/logs/user/<node_name>.log.txt`: Bunlar EntryScript Yardımcısı kullanılarak entry_script yazılan günlüklerdir. Ayrıca entry_script 'den Print deyiminizi (STDOUT) içerir.
+- `~/logs/user/<ip_address>/<node_name>.log.txt`: Bunlar EntryScript Yardımcısı kullanılarak entry_script yazılan günlüklerdir. Ayrıca entry_script 'den Print deyiminizi (STDOUT) içerir.
 
 Betikteki hataların kısa bir şekilde anlaşılmasından bazıları şunlardır:
 

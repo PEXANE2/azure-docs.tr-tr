@@ -1,15 +1,15 @@
 ---
 title: Şablonları kullanarak işleri uçtan uca Çalıştır
 description: Yalnızca CLı komutlarıyla, bir havuz oluşturabilir, giriş verilerini karşıya yükleyebilir, işler ve ilişkili görevler oluşturabilir ve elde edilen çıkış verilerini indirebilirsiniz.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 634a0b66379d8c94988d5f974baffe475af94c2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b1a28c817e0b0aa8047cdd9952065862bda9b73
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117361"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726783"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLı şablonlarını ve dosya aktarımını kullanın
 
@@ -61,7 +61,7 @@ Azure Batch şablonlar, işlev ve sözdizimi ' nde Azure Resource Manager şablo
 
 -   **Parametreler**
 
-    -   Bir gövde bölümünde özellik değerlerinin belirtilmesine izin ver, ancak şablon kullanıldığında yalnızca parametre değerleri sağlanmalıdır. Örneğin, bir havuzun tüm tanımı gövdeye yerleştirilebilecek ve yalnızca bir parametre için `poolId`tanımlanır. bir havuz oluşturmak için bu nedenle yalnızca bir havuz KIMLIĞI dizesinin sağlanması gerekir.
+    -   Bir gövde bölümünde özellik değerlerinin belirtilmesine izin ver, ancak şablon kullanıldığında yalnızca parametre değerleri sağlanmalıdır. Örneğin, bir havuz için tüm tanım gövdeye yerleştirilebilecek ve yalnızca bir tane parametresi için tanımlanmış bir havuz `poolId` oluşturmak için yalnızca bir havuz kimliği dizesinin sağlanması gerekir.
         
     -   Şablon gövdesi, Batch ve Batch tarafından çalıştırılacak uygulamalar hakkında bilgi sahibi olan birisi tarafından yazılabilir; Şablon kullanıldığında yalnızca yazar tanımlı parametrelerin değerlerinin sağlanması gerekir. Derinlemesine toplu Iş ve/veya uygulama bilgisi olmayan bir Kullanıcı bu nedenle şablonları kullanabilir.
 
@@ -136,7 +136,7 @@ Aşağıda, FFmpeg yüklenmiş bir Linux VM havuzu oluşturan bir şablon örne�
 az batch pool create --template pool-ffmpeg.json
 ```
 
-CLı, `poolId` ve `nodeCount` parametreleri için değer vermenizi ister. Ayrıca, parametreleri bir JSON dosyasında da sağlayabilirsiniz. Örneğin:
+CLı, ve parametreleri için değer vermenizi ister `poolId` `nodeCount` . Ayrıca, parametreleri bir JSON dosyasında da sağlayabilirsiniz. Örnek:
 
 ```json
 {
@@ -253,7 +253,7 @@ Batch bir CLı şablonunu [Batch Explorer](https://github.com/Azure/BatchExplore
 
 Bir şablonu karşıya yüklemek için:
 
-1. Batch Explorer ' de, **Galeri** > **Yerel Şablonlar**' ı seçin.
+1. Batch Explorer ' de, **Galeri**  >  **Yerel Şablonlar**' ı seçin.
 
 2. Yerel bir havuz veya iş şablonu seçin veya sürükleyip bırakın.
 

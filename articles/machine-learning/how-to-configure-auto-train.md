@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Otomatik makine öğrenimi sizin için bir algoritma seçer ve dağıtım için hazırlanma bir model oluşturur. Otomatik makine öğrenimi denemeleri yapılandırmak için kullanabileceğiniz seçenekleri öğrenin.
 author: cartacioS
 ms.author: sacartac
-ms.reviewer: sgilley
+ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0eadb0f7ca6aad635d20148f63a204506a821d75
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c183c179200738566d0794ba23582f16068013b6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681591"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722856"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -251,16 +251,23 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 Enseletirme modelleri varsayılan olarak etkindir ve otomatik makine öğrenimi çalıştırmasında son çalıştırma yinelemeleri olarak görünür. Şu anda desteklenen ensesıya yöntemleri oylama ve yığınlama. Oylama, ağırlıklı ortalamalar kullanılarak geçici oylama olarak uygulanır ve yığın oluşturma işlemi, birinci katmanın oylama ile aynı modellere sahip olduğu iki katmanlı bir uygulama kullanmaktadır ve ikinci katman modeli, modellerin ilk katmandan en iyi birleşimini bulmak için kullanılır. ONNX modellerini kullanıyorsanız **veya** model-explainability etkinse, yığınlama devre dışı bırakılır ve yalnızca oylama kullanılacaktır.
 
-`kwargs` `AutoMLConfig` Varsayılan yığın ensebir davranışını değiştirmek için bir nesnede olarak sağlanbir çoklu varsayılan bağımsız değişken vardır.
+`kwargs` `AutoMLConfig` Varsayılan ensebir davranışını değiştirmek için bir nesnede olarak sağlanbir çoklu varsayılan bağımsız değişken vardır.
+
+* `ensemble_download_models_timeout_sec`: Votingensebir ve Stackensebir model oluşturma sırasında, önceki alt çalıştırmaların birden çok monte edilen modeli indirilir. Bu hatayla karşılaşırsanız `AutoMLEnsembleException: Could not find any models for running ensembling` , modellerin indirilmesi için daha fazla zaman girmeniz gerekebilir. Bu modellerin paralel olarak indirilmesi için varsayılan değer 300 saniyedir ve en fazla zaman aşımı sınırı yoktur. Daha fazla zaman gerekliyse bu parametreyi 300 saniyeden daha yüksek bir değerle yapılandırın. **Not**: zaman aşımı ulaşılırsa ve indirilen modeller varsa, ensembling indirildiği modellerle devam eder (Bu, tüm modellerin bu zaman aşımı süresi içinde sonlanması için indirilmesi gerekir).
+
+Aşağıdaki parametreler yalnızca Stackensesıgrafik modelleri için geçerlidir: 
 
 * `stack_meta_learner_type`: meta-Learner, tek tek heterojen modellerin çıktısı üzerinde eğitilen bir modeldir. Varsayılan meta öğrenenler, `LogisticRegression` Sınıflandırma görevlerine (veya `LogisticRegressionCV` çapraz doğrulamanın etkin olması) ve `ElasticNet` gerileme/tahmin görevlerine (veya `ElasticNetCV` çapraz doğrulamanın etkin olması halinde) yöneliktir. Bu parametre şu dizelerden biri olabilir: `LogisticRegression` , `LogisticRegressionCV` ,, `LightGBMClassifier` `ElasticNet` , `ElasticNetCV` , `LightGBMRegressor` , veya `LinearRegression` .
-* `stack_meta_learner_train_percentage`: meta-Learner eğitimi için ayrılacak olan eğitim kümesi oranını belirtir (eğitim ve doğrulama türünü seçerken). Varsayılan değer `0.2` .
+
+* `stack_meta_learner_train_percentage`: meta-Learner eğitimi için ayrılacak olan eğitim kümesi oranını belirtir (eğitim ve doğrulama türünü seçerken). Varsayılan değer `0.2` . 
+
 * `stack_meta_learner_kwargs`: meta-Learner başlatıcısına geçirilecek isteğe bağlı parametreler. Bu parametreler ve parametre türleri, karşılık gelen model oluşturucusundan parametreleri ve parametre türlerini yansıtır ve model oluşturucusuna iletilir.
 
 Aşağıdaki kod, bir nesnesinde özel bir ensebir davranışını belirtmenin bir örneğini gösterir `AutoMLConfig` .
 
 ```python
 ensemble_settings = {
+    "ensemble_download_models_timeout_sec": 600
     "stack_meta_learner_type": "LogisticRegressionCV",
     "stack_meta_learner_train_percentage": 0.3,
     "stack_meta_learner_kwargs": {

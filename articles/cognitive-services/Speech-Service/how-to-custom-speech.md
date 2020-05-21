@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402076"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725542"
 ---
 # <a name="what-is-custom-speech"></a>Özel Konuşma Tanıma nedir?
 
@@ -37,9 +37,11 @@ Bu diyagramda [özel konuşma tanıma portalını](https://aka.ms/customspeech)o
 
 4. [Doğruluğu değerlendirin](how-to-custom-speech-evaluate-data.md) -konuşmaya metin modelinin doğruluğunu değerlendirin. [Özel konuşma tanıma Portal](https://speech.microsoft.com/customspeech) , ek eğitim gerekip gerekmediğini belirlemede kullanılabilecek bir *sözcük hata oranı*sağlar. Doğruluğun memnun kaldıysanız, konuşma hizmeti API 'Lerini doğrudan kullanabilirsiniz. %5 oranında %20 oranında doğru bir ortalama değeri artırmak isterseniz, insan etiketli döküm ve ilgili metin gibi ek eğitim verilerini karşıya yüklemek için portaldaki **eğitim** sekmesini kullanın.
 
-5. [Modeli eğitme](how-to-custom-speech-train-model.md) -ses test verilerinize birlikte yazılı yazılı betikler (10-1000 saat) ve ilgili metni (<200 MB) sağlayarak konuşmadan metne ait doğruluğun doğruluğunu geliştirir. Bu veriler, konuşmadan metne modeli eğmenize yardımcı olur. Eğitim ve yeniden test ettikten sonra, bu sonuçtan memnun kaldıysanız modelinize dağıtım yapabilirsiniz.
+5. [Doğruluk düzeyini artırmak](how-to-custom-speech-improve-accuracy.md) -senaryonuza bağlı olarak konuşmadan metin modelinin kalitesini artırmak için ek eğitim verilerini stratejik olarak seçin.
 
-6. [Modeli dağıtma](how-to-custom-speech-deploy-model.md) -konuşma-metin modeliniz için özel bir uç nokta oluşturun ve bunları uygulamalarınızda, araçlarınızdan veya ürünlerde kullanın.
+6. [Modeli eğitme](how-to-custom-speech-train-model.md) -ses test verilerinize birlikte yazılı yazılı betikler (10-1000 saat) ve ilgili metni (<200 MB) sağlayarak konuşmadan metne ait doğruluğun doğruluğunu geliştirir. Bu veriler, konuşmadan metne modeli eğmenize yardımcı olur. Eğitim ve yeniden test ettikten sonra, bu sonuçtan memnun kaldıysanız modelinize dağıtım yapabilirsiniz.
+
+7. [Modeli dağıtma](how-to-custom-speech-deploy-model.md) -konuşma-metin modeliniz için özel bir uç nokta oluşturun ve bunları uygulamalarınızda, araçlarınızdan veya ürünlerde kullanın.
 
 ## <a name="set-up-your-azure-account"></a>Azure hesabınızı ayarlama
 

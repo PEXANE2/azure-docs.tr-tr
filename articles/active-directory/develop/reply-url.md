@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7aefc54a20e23ae969750532e7e3bc824f69c56
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77656747"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725321"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI’si/yanıt URL’si kısıtlamaları ve sınırlamaları
 
@@ -23,8 +23,9 @@ Bir yeniden yönlendirme URI 'si veya yanıt URL 'SI, uygulama başarıyla yetki
 
  Yanıt URL 'Leri için aşağıdaki kısıtlamalar geçerlidir:
 
-    * Yanıt URL 'SI, şemayla `https`başlamalıdır.
-    * Yanıt URL 'SI, büyük/küçük harfe duyarlıdır. Büyük/küçük harf durumu, çalışan uygulamanızın URL yolu ile aynı olmalıdır. Örneğin, uygulamanız yolunun `.../abc/response-oidc`bir parçası olarak içeriyorsa, yanıt URL 'sinde belirtmeyin. `.../ABC/response-oidc` Web tarayıcısı yollara büyük/küçük harfe duyarlı olarak davrandığı için, bununla `.../abc/response-oidc` ilişkili tanımlama bilgileri, büyük/küçük harfe eşleşmeyen `.../ABC/response-oidc` URL 'ye yönlendiriliyorsa dışlanamaz.
+* Yanıt URL 'SI, şemayla başlamalıdır `https` .
+
+* Yanıt URL 'SI, büyük/küçük harfe duyarlıdır. Büyük/küçük harf durumu, çalışan uygulamanızın URL yolu ile aynı olmalıdır. Örneğin, uygulamanız yolunun bir parçası olarak içeriyorsa `.../abc/response-oidc` , `.../ABC/response-oidc` yanıt URL 'sinde belirtmeyin. Web tarayıcısı yollara büyük/küçük harfe duyarlı olarak davrandığı için, bununla ilişkili tanımlama bilgileri, `.../abc/response-oidc` büyük/küçük harfe eşleşmeyen URL 'ye yönlendiriliyorsa dışlanamaz `.../ABC/response-oidc` .
     
 ## <a name="maximum-number-of-redirect-uris"></a>Maksimum yeniden yönlendirme URI sayısı
 
@@ -40,14 +41,14 @@ Aşağıdaki tabloda, uygulamanızı kaydettiğinizde ekleyebileceğiniz en fazl
 Bir uygulama kaydına eklediğiniz her bir yeniden yönlendirme URI 'SI için en fazla 256 karakter kullanabilirsiniz.
 
 ## <a name="supported-schemes"></a>Desteklenen düzenler
-Azure AD uygulama modeli, Microsoft iş veya okul hesaplarında herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısında oturum açmasını sağlayan uygulamalar için hem HTTP hem de HTTPS düzenlerini destekler. Uygulama bildirimindeki `signInAudience` alan, *Azureadmyorg* veya *azureadmultipleorgs*olarak ayarlanır. Kişisel Microsoft hesaplarında ve iş ve okul hesaplarında oturum açmak için ( `signInAudience` *Azureadandpersonmicrosoftaccount*olarak ayarlanır) yalnızca https düzenine izin verilir.
+Azure AD uygulama modeli, Microsoft iş veya okul hesaplarında herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısında oturum açmasını sağlayan uygulamalar için hem HTTP hem de HTTPS düzenlerini destekler. `signInAudience`Uygulama bildirimindeki alan, *Azureadmyorg* veya *Azureadmultipleorgs*olarak ayarlanır. Kişisel Microsoft hesaplarında ve iş ve okul hesaplarında oturum açmak için ( `signInAudience` *Azureadandpersonmicrosoftaccount*olarak AYARLANıR) yalnızca https düzenine izin verilir.
 
 > [!NOTE]
 > Yeni [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimi, geliştiricilerin kullanıcı arabiriminde http düzenine sahip URI 'leri eklemesine izin vermez. İş veya okul hesaplarında oturum açma uygulamaları için HTTP URI 'Leri eklemek yalnızca uygulama bildirimi Düzenleyicisi aracılığıyla desteklenir. İleri giderek, yeni uygulamalar yeniden yönlendirme URI 'sinde HTTP şemaları kullanamaz. Ancak, yeniden yönlendirme URI 'Lerinde HTTP şemaları içeren eski uygulamalar çalışmaya devam edecektir. Geliştiricilerin yeniden yönlendirme URI 'Lerinde HTTPS şemaları kullanması gerekir.
 
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>URI 'Ler içinde bir joker karakter kullanan kısıtlamalar
 
-Gibi joker karakter URI 'Leri `https://*.contoso.com`kullanışlıdır, ancak kaçınılmalıdır. Yeniden yönlendirme URI 'sinde joker karakter kullanılması güvenlik etkilerine sahiptir. OAuth 2,0 belirtimine göre ([RFC 6749 ' nin Bölüm 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2)), bir yeniden yönlendirme uç noktası URI 'si mutlak bir URI olmalıdır. 
+Gibi joker karakter URI 'Leri `https://*.contoso.com` kullanışlıdır, ancak kaçınılmalıdır. Yeniden yönlendirme URI 'sinde joker karakter kullanılması güvenlik etkilerine sahiptir. OAuth 2,0 belirtimine göre ([RFC 6749 ' nin Bölüm 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2)), bir yeniden yönlendirme uç noktası URI 'si mutlak bir URI olmalıdır. 
 
 Azure AD uygulama modeli, kişisel Microsoft hesaplarında ve iş veya okul hesaplarında oturum açmak üzere yapılandırılan uygulamalar için joker karakter URI 'Lerini desteklemez. Ancak, günümüzde bir kuruluşun Azure AD kiracısında iş veya okul hesaplarında oturum açmak üzere yapılandırılan uygulamalar için joker karakter URI 'Lerinde izin verilir. 
  

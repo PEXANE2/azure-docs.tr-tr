@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d47829d32ed0b7ded545c73748cda1019d94bde
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590681"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721097"
 ---
 ### <a name="container-repositories-and-images"></a>Kapsayıcı depoları ve görüntüleri
 
@@ -62,12 +62,12 @@ Aşağıdaki önizleme kapsayıcıları herkese açık bir şekilde kullanılabi
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Ortak "geçişli" Önizleme (kapsayıcı kayıt defteri: `containerpreview.azurecr.io` )
 
-Aşağıdaki geçişli önizleme kapsayıcıları, kapsayıcı önizlemesi kayıt defterinde barındırılır ve bir uygulamanın erişmesini gerektirir. Daha fazla bilgi için bkz. [bilişsel hizmetler geçişi işlemi](../../cognitive-services-gating-process.md) .
+Aşağıdaki geçişli önizleme kapsayıcıları, kapsayıcı önizlemesi kayıt defterinde barındırılır ve bir uygulamanın erişmesini gerektirir. Daha fazla bilgi için aşağıdaki kapsayıcı makalelerine bakın.
 
 | Hizmet | Kapsayıcı | Container Registry/depo/görüntü adı |
 |--|--|--|
 | [Görüntü İşleme](../../Computer-vision/computer-vision-how-to-install-containers.md) | Okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
-| [Yüz Tanıma](../../face/face-how-to-install-containers.md) | Yüz Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
+| [Yüz](../../face/face-how-to-install-containers.md) | Yüz | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Form tanıyıcı](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=stt) | Konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=cstt) | Özel Konuşma Tanıma metin | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |

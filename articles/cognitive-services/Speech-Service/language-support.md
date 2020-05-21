@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 28c5c1258c0733cd23f7c4ad3c901360461d5bdc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93dc831fa631a28b918ef5015a3c9ff107d41541
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682146"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726086"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -24,7 +24,11 @@ Dil desteği, konuşma hizmeti işlevselliğine göre farklılık gösterir. Aş
 
 ## <a name="speech-to-text"></a>Konuşmayı metne dönüştürme
 
-Hem Microsoft konuşma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. Doğruluğu artırmak için, bir dilin bir alt kümesi için, ses + ınsan etiketli yazılı döküm veya Ilgili metin: cümleler karşıya yüklenirken özelleştirme sunulur. Telaffuz özelleştirmesi Ilgili metnin karşıya yüklenmesi ile sunulmaktadır: telaffuz. [Özelleştirme hakkında](how-to-custom-speech.md)daha fazla bilgi edinin.
+Hem Microsoft konuşma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. 
+
+Doğruluğu artırmak için, bir dilin bir alt kümesi için, **Ses + insan etiketli yazılı** döküm veya **Ilgili metin: cümleler**karşıya yüklenirken özelleştirme sunulur. Özelleştirme hakkında daha fazla bilgi için bkz. [özel konuşma tanıma kullanmaya başlama](how-to-custom-speech.md).
+
+Telaffuz geliştirme hakkında daha fazla bilgi için bkz. [özel konuşma tanıma modeli geliştirme](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation).
 
 <!--
 To get the AM and ML bits:
@@ -37,48 +41,48 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Yerel Ayar  | Dil                          | Destekleniyor | Özelleştirmeler                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
 | `ar-AE` | Arapça (UAE)                      | Yes       | Hayır                                                |
-| `ar-BH` | Arapça (Bahreyn), modern standart | Yes       | Dil modeli                                    |
-| `ar-EG` | Arapça (Mısır)                    | Yes       | Dil modeli                                    |
+| `ar-BH` | Arapça (Bahreyn), modern standart | Evet       | Dil modeli                                    |
+| `ar-EG` | Arapça (Mısır)                    | Evet       | Dil modeli                                    |
 | `ar-IL` | Arapça (Israil)                   | Yes       | Hayır                                                |
 | `ar-KW` | Arapça (Kuveyt)                   | Yes       | Hayır                                                |
 | `ar-PS` | Arapça (Filistin Yönetimi)                | Yes       | Hayır                                                |
 | `ar-QA` | Arapça (Qtor)                    | Yes       | Hayır                                                |
 | `ar-SA` | Arapça (Suudi Arabistan)             | Yes       | Hayır                                                |
-| `ar-SY` | Arapça (Suriye)                    | Yes       | Dil modeli                                    |
-| `ca-ES` | Katalanca                           | Yes       | Dil modeli                                    |
-| `da-DK` | Danca (Danimarka)                  | Yes       | Dil modeli                                    |
-| `de-DE` | Almanca (Almanya)                  | Yes       | Akustik model<br>Dil modeli<br>İşi |
-| `en-AU` | İngilizce (Avustralya)               | Yes       | Akustik model<br>Dil modeli                  |
-| `en-CA` | İngilizce (Kanada)                  | Yes       | Akustik model<br>Dil modeli                  |
-| `en-GB` | İngilizce (İngiltere)          | Yes       | Akustik model<br>Dil modeli<br>İşi |
-| `en-IN` | İngilizce (Hindistan)                   | Yes       | Akustik model<br>Dil modeli                  |
-| `en-NZ` | İngilizce (Yeni Zelanda)             | Yes       | Akustik model<br>Dil modeli                  |
-| `en-US` | İngilizce (ABD)           | Yes       | Akustik model<br>Dil modeli<br>İşi |
-| `es-ES` | İspanyolca (İspanya)                   | Yes       | Akustik model<br>Dil modeli                  |
-| `es-MX` | İspanyolca (Meksika)                  | Yes       | Akustik model<br>Dil modeli                  |
-| `fi-FI` | Fince (Finlandiya)                 | Yes       | Dil modeli                                    |
-| `fr-CA` | Fransızca (Kanada)                   | Yes       | Akustik model<br>Dil modeli                  |
-| `fr-FR` | Fransızca (Fransa)                   | Yes       | Akustik model<br>Dil modeli<br>İşi |
-| `gu-IN` | Gucerat dili (Hindistan)                 | Yes       | Dil modeli                                    |
-| `hi-IN` | Hintçe (Hindistan)                     | Yes       | Akustik model<br>Dil modeli                  |
-| `it-IT` | İtalyanca (İtalya)                   | Yes       | Akustik model<br>Dil modeli<br>İşi |
-| `ja-JP` | Japonca (Japonya)                  | Yes       | Dil modeli                                    |
-| `ko-KR` | Korece (Kore)                    | Yes       | Dil modeli                                    |
-| `mr-IN` | Marathi dili (Hindistan)                   | Yes       | Dil modeli                                    |
-| `nb-NO` | Norveççe (Bokmål) (Norveç)       | Yes       | Dil modeli                                    |
-| `nl-NL` | Felemenkçe (Hollanda)               | Yes       | Dil modeli                                    |
-| `pl-PL` | Lehçe (Polonya)                   | Yes       | Dil modeli                                    |
-| `pt-BR` | Portekizce (Brezilya)               | Yes       | Akustik model<br>Dil modeli<br>İşi |
-| `pt-PT` | Portekizce (Portekiz)             | Yes       | Dil modeli                                    |
-| `ru-RU` | Rusça (Rusya)                  | Yes       | Akustik model<br>Dil modeli                  |
-| `sv-SE` | İsveççe (İsviçre)                  | Yes       | Dil modeli                                    |
-| `ta-IN` | Tamil dili (Hindistan)                     | Yes       | Dil modeli                                    |
+| `ar-SY` | Arapça (Suriye)                    | Evet       | Dil modeli                                    |
+| `ca-ES` | Katalanca                           | Evet       | Dil modeli                                    |
+| `da-DK` | Danca (Danimarka)                  | Evet       | Dil modeli                                    |
+| `de-DE` | Almanca (Almanya)                  | Evet       | Akustik model<br>Dil modeli<br>İşi |
+| `en-AU` | İngilizce (Avustralya)               | Evet       | Akustik model<br>Dil modeli                  |
+| `en-CA` | İngilizce (Kanada)                  | Evet       | Akustik model<br>Dil modeli                  |
+| `en-GB` | İngilizce (İngiltere)          | Evet       | Akustik model<br>Dil modeli<br>İşi |
+| `en-IN` | İngilizce (Hindistan)                   | Evet       | Akustik model<br>Dil modeli                  |
+| `en-NZ` | İngilizce (Yeni Zelanda)             | Evet       | Akustik model<br>Dil modeli                  |
+| `en-US` | İngilizce (ABD)           | Evet       | Akustik model<br>Dil modeli<br>İşi |
+| `es-ES` | İspanyolca (İspanya)                   | Evet       | Akustik model<br>Dil modeli                  |
+| `es-MX` | İspanyolca (Meksika)                  | Evet       | Akustik model<br>Dil modeli                  |
+| `fi-FI` | Fince (Finlandiya)                 | Evet       | Dil modeli                                    |
+| `fr-CA` | Fransızca (Kanada)                   | Evet       | Akustik model<br>Dil modeli                  |
+| `fr-FR` | Fransızca (Fransa)                   | Evet       | Akustik model<br>Dil modeli<br>İşi |
+| `gu-IN` | Gucerat dili (Hindistan)                 | Evet       | Dil modeli                                    |
+| `hi-IN` | Hintçe (Hindistan)                     | Evet       | Akustik model<br>Dil modeli                  |
+| `it-IT` | İtalyanca (İtalya)                   | Evet       | Akustik model<br>Dil modeli<br>İşi |
+| `ja-JP` | Japonca (Japonya)                  | Evet       | Dil modeli                                    |
+| `ko-KR` | Korece (Kore)                    | Evet       | Dil modeli                                    |
+| `mr-IN` | Marathi dili (Hindistan)                   | Evet       | Dil modeli                                    |
+| `nb-NO` | Norveççe (Bokmål) (Norveç)       | Evet       | Dil modeli                                    |
+| `nl-NL` | Felemenkçe (Hollanda)               | Evet       | Dil modeli                                    |
+| `pl-PL` | Lehçe (Polonya)                   | Evet       | Dil modeli                                    |
+| `pt-BR` | Portekizce (Brezilya)               | Evet       | Akustik model<br>Dil modeli<br>İşi |
+| `pt-PT` | Portekizce (Portekiz)             | Evet       | Dil modeli                                    |
+| `ru-RU` | Rusça (Rusya)                  | Evet       | Akustik model<br>Dil modeli                  |
+| `sv-SE` | İsveççe (İsviçre)                  | Evet       | Dil modeli                                    |
+| `ta-IN` | Tamil dili (Hindistan)                     | Evet       | Dil modeli                                    |
 | `te-IN` | Telugu dili (Hindistan)                    | Yes       | Hayır                                                |
 | `th-TH` | Tayca (Tayland)                   | Yes       | Hayır                                                |
-| `tr-TR` | Türkçe (Türkiye)                  | Yes       | Hayır                                                |
-| `zh-CN` | Çince (Mandarin, Basitleştirilmiş)    | Yes       | Akustik model<br>Dil modeli                  |
-| `zh-HK` | Çince (Cantoneo, geleneksel)  | Yes       | Dil modeli                                    |
-| `zh-TW` | Çince (Taiwanese Mandarin)      | Yes       | Dil modeli                                    |
+| `tr-TR` | Türkçe (Türkiye)                  | Evet       | Dil modeli                                    |
+| `zh-CN` | Çince (Mandarin, Basitleştirilmiş)    | Evet       | Akustik model<br>Dil modeli                  |
+| `zh-HK` | Çince (Cantoneo, geleneksel)  | Evet       | Dil modeli                                    |
+| `zh-TW` | Çince (Taiwanese Mandarin)      | Evet       | Dil modeli                                    |
 
 ## <a name="text-to-speech"></a>Metin okuma
 
@@ -95,29 +99,29 @@ Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir 
 
 Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](regions.md#standard-and-neural-voices).
 
-|Yerel Ayar  | Dil            | Cinsiyet | Ses adı  | İki dilli destek | Stil desteği |
-|--|--|--|--|--|--|
-| `de-DE` | Almanca (Almanya)    | Kadın | "de-KatjaNeural" | Evet. İngilizce (ABD) | Genel |
-| `en-AU` | İngilizce (Avustralya) | Kadın |  "en-AU-NatashaNeural" | Hayır | Genel |
-| `en-CA` | İngilizce (Kanada)    | Kadın |  "en-CA-ClaraNeural"| Hayır | Genel |
-| `en-GB` | İngilizce (UK)        | Kadın |  "en-GB-LibbyNeural"| Hayır | Genel |
-|  |      | Kadın |  "en-GB-MiaNeural" | Hayır | Genel |
-| `en-US` | İngilizce (ABD)        | Kadın |  "en-US-AriaNeural"| Hayır | Genel, birden çok ses stili mevcuttur |
-|  |      | Erkek   | "en-US-GuyNeural" | Hayır | Genel |
-| `es-ES` | İspanyolca (İspanya)     | Kadın |  "ES-ES-ElviraNeural"| Evet. İngilizce (ABD) | Genel |
-| `es-MX` | İspanyolca (Meksika)    | Kadın |  "es-MX-DaliaNeural" | Evet. İngilizce (ABD) | Genel |
-| `fr-CA` | Fransızca (Kanada)     | Kadın |  "fr-CA-SylvieNeural" | Evet. İngilizce (ABD) | Genel |
-| `fr-FR` | Fransızca (Fransa)     | Kadın | "fr-FR-DeniseNeural"  | Evet. İngilizce (ABD) | Genel |
-| `it-IT` | İtalyanca (İtalya)     | Kadın |  "It-IT-ElsaNeural"  | Evet. İngilizce (ABD) | Genel |
-| `ja-JP` | Japonca            | Kadın |  "ja-JP-NanamiNeural" | Evet. İngilizce (ABD) | Genel |
-| `ko-KR` | Korece              | Kadın |  "ko-KR-SunHiNeural" | Evet. İngilizce (ABD) | Genel |
-| `nb-NO` | Norveççe           | Kadın | "NB-NO-IselinNeural" | Hayır | Genel |
-| `pt-BR` | Portekizce (Brezilya) | Kadın |  "PT-BR-FranciscaNeural" | Hayır | Genel |
-| `tr-TR` | Türkçe             | Kadın | "tr-TR-EmelNeural" | Hayır | Genel |
-| `zh-CN` | Çince (Mandarin, Basitleştirilmiş)  | Kadın |  "zh-CN-XiaoxiaoNeural"  | Evet. İngilizce (ABD) | Genel, birden çok ses stili mevcuttur |
-|  |  | Kadın |  "zh-CN-XiaoyouNeural"  | Evet. İngilizce (ABD) | Çocuk sesi, öykü anlatımı için iyileştirilmiş |
-|  |  | Erkek |  "zh-CN-YunyangNeural"  | Evet. İngilizce (ABD) | Haber okuma için iyileştirilmiş, birden fazla ses stili var |
-|  |  | Erkek |  "zh-CN-YunyeNeural"  | Hayır | Öykü anlatımı için iyileştirildi |
+|Yerel Ayar  | Dil            | Cinsiyet | Ses adı | Stil desteği |
+|--|--|--|--|--|
+| `de-DE` | Almanca (Almanya)                | Kadın | "de-KatjaNeural"      | Genel |
+| `en-AU` | İngilizce (Avustralya)             | Kadın | "en-AU-NatashaNeural"    | Genel |
+| `en-CA` | İngilizce (Kanada)                | Kadın | "en-CA-ClaraNeural"      | Genel |
+| `en-GB` | İngilizce (UK)                    | Kadın | "en-GB-LibbyNeural"      | Genel |
+|         |                                 | Kadın | "en-GB-MiaNeural"        | Genel |
+| `en-US` | İngilizce (ABD)                    | Kadın | "en-US-AriaNeural"       | Genel, birden çok ses stili mevcuttur |
+|         |                                 | Erkek   | "en-US-GuyNeural"        | Genel |
+| `es-ES` | İspanyolca (İspanya)                 | Kadın | "ES-ES-ElviraNeural"     | Genel |
+| `es-MX` | İspanyolca (Meksika)                | Kadın | "es-MX-DaliaNeural"      | Genel |
+| `fr-CA` | Fransızca (Kanada)                 | Kadın | "fr-CA-SylvieNeural"     | Genel |
+| `fr-FR` | Fransızca (Fransa)                 | Kadın | "fr-FR-DeniseNeural"     | Genel |
+| `it-IT` | İtalyanca (İtalya)                 | Kadın | "It-IT-ElsaNeural"       | Genel |
+| `ja-JP` | Japonca                        | Kadın | "ja-JP-NanamiNeural"     | Genel |
+| `ko-KR` | Korece                          | Kadın | "ko-KR-SunHiNeural"      | Genel |
+| `nb-NO` | Norveççe                       | Kadın | "NB-NO-IselinNeural"     | Genel |
+| `pt-BR` | Portekizce (Brezilya)             | Kadın | "PT-BR-FranciscaNeural"  | Genel |
+| `tr-TR` | Türkçe                         | Kadın | "tr-TR-EmelNeural"       | Genel |
+| `zh-CN` | Çince (Mandarin, Basitleştirilmiş)  | Kadın | "zh-CN-XiaoxiaoNeural"   | Genel, birden çok ses stili mevcuttur |
+|         |                                 | Kadın | "zh-CN-XiaoyouNeural"    | Çocuk sesi, öykü anlatımı için iyileştirilmiş |
+|         |                                 | Erkek   | "zh-CN-YunyangNeural"    | Haber okuma için iyileştirilmiş, birden fazla ses stili var |
+|         |                                 | Erkek   | "zh-CN-YunyeNeural"      | Öykü anlatımı için iyileştirildi |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural`Ses olarak değiştirildi `en-US-AriaNeural` . Daha önce "Jessa" kullandıysanız, "Aria" öğesine dönüştürün.

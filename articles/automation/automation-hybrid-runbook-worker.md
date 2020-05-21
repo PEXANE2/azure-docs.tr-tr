@@ -1,16 +1,16 @@
 ---
-title: Azure Otomasyonu 'nda karma Runbook Worker 'a genel bakış
-description: Bu makalede, yerel veri merkezinizdeki veya bulut sağlayıcınızdaki makinelerde runbook 'ları çalıştırmak için kullanabileceğiniz bir Azure Otomasyonu özelliği olan karma Runbook Worker 'a genel bakış sunulmaktadır.
+title: Azure Otomasyonu karma Runbook Worker genel bakış
+description: Bu makalede, yerel veri merkezinizdeki veya bulut sağlayıcınızdaki makinelerde runbook 'ları çalıştırmak için kullanabileceğiniz karma Runbook Worker 'a genel bakış sunulmaktadır.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: c02a61366b05fa2750c581a1dedefb0d6239dada
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f555d603756159dd108345260d71233c23c01ce5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994756"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715724"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Karma Runbook Çalışanına genel bakış
 
@@ -53,7 +53,7 @@ Karma Runbook Worker için aşağıdaki bağlantı noktası ve URL 'Ler gereklid
 * Bağlantı noktası: giden internet erişimi için yalnızca TCP 443 gerekir
 * Genel URL: *. azure-automation.net
 * US Gov Virginia'nın Genel URL'si: *.azure-automation.us
-* Aracı hizmeti: https://\<Workspace ıd\>. Agentsvc.Azure-Automation.net
+* Aracı hizmeti: https:// \< Workspace ID \> . Agentsvc.Azure-Automation.net
 
 [Özel durumları](automation-runbook-execution.md#exceptions)tanımlarken listelenen adresleri kullanmanızı öneririz. IP adresleri için [Microsoft Azure veri MERKEZI IP aralıklarını](https://www.microsoft.com/en-us/download/details.aspx?id=56519)indirebilirsiniz. Bu dosya haftalık olarak güncelleştirilir ve şu anda dağıtılmış aralıklar ve IP aralıklarında yaklaşan değişiklikler vardır.
 
@@ -112,9 +112,9 @@ Karma Runbook Worker için gereken standart adreslerin ve bağlantı noktaların
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
 |*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
 
-## <a name="state-configuration-dsc-on-hybrid-runbook-worker"></a>Karma Runbook Worker 'da durum yapılandırması (DSC)
+## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Karma Runbook Worker üzerinde Azure Otomasyonu durum yapılandırması
 
-Karma Runbook Worker üzerinde [Durum Yapılandırması (DSC)](automation-dsc-overview.md) özelliğini çalıştırabilirsiniz. Karma runbook çalışanını destekleyen sunucuların yapılandırmasını yönetmek için sunucuları DSC düğümleri olarak eklemeniz gerekir. Ekleme hakkında daha fazla bilgi için bkz. [durum yapılandırmasına göre yönetim için makineler (DSC)](automation-dsc-onboarding.md).
+[Azure Otomasyonu durum yapılandırmasını](automation-dsc-overview.md) karma Runbook Worker üzerinde çalıştırabilirsiniz. Karma runbook çalışanını destekleyen sunucuların yapılandırmasını yönetmek için sunucuları DSC düğümleri olarak eklemeniz gerekir. Bkz. [Azure Otomasyonu durum yapılandırması ile yönetimi için makineleri etkinleştirme](automation-dsc-onboarding.md).
 
 ## <a name="runbooks-on-a-hybrid-runbook-worker"></a>Karma Runbook Worker 'daki runbook 'lar
 
@@ -133,4 +133,4 @@ Azure dışı kaynaklara erişirken, karma runbook çalışanı üzerinde çalı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatik hale getirmek üzere nasıl yapılandıracağınızı öğrenmek için bkz. [runbook 'Ları karma Runbook Worker üzerinde çalıştırma](automation-hrw-run-runbooks.md).
-* Karma runbook çalışanlarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. [karma runbook çalışanlarına sorun giderme](troubleshoot/hybrid-runbook-worker.md#general).
+* Karma runbook çalışanlarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. [karma runbook çalışanları sorunlarını giderme](troubleshoot/hybrid-runbook-worker.md#general).

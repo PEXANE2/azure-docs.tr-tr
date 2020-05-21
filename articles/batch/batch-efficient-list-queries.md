@@ -1,15 +1,15 @@
 ---
 title: Etkili liste sorguları tasarlama
 description: Havuzlar, işler, görevler ve işlem düğümleri gibi Batch kaynakları hakkında bilgi isteğinde bulunduğunuzu filtreleyerek performansı artırın.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: fea8efd4e4946b67754bad98589b728e8d696425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 987a31f9506dcd1b13b04d544465c7529f23122d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116120"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726715"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Toplu Işlem kaynaklarını etkili bir şekilde listelemek için sorgular oluşturma
 
@@ -60,14 +60,14 @@ Bu örnek senaryoda, işte binlerce görev varsa, ikinci sorgudaki sonuçlar gen
 Filtre dizesi döndürülen öğelerin sayısını azaltan bir ifadedir. Örneğin, yalnızca bir iş için çalışan görevleri listeleyin veya yalnızca görevleri çalıştırmaya hazırlamış olan işlem düğümlerini listeleyin.
 
 * Filtre dizesi bir veya daha fazla ifadeden oluşur ve bir özellik adı, işleç ve değer içeren bir ifade içerir. Belirtime özellikler, her bir özellik için desteklenen işleçler gibi, Sorgulayabileceğiniz her bir varlık türüne özeldir.
-* Birden çok ifade mantıksal işleçler `and` ve `or`kullanılarak birleştirilebilir.
-* Bu örnek filtre dizesinde yalnızca çalışan "render" görevleri listelenir: `(state eq 'running') and startswith(id, 'renderTask')`.
+* Birden çok ifade mantıksal işleçler ve kullanılarak birleştirilebilir `and` `or` .
+* Bu örnek filtre dizesinde yalnızca çalışan "render" görevleri listelenir: `(state eq 'running') and startswith(id, 'renderTask')` .
 
 ### <a name="select"></a>Şunu seçin:
 Select String her öğe için döndürülen özellik değerlerini sınırlandırır. Özellik adlarının bir listesini belirtirsiniz ve sorgu sonuçlarındaki öğeler için yalnızca bu özellik değerleri döndürülür.
 
 * Select dizesi, özellik adlarının virgülle ayrılmış bir listesinden oluşur. Sorgulamakta olduğunuz varlık türü için özelliklerden herhangi birini belirtebilirsiniz.
-* Bu örnek Select String, her görev için yalnızca üç özellik değerinin döndürülüp döndürülmeyeceğini belirtir: `id, state, stateTransitionTime`.
+* Bu örnek Select String, her görev için yalnızca üç özellik değerinin döndürülüp döndürülmeyeceğini belirtir: `id, state, stateTransitionTime` .
 
 ### <a name="expand"></a>Genişlet
 Expand dize, belirli bilgileri almak için gerekli olan API çağrılarının sayısını azaltır. Bir genişletme dizesi kullandığınızda her öğe hakkında daha fazla bilgi tek bir API çağrısıyla elde edilebilir. İlk olarak, varlıkların listesini almak ve sonra listedeki her öğe için bilgi istemek yerine, tek bir API çağrısında aynı bilgileri elde etmek için bir genişletme dizesi kullanırsınız. Daha az API çağrısı, daha iyi performans anlamına gelir.
@@ -75,7 +75,7 @@ Expand dize, belirli bilgileri almak için gerekli olan API çağrılarının sa
 * Select dizesine benzer şekilde, genişletme dizesi belirli verilerin liste sorgu sonuçlarına dahil edilip edilmeyeceğini denetler.
 * Expand dize yalnızca liste işleri, iş zamanlamaları, görevler ve havuzlar üzerinde kullanıldığında desteklenir. Şu anda yalnızca istatistik bilgilerini destekler.
 * Tüm özellikler gerekli olduğunda ve Select String belirtilmediğinde, istatistik bilgilerini almak için *genişletme dizesi kullanılmalıdır* . Bir SELECT dizesi, özelliklerin bir alt kümesini almak için kullanılırsa, `stats` Select dizesinde belirtilebilir ve genişletme dizesinin belirtilmesi gerekmez.
-* Bu örnek dize genişletme, listedeki her öğe için İstatistik bilgilerinin döndürülmesini belirtir: `stats`.
+* Bu örnek dize genişletme, listedeki her öğe için İstatistik bilgilerinin döndürülmesini belirtir: `stats` .
 
 > [!NOTE]
 > Üç sorgu dizesi türünden birini oluştururken (Filter, Select ve Expand), özellik adlarının ve durumunun REST API öğelerinin karşılıklarıyla eşleştiğinden emin olmanız gerekir. Örneğin, .NET [cloudtask](/dotnet/api/microsoft.azure.batch.cloudtask) sınıfıyla çalışırken, .NET özelliği [Cloudtask. State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State)olsa **bile durum yerine** **State** belirtmeniz gerekir. .NET ve REST API 'Ler arasındaki özellik eşlemeleri için aşağıdaki tablolara bakın.
@@ -85,11 +85,11 @@ Expand dize, belirli bilgileri almak için gerekli olan API çağrılarının sa
 ### <a name="rules-for-filter-select-and-expand-strings"></a>Filter, Select ve Expand dizeleri için kurallar
 * Filtre içindeki Özellikler adları, Select ve Genişlet dizeleri Batch [.net][api_net] veya diğer Batch SDK 'larından birini kullandığınızda bile, [toplu Rest][api_rest] API 'sinde olduğu gibi görünmelidir.
 * Tüm özellik adları büyük/küçük harfe duyarlıdır, ancak özellik değerleri büyük/küçük harfe duyarsızdır.
-* Tarih/saat dizeleri iki biçimden biri olabilir ve önünde olmalıdır `DateTime`.
+* Tarih/saat dizeleri iki biçimden biri olabilir ve önünde olmalıdır `DateTime` .
   
   * W3C-DTF biçim örneği:`creationTime gt DateTime'2011-05-08T08:49:37Z'`
   * RFC 1123 biçim örneği:`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
-* Boolean dizeleri ya `false`da `true` .
+* Boolean dizeleri ya da `true` `false` .
 * Geçersiz bir özellik veya işleç belirtilirse, bir `400 (Bad Request)` hata ortaya kaydedilir.
 
 ## <a name="efficient-querying-in-batch-net"></a>Batch .NET 'te verimli sorgulama
@@ -218,7 +218,7 @@ Proje içindeki örnek uygulama aşağıdaki işlemleri gösterir:
 1. Yalnızca ihtiyacınız olan özellikleri indirmek için belirli öznitelikleri seçme
 2. Son sorgudan bu yana yalnızca değişiklikleri indirmek için durum geçiş süreleriyle filtreleme
 
-Örneğin, aşağıdaki yöntem Batchölçümlerini kitaplığında görüntülenir. Sorgulanan varlıklar için yalnızca `id` ve `state` özelliklerinin alınması gerektiğini belirten bir odatadetaillevel döndürür. Ayrıca, belirtilen `DateTime` parametrenin döndürülmesinden sonra yalnızca durumu değişmiş olan varlıkların de belirtir.
+Örneğin, aşağıdaki yöntem Batchölçümlerini kitaplığında görüntülenir. `id` `state` Sorgulanan varlıklar için yalnızca ve özelliklerinin alınması gerektiğini belirten bir ODATADetailLevel döndürür. Ayrıca, belirtilen parametrenin döndürülmesinden sonra yalnızca durumu değişmiş olan varlıkların de belirtir `DateTime` .
 
 ```csharp
 internal static ODATADetailLevel OnlyChangedAfter(DateTime time)

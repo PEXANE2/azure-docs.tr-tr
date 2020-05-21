@@ -2,13 +2,13 @@
 title: REST API ve şablonla kaynakları dağıtma
 description: Kaynakları Azure 'a dağıtmak için Azure Resource Manager ve Kaynak Yöneticisi REST API kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
-ms.date: 06/04/2019
-ms.openlocfilehash: 9cdb7b668e5170917b41ef49639bd9a17e538766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: d7865ac6f9b2bb176ea5308e326dec0741a80962
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153242"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723128"
 ---
 # <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>ARM şablonlarıyla kaynakları dağıtma ve Kaynak Yöneticisi REST API
 
@@ -20,27 +20,35 @@ Bu makalede, kaynaklarınızı Azure 'a dağıtmak için Azure Resource Manager 
 
 Dağıtımınızı bir yönetim grubuna, bir Azure aboneliğine veya bir kaynak grubuna hedefleyebilirsiniz. Çoğu durumda, dağıtımları bir kaynak grubuna hedefleyebilirsiniz. Belirtilen kapsamda ilke ve rol atamaları uygulamak için yönetim grubu veya abonelik dağıtımlarını kullanın. Ayrıca, abonelik dağıtımlarını bir kaynak grubu oluşturmak ve kaynakları dağıtmak için de kullanabilirsiniz. Dağıtımın kapsamına bağlı olarak, farklı komutlar kullanırsınız.
 
-Bir **kaynak grubuna**dağıtmak Için, [dağıtımlar-oluştur](/rest/api/resources/deployments/createorupdate)' u kullanın. İsteğin gönderildiği yer:
+* Bir **kaynak grubuna**dağıtmak Için, [dağıtımlar-oluştur](/rest/api/resources/deployments/createorupdate)' u kullanın. İsteğin gönderildiği yer:
 
-```HTTP
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
-Bir **aboneliğe**dağıtmak için [dağıtımlar-abonelik kapsamında oluştur](/rest/api/resources/deployments/createorupdateatsubscriptionscope)' u kullanın. İsteğin gönderildiği yer:
+* Bir **aboneliğe**dağıtmak için [dağıtımlar-abonelik kapsamında oluştur](/rest/api/resources/deployments/createorupdateatsubscriptionscope)' u kullanın. İsteğin gönderildiği yer:
 
-```HTTP
-PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
-Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
+  Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
 
-Bir **yönetim grubuna**dağıtmak Için, [dağıtımlar-yönetim grubu kapsamında oluştur](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)' u kullanın. İsteğin gönderildiği yer:
+* Bir **yönetim grubuna**dağıtmak Için, [dağıtımlar-yönetim grubu kapsamında oluştur](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)' u kullanın. İsteğin gönderildiği yer:
 
-```HTTP
-PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
-Yönetim grubu düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [Yönetim grubu düzeyinde kaynak oluşturma](deploy-to-management-group.md).
+  Yönetim grubu düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [Yönetim grubu düzeyinde kaynak oluşturma](deploy-to-management-group.md).
+
+* Bir **kiracıya**dağıtmak için [dağıtımlar-kiracı kapsamında oluştur veya Güncelleştir](/rest/api/resources/deployments/createorupdateattenantscope)' i kullanın. İsteğin gönderildiği yer:
+
+  ```HTTP
+  PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
+
+  Kiracı düzeyinde dağıtımlar hakkında daha fazla bilgi için bkz. [kiracı düzeyinde kaynak oluşturma](deploy-to-tenant.md).
 
 Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
 
@@ -51,7 +59,7 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
 1. Mevcut bir kaynak grubunuz yoksa, bir kaynak grubu oluşturun. Abonelik KIMLIĞINIZI, yeni kaynak grubunun adını ve çözümünüz için gereken konumu belirtin. Daha fazla bilgi için bkz. [kaynak grubu oluşturma](/rest/api/resources/resourcegroups/createorupdate).
 
    ```HTTP
-   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-05-01
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-10-01
    ```
 
    Şunun gibi bir istek gövdesi ile:
@@ -70,7 +78,7 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
 1. Bir şablonu dağıtmak için, abonelik KIMLIĞINIZI, kaynak grubunun adını, istek URI 'sindeki dağıtımın adını belirtin.
 
    ```HTTP
-   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-10-01
    ```
 
    İstek gövdesinde, şablonunuz ve parametre dosyanıza bir bağlantı sağlayın. Parametre dosyası hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi parametre dosyası oluşturma](parameter-files.md).
@@ -184,7 +192,7 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
 1. Şablon dağıtımının durumunu almak için [dağıtımlar-al](/rest/api/resources/deployments/get)' ı kullanın.
 
    ```HTTP
-   GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
+   GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

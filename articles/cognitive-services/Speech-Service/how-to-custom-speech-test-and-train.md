@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bc79dabe82ab02166e3aa60a378ff394bca25028
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402135"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725559"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma için verileri hazırlama
 
@@ -27,9 +27,9 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
-| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-1000 saat ses |
-| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Yes | 1-200 MB ilgili metin |
+| [Ses](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
+| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-1000 saat ses |
+| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
 
 Dosyalar bir veri kümesine türlerine göre gruplanmalı ve bir. zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
 
@@ -38,7 +38,7 @@ Dosyalar bir veri kümesine türlerine göre gruplanmalı ve bir. zip dosyası o
 
 ## <a name="upload-data"></a>Karşıya veri yükleme
 
-Verilerinizi karşıya yüklemek için <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>gidin. Portalda **verileri karşıya yükle** ' ye tıklayarak Sihirbazı başlatın ve ilk veri kümenizi oluşturun. Verilerinizi karşıya yüklemeye izin vermeden önce veri kümeniz için bir konuşma veri türü seçmeniz istenir.
+Verilerinizi karşıya yüklemek için <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"></span> </a>gidin. Portalda **verileri karşıya yükle** ' ye tıklayarak Sihirbazı başlatın ve ilk veri kümenizi oluşturun. Verilerinizi karşıya yüklemeye izin vermeden önce veri kümeniz için bir konuşma veri türü seçmeniz istenir.
 
 ![Konuşma portalından ses seçme](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -81,6 +81,8 @@ Ses özelliklerini doğrulamak veya var olan sesleri uygun biçimlere dönüşt�
 
 Ses dosyalarınızı işlerken Microsoft 'un konuşmadan metne doğruluğu için doğruluğu ölçmek amacıyla, karşılaştırma için insan etiketli dökümlere (Word-Word) sağlamanız gerekir. İnsanlar etiketli döküm genellikle zaman alıcı olsa da doğruluğu değerlendirmek ve modeli kullanım durumlarınız için eğitmek gerekir. Göz önünde bulundurmanız durumunda, tanınma iyileştirmeleri yalnızca belirtilen veriler kadar iyi olacaktır. Bu nedenle, yalnızca yüksek kaliteli döküm dosyalarının karşıya yüklenmesi önemlidir.
 
+Ses dosyaları, kaydın başlangıcında ve sonunda sessizlik alabilir. Mümkünse, her bir örnek dosyada konuşmayı önce ve sonra, en az bir yarı saniyelik sessizlik ekleyin. Düşük kayıt hacmi veya kesintiye uğratan arka plan gürültüsünü olan ses yararlı olmasa da özel modelinize zarar vermez. Ses örnekleri toplanmadan önce mikrofonlarınızı ve sinyal işleme donanımınızı yükseltmeyi her zaman düşünün.
+
 | Özellik                 | Değer                               |
 |--------------------------|-------------------------------------|
 | Dosya biçimi              | RIFF (WAV)                          |
@@ -98,7 +100,7 @@ Ses dosyalarınızı işlerken Microsoft 'un konuşmadan metne doğruluğu için
 
 Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, kabaca 10 ila 1.000 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
 
-  Örneğin:
+  Örnek:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -110,7 +112,7 @@ Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geli
 
 Transkripsiyon metinleri sistem tarafından işlenebilmesi için normalleştirilir. Ancak, veriler konuşma Studio 'ya yüklenmeden önce gerçekleştirilmesi gereken bazı önemli normalleştirmeler vardır. Dökümü hazırlarken kullanılacak uygun dil için, bkz. [nasıl yapılır: insan etiketli döküm oluşturma](how-to-custom-speech-human-labeled-transcriptions.md)
 
-Ses dosyalarınızı ve bunlara karşılık gelen kayıtları topladıktan sonra, <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>yüklemeden önce bunları tek bir. zip dosyası olarak paketleyin. Aşağıda üç ses dosyası ve bir insan etiketli döküm dosyası içeren örnek bir veri kümesi verilmiştir:
+Ses dosyalarınızı ve bunlara karşılık gelen kayıtları topladıktan sonra, <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"></span> </a>yüklemeden önce bunları tek bir. zip dosyası olarak paketleyin. Aşağıda üç ses dosyası ve bir insan etiketli döküm dosyası içeren örnek bir veri kümesi verilmiştir:
 
 > [!div class="mx-imgBorder"]
 > ![Konuşma portalından ses seçme](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
@@ -124,7 +126,7 @@ Ses dosyalarınızı ve bunlara karşılık gelen kayıtları topladıktan sonra
 | Cümleler (utterlere) | Ürün adlarını veya bir cümle bağlamı içindeki sektöre özel sözlüğü yapılandırırken doğruluğu geliştirir. |
 | Söylenişler | Tanımsız söylenlerdeki yaygın olmayan terimlerin, kısaltmalardan veya diğer sözcüklerin okunuşunu geliştirir. |
 
-Cümleler, tek bir metin dosyası veya birden çok metin dosyası olarak bulunabilir. Doğruluğu artırmak için, beklenen söyleye daha yakın olan metin verilerini kullanın. Söylenişler tek bir metin dosyası olarak sağlanmalıdır. Her şey tek bir zip dosyası olarak paketlenebilir ve <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>yüklenebilir.
+Cümleler, tek bir metin dosyası veya birden çok metin dosyası olarak bulunabilir. Doğruluğu artırmak için, beklenen söyleye daha yakın olan metin verilerini kullanın. Söylenişler tek bir metin dosyası olarak sağlanmalıdır. Her şey tek bir zip dosyası olarak paketlenebilir ve <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"></span> </a>yüklenebilir.
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>Cümleler dosyası oluşturma yönergeleri
 
@@ -143,7 +145,7 @@ Dikkat edilecek ilgili veri dosyanızın doğru biçimlendirildiğinden emin olm
 Ayrıca, aşağıdaki kısıtlamaları hesaba eklemek isteyeceksiniz:
 
 * Dört defadan fazla karakter tekrarlamadan kaçının. Örneğin: "aaaa" veya "uuuu".
-* Yukarıdaki `U+00A1`özel KARAKTERLERI veya UTF-8 karakterlerini kullanmayın.
+* Yukarıdaki özel karakterleri veya UTF-8 karakterlerini kullanmayın `U+00A1` .
 * URI 'Ler reddedilir.
 
 ### <a name="guidelines-to-create-a-pronunciation-file"></a>Telaffuz dosyası oluşturma yönergeleri
@@ -163,7 +165,7 @@ Bu, konuşulan bir utterance örnekleri ve her biri için özel bir telaffuz iç
 
 Konuşulan biçim fonetik bir dizidir. Bu, harf, sözcük, hecelere veya üçünün birleşiminden oluşabilir.
 
-Özelleştirilmiş telaffuz Ingilizce (`en-US`) ve Almanca (`de-DE`) ile kullanılabilir. Bu tabloda dile göre desteklenen karakterler gösterilmektedir:
+Özelleştirilmiş telaffuz Ingilizce ( `en-US` ) ve Almanca () ile kullanılabilir `de-DE` . Bu tabloda dile göre desteklenen karakterler gösterilmektedir:
 
 | Dil | Yerel Ayar | Karakterler |
 |----------|--------|------------|

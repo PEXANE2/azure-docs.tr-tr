@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: cdbb6d0f26b6a999d289e7e0ddbd8cb45dac8e47
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b222a94ee754b24192261451d8ddc429886e705c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665204"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725661"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 'SI için Java SDK v4 Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -47,10 +47,10 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 | |  |
 |---|---|
 | **SDK Indirmesi** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API belgeleri** |Java API başvuru belgeleri|
+|**API belgeleri** | [Java API başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1-beta.3/index.html) |
 |**SDK 'ya katkıda bulunma** | [GitHub 'da Java merkezi deposu için Azure SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
-|**Kullanmaya başlayın** | [Hızlı başlangıç: Azure Cosmos db SQL API verilerini yönetmek için bir Java uygulaması oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [Hızlı başlangıç kodu Ile GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
-|**Temel kod örnekleri** | Azure Cosmos DB: SQL API 'SI için Java örnekleri · [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
+|**başlarken** | [Hızlı başlangıç: Azure Cosmos db SQL API verilerini yönetmek için bir Java uygulaması oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [Hızlı başlangıç kodu Ile GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
+|**Temel kod örnekleri** | [Azure Cosmos DB: SQL API 'si Için Java örnekleri](sql-api-java-sdk-samples.md) · [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**Değişiklik akışı olan konsol uygulaması**| [Değişiklik akışı-Java SDK v4 örneği](create-sql-api-java-changefeed.md) · [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Web uygulaması örneği**| [Java SDK 'sı v4 · bir Web uygulaması oluşturma](sql-api-java-application.md) [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
 | **Performans ipuçları**| [Java SDK v4 için performans ipuçları](performance-tips-java-sdk-v4-sql.md)| 

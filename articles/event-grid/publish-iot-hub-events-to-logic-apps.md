@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
-ms.openlocfilehash: 889c5e68759a94682150ac88970b7123ad0fc412
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b1870af6316713590eec59aee2af94ce34b7e1a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201746"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722567"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Öğretici: Event Grid ve Logic Apps kullanarak Azure IoT Hub olaylarıyla ilgili e-posta bildirimleri gönderin
 
@@ -27,7 +27,7 @@ Bu makalede IoT Hub ve Event Grid kullanan bir örnek yapılandırma gösterilme
 * Office 365 Outlook, Outlook.com veya Gmail gibi Azure Logic Apps tarafından desteklenen herhangi bir e-posta sağlayıcısından bir e-posta hesabı. Bu e-posta hesabı olay bildirimlerini göndermek için kullanılır. Desteklenen mantıksal uygulama bağlayıcılarının tüm listesi için bkz. [bağlayıcılara genel bakış](https://docs.microsoft.com/connectors/).
 
   > [!IMPORTANT]
-  > Gmail kullanmadan önce bir G-Suite iş hesabınız olup olmadığını (özel etki alanı olan e-posta adresi) veya Gmail tüketicisi hesabını (veya @gmail.com @googlemail.comiçeren e-posta adresini) denetleyin. Yalnızca G-Suite iş hesapları, mantıksal uygulamalarda kısıtlama olmadan Gmail bağlayıcısını diğer bağlayıcılarla kullanabilir. Gmail tüketicisi hesabınız varsa, Gmail bağlayıcısını yalnızca belirli Google onaylı hizmetlerle kullanabilir veya [kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Gmail kullanmadan önce bir G-Suite iş hesabınız olup olmadığını (özel etki alanı olan e-posta adresi) veya Gmail tüketicisi hesabını (veya içeren e-posta adresini @gmail.com @googlemail.com ) denetleyin. Yalnızca G-Suite iş hesapları, mantıksal uygulamalarda kısıtlama olmadan Gmail bağlayıcısını diğer bağlayıcılarla kullanabilir. Gmail tüketicisi hesabınız varsa, Gmail bağlayıcısını yalnızca belirli Google onaylı hizmetlerle kullanabilir veya [kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Azure'da bir IoT Hub'ı. Henüz oluşturmadıysanız, yönergeler için bkz. [IoT Hub'ı kullanmaya başlama](../iot-hub/iot-hub-csharp-csharp-getstarted.md).
 
@@ -137,7 +137,7 @@ Eylemler, tetikleyici mantıksal uygulama iş yükünü başlattıktan sonra ger
 
    * **Kime**: Bildirim e-postalarını alacak olan e-posta adresini girin. Bu öğreticide, test etmek için erişebileceğiniz bir e-posta hesabı kullanın. 
 
-   * **Konu**: konunun metnini girin. Konu metin kutusuna tıkladığınızda, içerilecek dinamik içerik ' i seçebilirsiniz. Örneğin, bu öğretici kullanır `IoT Hub alert: {event Type}`. Dinamik içeriği göremiyorsanız, **dinamik Içerik Ekle** köprüsünü seçin--Bu, açıp kapatır.
+   * **Konu**: konunun metnini girin. Konu metin kutusuna tıkladığınızda, içerilecek dinamik içerik ' i seçebilirsiniz. Örneğin, bu öğretici kullanır `IoT Hub alert: {event Type}` . Dinamik içeriği göremiyorsanız, **dinamik Içerik Ekle** köprüsünü seçin--Bu, açıp kapatır.
 
    * **Gövde**: e-postanız için metin yazın. Olay verileri temelinde dinamik içerik eklemek için seçici aracından JSON özelliklerini seçin. Dinamik içeriği göremiyorsanız **gövde** metin kutusu altında **dinamik içerik Ekle** köprüsünü seçin. İstediğiniz alanları göstermezse, önceki eylemden alanları dahil etmek için dinamik içerik ekranında *daha fazla* ' ya tıklayın.
 
@@ -193,19 +193,19 @@ Bu bölümde, IoT Hub'ınızı gerçekleşen olayları yayımlamak için yapıla
 
 6. **Yeni Filtre Ekle**' yi seçin. Alanları şu değerlerle doldur:
 
-   * **Anahtar**: öğesini `Subject`seçin.
+   * **Anahtar**: öğesini seçin `Subject` .
 
-   * **İşleç**: Select `String begins with`.
+   * **İşleç**: Select `String begins with` .
 
-   * **Değer**: 1 `devices/Building1_` binasında cihaz olaylarını filtrelemek için girin.
+   * **Değer**: `devices/Building1_` 1 binasında cihaz olaylarını filtrelemek için girin.
   
    Şu değerlere sahip başka bir filtre ekleyin:
 
-   * **Anahtar**: öğesini `Subject`seçin.
+   * **Anahtar**: öğesini seçin `Subject` .
 
-   * **İşleç**: Select `String ends with`.
+   * **İşleç**: Select `String ends with` .
 
-   * **Değer**: sıcaklığa ilişkin cihaz olaylarını filtrelemek için girin `_Temperature` .
+   * **Değer**: `_Temperature` sıcaklığa ilişkin cihaz olaylarını filtrelemek için girin.
 
    Olay aboneliğinizin **Filtreler** sekmesi şu resme benzer şekilde görünmelidir:
 
@@ -240,7 +240,7 @@ Olay bildirim e-postasını tetiklemek için yeni bir cihaz oluşturarak mantık
 
 ## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
-Azure portalı kullanmak yerine, IoT Hub adımlarını Azure CLI'yi kullanarak gerçekleştirebilirsiniz. Ayrıntılar için, [olay aboneliği oluşturmak](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) ve [IoT cihazı oluşturmak](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity)için Azure CLI sayfalarına bakın.
+Azure portalı kullanmak yerine, IoT Hub adımlarını Azure CLI'yi kullanarak gerçekleştirebilirsiniz. Ayrıntılar için, [olay aboneliği oluşturmak](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) ve [IoT cihazı oluşturmak](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity)için Azure CLI sayfalarına bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

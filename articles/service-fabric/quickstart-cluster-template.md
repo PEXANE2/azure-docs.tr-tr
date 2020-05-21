@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 60771d5a188df5dfeca3530a551a116c870e63f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2db3dffbbf0f6d98fe6da7a0cec5400f7f2c03da
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82149336"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722465"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Service Fabric kümesi oluşturma
 
@@ -91,7 +91,7 @@ $certThumbprint = "<Certificate Thumbprint>"
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirin
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype). Bu makalenin şablonu burada görüntülenemeyecek kadar uzun. Şablonu görüntülemek için bkz https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json..
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/). Bu makalenin şablonu burada görüntülenemeyecek kadar uzun. Şablonu görüntülemek için, bkz. [azuredeploy. JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) dosyası.
 
 Şablonda birden çok Azure kaynağı tanımlanmış:
 
@@ -111,9 +111,9 @@ Azure Service Fabric ile ilgili daha fazla şablon bulmak için bkz. [Azure hız
 * **clusterName** , küme sertifikanızı oluştururken *certdnsname* için sağladığınız değerle eşleşir
 * **AdminUserName** varsayılan *Gen-UNIQUE* Token dışında bir değerdir
 * **adminPassword** varsayılan *genel parola* belirtecinden farklı bir değerdir
-* **certificateThumbprint**, **Sourcevaultresourceıd**ve **certificateurlvalue** tüm boş dizlardır (`""`)
+* **certificateThumbprint**, **Sourcevaultresourceıd**ve **certificateurlvalue** tüm boş dizlardır ( `""` )
 
-Örneğin:
+Örnek:
 
 ```json
 {
@@ -162,7 +162,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-Dağıtım tamamlandıktan sonra, çıktıdaki `managementEndpoint` değeri bulun ve bir web tarayıcısında [Service Fabric Explorer](./service-fabric-visualizing-your-cluster.md)kümenizi görüntülemek için adresi açın.
+Dağıtım tamamlandıktan sonra, `managementEndpoint` çıktıdaki değeri bulun ve bir Web tarayıcısında [Service Fabric Explorer](./service-fabric-visualizing-your-cluster.md)kümenizi görüntülemek için adresi açın.
 
 ![Yeni kümeyi gösteren Service Fabric Explorer](./media/quickstart-cluster-template/service-fabric-explorer.png)
 

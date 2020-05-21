@@ -1,15 +1,15 @@
 ---
-title: Batch hizmeti API 'SI ile Azure depolama 'ya çıkış verilerini kalıcı hale getirme Azure Batch
+title: Batch hizmeti API 'SI ile Azure depolama 'ya çıkış verilerini kalıcı hale getirme
 description: Batch görevi ve iş çıktısı verilerini Azure depolama 'ya kalıcı hale getirmek için Batch hizmeti API 'sini nasıl kullanacağınızı öğrenin.
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d9c6465a553e5652ecab5dcd167bb4058ff5cc08
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8020fbd184e200504d0fb0a9ab7ef5de64bd76c9
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234290"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726324"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch hizmeti API 'SI ile Azure depolama 'ya görev verilerini kalıcı hale getirme
 
@@ -43,7 +43,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Kapsayıcı için paylaşılan erişim imzası alın
 
-Kapsayıcıyı oluşturduktan sonra kapsayıcıya yazma erişimi olan bir paylaşılan erişim imzası (SAS) alın. Bir SAS, kapsayıcıya temsilci erişimi sağlar. SAS, belirtilen bir zaman aralığı boyunca belirli bir izin kümesiyle ve erişim izni verir. Batch hizmeti, kapsayıcıya görev çıktısı yazmak için yazma izinlerine sahip bir SAS gerektirir. SAS hakkında daha fazla bilgi için bkz. [Azure depolama 'da \(paylaşılan\) erişim imzaları SAS kullanma](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Kapsayıcıyı oluşturduktan sonra kapsayıcıya yazma erişimi olan bir paylaşılan erişim imzası (SAS) alın. Bir SAS, kapsayıcıya temsilci erişimi sağlar. SAS, belirtilen bir zaman aralığı boyunca belirli bir izin kümesiyle ve erişim izni verir. Batch hizmeti, kapsayıcıya görev çıktısı yazmak için yazma izinlerine sahip bir SAS gerektirir. SAS hakkında daha fazla bilgi için bkz. [ \( \) Azure depolama 'da paylaşılan erişim imzaları SAS kullanma](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 Azure depolama API 'Lerini kullanarak bir SAS aldığınızda, API bir SAS belirteci dizesi döndürür. Bu belirteç dizesi, izinler ve SAS 'ın geçerli olduğu Aralık dahil olmak üzere SAS 'nin tüm parametrelerini içerir. Azure depolama 'daki bir kapsayıcıya erişmek üzere SAS 'yi kullanmak için, SAS belirteç dizesini Kaynak URI 'sine eklemeniz gerekir. Kaynak URI 'SI, eklenen SAS belirteciyle birlikte Azure Storage 'a kimliği doğrulanmış erişim sağlar.
 
@@ -63,7 +63,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 Bir görevin çıkış dosyalarını belirtmek için, bir [ÇıktıDosyası](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) nesnelerinin koleksiyonunu oluşturun ve görevi oluştururken [Cloudtask. OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) özelliğine atayın.
 
-Aşağıdaki C# kod örneği, adlı `output.txt`bir dosyaya rastgele sayılar yazan bir görev oluşturur. Örnek, kapsayıcısına yazılacak bir çıkış dosyası `output.txt` oluşturur. Örnek `std*.txt` Ayrıca dosya düzeniyle eşleşen tüm günlük dosyaları için çıktı dosyaları oluşturur (_örn._ `stdout.txt` ve `stderr.txt`). Kapsayıcı URL 'SI, kapsayıcısı için daha önce oluşturulmuş SAS gerektirir. Batch hizmeti, kapsayıcıya erişimin kimliğini doğrulamak için SAS kullanır:
+Aşağıdaki C# kod örneği, adlı bir dosyaya rastgele sayılar yazan bir görev oluşturur `output.txt` . Örnek, kapsayıcısına yazılacak bir çıkış dosyası oluşturur `output.txt` . Örnek ayrıca dosya düzeniyle eşleşen tüm günlük dosyaları için çıktı dosyaları oluşturur `std*.txt` (_örn._ `stdout.txt` ve `stderr.txt` ). Kapsayıcı URL 'SI, kapsayıcısı için daha önce oluşturulmuş SAS gerektirir. Batch hizmeti, kapsayıcıya erişimin kimliğini doğrulamak için SAS kullanır:
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -93,11 +93,11 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 Bir çıkış dosyası belirttiğinizde, eşleşen bir dosya kalıbı belirtmek için [ÇıktıDosyası. filemodel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) özelliğini kullanabilirsiniz. Dosya deseninin sıfır dosya, tek bir dosya veya görev tarafından oluşturulan bir dosya kümesiyle eşleşmesi gerekebilir.
 
-**Filemodel** özelliği, `*` (özyinelemeli olmayan eşleşmeler için) ve `**` (özyinelemeli eşleşmeler için) gibi standart dosya sistemi joker karakterlerini destekler. Örneğin, yukarıdaki kod örneği, yinelemeli olmayan eşleştirilecek `std*.txt` dosya modelini belirtir:
+**Filemodel** özelliği, `*` (özyinelemeli olmayan eşleşmeler için) ve `**` (özyinelemeli eşleşmeler için) gibi standart dosya sistemi joker karakterlerini destekler. Örneğin, yukarıdaki kod örneği, yinelemeli olmayan eşleştirilecek dosya modelini belirtir `std*.txt` :
 
 `filePattern: @"..\std*.txt"`
 
-Tek bir dosyayı karşıya yüklemek için joker karakter içermeyen bir dosya kalıbı belirtin. Örneğin, yukarıdaki kod örneği eşleşecek `output.txt`dosya modelini belirtir:
+Tek bir dosyayı karşıya yüklemek için joker karakter içermeyen bir dosya kalıbı belirtin. Örneğin, yukarıdaki kod örneği eşleşecek dosya modelini belirtir `output.txt` :
 
 `filePattern: @"output.txt"`
 
@@ -117,7 +117,7 @@ Bir işteki görevler aynı ada sahip dosyalar üretebilir. Örneğin, `stdout.t
 
 [Outputfileblobcontainerdestination. Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) özelliği, çıkış dosyaları için hedef Blobu veya sanal dizini belirtir. Blob veya sanal dizini aynı ada sahip çıkış dosyalarının Azure depolama 'da benzersiz olarak adlandırılması için, bu **yolu** kullanarak blob veya sanal dizine ad verebilirsiniz. Yoldaki görev KIMLIĞINI kullanmak, benzersiz adlar sağlamak ve dosyaları kolayca belirlemek için iyi bir yoldur.
 
-**Filemodel** özelliği bir joker ifadesi olarak ayarlandıysa, düzeniyle eşleşen tüm dosyalar **Path** özelliği tarafından belirtilen sanal dizine yüklenir. Örneğin, kapsayıcı `mycontainer`, görev kimliği `mytask`ve dosya örüntü `..\std*.txt`ise, Azure Storage 'Daki çıkış dosyalarına yönelik mutlak URI 'ler şuna benzer olacaktır:
+**Filemodel** özelliği bir joker ifadesi olarak ayarlandıysa, düzeniyle eşleşen tüm dosyalar **Path** özelliği tarafından belirtilen sanal dizine yüklenir. Örneğin, kapsayıcı, `mycontainer` görev kimliği `mytask` ve dosya örüntü Ise, `..\std*.txt` Azure Storage 'daki çıkış dosyalarına yönelik mutlak URI 'ler şuna benzer olacaktır:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stderr.txt
@@ -147,11 +147,11 @@ Code: FileUploadContainerNotFound
 Message: One of the specified Azure container(s) was not found while attempting to upload an output file
 ```
 
-Her dosya yükleme işleminde toplu Işlem, `fileuploadout.txt` işlem düğümüne iki günlük dosyası yazar ve. `fileuploaderr.txt` Belirli bir hata hakkında daha fazla bilgi edinmek için bu günlük dosyalarını inceleyebilirsiniz. Dosya yüklemesinin hiçbir zaman denenmediği durumlarda (örneğin, görevin kendisi çalıştırılmadığından), bu günlük dosyaları mevcut olmayacaktır.
+Her dosya yükleme işleminde toplu Işlem, işlem düğümüne iki günlük dosyası yazar `fileuploadout.txt` ve `fileuploaderr.txt` . Belirli bir hata hakkında daha fazla bilgi edinmek için bu günlük dosyalarını inceleyebilirsiniz. Dosya yüklemesinin hiçbir zaman denenmediği durumlarda (örneğin, görevin kendisi çalıştırılmadığından), bu günlük dosyaları mevcut olmayacaktır.
 
 ## <a name="diagnose-file-upload-performance"></a>Karşıya dosya yükleme performansını Tanıla
 
-`fileuploadout.txt` Dosya günlükleri karşıya yükleme ilerleme durumu. Dosya karşıya yüklemelerinizin ne kadar süreceğine ilişkin daha fazla bilgi edinmek için bu dosyayı inceleyebilirsiniz. Düğüm boyutu, yükleme sırasında düğümdeki diğer etkinlik, hedef kapsayıcının toplu Iş havuzuyla aynı bölgede olup olmadığı, aynı anda depolama hesabına kaç düğüm karşıya yükleme vb. dahil olmak üzere performansı karşıya yüklemeye yönelik birçok farklı faktör olduğunu aklınızda bulundurun.
+`fileuploadout.txt`Dosya günlükleri karşıya yükleme ilerleme durumu. Dosya karşıya yüklemelerinizin ne kadar süreceğine ilişkin daha fazla bilgi edinmek için bu dosyayı inceleyebilirsiniz. Düğüm boyutu, yükleme sırasında düğümdeki diğer etkinlik, hedef kapsayıcının toplu Iş havuzuyla aynı bölgede olup olmadığı, aynı anda depolama hesabına kaç düğüm karşıya yükleme vb. dahil olmak üzere performansı karşıya yüklemeye yönelik birçok farklı faktör olduğunu aklınızda bulundurun.
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>Batch hizmeti API 'sini Batch dosyası kuralları standardı ile kullanma
 
@@ -174,7 +174,7 @@ C# dışında bir dilde geliştiriyorsanız, dosya kuralları standardını kend
 1. Projeyi **Visual Studio 2019**' de açın.
 2. Batch ve Storage **hesabı kimlik bilgilerinizi** Microsoft. Azure. Batch. Samples. Common projesindeki **accountsettings. Settings** öğesine ekleyin.
 3. Çözümü **oluşturun** (ancak çalıştırmayın). İstenirse tüm NuGet paketlerini geri yükleyin.
-4. **PersistOutputsTask**için bir [uygulama paketini](batch-application-packages.md) karşıya yüklemek üzere Azure Portal kullanın. . Zip `PersistOutputsTask.exe` paketine ve bağımlı derlemelerini ekleyin, uygulama kimliğini "PersistOutputsTask" olarak ve uygulama paketi sürümünü "1,0" olarak ayarlayın.
+4. **PersistOutputsTask**için bir [uygulama paketini](batch-application-packages.md) karşıya yüklemek üzere Azure Portal kullanın. `PersistOutputsTask.exe`. Zip paketine ve bağımlı derlemelerini ekleyin, uygulama kimliğini "PersistOutputsTask" olarak ve uygulama paketi sürümünü "1,0" olarak ayarlayın.
 5. **Persistoutkoyar** projesini **başlatın** (çalıştırın).
 6. Örneği çalıştırmak için kullanılacak Kalıcılık teknolojisini seçmeniz istendiğinde, örnek için Batch hizmeti API 'sini kullanarak görev çıkışını kalıcı hale getirmek için **2** girin.
 7. İsterseniz, örneği Batch hizmeti API 'SI ile kalıcı hale getirmek için **3** girerek ve ayrıca dosya kuralları standardına göre hedef kapsayıcısını ve BLOB yolunu adlandırmak için örneği yeniden çalıştırın.

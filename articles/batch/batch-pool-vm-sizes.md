@@ -1,16 +1,15 @@
 ---
 title: Havuzlar için VM boyutlarını seçin
 description: Azure Batch havuzlarda işlem düğümleri için kullanılabilir VM boyutları arasından seçim yapma
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2019
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: d33b97790d2ce9a276a552fd02fe28c796234b15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a299ce05caa02432f96dfbb5eb675bc2d6f82ab5
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115865"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723723"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu seçme
 
@@ -32,8 +31,8 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyut
 | Temel A | Basic_A0 *dışındaki* tüm boyutlar (a0) |
 | A | Standard_A0 *dışındaki* tüm boyutlar |
 | AV2 | Tüm Boyutlar |
-| B | Hiçbiri |
-| DC | Hiçbiri |
+| B | Yok |
+| DC | Yok |
 | Dv2, DSv2 | Tüm Boyutlar |
 | Dv3, Dsv3 | Tüm Boyutlar |
 | Dav4, Dasv4 | Hiçbiri-henüz kullanılamıyor |
@@ -57,8 +56,8 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyut
 | NDv2<sup>1</sup> | Hiçbiri-henüz kullanılamıyor |
 | NV | Tüm Boyutlar |
 | NVv3<sup>1</sup> | Tüm Boyutlar |
-| NVv4 | Hiçbiri |
-| SAP HANA | Hiçbiri |
+| NVv4 | Yok |
+| SAP HANA | Yok |
 
 <sup>1</sup> bu VM boyutları, sanal makine yapılandırmasındaki Batch havuzlarında tahsis edilebilir, ancak yeni bir Batch hesabı oluşturmanız ve belirli bir [Kota artışı](batch-quota-limit.md#increase-a-quota)istemeniz gerekir. Bu sınırlama, VM Serisi başına vCPU kotası Batch hesapları için tam olarak desteklendikten sonra kaldırılacaktır.
 

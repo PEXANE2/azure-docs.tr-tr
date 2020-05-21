@@ -2,13 +2,13 @@
 title: Kaynak dosyalarını oluşturma ve kullanma
 description: Çeşitli giriş kaynaklarından Batch kaynak dosyaları oluşturmayı öğrenin. Bu makalede, bunları bir VM 'ye oluşturma ve bunlara yerleştirme hakkında bazı yaygın yöntemler ele alınmaktadır.
 ms.date: 03/18/2020
-ms.topic: article
-ms.openlocfilehash: c9a2e581d0cada467e89e3da731fac7f78b22992
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: ea349c3a190b78297d9ad4555258d0cfd8828ed4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117191"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723468"
 ---
 # <a name="creating-and-using-resource-files"></a>Kaynak dosyalarını oluşturma ve kullanma
 
@@ -48,9 +48,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> Kapsayıcı erişimi için hem hem de `Read` `List` izinlerinizin olması gerekir, ancak bu, blob erişimi ile yalnızca `Read` izninizin olması gerekir.
+> Kapsayıcı erişimi için hem hem de izinlerinizin olması gerekir, ancak bu, `Read` `List` BLOB erişimi ile yalnızca izninizin olması gerekir `Read` .
 
-İzinler yapılandırıldıktan sonra, SAS belirtecini oluşturun ve depolama kapsayıcısına erişim için SAS URL 'sini biçimlendirin. Depolama kapsayıcısı için biçimlendirilen SAS URL 'sini kullanarak ile [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)bir kaynak dosyası oluşturun.
+İzinler yapılandırıldıktan sonra, SAS belirtecini oluşturun ve depolama kapsayıcısına erişim için SAS URL 'sini biçimlendirin. Depolama kapsayıcısı için biçimlendirilen SAS URL 'sini kullanarak ile bir kaynak dosyası oluşturun [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) .
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);

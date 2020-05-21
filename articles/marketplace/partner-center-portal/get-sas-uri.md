@@ -7,17 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: b521a3a035044e2f0c1b625df19d265cfa35b49a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857934"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725882"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM Görüntünüz için paylaşılan erişim imzası URI 'SI alın
-
-> [!IMPORTANT]
-> Azure sanal makine tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Tekliflerinizi geçirene kadar, tekliflerinizi yönetmek için lütfen [VM Görüntünüz için paylaşılan erişim imzası URI 'Si al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri) bölümündeki yönergeleri izleyin bulut iş ortağı portalı.
 
 Bu makalede, her bir sanal sabit disk (VHD) için paylaşılan erişim imzası (SAS) Tekdüzen Kaynak tanımlayıcısı (URI) oluşturma açıklanır.
 
@@ -62,7 +59,7 @@ SAS adresi (URL) oluşturmak için kullanılan iki ortak araç vardır:
 
 9. SAS URI 'sindeki VHD dizesinden sonra VHD adınızı ekleyin (eğik çizgi ekleyin). Son SAS URI 'SI şöyle görünmelidir:
 
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Örneğin, VDH 'nin adı ise `TestRGVM2.vhd`, elde edilen SAS URI 'si şöyle olacaktır:
+    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Örneğin, VDH 'nin adı ise `TestRGVM2.vhd` , elde EDILEN SAS URI 'si şöyle olacaktır:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -77,7 +74,7 @@ SAS adresi (URL) oluşturmak için kullanılan iki ortak araç vardır:
     az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
     ```
 
-3. Aşağıdaki parametre değerlerini kullanmak için dosyayı düzenleyin. Tarihleri UTC Tarih saat biçiminde girin, örneğin `2020-04-01T00:00:00Z`.
+3. Aşağıdaki parametre değerlerini kullanmak için dosyayı düzenleyin. Tarihleri UTC Tarih saat biçiminde girin, örneğin `2020-04-01T00:00:00Z` .
 
     * `<account-name>`– Azure depolama hesabınızın adı
     * `<account-key>`– Azure depolama hesabı anahtarınız
@@ -109,7 +106,7 @@ SAS adresi (URL) oluşturmak için kullanılan iki ortak araç vardır:
 
     `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`
 
-    Örneğin, VHD 'nin adı ise SAS URI 'SI şu `TestRGVM2.vhd`şekilde olur:
+    Örneğin, VHD 'nin adı ise `TestRGVM2.vhd` SAS URI 'si şu şekilde olur:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -121,8 +118,8 @@ Aşağıdakileri doğrulamak için aşağıdaki denetim listesini kullanarak olu
 
 * URI şöyle görünür:`<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 * URI, ". vhd" dosya adı uzantısı da dahil olmak üzere VHD görüntü dosya adını içerir.
-* `sp=rl`URI 'nizin ortasına yakın görünür. Bu dize, ve `Read` `List` erişiminin belirtilme olduğunu gösterir.
-* `sr=c` Göründüğünde, bu, kapsayıcı düzeyi erişimin belirtildiği anlamına gelir.
+* `sp=rl`URI 'nizin ortasına yakın görünür. Bu dize, `Read` ve `List` erişiminin belirtilme olduğunu gösterir.
+* `sr=c`Göründüğünde, bu, kapsayıcı düzeyi erişimin belirtildiği anlamına gelir.
 * Blob 'u test etmek için bir tarayıcıya kopyalayıp yapıştırın (indirme tamamlanmadan önce işlemi iptal edebilirsiniz).
 
 ## <a name="next-step"></a>Sonraki adım

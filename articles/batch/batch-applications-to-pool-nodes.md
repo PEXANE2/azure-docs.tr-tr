@@ -1,16 +1,16 @@
 ---
-title: Uygulama ve verileri havuz düğümlerine kopyalama
+title: Uygulamaları ve verileri havuz düğümlerine kopyalama
 description: Uygulama ve verileri havuz düğümlerine kopyalamayı öğrenin.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/17/2020
-ms.openlocfilehash: 700e9b80f8420266c0300b47bdd30bc271f8421c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dad52a69ee468872c10b3a9e66b967a1c7bd101d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115593"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726834"
 ---
-# <a name="copying-applications-and-data-to-pool-nodes"></a>Uygulama ve verileri havuz düğümlerine kopyalama
+# <a name="copy-applications-and-data-to-pool-nodes"></a>Uygulamaları ve verileri havuz düğümlerine kopyalama
 
 Azure Batch, veri ve uygulamaların görevler tarafından kullanıma hazır olması için işlem düğümlerine veri ve uygulama almanın çeşitli yollarını destekler. Tüm işleri çalıştırmak için veri ve uygulamalar gerekli olabilir ve bu nedenle her düğümde yüklü olması gerekir. Bazıları yalnızca belirli bir görev için gerekli olabilir veya iş için yüklenmelidir, ancak her düğümde olması gerekmez. Batch, bu senaryoların her biri için araçlara sahiptir.
 

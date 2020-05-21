@@ -9,12 +9,12 @@ ms.date: 4/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ff6bb9e4d4e40c02b52f35bd56bf065a8804a43a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7bb2cc23374110d447ec7526ada75f7e36a966e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134383"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726171"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLı kullanarak IoT Edge modüllerini ölçeklendirerek dağıtma ve izleme
 
@@ -112,7 +112,7 @@ Azure CLı kullanarak modüller dağıtmak için dağıtım bildirimini yerel ol
 
 Katmanlı dağıtımlar, her birinin üzerine yığılmış bir otomatik dağıtım türüdür. Katmanlı dağıtımlar hakkında daha fazla bilgi için bkz. [tek cihaz veya ölçekte IoT Edge otomatik dağıtımları anlama](module-deployment-monitoring.md).
 
-Katmanlı dağıtımlar, her türlü otomatik dağıtım gibi Azure CLı ile oluşturulabilir ve yönetilebilir, ancak yalnızca birkaç fark vardır. Katmanlı bir dağıtım oluşturulduktan sonra aynı Azure CLı, herhangi bir dağıtımla aynı şekilde katmanlı dağıtımlar için de çalışır. Katmanlı bir dağıtım oluşturmak için Oluştur komutuna `--layered` bayrağı ekleyin.
+Katmanlı dağıtımlar, her türlü otomatik dağıtım gibi Azure CLı ile oluşturulabilir ve yönetilebilir, ancak yalnızca birkaç fark vardır. Katmanlı bir dağıtım oluşturulduktan sonra aynı Azure CLı, herhangi bir dağıtımla aynı şekilde katmanlı dağıtımlar için de çalışır. Katmanlı bir dağıtım oluşturmak için `--layered` Oluştur komutuna bayrağı ekleyin.
 
 İkinci fark, dağıtım bildiriminin yapıtından oluşur. Standart otomatik dağıtım, tüm Kullanıcı modüllerine ek olarak sistem çalışma zamanı modüllerini içermelidir, ancak katmanlı dağıtımlar yalnızca Kullanıcı modülleri içerebilir. Bunun yerine, katmanlı dağıtımlar, sistem çalışma zamanı modülleri gibi her IoT Edge cihazının gerekli bileşenlerini sağlamak için bir cihazda aynı zamanda standart bir Otomatik dağıtıma gerek duyar.
 
@@ -148,7 +148,7 @@ Aşağıda örnek olarak bir modüllü temel katmanlı dağıtım bildirimi veri
 }
 ```
 
-Önceki örnekte, `properties.desired` bir modül için bir katmanlı dağıtım ayarı gösteriliyordu. Bu katmanlı dağıtım, aynı modülün zaten uygulanmış olduğu bir cihazı hedeflediğinden, istenen tüm özellikler üzerine yazılır. Güncelleştirmek için, istenen özelliklerin üzerine yazmak yerine yeni bir alt bölüm tanımlayabilirsiniz. Örneğin:
+Önceki örnekte, bir modül için bir katmanlı dağıtım ayarı gösteriliyordu `properties.desired` . Bu katmanlı dağıtım, aynı modülün zaten uygulanmış olduğu bir cihazı hedeflediğinden, istenen tüm özellikler üzerine yazılır. Güncelleştirmek için, istenen özelliklerin üzerine yazmak yerine yeni bir alt bölüm tanımlayabilirsiniz. Örnek:
 
 ```json
 "SimulatedTEmperatureSensor": {
@@ -182,18 +182,18 @@ Cihaz ikgörüti ve etiketleri hakkında daha fazla bilgi için bkz. [IoT Hub 'd
 
 Dağıtım bildiriminin yanı sıra diğer parametrelerden oluşan bir dağıtım oluşturarak modülleri hedef cihazlarınıza dağıtırsınız.
 
-Dağıtım oluşturmak için [az IoT Edge Deployment Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-create) komutunu kullanın:
+Dağıtım oluşturmak için [az IoT Edge Deployment Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-create) komutunu kullanın:
 
 ```cli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
-Katmanlı bir dağıtım oluşturmak için `--layered` bayrağıyla aynı komutu kullanın.
+`--layered`Katmanlı bir dağıtım oluşturmak için bayrağıyla aynı komutu kullanın.
 
 Dağıtım oluşturma komutu aşağıdaki parametreleri alır:
 
 * **--katmanlı** -dağıtımı katmanlı bir dağıtım olarak tanımlamak için isteğe bağlı bir bayrak.
-* **--Deployment-ID** -IoT Hub 'ında oluşturulacak dağıtımın adı. Dağıtımınıza 128 küçük harflerden oluşan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`. Gerekli parametre.
+* **--Deployment-ID** -IoT Hub 'ında oluşturulacak dağıtımın adı. Dağıtımınıza 128 küçük harflerden oluşan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /` . Gerekli parametre.
 * **--Content** -FilePath öğesine DAĞıTıM bildirimi JSON 'ı. Gerekli parametre.
 * **--hub-adı** -dağıtımın oluşturulacağı IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Geçerli aboneliğinizi `az account set -s [subscription name]` komutla değiştirin.
 * **--labels** -dağıtımlarınızın izlenmesine yardımcı olmak için Etiketler ekleyin. Etiketler, dağıtımınızı tanımlayan ad ve değer çiftleridir. Etiketler, adlar ve değerler için JSON biçimlendirmesi alır. Örneğin, `{"HostPlatform":"Linux", "Version:"3.0.1"}`
@@ -215,7 +215,7 @@ Hedef koşulu güncelleştirirseniz, aşağıdaki güncelleştirmeler gerçekle�
 
 Dağıtım bildiriminde tanımlanan modülleri ve yolları içeren bir dağıtımın içeriğini güncelleştiremezsiniz. Bir dağıtımın içeriğini güncelleştirmek istiyorsanız, daha yüksek bir önceliğe sahip aynı cihazları hedefleyen yeni bir dağıtım oluşturarak bunu yapabilirsiniz. Hedef koşul, Etiketler, ölçümler ve öncelik dahil olmak üzere var olan bir modülün belirli özelliklerini değiştirebilirsiniz.
 
-Bir dağıtımı güncelleştirmek için [az IoT Edge Deployment Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update) komutunu kullanın:
+Bir dağıtımı güncelleştirmek için [az IoT Edge Deployment Update](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-update) komutunu kullanın:
 
 ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
@@ -236,7 +236,7 @@ Dağıtım güncelleştirme komutu aşağıdaki parametreleri alır:
 
 Bir dağıtımı sildiğinizde, tüm cihazlar bir sonraki en yüksek öncelikli dağıtımı alırlar. Cihazlarınız başka bir dağıtımın hedef koşulunu karşılamıyorsa, dağıtım silindiğinde modüller kaldırılmaz.
 
-Bir dağıtımı silmek için [az IoT Edge Deployment Delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-delete) komutunu kullanın:
+Bir dağıtımı silmek için [az IoT Edge Deployment Delete](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-delete) komutunu kullanın:
 
 ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]

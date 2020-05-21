@@ -1,15 +1,15 @@
 ---
-title: Görevleri çalıştırmak için görev bağımlılıkları oluşturma-Azure Batch
+title: Görevleri çalıştırmak için görev bağımlılıkları oluşturma
 description: Azure Batch, MapReduce stilini ve benzer büyük veri iş yüklerini işlemeye yönelik diğer görevlerin tamamlanmasına bağlı görevler oluşturun.
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/22/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b3bc37a3d004f077e2e780d096b7bb2a8e5f773
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42cf24758c64f107723ae0907db08bd4b757a15a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116494"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726392"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Diğer görevlere bağımlı görevleri çalıştırmak için görev bağımlılıkları oluşturma
 
@@ -30,7 +30,7 @@ Bire bir veya bire çok ilişkisinde diğer görevlere bağımlı görevler olu�
 Bu makalede, [Batch .net][net_msdn] kitaplığı 'nı kullanarak görev bağımlılıklarını yapılandırmayı tartıştık. Önce, işlerinizde [görev bağımlılığını nasıl etkinleştireceğinizi](#enable-task-dependencies) ve ardından [bağımlılıklara sahip bir görevin nasıl yapılandırılacağını](#create-dependent-tasks)gösterir. Ayrıca, üst öğe başarısız olursa bağımlı görevleri çalıştırmak için bir bağımlılık eyleminin nasıl belirtildüğüne de açıklıyoruz. Son olarak, Batch 'nin desteklediği [bağımlılık senaryolarını](#dependency-scenarios) tartıştık.
 
 ## <a name="enable-task-dependencies"></a>Görev bağımlılıklarını etkinleştir
-Batch uygulamanızda görev bağımlılıklarını kullanmak için, önce görevi görev bağımlılıklarını kullanacak şekilde yapılandırmanız gerekir. Batch .NET sürümünde, [Usestaskdependencies][net_usestaskdependencies] özelliğini olarak `true`ayarlayarak [cloudişiniz][net_cloudjob] üzerinde etkinleştirin:
+Batch uygulamanızda görev bağımlılıklarını kullanmak için, önce görevi görev bağımlılıklarını kullanacak şekilde yapılandırmanız gerekir. Batch .NET sürümünde, [Usestaskdependencies][net_usestaskdependencies] özelliğini olarak ayarlayarak [cloudişiniz][net_cloudjob] üzerinde etkinleştirin `true` :
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -57,7 +57,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Bu kod parçacığı, görev KIMLIĞI "çiçekler" olan bağımlı bir görev oluşturur. "Çiçekler" görevi "yağmur" ve "Sun" görevlerine bağlıdır. Görev "çiçekler", yalnızca "yağmur" ve "Sun" görevleri başarıyla tamamlandıktan sonra bir işlem düğümünde çalışacak şekilde zamanlanır.
 
 > [!NOTE]
-> Varsayılan olarak, bir görevin **tamamlandı** durumunda olduğu ve **Çıkış kodu** olduğu `0`zaman başarıyla tamamlandı olarak kabul edilir. Batch .NET sürümünde bu, [Cloudtask][net_cloudtask]anlamına gelir. [Durum][net_taskstate] özelliği değeri `Completed` ve Cloudtask 'ın [taskexecutionınformation][net_taskexecutioninformation]. [ExitCode][net_exitcode] Özellik değeri `0`. Bunun nasıl değiştirileceği için [bağımlılık eylemleri](#dependency-actions) bölümüne bakın.
+> Varsayılan olarak, bir görevin **tamamlandı** durumunda olduğu ve **Çıkış kodu** olduğu zaman başarıyla tamamlandı olarak kabul edilir `0` . Batch .NET sürümünde bu, [Cloudtask][net_cloudtask]anlamına gelir. [Durum][net_taskstate] özelliği değeri `Completed` ve Cloudtask 'ın [taskexecutionınformation][net_taskexecutioninformation].[ ExitCode][net_exitcode] Özellik değeri `0` . Bunun nasıl değiştirileceği için [bağımlılık eylemleri](#dependency-actions) bölümüne bakın.
 > 
 > 
 
@@ -110,9 +110,9 @@ Bir üst görev aralığına bir bağımlılık içinde, bir görev, kimlikleri 
 Bağımlılığı oluşturmak için, [Taskdependencies][net_taskdependencies]aralığındaki ilk ve son görev kimliklerini sağlayın. [Cloudtask][net_cloudtask]'ın [bağımlıdson][net_dependson] özelliğini doldurduğunuzda [onıdrange][net_onidrange] statik yöntemi.
 
 > [!IMPORTANT]
-> Bağımlılıklarınız için görev KIMLIĞI aralıklarını kullandığınızda, yalnızca tamsayı değerlerini temsil eden kimlikleri olan görevler Aralık tarafından seçilir. Bu nedenle, `1..10` Aralık görevleri `3` seçer `7`, ancak değil. `5flamingoes` 
+> Bağımlılıklarınız için görev KIMLIĞI aralıklarını kullandığınızda, yalnızca tamsayı değerlerini temsil eden kimlikleri olan görevler Aralık tarafından seçilir. Bu nedenle, Aralık `1..10` görevleri seçer `3` `7` , ancak değil `5flamingoes` . 
 > 
-> Aralık bağımlılıklarını değerlendirmek için öndeki sıfırlar önemli değildir, bu `4`nedenle dize tanımlayıcıları `04` `004` olan görevler ve hepsi aralığın *içinde* olur ve hepsi görev `4`olarak değerlendirilir ve bu nedenle, tamamlanacak ilk işlem bağımlılığı karşılar.
+> Aralık bağımlılıklarını değerlendirmek için öndeki sıfırlar önemli değildir, bu nedenle dize tanımlayıcıları olan görevler `4` ve `04` `004` hepsi aralığın *içinde* olur ve hepsi görev olarak değerlendirilir ve bu `4` nedenle, tamamlanacak ilk işlem bağımlılığı karşılar.
 > 
 > Aralıktaki her görevin, başarıyla tamamlanarak ya da **karşılamak**üzere ayarlanmış bir bağımlılık eylemine eşlenmiş bir hata ile tamamlayarak bağımlılığı karşılaması gerekir. Ayrıntılar için [bağımlılık eylemleri](#dependency-actions) bölümüne bakın.
 >

@@ -1,15 +1,15 @@
 ---
 title: Hesap kaynaklarını yönetmek için Batch yönetimi .NET kitaplığını kullanma
 description: Batch yönetimi .NET kitaplığı ile Azure Batch hesabı kaynakları oluşturun, silin ve değiştirin.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/24/2017
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 3cb44b89cacd9e597766ca8df3e4826dfabdb2bd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 05bc0c8a377517c4ab883e08a5a4848eb0042dcb
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201629"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726545"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>.NET için Batch yönetimi istemci kitaplığı ile Batch hesaplarını ve kotaları yönetme
 

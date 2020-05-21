@@ -1,15 +1,15 @@
 ---
-title: Visual Studio şablonlarıyla çözüm oluşturma-Azure Batch | Microsoft Docs
+title: Visual Studio şablonlarıyla çözüm oluşturma
 description: Visual Studio proje şablonlarının Azure Batch üzerinde yoğun işlem yoğunluğu olan iş yüklerinizi uygulamanıza ve çalıştırmanıza nasıl yardımcı olabileceğini öğrenin.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 8e8d5be4a9f0fb5482ba6c86a8766a25e5713c09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0dac39d1ff463dc4ba5efae50c7fc1ea9d36c829
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117531"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725831"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Toplu Iş çözümlerini başlatmak için Visual Studio proje şablonlarını kullanın
 
@@ -57,7 +57,7 @@ Batch şablonlarını kullanmak için şunlar gerekir:
 ## <a name="preparation"></a>Hazırlık
 İş yöneticiniz ve görev işlemcisi programları arasında kod paylaşmayı kolaylaştırabileceğinden, iş yöneticinizin yanı sıra görev işlemcinizi içerebilen bir çözüm oluşturmanızı öneririz. Bu çözümü oluşturmak için aşağıdaki adımları izleyin:
 
-1. Visual Studio 'yu açın ve **Dosya** > **Yeni** > **Proje**' yi seçin.
+1. Visual Studio 'yu açın ve **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 2. **Şablonlar**altında **diğer proje türleri**' ni genişletin, **Visual Studio çözümleri**' ne tıklayın ve ardından **boş çözüm**' ü seçin.
 3. Uygulamanızı açıklayan bir ad yazın (örneğin, "LitwareBatchTaskPrograms").
 4. Yeni çözümü oluşturmak için **Tamam**' a tıklayın.
@@ -77,7 +77,7 @@ Iş Yöneticisi şablonu, aşağıdaki eylemleri gerçekleştirebilecek bir iş 
 Daha önce oluşturduğunuz çözüme bir iş yöneticisi eklemek için aşağıdaki adımları izleyin:
 
 1. Visual Studio 'da mevcut çözümünüzü açın.
-2. Çözüm Gezgini, çözüme sağ tıklayın,**Yeni proje** **Ekle** > ' ye tıklayın.
+2. Çözüm Gezgini, çözüme sağ tıklayın, **Add**  >  **Yeni proje**Ekle ' ye tıklayın.
 3. **Visual C#** altında, **bulut**' a ve ardından iş ayırıcı ' a **sahip Azure Batch iş Yöneticisi**' ne tıklayın.
 4. Uygulamanızı açıklayan bir ad yazın ve bu projeyi iş Yöneticisi (ör. "LitwareJobManager") olarak tanımlar.
 5. Projeyi oluşturmak için **Tamam**' a tıklayın.
@@ -146,29 +146,29 @@ public IEnumerable<CloudTask> Split()
 ```
 
 > [!NOTE]
-> `Split()` Yöntemi içindeki açıklamalı bölüm, işlerinizi farklı görevlere bölmek için mantık ekleyerek değiştirmeniz amaçlanan iş Yöneticisi şablonu kodunun tek bölümüdür. Şablonun farklı bir bölümünü değiştirmek istiyorsanız, lütfen familiarized olduğunuzdan emin olun ve [Batch kodu örneklerinin][github_samples]birkaçını deneyin.
+> Yöntemi içindeki açıklamalı bölüm, `Split()` işlerinizi farklı görevlere bölmek için mantık ekleyerek değiştirmeniz amaçlanan Iş Yöneticisi şablonu kodunun tek bölümüdür. Şablonun farklı bir bölümünü değiştirmek istiyorsanız, lütfen familiarized olduğunuzdan emin olun ve [Batch kodu örneklerinin][github_samples]birkaçını deneyin.
 > 
 > 
 
 Bölünmüş () uygulamanızın erişimi vardır:
 
-* `_parameters` Alan aracılığıyla iş parametreleri.
-* `_job` Alanı aracılığıyla işi temsil eden cloudjob nesnesi.
-* `_jobManagerTask` Alan aracılığıyla iş yöneticisi görevini temsil eden cloudtask nesnesi.
+* Alan aracılığıyla iş parametreleri `_parameters` .
+* Alanı aracılığıyla işi temsil eden CloudJob nesnesi `_job` .
+* Alan aracılığıyla iş yöneticisi görevini temsil eden CloudTask nesnesi `_jobManagerTask` .
 
-`Split()` Uygulamanızın projeye doğrudan görev eklemesi gerekmez. Bunun yerine, kodunuz CloudTask nesnelerinin bir dizisini döndürmelidir ve bunlar iş bölümlendiricisini çağıran çerçeve sınıfları tarafından otomatik olarak işe eklenir. Bu, görevlerin tüm görevlerin hesaplanmasını beklemek yerine mümkün`yield return`olan en kısa sürede çalışmaya başlamasını sağlamak için C# ' ın yineleyici () özelliğini kullanmak yaygındır.
+`Split()`Uygulamanızın projeye doğrudan görev eklemesi gerekmez. Bunun yerine, kodunuz CloudTask nesnelerinin bir dizisini döndürmelidir ve bunlar iş bölümlendiricisini çağıran çerçeve sınıfları tarafından otomatik olarak işe eklenir. `yield return`Bu, görevlerin tüm görevlerin hesaplanmasını beklemek yerine mümkün olan en kısa sürede çalışmaya başlamasını sağlamak Için C# ' ın yineleyici () özelliğini kullanmak yaygındır.
 
 **İş Bölümlendirici hatası**
 
 İş bölümlendiricinizi bir hatayla karşılaşırsa, aşağıdakilerden biri olmalıdır:
 
-* C# `yield break` ifadesini kullanarak sırayı sonlandırın, bu durumda iş Yöneticisi başarılı olarak kabul edilir; veya
+* C# ifadesini kullanarak sırayı sonlandırın `yield break` , bu durumda iş Yöneticisi başarılı olarak kabul edilir veya
 * Bir özel durum oluşturun, bu durumda iş yöneticisi başarısız olarak kabul edilir ve istemcinin onu nasıl yapılandırdığına bağlı olarak yeniden denenebilir).
 
 Her iki durumda da, iş bölümlendiricisi tarafından zaten döndürülen ve Batch işine eklenen tüm görevler çalışmaya uygun olacaktır. Bunun gerçekleşmesini istemiyorsanız, şunları yapabilirsiniz:
 
 * İş bölümlendiricisini döndürmeden önce işi Sonlandır
-* Tüm görev koleksiyonunu döndürmeden önce formüle koyun (yani, bir C# yineleyici kullanarak iş `ICollection<CloudTask>` bölümlendiricisini uygulamak yerine bir veya `IList<CloudTask>` döndürür)
+* Tüm görev koleksiyonunu döndürmeden önce formüle koyun (yani, bir `ICollection<CloudTask>` `IList<CloudTask>` C# yineleyici kullanarak iş bölümlendiricisini uygulamak yerine bir veya döndürür)
 * Tüm görevlerin iş yöneticisinin başarılı bir şekilde tamamlanmasına bağlı olması için görev bağımlılıklarını kullanın
 
 **İş Yöneticisi yeniden denemeleri**
@@ -223,7 +223,7 @@ Genellikle istemcinin *Rundışlamalı* **değerini false**olarak ayarlaması g�
 
 İstemci, iş yöneticisinin yürütülebilir dosyasını (ve gerekli dll 'Leri) işlem düğümüne dağıtmaları için *ResourceFiles* veya *applicationpackagereferler* koleksiyonunu kullanmalıdır.
 
-Varsayılan olarak, iş yöneticisi başarısız olursa yeniden denenmeyecektir. İş Yöneticisi mantığınıza bağlı olarak, istemci yeniden denemeleri/*maxtaskretrycount*yöntemiyle *etkinleştirmek*isteyebilir.
+Varsayılan olarak, iş yöneticisi başarısız olursa yeniden denenmeyecektir. İş Yöneticisi mantığınıza bağlı olarak, istemci yeniden denemeleri *constraints* / *maxtaskretrycount*yöntemiyle etkinleştirmek isteyebilir.
 
 **İş ayarları**
 
@@ -345,9 +345,9 @@ Run () yöntemi, komut satırını başlatma, bir veya daha fazla işlem başlat
 
 Run () uygulamanızın erişimi vardır:
 
-* `_parameters` Alan aracılığıyla görev parametreleri.
-* `_jobId` Ve `_taskId` alanları aracılığıyla iş ve görev kimlikleri.
-* `_configuration` Alan aracılığıyla görev yapılandırması.
+* Alan aracılığıyla görev parametreleri `_parameters` .
+* Ve alanları aracılığıyla iş ve görev kimlikleri `_jobId` `_taskId` .
+* Alan aracılığıyla görev yapılandırması `_configuration` .
 
 **Görev hatası**
 
@@ -361,7 +361,7 @@ Görev Işlemcisi şablonuyla uygulanan bir görev işlemcisi görevi, olası ü
 | Kod | Açıklama |
 | --- | --- |
 | [Process. ExitCode][process_exitcode] |Görev işlemcisi tamamlamaya çalıştı. Bu, çağırılan programın başarılı olduğunu göstermez; yalnızca görev işlemcisinin başarıyla çağırdığına ve özel durumlar olmadan işlem sonrası işlemleri gerçekleştirdiğine unutmayın. Çıkış kodunun anlamı çağrılan programa bağlıdır – genellikle çıkış kodu 0, programın başarılı olduğu ve diğer çıkış kodunun programın başarısız olduğu anlamına gelir. |
-| 1 |Görev işlemcisi, programın "beklenen" bölümünde bir özel durumla başarısız oldu. Özel durum, tanılama bilgileri ve `TaskProcessorException` mümkün olduğunda hata çözme önerilerini içeren bir öğesine çevrilmiştir. |
+| 1 |Görev işlemcisi, programın "beklenen" bölümünde bir özel durumla başarısız oldu. Özel durum, `TaskProcessorException` Tanılama bilgileri ve mümkün olduğunda hata çözme önerilerini içeren bir öğesine çevrilmiştir. |
 | 2 |Görev işlemcisi ' beklenmeyen ' bir özel durumla başarısız oldu. Özel durum standart çıktıya oturum açtı, ancak görev işlemcisi herhangi bir ek tanılama veya düzeltme bilgisi ekleyemedi. |
 
 > [!NOTE]
@@ -383,7 +383,7 @@ job.CommonEnvironmentSettings = new [] {
 };
 ```
 
-Daha sonra depolama hesabı, `_configuration.StorageAccount` özelliği aracılığıyla taskprocessor sınıfında kullanılabilir.
+Daha sonra depolama hesabı, özelliği aracılığıyla TaskProcessor sınıfında kullanılabilir `_configuration.StorageAccount` .
 
 SAS ile bir kapsayıcı URL 'SI kullanmayı tercih ediyorsanız, bunu bir iş ortak ortamı ayarı aracılığıyla da geçirebilirsiniz, ancak görev işlemcisi şablonu şu anda bunun için yerleşik destek içermez.
 
@@ -401,13 +401,13 @@ Görevleri işe eklemeden önce, istemci veya iş yöneticisi görevinin görevl
 
 Batch hizmeti, `EnvironmentSettings` [Microsoft. Azure. Batch. jobmanagertask][net_jobmanagertask]özelliğini kullanarak ortam ayarlarını bir iş Yöneticisi görevine geçirmek için basit bir mekanizmaya sahiptir.
 
-Örneğin, bir Batch hesabının `BatchClient` örneğini almak için, istemci kodundan ortam değişkenleri olarak, Batch hesabının URL 'sini ve paylaşılan anahtar kimlik bilgilerini aktarabilirsiniz. Benzer şekilde, Batch hesabına bağlı depolama hesabına erişmek için, depolama hesabı adını ve depolama hesabı anahtarını ortam değişkenleri olarak geçirebilirsiniz.
+Örneğin, `BatchClient` bir Batch hesabının örneğini almak için, istemci kodundan ortam değişkenleri olarak, Batch hesabının URL 'sini ve paylaşılan anahtar kimlik bilgilerini aktarabilirsiniz. Benzer şekilde, Batch hesabına bağlı depolama hesabına erişmek için, depolama hesabı adını ve depolama hesabı anahtarını ortam değişkenleri olarak geçirebilirsiniz.
 
 ### <a name="pass-parameters-to-the-job-manager-template"></a>Parametreleri Iş Yöneticisi şablonuna geçirme
-Çoğu durumda, iş ayırma işlemini denetlemek veya iş için görevleri yapılandırmak üzere iş başına parametreleri iş Yöneticisi görevine geçirmek yararlı olur. Bunu, İş Yöneticisi görevi için bir kaynak dosyası olarak Parameters. JSON adlı bir JSON dosyasını karşıya yükleyerek yapabilirsiniz. Parametreler daha sonra Iş Yöneticisi şablonundaki `JobSplitter._parameters` alanda kullanılabilir hale gelebilir.
+Çoğu durumda, iş ayırma işlemini denetlemek veya iş için görevleri yapılandırmak üzere iş başına parametreleri iş Yöneticisi görevine geçirmek yararlı olur. Bunu, İş Yöneticisi görevi için bir kaynak dosyası olarak Parameters. JSON adlı bir JSON dosyasını karşıya yükleyerek yapabilirsiniz. Parametreler daha sonra `JobSplitter._parameters` Iş Yöneticisi şablonundaki alanda kullanılabilir hale gelebilir.
 
 > [!NOTE]
-> Yerleşik parametre işleyicisi yalnızca dize-dize sözlüklerini destekler. Karmaşık JSON değerlerini parametre değerleri olarak geçirmek istiyorsanız, bunları dizeler olarak iletmeniz ve bunları iş bölümlendiriculaşarak ayrıştırabilmeniz ya da Framework `Configuration.GetJobParameters` metodunu değiştirmeniz gerekir.
+> Yerleşik parametre işleyicisi yalnızca dize-dize sözlüklerini destekler. Karmaşık JSON değerlerini parametre değerleri olarak geçirmek istiyorsanız, bunları dizeler olarak iletmeniz ve bunları iş bölümlendiriculaşarak ayrıştırabilmeniz ya da Framework metodunu değiştirmeniz gerekir `Configuration.GetJobParameters` .
 > 
 > 
 
@@ -416,11 +416,11 @@ Ayrıca, parametreleri görev Işlemcisi şablonu kullanarak uygulanan tek tek g
 
 Parameters. JSON, ve bulunursa parametre sözlüğü olarak yükler. Parametreleri görev işlemcisi görevlerine geçirmeye yönelik birkaç seçenek vardır:
 
-* JSON iş parametrelerini yeniden kullanın. Yalnızca parametreler iş genelinde ise (örneğin, bir işleme yüksekliği ve genişliği), bu işlem iyi bir şekilde gerçekleşir. Bunu yapmak için, iş bölümlendiricbir CloudTask oluştururken, iş yöneticisi görevinin ResourceFiles (`JobSplitter._jobManagerTask.ResourceFiles`) öğesine Parameters. JSON kaynak dosyası nesnesine bir başvuru ekleyin.
+* JSON iş parametrelerini yeniden kullanın. Yalnızca parametreler iş genelinde ise (örneğin, bir işleme yüksekliği ve genişliği), bu işlem iyi bir şekilde gerçekleşir. Bunu yapmak için, iş bölümlendiricbir CloudTask oluştururken, iş yöneticisi görevinin ResourceFiles () öğesine Parameters. JSON kaynak dosyası nesnesine bir başvuru ekleyin `JobSplitter._jobManagerTask.ResourceFiles` .
 * Göreve özgü parametreler. JSON belgesini iş Bölümlendirici yürütmesinin parçası olarak oluşturup karşıya yükleyin ve görevin kaynak dosyaları koleksiyonunda blob 'a başvurun. Farklı görevler farklı parametrelere sahip ise bu gereklidir. Örnek, çerçeve dizininin bir parametre olarak göreve geçirildiği bir 3B işleme senaryosu olabilir.
 
 > [!NOTE]
-> Yerleşik parametre işleyicisi yalnızca dize-dize sözlüklerini destekler. Karmaşık JSON değerlerini parametre değerleri olarak geçirmek istiyorsanız, bunları dizeler olarak iletmeniz ve bunları görev işlemcisinde ayrıştırabilmeniz ya da Framework `Configuration.GetTaskParameters` metodunu değiştirmeniz gerekir.
+> Yerleşik parametre işleyicisi yalnızca dize-dize sözlüklerini destekler. Karmaşık JSON değerlerini parametre değerleri olarak geçirmek istiyorsanız, bunları dizeler olarak iletmeniz ve bunları görev işlemcisinde ayrıştırabilmeniz ya da Framework metodunu değiştirmeniz gerekir `Configuration.GetTaskParameters` .
 > 
 > 
 

@@ -1,15 +1,15 @@
 ---
-title: Sanal ağda havuz Sağlama-Azure Batch | Microsoft Docs
+title: Sanal ağda havuz sağlama
 description: Bir Azure sanal ağında, işlem düğümlerinin bir dosya sunucusu gibi ağdaki diğer VM 'lerle güvenli bir şekilde iletişim kurabilmesi için bir Batch havuzu oluşturma.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 616118d5f75f9bfa6d97d89baac9d7ea9186cd5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ca9a8bb60ecbea38da7dfdb44123d7201d6a112
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111904"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726290"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
 
@@ -53,7 +53,7 @@ Azure Batch havuzu işlem düğümlerinizin Zorlamalı tünel etkin olan bir VNe
 
 * Batch hizmetinin, görevleri zamanlamak için havuz işlem düğümleriyle iletişim kurması gerekir. Bu iletişimi etkinleştirmek için Batch hesabınızın bulunduğu bölgedeki Batch hizmeti tarafından kullanılan her IP adresi için Kullanıcı tanımlı bir yol ekleyin. Batch hizmetinin IP adreslerinin listesini edinme hakkında bilgi edinmek için bkz. [Şirket Içi hizmet etiketleri](../virtual-network/service-tags-overview.md). Batch hizmeti IP adresleri, `BatchNodeManagement` hizmet etiketiyle (veya Batch hesabı bölgesiyle eşleşen bölgesel değişkenle) ilişkilendirilir.
 
-* Azure Storage 'a giden trafiğin (özellikle, formun `<account>.table.core.windows.net` `<account>.queue.core.windows.net`URL 'leri, ve `<account>.blob.core.windows.net`) Şirket içi ağ gereciniz aracılığıyla engellenmediğinden emin olun.
+* Azure Storage 'a giden trafiğin (özellikle, formun URL 'Leri, `<account>.table.core.windows.net` `<account>.queue.core.windows.net` ve `<account>.blob.core.windows.net` ) Şirket içi ağ gereciniz aracılığıyla engellenmediğinden emin olun.
 
 Kullanıcı tanımlı bir yol eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve **sonraki atlama türünü** **Internet**olarak ayarlayın. Aşağıdaki örneğe bakın:
 

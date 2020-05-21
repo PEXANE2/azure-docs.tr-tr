@@ -1,15 +1,15 @@
 ---
-title: İşlem düğümlerine uygulama paketleri yükler
+title: İşlem düğümlerine uygulama paketleri dağıtma
 description: Toplu işlem düğümlerinde yüklenmek üzere birden çok uygulamayı ve sürümü kolayca yönetmek için Azure Batch uygulama paketleri özelliğini kullanın.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61e94ade21d8dd6fad2ba10dff87d4ba10333e3a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115627"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726885"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
 
@@ -123,13 +123,13 @@ Uygulama ayrıntılarında, uygulamanız için aşağıdaki ayarları yapıland�
 ### <a name="add-a-new-application"></a>Yeni uygulama ekle
 Yeni bir uygulama oluşturmak için bir uygulama paketi ekleyin ve yeni, benzersiz bir uygulama KIMLIĞI belirtin. Yeni uygulama KIMLIĞIYLE eklediğiniz ilk uygulama paketi de yeni bir uygulama oluşturur.
 
-**Uygulamalar** > **Ekle**' ye tıklayın.
+**Uygulamalar**  >  **Ekle**' ye tıklayın.
 
 ![Azure portal yeni uygulama dikey penceresi][5]
 
 Yeni **uygulama** penceresi, yeni uygulamanızın ve uygulama paketinizin ayarlarını belirtmek için aşağıdaki alanları sağlar.
 
-**Uygulama KIMLIĞI**
+**Uygulama Kimliği**
 
 Bu alan, standart Azure Batch KIMLIĞI doğrulama kurallarına tabi olan yeni uygulamanızın KIMLIĞINI belirtir. Uygulama KIMLIĞI sağlama kuralları aşağıdaki gibidir:
 
@@ -159,7 +159,7 @@ Bir dosya seçtikten sonra **Tamam** ' a tıklayarak Azure Storage 'a yükleme i
 > 
 
 ### <a name="add-a-new-application-package"></a>Yeni bir uygulama paketi Ekle
-Mevcut bir uygulama için bir uygulama paketi sürümü eklemek istiyorsanız, **uygulamalar** penceresinde bir uygulama seçin ve **paketler** > **Ekle**' ye tıklayın.
+Mevcut bir uygulama için bir uygulama paketi sürümü eklemek istiyorsanız, **uygulamalar** penceresinde bir uygulama seçin ve **paketler**  >  **Ekle**' ye tıklayın.
 
 ![Azure portal 'de uygulama paketi dikey penceresi ekleme][8]
 
@@ -239,7 +239,7 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 ```
 
 ## <a name="execute-the-installed-applications"></a>Yüklü uygulamaları yürütme
-Bir havuz veya görev için belirttiğiniz paketler, düğüm içindeki `AZ_BATCH_ROOT_DIR` adlandırılmış bir dizine indirilir ve ayıklanır. Batch Ayrıca, adlandırılmış dizinin yolunu içeren bir ortam değişkeni oluşturur. Görev komut satırlarında, düğümdeki uygulamaya başvururken bu ortam değişkeni kullanılır. 
+Bir havuz veya görev için belirttiğiniz paketler, düğüm içindeki adlandırılmış bir dizine indirilir ve ayıklanır `AZ_BATCH_ROOT_DIR` . Batch Ayrıca, adlandırılmış dizinin yolunu içeren bir ortam değişkeni oluşturur. Görev komut satırlarında, düğümdeki uygulamaya başvururken bu ortam değişkeni kullanılır. 
 
 Windows düğümlerinde, değişkeni aşağıdaki biçimdedir:
 
@@ -248,7 +248,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örneğin:
+Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örnek:
 
 ```
 Linux:

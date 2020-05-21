@@ -4,13 +4,13 @@ description: Standart Azure Batch özellikleri, işleme iş yüklerini ve uygula
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 3efe1dfa69de5ce41aed2152baa88b313fd928f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 867dfae570a1e2006b7eea568e3450050f485d9d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115763"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726477"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch işleme özellikleri
 
@@ -28,7 +28,7 @@ Bir Windows 2016 görüntüsü ve bir CentOS görüntüsü vardır.  [Azure Mark
 
 Örnek havuz yapılandırması için bkz. [Azure CLI işleme öğreticisi](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Azure portal ve Batch Explorer, bir havuz oluşturduğunuzda bir işleme VM görüntüsü seçmek için GUI araçları sağlar.  Bir Batch API 'SI kullanıyorsanız, bir havuz oluştururken [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) için aşağıdaki özellik değerlerini belirtin:
 
-| Yayımcı | Sunduğu | Sku | Sürüm |
+| Publisher | Sunduğu | Sku | Sürüm |
 |---------|---------|---------|--------|
 | toplu iş | işleme-centos73 | çizmeye | en son |
 | toplu iş | işleme-windows2016 | çizmeye | en son |
@@ -54,7 +54,7 @@ Kullanılacak uygulamalar ve havuz yapılandırmasında bir lisans ücreti belir
 
 Uygulamaları seçmek ve uygulama fiyatlarını göstermek için Azure portal veya Batch Explorer kullanabilirsiniz.
 
-Uygulama kullanma girişiminde bulunuldu, ancak uygulama havuz yapılandırmasının `applicationLicenses` özelliğinde belirtilemezse veya bir lisans sunucusuna ulaşmadıysa, uygulama yürütmesi bir lisanslama hatası ve sıfır olmayan çıkış kodu ile başarısız olur.
+Uygulama kullanma girişiminde bulunuldu, ancak uygulama `applicationLicenses` Havuz yapılandırmasının özelliğinde belirtilemezse veya bir lisans sunucusuna ulaşmadıysa, uygulama yürütmesi bir lisanslama hatası ve sıfır olmayan çıkış kodu ile başarısız olur.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Önceden yüklenmiş uygulamalar için ortam değişkenleri
 

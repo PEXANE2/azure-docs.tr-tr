@@ -1,5 +1,5 @@
 ---
-title: Azure Marketi 'nde Azure sanal makine teklifi oluşturma
+title: Azure Market 'te Azure sanal makine teklifi oluşturma
 description: Azure Marketi 'nde gerekli SKU ile sanal makine teklifi oluşturmayı öğrenin.
 author: emuench
 ms.author: mingshen
@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 25b7a619f6d3e308de966ead5925133f6094d9c8
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ab41d3619150ace8e55702792d5974060133d5c1
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701085"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726188"
 ---
-# <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>Azure Marketi 'nde Azure sanal makine teklifi oluşturma
-
-> [!IMPORTANT]
-> Azure VM tekliflerinizin yönetimini, Bulut İş Ortağı Portalı 'ten Iş ortağı merkezine taşıdık. Tekliflerinizi geçirene kadar, tekliflerinizi yönetmek için lütfen Bulut İş Ortağı Portalı [Sanal Makine teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer) bölümündeki yönergeleri izlemeye devam edin.
+# <a name="create-an-azure-virtual-machine-offer-in-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
 Bu makalede, Azure [Market 'te](https://azuremarketplace.microsoft.com/)bir Azure sanal makine teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır. Bir işletim sistemi, sanal sabit disk (VHD) ve en çok 16 veri diski içeren Windows ve Linux tabanlı sanal makinelere yöneliktir. Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: e01c61ca4f415ffbb46c86034d4b7441bc2617d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e121d94b27710eb952f98bf97c3b4e5602866f4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80365493"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724641"
 ---
 # <a name="managed-instance-t-sql-differences-and-limitations"></a>Yönetilen örnek T-SQL farkları ve sınırlamaları
 
@@ -50,31 +50,31 @@ Yönetilen örnekte bulunan ve gelecekte çözümlenecek olan geçici bilinen so
 
 ### <a name="backup"></a>Backup
 
-Yönetilen örneklerin otomatik yedeklemeleri vardır, böylece kullanıcılar tam veritabanı `COPY_ONLY` yedeklemeleri oluşturabilir. Fark, günlük ve dosya anlık görüntüsü yedeklemeleri desteklenmez.
+Yönetilen örneklerin otomatik yedeklemeleri vardır, böylece kullanıcılar tam veritabanı yedeklemeleri oluşturabilir `COPY_ONLY` . Fark, günlük ve dosya anlık görüntüsü yedeklemeleri desteklenmez.
 
 - Yönetilen bir örnek ile, bir örnek veritabanını yalnızca bir Azure Blob depolama hesabına yedekleyebilirsiniz:
   - Yalnızca `BACKUP TO URL` desteklenir.
-  - `FILE`, `TAPE`, ve yedekleme cihazları desteklenmez.
+  - `FILE`, `TAPE` , ve yedekleme cihazları desteklenmez.
 - Genel `WITH` seçeneklerin çoğu desteklenir.
   - `COPY_ONLY`zorunludur.
   - `FILE_SNAPSHOT`desteklenmez.
-  - Bant seçenekleri: `REWIND`, `NOREWIND`, `UNLOAD`, ve `NOUNLOAD` desteklenmez.
-  - Günlüğe özel seçenekler: `NORECOVERY`, `STANDBY`ve `NO_TRUNCATE` desteklenmez.
+  - Bant seçenekleri: `REWIND` , `NOREWIND` , `UNLOAD` , ve `NOUNLOAD` desteklenmez.
+  - Günlüğe özel seçenekler: `NORECOVERY` , `STANDBY` ve `NO_TRUNCATE` desteklenmez.
 
 Sınırlamalar: 
 
 - Yönetilen bir örnek ile, yedekleme sıkıştırması kullanılıyorsa 4 TB 'a kadar olan veritabanları için yeterli olan bir örnek veritabanını en fazla 32 şeritli bir yedeklemeye yedekleyebilirsiniz.
-- Hizmet tarafından yönetilen `BACKUP DATABASE ... WITH COPY_ONLY` saydam veri şifrelemesi (tde) ile şifrelenmiş bir veritabanında yürütemezsiniz. Hizmet tarafından yönetilen TDE, yedeklemelerin dahili bir TDE anahtarla şifrelenmesini zorlar. Anahtar verilemiyor, bu nedenle yedeklemeyi geri alamazsınız. Otomatik yedeklemeler ve zaman içinde geri yükleme kullanın veya bunun yerine [müşteri tarafından yönetilen (BYOK) TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) kullanın. Ayrıca, veritabanında şifrelemeyi devre dışı bırakabilirsiniz.
-- Yönetilen bir örnekteki `BACKUP` komutu kullanılarak en fazla yedekleme şeridi boyutu, en fazla BLOB boyutu olan 195 GB 'dir. Tek tek Stripe boyutunu azaltmak ve bu sınırın içinde kalmak için yedekleme komutundaki şeritler sayısını artırın.
+- `BACKUP DATABASE ... WITH COPY_ONLY`Hizmet tarafından yönetilen saydam veri şifrelemesi (TDE) ile şifrelenmiş bir veritabanında yürütemezsiniz. Hizmet tarafından yönetilen TDE, yedeklemelerin dahili bir TDE anahtarla şifrelenmesini zorlar. Anahtar verilemiyor, bu nedenle yedeklemeyi geri alamazsınız. Otomatik yedeklemeler ve zaman içinde geri yükleme kullanın veya bunun yerine [müşteri tarafından yönetilen (BYOK) TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) kullanın. Ayrıca, veritabanında şifrelemeyi devre dışı bırakabilirsiniz.
+- Yönetilen bir örnekteki komutu kullanılarak en fazla yedekleme şeridi boyutu, `BACKUP` en fazla BLOB boyutu olan 195 GB 'dir. Tek tek Stripe boyutunu azaltmak ve bu sınırın içinde kalmak için yedekleme komutundaki şeritler sayısını artırın.
 
     > [!TIP]
     > Bu kısıtlamayı geçici olarak çözmek için, bir veritabanını şirket içi bir ortamda veya bir sanal makinede SQL Server yedekleyerek şunları yapabilirsiniz:
     >
-    > - ' A yedeklemek `DISK` yerine uygulamasına yedekleyin `URL`.
+    > - ' A yedeklemek `DISK` yerine uygulamasına yedekleyin `URL` .
     > - Yedekleme dosyalarını blob depolamaya yükleyin.
     > - Yönetilen örneğe geri yükleyin.
     >
-    > Yönetilen `Restore` bir örnekteki komut, karşıya yüklenen yedekleme dosyalarının depolanması için farklı bir blob türü kullanıldığından, yedekleme dosyalarındaki daha büyük blob boyutlarını destekler.
+    > `Restore`Yönetilen bir örnekteki komut, karşıya yüklenen yedekleme dosyalarının depolanması için farklı bir blob türü kullanıldığından, yedekleme dosyalarındaki daha büyük blob boyutlarını destekler.
 
 T-SQL kullanarak yedeklemeler hakkında daha fazla bilgi için bkz. [yedekleme](/sql/t-sql/statements/backup-transact-sql).
 
@@ -84,16 +84,16 @@ T-SQL kullanarak yedeklemeler hakkında daha fazla bilgi için bkz. [yedekleme](
 
 Azure SQL veritabanı ve SQL Server veritabanlarında bulunan veritabanlarında denetim arasındaki temel farklılıklar şunlardır:
 
-- Azure SQL veritabanı 'ndaki yönetilen örnek dağıtım seçeneği ile, denetim sunucu düzeyinde çalışmaktadır. `.xel` Günlük dosyaları Azure Blob depolama alanında depolanır.
+- Azure SQL veritabanı 'ndaki yönetilen örnek dağıtım seçeneği ile, denetim sunucu düzeyinde çalışmaktadır. `.xel`Günlük dosyaları Azure Blob depolama alanında depolanır.
 - Azure SQL veritabanı 'nda tek veritabanı ve elastik havuz dağıtım seçenekleriyle denetim, veritabanı düzeyinde çalışmaktadır.
 - Şirket içi veya sanal makineler SQL Server, denetim sunucu düzeyinde çalışmaktadır. Olaylar dosya sistemi veya Windows olay günlüklerine depolanır.
  
 Yönetilen örnekteki XEvent denetimi Azure Blob depolama hedeflerini destekler. Dosya ve Windows günlükleri desteklenmez.
 
-Azure Blob depolamaya denetim için `CREATE AUDIT` söz diziminde önemli farklılıklar şunlardır:
+`CREATE AUDIT`Azure Blob depolamaya denetim için söz diziminde önemli farklılıklar şunlardır:
 
-- Dosyaların yerleştirildiği Azure `TO URL` BLOB depolama kapsayıcısının URL 'sini belirtmek için kullanabileceğiniz yeni bir sözdizimi sağlanır. `.xel`
-- Yönetilen bir `TO FILE` örnek Windows dosya paylaşımlarına erişemediği için sözdizimi desteklenmiyor.
+- `TO URL`Dosyaların yerleştirildiği Azure Blob depolama KAPSAYıCıSıNıN URL 'sini belirtmek için kullanabileceğiniz yeni bir sözdizimi sağlanır `.xel` .
+- `TO FILE`Yönetilen bir örnek Windows dosya paylaşımlarına erişemediği için sözdizimi desteklenmiyor.
 
 Daha fazla bilgi için bkz. 
 
@@ -105,8 +105,8 @@ Daha fazla bilgi için bkz.
 
 Yönetilen bir örnek dosya paylaşımlarına ve Windows klasörlerine erişemez, bu nedenle aşağıdaki kısıtlamalar geçerlidir:
 
-- `CREATE FROM` / `BACKUP TO`
-- `CREATE` / Sertifika `ASSEMBLY` desteklenmiyor. `FILE` `BACKUP` / Özel anahtar dosyaları kullanılamıyor. 
+- `CREATE FROM` / `BACKUP TO` Dosya sertifikalar için desteklenmiyor.
+- `CREATE` / `BACKUP` Sertifika `FILE` / `ASSEMBLY` desteklenmiyor. Özel anahtar dosyaları kullanılamıyor. 
 
 Bkz. SERTIFIKA ve [yedekleme sertifikası](/sql/t-sql/statements/backup-certificate-transact-sql) [oluşturma](/sql/t-sql/statements/create-certificate-transact-sql) . 
  
@@ -133,12 +133,12 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
 
 ### <a name="logins-and-users"></a>Oturum açma bilgileri ve kullanıcılar
 
-- , `FROM CERTIFICATE` `FROM ASYMMETRIC KEY`Ve `FROM SID` kullanılarak oluşturulan SQL oturum açmaları desteklenir. Bkz. [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql).
+- , Ve kullanılarak oluşturulan SQL oturum açmaları `FROM CERTIFICATE` `FROM ASYMMETRIC KEY` `FROM SID` desteklenir. Bkz. [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql).
 - Azure Active Directory (Azure AD), [oturum açma sözdizimi oluştur](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) veya [oturum açma işleminden Kullanıcı oluşturma [Azure AD oturum açma]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) sözdizimi kullanılarak oluşturulan sunucu sorumluları (oturumlar) desteklenir. Bu oturumlar sunucu düzeyinde oluşturulur.
 
-    Yönetilen örnek, söz dizimi `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`Ile Azure AD veritabanı sorumlularını destekler. Bu özellik, Azure AD içeren veritabanı kullanıcıları olarak da bilinir.
+    Yönetilen örnek, söz dizimi ile Azure AD veritabanı sorumlularını destekler `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` . Bu özellik, Azure AD içeren veritabanı kullanıcıları olarak da bilinir.
 
-- `CREATE LOGIN ... FROM WINDOWS` Sözdizimi ile oluşturulan Windows oturum açmaları desteklenmez. Azure Active Directory oturumlarını ve kullanıcıları kullanın.
+- Sözdizimi ile oluşturulan Windows oturum açmaları `CREATE LOGIN ... FROM WINDOWS` desteklenmez. Azure Active Directory oturumlarını ve kullanıcıları kullanın.
 - Örneği oluşturan Azure AD kullanıcısının [sınırsız yönetici ayrıcalıkları](sql-database-manage-logins.md)vardır.
 - Yönetici olmayan Azure AD Veritabanı düzeyi kullanıcılar `CREATE USER ... FROM EXTERNAL PROVIDER` söz dizimi kullanılarak oluşturulabilir. Bkz [. Kullanıcı oluşturma... Dış SAĞLAYıCıDAN](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
 - Azure AD Server sorumluları (oturum açmalar) yalnızca yönetilen bir örnek içindeki SQL özelliklerini destekler. Aynı Azure AD kiracısı veya farklı kiracılar dahilinde olup olmadıkları fark etmeksizin, Azure AD kullanıcıları için desteklenmez. Bu özelliklere örnek olarak şunlar verilebilir:
@@ -149,8 +149,8 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
 - Veritabanı sahibi olarak Azure AD grubuna eşlenmiş bir Azure AD oturum açmanın ayarlanması desteklenmez.
 - Diğer Azure AD sorumlularını kullanarak Azure AD sunucu düzeyi sorumluları 'nın kimliğe bürünme işlemi, [execute as](/sql/t-sql/statements/execute-as-transact-sql) yan tümcesi gibi desteklenir. FARKLı ÇALıŞTıR sınırlamaları şunlardır:
 
-  - Ad, oturum açma adından farklı olduğunda Azure AD kullanıcıları için Kullanıcı tarafından desteklenmez. Örneğin, kullanıcının LOGIN [john@contoso.com] ADLı Kullanıcı oluşturma [myaaduser] sözdizimi aracılığıyla oluşturulduğu ve kimliğe bürünme ÖZELLIĞI, exec as user = _myaaduser_aracılığıyla denendiğinde bir örnektir. Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluşturduğunuzda, user_name **oturum açma**işleminden aynı login_name olarak belirtin.
-  - Yalnızca `sysadmin` rolün parçası olan SQL Server düzeyi sorumlular (oturumlar), Azure AD sorumlularını hedefleyen aşağıdaki işlemleri yürütebilir:
+  - Ad, oturum açma adından farklı olduğunda Azure AD kullanıcıları için Kullanıcı tarafından desteklenmez. Örneğin, kullanıcının LOGIN [] adlı Kullanıcı oluşturma [myAadUser] sözdizimi aracılığıyla oluşturulduğu john@contoso.com ve kimliğe bürünme özelliği, exec as user = _myaaduser_aracılığıyla denendiğinde bir örnektir. Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluşturduğunuzda, user_name **oturum açma**işleminden aynı login_name olarak belirtin.
+  - Yalnızca rolün parçası olan SQL Server düzeyi sorumlular (oturumlar), `sysadmin` Azure AD sorumlularını hedefleyen aşağıdaki işlemleri yürütebilir:
 
     - KULLANıCı OLARAK YÜRÜT
     - OTURUM AÇMA OLARAK YÜRÜT
@@ -163,8 +163,8 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
     - Yönetilen örnekten bir veritabanını dışarı aktarın ve SQL Server (sürüm 2012 veya üzeri) içeri aktarın.
       - Bu yapılandırmada tüm Azure AD kullanıcıları, oturum açma bilgileri olmayan SQL veritabanı sorumluları (kullanıcılar) olarak oluşturulur. Kullanıcıların türü SQL olarak listelenir (sys. database_principals içinde SQL_USER olarak görünür). İzinleri ve rolleri SQL Server veritabanı meta verilerinde kalır ve kimliğe bürünme için kullanılabilir. Ancak, kimlik bilgilerini kullanarak SQL Server erişmek ve oturum açmak için kullanılamaz.
 
-- Yalnızca yönetilen örnek sağlama işlemi tarafından oluşturulan sunucu düzeyi asıl oturum açma, `securityadmin` veya `sysadmin`gibi sunucu rollerinin üyeleri veya sunucu düzeyinde herhangi BIR oturum açma iznini Değiştir ile diğer oturumlar, yönetilen örnek IÇIN ana veritabanında Azure AD Server sorumlularını (oturum açma) oluşturabilir.
-- Oturum açma bir SQL sorumlusu ise, yalnızca `sysadmin` rolün parçası olan oturum açma Işlemleri BIR Azure AD hesabı için oturum açma bilgileri oluşturmak üzere Oluştur komutunu kullanabilir.
+- Yalnızca yönetilen örnek sağlama işlemi tarafından oluşturulan sunucu düzeyi asıl oturum açma, veya gibi sunucu rollerinin üyeleri veya `securityadmin` `sysadmin` sunucu düzeyinde herhangi bir oturum açma iznini Değiştir ile diğer oturumlar, yönetilen örnek için ana VERITABANıNDA Azure AD Server sorumlularını (oturum açma) oluşturabilir.
+- Oturum açma bir SQL sorumlusu ise, yalnızca rolün parçası olan oturum açma işlemleri `sysadmin` bir Azure AD hesabı için oturum açma bilgileri oluşturmak üzere Oluştur komutunu kullanabilir.
 - Azure AD oturum açma, Azure SQL veritabanı yönetilen örneği için kullanılan aynı dizin içinde bir Azure AD 'nin üyesi olmalıdır.
 - Azure AD Server sorumluları (oturum açmalar), SQL Server Management Studio 18,0 Preview 5 ' te başlayan Nesne Gezgini görünür.
 - Azure AD yönetici hesabıyla çakışan Azure AD Server sorumlularına (oturum açmalar) izin verilir. Sorumluyu çözümlediğinizde ve yönetilen örneğe izinleri uyguladığınızda Azure AD Server sorumluları (oturum açmalar) Azure AD Yöneticisi üzerinden önceliklidir.
@@ -217,21 +217,21 @@ Daha fazla bilgi için bkz. [alter database set Partner, TANıK ayarla](/sql/t-s
 - Birden çok günlük dosyası desteklenmez.
 - Bellek içi nesneler Genel Amaçlı hizmeti katmanında desteklenmez. 
 - Her veritabanı için en fazla 280 dosya Genel Amaçlı örnek başına 280 dosya sınırı vardır. Genel Amaçlı katmanındaki veriler ve günlük dosyaları bu sınıra doğru sayılır. [İş açısından kritik katmanı veritabanı başına 32.767 dosyasını destekler](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
-- Veritabanı FILESTREAM verileri içeren dosya gruplarını içeremez. . Bak veri içeriyorsa `FILESTREAM` geri yükleme başarısız olur. 
+- Veritabanı FILESTREAM verileri içeren dosya gruplarını içeremez. . Bak veri içeriyorsa geri yükleme başarısız olur `FILESTREAM` . 
 - Her dosya Azure Blob depolama alanına yerleştirilir. Dosya başına GÇ ve aktarım hızı her bir dosyanın boyutuna bağlıdır.
 
 #### <a name="create-database-statement"></a>CREATE DATABASE ekstresi
 
-Aşağıdaki sınırlamalar şunlar için `CREATE DATABASE`geçerlidir:
+Aşağıdaki sınırlamalar şunlar için geçerlidir `CREATE DATABASE` :
 
 - Dosyalar ve dosya grupları tanımlanamıyor. 
-- `CONTAINMENT` Seçenek desteklenmiyor. 
+- `CONTAINMENT`Seçenek desteklenmiyor. 
 - `WITH`Seçenekler desteklenmez. 
    > [!TIP]
-   > Geçici bir çözüm olarak, `ALTER DATABASE` dosya `CREATE DATABASE` eklemek veya kapsama ayarlamak için veritabanı seçeneklerini ayarlamak üzere sonra ' yi kullanın. 
+   > Geçici bir çözüm olarak, `ALTER DATABASE` `CREATE DATABASE` dosya eklemek veya kapsama ayarlamak için veritabanı seçeneklerini ayarlamak üzere sonra ' yi kullanın. 
 
-- `FOR ATTACH` Seçenek desteklenmiyor.
-- `AS SNAPSHOT OF` Seçenek desteklenmiyor.
+- `FOR ATTACH`Seçenek desteklenmiyor.
+- `AS SNAPSHOT OF`Seçenek desteklenmiyor.
 
 Daha fazla bilgi için bkz. [veritabanı oluşturma](/sql/t-sql/statements/create-database-sql-server-transact-sql).
 
@@ -239,8 +239,8 @@ Daha fazla bilgi için bkz. [veritabanı oluşturma](/sql/t-sql/statements/creat
 
 Bazı dosya özellikleri ayarlanamaz veya değiştirilemez:
 
-- `ALTER DATABASE ADD FILE (FILENAME='path')` T-SQL ifadesinde bir dosya yolu belirtilemez. Yönetilen `FILENAME` bir örnek dosyaları otomatik olarak yerleştirtiğinden, betikten kaldır. 
-- Bir dosya adı, `ALTER DATABASE` ifadesini kullanarak değiştirilemez.
+- T-SQL ifadesinde bir dosya yolu belirtilemez `ALTER DATABASE ADD FILE (FILENAME='path')` . `FILENAME`Yönetilen bir örnek dosyaları otomatik olarak yerleştirtiğinden, betikten kaldır. 
+- Bir dosya adı, ifadesini kullanarak değiştirilemez `ALTER DATABASE` .
 
 Aşağıdaki seçenekler varsayılan olarak ayarlanır ve değiştirilemez:
 
@@ -275,7 +275,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
 ### <a name="sql-server-agent"></a>SQL Server Agent
 
 - SQL Server Agent etkinleştirme ve devre dışı bırakma Şu anda yönetilen örnekte desteklenmiyor. SQL Aracısı her zaman çalışır.
-- SQL Server Agent ayarları salt okunurdur. Yordam `sp_set_agent_properties` , yönetilen örnekte desteklenmez. 
+- SQL Server Agent ayarları salt okunurdur. Yordam, `sp_set_agent_properties` yönetilen örnekte desteklenmez. 
 - İşler
   - T-SQL iş adımları desteklenir.
   - Aşağıdaki çoğaltma işleri desteklenir:
@@ -290,7 +290,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
   - Yönetilen örnekler, örneğin Robocopy aracılığıyla ağ paylaşımları gibi dış kaynaklara erişemez. 
   - SQL Server Analysis Services desteklenmez.
 - Bildirimler kısmen desteklenir.
-- E-posta bildirimi desteklenir, ancak bir Veritabanı Postası profili yapılandırmanızı gerektirir. SQL Server Agent yalnızca bir Veritabanı Postası profili kullanabilir ve çağrılması `AzureManagedInstance_dbmail_profile`gerekir. 
+- E-posta bildirimi desteklenir, ancak bir Veritabanı Postası profili yapılandırmanızı gerektirir. SQL Server Agent yalnızca bir Veritabanı Postası profili kullanabilir ve çağrılması gerekir `AzureManagedInstance_dbmail_profile` . 
   - Sayfalayıcı desteklenmiyor.
   - NetSend desteklenmez.
   - Uyarılar henüz desteklenmiyor.
@@ -324,20 +324,20 @@ Tablo oluşturma ve değiştirme hakkında daha fazla bilgi için bkz. [Create T
 Yönetilen bir örnek dosya paylaşımlarına ve Windows klasörlerine erişemez, bu nedenle dosyalar Azure Blob depolamadan içeri aktarılmalıdır:
 
 - `DATASOURCE`, `BULK INSERT` Azure Blob depolamadan dosyaları içeri aktarırken komutunda gereklidir. Bkz. [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql).
-- `DATASOURCE`, Azure Blob depolama `OPENROWSET` alanındaki bir dosyanın içeriğini okurken işlevinde gereklidir. Bkz. [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
+- `DATASOURCE`, `OPENROWSET` Azure Blob depolama alanındaki bir dosyanın içeriğini okurken işlevinde gereklidir. Bkz. [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
 - `OPENROWSET`diğer Azure SQL tek veritabanlarından, yönetilen örneklerden veya SQL Server örneklerinden veri okumak için kullanılabilir. Oracle veritabanları veya Excel dosyaları gibi diğer kaynaklar desteklenmez.
 
 ### <a name="clr"></a>CLR
 
 Yönetilen bir örnek dosya paylaşımlarına ve Windows klasörlerine erişemez, bu nedenle aşağıdaki kısıtlamalar geçerlidir:
 
-- Yalnızca `CREATE ASSEMBLY FROM BINARY` desteklenir. Bkz. [Assem 'dan](/sql/t-sql/statements/create-assembly-transact-sql)bir şekilde oluşturma. 
+- Yalnızca `CREATE ASSEMBLY FROM BINARY` desteklenir. Bkz. [IKILIDEN derleme oluşturma](/sql/t-sql/statements/create-assembly-transact-sql). 
 - `CREATE ASSEMBLY FROM FILE`desteklenmez. Bkz. [dosyadan derleme oluşturma](/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY`dosyalara başvurulamıyor. Bkz. [alter assembly](/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Veritabanı Postası (db_mail)
- - `sp_send_dbmail`parametre kullanılarak @file_attachments ekler gönderilemez. Yerel dosya sistemi ve dış paylaşımlar veya Azure Blob depolamaya bu yordamdan erişilemez.
- - `@query` Parametreli ve kimlik doğrulamasıyla ilgili bilinen sorunlara bakın.
+ - `sp_send_dbmail`parametre kullanılarak ekler gönderilemez @file_attachments . Yerel dosya sistemi ve dış paylaşımlar veya Azure Blob depolamaya bu yordamdan erişilemez.
+ - `@query`Parametreli ve kimlik doğrulamasıyla ilgili bilinen sorunlara bakın.
  
 ### <a name="dbcc"></a>DBCC
 
@@ -345,7 +345,7 @@ SQL Server ' de etkin olan belgelenmemiş DBCC deyimleri yönetilen örneklerde 
 
 - Yalnızca sınırlı sayıda genel Izleme bayrağı desteklenir. Oturum düzeyi `Trace flags` desteklenmiyor. Bkz. [izleme bayrakları](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF](/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) ve [DBCC TRACEON](/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) , sınırlı sayıda Global Trace-Flags ile çalışır.
-- Veritabanı `SINGLE_USER` modda ayarlanamadığı için REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST ve REPAIR_REBUILD SEÇENEKLERIYLE [DBCC CHECKDB](/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) kullanılamıyor-bkz. [alter database farkları](#alter-database-statement). Olası veritabanı bozuklukları Azure destek ekibi tarafından işlenir. Yaşıyorsanız veritabanında düzeltilmesi gereken bir veritabanı bozulması varsa Azure desteği 'ne başvurun.
+- Veritabanı modda ayarlanamadığı için REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST ve REPAIR_REBUILD seçenekleriyle [DBCC CHECKDB](/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) kullanılamıyor `SINGLE_USER` -bkz. [alter database farkları](#alter-database-statement). Olası veritabanı bozuklukları Azure destek ekibi tarafından işlenir. Yaşıyorsanız veritabanında düzeltilmesi gereken bir veritabanı bozulması varsa Azure desteği 'ne başvurun.
 
 ### <a name="distributed-transactions"></a>Dağıtılmış işlemler
 
@@ -355,8 +355,8 @@ SQL Server ' de etkin olan belgelenmemiş DBCC deyimleri yönetilen örneklerde 
 
 Genişletilmiş olaylar (XEvents) için Windows 'a özgü bazı hedefler desteklenmez:
 
-- `etw_classic_sync` Hedef desteklenmiyor. Azure `.xel` blob depolamada dosyaları depolayın. [Etw_classic_sync hedefi](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target)' ne bakın.
-- `event_file` Hedef desteklenmiyor. Azure `.xel` blob depolamada dosyaları depolayın. [Event_file hedefi](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target)' ne bakın.
+- `etw_classic_sync`Hedef desteklenmiyor. `.xel`Azure Blob depolamada dosyaları depolayın. [Etw_classic_sync hedefi](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target)' ne bakın.
+- `event_file`Hedef desteklenmiyor. `.xel`Azure Blob depolamada dosyaları depolayın. [Event_file hedefi](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target)' ne bakın.
 
 ### <a name="external-libraries"></a>Dış kitaplıklar
 
@@ -365,7 +365,7 @@ Veritabanı içi R ve Python, dış kitaplıklar henüz desteklenmiyor. Bkz. [SQ
 ### <a name="filestream-and-filetable"></a>FILESTREAM ve FileTable
 
 - FILESTREAM verileri desteklenmez.
-- Veritabanı, verileri içeren `FILESTREAM` dosya grupları içeremez.
+- Veritabanı, verileri içeren dosya grupları içeremez `FILESTREAM` .
 - `FILETABLE`desteklenmez.
 - Tablolarda tür olamaz `FILESTREAM` .
 - Aşağıdaki işlevler desteklenmez:
@@ -387,14 +387,14 @@ Yönetilen örneklerdeki bağlı sunucular sınırlı sayıda hedef destekler:
 
 - Desteklenen hedefler yönetilen örnekler, tek veritabanları ve SQL Server örneklerdir. 
 - Bağlı sunucular dağıtılmış yazılabilir işlemleri (MS DTC) desteklemez.
-- Desteklenmeyen hedefler dosya, Analysis Services ve diğer RDBMS ' dir. Dosya içeri aktarma için alternatif olarak veya `BULK INSERT` `OPENROWSET` kullanarak Azure Blob depolama 'dan yerel CSV içeri aktarmayı kullanmayı deneyin.
+- Desteklenmeyen hedefler dosya, Analysis Services ve diğer RDBMS ' dir. `BULK INSERT` `OPENROWSET` Dosya içeri aktarma için alternatif olarak veya kullanarak Azure Blob depolama 'DAN yerel CSV içeri aktarmayı kullanmayı deneyin.
 
 İşlemler
 
 - Çapraz örnek yazma işlemleri desteklenmez.
 - `sp_dropserver`, bağlı bir sunucunun atılması için desteklenir. Bkz. [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
-- `OPENROWSET` İşlevi yalnızca SQL Server örneklerinde sorgu yürütmek için kullanılabilir. Bunlar yönetilen, şirket içi veya sanal makinelerde olabilir. Bkz. [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
-- `OPENDATASOURCE` İşlevi yalnızca SQL Server örneklerinde sorgu yürütmek için kullanılabilir. Bunlar yönetilen, şirket içi veya sanal makinelerde olabilir. Yalnızca `SQLNCLI`, `SQLNCLI11`ve `SQLOLEDB` değerleri sağlayıcı olarak desteklenir. `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` bunun bir örneğidir. Bkz. [opendatasource](/sql/t-sql/functions/opendatasource-transact-sql).
+- `OPENROWSET`İşlevi yalnızca SQL Server örneklerinde sorgu yürütmek için kullanılabilir. Bunlar yönetilen, şirket içi veya sanal makinelerde olabilir. Bkz. [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
+- `OPENDATASOURCE`İşlevi yalnızca SQL Server örneklerinde sorgu yürütmek için kullanılabilir. Bunlar yönetilen, şirket içi veya sanal makinelerde olabilir. Yalnızca `SQLNCLI` , `SQLNCLI11` ve `SQLOLEDB` değerleri sağlayıcı olarak desteklenir. `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` bunun bir örneğidir. Bkz. [opendatasource](/sql/t-sql/functions/opendatasource-transact-sql).
 - Bağlı sunucular ağ paylaşımlarından dosyaları (Excel, CSV) okumak için kullanılamaz. Azure Blob depolamadan CSV dosyalarını okuyan [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) veya [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) kullanmayı deneyin. Bu istekleri [yönetilen örnek geri bildirim öğesinde](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources) izle|
 
 ### <a name="polybase"></a>PolyBase
@@ -428,23 +428,23 @@ Yönetilen örneklerdeki bağlı sunucular sınırlı sayıda hedef destekler:
   - `FROM URL`(Azure Blob depolama) desteklenen tek seçenektir.
   - `FROM DISK`/`TAPE`/Backup cihazı desteklenmiyor.
   - Yedekleme kümeleri desteklenmez.
-- `WITH`Seçenekler, `DIFFERENTIAL` veya `STATS`gibi desteklenmez.
-- `ASYNC RESTORE`: Geri yükleme, istemci bağlantısı kesilse bile devam eder. Bağlantınız atıldıysanız, geri yükleme işleminin durumunun `sys.dm_operation_status` görünümünü ve bir oluşturma ve bırakma veritabanı için görünümü kontrol edebilirsiniz. Bkz. [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `WITH`Seçenekler, veya gibi desteklenmez `DIFFERENTIAL` `STATS` .
+- `ASYNC RESTORE`: Geri yükleme, istemci bağlantısı kesilse bile devam eder. Bağlantınız atıldıysanız, `sys.dm_operation_status` geri yükleme işleminin durumunun görünümünü ve bır oluşturma ve bırakma veritabanı için görünümü kontrol edebilirsiniz. Bkz. [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Aşağıdaki veritabanı seçenekleri ayarlanır veya geçersiz kılınır ve daha sonra değiştirilemez: 
 
 - `NEW_BROKER`Aracı. bak dosyasında etkinleştirilmemişse. 
 - `ENABLE_BROKER`Aracı. bak dosyasında etkinleştirilmemişse. 
-- `AUTO_CLOSE=OFF`. bak dosyasındaki bir veritabanı varsa `AUTO_CLOSE=ON`. 
-- `RECOVERY FULL`. bak dosyasındaki bir veritabanının `SIMPLE` veya `BULK_LOGGED` kurtarma modu varsa.
+- `AUTO_CLOSE=OFF`. bak dosyasındaki bir veritabanı varsa `AUTO_CLOSE=ON` . 
+- `RECOVERY FULL`. bak dosyasındaki bir veritabanının `SIMPLE` veya `BULK_LOGGED` Kurtarma modu varsa.
 - Bellek için iyileştirilmiş bir dosya grubu eklenir ve kaynak. bak dosyasında yoksa XTP çağırılır. 
 - Bellek için iyileştirilmiş mevcut dosya grubu XTP olarak yeniden adlandırılır. 
-- `SINGLE_USER`ve `RESTRICTED_USER` seçenekleri öğesine `MULTI_USER`dönüştürülür.
+- `SINGLE_USER`ve `RESTRICTED_USER` seçenekleri öğesine dönüştürülür `MULTI_USER` .
 
 Sınırlamalar: 
 
-- Bozulan veritabanlarının yedeklemeleri, bozulmanın türüne bağlı olarak geri yüklenebilir, ancak bozulma düzeltilinceye kadar otomatik yedeklemeler alınmaz. Bu sorunu engellemek için kaynak `DBCC CHECKDB` örneği üzerinde çalıştırdığınızdan ve yedeklemeyi `WITH CHECKSUM` kullandığınızdan emin olun.
-- Bu belgede `.BAK` (örneğin, `FILESTREAM` veya `FILETABLE` nesneler) açıklanan herhangi bir kısıtlamayı Içeren bir veritabanının dosyasının geri yüklenmesi yönetilen örnek üzerinde geri yüklenemez.
+- Bozulan veritabanlarının yedeklemeleri, bozulmanın türüne bağlı olarak geri yüklenebilir, ancak bozulma düzeltilinceye kadar otomatik yedeklemeler alınmaz. `DBCC CHECKDB`Bu sorunu engellemek için kaynak örneği üzerinde çalıştırdığınızdan ve yedeklemeyi kullandığınızdan emin olun `WITH CHECKSUM` .
+- `.BAK`Bu belgede (örneğin, veya nesneler) açıklanan herhangi bir kısıtlamayı içeren bir veritabanının dosyasının geri yüklenmesi `FILESTREAM` `FILETABLE` yönetilen örnek üzerinde geri yüklenemez.
 - `.BAK`birden çok yedekleme kümesi içeren dosyalar geri yüklenemez. 
 - `.BAK`birden çok günlük dosyası içeren dosyalar geri yüklenemez.
 - 8 TB 'den büyük veritabanları, etkin bellek içi OLTP nesneleri veya örnek başına 280 dosya aşılacak dosya sayısı bir Genel Amaçlı örneğine geri yüklenemez. 
@@ -459,8 +459,8 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](/sql
 Çapraz örnek hizmet Aracısı desteklenmez:
 
 - `sys.routes`: Bir önkoşul olarak sys. Routes adresini seçmeniz gerekir. Adresin her rotada yerel olması gerekir. Bkz. [sys. Routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE`: İle `CREATE ROUTE` `ADDRESS` kullanamazsınız `LOCAL`. Bkz. [yol oluşturma](/sql/t-sql/statements/create-route-transact-sql).
-- `ALTER ROUTE`: İle `ALTER ROUTE` `ADDRESS` kullanamazsınız `LOCAL`. Bkz. [yol değiştirme](/sql/t-sql/statements/alter-route-transact-sql). 
+- `CREATE ROUTE`: `CREATE ROUTE` İle kullanamazsınız `ADDRESS` `LOCAL` . Bkz. [yol oluşturma](/sql/t-sql/statements/create-route-transact-sql).
+- `ALTER ROUTE`: `ALTER ROUTE` İle kullanamazsınız `ADDRESS` `LOCAL` . Bkz. [yol değiştirme](/sql/t-sql/statements/alter-route-transact-sql). 
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Saklı yordamlar, işlevler ve Tetikleyiciler
 
@@ -474,8 +474,8 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](/sql
   - `remote proc trans`
 - `sp_execute_external_scripts`desteklenmez. Bkz. [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell`desteklenmez. Bkz. [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures`, ve `sp_addextendedproc`   `sp_dropextendedproc`içeren desteklenmez. Bkz. [genişletilmiş saklı yordamlar](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
-- `sp_attach_db`, `sp_attach_single_file_db`ve `sp_detach_db` desteklenmez. Bkz. [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)ve [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
+- `Extended stored procedures`, ve içeren desteklenmez `sp_addextendedproc`   `sp_dropextendedproc` . Bkz. [genişletilmiş saklı yordamlar](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
+- `sp_attach_db`, `sp_attach_single_file_db` ve `sp_detach_db` desteklenmez. Bkz. [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)ve [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
 ### <a name="system-functions-and-variables"></a>Sistem işlevleri ve değişkenler
 
@@ -483,9 +483,9 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 
 - `SERVERPROPERTY('EngineEdition')`8 değerini döndürür. Bu özellik yönetilen bir örneği benzersiz bir şekilde tanımlar. Bkz. [ServerProperty](/sql/t-sql/functions/serverproperty-transact-sql).
 - `SERVERPROPERTY('InstanceName')`SQL Server için var olduğu gibi örnek kavramı yönetilen bir örneğe uygulanamadığından NULL değerini döndürür. Bkz. [ServerProperty (' ÖrnekAdı ')](/sql/t-sql/functions/serverproperty-transact-sql).
-- `@@SERVERNAME`tam DNS "bağlanılabilir" adı döndürür, örneğin, my-managed-instance.wcus17662feb9ce98.database.windows.net. Bkz [.@SERVERNAME@](/sql/t-sql/functions/servername-transact-sql). 
-- `SYS.SERVERS`"ad" ve "data_source" özellikleri gibi bir tam `myinstance.domain.database.windows.net` DNS "bağlanılabilir" adı döndürür. Bkz [. sys. Sunucu](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
-- `@@SERVICENAME`SQL Server için mevcut hizmet kavramı yönetilen bir örneğe uygulanamadığından NULL değerini döndürür. Bkz [.@SERVICENAME@](/sql/t-sql/functions/servicename-transact-sql).
+- `@@SERVERNAME`tam DNS "bağlanılabilir" adı döndürür, örneğin, my-managed-instance.wcus17662feb9ce98.database.windows.net. Bkz [. @SERVERNAME @](/sql/t-sql/functions/servername-transact-sql). 
+- `SYS.SERVERS``myinstance.domain.database.windows.net`"ad" ve "data_source" özellikleri gibi bir tam DNS "bağlanılabilir" adı döndürür. Bkz [. sys. Sunucu](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
+- `@@SERVICENAME`SQL Server için mevcut hizmet kavramı yönetilen bir örneğe uygulanamadığından NULL değerini döndürür. Bkz [. @SERVICENAME @](/sql/t-sql/functions/servicename-transact-sql).
 - `SUSER_ID`desteklenir. Azure AD oturum açma, sys. syslogins içinde değilse NULL değerini döndürür. Bkz. [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
 - `SUSER_SID`desteklenmez. Yanlış veriler döndürülür, bu geçici olarak bilinen bir sorundur. Bkz. [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql). 
 
@@ -505,7 +505,7 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 
 ### <a name="tempdb"></a>'Nın
 
-Genel Amaçlı katmanındaki en büyük dosya `tempdb` boyutu, çekirdek BAŞıNA 24 GB 'den büyük olamaz. İş Açısından Kritik katmanındaki `tempdb` en büyük boyut, örnek depolama boyutuyla sınırlıdır. `Tempdb`günlük dosyası boyutu Genel Amaçlı katmanında 120 GB ile sınırlıdır. Bazı sorgular, üzerinde `tempdb` çekirdek BAŞıNA 24 GB 'den fazla gereksinim duyduklarında veya 120 GB 'den fazla günlük verisi ürettiklerinde bir hata döndürebilir.
+Genel Amaçlı katmanındaki en büyük dosya boyutu, `tempdb` çekirdek başına 24 GB 'den büyük olamaz. `tempdb`İş açısından kritik katmanındaki en büyük boyut, örnek depolama boyutuyla sınırlıdır. `Tempdb`günlük dosyası boyutu Genel Amaçlı katmanında 120 GB ile sınırlıdır. Bazı sorgular, üzerinde çekirdek başına 24 GB 'den fazla gereksinim duyduklarında `tempdb` veya 120 GB 'den fazla günlük verisi ürettiklerinde bir hata döndürebilir.
 
 ### <a name="msdb"></a>MSDB
 

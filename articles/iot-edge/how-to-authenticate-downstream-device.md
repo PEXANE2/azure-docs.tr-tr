@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 999204cf2fc8ce18b42f873b9d34af4e6c08052b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3edd29703f74c7671537fbcf08159dd830e5453c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411506"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726235"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -59,7 +59,7 @@ Aynı işlemi gerçekleştirmek için [Azure CLI Için IoT uzantısı](https://g
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
-Cihaz oluşturma ve üst/alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) komutları için başvuru içeriği.
+Cihaz oluşturma ve üst/alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) komutları için başvuru içeriği.
 
 
 Sonra, cihazınızın ağ geçidi aracılığıyla bağlanmayı bilmesi için [bağlantı dizesini alın ve değiştirin](#retrieve-and-modify-connection-string) .
@@ -109,7 +109,7 @@ Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uz
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Cihaz oluşturma, sertifika oluşturma ve üst ve alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) komutları için başvuru içeriği.
+Cihaz oluşturma, sertifika oluşturma ve üst ve alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) komutları için başvuru içeriği.
 
 Sonra, cihazınızın ağ geçidi aracılığıyla bağlanmayı bilmesi için [bağlantı dizesini alın ve değiştirin](#retrieve-and-modify-connection-string) .
 
@@ -152,7 +152,7 @@ Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uz
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-Daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) komutları IÇIN Azure CLI başvuru içeriği.
+Daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) komutları IÇIN Azure CLI başvuru içeriği.
 
 Sonra, cihazınızın ağ geçidi aracılığıyla bağlanmayı bilmesi için [bağlantı dizesini alın ve değiştirin](#retrieve-and-modify-connection-string) .
 
@@ -173,7 +173,7 @@ Hepsi birlikte, bir bağlantı dizesinin tamamı şöyle görünür:
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
-Bu aşağı akış cihazı için bir üst/alt ilişki kurduysanız, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. X. 509.440 kimlik doğrulaması için üst/alt ilişkileri gerekir, ancak simetrik anahtar kimlik doğrulaması için isteğe bağlıdır. Örneğin:
+Bu aşağı akış cihazı için bir üst/alt ilişki kurduysanız, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. X. 509.440 kimlik doğrulaması için üst/alt ilişkileri gerekir, ancak simetrik anahtar kimlik doğrulaması için isteğe bağlıdır. Örnek:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

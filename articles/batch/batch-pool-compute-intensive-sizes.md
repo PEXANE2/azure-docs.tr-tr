@@ -1,19 +1,18 @@
 ---
 title: Batch ile yoğun işlem kullanan Azure VM 'Leri kullanma
 description: Azure Batch havuzlarındaki HPC ve GPU sanal makine boyutlarının avantajlarından yararlanın. İşletim sistemi bağımlılıkları hakkında bilgi edinin ve çeşitli senaryo örneklerine bakın.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/17/2018
-ms.author: labrenne
-ms.openlocfilehash: 674ee6c5b96c7aaf2926b51824488d03fc56d0a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04e39678c77604bca4194bebc7968c5c43fb019c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115967"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724097"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch havuzlarında RDMA veya GPU örnekleri kullanma
 
-Belirli toplu işleri çalıştırmak için, büyük ölçekli hesaplama için tasarlanan Azure VM boyutlarının avantajlarından yararlanabilirsiniz. Örneğin:
+Belirli toplu işleri çalıştırmak için, büyük ölçekli hesaplama için tasarlanan Azure VM boyutlarının avantajlarından yararlanabilirsiniz. Örnek:
 
 * Çoklu örnek [MPI iş yüklerini](batch-mpi.md)çalıştırmak Için, H serisi veya uzak doğrudan bellek ERIŞIMI (RDMA) için bir ağ arabirimine sahip diğer boyutları seçin. Bu boyutlar, DEVI uygulamalarını hızlandırabilen, düğümler arası iletişim için bir InfiniBand ağına bağlanır. 
 
@@ -101,7 +100,7 @@ CUDA uygulamalarını bir Windows NC düğümü havuzunda çalıştırmak için 
 | Ayar | Değer |
 | ---- | ----- | 
 | **Görüntü Türü** | Market (Linux/Windows) |
-| **'In** | MicrosoftWindowsServer |
+| **Publisher** | MicrosoftWindowsServer |
 | **Sunduğu** | WindowsServer |
 | **İsteyin** | 2016-veri merkezi |
 | **Düğüm boyutu** | NC6 standart |
@@ -155,7 +154,7 @@ Batch API 'Lerini veya Azure portal kullanarak, bu görüntüyü kullanarak ve i
 | Ayar | Değer |
 | ---- | ---- |
 | **Görüntü Türü** | Market (Linux/Windows) |
-| **'In** | OpenLogic |
+| **Publisher** | OpenLogic |
 | **Sunduğu** | CentOS-HPC |
 | **İsteyin** | 7.4 |
 | **Düğüm boyutu** | H16r standart |

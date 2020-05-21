@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 06c28c2e0df7333d0c2d6f735ae0758bcd93191a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 798da0261dbb692d411f1bb568a272a6bb7dbb03
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685399"
+ms.locfileid: "83715673"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Otomasyonu 'nda kimlik bilgilerini yönetme
 
@@ -138,7 +138,7 @@ Grafik `Get-AutomationPSCredential` Düzenleyicinin Kitaplık bölmesinde kimlik
 
 ![Tuvale kimlik bilgisi ekle](../media/credentials/credential-add-canvas.png)
 
-Aşağıdaki görüntüde bir grafik runbook 'unda kimlik bilgisi kullanmanın bir örneği gösterilmektedir. Bu durumda kimlik bilgileri, Azure ['da kimlik doğrulaması yapmak için Azure Otomasyonu 'nda Azure ad kullanma](../automation-use-azure-ad.md)bölümünde açıklandığı gibi, bir runbook için Azure kaynaklarına yönelik kimlik doğrulaması sağlar. İlk etkinlik, Azure aboneliğine erişimi olan kimlik bilgisini alır. Daha sonra hesap bağlantısı etkinliği bu kimlik bilgisini, bundan sonra gelen etkinlikler için kimlik doğrulaması sağlamak üzere kullanır. Tek bir nesne beklediği için burada bir işlem [hattı bağlantısı](../automation-graphical-authoring-intro.md#links-and-workflow) kullanılır `Get-AutomationPSCredential` .  
+Aşağıdaki görüntüde bir grafik runbook 'unda kimlik bilgisi kullanmanın bir örneği gösterilmektedir. Bu durumda kimlik bilgileri, Azure ['da kimlik doğrulaması yapmak için Azure Otomasyonu 'nda Azure ad kullanma](../automation-use-azure-ad.md)bölümünde açıklandığı gibi, bir runbook için Azure kaynaklarına yönelik kimlik doğrulaması sağlar. İlk etkinlik, Azure aboneliğine erişimi olan kimlik bilgisini alır. Daha sonra hesap bağlantısı etkinliği bu kimlik bilgisini, bundan sonra gelen etkinlikler için kimlik doğrulaması sağlamak üzere kullanır. Tek bir nesne beklediği için burada bir işlem [hattı bağlantısı](../automation-graphical-authoring-intro.md#use-links-for-workflow) kullanılır `Get-AutomationPSCredential` .  
 
 ![Tuvale kimlik bilgisi ekle](../media/credentials/get-credential.png)
 
@@ -163,6 +163,6 @@ print cred["password"]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kimlik bilgilerine erişmek için kullanılan cmdlet 'ler hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'da modülleri yönetme](modules.md).
-* Runbook 'lar hakkında genel bilgi için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md).
-* DSC yapılandırmalarının ayrıntıları için bkz. [durum yapılandırmasına genel bakış](../automation-dsc-overview.md).
+* [Azure Otomasyonu’nda modülleri yönetme](modules.md)
+* [Azure Otomasyonu’nda runbook yürütme](../automation-runbook-execution.md)
+* [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation-dsc-overview.md) 

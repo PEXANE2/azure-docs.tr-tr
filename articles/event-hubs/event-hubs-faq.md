@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d461652758dd1fe6bb90a703b7c3fa113c9bd3e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086377"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726256"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs sık sorulan sorular
 
@@ -85,7 +85,7 @@ Bağlantılarınız için beyaz listeye doğru IP adreslerini bulmak için şu a
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. ' De `Non-authoritative answer`döndürülen IP adresini aklınızda edin. Aynı zamanda, ad alanını farklı bir kümeye geri yüklemeniz durumunda değişir.
+2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . Aynı zamanda, ad alanını farklı bir kümeye geri yüklemeniz durumunda değişir.
 
 Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapmanız gerekir: 
 
@@ -150,9 +150,11 @@ Düşük işleme birimleri (DTU 'lar) ile başlamak isteyebilirsiniz, örneğin,
 Bu özellikle ilişkili bir **maliyet yoktur** . 
 
 ### <a name="how-are-throughput-limits-enforced"></a>Verimlilik limitleri nasıl zorlanır?
-Bir ad alanındaki tüm olay hub 'ları genelinde toplam giriş aktarım hızı veya toplam giriş olayı oranı toplam aktarım hızı birimi kullanım sayısını aşarsa, Gönderenler kısıtlanır ve giriş kotasının aşıldığını belirten hatalar alır.
+Bir ad alanındaki tüm olay hub 'ları genelinde toplam giriş aktarım hızı veya toplam giriş olayı **oranı toplam aktarım** hızı birimi kullanım sayısını aşarsa, Gönderenler kısıtlanır ve giriş kotasının aşıldığını belirten hatalar alır.
 
-Bir ad alanındaki tüm olay hub 'larının toplam çıkış üretilen işi veya toplam olay çıkış oranı toplam aktarım hızı birimi kullanım sayısını aşarsa, alıcılar kısıtlanır ve çıkış kotasının aşıldığını belirten hatalar alır. Giriş ve çıkış kotaları ayrı ayrı uygulanır; böylece hiçbir Gönderen olay tüketiminin yavaşlamasına veya bir alıcı olayların bir olay hub 'ına gönderilmesini engelleyebilir.
+Bir ad alanındaki tüm olay hub 'larının toplam **Çıkış** üretilen işi veya toplam olay çıkış oranı toplam aktarım hızı birimi kullanım sayısını aşarsa, alıcılar kısıtlanır, ancak hiçbir azaltma hatası oluşturulmaz. 
+
+Giriş ve çıkış kotaları ayrı ayrı uygulanır; böylece hiçbir Gönderen olay tüketiminin yavaşlamasına veya bir alıcı olayların bir olay hub 'ına gönderilmesini engelleyebilir.
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Ayrılan/seçili olabilecek üretilen iş birimi sayısı (DTU 'lar) için bir sınır var mıdır?
 Çok kiracılı bir teklifte, üretilen iş birimleri 40 'e kadar büyüyebilir (portalda en fazla 20 lik seçebilirsiniz ve aynı ad alanında, bu alanı 40 ' ye kadar yükseltmek için bir destek bileti oluşturabilirsiniz). Event Hubs 40 ' nin ötesinde, **Event Hubs ayrılmış kümeleri**olarak adlandırılan kaynak/kapasite tabanlı modeli sunar. Adanmış kümeler kapasite birimlerinde (cu düzeyinde kapsanır) satılır.
@@ -184,7 +186,7 @@ Sonuçlar, adanmış bir Event Hubs kümesiyle neler elde edilebileceklerini siz
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Nasıl yaparım? bir Event Hubs Ayrılmış kümesi mi oluşturulsun?
 Bir [Kota artışı destek isteği](https://portal.azure.com/#create/Microsoft.Support) göndererek veya [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurarak Event Hubs adanmış bir küme oluşturursunuz. Genellikle, kümenin dağıtımını yapmak için iki hafta sürer ve sizin tarafınızdan kullanılmak üzere kullanıma alınır. Bu işlem, Azure portal aracılığıyla tam bir self servis olana kadar geçicidir.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>En iyi yöntemler
 
 ### <a name="how-many-partitions-do-i-need"></a>Kaç bölüme ihtiyacım var?
 Bölüm sayısı, oluşturma sırasında belirtilir ve 2 ile 32 arasında olmalıdır. Bölüm sayısı değiştirilemez olmadığından, bölüm sayısını ayarlarken uzun vadeli ölçeği dikkate almanız gerekir. Bölümler, tüketen uygulamalarda gerekli aşağı akış paralelliğiyle ilişkili bir veri düzenleme mekanizmasıdır. Bir olay hub'ındaki bölüm sayısı, sahip olmayı beklediğiniz eşzamanlı okuyucu sayısıyla doğrudan ilgilidir. Bölümler hakkında daha fazla bilgi için bkz. [bölümler](event-hubs-features.md#partitions).
@@ -236,7 +238,7 @@ Tüm Event Hubs kotaları listesi için bkz. [Kotalar](event-hubs-quotas.md).
 ## <a name="troubleshooting"></a>Sorun giderme
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Neden bir ad alanını başka bir abonelikten sildikten sonra oluşturamadım? 
-Bir aboneliğden bir ad alanını sildiğinizde, başka bir abonelikte aynı adla yeniden oluşturmadan önce 4 saat bekleyin. Aksi takdirde, aşağıdaki hata iletisini alabilirsiniz: `Namespace already exists`. 
+Bir aboneliğden bir ad alanını sildiğinizde, başka bir abonelikte aynı adla yeniden oluşturmadan önce 4 saat bekleyin. Aksi takdirde, aşağıdaki hata iletisini alabilirsiniz: `Namespace already exists` . 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Event Hubs tarafından oluşturulan özel durumların bazıları ve önerilen eylemleri nelerdir?
 

@@ -13,17 +13,20 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 05/20/2020
 ms.author: shvija
-ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3411b3e138778ca7ca1ffcfe14d8d6e84d76d4e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265018"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726103"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Blob depolama veya Azure Data Lake Storage Azure Event Hubs aracılığıyla olayları yakalama
 Azure Event Hubs, bir [Azure Blob depolama](https://azure.microsoft.com/services/storage/blobs/) alanında Event Hubs akış verilerini otomatik olarak yakalamanızı veya tercih ettiğiniz bir zaman veya boyut aralığı belirtme esnekliğine sahip olan [Azure Data Lake Storage Gen 1 veya Gen 2](https://azure.microsoft.com/services/data-lake-store/) hesabı. Yakalama ayarı hızlıdır, çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs yakalama, akış verilerini Azure 'a yüklemenin en kolay yoludur ve veri yakalama yerine veri işlemeye odaklanmanızı sağlar.
+
+> [!NOTE]
+> Event Hubs yakalamanın Azure Data Lake Storage **Gen 2** kullanacak şekilde yapılandırılması, Azure Blob depolamayı kullanmak için yapılandırma ile aynıdır. Ayrıntılar için bkz. [Event Hubs yakalamayı yapılandırma](event-hubs-capture-enable-through-portal.md). 
 
 Event Hubs yakalama, aynı akışta gerçek zamanlı ve toplu işlem tabanlı işlem hatlarını işlemenizi sağlar. Bu, zaman içinde gereksinimlerinize göre büyüyerek çözüm oluşturabileceğiniz anlamına gelir. Günümüzde, gelecekteki gerçek zamanlı işleme doğru bir gözle toplu iş tabanlı sistemler oluşturuyor veya var olan gerçek zamanlı bir çözüme verimli bir soğuk yol eklemek istiyorsanız, Event Hubs yakalama, akış verileriyle çalışmayı kolaylaştırır.
 
@@ -44,7 +47,7 @@ Event Hubs yakalama, yakalamayı denetlemek için bir pencere ayarlamanıza olan
 {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}
 ```
 
-Tarih değerlerinin sıfırlarla doldurulmuş olduğunu unutmayın; örnek dosya adı şu olabilir:
+Tarih değerleri sıfır ile doldurulur; örnek dosya adı şu olabilir:
 
 ```
 https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhub/0/2017/12/08/03/03/17.avro
@@ -60,7 +63,7 @@ Yapılandırıldıktan sonra, ilk olaylarınızı gönderdiğinizde Event Hubs y
 
 ## <a name="setting-up-event-hubs-capture"></a>Event Hubs yakalama ayarlanıyor
 
-[Azure Portal](https://portal.azure.com)kullanarak veya Azure Resource Manager şablonlarını kullanarak Olay Hub 'ı oluşturma sırasında yakalamayı yapılandırabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+[Azure Portal](https://portal.azure.com)kullanarak veya Azure Resource Manager şablonlarını kullanarak Olay Hub 'ı oluşturma sırasında yakalamayı yapılandırabilirsiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Azure portalını kullanarak Event Hubs Yakalama özelliğini etkinleştirme](event-hubs-capture-enable-through-portal.md)
 - [Bir olay hub'ı ile bir Event Hubs ad alanı oluşturma ve Azure Resource Manager şablonu kullanarak Yakalamayı etkinleştirme](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
@@ -129,7 +132,7 @@ Bu komut şunu döndürür
 
 Ayrıca, avro araçlarını kullanarak dosyayı JSON biçimine dönüştürebilir ve başka işlemler yapabilirsiniz.
 
-Daha gelişmiş işleme gerçekleştirmek için, platform seçiminiz için avro indirin ve yükleyin. Bu yazma sırasında, C, C++, C\#, Java, NodeJS, Perl, php, Python ve Ruby için kullanılabilir uygulamalar vardır.
+Daha gelişmiş işleme gerçekleştirmek için, platform seçiminiz için avro indirin ve yükleyin. Bu yazma sırasında, C, C++, C \# , Java, NodeJS, Perl, php, Python ve Ruby için kullanılabilir uygulamalar vardır.
 
 Apache avro, [Java][Java] ve [Python][Python]için Başlarken kılavuzlarını içerir. [Event Hubs yakalama ile çalışmaya](event-hubs-capture-python.md) başlama makalesini de okuyabilirsiniz.
 
@@ -137,7 +140,7 @@ Apache avro, [Java][Java] ve [Python][Python]için Başlarken kılavuzlarını i
 
 Event Hubs yakalama, üretilen iş birimlerine benzer şekilde ölçülür: saatlik ücret. Bu ücret, ad alanı için satın alınan üretilen iş birimi sayısıyla doğrudan orantılıdır. Üretilen iş birimleri arttırılarak ve azaldıkça, eşleşen performans sağlamak için ölçüm artışı artar ve azalır Event Hubs. Ölçümler art arda oluşur. Fiyatlandırma ayrıntıları için bkz. [Event Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/). 
 
-Yakalama, ayrı olarak faturalandırılırken çıkış kotasının tüketilmediğini unutmayın. 
+Yakalama, ayrı olarak faturalandırılırken çıkış kotasını tüketmez. 
 
 ## <a name="integration-with-event-grid"></a>Event Grid ile tümleştirme 
 

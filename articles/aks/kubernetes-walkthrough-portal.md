@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: e4ac5a953b5d88d0074c3cfb7f1bd45331577238
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d904be260db8fe6170f57d438d3be6d306864d89
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81392797"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725117"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -33,7 +33,7 @@ AKS kümesi oluşturmak için aşağıdaki adımları tamamlayın:
 
 1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
-2. **Kubernetes hizmeti** **kapsayıcıları** >  ' nı seçin.
+2. **Containers**  >   **Kubernetes hizmeti**kapsayıcıları ' nı seçin.
 
 3. **Temel bilgiler** sayfasında, aşağıdaki seçenekleri yapılandırın:
     - **Proje ayrıntıları**: bir Azure **aboneliği**seçin, sonra *Myresourcegroup*gibi bir Azure **kaynak grubu**seçin veya oluşturun.
@@ -47,7 +47,7 @@ AKS kümesi oluşturmak için aşağıdaki adımları tamamlayın:
 
 4. **Ölçek** sayfasında, varsayılan seçenekleri değiştirmeyin. Ekranın alt kısmındaki **İleri: kimlik doğrulama**' ya tıklayın.
     > [!CAUTION]
-    > Yeni AAD hizmet sorumlularının oluşturulması, yayma ve kullanılabilir hale gelmesi birkaç dakika sürebilir ve bu durum, Azure portal ' de hizmet sorumlusu hata ve doğrulama hataları oluşmasına neden olur. Bu şekilde karşılaşırsanız, azaltma işlemleri için lütfen [buraya](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one) gidin.
+    > Yeni AAD hizmet sorumlularının oluşturulması, yayma ve kullanılabilir hale gelmesi birkaç dakika sürebilir ve bu durum, Azure portal ' de hizmet sorumlusu hata ve doğrulama hataları oluşmasına neden olur. Bu alana ulaşırsanız, azaltma için lütfen [buraya](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) gidin.
 
 5. **Kimlik doğrulama** sayfasında, aşağıdaki seçenekleri yapılandırın:
     - **Hizmet sorumlusu** alanını **(yeni) varsayılan hizmet sorumlusu**ile bırakarak yeni bir hizmet sorumlusu oluşturun. Alternatif olarak, mevcut bir tane kullanmak için *hizmet sorumlusu Yapılandır* ' ı seçebilirsiniz. Mevcut bir tane kullanırsanız, SPN istemci KIMLIĞINI ve parolasını sağlamanız gerekir.
@@ -65,7 +65,7 @@ AKS kümesini oluşturmak birkaç dakika sürer. Dağıtımınız tamamlandığ�
 
 Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [kubectl][kubectl]'yi kullanırsınız. `kubectl` istemcisi Azure Cloud Shell’de önceden yüklüdür.
 
-Azure portal en üstündeki `>_` düğmeyi kullanarak Cloud Shell açın.
+`>_`Azure Portal en üstündeki düğmeyi kullanarak Cloud Shell açın.
 
 ![Azure Cloud Shell'i portalda açma](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
@@ -95,7 +95,7 @@ Bir Kubernetes bildirim dosyası, küme için, hangi kapsayıcı görüntülerin
 > [!TIP]
 > Bu hızlı başlangıçta, uygulama bildirimlerini el ile oluşturup AKS kümesine dağıtacaksınız. Daha fazla gerçek dünya senaryolarında kodunuzu doğrudan AKS kümesinde hızlıca yineleyip hatalarını ayıklamak için [Azure Dev Spaces][azure-dev-spaces]’ı kullanabilirsiniz. Dev Spaces’ı işletim sistemi platformları ile geliştirme ortamlarında kullanabilir ve ekibinizdeki diğer kişilerle birlikte çalışabilirsiniz.
 
-Cloud Shell, adlı `nano azure-vote.yaml` `azure-vote.yaml`bir dosya oluşturmak için ya `vi azure-vote.yaml` da komutunu kullanın. Ardından aşağıdaki YAML tanımına kopyalayın:
+Cloud Shell, `nano azure-vote.yaml` `vi azure-vote.yaml` adlı bir dosya oluşturmak için ya da komutunu kullanın `azure-vote.yaml` . Ardından aşağıdaki YAML tanımına kopyalayın:
 
 ```yaml
 apiVersion: apps/v1
@@ -201,7 +201,7 @@ service "azure-vote-front" created
 
 Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna internet 'e koyar. Bu işlemin tamamlanması birkaç dakika sürebilir.
 
-İlerlemeyi izlemek için, [kubectl Get Service][kubectl-get] komutunu `--watch` bağımsız değişkeniyle birlikte kullanın.
+İlerlemeyi izlemek için, [kubectl Get Service][kubectl-get] komutunu bağımsız değişkeniyle birlikte kullanın `--watch` .
 
 ```console
 kubectl get service azure-vote-front --watch
@@ -214,7 +214,7 @@ NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-*Dış IP* adresi *bekliyor* durumundan gerçek ortak IP adresi olarak değiştiğinde, `CTRL-C` `kubectl` izleme işlemini durdurmak için kullanın. Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
+*Dış IP* adresi *bekliyor* durumundan gerçek ortak IP adresi olarak değiştiğinde, `CTRL-C` izleme işlemini durdurmak için kullanın `kubectl` . Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
 
 ```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
@@ -239,7 +239,7 @@ Aşağıdaki örnekte olduğu gibi *azure-vote-back* ve *azure-vote-front* kapsa
 
 ![AKS'de çalışan kapsayıcıların durumunu görüntüleme](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-`azure-vote-front` Pod 'un günlüklerini görmek için kapsayıcılar listesinin açılan listesinden **kapsayıcı günlüklerini görüntüle** ' yi seçin. Bu günlükler, kapsayıcıdaki *stdout* ve *stderr* akışlarını içerir.
+Pod 'un günlüklerini görmek için `azure-vote-front` kapsayıcılar listesinin açılan listesinden **kapsayıcı günlüklerini görüntüle** ' yi seçin. Bu günlükler, kapsayıcıdaki *stdout* ve *stderr* akışlarını içerir.
 
 ![AKS'deki kapsayıcı günlüklerini görüntüleme](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 

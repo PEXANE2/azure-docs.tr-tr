@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 84c132c333e4d6ba052029350f275ebf499a906f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a12f74e1b96cd305ec7b7a89f8ad77725122ac75
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79536811"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724590"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Stream Analytics işi oluşturma
 
@@ -28,12 +28,12 @@ Azure PowerShell modülü, PowerShell cmdlet 'leri veya betikleri kullanılarak 
 
 * Bu hızlı başlangıç Azure PowerShell modülünü gerektirir. Yerel makinenizde yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-* Bazı IoT Hub eylemleri Azure PowerShell desteklenmez ve Azure CLI sürüm 2.0.70 veya üzeri ile Azure CLı için IoT uzantısı kullanılarak tamamlanmalıdır. [Azure CLI 'Yı yükleyip](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) IoT uzantısını `az extension add --name azure-iot` yüklemek için kullanın.
+* Bazı IoT Hub eylemleri Azure PowerShell desteklenmez ve Azure CLI sürüm 2.0.70 veya üzeri ile Azure CLı için IoT uzantısı kullanılarak tamamlanmalıdır. [Azure CLI 'Yı yükleyip](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) `az extension add --name azure-iot` IoT uzantısını yüklemek için kullanın.
 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-`Connect-AzAccount` Komutuyla Azure aboneliğinizde oturum açın ve açılır tarayıcıda Azure kimlik bilgilerinizi girin:
+Komutuyla Azure aboneliğinizde oturum açın `Connect-AzAccount` ve açılır tarayıcıda Azure kimlik bilgilerinizi girin:
 
 ```powershell
 # Connect to your Azure account
@@ -70,7 +70,7 @@ Aşağıdaki Azure CLı kod bloğu, iş için gereken giriş verilerini hazırla
 
 1. PowerShell pencerenizde, Azure hesabınızda oturum açmak için [az Login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) komutunu çalıştırın.
 
-    Başarıyla oturum açtığınızda Azure CLı, aboneliklerinizin bir listesini döndürür. Bu hızlı başlangıç için kullanmakta olduğunuz aboneliği kopyalayın ve bu aboneliği seçmek için [az Account set](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) komutunu çalıştırın. Önceki bölümde PowerShell ile seçtiğiniz aboneliği seçin. Öğesini aboneliğinizin adıyla değiştirdiğinizden `<your subscription name>` emin olun.
+    Başarıyla oturum açtığınızda Azure CLı, aboneliklerinizin bir listesini döndürür. Bu hızlı başlangıç için kullanmakta olduğunuz aboneliği kopyalayın ve bu aboneliği seçmek için [az Account set](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) komutunu çalıştırın. Önceki bölümde PowerShell ile seçtiğiniz aboneliği seçin. Öğesini aboneliğinizin adıyla değiştirdiğinizden emin olun `<your subscription name>` .
 
     ```azurecli
     az login
@@ -96,7 +96,7 @@ Aşağıdaki Azure CLı kod bloğu, iş için gereken giriş verilerini hazırla
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-4. [Az IoT Hub cihazı-Identity Show-Connection-String](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) komutunu kullanarak cihaz bağlantı dizesini alın. Tüm bağlantı dizesini kopyalayın ve Raspberry PI simülatörü oluştururken kaydedin.
+4. [Az IoT Hub cihazı-Identity Show-Connection-String](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) komutunu kullanarak cihaz bağlantı dizesini alın. Tüm bağlantı dizesini kopyalayın ve Raspberry PI simülatörü oluştururken kaydedin.
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
@@ -162,7 +162,7 @@ Aşağıdaki Azure PowerShell kod bloğu, iş çıktısı için kullanılan blob
 }
 ```
 
-Ardından, `New-AzStreamAnalyticsJob` cmdlet'ini çalıştırın. `jobDefinitionFile` Değişkenin değerini, Iş tanımı json dosyasını depoladığınız yol ile değiştirin.
+Ardından, `New-AzStreamAnalyticsJob` cmdlet'ini çalıştırın. Değişkenin değerini, `jobDefinitionFile` iş tanımı json dosyasını depoladığınız yol ile değiştirin.
 
 ```powershell
 $jobName = "MyStreamingJob"
@@ -178,7 +178,7 @@ New-AzStreamAnalyticsJob `
 
 [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) cmdlet 'ini kullanarak işinize bir giriş ekleyin. Bu cmdlet iş adı, iş girdisi adı, kaynak grubu adı ve iş girdisi tanımını parametre olarak alır. İş girdisi tanımı işin girdisini yapılandırmak için gereken özellikleri içeren bir JSON dosyasıdır. Bu örnekte, giriş olarak bir BLOB depolama alanı oluşturacaksınız.
 
-Yerel makinenizde `JobInputDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin. Değerini `accesspolicykey` , önceki bölümde kaydettiğiniz IoT Hub bağlantı dizesinin `SharedAccessKey` bölümüyle değiştirdiğinizden emin olun.
+Yerel makinenizde `JobInputDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin. Değerini, `accesspolicykey` `SharedAccessKey` önceki bölümde kaydettiğiniz IoT Hub bağlantı dizesinin bölümüyle değiştirdiğinizden emin olun.
 
 ```json
 {
@@ -209,7 +209,7 @@ Yerel makinenizde `JobInputDefinition.json` adlı bir dosya oluşturun ve içine
 }
 ```
 
-Sonra, `New-AzStreamAnalyticsInput` cmdlet 'ini çalıştırın, `jobDefinitionFile` değişkenin DEĞERINI iş giriş tanımı json dosyasını depoladığınız yolla değiştirdiğinizden emin olun.
+Sonra, `New-AzStreamAnalyticsInput` cmdlet 'ini çalıştırın, `jobDefinitionFile` değişkenin değerini iş GIRIŞ tanımı json dosyasını depoladığınız yolla değiştirdiğinizden emin olun.
 
 ```powershell
 $jobInputName = "IoTHubInput"
@@ -286,7 +286,7 @@ New-AzStreamAnalyticsOutput `
 }
 ```
 
-Ardından, `New-AzStreamAnalyticsTransformation` cmdlet'ini çalıştırın. `jobTransformationDefinitionFile` Değişkenin değerini iş dönüştürme tanımı json dosyasını depoladığınız yolla değiştirdiğinizden emin olun.
+Ardından, `New-AzStreamAnalyticsTransformation` cmdlet'ini çalıştırın. `jobTransformationDefinitionFile`Değişkenin değerini iş dönüştürme tanımı json dosyasını depoladığınız yolla değiştirdiğinizden emin olun.
 
 ```powershell
 $jobTransformationName = "MyJobTransformation"

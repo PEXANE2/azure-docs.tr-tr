@@ -2,13 +2,13 @@
 title: Uygulamaları işleme
 description: Azure Batch ile herhangi bir işleme uygulaması kullanmak mümkündür. Ancak, Azure Market VM görüntüleri önceden yüklenmiş ortak uygulamalar ile kullanılabilir.
 ms.date: 09/19/2019
-ms.topic: conceptual
-ms.openlocfilehash: f04fff3df2deb714f0432e5ad77d921a2d7ac205
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 70e3fb18f0cc4788303ed16656e1eed0f8177dfc
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115797"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726494"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>VM görüntülerini işlemeye önceden yüklenmiş uygulamalar
 
@@ -60,7 +60,7 @@ Aşağıdaki liste Windows Server 2016, sürüm 1.3.8 işleme görüntüleri iç
 * AZ 10
 
 > [!IMPORTANT]
-> [Azure Batch uzantısı şablonlarının](https://github.com/Azure/batch-extension-templates)dışında Maya ile V-Ray çalıştırmak için, işlemeyi çalıştırmadan önce `vrayses.exe` ' yi başlatın. Vrayses. exe ' yi şablonların dışında başlatmak için aşağıdaki komutu `%MAYA_2017%\vray\bin\vrayses.exe"`kullanabilirsiniz.
+> [Azure Batch uzantısı şablonlarının](https://github.com/Azure/batch-extension-templates)dışında Maya ile V-Ray çalıştırmak için, `vrayses.exe` işlemeyi çalıştırmadan önce ' yi başlatın. Vrayses. exe ' yi şablonların dışında başlatmak için aşağıdaki komutu kullanabilirsiniz `%MAYA_2017%\vray\bin\vrayses.exe"` .
 >
 > Bir örnek için GitHub 'da [Maya ve V-Ray şablonunun](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) başlangıç görevine bakın.
 

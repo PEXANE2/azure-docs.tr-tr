@@ -3,12 +3,12 @@ title: Başkalarıyla işbirliği yapma-Soru-Cevap Oluşturma
 description: ''
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: ef0823fc60424dc861ab70f4112e4689c1b97fb0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 080e6549579675e27486e6173d5907d92bbaad70
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665987"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724930"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Diğer yazarlarla ve düzenleyicilerle işbirliği yapın
 
@@ -40,7 +40,7 @@ Aşağıdaki diyagramda, Soru-Cevap Oluşturma portalında oturum açmak ve yazm
 |3|Soru-Cevap Oluşturma API'si belirteci doğrular.|
 |4 |Soru-Cevap Oluşturma API'si QnAMaker hizmetini çağırır.|
 
-Yazma API 'Lerini çağırmak istiyorsanız] (.. /How-To/collaborate-knowledge-base.md), kimlik doğrulamasını ayarlama hakkında daha fazla bilgi edinin.
+[Yazma API 'lerini](../How-To/collaborate-knowledge-base.md)çağırmak istiyorsanız, kimlik doğrulamasının nasıl ayarlanacağı hakkında daha fazla bilgi edinin.
 
 ## <a name="authenticate-by-qna-maker-portal"></a>Soru-Cevap Oluşturma portalına göre kimlik doğrulaması
 

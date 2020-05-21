@@ -1,5 +1,5 @@
 ---
-title: Çin 'de kullanılabilirlik ve sınırlamalar Microsoft Authenticator, Çin 'de Android | Microsoft Docs
+title: Çin 'de Android için kullanılabilirliği ve sınırlamaları Microsoft Authenticator | Microsoft Docs
 description: Çin 'de Microsoft Authenticator uygulama kullanılabilirliğini alma hakkında bilgi edinin
 services: active-directory
 author: curtand
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 05/06/2020
+ms.date: 05/20/2020
 ms.author: curtand
-ms.openlocfilehash: 3ba1b41859a543ab5e0393c5715dc49d452ea73c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: e42c4e5aced9fd567c67b520a98318c965045e07
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891840"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715537"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Çin 'de Genel bulutta Android için Microsoft Authenticator
 
@@ -50,13 +50,13 @@ Kullanıcılar, Multi-Factor Authentication için anında iletme bildirimleri ku
 
 Microsoft Authenticator özelliği | Çin 'de kullanılabilirlik
 ------------------------------- | ---------------------
-Anında iletme bildirimlerini kullanarak MFA kaydı | No
-Önceden var olan MFA hesabı anında iletme bildirimleri kullanılarak kimlik doğrulanıyor | No
-Önceden var olan MFA hesabı, bildirimler için el ile denetim gerçekleştiriliyor | Yes
-Yalnızca TOTP/doğrulama kodlarını kullanarak MFA kaydı/kimlik doğrulaması | Yes
-Telefonla oturum açma kaydı | No
-Anında iletme bildirimlerini kullanarak mevcut telefonda oturum açma | No
-Kimlik doğrulama istekleri için el ile denetim gerçekleştirerek mevcut telefon oturum açma doğrulaması | Yes
+Anında iletme bildirimlerini kullanarak MFA kaydı | Hayır
+Önceden var olan MFA hesabı anında iletme bildirimleri kullanılarak kimlik doğrulanıyor | Hayır
+Önceden var olan MFA hesabı, bildirimler için el ile denetim gerçekleştiriliyor | Evet
+Yalnızca TOTP/doğrulama kodlarını kullanarak MFA kaydı/kimlik doğrulaması | Evet
+Telefonla oturum açma kaydı | Hayır
+Anında iletme bildirimlerini kullanarak mevcut telefonda oturum açma | Hayır
+Kimlik doğrulama istekleri için el ile denetim gerçekleştirerek mevcut telefon oturum açma doğrulaması | Evet
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

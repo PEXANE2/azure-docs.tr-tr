@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/20/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: eef6ece115afc41fd30d77747eb3e368cf95719c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: fcdc80e73d11bbc6d94e921548d346ee436b69ac
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780190"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715690"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>İzleme Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Azure hizmetlerini izleme konusunda bilginiz yoksa, aşağıdakileri açıklayan
 
 Aşağıdaki bölümler, Azure Cosmos DB toplanan belirli verileri açıklayarak ve veri toplamayı yapılandırmaya ve bu verileri Azure araçlarıyla çözümlemeye yönelik örnekler sunarak bu makaleye yöneliktir.
 
-## <a name="azure-monitor-for-cosmos-db-preview"></a>Cosmos DB için Azure Izleyici (Önizleme)
+## <a name="azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Izleyici
 
 Azure Cosmos DB için Azure Izleyici, [Azure izleyici 'nin çalışma kitapları özelliğine](../azure-monitor/app/usage-workbooks.md) dayalıdır ve aşağıdaki bölümlerde açıklanan Cosmos DB için toplanan izleme verilerini kullanır. Birleşik etkileşimli bir deneyime sahip tüm Azure Cosmos DB kaynaklarınızın genel performans, başarısızlık, kapasite ve işletimsel sistem durumunun bir görünümü için Azure Izleyici 'yi kullanın ve ayrıntılı analiz ve uyarı için Azure Izleyici 'nin diğer özelliklerinden yararlanın. Daha fazla bilgi edinmek için bkz. [Azure Cosmos DB Için Azure Izleyicisini keşfet](../azure-monitor/insights/cosmosdb-insights-overview.md) makalesi.
 
@@ -41,7 +41,7 @@ Azure Cosmos DB için Azure Izleyici, [Azure izleyici 'nin çalışma kitapları
 
 ## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB için işlem düzeyi ölçümlerini görüntüleyin
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
 
@@ -92,7 +92,7 @@ Azure Izleyici günlüklerindeki veriler, her tablonun kendine ait benzersiz öz
 
 | Tablo | Açıklama |
 |:---|:---|
-| AzureDiagnostics | Kaynak günlüklerini depolamak için birden çok hizmet tarafından kullanılan ortak tablo. Azure Cosmos DB kaynak günlükleri ile `MICROSOFT.DOCUMENTDB`tanımlanabilir.   |
+| AzureDiagnostics | Kaynak günlüklerini depolamak için birden çok hizmet tarafından kullanılan ortak tablo. Azure Cosmos DB kaynak günlükleri ile tanımlanabilir `MICROSOFT.DOCUMENTDB` .   |
 | AzureActivity    | Etkinlik günlüğünden tüm kayıtları depolayan ortak tablo. 
 
 

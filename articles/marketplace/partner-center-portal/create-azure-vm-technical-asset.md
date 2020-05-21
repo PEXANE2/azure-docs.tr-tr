@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 4d2d33f9d83132147b5b257ffcd6d659f272b8ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c4e5fa4ce960f8113504b52aa0d5055bf1bf85a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730710"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722720"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure sanal makineli teknik varlıklarınızı oluşturun
-
-> [!IMPORTANT]
-> Azure sanal makine tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Teklifleriniz geçirilene kadar, tekliflerinizi yönetmek için [bulut iş ortağı portalı bir sanal makine için teknik varlıklar oluşturma](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-technical-assets) bölümündeki yönergeleri izleyin.
 
 Bu makalede, Azure Marketi için bir sanal makine (VM) teklifi için teknik varlıkların nasıl oluşturulacağı ve yapılandırılacağı açıklanmaktadır. VM iki bileşen içerir: işletim sistemi sanal sabit diski (VHD) ve isteğe bağlı ilişkili veri diskleri VHD 'leri:
 
@@ -270,7 +267,7 @@ Aşağıdaki işlem bir Linux sanal makinesini genelleştirir ve ayrı bir VM ol
 1. **Azure Linux aracısını kaldırma**
 
     1. SSH istemcisi kullanarak Linux sanal makinenize bağlanın.
-    2. SSH penceresinde şu komutu girin: `sudo waagent -deprovision+user`.
+    2. SSH penceresinde şu komutu girin: `sudo waagent -deprovision+user` .
     3. Devam etmek için **Y** yazın (onay adımını önlemek için önceki komuta **-zorlama** parametresini ekleyebilirsiniz).
     d. Komut tamamlandıktan sonra SSH istemcisini kapatmak için **Exit** yazın.
 

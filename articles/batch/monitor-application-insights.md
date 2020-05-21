@@ -1,14 +1,14 @@
 ---
 title: Azure Application Insights Batch 'i izleme
 description: Azure Application Insights kitaplığı kullanarak Azure Batch .NET uygulamasını nasıl ayarlayacağınızı öğrenin.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: ca8cde9b1838239a79ebca4efe43d9e619f80f12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115474"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723621"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights ile Azure Batch .NET uygulamasında izleme ve hata ayıklama
 
@@ -215,7 +215,7 @@ foreach (string aiFile in AIFilesToUpload)
 ...
 ```
 
-`FileToStage` Yöntemi, bir dosyayı yerel diskten bir Azure Storage blobuna kolayca yüklemenize olanak tanıyan kod örneğindeki bir yardımcı işlevdir. Her dosya daha sonra bir işlem düğümüne indirilir ve bir görev tarafından başvurulur.
+`FileToStage`Yöntemi, bir dosyayı yerel diskten bir Azure Storage blobuna kolayca yüklemenize olanak tanıyan kod örneğindeki bir yardımcı işlevdir. Her dosya daha sonra bir işlem düğümüne indirilir ve bir görev tarafından başvurulur.
 
 Son olarak, görevleri işe ekleyin ve gerekli Application Insights ikililerini dahil edin.
 ```csharp
@@ -280,13 +280,13 @@ Aşağıdaki ekran görüntülerinde Application Insights, uygulamanızdan oluş
 Özel ölçümler de portalda değerli bir araçtır. Örneğin, her işlem düğümünün işlendiği gereken metin dosyasını indirmesi için geçen ortalama süreyi görüntüleyebilirsiniz.
 
 Örnek grafik oluşturmak için:
-1. Application Insights kaynağınız **Ölçüm Gezgini** > **Grafik Ekle**' ye tıklayın.
+1. Application Insights kaynağınız **Ölçüm Gezgini**  >  **Grafik Ekle**' ye tıklayın.
 2. Eklenen grafikte **Düzenle** ' ye tıklayın.
 2. Grafik ayrıntılarını aşağıdaki gibi güncelleştirin:
    * **Grafik türünü** **Grid**olarak ayarlayın.
    * **Toplamayı** **Ortalama**olarak ayarlayın.
    * **Group By** - **NodeId**olarak ayarlanır.
-   * **Ölçümler**' de, **Custom** > **Saniyeler içinde özel blob indirme**' yı seçin.
+   * **Ölçümler**' de, **Custom**  >  **Saniyeler içinde özel blob indirme**' yı seçin.
    * Görüntü **renk paletini** tercih ettiğiniz şekilde ayarlayın. 
 
 ![Düğüm başına blob indirme süresi](./media/monitor-application-insights/blobdownloadtime.png)

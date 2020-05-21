@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: eeb60012ae607e49b1249fda13222cb2fa753911
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: de66c124bd7627ee95b91ab4932bd7f868ec16f6
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996070"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715741"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasında DSC yapılandırmalarını derleme
 
@@ -29,7 +29,7 @@ Azure Otomasyonu durum yapılandırması ' nda Istenen durum yapılandırması (
 
 Azure VM 'lerinize yapılandırma göndermek için Azure Istenen durum yapılandırması (DSC) uzantısıyla birlikte Azure Resource Manager şablonlarını da kullanabilirsiniz. Azure DSC Uzantısı, Azure VM 'lerde çalışan DSC yapılandırmasını teslim etmek, uygulamak ve raporlamak için Azure VM Aracısı çerçevesini kullanır. Azure Resource Manager şablonları kullanarak derleme ayrıntıları için, [Azure Resource Manager şablonlarla Istenen durum yapılandırma uzantısı](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)' na bakın. 
 
-## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>Azure durum yapılandırmasında DSC yapılandırması derleme
+## <a name="compile-a-dsc-configuration-in-azure-state-configuration"></a>Azure durum yapılandırmasında DSC yapılandırması derleme
 
 ### <a name="portal"></a>Portal
 
@@ -65,7 +65,7 @@ $CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 
 Parametre türleri ve özellikler dahil olmak üzere DSC yapılandırmalarında parametre bildirimi, Azure Otomasyonu runbook 'larıyla aynı şekilde çalışmaktadır. Runbook parametreleri hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'nda runbook başlatma](automation-starting-a-runbook.md) .
 
-Aşağıdaki örnekte ve `IsPresent` parametreleri `FeatureName` , derleme sırasında oluşturulan **parametersexsample. örnek** düğüm yapılandırmasındaki özelliklerin değerlerini belirlemekte kullanılır.
+Aşağıdaki örnekte `FeatureName` ve parametreleri, `IsPresent` derleme sırasında oluşturulan **parametersexsample. örnek** düğüm yapılandırmasındaki özelliklerin değerlerini belirlemekte kullanılır.
 
 ```powershell
 Configuration ParametersExample
@@ -116,7 +116,7 @@ $Parameters = @{
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ParametersExample' -Parameters $Parameters
 ```
 
-Nesneleri parametre olarak geçirme `PSCredential` hakkında daha fazla bilgi için bkz. [Credential varlıkları](#credential-assets).
+Nesneleri parametre olarak geçirme hakkında daha fazla bilgi için `PSCredential` bkz. [Credential varlıkları](#credential-assets).
 
 ### <a name="compile-configurations-containing-composite-resources-in-azure-automation"></a>Azure Otomasyonu 'nda bileşik kaynakları içeren yapılandırma derleme
 
@@ -130,9 +130,9 @@ Nesneleri parametre olarak geçirme `PSCredential` hakkında daha fazla bilgi i�
 `ConfigurationData`, PowerShell DSC 'yi kullanırken herhangi bir ortama özgü yapılandırmadan yapısal yapılandırmayı ayırmanızı sağlayan yerleşik bir DSC parametresidir. Daha fazla bilgi için bkz. [POWERSHELL DSC 'de "Where" den "neleri" ayırma](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/).
 
 > [!NOTE]
-> Azure Otomasyonu durum yapılandırması 'nda derlerken, Azure portal Azure PowerShell ancak kullanamazsınız `ConfigurationData` .
+> Azure Otomasyonu durum yapılandırması 'nda derlerken, `ConfigurationData` Azure portal Azure PowerShell ancak kullanamazsınız.
 
-Aşağıdaki örnek DSC yapılandırması, `ConfigurationData` `$ConfigurationData` ve `$AllNodes` anahtar kelimeleri aracılığıyla kullanılır. Bu örnek için [xWebAdministration modülüne](https://www.powershellgallery.com/packages/xWebAdministration/) da ihtiyacınız vardır.
+Aşağıdaki örnek DSC yapılandırması `ConfigurationData` , `$ConfigurationData` ve `$AllNodes` anahtar kelimeleri aracılığıyla kullanılır. Bu örnek için [xWebAdministration modülüne](https://www.powershellgallery.com/packages/xWebAdministration/) da ihtiyacınız vardır.
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -191,11 +191,11 @@ Varlık başvuruları hem Azure Otomasyonu durum Yapılandırması hem de runboo
 
 #### <a name="credential-assets"></a>Kimlik bilgisi varlıkları
 
-Azure Otomasyonu 'ndaki DSC yapılandırması, `Get-AutomationPSCredential` cmdlet 'Ini kullanarak Otomasyon kimlik bilgileri varlıklarına başvurabilir. Bir yapılandırma bir `PSCredential` nesneyi belirten bir parametreye sahipse, kimlik bilgisini almak `Get-AutomationPSCredential` için bir Azure Otomasyonu kimlik bilgisi varlığının dize adını cmdlet 'ine geçirerek kullanın. Sonra `PSCredential` nesneyi gerektiren parametre için bu nesneyi kullanın. Arka planda, bu adı taşıyan Azure Otomasyonu kimlik bilgisi varlığı alınır ve yapılandırmaya geçirilir. Aşağıdaki örnekte bu senaryonun eylemde bulunduğu gösterilmektedir.
+Azure Otomasyonu 'ndaki DSC yapılandırması, cmdlet 'ini kullanarak Otomasyon kimlik bilgileri varlıklarına başvurabilir `Get-AutomationPSCredential` . Bir yapılandırma bir nesneyi belirten bir parametreye sahipse `PSCredential` , `Get-AutomationPSCredential` kimlik bilgisini almak Için bir Azure Otomasyonu kimlik bilgisi varlığının dize adını cmdlet 'ine geçirerek kullanın. Sonra nesneyi gerektiren parametre için bu nesneyi kullanın `PSCredential` . Arka planda, bu adı taşıyan Azure Otomasyonu kimlik bilgisi varlığı alınır ve yapılandırmaya geçirilir. Aşağıdaki örnekte bu senaryonun eylemde bulunduğu gösterilmektedir.
 
 Düğüm yapılandırmalarında (MOF yapılandırma belgeleri) kimlik bilgilerinin güvenli tutulması, düğüm yapılandırması MOF dosyasındaki kimlik bilgilerinin şifrelenmesini gerektirir. Şu anda, düğüm yapılandırması MOF oluşturma sırasında düz metinde çıkış kimlik bilgileri için PowerShell DSC iznine sahip olmanız gerekir. PowerShell DSC, Azure Otomasyonu 'nun, derleme işi aracılığıyla oluşturulduktan sonra tüm MOF dosyasını şifrelediği farkında değildir.
 
-PowerShell DSC 'ye, kimlik bilgilerinin oluşturulan düğüm yapılandırması MOF 'lar yapılandırma verileri kullanılarak düz metin olarak outputolduğunu söyleyebilirsiniz. DSC yapılandırmasında görüntülenen `PSDscAllowPlainTextPassword = $true` ve `ConfigurationData` kimlik bilgilerini kullanan her düğüm blok adı için aracılığıyla geçiş yapmalısınız.
+PowerShell DSC 'ye, kimlik bilgilerinin oluşturulan düğüm yapılandırması MOF 'lar yapılandırma verileri kullanılarak düz metin olarak outputolduğunu söyleyebilirsiniz. `PSDscAllowPlainTextPassword = $true` `ConfigurationData` DSC yapılandırmasında görüntülenen ve kimlik bilgilerini kullanan her düğüm blok adı için aracılığıyla geçiş yapmalısınız.
 
 Aşağıdaki örnek, bir Otomasyon kimlik bilgisi varlığı kullanan bir DSC yapılandırmasını gösterir.
 
@@ -239,23 +239,21 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 ```
 
 > [!NOTE]
-> Derleme tamamlandığında, bu iletiyi güvenle yoksayabilirsiniz hata iletisiyle `The 'Microsoft.PowerShell.Management' module was not imported because the 'Microsoft.PowerShell.Management' snap-in was already imported.` karşılaşabilirsiniz.
+> Derleme tamamlandığında, `The 'Microsoft.PowerShell.Management' module was not imported because the 'Microsoft.PowerShell.Management' snap-in was already imported.` Bu iletiyi güvenle yoksayabilirsiniz hata iletisiyle karşılaşabilirsiniz.
 
-## <a name="compiling-your-dsc-configuration-in-windows-powershell"></a>Windows PowerShell 'de DSC yapılandırmanızı derleme
+## <a name="compile-your-dsc-configuration-in-windows-powershell"></a>Windows PowerShell 'de DSC yapılandırmanızı derleme
 
-Ayrıca, Azure dışında derlenen düğüm yapılandırmalarının (MOF dosyaları) içeri aktarabilirsiniz. İçeri aktarma, geliştirici iş istasyonundan veya [Azure DevOps](https://dev.azure.com)gibi bir hizmette derleme içerir. Bu yaklaşımın performansı ve güvenilirliği dahil olmak üzere birden çok avantajı vardır.
+Windows PowerShell 'de DSC yapılandırmalarını derleme işlemi, PowerShell DSC belgelerine [bir yapılandırma yazma, derleme ve uygulama](/powershell/scripting/dsc/configurations/write-compile-apply-configuration#compile-the-configuration)işlemlerini içerir.
+Bu işlemi bir geliştirici iş istasyonundan veya [Azure DevOps](https://dev.azure.com)gibi bir yapı hizmeti içinden yürütebilirsiniz. Daha sonra yapılandırmayı Azure durum yapılandırma hizmetine derleyerek üretilen MOF dosyalarını içeri aktarabilirsiniz.
 
 Windows PowerShell 'de derlemek, yapılandırma içeriğini imzalama seçeneğini de sağlar. DSC Aracısı, yönetilen bir düğümde yerel olarak imzalı bir düğüm yapılandırmasını doğrular. Doğrulama, düğüme uygulanan yapılandırmanın yetkili bir kaynaktan geldiğinden emin olmanızı sağlar.
+
+Ayrıca, Azure dışında derlenen düğüm yapılandırmalarının (MOF dosyaları) içeri aktarabilirsiniz. İçeri aktarma, geliştirici iş istasyonundan veya [Azure DevOps](https://dev.azure.com)gibi bir hizmette derleme içerir. Bu yaklaşımın performansı ve güvenilirliği dahil olmak üzere birden çok avantajı vardır.
 
 > [!NOTE]
 > Azure Otomasyonu 'nun içeri aktarmaya izin vermek için düğüm yapılandırma dosyasının 1 MB 'den büyük olmaması gerekir.
 
 Düğüm yapılandırmalarının imzalanması hakkında daha fazla bilgi için bkz. [WMF 5,1 ' deki geliştirmeler-yapılandırma ve modülün imzalanması](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations).
-
-### <a name="compile-the-dsc-configuration"></a>DSC yapılandırmasını derle
-
-Windows PowerShell 'de DSC yapılandırmalarını derleme işlemi, PowerShell DSC belgelerine [bir yapılandırma yazma, derleme ve uygulama](/powershell/scripting/dsc/configurations/write-compile-apply-configuration#compile-the-configuration)işlemlerini içerir.
-Bu işlemi bir geliştirici iş istasyonundan veya [Azure DevOps](https://dev.azure.com)gibi bir yapı hizmeti içinden yürütebilirsiniz. Daha sonra yapılandırmayı Azure durum yapılandırma hizmetine derleyerek üretilen MOF dosyalarını içeri aktarabilirsiniz.
 
 ### <a name="import-a-node-configuration-in-the-azure-portal"></a>Azure portal düğüm yapılandırmasını içeri aktarma
 

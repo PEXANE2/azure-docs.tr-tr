@@ -1,14 +1,14 @@
 ---
 title: Batch ile Key Vault’a güvenli erişim
 description: Azure Batch kullanarak Key Vault kimlik bilgilerinizin programlama yoluyla nasıl erişebileceğini öğrenin.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: d24904c3a539431e8aff420e9fbd8291cddde78a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d0b2128bef1434f073700eb83e5935d74d8bb7a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117463"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725729"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Batch ile Key Vault’a güvenli erişim
 
@@ -23,21 +23,21 @@ Bir Batch düğümünden Azure Key Vault kimlik doğrulaması yapmak için şunl
 
 ## <a name="obtain-a-certificate"></a>Sertifika edinme
 
-Henüz bir sertifikanız yoksa, bir tane almanın en kolay yolu, `makecert` komut satırı aracını kullanarak kendinden imzalı bir sertifika oluşturmadır.
+Henüz bir sertifikanız yoksa, bir tane almanın en kolay yolu, komut satırı aracını kullanarak kendinden imzalı bir sertifika oluşturmadır `makecert` .
 
-Genellikle bu yolda bulabilirsiniz `makecert` : `C:\Program Files (x86)\Windows Kits\10\bin\<arch>`. Yönetici olarak bir komut istemi açın ve aşağıdaki örneği `makecert` kullanarak gidin.
+Genellikle `makecert` Bu yolda bulabilirsiniz: `C:\Program Files (x86)\Windows Kits\10\bin\<arch>` . Yönetici olarak bir komut istemi açın ve `makecert` aşağıdaki örneği kullanarak gidin.
 
 ```console
 cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 ```
 
-Ardından, ve `makecert` `batchcertificate.cer` `batchcertificate.pvk`adlı otomatik olarak imzalanan sertifika dosyaları oluşturmak için aracını kullanın. Kullanılan ortak ad (CN) Bu uygulama için önemli değildir, ancak sertifikanın ne için kullanıldığını belirten bir şey yapmak faydalı olur.
+Ardından, `makecert` ve adlı otomatik olarak imzalanan sertifika dosyaları oluşturmak için aracını kullanın `batchcertificate.cer` `batchcertificate.pvk` . Kullanılan ortak ad (CN) Bu uygulama için önemli değildir, ancak sertifikanın ne için kullanıldığını belirten bir şey yapmak faydalı olur.
 
 ```console
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Batch bir `.pfx` dosya gerektiriyor. Tarafından `makecert` `.pfx` oluşturulan [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) `.cer` ve `.pvk` dosyalarını tek bir dosyaya dönüştürmek için Pvk2pfx aracını kullanın.
+Batch bir `.pfx` Dosya gerektiriyor. [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) `.cer` `.pvk` Tarafından oluşturulan ve dosyalarını `makecert` tek bir dosyaya dönüştürmek için Pvk2pfx aracını kullanın `.pfx` .
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po

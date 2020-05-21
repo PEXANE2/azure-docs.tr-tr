@@ -5,21 +5,21 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 05/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b4cdb787fe65c52a77fa4761a65e9108e7927c40
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78668600"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721401"
 ---
 >[!NOTE]
 >Ek bölgeler eklemek için çok çalıştık. Bir bölge eklendiğinde, bu listeye eklenecektir.
 >
 
-**Kuzey**
+**Kuzey ve Güney Amerika**
 * Güney Brezilya
 * Orta Kanada
 * Orta ABD
@@ -35,6 +35,8 @@ ms.locfileid: "78668600"
 * Orta Fransa
 * Kuzey Avrupa
 * Norveç Doğu
+* Norveç Batı
+* İsviçre Kuzey
 * Güney Birleşik Krallık
 * Batı Birleşik Krallık
 * Batı Avrupa
@@ -49,6 +51,7 @@ ms.locfileid: "78668600"
 * Güney Kore - Orta
 * Güney Kore - Güney
 * Güneydoğu Asya
+* Orta Hindistan
 * Batı Hindistan
 
 **Orta Doğu ve Afrika**

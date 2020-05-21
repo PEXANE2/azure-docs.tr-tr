@@ -2,13 +2,13 @@
 title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: 508933cbea3e21fdec63907cef73102866732bb1
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 05/20/2020
+ms.openlocfilehash: d6d98062e2228c22302b250ab3c7bb9683bff232
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891016"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715928"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM şablonları için kaynak işlevleri
 
@@ -18,7 +18,7 @@ Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonunuzda kaynak değerleri
 * [Listele](#list)
 * [sağlayıcılarla](#providers)
 * [başvurunun](#reference)
-* [Kaynak](#resourcegroup)
+* [resourceGroup](#resourcegroup)
 * [RESOURCEID](#resourceid)
 * [aboneliğiniz](#subscription)
 * [Subscriptionresourceıd](#subscriptionresourceid)
@@ -36,10 +36,10 @@ Parametrelerden, değişkenlerden veya geçerli dağıtımdan değer almak için
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| resourceId |Yes |string |Uzantı kaynağının uygulandığı kaynağın kaynak KIMLIĞI. |
-| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceId |Evet |string |Uzantı kaynağının uygulandığı kaynağın kaynak KIMLIĞI. |
+| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Evet |string |Kaynağın adı. |
+| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -108,19 +108,19 @@ Aşağıdaki örnek, bir kaynak grubu kilidinin kaynak KIMLIĞINI döndürür.
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama, bir liste işlemini destekleyen kaynak türünün değerlerini döndürür. İşlem adı ile `list`başlamalıdır. Bazı yaygın kullanımlar ve `listKeys` ' `listSecrets`dir.
+Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama, bir liste işlemini destekleyen kaynak türünün değerlerini döndürür. İşlem adı ile başlamalıdır `list` . Bazı yaygın kullanımlar `listKeys` ve ' `listKeyValue` dir `listSecrets` .
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| resourceName veya ResourceIdentifier |Yes |string |Kaynak için benzersiz tanımlayıcı. |
-| apiVersion |Yes |string |Kaynak çalışma zamanı durumunun API sürümü. Genellikle, **yyyy-aa-gg**biçiminde. |
-| functionValues |No |object | İşlevi için değerler içeren bir nesne. Bu nesneyi yalnızca bir depolama hesabındaki **Listaccountsas** gibi parametre değerleriyle bir nesne almayı destekleyen işlevler için sağlayın. Bu makalede işlev değerlerini geçirme örneği gösterilmektedir. |
+| resourceName veya ResourceIdentifier |Evet |string |Kaynak için benzersiz tanımlayıcı. |
+| apiVersion |Evet |string |Kaynak çalışma zamanı durumunun API sürümü. Genellikle, **yyyy-aa-gg**biçiminde. |
+| functionValues |Hayır |nesne | İşlevi için değerler içeren bir nesne. Bu nesneyi yalnızca bir depolama hesabındaki **Listaccountsas** gibi parametre değerleriyle bir nesne almayı destekleyen işlevler için sağlayın. Bu makalede işlev değerlerini geçirme örneği gösterilmektedir. |
 
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
-Liste işlevleri yalnızca bir kaynak tanımı ve bir şablon ya da dağıtımın çıktılar bölümünün özelliklerinde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, ifadesi Resource özelliğine atandığı için `input` liste işlevlerini kullanabilirsiniz. Liste işlevi çözümlenmeden önce `count` Count belirlenmesi gerektiğinden, bunları ile kullanamazsınız.
+Liste işlevleri yalnızca bir kaynak tanımı ve bir şablon ya da dağıtımın çıktılar bölümünün özelliklerinde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, `input` ifadesi Resource özelliğine atandığı için liste işlevlerini kullanabilirsiniz. `count`Liste işlevi çözümlenmeden önce Count belirlenmesi gerektiğinden, bunları ile kullanamazsınız.
 
 ### <a name="implementations"></a>Uygulamalar
 
@@ -129,6 +129,7 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 | Kaynak türü | İşlev adı |
 | ------------- | ------------- |
 | Microsoft. AnalysisServices/sunucuları | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Microsoft. AppConfiguration] | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
 | Microsoft. AppConfiguration/Configurationmağazaları | ListKeys 'i al |
 | Microsoft. Automation/automationAccounts | [ListKeys 'i al](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft. Batch/batchAccounts | [ListKeys 'i al](/rest/api/batchmanagement/batchaccount/getkeys) |
@@ -227,15 +228,15 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 | Microsoft. Web/konumlar | listwsdlınterfaces |
 | Microsoft. Web/apimanagementaccounts/API/bağlantı | listconnectionkeys |
 | Microsoft. Web/apimanagementaccounts/API/bağlantı | listgizlilikler |
-| Microsoft. Web/siteler/yedeklemeler | [list](/rest/api/appservice/webapps/listbackups) |
-| Microsoft. Web/Sites/config | [list](/rest/api/appservice/webapps/listconfigurations) |
+| Microsoft. Web/siteler/yedeklemeler | [Listele](/rest/api/appservice/webapps/listbackups) |
+| Microsoft. Web/Sites/config | [Listele](/rest/api/appservice/webapps/listconfigurations) |
 | Microsoft. Web/Sites/işlevleri | [ListKeys 'i al](/rest/api/appservice/webapps/listfunctionkeys)
 | Microsoft. Web/Sites/işlevleri | [listgizlilikler](/rest/api/appservice/webapps/listfunctionsecrets) |
 | Microsoft. Web/Sites/hybridconnectionnamespaces/geçişler | [ListKeys 'i al](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | Microsoft. Web/siteler | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
 | Microsoft. Web/Sites/yuvaları/işlevleri | [listgizlilikler](/rest/api/appservice/webapps/listfunctionsecretsslot) |
-| Microsoft. Web/siteler/yuvalar/yedeklemeler | [list](/rest/api/appservice/webapps/listbackupsslot) |
-| Microsoft. Web/siteler/yuvalar/yapılandırma | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
+| Microsoft. Web/siteler/yuvalar/yedeklemeler | [Listele](/rest/api/appservice/webapps/listbackupsslot) |
+| Microsoft. Web/siteler/yuvalar/yapılandırma | [Listele](/rest/api/appservice/webapps/listconfigurationsslot) |
 | Microsoft. Web/Sites/yuvaları/işlevleri | [listgizlilikler](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
 Hangi kaynak türlerinin bir liste işlemine sahip olduğunu öğrenmek için aşağıdaki seçeneklere sahipsiniz:
@@ -360,8 +361,8 @@ Kaynak sağlayıcısı ve desteklenen kaynak türleri hakkında bilgi döndürü
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Yes |string |Sağlayıcının ad alanı |
-| resourceType |No |string |Belirtilen ad alanı içindeki kaynak türü. |
+| providerNamespace |Evet |string |Sağlayıcının ad alanı |
+| resourceType |Hayır |string |Belirtilen ad alanı içindeki kaynak türü. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -435,13 +436,13 @@ Kaynağın çalışma zamanı durumunu temsil eden bir nesne döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| resourceName veya ResourceIdentifier |Yes |string |Kaynağın adı veya benzersiz tanımlayıcısı. Geçerli şablondaki bir kaynağa başvururken, yalnızca kaynak adını parametre olarak belirtin. Daha önce dağıtılan bir kaynağa ya da kaynağın adı belirsiz olduğunda kaynak KIMLIĞI sağlayın. |
-| apiVersion |No |string |Belirtilen kaynağın API sürümü. **Kaynak aynı şablon içinde sağlanmıyorsa Bu parametre gereklidir.** Genellikle, **yyyy-aa-gg**biçiminde. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
-| Tümünü |No |string |Tam kaynak nesnesinin döndürülüp döndürülmeyeceğini belirten değer. Belirtmezseniz `'Full'`, yalnızca kaynağın Özellikler nesnesi döndürülür. Tam nesne, kaynak KIMLIĞI ve konum gibi değerleri içerir. |
+| resourceName veya ResourceIdentifier |Evet |string |Kaynağın adı veya benzersiz tanımlayıcısı. Geçerli şablondaki bir kaynağa başvururken, yalnızca kaynak adını parametre olarak belirtin. Daha önce dağıtılan bir kaynağa ya da kaynağın adı belirsiz olduğunda kaynak KIMLIĞI sağlayın. |
+| apiVersion |Hayır |string |Belirtilen kaynağın API sürümü. **Kaynak aynı şablon içinde sağlanmıyorsa Bu parametre gereklidir.** Genellikle, **yyyy-aa-gg**biçiminde. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
+| Tümünü |Hayır |string |Tam kaynak nesnesinin döndürülüp döndürülmeyeceğini belirten değer. Belirtmezseniz `'Full'` , yalnızca kaynağın Özellikler nesnesi döndürülür. Tam nesne, kaynak KIMLIĞI ve konum gibi değerleri içerir. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Her kaynak türü, başvuru işlevi için farklı özellikler döndürür. İşlev tek, önceden tanımlanmış bir biçim döndürmüyor. Ayrıca, döndürülen değer `'Full'` bağımsız değişkenin değerine göre farklılık gösterir. Bir kaynak türünün özelliklerini görmek için, örnekte gösterildiği gibi çıktılar bölümünde nesnesini döndürün.
+Her kaynak türü, başvuru işlevi için farklı özellikler döndürür. İşlev tek, önceden tanımlanmış bir biçim döndürmüyor. Ayrıca, döndürülen değer bağımsız değişkenin değerine göre farklılık gösterir `'Full'` . Bir kaynak türünün özelliklerini görmek için, örnekte gösterildiği gibi çıktılar bölümünde nesnesini döndürün.
 
 ### <a name="remarks"></a>Açıklamalar
 
@@ -462,7 +463,7 @@ Genellikle, blob uç noktası URI 'SI veya tam etki alanı adı gibi bir nesnede
 }
 ```
 
-Özellikler `'Full'` şemasının parçası olmayan kaynak değerlerine ihtiyacınız olduğunda kullanın. Örneğin, Anahtar Kasası erişim ilkeleri ayarlamak için, bir sanal makine için kimlik özelliklerini alın.
+`'Full'`Özellikler şemasının parçası olmayan kaynak değerlerine ihtiyacınız olduğunda kullanın. Örneğin, Anahtar Kasası erişim ilkeleri ayarlamak için, bir sanal makine için kimlik özelliklerini alın.
 
 ```json
 {
@@ -488,9 +489,9 @@ Genellikle, blob uç noktası URI 'SI veya tam etki alanı adı gibi bir nesnede
 
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
-Başvuru işlevi yalnızca bir kaynak tanımı ve bir şablon ya da dağıtımın çıktılar bölümünün özelliklerinde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, ifadesi Resource özelliğine atandığı için `input` başvuru işlevini kullanabilirsiniz.
+Başvuru işlevi yalnızca bir kaynak tanımı ve bir şablon ya da dağıtımın çıktılar bölümünün özelliklerinde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, `input` ifadesi Resource özelliğine atandığı için başvuru işlevini kullanabilirsiniz.
 
-Bir kopyalama döngüsünde `count` özelliğinin değerini ayarlamak için başvuru işlevini kullanamazsınız. Döngüdeki diğer özellikleri ayarlamak için ' i kullanabilirsiniz. Başvuru işlevi çözümlenmeden önce bu özelliğin belirlenmesi gerektiğinden, Count özelliği için başvuru engellenir.
+Bir kopyalama döngüsünde özelliğinin değerini ayarlamak için başvuru işlevini kullanamazsınız `count` . Döngüdeki diğer özellikleri ayarlamak için ' i kullanabilirsiniz. Başvuru işlevi çözümlenmeden önce bu özelliğin belirlenmesi gerektiğinden, Count özelliği için başvuru engellenir.
 
 İç içe yerleştirilmiş şablonda dağıttığınız bir kaynağı döndürmek için, [iç içe geçmiş bir şablonun](linked-templates.md#nested-template) çıktılarında başvuru işlevini kullanamazsınız. Bunun yerine, [bağlantılı bir şablon](linked-templates.md#linked-template)kullanın.
 
@@ -508,7 +509,7 @@ Aynı şablonda dağıtılan bir kaynağa başvururken kaynağın adını belirt
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-Aynı şablonda dağıtılan bir kaynağa başvurulduğunda, kaynak KIMLIĞINI ve `apiVersion`' ı belirtin.
+Aynı şablonda dağıtılan bir kaynağa başvurulduğunda, kaynak KIMLIĞINI ve ' ı belirtin `apiVersion` .
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
@@ -524,15 +525,15 @@ Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile 
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Örneğin:
+Örnek:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`doğru `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` değil
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt``Microsoft.Compute/virtualMachines/extensions/myVM/myExt`doğru değil
 
-Herhangi bir kaynak KIMLIĞININ oluşturulmasını basitleştirmek için, `resourceId()` `concat()` işlevi yerine bu belgede açıklanan işlevleri kullanın.
+Herhangi bir kaynak KIMLIĞININ oluşturulmasını basitleştirmek için, `resourceId()` işlevi yerine bu belgede açıklanan işlevleri kullanın `concat()` .
 
 ### <a name="get-managed-identity"></a>Yönetilen kimliği al
 
-[Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , bazı kaynaklar için örtük olarak oluşturulan [uzantı kaynak türleridir](../management/extension-resource-types.md) . Yönetilen kimlik şablonda açıkça tanımlanmadığı için, kimliğin uygulandığı kaynağa başvurmanız gerekir. Örtük `Full` olarak oluşturulan kimlik de dahil olmak üzere tüm özellikleri almak için kullanın.
+[Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , bazı kaynaklar için örtük olarak oluşturulan [uzantı kaynak türleridir](../management/extension-resource-types.md) . Yönetilen kimlik şablonda açıkça tanımlanmadığı için, kimliğin uygulandığı kaynağa başvurmanız gerekir. `Full`Örtük olarak oluşturulan kimlik de dahil olmak üzere tüm özellikleri almak için kullanın.
 
 Örneğin, bir sanal makine ölçek kümesine uygulanan bir yönetilen kimliğin kiracı KIMLIĞINI almak için şunu kullanın:
 
@@ -689,7 +690,7 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 ### <a name="remarks"></a>Açıklamalar
 
-`resourceGroup()` İşlev, [abonelik düzeyinde dağıtılan](deploy-to-subscription.md)bir şablonda kullanılamaz. Yalnızca bir kaynak grubuna dağıtılan şablonlarda kullanılabilir. `resourceGroup()` İşlevini, ana şablon aboneliğe dağıtıldığında bile, bir kaynak grubunu hedefleyen [bağlantılı veya iç içe bir şablonda (iç kapsamla birlikte)](linked-templates.md) kullanabilirsiniz. Bu senaryoda, bağlantılı veya iç içe yerleştirilmiş şablon kaynak grubu düzeyinde dağıtılır. Abonelik düzeyi dağıtımında bir kaynak grubunu hedefleme hakkında daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](cross-resource-group-deployment.md).
+`resourceGroup()`İşlev, [abonelik düzeyinde dağıtılan](deploy-to-subscription.md)bir şablonda kullanılamaz. Yalnızca bir kaynak grubuna dağıtılan şablonlarda kullanılabilir. `resourceGroup()`İşlevini, ana şablon aboneliğe dağıtıldığında bile, bir kaynak grubunu hedefleyen [bağlantılı veya iç içe bir şablonda (iç kapsamla birlikte)](linked-templates.md) kullanabilirsiniz. Bu senaryoda, bağlantılı veya iç içe yerleştirilmiş şablon kaynak grubu düzeyinde dağıtılır. Abonelik düzeyi dağıtımında bir kaynak grubunu hedefleme hakkında daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](cross-resource-group-deployment.md).
 
 ResourceGroup işlevinin ortak kullanımı, kaynak grubuyla aynı konumda kaynak oluşturmaktır. Aşağıdaki örnek, varsayılan bir parametre değeri için kaynak grubu konumunu kullanır.
 
@@ -748,11 +749,11 @@ Bir kaynağın benzersiz tanımlayıcısını döndürür. Bu işlevi, kaynak ad
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |No |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. Bu değeri yalnızca bir kaynak grubunun veya aboneliğin kapsamına dağıtma sırasında belirtin. |
-| resourceGroupName |No |string |Varsayılan değer geçerli kaynak grubudur. Başka bir kaynak grubundaki bir kaynağı almanız gerektiğinde bu değeri belirtin. Yalnızca bir kaynak grubunun kapsamına dağıtım yaparken bu değeri sağlayın. |
-| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
+| subscriptionId |Hayır |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. Bu değeri yalnızca bir kaynak grubunun veya aboneliğin kapsamına dağıtma sırasında belirtin. |
+| resourceGroupName |Hayır |string |Varsayılan değer geçerli kaynak grubudur. Başka bir kaynak grubundaki bir kaynağı almanız gerektiğinde bu değeri belirtin. Yalnızca bir kaynak grubunun kapsamına dağıtım yaparken bu değeri sağlayın. |
+| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Evet |string |Kaynağın adı. |
+| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -944,10 +945,10 @@ Abonelik düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı d�
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |No |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. |
-| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
+| subscriptionId |Hayır |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. |
+| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Evet |string |Kaynağın adı. |
+| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -1026,9 +1027,9 @@ Kiracı düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı dö
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Evet |string |Kaynağın adı. |
+| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 

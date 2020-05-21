@@ -1,15 +1,15 @@
 ---
 title: Hizmet kotaları ve limitleri
 description: Varsayılan Azure Batch kotaları, sınırları ve kısıtlamaları hakkında bilgi edinin ve kota artışlarının nasıl isteneceğini öğrenin
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: a901d54ea584ec67bfa679e9cdc716ab27d45eca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f47f2df38a601c6359ed257a9787130ea95d2ac8
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115831"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726579"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch hizmet kotaları ve limitleri
 
@@ -80,14 +80,14 @@ Batch hesabı kotalarınızı [Azure Portal][portal]görüntüleyin.
 ### <a name="increase-cores-quota-in-batch"></a>Toplu Işteki çekirdek kotasını artırma 
 
 1. Portal panonuzda **Yardım + Destek** kutucuğunu veya portalın sağ üst köşesindeki soru işaretini (**?**) seçin.
-1. **Yeni destek isteği** > **temelleri**' ni seçin.
+1. **Yeni destek isteği**  >  **temelleri**' ni seçin.
 1. **Temel bilgiler**:
    
-    a. **Sorun türü** > **hizmeti ve abonelik limitleri (kotalar)**
+    a. **Sorun türü**  >  **Hizmet ve abonelik limitleri (kotalar)**
    
     b. Aboneliğinizi seçin.
    
-    c. **Kota türü** > **toplu işlem**
+    c. **Kota türü**  >  **Batch**
       
     **İleri**’yi seçin.
     

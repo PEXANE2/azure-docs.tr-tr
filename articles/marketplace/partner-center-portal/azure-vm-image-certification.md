@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 9bd7e40855f30612b90cf28365c0b1410cd3e3d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe04cb12dc1afea78b023eab623927a07224888c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731120"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726154"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Azure sanal makinesi (VM) görüntü sertifikası
-
-> [!NOTE]
-> Azure VM tekliflerinizin yönetimini, Bulut İş Ortağı Portalı 'ten Iş ortağı merkezine taşıdık. Tekliflerinizi geçirene kadar, lütfen tekliflerinizi yönetmek için Bulut İş Ortağı Portalı [Azure Key Vault için sertifika oluşturma](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) bölümündeki yönergeleri izlemeye devam edin.
 
 Bu makalede, en son Azure Marketi yayımlama gereksinimlerini karşıladığından emin olmak için ticari Market 'te bir sanal makine (VM) görüntüsünün nasıl test edileceğini ve gönderileceği açıklanır.
 
@@ -89,7 +86,7 @@ Sertifika dosyasını (. pfx) yerel bir klasörde oluşturmak için aşağıdaki
 
 #### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>Sertifikayı depolamak için Azure Anahtar Kasası oluşturma
 
-Aşağıdaki şablonun içeriğini yerel makinenizde bir dosyaya kopyalayın. Aşağıdaki örnek betikte bu kaynak `C:\certLocation\keyvault.json`).
+Aşağıdaki şablonun içeriğini yerel makinenizde bir dosyaya kopyalayın. Aşağıdaki örnek betikte bu kaynak `C:\certLocation\keyvault.json` ).
 
 ```json
 {
@@ -571,7 +568,7 @@ Bu parametrelerin değerlerini sağlamak için bu dosyayı düzenleyin:
 | vmName | Sanal makinenin adı. |
 | vaultName | Anahtar kasasının adı. |
 | vaultResourceGroup | Anahtar kasasının kaynak grubu. |
-| Sertifika URL 'si | Sertifikanın, anahtar kasasında depolanan sürümü de dahil olmak üzere Web adresi (URL), örneğin: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`. |
+| Sertifika URL 'si | Sertifikanın, anahtar kasasında depolanan sürümü de dahil olmak üzere Web adresi (URL), örneğin: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` . |
 | vhdUrl | Sanal sabit diskin Web adresi. |
 | vmSize | Sanal makine örneğinin boyutu. |
 | Publicıpaddressname | Genel IP adresinin adı. |
@@ -583,7 +580,7 @@ Bu parametrelerin değerlerini sağlamak için bu dosyayı düzenleyin:
 
 ### <a name="deploy-an-azure-vm"></a>Azure VM dağıtma
 
-`$storageaccount` Ve `$vhdUrl` değişkenleri için değerler sağlamak üzere aşağıdaki betiği kopyalayın ve düzenleyin. Mevcut Genelleştirilmiş VHD 'nizden bir Azure VM kaynağı oluşturmak için yürütün.
+Ve değişkenleri için değerler sağlamak üzere aşağıdaki betiği kopyalayın ve düzenleyin `$storageaccount` `$vhdUrl` . Mevcut Genelleştirilmiş VHD 'nizden bir Azure VM kaynağı oluşturmak için yürütün.
 
 ```PowerShell
 

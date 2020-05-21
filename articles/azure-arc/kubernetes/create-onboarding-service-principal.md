@@ -8,23 +8,20 @@ author: mlearned
 ms.author: mlearned
 description: 'Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma '
 keywords: Kubernetes, yay, Azure, kapsayıcılar
-ms.openlocfilehash: f9f750980d8a8b5d8190ba0b399fe068f1dd99c7
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680804"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725610"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma (Önizleme)
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir küme Azure 'a eklendi, kümenizde çalışan aracıların kayıt kapsamında Azure Resource Manager kimlik doğrulaması gerekir. `connectedk8s`Azure CLI uzantısının otomatik hizmet sorumlusu oluşturma işlemi vardır. Ancak, CLı Otomasyonu 'nun çalışmamasının bazı senaryolar olabilir:
+Azure yaya Kubernetes kümelerini ekleme için sınırlı ayrıcalıklara sahip bir rol atamasına sahip hizmet sorumlularını kullanmak mümkündür. Bu, Azure Pipelines ve GitHub eylemleri gibi sürekli tümleştirme ve sürekli dağıtım (CI/CD) Işlem hatları için yararlıdır.
 
-* Kuruluşunuz genellikle hizmet sorumluları oluşturmayı kısıtlar
-* Kümeyi ekleme Kullanıcı, hizmet sorumlusu oluşturmak için yeterli izinlere sahip değil
-
-Bunun yerine, hizmet sorumlusunu bant dışında oluşturalım ve sorumluyu Azure CLı uzantısına iletelim.
+Aşağıdaki adımlar, Azure yaya Kubernetes kümelerini eklemek için hizmet sorumlularını kullanmayla ilgili bir yol sağlar.
 
 ## <a name="create-a-new-service-principal"></a>Yeni bir hizmet sorumlusu oluşturun
 
@@ -63,7 +60,7 @@ Rol atarken uygun bağımsız değişkene geçerek izinler daha fazla sınırlı
 az role assignment create \
     --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 \      # this is the id for the built-in role
     --assignee 22cc2695-54b9-49c1-9a73-2269592103d8 \  # use the appId from the new SP
-    --scope /subscriptions/<<SUBSCRIPTION_ID>>         # apply the apropriate scope
+    --scope /subscriptions/<<SUBSCRIPTION_ID>>         # apply the appropriate scope
 ```
 
 **Çıktıların**

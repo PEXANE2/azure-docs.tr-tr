@@ -2,20 +2,18 @@
 title: Yaygın Azure Kubernetes hizmet sorunlarını giderme
 description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 services: container-service
-author: sauryadas
 ms.topic: troubleshooting
-ms.date: 12/13/2019
-ms.author: saudas
-ms.openlocfilehash: 8460f4f2a66a1f545bea767cccf3aa77c9d3bff3
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 05/16/2020
+ms.openlocfilehash: f9831077d1f2850d39e4ef5e5ba35245f16cd683
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778966"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725003"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
-Azure Kubernetes hizmeti (AKS) kümeleri oluştururken veya yönetirken, zaman zaman sorunlarla karşılaşabilirsiniz. Bu makalede bazı yaygın sorunlar ve sorun giderme adımları ayrıntılı olarak anlatılmaktadır.
+Azure Kubernetes hizmeti (AKS) kümeleri oluştururken veya yönetirken, zaman içinde sorunlar ortaya çıkabilir. Bu makalede bazı yaygın sorunlar ve sorun giderme adımları ayrıntılı olarak anlatılmaktadır.
 
 ## <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-problems"></a>Genel olarak, Kubernetes sorunlarını ayıklama hakkındaki bilgileri nerede bulabilirim?
 
@@ -24,16 +22,16 @@ Ayrıca, pods, düğümler, kümeler ve diğer özelliklerle ilgili sorunları g
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Oluşturma veya yükseltme sırasında "Kota aşıldı" hatası alıyorum. Ne yapmalıyım? 
 
-[Çekirdek istemeniz](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)gerekir.
+ [Daha fazla çekirdek isteyin](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>AKS için düğüm başına en fazla düğüm sayısı ayarı nedir?
 
 Azure portal bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm sayısı ayarı varsayılan olarak 30 ' dur.
-Azure CLı 'de bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm ayarı varsayılan olarak 110 ' dir. (Azure CLı 'nın en son sürümünü kullandığınızdan emin olun). Bu varsayılan ayar, `–-max-pods` `az aks create` komutunda bayrağı kullanılarak değiştirilebilir.
+Azure CLı 'de bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm ayarı varsayılan olarak 110 ' dir. (Azure CLı 'nın en son sürümünü kullandığınızdan emin olun). Bu ayar `–-max-pods` , komutundaki bayrağı kullanılarak değiştirilebilir `az aks create` .
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Gelişmiş ağlarla AKS kümesi dağıtma sırasında insufficientSubnetSize hatası alıyorum. Ne yapmalıyım?
 
-Azure CNı (Gelişmiş ağ) kullanılıyorsa, AKS, yapılandırılmış düğüm başına "en yüksek pods" temelinde IP adresleri ayırır. Düğüm başına yapılandırılan maksimum düğüm sayısına bağlı olarak, alt ağ boyutu düğüm sayısının ve düğüm başına en fazla Pod 'ın ürünüyle daha büyük olmalıdır. Aşağıdaki denklem şunları özetler:
+Azure CNı Network eklentisini kullanırken AKS, düğüm başına "--Max-pods" temelinde IP adreslerini ayırır. Alt ağ boyutu, düğüm başına en fazla düğüm sayısı ayarı kadar düğüm sayısından büyük olmalıdır. Aşağıdaki denklem bunu özetler:
 
 Alt ağ boyutu > kümedeki düğümlerin sayısı (gelecekteki ölçekleme gereksinimlerinin dikkate alınması) * düğüm başına en fazla düğüm kümesi.
 
@@ -43,32 +41,32 @@ Daha fazla bilgi için bkz. [kümeniz IÇIN IP adresleme planlaması](configure-
 
 Pod 'un bu modda takılmasının çeşitli nedenleri olabilir. Şöyle görünebilir:
 
-* Kullanarak `kubectl describe pod <pod-name>`Pod kendisini.
-* Kullanılarak `kubectl logs <pod-name>`Günlükler.
+* Kullanarak Pod kendisini `kubectl describe pod <pod-name>` .
+* Kullanılarak Günlükler `kubectl logs <pod-name>` .
 
 Pod sorunlarını giderme hakkında daha fazla bilgi için bkz. [uygulamalarda hata ayıklama](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
-## <a name="im-trying-to-enable-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Mevcut bir kümede RBAC 'yi etkinleştirmeye çalışıyorum. Bunu nasıl yapabilirim?
+## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Var olan bir kümede rol tabanlı Access Control (RBAC) etkinleştirmeye çalışıyorum. Bunu nasıl yapabilirim?
 
-Ne yazık ki, mevcut kümelerde rol tabanlı erişim denetimi 'ni (RBAC) etkinleştirmek Şu anda desteklenmiyor. Açıkça yeni kümeler oluşturmanız gerekir. CLı kullanıyorsanız, RBAC varsayılan olarak etkindir. AKS portalını kullanıyorsanız, oluşturma iş akışında RBAC 'yi etkinleştirmek için iki durumlu bir düğme bulunur.
+Mevcut kümelerde rol tabanlı erişim denetimi 'ni (RBAC) etkinleştirmek Şu anda desteklenmiyor, yeni kümeler oluşturulurken ayarlanmalıdır. Daha sonra CLı, portal veya API sürümü kullanılırken RBAC varsayılan olarak etkindir `2020-03-01` .
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Azure CLı 'yi varsayılan olarak veya Azure portal kullanarak ve şimdi Kubernetes panosunda çok sayıda uyarı görmem için RBAC ile etkinleştirilen bir küme oluşturdum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmalıyım?
+## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>RBAC etkinken bir küme oluşturdum ve şimdi Kubernetes panosunda birçok uyarı görüyorum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmalıyım?
 
-Panodaki uyarıların nedeni, kümenin RBAC ile etkin hale gelir ve erişim varsayılan olarak devre dışı bırakılmıştır. Genel olarak bu yaklaşım iyi bir uygulamadır çünkü panonun tüm kullanıcıları için varsayılan olarak pozlaması güvenlik tehditlerine neden olabilir. Panoyu hala etkinleştirmek istiyorsanız, [Bu blog gönderisine](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)ilişkin adımları izleyin.
+Uyarıların nedeni kümede RBAC 'nin etkinleştirilmiş ve panoya erişimi artık varsayılan olarak kısıtlıdır. Genel olarak bu yaklaşım iyi bir uygulamadır çünkü panonun tüm kullanıcıları için varsayılan olarak pozlaması güvenlik tehditlerine neden olabilir. Panoyu hala etkinleştirmek istiyorsanız, [Bu blog gönderisine](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)ilişkin adımları izleyin.
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Panoya bağlanamıyorum. Ne yapmalıyım?
 
-Küme dışında hizmetinize erişmenin en kolay yolu `kubectl proxy`, ana bilgisayar bağlantı noktası 8001 Ile Kubernetes API sunucusuna gönderilen isteklerin proxy 'sidir. Buradan, API sunucusu hizmetinize proxy gönderebilir: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/`.
+Küme dışında hizmetinize erişmenin en kolay yolu `kubectl proxy` , ana bilgisayar bağlantı noktası 8001 Ile Kubernetes API sunucusuna gönderilen isteklerin proxy 'sidir. Buradan, API sunucusu hizmetinize proxy gönderebilir: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/` .
 
-Kubernetes panosunu görmüyorsanız, `kube-proxy` Pod 'un `kube-system` ad alanında çalışıp çalışmadığını denetleyin. Çalışır durumda değilse, Pod 'yi silin ve yeniden başlatılır.
+Kubernetes panosunu görmüyorsanız, `kube-proxy` Pod 'un ad alanında çalışıp çalışmadığını denetleyin `kube-system` . Çalışır durumda değilse, Pod 'yi silin ve yeniden başlatılır.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Kubectl günlüklerini kullanarak günlükleri alamıyor veya API sunucusuna bağlanamıyorum. "Sunucudan hata: arka uç ararken hata: TCP ara..." hatasını alıyorum. Ne yapmalıyım?
 
-Varsayılan ağ güvenlik grubunun değiştirilmediğinden ve API sunucusuyla bağlantı için 22 ve 9000 bağlantı noktasının açık olduğundan emin olun. `tunnelfront` Pod 'ın, `kubectl get pods --namespace kube-system` komutunu kullanarak *kuin-System* ad alanında çalışıp çalışmadığını denetleyin. Değilse, Pod 'ın silinmesini zorla ve yeniden başlatılır.
+API sunucusuna bağlanmak için 22, 9000 ve 1194 bağlantı noktalarının açık olduğundan emin olun. `tunnelfront` `aks-link` Komutunu kullanarak *Kuto-System* ad alanında veya Pod 'ın çalışıp çalışmadığını denetleyin `kubectl get pods --namespace kube-system` . Değilse, Pod 'ın silinmesini zorla ve yeniden başlatılır.
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>"ImageReference" özelliğinin değiştirilmesine izin verilmez ve "bir ileti alıyorum" hatası alıyorum. Nasıl yaparım? bu sorun düzeltilsin mi?
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Yükseltmeye veya ölçeklendirmeye çalışıyorum ve bir `"Changing property 'imageReference' is not allowed"` hata alıyorum. Nasıl yaparım? bu sorun düzeltilsin mi?
 
-AKS kümesi içindeki aracı düğümlerinde bulunan etiketleri değiştirdiğiniz için bu hatayı alabilirsiniz. MC_ * kaynak grubundaki kaynakların ve diğer özelliklerinin değiştirilmesi ve silinmesi, beklenmeyen sonuçlara neden olabilir. AKS kümesindeki MC_ * grubu altındaki kaynakları değiştirmek, hizmet düzeyi hedefini (SLO) keser.
+AKS kümesi içindeki aracı düğümlerinde bulunan etiketleri değiştirdiğiniz için bu hatayı alabilirsiniz. MC_ * kaynak grubundaki kaynakların etiketlerini ve diğer özelliklerini değiştirme veya silme, beklenmeyen sonuçlara neden olabilir. AKS kümesindeki MC_ * grubundaki kaynakları değiştirmek, hizmet düzeyi hedefini (SLO) keser.
 
 ## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Kümemin başarısız durumunda olduğunu ve yükseltme ya da ölçeklendirmeyi düzeltilinceye kadar çalışmayacak
 
@@ -81,30 +79,30 @@ Bu hata, kümeler birden çok nedenden dolayı başarısız bir durum girerken o
     * Gelişmiş ağ ve **yetersiz alt ağ (ağ) kaynaklarıyla**bir kümeyi ölçeklendirin. Çözümlemek için, önce kümenizi kotanın içindeki kararlı bir hedef durumuna ölçeklendirin. Ardından ilk kota limitlerinin ötesinde daha fazla ölçeklendirmeyi denemeden önce [bir kaynak kotası artışı istemek için bu adımları](../azure-resource-manager/templates/error-resource-quota.md#solution) izleyin.
 2. Yükseltme hatasının temeldeki nedeni çözümlendikten sonra, kümenizin başarılı bir durumda olması gerekir. Başarılı bir durum doğrulandıktan sonra, özgün işlemi yeniden deneyin.
 
-## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Bu durumun yükseltilme veya ölçeklendirilmesi sırasında hata alıyorum, bu durum kümemdeki Şu anda yükseltilmekte veya yükseltme başarısız oldu
+## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>Bu durumun yükseltilme veya ölçeklendirilmesi sırasında hata alıyorum veya yükseltme başarısız oldu
 
 *Bu sorun giderme yardımı şuradan yönlendirilirhttps://aka.ms/aks-pending-upgrade*
 
-Tek düğümlü havuz veya [birden çok düğüm](use-multiple-node-pools.md) havuzu içeren bir küme ile bir kümede yükseltme ve ölçeklendirme işlemleri birbirini dışlıyor. Aynı anda yükseltme ve ölçeklendirme için bir küme veya düğüm havuzunuz olamaz. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. Sonuç olarak, etkin yükseltme veya ölçeklendirme işlemleri gerçekleşirken veya denendiğinde ve daha sonra başarısız olduğunda işlemler sınırlıdır. 
+ Aynı anda yükseltme ve ölçeklendirme için bir küme veya düğüm havuzunuz olamaz. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. Sonuç olarak, etkin yükseltme veya ölçeklendirme işlemleri gerçekleşirken veya denendiğinde işlemler sınırlıdır. 
 
-Kümenizde ayrıntılı durum almak `az aks show -g myResourceGroup -n myAKSCluster -o table` için sorunu tanılamaya yardımcı olmak için. Sonuca göre:
+`az aks show -g myResourceGroup -n myAKSCluster -o table`Kümenizde ayrıntılı durum almak için sorunu tanılamaya yardımcı olmak için. Sonuca göre:
 
-* Küme etkin bir şekilde yükseltildiğinde, işlem sonlanana kadar bekleyin. Başarılı olduysa, daha önce başarısız olan işlemi yeniden deneyin.
+* Küme etkin bir şekilde yükseltildiğinde, işlem bitene kadar bekleyin. Başarılı olduysa, daha önce başarısız olan işlemi yeniden deneyin.
 * Kümede yükseltme başarısız olursa, önceki bölümde açıklanan adımları izleyin.
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Kümemi farklı bir aboneliğe veya kümeme yeni bir kiracıya sahip aboneliğime taşıyabilir miyim?
 
-AKS kümenizi farklı bir aboneliğe veya kümeye sahip olan aboneliğe yeni bir kiracıya taşıdıysanız, rol atamalarının ve hizmet sorumlusu haklarının kaybolması nedeniyle küme işlevselliği kaybeder. Aks 'ler, bu kısıtlama nedeniyle **kümelerin abonelikler veya kiracılar arasında taşınmasını desteklemez** .
+AKS kümenizi farklı bir aboneliğe veya kümenin aboneliğini yeni bir kiracıya taşıdıysanız, küme kimliği izinleri eksik olduğundan küme çalışmaz. Aks, bu kısıtlama nedeniyle **kümelerin abonelikler veya kiracılar arasında taşınmasını desteklemez** .
 
 ## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri gerektiren özellikleri kullanmaya çalışırken hata alıyorum
 
 *Bu sorun giderme yardımı aka.ms/aks-vmss-enablement 'ten yönlendirilir*
 
-AKS kümenizin, aşağıdaki örnekte olduğu gibi bir sanal makine ölçek kümesi üzerinde olmadığını belirten hatalar alabilirsiniz:
+Aşağıdaki örnekte olduğu gibi, AKS kümenizi bir sanal makine ölçek kümesi üzerinde olmadığını belirten hatalar alabilirsiniz:
 
-**AgentPool ' agentpool ' otomatik ölçeklendirmeyi etkin olarak ayarladı, ancak sanal makine ölçek kümelerinde değil**
+**AgentPool `<agentpoolname>` Otomatik ölçeklendirmeyi etkin olarak ayarladı, ancak sanal makine ölçek kümelerinde değil**
 
-Küme otomatik veya birden çok düğüm havuzu gibi özellikleri kullanmak için, sanal makine ölçek kümelerini kullanan AKS kümelerinin oluşturulması gerekir. Sanal makine ölçek kümelerine bağımlı olan özellikleri kullanmayı denerseniz ve normal, sanal olmayan bir makine ölçek kümesi AKS kümesini hedeflerseniz hatalar döndürülür.
+Küme otomatik Scaler veya birden çok düğüm havuzu gibi özellikler, sanal makine ölçek kümelerini olarak gerektirir `vm-set-type` .
 
 Bir AKS kümesini doğru şekilde oluşturmak için uygun belge içindeki *başlamadan önce* ' i izleyin:
 
@@ -117,9 +115,10 @@ Bir AKS kümesini doğru şekilde oluşturmak için uygun belge içindeki *başl
 
 Adlandırma kısıtlamaları hem Azure platformu hem de AKS tarafından uygulanır. Bir kaynak adı veya parametresi bu kısıtlamaların birini keserse, farklı bir giriş sağlamanızı isteyen bir hata döndürülür. Aşağıdaki ortak adlandırma yönergeleri geçerlidir:
 
-* Küme adları 1-63 karakter olmalıdır. Yalnızca harf, sayı, kısa çizgi ve alt çizgi olan karakterler izin verilir. İlk ve son karakter bir harf veya sayı olmalıdır.
-* AKS *Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. Otomatik olarak `MC_resourceGroupName_resourceName_AzureRegion` oluşturulan sözdiziminin 80 karakterden büyük olmaması gerekir. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın.
+* Küme adları 1-63 karakter olmalıdır. Yalnızca harfler, rakamlar, tireler ve alt çizgi olmak üzere izin verilen karakterler. İlk ve son karakter bir harf veya sayı olmalıdır.
+* AKS düğümü/*Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. Otomatik olarak oluşturulan sözdiziminin `MC_resourceGroupName_resourceName_AzureRegion` 80 karakterden büyük olmaması gerekir. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın. Ayrıca, [düğüm kaynağı grubu adınızı özelleştirebilirsiniz](cluster-configuration.md#custom-resource-group-name)
 * *Dnspredüzeltmesini* alfasayısal değerlerle başlamalı ve bitmeli ve 1-54 karakter arasında olmalıdır. Geçerli karakterler alfasayısal değerleri ve kısa çizgileri (-) içerir. *Dnspredüzeltmesini* nokta (.) gibi özel karakterler içeremez.
+* AKS düğüm havuzu adları küçük harfle yazılmalıdır ve Linux düğüm havuzları için 1-11 karakter ve Windows düğüm havuzları için 1-6 karakter olmalıdır. Ad bir harf ile başlamalı ve yalnızca harf ve rakam olmak üzere yalnızca izin verilen karakterler olmalıdır.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Küme oluşturmaya, güncelleştirmeye, ölçeklendirmeye, silmeye veya yükseltmeye çalışırken hata alıyorum, devam eden başka bir işlem olduğundan bu işleme izin verilmiyor.
 
@@ -133,53 +132,48 @@ Küme durumunun çıkışına göre:
 
 * Kümenin başarısız bir yükseltmesi varsa, ana belirtilen adımları izleyerek [Kümemin başarısız durumunda olduğunu ve yükseltme ya da ölçeklendirmeyi düzeltilene kadar çalışmayacaktır](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
-## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>Mevcut bir kümeyi geçirmeden yeni bir küme oluşturmaya çalıştığımda hizmet sorumlumun bulunamadığını belirten hatalar alıyorum.
+## <a name="received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster"></a>Yeni bir küme oluşturmaya çalıştığımda, hizmet sorumlumun bulunamadığını veya geçersiz olduğunu belirten bir hata alındı.
 
-Bir AKS kümesi oluştururken sizin adınıza kaynak oluşturmak için hizmet sorumlusu gerekir. AKS, küme oluşturma sırasında yeni bir tane oluşturma özelliği sunar, ancak bu, kümenin oluşturma işleminin başarılı olması için yeni hizmet sorumlusunu uygun bir süre içinde tam olarak yaymak için Azure Active Directory gerektirir. Bu yayma çok uzun sürerse, küme, kullanılabilir bir hizmet sorumlusu bulamadığından, oluşturulması için doğrulama başarısız olur. 
+Bir AKS kümesi oluştururken, sizin adınıza kaynak oluşturmak için bir hizmet sorumlusu veya yönetilen kimlik gerektirir. AKS, küme oluşturma sırasında otomatik olarak yeni bir hizmet sorumlusu oluşturabilir veya var olan bir hizmet sorumlusunu alabilir. Otomatik olarak oluşturulan bir kullanıldığında, oluşturma işleminin başarılı olması için Azure Active Directory her bölgeye yayması gerekir. Yayma çok uzun sürerse, küme, kullanılabilir bir hizmet sorumlusu bulamadığı için doğrulama doğrulaması başarısız olur. 
 
-Bunun için aşağıdaki geçici çözümleri kullanın:
-1. Bölgelere zaten yayılan ve küme oluşturma zamanında AKS 'e geçirilecek mevcut bir hizmet sorumlusunu kullanın.
-2. Otomasyon betikleri kullanıyorsanız, hizmet sorumlusu oluşturma ve AKS kümesi oluşturma arasında zaman gecikmeleri ekleyin.
-3. Azure portal kullanıyorsanız, oluşturma sırasında küme ayarlarına dönün ve birkaç dakika sonra doğrulama sayfasını yeniden deneyin.
+Bu sorun için aşağıdaki geçici çözümleri kullanın:
+* Zaten bölgelere yayılan ve küme oluşturma zamanında AKS 'e geçirilecek mevcut bir hizmet sorumlusunu kullanın.
+* Otomasyon betikleri kullanıyorsanız, hizmet sorumlusu oluşturma ve AKS kümesi oluşturma arasında zaman gecikmeleri ekleyin.
+* Azure portal kullanıyorsanız, oluşturma sırasında küme ayarlarına dönün ve birkaç dakika sonra doğrulama sayfasını yeniden deneyin.
 
-## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Çıkış trafiğinizi kısıtladıktan sonra hata alıyorum
 
-AKS kümesinden çıkış trafiği kısıtlandığında, [gerekli ve isteğe bağlı olarak önerilen](limit-egress-traffic.md) giden bağlantı noktaları/ağ kuralları ve aks için FQDN/uygulama kuralları vardır. Ayarlarınız bu kuralların herhangi biriyle çakışıyorsa, belirli `kubectl` komutları çalıştıramayabilir. AKS kümesi oluştururken de hata görebilirsiniz.
 
-Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktaları/ağ kuralları ve FQDN/uygulama kuralları ile çakışmadığından emin olun.
+
+
+## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Çıkış trafiğini kısıtladıktan sonra hata alıyorum
+
+AKS kümesinden çıkış trafiği kısıtlandığında, [gerekli ve isteğe bağlı olarak önerilen](limit-egress-traffic.md) giden bağlantı noktaları/ağ kuralları ve aks için FQDN/uygulama kuralları vardır. Ayarlarınız bu kurallardan herhangi biriyle çakışıyorsa, bazı `kubectl` Komutlar doğru çalışmaz. AKS kümesi oluştururken de hata görebilirsiniz.
+
+Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktaları/ağ kuralları ve FQDN/uygulama kurallarından hiçbiriyle çakışmadığını doğrulayın.
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure depolama ve AKS sorunlarını giderme
 
 ### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>Azure disk için, Kubernetes 'in önerilen kararlı sürümleri nelerdir? 
 
 | Kubernetes sürümü | Önerilen sürüm |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.9 veya üzeri |
 | 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
 
 
-### <a name="what-versions-of-kubernetes-have-azure-disk-support-on-the-sovereign-cloud"></a>Kubernetes 'in hangi sürümleri, Sovereign bulutu üzerinde Azure disk desteğine sahip?
-
-| Kubernetes sürümü | Önerilen sürüm |
-| -- | :--: |
-| 1.12 | 1.12.0 veya üzeri |
-| 1.13 | 1.13.0 veya üzeri |
-| 1,14 | 1.14.0 veya üzeri |
-
-
 ### <a name="waitforattach-failed-for-azure-disk-parsing-devdiskazurescsi1lun1-invalid-syntax"></a>Azure disk için WaitForAttach başarısız oldu: "/dev/disk/Azure/scsi1/lun1" Ayrıştırılıyor: geçersiz sözdizimi
 
-Kubernetes sürüm 1,10 ' de, Bağlamabirimi. WaitForAttach, Azure disk uzaktan bağlantısı ile başarısız olabilir.
+Kubernetes sürüm 1,10 ' de, Bağlamabirimi. WaitForAttach bir Azure disk uzaktan bağlantısı ile başarısız olabilir.
 
-Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örneğin:
+Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örnek:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örneğin:
+Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örnek:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -189,10 +183,11 @@ Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.Wait
 Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 
 | Kubernetes sürümü | Sabit sürüm |
-| -- | :--: |
+|--|:--:|
 | 1.10 | 1.10.2 veya üzeri |
 | 1,11 | 1.11.0 veya üzeri |
 | 1,12 ve üzeri | Yok |
+
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure diski için mountOptions 'da uid ve GID ayarlanırken hata oluştu
 
@@ -207,7 +202,7 @@ mount: wrong fs type, bad option, bad superblock on /dev/sde,
        missing codepage or helper program, or other error
 ```
 
-Aşağıdakilerden birini yaparak sorunu azaltabilirsiniz:
+Seçeneklerden birini yaparak sorunu azaltabilirsiniz:
 
 * FsGroup 'ta runAsUser ve GID ' de uid ' i ayarlayarak [pod için güvenlik bağlamını yapılandırın](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) . Örneğin, aşağıdaki ayar Pod Run as kökünü ayarlar ve herhangi bir dosya için erişilebilir hale getirir:
 
@@ -223,9 +218,9 @@ spec:
 ```
 
   >[!NOTE]
-  > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes bu disk altındaki tüm dizinleri `chown` ve dosyaları değiştirmek için kullanılır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
+  > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes `chown` Bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için kullanılır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
 
-* GID `chown` ve uid ayarlamak Için ınitcontainers içinde kullanın. Örneğin:
+* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örnek:
 
 ```yaml
 initContainers:
@@ -237,100 +232,24 @@ initContainers:
     mountPath: /data
 ```
 
-### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>Pod tarafından kullanılan Azure disk PersistentVolumeClaim silinirken hata oluştu
-
-Pod tarafından kullanılmakta olan bir Azure disk PersistentVolumeClaim 'yi silmeye çalışırsanız bir hata görebilirsiniz. Örneğin:
-
-```console
-$ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
-...
-Message:         disk.DisksClient#Delete: Failure responding to request: StatusCode=409 -- Original Error: autorest/azure: Service returned an error. Status=409 Code="OperationNotAllowed" Message="Disk kubernetes-dynamic-pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06 is attached to VM /subscriptions/{subs-id}/resourceGroups/MC_markito-aks-pvc_markito-aks-pvc_westus/providers/Microsoft.Compute/virtualMachines/aks-agentpool-25259074-0."
-```
-
-Kubernetes sürüm 1,10 ve üzeri sürümlerde, bu hatayı engellemek için varsayılan olarak etkinleştirilen bir PersistentVolumeClaim koruma özelliği vardır. Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, PersistentVolumeClaim 'yi silmeden önce PersistentVolumeClaim kullanarak Pod 'u silerek bu sorunu azaltabilirsiniz.
-
-
-### <a name="error-cannot-find-lun-for-disk-when-attaching-a-disk-to-a-node"></a>Bir düğüme disk eklenirken "disk için LUN bulunamıyor" hatası
-
-Bir düğüme bir disk iliştirirken, şu hatayı görebilirsiniz:
-
-```console
-MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6" : Cannot find Lun for disk kubernetes-dynamic-pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6
-```
-
-Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
-
-| Kubernetes sürümü | Sabit sürüm |
-| -- | :--: |
-| 1.10 | 1.10.10 veya üzeri |
-| 1,11 | 1.11.5 veya üzeri |
-| 1.12 | 1.12.3 veya üzeri |
-| 1.13 | 1.13.0 veya üzeri |
-| 1,14 ve üzeri | Yok |
-
-Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, birkaç dakika bekleyip yeniden denemeden sorunu azaltabilirsiniz.
-
-### <a name="azure-disk-attachdetach-failure-mount-issues-or-io-errors-during-multiple-attachdetach-operations"></a>Çoklu iliştirme/ayırma işlemleri sırasında Azure disk iliştirme/ayırma hatası, bağlama sorunları veya g/ç hataları
-
-Kubernetes sürüm 1.9.2 'dan başlayarak, paralel olarak birden çok iliştirme/ayır işlemi çalıştırırken, bir kirli VM önbelleği nedeniyle aşağıdaki disk sorunlarını görebilirsiniz:
-
-* Disk iliştirme/ayırma sorunları
-* Disk g/ç hataları
-* VM 'den beklenmeyen disk kesilmesi
-* Mevcut olmayan disk iliştirilirken VM, başarısız durumunda çalışıyor
-
-Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
-
-| Kubernetes sürümü | Sabit sürüm |
-| -- | :--: |
-| 1.10 | 1.10.12 veya üzeri |
-| 1,11 | 1.11.6 veya üzeri |
-| 1.12 | 1.12.4 veya üzeri |
-| 1.13 | 1.13.0 veya üzeri |
-| 1,14 ve üzeri | Yok |
-
-Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, aşağıdaki adımları deneyerek sorunu azaltabilirsiniz:
-
-* Bir disk uzun bir süre ayrılmayı bekliyorsa, diski el ile ayırmayı deneyin
-
-### <a name="azure-disk-waiting-to-detach-indefinitely"></a>Azure diski sonsuza kadar ayrılmayı bekliyor
-
-Bazı durumlarda, ilk denemede bir Azure disk ayırma işlemi başarısız olursa, ayırma işlemini yeniden denemez ve özgün düğüm sanal makinesine bağlı olarak kalır. Bu hata, bir diski bir düğümden diğerine taşırken ortaya çıkabilir. Örneğin:
-
-```console
-[Warning] AttachVolume.Attach failed for volume "pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" : Attach volume "kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance "/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0" failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code="ConflictingUserInput" Message="Disk '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9' cannot be attached as the disk is already owned by VM '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1'."
-```
-
-Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
-
-| Kubernetes sürümü | Sabit sürüm |
-| -- | :--: |
-| 1,11 | 1.11.9 veya üzeri |
-| 1.12 | 1.12.7 veya üzeri |
-| 1.13 | 1.13.4 veya üzeri |
-| 1,14 ve üzeri | Yok |
-
-Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, diski el ile ayırarak sorunu azaltabilirsiniz.
-
 ### <a name="azure-disk-detach-failure-leading-to-potential-race-condition-issue-and-invalid-data-disk-list"></a>Olası yarış durumu sorununa ve geçersiz veri diski listesine önde gelen Azure disk ayırma hatası
 
-Bir Azure diski ayrılmazsa, üstel geri kapatmayı kullanarak diski ayırmak en fazla altı kez yeniden dener. Ayrıca, yaklaşık 3 dakika boyunca veri diski listesinde düğüm düzeyinde bir kilit da tutar. Bu süre boyunca bir el ile iliştirme veya ayırma işlemi gibi disk listesi el ile güncelleniyorsa, bu, düğüm düzeyi kilidi tarafından tutulan disk listesinin kullanımdan kalkmasına ve düğüm sanal makinesinde kararsızlığa neden olur.
+Bir Azure diski ayrılmazsa, üstel geri kapatmayı kullanarak diski ayırmak en fazla altı kez yeniden dener. Ayrıca, yaklaşık 3 dakika boyunca veri diski listesinde düğüm düzeyinde bir kilit da tutar. Disk listesi bu süre içinde el ile güncelleştirilirse, düğüm düzeyi kilidi tarafından tutulan disk listesinin kullanımdan kalkmasına ve düğüm üzerinde kararsızlığa neden olur.
 
 Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 
 | Kubernetes sürümü | Sabit sürüm |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.9 veya üzeri |
 | 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
 | 1,15 ve üzeri | Yok |
 
-Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğüm sanal makinenizin kullanım dışı bir disk listesi varsa, mevcut olmayan tüm diskleri VM 'den tek bir toplu işlem olarak ayırarak sorunu azaltabilirsiniz. **Mevcut olmayan diskleri tek tek ayırmak başarısız olabilir.**
-
+Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz eski bir disk listesine sahipse, mevcut olmayan tüm diskleri VM 'den toplu bir işlem olarak ayırarak azaltabilirsiniz. **Mevcut olmayan diskleri tek tek ayırmak başarısız olabilir.**
 
 ### <a name="large-number-of-azure-disks-causes-slow-attachdetach"></a>Çok sayıda Azure diski yavaş iliştirme/ayır oluşmasına neden oluyor
 
-Bir düğüm sanal makinesine bağlı Azure disk sayısı 10 ' dan büyükse, Attach ve Detach işlemleri yavaş olabilir. Bu sorun bilinen bir sorundur ve şu anda geçici çözüm bulunmamaktadır.
+Tek düğümlü VM 'yi hedefleyen Azure disk iliştirme/ayır işlemleri sayısı 10 ' dan büyük veya tek sanal makine ölçek kümesi havuzunu hedeflerken 3 ' ten büyükse, ardışık olarak yapıldığından beklenenden daha yavaş olabilir. Bu sorun bilinen bir kısıtlamadır ve şu anda geçici çözüm yoktur. [Sayının dışında paralel iliştirme/ayır desteklemek Için kullanıcı sesli öğesi.](https://feedback.azure.com/forums/216843-virtual-machines/suggestions/40444528-vmss-support-for-parallel-disk-attach-detach-for).
 
 ### <a name="azure-disk-detach-failure-leading-to-potential-node-vm-in-failed-state"></a>Başarısız durumundaki olası düğüm VM 'sine yönelik Azure disk ayırma hatası
 
@@ -339,13 +258,13 @@ Bazı Edge durumlarında, Azure disk ayırma kısmen başarısız olabilir ve d�
 Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 
 | Kubernetes sürümü | Sabit sürüm |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.10 veya üzeri |
 | 1.13 | 1.13.8 veya üzeri |
 | 1,14 | 1.14.4 veya üzeri |
 | 1,15 ve üzeri | Yok |
 
-Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve Node VM 'niz başarısız durumdaysa, aşağıdakilerden birini kullanarak VM durumunu el ile güncelleştirerek sorunu azaltabilirsiniz:
+Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz hatalı durumdaysa, aşağıdakilerden birini kullanarak VM durumunu el ile güncelleştirerek azaltabilirsiniz:
 
 * Kullanılabilirlik kümesi tabanlı küme için:
     ```azurecli
@@ -362,17 +281,9 @@ Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız 
 ### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>Azure dosyaları için, Kubernetes 'in önerilen kararlı sürümleri nelerdir?
  
 | Kubernetes sürümü | Önerilen sürüm |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.6 veya üzeri |
 | 1.13 | 1.13.4 veya üzeri |
-| 1,14 | 1.14.0 veya üzeri |
-
-### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>Kubernetes 'in hangi sürümleri, Sovereign bulutu üzerinde Azure dosyaları destekliyor?
-
-| Kubernetes sürümü | Önerilen sürüm |
-| -- | :--: |
-| 1.12 | 1.12.0 veya üzeri |
-| 1.13 | 1.13.0 veya üzeri |
 | 1,14 | 1.14.0 veya üzeri |
 
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Azure dosyaları kullanılırken varsayılan mountOptions nedir?
@@ -380,11 +291,11 @@ Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız 
 Önerilen Ayarlar:
 
 | Kubernetes sürümü | fileMode ve dirMode değeri|
-| -- | :--: |
+|--|:--:|
 | 1.12.0-1.12.1 | 0755 |
 | 1.12.2 ve üzeri | 0777 |
 
-Kubernetes sürüm 1.8.5 veya üzerini içeren bir küme kullanılıyorsa ve kalıcı birimi bir depolama sınıfıyla dinamik olarak oluşturduğunuzda, depolama sınıfı nesnesinde bağlama seçenekleri belirtilebilir. Aşağıdaki örnek *0777*olarak ayarlanır:
+Bağlama seçenekleri, depolama sınıfı nesnesinde belirtilebilir. Aşağıdaki örnek *0777*olarak ayarlanır:
 
 ```yaml
 kind: StorageClass
@@ -446,7 +357,7 @@ Bu hata, *Seçili ağdan erişime izin ver*ayarı yapılırken, Kubernetes *pers
 
 ### <a name="azure-files-fails-to-remount-in-windows-pod"></a>Azure dosyaları Windows Pod 'da yeniden bağlama yapamıyor
 
-Azure dosyaları bağlaması olan bir Windows Pod silinirse ve aynı düğümde yeniden oluşturulmak üzere zamanlanırsa, bağlama başarısız olur. Bu hata, Azure dosyaları bağlama `New-SmbGlobalMapping` , düğüme zaten bağlı olduğundan komutun başarısız olmasından kaynaklanır.
+Azure dosyaları bağlaması olan bir Windows Pod silinirse ve aynı düğümde yeniden oluşturulmak üzere zamanlanırsa, bağlama başarısız olur. Bu hata, `New-SmbGlobalMapping` Azure dosyaları bağlama, düğüme zaten bağlı olduğundan komutun başarısız olmasından kaynaklanır.
 
 Örneğin şuna benzer bir hata görebilirsiniz:
 
@@ -457,24 +368,24 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 
 | Kubernetes sürümü | Sabit sürüm |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.6 veya üzeri |
 | 1.13 | 1.13.4 veya üzeri |
 | 1,14 ve üzeri | Yok |
 
-### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
+### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
 
 Depolama hesabı anahtarınız değiştiyse Azure dosyaları bağlama hatalarıyla karşılaşabilirsiniz.
 
-*Azurestokgeaccountkey* alanını Azure dosya gizli dizisi ' nde Base64 kodlamalı depolama hesabı anahtarınızla el ile güncelleştirerek sorunu azaltabilirsiniz.
+`azurestorageaccountkey`Base64 ile kodlanmış depolama hesabı anahtarınızla Azure dosya gizli anahtarındaki alanı el ile güncelleştirerek azaltabilirsiniz.
 
-Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64`. Örneğin:
+Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örnek:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret`. Örneğin:
+Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örnek:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret
@@ -482,19 +393,20 @@ kubectl edit secret azure-storage-account-{storage-account-name}-secret
 
 Birkaç dakika sonra, aracı düğümü güncelleştirilmiş depolama anahtarıyla Azure dosya takasını yeniden dener.
 
+
 ### <a name="cluster-autoscaler-fails-to-scale-with-error-failed-to-fix-node-group-sizes"></a>Küme otomatik algılama işlemi, düğüm grubu boyutlarını düzeltemedi hata vererek ölçeklendirme yapamıyor
 
-Kümenizin otomatik olarak ölçeklendirilmesi/ölçeği yoksa [küme otomatik Scaler günlüklerinde][view-master-logs]aşağıdaki gibi bir hata görürseniz.
+Kümenizin otomatik olarak ölçeği artırma/azaltma yoksa, [küme otomatik Scaler günlüklerinde][view-master-logs]aşağıdaki gibi bir hata görürsünüz.
 
 ```console
 E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes: failed to decrease aks-default-35246781-vmss: attempt to delete existing nodes
 ```
 
-Bu hata, küme otomatik Scaler, kümenin gerçekten kümeden farklı bir değerle bittiği bir yukarı akış kümesi otomatik Scaler yarış durumu nedeniyle yapılır. Bu durumdan yararlanmak için [küme otomatik Scaler][cluster-autoscaler]'ı devre dışı bırakıp yeniden etkinleştirmeniz yeterlidir.
+Bu hata, bir yukarı akış kümesi otomatik Scaler yarış durumu nedeniyle oluşur. Böyle bir durumda, Cluster otomatik Scaler, aslında kümede olandan farklı bir değerle sona erer. Bu durumdan yararlanmak için [küme otomatik Scaler][cluster-autoscaler]'ı devre dışı bırakıp yeniden etkinleştirin.
 
 ### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Yavaş disk eki, GetAzureDiskLun 10 ila 15 dakika sürer ve bir hata alırsınız
 
-**1.15.0 ' den eski** Kubernetes sürümlerinde, **hata waitforattach for disk için LUN bulunamıyor**gibi bir hata alabilirsiniz.  Bunun geçici çözümü yaklaşık 15 dakika bekleyip yeniden denenecektir.
+**1.15.0 ' den eski**Kubernetes sürümlerinde, **hata waitforattach for disk için LUN bulunamıyor**gibi bir hata alabilirsiniz.  Bu sorunun geçici çözümü yaklaşık 15 dakika bekleyip yeniden denenecektir.
 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md

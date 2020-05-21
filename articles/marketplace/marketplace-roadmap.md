@@ -1,32 +1,24 @@
 ---
-title: Microsoft ticari Market yol haritası
-description: Bu yol haritası, yeni ve gelecek özellikleri ve ticari Market 'in diğer sürümlerini vurgular
+title: Microsoft ticari Market sürüm kaynakları
+description: Yeni ve gelecek özellikler, yayınlar ve ticari Market için diğer güncelleştirmeler hakkında bilgi edinin
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/02/2019
-ms.openlocfilehash: 847d4f95d7e8bacb721c450f7e831c0c2d98334c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/19/2020
+ms.openlocfilehash: d8f836af35c433bd078b721b6829097e6ee8482b
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657844"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725899"
 ---
-# <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft ticari Market yol haritası
+# <a name="microsoft-commercial-marketplace-resources"></a>Microsoft ticari Market kaynakları
 
-Bu makalede, son sürümler ve yayımcılar, satıcılar ve müşteriler için Microsoft ticari Market 'teki yenilikler açıklanmaktadır. Taahhütizin verdiğimiz özelliklerden bazılarını yakalar ve ne zaman görmeyi bekletireceğiz için kaba bir zaman çerçevesi sağlar. Tüm yeni özelliklerin kapsamlı bir listesi değildir ancak önemli yatırımlarımıza görünürlük sağlamak üzere tasarlanmıştır. Bu özellik kümeleri ve teslim süresi çerçeveleri geçerli ve değişikliğe tabidir.
+Microsoft Commercial Market 'teki son yayınlar ve diğer güncelleştirmeler hakkında bilgi için aşağıdaki kaynaklara bakın.
 
-Önerilerinizi duymaktan mutluluk duyarız! Yeni yetenekler, programlar ve olaylar hakkında en son güncelleştirmeleri almak için [Microsoft Iş ortağı topluluğu](https://www.microsoftpartnercommunity.com/) 'nda konuşmaya katın.
-
-## <a name="roadmap"></a>Yol Haritası
-![Kasım 2019 için Market yol haritası](./media/marketplace-publishers-guide/roadmap-nov19.png)
-
-## <a name="recent-releases"></a>Son yayınlar
-
-Bir yetenek canlı olduktan sonra, yol haritası 'ndan kaldırılır. Market 'e eklenmiş işlevler aşağıdaki belgelerde bulunabilir.
-
+* [Microsoft AppSource ve Azure Marketi-Iş ortağı topluluk Forumu](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)
 * [Market ve bulut çözümü sağlayıcısı (CSP) Web günlüğü güncelleştirme](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
 * [Teklifleri CSP kanalında yayımlama (ISV)](./cloud-solution-providers.md)
 * [Market tekliflerini yeniden satma (CSP)](https://docs.microsoft.com/partner-center/sell-marketplace-products)
@@ -41,6 +33,4 @@ Bir yetenek canlı olduktan sonra, yol haritası 'ndan kaldırılır. Market 'e 
 )  /  [güncelleştirme mevcut teklif](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)  /  [teklifi analizlerini](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics) Güncelleştir
 * [Iş Ortağı Merkezi 'nde Market desteği alın](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
-## <a name="next-steps"></a>Sonraki adımlar
-
-[Azure Marketi ve AppSource yayımcı Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) sayfasını ziyaret edin.
+Önerilerinizi duymaktan mutluluk duyarız! Yeni yetenekler, programlar ve olaylar hakkında en son güncelleştirmeleri almak için [Microsoft Iş ortağı topluluğu](https://www.microsoftpartnercommunity.com/) 'nda konuşmaya katın.

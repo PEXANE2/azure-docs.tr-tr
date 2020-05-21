@@ -4,13 +4,13 @@ description: Azure Batch ile uygulama işleme nasıl kullanılır. Bu makalede, 
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 6610724cd2ecb14d165b587f9df31353e8eb8e41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115814"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726511"
 ---
 # <a name="rendering-applications"></a>Uygulamaları işleme
 
@@ -29,9 +29,9 @@ Bu makalede, her bir işleme uygulamasının nasıl çalıştırılacağı hakk�
 
 ### <a name="task-command-line"></a>Görev komut satırı
 
-Bir havuz `3dsmaxcmdio.exe` düğümünde komut satırı oluşturmayı gerçekleştirmek için uygulamayı çağırın.  Bu uygulama, görev çalıştırıldığında yol üzerinde bulunur. `3dsmaxcmdio.exe` Uygulama, `3dsmaxcmd.exe` uygulama ile aynı kullanılabilir parametrelere sahiptir ve bu, [3ds Max yardım belgelerinde](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (işleme |) belgelenmiştir. Komut satırı Işleme bölümü).
+`3dsmaxcmdio.exe`Bir havuz düğümünde komut satırı oluşturmayı gerçekleştirmek için uygulamayı çağırın.  Bu uygulama, görev çalıştırıldığında yol üzerinde bulunur. `3dsmaxcmdio.exe`Uygulama, uygulama ile aynı kullanılabilir parametrelere sahiptir `3dsmaxcmd.exe` ve bu, [3ds Max yardım belgelerinde](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (işleme |) belgelenmiştir. Komut satırı Işleme bölümü).
 
-Örneğin:
+Örnek:
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"
@@ -39,8 +39,8 @@ Bir havuz `3dsmaxcmdio.exe` düğümünde komut satırı oluşturmayı gerçekle
 
 Notlar:
 
-* Varlık dosyalarının bulunduğundan emin olmak için harika bir ilginin alınması gerekir.  Yolların doğru ve göreli olduğundan, **varlık izleme** penceresini kullanarak veya komut satırındaki `-bitmapPath` parametresini kullandığınızdan emin olun.
-* İşle ilgili bir sorun olup olmadığını, örneğin varlık bulma gibi, bir görev çalıştırıldığında 3ds Max ile `stdout.txt` yazılmış dosyayı denetleyerek, bkz..
+* Varlık dosyalarının bulunduğundan emin olmak için harika bir ilginin alınması gerekir.  Yolların doğru ve göreli olduğundan, **varlık izleme** penceresini kullanarak veya `-bitmapPath` komut satırındaki parametresini kullandığınızdan emin olun.
+* İşle ilgili bir sorun olup olmadığını, örneğin varlık bulma gibi, bir `stdout.txt` görev çalıştırıldığında 3ds Max ile yazılmış dosyayı denetleyerek, bkz..
 
 ### <a name="batch-explorer-templates"></a>Batch Explorer şablonları
 
@@ -57,7 +57,7 @@ Maya içinde yerleşik olan oluşturuculara ek olarak, aşağıdaki işleyiciler
 
 ### <a name="task-command-line"></a>Görev komut satırı
 
-`renderer.exe` Komut satırı işleyicisi görev komut satırında kullanılır. Komut satırı işleyicisi [Maya yardımı](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4)'nda belgelenmiştir.
+`renderer.exe`Komut satırı işleyicisi görev komut satırında kullanılır. Komut satırı işleyicisi [Maya yardımı](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4)'nda belgelenmiştir.
 
 Aşağıdaki örnekte, sahne dosyalarını ve varlıklarını iş hazırlama çalışma dizinine kopyalamak için bir iş hazırlama görevi kullanılır, işleme görüntüsünü depolamak için bir çıkış klasörü kullanılır ve kare 10 işlenir.
 

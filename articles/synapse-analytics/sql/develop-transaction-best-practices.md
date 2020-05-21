@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d6902b2b076df86012cec6941be417ad0f0c7660
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b5d508450d17d6e07e2c2bdb78b7934988936b9
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428738"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715758"
 ---
 # <a name="optimizing-transactions-in-sql-pool"></a>SQL havuzundaki işlemleri iyileştirme
 
@@ -44,7 +44,7 @@ Her satır değişikliğini izlemek için işlem günlüğünü kullanan tam ola
 
 Aşağıdaki işlemler en düşük düzeyde günlüğe kaydedilebilir:
 
-* SELECT olarak CREATE TABLE ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+* SELECT ([CTAS]) OLARAK CREATE TABLE (.. /SQL-Data-Warehouse/SQL-Data-Warehouse-develop-CTAS.exe MD? TOC =/Azure/SYNAPSE-Analytics/TOC.JSON&BC =/Azure/SYNAPSE-Analytics/breadcrumb/TOC.JSON)
 * Ekle.. SEÇIN
 * CREATE INDEX
 * ALTER ıNDEX REBUıLD
@@ -84,7 +84,7 @@ Verilerin kümelenmiş bir dizine sahip boş olmayan bir tabloya yüklenmesi gen
 
 ## <a name="optimizing-deletes"></a>Silmeleri iyileştirme
 
-SILME işlemi tam olarak günlüğe kaydedilir.  Tablodaki veya bir bölümdeki büyük miktarda veriyi silmeniz gerekiyorsa, genellikle tutmak istediğiniz verilere daha anlamlı `SELECT` hale gelir ve bu, en düşük düzeyde günlüğe kaydedilmiş bir işlem olarak çalıştırılabilir.  Verileri seçmek için [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)ile yeni bir tablo oluşturun.  Oluşturulduktan sonra, eski tablonuzu yeni oluşturulan tabloyla değiştirmek için [Yeniden Adlandır](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ' ı kullanın.
+SILME işlemi tam olarak günlüğe kaydedilir.  Tablodaki veya bir bölümdeki büyük miktarda veriyi silmeniz gerekiyorsa, genellikle tutmak istediğiniz verilere daha anlamlı hale gelir ve bu, en `SELECT` düşük düzeyde günlüğe kaydedilmiş bir işlem olarak çalıştırılabilir.  Verileri seçmek için [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)ile yeni bir tablo oluşturun.  Oluşturulduktan sonra, eski tablonuzu yeni oluşturulan tabloyla değiştirmek için [Yeniden Adlandır](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ' ı kullanın.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -413,7 +413,7 @@ SQL havuzunuzu duraklattığınızda veya ölçeklendirirseniz, tüm uçuş işl
 İş yükünüz, duraklatma veya ölçeklendirme işleminden önce uzun süre çalışan ve tamamlanmamış veri değişikliği yaptıysanız, bu işin geri yüklenmesi gerekir. Bu geri alma, SQL havuzunuzu duraklatmak veya ölçeklendirmek için gereken süreyi etkileyebilir. 
 
 > [!IMPORTANT]
-> Her `UPDATE` ikisi `DELETE` ve tamamen günlüğe kaydedilir ve bu geri alma/yineleme işlemleri, eşdeğer en düşük düzeyde günlüğe kaydedilmiş işlemden çok daha uzun sürebilir.
+> Her ikisi `UPDATE` ve `DELETE` tamamen günlüğe kaydedilir ve bu geri alma/yineleme işlemleri, eşdeğer en düşük düzeyde günlüğe kaydedilmiş işlemden çok daha uzun sürebilir.
 
 En iyi senaryo, SQL havuzunu duraklatmadan veya ölçeklendirmeden önce uçuş verileri değiştirme işlemlerinin tamamlanmasını sağlar. Ancak, bu senaryo her zaman pratik olmayabilir. Uzun geri alma riskini azaltmak için aşağıdaki seçeneklerden birini göz önünde bulundurun:
 

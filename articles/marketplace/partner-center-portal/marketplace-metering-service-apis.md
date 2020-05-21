@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 159d2c60fc1fc5ad1f21f2b948208eaae0d06208
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/18/2020
+ms.openlocfilehash: 95eba648219413923ce27d433a5236877c4953f3
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857860"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725474"
 ---
 # <a name="marketplace-metering-service-apis"></a>Market ölçüm hizmeti API’leri
 
@@ -34,7 +34,10 @@ Kullanım olayı API 'SI, satın alınan belirli bir varlık için kullanım ola
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
-| `authorization`   | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Note: HTTP isteği yapılırken başvurulan bağlantıdan alınan belirtecin `Bearer` öneki. |
+| `authorization`   | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Note: HTTP isteği yapılırken `Bearer` başvurulan bağlantıdan alınan belirtecin öneki. |
+
+>[!Note]
+>Azure uygulama tarafından yönetilen uygulamalar planları için, `resourceId` `resourceUsageId` `billingDetails` yönetilen uygulama meta verileri nesnesinin altında bulunur.  [Azure tarafından yönetilen kimlikler belirtecini kullanarak](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token), bu dosyayı getirmeye yönelik örnek bir betik bulunabilir.  SaaS teklifleri için `resourceId` SaaS ABONELIK kimliğidir.  SaaS abonelikleri hakkında daha fazla bilgi için bkz. [abonelikleri listeleme](./pc-saas-fulfillment-api-v2.md#list-subscriptions).
 
 *İsteyen*
 
@@ -95,7 +98,7 @@ Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman a
 ```
 
 Kod: 409<br>
-Kullanım kaynak KIMLIĞI için kullanım çağrısını ve zaten var olan etkin kullanımı aldığımızda çakışma. Yanıt, kabul edilen `additionalInfo` ileti hakkında bilgi içeren alanı içerecektir.
+Kullanım kaynak KIMLIĞI için kullanım çağrısını ve zaten var olan etkin kullanımı aldığımızda çakışma. Yanıt, `additionalInfo` kabul edilen ileti hakkında bilgi içeren alanı içerecektir.
 
 ```json
 {
@@ -134,7 +137,7 @@ Toplu kullanım olayı API 'SI, bir kerede birden fazla satın alınan varlık i
 | ------------------ | ------ |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanmış olur. |
-| `authorization`      | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Note: HTTP isteği yapılırken başvurulan bağlantıdan alınan belirtecin `Bearer` öneki.  |
+| `authorization`      | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Note: HTTP isteği yapılırken `Bearer` başvurulan bağlantıdan alınan belirtecin öneki.  |
 
 *İsteyen*
 ```json
@@ -192,7 +195,7 @@ Tamam
 }
 ```
 
-`BatchUsageEvent` API yanıtında başvurulan durum kodu açıklaması:
+API yanıtında başvurulan durum kodu açıklaması `BatchUsageEvent` :
 
 | Durum kodu  | Description |
 | ---------- | -------------------- |

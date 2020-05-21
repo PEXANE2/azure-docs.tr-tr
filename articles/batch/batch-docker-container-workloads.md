@@ -1,15 +1,15 @@
 ---
 title: Kapsayıcı iş yükleri
 description: Azure Batch üzerindeki kapsayıcı görüntülerden uygulamaları çalıştırmayı ve ölçeklendirmeyi öğrenin. Kapsayıcı görevlerinin çalıştırılmasını destekleyen bir işlem düğümleri havuzu oluşturun.
-ms.topic: article
-ms.date: 03/02/2020
+ms.topic: how-to
+ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 27edfe67152857a89840f5cd24b06d66ae8d94c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1310af2797e43659ac8859e74d1be8bdbab3c98
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116137"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726732"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch kapsayıcı uygulamaları çalıştırma
 
@@ -46,7 +46,7 @@ Kapsayıcı iş yükleri için bir VM işlem düğümleri havuzu oluşturmak üz
 
 ### <a name="windows-support"></a>Windows desteği
 
-Batch, kapsayıcı desteği göstergeleri olan Windows Server görüntülerini destekler. Genellikle bu görüntü SKU adları, veya `-with-containers` `-with-containers-smalldisk`ile sonlardır. Ayrıca, [Toplu işteki desteklenen tüm görüntüleri listelerken API,](batch-linux-nodes.md#list-of-virtual-machine-images) görüntü Docker `DockerCompatible` kapsayıcılarını destekliyorsa bir özelliği gösterir.
+Batch, kapsayıcı desteği göstergeleri olan Windows Server görüntülerini destekler. Genellikle bu görüntü SKU adları, veya ile sonlardır `-with-containers` `-with-containers-smalldisk` . Ayrıca, [Toplu işteki desteklenen tüm görüntüleri listelerken API,](batch-linux-nodes.md#list-of-virtual-machine-images) `DockerCompatible` görüntü Docker kapsayıcılarını destekliyorsa bir özelliği gösterir.
 
 Ayrıca, Windows üzerinde Docker çalıştıran VM 'lerden özel görüntüler de oluşturabilirsiniz.
 
@@ -72,7 +72,7 @@ Bu görüntüler yalnızca Azure Batch havuzlarında kullanılmak üzere destekl
 
 * Azure N serisi VM 'lerde dağıtımı kolaylaştırmak için önceden yüklenmiş NVıDıA GPU sürücüleri ve NVıDıA kapsayıcı çalışma zamanı
 
-* Soneki olan görüntüler için InfiniBand RDMA VM boyutları desteğiyle önceden yüklenmiş/önceden yapılandırılmış görüntü `-rdma`. Şu anda bu görüntüler SR-ıOV ıB/RDMA VM boyutlarını desteklemez.
+* Soneki olan görüntüler için InfiniBand RDMA VM boyutları desteğiyle önceden yüklenmiş/önceden yapılandırılmış görüntü `-rdma` . Şu anda bu görüntüler SR-ıOV ıB/RDMA VM boyutlarını desteklemez.
 
 Batch ile uyumlu bir Linux dağıtımlarından birinde Docker çalıştıran VM 'lerden özel görüntüler de oluşturabilirsiniz. Kendi özel Linux görüntünüzü sağlamayı seçerseniz, bir [sanal makine havuzu oluşturmak için yönetilen özel görüntü kullanma](batch-custom-images.md)bölümündeki yönergelere bakın.
 
@@ -96,7 +96,7 @@ Kapsayıcı görüntülerinin önceden getirilirken faydalanması, görevlerin i
 
 ### <a name="pool-without-prefetched-container-images"></a>Önceden getirilen kapsayıcı görüntüleri olmadan havuz
 
-Kapsayıcı görüntüleri önceden getirilmeksizin kapsayıcı özellikli bir havuz yapılandırmak için aşağıdaki Python örneğinde `ContainerConfiguration` gösterildiği `VirtualMachineConfiguration` gibi, ve nesneleri tanımlayın. Bu örnek, marketten Azure Batch kapsayıcı havuzları görüntüsü için Ubuntu sunucusunu kullanır.
+Kapsayıcı görüntüleri önceden getirilmeksizin kapsayıcı özellikli bir havuz yapılandırmak için `ContainerConfiguration` `VirtualMachineConfiguration` Aşağıdaki Python örneğinde gösterildiği gibi, ve nesneleri tanımlayın. Bu örnek, marketten Azure Batch kapsayıcı havuzları görüntüsü için Ubuntu sunucusunu kullanır.
 
 
 ```python
@@ -126,7 +126,7 @@ new_pool = batch.models.PoolAddParameter(
 
 ### <a name="prefetch-images-for-container-configuration"></a>Kapsayıcı yapılandırması için görüntüleri önceden getirme
 
-Havuzdaki kapsayıcı görüntülerini önceden almak için kapsayıcı görüntülerinin listesini (`container_image_names`Python 'da) öğesine ekleyin. `ContainerConfiguration`
+Havuzdaki kapsayıcı görüntülerini önceden almak için kapsayıcı görüntülerinin listesini ( `container_image_names` Python 'da) öğesine ekleyin `ContainerConfiguration` .
 
 Aşağıdaki temel Python örneği, [Docker Hub 'ından](https://hub.docker.com)standart bir Ubuntu kapsayıcı görüntüsünün nasıl önceden alınacağını gösterir.
 
@@ -159,58 +159,66 @@ new_pool = batch.models.PoolAddParameter(
 Aşağıdaki C# örneği, [Docker Hub 'ından](https://hub.docker.com)bir TensorFlow görüntüsünü önceden almak istediğinizi varsayar. Bu örnek, havuz düğümlerinde VM konağında çalışan bir başlangıç görevi içerir. Bir başlangıç görevini, örneğin, kapsayıcılardan erişilebilen bir dosya sunucusunu bağlamak için konakta çalıştırabilirsiniz.
 
 ```csharp
-
 ImageReference imageReference = new ImageReference(
     publisher: "microsoft-azure-batch",
     offer: "ubuntu-server-container",
     sku: "16-04-lts",
     version: "latest");
 
+ContainerRegistry containerRegistry = new ContainerRegistry(
+    registryServer: "https://hub.docker.com",
+    userName: "UserName",
+    password: "YourPassword"                
+);
+
 // Specify container configuration, prefetching Docker images
-ContainerConfiguration containerConfig = new ContainerConfiguration(
-    containerImageNames: new List<string> { "tensorflow/tensorflow:latest-gpu" } );
+ContainerConfiguration containerConfig = new ContainerConfiguration();
+containerConfig.ContainerImageNames = new List<string> { "tensorflow/tensorflow:latest-gpu" };
+containerConfig.ContainerRegistries = new List<ContainerRegistry> { containerRegistry };
 
 // VM configuration
 VirtualMachineConfiguration virtualMachineConfiguration = new VirtualMachineConfiguration(
     imageReference: imageReference,
-    containerConfiguration: containerConfig,
     nodeAgentSkuId: "batch.node.ubuntu 16.04");
+virtualMachineConfiguration.ContainerConfiguration = containerConfig;
 
 // Set a native host command line start task
-StartTask startTaskNative = new StartTask( CommandLine: "<native-host-command-line>" );
+StartTask startTaskContainer = new StartTask( commandLine: "<native-host-command-line>" );
 
 // Create pool
 CloudPool pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
-    targetDedicatedComputeNodes: 4,
     virtualMachineSize: "Standard_NC6",
-    virtualMachineConfiguration: virtualMachineConfiguration, startTaskContainer);
+    virtualMachineConfiguration: virtualMachineConfiguration);
+
+// Start the task in the pool
+pool.StartTask = startTaskContainer;
 ...
 ```
 
 
 ### <a name="prefetch-images-from-a-private-container-registry"></a>Özel kapsayıcı kayıt defterinden görüntüleri önceden getirme
 
-Ayrıca, özel bir kapsayıcı kayıt defteri sunucusunda kimlik doğrulaması yaparak kapsayıcı görüntülerini önceden ayarlayabilirsiniz. Aşağıdaki örnekte, `ContainerConfiguration` ve `VirtualMachineConfiguration` nesneleri özel bir Azure Container Registry 'Den özel bir TensorFlow görüntüsünü önceden getirme. Görüntü başvurusu, önceki örnekteki ile aynıdır.
+Ayrıca, özel bir kapsayıcı kayıt defteri sunucusunda kimlik doğrulaması yaparak kapsayıcı görüntülerini önceden ayarlayabilirsiniz. Aşağıdaki örnekte, `ContainerConfiguration` ve `VirtualMachineConfiguration` nesneleri özel bir Azure Container Registry 'den özel bir TensorFlow görüntüsünü önceden getirme. Görüntü başvurusu, önceki örnekteki ile aynıdır.
 
 ```csharp
 // Specify a container registry
-ContainerRegistry containerRegistry = new ContainerRegistry (
+ContainerRegistry containerRegistry = new ContainerRegistry(
     registryServer: "myContainerRegistry.azurecr.io",
-    username: "myUserName",
+    userName: "myUserName",
     password: "myPassword");
 
 // Create container configuration, prefetching Docker images from the container registry
-ContainerConfiguration containerConfig = new ContainerConfiguration(
-    containerImageNames: new List<string> {
-        "myContainerRegistry.azurecr.io/tensorflow/tensorflow:latest-gpu" },
-    containerRegistries: new List<ContainerRegistry> { containerRegistry } );
+ContainerConfiguration containerConfig = new ContainerConfiguration();
+containerConfig.ContainerImageNames = new List<string> {
+        "myContainerRegistry.azurecr.io/tensorflow/tensorflow:latest-gpu" };
+containerConfig.ContainerRegistries = new List<ContainerRegistry> { containerRegistry } );
 
 // VM configuration
 VirtualMachineConfiguration virtualMachineConfiguration = new VirtualMachineConfiguration(
     imageReference: imageReference,
-    containerConfiguration: containerConfig,
     nodeAgentSkuId: "batch.node.ubuntu 16.04");
+virtualMachineConfiguration.ContainerConfiguration = containerConfig;
 
 // Create pool
 CloudPool pool = batchClient.PoolOperations.CreatePool(
@@ -225,7 +233,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 Kapsayıcı etkin bir havuzda bir kapsayıcı görevi çalıştırmak için kapsayıcıya özgü ayarları belirtin. Ayarlar, kullanılacak görüntü, kayıt defteri ve kapsayıcı çalıştırma seçeneklerini içerir.
 
-* Kapsayıcıya özgü `ContainerSettings` ayarları yapılandırmak için görev sınıflarının özelliğini kullanın. Bu ayarlar [Taskcontainersettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) sınıfı tarafından tanımlanır. `--rm` Kapsayıcı seçeneğinin toplu iş tarafından sunulduğundan bu yana `--runtime` ek bir seçenek gerektirmediğini unutmayın.
+* `ContainerSettings`Kapsayıcıya özgü ayarları yapılandırmak için görev sınıflarının özelliğini kullanın. Bu ayarlar [Taskcontainersettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) sınıfı tarafından tanımlanır. `--rm`Kapsayıcı seçeneğinin `--runtime` toplu iş tarafından sunulduğundan bu yana ek bir seçenek gerektirmediğini unutmayın.
 
 * Görevleri kapsayıcı görüntülerinde çalıştırırsanız, [bulut görevi](/dotnet/api/microsoft.azure.batch.cloudtask) ve [İş Yöneticisi görevi](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) kapsayıcı ayarları gerektirir. Ancak, [Başlangıç görevi](/dotnet/api/microsoft.azure.batch.starttask), [iş hazırlama görevi](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)ve [iş bırakma görevi](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) , kapsayıcı ayarları gerektirmez (yani bir kapsayıcı bağlamı içinde veya doğrudan düğüm üzerinde çalışabilir).
 
@@ -237,21 +245,21 @@ Kapsayıcı olmayan Batch görevlerinde olduğu gibi, bir kapsayıcı görevi i�
 
 Bir Batch görevinin kapsayıcı görüntüsü bir [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example) betiği ile yapılandırıldıysa, Komut satırlarınızı varsayılan giriş noktasını kullanacak şekilde veya geçersiz kılmak üzere ayarlayabilirsiniz:
 
-* Kapsayıcı görüntüsünün varsayılan GIRIŞ noktasını kullanmak için, görev komut satırını boş dizeye `""`ayarlayın.
+* Kapsayıcı görüntüsünün varsayılan GIRIŞ noktasını kullanmak için, görev komut satırını boş dizeye ayarlayın `""` .
 
-* Varsayılan GIRIŞ noktasını geçersiz kılmak için ya da görüntüde bir ENTRYPOINT yoksa, örneğin veya `/app/myapp` `/bin/sh -c python myscript.py`gibi bir komut satırını uygun olarak ayarlayın.
+* Varsayılan GIRIŞ noktasını geçersiz kılmak için ya da görüntüde bir ENTRYPOINT yoksa, örneğin veya gibi bir komut satırını uygun olarak ayarlayın `/app/myapp` `/bin/sh -c python myscript.py` .
 
-İsteğe bağlı [Containerrunoptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) , kapsayıcıyı oluşturmak ve çalıştırmak için `docker create` Batch 'in kullandığı komuta sağladığınız ek bağımsız değişkenlerdir. Örneğin, kapsayıcı için çalışma dizini ayarlamak için `--workdir <directory>` seçeneğini ayarlayın. Ek seçenekler için [Docker oluşturma](https://docs.docker.com/engine/reference/commandline/create/) başvurusuna bakın.
+İsteğe bağlı [Containerrunoptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) , `docker create` kapsayıcıyı oluşturmak ve çalıştırmak için Batch 'in kullandığı komuta sağladığınız ek bağımsız değişkenlerdir. Örneğin, kapsayıcı için çalışma dizini ayarlamak için `--workdir <directory>` seçeneğini ayarlayın. Ek seçenekler için [Docker oluşturma](https://docs.docker.com/engine/reference/commandline/create/) başvurusuna bakın.
 
 ### <a name="container-task-working-directory"></a>Kapsayıcı görevi çalışma dizini
 
-Bir Batch kapsayıcı görevi, kapsayıcıda düzenli (kapsayıcı olmayan) bir görevde Dizin toplu Iş kümelerine çok benzeyen bir çalışma dizininde yürütülür. Bu çalışma dizininin görüntüde yapılandırıldıysa [iş](https://docs.docker.com/engine/reference/builder/#workdir) dizininden farklı olduğunu veya varsayılan kapsayıcı çalışma dizinini (`C:\` bir Windows kapsayıcısında veya `/` bir Linux kapsayıcısında) farklı olduğunu unutmayın.
+Bir Batch kapsayıcı görevi, kapsayıcıda düzenli (kapsayıcı olmayan) bir görevde Dizin toplu Iş kümelerine çok benzeyen bir çalışma dizininde yürütülür. Bu çalışma dizininin görüntüde yapılandırıldıysa [iş](https://docs.docker.com/engine/reference/builder/#workdir) dizininden farklı olduğunu veya varsayılan kapsayıcı çalışma dizinini ( `C:\` bir Windows kapsayıcısında veya `/` bir Linux kapsayıcısında) farklı olduğunu unutmayın.
 
 Batch kapsayıcı görevi için:
 
-* Konak düğümündeki (Azure Batch dizinlerin `AZ_BATCH_NODE_ROOT_DIR` kökü) her yinelemeli olarak tüm dizinler kapsayıcı ile eşleştirilir
+* `AZ_BATCH_NODE_ROOT_DIR`Konak düğümündeki (Azure Batch dizinlerin kökü) her yinelemeli olarak tüm dizinler kapsayıcı ile eşleştirilir
 * Tüm görev ortam değişkenleri, kapsayıcınıza eşlenir
-* Düğümdeki görev çalışma dizini `AZ_BATCH_TASK_WORKING_DIR` , düzenli bir görevle aynı şekilde ayarlanır ve kapsayıcıya eşlenir.
+* Düğümdeki görev çalışma dizini, `AZ_BATCH_TASK_WORKING_DIR` düzenli bir görevle aynı şekilde ayarlanır ve kapsayıcıya eşlenir.
 
 Bu eşlemeler kapsayıcı görevlerle, kapsayıcı olmayan görevlerle aynı şekilde çalışmanıza olanak sağlar. Örneğin, uygulama paketleri kullanarak uygulamaları, Azure depolama 'dan kaynak dosyalarına erişin, görev ortamı ayarlarını kullanın ve kapsayıcı durdurulduktan sonra Görev çıkış dosyalarını kalıcı hale getirin.
 
@@ -263,7 +271,7 @@ Gerekirse, görüntüye göre kapsayıcı görevinin ayarlarını ayarlayın:
 
 * Görev komut satırında mutlak bir yol belirtin. Görev komut satırı için görüntünün varsayılan GIRIŞ noktası kullanılırsa, mutlak bir yolun ayarlandığından emin olun.
 
-* Görevin kapsayıcı çalıştırma seçenekleri ' nde, çalışma dizinini görüntüdeki WORKDIR ile eşleşecek şekilde değiştirin. Örneğin, ayarlayın `--workdir /app`.
+* Görevin kapsayıcı çalıştırma seçenekleri ' nde, çalışma dizinini görüntüdeki WORKDIR ile eşleşecek şekilde değiştirin. Örneğin, ayarlayın `--workdir /app` .
 
 ## <a name="container-task-examples"></a>Kapsayıcı görevi örnekleri
 
@@ -285,7 +293,6 @@ Aşağıdaki C# örneği bir bulut görevi için temel kapsayıcı ayarlarını 
 
 ```csharp
 // Simple container task command
-
 string cmdLine = "c:\\app\\myApp.exe";
 
 TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
@@ -295,10 +302,9 @@ TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
 
 CloudTask containerTask = new CloudTask (
     id: "Task1",
-    containerSettings: cmdContainerSettings,
-    commandLine: cmdLine);
+    commandline: cmdLine);
+containerTask.ContainerSettings = cmdContainerSettings;
 ```
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

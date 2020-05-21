@@ -1,15 +1,15 @@
 ---
-title: Görevleri Kullanıcı hesapları altında Çalıştır-Azure Batch
+title: Görevleri Kullanıcı hesapları altında Çalıştır
 description: Görevin çalışmasını istediğiniz kullanıcı hesabını yapılandırmak yararlı olur. Kullanıcı hesaplarının türlerini ve bunların nasıl yapılandırılacağını öğrenin.
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f1bd31f9d4881bdc489988d3f955e7143eaf7759
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980295"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726273"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch 'de Kullanıcı hesapları altında görevleri çalıştırma
 
@@ -81,7 +81,7 @@ Yükseltilmiş erişimle bir görevi çalıştırmanız gerektiğinde, yönetici
 >
 >
 
-Aşağıdaki kod parçacıkları, otomatik Kullanıcı belirtiminin nasıl yapılandırılacağını gösterir. Örnekler, yükseltme düzeyini `Admin` ve kapsamını olarak `Task`ayarlar. Görev kapsamı varsayılan ayardır, ancak örnek için buraya eklenmiştir.
+Aşağıdaki kod parçacıkları, otomatik Kullanıcı belirtiminin nasıl yapılandırılacağını gösterir. Örnekler, yükseltme düzeyini `Admin` ve kapsamını olarak ayarlar `Task` . Görev kapsamı varsayılan ayardır, ancak örnek için buraya eklenmiştir.
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -146,7 +146,7 @@ Adlandırılmış bir kullanıcı hesabı, aynı kullanıcı hesabı altında bi
 
 Ayrıca, dosya paylaşımları gibi dış kaynaklarda izinleri ayarlayan bir görevi çalıştırmak için adlandırılmış bir kullanıcı hesabı kullanabilirsiniz. Adlandırılmış bir kullanıcı hesabı ile Kullanıcı kimliğini kontrol edersiniz ve izinleri ayarlamak için bu kullanıcı kimliğini kullanabilirsiniz.  
 
-Adlandırılmış Kullanıcı hesapları, Linux düğümleri arasında parola daha az SSH 'yi etkinleştirir. Çok örnekli görevleri çalıştırması gereken Linux düğümlerinde adlandırılmış bir kullanıcı hesabı kullanabilirsiniz. Havuzdaki her düğüm, tüm havuzda tanımlanan bir kullanıcı hesabı altında görevleri çalıştırabilir. Çok örnekli görevler hakkında daha fazla bilgi için bkz. [MPI\-uygulamalarını çalıştırmak için çok örnekli görevleri kullanma](batch-mpi.md).
+Adlandırılmış Kullanıcı hesapları, Linux düğümleri arasında parola daha az SSH 'yi etkinleştirir. Çok örnekli görevleri çalıştırması gereken Linux düğümlerinde adlandırılmış bir kullanıcı hesabı kullanabilirsiniz. Havuzdaki her düğüm, tüm havuzda tanımlanan bir kullanıcı hesabı altında görevleri çalıştırabilir. Çok örnekli görevler hakkında daha fazla bilgi için bkz. [ \- MPI uygulamalarını çalıştırmak için çok örnekli görevleri kullanma](batch-mpi.md).
 
 ### <a name="create-named-user-accounts"></a>Adlandırılmış Kullanıcı hesapları oluşturma
 
@@ -282,7 +282,7 @@ batch_client.pool.add(pool)
 
 ### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Bir görevi, yükseltilmiş erişimle adlandırılmış bir kullanıcı hesabı altında çalıştırın
 
-Bir görevi yükseltilmiş bir kullanıcı olarak çalıştırmak için görevin **UserIdentity** özelliğini, ' nin **yükseltme düzeyi** özelliği olarak ayarlanmış şekilde `Admin`oluşturulmuş bir adlandırılmış Kullanıcı hesabı olarak ayarlayın.
+Bir görevi yükseltilmiş bir kullanıcı olarak çalıştırmak için görevin **UserIdentity** özelliğini, ' nin **yükseltme düzeyi** özelliği olarak ayarlanmış şekilde oluşturulmuş bir adlandırılmış Kullanıcı hesabı olarak ayarlayın `Admin` .
 
 Bu kod parçacığı, görevin adlandırılmış bir kullanıcı hesabı altında çalışması gerektiğini belirtir. Havuz oluşturulduğu sırada bu adlandırılmış Kullanıcı hesabı havuzda tanımlanmıştır. Bu durumda, adlandırılmış Kullanıcı hesabı yönetici izinleriyle oluşturulmuştur:
 

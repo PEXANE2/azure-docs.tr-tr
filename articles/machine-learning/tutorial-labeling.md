@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: d960c8225cbb22c221ecaec1b7c49b5bb20c1429
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8136f8fe6431187884a180925234d6aab36983f
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203650"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725525"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Öğretici: çok sınıflı görüntü sınıflandırması için etiketleme projesi oluşturma 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +69,7 @@ Azure Machine Learning veri depoları, abonelik KIMLIĞINIZ ve belirteç yetkile
     Veri deposu adı | Veri deposuna bir ad verin.  Burada **labeling_tutorial**kullanırız.
     Veri deposu türü | Depolama türünü seçin.  Burada, görüntüler için tercih edilen depolama alanı olan **Azure Blob depolama**'yı kullanırız.
     Hesap seçim yöntemi | **El Ile gir**' i seçin.
-    URL'si | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
+    URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
     Kimlik doğrulaması türü | **SAS belirtecini**seçin.
     Hesap anahtarı | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
@@ -77,7 +77,7 @@ Azure Machine Learning veri depoları, abonelik KIMLIĞINIZ ve belirteç yetkile
 
 ### <a name="create-a-labeling-project"></a>Etiketleme projesi oluşturma
 
-Etiketleyicilerin listesine sahip olduğunuza ve etiketlenmesini istediğiniz verilere erişimimize göre etiketleme projenizi oluşturun.
+Etiketlenmesini istediğiniz verilere erişiminiz olduğuna göre etiketleme projenizi oluşturun.
 
 1. Sayfanın üst kısmında **Projeler**' i seçin.
 

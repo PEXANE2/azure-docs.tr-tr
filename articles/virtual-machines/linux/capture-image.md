@@ -8,16 +8,18 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 70282879b64054d48d904b5ada9284f844448851
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 54f82d0ba4b0c5de0b4e373416857d670d4bba53
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792692"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723315"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Bir sanal makinenin veya VHD 'nin yönetilen görüntüsünü oluşturma
 
 Geliştirme ve test için Azure 'da kullanmak üzere bir sanal makinenin (VM) birden çok kopyasını oluşturmak için, VM 'nin veya işletim sistemi VHD 'sinin yönetilen bir görüntüsünü yakalayın. Görüntü oluşturmak, depolamak ve ölçeklenebilir bir şekilde paylaşmak için bkz. [paylaşılan görüntü galerileri](../shared-images-cli.md).
+
+Bir yönetilen görüntü, en fazla 20 eşzamanlı dağıtımı destekler. Aynı yönetilen görüntüden 20 ' den fazla VM oluşturmaya çalışmak, tek bir VHD 'nin depolama performans sınırlamaları nedeniyle zaman aşımları sağlamaya neden olabilir. Aynı anda 20 ' den fazla VM oluşturmak için, her 20 eş zamanlı VM dağıtımı için 1 çoğaltma ile yapılandırılmış [paylaşılan görüntü galerileri](shared-image-galleries.md) görüntüsünü kullanın.
 
 Yönetilen bir görüntü oluşturmak için kişisel hesap bilgilerini kaldırmanız gerekir. Aşağıdaki adımlarda, var olan bir VM 'yi serbest bırakın, serbest bırakın ve bir görüntü oluşturun. Bu görüntüyü, aboneliğinizdeki tüm kaynak grupları arasında VM 'Ler oluşturmak için kullanabilirsiniz.
 
@@ -37,7 +39,7 @@ Bu makalenin basitleştirilmiş bir sürümü ve Azure 'da VM 'Ler hakkında sı
 
 
 ## <a name="step-1-deprovision-the-vm"></a>1. Adım: sanal makinenin sağlamasını kaldırma
-İlk olarak, makineye özgü dosyaları ve verileri silmek için Azure VM Aracısı 'nı kullanarak VM 'yi parçalara ayırcaksınız. `waagent` Komutunu kaynak Linux sanal makinenizde `-deprovision+user` parametresiyle birlikte kullanın. Daha fazla bilgi için bkz. [Azure Linux Aracısı kullanıcı kılavuzu](../extensions/agent-linux.md).
+İlk olarak, makineye özgü dosyaları ve verileri silmek için Azure VM Aracısı 'nı kullanarak VM 'yi parçalara ayırcaksınız. `waagent`Komutunu `-deprovision+user` Kaynak Linux sanal makinenizde parametresiyle birlikte kullanın. Daha fazla bilgi için bkz. [Azure Linux Aracısı kullanıcı kılavuzu](../extensions/agent-linux.md).
 
 1. Bir SSH istemcisiyle Linux sanal makinenize bağlanın.
 2. SSH penceresinde, aşağıdaki komutu girin:
@@ -46,9 +48,9 @@ Bu makalenin basitleştirilmiş bir sürümü ve Azure 'da VM 'Ler hakkında sı
     sudo waagent -deprovision+user
     ```
    > [!NOTE]
-   > Bu komutu yalnızca görüntü olarak yakaladığınız bir VM üzerinde çalıştırın. Bu komut görüntünün tüm hassas bilgilerin temizlenme veya yeniden dağıtım için uygun olduğunu garanti etmez. Parametresi `+user` , sağlanan son kullanıcı hesabını da kaldırır. Kullanıcı hesabı kimlik bilgilerini VM 'de tutmak için yalnızca `-deprovision`kullanın.
+   > Bu komutu yalnızca görüntü olarak yakaladığınız bir VM üzerinde çalıştırın. Bu komut görüntünün tüm hassas bilgilerin temizlenme veya yeniden dağıtım için uygun olduğunu garanti etmez. `+user`Parametresi, sağlanan son kullanıcı hesabını da kaldırır. Kullanıcı hesabı kimlik bilgilerini VM 'de tutmak için yalnızca kullanın `-deprovision` .
  
-3. Devam etmek için **y** girin. Bu onay adımından `-force` kaçınmak için parametresini ekleyebilirsiniz.
+3. Devam etmek için **y** girin. `-force`Bu onay adımından kaçınmak için parametresini ekleyebilirsiniz.
 4. Komut tamamlandıktan sonra SSH istemcisini kapatmak için **Çıkış** ' ı girin.  VM hala bu noktada çalışmaya devam edecektir.
 
 ## <a name="step-2-create-vm-image"></a>2. Adım: VM görüntüsü oluşturma
@@ -85,7 +87,7 @@ VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için A
    > [!NOTE]
    > Görüntü, kaynak VM 'niz ile aynı kaynak grubunda oluşturulur. Bu görüntüden, aboneliğinizdeki herhangi bir kaynak grubunda VM 'Ler oluşturabilirsiniz. Yönetim açısından, VM kaynaklarınız ve görüntüleriniz için belirli bir kaynak grubu oluşturmak isteyebilirsiniz.
    >
-   > Görüntünüzü bölge dayanıklı depolamada depolamak isterseniz, bunu [kullanılabilirlik bölgelerini](../../availability-zones/az-overview.md) destekleyen bir bölgede oluşturmanız ve `--zone-resilient true` parametresini eklemeniz gerekir.
+   > Görüntünüzü bölge dayanıklı depolamada depolamak isterseniz, bunu [kullanılabilirlik bölgelerini](../../availability-zones/az-overview.md) destekleyen bir bölgede oluşturmanız ve parametresini eklemeniz gerekir `--zone-resilient true` .
    
 Bu komut, VM görüntüsünü açıklayan JSON döndürür. Bu çıktıyı daha sonra başvurmak üzere kaydedin.
 

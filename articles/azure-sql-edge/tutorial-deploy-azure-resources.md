@@ -9,18 +9,18 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 8c648e3f9e0b36f11a031110f9b0638dc68a4a76
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0e241b672bcac49c0459c840d46b0c81e158d56b
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599706"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725848"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Yazılım yükleyip öğreticiye yönelik kaynakları ayarlayın
 
 Bu üç bölümden oluşan öğreticide, silika 'nın yüzdesi olarak Iron ve daha sonra modeli Azure SQL Edge 'de dağıttığınız bir makine öğrenimi modeli oluşturacaksınız. Birinci bölümde, gerekli yazılımı yükleyecek ve Azure kaynaklarını dağıtacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)oluşturun.
 2. [Python 3.6.8](https://www.python.org/downloads/release/python-368/)'i yükler.
@@ -42,9 +42,12 @@ Bu Azure SQL Edge öğreticisi için gereken Azure kaynaklarını dağıtın. Bu
    Import-Module -Name Az -RequiredVersion 3.5.0
    Import-Module Az.IotHub -RequiredVersion 2.1.0
    Import-Module Az.Compute -RequiredVersion 3.5.0
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    az extension add --name azure-cli-ml
    ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+
 
 2. PowerShell betiği için gereken değişkenleri bildirin.
 

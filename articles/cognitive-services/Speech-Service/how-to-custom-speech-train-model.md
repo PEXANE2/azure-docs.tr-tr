@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77137763"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722635"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Özel Konuşma için modeli eğitme
 
@@ -42,7 +42,7 @@ Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. İnsan et
 2. **Konuşmayı metne > Özel Konuşma Tanıma > eğitimi**'ne gidin.
 3. **Modeli eğitme**' ye tıklayın.
 4. Ardından, eğitime bir **ad** ve **Açıklama**sağlayın.
-5. **Senaryo ve taban çizgisi modeli** açılan menüsünde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğinizden emin değilseniz, **genel**' i seçin. Temel model, eğitimin başlangıç noktasıdır. Tercih ediyorsanız, en son ' u kullanabilirsiniz.
+5. **Senaryo ve taban çizgisi modeli** açılan menüsünde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğinizden emin değilseniz, **genel**' i seçin. Temel model, eğitimin başlangıç noktasıdır. En son model genellikle en iyi seçenektir.
 6. **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya daha fazla ses + insan etiketli döküm veri kümesi seçin.
 7. Eğitim tamamlandıktan sonra, yeni eğitilen modelde doğruluk testi gerçekleştirmeyi tercih edebilirsiniz. Bu adım isteğe bağlıdır.
 8. Özel modelinizi derlemek için **Oluştur** ' u seçin.

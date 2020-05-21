@@ -1,46 +1,48 @@
 ---
 title: Etiket varlık örneği söylenişi
-description: LUE portalının amaç ayrıntısı sayfasında örnek bir örnekte bulunan alt bileşenlere sahip bir makine öğrenimi varlığını nasıl etiketleyeceğinizi öğrenin.
+description: LUı portalının amaç ayrıntısı sayfasında örnek bir şekilde bir makine öğrenimi varlığını alt varlıklarla nasıl etiketleyeceğinizi öğrenin.
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: 0181057bd693280223806e9b5b7cd8c7f7345f79
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 05/20/2020
+ms.openlocfilehash: 959b9c6b25a7a76a87112fcbd1a10e7da12db1dd
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683768"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722652"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Örnek bir örnekte makine öğrenimi varlığı etiketleme
 
 Bir varlığın bir örnek içinde etiketlenmesi, LUYA varlığın ne olduğu ve varlığın utterde görünebileceği bir örnektir.
 
+Makine tarafından öğrenilen varlıkları ve alt varlıkları etiketleyebilir.
+
+Normal ifade, liste veya önceden oluşturulmuş varlıkları etiketleyip bir varlık veya alt varlık oluşturamayacağından, bu varlıkları varlık veya alt varlığa uygun olduğunda ekleyin.
+
 ## <a name="label-example-utterances-from-the-intent-detail-page"></a>Amaç ayrıntısı sayfasından etiket örneği
+
+Utterance içindeki varlıkların örneklerini etiketlemek için, utterance 'in amacını seçin.
 
 1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
 1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
 1. Bir varlıkla ayıklama için etiketlemek istediğiniz örnek bir amaç seçin.
 1. Etiketlemek istediğiniz metni seçin ve ardından varlığı seçin.
 
+## <a name="two-techniques-to-label-entities"></a>Varlıkların etiketlenmesi için iki teknik
+
+Amaç ayrıntısı sayfasında iki etiketleme tekniği desteklenir.
+* Varlık [paletinden](#label-with-the-entity-palette-visible) varlık veya alt varlık ' ı seçin ve ardından örnek söylenişi metin ' i seçin. Bu, şemanıza göre doğru varlık veya alt varlıkla çalıştığınızı görsel olarak doğrulayabileceğiniz için önerilen tekniktir.
+* Önce örnek söylenişi metin içinde öğesini seçin. Bunu yaptığınızda [etiketleme seçeneklerinin](#how-to-label-entity-from-in-place-menu) bir açılır menüsü sunulur.
+
 ## <a name="label-with-the-entity-palette-visible"></a>Varlık paleti görünür olan etiket
 
-Şemanızı varlıklar ile planladıktan sonra etiketleme sırasında **varlık paletini** görünür tutun. **Varlık paleti** , hangi varlıklarınızın ayıklanmasını istediğinizi hatırlatır.
+[Şemanızı varlıklar ile planladıktan](luis-how-plan-your-app.md)sonra etiketleme sırasında **varlık paletini** görünür tutun. **Varlık paleti** , hangi varlıkların ayıklanacağını hatırlatır.
 
 **Varlık paletine**erişmek için, **@** örnek araç listesinin yukarıdaki bağlam araç çubuğundan sembolünü seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Amaç ayrıntıları sayfasındaki varlık paleti ekran görüntüsü.](media/label-utterances/entity-palette-from-tool-bar.png)
 
-## <a name="label-entity-from-in-place-menu"></a>Yerinde menüden varlık etiketle
-
-Örnek utterance 'i göz önünde bulundurun `hi, please I want a cheese pizza in 20 minutes` .
-
-1. En soldaki metni seçin, ardından varlığın en sağ metnini seçin, sonra yerinde menüsünde, etiketlemek istediğiniz varlığı seçin.
-
-    > [!div class="mx-imgBorder"]
-    > ![Etiket tam makine öğrenimi varlığı](media/label-utterances/label-steps-in-place-menu.png)
-
-
-## <a name="label-entity-from-entity-palette"></a>Varlık paletindeki varlık etiketi
+## <a name="how-to-label-entity-from-entity-palette"></a>Varlık paletinden Varlık etiketleme
 
 Varlık paleti, önceki etiketleme deneyimine bir alternatif sunar. Bir varlıkla anında etiketlemek için metnin üzerine fırçanızı sağlar.
 
@@ -69,6 +71,17 @@ Varlık rolleri, **varlık paleti**kullanılarak etiketlenir.
 1. Varlık listesinin altında var olan bir rolü seçin.
 1. Örnek söylenişi metninde, metni varlık rolüyle etiketleyin.
 
+## <a name="how-to-label-entity-from-in-place-menu"></a>Yerinde menüden Varlık etiketleme
+
+Yerinde etiketleme, söylemenin içindeki metni hızlıca seçmenizi ve etiketlemesini sağlar. Etiketli metinden bir makine öğrenimi varlığı veya liste varlığı da oluşturabilirsiniz.
+
+Örnek utterance 'i göz önünde bulundurun `hi, please I want a cheese pizza in 20 minutes` .
+
+En soldaki metni seçin, ardından varlığın en sağ metnini seçin, sonra yerinde menüsünde, etiketlemek istediğiniz varlığı seçin.
+
+> [!div class="mx-imgBorder"]
+> ![Etiket tam makine öğrenimi varlığı](media/label-utterances/label-steps-in-place-menu.png)
+
 ## <a name="review-labeled-text"></a>Etiketli metni gözden geçirme
 
 Etiketledikten sonra, örnek bir şekilde gözden geçirin ve seçilen varlık için seçili varlıkla metnin altı çizili olduğundan emin olun. Düz çizgi, metnin etiketlendiği anlamına gelir.
@@ -86,12 +99,12 @@ Zaten etiketlenmiş bir metin varsa, LUYA var olan etiketleri bölebilir veya bi
 
 ## <a name="labeling-for-punctuation"></a>Noktalama işaretleri için etiketleme
 
-Noktalama için etiketlemenize gerek yoktur. Noktalama işaretlerinin söylenişi tahminleri etkileyip etkilemesinin ne olduğunu denetlemek için [uygulama ayarları](luis-reference-application-settings.md) _sözcük formları_ ' nı kullanın.
+Noktalama için etiketlemenize gerek yoktur. Noktalama işaretlerinin söylenişi öngörülerini nasıl etkilediğini denetlemek için [uygulama ayarlarını](luis-reference-application-settings.md) kullanın.
 
 ## <a name="unlabel-entities"></a>Varlıkların etiketini kaldır
 
 > [!NOTE]
-> Yalnızca makine tarafından öğrenilen varlıkların etiketi etiketsiz olabilir.
+> Yalnızca makine tarafından öğrenilen varlıkların etiketi etiketsiz olabilir. Normal ifade varlıklarını, liste varlıklarını veya önceden oluşturulmuş varlıkları etiketleyip etiketleyemiyorum.
 
 Bir varlığın etiketini kaldırmak için varlığı seçin ve yerinde menüden **etiketi kaldır** ' ı seçin.
 
@@ -107,6 +120,12 @@ Bir alt varlık için etiketleme yapıyorsanız, üst öğe otomatik olarak etik
 ## <a name="automatic-labeling-for-non-machine-learned-entities"></a>Makine tarafından öğrenilen varlıkların otomatik etiketlenmesi
 
 Makine tarafından öğrenilen varlıklar, önceden oluşturulmuş varlıklar, normal ifade varlıkları, liste varlıkları ve model. herhangi bir varlık içerir. Bunlar, LULAR tarafından otomatik olarak etiketlendirildiklerinden, kullanıcılar tarafından el ile etiketlenmesi gerekmez.
+
+## <a name="intent-prediction-errors"></a>Amaç tahmin hataları
+
+Amaç tahmin hatası, geçerli eğitilen uygulama verilen, amaç için tahmin edilemeyen örnek olduğunu gösterir.
+
+[Bu hataları](luis-how-to-add-intents.md#intent-prediction-errors) amaç ayrıntısı sayfasında görüntülemeyi öğrenin.
 
 ## <a name="entity-prediction-errors"></a>Varlık tahmin hataları
 
