@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 94906d645ec38a24d54536ee8aa93e7418c8dc35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1de2d647a6292467a5ac4cc333ccacdedfc3c9ea
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75465185"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638988"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla bir Xamarin Android uygulaması oluşturma
 
@@ -51,7 +51,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Visual `Xamarin/SampleXamarin.sln` Studio 'da açın.
+`Xamarin/SampleXamarin.sln`Visual Studio 'da açın.
 
 ## <a name="configure-account-identifier-and-key"></a>Hesap tanımlayıcıyı ve anahtarı yapılandırın
 
@@ -59,9 +59,11 @@ Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı 
 
 `Xamarin/SampleXamarin.Common/AccountDetails.cs` dosyasını açın.
 
-`SpatialAnchorsAccountKey` Alanı bulun ve hesap anahtarıyla `Set me` değiştirin.
+Alanı bulun `SpatialAnchorsAccountKey` ve `Set me` Hesap anahtarıyla değiştirin.
 
-`SpatialAnchorsAccountId` Alanı bulun ve hesap tanımlayıcısıyla `Set me` değiştirin.
+Alanı bulun `SpatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla değiştirin.
+
+`AzureSpatialAnchorsManager(Session arCoreSession)`Hesap etki alanında yer alan aşağıdaki satırı bulun ve daha önce ekleyin: `this.spatialAnchorsSession.Configuration.AccountId = "MyAccountDomain";` .
 
 ## <a name="deploy-the-app-to-your-android-device"></a>Uygulamayı Android cihazınıza dağıtma
 
@@ -73,21 +75,21 @@ Başlangıç projesini **Samplexamarin. Android**olarak ayarlayın, **çözüm y
 
 ![Visual Studio yapılandırması](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-Uygulamanızı dağıtmak ve başlatmak için hata**ayıklamayı Başlat** ' **ı seçin.** > 
+**Debug**  >  Uygulamanızı dağıtmak ve başlatmak için hata**ayıklamayı Başlat** ' ı seçin.
 
-# <a name="macos"></a>[Mac OS](#tab/deploy-macos)
+# <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio yapılandırması](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-Uygulamanızı dağıtmak ve başlatmak için**hata ayıklama olmadan Başlat** ' **ı seçin.** > 
+**Run**  >  Uygulamanızı dağıtmak ve başlatmak için**hata ayıklama olmadan Başlat** ' ı seçin.
 
 ---
 
 Uygulamada, tanıtımı çalıştırmak için **temel** ' yı seçin ve bir tutturucu yerleştirip geri çekmeniz için yönergeleri izleyin.
 
-> ![Ekran görüntüsü](./media/get-started-xamarin-android/screenshot-1.jpg)
-> ![1 ekran](./media/get-started-xamarin-android/screenshot-2.jpg)
-> ![görüntüsü 2 ekran görüntüsü 3](./media/get-started-xamarin-android/screenshot-3.jpg)
+> ![Ekran görüntüsü 1 ](./media/get-started-xamarin-android/screenshot-1.jpg)
+>  ![ ekran görüntüsü 2 ](./media/get-started-xamarin-android/screenshot-2.jpg)
+>  ![ ekran görüntüsü 3](./media/get-started-xamarin-android/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

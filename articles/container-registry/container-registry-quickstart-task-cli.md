@@ -3,12 +3,12 @@ title: Hızlı başlangıç-derleme & çalıştırma kapsayıcı görüntüsü
 description: Bulutta bir Docker kapsayıcı görüntüsü derlemek ve çalıştırmak için Azure Container Registry ile görevleri hızlıca çalıştırın.
 ms.topic: quickstart
 ms.date: 01/31/2020
-ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e07dd9dd36bc2c5a2dc5ea7efe81f693784b8996
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76986283"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680653"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Hızlı başlangıç: Azure Container Registry görevleri kullanarak kapsayıcı görüntüsü oluşturma ve çalıştırma
 
@@ -40,7 +40,7 @@ az group create --name myResourceGroup --location eastus
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-Bu örnek, Azure Container Registry hakkında bilgi edinmek için uygun maliyetli bir seçenek olan *temel* bir kayıt oluşturur. Kullanılabilir hizmet katmanları hakkında daha fazla bilgi için bkz. [kapsayıcı kayıt defteri SKU 'ları][container-registry-skus].
+Bu örnek, Azure Container Registry hakkında bilgi edinmek için uygun maliyetli bir seçenek olan *temel* bir kayıt oluşturur. Kullanılabilir hizmet katmanları hakkında daha fazla bilgi için bkz. [kapsayıcı kayıt defteri hizmet katmanları][container-registry-skus].
 
 ## <a name="build-an-image-from-a-dockerfile"></a>Dockerfile dosyasından görüntü oluşturma
 
@@ -50,7 +50,7 @@ Bu örnek, Azure Container Registry hakkında bilgi edinmek için uygun maliyetl
 echo FROM hello-world > Dockerfile
 ```
 
-Görüntüyü derlemek için [az ACR Build][az-acr-build] komutunu çalıştırın. Başarıyla derlendiğinde, görüntü kayıt defterinize gönderilir. Aşağıdaki örnek `sample/hello-world:v1` görüntüyü iter. Komutun `.` sonundaki, Dockerfile dosyasının konumunu, bu durumda geçerli dizin olarak belirler.
+Görüntüyü derlemek için [az ACR Build][az-acr-build] komutunu çalıştırın. Başarıyla derlendiğinde, görüntü kayıt defterinize gönderilir. Aşağıdaki örnek `sample/hello-world:v1` görüntüyü iter. `.`Komutun sonundaki, Dockerfile dosyasının konumunu, bu durumda geçerli dizin olarak belirler.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 \
@@ -114,14 +114,14 @@ Run ID: ca8 was successful after 10s
 
 Şimdi oluşturduğunuz ve Kayıt defterinize gönderdiğiniz görüntüyü hızlıca çalıştırın. Burada, Container komutunu çalıştırmak için [az ACR Run][az-acr-run] komutunu kullanın. Kapsayıcı geliştirme iş akışınızda bu, görüntüyü dağıtmadan önce bir doğrulama adımı olabilir veya komutu [çok adımlı BIR YAML dosyasına][container-registry-tasks-multi-step]ekleyebilirsiniz. 
 
-Aşağıdaki örnek, komutunu `$Registry` çalıştırdığınız kayıt defterini belirtmek için kullanır:
+Aşağıdaki örnek, `$Registry` komutunu çalıştırdığınız kayıt defterini belirtmek için kullanır:
 
 ```azurecli-interactive
 az acr run --registry myContainerRegistry008 \
   --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
 
-Bu `cmd` örnekteki parametresi kapsayıcıyı varsayılan yapılandırmasında çalıştırır, ancak `cmd` ek `docker run` parametreleri veya diğer `docker` komutları destekler.
+`cmd`Bu örnekteki parametresi kapsayıcıyı varsayılan yapılandırmasında çalıştırır, ancak `cmd` ek `docker run` parametreleri veya diğer `docker` komutları destekler.
 
 Çıktı aşağıdakine benzer:
 

@@ -8,39 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: f3585e96376a25721f478f9dd621835e75e3c600
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 194368acd6be65da6a800ad1394ac156a6654b50
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448624"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650247"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak Bing Varlık Arama REST API bir arama isteği gönderme
 
 Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js)' da kullanılabilir.
 
-Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
+Bu uygulama JavaScript 'e yazılsa da, API çoğu programlama dili ile uyumlu olan yeniden yazılmış bir Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
 
-* [JavaScript İstek Kitaplığı](https://github.com/request/request)
+* [JavaScript Istek kitaplığı](https://github.com/request/request).
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Sık kullandığınız IDE’de veya düzenleyicide yeni bir JavaScript dosyası oluşturun ve katılık ve https gereksinimlerini ayarlayın.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir JavaScript dosyası oluşturun ve striclük ve HTTPS gereksinimlerini ayarlayın.
 
     ```javaScript
     'use strict';
     let https = require ('https');
     ```
 
-2. API uç noktası, abonelik anahtarınız ve arama sorgunuz için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+2. API uç noktası, abonelik anahtarınız ve arama sorgunuz için değişkenler oluşturun. Aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```javascript
     let subscriptionKey = 'ENTER YOUR KEY HERE';
@@ -51,62 +51,63 @@ Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu 
     let q = 'italian restaurant near me';
     ```
 
-3. Pazar ve sorgu parametrelerinizi adlı `query`bir dizeye ekleyin. Sorgunuzu URL ile `encodeURI()`kodlayıp kodlayadığınızdan emin olun.
+3. Pazar ve sorgu parametrelerinizi adlı bir dizeye ekleyin `query` . Sorgunuzu URL ile kodlayıp kodlayadığınızdan emin olun `encodeURI()` .
     ```javascript 
     let query = '?mkt=' + mkt + '&q=' + encodeURI(q);
     ```
 
 ## <a name="handle-and-parse-the-response"></a>Yanıtı işleme ve ayrıştırma
 
-1. Parametresi olarak `response`, http `response_handler` çağrısını alan adlı bir işlev tanımlayın. Bu işlev içinde aşağıdaki adımları gerçekleştirin:
+1. `response_handler()`Parametresi olarak, http çağrısını alan adlı bir işlev tanımlayın `response` . 
 
-    1. JSON yanıtının gövdesini içerecek bir değişken tanımlayın.  
-        ```javascript
-        let response_handler = function (response) {
-            let body = '';
-        };
+2. Bu işlev içinde, JSON yanıtının gövdesini içeren bir değişken tanımlayın.  
+    ```javascript
+    let response_handler = function (response) {
+        let body = '';
+    };
+    ```
+
+3. Bayrak çağrıldığında yanıtın gövdesini saklayın `data` .
+    ```javascript
+    response.on('data', function (d) {
+        body += d;
+    });
+    ```
+
+4. Bir `end` bayrağa işaret EDILDIĞINDE JSON 'ı ayrıştırır ve yazdırın.
+
+    ```javascript
+    response.on ('end', function () {
+    let json = JSON.stringify(JSON.parse(body), null, '  ');
+    console.log (json);
+    });
         ```
 
-    2. **Veri** işareti çağrıldığında yanıtın gövdesini depolama
-        ```javascript
-        response.on('data', function (d) {
-            body += d;
-        });
-        ```
+## Send a request
 
-    3. Bir **bitiş** bayrağına işaret EDILDIĞINDE, JSON 'ı ayrıştırır ve yazdırın.
+1. Create a function called `Search()` to send a search request. In it, perform the following steps:
 
-        ```javascript
-        response.on ('end', function () {
-        let json = JSON.stringify(JSON.parse(body), null, '  ');
-        console.log (json);
-        });
-        ```
+2. Within this function, create a JSON object containing your request parameters. Use `Get` for the method, and add your host and path information. Add your subscription key to the `Ocp-Apim-Subscription-Key` header. 
 
-## <a name="send-a-request"></a>İstek gönderme
-
-1. Arama isteği göndermek için `Search` adlı bir işlev oluşturun. Burada, aşağıdaki adımları gerçekleştirin.
-
-   1. İstek parametrelerinizi içeren bir JSON nesnesi oluşturun: yöntemi `Get` için kullanın ve ana bilgisayar ve yol bilgilerinizi ekleyin. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin. 
-   2. Daha `https.request()` önce oluşturulan yanıt işleyicisine ve arama parametreleriniz ile isteği göndermek için kullanın.
+3. Use `https.request()` to send the request with the response handler created previously, and your search parameters.
     
-      ```javascript
-      let Search = function () {
-       let request_params = {
-           method : 'GET',
-           hostname : host,
-           path : path + query,
-           headers : {
-               'Ocp-Apim-Subscription-Key' : subscriptionKey,
-           }
-       };
+   ```javascript
+   let Search = function () {
+    let request_params = {
+        method : 'GET',
+        hostname : host,
+        path : path + query,
+        headers : {
+            'Ocp-Apim-Subscription-Key' : subscriptionKey,
+        }
+    };
     
-       let req = https.request (request_params, response_handler);
-       req.end ();
-      }
+    let req = https.request (request_params, response_handler);
+    req.end ();
+   }
       ```
 
-2. `Search()` İşlevi çağırın.
+2. İşlevi çağırın `Search()` .
 
 ## <a name="example-json-response"></a>Örnek JSON yanıtı
 
@@ -179,4 +180,4 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 > [Tek sayfalı web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Varlık Arama API'si nedir?](../overview.md )
-* [Bing Varlık Arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing varlık arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

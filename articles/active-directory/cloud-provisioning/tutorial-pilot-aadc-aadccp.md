@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f149678bd65ff47b8582e56cf376d88284c8fa8b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78298828"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681319"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
@@ -78,7 +78,7 @@ Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizd
  
  4. **Kapsam filtresi** sayfasında, pilot uygulamayı açmak istediğiniz OU veya güvenlik grubunu girin.  OU 'ya filtre uygulamak için, ayırt edici adın OU kısmını ekleyin. Bu kural, o OU 'da bulunan tüm kullanıcılara uygulanır.  Yani, DN "OU = CPUsers, DC = contoso, DC = com" ile sonlanıyorsa, bu filtreyi eklersiniz.  Ardından **İleri**’ye tıklayın. 
 
-    |Kural|Öznitelik|İşleç|Değer|
+    |Kural|Öznitelik|Operatör|Değer|
     |-----|----|----|-----|
     |Kapsamı bulunan OU|DEĞERI|ENDSWITH|OU 'nun ayırt edici adı.|
     |Kapsam grubu||ISMEMBEROF|Güvenlik grubunun ayırt edici adı.|
@@ -148,7 +148,7 @@ Aracının Azure tarafından görüldüğünü doğrulamak için şu adımları 
 3.  **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' e tıklayın.
 ![Azure AD sağlama](media/how-to-install/install7.png)</br>
  
-4. **Şirket içi sağlama aracıları ekranında** , yüklediğiniz aracıları görürsünüz.  Söz konusu aracının orada olduğunu ve **devre dışı**olarak işaretlendiğinden emin olun.  Aracı varsayılan ![sağlama aracıları tarafından devre dışı bırakıldı](media/how-to-install/verify1.png)</br>
+4. **Şirket içi sağlama aracıları ekranında** , yüklediğiniz aracıları görürsünüz.  Söz konusu aracının orada olduğunu ve **devre dışı**olarak işaretlendiğinden emin olun.  Aracı varsayılan sağlama aracıları tarafından devre dışı bırakıldı ![](media/how-to-install/verify1.png)</br>
 
 ### <a name="on-the-local-server"></a>Yerel sunucuda
 Aracının çalıştığını doğrulamak için şu adımları izleyin:
@@ -199,7 +199,9 @@ Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizd
 3.  `Start-ADSyncSyncCycle` öğesini çalıştırın.  ENTER tuşuna basın.  
 
 >[!NOTE] 
->AAD Connect eşitleme için kendi özel zamanlayıcıyı çalıştırıyorsanız lütfen zamanlayıcıyı etkinleştirin. 
+>Azure AD Connect eşitleme için kendi özel zamanlayıcınız çalıştırıyorsanız lütfen zamanlayıcıyı etkinleştirin. 
+
+Zamanlayıcı etkinleştirildikten sonra, `cloudNoFlow=true` herhangi bir başvuru özniteliği (örn.) dışında, meta veri deposundaki nesnelerde bulunan tüm değişiklikleri dışarı aktarmayı durdurur Azure AD Connect. Yönetici) güncelleştiriliyor. Nesnede herhangi bir başvuru özniteliği güncelleştirmesi varsa, Azure AD Connect `cloudNoFlow` sinyali yoksayacak ve nesnedeki tüm güncelleştirmeleri dışarı aktaracaktır.
 
 ## <a name="something-went-wrong"></a>Bir sorun oluştu
 Pilot 'ın beklendiği gibi çalışmayolmaması durumunda aşağıdaki adımları izleyerek Azure AD Connect eşitleme kurulumuna geri dönebilirsiniz:

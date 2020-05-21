@@ -11,29 +11,29 @@ ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 99c64e703158c40c2cc110a18be7b8c8d3800ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7f0aabf4bd18f82c247a43931e02e4b6890b2ef4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207811"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650676"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Hızlı başlangıç: T-SQL kullanarak iş yükü yalıtımını yapılandırma
 
-Bu hızlı başlangıçta hızlı bir şekilde veri yükleme için kaynak ayırma için bir iş yükü grubu ve sınıflandırıcının oluşturulması gerekir. İş yükü grubu, sistem kaynaklarının %20 ' sini bir veri yüküne ayırır.  İş yükü Sınıflandırıcısı, istekleri verileri yükleyen iş yükü grubuna atayacaktır.  Veri yükleri için %20 yalıtımıyla SLA 'Lara vurmaları garanti edilir.
+Bu hızlı başlangıçta hızlı bir şekilde veri yükleme için kaynak ayırma için bir iş yükü grubu ve sınıflandırıcının oluşturulması gerekir. İş yükü grubu, sistem kaynaklarının %20 ' sini veri yüklerine ayırır.  İş yükü Sınıflandırıcısı, istekleri verileri yükleyen iş yükü grubuna atayacaktır.  Veri yükleri için %20 yalıtımıyla SLA 'Lara vurmaları garanti edilir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 > [!NOTE]
-> Azure SYNAPSE Analytics 'te bir SQL Analytics örneği oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Azure SYNAPSE Analytics 'te SYNAPSE SQL örneği oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıçta, Azure SYNAPSE 'de zaten bir SQL Analytics örneğiniz olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsaymaktadır. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
+Bu hızlı başlangıç, Azure SYNAPSE 'de zaten bir Synapse SQL örneğiniz olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
 
 ## <a name="create-login-for-dataloads"></a>DataLoads için oturum açma oluşturma
 
-' ELTLogin' için `master` [oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) özelliğini kullanarak veritabanında SQL Server kimlik doğrulaması oturumu oluşturun.
+`master`' ELTLogin' IÇIN [oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) özelliğini kullanarak veritabanında SQL Server kimlik doğrulaması oturumu oluşturun.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')

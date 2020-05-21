@@ -7,20 +7,19 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.openlocfilehash: 4ac3d74cb76a936cc88261a2fedf16764e8ae52f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 89fc13f7391a3bd270730a6e95e0132305e04b68
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76718302"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683850"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Azure Cosmos DB verileri yönetmek için Node. js örnekleri
 
 > [!div class="op_single_selector"]
 > * [.NET v2 SDK örnekleri](sql-api-dotnet-samples.md)
 > * [.NET v3 SDK örnekleri](sql-api-dotnet-v3sdk-samples.md)
-> * [Java Örnekleri](sql-api-java-samples.md)
-> * [Async Java Örnekleri](sql-api-async-java-samples.md)
+> * [Java v4 SDK örnekleri](sql-api-java-sdk-samples.md)
 > * [Node.js Örnekleri](sql-api-nodejs-samples.md)
 > * [Python Örnekleri](sql-api-python-samples.md)
 > * [Azure Kod Örneği Galerisi](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
@@ -32,7 +31,7 @@ Azure Cosmos DB kaynaklarında CRUD işlemlerini ve diğer yaygın işlemleri ge
 * Node.js örnek proje dosyalarının her birindeki görevlere bağlantılar.
 * İlgili API başvurusu içeriğine bağlantılar.
 
-**Ön koşullar**
+**Önkoşullar**
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

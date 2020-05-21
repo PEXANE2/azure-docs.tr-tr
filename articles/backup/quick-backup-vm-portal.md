@@ -1,17 +1,16 @@
 ---
 title: Hızlı başlangıç-Azure portal bir VM 'yi yedekleme
 description: Bu hızlı başlangıçta, bir kurtarma hizmetleri Kasası oluşturmayı, bir Azure VM 'de korumayı etkinleştirmeyi ve Azure portal VM 'yi yedeklemeyi öğrenin.
-ms.reviewer: saurse
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 02/06/2020
+ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80944d99c51ae4880a40df8700a73d08a95efe77
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240453"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656962"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure'daki bir sanal makineyi yedekleme
 
@@ -21,7 +20,7 @@ Bu hızlı başlangıç belgesi var olan bir Azure VM'de yedeklemeyi etkinleşti
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="select-a-vm-to-back-up"></a>Yedeklenecek sanal makineyi seçme
 
@@ -66,11 +65,11 @@ Sanal makinenizin **Yedekleme** penceresinde yedekleme durumu ve tamamlanan geri
 
 Artık gerekli değilse sanal makine korumasını devre dışı bırakabilir, kurtarma noktalarını ve Kurtarma Hizmetleri kasasını kaldırabilir ve ardından sanal makine kaynaklarıyla ilişkilendirilmiş kaynak grubunu silebilirsiniz
 
-Sanal makine verilerini nasıl geri yükleyeceğinizi açıklayan bir Yedekleme öğreticisine geçecekseniz bu bölümdeki adımları atlayın ve [Sonraki adımlar](#next-steps) bölümüne geçin.
+VM 'niz için verilerin nasıl geri yükleneceğini açıklayan bir yedekleme öğreticisine devam edecaksanız, bu bölümdeki adımları atlayın ve [sonraki adımlara](#next-steps)gidin.
 
 1. Sanal makinenizle ilgili **Yedekleme** seçeneğini belirleyin.
 
-2. Ek seçenekleri görmek için **...Daha Fazla** öğesini seçin ve ardından **Yedeklemeyi durdur**'u belirleyin.
+2. **Yedeklemeyi Durdur**' ı seçin.
 
     ![Azure portalında sanal makine yedeklemesini durdurma](./media/quick-backup-vm-portal/stop-backup.png)
 

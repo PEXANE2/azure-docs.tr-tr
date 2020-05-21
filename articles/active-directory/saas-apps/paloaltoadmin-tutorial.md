@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2fc9a23a8b0ef69760867dd5768510397f8570e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9804a44a29f4540c28ec4e1eb6927e65af70218c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80129783"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Öğretici: Palo Alto Networks-admin kullanıcı arabirimi ile Azure Active Directory tümleştirme
 
@@ -115,7 +115,7 @@ Azure AD çoklu oturum açmayı Palo Alto Networks-admin kullanıcı arabirimine
 
 1. Genesys uygulamasına göre Purecsesli, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | --- | --- |
     | kullanıcı adı | User. UserPrincipalName |
     | adminrole | customadmin |
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı Palo Alto Networks-admin kullanıcı arabirimine
     > [!NOTE]
     > Öznitelikler hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
     > * [Yönetici Kullanıcı arabirimi için yönetim rolü profili (adminrole)](https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/firewall-administration/manage-firewall-administrators/configure-an-admin-role-profile)
-    > * [Yönetici Kullanıcı arabirimi (accessdomain) için cihaz erişimi etki alanı](https://www.paloaltonetworks.com/documentation/80/pan-os/web-interface-help/device/device-access-domain)
+    > * [Yönetici Kullanıcı arabirimi (accessdomain) için cihaz erişimi etki alanı](https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-web-interface-help/device/device-access-domain.html)
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -148,7 +148,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**' a tıklayın.
 
@@ -243,7 +243,7 @@ Bu bölümde, Azure çoklu oturum açmayı kullanarak, Palo Alto Networks-admin 
 
     g. **Tamam**’ı seçin.
 
-13. Yöneticilerin Azure kullanarak SAML SSO 'yu kullanmasını sağlamak için **cihaz** > **kurulumu**' nu seçin. **Kurulum** bölmesinde, **Yönetim** sekmesini seçin ve ardından **kimlik doğrulama ayarları**altında **Ayarlar** ("dişli") düğmesini seçin.
+13. Yöneticilerin Azure kullanarak SAML SSO 'yu kullanmasını sağlamak için **cihaz**  >  **kurulumu**' nu seçin. **Kurulum** bölmesinde, **Yönetim** sekmesini seçin ve ardından **kimlik doğrulama ayarları**altında **Ayarlar** ("dişli") düğmesini seçin.
 
     ![Ayarlar düğmesi](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
 

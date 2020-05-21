@@ -1,21 +1,21 @@
 ---
 title: Yerleşik ilke girişimleri listesi
 description: Azure Ilkesi için yerleşik ilke girişimlerini listeleyin. Kategoriler, mevzuata uyumluluğu, Konuk yapılandırma ve daha fazlasını içerir.
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 29301e958d0354fb86cce2156f9050420eebc6da
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 969b1849628616bf42951e1ff7fdf2f507cf0abe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837779"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639416"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Ilkesi yerleşik girişim tanımları
 
 Bu sayfa, Azure Ilkesi yerleşik girişim tanımlarının bir dizinidir.
 
-Her yerleşik bir ad, [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda girişim tanımı kaynağına bağlanır. Yerleşik bileşenler, **meta verilerde** **Kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye**geçmek için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, tarayıcınızın arama özelliğini kullanmak için <kbd>CTRL</kbd>-<kbd>F</kbd> kullanın.
+Her yerleşik bir ad, [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda girişim tanımı kaynağına bağlanır. Yerleşik bileşenler, **meta verilerde** **Kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye**geçmek için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, <kbd>Ctrl</kbd> - tarayıcınızın arama özelliğini kullanmak için CTRL<kbd>F</kbd> kullanın.
 
 ## <a name="guest-configuration"></a>Konuk Yapılandırması
 

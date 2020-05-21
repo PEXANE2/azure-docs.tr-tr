@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9618dc1cef8d04cc5906579af0ef372694aeaaa9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9717c76b42a63479c77f862057bfb141954eacff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673988"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673416"
 ---
 ## <a name="create-a-device-template"></a>Cihaz şablonu oluşturma
 
-Yerel makinenizde adlı `environmental-sensor` bir klasör oluşturun.
+Yerel makinenizde adlı bir klasör oluşturun `environmental-sensor` .
 
-[Ortam algılayıcısı yetenek modeli](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) json dosyasını indirin ve `environmental-sensor` klasöre kaydedin.
+[Ortam algılayıcısı yetenek modeli](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensorInline.capabilitymodel.json) json dosyasını indirin ve `environmental-sensor` klasöre kaydedin.
 
-İndirdiğiniz `{YOUR_COMPANY_NAME_HERE}` `EnvironmentalSensorInline.capabilitymodel.json` dosyada şirket adınızla iki örneğini değiştirmek için bir metin düzenleyicisi kullanın.
+`{YOUR_COMPANY_NAME_HERE}`İndirdiğiniz dosyada şirket adınızla iki örneğini değiştirmek için bir metin düzenleyicisi kullanın `EnvironmentalSensorInline.capabilitymodel.json` .
 
-Azure IoT Central uygulamanızda, `EnvironmentalSensorInline.capabilitymodel.json` cihaz yetenek modeli dosyasını Içeri aktararak *çevresel algılayıcı* adlı bir cihaz şablonu oluşturun:
+Azure IoT Central uygulamanızda, cihaz yetenek modeli dosyasını içeri aktararak *çevresel algılayıcı* adlı bir cihaz şablonu oluşturun `EnvironmentalSensorInline.capabilitymodel.json` :
 
 ![İçeri aktarılan cihaz özelliği modeliyle cihaz şablonu](./media/iot-central-add-environmental-sensor/device-template.png)
 
@@ -32,7 +32,7 @@ Cihaz yetenek modeli iki arabirim içerir: standart **cihaz bilgileri** arabirim
 | Tür | Görünen Ad | Açıklama |
 | ---- | ------------ | ----------- |
 | Özellik | Cihaz Durumu     | Cihazın durumu. Çevrimiçi/çevrimdışı iki durum kullanılabilir. |
-| Özellik (yazılabilir) | Müşteri adı    | Müşterinin Şu anda cihazda çalışan adı. |
+| Özellik (yazılabilir) | Müşteri Adı    | Müşterinin Şu anda cihazda çalışan adı. |
 | Özellik (yazılabilir) | Parlaklık düzeyi | Cihazdaki ışığın parlaklık düzeyi. 1 (yüksek), 2 (orta), 3 (düşük) olarak belirtilebilir. |
 | Telemetri | Sıcaklık | Cihaz tarafından algılanan geçerli sıcaklık. |
 | Telemetri | Nem oranı    | Cihaz tarafından algılanan geçerli nem. |

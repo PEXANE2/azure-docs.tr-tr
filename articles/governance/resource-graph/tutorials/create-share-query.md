@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: Azure portal sorguları yönetme'
 description: Bu öğreticide, bir kaynak grafiği sorgusu oluşturur ve yeni sorguyu Azure portal başkalarıyla paylaşabilirsiniz.
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74303951"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83637759"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Öğretici: Azure portal Azure Kaynak Grafiği sorgusu oluşturma ve paylaşma
 
@@ -129,7 +129,7 @@ Kaynak Grafiği sorgusunun seçilmesi, bu sorgunun sayfasını açar. Üç nokta
 
 ### <a name="query-resource-graph"></a>Sorgu kaynağı grafiği
 
-Kaynak grafından bir sorgu aracılığıyla kaynak grafik sorgularını bulabilirsiniz. Aşağıdaki kaynak Graph sorgu türlerine `Microsoft.ResourceGraph/queries`göre kısıtlar ve sonra yalnızca adı, `project` değiştirilme süresini ve sorgunun kendisini listelemek için kullanır:
+Kaynak grafından bir sorgu aracılığıyla kaynak grafik sorgularını bulabilirsiniz. Aşağıdaki kaynak Graph sorgu türlerine göre kısıtlar `Microsoft.ResourceGraph/queries` ve sonra `project` yalnızca adı, değiştirilme süresini ve sorgunun kendisini listelemek için kullanır:
 
 ```kusto
 Resources

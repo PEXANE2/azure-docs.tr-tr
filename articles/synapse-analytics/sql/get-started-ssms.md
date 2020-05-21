@@ -9,15 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: a25049aee620a1cf14eeb51adfb75f6577defc2a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 72006879c7181a8cefe56248215099eeb784d816
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197062"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658186"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile SYNAPSE SQL 'e bağlanma
-
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
@@ -41,7 +40,7 @@ ms.locfileid: "83197062"
 Başlamadan önce, aşağıdaki önkoşullara sahip olduğunuzdan emin olun:  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
-* SQL havuzu için mevcut bir veri ambarına ihtiyacınız vardır. Bir tane oluşturmak için bkz. [SQL havuzu oluşturma](../quickstart-create-sql-pool.md). İsteğe bağlı SQL için, oluşturma sırasında çalışma alanınızda bir tane zaten sağlanmış olur. 
+* SQL havuzu için mevcut bir veri ambarına ihtiyacınız vardır. Bir tane oluşturmak için bkz. [SQL havuzu oluşturma](../quickstart-create-sql-pool-portal.md). İsteğe bağlı SQL için, oluşturma sırasında çalışma alanınızda bir tane zaten sağlanmış olur. 
 * Tam nitelikli SQL Server adı. Bunu bulmak için bkz. [SYNAPSE SQL 'e bağlanma](connect-overview.md).
 
 ## <a name="connect"></a>Bağlan

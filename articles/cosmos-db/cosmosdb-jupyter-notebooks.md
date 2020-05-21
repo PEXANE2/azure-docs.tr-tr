@@ -3,63 +3,62 @@ title: Azure Cosmos DB 'de yerleşik jupi Not defteri desteğine giriş (Önizle
 description: Sorguları etkileşimli olarak çalıştırmak için Azure Cosmos DB yerleşik jupi Not defteri desteğini nasıl kullanabileceğinizi öğrenin.
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 09/22/2019
-author: markjbrown
-ms.author: mjbrown
-ms.openlocfilehash: 5b320485001d6cbc457d39ef193ed8c57f7161df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/19/2020
+author: deborahc
+ms.author: dech
+ms.openlocfilehash: 9152bdfa9575738c853521814938cd0d7ec25efb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76760292"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657366"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Azure Cosmos DB 'de yerleşik jupi Not Defteri desteği (Önizleme)
 
-Jupyter Not defteri, canlı kod, denklem, görselleştirmeler ve anlatım metni içeren belgeler oluşturmanıza ve paylaşmanıza olanak sağlayan açık kaynaklı bir Web uygulamasıdır. Azure Cosmos DB Cassandra, MongoDB, SQL, Gremlin ve Table gibi tüm API 'Lerde yerleşik jupi not defterlerini destekler. Tüm Azure Cosmos DB API 'Leri ve veri modelleri için yerleşik Not Defteri desteği, sorguları etkileşimli olarak çalıştırmanızı sağlar. Jupi Not defterleri, Azure Cosmos hesaplarında çalışır ve geliştiricilerin veri keşif, veri temizleme, veri dönüştürmeleri, sayısal benzetimler, istatistiksel modelleme, veri görselleştirme ve makine öğrenimi gerçekleştirmesini sağlar.
+Jupyter Not defteri, canlı kod, denklem, görselleştirmeler ve anlatım metni içeren belgeler oluşturmanıza ve paylaşmanıza olanak sağlayan açık kaynaklı bir Web uygulamasıdır. 
+
+Azure Cosmos DB yerleşik jupi Not defterleri, Azure portal ve Azure Cosmos DB hesaplarınız ile doğrudan tümleşiktir ve kolayca kullanılabilir hale getirir. Geliştiriciler, veri uzmanları, mühendisler ve analistler, veri araştırması, veri temizleme, veri dönüştürmeleri, sayısal benzetimler, istatistiksel modelleme, veri görselleştirme ve makine öğrenimi yapmak için tanıdık Jupistter Not defteri deneyimini kullanabilir.
 
 ![Azure Cosmos DB 'de jupi Not defteri görselleştirmeleri](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
 
-Jupyter Not defterleri ek komutları destekleyerek çekirdeğin yeteneklerini genişleten sihirli işlevleri destekler. Cosmos Magic, Jupyter Notebook 'daki Python çekirdeğinin yeteneklerini genişleten bir komuttur. böylece, Apache Spark ek olarak Azure Cosmos SQL API sorgularını çalıştırabilirsiniz. Oluşturma komutlarıyla tümleştirilmiş zengin görselleştirme kitaplıklarını kullanarak verileri sorgulamak ve görselleştirmek için Python ve SQL API sorgularını kolayca birleştirebilirsiniz.
-Azure portal, aşağıdaki görüntüde gösterildiği gibi Jupyter Not defteri deneyimini Azure Cosmos hesaplarıyla yerel olarak tümleştirir:
+Azure Cosmos DB, çekirdek (SQL), Cassandra, Gremlin, tablo ve MongoDB için API dahil tüm API 'Ler için hem C# hem de Python not defterlerini destekler. Not defteri içinde, Azure Cosmos DB kaynakları oluşturmayı, verileri yüklemeyi ve verilerinizi Azure Cosmos DB ve görselleştirmeyi kolaylaştıran yerleşik komutlar ve özelliklerden yararlanabilirsiniz. 
 
 ![Azure Cosmos DB 'de jupi Not Defteri desteği](./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png)
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Jupyıter Not defterlerinin avantajları
 
-Jupi Not defterleri, aslında Python, R 'de yazılan veri bilimi uygulamaları için geliştirilmiştir. Ancak, bunlar gibi farklı türlerde projeler için çeşitli şekillerde kullanılabilirler:
+Jupi Not defterleri, başlangıçta Python ve R 'de yazılmış veri bilimi uygulamaları için geliştirilmiştir. Ancak, aşağıdakiler de dahil olmak üzere farklı türlerdeki projeler için çeşitli şekillerde kullanılabilirler:
 
-* ***Veri görselleştirmeleri:** Jupyter Not defterleri, bir grafik olarak bazı veri kümesini işleyen paylaşılan bir not defteri biçimindeki verileri görselleştirmenize olanak tanır. Jupyter Not defteri görselleştirmeleri yazabilir, paylaşabilir ve paylaşılan kodda ve veri kümesinde etkileşimli değişikliklere izin verir.
+**Veri görselleştirme:** Jupyter Not defterleri, bir veri kümesini grafik olarak işleyen paylaşılan bir not defteri biçiminde görselleştirmenize olanak tanır. Görselleştirmeler oluşturabilir, paylaşılan kod ve veri kümesinde etkileşimli değişiklikler yapabilir ve sonuçları paylaşabilirsiniz.
 
-* **Kod paylaşımı:** GitHub gibi hizmetler, kod paylaşma yollarını sağlar, ancak büyük ölçüde etkileşimli değildir. Jupyter Not defteri ile kodu görüntüleyebilir, yürütebilir ve sonuçları doğrudan Azure portal görüntüleyebilirsiniz.
+**Kod paylaşımı:** GitHub gibi hizmetler, kod paylaşma yollarını sağlar, ancak büyük ölçüde etkileşimli değildir. Jupyter Not defteri ile kodu görüntüleyebilir, yürütebilir ve sonuçları doğrudan Azure portal görüntüleyebilirsiniz.
 
-* **Kod Ile canlı etkileşimler:** Jupyter Not defteri kodu dinamiktir; Bu, düzenlenebilir ve artımlı olarak gerçek zamanlı olarak çalıştırılabilir. Not defterleri, kod, tanıtımlar veya kavram kanıtı (POCs) için giriş kaynağı olarak kullanılabilecek Kullanıcı denetimleri (ör. kaydırıcıları veya metin girişi alanları) de ekleyebilir.
+**Kod Ile canlı etkileşimler:** Jupyter not defterindeki kod dinamiktir; düzenleyebilir ve güncelleştirmeleri gerçek zamanlı olarak aşamalı olarak çalıştırabilirsiniz. Kod, tanıtımlar veya kavram kanıtı (POCs) için giriş kaynağı olarak kullanılan kullanıcı denetimlerini (örneğin, kaydırıcılar veya metin girişi alanları) ekleyebilirsiniz.
 
-* **Kod örnekleri ve veri araştırma sonuçlarının belgeleri:** Bir kod parçasına sahipseniz ve gerçek zamanlı çıktının Azure Cosmos DB nasıl çalıştığını öğrenmek istiyorsanız, bir Jupyter Notebook ekleyebilirsiniz. bu şekilde, bir ekleyebilirsiniz. Kod tamamen işlevsel olarak kalır. Belgelerle birlikte aynı anda etkileşim ekleyebilirsiniz.
+**Kod örnekleri ve veri araştırma sonuçlarının belgeleri:** Bir kod parçasına sahipseniz ve bu kodun nasıl çalıştığını açıklamak istiyorsanız, Jupyter Notebook ekleyebilirsiniz. Belgelerle birlikte aynı anda etkileşim ekleyebilirsiniz.
 
-* **Cosmos Magic komutları:** Jupi not defterlerinde etkileşimli bilgi işlem kolaylaştırmak için Azure Cosmos DB için özel MAGIC komutları kullanabilirsiniz. Örneğin, bir bir SQL API 'sini doğrudan bir not defteri içinde kullanarak Cosmos kapsayıcısını sorgulayasağlayan%% SQL Magic.
+**Azure Cosmos DB Için yerleşik komutlar:** Azure Cosmos DB yerleşik MAGIC komutları hesabınızla etkileşimde bulunmayı kolaylaştırır. Bir kapsayıcıya veri yüklemek ve [SQL API sözdizimini](sql-query-getting-started.md)kullanarak sorgulamak için%% upload ve%% SQL gibi komutları kullanabilirsiniz. Ek özel kod yazmanız gerekmez.
 
-* **Tek bir yerinde ortamda:** Jupleter Not defterleri kod, zengin metin, resim, video, animasyon, matematik denklemleri, çizimler, Haritalar, etkileşimli şekiller, pencere öğeleri ve grafik kullanıcı arabirimlerini tek bir belgede birleştirir.
+**Tek bir yerinde ortamda:** Jupleter Not defterleri kod, zengin metin, resim, video, animasyon, matematik denklemleri, çizimler, Haritalar, etkileşimli şekiller, pencere öğeleri ve grafik kullanıcı arabirimlerini tek bir belgede birleştirir.
 
 ## <a name="components-of-a-jupyter-notebook"></a>Jupyter Not defteri bileşenleri
 
-Jupyter Not defterleri, her biri ayrı bloklara düzenlenmiş birkaç bileşen türü içerebilir:
+Jupyter Not defterleri, her biri ayrı bloklara veya hücrelere düzenlenmiş birkaç bileşen türü içerebilir:
 
-* **Metin ve HTML:** HTML oluşturmak için markaşağı sözdiziminde açıklama eklenmiş düz metin veya metin, herhangi bir noktada belgeye eklenebilir. CSS stili ayrıca satır içi olarak dahil edilebilir veya Not defterini oluşturmak için kullanılan şablona eklenebilir.
+**Metin ve HTML:** HTML oluşturmak için markaşağı sözdiziminde açıklama eklenmiş düz metin veya metin, herhangi bir noktada belgeye eklenebilir. CSS stili ayrıca satır içi olarak dahil edilebilir veya Not defterini oluşturmak için kullanılan şablona eklenebilir.
 
-* **Kod ve çıkış:** Jupyıter Not defterleri Python kodunu destekler. Yürütülen kodun sonuçları, kod bloklarından hemen sonra görünür ve kod blokları istediğiniz sırada birden çok kez yürütülenebilir.
+**Kod ve çıkış:** Jupyıter Not defterleri Python ve C# kodunu destekler. Yürütülen kodun sonuçları, kod bloklarından hemen sonra görünür ve kod blokları istediğiniz sırada birden çok kez yürütülenebilir.
 
-* **Görselleştirmeler:** Grafikler ve grafikler, Matplotlib, Plotly veya bokeh gibi modüller kullanılarak koddan oluşturulabilir. Çıkışa benzer şekilde, bu görselleştirmeler, bunları üreten kodun yanında satır içi görüntülenir.
+**Görselleştirmeler:** Matplotlib, Plotly, bokeh ve diğerleri gibi modüller kullanarak koddan grafikler ve grafikler oluşturabilirsiniz. Çıkışa benzer şekilde, bu görselleştirmeler, bunları üreten kodun yanında satır içi görüntülenir. Çıkışa benzer şekilde, bu görselleştirmeler, bunları üreten kodun yanında satır içi görüntülenir.
 
-* **Multimedya:** Jupyter Not defteri Web teknolojisinden oluşturulduğundan, bir Web sayfasında desteklenen tüm multimedya türlerini görüntüleyebilir. Bunları bir not defterine HTML öğeleri olarak dahil edebilir veya `IPython.display` modülünü kullanarak programlı bir şekilde oluşturabilirsiniz.
+**Multimedya:** Jupi Not defterleri Web teknolojisi üzerine inşa edildiğinden, bir Web sayfası tarafından desteklenen tüm multimedya türlerini görüntüleyebilir. Bunları bir not defterine HTML öğeleri olarak dahil edebilir veya modülünü kullanarak programlı bir şekilde oluşturabilirsiniz `IPython.display` .
 
-* **Veri:** Azure Cosmos kapsayıcılarından ve sorguların sonuçlarına ait veriler, programlama yoluyla bir Jupyter not defterine aktarılabilir. Örneğin, Cosmos DB API 'lerden herhangi birini kullanarak verileri sorgulamak için not defterine kod ekleyerek veya yerel olarak yerleşik Apache Spark.
+**Veri:** Verileri Azure Cosmos kapsayıcılarından veya sorgu sonuçlarının bir Jupyter not defterine programlı bir şekilde aktarabilirsiniz. Azure Cosmos DB verileri karşıya yüklemek veya sorgulamak için yerleşik sihirli komutları kullanın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Cosmos DB yerleşik Jupyter not defterlerini kullanmaya başlamak için aşağıdaki makalelere bakın:
 
 * [Azure Cosmos hesabında not defterlerini etkinleştirme](enable-notebooks.md)
-* [Not defteri özelliklerini ve komutlarını kullanma](use-notebook-features-and-commands.md)
-
-
-
+* [Python Not defteri özelliklerini ve komutlarını kullanma](use-python-notebook-features-and-commands.md)
+* [C# Not defteri özelliklerini ve komutlarını kullanma](use-csharp-notebook-features-and-commands.md)

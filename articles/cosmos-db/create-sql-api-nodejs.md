@@ -1,26 +1,26 @@
 ---
 title: Hızlı başlangıç-Azure Cosmos DB SQL API hesabından sorgulamak için Node. js kullanma
 description: Azure Cosmos DB SQL API hesabına ve sorgu verilerine bağlanan bir uygulama oluşturmak için Node. js kullanma.
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 02/26/2020
-ms.author: dech
-ms.openlocfilehash: 0b29f9c1f395e079c97d5877d08bd7bd73c7ea53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 4f874bd77432ba9ee110a7304629a80f1ce5d0dd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240308"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655365"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabına bağlanmak ve veri sorgulamak için Node. js kullanma
 
 > [!div class="op_single_selector"]
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [.NET V4](create-sql-api-dotnet-V4.md)
-> - [Java](create-sql-api-java.md)
+> - [Java SDK v4](create-sql-api-java.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -35,7 +35,7 @@ Bu makaledeki içeriğe ilişkin kapsamlı bir anlatım için bu videoyu izleyin
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bir URI `https://localhost:8081` ve anahtar `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`ile de kullanabilirsiniz.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bir URI ve anahtar ile de kullanabilirsiniz `https://localhost:8081` `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
 - [Node. js 6.0.0 +](https://nodejs.org/).
 - [Git](https://www.git-scm.com/downloads).
 
@@ -55,7 +55,7 @@ Bu hızlı başlangıç amacıyla Azure Cosmos hesabı oluşturmak için [Azure 
 
 Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini aracı 'nı kullanabilirsiniz.
 
-1. Yeni **Veri Gezgini** > **kapsayıcı**seçin.
+1. Yeni **Veri Gezgini**  >  **kapsayıcı**seçin.
 
    **Kapsayıcı Ekle** alanı en sağda görüntülenir, görmek için sağa kaydırmanız gerekebilir.
 
@@ -65,9 +65,9 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
 
    | Ayar           | Önerilen değer | Açıklama                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Veritabanı Kimliği**   | Görevler           | Yeni veritabanınızın adı olarak _Görevler_ girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve boşluk içeremez veya sonunda boşluk olamaz `/, \\, #, ?`. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
+   | **Veritabanı Kimliği**   | Görevler           | Yeni veritabanınızın adı olarak _Görevler_ girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve `/, \\, #, ?` boşluk içeremez veya sonunda boşluk olamaz. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
    | **Aktarım hızı**    | 400             | Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.                                                                                                                                                                                                                                                    |
-   | **Kapsayıcı KIMLIĞI**  | Öğeler           | _Öğeleri_ yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.                                                                                                                                                                                                                                                               |
+   | **Kapsayıcı KIMLIĞI**  | Öğeleri           | _Öğeleri_ yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.                                                                                                                                                                                                                                                               |
    | **Bölüm anahtarı** | /kategori       | Bu makalede açıklanan örnek, bölüm anahtarı olarak _/category_ kullanır.                                                                                                                                                                                                                                                                                                           |
 
    Önceki ayarlara ek olarak, kapsayıcı için isteğe bağlı olarak **benzersiz anahtarlar** ekleyebilirsiniz. Bu örnekte bu alanı boş bırakalım. Benzersiz anahtarlar sayesinde geliştiriciler veritabanına bir veri bütünlüğü katmanı ekleyebilir. Bir kapsayıcı oluştururken benzersiz bir anahtar ilkesi oluşturarak, bölüm anahtarı başına bir veya daha fazla değerin benzersizliği olduğundan emin olursunuz. Daha fazla bilgi edinmek için [Azure Cosmos DB'de benzersiz anahtarlar](unique-keys.md) makalesine bakın.
@@ -98,7 +98,7 @@ Bu adım isteğe bağlıdır. Azure Cosmos veritabanı kaynaklarının kodda nas
 
 SQL JavaScript SDK 'sının önceki sürümüne alışkın değilseniz _, hüküm ve_ _belge_koşullarını görmek için kullanabilirsiniz. Azure Cosmos DB [birden çok API modelini](introduction.md)desteklediğinden, [JavaScript SDK 'sının 2.0 + sürümü](https://www.npmjs.com/package/@azure/cosmos) bir koleksiyon, grafik veya tablo olabilecek genel terimler _kapsayıcısını_ve kapsayıcının içeriğini açıklayan _öğeyi_ kullanır.
 
-Cosmos DB JavaScript SDK 'Sı "@azure/cosmos" olarak adlandırılır ve NPM 'den yüklenebilir...
+Cosmos DB JavaScript SDK 'Sı "" olarak adlandırılır @azure/cosmos ve NPM 'den yüklenebilir...
 
 ```bash
 npm install @azure/cosmos
@@ -112,7 +112,7 @@ Aşağıdaki kod parçacıklarının tamamı, _app.js_ dosyasından alınmışt�
   const CosmosClient = require("@azure/cosmos").CosmosClient;
   ```
 
-- Yeni `CosmosClient` bir nesne başlatılır.
+- Yeni bir `CosmosClient` nesne başlatılır.
 
   ```javascript
   const client = new CosmosClient({ endpoint, key });
@@ -167,7 +167,7 @@ Aşağıdaki kod parçacıklarının tamamı, _app.js_ dosyasından alınmışt�
   ```
 
 > [!NOTE]
-> Hem "güncelleştirme" hem de "silme" yöntemlerinde, öğesi çağırarak `container.item()`veritabanından seçilmelidir. Geçirilen iki parametre öğenin kimliği ve öğenin bölüm anahtarıdır. Bu durumda, Parma anahtarı "Category" alanının değeridir.
+> Hem "güncelleştirme" hem de "silme" yöntemlerinde, öğesi çağırarak veritabanından seçilmelidir `container.item()` . Geçirilen iki parametre öğenin kimliği ve öğenin bölüm anahtarıdır. Bu durumda, Parma anahtarı "Category" alanının değeridir.
 
 ## <a name="update-your-connection-string"></a>Bağlantı dizenizi güncelleştirme
 
@@ -189,7 +189,7 @@ Aşağıdaki kod parçacıklarının tamamı, _app.js_ dosyasından alınmışt�
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-1. " `npm install` @azure/cosmos" NPM paketini yüklemek için bir terminalde Çalıştır
+1. `npm install`" @azure/cosmos " NPM paketini yüklemek için bir terminalde Çalıştır
 
 2. Node.js uygulamanızı başlatmak için bir terminalde `node app.js` komutunu çalıştırın.
 

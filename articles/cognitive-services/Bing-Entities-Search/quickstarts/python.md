@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 07b563308e80055d699d1cefeb3b2db71ffa4cd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 43b440b631122f7057de68871f0a3f870588dc67
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448610"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650210"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Hızlı başlangıç: Python kullanarak Bing Varlık Arama REST API arama isteği gönderme
 
 Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit Python uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)' da kullanılabilir.
 
-Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bu uygulama Python 'da yazılmış olsa da, API birçok programlama dili ile uyumlu olan bir yenilenmiş Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -31,7 +31,7 @@ Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama dili
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki içeri aktarmaları ekleyin. Abonelik anahtarınız, uç nokta, Pazar ve arama sorgunuz için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki içeri aktarmaları ekleyin. Abonelik anahtarınız, uç nokta, Pazar ve arama sorgunuz için değişkenler oluşturun. Aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```python
     import http.client, urllib.parse
@@ -44,7 +44,7 @@ Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama dili
     query = 'italian restaurants near me'
     ```
 
-2. Piyasa değişkeninizi `?mkt=` parametresine ekleyerek bir istek URL 'si oluşturun. URL-sorgunuzu kodlayın ve `&q=` parametresine ekleyerek parametreye yapıştırın. 
+2. Piyasa değişkeninizi parametresine ekleyerek bir istek URL 'si oluşturun `?mkt=` . URL-sorgunuzu kodlayın ve `&q=` parametreye ekleyin. 
     
     ```python
     params = '?mkt=' + mkt + '&q=' + urllib.parse.quote (query)
@@ -52,21 +52,24 @@ Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama dili
 
 ## <a name="send-a-request-and-get-a-response"></a>İstek gönderme ve yanıt edinme
 
-1. Adlı `get_suggestions()`bir işlev oluşturun. Ardından aşağıdaki adımları gerçekleştirin.
-   1. Abonelik anahtarınızı anahtar olarak bulunan `Ocp-Apim-Subscription-Key` bir sözlüğe ekleyin.
-   2. HTTPS `http.client.HTTPSConnection()` istemci nesnesi oluşturmak için kullanın. Yolu ve `GET` parametrelerinizi `request()` ve başlık bilgilerini kullanarak bir istek gönderin.
-   3. Yanıtını ile `getresponse()`depolayın ve geri döndürün `response.read()`.
+1. Adlı bir işlev oluşturun `get_suggestions()` . 
 
-      ```python
-      def get_suggestions ():
-       headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-       conn = http.client.HTTPSConnection (host)
-       conn.request ("GET", path + params, None, headers)
-       response = conn.getresponse ()
-       return response.read()
-      ```
+2. Bu işlevde, abonelik anahtarınızı anahtar olarak bulunan bir sözlüğe ekleyin `Ocp-Apim-Subscription-Key` .
 
-2. JSON `get_suggestions()`yanıtını çağırın ve yazdırın.
+3. `http.client.HTTPSConnection()`HTTPS istemci nesnesi oluşturmak için kullanın. `GET` `request()` Yolu ve parametrelerinizi ve başlık bilgilerini kullanarak bir istek gönderin.
+
+4. Yanıtını ile depolayın `getresponse()` ve geri döndürün `response.read()` .
+
+   ```python
+   def get_suggestions ():
+    headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+    conn = http.client.HTTPSConnection (host)
+    conn.request ("GET", path + params, None, headers)
+    response = conn.getresponse ()
+    return response.read()
+   ```
+
+5. `get_suggestions()`JSON yanıtını çağırın ve yazdırın.
 
     ```python
     result = get_suggestions ()
@@ -144,4 +147,4 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 > [Tek sayfalı web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Varlık Arama API'si nedir?](../search-the-web.md)
-* [Bing Varlık Arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing varlık arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

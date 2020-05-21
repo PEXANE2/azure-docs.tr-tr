@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4c6a151bdd3b437c6a01a949096604b3963489bd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 508c12d89d5b0476e4cd4cbd8dc43b8bda8fbd90
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195141"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647465"
 ---
 # <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) görünümleri oluşturma ve kullanma
 
@@ -26,7 +26,7 @@ Bu bölümde, SQL isteğe bağlı (Önizleme) sorgularını kaydırmak için gö
 
 ## <a name="create-a-view"></a>Bir görünüm oluşturun
 
-Görünümleri, normal SQL Server görünümlerini oluşturduğunuz şekilde oluşturabilirsiniz. Aşağıdaki sorgu, *popülasyon. csv* dosyasını okuyan görünüm oluşturur.
+Görünümleri, normal SQL Server görünümlerini oluşturduğunuz şekilde oluşturabilirsiniz. Aşağıdaki sorgu, *popülasyon. csv* dosyasını okuyan görünümü oluşturur.
 
 > [!NOTE]
 > Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz.

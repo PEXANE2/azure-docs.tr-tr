@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: c343c160f67eda2dd390ffc39f3b4f1ff49cacb6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cd89f2ae13b10c83c3fc22023fc2e3cae1770c98
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448663"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650282"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Hızlı başlangıç: C kullanarak Bing Varlık Arama REST API arama isteği gönderme #
 
 Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit C# uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs)' da kullanılabilir.
 
-Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bu uygulama C# dilinde yazılsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -32,7 +32,7 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
 
    1. **Çözüm Gezgini**' de projenize sağ tıklayın.
    2. **NuGet Paketlerini Yönet**' i seçin.
-   3. *Newtonsoft. JSON* araması yapın ve paketi yükler.
+   3. *Newtonsoft. JSON*öğesini arayıp seçin ve ardından paketi yükler.
 
 - Linux/MacOS kullanıyorsanız, bu uygulama [mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
 
@@ -41,7 +41,7 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Visual Studio 'da yeni bir C# konsol çözümü oluşturun. Ardından ana kod dosyasına aşağıdaki ad alanlarını ekleyin.
+1. Visual Studio 'da yeni bir C# konsol çözümü oluşturun. Ardından, aşağıdaki ad alanlarını ana kod dosyasına ekleyin:
     
     ```csharp
     using Newtonsoft.Json;
@@ -50,7 +50,7 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
     using System.Text;
     ```
 
-2. Yeni bir sınıf oluşturun ve API uç noktası, abonelik anahtarınız ve aramak istediğiniz sorgunuz için değişkenler ekleyin. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+2. Yeni bir sınıf oluşturun ve API uç noktası, abonelik anahtarınız ve aramak istediğiniz sorgu için değişkenler ekleyin. Aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```csharp
     namespace EntitySearchSample
@@ -73,11 +73,13 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
 
 ## <a name="send-a-request-and-get-the-api-response"></a>İstek Gönder ve API yanıtını al
 
-1. Sınıfı içinde adlı `Search()`bir işlev oluşturun. Yeni `HttpClient` bir nesne oluşturun ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
+1. Sınıfı içinde adlı bir işlev oluşturun `Search()` . Bu işlev içinde yeni bir nesne oluşturun `HttpClient` ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
 
-   1. Konağı ve yolu birleştirerek isteğiniz için URI 'yi oluşturun. Ardından pazarlamanızı ekleyin ve sorgunuzu URL ile kodlayın.
-   2. HTTP `client.GetAsync()` yanıtı almak için Await ve ardından bekleyen `ReadAsStringAsync()`JSON yanıtını saklayın.
-   3. JSON dizesini ile `JsonConvert.DeserializeObject()` biçimlendirin ve konsola yazdırın.
+2. Konağı ve yolu birleştirerek isteğiniz için URI 'yi oluşturun. Ardından, Pazar ve URL 'nizi ekleyin-sorgunuzu kodlayın.
+
+3. `client.GetAsync()`Http yanıtı almak için Await ve ardından bekleyen JSON yanıtını saklayın `ReadAsStringAsync()` .
+
+4. JSON dizesini ile biçimlendirin `JsonConvert.DeserializeObject()` ve konsola yazdırın.
 
       ```csharp
       async static void Search()
@@ -96,7 +98,7 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
       }
       ```
 
-2. Uygulamanızın Main yönteminde `Search()` işlevini çağırın.
+5. `Main()`Uygulamanızın yönteminde, `Search()` işlevini çağırın.
     
     ```csharp
     static void Main(string[] args)
@@ -178,4 +180,4 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 > [Tek sayfalı web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Varlık Arama API'si nedir?](../overview.md )
-* [Bing Varlık Arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing varlık arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

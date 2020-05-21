@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 1d1da88d1e7eaf06ebf71da999ef8fb25c7cf066
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81482190"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652731"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme
 
@@ -37,7 +37,7 @@ Var olan bir görüntü yükleme uygulamasına yeniden boyutlandırma işlevini 
 
 ---
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Depolama hesabı oluşturma
@@ -192,15 +192,15 @@ Bu işlev hakkında daha fazla bilgi edinmek için bkz. [JSON ve index. js dosya
 
 Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayıcı tarafından oluşturulmuş olayları gösterir. Bu örnekte uç nokta, işleviniz tarafından kullanıma sunulur. Azure Portal'da işlevinize bildirimler gönderen bir olay aboneliği oluşturmak için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **tüm hizmetler** ' i seçin ve ardından **işlev uygulamaları**' nı seçin.
+1. [Azure Portal](https://portal.azure.com), sayfanın üst kısmında arama yapın ve `Function App` Yeni oluşturduğunuz işlev uygulamasını seçip seçin. **İşlevler** ' i seçin ve **küçük resim** işlevini seçin.
 
-    ![Azure portal Işlev uygulamalarına gidin](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
+    :::image type="content" source="media/resize-images-on-storage-blob-upload-event/choose-thumbnail-function.png" alt-text="Portalda küçük resim işlevini seçin":::
 
-2. İşlev uygulamanızı genişletin, **küçük resim** işlevini seçin ve ardından **Event Grid aboneliği Ekle**' yi seçin.
+1.  **Tümleştirme** Seç ' i seçin ve **Event Grid tetikleyiciyi** seçin ve **Event Grid aboneliği oluştur**' u seçin.
 
-    ![Azure portal Event Grid abonelik ekleme sayfasına gidin](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Azure portal Event Grid abonelik ekleme sayfasına gidin" :::
 
-3. Tabloda belirtilen olay aboneliği ayarlarını kullanın.
+1. Tabloda belirtilen olay aboneliği ayarlarını kullanın.
     
     ![Azure portalında işlevden olay aboneliği oluşturma](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
@@ -215,13 +215,13 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
     | **Uç nokta türü** | otomatik oluşturulmuş | **Azure işlevi**olarak önceden tanımlanmış. |
     | **Uç Nokta** | otomatik oluşturulmuş | İşlevin adı. Bu durumda, bunun **küçük resmi**. |
 
-4. **Filtreler** sekmesine geçin ve aşağıdaki işlemleri yapın:
+1. **Filtreler** sekmesine geçin ve aşağıdaki işlemleri yapın:
     1. **Konu filtrelemeyi etkinleştir** seçeneğini belirleyin.
     2. **Konu için ile başlıyorsa**, şu değeri girin: **/Blobservices/default/containers/images/Blobs/**.
 
         ![Olay aboneliği için filtre belirtin](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
-5. Olay aboneliğini eklemek için **Oluştur** ' u seçin. Bu, `Thumbnail` `images` kapsayıcıya bir blob eklendiğinde işlevi tetikleyen bir olay aboneliği oluşturur. İşlev görüntüleri yeniden boyutlandırır ve `thumbnails` kapsayıcıya ekler.
+1. Olay aboneliğini eklemek için **Oluştur** ' u seçin. Bu, `Thumbnail` kapsayıcıya bir blob eklendiğinde işlevi tetikleyen bir olay aboneliği oluşturur `images` . İşlev görüntüleri yeniden boyutlandırır ve `thumbnails` kapsayıcıya ekler.
 
 Arka uç hizmetleri yapılandırıldıktan sonra, görüntü yeniden boyutlandırma işlevini örnek web uygulamasında test edin.
 

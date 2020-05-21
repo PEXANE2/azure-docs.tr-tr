@@ -7,12 +7,12 @@ ms.date: 04/18/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 3b23eac4ab50401e68e17064d0964dacc3c17d32
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 4d486b8ffc921a5ca2f38bef912ba6dc46ecec40
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82120509"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634082"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -20,7 +20,7 @@ ms.locfileid: "82120509"
 
 Azure Blob depolama, büyük miktarlarda yapılandırılmamış verileri depolamak için iyileştirilmiştir. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri dahil metin veya ikili veri içerebilen nesnelerdir. Bu hızlı başlangıçta, bir tarayıcıda JavaScript kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blobları karşıya yükleyip listetireceksiniz ve kapsayıcı oluşturup sileceksiniz.
 
-[API başvurusu belge](/javascript/api/@azure/storage-blob) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [paketi (NPM)](https://www.npmjs.com/package/@azure/storage-blob) | [örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+[API başvuru belgeleri](/javascript/api/@azure/storage-blob)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-blob)  |  [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 > [!NOTE]
 > Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: node. js ' de JavaScript Ile v10 ARASıNDAKI SDK ile Blobları yönetme](storage-quickstart-blobs-nodejs-legacy.md).
@@ -32,9 +32,9 @@ Azure Blob depolama, büyük miktarlarda yapılandırılmamış verileri depolam
 * [Node.js](https://nodejs.org)
 * [Microsoft Visual Studio Code](https://code.visualstudio.com)
 * Tarayıcı hata ayıklaması için bir Visual Studio Code uzantısı, örneğin:
-    * [Microsoft Edge için hata ayıklayıcı](vscode:extension/msjsdiag.debugger-for-edge)
-    * [Chrome için hata ayıklayıcı](vscode:extension/msjsdiag.debugger-for-chrome)
-    * [Firefox hata ayıklayıcı](vscode:extension/firefox-devtools.vscode-firefox-debug)
+    * [Microsoft Edge için hata ayıklayıcı](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
+    * [Chrome için hata ayıklayıcı](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+    * [Firefox hata ayıklayıcı](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
 
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
@@ -53,9 +53,9 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Bu hızlı başlangıçta, bu kaynaklarla etkileşim kurmak için aşağıdaki JavaScript sınıflarını kullanacaksınız:
 
-* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient): sınıfı `BlobServiceClient` , Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize olanak sağlar.
-* [Containerclient](/javascript/api/@azure/storage-blob/containerclient): sınıfı `ContainerClient` , Azure depolama kapsayıcılarını ve bunların bloblarını değiştirmenize olanak sağlar.
-* [Blockblobclient](/javascript/api/@azure/storage-blob/blockblobclient): sınıfı `BlockBlobClient` , Azure Storage bloblarını değiştirmenize olanak sağlar.
+* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient): `BlobServiceClient` sınıfı, Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize olanak sağlar.
+* [Containerclient](/javascript/api/@azure/storage-blob/containerclient): `ContainerClient` sınıfı, Azure depolama kapsayıcılarını ve bunların bloblarını değiştirmenize olanak sağlar.
+* [Blockblobclient](/javascript/api/@azure/storage-blob/blockblobclient): `BlockBlobClient` sınıfı, Azure Storage bloblarını değiştirmenize olanak sağlar.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -107,7 +107,7 @@ Visual Studio Code içinde bir konsol penceresi açmak için **> terminali gör�
 npm init -y
 ```
 
-Azure SDK birçok ayrı paketten oluşur. Kullanmayı düşündüğünüz hizmetlere göre hangi paketlere ihtiyacınız olduğunu seçebilirsiniz. Paketi yüklemek `npm` için Terminal penceresinde aşağıdaki komutu çalıştırın. `@azure/storage-blob`
+Azure SDK birçok ayrı paketten oluşur. Kullanmayı düşündüğünüz hizmetlere göre hangi paketlere ihtiyacınız olduğunu seçebilirsiniz. `npm`Paketi yüklemek için Terminal penceresinde aşağıdaki komutu çalıştırın `@azure/storage-blob` .
 
 ```console
 npm install --save @azure/storage-blob
@@ -117,13 +117,13 @@ npm install --save @azure/storage-blob
 
 Azure SDK kitaplıklarını bir Web sitesinde kullanmak için kodunuzu tarayıcı içinde çalışacak şekilde dönüştürün. Bunu, paketler adlı bir araç kullanarak yapabilirsiniz. Paketleme, [Node. js](https://nodejs.org) kuralları kullanılarak yazılmış JavaScript kodunu alır ve tarayıcılar tarafından anlaşılan bir biçime dönüştürür. Bu hızlı başlangıç makalesinde [paket](https://parceljs.org/) paketcisi kullanılmaktadır.
 
-Terminal penceresinde aşağıdaki `npm` komutu çalıştırarak paket ' i yükler:
+Terminal penceresinde aşağıdaki komutu çalıştırarak paket ' i yükler `npm` :
 
 ```console
 npm install -g parcel-bundler
 ```
 
-Visual Studio Code, *Package. JSON* dosyasını açın ve `license` ve `dependencies` girdileri arasına bir `browserlist` ekleyin. Bu `browserlist` , popüler üç tarayıcının en son sürümünü hedefler. Tam *Package. JSON* dosyası şu şekilde görünmelidir:
+Visual Studio Code, *Package. JSON* dosyasını açın ve `browserlist` ve girdileri arasına bir ekleyin `license` `dependencies` . Bu `browserlist` , popüler üç tarayıcının en son sürümünü hedefler. Tam *Package. JSON* dosyası şu şekilde görünmelidir:
 
 :::code language="json" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/package.json" highlight="12-16":::
 
@@ -131,7 +131,7 @@ Visual Studio Code, *Package. JSON* dosyasını açın ve `license` ve `dependen
 
 ### <a name="import-the-azure-blob-storage-client-library"></a>Azure Blob depolama istemci kitaplığını içeri aktarma
 
-JavaScript içinde Azure SDK kitaplıklarını kullanmak için `@azure/storage-blob` paketini içeri aktarın. Aşağıdaki JavaScript kodunu içeren Visual Studio Code yeni bir dosya oluşturun.
+JavaScript içinde Azure SDK kitaplıklarını kullanmak için paketini içeri aktarın `@azure/storage-blob` . Aşağıdaki JavaScript kodunu içeren Visual Studio Code yeni bir dosya oluşturun.
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_ImportLibrary":::
 
@@ -167,7 +167,7 @@ Tüm kod parçacıklarını *index. js* dosyasına ekledikten sonra kodu çalı�
 
 *İndex. js* dosyasını kaydedin.
 
-Bu kod, her HTML öğesi için alanları bildirir ve çıktıyı `reportStatus` göstermek için bir işlev uygular.
+Bu kod, her HTML öğesi için alanları bildirir ve `reportStatus` çıktıyı göstermek için bir işlev uygular.
 
 Aşağıdaki bölümlerde, bir önceki bloğundan sonra her bir JavaScript kodu bloğunu ekleyin.
 
@@ -203,7 +203,7 @@ Web sayfasındaki ilgili düğmeye tıkladığınızda depolama kapsayıcısın�
 
 *İndex. js* dosyasını kaydedin.
 
-Bu kod, [Containerclient. listBlobsFlat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) işlevini çağırır ve döndürülen her [blobitem](/javascript/api/@azure/storage-blob/blobitem) adını almak için bir yineleyici kullanır. Her biri `BlobItem`Için, **dosyalar** listesini [Name](/javascript/api/@azure/storage-blob/blobitem#name) özelliği değeri ile güncelleştirir.
+Bu kod, [Containerclient. listBlobsFlat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) işlevini çağırır ve döndürülen her [blobitem](/javascript/api/@azure/storage-blob/blobitem) adını almak için bir yineleyici kullanır. Her biri için `BlobItem` , **dosyalar** listesini [Name](/javascript/api/@azure/storage-blob/blobitem#name) özelliği değeri ile güncelleştirir.
 
 ### <a name="upload-blobs"></a>Blobları karşıya yükleme
 
@@ -213,7 +213,7 @@ Bu kod, [Containerclient. listBlobsFlat](/javascript/api/@azure/storage-blob/con
 
 *İndex. js* dosyasını kaydedin.
 
-Bu kod, **dosyaları seç ve karşıya yükle** düğmesini gizli `file-input` öğesine bağlar. Düğme `click` olayı, dosya girişi `click` olayını tetikler ve dosya seçiciyi görüntüler. Dosyaları seçtikten ve iletişim kutusunu kapattıktan sonra, `input` olay oluşur ve `uploadFiles` işlev çağrılır. Bu işlev bir [Blockblobclient](/javascript/api/@azure/storage-blob/blockblobclient) nesnesi oluşturur, ardından seçtiğiniz her dosya için yalnızca tarayıcı [uploadbrowserdata](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) işlevini çağırır. Her çağrı bir `Promise`döndürür. Her `Promise` biri bir listeye eklenir, böylece dosyalar paralel olarak karşıya yüklenebilmesini sağlar.
+Bu kod, **dosyaları seç ve karşıya yükle** düğmesini gizli öğesine bağlar `file-input` . Düğme `click` olayı, dosya girişi olayını tetikler `click` ve dosya seçiciyi görüntüler. Dosyaları seçtikten ve iletişim kutusunu kapattıktan sonra, `input` olay oluşur ve `uploadFiles` işlev çağrılır. Bu işlev bir [Blockblobclient](/javascript/api/@azure/storage-blob/blockblobclient) nesnesi oluşturur, ardından seçtiğiniz her dosya için yalnızca tarayıcı [uploadbrowserdata](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) işlevini çağırır. Her çağrı bir döndürür `Promise` . Her biri `Promise` bir listeye eklenir, böylece dosyalar paralel olarak karşıya yüklenebilmesini sağlar.
 
 ### <a name="delete-blobs"></a>Blob’ları silme
 
@@ -223,7 +223,7 @@ Bu kod, **dosyaları seç ve karşıya yükle** düğmesini gizli `file-input` �
 
 *İndex. js* dosyasını kaydedin.
 
-Bu kod, listede seçilen her dosyayı kaldırmak için [Containerclient. deleteBlob](/javascript/api/@azure/storage-blob/containerclient#deleteblob-string--blobdeleteoptions-) işlevini çağırır. Daha sonra dosya listesinin `listFiles` içeriğini yenilemek için daha önce gösterilen işlevi çağırır. **Files**
+Bu kod, listede seçilen her dosyayı kaldırmak için [Containerclient. deleteBlob](/javascript/api/@azure/storage-blob/containerclient#deleteblob-string--blobdeleteoptions-) işlevini çağırır. Daha sonra `listFiles` **Dosya** listesinin içeriğini yenilemek için daha önce gösterilen işlevi çağırır.
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
@@ -236,7 +236,7 @@ Visual Studio Code hata ayıklayıcı uzantısını ayarlamak için:
 1. **Çalıştır > yapılandırma Ekle** ' yi seçin
 2. Daha önce [Önkoşullar](#prerequisites) bölümünde yüklediğiniz uzantıya bağlı olarak **Edge**, **Chrome**veya **Firefox**' u seçin.
 
-Yeni bir yapılandırma eklendiğinde, bir *Launch. JSON* dosyası oluşturulur ve düzenleyicide açılır. *Launch. JSON* dosyasını, `url` değeri `http://localhost:1234/index.html`aşağıda gösterildiği gibi olacak şekilde değiştirin:
+Yeni bir yapılandırma eklendiğinde, bir *Launch. JSON* dosyası oluşturulur ve düzenleyicide açılır. *Launch. JSON* dosyasını, `url` değeri `http://localhost:1234/index.html` aşağıda gösterildiği gibi olacak şekilde değiştirin:
 
 :::code language="json" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/.vscode/launch.json" highlight="11":::
 
@@ -250,9 +250,9 @@ Yerel geliştirme Web sunucusunu başlatmak için, Visual Studio Code içinde bi
 parcel index.html
 ```
 
-Paket, kodunuzu paketler ve sayfanız için yerel bir geliştirme sunucusu başlatır `http://localhost:1234/index.html`. *İndex. js* ' de yaptığınız değişiklikler, dosyayı her kaydettiğinizde geliştirme sunucusuna otomatik olarak oluşturulup yansıyacaktır.
+Paket, kodunuzu paketler ve sayfanız için yerel bir geliştirme sunucusu başlatır `http://localhost:1234/index.html` . *İndex. js* ' de yaptığınız değişiklikler, dosyayı her kaydettiğinizde geliştirme sunucusuna otomatik olarak oluşturulup yansıyacaktır.
 
-**Yapılandırılmış bağlantı noktası 1234**' nin kullanılamayacağını belirten bir ileti alırsanız, komutunu `parcel -p <port#> index.html`çalıştırarak bağlantı noktasını değiştirebilirsiniz. *Launch. JSON* dosyasında, URL yolundaki bağlantı noktasını eşleşecek şekilde güncelleştirin.
+**Yapılandırılmış bağlantı noktası 1234**' nin kullanılamayacağını belirten bir ileti alırsanız, komutunu çalıştırarak bağlantı noktasını değiştirebilirsiniz `parcel -p <port#> index.html` . *Launch. JSON* dosyasında, URL yolundaki bağlantı noktasını eşleşecek şekilde güncelleştirin.
 
 ### <a name="start-debugging"></a>Hata ayıklamayı Başlat
 
@@ -285,7 +285,7 @@ Hata ayıklayıcıda sayfayı çalıştırın ve BLOB depolamanın nasıl çalı
 #### <a name="step-4---delete-the-container"></a>4. adım-kapsayıcıyı silme
 
 1. Web uygulamasında **kapsayıcıyı sil**' i seçin. Durum, kapsayıcının silindiğini gösterir.
-2. Azure Portal ** \<hesap adını\> seçin | Kapsayıcılar** bağlantısı portalı bölmesinin sol üst kısmında.
+2. Azure portal ** \< hesap adını seçin \> | Kapsayıcılar** bağlantısı portalı bölmesinin sol üst kısmında.
 3. **Yenile**' yi seçin. Yeni kapsayıcı kaybolur.
 4. Web uygulamasını kapatın.
 

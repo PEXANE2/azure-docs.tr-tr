@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 204fd1b1a0a2984886684bbabf33dc7e73c1b45c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691887"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653546"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarını sorgulama
 
@@ -29,7 +29,7 @@ Sorgulamak için aşağıdaki T-SQL yönleri desteklenir:
 
 Azure AD kullanıcıları sorguları çalıştırladığında, varsayılan olarak depolama hesaplarına Azure AD geçişli kimlik doğrulama protokolü kullanılarak erişilir. Bu nedenle, kullanıcıların kimliğine bürünerek, izinleri depolama düzeyinde denetlenir. Gereksinimlerinize uyacak şekilde, [depolama erişimini denetleyebilirsiniz](develop-storage-files-storage-access-control.md) .
 
-## <a name="extensions"></a>Uzantıları
+## <a name="extensions"></a>Uzantılar
 
 Azure depolama dosyalarında bulunan verilerin yerinde sorgulanmasına yönelik sorunsuz bir deneyim desteklemek için, SQL isteğe bağlı, ek yetenekler ile [OPENROWSET](develop-openrowset.md) işlevini kullanır:
 
@@ -90,7 +90,7 @@ Bu ek parametreler CSV (sınırlandırılmış metin) dosyaları ile çalışmay
 ```
 
 - ESCAPE_CHAR = ' Char ', dosyanın kendisini ve tüm sınırlayıcı değerlerini kaçış için kullanılan dosyadaki karakteri belirtir. Kaçış karakterinin arkasından veya kendisi dışında bir değer veya sınırlayıcı değerlerinden herhangi biri gelmesi durumunda, değer okunurken kaçış karakteri bırakılır.
-ESCAPE_CHAR parametresi, FIELDQUOTE 'un etkin olup olmamasından bağımsız olarak uygulanır. Tırnak işareti karakterini atlamak için kullanılmaz. Tırnak işareti karakteri, Excel CSV davranışına göre hizalamayla birlikte çift tırnak işareti karakteriyle sonuçlanır.
+ESCAPE_CHAR parametresi, FIELDQUOTE 'un etkin olup olmadığı veya etkinleştirilmediği için uygulanır. Tırnak işareti karakterini atlamak için kullanılmaz. Tırnak işareti karakteri, Excel CSV davranışına göre hizalamayla birlikte çift tırnak işareti karakteriyle sonuçlanır.
 - FIELDSONLANDıRıCı = ' field_terminator ' kullanılacak alan sonlandırıcıyı belirtir. Varsayılan alan Sonlandırıcı bir virgül ("**,**")
 - ROWSONLANDıRıCı = ' row_terminator ' kullanılacak satır sonlandırıcıyı belirtir. Varsayılan satır Sonlandırıcı bir yeni satır karakteri: **\r\n**.
 

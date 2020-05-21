@@ -9,23 +9,23 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: dd7666bb9f22214fb4701e6be9edc171912d9bf9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: cbf6d42f3b1d130a6bf89f07bd3a7009ff0e8fa8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691857"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647527"
 ---
 # <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) kullanarak sorgu sonuçlarını depolamaya depolayın
 
-Bu makalede, istek üzerine SQL (Önizleme) kullanarak sorgu sonuçlarını depolamaya nasıl depolayacağınızı öğreneceksiniz.
+Bu makalede, sorgu sonuçlarının SQL isteğe bağlı (Önizleme) kullanarak depolamaya nasıl depolanacağını öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 İlk adımınız aşağıdaki makaleleri gözden geçirdiğinizden ve önkoşulları karşıladığınızdan emin olmanızı sağlar:
 
 - [İlk kez kurulum](query-data-storage.md#first-time-setup)
-- [Ön koşullar](query-data-storage.md#prerequisites)
+- [Önkoşullar](query-data-storage.md#prerequisites)
 
 ## <a name="create-external-table-as-select"></a>Dış tabloyu seç olarak oluştur
 
@@ -38,8 +38,13 @@ Sorgu sonuçlarını depolamaya depolamak için CREATE EXTERNAL TABLE AS SELECT 
 USE [mydbname];
 GO
 
+CREATE DATABASE SCOPED CREDENTIAL [SasTokenWrite]
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+     SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
+GO
+
 CREATE EXTERNAL DATA SOURCE [MyDataSource] WITH (
-    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net/csv'
+    LOCATION = 'https://<storage account name>.blob.core.windows.net/csv', CREDENTIAL [SasTokenWrite]
 );
 GO
 
@@ -69,7 +74,7 @@ FROM
 
 ```
 
-## <a name="use-a-external-table-created"></a>Oluşturulan bir dış tablo kullan
+## <a name="use-the-external-table"></a>Dış tabloyu kullanma
 
 Normal bir dış tablo gibi CETAS aracılığıyla oluşturulan dış tabloyu kullanabilirsiniz.
 
@@ -91,4 +96,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Farklı dosya türlerini sorgulama hakkında daha fazla bilgi için, [tek BIR CSV dosyasına sorgulama](query-single-csv-file.md), [Parquet dosyalarını](query-parquet-files.md)sorgulama ve [JSON dosyaları sorgulama](query-json-files.md) makalelerini inceleyin.
+Farklı dosya türlerini sorgulama hakkında daha fazla bilgi için, [tek CSV dosyası](query-single-csv-file.md)sorgulama, [Parquet dosyalarını](query-parquet-files.md)sorgulama ve [JSON dosyaları sorgulama](query-json-files.md) makalelerini inceleyin.

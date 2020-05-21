@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: özel bir ilke tanımı oluşturma'
 description: Bu öğreticide, Azure kaynaklarınız için özel iş kurallarını zorlamak üzere Azure Ilkesi için özel bir ilke tanımı oluşturursunuz.
-ms.date: 11/25/2019
+ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7a1eb8abcfbf7513b4620f66c0a7fdbd288f8705
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d91ae589adbadb7d03e318dc20d6b2b78a84a18
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190716"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683247"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
 
@@ -187,7 +187,7 @@ Sonuçlarda, **supportsHttpsTrafficOnly**adlı depolama hesapları tarafından d
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell, `Get-AzPolicyAlias` cmdlet, kaynak diğer adlarını aramak için kullanılır. Daha önce Azure kaynağı hakkında aldık ayrıntıları temel alarak **Microsoft. Storage** ad alanını filtreleyeceğiz.
+Azure PowerShell, cmdlet, `Get-AzPolicyAlias` kaynak diğer adlarını aramak için kullanılır. Daha önce Azure kaynağı hakkında aldık ayrıntıları temel alarak **Microsoft. Storage** ad alanını filtreleyeceğiz.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -321,7 +321,7 @@ Azure Kaynak Grafiği [Cloud Shell](https://shell.azure.com)aracılığıyla kul
 
 Uyumlu olmayan kaynaklarınız için ne olacağına karar vermek, ilk yerde değerlendirileceğine karar verirken neredeyse önemli bir şeydir. Uyumlu olmayan bir kaynağa yönelik olası her yanıta bir [efekt](../concepts/effects.md)denir. Bu efekt, uyumlu olmayan kaynağın günlüğe kaydedilmesini, engellenip engellenmediğini, verilerin eklenmiş olduğunu veya kaynağın uyumlu duruma geri yerleştirilmesi için kendisiyle ilişkili bir dağıtıma sahip olup olmadığını denetler.
 
-Bizim örneğimizde, Azure ortamımızda uyumsuz kaynaklar oluşturulmasını istemediğiniz için reddetme yaptığımız bir etkiye sahip olur. Denetim, ilke efektinin, bir ilkenin ne kadar etkili olduğunu belirlemek için ne kadar etkili olduğunu belirlemek için iyi bir seçenektir. Atama başına etkiyi değiştirmenin bir yolu, etkiyi parametreleştirmek olacaktır. Ayrıntıları hakkında daha fazla bilgi için aşağıdaki [parametrelere](#parameters) bakın.
+Bizim örneğimizde, reddetme, Azure ortamımızda uyumlu olmayan kaynaklar oluşturulmasını istemediğimiz için, istiyoruz. Denetim, ilke efektinin, bir ilkenin ne kadar etkili olduğunu belirlemek için ne kadar etkili olduğunu belirlemek için iyi bir seçenektir. Atama başına etkiyi değiştirmenin bir yolu, etkiyi parametreleştirmek olacaktır. Ayrıntıları hakkında daha fazla bilgi için aşağıdaki [parametrelere](#parameters) bakın.
 
 ## <a name="compose-the-definition"></a>Tanımı oluştur
 

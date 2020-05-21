@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 43f4cf7e4008aa01a26c48a8e99f7465eeeb234b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 53d1010f501e59b99c3ba6bac675124cdc5f77a0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77061752"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659223"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: Azure Cosmos DB MongoDB için API 'sini kullanarak bir Python uygulaması oluşturma
 
@@ -23,7 +23,7 @@ ms.locfileid: "77061752"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 Bu hızlı başlangıçta, GitHub 'dan kopyalanmış bir Python Flask-do Web uygulaması çalıştırmak için Mongo DB API hesabı veya Azure Cosmos DB öykünücüsü Azure Cosmos DB kullanırsınız. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
@@ -96,9 +96,9 @@ Aşağıdaki kod parçacıklarının tamamı, *app.py* dosyasından alınır ve 
 
 2. Bir terminal penceresi açın ve uygulamanın kayıtlı olduğu dizine `cd` uygulayın.
 
-3. Ardından `set FLASK_APP=app.py`, `$env:FLASK_APP = app.py` PowerShell düzenleyicilerinde veya `export FLASK_APP=app.py` bir Mac kullanıyorsanız Flask uygulaması için ortam değişkenini ayarlayın. 
+3. Ardından `set FLASK_APP=app.py` , `$env:FLASK_APP = app.py` PowerShell düzenleyicilerinde veya `export FLASK_APP=app.py` bir Mac kullanıyorsanız Flask uygulaması için ortam değişkenini ayarlayın. 
 
-4. Uygulamayı ile `flask run` çalıştırın ve *http:\//127.0.0.1:5000/* konumuna gidin.
+4. Uygulamayı ile çalıştırın `flask run` ve *http: \/ /127.0.0.1:5000/* konumuna gidin.
 
 5. Görevleri ekleyip kaldırın ve koleksiyona eklenip kaldırıldığına dikkat edin.
 
@@ -124,7 +124,7 @@ Canlı Azure Cosmos DB hesabıyla kodu test etmek için bağlantı dizesi bilgil
 
 Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. Öncekiyle aynı şekilde çalıştırabilirsiniz.
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure’a dağıtın
 
 Bu uygulamayı dağıtmak için Azure 'da yeni bir Web uygulaması oluşturabilir ve bu GitHub deposunun çatalından sürekli dağıtımı etkinleştirebilirsiniz. Azure 'da GitHub ile sürekli dağıtımı ayarlamak için bu [öğreticiyi](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment) izleyin.
 

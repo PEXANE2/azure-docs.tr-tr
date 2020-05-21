@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 01a9a8239e2997335f5123d63cfc664027cffa02
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27471cad2dfcd7accdb6b43414f216f85552fab3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376401"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652478"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Hızlı başlangıç: C++/Wınrt ve DirectX 'te Azure uzamsal bağlayıcılarla bir HoloLens uygulaması oluşturma
 
@@ -42,7 +42,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Visual `HoloLens\DirectX\SampleHoloLens.sln` Studio 'da açın.
+`HoloLens\DirectX\SampleHoloLens.sln`Visual Studio 'da açın.
 
 ## <a name="configure-account-identifier-and-key"></a>Hesap tanımlayıcıyı ve anahtarı yapılandırın
 
@@ -50,9 +50,11 @@ Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı 
 
 `HoloLens\DirectX\SampleHoloLens\ViewController.cpp` dosyasını açın.
 
-`SpatialAnchorsAccountKey` Alanı bulun ve hesap anahtarıyla `Set me` değiştirin.
+Alanı bulun `SpatialAnchorsAccountKey` ve `Set me` Hesap anahtarıyla değiştirin.
 
-`SpatialAnchorsAccountId` Alanı bulun ve hesap tanımlayıcısıyla `Set me` değiştirin.
+Alanı bulun `SpatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla değiştirin.
+
+`case DemoStep::ConfigSession:`Hesap etki alanında yer alan aşağıdaki satırı bulun ve daha önce ekleyin: `configuration.AccountKey("MyAccountDomain");` .
 
 ## <a name="deploy-the-app-to-your-hololens"></a>Uygulamayı HoloLens 'e dağıtın
 
@@ -64,7 +66,7 @@ HoloLens 2 kullanıyorsanız, **x86**yerine **çözüm platformu**olarak **ARM64
 
 HoloLens cihazında güç açın, oturum açın ve USB kablosu kullanarak BILGISAYARA bağlayın.
 
-Uygulamanızı dağıtmak ve hata ayıklamayı başlatmak için hata**ayıklamayı Başlat** ' **ı seçin.** > 
+**Debug**  >  Uygulamanızı dağıtmak ve hata ayıklamayı başlatmak için hata**ayıklamayı Başlat** ' ı seçin.
 
 Bir bağlayıcıyı yerleştirmek ve geri çağırmak için uygulamadaki yönergeleri izleyin.
 

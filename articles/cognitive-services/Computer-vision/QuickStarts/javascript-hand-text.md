@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 35988f10703967bd5986015ccb0fb480679b94e9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 907b3ead8e39268bc73604599bd2c37b18ddfa21
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404757"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83676113"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Hızlı başlangıç: Görüntü İşleme REST API ve JavaScript kullanarak yazdırılan ve el yazısı metin Ayıkla
 
@@ -26,7 +26,7 @@ Bu işlevsellik hem v 2.1 API 'SI hem de v 3.0 genel önizleme API 'sinde kullan
 
 * İyileştirilmiş doğruluk
 * Sözcüklerin güvenilirlik puanları
-* Ek `language` parametre Ile hem İspanyolca hem de İngilizce desteği
+* Ek parametre ile hem Ispanyolca hem de Ingilizce desteği `language`
 * Farklı bir çıkış biçimi
 
 Kullanmakta olduğunuz sürüm için aşağıdaki sekmeyi seçin.
@@ -34,12 +34,12 @@ Kullanmakta olduğunuz sürüm için aşağıdaki sekmeyi seçin.
 #### <a name="version-2"></a>[Sürüm 2](#tab/version-2)
 
 > [!IMPORTANT]
-> [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Location` yanıt üst bilgisi alanının DEĞERINDE bir URI döndürür. Ardından, durumu denetlemek ve toplu okuma yöntemi çağrısının sonuçlarını döndürmek için [okuma Işlemi sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API 'sini temsil eden bu URI 'yi çağırabilirsiniz.
+> [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Location` yanıt üst bilgisi alanının değerinde BIR URI döndürür. Ardından, durumu denetlemek ve toplu okuma yöntemi çağrısının sonuçlarını döndürmek için [okuma Işlemi sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API 'sini temsil eden bu URI 'yi çağırabilirsiniz.
 
 #### <a name="version-3-public-preview"></a>[Sürüm 3 (Genel Önizleme)](#tab/version-3)
 
 > [!IMPORTANT]
-> [Batch okuma](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Location` yanıt üst bilgisi alanının DEĞERINDE bir URI döndürür. Ardından, durumu denetlemek ve toplu okuma yöntemi çağrısının sonuçlarını döndürmek için [okuma Işlemi sonucu](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API 'sini temsil eden bu URI 'yi çağırabilirsiniz.
+> [Batch okuma](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Location` yanıt üst bilgisi alanının değerinde BIR URI döndürür. Ardından, durumu denetlemek ve toplu okuma yöntemi çağrısının sonuçlarını döndürmek için [okuma Işlemi sonucu](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API 'sini temsil eden bu URI 'yi çağırabilirsiniz.
 
 ---
 
@@ -56,7 +56,7 @@ Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bil
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
 1. _Get-Text. html_adlı bir dosya oluşturun, dosyayı bir metin düzenleyicisinde açın ve içine aşağıdaki kodu kopyalayın.
-1. İsteğe bağlı olarak, `value` `inputImage` denetimin özniteliğinin değerini, metin çıkarmak ISTEDIĞINIZ farklı bir görüntünün URL 'siyle değiştirin.
+1. İsteğe bağlı olarak, `value` denetimin özniteliğinin değerini, `inputImage` metin çıkarmak istediğiniz farklı bır görüntünün URL 'siyle değiştirin.
 1. Tarayıcı penceresini açın.
 1. Tarayıcıda dosyayı tarayıcı penceresine sürükleyip bırakın.
 1. Web sayfası tarayıcıda görüntülendiğinde, abonelik anahtarınızı ve uç nokta URL 'nizi uygun giriş kutularına yapıştırın.
@@ -73,10 +73,7 @@ Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bil
 
 <script type="text/javascript">
     function processImage() {
-        // **********************************************
-        // *** Update or verify the following values. ***
-        // **********************************************
-
+        // Fetch your Computer Vision key and endpoint for this sample.
         var subscriptionKey = document.getElementById("subscriptionKey").value;
         var endpoint = document.getElementById("endpointUrl").value;
         
@@ -206,7 +203,7 @@ Image to read:
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
 1. Aşağıdaki kodu bir metin düzenleyicisine kopyalayın.
-1. İsteğe bağlı olarak, `value` `inputImage` denetimin özniteliğinin değerini, metin çıkarmak ISTEDIĞINIZ farklı bir görüntünün URL 'siyle değiştirin.
+1. İsteğe bağlı olarak, `value` denetimin özniteliğinin değerini, `inputImage` metin çıkarmak istediğiniz farklı bır görüntünün URL 'siyle değiştirin.
 1. Kodu, `.html` uzantısıyla bir dosya olarak kaydedin. Örneğin, `get-text.html`.
 1. Tarayıcı penceresini açın.
 1. Web sayfası tarayıcıda görüntülendiğinde, gerekli parametreleri doldurup **görüntüyü oku** düğmesini seçin.

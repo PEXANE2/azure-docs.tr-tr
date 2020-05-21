@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 62c661f75aef77117a61be7e802562e6dde17ba5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 52158fe78262b5b2b3d006fb3a543ca743f4e417
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604685"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683820"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
 
@@ -19,7 +19,7 @@ Güncelleştirme Yönetimi çözümünü kullanarak sanal makineleriniz için g�
 
 Fiyatlandırma bilgisi için bkz. [Güncelleştirme Yönetimi için Otomasyon fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Güncelleştirme değerlendirmesini görüntüleme
@@ -67,7 +67,7 @@ Güncelleştirme dağıtımınız için uygun olan sinyali seçmek için **Koşu
 |`Total Update Deployment Runs`|-Güncelleştirme dağıtım adı<br>-Durum|Bu sinyal, bir güncelleştirme dağıtımının genel durumu hakkında uyarır.|
 |`Total Update Deployment Machine Runs`|-Güncelleştirme dağıtım adı</br>-Durum</br>-Hedef bilgisayar</br>-Güncelleştirme dağıtımı çalıştırma KIMLIĞI|Bu sinyal, belirli makinelere hedeflenmiş bir güncelleştirme dağıtımının durumu hakkında uyarır.|
 
-Bir boyut için listeden geçerli bir değer seçin. İstediğiniz değer listede yoksa, boyutun yanındaki **\+** işaretine tıklayın ve özel adı yazın. Ardından aranacak değeri seçin. Bir boyutun tüm değerlerini seçmek istiyorsanız, **Seç \* ** düğmesine tıklayın. Boyut için bir değer seçmeyin, Güncelleştirme Yönetimi bu boyutu yoksayar.
+Bir boyut için listeden geçerli bir değer seçin. İstediğiniz değer listede yoksa, **\+** boyutun yanındaki işaretine tıklayın ve özel adı yazın. Ardından aranacak değeri seçin. Bir boyutun tüm değerlerini seçmek istiyorsanız, **Seç \* ** düğmesine tıklayın. Boyut için bir değer seçmeyin, Güncelleştirme Yönetimi bu boyutu yoksayar.
 
 ![Sinyal mantığını yapılandırma](./media/automation-tutorial-update-management/signal-logic.png)
 
@@ -123,10 +123,10 @@ Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme y�
 
    Sınıflandırma türlerinin açıklamaları için bkz. [güncelleştirme sınıflandırmaları](automation-view-update-assessments.md#update-classifications).
 
-* **Dahil edilecek/hariç tutulacak güncelleştirmeler** -dahil etme/hariç tutma sayfasını açar. Dahil edilecek veya hariç tutulacak güncelleştirmeler, KB makalesi KIMLIK numaralarını belirterek ayrı sekmelerde bulunur. Bir veya daha fazla KIMLIK numarası belirtirken güncelleştirme dağıtımıyla tüm sınıflandırmaların kaldırılması veya işaretini kaldırmanız gerekir. Bu, güncelleştirme kimlikleri belirtildiğinde güncelleştirme paketinize başka hiçbir güncelleştirme eklenmemesini sağlar.
+* **Güncelleştirmeleri dahil et/hariç tut** -dahil etme/hariç tutma sayfasını açar. Dahil edilecek veya hariç tutulacak güncelleştirmeler, KB makalesi KIMLIK numaralarını belirterek ayrı sekmelerde bulunur. Bir veya daha fazla KIMLIK numarası belirtirken güncelleştirme dağıtımıyla tüm sınıflandırmaların kaldırılması veya işaretini kaldırmanız gerekir. Bu, güncelleştirme kimlikleri belirtildiğinde güncelleştirme paketinize başka hiçbir güncelleştirme eklenmemesini sağlar.
 
 > [!NOTE]
-> Dışlamaları geçersiz kılmanın dahil olduğunu bilmemiz önemlidir. Örneğin, bir dışlama kuralı tanımlarsanız `*`, güncelleştirme yönetimi hepsi hariç tutuldukları için düzeltme eki veya paket içermez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için, dışlanan bağımlı paketi olan bir paketi eklerseniz Güncelleştirme Yönetimi ana paketi yüklemez.
+> Dışlamaları geçersiz kılmanın dahil olduğunu bilmemiz önemlidir. Örneğin, bir dışlama kuralı tanımlarsanız `*` , güncelleştirme yönetimi hepsi hariç tutuldukları için düzeltme eki veya paket içermez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için, dışlanan bağımlı paketi olan bir paketi eklerseniz Güncelleştirme Yönetimi ana paketi yüklemez.
 
 > [!NOTE]
 > Güncelleştirme dağıtımına dahil edilmek üzere yenisiyle değiştirilen güncelleştirmeleri belirtemezsiniz.

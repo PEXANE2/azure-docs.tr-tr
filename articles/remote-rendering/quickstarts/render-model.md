@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b0af45ba4a6b1ca7f9e751af082ff0db80776ec0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be5bc8ec4e8f363d9b6079d22f3bba1af2d4d5fb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679789"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682561"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Hızlı başlangıç: Unity ile model Işleme
 
@@ -41,7 +41,7 @@ Aşağıdaki yazılım yüklü olmalıdır:
 
 ## <a name="clone-the-sample-app"></a>Örnek uygulamayı kopyalama
 
-Bir komut istemi açın (Windows `cmd` Başlat menüsünde yazın) ve ARR örnek projesini depolamak istediğiniz bir dizine geçin.
+Bir komut istemi açın ( `cmd` Windows Başlat menüsünde yazın) ve ARR örnek projesini depolamak istediğiniz bir dizine geçin.
 
 Aşağıdaki komutları çalıştırın:
 
@@ -66,13 +66,13 @@ Projeyi açın. Gerekirse, Unity 'nin projeyi yüklü sürüme yükseltmesine iz
 
 1. Unity varlık tarayıcısında, *sahneler* klasörüne gidin ve **hızlı başlangıç** sahneyi açın.
 1. *Hiyerarşisinden* **RemoteRendering** Game nesnesini seçin.
-1. *Denetçisinde* [Hesap kimlik bilgilerinizi](../how-tos/create-an-account.md)girin.
+1. *Denetçisinde* [Hesap kimlik bilgilerinizi](../how-tos/create-an-account.md)girin. Henüz bir hesabınız yoksa, [bir hesabınız oluşturun](../how-tos/create-an-account.md).
 
 ![ARR hesap bilgileri](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
 > Azure portalı, hesabınızın etki alanını yalnızca *mixedreality.Azure.com*olarak görüntüler. Bu, başarıyla bağlanmak için yeterli değil.
-> **Accountdomain** öğesini olarak `<region>.mixedreality.azure.com`ayarlayın; `<region>` burada, [size yakın olan kullanılabilir bölgelerden biridir](../reference/regions.md).
+> **Accountdomain** öğesini olarak ayarlayın `<region>.mixedreality.azure.com` ; burada, `<region>` [size yakın olan kullanılabilir bölgelerden biridir](../reference/regions.md).
 
 Daha sonra bu projeyi bir HoloLens 'e dağıtmak ve bu cihazdan uzaktan Işleme hizmetine bağlanmak istiyoruz. Cihazdaki kimlik bilgilerini girmek için kolay bir yol olmadığı için hızlı başlangıç örneği, **kimlik bilgilerini Unity sahnede kaydeder**.
 

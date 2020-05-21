@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 549df101e2bab81766b7b40e659b31457c9994d3
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: b137f47ac2cfb8074320677419a6a34b7d8bba84
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592800"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680344"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 
@@ -29,7 +29,7 @@ Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (
 Bu örneği çalıştırmak için şunlar gerekir:
 
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) veya [Python 3 +](https://www.python.org/downloads/release/python-364/)
-- [Flask](http://flask.pocoo.org/), [Flask-oturum](https://pythonhosted.org/Flask-Session/), [istekler](https://requests.kennethreitz.org/en/master/)
+- [Flask](http://flask.pocoo.org/), [Flask-oturum](https://pypi.org/project/Flask-Session/), [istekler](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 
 > [!div renderon="docs"]
@@ -55,7 +55,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
->      - **Ad** bölümünde, örneğin `python-webapp`, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
+>      - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `python-webapp` .
 >      - **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 >      - **Kaydol**’u seçin.
 >      - Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
@@ -82,7 +82,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >
 > Bu hızlı başlangıçta çalışması için kod örneği için şunları yapmanız gerekir:
 >
-> 1. Olarak `http://localhost:5000/getAToken`bir yanıt URL 'si ekleyin.
+> 1. Olarak bir yanıt URL 'SI ekleyin `http://localhost:5000/getAToken` .
 > 1. Bir Istemci gizli dizisi oluşturun.
 > 1. Microsoft Graph API 'nin User. ReadBasic. All temsilci izinleri ekleyin.
 >

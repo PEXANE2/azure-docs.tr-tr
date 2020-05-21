@@ -1,20 +1,20 @@
 ---
 title: Hızlı başlangıç-Azure Cosmos DB kullanarak bir belge veritabanı oluşturmak için Java kullanma
 description: Bu hızlı başlangıçta, SQL API 'sine bağlanmak ve sorgu Azure Cosmos DB sorgulamak için kullanabileceğiniz bir Java kod örneği sunulmaktadır
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/31/2019
-ms.author: sngun
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1d818957daa53efc856a345a4886e814fdaab6f3
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 236cff59ffbef835b5a57a3d5a0d223cfebf34ae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858129"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647693"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Hızlı başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma
 
@@ -22,18 +22,22 @@ ms.locfileid: "82858129"
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
 Bu hızlı başlangıçta, Azure portal Azure Cosmos DB bir SQL API hesabı oluşturup, GitHub 'dan kopyalanmış bir Java uygulamasını kullanarak yönetirsiniz. İlk olarak, Azure portal kullanarak bir Azure Cosmos DB SQL API hesabı oluşturun, sonra SQL Java SDK 'sını kullanarak bir Java uygulaması oluşturun ve ardından Java uygulamasını kullanarak Cosmos DB hesabınıza kaynak eklersiniz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
+> [!IMPORTANT]  
+> Bu hızlı başlangıç yalnızca Azure Cosmos DB Java SDK v4 içindir. Daha fazla bilgi için lütfen Azure Cosmos DB Java SDK v4 [sürüm notları](sql-api-sdk-java-v4.md), [maven deposu](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB Java SDK v4 [Performans ipuçları](performance-tips-java-sdk-v4-sql.md)ve Azure Cosmos DB Java SDK v4 [sorun giderme kılavuzunu](troubleshoot-java-sdk-v4-sql.md) görüntüleyin. Şu anda v4 'den daha eski bir sürüm kullanıyorsanız, v4 'ye yükseltme konusunda yardım için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ' na bakın.
+>
+
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bir URI `https://localhost:8081` ve anahtar `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`ile de kullanabilirsiniz.
-- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Ortam değişkeninizi `JAVA_HOME` JDK 'nin yüklü olduğu klasöre işaret edin.
-- [Maven ikili Arşivi](https://maven.apache.org/download.cgi). Ubuntu 'da, Maven 'yi yüklemek için komutunu çalıştırın `apt-get install maven` .
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bir URI ve anahtar ile de kullanabilirsiniz `https://localhost:8081` `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). `JAVA_HOME`Ortam değişkeninizi JDK 'nin yüklü olduğu klasöre işaret edin.
+- [Maven ikili Arşivi](https://maven.apache.org/download.cgi). Ubuntu 'da, `apt-get install maven` Maven 'yi yüklemek için komutunu çalıştırın.
 - [Git](https://www.git-scm.com/downloads). Ubuntu 'da git 'i `sudo apt-get install git` yüklemek için komutunu çalıştırın.
 
 ## <a name="introductory-notes"></a>Giriş notları
@@ -98,15 +102,15 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
-* `createItem` Yöntemini kullanarak öğe oluşturma.
+* Yöntemini kullanarak öğe oluşturma `createItem` .
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
    
-* Nokta okumaları yöntemi kullanılarak `readItem` gerçekleştirilir.
+* Nokta okumaları yöntemi kullanılarak gerçekleştirilir `readItem` .
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
-* JSON üzerinden SQL sorguları, `queryItems` yöntemi kullanılarak gerçekleştirilir.
+* JSON üzerinden SQL sorguları, yöntemi kullanılarak gerçekleştirilir `queryItems` .
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
 
@@ -128,15 +132,15 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
-* Eşitleme API 'sinde olduğu gibi, öğe oluşturma `createItem` yöntemi kullanılarak gerçekleştirilir. Bu örnek, istekleri veren ve bildirimleri yazdıran bir `createItem` reaktif akışa abone olarak çok sayıda zaman uyumsuz isteğin nasıl verimli bir şekilde nasıl oluşturulacağını gösterir. Bu basit örnek, tamamlanma ve sonlanacak şekilde çalıştığından `CountDownLatch` , programın öğe oluşturma sırasında sonlandırmadığından emin olmak için örnekler kullanılır. **Uygun zaman uyumsuz bir programlama uygulaması, zaman uyumsuz çağrılar üzerinde engellenmemelidir; gerçekçi olmayan kullanım örnekleri istekleri, sonsuza kadar çalıştırılan bir Main () döngüsünden oluşturulur ve zaman uyumsuz çağrılarda mandal ihtiyacını ortadan kaldırır.**
+* Eşitleme API 'sinde olduğu gibi, öğe oluşturma yöntemi kullanılarak gerçekleştirilir `createItem` . Bu örnek `createItem` , istekleri veren ve bildirimleri yazdıran bir reaktif akışa abone olarak çok sayıda zaman uyumsuz isteğin nasıl verimli bir şekilde nasıl oluşturulacağını gösterir. Bu basit örnek, tamamlanma ve sonlanacak şekilde çalıştığından, `CountDownLatch` programın öğe oluşturma sırasında sonlandırmadığından emin olmak için örnekler kullanılır. **Uygun zaman uyumsuz bir programlama uygulaması, zaman uyumsuz çağrılar üzerinde engellenmemelidir; gerçekçi olmayan kullanım örnekleri istekleri, sonsuza kadar çalıştırılan bir Main () döngüsünden oluşturulur ve zaman uyumsuz çağrılarda mandal ihtiyacını ortadan kaldırır.**
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
    
-* Eşitleme API 'sinde olduğu gibi, nokta okumaları yöntemi kullanılarak `readItem` gerçekleştirilir.
+* Eşitleme API 'sinde olduğu gibi, nokta okumaları yöntemi kullanılarak gerçekleştirilir `readItem` .
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
 
-* Eşitleme API 'sinde olduğu gibi, JSON üzerinden SQL sorguları `queryItems` yöntemi kullanılarak gerçekleştirilir.
+* Eşitleme API 'sinde olduğu gibi, JSON üzerinden SQL sorguları yöntemi kullanılarak gerçekleştirilir `queryItems` .
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
 
@@ -158,7 +162,7 @@ Bu adımda Azure portala dönerek bağlantı dizesi bilgilerinizi alın ve uç n
     mvn package
     ```
 
-3. Git Terminal penceresinde, Java uygulamasını başlatmak için aşağıdaki komutu kullanın. (SYNCASYNCMODE ' ı ile `sync` veya `async` çalıştırmak istediğiniz örnek koda göre değiştirin, YOUR_COSMOS_DB_HOSTNAME, portaldan alıntı yapılan URI değeri ile değiştirin ve YOUR_COSMOS_DB_MASTER_KEY, portaldan alıntı yapılan birincil anahtarla değiştirin)
+3. Git Terminal penceresinde, Java uygulamasını başlatmak için aşağıdaki komutu kullanın. (SYNCASYNCMODE ' `sync` ı ile veya `async` çalıştırmak istediğiniz örnek koda göre değiştirin, YOUR_COSMOS_DB_HOSTNAME, portaldan ALıNTı yapılan URI değeri ile değiştirin ve YOUR_COSMOS_DB_MASTER_KEY, portaldan alıntı yapılan birincil anahtarla değiştirin)
 
     ```bash
     mvn exec:java@SYNCASYNCMODE -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY

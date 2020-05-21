@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41f68ead6f985d6cc2c8120091c36783d074b066
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720916"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659152"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Öğretici: verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
 
@@ -28,13 +28,13 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcısını oluşturacak ve per
 
 1. Azure Cosmos hesabınıza gidin ve **Veri Gezgini açın.**
 
-1. **Not** defterleri `…` sekmesine gidin, **Not Defterlerimin** ileri ' yi seçin ve **Yeni bir not defteri**oluşturun. Varsayılan Çekirdek olarak **Python 3 ' ü** seçin.
+1. **Not** defterleri sekmesine gidin, `…` **Not Defterlerimin** Ileri ' yi seçin ve **Yeni bir not defteri**oluşturun. Varsayılan Çekirdek olarak **Python 3 ' ü** seçin.
 
    ![Yeni not defteri oluşturma](./media/create-notebook-visualize-data/create-new-notebook.png)
 
 1. Yeni bir not defteri oluşturulduktan sonra, bunu **Visualizere, Data. ipynb** gibi bir şekilde yeniden adlandırabilirsiniz.
 
-1. Daha sonra perakende verilerini depolamak için "RetailDemo" adlı bir veritabanı ve "WebsiteData" adlı bir kapsayıcı oluşturacaksınız. /CardId ' i bölüm anahtarı olarak kullanabilirsiniz. Aşağıdaki kodu kopyalayıp Not defterinize yeni bir hücreye yapıştırın ve çalıştırın:
+1. Daha sonra perakende verilerini depolamak için "RetailDemo" adlı bir veritabanı ve "WebsiteData" adlı bir kapsayıcı oluşturacaksınız. /CartId ' i bölüm anahtarı olarak kullanabilirsiniz. Aşağıdaki kodu kopyalayıp Not defterinize yeni bir hücreye yapıştırın ve çalıştırın:
 
    ```python
    import azure.cosmos
@@ -47,7 +47,7 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcısını oluşturacak ve per
    print('Container WebsiteData created')
    ```
 
-   Bir hücreyi çalıştırmak için, hücreyi `Shift + Enter` seçin veya seçin ve veri Gezgini gezinti çubuğunda **etkin hücreyi Çalıştır** seçeneğini belirleyin.
+   Bir hücreyi çalıştırmak için, `Shift + Enter` hücreyi seçin veya seçin ve veri Gezgini gezinti çubuğunda **etkin hücreyi Çalıştır** seçeneğini belirleyin.
 
    ![Etkin hücreyi Çalıştır](./media/create-notebook-visualize-data/run-active-cell.png)
 
@@ -121,7 +121,7 @@ Verileri çözümlemek için sorguları çalıştırmadan önce, analiz için ka
 {Query text}
 ```
 
-Daha fazla bilgi edinmek için [Azure Cosmos DB makalesinde yerleşik Not defteri komutları ve özellikleri](use-notebook-features-and-commands.md) bölümüne bakın. Sorguyu çalıştıracaksınız- `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Sonuçlar df_cosmos adlı bir Pandas DataFrame içine kaydedilir. Aşağıdaki komutu yeni bir not defteri hücresine yapıştırın ve çalıştırın:
+Daha fazla bilgi edinmek için [Azure Cosmos DB makalesinde yerleşik Not defteri komutları ve özellikleri](use-python-notebook-features-and-commands.md) bölümüne bakın. Sorguyu çalıştıracaksınız- `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c` . Sonuçlar df_cosmos adlı bir Pandas DataFrame içine kaydedilir. Aşağıdaki komutu yeni bir not defteri hücresine yapıştırın ve çalıştırın:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -290,4 +290,4 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Not defteri komutları hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB makalesinde yerleşik Not defteri komutlarını ve özelliklerini kullanma](use-notebook-features-and-commands.md) .
+* Python Not defteri komutları hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB makalesinde yerleşik Not defteri komutları ve özellikleri kullanma](use-python-notebook-features-and-commands.md) .

@@ -8,32 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: c4335e1ac0f0ffc7ee5570a8f0819827fc77dd18
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6d4e7297ba0b325aa0045c16620d716ceb1418b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75384160"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650252"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Hızlı başlangıç: Java kullanarak Bing Varlık Arama REST API arama isteği gönderme
 
 Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit Java uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler.
 
-Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bu uygulama Java 'da yazılsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
-* [Gson kitaplığı](https://github.com/google/gson)
+* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/).
+* [Gson kitaplığı](https://github.com/google/gson).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi oluşturun ve aşağıdaki kitaplıkları içeri aktarın.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Java projesi oluşturun ve aşağıdaki kitaplıkları içeri aktarın:
 
    ```java
    import java.io.*;
@@ -50,7 +50,7 @@ Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyl
    import com.google.gson.JsonParser;
    ```
 
-2. Yeni bir sınıfta, API uç noktası, abonelik anahtarınız ve bir arama sorgusu için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+2. Yeni bir sınıfta, API uç noktası, abonelik anahtarınız ve bir arama sorgusu için değişkenler oluşturun. Aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
    ```java
    public class EntitySearch {
@@ -68,7 +68,7 @@ Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyl
 
 ## <a name="construct-a-search-request-string"></a>Arama isteği dizesi oluşturun
 
-1. JSON `search()` `String`döndüren adlı bir işlev oluşturun. URL-arama sorgunuzu kodlayın ve ile `&q=`bir parametre dizesine ekleyin. Pazarını ile `?mkt=`dizeye ekleyin.
+1. JSON döndüren adlı bir işlev oluşturun `search()` `String` . URL-arama sorgunuzu kodlayın ve ile bir parametre dizesine ekleyin `&q=` . Pazar alanınızı ile parametre dizesine ekleyin `?mkt=` .
  
 2. Ana bilgisayarınız, yollarınız ve parametre Dizeleriniz ile bir URL nesnesi oluşturun.
     
@@ -83,7 +83,7 @@ Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyl
       
 ## <a name="send-a-search-request-and-receive-a-response"></a>Arama isteği gönderme ve yanıt alma
 
-1. Yukarıda oluşturulan `search()` işlevde, ile `HttpsURLConnection` `url.openCOnnection()`yeni bir nesne oluşturun. İstek yöntemini olarak `GET`ayarlayın ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
+1. `search()`Yukarıda oluşturulan işlevde, ile yeni bir nesne oluşturun `HttpsURLConnection` `url.openCOnnection()` . İstek yöntemini olarak ayarlayın `GET` ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
 
     ```java
     //...
@@ -94,7 +94,7 @@ Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyl
     //...
     ```
 
-2. Yeni `StringBuilder`bir oluştur. API yanıtını okumak `InputStreamReader` için örneği `BufferedReader` oluşturulurken yeni bir parametre olarak kullanın.  
+2. Yeni bir oluştur `StringBuilder` . `InputStreamReader`API yanıtını okumak için örneği oluşturulurken yeni bir parametre olarak kullanın `BufferedReader` .  
     
     ```java
     //...
@@ -104,7 +104,7 @@ Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyl
     //...
     ```
 
-3. Kaynağından yanıtı `String` depolamak için bir nesne oluşturun `BufferedReader`. Üzerinde yineleme yapın ve her satırı dizeye ekleyin. Sonra okuyucuyu kapatıp yanıtı döndürün. 
+3. `String`Kaynağından yanıtı depolamak için bir nesne oluşturun `BufferedReader` . Üzerinde yineleme yapın ve her satırı dizeye ekleyin. Ardından, okuyucuyu kapatıp yanıtı döndürün. 
     
     ```java
     String line;
@@ -119,9 +119,9 @@ Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyl
 
 ## <a name="format-the-json-response"></a>JSON yanıtını biçimlendirme
 
-1. JSON yanıtını biçimlendirmek için çağrılan `prettify` yeni bir işlev oluşturun. Yeni `JsonParser`bir oluşturun ve JSON metninde `parse()` bir çağrı yapın ve bunu JSON nesnesi olarak depolayın. 
+1. JSON yanıtını biçimlendirmek için çağrılan yeni bir işlev oluşturun `prettify` . `JsonParser`JSON metninde yeni bir çağrı oluşturun, çağırın `parse()` ve bir JSON nesnesi olarak depolayın. 
 
-2. Yeni `GsonBuilder()`bir oluşturmak ve JSON biçimlendirmek `setPrettyPrinting().create()` için gson kitaplığı kullanın. Ardından döndürün.    
+2. Yeni bir oluşturmak için Gson kitaplığı kullanın, `GsonBuilder()` JSON 'u `setPrettyPrinting().create()` biçimlendirmek için kullanın ve ardından döndürün.    
   
    ```java
    //...
@@ -136,7 +136,7 @@ Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyl
 
 ## <a name="call-the-search-function"></a>Search işlevini çağırın
 
-1. Projenizin Main yönteminden, çağırın `search()`ve metni biçimlendirmek için kullanın. `prettify()`
+- Projenizin Main yönteminden, çağırın `search()` ve `prettify()` Metni biçimlendirmek için kullanın.
     
     ```java
         public static void main(String[] args) {
@@ -220,5 +220,5 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 > [!div class="nextstepaction"]
 > [Tek sayfalı web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Bing Varlık Arama API'si nedir?](../overview.md )
-* [Bing Varlık Arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing Varlık Arama API'si nedir?](../overview.md)
+* [Bing varlık arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
