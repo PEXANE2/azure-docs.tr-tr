@@ -4,18 +4,18 @@ description: Büyük ölçekli paralel iş yükleri bulutta çalıştırmak içi
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e01c62270fc0195c430150a534df2a141808ffa6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: adc333498e0b3074aaa40d40e076ae62c1759524
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726936"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778602"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure portalıyla Batch hesabı oluşturma
 
 [Azure portalında][azure_portal] Azure Batch hesabı oluşturma hakkında bilgi alın ve işlem senaryonuza uygun hesap özelliklerini seçin. Erişim anahtarları ve hesap URL’leri gibi önemli hesap özelliklerini nerede bulabileceğinizi öğrenin.
 
-Batch hesapları ve senaryoları hakkında arka plan bilgileri için bkz. [özelliğe genel bakış](batch-api-basics.md).
+Batch hesapları ve senaryoları hakkında arka plan için bkz. [Batch hizmeti iş akışı ve kaynakları](batch-service-workflow-features.md).
 
 ## <a name="create-a-batch-account"></a>Batch hesabı oluşturma
 
@@ -39,7 +39,7 @@ Batch hesapları ve senaryoları hakkında arka plan bilgileri için bkz. [özel
 
     d. **Konum**: Batch hesabının oluşturulacağı bir Azure bölgesi. Yalnızca aboneliğiniz ve kaynak grubunuz tarafından desteklenen bölgeler seçenek olarak görüntülenir.
 
-    e. **Depolama hesabı**: Batch hesabınızla ilişkilendirdiğiniz isteğe bağlı bir Azure depolama hesabı. En iyi performans için genel amaçlı v2 depolama hesabı önerilir. Toplu Işteki tüm depolama hesabı seçenekleri için bkz. [Batch özelliğine genel bakış](batch-api-basics.md#azure-storage-account). Portalda, var olan bir depolama hesabını seçin veya yeni bir tane oluşturun.
+    e. **Depolama hesabı**: Batch hesabınızla ilişkilendirdiğiniz isteğe bağlı bir Azure depolama hesabı. En iyi performans için genel amaçlı v2 depolama hesabı önerilir. Toplu Işteki tüm depolama hesabı seçenekleri için bkz. [Batch özelliğine genel bakış](accounts.md#azure-storage-accounts). Portalda, var olan bir depolama hesabını seçin veya yeni bir tane oluşturun.
 
       ![Depolama hesabı oluşturma][storage_account]
 
@@ -136,7 +136,7 @@ Azure portalını kullanmaya ek olarak Batch hesaplarını aşağıdaki gibi ara
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Batch hizmeti kavramları ve özellikler hakkında daha fazla bilgi edinmek için bkz. [Batch özelliklerine genel bakışı](batch-api-basics.md). Makale havuzlar, işlem düğümleri, işler ve görevler gibi birincil Batch kaynaklarını ele alır ve büyük ölçekli işlem iş yüklerine olanak tanıyan hizmetin özelliklerine genel bir bakış sağlar.
+* [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 * [Batch .NET istemci kitaplığı](quick-run-dotnet.md) veya [Python](quick-run-python.md) kullanarak Batch özellikli bir uygulama geliştirmenin temellerini öğrenin. Bu hızlı başlangıçlar, bir iş yükünü birden fazla işlem düğümünde yürütmek üzere Batch hizmetini kullanan örnek uygulamalar konusunda size rehberlik sağlamanın yanı sıra, iş yükü dosyası hazırlama ve alma işlemleri için Azure Depolama kullanma ile ilgili bilgiler de içerir.
 
 [azure_portal]: https://portal.azure.com

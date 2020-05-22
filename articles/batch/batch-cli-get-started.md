@@ -4,12 +4,12 @@ description: Azure Batch hizmet kaynaklarını yönetmek üzere Azure CLI’daki
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9aa9a43dd036b4a547d1bff85b4431afcf74e23
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2bb3dd2e67c3c3bf9139a25935ab0dd074799c6f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726800"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780223"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch kaynaklarını Azure CLI ile yönetme
 
@@ -28,7 +28,7 @@ En son Azure CLI sürümünü [Azure Cloud Shell](../cloud-shell/overview.md)'de
 
 ## <a name="command-help"></a>Komut yardımı
 
-Komuttan sonra `-h` ekleyerek Azure CLI'daki her komut için yardım metni görüntüleyebilirsiniz. Diğer seçenekleri atın. Örnek:
+Komuttan sonra `-h` ekleyerek Azure CLI'daki her komut için yardım metni görüntüleyebilirsiniz. Diğer seçenekleri atın. Örneğin:
 
 * `az` komutuyla ilgili yardım almak için şunu girin: `az -h`
 * CLI’daki tüm Batch komutlarının listesini almak için şunu kullanın: `az batch -h`
@@ -111,7 +111,7 @@ Ortak görevleri gerçekleştirmek üzere Batch için [CLI betik örneklerini](c
 
 ## <a name="json-files-for-resource-creation"></a>Kaynak oluşturmak için JSON dosyaları
 
-Havuzlar ve işler gib Batch kaynakları oluşturduğunuzda parametrelerini komut satırı seçenekleri olarak geçirmek yerine yeni kaynağın yapılandırmasını içeren bir JSON dosyası belirtebilirsiniz. Örnek:
+Havuzlar ve işler gib Batch kaynakları oluşturduğunuzda parametrelerini komut satırı seçenekleri olarak geçirmek yerine yeni kaynağın yapılandırmasını içeren bir JSON dosyası belirtebilirsiniz. Örneğin:
 
 ```azurecli
 az batch pool create my_batch_pool.json
@@ -162,9 +162,9 @@ Azure CLI sorunlarını giderirken aşağıdaki ipuçları yardımcı olabilir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
-* Batch kaynakları hakkında daha fazla bilgi için bkz. [Geliştiriciler için Azure Batch'e genel bakış](batch-api-basics.md).
-* Batch şablonlarını kullanarak havuz, iş ve görevleri kod yazmadan oluşturma hakkında daha fazla bilgi için bkz. [Azure Batch CLI şablonlarını ve dosya aktarımı özelliğini kullanma](batch-cli-templates.md).
+* Bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+* [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
+* [CLI şablonları ve dosya aktarımı Azure Batch kullanım](batch-cli-templates.md)kodu yazmadan havuzlar, işler ve görevler oluşturmak için Batch şablonlarını kullanma hakkında bilgi edinin.
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx

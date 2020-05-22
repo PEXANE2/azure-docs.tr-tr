@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4d41ece86240a20afea06bff3469b5c02c6e46ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f0702c09d2803507f07f74d97767c781825bf34f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121206"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778553"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights ile canlı Azure App Service uygulamalar profili
 
@@ -21,7 +21,7 @@ ASP.NET üzerinde profil oluşturucuyu ve temel hizmet katmanını veya üstün�
 Bir uygulama için profil oluşturucuyu etkinleştirmek üzere aşağıdaki yönergeleri izleyin. Farklı bir Azure hizmeti türü çalıştırıyorsanız, desteklenen diğer platformlarda profil oluşturucuyu etkinleştirme talimatları aşağıda verilmiştir:
 * [Bulut Hizmetleri](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric uygulamalar](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Sanal makineler](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Sanal Makineler](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler, App Services çalışma zamanının bir parçası olarak önceden yüklenir. Aşağıdaki adımlarda, App Service için nasıl etkinleştirileceği gösterilmektedir. Application Insights SDK 'sını uygulamanıza derleme zamanında dahil etseniz bile bu adımları izleyin.
 
@@ -63,9 +63,9 @@ Diğer bulutlara yönelik profil oluşturucuyu etkinleştirmek istiyorsanız, a�
 
 ## <a name="disable-profiler"></a>Profil oluşturucuyu devre dışı bırak
 
-Tek bir uygulamanın örneği için profil oluşturucuyu durdurmak veya yeniden başlatmak için, **Web işleri**altında uygulama kaynağına gidin. Profil oluşturucuyu silmek için **uzantılara**gidin.
+Tek bir uygulamanın örneği için profil oluşturucuyu durdurmak veya yeniden başlatmak için **WebJobs** altında, ApplicationInsightsProfiler3 adlı WebJob 'u durdurun. Profil Oluşturucu yukarıda açıklanan Application Insights sayfasındaki anahtar kullanılarak devre dışı bırakılmış olsa bile, profil oluşturucu işlemi çalışmaya devam edecektir. Profil Oluşturucu, etkin olup olmadığını kontrol eder. Devre dışıysa, tekrar denetlemeden önce bir süre uyku moduna geçer. Devre dışı bırakılmışsa profil oluşturma yapmaz. Bu WebJob 'u devre dışı bırakırsanız, etkin olup olmadığını denetlemek için profil oluşturucu işlemi hiç çalışmaz.
 
-![Web işi için profil oluşturucuyu devre dışı bırakma][disable-profiler-webjob]
+  ![Web işi için profil oluşturucuyu devre dışı bırakma][disable-profiler-webjob]
 
 Herhangi bir performans sorununu mümkün olduğunca erken bulacak şekilde sağlamak için tüm uygulamalarınızda profil oluşturucunun etkin olmasını öneririz.
 

@@ -2,13 +2,13 @@
 title: Veri bulunmama sorunlarını giderme - .NET için Application Insights
 description: Azure Application Insights verileri görmüyor musunuz? Buradan deneyin.
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: 2770888c6cfacedcf186ed1612718133cc1ba363
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80802595"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778688"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
@@ -26,7 +26,7 @@ ms.locfileid: "80802595"
 
 *Uygulama durmak üzere olduğunda konsol uygulamasında veya Web uygulamasında veri kaybı yaşıyorum.*
 
-* SDK kanalı, Telemetriyi arabelleğe tutar ve bunları toplu işler halinde gönderir. Uygulama kapatıyorsunuz, açıkça [flush ()](api-custom-events-metrics.md#flushing-data)çağrısı yapmanız gerekebilir. Davranış, `Flush()` kullanılan gerçek [kanala](telemetry-channels.md#built-in-telemetry-channels) bağlıdır.
+* SDK kanalı, Telemetriyi arabelleğe tutar ve bunları toplu işler halinde gönderir. Uygulama kapatıyorsunuz, açıkça [flush ()](api-custom-events-metrics.md#flushing-data)çağrısı yapmanız gerekebilir. Davranış `Flush()` , kullanılan gerçek [kanala](telemetry-channels.md#built-in-telemetry-channels) bağlıdır.
 
 ## <a name="no-data-from-my-server"></a>Sunucuma veri yok
 *Uygulamamı Web sunucuma yükledim ve bundan sonra herhangi bir telemetri görmüyorum. Geliştirici makinmda Tamam 'a çalıştı.*
@@ -127,13 +127,13 @@ Onar
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Application Insights portalında [Tanılama araması](../../azure-monitor/app/diagnostic-search.md)' nı açın. Veriler genellikle önce burada görünür.
 * Yenile düğmesine tıklayın. Dikey pencere kendi kendine düzenli olarak yenilenir, ancak bunu el ile de yapabilirsiniz. Yenileme aralığı daha büyük zaman aralıkları için daha uzun.
-* İzleme anahtarlarının eşleştiğinden emin olun. Application Insights portalındaki uygulamanızın ana dikey penceresinde, **Essentials** açılan penceresinde, **izleme anahtarı**' na bakın. Ardından, Visual Studio 'da, ApplicationInsights. config dosyasını açın ve öğesini bulun `<instrumentationkey>`. İki anahtarın eşit olup olmadığını denetleyin. Aksi takdirde:  
+* İzleme anahtarlarının eşleştiğinden emin olun. Application Insights portalındaki uygulamanızın ana dikey penceresinde, **Essentials** açılan penceresinde, **izleme anahtarı**' na bakın. Ardından, Visual Studio 'da, ApplicationInsights. config dosyasını açın ve öğesini bulun `<instrumentationkey>` . İki anahtarın eşit olup olmadığını denetleyin. Aksi takdirde:  
   * Portalda Application Insights ' a tıklayın ve doğru anahtarla uygulama kaynağını arayın; veya
   * Visual Studio Çözüm Gezgini, projeye sağ tıklayın ve Application Insights, Yapılandır ' ı seçin. Doğru kaynağa telemetri göndermek için uygulamayı sıfırlayın.
   * Eşleşen anahtarları bulamıyorsanız, portalda ' de olduğu gibi Visual Studio 'da aynı oturum açma kimlik bilgilerini kullanıp kullanınızdan emin olun.
 * [Microsoft Azure giriş panosunda](https://portal.azure.com), hizmet durumu haritasına bakın. Bazı uyarı göstergeleri varsa, Tamam ' a dönene kadar bekleyin ve ardından Application Insights uygulaması dikey penceresini kapatıp yeniden açın.
 * Ayrıca [durum blogumuzu](https://blogs.msdn.microsoft.com/servicemap-status/)inceleyin.
-* [Sunucu tarafı SDK](../../azure-monitor/app/api-custom-events-metrics.md) için, `TelemetryClient` örneklerdeki veya içindeki `TelemetryContext`izleme anahtarını değiştirebilen herhangi bir kod yazdınız mı? Ya da çok fazla filtreleme olabilecek bir [filtre veya örnekleme yapılandırması](../../azure-monitor/app/api-filtering-sampling.md) mı yazdınız?
+* [Sunucu tarafı SDK](../../azure-monitor/app/api-custom-events-metrics.md) için, örneklerdeki veya içindeki izleme anahtarını değiştirebilen herhangi bir kod yazdınız `TelemetryClient` `TelemetryContext` mı? Ya da çok fazla filtreleme olabilecek bir [filtre veya örnekleme yapılandırması](../../azure-monitor/app/api-filtering-sampling.md) mı yazdınız?
 * ApplicationInsights. config dosyasını düzenlediyseniz, [TelemetryInitializers ve TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)yapılandırmasını dikkatle kontrol edin. Yanlış adlı bir tür veya parametre SDK 'nın veri gönderememesine neden olabilir.
 
 ## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>Sayfa görünümlerinde, tarayıcılarda, kullanımında veri yok
@@ -143,7 +143,7 @@ Veriler Web sayfalarındaki betiklerden gelir.
 
 * Mevcut bir web projesine Application Insights eklediyseniz, [betikleri el ile eklemeniz gerekir](../../azure-monitor/app/javascript.md).
 * Internet Explorer 'ın sitenizin uyumluluk modunda görüntülenmediğinden emin olun.
-* Verilerin gönderildiğini doğrulamak için tarayıcının hata ayıklama özelliğini (bazı tarayıcılarda F12 ' i seçin, sonra da ağ ' ı seçin) kullanın `dc.services.visualstudio.com`.
+* Verilerin gönderildiğini doğrulamak için tarayıcının hata ayıklama özelliğini (bazı tarayıcılarda F12 ' i seçin, sonra da ağ ' ı seçin) kullanın `dc.services.visualstudio.com` .
 
 ## <a name="no-dependency-or-exception-data"></a>Bağımlılık veya özel durum verisi yok
 Bkz. [bağımlılık telemetrisi](../../azure-monitor/app/asp-net-dependencies.md) ve [özel durum telemetrisi](asp-net-exceptions.md).
@@ -211,7 +211,7 @@ Devre dışı bırakabilirsiniz, ancak bu önerilmez. Örnekleme, tanılama amac
 
 Microsoft. ApplicationInsights. AspNetCore 'un en son sürümü 2.8.2 'dir ve Microsoft. ApplicationInsights sürüm 2.11.2 'e başvurur. Bu nedenle, yüklenecek Microsoft. AspNet. ApplicationInsights. HostingStartup sürümünün 2.11.2 olması gerekir
 
-2. `Startup.cs` Sınıfında yöntemini değiştirin `ConfigureServices` .:
+2. `ConfigureServices`Sınıfında yöntemini değiştirin `Startup.cs` .:
 
     ```csharp
     services.AddSingleton<ITelemetryModule, FileDiagnosticsTelemetryModule>();
@@ -247,6 +247,14 @@ Gerektiğinde bu parametreleri değiştirebilirsiniz:
 Daha fazla bilgi için,
 - [PerfView ile performans Izlemeleri kaydediliyor](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
 - [Olay kaynaklarını Application Insights](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="collect-logs-with-dotnet-trace"></a>DotNet-Trace ile günlükleri toplama
+
+Özellikle Linux tabanlı ortamlarda yararlı olabilecek sorun gidermeye yönelik Günlükler toplamanın alternatif bir yöntemi[`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace)
+
+```bash
+dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
+```
 
 ## <a name="how-to-remove-application-insights"></a>Application Insights kaldırma
 

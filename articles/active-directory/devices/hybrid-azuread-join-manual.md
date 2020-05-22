@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596b47ecc0cf42e8cf1e7001c1462f55d34ff9c3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4bfe55c4ebe722e98f0816078b64c0131a30d03
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680282"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778733"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Öğretici: Hibrit Azure Active Directory'ye katılmış cihazları elle yapılandırma
 
@@ -549,16 +549,71 @@ Windows alt düzey cihazlarını kaydetmek için İndirme Merkezi’nden bir Win
 
 ## <a name="verify-joined-devices"></a>Katılmış cihazları doğrulama
 
-[Azure Active Directory PowerShell modülündeki](/powershell/azure/install-msonlinev1?view=azureadps-2.0) [Get-msoldevice](/powershell/msonline/v1/get-msoldevice) cmdlet 'ini kullanarak kuruluşunuzda başarıyla katılmış cihazları kontrol edebilirsiniz.
+Cihaz durumunu bulup doğrulamak için 3 yol aşağıda verilmiştir:
 
-Bu cmdlet öğesinin çıktısı, Azure AD ile kaydedilmiş ve katılmış cihazları gösterir. Tüm cihazları almak için **-All** parametresini kullanın ve ardından **Devicetrusttype** özelliğini kullanarak bunları filtreleyin. Etki alanına katılmış cihazlarda **etki alanına katılmış**bir değer vardır.
+### <a name="locally-on-the-device"></a>Cihazda yerel olarak
+
+1. Windows PowerShell'i açın.
+2. `dsregcmd /status` yazın.
+3. Hem **Azureadkatılmış** hem de **Domainkatılmış** öğelerinin **Evet**olarak ayarlandığını doğrulayın.
+4. **DeviceID** 'yi kullanabilir ve Azure Portal veya PowerShell kullanarak hizmet durumunu karşılaştırabilirsiniz.
+
+### <a name="using-the-azure-portal"></a>Azure portalını kullanma
+
+1. [Doğrudan bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)kullanarak cihazlar sayfasına gidin.
+2. Cihazı bulma hakkında bilgi [, Azure Portal kullanarak cihaz kimliklerini yönetme](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)bölümünde bulunabilir.
+3. **Kayıtlı** sütun **bekliyor**Ifadesini IÇERIYORSA, karma Azure AD katılımı tamamlanmaz. Federasyon ortamlarında, bu durum yalnızca kayıt başarısız olduysa ve AAD Connect cihazları eşitlemek üzere yapılandırılmışsa gerçekleşebilir.
+4. **Kayıtlı** sütun bir **Tarih/saat**IÇERIYORSA, karma Azure AD katılımı tamamlanmıştır.
+
+### <a name="using-powershell"></a>PowerShell’i kullanma
+
+**[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** kullanarak Azure kiracınızdaki cihaz kayıt durumunu doğrulayın. Bu cmdlet [Azure Active Directory PowerShell modülüdür](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+
+Hizmet ayrıntılarını denetlemek için **Get-MSolDevice** cmdlet 'ini kullandığınızda:
+
+- Windows istemcisinde KIMLIĞIYLE eşleşen **CIHAZ kimliğine** sahip bir nesne var olmalıdır.
+- **Devicetrusttype** değeri **etki alanına katılmış**. Bu ayar, Azure AD portalındaki **cihazlar** sayfasında **karma Azure AD 'ye katılmış** durumuna eşdeğerdir.
+- Koşullu erişimde kullanılan cihazlarda, **Enabled** değeri **true** 'Dur ve **devicetrustlevel** **yönetilir**.
+
+1. Windows PowerShell'i yönetici olarak açın.
+2. `Connect-MsolService`Azure kiracınıza bağlanmak için girin.
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Tüm karma Azure AD 'ye katılmış cihazları say ( **bekleme** durumu hariç)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>**Bekleme** durumundaki tüm karma Azure AD 'ye katılmış cihazları say
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Tüm karma Azure AD 'ye katılmış cihazları listeleyin
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>**Bekleme** durumundaki tüm karma Azure AD 'ye katılmış cihazları listeleyin
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>Tek bir cihazın ayrıntılarını listeleyin:
+
+1. Yazın `get-msoldevice -deviceId <deviceId>` (Bu, cihazda yerel olarak alınan **DeviceID** 'dir).
+2. **Enabled** değerinin **True** olarak ayarlandığını doğrulayın.
 
 ## <a name="troubleshoot-your-implementation"></a>Uygulamanızda sorun giderme
 
-Etki alanına katılmış Windows cihazlarına yönelik karma Azure AD katılımı tamamlanırken sorun yaşıyorsanız, bkz.:
+Etki alanına katılmış Windows cihazlarına yönelik karma Azure AD katılımı tamamlanırken sorunlarla karşılaşırsanız, bkz.:
 
-* [Windows geçerli cihazları için Hibrit Azure AD'ye katılım sorunlarını giderme](troubleshoot-hybrid-join-windows-current.md)
-* [Windows alt düzey cihazları için Hibrit Azure AD'ye katılım sorunlarını giderme](troubleshoot-hybrid-join-windows-legacy.md)
+- [Dsregcmd komutunu kullanan cihazların sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Karma Azure Active Directory katılmış cihazlarda sorun giderme](troubleshoot-hybrid-join-windows-current.md)
+- [Karma Azure Active Directory katılmış alt düzey cihazlarda sorun giderme](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

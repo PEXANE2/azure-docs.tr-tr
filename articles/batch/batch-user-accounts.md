@@ -1,15 +1,15 @@
 ---
 title: Görevleri Kullanıcı hesapları altında Çalıştır
-description: Görevin çalışmasını istediğiniz kullanıcı hesabını yapılandırmak yararlı olur. Kullanıcı hesaplarının türlerini ve bunların nasıl yapılandırılacağını öğrenin.
+description: Kullanıcı hesaplarının türlerini ve bunların nasıl yapılandırılacağını öğrenin.
 ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1bd31f9d4881bdc489988d3f955e7143eaf7759
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 14ee675b80e0d9dd24993d7e3ecd255b5568e9cc
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726273"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779489"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch 'de Kullanıcı hesapları altında görevleri çalıştırma
 
@@ -40,7 +40,7 @@ Hem bir otomatik Kullanıcı hesabının hem de adlandırılmış bir kullanıc�
 
 Bir görev, başlangıç görevi çalıştırmak için kullanılan hesap altında çalışıyorsa, görevin başlangıç görevi dizinine okuma yazma erişimi vardır. Benzer şekilde, bir görev iş hazırlama görevi çalıştırmak için kullanılan hesap altında çalışıyorsa, görevin iş hazırlama görev dizinine okuma-yazma erişimi vardır. Bir görev, başlangıç görevi veya iş hazırlama görevinden farklı bir hesap altında çalışıyorsa, görevin ilgili dizine yalnızca okuma erişimi vardır.
 
-Bir görevden dosya ve dizinlere erişme hakkında daha fazla bilgi için bkz. [Batch ile büyük ölçekli paralel işlem çözümleri geliştirme](batch-api-basics.md#files-and-directories).
+Bir görevden dosya ve dizinlere erişme hakkında daha fazla bilgi için bkz. [Dosyalar ve dizinler](files-and-directories.md).
 
 ## <a name="elevated-access-for-tasks"></a>Görevler için yükseltilmiş erişim 
 
@@ -322,4 +322,5 @@ Batch hizmeti sürüm 2017 -01-01.4.0, daha önceki sürümlerde bulunan **Runay
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Toplu Işe yönelik ayrıntılı genel bakış için bkz. [Batch ile büyük ölçekli paralel işlem çözümleri geliştirme](batch-api-basics.md).
+* [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
+* Azure Batch [dosya ve dizinler](files-and-directories.md) hakkında bilgi edinin.

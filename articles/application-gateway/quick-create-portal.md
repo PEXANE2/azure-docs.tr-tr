@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/09/2020
+ms.date: 05/21/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 17adc800bd5a2ae53e27350c7e0d588eaeee4a8f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a6415657d68e10b63e357f3c1353bb66fc9c8262
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241405"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779423"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure portalı
 
@@ -209,7 +209,7 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
 Uygulama ağ geçidini oluşturmak için IIS gerekli olmasa da, Azure 'un uygulama ağ geçidini başarıyla oluşturduğunu doğrulamak için bu hızlı başlangıç hızlı yüklenir. Uygulama ağ geçidini test etmek için IIS kullanın:
 
-1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![Uygulama ağ GEÇIDI genel IP adresini](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) kaydedin veya **tüm kaynaklar**' ı seçip Arama kutusuna *myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
+1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![ Uygulama Ağ Geçidi genel IP adresini kaydedin ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) veya **tüm kaynaklar**' ı seçip Arama kutusuna *Myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
 2. Genel IP adresini kopyalayın ve ardından bu IP adresine gözatabilmek için tarayıcınızın adres çubuğuna yapıştırın.
 3. Yanıtı denetleyin. Geçerli bir yanıt, uygulama ağ geçidinin başarıyla oluşturulduğunu ve arka uca başarıyla bağlanıp bağlanabileceğini doğrular.
 
@@ -231,4 +231,4 @@ Kaynak grubunu silmek için:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure CLI kullanarak bir uygulama ağ geçidi ile web trafiğini yönetme](./tutorial-manage-web-traffic-cli.md)
+> [Öğretici: Azure portal kullanarak bir uygulama ağ geçidini TLS sonlandırmasıyla yapılandırma](create-ssl-portal.md)

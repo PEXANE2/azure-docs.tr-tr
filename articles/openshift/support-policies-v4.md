@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 593cca5fbf0aa6e4c162e541560763c50cbc067e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ec27d054055866c72148ad6eb024d4324f063ce8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711423"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774402"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift destek ilkesi
 
@@ -29,6 +29,8 @@ Azure Red Hat OpenShift 4 kümelerine yönelik belirli yapılandırmalarda, küm
 * Azure Red Hat OpenShift hizmet günlüğü 'nü (MDSD pods) kaldırmayın veya değiştirmeyin.
 * ' Arosvc.azurecr.io ' küme çekme parolasını kaldırmayın veya değiştirmeyin.
 * Tüm küme sanal makinelerinin, en azından Azure Resource Manager (ARM) ve hizmet günlüğü (Genfiliz) uç noktalarına doğrudan giden internet erişimi olması gerekir.  HTTPS proxy için hiçbir form desteklenmez.
+* Kümenin sanal ağının DNS yapılandırmasını değiştirmeyin. Varsayılan Azure DNS Çözümleyicisinin kullanılması gerekir.
+* Kümenin MachineConfig nesnelerinden hiçbirini (örneğin, kubelet yapılandırması) herhangi bir şekilde geçersiz kılmayın.
 * Azure Red Hat OpenShift hizmeti, kümenize özel bağlantı hizmeti aracılığıyla erişir.  Hizmet erişimini kaldırmayın veya değiştirmeyin.
 * RHCOS olmayan işlem düğümleri desteklenmez. Örneğin, bir RHEL işlem düğümü kullanamazsınız.
 
@@ -66,3 +68,11 @@ Azure Red Hat OpenShift 4, aşağıdaki sanal makine boyutlarında çalışan d�
 |Fsv2|Standard_F8s_v2|8|16|
 |Fsv2|Standard_F16s_v2|16|32|
 |Fsv2|Standard_F32s_v2|32|64|
+
+### <a name="master-nodes"></a>Ana düğümler
+
+|Seriler|Boyut|Sanal işlemci|Bellek: GiB|
+|-|-|-|-|
+|Dsv3|Standard_D8s_v3|8|32|
+|Dsv3|Standard_D16s_v3|16|64|
+|Dsv3|Standard_D32s_v3|32|128|

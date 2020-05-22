@@ -3,12 +3,12 @@ title: Çok fazla sayıda görev gönderme
 description: Tek bir Azure Batch işinde çok fazla sayıda görevi verimli bir şekilde gönderme
 ms.topic: how-to
 ms.date: 08/24/2018
-ms.openlocfilehash: 42b7d0586139b3d03569374615945047b42a2520
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 46ab5e8879167a1808c51d4c4cd5c7071cb67cff
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725695"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778947"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Bir Batch işine çok sayıda görev gönderme
 
@@ -41,7 +41,7 @@ Tek bir çağrıda ekleyebileceğiniz görev koleksiyonunun en büyük boyutu, k
 
 Bir işe büyük bir görev koleksiyonu eklemek biraz zaman alabilir. Örneğin, .NET API aracılığıyla 20.000 görevi eklemek için en fazla 1 dakikalık bir işlem olabilir. Batch API 'sine ve iş yüküne bağlı olarak, aşağıdakilerden birini veya birkaçını değiştirerek görev aktarım hızını geliştirebilirsiniz:
 
-* **Görev boyutu** -büyük görevleri ekleme daha küçük olanlar eklemekten daha uzun sürer. Bir koleksiyondaki her görevin boyutunu azaltmak için, görev komut satırını basitleştirebilir, ortam değişkenlerinin sayısını azaltabilir veya görev yürütme gereksinimlerini daha verimli bir şekilde işleyebilirsiniz. Örneğin, çok sayıda kaynak dosyası kullanmak yerine, havuzdaki bir [Başlangıç görevini](batch-api-basics.md#start-task) kullanarak görev bağımlılıklarını yükler veya bir [uygulama paketi](batch-application-packages.md) veya [Docker kapsayıcısı](batch-docker-container-workloads.md)kullanın.
+* **Görev boyutu** -büyük görevleri ekleme daha küçük olanlar eklemekten daha uzun sürer. Bir koleksiyondaki her görevin boyutunu azaltmak için, görev komut satırını basitleştirebilir, ortam değişkenlerinin sayısını azaltabilir veya görev yürütme gereksinimlerini daha verimli bir şekilde işleyebilirsiniz. Örneğin, çok sayıda kaynak dosyası kullanmak yerine, havuzdaki bir [Başlangıç görevini](jobs-and-tasks.md#start-task) kullanarak görev bağımlılıklarını yükler veya bir [uygulama paketi](batch-application-packages.md) veya [Docker kapsayıcısı](batch-docker-container-workloads.md)kullanın.
 
 * **Paralel Işlem sayısı** -Batch API 'sine bağlı olarak, Batch istemcisi tarafından en fazla eşzamanlı işlem sayısını artırarak aktarım hızını artırın. Bu ayarı, .NET API 'sindeki [BatchClientParallelOptions. Maxdegreeofparalellik](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) özelliğini veya `threads` Batch Python SDK uzantısında [taskoperations. add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) gibi yöntemlerin parametresini kullanarak yapılandırın. (Bu özellik yerel Batch Python SDK 'sında kullanılamaz.) Varsayılan olarak, bu özellik 1 olarak ayarlanır, ancak işlem verimini geliştirmek için daha yüksek ayarlanır. Ağ bant genişliğini ve bazı CPU performansını tüketerek artan aktarım hızına sahip olursunuz. Görev verimlilik, veya 100 katına kadar artar `MaxDegreeOfParallelism` `threads` . Uygulamada, 100 altındaki eşzamanlı işlem sayısını ayarlamanız gerekir. 
  
@@ -53,7 +53,7 @@ Bir işe büyük bir görev koleksiyonu eklemek biraz zaman alabilir. Örneğin,
 
 Aşağıdaki C# parçacıkları Batch .NET API 'SI kullanılarak çok sayıda görev eklenirken yapılandırılacak ayarları gösterir.
 
-Görev aktarım hızını artırmak için [Batchclient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet)'ın [Maxdegreeofparallelilik](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) özelliğinin değerini artırın. Örnek:
+Görev aktarım hızını artırmak için [Batchclient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet)'ın [Maxdegreeofparallelilik](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) özelliğinin değerini artırın. Örneğin:
 
 ```csharp
 BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
@@ -63,7 +63,7 @@ BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
 ...
 ```
 [Addtaskasync](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet) veya [AddTask](/dotnet/api/microsoft.azure.batch.cloudjob.addtask?view=azure-dotnet
-) yönteminin uygun aşırı yüklemesini kullanarak işe bir görev koleksiyonu ekleyin. Örnek:
+) yönteminin uygun aşırı yüklemesini kullanarak işe bir görev koleksiyonu ekleyin. Örneğin:
 
 ```csharp
 // Add a list of tasks as a collection
@@ -134,7 +134,7 @@ client = batch.BatchExtensionsClient(
 ...
 ```
 
-Bir işe eklemek için bir görev koleksiyonu oluşturun. Örnek:
+Bir işe eklemek için bir görev koleksiyonu oluşturun. Örneğin:
 
 
 ```python

@@ -4,12 +4,12 @@ description: Batch kaynaklarını yönetmek için kullanabileceğiniz Azure Powe
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3baa69f7ad51be59390a12c62797ff78250db9c0
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726562"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779618"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch kaynaklarını PowerShell cmdlet'leriyle yönetme
 
@@ -39,13 +39,13 @@ Bu makale, az Batch Module 1.0.0 içindeki cmdlet 'lere dayalıdır. Hizmet gün
 
 ### <a name="create-a-batch-account"></a>Batch hesabı oluşturma
 
-**New-AzBatchAccount** , belirtilen kaynak grubunda bir Batch hesabı oluşturur. Henüz bir kaynak grubunuz yoksa, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini çalıştırarak bir tane oluşturun. **Location** parametresinde, "Orta ABD" gibi Azure bölgelerinden birini belirtin. Örnek:
+**New-AzBatchAccount** , belirtilen kaynak grubunda bir Batch hesabı oluşturur. Henüz bir kaynak grubunuz yoksa, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini çalıştırarak bir tane oluşturun. **Location** parametresinde, "Orta ABD" gibi Azure bölgelerinden birini belirtin. Örneğin:
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
 ```
 
-Ardından, kaynak grubunda bir Batch hesabı oluşturun. <*account_name*> hesap için bir ad ve kaynak grubunuzun konumunu ve adını belirtin. Batch hesabının oluşturulması biraz zaman alabilir. Örnek:
+Ardından, kaynak grubunda bir Batch hesabı oluşturun. <*account_name*> hesap için bir ad ve kaynak grubunuzun konumunu ve adını belirtin. Batch hesabının oluşturulması biraz zaman alabilir. Örneğin:
 
 ```powershell
 New-AzBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
@@ -79,7 +79,7 @@ New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 ### <a name="delete-a-batch-account"></a>Batch hesabını silme
 
-**Remove-AzBatchAccount** bir Batch hesabını siler. Örnek:
+**Remove-AzBatchAccount** bir Batch hesabını siler. Örneğin:
 
 ```powershell
 Remove-AzBatchAccount -AccountName <account_name>
@@ -114,7 +114,7 @@ Bu cmdlet’lerinin birçoğunu kullanırken bir BatchContext nesnesi geçirmeye
 
 ### <a name="create-a-batch-pool"></a>Batch havuzu oluşturma
 
-Bir Batch havuzu oluştururken ya da güncelleştirirken, işlem düğümlerindeki işletim sistemine yönelik bir bulut hizmetleri yapılandırmasını veya sanal makine yapılandırmasını seçin (bkz. [Batch özelliğine genel bakış](batch-api-basics.md#pool)). Bulut hizmetleri yapılandırmasını belirtirseniz işlem düğümleriniz [Azure konuk işletim sistemi sürümlerinden](../cloud-services/cloud-services-guestos-update-matrix.md#releases) biriyle görüntülenir. Sanal makinenin yapılandırmasını belirtirseniz [Azure Sanal Makineler Market görüntüleri][vm_marketplace] içindeki desteklenen Linux ya da Windows sanal makine görüntülerinden birini seçebilir veya hazırladığınız özel bir görüntüyü kullanabilirsiniz.
+Bir Batch havuzu oluştururken ya da güncelleştirirken, işlem düğümlerinde işletim sisteminin bulut Hizmetleri yapılandırmasını veya sanal makine yapılandırmasını (bkz. [düğümler ve havuzlar](nodes-and-pools.md#configurations)) seçersiniz. Bulut hizmetleri yapılandırmasını belirtirseniz işlem düğümleriniz [Azure konuk işletim sistemi sürümlerinden](../cloud-services/cloud-services-guestos-update-matrix.md#releases) biriyle görüntülenir. Sanal makinenin yapılandırmasını belirtirseniz [Azure Sanal Makineler Market görüntüleri][vm_marketplace] içindeki desteklenen Linux ya da Windows sanal makine görüntülerinden birini seçebilir veya hazırladığınız özel bir görüntüyü kullanabilirsiniz.
 
 **New-AzBatchPool**komutunu çalıştırdığınızda, işletim sistemi ayarlarını bir Pschoparlör ServiceConfiguration veya PSVirtualMachineConfiguration nesnesine geçirin. Örneğin, aşağıdaki kod parçacığı, sanal makine yapılandırmasındaki boyut Standard_A1 işlem düğümlerine sahip bir Batch havuzu oluşturur. Ubuntu Server 18,04-LTS ile yansıma. Burada **VirtualMachineConfiguration** parametresi *$configuration* değişkenini PSVirtualMachineConfiguration nesnesi olarak belirtir. **BatchContext** parametresi önceden tanımlanmış *$context* değişkenini BatchAccountContext nesnesi olarak belirtir.
 
@@ -164,7 +164,7 @@ Get-AzBatchPool -Id "myPool" -BatchContext $context
 
 ### <a name="use-the-maxcount-parameter"></a>MaxCount parametresini kullanma
 
-Varsayılan olarak, her cmdlet en çok 1000 nesne döndürür. Bu sınıra ulaştıysanız, daha az nesne döndürmek için filtreyi daraltın veya **MaxCount** parametresini kullanarak kesin bir üst sınır ayarlayın. Örnek:
+Varsayılan olarak, her cmdlet en çok 1000 nesne döndürür. Bu sınıra ulaştıysanız, daha az nesne döndürmek için filtreyi daraltın veya **MaxCount** parametresini kullanarak kesin bir üst sınır ayarlayın. Örneğin:
 
 ```powershell
 Get-AzBatchTask -MaxCount 2500 -BatchContext $context

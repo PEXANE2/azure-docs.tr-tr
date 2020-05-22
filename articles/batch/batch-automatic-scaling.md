@@ -4,12 +4,12 @@ description: Havuzdaki işlem düğümlerinin sayısını dinamik olarak ayarlam
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 786bd594b3344ce144893161ade9d53d1bddf358
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726817"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780238"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
@@ -22,7 +22,7 @@ Bir havuz oluşturulduğunda ya da mevcut bir havuzda otomatik ölçeklendirmeyi
 Bu makalede değişkenler, işleçler, işlemler ve işlevler de dahil olmak üzere otomatik ölçeklendirme formüllerinizi oluşturan çeşitli varlıklar ele alınmaktadır. Batch içinde çeşitli işlem kaynağı ve görev ölçümlerinin nasıl alınacağını anladık. Bu ölçümleri, havuzun düğüm sayısını kaynak kullanımı ve görev durumuna göre ayarlamak için kullanabilirsiniz. Daha sonra, Batch REST ve .NET API 'Lerini kullanarak bir havuzda otomatik ölçeklendirmeyi nasıl bir formül oluşturup etkinleştirebiliriz. Son olarak, birkaç örnek formülle bitiyoruz.
 
 > [!IMPORTANT]
-> Bir Batch hesabı oluşturduğunuzda, havuzların bir Batch hizmeti aboneliğine mi (varsayılan) yoksa Kullanıcı aboneliğinizde mi ayrılacağını belirleyen [hesap yapılandırmasını](batch-api-basics.md#account)belirtebilirsiniz. Batch hesabınızı varsayılan Batch hizmeti yapılandırmasıyla oluşturduysanız, hesabınız, işlenmek üzere kullanılabilecek en fazla çekirdek sayısıyla sınırlıdır. Batch hizmeti işlem düğümlerini yalnızca bu çekirdek sınırına kadar ölçeklendirir. Bu nedenle, Batch hizmeti bir otomatik ölçeklendirme formülü tarafından belirtilen işlem düğümlerinin hedef sayısına ulaşmayabilir. Hesap kotalarınızı görüntüleme ve artırma hakkında bilgi için bkz. [Azure Batch hizmetine yönelik kotalar ve sınırlar](batch-quota-limit.md) .
+> Bir Batch hesabı oluşturduğunuzda, havuzların bir Batch hizmeti aboneliğine mi (varsayılan) yoksa Kullanıcı aboneliğinizde mi ayrılacağını belirleyen [hesap yapılandırmasını](accounts.md)belirtebilirsiniz. Batch hesabınızı varsayılan Batch hizmeti yapılandırmasıyla oluşturduysanız, hesabınız, işlenmek üzere kullanılabilecek en fazla çekirdek sayısıyla sınırlıdır. Batch hizmeti işlem düğümlerini yalnızca bu çekirdek sınırına kadar ölçeklendirir. Bu nedenle, Batch hizmeti bir otomatik ölçeklendirme formülü tarafından belirtilen işlem düğümlerinin hedef sayısına ulaşmayabilir. Hesap kotalarınızı görüntüleme ve artırma hakkında bilgi için bkz. [Azure Batch hizmetine yönelik kotalar ve sınırlar](batch-quota-limit.md) .
 >
 >Hesabınızı Kullanıcı aboneliği yapılandırmasıyla oluşturduysanız, hesabınız abonelik için çekirdek kotasında paylaşımınızdaymış olursunuz. Daha fazla bilgi için [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md) sayfasındaki [Sanal Makine limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits) bölümüne bakın.
 >
@@ -162,7 +162,7 @@ Bu türler bir formülde desteklenir:
   * TimeInterval_Week
   * TimeInterval_Year
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
 
 Bu işlemlere, önceki bölümde listelenen türlerde izin verilir.
 
@@ -212,7 +212,7 @@ Bu önceden tanımlanmış **işlevler** , bir otomatik ölçeklendirme formül�
 | Time (dize dateTime = "") |timestamp |Hiçbir parametre geçirilmemişse, geçerli zamanın zaman damgasını veya geçirilse de dateTime dizesinin zaman damgasını döndürür. Desteklenen dateTime biçimleri W3C-DTF ve RFC 1123 ' dir. |
 | Val (doubleVec v, Double ı) |double |Bir başlangıç dizini olan, vektör v 'de i konumunda olan öğenin değerini döndürür. |
 
-Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örnek:
+Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örneğin:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -232,7 +232,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | GetSamplePeriod () |Bir geçmiş örnek veri kümesinde alınan örneklerin dönemini döndürür. |
 | Count () |Ölçüm geçmişindeki toplam örnek sayısını döndürür. |
 | Geçmiş BeginTime () |Ölçüm için kullanılabilir en eski veri örneğinin zaman damgasını döndürür. |
-| GetSamplePercent () |Belirli bir zaman aralığı için kullanılabilen örneklerin yüzdesini döndürür. Örnek:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>`GetSample`Döndürülen örnek yüzdesi belirtilen değerden küçükse yöntem başarısız olduğundan `samplePercent` , `GetSamplePercent` ilk olarak denetlemek için yöntemini kullanabilirsiniz. Daha sonra, otomatik ölçeklendirme değerlendirmesini durdurmadan, yetersiz örnek varsa, alternatif bir eylem yapabilirsiniz. |
+| GetSamplePercent () |Belirli bir zaman aralığı için kullanılabilen örneklerin yüzdesini döndürür. Örneğin:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>`GetSample`Döndürülen örnek yüzdesi belirtilen değerden küçükse yöntem başarısız olduğundan `samplePercent` , `GetSamplePercent` ilk olarak denetlemek için yöntemini kullanabilirsiniz. Daha sonra, otomatik ölçeklendirme değerlendirmesini durdurmadan, yetersiz örnek varsa, alternatif bir eylem yapabilirsiniz. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Örnekler, örnek yüzdesi ve *Getsample ()* yöntemi
 Otomatik ölçeklendirme formülünün temel işlemi, görev ve kaynak ölçümü verilerini almak ve ardından bu verilere göre havuz boyutunu ayarlamasıdır. Bu nedenle, otomatik ölçeklendirme formüllerinin ölçüm verileri (örnekler) ile nasıl etkileşime gireceğini net bir şekilde anlamak önemlidir.
@@ -257,7 +257,7 @@ Bunu yapmak için, `GetSample(interval look-back start, interval look-back end)`
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örnek:
+Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örneğin:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -462,7 +462,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Mevcut bir havuzda otomatik ölçeklendirmeyi etkinleştir
 
-Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örnek:
+Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örneğin:
 
 * [Batchclient. PoolOperations. Enableoto Scaleasync][net_enableautoscaleasync] (Batch .net)
 * [Bir havuzda otomatik ölçeklendirmeyi etkinleştir][rest_enableautoscale] (REST API)

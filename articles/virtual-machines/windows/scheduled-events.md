@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: b688341b8814c52523821851bef4d7600105cafd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c8b0d83be0ae464563a06c9307303ee7a5af527f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675866"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779792"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM 'Leri için Zamanlanan Olaylar
 
@@ -134,10 +134,10 @@ Her olay, gelecekte olay türüne göre en az bir süre zamanlanır. Bu zaman, b
 
 ### <a name="event-scope"></a>Olay kapsamı     
 Zamanlanan olaylar şu şekilde dağıtılır:
- - Tek başına sanal makineler
- - Bir bulut hizmetindeki tüm sanal makineler      
- - Bir kullanılabilirlik kümesindeki tüm sanal makineler      
- - Ölçek kümesi yerleştirme grubundaki tüm sanal makineler (Batch dahil)        
+ - Tek başına sanal makineler.
+ - Bir bulut hizmetindeki tüm sanal makineler.     
+ - Bir kullanılabilirlik kümesindeki tüm sanal makineler.     
+ - Ölçek kümesi yerleştirme grubundaki (Batch dahil) tüm sanal makineler.       
 
 Sonuç olarak, `Resources` hangi VM 'lerin etkilenecek olduğunu belirlemek için olaydaki alanı denetlemeniz gerekir. 
 

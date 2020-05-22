@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: e3af10e5e9b56b537fedf0af7ffa7ddb37030c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca5ba8d7b2d78440401e29344361538c3650ba48
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189190"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779173"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri depolama ve giriş
 
@@ -58,7 +58,7 @@ Desteklenen veri türleri şunlardır:
 
 | Veri türü | Açıklama |
 |---|---|
-| **bool** | İki durumdan birine sahip bir veri türü: `true` veya. `false` |
+| **bool** | İki durumdan birine sahip bir veri türü: `true` veya `false` . |
 | **Hem** | Genellikle günün tarih ve saati olarak ifade edilen bir anlık zamanı temsil eder. [Iso 8601](https://www.iso.org/iso-8601-date-and-time-format.html) biçiminde ifade edilir. |
 | **double** | Çift duyarlıklı 64 bitlik [ıeee 754](https://ieeexplore.ieee.org/document/8766229) kayan nokta. |
 | **string** | Unicode karakterlerinden oluşan metin değerleri.          |
@@ -78,6 +78,17 @@ Aşağıdaki en iyi yöntemleri kullanmanızı öneririz:
 * Beklenen alma hızınızı hesaplayarak ve aşağıda listelenen desteklenen oran dahilinde olduğunu doğrulayarak [Ölçek gereksinimlerinizi planlayın](time-series-insights-update-plan.md) .
 
 * Giriş [ve sorgu IÇIN JSON şeklini](./time-series-insights-update-how-to-shape-events.md)okuyarak, JSON verilerinizin ve önizleme aşamasında geçerli sınırlamaların nasıl iyileştirileceği ve şekillendirilmeli olduğunu anlayın.
+
+* Yalnızca neredeyse gerçek zamanlı ve en son veriler için akış alımı kullanın, geçmiş verileri akışa alma desteklenmez.
+
+#### <a name="historical-data-ingestion"></a>Geçmiş veri alımı
+
+Geçmiş verileri içeri aktarmak için akış işlem hattının kullanılması şu anda Azure Time Series Insights önizlemede desteklenmiyor. Eski verileri ortamınıza aktarmanız gerekiyorsa aşağıdaki yönergeleri izleyin:
+
+* Canlı ve geçmiş verileri paralel olarak akışmayın. Verilerin dışına inmek, sorgu performansının düşmesine neden olur.
+* En iyi performansı elde etmek için geçmiş verileri zaman düzenli olarak alma.
+* Aşağıdaki alma işlemi hız sınırları dahilinde kalır.
+* Veriler, sıcak mağaza saklama süresinden daha eskiyse, sıcak mağazayı devre dışı bırakın.
 
 ### <a name="ingress-scale-and-preview-limitations"></a>Giriş ölçeği ve önizleme sınırlamaları
 
@@ -101,7 +112,7 @@ Time Series Insights önizlemesi, varsayılan olarak, **Time Series Insights ort
  
 * **Örnek 1:**
 
-    Contoso Shipping, dakikada üç kez bir olay sunan 100.000 cihaza sahiptir. Bir olayın boyutu 200 bayttır. Time Series Insights olay kaynağı olarak dört bölümden oluşan bir IoT Hub 'ı kullanıyor.
+    Contoso Shipping, dakikada üç kez bir olay sunan 100.000 cihaza sahiptir. Bir olayın boyutu 200 bayttır. Time Series Insights olay kaynağı olarak dört bölümden oluşan bir IoT Hub kullanıyor.
 
     * Time Series Insights ortamları için alım oranı: **100.000 cihaz * 200 bayt/olay * (3/60 olay/sn) = 1 MB**/sn olmalıdır.
     * Bölüm başına alım oranı 0,25 MBps olur.
@@ -179,7 +190,7 @@ En iyi sorgu performansı için bölümleri ve dizinleri Azure Time Series Insig
 > [!IMPORTANT]
 > Önizleme sırasında, veriler kullanılabilir hale gelmeden önce 60 saniyeye kadar bir süre yaşayabilirsiniz. 60 saniyenin ötesinde önemli gecikme yaşınızı yaşıyorsanız lütfen Azure portal bir destek bileti gönderebilirsiniz.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 Bu bölümde Azure Time Series Insights önizlemesiyle ilgili Azure depolama ayrıntıları açıklanmaktadır.
 
@@ -201,7 +212,7 @@ Sorgu performansının ve veri kullanılabilirliğinin emin olmak için Time Ser
 
 [Time Series Insights önizleme Gezgini](./time-series-insights-update-explorer.md) ve [zaman serisi sorgusundan](./time-series-insights-update-tsq.md)verilerinize erişmenin yanı sıra, soğuk depoda depolanan Parquet dosyalarından verilerinize doğrudan de erişmek isteyebilirsiniz. Örneğin, bir Jupyter not defterindeki verileri okuyabilir, dönüştürebilir ve temizleyebilir, ardından Azure Machine Learning modelinizi aynı Spark iş akışında eğitebilmeniz için bunu kullanabilirsiniz.
 
-Verilere doğrudan Azure Storage hesabınızdan erişmek için, Time Series Insights Preview verilerinizi depolamak için kullanılan hesaba okuma erişiminizin olması gerekir. Daha sonra seçili verileri, aşağıda açıklanan Parquet `PT=Time` dosyasının oluşturulma zamanına göre, [Parquet dosya biçimi](#parquet-file-format-and-folder-structure) bölümünde bulabilirsiniz.  Depolama Hesabınıza yönelik okuma erişiminin etkinleştirilmesi hakkında daha fazla bilgi için bkz. [depolama hesabı kaynaklarınıza erişimi yönetme](../storage/blobs/storage-manage-access-to-resources.md).
+Verilere doğrudan Azure Storage hesabınızdan erişmek için, Time Series Insights Preview verilerinizi depolamak için kullanılan hesaba okuma erişiminizin olması gerekir. Daha sonra seçili verileri, aşağıda açıklanan Parquet dosyasının oluşturulma zamanına göre, `PT=Time` [Parquet dosya biçimi](#parquet-file-format-and-folder-structure) bölümünde bulabilirsiniz.  Depolama Hesabınıza yönelik okuma erişiminin etkinleştirilmesi hakkında daha fazla bilgi için bkz. [depolama hesabı kaynaklarınıza erişimi yönetme](../storage/blobs/storage-manage-access-to-resources.md).
 
 #### <a name="data-deletion"></a>Veri silme
 
@@ -215,7 +226,7 @@ Parquet dosya türü hakkında daha fazla bilgi için, [Parquet belgelerini](htt
 
 Time Series Insights önizlemesi verilerinizin kopyalarını aşağıdaki gibi depolar:
 
-* Birincisi, ilk kopya alma zamanına göre bölümlendirilir ve verileri kabaca gelişme sırasıyla depolar. Bu veriler şu `PT=Time` klasörde bulunur:
+* Birincisi, ilk kopya alma zamanına göre bölümlendirilir ve verileri kabaca gelişme sırasıyla depolar. Bu veriler şu klasörde bulunur `PT=Time` :
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
@@ -223,20 +234,20 @@ Time Series Insights önizlemesi verilerinizin kopyalarını aşağıdaki gibi d
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-Her iki durumda da, Parquet dosyasının Time özelliği blob oluşturulma zamanına karşılık gelir. `PT=Time` Klasördeki veriler, dosyaya yazıldıktan sonra hiçbir değişiklik olmadan korunur. `PT=TsId` Klasördeki veriler, zaman içinde sorgu için iyileştirilebilir ve statik değildir.
+Her iki durumda da, Parquet dosyasının Time özelliği blob oluşturulma zamanına karşılık gelir. Klasördeki veriler, `PT=Time` dosyaya yazıldıktan sonra hiçbir değişiklik olmadan korunur. `PT=TsId`Klasördeki veriler, zaman içinde sorgu için iyileştirilebilir ve statik değildir.
 
 > [!NOTE]
 >
 > * `<YYYY>`dört basamaklı bir yıl gösterimine eşlenir.
 > * `<MM>`iki basamaklı bir ay gösterimiyle eşlenir.
-> * `<YYYYMMDDHHMMSSfff>`dört basamaklı yıl`YYYY`(), iki basamaklı ay (`MM`), iki basamaklı gün (`DD`), iki basamaklı saat (`HH`), iki basamaklı dakika (`MM`), iki basamaklı saniye (`SS`) ve üç basamaklı milisaniyelik (`fff`) ile zaman damgası gösterimine eşler.
+> * `<YYYYMMDDHHMMSSfff>`dört basamaklı yıl ( `YYYY` ), iki basamaklı ay (), iki basamaklı gün (), iki basamaklı `MM` `DD` saat ( `HH` ), iki basamaklı dakika ( `MM` ), iki basamaklı saniye ( `SS` ) ve üç basamaklı milisaniyelik ( `fff` ) ile zaman damgası gösterimine eşler.
 
 Time Series Insights Preview olayları, aşağıdaki gibi, Parquet dosya içeriklerine eşlenir:
 
 * Her olay tek bir satırla eşlenir.
 * Her satır, bir olay zaman damgasıyla **zaman damgası** sütunu içerir. Zaman damgası özelliği hiçbir zaman null değildir. Olay kaynağında zaman damgası özelliği belirtilmemişse, varsayılan olarak **olay sıraya alınan zaman** . Depolanan zaman damgası her zaman UTC olarak kullanılır.
-* Her satır, Time Series Insights ortamı oluşturulduğunda tanımlanan zaman serisi KIMLIĞI (TSıD) sütununu içerir. TSıD Özellik adı, `_string` soneki içerir.
-* Telemetri verileri olarak gönderilen diğer tüm özellikler, özellik türüne bağlı olarak, (dize `_string` ), `_bool` (Boolean), `_datetime` (DateTime) veya `_double` (Double) ile biten sütun adlarıyla eşleştirilir.
+* Her satır, Time Series Insights ortamı oluşturulduğunda tanımlanan zaman serisi KIMLIĞI (TSıD) sütununu içerir. TSıD Özellik adı, soneki içerir `_string` .
+* Telemetri verileri olarak gönderilen diğer tüm özellikler `_string` , özellik türüne bağlı olarak, (dize), ( `_bool` Boolean), `_datetime` (DateTime) veya `_double` (Double) ile biten sütun adlarıyla eşleştirilir.
 * Bu eşleme şeması, **V = 1** olarak başvurulan ve aynı ada sahip temel klasörde depolanan dosya biçiminin ilk sürümü için geçerlidir. Bu özellik geliştikçe, bu eşleme şeması değişebilir ve başvuru adı artar.
 
 ## <a name="next-steps"></a>Sonraki adımlar

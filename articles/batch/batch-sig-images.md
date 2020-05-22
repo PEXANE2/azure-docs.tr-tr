@@ -3,12 +3,12 @@ title: Özel bir havuz oluşturmak için paylaşılan görüntü galerisini kull
 description: Uygulamanız için ihtiyaç duyduğunuz yazılımı ve verileri içeren işlem düğümlerine özel görüntüler sağlamak için paylaşılan görüntü Galerisi ile bir Batch havuzu oluşturun. Özel görüntüler, işlem düğümlerini toplu iş yüklerinizi çalıştıracak şekilde yapılandırmanın etkili bir yoludur.
 ms.topic: article
 ms.date: 08/28/2019
-ms.openlocfilehash: 1a26aaecc5da0ef348b720919b04d86f8fcfbc70
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 1f03d637ffc6e443fdd429ca7fd647603b668cc1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743570"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780496"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Özel bir havuz oluşturmak için paylaşılan görüntü galerisini kullanma
 
@@ -83,7 +83,7 @@ Yönetilen görüntünüzü başarıyla oluşturduktan sonra, özel görüntün�
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Azure CLı kullanarak paylaşılan görüntüden havuz oluşturma
 
-Azure CLı kullanarak paylaşılan Görüntinizden bir havuz oluşturmak için `az batch pool create` komutunu kullanın. `--image` Alanda PAYLAŞıLAN görüntü kimliğini belirtin. İşletim sistemi türü ve SKU 'sunun, tarafından belirtilen sürümlerle eşleştiğinden emin olun`--node-agent-sku-id`
+Azure CLı kullanarak paylaşılan Görüntinizden bir havuz oluşturmak için `az batch pool create` komutunu kullanın. Alanda paylaşılan görüntü KIMLIĞINI belirtin `--image` . İşletim sistemi türü ve SKU 'sunun, tarafından belirtilen sürümlerle eşleştiğinden emin olun`--node-agent-sku-id`
 
 > [!NOTE]
 > Azure AD 'yi kullanarak kimlik doğrulaması yapmanız gerekir. Paylaşılan anahtar kimlik doğrulaması kullanırsanız, bir kimlik doğrulama hatası alırsınız.  
@@ -214,8 +214,8 @@ Paylaşılan bir görüntü kullanarak yüzlerce veya binlerce VM veya daha fazl
 
 * **Paylaşılan görüntü Galerisi çoğaltma numaraları.**  En fazla 600 örneği olan her havuz için en az bir çoğaltma tutmanız önerilir. Örneğin, 3000 VM 'Ler içeren bir havuz oluşturuyorsanız, resminizin en az 5 çoğaltmasını tutmanız gerekir. Daha iyi performans için en düşük gereksinimlerden her zaman daha fazla çoğaltma tutulması önerilir.
 
-* **Yeniden boyutlandırma zaman aşımı.** Havuzunuz sabit sayıda düğüm içeriyorsa (otomatik ölçeklendirme yoksa) havuz boyutuna bağlı olarak havuzun `resizeTimeout` özelliğini arttırın. Her 1000 VM için önerilen yeniden boyutlandırma zaman aşımı en az 15 dakikadır. Örneğin, 2000 VM içeren bir havuz için önerilen yeniden boyutlandırma zaman aşımı süresi en az 30 dakikadır.
+* **Yeniden boyutlandırma zaman aşımı.** Havuzunuz sabit sayıda düğüm içeriyorsa (otomatik ölçeklendirme yoksa) havuz `resizeTimeout` boyutuna bağlı olarak havuzun özelliğini arttırın. Her 1000 VM için önerilen yeniden boyutlandırma zaman aşımı en az 15 dakikadır. Örneğin, 2000 VM içeren bir havuz için önerilen yeniden boyutlandırma zaman aşımı süresi en az 30 dakikadır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Toplu Işe yönelik ayrıntılı genel bakış için bkz. [Batch ile büyük ölçekli paralel işlem çözümleri geliştirme](batch-api-basics.md).
+* Toplu Iş hakkında ayrıntılı genel bakış için bkz. [Batch hizmeti iş akışı ve kaynaklar](batch-service-workflow-features.md).

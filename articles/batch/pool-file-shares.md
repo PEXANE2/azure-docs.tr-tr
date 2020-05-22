@@ -3,12 +3,12 @@ title: Azure Batch havuzları için Azure dosya paylaşma
 description: Azure Batch içindeki bir Linux veya Windows havuzundaki işlem düğümlerinden Azure dosyaları paylaşımından bağlama.
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 0aa8c8f6dcf1114688e6abaf1a17f2e8af6fa4fe
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723502"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780280"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Bir Batch havuzu ile Azure dosya paylaşma kullanma
 
@@ -172,6 +172,5 @@ batch_service_client.task.add(job_id, task)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Toplu Işteki verileri okuma ve yazma diğer seçenekleri için bkz. [Batch özelliğine genel bakış](batch-api-basics.md) ve [kalıcı iş ve görev çıktısı](batch-task-output.md).
-
+* Toplu Işteki verileri okuma ve yazma diğer seçenekleri için bkz. [devam eden iş ve görev çıktısı](batch-task-output.md).
 * Toplu iş iş yükleri için dosya sistemleri dağıtmak üzere [shipbahçe tariflerini](https://github.com/Azure/batch-shipyard/tree/master/recipes) de Içeren [Batch shipbahçe](https://github.com/Azure/batch-shipyard) araç seti ' ne bakın.

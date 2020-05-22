@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422375"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774349"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakma
 
@@ -49,7 +49,7 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
 >   Ancak, ilke yeniden uygulandıktan hemen sonra uzak oturumdan vazgeçmeniz gerekir. Bu soruna yönelik kalıcı düzelme, bu bilgisayarda uygulanan ilkeyi değiştirmektir.
@@ -90,7 +90,7 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 
 [Uzak kayıt defteri](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)kullanmak için bu adımları izleyin.
 
-1.  Sorun giderme sanal makinesinde, kayıt defteri düzenleyicisini başlatın ve ardından **Dosya** > **Connect ağ kayıt defteri**' ne gidin.
+1.  Sorun giderme sanal makinesinde, kayıt defteri düzenleyicisini başlatın ve ardından **Dosya**  >  **Connect ağ kayıt defteri**' ne gidin.
 
 2.  *Hedef makine*\System dalını açın ve aşağıdaki değerleri belirtin:
 

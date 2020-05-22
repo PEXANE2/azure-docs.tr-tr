@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 296c8e2dfe99e3b0aea66f364ac6f6d9b2f60a1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 440f46cbeebee1b552e64eba4ebc8787a47edf56
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272500"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779220"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell kullanarak silinmiş App Service uygulamasını geri yükleme
 
@@ -29,7 +29,7 @@ Bazı müşteriler, silinen uygulamaların listesini almanın başarısız oldu�
 
 ## <a name="list-deleted-apps"></a>Silinen uygulamaları listeleme
 
-Silinen uygulamalar koleksiyonunu almak için kullanabilirsiniz `Get-AzDeletedWebApp`.
+Silinen uygulamalar koleksiyonunu almak için kullanabilirsiniz `Get-AzDeletedWebApp` .
 
 Silinen belirli bir uygulamayla ilgili ayrıntılar için şunları kullanabilirsiniz:
 
@@ -48,8 +48,10 @@ Ayrıntılı bilgiler şunları içerir:
 - **Silme zamanı**: uygulamanın ne zaman silindiği  
 
 ## <a name="restore-deleted-app"></a>Silinen uygulamayı geri yükle
+>[!NOTE]
+> `Restore-AzDeletedWebApp`işlev uygulamaları için desteklenmez.
 
-Geri yüklemek istediğiniz uygulama tanımlandıktan sonra öğesini kullanarak `Restore-AzDeletedWebApp`geri yükleyebilirsiniz.
+Geri yüklemek istediğiniz uygulama tanımlandıktan sonra öğesini kullanarak geri yükleyebilirsiniz `Restore-AzDeletedWebApp` .
 
 ```powershell
 Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
@@ -64,7 +66,7 @@ Komut girişleri şunlardır:
 - **Ad**: uygulamanın adı, genel olarak benzersiz olmalıdır.
 - **Targetappserviceplanname**: uygulamaya bağlı App Service plan
 
-Varsayılan `Restore-AzDeletedWebApp` olarak, hem uygulama yapılandırmanızı hem de içeriği geri yükler. Yalnızca içeriği geri yüklemek istiyorsanız bu komutu kullanın `-RestoreContentOnly` .
+Varsayılan olarak `Restore-AzDeletedWebApp` , hem uygulama yapılandırmanızı hem de içeriği geri yükler. Yalnızca içeriği geri yüklemek istiyorsanız `-RestoreContentOnly` Bu komutu kullanın.
 
 > [!NOTE]
 > Uygulama üzerinde barındırılıyorsa ve sonra bir App Service Ortamı silinirse, bu, yalnızca karşılık gelen App Service Ortamı hala mevcutsa geri yüklenebilir.

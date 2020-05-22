@@ -3,12 +3,12 @@ title: Azure Batch havuzundaki düğüm uç noktalarını yapılandırma
 description: Azure Batch havuzundaki işlem düğümlerinde SSH veya RDP bağlantı noktalarına erişimi yapılandırma veya devre dışı bırakma.
 ms.topic: how-to
 ms.date: 02/13/2018
-ms.openlocfilehash: 4b990e4223f37f71d453cd91b9b3a20bd70d0bbb
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723519"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780301"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch havuzundaki işlem düğümlerine uzaktan erişimi yapılandırma veya devre dışı bırakma
 
@@ -120,7 +120,5 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 - Azure 'daki NSG kuralları hakkında daha fazla bilgi için bkz. ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/security-overview.md).
-
-- Toplu Işe yönelik ayrıntılı genel bakış için bkz. [Batch ile büyük ölçekli paralel işlem çözümleri geliştirme](batch-api-basics.md).
-

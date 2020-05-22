@@ -3,12 +3,12 @@ title: Yönetilen görüntüden özel havuz sağlama
 description: Uygulamanıza yönelik yazılım ve verilerle işlem düğümleri sağlamak için yönetilen bir görüntü kaynağından bir Batch havuzu oluşturun.
 ms.topic: article
 ms.date: 09/16/2019
-ms.openlocfilehash: 10e3932bc6006e1d91fbc7e4cf58a5d98c043520
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b08c6a609516bcebaca64cf1c186d75887b098e3
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117327"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780215"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Bir sanal makine havuzu oluşturmak için yönetilen bir görüntü kullanma
 
@@ -21,7 +21,7 @@ Batch havuzunuzun sanal makineleri (VM 'Ler) için özel bir görüntü oluştur
 
 - **Yönetilen bir görüntü kaynağı**. Özel bir görüntü kullanarak bir sanal makine havuzu oluşturmak için, Batch hesabıyla aynı Azure aboneliği ve bölgesinde bir yönetilen görüntü kaynağı oluşturmanız veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır. Yönetilen bir görüntüyü hazırlama hakkında daha fazla bilgi ve adım için aşağıdaki bölüme bakın.
   - Oluşturduğunuz her havuz için benzersiz bir özel görüntü kullanın.
-  - Batch API 'Lerini kullanarak görüntüyle bir havuz oluşturmak için, bu formdan `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`olan görüntünün **kaynak kimliğini** belirtin. Portalı kullanmak için görüntünün **adını** kullanın.  
+  - Batch API 'Lerini kullanarak görüntüyle bir havuz oluşturmak için, bu formdan olan görüntünün **kaynak kimliğini** belirtin `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` . Portalı kullanmak için görüntünün **adını** kullanın.  
   - Yönetilen görüntü kaynağı, havuzun kullanım ömrü için mevcut olmalıdır ve havuz silindikten sonra kaldırılabilirler.
 
 - **Azure Active Directory (AAD) kimlik doğrulaması**. Batch istemci API 'sinin AAD kimlik doğrulamasını kullanması gerekir. AAD için Azure Batch desteği [Active Directory Batch hizmeti çözümlerinin kimlik doğrulaması konusunda](batch-aad-auth.md)belgelenmiştir.
@@ -107,10 +107,10 @@ Doğrudan Packer ile yönetilen bir görüntü kaynağı oluşturmak yalnızca k
 
 Yönetilen görüntüyü oluşturmak için kullanılan kaynağın, Özel görüntüye başvuran herhangi bir havuzun yaşam süreleri için mevcut olduğundan emin olun. Bunun yapılmaması, havuz ayırma hatalarına ve/veya yeniden boyutlandırmaya neden olabilir.
 
-Görüntü veya temel alınan kaynak kaldırılırsa şuna benzer bir hata alabilirsiniz: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`. Bu hatayı alırsanız, temeldeki kaynağın kaldırılmadığından emin olun.
+Görüntü veya temel alınan kaynak kaldırılırsa şuna benzer bir hata alabilirsiniz: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed` . Bu hatayı alırsanız, temeldeki kaynağın kaldırılmadığından emin olun.
 
 Sanal makine oluşturmak için Packer kullanma hakkında daha fazla bilgi için bkz. [Packer Ile Linux görüntüsü oluşturma](../virtual-machines/linux/build-image-with-packer.md) veya [Packer Ile Windows görüntüsü oluşturma](../virtual-machines/windows/build-image-with-packer.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Toplu Işe yönelik ayrıntılı genel bakış için bkz. [Batch ile büyük ölçekli paralel işlem çözümleri geliştirme](batch-api-basics.md).
+- Toplu Iş hakkında ayrıntılı genel bakış için bkz. [Batch hizmeti iş akışı ve kaynaklar](batch-service-workflow-features.md).

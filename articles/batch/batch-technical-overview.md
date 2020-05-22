@@ -1,14 +1,14 @@
 ---
 title: Azure Batch, bulutta büyük paralel işler çalıştırır
 description: Büyük ölçekli paralel ve HPC iş yükleri için Azure Batch hizmetini kullanma hakkında bilgi edinin
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116358"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779560"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch nedir?
 
@@ -74,7 +74,7 @@ Aşağıdaki diyagramda, istemci uygulamasının yanı sıra paralel iş yükün
 
 Bunun, Batch’i kullanma yollarından yalnızca biri olduğunu ve bu senaryoda yalnızca bazı özelliklerin açıklandığını unutmayın. Örneğin, her işlem düğümünde [birden fazla görevi paralel olarak](batch-parallel-node-tasks.md) yürütebilirsiniz. Veya [iş hazırlama ve tamamlama görevlerini](batch-job-prep-release.md) kullanarak düğümleri işleriniz için hazırlayabilir, daha sonra temizleyebilirsiniz. 
 
-Havuzlar, düğümler, işler ve görevler ile Batch uygulamanızı oluştururken kullanabileceğiniz birçok API özelliği hakkında daha ayrıntılı bilgi için bkz. [Geliştiriciler için Batch özelliğine genel bakış](batch-api-basics.md). Ayrıca en son [Toplu İşlem hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/?product=batch)’ne bakın.
+Havuzlar, düğümler, işler ve görevler gibi özelliklere genel bir bakış için bkz. [Batch hizmeti iş akışı ve birincil kaynaklar](batch-service-workflow-features.md) . Ayrıca en son [Toplu İşlem hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/?product=batch)’ne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

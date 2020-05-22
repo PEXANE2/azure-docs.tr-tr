@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesini kullanma
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
-ms.openlocfilehash: 64be872e4e76545c015378417410cbbfad95ebfd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c017e9422733069ffd93f6dff72ecb884da057c4
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680670"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779959"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesi kullanma (Önizleme)
 
@@ -64,4 +64,4 @@ Her küme için Truth kaynakları olarak birden çok git deposu kullanıyorsanı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Küme yapılandırmasını yönetmek için Azure Ilkesini kullanma](./use-azure-policy.md)
+* [Arc etkin Kubernetes kümelerine sahip kapsayıcılar için Azure Izleyici 'yi ayarlama](./deploy-azure-monitor-for-containers.md)

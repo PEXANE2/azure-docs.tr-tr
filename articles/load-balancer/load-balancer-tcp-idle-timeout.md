@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: d0bb73b58aa23e5f7eb784772acf37b05df463ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09d15877088fb6356419a9d31f8bef3164e76029
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79456837"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780594"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer için TCP boşta kalma zaman aşımı ayarlarını yapılandırma
 
@@ -26,7 +26,7 @@ ms.locfileid: "79456837"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure PowerShell modülü 5.4.1 veya sonraki bir sürümünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure ile bir bağlantı oluşturmak için öğesini `Connect-AzAccount` de çalıştırmanız gerekir.
+PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure PowerShell modülü 5.4.1 veya sonraki bir sürümünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için öğesini de çalıştırmanız gerekir.
 
 ## <a name="tcp-idle-timeout"></a>TCP boşta kalma zaman aşımı
 Azure Load Balancer için boşta kalma zaman aşımı ayarı 4 dakika ila 30 dakika. Varsayılan olarak, 4 dakikaya ayarlanır. İşlem yapılmayan bir süre, zaman aşımı değerinden uzunsa, TCP veya HTTP oturumunun istemci ile bulut hizmetiniz arasında korunduğundan emin olmaz.
@@ -42,6 +42,10 @@ TCP etkin tutma, pil ömrünün kısıtlama olmadığı senaryolar için geçerl
 ![TCP zaman aşımı](./media/load-balancer-tcp-idle-timeout/image1.png)
 
 Aşağıdaki bölümlerde, genel IP ve yük dengeleyici kaynakları için boşta kalma zaman aşımı ayarlarının nasıl değiştirileceği açıklanır.
+
+>[!NOTE]
+> TCP boşta kalma zaman aşımı, UDP protokolünde Yük Dengeleme kurallarını etkilemez.
+
 
 ## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Örnek düzeyi genel IP 'niz için TCP zaman aşımını 15 dakikaya yapılandırın
 

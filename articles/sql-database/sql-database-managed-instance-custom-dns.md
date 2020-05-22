@@ -3,7 +3,7 @@ title: Yönetilen örnek özel DNS
 description: Bu konu, Azure SQL veritabanı yönetilen örneği ile özel bir DNS için yapılandırma seçeneklerini açıklamaktadır.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 07/17/2019
-ms.openlocfilehash: 9c98176413f858d236902c332553d47f749aa3c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b27d316114b84434a84fc8226eba9328a803dc8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247087"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774376"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Azure SQL Veritabanı Yönetilen Örneği için Özel DNS yapılandırma
 
@@ -25,7 +25,7 @@ Azure SQL veritabanı yönetilen örneği bir Azure [sanal ağı (VNet)](../virt
 Yönetilen örnek, iç işleyişi için aynı DNS 'yi kullandığından, özel DNS sunucusunu ortak etki alanı adlarını çözümleyebilecek şekilde yapılandırın.
 
 > [!IMPORTANT]
-> Her zaman posta sunucusu için tam etki alanı adı (FQDN), SQL Server örneği ve diğer hizmetler için, özel DNS bölgeniz içinde olsalar bile kullanın. Örneğin, doğru `smtp.contoso.com` `smtp` çözümlenmeyeceği için posta sunucunuz için kullanın. Aynı sanal ağ içinde SQL VM 'lerine bağlı sunucu veya çoğaltma oluşturmak için Ayrıca bir FQDN ve varsayılan DNS soneki gerekir. Örneğin, `SQLVM.internal.cloudapp.net`. Daha fazla bilgi için, bkz. [kendı DNS sunucunuzu kullanan ad çözümlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server).
+> Her zaman posta sunucusu için tam etki alanı adı (FQDN), SQL Server örneği ve diğer hizmetler için, özel DNS bölgeniz içinde olsalar bile kullanın. Örneğin, `smtp.contoso.com` doğru çözümlenmeyeceği için posta sunucunuz için kullanın `smtp` . Aynı sanal ağ içinde SQL VM 'lerine bağlı sunucu veya çoğaltma oluşturmak için Ayrıca bir FQDN ve varsayılan DNS soneki gerekir. Örneğin, `SQLVM.internal.cloudapp.net`. Daha fazla bilgi için, bkz. [kendı DNS sunucunuzu kullanan ad çözümlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server).
 
 > [!IMPORTANT]
 > Sanal ağ DNS sunucularının güncelleştirilmesi, yönetilen örneği hemen etkilemez. Yönetilen örnek DNS yapılandırması, DHCP kira süresi dolduktan veya platform yükseltildikten sonra, hangisi önce gerçekleşirse güncellenir. **Kullanıcıların, ilk yönetilen örneğini oluşturmadan önce sanal ağ DNS yapılandırmalarını ayarlaması önerilir.**

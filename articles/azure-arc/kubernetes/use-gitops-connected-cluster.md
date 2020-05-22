@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin küme yapılandırması (Önizleme) için Gilar 'ı kullanma
 keywords: Giüstler, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: e945a1d39edb6dad43e66ac492eb1e5c36ff58e1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 954c77503e8adacc4cd27b25b68b50cac1f80458
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684204"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779724"
 ---
 # <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>Azure yay etkin bir yapılandırma (Önizleme) için Gilar 'ı kullanma
 
@@ -31,7 +31,7 @@ Bu başlangıç kılavuzu, Küme Yöneticisi kapsamına sahip bir yapılandırma
 
 ## <a name="create-a-configuration"></a>Yapılandırma oluşturma
 
-- Örnek depo:<https://github.com/slack/cluster-config>
+- Örnek depo:<https://github.com/Azure/arc-k8s-demo>
 
 Örnek depo, birkaç ad alanı sağlamak, ortak bir iş yükü dağıtmak ve takıma özgü bazı yapılandırmalar sağlamak isteyen bir küme operatörü etrafında yapılandırılır. Bu depoyu kullanmak, kümenizde aşağıdaki kaynakları oluşturur:
 
@@ -40,7 +40,7 @@ Bu başlangıç kılavuzu, Küme Yöneticisi kapsamına sahip bir yapılandırma
  **configmap:**`team-a/endpoints`
 
 `config-agent`Her 30 saniyede Azure 'un yeni veya güncelleştirilmiş olduğunu yoklar `sourceControlConfiguration` .  Bu, `config-agent` Yeni veya güncelleştirilmiş bir yapılandırmayı almak için gereken en uzun süredir.
-Özel bir depoyu ilişkilendirirken, [özel bir git deposundan yapılandırma uygulama](https://github.com/Azure/azure-arc-kubernetes-preview/blob/master/docs/use-gitops-in-connected-cluster.md#apply-configuration-from-a-private-git-repository) adımlarını da tamamlacağınızı güvence altına almanız gerekir.
+Özel bir depoyu ilişkilendirirken, [özel bir git deposundan yapılandırma uygulama](#apply-configuration-from-a-private-git-repository) adımlarını da tamamlacağınızı güvence altına almanız gerekir.
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 
@@ -145,9 +145,9 @@ Yapılandırma oluşturmayı özelleştirmek için birkaç ek parametre aşağı
 
 * EnableHelmOperator değeri true ise, operatorInstanceName + operatorNamespace dizeleri 47 karakteri aşamaz.  Bu sınıra bağlı kaldıysanız, şu hatayı alırsınız:
 
-```console
-{"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
-```
+   ```console
+   {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
+   ```
 
 Daha fazla bilgi için bkz. [Flox belgeleri](https://aka.ms/FluxcdReadme).
 

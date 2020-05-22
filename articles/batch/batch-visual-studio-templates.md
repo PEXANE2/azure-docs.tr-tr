@@ -4,21 +4,19 @@ description: Visual Studio proje şablonlarının Azure Batch üzerinde yoğun i
 ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0dac39d1ff463dc4ba5efae50c7fc1ea9d36c829
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 9332684008b45aea39e07d8225bae6450ba57de5
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725831"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779509"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Toplu Iş çözümlerini başlatmak için Visual Studio proje şablonlarını kullanın
 
 Batch için **Iş Yöneticisi** ve **görev işlemcisi Visual Studio şablonları** , işlem için yoğun iş yüklerinizi en az çaba miktarı ile uygulamanıza ve çalıştırmanıza yardımcı olacak kod sağlar. Bu belgede bu şablonlar açıklanmakta ve bunların nasıl kullanılacağına ilişkin yönergeler sağlanmaktadır.
 
 > [!IMPORTANT]
-> Bu makalede yalnızca bu iki şablon için geçerli olan bilgiler ele alınmaktadır ve Batch hizmeti ile bununla ilgili önemli kavramlar hakkında bilgi sahibi olduğunuz varsayılır: havuzlar, işlem düğümleri, işler ve görevler, İş Yöneticisi görevleri, ortam değişkenleri ve diğer ilgili bilgiler. [Azure Batch temel](batch-technical-overview.md) bilgileri ve [geliştiriciler için Batch özelliğine genel bakış](batch-api-basics.md)hakkında daha fazla bilgi edinebilirsiniz.
-> 
-> 
+> Bu makalede yalnızca bu iki şablon için geçerli olan bilgiler ele alınmaktadır ve Batch hizmeti ile bununla ilgili önemli kavramlar hakkında bilgi sahibi olduğunuz varsayılır: havuzlar, işlem düğümleri, işler ve görevler, İş Yöneticisi görevleri, ortam değişkenleri ve diğer ilgili bilgiler. Azure Batch ve [Batch hizmeti iş akışı ve kaynaklarının](batch-service-workflow-features.md) [temelleri hakkında](batch-technical-overview.md) daha fazla bilgi edinebilirsiniz. 
 
 ## <a name="high-level-overview"></a>Yüksek düzey genel bakış
 Iş Yöneticisi ve görev Işlemcisi şablonları, iki yararlı bileşen oluşturmak için kullanılabilir:
@@ -69,7 +67,7 @@ Iş Yöneticisi şablonu, aşağıdaki eylemleri gerçekleştirebilecek bir iş 
 * Bu görevleri toplu Iş üzerinde çalışacak şekilde gönderebilirsiniz.
 
 > [!NOTE]
-> İş Yöneticisi görevleri hakkında daha fazla bilgi için bkz. [geliştiriciler Için Batch özelliğine genel bakış](batch-api-basics.md#job-manager-task).
+> İş Yöneticisi görevleri hakkında daha fazla bilgi için bkz. [işler ve görevler](jobs-and-tasks.md#job-manager-task).
 > 
 > 
 
@@ -188,7 +186,7 @@ Iş Yöneticisi şablonuyla uygulanan bir iş Yöneticisi görevi olası üç ç
 
 İş Yöneticisi görev hatası durumunda, bazı görevler yine de hata yapılmadan önce hizmete eklenmiş olabilir. Bu görevler normal olarak çalışır. Bu kod yolu hakkında tartışmak için yukarıdaki "Iş Bölümlendirici hatası" başlığına bakın.
 
-Özel durumlar tarafından döndürülen tüm bilgiler stdout. txt ve stderr. txt dosyalarına yazılır. Daha fazla bilgi için bkz. [hata işleme](batch-api-basics.md#error-handling).
+Özel durumlar tarafından döndürülen tüm bilgiler stdout. txt ve stderr. txt dosyalarına yazılır. Daha fazla bilgi için bkz. [hata işleme](error-handling.md).
 
 ### <a name="client-considerations"></a>İstemci konuları
 Bu bölümde, bu şablona dayalı bir iş Yöneticisi çağrılırken bazı istemci uygulama gereksinimleri açıklanmaktadır. Parametreleri ve ortam ayarlarını geçirme hakkında ayrıntılı bilgi için [istemci kodundan parametreleri ve ortam değişkenlerini](#pass-environment-settings) geçirme konusuna bakın.

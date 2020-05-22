@@ -5,21 +5,21 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39c4674da2ddf63c5fab8b39e16a0cc0d9f299ac
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 90cd6476992eed30abbe9faca5cc66405aa40079
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726596"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780192"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch ile düşük öncelikli VM’ler kullanma
 
 Azure Batch, toplu iş yüklerinin maliyetini azaltmak için düşük öncelikli sanal makineler (VM) sağlar. Düşük öncelikli VM 'Ler, çok düşük maliyetli bir işlem gücünün kullanılmasını sağlayarak yeni toplu Iş yükü türlerini mümkün hale getirir.
- 
+
 Düşük öncelikli VM 'Ler, Azure 'daki fazlalık kapasiteden yararlanır. Havuzlarınızda düşük öncelikli VM 'Ler belirttiğinizde Azure Batch bu fazlalığı kullanılabilir olduğunda kullanabilir.
- 
+
 Düşük öncelikli VM 'Lerin kullanılması için zorunluluğunu getirir, kullanılabilir kapasiteye bağlı olarak, bu VM 'Lerin ayrılmayabilir veya herhangi bir zamanda yok edilebilir hale gelebilir. Bu nedenle, düşük öncelikli VM 'Ler, belirli iş yükü türleri için en uygundur. İş tamamlama süresinin esnek olduğu ve çalışmanın birçok VM 'ye dağıtıldığı, toplu iş ve zaman uyumsuz işleme iş yükleri için düşük öncelikli VM 'Ler kullanın.
- 
+
 Düşük öncelikli VM 'Ler, ayrılmış VM 'lerle karşılaştırıldığında önemli ölçüde azaltılan bir fiyatla sunulur. Fiyatlandırma ayrıntıları için bkz. [Batch fiyatlandırması](https://azure.microsoft.com/pricing/details/batch/).
 
 > [!NOTE]
@@ -28,7 +28,6 @@ Düşük öncelikli VM 'Ler, ayrılmış VM 'lerle karşılaştırıldığında 
 > Azure Batch havuzları, [toplu API 'lerin ve araçların](https://docs.microsoft.com/azure/batch/batch-apis-tools)yeni sürümleriyle birlikte genel kullanıma sunulmakta olan birkaç ay Içinde spot VM 'leri desteklemeye başlar. Spot VM desteği kullanılabilir olduğunda, düşük öncelikli VM 'Ler kullanım dışı olacaktır, ancak sanal makinelere geçiş için yeterli zamana izin vermek üzere en az 12 ay boyunca geçerli API 'Ler ve araç sürümleri kullanılarak desteklenmeye devam edecektir. 
 >
 > [Bulut hizmeti yapılandırma](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) havuzları Için Spot VM 'ler desteklenmez. Spot VM 'Leri kullanmak için, bulut hizmeti havuzlarının [sanal makine yapılandırma](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) havuzlarına geçirilmesi gerekir.
-
 
 ## <a name="use-cases-for-low-priority-vms"></a>Düşük öncelikli VM 'Ler için kullanım örnekleri
 
@@ -72,8 +71,7 @@ Azure Batch, düşük öncelikli VM 'Lerin kullanımını ve avantajlarından fa
     Düşük öncelikli VM 'lere yönelik kota, düşük öncelikli VM 'Lerin maliyeti daha düşük olduğundan adanmış VM 'lerin kotasından daha yüksektir. Daha fazla bilgi için bkz. [Batch hizmeti kotaları ve limitleri](batch-quota-limit.md#resource-quotas).    
 
 > [!NOTE]
-> Düşük öncelikli VM 'Ler, [Kullanıcı aboneliği modunda](batch-api-basics.md#account)oluşturulan Batch hesapları için şu anda desteklenmiyor.
->
+> Düşük öncelikli VM 'Ler, [Kullanıcı aboneliği modunda](accounts.md)oluşturulan Batch hesapları için şu anda desteklenmiyor.
 
 ## <a name="create-and-update-pools"></a>Havuz oluşturma ve güncelleştirme
 
@@ -183,6 +181,6 @@ Azure portal ölçümleri görüntülemek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Batch kullanmaya hazırlanan herkes için gerekli bilgileri içeren [Geliştiriciler için Batch özelliğine genel bakış](batch-api-basics.md) konusunu okuyun. Bu makalede havuzlar, düğümler, işler ve görevler gibi Batch hizmet kaynakları ve Batch uygulamanızı oluştururken kullanabileceğiniz birçok API özelliği hakkında daha ayrıntılı bilgi verilmektedir.
+* [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 * Batch çözümleri oluşturmak için kullanılabilen [Batch API’leri ve araçları](batch-apis-tools.md) hakkında bilgi alın.
 * Düşük öncelikli VM 'lerden sanal makinelere kadar geçiş yapmak için başlatın. **Bulut hizmeti yapılandırma** havuzlarıyla düşük öncelikli VM 'ler kullanıyorsanız, **sanal makine yapılandırma** havuzlarına taşımayı planlayın.

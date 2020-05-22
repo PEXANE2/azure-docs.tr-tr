@@ -1,15 +1,14 @@
 ---
 title: Öğretici-Node. js için Azure Batch istemci kitaplığını kullanma
 description: Temel Azure Batch kavramlarını öğrenin ve Node.js kullanarak basit bir çözüm derleyin.
-ms.assetid: ''
 ms.topic: tutorial
 ms.date: 05/22/2017
-ms.openlocfilehash: 57b411e3c9c96aab31e85c4022a5954f7215cf02
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724216"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780172"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js için Batch SDK'sını kullanmaya başlama
 
@@ -346,6 +345,6 @@ Portalda görevler ve iş durumları hakkında ayrıntılı görünümler bulunu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hizmetle yeni tanışıyorsanız önerdiğimiz [Azure Batch özelliklerine genel bakış](batch-api-basics.md) makalesini gözden geçirin.
+- [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 - Batch API’sini keşfetmek için bkz. [Batch Node.js başvurusu](/javascript/api/overview/azure/batch).
 

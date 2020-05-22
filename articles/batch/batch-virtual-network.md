@@ -4,12 +4,12 @@ description: Bir Azure sanal ağında, işlem düğümlerinin bir dosya sunucusu
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ca9a8bb60ecbea38da7dfdb44123d7201d6a112
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 5e973968e3396fbe714be5540244b867b7092e00
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726290"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779576"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
 
@@ -64,5 +64,5 @@ Kullanıcı tanımlı bir yol eklediğinizde, ilgili her Batch IP adresi ön eki
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Toplu Işe yönelik ayrıntılı genel bakış için bkz. [Batch ile büyük ölçekli paralel işlem çözümleri geliştirme](batch-api-basics.md).
+- [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 - Kullanıcı tanımlı yol oluşturma hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı yol oluşturma-Azure Portal](../virtual-network/tutorial-create-route-table-portal.md).

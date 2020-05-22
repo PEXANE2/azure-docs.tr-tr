@@ -4,12 +4,12 @@ description: Varsayılan Azure Batch kotaları, sınırları ve kısıtlamaları
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: f47f2df38a601c6359ed257a9787130ea95d2ac8
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b172800e6ed2a28315da3b45eb39f2207f8f1c16
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726579"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779997"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch hizmet kotaları ve limitleri
 
@@ -132,10 +132,10 @@ Bir Azure sanal ağında dağıtılan sanal makine yapılandırmasındaki toplu 
 Bu kaynaklar, Batch havuzu oluşturulurken sağlanan sanal ağı içeren abonelikte ayrılır. Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Büyük havuz dağıtımlarını bir sanal ağda planlarsanız, bu kaynaklar için aboneliğin kotalarını kontrol edin. Gerekirse, **Yardım + Destek**' i seçerek Azure Portal bir artış isteyin.
 
 
-## <a name="related-topics"></a>İlgili konular
-* [Azure portalı kullanarak Azure Batch hesabı oluşturma](batch-account-create-portal.md)
-* [Azure Batch özelliğe genel bakış](batch-api-basics.md)
-* [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md)
+## <a name="next-steps"></a>Sonraki adımlar
+* [Azure Portal kullanarak bir Azure Batch hesabı oluşturun](batch-account-create-portal.md).
+* [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
+* [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md)hakkında bilgi edinin.
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/

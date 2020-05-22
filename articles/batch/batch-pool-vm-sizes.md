@@ -4,12 +4,12 @@ description: Azure Batch havuzlarda işlem düğümleri için kullanılabilir VM
 ms.topic: how-to
 ms.date: 09/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: a299ce05caa02432f96dfbb5eb675bc2d6f82ab5
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2e0d403f405d58c0d7488ac6d0c306be2f2d79ea
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723723"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779161"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu seçme
 
@@ -86,5 +86,5 @@ Bulut hizmeti yapılandırmasındaki toplu iş havuzları aşağıdakiler **dı�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Toplu Işe yönelik ayrıntılı genel bakış için bkz. [Batch ile büyük ölçekli paralel işlem çözümleri geliştirme](batch-api-basics.md).
+* [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 * İşlem yoğunluklu VM boyutlarını kullanma hakkında daha fazla bilgi için bkz. [Batch havuzlarında RDMA özellikli veya GPU özellikli örnekler kullanma](batch-pool-compute-intensive-sizes.md).

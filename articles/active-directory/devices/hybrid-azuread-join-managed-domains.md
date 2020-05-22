@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcd00972c2da0d3d5dafe76a8619e0f0ccaedc19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b5d631143b839e052316490d3b3b89ca10469cb1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79239115"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778829"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Öğretici: Yönetilen etki alanları için hibrit Azure Active Directory'ye katılımı yapılandırma
 
@@ -30,11 +30,11 @@ Kuruluşunuzdaki bir kullanıcı gibi, bir cihaz da korumak istediğiniz çekird
 
 Bu makale, karma Azure AD JOIN 'e odaklanır.
 
-Cihazlarınızı Azure AD 'ye getirmek, bulut ve şirket içi kaynaklarınız genelinde çoklu oturum açma (SSO) ile Kullanıcı üretkenliğini en üst düzeye çıkarır. Bulut ve şirket içi kaynaklarınız için aynı anda [koşullu erişimle](../active-directory-conditional-access-azure-portal.md) erişimi güvenli hale getirebilirsiniz.
+Cihazlarınızı Azure AD 'ye getirmek, bulut ve şirket içi kaynaklarınız genelinde çoklu oturum açma (SSO) ile Kullanıcı üretkenliğini en üst düzeye çıkarır. Bulut ve şirket içi kaynaklarınız için aynı anda [koşullu erişimle](../conditional-access/howto-conditional-access-policy-compliant-device.md) erişimi güvenli hale getirebilirsiniz.
 
 Yönetilen bir ortamı, [sorunsuz çoklu oturum açma](../hybrid/how-to-connect-sso.md)ile [Parola karması eşitlemesi (PHS)](../hybrid/whatis-phs.md) veya [geçişli kimlik doğrulaması (PTA)](../hybrid/how-to-connect-pta.md) kullanarak dağıtabilirsiniz. Bu senaryolar, kimlik doğrulaması için bir federasyon sunucusu yapılandırmanızı gerektirmez.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Hibrit Azure AD'ye katılımı yapılandırma
@@ -153,11 +153,29 @@ Windows alt düzey cihazlarınızın karma Azure AD birleştirmesini, [Parola ka
 
 Windows alt düzey cihazlarını kaydettirmek için kuruluşların [Windows 10 olmayan bilgisayarlar Için Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554)yüklemesi gerekir. Windows 10 olmayan bilgisayarlar için Microsoft Workplace Join, Microsoft Indirme Merkezi ' nde bulunabilir.
 
-Paketi [Microsoft uç noktası Configuration Manager](/configmgr/)gibi bir yazılım dağıtım sistemi kullanarak dağıtabilirsiniz. Paket, `quiet` parametresiyle standart sessiz yükleme seçeneklerini destekler. Configuration Manager geçerli sürümü, tamamlanan kayıtları izleme özelliği gibi önceki sürümlerden daha fazla avantaj sunar.
+Paketi [Microsoft uç noktası Configuration Manager](/configmgr/)gibi bir yazılım dağıtım sistemi kullanarak dağıtabilirsiniz. Paket, parametresiyle standart sessiz yükleme seçeneklerini destekler `quiet` . Configuration Manager geçerli sürümü, tamamlanan kayıtları izleme özelliği gibi önceki sürümlerden daha fazla avantaj sunar.
 
 Yükleyici, kullanıcı bağlamında çalışan sistemde zamanlanmış bir görev oluşturur. Görev, Kullanıcı Windows 'da oturum açtığında tetiklenir. Görev, Azure AD ile kimlik doğrulamasından geçtikten sonra Kullanıcı kimlik bilgilerini kullanarak cihazı Azure AD ile sessizce birleştirir.
 
 ## <a name="verify-the-registration"></a>Kaydı doğrulama
+
+Cihaz durumunu bulup doğrulamak için 3 yol aşağıda verilmiştir:
+
+### <a name="locally-on-the-device"></a>Cihazda yerel olarak
+
+1. Windows PowerShell'i açın.
+2. `dsregcmd /status` yazın.
+3. Hem **Azureadkatılmış** hem de **Domainkatılmış** öğelerinin **Evet**olarak ayarlandığını doğrulayın.
+4. **DeviceID** 'yi kullanabilir ve Azure Portal veya PowerShell kullanarak hizmet durumunu karşılaştırabilirsiniz.
+
+### <a name="using-the-azure-portal"></a>Azure portalını kullanma
+
+1. [Doğrudan bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)kullanarak cihazlar sayfasına gidin.
+2. Cihazı bulma hakkında bilgi [, Azure Portal kullanarak cihaz kimliklerini yönetme](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)bölümünde bulunabilir.
+3. **Kayıtlı** sütun **bekliyor**Ifadesini IÇERIYORSA, karma Azure AD katılımı tamamlanmaz.
+4. **Kayıtlı** sütun bir **Tarih/saat**IÇERIYORSA, karma Azure AD katılımı tamamlanmıştır.
+
+### <a name="using-powershell"></a>PowerShell’i kullanma
 
 **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** kullanarak Azure kiracınızdaki cihaz kayıt durumunu doğrulayın. Bu cmdlet [Azure Active Directory PowerShell modülüdür](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
 
@@ -167,17 +185,43 @@ Hizmet ayrıntılarını denetlemek için **Get-MSolDevice** cmdlet 'ini kulland
 - **Devicetrusttype** değeri **etki alanına katılmış**. Bu ayar, Azure AD portalındaki **cihazlar** sayfasında **karma Azure AD 'ye katılmış** durumuna eşdeğerdir.
 - Koşullu erişimde kullanılan cihazlarda, **Enabled** değeri **true** 'Dur ve **devicetrustlevel** **yönetilir**.
 
-Hizmet ayrıntılarını kontrol etmek için:
-
 1. Windows PowerShell'i yönetici olarak açın.
-1. Azure `Connect-MsolService` kiracınıza bağlanmak için girin.  
-1. `get-msoldevice -deviceId <deviceId>` yazın.
-1. **Enabled** değerinin **True** olarak ayarlandığını doğrulayın.
+2. `Connect-MsolService`Azure kiracınıza bağlanmak için girin.
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Tüm karma Azure AD 'ye katılmış cihazları say ( **bekleme** durumu hariç)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>**Bekleme** durumundaki tüm karma Azure AD 'ye katılmış cihazları say
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Tüm karma Azure AD 'ye katılmış cihazları listeleyin
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>**Bekleme** durumundaki tüm karma Azure AD 'ye katılmış cihazları listeleyin
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>Tek bir cihazın ayrıntılarını listeleyin:
+
+1. Yazın `get-msoldevice -deviceId <deviceId>` (Bu, cihazda yerel olarak alınan **DeviceID** 'dir).
+2. **Enabled** değerinin **True** olarak ayarlandığını doğrulayın.
 
 ## <a name="troubleshoot-your-implementation"></a>Uygulamanızda sorun giderme
 
 Etki alanına katılmış Windows cihazlarına yönelik karma Azure AD katılımı tamamlanırken sorunlarla karşılaşırsanız, bkz.:
 
+- [Dsregcmd komutunu kullanan cihazların sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
 - [Karma Azure Active Directory katılmış cihazlarda sorun giderme](troubleshoot-hybrid-join-windows-current.md)
 - [Karma Azure Active Directory katılmış alt düzey cihazlarda sorun giderme](troubleshoot-hybrid-join-windows-legacy.md)
 

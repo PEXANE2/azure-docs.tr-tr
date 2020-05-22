@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc ile Azure Arc etkin bir Kubernetes kümesi bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
-ms.openlocfilehash: dd4e03ac6bdf2e4554f07f2aa5ffca78b1ed1230
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 690955f0e7d18f9a784b4c9a2fa1733442cb70dc
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725627"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780028"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
 
@@ -25,7 +25,7 @@ Aşağıdaki gereksinimlerin hazırlanaldığını doğrulayın:
 
 * Çalışır duruma sahip bir Kubernetes kümesi
 * Kubeconfig ve Cluster-admin erişimiyle erişmeniz gerekir. 
-* Ve komutlarıyla kullanılan Kullanıcı veya hizmet sorumlusu `az login` `az connectedk8s connect` ' Microsoft. Kubernetes/connectedkümeler ' kaynak türü üzerinde ' Read ' ve ' Write ' izinlerine sahip olmalıdır.
+* Ve komutlarıyla kullanılan Kullanıcı veya hizmet sorumlusu `az login` `az connectedk8s connect` ' Microsoft. Kubernetes/connectedkümeler ' kaynak türü üzerinde ' Read ' ve ' Write ' izinlerine sahip olmalıdır. Bu izinlere sahip olan "Kubernetes ekleme için Azure Arc" rolü, ekleme için Azure CLı ile kullanılan Kullanıcı veya hizmet sorumlusu üzerinde rol atamaları için kullanılabilir.
 * *Connectedk8s* ve *k8sconfiguration* uzantılarının en son sürümü
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler

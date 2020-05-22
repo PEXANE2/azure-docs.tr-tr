@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b1c755176a62b7e362707da093a899ae96cfe69a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 992aa8a4cb0ff31f7f1657be45fa1a64fdb27e7c
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128884"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780555"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -47,7 +47,7 @@ Bu katman değerlendirme, geliştirme ve test senaryoları için önerilir. Tek 
 
 ### <a name="basic-tier"></a>Temel katman
 
-Bu katman küçük tablolu modeller, sınırlı düzeyde kullanıcı eşzamanlılığı ve basit veri yenileme gereksinimlerine sahip olan üretim çözümleri için önerilir. Bu katmanda sorgu çoğaltma ölçeği genişletme *kullanılamıyor* . Perspektifler, çoklu bölümler ve DirectQuery tablolu model özellikleri bu katmanda *desteklenmez*.  
+Bu katman, daha küçük tablo modelleriyle, sınırlı Kullanıcı eşzamanlılığa ve basit veri yenileme gereksinimlerine sahip üretim çözümleri için önerilir. Bu katmanda sorgu çoğaltma ölçeği genişletme *kullanılamıyor* . Perspektifler, çoklu bölümler ve DirectQuery tablolu model özellikleri bu katmanda *desteklenmez*.  
 
 |Planlama  |QPU’lar  |Bellek (GB)  |
 |---------|---------|---------|
@@ -136,7 +136,7 @@ Toplam maliyet; seçtiğiniz bölge, katman, sorgu çoğaltmaları ve duraklatma
 
 ## <a name="built-on-sql-server-analysis-services"></a>SQL Server Analysis Services’ı temel alır
 
-Azure Analysis Services, SQL Server Analysis Services Enterprise Edition’da bulunan harika özelliklerin çoğu ile uyumludur. Azure Analysis Services, 1200 veya üzeri [uyumluluk düzeylerinde](analysis-services-compat-level.md) tablolu modelleri destekler. Tablolu modeller, Tablolu Model Betik Dili (TMSL) ve Tablolu Nesne Modeli (TOM) kodundaki tablolu meta veri nesne tanımları halinde geliştirilmiş ilişkisel modelleme yapılarıdır (model, tablolar, sütunlar). Bölümler, perspektifler, satır düzeyi güvenlik, çift yönlü ilişkiler ve çeviriler desteklenir\*. Çok boyutlu modeller ve *SharePoint için PowerPivot Azure Analysis Services desteklenmez.*
+Azure Analysis Services, SQL Server Analysis Services Enterprise Edition’da bulunan harika özelliklerin çoğu ile uyumludur. Azure Analysis Services, 1200 veya üzeri [uyumluluk düzeylerinde](analysis-services-compat-level.md) tablolu modelleri destekler. Tablolu modeller, Tablolu Model Betik Dili (TMSL) ve Tablolu Nesne Modeli (TOM) kodundaki tablolu meta veri nesne tanımları halinde geliştirilmiş ilişkisel modelleme yapılarıdır (model, tablolar, sütunlar). Bölümler, perspektifler, satır düzeyi güvenlik, çift yönlü ilişkiler ve çeviriler desteklenir \* . Çok boyutlu modeller ve *SharePoint için PowerPivot Azure Analysis Services desteklenmez.*
 
 Hem bellek içi hem de DirectQuery modlarında tablolu modeller desteklenir. Bellek içi modda (varsayılan) tablolu modeller birden çok veri kaynağını destekler. Model verileri yüksek oranda sıkıştırılmış ve bellek içinde önbelleğe alınmış olduğundan, bu mod büyük miktarlarda veriler üzerinde en hızlı sorgu yanıtını sağlar. Ayrıca, karmaşık veri kümeleri ve sorgular için en fazla esnekliği sağlar. Bölümleme, artımlı yükleri etkinleştirir, paralelleştirmeyi artırır ve bellek tüketimini azaltır. Hesaplanmış tablolar gibi diğer gelişmiş veri modelleme özellikleri ve tüm DAX işlevleri desteklenir. Veri kaynaklarından önbelleğe alınmış verileri güncelleştirmek için bellek içi modeller yenilenmelidir (işlenmelidir). Azure hizmet sorumlusu desteği sayesinde, PowerShell, TOM, TMSL ve REST kullanan katılımsız yenileme işlemleri, model verilerinizin her zaman güncel olduğundan emin olmanızı sağlar. 
 
@@ -159,7 +159,7 @@ Azure Analysis Services, birden fazla düzeyde hassas verileriniz için güvenli
 
 Sunucu düzeyinde Analysis Services, güvenlik duvarı, Azure kimlik doğrulaması, sunucu yöneticisi rolleri ve sunucu tarafı şifreleme sağlar. Veri modeli düzeyinde, Kullanıcı rolleri, satır düzeyi ve nesne düzeyinde güvenlik, verilerinizin güvende olduğundan ve yalnızca bunu gördüğü kullanıcılar tarafından görülendiğinden emin olmanızı sağlar.
 
-### <a name="firewall"></a>Güvenlik duvarı
+### <a name="firewall"></a>Güvenlik Duvarı
 
 Azure Analysis Services Güvenlik Duvarı, kurallarda belirtilen IP adresleri dışındaki tüm istemci bağlantılarını engeller. Varsayılan olarak, güvenlik duvarı koruması yeni sunucular için etkin değildir. Önerilen güvenlik duvarı koruması etkinleştirilir ve kurallar sunucu sağlama komut dosyasının bir parçası olarak veya sunucu oluşturulduktan hemen sonra portalda yapılandırılır. İstemci IP’lerine veya aralığa göre izin verilen IP adreslerini belirten kuralları yapılandırın. Power BI (hizmet) bağlantılarına da izin verilebilir veya bağlantılar engellenebilir. Güvenlik duvarı ve kuralları portaldan ya da PowerShell kullanarak yapılandırın. Daha fazla bilgi için bkz. [Sunucu güvenlik duvarı yapılandırma](analysis-services-qs-firewall.md).
 

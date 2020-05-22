@@ -3,16 +3,16 @@ title: Batch ile yoğun işlem kullanan Azure VM 'Leri kullanma
 description: Azure Batch havuzlarındaki HPC ve GPU sanal makine boyutlarının avantajlarından yararlanın. İşletim sistemi bağımlılıkları hakkında bilgi edinin ve çeşitli senaryo örneklerine bakın.
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 04e39678c77604bca4194bebc7968c5c43fb019c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 7abe3c9bd689b20f608ad40105c1bb4d7108dbc6
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724097"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779757"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch havuzlarında RDMA veya GPU örnekleri kullanma
 
-Belirli toplu işleri çalıştırmak için, büyük ölçekli hesaplama için tasarlanan Azure VM boyutlarının avantajlarından yararlanabilirsiniz. Örnek:
+Belirli toplu işleri çalıştırmak için, büyük ölçekli hesaplama için tasarlanan Azure VM boyutlarının avantajlarından yararlanabilirsiniz. Örneğin:
 
 * Çoklu örnek [MPI iş yüklerini](batch-mpi.md)çalıştırmak Için, H serisi veya uzak doğrudan bellek ERIŞIMI (RDMA) için bir ağ arabirimine sahip diğer boyutları seçin. Bu boyutlar, DEVI uygulamalarını hızlandırabilen, düğümler arası iletişim için bir InfiniBand ağına bağlanır. 
 
@@ -79,7 +79,7 @@ Batch havuzunuzun özelleştirilmiş bir VM boyutunu yapılandırmak için gerek
 
 * Üzerinde sürücü, yazılım veya VM boyutu için gereken diğer ayarları yüklediğiniz [özel bir Windows veya LINUX VM görüntüsü](batch-sig-images.md) oluşturun. 
 
-* Daraltılmış bir sürücüden veya uygulama yükleyicisinden bir toplu Işlem [uygulama paketi](batch-application-packages.md) oluşturun ve toplu işi, paketi havuz düğümlerine dağıtmak ve her düğüm oluşturulduğunda yüklemek üzere yapılandırın. Örneğin, uygulama paketi bir yükleyicidir, uygulamayı tüm havuz düğümlerine sessizce yüklemek için bir [Başlangıç görevi](batch-api-basics.md#start-task) komut satırı oluşturun. İş yükünüz belirli bir sürücü sürümüne bağımlıysa bir uygulama paketi ve havuz başlangıç görevi kullanmayı düşünün.
+* Daraltılmış bir sürücüden veya uygulama yükleyicisinden bir toplu Işlem [uygulama paketi](batch-application-packages.md) oluşturun ve toplu işi, paketi havuz düğümlerine dağıtmak ve her düğüm oluşturulduğunda yüklemek üzere yapılandırın. Örneğin, uygulama paketi bir yükleyicidir, uygulamayı tüm havuz düğümlerine sessizce yüklemek için bir [Başlangıç görevi](jobs-and-tasks.md#start-task) komut satırı oluşturun. İş yükünüz belirli bir sürücü sürümüne bağımlıysa bir uygulama paketi ve havuz başlangıç görevi kullanmayı düşünün.
 
   > [!NOTE] 
   > Başlangıç görevinin yükseltilmiş (yönetici) izinlerle çalışması gerekir ve bunun başarıyı beklemesi gerekir. Uzun süre çalışan görevler, bir Batch havuzu sağlama süresini arttırır.

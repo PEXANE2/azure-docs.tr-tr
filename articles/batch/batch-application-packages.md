@@ -4,12 +4,12 @@ description: Toplu işlem düğümlerinde yüklenmek üzere birden çok uygulama
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61e94ade21d8dd6fad2ba10dff87d4ba10333e3a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: fd5821a7876cc99be41fbb2c5b095b931653c345
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726885"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780304"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
 
@@ -68,7 +68,7 @@ Uygulama paketleriyle, havuzunuzun başlangıç görevinin düğümlere yüklene
 Batch hesabınızdaki uygulama paketlerini yönetmek için [Azure Portal][portal] veya Batch yönetimi API 'lerini kullanabilirsiniz. Sonraki birkaç bölümde, önce bir depolama hesabını bağlamayı, ardından uygulama ve paket ekleme ve bunları portalla yönetme hakkında tartışın.
 
 ### <a name="link-a-storage-account"></a>Depolama hesabını bağlama
-Uygulama paketlerini kullanmak için önce Batch hesabınıza bir [Azure depolama hesabı](batch-api-basics.md#azure-storage-account) bağlamanız gerekir. Henüz bir depolama hesabı yapılandırmadıysanız, Batch hesabınızdaki **uygulamalar** ilk kez tıkladığınızda Azure Portal bir uyarı görüntüler.
+Uygulama paketlerini kullanmak için önce Batch hesabınıza bir [Azure depolama hesabı](accounts.md#azure-storage-accounts) bağlamanız gerekir. Henüz bir depolama hesabı yapılandırmadıysanız, Batch hesabınızdaki **uygulamalar** ilk kez tıkladığınızda Azure Portal bir uyarı görüntüler.
 
 
 
@@ -248,7 +248,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örnek:
+Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örneğin:
 
 ```
 Linux:
@@ -285,9 +285,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> İşlem düğümü ortam ayarları hakkında daha fazla bilgi için bkz. [Batch özelliğine genel bakış](batch-api-basics.md) içindeki [Görevler için ortam ayarları](batch-api-basics.md#environment-settings-for-tasks) .
-> 
-> 
+> İşlem düğümü ortam ayarları hakkında daha fazla bilgi için bkz. [Görevler Için ortam ayarları](jobs-and-tasks.md#environment-settings-for-tasks). 
 
 ## <a name="update-a-pools-application-packages"></a>Bir havuzun uygulama paketlerini güncelleştirme
 Mevcut bir havuz zaten bir uygulama paketiyle yapılandırıldıysa, havuz için yeni bir paket belirtebilirsiniz. Bir havuz için yeni bir paket başvurusu belirtirseniz aşağıdakiler geçerlidir:

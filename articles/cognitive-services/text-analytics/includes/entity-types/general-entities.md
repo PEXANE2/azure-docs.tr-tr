@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60cd6b8ba2cbfca497ae1b92113b12e85a34bf26
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77211406"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778284"
 ---
 ## <a name="general-entity-types"></a>Genel varlık türleri:
 
@@ -22,11 +22,11 @@ ms.locfileid: "77211406"
 Metindeki kişi adlarını tanır.
 
 Diller:
-* Genel Önizleme: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` ,,,, ve`Turkish`
+* Genel Önizleme: `Arabic` , `Czech` , `Chinese-Simplified` , `Danish` , `Dutch` , `English` , `Finnish` , `French` , `German` , `Hungarian` , `Italian` , `Japanese` , `Korean` , `Norwegian (Bokmål)` , `Polish` , `Portuguese (Portugal)` , `Portuguese (Brazil)` , `Russian` , `Spanish` `Swedish` ,,,,, ve`Turkish`
 
 | Alt tür adı | Açıklama                                                      | Model sürümünden itibaren kullanılabilir |
 |--------------|------------------------------------------------------------------|---------------------------------------|
-| Yok          | Tanınan kişi adları, örneğin `Bill Gates``Marie Curie` | `2019-10-01`                          | 
+| Yok          | Tanınan kişi adları `Bill Gates` , örneğin`Marie Curie` | `2019-10-01`                          | 
 
 ### <a name="persontype"></a>Kişilik türü
 Bir kişi tarafından tutulan iş türü veya rol.
@@ -36,7 +36,7 @@ Diller:
 
 | Alt tür adı | Açıklama                                                                                | Model sürümünden itibaren kullanılabilir |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| Yok          | İş `civil engineer`türleri örneğin `salesperson` `chef` `librarian`,,,,`nursing aide` | `2020-02-01`                           |
+| Yok          | İş `civil engineer` türleri Örneğin,,,, `salesperson` `chef` `librarian``nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>Konum
 
@@ -44,12 +44,12 @@ Doğal ve insan tarafından oluşturulan yer işaretleri, yapılar, coğrafi öz
 
 Diller:
 
-* Genel Önizleme: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` ,,,, ve`Turkish`
+* Genel Önizleme: `Arabic` , `Czech` , `Chinese-Simplified` , `Danish` , `Dutch` , `English` , `Finnish` , `French` , `German` , `Hungarian` , `Italian` , `Japanese` , `Korean` , `Norwegian (Bokmål)` , `Polish` , `Portuguese (Portugal)` , `Portuguese (Brazil)` , `Russian` , `Spanish` `Swedish` ,,,,, ve`Turkish`
 
 | Alt tür adı              | Açıklama                                                                              | Model sürümünden itibaren kullanılabilir |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| Yok                       | konumlar, örneğin `Atlantic Ocean` `library` `Eiffel Tower`,,,`Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitik varlık (GPE)-yalnızca Ingilizce| Şehirlerin, ülkelerin, örneğin `Seattle` `Pennsylvania` `South Africa`,,,,`Tokyo` | `2020-02-01`                           |
+| Yok                       | konumlar `Atlantic Ocean` , örneğin,, `library` , `Eiffel Tower``Statue of Liberty`  | `2019-10-01`                           |
+| Geopolitik varlık (GPE)-yalnızca Ingilizce| Şehirlerin, ülkelerin/bölgelerin `Seattle` , örneğin,,,, `Pennsylvania` `South Africa``Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Kuruluş  
 
@@ -57,11 +57,11 @@ Tanınan kuruluşlar, şirketler, kurumlar ve diğer kişi grupları. Örneğin:
 
 Diller: 
 
-* Genel Önizleme: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` ,,,, ve`Turkish`
+* Genel Önizleme: `Arabic` , `Czech` , `Chinese-Simplified` , `Danish` , `Dutch` , `English` , `Finnish` , `French` , `German` , `Hungarian` , `Italian` , `Japanese` , `Korean` , `Norwegian (Bokmål)` , `Polish` , `Portuguese (Portugal)` , `Portuguese (Brazil)` , `Russian` , `Spanish` `Swedish` ,,,,, ve`Turkish`
 
 | Alt tür adı | Açıklama                                                                                             | Model sürümünden itibaren kullanılabilir |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| Yok          | kuruluşlar, örneğin `Microsoft` `NASA` `National Oceanic and Atmospheric Administration`,,,`VOA` | `2019-10-01`                           |
+| Yok          | kuruluşlar `Microsoft` , örneğin,, `NASA` , `National Oceanic and Atmospheric Administration``VOA` | `2019-10-01`                           |
 
 ### <a name="event"></a>Olay  
 
@@ -73,7 +73,7 @@ Diller:
 
 | Alt tür adı | Açıklama                                                            | Model sürümünden itibaren kullanılabilir |
 |--------------|------------------------------------------------------------------------|----------------------------------------|
-| Yok          | `wedding` `solar eclipse`,,,,,,,,, `hurricane` `car accident``American Revolution` | `2020-02-01`                           |
+| Yok          | ,,, `wedding` ,,,, `hurricane` `car accident` ,, `solar eclipse``American Revolution` | `2020-02-01`                           |
 
 ### <a name="product"></a>Ürün  
 
@@ -85,7 +85,7 @@ Diller:
 
 | Alt tür adı | Açıklama                                                                        | Model sürümünden itibaren kullanılabilir |
 |--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| Yok          | Örneğin `Microsoft Surface laptop` `sunglasses` `motorcycle`,,, `bag`,,`Xbox` | `2020-02-01`                           |
+| Yok          | Örneğin,,, `Microsoft Surface laptop` ,, `sunglasses` `motorcycle` `bag``Xbox` | `2020-02-01`                           |
 | Bilgi işlem    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
 
 ### <a name="skill"></a>İmde  
@@ -124,7 +124,7 @@ Diller:
 |--------------|--------------------------------------------------|----------------------------------------|
 | Yok          | Örneğin, e-posta adresi`support@contoso.com` | `2019-10-01`                           |
 
-### <a name="url"></a>URL'si
+### <a name="url"></a>URL
 
 Internet URL 'Leri.
 
@@ -156,7 +156,7 @@ Tarih ve saat varlıkları.
 
 Diller:
 
-* Genel Önizleme: `Chinese-Simplified`, `English`, `French` `German` ve`Spanish`
+* Genel Önizleme: `Chinese-Simplified` , `English` , `French` `German` ve`Spanish`
 
 | Alt tür adı    | Örnekler                     |
 |-------------|------------------------------|
@@ -176,7 +176,7 @@ Sayılar ve sayısal miktarlar.
 
 Diller:
 
-* Genel Önizleme: `Chinese-Simplified`, `English`, `French` `German` ve`Spanish`
+* Genel Önizleme: `Chinese-Simplified` , `English` , `French` `German` ve`Spanish`
 
 | Alt tür adı    | Örnekler                     |
 |-------------|------------------------------|
@@ -184,6 +184,6 @@ Diller:
 | Yüzde  | `50%`, `fifty percent`       |
 | Numarasını     | `2nd`, `second`              |
 | Yaş         | `90 day old`, `30 years old` |
-| Para birimi    | `$10.99`, `€30.00`           |
+| Para birimi    | `$10.99`, `&euro;30.00`           |
 | Boyut   | `10 miles`, `40 cm`          |
 | Sıcaklık | `32 degrees`, `10°C`         |

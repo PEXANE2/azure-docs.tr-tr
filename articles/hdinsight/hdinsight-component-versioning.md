@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 05/08/2020
-ms.openlocfilehash: 9ce6df8491bf4ce7cbb0e12a08816e198f665beb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/20/2020
+ms.openlocfilehash: 5f3b1fcb573358160707c0b29ad9e1806ea8e24c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124661"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774297"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Azure HDInsight için kullanılabilen Apache bileşenleri ve sürümleri
 
@@ -43,7 +43,7 @@ HDInsight küme sürümleriyle ilişkili bileşen sürümleri aşağıdaki tablo
 | Apache Storm           | -             | 1.1.0                       |
 | Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2.3.1, 2,4    | 2.3.0, 2.2.0, 2.1.0         |
+| Apache Spark           | 2,4, 2.3.1 *   | 2.3.0, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
 | Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (nota bakın.)   |
 | Apache ambarı          | 2.7.0         | 2.6.0                       |
@@ -91,14 +91,14 @@ Bu tabloda, Azure portal mevcut olmayan HDInsight sürümleri listelenir.
 
 | HDInsight sürümü | HDP sürümü | VM İŞLETİM SİSTEMİ | Sürüm tarihi | Destek sona erme tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portal kullanılabilirliği |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 Eylül 2016 |5 Eylül 2017 |28 Haziran 2018 |Yes |Hayır |
-| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29 Mart 2016 |29 Aralık 2016 |9 Ocak 2018 |Yes |Hayır |
-| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2018 |Yes |Hayır |
-| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2017 |Yes |Hayır |
-| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS veya Windows Server 2012 R2 |18 Şubat 2015 |1 Mart 2016 |1 Nisan 2017 |Yes |Hayır |
-| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24 Haziran 2014 |18 Mayıs 2015 |30 Haziran 2016 |Yes |Hayır |
-| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11 Şubat 2014 |17 Eylül 2014 |30 Haziran 2015 |Yes |Hayır |
-| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28 Ekim 2013 |12 Mayıs 2014 |31 Mayıs 2015 |Yes |Hayır |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 Eylül 2016 |5 Eylül 2017 |28 Haziran 2018 |Yes |No |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29 Mart 2016 |29 Aralık 2016 |9 Ocak 2018 |Yes |No |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2018 |Yes |No |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2017 |Yes |No |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS veya Windows Server 2012 R2 |18 Şubat 2015 |1 Mart 2016 |1 Nisan 2017 |Yes |No |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24 Haziran 2014 |18 Mayıs 2015 |30 Haziran 2016 |Yes |No |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11 Şubat 2014 |17 Eylül 2014 |30 Haziran 2015 |Yes |No |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28 Ekim 2013 |12 Mayıs 2014 |31 Mayıs 2015 |Yes |No |
 | HDInsight 1,6 |HDP 1,1 | |28 Ekim 2013 |26 Nisan 2014 |31 Mayıs 2015 |Hayır |Hayır |
 
 > [!NOTE]

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57be24142a8504347f420e5780e9621cd2eac91d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77086877"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778252"
 ---
 ## <a name="personal-information-entity-types"></a>Kişisel bilgi varlık türleri:
 
@@ -25,7 +25,7 @@ Diller:
 
 | Alt tür adı | Açıklama                                               | Model sürümünden itibaren kullanılabilir |
 |--------------|-----------------------------------------------------------|----------------------------------------|
-| Yok          | Örneğin `Bill Gates`, tanınan adlar`Marie Curie` | `2020-02-01`                           |
+| Yok          | Örneğin, tanınan adlar `Bill Gates``Marie Curie` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Kuruluş  
 
@@ -37,7 +37,7 @@ Diller:
 
 | Alt tür adı | Açıklama                                                                                       | Model sürümünden itibaren kullanılabilir|
 |--------------|---------------------------------------------------------------------------------------------------|--------------|
-| Yok          | kuruluşlar, örneğin `Microsoft` `NASA`,`National Oceanic and Atmospheric Administration` | `2020-02-01` |
+| Yok          | kuruluşlar `Microsoft` , örneğin, `NASA``National Oceanic and Atmospheric Administration` | `2020-02-01` |
 
 ### <a name="phone-number"></a>Telefon Numarası
 
@@ -63,7 +63,7 @@ Diller:
 |--------------|--------------------------------------------------|----------------------------------------|
 | Yok          | Örneğin, e-posta adresi`support@contoso.com` | `2020-02-01`                           |
 
-### <a name="url"></a>URL'si
+### <a name="url"></a>URL
 
 Internet URL 'Leri.
 
@@ -127,7 +127,7 @@ Diller:
 
 Kimlik doğrulama bilgileri ve bağlantı dizeleri dahil olmak üzere tanımlanabilir Azure bilgileri. 
 
-* Model sürümünden `2019-10-01`itibaren kullanılabilir.
+* Model sürümünden itibaren kullanılabilir `2019-10-01` .
 
 Diller:
 
@@ -149,7 +149,7 @@ Diller:
 
 ### <a name="identification"></a>Kimlik
 
-* Model sürümünden `2019-10-01`itibaren kullanılabilir.
+* Model sürümünden itibaren kullanılabilir `2019-10-01` .
 
 Diller:
 
@@ -164,9 +164,9 @@ Diller:
 | Kredi Kartı                | Kredi kartı numaraları.                                                       |
 | IBAN kodu                  | Ödeme yönergesi bilgileri için ıBAN kodları.                            |
 
-#### <a name="government-and-country-specific-identification"></a>Kamu ve ülkeye özgü kimlik
+#### <a name="government-and-countryregion-specific-identification"></a>Kamu ve ülkeye/bölgeye özgü kimlik
 
-Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
+Aşağıdaki varlıklar, ülkeye/bölgeye göre gruplandırılır ve listelenir:
 
 Arjantin
 * Ulusal kimlik (DNı) numarası
@@ -322,7 +322,7 @@ Birleşik Krallık
 * Ulusal sigorta numarası (NINO)
 * Ulusal Sistem Sağlığı Hizmeti (NHS) numarası
 
-Amerika Birleşik Devletleri
+Birleşik Devletler
 * Sosyal güvenlik numarası (SSN)
 * Sürücünün lisans KIMLIĞI
 * Passport KIMLIĞI

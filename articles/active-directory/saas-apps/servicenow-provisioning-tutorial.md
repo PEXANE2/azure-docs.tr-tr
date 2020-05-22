@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e93d4b3f1880f2ac56a32a7b85aa6801fb7c14e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78205150"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780522"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ServiceNow 'ı yapılandırma
 
@@ -45,12 +45,12 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * Helsinki veya üzeri bir [ServiceNow Express örneği](https://www.servicenow.com/)
 * Yönetim rolüyle ServiceNow 'da bir kullanıcı hesabı
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Azure AD ve ServiceNow arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-servicenow-to-support-provisioning-with-azure-ad"></a>2. Adım ServiceNow 'ı Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
+## <a name="step-2-configure-servicenow-to-support-provisioning-with-azure-ad"></a>Adım 2. ServiceNow 'ı Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 
 1. ServiceNow örnek adınızı belirler. Örnek adını ServiceNow 'e erişmek için kullandığınız URL 'de bulabilirsiniz. Aşağıdaki örnekte, örnek adı dev35214 ' dir.
 
@@ -80,7 +80,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Azure AD 'de ServiceNow için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -141,7 +141,6 @@ Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağı
 * **Invalidlookupreference:** ServiceNow içindeki bölüm ve konum gibi belirli öznitelikleri sağlarken, bu değerler ServiceNow içindeki bir başvuru tablosunda zaten mevcut olmalıdır. Örneğin, ServiceNow 'daki **tablo adı ekleme** tablosunda iki konumunuz (Seattle, Los Angeles) ve üç departman (Sales, finans, pazarlama) olabilir. Departmanı "Sales" ve Location 'ın "Seattle" olduğu bir Kullanıcı sağlamaya çalışırsanız, başarılı bir şekilde hazırlanacaktır. "Sales" departmanı ve "LA" konumuyla bir Kullanıcı sağlamaya çalışırsanız Kullanıcı sağlanmaz. Konum, ServiceNow 'daki başvuru tablosuna eklenmelidir veya Azure AD 'deki User özniteliği ServiceNow 'ın biçimiyle eşleşecek şekilde güncellenmelidir. 
 * **Entryjoiningpropertyvalueısmissing:** Eşleşen özniteliği tanımlamak için [öznitelik eşlemelerinizi](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) gözden geçirin. Sağlamaya çalıştığınız kullanıcı veya grupta bu değer bulunmalıdır. 
 * Tüm gereksinimleri veya sınırlamaları anlamak için [ServiceNow soap API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) 'sini gözden geçirin (örneğin, bir kullanıcı için ülke kodunu belirtme biçimi)
-* Bazı ServiceNow dağıtımları, Azure AD sağlama hizmeti için IP aralıklarının izin sağlamasını gerektirir. Azure AD sağlama hizmeti için ayrılmış IP aralıkları [burada](https://www.microsoft.com/download/details.aspx?id=56519) "AzureActiveDirectoryDomainServices" altında bulunabilir.
 * Sağlama istekleri varsayılan olarak https://{-örnek-adı}. Service-Now. com/{Table-Name} olarak gönderilir. Özel bir kiracı URL 'SI gerekiyorsa, örnek adı alanında tüm URL 'YI sağlayabilirsiniz.
 
 ## <a name="additional-resources"></a>Ek kaynaklar

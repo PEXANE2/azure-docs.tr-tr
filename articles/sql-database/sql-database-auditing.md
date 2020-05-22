@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Denetimi
+title: Azure SQL veritabanı ve Azure SYNAPSE Analytics için Azure SQL denetimi
 description: Veritabanı olaylarını bir denetim günlüğüne izlemek için Azure SQL veritabanı denetimini kullanın.
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 57c4b22dfe6ef6cf44be64a4b5c042403f64ccf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ff888cb1a2f2486fec7b387d9f9f02029b03aab
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096665"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779076"
 ---
-# <a name="azure-sql-auditing"></a>Azure SQL Denetimi
+# <a name="azure-sql-auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için Azure SQL denetimi
 
 Azure [SQL veritabanı](sql-database-technical-overview.md) ve [Azure SYNAPSE Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) için denetim, veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar, Log Analytics çalışma alanı veya Event Hubs. 
 
@@ -30,7 +30,7 @@ Denetim şunları da sağlar:
 > [!NOTE] 
 > Bu konu hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics veritabanları için geçerlidir. Basitlik için, SQL veritabanı hem Azure SQL veritabanına hem de Azure SYNAPSE Analytics 'e başvururken kullanılır.
 
-## <a name="overview"></a><a id="overview"></a>Genel Bakış
+## <a name="overview"></a><a id="overview"></a>Bakýþ
 
 SQL veritabanı denetimini kullanarak:
 
@@ -174,7 +174,7 @@ Denetim günlüklerini bir Azure depolama hesabına yazmayı seçerseniz, günl�
 - Denetim günlüğü verilerini tablosal biçiminde döndürmek için **sys. fn_get_audit_file** (T-SQL) sistem işlevini kullanın. Bu işlevi kullanma hakkında daha fazla bilgi için bkz. [sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - SQL Server Management Studio (SSMS 17 ' den başlayarak) **birleştirme denetim dosyalarını** kullanın:
-    1. Ssms menüsünden **Dosya** > **açma** > **birleştirme denetim dosyaları**' nı seçin.
+    1. Ssms menüsünden **Dosya**  >  **açma**  >  **birleştirme denetim dosyaları**' nı seçin.
 
         ![Gezinti bölmesi](./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png)
     2. **Denetim dosyaları Ekle** iletişim kutusu açılır. Denetim dosyalarını yerel bir diskten birleştirmeyi veya Azure Storage 'tan içeri aktarmayı seçmek için **Ekle** seçeneklerinden birini seçin. Azure depolama ayrıntılarını ve hesap anahtarınızı sağlamanız gerekir.

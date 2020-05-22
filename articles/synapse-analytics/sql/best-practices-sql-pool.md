@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3dc111fe62cbae857f3369165ba29cf40e90342
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6af79a37369fe5775c402af011f4ba59807595d
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427802"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780425"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL havuzları için en iyi yöntemler
 
@@ -44,7 +44,7 @@ SQL Server, sütunlardaki istatistikleri otomatik olarak algılayıp oluşturdu�
 
 ## <a name="group-insert-statements-into-batches"></a>INSERT deyimlerini gruplayın
 
-Küçük bir tabloya bir INSERT ifadesiyle bir kez yükleme, gereksinimlerinize bağlı olarak en iyi `INSERT INTO MyLookup VALUES (1, 'Type 1')`yaklaşım olabilir. Ancak, günde binlerce veya milyonlarca satır yüklemeniz gerekiyorsa, bu büyük olasılıkla tek ekleme en uygun değildir.
+Küçük bir tabloya bir INSERT ifadesiyle bir kez yükleme `INSERT INTO MyLookup VALUES (1, 'Type 1')` , gereksinimlerinize bağlı olarak en iyi yaklaşım olabilir. Ancak, günde binlerce veya milyonlarca satır yüklemeniz gerekiyorsa, bu büyük olasılıkla tek ekleme en uygun değildir.
 
 Bu sorunu çözmenin bir yolu, bir dosyaya yazan bir işlem geliştirmektir ve bu dosyayı düzenli olarak yüklemek için başka bir işlemdir. Daha fazla bilgi için [ekleme](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) makalesine bakın.
 
@@ -193,7 +193,7 @@ SQL havuzlarının sorgu yürütmeyi izlemek için kullanılabilecek çeşitli D
 
 Ayrıca yaygın sorunlar ve çözümleri için [sorun giderme](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) makalesine bakın.
 
-Bu makalede sağlanmayan bilgilere ihtiyacınız varsa, tüm SQL havuzu belgelerini aramak için bu sayfanın sol tarafındaki "belgeleri ara" seçeneğini kullanın.  [SQL havuzu Forumu](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) , diğer KULLANıCıLARA ve SQL havuzu ürün grubuna yönelik sorularınızı oluşturabilmeniz için bir yerdir.  
+Bu makalede sağlanmayan bilgilere ihtiyacınız varsa, tüm SQL havuzu belgelerini aramak için bu sayfanın sol tarafındaki **başlığa göre filtrele** ' yi kullanın.  [SQL havuzu Forumu](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) , diğer KULLANıCıLARA ve SQL havuzu ürün grubuna yönelik sorularınızı oluşturabilmeniz için bir yerdir.  
 
 Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  Stack Overflow sorularınızı sormayı tercih ediyorsanız [Azure SQL havuzu Stack Overflow forumumuz](https://stackoverflow.com/questions/tagged/azure-sqldw)de vardır.
 

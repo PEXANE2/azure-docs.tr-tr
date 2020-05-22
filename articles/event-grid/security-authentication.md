@@ -8,18 +8,18 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 71d47c83586f7e5e31b148714e2804686422326a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588267"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774306"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Azure Event Grid kaynaklarına erişim izni doğrulanıyor
 Bu makalede aşağıdaki senaryolar hakkında bilgi verilmektedir:  
 
 - Paylaşılan erişim Imzasını (SAS) veya anahtarı kullanarak Azure Event Grid konularına olay yayınlayan istemcilerin kimliğini doğrulayın. 
-- Uç noktalara olay **iletmek** için Event Grid kimlik doğrulaması yapmak üzere Azure Active Directory (Azure AD) kullanarak Web kancası uç noktanızı güvenli hale getirin.
+- Azure Active Directory (Azure AD) veya paylaşılan bir gizli dizi kullanarak Event Grid olayları almak için kullanılan Web kancası uç noktasının güvenliğini sağlayın.
 
 ## <a name="authenticate-publishing-clients-using-sas-or-key"></a>SAS veya anahtar kullanarak yayımlama istemcilerinin kimliğini doğrulama
 Özel konular, paylaşılan erişim Imzası (SAS) veya anahtar kimlik doğrulaması kullanır. SAS önerilir, ancak anahtar kimlik doğrulaması basit programlama sağlar ve birçok mevcut Web kancası yayımcısıyla uyumludur.
@@ -89,12 +89,12 @@ Event Grid hizmeti tarafından diske yazılan tüm olaylar veya veriler, bekleye
 Aşağıdaki bölümlerde, Web kancası uç noktalarına olay tesliminin nasıl doğrulanabilmesi anlatılmaktadır. Kullandığınız yöntemden bağımsız olarak bir doğrulama el sıkışma mekanizması kullanmanız gerekir. Ayrıntılar için bkz. [Web kancası olay teslimi](webhook-event-delivery.md) . 
 
 ### <a name="using-azure-active-directory-azure-ad"></a>Azure Active Directory kullanma (Azure AD)
-Azure Active Directory (Azure AD) kullanarak, uç noktalarınıza olay sunmaya Event Grid kimlik doğrulaması yapmak ve yetkilendirmek için, Web kancası uç noktanızı güvenli hale getirebilirsiniz. Azure AD uygulaması oluşturmanız, uygulamanızda Event Grid yetkilendirmede bir rol ve hizmet ilkesi oluşturmanız ve olay aboneliğini Azure AD uygulamasını kullanacak şekilde yapılandırmanız gerekir. [Event Grid Azure Active Directory yapılandırmayı öğrenin](secure-webhook-delivery.md).
+Azure AD 'yi kullanarak Event Grid olayları almak için kullanılan Web kancası uç noktasının güvenliğini sağlayabilirsiniz. Bir Azure AD uygulaması oluşturmanız, uygulamanızda yetkilendirme Event Grid bir rol ve hizmet sorumlusu oluşturmanız ve olay aboneliğini Azure AD uygulamasını kullanacak şekilde yapılandırmanız gerekir. [Event Grid Azure Active Directory yapılandırmayı](secure-webhook-delivery.md)öğrenin.
 
 ### <a name="using-client-secret-as-a-query-parameter"></a>Sorgu parametresi olarak istemci gizli anahtarını kullanma
-Bir olay aboneliği oluştururken Web kancası URL 'sine sorgu parametreleri ekleyerek Web kancası uç noktanızı güvenli hale getirebilirsiniz. Bu sorgu parametrelerinden birini, [erişim belirteci](https://en.wikipedia.org/wiki/Access_token) veya paylaşılan gizlilik gibi bir istemci gizli dizisi olacak şekilde ayarlayın. Web kancası, olayın geçerli izinlerle Event Grid geldiğini tanımak için gizli anahtarı kullanabilir. Event Grid, Web kancasına her olay teslimine bu sorgu parametrelerini dahil eder. İstemci parolası güncelleştirilirse olay aboneliğinin da güncelleştirilmesi gerekir. Bu gizli anahtar sırasında teslimat hatalarından kaçınmak için, Web kancasının sınırlı bir süre için hem eski hem de yeni gizli dizileri kabul etmesini sağlayın. 
+Ayrıca, olay aboneliği oluşturmanın bir parçası olarak belirtilen Web kancası hedef URL 'sine sorgu parametreleri ekleyerek Web kancası uç noktanızı da güvenli hale getirebilirsiniz. Sorgu parametrelerinden birini, [erişim belirteci](https://en.wikipedia.org/wiki/Access_token) veya paylaşılan gizlilik gibi bir istemci gizli anahtarı olacak şekilde ayarlayın. Event Grid hizmet, Web kancasına her olay teslim isteğindeki tüm sorgu parametrelerini içerir. Web kancası hizmeti gizli dizi alabilir ve doğrulayabilir. İstemci parolası güncelleştirilirse olay aboneliğinin da güncelleştirilmesi gerekir. Bu gizli anahtar sırasında teslimat hatalarından kaçınmak için, Web kancasının, olay aboneliğini yeni gizli anahtar ile güncelleştirmeden önce sınırlı bir süre için hem eski hem de yeni gizli dizileri kabul etmesini sağlayın. 
 
-Sorgu parametreleri, istemci gizli dizileri içerebildiği için, bunlar daha fazla dikkatli işlenir. Bunlar şifreli olarak depolanır ve hizmet işleçlerine erişemez. Hizmet günlüklerinin/izlemelerinin bir parçası olarak günlüğe kaydedilmez. Olay aboneliği düzenlenirken, Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)'de [--Include-Full-Endpoint-URL](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) parametresi kullanılmadığı takdirde sorgu parametreleri gösterilmez veya döndürülmez.
+Sorgu parametreleri, istemci gizli dizileri içerebildiği için, bunlar daha fazla dikkatli işlenir. Bunlar şifreli olarak depolanır ve hizmet işleçlerine erişemez. Hizmet günlüklerinin/izlemelerinin bir parçası olarak günlüğe kaydedilmez. Olay aboneliği özellikleri alınırken, hedef sorgu parametreleri varsayılan olarak döndürülmez. Örneğin: [--Include-Full-Endpoint-URL](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) parametresi Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)'da kullanılır.
 
 Web kancalarına olay sunma hakkında daha fazla bilgi için bkz. [Web kancası olay teslimi](webhook-event-delivery.md)
 

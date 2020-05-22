@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 25d11d2cf41f8653c5a54007f121c1251bb24b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2e1dbba61399ee3a4435f4f287b47f4bfd6f872
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096308"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774438"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Apache Spark MLlib ve Azure SYNAPSE Analytics ile makine öğrenimi uygulaması oluşturma
 
@@ -54,7 +54,7 @@ Aşağıdaki adımlarda, belirli bir yolculuğa bir tıp içerip içermediğini 
     import matplotlib.pyplot as plt
     from datetime import datetime
     from dateutil import parser
-    from pyspark.sql.functions import unix_timestamp
+    from pyspark.sql.functions import unix_timestamp, date_format, col, when
     from pyspark.ml import Pipeline
     from pyspark.ml import PipelineModel
     from pyspark.ml.feature import RFormula
@@ -159,9 +159,9 @@ plt.suptitle('')
 plt.show()
 ```
 
-![Histogram](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
-![kutusu çizgi çiz](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
-![dağılım çizimi](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
+![Histogram ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
+ ![ kutusu çizgi çiz ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
+ ![ dağılım çizimi](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
 ## <a name="preparing-the-data"></a>Verileri hazırlama
 
@@ -208,7 +208,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Lojistik regresyon modeli oluşturma
 
-Son görev, etiketli verileri Lojistik gerileme tarafından çözümlenebilecek bir biçime dönüştürmelidir. Lojistik regresyon algoritmasının girişi, *özellik vektörünün* giriş noktasını temsil eden bir sayı vektörü olduğu bir *etiket özelliği vektör çiftleri*kümesi olması gerekir. Bu nedenle, kategorik sütunları sayılara dönüştürmemiz gerekiyor. `trafficTimeBins` Ve `weekdayString` sütunlarının tamsayı temsillerine dönüştürülmesi gerekir. Dönüştürmeyi gerçekleştirmeye yönelik birden çok yaklaşım vardır, ancak bu örnekte gerçekleştirilen yaklaşım yaygın bir yaklaşım olan *Onehotenkodlamaya*sahiptir.
+Son görev, etiketli verileri Lojistik gerileme tarafından çözümlenebilecek bir biçime dönüştürmelidir. Lojistik regresyon algoritmasının girişi, *özellik vektörünün* giriş noktasını temsil eden bir sayı vektörü olduğu bir *etiket özelliği vektör çiftleri*kümesi olması gerekir. Bu nedenle, kategorik sütunları sayılara dönüştürmemiz gerekiyor. `trafficTimeBins`Ve `weekdayString` sütunlarının tamsayı temsillerine dönüştürülmesi gerekir. Dönüştürmeyi gerçekleştirmeye yönelik birden çok yaklaşım vardır, ancak bu örnekte gerçekleştirilen yaklaşım yaygın bir yaklaşım olan *Onehotenkodlamaya*sahiptir.
 
 ```python
 # The sample uses an algorithm that only works with numeric features convert them so they can be consumed
@@ -238,6 +238,9 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 ```
 
 Artık iki veri çerçevesi olduğuna göre, bir sonraki görev model formülünü oluşturmak ve bunu eğitim veri çerçevesinde çalıştırmak ve ardından test veri çerçevesine karşı doğrulamak olacaktır. Farklı birleşimlerin etkilerini görmek için model formülünün farklı sürümleriyle denemeler yapmanız gerekir.
+
+> [!Note]
+> Modeli kaydetmek için Azure Depolama Blobu veri katılımcısı RBAC rolüne ihtiyacınız olacaktır. Depolama hesabınız altında Access Control (ıAM) bölümüne gidin ve rol ataması Ekle ' yi seçin. SQL veritabanı sunucunuza Depolama Blobu veri katılımcısı RBAC rolü atayın. Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Azure kaynakları için çeşitli yerleşik roller için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
 
 ```python
 ## Create a new LR object for the model

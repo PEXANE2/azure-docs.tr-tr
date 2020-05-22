@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.openlocfilehash: 19ccdf85e1753bea202c5c157919ab4e8ff96d06
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ff38f923f7b33c4bc893246970c1e47d33e59269
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660248"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780396"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
 Dağıtılmış ad hizmeti (DNS), ağ düğümü adlarını ağ genelinde depolamanın bir tekniğidir. Bu öğretici, CNAME kaydı kullanarak www.contoso.com gibi bir etki alanını eşler. Özel etki alanının bir sertifikayla güvenliğini sağlar ve Güvenli Yuva Katmanı (SSL) olarak da bilinen Aktarım Katmanı Güvenliği 'ni (TLS) nasıl zorunlu hale kullanabileceğinizi gösterir. 
@@ -37,6 +37,30 @@ Sertifikanızı anahtar kasasına yüklemek için:
 1. **Oluştur**' a tıklayın.
 
     ![Sertifikayı içeri aktar 1](./media/custom-dns-tutorial/import-certificate-a.png)
+
+Sertifikayı içeri aktarmadan önce Azure Spring buluta, anahtar kasanıza erişim izni vermek için:
+1. Anahtar Kasası örneğinize gidin.
+1. Sol gezinti bölmesinde, **erişim polie**' ye tıklayın.
+1. Üstteki menüde, **erişim Ilkesi Ekle**' ye tıklayın.
+1. Bilgileri girin ve **Ekle** düğmesine tıklayın ve ardından erişim Police 'yi **kaydedin** .
+
+| Gizli dizi izni | Sertifika izni | Sorumlu seçin |
+|--|--|--|
+| Al, Listele | Al, Listele | Azure Spring Cloud etki alanı-yönetim |
+
+![Sertifikayı içeri aktar 2](./media/custom-dns-tutorial/import-certificate-b.png)
+
+Ya da Azure 'da, Anahtar Kasası 'na Azure Spring Cloud erişimi sağlamak için Azure CLı 'yi kullanabilirsiniz.
+
+Aşağıdaki komutla nesne kimliğini alın.
+```
+az ad sp show --id 03b39d0f-4213-4864-a245-b1476ec03169 --query objectId
+```
+
+Azure Spring Cloud 'ın Anahtar Kasası 'na okuma erişimine izin verin, aşağıdaki komutta nesne kimliğini değiştirin.
+```
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list --secret-permissions get list
+``` 
 
 Sertifikayı Azure yay bulutuna aktarmak için:
 1. Hizmet örneğinize gidin. 

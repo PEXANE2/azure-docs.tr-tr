@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: c13ace67f18b619d5ad86106ecb648db722be9fa
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792454"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779341"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -54,7 +54,7 @@ Bu, temel şablon biçimidir:
 
 ## <a name="type-and-api-version"></a>Tür ve API sürümü
 
-`type` , Olması `"Microsoft.VirtualMachineImages/imageTemplates"`gereken kaynak türüdür. `apiVersion` API değiştiğinde zaman içinde değişir, ancak önizleme için olmalıdır `"2019-05-01-preview"` .
+, `type` Olması gereken kaynak türüdür `"Microsoft.VirtualMachineImages/imageTemplates"` . `apiVersion`API değiştiğinde zaman içinde değişir, ancak `"2019-05-01-preview"` Önizleme için olmalıdır.
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -144,7 +144,7 @@ Bu özelliği dağıtma hakkında daha fazla bilgi için bkz. Azure [CLI kullana
 
 ## <a name="properties-source"></a>Özellikler: kaynak
 
-`source` Bölümü, görüntü Oluşturucu tarafından kullanılacak kaynak görüntüyle ilgili bilgiler içerir.
+`source`Bölümü, görüntü Oluşturucu tarafından kullanılacak kaynak görüntüyle ilgili bilgiler içerir.
 
 API, görüntü derlemesi için kaynağı tanımlayan bir ' SourceType ' gerektirir; şu anda üç tür vardır:
 - Platformımage-kaynak görüntünün Market görüntüsü olduğunu gösterdi.
@@ -189,7 +189,7 @@ Kaynak görüntüyü genelleştirilmiş bir VHD veya VM 'nin mevcut bir yönetil
         }
 ```
 
-`imageId` Yönetilen görüntünün RESOURCEID olmalıdır. Kullanılabilir `az image list` görüntüleri listelemek için kullanın.
+`imageId`Yönetilen görüntünün RESOURCEID olmalıdır. `az image list`Kullanılabilir görüntüleri listelemek için kullanın.
 
 
 ### <a name="sharedimageversion-source"></a>Parça sürümü kaynağı
@@ -202,7 +202,7 @@ Kaynak görüntüyü paylaşılan görüntü galerisinde var olan bir görüntü
    } 
 ```
 
-`imageVersionId` Görüntü sürümünün RESOURCEID olmalıdır. Resim sürümlerini listelemek için [az Sig Image-Version List](/cli/azure/sig/image-version#az-sig-image-version-list) kullanın.
+`imageVersionId`Görüntü sürümünün RESOURCEID olmalıdır. Resim sürümlerini listelemek için [az Sig Image-Version List](/cli/azure/sig/image-version#az-sig-image-version-list) kullanın.
 
 ## <a name="properties-buildtimeoutinminutes"></a>Özellikler: Buildtimeoutınminutes
 
@@ -222,8 +222,8 @@ Buildtimeoutınminutes değeri belirtmez veya 0 olarak ayarlarsanız, bu varsay�
 
 Görüntü Oluşturucu çoklu ' özelleştiriciler ' destekler. Özelleştiriciler, resminizi özelleştirmek için kullanılan işlevlerdir (örneğin, betikleri çalıştırma veya sunucuları yeniden başlatma). 
 
-Kullanırken `customize`: 
-- Birden çok özelleştiriciler kullanabilirsiniz, ancak benzersiz `name`olmalıdır.
+Kullanırken `customize` : 
+- Birden çok özelleştiriciler kullanabilirsiniz, ancak benzersiz olmalıdır `name` .
 - Özelleştiriciler, şablonda belirtilen sırada yürütülür.
 - Bir Özelleştirici başarısız olursa, tüm özelleştirme bileşeni başarısız olur ve bir hatayı geri bildirir.
 - Bir şablonda kullanmadan önce betiği iyice sınamanız önemle tavsiye edilir. Kendi sanal makinenizde betik hata ayıklaması daha kolay olacaktır.
@@ -287,7 +287,7 @@ Kabuk Özelleştirici, kabuk betikleri çalıştırmayı destekler, bu, ıB 'nin
     * Mac/Linux çalıştıran bir Terminal kullanarak sha256Checksum oluşturmak için:`sha256sum <fileName>`
 
 
-Komutların süper kullanıcı ayrıcalıklarıyla çalışması için, ön ekine sahip `sudo`olmaları gerekir.
+Komutların süper kullanıcı ayrıcalıklarıyla çalışması için, ön ekine sahip olmaları gerekir `sudo` .
 
 > [!NOTE]
 > RHEL ISO kaynağı ile kabuk Özelleştirici çalıştırırken, özelleştirme gerçekleşmeden önce, ilk özelleştirme kabuğunuzun bir Red Hat yetkilendirme sunucusuyla kaydolduğunu güvence altına almanız gerekir. Özelleştirme tamamlandıktan sonra betiğin, yetkilendirme sunucusuyla kaydı yapılmalıdır.
@@ -385,7 +385,7 @@ Bu, Windows dizinleri ve Linux yolları tarafından desteklenir, ancak bazı far
 Dosyayı indirmeye çalışırken bir hata varsa veya belirtilen bir dizine yerleştirirseniz, özelleştirme adımı başarısız olur ve bu, özelleştirme. log ' da olur.
 
 > [!NOTE]
-> Dosya Özelleştirici yalnızca küçük dosya indirmeleri için uygundur < 20 MB. Daha büyük dosya indirmeleri için bir betik veya satır içi komutu, Linux `wget` veya `curl`Windows gibi dosyaları indirmek için kullanılan kodu kullanın. `Invoke-WebRequest`
+> Dosya Özelleştirici yalnızca küçük dosya indirmeleri için uygundur < 20 MB. Daha büyük dosya indirmeleri için bir betik veya satır içi komutu, Linux veya Windows gibi dosyaları indirmek için kullanılan kodu kullanın `wget` `curl` `Invoke-WebRequest` .
 
 Dosya Özelleştirici içindeki dosyalar, [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)kullanılarak Azure Storage 'dan indirilebilir.
 
@@ -425,13 +425,24 @@ Azure Image Builder başarıyla bir Windows özel görüntüsü oluşturursa ve 
 
 #### <a name="default-sysprep-command"></a>Varsayılan Sysprep komutu
 ```powershell
-echo '>>> Waiting for GA to start ...'
+Write-Output '>>> Waiting for GA Service (RdAgent) to start ...'
 while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }
-while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }
+Write-Output '>>> Waiting for GA Service (WindowsAzureTelemetryService) to start ...'
+while ((Get-Service WindowsAzureTelemetryService) -and ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running')) { Start-Sleep -s 5 }
+Write-Output '>>> Waiting for GA Service (WindowsAzureGuestAgent) to start ...'
 while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }
-echo '>>> Sysprepping VM ...'
-if( Test-Path $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml -Force} & $Env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit
-while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 5  } else { break } }
+Write-Output '>>> Sysprepping VM ...'
+if( Test-Path $Env:SystemRoot\system32\Sysprep\unattend.xml ) {
+  Remove-Item $Env:SystemRoot\system32\Sysprep\unattend.xml -Force
+}
+& $Env:SystemRoot\System32\Sysprep\Sysprep.exe /oobe /generalize /quiet /quit
+while($true) {
+  $imageState = (Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\State).ImageState
+  Write-Output $imageState
+  if ($imageState -eq 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { break }
+  Start-Sleep -s 5
+}
+Write-Output '>>> Sysprep complete ...'
 ```
 #### <a name="default-linux-deprovision-command"></a>Varsayılan Linux sağlamayı kaldırma komutu
 
@@ -457,7 +468,7 @@ Azure görüntü Oluşturucu üç dağıtım hedefini destekler:
 
 Aynı yapılandırmadaki her iki hedef türüne bir görüntü dağıtabilirsiniz, lütfen [örneklere](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)bakın.
 
-' Ye dağıtım yapmak için birden fazla hedefe sahip olabilirsiniz, görüntü Oluşturucu, `runOutputName`sorgulanarak erişilebilen her dağıtım hedefi için bir durum tutar.  , `runOutputName` Bu dağıtım hakkında bilgi için gönderi dağıtımını sorgulayabilir. Örneğin, VHD konumunu veya görüntü sürümünün çoğaltılacağı bölgeleri veya SıG görüntü sürümü oluşturulmasını sorgulayabilirsiniz. Bu, her dağıtım hedefinin bir özelliğidir. Her `runOutputName` dağıtım hedefi için benzersiz olmalıdır. İşte bu, paylaşılan görüntü Galerisi dağıtımını sorgulmıştır:
+' Ye dağıtım yapmak için birden fazla hedefe sahip olabilirsiniz, görüntü Oluşturucu, sorgulanarak erişilebilen her dağıtım hedefi için bir durum tutar `runOutputName` .  , `runOutputName` Bu dağıtım hakkında bilgi için gönderi dağıtımını sorgulayabilir. Örneğin, VHD konumunu veya görüntü sürümünün çoğaltılacağı bölgeleri veya SıG görüntü sürümü oluşturulmasını sorgulayabilirsiniz. Bu, her dağıtım hedefinin bir özelliğidir. `runOutputName`Her dağıtım hedefi için benzersiz olmalıdır. İşte bu, paylaşılan görüntü Galerisi dağıtımını sorgulmıştır:
 
 ```bash
 subscriptionID=<subcriptionID>
@@ -510,7 +521,7 @@ Görüntü çıkışı yönetilen bir görüntü kaynağı olacaktır.
  
 Özellikleri dağıtma:
 - **tür** – managedımage 
-- **ImageID** – hedef görüntünün kaynak kimliği; beklenen biçim:/subscriptions/\<SubscriptionID>/ResourceGroups/\<destinationresourcegroupname>/Providers/Microsoft.COMPUTE/images/\<ImageName>
+- **ImageID** – hedef görüntünün kaynak kimliği; beklenen biçim:/subscriptions/ \< SubscriptionID>/ResourceGroups/ \< destinationresourcegroupname>/Providers/Microsoft.COMPUTE/images/ \< ImageName>
 - **konum** -yönetilen görüntünün konumu.  
 - **Runoutputname** : dağıtımı tanımlamak için benzersiz ad.  
 - **Artifacttags** -isteğe bağlı kullanıcı tarafından belirtilen anahtar değer çifti etiketleri.
@@ -550,7 +561,7 @@ Görüntü galerisine dağıtabilmeniz için önce bir galeri ve görüntü tan�
 Paylaşılan görüntü galerilerine yönelik özellikleri dağıtma:
 
 - **tür** -sharedimage  
-- **Gallerımageıd** : paylaşılan görüntü galerisinin kimliği. Biçim:\</subscriptions/SubscriptionID>\</ResourceGroups/resourcegroupname>/Providers/Microsoft.COMPUTE/Galleries/\<sharedimagegallername>/images/\<ımagegallername>.
+- **Gallerımageıd** : paylaşılan görüntü galerisinin kimliği. Biçim:/Subscriptions/ \< subscriptionıd>/resourceGroups/ \< resourcegroupname>/Providers/Microsoft.COMPUTE/Galleries/ \< sharedimagegallername>/Images/ \< ımagegallername>.
 - **Runoutputname** : dağıtımı tanımlamak için benzersiz ad.  
 - **Artifacttags** -isteğe bağlı kullanıcı tarafından belirtilen anahtar değer çifti etiketleri.
 - **replicationregion** -çoğaltma için bölgelerin dizisi. Bölgelerden biri, galerinin dağıtıldığı bölge olmalıdır.
@@ -580,7 +591,7 @@ VHD parametrelerini dağıt:
 - **Runoutputname** : dağıtımı tanımlamak için benzersiz ad.  
 - **Etiketler** -isteğe bağlı kullanıcı tarafından belirtilen anahtar değer çifti etiketleri.
  
-Azure görüntü Oluşturucu, kullanıcının bir depolama hesabı konumu belirtilmesine izin vermez, ancak konumunu almak `runOutputs` için durumunu sorgulayabilirsiniz.  
+Azure görüntü Oluşturucu, kullanıcının bir depolama hesabı konumu belirtilmesine izin vermez, ancak `runOutputs` konumunu almak için durumunu sorgulayabilirsiniz.  
 
 ```azurecli-interactive
 az resource show \

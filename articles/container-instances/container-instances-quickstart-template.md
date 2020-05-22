@@ -6,18 +6,16 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
-ms.openlocfilehash: f9f789d2f2c6c21e38f241b445c72b330c689a8d
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 17f71d1c383c72fab748a9bdb789158095616f2d
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930429"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779866"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure 'da kapsayıcı örneği dağıtma
 
-Azure 'da sunucusuz Docker kapsayıcılarını basitlik ve hızla çalıştırmak için Azure Container Instances kullanın. Azure Kubernetes hizmeti gibi tam kapsayıcı düzenleme platformu gerekmiyorsa, bir uygulamayı isteğe bağlı olarak bir kapsayıcı örneğine dağıtın.
-
-Bu hızlı başlangıçta, yalıtılmış bir Docker kapsayıcısını dağıtmak ve Web uygulamasını genel bir IP adresi ile kullanılabilir hale getirmek için bir Azure Resource Manager şablonu kullanırsınız. 
+Azure 'da sunucusuz Docker kapsayıcılarını basitlik ve hızla çalıştırmak için Azure Container Instances kullanın. Azure Kubernetes hizmeti gibi tam kapsayıcı düzenleme platformu gerekmiyorsa, bir uygulamayı isteğe bağlı olarak bir kapsayıcı örneğine dağıtın. Bu hızlı başlangıçta, yalıtılmış bir Docker kapsayıcısını dağıtmak ve Web uygulamasını genel bir IP adresi ile kullanılabilir hale getirmek için bir Azure Resource Manager şablonu kullanırsınız.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -31,9 +29,9 @@ Yok.
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirin
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-linuxcontainer-public-ip).
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/).
 
-[!code-json[<Azure Resource Manager template create geo-replicated registry>](~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json" range="1-107" highlight="61-100":::
 
 Aşağıdaki kaynak şablonda tanımlanmıştır:
 
@@ -45,7 +43,7 @@ Daha fazla Azure Container Instances şablon örneği [hızlı başlangıç şab
 
  1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon, başka bir konumda bir kayıt defteri ve bir çoğaltma oluşturur.
 
-    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
+    [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
 
  2. Aşağıdaki değerleri seçin veya girin.
 
@@ -85,7 +83,7 @@ Kapsayıcı örneğinin özelliklerini gözden geçirmek için Azure portal veya
 
 Kapsayıcı örneğinin günlüklerini görüntülemek, kapsayıcınızın veya çalıştırdığı uygulamanın sorunlarını gidermede yardımcı olur.
 
-Kapsayıcının günlüklerini görüntülemek için, **Ayarlar**altında **kapsayıcılar** > **Günlükler**' i seçin. Uygulamayı tarayıcınızda görüntülediğinizde HTTP GET isteğinin oluşturulduğunu görmeniz gerekir.
+Kapsayıcının günlüklerini görüntülemek için, **Ayarlar**altında **kapsayıcılar**  >  **Günlükler**' i seçin. Uygulamayı tarayıcınızda görüntülediğinizde HTTP GET isteğinin oluşturulduğunu görmeniz gerekir.
 
 ![Azure portalında kapsayıcı günlükleri](media/container-instances-quickstart-template/aci-logs.png)
 

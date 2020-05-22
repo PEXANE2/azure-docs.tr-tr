@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/04/2020
-ms.openlocfilehash: 1dfb1b43eadebbfc7128c5a2451668be8a99329f
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.date: 05/23/2020
+ms.openlocfilehash: 29c5cdf418c4b7acfc7c3c510c3e76d956268fdf
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402550"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780363"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -207,7 +207,7 @@ Web API 'Lerinden oluşturabileceğiniz özel bağlayıcıların sınırları a�
 | Name | Sınır |
 |------|-------|
 | Mantıksal uygulama başına yönetilen kimlikler | Sistem tarafından atanan kimlik ya da 1 Kullanıcı tarafından atanan kimlik |
-| Bölge başına bir Azure aboneliğinde yönetilen kimliğe sahip mantıksal uygulama sayısı | 250 |
+| Bölge başına bir Azure aboneliğinde yönetilen kimliğe sahip mantıksal uygulama sayısı | 500 |
 |||
 
 <a name="integration-account-limits"></a>
@@ -246,7 +246,7 @@ Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azur
 | EDI ticari iş ortakları | 25 | 2 | 1000 |
 | Haritalar | 25 | 500 | 1000 |
 | Şemalar | 25 | 500 | 1000 |
-| Bütünleştirilmiş kodlar | 10 | 25 | 1000 |
+| Bütünleştirilmiş Kodlar | 10 | 25 | 1000 |
 | Sertifikalar | 25 | 2 | 1000 |
 | Batch yapılandırması | 5 | 1 | 50 |
 ||||
@@ -257,7 +257,7 @@ Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azur
 
 | Yapıt | Sınır | Notlar |
 | -------- | ----- | ----- |
-| Derleme | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için bir [Azure depolama hesabı ve BLOB kapsayıcısı](../logic-apps/logic-apps-enterprise-integration-schemas.md)kullanın. |
+| Bütünleştirilmiş Kod | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için bir [Azure depolama hesabı ve BLOB kapsayıcısı](../logic-apps/logic-apps-enterprise-integration-schemas.md)kullanın. |
 | Map (XSLT dosyası) | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için [Azure Logic Apps REST API haritaları](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)kullanın. <p><p>**Note**: bir eşlemenin başarıyla işleyebileceğini veri veya kayıt miktarı, Azure Logic Apps ileti boyutunu ve eylem zaman aşımı sınırlarını temel alır. Örneğin, http [ileti boyutu ve zaman aşımı limitlerini](#request-limits)temel alan bir http eylemi kullanıyorsanız, işlem http zaman aşımı sınırı içinde tamamlanırsa, eşleme http ileti boyutu sınırına kadar verileri işleyebilir. |
 | Şema | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için bir [Azure depolama hesabı ve BLOB kapsayıcısı](../logic-apps/logic-apps-enterprise-integration-schemas.md)kullanın. |
 ||||

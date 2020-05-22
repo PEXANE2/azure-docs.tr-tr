@@ -4,12 +4,12 @@ description: Toplu Iş çözümlerini yönetmeye ve izlemeye yardımcı olmak i�
 ms.date: 09/07/2018
 ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: e063ef56deeb7fa0f2a217f48b1c23a810a9d890
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d75ff1806f61b54bd058926f95c7c53b66aaf243
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726698"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780166"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Görevleri ve düğümleri duruma göre sayarak Batch çözümlerini izleme
 
@@ -111,12 +111,12 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
     Console.WriteLine("Low-priority node count in Preempted state: {0}", nodeCounts.LowPriority.Preempted);
 }
 ```
+
 Havuzlar için düğüm sayılarını almak üzere REST ve diğer desteklenen diller için de benzer bir model kullanabilirsiniz.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Batch hizmeti kavramları ve özellikler hakkında daha fazla bilgi edinmek için bkz. [Batch özelliklerine genel bakışı](batch-api-basics.md). Makale havuzlar, işlem düğümleri, işler ve görevler gibi birincil Batch kaynaklarını ele alır ve hizmetin özelliklerine genel bir bakış sağlar.
-
+* [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 * Batch kaynaklarını listeleyerek sorgulara filtre uygulama hakkında daha fazla bilgi için bkz. [Batch kaynaklarını etkili bir şekilde listelemek için sorgular oluşturma](batch-efficient-list-queries.md).
 
 

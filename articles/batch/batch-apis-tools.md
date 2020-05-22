@@ -4,12 +4,12 @@ description: Azure Batch hizmeti ile çözüm geliştirmek için kullanılabilen
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e345e91b2f7d66f014427770614efe42b5fb7a44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7f4138398e28797d8acb6517f33f7f97f2054a93
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232692"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780263"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API'lerine ve araçlarına genel bakış
 
@@ -18,36 +18,36 @@ Azure Batch ile paralel iş yükleri genellikle Batch API'lerinden biri kullanı
 Kuruluşunuz için büyük ölçekli iş yüklerini verimli bir şekilde işleyebilir ya da müşterilerinizin tek, yüzlerce ve hatta binlerce düğümde istek üzerine veya planlı olarak işleri ve görevleri çalıştırabileceği şekilde onlara bir hizmet ön ucu sağlayabilirsiniz. [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json) gibi araçlarla yönetilen Azure Batch'i daha büyük bir iş akışının parçası olarak da kullanabilirsiniz.
 
 > [!TIP]
-> Sağladığı özellikleri daha derinlemesine anlamak amacıyla Batch API'sinin ayrıntılarına gitmeye hazır olduğunuzda, [Geliştiriciler için Batch özelliklerine genel bakış](batch-api-basics.md) konusunu inceleyin.
+> Azure Batch ' de kullanılan özellikler ve iş akışı hakkında daha fazla bilgi edinmek için bkz. [Batch hizmeti iş akışı ve özellikleri](batch-service-workflow-features.md).
 > 
 > 
 
 ## <a name="azure-accounts-for-batch-development"></a>Batch geliştirme için Azure hesapları
 Batch çözümleri geliştirdiğinizde, Azure aboneliğinizdeki aşağıdaki hesapları kullanacaksınız:
 
-* **Batch hesabı** - Havuzlar, işlem düğümleri, işler ve görevler gibi bir Azure [Batch hesabıyla](batch-api-basics.md#account) ilişkilendirilmiş Azure Batch kaynakları. Uygulamanız, Batch hizmetinden bir istekte bulunduğunda istek Azure Batch hesabı adı, hesabın URL'si ve erişim anahtarı veya Azure Active Directory belirteci kullanılarak kimlik doğrulamasından geçirilir. Azure portalından veya kod kullanarak [Batch hesabı oluşturabilirsiniz](batch-account-create-portal.md).
-* **Depolama hesabı** - Batch’te [Azure Depolama][azure_storage] dosyalarıyla çalışmak için yerleşik destek bulunur. Neredeyse tüm Batch senaryolarında, görevlerinizin çalıştırdığı programların ve işlediği verilerin hazırlanmasının yanı sıra oluşturduğu çıktı verilerinin depolanması için Azure Blob depolama kullanılır. Batch’teki depolama hesabı seçenekleri için bkz. [Batch özelliğine genel bakış](batch-api-basics.md#azure-storage-account).
+* **Batch hesabı** - Havuzlar, işlem düğümleri, işler ve görevler gibi bir Azure [Batch hesabıyla](accounts.md) ilişkilendirilmiş Azure Batch kaynakları. Uygulamanız, Batch hizmetinden bir istekte bulunduğunda istek Azure Batch hesabı adı, hesabın URL'si ve erişim anahtarı veya Azure Active Directory belirteci kullanılarak kimlik doğrulamasından geçirilir. Azure portalından veya kod kullanarak [Batch hesabı oluşturabilirsiniz](batch-account-create-portal.md).
+* **Depolama hesabı** - Batch’te [Azure Depolama][azure_storage] dosyalarıyla çalışmak için yerleşik destek bulunur. Neredeyse tüm Batch senaryolarında, görevlerinizin çalıştırdığı programların ve işlediği verilerin hazırlanmasının yanı sıra oluşturduğu çıktı verilerinin depolanması için Azure Blob depolama kullanılır. Her Batch hesabı genellikle karşılık gelen bir depolama hesabıyla ilişkilendirilir.
 
 ## <a name="batch-service-apis"></a>Batch hizmeti API’leri
 
 Uygulamalarınız ve hizmetleriniz doğrudan REST API çağrıları kullanabilir veya Azure Batch iş yüklerinizi çalıştırmak ya da yönetmek için aşağıdaki istemci kitaplıklardan birini veya daha fazlasını kullanabilir.
 
-| API | API başvurusu | İndirme | Eğitmen | Kod örnekleri | Daha Fazla Bilgi |
+| API | API başvurusu | İndir | Öğretici | Kod örnekleri | Daha Fazla Bilgi |
 | --- | --- | --- | --- | --- | --- |
 | **Batch REST** |[docs.microsoft.com][batch_rest] |Yok |- |- | [Desteklenen sürümler](/rest/api/batchservice/batch-service-rest-api-versioning) |
-| **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Eğitmen](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Sürüm notları](https://aka.ms/batch-net-dataplane-changelog) |
-| **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Eğitmen](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Benioku](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/batch/azure-batch/README.md) |
-| **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[NPM][api_nodejs_npm] |[Eğitmen](batch-nodejs-get-started.md) |- | [Benioku](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
+| **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Öğretici](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Sürüm Notları](https://aka.ms/batch-net-dataplane-changelog) |
+| **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Öğretici](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Benioku](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/batch/azure-batch/README.md) |
+| **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[NPM][api_nodejs_npm] |[Öğretici](batch-nodejs-get-started.md) |- | [Benioku](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **Batch Java** |[docs.microsoft.com][api_java] |[Maven][api_java_jar] |- |[Benioku][api_sample_java] | [Benioku](https://github.com/Azure/azure-batch-sdk-for-java)|
 
 ## <a name="batch-management-apis"></a>Batch Yönetimi API’leri
 
 Batch için Azure Resource Manager API'leri, Batch hesaplarına programlı erişim sağlar. Bu API’leri kullanarak Batch hesaplarını, kotaları, uygulama paketlerini ve diğer kaynakları Microsoft.Batch sağlayıcısı üzerinden programlı bir şekilde yönetebilirsiniz.  
 
-| API | API başvurusu | İndirme | Eğitmen | Kod örnekleri |
+| API | API başvurusu | İndir | Öğretici | Kod örnekleri |
 | --- | --- | --- | --- | --- |
 | **Batch Yönetimi REST** |[docs.microsoft.com][api_rest_mgmt] |Yok |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
-| **Batch Yönetimi .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Eğitmen](batch-management-dotnet.md) |[GitHub][api_sample_net] |
+| **Batch Yönetimi .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Öğretici](batch-management-dotnet.md) |[GitHub][api_sample_net] |
 | **Batch Yönetimi Python** |[docs.microsoft.com][api_python_mgmt] |[PyPI][api_python_mgmt_pypi] |- |- |
 | **Batch Yönetimi Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[NPM][api_nodejs_mgmt_npm] |- |- | 
 | **Batch Yönetimi Java** |- |[Maven][api_java_mgmt_jar] |- |- |
@@ -74,7 +74,7 @@ Batch uygulamalarınızı ve hizmetlerinizi oluşturmak ve bunlarda hata ayıkla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Batch kullanmaya hazırlanan herkes için gerekli bilgileri içeren [Geliştiriciler için Batch özelliğine genel bakış](batch-api-basics.md) konusunu okuyun. Bu makalede havuzlar, düğümler, işler ve görevler gibi Batch hizmet kaynakları ve Batch uygulamanızı oluştururken kullanabileceğiniz birçok API özelliği hakkında daha ayrıntılı bilgi verilmektedir.
+* [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 * Genel bir Batch iş akışını kullanarak basit bir iş yükü yürütmek üzere C# ve Batch .NET kitaplığını kullanma hakkında bilgi için bkz. [.NET için Azure Batch kitaplığını kullanmaya başlama](tutorial-parallel-dotnet.md). Bu öğreticinin [Python sürümü](tutorial-parallel-python.md) ve [Node.js öğreticisi](batch-nodejs-get-started.md) de vardır.
 * Hem C# hem de Python'un örnek iş yüklerini zamanlamak ve işlemek üzere Batch ile arabirim oluşturmasını görmek için [GitHub'daki kod örneklerini][github_samples] indirin.
 
