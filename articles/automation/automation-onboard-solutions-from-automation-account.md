@@ -1,163 +1,88 @@
 ---
-title: Azure Otomasyonu 'nda Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümlerini nasıl ekleyeceğinizi öğrenin
-description: Azure Otomasyonu 'nun bir parçası olan Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümleriyle Azure sanal makinesini nasıl ekleyeceğinizi öğrenin
+title: Otomasyon hesabından Azure Otomasyonu Güncelleştirme Yönetimi etkinleştirme
+description: Bu makalede bir Otomasyon hesabından Güncelleştirme Yönetimi nasıl etkinleştirileceği açıklanır.
 services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 57378005bd668fa9c0f2aea70c411bbf911130db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a521ff690f59b6beafd1113b177b43193dc7447e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457663"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744001"
 ---
-# <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümlerini ekleme
+# <a name="enable-update-management-from-an-automation-account"></a>Otomasyon hesabından Güncelleştirme Yönetimi etkinleştirme
 
-Azure Otomasyonu, işletim sistemi güvenlik güncelleştirmelerini yönetmek, değişiklikleri izlemek ve bilgisayarlarınıza nelerin yüklü olduğunu envantere almak için çözümler sağlar. Makineleri eklemek için birçok yol vardır, çözümü [bir sanal makineden](automation-onboard-solutions-from-vm.md), [birden çok makineye göz atarak](automation-onboard-solutions-from-browse.md), Otomasyon hesabınızdan veya [runbook](automation-onboard-solutions.md)'a ekleyebilirsiniz. Bu makalede Otomasyon hesabınızdan bu çözümlerin eklenmesi ele alınmaktadır.
+Bu makalede, ortamınızdaki VM 'Ler için [güncelleştirme yönetimi](automation-update-management.md) özelliğini etkinleştirmek üzere otomasyon hesabınızı nasıl kullanabileceğiniz açıklanır. Azure VM 'lerini ölçekli olarak etkinleştirmek için, Güncelleştirme Yönetimi kullanarak var olan bir VM 'yi etkinleştirmeniz gerekir. 
+
+> [!NOTE]
+> Güncelleştirme Yönetimi etkinleştirilirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](how-to/region-mappings.md).
+
+## <a name="prerequisites"></a>Ön koşullar
+
+* Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
+* Makineleri yönetmek için [Otomasyon hesabı](automation-offering-get-started.md).
+* Bir [sanal makine](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Adresinden https://portal.azure.comAzure 'da oturum açın.
+Adresinden Azure 'da oturum açın https://portal.azure.com .
 
-## <a name="enable-solutions"></a>Çözümleri etkinleştirme
+## <a name="enable-update-management"></a>Güncelleştirme Yönetimi’ni etkinleştirme
 
-Otomasyon hesabınıza gidin ve **yapılandırma yönetimi**altında **Envanter** veya **değişiklik izleme** ' yi seçin.
+1. Otomasyon **hesabınızda güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ni seçin.
 
-Log Analytics çalışma alanını ve otomasyon hesabını seçin ve çözümü etkinleştirmek için **Etkinleştir** ' e tıklayın. Çözümün etkinleştirilmesi 15 dakika sürer.
+2. Log Analytics çalışma alanını ve otomasyon hesabını seçin ve Güncelleştirme Yönetimi etkinleştirmek için **Etkinleştir** ' e tıklayın. Kurulumun tamamlanabilmesi 15 dakika sürer.
 
-![Envanter çözümü ekleme](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
+    ![Güncelleştirme Yönetimi’ni etkinleştirme](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
-> [!NOTE]
-> Çözümleri etkinleştirirken Log Analytics çalışma alanı ile Otomasyon Hesabı arasında bağlantı kurma seçeneği yalnızca belirli bölgelerde desteklenmektedir.
->
-> Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](how-to/region-mappings.md).
+## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>Kapsam yapılandırmasını denetleme
 
-Değişiklik İzleme ve Sayım çözümü, sanal makinelerinizde [değişiklikleri izleme](automation-vm-change-tracking.md) ve [sayım](automation-vm-inventory.md) olanağı sağlar. Bu adımda çözümü bir sanal makine üzerinde etkinleştirirsiniz.
+Güncelleştirme Yönetimi, özelliği etkinleştirmek üzere bilgisayarları hedeflemek için çalışma alanındaki kapsam yapılandırmasını kullanır. Kapsam yapılandırması, özelliğin kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Daha fazla bilgi için bkz. [güncelleştirme yönetimi için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-update-management.md).
 
-Değişiklik izleme ve envanter çözümü ekleme bildirimi **tamamlandığında güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ni seçin.
+## <a name="enable-azure-vms"></a>Azure VM 'lerini etkinleştirin
 
-Güncelleştirme Yönetimi çözümü, Azure ve karma sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetmenizi sağlar. Kullanılabilir güncelleştirmelerin durumunu değerlendirebilir, gerekli güncelleştirmelerin yüklemesini zamanlayabilir ve güncelleştirmelerin bunlara başarıyla uygulandığını doğrulamak için dağıtım sonuçlarını gözden geçirebilirsiniz.
+1. Otomasyon **hesabınızdan güncelleştirme yönetimi**altında **güncelleştirme yönetimi** ' ni seçin.
 
-Çözümü Etkinleştir sayfasında, seçilen Log Analytics çalışma alanı, önceki adımda kullanılan çalışma alanıdır. Güncelleştirme Yönetimi çözümünü eklemek için **Etkinleştir** ' e tıklayın. Çözümün etkinleştirilmesi 15 dakika sürer.
+2. **+ Azure VM 'Leri Ekle** ' ye tıklayın ve listeden bir veya daha fazla VM seçin. Etkin olmayan sanal makineler gri, seçilemez ve seçilemiyor. Azure VM 'Ler, Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın herhangi bir bölgede bulunabilir. 
 
-![Güncelleştirme çözümünü ekleme](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
+3. Seçilen VM 'Leri, özellik için kayıtlı bilgisayar grubu aramasına eklemek için **Etkinleştir** ' e tıklayın.
 
-## <a name="scope-configuration"></a>Kapsam yapılandırması
+    ![Azure VM 'lerini etkinleştirin](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
-Her çözüm, çözümü alan bilgisayarları hedeflemek için çalışma alanında bir kapsam yapılandırması kullanır. Kapsam yapılandırması, çözümün kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Kapsam yapılandırmalarına erişmek için, Otomasyon hesabınızda **ilgili kaynaklar**altında **çalışma alanı**' nı seçin. Sonra çalışma alanı **veri kaynakları**altındaki çalışma alanında **kapsam yapılandırması**' nı seçin.
+## <a name="enable-non-azure-vms"></a>Azure dışı VM 'Leri etkinleştirme
 
-Seçilen çalışma alanında henüz Güncelleştirme Yönetimi veya Değişiklik İzleme Çözümleri yoksa, aşağıdaki kapsam konfigürasyonları oluşturulur:
+Azure 'da bulunmayan makinelerin el ile eklenmesi gerekir. 
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+1. Otomasyon **hesabınızdan güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ni seçin.
 
-* **MicrosoftDefaultScopeConfig-Updates**
+2. **Azure dışı makine Ekle**' ye tıklayın. Bu eylem, makinenin Güncelleştirme Yönetimi işlemleri raporlamaya başlayabilmesi [Için Windows Log Analytics aracısını yükleyip yapılandırmaya yönelik yönergeler](../azure-monitor/platform/log-analytics-agent.md) içeren yeni bir tarayıcı penceresi açar. Şu anda Operations Manager tarafından yönetilen bir makine etkinleştiriyorsanız, yeni bir aracı gerekli değildir ve çalışma alanı bilgileri mevcut aracıya girilir.
 
-Seçilen çalışma alanında çözüm zaten varsa, çözüm yeniden dağıtılır ve kapsam yapılandırması buna eklenmez.
+## <a name="enable-machines-in-the-workspace"></a>Çalışma alanındaki makineleri etkinleştir
 
-## <a name="saved-searches"></a>Kayıtlı aramalar
+Güncelleştirme Yönetimi etkinleştirilmesi için, çalışma alanınıza zaten rapor veren el ile yüklenen makineler veya makineler Azure Automation 'a eklenmelidir. 
 
-Bir bilgisayar Güncelleştirme Yönetimi veya Değişiklik İzleme ve envanter çözümlerine eklendiğinde, çalışma alanınızda iki kayıtlı aramadan birine eklenirler. Bu kayıtlı aramalar, bu çözümler için hedeflenen bilgisayarları içeren sorgulardır.
+1. Otomasyon **hesabınızdan güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ni seçin.
 
-Log Analytics çalışma alanınıza gidin ve **genel**altında **kaydedilmiş aramalar** ' ı seçin. Bu çözümler tarafından kullanılan iki kayıtlı arama aşağıdaki tabloda görülebilir:
+2. **Makineleri Yönet**' i seçin. Daha önce **tüm mevcut ve gelecekteki makinelerde etkinleştir** seçeneğini belirlediyseniz **makineleri Yönet** düğmesi gri olabilir
 
-|Adı     |Kategori  |Diğer ad  |
-|---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  Değişiklik izleme dosyanız       | ChangeTracking__MicrosoftDefaultComputerGroup        |
-|MicrosoftDefaultComputerGroup     | Güncelleştirmeler        | Updates__MicrosoftDefaultComputerGroup         |
+    ![Kayıtlı aramalar](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
-Grubu doldurmak için kullanılan sorguyu görüntülemek için kayıtlı arama ' yı seçin. Aşağıdaki görüntüde sorgu ve sonuçları gösterilmektedir:
+4. Tüm kullanılabilir makineler için Güncelleştirme Yönetimi etkinleştirmek üzere makineleri Yönet sayfasında **kullanılabilir tüm makinelerde etkinleştir** ' i seçin. Bu eylem, tek tek makineleri eklemek için denetimi devre dışı bırakır. Bu görev, raporlayan makinelerin tüm adlarını çalışma alanına kayıtlı bilgisayar grubu arama sorgusuna ekler. Seçildiğinde, bu eylem **makineleri Yönet** düğmesini devre dışı bırakır.
 
-![Kayıtlı aramalar](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
+5. Tüm kullanılabilir makineler ve gelecekteki makineler için özelliği etkinleştirmek üzere **tüm kullanılabilir ve gelecekteki makinelerde etkinleştir**' i seçin. Bu seçenek, kaydedilmiş aramaları ve kapsam yapılandırmasını çalışma alanından siler ve çalışma alanına raporlama yapan tüm Azure ve Azure dışı makineler için özelliği açar. Seçildiğinde, bu eylem, hiçbir kapsam yapılandırması bulunmadığından **makineleri Yönet** düğmesini kalıcı olarak devre dışı bırakır.
 
-## <a name="onboard-azure-vms"></a>Azure VM 'Leri ekleme
+6. Gerekirse, ilk kaydedilmiş aramaları yeniden ekleyerek kapsam yapılandırma işlemleri geri eklenebilir. Daha fazla bilgi için bkz. [güncelleştirme yönetimi için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-update-management.md).
 
-Otomasyon hesabınızdan, **yapılandırma**yönetimi altında **Envanter** veya **değişiklik izleme** ' yi veya **güncelleştirme**yönetimi altında **güncelleştirme yönetimi** ' ni seçin.
-
-**+ Azure VM 'Leri Ekle**' ye tıklayın, listeden bir veya daha fazla VM seçin. Etkinleştirilmemiş sanal makineler kullanılamıyor ve seçilemiyor. Azure VM 'Ler, Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın herhangi bir bölgede bulunabilir. **Etkinleştir güncelleştirme yönetimi** sayfasında **Etkinleştir**' e tıklayın. Bu eylem, seçilen VM 'Leri çözüm için bilgisayar grubu kayıtlı aramasına ekler.
-
-![Azure VM 'lerini etkinleştirin](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
-
-## <a name="onboard-a-non-azure-machine"></a>Azure olmayan bir makine ekleme
-
-Azure 'da bulunmayan makinelerin el ile eklenmesi gerekir. Otomasyon hesabınızdan, **yapılandırma**yönetimi altında **Envanter** veya **değişiklik izleme** ' yi veya **güncelleştirme**yönetimi altında **güncelleştirme yönetimi** ' ni seçin.
-
-**Azure dışı makine Ekle**' ye tıklayın. Bu eylem, makinenin çözüme raporlamaya başlayabilmesi [Için Windows Log Analytics aracısını yükleyip yapılandırmaya yönelik yönergeler](../azure-monitor/platform/log-analytics-agent.md) içeren yeni bir tarayıcı penceresi açar. Şu anda System Center Operations Manager tarafından yönetilen bir makine oluşturuyorsanız, yeni bir aracı gerekli değildir ve çalışma alanı bilgileri mevcut aracıya girilir.
-
-## <a name="onboard-machines-in-the-workspace"></a>Çalışma alanındaki makineleri ekleme
-
-El ile yüklenen makineler veya makineler, çözümün etkinleştirilmesi için Azure Otomasyonu 'na eklenmiş olmalıdır. Otomasyon hesabınızdan, **yapılandırma**yönetimi altında **Envanter** veya **değişiklik izleme** ' yi veya **güncelleştirme**yönetimi altında **güncelleştirme yönetimi** ' ni seçin.
-
-**Makineleri Yönet**' i seçin. Bu eylem, **makineleri Yönet** sayfasını açar. Bu sayfa, çözümü bir dizi makinede, tüm kullanılabilir makinelerde etkinleştirmenizi veya tüm geçerli makineler için çözümü etkinleştirmenizi ve gelecekteki tüm makinelerde etkinleştirmenizi sağlar. Daha önce **tüm mevcut ve gelecekteki makinelerde etkinleştir**seçeneğini belirlediyseniz **makineleri Yönet** düğmesi gri olabilir.
-
-![Kayıtlı aramalar](media/automation-onboard-solutions-from-automation-account/managemachines.png)
-
-### <a name="all-available-machines"></a>Tüm kullanılabilir makineler
-
-Çözümü tüm kullanılabilir makineler için etkinleştirmek üzere **kullanılabilir tüm makinelerde etkinleştir**' i seçin. Bu eylem, tek tek makineleri eklemek için denetimi devre dışı bırakır. Bu görev, raporlayan makinelerin tüm adlarını çalışma alanına kayıtlı bilgisayar grubu arama sorgusuna ekler. Seçildiğinde, bu eylem **makineleri Yönet** düğmesini devre dışı bırakır.
-
-### <a name="all-available-and-future-machines"></a>Tüm kullanılabilir ve gelecekteki makineler
-
-Çözümü tüm kullanılabilir makineler ve gelecekteki makineler için etkinleştirmek üzere **tüm kullanılabilir ve gelecekteki makinelerde etkinleştir**' i seçin. Bu seçenek, kaydedilmiş aramaları ve kapsam yapılandırmasını çalışma alanından siler. Bu eylem, çözümü çalışma alanına raporlama yapan tüm Azure ve Azure dışı makinelere açar. Seçildiğinde, bu eylem, hiçbir kapsam yapılandırması bulunmadığından **makineleri Yönet** düğmesini kalıcı olarak devre dışı bırakır.
-
-İlk kaydedilen aramaları geri ekleyerek kapsam yapılandırma işlemleri geri eklenebilir. Daha fazla bilgi için bkz. [kayıtlı aramalar](#saved-searches).
-
-### <a name="selected-machines"></a>Seçilen makineler
-
-Çözümü bir veya daha fazla makineye etkinleştirmek için **Seçili makinelerde etkinleştir** ' i seçin ve çözüme eklemek istediğiniz her makinenin yanındaki **Ekle** ' ye tıklayın. Bu görev, seçilen makine adlarını çözüme ait kayıtlı bilgisayar grubu arama sorgusuna ekler.
-
-## <a name="unlink-workspace"></a>Çalışma alanının bağlantısını kaldırma
-
-Aşağıdaki çözümler bir Log Analytics çalışma alanına bağımlıdır:
-
-* [Güncelleştirme Yönetimi](automation-update-management.md)
-* [Değişiklik İzleme](automation-change-tracking.md)
-* [Hizmetin kapalı olduğu saatlerde Sanal Makineleri Başlatma/Durdurma](automation-solution-vm-management.md)
-
-Artık Otomasyon hesabınızı bir Log Analytics çalışma alanıyla tümleştirmenize karar verirseniz, Hesabınızın bağlantısını doğrudan Azure portal kaldırabilirsiniz.  Devam etmeden önce önce bahsedilen çözümleri kaldırmanız gerekir, aksi takdirde bu işlemin devam etmesini engellenemez. Kaldırmak için gereken adımları anlamak için, içeri aktardığınız belirli çözüme yönelik makaleyi gözden geçirin.
-
-Bu çözümleri kaldırdıktan sonra, Otomasyon Hesabınızın bağlantısını kaldırmak için aşağıdaki adımları tamamlayabilirsiniz.
-
-> [!NOTE]
-> Azure SQL izleme çözümünün önceki sürümleri de dahil olmak üzere bazı çözümler Otomasyon varlıkları oluşturmuş olabilir ve çalışma alanının bağlantısı kaldırılmadan önce de kaldırılması gerekebilir.
-
-1. Azure portal, Otomasyon hesabınızı açın ve Otomasyon hesabı sayfasında, soldaki **Ilgili kaynaklar** etiketli bölümünde **bağlantılı çalışma alanı** ' nı seçin.
-
-2. Çalışma alanının bağlantısını Kaldır sayfasında, **çalışma alanının bağlantısını kaldır**' a tıklayın.
-
-   ![Çalışma alanının bağlantısını Kaldır sayfası](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
-
-   Devam etmek istediğinizi doğrulayan bir istem alacaksınız.
-
-3. Azure Otomasyonu hesap Log Analytics çalışma alanınızın bağlantısını kaldırmayı denediğinde, ilerleme durumunu menüdeki **Bildirimler** bölümünden izleyebilirsiniz.
-
-Güncelleştirme Yönetimi çözümünü kullandıysanız, isteğe bağlı olarak, çözümü kaldırdıktan sonra artık gerekli olmayan aşağıdaki öğeleri kaldırmak isteyebilirsiniz.
-
-* Zamanlamayı Güncelleştir-her biri, oluşturduğunuz güncelleştirme dağıtımlarıyla eşleşen adlara sahip olur.
-
-* Çözüm için oluşturulan karma çalışan grupları-her biri, machine1. contoso. com_9ceb8108-26c9-4051-B6B3-227600d715c8 ' e benzer şekilde adlandırılır.
-
-VM 'Leri çalışma saatleri dışında Başlat ve Durdur çözümünü kullandıysanız, isteğe bağlı olarak, çözümü kaldırdıktan sonra artık gerekli olmayan aşağıdaki öğeleri kaldırmak isteyebilirsiniz.
-
-* VM runbook zamanlamalarını başlatma ve durdurma
-* VM runbook 'larını başlatma ve durdurma
-* Değişkenler
-
-Alternatif olarak, Log Analytics çalışma alanınızdan Otomasyon hesabınızdan çalışma alanınızın bağlantısını da kaldırabilirsiniz. Çalışma alanınızda **Ilgili kaynaklar**altında **Otomasyon hesabı** ' nı seçin. Otomasyon hesabı sayfasında **Hesap bağlantısını kaldır**' ı seçin.
-
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Bir sanal makineyi Güncelleştirme Yönetimi kaldırmak için:
-
-* Log Analytics çalışma alanınızda, VM 'yi, kapsam yapılandırması `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan kaldırın. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
-* [Windows için Log Analytics aracısını](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) veya [Linux için Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
+7. Bir veya daha fazla makine için özelliği etkinleştirmek üzere **Seçili makinelerde etkinleştir** ' i seçin ve özelliği etkinleştirmek için her makinenin yanındaki **Ekle** ' ye tıklayın. Bu görev, seçilen makine adlarını, bu özellik için bilgisayar grubu kayıtlı arama sorgusuna ekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Nasıl kullanacağınızı öğrenmek için çözümlerle ilgili öğreticilere geçin.
-
-* [Öğretici-VM 'niz için güncelleştirmeleri yönetme](automation-tutorial-update-management.md)
-
-* [Öğretici-bir VM 'de yazılım tanımla](automation-tutorial-installed-software.md)
-
-* [Öğretici-VM 'deki değişikliklerle Ilgili sorunları giderme](automation-tutorial-troubleshoot-changes.md)
+* VM 'Ler için Güncelleştirme Yönetimi kullanmak için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).
+* Kapsam yapılandırmalarında bkz. [güncelleştirme yönetimi için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-update-management.md).
+* Artık Log Analytics çalışma alanına ihtiyacınız yoksa, [güncelleştirme yönetimi için çalışma alanının Otomasyon hesabından bağlantısını kaldır](automation-unlink-workspace-update-management.md)' daki yönergelere bakın.
+* VM 'Leri Güncelleştirme Yönetimi silmek için bkz. [güncelleştirme yönetimi VM 'Leri kaldırma](automation-remove-vms-from-update-management.md).
+* Genel Güncelleştirme Yönetimi hatalarıyla ilgili sorunları gidermek için bkz. [güncelleştirme yönetimi sorunlarını giderme](troubleshoot/update-management.md).
+* Windows Update Aracısı sorunlarını gidermek için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
+* Linux Güncelleştirme Aracısı sorunlarını gidermek için bkz.[Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 17416131566edf8710737862f0cbea2e31477960
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: e193b272460fe97f599adff414fcac6e80648104
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722533"
+ms.locfileid: "83738379"
 ---
 # <a name="auth0-partner-topics"></a>Auth0 Iş ortağı konuları
 ![Auth0 logosu](./media/auth0-overview/auth0-logo.png)
@@ -46,6 +46,6 @@ Dağıtılmış bir sistemi korurken güvenlik izleme ve olay yanıtı yordamlar
 
 - [İş ortağı konularına genel bakış](partner-topics-overview.md)
 - [Auth0 Iş ortağı konusunu kullanma](auth0-how-to.md)
-- [Auth0 belgeleri](https://auth0.com/docs/logs/streams/azure-eventgrid)
+- [Auth0 belgeleri](https://auth0.com/docs/azure-tutorial)
 - [Event Grid iş ortağı olun](partner-onboarding-overview.md)
 

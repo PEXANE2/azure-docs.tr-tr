@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: c183c179200738566d0794ba23582f16068013b6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 09f0e0f47ecd94c6db67b3973218cc1323bccde3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722856"
+ms.locfileid: "83736186"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -253,9 +253,12 @@ Enseletirme modelleri varsayılan olarak etkindir ve otomatik makine öğrenimi 
 
 `kwargs` `AutoMLConfig` Varsayılan ensebir davranışını değiştirmek için bir nesnede olarak sağlanbir çoklu varsayılan bağımsız değişken vardır.
 
-* `ensemble_download_models_timeout_sec`: Votingensebir ve Stackensebir model oluşturma sırasında, önceki alt çalıştırmaların birden çok monte edilen modeli indirilir. Bu hatayla karşılaşırsanız `AutoMLEnsembleException: Could not find any models for running ensembling` , modellerin indirilmesi için daha fazla zaman girmeniz gerekebilir. Bu modellerin paralel olarak indirilmesi için varsayılan değer 300 saniyedir ve en fazla zaman aşımı sınırı yoktur. Daha fazla zaman gerekliyse bu parametreyi 300 saniyeden daha yüksek bir değerle yapılandırın. **Not**: zaman aşımı ulaşılırsa ve indirilen modeller varsa, ensembling indirildiği modellerle devam eder (Bu, tüm modellerin bu zaman aşımı süresi içinde sonlanması için indirilmesi gerekir).
+* `ensemble_download_models_timeout_sec`: **Votingensebir** ve **stackensebir** model oluşturma sırasında, önceki alt çalıştırmaların birden çok monte edilen modeli indirilir. Bu hatayla karşılaşırsanız `AutoMLEnsembleException: Could not find any models for running ensembling` , modellerin indirilmesi için daha fazla zaman girmeniz gerekebilir. Bu modellerin paralel olarak indirilmesi için varsayılan değer 300 saniyedir ve en fazla zaman aşımı sınırı yoktur. Daha fazla zaman gerekliyse bu parametreyi 300 saniyeden daha yüksek bir değerle yapılandırın. 
 
-Aşağıdaki parametreler yalnızca Stackensesıgrafik modelleri için geçerlidir: 
+  > [!NOTE]
+  >  Zaman aşımına ulaşılırsa ve indirilen modeller varsa, ensembling indirildiği modellerle devam eder. Tüm modellerin bu zaman aşımı süresi içinde sona ermesini sağlamak zorunda değildir.
+
+Aşağıdaki parametreler yalnızca **Stackensesıgrafik** modelleri için geçerlidir: 
 
 * `stack_meta_learner_type`: meta-Learner, tek tek heterojen modellerin çıktısı üzerinde eğitilen bir modeldir. Varsayılan meta öğrenenler, `LogisticRegression` Sınıflandırma görevlerine (veya `LogisticRegressionCV` çapraz doğrulamanın etkin olması) ve `ElasticNet` gerileme/tahmin görevlerine (veya `ElasticNetCV` çapraz doğrulamanın etkin olması halinde) yöneliktir. Bu parametre şu dizelerden biri olabilir: `LogisticRegression` , `LogisticRegressionCV` ,, `LightGBMClassifier` `ElasticNet` , `ElasticNetCV` , `LightGBMRegressor` , veya `LinearRegression` .
 

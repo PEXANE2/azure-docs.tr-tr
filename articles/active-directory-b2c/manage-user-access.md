@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f04a3fea3801f917a3ae4aced04ef3824d1cfa82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad681f4996f713b8bb0c85b07a3f38f0dcb6708a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184528"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738243"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de Kullanıcı erişimini yönetme
 
@@ -66,15 +66,15 @@ Uygulamalar, kayıt sırasında tüm kullanıcılardan Doğum tarihini (DOB) ve 
 
 Aşağıdaki adımlarda, kullanıcının Doğum tarihinden sonra **Agegrubunu** hesaplamak için kullanılan mantık gösterilmektedir:
 
-1. Ülkeyi, listedeki ülke kodu ile bulmayı deneyin. Ülke bulunamazsa, **varsayılana**geri dönün.
+1. Ülke/bölge kodunu listedeki ülke/bölge kodu ile bulmayı deneyin. Ülke/bölge bulunamazsa, **varsayılana**geri dönün.
 
-2. Ülke öğesinde **MinorConsent** düğümü varsa:
+2. Ülke/bölge öğesinde **MinorConsent** düğümü varsa:
 
     a. Kullanıcının yetişkin olarak kabul edilmesi için doğmuş olması gereken tarihi hesaplayın. Örneğin, geçerli tarih 14 Mart 2015 ve **MinorConsent** 18 ise, Doğum tarihi 14 Mart 2000 ' den sonra olmamalıdır.
 
     b. En küçük Doğum tarihini gerçek Doğum tarihiyle karşılaştırın. En küçük Doğum tarihi kullanıcının Doğum tarihinden önce ise, hesaplama yaş grubu hesaplaması olarak **İkincil** döndürür.
 
-3. Ülke öğesinde **MinorNoConsentRequired** düğümü varsa, **MinorNoConsentRequired**' den değeri kullanarak 2A ve 2B adımlarını yineleyin. 2B çıkışı, en az Doğum tarihi kullanıcının Doğum tarihinden önce ise, **MinorNoConsentRequired** döndürür.
+3. Ülke/bölge öğesinde **MinorNoConsentRequired** düğümü varsa, **MinorNoConsentRequired**' deki değeri kullanarak 2A ve 2B adımlarını yineleyin. 2B çıkışı, en az Doğum tarihi kullanıcının Doğum tarihinden önce ise, **MinorNoConsentRequired** döndürür.
 
 4. Hiçbir hesaplama true döndürürse, hesaplama **yetişkin**döndürür.
 

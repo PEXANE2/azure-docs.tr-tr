@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 54b45825f2322dc127d5db818b7abe52e4a98967
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f5e4515cfbacb656f60492613b5379c0bde60244
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208406"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736033"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme
 
@@ -64,7 +64,7 @@ Kişi bilgileri bölümünde, **yayımcının görünen adını**, **satıcı il
 
 #### <a name="payout-account"></a>Ödeme hesabı
 
-Bir ödeme hesabı, satışınızdan gönderilecek devam eden banka hesabıdır. Bu banka hesabı, Iş Ortağı Merkezi hesabınızı kaydettiğiniz ülkede olmalıdır.
+Bir ödeme hesabı, satışınızdan gönderilecek devam eden banka hesabıdır. Bu banka hesabı, Iş Ortağı Merkezi hesabınızı kaydettiğiniz ülkede/bölgede olmalıdır.
 
 Ödeme hesabınızı ayarlamak için:
 
@@ -80,21 +80,21 @@ Bir ödeme hesabı, satışınızdan gönderilecek devam eden banka hesabıdır.
 
 Doğru **varlık türü** ve **Vergi Sertifikası bilgilerinin** görüntülendiğini onaylayan geçerli vergi profili durumunuzu gözden geçirin. Gerekli formları güncelleştirmek veya gerçekleştirmek için **Düzenle** ' yi seçin.
 
-Vergi durumunuzu kurmak için, konuti ve vatandaşlık Ülkenizi belirtmeniz ve ülkeniz/bölgeniz ile ilişkili uygun vergi formlarını doldurmanız gerekir.
+Vergi durumunuzu oluşturmak için, Kona ve vatandaşlık ülke/bölgenizi belirtmeniz ve ülkeniz/bölgeniz ile ilişkili uygun vergi formlarını doldurmanız gerekir.
 
-İkamet veya vatandaşlık ülkeniz ne olursa olsun, Microsoft aracılığıyla herhangi bir teklif satmanız için Birleşik Devletler vergi formlarını doldurmanız gerekir. Belirli Birleşik Devletler yer gereksinimini karşılayan iş ortakları bir ıRS W-9 formunu doldurmalıdır. Birleşik Devletler dışındaki diğer iş ortakları bir ıRS W-8 formu doldurmanız gerekir. Vergi profilinizi tamamladığınızda, bu formları çevrimiçi olarak doldurabilirsiniz.
+İkamet veya vatandaşlık ülkeniz/bölgeinizden bağımsız olarak, Microsoft aracılığıyla herhangi bir teklif satmanız için Birleşik Devletler vergi formlarını doldurmanız gerekir. Belirli Birleşik Devletler yer gereksinimini karşılayan iş ortakları bir ıRS W-9 formunu doldurmalıdır. Birleşik Devletler dışındaki diğer iş ortakları bir ıRS W-8 formu doldurmanız gerekir. Vergi profilinizi tamamladığınızda, bu formları çevrimiçi olarak doldurabilirsiniz.
 
 Birleşik Devletler bireysel vergi mükellefi kimlik numarası (veya ITIN), Microsoft 'tan ödeme almak veya vergi anlaşmalar avantajlarına talep etmek için gerekli değildir.
 
 Iş Ortağı Merkezi ' nde vergi formlarınızı elektronik olarak tamamlayabilir ve gönderebilirsiniz. Çoğu durumda, herhangi bir formu yazdırmanız ve postalarınıza gerek kalmaz.
 
-Farklı ülkeler ve bölgeler farklı vergi gereksinimlerine sahiptir. Vergilerle ödeme yapmanız gereken tam tutar, tekliflerinizi sattığınız ülkelere ve bölgelere göre değişir. Microsoft remits Sales ve bazı ülkelerde sizin adınıza vergi kullanır. Bu ülkeler teklifinizi listeleme sürecinde tanımlanacaktır. Diğer ülkelerde, kaydettiğiniz yere bağlı olarak, satış için satış ve Kullanım vergisini doğrudan yerel talama yetkilisine havale etmeniz gerekebilir. Bunlara ek olarak, aldığınız satış gelirleri gelir olarak vergilendirilebilir olabilir. Ülkeniz veya bölgeniz için, Microsoft satış işlemleriniz için doğru vergi bilgilerini belirlemenize en iyi şekilde yardımcı olabilecek ilgili yetkiliyle iletişim kurmanız önemle önerilir.
+Farklı ülkeler ve bölgeler farklı vergi gereksinimlerine sahiptir. Vergilerle ödeme yapmanız gereken tam tutar, tekliflerinizi sattığınız ülkelere ve bölgelere göre değişir. Microsoft remits Sales ve bazı ülkelerde/bölgelerde sizin adınıza vergi kullanır. Bu ülkeler/bölgeler, teklifinizi listeleme sürecinde tanımlanacaktır. Diğer ülkelerde/bölgelerde, kaydettiğiniz yere bağlı olarak, satış için satış ve Kullanım vergisini doğrudan yerel talama yetkilisine havale etmeniz gerekebilir. Bunlara ek olarak, aldığınız satış gelirleri gelir olarak vergilendirilebilir olabilir. Ülkeniz veya bölgeniz için, Microsoft satış işlemleriniz için doğru vergi bilgilerini belirlemenize en iyi şekilde yardımcı olabilecek ilgili yetkiliyle iletişim kurmanız önemle önerilir.
 
 ##### <a name="withholding-rates"></a>Stopaj oranları
-Vergi formlarınızda gönderdiğiniz bilgiler uygun vergi stopajı oranını belirler. Stopaj oranı yalnızca Birleşik Devletler yaptığınız satış için geçerlidir; ABD dışı konumlara yapılan satışlar, stopaja tabi değildir. Stopaj ücretleri farklılık gösterir, ancak Birleşik Devletler dışında kayıt yapan çoğu geliştirici için varsayılan oran %30 ' dur. Ülkeniz Birleşik Devletler bir gelir vergi anlaşmayı kabul ettiğinde bu oranı azaltma seçeneğiniz vardır.
+Vergi formlarınızda gönderdiğiniz bilgiler uygun vergi stopajı oranını belirler. Stopaj oranı yalnızca Birleşik Devletler yaptığınız satış için geçerlidir; ABD dışı konumlara yapılan satışlar, stopaja tabi değildir. Stopaj ücretleri farklılık gösterir, ancak Birleşik Devletler dışında kayıt yapan çoğu geliştirici için varsayılan oran %30 ' dur. Ülkeniz/bölgeniz Birleşik Devletler bir gelir vergi anlaşmasının kabul etmiş olması durumunda bu oranı azaltma seçeneğiniz vardır.
 
 ##### <a name="tax-treaty-benefits"></a>Vergi anlaşmalar avantajları
-Birleşik Devletler dışındaysanız, vergi anlaşmalar avantajlarından yararlanabilirsiniz. Bu avantajlar ülke ile ülkeye kadar farklılık gösterir ve Microsoft 'un tuttuğu vergi miktarını azaltmanıza olanak tanıyabilir. W-8BEN formunun Bölüm II ' ni tamamlayarak vergi anlaşmalar avantajlarına talep edebilirsiniz. Bu avantajlardan sizin için uygun olup olmadığını öğrenmek üzere ülkenizde veya bölgenizde uygun kaynaklarla iletişim kurmanızı öneririz.
+Birleşik Devletler dışındaysanız, vergi anlaşmalar avantajlarından yararlanabilirsiniz. Bu avantajlar ülke/bölge ile ülke/bölge arasında farklılık gösterir ve Microsoft 'un tuttuğu vergi miktarını azaltmanıza olanak tanıyabilir. W-8BEN formunun Bölüm II ' ni tamamlayarak vergi anlaşmalar avantajlarına talep edebilirsiniz. Bu avantajlardan sizin için uygun olup olmadığını öğrenmek üzere ülkenizde veya bölgenizde uygun kaynaklarla iletişim kurmanızı öneririz.
 
 [Windows uygulama/oyun geliştiricileri ve Azure Market yayımcılarının vergi ayrıntıları hakkında daha fazla bilgi edinin](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps).
 
@@ -134,7 +134,7 @@ Daha fazla bilgi için bkz. [Azure müşteri kullanımını GUID 'Lerle Izleme S
 
 Müşteriler için bir [dynamics 365 & Power Apps](./create-new-customer-engagement-offer.md) veya [Operations teklifi için Dynamics 365](./create-new-operations-offer.md) ' i yayımlıyorsanız, **faturalandırma profilinizi**doldurmanız gerekir.
 
-Faturalandırma adresi yasal varlığınızdan önceden doldurulur ve bu adresi daha sonra güncelleştirebilirsiniz. VERGI ve KDV KIMLIĞI alanları isteğe bağlıdır.  Ülke adı ve şirket adı düzenlenemiyor.
+Faturalandırma adresi yasal varlığınızdan önceden doldurulur ve bu adresi daha sonra güncelleştirebilirsiniz. VERGI ve KDV KIMLIĞI alanları isteğe bağlıdır.  Ülke/bölge adı ve şirket adı düzenlenemez.
 
 ## <a name="multi-user-account-management"></a>Çok kullanıcılı hesap yönetimi
 

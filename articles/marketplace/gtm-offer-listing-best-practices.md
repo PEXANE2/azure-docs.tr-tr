@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: bf2c4ff1afbf3558d6c49cf7bec90cd37e17929b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 33effe0bbc566880b147c377b3bb130cd81999c8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658003"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740782"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
 
@@ -22,7 +22,7 @@ Bu makale, ticari Market teklifleri oluşturmaya ve buna ilgi çekici öneriler 
 
 | Storefront ayarı | En iyi yöntem |
 |:--- |:--- |  
-| Teklif Adı | Güçlü bir başlık sağlayın:<br> <ul> <li> Uygulamanızın adı müşterilerinizin çekirdek değerini iletmelidir. </li> <li> Arama motoru sonuçlarında daha yüksek derecelendirme almak için uygulama başlığınızı arama anahtar sözcüklerini ekleyin. </li> </ul> Danışmanlık hizmeti listelerinin ayarlanan başlık biçimini izleyin:<br>[Teklif adı: [Duration] [teklif türü] (örneğin, *contoso: 2 haftalık uygulama*) <br><br> Marka yönergelerine uyar:<br>Microsoft ticari markaları ve Microsoft yazılımlarının, ürünlerinin ve hizmetlerinin adlarına başvurduğunuzda, [Microsoft ticari marka ve marka kılavuzlarını](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx) ve ilgili, ürüne özgü diğer yönergeleri izleyin. |
+| Teklif Adı | Güçlü bir başlık sağlayın:<br> <ul> <li> Uygulamanızın adı müşterilerinizin çekirdek değerini iletmelidir. </li> <li> Arama motoru sonuçlarında daha yüksek derecelendirme almak için uygulama başlığınızı arama anahtar sözcüklerini ekleyin. </li> </ul> Danışmanlık hizmeti listelerinin ayarlanan başlık biçimini izleyin:<br>[Teklif adı: [Duration] [teklif türü] (örneğin, *contoso: 2 haftalık uygulama*) <br><br> Marka yönergelerine uyar:<br>Microsoft ticari markaları ve Microsoft yazılımlarının, ürünlerinin ve hizmetlerinin adlarına başvurduğunuzda, [Microsoft ticari marka ve marka kılavuzlarını](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) ve ilgili, ürüne özgü diğer yönergeleri izleyin. |
 | Teklif açıklaması | Net bir teklif açıklaması sağlayın:<br> <ul> <li> Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır. </li> <li> İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini aklınızda bulundurun. </li> <li> Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teslim ettiğiniz değere odaklanın. </li> <li> Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın.</li> <li> Ayrıca, danışmanlık hizmeti listeleri sağladığınız profesyonel hizmeti açıkça sağlamalıdır. </li></ul> Değer önerinizdeki çekirdek bileşenleri aşağıdaki bilgileri içermelidir:<ul><li>Ürünün açıklaması.</li><li>Üründen faydalanan Kullanıcı türü.</li><li>Müşterinin ürün adresi olması veya sorun olması.</li></ul> |
 
 Bu bölümdeki tablolarda Market teklifleri oluşturma ve ilgi çekici öneriler sağlanır. Pazarlama malzemelerinizi yazmak ve yapılandırmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/)'ne gidin. 

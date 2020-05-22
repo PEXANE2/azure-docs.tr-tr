@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ab41d3619150ace8e55702792d5974060133d5c1
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 7ecd68023c5c48a82c07d98615807a895cdd0cae
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726188"
+ms.locfileid: "83743097"
 ---
 # <a name="create-an-azure-virtual-machine-offer-in-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
@@ -370,7 +370,7 @@ Bu sekmede, aşağıdakileri yapılandıracaksınız:
 
 #### <a name="markets"></a>Pazar
 
-Her plan en az bir pazarda kullanılabilir olmalıdır. Bu planın satın alma için kullanılabilir olması gereken her Pazar konumunun onay kutusunu seçin (bu pazarlardaki kullanıcılar teklifi **[plan kurulumunda](#plan-setup)** seçilen tüm Azure bölgelerine dağıtmaya devam edebilir). **Havale edilen vergi** düğmesi, Microsoft remits Sales ve sizin adınıza kullanım vergisini gösteren ülkeleri gösterir. Çin 'de yayımlama, **ücretsiz** olan veya **kendi lisansınızı** getiren planlarla sınırlıdır (KLG).
+Her plan en az bir pazarda kullanılabilir olmalıdır. Bu planın satın alma için kullanılabilir olması gereken her Pazar konumunun onay kutusunu seçin (bu pazarlardaki kullanıcılar teklifi **[plan kurulumunda](#plan-setup)** seçilen tüm Azure bölgelerine dağıtmaya devam edebilir). **Havale edilen vergi** düğmesi, Microsoft remits Sales ve sizin adınıza vergi tarafından kullanılan ülkeyi/bölgeleri gösterir. Çin 'de yayımlama, **ücretsiz** olan veya **kendi lisansınızı** getiren planlarla sınırlıdır (KLG).
 
 Planınız için Birleşik Devletler dolar (USD) cinsinden zaten fiyatlar ayarladıysanız ve başka bir pazar konumu eklerseniz, yeni pazar fiyatı geçerli döviz kurlarına göre hesaplanır. Yayımlamadan önce her bir pazar için fiyatı her zaman gözden geçirin. Değişikliklerinizi kaydettikten sonra **fiyatları dışarı aktar (xlsx)** bağlantısını kullanarak fiyatları gözden geçirin.
 
@@ -503,7 +503,7 @@ Yayımlama işlemindeki **el ile doğrulama** adımı, teklifinizin ve ilişkili
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel temsili (hem tamamlandı hem de devam ediyor) ve her adımın tamamlanması için gereken süre gösterilir.
 
-Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örnek:
+Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örneğin:
 
 - Teklif bir taslak- [silme taslağı tekliftir](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)

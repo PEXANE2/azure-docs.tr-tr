@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fd854691203361847ae9a6c873121c9b66820a90
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195124"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743383"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Windows sanal masaüstü için PowerShell modülünü ayarlama
 
@@ -63,7 +63,12 @@ Bu, sizi yönetici kimlik bilgileriniz için varsayılan olan abonelikte doğrud
 Oturum açtıktan sonra varsayılan aboneliği değiştirmek istiyorsanız şu cmdlet 'i çalıştırın:
 
 ```powershell
-Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -Subscription <preferredsubscriptionname>
+```
+
+Ayrıca, Out-GridView cmdlet 'ini kullanarak listeden açık ' ı seçebilirsiniz:
+```powershell
+Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription
 ```
 
 Kullanmak üzere yeni bir abonelik seçtiğinizde, bu aboneliğin KIMLIĞINI daha sonra çalıştırdığınız cmdlet 'lerde belirtmeniz gerekmez. Örneğin, aşağıdaki cmdlet abonelik KIMLIĞINE gerek duymadan belirli bir oturum konağını alır:

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d8be2c8cc70db963252054a39cad558c4c1b5bd2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871212"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737512"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -284,7 +284,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tablo 3: kaynak başına geçerli KIMLIK değerleri
 
-| Kaynak | Kimlik | Açıklama |
+| Kaynak | ID | Açıklama |
 |-----|-----|-----|
 | Kullanıcı | surname | Aile adı |
 | Kullanıcı | givenname | Verilen Ad |
@@ -319,7 +319,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | extensionattribute14 | Uzantı özniteliği 14 |
 | Kullanıcı | extensionattribute15 | Uzantı özniteliği 15 |
 | Kullanıcı | diğer posta | Diğer posta |
-| Kullanıcı | ülke | Ülke |
+| Kullanıcı | ülke | Ülke/Bölge |
 | Kullanıcı | city | Şehir |
 | Kullanıcı | durum | Durum |
 | Kullanıcı | JobTitle | İş Unvanı |
@@ -327,8 +327,8 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | facsimileTelephoneNumber 'dir | Facsıle telefon numarası |
 | uygulama, kaynak, hedef kitle | DisplayName | Görünen Ad |
 | uygulama, kaynak, hedef kitle | objected | ObjectID |
-| uygulama, kaynak, hedef kitle | etiketler | Hizmet sorumlusu etiketi |
-| Şirket | tenantcountry | Kiracının ülkesi |
+| uygulama, kaynak, hedef kitle | tags | Hizmet sorumlusu etiketi |
+| Şirket | tenantcountry | Kiracının ülkesi/bölgesi |
 
 **Dönüştürme kimliği:** Dönüşümtionıd öğesi yalnızca kaynak öğe "dönüşüm" olarak ayarlandıysa sağlanmalıdır.
 
@@ -360,8 +360,8 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 |Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Açıklama|
 |-----|-----|-----|-----|
-|Birleştir|dize1, dize2, ayırıcı|outputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: "foo@bar.com", dize2: "Sandbox", ayırıcı: "." outputclaim 'de sonuçlar: ""foo@bar.com.sandbox|
-|ExtractMailPrefix|posta|outputClaim|Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: "foo@bar.com" outputclaim sonucu: "foo". Hiçbir \@ işaret yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
+|Birleştir|dize1, dize2, ayırıcı|outputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: " foo@bar.com ", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: " foo@bar.com.sandbox "|
+|ExtractMailPrefix|posta|outputClaim|Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: " foo@bar.com " outputClaim sonucu: "foo". Hiçbir \@ işaret yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
 
 **Inputclaim:** Bir talep şeması girdisinden bir dönüşüme veri geçirmek için ınputclaim öğesi kullanın. İki özniteliğe sahiptir: **ClaimTypeReferenceId** ve **dönüştürülebilir tionclaimtype**.
 
@@ -384,7 +384,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tablo 5: SAML NameID için veri kaynağı olarak izin verilen öznitelikler
 
-|Kaynak|Kimlik|Açıklama|
+|Kaynak|ID|Açıklama|
 |-----|-----|-----|
 | Kullanıcı | posta|E-posta Adresi|
 | Kullanıcı | userPrincipalName|Kullanıcı Asıl Adı|
@@ -415,9 +415,9 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 ### <a name="custom-signing-key"></a>Özel imzalama anahtarı
 
-Bir talep eşleme ilkesinin etkili olması için hizmet sorumlusu nesnesine özel bir imzalama anahtarı atanmalıdır. Bu, belirteçlerin talep eşleme ilkesinin Oluşturucusu tarafından değiştirildiğini ve uygulamaların kötü amaçlı aktörler tarafından oluşturulan talep eşleme ilkelerine karşı korunmasını sağlar. Özel bir imzalama anahtarı eklemek için, uygulama nesneniz için bir simetrik anahtar kimlik bilgisi `new-azureadapplicationkeycredential` oluşturmak üzere Azure PowerShell cmdlet 'ini kullanabilirsiniz. Bu Azure PowerShell cmdlet 'i hakkında daha fazla bilgi için, bkz. [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+Bir talep eşleme ilkesinin etkili olması için hizmet sorumlusu nesnesine özel bir imzalama anahtarı atanmalıdır. Bu, belirteçlerin talep eşleme ilkesinin Oluşturucusu tarafından değiştirildiğini ve uygulamaların kötü amaçlı aktörler tarafından oluşturulan talep eşleme ilkelerine karşı korunmasını sağlar. Özel bir imzalama anahtarı eklemek için, `new-azureadapplicationkeycredential` uygulama nesneniz için bir simetrik anahtar kimlik bilgisi oluşturmak üzere Azure PowerShell cmdlet 'ini kullanabilirsiniz. Bu Azure PowerShell cmdlet 'i hakkında daha fazla bilgi için, bkz. [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
-Talep eşlemesi etkin olan uygulamalar, kendi [OpenID Connect meta veri isteklerine](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)ekleyerek `appid={client_id}` belirteç imzalama anahtarlarını doğrulamalıdır. Aşağıda, kullanmanız gereken OpenID Connect meta veri belgesinin biçimi verilmiştir: 
+Talep eşlemesi etkin olan uygulamalar `appid={client_id}` , kendi [OpenID Connect meta veri isteklerine](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)ekleyerek belirteç imzalama anahtarlarını doğrulamalıdır. Aşağıda, kullanmanız gereken OpenID Connect meta veri belgesinin biçimi verilmiştir: 
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
@@ -478,7 +478,7 @@ Bu örnekte, bağlı hizmet sorumlularına verilen belirteçlerden temel talep k
 
 #### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Örnek: bir hizmet sorumlusu tarafından verilen belirteçlere talepler olarak EmployeeID ve TenantCountry dahil etmek için bir ilke oluşturun ve atayın
 
-Bu örnekte, EmployeeID ve TenantCountry ' ı bağlı hizmet sorumlularına verilen belirteçlere ekleyen bir ilke oluşturacaksınız. ÇalışanNo, hem SAML belirteçlerinde hem de JWTs 'de ad talep türü olarak yayınlanır. TenantCountry, hem SAML belirteçlerinde hem de JWTs 'de ülke talep türü olarak yayınlanır. Bu örnekte, belirteçlere temel talepler kümesini eklemeye devam ediyoruz.
+Bu örnekte, EmployeeID ve TenantCountry ' ı bağlı hizmet sorumlularına verilen belirteçlere ekleyen bir ilke oluşturacaksınız. ÇalışanNo, hem SAML belirteçlerinde hem de JWTs 'de ad talep türü olarak yayınlanır. TenantCountry, hem SAML belirteçlerinde hem de JWTs 'de ülke/bölge talep türü olarak yayınlanır. Bu örnekte, belirteçlere temel talepler kümesini eklemeye devam ediyoruz.
 
 1. Talep eşleme ilkesi oluşturun. Bu ilke, belirli hizmet sorumlularıyla bağlantılı olarak, ÇalışanNo ve TenantCountry taleplerini belirteçlere ekler.
    1. İlkeyi oluşturmak için aşağıdaki komutu çalıştırın:  

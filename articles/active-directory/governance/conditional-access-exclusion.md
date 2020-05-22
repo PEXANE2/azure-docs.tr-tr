@@ -16,12 +16,12 @@ ms.date: 04/24/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91bb5a342eea079b6e9abcf109ad472151d3c13d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab2974cf95726f44641b4ac220c7ee871890ca56
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144493"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736866"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetmek için Azure AD erişim incelemelerini kullanın
 
@@ -32,7 +32,7 @@ ms.locfileid: "82144493"
 
 ## <a name="why-would-you-exclude-users-from-policies"></a>Kullanıcıları ilkelerden nasıl dışlıyorsunuz?
 
-Yönetici olarak, çok faktörlü kimlik doğrulaması (MFA) istemek ve kimlik doğrulama isteklerini belirli ağlara veya cihazlara sınırlamak için [Azure AD koşullu erişimi](../conditional-access/overview.md) kullanmaya karar verdiğinizi varsayalım. Dağıtım planlaması sırasında, tüm kullanıcıların bu gereksinimleri karşılamayabileceğini fark etmiş olursunuz. Örneğin, iç ağınızın bir parçası değil, uzak ofislerden çalışan kullanıcılarınız olabilir. Ayrıca, bu cihazların değiştirilmesini beklerken desteklenmeyen cihazları kullanarak bağlanan kullanıcılara da sahip olmanız gerekebilir. Kısacası, bu kullanıcıların oturum açmasını ve işlerini, koşullu erişim ilkelerinden dışlanmasını sağlamak için yapması gerekir.
+Yönetici olarak, çok faktörlü kimlik doğrulaması (MFA) istemek ve kimlik doğrulama isteklerini belirli ağlara veya cihazlara sınırlamak için [Azure AD koşullu erişimi](../conditional-access/concept-conditional-access-policy-common.md) kullanmaya karar verdiğinizi varsayalım. Dağıtım planlaması sırasında, tüm kullanıcıların bu gereksinimleri karşılamayabileceğini fark etmiş olursunuz. Örneğin, iç ağınızın bir parçası değil, uzak ofislerden çalışan kullanıcılarınız olabilir. Ayrıca, bu cihazların değiştirilmesini beklerken desteklenmeyen cihazları kullanarak bağlanan kullanıcılara da sahip olmanız gerekebilir. Kısacası, bu kullanıcıların oturum açmasını ve işlerini, koşullu erişim ilkelerinden dışlanmasını sağlamak için yapması gerekir.
 
 Başka bir örnek olarak, kullanıcıların kiracılarına erişmesine izin vermek istemediğiniz bir ülke ve bölge kümesi belirtmek üzere koşullu erişim içinde [adlandırılmış konumlar](../conditional-access/location-condition.md) kullanıyor olabilirsiniz.
 

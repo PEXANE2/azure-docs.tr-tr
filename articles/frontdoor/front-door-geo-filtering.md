@@ -13,24 +13,24 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 2cdde705d0e9f0905d4c33648b5415758d838b06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98c86d839868eb0714c7106d5267d1c55e6e99d5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411174"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739320"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door için bir etki alanında coğrafi filtreleme nedir?
 
 Varsayılan olarak, Azure ön kapısı isteği yapan kullanıcının konumundan bağımsız olarak Kullanıcı isteklerine yanıt verir. Ancak bazı durumlarda, Web uygulamalarınıza olan erişimi ülkeye/bölgeye göre kısıtlamak isteyebilirsiniz. Ön kapıda Web uygulaması güvenlik duvarı (WAF) hizmeti, belirli ülkelerde/bölgelerde erişime izin vermek veya erişimi engellemek için uç noktanıza özel erişim kuralları kullanarak bir ilke tanımlamanızı sağlar. 
 
-WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşullarından, bir eylemden ve bir öncelikten oluşur. Eşleşme koşulunda bir eşleşme değişkeni, işleç ve eşleşme değeri tanımlarsınız.  Coğrafi filtreleme kuralı için eşleşme değişkeni REMOTE_ADDR, işleç GeoMatch, değer ise söz konusu ülkenin iki harfli kodudur. Yola göre bir coğrafi filtreleme kuralı oluşturmak için bir GeoMatch koşulunu ve bir REQUEST_URI dizesi eşleşme koşulunu birleştirebilirsiniz.
+WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşullarından, bir eylemden ve bir öncelikten oluşur. Eşleşme koşulunda bir eşleşme değişkeni, işleç ve eşleşme değeri tanımlarsınız.  Coğrafi filtreleme kuralı için, eşleşen değişken REMOTE_ADDR, işleç GeoMatch, değer ilgilendiğiniz iki harfli ülke/bölge kodudur. Yola göre bir coğrafi filtreleme kuralı oluşturmak için bir GeoMatch koşulunu ve bir REQUEST_URI dizesi eşleşme koşulunu birleştirebilirsiniz.
 
 [Azure PowerShell](front-door-tutorial-geo-filtering.md) kullanarak veya [hızlı başlangıç şablonumuzu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)kullanarak, ön kapıya yönelik bir coğrafi filtreleme ilkesi yapılandırabilirsiniz.
 
-## <a name="country-code-reference"></a>Ülke kodu başvurusu
+## <a name="countryregion-code-reference"></a>Ülke/bölge kodu başvurusu
 
-|Ülke kodu | Ülke adı |
+|Ülke/bölge kodu | Ülke/bölge adı |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Birleşik Arap Emirlikleri|
@@ -44,7 +44,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | AT | Avusturya|
 | AU | Avustralya|
 | AZ | Azerbaycan|
-| BA | Bosna Hersek|
+| BA | Bosna-Hersek|
 | BB | Barbados|
 | BD | Bangladeş|
 | BE | Belçika|
@@ -61,7 +61,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | BT | Butan|
 | BW | Botsvana|
 | BY | Belarus|
-| BZ | Beliz|
+| BZ | Belize|
 | CA | Kanada|
 | CD | Demokratik Kongo Cumhuriyeti|
 | CF | Orta Afrika Cumhuriyeti|
@@ -91,10 +91,10 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | GS | Fransa|
 | GB | Birleşik Krallık|
 | GE | Gürcistan|
-| GF | Fransız Ginesi|
+| GF | Fransız Guyanası|
 | GH | Gana|
 | GN | Gine|
-| GP | Guadalupe|
+| GP | Guadeloupe|
 | GR | Yunanistan|
 | GT | Guatemala|
 | GY | Guyana|
@@ -103,7 +103,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | HR | Hırvatistan|
 | HT | Haiti|
 | HU | Macaristan|
-| Kimlik | Endonezya|
+| ID | Endonezya|
 | IE | İrlanda|
 | IL | İsrail|
 | IN | Hindistan|
@@ -122,14 +122,14 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | KP | Kore Demokratik Halk Cumhuriyeti|
 | KR | Kore Cumhuriyeti|
 | KW | Kuveyt|
-| KY | Kayman Adaları|
+| KY | Cayman Adaları|
 | KZ | Kazakistan|
 | LA | Laos Demokratik Halk Cumhuriyeti|
 | LB | Lübnan|
-| LI | Lihtenştayn|
+| LI | Liechtenstein|
 | LK | Sri Lanka|
 | LR | Liberya|
-| LS | Lesoto|
+| LS | Lesotho|
 | LT | Litvanya|
 | LU | Lüksemburg|
 | LV | Letonya|
@@ -142,7 +142,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | MM | Myanmar|
 | MN | Moğolistan|
 | MO | Makao ÖİB|
-| MQ | Martinik|
+| MQ | Martinique|
 | MR | Moritanya|
 | MT | Malta|
 | MV | Maldivler|
@@ -174,7 +174,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | RO | Romanya|
 | RS | Sırbistan|
 | RU | Rusya Federasyonu|
-| RW | Rwanda|
+| RW | Ruanda|
 | SA | Suudi Arabistan|
 | SD | Sudan|
 | SE | İsveç|
@@ -198,7 +198,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | TZ | Tanzanya Birleşik Cumhuriyeti|
 | UA | Ukrayna|
 | UG | Uganda|
-| ABD | Amerika Birleşik Devletleri|
+| ABD | Birleşik Devletler|
 | UY | Uruguay|
 | UZ | Özbekistan|
 | VC | Saint Vincent ve Grenadinler|

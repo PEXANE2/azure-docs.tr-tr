@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: aa2931440b538346d9f1aa9d0ec967f1a812d56b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6eec99594ca748fa0610c60c83fd58e388f7923
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241007"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742902"
 ---
 # <a name="geospatial-apis-to-add-maps-spatial-analytics-and-mobility-solutions-with-azure-maps"></a>Azure haritalar ile haritalar, uzamsal analiz ve taşınabilirlik çözümleri eklemek için Jeo-uzamsal API 'Ler
 
@@ -25,7 +25,7 @@ ms.locfileid: "80241007"
 - **Yönlendirme**: belirli bir zamanda birden çok hedef için kullanılabilen en kısa veya en hızlı yolları gösterir. Yönlendirme Ayrıca, waltlar, bıyıva ve ticari araçlar için özel yollar ve olgular sağlar.
 - **Saat dilimleri**: dünyanın her yerinden ne zaman olduğunu görmeyi kolaylaştırır.
 - **Uzamsal işlemler**: konum zekasını geliştirin.
-- **Coğrafi konum**: bir IP adresinin ülkesini bulur.
+- **Coğrafi konum**: bir IP adresinin ülkesini/bölgesini bulur.
 - **Veri hizmeti**: uzamsal işlemler veya görüntü oluşturma ile kullanmak üzere Jeo-uzamsal verileri yükler ve depolar.
 - **Mobility**: yakın genel aktarım hizmetlerinde gerçek zamanlı konum zekası sağlar. Duraklar, rota bilgileri ve seyahat süresi tahminleri dahildir.
 

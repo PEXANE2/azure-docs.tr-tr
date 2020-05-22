@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd26b2b475e293a1fda1b007289ba7c3eef35136
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8052f94755019d8ad3fe818d979d2eb7f8ba0a5e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183949"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738770"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Azure AD B2C 'de telefon numarası talep dönüşümlerini tanımlayın
 
@@ -28,14 +28,14 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de kimlik deneyimi çer
 
 ## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
 
-`phoneNumber` Veri türünü `string` veri türüne dönüştürür.
+Veri türünü `phoneNumber` `string` veri türüne dönüştürür.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | phoneNumber | phoneNumber |  Bir dizeye dönüştürülecek ClaimType. |
 | OutputClaim | phoneNumberString | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
 
-Bu örnekte, değer türü `phoneNumber` olan cellphonenumber talebi, değer türü olan bir Cellphone talebine dönüştürülür. `string`
+Bu örnekte, değer türü olan cellPhoneNumber talebi, `phoneNumber` değer türü olan bir cellPhone talebine dönüştürülür `string` .
 
 ```XML
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
@@ -62,8 +62,8 @@ Bu talep dönüştürmesi telefon numarasının biçimini doğrular. Geçerli bi
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | phoneNumberString | string |  Telefon numarası için dize talebi. Telefon numarasının uluslararası biçimde olması gerekir ve önünde bir "+" ve ülke kodu olmalıdır. Giriş talebi `country` sağlanmışsa telefon numarası yerel biçimindedir (ülke kodu olmadan). |
-| Inputclaim | ülke | string | Seçim Telefon numarasının ülke kodu için ISO3166 biçiminde dize talebi (iki harfli ISO-3166 ülke kodu). |
+| Inputclaim | phoneNumberString | string |  Telefon numarası için dize talebi. Telefon numarasının uluslararası biçimde olması gerekir ve önünde bir "+" ve ülke/bölge kodu olmalıdır. Giriş talebi `country` sağlanmışsa telefon numarası yerel biçimindedir (ülke/bölge kodu olmadan). |
+| Inputclaim | ülke | string | Seçim ISO3166 biçimindeki telefon numarasının ülke/bölge kodu için dize talebi (iki harfli ISO-3166 ülke/bölge kodu). |
 | OutputClaim | outputClaim | phoneNumber | Bu talep dönüştürmesinin sonucu. |
 
 **Convertstringtophonenumberclaim** talep dönüştürmesi, her zaman [otomatik olarak onaylanan bir teknik profil](self-asserted-technical-profile.md) veya [görüntüleme denetimi](display-controls.md)tarafından çağrılan bir [doğrulama teknik profilinden](validation-technical-profile.md) yürütülür. **Usermessageifclaimstransformationınvalidphonenumber** kendi kendine onaylanan teknik profil meta verileri, kullanıcıya sunulan hata iletisini denetler.
@@ -113,24 +113,24 @@ Bu talep dönüşümünü içeren doğrulama teknik profilini çağıran kendi k
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>Getülke Alnumberandcountrycodefromphonenumberstring
 
-Bu, ülke kodunu ve ulusal numarayı giriş talebine ayıklar ve isteğe bağlı olarak, sağlanan telefon numarası geçerli değilse bir özel durum oluşturur.
+Bu, ülke/bölge kodunu ve ulusal numarayı giriş talebine ayıklar ve isteğe bağlı olarak, sağlanan telefon numarası geçerli değilse bir özel durum oluşturur.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | phoneNumber | string | Telefon numarasının dize talebi. Telefon numarasının uluslararası biçimde olması gerekir ve önünde bir "+" ve ülke kodu olmalıdır. |
+| Inputclaim | phoneNumber | string | Telefon numarasının dize talebi. Telefon numarasının uluslararası biçimde olması gerekir ve önünde bir "+" ve ülke/bölge kodu olmalıdır. |
 | InputParameter | throwExceptionOnFailure | boole | Seçim Telefon numarası geçerli olmadığında bir özel durumun oluşturulup oluşturulmayacağını gösteren bir parametre. Varsayılan değer false 'dur. |
-| InputParameter | countryCodeType | string | Seçim Çıkış talebinde ülke kodu türünü gösteren bir parametre. Kullanılabilir değerler, **Callingcode** (bir ülkenin uluslararası çağrı kodu, örneğin + 1) veya **ISO3166** (iki harfli ISO-3166 ülke kodu). |
+| InputParameter | countryCodeType | string | Seçim Çıkış talebinde ülke/bölge kodu türünü gösteren bir parametre. Kullanılabilir değerler, **Callingcode** (bir ülke/bölge için uluslararası çağrı kodu, örneğin + 1) veya **ISO3166** (iki harfli ISO-3166 ülke/bölge kodu). |
 | OutputClaim | Ülke Alnumarası | string | Telefon numarası Ulusal numarası için dize talebi. |
-| OutputClaim | countryCode | string | Telefon numarasının ülke kodu için dize talebi. |
+| OutputClaim | countryCode | string | Telefon numarasının ülke/bölge kodu için dize talebi. |
 
 
 **Getülke Alnumberandcountrycodefromphonenumberstring** talep dönüşümü, [kendi kendine onaylanan bir teknik profil](self-asserted-technical-profile.md) veya bir [görüntüleme denetimi eylemi](display-controls.md#display-control-actions)tarafından çağrılan bir [doğrulama teknik profilinden](validation-technical-profile.md) yürütülürse, **usermessageifphonenumberparsefailure** kendini onaylanan teknik profil meta verileri kullanıcıya sunulan hata iletisini denetler.
 
 ![Hata iletisi yürütme yolu diyagramı](./media/phone-authentication/assert-execution.png)
 
-Bu talep dönüşümünü, tam telefon numarasını ülke koduna ve ulusal numaraya bölmek için kullanabilirsiniz. Girilen telefon numarası geçerli değilse, bir hata iletisi oluşturma seçeneğini belirleyebilirsiniz.
+Bu talep dönüşümünü, tam telefon numarasını ülke/bölge koduna ve ulusal numaraya bölmek için kullanabilirsiniz. Girilen telefon numarası geçerli değilse, bir hata iletisi oluşturma seçeneğini belirleyebilirsiniz.
 
-Aşağıdaki örnek telefon numarasını Ulusal numara ve ülke koduna bölmeye çalışır. Telefon numarası geçerliyse, telefon numarası Ulusal numara tarafından geçersiz kılınır. Telefon numarası geçerli değilse, bir özel durum oluşturulmaz ve telefon numarası hala özgün değerine sahip olur.
+Aşağıdaki örnek telefon numarasını Ulusal numara ve ülke/bölge koduna bölmeye çalışır. Telefon numarası geçerliyse, telefon numarası Ulusal numara tarafından geçersiz kılınır. Telefon numarası geçerli değilse, bir özel durum oluşturulmaz ve telefon numarası hala özgün değerine sahip olur.
 
 ```XML
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">

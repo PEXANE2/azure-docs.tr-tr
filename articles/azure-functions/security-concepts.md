@@ -3,12 +3,12 @@ title: Azure Işlevlerinin güvenliğini sağlama
 description: Azure 'da çalışan işlev kodunuzun genel saldırılara karşı daha güvenli hale getirme hakkında bilgi edinin.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7336974a0f982f2dd2394f16d7f6d520ecb8571d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 07d099ae3ce8a544994208436770674e6674e6f0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664420"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744058"
 ---
 # <a name="securing-azure-functions"></a>Azure Işlevlerinin güvenliğini sağlama
 
@@ -181,7 +181,7 @@ Ayrı bir SCM uç noktası sunarak, bir sanal ağda yalıtılmış veya çalış
 
 ### <a name="continuous-security-validation"></a>Sürekli güvenlik doğrulaması
 
-Güvenliğin geliştirme işlemindeki her adım kabul edilmesi gerektiğinden, sürekli bir dağıtım ortamında güvenlik doğrulamaları da uygulamak mantıklı olur. Bu bazen DevSecOps olarak adlandırılır. Dağıtım işlem hatlarınız için Azure DevOps 'u kullanmak, doğrulamayı dağıtım işlemiyle tümleştirmenize imkan tanır. Daha fazla bilgi için bkz. [CI/CD işlem hattınızla sürekli güvenlik doğrulaması eklemeyi öğrenin](/devops/migrate/security-validation-cicd-pipeline).  
+Güvenliğin geliştirme işlemindeki her adım kabul edilmesi gerektiğinden, sürekli bir dağıtım ortamında güvenlik doğrulamaları da uygulamak mantıklı olur. Bu bazen DevSecOps olarak adlandırılır. Dağıtım işlem hatlarınız için Azure DevOps 'u kullanmak, doğrulamayı dağıtım işlemiyle tümleştirmenize imkan tanır. Daha fazla bilgi için bkz. [CI/CD işlem hattınızla sürekli güvenlik doğrulaması eklemeyi öğrenin](/azure/devops/migrate/security-validation-cicd-pipeline).  
 
 ## <a name="network-security"></a>Ağ güvenliği
 

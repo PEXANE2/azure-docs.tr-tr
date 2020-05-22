@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 627f6f01a17fc8cabb4f1883306baeb0e2d77e70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0256e5c60a417cec47f90cd6ec30fe9208f47f7f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792896"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738294"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Ödeme hesabınızı ve vergi formlarınızı ayarlama
 
@@ -36,13 +36,13 @@ Hesabınızı ayarladıktan sonra, ticari Market 'te teklif (veya eklentiler) sa
 
 İlk olarak, bir vergi profili oluşturmanız ve katılmayı yaptığınız programlara atamanız gerekir. Aşağıdaki adımları tamamlayarak ticari Market için *vergi profilinizi* oluşturabilirsiniz:
 
-- İkamet ve vatandaşlık bulunduğunuz ülkeyi belirtin.
+- İkamet ve vatandaşlık ülke/bölgenizi belirtin.
 - Uygun vergi formlarını doldurun.
 
 Iş Ortağı Merkezi ' nde vergi formlarınızı elektronik olarak tamamlayabilir ve gönderebilirsiniz. Çoğu durumda, herhangi bir formu yazdırmanız ve postalarınıza gerek kalmaz.
 
 > [!IMPORTANT]
-> Farklı ülkeler ve bölgeler farklı vergi gereksinimlerine sahiptir. Vergilerle ödeme yapmanız gereken tam tutar, teklifinizi sattığınız ülkelere ve bölgelere göre değişir. Microsoft remits Sales ve sizin adınıza vergi Kullanım vergisini öğrenmek için [Microsoft Azure Market Yayımcı Sözleşmesi](https://go.microsoft.com/fwlink/p/?LinkID=699560) ' ne bakın. Diğer ülkelerde, kayıtlı olan yere bağlı olarak, teklif satışlarınız için satış ve Kullanım vergisini doğrudan yerel talama yetkilisine havale etmeniz gerekebilir. Bunlara ek olarak, aldığınız uygulama satışları gelir olarak vergilendirilebilir olabilir. Ülkeniz veya bölgeniz için, ticari Market etkinlikleriniz için doğru vergi bilgilerini belirlemenize en iyi şekilde yardımcı olabilecek ilgili yetkiliyle iletişim kurmanız önemle önerilir.
+> Farklı ülkeler ve bölgeler farklı vergi gereksinimlerine sahiptir. Vergilerle ödeme yapmanız gereken tam tutar, teklifinizi sattığınız ülkelere ve bölgelere göre değişir. Microsoft remits Sales ve sizin adınıza vergi kullanan ülke/bölge hakkında bilgi edinmek için [Microsoft Azure Market Yayımcı Sözleşmesi](https://go.microsoft.com/fwlink/p/?LinkID=699560) ' ne bakın. Diğer ülkelerde/bölgelerde, kaydettiğiniz yere bağlı olarak, teklif satışlarınız için satış ve Kullanım vergisini doğrudan yerel talama yetkilisine havale etmeniz gerekebilir. Bunlara ek olarak, aldığınız uygulama satışları gelir olarak vergilendirilebilir olabilir. Ülkeniz veya bölgeniz için, ticari Market etkinlikleriniz için doğru vergi bilgilerini belirlemenize en iyi şekilde yardımcı olabilecek ilgili yetkiliyle iletişim kurmanız önemle önerilir.
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)'nde sağ üst köşedeki **Hesap ayarları** simgesini seçin ve ardından **Geliştirici ayarları**' nı seçin.
 
@@ -54,20 +54,20 @@ Iş Ortağı Merkezi ' nde vergi formlarınızı elektronik olarak tamamlayabili
 
 5. Vergi bilgilerinizi düzenlemek için **Düzenle** düğmesine tıklayın.
 
-6. Uygun radyo düğmesini seçin ve istenirse bulunduğunuz ülkeyi seçin. Bu adım, hesabınızda ödeme yapmak için kullanılacak Microsoft iş varlığını belirler.
+6. Uygun radyo düğmesini seçin ve istenirse bulunduğunuz ülkeyi/bölgenizi seçin. Bu adım, hesabınızda ödeme yapmak için kullanılacak Microsoft iş varlığını belirler.
 
-7. 6. adımdaki seçimlerinize bağlı olarak, ülkeniz için gereken vergi bilgilerini sağlamanız istenir.
+7. 6. adımdaki seçimlerinize bağlı olarak, ülkeniz/bölgeniz için gereken vergi bilgilerini sağlamanız istenir.
 
    > [!NOTE]
-   > Kone veya vatandaşlık ülkeniz ne olursa olsun, ticari Market aracılığıyla herhangi bir teklif veya eklenti satmak için Birleşik Devletler vergi formlarını doldurmanız gerekir. Belirli Birleşik Devletler ek gereksinimleri karşılayan yayımcılar bir ıRS W-9 formunu doldurmalıdır. Birleşik Devletler dışındaki diğer yayımcılar bir ıRS W-8 formu doldurmanız gerekir. Vergi profilinizi tamamladığınızda, bu formları çevrimiçi olarak doldurabilirsiniz.
+   > Konor vatandaşlık ülkeniz/bölgeinizden bağımsız olarak, ticari Market aracılığıyla herhangi bir teklif veya eklenti satmak için Birleşik Devletler vergi formlarını doldurmanız gerekir. Belirli Birleşik Devletler ek gereksinimleri karşılayan yayımcılar bir ıRS W-9 formunu doldurmalıdır. Birleşik Devletler dışındaki diğer yayımcılar bir ıRS W-8 formu doldurmanız gerekir. Vergi profilinizi tamamladığınızda, bu formları çevrimiçi olarak doldurabilirsiniz.
 
 ### <a name="withholding-rates"></a>Stopaj oranları
 
-Vergi formlarınızda gönderdiğiniz bilgiler uygun vergi stopajı oranını belirler. Stopaj oranı yalnızca Birleşik Devletler yaptığınız satış için geçerlidir; ABD dışı konumlara yapılan satışlar, stopaja tabi değildir. Stopaj ücretleri farklılık gösterir, ancak çoğu yayımcıların çoğu Birleşik Devletler dışında kaydettirilirken varsayılan oran %30 ' dur. Ülkeniz Birleşik Devletler bir gelir vergi anlaşmayı kabul ettiğinde bu oranı azaltma seçeneğiniz vardır.
+Vergi formlarınızda gönderdiğiniz bilgiler uygun vergi stopajı oranını belirler. Stopaj oranı yalnızca Birleşik Devletler yaptığınız satış için geçerlidir; ABD dışı konumlara yapılan satışlar, stopaja tabi değildir. Stopaj ücretleri farklılık gösterir, ancak çoğu yayımcıların çoğu Birleşik Devletler dışında kaydettirilirken varsayılan oran %30 ' dur. Ülkeniz/bölgeniz Birleşik Devletler bir gelir vergi anlaşmasının kabul etmiş olması durumunda bu oranı azaltma seçeneğiniz vardır.
 
 ### <a name="tax-treaty-benefits"></a>Vergi anlaşmalar avantajları
 
-Birleşik Devletler dışındaysanız, vergi anlaşmalar avantajlarından yararlanabilirsiniz. Bu avantajlar ülke ile ülkeye kadar farklılık gösterir ve ticari Market 'in tuttuğu vergi miktarını azaltmanıza olanak tanıyabilir. W-8BEN formunun Bölüm II ' ni tamamlayarak vergi anlaşmalar avantajlarına talep edebilirsiniz. Bu avantajlardan sizin için uygun olup olmadığını öğrenmek üzere ülkenizde veya bölgenizde uygun kaynaklarla iletişim kurmanızı öneririz.
+Birleşik Devletler dışındaysanız, vergi anlaşmalar avantajlarından yararlanabilirsiniz. Bu avantajlar ülke/bölge ile ülke/bölge arasında farklılık gösterir ve ticari Market 'in tuttuğu vergi miktarını azaltmanıza olanak tanıyabilir. W-8BEN formunun Bölüm II ' ni tamamlayarak vergi anlaşmalar avantajlarına talep edebilirsiniz. Bu avantajlardan sizin için uygun olup olmadığını öğrenmek üzere ülkenizde veya bölgenizde uygun kaynaklarla iletişim kurmanızı öneririz.
 
 > [!NOTE]
 > Birleşik Devletler bireysel vergi mükellefi kimlik numarası (veya ITIN), Microsoft 'tan ödeme almak veya vergi anlaşmalar avantajlarına talep etmek için gerekli değildir.

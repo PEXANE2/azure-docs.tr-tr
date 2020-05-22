@@ -12,12 +12,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3338c71d37a176206ff106a8229c3b583209ddd4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450896"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737342"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory uygulama bildirimi
 
@@ -45,7 +45,7 @@ Bu bölümde uygulama bildiriminde bulunan öznitelikler açıklanmaktadır.
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| id | Dize |
+| kimlik | Dize |
 
 Dizindeki uygulamanın benzersiz tanımlayıcısı. Bu KIMLIK, herhangi bir protokol işleminde uygulamayı tanımlamak için kullanılan tanımlayıcı değildir. Dizin sorgularında nesnesine başvurmak için kullanılır.
 
@@ -63,11 +63,11 @@ Dizindeki uygulamanın benzersiz tanımlayıcısı. Bu KIMLIK, herhangi bir prot
 
 Kaynak tarafından beklenen erişim belirteci sürümünü belirtir. Bu parametre, erişim belirtecini istemek için kullanılan uç noktadan veya istemciden bağımsız olarak üretilen JWT sürümünü ve biçimini değiştirir.
 
-Kullanılan uç nokta, v 1.0 veya v 2.0, istemci tarafından seçilir ve yalnızca id_tokens sürümünü etkiler. Kaynakların, desteklenen erişim belirteci `accesstokenAcceptedVersion` biçimini belirtecek şekilde açıkça yapılandırılması gerekir.
+Kullanılan uç nokta, v 1.0 veya v 2.0, istemci tarafından seçilir ve yalnızca id_tokens sürümünü etkiler. Kaynakların, `accesstokenAcceptedVersion` desteklenen erişim belirteci biçimini belirtecek şekilde açıkça yapılandırılması gerekir.
 
-İçin `accesstokenAcceptedVersion` olası değerler 1, 2 veya null. Değer null ise, bu parametre, v 1.0 uç noktasına karşılık gelen varsayılan olarak 1 ' dir.
+İçin olası değerler `accesstokenAcceptedVersion` 1, 2 veya null. Değer null ise, bu parametre, v 1.0 uç noktasına karşılık gelen varsayılan olarak 1 ' dir.
 
-`signInAudience` İse `AzureADandPersonalMicrosoftAccount`, değer olmalıdır `2`.
+`signInAudience`İse `AzureADandPersonalMicrosoftAccount` , değer olmalıdır `2` .
 
 Örnek:
 
@@ -81,7 +81,7 @@ Kullanılan uç nokta, v 1.0 veya v 2.0, istemci tarafından seçilir ve yalnız
 | :--- | :--- |
 | Eklentileri | Koleksiyon |
 
-Bir tüketen hizmetin belirli bağlamlarda uygulama çağırmak için kullanabileceği özel davranışı tanımlar. Örneğin, dosya akışlarını işleyebilen uygulamalar `addIns` özelliği "filehandler" işlevselliği için ayarlayabilir. Bu parametre, Office 365 gibi hizmetlerin uygulamayı kullanıcının üzerinde çalıştığı bir belge bağlamında çağırmasını sağlar.
+Bir tüketen hizmetin belirli bağlamlarda uygulama çağırmak için kullanabileceği özel davranışı tanımlar. Örneğin, dosya akışlarını işleyebilen uygulamalar `addIns` özelliği "FileHandler" işlevselliği için ayarlayabilir. Bu parametre, Office 365 gibi hizmetlerin uygulamayı kullanıcının üzerinde çalıştığı bir belge bağlamında çağırmasını sağlar.
 
 Örnek:
 
@@ -189,7 +189,7 @@ Desteklenmez.
 | :--- | :--- |
 |Groupmembershipclaim | Dize |
 
-Uygulamanın beklediği `groups` bir kullanıcı veya OAuth 2,0 erişim belirtecinde verilen talebi yapılandırır. Bu özniteliği ayarlamak için aşağıdaki geçerli dize değerlerinden birini kullanın:
+`groups`Uygulamanın beklediği bir kullanıcı veya OAuth 2,0 erişim belirtecinde verilen talebi yapılandırır. Bu özniteliği ayarlamak için aşağıdaki geçerli dize değerlerinden birini kullanın:
 
 - `"None"`
 - `"SecurityGroup"`(güvenlik grupları ve Azure AD rolleri için)
@@ -349,7 +349,7 @@ Uygulamanın oturumunu kapatmak için kullanılacak URL.
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| ad | Dize |
+| name | Dize |
 
 Uygulamanın görünen adı.
 
@@ -365,7 +365,7 @@ Uygulamanın görünen adı.
 | :--- | :--- |
 | oauth2AllowImplicitFlow | Boole |
 
-Bu Web uygulamasının OAuth 2.0 örtük akış erişim belirteçleri isteyip isteyemeyeceğini belirtir. Varsayılan değer false. Bu bayrak, JavaScript tek sayfalı uygulamalar gibi tarayıcı tabanlı uygulamalar için kullanılır. Daha fazla bilgi edinmek için `OAuth 2.0 implicit grant flow` içindekiler tablosuna girip örtük akış hakkındaki konulara bakın.
+Bu Web uygulamasının OAuth 2.0 örtük akış erişim belirteçleri isteyip isteyemeyeceğini belirtir. Varsayılan değer false. Bu bayrak, JavaScript tek sayfalı uygulamalar gibi tarayıcı tabanlı uygulamalar için kullanılır. Daha fazla bilgi edinmek için `OAuth 2.0 implicit grant flow` İçindekiler tablosuna girip örtük akış hakkındaki konulara bakın.
 
 Örnek:
 
@@ -432,8 +432,8 @@ OAuth 2,0 belirteç isteklerinin bir parçası olarak, Azure AD 'nin istekleri a
 | :--- | :--- |
 | parentalControlSettings | Dize |
 
-- `countriesBlockedForMinors`uygulamanın, minors için bloke olduğu ülkeleri belirtir.
-- `legalAgeGroupRule`uygulamanın kullanıcıları için geçerli olan geçerli yaş grubu kuralını belirtir. , `RequireConsentForKids` `BlockMinors` `Allow` `RequireConsentForPrivacyServices`,, Veya olarak `RequireConsentForMinors`ayarlanabilir.  
+- `countriesBlockedForMinors`uygulamanın minors için engellediği ülkeleri/bölgeleri belirtir.
+- `legalAgeGroupRule`uygulamanın kullanıcıları için geçerli olan geçerli yaş grubu kuralını belirtir. ,,, `Allow` Veya olarak `RequireConsentForPrivacyServices` ayarlanabilir `RequireConsentForMinors` `RequireConsentForKids` `BlockMinors` .  
 
 Örnek:
 
@@ -450,7 +450,7 @@ OAuth 2,0 belirteç isteklerinin bir parçası olarak, Azure AD 'nin istekleri a
 | :--- | :--- |
 | passwordCredentials | Koleksiyon |
 
-`keyCredentials` Özelliğin açıklamasına bakın.
+Özelliğin açıklamasına bakın `keyCredentials` .
 
 Örnek:
 
@@ -551,10 +551,10 @@ Daha fazla bilgi için bkz. [Replyurl kısıtlamaları ve sınırlamaları](http
 | :--- | :--- |
 | requiredResourceAccess | Koleksiyon |
 
-Dinamik onay ile, `requiredResourceAccess` yönetici onay deneyimini ve statik onay kullanan kullanıcılar için Kullanıcı onay deneyimini de yürütür. Ancak, bu parametre genel durum için Kullanıcı onay deneyimini değil.
+Dinamik onay ile, `requiredResourceAccess` Yönetici onay deneyimini ve statik onay kullanan kullanıcılar için Kullanıcı onay deneyimini de yürütür. Ancak, bu parametre genel durum için Kullanıcı onay deneyimini değil.
 
 - `resourceAppId`, uygulamanın erişmesi gereken kaynak için benzersiz tanıtıcıdır. Bu değer, hedef kaynak uygulamasında belirtilen uygulama kimliğine eşit olmalıdır.
-- `resourceAccess`, belirtilen kaynaktan uygulamanın gerektirdiği OAuth 2.0 izin kapsamlarını ve uygulama rollerini listeleyen bir dizidir. Belirtilen kaynakların `id` ve `type` değerlerini içerir.
+- `resourceAccess`, belirtilen kaynaktan uygulamanın gerektirdiği OAuth 2.0 izin kapsamlarını ve uygulama rollerini listeleyen bir dizidir. `id` `type` Belirtilen kaynakların ve değerlerini içerir.
 
 Örnek:
 
@@ -622,7 +622,7 @@ Geçerli uygulama için hangi Microsoft hesaplarının desteklendiğini belirtir
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| etiketler | Dize dizisi  |
+| tags | Dize dizisi  |
 
 Uygulamayı kategorilere ayırmak ve tanımlamak için kullanılabilen özel dizeler.
 

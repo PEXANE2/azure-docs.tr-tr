@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 64df2e0f17322f8e650ede9d4453d90c36252135
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680012"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735897"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -50,7 +50,7 @@ Bu hata, aşağıdaki nedenlerden dolayı oluşabilir:
 
 * Log Analytics aracısının çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ yapılandırması](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) ' na gidin.
 
-* Kapsam yapılandırma sorunlarını denetleyin. [Kapsam yapılandırması](../automation-onboard-solutions-from-automation-account.md#scope-configuration) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler. Makinenizin çalışma alanınızda gösterilmesi, ancak Güncelleştirme Yönetimi portalında olmaması durumunda, kapsam yapılandırmasını makineleri hedefleyecek şekilde ayarlamanız gerekir. Kapsam yapılandırması hakkında bilgi edinmek için bkz. [çalışma alanındaki makineleri etkinleştirme](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+* Kapsam yapılandırma sorunlarını denetleyin. [Kapsam yapılandırması](../automation-onboard-solutions-from-automation-account.md#scope-configuration) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler. Makinenizin çalışma alanınızda gösterilmesi, ancak Güncelleştirme Yönetimi portalında olmaması durumunda, kapsam yapılandırmasını makineleri hedefleyecek şekilde ayarlamanız gerekir. Kapsam yapılandırması hakkında bilgi edinmek için bkz. [çalışma alanındaki makineleri etkinleştirme](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 * [Karma runbook çalışanını şirket içi bir Windows bilgisayarından kaldırma](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) bölümündeki adımları Izleyerek veya [karma Runbook Worker 'ı şirket içi bir Linux bilgisayarından kaldırarak](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)çalışan yapılandırmasını kaldırın. 
 
@@ -119,9 +119,9 @@ Bu soruna yerel yapılandırma sorunları veya yanlış yapılandırılmış kap
 
 4. Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi demektir. Büyük olasılıkla yerel bir yapılandırma sorunu var ve [aracıyı yeniden yüklemeniz](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)gerekir. 
 
-5. Makineniz sorgu sonuçlarında görünüyorsa, kapsam yapılandırma sorunlarını kontrol edin. [Kapsam yapılandırması](../automation-onboard-solutions-from-automation-account.md#scope-configuration) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler. 
+5. Makineniz sorgu sonuçlarında görünüyorsa, kapsam yapılandırma sorunlarını kontrol edin. [Kapsam yapılandırması](../automation-scope-configurations-update-management.md) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler. 
 
-6. Makinenizin çalışma alanınızda gösterilmesi, ancak Güncelleştirme Yönetimi istemiyorsanız, kapsam yapılandırmasını makineyi hedeflemek üzere yapılandırmanız gerekir. Bunun nasıl yapılacağını öğrenmek için bkz. [çalışma alanındaki makineleri etkinleştirme](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+6. Makinenizin çalışma alanınızda gösterilmesi, ancak Güncelleştirme Yönetimi istemiyorsanız, kapsam yapılandırmasını makineyi hedeflemek üzere yapılandırmanız gerekir. Bunun nasıl yapılacağını öğrenmek için bkz. [çalışma alanındaki makineleri etkinleştirme](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 7. Çalışma alanınızda bu sorguyu çalıştırın.
 

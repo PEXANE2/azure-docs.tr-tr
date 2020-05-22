@@ -3,12 +3,12 @@ title: Azure Site Recovery ile diskleri çoğaltmadan dışlama
 description: Azure Site Recovery ile Azure 'a diskleri çoğaltmanın dışında tutma.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: abecc19cac57a4a95d01b7a7ec076259088b101b
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900276"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740533"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Diskleri olağanüstü durumdan kurtarma dışında tut
 
@@ -24,9 +24,9 @@ Bu makalede, şirket içinde [Azure Site Recovery](site-recovery-overview.md)ile
 
 Diskleri, tabloda özetlenen şekilde çoğaltmanın dışında bırakabilirsiniz.
 
-**Azure-Azure arası** | **Vmware’den Azure’a** | **Hyper-V'den Azure'a** 
---- | --- | ---
-Yes | Yes | Yes 
+**Azure-Azure arası** | **Vmware’den Azure’a** | **Hyper-V'den Azure'a** | **Fiziksel sunucudan Azure 'a**
+--- | --- | --- | ---
+Yes | Yes | Yes | Yes
 
 ## <a name="exclude-limitations"></a>Dışlama sınırlamaları
 
@@ -179,7 +179,7 @@ Azure 'dan şirket içi Hyper-V ' d e planlı yük devretme (yeniden çalışma)
 DB-Disk0-OS | Disk0 |   C:\ | İşletim sistemi diski.
 DB-Disk1 | Disk1 | D:\ | SQL sistem veritabanı ve Kullanıcı Veritabanı1.
 DB-Disk2 (Dışlanan disk) | Disk2 | E:\ | Geçici dosyalar.
-DB-Disk3 (Dışlanan disk) | Disk3 | F:\ | SQL tempdb veritabanı<br/><br/> Klasör yolu (F:\MSSQL\Data\).
+DB-Disk3 (Dışlanan disk) | Disk3 | F:\ | SQL tempdb veritabanı<br/><br/> Klasör yolu (F:\MSSQL\Data \) .
 DB-Disk4 | Disk4 | G:\ | Kullanıcı Veritabanı2
 
 

@@ -1,49 +1,42 @@
 ---
-title: Azure Otomasyonu yapılandırma VM'leri çalışma saatleri dışında başlat/durdur çözümü
-description: Bu makalede, farklı kullanım durumlarını veya senaryolarını desteklemek üzere VM'leri çalışma saatleri dışında başlat/durdur çözümünün nasıl yapılandırılacağı açıklanır.
+title: Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur yapılandırma
+description: Bu makalede, farklı kullanım durumlarını veya senaryolarını desteklemek üzere VM'leri çalışma saatleri dışında başlat/durdur özelliğinin nasıl yapılandırılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4cceb0d5ada82de73bc74c0ed408f8eb988ea8ec
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: dd3d48b358c41868f4d433f7fcc8301dbba98621
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864275"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743735"
 ---
-# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>VM'leri çalışma saatleri dışında başlat/durdur çözümü nasıl yapılandırılır
+# <a name="configure-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur Yapılandır
 
-**VM'leri çalışma saatleri dışında Başlat/Durdur** çözümü ile şunları yapabilirsiniz:
-
-- [VM 'leri başlatıp durdurulacak şekilde zamanlayın](#schedule).
-- [Azure etiketlerini kullanarak](#tags) (klasik VM 'lerde desteklenmez), sanal makinelerin artan sırada başlamasını ve durdurulmasını zamanlayın.
-- VM 'Leri [düşük CPU kullanımına](#cpuutil)göre otomatik olarak durdurun.
-
-Bu makalede, çözümü bu senaryoları destekleyecek şekilde nasıl başarıyla yapılandıracağınız açıklanır. Çözüm için diğer yaygın yapılandırma ayarlarının nasıl gerçekleştirileceğini de öğrenebilirsiniz, örneğin:
+Bu makalede, [VM'leri çalışma saatleri dışında Başlat/Durdur](automation-solution-vm-management.md) özelliğinin açıklanan senaryoları destekleyecek şekilde nasıl yapılandırılacağı açıklanır. Şunları da öğrenebilirsiniz:
 
 * [E-posta bildirimlerini yapılandırma](#configure-email-notifications)
-
 * [VM ekleme](#add-a-vm)
-
 * [VM hariç tutuma](#exclude-a-vm)
-
 * [Başlatma ve kapatılma zamanlamalarını değiştirme](#modify-the-startup-and-shutdown-schedules)
 
 ## <a name="scenario-1-startstop-vms-on-a-schedule"></a><a name="schedule"></a>Senaryo 1: VM 'Leri zamanlamaya göre Başlat/Durdur
 
-Bu senaryo, çözümü ilk kez dağıttığınızda varsayılan yapılandırmadır. Örneğin, bu uygulamayı bir abonelik genelinde tüm VM 'Leri durduracak şekilde yapılandırabilir ve ardından ofisiniz geri döndüğünüzde bu aboneliği sabah içinde başlatabilirsiniz. Dağıtım sırasında **Zamanlanmış-startvm** ve **Zamanlanmış-stopvm** zamanlamalarını yapılandırdığınızda, hedeflenen VM 'leri başlatıp durdurur. Bu çözümü yalnızca VM 'Leri durduracak şekilde yapılandırmak için, bkz. özel bir zamanlamayı yapılandırmayı öğrenmek için [Başlangıç ve kapalı zamanlamaları değiştirme](#modify-the-startup-and-shutdown-schedules) .
+Bu senaryo, VM'leri çalışma saatleri dışında başlat/durdur ilk kez dağıttığınızda varsayılan yapılandırmadır. Örneğin, bu özelliği bir abonelik genelindeki tüm VM 'Leri durdurmak için yapılandırabilir ve siz de ofisiniz geri döndüğünüzde sabah sabah 'da başlatabilirsiniz. Dağıtım sırasında **Zamanlanmış-startvm** ve **Zamanlanmış-stopvm** zamanlamalarını yapılandırdığınızda, hedeflenen VM 'leri başlatıp durdurur. 
+
+Özelliği yalnızca VM 'Leri durduracak şekilde yapılandırmak desteklenir. Özel bir zamanlamayı nasıl yapılandıracağınızı öğrenmek için bkz. [Başlangıç ve kapalı zamanlamalarını değiştirme](#modify-the-startup-and-shutdown-schedules) .
 
 > [!NOTE]
-> Zamanlama saati parametresini yapılandırırken saat dilimi geçerli saat diliminiz. Ancak, Azure Otomasyonu 'nda UTC biçiminde depolanır. Dağıtım sırasında işlendiği için herhangi bir zaman dilimi dönüştürmesi yapmanız gerekmez.
+> Zamanlama saati parametresini yapılandırdığınızda, özelliği tarafından kullanılan saat dilimi geçerli saat diliminiz. Ancak Azure Otomasyonu, Azure Otomasyonu 'nda UTC biçiminde depolar. Makine dağıtımı sırasında işlendiği için herhangi bir zaman dilimi dönüştürmesi yapmanız gerekmez.
 
-Şu değişkenleri yapılandırarak hangi VM 'Lerin kapsamda olduğunu denetlersiniz: **External_Start_ResourceGroupNames**, **External_Stop_ResourceGroupNames**ve **External_ExcludeVMNames**.
+Kapsamdaki VM 'Leri denetlemek için, değişkenlerini yapılandırın: `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` ve `External_ExcludeVMNames` .
 
 Eylemi bir abonelik ve kaynak grubuna karşı hedefleyerek veya VM 'lerin belirli bir listesini hedefleyerek, her ikisini birden değil de etkinleştirebilirsiniz.
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Başlat ve durdur eylemlerini bir aboneliğe ve kaynak grubuna göre hedefleyin
 
-1. Ve `External_ExcludeVMNames` değişkenlerini `External_Stop_ResourceGroupNames` , hedef VM 'leri belirtecek şekilde yapılandırın.
+1. `External_Stop_ResourceGroupNames`Ve değişkenlerini, `External_ExcludeVMNames` hedef VM 'leri belirtecek şekilde yapılandırın.
 
 2. **Zamanlanmış-startvm** ve **Zamanlanmış-stopvm** zamanlamalarını etkinleştirin ve güncelleştirin.
 
@@ -55,42 +48,42 @@ Eylemi bir abonelik ve kaynak grubuna karşı hedefleyerek veya VM 'lerin belirl
 
 2. Değişkeni, `External_ExcludeVMNames` virgülle ayrılmış VM 'ler listesiyle yapılandırın (VM1, VM2, VM3).
 
-3. Bu senaryo `External_Start_ResourceGroupNames` ve `External_Stop_ResourceGroupnames` değişkenlerini dikkate almaz. Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](../automation/automation-schedules.md).
+3. Bu senaryo ve değişkenlerini dikkate almaz `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupnames` . Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](shared-resources/schedules.md).
 
     > [!NOTE]
-    > **Hedef ResourceGroup adları** için değeri hem hem de `External_Start_ResourceGroupNames` için değer olarak depolanır. `External_Stop_ResourceGroupNames` Daha fazla ayrıntı düzeyi için, bu değişkenlerin her birini farklı kaynak gruplarını hedefleyecek şekilde değiştirebilirsiniz. Başlat eylemi için, kullanın `External_Start_ResourceGroupNames`ve Durdur eylemini `External_Stop_ResourceGroupNames` kullanın. VM 'Ler başlatma ve durdurma zamanlamalarına otomatik olarak eklenir.
+    > **Hedef ResourceGroup adları** için değeri hem hem de için değerler olarak depolanır `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` . Daha fazla ayrıntı düzeyi için, bu değişkenlerin her birini farklı kaynak gruplarını hedefleyecek şekilde değiştirebilirsiniz. Başlat eylemi için, kullanın `External_Start_ResourceGroupNames` ve `External_Stop_ResourceGroupNames` Durdur eylemini kullanın. VM 'Ler başlatma ve durdurma zamanlamalarına otomatik olarak eklenir.
 
 ## <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a><a name="tags"></a>Senaryo 2: etiketleri kullanarak sırayla VM 'leri başlatma/durdurma
 
-Dağıtılmış bir iş yükünü destekleyen birden çok VM üzerinde iki veya daha fazla bileşen içeren bir ortamda, bileşenlerin başlatıldığı ve sırasıyla durdurulduğu sırayı destekleme. Aşağıdaki adımları gerçekleştirerek bu senaryoyu gerçekleştirebilirsiniz:
+Dağıtılmış bir iş yükünü destekleyen birden çok VM üzerinde iki veya daha fazla bileşen içeren bir ortamda, bileşenlerin başlatıldığı ve sırasıyla durdurulduğu sırayı destekleme. 
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Başlat ve durdur eylemlerini bir aboneliğe ve kaynak grubuna göre hedefleyin
 
-1. `External_Start_ResourceGroupNames` Ve `External_Stop_ResourceGroupNames` değişkenlerini `sequencestart` hedefleyen VM `sequencestop` 'lere pozitif bir tamsayı değeri olan bir ve etiketi ekleyin. Başlat ve Durdur eylemleri artan sırada gerçekleştirilir. Bir VM 'nin nasıl etiketleyeceğinizi öğrenmek için bkz. Azure ['Da Windows sanal makinesini etiketleme](../virtual-machines/windows/tag.md) ve [Azure 'Da Linux sanal makinesini etiketleme](../virtual-machines/linux/tag.md).
+1. `sequencestart` `sequencestop` Ve değişkenlerini hedefleyen VM 'lere pozitif tamsayı değerleri olan bir ve etiketi ekleyin `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` . Başlat ve Durdur eylemleri artan sırada gerçekleştirilir. Bir VM 'nin nasıl etiketleyeceğinizi öğrenmek için bkz. Azure ['Da Windows sanal makinesini etiketleme](../virtual-machines/windows/tag.md) ve [Azure 'da Linux sanal makinesini etiketleme](../virtual-machines/linux/tag.md).
 
 2. **Sıralı-startvm** ve **sıralı-stopvm** zamanlamalarını gereksinimlerinize uygun tarih ve saate göre değiştirin ve zamanlamayı etkinleştirin.
 
 3. Değişikliklerinizi önizlemek için **Start** ve **whatIf** olarak ayarlanan **ACTION** **SequencedStartStop_Parent** runbook 'unu doğru olarak ayarlayın.
 
-4. Üretim VM 'lerine göre uygulamadan önce eylemin önizlemesini görüntüleyin ve gerekli değişiklikleri yapın. Hazırlandığınızda, parametresini **false**olarak ayarlanmış şekilde el ile yürütün veya Otomasyon zamanlamasın `Sequenced-StartVM` ve `Sequenced-StopVM` otomatik olarak belirtilen zamanlamanızı izleyerek çalıştırın.
+4. Üretim VM 'lerine göre uygulamadan önce eylemin önizlemesini görüntüleyin ve gerekli değişiklikleri yapın. Hazırlandığınızda, parametresini **false**olarak ayarlanmış şekilde el ile yürütün veya önceden belirlenmiş zamanlamalarınızın ardından otomatik olarak **sıralı-startvm** ve **sıralı-stopvm** olarak çalışır.
 
-### <a name="target-the-start-and-stop-action-by-vm-list"></a>VM listesine göre Başlat ve Durdur eylemini hedefleme
+### <a name="target-the-start-and-stop-actions-by-vm-list"></a>Başlat ve durdur eylemlerini VM listesine göre hedefle
 
-1. Parametreye eklemeyi `sequencestart` planladığınız VM `sequencestop` 'lere pozitif tamsayı değeri olan bir ve bir etiketi ekleyin. `VMList`
+1. `sequencestart` `sequencestop` Parametreye eklemeyi planladığınız VM 'lere pozitif tamsayı değerleri olan bir ve bir etiketi ekleyin `VMList` .
 
 2. **SequencedStartStop_Parent** runbook 'U **başlatma** **eylemi** ile çalıştırın, **vmlist** parametre alanında VM 'Lerin virgülle ayrılmış bir listesini ekleyin ve ardından **whatIf** değerini true olarak ayarlayın. Değişikliklerinizi önizleyin.
 
 3. Değişkeni, `External_ExcludeVMNames` virgülle ayrılmış VM 'ler listesiyle yapılandırın (VM1, VM2, VM3).
 
-4. Bu senaryo `External_Start_ResourceGroupNames` ve `External_Stop_ResourceGroupnames` değişkenlerini dikkate almaz. Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](../automation/automation-schedules.md).
+4. Bu senaryo ve değişkenlerini dikkate almaz `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupnames` . Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](shared-resources/schedules.md).
 
-5. Üretim VM 'lerine göre uygulamadan önce eylemin önizlemesini görüntüleyin ve gerekli değişiklikleri yapın. Hazırlandığınızda, **izleme-ve-Tanılama/izleme-eylem-groupsrunbook** ' u, parametresini **false**olarak ayarlanmış şekilde el ile yürütün. Alternatif olarak, Otomasyon zamanlamalarına `Sequenced-StartVM` izin `Sequenced-StopVM` verin ve önceden belirlenmiş zamanlamanızı izleyerek otomatik olarak çalıştırın.
+5. Üretim VM 'lerine göre uygulamadan önce eylemin önizlemesini görüntüleyin ve gerekli değişiklikleri yapın. Hazırlandığınızda, **izleme-ve-Tanılama/izleme-eylem-groupsrunbook** ' u, parametresini **false**olarak ayarlanmış şekilde el ile yürütün. Alternatif olarak, Otomasyon zamanlamalarının **sıralı-startvm** ve **sıralı-stopvm** ' y i belirtilen zamanlamanızı izleyerek otomatik olarak çalıştırmasını sağlar.
 
-## <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>Senaryo 3: CPU kullanımına göre otomatik olarak Başlat/Durdur
+## <a name="scenario-3-start-or-stop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>Senaryo 3: CPU kullanımına göre otomatik olarak Başlat veya Durdur
 
-Bu çözüm, saat sonu gibi yoğun olmayan dönemler sırasında kullanılmayan VM 'Leri değerlendirerek ve işlemci kullanımı belirtilen yüzdeden küçük olduğunda otomatik olarak kapatmak için aboneliğinizdeki Azure Resource Manager ve klasik sanal makinelerin çalışma maliyetini yönetmenize yardımcı olabilir.
+VM'leri çalışma saatleri dışında başlat/durdur, saat sonu gibi yoğun olmayan dönemler sırasında kullanılmayan makineleri değerlendirerek ve işlemci kullanımı belirtilen yüzdeden küçük olduğunda otomatik olarak kapatılabilen Azure Resource Manager ve klasik VM 'Lerin çalışma maliyetini yönetmenize yardımcı olabilir.
 
-Varsayılan olarak, çözüm, ortalama kullanımın yüzde 5 veya daha az olup olmadığını görmek için CPU Ölçümü yüzdesini değerlendirmek üzere önceden yapılandırılmıştır. Bu senaryo aşağıdaki değişkenlerle denetlenir ve varsayılan değerler gereksinimlerinizi karşılamıyorsa değiştirilebilir:
+Varsayılan olarak, özellik, ortalama kullanımın yüzde 5 veya daha az olup olmadığını görmek için CPU Ölçümü yüzdesini değerlendirmek üzere önceden yapılandırılmıştır. Bu senaryo aşağıdaki değişkenlerle denetlenir ve varsayılan değerler gereksinimlerinizi karşılamıyorsa değiştirilebilir:
 
 * `External_AutoStop_MetricName`
 * `External_AutoStop_Threshold`
@@ -101,78 +94,78 @@ Varsayılan olarak, çözüm, ortalama kullanımın yüzde 5 veya daha az olup o
 
 Eylemi bir abonelik ve kaynak grubuna karşı etkinleştirebilir ve hedefleyebilir ya da belirli bir VM listesini hedefleyebilirsiniz.
 
-**AutoStop_CreateAlert_Parent** runbook 'unu çalıştırdığınızda, hedeflenen aboneliğin, kaynak grubunun ve VM 'lerin var olduğunu doğrular. VM 'Ler mevcutsa, runbook, her doğrulanmış VM için üst runbook tarafından **AutoStop_CreateAlert_Child** runbook 'u çağırır. Bu alt runbook aşağıdakileri gerçekleştirir:
+**AutoStop_CreateAlert_Parent** runbook 'unu çalıştırdığınızda, hedeflenen aboneliğin, kaynak grubunun ve VM 'lerin mevcut olduğunu doğrular. VM 'Ler mevcutsa, runbook üst runbook tarafından doğrulanan her VM için **AutoStop_CreateAlert_Child** runbook 'u çağırır. Bu alt runbook:
 
 * Doğrulanan her VM için bir ölçüm uyarı kuralı oluşturur.
+* CPU, belirtilen zaman aralığı boyunca yapılandırılan eşiğin altına düşerse belirli bir sanal makine için **AutoStop_VM_Child** runbook 'unu tetikler. 
+* VM 'yi durdurmaya çalışır.
 
-* CPU, belirtilen zaman aralığı boyunca yapılandırılan eşiğin altına düşerse belirli bir sanal makine için **AutoStop_VM_Child** runbook 'unu tetikler. Bu runbook daha sonra VM 'yi durdurmaya çalışır.
+### <a name="target-the-autostop-action-against-all-vms-in-a-subscription"></a>Bir abonelikteki tüm VM 'Lere karşı, oto durdurma eylemini hedefleme
 
-### <a name="to-target-the-auto-stop-action-against-all-vms-in-a-subscription"></a>Otomatik durdurma eylemini bir abonelikteki tüm VM 'Lere göre hedeflemek için
+1. `External_Stop_ResourceGroupNames`Değişkenin boş veya * (joker karakter) olarak ayarlandığından emin olun.
 
-1. `External_Stop_ResourceGroupNames` Değişkenin boş veya * (joker karakter) olarak ayarlandığından emin olun.
+2. Seçim Bazı sanal makineleri yeniden durdur eyleminden dışlamak istiyorsanız, değişkene ayrılmış bir VM adları listesi ekleyebilirsiniz `External_ExcludeVMNames` .
 
-2. [İsteğe bağlı adım] Bazı sanal makineleri otomatik kapatmadan dışlamak istiyorsanız, `External_ExcludeVMNames` DEĞIŞKENINE bir VM adları virgülle ayrılmış listesi ekleyebilirsiniz.
+3. Aboneliğinizdeki tüm VM 'Ler için gereken sanal makine ölçümü uyarı kurallarını oluşturmak üzere **Schedule_AutoStop_CreateAlert_Parent** zamanlamasını çalıştırmaya izin vermeyi etkinleştirin. Bu tür bir zamanlamayı çalıştırmak, aboneliğe yeni VM 'Ler eklendikçe yeni ölçüm uyarı kuralları oluşturmanıza olanak sağlar.
 
-3. Aboneliğinizdeki `Schedule_AutoStop_CreateAlert_Parent` tüm VM 'ler için gereken sanal makine ölçümü uyarı kurallarını oluşturmak üzere zamanlamayı çalıştırmaya izin vermeyi etkinleştirin. Bu tür bir zamanlamayı çalıştırmak, aboneliğe yeni VM 'Ler eklendikçe yeni ölçüm uyarı kuralları oluşturmanıza olanak sağlar.
+### <a name="target-the-autostop-action-against-all-vms-in-a-resource-group-or-multiple-resource-groups"></a>Bir kaynak grubundaki veya birden çok kaynak grubundaki tüm VM 'Lerde, oto durdurma eylemini hedefleyin
 
-### <a name="to-target-the-auto-stop-action-against-all-vms-in-a-resource-group-or-multiple-resource-groups"></a>Otomatik durdurma eylemini bir kaynak grubundaki veya birden çok kaynak grubundaki tüm VM 'Lere göre hedeflemek için
+1. Değişkene, kaynak grubu adlarının virgülle ayrılmış bir listesini ekleyin `External_Stop_ResourceGroupNames` .
 
-1. Değişkene, `External_Stop_ResourceGroupNames` kaynak grubu adlarının virgülle ayrılmış bir listesini ekleyin.
-
-2. Sanal makinelerin bazılarını otomatik kapatmadan dışlamak istiyorsanız, `External_ExcludeVMNames` değişkene ayrılmış bir VM adları listesi ekleyebilirsiniz.
+2. Bazı sanal makineleri yeniden Durdur ' dan dışlamak istiyorsanız, değişkenine bir VM adları virgülle ayrılmış listesi ekleyebilirsiniz `External_ExcludeVMNames` .
 
 3. Kaynak gruplarınızın tüm VM 'Leri için gereken sanal makine ölçümü uyarı kurallarını oluşturmak üzere **Schedule_AutoStop_CreateAlert_Parent** zamanlamasını çalıştırmaya izin vermeyi etkinleştirin. Bu işlemi bir zamanlamaya göre çalıştırmak, yeni VM 'Ler kaynak gruplarına eklendikçe yeni ölçüm uyarı kuralları oluşturmanıza olanak sağlar.
 
-### <a name="to-target-the-autostop-action-to-a-list-of-vms"></a>Bir VM listesine oto durdurma eylemini hedeflemek için
+### <a name="target-the-autostop-action-to-a-list-of-vms"></a>Oto durdur eylemini VM 'lerin bir listesine hedefleyin
 
-1. Yeni bir [zamanlama](shared-resources/schedules.md#create-a-schedule) oluşturun ve bu `VMList` parametreyi **AutoStop_CreateAlert_Parent** runbook 'una bağlayın, bu da parametreye virgülle ayrılmış bir VM adları listesi ekler.
+1. Yeni bir [zamanlama](shared-resources/schedules.md#create-a-schedule) oluşturun ve bu parametreyi **AutoStop_CreateAlert_Parent** runbook 'una bağlayın, bu da PARAMETREYE virgülle ayrılmış bir VM adları listesi ekler `VMList` .
 
-2. İsteğe bağlı olarak, bazı sanal makineleri otomatik kapatmadan dışlamak istiyorsanız, `External_ExcludeVMNames` değişkenine bir sanal makine adları virgülle ayrılmış listesini ekleyebilirsiniz.
+2. İsteğe bağlı olarak, bazı sanal makineleri yeniden durdur eyleminden dışlamak istiyorsanız, değişkene ayrılmış bir VM adları listesi ekleyebilirsiniz `External_ExcludeVMNames` .
 
 ## <a name="configure-email-notifications"></a>E-posta bildirimlerini yapılandırma
 
-Çözüm dağıtıldıktan sonra e-posta bildirimlerini değiştirmek için, dağıtım sırasında oluşturulan eylem grubunu değiştirin.  
+VM'leri çalışma saatleri dışında başlat/durdur dağıtıldıktan sonra e-posta bildirimlerini değiştirmek için, dağıtım sırasında oluşturulan eylem grubunu değiştirebilirsiniz.  
 
 > [!NOTE]
-> Azure Kamu bulutundaki abonelikler, bu çözümün e-posta işlevlerini desteklemez.
+> Azure Kamu bulutundaki abonelikler, bu özelliğin e-posta işlevlerini desteklemez.
 
 1. Azure portal **izleyici**' ye ve ardından **eylem grupları**' na gidin. **StartStop_VM_Notication**adlı eylem grubunu seçin.
 
-    ![Otomasyon Güncelleştirme Yönetimi çözüm sayfası](media/automation-solution-vm-management/azure-monitor.png)
+    ![Otomasyon Güncelleştirme Yönetimi sayfası](media/automation-solution-vm-management/azure-monitor.png)
 
-2. **StartStop_VM_Notification** **sayfasında Ayrıntılar ' ın**altındaki **Ayrıntıları Düzenle** ' ye tıklayın. Bu, **e-posta/SMS/Push/ses** sayfasını açar. E-posta adresini güncelleştirip **Tamam** ' a tıklayarak değişikliklerinizi kaydedin.
+2. StartStop_VM_Notification **sayfasında Ayrıntılar ' ın**altındaki **Ayrıntıları Düzenle** ' ye tıklayın. Bu, e-posta/SMS/Push/ses sayfasını açar. E-posta adresini güncelleştirip **Tamam** ' a tıklayarak değişikliklerinizi kaydedin.
 
-    ![Otomasyon Güncelleştirme Yönetimi çözüm sayfası](media/automation-solution-vm-management/change-email.png)
+    ![Otomasyon Güncelleştirme Yönetimi sayfası](media/automation-solution-vm-management/change-email.png)
 
     Alternatif olarak, eylem grubu hakkında daha fazla bilgi edinmek için eylem grubuna ek eylemler ekleyebilirsiniz, eylem [grupları](../azure-monitor/platform/action-groups.md) konusuna bakın
 
-Aşağıda, çözüm sanal makineleri kapattığında gönderilen örnek bir e-posta verilmiştir.
+Aşağıda, özelliği sanal makineleri kapattığında gönderilen örnek bir e-posta verilmiştir.
 
-![Otomasyon Güncelleştirme Yönetimi çözüm sayfası](media/automation-solution-vm-management/email.png)
+![Otomasyon Güncelleştirme Yönetimi sayfası](media/automation-solution-vm-management/email.png)
 
-## <a name="addexclude-vms"></a><a name="add-exclude-vms"></a>VM 'Leri ekle/çıkar
+## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>VM 'Leri ekleme veya dışlama
 
-Çözüm, çözüm tarafından hedeflenen VM 'Leri ekleme veya makineleri çözümden özel olarak hariç tutma yeteneği sağlar.
+Özelliği, hedeflenecek veya hariç tutulacak VM eklemenize olanak tanır. 
 
 ### <a name="add-a-vm"></a>VM ekleme
 
-Çalıştığında, bir VM 'nin çalıştırıldığında Başlat/Durdur çözümüne eklendiğinden emin olmak için kullanabileceğiniz iki seçenek vardır.
+Özelliği çalışırken bir VM 'nin dahil edilmesini sağlamanın iki yolu vardır:
 
-* Çözümün üst [runbook](automation-solution-vm-management.md#runbooks) 'larının her biri bir `VMList` parametreye sahiptir. Durumunuza uygun üst runbook 'u zamanlarken ve bu VM 'Ler çözüm çalışırken dahil edilse bu parametreye, virgülle ayrılmış bir VM adları listesi geçirebilirsiniz.
+* Özelliğin üst [runbook](automation-solution-vm-management.md#runbooks) 'larının her biri bir `VMList` parametreye sahiptir. Durumunuz için uygun üst runbook 'u zamanlarken bu parametreye, virgülle ayrılmış bir VM adları listesi geçirebilirsiniz ve bu VM 'Ler Özellik çalıştırıldığında dahil edilir.
 
-* Birden çok VM seçmek için, `External_Start_ResourceGroupNames` başlatmak `External_Stop_ResourceGroupNames` veya durdurmak istediğiniz VM 'leri içeren kaynak grubu adlarını ayarlayın. Ayrıca, çözümün abonelikteki tüm kaynak grupları üzerinde çalışmasını sağlamak `*` için değişkenlerini değerine ayarlayabilirsiniz.
+* Birden çok VM seçmek için, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` başlatmak veya durdurmak Istediğiniz VM 'leri içeren kaynak grubu adlarını ayarlayın. Ayrıca, `*` özelliğin abonelikteki tüm kaynak grupları üzerinde çalışmasını sağlamak için değişkenlerini değerine ayarlayabilirsiniz.
 
 ### <a name="exclude-a-vm"></a>VM hariç tutuma
 
-Bir VM 'yi çözümden dışlamak için, `External_ExcludeVMNames` değişkenine ekleyebilirsiniz. Bu değişken, Başlat/Durdur çözümünün dışında tutulacak belirli VM 'lerin virgülle ayrılmış listesidir. Bu liste 140 VM 'Lerle sınırlıdır. Bu virgülle ayrılmış listeye 140 'den fazla VM eklerseniz, hariç tutulacak şekilde ayarlanan VM 'Ler istenmeden başlatılabilir veya durdurulabilir.
+VM 'Leri, çalışma saatleri dışında durdurma/başlatma VM 'lerinden dışlamak için, adını `External_ExcludeVMNames` değişkenine ekleyebilirsiniz. Bu değişken, özelliğinden çıkarılacak belirli VM 'lerin virgülle ayrılmış listesidir. Bu liste 140 VM 'Lerle sınırlıdır. Bu listeye 140 'den fazla VM eklerseniz, dışarıda bırakılacak şekilde ayarlanan VM 'Ler istenmeden başlatılabilir veya durmuş olabilir.
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Başlatma ve kapatılma zamanlamalarını değiştirme
 
-Bu çözümdeki başlangıç ve kapalı zamanlamaların yönetilmesi, [Azure Otomasyonu 'nda runbook zamanlamaya](automation-schedules.md)göre belirtilen adımların aynısını izler. VM 'Leri başlatmak ve durdurmak için ayrı bir zamanlama olması gerekir.
+Bu özellikte başlangıç ve kapalı zamanlamaların yönetilmesi, [Azure Otomasyonu 'nda Runbook zamanlama](shared-resources/schedules.md)bölümünde özetlenen adımların aynısını izler. VM 'Leri başlatmak ve durdurmak için ayrı zamanlamalar gereklidir.
 
-Yalnızca belirli bir zamanda VM 'Leri durdurmak için çözümü yapılandırma desteklenir. Bu senaryoda, yalnızca bir **Dur** zamanlaması oluşturmanız ve buna karşılık gelen bir **Başlangıç** zamanlaması yapmanız gerekir. Bunu yapmanız için gerekenler:
+Özelliği belirli bir zamanda yalnızca VM 'Leri durduracak şekilde yapılandırmak desteklenir. Bu senaryoda, yalnızca bir Dur zamanlaması oluşturmanız ve buna karşılık gelen bir başlangıç zamanlaması yapmanız gerekir. 
 
-1. `External_Stop_ResourceGroupNames` Değişkende kapatılacak VM 'ler için kaynak grupları eklendiğinden emin olun.
+1. Değişkende kapatılacak VM 'Ler için kaynak gruplarını eklemiş olduğunuzdan emin olun `External_Stop_ResourceGroupNames` .
 
 2. VM 'Leri kapatmak istediğiniz zaman için kendi zamanlamanızı oluşturun.
 
@@ -184,6 +177,6 @@ Yalnızca belirli bir zamanda VM 'Leri durdurmak için çözümü yapılandırma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* VM'leri çalışma saatleri dışında başlat/durdur sorunlarını giderme hakkında bilgi edinmek için bkz. [VM 'Leri başlatma/durdurma sorunlarını giderme](troubleshoot/start-stop-vm.md).
-
-* Başlat/Durdur VM 'lerinden Otomasyon Runbook işlerinin durumunu çözümlemek için Azure Izleyici günlüklerine yazılan Otomasyon kayıtlarını ve örnek günlük arama sorgularını [gözden geçirin](automation-solution-vm-management-logs.md) .
+* [VM'leri çalışma saatleri dışında başlat/durdur etkinleştir](automation-solution-vm-management.md)
+* [VM'leri çalışma saatleri dışında başlat/durdur sorgu günlükleri](automation-solution-vm-management-logs.md)
+* [VM'leri çalışma saatleri dışında başlat/durdur sorunlarını giderme](troubleshoot/start-stop-vm.md)

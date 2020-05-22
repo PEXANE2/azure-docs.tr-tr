@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 41f68ead6f985d6cc2c8120091c36783d074b066
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659152"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743587"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Öğretici: verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
 
@@ -141,7 +141,7 @@ df_cosmos.head(10)
 
 Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
 
-* **Sorgu1:** Her ülkenin toplam satış gelirinin toplamını almak ve sonuçlardan 5 öğe göstermek için veri çerçevesinde sorgu yaparak bir grubu çalıştırın. Yeni bir not defteri hücresinde aşağıdaki kodu çalıştırın:
+* **Sorgu1:** Her ülke/bölge için toplam satış gelirinin toplamını almak ve sonuçlardan 5 öğe göstermek için veri çerçevesinde sorgu yaparak bir grup çalıştırın. Yeni bir not defteri hücresinde aşağıdaki kodu çalıştırın:
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
@@ -170,16 +170,16 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
    !{sys.executable} -m pip install bokeh --user
    ```
 
-1. Sonra bir haritadaki verileri çizmek için hazırlanın. Azure Cosmos DB verileri Azure Blob depolamada bulunan ülke bilgileriyle birleştirin ve sonucu GeoJSON biçimine dönüştürün. Aşağıdaki kodu yeni bir not defteri hücresine kopyalayın ve çalıştırın.
+1. Sonra bir haritadaki verileri çizmek için hazırlanın. Azure Cosmos DB verileri Azure Blob depolamada bulunan ülke/bölge bilgileriyle birleştirin ve sonucu GeoJSON biçimine dönüştürün. Aşağıdaki kodu yeni bir not defteri hücresine kopyalayın ve çalıştırın.
 
    ```python
    import urllib.request, json
    import geopandas as gpd
 
-   # Load country information for mapping
+   # Load country/region information for mapping
    countries = gpd.read_file("https://cosmosnotebooksdata.blob.core.windows.net/notebookdata/countries.json")
 
-   # Merge the countries dataframe with our data in Azure Cosmos DB, joining on country code
+   # Merge the countries/regions dataframe with our data in Azure Cosmos DB, joining on country/region code
    df_merged = countries.merge(df_revenue, left_on = 'admin', right_on = 'Country', how='left')
 
    # Convert to GeoJSON so bokeh can plot it
@@ -187,7 +187,7 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
    json_data = json.dumps(merged_json)
    ```
 
-1. Yeni bir not defteri hücresinde aşağıdaki kodu çalıştırarak bir dünya eşlemesindeki farklı ülkelerin satış gelirini görselleştirin:
+1. Yeni bir not defteri hücresinde aşağıdaki kodu çalıştırarak bir dünya eşlemesindeki farklı ülkelerin/bölgelerin satış gelirini görselleştirin:
 
    ```python
    from bokeh.io import output_notebook, show
@@ -233,9 +233,9 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
    show(p)
    ```
 
-   Çıktı, dünya haritasını farklı renklerle görüntüler. Daha hafif olan renkler, en düşük gelirle en yüksek gelire sahip ülkeleri temsil eder.
+   Çıktı, dünya haritasını farklı renklerle görüntüler. Daha hafif olan renkler, en düşük gelirle en yüksek gelire sahip ülkeleri/bölgeleri temsil eder.
 
-   ![Ülkeler gelir Haritası görselleştirme](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   ![Ülkeler/bölgeler gelir Haritası görselleştirmesi](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
 
 1. Veri görselleştirmesinin başka bir durumunu görelim. WebsiteData kapsayıcısı, bir öğeyi görüntüleyen, sepetine eklenen ve öğeyi satın alan kullanıcıların kaydına sahiptir. Satın alınan öğelerin dönüştürme oranını çizelim. Her bir öğenin dönüştürme oranını görselleştirmek için aşağıdaki kodu yeni bir hücrede çalıştırın:
 

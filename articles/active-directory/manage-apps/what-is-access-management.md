@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489b15423add03d69070bc32057af97396a85309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a694c9f6fc9d3a0b7e73c1565501915aa1470bc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409075"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739834"
 ---
 # <a name="managing-access-to-apps"></a>Uygulamalara erişimi yönetme
 
@@ -78,7 +78,7 @@ Azure AD ile, Salesforce gibi uygulamalar çoklu oturum açma (SSO) ve otomatik 
 
 Bu durumda, atanan tüm kullanıcılar otomatik olarak Salesforce olarak sağlanır, çünkü farklı gruplara eklendikçe rol atamaları Salesforce 'ta güncelleştirilir. Kullanıcılar, Microsoft uygulama erişim paneli, Office Web istemcileri ve hatta kurumsal Salesforce oturum açma sayfasına giderek Salesforce 'ı bulabilir ve bunlara erişebilir. Yöneticiler, Azure AD raporlama kullanarak kullanımı ve atama durumunu kolayca görüntüleyebilir.
 
-Yöneticiler, belirli roller için erişim ilkeleri ayarlamak üzere [Azure AD koşullu erişimi](../active-directory-conditional-access-azure-portal.md) kullanabilir. Bu ilkeler, şirket ortamının dışında erişime izin verilip verilmeyeceğini, hatta çeşitli durumlarda erişim elde etmek için Multi-Factor Authentication veya cihaz gereksinimlerini içerebilir.
+Yöneticiler, belirli roller için erişim ilkeleri ayarlamak üzere [Azure AD koşullu erişimi](../conditional-access/concept-conditional-access-users-groups.md) kullanabilir. Bu ilkeler, şirket ortamının dışında erişime izin verilip verilmeyeceğini, hatta çeşitli durumlarda erişim elde etmek için Multi-Factor Authentication veya cihaz gereksinimlerini içerebilir.
 
 ## <a name="access-to-microsoft-applications"></a>Microsoft uygulamalarına erişim
 
@@ -97,5 +97,5 @@ Kullanıcılar Office 365 uygulamalarına Office 365 portalları aracılığıyl
 Kurumsal uygulamalarda olduğu gibi, kullanıcıları Azure portal aracılığıyla belirli Microsoft uygulamalarına [atayabilir](assign-user-or-group-access-portal.md) veya Portal seçeneği kullanılabilir değilse PowerShell 'i kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Koşullu erişimle uygulamaları koruma](../active-directory-conditional-access-azure-portal.md)
+* [Koşullu erişimle uygulamaları koruma](../conditional-access/concept-conditional-access-cloud-apps.md)
 * [Self Servis Grup Yönetimi/SSAA](../users-groups-roles/groups-self-service-management.md)

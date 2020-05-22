@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: ea6f78d0d0856bb6a758a3168b6b86a1c962962b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 953f74a18ae7874c8772cdc8179e5e5bdd1a86d2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200998"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738651"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>İki öğeli doğrulama yöntemi olarak bir Authenticator uygulaması ayarlama
 

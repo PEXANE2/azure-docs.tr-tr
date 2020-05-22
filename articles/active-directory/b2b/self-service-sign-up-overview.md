@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd76a0556ff22890aff9f4b623e7688064192558
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 98456f26fbc7ca3955883eb283b54084bd86d503
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712205"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737767"
 ---
 # <a name="self-service-sign-up-preview"></a>Self servis kaydolma (Önizleme)
 |     |
@@ -35,7 +35,7 @@ Self Servis kaydolma Kullanıcı akışı, dış kullanıcılarınız için payl
 Kullanıcı akış ayarlarını, kullanıcının uygulama için nasıl kaydolduğunda denetlemek için yapılandırabilirsiniz:
 
 - Facebook gibi sosyal hesaplar veya Azure AD hesapları gibi oturum açma için kullanılan hesap türleri
-- Kullanıcı kaydolmadan toplanacak öznitelikler, örneğin adı, posta kodu veya yeniden kullanım ülkesi
+- Kullanıcı kaydolmadan toplanacak öznitelikler, örneğin ilk adı, posta kodu veya bir yerden ülke/bölge
 
 Bir Kullanıcı uygulamanızda oturum açmak istediğinde bir Web, mobil, masaüstü veya tek sayfalı uygulama (SPA) olduğunda, uygulama Kullanıcı akışı tarafından belirtilen uç noktaya bir yetkilendirme isteği başlatır. Kullanıcı akışı kullanıcının deneyimini tanımlar ve denetler. Kullanıcı kaydolma Kullanıcı akışını tamamladığında, Azure AD bir belirteç oluşturur ve kullanıcıyı uygulamanıza yeniden yönlendirir. Kayıt tamamlandıktan sonra, dizinde Kullanıcı için bir Konuk hesabı temin edilir. Birden çok uygulama aynı kullanıcı akışını kullanabilir.
 

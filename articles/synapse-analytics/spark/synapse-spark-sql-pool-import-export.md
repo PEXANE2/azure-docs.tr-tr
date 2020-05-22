@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: d2c8215a68d2f80471be87b0ca07aa1438a25ac4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660062"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739286"
 ---
 # <a name="introduction"></a>Giriş
 
@@ -44,14 +44,14 @@ Bu nedenle, depolama hesabında ve veri ambarı sunucusunda AAD kimlik doğrulam
 
 Kullanıcı oluşturmak için veritabanına bağlanın ve aşağıdaki örnekleri izleyin:
 
-```Sql
+```sql
 CREATE USER Mary FROM LOGIN Mary;
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 Rol atamak için:
 
-```Sql
+```sql
 EXEC sp_addrolemember 'db_exporter', 'Mary';
 ```
 
@@ -64,14 +64,14 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 > [!NOTE]
 > **Not defteri deneyiminde içeri aktarmalar gerekmez**
 
-```Scala
+```scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
 #### <a name="read-api"></a>API 'YI oku
 
-```Scala
+```scala
 val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 ```
 
@@ -79,13 +79,13 @@ Yukarıdaki API, hem Iç (yönetilen) hem de SQL havuzundaki dış tablolar içi
 
 #### <a name="write-api"></a>Yazma API 'SI
 
-```Scala
+```scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
 Burada TableType sabit olabilir. Iç veya sabitler. EXTERNAL
 
-```Scala
+```scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 ```
@@ -97,14 +97,14 @@ Depolama ve SQL Server kimlik doğrulaması yapılır
 > [!NOTE]
 > Not defteri deneyiminde içeri aktarmalar gerekmez
 
-```Scala
+```scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
 #### <a name="read-api"></a>API 'YI oku
 
-```Scala
+```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>")
@@ -112,7 +112,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 #### <a name="write-api"></a>Yazma API 'SI
 
-```Scala
+```scala
 df.write.
 option(Constants.SERVER, "[samplews].[database.windows.net]").
 sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
@@ -124,7 +124,7 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 
 Şu anda bağlayıcı, belirteç tabanlı kimlik doğrulamasını çalışma alanının dışında olan bir SQL havuzuna desteklemez. SQL kimlik doğrulaması kullanmanız gerekir.
 
-```Scala
+```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, [SQLServer Login UserName]).
@@ -134,7 +134,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 #### <a name="write-api"></a>Yazma API 'SI
 
-```Scala
+```scala
 df.write.
 option(Constants.SERVER, "[samplews].[database.windows.net]").
 option(Constants.USER, [SQLServer Login UserName]).
@@ -151,13 +151,13 @@ DW içine yazmak istediğiniz bir "pyspark_df" veri çerçevesine sahip olduğun
 
 PySpark içindeki dataframe kullanarak geçici bir tablo oluşturun:
 
-```Python
+```py
 pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 ```
 
 Mıknatıccs kullanarak PySpark not defterinde bir Scala hücresi çalıştırın:
 
-```Scala
+```scala
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 

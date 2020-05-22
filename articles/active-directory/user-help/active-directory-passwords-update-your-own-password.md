@@ -8,15 +8,15 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 3ed79be318319009aabb1b1ef0c42c4021bbbabe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b27b046d53a45c91d0a55a468758386437a7a6a5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062668"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739673"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Güvenlik bilgilerini kullanarak iş veya okul parolanızı sıfırlayın
 
@@ -103,7 +103,7 @@ Azure Active Directory (Azure AD) Hesabınıza erişemiyorsanız aşağıdakiler
 
      Hesabınıza hala erişemiyorsanız, daha fazla yardım için kuruluşunuzun yöneticisiyle iletişim kurmanız gerekir.
 
-Parolanızı sıfırladıktan sonra, "Microsoft 'un \<adına *your_organization*> gibi bir hesaptan gelen bir onay e-postası alabilirsiniz." Benzer bir e-posta alırsanız ancak parolanızı kısa süre önce sıfırlamadıysanız, kuruluşunuzun yöneticisiyle hemen iletişim kurmanız gerekir.
+Parolanızı sıfırladıktan sonra, "Microsoft 'un adına your_organization> gibi bir hesaptan gelen bir onay e-postası alabilirsiniz \< *your_organization* ." Benzer bir e-posta alırsanız ancak parolanızı kısa süre önce sıfırlamadıysanız, kuruluşunuzun yöneticisiyle hemen iletişim kurmanız gerekir.
 
 ## <a name="how-to-change-your-password"></a>Parolanızı değiştirme
 
@@ -117,7 +117,7 @@ Genellikle uygulamalarınıza Office portalından erişmeniz durumunda bu yönte
 
 2. Sağ üst taraftaki profilinizi seçin ve sonra **hesabı görüntüle**' yi seçin.
 
-3. **Güvenlik & gizlilik** > **parolası**' nı seçin.
+3. **Güvenlik & gizlilik**  >  **parolası**' nı seçin.
 
 4. Eski parolanızı yazın, yeni parolanızı oluşturup onaylayın ve ardından **Gönder**' i seçin.
 

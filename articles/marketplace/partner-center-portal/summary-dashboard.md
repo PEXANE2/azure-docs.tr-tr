@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 86bce85c6ec273b4ab5f9f00cbae68fc054f53f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7f1700cb386a197b33427e2ea615de019284d96
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262409"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738328"
 ---
-# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'teki Özet Panosu
+# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde özet panosu
 
 Bu makalede, Iş Ortağı Merkezi 'ndeki Özet Panosu hakkında bilgi sağlanmaktadır. Bu Pano, tekliflerinizle ilgili Market etkinliklerini özetleyen grafikleri, eğilimleri ve toplam veri değerlerini görüntüler.
 
@@ -70,7 +70,7 @@ Coğrafya ısı haritasını **tarafından müşteriler** bir dünya eşlemesind
 - Tam konumu görüntülemek için Haritayı taşıyabilirsiniz.
 - Belirli bir konuma yakınlaştırabilirsiniz.
 - Isı haritasını 'in, belirli konumdaki müşteri sayısı, sipariş sayısı, normalleştirilmiş kullanım saatlerinin ayrıntılarını görüntülemek için bir ek kılavuz vardır.
-- Haritada konum yakınlaştırmak için kılavuzda bir ülke arayabilir ve seçebilirsiniz. Haritadaki **giriş** düğmesine basarak özgün görünüme dönün.
+- Haritada yer alan bir ülke/bölge arayabilir ve seçebilirsiniz. Haritadaki **giriş** düğmesine basarak özgün görünüme dönün.
 - **Yeni** bir müşteri, seçili tarih aralığında yer alan ilk kez tekliflerinizin birini satın almış.
 
 ### <a name="growth-trend-charts"></a>Büyüme eğilimi grafikleri

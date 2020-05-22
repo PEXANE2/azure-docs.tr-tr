@@ -1,38 +1,28 @@
 ---
-title: Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
-description: Bu makalede, Azure ve Azure dışı sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetmek için Azure Otomasyonu Güncelleştirme Yönetimi kullanma hakkında genel bakış sunulmaktadır.
+title: Azure Otomasyonu 'nda Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
+description: Bu makalede, Azure VM 'lerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetmek için Güncelleştirme Yönetimi nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: update-management
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 52158fe78262b5b2b3d006fb3a543ca743f4e417
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4b47fa873df88bf85c4c56c9f2ac94fce16c63be
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683820"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743660"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
 
-Güncelleştirme Yönetimi çözümünü kullanarak sanal makineleriniz için güncelleştirmeleri ve yamaları yönetebilirsiniz. Bu öğreticide kullanılabilir durumdaki güncelleştirmelerin durumunu değerlendirmeyi, gerekli güncelleştirmelerin yüklenmesini zamanlamayı, dağıtım sonuçlarını gözden geçirmeyi ve güncelleştirmelerin başarılı bir şekilde uygulandığını doğrulamak için bir uyarı oluşturmayı öğreneceksiniz.
+Bu makalede, Azure sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetmek için Azure Otomasyonu [güncelleştirme yönetimi](automation-update-management.md) özelliğini nasıl kullanabileceğiniz açıklanır. 
 
 Fiyatlandırma bilgisi için bkz. [Güncelleştirme Yönetimi için Otomasyon fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
-
-> [!div class="checklist"]
-> * Güncelleştirme değerlendirmesini görüntüleme
-> * Uyarıları yapılandırma
-> * Güncelleştirme dağıtımı zamanlama
-> * Dağıtım sonuçlarını görüntüleme
-
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
-
-* [Güncelleştirme yönetimi](automation-update-management.md) çözümü bir veya daha fazla VM 'niz için etkinleştirildi.
-* Sisteme eklenecek bir [sanal makine](../virtual-machines/windows/quick-create-portal.md).
+* [Güncelleştirme yönetimi](automation-update-management.md) özelliği, VM 'lerinizin bir veya daha fazlası için etkinleştirildi. 
+* Güncelleştirme Yönetimi için etkin bir [sanal makine](../virtual-machines/windows/quick-create-portal.md) .
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -95,7 +85,7 @@ Uyarı e-postası konusunu özelleştirmek için, **kural oluştur**altında, **
 
 ## <a name="schedule-an-update-deployment"></a>Güncelleştirme dağıtımı zamanlama
 
-Şimdi güncelleştirmeleri yüklemek için yayın zamanlamanızı ve hizmet pencerenizi izleyen bir dağıtım zamanlayın. Dağıtıma dahil edilecek güncelleştirme türlerini seçebilirsiniz. Örneğin, kritik güncelleştirmeleri veya güvenlik güncelleştirmelerini dahil edip güncelleştirme paketlerini dışlayabilirsiniz.
+Güncelleştirmeleri yüklemek için yayın zamanlamanızı ve hizmet pencerenizi izleyen bir dağıtım zamanlayın. Dağıtıma dahil edilecek güncelleştirme türlerini seçebilirsiniz. Örneğin, kritik güncelleştirmeleri veya güvenlik güncelleştirmelerini dahil edip güncelleştirme paketlerini dışlayabilirsiniz.
 
 >[!NOTE]
 >Güncelleştirme dağıtımının zamanlanması, hedef makinelerdeki güncelleştirme dağıtımını işleyen **Patch-MicrosoftOMSComputers** runbook 'una bağlı bir [zamanlama](shared-resources/schedules.md) kaynağı oluşturur. Azure portal zamanlama kaynağını veya dağıtımı oluşturduktan sonra PowerShell 'i kullanarak silerseniz, silme işlemi zamanlanmış güncelleştirme dağıtımını keser ve zamanlama kaynağını portaldan yeniden yapılandırmayı denediğinizde bir hata oluşturur. Yalnızca ilgili dağıtım zamanlamasını silerek zamanlama kaynağını silebilirsiniz.  
@@ -112,18 +102,9 @@ Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme y�
 
 * **Güncelleştirilecek makineler**: açılan menüden kaydedilmiş bir arama, içeri aktarılan grup veya Select **makineleri** seçin ve tek tek makineleri seçin. **Makineler**' i seçerseniz, her makinenin hazırlığı **Güncelleştirme Aracısı hazırlığı** sütununda gösterilir. Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md).
 
-* **Güncelleştirme sınıflandırması**: her bir ürün için, desteklenen tüm güncelleştirme sınıflandırmalarının seçimini kaldırın, ancak güncelleştirme dağıtımınıza dahil olanlar. Bu öğretici için tüm ürünler için seçili tüm türleri bırakın.
+* **Güncelleştirme sınıflandırması**: her bir ürün için, desteklenen tüm güncelleştirme sınıflandırmalarının seçimini kaldırın, ancak güncelleştirme dağıtımınıza dahil olanlar. Sınıflandırma türlerinin açıklamaları için bkz. [güncelleştirme sınıflandırmaları](automation-view-update-assessments.md#work-with-update-classifications).
 
-  Sınıflandırma türleri şunlardır:
-
-   |İşletim Sistemi  |Tür  |
-   |---------|---------|
-   |Windows     | Kritik güncelleştirmeler</br>Güvenlik güncelleştirmeleri</br>Güncelleştirme paketleri</br>Özellik paketleri</br>Hizmet paketleri</br>Tanım güncelleştirmeleri</br>Araçlar</br>Güncelleştirmeler<br>Sürücü        |
-   |Linux     | Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri</br>Diğer güncelleştirmeler       |
-
-   Sınıflandırma türlerinin açıklamaları için bkz. [güncelleştirme sınıflandırmaları](automation-view-update-assessments.md#update-classifications).
-
-* **Güncelleştirmeleri dahil et/hariç tut** -dahil etme/hariç tutma sayfasını açar. Dahil edilecek veya hariç tutulacak güncelleştirmeler, KB makalesi KIMLIK numaralarını belirterek ayrı sekmelerde bulunur. Bir veya daha fazla KIMLIK numarası belirtirken güncelleştirme dağıtımıyla tüm sınıflandırmaların kaldırılması veya işaretini kaldırmanız gerekir. Bu, güncelleştirme kimlikleri belirtildiğinde güncelleştirme paketinize başka hiçbir güncelleştirme eklenmemesini sağlar.
+* **Dahil edilecek/hariç tutulacak güncelleştirmeler** -dahil etme/hariç tutma sayfasını açar. Dahil edilecek veya hariç tutulacak güncelleştirmeler, KB makalesi KIMLIK numaralarını belirterek ayrı sekmelerde bulunur. Bir veya daha fazla KIMLIK numarası belirtirken güncelleştirme dağıtımıyla tüm sınıflandırmaların kaldırılması veya işaretini kaldırmanız gerekir. Bu, güncelleştirme kimlikleri belirtildiğinde güncelleştirme paketinize başka hiçbir güncelleştirme eklenmemesini sağlar.
 
 > [!NOTE]
 > Dışlamaları geçersiz kılmanın dahil olduğunu bilmemiz önemlidir. Örneğin, bir dışlama kuralı tanımlarsanız `*` , güncelleştirme yönetimi hepsi hariç tutuldukları için düzeltme eki veya paket içermez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için, dışlanan bağımlı paketi olan bir paketi eklerseniz Güncelleştirme Yönetimi ana paketi yüklemez.
@@ -131,7 +112,6 @@ Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme y�
 > [!NOTE]
 > Güncelleştirme dağıtımına dahil edilmek üzere yenisiyle değiştirilen güncelleştirmeleri belirtemezsiniz.
 >
-
 * **Zamanlama ayarları**: Zamanlama Ayarları bölmesi açılır. Varsayılan başlangıç zamanı, geçerli zamandan 30 dakika sonradır. Başlangıç zamanını en düşük 10 dakika olmak üzere istediğiniz değere ayarlayabilirsiniz.
 
    Ayrıca, dağıtımın bir kez gerçekleşeceğini belirtebilir veya yinelenen bir zamanlama ayarlayabilirsiniz. **Yinelenme** bölümünde **Bir Kez**'i seçin. Varsayılanı 1 gün olarak bırakın ve **Tamam**' a tıklayın. Bu girişler yinelenen bir zamanlama ayarlar.
@@ -196,16 +176,4 @@ Güncelleştirme dağıtımınız başarılı olduğunda, aşağıdakine benzer 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
-
-> [!div class="checklist"]
-> * Güncelleştirme Yönetimi için VM ekleme
-> * Güncelleştirme değerlendirmesini görüntüleme
-> * Uyarıları yapılandırma
-> * Güncelleştirme dağıtımı zamanlama
-> * Dağıtım sonuçlarını görüntüleme
-
-Güncelleştirme Yönetimi çözümüne genel bakış bölümüne geçin.
-
-> [!div class="nextstepaction"]
-> [Güncelleştirme Yönetimi çözümü](automation-update-management.md)
+* [Güncelleştirme Yönetimine genel bakış](automation-update-management.md)

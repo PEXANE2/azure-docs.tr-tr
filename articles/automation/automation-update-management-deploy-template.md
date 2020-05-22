@@ -1,37 +1,34 @@
 ---
-title: Güncelleştirme Yönetimi eklemek için Azure Resource Manager şablonları kullanın | Microsoft Docs
-description: Azure Resource Manager şablonu kullanarak Azure Otomasyonu Güncelleştirme Yönetimi çözümünü ekleyebilirsiniz.
+title: Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi etkinleştirme | Microsoft Docs
+description: Bu makalede, Güncelleştirme Yönetimi etkinleştirmek için bir Azure Resource Manager şablonunun nasıl kullanılacağı açıklanır.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: dd8706c1e95e6b1e4ca4a38d4a336f6186464696
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 9e4396a1def5b032077c1c15c2d10b7f3452853f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872197"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743455"
 ---
-# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi çözümü ekleme
+# <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi etkinleştirme
 
-Kaynak grubunuzda Azure Otomasyonu Güncelleştirme Yönetimi çözümünü etkinleştirmek için [Azure Resource Manager şablonlarını](../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Bu makale, aşağıdakileri otomatikleştiren örnek bir şablon sağlar:
+Kaynak grubunuzda Azure Otomasyonu Güncelleştirme Yönetimi özelliğini etkinleştirmek için bir [Azure Resource Manager şablonu](../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Bu makale, aşağıdakileri otomatikleştiren örnek bir şablon sağlar:
 
 * Azure Izleyici Log Analytics çalışma alanı oluşturma.
 * Azure Otomasyonu hesabı oluşturma.
 * Zaten bağlı değilse, Otomasyon hesabını Log Analytics çalışma alanına bağlama.
-* Azure Otomasyonu Güncelleştirme Yönetimi çözümünü ekleme.
+* Güncelleştirme Yönetimi etkinleştiriliyor.
 
-Şablon bir veya daha fazla Azure veya Azure dışı VM 'yi eklemeyi otomatik hale getirir.
+Şablon bir veya daha fazla Azure veya Azure dışı VM 'nin etkinleştirilmesini otomatik hale getirir.
 
-Aboneliğinizde desteklenen bir bölgede dağıtılmış bir Log Analytics çalışma alanı ve Otomasyon hesabı zaten varsa, bunlar bağlanmaz. Çalışma alanında Güncelleştirme Yönetimi çözümü zaten dağıtılmadı. Bu şablonu kullanmak bağlantıyı başarıyla oluşturur ve Güncelleştirme Yönetimi çözümünü dağıtır. 
-
->[!NOTE]
->Linux üzerinde Güncelleştirme Yönetimi bir parçası olarak **nxautomation** kullanıcısı eklendi yalnızca imzalı runbook 'ları yürütür.
+Aboneliğinizde desteklenen bir bölgede dağıtılmış bir Log Analytics çalışma alanı ve Otomasyon hesabı zaten varsa, bunlar bağlanmaz. Çalışma alanında zaten Güncelleştirme Yönetimi etkin değil. Bu şablonu kullanmak bağlantıyı başarıyla oluşturur ve sanal makinelerinize Güncelleştirme Yönetimi dağıtır. 
 
 >[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+>Linux üzerinde Güncelleştirme Yönetimi bir parçası olarak etkinleştirilen **nxautomation** kullanıcısı yalnızca imzalı runbook 'ları yürütür.
 
 ## <a name="api-versions"></a>API sürümleri
 
@@ -244,10 +241,10 @@ Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluştur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güncelleştirme Yönetimi çözümü dağıttığınıza göre, VM 'Leri yönetim için etkinleştirebilir, güncelleştirme değerlendirmelerini gözden geçirebilir ve güncelleştirmeleri uyumluluğa getirecek şekilde dağıtabilirsiniz.
+Güncelleştirme Yönetimi etkin olduğuna göre, VM 'Leri yönetim için etkinleştirebilir, güncelleştirme değerlendirmelerini gözden geçirebilir ve güncelleştirmeleri uyumluluğa getirecek şekilde dağıtabilirsiniz.
 
-- Azure [Otomasyonu hesabınızdan](automation-onboard-solutions-from-automation-account.md) bir veya daha fazla Azure makinesi Için ve Azure dışı makineler için el ile.
+- Azure [Otomasyonu hesabınızdan](automation-onboard-solutions-from-automation-account.md) bir veya daha fazla Azure makinesi Için ve Azure dışı makineler için el ile
 
-- Tek bir Azure VM için Azure portal sanal makine sayfasından. Bu senaryo, [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM 'leri için kullanılabilir.
+- Tek bir Azure VM için Azure portal sanal makine sayfasından. Bu senaryo [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM 'leri için kullanılabilir
 
-- [Birden çok Azure VM](manage-update-multi.md) Için Azure Portal **sanal makineler** sayfasında bunları seçerek. 
+- [Birden çok Azure VM](manage-update-multi.md) için, Azure Portal **sanal makineler** sayfasından seçin 

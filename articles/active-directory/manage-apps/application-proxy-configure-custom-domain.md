@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f35658a75adb4d4c6c279e45087e741b8117e65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481390"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736492"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu özel etki alanlarını yapılandırma
 
-Azure Active Directory Uygulama Ara Sunucusu aracılığıyla bir uygulama yayımladığınızda kullanıcılarınız için bir dış URL oluşturursunuz. Bu URL varsayılan etki alanını alır *yourtenant.msappproxy.net*. Örneğin, kiracınızda *contoso* *adlı bir* uygulama yayımlarsanız, dış URL *https\/:/Expenses-contoso.msappproxy.net*olur. *Msappproxy.net*yerine kendi etki alanı adınızı kullanmak istiyorsanız, uygulamanız için özel bir etki alanı yapılandırabilirsiniz. 
+Azure Active Directory Uygulama Ara Sunucusu aracılığıyla bir uygulama yayımladığınızda kullanıcılarınız için bir dış URL oluşturursunuz. Bu URL varsayılan etki alanını alır *yourtenant.msappproxy.net*. Örneğin, kiracınızda *contoso* *adlı bir* uygulama yayımlarsanız, dış URL *https: \/ /Expenses-contoso.msappproxy.net*olur. *Msappproxy.net*yerine kendi etki alanı adınızı kullanmak istiyorsanız, uygulamanız için özel bir etki alanı yapılandırabilirsiniz. 
 
 ## <a name="benefits-of-custom-domains"></a>Özel etki alanlarının avantajları
 
@@ -128,7 +128,7 @@ Tüm gerekli ara sertifikaların dahil edildiğinden emin olmak için bir PFX se
 
 Sertifika imzası yöntemlerinde kısıtlama yoktur. Eliptik Eğri Şifreleme (ECC), konu diğer adı (SAN) ve diğer ortak sertifika türleri desteklenir. 
 
-Joker karakter, dış URL ile eşleştiği sürece joker sertifikaları kullanabilirsiniz. [Joker uygulamalar](application-proxy-wildcard.md)için joker karakter sertifikaları kullanmanız gerekir. Sertifikayı da alt etki alanlarına erişmek üzere kullanmak istiyorsanız, alt etki alanı joker karakterlerini aynı sertifikaya konu alternatif adları olarak eklemeniz gerekir. Örneğin, bir konu diğer adı olarak * \*. Apps.Adventure-Works.com* eklemediğiniz sürece. * \*Adventure-Works.com* için bir sertifika. * \*Apps.Adventure-Works.com* için çalışmaz. 
+Joker karakter, dış URL ile eşleştiği sürece joker sertifikaları kullanabilirsiniz. [Joker uygulamalar](application-proxy-wildcard.md)için joker karakter sertifikaları kullanmanız gerekir. Sertifikayı da alt etki alanlarına erişmek üzere kullanmak istiyorsanız, alt etki alanı joker karakterlerini aynı sertifikaya konu alternatif adları olarak eklemeniz gerekir. Örneğin, bir konu diğer adı olarak * \* . Apps.Adventure-Works.com* eklemediğiniz sürece. * \* adventure-works.com* için bir sertifika. * \* Apps.Adventure-Works.com* için çalışmaz. 
 
 Sertifika zinciri istemci cihazlarınızda yüklüyse, kendi ortak anahtar altyapınız (PKI) tarafından verilen sertifikaları kullanabilirsiniz. Intune, bu sertifikaları yönetilen cihazlara dağıtabilir. Yönetilmeyen cihazlar için, bu sertifikaları el ile yüklemelisiniz. 
 
@@ -143,6 +143,6 @@ Birden çok uygulama için aynı sertifikayı kullanabilirsiniz. Karşıya yükl
 Bir sertifikanın süresi dolmuşsa, başka bir sertifikayı karşıya yüklemeyi söyleyen bir uyarı alırsınız. Sertifika iptal edildiğinde, kullanıcılarınız uygulamaya erişirken bir güvenlik uyarısı görebilirler. Bir uygulama için sertifikayı güncelleştirmek için uygulama **ara sunucusu** sayfasına gidin, **sertifika**' ı seçin ve yeni bir sertifika yükleyin. Eski sertifika diğer uygulamalar tarafından kullanılmıyorsa, otomatik olarak silinir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Azure AD kimlik doğrulamasıyla yayımlanmış uygulamalarınızda [Çoklu oturum açmayı etkinleştirin](application-proxy-configure-single-sign-on-with-kcd.md) .
-* Yayınlanan uygulamalarınıza [koşullu erişimi etkinleştirin](../conditional-access/overview.md) .
 
+* Azure AD kimlik doğrulamasıyla yayımlanmış uygulamalarınızda [Çoklu oturum açmayı etkinleştirin](application-proxy-configure-single-sign-on-with-kcd.md) .
+* Yayımlanmış bulut uygulamalarınız için [koşullu erişim](../conditional-access/concept-conditional-access-cloud-apps.md) .

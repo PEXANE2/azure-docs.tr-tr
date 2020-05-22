@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: ac3f24e06553fd037ef5deaf374690fb92b0fa8c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 5c562fb43966fda203e92cc5003ef3c85945364b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715826"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742827"
 ---
 # <a name="create-modular-runbooks"></a>Modüler runbook’lar oluşturma
 
@@ -35,7 +35,7 @@ Bir runbook'u satır içi olarak çağırdığınızda üst runbook ile aynı i�
 
 Bir runbook yayımlandığında, çağırdığı tüm alt runbook 'lar zaten yayımlanmalıdır. Bunun nedeni, Azure Otomasyonu 'nun runbook 'u derlediğinde herhangi bir alt runbook ile ilişkilendirme oluşturmasının nedenidir. Alt runbook 'lar zaten yayımlanmamışsa, üst runbook düzgün şekilde yayınla görünür ancak başlatıldığında bir özel durum oluşturur. Bu durumda, alt runbook 'lara doğru şekilde başvurmak için üst runbook 'u yeniden yayımlayabilirsiniz. İlişki zaten oluşturulduğundan, herhangi bir alt runbook değiştirilirse üst runbook 'u yeniden yayımlamanız gerekmez.
 
-Satır içi olarak adlandırılan bir alt runbook 'un parametreleri karmaşık nesneler de dahil olmak üzere herhangi bir veri türünde olabilir. Azure portal veya [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) cmdlet 'ini kullanarak runbook 'u başlattığınızda olduğu gibi, [JSON serileştirme](start-runbooks.md#runbook-parameters)yoktur.
+Satır içi olarak adlandırılan bir alt runbook 'un parametreleri karmaşık nesneler de dahil olmak üzere herhangi bir veri türünde olabilir. Azure portal veya [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) cmdlet 'ini kullanarak runbook 'u başlattığınızda olduğu gibi, [JSON serileştirme](start-runbooks.md#work-with-runbook-parameters)yoktur.
 
 ### <a name="runbook-types"></a>Runbook türleri
 
@@ -80,7 +80,7 @@ Zamanlama nedeniyle alt Runbook çıkışı üst runbook 'a güvenilir bir şeki
 
 Bekleme sırasında üst runbook 'un engellenmesini istemiyorsanız, alt runbook 'u `Start-AzAutomationRunbook` parametresi olmadan kullanarak başlatabilirsiniz `Wait` . Bu durumda, runbook 'unun iş tamamlanmasını beklemek için [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) kullanması gerekir. Sonuçları almak için [Get-Azautomationjoi put](/powershell/module/az.automation/get-azautomationjoboutput) ve [Get-Azautomationjoi putrecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) ' i de kullanmalıdır.
 
-Bir cmdlet ile başlatılan bir alt runbook için parametreler [runbook parametreleri](start-runbooks.md#runbook-parameters)bölümünde açıklandığı gibi karma tablosu olarak sağlanır. Yalnızca basit veri türleri kullanılabilir. Runbook karmaşık veri türü içeren bir parametreye sahipse satır içi olarak çağrılmalıdır.
+Bir cmdlet ile başlatılan bir alt runbook için parametreler [runbook parametreleri](start-runbooks.md#work-with-runbook-parameters)bölümünde açıklandığı gibi karma tablosu olarak sağlanır. Yalnızca basit veri türleri kullanılabilir. Runbook karmaşık veri türü içeren bir parametreye sahipse satır içi olarak çağrılmalıdır.
 
 Alt runbook 'lar ayrı işler olarak başlatıldığında abonelik bağlamı kaybolabilir. Alt runbook 'un belirli bir Azure aboneliğine karşı az Module cmdlet 'leri yürütmesi için, alt öğenin bu abonelikte üst runbook 'tan bağımsız olarak kimlik doğrulaması gerekir.
 
@@ -117,5 +117,5 @@ Start-AzAutomationRunbook `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu 'nda runbook başlatma](start-runbooks.md)
+* [Azure Otomasyonu'nda Runbook başlatma](start-runbooks.md)
 * [Azure Otomasyonu 'nda Runbook çıkışı ve iletileri](automation-runbook-output-and-messages.md)

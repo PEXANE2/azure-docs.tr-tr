@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 74af3d14512018abc216b288a27dc54ed806d8c9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18bcd57c804746da5cff2efe8713616174fc794d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125239"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739490"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
-Application Gateway ve Web uygulaması güvenlik duvarı (WAF), bir Standard_v2 ve WAF_v2 SKU 'SU altında da mevcuttur. V2 SKU 'SU performans iyileştirmeleri sunar ve otomatik ölçeklendirme, bölge artıklığı ve statik VIP 'ler için destek gibi kritik yeni özellikler için destek ekler. Standart ve WAF SKU 'SU altındaki mevcut özellikler, yeni v2 SKU 'sunda, [karşılaştırma](#differences-with-v1-sku) bölümünde listelenen birkaç özel durum ile devam eder.
+Application Gateway ve Web uygulaması güvenlik duvarı (WAF), bir Standard_v2 ve WAF_v2 SKU 'SU altında da mevcuttur. V2 SKU 'SU performans iyileştirmeleri sunar ve otomatik ölçeklendirme, bölge artıklığı ve statik VIP 'ler için destek gibi kritik yeni özellikler için destek ekler. Standart ve WAF SKU 'SU altındaki mevcut özellikler, yeni v2 SKU 'sunda, [karşılaştırma](#differences-from-v1-sku) bölümünde listelenen birkaç özel durum ile devam eder.
 
 Yeni v2 SKU 'SU aşağıdaki geliştirmeleri içerir:
 
@@ -172,7 +172,9 @@ Aşağıdaki tabloda, her SKU ile kullanılabilen özellikler karşılaştırıl
 > [!NOTE]
 > Otomatik ölçeklendirme v2 SKU 'SU artık arka uç havuzundaki tüm kaynakların sistem durumunu otomatik olarak izlemek için [varsayılan sistem durumu araştırmalarını](application-gateway-probe-overview.md#default-health-probe) destekler ve sağlıksız olarak kabul edilen arka uç üyelerini vurgulayacaktır. Varsayılan sistem durumu araştırması, özel araştırma yapılandırması olmayan arka uçlara otomatik olarak yapılandırılır. Daha fazla bilgi edinmek için bkz. [Application Gateway 'de sistem durumu araştırmaları](application-gateway-probe-overview.md).
 
-## <a name="differences-with-v1-sku"></a>V1 SKU 'SU farkları
+## <a name="differences-from-v1-sku"></a>V1 SKU 'SU farklılıkları
+
+Bu bölümde v1 SKU 'sundan farklı v2 SKU 'sunun özellikleri ve sınırlamaları açıklanmaktadır.
 
 |Fark|Ayrıntılar|
 |--|--|

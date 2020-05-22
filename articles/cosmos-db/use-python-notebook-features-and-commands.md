@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: e5d73ef1f41337bce593fdd4def3721d95db5392
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a16b95249562db98d9382f8ca56bf4a27beba2fd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664105"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743500"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Azure Cosmos DB Python not defterlerinde yerleşik Not defteri komutlarını ve özelliklerini kullanma (Önizleme)
 
@@ -42,7 +42,7 @@ Bu paket, Azure Cosmos hesap çalışma alanındaki herhangi bir not defterinden
 - ``{database_id}``Ve ' i, ``{container_id}`` Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. ``--database``Ve ``--container`` bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür.
 - Azure Cosmos DB için geçerli olan herhangi bir SQL sorgusunu çalıştırabilirsiniz. Sorgu metni yeni bir satırda olmalıdır.
 
-Örnek: 
+Örneğin: 
 ```python
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
@@ -61,7 +61,7 @@ Bir ``%%sql`` sorgunun sonuçlarını bir [Pandas dataframe](https://pandas.pyda
 - ``{outputDataFrameVar}``Sonuçları Içerecek DataFrame değişkeninin adıyla değiştirin.
 - Azure Cosmos DB için geçerli olan herhangi bir SQL sorgusunu çalıştırabilirsiniz. Sorgu metni yeni bir satırda olmalıdır. 
 
-Örnek:
+Örneğin:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -70,7 +70,7 @@ SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 ```python
 df_cosmos.head(10)
 
-    Action    ItemRevenue    Country    Item
+    Action    ItemRevenue    Country/Region    Item
 0    Viewed    9.00    Tunisia    Black Tee
 1    Viewed    19.99    Antigua and Barbuda    Flannel Shirt
 2    Added    3.75    Guinea-Bissau    Socks
@@ -80,7 +80,7 @@ df_cosmos.head(10)
 6    Added    19.99    Syrian Arab Republic    Button-Up Shirt
 7    Viewed    19.99    Syrian Arab Republic    Button-Up Shirt
 8    Viewed    33.00    Tuvalu    Red Top
-9    Viewed    14.00    Cape Verde    Flip Flop Shoes
+9    Viewed    14.00    Cabo Verde    Flip Flop Shoes
 ```
 ## <a name="set-default-database-for-queries"></a>Sorgular için varsayılan veritabanını ayarla
 ```%%sql```Not defteri için kullanılacak varsayılan veritabanı komutlarını ayarlayabilirsiniz. ```{database_id}```Veritabanınızın adıyla değiştirin.
@@ -108,7 +108,7 @@ df_cosmos.head(10)
 - ``{database_id}``Ve ' i ``{container_id}`` Azure Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. ``--database``Ve ``--container`` bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür.
 - ``{url_location_of_file}``JSON dosyanızın konumuyla değiştirin. Dosya geçerli bir JSON nesneleri dizisi olmalıdır ve bu, genel Internet üzerinden erişilebilir olmalıdır.
 
-Örnek:
+Örneğin:
 
 ```python
 %%upload --database databaseName --container containerName --url 
@@ -147,7 +147,7 @@ df_cosmos.groupby("Item").size()
 
 ``cosmos_client``Herhangi BIR SDK işlemini çalıştırmak için yerleşik örneği kullanın. 
 
-Örnek:
+Örneğin:
 
 ```python
 ## Import modules as needed

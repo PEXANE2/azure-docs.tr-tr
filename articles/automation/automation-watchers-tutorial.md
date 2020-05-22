@@ -1,20 +1,26 @@
 ---
-title: Azure Otomasyonu hesabında izleyici görevi oluşturma
-description: Bir klasörde oluşturulan yeni dosyaları izlemek için Azure Otomasyonu hesabında izleyici görevi oluşturmayı öğrenin.
+title: Azure Otomasyonu izleyici göreviyle güncelleştirilmiş dosyaları izleme
+description: Bu makalede, bir klasörde oluşturulan yeni dosyaları izlemek için Azure Otomasyonu hesabında bir izleyici görevi oluşturma konusu açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 1175350e7f9f4db92d7d59eba0cc66ac4bb49f5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c41437773cf45e51e90dc55ad37e198c77f4373
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617352"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744142"
 ---
-# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Yerel bir makinedeki dosya değişikliklerini izlemek için bir Azure Otomasyonu izleyici görevi oluşturma
+# <a name="track-updated-files-with-a-watcher-task"></a>Güncelleştirilmiş dosyaları izleyici göreviyle izleme
 
 Azure Otomasyonu, PowerShell runbook 'ları ile olayları aramak ve eylemleri tetiklemek için bir izleyici görevi kullanır. İzleyici görevi iki bölümden oluşur, izleyici ve eylem. İzleyici runbook 'u izleyici görevinde tanımlanan bir aralıkla çalışır ve bir eylem runbook 'una veri çıkarır. 
+
+> [!NOTE]
+> İzleyici görevleri Azure Çin Vianet 21 ' de desteklenmez.
+
+> [!IMPORTANT]
+> 2020 Mayıs 'tan başlayarak Azure Logic Apps kullanmak, olayları izlemek, yinelenen görevleri zamanlamak ve eylemleri tetiklemek için desteklenen yoldur. Bkz. [Azure Logic Apps ile yinelenen otomatikleştirilmiş görevleri, işlemleri ve iş akışlarını zamanlama ve çalıştırma](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows).
 
 Bu öğreticide, bir dizine yeni bir dosya eklendiğinde izlenecek bir izleyici görevi oluşturma işlemi adım adım açıklanmaktadır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -34,9 +40,6 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 * İzleyici ve eylem runbook 'larını ve Izleyici görevini tutacak [Otomasyon hesabı](automation-offering-get-started.md) .
 * İzleyici görevinin çalıştırıldığı [karma bir runbook worker](automation-hybrid-runbook-worker.md) .
 * PowerShell runbook 'ları. PowerShell Iş akışı runbook 'ları izleyici görevleri tarafından desteklenmez.
-
-> [!NOTE]
-> İzleyici görevleri Azure Çin 'de desteklenmez.
 
 ## <a name="import-a-watcher-runbook"></a>İzleyici runbook 'unu içeri aktarma
 
@@ -166,5 +169,5 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Kendi runbook 'unuzu yazma hakkında daha fazla bilgi edinmek için bu bağlantıyı izleyin.
 
 > [!div class="nextstepaction"]
-> [Ilk PowerShell runbook 'Um](automation-first-runbook-textual-powershell.md).
+> [PowerShell runbook’u oluşturma](learn/automation-tutorial-runbook-textual-powershell.md)
 

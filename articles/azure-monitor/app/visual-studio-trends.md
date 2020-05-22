@@ -7,12 +7,12 @@ ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 151248f7cd6fe763643da42fc8edbe7c01a69cc7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670874"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744124"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Visual Studio Eğilimlerini Çözümleme
 Application Insights Eğilimleri aracı, web uygulamanızın önemli telemetri olaylarının zaman içinde nasıl değiştiğini gösterir ve sorunları ve anormallikleri hızlıca belirlemenize yardımcı olur. Sizi daha ayrıntılı tanılama bilgilerine bağlayan Eğilimler, uygulamanızın performansını geliştirmenize, özel durumların nedenlerini izlemenize ve özel olaylarınıza ilişkin bilgileri açığa çıkarmanıza yardımcı olabilir.
@@ -48,7 +48,7 @@ Her biri son 24 saatin verilerini çözümleyen beş genel eğilim analizinden b
 Önceden oluşturulmuş bu çözümlemeler Eğilimler penceresinin sol üst köşesindeki **Sık kullanılan telemetri analizi türlerini görüntüleyin** düğmesinden kullanılabilir.
 
 ## <a name="visualize-trends-in-your-application"></a>Uygulamanızdaki eğilimleri görselleştirme
-Application Insights Eğilimleri, uygulamanızın telemetrisinden bir zaman dizisi görselleştirmesi oluşturur. Her bir zaman dizisi görselleştirmesi bir telemetri türünü, ilgili telemetrinin bir özelliğine göre gruplandırarak ve bir zaman aralığı üzerinde gösterir. Örneğin, oluşturuldukları ülkeye göre gruplandırılmış son 24 saatteki sunucu isteklerini görüntülemek isteyebilirsiniz. Bu örnekte görselleştirme üzerindeki her baloncuk bir saat boyunca belirli bir ülke/bölge için yapılan sunucu isteklerinin sayısını gösterir.
+Application Insights Eğilimleri, uygulamanızın telemetrisinden bir zaman dizisi görselleştirmesi oluşturur. Her bir zaman dizisi görselleştirmesi bir telemetri türünü, ilgili telemetrinin bir özelliğine göre gruplandırarak ve bir zaman aralığı üzerinde gösterir. Örneğin, son 24 saat içinde, kaynaklandığı ülkeye/bölgeye göre gruplanmış sunucu isteklerini görüntülemek isteyebilirsiniz. Bu örnekte görselleştirme üzerindeki her baloncuk bir saat boyunca belirli bir ülke/bölge için yapılan sunucu isteklerinin sayısını gösterir.
 
 Hangi telemetri türlerini görüntüleyeceğinizi ayarlamak için pencerenin üstündeki denetimleri kullanın. İlk olarak ilgilendiğiniz telemetri türlerini seçin:
 

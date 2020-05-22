@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a44e32efa3e38cf9c4df7dc00e3189c129db418
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 7587ed6d414a69cff67aca9446aebf6260c99fcd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72887422"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736509"
 ---
 # <a name="identity-protection-policies"></a>Kimlik Koruması ilkeleri
 
@@ -41,7 +41,7 @@ Risk algılanırsa, kullanıcılar, yöneticilerin gereksiz gürültüsünü eng
 
 ### <a name="custom-conditional-access-policy"></a>Özel koşullu erişim ilkesi
 
-Yöneticiler, oturum açma riskini atama koşulu da dahil olmak üzere özel bir koşullu erişim ilkesi oluşturmayı da tercih edebilir. Koşullu erişim hakkında daha fazla bilgi makalesinde, [koşullu erişim nedir?](../conditional-access/overview.md)
+Yöneticiler, oturum açma riskini atama koşulu da dahil olmak üzere özel bir koşullu erişim ilkesi oluşturmayı da tercih edebilir. Koşullu erişim ilkesinde koşul olarak risk hakkında daha fazla bilgi, [koşullu erişim: koşullar](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk) makalesinde bulunabilir.
 
 ![Özel koşullu erişim oturum açma risk ilkesi](./media/concept-identity-protection-policies/identity-protection-custom-sign-in-policy.png)
 

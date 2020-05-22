@@ -3,12 +3,12 @@ title: Özellikler-LUSıS
 description: Etiketlemek veya sınıflandırmak istediğiniz girişin nasıl tanınılacağı hakkında ipuçları sağlamak için bir dil modeline özellikler ekleyin.
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4f19ceed2e48f3f6ec2ed0958bccb7a85cff44f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682152"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742704"
 ---
 # <a name="machine-learning-ml-features"></a>Makine öğrenimi (ML) özellikleri
 
@@ -85,7 +85,7 @@ Varlık (a), varlık (B) için önemli olduğunda bu varlığın (A) algılanabi
     * Sokak adresi (alt varlık)
     * Şehir (alt varlık)
     * Eyalet veya Il (alt varlık)
-    * Ülke (alt varlık)
+    * Ülke/bölge (alt varlık)
     * Posta kodu (alt varlık)
 
 ## <a name="nested-subentities-with-features"></a>Özelliklerle iç içe geçmiş alt varlıklar
@@ -118,14 +118,14 @@ Sevkiyat Adresi örneğine devam ediliyor:
     * Cadde adı (alt varlık)
     * Şehir (alt varlık)
     * Eyalet veya Il (alt varlık)
-    * Ülke (alt varlık)
+    * Ülke/bölge (alt varlık)
     * Posta kodu (alt varlık)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Önceden oluşturulmuş varlıklar kullanılarak gerekli özellik
 
-Şehir, eyalet ve ülke genellikle kapalı bir liste kümesidir ve bu, zaman içinde çok değiştirmeyeceği anlamına gelir. Bu varlıklar ilgili önerilen özelliklere sahip olabilir ve bu özellikler gerekli olarak işaretlenebilir. Bu, tüm sevkiyat adresinin döndürülmediği anlamına gelir, gerekli özelliklere sahip varlıklar bulunamadı.
+Şehir, eyalet ve ülke/bölge genellikle kapalı bir liste kümesidir ve bu, zaman içinde çok değiştirmeyeceği anlamına gelir. Bu varlıklar ilgili önerilen özelliklere sahip olabilir ve bu özellikler gerekli olarak işaretlenebilir. Bu, tüm sevkiyat adresinin döndürülmediği anlamına gelir, gerekli özelliklere sahip varlıklar bulunamadı.
 
-Şehir, eyalet veya ülke, deterance içinde, ancak bir konumda ya da lusıs 'in beklemediği argo durumunda ne olur? Bir kısmı çözmenize yardımcı olmak üzere bazı post işlemleri sağlamak istiyorsanız, LUSıS 'den düşük güvenilirlikli bir puan nedeniyle, özelliği gereken şekilde işaretlemeyin.
+Şehir, eyalet veya ülke/bölge, deterance 'de, ancak bir konumda veya luın beklemediği bir konum ya da argo olduğunda ne olur? Bir kısmı çözmenize yardımcı olmak üzere bazı post işlemleri sağlamak istiyorsanız, LUSıS 'den düşük güvenilirlikli bir puan nedeniyle, özelliği gereken şekilde işaretlemeyin.
 
 Sevkiyat adresi için gerekli bir özelliğin başka bir örneği, sokak numarasını gerekli [önceden oluşturulmuş](luis-reference-prebuilt-entities.md) bir sayı yapmak içindir. Bu, bir kullanıcının "1 Microsoft Way" veya "bir Microsoft Way" girmesini sağlar. Her ikisi de cadde numarası alt varlığı için bir sayıda "1" olarak çözümlenir.
 
@@ -133,19 +133,19 @@ Sevkiyat adresi için gerekli bir özelliğin başka bir örneği, sokak numaras
 
 Bir [liste varlığı](reference-entity-list.md) , kendi eş anlamlılarıyla birlikte kurallı adların bir listesi olarak kullanılır. Gerekli bir özellik olarak, söylenişi kurallı adı ya da bir eş anlamlıyı içermiyorsa, varlık tahmin uç noktasının bir parçası olarak döndürülmez.
 
-Sevkiyat Adresi örneğine devam etmek, şirketinizin yalnızca sınırlı bir ülke kümesine sevk edildiğini varsayalım. Müşterinizin ülkeye başvurmasına yönelik çeşitli yollar içeren bir liste varlığı oluşturabilirsiniz. LUSıS, utterance 'in metni içinde tam bir eşleşme bulamazsa, bu durumda varlık (liste varlığının gerekli özelliğine sahip olan) tahminde döndürülmez.
+Sevkiyat Adresi örneğine devam etmek, şirketinizin yalnızca sınırlı bir ülke/bölge kümesine sevk edildiğini varsayalım. Müşterinizin ülkeye başvurmasına yönelik çeşitli yollar içeren bir liste varlığı oluşturabilirsiniz. LUSıS, utterance 'in metni içinde tam bir eşleşme bulamazsa, bu durumda varlık (liste varlığının gerekli özelliğine sahip olan) tahminde döndürülmez.
 
 |Kurallı ad|Eş anlamlılar|
 |--|--|
 |Birleşik Devletler|ABD<br>U. S. A<br>ABD<br>ABD<br>0|
 
-Bir sohbet botu gibi istemci uygulaması bir soru sorabilir, böylece müşteri Ülke seçiminin sınırlı ve _gerekli_olduğunu anlamıştır.
+Bir sohbet bot gibi istemci uygulaması bir soru sorabilir ve müşterinin ülke/bölge seçiminin sınırlı ve _gerekli_olduğunu anlayabilmesi için, bir soru sorabilirsiniz.
 
 ### <a name="required-feature-using-regular-expression-entities"></a>Normal ifade varlıklarını kullanan gerekli özellik
 
 Gerekli özellik olarak kullanılan bir [normal ifade varlığı](reference-entity-regular-expression.md) , zengin metin eşleştirme özellikleri sağlar.
 
-Sevkiyat adresine devam ederek, ülke posta kodlarının sözdizimi kurallarını yakalayan bir normal ifade oluşturabilirsiniz.
+Sevkiyat adresiyle devam etmek için ülke/bölge posta kodlarının sözdizimi kurallarını yakalayan bir normal ifade oluşturabilirsiniz.
 
 ## <a name="global-features"></a>Genel Özellikler
 

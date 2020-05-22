@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 6b0977628f7c3d971804d8597f42425608028081
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3350ff4bc810666f7b772607c2983d86902f5ffc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448465"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744040"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve Python ile yazım denetimi yapma
 
@@ -46,13 +46,13 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
 
 ## <a name="create-the-parameters-for-the-request"></a>İstek için parametreleri oluşturma
 
-1. Anahtar olarak ile `text` yeni bir sözlük ve değer olarak metninizi oluşturun.
+1. Anahtar olarak ile yeni bir sözlük `text` ve değer olarak metninizi oluşturun.
 
     ```python
     data = {'text': example_text}
     ```
 
-2. İsteğiniz için parametreleri ekleyin. Pazar kodunuzu sonuna ekleyin `mkt=`. Pazar kodu, isteği yaptığınız ülkeniz. Ayrıca, daha sonra `&mode=`yazım denetimi modlarınızı ekleyin. Mod `proof` (en fazla yazım/dilbilgisi hatalarını yakalar) veya `spell` (çok sayıda dilbilgisi hatası değil, en fazla yazım yakalar).
+2. İsteğiniz için parametreleri ekleyin. Pazar kodunuzu sonuna ekleyin `mkt=` . Pazar kodu, isteği yaptığınız ülke/bölgedir. Ayrıca, daha sonra yazım denetimi modlarınızı ekleyin `&mode=` . Mod `proof` (en fazla yazım/dilbilgisi hatalarını yakalar) veya `spell` (çok sayıda dilbilgisi hatası değil, en fazla yazım yakalar).
 
     ```python
     params = {
@@ -61,7 +61,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
         }
     ```
 
-3. `Content-Type` Üst bilgiye ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` ekleyin.
+3. Üst bilgiye `Content-Type` ve abonelik anahtarınızı ekleyin `Ocp-Apim-Subscription-Key` .
 
     ```python
     headers = {

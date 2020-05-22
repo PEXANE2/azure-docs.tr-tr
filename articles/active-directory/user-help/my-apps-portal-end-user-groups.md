@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23b7205e63c7991368efe421d5c067e980314611
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77022333"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741975"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uygulamalarım portalınızdaki gruplar bilgilerini güncelleştirme
 
@@ -40,7 +40,7 @@ Yöneticiniz, **gruplar** kutucuğunu görüntüleme izni verdiyse şunları yap
 
 1. İş veya okul hesabınızda oturum açın.
 
-2. Web tarayıcınızı açın ve adresine gidin https://myapps.microsoft.comveya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için, gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz https://myapps.microsoft.com/contoso.com.
+2. Web tarayıcınızı açın ve adresine gidin https://myapps.microsoft.com veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için, gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz https://myapps.microsoft.com/contoso.com .
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -98,7 +98,7 @@ Yöneticiniz, **gruplar** kutucuğunu görüntüleme izni verdiyse şunları yap
 
 Bir grup oluşturduktan sonra, mevcut bilgilerin hiçbirini güncelleştirmek dahil olmak üzere ayrıntılarını düzenleyebilirsiniz.
 
-1. **Gruplar** sayfasından düzenlemek istediğiniz grubu seçin ve ardından * &lt;&gt; group_name* sayfasında **Ayrıntıları Düzenle** ' yi seçin.
+1. **Gruplar** sayfasından düzenlemek istediğiniz grubu seçin ve ardından * &lt; group_name &gt; * sayfasında **Ayrıntıları Düzenle** ' yi seçin.
 
     **Ayrıntıları Düzenle** kutusu görünür ve ilk olarak grubu oluştururken eklediğiniz bilgileri güncelleştirebilirsiniz.
 
@@ -108,7 +108,7 @@ Bir grup oluşturduktan sonra, mevcut bilgilerin hiçbirini güncelleştirmek da
 
 Sahip olduğunuz tüm gruplar için üye ekleyebilir veya kaldırabilirsiniz.
 
-1. Üye eklemek istediğiniz grubu seçin ve ardından **+** * &lt;group_name&gt; * sayfasında öğesini seçin.
+1. Üye eklemek istediğiniz grubu seçin ve ardından **+** * &lt; group_name &gt; * sayfasında öğesini seçin.
 
     ![+ İşaretiyle vurgulanmış bir grup üyesi ekleyin](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
@@ -118,7 +118,7 @@ Sahip olduğunuz tüm gruplar için üye ekleyebilir veya kaldırabilirsiniz.
 
     Kuruluşun uygulamalarına erişmeye başlamak için yeni üyeye bir davetiye gönderilir.
 
-3. Bir üyeyi yanlışlıkla eklediyseniz veya bir üye kuruluşunuzu bıraktıysanız, * &lt;&gt; group_name* sayfasında üyenin adının yanındaki **üyeyi kaldır** ' ı seçerek üyeyi kaldırabilirsiniz.
+3. Bir üyeyi yanlışlıkla eklediyseniz veya bir üye kuruluşunuzu bıraktıysanız, * &lt; group_name &gt; * sayfasında üyenin adının yanındaki **üyeyi kaldır** ' ı seçerek üyeyi kaldırabilirsiniz.
 
     ![Kaldırma bağlantısı vurgulanmış şekilde bir üyeyi kaldırma](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -138,7 +138,7 @@ Kuruluşunuz buna izin veriyorsa, sona erme tarihini genişleterek bir Office 36
 
 İstediğiniz zaman kendi gruplarınızı silebilirsiniz. Ancak, bir grubu yanlışlıkla silerseniz, oluşturmanız ve üyeleri tekrar eklemeniz gerekir.
 
-1. Kalıcı olarak silmek istediğiniz grubu seçin ve ardından * &lt;&gt; group_name* sayfasında **Grubu Sil** ' i seçin.
+1. Kalıcı olarak silmek istediğiniz grubu seçin ve ardından * &lt; group_name &gt; * sayfasında **Grubu Sil** ' i seçin.
 
     ![Grup silme bağlantısı vurgulanmış olarak <Group_name> sayfası](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 

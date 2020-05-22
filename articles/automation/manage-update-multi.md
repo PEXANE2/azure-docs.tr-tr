@@ -1,22 +1,22 @@
 ---
-title: Birden fazla Azure sanal makinesi için güncelleştirmeleri yönetme
-description: Bu makalede, Azure ve Azure olmayan sanal makineler için güncelleştirmelerin nasıl yönetileceği açıklanır.
+title: Azure Otomasyonu 'nda birden çok VM için güncelleştirmeleri yönetme
+description: Bu makalede, birden çok VM için güncelleştirmelerin nasıl yönetileceği açıklanır.
 services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a878ecf4519a852a9798b320bda26cd490487a4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 864b6793f65c69c83c0e26d01a10e156b1094889
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731994"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741037"
 ---
-# <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Birden fazla Azure sanal makinesi için güncelleştirmeleri yönetme
+# <a name="manage-updates-for-multiple-vms"></a>Birden çok VM için güncelleştirmesini yönetme
 
-Windows ve Linux sanal makineleriniz için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure Otomasyonu Güncelleştirme Yönetimi kullanabilirsiniz. [Azure Otomasyonu](automation-offering-get-started.md) hesabınızdan şunları yapabilirsiniz:
+Windows ve Linux sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetmek için Azure Otomasyonu Güncelleştirme Yönetimi kullanabilirsiniz. [Azure Otomasyonu](automation-offering-get-started.md) hesabınızdan şunları yapabilirsiniz:
 
-- Sanal makine ekleme.
+- Güncelleştirme yönetimi için VM 'Leri etkinleştirin.
 - Kullanılabilir güncelleştirmelerin durumunu değerlendirme.
 - Gerekli güncelleştirmeleri yüklemeyi zamanlama.
 - Güncelleştirmelerin Güncelleştirme Yönetimi etkinleştirildiği tüm sanal makinelere başarıyla uygulandığını doğrulamak için dağıtım sonuçlarını gözden geçirin.
@@ -25,26 +25,24 @@ Güncelleştirme Yönetimi sistem gereksinimleri hakkında bilgi edinmek için b
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Desteklenen işletim sistemlerinden birinin yüklü olduğu bir sanal makine veya bilgisayar.
-* Linux VM 'Leri için bir güncelleştirme deposuna erişim eklendi Güncelleştirme Yönetimi.
+* Desteklenen işletim sistemlerinden birine sahip bir VM veya bilgisayar.
+* Güncelleştirme Yönetimi için etkinleştirilen Linux VM 'Leri için bir güncelleştirme deposuna erişim.
 
-## <a name="enable-update-management-for-azure-virtual-machines"></a>Azure sanal makineleri için Güncelleştirme Yönetimini etkinleştirme
+## <a name="enable-update-management-for-azure-vms"></a>Azure VM 'Leri için Güncelleştirme Yönetimi etkinleştirme
 
-Azure portal Otomasyon hesabınızı açın ve **güncelleştirme yönetimi**' ni seçin.
+1. Azure portal Otomasyon hesabınızı açın ve **güncelleştirme yönetimi**' ni seçin.
 
-**Azure VM 'Leri Ekle**' yi seçin.
+2. **Azure VM 'Leri Ekle**' yi seçin.
 
-![Azure VM ekle sekmesi](./media/manage-update-multi/update-onboard-vm.png)
+    ![Azure VM ekle sekmesi](./media/manage-update-multi/update-onboard-vm.png)
 
-Eklemek için bir sanal makine seçin.
+3. Etkinleştirmek için bir VM seçin ve Etkinleştir ' in **güncelleştirme yönetimi**altında **Etkinleştir** ' i seçin.
 
-**Güncelleştirme yönetimi etkinleştir**altında, sanal makineyi eklemek için **Etkinleştir** ' i seçin.
+    ![Güncelleştirme Yönetimini Etkinleştir iletişim kutusu](./media/manage-update-multi/update-enable.png)
 
-![Güncelleştirme Yönetimini Etkinleştir iletişim kutusu](./media/manage-update-multi/update-enable.png)
+    İşlem tamamlandığında, VM 'niz üzerinde Güncelleştirme Yönetimi etkinleştirilir.
 
-Ekleme tamamlandığında, sanal makineniz için Güncelleştirme Yönetimi etkinleştirilir.
-
-## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Azure olmayan sanal makineler ve bilgisayarlar için Güncelleştirme Yönetimi etkinleştirme
+## <a name="enable-update-management-for-non-azure-vms-and-computers"></a>Azure dışı VM 'Ler ve bilgisayarlar için Güncelleştirme Yönetimi etkinleştirme
 
 Windows ve Linux için Log Analytics aracısının, kurumsal ağınızda veya diğer bulut ortamınızda çalışan VM 'lerde Güncelleştirme Yönetimi sağlamak için yüklü olması gerekir. Aracıyı Azure dışında barındırılan makinelere dağıtmaya yönelik sistem gereksinimleri ve desteklenen yöntemler hakkında bilgi edinmek için bkz. [Log Analytics aracısına genel bakış](../azure-monitor/platform/log-analytics-agent.md).
 
@@ -54,7 +52,7 @@ Makineleriniz için Güncelleştirme Yönetimi etkinleştirdikten sonra **bilgis
 
   ![Bilgisayarları görüntüle sekmesi](./media/manage-update-multi/update-computers-tab.png)
 
-Güncelleştirme Yönetimi için yakın zamanda etkinleştirilen bilgisayarlar henüz değerlendirilemeyebilir. Bu bilgisayarların uyumluluk durumu `Not assessed`. Uyumluluk durumu için olası değerlerin bir listesi aşağıda verilmiştir:
+Güncelleştirme Yönetimi için yakın zamanda etkinleştirilen bilgisayarlar henüz değerlendirilemeyebilir. Bu bilgisayarların uyumluluk durumu `Not assessed` . Uyumluluk durumu için olası değerlerin bir listesi aşağıda verilmiştir:
 
 - `Compliant`: Kritik veya güvenlik güncelleştirmeleri eksik olan bilgisayarlar.
 - `Non-compliant`: En az bir kritik veya güvenlik güncelleştirmesi eksik olan bilgisayarlar.
@@ -70,11 +68,11 @@ Güncelleştirme Yönetimi etkinleştirildikten sonra, Güncelleştirme Yönetim
 
 ## <a name="collect-data"></a>Veri toplama
 
-Sanal makinelere ve bilgisayarlara yüklenen aracılar güncelleştirmeler hakkında veri toplar. Aracılar, verileri Azure Güncelleştirme Yönetimi 'a gönderir.
+VM 'Ler ve bilgisayarlara yüklenen aracılar güncelleştirmeler hakkında veri toplar. Aracılar, verileri Azure Güncelleştirme Yönetimi 'a gönderir.
 
 ### <a name="supported-agents"></a>Desteklenen aracılar
 
-Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
+Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
 | Bağlı kaynak | Destekleniyor | Açıklama |
 | --- | --- | --- |
@@ -101,7 +99,7 @@ Güncelleştirmeleri yüklemek için, sürüm zamanlamanız ve hizmet pencereniz
 >Bir güncelleştirme dağıtımı zamanladığınızda, hedef makinelerdeki güncelleştirme dağıtımını işleyen **Patch-MicrosoftOMSComputers** runbook 'una bağlı bir [zamanlama](shared-resources/schedules.md) kaynağı oluşturur. Azure portal zamanlama kaynağını veya dağıtımı oluşturduktan sonra PowerShell 'i kullanarak silerseniz, zamanlanan güncelleştirme dağıtımını keser ve portaldan yeniden yapılandırmayı denediğinizde bir hata oluşturur. Yalnızca ilgili dağıtım zamanlamasını silerek zamanlama kaynağını silebilirsiniz.
 >
 
-Bir veya daha fazla sanal makine için yeni bir güncelleştirme dağıtımı zamanlamak için, **güncelleştirme yönetimi**altında **güncelleştirme dağıtımı zamanla**' yı seçin.
+Bir veya daha fazla VM için yeni bir güncelleştirme dağıtımı zamanlamak için, **güncelleştirme yönetimi**altında **güncelleştirme dağıtımı zamanla**' yı seçin.
 
 **Yeni güncelleştirme dağıtımı** bölmesinde aşağıdaki bilgileri belirtin:
 
@@ -117,7 +115,7 @@ Bir veya daha fazla sanal makine için yeni bir güncelleştirme dağıtımı za
 
   ![Yeni güncelleştirme dağıtım bölmesi](./media/manage-update-multi/update-select-computers.png)
 
-- **Güncelleştirme sınıflandırması**: güncelleştirme dağıtımına dahil edilecek yazılım türlerini seçin. Sınıflandırma türlerinin açıklaması için bkz. [güncelleştirme sınıflandırmaları](automation-view-update-assessments.md#update-classifications). Sınıflandırma türleri şunlardır:
+- **Güncelleştirme sınıflandırması**: güncelleştirme dağıtımına dahil edilecek yazılım türlerini seçin. Sınıflandırma türlerinin açıklaması için bkz. [güncelleştirme sınıflandırmaları](automation-view-update-assessments.md#work-with-update-classifications). Sınıflandırma türleri şunlardır:
   - Kritik güncelleştirmeler
   - Güvenlik güncelleştirmeleri
   - Güncelleştirme paketleri
@@ -130,11 +128,10 @@ Bir veya daha fazla sanal makine için yeni bir güncelleştirme dağıtımı za
 - **Dahil edilecek/dışlanacak güncelleştirmeler** - Böylece Dahil Et / Dışla sayfası açılır. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir. Ekleme hakkında daha fazla bilgi için bkz. [güncelleştirme dağıtımı zamanlama](automation-tutorial-update-management.md#schedule-an-update-deployment).
 
 > [!NOTE]
-> Dışlamaları geçersiz kılmanın dahil olduğunu bildirmek önemlidir. Örneğin, hariç tutma kuralı tanımlarsanız `*`, hepsi hariç tutulduklarında hiçbir düzeltme eki veya paket yüklenmez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için bir paket dahil, ancak dışlanan bağımlı bir paket varsa, paket yüklenmez.
+> Dışlamaları geçersiz kılmanın dahil olduğunu bilmemiz önemlidir. Örneğin, hariç tutma kuralı tanımlarsanız `*` , hepsi hariç tutulduklarında hiçbir düzeltme eki veya paket yüklenmez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için bir paket dahil, ancak dışlanan bağımlı bir paket varsa, paket yüklenmez.
 
 > [!NOTE]
 > Güncelleştirme dağıtımına dahil edilmek üzere yenisiyle değiştirilen güncelleştirmeleri belirtemezsiniz.
->
 
 - **Zamanlama ayarları** - Geçerli saatten 30 dakika sonrası olan varsayılan tarih ve saati kabul edebilirsiniz. Ayrıca, farklı bir saat belirtebilirsiniz.
 
@@ -185,4 +182,4 @@ Dağıtımla ilgili her türlü hata hakkında ayrıntılı bilgi için **Hatala
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güncelleştirme Yönetimi günlükleri, çıktısı ve hataları hakkında daha fazla bilgi edinmek için bkz. [güncelleştirme yönetimi Için sorgu güncelleştirme kayıtları](automation-update-management-query-logs.md).
+[Güncelleştirme Yönetimi günlüklerini sorgulama](automation-update-management-query-logs.md)

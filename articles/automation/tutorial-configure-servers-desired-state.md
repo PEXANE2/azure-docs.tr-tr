@@ -1,18 +1,18 @@
 ---
-title: Azure Otomasyonu ile sunucuları istenen duruma göre yapılandırma ve kaymaları yönetme
-description: Öğretici-Azure Otomasyonu durum yapılandırması ile sunucu yapılandırmalarını yönetme
+title: Azure Otomasyonu 'nda makineleri istenen duruma göre yapılandırma
+description: Bu makalede, Azure Otomasyonu durum yapılandırması kullanılarak makinelerin istenen duruma nasıl yapılandırılacağı açıklanır.
 services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: a02c664ddf0802ad5ac306f98de14b7c0d5d7271
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93fb896dfc373a7402bbb3d1a38a655088d27fdf
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678704"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735929"
 ---
-# <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Sunucuları istenen bir duruma göre yapılandırma ve DRFT 'yi yönetme
+# <a name="configure-machines-to-a-desired-state"></a>Makineleri istenen duruma yapılandırma
 
 Azure Otomasyonu durum yapılandırması sunucularınız için yapılandırmalar belirtmenize ve bu sunucuların zaman içinde belirtilen durumda olduğundan emin olmanızı sağlar.
 
@@ -24,9 +24,6 @@ Azure Otomasyonu durum yapılandırması sunucularınız için yapılandırmalar
 > - Yönetilen bir düğümün uyumluluk durumunu denetleme
 
 Bu öğreticide, IIS 'nin VM 'de yüklü olmasını sağlayan basit bir [DSC yapılandırması](/powershell/scripting/dsc/configurations/configurations) kullanırız.
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -71,7 +68,7 @@ configuration TestConfig {
 ```
 
 > [!NOTE]
-> DSC kaynaklarını sağlayan birden çok modülün içeri aktarılmasını gerektiren daha Gelişmiş senaryolarda, her modülün yapılandırmanızda benzersiz `Import-DscResource` bir satıra sahip olduğundan emin olun.
+> DSC kaynaklarını sağlayan birden çok modülün içeri aktarılmasını gerektiren daha Gelişmiş senaryolarda, her modülün yapılandırmanızda benzersiz bir satıra sahip olduğundan emin olun `Import-DscResource` .
 
 Yapılandırmayı Otomasyon hesabınıza yüklemek için [Import-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration?view=azps-3.7.0) cmdlet 'ini çağırın.
 
@@ -83,7 +80,7 @@ Yapılandırmayı Otomasyon hesabınıza yüklemek için [Import-AzAutomationDsc
 
 Bir DSC yapılandırmasının bir düğüme atanabilmesi için önce düğüm yapılandırmasına derlenmesi gerekir. Bkz. [DSC yapılandırması](/powershell/scripting/dsc/configurations/configurations).
 
-Yapılandırmayı Otomasyon hesabınızda adlı `TestConfig.WebServer` bir düğüm yapılandırması olarak derlemek için [Start-AzAutomationDscCompilationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) cmdlet 'ini çağırın. `TestConfig`
+Yapılandırmayı Otomasyon hesabınızda adlı bir düğüm yapılandırması olarak derlemek için [Start-AzAutomationDscCompilationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) cmdlet 'ini çağırın `TestConfig` `TestConfig.WebServer` .
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
@@ -101,13 +98,13 @@ Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 
 ### <a name="specify-configuration-mode-settings"></a>Yapılandırma modu ayarlarını belirtin
 
-Bir VM 'yi yönetilen bir düğüm olarak kaydetmek ve yapılandırma özelliklerini belirtmek için [register-AzAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) cmdlet 'ini kullanın. Örneğin, makinenin durumunun, `ApplyOnly` `ConfigurationMode` özelliğin değeri olarak belirtilerek yalnızca bir kez uygulanacağını belirtebilirsiniz. Durum Yapılandırması, ilk denetiminden sonra yapılandırmayı uygulamaya çalışır.
+Bir VM 'yi yönetilen bir düğüm olarak kaydetmek ve yapılandırma özelliklerini belirtmek için [register-AzAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) cmdlet 'ini kullanın. Örneğin, makinenin durumunun, özelliğin değeri olarak belirtilerek yalnızca bir kez uygulanacağını belirtebilirsiniz `ApplyOnly` `ConfigurationMode` . Durum Yapılandırması, ilk denetiminden sonra yapılandırmayı uygulamaya çalışır.
 
 ```powershell
 Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationMode 'ApplyOnly'
 ```
 
-Bu `ConfigurationModeFrequencyMins` ÖZELLIĞI kullanarak DSC 'nin yapılandırma durumunu ne sıklıkta denetleyeceğini de belirtebilirsiniz. DSC yapılandırma ayarları hakkında daha fazla bilgi için bkz. [yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaConfig).
+Bu özelliği kullanarak DSC 'nin yapılandırma durumunu ne sıklıkta denetleyeceğini de belirtebilirsiniz `ConfigurationModeFrequencyMins` . DSC yapılandırma ayarları hakkında daha fazla bilgi için bkz. [yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
 ```powershell
 # Run a DSC check every 60 minutes
@@ -126,7 +123,7 @@ $node = Get-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -Automation
 Set-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -NodeConfigurationName 'TestConfig.WebServer' -NodeId $node.Id
 ```
 
-Bu, kayıtlı DSC düğümüne `TestConfig.WebServer` `DscVm`adlı düğüm yapılandırmasını atar. Varsayılan olarak, DSC düğümü her 30 dakikada bir düğüm yapılandırmasıyla uyumluluk için denetlenir. Uyumluluk denetimi aralığını değiştirme hakkında daha fazla bilgi için bkz. [yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaConfig).
+Bu, kayıtlı DSC düğümüne adlı düğüm yapılandırmasını atar `TestConfig.WebServer` `DscVm` . Varsayılan olarak, DSC düğümü her 30 dakikada bir düğüm yapılandırmasıyla uyumluluk için denetlenir. Uyumluluk denetimi aralığını değiştirme hakkında daha fazla bilgi için bkz. [yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>Yönetilen bir düğümün uyumluluk durumunu denetleme
 
@@ -166,9 +163,9 @@ PowerShell kullanarak Azure Otomasyonu durum yapılandırma hizmeti 'nden bir d�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Başlamak için bkz. [Azure Otomasyonu durum yapılandırması ile çalışmaya](automation-dsc-getting-started.md)başlama.
-- Düğümlerin nasıl ekleneceğini öğrenmek için bkz. [Azure Otomasyonu durum yapılandırmasına göre yönetim için makineleri ekleme](automation-dsc-onboarding.md).
-- Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum yapılandırmasında yapılandırmaları derleme](automation-dsc-compile.md).
-- PowerShell cmdlet başvurusu için bkz. [Azure Otomasyonu durum yapılandırması cmdlet 'leri](/powershell/module/azurerm.automation/#automation).
-- Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
-- Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Azure Otomasyonu durum yapılandırması ve Chocolatey kullanarak sürekli dağıtım](automation-dsc-cd-chocolatey.md)
+* [Azure Otomasyonu durum yapılandırması 'nı kullanmaya başlama](automation-dsc-getting-started.md)
+* [Azure Otomasyonu durum yapılandırmasını etkinleştirme](automation-dsc-onboarding.md)
+* [Azure Otomasyonu durum yapılandırmasında yapılandırmaları derleme](automation-dsc-compile.md)
+* [Azure Otomasyonu durum yapılandırması cmdlet 'leri](/powershell/module/azurerm.automation/#automation)
+* [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/)
+- [Chocolatey ile sürekli dağıtım ayarlama](automation-dsc-cd-chocolatey.md)

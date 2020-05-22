@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657053"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742227"
 ---
 # <a name="glossary"></a>Sözlük
 
@@ -31,7 +31,7 @@ Aşağıdaki listede, Azure haritalar hizmetleriyle kullanılan yaygın sözcük
 
 <a name="altitude"></a>**Yükseklik**: bir başvuru yüzeyi üzerindeki bir noktanın yükseklik veya dikey yükselmesi. Yükseklik ölçümleri, ortalama deniz düzeyi gibi belirli bir başvuru veri tabansına dayanır. Ayrıca bkz. yükseltme.
 
-<a name="ambiguous"></a>**Belirsiz**: bir nesne belirli bir öznitelik için uygun şekilde iki veya daha fazla değere atanabileceği zaman, veri sınıflandırmasında belirsizliğin bir durumu. Örneğin, coğrafi kodlama "CA" olduğunda iki belirsiz sonuç döndürülür: "Kanada" ve "California". "CA", "Kanada" ve "California" için sırasıyla bir ülke ve bir durum kodudur. 
+<a name="ambiguous"></a>**Belirsiz**: bir nesne belirli bir öznitelik için uygun şekilde iki veya daha fazla değere atanabileceği zaman, veri sınıflandırmasında belirsizliğin bir durumu. Örneğin, coğrafi kodlama "CA" olduğunda iki belirsiz sonuç döndürülür: "Kanada" ve "California". "CA", "Kanada" ve "California" için sırasıyla bir ülke/bölge ve bir durum kodudur. 
 
 <a name="annotation"></a>**Ek açıklama**: kullanıcıya bilgi sağlamak için haritada görüntülenecek metin veya grafikler. Ek açıklama belirli bir harita varlığını tanımlayabilir veya tanımlayabilir, haritadaki bir alanla ilgili genel bilgiler sağlayabilir veya haritanın kendisi hakkında bilgi sağlayabilir.
 
@@ -93,7 +93,7 @@ Aşağıdaki listede, Azure haritalar hizmetleriyle kullanılan yaygın sözcük
 
 <a name="coordinate-system"></a>**Koordinat sistemi**: iki veya üç boyutta bir boşluk içinde noktaların konumlarını tanımlamak için kullanılan bir başvuru çerçevesi.
 
-<a name="country-code"></a>**Ülke kodu**: ISO standardına dayalı bir ülke/bölge için benzersiz bir tanımlayıcı. ISO2, bir ülkenin (örneğin, US) iki karakterlik bir koddur. Bu, ISO3 üç karakterli bir kodu temsil eder (örneğin, ABD).
+<a name="country-code"></a>**Ülke kodu**: ISO standardına dayalı bir ülke/bölge için benzersiz bir tanımlayıcı. ISO2, bir ülke/bölge (örneğin, ABD) için iki karakterli bir koddur. Bu, ISO3 üç karakterli bir kodu temsil eder (örneğin, ABD).
 
 <a name="country-subdivision"></a>**Ülke alt bölümü**: bir ülkenin/bölgenin, genellikle eyalet veya il olarak bilinen ilk düzey alt bölümü.
 

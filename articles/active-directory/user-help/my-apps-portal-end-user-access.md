@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8eb59eebd29c2cc94e20b71b467866686deec2f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869719"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741958"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Uygulamalarım portalından oturum açın ve uygulamaları başlatın
 
@@ -78,9 +78,9 @@ Yeni Microsoft Edge tarayıcısını kullanıyorsanız (Kmıum üzerinde Edge), 
 
 **Son kullanılan** bölümde kaç uygulama görüntüleneceğini seçebilir ve kuruluşunuzun Iç URL 'lerinin yeniden yönlendirmesine izin verip vermeyeceğine karar verebilirsiniz.
 
-1. **Adres** çubuğunuzun sağ tarafındaki yeni **uygulamalarım güvenli oturum açma uzantısı** simgesi ![uzantısını](media/my-apps-portal/my-apps-portal-extension-icon.png) seçin ve ardından oturum aç ' ı seçerek **kullanmaya başlayın**.
+1. Adres çubuğunuzun sağ tarafındaki yeni **uygulamalarım güvenli oturum açma uzantısı** simgesi ![ uzantısını seçin ](media/my-apps-portal/my-apps-portal-extension-icon.png) ve ardından oturum aç **Address** ' ı seçerek **kullanmaya başlayın**.
 
-2. **Ayarlar** simgesi ![ayarları simgesine](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)sağ tıklayın ve ardından **Ayarlar**' ı seçin.
+2. **Ayarlar** simgesi ayarları simgesine sağ tıklayın ![ ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) ve ardından **Ayarlar**' ı seçin.
 
 3. **Ayarlar** kutusunda, portalda görmek istediğiniz son uygulama sayısını ve kuruluşunuzun Iç URL 'lerinin uzaktan kullanabilmeniz için yeniden yönlendirmesine izin verip vermeyeceğinizi seçin.
 
@@ -98,7 +98,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. Bilgisayarınızda iş veya okul hesabınızda oturum açın.
 
-2. Desteklenen bir Web tarayıcısında açın ve adresine gidin https://myapps.microsoft.comya da gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın. `https://myapps.microsoft.com/contoso.com`
+2. Desteklenen bir Web tarayıcısında açın ve adresine gidin ya da gibi https://myapps.microsoft.com özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın `https://myapps.microsoft.com/contoso.com` .
 
     Kuruluşunuzun sahip olduğu, kuruluşunuzun sahip olduğu tüm bulut tabanlı uygulamaları gösteren **uygulamalar** sayfası açılır.
 
@@ -112,7 +112,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. Mobil cihazınızda Intune Managed Browser uygulamasını Apple App Store 'dan ve Google Play Store indirin ve yükleyin.
 
-2. Intune Managed Browser uygulamasını açın, ' e https://myapps.microsoft.comgidin veya kuruluşunuz tarafından sunulan bağlantıyı, gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kullanın. https://myapps.microsoft.com/contoso.com
+2. Intune Managed Browser uygulamasını açın, ' e gidin https://myapps.microsoft.com veya kuruluşunuz tarafından sunulan bağlantıyı, gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kullanın https://myapps.microsoft.com/contoso.com .
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -126,7 +126,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. Mobil cihazınızda Safari gibi bir Web tarayıcısı uygulaması başlatın.
 
-2. https://myapps.microsoft.com' A gidin veya sizin gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın https://myapps.microsoft.com/contoso.com.
+2. https://myapps.microsoft.com' A gidin veya sizin gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın https://myapps.microsoft.com/contoso.com .
 
     Kuruluşunuzun sahip olduğu, kuruluşunuzun sahip olduğu tüm bulut tabanlı uygulamaları gösteren **uygulamalar** sayfası açılır.
 
@@ -140,7 +140,7 @@ Android cihazında **My Apps** portalını görüntüleyin ve kullanın.
 
 1. Mobil cihazınızda, Google Chrome gibi bir Web tarayıcısı uygulaması başlatın.
 
-2. https://myapps.microsoft.com' A gidin veya sizin gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın https://myapps.microsoft.com/contoso.com.
+2. https://myapps.microsoft.com' A gidin veya sizin gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın https://myapps.microsoft.com/contoso.com .
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 

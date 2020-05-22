@@ -4,12 +4,12 @@ description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular 
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257686"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744112"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
@@ -102,9 +102,14 @@ Evet. Bir bölgede Site Recovery kasa oluşturduğunuzda, çoğaltma ve yük dev
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery çoğaltma işlemini şifreleyebilir mi?
 Sanal makineler ve fiziksel sunucular için, şirket içi siteler arasında çoğaltma geçişi desteklenir. Azure 'a çoğaltılan sanal makineler ve fiziksel sunucular için hem çapraz geçiş hem de [bekleyen şifreleme (Azure 'da)](https://docs.microsoft.com/azure/storage/storage-service-encryption) desteklenir.
 
-### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>Tüm şirket içi Azure Site Recovery bileşenlerinde TLS 1,2 ' I nasıl zorlayabilirim?
+### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Azure 'dan Azure Site Recovery, Azure 'un mikro hizmetleri arasındaki tüm iletişimler için TLS 1,2 kullanır mi?
+Evet, TLS 1,2 Protokolü, Azure 'dan Azure Site Recovery senaryosu için varsayılan olarak zorlanır. 
+
+### <a name="how-can-i-enforce-tls-12-on-vmware-to-azure-and-physical-server-to-azure-site-recovery-scenarios"></a>VMware 'den Azure 'a ve fiziksel sunucudan Azure Site Recovery senaryolara TLS 1,2 ' I nasıl zorlayabilirim?
 Çoğaltılan öğeler üzerinde yüklü olan Mobility aracıları yalnızca TLS 1,2 üzerinde Işlem sunucusuyla iletişim kurar. Bununla birlikte, yapılandırma sunucusundan Azure 'a ve Işlem sunucusundan Azure 'a iletişim, TLS 1,1 veya 1,0 ' de olabilir. Lütfen tüm yapılandırma sunucularında ve sizin tarafınızdan ayarlanan Işlem sunucularında TLS 1,2 ' i zorlamak için [yönergeleri](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) izleyin.
 
+### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>HyperV-Azure Site Recovery senaryolarında TLS 1,2 ' I nasıl zorlayabilirim?
+Azure Site Recovery mikro hizmetleri arasındaki tüm iletişimler TLS 1,2 protokolünde olur. Site Recovery, sistemde (OS) yapılandırılan güvenlik sağlayıcılarını kullanır ve kullanılabilir en son TLS protokolünü kullanır. Bir tek yapmanız gereken, kayıt defterinde TLS 1,2 ' i açıkça etkinleştirmektir ve Site Recovery hizmetlerle iletişim kurmak için TLS 1,2 ' i kullanmaya başlayacaktır. 
 
 ## <a name="disaster-recovery"></a>Olağanüstü durum kurtarma
 

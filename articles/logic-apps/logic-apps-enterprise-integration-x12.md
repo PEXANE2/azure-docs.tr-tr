@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 8ec20e03544ba54b83130ae41244dcdb186252d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613087"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739541"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için Exchange x12 iletileri
 
@@ -31,7 +31,7 @@ Azure Logic Apps içinde x12 iletilerle çalışmak için, x12 iletişimini yön
 
 * Tümleştirme hesabınıza önceden eklediğiniz XML doğrulaması için kullanılacak [şemalar](../logic-apps/logic-apps-enterprise-integration-schemas.md) . Sağlık sigortası taşınabilirlik ve Sorumluluk Yasası (HIPAA) şemaları ile çalışıyorsanız bkz. [HIPAA şemaları](#hipaa-schemas).
 
-* X12 bağlayıcısını kullanabilmeniz için, ticari iş ortaklarınız arasında bir x12 [sözleşmesi](../logic-apps/logic-apps-enterprise-integration-agreements.md) oluşturmanız ve bu sözleşmeyi tümleştirme hesabınızda depolamanız gerekir. Sağlık sigortası taşınabilirlik ve Sorumluluk Yasası (HIPAA) şemaları ile çalışıyorsanız, sözleşmenize bir `schemaReferences` bölüm eklemeniz gerekir. Daha fazla bilgi için bkz. [HIPAA şemaları](#hipaa-schemas).
+* X12 bağlayıcısını kullanabilmeniz için, ticari iş ortaklarınız arasında bir x12 [sözleşmesi](../logic-apps/logic-apps-enterprise-integration-agreements.md) oluşturmanız ve bu sözleşmeyi tümleştirme hesabınızda depolamanız gerekir. Sağlık sigortası taşınabilirlik ve Sorumluluk Yasası (HIPAA) şemaları ile çalışıyorsanız, sözleşmenize bir bölüm eklemeniz gerekir `schemaReferences` . Daha fazla bilgi için bkz. [HIPAA şemaları](#hipaa-schemas).
 
 <a name="receive-settings"></a>
 
@@ -319,8 +319,8 @@ Bu tablo, etkilenen ileti türlerini, tüm türevlerini ve bu ileti türleriyle 
 | İleti türü veya varyantı |  Açıklama | Belge sürüm numarası (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Sağlık bilgileri bilgi durumu bildirimi | 005010X212 |
-| 837_I | Sağlık Hizmetleri talebi eğilimi | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
-| 837_D | Sağlık hizmetleri talep kurum | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
+| 837_I | Sağlık hizmetleri talep kurum | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
+| 837_D | Sağlık Hizmetleri talebi eğilimi | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
 | 837_P | Sağlık hizmetleri talep uzmanı | 004010X098A1 <br>005010X222 <br>005010X222A1 |
 |||
 
@@ -330,7 +330,7 @@ Bu belge sürümü numaralarını ve ileti türlerini belirtmek için şu adıml
 
 1. HIPAA şemanızda, geçerli ileti türünü, kullanmak istediğiniz belge sürümü numarası için varyant ileti türü ile değiştirin.
 
-   Örneğin, `005010X222A1` `837` ileti türüyle belge sürümü numarasını kullanmak istediğinizi varsayalım. Şemanızda her `"X12_00501_837"` değeri, `"X12_00501_837_P"` yerine değeri ile değiştirin.
+   Örneğin, ileti türüyle belge sürümü numarasını kullanmak istediğinizi varsayalım `005010X222A1` `837` . Şemanızda her `"X12_00501_837"` değeri, yerine değeri ile değiştirin `"X12_00501_837_P"` .
 
    Şemanızı güncelleştirmek için şu adımları izleyin:
 
@@ -340,7 +340,7 @@ Bu belge sürümü numaralarını ve ileti türlerini belirtmek için şu adıml
 
 1. Sözleşmenizin `schemaReferences` nesnesinde, belge sürüm numaranız ile eşleşen varyant iletisi türünü belirten başka bir giriş ekleyin.
 
-   Örneğin, `005010X222A1` `837` ileti türü için belge sürüm numarasını kullanmak istediğinizi varsayalım. Sözleşmenizin bu özellik `schemaReferences` ve değerleri içeren bir bölümü vardır:
+   Örneğin, `005010X222A1` ileti türü için belge sürüm numarasını kullanmak istediğinizi varsayalım `837` . Sözleşmenizin `schemaReferences` Bu özellik ve değerleri içeren bir bölümü vardır:
 
    ```json
    "schemaReferences": [

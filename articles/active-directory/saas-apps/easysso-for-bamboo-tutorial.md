@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/06/2020
+ms.date: 05/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 227f4a804c466af81707eca79e9d8cf6c00e52be
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c37850d2188f560b8eb8d0b16f5a1b2880a8b32e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984366"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740663"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>Öğretici: Bamboo için Easyswith ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -99,7 +99,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     ![image](common/default-attributes.png)
 
 1. Yukarıdaki Bamboo uygulaması için EasySSO, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
-    
+
     | Name | Kaynak özniteliği |
     | ---------------|  --------- |
     | urn: OID: 2.16.840.1.113730.3.1.241 | User. DisplayName |
@@ -120,7 +120,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**' a tıklayın.
 
@@ -144,13 +144,50 @@ Bu bölümde, Bamboo için Easys'e erişim vererek Azure çoklu oturum açma öz
 
 ## <a name="configure-easysso-for-bamboo-sso"></a>Bamboo SSO için EasySSO yapılandırma
 
-**Bamboo Side Için easyson** 'da çoklu oturum açmayı yapılandırmak Için, [Bamboo destek ekibi Için](mailto:support@techtime.co.nz), **uygulama Federasyon meta veri URL 'sini** easysso 'ya göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+1. Yönetici ayrıcalıklarına sahip Bamboo örneği için Easyssize oturum açın ve **Uygulamaları Yönet** bölümüne gidin.
+
+    ![Bamboo yapılandırması için EasySSO](./media/easysso-for-bamboo-tutorial/jira-admin-1.png)
+
+1. **Easysso**'a tıklayın.
+
+    ![Bamboo yapılandırması için EasySSO](./media/easysso-for-bamboo-tutorial/jira-admin-2.png)
+
+1. **SAML** seçeneğini belirleyin. Bu, sizi SAML yapılandırması bölümüne götürür.
+
+    ![Bamboo yapılandırması için EasySSO](./media/easysso-for-bamboo-tutorial/jira-admin-3.png)
+
+1. Üstteki **Sertifikalar** sekmesini seçin ve aşağıdaki ekran görüntülenir ve **Azure AD SSO** yapılandırmasının önceki adımlarında kaydettiğiniz **sertifika (base64)** veya **meta veri dosyasını** bulun. İlerlemeniz için aşağıdaki seçenekleri kullanabilirsiniz:
+
+    ![Bamboo yapılandırması için EasySSO](./media/easysso-for-bamboo-tutorial/jira-admin-4.png)
+
+    a. Bilgisayarınızda yerel dosyaya indirdiğiniz uygulama Federasyon **meta veri dosyasını** kullanın. **Yükleme** radyo düğmesini seçin ve işletim sisteminize özel karşıya yükleme dosyası iletişim kutusunu izleyin
+
+    **VEYA**
+
+    b. Dosyanın içeriğini (herhangi bir düz metin düzenleyicisinde) görmek ve panoya kopyalamak için uygulama Federasyon **meta verileri dosyasını** açın. **Giriş** seçeneğini belirleyin ve Pano içeriğini metin alanına yapıştırın.
+
+    **VEYA**
+
+    c. Tam el ile yapılandırma. Dosyanın içeriğini (herhangi bir düz metin düzenleyicisinde) görmek ve panoya kopyalamak için uygulama Federasyon **sertifikası 'nı (base64)** açın. **IDP belirteç Imzalama sertifikaları** metin alanına yapıştırın. Ardından **genel** sekmesine gidin ve bağlama URL **'SI** ve **varlık KIMLIĞI** alanlarını, **oturum açma URL** 'si ve daha önce kaydettiğiniz **Azure AD tanımlayıcısı** için ilgili değerlerle birlikte girin.
+
+1. Sayfanın alt kısmındaki **Kaydet** düğmesine tıklayın. Meta verilerin içeriğini veya sertifika dosyalarını yapılandırma alanlarına ayrıştırmış olursunuz. Bamboo yapılandırması için EasySSO tamamlanmıştır.
+
+1. En iyi test deneyimi için, **&** Me sekmesine gidin ve üzerinde **SAML oturum açma düğmesi** seçeneğini işaretleyin. Bu, özellikle Azure AD SAML tümleştirme uçtan uca test etmek üzere Bamboo oturum açma ekranı için ayrı bir düğmeyi etkinleştirir. Bu düğmeyi açık bırakabilir ve üretim modu için yerleşimini, rengini ve çevirisini de yapılandırabilirsiniz.
+
+    ![Bamboo yapılandırması için EasySSO](./media/easysso-for-bamboo-tutorial/jira-admin-5.png)
+
+    > [!NOTE]
+    > Herhangi bir sorununuz olması gerekir, lütfen [Easysso destek ekibine](mailto:support@techtime.co.nz)başvurun.
 
 ### <a name="create-easysso-for-bamboo-test-user"></a>Bamboo test kullanıcısı için EasySSO oluştur
 
-Bu bölümde, Bamboo için Easyste, Britta Simon adlı bir Kullanıcı oluşturulmuştur. Bamboo için EasySSO, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Bamboo için Easysde yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, Bamboo için EasySSO 'da B. Simon adlı bir Kullanıcı oluşturulur. Bamboo için EasySSO, varsayılan olarak **devre dışı** olan tam zamanında Kullanıcı sağlamayı destekler. Kullanıcı sağlamayı etkinleştirmek için EasySSO eklentisi yapılandırmasının Genel bölümünde oturum **açma başarılı olduğunda Kullanıcı oluşturma** seçeneğini açıkça denetlemeniz gerekir. Bir Kullanıcı Bamboo için Easysde yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+Bununla birlikte, Kullanıcı ilk oturum açmada otomatik Kullanıcı sağlamayı etkinleştirmek istemiyorsanız, kullanıcıların arka uç Kullanıcı dizinlerinde olması gerekir. bu nedenle, Bamboo örneği için LDAP veya Atlasduyma Crowd gibi kullanım için EasySSO.
+
+![Kullanıcı sağlama](./media/easysso-for-bamboo-tutorial/jira-admin-6.png)
+
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 

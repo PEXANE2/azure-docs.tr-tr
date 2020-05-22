@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a9009121c2dab0701d08f40de7c8f26777bc3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e3226ef8d739df6902a96cff336762ce4425c5de
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82187111"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740391"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-jira"></a>Öğretici: Jira için EasySSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -57,7 +57,6 @@ Jira 'nın Azure AD 'ye yönelik easysto tümleştirmesini yapılandırmak için
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Jira Için easysso** yazın.
 1. Sonuçlar panelinden **Jira Için Easysso** ' yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-jira"></a>Jira için EasySSO için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
@@ -101,7 +100,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakine ek olarak, Jira uygulaması için EasySSO, aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha fazla özniteliğe geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı |  |  Kaynak özniteliği|
+    | Name |  |  Kaynak özniteliği|
     | ---------------| --------------- | --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | | User. UserPrincipalName |
     | urn: OID: 0.9.2342.19200300.100.1.3 | | User. UserPrincipalName |
@@ -120,7 +119,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**' a tıklayın.
 
@@ -144,13 +143,50 @@ Bu bölümde, Jira için Easysa erişimi vererek Azure çoklu oturum açma özel
 
 ## <a name="configure-easysso-for-jira-sso"></a>Jira SSO için EasySSO yapılandırma
 
-**Jira** tarafında tek oturum açma 'yı yapılandırmak Için, [Jira destek ekibi Için](mailto:support@techtime.co.nz), **uygulama Federasyon meta veri URL 'sini** easysso 'ya göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+1. Yönetici ayrıcalıklarına sahip Atlasıris Jira Örneğinizde oturum açın ve **Uygulamaları Yönet** bölümüne gidin.
+
+    ![Uygulamaları Yönetme](./media/easysso-for-jira-tutorial/jira-admin-1.png)
+
+1. **Easysso**'a tıklayın.
+
+    ![Kolay SSO](./media/easysso-for-jira-tutorial/jira-admin-2.png)
+
+1. **SAML** seçeneğini belirleyin. Bu, sizi SAML yapılandırması bölümüne götürür.
+
+    ![SAML](./media/easysso-for-jira-tutorial/jira-admin-3.png)
+
+1. Üstteki **Sertifikalar** sekmesini seçin ve aşağıdaki ekran görüntülenir ve **Azure AD SSO** yapılandırmasının önceki adımlarında kaydettiğiniz **sertifika (base64)** veya **meta veri dosyasını** bulun. İlerlemeniz için aşağıdaki seçenekleri kullanabilirsiniz:
+
+    ![Meta veri URL 'SI](./media/easysso-for-jira-tutorial/jira-admin-4.png)
+
+    a. Bilgisayarınızda yerel dosyaya indirdiğiniz uygulama Federasyon **meta veri dosyasını** kullanın. **Yükleme** radyo düğmesini seçin ve işletim sisteminize özel karşıya yükleme dosyası iletişim kutusunu izleyin
+
+    **VEYA**
+
+    b. Dosyanın içeriğini (herhangi bir düz metin düzenleyicisinde) görmek ve panoya kopyalamak için uygulama Federasyon **meta verileri dosyasını** açın. **Giriş** seçeneğini belirleyin ve Pano içeriğini metin alanına yapıştırın.
+
+    **VEYA**
+
+    c. Tam el ile yapılandırma. Dosyanın içeriğini (herhangi bir düz metin düzenleyicisinde) görmek ve panoya kopyalamak için uygulama Federasyon **sertifikası 'nı (base64)** açın. **IDP belirteç Imzalama sertifikaları** metin alanına yapıştırın. Ardından **genel** sekmesine gidin ve bağlama URL **'SI** ve **varlık KIMLIĞI** alanlarını, **oturum açma URL** 'si ve daha önce kaydettiğiniz **Azure AD tanımlayıcısı** için ilgili değerlerle birlikte girin.
+
+1. Sayfanın alt kısmındaki **Kaydet** düğmesine tıklayın. Meta verilerin içeriğini veya sertifika dosyalarını yapılandırma alanlarına ayrıştırmış olursunuz. Jira yapılandırması tamamlandıktan sonra EasySSO.
+
+1. En iyi test deneyimi için, **&** Me sekmesine gidin ve üzerinde **SAML oturum açma düğmesi** seçeneğini işaretleyin. Bu, özellikle Azure AD SAML tümleştirme uçtan uca test etmek için Jira oturum açma ekranında ayrı bir düğmeye olanak sağlar. Bu düğmeyi açık bırakabilir ve üretim modu için yerleşimini, renk ve çevirisini de yapılandırabilirsiniz.
+
+    ![& göz atın](./media/easysso-for-jira-tutorial/jira-admin-5.png)
+
+    > [!NOTE]
+    > Herhangi bir sorununuz olması gerekir, lütfen [Easysso destek ekibine](mailto:support@techtime.co.nz)başvurun.
 
 ### <a name="create-easysso-for-jira-test-user"></a>Jira test kullanıcısı için EasySSO oluştur
 
-Bu bölümde, Jira için EasySSO 'da Britta Simon adlı bir Kullanıcı oluşturulmuştur. Jira için EasySSO, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Jira için EasySSO 'da zaten bir kullanıcı yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, Jira içinde B. Simon adlı bir Kullanıcı oluşturulur. Jira için EasySSO, varsayılan olarak **devre dışı** olan tam zamanında Kullanıcı sağlamayı destekler. Kullanıcı sağlamayı etkinleştirmek için EasySSO eklentisi yapılandırmasının Genel bölümünde oturum **açma başarılı olduğunda Kullanıcı oluşturma** seçeneğini açıkça denetlemeniz gerekir. Bir Kullanıcı Jira 'da zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+Bununla birlikte, Kullanıcı ilk oturum açmada otomatik Kullanıcı sağlamayı etkinleştirmek istemiyorsanız, kullanıcıların, LDAP veya Atlasırwd gibi, arka uç Kullanıcı dizinlerinde, Jira örneği tarafından kullanılması gerekir.
+
+![Kullanıcı sağlama](./media/easysso-for-jira-tutorial/jira-admin-6.png)
+
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
@@ -169,4 +205,3 @@ Access panel 'de Jira kutucuğunun her ne için Easysa 'ya tıkladığınızda, 
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Gelişmiş görünürlük ve denetimlerle Jira için EasySSO koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

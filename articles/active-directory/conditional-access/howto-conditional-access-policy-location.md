@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34b29ceadaaf85e69d1214039fa1b563ed21a77d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10b0f86447436b8bf08874daf472b1223bff7d0a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295179"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737665"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Koşullu erişim: konuma göre erişimi engelleyin
 
-Koşullu erişimde konum koşulu ile, bir kullanıcının ağ konumuna bağlı olarak bulut uygulamalarınıza erişimi denetleyebilirsiniz. Konum koşulu genellikle kuruluşunuzun trafiği bildiği ülkelerden gelen erişimi engellemek için kullanılır.
+Koşullu erişimde konum koşulu ile, bir kullanıcının ağ konumuna bağlı olarak bulut uygulamalarınıza erişimi denetleyebilirsiniz. Konum koşulu, kuruluşunuzun trafiği bildiği ülkelerden/bölgelerden erişimi engellemek için yaygın olarak kullanılır.
 
 ## <a name="define-locations"></a>Konumları tanımlama
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu**erişimi > **konumuna gidin.**
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**  >  **konumuna gidin**.
 1. **Yeni konum**' ı seçin.
 1. Konumunuza bir ad verin.
 1. Bu konumu veya **ülkeleri/bölgeleri**oluşturan belirli dışarıdan erişilebilir IPv4 adresi aralıklarını biliyorsanız, **IP aralıklarını** seçin.
@@ -38,20 +38,20 @@ Koşullu erişim 'deki konum koşulu hakkında daha fazla bilgi için, [Azure Ac
 ## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemleri** > **dahil**, **tüm bulut uygulamaları**' nı seçin ve **bitti**' yi seçin.
-1. **Koşulların** > bulunduğu**konum**.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin ve **bitti**' yi seçin.
+1. **Koşulların**bulunduğu  >  **konum**.
    1. **Yapılandır** 'ı **Evet** olarak ayarla
    1. **Seçili konumların** seçimini **Ekle**
    1. Kuruluşunuz için oluşturduğunuz engellenen konumu seçin.
-   1.  > **Done**Bitti >  **bitti ' ye****tıklayın.**
-1. **Koşullar** > **istemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi seçin.
-1. **Erişim denetimleri** > **bloğu**altında, **Seç**' i seçin.
+   1. Bitti **bitti ' ye**tıklayın  >  **Done**  >  **Done**.
+1. **Koşullar**  >  **istemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi seçin.
+1. **Erişim denetimleri**  >  **bloğu**altında, **Seç**' i seçin.
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 

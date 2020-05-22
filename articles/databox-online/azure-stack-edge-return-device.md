@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: dfd9c949767d3dc8e63e3f15ba12641f27d46b80
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569361"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743633"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızı döndürme veya değiştirme
 
@@ -47,7 +47,7 @@ Yerel Web Kullanıcı arabirimini kullanarak cihazınızı sıfırlamak için a�
 
 Sıfırlama, verileri cihaz veri disklerinin dışına siler. Bu işlem, cihazınızdaki veri miktarına bağlı olarak yaklaşık 30-40 dakika sürer.
 
-Alternatif olarak, cihazın PowerShell arabirimine bağlanın ve veri disklerinden verileri silmek için `Reset-HcsAppliance` cmdlet 'ini kullanın. Daha fazla bilgi için bkz. [cihazınızı sıfırlama](azure-stack-edge-connect-powershell-interface.md#reset-your-device).
+Alternatif olarak, cihazın PowerShell arabirimine bağlanın ve `Reset-HcsAppliance` veri disklerinden verileri silmek için cmdlet 'ini kullanın. Daha fazla bilgi için bkz. [cihazınızı sıfırlama](azure-stack-edge-connect-powershell-interface.md#reset-your-device).
 
 > [!NOTE]
 > - Yeni bir cihaza değiş tokuş yapıyorsanız veya yükseltiyorsanız, Cihazınızı yalnızca yeni cihazı aldıktan sonra sıfırlamanız önerilir.
@@ -74,7 +74,7 @@ Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
 5. Paket üzerinde Azure 'dan aldığınız sevkiyat etiketini AFBir şekilde düzeltir.
 6. Bölgenizdeki taşıyıcıdan bir kargo toplama randevusu alın. Cihaz bıze döndürülürken, taşıyıcınızın UPS veya FedEx olması mümkündür. KESINTISIZ bir çekme planı zamanlamak için:
 
-    1. Yerel UPS (ülkeye özel ücretsiz numara) çağırın.
+    1. Yerel UPS şubesini (ülkeye/bölgeye özel ücretsiz hatlar) arayın.
     2. Çağrınızda, basılı etiketinizde gösterildiği gibi ters Sevkiyat izleme numarasını tırnak içine edin.
     3. İzleme numarası tırnak işareti yoksa, UPS toplama sırasında ek ücret ödemeniz gerekir.
 

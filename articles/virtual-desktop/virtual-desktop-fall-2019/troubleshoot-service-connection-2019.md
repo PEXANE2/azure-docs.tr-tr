@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 03/30/2020
+ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 01aff34839cc7385834468a08f30696efe84561f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 356506224a0273eeea65f0f901fbc79c338498d2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614778"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743595"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows sanal masaüstü hizmeti bağlantıları
 
@@ -39,45 +39,6 @@ Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 Kullanıcının doğru kimlik bilgileriyle oturum açmasını onaylayın.
 
 Web istemcisi kullanılıyorsa, önbelleğe alınmış kimlik bilgileri sorunları olduğunu doğrulayın.
-
-## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Windows 10 Enterprise çoklu oturum sanal makineleri yanıt vermez
-
-Bir sanal makine yanıt vermiyor ve RDP üzerinden erişemiyorsanız, konak durumunu denetleyerek tanılama özelliğiyle sorun gidermeniz gerekir.
-
-Konak durumunu denetlemek için şu cmdlet 'i çalıştırın:
-
-```powershell
-Get-RdsSessionHost -TenantName $TenantName -HostPoolName $HostPool | ft SessionHostName, LastHeartBeat, AllowNewSession, Status
-```
-
-Ana bilgisayar durumu ise `NoHeartBeat`, bu, VM 'nin yanıt vermediği ve aracının Windows sanal masaüstü hizmetiyle iletişim kurmayacağı anlamına gelir.
-
-```powershell
-SessionHostName          LastHeartBeat     AllowNewSession    Status 
----------------          -------------     ---------------    ------ 
-WVDHost1.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost2.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost3.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost4.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost5.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-```
-
-Nosinyal durumunu onarmak için yapabileceğiniz birkaç nokta vardır.
-
-### <a name="update-fslogix"></a>FSLogix 'i Güncelleştir
-
-FSLogix 'niz güncel değilse, özellikle frxdrvvt. sys ' nin 2.9.7205.27375 sürümü varsa, kilitlenme olabilir. [FSLogix ' i en son sürüme güncelleştirdiğinizden](https://go.microsoft.com/fwlink/?linkid=2084562)emin olun.
-
-### <a name="disable-bgtaskregistrationmaintenancetask"></a>BgTaskRegistrationMaintenanceTask devre dışı bırak
-
-FSLogix ' i güncelleştirmek işe yaramazsa, bir haftalık bakım görevi sırasında bir Bırv bileşeninin sistem kaynaklarını tüketme sorunu olabilir. Aşağıdaki iki yöntemden biriyle BgTaskRegistrationMaintenanceTask 'yi devre dışı bırakarak bakım görevini geçici olarak devre dışı bırakın:
-
-- Başlat menüsüne gidin ve **Görev Zamanlayıcı**arayın. **Görev Zamanlayıcı Kitaplığı** > **Microsoft** > **Windows**Windows > **brokerınfrastructure**' a gidin. **BgTaskRegistrationMaintenanceTask**adlı bir görev arayın. Bunu bulduğunuzda, sağ tıklayın ve açılan menüden **devre dışı bırak** ' ı seçin.
-- Yönetici olarak bir komut satırı menüsünü açın ve şu komutu çalıştırın:
-    
-    ```cmd
-    schtasks /change /tn "\Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask" /disable 
-    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

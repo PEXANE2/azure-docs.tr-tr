@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73175829"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737648"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>What If aracını kullanarak koşullu erişim sorunlarını giderme
 
 Koşullu erişim 'teki [What If aracı](what-if-tool.md) , bir ilkenin belirli bir durumdaki bir kullanıcıya veya bir ilkenin bilinen bir durumda uygulanabileceğini anlamaya çalışırken etkili olur.
 
-What If Aracı, **Azure Portal** > **Azure Active Directory** > **koşullu erişim** > **What If**bulunur.
+What If Aracı, **Azure Portal**  >  **Azure Active Directory**  >  **koşullu erişim**  >  **What If**bulunur.
 
 ![Koşullu erişim What If aracı varsayılan durumda](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
 
@@ -37,7 +37,7 @@ Aşağıdaki ek bilgiler isteğe bağlıdır, ancak belirli durumlar için kapsa
 
 * Bulut uygulamaları veya eylemleri
 * IP adresi 
-* Ülke
+* Ülke/Bölge
 * Cihaz platformu
 * İstemci uygulamaları (Önizleme)
 * Cihaz durumu (Önizleme) 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56622ee2c014bd8dbca7c61ec00b927c56f63a40
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617194"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740408"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Application Gateway yüksek trafik desteği
 
@@ -51,7 +51,7 @@ Bu örnek, ortalama CU kullanımının %75 ' e ulaşıldığında bir uyarı aya
 > Olası trafik artışlarına ne kadar duyarlı olduğunuza bağlı olarak, uyarının daha düşük veya daha yüksek bir kullanım yüzdesi olarak gerçekleşmesini sağlayabilirsiniz.
 
 ## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>Saldırıları durdurmak için bölge sınırlaması ve bot koruması ile WAF 'yi ayarlama
-Uygulamanızın önünde ek bir güvenlik katmanı istiyorsanız WAF özellikleri için Application Gateway WAF_v2 SKU 'SU kullanın. V2 SKU 'sunu yalnızca belirli bir ülke veya ülkelerden uygulamalarınıza erişime izin verecek şekilde yapılandırabilirsiniz. Bir WAF özel kuralını, coğrafi konum temelinde trafiği açıkça izin verecek veya engelleyecek şekilde ayarlayabilirsiniz. Daha fazla bilgi için bkz. [bölge için özel kurallar](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) ve [PowerShell aracılığıyla Application Gateway WAF_v2 SKU 'sunda özel kurallar yapılandırma](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
+Uygulamanızın önünde ek bir güvenlik katmanı istiyorsanız WAF özellikleri için Application Gateway WAF_v2 SKU 'SU kullanın. V2 SKU 'sunu yalnızca belirli bir ülke/bölge veya ülkelerden/bölgelerden uygulamalarınıza erişime izin verecek şekilde yapılandırabilirsiniz. Bir WAF özel kuralını, coğrafi konum temelinde trafiği açıkça izin verecek veya engelleyecek şekilde ayarlayabilirsiniz. Daha fazla bilgi için bkz. [bölge için özel kurallar](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) ve [PowerShell aracılığıyla Application Gateway WAF_v2 SKU 'sunda özel kurallar yapılandırma](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 
 Bilinen kötü botları engellemek için bot korumasını etkinleştirin. Bu, uygulamanıza yönelik trafik miktarını azaltmalıdır. Daha fazla bilgi için bkz. [set up yönergeleri ile bot koruması](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 

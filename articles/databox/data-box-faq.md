@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438623"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743006"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Sık Sorulan Sorular
 
@@ -166,7 +166,7 @@ A.  To speed up the copy process:
 
 - Create a local VHDx on fast storage or create an empty VHD on the HDD/SSD (slower).
 - Mount it to a VM.
-- Copy files to the VM’s disk.-->
+- Copy files to the VM's disk.-->
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>S. Data Box ile birden fazla depolama hesabı kullanabilir miyim?
@@ -194,8 +194,8 @@ Veri kopyalama işlemi tamamlandıktan sonra, cihazınızı döndürmek için a�
 3. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
 4. [Azure Data Box işlemler ekibine](mailto:adbops@microsoft.com) e-posta gönderin ve daha önce kaydettiğiniz kodu sağlayın. Cihazın nereden ve ne zaman kapatılabileceği hakkında bilgi verir.
 
-### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>S. Data Box Cihazlarım, Sevkiyat sırasında ülke kenarlıkları arasında çapraz mi olacak?
-A. Tüm Data Box cihazları hedefle aynı ülke içinden gönderilir ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB), cihazların herhangi bir AB ülkesine ve bu ülkeye nereden gönderdiklerinden oluşan siparişler içindir. Bu hem Data Box hem de Data Box Heavy cihazları için geçerlidir.
+### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>S. Data Box Cihazlarım, Sevkiyat sırasında ülke/bölge kenarlıklarını ister misiniz?
+A. Tüm Data Box cihazları, hedefle aynı ülke/bölge içinden gönderilir ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB), cihazların herhangi bir AB ülkesine/bölgesine nereden gönderdiklerinden oluşan siparişler içindir. Bu hem Data Box hem de Data Box Heavy cihazları için geçerlidir.
 
 ### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>S. ABD Doğu bir Data Box sipariş ediyorum, ancak ABD Batı bir konumdan gelen bir cihaz aldım. Cihazı nereye döndürmem gerekir?
 A. Data Box bir cihazı mümkün olduğunca hızlı bir şekilde almaya çalışırız. Depolama hesabınızın konumuna en yakın bir veri merkezinden sevkıyatın sevk edeceğini önceliklendiriyoruz, ancak kullanılabilir envanterine sahip olan herhangi bir Azure veri merkezinden cihaz sevk edecek. Data Box, Sevkiyat etiketinde gösterildiği gibi, gönderildiği konuma döndürülmelidir.
@@ -221,7 +221,7 @@ A. Cihazınız önaçılmadığından, Azure portal sırasıyla sıraya gidin. C
 
 ## <a name="verify-and-upload"></a>Doğrulama ve yükleme
 
-### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>S. Data Box'ı geri gönderdikten sonra verilerime Azure'da nasıl erişebilirim? 
+### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>S. Data Box geri gönderdikten sonra Azure 'daki verilerinize ne kadar yakında erişebilirim? 
 A.  **Veri Kopyalama** işlemi için sipariş durumu **Tamamlandı** olarak değiştiğinde verilerinize doğrudan erişim sağlayabilirsiniz.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>S. Yükleme sonrasında verilerim Azure'da hangi konumda bulunur?
@@ -258,7 +258,7 @@ A.  Koruma zinciri desteği için aşağıdaki rapor türleri sunulur:
 - Veriler Azure depolama hesabınıza kopyalandıktan sonra Data Box cihazının temizlenmesi (NIST 800 88R1 standartlarına göre).
 
 ### <a name="are-the-carrier-tracking-logs-from-ups-available"></a>Taşıyıcı izleme günlükleri (UPS 'lerden) kullanılabilir mi? 
-A.  Taşıyıcı takip günlükleri, Data Box sipariş geçmişine kaydedilir. Bu rapor cihaz Azure veri merkezine iade edildikten ve cihaz üzerindeki veriler silindikten sonra sunulur. Daha erken ihtiyaç duymanız durumunda taşıyıcının web sitesine gidip sipariş takip numarasıyla takip bilgilerine ulaşabilirsiniz.
+A.  Taşıyıcı takip günlükleri, Data Box sipariş geçmişine kaydedilir. Bu rapor cihaz Azure veri merkezine iade edildikten ve cihaz üzerindeki veriler silindikten sonra sunulur. Anında gerek için, sipariş izleme numarası ile doğrudan taşıyıcının Web sitesine gidebilir ve izleme bilgilerini alabilirsiniz.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Data Box'ı Azure veri merkezine kendim götürebilir miyim? 
 A.  Hayır. Şu anda Azure veri merkezi, müşterilerin veya UPS dışındaki taşıyıcılar arasından Data Box teslimini kabul etmez.
