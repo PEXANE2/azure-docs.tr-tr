@@ -1,0 +1,6 @@
+- name: Sıfırdan Unity projesi ayarlama
+  href: project-setup.md
+- name: Unity’de uzak varlıklarla çalışma
+  href: working-with-remote-entities.md
+- name: Ortamı ve malzemeleri değiştirme
+  href: changing-environment-and-materials.md
