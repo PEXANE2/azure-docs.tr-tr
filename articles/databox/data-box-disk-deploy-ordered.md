@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 91177c67c9d24f73934381704bca8259af31adca
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e7ab15749ccd4ef2808e9cbb362196e38e3d7f4b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858624"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746091"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Öğretici: Azure Data Box Disk sıralama
 
@@ -23,6 +23,7 @@ Azure Data Box Disk, şirket içi verilerinizi Azure'a hızlı, kolay ve güveni
 Bu öğreticide Azure Data Box Disk siparişi verme adımları anlatılmaktadır. Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
+>
 > * Data Box Disk sipariş etme
 > * Siparişi izleme
 > * Siparişi iptal etme
@@ -38,21 +39,22 @@ Dağıtmadan önce, Data Box hizmeti ve Data Box Disk için aşağıdaki yapıla
 ### <a name="for-device"></a>Cihaz için
 
 Başlamadan önce aşağıdakilerden emin olun:
-- Verileri kopyalayabilmeniz için kullanabileceğiniz bir istemci bilgisayarınızın olması gerekir. İstemci bilgisayarınızda:
-    - [Desteklenen bir işletim sistemi](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) çalıştırılmalıdır.
-    - Windows istemciyse diğer [gerekli yazılımlar](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) yüklenmiş olmalıdır.  
+
+* Verileri kopyalayabilmeniz için kullanabileceğiniz bir istemci bilgisayarınızın olması gerekir. İstemci bilgisayarınızda:
+  * [Desteklenen bir işletim sistemi](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) çalıştırılmalıdır.
+  * Windows istemciyse diğer [gerekli yazılımlar](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) yüklenmiş olmalıdır.  
 
 ## <a name="order-data-box-disk"></a>Data Box Disk sipariş etme
 
 Oturum açmak için:
 
-- Bu URL 'deki Azure portal: https://portal.azure.com Order Data Box disk.
-- Ya da bu URL 'de Azure Kamu Portalı: https://portal.azure.us. Daha fazla ayrıntı için [portalı kullanarak Azure Kamu 'Ya bağlanma](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)konusuna gidin.
+* Bu URL 'deki Azure portal: https://portal.azure.com order Data Box disk.
+* Ya da bu URL 'de Azure Kamu Portalı: https://portal.azure.us . Daha fazla ayrıntı için [portalı kullanarak Azure Kamu 'Ya bağlanma](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)konusuna gidin.
 
 Data Box Disk sıralamak için aşağıdaki adımları uygulayın.
 
 1. Portalın sol üst köşesinde **+ Kaynak oluştur**'a tıklayın ve *Azure Data Box* aratın. **Azure Data Box**'a tıklayın.
-    
+
    ![Azure Data Box arama 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
 2. **Oluştur**' a tıklayın.
@@ -65,15 +67,14 @@ Data Box Disk sıralamak için aşağıdaki adımları uygulayın.
     |---|---|
     |Abonelik|Data Box hizmetinin etkinleştirildiği aboneliği seçin.<br> Abonelik fatura hesabınıza bağlıdır. |
     |Aktarım türü| Azure'e İçeri Aktarma|
-    |Kaynak ülke | Verilerinizin bulunduğu ülkeyi/bölgeyi seçin.|
+    |Kaynak ülke/bölge | Verilerinizin bulunduğu ülkeyi/bölgeyi seçin.|
     |Hedef Azure bölgesi|Verileri aktarmak istediğiniz Azure bölgesini seçin.|
-
   
-5.  **Data Box Disk**'i seçin. Çözümün 5 disklik tek bir sipariş için maksimum kapasitesi 35 TB olarak belirlenmiştir. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
+4. **Data Box Disk**'i seçin. Çözümün 5 disklik tek bir sipariş için maksimum kapasitesi 35 TB olarak belirlenmiştir. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
 
      ![Data Box Disk seçeneğini belirleyin](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
-6.  **Sipariş** bölümünde **Sipariş ayrıntıları**'nı belirtin. Aşağıdaki bilgileri girin veya seçin.
+5. **Sipariş** bölümünde **Sipariş ayrıntıları**'nı belirtin. Aşağıdaki bilgileri girin veya seçin.
 
     |Ayar|Değer|
     |---|---|
@@ -98,33 +99,34 @@ Data Box Disk sıralamak için aşağıdaki adımları uygulayın.
 
     Yönetilen diskler için belirtilen depolama hesabı, hazırlama depolama hesabı olarak kullanılır. Data Box hizmeti, VHD 'leri hazırlama depolama hesabına yükler ve ardından bunları yönetilen disklere dönüştürür ve kaynak gruplarına gider. Daha fazla bilgi için bkz. [Azure'a veri yüklemeyi doğrulama](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure).
 
-13. **İleri**’ye tıklayın.
+6. **İleri**’ye tıklayın.
 
     ![Sipariş ayrıntılarını belirtin](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
-14. **Teslimat adresi** sekmesinde adınızı, soyadınızı, şirket adını, posta adresini ve geçerli bir telefon numarası girin. **Adresi doğrula**'ya tıklayın. Hizmet, teslimat adresinde hizmetin kullanılabilirlik durumunu doğrular. Hizmet belirtilen teslimat adresinde kullanılabilir durumdaysa bu konuda bir bildirim gönderilir. Japonya, Singapur, Kore ve Batı Avrupa hizmetini kullanan müşteriler, siparişi yerleştirirken kendinden yönetilen kargo Seçme seçeneğine sahiptir. Sipariş başarıyla yerleştirildikten sonra, belirtilen Azure veri merkezinde cihazı çekme yönergeleriyle bir e-posta alırsınız.
+7. **Teslimat adresi** sekmesinde adınızı, soyadınızı, şirket adını, posta adresini ve geçerli bir telefon numarası girin. **Adresi doğrula**'ya tıklayın. Hizmet, teslimat adresinde hizmetin kullanılabilirlik durumunu doğrular. Hizmet belirtilen teslimat adresinde kullanılabilir durumdaysa bu konuda bir bildirim gönderilir.
+
+   Sipariş işlendikten sonra bir e-posta bildirimi alırsınız. Kendi kendine yönetilen kargo hakkında daha fazla bilgi için bkz. [otomatik olarak yönetilen gönderi kullanma](data-box-disk-portal-customer-managed-shipping.md).
 
     ![Teslimat adresi belirtme](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
-15. **Bildirim ayrıntıları** sayfasında e-posta adresi belirtin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir. 
+8. **Bildirim ayrıntıları** sayfasında e-posta adresi belirtin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.
 
     Grup yöneticisinin ayrılması durumunda da bildirim almaya devam etmek için bir grup e-postası kullanmanız önerilir.
 
-16. **Özet** sayfasında sipariş, iletişim, bildirim ve gizlilik koşullarıyla ilgili bilgileri gözden geçirin. Gizlilik koşullarını kabul ettiğinizi belirten kutuyu işaretleyin.
+9. **Özet** sayfasında sipariş, iletişim, bildirim ve gizlilik koşullarıyla ilgili bilgileri gözden geçirin. Gizlilik koşullarını kabul ettiğinizi belirten kutuyu işaretleyin.
 
-17. **Sipariş**'e tıklayın. Siparişin oluşturulması birkaç dakika sürer.
+10. **Sipariş**'e tıklayın. Siparişin oluşturulması birkaç dakika sürer.
 
- 
 ## <a name="track-the-order"></a>Siparişi izleme
 
 Siparişi verdikten sonra durumunu Azure portalından takip edebilirsiniz. Siparişinize gidin ve durumunu görüntülemek için **Genel bakış** sayfasını inceleyin. Portalda işin durumu **Sipariş edildi** olarak görünür.
 
-![Data Box Disk durumu, sipariş verildi](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
+![Data Box Disk durumu, sipariş verildi](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png)
 
 Diskler kullanılabilir durumda değilse bir bildirim gönderilir. Diskler kullanılabilir durumdaysa Microsoft tarafından gönderilecek diskler belirlenir ve disk paketi hazırlanır. Diskler hazırlanırken şu eylemler gerçekleştirilir:
 
-- Diskler AES-128 BitLocker şifrelemesi kullanılarak şifrelenir.  
-- Diskler yetkisiz erişimi önlemek için kilitlenir.
-- Bu işlem sırasında disklerin kilidini açan destek anahtarı oluşturulur.
+* Diskler AES-128 BitLocker şifrelemesi kullanılarak şifrelenir.  
+* Diskler yetkisiz erişimi önlemek için kilitlenir.
+* Bu işlem sırasında disklerin kilidini açan destek anahtarı oluşturulur.
 
 Disklerin hazırlanması tamamlandığında portalda sipariş durumu **İşlenen** olarak değişir.
 
@@ -134,18 +136,18 @@ Microsoft ardından disklerinizi hazırlar ve bölgeye uygun gönderim şirketin
 
 Bu siparişi iptal etmek için Azure portalında **Genel bakış**'a gidin ve komut çubuğundan **İptal**'e tıklayın.
 
-Yalnızca diskler sipariş edildikten ve sipariş gönderim için işleme aşamasındayken iptal edebilirsiniz. Sipariş işleme alındıktan sonra iptal edemezsiniz.
+Yalnızca diskler sipariş edildiğinde iptal edebilir ve sipariş sevkiyat için işlenir. Sipariş işleme alındıktan sonra iptal edemezsiniz.
 
 ![Siparişi iptal etme](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
 İptal edilen bir siparişi silmek için **Genel bakış**'a gidin ve komut çubuğundan **Sil**'e tıklayın.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 
 > [!div class="checklist"]
+>
 > * Data Box Disk sipariş etme
 > * Siparişi izleme
 > * Siparişi iptal etme

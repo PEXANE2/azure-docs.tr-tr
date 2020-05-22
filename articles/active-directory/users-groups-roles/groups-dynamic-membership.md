@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: ab6be101e33fb29f96e2e5ea0fd2e79aa1cf0d09
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582894"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744686"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -54,7 +54,7 @@ Daha fazla adım adım yönergeler için bkz. [dinamik grup oluşturma veya gün
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Tek bir ifade için kural sözdizimi
 
-Tek bir ifade, üyelik kuralının en basit biçimidir ve yalnızca yukarıda belirtilen üç bölümden oluşur. Tek bir ifade içeren bir kural şuna benzer: `Property Operator Value`, burada özelliğin sözdizimi Object. Property adıdır.
+Tek bir ifade, üyelik kuralının en basit biçimidir ve yalnızca yukarıda belirtilen üç bölümden oluşur. Tek bir ifade içeren bir kural şuna benzer: `Property Operator Value` , burada özelliğin sözdizimi Object. Property adıdır.
 
 Aşağıda, tek bir ifadeyle doğru şekilde oluşturulmuş bir üyelik kuralına örnek verilmiştir:
 
@@ -69,7 +69,7 @@ Parantezler tek bir ifade için isteğe bağlıdır. Üyelik kuralınız gövdes
 Bir grubu Kullanıcı veya cihazlarla otomatik olarak dolduran bir üyelik kuralı, doğru veya yanlış bir sonuç elde eden bir ikili ifadedir. Basit bir kuralın üç bölümü şunlardır:
 
 - Özellik
-- İşleç
+- Operatör
 - Değer
 
 İfade içindeki parçaların sırası, söz dizimi hatalarından kaçınmak için önemlidir.
@@ -118,16 +118,16 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | streetAddress |Herhangi bir dize değeri veya *null* |(User. streetAddress-EQ "değer") |
 | surname |Herhangi bir dize değeri veya *null* |(User. soyad-EQ "Value") |
 | telephoneNumber 'dır |Herhangi bir dize değeri veya *null* |(User. telephoneNumber-EQ "değer") |
-| usageLocation |İki kodlu ülke kodu |(User. usageLocation-EQ "US") |
-| userPrincipalName |Herhangi bir dize değeri |(User. userPrincipalName-EQ "alias@domain") |
+| usageLocation |İki veya daha fazla ülke/bölge kodu |(User. usageLocation-EQ "US") |
+| userPrincipalName |Herhangi bir dize değeri |(User. userPrincipalName-EQ " alias@domain ") |
 | userType |üye Konuk *null* |(User. userType-EQ "üye") |
 
 ### <a name="properties-of-type-string-collection"></a>Dize koleksiyonu türü özellikleri
 
 | Özellikler | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
-| Diğer postalar |Herhangi bir dize değeri |(User. Otherpostalarını-"alias@domain" içerir) |
-| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-"SMTP: alias@domain" içerir) |
+| Diğer postalar |Herhangi bir dize değeri |(User. Otherpostalarını-" alias@domain " içerir) |
+| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-"SMTP: alias@domain " içerir) |
 
 Cihaz kuralları için kullanılan özellikler için bkz. [Cihazlar Için kurallar](#rules-for-devices).
 
@@ -135,7 +135,7 @@ Cihaz kuralları için kullanılan özellikler için bkz. [Cihazlar Için kurall
 
 Aşağıdaki tabloda, tek bir ifade için desteklenen tüm işleçler ve bunların sözdizimi listelenmektedir. İşleçler, kısa çizgi (-) öneki ile veya bu önek olmadan kullanılabilir.
 
-| İşleç | Sözdizimi |
+| Operatör | Söz dizimi |
 | --- | --- |
 | Eşit değildir |-ne |
 | Eşittir |-EQ |
@@ -145,7 +145,7 @@ Aşağıdaki tabloda, tek bir ifade için desteklenen tüm işleçler ve bunlar�
 | Contains |-içerir |
 | Eşleşmiyor |-notMatch |
 | Eşleştirme |-Match |
-| İçindeki | -ın |
+| İçinde | -ın |
 | Not ın | -Notın |
 
 ### <a name="using-the--in-and--notin-operators"></a>-İn ve-Notın işleçlerini kullanma
@@ -185,8 +185,8 @@ Bir ifade içinde bir değer belirtirken, hataları önlemek için doğru sözdi
 
 * Değer bir dize değilse çift tırnak işaretleri isteğe bağlıdır.
 * Dize ve Regex işlemleri büyük/küçük harfe duyarlı değildir.
-* Bir dize değeri çift tırnak içeriyorsa, her iki tırnak de \` karakter kullanılarak atlanmalıdır, örneğin, "Sales" değeri olduğunda, Kullanıcı \`. departmanı\`-EQ "Sales" uygun sözdizimidir.
-* Değer olarak null kullanarak null denetimleri de yapabilirsiniz, örneğin, `user.department -eq null`.
+* Bir dize değeri çift tırnak içeriyorsa, her iki tırnak de karakter kullanılarak atlanmalıdır \` , örneğin, "Sales" değeri olduğunda, Kullanıcı. departmanı-EQ \` "Sales \` " uygun sözdizimidir.
+* Değer olarak null kullanarak null denetimleri de yapabilirsiniz, örneğin, `user.department -eq null` .
 
 ### <a name="use-of-null-values"></a>Null değer kullanımı
 
@@ -252,7 +252,7 @@ Birden çok değerli özellikler aynı türdeki nesne koleksiyonlarıdır. -Any 
 | Özellikler | Değerler | Kullanım |
 | --- | --- | --- |
 | assignedPlans | Koleksiyondaki her nesne şu dize özelliklerini kullanıma sunar: capabilityStatus, Service, Serviceplanıd |User. assignedPlans-any (assignedPlan. Serviceplanıd-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-ve assignedPlan. capabilityStatus-EQ "Enabled") |
-| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any (\_ -Contains "contoso")) |
+| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any ( \_ -Contains "contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>-Any ve-All işleçlerini kullanma
 
@@ -279,11 +279,11 @@ Aşağıdaki ifade, Intune hizmetiyle ilişkili herhangi bir hizmet planına sah
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore-_-syntax"></a>Alt çizgi (\_) sözdizimini kullanma
+### <a name="using-the-underscore-_-syntax"></a>Alt çizgi ( \_ ) sözdizimini kullanma
 
-Alt çizgi (\_) sözdizimi, dinamik bir gruba kullanıcı veya cihaz eklemek için çok değerli dize koleksiyonu özelliklerinden birindeki belirli bir değerin oluşumlarıyla eşleşir. -Any veya-All işleçleri ile kullanılır.
+Alt çizgi ( \_ ) sözdizimi, dinamik bir gruba kullanıcı veya cihaz eklemek için çok değerli dize koleksiyonu özelliklerinden birindeki belirli bir değerin oluşumlarıyla eşleşir. -Any veya-All işleçleri ile kullanılır.
 
-Burada, User. proxyAddress 'a göre üye eklemek\_için bir kuralda alt çizgi () kullanılmasına örnek verilmiştir (Kullanıcı. otherpostalarda aynı şekilde çalışmaktadır). Bu kural, "contoso" içeren proxy adresine sahip tüm kullanıcıları gruba ekler.
+Burada, \_ User. ProxyAddress 'a göre üye eklemek için bir kuralda alt çizgi () kullanılmasına örnek verilmiştir (Kullanıcı. Otherpostalarda aynı şekilde çalışmaktadır). Bu kural, "contoso" içeren proxy adresine sahip tüm kullanıcıları gruba ekler.
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
@@ -347,7 +347,7 @@ Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kuralları
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-[Özel uzantı özellikleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) şirket Içi WINDOWS Server ad 'den veya bağlı bir SaaS uygulamasından eşitlenir ve şu biçimdedir `user.extension_[GUID]_[Attribute]`:
+[Özel uzantı özellikleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) şirket Içi WINDOWS Server ad 'den veya bağlı bir SaaS uygulamasından eşitlenir ve şu biçimdedir `user.extension_[GUID]_[Attribute]` :
 
 * [GUID], Azure AD 'de özelliği oluşturan uygulama için Azure AD 'de benzersiz tanıtıcıdır
 * [Attribute], oluşturulduğu şekliyle özelliğin adıdır

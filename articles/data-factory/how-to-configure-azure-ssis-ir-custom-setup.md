@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: ab2ba31d6b712bd3399bc8bf5b491337d462dac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2a5928d8326c4a0628ebc1bfb7eec3cd20f9254
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606214"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747514"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için kurulumu özelleştirme
 
@@ -42,7 +42,7 @@ Aşağıdaki sınırlamalar yalnızca standart özel kurulumların için geçerl
 
 - Derlemeleri genel derleme önbelleği 'ne (GAC) yüklemek için betiğinizdeki *Gacutil. exe* ' yi kullanmak istiyorsanız, özel kurulumlarınızın bir parçası olarak *Gacutil. exe* ' yi sağlamanız gerekir. Ya da, daha sonra "yönergeler" bölümünde ele alınan *genel önizleme* kapsayıcımız içinde sunulan kopyayı kullanabilirsiniz.
 
-- Betiğinizdeki bir alt klasöre başvurmak istiyorsanız, *msiexec. exe* kök klasöre başvurmak için `.\` gösterimi desteklemez. `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` Yerine bir komut kullanın `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...`.
+- Betiğinizdeki bir alt klasöre başvurmak istiyorsanız, *msiexec. exe* `.\` kök klasöre başvurmak için gösterimi desteklemez. Yerine bir komut kullanın `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` .
 
 - Windows tarafından otomatik olarak oluşturulan yönetimsel paylaşımlar veya gizli ağ paylaşımları Şu anda Azure-SSIS IR desteklenmemektedir.
 
@@ -68,7 +68,7 @@ Azure-SSIS IR özelleştirmek için aşağıdaki öğeler gereklidir:
 
    * Özel kurulumlarınızın giriş noktası olan *Main. cmd*adlı bir betik dosyanız olmalıdır.  
    * Betiğin sessizce yürütülebileceğini sağlamak için, bunu önce yerel makinenizde test etmenizi öneririz.  
-   * Diğer araçların (örneğin, *msiexec. exe*), `CUSTOM_SETUP_SCRIPT_LOG_DIR`kapsayıcınıza yüklenmek üzere oluşturulmasını istiyorsanız, önceden tanımlanmış ortam değişkenini betiklerinizde günlük klasörü olarak belirtin (örneğin, *msiexec/i xxx. msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ install. log*).
+   * Diğer araçların (örneğin, *msiexec. exe*), kapsayıcınıza yüklenmek üzere oluşturulmasını istiyorsanız, önceden tanımlanmış ortam değişkenini `CUSTOM_SETUP_SCRIPT_LOG_DIR` betiklerinizde günlük klasörü olarak belirtin (örneğin, *msiexec/i xxx. msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ install. log*).
 
 1. [Azure Depolama Gezgini](https://storageexplorer.com/)indirin, yükleyin ve açın. Bunu yapmak için:
 
@@ -123,7 +123,7 @@ Azure-SSIS IR özelleştirmek için aşağıdaki öğeler gereklidir:
 
      * **Oh22's HEDDA ' yi seçerseniz. IO** bileşeni, Hedda 'yi yükleyebilirsiniz [. ](https://hedda.io/ssis-component/)Hizmet satın aldıktan sonra Azure-SSIS IR, GÇ veri kalitesi/oh22 'tan bileşeni Temizleme. Geçerli tümleşik sürüm **1.0.13**.
 
-     * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek Azure-SSIS IR [SQLPhonetics.net](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) veri kalitesini/eşleşen bileşeni yükleyebilirsiniz. Geçerli tümleşik sürüm **1.0.43**.
+     * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek Azure-SSIS IR [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) veri kalitesini/eşleşen bileşeni yükleyebilirsiniz. Geçerli tümleşik sürüm **1.0.43**.
 
      * **Kingswaysoft 'ıN SSIS Tümleştirme Araç Seti** bileşenini seçerseniz, Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud gibi CRM/ERP/pazarlama/işbirliği uygulamalarına yönelik [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) Bağlayıcısı paketini, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek Azure-SSIS IR yükleyebilirsiniz. Geçerli tümleşik sürüm **2019,2**' dir.
 
@@ -135,7 +135,7 @@ Azure-SSIS IR özelleştirmek için aşağıdaki öğeler gereklidir:
 
    ![Özel kurulumlarla Gelişmiş ayarlar](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
 
-1. Azure-SSIS IR PowerShell ile ayarladığınızda veya yeniden yapılandırdığınızda, Azure-SSIS IR başlamadan önce `Set-AzDataFactoryV2IntegrationRuntime` cmdlet 'ini çalıştırarak özel kurulumları ekleyebilir veya kaldırabilirsiniz.
+1. Azure-SSIS IR PowerShell ile ayarladığınızda veya yeniden yapılandırdığınızda, `Set-AzDataFactoryV2IntegrationRuntime` Azure-SSIS IR başlamadan önce cmdlet 'ini çalıştırarak özel kurulumları ekleyebilir veya kaldırabilirsiniz.
    
    ```powershell
    $ResourceGroupName = "[your Azure resource group name]"
@@ -299,7 +299,7 @@ Azure-SSIS IR özelleştirmek için aşağıdaki öğeler gereklidir:
    
       Data Factory Kullanıcı arabirimini kullanarak Azure-SSIS IR ayarlarken veya yeniden yapılandırdığınızda, **Gelişmiş ayarlar** bölümünde **Azure-SSIS Integration Runtime ek sistem yapılandırmalarına/bileşen yüklemelerine sahip olan özelleştirin** onay kutusunu seçin ve ardından **özel kurulum kapsayıcısı SAS URI 'si** kutusuna kapsayıcının SAS URI 'sini girin.
    
-      Azure-SSIS IR PowerShell ile ayarladığınızda veya yeniden yapılandırdığınızda, `Set-AzDataFactoryV2IntegrationRuntime` cmdlet 'ini, KAPSAYıCıNıN SAS URI 'siyle birlikte `SetupScriptContainerSasUri` parametre değeri olarak çalıştırın.
+      Azure-SSIS IR PowerShell ile ayarladığınızda veya yeniden yapılandırdığınızda, `Set-AzDataFactoryV2IntegrationRuntime` cmdlet 'ini, KAPSAYıCıNıN SAS URI 'siyle birlikte parametre değeri olarak çalıştırın `SetupScriptContainerSasUri` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

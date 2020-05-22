@@ -3,12 +3,12 @@ title: Azure Backup ile Azure 'da bir SAP HANA veritabanını yedekleme
 description: Bu makalede, Azure Backup hizmeti ile SAP HANA bir veritabanını Azure sanal makinelerine nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: d0b002c4043bacb451d5d837c48f8bdf33949e86
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 4183c1eca6b1149c5c61ed77c0ca1101c86f8f4f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714636"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745423"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 
@@ -130,6 +130,11 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 
 * Kasa düzeyinde bir ilke oluşturulur.
 * Birden çok kasa aynı yedekleme ilkesini kullanabilir, ancak yedekleme ilkesini her kasaya uygulamanız gerekir.
+
+>[!NOTE]
+>Azure Backup, bir Azure VM 'de çalışan bir SAP HANA Veritabanının yedeklenmesinde gün ışığından yararlanma saati değişikliklerini otomatik olarak ayarlamaz.
+>
+>İlkeyi gerektiği şekilde el ile değiştirin.
 
 İlke ayarlarını aşağıdaki gibi belirtin:
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: cecff7347189c5e5b964e10439297bce405810b7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 2d9691279b987f9d45f755ab340ff70671d350c0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857915"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745666"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Iş Ortağı Merkezi 'nde Market öngörüleri panosu
 
@@ -89,7 +89,7 @@ Aşağıdaki ısı haritasını, **sayfa ziyaretlerinin**sayısını, eyleme yap
 Isı haritasını aşağıdaki özellikleri içerir:
 
 - Isı haritasını, **sayfa ziyaretlerinin**ayrıntılarını, belirli bir konumdaki eyleme ve **benzersiz ziyaretçilere** **yapılan çağrıları** görüntülemek için bir ek kılavuz içerir; tercih ederseniz, belirli bir konuma yakınlaştırabilirsiniz.  
-- **Ülke yayma** , müşterilerinizin seçili tarih aralığı boyunca sayfa ziyaretlerini bildirdiği tüm ülkelerin sayısıdır.
+- **Ülkeler/bölgeler** , seçili tarih aralığı sırasında müşterilerinizin sayfa ziyaretlerini bildirdiği tüm ülkelerin/bölgelerin sayısıdır.
 - Haritada konum yakınlaştırmak için kılavuzdaki bir ülkeyi arayabilir ve seçebilirsiniz. Haritada **giriş** ' i seçerek özgün görünüme dönün.
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>Sayfa ziyaretleri ve benzersiz ziyaretçi eğilimi karşılaştırması

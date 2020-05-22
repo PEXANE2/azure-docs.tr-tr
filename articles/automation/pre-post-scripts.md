@@ -5,19 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f55ebb3270fdd97a1fdbbf5a56f9703c08933f9f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: df7a544601d723170b43b3fbf8466daa6a98be6e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855331"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745109"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Betikleri ve betikleri sonrası yönetme
 
 Ön betikler ve son betikler, Azure Otomasyonu hesabınızda (ön görev öncesi) ve sonrasında (görev sonrası) bir güncelleştirme dağıtımı üzerinden çalıştırılacak runbook 'lardır. Ön betikler ve son betikler yerel olarak değil, Azure bağlamında çalışır. Ön betikler güncelleştirme dağıtımının başlangıcında çalışır. Son betikler, dağıtımın sonunda ve yapılandırılan tüm yeniden başlatmalar sonrasında çalışır.
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="pre-script-and-post-script-requirements"></a>Betik öncesi ve betik sonrası gereksinimler
 
@@ -41,7 +38,7 @@ Betikleri ön betikler ve betikleri yapılandırdığınızda, bir runbook 'u za
 
 Başka bir nesne türüne ihtiyacınız varsa, runbook 'ta kendi mantığınızla başka bir türe çevirebilirsiniz.
 
-Standart runbook parametrelerinizin yanı sıra `SoftwareUpdateConfigurationRunContext` PARAMETRESI (JSON dizesi türü) sağlanır. Parametresini ön betikte veya betik sonrası runbook 'ınızla tanımlarsanız, güncelleştirme dağıtımı tarafından otomatik olarak geçirilir. Parametresi, [Softwareupdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration)tarafından döndürülen bilgilerin bir alt kümesi olan güncelleştirme dağıtımı hakkında bilgiler içerir. Aşağıdaki bölümler ilişkili özellikleri tanımlar.
+Standart runbook parametrelerinizin yanı sıra `SoftwareUpdateConfigurationRunContext` parametresi (JSON dizesi türü) sağlanır. Parametresini ön betikte veya betik sonrası runbook 'ınızla tanımlarsanız, güncelleştirme dağıtımı tarafından otomatik olarak geçirilir. Parametresi, [Softwareupdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration)tarafından döndürülen bilgilerin bir alt kümesi olan güncelleştirme dağıtımı hakkında bilgiler içerir. Aşağıdaki bölümler ilişkili özellikleri tanımlar.
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext özellikleri
 
@@ -51,7 +48,7 @@ Standart runbook parametrelerinizin yanı sıra `SoftwareUpdateConfigurationRunC
 |Softwareupdateconfigurationrunıd     | Çalıştırmanın benzersiz KIMLIĞI.        |
 |SoftwareUpdateConfigurationSettings     | Yazılım güncelleştirme yapılandırmasıyla ilgili özellikler koleksiyonu.         |
 |SoftwareUpdateConfigurationSettings. operatingSystem     | Güncelleştirme dağıtımı için hedeflenen işletim sistemleri.         |
-|SoftwareUpdateConfigurationSettings. Duration     | Güncelleştirme dağıtımının ıSO8601 başına çalıştığı `PT[n]H[n]M[n]S` en uzun süre. bakım penceresi olarak da adlandırılır.          |
+|SoftwareUpdateConfigurationSettings. Duration     | Güncelleştirme dağıtımının en uzun süresi, `PT[n]H[n]M[n]S` ISO8601 başına olarak çalışır; bakım penceresi de denir.          |
 |SoftwareUpdateConfigurationSettings. Windows     | Windows bilgisayarlarıyla ilgili özellikler koleksiyonu.         |
 |SoftwareUpdateConfigurationSettings. Windows. excludedKbNumbers     | Güncelleştirme dağıtımından dışlanan KBs 'lerin bir listesi.        |
 |SoftwareUpdateConfigurationSettings. Windows. ıncludedupdatesınıflandırmaları     | Güncelleştirme dağıtımı için seçilen güncelleştirme sınıflandırmaları.        |
@@ -92,9 +89,9 @@ Aşağıdaki örnek, **Softwareupdateconfigurationruncontext** parametresine GE�
 Tüm özelliklere sahip tam bir örnek şurada bulunabilir: [ada göre yazılım güncelleştirme yapılandırmasını al](/rest/api/automation/softwareupdateconfigurations/getbyname#examples).
 
 > [!NOTE]
-> Nesne `SoftwareUpdateConfigurationRunContext` , makineler için yinelenen girdiler içerebilir. Bu, ön betiklerin ve betiklerin aynı makinede birden fazla kez çalışmasına neden olabilir. Bu davranışı geçici olarak çözmek için, `Sort-Object -Unique` yalnızca benzersiz VM adlarını seçmek üzere kullanın.
+> `SoftwareUpdateConfigurationRunContext`Nesne, makineler için yinelenen girdiler içerebilir. Bu, ön betiklerin ve betiklerin aynı makinede birden fazla kez çalışmasına neden olabilir. Bu davranışı geçici olarak çözmek için, `Sort-Object -Unique` yalnızca BENZERSIZ VM adlarını seçmek üzere kullanın.
 
-## <a name="using-a-pre-script-or-post-script-in-a-deployment"></a>Bir dağıtımda ön betik veya komut dosyası kullanma
+## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Bir dağıtımda ön betik veya komut dosyası kullanma
 
 Bir güncelleştirme dağıtımında bir ön betik veya bir komut dosyası kullanmak için, bir güncelleştirme dağıtımı oluşturarak başlayın. **Ön betikler + betikleri sonrası**' u seçin. Bu eylem, **betikleri ön betikleri Seç + betikleri sonrası** sayfasını açar.
 
@@ -120,7 +117,7 @@ Güncelleştirme dağıtımı çalıştırmasını seçtiğinizde, betiklerin ve
 
 betiğinizdeki es.
 
-## <a name="stopping-a-deployment"></a>Dağıtım durduruluyor
+## <a name="stop-a-deployment"></a>Dağıtımı durdur
 
 Bir ön koda dayalı bir dağıtımı durdurmak isterseniz, bir özel durum [oluşturmanız gerekir.](automation-runbook-execution.md#throw) Bunu yapmazsanız dağıtım ve son betik çalışmaya devam edecektir. Aşağıdaki kod parçacığı bir özel durum oluşturmayı gösterir.
 
@@ -137,9 +134,7 @@ foreach($summary in $finalStatus)
 }
 ```
 
-
-
-## <a name="interacting-with-machines"></a>Makinelerle etkileşim kurma
+## <a name="interact-with-machines"></a>Makinelerle etkileşim kurma
 
 Ön betikler ve son görevler, doğrudan dağıtımınızdaki makinelerde değil, Otomasyon hesabınızda runbook 'lar olarak çalışır. Ön görevler ve görevler, Azure bağlamında da çalışır ve Azure olmayan makinelere erişemez. Aşağıdaki bölümlerde, Azure VM 'Leri veya Azure dışı makineler olsun, makinelerle doğrudan nasıl etkileşim kurabileceği gösterilmektedir.
 
@@ -161,9 +156,9 @@ Azure makinelerle etkileşim kurmak için [Invoke-AzVMRunCommand](https://docs.m
 * Yerel olarak çalıştırmak istediğiniz runbook
 * Üst runbook
 
-Azure olmayan makinelerle etkileşim kurmak için Azure bağlamında bir üst runbook çalıştırılır. Bu runbook, [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) cmdlet 'i ile bir alt runbook 'u çağırır. `RunOn` Parametresini belirtmeniz ve betiğin üzerinde çalışacağı karma Runbook Worker adını sağlamanız gerekir. Bkz. runbook örneği [güncelleştirme yönetimi – betiği yerel olarak çalıştır](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
+Azure olmayan makinelerle etkileşim kurmak için Azure bağlamında bir üst runbook çalıştırılır. Bu runbook, [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) cmdlet 'i ile bir alt runbook 'u çağırır. `RunOn`Parametresini belirtmeniz ve betiğin üzerinde çalışacağı karma Runbook Worker adını sağlamanız gerekir. Bkz. runbook örneği [güncelleştirme yönetimi – betiği yerel olarak çalıştır](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
 
-## <a name="aborting-patch-deployment"></a>Düzeltme Eki dağıtımı durduruluyor
+## <a name="abort-patch-deployment"></a>Düzeltme Eki dağıtımını durdur
 
 Ön betik bir hata döndürürse, dağıtımınızı iptal etmek isteyebilirsiniz. Bunu yapmak için, komut dosyasında hata oluşturabilecek herhangi bir mantık için bir hata [oluşturmanız gerekir.](/powershell/module/microsoft.powershell.core/about/about_throw)
 
@@ -192,7 +187,7 @@ Ya da aşağıdaki listede gösterildiği gibi bunları kendi komut dosyası adl
 > [!IMPORTANT]
 > Runbook 'ları içeri aktardıktan sonra, kullanılmadan önce bunları yayımlamanız gerekir. Bunu yapmak için Otomasyon hesabınızda runbook 'u bulun, **Düzenle**' yi seçin ve ardından **Yayımla**' yı seçin.
 
-Örnekler, aşağıdaki örnekte tanımlanan temel şablona dayalıdır. Bu şablon, komut dosyaları ve son betikler ile kullanmak üzere kendi runbook 'unuzu oluşturmak için kullanılabilir. Azure ile kimlik doğrulaması yapmak ve `SoftwareUpdateConfigurationRunContext` parametreyi işlemek için gerekli mantık dahildir.
+Örnekler, aşağıdaki örnekte tanımlanan temel şablona dayalıdır. Bu şablon, komut dosyaları ve son betikler ile kullanmak üzere kendi runbook 'unuzu oluşturmak için kullanılabilir. Azure ile kimlik doğrulaması yapmak ve parametreyi işlemek için gerekli mantık `SoftwareUpdateConfigurationRunContext` dahildir.
 
 ```powershell
 <#
@@ -250,7 +245,4 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Windows sanal makineleriniz için güncelleştirmelerin nasıl yönetileceğini öğrenmek için aşağıdaki Öğreticiye gidin:
-
-> [!div class="nextstepaction"]
-> [Azure Windows sanal makineleriniz için güncelleştirme ve düzeltme eki yönetimi](automation-tutorial-update-management.md)
+* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)

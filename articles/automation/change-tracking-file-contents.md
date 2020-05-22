@@ -1,41 +1,41 @@
 ---
 title: Azure Otomasyonu 'nda Değişiklik İzleme ve stoku yönetme
-description: Bu makalede, ortamınızda gerçekleşen yazılım ve Microsoft hizmet değişikliklerini izlemek için Değişiklik İzleme ve envanterin nasıl kullanılacağı açıklanır.
+description: Bu makalede, ortamınızdaki yazılım ve Microsoft hizmet değişikliklerini izlemek için Değişiklik İzleme ve envanterin nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 8e5ee8df1dfd250a6713d832bf176daecdaef7ea
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779306"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744402"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok yönetimi
 
-İzlemek üzere yeni bir dosya veya kayıt defteri anahtarı eklediğinizde Azure Otomasyonu, [değişiklik izleme ve envanter](change-tracking.md) özelliği için bunu sağlar. Bu makale, bu özellikle çalışma yordamlarını içerir.
+Azure Otomasyonu, ortamınızdaki makineler için [değişiklik izleme ve envanter](change-tracking.md) özelliğini sunar. Özelliği, kayıt defteri anahtarlarında, dosyalarında, içerikte ve gibi kullanılabilir değişiklikleri izler ve sunar. Bu makale, bu özellikle çalışma yordamlarını içerir.
 
 ## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>Tam Değişiklik İzleme ve envanter özelliğini etkinleştirme
 
-[Azure Güvenlik Merkezi dosya bütünlüğü izleme 'yi (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)etkinleştirdiyseniz, aşağıda açıklandığı gibi tam değişiklik izleme ve envanter özelliğini de kullanabilirsiniz. Ayarlarınız bu işlem tarafından kaldırılmaz.
+[Azure Güvenlik Merkezi dosya bütünlüğü izleme 'yi (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)etkinleştirdiyseniz, makineleriniz için aşağıda açıklandığı gibi tam değişiklik izleme ve envanter özelliğini de kullanabilirsiniz. Ayarlarınız bu işlem tarafından kaldırılmaz.
 
 > [!NOTE]
 > Tam Değişiklik İzleme ve envanter özelliğinin etkinleştirilmesi ek ücretlere neden olabilir. Bkz. [Otomasyon Fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
 
 1. Çalışma alanına giderek ve bunları [yüklü izleme çözümleri listesinde](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)bularak izleme çözümünü kaldırın.
 2. Çözüm adına tıklayarak Özet sayfasını açın ve [izleme çözümünü kaldırma](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)bölümünde açıklandığı gibi **Sil**' e tıklayın.
-3. Değişiklik İzleme ve envanteri yeniden etkinleştirmek için Otomasyon hesabına gidin ve **yapılandırma yönetimi**altında **değişiklik izleme** ' yi seçin.
+3. Değişiklik İzleme ve envanteri yeniden etkinleştirmek için Otomasyon hesabına gidin ve **yapılandırma yönetimi**altında **değişiklik izleme** veya **Stok** ' ı seçin.
 4. Log Analytics çalışma alanı ve Otomasyon hesabı ' nı seçin, çalışma alanı ayarlarınızı doğrulayın ve **Etkinleştir**' e tıklayın.
 
-## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>Değişiklik İzleme ve stoğa makine ekleme
+## <a name="enable-machines-for-change-tracking-and-inventory"></a><a name="onboard"></a>Değişiklik İzleme ve envanter için makineleri etkinleştirme
 
-Değişiklikleri izlemeye başlamak için Azure Otomasyonu 'nda Değişiklik İzleme ve envanteri etkinleştirmeniz gerekir. Makinelerinizi bu özelliğe eklemek için önerilen ve desteklenen yollar şunlardır: 
+Değişiklikleri izlemeye başlamak için Azure Otomasyonu 'nda Değişiklik İzleme ve envanteri etkinleştirmeniz gerekir. Bu özelliği makineleriniz için etkinleştirmenin önerilen ve desteklenen yolları aşağıda verilmiştir: 
 
-* [Bir sanal makineden ekleme](automation-onboard-solutions-from-vm.md)
-* [Birden çok makineye göz atmaya ekleme](automation-onboard-solutions-from-browse.md)
-* [Otomasyon hesabınızdan ekleme](automation-onboard-solutions-from-automation-account.md)
-* [Azure Otomasyonu runbook 'una ekleme](automation-onboard-solutions.md)
+* [Sanal makineden etkinleştir](automation-onboard-solutions-from-vm.md)
+* [Birden çok makineye göz atmayı etkinleştir](automation-onboard-solutions-from-browse.md)
+* [Otomasyon hesabınızda etkinleştirin](automation-onboard-solutions-from-automation-account.md)
+* [Azure Otomasyonu runbook 'unda etkinleştirin](automation-onboard-solutions.md)
 
 ## <a name="track-files"></a>Dosyaları izle
 
@@ -53,7 +53,7 @@ Windows bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adıml
     |Etkin     | Ayar uygulanmışsa true, aksi takdirde false.        |
     |Öğe Adı     | İzlenecek dosyanın kolay adı.        |
     |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-    |Yolu girin     | Dosyanın denetlenecek yol (örneğin, **\\\*c:\Temp. txt**). Ayrıca, gibi ortam değişkenlerini de kullanabilirsiniz `%winDir%\System32\\\*.*`.       |
+    |Yolu girin     | Dosyanın denetlenecek yol (örneğin, **c:\Temp \\ \* . txt**). Ayrıca, gibi ortam değişkenlerini de kullanabilirsiniz `%winDir%\System32\\\*.*` .       |
     |Yol Türü     | Yolun türü. Olası değerler dosya ve dizindir.        |    
     |Özyineleme     | Bu öğeyi izlenecek öğe ararken, aksi takdirde false ise true.        |    
     |Dosya içeriğini karşıya yükle | İzlenen değişikliklerle dosya içeriğini karşıya yüklemek için true, aksi durumda false.|
@@ -164,7 +164,7 @@ Aşağıdaki örnek, bir makinede **C:\Windows\system32\drivers\etc\hosts** dosy
 Bu örneği bir değişiklik üzerinde uyarı oluşturma adımlarını tartışmak için kullanalım.
 
 1. Otomasyon hesabınızda **yapılandırma yönetimi**altında **izlemeyi Değiştir** ' i seçin ve ardından **Log Analytics**' yi seçin. 
-2. Günlükler aramasında, **Hosts** dosyasında bulunan içerik değişikliklerini sorgu `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`ile arayın. Bu sorgu, "konaklar" sözcüğünü içeren tam bir yola sahip dosyalar için içerik değişikliğini arar. Ayrıca, örneğin kullanarak `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`yol bölümünü tam nitelikli biçimde değiştirerek belirli bir dosyayı sorabilirsiniz.
+2. Günlükler aramasında, **Hosts** dosyasında bulunan içerik değişikliklerini sorgu ile arayın `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` . Bu sorgu, "konaklar" sözcüğünü içeren tam bir yola sahip dosyalar için içerik değişikliğini arar. Ayrıca, örneğin kullanarak yol bölümünü tam nitelikli biçimde değiştirerek belirli bir dosyayı sorabilirsiniz `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"` .
 
 3. Sorgu istenen sonuçları döndürdüğünden, uyarı oluşturma sayfasını açmak için günlük aramasında **Yeni uyarı kuralı** ' na tıklayın. Ayrıca, Azure portal **Azure izleyici** aracılığıyla bu sayfaya gidebilirsiniz. 
 
@@ -178,6 +178,6 @@ Bu örneği bir değişiklik üzerinde uyarı oluşturma adımlarını tartışm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Değişiklik İzleme ve envanterin temelleri için bkz. [değişiklik izleme ve stoğa genel bakış](change-tracking.md).
-* Azure VM 'de yapılan değişiklikleri gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md).
-* Ayrıntılı değişiklik izleme verilerini görüntülemek için [Azure izleyici günlüklerinde günlük aramalarını](../log-analytics/log-analytics-log-searches.md) kullanın.
+* [Değişiklik İzleme ve envantere genel bakış](change-tracking.md)
+* [Değişiklik İzleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md)
+* [Azure Izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md)

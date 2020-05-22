@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 48644f2f8148a7aa1974be0d7f761e9b3a55612d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a872331238946de0d57e6d42164f1ce7fb1c7357
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783519"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746199"
 ---
 # <a name="payout-summary-overview"></a>Ödeme özetine genel bakış
 
@@ -70,7 +70,7 @@ Bu seçenek, Işlem geçmişi sayfasında gördüğünüz her bir atma çizgisi 
 | participantId | İş ortağının birincil kimliği program altında |
 | participantIdType | Program mağaza programları ve Azure Market için ise programları ve satıcı için program KIMLIĞI |
 | participantName | Kazanç ortağının adı |
-| partnerCountryCode | Kazanç ortağının konumu/ülkesi |
+| partnerCountryCode | Kazanç ortağının konumu/ülkesi/bölgesi |
 | Programadı | Program adını teşvik edin/depolayın |
 | TransactionId | İşlem için benzersiz tanımlayıcı |
 | Işlem para birimi | Orijinal müşteri işleminin gerçekleştiği para birimi (iş ortağı konum para birimi değil) |
@@ -89,7 +89,7 @@ Bu seçenek, Işlem geçmişi sayfasında gördüğünüz her bir atma çizgisi 
 | calculationDate | Sistemin sistemde hesaplandığı Tarih |
 | earningExchangeRate | Karşılık gelen USD tutarını göstermek için kullanılan döviz kuru |
 | exchangeRateDate | EarningAmount USD 'yi hesaplamak için kullanılan döviz kuru tarihi |
-| paymentAmountWOTax | Yalnızca gönderilen &quot;&quot; ödemeler için para birimi ödemelerinde miktar (vergi olmadan) |
+| paymentAmountWOTax | &quot;Yalnızca gönderilen ödemeler için para birimi ödemelerinde miktar (vergi olmadan) &quot; |
 | paymentCurrency | Ödeme profilinde iş ortağı tarafından seçilen para birimine öde. Yalnızca gönderilen ödemeler için gösteriliyor |
 | paymentExchangeRate | ExchangeRateDate kullanarak ödeme para birimindeki paymentAmountWOTax hesaplamak için kullanılan döviz kuru |
 | Paymentıd | Ödeme için benzersiz tanımlayıcı. Bu sayı, banka ekstreninizde görülebilir |
@@ -113,15 +113,15 @@ Bu seçenek, Işlem geçmişi sayfasında gördüğünüz her bir atma çizgisi 
 | storeFee | Microsoft tarafından, ticari Market 'te uygulamayı veya eklentiyi kullanılabilir hale getirmek için bir ücret ücreti elde eden miktar. |
 | transactionPaymentMethod | İşlem için kullanılan müşteri ödeme gereci (kart, mobil taşıyıcı faturalandırma ve PayPal gibi) |
 | tpan | Üçüncü taraf ad ağı |
-| customerCountry | Müşteri ülkesi |
+| customerCountry | Müşteri ülkesi/bölgesi |
 | customerCity | Müşteri şehri |
 | customerState | Müşteri durumu |
 | Müşterzıp | Müşteri posta kodu |
 | Değerine | Kiracının KIMLIĞI |
 | Externalreferenceıd | Program için benzersiz tanımlayıcı |
 | Externalreferenceıdlabel | Benzersiz tanımlayıcı etiketi |
-| transactionCountryCode | İşlemin gerçekleştiği ülke kodu |
-| taxCountry | Müşterinin ülkesi |
+| transactionCountryCode | İşlemin gerçekleştiği ülke/bölge kodu |
+| taxCountry | Müşterinin ülkesi/bölgesi |
 | taxState | Müşterinin durumu |
 | Vergilencity | Müşterinin şehri |
 | taxZipCode | Müşterinin ZIP/posta kodu |
@@ -132,7 +132,7 @@ Bu seçenek, Işlem geçmişi sayfasında gördüğünüz her bir atma çizgisi 
 | AssetId | Market hizmetiniz için müşteri siparişlerinin benzersiz tanımlayıcısı. Bu, satın alma satırı öğelerini temsil eder. Birden çok varlık olabilir. |
 | OrderId | Müşterinin faturasıyla ilişkili |
 | Lineıtemıd | Müşterinin faturasında tek satırlık |
-| Müşteri ülkesi | Müşterinin sunduğu ülke adı. Bu, müşterinin Azure aboneliğindeki ülkeden farklı olabilir. |
+| Müşteri ülkesi/bölgesi | Müşterinin sunduğu ülke/bölge adı. Bu, müşterinin Azure aboneliğindeki ülke/bölgeden farklı olabilir. |
 | Müşteri EMAA adresi | Müşterinin sunduğu e-posta adresi. Bu, müşterinin Azure aboneliğindeki e-posta adresinden farklı olabilir. |
 | SkuId | Yayımlama sırasında tanımlanan SKU KIMLIĞI. Bir teklifin birçok SKU 'su olabilir, ancak bir SKU yalnızca tek bir teklifle ilişkilendirilebilir. |
 

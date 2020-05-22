@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7de57c9a69e60e8c342e067ff1e95a0f2cfadec8
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: f975abcd05b92dd57eb736f076b63c88b4bf6769
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699311"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747251"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement ve PowerApps teklifi oluşturma
 
@@ -258,9 +258,14 @@ Müşterinin uygulamanızı yapılandırmasını sağlayan yapılandırma Web sa
 
 ### <a name="crm-package"></a>CRM paketi
 
-**Paket konumu URL 'si** alanına KARŞıYA yüklenen CRM paketi. zip dosyasını Içeren bir Azure depolama hesabının URL 'sini girin. Bu URL, Microsoft 'un paketinizi doğrulamaya yönelik olarak seçmesini sağlamak için salt okunurdur bir SAS anahtarı içermelidir.
+**Paket konumu URL 'si** alanına KARŞıYA yüklenen CRM paketi. zip dosyasını Içeren bir Azure Blob depolama hesabının URL 'sini girin. Microsoft 'un, doğrulamaya yönelik paketinizi görebilmesi için, URL 'ye bir salt okunurdur SAS anahtarı ekleyin.
 
-Varsa, **paket dosya içinde birden fazla CRM paketi olduğunu**etiketli kutuyu işaretleyin. Bu durumda, tüm paketleri. zip dosyanıza eklediğinizden emin olun.
+> [!IMPORTANT]
+> Bir yayımlama bloğundan kaçınmak için, blob depolamanın URL 'sindeki sona erme tarihinin süresinin dolmadığından emin olun. İlkenize erişerek tarihi gözden geçirebilir. **Süre sonu zamanının** gelecekte en az bir ay olması önerilir.
+
+Varsa, **paket dosya içinde birden fazla CRM paketi olduğu**etiketli kutuyu seçin. Bu durumda, tüm paketleri. zip dosyanıza eklediğinizden emin olun.
+
+Paketinizi oluşturma ve yapısını güncelleştirme hakkında ayrıntılı bilgi için bkz. [3. Adım: uygulamanız Için AppSource paketi oluşturma](https://docs.microsoft.com/powerapps/developer/common-data-service/create-package-app-appsource).
 
 ### <a name="crm-package-availability"></a>CRM paketi kullanılabilirliği
 

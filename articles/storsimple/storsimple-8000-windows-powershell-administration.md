@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7d59f00d655bc7b2395c46713a56f52c61ffa42c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35be2e0b7b5a24261cd8ee15b1964b953c1a3327
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277101"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747718"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>StorSimple için Windows PowerShell’i kullanarak cihazınızı yönetme
 
@@ -105,7 +105,7 @@ Aşağıdaki ayarlardan seçim yapabilirsiniz:
      > [!NOTE]
      > Bu, Cihaz Yöneticisi parolasını unuttuysanız ve 1 veya 2 ' den bağlantı kurmak için tercih edilen seçenektir.
 
-4. **Dili Değiştir** Bu seçenek, Windows PowerShell arabirimindeki görüntüleme dilini değiştirmenize izin verir. Desteklenen diller Ingilizce, Japonca, Rusça, Fransızca, Güney Korece, Ispanyolca, Italyanca, Almanca, Çince ve Brezilya Portekizcesi.
+4. **Dili Değiştir** Bu seçenek, Windows PowerShell arabirimindeki görüntüleme dilini değiştirmenize izin verir. Desteklenen diller Ingilizce, Japonca, Rusça, Fransızca, Güney Korece, Ispanyolca, Italyanca, Almanca, Çince ve Portekizce 'Dir.
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell kullanarak StorSimple 'a uzaktan bağlanma
 
@@ -169,7 +169,7 @@ Windows PowerShell arabirimindeki yardımı kolayca güncelleştirebilirsiniz. S
 1. Windows PowerShell 'i **yönetici olarak çalıştır** seçeneğiyle başlatın.
 2. Komut isteminde şunu yazın:`Update-Help`
 3. Güncelleştirilmiş Yardım dosyaları yüklenecek.
-4. Yardım dosyaları yüklendikten sonra, şunu yazın: `Get-Help Get-Command`. Bu, yardım 'ın kullanılabildiği cmdlet 'lerin bir listesini görüntüler.
+4. Yardım dosyaları yüklendikten sonra, şunu yazın: `Get-Help Get-Command` . Bu, yardım 'ın kullanılabildiği cmdlet 'lerin bir listesini görüntüler.
 
 > [!NOTE]
 > Bir çalışma alanındaki tüm kullanılabilir cmdlet 'lerin listesini almak için, ilgili menü seçeneğinde oturum açın ve `Get-Command` cmdlet 'ini çalıştırın.

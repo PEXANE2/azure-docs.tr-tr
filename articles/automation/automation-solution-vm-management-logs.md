@@ -1,18 +1,18 @@
 ---
-title: VM'leri çalışma saatleri dışında başlat/durdur günlüklerini sorgulama
-description: Bu makalede, Azure Izleyici 'den VM'leri çalışma saatleri dışında başlat/durdur çözümü tarafından oluşturulan günlük verilerinin nasıl sorgulanyapılacağı açıklanır.
+title: Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur sorgu günlükleri
+description: Bu makalede, Azure Izleyici 'nin VM'leri çalışma saatleri dışında başlat/durdur tarafından oluşturulan günlük verilerini sorgulamak için nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472baa3f4b3cbb970a8f365ccc94929ad565c421
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 49b573c5cd0125ba378f01db05b925f8e5eef3eb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864241"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743717"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur günlüklerini sorgulama
+# <a name="query-logs-from-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur sorgu günlükleri
 
 Azure Otomasyonu, iki kayıt türünü bağlı Log Analytics çalışma alanına iletir: iş günlükleri ve iş akışları. Bu makalede, Azure Izleyici 'de [sorgu](../azure-monitor/log-query/log-query-overview.md) için kullanılabilen veriler incelenir.
 
@@ -60,7 +60,7 @@ Azure Otomasyonu, iki kayıt türünü bağlı Log Analytics çalışma alanına
 
 ## <a name="sample-log-searches"></a>Örnek günlük aramaları
 
-Aşağıdaki tabloda, bu çözüm tarafından toplanan iş kayıtlarına ilişkin örnek günlük aramaları sunulmaktadır.
+Aşağıdaki tabloda, VM'leri çalışma saatleri dışında başlat/durdur tarafından toplanan iş kayıtlarına yönelik örnek günlük aramaları sunulmaktadır.
 
 |Sorgu | Açıklama|
 |----------|----------|
@@ -71,4 +71,6 @@ Aşağıdaki tabloda, bu çözüm tarafından toplanan iş kayıtlarına ilişki
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-**VM'leri çalışma saatleri dışında Başlat/Durdur** çözümü, önceden tanımlanmış bir uyarı kümesi içermez. DevOps veya işletimsel işlemlerinizi ve yordamlarını desteklemek üzere iş başarısız uyarıları oluşturmayı öğrenmek için Azure Izleyici ile [günlük uyarılarını oluştur](../azure-monitor/platform/alerts-log.md) ' a bakın.
+* [Azure Izleyici ile günlük uyarıları oluşturma](../azure-monitor/platform/alerts-log.md)
+* [VM 'Leri çalışma saatleri dışında Durdur/Başlat](automation-solution-vm-management-config.md)
+* [VM'leri çalışma saatleri dışında başlat/durdur sorunlarını giderme](troubleshoot/start-stop-vm.md)

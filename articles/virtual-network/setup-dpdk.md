@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/27/2018
+ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: c79c1fd687e329b97a854a3ff66a3cf95076b5d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79e06fe95b48468616dce913e19c430dc2818719
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80384237"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744875"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Bir Linux sanal makinesinde DPDK 'yi ayarlama
 
@@ -50,7 +50,7 @@ Azure Marketi 'nden aşağıdaki dağıtımlar desteklenir:
 
 **Özel çekirdek desteği**
 
-Listelenmeyen tüm Linux çekirdek sürümleri için bkz. [Azure 'da ayarlanmış bir Linux çekirdeği oluşturmaya yönelik düzeltme ekleri](https://github.com/microsoft/azure-linux-kernel). Daha fazla bilgi için, ile de iletişim [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com)sağlayabilirsiniz. 
+Listelenmeyen tüm Linux çekirdek sürümleri için bkz. [Azure 'da ayarlanmış bir Linux çekirdeği oluşturmaya yönelik düzeltme ekleri](https://github.com/microsoft/azure-linux-kernel). Daha fazla bilgi için, ile de iletişim sağlayabilirsiniz [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com) . 
 
 ## <a name="region-support"></a>Bölge desteği
 
@@ -109,10 +109,10 @@ zypper \
 ## <a name="set-up-the-virtual-machine-environment-once"></a>Sanal makine ortamını ayarlama (bir kez)
 
 1. [En son DPDK 'Yi indirin](https://core.dpdk.org/download). Azure için sürüm 18,11 LTS veya 19,11 LTS gerekir.
-2. İle `make config T=x86_64-native-linuxapp-gcc`varsayılan yapılandırmayı oluşturun.
-3. İle oluşturulan yapılandırmada Mellanox PMDs 'yi `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`etkinleştirin.
-4. İle `make`derleyin.
-5. İle `make install DESTDIR=<output folder>`uygulamasını.
+2. İle varsayılan yapılandırmayı oluşturun `make config T=x86_64-native-linuxapp-gcc` .
+3. İle oluşturulan yapılandırmada Mellanox PMDs 'yi etkinleştirin `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` .
+4. İle derleyin `make` .
+5. İle uygulamasını `make install DESTDIR=<output folder>` .
 
 ## <a name="configure-the-runtime-environment"></a>Çalışma zamanı ortamını yapılandırma
 
@@ -126,20 +126,20 @@ Yeniden başlattıktan sonra, aşağıdaki komutları bir kez çalıştırın:
      echo 1024 | sudo tee /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
-   * İle `mkdir /mnt/huge`bağlama için bir dizin oluşturun.
-   * İle `mount -t hugetlbfs nodev /mnt/huge`kugesayfalarý bağlayın.
-   * Kugepages 'in ile `grep Huge /proc/meminfo`ayrılmadığından emin olun.
+   * İle bağlama için bir dizin oluşturun `mkdir /mnt/huge` .
+   * İle kugesayfalarý bağlayın `mount -t hugetlbfs nodev /mnt/huge` .
+   * Kugepages 'in ile ayrılmadığından emin olun `grep Huge /proc/meminfo` .
 
      > NOTUN Grub dosyasını değiştirmek için bir yol vardır. bu sayede, DPDK [yönergelerini](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) izleyerek kugepages 'in önyükleme üzerinde ayrılması sağlanır. Yönergeler sayfanın en altında bulunur. Bir Azure Linux sanal makinesi kullanırken, yeniden başlatmalar genelinde kugepages ayırmak için bunun yerine **/etc/config/grub.d** altındaki dosyaları değiştirin.
 
-2. MAC & IP adresleri: ağ `ifconfig –a` arabirimlerinin Mac ve IP adresini görüntülemek için kullanın. *VF* ağ arabirimi ve *netvsc* ağ arabirimi aynı MAC adresine sahip, ancak yalnızca *netvsc* ağ arabiriminin bir IP adresi vardır. *VF* arabirimleri, *netvsc* arabirimlerinin alt arabirimleri olarak çalışır.
+2. MAC & IP adresleri: `ifconfig –a` ağ ARABIRIMLERININ Mac ve IP adresini görüntülemek Için kullanın. *VF* ağ arabirimi ve *netvsc* ağ arabirimi aynı MAC adresine sahip, ancak yalnızca *netvsc* ağ arabiriminin bir IP adresi vardır. *VF* arabirimleri, *netvsc* arabirimlerinin alt arabirimleri olarak çalışır.
 
 3. PCI adresleri
 
-   * VF `ethtool -i <vf interface name>` IÇIN hangi PCI adresinin kullanılacağını bulmak için kullanın. *VF*
+   * `ethtool -i <vf interface name>` *VF*için hangi PCI adresinin kullanılacağını bulmak için kullanın.
    * *Eth0* hızlandırılmış ağ etkinse, testpmd 'nin *eth0*için *VF* PCI cihazını yanlışlıkla devralmadığınızdan emin olun. DPDK uygulaması yanlışlıkla yönetim ağ arabirimini ele alırsa ve SSH bağlantınızı kaybetmenize neden oluyorsa, DPDK uygulamasını durdurmak için seri konsolu 'nu kullanın. Ayrıca, sanal makineyi durdurmak veya başlatmak için seri konsolunu da kullanabilirsiniz.
 
-4. Her yeniden başlatmada *ıbuverbs* 'ı yükleyin `modprobe -a ib_uverbs`. Yalnızca SLES 15 için ile `modprobe -a mlx4_ib` *mlx4_ib* de yükleyin.
+4. Her yeniden başlatmada *ıbuverbs* 'ı yükleyin `modprobe -a ib_uverbs` . Yalnızca SLES 15 için ile *mlx4_ib* de yükleyin `modprobe -a mlx4_ib` .
 
 ## <a name="failsafe-pmd"></a>Failsafe PMD
 
@@ -172,10 +172,10 @@ Testpmd 'yi kök modda çalıştırmak için `sudo` *testpmd* komutundan önce k
    -- -i
    ```
 
-   Testpmd 'yi ikiden fazla NIC ile çalıştırıyorsanız, `--vdev` bağımsız değişken şu düzene uyar:. `net_vdev_netvsc<id>,iface=<vf’s pairing eth>`
+   Testpmd 'yi ikiden fazla NIC ile çalıştırıyorsanız, `--vdev` bağımsız değişken şu düzene uyar: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>` .
 
-3.  Başlatıldıktan sonra bağlantı noktası bilgilerini denetlemek `show port info all` için öğesini çalıştırın. Net_failsafe ( *net_mlx4*değil) bir veya iki DPDK bağlantı noktası görmeniz gerekir.
-4.  Trafiği `start <port> /stop <port>` başlatmak için kullanın.
+3.  Başlatıldıktan sonra `show port info all` bağlantı noktası bilgilerini denetlemek için öğesini çalıştırın. Net_failsafe ( *net_mlx4*değil) bir veya iki DPDK bağlantı noktası görmeniz gerekir.
+4.  `start <port> /stop <port>`Trafiği başlatmak için kullanın.
 
 Önceki komutlar *testpmd* ' yi etkileşimli modda başlatır, bu da testpmd komutlarının denemesi için önerilir.
 
@@ -213,7 +213,7 @@ Aşağıdaki komutlar paketleri saniyede düzenli olarak yazdırır:
      --stats-period <display interval in seconds>
    ```
 
-Bir sanal makinede önceki komutları çalıştırırken *IP_SRC_ADDR* değiştirin ve ' de `app/test-pmd/txonly.c` *IP_DST_ADDR* , derlemeden önce sanal makinelerin gerçek IP adresiyle eşleşecek şekilde değiştirin. Aksi takdirde, paketler alıcıya ulaşmadan önce bırakılır.
+Bir sanal makinede önceki komutları çalıştırırken *IP_SRC_ADDR* değiştirin ve ' de *IP_DST_ADDR* , `app/test-pmd/txonly.c` DERLEMEDEN önce sanal makinelerin gerçek IP adresiyle eşleşecek şekilde değiştirin. Aksi takdirde, paketler alıcıya ulaşmadan önce bırakılır.
 
 ### <a name="advanced-single-sendersingle-forwarder"></a>Gelişmiş: tekli gönderici/tek iletici
 Aşağıdaki komutlar paketleri saniyede düzenli olarak yazdırır:
@@ -249,7 +249,7 @@ Aşağıdaki komutlar paketleri saniyede düzenli olarak yazdırır:
      --stats-period <display interval in seconds>
     ```
 
-Bir sanal makinede önceki komutları çalıştırırken *IP_SRC_ADDR* değiştirin ve ' de `app/test-pmd/txonly.c` *IP_DST_ADDR* , derlemeden önce sanal makinelerin gerçek IP adresiyle eşleşecek şekilde değiştirin. Aksi takdirde, paketler ileticiye ulaşmadan önce bırakılır. *Test PMD* ileticisi, bazı kod değişiklikleri yapmadığınız takdirde katman 3 adreslerini değiştirmediğinden, üçüncü bir makineye iletilen trafik alamazsınız.
+Bir sanal makinede önceki komutları çalıştırırken *IP_SRC_ADDR* değiştirin ve ' de *IP_DST_ADDR* , `app/test-pmd/txonly.c` DERLEMEDEN önce sanal makinelerin gerçek IP adresiyle eşleşecek şekilde değiştirin. Aksi takdirde, paketler ileticiye ulaşmadan önce bırakılır. *Test PMD* ileticisi, bazı kod değişiklikleri yapmadığınız takdirde katman 3 adreslerini değiştirmediğinden, üçüncü bir makineye iletilen trafik alamazsınız.
 
 ## <a name="references"></a>Başvurular
 

@@ -7,27 +7,27 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdb115cf6d0f0aa2c55f6143015a323df6faa114
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76961094"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744296"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Geomatch özel kuralları (Önizleme)
 
 Özel kurallar, uygulamalarınızın ve Güvenlik ilkelerinizin tam ihtiyaçlarını karşılamak için özel kurallar oluşturmanıza olanak sağlar. Şimdi, Web uygulamalarınıza olan erişimi ülkeye/bölgeye göre kısıtlayabilirsiniz. Tüm özel kurallarda olduğu gibi, bu mantık uygulamanızın ihtiyaçlarını karşılamak için diğer kurallarla birlikte iade edilebilir.
 
-Coğrafi filtreleme özel kuralı oluşturmak için, eşleşme türü olarak *coğrafi konum* ' u seçmeniz yeterlidir ve sonra uygulamanızda izin vermek/engellemek istediğiniz ülkeyi veya ülkeleri seçin. Daha fazla bilgi için bkz. [PowerShell 'de özel kurallar oluşturma](configure-waf-custom-rules.md) ve daha fazla özel kural örnekleri (Create-Custom-WAF-Rules.MD).
+Coğrafi filtreleme özel kuralı oluşturmak için, eşleşme türü olarak *coğrafi konum* ' u seçmeniz yeterlidir ve sonra uygulamanızda izin vermek/engellemek istediğiniz ülke/bölge veya ülkeler/bölgeler ' ı seçin. Daha fazla bilgi için bkz. [PowerShell 'de özel kurallar oluşturma](configure-waf-custom-rules.md) ve daha fazla özel kural örnekleri (Create-Custom-WAF-Rules.MD).
 
 > [!IMPORTANT]
 > Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="country-codes"></a>Ülke kodları
+## <a name="countryregion-codes"></a>Ülke/bölge kodları
 
-Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ülke kodlarından herhangi biri olabilir. 
+Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ülke/bölge kodlarından herhangi biri olabilir. 
 
-|Ülke kodu | Ülke adı |
+|Ülke/bölge kodu | Ülke/bölge adı |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Birleşik Arap Emirlikleri|
@@ -41,7 +41,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | AT | Avusturya|
 | AU | Avustralya|
 | AZ | Azerbaycan|
-| BA | Bosna Hersek|
+| BA | Bosna-Hersek|
 | BB | Barbados|
 | BD | Bangladeş|
 | BE | Belçika|
@@ -58,7 +58,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | BT | Butan|
 | BW | Botsvana|
 | BY | Belarus|
-| BZ | Beliz|
+| BZ | Belize|
 | CA | Kanada|
 | CD | Demokratik Kongo Cumhuriyeti|
 | CF | Orta Afrika Cumhuriyeti|
@@ -88,10 +88,10 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | GS | Fransa|
 | GB | Birleşik Krallık|
 | GE | Gürcistan|
-| GF | Fransız Ginesi|
+| GF | Fransız Guyanası|
 | GH | Gana|
 | GN | Gine|
-| GP | Guadalupe|
+| GP | Guadeloupe|
 | GR | Yunanistan|
 | GT | Guatemala|
 | GY | Guyana|
@@ -100,7 +100,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | HR | Hırvatistan|
 | HT | Haiti|
 | HU | Macaristan|
-| Kimlik | Endonezya|
+| ID | Endonezya|
 | IE | İrlanda|
 | IL | İsrail|
 | IN | Hindistan|
@@ -119,14 +119,14 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | KP | Kore Demokratik Halk Cumhuriyeti|
 | KR | Kore Cumhuriyeti|
 | KW | Kuveyt|
-| KY | Kayman Adaları|
+| KY | Cayman Adaları|
 | KZ | Kazakistan|
 | LA | Laos Demokratik Halk Cumhuriyeti|
 | LB | Lübnan|
-| LI | Lihtenştayn|
+| LI | Liechtenstein|
 | LK | Sri Lanka|
 | LR | Liberya|
-| LS | Lesoto|
+| LS | Lesotho|
 | LT | Litvanya|
 | LU | Lüksemburg|
 | LV | Letonya|
@@ -139,7 +139,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | MM | Myanmar|
 | MN | Moğolistan|
 | MO | Makao ÖİB|
-| MQ | Martinik|
+| MQ | Martinique|
 | MR | Moritanya|
 | MT | Malta|
 | MV | Maldivler|
@@ -171,7 +171,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | RO | Romanya|
 | RS | Sırbistan|
 | RU | Rusya Federasyonu|
-| RW | Rwanda|
+| RW | Ruanda|
 | SA | Suudi Arabistan|
 | SD | Sudan|
 | SE | İsveç|
@@ -195,7 +195,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | TZ | Tanzanya Birleşik Cumhuriyeti|
 | UA | Ukrayna|
 | UG | Uganda|
-| ABD | Amerika Birleşik Devletleri|
+| ABD | Birleşik Devletler|
 | UY | Uruguay|
 | UZ | Özbekistan|
 | VC | Saint Vincent ve Grenadinler|

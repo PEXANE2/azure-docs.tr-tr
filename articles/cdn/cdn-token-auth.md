@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 491f413f9bf189b1a46d04042fd7223a47af1f24
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3539c101b8bf146e9feee6dfc4e90f859f0ef142
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929137"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745456"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Belirteç kimlik doğrulamasıyla Azure CDN varlıkların güvenliğini sağlama
 
@@ -33,7 +33,7 @@ Belirteç kimlik doğrulaması, Azure Content Delivery Network (CDN) 'in varlık
 
 Belirteç kimlik doğrulaması, isteklerin istek sahibi hakkında kodlanmış bilgileri tutan bir belirteç değeri içermesini gerektirerek güvenilen bir site tarafından oluşturulduğunu doğrular. İçerik, yalnızca kodlanan bilgiler gereksinimleri karşılıyorsa istek sahibine sunulur; Aksi takdirde, istekler reddedilir. Aşağıdaki parametrelerden bir veya daha fazlasını kullanarak gereksinimleri ayarlayabilirsiniz:
 
-- Ülke: [Ülke kodları](/previous-versions/azure/mt761717(v=azure.100))tarafından belirtilen ülkelerden/bölgelerden kaynaklanan Isteklere izin ver veya Reddet istekleri.
+- Ülke/bölge: [ülke/bölge kodları](/previous-versions/azure/mt761717(v=azure.100))tarafından belirtilen ülkelerden/bölgelerden kaynaklanan Isteklere izin ver veya Reddet.
 - URL: yalnızca belirtilen varlık veya yol ile eşleşen isteklere Izin ver.
 - Ana bilgisayar: istek üstbilgisinde belirtilen konakları kullanan isteklere Izin ver veya Reddet istekleri.
 - Başvuran: belirtilen başvuran için istekleri Izin ver veya Reddet.
@@ -100,31 +100,31 @@ Aşağıdaki akış çizelgesi, CDN uç noktasında belirteç kimlik doğrulamas
       > </tr>
       > <tr>
       >    <td><b>ec_expire</b></td>
-      >    <td>Belirtecin süresi dolduktan sonra belirtece bir süre sonu süresi atar. Süre sonu zamanından sonra gönderilen istekler reddedilir. Bu parametre, standart Unix dönemi sonrasındaki saniye sayısına bağlı olarak bir UNIX zaman damgası kullanır `1/1/1970 00:00:00 GMT`. (Standart saat ve UNIX saati arasında dönüştürme yapmak için çevrimiçi araçları kullanabilirsiniz.)> 
-      >    Örneğin, belirtecin süre içinde dolacağını `12/31/2016 12:00:00 GMT`Istiyorsanız, Unix zaman damgası değerini girin. `1483185600` 
+      >    <td>Belirtecin süresi dolduktan sonra belirtece bir süre sonu süresi atar. Süre sonu zamanından sonra gönderilen istekler reddedilir. Bu parametre, standart Unix dönemi sonrasındaki saniye sayısına bağlı olarak bir UNIX zaman damgası kullanır `1/1/1970 00:00:00 GMT` . (Standart saat ve UNIX saati arasında dönüştürme yapmak için çevrimiçi araçları kullanabilirsiniz.)> 
+      >    Örneğin, belirtecin süre içinde dolacağını istiyorsanız, `12/31/2016 12:00:00 GMT` Unix zaman damgası değerini girin `1483185600` . 
       > </tr>
       > <tr>
       >    <td><b>ec_url_allow</b></td> 
       >    <td>Belirteçleri belirli bir varlığa veya yola uyarlamanızı sağlar. URL 'SI belirli bir göreli yol ile başlayan isteklere erişimi kısıtlar. URL 'Ler büyük/küçük harfe duyarlıdır. Her yolu virgülle ayırarak birden çok yol girin; boşluk eklemeyin. Gereksinimlerinize bağlı olarak, farklı erişim düzeyi sağlamak için farklı değerler ayarlayabilirsiniz.> 
-      >    Örneğin, URL `http://www.mydomain.com/pictures/city/strasbourg.png`için, bu isteklere aşağıdaki giriş değerleri için izin verilir: 
+      >    Örneğin, URL için `http://www.mydomain.com/pictures/city/strasbourg.png` , bu isteklere aşağıdaki giriş değerleri için izin verilir: 
       >    <ul>
-      >       <li>Giriş değeri `/`: tüm isteklere izin verilir.</li>
-      >       <li>Giriş değeri `/pictures`, aşağıdaki isteklere izin verilir: <ul>
+      >       <li>Giriş değeri `/` : tüm isteklere izin verilir.</li>
+      >       <li>Giriş değeri `/pictures` , aşağıdaki isteklere izin verilir: <ul>
       >          <li>`http://www.mydomain.com/pictures.png`</li>
       >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
       >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
       >       </ul></li>
-      >       <li>Giriş değeri `/pictures/`: yalnızca `/pictures/` yolu içeren isteklere izin verilir. Örneğin, `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
-      >       <li>Giriş değeri `/pictures/city/strasbourg.png`: yalnızca bu belirli yol ve varlık için isteklere izin verilir.</li>
+      >       <li>Giriş değeri `/pictures/` : yalnızca yolu içeren isteklere `/pictures/` izin verilir. Örneğin, `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
+      >       <li>Giriş değeri `/pictures/city/strasbourg.png` : yalnızca bu belirli yol ve varlık için isteklere izin verilir.</li>
       >    </ul>
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Yalnızca bir veya daha fazla belirtilen ülkede/bölgeden kaynaklı isteklere izin verir. Diğer tüm ülkelerden/bölgelerden kaynaklanan istekler reddedilir. Her ülke için iki harfli [ıso 3166 ülke kodu](/previous-versions/azure/mt761717(v=azure.100)) kullanın ve her birini virgülle ayırın; boşluk eklemeyin. Örneğin, yalnızca Birleşik Devletler ve Fransa 'dan erişime izin vermek istiyorsanız, girin `US,FR`.</td>
+      >    <td>Yalnızca bir veya daha fazla belirtilen ülkede/bölgeden kaynaklı isteklere izin verir. Diğer tüm ülkelerden/bölgelerden kaynaklanan istekler reddedilir. Her ülke/bölge için iki harfli [ıso 3166 ülke/bölge kodu](/previous-versions/azure/mt761717(v=azure.100)) kullanın ve her birini virgülle ayırın; boşluk eklemeyin. Örneğin, yalnızca Birleşik Devletler ve Fransa 'dan erişime izin vermek istiyorsanız, girin `US,FR` .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Belirtilen bir veya daha fazla ülke/bölgeden kaynaklanan istekleri reddeder. Diğer tüm ülkelerden/bölgelerden kaynaklı isteklere izin verilir. Uygulama <b>ec_country_allow</b> parametresiyle aynıdır. Hem <b>ec_country_allow</b> hem de <b>ec_country_deny</b> parametrelerinde ülke kodu varsa <b>ec_country_allow</b> parametresi önceliklidir.</td>
+      >    <td>Belirtilen bir veya daha fazla ülke/bölgeden kaynaklanan istekleri reddeder. Diğer tüm ülkelerden/bölgelerden kaynaklı isteklere izin verilir. Uygulama <b>ec_country_allow</b> parametresiyle aynıdır. Hem <b>ec_country_allow</b> hem de <b>ec_country_deny</b> parametrelerinde bir ülke/bölge kodu varsa <b>ec_country_allow</b> parametresi önceliklidir.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
@@ -134,9 +134,9 @@ Aşağıdaki akış çizelgesi, CDN uç noktasında belirteç kimlik doğrulamas
       >       <li>Ana bilgisayar adı veya ana bilgisayar adı ve yolu.</li>
       >       <li>Birden çok başvuranlar. Birden çok başvura eklemek için, her bir başvuran virgülle ayırın; boşluk eklemeyin. Bir başvuran değeri belirtirseniz, ancak tarayıcı yapılandırması nedeniyle istek içinde başvuran bilgileri gönderilmezse, istek varsayılan olarak reddedilir.</li> 
       >       <li>Eksik veya boş başvuran bilgileri olan istekler. Varsayılan olarak, <b>ec_ref_allow</b> parametresi bu istek türlerini engeller. Bu isteklere izin vermek için, "eksik" metnini girin veya boş bir değer girin (sondaki virgül kullanarak).</li> 
-      >       <li>Alt. Alt etki alanlarına izin vermek için bir yıldız\*işareti () girin. Örneğin, tüm alt etki alanlarına izin vermek `contoso.com`için, `*.contoso.com`girin.</li>
+      >       <li>Alt. Alt etki alanlarına izin vermek için bir yıldız işareti ( \* ) girin. Örneğin, tüm alt etki alanlarına izin vermek için `contoso.com` , girin `*.contoso.com` .</li>
       >    </ul> 
-      >    Örneğin, içindeki isteklerin, içindeki `www.contoso.com`tüm alt etki alanları `contoso2.com`ve boş veya eksik başvuranlar içeren istekler için erişime izin vermek için girin `www.contoso.com,*.contoso.com,missing`.</td>
+      >    Örneğin, içindeki isteklerin `www.contoso.com` , içindeki tüm alt etki alanları `contoso2.com` ve boş veya eksik başvuranlar içeren istekler için erişime izin vermek için girin `www.contoso.com,*.contoso.com,missing` .</td>
       > </tr>
       > <tr> 
       >    <td><b>ec_ref_deny</b></td>
@@ -144,7 +144,7 @@ Aşağıdaki akış çizelgesi, CDN uç noktasında belirteç kimlik doğrulamas
       > </tr>
       > <tr> 
       >    <td><b>ec_proto_allow</b></td> 
-      >    <td>Yalnızca belirtilen protokoldeki isteklere izin verir. Geçerli değerler `http`, `https`, veya. `http,https`</td>
+      >    <td>Yalnızca belirtilen protokoldeki isteklere izin verir. Geçerli değerler `http` , `https` , veya `http,https` .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_proto_deny</b></td>
@@ -195,7 +195,7 @@ Aşağıdaki akış çizelgesi, CDN uç noktasında belirteç kimlik doğrulamas
    - PHP
    - Perl
    - Java
-   - Python 
+   - Python    
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN özellikleri ve sağlayıcı fiyatlandırması
 

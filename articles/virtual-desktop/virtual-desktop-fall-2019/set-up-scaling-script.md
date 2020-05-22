@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 012cdc53099bf156e50fe766b04c3176d415db1c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117402"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745706"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak oturum ana bilgisayarlarını ölçeklendirme
 
@@ -114,7 +114,7 @@ Her şeyi hazırlayın ve kullanmaya başlayın.
 
 Artık bir Azure Otomasyonu hesabınız olduğuna göre, Azure kaynaklarınıza erişmek için bir Azure Otomasyonu farklı çalıştır hesabı da oluşturmanız gerekir.
 
-Azure [Otomasyonu farklı çalıştır hesabı](../../automation/manage-runas-account.md) , Azure 'da Azure cmdlet 'leriyle kaynakları yönetmeye yönelik kimlik doğrulaması sağlar. Farklı Çalıştır hesabı oluşturduğunuzda, Azure Active Directory yeni bir hizmet sorumlusu kullanıcısı oluşturur ve katılımcı rolünü abonelik düzeyinde hizmet sorumlusu kullanıcısına atar; Azure farklı çalıştır hesabı, bir kimlik bilgisi nesnesinde Kullanıcı adı ve parola depolamaya gerek kalmadan sertifikalar ve hizmet sorumlusu adıyla güvenli kimlik doğrulaması yapmanın harika bir yoludur. Farklı çalıştır kimlik doğrulaması hakkında daha fazla bilgi edinmek için bkz. [Farklı Çalıştır hesabı Izinlerini sınırlandırma](../../automation/manage-runas-account.md#limiting-run-as-account-permissions).
+Azure [Otomasyonu farklı çalıştır hesabı](../../automation/manage-runas-account.md) , Azure 'da Azure cmdlet 'leriyle kaynakları yönetmeye yönelik kimlik doğrulaması sağlar. Farklı Çalıştır hesabı oluşturduğunuzda, Azure Active Directory yeni bir hizmet sorumlusu kullanıcısı oluşturur ve katılımcı rolünü abonelik düzeyinde hizmet sorumlusu kullanıcısına atar; Azure farklı çalıştır hesabı, bir kimlik bilgisi nesnesinde Kullanıcı adı ve parola depolamaya gerek kalmadan sertifikalar ve hizmet sorumlusu adıyla güvenli kimlik doğrulaması yapmanın harika bir yoludur. Farklı çalıştır kimlik doğrulaması hakkında daha fazla bilgi edinmek için bkz. [Farklı Çalıştır hesabı Izinlerini sınırlandırma](../../automation/manage-runas-account.md#limit-run-as-account-permissions).
 
 Abonelik yöneticileri rolü ve aboneliğin ortak Yöneticisi üyesi olan herhangi bir Kullanıcı, sonraki bölümde yer alan yönergeleri izleyerek bir farklı çalıştır hesabı oluşturabilir.
 

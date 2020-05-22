@@ -3,12 +3,12 @@ title: Yönetim gruplarınız ile çalışma-Azure Idare
 description: Yönetim grubu hiyerarşinizi görüntülemeyi, bakımını yapmayı, güncelleştirmeyi ve silmeyi öğrenin.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 423d1837c3d5710e24abb94f5411200319e8a8aa
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: e3d92e0785e54c0999b8cc0f055b7de355a4c4f5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "81381675"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747486"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kaynakları yönetim gruplarıyla yönetme
 
@@ -29,7 +29,7 @@ Portal, PowerShell veya Azure CLı kullanarak yönetim grubunun adını değişt
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
+1. **Tüm hizmetler**  >  **Yönetim gruplarını**seçin.
 
 1. Yeniden adlandırmak istediğiniz yönetim grubunu seçin.
 
@@ -76,7 +76,7 @@ Bir yönetim grubunu silmek için aşağıdaki gereksinimlerin karşılanması g
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
+1. **Tüm hizmetler**  >  **Yönetim gruplarını**seçin.
 
 1. Silmek istediğiniz yönetim grubunu seçin.
 
@@ -119,7 +119,7 @@ az account management-group delete --name 'Contoso'
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
+1. **Tüm hizmetler**  >  **Yönetim gruplarını**seçin.
 
 1. Yönetim grubu hiyerarşisi sayfası yüklenir. Bu sayfa, erişiminiz olan tüm yönetim gruplarını ve abonelikleri keşfedebileceğiniz yerdir. Grup adı seçildiğinde hiyerarşide bir düzey yer alır. Gezinti, dosya Gezgini ile aynı şekilde çalışmaktadır.
 
@@ -223,7 +223,7 @@ Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seç
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
+1. **Tüm hizmetler**  >  **Yönetim gruplarını**seçin.
 
 1. Üst öğe olmasını planladığınız yönetim grubunu seçin.
 
@@ -239,7 +239,7 @@ Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seç
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
+1. **Tüm hizmetler**  >  **Yönetim gruplarını**seçin.
 
 1. Geçerli üst öğe olan planlama yaptığınız yönetim grubunu seçin.  
 
@@ -289,7 +289,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
+1. **Tüm hizmetler**  >  **Yönetim gruplarını**seçin.
 
 1. Üst öğe olmasını planladığınız yönetim grubunu seçin.
 
@@ -344,7 +344,7 @@ New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Co
 Bir yönetim grubunda ilke tanımı alınırken aynı kapsam yolu kullanılır.
 
 ```http
-GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2018-05-01
+GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2019-09-01
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

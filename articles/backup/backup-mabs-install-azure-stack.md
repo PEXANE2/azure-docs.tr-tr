@@ -3,12 +3,12 @@ title: Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 description: Bu makalede, Azure Stack iş yüklerini korumak veya yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77583444"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747447"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 
@@ -57,7 +57,7 @@ Diğer sanal makinelerle paylaşılırsa, depolama hesabı boyutu ve ıOPS sın�
 
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Azure Backup geçici disk depolamayı yapılandırma
 
-Her Azure Stack sanal makine, Kullanıcı tarafından birim `D:\`olarak kullanılabilen geçici disk depolama alanıyla birlikte gelir. Azure Backup için gereken yerel hazırlama alanı, içinde `D:\`bulunacak şekilde yapılandırılabilir ve önbellek konumu üzerine `C:\`yerleştirilebilecek. Bu şekilde, Azure Backup Sunucusu sanal makinesine bağlı veri disklerinden hiçbir depolamanın ayrılması gerekmez.
+Her Azure Stack sanal makine, Kullanıcı tarafından birim olarak kullanılabilen geçici disk depolama alanıyla birlikte gelir `D:\` . Azure Backup için gereken yerel hazırlama alanı, içinde bulunacak şekilde yapılandırılabilir `D:\` ve önbellek konumu üzerine yerleştirilebilecek `C:\` . Bu şekilde, Azure Backup Sunucusu sanal makinesine bağlı veri disklerinden hiçbir depolamanın ayrılması gerekmez.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Yedekleme verilerini yerel diskte ve Azure 'da depolama
 
@@ -91,7 +91,7 @@ Azure Backup Sunucusu sanal makinenin bir etki alanına katılması gerekir. Yö
 
 Azure Backup Sunucusu için bir sunucu seçerken, bir Windows Server 2012 R2 Datacenter veya Windows Server 2016 Datacenter Galeri görüntüsü ile başlayın. Makalede, [Ilk Windows sanal makinenizi Azure Portal oluşturun](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), önerilen sanal makine ile çalışmaya başlama hakkında bir öğretici sağlar. Sunucu sanal makinesi (VM) için önerilen minimum gereksinimler şunlardır: iki çekirdek ve 3,5 GB RAM ile a2 standart.
 
-Azure Backup Sunucusu olan iş yüklerini koruma çok sayıda nusmaya sahiptir. [Azure sanal makinesi olarak DPM 'Yi yükleyen](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))makale, bu nusların açıklanmasına yardımcı olur. Makineyi dağıttıktan önce, bu makaleyi tamamen okuyun.
+Azure Backup Sunucusu olan iş yüklerini koruma çok sayıda nusmaya sahiptir. [MABS için koruma matrisi](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) bu nusların açıklanmasına yardımcı olur. Makineyi dağıttıktan önce, bu makaleyi tamamen okuyun.
 
 > [!NOTE]
 > Azure Backup Sunucusu, özel, tek amaçlı bir sanal makinede çalışmak üzere tasarlanmıştır. Üzerinde Azure Backup Sunucusu yükleyemezsiniz:
@@ -112,7 +112,7 @@ Kurtarma Hizmetleri Kasası depolama çoğaltma seçeneği, coğrafi olarak yede
 Depolama çoğaltma ayarını düzenlemek için:
 
 1. Kasa panosunu ve Ayarlar menüsünü açmak için kasanızı seçin. **Ayarlar** menüsü açılmazsa, kasa panosunda **Tüm ayarlar** ' a tıklayın.
-2. **Ayarlar** menüsünde, yedekleme **yapılandırma** menüsünü açmak için **altyapıyı** > yedekle**yedekleme yapılandırması** ' na tıklayın. **Yedekleme yapılandırması** menüsünde, kasanızın depolama çoğaltma seçeneğini belirleyin.
+2. **Ayarlar** menüsünde, yedekleme **Backup Infrastructure**  >  **yapılandırma** menüsünü açmak için altyapıyı yedekle**yedekleme yapılandırması** ' na tıklayın. **Yedekleme yapılandırması** menüsünde, kasanızın depolama çoğaltma seçeneğini belirleyin.
 
     ![Yedekleme kasalarının listesi](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -243,7 +243,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Azure 'a yedeklemek için karalama konumu gereklidir. Karalama konumunun boyutunun Azure 'a yedeklenmek üzere planlandığı verilerin en az %5 ' ine eşit olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [depolama havuzlarını ve Disk depolamayı yapılandırma](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
+    Azure 'a yedeklemek için karalama konumu gereklidir. Karalama konumunun boyutunun Azure 'a yedeklenmek üzere planlandığı verilerin en az %5 ' ine eşit olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [veri depolamayı hazırlama](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
 
 6. **Güvenlik ayarları** ekranında, kısıtlı yerel kullanıcı hesapları için güçlü bir parola girin ve **İleri**' ye tıklayın.
 
@@ -318,7 +318,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
 ## <a name="network-connectivity"></a>Ağ bağlantısı
 
-Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için Azure Backup Sunucusu PowerShell konsolundaki ```Get-DPMCloudConnection``` cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var, aksi durumda bağlantı yok.
+Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için ```Get-DPMCloudConnection``` Azure Backup sunucusu PowerShell konsolundaki cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var, aksi durumda bağlantı yok.
 
 Aynı zamanda Azure aboneliğinin sağlıklı bir durumda olması gerekir. Aboneliğinizin durumunu öğrenmek ve yönetmek için [abonelik portalında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)oturum açın.
 

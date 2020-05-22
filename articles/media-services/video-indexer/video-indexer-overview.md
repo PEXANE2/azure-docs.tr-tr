@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 08dcee28c234183aa2b125d82d046d31d4b50e47
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788862"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744598"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer nedir?
 
@@ -70,8 +70,8 @@ Aşağıdaki listede video ve ses modellerini Video Indexer kullanarak videolar�
 
 ### <a name="audio-insights"></a>Audio Insights
 
-* **Ses dökümü**: konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Mandarin Çince, Japonca, Arapça, Rusça, Brezilya Portekizcesi, Hintçe ve Korece bulunur.
-* **Otomatik dil algılama**: En baskın olarak konuşulan dili otomatik olarak belirler. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, MANDARIN Çince, Japonca, Rusça ve Brezilya Portekizcesi bulunur. Dil güvenle tanımlanamıyorsa, Video Indexer konuşulan dilin Ingilizce olduğunu varsayar. Daha fazla bilgi için bkz. [dil tanımlama modeli](language-identification-model.md).
+* **Ses dökümü**: konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, MANDARIN Çince, Japonca, Arapça, Rusça, Portekizce, Hintçe ve Korece bulunur.
+* **Otomatik dil algılama**: En baskın olarak konuşulan dili otomatik olarak belirler. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, MANDARIN Çince, Japonca, Rusça ve Portekizce bulunur. Dil güvenle tanımlanamıyorsa, Video Indexer konuşulan dilin Ingilizce olduğunu varsayar. Daha fazla bilgi için bkz. [dil tanımlama modeli](language-identification-model.md).
 * **Çok dilli konuşma tanımlama ve** döküm (Önizleme): ses 'tan farklı kesimlerde konuşulan dili otomatik olarak tanımlar. Bu, oluşturulacak medya dosyasının her bir segmentini gönderir ve ardından geri alma işlemi ile Birleşik bir dökümü yeniden birleştirir. Daha fazla bilgi için bkz. [Çoklu dil Içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md).
 * **Açıklamalı altyazı**: Üç biçimde açıklamalı altyazı oluşturur: VTT, TTML, SRT.
 * **İki kanal işleme**: otomatik olarak ayrı dökümü algılar ve tek bir zaman çizelgesine birleştirir.
@@ -114,7 +114,7 @@ Web sitesini kullanıyorsanız, Öngörüler meta veriler olarak eklenir ve port
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Video Indexer hizmetini kullanmaya başlamaya hazırsınız. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Video Indexer hizmetini kullanmaya başlamaya hazırsınız. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Video Indexer Web sitesini](video-indexer-get-started.md)kullanmaya başlayın.
 - [Video Indexer REST API ile Içerik işleyin](video-indexer-use-apis.md).

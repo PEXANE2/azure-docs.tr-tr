@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 7ba6ea8606fc354527ff4114bc45a0904941ba93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a0b3a91d9af119191717aa63a2dedf0797159fd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77918946"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745792"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: sık sorulan sorular
 
@@ -36,7 +36,7 @@ A.  Azure Data Box hizmeti, çevrimdışı veri alımı için tasarlanmıştır.
 ### <a name="q-what-are-azure-data-box-disks"></a>S. Azure Data Box Diskleri nedir?
 A. Azure Data Box Diskleri terabaytlarca veriyi Azure'da çift yönlü olarak hızlı, uygun maliyetli ve güvenli bir şekilde aktarmanızı sağlar. Microsoft size toplamda maksimum 35 TB depolama kapasitesi sunan 1 ile 5 arasında disk gönderir. Bu diskleri Azure portalda Data Box hizmetiyle kolayca yapılandırabilir, bağlayabilir ve disklerin kilidini açabilirsiniz.  
 
-Diskler Microsoft BitLocker sürücü şifrelemesi ile şifrelenir ve şifreleme anahtarlarınız Azure portalda yönetilir. Ardından müşterinin sunucularındaki verileri kopyalarsınız. Microsoft verilerinizi veri merkezinde hızlı ve özel bir ağ yükleme bağlantısı aracılığıyla sürücüden buluta geçirir ve Azure'a yükler.
+Diskler Microsoft BitLocker sürücü şifrelemesi ile şifrelenir ve şifreleme anahtarlarınız Azure portalda yönetilir. Daha sonra verileri müşterinin sunucularından kopyalayabilirsiniz. Microsoft verilerinizi veri merkezinde hızlı ve özel bir ağ yükleme bağlantısı aracılığıyla sürücüden buluta geçirir ve Azure'a yükler.
 
 ### <a name="q-when-should-i-use-data-box-disks"></a>S. Data Box Disklerini ne zaman kullanmalıyım?
 A. Azure'a aktarmak istediğiniz 40 TB (veya daha az) boyutunda veriniz varsa Data Box Disklerinden faydalanabilirsiniz.
@@ -56,8 +56,8 @@ A.  Data Box disklerinin Şu anda kullanılabilir olduğunu görmek için [bölg
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>S. Data Box Diskleri ile hangi bölgelerde veri depolayabilirim?
 A. Data Box Disk ABD, Kanada, Avustralya, Batı Avrupa ve Kuzey Avrupa, Kore ve Japonya 'daki tüm bölgeler için desteklenir. Yalnızca Azure genel bulut bölgeleri desteklenir. Azure Kamu veya diğer bağımsız bulutlar desteklenmez.
 
-### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>S. Data Box Disk nakliye sırasında çapraz ülke kenarlıklarım olacak mı?
-A. Data Box Disk, hedefle aynı ülke içinden gönderilir ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB) ' deki, disklerin herhangi bir AB ülkesine ve bu ülkeye nereden gönderdiklerinin bulunduğu emirlerdir.
+### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>S. Sevkiyat sırasında Data Box Disk çapraz ülke/bölge kenarlıkları olacak mı?
+A. Data Box Disk, hedefle aynı ülke/bölge içinden gönderilir ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB) ' deki ve disklerin herhangi bir AB ülkesine/bölgesine nereden gönderdiklerinin bulunduğu emirlerdir.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>S. Data Box Diskleriyle ilgili sorun yaşamam halinde kiminle iletişim kurmam gerekir?
 A. Data Box diskleriyle ilgili herhangi bir sorunla karşılaşırsanız lütfen [Microsoft desteği başvurun](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -138,7 +138,7 @@ A.  Kopyalama işlemini hızlandırmak için:
 
 - Hızlı depolama alanında yerel bir VHDx oluşturun veya HDD/SSD üzerinde boş bir VHD oluşturun (daha yavaştır).
 - Bunu bir sanal makineye takın.
-- Dosyaları sanal makinenin diskine kopyalayın.
+- Dosyaları VM 'nin diskine kopyalayın.
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>S. Data Box Diskleriyle birden fazla depolama hesabı kullanabilir miyim?
 A.  Hayır. Şu an için Data Box Diskleri ile yalnızca tek bir depolama hesabı (genel veya klasik) kullanılabilir. Hem sık hem de seyrek erişimli bloblar desteklenir. Şu anda yalnızca, Azure genel bulutundaki ABD, Batı Avrupa ve Kuzey Avrupa depolama hesapları desteklenmektedir.
@@ -159,7 +159,7 @@ A. Azure dosyaları Data Box Disk desteklenir, ancak Azure Dosya Eşitleme ile b
 
 ## <a name="verify-and-upload"></a>Doğrulama ve yükleme
 
-### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-disks-back"></a>S. Diskleri geri gönderdikten sonra verilerime Azure'da nasıl erişebilirim? 
+### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-disks-back"></a>S. Diskleri yeniden gönderdikten sonra, Azure 'daki verilerinize ne kadar yakında erişebilirim? 
 A.  Veri Kopyalama işlemi için sipariş durumu tamamlandı olarak değiştiğinde verilerinize doğrudan erişim sağlayabilirsiniz.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>S. Yükleme sonrasında verilerim Azure'da hangi konumda bulunur?

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: 701a5aab7a0061f8b5abfaac1b699034db2671b9
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: cc709be7a7f0d46d105e73b0a105a3dec8cc793c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508998"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746716"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Azure Otomasyonu 'nda Python 2 paketlerini yönetme
 
@@ -48,10 +48,10 @@ Paketler indirildikten sonra Otomasyon hesabınıza içeri aktarabilirsiniz.
 
  Bir runbook almak için, [Pypı 'Den Otomasyon hesabınıza Python 2 paketlerini Azure Otomasyonu hesabına aktarın](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) . Çalıştırma ayarlarının **Azure** olarak ayarlandığından emin olun ve Runbook 'u parametrelerle başlatın. Runbook, Otomasyon hesabının çalışması için bir farklı çalıştır hesabı gerektirir. Her parametre için, aşağıdaki listede ve görüntüde görüldüğü gibi anahtarı ile başlattığınızdan emin olun:
 
-* -s \<SubscriptionID\>
-* -g \<resourceGroup\>
-* -bir \<automationaccount\>
-* -a \<modulepackage\>
+* -s \< SubscriptionID\>
+* -g \< resourceGroup\>
+* -bir \< automationaccount\>
+* -a \< modulepackage\>
 
 ![Paket listesi](media/python-packages/import-python-runbook.png)
 
@@ -61,7 +61,7 @@ Runbook tamamlandıktan sonra, paketin doğru bir şekilde içeri aktarıldığ�
 
 ## <a name="use-a-package-in-a-runbook"></a>Runbook 'ta paket kullanma
 
-İçeri aktarılmış bir paket ile runbook 'ta kullanabilirsiniz. Aşağıdaki örnek [Azure Otomasyonu yardımcı programı paketini](https://github.com/azureautomation/azure_automation_utility)kullanır. Bu paket, Azure Otomasyonu ile Python kullanmayı kolaylaştırır. Paketi kullanmak için GitHub deposundaki yönergeleri izleyin ve Runbook 'a ekleyin. Örneğin, farklı çalıştır hesabını almak `from azure_automation_utility import get_automation_runas_credential` için işlevini içeri aktarmak için kullanabilirsiniz.
+İçeri aktarılmış bir paket ile runbook 'ta kullanabilirsiniz. Aşağıdaki örnek [Azure Otomasyonu yardımcı programı paketini](https://github.com/azureautomation/azure_automation_utility)kullanır. Bu paket, Azure Otomasyonu ile Python kullanmayı kolaylaştırır. Paketi kullanmak için GitHub deposundaki yönergeleri izleyin ve Runbook 'a ekleyin. Örneğin, `from azure_automation_utility import get_automation_runas_credential` Farklı Çalıştır hesabını almak için işlevini içeri aktarmak için kullanabilirsiniz.
 
 ```python
 import azure.mgmt.resource
@@ -89,4 +89,4 @@ Python 2 runbook 'larınızı çevrimdışı ortamda geliştirmek ve test etmek 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Python 2 runbook 'unu kullanmaya başlamak için bkz. [Ilk Python 2 runbook 'Um](automation-first-runbook-textual-python2.md).
+[Python runbook'u oluşturma](learn/automation-tutorial-runbook-textual-python2.md)

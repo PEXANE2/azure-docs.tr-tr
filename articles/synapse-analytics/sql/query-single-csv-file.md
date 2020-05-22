@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0e4208f4f9a01bc42d4c6134ec3ec4fb1cb19fd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431598"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744276"
 ---
 # <a name="query-csv-files"></a>CSV dosyalarını sorgula
 
@@ -32,7 +32,7 @@ Yukarıdaki tüm Çeşitlemeler aşağıda ele alınacaktır.
 Bu makalenin geri kalanını okumadan önce aşağıdaki makaleleri gözden geçirin:
 
 - [İlk kez kurulum](query-data-storage.md#first-time-setup)
-- [Ön koşullar](query-data-storage.md#prerequisites)
+- [Önkoşullar](query-data-storage.md#prerequisites)
 
 ## <a name="windows-style-new-line"></a>Windows stili yeni satır
 
@@ -176,7 +176,7 @@ WHERE
 ```
 
 > [!NOTE]
-> "Slov, enıa" içindeki virgül, ülke adının bir parçası yerine alan sınırlayıcısı olarak değerlendirildiğinden, bu sorgu, ESCAPECHAR belirtilmemişse başarısız olur. "Slov, Enia" iki sütun olarak değerlendirilir. Bu nedenle, belirli satırda diğer satırlardan daha fazla bir sütun ve WıTH yan tümcesinde tanımladığınız bir sütun daha vardır.
+> "Slov, enıa" içindeki virgül, ülke/bölge adının bir parçası yerine alan sınırlayıcısı olarak değerlendirildiğinden, bu sorgu, ESCAPECHAR belirtilmemişse başarısız olur. "Slov, Enia" iki sütun olarak değerlendirilir. Bu nedenle, belirli satırda diğer satırlardan daha fazla bir sütun ve WıTH yan tümcesinde tanımladığınız bir sütun daha vardır.
 
 ## <a name="tab-delimited-files"></a>Sekmeyle ayrılmış dosyalar
 
@@ -210,7 +210,7 @@ WHERE
 
 Şimdiye kadar, Ile kullanarak CSV dosya şemasını belirttiniz ve tüm sütunları listelediyseniz. Sorgunuz için gereken sütunları yalnızca gerekli her sütun için bir sıra numarası kullanarak belirtebilirsiniz. İlgilendiğiniz sütunları da atlayabilirsiniz.
 
-Aşağıdaki sorgu, yalnızca gereken sütunları belirterek bir dosyadaki farklı ülke adlarının sayısını döndürür:
+Aşağıdaki sorgu, yalnızca gereken sütunları belirterek bir dosyadaki farklı ülke/bölge adlarının sayısını döndürür:
 
 > [!NOTE]
 > Aşağıdaki sorgudaki WıTH yan tümcesine göz atın ve *[country_name]* sütununu tanımladığınız satırın sonunda "2" (tırnak işareti olmadan) olduğunu unutmayın. Bu, *[country_name]* sütununun dosyadaki ikinci sütun olduğu anlamına gelir. Sorgu, ikinci tane hariç dosyadaki tüm sütunları yoksayar.

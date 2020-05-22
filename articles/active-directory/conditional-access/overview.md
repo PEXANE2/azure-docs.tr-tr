@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/17/2019
+ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c3082fbd7c02cbb075fd118f8e6021ac951e8e3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240915"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737682"
 ---
 # <a name="what-is-conditional-access"></a>Koşullu Erişim nedir?
 
@@ -47,7 +47,7 @@ Bir ilke kararı verirken, Koşullu erişimin hesaba götürebileceğine ilişki
    - İlkeler, yöneticilere erişim üzerinde ayrıntılı denetim sağlayan belirli kullanıcıları ve grupları hedefleyebilir.
 - IP konumu bilgileri
    - Kuruluşlar, ilke kararları verirken kullanılabilecek güvenilen IP adresi aralıkları oluşturabilir. 
-   - Yöneticiler, trafiği engellemek veya buna izin vermek için tüm ülkelerin IP aralıklarını belirtebilir.
+   - Yöneticiler, trafiği engellemek veya izin vermek için tüm ülke/bölge IP aralıklarını belirtebilir.
 - Cihaz
    - Belirli platformları olan veya belirli bir durumla işaretlenmiş kullanıcılar, koşullu erişim ilkelerini zorlarken kullanılabilir.
 - Uygulama

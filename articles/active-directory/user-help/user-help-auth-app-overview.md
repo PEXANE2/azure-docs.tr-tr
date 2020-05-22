@@ -8,15 +8,15 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: c95ae2e48a7d5a3b9e9e28b1d4e14b670205c043
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60c2b3ed1f367dc5c501a51ed52440f7d9d3ed6b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062294"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741180"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması nedir?
 
@@ -37,12 +37,12 @@ Microsoft Authenticator uygulamasını, aşağıdakiler dahil olmak üzere birde
 
 ## <a name="terminology"></a>Terminoloji
 
-| Sözleşme Dönemi|Açıklama|
+| Terim|Açıklama|
 | ----|-----------|
 | İki öğeli doğrulama | Bir parola ve PIN gibi özellikle yalnızca iki doğrulama bilgisi parçasını kullanmanızı gerektiren bir doğrulama işlemi. Microsoft Authenticator uygulaması hem standart iki öğeli doğrulamayı hem de passwordless oturum açmayı destekler. |
 | Çok faktörlü kimlik doğrulaması (MFA) | İki öğeli kimlik doğrulama işlemi, kuruluşunuzun gereksinimlerine bağlı olarak, *en az* iki adet doğrulama bilgileri kullanmanızı gerektiren Multi-Factor Authentication ' dır. |
 | Microsoft hesabı (da denir, MSA) | Müşteri odaklı Microsoft ürünlerine ve Outlook, OneDrive, Xbox LIVE veya Office 365 gibi bulut hizmetlerine erişim sağlamak için kendi kişisel hesaplarınızı oluşturursunuz. Microsoft hesabı, Microsoft tarafından çalıştırılan Microsoft tüketici kimliği hesap sisteminde oluşturulur ve depolanır. |
-| İş veya okul hesabı | Kuruluşunuz, Microsoft Azure, Windows Intune ve Office 365 gibi iç alain@contoso.comve potansiyel olarak kısıtlanmış kaynaklara erişmenizi sağlamak için iş veya okul hesabınızı (gibi) oluşturur. |
+| İş veya okul hesabı | Kuruluşunuz, alain@contoso.com Microsoft Azure, Windows Intune ve Office 365 gibi iç ve potansiyel olarak kısıtlanmış kaynaklara erişmenizi sağlamak için iş veya okul hesabınızı (gibi) oluşturur. |
 | Doğrulama kodu | Her eklenen hesap altında kimlik doğrulayıcı uygulamasında görünen altı basamaklı kod. Doğrulama kodu, birinin bir kodu birden çok kez kullanmasını önlemek için 30 saniyede bir değişir. Bu, tek seferlik geçiş kodu (OTP) olarak da bilinir. |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>İki öğeli doğrulamanın uygulamayla nasıl çalıştığı
@@ -63,11 +63,11 @@ Kimlik doğrulama işlemini gerçekleştirmek için bir PIN kullanırsanız, Mic
 
 Kuruluşunuz, hesap türüne bağlı olarak iki öğeli doğrulama kullanmanız gerektiğine karar verebilir veya kendiniz karar veremeyebilirsiniz.
 
-- **İş veya okul hesabı.** Bir iş veya okul hesabı kullanıyorsanız (örneğin, alain@contoso.com), bu, belirli doğrulama yöntemleriyle birlikte iki öğeli doğrulama kullanmanız gerekip gerekmediğini kuruluşunuza göre yapılır. Microsoft Authenticator uygulamasına iş veya okul hesabınızı ekleme hakkında daha fazla bilgi için bkz. [iş veya okul hesaplarınızı ekleme](user-help-auth-app-add-work-school-account.md).
+- **İş veya okul hesabı.** Bir iş veya okul hesabı kullanıyorsanız (örneğin, alain@contoso.com ), bu, belirli doğrulama yöntemleriyle birlikte iki öğeli doğrulama kullanmanız gerekip gerekmediğini kuruluşunuza göre yapılır. Microsoft Authenticator uygulamasına iş veya okul hesabınızı ekleme hakkında daha fazla bilgi için bkz. [iş veya okul hesaplarınızı ekleme](user-help-auth-app-add-work-school-account.md).
 
-- **Kişisel Microsoft hesabı.** Kişisel Microsoft hesaplarınız için iki öğeli doğrulama ayarlamayı seçebilirsiniz (örneğin, alain@outlook.com). Kişisel Microsoft hesabı ekleme hakkında daha fazla bilgi için bkz. [Kişisel hesaplarınızı ekleme](user-help-auth-app-add-personal-ms-account.md).
+- **Kişisel Microsoft hesabı.** Kişisel Microsoft hesaplarınız için iki öğeli doğrulama ayarlamayı seçebilirsiniz (örneğin, alain@outlook.com ). Kişisel Microsoft hesabı ekleme hakkında daha fazla bilgi için bkz. [Kişisel hesaplarınızı ekleme](user-help-auth-app-add-personal-ms-account.md).
 
-- **Microsoft hesabı olmayan.** Microsoft dışı hesaplarınız için iki öğeli doğrulama ayarlamayı tercih edebilirsiniz (örneğin, alain@gmail.com). Microsoft dışı hesaplarınız, iki öğeli doğrulama terimini kullanamaz, ancak **güvenlik** veya **oturum açma** ayarları içinde özelliği bulabilmelisiniz. Microsoft Authenticator uygulama, TOTP standartlarını destekleyen hesaplarla birlikte çalışmaktadır. Microsoft dışı hesaplarınız ekleme hakkında daha fazla bilgi için bkz. [Microsoft dışı hesaplarınız ekleme](user-help-auth-app-add-non-ms-account.md).
+- **Microsoft hesabı olmayan.** Microsoft dışı hesaplarınız için iki öğeli doğrulama ayarlamayı tercih edebilirsiniz (örneğin, alain@gmail.com ). Microsoft dışı hesaplarınız, iki öğeli doğrulama terimini kullanamaz, ancak **güvenlik** veya **oturum açma** ayarları içinde özelliği bulabilmelisiniz. Microsoft Authenticator uygulama, TOTP standartlarını destekleyen hesaplarla birlikte çalışmaktadır. Microsoft dışı hesaplarınız ekleme hakkında daha fazla bilgi için bkz. [Microsoft dışı hesaplarınız ekleme](user-help-auth-app-add-non-ms-account.md).
 
 ## <a name="in-this-section"></a>Bu bölümde
 

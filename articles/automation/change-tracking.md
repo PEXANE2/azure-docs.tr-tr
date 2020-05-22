@@ -1,18 +1,18 @@
 ---
-title: Azure Otomasyonu 'nda Değişiklik İzleme ve envantere genel bakış
-description: Değişiklik İzleme ve envanter, ortamınızda gerçekleşen yazılım ve Microsoft hizmet değişikliklerini belirlemenize yardımcı olur.
+title: Azure Otomasyonu Değişiklik İzleme ve envantere genel bakış
+description: Bu makalede, ortamınızda gerçekleşen yazılım ve Microsoft hizmet değişikliklerini belirlemenize yardımcı olan Değişiklik İzleme ve envanter özelliği açıklanır.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ab091ba413a8429a8fea131c643cceee7007f927
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787184"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744374"
 ---
-# <a name="overview-of-change-tracking-and-inventory"></a>Değişiklik İzleme ve stoğa genel bakış
+# <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
 Bu makalede, Azure Otomasyonu 'nda Değişiklik İzleme ve envanter sunulmaktadır. Bu özellik, dağıtım paketi Yöneticisi tarafından yönetilen yazılımlarla işletimsel ve çevresel sorunları belirlemenize yardımcı olması için sanal makinelerde ve sunucu altyapısında yapılan değişiklikleri izler. Değişiklik İzleme ve envanter tarafından izlenen öğeler şunları içerir: 
 
@@ -50,7 +50,7 @@ Diğer sınırlamalar:
 Değişiklik İzleme ve envanter Şu anda aşağıdaki sorunları yaşıyor:
 
 * Düzeltme güncelleştirmeleri Windows Server 2016 Core RS3 makinelerinde toplanmaz.
-* Linux Daemon 'ları, hiçbir değişiklik gerçekleşmese de değiştirilmiş durumu gösterebilir. Bu sorun, Azure Izleyici [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) günlüğündeki `SvcRunLevels` verilerin yakalandığı şekilde ortaya çıkar.
+* Linux Daemon 'ları, hiçbir değişiklik gerçekleşmese de değiştirilmiş durumu gösterebilir. Bu sorun, `SvcRunLevels` Azure Izleyici [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) günlüğündeki verilerin yakalandığı şekilde ortaya çıkar.
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -77,7 +77,7 @@ Değişiklik izleme grafiğini ve değişiklik türü ve zaman aralıklarına g�
 
 Ayrıntılarını görüntülemek için bir değişikliğe veya olaya tıklayabilirsiniz. Kullanılabilir değişiklik türleri şunlardır:
 
-* Olaylar
+* Ekinlikler
 * Daemon 'ları
 * Dosyalar
 * Kayıt Defteri
@@ -136,7 +136,7 @@ Değişiklik İzleme ve envanter, [Azure Güvenlik Merkezi dosya bütünlüğü 
 Değişiklik İzleme ve envanter özyineleme destekler, bu da dizinler genelinde izlemeyi basitleştirmek için joker karakterler belirtmenize olanak tanır. Özyineleme Ayrıca, birden çok veya dinamik sürücü adına sahip ortamlarda dosyaları izlemenize olanak tanımak için ortam değişkenleri sağlar. Aşağıdaki listede, özyineleme yapılandırılırken bilmeniz gereken yaygın bilgiler yer almaktadır:
 
 * Birden çok dosyayı izlemek için joker karakterler gereklidir.
-* Joker karakterler yalnızca bir yolun son kesiminde kullanılabilir; Örneğin, **\\c:\klasör dosyası*** veya **/etc/*. conf**.
+* Joker karakterler yalnızca bir yolun son kesiminde kullanılabilir; Örneğin, **c:\klasör \\ dosyası*** veya **/etc/*. conf**.
 * Bir ortam değişkeni geçersiz bir yol içeriyorsa, doğrulama başarılı olur ancak yürütme sırasında yol başarısız olur.
 * Yolu ayarlarken genel yol adlarından kaçının, bu tür bir ayar, çok fazla klasör alınmasına neden olabilir.
 
@@ -184,17 +184,18 @@ Değişiklik İzleme ve envanterin önemli bir özelliği, karma ortamınızın 
 
 |Sorgu  |Açıklama  |
 |---------|---------|
-|ConfigurationChange <br>ConfigChangeType = = "Files" ve Filesystemmpath "c\\: Windows\\system32\\Drivers\\" içerdiğinde &#124;|Sistem açısından kritik dosyalarda yapılan değişiklikleri izlemek için faydalıdır.|
-|ConfigurationChange <br>Alanlardaki "FileContentChecksum" ve Filesystemmpath = = "\\c: Windows\\system32\\Drivers\\ve\\Konakları" içeren &#124;|Anahtar yapılandırma dosyalarında yapılan değişiklikleri izlemek için faydalıdır.|
+|ConfigurationChange <br>ConfigChangeType = = "Files" ve Filesystemmpath "c: \\ Windows \\ system32 \\ drivers \\ " içerdiğinde &#124;|Sistem açısından kritik dosyalarda yapılan değişiklikleri izlemek için faydalıdır.|
+|ConfigurationChange <br>Alanlardaki "FileContentChecksum" ve Filesystemmpath = = "c: \\ Windows \\ system32 \\ Drivers ve \\ \\ Konakları" içeren &#124;|Anahtar yapılandırma dosyalarında yapılan değişiklikleri izlemek için faydalıdır.|
 |ConfigurationChange <br>ConfigChangeType = = "Microsoft Services" ve SvcName "W3SVC" ve SvcState = = "durduruldu" içerdiğinde &#124;|Sistem açısından kritik hizmetlerde yapılan değişiklikleri izlemek için faydalıdır.|
 |ConfigurationChange <br>&#124; ConfigChangeType = = "Daemon 'ları" ve SvcName "SSH" ve SvcState! = "Running" içerir|Sistem açısından kritik hizmetlerde yapılan değişiklikleri izlemek için faydalıdır.|
 |ConfigurationChange <br>&#124; ConfigChangeType = = "Software" ve ChangeCategory = = "Added"|Kilitli yazılım yapılandırmalarına ihtiyaç duyulan ortamlar için faydalıdır.|
 |ConfigurationData <br>SoftwareName, "Izleme Aracısı" ve CurrentVersion! = "8.0.11081.0" içerdiğinde &#124;|Güncel olmayan veya uyumsuz yazılım sürümünün yüklü olduğu makineleri görmek için faydalıdır. Bu sorgu, son bildirilen yapılandırma durumunu bildirir, ancak değişiklikleri rapor etmez.|
-|ConfigurationChange <br>&#124; RegistryKey = = @\\"HKEY_LOCAL_MACHINE software\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Önemli virüsten koruma anahtarlarındaki değişiklikleri izlemek için faydalıdır.|
-|ConfigurationChange <br>RegistryKey 'ın @\\"HKEY_LOCAL_MACHINE System\\CurrentControlSet\\Services\\SharedAccess\\parametreleri\\firewallpolicy" içerdiğini &#124;| Güvenlik Duvarı ayarlarında yapılan değişiklikleri izlemek için faydalıdır.|
+|ConfigurationChange <br>&#124; RegistryKey = = @ "HKEY_LOCAL_MACHINE \\ Software \\ Microsoft \\ Windows \\ CurrentVersion \\ QualityCompat"| Önemli virüsten koruma anahtarlarındaki değişiklikleri izlemek için faydalıdır.|
+|ConfigurationChange <br>RegistryKey 'ın @ "HKEY_LOCAL_MACHINE \\ System \\ CurrentControlSet \\ Services \\ SharedAccess \\ parametreleri \\ firewallpolicy" içerdiğini &#124;| Güvenlik Duvarı ayarlarında yapılan değişiklikleri izlemek için faydalıdır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Runbook 'larınızda Değişiklik İzleme ve envanterle çalışmak için bkz. [Manage değişiklik izleme and Inventory](change-tracking-file-contents.md).
-* Değişiklik İzleme ve envanterle ilgili hataları gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](automation-tutorial-troubleshoot-changes.md).
-* Ayrıntılı değişiklik izleme verilerini görüntülemek için [Azure izleyici günlüklerinde günlük aramalarını](../log-analytics/log-analytics-log-searches.md) kullanın.
+* [Değişiklik İzleme ve stoku yönetme](change-tracking-file-contents.md)
+* [Azure Izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md)
+* [Değişiklik İzleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md)
+* [Azure VM 'deki değişikliklerle ilgili sorunları giderme](automation-tutorial-troubleshoot-changes.md)

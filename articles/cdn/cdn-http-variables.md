@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: b9ced5d4a81effcd73e0243d09bb83ed0fe7667c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253705"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747643"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN Rules altyapısı için HTTP değişkenleri
 HTTP değişkenleri, HTTP isteği ve yanıt meta verilerini almak için kullanabileceğiniz yolları sağlar. Bu meta veriler, bir isteği veya yanıtı dinamik olarak değiştirmek için kullanılabilir. HTTP değişkenlerinin kullanımı aşağıdaki kural altyapısı özellikleriyle kısıtlıdır:
@@ -34,13 +34,13 @@ HTTP değişkenleri, HTTP isteği ve yanıt meta verilerini almak için kullanab
 Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAFI meta veriler (örneğin, posta kodu) belirli bir istek için kullanılamadığında boş bir değer döndürülür.
 
 
-| Adı | Değişken | Açıklama | Örnek değer |
+| Name | Değişken | Açıklama | Örnek değer |
 | ---- | -------- | ----------- | ------------ |
 | ASN (Istek sahibi) | % {geo_asnum} | İstek sahibinin numarasını belirtir. <br /><br />**Kullanım dışı:** % {virt_dst_asnum}. <br />Bu değişken,% {geo_asnum} için kullanım dışı bırakıldı. Kullanım dışı bırakılan bu değişkeni kullanan bir kural çalışmaya devam edebilse de, yeni değişkenini kullanmak için güncelleştirmeniz gerekir. | AS15133 |
 | Şehir (Istek sahibi) | % {geo_city} | İsteyanın şehrini gösterir. | Los Angeles |
 | Kıta (Istek sahibi) | % {geo_continent} | İstek sahibinin kısaltmasıyla kıolarak olduğunu gösterir. <br />Geçerli değerler: <br />AF: Afrika<br />AS: Asya<br />AB: Avrupa<br />NA: Kuzey Amerika<br />OC: Okyanusya<br />SA: Güney Amerika<br /><br />**Kullanım dışı:** % {virt_dst_continent}. <br />Bu değişken,% {geo_continent} için kullanım dışı bırakıldı. <br />Kullanım dışı bırakılan bu değişkeni kullanan bir kural çalışmaya devam edebilse de, yeni değişkenini kullanmak için güncelleştirmeniz gerekir.| Yok |
 | Tanımlama bilgisi değeri | % {cookie_Cookie} | Tanımlama bilgisi terimi tarafından tanımlanan tanımlama bilgisi anahtarına karşılık gelen değeri döndürür. | Örnek kullanım: <br />% {cookie__utma}<br /><br />Örnek değer:<br />111662281.2.10.1222100123 |
-| Ülke (Istek sahibi) | % {geo_country} | İstek sahibinin ülke kodu aracılığıyla kaynak ülkesini gösterir. <br />**Kullanım dışı:** % {virt_dst_country}. <br /><br />Bu değişken,% {geo_country} için kullanım dışı bırakıldı. Kullanım dışı bırakılan bu değişkeni kullanan bir kural çalışmaya devam edebilse de, yeni değişkenini kullanmak için güncelleştirmeniz gerekir. | ABD |
+| Ülke/bölge (Istek sahibi) | % {geo_country} | İstek sahibinin ülke/bölge kodu üzerinden kaynak ülkesini/bölgesini gösterir. <br />**Kullanım dışı:** % {virt_dst_country}. <br /><br />Bu değişken,% {geo_country} için kullanım dışı bırakıldı. Kullanım dışı bırakılan bu değişkeni kullanan bir kural çalışmaya devam edebilse de, yeni değişkenini kullanmak için güncelleştirmeniz gerekir. | ABD |
 | Belirlenen pazar alanı (Istek sahibi) | % {geo_dma_code} |İsteyenin medya pazarını bölge koduna göre gösterir. <br /><br />Bu alan yalnızca Birleşik Devletler kaynaklı istekler için geçerlidir.| 745 |
 | HTTP Istek yöntemi | % {request_method} | HTTP istek yöntemini gösterir. | GET |
 | HTTP durum kodu | % {Status} | Yanıt için HTTP durum kodunu gösterir. | 200 |
@@ -52,7 +52,7 @@ Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAF
 | Posta kodu (Istek sahibi) | % {geo_postal_code} | İsteyanın posta kodunu gösterir. | 90210 |
 | Sorgu dizesi bulundu | % {is_args} | Bu değişkenin değeri, isteğin bir sorgu dizesi içerip içermediğini göre farklılık gösterir.<br /><br />-Sorgu dizesi bulundu:?<br />-Sorgu dizesi yok: NULL | ? |
 | Sorgu dizesi parametresi bulundu | % {is_amp} | Bu değişkenin değeri, isteğin en az bir sorgu dizesi parametresi içerip içermediğini göre farklılık gösterir.<br /><br />-Parametre bulundu: &<br />-Parametre yok: NULL | & |
-| Sorgu dizesi parametre değeri | % {arg_&lt;parametresi&gt;} | &lt;Parametre&gt; terimi tarafından tanımlanan sorgu dizesi parametresine karşılık gelen değeri döndürür. | Örnek kullanım: <br />% {arg_language}<br /><br />Örnek sorgu dizesi parametresi: <br />? Language = en<br /><br />Örnek değer: en |
+| Sorgu dizesi parametre değeri | % {arg_ &lt; parametresi &gt; } | Parametre terimi tarafından tanımlanan sorgu dizesi parametresine karşılık gelen değeri döndürür &lt; &gt; . | Örnek kullanım: <br />% {arg_language}<br /><br />Örnek sorgu dizesi parametresi: <br />? Language = en<br /><br />Örnek değer: en |
 | Sorgu dizesi değeri | % {query_string} | İstek URL 'sinde tanımlanan tüm sorgu dizesi değerini gösterir. |KEY1 = val1&key2 = val2 & lt&Key3 = VAL3 |
 | Başvuran etki alanı | % {referring_domain} | Başvuran istek üstbilgisinde tanımlanan etki alanını gösterir. | <www.google.com> |
 | Bölge (Istek sahibi) | % {geo_region} | İstek sahibinin bölgesini (örneğin, eyalet veya bölge) alfasayısal kısaltmayla gösterir. | CA |
@@ -62,18 +62,18 @@ Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAF
 | İstek düzeni | % {Scheme} | İstek düzenini gösterir. |http |
 | İstek URI 'SI (göreli) | % {request_uri} | Sorgu dizesi dahil olmak üzere, istek URI 'sinde tanımlanan göreli yolu gösterir. | /Pazar/YN/js? LoggedIn = doğru |
 | İstek URI 'SI (sorgu dizesi olmadan göreli) | % {Uri} | İstenen içeriğin göreli yolunu gösterir. <br /><br/>Anahtar bilgileri:<br />-Bu göreli yol sorgu dizesini dışlar.<br />-Bu göreli yol, URL yeniden yazar yansıtır. Aşağıdaki koşullarda bir URL yeniden yazılır:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-URL yeniden yazma özelliği: Bu özellik, istek URI 'sinde tanımlanan göreli yolu yeniden yazar.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Edge CNAME URL 'SI: Bu istek türü, karşılık gelen CDN URL 'sine yeniden yazılır. |/800001/corigin/rewrittendir/YN. js |
-| İstek URI'si | % {istek} | İsteği açıklar. <br />Sözdizimi: &lt;http yöntemi&gt; &lt;göreli yol&gt; &lt;http Protokolü&gt; | GET/Pazar/YN/js? LoggedIn = true HTTP/1.1 |
-| Yanıt üst bilgisi değeri | % {resp_&lt;ResponseHeader&gt;} | &lt;ResponseHeader&gt; terimi tarafından tanımlanan yanıt üstbilgisine karşılık gelen değeri döndürür. <br /><br />Yanıt üstbilgisinin adı bir tire içeriyorsa (örneğin, Kullanıcı Aracısı), bunu alt çizgiyle değiştirin (örneğin, User_Agent). | Örnek kullanım:% {resp_Content_Length}<br /><br />Örnek değer: 100 |
+| İstek URI'si | % {istek} | İsteği açıklar. <br />Sözdizimi: &lt; http yöntemi &gt; &lt; göreli yol &gt; &lt; http Protokolü&gt; | GET/Pazar/YN/js? LoggedIn = true HTTP/1.1 |
+| Yanıt üst bilgisi değeri | % {resp_ &lt; ResponseHeader &gt; } | ResponseHeader terimi tarafından tanımlanan yanıt üstbilgisine karşılık gelen değeri döndürür &lt; &gt; . <br /><br />Yanıt üstbilgisinin adı bir tire içeriyorsa (örneğin, Kullanıcı Aracısı), bunu alt çizgiyle değiştirin (örneğin, User_Agent). | Örnek kullanım:% {resp_Content_Length}<br /><br />Örnek değer: 100 |
 
 ## <a name="usage"></a>Kullanım
 Aşağıdaki tabloda, bir HTTP değişkeni belirtmek için uygun sözdizimi açıklanmaktadır.
 
 
-| Sözdizimi | Örnek | Açıklama |
+| Söz dizimi | Örnek | Açıklama |
 | ------ | -------- | ---------- |
-| % {&lt;Httpvariable&gt;} | % {Konak} | Belirtilen &lt;httpvariable&gt;öğesine karşılık gelen değerin tamamını almak için bu sözdizimini kullanın. |
-| % {&lt;Httpvariabledelimiter&gt;} | % {Ana bilgisayar,} | Belirtilen &lt;httpvariablesınırlayıcısına&gt;karşılık gelen değerin tamamı için büyük/küçük harf ayarlamak için bu sözdizimini kullanın. |
-| % {&lt;Httpvariablesınırlandıran terexpression&gt;} | % {Host/= ^ www\.([^\.] +)\.([^\.:] +)/CDN. $2. $3:80} | Bir HTTP değişkeninin değerini değiştirmek &lt;, silmek veya işlemek için&gt; httpvariablesınırlandıran terexpression için normal bir ifade kullanın. |
+| % { &lt; Httpvariable &gt; } | % {Konak} | Belirtilen httpvariable öğesine karşılık gelen değerin tamamını almak için bu sözdizimini kullanın &lt; &gt; . |
+| % { &lt; Httpvariabledelimiter &gt; } | % {Ana bilgisayar,} | Belirtilen httpvariablesınırlayıcısına karşılık gelen değerin tamamı için büyük/küçük harf ayarlamak için bu sözdizimini kullanın &lt; &gt; . |
+| % { &lt; Httpvariablesınırlandıran terexpression &gt; } | % {Host/= ^ www \. ([^ \. ] +) \. ([^ \. :] +)/CDN. $2. $3:80} | &lt; &gt; Bir http değişkeninin değerini değiştirmek, silmek veya işlemek için httpvariablesınırlandıran terexpression için normal bir ifade kullanın. |
 
 HTTP değişken adları yalnızca alfabetik karakterleri ve alt çizgileri destekler. Desteklenmeyen karakterleri alt çizgilere Dönüştür.
 
@@ -107,7 +107,7 @@ Sınırlayıcılar aşağıdaki tabloda açıklanmıştır.
 | ,, | HTTP değişkeniyle ilişkili değer içindeki belirtilen karakterin tüm örneklerini küçük harfe Dönüştür. |
 | ^^ | HTTP değişkeniyle ilişkili değer içindeki belirtilen karakterin tüm örneklerini büyük harfe Dönüştür. |
 
-## <a name="exceptions"></a>Özel Durumlar
+## <a name="exceptions"></a>Özel durumlar
 Aşağıdaki tabloda, belirtilen metnin bir HTTP değişkeni olarak değerlendirilmeyeceği koşullar açıklanmaktadır.
 
 | Koşul | Açıklama | Örnek |
@@ -125,7 +125,7 @@ Aşağıdaki koşullardan herhangi birini karşıladığında, bir üst bilgiye 
 
 Aşağıdaki tabloda, varsayılan bir değerin nasıl tanımlanacağı açıklanmaktadır.
 
-| Koşul | Sözdizimi | Örnek | Açıklama |
+| Koşul | Söz dizimi | Örnek | Açıklama |
 | --------- | ------ | --------| ----------- |
 | Aşağıdaki koşullardan herhangi birini karşıladığında bir üst bilgiyi varsayılan değere ayarlayın: <br /><br />-Eksik üst bilgi <br /><br />-Header değeri NULL olarak ayarlandı.| % {Variable: = değer} | % {http_referrer: = belirtilmemiş} | Başvuran üst bilgisi yalnızca eksik ya da NULL olarak ayarlandığında *belirtilmemiş* olarak ayarlanır. Ayarlandıysa hiçbir eylem gerçekleşmeyecektir. |
 | Bir üst bilgiyi, eksik olduğunda varsayılan değere ayarlayın. | % {Variable = değer} | % {http_referrer = belirtilmemiş} | Başvuran üst bilgisi yalnızca eksik olduğunda *belirtilmemiş* olarak ayarlanır. Ayarlandıysa hiçbir eylem gerçekleşmeyecektir. |
@@ -160,21 +160,21 @@ Anahtar bilgileri:
 
 Aşağıdaki örnek, aşağıdaki örnek istek URL 'sini kullanır:
 
-https:\//CDN.mydomain.com/Folder/Marketing/myConsultant/Proposal.html
+https: \/ /CDN.mydomain.com/Folder/Marketing/myConsultant/Proposal.html
 
 Aşağıdaki dize, değişkenleri işlemek için çeşitli yöntemleri göstermektedir:
 
-https:\//www%{HTTP_HOST: 3}/Mobile/%{request_uri: 7:10}/% {request_uri:-5:-8}. htm
+https: \/ /www%{HTTP_HOST: 3}/Mobile/%{request_uri: 7:10}/% {request_uri:-5:-8}. htm
 
 Örnek istek URL 'sine bağlı olarak, yukarıdaki değişken işleme aşağıdaki değeri üretir:
 
-https:\//www.mydomain.com/Mobile/Marketing/Proposal.htm
+https: \/ /www.mydomain.com/Mobile/Marketing/Proposal.htm
 
 
 ### <a name="pattern-removal"></a>Model kaldırma
 Belirli bir düzenle eşleşen metin, bir değişkenin değerinin başından veya sonundan kaldırılabilir.
 
-| Sözdizimi | Eylem |
+| Söz dizimi | Eylem |
 | ------ | ------ |
 | % {Değişken # model} | Bir değişkenin değerinin başlangıcında belirtilen model bulunduğunda metni kaldır. |
 | % {Değişken% model} | Bir değişkenin değerinin sonunda belirtilen model bulunduğunda metni kaldır. |
@@ -195,7 +195,7 @@ Aşağıdaki tabloda bu sözdiziminin nasıl çalıştığı gösterilmektedir.
 ### <a name="find-and-replace"></a>Bulma ve değiştirme
 Bul ve Değiştir sözdizimi aşağıdaki tabloda açıklanmıştır.
 
-| Sözdizimi | Eylem |
+| Söz dizimi | Eylem |
 | ------ | ------ |
 | % {Değişken/Bul/Değiştir} | Belirtilen düzenin ilk oluşumunu bul ve Değiştir. |
 | % {Değişken//Bul/Değiştir} | Belirtilen düzenin tüm oluşumlarını bul ve Değiştir. |
@@ -207,7 +207,7 @@ Bul ve Değiştir sözdizimi aşağıdaki tabloda açıklanmıştır.
 ### <a name="find-and-rewrite"></a>Bul ve yeniden yaz
 Bul ve Değiştir 'teki bir varyasyon için, yeniden yazarken belirtilen Düzenle eşleşen metni kullanın. Bul ve yeniden yaz sözdizimi aşağıdaki tabloda açıklanmıştır.
 
-| Sözdizimi | Eylem |
+| Söz dizimi | Eylem |
 | ------ | ------ |
 | % {Variable/= bul/yeniden yaz} | Belirtilen düzenin tüm oluşumlarını bulun, kopyalayın ve yeniden yazın. |
 | % {Variable/^ bul/yeniden yaz} | Değişkenin başlangıcında gerçekleştiği sırada belirtilen kalıbı bulun, kopyalayın ve yeniden yazın. |
@@ -224,7 +224,7 @@ Anahtar bilgileri:
 
 - Yeniden yazan değer herhangi bir metin ve bu yer tutucu birleşimini içerebilir.
 
-    Önceki örnekte, ana bilgisayar adı (örneğin, cdn.mydomain.com:80 `cdn.$2.$3:80` ) olarak yeniden yazılır.
+    Önceki örnekte, ana bilgisayar adı `cdn.$2.$3:80` (örneğin, CDN.mydomain.com:80) olarak yeniden yazılır.
 
 - Bir model yer tutucusunun durumu (örneğin, $1) aşağıdaki bayraklar aracılığıyla değiştirilebilir:
      - U: büyük harf genişletilmiş değeri.

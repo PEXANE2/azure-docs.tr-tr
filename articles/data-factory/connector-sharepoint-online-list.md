@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 02b88ae0fa0473ad3d11346f0443582d80e75f5d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 90ceb2b716df429eaf4541f13cfa96cb9e0eac7d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691134"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745209"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SharePoint Online listesinden veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,7 +37,7 @@ SharePoint Online listesinden, desteklenen herhangi bir havuz veri deposuna veri
 > [!TIP]
 > Bu bağlayıcı, SharePoint Online **listesinden** veri kopyalamayı destekler, ancak dosya değil. Dosyayı [SharePoint Online 'Dan kopyalama](#copy-file-from-sharepoint-online) dosyasından kopyalama hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SharePoint listesi çevrimiçi Bağlayıcısı, SharePoint 'e bağlanmak için hizmet sorumlusu kimlik doğrulamasını kullanır. Ayarlamak için şu adımları izleyin:
 
@@ -55,8 +55,8 @@ SharePoint listesi çevrimiçi Bağlayıcısı, SharePoint 'e bağlanmak için h
     1. SharePoint Online site bağlantısını açın, örneğin `https://[your_site_url]/_layouts/15/appinv.aspx` (kiracı ve site adını değiştirin).
     2. Kaydettiğiniz uygulama KIMLIĞINDE arama yapın, boş alanları doldurup "Oluştur" a tıklayın.
 
-        - Uygulama etki alanı: localhost.com
-        - Yeniden yönlendirme URL 'SI:https://www.localhost.com
+        - Uygulama etki alanı:`localhost.com`
+        - Yeniden yönlendirme URL 'SI:`https://www.localhost.com`
         - İzin Isteği XML 'i:
 
         ```xml
@@ -86,7 +86,7 @@ Aşağıdaki özellikler bir SharePoint Online listesi bağlı hizmeti için des
 | Serviceprincipalıd  | Azure Active Directory kayıtlı uygulamanın uygulama (istemci) KIMLIĞI. | Yes          |
 | Servicesprincipalkey | Uygulamanın anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes          |
 | Değerine            | Uygulamanızın bulunduğu kiracı KIMLIĞI.          | Yes          |
-| connectVia          | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Bu makalenin önceki kısımlarında yer alarak [önkoşulları](#prerequisites)öğrenin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. | Hayır           |
+| connectVia          | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Bu makalenin önceki kısımlarında yer alarak [önkoşulları](#prerequisites)öğrenin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. | No           |
 
 **Örneğinde**
 
@@ -148,8 +148,8 @@ SharePoint Online listesinden veri kopyalamak için, etkinlik **kaynağını** k
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının **Type** özelliği, **Sharepointonlinelistsource**olarak ayarlanmalıdır. | Yes |
-| sorgu | Verileri filtrelemek için özel OData sorgu seçenekleri. Örnek: `"$top=10&$select=Title,Number"`. | Hayır |
-| httpRequestTimeout | HTTP isteğinin yanıt alması için zaman aşımı (saniye olarak). Varsayılan değer 300 ' dir (5 dakikadır). | Hayır |
+| sorgu | Verileri filtrelemek için özel OData sorgu seçenekleri. Örnek: `"$top=10&$select=Title,Number"`. | No |
+| httpRequestTimeout | HTTP isteğinin yanıt alması için zaman aşımı (saniye olarak). Varsayılan değer 300 ' dir (5 dakikadır). | No |
 
 **Örnek**
 

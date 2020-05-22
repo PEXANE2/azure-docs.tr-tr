@@ -1,25 +1,22 @@
 ---
-title: Azure Otomasyonu’nda kaynak denetimi tümleştirmesi
-description: Bu makalede, Azure Otomasyonu 'nda GitHub ile kaynak denetimi tümleştirmesi açıklanmaktadır.
+title: Azure Otomasyonu 'nda kaynak denetimi tümleştirmesini kullanma
+description: Bu makalede, Azure Otomasyonu kaynak denetimini diğer depolarla nasıl eşitleyeceğiniz açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 166902978d1641458f18aeee6269c8d819e85233
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248cbd42d86371742ad4985b515d70d022722385
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132920"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744923"
 ---
-# <a name="source-control-integration-in-azure-automation"></a>Azure Otomasyonu’nda kaynak denetimi tümleştirmesi
+# <a name="use-source-control-integration"></a>Kaynak denetimi tümleştirmesini kullanma
 
  Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi, kaynak denetimi deponuzdan tek yönlü eşitlemeyi destekler. Kaynak denetimi, GitHub veya Azure Repos kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larınızı güncel tutmanızı sağlar. Bu özellik, geliştirme ortamınızda test edilmiş kodu Üretim otomasyon hesabınıza yükseltmeyi kolaylaştırır.
  
  Kaynak denetimi tümleştirmesi, ekibinizle kolayca işbirliği yapmanıza, değişiklikleri izlemenize ve Runbook 'larınızın önceki sürümlerine geri döndürmenize olanak tanır. Örneğin, kaynak denetimi, kaynak denetimindeki farklı dalları geliştirme, test ve üretim Otomasyon hesaplarınızla eşitlemenize olanak tanır. 
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="source-control-types"></a>Kaynak Denetim türleri
 
@@ -33,12 +30,12 @@ Azure Otomasyonu üç tür kaynak denetimi destekler:
 
 * Kaynak denetimi deposu (GitHub veya Azure Repos)
 * [Farklı Çalıştır hesabı](manage-runas-account.md)
-* Otomasyon hesabınızda `Az.Accounts` modül dahil [en son Azure modülleri](automation-update-azure-modules.md) (az Module eşdeğeri) `AzureRM.Profile`
+* Otomasyon hesabınızda modül dahil [en son Azure modülleri](automation-update-azure-modules.md) `Az.Accounts` (az Module eşdeğeri `AzureRM.Profile` )
 
 > [!NOTE]
 > Kaynak denetimi eşitleme işleri, kullanıcının Otomasyon hesabı altında çalışır ve diğer otomasyon işleriyle aynı hızda faturalandırılır.
 
-## <a name="configuring-source-control"></a>Kaynak denetimini yapılandırma
+## <a name="configure-source-control"></a>Kaynak denetimini yapılandırma
 
 Bu bölümde Otomasyon hesabınız için kaynak denetiminin nasıl yapılandırılacağı açıklanır. Azure portal veya PowerShell kullanabilirsiniz.
 
@@ -139,7 +136,7 @@ Aşağıdaki liste Azure Repos için gereken en düşük PAT izinlerini tanımla
 
 <sup>1</sup> `Service connections` izin yalnızca, oto eşitlemesini etkinleştirdiyseniz gereklidir.
 
-## <a name="synchronizing"></a>Iz
+## <a name="synchronize-with-source-control"></a>Kaynak denetimiyle eşitler
 
 Kaynak denetimiyle eşitlenmek için bu adımları izleyin. 
 
@@ -161,7 +158,7 @@ Kaynak denetimiyle eşitlenmek için bu adımları izleyin.
     Azure Automation Source Control.
     Supported runbooks to sync: PowerShell Workflow, PowerShell Scripts, DSC Configurations, Graphical, and Python 2.
 
-    Setting AzureRmEnvironment.
+    Setting AzEnvironment.
 
     Getting AzureRunAsConnection.
 
@@ -187,7 +184,7 @@ Kaynak denetimiyle eşitlenmek için bu adımları izleyin.
 
 6. Kaynak denetimi eşitleme Işi Özeti sayfasında **Tüm Günlükler** seçilerek ek günlüğe kaydetme kullanılabilir. Bu ek günlük girişleri, kaynak denetimi kullanılırken oluşabilecek sorunları gidermenize yardımcı olabilir.
 
-## <a name="disconnecting-source-control"></a>Kaynak denetiminin bağlantısı kesiliyor
+## <a name="disconnect-source-control"></a>Kaynak denetimi bağlantısını kes
 
 Kaynak denetim deposundan bağlantıyı kesmek için:
 
@@ -197,11 +194,11 @@ Kaynak denetim deposundan bağlantıyı kesmek için:
 
 3. Kaynak denetimi Özeti sayfasında **Sil**' e tıklayın.
 
-## <a name="handling-encoding-issues"></a>Kodlama sorunlarını işleme
+## <a name="handle-encoding-issues"></a>Kodlama sorunlarını işle
 
 Farklı düzenleyiciler kullanarak kaynak denetim deponuzdaki runbook 'ları birden çok kişi düzenliyorsanız, kodlama sorunları oluşabilir. Bu durumla ilgili daha fazla bilgi edinmek için bkz. [kodlama sorunlarının yaygın nedenleri](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
 
-## <a name="updating-the-pat"></a>PAT güncelleştiriliyor
+## <a name="update-the-pat"></a>PAT 'yi güncelleştirme
 
 Şu anda, kaynak denetimindeki PAT 'yi güncelleştirmek için Azure portal kullanamazsınız. PAT süreniz dolduğunda veya iptal edildiğinde, kaynak denetimini şu yollarla yeni bir erişim belirteciyle güncelleştirebilirsiniz:
 
@@ -210,4 +207,5 @@ Farklı düzenleyiciler kullanarak kaynak denetim deponuzdaki runbook 'ları bir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu runbook türleri](automation-runbook-types.md).
+* [Azure Otomasyonu: Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
+* [Azure Otomasyonu: Azure DevOps kullanarak runbook kaynak denetimini tümleştirme](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a49661ca8776f04d98cc04bbe7a07b8c388f91ee
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681682"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745931"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Inkapılı haritalar oluşturmak için Oluşturucu kullanma
 
@@ -28,7 +28,7 @@ Bu öğreticide, ınkapı haritaları oluşturma gösterilmektedir. Bu öğretic
 > * Harita özelliklerinizi ve veri kümenizdeki verileri kullanarak bir özellik stateset oluşturma
 > * Özellik stateset 'nizi güncelleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Inkapısı haritaları oluşturmak için:
 
@@ -215,7 +215,7 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. Yanıt gövdesi GeoJSON biçiminde teslim edilir ve veri kümesindeki tüm koleksiyonları içerecektir. Kolaylık sağlaması için buradaki örnek yalnızca `unit` koleksiyonu gösterir. Tüm koleksiyonları içeren bir örneği görmek için bkz. [WFS, koleksiyonları API 'Si açıklaması](https://docs.microsoft.com/rest/api/maps/wfs/describecollectionspreview). Herhangi bir koleksiyon hakkında daha fazla bilgi edinmek için öğesi içindeki URL 'Lerden birine tıklayabilirsiniz `link` .
+3. Yanıt gövdesi GeoJSON biçiminde teslim edilir ve veri kümesindeki tüm koleksiyonları içerecektir. Kolaylık sağlaması için buradaki örnek yalnızca `unit` koleksiyonu gösterir. Tüm koleksiyonları içeren bir örneği görmek için bkz. [WFS, koleksiyonları API 'Si açıklaması](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview). Herhangi bir koleksiyon hakkında daha fazla bilgi edinmek için öğesi içindeki URL 'Lerden birine tıklayabilirsiniz `link` .
 
     ```json
     {
@@ -285,7 +285,7 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
 
 1. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet** 'e tıklayın
 
-2. [Create Stateset API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatepreview)'Sine bir **Post** isteği yapın. `datasetId`Değiştirmek istediğiniz durumu içeren veri kümesini kullanın. İstek aşağıdaki URL gibi görünmelidir:
+2. [Create Stateset API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview)'Sine bir **Post** isteği yapın. `datasetId`Değiştirmek istediğiniz durumu içeren veri kümesini kullanın. İstek aşağıdaki URL gibi görünmelidir:
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}

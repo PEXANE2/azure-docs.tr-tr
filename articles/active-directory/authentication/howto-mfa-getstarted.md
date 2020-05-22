@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81451134"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757614"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication dağıtımı planlayın
 
@@ -51,11 +51,11 @@ MFA Dağıtım planınız, bir pilot dağıtımı ve ardından destek kapasiteni
 
 Kullanıcılara, planlı iletişimler, yaklaşan değişiklikler, Azure MFA kayıt gereksinimleri ve gerekli Kullanıcı eylemleri hakkında bilgi vermek önemlidir. İletişim, değişiklik yönetimi veya Insan kaynakları departmanları gibi, kuruluşunuzun içinden temsilcileriyle iletişim kurmanızı öneririz.
 
-Microsoft, iletişimlerinizin taslağını oluşturmanıza yardımcı olmak için [iletişim şablonları](https://aka.ms/mfatemplates) ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları, bu sayfadaki [https://myprofile.microsoft.com](https://myprofile.microsoft.com) **güvenlik bilgileri** bağlantılarını seçerek doğrudan kaydettirmek üzere gönderebilirsiniz.
+Microsoft, iletişimlerinizin taslağını oluşturmanıza yardımcı olmak için [iletişim şablonları](https://aka.ms/mfatemplates) ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları [https://myprofile.microsoft.com](https://myprofile.microsoft.com) , bu sayfadaki **güvenlik bilgileri** bağlantılarını seçerek doğrudan kaydettirmek üzere gönderebilirsiniz.
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
-Azure Multi-Factor Authentication, ilkeleri koşullu erişimle zorlayarak dağıtılır. [Koşullu erişim ilkesi](../conditional-access/overview.md) , bazı ölçütlere göre karşılandığında kullanıcıların Multi-Factor Authentication gerçekleştirmesini gerektirebilir:
+Azure Multi-Factor Authentication, ilkeleri koşullu erişimle zorlayarak dağıtılır. Koşullu erişim ilkesi, bazı ölçütlere göre karşılandığında kullanıcıların Multi-Factor Authentication gerçekleştirmesini gerektirebilir:
 
 * Tüm kullanıcılar, belirli bir Kullanıcı, bir grubun üyesi veya atanmış rol
 * Erişildiği belirli bulut uygulamasına
@@ -114,7 +114,7 @@ Yöneticiler, kullanıcılar için kullanılabilir hale getirmek istedikleri [ki
 Mobil cihazınızda Microsoft Authenticator uygulamasına anında iletme bildirimi gönderilir. Kullanıcı bildirimi görüntüler ve doğrulamayı tamamlamaya yönelik **onaylamayı** seçer. Mobil uygulama aracılığıyla anında iletme bildirimleri, kullanıcılar için en az zorive seçeneğini sağlar. Bunlar ayrıca, telefon yerine bir veri bağlantısı kullandıkları için en güvenilir ve güvenli seçenektir.
 
 > [!NOTE]
-> Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, **Android cihazlarda** **mobil uygulama yöntemi ile ilgili bildirim** söz konusu ülkede çalışmaz. Bu kullanıcılar için alternatif yöntemler kullanılabilir hale gelmelidir.
+> Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, **Android cihazlarda** **mobil uygulama yöntemi aracılığıyla yapılan bildirim** söz konusu ülkede/bölgede çalışmaz. Bu kullanıcılar için alternatif yöntemler kullanılabilir hale gelmelidir.
 
 ### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadaki doğrulama kodu
 
@@ -122,7 +122,7 @@ Microsoft Authenticator uygulaması gibi bir mobil uygulama, her 30 saniyede yen
 
 ### <a name="call-to-phone"></a>Telefon çağrısı
 
-Kullanıcıya otomatik bir sesli çağrı konur. Kullanıcı, kimlik doğrulamasını onaylamak için çağrıyı **#** yanıtlar ve telefon tuş takımında basar. Telefon çağrısı, bir mobil uygulamadan bildirim veya doğrulama kodu için harika bir yedekleme yöntemidir.
+Kullanıcıya otomatik bir sesli çağrı konur. Kullanıcı, **#** kimlik doğrulamasını onaylamak için çağrıyı yanıtlar ve telefon tuş takımında basar. Telefon çağrısı, bir mobil uygulamadan bildirim veya doğrulama kodu için harika bir yedekleme yöntemidir.
 
 ### <a name="text-message-to-phone"></a>Telefona kısa mesaj
 
@@ -221,14 +221,14 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 ## <a name="plan-conditional-access-policies"></a>Koşullu erişim ilkelerini planlayın
 
-MFA ve diğer denetimlerin ne zaman gerekli olacağını belirleyen koşullu erişim ilkesi stratejinizi planlamak için [Azure Active Directory, koşullu erişim nedir?](../conditional-access/overview.md)bölümüne bakın.
+MFA ve diğer denetimlerin ne zaman gerekli olacağını belirleyen koşullu erişim ilkesi stratejinizi planlamak için, [Genel koşullu erişim ilkelerine](../conditional-access/concept-conditional-access-policy-common.md)bakın.
 
 Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [Kiracınızda iki veya daha fazla acil durum erişim hesabı oluşturarak](../users-groups-roles/directory-emergency-access.md) ve bunları koşullu erişim ilkenize dışlayarak, bu yanlışlıkla yönetici erişimi eksikliğinden etkilerini azaltabilirsiniz.
 
 ### <a name="create-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
 1. [Azure Portal](https://portal.azure.com) bir genel yönetici hesabı kullanarak oturum açın.
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
    ![Pilot grubundaki Azure portal kullanıcılar için MFA 'yı etkinleştirmek üzere koşullu erişim ilkesi oluşturma](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. İlkeniz için anlamlı bir ad girin.
@@ -282,7 +282,7 @@ Dağıtılmış ve kullanımda olan bir NPS örneğiniz varsa, [mevcut NPS altya
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>MFA için kayıtlı olmayan kullanıcılar için NPS 'YI hazırlama
 
-MFA ile kayıtlı olmayan kullanıcılar kimlik doğrulamaya çalıştığında ne olacağını seçin. Özellik davranışını denetlemek için `REQUIRE_USER_MATCH` kayıt defteri yolundaki `HKLM\Software\Microsoft\AzureMFA` kayıt defteri ayarını kullanın. Bu ayarın tek bir yapılandırma seçeneği vardır.
+MFA ile kayıtlı olmayan kullanıcılar kimlik doğrulamaya çalıştığında ne olacağını seçin. `REQUIRE_USER_MATCH`Özellik davranışını denetlemek için kayıt defteri yolundaki kayıt defteri ayarını kullanın `HKLM\Software\Microsoft\AzureMFA` . Bu ayarın tek bir yapılandırma seçeneği vardır.
 
 | Anahtar | Değer | Varsayılan |
 | --- | --- | --- |

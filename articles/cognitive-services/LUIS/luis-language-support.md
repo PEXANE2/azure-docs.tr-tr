@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: e859ac18276d10960a5a8488a6051252d90e0fcd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 69ff3aa3f649b054192f9dd001af83dc8dbc2317
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591055"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745688"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUSıS için dil ve bölge desteği
 
@@ -32,7 +32,7 @@ LUBU, aşağıdaki dillerdeki söyliği anlamıştır:
 
 | Dil |Yerel Ayar  |  Önceden oluşturulmuş etki alanı | Önceden oluşturulmuş varlık | Tümcecik listesi önerileri | **[Metin Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Yaklaşım ve<br>Lerimi|
 |--|--|:--:|:--:|:--:|:--:|
-| Amerikan Ingilizcesi |`en-US` | ✔ | ✔  |✔|✔|
+| İngilizce (ABD) |`en-US` | ✔ | ✔  |✔|✔|
 | Arapça (Önizleme-modern Standart Arapça) |`ar-AR`|-|-|-|-|
 | *[Çince](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Felemenkçe |`nl-NL` |✔|-|-|✔|

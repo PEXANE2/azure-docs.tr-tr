@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 62291505aae35b6fe334e2bdb53335a1ea3fe20b
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3cfc63b29b51b70cb41c476c49bc17f5e9cbd308
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714551"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746629"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Otomasyonu hesabınızı başka bir aboneliğe taşıma
 
@@ -157,4 +157,4 @@ Taşıma işlemi tamamlandığında, aşağıda listelenen yeteneklerin etkinle�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure 'da kaynakları taşıma](../../azure-resource-manager/management/move-support-resources.md)
+Azure 'da kaynakları taşıma hakkında bilgi edinmek için bkz. [Azure 'da kaynakları taşıma](../../azure-resource-manager/management/move-support-resources.md).

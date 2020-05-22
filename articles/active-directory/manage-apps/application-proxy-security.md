@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd6794bafc3c209032f32626e8c46b51769d05e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74e0faf8ac776c043f2407e509c936d21f227664
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481237"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739977"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile uygulamalara uzaktan erişmenin güvenlik konuları
 
@@ -47,7 +47,7 @@ Azure AD Uygulama Ara Sunucusu, tüm kimlik doğrulaması için Azure AD güvenl
 
 Ağınıza yönelik bağlantıların kurulması için daha zengin ilke denetimleri uygulayın.
 
-[Koşullu erişimle](../conditional-access/overview.md), arka uç uygulamalarınıza hangi trafiğin erişebileceğini belirleyen kısıtlamalar tanımlayabilirsiniz. Oturum açma işlemlerini konuma, kimlik doğrulama gücüne ve Kullanıcı risk profiline göre sınırlayan ilkeler oluşturabilirsiniz.
+[Koşullu erişimle](../conditional-access/concept-conditional-access-cloud-apps.md), kullanıcıların uygulamalarınıza nasıl erişmelerine izin verildiğini belirleyen kısıtlamalar tanımlayabilirsiniz. Oturum açma işlemlerini konuma, kimlik doğrulama gücüne ve Kullanıcı risk profiline göre sınırlayan ilkeler oluşturabilirsiniz.
 
 Ayrıca, Kullanıcı kimlik doğrulamalarına başka bir güvenlik katmanı ekleyerek Multi-Factor Authentication ilkelerini yapılandırmak için koşullu erişimi de kullanabilirsiniz. Ayrıca, uygulamalarınız, [erişim](https://docs.microsoft.com/cloud-app-security/access-policy-aad) ve [oturum](https://docs.microsoft.com/cloud-app-security/session-policy-aad) ilkeleri aracılığıyla gerçek zamanlı izleme ve DENETIMLER sağlamak Için Azure AD koşullu erişimi aracılığıyla Microsoft Cloud App Security de yönlendirilebilir
 
@@ -79,7 +79,7 @@ Bu raporların ve olayların birçoğu, güvenlik bilgileri ve olay yönetimi (S
 
 Çok sayıda saldırı için düzeltme eki yüklenmemiş yazılım hala hesaplar. Azure AD Uygulama Ara Sunucusu, Microsoft 'un sahip olduğu bir Internet ölçeklendirmiş hizmettir, bu nedenle her zaman en son güvenlik düzeltme eklerini ve yükseltmelerini alırsınız.
 
-Azure AD Uygulama Ara Sunucusu tarafından yayınlanan uygulamaların güvenliğini artırmak için Web Gezgini Robotlarınızın uygulamalarınızı dizinlemesini ve arşivlemesini engelliyoruz. Bir Web Gezgini robotu, yayımlanan bir uygulama için robot ayarlarını almaya çalıştığında, uygulama proxy 'Si içeren `User-agent: * Disallow: /`bir robots. txt dosyası ile yanıt verir.
+Azure AD Uygulama Ara Sunucusu tarafından yayınlanan uygulamaların güvenliğini artırmak için Web Gezgini Robotlarınızın uygulamalarınızı dizinlemesini ve arşivlemesini engelliyoruz. Bir Web Gezgini robotu, yayımlanan bir uygulama için robot ayarlarını almaya çalıştığında, uygulama proxy 'Si içeren bir robots. txt dosyası ile yanıt verir `User-agent: * Disallow: /` .
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS koruma hizmeti
 

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 30ca03633b9b0788235439204a3c1926fe6b6a6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a07c419ecaa0cb0ec05c7c392a4d5ed9b0bfa491
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429986"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747404"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümler ile performans ayarlama
 
@@ -38,7 +38,7 @@ Standart Görünüm gereksinimlerinin çoğu, gerçekleştirilmiş bir görünü
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor
 |Karmaşık sorgulardan Görünüm verilerini alma hızı     | Dığını                                         | Hızlı  
 |Ek depolama                   | Hayır                                           | Yes
-|Sözdizimi                          | GÖRÜNÜM OLUŞTUR                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
+|Söz dizimi                          | GÖRÜNÜM OLUŞTUR                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
 
 ## <a name="benefits-of-using-materialized-views"></a>Gerçekleştirilmiş görünümleri kullanmanın avantajları
 
@@ -153,7 +153,7 @@ Bu iki özellik SQL havuzunda sorgu performansı ayarlama için aynı anda tanı
 
 ## <a name="example"></a>Örnek
 
-Bu örnekte, katalogdan daha fazla ücret harcamış müşterileri bulan TPCDS benzeri bir sorgu kullanılmaktadır. Ayrıca tercih edilen müşterileri ve bunların kaynak ülkesini tanımlar.   Sorgu SUM () ve GROUP BY içeren üç alt SELECT deyimi BIRLEŞIMDEN Ilk 100 kaydı seçmeyi içerir.
+Bu örnekte, katalogdan daha fazla ücret harcamış müşterileri bulan TPCDS benzeri bir sorgu kullanılmaktadır. Ayrıca tercih edilen müşterileri ve kaynak ülke/bölge bölgelerini de tanımlar.   Sorgu SUM () ve GROUP BY içeren üç alt SELECT deyimi BIRLEŞIMDEN Ilk 100 kaydı seçmeyi içerir.
 
 ```sql
 WITH year_total AS (

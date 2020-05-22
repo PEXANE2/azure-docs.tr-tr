@@ -3,12 +3,12 @@ title: Görev çalışma zamanı ortam değişkenleri
 description: Azure Batch Analytics için görev çalışma zamanı ortamı değişken Kılavuzu ve başvurusu.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 2027716283ca4910f45ae3e32111896ef0045ce8
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 0b3f00bcae50b0913432b122c85a3725a489679a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726766"
+ms.locfileid: "83745343"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Çalışma zamanı ortam değişkenlerini Azure Batch
 
@@ -48,7 +48,7 @@ Bir ortam değişkeninin geçerli değerini almak için, `cmd.exe` bir Windows i
 | AZ_BATCH_JOB_ID                 | Görevin ait olduğu işin kimliği. | Başlangıç görevi dışındaki tüm görevler. | batchjob001 |
 | AZ_BATCH_JOB_PREP_DIR           | Düğümdeki iş hazırlama [görevi dizininin][files_dirs] tam yolu. | Başlangıç görevi ve iş hazırlama görevi dışındaki tüm görevler. Yalnızca iş bir iş hazırlama göreviyle yapılandırılmışsa kullanılabilir. | C:\user\tasks\workıtem\jobprepreleasesamplejob\job-1\jobhazırlama |
 | AZ_BATCH_JOB_PREP_WORKING_DIR   | Düğümdeki iş hazırlama [görevi çalışma dizininin][files_dirs] tam yolu. | Başlangıç görevi ve iş hazırlama görevi dışındaki tüm görevler. Yalnızca iş bir iş hazırlama göreviyle yapılandırılmışsa kullanılabilir. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
-| AZ_BATCH_MASTER_NODE            | [Çoklu örnek görevinin][multi_instance] birincil görevinin çalıştırıldığı Işlem düğümünün IP adresi ve bağlantı noktası. | Çok örnekli birincil ve alt görevler. | `10.0.0.4:6000` |
+| AZ_BATCH_MASTER_NODE            | [Çoklu örnek görevinin][multi_instance] birincil görevinin çalıştırıldığı Işlem düğümünün IP adresi ve bağlantı noktası. MPı veya NCCL iletişimi için burada belirtilen bağlantı noktasını kullanmayın. Azure Batch hizmeti için ayrılmıştır. Bunun yerine MASTER_PORT değişkenini, komut satırı bağımsız değişkeni aracılığıyla geçirilen bir değer ile ayarlayarak (bağlantı noktası 6105 iyi bir varsayılan seçenektir) veya varsa AML kümeleri değerini kullanarak kullanın. | Çok örnekli birincil ve alt görevler. | `10.0.0.4:6000` |
 | AZ_BATCH_NODE_ID                | Görevin atandığı düğümün KIMLIĞI. | Tüm görevler. | TVM-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Varsa `true` , geçerli düğüm özel bir düğümdür. `false`Bu, [düşük öncelikli bir düğümdür](batch-low-pri-vms.md). | Tüm görevler. | `true` |
 | AZ_BATCH_NODE_LIST              | Biçimdeki [çok örnekli bir göreve][multi_instance] ayrılan düğümlerin listesi `nodeIP;nodeIP` . | Çok örnekli birincil ve alt görevler. | `10.0.0.4;10.0.0.5` |

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426376"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747631"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Özel blob çıkış bölümlendirme Azure Stream Analytics
 
@@ -65,7 +65,7 @@ Her bir dizin, her Blobun bir veya daha fazla kayıt içerdiği birden çok blob
 
 ## <a name="custom-datetime-path-patterns"></a>Özel DateTime yol desenleri
 
-Özel tarih saat yolu desenleri, Hive akış kuralları ile hizalanan bir çıkış biçimi belirtmenize olanak sağlar. bu sayede Azure HDInsight 'a veri gönderme ve aşağı akış işleme için Azure Databricks Azure Stream Analytics sağlarsınız. Özel tarih saat yolu desenleri, blob çıktınızın `datetime` yol ön eki alanındaki anahtar sözcüğü kullanılarak kolayca uygulanır, Biçim belirleyicisi ile birlikte. Örneğin, `{datetime:yyyy}`.
+Özel tarih saat yolu desenleri, Hive akış kuralları ile hizalanan bir çıkış biçimi belirtmenize olanak sağlar. bu sayede Azure HDInsight 'a veri gönderme ve aşağı akış işleme için Azure Databricks Azure Stream Analytics sağlarsınız. Özel tarih saat yolu desenleri, `datetime` BLOB çıktınızın yol ön eki alanındaki anahtar sözcüğü kullanılarak kolayca uygulanır, Biçim belirleyicisi ile birlikte. Örneğin, `{datetime:yyyy}`.
 
 ### <a name="supported-tokens"></a>Desteklenen belirteçler
 
@@ -77,10 +77,10 @@ Aşağıdaki biçim belirteci belirteçleri özel tarih saat biçimlerini elde e
 |{DateTime: dd}|01 ile 12 arasında bir ay|01|
 |{DateTime: d}|Ay 1 ile 12 arasında|1|
 |{DateTime: dd}|01 ile 31 arasında gün|02|
-|{DateTime: d}|1 ile 12 arasında gün|2|
+|{DateTime: d}|1 ile 31 arasında gün|2|
 |{DateTime: HH}|00 ile 23 arasında 24 saat biçimini kullanan saat|10|
-|{DateTime: dd}|00 ile 24 arasında dakika|06|
-|{DateTime: d}|0 ile 24 arasında dakika|6|
+|{DateTime: dd}|00 ile 60 arasında dakika|06|
+|{DateTime: d}|0 ile 60 arasında dakika|6|
 |{DateTime: ss}|00 ile 60 arasında saniye|08|
 
 Özel tarih saat desenleri kullanmak istemiyorsanız, yerleşik DateTime biçimleriyle bir açılan menü oluşturmak için yol ön ekine {Date} ve/veya {Time} belirtecini ekleyebilirsiniz.
@@ -89,9 +89,9 @@ Aşağıdaki biçim belirteci belirteçleri özel tarih saat biçimlerini elde e
 
 ### <a name="extensibility-and-restrictions"></a>Genişletilebilirlik ve kısıtlamalar
 
-Yol başına karakter sınırına ulaşana kadar, `{datetime:<specifier>}`yol düzeninde istediğiniz sayıda belirteç kullanabilirsiniz. Biçim belirticileri, tarih ve saat açılan listeleri tarafından zaten listelenen kombinasyonlardan daha fazla tek bir belirteç içinde birleştirilemez. 
+Yol `{datetime:<specifier>}` başına karakter sınırına ulaşana kadar, yol düzeninde istediğiniz sayıda belirteç kullanabilirsiniz. Biçim belirticileri, tarih ve saat açılan listeleri tarafından zaten listelenen kombinasyonlardan daha fazla tek bir belirteç içinde birleştirilemez. 
 
-Bir yol bölümü için `logs/MM/dd`:
+Bir yol bölümü için `logs/MM/dd` :
 
 |Geçerli ifade   |Geçersiz ifade   |
 |----------|-----------|
@@ -101,7 +101,7 @@ Yol önekinde aynı biçim belirticisini birden çok kez kullanabilirsiniz. Beli
 
 ### <a name="hive-streaming-conventions"></a>Hive akış kuralları
 
-BLOB depolama için özel yol desenleri, klasör adında klasörlerin etiketlenmesi `column=` beklenen Hive akış kuralıyla birlikte kullanılabilir.
+BLOB depolama için özel yol desenleri, klasör adında klasörlerin etiketlenmesi beklenen Hive akış kuralıyla birlikte kullanılabilir `column=` .
 
 Örneğin, `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
 

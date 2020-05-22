@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df45ab0a7b1729ae6c1602c9769cd5b6da26f6ac
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 897762e523a2d20445c3a25e612cf138e021f633
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74014353"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739728"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Hızlı Başlangıç: Azure Active Directory’de adlandırılmış konumları yapılandırma
 
@@ -41,7 +41,7 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 ## <a name="configure-named-locations"></a>Adlandırılmış konumları yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Sol bölmede **Azure Active Directory**' yi seçin ve ardından **güvenlik** bölümünden **koşullu erişim** ' i seçin.
 
@@ -63,6 +63,5 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 Daha fazla bilgi için bkz.
 
-- [Azure AD koşullu erişim](../active-directory-conditional-access-azure-portal.md).
-- [Azure AD koşullu erişim 'deki konum koşulları](../conditional-access/location-condition.md)
+- [Koşullu erişimde koşul olarak konum](../conditional-access/concept-conditional-access-conditions.md#locations).
 - [Riskli oturum açma işlemleri raporu](concept-risky-sign-ins.md).  

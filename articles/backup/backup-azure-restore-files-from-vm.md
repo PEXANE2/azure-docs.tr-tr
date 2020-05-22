@@ -3,12 +3,12 @@ title: Azure VM yedeğinden dosya ve klasörleri kurtarma
 description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klasörleri kurtarmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 0c518c080f3789d36d2ca600ade23a0b4b2ab385
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652119"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757985"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -142,14 +142,23 @@ Bir birim grubundaki tüm mantıksal birimleri, adları ve bunların yollarını
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command's results>
+lvdisplay <volume-group-name from the pvs commands results>
 ```
+
+Bu ```lvdisplay``` komut ayrıca birim gruplarının etkin olup olmadığını gösterir. Birim grubu devre dışı olarak işaretlenmişse, bağlanması için yeniden etkinleştirilmesi gerekir. Birim grubu devre dışı olarak gösteriliyorsa, etkinleştirmek için aşağıdaki komutu kullanın.
+
+```bash
+#!/bin/bash
+vgchange –a y  <volume-group-name from the pvs commands results>
+```
+
+Birim grubu adı etkin olduktan sonra, ```lvdisplay``` ilgili tüm öznitelikleri görmek için komutu bir kez daha çalıştırın.
 
 Mantıksal birimleri tercih ettiğiniz yola bağlamak için:
 
 ```bash
 #!/bin/bash
-mount <LV path> </mountpath>
+mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>RAID dizileri için

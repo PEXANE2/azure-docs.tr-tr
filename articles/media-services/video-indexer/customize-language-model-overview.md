@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: b096b9352be65033f2fb782b118e815dc16b43b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d264b0d35be5114d35713f793b771e42449c9230
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73838312"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745680"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>Video Indexer bir dil modelini özelleştirme
 
-Video Indexer, Microsoft [özel konuşma tanıma hizmeti](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/)ile tümleştirme yoluyla otomatik konuşma tanımayı destekler. Dil modelini uyarlama metnini karşıya yükleyerek özelleştirebilirsiniz. Bu, alt yapısının benzediğini istediğiniz etki alanından metin. Modelinize bir kez eğtikten sonra, uyarlama metninde görüntülenen yeni kelimeler tanınacaktır, bu, varsayılan telaffuz varsayıldığında ve dil modelinin yeni olası sözcük dizilerini öğrenmesi gerekir. Özel dil modelleri Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Rusça, Brezilya Portekizcesi, Hintçe ve Korece için desteklenir. 
+Video Indexer, Microsoft [özel konuşma tanıma hizmeti](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/)ile tümleştirme yoluyla otomatik konuşma tanımayı destekler. Dil modelini uyarlama metnini karşıya yükleyerek özelleştirebilirsiniz. Bu, alt yapısının benzediğini istediğiniz etki alanından metin. Modelinize bir kez eğtikten sonra, uyarlama metninde görüntülenen yeni kelimeler tanınacaktır, bu, varsayılan telaffuz varsayıldığında ve dil modelinin yeni olası sözcük dizilerini öğrenmesi gerekir. Özel dil modelleri Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Rusça, Portekizce, Hintçe ve Korece için desteklenir. 
 
 Örnek olarak, "Kubernetes" (Azure Kubernetes hizmeti bağlamında) gibi yüksek ölçüde özgü bir sözcük alalım. Word Video Indexer yeni bir değer olduğundan, "Topluluklar" olarak tanınır. Modeli, "Kubernetes" olarak tanımak için eğmeniz gerekir. Diğer durumlarda, kelimeler vardır ancak dil modeli, belirli bir bağlamda görünmesini beklemiyordu. Örneğin, "kapsayıcı hizmeti", özel olmayan bir dil modelinin belirli bir sözcük kümesi olarak tanıyacağı 2 sözcüklü bir dizi değildir.
 

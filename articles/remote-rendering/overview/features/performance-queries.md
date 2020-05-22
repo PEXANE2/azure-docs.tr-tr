@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 9a28dee2d1e6d1355b729a56e8eeb8447e4ed8c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e843216bf973033868e75c027b11d27ddfe2e93
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80682032"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757475"
 ---
 # <a name="server-side-performance-queries"></a>Sunucu tarafı performans sorguları
 
@@ -35,9 +35,9 @@ Sunucu üzerinde iyi işleme performansı, kararlı çerçeve ücretleri ve iyi 
 
 ## <a name="frame-statistics-queries"></a>Çerçeve istatistikleri sorguları
 
-Çerçeve istatistikleri, son çerçeve için gecikme gibi bazı üst düzey bilgiler sağlar. `FrameStatistics` Yapıda belirtilen veriler istemci tarafında ölçülür, bu nedenle API zaman uyumlu bir çağrıdır:
+Çerçeve istatistikleri, son çerçeve için gecikme gibi bazı üst düzey bilgiler sağlar. Yapıda belirtilen veriler `FrameStatistics` istemci tarafında ölçülür, bu nedenle API zaman uyumlu bir çağrıdır:
 
-````c#
+```cs
 void QueryFrameData(AzureSession session)
 {
     FrameStatistics frameStatistics;
@@ -46,7 +46,18 @@ void QueryFrameData(AzureSession session)
         // do something with the result
     }
 }
-````
+```
+
+```cpp
+void QueryFrameData(ApiHandle<AzureSession> session)
+{
+    FrameStatistics frameStatistics;
+    if (*session->GetGraphicsBinding()->GetLastFrameStatistics(&frameStatistics) == Result::Success)
+    {
+        // do something with the result
+    }
+}
+```
 
 Alınan `FrameStatistics` nesne aşağıdaki üyeleri barındırır:
 
@@ -65,17 +76,17 @@ Alınan `FrameStatistics` nesne aşağıdaki üyeleri barındırır:
 
 Tüm gecikme değerlerinin toplamı, genellikle 60 Hz 'deki kullanılabilir kare süresinden çok daha büyüktür. Bu, çok sayıda çerçeve paralel olarak uçuş aşamasında olduğundan ve çizimde gösterildiği gibi, yeni çerçeve isteklerinin istenen kare hızında kapalı olması nedeniyle Tamam ' dır. Ancak gecikme çok büyük olursa, [geç aşama yeniden projeksiyonunun](../../overview/features/late-stage-reprojection.md)kalitesini etkiler ve genel deneyimle tehlikeye atabilir.
 
-`videoFramesReceived`, `videoFrameReusedCount`ve `videoFramesDiscarded` ağ ve sunucu performansını ölçmek için kullanılabilir. `videoFramesReceived` Düşükse ve `videoFrameReusedCount` yüksekse bu, ağ tıkanıklığını veya zayıf sunucu performansını gösterebilir. Yüksek `videoFramesDiscarded` bir değer de ağ tıkanıklığını gösterir.
+`videoFramesReceived`, `videoFrameReusedCount` ve `videoFramesDiscarded` Ağ ve sunucu performansını ölçmek için kullanılabilir. `videoFramesReceived`Düşükse ve `videoFrameReusedCount` yüksekse bu, ağ tıkanıklığını veya zayıf sunucu performansını gösterebilir. Yüksek bir `videoFramesDiscarded` değer de ağ tıkanıklığını gösterir.
 
-Son olarak`timeSinceLastPresent`, `videoFrameMinDelta`,, `videoFrameMaxDelta` ve gelen video çerçevelerinin ve yerel mevcut çağrıların varyansı hakkında fikir verir. Yüksek Varyans, çerçeve hızının anlamına gelir.
+Son olarak,, `timeSinceLastPresent` `videoFrameMinDelta` , ve `videoFrameMaxDelta` gelen video çerçevelerinin ve yerel mevcut çağrıların varyansı hakkında fikir verir. Yüksek Varyans, çerçeve hızının anlamına gelir.
 
-Yukarıdaki değerlerden hiçbiri, sunucunun işleme meşgul olduğu tam sürenin gidiş dönüş değerinden `latencyPoseToReceive`çıkarılmasıyla emin olması nedeniyle saf ağ gecikmesi (çizimdeki kırmızı oklar) üzerinde net bir işaret vermez. Genel gecikme süresinin sunucu tarafı kısmı, istemci için kullanılamayan bir bilgi. Bununla birlikte, sonraki paragraf, bu değerin sunucudan alınan ek giriş ile nasıl yaklaşık olarak yapıldığını açıklar ve `networkLatency` değer aracılığıyla gösterilir.
+Yukarıdaki değerlerden hiçbiri, sunucunun işleme meşgul olduğu tam sürenin gidiş dönüş değerinden çıkarılmasıyla emin olması nedeniyle saf ağ gecikmesi (çizimdeki kırmızı oklar) üzerinde net bir işaret vermez `latencyPoseToReceive` . Genel gecikme süresinin sunucu tarafı kısmı, istemci için kullanılamayan bir bilgi. Bununla birlikte, sonraki paragraf, bu değerin sunucudan alınan ek giriş ile nasıl yaklaşık olarak yapıldığını açıklar ve değer aracılığıyla gösterilir `networkLatency` .
 
 ## <a name="performance-assessment-queries"></a>Performans değerlendirmesi sorguları
 
 *Performans değerlendirmesi sorguları* , sunucusundaki CPU ve GPU iş yükü hakkında daha ayrıntılı bilgi sağlar. Veriler sunucudan istendiğinden, bir performans anlık görüntüsünü sorgulamak olağan zaman uyumsuz örüntüyi izler:
 
-``` cs
+```cs
 PerformanceAssessmentAsync _assessmentQuery = null;
 
 void QueryPerformanceAssessment(AzureSession session)
@@ -92,7 +103,21 @@ void QueryPerformanceAssessment(AzureSession session)
 }
 ```
 
-`FrameStatistics` Nesnenin aksine, `PerformanceAssessment` nesne sunucu tarafı bilgilerini içerir:
+```cpp
+void QueryPerformanceAssessment(ApiHandle<AzureSession> session)
+{
+    ApiHandle<PerformanceAssessmentAsync> assessmentQuery = *session->Actions()->QueryServerPerformanceAssessmentAsync();
+    assessmentQuery->Completed([] (ApiHandle<PerformanceAssessmentAsync> res)
+    {
+        // do something with the result:
+        PerformanceAssessment result = *res->Result();
+        // ...
+
+    });
+}
+```
+
+Nesnenin aksine `FrameStatistics` , `PerformanceAssessment` nesne sunucu tarafı bilgilerini içerir:
 
 | Üye | Açıklama |
 |:-|:-|
@@ -102,7 +127,7 @@ void QueryPerformanceAssessment(AzureSession session)
 | kullanımı Zationgpu | Toplam sunucu GPU kullanımı yüzdesi |
 | memoryCPU | Toplam sunucu ana bellek kullanımı yüzdesi |
 | memoryGPU | Sunucu GPU 'SU yüzdesi cinsinden toplam adanmış video belleği kullanımı |
-| networkLatency | Milisaniye cinsinden yaklaşık ortalama gidiş dönüş ağ gecikmesi. Yukarıdaki çizimde, kırmızı okların toplamına karşılık gelir. Değer, gerçek sunucu işleme zamanının `latencyPoseToReceive` değerinden çıkarılmasıyla hesaplanır. `FrameStatistics` Bu yaklaşık değer doğru olmasa da, istemci üzerinde hesaplanan gecikme değerlerinden yalıtılmış olan ağ gecikmesi hakkında bir gösterge sağlar. |
+| networkLatency | Milisaniye cinsinden yaklaşık ortalama gidiş dönüş ağ gecikmesi. Yukarıdaki çizimde, kırmızı okların toplamına karşılık gelir. Değer, gerçek sunucu işleme zamanının değerinden çıkarılmasıyla hesaplanır `latencyPoseToReceive` `FrameStatistics` . Bu yaklaşık değer doğru olmasa da, istemci üzerinde hesaplanan gecikme değerlerinden yalıtılmış olan ağ gecikmesi hakkında bir gösterge sağlar. |
 | polygonsRendered | Bir çerçevede işlenen üçgenin sayısı. Bu sayı Ayrıca, işleme sırasında daha sonra gelen üçgenler de içerir. Yani bu sayı, farklı kamera konumlarında çok fazla farklılık göstermez, ancak üçgen yüzey kaldırma hızına bağlı olarak performans büyük ölçüde farklılık gösterebilir.|
 
 Değerleri değerlendirmenize yardımcı olmak için her bölüm **harika**, **iyi**, **mediocre**veya **kötü**gibi bir kalite sınıflandırmasıyla gelir.
@@ -110,9 +135,9 @@ Bu değerlendirme ölçümü sunucunun sistem durumunu kabaca bir şekilde belir
 
 ## <a name="statistics-debug-output"></a>İstatistik hata ayıklama çıkışı
 
-Sınıf `ARRServiceStats` hem çerçeve istatistikleri hem de performans değerlendirmesi sorguları etrafında kaydırılır ve istatistikleri toplanmış değerler olarak veya önceden oluşturulmuş bir dize olarak döndürmek için kullanışlı işlevsellik sağlar. Aşağıdaki kod, istemci uygulamanızda sunucu tarafı istatistiklerini göstermek için en kolay yoldur.
+Sınıfı, `ARRServiceStats` hem çerçeve istatistikleri hem de performans değerlendirmesi sorguları etrafında kaydırılan ve istatistikleri toplanmış değerler olarak veya önceden oluşturulmuş bir dize olarak döndürmek için uygun işlevselliği sağlayan bir C# sınıfıdır. Aşağıdaki kod, istemci uygulamanızda sunucu tarafı istatistiklerini göstermek için en kolay yoldur.
 
-``` cs
+```cs
 ARRServiceStats _stats = null;
 
 void OnConnect()
@@ -142,9 +167,9 @@ Yukarıdaki kod metin etiketini aşağıdaki metinle doldurur:
 
 ![ArrServiceStats String çıktısı](./media/arr-service-stats.png)
 
-`GetStatsString` API, tüm değerlerin bir dizesini biçimlendirir, ancak her bir değer aynı zamanda `ARRServiceStats` örnekten programlı bir şekilde sorgulanabilir.
+`GetStatsString`API, tüm değerlerin bir dizesini biçimlendirir, ancak her bir değer aynı zamanda örnekten programlı bir şekilde sorgulanabilir `ARRServiceStats` .
 
-Ayrıca üyelerin, zaman içinde değerleri toplayan çeşitleri vardır. , Veya `*Avg` `*Max` `*Total`sonekine sahip üyelere bakın. Üye `FramesUsedForAverage` , bu toplama için kaç çerçeve kullanıldığını gösterir.
+Ayrıca üyelerin, zaman içinde değerleri toplayan çeşitleri vardır. , Veya sonekine sahip üyelere bakın `*Avg` `*Max` `*Total` . Üye, `FramesUsedForAverage` Bu toplama için kaç çerçeve kullanıldığını gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

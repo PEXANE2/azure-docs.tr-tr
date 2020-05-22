@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0b272a8c8ce81fc40585014e5930f5d7b1b5f2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9731b869b20c7d8cfc3b1e234711c818a2b7422
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431702"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744246"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak Parquet dosyalarını sorgulama
 
@@ -22,34 +22,11 @@ Bu makalede, Parquet dosyalarını okuyacak, isteğe bağlı SQL (Önizleme) kul
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalenin geri kalanını okumadan önce aşağıdaki makaleleri gözden geçirin:
-
-- [İlk kez kurulum](query-data-storage.md#first-time-setup)
-- [Ön koşullar](query-data-storage.md#prerequisites)
+İlk adımınız, bir veri kaynağı ile [NYC sarı TAXI](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) depolama hesabına başvuran **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 
 ## <a name="dataset"></a>Veri kümesi
 
-Parquet dosyalarını CSV dosyalarını okurken de aynı şekilde sorgulayabilirsiniz. Tek fark, FILEFORMAT parametresinin PARQUET olarak ayarlanmasıdır. Bu makaledeki örneklerde, Parquet dosyalarını okuma özellikleri gösterilmektedir.
-
-> [!NOTE]
-> Parquet dosyalarını okurken OPENROWSET WıTH yan tümcesinde sütunlar belirtmeniz gerekmez. SQL isteğe bağlı, Parquet dosyasındaki meta verileri kullanır ve sütunları ada göre bağlar.
-
-Örnek sorgular için *Parquet/Taxi* klasörünü kullanacaksınız. NYC TAXI-sarı TAXI, 2016 Temmuz 'dan kayıt verilerini kaydeder. Haziran 2018 ' e kadar.
-
-Veriler yıla ve aya göre bölümlendirilir ve klasör yapısı aşağıdaki gibidir:
-
-- yıl = 2016
-  - ay = 6
-  - ...
-  - ay = 12
-- yıl = 2017
-  - ay = 1
-  - ...
-  - ay = 12
-- yıl = 2018
-  - ay = 1
-  - ...
-  - ay = 6
+Bu örnekte [NYC sarı TAXI](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) veri kümesi kullanılıyor. Parquet dosyalarını [CSV dosyalarını okurken](query-parquet-files.md)de aynı şekilde sorgulayabilirsiniz. Tek fark `FILEFORMAT` parametresi olarak ayarlanmalıdır `PARQUET` . Bu makaledeki örneklerde, Parquet dosyalarını okuma özellikleri gösterilmektedir.
 
 ## <a name="query-set-of-parquet-files"></a>Parquet dosyaları sorgu kümesi
 
@@ -57,23 +34,24 @@ Parquet dosyalarını Sorgulayabileceğiniz zaman yalnızca ilgilendiğiniz süt
 
 ```sql
 SELECT
-        YEAR(pickup_datetime),
-        passenger_count,
+        YEAR(tpepPickupDateTime),
+        passengerCount,
         COUNT(*) AS cnt
 FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*',
+        BULK 'puYear=2018/puMonth=*/*.snappy.parquet',
+        DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
     ) WITH (
-        pickup_datetime DATETIME2,
-        passenger_count INT
+        tpepPickupDateTime DATETIME2,
+        passengerCount INT
     ) AS nyc
 GROUP BY
-    passenger_count,
-    YEAR(pickup_datetime)
+    passengerCount,
+    YEAR(tpepPickupDateTime)
 ORDER BY
-    YEAR(pickup_datetime),
-    passenger_count;
+    YEAR(tpepPickupDateTime),
+    passengerCount;
 ```
 
 ## <a name="automatic-schema-inference"></a>Otomatik Şema çıkarımı
@@ -86,13 +64,13 @@ Aşağıdaki örnekte, Parquet dosyaları için otomatik Şema çıkarımı öze
 > Parquet dosyalarını okurken OPENROWSET WıTH yan tümcesinde sütunlar belirtmeniz gerekmez. Bu durumda, SQL isteğe bağlı sorgu hizmeti, Parquet dosyasındaki meta verileri kullanır ve sütunları ada göre bağlar.
 
 ```sql
-SELECT
-    COUNT_BIG(*)
-FROM
+SELECT TOP 10 *
+FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet',
+        BULK 'puYear=2018/puMonth=*/*.snappy.parquet',
+        DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
-    ) AS nyc;
+    ) AS nyc
 ```
 
 ### <a name="query-partitioned-data"></a>Bölümlenmiş verileri sorgulama
@@ -104,27 +82,25 @@ Bu örnekte belirtilen veri kümesi ayrı alt klasörlere bölünür (bölümlen
 
 ```sql
 SELECT
-    nyc.filepath(1) AS [year],
-    nyc.filepath(2) AS [month],
-    payment_type,
-    SUM(fare_amount) AS fare_total
-FROM
+        YEAR(tpepPickupDateTime),
+        passengerCount,
+        COUNT(*) AS cnt
+FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=*/month=*/*.parquet',
+        BULK 'puYear=*/puMonth=*/*.snappy.parquet',
+        DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
-    ) AS nyc
+    ) nyc
 WHERE
     nyc.filepath(1) = 2017
     AND nyc.filepath(2) IN (1, 2, 3)
-    AND pickup_datetime BETWEEN CAST('1/1/2017' AS datetime) AND CAST('3/31/2017' AS datetime)
+    AND tpepPickupDateTime BETWEEN CAST('1/1/2017' AS datetime) AND CAST('3/31/2017' AS datetime)
 GROUP BY
-    nyc.filepath(1),
-    nyc.filepath(2),
-    payment_type
+    passengerCount,
+    YEAR(tpepPickupDateTime)
 ORDER BY
-    nyc.filepath(1),
-    nyc.filepath(2),
-    payment_type;
+    YEAR(tpepPickupDateTime),
+    passengerCount;
 ```
 
 ## <a name="type-mapping"></a>Tür eşleme
@@ -141,12 +117,12 @@ Parquet dosyaları her sütun için tür açıklamalarını içerir. Aşağıdak
 | INT64 | | bigint |
 | INT96 | |datetime2 |
 | FIXED_LEN_BYTE_ARRAY | |ikili |
-| Ý |UTF8 |varchar \*(UTF8 harmanlama) |
-| Ý |DIZISINDE |varchar \*(UTF8 harmanlama) |
-| Ý |YARDıMıNıN|varchar \*(UTF8 harmanlama) |
+| Ý |UTF8 |varchar \* (UTF8 harmanlama) |
+| Ý |DIZISINDE |varchar \* (UTF8 harmanlama) |
+| Ý |YARDıMıNıN|varchar \* (UTF8 harmanlama) |
 | Ý |EDIN |uniqueidentifier |
 | Ý |KATEGORI |decimal |
-| Ý |JSON |varchar (max) \*(UTF8 harmanlama) |
+| Ý |JSON |varchar (max) \* (UTF8 harmanlama) |
 | Ý |BSON |varbinary (max) |
 | FIXED_LEN_BYTE_ARRAY |KATEGORI |decimal |
 | BYTE_ARRAY |ARALıĞıNDA |, standartlaştırılmış biçimde seri hale getirilmiş varchar (max) |

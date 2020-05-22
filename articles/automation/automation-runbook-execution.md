@@ -1,16 +1,16 @@
 ---
 title: Azure Otomasyonu’nda runbook yürütme
-description: Azure Otomasyonu 'ndaki bir runbook 'un nasıl işlendiği hakkındaki ayrıntıları açıklar.
+description: Bu makalede, Azure Otomasyonu 'nda runbook 'ların işlenmesine genel bakış sunulmaktadır.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1933688459cd02ee4da448d2e83b0a7a92a1d2c8
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 5785377830f7e2cfb159a3090d19b1cd35b07a61
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994735"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743903"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu’nda runbook yürütme
 
@@ -29,9 +29,6 @@ Aşağıdaki diyagramda [PowerShell runbook 'ları](automation-runbook-types.md#
 ![İş durumları-PowerShell Iş akışı](./media/automation-runbook-execution/job-statuses.png)
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="runbook-execution-environment"></a>Runbook yürütme ortamı
 
@@ -76,7 +73,7 @@ ASC, bir VM 'de imzalanmış veya imzasız herhangi bir komut dosyasını çalı
 
 Azure [aboneliği](https://docs.microsoft.com/office365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings) , Microsoft 'un ücretlendirildiği bir veya daha fazla bulut tabanlı hizmeti kullanması için bir anlaşmadır. Azure Otomasyonu için her abonelik bir Azure Otomasyonu hesabına bağlanır ve hesapta [birden çok abonelik oluşturabilirsiniz](manage-runbooks.md#work-with-multiple-subscriptions) .
 
-## <a name="credentials"></a>Kimlik Bilgileri
+## <a name="credentials"></a>Kimlik bilgileri
 
 Bir runbook, Azure veya üçüncü taraf sistemler için herhangi bir kaynağa erişmek üzere uygun [kimlik bilgileri](shared-resources/credentials.md) gerektirir. Bu kimlik bilgileri Azure Otomasyonu, Key Vault vb. içinde depolanır.  
 
@@ -103,13 +100,13 @@ Log Analytics Aracısı ve **nxautomation** hesabı için kullanılabilir Günl�
 * /var/seçenek/Microsoft/omsagent/Run/automationworker/Worker.log-Automation çalışan günlüğü
 
 >[!NOTE]
->**Nxautomation** kullanıcısı eklendi güncelleştirme yönetimi bir parçası olarak yalnızca imzalı runbook 'ları yürütür.
+>Güncelleştirme Yönetimi bir parçası olarak etkinleştirilen **nxautomation** kullanıcısı yalnızca imzalı runbook 'ları yürütür.
 
 ## <a name="runbook-permissions"></a>Runbook izinleri
 
 Bir runbook 'un kimlik bilgileriyle Azure 'da kimlik doğrulaması için izinleri olması gerekir. Bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](manage-runas-account.md). 
 
-## <a name="modules"></a>Modüller
+## <a name="modules"></a>Modül
 
 Azure Otomasyonu, bazı Azurerd modülleri (azurerm. Automation) ve birkaç iç cmdlet içeren bir modül dahil olmak üzere çeşitli varsayılan modülleri destekler. Desteklenen, az modüller (az. Automation) dahil olmak üzere, şu anda Azurermmodules için tercih edilen olarak kullanılan yüklenebilir modüllerdir. Runbook 'larınız ve DSC yapılandırmalarında kullanılabilen modüllerin ayrıntıları için bkz. [Azure Automation 'da modülleri yönetme](shared-resources/modules.md).
 
@@ -157,9 +154,9 @@ Bu bölümde, runbook 'larınızda özel durumları veya aralıklı sorunları i
 
 ### <a name="erroractionpreference"></a>ErrorActionPreference
 
-[ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) değişkeni, PowerShell 'in Sonlandırıcı olmayan bir hataya nasıl yanıt vereceğini belirler. Sonlandırma hataları her zaman sonlandırılır ve bundan etkilenmez `ErrorActionPreference`.
+[ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) değişkeni, PowerShell 'in Sonlandırıcı olmayan bir hataya nasıl yanıt vereceğini belirler. Sonlandırma hataları her zaman sonlandırılır ve bundan etkilenmez `ErrorActionPreference` .
 
-Runbook kullandığında `ErrorActionPreference`, `PathNotFound` [Get-ChildItem](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) cmdlet 'inden olduğu gibi Normalde Sonlandırılmamış bir hata runbook 'un tamamlanmasını durduruyor. Aşağıdaki örnek öğesinin `ErrorActionPreference`kullanımını gösterir. Komut dosyası durdurulduğunda son [Write-output](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) komutu hiçbir şekilde yürütülmez.
+Runbook kullandığında `ErrorActionPreference` , `PathNotFound` [Get-ChildItem](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) cmdlet 'inden olduğu gibi Normalde Sonlandırılmamış bir hata runbook 'un tamamlanmasını durduruyor. Aşağıdaki örnek öğesinin kullanımını gösterir `ErrorActionPreference` . Komut dosyası durdurulduğunda son [Write-output](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) komutu hiçbir şekilde yürütülmez.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -169,7 +166,7 @@ Write-Output "This message will not show"
 
 ### <a name="try-catch-finally"></a>Son catch 'i deneyin
 
-[Catch, son](/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) hataları Işlemek için PowerShell betiklerinizde kullanılır. Betik belirli özel durumları veya genel özel durumları yakalamak için bu mekanizmayı kullanabilir. `catch` Deyimleri izlemek veya hataları işlemeye çalışmak için kullanılmalıdır. Aşağıdaki örnek varolmayan bir dosyayı indirmeye çalışır. `System.Net.WebException` Özel durumu yakalar ve diğer tüm özel durumlar için son değeri döndürür.
+[Catch, son](/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) hataları Işlemek için PowerShell betiklerinizde kullanılır. Betik belirli özel durumları veya genel özel durumları yakalamak için bu mekanizmayı kullanabilir. `catch`Deyimleri izlemek veya hataları işlemeye çalışmak için kullanılmalıdır. Aşağıdaki örnek varolmayan bir dosyayı indirmeye çalışır. `System.Net.WebException`Özel durumu yakalar ve diğer tüm özel durumlar için son değeri döndürür.
 
 ```powershell-interactive
 try
@@ -189,7 +186,7 @@ catch
 
 ### <a name="throw"></a>Throw
 
-[Throw](/powershell/module/microsoft.powershell.core/about/about_throw) , sonlandırma hatası oluşturmak için kullanılabilir. Bu mekanizma, bir runbook 'ta kendi mantığınızı tanımlarken yararlı olabilir. Betik tarafından durdurulması gereken bir ölçüt karşılıyorsa, durdurmak için `throw` ifadesini kullanabilir. Aşağıdaki örnek, gerekli bir işlev parametresini göstermek için bu ifadeyi kullanır.
+[Throw](/powershell/module/microsoft.powershell.core/about/about_throw) , sonlandırma hatası oluşturmak için kullanılabilir. Bu mekanizma, bir runbook 'ta kendi mantığınızı tanımlarken yararlı olabilir. Betik tarafından durdurulması gereken bir ölçüt karşılıyorsa, `throw` durdurmak için ifadesini kullanabilir. Aşağıdaki örnek, gerekli bir işlev parametresini göstermek için bu ifadeyi kullanır.
 
 ```powershell-interactive
 function Get-ContosoFiles
@@ -205,7 +202,7 @@ Runbook 'larınızın hataları işlemesi gerekir. Azure Otomasyonu iki tür Pow
 
 Hataları sonlandırmak, meydana geldiğinde runbook yürütmesini durdurur. Runbook, iş durumu başarısız olarak durduruluyor.
 
-Sonlandırılmamış hatalar, bir betiğin gerçekleştikten sonra bile devam etmesine izin verir. Bir runbook `Get-ChildItem` cmdlet 'ini mevcut olmayan bir yol ile kullandığında, Sonlandırıcı olmayan hata bir örnek oluşur. PowerShell yolun mevcut olmadığını, bir hata olduğunu ve sonraki klasöre devam ettiğini görür. Bu durumda hata, runbook iş durumunu başarısız olarak ayarlanmamış ve iş da tamamlanmış olabilir. Bir runbook 'u Sonlandırıcı olmayan bir hata üzerinde durmaya zorlamak için cmdlet 'inde kullanabilirsiniz `ErrorAction Stop` .
+Sonlandırılmamış hatalar, bir betiğin gerçekleştikten sonra bile devam etmesine izin verir. Bir runbook cmdlet 'ini mevcut olmayan bir yol ile kullandığında, Sonlandırıcı olmayan hata bir örnek oluşur `Get-ChildItem` . PowerShell yolun mevcut olmadığını, bir hata olduğunu ve sonraki klasöre devam ettiğini görür. Bu durumda hata, runbook iş durumunu başarısız olarak ayarlanmamış ve iş da tamamlanmış olabilir. Bir runbook 'u Sonlandırıcı olmayan bir hata üzerinde durmaya zorlamak için `ErrorAction Stop` cmdlet 'inde kullanabilirsiniz.
 
 ## <a name="calling-processes"></a>İşlem çağırma
 
@@ -217,7 +214,7 @@ Azure korumalı alanındaki runbook işleri hiçbir cihaza veya uygulama özelli
 
 ## <a name="webhooks"></a>Web Kancaları
 
-Dış hizmetler, örneğin Azure DevOps Services ve GitHub, Azure Otomasyonu 'nda bir runbook başlatabilir. Bu tür bir başlangıç yapmak için hizmet tek bir HTTP isteği aracılığıyla bir [Web kancası](automation-webhooks.md) kullanır. Web kancasının kullanımı, runbook 'ların tam bir Azure Otomasyonu çözümü uygulanmaksızın başlatılmasını sağlar. 
+Dış hizmetler, örneğin Azure DevOps Services ve GitHub, Azure Otomasyonu 'nda bir runbook başlatabilir. Bu tür bir başlangıç yapmak için hizmet tek bir HTTP isteği aracılığıyla bir [Web kancası](automation-webhooks.md) kullanır. Web kancası kullanımı, runbook 'ların tam bir Azure Otomasyonu özelliği uygulanmaksızın başlatılmasını sağlar. 
 
 ## <a name="shared-resources"></a><a name="fair-share"></a>Paylaşılan kaynaklar
 
@@ -231,7 +228,6 @@ Alt runbook 'ların kullanılması, üst runbook 'un tamamlanacağı toplam sür
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir runbook ile çalışmaya başlamak için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md).
-* Dil başvurusu ve öğrenme modülleri dahil olmak üzere PowerShell hakkında daha fazla bilgi için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* [Azure Otomasyonu 'nda runbook 'ları yönetme](manage-runbooks.md)
+* [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview)
+* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)

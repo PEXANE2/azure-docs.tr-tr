@@ -5,17 +5,17 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 04/30/2020
-ms.openlocfilehash: 7ed01a57a4c2a55d777907a6cc14b111fb2086e3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 05/19/2020
+ms.openlocfilehash: 5ab71ee67b66cacbcd1b23fa35d6f424021fa9cc
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731909"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757557"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve kurtarma
 
-Bu makalede, Azure Log Analytics çalışma alanı geçici silme kavramı ve silinen çalışma alanının nasıl kurtarılacağı açıklanmaktadır. 
+Bu makalede, Azure Log Analytics çalışma alanı geçici silme kavramı ve silinen çalışma alanının nasıl kurtarılacağı açıklanmaktadır.
 
 ## <a name="considerations-when-deleting-a-workspace"></a>Çalışma alanı silinirken dikkat edilecek noktalar
 
@@ -45,12 +45,12 @@ Bir çalışma alanını [PowerShell](https://docs.microsoft.com/powershell/modu
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. Oturum açmak için [Azure Portal](https://portal.azure.com)gidin. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 3. Log Analytics çalışma alanları listesinde bir çalışma alanı seçin ve orta bölmenin en üstündeki **Sil** ' e tıklayın.
-   ![Çalışma alanı Özellikler bölmesinden silme seçeneği](media/delete-workspace/log-analytics-delete-workspace.png)
-4. Çalışma alanını silme işlemini onaylamanızı isteyen onay iletisi penceresi göründüğünde **Evet**' e tıklayın.
-   ![Çalışma alanının Silinmesini Onayla](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+4. Çalışma alanına geçen hafta boyunca veri alımını gösteren bir onay sayfası görüntülenir. Onaylamak için çalışma alanının adını yazın ve ardından **Sil**' e tıklayın.
+
+   ![Çalışma alanının Silinmesini Onayla](media/delete-workspace/workspace-delete.png)
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell
@@ -92,10 +92,27 @@ Kalıcı çalışma alanı silme, şu anda REST API aracılığıyla gerçekleş
 WHERE ' eyJ0eXAiOiJKV1Qi... ' tam yetkilendirme belirtecini temsil eder.
 
 ## <a name="recover-workspace"></a>Çalışma alanını kurtar
+Bir Log Analytics çalışma alanını yanlışlıkla veya isteyerek sildiğinizde, hizmet, çalışma alanını herhangi bir işlem için erişilebilir hale getiren bir geçici silme durumuna koyar. Silinen çalışma alanının adı, geçici silme dönemi sırasında korunur ve yeni bir çalışma alanı oluşturmak için kullanılamaz. Geçici silme süresinden sonra, çalışma alanı kurtarılamaz, kalıcı silme için zamanlanır ve yeni bir çalışma alanı oluşturmak için kullanılabilir.
 
-Çalışma alanının geçici silme işleminden önce ilişkilendirildiği abonelik ve kaynak grubu için katkıda bulunan izinleriniz varsa, verileri, yapılandırması ve bağlı aracıları da dahil olmak üzere geçici silme döneminde kurtarabilirsiniz. Geçici silme süresinden sonra, çalışma alanı kurtarılamaz ve kalıcı silme için atanmaz. Silinen çalışma alanlarının adları, geçici silme dönemi sırasında korunur ve yeni bir çalışma alanı oluşturulmaya çalışılırken kullanılamaz.  
+Veri, yapılandırma ve bağlı aracılar dahil olmak üzere geçici silme döneminde çalışma alanınızı kurtarabilirsiniz. Çalışma alanının geçici silme işleminden önce bulunduğu abonelik ve kaynak grubu için katkıda bulunan izinlerine sahip olmanız gerekir. Çalışma alanı kurtarma işlemi, silinen çalışma alanının ayrıntılarıyla birlikte bir Log Analytics çalışma alanı oluşturularak gerçekleştirilir:
 
-Çalışma alanınızı, silinen çalışma alanının ayrıntılarına sahip bir çalışma alanı oluşturarak kurtarabilirsiniz; bu, *ABONELIK kimliği*, *kaynak grubu adı*, *çalışma alanı adı* ve *bölge*içerir. Kaynak grubunuz da silinmişse ve yoksa, silme işleminden önce kullanılan aynı ada sahip bir kaynak grubu oluşturun ve ardından şu yöntemlerden birini kullanarak bir çalışma alanı oluşturun: [Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace), [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) veya [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate).
+- Abonelik Kimliği
+- Kaynak grubu adı
+- Çalışma alanı adı
+- Bölge
+
+### <a name="azure-portal"></a>Azure portal
+
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
+2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin. Seçili kapsamda bulunan çalışma alanlarının listesini görürsünüz.
+3. En üstteki menüden **kurtar** ' a tıklayarak geçici bir şekilde kurtarılabilen, geçici silme durumunda bulunan çalışma alanları içeren bir sayfa açın.
+
+   ![Çalışma alanını kurtar](media/delete-workspace/recover-menu.png)
+
+4. Çalışma alanını seçin ve bu çalışma alanını kurtarmak için **kurtar** ' a tıklayın.
+
+   ![Çalışma alanını kurtar](media/delete-workspace/recover-workspace.png)
+
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

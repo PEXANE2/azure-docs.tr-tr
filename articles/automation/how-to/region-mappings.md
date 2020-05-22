@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e637aec3c5105bb9628a854b0d4c73988e60daaf
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 24ff69e76736ffa93cecb795be563f172c422355
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714517"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744760"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 
@@ -80,6 +80,6 @@ Alternatif olarak, çalışma alanınızın içindeki Otomasyon hesabınızdan �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Güncelleştirme Yönetimine genel bakış](../automation-update-management.md)
-* [Değişiklik İzleme ve envantere genel bakış](../change-tracking.md)
-* [VM'leri çalışma saatleri dışında başlat/durdur genel bakış](../automation-solution-vm-management.md)
+* [Güncelleştirme yönetimi genel bakışta](../automation-update-management.md)güncelleştirme yönetimi hakkında bilgi edinin.
+* [Değişiklik izleme ve envanterde genel bakış](../change-tracking.md)hakkında bilgi edinin değişiklik izleme.
+* [VM'leri çalışma saatleri dışında Başlat/Durdur genel bakışta](../automation-solution-vm-management.md)VM'leri çalışma saatleri dışında Başlat/Durdur hakkında bilgi edinin.

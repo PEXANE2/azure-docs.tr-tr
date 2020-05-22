@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: cb4d2faafacf8ba4d8bbe519d92c950cd56e32fd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bc21ba73ef7e8f5879af2b15787449315f36a3f8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857064"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745315"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -22,6 +22,7 @@ Azure Data Box, şirket içi verilerinizi Azure'a hızlı, kolay ve güvenilir b
 Bu öğreticide Azure Data Box sipariş etme adımları açıklanır. Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
+>
 > * Data Box dağıtımı önkoşulları
 > * Data Box sipariş etme
 > * Siparişi izleme
@@ -38,8 +39,9 @@ Cihazı dağıtmadan önce Data Box hizmeti ve cihazı için aşağıdaki yapıl
 ### <a name="for-device"></a>Cihaz için
 
 Başlamadan önce aşağıdakilerden emin olun:
-- Veri merkezi ağına bağlı bir konak bilgisayarınız olmalıdır. Data Box verileri bu bilgisayardan kopyalayacaktır. [Azure Data Box sistem gereksinimleri](data-box-system-requirements.md) altında açıklandığı gibi konak bilgisayarınızın desteklenen bir işletim sistemini çalıştırması gerekir.
-- Veri merkezinizin yüksek hızlı ağı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı yoksa 1 GbE veri bağlantısı kullanılabilir; ancak, kopyalama hızı etkilenir.
+
+* Veri merkezi ağına bağlı bir konak bilgisayarınız olmalıdır. Data Box verileri bu bilgisayardan kopyalayacaktır. [Azure Data Box sistem gereksinimleri](data-box-system-requirements.md) altında açıklandığı gibi konak bilgisayarınızın desteklenen bir işletim sistemini çalıştırması gerekir.
+* Veri merkezinizin yüksek hızlı ağı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı yoksa 1 GbE veri bağlantısı kullanılabilir; ancak, kopyalama hızı etkilenir.
 
 ## <a name="order-data-box"></a>Data Box sipariş etme
 
@@ -47,30 +49,30 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
 
 1. Microsoft Azure kimlik bilgilerini kullanarak şu URL’de oturum açın: [https://portal.azure.com](https://portal.azure.com).
 2. **+ Kaynak oluştur**’a tıklayın ve *Azure Data Box* araması yapın. **Azure Data Box**'a tıklayın.
-    
+
    [![Azure Data Box arama 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 
 3. **Oluştur**' a tıklayın.
 
-4. Data Box'ın bölgenizde kullanılabilir olup olmadığını kontrol edin. Aşağıdaki bilgileri girin veya seçin ve sonra **Uygula**'ya tıklayın. 
+4. Data Box'ın bölgenizde kullanılabilir olup olmadığını kontrol edin. Aşağıdaki bilgileri girin veya seçin ve sonra **Uygula**'ya tıklayın.
 
     |Ayar  |Değer  |
     |---------|---------|
     |Abonelik     | Data Box hizmeti için bir EA, CSP veya Azure sponsorluk aboneliği seçin. <br> Abonelik fatura hesabınıza bağlıdır.       |
     |Aktarım türü     | **Azure’a içeri aktar**’ı seçin.        |
-    |Kaynak ülke     |   Verilerinizin bulunduğu ülkeyi/bölgeyi seçin.         |
+    |Kaynak ülke/bölge    |    Verilerinizin bulunduğu ülkeyi/bölgeyi seçin.         |
     |Hedef Azure bölgesi     |     Verileri aktarmak istediğiniz Azure bölgesini seçin.        |
 
-5. Veri **kutusunu**seçin. Tek bir sipariş için kullanılabilir maksimum kapasite 80 TB 'tır. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
+5. **Data Box**'ı seçin. Tek bir sipariş için kullanılabilir maksimum kapasite 80 TB 'tır. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
 
       [![Data Box seçenek 1 ' i seçin](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 
 6. **Sipariş** bölümünde **Sipariş ayrıntıları**'nı belirtin. Aşağıdaki bilgileri girin veya seçin ve sonra **İleri**'ye tıklayın.
-    
+
     |Ayar  |Değer  |
     |---------|---------|
     |Adı     |  Siparişi takip etmek için kullanılacak kolay bir ad girin. <br> Ad harf, rakam ve tirelerden oluşan 3-24 karakter arası uzunlukta olabilir. <br> Ad bir harf veya sayıyla başlamalı ve bitmelidir.      |
-    |Kaynak grubu     |   Var olan bir taneyi kullanın veya yenisini oluşturun. <br> Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır.         |
+    |Kaynak grubu     |    Var olan bir taneyi kullanın veya yenisini oluşturun. <br> Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır.         |
     |Hedef Azure bölgesi     | Depolama hesabınız için bir bölge seçin. <br> Daha fazla bilgi için [bölge kullanılabilirliği](data-box-overview.md#region-availability)’ne gidin.        |
     |Depolama hedefi     | Depolama hesabı veya yönetilen diskler ya da her ikisini seçin. <br> Belirtilen Azure bölgesine göre filtrelenen listeden var olan bir veya daha fazla depolama hesabı seçin. Data Box en çok 10 depolama hesabına bağlanabilir. <br> Dilerseniz yeni bir **Genel amaçlı v1**, **Genel amaçlı v2** veya **Blob depolama hesabı** da oluşturabilirsiniz. <br>Sanal ağları olan depolama hesapları desteklenir. Data Box hizmetinin güvenli depolama hesaplarıyla çalışmasına izin vermek için, depolama hesabı ağ güvenlik duvarı ayarları içinden güvenilen hizmetleri etkinleştirin. Daha fazla bilgi için bkz. [Azure Data Box güvenilir hizmet olarak ekleme](../storage/common/storage-network-security.md#exceptions).|
 
@@ -88,16 +90,19 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
 
     Yönetilen diskler için belirtilen depolama hesabı, hazırlama depolama hesabı olarak kullanılır. Data Box hizmeti, VHD'leri yönetilen disklere dönüştürmeden ve kaynak gruplarına taşımadan önce hazırlama depolama hesabına sayfa blobları olarak yükler. Daha fazla bilgi için bkz. [Azure'a veri yüklemeyi doğrulama](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
-7. **Teslimat adresi**’ne adınızı, soyadınızı, şirket adını, posta adresini ve geçerli bir telefon numarasını girin. **Adresi doğrula**'ya tıklayın. Hizmet, teslimat adresinde hizmetin kullanılabilirlik durumunu doğrular. Hizmet belirtilen teslimat adresinde kullanılabilir durumdaysa bu konuda bir bildirim gönderilir. Japonya, Singapur, Kore ve Batı Avrupa hizmetini kullanan müşteriler, siparişi yerleştirirken kendinden yönetilen kargo Seçme seçeneğine sahiptir. Sipariş başarıyla yerleştirildikten sonra, belirtilen Azure veri merkezinde cihazı çekme yönergeleriyle bir e-posta alırsınız. Gönderim ayrıntıları başarıyla doğrulandıktan sonra **İleri** ' ye tıklayın.
+7. **Teslimat adresi**’ne adınızı, soyadınızı, şirket adını, posta adresini ve geçerli bir telefon numarasını girin. **Adresi doğrula**'ya tıklayın. Hizmet, teslimat adresinde hizmetin kullanılabilirlik durumunu doğrular. Hizmet belirtilen teslimat adresinde kullanılabilir durumdaysa bu konuda bir bildirim gönderilir.
 
-8. **Bildirim ayrıntıları** sayfasında e-posta adresi belirtin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.
+   Sipariş başarıyla yerleştirildikten sonra, kendi kendine yönetilen sevkıyat seçildiyse, bir e-posta bildirimi alırsınız. Kendi kendine yönetilen kargo hakkında daha fazla bilgi için bkz. [otomatik olarak yönetilen gönderi kullanma](data-box-portal-customer-managed-shipping.md).
+
+8. Gönderim ayrıntıları başarıyla doğrulandıktan sonra **İleri** ' ye tıklayın.
+
+9. **Bildirim ayrıntıları** sayfasında e-posta adresi belirtin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.
 
     Grup yöneticisinin ayrılması durumunda da bildirim almaya devam etmek için bir grup e-postası kullanmanız önerilir.
 
-9. **Özet** sayfasında sipariş, iletişim, bildirim ve gizlilik koşullarıyla ilgili bilgileri gözden geçirin. Gizlilik koşullarını kabul ettiğinizi belirten kutuyu işaretleyin.
+10. **Özet** sayfasında sipariş, iletişim, bildirim ve gizlilik koşullarıyla ilgili bilgileri gözden geçirin. Gizlilik koşullarını kabul ettiğinizi belirten kutuyu işaretleyin.
 
-10. **Sipariş**'e tıklayın. Siparişin oluşturulması birkaç dakika sürer.
-
+11. **Sipariş**'e tıklayın. Siparişin oluşturulması birkaç dakika sürer.
 
 ## <a name="track-the-order"></a>Siparişi izleme
 
@@ -105,10 +110,10 @@ Siparişi verdikten sonra durumunu Azure portalından takip edebilirsiniz. Data 
 
 Cihaz yoksa bir bildirim alırsınız. Cihaz varsa, Microsoft gönderilecek cihazı belirler ve gönderimi hazırlar. Cihaz hazırlanırken şu eylemler gerçekleştirilir:
 
-- Cihazla ilişkili her depolama hesabı için SMB paylaşımları oluşturulur.
-- Her paylaşım için, kullanıcı adı veya parola gibi erişim kimlik bilgileri oluşturulur.
-- Cihaz kilidinin açılmasına yardımcı olan cihaz parolası da oluşturulur.
-- Data Box, herhangi bir noktada cihaza yetkisiz erişimi önlemek için kilitlenmiştir.
+* Cihazla ilişkili her depolama hesabı için SMB paylaşımları oluşturulur.
+* Her paylaşım için, kullanıcı adı veya parola gibi erişim kimlik bilgileri oluşturulur.
+* Cihaz kilidinin açılmasına yardımcı olan cihaz parolası da oluşturulur.
+* Data Box, herhangi bir noktada cihaza yetkisiz erişimi önlemek için kilitlenmiştir.
 
 Cihazın hazırlanması tamamlandığında portalda sipariş durumu **İşlendi** olarak değişir.
 
@@ -123,7 +128,7 @@ Microsoft ardından cihazınızı hazırlar ve bölgeye uygun gönderim şirketi
 Bu siparişi iptal etmek için Azure portalında **Genel bakış**'a gidin ve komut çubuğundan **İptal**'e tıklayın.
 
 Sipariş verdikten sonra, sipariş durumu işlendi olmadan önce herhangi bir noktada siparişi iptal edebilirsiniz.
- 
+
 İptal edilen bir siparişi silmek için **Genel bakış**'a gidin ve komut çubuğundan **Sil**'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -131,6 +136,7 @@ Sipariş verdikten sonra, sipariş durumu işlendi olmadan önce herhangi bir no
 Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 
 > [!div class="checklist"]
+>
 > * Data Box dağıtımı önkoşulları
 > * Data Box sipariş etme
 > * Siparişi izleme
@@ -140,5 +146,3 @@ Data Box’ınızı ayarlama hakkında bilgi edinmek için sonraki öğreticiye 
 
 > [!div class="nextstepaction"]
 > [Azure Data Box’ınızı ayarlama](./data-box-deploy-set-up.md)
-
-

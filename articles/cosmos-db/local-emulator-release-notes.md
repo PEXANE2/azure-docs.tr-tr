@@ -6,18 +6,18 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168643"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746998"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos öykünücüsü-sürüm notları ve indirme bilgileri
 
 Bu makalede, Azure Cosmos öykünücü sürüm notları her sürümde yapılan Özellik güncelleştirmelerinin bir listesi ile gösterilir. Ayrıca, indirme ve kullanma öykünücünün en son sürümünü de listeler.
 
-## <a name="download"></a>İndirme
+## <a name="download"></a>İndir
 
 | | |
 |---------|---------|
@@ -25,6 +25,15 @@ Bu makalede, Azure Cosmos öykünücü sürüm notları her sürümde yapılan �
 |**Kullanmaya başlayın**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="2110"></a>2.11.0
+
+- Bu sürüm, otomatik ölçeklendirme sağlanan aktarım hızı için destek sunar. Bu yeni özellikler, istek birimleri (RU/s) içinde özel bir en yüksek sağlanan aktarım hızı düzeyi ayarlamanıza, mevcut veritabanlarında ve kapsayıcılarda otomatik ölçeklendirmeyi etkinleştirmesine ve Azure Cosmos DB SDK 'lar aracılığıyla programlı destek sağlanmasına olanak tanır.
+- Büyük miktarda belge (1GB fazla) ile sorgulama yaparken bir sorunu çözme, öykünücü iç hata durum kodu 500 ile başarısız olur.
+
+### <a name="292"></a>2.9.2
+
+- Bu sürüm, MongoDb uç noktası sürüm 3,2 desteğini etkinleştirirken bir hatayı düzeltir. Ayrıca, LOGMAN yerine WPR kullanarak sorun giderme amacıyla ETL izlemeleri oluşturmaya yönelik destek ekler.
 
 ### <a name="291"></a>2.9.1
 

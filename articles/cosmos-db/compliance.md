@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 5a35ec10d7d9bc60bbbf28ee85c83c838108050b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527376"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747358"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB’de uyumluluk 
 
@@ -20,7 +20,7 @@ Azure Cosmos DB tüm Azure bölgelerinde kullanılabilir. Microsoft, müşterile
 
 * Genel olarak kullanılabilen **Azure genel** bulutu.
 
-* **Azure Çin 21Vianet** , ülkenin en büyük İnternet sağlayıcılarından biri olan Microsoft ve 21Vianet arasındaki benzersiz bir iş ortaklığı üzerinden kullanılabilir.
+* **Azure Çin 21Vianet** , ülke/bölgenin en büyük İnternet sağlayıcılarından biri olan Microsoft ve 21Vianet arasındaki benzersiz bir iş ortaklığı üzerinden kullanılabilir.
 
 * **Azure Almanya** , bir veri güvenliği modeli altında hizmetler sağlar ve bu da müşteri verilerinin, Almanya veri emanetini gören Deutsche Telekoası olan T-Systems International GmbH denetimi altındaki Almanya 'da kalmasını sağlar.
 
@@ -34,11 +34,11 @@ Müşterilerin, dünya çapındaki sektörler ve pazarlar genelinde kendi uyumlu
 
 Azure Cosmos DB sertifika kapsamını sürekli genişletiyor. Şu anda Azure Cosmos DB aşağıdaki sertifikalarla sertifikalandırilmiştir:
 
-| **Küresel olarak uygulanabilir** | **ABD Devleti** | **Sektöre özgü** | **Bölge veya ülkeye özgü** |
+| **Küresel olarak uygulanabilir** | **ABD devleti** | **Sektöre özgü** | **Bölge veya ülkeye özgü** |
 | --- | --- | --- | --- |
 | CSA STAR sertifikası | DoD SRG düzeyi 2 | HIPAA BAA | Avustralya ıRAP |
 | CSA STAR kanıtlama | FedRAMP Moderate | HıTRUST | Almanya C5|
-| ISO 20000-1:2011 | GxP (FDA 21 CFR Part 11) | PCI DSS | Singapur MTCS düzey 3 |
+| ISO 20000-1:2011 | GxP (FDA 21 CFR Bölüm 11) | PCI DSS | Singapur MTCS düzey 3 |
 | ISO 22301:2012 | | | İspanya yüksek|
 | ISO 27001:2013| | | |
 | ISO 27017:2015 | | | |
@@ -51,15 +51,15 @@ Bu uyumluluk tekliflerinden her biri hakkında daha fazla bilgi edinmek için [M
 
 Aşağıdaki tabloda, Azure Kamu 'da Azure Cosmos DB tarafından desteklenen sertifikalar listelenmektedir:
 
-| **Küresel olarak uygulanabilir** | **ABD Devleti** | **Sektöre özgü** | 
+| **Küresel olarak uygulanabilir** | **ABD devleti** | **Sektöre özgü** | 
 | --- | --- | --- | --- |
-| CSA STAR sertifikası | CJıS| HIPAA BAA | 
+| CSA STAR sertifikası | CJIS| HIPAA BAA | 
 | CSA STAR kanıtlama| DoD SRG düzeyi 2| HıTRUST  | 
 | ISO 20000-1:2011 | DoD SRG düzeyi 4 | PCI DSS | 
 | ISO 9001:2012 | DoD SRG düzeyi 5 | | 
 | ISO 27001:2013 | FedRAMP High | |
 | ISO 9001:2015 | IRS 1075|  |
-| ISO 27017:2014 | NıST CSF | |
+| ISO 27017:2014 | NIST CSF | |
 | ISO 27018:2015 | NIST SP 800-171 | |
 | SOC 1, 2, 3 | | |
 

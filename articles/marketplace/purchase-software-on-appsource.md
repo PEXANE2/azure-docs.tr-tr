@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: bc19246354bebd1ba2a827e7718cbad95b896e14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 450a97b0be1b11980d65477d396431170180d00f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80284985"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746650"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Microsoft AppSource yazılım satın alma
 
@@ -29,11 +29,11 @@ SaaS tekliflerini satın almak için şunlar gerekir:
 - Teklifi satın aldığınız ülkede/bölgede geçerli bir kredi kartı.
 
     > [!Note]
-    > Kredi kartı faturalandırma ülkesi Azure Active Directory örneğinizin konumuna kilitlenebilir.
+    > Kredi kartı faturalandırma ülkesi/bölgesi Azure Active Directory örneğinizin konumuna kilitlenebilir.
 
 ## <a name="steps-for-making-purchases-on-appsource"></a>AppSource 'ta satın alma işlemleri yapma adımları
 
-1. [Appsource](https://appsource.microsoft.com/)'ta faturalandırma/ülke bölgenizi seçin.
+1. [Appsource](https://appsource.microsoft.com/)'ta faturalandırma ülkenizi/bölgenizi seçin.
 1. Satın almak istediğiniz uygulamayı bulun.
 1. **Şimdi al**' ı seçin.
 1. Planı seçin:

@@ -4,12 +4,12 @@ description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüst�
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 2fc2a32c47991b9b3615417dfb8f50ca3e7c988f
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 8101f00f4ffc3735becbad2ecde26f5a208ff4a1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983508"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744829"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure VM olağanüstü durum kurtarma için destek matrisi
 
@@ -21,14 +21,14 @@ Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü du
 **Dağıtım** |  **Destek**
 --- | ---
 **Azure portal** | Destekleniyor.
-**PowerShell** | Destekleniyor. [Daha fazlasını öğrenin](azure-to-azure-powershell.md)
+**PowerShell** | Destekleniyor. [Daha fazla bilgi edinin](azure-to-azure-powershell.md)
 **REST API** | Destekleniyor.
 **CLI** | Şu anda desteklenmiyor
 
 
 ## <a name="resource-support"></a>Kaynak desteği
 
-**Kaynak eylemi** | **Bilgileri**
+**Kaynak eylemi** | **Ayrıntılar**
 --- | ---
 **Kaynakları kaynak grupları arasında taşıma** | Desteklenmiyor
 **İşlem/depolama/ağ kaynaklarını kaynak grupları arasında taşıma** | Desteklenmiyor.<br/><br/> VM çoğaltıldıktan sonra bir VM 'yi veya depolama/ağ gibi ilişkili bileşenleri taşırsanız VM için çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
@@ -66,7 +66,7 @@ Almanya    | Almanya Orta, Almanya Kuzeydoğu
 
 Bu tablo, çoğaltma sırasında Site Recovery tarafından kullanılan önbellek depolama hesabı desteğini özetler.
 
-**Ayar** | **Destek** | **Bilgileri**
+**Ayar** | **Destek** | **Ayrıntılar**
 --- | --- | ---
 Genel amaçlı v2 depolama hesapları (sık erişimli ve Seyrek Erişimli Katman) | Destekleniyor | V2 için işlem maliyetleri, v1 depolama hesaplarından önemli ölçüde yüksek olduğundan, GPv2 kullanımı önerilmez.
 Premium depolama | Desteklenmiyor | Standart depolama hesapları, maliyetleri iyileştirmenize yardımcı olmak için önbellek depolaması için kullanılır.
@@ -80,7 +80,7 @@ Site Recovery, bu bölümde listelenen işletim sistemlerini çalıştıran Azur
 ### <a name="windows"></a>Windows
 
 
-**İşletim sistemi** | **Bilgileri**
+**İşletim sistemi** | **Ayrıntılar**
 --- | ---
 Windows Server 2019 | Sunucu çekirdeği için desteklenir, masaüstü deneyimi olan sunucu.
 Windows Server 2016  | Desteklenen sunucu çekirdeği, masaüstü deneyimi ile sunucu.
@@ -96,7 +96,7 @@ SP1 ile Windows 7 (x64) sürümleri | Azure VM 'Leri için Mobility hizmeti uzan
 
 #### <a name="linux"></a>Linux
 
-**İşletim sistemi** | **Bilgileri**
+**İşletim sistemi** | **Ayrıntılar**
 --- | ---
 Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1
 CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, 8,0, 8,1
@@ -166,7 +166,7 @@ SUSE Linux Enterprise Server 15 ve 15 SP1 | 9,32 | Varsayılan olarak, tüm [his
 
 ## <a name="replicated-machines---compute-settings"></a>Çoğaltılan makineler-işlem ayarları
 
-**Ayar** | **Destek** | **Bilgileri**
+**Ayar** | **Destek** | **Ayrıntılar**
 --- | --- | ---
 Boyut | En az 2 CPU çekirdeğine ve 1 GB RAM 'e sahip Azure VM boyutu | [Azure sanal makine boyutlarını](../virtual-machines/windows/sizes.md)doğrulayın.
 Kullanılabilirlik kümeleri | Destekleniyor | Varsayılan seçeneklerle bir Azure VM için çoğaltmayı etkinleştirirseniz, kaynak bölge ayarlarına bağlı olarak bir kullanılabilirlik kümesi otomatik olarak oluşturulur. Bu ayarları değiştirebilirsiniz.
@@ -184,7 +184,7 @@ Yakınlık yerleştirme grupları | Desteklenmiyor | Bir yakınlık yerleşimi g
 
 ## <a name="replicated-machines---disk-actions"></a>Çoğaltılan makineler-disk eylemleri
 
-**Eylem** | **Bilgileri**
+**Eylem** | **Ayrıntılar**
 -- | ---
 Çoğaltılan VM 'de diski yeniden boyutlandır | Yük devretmeden önce kaynak VM 'de desteklenir. Çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeye gerek yoktur.<br/><br/> Yük devretmeden sonra kaynak VM 'yi değiştirirseniz, değişiklikler yakalanmaz.<br/><br/> Yük devretmeden sonra Azure VM 'de disk boyutunu değiştirirseniz, değişiklikler Site Recovery tarafından yakalanmaz ve yeniden çalışma özgün VM boyutuna göre yapılır.
 Çoğaltılan bir VM 'ye disk ekleme | Destekleniyor
@@ -197,7 +197,7 @@ Bu tabloda, Azure VM işletim sistemi diski, veri diski ve geçici disk için de
 - Varsayılan ayarlarla dağıtırsanız, Site Recovery kaynak ayarlarına bağlı olarak diskleri ve depolama hesaplarını otomatik olarak oluşturur.
 - ' Yi özelleştirirseniz, yönergeleri izlediğinizden emin olun.
 
-**Bileşen** | **Destek** | **Bilgileri**
+**Bileşen** | **Destek** | **Ayrıntılar**
 --- | --- | ---
 İşletim sistemi diski en büyük boyutu | 2048 GB | VM diskleri hakkında [daha fazla bilgi edinin](../virtual-machines/windows/managed-disks-overview.md) .
 Geçici disk | Desteklenmiyor | Geçici disk her zaman çoğaltmadan çıkarılır.<br/><br/> Kalıcı verileri geçici diskte depolamamayın. [Daha fazla bilgi edinin](../virtual-machines/windows/managed-disks-overview.md).
@@ -253,7 +253,7 @@ Premium P20 veya P30 veya P40 veya P50 disk | 8 KB    | 5 MB/sn | Disk başına 
 Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sn | disk başına 1684 GB
 
 ## <a name="replicated-machines---networking"></a>Çoğaltılan makineler-ağ
-**Ayar** | **Destek** | **Bilgileri**
+**Ayar** | **Destek** | **Ayrıntılar**
 --- | --- | ---
 NIC | Belirli bir Azure VM boyutu için desteklenen en yüksek sayı | NIC 'ler, yük devretme sırasında VM oluşturulduğunda oluşturulur.<br/><br/> Yük devretme sanal makinesinde bulunan NIC 'lerin sayısı, çoğaltma etkinleştirildiğinde kaynak VM üzerindeki NIC 'lerin sayısına bağlıdır. Çoğaltmayı etkinleştirdikten sonra bir NIC ekler veya kaldırırsanız, yük devretmeden sonra çoğaltılan VM 'deki NIC 'lerin sayısını etkilemez. Ayrıca, yük devretme sonrasında NIC sırasının orijinal siparişle aynı olması garanti edilmez.
 İnternet Yük Dengeleyici | Destekleniyor | Önceden yapılandırılmış yük dengeleyiciyi bir kurtarma planında bir Azure Otomasyonu betiği kullanarak ilişkilendirin.
@@ -261,18 +261,20 @@ NIC | Belirli bir Azure VM boyutu için desteklenen en yüksek sayı | NIC 'ler,
 Genel IP adresi | Destekleniyor | Mevcut bir genel IP adresini NIC ile ilişkilendirin. Ya da bir genel IP adresi oluşturun ve bir kurtarma planında Azure Otomasyonu betiği kullanarak NIC ile ilişkilendirin.
 NIC üzerinde NSG | Destekleniyor | Bir kurtarma planında Azure Otomasyonu betiği kullanarak NSG 'yi NIC ile ilişkilendirin.
 Alt ağda NSG | Destekleniyor | Bir kurtarma planında Azure Otomasyonu betiği kullanarak NSG 'yi alt ağ ile ilişkilendirin.
-Ayrılmış (statik) IP adresi | Destekleniyor | Kaynak VM üzerindeki NIC 'nin statik bir IP adresi varsa ve hedef alt ağda aynı IP adresi varsa, yük devredilen VM 'ye atanır.<br/><br/> Hedef alt ağa aynı IP adresi yoksa, alt ağdaki kullanılabilir IP adreslerinden biri VM için ayrılmıştır.<br/><br/> Ayrıca, **çoğaltılan öğeler** > **ayarları** > **işlem ve ağ** > **ağı arabirimleri**' nde sabit bir IP adresi ve alt ağ belirtebilirsiniz.
+Ayrılmış (statik) IP adresi | Destekleniyor | Kaynak VM üzerindeki NIC 'nin statik bir IP adresi varsa ve hedef alt ağda aynı IP adresi varsa, yük devredilen VM 'ye atanır.<br/><br/> Hedef alt ağa aynı IP adresi yoksa, alt ağdaki kullanılabilir IP adreslerinden biri VM için ayrılmıştır.<br/><br/> Ayrıca, **çoğaltılan öğeler**  >  **ayarları**  >  **işlem ve ağ**  >  **ağı arabirimleri**' nde sabit bir IP adresi ve alt ağ belirtebilirsiniz.
 Dinamik IP adresi | Destekleniyor | Kaynaktaki NIC dinamik IP adreslemesini içeriyorsa, yük devredilen VM üzerindeki NIC de varsayılan olarak dinamik olur.<br/><br/> Gerekirse bunu sabit bir IP adresi ile değiştirebilirsiniz.
 Birden çok IP adresi | Desteklenmiyor | Birden çok IP adresli NIC 'ye sahip bir VM 'nin yükünü devretmek için yalnızca kaynak bölgedeki NIC 'in birincil IP adresi tutulur. Birden çok IP adresi atamak için, bir [kurtarma planına](recovery-plan-overview.md) VM ekleyebilir ve plana ek IP adresleri atamak için bir komut dosyası ekleyebilir ya da değişikliği yük devretmeden sonra el ile veya bir komut dosyasıyla yapabilirsiniz.
 Traffic Manager     | Destekleniyor | Traffic Manager, trafiğin kaynak bölgedeki uç noktaya ve yük devretme durumunda hedef bölgedeki uç noktaya yönlendirilmesi için önceden yapılandırabilirsiniz.
 Azure DNS | Destekleniyor |
 Özel DNS    | Destekleniyor |
-Kimliği doğrulanmamış proxy | Destekleniyor | [Daha fazlasını öğrenin](site-recovery-azure-to-azure-networking-guidance.md)
+Kimliği doğrulanmamış proxy | Destekleniyor | [Daha fazla bilgi edinin](site-recovery-azure-to-azure-networking-guidance.md)
 Kimliği doğrulanmış ara sunucu | Desteklenmiyor | VM, giden bağlantı için kimliği doğrulanmış bir proxy kullanıyorsa, Azure Site Recovery kullanılarak çoğaltılamaz.
-Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Destekleniyor | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazlasını öğrenin](site-recovery-azure-to-azure-networking-guidance.md)
-VNET 'ten VNET 'e bağlantı    | Destekleniyor | [Daha fazlasını öğrenin](site-recovery-azure-to-azure-networking-guidance.md)
+Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Destekleniyor | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazla bilgi edinin](site-recovery-azure-to-azure-networking-guidance.md)
+VNET 'ten VNET 'e bağlantı    | Destekleniyor | [Daha fazla bilgi edinin](site-recovery-azure-to-azure-networking-guidance.md)
 Sanal Ağ Hizmet Uç Noktaları | Destekleniyor | Depolama hesaplarına sanal ağ erişimini kısıtladığınız takdirde, güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin verildiğinden emin olun.
 Hızlandırılmış ağ iletişimi | Destekleniyor | Kaynak VM 'de hızlandırılmış ağ etkin olmalıdır. [Daha fazla bilgi edinin](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Palo Alto ağ gereci | Desteklenmiyor | Üçüncü taraf gereçlerle, genellikle sağlayıcı tarafından sanal makine içinde uygulanan kısıtlamalar vardır. Azure Site Recovery aracı, Uzantılar ve giden bağlantıların kullanılabilir olmasını gerektirir. Ancak gereç, sanal makine içinde herhangi bir giden etkinliğin yapılandırılmasına izin vermez.
+IPv6  | Desteklenmiyor | Hem IPv4 hem de IPv6 içeren karışık yapılandırma de desteklenmez. Lütfen herhangi bir Site Recovery işleminden önce IPv6 aralığının alt ağını boşaltın.
 
 
 

@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 72afc4f6e03b24e545ad18948119d418970cddf3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382872"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747588"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve Node. js ile yazım denetimi yapma
 
@@ -30,7 +30,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. En sevdiğiniz IDE veya düzenleyicide yeni bir JavaScript dosyası oluşturun. Striclük ayarla ve gerektir `https`. Ardından API uç noktanızın ana bilgisayar, yol ve abonelik anahtarınız için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir JavaScript dosyası oluşturun. Striclük ayarla ve gerektir `https` . Ardından API uç noktanızın ana bilgisayar, yol ve abonelik anahtarınız için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```javascript
     'use strict';
@@ -41,7 +41,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Arama parametreleriniz ve denetlemek istediğiniz metin için değişkenler oluşturun. Pazar kodunuzu sonuna ekleyin `mkt=`. Pazar kodu, isteği yaptığınız ülkeniz. Ayrıca, daha sonra `&mode=`yazım denetimi modlarınızı ekleyin. Mod `proof` (en fazla yazım/dilbilgisi hatalarını yakalar) veya `spell` (çok sayıda dilbilgisi hatası değil, en fazla yazım yakalar).
+2. Arama parametreleriniz ve denetlemek istediğiniz metin için değişkenler oluşturun. Pazar kodunuzu sonuna ekleyin `mkt=` . Pazar kodu, isteği yaptığınız ülke/bölgedir. Ayrıca, daha sonra yazım denetimi modlarınızı ekleyin `&mode=` . Mod `proof` (en fazla yazım/dilbilgisi hatalarını yakalar) veya `spell` (çok sayıda dilbilgisi hatası değil, en fazla yazım yakalar).
 
     ```javascript
     let mkt = "en-US";
@@ -52,7 +52,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
 
 ## <a name="create-the-request-parameters"></a>İstek parametrelerini oluşturma
 
-`POST` Yöntemi ile yeni bir nesne oluşturarak istek parametrelerinizi oluşturun. Uç nokta yolunuza ve sorgu dizesine ekleyerek yolunuza ekleyin. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
+Yöntemi ile yeni bir nesne oluşturarak istek parametrelerinizi oluşturun `POST` . Uç nokta yolunuza ve sorgu dizesine ekleyerek yolunuza ekleyin. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
 
 ```javascript
 let request_params = {
@@ -69,7 +69,7 @@ let request_params = {
 
 ## <a name="create-a-response-handler"></a>Yanıt işleyici oluşturma
 
-API 'den JSON yanıtını `response_handler` almak için adlı bir işlev oluşturun ve yazdırın. Yanıt gövdesi için bir değişken oluşturun. Kullanarak `data` `response.on()`bir bayrak alındığında yanıtı ekleyin. Bir `end` bayrak ALıNDıĞıNDA, JSON gövdesini konsola yazdırın.
+`response_handler`API 'den JSON yanıtını almak için adlı bir işlev oluşturun ve yazdırın. Yanıt gövdesi için bir değişken oluşturun. `data`Kullanarak bir bayrak alındığında yanıtı ekleyin `response.on()` . Bir `end` bayrak alındığında, JSON gövdesini konsola yazdırın.
 
 ```javascript
 let response_handler = function (response) {
@@ -89,7 +89,7 @@ let response_handler = function (response) {
 
 ## <a name="send-the-request"></a>İsteği gönder
 
-İstek parametreleriniz ve `https.request()` yanıt işleyiciniz ile kullanarak API 'yi çağırın. Metninizi API 'ye yazın ve isteği daha sonra sonlandırın.
+`https.request()`İstek parametreleriniz ve yanıt işleyiciniz ile kullanarak API 'yi çağırın. Metninizi API 'ye yazın ve isteği daha sonra sonlandırın.
 
 ```javascript
 let req = https.request (request_params, response_handler);

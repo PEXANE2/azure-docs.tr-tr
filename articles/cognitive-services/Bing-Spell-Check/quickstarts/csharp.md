@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: aa76a5773a20a103ceec075a58c79fac691eec6f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382974"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747322"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve C ile yazım denetimi #
 
@@ -24,7 +24,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
-* Visual Studio `Newtonsoft.Json` 'Da bir NuGet paketi olarak yüklemek için:
+* `Newtonsoft.Json`Visual Studio 'da bir NuGet paketi olarak yüklemek için:
     1. **Çözüm Gezgini**, çözüm dosyasına sağ tıklayın.
     1. **Çözüm Için NuGet Paketlerini Yönet**' i seçin.
     1. Paketi arayın `Newtonsoft.Json` ve yükler.
@@ -34,7 +34,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Visual Studio 'da adlı `SpellCheckSample` yeni bir konsol çözümü oluşturun. Ardından ana kod dosyasına aşağıdaki ad alanlarını ekleyin.
+1. Visual Studio 'da adlı yeni bir konsol çözümü oluşturun `SpellCheckSample` . Ardından ana kod dosyasına aşağıdaki ad alanlarını ekleyin.
     
     ```csharp
     using System;
@@ -62,7 +62,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
     }
     ```
 
-3. Arama parametreleriniz için bir değişken oluşturun. Pazar kodunuzu sonuna ekleyin `mkt=`. Pazar kodu, isteği yaptığınız ülkeniz. Ayrıca, daha sonra `&mode=`yazım denetimi modlarınızı ekleyin. Mod `proof` (en fazla yazım/dilbilgisi hatalarını yakalar) veya `spell` (çok sayıda dilbilgisi hatası değil, en fazla yazım yakalar).
+3. Arama parametreleriniz için bir değişken oluşturun. Pazar kodunuzu sonuna ekleyin `mkt=` . Pazar kodu, isteği yaptığınız ülke/bölgedir. Ayrıca, daha sonra yazım denetimi modlarınızı ekleyin `&mode=` . Mod `proof` (en fazla yazım/dilbilgisi hatalarını yakalar) veya `spell` (çok sayıda dilbilgisi hatası değil, en fazla yazım yakalar).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -70,7 +70,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
 
 ## <a name="create-and-send-a-spell-check-request"></a>Yazım denetimi isteği oluşturma ve gönderme
 
-1. API 'ye bir istek göndermek `SpellCheck()` için çağrılan bir zaman uyumsuz işlev oluşturun. `HttpClient`Oluşturun ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin. Sonra işlevi içinde aşağıdaki adımları gerçekleştirin.
+1. `SpellCheck()`API 'ye bir istek göndermek için çağrılan bir zaman uyumsuz işlev oluşturun. Oluşturun `HttpClient` ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin. Sonra işlevi içinde aşağıdaki adımları gerçekleştirin.
 
     ```csharp
     async static void SpellCheck()
@@ -89,7 +89,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
     string uri = host + path + params_;
     ```
 
-3. Metninizi içeren bir `KeyValuePair` nesne içeren bir liste oluşturun ve bunu bir `FormUrlEncodedContent` nesne oluşturmak için kullanın. Üst bilgi bilgilerini ayarlayın ve isteği göndermek `PostAsync()` için kullanın.
+3. Metninizi içeren bir nesne içeren bir liste oluşturun `KeyValuePair` ve bunu bir nesne oluşturmak için kullanın `FormUrlEncodedContent` . Üst bilgi bilgilerini ayarlayın ve `PostAsync()` isteği göndermek için kullanın.
 
     ```csharp
     var values = new Dictionary<string, string>();
@@ -127,7 +127,7 @@ Console.WriteLine(jsonObj);
 
 ## <a name="call-the-spell-check-function"></a>Yazım denetimi işlevini çağırın
 
-Projenizin ana işlevinde, çağırın `SpellCheck()`.
+Projenizin ana işlevinde, çağırın `SpellCheck()` .
 
 ```csharp
 static void Main(string[] args)

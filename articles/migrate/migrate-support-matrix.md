@@ -4,12 +4,12 @@ description: Azure geçişi hizmeti için destek ayarlarının ve sınırlamalar
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: 44a971894f53a3f31c068b3c3ed4912bc7e00dab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec267053a0bc675d05e6488665f77467da9370e0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680707"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746847"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -19,7 +19,7 @@ Makineleri değerlendirmek ve Microsoft Azure buluta geçirmek için [Azure geç
 
 Tablo, desteklenen bulma, değerlendirme ve geçiş senaryolarını özetler.
 
-**Dağıtım** | **Bilgileri** 
+**Dağıtım** | **Ayrıntılar** 
 --- | --- 
 **Uygulamaya özel bulma** | VMware VM 'lerinde çalışan uygulamaları, rolleri ve özellikleri bulabilirsiniz. Şu anda bu özellik yalnızca bulma ile sınırlıdır. Değerlendirme Şu anda makine düzeyindedir. Henüz uygulama, rol veya özelliğe özgü değerlendirme sunmuyoruz. 
 **Şirket içi değerlendirme** | Şirket içi iş yüklerini ve VMware VM 'leri, Hyper-V VM 'Leri ve fiziksel sunucularda çalışan verileri değerlendirin. Azure geçişi sunucu değerlendirmesi ve Microsoft Data Migration Yardımcısı (DMA) ile diğer araçların yanı sıra diğer araçları ve ISV tekliflerini kullanmayı değerlendirin.
@@ -43,7 +43,7 @@ Azure Geçişi Sunucu Geçişi | NA | [VMware VM 'leri](tutorial-migrate-vmware.
 [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | Şirket içi SQL Server veritabanlarını değerlendirin. | NA
 [DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB geçirin. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Sanal Masaüstü altyapısını (VDı) değerlendirme | NA
-[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'Leri, fiziksel makineler, iş istasyonları (VDı dahil), genel bulut iş yükleri | NA
+[Movere](https://www.movere.io/) | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'Leri, fiziksel makineler, iş istasyonları (VDı dahil), genel bulut iş yükleri | NA
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'leri, KVM VM 'Leri, fiziksel makineler, genel bulut iş yükleri geçirin 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin. | NA
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri ve SQL Server veritabanlarını değerlendirin. | NA
@@ -52,7 +52,7 @@ Azure Geçişi Sunucu Geçişi | NA | [VMware VM 'leri](tutorial-migrate-vmware.
 
 ## <a name="azure-migrate-projects"></a>Azure geçişi projeleri
 
-**Destek** | **Bilgileri**
+**Destek** | **Ayrıntılar**
 --- | ---
 Abonelik | Bir abonelikte birden çok Azure geçişi projesi oluşturabilirsiniz.
 Azure izinleri | Azure geçişi projesi oluşturmak için abonelikte katkıda bulunan veya sahip izinlerinizin olması gerekir.
@@ -65,7 +65,7 @@ Bir proje, değerlendirme sınırlarına kadar hem VMware VM 'lerini hem de Hype
 
 Azure geçişi 'nin Azure ile çalışması için, makineleri değerlendirmeye ve geçirmeye başlamadan önce bu izinlere ihtiyacınız vardır.
 
-**Görev** | **İzinler** | **Bilgileri**
+**Görev** | **İzinler** | **Ayrıntılar**
 --- | --- | ---
 Azure geçişi projesi oluşturma | Azure hesabınızın bir proje oluşturmak için izinleri olması gerekir. | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)veya [fiziksel sunucular](tutorial-prepare-physical.md#assign-permissions-to-create-project)için ayarlayın.
 Azure geçişi gereci kaydetme| Azure geçişi, Azure geçişi sunucu değerlendirmesi ile makineleri değerlendirmek ve Azure geçişi sunucu geçişi ile VMware VM 'lerinin [aracısız geçişini](server-migrate-overview.md) çalıştırmak için basit bir [Azure geçiş](migrate-appliance.md) gereci kullanır. Bu gereç, makineleri bulur ve Azure geçişi 'ne meta veri ve performans verileri gönderir.<br/><br/> Kayıt sırasında, abonelik kaynak sağlayıcısıyla çalışacak şekilde kayıt sağlayıcıları (Microsoft. OffAzure, Microsoft. Migrate ve Microsoft. Keykasası), Gereç içinde seçilen abonelikle kaydedilir. Kaydolmak için abonelik üzerinde katkıda bulunan veya sahip erişiminizin olması gerekir.<br/><br/> **VMware**-ekleme sırasında Azure geçişi iki Azure Active Directory (Azure AD) uygulaması oluşturur. İlk uygulama, Gereç aracıları ve Azure geçişi hizmeti arasında iletişim kurar. Uygulamanın Azure Kaynak Yönetimi çağrısı yapma izni yoktur veya kaynaklar için RBAC erişimi vardır. İkinci uygulama, yalnızca aracısız VMware geçişi için Kullanıcı aboneliğinde oluşturulan bir Azure Key Vault erişir. Aracısız geçişte, Azure geçişi, erişim anahtarlarını aboneliğinizdeki çoğaltma depolama hesabına yönetmek için bir Key Vault oluşturur. Bu, gereçden bulma başlatıldığında Azure Key Vault (müşteri kiracısında)<br/><br/> **Hyper-V**-ekleme sırasında. Azure geçişi bir Azure AD uygulaması oluşturur. Uygulama, Gereç aracıları ve Azure geçişi hizmeti arasında iletişim kurar. Uygulamanın Azure Kaynak Yönetimi çağrısı yapma izni yoktur veya kaynaklar için RBAC erişimi vardır. | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)veya [fiziksel sunucular](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)için ayarlayın.
@@ -87,16 +87,16 @@ Hindistan | Orta Hindistan veya Güney Hindistan
 Japonya |  Japonya Doğu veya Japonya Batı
 Güney Kore | Kore Orta veya Kore Güney
 Birleşik Krallık | UK Güney veya UK Batı
-Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
+Birleşik Devletler | Orta ABD veya Batı ABD 2
 
 
 ## <a name="supported-geographies-azure-government"></a>Desteklenen coğrafyalar (Azure Kamu)
 
-**Görev** | **Coğrafya** | **Bilgileri**
+**Görev** | **Coğrafya** | **Ayrıntılar**
 --- | --- | ---
-Proje oluşturma | Amerika Birleşik Devletleri | Meta veriler US Gov Arizona depolanır, US Gov Virginia
-Hedef değerlendirme | Amerika Birleşik Devletleri | Hedef bölgeler: US Gov Arizona, US Gov Virginia, US Gov Teksas
-Hedef çoğaltma | Amerika Birleşik Devletleri | Hedef bölgeler: US DoD Orta, US DoD Doğu, US Gov Arizona, US Gov Iowa, US Gov Teksas, US Gov Virginia
+Proje oluşturma | Birleşik Devletler | Meta veriler US Gov Arizona depolanır, US Gov Virginia
+Hedef değerlendirme | Birleşik Devletler | Hedef bölgeler: US Gov Arizona, US Gov Virginia, US Gov Teksas
+Hedef çoğaltma | Birleşik Devletler | Hedef bölgeler: US DoD Orta, US DoD Doğu, US Gov Arizona, US Gov Iowa, US Gov Teksas, US Gov Virginia
 
 
 ## <a name="vmware-assessment-and-migration"></a>VMware değerlendirmesi ve geçişi

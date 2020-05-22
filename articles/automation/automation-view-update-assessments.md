@@ -1,18 +1,18 @@
 ---
-title: Azure Otomasyonu Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleme
-description: Bu makalede, güncelleştirme dağıtımları için güncelleştirme değerlendirmelerinin nasıl görüntüleneceği açıklanır.
+title: Azure Otomasyonu güncelleştirme değerlendirmelerini görüntüleme
+description: Bu makalede Güncelleştirme Yönetimi dağıtımlarının güncelleştirme değerlendirmelerinin nasıl görüntüleneceği açıklanır.
 services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 75762afc9ae69da81e89ce320f454d9764f82914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c66f54b8b01b5131defce6e709af52f9b2732d1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617390"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745230"
 ---
-# <a name="view-azure-automation-update-management-update-assessments"></a>Azure Otomasyonu Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleme
+# <a name="view-update-assessments"></a>Güncelleştirme değerlendirmelerini görüntüleme
 
 Azure Otomasyonu hesabınızda, makinelerinizin durumunu görüntülemek için **güncelleştirme yönetimi** ' yi seçin.
 
@@ -28,7 +28,7 @@ Makinelerinizde bulunmayan güncelleştirmelerin listesini görüntülemek için
 
 ![Eksik güncelleştirmeler](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
-## <a name="update-classifications"></a>Update classifications
+## <a name="work-with-update-classifications"></a>Güncelleştirme sınıflandırmalarıyla çalışma
 
 Aşağıdaki tablolarda, Güncelleştirme Yönetimi içinde desteklenen güncelleştirme sınıflandırmaları, her sınıflandırma için bir tanım ile listelenmektedir.
 
@@ -64,4 +64,4 @@ Red Hat Enterprise sürüm 6 ' da güncelleştirmeleri sınıflandırmak için, 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güncelleştirme değerlendirmelerini güncelleştirdikten sonra, [Azure sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)adımlarını izleyerek bir güncelleştirme dağıtımı zamanlayabilirsiniz.
+[Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)

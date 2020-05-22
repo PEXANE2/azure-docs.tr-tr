@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e5973ed505a43ca56a0f11e3603e05eeed0952fd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7a54d1d644d1069957db7f94d6f5e261e1a8dfb2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657760"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747542"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümler ile performans ayarlama
 
@@ -115,7 +115,7 @@ Gerçekleştirilmiş görünümlerin sayısını azaltma seçenekleri:
 
 - Az kullanım veya artık gerekli olmayan gerçekleştirilmiş görünümleri bırakın.  Devre dışı gerçekleştirilmiş bir görünüm korunmaz, ancak depolama maliyeti hala buna neden olur.  
 
-- Verileri örtüşmese de aynı veya benzer temel tablolarda oluşturulan gerçekleştirilmiş görünümleri birleştirin.  Gerçekleştirilmiş görünümleri birleştirmek, farklı görünümlerin toplamından daha büyük bir görünüm oluşmasına neden olabilir, ancak görünüm bakım maliyeti azaltılmalıdır.  Örnek:
+- Verileri örtüşmese de aynı veya benzer temel tablolarda oluşturulan gerçekleştirilmiş görünümleri birleştirin.  Gerçekleştirilmiş görünümleri birleştirmek, farklı görünümlerin toplamından daha büyük bir görünüm oluşmasına neden olabilir, ancak görünüm bakım maliyeti azaltılmalıdır.  Örneğin:
 
 ```sql
 
@@ -159,7 +159,7 @@ Gerçekleştirilmiş görünümler, temel tablolardaki veri değişikliklerine i
 
 ## <a name="example"></a>Örnek
 
-Bu örnekte, Katalog aracılığıyla depolardan daha fazla ücret harcamış müşterileri bulan TPCDS benzeri bir sorgu kullanılmaktadır. tercih edilen müşteriler ve bunların kaynak ülkelerinin ülkeyi.   Sorgu SUM () ve GROUP BY içeren üç alt SELECT deyimi BIRLEŞIMDEN Ilk 100 kaydı seçmeyi içerir.
+Bu örnek, katalogdan daha fazla ücret harcamış müşterileri bulan TPCDS benzeri bir sorgu kullanır, tercih edilen müşterileri ve kaynak ülke/bölge bölgelerini belirler.   Sorgu SUM () ve GROUP BY içeren üç alt SELECT deyimi BIRLEŞIMDEN Ilk 100 kaydı seçmeyi içerir.
 
 ```sql
 WITH year_total AS (

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7725a9ddd1d9559166360b27bd8a5371d8c0557e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638258"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757628"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçlere genel bakış
 
@@ -37,8 +37,8 @@ Aşağıdaki belirteçler Azure AD B2C ile iletişim için kullanılır:
 
 [Kayıtlı bir uygulama](tutorial-register-applications.md) belirteçleri alır ve bu uç noktalara istek göndererek Azure AD B2C ile iletişim kurar:
 
-- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/v2.0/authorize`
-- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/v2.0/token`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token`
 
 Uygulamanızın Azure AD B2C aldığı güvenlik belirteçleri, `/authorize` veya `/token` uç noktalarından gelebilir. Uç noktadan KIMLIK belirteçleri alınırsa `/authorize` , genellikle JavaScript tabanlı Web uygulamalarında oturum açan kullanıcılar için kullanılan [örtük akış](implicit-flow-single-page-application.md)kullanılarak yapılır. Uç noktadan KIMLIK belirteçleri alınırsa `/token` , belirteci tarayıcıdan gizli tutan [yetkilendirme kodu akışı](openid-connect.md#get-a-token)kullanılarak yapılır.
 

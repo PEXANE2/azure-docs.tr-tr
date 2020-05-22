@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: e0db8edfdfa380697a1d8d7e262a7a84da2fb7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cda0d79166f355fd7346865f2d42d066a3e3690
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565545"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757900"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
@@ -107,7 +107,7 @@ Azure AD ile kimlik doğrulaması yapmak ve şirket verilerine erişmek için ke
 
 1. [AD FS kullanıyorsanız, eski kimlik doğrulamasını](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)engelleyin.
 2. [SharePoint Online ve Exchange Online 'ı modern kimlik doğrulaması kullanacak şekilde](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md)ayarlayın.
-3. Azure AD Premium sahipseniz, eski kimlik doğrulamasını engellemek için [koşullu erişim ilkelerini](../../active-directory/conditional-access/overview.md) kullanın, aksi takdırde [Azure AD güvenlik varsayılanlarını](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)kullanın.
+3. Azure AD Premium sahipseniz, [eski kimlik doğrulamasını engellemek](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md)Için koşullu erişim ilkelerini kullanın, aksi takdırde [Azure AD güvenlik varsayılanlarını](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)kullanın.
 
 ### <a name="block-invalid-authentication-entry-points"></a>Geçersiz kimlik doğrulama giriş noktalarını engelle
 
@@ -117,7 +117,7 @@ Azure AD ile kimlik doğrulaması yapmak ve şirket verilerine erişmek için ke
 
 Çeşitli [Azure AD uygulama onayı deneyimlerini](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), [izin ve onay türlerini](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)ve kuruluşunuzun güvenlik duruşunuzun etkilerini anlamak önemlidir. Varsayılan olarak, Azure AD 'deki tüm kullanıcılar kuruluşunuzun verilerine erişmek için Microsoft Identity platformundan yararlanan uygulamalara izin verebilir. Kullanıcıların kendilerine izin vermesini sağlarken, kullanıcıların Microsoft 365, Azure ve diğer hizmetlerle tümleştirilen yararlı uygulamaları kolayca almasına izin verirken, bu, kullanılmıyorsa ve izlenmezse bir riski temsil edebilir.
 
-Microsoft, Surface alanınızı azaltmaya ve bu riski azaltmaya yardımcı olmak için [gelecekteki Kullanıcı onay işlemlerinin devre dışı bırakılmasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) öneriyor. Son Kullanıcı onayı devre dışıysa, önceki onay onayları yine de kabul edilir, ancak gelecekteki tüm onay işlemleri bir yönetici tarafından gerçekleştirilmelidir. Yönetici onayı, kullanıcılar tarafından tümleşik [Yönetici onay isteği iş akışı](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) aracılığıyla veya kendi destek süreçleriniz aracılığıyla istenebilir. Son Kullanıcı onayını devre dışı bırakmadan önce, bu değişikliği kuruluşunuzda planlamak için [önerilerimizi](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) kullanın. Tüm kullanıcıların erişimine izin vermek istediğiniz uygulamalar için, [tüm kullanıcılar adına izin vermeyi](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)göz önünde bulundurun. Bu, henüz tek tek kabul etmemiş olan kullanıcıların uygulamaya erişebilmesini sağlar. Bu uygulamaların tüm senaryolarda tüm kullanıcılar tarafından kullanılabilmesini istemiyorsanız, [uygulama atamasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) ve [koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) 'i kullanarak uygulamalara Kullanıcı erişimini kısıtlayın.
+Microsoft, Surface alanınızı azaltmaya ve bu riski azaltmaya yardımcı olmak için [gelecekteki Kullanıcı onay işlemlerinin devre dışı bırakılmasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) öneriyor. Son Kullanıcı onayı devre dışıysa, önceki onay onayları yine de kabul edilir, ancak gelecekteki tüm onay işlemleri bir yönetici tarafından gerçekleştirilmelidir. Yönetici onayı, kullanıcılar tarafından tümleşik [Yönetici onay isteği iş akışı](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) aracılığıyla veya kendi destek süreçleriniz aracılığıyla istenebilir. Son Kullanıcı onayını devre dışı bırakmadan önce, bu değişikliği kuruluşunuzda planlamak için [önerilerimizi](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) kullanın. Tüm kullanıcıların erişimine izin vermek istediğiniz uygulamalar için, [tüm kullanıcılar adına izin vermeyi](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)göz önünde bulundurun. Bu, henüz tek tek kabul etmemiş olan kullanıcıların uygulamaya erişebilmesini sağlar. Bu uygulamaların tüm senaryolarda tüm kullanıcılar tarafından kullanılabilmesini istemiyorsanız, [uygulama atamasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) ve koşullu erişim 'i kullanarak [belirli uygulamalara](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)Kullanıcı erişimini kısıtlayın.
 
 Kullanıcıların, Kullanıcı uyumsuzluklıkları azaltmak, destek birimini en aza indirmek ve kullanıcıların Azure dışı AD kimlik bilgilerini kullanarak uygulamalara kaydolmasını engellemek için yeni uygulamalar için yönetici onayı isteğinde bulunduğundan emin olun. Onay işlemlerinizi belirledikten sonra Yöneticiler, uygulamayı ve onaylı izinleri düzenli aralıklarla denetlemelidir.
 

@@ -1,28 +1,28 @@
 ---
-title: Azure Otomasyonu grafik runbook SDK 'sını kullanma
-description: Bu makalede, Azure Otomasyonu grafik runbook SDK 'sının nasıl kullanılacağı açıklanır.
+title: Azure Otomasyonu grafik runbook SDK 'sını kullanma (Önizleme)
+description: Bu makalede, Azure Otomasyonu grafik runbook SDK 'sını (Önizleme) nasıl kullanacağınız açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 886ce03b6e107d871879ff40bdc5de9ceb97c7c3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b0733cd4f71a734511d5085473047eb7a6d030d3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690749"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744327"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Azure Otomasyonu grafik runbook SDK 'sını kullanma
+# <a name="use-the-azure-automation-graphical-runbook-sdk-preview"></a>Azure Otomasyonu grafik runbook SDK 'sını kullanma (Önizleme)
 
 [Grafik runbook 'ları](automation-graphical-authoring-intro.md) , temeldeki Windows PowerShell veya PowerShell iş akışı kodunun karmaşıklıklarını yönetmeye yardımcı olur. Microsoft Azure Automation grafik yazma SDK 'Sı, geliştiricilerin Azure Otomasyonu ile kullanılmak üzere grafik runbook 'ları oluşturmasını ve düzenlemesini sağlar. Bu makalede, kodunuzun içinden bir grafik runbook 'u oluşturma konusunda temel adımlar açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-`Orchestrator.GraphRunbook.Model.dll` Paketi projenize aktarın.
+`Orchestrator.GraphRunbook.Model.dll` [SDK 'yı](https://www.microsoft.com/download/details.aspx?id=50734)indirerek paketi içeri aktarın.
 
 ## <a name="create-a-runbook-object-instance"></a>Runbook nesne örneği oluşturma
 
-`Orchestrator.GraphRunbook.Model` Derlemeye başvurun ve `Orchestrator.GraphRunbook.Model.GraphRunbook` sınıfın bir örneğini oluşturun:
+Derlemeye başvurun `Orchestrator.GraphRunbook.Model` ve sınıfın bir örneğini oluşturun `Orchestrator.GraphRunbook.Model.GraphRunbook` :
 
 ```csharp
 using Orchestrator.GraphRunbook.Model;
@@ -33,7 +33,7 @@ var runbook = new GraphRunbook();
 
 ## <a name="add-runbook-parameters"></a>Runbook parametreleri Ekle
 
-Nesneleri `Orchestrator.GraphRunbook.Model.Parameter` örnekleyin ve Runbook 'a ekleyin:
+Nesneleri örnekleyin `Orchestrator.GraphRunbook.Model.Parameter` ve Runbook 'a ekleyin:
 
 ```csharp
 runbook.AddParameter(
@@ -89,7 +89,7 @@ var initializeRunbookVariable = runbook.AddActivity(
  });
 ```
 
-Etkinlikler, `Orchestrator.GraphRunbook.Model` ad alanındaki aşağıdaki sınıflar tarafından uygulanır.
+Etkinlikler, ad alanındaki aşağıdaki sınıflar tarafından uygulanır `Orchestrator.GraphRunbook.Model` .
 
 |Sınıf  |Etkinlik  |
 |---------|---------|
@@ -101,7 +101,7 @@ Etkinlikler, `Orchestrator.GraphRunbook.Model` ad alanındaki aşağıdaki sın�
 > [!NOTE]
 > Kendi etkinliklerinizi, belirtilen sınıflardan türemeyin. Azure Otomasyonu, runbook 'ları özel etkinlik türleriyle kullanamaz.
 
-Doğrudan değer değil `CommandActivity` , `InvokeRunbookActivity` değer tanımlayıcıları olarak ve parametreleri sağlamalısınız. Değer tanımlayıcıları, gerçek parametre değerlerinin nasıl oluşturulacağını belirtir. Aşağıdaki değer tanımlayıcıları Şu anda verilmiştir:
+`CommandActivity` `InvokeRunbookActivity` Doğrudan değer değil, değer tanımlayıcıları olarak ve parametreleri sağlamalısınız. Değer tanımlayıcıları, gerçek parametre değerlerinin nasıl oluşturulacağını belirtir. Aşağıdaki değer tanımlayıcıları Şu anda verilmiştir:
 
 
 |CI  |Tanım  |
@@ -137,8 +137,8 @@ var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
 Bu dizeyi **. graphrunbook** uzantılı bir dosyaya kaydedebilirsiniz. İlgili runbook, Azure Otomasyonu 'na aktarılabilir.
-Serileştirilmiş biçim gelecekteki sürümlerinde değişebilir `Orchestrator.GraphRunbook.Model.dll`. Geriye dönük uyumluluk: daha eski bir sürümü ile serileştirilmiş tüm runbook `Orchestrator.GraphRunbook.Model.dll` , daha yeni bir sürüm tarafından seri durumdan çıkarılamaz. İleri uyumluluk garantisi garanti edilmez: daha yeni bir sürüme sahip bir runbook, eski sürümler tarafından seri hale getirilemez.
+Serileştirilmiş biçim gelecekteki sürümlerinde değişebilir `Orchestrator.GraphRunbook.Model.dll` . Geriye dönük uyumluluk: daha eski bir sürümü ile serileştirilmiş tüm runbook `Orchestrator.GraphRunbook.Model.dll` , daha yeni bir sürüm tarafından seri durumdan çıkarılamaz. İleri uyumluluk garantisi garanti edilmez: daha yeni bir sürüme sahip bir runbook, eski sürümler tarafından seri hale getirilemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Otomasyonu 'nda grafik runbook 'ları hakkında daha fazla bilgi için bkz. [grafik yazma tanıtımı](automation-graphical-authoring-intro.md).
+[Azure Otomasyonu 'nda grafik runbook 'ları yazma](automation-graphical-authoring-intro.md)

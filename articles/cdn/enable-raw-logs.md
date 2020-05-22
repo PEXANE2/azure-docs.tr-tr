@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2020
 ms.author: sohamnc
-ms.openlocfilehash: c6e8570746ae3dd0051dbec084c89d90580d28b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4693cdac2d5d3a57987cc692797756314ded11e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371627"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747309"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>HTTP ham günlüklerini Azure CDN
 Ham Günlükler, denetim ve sorun giderme için önemli olan işlemler ve hatalar hakkında zengin bilgiler sağlar. Ham Günlükler etkinlik günlüklerinden farklıdır. Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere görünürlük sağlar. Ham Günlükler, kaynağınızın bir işlem kaydını sağlar.
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Microsoft profilinden Azure CDN ham günlüklerini yapılandırmak için: 
 
-1. Azure Portal menüsünde **tüm kaynaklar** >> **\<-CDN-profile>**' i seçin.
+1. Azure Portal menüsünde **tüm kaynaklar**  >>  ** \< -CDN-profile>**' i seçin.
 
 2. **İzleme**altında **Tanılama ayarları**' nı seçin.
 
@@ -84,7 +84,7 @@ Microsoft Service Azure CDN Şu anda ham Günlükler sağlıyor. Ham Günlükler
 | Cağımız                   | Kullanıcı isteğine yanıt veren kenar açılır. Pop 'Ların kısaltmaları ilgili Metros Havaalanı kodlarıdır.                                                                                   |
 | Önbellek durumu          | Nesnenin önbellekten döndürülüp döndürülmeyeceğini veya kaynaktan geldiğini belirtir.                                                                                                             |
 > [!IMPORTANT]
-> HTTP ham günlükleri özelliği, **25 şubat 2020**' den sonra oluşturulan veya güncellenen tüm profiller için otomatik olarak kullanılabilir. Daha önce oluşturulan CDN profilleri için, bir tane, günlüğü ayarladıktan sonra CDN uç noktasını güncelleştirmelidir. Örneğin, bir tane, CDN uç noktaları altındaki coğrafi filtrelemeye gidebilir ve iş yüküyle ilgili olmayan herhangi bir ülkeyi engelleyebilir ve Kaydet ' e gidebilirsiniz. 
+> HTTP ham günlükleri özelliği, **25 şubat 2020**' den sonra oluşturulan veya güncellenen tüm profiller için otomatik olarak kullanılabilir. Daha önce oluşturulan CDN profilleri için, bir tane, günlüğü ayarladıktan sonra CDN uç noktasını güncelleştirmelidir. Örneğin, bir tane, CDN uç noktaları altında coğrafi filtrelemeye gidebilir ve iş yüküyle ilgili olmayan herhangi bir ülkeyi/bölgeyi engelleyebilir ve Kaydet ' i ziyaret edebilir. 
 
 > [!NOTE]
 > Günlükler, bir sorgu çalıştırılarak Log Analytics profiliniz altında görüntülenebilir. Örnek bir sorgu AzureDiagnostics gibi görünür WHERE kategorisi = = "AzureCdnAccessLog"

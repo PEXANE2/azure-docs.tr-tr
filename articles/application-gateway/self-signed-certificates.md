@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0e930116447ded51616651751bba7482b638ca1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311935"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745490"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile otomatik olarak imzalanan bir Azure Application Gateway sertifikası oluşturma
 
@@ -67,7 +67,7 @@ OpenSSL kullanarak kök CA sertifikanızı oluşturun.
    ```
    Önceki komutlar kök sertifikayı oluşturur. Bunu, sunucu sertifikanızı imzalamak için kullanacaksınız.
 
-1. İstendiğinde, kök anahtar için parolayı ve ülke, eyalet, kuruluş, OU ve tam etki alanı adı (Bu veren etki alanı) gibi özel CA için kuruluş bilgilerini yazın.
+1. İstendiğinde, kök anahtar için parolayı ve ülke/bölge, eyalet, kuruluş, OU ve tam etki alanı adı (Bu veren etki alanı) gibi özel CA için kuruluş bilgilerini yazın.
 
    ![kök sertifikası oluştur](media/self-signed-certificates/root-cert.png)
 
@@ -88,7 +88,7 @@ Sunucu sertifikası için anahtar oluşturmak üzere aşağıdaki komutu kullan�
 CSR, sertifika isteğinde bulunan bir CA 'ya verilen ortak anahtardır. CA, bu belirli istek için sertifikayı yayınlar.
 
 > [!NOTE]
-> Sunucu sertifikası için CN (ortak ad), verenin etki alanından farklı olmalıdır. Örneğin, bu durumda veren için CN `www.contoso.com` ve sunucu sertifikasının CN 'si olur. `www.fabrikam.com`
+> Sunucu sertifikası için CN (ortak ad), verenin etki alanından farklı olmalıdır. Örneğin, bu durumda veren için CN `www.contoso.com` ve sunucu SERTIFIKASıNıN CN 'si olur `www.fabrikam.com` .
 
 
 1. CSR 'yi oluşturmak için aşağıdaki komutu kullanın:
@@ -97,7 +97,7 @@ CSR, sertifika isteğinde bulunan bir CA 'ya verilen ortak anahtardır. CA, bu b
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. İstendiğinde, kök anahtarın parolasını ve özel CA için kuruluş bilgilerini yazın: ülke, eyalet, kuruluş, OU ve tam etki alanı adı. Bu, Web sitesinin etki alanıdır ve veren 'den farklı olmalıdır.
+1. İstendiğinde, kök anahtarın parolasını ve özel CA için kuruluş bilgilerini yazın: ülke/bölge, eyalet, kuruluş, OU ve tam etki alanı adı. Bu, Web sitesinin etki alanıdır ve veren 'den farklı olmalıdır.
 
    ![Sunucu sertifikası](media/self-signed-certificates/server-cert.png)
 

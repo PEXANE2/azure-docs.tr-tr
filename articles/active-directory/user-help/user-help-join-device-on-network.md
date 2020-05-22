@@ -8,16 +8,16 @@ ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266318"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745727"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>İş cihazınızı kuruluşunuzun ağına ekleyin
 Potansiyel olarak kısıtlanmış kaynaklara erişebilmek için, iş sahibi Windows 10 cihazınızı kuruluşunuzun ağına katın.
@@ -61,7 +61,7 @@ Ayarlarınıza bakarak katıldığınızdan emin olabilirsiniz.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. **İşe veya okula erişim**' i seçin ve şunun gibi bir şeyler olduğunu belirten bir metin ** * \<your_organization>* Azure AD 'ye bağlı**olun.
+2. **İşe veya okula erişim**' i seçin ve şunun gibi bir şeyler olduğunu belirten bir metin ** * \< Your_organization>* Azure AD 'ye bağlı**olun.
 
     ![Bağlı contoso hesabıyla iş veya okul ekranına erişin](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -79,7 +79,7 @@ Cihazınızda bir süredir varsa ve bu cihaz zaten ayarlandıysa, cihazınızı 
 
     ![İş veya okul hesabı ekranı ayarlama](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. **Oturum açalım** ekranında, e-posta adresinizi yazın (örneğin, alain@contoso.com) ve ardından **İleri**' yi seçin.
+4. **Oturum açalım** ekranında, e-posta adresinizi yazın (örneğin, alain@contoso.com ) ve ardından **İleri**' yi seçin.
 
     ![Bu ekranda oturum açalım](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
@@ -106,7 +106,7 @@ Ayarlarınıza bakarak katıldığınızdan emin olabilirsiniz.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. **İşe veya okula erişim**' i seçin ve şunun gibi bir şeyler olduğunu belirten bir metin ** * \<your_organization>* Azure AD 'ye bağlı**olun.
+2. **İşe veya okula erişim**' i seçin ve şunun gibi bir şeyler olduğunu belirten bir metin ** * \< Your_organization>* Azure AD 'ye bağlı**olun.
 
     ![Bağlı contoso hesabıyla iş veya okul ekranına erişin](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

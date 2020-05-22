@@ -8,15 +8,15 @@ ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: c828878506ee69e90945d1f4be07eb81541b9757
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 0b3b0d686ae10f9b376c977bf165eccddda32239
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82625417"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744521"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Son oturum açma etkinliğinizi, oturum açma (Önizleme) sayfasından görüntüleme ve arama
 
@@ -56,7 +56,7 @@ Başarısız bir oturum açma görürseniz, oturum etkinliği altında, **ek do�
 
 En son oturum açma etkinliğinizi kullanılabilir bilgilerden herhangi birini izleyerek arayabilirsiniz. Örneğin, işletim sistemi, konum, uygulama ve benzeri en son oturum açma etkinliğinizi arayabilirsiniz.
 
-1. **Son etkinliği gözden geçir** sayfasında, **arama çubuğuna aramak** istediğiniz bilgileri yazın. Örneğin, Hesabım uygulaması `My Account` tarafından toplanan tüm etkinlikleri aramak için yazın.
+1. **Son etkinliği gözden geçir** sayfasında, **arama çubuğuna aramak** istediğiniz bilgileri yazın. Örneğin, Hesabım `My Account` uygulaması tarafından toplanan tüm etkinlikleri aramak için yazın.
 
 2. Aramaya başlamak için **Ara** düğmesini seçin.
 

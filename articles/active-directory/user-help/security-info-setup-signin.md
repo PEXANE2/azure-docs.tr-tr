@@ -8,15 +8,15 @@ ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7de8a5bcc2f7883b00ec25e2674b1dc6bd6871c9
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81454494"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747280"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Güvenlik bilgilerinizi bir oturum açma isteminden ayarlama
 
@@ -136,7 +136,7 @@ Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 1. Sihirbazın önceki bölümlerini tamamladıktan sonra, **İleri** ' yi seçin ve **uygulama parolası** bölümünü doldurun.
 
-2. Parola gerektiren uygulamanın adını yazın (örneğin `Outlook 2010`,) ve ardından **İleri**' yi seçin.
+2. Parola gerektiren uygulamanın adını yazın (örneğin `Outlook 2010` ,) ve ardından **İleri**' yi seçin.
 
     ![Sihirbazda uygulama parolası adını ekleme](media/security-info/app-password-app-password.png)
 

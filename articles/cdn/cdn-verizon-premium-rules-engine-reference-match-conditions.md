@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bc439e3244be63bff1c54d3230eda17dfb9d88d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253450"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745586"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Verizon Premium kural altyapısından eşleşme koşullarına Azure CDN
 
@@ -30,7 +30,7 @@ Bir kuralın ikinci bölümü eşleşme durumudur. Bir eşleşme koşulu, bir ö
 
 Her zaman eşleşme koşulu, tüm isteklere varsayılan bir özellik kümesi uygular.
 
-Adı | Amaç
+Name | Amaç
 -----|--------
 [Her zaman](#always) | Tüm isteklere varsayılan bir özellik kümesi uygular.
 
@@ -38,7 +38,7 @@ Adı | Amaç
 
 Cihaz eşleştirme koşulu, bir mobil cihazdan yapılan istekleri özelliklerine göre tanımlar.  
 
-Adı | Amaç
+Name | Amaç
 -----|--------
 [Cihaz](#device) | Bir mobil cihazdan yapılan istekleri özelliklerine göre tanımlar.
 
@@ -46,7 +46,7 @@ Adı | Amaç
 
 Konum eşleşme koşulları, istek sahibinin konumuna göre istekleri belirler.
 
-Adı | Amaç
+Name | Amaç
 -----|--------
 [AS numarası](#as-number) | Belirli bir ağdan kaynaklanan istekleri tanımlar.
 [Ülke](#country) | Belirtilen ülkelerden/bölgelerden kaynaklanan istekleri tanımlar.
@@ -55,7 +55,7 @@ Adı | Amaç
 
 Kaynak eşleşme koşulları Content Delivery Network depolama alanını veya bir müşteri kaynak sunucusunu işaret eden istekleri belirler.
 
-Adı | Amaç
+Name | Amaç
 -----|--------
 [CDN kaynağı](#cdn-origin) | Content Delivery Network depolamada depolanan içerik için istekleri tanımlar.
 [Müşteri kaynağı](#customer-origin) | Belirli bir müşteri kaynağı sunucusunda depolanan içerik isteklerini tanımlar.
@@ -64,7 +64,7 @@ Adı | Amaç
 
 Istek eşleştirme koşulları, isteklerini özelliklerine göre belirler.
 
-Adı | Amaç
+Name | Amaç
 -----|--------
 [İstemci IP Adresi](#client-ip-address) | Belirli bir IP adresinden kaynaklanan istekleri tanımlar.
 [Cookie parametresi](#cookie-parameter) | Belirtilen değer için her istekle ilişkili tanımlama bilgilerini denetler.
@@ -81,7 +81,7 @@ Adı | Amaç
 
 URL eşleştirme koşulları, isteklerini URL 'lerine göre belirler.
 
-Adı | Amaç
+Name | Amaç
 -----|--------
 [URL yolu dizini](#url-path-directory) | İstekleri göreli yoluna göre tanımlar.
 [URL yolu uzantısı](#url-path-extension) | İstekleri dosya adı uzantısına göre tanımlar.
@@ -112,7 +112,7 @@ Her zaman eşleşme koşulu, tüm isteklere varsayılan bir özellik kümesi uyg
 
 AS numarası ağı, otonom sistem numarası (ASN) tarafından tanımlanır. 
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, as numarası eşleşme koşulunun karşılandığı koşulları belirler:
+**Eşleşmeler** / **eşleşmiyor** seçeneği, as numarası eşleşme koşulunun karşılandığı koşulları belirler:
 
 - **Eşleşmeler**: ISTEMCI ağının ASN 'Nin belirtilen ASNs 'den biriyle eşleşmesini gerektirir. 
 - **Eşleşmiyor**: ISTEMCI ağının ASN 'Nin belirtilen ASNs ile eşleşmemesi gerekir.
@@ -157,7 +157,7 @@ Anahtar bilgileri:
 
 ### <a name="client-ip-address"></a>İstemci IP Adresi
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, istemci IP adresi eşleşme koşulunun karşılandığı koşulları belirler:
+**Eşleşmeler** / **eşleşmiyor** seçeneği, istemci IP adresi eşleşme koşulunun karşılandığı koşulları belirler:
 
 - **Eşleşmeler**: istemcinin IP ADRESININ belirtilen IP adreslerinden biriyle eşleşmesini gerektirir. 
 - **Eşleşmiyor**: istemcinin IP ADRESININ belirtilen IP adreslerinden hiçbiriyle eşleşmemesi gerekir. 
@@ -186,7 +186,7 @@ Anahtar bilgileri:
 
 ### <a name="cookie-parameter"></a>Cookie parametresi
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, tanımlama bilgisi parametresi eşleşme koşulunun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, tanımlama bilgisi parametresi eşleşme koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: Bu eşleşme koşulunda tanımlanan değerlerden en az biriyle eşleşen bir değere sahip belirtilen tanımlama bilgisini içeren bir istek gerektirir.
 - **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
@@ -220,7 +220,7 @@ Anahtar bilgileri:
 
 Tanımlama bilgisi parametresi Regex Match koşulu, bir tanımlama bilgisi adı ve değeri tanımlar. İstenen tanımlama bilgisi değerini tanımlamak için [Normal ifadeleri](cdn-verizon-premium-rules-engine-reference.md#regular-expressions) kullanabilirsiniz.
 
-**Eşleşmeler**/**eşleşmiyor** seçeneğiyle eşleşen tanımlama bilgisi parametresinin hangi koşullarda karşılandığını belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneğiyle eşleşen tanımlama bilgisi parametresinin hangi koşullarda karşılandığını belirler.
 
 - **Eşleşmeler**: belirtilen normal ifadeyle eşleşen bir değere sahip belirtilen tanımlama bilgisini içermesi için bir istek gerektirir.
 - **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
@@ -253,7 +253,7 @@ Anahtar bilgileri:
 
 Ülke kodu aracılığıyla bir ülke belirtebilirsiniz. 
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, ülke eşleşme koşulunun karşılandığı koşulları belirler:
+**Eşleşmeler** / **eşleşmiyor** seçeneği, ülke eşleşme koşulunun karşılandığı koşulları belirler:
 
 - **Eşleşmeler**: isteğin belirtilen ülke kodu değerlerini içermesini gerektirir. 
 - **Eşleşmiyor**: isteğin belirtilen ülke kodu değerlerini içermemesi gerekir.
@@ -279,9 +279,9 @@ Bu eşleştirme koşulu, bir isteğin kaynaklandığı konuma göre çok sayıda
 - URL yolu joker karakter eşleşmesi: [URL yolu joker karakter eşleştirme koşulunu](#url-path-wildcard) güvenliği sağlayacak dizine ayarlayın. 
     Tüm alt öğelerine erişimin bu kural tarafından kısıtlanmasını sağlamak için göreli yolun sonuna bir yıldız işareti ekleyin.
 
-- Ülke eşleşmesi: ülke eşleştirme koşulunu istenen ülke kümesine ayarlayın.
-  - İzin ver: ülke eşleştirme koşulunu, yalnızca belirtilen ülkelerin, URL yolu eşleştirme koşulu tarafından tanımlanan konumda depolanan içeriğe erişmesine izin verecek şekilde **eşleşmez** .
-  - Engelle: belirtilen ülkelerin, URL yolu joker karakter eşleştirme koşulu tarafından tanımlanan konumda depolanan içeriğe erişmesini engellemek için ülke eşleştirme koşulunu **eşleşir** olarak ayarlayın.
+- Ülke eşleşmesi: ülke eşleştirme koşulunu istenen ülke/bölge kümesine ayarlayın.
+  - İzin ver: ülke eşleştirme koşulunu, yalnızca belirtilen ülkelerin/bölgelerin URL yolu joker karakter eşleştirme koşulu tarafından tanımlanan konumda depolanan içeriğe erişmesine izin verecek şekilde **eşleşmez** .
+  - Engelle: belirtilen ülkelerin/bölgelerin, URL yolu joker karakter eşleştirme koşulu tarafından tanımlanan konumda depolanan içeriğe erişmesini engellemek için ülke eşleştirme koşulunu **eşleşir** olarak ayarlayın.
 
 - Erişimi Reddet (403) özelliği: ülke filtreleme özelliğinin izin verme veya engelleme bölümünü çoğaltmak için [erişimi Reddet (403) özelliğini](cdn-verizon-premium-rules-engine-reference-features.md#deny-access-403) etkinleştirin.
 
@@ -311,7 +311,7 @@ Anahtar bilgileri:
 
 Cihaz eşleştirme koşulu, bir mobil cihazdan yapılan istekleri özelliklerine göre tanımlar. Mobil cihaz algılama, [WURFL](http://wurfl.sourceforge.net/)üzerinden sağlanır. 
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, cihazın eşleşme koşulunun karşılandığı koşulları belirler:
+**Eşleşmeler** / **eşleşmiyor** seçeneği, cihazın eşleşme koşulunun karşılandığı koşulları belirler:
 
 - **Eşleşmeler**: istek sahibinin cihazının belirtilen değerle eşleşmesini gerektirir. 
 - **Eşleşmiyor**: istek sahibinin cihazının belirtilen değerle eşleşmemesi gerekir.
@@ -398,7 +398,7 @@ Anahtar bilgileri:
 
 İçeriğin istendiği başvuran ile ilişkili ana bilgisayar adı, başvurulan etki alanı koşulunun karşılanıp karşılanmadığını belirler.
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, başvurulan etki alanı eşleştirme koşulunun karşılandığı koşulları belirler:
+**Eşleşmeler** / **eşleşmiyor** seçeneği, başvurulan etki alanı eşleştirme koşulunun karşılandığı koşulları belirler:
 
 - **Eşleşmeler**: başvurulan ana bilgisayar adının belirtilen değerlerle eşleşmesini gerektirir. 
 - **Eşleşmiyor**: başvurulan ana bilgisayar adının belirtilen değerle eşleşmemesi gerekir.
@@ -424,7 +424,7 @@ Anahtar bilgileri:
 
 ### <a name="request-header-literal"></a>İstek üst bilgisi sabit değeri
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, istek üst bilgisi değişmez değer eşleşmesi koşulunun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, istek üst bilgisi değişmez değer eşleşmesi koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: isteğin belirtilen üstbilgiyi içermesini gerektirir. Değeri, bu eşleşme koşulunda tanımlananla aynı olmalıdır.
 - **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
@@ -449,7 +449,7 @@ Anahtar bilgileri:
 
 ### <a name="request-header-regex"></a>İstek üst bilgisi Regex
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, istek üstbilgisi Regex ile eşleşen koşulun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, istek üstbilgisi Regex ile eşleşen koşulun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: isteğin belirtilen üstbilgiyi içermesini gerektirir. Değeri, belirtilen [normal ifadede](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)tanımlanan Düzenle eşleşmelidir.
 - **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
@@ -480,7 +480,7 @@ Anahtar bilgileri:
 
 ### <a name="request-header-wildcard"></a>İstek üstbilgisi joker karakteri
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, istek üst bilgisi eşleştirme koşulunun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, istek üst bilgisi eşleştirme koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: isteğin belirtilen üstbilgiyi içermesini gerektirir. Değeri, bu eşleşme koşulunda tanımlanan değerlerden en az biri ile eşleşmelidir.
 - **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
@@ -565,7 +565,7 @@ Anahtar bilgileri:
 
 Bir isteği, istenen varlığın dosya adını dışlayan göreli yoluna göre tanımlar.
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu dizin eşleşme koşulunun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, URL yolu dizin eşleşme koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: isteğin, belirtilen URL düzeniyle eşleşen dosya adı hariç GÖRELI bir URL yolu içermesini gerektirir.
 - **Eşleşmiyor**: isteğin, belirtilen URL düzeniyle eşleşmeyen, dosya adı hariç GÖRELI bir URL yolu içermesini gerektirir.
@@ -577,23 +577,23 @@ Anahtar bilgileri:
    **Göreli** seçenek için aşağıdaki değerler mevcuttur:
   - **Kök**: URL KARŞıLAŞTıRMA noktasının CDN ana bilgisayar adından hemen sonra başlayacağını gösterir. 
 
-  Örneğin: http:\//WPC.exe 01. &lt;etki&gt;/alanı**800001/myorigin/myFolder**/Index.htm
+  Örneğin: http: \/ /WPC.exe 01. &lt; etki alanı &gt; / **800001/myorigin/myFolder**/Index.htm
 
-  - **Kaynak**: URL karşılaştırma noktasının içerik erişim noktası sonrasında başlayacağını belirtir (örneğin,/000001 veya/800001/myorigin). \*. Azureedge.net CNAME, varsayılan olarak Verizon CDN ana bilgisayar dizinindeki kaynak dizine göre oluşturulduğundan, Azure CDN kullanıcıların **kaynak** değerini kullanması gerekir. 
+  - **Kaynak**: URL karşılaştırma noktasının içerik erişim noktası sonrasında başlayacağını belirtir (örneğin,/000001 veya/800001/myorigin). \*. AZUREEDGE.net CNAME, varsayılan olarak VERIZON CDN ana bilgisayar dizinindeki kaynak dizine göre oluşturulduğundan, Azure CDN kullanıcıların **kaynak** değerini kullanması gerekir. 
 
-  Örneğin: https:\//&lt;Endpoint&gt;. azureedge.net/**myFolder**/Index.htm 
+  Örneğin: https: \/ / &lt; Endpoint &gt; . azureedge.net/**myFolder**/Index.htm 
 
-  Bu URL, şu Verizon CDN ana bilgisayar adına işaret eder:\/http:/WPC. 0001. &lt;etki&gt;alanı/800001/myorigın/**myFolder**/Index.htm
+  Bu URL, şu Verizon CDN ana bilgisayar adına işaret eder: http: \/ /WPC. 0001. &lt; etki alanı &gt; /800001/myorigın/**myFolder**/Index.htm
 
 - Sınır CNAME URL 'SI, URL karşılaştırmasından önce bir CDN URL 'sine yeniden yazılır.
 
     Örneğin, aşağıdaki URL 'lerin her ikisi de aynı varlığı işaret ettikten ve bu nedenle aynı URL yoluna sahip olabilir.
-  - CDN URL 'SI: http\/:/WPC.exe 01. &lt;etki&gt;alanı/800001/CustomerOrigin/Path/Asset.htm
+  - CDN URL 'SI: http: \/ /WPC.exe 01. &lt; etki alanı &gt; /800001/CustomerOrigin/Path/Asset.htm
     
-  - Edge CNAME URL 'si: http\//&lt;:&gt;Endpoint. azureedge.net/Path/Asset.htm
+  - Edge CNAME URL 'si: http: \/ / &lt; Endpoint &gt; . azureedge.net/Path/Asset.htm
     
     Ek bilgiler:
-  - Özel etki alanı: https\/:/My.domain.com/path/Asset.htm
+  - Özel etki alanı: https: \/ /My.domain.com/path/Asset.htm
     
     - URL yolu (köke göre):/800001/CustomerOrigin/path/
     
@@ -623,7 +623,7 @@ Anahtar bilgileri:
 
 İstekleri istenen varlığın dosya uzantısına göre tanımlar.
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu uzantısının eşleşme koşulunun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, URL yolu uzantısının eşleşme koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: belirtilen Düzenle tam olarak eşleşen bir dosya uzantısı içermesi IÇIN isteğin URL 'sini gerektirir.
 
@@ -666,7 +666,7 @@ Bu eşleştirme koşulu, aşağıdaki uzantılarla biten URL 'Leri bulduğunda k
 
 İstekleri istenen varlığın dosya adına göre tanımlar. Bu eşleşme koşulunun amaçları doğrultusunda, bir dosya adı istenen varlık, bir nokta ve dosya uzantısı (örneğin, index. html) adını içerir.
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu dosya adı eşleştirme koşulunun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, URL yolu dosya adı eşleştirme koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: isteğin URL yolunda belirtilen Düzenle eşleşen bir dosya adı içermesini gerektirir.
 - **Eşleşmiyor**: isteğin, belirtilen Düzenle eşleşmeyen URL yolunda bir dosya adı içermesini gerektirir.
@@ -697,7 +697,7 @@ Anahtar bilgileri:
 
 Dosya adı da dahil olmak üzere bir isteğin URL yolunu belirtilen değere karşılaştırır.
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu sabit değeri eşleşme koşulunun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, URL yolu sabit değeri eşleşme koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: isteğin, belirtilen Düzenle eşleşen bir URL yolu içermesini gerektirir.
 - **Eşleşmiyor**: isteğin, belirtilen Düzenle EŞLEŞMEYEN bir URL yolu içermesini gerektirir.
@@ -709,20 +709,20 @@ Anahtar bilgileri:
     **Göreli** seçenek için aşağıdaki değerler mevcuttur:
   - **Kök**: URL KARŞıLAŞTıRMA noktasının CDN ana bilgisayar adından hemen sonra başlayacağını gösterir.
 
-    Örneğin: http:\//WPC.exe 01. &lt;etki&gt;/alanı**800001/myorigin/myFolder/index.htm**
+    Örneğin: http: \/ /WPC.exe 01. &lt; etki alanı &gt; / **800001/myorigin/myFolder/index.htm**
 
-  - **Kaynak**: URL karşılaştırma noktasının içerik erişim noktası sonrasında başlayacağını belirtir (örneğin,/000001 veya/800001/myorigin). \*. Azureedge.net CNAME, varsayılan olarak Verizon CDN ana bilgisayar dizinindeki kaynak dizine göre oluşturulduğundan, Azure CDN kullanıcıların **kaynak** değerini kullanması gerekir. 
+  - **Kaynak**: URL karşılaştırma noktasının içerik erişim noktası sonrasında başlayacağını belirtir (örneğin,/000001 veya/800001/myorigin). \*. AZUREEDGE.net CNAME, varsayılan olarak VERIZON CDN ana bilgisayar dizinindeki kaynak dizine göre oluşturulduğundan, Azure CDN kullanıcıların **kaynak** değerini kullanması gerekir. 
 
-    Örneğin: https:\//&lt;Endpoint&gt;. azureedge.net/**myFolder/index.htm**
+    Örneğin: https: \/ / &lt; Endpoint &gt; . azureedge.net/**myFolder/index.htm**
 
-  Bu URL, şu Verizon CDN ana bilgisayar adına işaret eder:\/http:/WPC. 0001. &lt;etki&gt;alanı/800001/myorigin/**myFolder/index.htm**
+  Bu URL, şu Verizon CDN ana bilgisayar adına işaret eder: http: \/ /WPC. 0001. &lt; etki alanı &gt; /800001/myorigin/**myFolder/index.htm**
 
 - Bir sınır CNAME URL 'SI bir URL karşılaştırmasından önce CDN URL 'sine yeniden yazılır.
 
 Örneğin, aşağıdaki URL 'lerin her ikisi de aynı varlığı işaret ettikten ve bu nedenle aynı URL yoluna sahiptir:
 
-- CDN URL 'SI: http\/:/WPC.exe 01. &lt;etki&gt;alanı/800001/CustomerOrigin/Path/Asset.htm
-- Edge CNAME URL 'si: http\//&lt;:&gt;Endpoint. azureedge.net/Path/Asset.htm
+- CDN URL 'SI: http: \/ /WPC.exe 01. &lt; etki alanı &gt; /800001/CustomerOrigin/Path/Asset.htm
+- Edge CNAME URL 'si: http: \/ / &lt; Endpoint &gt; . azureedge.net/Path/Asset.htm
 
     Ek bilgiler:
     
@@ -746,7 +746,7 @@ Anahtar bilgileri:
 
 Bir isteğin URL yolunu belirtilen [normal ifadeyle](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)karşılaştırır.
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu Regex ile eşleşen koşulun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, URL yolu Regex ile eşleşen koşulun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: isteğin, belirtilen normal ifadeyle eşleşen bir URL yolu içermesini gerektirir.
 - **Eşleşmiyor**: isteğin, belirtilen normal ifadeyle EŞLEŞMEYEN bir URL yolu içermesini gerektirir.
@@ -757,9 +757,9 @@ Anahtar bilgileri:
 
     Örneğin, her iki URL aynı varlığı işaret ettikten ve bu nedenle aynı URL yoluna sahip olabilir.
 
-     - CDN URL 'SI: http\/:/WPC.exe 01. &lt;etki&gt;alanı/800001/CustomerOrigin/Path/Asset.htm
+     - CDN URL 'SI: http: \/ /WPC.exe 01. &lt; etki alanı &gt; /800001/CustomerOrigin/Path/Asset.htm
 
-     - Edge CNAME URL 'SI: http\/:/My.domain.com/path/Asset.htm
+     - Edge CNAME URL 'SI: http: \/ /My.domain.com/path/Asset.htm
 
     Ek bilgiler:
     
@@ -781,7 +781,7 @@ Anahtar bilgileri:
 
 Bir isteğin göreli URL yolunu belirtilen joker karakter düzeniyle karşılaştırır.
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu joker karakter eşleşme koşulunun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, URL yolu joker karakter eşleşme koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: isteğin, belirtilen joker karakter düzeniyle eşleşen bir URL yolu içermesini gerektirir.
 - **Eşleşmiyor**: isteğin, belirtilen joker karakter düzeniyle EŞLEŞMEYEN bir URL yolu içermesini gerektirir.
@@ -793,19 +793,19 @@ Anahtar bilgileri:
    Bu seçenek aşağıdaki değerlere sahip olabilir:
      - **Kök**: URL KARŞıLAŞTıRMA noktasının CDN ana bilgisayar adından hemen sonra başlayacağını gösterir.
 
-       Örneğin: http:\//WPC.exe 01. &lt;etki&gt;/alanı**800001/myorigin/myFolder/index.htm**
+       Örneğin: http: \/ /WPC.exe 01. &lt; etki alanı &gt; / **800001/myorigin/myFolder/index.htm**
 
-     - **Kaynak**: URL karşılaştırma noktasının içerik erişim noktası sonrasında başlayacağını belirtir (örneğin,/000001 veya/800001/myorigin). \*. Azureedge.net CNAME, varsayılan olarak Verizon CDN ana bilgisayar dizinindeki kaynak dizine göre oluşturulduğundan, Azure CDN kullanıcıların **kaynak** değerini kullanması gerekir. 
+     - **Kaynak**: URL karşılaştırma noktasının içerik erişim noktası sonrasında başlayacağını belirtir (örneğin,/000001 veya/800001/myorigin). \*. AZUREEDGE.net CNAME, varsayılan olarak VERIZON CDN ana bilgisayar dizinindeki kaynak dizine göre oluşturulduğundan, Azure CDN kullanıcıların **kaynak** değerini kullanması gerekir. 
 
-       Örneğin: https:\//&lt;Endpoint&gt;. azureedge.net/**myFolder/index.htm**
+       Örneğin: https: \/ / &lt; Endpoint &gt; . azureedge.net/**myFolder/index.htm**
 
-     Bu URL, şu Verizon CDN ana bilgisayar adına işaret eder:\/http:/WPC. 0001. &lt;etki&gt;alanı/800001/myorigin/**myFolder/index.htm**
+     Bu URL, şu Verizon CDN ana bilgisayar adına işaret eder: http: \/ /WPC. 0001. &lt; etki alanı &gt; /800001/myorigin/**myFolder/index.htm**
 
 - Bir Edge CNAME URL 'SI, URL karşılaştırmasından önce bir CDN URL 'sine yeniden yazılır.
 
     Örneğin, aşağıdaki URL 'lerin her ikisi de aynı varlığı işaret ettikten ve bu nedenle aynı URL yoluna sahiptir:
-     - CDN URL 'SI http://wpc.0001.&lt:;d omain&gt;/800001/CustomerOrigin/Path/Asset.htm
-     - Edge CNAME URL 'si: http\//&lt;:&gt;Endpoint. azureedge.net/Path/Asset.htm
+     - CDN URL 'SI: http://wpc.0001.&lt ;d omain &gt; /800001/CustomerOrigin/Path/Asset.htm
+     - Edge CNAME URL 'si: http: \/ / &lt; Endpoint &gt; . azureedge.net/Path/Asset.htm
     
     Ek bilgiler:
     
@@ -835,7 +835,7 @@ Değer                   | Göreli    | Sonuç
 /80ABCD/origin/text/*   | Root           | Bu model, istenen varlık aşağıdaki ölçütlere uyduğunda eşleştirilir: <br />-Bu, "Origin" adlı bir müşteri kaynağı üzerinde bulunmalıdır. <br />-Göreli yol "metin" adlı bir klasörle başlamalıdır. Diğer bir deyişle, istenen varlık "metin" klasöründe ya da özyinelemeli alt klasörlerinden birinde bulunabilir.
 */CSS/* */js/*          | Kök veya kaynak | Bu model, CSS veya JS klasörü içeren tüm CDN veya Edge CNAME URL 'Leri ile eşleştirilir.
 *. jpg *. gif *. png       | Kök veya kaynak | Bu model,. jpg,. gif veya. png ile biten tüm CDN veya Edge CNAME URL 'Leri ile eşleştirilir. Bu kalıbı belirtmenin alternatif bir yolu, [URL yolu uzantısı eşleşme koşuluna](#url-path-extension)sahiptir.
-/images/*/Media/*      | Kaynak         | Bu model, göreli yolu bir "görüntüler" veya "medya" klasörüyle başlayan CDN veya Edge CNAME URL 'Leri ile eşleştirilir. <br />-CDN URL 'SI: http\/:/wpcpst 01. &lt;etki&gt;alanı/800001/myorigin/images/Sales/Event1.png<br />-Örnek Edge CNAME URL 'SI: http\/:/cdn.mydomain.com/images/Sales/Event1.png
+/images/*/Media/*      | Kaynak         | Bu model, göreli yolu bir "görüntüler" veya "medya" klasörüyle başlayan CDN veya Edge CNAME URL 'Leri ile eşleştirilir. <br />-CDN URL 'SI: http: \/ /wpcpst 01. &lt; etki alanı &gt; /800001/myorigin/images/Sales/Event1.png<br />-Örnek Edge CNAME URL 'SI: http: \/ /CDN.mydomain.com/images/Sales/Event1.png
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -847,7 +847,7 @@ Değer                   | Göreli    | Sonuç
 
 Bir isteğin sorgu dizesini belirtilen değerle karşılaştırır.
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, URL sorgusunun değişmez değer eşleşmesi koşulunun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, URL sorgusunun değişmez değer eşleşmesi koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: isteğin, belirtilen sorgu dizesiyle eşleşen bir URL sorgu dizesi içermesini gerektirir.
 - **Eşleşmiyor**: isteğin, belirtilen sorgu dizesiyle EŞLEŞMEYEN bir URL sorgu dizesi içermesini gerektirir.
@@ -884,7 +884,7 @@ Anahtar bilgileri:
 
 Belirtilen sorgu dizesi parametresini içeren istekleri tanımlar. Bu parametre, belirtilen bir düzenle eşleşen bir değere ayarlanır. İstek URL 'sindeki sorgu dizesi parametreleri (örneğin, Parameter = değer) bu koşulun karşılanıp karşılanmadığını belirtir. Bu eşleştirme koşulu, bir sorgu dizesi parametresini adına göre tanımlar ve parametre değeri için bir veya daha fazla değeri kabul eder. 
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, URL sorgu parametresi eşleşme koşulunun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, URL sorgu parametresi eşleşme koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: Bu eşleşme koşulunda tanımlanan değerlerden en az biriyle eşleşen bir değere sahip belirtilen parametreyi içeren bir istek gerektirir.
 - **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
@@ -953,7 +953,7 @@ Anahtar bilgileri:
 
 Aşağıdaki örnek, bu seçeneğin belirli durumlarda nasıl çalıştığını göstermektedir:
 
-Adı  | Değer |  Sonuç
+Name  | Değer |  Sonuç
 ------|-------|--------
 Kullanıcı  | Abdullah   | İstenen URL için sorgu dizesi "? User = ali" olduğunda bu model eşleştirilir.
 Kullanıcı  | *     | Bu model, istenen URL için sorgu dizesi bir Kullanıcı parametresi içerdiğinde eşleştirilir.
@@ -969,7 +969,7 @@ E-posta | Abdullah\* | Bu model, istenen bir URL için sorgu dizesi "ali" ile ba
 
 Belirtilen sorgu dizesi parametresini içeren istekleri tanımlar. Bu parametre, belirtilen [normal ifadeyle](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)eşleşen bir değere ayarlanır.
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, URL sorgusu Regex ile eşleşen koşulun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, URL sorgusu Regex ile eşleşen koşulun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: isteğin, belirtilen normal ifadeyle eşleşen bir URL sorgu dizesi içermesini gerektirir.
 - **Eşleşmiyor**: isteğin, belirtilen normal ifadeyle EŞLEŞMEYEN bir URL sorgu dizesi içermesini gerektirir.
@@ -987,11 +987,11 @@ Anahtar bilgileri:
    Karakter | URL kodlaması | Değer
    ----------|--------------|------
    Alan     | %20          | \%2.0
-   &         | %25          | \%25
+   &         | %25          | \%250
 
    Yüzde simgelerinin kaçışına sahip olması gerektiğini unutmayın.
 
-- Normal ifadede ters eğik çizgi dahil etmek için, çift kaçış \^özel normal ifade karakterleri (örneğin, $. +).
+- Normal ifadede ters eğik çizgi dahil etmek için, çift kaçış özel normal ifade karakterleri (örneğin, \^ $. +).
 
    Örneğin:
 
@@ -1017,7 +1017,7 @@ Anahtar bilgileri:
 
 Belirtilen değerleri isteğin sorgu dizesine göre karşılaştırır.
 
-**Eşleşmeler**/**eşleşmiyor** seçeneği, URL sorgusunun joker karakter eşleşme koşulunun karşılandığı koşulları belirler.
+**Eşleşmeler** / **eşleşmiyor** seçeneği, URL sorgusunun joker karakter eşleşme koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: isteğin, belirtilen joker karakterle eşleşen bir URL sorgu dizesi içermesini gerektirir.
 - **Eşleşmiyor**: isteğin, belirtilen joker karakterle EŞLEŞMEYEN bir URL sorgu dizesi içermesini gerektirir.
@@ -1053,10 +1053,10 @@ Anahtar bilgileri:
 
 Aşağıdaki örnek, bu seçeneğin belirli durumlarda nasıl çalıştığını göstermektedir:
 
- Adı                 | Açıklama
+ Name                 | Açıklama
  ---------------------|------------
 Kullanıcı = ali              | İstenen URL için sorgu dizesi "? User = ali" olduğunda bu model eşleştirilir.
-\*Kullanıcı =\* \*OptOut =\* | CDN URL sorgusu Kullanıcı veya OptOut parametresi içerdiğinde bu model eşleştirilir.
+\*Kullanıcı = \* \* OptOut =\* | CDN URL sorgusu Kullanıcı veya OptOut parametresi içerdiğinde bu model eşleştirilir.
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 

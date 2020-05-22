@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 798da0261dbb692d411f1bb568a272a6bb7dbb03
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 540ae25b22b2c134a47f91ad5b8b19089c7f2acb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715673"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744990"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Otomasyonu 'nda kimlik bilgilerini yönetme
 
@@ -163,6 +163,6 @@ print cred["password"]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu’nda modülleri yönetme](modules.md)
-* [Azure Otomasyonu’nda runbook yürütme](../automation-runbook-execution.md)
-* [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation-dsc-overview.md) 
+* Sertifikalara erişmek için kullanılan cmdlet 'ler hakkında daha fazla bilgi için bkz. [Azure Automation 'da modülleri yönetme](modules.md).
+* Runbook 'lar hakkında genel bilgi için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md).
+* DSC yapılandırmalarının ayrıntıları için bkz. [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation-dsc-overview.md). 

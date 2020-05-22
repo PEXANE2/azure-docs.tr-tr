@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 7e4ec8a5772f0fbc1c0e67ba07a172daeac9b91b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5abb373d4b3f9c66b2dc2f103e4a89ef0dc5af89
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657894"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744842"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -40,7 +40,7 @@ Ticari Market, go-to-market işbirliği ve satış kanalları ve Market depolar�
 
 Ticari Market, plan esasına göre 141 bölgede kullanılabilir. 
 
-Vergi ödemesini birçok ülkede yönetiyoruz ve satıcılarımızın küresel kanal ağına erişim sağlıyoruz. Bir müşterinin Microsoft Müşteri sözleşmesini veya Kurumsal Anlaşma, yeni bir satın alma ilişkisi oluşturmaya gerek kalmadan kuruluşlara satmak için kullanabilirsiniz.
+Vergi ödemesini birçok ülkede/bölgede yönetiyoruz ve satıcılarımızın küresel kanal ağına erişim sağlıyoruz. Bir müşterinin Microsoft Müşteri sözleşmesini veya Kurumsal Anlaşma, yeni bir satın alma ilişkisi oluşturmaya gerek kalmadan kuruluşlara satmak için kullanabilirsiniz.
 
 Daha fazla bilgi edinmek için [Market üzerinden satış nedeninin](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace)videosunu görüntüleyin.
 
@@ -225,7 +225,7 @@ Hayır, ön ödemeli veya sponsorlu Azure harcama, Azure Marketi 'nden iş orta�
 
 Kullanıcı hesabının Azure aboneliğinde *sahip* veya *katkıda bulunan* izinleri olmalıdır.
 
-### <a name="in-what-countries-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>Müşteriler Microsoft AppSource ve Azure Marketi 'nden hangi ülkelerde satın alınabilir?
+### <a name="in-what-countriesregions-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>Müşterilerin Microsoft AppSource ve Azure Marketi 'nden hangi ülkelerde/bölgelerde satın albilecekleri
 
 Müşteriler dünyanın dört bir yanındaki 141 konumlarda ticari Market 'ten çözüm alabilir.
 
@@ -262,7 +262,7 @@ Plan mevcut bir abonelik için değiştiyse, terim değişmeden kalır ve kalan 
 
 ### <a name="what-could-block-a-customer-from-completing-a-purchase"></a>Müşterinin satın almayı tamamlamada ne engel olabilir?
 
-Microsoft AppSource için müşterinin, Azure AD örneğiyle aynı ülkede fatura adresi olan bir kredi kartına sahip olması ve müşterinin Azure AD yöneticisinin, sistemin kimlik doğrulamasını Microsoft AppSource önleyemediğinden emin olması gerekir.
+Microsoft AppSource için müşterinin, Azure AD örneğiyle aynı ülkede/bölgede bulunan bir kredi kartına sahip olması ve müşterinin Azure AD yöneticisinin, sistemin kimlik doğrulamasını Microsoft AppSource önleyemediğinden emin olması gerekir.
 
 Azure Marketi için müşterinin etkin bir Azure aboneliği ve bu abonelikte *sahip* veya *katkıda* bulunan izinleri olan bir kullanıcı hesabı olması gerekir. Müşterinin Azure Yöneticisi, Azure Ilkesinin kullanılan teklifle çakışmamasını ve Azure Marketi 'ni devre dışı bırakmak için maliyet yönetiminin ayarlanmamasını sağlamalıdır.
 

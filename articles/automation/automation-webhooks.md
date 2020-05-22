@@ -1,28 +1,25 @@
 ---
-title: Azure Otomasyonu runbook'unu web kancasıyla başlatma
-description: Bir istemcinin Azure Automation 'da bir runbook 'u HTTP çağrısından başlatmasını sağlayan bir Web kancası.  Bu makalede bir Web kancası oluşturma ve bir runbook 'u başlatmak için bir nasıl çağrılacağını açıklanmaktadır.
+title: Web kancasından Azure Otomasyonu runbook 'u başlatma
+description: Bu makalede, Azure Otomasyonu 'nda bir runbook 'u HTTP çağrısından başlatmak için Web kancasının nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: cbe43b298c57d266f0b031b5192f25fe3df07c05
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: e61c8b9af04ce9157179d464c1a49ce685c6913f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582442"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744721"
 ---
-# <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Otomasyonu runbook'unu web kancasıyla başlatma
+# <a name="start-a-runbook-from-a-webhook"></a>Web kancasından runbook başlatma
 
-Web kancası, bir dış hizmetin Azure Otomasyonu 'nda belirli bir runbook 'u tek bir HTTP isteği aracılığıyla başlatmasını sağlar. Dış hizmetler Azure DevOps Services, GitHub, Azure Izleyici günlükleri ve özel uygulamalar içerir. Bu tür bir hizmet, Azure Otomasyonu API 'sini kullanarak tam bir çözüm uygulamadan runbook 'u başlatmak için Web kancasını kullanabilir. Web kancalarını, [Azure Otomasyonu 'nda bir runbook başlatma](automation-starting-a-runbook.md)bölümünde bulunan bir runbook 'u başlatma yöntemleriyle karşılaştırabilirsiniz.
+Web kancası, bir dış hizmetin Azure Otomasyonu 'nda belirli bir runbook 'u tek bir HTTP isteği aracılığıyla başlatmasını sağlar. Dış hizmetler Azure DevOps Services, GitHub, Azure Izleyici günlükleri ve özel uygulamalar içerir. Bu tür bir hizmet, tam Azure Otomasyonu API 'sini uygulamadan bir runbook 'u başlatmak için Web kancasını kullanabilir. Web kancalarını, [Azure Otomasyonu 'nda bir runbook başlatma](automation-starting-a-runbook.md)bölümünde bulunan bir runbook 'u başlatma yöntemleriyle karşılaştırabilirsiniz.
 
 > [!NOTE]
 > Python runbook 'u başlatmak için Web kancası kullanılması desteklenmez.
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="webhook-properties"></a>Web kancası özellikleri
 
@@ -31,7 +28,7 @@ Aşağıdaki tabloda bir Web kancası için yapılandırmanız gereken özellikl
 | Özellik | Açıklama |
 |:--- |:--- |
 | Name |Web kancasının adı. İstemciye açık olmadığından istediğiniz adı verebilirsiniz. Yalnızca Azure Otomasyonu 'nda runbook 'u tanımlamak için kullanılır. En iyi uygulama olarak, Web kancasına onu kullanan istemciyle ilgili bir ad vermeniz gerekir. |
-| URL'si |Web kancasının URL 'SI. Bu, bir istemcinin Web kancasına bağlı olan runbook 'u başlatmak için bir HTTP POST ile çağırdığı benzersiz adrestir. Web kancasını oluşturduğunuzda otomatik olarak oluşturulur. Özel bir URL belirtemezsiniz. <br> <br> URL, üçüncü taraf bir sistemin runbook 'u başka bir kimlik doğrulaması olmadan çağırmasına izin veren bir güvenlik belirteci içeriyor. Bu nedenle, URL 'YI bir parola gibi kabul etmelisiniz. Güvenlik nedenleriyle, URL 'YI yalnızca Web kancasını oluştururken Azure portal görüntüleyebilirsiniz. Daha sonra kullanılmak üzere güvenli bir konumda URL 'YI aklınızda bulundurma. |
+| URL |Web kancasının URL 'SI. Bu, bir istemcinin Web kancasına bağlı olan runbook 'u başlatmak için bir HTTP POST ile çağırdığı benzersiz adrestir. Web kancasını oluşturduğunuzda otomatik olarak oluşturulur. Özel bir URL belirtemezsiniz. <br> <br> URL, üçüncü taraf bir sistemin runbook 'u başka bir kimlik doğrulaması olmadan çağırmasına izin veren bir güvenlik belirteci içeriyor. Bu nedenle, URL 'YI bir parola gibi kabul etmelisiniz. Güvenlik nedenleriyle, URL 'YI yalnızca Web kancasını oluştururken Azure portal görüntüleyebilirsiniz. Daha sonra kullanılmak üzere güvenli bir konumda URL 'YI aklınızda bulundurma. |
 | Son kullanma tarihi | Web kancasının, daha sonra kullanılamayacak son kullanma tarihi. Web kancasının süresi dolduğu sürece, Web kancası oluşturulduktan sonra sona erme tarihini değiştirebilirsiniz. |
 | Etkin | Web kancasının oluşturulduğu zaman varsayılan olarak etkinleştirilip etkinleştirilmediğini belirten ayar. Bu özelliği devre dışı olarak ayarlarsanız, hiçbir istemci Web kancasını kullanamaz. Bu özelliği, Web kancasını veya oluşturulduktan sonra herhangi bir zamanı oluşturduğunuzda ayarlayabilirsiniz. |
 
@@ -39,11 +36,11 @@ Aşağıdaki tabloda bir Web kancası için yapılandırmanız gereken özellikl
 
 Web kancası runbook 'un başlatıldığı zaman kullanılan runbook parametreleri için değerler tanımlayabilir. Web kancası zorunlu runbook parametrelerinin değerlerini içermeli ve isteğe bağlı parametrelerin değerlerini içerebilir. Web kancasına yapılandırılmış bir parametre değeri, Web kancası oluşturulduktan sonra bile değiştirilebilir. Tek bir runbook 'a bağlı birden çok Web kancası, her biri farklı runbook parametre değerleri kullanabilir. İstemci bir Web kancası kullanarak runbook 'u başlattığında, Web kancasında tanımlanan parametre değerlerini geçersiz kılamazsınız.
 
-İstemciden veri almak için Runbook adlı `WebhookData`tek bir parametreyi destekler. Bu parametre, bir POST isteğinde istemcinin içerdiği verileri içeren bir nesneyi tanımlar.
+İstemciden veri almak için Runbook adlı tek bir parametreyi destekler `WebhookData` . Bu parametre, bir POST isteğinde istemcinin içerdiği verileri içeren bir nesneyi tanımlar.
 
 ![Web kancası veri özellikleri](media/automation-webhooks/webhook-data-properties.png)
 
-`WebhookData` Parametresi aşağıdaki özelliklere sahiptir:
+`WebhookData`Parametresi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Açıklama |
 |:--- |:--- |
@@ -51,25 +48,25 @@ Web kancası runbook 'un başlatıldığı zaman kullanılan runbook parametrele
 | `RequestHeader` | Gelen POST isteğinin üst bilgilerini içeren Hashtable. |
 | `RequestBody` | Gelen POST isteğinin gövdesi. Bu gövde dize, JSON, XML veya form kodlu gibi tüm veri biçimlendirmelerini korur. Runbook 'un beklenen veri biçimiyle çalışacak şekilde yazılması gerekir. |
 
-`WebhookData` Parametresi desteklemek için gereken Web kancası yapılandırması yoktur ve Runbook 'un kabul etmesi gerekmez. Runbook parametreyi tanımlamaz, istemciden gönderilen isteğin ayrıntıları yoksayılır.
+Parametresi desteklemek için gereken Web kancası yapılandırması yoktur `WebhookData` ve Runbook 'un kabul etmesi gerekmez. Runbook parametreyi tanımlamaz, istemciden gönderilen isteğin ayrıntıları yoksayılır.
 
 > [!NOTE]
 > Web kancasını çağırırken, çağrının başarısız olması durumunda istemcinin her zaman parametre değerlerini depolaması gerekir. Ağ kesintisi veya bağlantı sorunu varsa, uygulama başarısız Web kancası çağrılarını alamıyor.
 
-Web kancası oluşturma sırasında için `WebhookData` bir değer belirtirseniz, Web kancası runbook 'U istemci POST isteğinden alınan verilerle başlattığında bu geçersiz kılınır. Bu, uygulama, istek gövdesine herhangi bir veri içermediği halde olur. 
+`WebhookData`Web kancası oluşturma sırasında için bir değer belirtirseniz, Web kancası runbook 'u ISTEMCI POST isteğinden alınan verilerle başlattığında bu geçersiz kılınır. Bu, uygulama, istek gövdesine herhangi bir veri içermediği halde olur. 
 
-Web kancası dışında bir mekanizma kullanarak tanımlayan `WebhookData` bir runbook 'u başlatırsanız runbook 'un tanıdığı bir değer `WebhookData` sağlayabilirsiniz. Bu değer, runbook ile aynı [özelliklere](#webhook-properties) `WebhookData` sahip bir nesne olmalıdır, böylece bir Web kancası tarafından geçirilen gerçek `WebhookData` nesnelerle birlikte çalışır.
+Web kancası dışında bir mekanizma kullanarak tanımlayan bir runbook 'u başlatırsanız `WebhookData` runbook 'un tanıdığı bir değer sağlayabilirsiniz `WebhookData` . Bu değer, runbook ile aynı [özelliklere](#webhook-properties) sahip bir nesne olmalıdır `WebhookData` , böylece `WebhookData` bir Web kancası tarafından geçirilen gerçek nesnelerle birlikte çalışır.
 
 Örneğin, Azure portal aşağıdaki runbook 'u başlatıyorsanız ve test için bazı örnek Web kancası verileri geçirmek istiyorsanız, verileri JSON içinde Kullanıcı arabirimine geçirmeniz gerekir.
 
 ![Kullanıcı arabiriminden Web kancası verileri parametresi](media/automation-webhooks/WebhookData-parameter-from-UI.png)
 
-Sonraki runbook örneğinde, için `WebhookData`aşağıdaki özellikleri tanımlayalim:
+Sonraki runbook örneğinde, için aşağıdaki özellikleri tanımlayalim `WebhookData` :
 
 * **Web kancası adı**: MyWeb kancası
 * **Istek gövdesi**:`*[{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]*`
 
-Şimdi `WebhookData` parametresi için Kullanıcı ARABIRIMINDE aşağıdaki JSON nesnesini geçiyoruz. Bu örnek, satır başı ve yeni satır karakterleri ile bir Web kancasından geçirilen biçimle eşleşir.
+Şimdi parametresi için Kullanıcı arabiriminde aşağıdaki JSON nesnesini geçiyoruz `WebhookData` . Bu örnek, satır başı ve yeni satır karakterleri ile bir Web kancasından geçirilen biçimle eşleşir.
 
 ```json
 {"WebhookName":"mywebhook","RequestBody":"[\r\n {\r\n \"ResourceGroup\": \"vm01\",\r\n \"Name\": \"vm01\"\r\n },\r\n {\r\n \"ResourceGroup\": \"vm02\",\r\n \"Name\": \"vm02\"\r\n }\r\n]"}
@@ -84,7 +81,7 @@ Sonraki runbook örneğinde, için `WebhookData`aşağıdaki özellikleri tanım
 
 Web kancasının güvenliği, Web kancasının çağrılmasına izin veren bir güvenlik belirteci içeren URL 'sinin gizliliğini kullanır. Azure Otomasyonu, doğru URL 'ye yapıldığı sürece bir istek üzerinde herhangi bir kimlik doğrulaması gerçekleştirmez. Bu nedenle istemcileriniz, isteği doğrulamak için alternatif bir yöntem kullanmadan son derece hassas işlemler gerçekleştiren runbook 'lar için Web kancalarını kullanmamalıdır.
 
-Bir Web kancası tarafından çağrılıp çağrılmadığını öğrenmek için bir runbook 'a mantığı dahil edebilirsiniz. Runbook 'un `WebhookName` `WebhookData` parametresinin özelliğini denetlemesini sağlayabilirsiniz. Runbook, `RequestHeader` ve `RequestBody` özelliklerindeki belirli bilgileri arayarak daha fazla doğrulama gerçekleştirebilir.
+Bir Web kancası tarafından çağrılıp çağrılmadığını öğrenmek için bir runbook 'a mantığı dahil edebilirsiniz. Runbook `WebhookName` 'un parametresinin özelliğini denetlemesini sağlayabilirsiniz `WebhookData` . Runbook, ve özelliklerindeki belirli bilgileri arayarak daha fazla doğrulama gerçekleştirebilir `RequestHeader` `RequestBody` .
 
 Başka bir strateji, runbook 'un bir Web kancası isteği aldığında dış koşul doğrulaması gerçekleştirmesini sağlar. Örneğin bir GitHub deposuna yeni bir kayıt olduğunda GitHub tarafından çağrılan bir runbook 'u göz önünde bulundurun. Runbook, devam etmeden önce yeni bir işleme gerçekleştiğini doğrulamak için GitHub 'a bağlanabilir.
 
@@ -108,17 +105,17 @@ Azure portal bir runbook 'a bağlı yeni bir Web kancası oluşturmak için aşa
 
 ## <a name="use-a-webhook"></a>Web kancası kullanma
 
-Bir Web kancasını oluşturulduktan sonra kullanmak için, istemciniz Web kancası URL 'siyle bir HTTP `POST` isteği vermelidir. Söz dizimi aşağıdaki gibidir:
+Bir Web kancasını oluşturulduktan sonra kullanmak için, istemciniz `POST` Web KANCASı URL 'siyle BIR http isteği vermelidir. Söz dizimi aşağıdaki gibidir:
 
 ```http
 http://<Webhook Server>/token?=<Token Value>
 ```
 
-İstemci, `POST` istekten aşağıdaki dönüş kodlarından birini alır.
+İstemci, istekten aşağıdaki dönüş kodlarından birini alır `POST` .
 
 | Kod | Metin | Açıklama |
 |:--- |:--- |:--- |
-| 202 |Accepted |İstek kabul edildi ve Runbook başarıyla kuyruğa alındı. |
+| 202 |Kabul edildi |İstek kabul edildi ve Runbook başarıyla kuyruğa alındı. |
 | 400 |Hatalı İstek |İstek aşağıdaki nedenlerden biri için kabul edilmedi: <ul> <li>Web kancası süresi doldu.</li> <li>Web kancası devre dışı bırakıldı.</li> <li>URL 'deki belirteç geçersiz.</li>  </ul> |
 | 404 |Bulunamadı |İstek aşağıdaki nedenlerden biri için kabul edilmedi: <ul> <li>Web kancası bulunamadı.</li> <li>Runbook bulunamadı.</li> <li>Hesap bulunamadı.</li>  </ul> |
 | 500 |İç sunucu hatası |URL geçerli, ancak bir hata oluştu. Lütfen isteği yeniden gönderin. |
@@ -219,7 +216,7 @@ $response = Invoke-WebRequest -Method Post -Uri $uri -Body $body -Headers $heade
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 
-Aşağıdaki örnek, öğesinin `RequestBody` `WebhookData`özelliğindeki runbook için kullanılabilir olan isteğin gövdesini gösterir. Bu değer, isteğin gövdesinde bulunan biçimle uyumlu olacak şekilde JSON 'da biçimlendirilir.
+Aşağıdaki örnek, öğesinin özelliğindeki runbook için kullanılabilir olan isteğin gövdesini gösterir `RequestBody` `WebhookData` . Bu değer, isteğin gövdesinde bulunan biçimle uyumlu olacak şekilde JSON 'da biçimlendirilir.
 
 ```json
 [
@@ -240,4 +237,4 @@ Aşağıdaki görüntüde Windows PowerShell 'den gönderilen istek ve elde edil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Otomasyonu 'nu kullanarak Azure uyarıları üzerinde işlem yapma hakkında bilgi edinmek için bkz. [Azure Otomasyonu runbook 'u tetiklemek için uyarı kullanma](automation-create-alert-triggered-runbook.md).
+* [Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma](automation-create-alert-triggered-runbook.md)

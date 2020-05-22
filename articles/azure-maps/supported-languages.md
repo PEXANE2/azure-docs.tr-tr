@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b3733dfc32dae21ddcf4c5f73cddf9ad6b7fc59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2bab7b101b5461d854bb2db509b5cb243012a592
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334062"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746018"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure haritalar 'da yerelleştirme desteği
 
@@ -25,7 +25,7 @@ Azure haritalar, ülkeye/bölgeye göre çeşitli dilleri ve görünümleri dest
 Azure haritalar, hizmetleri genelinde çeşitli dillerde yerelleştirilmiştir. Aşağıdaki tabloda her hizmet için desteklenen dil kodları sağlanmaktadır.  
   
 
-| Kimlik         | Adı                   |  Haritalar | Arama | Yönlendirme | Hava durumu | Trafik olayları | JS eşleme denetimi |
+| ID         | Name                   |  Haritalar | Arayın | Yönlendirme | Hava durumu | Trafik olayları | JS eşleme denetimi |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | Afrikaner              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arapça                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -35,7 +35,7 @@ Azure haritalar, hizmetleri genelinde çeşitli dillerde yerelleştirilmiştir. 
 | AB-ES      | Baskça                 |       |    ✓   |         |         |                   |                |
 | bg-BG      | Bulgarca              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
 | ca-ES      | Katalanca                |       |    ✓   |         |    ✓      |                   |                |
-| zh-HanS    | Çince (Basitleştirilmiş)   |       |  zh-CN |         |     zh-CN   |                   |                |
+| zh-HanS    | Basitleştirilmiş Çince   |       |  zh-CN |         |     zh-CN   |                   |                |
 | zh-HanT    | Çince (Hong Kong ÖIB)  |  |   |    |    zh-HK   |                   |           |
 | zh-HanT    | Çince (Tayvan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Hırvatça               |       |    ✓   |         |    ✓      |                   |                |
@@ -142,12 +142,12 @@ REST API 'Leri için gereken **Görünüm** parametresini ve hizmetlerinizin kul
 >    * Azure Haritalar Web SDK 'Sı
 >    * Azure Haritalar Android SDK
 
-Varsayılan olarak, istek içinde tanımlamadığınız halde görünüm parametresi **Unified**olarak ayarlanır. Kullanıcılarınızın konumunu saptayın. Ardından, bu konum için **Görünüm** parametresini doğru olarak ayarlayın. Alternatif olarak, isteğin IP adresine göre harita verilerini döndürecek olan ' View = Auto ' seçeneğini belirleyebilirsiniz.  Azure haritalar 'daki **Görünüm** parametresi, Haritalar, görüntüler ve diğer verilerin yanı sıra Azure Maps aracılığıyla erişmeye yetkili olan üçüncü taraf içeriklerin kullanılabilir hale getirilmesiyle ilgili yasalar dahil olmak üzere, geçerli yasaları ile uyumlu olmalıdır.
+Varsayılan olarak, istek içinde tanımlamadığınız halde görünüm parametresi **Unified**olarak ayarlanır. Kullanıcılarınızın konumunu saptayın. Ardından, bu konum için **Görünüm** parametresini doğru olarak ayarlayın. Alternatif olarak, isteğin IP adresine göre harita verilerini döndürecek olan ' View = Auto ' seçeneğini belirleyebilirsiniz.  Azure haritalar 'daki **Görünüm** parametresi, Haritalar, görüntüler ve diğer verilerin ve Azure Maps aracılığıyla erişim yetkisine sahip olduğunuz üçüncü taraf içeriklerin eşlenmesiyle ilgili yasalar dahil olmak üzere, geçerli yasaları ile uyumlu olmalıdır.
 
 
 Aşağıdaki tabloda desteklenen görünümler sağlanmaktadır.
 
-| Görüntüle         | Açıklama                            |  Haritalar | Arama | JS Harita Denetimi |
+| Görüntüle         | Açıklama                            |  Haritalar | Arayın | JS Harita Denetimi |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Birleşik Arap Emirlikleri (Arapça görünüm)    |   ✓   |        |     ✓          |
 | AR           | Arjantin (argentinian görünümü)           |   ✓   |    ✓   |     ✓          |

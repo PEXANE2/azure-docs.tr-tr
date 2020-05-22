@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 848be71764bb503879c34ed6667a43909ef19c13
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 557dc3ad48f8f21d8898e2beb5d940d66058e90c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713446"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744962"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Otomasyonu 'nda zamanlamaları yönetme
 
@@ -198,5 +198,5 @@ Remove-AzAutomationSchedule -AutomationAccountName $automationAccountName `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu’nda modülleri yönetme](modules.md)
-* [Azure Otomasyonu’nda runbook yürütme](../automation-runbook-execution.md)
+* Zamanlamalara erişmek için kullanılan cmdlet 'ler hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'da modülleri yönetme](modules.md).
+* Runbook 'lar hakkında genel bilgi için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md).

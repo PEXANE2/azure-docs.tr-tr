@@ -1,18 +1,18 @@
 ---
-title: Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi-eski
-description: Bu makalede, Azure Otomasyonu 'nda GitHub ile kaynak denetimi tümleştirmesi açıklanmaktadır.
+title: Azure Otomasyonu 'nda kaynak denetimi tümleştirmesini kullanma-eski
+description: Bu makalede, kaynak denetimi tümleştirmesini nasıl kullanacağınız açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: b990db39ffe0623b50a2cfc728da61bc51bdd4da
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: fac6a3b55f4a9150e827682cb3a134c203231978
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855348"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744940"
 ---
-# <a name="source-control-integration-in-azure-automation---legacy"></a>Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi-eski
+# <a name="use-source-control-integration-in-azure-automation---legacy"></a>Azure Otomasyonu 'nda kaynak denetimi tümleştirmesini kullanma-eski
 
 > [!NOTE]
 > Kaynak denetimi için yeni bir deneyim vardır. Yeni deneyim hakkında daha fazla bilgi edinmek için bkz. [kaynak denetimi (Önizleme)](source-control-integration.md).
@@ -24,7 +24,7 @@ Kaynak denetimi, Azure Automation 'dan kaynak denetimine kod göndermenize veya 
 > [!NOTE]
 > Kaynak denetimi PowerShell [Iş akışı runbook](automation-runbook-types.md#powershell-workflow-runbooks) 'larının yanı sıra [PowerShell runbook](automation-runbook-types.md#powershell-runbooks)'larının de çekmesini ve kullanılmasını destekler. [Grafik runbook 'ları](automation-runbook-types.md#graphical-runbooks) henüz desteklenmiyor.
 
-## <a name="configuring-source-control"></a>Kaynak denetimini yapılandırma
+## <a name="configure-source-control"></a>Kaynak denetimini yapılandırma
 
 Otomasyon hesabınız için kaynak denetimi yapılandırmak için gereken iki basit adım vardır ve yalnızca bir GitHub hesabınız varsa. 
 
@@ -38,16 +38,16 @@ Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponu
 
 2. GitHub hesabı ayrıntılarınızı yapılandırabileceğiniz kaynak denetimi sayfası açılır. Yapılandırılacak parametrelerin listesi aşağıdadır:  
 
-   | **Parametre** | **Açıklama** |
+   | **Parametresinin** | **Açıklama** |
    |:--- |:--- |
    | Kaynak seçin |Kaynağı seçin. Şu anda yalnızca **GitHub** desteklenir. |
    | Yetkilendirme |GitHub deponuza Azure Otomasyonu erişimi sağlamak için **Yetkilendir** düğmesine tıklayın. Zaten GitHub hesabınızda farklı bir pencerede oturum açtıysanız, bu hesabın kimlik bilgileri kullanılır. Yetkilendirme başarılı olduktan sonra sayfa, **yetkilendirme özelliği**altında GitHub Kullanıcı adınızı gösterir. |
    | Depo seçin |Kullanılabilir depolar listesinden bir GitHub deposu seçin. |
    | Dal seçin |Kullanılabilir dallar listesinden bir dal seçin. Yalnızca dal oluşturmadıysanız, **ana** dal gösterilir. |
-   | Runbook klasörü yolu |Runbook klasörü yolu, kodunuzu göndermek veya çekmek istediğiniz GitHub deposundaki yolu belirtir. **/FolderName/subklasöradı**biçiminde girilmesi gerekir. Yalnızca runbook klasörü yolundaki runbook 'lar Otomasyon hesabınızla eşitlenir. Runbook klasör yolunun alt klasörlerindeki runbook **'lar eşitlenmez.** Depodaki **/** tüm runbook 'ları eşitlemek için kullanın. |
+   | Runbook klasörü yolu |Runbook klasörü yolu, kodunuzu göndermek veya çekmek istediğiniz GitHub deposundaki yolu belirtir. **/FolderName/subklasöradı**biçiminde girilmesi gerekir. Yalnızca runbook klasörü yolundaki runbook 'lar Otomasyon hesabınızla eşitlenir. Runbook klasör yolunun alt klasörlerindeki runbook **'lar eşitlenmez.** **/** Depodaki tüm runbook 'ları eşitlemek için kullanın. |
 3. Örneğin, **RootFolder**adlı ve **alt**klasörü adlı bir klasör içeren **powershellscripts** adlı bir havuzunuz varsa. Her klasör düzeyini eşitlemek için aşağıdaki dizeleri kullanabilirsiniz:
 
-   1. Runbook 'ları **depodan**eşitlemek için Runbook klasörü yolu ' dur **/**.
+   1. Runbook 'ları **depodan**eşitlemek için Runbook klasörü yolu ' dur **/** .
    2. Runbook 'ları **RootFolder**'a eşitlemek için Runbook klasörü yolu **/RootFolder**olur.
    3. Runbook 'ları **alt**klasörden eşitlemek için, runbook klasörü yolu **/RootFolder/alt klasörüdür**.
 4. Parametreleri yapılandırdıktan sonra, kaynak denetimi ayarlama sayfasında görüntülenir.  
@@ -60,15 +60,15 @@ Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponu
 
    * **Microsoft. Azure. Automation. SourceControl. Connection** değişkeni, aşağıda gösterildiği gibi bağlantı dizesinin değerlerini içerir.  
 
-     | **Parametre** | **Değer** |
+     | **Parametresinin** | **Değer** |
      |:--- |:--- |
      | `Name`  |Microsoft. Azure. Automation. SourceControl. Connection |
      | `Type`  |Dize |
-     | `Value` |{"Branch":\<*dal adınız*>, "runbookfolderpath":\<*runbook klasörü yolu*>, "ProviderType":\<*GitHub> için 1 değeri* , "depo"\<:*deponun adı*>, "Kullanıcı adı":\<*GitHub Kullanıcı adınız*>} |
+     | `Value` |{"Dal": \< *Dal adınız*>, "runbookfolderpath": \< *runbook klasörü yolu*>, "providertype": \< *GitHub*>, "depo": \< *deponun adı*>, "Kullanıcı adı": \< *GitHub Kullanıcı adınız*>} |
 
    * **Microsoft. Azure. Automation. SourceControl. OAuthToken**değişkeni, OAuthToken 'inizin güvenli şifreli değerini içerir.  
 
-     |**Parametre**            |**Değer** |
+     |**Parametresinin**            |**Değer** |
      |:---|:---|
      | `Name`  | `Microsoft.Azure.Automation.SourceControl.OAuthToken` |
      | `Type`  | `Unknown(Encrypted)` |
@@ -76,11 +76,11 @@ Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponu
 
      ![Kaynak denetim değişkenlerini gösteren bir pencere](media/source-control-integration-legacy/automation-Variables.png)  
 
-   * **Otomasyon kaynak denetimi** , GitHub hesabınıza yetkili bir uygulama olarak eklenir. Uygulamayı görüntülemek için GitHub giriş sayfanızda **profil** > **ayarları** > **uygulamalar**' a gidin. Bu uygulama, Azure Otomasyonu 'nun GitHub deponuzu bir Otomasyon hesabıyla eşitlemesini sağlar.  
+   * **Otomasyon kaynak denetimi** , GitHub hesabınıza yetkili bir uygulama olarak eklenir. Uygulamayı görüntülemek için GitHub giriş sayfanızda **profil**  >  **ayarları**  >  **uygulamalar**' a gidin. Bu uygulama, Azure Otomasyonu 'nun GitHub deponuzu bir Otomasyon hesabıyla eşitlemesini sağlar.  
 
      ![GitHub 'daki uygulama ayarları](media/source-control-integration-legacy/automation-GitApplication.png)
 
-## <a name="using-source-control-in-automation"></a>Otomasyon 'da kaynak denetimini kullanma
+## <a name="use-source-control-in-automation"></a>Otomasyon 'da kaynak denetimini kullanma
 
 Runbook denetimi, Azure Otomasyonu 'ndaki bir runbook 'ta yaptığınız değişiklikleri kaynak denetimi deponuza göndermenize olanak tanır. Aşağıda runbook 'u iade etme adımları verilmiştir:
 
@@ -124,15 +124,13 @@ Depo eşitleme sayfasındaki Eşitle düğmesi, deponuzdaki runbook klasörü yo
 
 ![Askıya alınmış bir kaynak denetimi eşitleme işinden tüm günlükleri gösteren bir pencere](media/source-control-integration-legacy/automation-AllLogs.png)
 
-## <a name="disconnecting-source-control"></a>Kaynak denetiminin bağlantısı kesiliyor
+## <a name="disconnect-source-control"></a>Kaynak denetimi bağlantısını kes
 
 GitHub hesabınızla bağlantıyı kesmek için depo eşitleme sayfasını açın ve **bağlantıyı kes**' e tıklayın. Kaynak denetimini kestikten sonra, daha önce eşitlenmiş olan runbook 'lar Otomasyon hesabınızda kalır, ancak depo eşitleme sayfası etkinleştirilmeyecektir.  
 
   ![Kaynak denetiminin bağlantısını kesmek için bağlantıyı kes düğmesini gösteren bir pencere](media/source-control-integration-legacy/automation-Disconnect.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Kaynak denetimi tümleştirmesi hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:  
 
 * [Azure Otomasyonu: Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
 * [Azure Otomasyonu: Azure DevOps kullanarak runbook kaynak denetimini tümleştirme](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  

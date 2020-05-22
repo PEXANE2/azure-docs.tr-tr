@@ -1,20 +1,20 @@
 ---
 title: Azure Otomasyonu runbook türleri
-description: Azure Otomasyonu 'nda kullanabileceğiniz farklı runbook türlerini ve hangi türün kullanılacağını belirlemek için önemli noktaları açıklar.
+description: Bu makalede, Azure Otomasyonu 'nda kullanabileceğiniz runbook 'ların türleri ve hangi türün kullanılacağını belirleme konuları açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 390f14e8369f206b2f5ffce74f0775b33e313021
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c7b036e7adca1fe92425659ebd099feaa3891556
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714993"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743818"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Otomasyonu runbook türleri
 
-Azure Otomasyonu işlem Otomasyonu hizmeti, aşağıdaki tabloda tanımlandığı gibi çeşitli runbook türlerini destekler. İşlem otomasyonu ortamı hakkında bilgi edinmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](automation-runbook-execution.md).
+Azure Otomasyonu Işlem Otomasyonu özelliği, aşağıdaki tabloda tanımlandığı gibi çeşitli runbook türlerini destekler. İşlem otomasyonu ortamı hakkında bilgi edinmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](automation-runbook-execution.md).
 
 | Tür | Açıklama |
 |:--- |:--- |
@@ -28,9 +28,6 @@ Belirli bir runbook için kullanılacak türü belirlerken aşağıdaki noktalar
 
 * Runbook 'ları grafik 'ten metin türüne veya başka bir şekilde dönüştüremezsiniz.
 * Farklı türlerde runbook 'ların alt runbook 'lar olarak kullanılması için sınırlamalar vardır. Daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda alt runbook 'lar](automation-child-runbooks.md).
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="graphical-runbooks"></a>Grafik runbook 'ları
 
@@ -118,7 +115,7 @@ Python runbook 'ları Python 2 altında derlenir. Azure portal metin düzenleyic
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Grafik runbook 'u yazma hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda grafik yazma](automation-graphical-authoring-intro.md).
-* Runbook 'lar için PowerShell ve PowerShell iş akışları arasındaki farkları anlamak için bkz. [Windows PowerShell Iş akışını öğrenme](automation-powershell-workflow.md).
-* Runbook oluşturma veya içeri aktarma hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md).
-* Dil başvurusu ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi edinmek için [PowerShell docs](https://docs.microsoft.com/powershell/scripting/overview)bölümüne bakın.
+* [Azure Otomasyonu 'nda runbook 'ları yönetme](manage-runbooks.md)
+* [Azure Otomasyonu için PowerShell Iş akışını öğrenin](automation-powershell-workflow.md)
+* [Azure Otomasyonu 'nda grafik runbook 'ları yazma](automation-graphical-authoring-intro.md)
+* [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview)

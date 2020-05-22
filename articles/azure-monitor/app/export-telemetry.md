@@ -2,16 +2,20 @@
 title: Application Insights 'ten Telemetriyi sürekli dışa aktarma | Microsoft Docs
 description: Tanılama ve kullanım verilerini Microsoft Azure depolama alanına aktarın ve buradan indirin.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: f6afe42e483ab7ad5810169fc301946c75308c29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298294"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744858"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights’tan telemetriyi dışarı aktarma
 Telemetrinizi standart saklama süresinden daha uzun süre tutmak mı istiyorsunuz? Ya da özel bir şekilde işlesin mi? Sürekli dışa aktarma bu için idealdir. Application Insights portalında gördüğünüz olaylar JSON biçiminde Microsoft Azure depoya aktarılabilir. Buradan, verilerinizi indirebilir ve işlemek için gereken her kodu yazabilirsiniz.  
+
+> [!NOTE]
+> Sürekli dışa aktarma yalnızca klasik Application Insights kaynakları için desteklenir. [Çalışma alanı tabanlı Application Insights kaynakların](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource) [tanılama ayarlarını](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)kullanması gerekir.
+>
 
 Sürekli dışarı aktarmayı ayarlamadan önce şunları göz önünde bulundurmanız isteyebileceğiniz bazı alternatifler vardır:
 
@@ -55,13 +59,13 @@ Verilerin depolamada görünmesi için bir saat yaklaşık bir gecikme olabilir.
 
 İlk dışa aktarma işlemi tamamlandıktan sonra, Azure Blob depolama kapsayıcısında aşağıdakine benzer bir yapı bulacaksınız: (Bu, topladığınız verilere bağlı olarak farklılık gösterir.)
 
-|Adı | Açıklama |
+|Name | Açıklama |
 |:----|:------|
 | [Kullanılabilirlik](export-data-model.md#availability) | [Kullanılabilirlik Web testlerini](../../azure-monitor/app/monitor-web-app-availability.md)raporlar.  |
 | [Olay](export-data-model.md#events) | [Trackevent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)tarafından oluşturulan özel olaylar. 
-| [Özel Durumlar](export-data-model.md#exceptions) |Sunucudaki ve tarayıcıdaki [özel durumları](../../azure-monitor/app/asp-net-exceptions.md) raporlar.
+| [Özel durumlar](export-data-model.md#exceptions) |Sunucudaki ve tarayıcıdaki [özel durumları](../../azure-monitor/app/asp-net-exceptions.md) raporlar.
 | [İletiler](export-data-model.md#trace-messages) | [Tracktrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)tarafından ve [günlük bağdaştırıcıları](../../azure-monitor/app/asp-net-trace-logs.md)tarafından gönderilir.
-| [Ölçümler](export-data-model.md#metrics) | Ölçüm API çağrıları tarafından oluşturulur.
+| [Metrics](export-data-model.md#metrics) (Ölçümler) | Ölçüm API çağrıları tarafından oluşturulur.
 | [PerformanceCounters](export-data-model.md) | Application Insights tarafından toplanan performans sayaçları.
 | [İstekler](export-data-model.md#requests)| [Trackrequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)tarafından gönderildi. Standart modüller bunu, sunucuda ölçülen sunucu yanıt süresini raporlar olarak kullanır.| 
 

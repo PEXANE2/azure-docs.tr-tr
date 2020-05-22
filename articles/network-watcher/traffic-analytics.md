@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981554"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747524"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -168,7 +168,7 @@ Aboneliğiniz için henüz kayıtlı değilse, Azure Insights sağlayıcısını
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-NSG akış günlüklerini depolamak için henüz bir Azure depolama hesabınız yoksa bir depolama hesabı oluşturmanız gerekir. Aşağıdaki komutla bir depolama hesabı oluşturabilirsiniz. Komutu çalıştırmadan önce, yalnızca rakamlar `<replace-with-your-unique-storage-account-name>` ve küçük harfler kullanılarak 3-24 karakter uzunluğunda olan tüm Azure konumlarında benzersiz olan bir adla değiştirin. Gerekirse, kaynak grubu adını da değiştirebilirsiniz.
+NSG akış günlüklerini depolamak için henüz bir Azure depolama hesabınız yoksa bir depolama hesabı oluşturmanız gerekir. Aşağıdaki komutla bir depolama hesabı oluşturabilirsiniz. Komutu çalıştırmadan önce, `<replace-with-your-unique-storage-account-name>` yalnızca rakamlar ve küçük harfler kullanılarak 3-24 karakter uzunluğunda olan tüm Azure konumlarında benzersiz olan bir adla değiştirin. Gerekirse, kaynak grubu adını da değiştirebilirsiniz.
 
 ```azurepowershell-interactive
 New-AzStorageAccount `
@@ -196,9 +196,9 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 
     ![Depolama hesabı, Log Analytics çalışma alanı ve Trafik Analizi etkinleştirme seçimi](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-İçin trafik analizini etkinleştirmek istediğiniz diğer NSG 'ler için önceki adımları tekrarlayın. Akış günlüklerinden veriler çalışma alanına gönderilir, böylece ülkenizde bulunan yerel yasaları ve yönetmelikler, çalışma alanının bulunduğu bölgede veri depolamaya izin verdiğinden emin olun. Farklı NSG 'ler için farklı işleme aralıkları ayarladıysanız, veriler farklı aralıklarla toplanır. Örneğin: kritik VNET 'ler için 10 dakikalık işleme aralığını ve kritik olmayan VNET 'ler için 1 saat etkinleştirmeyi seçebilirsiniz.
+İçin trafik analizini etkinleştirmek istediğiniz diğer NSG 'ler için önceki adımları tekrarlayın. Akış günlüklerinden alınan veriler çalışma alanına gönderilir, bu nedenle ülkenizde/bölgenizdeki yerel yasalar ve yönetmelikler çalışma alanının bulunduğu bölgede veri depolamaya izin verdiğinden emin olun. Farklı NSG 'ler için farklı işleme aralıkları ayarladıysanız, veriler farklı aralıklarla toplanır. Örneğin: kritik VNET 'ler için 10 dakikalık işleme aralığını ve kritik olmayan VNET 'ler için 1 saat etkinleştirmeyi seçebilirsiniz.
 
-Ayrıca, Azure PowerShell içindeki [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 'ini kullanarak trafik analizini yapılandırabilirsiniz. Yüklü `Get-Module -ListAvailable Az` sürümünüzü bulmak için ' i çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps).
+Ayrıca, Azure PowerShell içindeki [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 'ini kullanarak trafik analizini yapılandırabilirsiniz. `Get-Module -ListAvailable Az`Yüklü sürümünüzü bulmak için ' i çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps).
 
 ## <a name="view-traffic-analytics"></a>Trafik analizini görüntüleme
 

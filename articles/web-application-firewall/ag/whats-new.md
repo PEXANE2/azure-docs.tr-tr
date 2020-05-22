@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 10/24/2019
 ms.author: victorh
-ms.openlocfilehash: 0e0e67bfb893e1bf141182e45ce4a49f5f6880ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 11212c931e38b1c6319c7c3554155d9d17a1080c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73502250"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745155"
 ---
 # <a name="whats-new-in-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarındaki yenilikler nelerdir?
 
@@ -28,7 +28,7 @@ Azure Web uygulaması güvenlik duvarı sürekli olarak güncelleştirilir. En s
 |Özellik  |Açıklama  |Eklenme tarihi  |
 |---------|---------|---------|
 |Bot azaltma RuleSet (Önizleme)|Seçtiğiniz yönettiğiniz RuleSet 'in yanı sıra bir bot Azaltma kuralı kümesini etkinleştirebilirsiniz. | Kasım 2019 |
-|GeoDB tümleştirmesi (Önizleme)|Artık trafiği kaynak ülkeye göre sınırlayan özel kurallar oluşturabilirsiniz. | Kasım 2019 |
+|GeoDB tümleştirmesi (Önizleme)|Artık trafiği ülkeye/bölgeye göre sınırlayan özel kurallar oluşturabilirsiniz. | Kasım 2019 |
 |Dakikada WAF-site/URI ilkesi (Önizleme)|WAF-v2 artık dinleyicilerine bir ilke uygulanmasını ve yol tabanlı kuralları desteklemektedir. Bkz. [WAF Ilkesi oluşturma](create-waf-policy-ag.md). | Kasım 2019 |
 |WAF özel kuralları |Application Gateway WAF_v2 artık özel kurallar oluşturmayı destekliyor. Bkz. [Application Gateway özel kurallar](custom-waf-rules-overview.md). |Haziran 2019 |
 |WAF yapılandırma ve dışlama listesi     |WAF 'nizi yapılandırmanıza ve hatalı pozitif sonuçları azaltmanıza yardımcı olacak daha fazla seçenek ekledik. Daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri](application-gateway-waf-configuration.md) .|Aralık 2018|

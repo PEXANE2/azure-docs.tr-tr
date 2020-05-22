@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: e3061b1c8650f24775a1e9ea8f328a5270263476
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3cd5db3736d5eda88e7cad7bda1966efb2b00977
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714534"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744748"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Öğretici: grafik runbook 'u oluşturma
 
@@ -351,7 +351,8 @@ Artık, runbook 'u yalnızca henüz başlatılmamışsa VM 'yi başlatmaya çal�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu 'nda grafik yazma](../automation-graphical-authoring-intro.md)
-* [PowerShell runbook’u oluşturma](automation-tutorial-runbook-textual-powershell.md)
-* [PowerShell iş akışı runbook’u oluşturma](automation-tutorial-runbook-textual.md)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Grafik yazma hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'nda grafik runbook 'U yazma](../automation-graphical-authoring-intro.md).
+* PowerShell runbook 'larını kullanmaya başlamak için bkz. [PowerShell runbook 'U oluşturma](automation-tutorial-runbook-textual-powershell.md).
+* PowerShell Iş akışı runbook 'larını kullanmaya başlamak için bkz. [PowerShell iş akışı runbook 'U oluşturma](automation-tutorial-runbook-textual.md).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

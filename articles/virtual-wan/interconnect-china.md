@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
-ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89a3c65eb8d8bffd4cf87160286d1905bd1ba5b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985635"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747620"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Azure sanal WAN ve güvenli hub kullanarak Çin ile bağlantı
 
@@ -137,7 +137,7 @@ Birbirine bağlı dallara veya bunlardan, Çin 'deki konumlara giden trafik, Bu 
 
 ![ExpressRoute Global Reach hakkında](./media/interconnect-china/expressroute-virtual.png)
 
-Şu anda ExpressRoute Global Reach her ülkede kullanılamaz, ancak Azure sanal WAN kullanarak bir çözüm yapılandırabilirsiniz.
+Şu anda ExpressRoute Global Reach her ülkede/bölgede kullanılamaz, ancak Azure sanal WAN kullanarak bir çözüm yapılandırabilirsiniz.
 
 Örneğin, Microsoft eşlemesiyle bir ExpressRoute yapılandırabilir ve Azure sanal WAN ile bu eşleme aracılığıyla bir VPN tüneli bağlayabilirsiniz. Artık, Megaport bulutu gibi Global Reach ve 3. taraf sağlayıcı ve hizmet olmadan VPN ve ExpressRoute arasında geçişi etkinleştirdiniz.
 

@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2b336451bde559ce773a9b611bc98b4de3f11871
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e8e263d29bc71ac76c374eeda78e5250a0af2095
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652737"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744800"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Bilişsel Arama Beceri kavramları ve bileşimi
 
@@ -26,9 +26,9 @@ Bir beceri, dizin oluşturma sırasında metin veya resim içeriğini çözümle
 
 Bir beceri üç özelliğe sahiptir:
 
-+   ```skills```, platformun her bir beceri için gereken girişlere göre yürütme sırasını belirleyen, sırasız bir yetenek koleksiyonu
-+   ```cognitiveServices```, bilişsel yetenekler için gereken bilişsel hizmetler anahtarı
-+   ```knowledgeStore```, zenginleştirilmiş belgelerinizi tahmin edecek depolama hesabı
++    ```skills```, platformun her bir beceri için gereken girişlere göre yürütme sırasını belirleyen, sırasız bir yetenek koleksiyonu
++    ```cognitiveServices```, bilişsel yetenekler için gereken bilişsel hizmetler anahtarı
++    ```knowledgeStore```, zenginleştirilmiş belgelerinizi tahmin edecek depolama hesabı
 
 
 
@@ -54,14 +54,14 @@ Bu belgenin geri kalanında, [otel İncelemeleri örneği](https://docs.microsof
 
 ### <a name="context"></a>Bağlam
 Her yetenek bir bağlam gerektirir. Bağlam şunları belirler:
-+   Seçilen düğümlere göre yeteneğin kaç kez yürütüldüğünü. Koleksiyon türü bağlam değerleri için, sonunda bir eklemek, ```/*``` niteliğin koleksiyondaki her örnek için bir kez çağrılmasına neden olur. 
-+   Enzenginleştirme ağacında, yetenek çıkışları eklenir. Çıktılar, her zaman bağlam düğümünün alt öğeleri olarak ağaca eklenir. 
-+   Girişlerin şekli. Çoklu düzey koleksiyonlar için, bağlamı üst koleksiyon olarak ayarlamak, Beceri girişinin şeklini etkiler. Örneğin, ülkelerin listesini içeren bir zenginleştirme ağacınızı kullanıyorsanız, her biri bir ZipCodes listesi içeren bir eyalet listesi ile zenginleştirir.
++    Seçilen düğümlere göre yeteneğin kaç kez yürütüldüğünü. Koleksiyon türü bağlam değerleri için, sonunda bir eklemek, ```/*``` niteliğin koleksiyondaki her örnek için bir kez çağrılmasına neden olur. 
++    Enzenginleştirme ağacında, yetenek çıkışları eklenir. Çıktılar, her zaman bağlam düğümünün alt öğeleri olarak ağaca eklenir. 
++    Girişlerin şekli. Çoklu düzey koleksiyonlar için, bağlamı üst koleksiyon olarak ayarlamak, Beceri girişinin şeklini etkiler. Örneğin, ülkelerin/bölgelerin listesi içeren bir zenginleştirme ağacıyla karşılaşırsanız, her biri bir ZipCodes listesi içeren bir eyalet listesiyle zenginleştirir.
 
 |Bağlam|Giriş|Giriş şekli|Yetenek çağırma|
 |---|---|---|---|
-|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Ülke içindeki tüm ZipCodes listesi |Ülke başına bir kez |
-|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Durumdaki ZipCodes listesi | Ülke ve eyalet birleşimine göre|
+|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Ülke/bölgedeki tüm ZipCodes listesi |Ülke/bölge başına bir kez |
+|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Durumdaki ZipCodes listesi | Ülke/bölge ve eyalet birleşimine göre bir kez|
 
 ### <a name="sourcecontext"></a>SourceContext
 

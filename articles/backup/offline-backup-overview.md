@@ -3,12 +3,12 @@ title: Çevrimdışı yedeklemeye genel bakış
 description: Çevrimdışı yedeklemenin bileşenleri hakkında bilgi edinin. Azure Içeri/dışarı aktarma hizmeti temel alınarak Azure Data Box ve çevrimdışı yedekleme tabanlı çevrimdışı yedekleme içerirler.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: a33810c633d8c7ca79c559355935d3c11853bc0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160930"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744633"
 ---
 # <a name="overview-of-offline-backup"></a>Çevrimdışı yedeklemeye genel bakış
 
@@ -73,11 +73,11 @@ Aşağıdaki tabloda, senaryonuza göre uygun seçimleri yapabilmek için kullan
 | Güvenlik (veri, cihaz ve hizmet)                           | [Data](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) -AES 256 bit şifreli <br> Veri kopyalamak için [cihaz](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) -Rugged Case, tescilli, kimlik bilgisi tabanlı arabirim <br> [Hizmet](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) tarafından korunan Azure Güvenlik özellikleri | Veri-BitLocker şifreli                                 |
 | Geçici hazırlama konumu sağlama                     | Gerekli değil                                                | Tahmini yedekleme verileri boyutundan daha fazla veya eşit        |
 | Desteklenen bölgeler                                           | [Azure Data Box disk bölgeleri](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box bölgeler](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Azure Içeri/dışarı aktarma hizmeti bölgeleri](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
-| Çapraz ülke gönderimi                                     | Desteklenmiyor  <br>    Kaynak adresi ve hedef Azure veri merkezi aynı ülkede olmalıdır * | Destekleniyor                                                    |
+| Çapraz ülke gönderimi                                     | Desteklenmiyor  <br>    Kaynak adresi ve hedef Azure veri merkezi aynı ülkede/bölgede olmalıdır * | Destekleniyor                                                    |
 | Lojistik (teslim, taşıma, toplama)           | Tamamen Microsoft tarafından yönetilen                                     | Müşteri tarafından yönetilen                                            |
 | Fiyatlandırma                                                      | [Azure Data Box fiyatlandırması](https://azure.microsoft.com/pricing/details/databox/) <br> [Azure Data Box disk fiyatlandırması](https://azure.microsoft.com/pricing/details/databox/disk/) | [Azure Içeri/dışarı aktarma hizmeti fiyatlandırması](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 
-* Ülkenizde bir Azure Veri Merkezi yoksa, farklı bir ülkede disklerinizi bir Azure veri merkezine teslim etmeniz gerekir.
+* Ülkeniz/bölgeniz bir Azure veri merkezine sahip değilse, disklerinizi başka bir ülkede/bölgede bir Azure veri merkezine teslim etmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 921a11d8846c868436365fe400852eac0f7dcd3e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: fb3467e60ada92c90a84d8e89f6b5f5e94ca42e8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712103"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746420"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de dizin oluşturma - Genel bakış
 
@@ -179,7 +179,7 @@ Tek bir filtre koşulu Dizin türünden birini kullandığında, sorgu altyapıs
 
 Verileri dizinlerken ayıklanan yollar, bir sorgu işlenirken dizinde arama yapmayı kolaylaştırır. `WHERE`Dizinli yolların listesiyle bir sorgunun yan tümcesini eşleştirerek sorgu koşulunun çok çabuk eşleşen öğelerini tanımlamak mümkündür.
 
-Örneğin, aşağıdaki sorguyu göz önünde bulundurun: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Sorgu koşulu (herhangi bir konumda ülke olarak "Fransa" bulunduğu öğeler üzerinde filtreleme) aşağıdaki kırmızı renkle eşleşen yol ile eşleşir:
+Örneğin, aşağıdaki sorguyu göz önünde bulundurun: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Sorgu koşulu (herhangi bir konumda ülke/bölge olarak "Fransa" bulunduğu öğeler üzerinde filtreleme) aşağıdaki kırmızı renkle eşleşir:
 
 ![Ağaç içindeki belirli bir yolu eşleştirme](./media/index-overview/matching-path.png)
 

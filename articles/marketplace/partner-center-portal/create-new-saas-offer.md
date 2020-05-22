@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 81b36532d09985d1e50fb3d0394d054d9a5e8250
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: eb7f527885d1d49fe09407c3cbce109a098056f9
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701165"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744649"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te yeni bir SaaS teklifi oluşturun
 
@@ -340,7 +340,7 @@ Bu sayfa, bu planın kullanılabileceği pazarları, istenen ödeme modeli, Fiya
 
 #### <a name="markets-optional"></a>Pazarlar (isteğe bağlı)
 
-Her plan en az bir pazarda kullanılabilir olmalıdır. **Pazarları Düzenle** ' yi seçin ve bu planı kullanılabilir yapmak istediğiniz herhangi bir pazar konumunun onay kutusunu seçin. Bu sayfa, Microsoft remits Sales ve sizin adınıza kullanım vergisini sunan "vergi havalesi" ülkelerinden oluşan bir arama kutusu ve seçeneği içerir.
+Her plan en az bir pazarda kullanılabilir olmalıdır. **Pazarları Düzenle** ' yi seçin ve bu planı kullanılabilir yapmak istediğiniz herhangi bir pazar konumunun onay kutusunu seçin. Bu sayfa, Microsoft remits Sales ve sizin adınıza kullanım vergisini sunan "vergi havalesi" ülkeleri/bölgeleri seçmek için bir arama kutusu ve seçeneği içerir.
 
 Planınız için Birleşik Devletler dolar (USD) cinsinden zaten fiyatlar ayarladıysanız ve başka bir pazar konumu eklerseniz, yeni pazar fiyatı geçerli döviz kurlarına göre hesaplanır. Yayımlamadan önce her bir pazar için fiyatı gözden geçirin. Değişikliklerinizi kaydettikten sonra "fiyatları dışarı aktar (xlsx)" bağlantısını kullanarak fiyatlandırmayı görüntüleyin.
 

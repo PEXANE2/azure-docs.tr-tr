@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 22d27d50a7d2c304e5d1a04a9a5eaa03d2f0bfa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8c0644a84b917acff60060a0c48f8e9aac30e16
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366351"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746228"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'a üçüncü taraf Apache Hadoop uygulamaları yüklemeyin
 
@@ -31,7 +31,7 @@ Aşağıdaki listede yayımlanan uygulamalar gösterilmektedir:
 |[HDInsight üzerinde dataıku DSS](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Veri bilimcilerinin ve veri analistlerinin yeni veri ürünlerini ve hizmetlerini daha verimli bir şekilde tasarlamak ve çalıştırmak ve ham verileri kesin tahmine dayalı tahmine dayalı olarak yürütmek üzere işbirliği yapmasına imkan tanıyan bir kurumsal veri bilimi platformunda dataiku DSS. |
 |[WANdisco Fusion HDI uygulaması](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop, Spark, HBase, fırtınası, Kafka |Verilerin dağıtılmış bir ortamda tutarlı tutulması çok büyük bir veri işlemleri sınamadır. Kurumsal sınıf yazılım platformu olan WANdisco Fusion, hiçbir ortamda yapılandırılmamış veri tutarlılığını etkinleştirerek bu sorunu çözer. |
 |[HDInsight için H2O mini Susu](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O Suze su aşağıdaki dağıtılmış algoritmaları destekler: GLM, Naïve Bayes, dağıtılmış rastgele orman, gradyan arttırma makinesi, derin sinir ağlar, derin öğrenme, K-anlamı, PCA, genelleştirilmiş düşük sıra modelleri, anomali algılama, oto kodlayıcılar. |
-|[HDInsight ile gerçek zamanlı veri tümleştirmesi için anlık ileti çabam](https://azuremarketplace.microsoft.com/marketplace/apps/striim.hdinsightintegration) |Hadoop, HBase, fırtınası, Spark, Kafka |Anlık ileti ("Stream"), uçtan uca bir akış veri tümleştirmesi + zekası platformudur ve farklı veri akışlarının sürekli alımı, işlenmesi ve analizine olanak sağlar. |
+|[HDInsight ile gerçek zamanlı veri tümleştirmesi için anlık ileti çabam](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBase, fırtınası, Spark, Kafka |Anlık ileti ("Stream"), uçtan uca bir akış veri tümleştirmesi + zekası platformudur ve farklı veri akışlarının sürekli alımı, işlenmesi ve analizine olanak sağlar. |
 |[Jumbune kurumsal-hızlandırma BigData Analytics](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Yüksek düzeyde, Jumbe, kuruluşlara, 1 ' e yardımcı olur. Tez, MapReduce & Spark Engine tabanlı Hive, Java, Scala iş yükü performansı hızlandırıcı. 2. Proaktif Hadoop kümesi Izleme, 3. Dağıtılmış dosya sisteminde veri kalitesi yönetimi oluşturma. |
 |[Kyligence Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence) |Hadoop, HBase, Spark |Apache Kylin tarafından desteklenen Kırgızca kurumsal, büyük veriler için bı sağlar. Hadoop 'ta kurumsal bir OLAP altyapısı olarak, Kırgızca kurumsal analistleri, sektör standardı veri ambarı ve bı metodolojisi ile Hadoop üzerinde bı 'ı mimariye kadar işletmelerini sağlar. |
 |[Yıldız yağmuru Azure HDInsight için](https://azuremarketplace.microsoft.com/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto, hızlı ve ölçeklenebilir bir dağıtılmış SQL sorgu altyapısıdır. Depolama ve işlem ayrımı için tasarlanmış, Presto, Azure Data Lake Storage, Azure Blob Storage, SQL ve NoSQL veritabanları ve diğer veri kaynaklarında veri sorgulamak için mükemmeldir. |
@@ -51,8 +51,8 @@ Aşağıdaki yordamda var olan bir HDInsight kümesine HDInsight uygulamaların�
 
 **HDInsight uygulaması yüklemesi**
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol menüden **Tüm Service** > **Analytics** > **HDInsight kümelerine**gidin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. Sol menüden **Tüm Service**  >  **Analytics**  >  **HDInsight kümelerine**gidin.
 3. Listeden bir HDInsight kümesi seçin.  Henüz yoksa öncelikle bir tane oluşturmanız gerekir.  bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. **Ayarlar** kategorisi altında **uygulamalar**' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
    
@@ -75,8 +75,8 @@ Portal bir küme için yüklü HDInsight uygulamalarının listesini ve yüklü 
 
 **HDInsight uygulamasını listeleme ve özellikleri görüntüleme**
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol menüden **Tüm Service** > **Analytics** > **HDInsight kümelerine**gidin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. Sol menüden **Tüm Service**  >  **Analytics**  >  **HDInsight kümelerine**gidin.
 3. Listeden bir HDInsight kümesi seçin.
 4. **Ayarlar** kategorisi altında **uygulamalar**' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
    

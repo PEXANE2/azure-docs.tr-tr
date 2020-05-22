@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e74a7ab0c003aaf9d90211484b39f8322cd9c329
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 165b84ee6b124d3f6a04c8db177ef17e32784ff9
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77648011"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757424"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication yönelik özellikler ve lisanslar
 
@@ -32,9 +32,9 @@ Azure Multi-Factor Authentication, kuruluşunuzun ihtiyaçlarına bağlı olarak
 | Bir kullanıcısı | Yetenekler ve kullanım örnekleri |
 | --- | --- |
 | EMS veya Microsoft 365 E3 ve E5 | EMS E3 veya Microsoft 365 E3 (EMS ve Office 365 dahil), Azure AD Premium P1 içerir. EMS E5 veya Microsoft 365 E5, Azure AD Premium P2 içerir. Kullanıcılara Multi-Factor Authentication sağlamak için aşağıdaki bölümlerde belirtilen koşullu erişim özelliklerinin aynısını kullanabilirsiniz. |
-| Azure AD Premium P1 | Belirli senaryolar veya olaylar sırasında iş gereksinimlerinize uyacak şekilde kullanıcılardan çok faktörlü kimlik doğrulaması için kullanıcı istemek üzere [Azure AD koşullu erişim](../conditional-access/overview.md) kullanabilirsiniz. |
+| Azure AD Premium P1 | Belirli senaryolar veya olaylar sırasında iş gereksinimlerinize uyacak şekilde kullanıcılardan çok faktörlü kimlik doğrulaması için kullanıcı istemek üzere [Azure AD koşullu erişim](../conditional-access/howto-conditional-access-policy-all-users-mfa.md) kullanabilirsiniz. |
 | Azure AD Premium P2 | En güçlü güvenlik konumunu ve geliştirilmiş Kullanıcı deneyimini sağlar. Kullanıcının desenlerine uyum sağlayan Azure AD Premium P1 özelliklerine [risk tabanlı koşullu erişim](../conditional-access/howto-conditional-access-policy-risk.md) ekler ve Multi-Factor Authentication istemlerini en aza indirir. |
-| Office 365 Business Premium, E3 veya E5 | Tüm oturum açma olayları için Azure Multi-Factor Authentication, tüm kullanıcılar için etkin veya devre dışı bırakılmış. Yalnızca bir kullanıcı alt kümesi için veya yalnızca belirli senaryolarda Multi-Factor Authentication 'ı etkinleştirebilme özelliği yoktur. Yönetim, Office 365 portalından yapılır. Gelişmiş bir kullanıcı deneyimi için Azure AD Premium P1 veya P2 sürümüne yükseltin ve koşullu erişimi kullanın. Daha fazla bilgi için bkz. [Multi-Factor Authentication ile güvenli Office 365 kaynakları](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). |
+| Office 365 Business Premium, E3 veya E5 | Azure Multi-Factor Authentication, [Kullanıcı başına temelinde etkinleştirilebilir](howto-mfa-userstates.md)veya tüm kullanıcılar için güvenlik varsayılanları kullanılarak tüm oturum açma olayları için etkinleştirilebilir veya devre dışı bırakılabilir. Azure Multi-Factor Authentication yönetimi, Office 365 portalından oluşur. Gelişmiş bir kullanıcı deneyimi için Azure AD Premium P1 veya P2 sürümüne yükseltin ve koşullu erişimi kullanın. Daha fazla bilgi için bkz. [Multi-Factor Authentication ile güvenli Office 365 kaynakları](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). |
 | Azure AD ücretsiz | Her bir kimlik doğrulama isteği yapıldığında, tüm kullanıcılar için Multi-Factor Authentication 'ı etkinleştirmek üzere [güvenlik varsayılanlarını](../fundamentals/concept-fundamentals-security-defaults.md) kullanabilirsiniz. Etkin kullanıcılar veya senaryolar üzerinde ayrıntılı bir denetiminiz yoktur, ancak bu ek güvenlik adımını sağlar.<br /> Herkes için çok faktörlü kimlik doğrulamasını etkinleştirmek üzere güvenlik Varsayılanları kullanılmasa bile, *Azure AD Genel yönetici* rolü atanan kullanıcılar Multi-Factor Authentication kullanacak şekilde yapılandırılabilir. Ücretsiz katmanın bu özelliği, kritik yönetici hesaplarının Multi-Factor Authentication tarafından korunduğundan emin olmanızı sağlar. |
 
 ## <a name="feature-comparison-of-versions"></a>Sürümlerin Özellik Karşılaştırması
@@ -86,4 +86,6 @@ Azure Multi-Factor Authentication tüm kullanıcılar ve tüm oturum açma olayl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Maliyetler hakkında daha fazla bilgi için bkz. [Azure Multi-Factor Authentication fiyatlandırması](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+* Maliyetler hakkında daha fazla bilgi için bkz. [Azure Multi-Factor Authentication fiyatlandırması](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+* [Koşullu erişim nedir?](../conditional-access/overview.md)
+

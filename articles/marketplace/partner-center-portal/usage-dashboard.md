@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 89a0a782b4a18b71f7be8bcdd3728fd008c24d5a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b60475c56b18e81b082e7552fec789b06adeff27
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793015"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746658"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft ticari Market Analytics 'teki kullanım panosu
 
@@ -54,7 +54,7 @@ Kullanım Özeti tablosu, satın aldıkları tüm teklifler için müşterinin k
 
 ### <a name="usage-by-geography"></a>Coğrafya tarafından kullanım
 
-Coğrafya ısı haritasını **tarafından normalleştirilmiş kullanımı** , müşteri ülkesine göre eşlenmiş kullanım saatlerini görüntüler. Ülke renk çeşitlemesi normalleştirilmiş kullanım yoğunluğu temsil eder. Haritadaki **giriş** düğmesine basarak özgün görünüme dönün.
+Coğrafya ısı haritasını **tarafından normalleştirilmiş kullanımı** , müşteri ülkesi/bölgesine göre eşlenmiş kullanım saatlerini görüntüler. Ülke/bölge renk çeşitlemesi normalleştirilmiş kullanım yoğunluğu temsil eder. Haritadaki **giriş** düğmesine basarak özgün görünüme dönün.
 
 ### <a name="usage-by-offers"></a>Tekliflere göre kullanım
 
@@ -92,7 +92,7 @@ Puan tablosu en yüksek kullanım ve kullanım saatlerine göre sıralanan ilk 5
 - Kılavuzdaki her bir sütun sıralanabilir.
 - Kayıt sayısı 1000 'den küçükse, veriler bir CSV dosyasına ayıklanabilir.
 - Kayıt sayısı 1000 ' den fazla ise, dışarı aktarma verileri, sonraki 30 gün boyunca kullanılabilecek bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
-- Filtreler, yalnızca ilgilendiğiniz verileri göstermek için **ayrıntılı kullanım verilerine** uygulanabilir. Veriler ülkeye, Satış kanalına, Market lisans türüne, kullanım türüne, teklif adına, teklif türüne, ücretsiz denemelerdeki, Market abonelik KIMLIĞINE, müşteri KIMLIĞINE ve şirket adına göre filtrelenebilir.
+- Filtreler, yalnızca ilgilendiğiniz verileri göstermek için **ayrıntılı kullanım verilerine** uygulanabilir. Veriler ülke/bölge, satış kanalı, Market lisans türü, kullanım türü, teklif adı, teklif türü, ücretsiz denemeler, Market abonelik KIMLIĞI, müşteri KIMLIĞI ve şirket adı ile filtrelenebilir.
 
 > [!NOTE]
 > Sayfadaki grafikleri "normalleştirilmiş görünüm" veya "ham görünüm" olarak görüntülemek için sayfa filtresindeki **Kullanım türünü** seçin. Bu grafiklerin varsayılan görünümü "normalleştirilmiş görünüm" dir.

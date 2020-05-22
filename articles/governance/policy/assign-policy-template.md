@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: şablonlarla yeni ilke ataması'
 description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek üzere bir ilke ataması oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız.
-ms.date: 03/16/2020
+ms.date: 05/21/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 646e2e064618e70fd9e9e747926f0886d85fde26
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b9e372e8b86e1ac5b0a99d0aba77982896b4d11
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82187792"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757458"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, bir ilke ataması oluşturup _yönetilen diskleri kul
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
 
-:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-36" highlight="26-34":::
+:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-30" highlight="20-28":::
 
 Şablonda tanımlanan kaynak:
 
@@ -47,10 +47,10 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 1. Aşağıdaki değerleri seçin veya girin:
 
-   | Adı | Değer |
+   | Name | Değer |
    |------|-------|
    | Abonelik | Azure aboneliğinizi seçin. |
-   | Kaynak grubu | **Yeni oluştur**' u seçin, bir ad belirtin ve ardından **Tamam**' ı seçin. Ekran görüntüsünde, kaynak grubu adı _MMDD\<\>RG 'de mypolicyquickstart tarihidir_. |
+   | Kaynak grubu | **Yeni oluştur**' u seçin, bir ad belirtin ve ardından **Tamam**' ı seçin. Ekran görüntüsünde, kaynak grubu adı _ \< mmdd \> RG 'de mypolicyquickstart tarihidir_. |
    | Konum | Bir bölge seçin. Örneğin, **Orta ABD**. |
    | İlke atama adı | Bir ilke atama adı belirtin. İsterseniz ilke tanımı ekranını kullanabilirsiniz. Örneğin, **yönetilen disk kullanmayan VM 'Leri denetleyin**. |
    | RG adı | İlkeyi atamak istediğiniz kaynak grubu adını belirtin. Bu hızlı başlangıçta **[resourceGroup (). Name]** varsayılan değerini kullanın. **[resourceGroup ()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** , kaynak grubunu alan bir şablon işlevidir. |

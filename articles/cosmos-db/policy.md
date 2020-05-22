@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB kaynaklarına yönelik idare ve denetimleri uygulamak için Azure Ilkesini kullanma
-description: Cosmos DB kaynaklarına yönelik idare ve denetimleri uygulamak için Azure Ilkesi 'ni nasıl kullanacağınızı öğrenin.
+description: Azure Cosmos DB kaynaklarına yönelik idare ve denetimleri uygulamak için Azure Ilkesi 'ni nasıl kullanacağınızı öğrenin.
 author: plzm
 ms.author: paelaz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 6b8823b586ae0d0d9f6a2c50286aa754a9ab8025
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2249dbdebecc52a8f5d6decccb83d3b1fc0777f7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665162"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747371"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Cosmos DB kaynaklarına yönelik idare ve denetimleri uygulamak için Azure Ilkesini kullanma
 
@@ -32,7 +32,7 @@ Azure Cosmos DB için yerleşik ilke tanımından bir ilke ataması oluşturmak 
 > [!TIP]
 > İlke atamaları oluşturmak için Azure PowerShell, Azure CLı veya ARM şablonlarıyla **kullanılabilir tanımlar** bölmesinde gösterilen yerleşik ilke tanımı adlarını da kullanabilirsiniz.
 
-:::image type="content" source="./media/policy/available-definitions.png" alt-text="Cosmos DB yerleşik ilke tanımlarını arayın":::
+:::image type="content" source="./media/policy/available-definitions.png" alt-text="Azure Cosmos DB yerleşik ilke tanımlarını arayın":::
 
 ## <a name="create-a-custom-policy-definition"></a>Özel ilke tanımı oluşturma
 
@@ -115,7 +115,7 @@ Ekran görüntüsünde aşağıdaki uyumluluk değerlendirmesi sonuçları göst
 - Belirtilen kapsamdaki bir Azure Cosmos DB hesapların hiçbiri, kaynakların izin verilen bölgelere dağıtılıp dağıtılmadığını denetlemek için ilke atamasıyla uyumludur.
 - Belirtilen kapsamdaki iki Azure Cosmos DB veritabanı ya da koleksiyon kaynağı, belirtilen maksimum sınırı aşan sağlanan aktarım hızını denetlemek için ilke atamasıyla uyumludur.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Cosmos DB yerleşik ilke tanımlarını arayın":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Azure Cosmos DB yerleşik ilke tanımlarını arayın":::
 
 Uyumlu olmayan kaynakları düzeltmek için bkz. [Azure ilkesi ile düzeltilen](../governance/policy/how-to/remediate-resources.md) makalesi.
 

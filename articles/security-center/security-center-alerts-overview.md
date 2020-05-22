@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 697c038a2fefdde8e488dad23a4e38e0b2b7b288
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77e75caf836c4f7d142b0b5c23327d73afa6a77
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79415846"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744618"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarıları
 
@@ -55,7 +55,7 @@ Güvenlik Merkezi, imza tabanlı yaklaşımların ötesine geçen gelişmiş gü
 
 * **Tümleşik tehdit bilgileri**: Microsoft, küresel tehdit zekasının miktarına sahiptir. Azure, Office 365, Microsoft CRM Online, Microsoft Dynamics AX, outlook.com, MSN.com, Microsoft Digital Crimes birimi (DCU) ve Microsoft Güvenlik Yanıt Merkezi (MSRC) gibi birden fazla kaynaktan telemetri akışı. Araştırmacılar, büyük bulut hizmeti sağlayıcıları ve diğer üçüncü taraflardan akışlar arasında paylaşılan tehdit bilgileri bilgilerini de alır. Azure Güvenlik Merkezi bilinen kötü aktörlerden gelen tehditler konusunda sizi uyarmak için bu bilgileri kullanabilir.
 
-* **Davranış analizi**: davranış analizi, verileri bir bilinen desenler koleksiyonuyla çözümleyen ve karşılaştıran bir tekniktir. Ancak, bu modeller basit imzalar değildir. Bunlar büyük veri kümelerine uygulanan karmaşık machine learning algoritmaları aracılığıyla belirlenir. Bunlar, kötü amaçlı davranışların uzman analistler tarafından dikkatlice çözümlenmesiyle de belirlenir. Azure Güvenlik Merkezi, sanal makine günlüklerinin, sanal ağ cihaz günlüklerinin, yapı günlüklerinin, kilitlenme dökümlerinin ve diğer kaynakların analizine dayalı olarak güvenliği aşılmış kaynakları belirlemek için davranış analizini kullanabilir.
+* **Davranış analizi**: davranış analizi, verileri bir bilinen desenler koleksiyonuyla çözümleyen ve karşılaştıran bir tekniktir. Ancak, bu modeller basit imzalar değildir. Bunlar büyük veri kümelerine uygulanan karmaşık machine learning algoritmaları aracılığıyla belirlenir. Bunlar, kötü amaçlı davranışların uzman analistler tarafından dikkatlice çözümlenmesiyle de belirlenir. Azure Güvenlik Merkezi; sanal makine günlükleri, sanal ağ cihaz günlükleri, yapı günlükleri ve diğer kaynakların analizine göre tehlike giren kaynaklarını belirlemek amacıyla davranış analizini kullanabilir.
 
 * **Anomali algılama**: Azure Güvenlik Merkezi, tehditleri belirlemek için anomali algılama de kullanır. Davranış analizinin aksine (büyük veri kümelerinden türetilmiş bilinen desenlere bağlıdır), anomali algılama daha fazla "kişiselleştirilmiş" olur ve dağıtımlarınıza özgü taban çizgilerine odaklanır. Dağıtımlarınızın normal etkinliğini belirlemek için machine learning uygulanır ve sonra bir güvenlik olayını gösterebilecek aykırı değer koşullarını tanımlamak üzere kurallar oluşturulur.
 

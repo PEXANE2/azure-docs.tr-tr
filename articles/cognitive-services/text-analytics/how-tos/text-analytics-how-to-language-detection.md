@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 58f2dc39c185e158a2b4b1b5e73b6b7d589c8c03
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70387800"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745582"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Örnek: Metin Analizi Dili algıla
 
@@ -25,7 +25,7 @@ Bu özellik, dilin bilinmediği rastgele metni toplayan içerik depoları için 
 
 Dil Algılama özelliği, çeşitli diller, çeşitler, diapacts ve bazı bölgesel veya kültürel dillerini algılayabilir. Bu özellik için dillerin tam listesi yayımlanmamıştır.
 
-Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa, bir kodu döndürüp döndürdüğünü görmek için Dil Algılama özelliğini deneyebilirsiniz. Algılanamayan dillerin yanıtı `unknown`.
+Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa, bir kodu döndürüp döndürdüğünü görmek için Dil Algılama özelliğini deneyebilirsiniz. Algılanamayan dillerin yanıtı `unknown` .
 
 > [!TIP]
 > Metin Analizi Ayrıca, dil algılama için Linux tabanlı bir Docker kapsayıcı görüntüsü sağlar, bu sayede Metin Analizi kapsayıcısını verilerinize yakın şekilde [yükleyip çalıştırabilirsiniz](text-analytics-how-to-install-containers.md) .
@@ -69,7 +69,7 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiy
 
 + Bir POST isteği oluşturun. Bu isteğin API belgelerini gözden geçirmek için [DIL ALGıLAMA API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)'sine bakın.
 
-+ Dil algılama için HTTP uç noktasını ayarlayın. Azure 'da bir Metin Analizi kaynağı veya örneği oluşturulmuş bir [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanın. URL 'ye dahil `/text/analytics/v2.1/languages` etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
++ Dil algılama için HTTP uç noktasını ayarlayın. Azure 'da bir Metin Analizi kaynağı veya örneği oluşturulmuş bir [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanın. URL 'ye dahil etmeniz gerekir `/text/analytics/v2.1/languages` . Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
 
 + Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
 
@@ -155,11 +155,11 @@ Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya �
 
 ### <a name="ambiguous-content"></a>Belirsiz içerik
 
-Bazı durumlarda, girişi temel alarak dilleri ayırt etmek zor olabilir. `countryHint` Parametresini 2 harfli bir ülke kodu belirtmek için kullanabilirsiniz. Varsayılan olarak, API varsayılan Countryipucu olarak "US" kullanıyor, bu davranışı kaldırmak için bu değeri boş dize `countryHint = ""` olarak ayarlayarak bu parametreyi sıfırlayabilirsiniz.
+Bazı durumlarda, girişi temel alarak dilleri ayırt etmek zor olabilir. `countryHint`Parametresini 2 harfli bir ülke/bölge kodu belirtmek için kullanabilirsiniz. Varsayılan olarak, API varsayılan Countryipucu olarak "US" kullanıyor, bu davranışı kaldırmak için bu değeri boş dize olarak ayarlayarak bu parametreyi sıfırlayabilirsiniz `countryHint = ""` .
 
-Örneğin, "Imkansız" hem Ingilizce hem de Fransızca için ortaktır ve sınırlı bağlamla verildiyse, yanıt "ABD" ülke ipucunu temel alır. Metnin kökeninin Fransa’dan geldiği biliniyorsa bu bir ipucu olarak verilebilir.
+Örneğin, "Imkansız", hem Ingilizce hem de Fransızca için ortaktır ve sınırlı bağlamla verildiyse, yanıt "ABD" ülke/bölge ipucuna göre yapılır. Metnin kökeninin Fransa’dan geldiği biliniyorsa bu bir ipucu olarak verilebilir.
 
-**Girdi**
+**Giriş**
 
 ```json
     {
@@ -209,7 +209,7 @@ Hizmetin artık daha iyi bir değerlendirme yapmak için ek bağlamı vardır:
     }
 ```
 
-Çözümleyici girişi ayrıştıramaz, döndürür `(Unknown)`. Yalnızca Arapça rakamları içeren bir metin bloğu gönderirseniz örnek bir örnektir.
+Çözümleyici girişi ayrıştıramaz, döndürür `(Unknown)` . Yalnızca Arapça rakamları içeren bir metin bloğu gönderirseniz örnek bir örnektir.
 
 ```json
     {
@@ -228,7 +228,7 @@ Hizmetin artık daha iyi bir değerlendirme yapmak için ek bağlamı vardır:
 
 Aynı belge içindeki karışık dil içeriği, içerikte en büyük gösterimle ve daha düşük pozitif bir derecelendirmeden dili döndürür. Derecelendirme, değerlendirmenin marjinal kuvvetini yansıtır. Aşağıdaki örnekte giriş, İngilizce, İspanyolca ve Fransızca dillerinin birleşimidir. Çözümleyici, hakim dili belirlemek için her bir kesimdeki karakterleri sayar.
 
-**Girdi**
+**Giriş**
 
 ```json
     {
@@ -269,7 +269,7 @@ Bu makalede, Azure bilişsel hizmetler 'de Metin Analizi kullanarak dil algılam
 
 + [Dil algılama](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) , çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel veya kültürel dilleri için kullanılabilir.
 + İstek gövdesindeki JSON belgeleri bir KIMLIK ve metin içerir.
-+ POST isteği, kişiselleştirilmiş bir `/languages` [erişim anahtarı ve](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) aboneliğiniz için geçerli olan bir uç nokta kullanarak bir uç noktaya gönderilir.
++ POST isteği, `/languages` kişiselleştirilmiş bir [erişim anahtarı ve](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) aboneliğiniz için geçerli olan bir uç nokta kullanarak bir uç noktaya gönderilir.
 + Yanıt çıktısı her belge KIMLIĞI için dil tanımlayıcılarından oluşur. Çıktı, JSON kabul eden herhangi bir uygulamaya akışla eklenebilir. Örnek uygulamalar, birkaç kez ad vermek için Excel ve Power BI içerir.
 
 ## <a name="see-also"></a>Ayrıca bkz.

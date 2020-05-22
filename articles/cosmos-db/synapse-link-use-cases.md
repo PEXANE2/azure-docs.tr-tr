@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: f9fafc4b03d5ce18fcfedcffaf2d81f847537865
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0efaf593725fd676ae8e85ff9c190c8b850fef1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598643"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744672"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı: neredeyse gerçek zamanlı analiz kullanım örnekleri
 
@@ -106,7 +106,7 @@ Azure SYNAPSE Azure Cosmos DB bağlantısı, yalnızca işlemsel iş yüklerini 
 
 Aşağıdaki görüntüde Azure Cosmos DB kullanarak iş yükü desenleri gösterilmektedir: ![ Azure Cosmos DB iş yükü desenleri için Azure SYNAPSE link](./media/synapse-link-use-cases/synapse-link-workload-patterns.png)
 
-Tek bir gerçek zamanlı veritabanı, bir envanter yönetimi platformunun hem işlem hem de analitik gereksinimlerini güçlendiren şekilde Azure Cosmos DB seçme avantajlarının yanı sıra, bir e-ticaret şirketi şirket xyz örneğini 20 ülkede genel işlemlerle sunmamıza izin verin.
+Tek bir gerçek zamanlı veritabanı, bir envanter yönetimi platformunun hem işlem hem de analitik gereksinimlerini güçlendiren şekilde Azure Cosmos DB seçme avantajlarının yanı sıra, bir e-ticaret şirketi şirket xyz örneğini 20 ülkede/bölgede küresel işlemlerle birlikte ele alalım.
 
 * CompanyXYZ 'in Core Business, envanter yönetimi sistemine bağlıdır. bu nedenle kullanılabilirlik & güvenilirliği, çekirdek ve gereksinimlerdir. Azure Cosmos DB kullanmanın avantajları:
 

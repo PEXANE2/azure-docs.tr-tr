@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332541"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739108"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C teknik ve özelliklere genel bakış
 
@@ -63,7 +63,7 @@ Tüketici hesabı olan bir Kullanıcı, örneğin Kullanıcı adı, e-posta, ça
 
 ![Tüketici hesabı kimlikleri](media/technical-overview/identities.png)<br/>*Şekil: Azure AD B2C birden çok kimliği olan tek bir tüketici hesabı*
 
-Azure AD B2C, görünen ad, soyadı, verilen ad, şehir ve diğerleri gibi tüketici hesabı profillerinin ortak özniteliklerini yönetmenizi sağlar. Ayrıca, Azure AD şemasını kullanıcılarınız hakkındaki ek bilgileri depolamak için genişletebilirsiniz. Örneğin, ülkelerinin veya bir bültene abone olmak veya Multi-Factor Authentication 'ı etkinleştirmek isteyip istemedikleri gibi, bu kişilerin ülke veya yerleşimi, tercih edilen dili ve tercihleri.
+Azure AD B2C, görünen ad, soyadı, verilen ad, şehir ve diğerleri gibi tüketici hesabı profillerinin ortak özniteliklerini yönetmenizi sağlar. Ayrıca, Azure AD şemasını kullanıcılarınız hakkındaki ek bilgileri depolamak için genişletebilirsiniz. Örneğin, ülke/bölge veya sahip olma, tercih edilen dil ve bir bültene abone olmak veya Multi-Factor Authentication 'ı etkinleştirmek isteyip istemedikleri gibi tercihleri.
 
 [Azure Active Directory B2C Kullanıcı hesaplarına genel bakış](user-overview.md)Azure AD B2C içindeki kullanıcı hesabı türleri hakkında daha fazla bilgi edinin.
 
@@ -100,7 +100,7 @@ En yaygın kimlik görevlerini hızlı bir şekilde ayarlamanıza yardımcı olm
 Uygulamalarınızda kimlik deneyimi davranışlarını denetlemek için aşağıdaki gibi Kullanıcı akış ayarlarını yapılandırabilirsiniz:
 
 * Facebook gibi sosyal hesaplar veya oturum açma için bir e-posta adresi ve parola kullanan yerel hesaplar gibi oturum açma için kullanılan hesap türleri
-* Tüketiciden toplanacak öznitelikler (örneğin, ilk ad, posta kodu veya yeniden kullanım ülkesi)
+* Tüketiciden toplanacak öznitelikler (örneğin, ilk ad, posta kodu veya bir yerden ülke/bölge)
 * Azure Multi-Factor Authentication (MFA)
 * Kullanıcı arabiriminin özelleştirilmesi
 * Kullanıcı Kullanıcı akışını tamamladıktan sonra uygulamanızın aldığı bir belirteçte talepler kümesi
@@ -136,7 +136,7 @@ Her Kullanıcı yolculuğu bir ilke tarafından tanımlanır ve kuruluşunuz iç
 
 Azure AD B2C, Kullanıcı yolculukları için [OpenID Connect ve OAuth 2,0 protokollerini](protocols-overview.md) destekler. OpenID Connect'in Azure AD B2C gerçekleştirmesinde uygulamanız kullanıcı yolculuğunu Azure AD B2C'ye kimlik doğrulama istekleri göndererek başlatır.
 
-Azure AD B2C bir isteğin sonucu, [kimlik belirteci veya erişim belirteci](tokens-overview.md)gibi bir güvenlik belirtecidir. Bu güvenlik belirteci, kullanıcının kimliğini tanımlar. Belirteçler, `/token` veya `/authorize` uç nokta gibi Azure AD B2C uç noktalarından alınır. Bu belirteçlerle, bir kimliği doğrulamak ve güvenli kaynaklara erişim sağlamak için kullanılabilecek taleplere erişebilirsiniz.
+Azure AD B2C bir isteğin sonucu, [kimlik belirteci veya erişim belirteci](tokens-overview.md)gibi bir güvenlik belirtecidir. Bu güvenlik belirteci, kullanıcının kimliğini tanımlar. Belirteçler, `/token` veya uç nokta gibi Azure AD B2C uç noktalarından alınır `/authorize` . Bu belirteçlerle, bir kimliği doğrulamak ve güvenli kaynaklara erişim sağlamak için kullanılabilecek taleplere erişebilirsiniz.
 
 Dış kimlikler için Azure AD B2C, OAuth 1,0, OAuth 2,0, OpenID Connect, SAML ve WS-beslik kimlik sağlayıcısı ile Federasyonu destekler.
 
@@ -166,7 +166,7 @@ Azure AD B2C, kullanıcılarınızın kimlik deneyimlerini, gösterilen sayfalar
 
 UI özelleştirmesi hakkında daha fazla bilgi için, [Azure Active Directory B2C içindeki kullanıcı arabirimi özelleştirmesi hakkında](customize-ui-overview.md)bölümüne bakın.
 
-## <a name="localization"></a>Yerelleştirme
+## <a name="localization"></a>Localization (Yerelleştirme)
 
 Azure AD B2C dil özelleştirmesi, müşteri gereksinimlerinize uyacak farklı dillere sahip etmenize olanak tanır. Microsoft, 36 dil için Çeviriler sağlar, ancak herhangi bir dil için kendi çevirilerinizi de sağlayabilirsiniz. Deneyiminiz yalnızca tek bir dil için sağlanmış olsa bile, sayfalardaki tüm metinleri özelleştirebilirsiniz.
 

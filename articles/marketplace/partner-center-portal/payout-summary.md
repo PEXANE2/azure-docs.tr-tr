@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 0380330c2cfd4b0a72dcc158a0d6e051d5547b31
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6639026d071b496027996036a81f6bc66e0185e3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857008"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744804"
 ---
 # <a name="payout-summaries"></a>Ödeme özetleri
 
@@ -66,14 +66,14 @@ Bu sayfadaki herhangi bir işlem verisini dışarı aktarmak için **dışarı**
 
 ## <a name="payment-status"></a>Ödeme durumu
 
-| Kazanç durumu           | Neden                                                                                                                                      | İş ortağı eylemi gerekli mi?                                   |
+| Kazanç durumu           | Nedeni                                                                                                                                      | İş ortağı eylemi gerekli mi?                                   |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
 | İşlenmemiş              | Kazanç ödeme için uygun. Bu durum, bir soğutma dönemi için, ister program kılavuzunda, ister program kılavuzumuza göre tanımlanan bu durumda kalır. | No                                                         |
 | İlerideki                 | Ödeme işlenmeden önce bekleyen dahili incelemeler için ödeme siparişi oluşturuldu                                                               | No                                                         |
 | Bekleyen vergi faturası      | Vergi faturanızda eksik veya geçersiz                                                                                                  | Ödeme yapabilmeniz için vergi faturanızı güncelleştirmeniz gerekir |
 | İnceleme sırasında reddedildi   | Ödeme, gözden geçirme sırasında reddedildi                                                                                                     | Ayrıntılar için [Microsoft destek](https://developer.microsoft.com/windows/support) 'e başvurun                      |
 | Başarısız                   | Ödeme, bir Microsoft Sistem hatası nedeniyle başarısız oldu                                                                                         | Ayrıntılar için [Microsoft destek](https://developer.microsoft.com/windows/support) 'e başvurun                      |
-| Devam ediyor              | Ödeme devam ediyor                                                                                                                 | No                                                         |
+| Sürüyor              | Ödeme devam ediyor                                                                                                                 | No                                                         |
 | Yanlış ödeme        | Ödeme kurtarma devam ediyor                                                                                                       | No                                                         |
 | Gönderilen                     | Ödeme, bankanızla gönderilmiştir                                                                                                     | No                                                         |
 | Yeniden işleme             | Ödeme bir Microsoft sistem hatasıyla karşılaştı ve yeniden işleniyor                                                                  | No                                                         |
@@ -129,7 +129,7 @@ Bu seçenek, Işlem geçmişi sayfasında gördüğünüz her bir atma satırı 
 | participantId                  | İş ortağının birincil kimliği program altında                                                                            | Tümü                                                            |
 | participantIdType              | Programları ve satıcı, mağaza programları ve Azure Marketi için genellikle program KIMLIĞI                                          | Tümü                                                            |
 | participantName                | Kazanç ortağının adı                                                                                                              | Tümü                                                            |
-| partnerCountryCode             | Kazanç ortağının konumu/ülkesi                                                                                                  | Tümü                                                            |
+| partnerCountryCode             | Kazanç ortağının konumu/ülkesi/bölgesi                                                                                                  | Tümü                                                            |
 | Programadı                    | Program adını teşvik edin/depolayın                                                                                                             | Tümü                                                            |
 | TransactionId                  | İşlem için benzersiz tanımlayıcı                                                                                                    | Tümü                                                            |
 | Işlem para birimi            | Orijinal müşteri işleminin gerçekleştiği para birimi (Bu iş ortağı konum para birimi değil)                                     | Tümü                                                            |
@@ -183,7 +183,7 @@ Bu seçenek, Işlem geçmişi sayfasında gördüğünüz her bir atma satırı 
 | storeFee                       | Uygulama veya eklentiyi mağazada kullanılabilir hale getirmek için Microsoft tarafından bir ücret olarak tutulan miktar                                           | Yalnızca mağaza                                                     |
 | transactionPaymentMethod       | İşlem için kullanılan, kart, mobil taşıyıcı faturalandırma veya PayPal gibi müşteri ödeme aracı                                | Mağaza ve Azure Marketi                                    |
 | tpan                           | Üçüncü taraf ad ağını belirtir                                                                                                     | Mağaza-yalnızca reklamları                                               |
-| customerCountry                | Müşteri ülkesi                                                                                                                         | Mağaza ve Azure Marketi                                    |
+| customerCountry                | Müşteri ülkesi/bölgesi                                                                                                                         | Mağaza ve Azure Marketi                                    |
 | customerCity                   | Müşteri şehri                                                                                                                            | Mağaza ve Azure Marketi                                    |
 | customerState                  | Müşteri durumu                                                                                                                           | Mağaza ve Azure Marketi                                    |
 | Müşterzıp                    | Müşteri posta kodu                                                                                                                 | Mağaza ve Azure Marketi                                    |
@@ -234,7 +234,7 @@ Temmuz 1 2019 ' den önceki işlem geçmişi ayrı olarak işlenir. Deyimler, ge
 | Stopaj uygulanan vergiler          | Stopaj uygulanan gelir vergisi miktarı ( **ayrılmış** CSV dosyasına dahil)                                                                                                |
 | Payment                 | Uygulama, geçerli gelir Vergi stopajını (Işlem para birimi cinsinden gösterilen tutar) daha az sürer. **Ayrılmış** CSV dosyasına dahil değildir.                               |
 | FX oranı                 | Işlem para birimini ödeme para birimine dönüştürmek için kullanılan yabancı değişim oranı                                                                                         |
-| Ödeme para birimi        | Ödemenizin yapıldığı para birimi                                                                                                                                       |
+| Ödeme Para Birimi        | Ödemenizin yapıldığı para birimi                                                                                                                                       |
 | Dönüştürülen ödeme       | FX Rate kullanılarak ödeme para birimine dönüştürülen ödeme tutarı                                                                                                         |
 | Vergi havale modeli         | Vergi vergisinden sorumlu olan parti (satış, kullanım veya KDV/GST vergileri)                                                                                                   |
 | Uygunluk tarihi saati   | İşlemin devam eden ödeme için uygun hale geldiği tarih ve saat (UTC). Bir ödeme oluşturulduğunda, bu işlem, ödeme oluşturma tarihinden (yalnızca **ayrılmış** CSV dosyasına dahil) önce uygunluk tarihi ile devam eder. |

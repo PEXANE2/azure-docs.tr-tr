@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: a265278652c16b4682707470d183a02a55b9a0ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c9e203d7e8be7b24c711f73e2152a7745a57dac
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77069226"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745480"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Azure Internet Çözümleyicisi sorunlarını giderme
 
@@ -25,7 +25,7 @@ Bu makale, yaygın Internet çözümleyici sorunları için sorun giderme adıml
 ## <a name="azure-portal"></a>Azure portal
 **"Karneler bölümünde seçili filtre birleşimi için bir karne üretilmemiştir"**
 - Karneler günlük olarak (her günün sonunda UTC saati) oluşturulur.
-- Karneler yalnızca seçili filtre birleşimi (test, zaman aralığı, ülke vb.) için 100 ' den fazla ölçüm toplanmışsa üretilir.
+- Karneler yalnızca seçili filtre birleşimi (test, zaman aralığı, ülke/bölge vb.) için 100 ' den fazla ölçüm toplanmışsa üretilir.
 
 **Testteki bir veya her iki uç nokta için "Toplam ölçüm sayısı" sıfır**
 - Zaman serisi ve ölçüm sayıları bir saat olarak hesaplanır, bu nedenle yeni ölçüm verilerinin görünmesi için en az bu süreyi beklemeniz gerekir.

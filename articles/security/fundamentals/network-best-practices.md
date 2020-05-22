@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e64873cc2e7779c4d931018fd16bdca08596aa2
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548296"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757832"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Ağ güvenliği için en iyi Azure uygulamaları
 Bu makalede, ağ güveninizi geliştirmeye yönelik bir Azure en iyi yöntemleri koleksiyonu ele alınmaktadır. Bu en iyi uygulamalar, Azure ağ deneyimimizden ve bizim gibi müşterilerin deneyimlerimizden türetilir.
@@ -74,7 +74,7 @@ Ağlarda güvenlik açıkları ihlal edildiği için ağların geleneksel savunm
 En iyi uygulamalar şunlardır:
 
 **En iyi yöntem**: cihaza, kimliğe, güvenine, ağ konumuna ve daha fazlasına göre kaynaklara koşullu erişim verin.  
-**Ayrıntı**: [Azure AD koşullu erişim](/azure/active-directory/conditional-access/overview) , gerekli koşullara göre otomatik erişim denetimi kararları uygulayarak doğru erişim denetimlerini uygulamanıza olanak tanır. Daha fazla bilgi için bkz. [koşullu erişim Ile Azure yönetimine erişimi yönetme](../../role-based-access-control/conditional-access-azure-management.md).
+**Ayrıntı**: [Azure AD koşullu erişim](../../active-directory/conditional-access/overview.md) , gerekli koşullara göre otomatik erişim denetimi kararları uygulayarak doğru erişim denetimlerini uygulamanıza olanak tanır. Daha fazla bilgi için bkz. [koşullu erişim Ile Azure yönetimine erişimi yönetme](../../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md).
 
 **En iyi yöntem**: yalnızca iş akışı onayını yaptıktan sonra bağlantı noktası erişimini etkinleştirin.  
 **Ayrıntı**: Azure [Güvenlik Merkezi 'NDE tam zamanında VM erişimi](../../security-center/security-center-just-in-time.md) 'ni kullanarak Azure VM 'lerinize gelen trafiği kilitleyebilir ve gerektiğinde sanal makinelere bağlanmak için kolay erişim sağlarken saldırılara maruz kalmayı azaltabilirsiniz.

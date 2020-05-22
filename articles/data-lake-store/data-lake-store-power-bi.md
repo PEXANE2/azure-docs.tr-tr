@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 952be68a1675732857969f875cd2b39c2feab674
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: eb34199f6f1b304d56c691f56b78d9c035be8a5b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691667"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744769"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage 1. Power BI kullanarak verileri çözümleme
 Bu makalede, Azure Data Lake Storage 1. depolanan verileri analiz etmek ve görselleştirmek için Power BI Desktop kullanmayı öğreneceksiniz.
@@ -81,10 +81,10 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
         ![Pasta grafik](./media/data-lake-store-power-bi/pie-chart.png "Görselleştirmeler oluştur")
 16. Sayfa düzeyi filtrelerinden belirli bir ülke/bölge seçerek, seçili ülkenin/bölgenin her bir şehrindeki sürücü sayısını görebilirsiniz. Örneğin, **görsel öğeler** sekmesinin altında, **sayfa düzeyi filtreleri**altında **Brezilya**' yi seçin.
     
-    ![Ülke seçin](./media/data-lake-store-power-bi/select-country.png "Ülke/bölge seçin")
+    ![Ülke/bölge seçin](./media/data-lake-store-power-bi/select-country.png "Ülke/bölge seçin")
 17. Pasta grafiği, Brezilya şehirlerde bulunan sürücüleri görüntüleyecek şekilde otomatik olarak güncelleştirilir.
     
-    ![Ülke içindeki sürücüler](./media/data-lake-store-power-bi/driver-per-country.png "Ülke/bölge başına sürücü")
+    ![Ülke/bölge içindeki sürücüler](./media/data-lake-store-power-bi/driver-per-country.png "Ülke/bölge başına sürücü")
 18. Görselleştirmeyi bir Power BI Desktop dosyası olarak kaydetmek için **Dosya** menüsünde **Kaydet** ' e tıklayın.
 
 ## <a name="publish-report-to-power-bi-service"></a>Raporu Power BI hizmeti yayınla

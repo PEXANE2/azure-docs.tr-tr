@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 586e560f25d12ed8076fcc76810c5a5fb84736dc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1ee6920d1870b7449f4b77394aaf918947f57ea5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680897"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744324"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook sorunlarını giderme
 
@@ -45,7 +45,7 @@ Azure Otomasyonu 'nda runbook yürütmesi sırasında hata aldığınızda, soru
     * Farklı çalıştır hesabının süresi dolmuşsa [sertifikayı yenileyin](../manage-runas-account.md#cert-renewal) .
     * Runbook 'u başlatmak için zaman aşımına uğradı bir Web kancasını kullanmaya çalışıyorsanız [Web kancasını yenileyin](../automation-webhooks.md#renew-a-webhook) .
     * Geçerli runbook durumlarını ve sorunun olası nedenlerini öğrenmek için [iş durumlarını denetleyin](../automation-runbook-execution.md#job-statuses) .
-    * Runbook 'un askıya alınmadan önce ne olacağını belirlemek için Runbook 'a [ek çıkış ekleyin](../automation-runbook-output-and-messages.md#message-streams) .
+    * Runbook 'un askıya alınmadan önce ne olacağını belirlemek için Runbook 'a [ek çıkış ekleyin](../automation-runbook-output-and-messages.md#monitor-message-streams) .
     * İşiniz tarafından oluşturulan [tüm özel durumları işleyin](../automation-runbook-execution.md#exceptions) .
 
 1. Bu adımı, runbook işi veya karma Runbook Worker ortamı yanıt vermezse yapın.
@@ -479,7 +479,7 @@ Cmdlet 'ini çalıştırırken aşağıdaki hata iletisini alırsınız `Get-AzA
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, çok sayıda [ayrıntılı akışı](../automation-runbook-output-and-messages.md#verbose-stream)olan bir runbook 'tan iş çıktısı alınırken oluşabilir.
+Bu hata, çok sayıda [ayrıntılı akışı](../automation-runbook-output-and-messages.md#monitor-verbose-stream)olan bir runbook 'tan iş çıktısı alınırken oluşabilir.
 
 ### <a name="resolution"></a>Çözüm
 

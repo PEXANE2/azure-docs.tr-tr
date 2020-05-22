@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 29b6b47a30760887fb01700e50ecdeb5dd307ad4
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 33c4286c5a3fa8be68c1e6ec3bd331aa1e804cb4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858172"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745006"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Ödeme eşikleri, yöntemleri ve zaman çerçeveleri
 
@@ -38,7 +38,7 @@ Genellikle belirli bir ayda, söz konusu ayın 15. gününe kadar ödenmesi gere
 
 Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülke ve bölgelerdir. Her durumda ödeme eşiği $50 ABD doları olur.
 
-| Ülke | Azure Market | Mağaza, reklam, karıştırıcı ve Minecrat | Office | PayPal ödemeleri  |
+| Ülke/Bölge | Azure Market | Mağaza, reklam, karıştırıcı ve Minecrat | Office | PayPal ödemeleri  |
 | --- | --- | --- | --- | --- |
 | Afganistan | Yes | Yes | Hayır | Hayır |
 | Arnavutluk | Yes | Yes | Yes | Yes |
@@ -57,7 +57,7 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Belçika | Yes | Yes | Yes | Yes |
 | Benin | Yes | Yes | Yes | No |
 | Bolivya | Yes | Yes | Yes | No |
-| Bosna Hersek | Yes | Yes | Yes | Yes |
+| Bosna-Hersek | Yes | Yes | Yes | Yes |
 | Botsvana | Yes | Yes | No | Yes |
 | Brezilya | Yes | Yes | Yes | Yes |
 | Bulgaristan | Yes | Yes | Yes | Yes |
@@ -120,7 +120,7 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Letonya | Yes | Yes | Yes | No |
 | Lübnan | Yes | Yes | Hayır | Hayır |
 | Liberya | Yes | Yes | Yes | No |
-| Lihtenştayn | Yes | Yes | Yes | Yes |
+| Liechtenstein | Yes | Yes | Yes | Yes |
 | Litvanya | Yes | Yes | Yes | No |
 | Lüksemburg | Yes | Yes | Yes | Yes |
 | Makedonya | No | Yes | Yes | No |
@@ -155,7 +155,7 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Katar | Yes | Yes | Yes | Yes |
 | Romanya | Yes | Yes | Yes | No |
 | Rusya | Yes | Yes | No | Yes |
-| Rwanda | Yes | Yes | Yes | No |
+| Ruanda | Yes | Yes | Yes | No |
 | Saint Vincent ve Grenadinler | No | Yes | Hayır | Hayır |
 | Suudi Arabistan | Yes | Yes | Yes | Yes |
 | Senegal | Yes | Yes | Yes | No |
@@ -185,7 +185,7 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Ukrayna | Yes | Yes | Hayır | Hayır |
 | Birleşik Arap Emirlikleri | Yes | Yes | Yes | Yes |
 | Birleşik Krallık | Yes | Yes | Yes | Yes |
-| Amerika Birleşik Devletleri | Yes | Yes | Yes | Yes |
+| Birleşik Devletler | Yes | Yes | Yes | Yes |
 | Uruguay | Yes | Yes | Yes | Yes |
 | Özbekistan | Yes | Yes | Hayır | Hayır |
 | Venezuela | Yes | Yes | Yes | Yes |

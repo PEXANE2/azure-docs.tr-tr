@@ -6,12 +6,12 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 678c47fc345838f6d1e93ac397a4e54d1c61391f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: bdef440fb8273dbbc5053d1c4eb6607fba0cdab3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780506"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744551"
 ---
 # <a name="getting-paid-in-commercial-marketplace"></a>Ticari Market 'te ücretli olarak edinme
 
@@ -30,7 +30,7 @@ Mağaza ücreti, eklentiler de dahil olmak üzere ticari Market tarafından topl
 
 ## <a name="price-tiers"></a>Fiyat katmanları
 
-Seçtiğiniz fiyat katmanı (ler), teklifinizi dağıtmayı seçtiğiniz tüm ülkelerde satış fiyatını ayarlar. Farklı pazarlar için farklı fiyatlar seçme gibi ek fiyatlandırma özellikleri de kullanabilirsiniz.
+Seçtiğiniz fiyat katmanı (ler), teklifinizi dağıtmayı seçtiğiniz tüm ülkelerde/bölgelerde satış fiyatını ayarlar. Farklı pazarlar için farklı fiyatlar seçme gibi ek fiyatlandırma özellikleri de kullanabilirsiniz.
 
 Uygulamanızı ücretsiz olarak sunabilir veya müşterilerin teklifinizi almak için ödeme yapmak zorunda olduğu bir fiyat seçebilirsiniz. Fiyat katmanları, ek artışlarla (1,09 USD, 1,19 ABD, vb.) başlayıp 99 ABD Doları ile başlar. Fiyat katmanları arasındaki artış, fiyat arttıkça artar.
 

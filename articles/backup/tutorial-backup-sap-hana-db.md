@@ -3,12 +3,12 @@ title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: f64dd74ad0e038c5cad152e20ae2255de03114e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79501443"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747223"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -29,9 +29,14 @@ Yedeklemeleri yapılandırmadan önce aşağıdakileri yaptığınızdan emin ol
 * Aşağıdaki [ağ bağlantısı kurma](#set-up-network-connectivity) yordamında açıklandığı gibi, Azure 'a ULAŞABILMESI için VM 'den internet 'e bağlantıya izin verin.
 * **Hdbuserstore** içinde aşağıdaki ölçütlere uyan bir anahtar bulunmalıdır:
   * Varsayılan **hdbuserstore** içinde mevcut olmalıdır
-  * MDC için anahtar, **nameserver**SQL bağlantı noktasını göstermelidir. SDC söz konusu olduğunda, **ındexserver** SQL bağlantı noktasını işaret etmelidir
+  * MDC için anahtar, **nameserver**SQL bağlantı noktasını göstermelidir. SDC söz konusu olduğunda, **dizin sunucusunun** SQL bağlantı noktasını işaret etmelidir
   * Kullanıcı eklemek ve silmek için kimlik bilgilerine sahip olmalıdır
 * Kök kullanıcı olarak, HANA 'nın yüklü olduğu sanal makinede SAP HANA yedekleme yapılandırma betiğini (ön kayıt betiği) çalıştırın. [Bu betik](https://aka.ms/scriptforpermsonhana) , yedekleme IÇIN hazırlanma Hana sistemini alır. Ön kayıt betiği hakkında daha fazla bilgi edinmek için [ön kayıt betiğinin ne olduğunu](#what-the-pre-registration-script-does) öğrenin bölümüne bakın.
+
+>[!NOTE]
+>Azure Backup, bir Azure VM 'de çalışan bir SAP HANA Veritabanının yedeklenmesinde gün ışığından yararlanma saati değişikliklerini otomatik olarak ayarlamaz.
+>
+>İlkeyi gerektiği şekilde el ile değiştirin.
 
 ## <a name="set-up-network-connectivity"></a>Ağ bağlantısını ayarlama
 
@@ -116,7 +121,7 @@ hdbuserstore list
 Komut çıktısı {SID} {DBNAME} anahtarını, AZUREWLBACKUPHANAUSER olarak gösterilen kullanıcıyla görüntülemelidir.
 
 >[!NOTE]
-> Altında `/usr/sap/{SID}/home/.hdb/`farklı bir ssfs dosyası kümesine sahip olduğunuzdan emin olun. Bu yolda yalnızca bir klasör olmalıdır.
+> Altında farklı bir SSFS dosyası kümesine sahip olduğunuzdan emin olun `/usr/sap/{SID}/home/.hdb/` . Bu yolda yalnızca bir klasör olmalıdır.
 
 ## <a name="create-a-recovery-service-vault"></a>Kurtarma hizmeti Kasası oluşturma
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0c5bfb6632a22a890ac2387f06464c18be7dd714
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3b4159d81ce1d202dd1a302e863e5392f51a9868
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699065"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747804"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Siparişler panosu
 
@@ -58,7 +58,7 @@ Toplam siparişlerin yanındaki yüzde değeri, seçilen tarih aralığındaki b
 
 ### <a name="orders-by-geography"></a>Coğrafya tarafından siparişler
 
-Coğrafya ısı haritasını 'e **göre siparişler** , bir dünya haritasının siparişlerinin sayımını gösterir ve müşteri ülkesine bağlı olarak eşlenmiş olan bilgisayarları gösterir. Bu ısı haritasını, **[Coğrafya ısı haritasını ile müşteriyle](./customer-dashboard.md#customer-by-geography)** aynı şekilde çalışır.
+Coğrafya ısı haritasını 'e **göre siparişler** bir dünya haritasının siparişlerinin sayımını gösterir ve müşteri ülkesi/bölgesine göre eşlenmiş olan yok sayılır. Bu ısı haritasını, **[Coğrafya ısı haritasını ile müşteriyle](./customer-dashboard.md#customer-by-geography)** aynı şekilde çalışır.
 
 ![İş Ortağı Merkezi, coğrafi olarak sipariş Analizi](./media/orders-by-geography.png)
 
@@ -103,7 +103,7 @@ Sipariş Ayrıntıları tablosu, Alım tarihine göre sıralanan 1000 üst sipar
 - Kılavuzdaki her bir sütun sıralanabilir.
 - Kayıt sayısı 1000 ' den küçükse veriler TSV dosyasına ayıklanabilir.
 - 1000 üzerinden kayıt numarası varsa, verilen veriler sonraki 30 güne ait bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
-- Yalnızca ilgilendiğiniz verileri göstermek için, **Sipariş Ayrıntıları tablosuna** filtreler uygulanabilir. Veriler ülke, Azure lisans türü, Market lisans türü, teklif türü, sipariş durumu, ücretsiz izler, Market abonelik KIMLIĞI, müşteri KIMLIĞI ve şirket adı ile filtrelenebilir.
+- Yalnızca ilgilendiğiniz verileri göstermek için, **Sipariş Ayrıntıları tablosuna** filtreler uygulanabilir. Veriler ülke/bölge, Azure lisans türü, Market lisans türü, teklif türü, sipariş durumu, ücretsiz izler, Market abonelik KIMLIĞI, müşteri KIMLIĞI ve şirket adı ile filtrelenebilir.
 - Azure Market veya AppSource aracılığıyla satın alınan SaaS teklifleri bir Azure aboneliği gerektirmediğinden, Market abonelik KIMLIĞI **ayrıntılı siparişler verileri** bölümünde 00000000-0000-0000-0000-000000000000 olarak görünür.
 
 #### <a name="orders-page-filters"></a>Sipariş sayfası filtreleri

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 085830ee1c8e7556a7c3390aaf6e638245d20324
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264927"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745769"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -342,7 +342,7 @@ Standart bir ExpressRoute devresine kıyasla, yerel bir bağlantı hattı aşağ
 ExpressRoute yerel Ayrıca kaynaklar üzerinde aynı sınırlara sahiptir (ör. devre başına VNET sayısı) standart olarak. 
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>ExpressRoute yerel olarak kullanılabilir ve hangi Azure bölgelerinin her eşleme konumu ile eşlenir?
-ExpressRoute yerel, bir veya iki Azure bölgesinin kapalı olduğu eşleme konumlarında kullanılabilir. Bu eyalet veya ülke veya ülke içinde Azure bölgesi olmayan bir eşleme konumunda kullanılamaz. Lütfen [konumlar sayfasında](expressroute-locations-providers.md)tam eşlemelere bakın.  
+ExpressRoute yerel, bir veya iki Azure bölgesinin kapalı olduğu eşleme konumlarında kullanılabilir. Bu eyalet veya ülke/bölge içinde Azure bölgesinin olmadığı bir eşleme konumunda kullanılamaz. Lütfen [konumlar sayfasında](expressroute-locations-providers.md)tam eşlemelere bakın.  
 
 ## <a name="expressroute-for-office-365"></a>Office 365 için ExpressRoute
 

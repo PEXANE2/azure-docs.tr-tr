@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 039fdda4ab8fe636c1eab926c477aea420b59de8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f4919bb6856703c5bb5f1c798a8bcf5b2a108cc7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647492"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747662"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) içinde dış tablolar oluşturma ve kullanma
 
@@ -112,7 +112,7 @@ CREATE EXTERNAL TABLE Taxi (
 
 Sorgularınızdaki [dış tabloları](develop-tables-external-tables.md) , SQL Server sorgularda kullandığınız şekilde kullanabilirsiniz.
 
-Aşağıdaki sorgu, önceki bölümde oluşturduğumuz *popülasyon* dış tablosunu kullanarak bunu gösterir. Ülke adlarını, popülasyon 2019 ' de azalan sırada döndürür.
+Aşağıdaki sorgu, önceki bölümde oluşturduğumuz *popülasyon* dış tablosunu kullanarak bunu gösterir. Ülke/bölge adlarını, popülasyon 2019 olarak azalan sırada döndürür.
 
 > [!NOTE]
 > Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz.

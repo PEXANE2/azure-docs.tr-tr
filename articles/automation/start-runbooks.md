@@ -1,16 +1,16 @@
 ---
 title: Azure Otomasyonu'nda Runbook başlatma
-description: ", Azure Otomasyonu 'nda bir runbook başlatmak için kullanılabilecek farklı yöntemleri özetler ve hem Azure portal hem de Windows PowerShell kullanma hakkında ayrıntılı bilgi sağlar."
+description: Bu makalede, Azure Otomasyonu 'nda bir runbook 'u başlatma açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7f2c0dda952959db3bffba6016f48b986016c19e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20f2e0e4dec7602b69a24ed1eccd0c4ec946038b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679462"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744911"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Otomasyonu'nda Runbook başlatma
 
@@ -19,9 +19,9 @@ Aşağıdaki tablo, belirli senaryonuz için en uygun olan Azure Otomasyonu 'nda
 | **Yöntem** | **Özellikler** |
 | --- | --- |
 | [Azure portal](#start-a-runbook-with-the-azure-portal) |<li>Etkileşimli kullanıcı arabirimiyle en basit yöntem.<br> <li>Basit parametre değerleri sağlamak için form.<br> <li>İş durumunu kolayca izleyin.<br> <li>Azure oturum açma ile erişim kimliği doğrulandı. |
-| [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Windows PowerShell cmdlet 'leri ile komut satırından çağrı.<br> <li>, Birden çok adımla otomatikleştirilmiş çözüme eklenebilir.<br> <li>İstek sertifika veya OAuth Kullanıcı sorumlusu/hizmet sorumlusu ile doğrulandı.<br> <li>Basit ve karmaşık parametre değerlerini sağlayın.<br> <li>İş durumunu izleyin.<br> <li>PowerShell cmdlet 'lerini desteklemek için gereken istemci. |
+| [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Windows PowerShell cmdlet 'leri ile komut satırından çağrı.<br> <li>, Birden çok adımla otomatikleştirilmiş bir özelliğe eklenebilir.<br> <li>İstek sertifika veya OAuth Kullanıcı sorumlusu/hizmet sorumlusu ile doğrulandı.<br> <li>Basit ve karmaşık parametre değerlerini sağlayın.<br> <li>İş durumunu izleyin.<br> <li>PowerShell cmdlet 'lerini desteklemek için gereken istemci. |
 | [Azure Otomasyonu API 'SI](/rest/api/automation/) |<li>En esnek yöntem, ancak çoğu karmaşıktır.<br> <li>HTTP istekleri yapan herhangi bir özel koddan çağırın.<br> <li>Sertifika veya OAuth Kullanıcı sorumlusu/hizmet sorumlusu ile kimlik doğrulaması iste.<br> <li>Basit ve karmaşık parametre değerlerini sağlayın. *API 'yi kullanarak bir Python runbook 'u arıyorsanız JSON yükünün serileştirilmesi gerekir.*<br> <li>İş durumunu izleyin. |
-| [Web kancaları](automation-webhooks.md) |<li>Tek bir HTTP isteğinden runbook 'u başlatın.<br> <li>URL 'de güvenlik belirteci ile kimlik doğrulandı.<br> <li>İstemci, Web kancası oluşturulduğunda belirtilen parametre değerlerini geçersiz kılamaz. Runbook, HTTP istek ayrıntıları ile doldurulmuş tek bir parametre tanımlayabilir.<br> <li>Web kancası URL 'SI aracılığıyla iş durumunu izleyebilme yeteneği yoktur. |
+| [Web Kancaları](automation-webhooks.md) |<li>Tek bir HTTP isteğinden runbook 'u başlatın.<br> <li>URL 'de güvenlik belirteci ile kimlik doğrulandı.<br> <li>İstemci, Web kancası oluşturulduğunda belirtilen parametre değerlerini geçersiz kılamaz. Runbook, HTTP istek ayrıntıları ile doldurulmuş tek bir parametre tanımlayabilir.<br> <li>Web kancası URL 'SI aracılığıyla iş durumunu izleyebilme yeteneği yoktur. |
 | [Azure uyarısına yanıt verme](../log-analytics/log-analytics-alerts.md) |<li>Azure uyarısına yanıt olarak bir runbook başlatın.<br> <li>Runbook için Web kancasını yapılandırın ve uyarı bağlantısı yapın.<br> <li>URL 'de güvenlik belirteci ile kimlik doğrulandı. |
 | [Zamanlama](automation-schedules.md) |<li>Runbook 'u saatlik, günlük, haftalık veya aylık zamanlamaya göre otomatik olarak başlatın.<br> <li>Azure portal, PowerShell cmdlet 'leri veya Azure API aracılığıyla zamanlamayı işleme.<br> <li>Zamanlamaya göre kullanılacak parametre değerlerini sağlayın. |
 | [Başka bir runbook 'tan](automation-child-runbooks.md) |<li>Runbook 'u başka bir runbook 'ta etkinlik olarak kullanın.<br> <li>Birden çok runbook tarafından kullanılan işlevsellik için faydalıdır.<br> <li>Alt runbook 'a parametre değerleri sağlayın ve üst runbook 'ta çıktıyı kullanın. |
@@ -30,10 +30,7 @@ Aşağıdaki görüntüde, bir runbook 'un yaşam döngüsünde ayrıntılı ad�
 
 ![Runbook mimarisi](media/automation-starting-runbook/runbooks-architecture.png)
 
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
-
-## <a name="runbook-parameters"></a>Runbook parametreleri
+## <a name="work-with-runbook-parameters"></a>Runbook parametreleriyle çalışma
 
 Azure portal veya Windows PowerShell 'den bir runbook başlattığınızda, yönerge Azure Otomasyonu web hizmeti aracılığıyla gönderilir. Bu hizmet, karmaşık veri türleriyle parametreleri desteklemiyor. Karmaşık bir parametre için bir değer sağlamanız gerekiyorsa, bunu [Azure Otomasyonu 'Nda alt runbook 'lar](automation-child-runbooks.md)bölümünde açıklandığı gibi başka bir runbook 'tan satır içi olarak çağırmanız gerekir.
 
@@ -112,9 +109,9 @@ Joe
 Smith
 ```
 
-### <a name="credentials"></a>Kimlik Bilgileri
+### <a name="credentials"></a>Kimlik bilgileri
 
-Parametre veri türü `PSCredential`ise, bir Azure Otomasyonu [kimlik bilgisi varlığının](automation-credentials.md)adını sağlayabilirsiniz. Runbook, kimlik bilgisini belirttiğiniz adla alır. Aşağıdaki test runbook 'u adlı `credential`bir parametreyi kabul eder.
+Parametre veri türü ise `PSCredential` , bir Azure Otomasyonu [kimlik bilgisi varlığının](automation-credentials.md)adını sağlayabilirsiniz. Runbook, kimlik bilgisini belirttiğiniz adla alır. Aşağıdaki test runbook 'u adlı bir parametreyi kabul eder `credential` .
 
 ```powershell
 Workflow Test-Parameters
@@ -126,13 +123,13 @@ Workflow Test-Parameters
 }
 ```
 
-Aşağıdaki metin, adlı `My Credential`bir kimlik bilgisi varlığı olduğunu varsayarak Kullanıcı parametresi için kullanılabilir.
+Aşağıdaki metin, adlı bir kimlik bilgisi varlığı olduğunu varsayarak Kullanıcı parametresi için kullanılabilir `My Credential` .
 
 ```input
 My Credential
 ```
 
-Kimlik bilgilerinde kullanıcı adının nerede olduğunu varsayarsak `jsmith`, aşağıdaki çıktı görüntülenir.
+Kimlik bilgilerinde kullanıcı adının nerede olduğunu varsayarsak `jsmith` , aşağıdaki çıktı görüntülenir.
 
 ```output
 jsmith
@@ -143,7 +140,7 @@ jsmith
 1. Azure portal, **Otomasyon** ' u seçin ve ardından bir Otomasyon hesabının adına tıklayın.
 2. Hub menüsünde **runbook 'lar**' ı seçin.
 3. Runbook 'Lar sayfasında, bir runbook seçin ve ardından **Başlat**' a tıklayın.
-4. Runbook 'un parametreleri varsa her parametre için bir metin kutusuyla birlikte değerler sağlamanız istenir. Parametreler hakkında daha fazla bilgi için bkz. [runbook parametreleri](#runbook-parameters).
+4. Runbook 'un parametreleri varsa her parametre için bir metin kutusuyla birlikte değerler sağlamanız istenir. Parametreler hakkında daha fazla bilgi için bkz. [runbook parametreleri](#work-with-runbook-parameters).
 5. Iş bölmesinde, runbook işinin durumunu görüntüleyebilirsiniz.
 
 ## <a name="start-a-runbook-with-powershell"></a>PowerShell ile runbook başlatma
@@ -173,15 +170,16 @@ While ($doLoop) {
 Get-AzAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
 ```
 
-Runbook için parametreler gerekiyorsa, bunları bir [Hashtable](https://technet.microsoft.com/library/hh847780.aspx)olarak belirtmeniz gerekir. Hashtable 'ın anahtarı parametre adıyla ve değer parametre değeri olmalıdır. Aşağıdaki örnek; FirstName ve LastName adlı iki dize parametresi, RepeatCount adlı bir tamsayı ve Show adlı bir boolean parametresiyle bir runbook’u nasıl çalıştıracağınızı gösterir. Parametreler hakkında daha fazla bilgi için bkz. [runbook parametreleri](#runbook-parameters).
+Runbook için parametreler gerekiyorsa, bunları bir [Hashtable](https://technet.microsoft.com/library/hh847780.aspx)olarak belirtmeniz gerekir. Hashtable 'ın anahtarı parametre adıyla ve değer parametre değeri olmalıdır. Aşağıdaki örnek; FirstName ve LastName adlı iki dize parametresi, RepeatCount adlı bir tamsayı ve Show adlı bir boolean parametresiyle bir runbook’u nasıl çalıştıracağınızı gösterir. Parametreler hakkında daha fazla bilgi için bkz. [runbook parametreleri](#work-with-runbook-parameters).
 
 ```azurepowershell-interactive
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
-Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -ResourceGroupName "ResourceGroup01" –Parameters $params
+Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -ResourceGroupName "ResourceGroup01" –Parameters $params
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Veri merkezinizde Otomasyon Runbook 'larını yürütme hakkında bilgi edinmek için [karma runbook çalışanlarına](automation-hybrid-runbook-worker.md)bakın.
-* Belirli veya yaygın işlevler için diğer runbook 'lar tarafından kullanılacak modüler runbook 'lar oluşturma hakkında daha fazla bilgi edinmek için [alt runbook 'lara](automation-child-runbooks.md)bakın.
-* Dil başvurusu ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi için [PowerShell belgelerine](https://docs.microsoft.com/powershell/scripting/overview)bakın.
+* [Azure Otomasyonu 'nda runbook 'ları yönetme](manage-runbooks.md)
+* [Karma Runbook Çalışanına genel bakış](automation-hybrid-runbook-worker.md)
+* [Modüler runbook’lar oluşturma](automation-child-runbooks.md)
+* [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview)

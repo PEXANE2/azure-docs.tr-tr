@@ -1,22 +1,22 @@
 ---
 title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
-description: Windows ve Linux makineleriniz için güncelleştirmeleri yöneten Güncelleştirme Yönetimi özelliğine genel bakış.
+description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 05/20/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba4ce84dca85ea1e3f2385ac280bd82c16aa8fb3
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b064e22b56d63055cede400fa2b06cee96d21664
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714772"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745309"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
 Azure 'da, şirket içi ortamlarda ve diğer bulut ortamlarında Windows ve Linux makineleriniz için işletim sistemi güncelleştirmelerini yönetmek üzere Azure Otomasyonu 'nda Güncelleştirme Yönetimi kullanabilirsiniz. Tüm aracı makinelerde kullanılabilir güncelleştirmelerin durumunu hızlı bir şekilde değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
 
-Aşağıdaki yöntemleri kullanarak sanal makineler (VM) için Güncelleştirme Yönetimi etkinleştirebilirsiniz:
+Aşağıdaki yollarla VM 'Ler için Güncelleştirme Yönetimi etkinleştirebilirsiniz:
 
 * Azure [Otomasyonu hesabınızdan](automation-onboard-solutions-from-automation-account.md) bir veya daha fazla Azure makinesi için.
 * Azure dışı makineler için el ile.
@@ -31,7 +31,7 @@ Aşağıdaki yöntemleri kullanarak sanal makineler (VM) için Güncelleştirme 
 > [!NOTE]
 > Azure Otomasyonu 'ndan özel betikleri çalıştırmak için Güncelleştirme Yönetimi ile yapılandırılmış bir makine kullanamazsınız. Bu makine, yalnızca Microsoft tarafından imzalanmış güncelleştirme betiğini çalıştırabilir. 
 
-## <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
+## <a name="about-update-management"></a>Güncelleştirme Yönetimi hakkında
 
 Güncelleştirme Yönetimi tarafından yönetilen makineler, değerlendirme gerçekleştirmek ve dağıtımları güncelleştirmek için aşağıdaki konfigürasyonları kullanır:
 
@@ -44,7 +44,7 @@ Aşağıdaki diyagramda, bir çalışma alanındaki tüm bağlı Windows Server 
 
 ![Güncelleştirme Yönetimi iş akışı](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Güncelleştirme Yönetimi, aynı kiracıdaki birden çok abonelikte makinelerin yerel olarak eklenmesi için kullanılabilir.
+Güncelleştirme Yönetimi, makineleri aynı kiracıda birden çok aboneliğe yerel olarak dağıtmak için kullanılabilir.
 
 Bir paket yayımlandıktan sonra, düzeltme ekinin değerlendirme için Linux makinelere gösterilmesi 2 ile 3 saat sürer. Windows makinelerinde, düzeltme ekinin yayımlandıktan sonra değerlendirmesi göstermesi için 12-15 saat sürer.
 
@@ -74,7 +74,7 @@ Birden fazla Log Analytics çalışma alanında (aynı zamanda çoklu kayıt ola
 
 ### <a name="supported-client-types"></a>Desteklenen istemci türleri
 
-Aşağıdaki tabloda güncelleştirme değerlendirmeleri için desteklenen işletim sistemleri listelenmektedir. Düzeltme eki uygulama karma Runbook Worker gerektirir. Karma Runbook Worker gereksinimleri hakkında bilgi için bkz. [Windows karma Runbook Worker dağıtma](automation-windows-hrw-install.md) ve [Linux karma Runbook Worker dağıtma](automation-linux-hrw-install.md).
+Aşağıdaki tabloda güncelleştirme değerlendirmeleri için desteklenen işletim sistemleri listelenmektedir. Düzeltme eki uygulama karma Runbook Worker gerektirir. Karma Runbook Worker gereksinimleri hakkında bilgi için bkz. [Windows karma Runbook Worker dağıtımı](automation-windows-hrw-install.md) ve [Linux karma Runbook Worker](automation-linux-hrw-install.md)dağıtımı.
 
 > [!NOTE]
 > Linux makinelerin güncelleştirme değerlendirmesi yalnızca Otomasyon hesabı ve Log Analytics çalışma alanı [eşlemeleri tablosunda](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings)listelenen belirli bölgelerde desteklenir. 
@@ -89,8 +89,7 @@ Aşağıdaki tabloda güncelleştirme değerlendirmeleri için desteklenen işle
 |Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 (x86/x64)      |Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.         |
 
 > [!NOTE]
-> Azure sanal makine ölçek kümeleri, Güncelleştirme Yönetimi aracılığıyla yönetilebilir. Güncelleştirme Yönetimi, temel görüntüde değil örneklerin kendileri üzerinde işe yarar. Tüm sanal makine örneklerinin aynı anda güncelleştirilebilmesi için güncelleştirmeleri artımlı bir şekilde zamanlamanız gerekir.
-> [Azure dışı bir makine](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)ekleme altındaki adımları izleyerek sanal makine ölçek kümeleri için düğüm ekleyebilirsiniz.
+> Azure sanal makine ölçek kümeleri, Güncelleştirme Yönetimi aracılığıyla yönetilebilir. Güncelleştirme Yönetimi, temel görüntüde değil örneklerin kendileri üzerinde işe yarar. Tüm sanal makine örneklerinin aynı anda güncelleştirilebilmesi için güncelleştirmeleri artımlı bir şekilde zamanlamanız gerekir. [Değişiklik izleme ve stoğa Azure dışı bir makine ekleme](automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)altındaki adımları izleyerek sanal makine ölçek kümeleri için düğüm ekleyebilirsiniz.
 
 ### <a name="unsupported-client-types"></a>Desteklenmeyen istemci türleri
 
@@ -98,11 +97,9 @@ Aşağıdaki tabloda desteklenmeyen işletim sistemleri listelenmektedir:
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
-|Windows istemcisi     | İstemci işletim sistemleri (örneğin, Windows 7 ve Windows 10) desteklenmez.<br> Azure Windows sanal masaüstü (WVD) için önerilen yöntem<br> güncelleştirmeleri yönetmek için [Windows Update for Business for](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) Windows 10 Client Machine Patch Management. |
+|Windows istemcisi     | İstemci işletim sistemleri (örneğin, Windows 7 ve Windows 10) desteklenmez.        |
 |Windows Server 2016 Nano Server     | Desteklenmiyor.       |
 |Azure Kubernetes hizmet düğümleri | Desteklenmiyor. [Azure Kubernetes Service (AKS) Içindeki Linux düğümlerine güvenlik ve çekirdek güncelleştirmelerini uygulama](../aks/node-updates-kured.md) bölümünde açıklanan düzeltme eki uygulama sürecini kullanın|
-
-
 
 ### <a name="client-requirements"></a>İstemci gereksinimleri
 
@@ -112,7 +109,7 @@ Aşağıdaki bilgiler işletim sistemine özgü istemci gereksinimlerini açıkl
 
 Windows aracılarının bir WSUS sunucusuyla iletişim kuracak şekilde yapılandırılması veya Microsoft Update erişmesi gerekir. Windows için Log Analytics aracısının nasıl yükleneceği hakkında bilgi için bkz. [Windows bilgisayarlarını Azure izleyici 'ye bağlama](../log-analytics/log-analytics-windows-agent.md).
 
-Güncelleştirme Yönetimi, Microsoft uç nokta Configuration Manager ile kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Güncelleştirme Yönetimi Configuration Manager tümleştirme](updatemgmt-mecmintegration.md#configuration). [Windows için Log Analytics Aracısı](../azure-monitor/platform/agent-windows.md) , Configuration Manager ortamınızdaki siteler tarafından yönetilen Windows sunucuları için gereklidir. 
+Güncelleştirme Yönetimi, Microsoft uç nokta Configuration Manager ile kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Windows uç nokta Configuration Manager ile güncelleştirme yönetimi tümleştirme](updatemgmt-mecmintegration.md). [Windows için Log Analytics Aracısı](../azure-monitor/platform/agent-windows.md) , Configuration Manager ortamınızdaki siteler tarafından yönetilen Windows sunucuları için gereklidir. 
 
 Varsayılan olarak, Azure Marketi 'nden dağıtılan Windows VM 'Leri Windows Update hizmetinden otomatik güncelleştirmeleri alacak şekilde ayarlanır. Bu davranış, çalışma alanınıza Windows VM 'Leri eklediğinizde değişmez. Güncelleştirme Yönetimi kullanarak güncelleştirmeleri etkin bir şekilde yönetmezseniz, varsayılan davranış (güncelleştirmeleri otomatik olarak uygulamak için) geçerlidir.
 
@@ -170,9 +167,9 @@ Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı 
 
 | Bağlı kaynak | Destekleniyor | Açıklama |
 | --- | --- | --- |
-| Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Evet |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
@@ -239,7 +236,7 @@ Red Hat Enterprise sürüm 6 ' da güncelleştirmeleri sınıflandırmak için, 
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>Güncelleştirme Yönetimi Configuration Manager ile tümleştirin
 
-Bilgisayarları, sunucuları ve mobil cihazları yönetmek için Microsoft uç nokta Configuration Manager yatırım yapmış müşteriler, yazılım güncelleştirmelerinin yönetilmesine yardımcı olmak için Configuration Manager kuvvetini ve vadede yararlanır. Güncelleştirme Yönetimi Configuration Manager ile tümleştirme hakkında bilgi edinmek için bkz. [Configuration Manager güncelleştirme yönetimi Ile tümleştirme](updatemgmt-mecmintegration.md).
+Bilgisayarları, sunucuları ve mobil cihazları yönetmek için Microsoft uç nokta Configuration Manager yatırım yapmış müşteriler, yazılım güncelleştirmelerinin yönetilmesine yardımcı olmak için Configuration Manager kuvvetini ve vadede yararlanır. Güncelleştirme Yönetimi Configuration Manager ile tümleştirme hakkında bilgi edinmek için bkz. [Windows Endpoint Configuration Manager Ile tümleştirme güncelleştirme yönetimi](updatemgmt-mecmintegration.md).
 
 ## <a name="third-party-updates-on-windows"></a>Windows 'da üçüncü taraf güncelleştirmeleri
 
@@ -251,10 +248,10 @@ Yeni veya mevcut bir Otomasyon hesabına ve Azure Izleyici Log Analytics çalı�
 
 Güncelleştirme Yönetimi etkinleştirip yönetilecek makineleri seçebileceğiniz yollar şunlardır:
 
-* [Bir sanal makineden](automation-onboard-solutions-from-vm.md).
-* [Birden çok makineye göz atmaktan](automation-onboard-solutions-from-browse.md).
-* [Bir Azure Otomasyonu hesabından](automation-onboard-solutions.md).
+* [Bir sanal makineden](automation-onboard-solutions-from-vm.md)
+* [Birden çok makineye göz atmaya](automation-onboard-solutions-from-browse.md)
+* [Bir Azure Otomasyonu hesabından](automation-onboard-solutions.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güncelleştirme Yönetimi hakkındaki genel soruları gözden geçirmek için Azure Otomasyonu [SSS](automation-faq.md) ' ye göz atın.
+[Azure Otomasyonu sık sorulan sorular](automation-faq.md)

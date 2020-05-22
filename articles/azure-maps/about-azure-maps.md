@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fdac12350db785e6194cd3d057f4d2adfefa5969
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 113e745e078bd5d345845318af1b10ed98f2aecb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80335743"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746912"
 ---
 # <a name="what-is-azure-maps"></a>Azure Haritalar nedir?
 
@@ -155,7 +155,7 @@ Daha fazla bilgi için bkz. [trafik API 'si belgeleri](https://docs.microsoft.co
 
 ### <a name="ip-to-location-service"></a>IP-konum hizmeti
 
-IP adresi için alınan iki harfli ülke kodunu önizlemek için IP konumu hizmetini kullanın. Bu hizmet, coğrafi konuma göre özelleştirilmiş uygulama içeriği sağlayarak kullanıcı deneyimini geliştirmenize yardımcı olabilir.
+IP adresi için alınan iki harfli ülke/bölge kodunu önizlemek üzere IP konumu hizmetini kullanın. Bu hizmet, coğrafi konuma göre özelleştirilmiş uygulama içeriği sağlayarak kullanıcı deneyimini geliştirmenize yardımcı olabilir.
 
 REST API IP ile konum hizmeti hakkında daha fazla bilgi için [Azure Maps coğrafi konum API 'si belgelerini](https://docs.microsoft.com/rest/api/maps/geolocation)okuyun.
 
@@ -180,7 +180,7 @@ Azure Haritalar API 'Leri Şu anda tüm ülkelerde ve bölgelerde mevcuttur:
 * Çin
 * Güney Kore
 
-Geçerli IP adresinizin konumunun desteklenen bir ülkede olduğunu doğrulayın.
+Geçerli IP adresinizin konumunun desteklenen bir ülkede/bölgede olduğunu doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

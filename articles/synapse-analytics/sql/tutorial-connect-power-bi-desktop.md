@@ -6,19 +6,19 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1bdf2d0e3613af7eec339194d6d8a446be83f365
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 649c9a2e0dd9df21a9a59140d9f2999768aab555
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692400"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745412"
 ---
 # <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>Öğretici: Power BI Desktop & bir rapor oluşturmak için SQL isteğe bağlı (Önizleme) kullanın
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -51,10 +51,7 @@ Aşağıdaki Transact-SQL (T-SQL) betiğini çalıştırarak demo veritabanını
 
 ```sql
 -- Drop database if it exists
-IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Demo')
-BEGIN
-    DROP DATABASE Demo
-END;
+DROP DATABASE IF EXISTS Demo
 GO
 
 -- Create new database
@@ -62,30 +59,23 @@ CREATE DATABASE [Demo];
 GO
 ```
 
-## <a name="2---create-credential"></a>2-kimlik bilgisi oluştur
+## <a name="2---create-data-source"></a>2-veri kaynağı oluşturma
 
-İsteğe bağlı SQL hizmeti için depolama alanındaki dosyalara erişmek üzere bir kimlik bilgisi gerekir. Uç noktanız ile aynı bölgede bulunan bir depolama hesabının kimlik bilgilerini oluşturun. İsteğe bağlı SQL, farklı bölgelerdeki depolama hesaplarına erişebilse de depolama ve uç noktanın aynı bölgede bulunması daha iyi performans sağlar.
+İsteğe bağlı SQL hizmeti için depolama alanındaki dosyalara erişmek üzere bir veri kaynağı gereklidir. Uç noktanız ile aynı bölgede bulunan bir depolama hesabı için veri kaynağını oluşturun. İsteğe bağlı SQL, farklı bölgelerdeki depolama hesaplarına erişebilse de depolama ve uç noktanın aynı bölgede bulunması daha iyi performans sağlar.
 
-Aşağıdaki Transact-SQL (T-SQL) betiğini çalıştırarak kimlik bilgisini oluşturun:
+Aşağıdaki Transact-SQL (T-SQL) betiğini çalıştırarak veri kaynağını oluşturun:
 
 ```sql
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
-GO
-
--- Create credentials for Census Data container which resides in a azure open data storage account
--- There is no secret. We are using public storage account which doesn't need a secret.
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',
-SECRET = '';
-GO
+-- There is no credential in data surce. We are using public storage account which doesn't need a secret.
+CREATE EXTERNAL DATA SOURCE AzureOpenData
+WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/')
 ```
 
 ## <a name="3---prepare-view"></a>3-görünümü hazırlama
 
 Aşağıdaki Transact-SQL (T-SQL) betiğini çalıştırarak Power BI için dış tanıtım verilerine göre görünüm oluşturun:
 
-Aşağıdaki sorguyla veritabanı `usPopulationView` `Demo` içinde görünüm oluşturun:
+`usPopulationView`Aşağıdaki sorguyla veritabanı içinde görünüm oluşturun `Demo` :
 
 ```sql
 DROP VIEW IF EXISTS usPopulationView;
@@ -96,7 +86,8 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        BULK 'censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        DATA_SOURCE = 'AzureOpenData',
         FORMAT='PARQUET'
     ) AS uspv;
 ```
@@ -118,11 +109,11 @@ Aşağıdaki adımları kullanarak Power BI Desktop raporu oluşturun:
 
    ![Power BI Masaüstü uygulamasını açın ve veri al ' ı seçin.](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
 
-2. **Azure** > **Azure SQL veritabanı**' nı seçin. 
+2. **Azure**  >  **Azure SQL veritabanı**' nı seçin. 
 
    ![Veri kaynağını seçin.](./media/tutorial-connect-power-bi-desktop/step-1-select-data-source.png)
 
-3. Veritabanının **sunucu** alanında bulunduğu sunucunun adını yazın ve ardından veritabanı adını yazın `Demo` . **Içeri aktarma** seçeneğini belirleyip **Tamam**' ı seçin. 
+3. Veritabanının **sunucu** alanında bulunduğu sunucunun adını yazın ve ardından `Demo` veritabanı adını yazın. **Içeri aktarma** seçeneğini belirleyip **Tamam**' ı seçin. 
 
    ![Uç noktada veritabanı ' nı seçin.](./media/tutorial-connect-power-bi-desktop/step-2-db.png)
 
@@ -137,11 +128,11 @@ Aşağıdaki adımları kullanarak Power BI Desktop raporu oluşturun:
         ![SQL oturum açma kullanın.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
-5. Görünümü `usPopulationView`seçin ve ardından **Yükle**' yi seçin. 
+5. Görünümü seçin `usPopulationView` ve ardından **Yükle**' yi seçin. 
 
    ![Seçili veritabanında bir görünüm seçin.](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
 
-6. İşlemin tamamlanmasını bekleyin ve ardından bir açılır pencere görüntülenir `There are pending changes in your queries that haven't been applied`. **Değişiklikleri Uygula**' yı seçin. 
+6. İşlemin tamamlanmasını bekleyin ve ardından bir açılır pencere görüntülenir `There are pending changes in your queries that haven't been applied` . **Değişiklikleri Uygula**' yı seçin. 
 
    ![Değişiklikleri Uygula ' ya tıklayın.](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
 
@@ -163,7 +154,7 @@ Bu raporu kullanarak işiniz bittiğinde, aşağıdaki adımlarla kaynakları si
 1. Depolama hesabı için kimlik bilgilerini sil
 
    ```sql
-   DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
+   DROP EXTENAL DATA SOURCE AzureOpenData
    ```
 
 2. Görünümü Sil

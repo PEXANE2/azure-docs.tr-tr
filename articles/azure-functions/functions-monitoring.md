@@ -4,12 +4,12 @@ description: İşlev yürütmeyi izlemek için Azure Application Insights Azure 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 6218e5163212540f2132020dffea520d34b77cc4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2aaf52a528f929f183c9bf4565d9f0da4918f146
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648870"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757764"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -610,7 +610,7 @@ Oluşturulan Application Insights kaynağını gözden geçirmek için, **Applic
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>Mevcut bir işlev uygulamasına ekleme 
 
-[Visual Studio](functions-create-your-first-function-visual-studio.md)kullanarak bir işlev uygulaması oluşturduğunuzda, Application Insights kaynağını oluşturmanız gerekir. Daha sonra bu kaynaktaki izleme anahtarını, işlev uygulamanızda bir uygulama ayarı olarak ekleyebilirsiniz.
+[Visual Studio](functions-create-your-first-function-visual-studio.md)kullanarak bir işlev uygulaması oluşturduğunuzda, Application Insights kaynağını oluşturmanız gerekir. Daha sonra bu kaynaktaki izleme anahtarını, işlev uygulamanızda bir [uygulama ayarı](functions-how-to-use-azure-function-app-settings.md#settings) olarak ekleyebilirsiniz.
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
@@ -662,7 +662,7 @@ Application Insights ' de **canlı ölçüm akışı**' ı seçin. [Örneklenir 
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 [Azure CLI](/cli/azure/install-azure-cli)kullanarak akış günlüklerini etkinleştirebilirsiniz. Oturum açmak için aşağıdaki komutları kullanın, aboneliğinizi seçin ve günlük dosyalarını akışla açın:
 

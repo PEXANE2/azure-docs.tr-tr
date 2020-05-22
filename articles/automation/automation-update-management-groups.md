@@ -1,16 +1,16 @@
 ---
 title: Azure Otomasyonu ile dinamik grupları kullanın Güncelleştirme Yönetimi
-description: Bu makalede, dinamik grupların Azure Otomasyonu Güncelleştirme Yönetimi ile nasıl çalıştığı açıklanır.
+description: Bu makalede, Azure Otomasyonu Güncelleştirme Yönetimi ile dinamik grupların nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: bf4c156d2bf9c205bd7545a96b5314dd43b2d02c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 792f69c900853d76dc260ad1de2e635e47bb2b4a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690768"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744381"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Güncelleştirme Yönetimi ile dinamik grupları kullanma
 
@@ -49,4 +49,4 @@ Azure dışı makineler için dinamik bir grup, bilgisayar grupları olarak da a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Dinamik bir grup oluşturduktan sonra [bir güncelleştirme dağıtımı oluşturabilirsiniz](automation-tutorial-update-management.md).
+[Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)

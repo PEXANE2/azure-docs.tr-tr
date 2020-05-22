@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cb89caa0a2fe5cde5bcea92e08c0df117215d916
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 28f69d3ef8301e00b470ce09353be6ae3259bbe3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713310"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744981"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Otomasyonu 'nda değişkenleri yönetme
 
@@ -194,6 +194,6 @@ Aşağıdaki görüntüde, bir değişken grafik runbook 'unda basit bir değerl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu’nda modülleri yönetme](modules.md)
-* [Azure Otomasyonu’nda runbook yürütme](../automation-runbook-execution.md)
-* [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation-dsc-overview.md) 
+* Değişkenlere erişmek için kullanılan cmdlet 'ler hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'da modülleri yönetme](modules.md).
+* Runbook 'lar hakkında genel bilgi için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md).
+* DSC yapılandırmalarının ayrıntıları için bkz. [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation-dsc-overview.md).

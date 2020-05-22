@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 45e7e59f72fcda983053314c0b11ff56de8a72e8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314353"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747760"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway Azure Web uygulaması güvenlik duvarı
 
@@ -72,7 +72,7 @@ Bu bölümde, Application Gateway için WAF 'nin sağladığı temel avantajlar 
 - Daha düşük ve üst sınırlara sahip yapılandırılabilir istek boyutu sınırları.
 - Dışlama listeleri, bir WAF değerlendirmesinden belirli istek özniteliklerini atlamanızı sağlar. Ortak bir örnek, kimlik doğrulama veya parola alanları için kullanılan Active Directory eklenen belirteçlerdir.
 - Uygulamalarınızın belirli ihtiyaçlarını karşılamak için özel kurallar oluşturun.
-- Coğrafi filtreleme, belirli ülkelerin uygulamalarınıza erişim kazanmasıyla izin vermek veya engellemek için trafiği filtreleyin. (önizleme)
+- Belirli ülkelerin/bölgelerin uygulamalarınıza erişim kazanmasıyla izin vermek veya engellemek için coğrafi filtreleme trafiği. (önizleme)
 - Botları hafifletme kural kümesiyle uygulamalarınızı koruyun. (önizleme)
 
 ## <a name="waf-policy"></a>WAF Ilkesi
@@ -160,7 +160,7 @@ Yerleşik Azure WAF güvenlik duvarı olayları çalışma kitabı ile WAF 'nizi
 
 ![Sentinel](../media/ag-overview/sentinel.png)
 
-#### <a name="logging"></a>Günlüğe Kaydetme
+#### <a name="logging"></a>Günlüğe kaydetme
 
 WAF Application Gateway algıladığı her tehdit üzerinde ayrıntılı raporlama sağlar. Günlüğe kaydetme, Azure Tanılama günlükleriyle tümleşiktir. Uyarılar. JSON biçiminde kaydedilir. Bu Günlükler, [Azure izleyici günlükleri](../../azure-monitor/insights/azure-networking-analytics.md)ile tümleştirilebilir.
 

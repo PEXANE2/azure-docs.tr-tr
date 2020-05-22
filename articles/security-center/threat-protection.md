@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: bdd8104200bf21507e978abacf600c4780bb3808
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636664"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744170"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde tehdit koruması
 
@@ -53,14 +53,6 @@ Azure Güvenlik Merkezi, Windows tabanlı makinelerinizi izlemek ve korumak içi
     > Microsoft Defender ATP algılayıcısı, güvenlik merkezi kullanan Windows sunucularında otomatik olarak etkinleştirilir.
 
     Microsoft Defender ATP bir tehdit algıladığında bir uyarı tetikler. Uyarı, güvenlik merkezi panosunda gösterilir. Panodan, Microsoft Defender ATP konsoluna Pivot verebilir ve saldırının kapsamını açığa çıkarmak için ayrıntılı bir araştırma gerçekleştirebilirsiniz. Microsoft Defender ATP hakkında daha fazla bilgi için bkz. [Microsoft Defender ATP hizmetine sunucu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)ekleme.
-
-* **Kilitlenme bilgi döküm Analizi** <a name="windows-dump"></a> -Yazılım kilitlenirse çökme dökümü kilitlenme sırasında belleğin bir kısmını yakalar.
-
-    Kötü amaçlı yazılımdan koruma veya kötü amaçlı yazılım içeren bir kilitlenme oluşmuş olabilir. Güvenlik ürünleri tarafından algılanmayı önlemek için çeşitli kötü amaçlı yazılım biçimleri, diske yazmayı veya diske yazılmış yazılım bileşenlerini şifrelemeyi önleyen bir dosya daha az saldırı kullanır. Bu tür bir saldırı geleneksel disk tabanlı yaklaşımlar kullanılarak algılanarak tespit edilir.
-
-    Ancak, bellek analizini kullanarak bu tür bir saldırıyı tespit edebilirsiniz. Güvenlik Merkezi, kilitlenme dökümündeki belleği çözümleyerek saldırının kullandığı teknikleri algılayabilir. Örneğin, saldırı yazılımda güvenlik açıklarından yararlanmaya, gizli verilere erişebilmeye ve güvenliği aşılmış bir makinede sürekli olarak devam ediyor olabilir. Güvenlik Merkezi, ana bilgisayarlara en az performans etkisi ile çalışır.
-
-    Kilitlenme bilgi döküm Analizi uyarılarının ayrıntıları için, [Uyarı tablosuna](alerts-reference.md#alerts-windows)bakın.
 
 * **Dosya daha az saldırı algılama** <a name="windows-fileless"></a> -Uç noktalarınızı hedefleyen dosya daha az saldırı yaygındır. Algılamayı önlemek için, dosya daha az saldırı kötü amaçlı yükleri belleğe ekler. Saldırgan yükleri, güvenliği aşılmış işlemlerin belleğinde kalır ve çok çeşitli kötü amaçlı etkinlikler gerçekleştirir.
 

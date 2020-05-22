@@ -3,12 +3,12 @@ title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 80c69ec38a364238eb03e786c23cc927d6181062
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 6c2dc8303b630eb01de5c3ad9e3504dfec5256bc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684312"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746895"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -39,13 +39,6 @@ Kaynak sağlayıcı bir başarı kodu döndürdüğünde, **Auditınotexists** v
 
 Şu anda **Enforceopaconstraint** veya **Enforceregopolicy** etkileri için herhangi bir değerlendirme sırası yoktur.
 
-## <a name="disabled"></a>Devre dışı
-
-Bu efekt, durumları test etmek veya ilke tanımının etkiyi ne zaman parametreleştirildiği için faydalıdır. Bu esneklik, bu ilkenin atamalarının tümünü devre dışı bırakmak yerine tek bir atamayı devre dışı bırakmayı mümkün kılar.
-
-Devre dışı bırakılmış etkine bir alternatif, ilke atamasında ayarlanan **Enforcementmode** ' dır.
-**Enforcementmode** _devre dışı bırakıldığında_, kaynaklar yine de değerlendirilir. Etkinlik günlükleri ve ilke efekti gibi günlüğe kaydetme gerçekleşmez. Daha fazla bilgi için bkz. [ilke atama-zorlama modu](./assignment-structure.md#enforcement-mode).
-
 ## <a name="append"></a>Ekle
 
 Ekleme veya güncelleştirme sırasında istenen kaynağa ek alanlar eklemek için ekleme kullanılır. Ortak bir örnek, bir depolama kaynağı için izin verilen IP 'Leri belirtmektir.
@@ -55,7 +48,7 @@ Ekleme veya güncelleştirme sırasında istenen kaynağa ek alanlar eklemek iç
 
 ### <a name="append-evaluation"></a>Değerlendirme Ekle
 
-Append, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında istek bir kaynak sağlayıcısı tarafından işlenmeden önce değerlendirilir. Append, ilke kuralının **IF** koşulu karşılandığında alanları kaynağa ekler. Ekleme efekti, özgün istekteki bir değeri farklı bir değerle geçersiz kılabilir, bu durumda bir reddetme efekti görevi görür ve isteği reddeder. Varolan bir diziye yeni bir değer eklemek için diğer adın **[ \* ]** sürümünü kullanın.
+Append, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında istek bir kaynak sağlayıcısı tarafından işlenmeden önce değerlendirilir. Append, ilke kuralının **IF** koşulu karşılandığında alanları kaynağa ekler. Ekleme efekti, özgün istekteki bir değeri farklı bir değerle geçersiz kılabilir, bu durumda bir reddetme efekti görevi görür ve isteği reddeder. Varolan bir diziye yeni bir değer eklemek için **\[\*\]** diğer adın sürümünü kullanın.
 
 Ekleme efektini kullanan bir ilke tanımı, değerlendirme döngüsünün bir parçası olarak çalıştırıldığında, zaten mevcut olan kaynaklarda değişiklik yapmaz. Bunun yerine, **IF** koşulunu uyumlu değil olarak karşılayan herhangi bir kaynağı işaretler.
 
@@ -65,7 +58,7 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
 
 ### <a name="append-examples"></a>Ekleme örnekleri
 
-Örnek 1: bir depolama hesabında IP kuralları ayarlamak için dizi **değeri** ile **[ \* ]** olmayan bir [diğer ad](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[ \* ]** Olmayan diğer ad bir dizi ise, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
+Örnek 1: **field/value** **\[\*\]** BIR depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** olan [diğer ad](definition-structure.md#aliases) olmayan tek alan/değer çifti. **\[\*\]** Diğer ad olmayan bir dizi ise, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
 
 ```json
 "then": {
@@ -80,7 +73,7 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
 }
 ```
 
-Örnek 2: bir depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** ile bir **[ \* ]** [diğer adı](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[ \* ]** Diğer adını kullanarak, efekt **değeri** önceden var olabilecek bir diziye ekler. Dizi henüz yoksa, oluşturulur.
+Örnek 2: **field/value** **\[\*\]** BIR depolama hesabında IP kuralları ayarlamak için bir Array **değeri** olan bir [diğer ad](definition-structure.md#aliases) kullanan tek alan/değer çifti. **\[\*\]** Diğer ad kullanıldığında, efekt **değeri** önceden var olabilecek bir diziye ekler. Dizi henüz yoksa, oluşturulur.
 
 ```json
 "then": {
@@ -92,6 +85,346 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
             "action": "Allow"
         }
     }]
+}
+```
+
+
+
+
+## <a name="audit"></a>Denetim
+
+Denetim, uyumlu olmayan bir kaynağı değerlendirirken etkinlik günlüğünde bir uyarı olayı oluşturmak için kullanılır, ancak isteği durdurmaz.
+
+### <a name="audit-evaluation"></a>Denetim değerlendirmesi
+
+Denetim, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında Azure Ilkesi tarafından denetlenen son etkiye sahiptir. Daha sonra Azure Ilkesi kaynağı kaynak sağlayıcısına gönderir. Denetim, bir kaynak isteği ve bir değerlendirme çevrimi için aynı şekilde çalışmaktadır. Azure Ilkesi `Microsoft.Authorization/policies/audit/action` , etkinlik günlüğüne bir işlem ekler ve kaynağı uyumlu değil olarak işaretler.
+
+### <a name="audit-properties"></a>Denetim Özellikleri
+
+Denetim efektinin, ilke tanımının **daha sonra** koşulunda kullanılmak üzere ek özellikleri yoktur.
+
+### <a name="audit-example"></a>Denetim örneği
+
+Örnek: denetim efektini kullanma.
+
+```json
+"then": {
+    "effect": "audit"
+}
+```
+
+## <a name="auditifnotexists"></a>Auditınotexists
+
+Auditınotexists, **IF** koşuluyla eşleşen kaynaklarda denetim imkanı sunar, ancak **daha sonra** koşulun **ayrıntılarında** belirtilen bileşenleri yoktur.
+
+### <a name="auditifnotexists-evaluation"></a>Auditınotexists değerlendirmesi
+
+Bir kaynak sağlayıcısı bir oluşturma veya güncelleştirme kaynak isteği tamamladıktan ve başarı durum kodu döndürdüğünden Auditınotexists çalışır. İlgili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa denetim gerçekleşir. Azure Ilkesi, `Microsoft.Authorization/policies/audit/action` etkinlik günlüğüne denetim efektiyle aynı şekilde bir işlem ekler. Tetiklendiğinde **, durum durumunu karşılayan** kaynak, uyumlu değil olarak işaretlenen kaynaktır.
+
+### <a name="auditifnotexists-properties"></a>Auditınotexists özellikleri
+
+Auditınotexists etkilerinin **Details** özelliği, eşleştirilecek ilgili kaynakları tanımlayan tüm alt özellikleri içerir.
+
+- **Tür** [gerekli]
+  - Eşleştirilecek ilgili kaynağın türünü belirtir.
+  - **Ayrıntılar. Type** , **IF** koşulu kaynağı altında bir kaynak türü ise, ilke değerlendirilen kaynağın kapsamındaki bu **türden** kaynakları sorgular. Aksi takdirde, ilke, değerlendirilen kaynakla aynı kaynak grubu içinde sorgular.
+- **Ad** (isteğe bağlı)
+  - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
+  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve olmalıdır `[field('name')]` . Ancak, bunun yerine bir [Denetim](#audit) etkisi göz önünde bulundurulmalıdır.
+- **Resourcegroupname** (isteğe bağlı)
+  - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
+  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
+  - Varsayılan değer **IF** koşulu kaynağının kaynak grubudur.
+- **Mevcut Tencescope** (isteğe bağlı)
+  - İzin verilen değerler, _abonelik_ ve _ResourceGroup_.
+  - İle eşleşecek ilgili kaynağı nereden getirecek yerin kapsamını ayarlar.
+  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
+  - _ResourceGroup_Için, **resourcegroupname**içinde belirtilen **IF** koşulu kaynağının kaynak grubu veya kaynak grubu ile sınırlı olur.
+  - _Abonelik_için, ilgili kaynak için tüm aboneliği sorgular.
+  - Varsayılan _kaynak grubu_.
+- **ExistenceCondition** (isteğe bağlı)
+  - Belirtilmemişse, **türdeki** ilgili kaynaklar etkiyi karşılar ve denetimi tetiklemez.
+  - , **IF** koşulunun ilke kuralıyla aynı dili kullanır, ancak ilgili her kaynağa ayrı ayrı değerlendirilir.
+  - Eşleşen ilgili herhangi bir kaynak true olarak değerlendirilirse, efekt karşılanır ve denetimi tetiklemez.
+  - **IF** koşulunda değerlerle denklik denetlemek için [Field ()] kullanabilirsiniz.
+  - Örneğin, üst kaynağın ( **IF** koşulunda) eşleşen ilgili kaynakla aynı kaynak konumunda olduğunu doğrulamak için kullanılabilir.
+
+### <a name="auditifnotexists-example"></a>Auditınotexists örneği
+
+Örnek: kötü amaçlı yazılımdan koruma uzantısının mevcut olup olmadığını belirlemesi için sanal makineleri değerlendirir ve ne zaman yoksa denetler.
+
+```json
+{
+    "if": {
+        "field": "type",
+        "equals": "Microsoft.Compute/virtualMachines"
+    },
+    "then": {
+        "effect": "auditIfNotExists",
+        "details": {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "existenceCondition": {
+                "allOf": [{
+                        "field": "Microsoft.Compute/virtualMachines/extensions/publisher",
+                        "equals": "Microsoft.Azure.Security"
+                    },
+                    {
+                        "field": "Microsoft.Compute/virtualMachines/extensions/type",
+                        "equals": "IaaSAntimalware"
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+## <a name="deny"></a>Reddet
+
+Reddetme, bir ilke tanımı aracılığıyla tanımlı standartlarla eşleşmeyen bir kaynak isteğini engellemek için kullanılır ve istekte başarısız olur.
+
+### <a name="deny-evaluation"></a>Değerlendirmeyi Reddet
+
+Eşleşen bir kaynağı oluştururken veya güncelleştirirken reddetme, isteği kaynak sağlayıcısına gönderilmeden önce engeller. İstek bir olarak döndürülür `403 (Forbidden)` . Portalda, ilke ataması tarafından engellenmiş olan dağıtımda durum olarak yasak görüntülenir.
+
+Mevcut kaynakların değerlendirmesi sırasında, bir reddetme ilke tanımıyla eşleşen kaynaklar uyumlu değil olarak işaretlenir.
+
+### <a name="deny-properties"></a>Reddetme özellikleri
+
+Reddetme etkisi, ilke tanımının **daha sonra** koşulunda kullanılmak üzere ek özellikler içermez.
+
+### <a name="deny-example"></a>Reddetme örneği
+
+Örnek: reddetme efektini kullanma.
+
+```json
+"then": {
+    "effect": "deny"
+}
+```
+
+
+## <a name="deployifnotexists"></a>DeployIfNotExists
+
+Bir DeployIfNotExists öğesine benzer şekilde, bir DeployIfNotExists ilke tanımı, koşul karşılandığında bir şablon dağıtımı yürütür.
+
+> [!NOTE]
+> [Iç içe şablonlar](../../../azure-resource-manager/templates/linked-templates.md#nested-template) **Deployifnotexists**ile desteklenir, ancak [bağlantılı şablonlar](../../../azure-resource-manager/templates/linked-templates.md#linked-template) Şu anda desteklenmiyor.
+
+### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists değerlendirmesi
+
+DeployIfNotExists, kaynak sağlayıcısı bir oluşturma veya güncelleştirme kaynağı isteği tamamladıktan ve başarı durum kodu döndürdüğünden yaklaşık 15 dakika çalışır. İlişkili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa, şablon dağıtımı oluşur.
+Dağıtımın süresi, şablona dahil edilen kaynakların karmaşıklığına bağlıdır.
+
+Bir değerlendirme çevrimi sırasında, kaynaklarla eşleşen bir DeployIfNotExists etkisi olan ilke tanımları uyumlu değil olarak işaretlenir, ancak bu kaynakta hiçbir işlem yapılmaz. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir.
+
+### <a name="deployifnotexists-properties"></a>DeployIfNotExists özellikleri
+
+DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kaynakları ve yürütülecek şablon dağıtımını tanımlayan tüm alt özellikleri içerir.
+
+- **Tür** [gerekli]
+  - Eşleştirilecek ilgili kaynağın türünü belirtir.
+  - , **IF** koşulu kaynağı altında bir kaynağı getirmeye çalışırken başlar ve sonra, **IF** koşulu kaynağıyla aynı kaynak grubu içinde sorgular.
+- **Ad** (isteğe bağlı)
+  - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
+  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve olmalıdır `[field('name')]` .
+- **Resourcegroupname** (isteğe bağlı)
+  - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
+  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
+  - Varsayılan değer **IF** koşulu kaynağının kaynak grubudur.
+  - Bir şablon dağıtımı yürütülürse, bu değerin kaynak grubunda dağıtılır.
+- **Mevcut Tencescope** (isteğe bağlı)
+  - İzin verilen değerler, _abonelik_ ve _ResourceGroup_.
+  - İle eşleşecek ilgili kaynağı nereden getirecek yerin kapsamını ayarlar.
+  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
+  - _ResourceGroup_Için, **resourcegroupname**içinde belirtilen **IF** koşulu kaynağının kaynak grubu veya kaynak grubu ile sınırlı olur.
+  - _Abonelik_için, ilgili kaynak için tüm aboneliği sorgular.
+  - Varsayılan _kaynak grubu_.
+- **ExistenceCondition** (isteğe bağlı)
+  - Belirtilmemişse, **türü** ilgili herhangi bir kaynak etkiyi karşılar ve dağıtımı tetiklemez.
+  - , **IF** koşulunun ilke kuralıyla aynı dili kullanır, ancak ilgili her kaynağa ayrı ayrı değerlendirilir.
+  - Eşleşen ilgili herhangi bir kaynak true olarak değerlendirilirse, efekt karşılanır ve dağıtımı tetiklemez.
+  - **IF** koşulunda değerlerle denklik denetlemek için [Field ()] kullanabilirsiniz.
+  - Örneğin, üst kaynağın ( **IF** koşulunda) eşleşen ilgili kaynakla aynı kaynak konumunda olduğunu doğrulamak için kullanılabilir.
+- **Roledefinitionıds** [gerekli]
+  - Bu özellik, abonelik tarafından erişilebilen rol tabanlı erişim denetimi rol KIMLIĞIYLE eşleşen bir dize dizisi içermelidir. Daha fazla bilgi için bkz. [Düzeltme-ilke tanımını yapılandırma](../how-to/remediate-resources.md#configure-policy-definition).
+- **Deploymentscope** (isteğe bağlı)
+  - İzin verilen değerler, _abonelik_ ve _ResourceGroup_.
+  - Tetiklenecek dağıtımın türünü ayarlar. _Abonelik_ , [abonelik düzeyinde bir dağıtımı](../../../azure-resource-manager/templates/deploy-to-subscription.md)gösterir, _ResourceGroup_ bir kaynak grubuna yönelik bir dağıtımı gösterir.
+  - Abonelik düzeyinde dağıtımlar kullanılırken _dağıtımda_ bir _konum_ özelliği belirtilmelidir.
+  - Varsayılan _kaynak grubu_.
+- **Dağıtım** [gerekli]
+  - Bu özellik, put API 'sine geçirilecek olan tam şablon dağıtımını içermelidir `Microsoft.Resources/deployments` . Daha fazla bilgi için bkz. [dağıtımlar REST API](/rest/api/resources/deployments).
+
+  > [!NOTE]
+  > **Dağıtım** özelliğinin içindeki tüm işlevler, ilke değil, şablonun bileşenleri olarak değerlendirilir. Özel durum, ilkeden şablona değer geçiren **Parameters** özelliğidir. Bu bölümdeki **değer** bir şablon parametresi adı altında bu değer geçişini gerçekleştirmek için kullanılır (Deployıfnotexists örneğinde bkz. _fulldbname_ ).
+
+### <a name="deployifnotexists-example"></a>DeployIfNotExists örneği
+
+Örnek: transparentDataEncryption etkinleştirilip etkinleştirilmediğini belirlemede SQL Server veritabanlarını değerlendirir. Aksi takdirde, etkinleştirilecek bir dağıtım yürütülür.
+
+```json
+"if": {
+    "field": "type",
+    "equals": "Microsoft.Sql/servers/databases"
+},
+"then": {
+    "effect": "DeployIfNotExists",
+    "details": {
+        "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+        "name": "current",
+        "roleDefinitionIds": [
+            "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+            "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
+        ],
+        "existenceCondition": {
+            "field": "Microsoft.Sql/transparentDataEncryption.status",
+            "equals": "Enabled"
+        },
+        "deployment": {
+            "properties": {
+                "mode": "incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "fullDbName": {
+                            "type": "string"
+                        }
+                    },
+                    "resources": [{
+                        "name": "[concat(parameters('fullDbName'), '/current')]",
+                        "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+                        "apiVersion": "2014-04-01",
+                        "properties": {
+                            "status": "Enabled"
+                        }
+                    }]
+                },
+                "parameters": {
+                    "fullDbName": {
+                        "value": "[field('fullName')]"
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+## <a name="disabled"></a>Devre dışı
+
+Bu efekt, durumları test etmek veya ilke tanımının etkiyi ne zaman parametreleştirildiği için faydalıdır. Bu esneklik, bu ilkenin atamalarının tümünü devre dışı bırakmak yerine tek bir atamayı devre dışı bırakmayı mümkün kılar.
+
+Devre dışı bırakılmış etkine bir alternatif, ilke atamasında ayarlanan * * enforcementMode ' dır.
+**Enforcementmode** _devre dışı bırakıldığında_, kaynaklar yine de değerlendirilir. Etkinlik günlükleri ve ilke efekti gibi günlüğe kaydetme gerçekleşmez. Daha fazla bilgi için bkz. [ilke atama-zorlama modu](./assignment-structure.md#enforcement-mode).
+
+
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
+
+Bu efekt, ilke tanımı _moduyla_ birlikte kullanılır `Microsoft.Kubernetes.Data` . Azure 'da Kubernetes kümelerine [Ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak Için [Opa kısıtlama çerçevesi](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) ile tanımlanan Gatekeeper v3 giriş denetimi kurallarını geçirmek için kullanılır.
+
+> [!NOTE]
+> [Kubernetes Için Azure Ilkesi](./policy-for-kubernetes.md) önizlemededir ve yalnızca Linux düğüm havuzlarını ve yerleşik ilke tanımlarını destekler.
+
+### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint değerlendirmesi
+
+Açık Ilke Aracısı giriş denetleyicisi, kümede bulunan yeni istekleri gerçek zamanlı olarak değerlendirir.
+15 dakikada bir, küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesine bildirilir.
+
+### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint özellikleri
+
+EnforceOPAConstraint kısıtlama efektinin **Details** özelliği, Gatekeeper v3 giriş denetimi kuralını tanımlayan alt özellikler içerir.
+
+- **constraintTemplate** [gerekli]
+  - Yeni kısıtlamaları tanımlayan CustomResourceDefinition (CRD) kısıtlama şablonu. Şablon rego mantığını, kısıtlama şemasını ve Azure Ilkesinden **değerler** aracılığıyla geçirilen kısıtlama parametrelerini tanımlar.
+- **kısıtlama** [gerekli]
+  - Kısıtlama şablonunun CRD uygulama. **Değerler** aracılığıyla geçirilen parametreleri kullanır `{{ .Values.<valuename> }}` . Aşağıdaki örnekte, bu değerler ve ' dir `{{ .Values.cpuLimit }}` `{{ .Values.memoryLimit }}` .
+- **değerler** [isteğe bağlı]
+  - Kısıtlamaya geçirilecek parametreleri ve değerleri tanımlar. Her değer, CRD kısıtlama şablonunda bulunmalıdır.
+
+### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint örneği
+
+Örnek: Kubernetes içindeki kapsayıcı CPU ve bellek kaynak sınırlarını ayarlamak için ağ geçidi denetleyicisi v3 giriş denetim kuralı.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "in": [
+                "Microsoft.ContainerService/managedClusters",
+                "AKS Engine"
+            ]
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "enforceOPAConstraint",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
+        "values": {
+            "cpuLimit": "[parameters('cpuLimit')]",
+            "memoryLimit": "[parameters('memoryLimit')]"
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Bu efekt, ilke tanımı _moduyla_ birlikte kullanılır `Microsoft.ContainerService.Data` . [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md) [ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak için [rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) ile tanımlanan Gatekeeper v2 giriş denetimi kurallarını geçirmek için kullanılır.
+
+> [!NOTE]
+> [Kubernetes Için Azure Ilkesi](./policy-for-kubernetes.md) önizlemededir ve yalnızca Linux düğüm havuzlarını ve yerleşik ilke tanımlarını destekler. Yerleşik ilke tanımları **Kubernetes** kategorisinde bulunur. **Enforceregopolicy** efektli sınırlı önizleme ilkesi tanımları ve Ilgili **Kubernetes hizmet** kategorisi _kullanım dışı_bırakılıyor. Bunun yerine, güncelleştirilmiş [Enforceopaconstraint](#enforceopaconstraint) efektini kullanın.
+
+### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy değerlendirmesi
+
+Açık Ilke Aracısı giriş denetleyicisi, kümede bulunan yeni istekleri gerçek zamanlı olarak değerlendirir.
+15 dakikada bir, küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesine bildirilir.
+
+### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy özellikleri
+
+EnforceRegoPolicy efektinin **Details** özelliği, Gatekeeper v2 giriş denetimi kuralını tanımlayan alt özellikler içerir.
+
+- **PolicyId** [gerekli]
+  - Rego giriş denetimi kuralına parametre olarak geçirilen benzersiz bir ad.
+- **ilke** [gerekli]
+  - Rego giriş denetimi kuralının URI 'sini belirtir.
+- **policyParameters** [isteğe bağlı]
+  - Rego ilkesine geçirilecek parametreleri ve değerleri tanımlar.
+
+### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy örneği
+
+Örnek: Gatekeeper v2 giriş denetimi kuralı, AKS içinde yalnızca belirtilen kapsayıcı görüntülerine izin verir.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "equals": "Microsoft.ContainerService/managedClusters"
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "EnforceRegoPolicy",
+    "details": {
+        "policyId": "ContainerAllowedImages",
+        "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/container-allowed-images/limited-preview/gatekeeperpolicy.rego",
+        "policyParameters": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]"
+        }
+    }
 }
 ```
 
@@ -210,337 +543,11 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 }
 ```
 
-## <a name="deny"></a>Reddet
 
-Reddetme, bir ilke tanımı aracılığıyla tanımlı standartlarla eşleşmeyen bir kaynak isteğini engellemek için kullanılır ve istekte başarısız olur.
-
-### <a name="deny-evaluation"></a>Değerlendirmeyi Reddet
-
-Eşleşen bir kaynağı oluştururken veya güncelleştirirken reddetme, isteği kaynak sağlayıcısına gönderilmeden önce engeller. İstek bir olarak döndürülür `403 (Forbidden)` . Portalda, ilke ataması tarafından engellenmiş olan dağıtımda durum olarak yasak görüntülenir.
-
-Mevcut kaynakların değerlendirmesi sırasında, bir reddetme ilke tanımıyla eşleşen kaynaklar uyumlu değil olarak işaretlenir.
-
-### <a name="deny-properties"></a>Reddetme özellikleri
-
-Reddetme etkisi, ilke tanımının **daha sonra** koşulunda kullanılmak üzere ek özellikler içermez.
-
-### <a name="deny-example"></a>Reddetme örneği
-
-Örnek: reddetme efektini kullanma.
-
-```json
-"then": {
-    "effect": "deny"
-}
-```
-
-## <a name="audit"></a>Denetim
-
-Denetim, uyumlu olmayan bir kaynağı değerlendirirken etkinlik günlüğünde bir uyarı olayı oluşturmak için kullanılır, ancak isteği durdurmaz.
-
-### <a name="audit-evaluation"></a>Denetim değerlendirmesi
-
-Denetim, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında Azure Ilkesi tarafından denetlenen son etkiye sahiptir. Daha sonra Azure Ilkesi kaynağı kaynak sağlayıcısına gönderir. Denetim, bir kaynak isteği ve bir değerlendirme çevrimi için aynı şekilde çalışmaktadır. Azure Ilkesi `Microsoft.Authorization/policies/audit/action` , etkinlik günlüğüne bir işlem ekler ve kaynağı uyumlu değil olarak işaretler.
-
-### <a name="audit-properties"></a>Denetim Özellikleri
-
-Denetim efektinin, ilke tanımının **daha sonra** koşulunda kullanılmak üzere ek özellikleri yoktur.
-
-### <a name="audit-example"></a>Denetim örneği
-
-Örnek: denetim efektini kullanma.
-
-```json
-"then": {
-    "effect": "audit"
-}
-```
-
-## <a name="auditifnotexists"></a>Auditınotexists
-
-Auditınotexists, **IF** koşuluyla eşleşen kaynaklarda denetim imkanı sunar, ancak **daha sonra** koşulun **ayrıntılarında** belirtilen bileşenleri yoktur.
-
-### <a name="auditifnotexists-evaluation"></a>Auditınotexists değerlendirmesi
-
-Bir kaynak sağlayıcısı bir oluşturma veya güncelleştirme kaynak isteği tamamladıktan ve başarı durum kodu döndürdüğünden Auditınotexists çalışır. İlgili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa denetim gerçekleşir. Azure Ilkesi, `Microsoft.Authorization/policies/audit/action` etkinlik günlüğüne denetim efektiyle aynı şekilde bir işlem ekler. Tetiklendiğinde **, durum durumunu karşılayan** kaynak, uyumlu değil olarak işaretlenen kaynaktır.
-
-### <a name="auditifnotexists-properties"></a>Auditınotexists özellikleri
-
-Auditınotexists etkilerinin **Details** özelliği, eşleştirilecek ilgili kaynakları tanımlayan tüm alt özellikleri içerir.
-
-- **Tür** [gerekli]
-  - Eşleştirilecek ilgili kaynağın türünü belirtir.
-  - **Ayrıntılar. Type** , **IF** koşulu kaynağı altında bir kaynak türü ise, ilke değerlendirilen kaynağın kapsamındaki bu **türden** kaynakları sorgular. Aksi takdirde, ilke, değerlendirilen kaynakla aynı kaynak grubu içinde sorgular.
-- **Ad** (isteğe bağlı)
-  - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
-  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve olmalıdır `[field('name')]` . Ancak, bunun yerine bir [Denetim](#audit) etkisi göz önünde bulundurulmalıdır.
-- **Resourcegroupname** (isteğe bağlı)
-  - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
-  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
-  - Varsayılan değer **IF** koşulu kaynağının kaynak grubudur.
-- **Mevcut Tencescope** (isteğe bağlı)
-  - İzin verilen değerler, _abonelik_ ve _ResourceGroup_.
-  - İle eşleşecek ilgili kaynağı nereden getirecek yerin kapsamını ayarlar.
-  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
-  - _ResourceGroup_Için, **resourcegroupname**içinde belirtilen **IF** koşulu kaynağının kaynak grubu veya kaynak grubu ile sınırlı olur.
-  - _Abonelik_için, ilgili kaynak için tüm aboneliği sorgular.
-  - Varsayılan _kaynak grubu_.
-- **ExistenceCondition** (isteğe bağlı)
-  - Belirtilmemişse, **türdeki** ilgili kaynaklar etkiyi karşılar ve denetimi tetiklemez.
-  - , **IF** koşulunun ilke kuralıyla aynı dili kullanır, ancak ilgili her kaynağa ayrı ayrı değerlendirilir.
-  - Eşleşen ilgili herhangi bir kaynak true olarak değerlendirilirse, efekt karşılanır ve denetimi tetiklemez.
-  - **IF** koşulunda değerlerle denklik denetlemek için [Field ()] kullanabilirsiniz.
-  - Örneğin, üst kaynağın ( **IF** koşulunda) eşleşen ilgili kaynakla aynı kaynak konumunda olduğunu doğrulamak için kullanılabilir.
-
-### <a name="auditifnotexists-example"></a>Auditınotexists örneği
-
-Örnek: kötü amaçlı yazılımdan koruma uzantısının mevcut olup olmadığını belirlemesi için sanal makineleri değerlendirir ve ne zaman yoksa denetler.
-
-```json
-{
-    "if": {
-        "field": "type",
-        "equals": "Microsoft.Compute/virtualMachines"
-    },
-    "then": {
-        "effect": "auditIfNotExists",
-        "details": {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "existenceCondition": {
-                "allOf": [{
-                        "field": "Microsoft.Compute/virtualMachines/extensions/publisher",
-                        "equals": "Microsoft.Azure.Security"
-                    },
-                    {
-                        "field": "Microsoft.Compute/virtualMachines/extensions/type",
-                        "equals": "IaaSAntimalware"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
-## <a name="deployifnotexists"></a>DeployIfNotExists
-
-Bir DeployIfNotExists öğesine benzer şekilde, bir DeployIfNotExists ilke tanımı, koşul karşılandığında bir şablon dağıtımı yürütür.
-
-> [!NOTE]
-> [Iç içe şablonlar](../../../azure-resource-manager/templates/linked-templates.md#nested-template) **Deployifnotexists**ile desteklenir, ancak [bağlantılı şablonlar](../../../azure-resource-manager/templates/linked-templates.md#linked-template) Şu anda desteklenmiyor.
-
-### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists değerlendirmesi
-
-DeployIfNotExists, kaynak sağlayıcısı bir oluşturma veya güncelleştirme kaynağı isteği tamamladıktan ve başarı durum kodu döndürdüğünden yaklaşık 15 dakika çalışır. İlişkili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa, şablon dağıtımı oluşur.
-Dağıtımın süresi, şablona dahil edilen kaynakların karmaşıklığına bağlıdır.
-
-Bir değerlendirme çevrimi sırasında, kaynaklarla eşleşen bir DeployIfNotExists etkisi olan ilke tanımları uyumlu değil olarak işaretlenir, ancak bu kaynakta hiçbir işlem yapılmaz. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir.
-
-### <a name="deployifnotexists-properties"></a>DeployIfNotExists özellikleri
-
-DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kaynakları ve yürütülecek şablon dağıtımını tanımlayan tüm alt özellikleri içerir.
-
-- **Tür** [gerekli]
-  - Eşleştirilecek ilgili kaynağın türünü belirtir.
-  - , **IF** koşulu kaynağı altında bir kaynağı getirmeye çalışırken başlar ve sonra, **IF** koşulu kaynağıyla aynı kaynak grubu içinde sorgular.
-- **Ad** (isteğe bağlı)
-  - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
-  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve olmalıdır `[field('name')]` .
-- **Resourcegroupname** (isteğe bağlı)
-  - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
-  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
-  - Varsayılan değer **IF** koşulu kaynağının kaynak grubudur.
-  - Bir şablon dağıtımı yürütülürse, bu değerin kaynak grubunda dağıtılır.
-- **Mevcut Tencescope** (isteğe bağlı)
-  - İzin verilen değerler, _abonelik_ ve _ResourceGroup_.
-  - İle eşleşecek ilgili kaynağı nereden getirecek yerin kapsamını ayarlar.
-  - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
-  - _ResourceGroup_Için, **resourcegroupname**içinde belirtilen **IF** koşulu kaynağının kaynak grubu veya kaynak grubu ile sınırlı olur.
-  - _Abonelik_için, ilgili kaynak için tüm aboneliği sorgular.
-  - Varsayılan _kaynak grubu_.
-- **ExistenceCondition** (isteğe bağlı)
-  - Belirtilmemişse, **türü** ilgili herhangi bir kaynak etkiyi karşılar ve dağıtımı tetiklemez.
-  - , **IF** koşulunun ilke kuralıyla aynı dili kullanır, ancak ilgili her kaynağa ayrı ayrı değerlendirilir.
-  - Eşleşen ilgili herhangi bir kaynak true olarak değerlendirilirse, efekt karşılanır ve dağıtımı tetiklemez.
-  - **IF** koşulunda değerlerle denklik denetlemek için [Field ()] kullanabilirsiniz.
-  - Örneğin, üst kaynağın ( **IF** koşulunda) eşleşen ilgili kaynakla aynı kaynak konumunda olduğunu doğrulamak için kullanılabilir.
-- **Roledefinitionıds** [gerekli]
-  - Bu özellik, abonelik tarafından erişilebilen rol tabanlı erişim denetimi rol KIMLIĞIYLE eşleşen bir dize dizisi içermelidir. Daha fazla bilgi için bkz. [Düzeltme-ilke tanımını yapılandırma](../how-to/remediate-resources.md#configure-policy-definition).
-- **Deploymentscope** (isteğe bağlı)
-  - İzin verilen değerler, _abonelik_ ve _ResourceGroup_.
-  - Tetiklenecek dağıtımın türünü ayarlar. _Abonelik_ , [abonelik düzeyinde bir dağıtımı](../../../azure-resource-manager/templates/deploy-to-subscription.md)gösterir, _ResourceGroup_ bir kaynak grubuna yönelik bir dağıtımı gösterir.
-  - Abonelik düzeyinde dağıtımlar kullanılırken _dağıtımda_ bir _konum_ özelliği belirtilmelidir.
-  - Varsayılan _kaynak grubu_.
-- **Dağıtım** [gerekli]
-  - Bu özellik, put API 'sine geçirilecek olan tam şablon dağıtımını içermelidir `Microsoft.Resources/deployments` . Daha fazla bilgi için bkz. [dağıtımlar REST API](/rest/api/resources/deployments).
-
-  > [!NOTE]
-  > **Dağıtım** özelliğinin içindeki tüm işlevler, ilke değil, şablonun bileşenleri olarak değerlendirilir. Özel durum, ilkeden şablona değer geçiren **Parameters** özelliğidir. Bu bölümdeki **değer** bir şablon parametresi adı altında bu değer geçişini gerçekleştirmek için kullanılır (Deployıfnotexists örneğinde bkz. _fulldbname_ ).
-
-### <a name="deployifnotexists-example"></a>DeployIfNotExists örneği
-
-Örnek: transparentDataEncryption etkinleştirilip etkinleştirilmediğini belirlemede SQL Server veritabanlarını değerlendirir. Aksi takdirde, etkinleştirilecek bir dağıtım yürütülür.
-
-```json
-"if": {
-    "field": "type",
-    "equals": "Microsoft.Sql/servers/databases"
-},
-"then": {
-    "effect": "DeployIfNotExists",
-    "details": {
-        "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
-        "name": "current",
-        "roleDefinitionIds": [
-            "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
-            "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
-        ],
-        "existenceCondition": {
-            "field": "Microsoft.Sql/transparentDataEncryption.status",
-            "equals": "Enabled"
-        },
-        "deployment": {
-            "properties": {
-                "mode": "incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {
-                        "fullDbName": {
-                            "type": "string"
-                        }
-                    },
-                    "resources": [{
-                        "name": "[concat(parameters('fullDbName'), '/current')]",
-                        "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
-                        "apiVersion": "2014-04-01",
-                        "properties": {
-                            "status": "Enabled"
-                        }
-                    }]
-                },
-                "parameters": {
-                    "fullDbName": {
-                        "value": "[field('fullName')]"
-                    }
-                }
-            }
-        }
-    }
-}
-```
-
-## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
-
-Bu efekt, ilke tanımı *moduyla* birlikte kullanılır `Microsoft.Kubernetes.Data` . Azure 'da Kubernetes kümelerine [Ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak Için [Opa kısıtlama çerçevesi](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) ile tanımlanan Gatekeeper v3 giriş denetimi kurallarını geçirmek için kullanılır.
-
-> [!NOTE]
-> [Kubernetes Için Azure Ilkesi](./policy-for-kubernetes.md) önizlemededir ve yalnızca Linux düğüm havuzlarını ve yerleşik ilke tanımlarını destekler.
-
-### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint değerlendirmesi
-
-Açık Ilke Aracısı giriş denetleyicisi, kümede bulunan yeni istekleri gerçek zamanlı olarak değerlendirir.
-15 dakikada bir, küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesine bildirilir.
-
-### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint özellikleri
-
-EnforceOPAConstraint kısıtlama efektinin **Details** özelliği, Gatekeeper v3 giriş denetimi kuralını tanımlayan alt özellikler içerir.
-
-- **constraintTemplate** [gerekli]
-  - Yeni kısıtlamaları tanımlayan CustomResourceDefinition (CRD) kısıtlama şablonu. Şablon rego mantığını, kısıtlama şemasını ve Azure Ilkesinden **değerler** aracılığıyla geçirilen kısıtlama parametrelerini tanımlar.
-- **kısıtlama** [gerekli]
-  - Kısıtlama şablonunun CRD uygulama. **Değerler** aracılığıyla geçirilen parametreleri kullanır `{{ .Values.<valuename> }}` . Aşağıdaki örnekte, `{{ .Values.cpuLimit }}` ve olur `{{ .Values.memoryLimit }}` .
-- **değerler** [isteğe bağlı]
-  - Kısıtlamaya geçirilecek parametreleri ve değerleri tanımlar. Her değer, CRD kısıtlama şablonunda bulunmalıdır.
-
-### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint örneği
-
-Örnek: Kubernetes içindeki kapsayıcı CPU ve bellek kaynak sınırlarını ayarlamak için ağ geçidi denetleyicisi v3 giriş denetim kuralı.
-
-```json
-"if": {
-    "allOf": [
-        {
-            "field": "type",
-            "in": [
-                "Microsoft.ContainerService/managedClusters",
-                "AKS Engine"
-            ]
-        },
-        {
-            "field": "location",
-            "equals": "westus2"
-        }
-    ]
-},
-"then": {
-    "effect": "enforceOPAConstraint",
-    "details": {
-        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
-        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
-        "values": {
-            "cpuLimit": "[parameters('cpuLimit')]",
-            "memoryLimit": "[parameters('memoryLimit')]"
-        }
-    }
-}
-```
-
-## <a name="enforceregopolicy"></a>EnforceRegoPolicy
-
-Bu efekt, ilke tanımı _moduyla_ birlikte kullanılır `Microsoft.ContainerService.Data` . [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md) [ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak için [rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) ile tanımlanan Gatekeeper v2 giriş denetimi kurallarını geçirmek için kullanılır.
-
-> [!NOTE]
-> [Kubernetes Için Azure Ilkesi](./policy-for-kubernetes.md) önizlemededir ve yalnızca Linux düğüm havuzlarını ve yerleşik ilke tanımlarını destekler. Yerleşik ilke tanımları **Kubernetes** kategorisinde bulunur. **Enforceregopolicy** efektli sınırlı önizleme ilkesi tanımları ve Ilgili **Kubernetes hizmet** kategorisi _kullanım dışı_bırakılıyor. Bunun yerine, güncelleştirilmiş [Enforceopaconstraint](#enforceopaconstraint) efektini kullanın.
-
-### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy değerlendirmesi
-
-Açık Ilke Aracısı giriş denetleyicisi, kümede bulunan yeni istekleri gerçek zamanlı olarak değerlendirir.
-15 dakikada bir, küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesine bildirilir.
-
-### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy özellikleri
-
-EnforceRegoPolicy efektinin **Details** özelliği, Gatekeeper v2 giriş denetimi kuralını tanımlayan alt özellikler içerir.
-
-- **PolicyId** [gerekli]
-  - Rego giriş denetimi kuralına parametre olarak geçirilen benzersiz bir ad.
-- **ilke** [gerekli]
-  - Rego giriş denetimi kuralının URI 'sini belirtir.
-- **policyParameters** [isteğe bağlı]
-  - Rego ilkesine geçirilecek parametreleri ve değerleri tanımlar.
-
-### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy örneği
-
-Örnek: Gatekeeper v2 giriş denetimi kuralı, AKS içinde yalnızca belirtilen kapsayıcı görüntülerine izin verir.
-
-```json
-"if": {
-    "allOf": [
-        {
-            "field": "type",
-            "equals": "Microsoft.ContainerService/managedClusters"
-        },
-        {
-            "field": "location",
-            "equals": "westus2"
-        }
-    ]
-},
-"then": {
-    "effect": "EnforceRegoPolicy",
-    "details": {
-        "policyId": "ContainerAllowedImages",
-        "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/container-allowed-images/limited-preview/gatekeeperpolicy.rego",
-        "policyParameters": {
-            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]"
-        }
-    }
-}
-```
 
 ## <a name="layering-policy-definitions"></a>İlke tanımlarını katmanlama
 
-Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örnek:
+Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örneğin:
 
 - İlke 1
   - Kaynak konumunu ' westus ' olarak kısıtlar
