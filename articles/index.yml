@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 21319a3de2bcd38cd5373ac68fc1c9733ab64ee4
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: e550bc73a40b2c313f9ee2b8a7e9384d51844c38
+  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83593213"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83701727"
 highlightedContent:
   items:
   - title: Azure geliştiricileri için başlangıç kılavuzu
@@ -70,11 +70,17 @@ productDirectory:
     - iot
     url: machine-learning/index.yml
   - title: Azure Açık Veri Kümeleri
-    summary: Makine öğrenmesi modellerinin geliştirilmesini hızlandırmak için seçkin açık veri kümelerini barındırmaya ve paylaşmaya yönelik bulut platformu
+    summary: Makine öğrenmesi modellerinin geliştirilmesini hızlandırmak için özel olarak seçilen açık veri kümelerini barındırmaya ve paylaşmaya yönelik bulut platformu
     imageSrc: https://static.docs.com/ui/media/product/azure/open-datasets.svg
     azureCategories:
     - ai-machine-learning
     url: open-datasets/index.yml
+  - title: Azure RTOS
+    summary: Katıştırılmış IoT geliştirme ve bağlantıyı kolay hale getirme
+    imageSrc: https://static.docs.com/ui/media/product/azure/rtos.svg
+    azureCategories:
+    - iot
+    url: https://docs.microsoft.com/azure/rtos/
   - title: Bing Otomatik Öneri
     summary: Uygulamanıza aramalar için akıllı otomatik öneri seçenekleri verin
     imageSrc: ./media/index/API_Bing_AutoSuggest.svg

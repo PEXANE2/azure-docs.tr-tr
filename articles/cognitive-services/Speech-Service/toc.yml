@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Blob depolama alanında depolanan konuşmayı tanıma
           href: quickstarts/from-blob.md
+        - name: Başvuru girişi ile telaffuz değerlendirmesi
+          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Konuşma tanıma modunu seçme
@@ -61,6 +63,8 @@
           href: how-to-custom-speech-inspect-data.md
         - name: Özel Konuşma doğruluğunu değerlendirme
           href: how-to-custom-speech-evaluate-data.md
+        - name: Özel Konuşma doğruluğunu iyileştirme
+          href: how-to-custom-speech-improve-accuracy.md
         - name: Özel Konuşma için modeli eğitme
           href: how-to-custom-speech-train-model.md
         - name: Özel bir modeli dağıtma

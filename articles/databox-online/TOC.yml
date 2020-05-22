@@ -88,7 +88,11 @@
         - name: Güvenliğe genel bakış
           href: azure-stack-edge-security.md
         - name: Belirtimleri gözden geçirme
-          href: azure-stack-edge-technical-specifications-compliance.md
+          items:
+            - name: Cihaz belirtimleri
+              href: azure-stack-edge-technical-specifications-compliance.md
+            - name: Güç kablosu belirtimleri
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
     - name: Nasıl yapılır
       items:
         - name: 'C# modülü geliştirme'

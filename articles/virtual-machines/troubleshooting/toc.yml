@@ -77,6 +77,10 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: Kritik hizmet başarısız oldu
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: Önyükleme hatası sorunlarını giderme - Durum bulunamadı
+          href: boot-error-status-not-found.md
+        - name: Windows Update yükleme kapasitesi sorunlarını giderme
+          href: windows-update-installation-capacity.md
         - name: Yerel kullanıcılar ve gruplar ilkesini uygularken VM yanıt vermiyor
           href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: Önyüklenebilir bir disk değil

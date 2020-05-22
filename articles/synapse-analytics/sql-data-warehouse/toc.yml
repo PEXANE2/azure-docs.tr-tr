@@ -35,7 +35,7 @@
           href: create-data-warehouse-powershell.md
     - name: Veri yükleme
       items:
-        - name: COPY deyimi
+        - name: COPY ifadesi
           href: quickstart-bulk-load-copy-tsql.md
         - name: COPY deyimi örnekleri
           href: quickstart-bulk-load-copy-tsql-examples.md
@@ -366,7 +366,7 @@
         - name: Panolar ve raporlar oluşturma
           items:
             - name: Power BI ile görselleştirme
-              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect.md
+              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect
     - name: Sorun giderme
       items:
         - name: Bağlantı
@@ -417,3 +417,5 @@
           href: sql-data-warehouse-partner-data-integration.md
         - name: Veri yönetimi
           href: sql-data-warehouse-partner-data-management.md
+        - name: Genel Önizleme iş ortakları
+          href: sql-data-warehouse-partner-launch.md

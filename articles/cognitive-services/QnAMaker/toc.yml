@@ -30,6 +30,8 @@
   items:
     - name: Azure kaynakları
       href: Concepts/azure-resources.md
+    - name: Diğer kişilerle birlikte çalışma
+      href: Concepts/role-based-access-control.md
     - name: Bilgi bankası tasarlama
       items:
         - name: Diller için
@@ -107,10 +109,6 @@
     - name: Bilgi bankasında sorgu yapma
       href: How-To/metadata-generateanswer-usage.md
       displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-    - name: İstemci uygulaması ile kullanma
-      items:
-        - name: LUIS ve Soru-Cevap Oluşturma
-          href: Tutorials/integrate-qnamaker-luis.md
     - name: Analiz ve telemetri
       href: How-To/get-analytics-knowledge-base.md
     - name: REST API’sini kullanma
@@ -155,6 +153,8 @@
       href: Overview/language-support.md
     - name: Sınırlar
       href: limits.md
+    - name: Rol tabanlı erişim denetimi (RBAC)
+      href: reference-role-based-access-control.md
     - name: Sorun giderme
       href: troubleshooting.md
     - name: Hizmet yapılandırması

@@ -6,7 +6,6 @@
     - name: Azure Ayırmaları nedir?
       href: save-compute-costs-reservations.md
 - name: Nasıl yapılır kılavuzları
-  expanded: true
   items:
     - name: Neyin satın alınacağını saptama
       items:
@@ -56,12 +55,17 @@
           href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
         - name: Değişim ve para iadesi rezervasyonları
           href: exchange-and-refund-azure-reservations.md
+    - name: Maliyetleri raporlama
+      items:
+        - name: Rezervasyon işlemlerini görüntüleme
+          href: view-purchase-refunds.md
+        - name: Rezervasyon maliyetlerini geri ödeme
+          href: charge-back-usage.md
     - name: Rezervasyonları yenileme
       items:
         - name: Rezervasyonu yenileme
           href: reservation-renew.md
 - name: Kavramlar
-  expanded: true
   items:
     - name: Rezervasyon önerilerinin oluşturulma biçimi
       href: reserved-instance-purchase-recommendations.md

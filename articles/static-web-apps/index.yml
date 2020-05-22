@@ -9,12 +9,12 @@ metadata:
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 04/09/2020
-  ms.openlocfilehash: 8dd4f7420c4b58d621312f361beede1e48bc17b5
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: db4bccbc2b366cbd2997542b3b10068b0f5941a2
+  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83593078"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83701845"
 landingContent:
 - title: Statik Web Uygulamaları hakkında
   linkLists:
@@ -38,18 +38,10 @@ landingContent:
     links:
     - text: Angular, React, Svelte veya Vue JavaScript uygulaması ve API’si yayımlama
       url: /learn/modules/publish-app-service-static-web-app-api
-- title: Önemli kavramlar
-  linkLists:
-  - linkListType: concept
+  - linkListType: video
     links:
-    - text: Yollar
-      url: routes.md
-    - text: Genel API’ler
-      url: apis.md
-    - text: Hazırlama
-      url: review-publish-pull-requests.md
-    - text: Erişimi kısıtlama
-      url: authentication-authorization.md
+    - text: Statik web uygulaması derleme ve dağıtma
+      url: https://channel9.msdn.com/Shows/Docs-Azure/Building-and-Deploying-a-Static-Web-App/
 - title: Senaryo yayımlama
   linkLists:
   - linkListType: tutorial
@@ -68,3 +60,15 @@ landingContent:
     links:
     - text: Gatsby ile statik web uygulaması yayımlama
       url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+- title: Önemli kavramlar
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Yollar
+      url: routes.md
+    - text: Genel API’ler
+      url: apis.md
+    - text: Hazırlama
+      url: review-publish-pull-requests.md
+    - text: Erişimi kısıtlama
+      url: authentication-authorization.md

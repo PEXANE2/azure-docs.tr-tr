@@ -1,7 +1,7 @@
 - name: Ticari market belgeleri
   href: index.yml
   items:
-    - name: Ticari market yol haritası
+    - name: Ticari market güncelleştirmeleri
       href: ./marketplace-roadmap.md
     - name: Ticari market ilkeleri ve koşulları
       href: ./policies-terms.md
@@ -76,10 +76,6 @@
 - name: Bulut İş Ortağı Portalı
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
-    - name: İş Ortağı Merkezi'ne Bulut İş Ortağı Portalı geçişi
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
-    - name: Geçiş hakkında SSS
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: Portal turu
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -134,8 +130,6 @@
           items:
             - name: Başlarken
               href: ./cloud-partner-portal-orig/si-getting-started.md
-            - name: Yenilikler
-              href: ./cloud-partner-portal-orig/si-changes.md
             - name: Web analizi
               href: ./cloud-partner-portal-orig/web-analytics.md
             - name: Tanımlar
@@ -264,67 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Sanal makine teklifi
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-          items:
-            - name: Ön koşullar
-              href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
-            - name: VM teklifi oluşturma
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
-              items:
-                - name: Teklif Ayarları sekmesi
-                  href: ./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md
-                - name: SKU'lar sekmesi
-                  href: ./cloud-partner-portal/virtual-machine/cpp-skus-tab.md
-                - name: Test Sürüşü sekmesi
-                  href: ./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md
-                - name: Market sekmesi
-                  href: ./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md
-                - name: Destek sekmesi
-                  href: ./cloud-partner-portal/virtual-machine/cpp-support-tab.md
-            - name: VM teknik varlıkları oluşturma
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md
-              items:
-                - name: VHD oluşturma
-                  href: ./cloud-partner-portal/virtual-machine/cpp-create-vhd.md
-                - name: Yaygın VHD oluşturma sorunları
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md
-                - name: VM’ye bağlanma
-                  href: ./cloud-partner-portal/virtual-machine/cpp-connect-vm.md
-                - name: VM'yi yapılandırma
-                  href: ./cloud-partner-portal/virtual-machine/cpp-configure-vm.md
-                - name: Windows Uzaktan Yönetimi
-                  href: ./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md
-                  items:
-                    - name: VM'yi oluşturduktan sonra WinRM'yi yapılandırma
-                      href: ./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md
-                - name: VM'yi dağıtma
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md
-                  items:
-                    - name: Kullanıcı VM görüntüsü oluşturma
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-user-image.md
-                    - name: Anahtar kasası sertifikası oluşturma
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md
-                      items:
-                        - name: Anahtar kasası dağıtım şablonu
-                          href: ./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md
-                - name: Kullanıcı VHD'sinden VM dağıtma
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md
-                  items:
-                    - name: VHD Dağıtım Şablonu
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md
-                    - name: Market'ten VM dağıtma
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md
-                - name: VM görüntüsünü sertifikalama
-                  href: ./cloud-partner-portal/virtual-machine/cpp-certify-vm.md
-                - name: VM kendi kendine test istemcisi
-                  href: ./cloud-partner-portal/virtual-machine/cpp-selftest-client.md
-                - name: SAS URI'si alma
-                  href: ./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md
-                - name: Yaygın SAS URL sorunları
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md
-            - name: VM teklifini yayımlama
-              href: ./cloud-partner-portal/virtual-machine/cpp-publish-offer.md
-            - name: Mevcut teklifi güncelleştirme
-              href: ./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md
     - name: API Başvurusu
       items:
         - name: Genel Bakış
@@ -361,6 +294,8 @@
   items:
     - name: Ticari markete genel bakış
       href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Geçiş hakkında SSS
+      href: ./cloud-partner-portal-migration-faq.md
     - name: Hesap Yönetimi
       items:
         - name: Yeni bir İş Ortağı Merkezi hesabı oluşturma

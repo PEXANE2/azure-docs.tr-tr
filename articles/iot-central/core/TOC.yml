@@ -6,8 +6,14 @@
       href: overview-iot-central.md
     - name: Kullanıcı arabirimi turu
       href: overview-iot-central-tour.md
+    - name: Cihazları geliştirme
+      href: overview-iot-central-developer.md
     - name: Son güncelleştirmeler
       items:
+        - name: Nisan 2020 yeni özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
+        - name: Nisan 2020 güncelleştirmeleri
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-updates/'
         - name: Mart 2020
           href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
 - name: Hızlı Başlangıçlar
@@ -81,6 +87,8 @@
           href: howto-manage-devices.md
         - name: Kuralları yapılandırma
           href: howto-configure-rules.md
+        - name: Diğer hizmetlerle tümleştirmek için iş akışlarını kullanma
+          href: howto-configure-rules-advanced.md
         - name: Cihaz verilerinizi analiz etme
           href: howto-create-analytics.md
         - name: Panonuza kutucuklar ekleme

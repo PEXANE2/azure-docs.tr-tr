@@ -16,11 +16,11 @@
       href: automation-quickstart-dsc-configuration.md
 - name: Öğreticiler
   items:
-    - name: Grafik temelli runbook oluşturma
+    - name: Grafik runbook'u oluşturma
       href: learn/automation-tutorial-runbook-graphical.md
     - name: PowerShell runbook’u oluşturma
       href: learn/automation-tutorial-runbook-textual-powershell.md
-    - name: PowerShell iş akışı runbook’u oluşturma
+    - name: PowerShell İş Akışı runbook’u oluşturma
       href: learn/automation-tutorial-runbook-textual.md
     - name: Python runbook'u oluşturma
       href: learn/automation-tutorial-runbook-textual-python2.md
@@ -63,7 +63,7 @@
           href: automation-role-based-access-control.md
         - name: Otomasyon hesabını başka bir aboneliğe taşıma
           href: how-to/move-account.md
-        - name: System Center Orchestrator’dan geçirme
+        - name: Orchestrator’dan Azure Otomasyonu’na (Beta) geçiş
           href: automation-orchestrator-migration.md
     - name: Paylaşılan kaynaklar
       items:
@@ -89,7 +89,7 @@
           href: troubleshoot/shared-resources.md
     - name: Süreç otomasyonu
       items:
-        - name: PowerShell Galerisi’nde runbook’ları ve modülleri bulma
+        - name: PowerShell Galerisi’nde runbook’ları ve modülleri kullanma
           href: automation-runbook-gallery.md
         - name: PowerShell İş Akışı hakkında bilgi edinme
           href: automation-powershell-workflow.md
@@ -123,11 +123,11 @@
               href: automation-runbook-graphical-error-handling.md
             - name: İş verilerini Azure İzleyici Günlüklerine iletme
               href: automation-manage-send-joblogs-log-analytics.md
-        - name: Sorun giderme
+        - name: Runbook sorunlarını giderme
           items:
             - name: Runbook sorunlarını giderme
               href: troubleshoot/runbooks.md
-            - name: Destek isteği açılmadan önce toplanması gereken veriler
+            - name: Microsoft Azure Otomasyonu için bir servis talebi açarken toplanacak veriler
               href: troubleshoot/collect-data-microsoft-azure-automation-case.md
         - name: Karma Runbook Çalışanı ile çalışma
           items:
@@ -143,69 +143,75 @@
           href: source-control-integration.md
     - name: Yapılandırma Yönetimi
       items:
-        - name: Durum Yapılandırması (DSC)
+        - name: Azure Otomasyonu State Configuration
           items:
             - name: Genel Bakış
               href: automation-dsc-overview.md
-            - name: Durum Yapılandırması’nı kullanmaya başlama
+            - name: State Configuration’ı kullanmaya başlama
               href: automation-dsc-getting-started.md
-            - name: Yönetim için makineler ekleme
+            - name: State Configuration’ı etkinleştirme
               href: automation-dsc-onboarding.md
-            - name: Makineleri istenen duruma yapılandırma
+            - name: Sunucuları istenen duruma göre yapılandırma ve kaymaları yönetme
               href: tutorial-configure-servers-desired-state.md
-            - name: DSC yapılandırmalarını derleme
-              href: automation-dsc-compile.md
-            - name: Yapılandırma kaymasını düzeltme
-              href: automation-dsc-remediate.md
             - name: DSC yapılandırmaları oluşturma
               href: compose-configurationwithcompositeresources.md
+            - name: DSC yapılandırmalarını derleme
+              href: automation-dsc-compile.md
+            - name: Uyumsuz State Configuration sunucularını düzeltme
+              href: automation-dsc-remediate.md
             - name: Chocolatey ile sürekli dağıtım ayarlama
               href: automation-dsc-cd-chocolatey.md
             - name: Azure İzleyici Günlükleriyle tümleştirme
               href: automation-dsc-diagnostics.md
-            - name: DSC ile ilgili sorunları giderme
-              href: troubleshoot/desired-state-configuration.md
-            - name: Azure DSC uzantısı sürüm geçmişi
+            - name: State Configuration uzantısı sürüm geçmişiyle çalışma
               href: automation-dsc-extension-history.md
+            - name: State Configuration sorunlarını giderme
+              href: troubleshoot/desired-state-configuration.md
         - name: Değişiklik izleme ve envanter
           items:
             - name: Genel Bakış
               href: change-tracking.md
-            - name: Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
+            - name: Bağlı Log Analytics çalışma alanı için bölgeleri destekleme
               href: how-to/region-mappings.md
-            - name: Değişiklik İzlemeyi ve Sayımı Etkinleştirme
+            - name: Etkinleştirme
               items:
-                - name: Azure portalı kullanma
-                  href: automation-onboard-solutions-from-browse.md
-                - name: Azure VM’sinden
-                  href: automation-onboard-solutions-from-vm.md
-                - name: Otomasyon hesabından
-                  href: automation-onboard-solutions-from-automation-account.md
-                - name: Otomasyon runbook’undan
-                  href: automation-onboard-solutions.md
+                - name: Azure portalından Değişiklik İzleme ve Stok özelliğini etkinleştirme
+                  href: automation-enable-changes-from-browse.md
+                - name: Azure VM’den Değişiklik İzleme ve Stok özelliğini etkinleştirme
+                  href: automation-enable-changes-from-vm.md
+                - name: Otomasyon hesabından Değişiklik İzleme ve Stok özelliğini etkinleştirme
+                  href: automation-enable-changes-from-auto-acct.md
+                - name: Runbook’tan Değişiklik İzleme ve Stok özelliğini etkinleştirme
+                  href: automation-enable-changes-from-runbook.md
             - name: Değişiklik izlemeyi ve envanteri yönetme
               href: change-tracking-file-contents.md
             - name: VM’lerden stok koleksiyonunu yönetme
               href: automation-vm-inventory.md
+            - name: Kapsam yapılandırmalarıyla çalışma
+              href: automation-scope-configurations-change-tracking.md
+            - name: Çalışma alanının Otomasyon hesabından bağlantısını kaldırma
+              href: automation-unlink-workspace-change-tracking.md
+            - name: Değişiklik İzleme ve Stok özelliğinden VM’leri kaldırma
+              href: automation-remove-vms-from-change-tracking.md
             - name: Sorun giderme
               items:
-                - name: Ekleme
+                - name: Özellik dağıtımı sorunlarını giderme
                   href: troubleshoot/onboarding.md
-                - name: Değişiklik İzleme ve Stok kullanma
+                - name: Değişiklik İzleme ve Stok özelliği sorunlarını giderme
                   href: troubleshoot/change-tracking.md
     - name: Hizmetin kapalı olduğu saatlerde Sanal Makineleri Başlatma/Durdurma
       items:
         - name: Genel Bakış
           href: automation-solution-vm-management.md
-        - name: Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
+        - name: Bağlı Log Analytics çalışma alanı için bölgeleri destekleme
           href: how-to/region-mappings.md
-        - name: Etkinleştirme
+        - name: VM'leri çalışma saatleri dışında başlat/durdur özelliğini etkinleştirme
           href: automation-solution-vm-management-enable.md
-        - name: Yapılandırma
+        - name: VM'leri çalışma saatleri dışında başlat/durdur özelliğini yapılandırma
           href: automation-solution-vm-management-config.md
-        - name: Günlük sorgularıyla verileri çözümleme
+        - name: VM'leri çalışma saatleri dışında başlat/durdur özelliğinden sorgu günlükleri
           href: automation-solution-vm-management-logs.md
-        - name: Sorun giderme
+        - name: VM'leri çalışma saatleri dışında başlat/durdur özelliğiyle ilgili sorunları giderme
           href: troubleshoot/start-stop-vm.md
     - name: Güncelleştirme Yönetimi
       items:
@@ -215,21 +221,23 @@
           href: how-to/region-mappings.md
         - name: Etkinleştirme
           items:
-            - name: Resource Manager şablonu kullanma
+            - name: Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi’ni etkinleştirme
               href: automation-update-management-deploy-template.md
-            - name: Azure portalı kullanma
+            - name: Azure portalından Güncelleştirme Yönetimi’ni etkinleştirme
               href: automation-onboard-solutions-from-browse.md
-            - name: Azure VM’sinden
+            - name: Azure VM’den Güncelleştirme Yönetimi’ni etkinleştirme
               href: automation-onboard-solutions-from-vm.md
-            - name: Otomasyon hesabından
+            - name: Otomasyon hesabından Güncelleştirme Yönetimi’ni etkinleştirme
               href: automation-onboard-solutions-from-automation-account.md
+            - name: Runbook’tan Güncelleştirme Yönetimi’ni etkinleştirme
+              href: automation-onboard-solutions.md
         - name: Azure VM’lerinize yönelik güncelleştirmeleri yönetme
           href: automation-tutorial-update-management.md
         - name: Birden çok VM için güncelleştirmesini yönetme
           href: manage-update-multi.md
         - name: Güncelleştirme değerlendirmelerini görüntüleme
           href: automation-view-update-assessments.md
-        - name: Ön ve son betikleri yönetme
+        - name: Ön betikleri ve son betikleri yönetme
           href: pre-post-scripts.md
         - name: Configuration Manager ile tümleştirme
           href: updatemgmt-mecmintegration.md
@@ -239,11 +247,17 @@
           href: automation-update-management-groups.md
         - name: Güncelleştirme Yönetimi günlüklerini sorgulama
           href: automation-update-management-query-logs.md
+        - name: Kapsam yapılandırmalarıyla çalışma
+          href: automation-scope-configurations-update-management.md
+        - name: Çalışma alanının Otomasyon hesabından bağlantısını kaldırma
+          href: automation-unlink-workspace-update-management.md
+        - name: VM’leri Güncelleştirme Yönetimi'nden kaldırma
+          href: automation-remove-vms-from-update-management.md
         - name: Sorun giderme
           items:
-            - name: Ekleme
+            - name: Özellik dağıtımı sorunlarını giderme
               href: troubleshoot/onboarding.md
-            - name: Güncelleştirme Yönetimi’ni kullanma
+            - name: Güncelleştirme Yönetimi sorunlarını giderme
               href: troubleshoot/update-management.md
             - name: Windows Update aracı sorunlarını giderme
               href: troubleshoot/update-agent-issues.md
@@ -269,7 +283,9 @@
           href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
 - name: Başvuru
   items:
-    - name: Azure PowerShell
+    - name: Azure PowerShell Az
+      href: /powershell/module/az.automation
+    - name: Azure PowerShell AzureRM
       href: /powershell/module/azurerm.automation
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.automation

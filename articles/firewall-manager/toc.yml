@@ -4,8 +4,13 @@
   items:
     - name: Azure Güvenlik Duvarı Yöneticisi nedir?
       href: overview.md
-- name: Öğreticiler
+- name: Hızlı Başlangıçlar
   expanded: true
+  items:
+    - name: Güvenli sanal merkez
+      displayName: Resource Manager
+      href: quick-secure-virtual-hub.md
+- name: Öğreticiler
   items:
     - name: Sanal WAN’ınızın güvenliğini sağlama - portal
       href: secure-cloud-network.md

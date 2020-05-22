@@ -12,6 +12,8 @@
       items:
         - name: Azure CLI kullanma
           href: kubernetes-walkthrough.md
+        - name: Azure PowerShell kullanma
+          href: kubernetes-walkthrough-powershell.md
         - name: Azure portalı kullanma
           href: kubernetes-walkthrough-portal.md
         - name: ARM şablonu kullanma
@@ -225,7 +227,7 @@
         - name: API sunucusu tarafından yetkilendirilen IP aralıklarını tanımlama
           href: api-server-authorized-ip-ranges.md
         - name: Azure İlkesi ile dağıtımları denetleme (önizleme)
-          href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
+          href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: Küme kimlik bilgilerini güncelleştirme
           href: update-credentials.md
         - name: Küme çıkış trafiğini kısıtlama ve denetleme
@@ -263,6 +265,8 @@
       items:
         - name: AKS kümesi oluşturma
           href: windows-container-cli.md
+        - name: PowerShell ile AKS kümesi oluşturma
+          href: windows-container-powershell.md
         - name: Uzaktan bağlanma
           href: rdp.md
         - name: Bilinen sınırlamalar

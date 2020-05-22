@@ -200,6 +200,8 @@
               href: howto-create-users.md
             - name: Azure AD tümleştirmesini yapılandırma
               href: howto-configure-sign-in-aad-authentication.md
+            - name: Yönetilen Kimlik ile bağlanma
+              href: howto-connect-with-managed-identity.md
         - name: İyileştirme
           items:
             - name: Toplu eklemeler

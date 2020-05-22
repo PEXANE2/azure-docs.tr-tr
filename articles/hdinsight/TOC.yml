@@ -59,6 +59,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: Küme kapasitesi planlama
           href: ./hdinsight-capacity-planning.md
+        - name: CPU çekirdeği kotası için artış isteme
+          href: ./quota-increase-request.md
         - name: Küme yönetimi için en iyi yöntemler
           href: ./cluster-management-best-practices.md
         - name: Kullanılabilirlik ve güvenilirlik
@@ -243,6 +245,8 @@
               href: ./troubleshoot-resource-creation-fails.md
             - name: Apache Oozie sorunlarını giderme
               href: ./troubleshoot-oozie.md
+            - name: WebHCat hatalarını anlama ve çözme
+              href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
     - name: Başvuru
       items:
         - name: Azure PowerShell
@@ -285,8 +289,6 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: Apache Hadoop hizmetleri için yığın dökümlerini etkinleştirme
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: WebHCat hatalarını anlama ve çözme
-          href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
         - name: Forumdan yardım alma
           href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
         - name: Fiyatlandırma hesaplayıcı
@@ -330,6 +332,8 @@
           href: ./spark/apache-spark-settings.md
         - name: Apache Spark işlerini iyileştirme
           href: ./spark/apache-spark-perf.md
+        - name: Spark 2.3 veya 2.4’e geçirme
+          href: ./spark/migrate-versions.md
     - name: Nasıl yapılır
       items:
         - name: Araçları kullanma
@@ -736,6 +740,8 @@
       items:
         - name: En iyi ağ geçidi yöntemleri
           href: ./interactive-query/gateway-best-practices.md
+        - name: Boyutlandırma yönergeleri
+          href: ./interactive-query/sizing-guidelines.md
     - name: Nasıl yapılır
       items:
         - name: Geliştirme
@@ -780,6 +786,8 @@
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
             - name: Apache Tez uygulaması yanıt vermiyor
               href: ./interactive-query/interactive-query-troubleshoot-tez-hangs.md
+            - name: Apache Hive LLAP boyutlandırma yönergeleri
+              href: ./interactive-query/hive-llap-sizing-guide.md
             - name: Apache Hive LLAP sorgu performansı
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: Azaltıcı yavaş çalışıyor

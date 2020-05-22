@@ -1,10 +1,12 @@
 - name: Azure Red Hat OpenShift
   href: index.yml
 - name: Genel Bakış
+  expanded: true
   items:
     - name: About Azure Red Hat OpenShift Hakkında
       href: intro-openshift.md
 - name: Öğreticiler
+  expanded: true
   items:
     - name: 1 - Azure Red Hat OpenShift 4 kümesi oluşturma
       href: tutorial-create-cluster.md
@@ -13,7 +15,6 @@
     - name: 3 - Azure Red Hat OpenShift 4 kümesini silme
       href: tutorial-delete-cluster.md
 - name: Nasıl yapılır kılavuzları
-  expanded: true
   items:
     - name: Özel bir Azure Red Hat OpenShift 4 kümesi oluşturma
       href: howto-create-private-cluster-4x.md
@@ -37,7 +38,6 @@
       items:
         - name: Azure Red Hat OpenShift 3.11 için Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
           href: howto-setup-environment.md
-          expanded: true
           items:
             - name: Azure AD kiracısı oluşturma
               href: howto-create-tenant.md
@@ -85,7 +85,9 @@
       href: support-policies-v4.md
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Red Hat OpenShift belgeleri
-      href: 'https://docs.openshift.com/aro/welcome/index.html'
+    - name: Azure Red Hat OpenShift 4.3 belgeleri
+      href: 'https://docs.openshift.com/aro/4/welcome/index.html'
+    - name: Azure Red Hat OpenShift 3.11 belgeleri
+      href: 'https://docs.openshift.com/aro/3/welcome/index.html'
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/'

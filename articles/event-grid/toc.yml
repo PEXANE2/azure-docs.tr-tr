@@ -132,6 +132,14 @@
               href: event-schema-azure-signalr.md
             - name: Azure abonelikleri
               href: event-schema-subscriptions.md
+    - name: İş ortağı konuları
+      items:
+        - name: İş ortağı konularına genel bakış
+          href: partner-topics-overview.md
+        - name: Auth0
+          href: auth0-overview.md
+        - name: Event Grid İş Ortağı olun
+          href: partner-onboarding-overview.md
     - name: Olay Etki Alanları
       href: event-domains.md
     - name: Olay şeması biçimleri
@@ -186,6 +194,8 @@
   items:
     - name: Özel konuya gönderme
       href: post-to-custom-topic.md
+    - name: Auth0 olaylarına abone olun
+      href: auth0-how-to.md
     - name: HTTP uç noktasında olayları alma
       href: receive-events.md
     - name: Teslim edilemeyen ileti ve yeniden deneme
@@ -214,6 +224,8 @@
           href: configure-firewall.md
         - name: AAD ile güvenli web kancası
           href: secure-webhook-delivery.md
+        - name: Yönetilen kimlikle olay teslimi
+          href: managed-service-identity.md
     - name: Sorun giderme
       items:
         - name: Tanılama günlüklerini etkinleştirme

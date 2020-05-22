@@ -276,6 +276,8 @@
       items:
         - name: Azure AD tümleştirmesini yapılandırma
           href: howto-configure-sign-in-azure-ad-authentication.md
+        - name: Yönetilen Kimlik ile bağlanma
+          href: howto-connect-with-managed-identity.md
     - name: Genel Ağ Erişimini engelleme
       items:
         - name: Azure portal

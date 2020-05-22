@@ -278,6 +278,8 @@
           href: how-to-connect-sync-feature-scheduler.md
         - name: Eşitleme kuralını oluşturma ve özelleştirme
           href: how-to-connect-create-custom-sync-rule.md
+        - name: Azure AD Connect eşitleme v2 uç nokta API’si
+          href: how-to-connect-sync-endpoint-api-v2.md
         - name: Azure AD Connect Eşitleme hizmeti yöneticisi
           items:
             - name: Hizmet yöneticisi işlemler sekmesini yönetme

@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 3a26561b7789446aff70c9fb9e08d523d05d8d64
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: 694b5fee19a1c0dca752e02259e3cc398ae6e55e
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: HT
   ms.contentlocale: tr-TR
   ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83587485"
+  ms.locfileid: "83641869"
 landingContent:
 - title: Dış Kimlikler Hakkında
   linkLists:
@@ -27,6 +27,18 @@ landingContent:
       url: compare-with-b2c.md
     - text: B2B konuk kullanıcı erişimi nedir?
       url: what-is-b2b.md
+- title: Self servis kaydolma (Önizleme)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Self servis kaydolma nedir?
+      url: self-service-sign-up-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Self servis kaydolma için kullanıcı akışı ekleme
+      url: self-service-sign-up-user-flow.md
+    - text: Kullanıcı akışları için özel öznitelikleri tanımlama
+      url: user-flow-add-custom-attributes.md
 - title: B2B konuk kullanıcılarını davet etme
   linkLists:
   - linkListType: concept

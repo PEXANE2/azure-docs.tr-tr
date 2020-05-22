@@ -25,8 +25,6 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Veri fabrikası oluşturma - Resource Manager şablonu
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: Güvenlik - Müşteri Tarafından Yönetilen Anahtar Şifrelemesini Etkinleştirme
-      href: quickstart-enable-customer-managed-key.md
     - name: Veri akışı oluşturma
       href: data-flow-create.md
 - name: Öğreticiler
@@ -188,8 +186,6 @@
               href: wrangling-data-flow-functions.md
     - name: Roller ve izinler
       href: concepts-roles-permissions.md
-    - name: Fiyatlandırmayı anlama
-      href: pricing-concepts.md
     - name: Adlandırma kuralları
       href: naming-rules.md
 - name: Nasıl yapılır kılavuzları
@@ -370,6 +366,8 @@
           href: connector-servicenow.md
         - name: SFTP
           href: connector-sftp.md
+        - name: SharePoint Online Listesi
+          href: connector-sharepoint-online-list.md
         - name: Shopify
           href: connector-shopify.md
         - name: Spark
@@ -416,6 +414,8 @@
           href: copy-activity-schema-and-type-mapping.md
         - name: Hataya dayanıklılık
           href: copy-activity-fault-tolerance.md
+        - name: Veri tutarlılığı doğrulama
+          href: copy-activity-data-consistency.md
         - name: Biçimlendirme ve sıkıştırma desteği (eski)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: Verileri dönüştürme
@@ -553,8 +553,12 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Data Factory için yönetilen kimlik
           href: data-factory-service-identity.md
+        - name: Müşteri tarafından yönetilen anahtar şifrelemesi
+          href: quickstart-enable-customer-managed-key.md
     - name: İzleme ve yönetme
       items:
+        - name: Görsel olarak izleme
+          href: monitor-visually.md
         - name: Azure İzleyici ile izleme
           href: monitor-using-azure-monitor.md
         - name: SDK’lar ile izleme
@@ -577,6 +581,8 @@
           href: create-azure-ssis-integration-runtime.md
         - name: Şirket içinde barındırılan tümleştirme çalışma zamanı paylaşma
           href: create-shared-self-hosted-integration-runtime-powershell.md
+        - name: Şirket içinde barındırılan tümleştirme çalışma zamanı otomasyon betikleri
+          href: self-hosted-integration-runtime-automation-scripts.md
     - name: Azure’da SSIS paketlerini çalıştırma
       items:
         - name: Azure’da SSIS paketlerini SSDT’ten çalıştırma
@@ -597,12 +603,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Azure SSIS IR için Azure AD kimlik doğrulamasını etkinleştirme
           href: enable-aad-authentication-azure-ssis-ir.md
-        - name: Windows Kimlik Doğrulaması ile verilere bağlama
-          href: ssis-azure-connect-with-windows-auth.md
-        - name: Dosyaları kaydetme ve dosya paylaşımlarına bağlanma
-          href: ssis-azure-files-file-shares.md
         - name: Azure-SSIS IR için Enterprise Edition sağlama
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Azure-SSIS IR üzerinde yerleşik ve önceden yüklenmiş bileşenler
+          href: built-in-preinstalled-components-ssis-integration-runtime.md
         - name: Azure-SSIS IR için kurulumu özelleştirme
           href: how-to-configure-azure-ssis-ir-custom-setup.md
         - name: Azure-SSIS IR için lisanslı bileşenleri yükleme
@@ -613,6 +617,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Elastik Veritabanı İşleriyle SSISDB günlüklerini temizleme
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: Azure-SSIS IR ile Azure SQL Yönetilen Örnek kullanma
+          href: how-to-use-sql-managed-instance-with-ir.md
         - name: SSIS işlerini SSMS ile geçirme
           href: how-to-migrate-ssis-job-ssms.md
     - name: Tetikleyici oluşturma
@@ -645,6 +651,12 @@
           href: solution-template-move-files.md
         - name: Azure Databricks ile dönüştürme
           href: solution-template-databricks-notebook.md
+    - name: Fiyatlandırmayı anlama
+      items:
+        - name: Maliyetleri planlama ve yönetme
+          href: plan-manage-costs.md
+        - name: Fiyatlandırma örnekleri
+          href: pricing-concepts.md
     - name: Sorun giderme kılavuzları
       items:
         - name: Etkinlikler

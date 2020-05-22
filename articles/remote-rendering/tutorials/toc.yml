@@ -1,6 +1,4 @@
-- name: Sıfırdan Unity projesi ayarlama
-  href: unity/project-setup.md
-- name: Unity’de uzak varlıklarla çalışma
-  href: unity/working-with-remote-entities.md
-- name: Ortamı ve malzemeleri değiştirme
-  href: unity/changing-environment-and-materials.md
+- name: Unity
+  href: unity/toc.yml
+- name: Yerel C++
+  href: native-cpp/toc.yml

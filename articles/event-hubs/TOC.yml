@@ -133,6 +133,8 @@
   items:
     - name: Bölgeler arasında taşıma
       href: move-across-regions.md
+    - name: Dinamik olarak bölüm ekleme
+      href: dynamically-add-partitions.md
     - name: Azure Stack Hub üzerinde denetim noktası deposu olarak Blob Depolama’yı kullanma
       href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: Azure Service Manager (klasik) API’lerinden Resource Manager API’lerine geçiş
@@ -205,7 +207,7 @@
           href: event-hubs-ip-filtering.md
         - name: Sanal ağ hizmet uç noktalarını yapılandırma
           href: event-hubs-service-endpoints.md
-        - name: Özel uç noktaları yapılandırma (önizleme)
+        - name: Özel uç noktaları yapılandırma
           href: private-link-service.md
         - name: Müşteri tarafından yönetilen anahtarları yapılandırma
           href: configure-customer-managed-key.md

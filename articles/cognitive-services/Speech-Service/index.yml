@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: c065f3d12f98be85f45ed6233593d9ccab1cefa1
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: 50252d0a308c4232b84bffddd905d8a84e1be0d8
+  ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83201643"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83707981"
 highlightedContent:
   items:
   - title: Konuşma tanıma hizmeti nedir?
@@ -47,7 +47,7 @@ conceptualContent:
       text: Konuşma tanımanın temelleri
       url: speech-to-text-basics.md
     footerLink:
-      text: Daha fazla göster
+      text: Daha fazla
       url: index-speech-to-text.yml
   - title: Metin okuma
     links:
@@ -61,7 +61,7 @@ conceptualContent:
       text: Konuşma sentezinin temelleri
       url: text-to-speech-basics.md
     footerLink:
-      text: Daha fazla göster
+      text: Daha fazla
       url: index-text-to-speech.yml
   - title: Konuşma çevirisi
     links:
@@ -75,7 +75,7 @@ conceptualContent:
       text: Konuşma çevirisi temel bilgileri
       url: speech-translation-basics.md
     footerLink:
-      text: Daha fazla göster
+      text: Daha fazla
       url: index-speech-translation.yml
   - title: Amaç tanıma
     links:
@@ -89,7 +89,7 @@ conceptualContent:
       text: Language Understanding (LUIS) portalı
       url: https://www.luis.ai
     footerLink:
-      text: Daha fazla göster
+      text: Daha fazla
       url: index-intent-recognition.yml
   - title: Konuşma senaryoları
     links:
@@ -103,7 +103,7 @@ conceptualContent:
       text: Çağrı merkezi transkripsiyonu
       url: call-center-transcription.md
     footerLink:
-      text: Daha fazla göster
+      text: Daha fazla
       url: index-conversation-scenarios.yml
   - title: Ses yardımcıları
     links:
@@ -117,8 +117,16 @@ conceptualContent:
       text: Bot Framework kullanarak ses yardımcısı oluşturma
       url: direct-line-speech.md
     footerLink:
-      text: Daha fazla göster
+      text: Daha fazla
       url: index-voice-assistants.yml
+  - title: Konuşmacı Tanıma
+    links:
+    - itemType: how-to-guide
+      text: Konuşmacı Tanıma hakkında
+      url: ../Speaker-recognition/Home.md
+    - itemType: how-to-guide
+      text: Konuşmacı Tanıma API'si başvurusu
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797
   - title: Araçlar
     links:
     - itemType: overview
@@ -142,7 +150,7 @@ conceptualContent:
       text: Azure Container Instances üzerinde konuşma hizmeti kapsayıcıları
       url: deploy-speech-on-container-instances.md
     footerLink:
-      text: Daha fazla göster
+      text: Daha fazla
       url: index-hosting.yml
   - title: Cihazlar
     links:
@@ -156,7 +164,7 @@ conceptualContent:
       text: Konuşma Cihazları SDK’sını kullanma
       url: speech-devices-sdk-quickstart.md
     footerLink:
-      text: Daha fazla göster
+      text: Daha fazla
       url: index-devices.yml
   - title: Geçiş
     links:

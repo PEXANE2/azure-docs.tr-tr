@@ -17,13 +17,13 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: IP Grupları ile dağıtma
+    - name: IP Grupları ile dağıtma - ARM şablonu
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
-    - name: Birden çok adres ile dağıtma
+    - name: Birden çok adres ile dağıtma - ARM şablonu
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
-    - name: Kullanılabilirlik Alanları ile dağıtma
+    - name: Kullanılabilirlik Alanları ile dağıtma - ARM şablonu
       displayName: Resource Manager
       href: deploy-template.md
 - name: Örnekler

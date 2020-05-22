@@ -79,9 +79,8 @@
     - name: Jupyter Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Tasarımcı veri kümeleri
-      href: sample-designer-datasets.md
-    - name: Tasarımcı örnek işlem hatları
+    - name: Tasarımcı örnekleri ve veri kümeleri
+      displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
     - name: Uçtan uca MLOps örnekleri
       href: 'https://github.com/microsoft/MLOps'
@@ -261,6 +260,9 @@
             - name: Veri kümeleri için sürüm oluşturma ve bunları izleme
               displayName: 'data, data set'
               href: how-to-version-track-datasets.md
+            - name: Veri gizliliğini koruma
+              displayName: 'data,privacy,differential privacy'
+              href: how-to-differential-privacy.md
     - name: Modelleri eğitme
       items:
         - name: ML için tahmin araçlarını kullanma
@@ -376,6 +378,9 @@
               href: how-to-monitor-data-drift.md
             - name: Application Insights ile izleme
               href: how-to-enable-app-insights.md
+        - name: Şifrelenmiş çıkarım hizmeti dağıtma
+          displayName: 'homomorhic,encryption,deployment'
+          href: how-to-homomorphic-encryption-seal.md
     - name: ML işlem hatlarını oluşturma ve kullanma
       displayName: pipelines
       items:
@@ -393,9 +398,6 @@
         - name: Application Insights’ta işlem hatlarında hata ayıklama
           displayname: 'pipelines, log, monitor'
           href: how-to-debug-pipelines-application-insights.md
-        - name: CI/CD için Azure Pipelines
-          displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
         - name: Tasarımcı verileri dönüştürme
           displayName: pipeline
           href: how-to-designer-transform-data.md
@@ -417,6 +419,9 @@
         - name: Makine öğrenmesi işlem hatlarını yineleme ve geliştirme
           displayName: modularizing testing
           href: concept-pipeline-practices-tips.md
+    - name: CI/CD için Azure Pipelines
+      displayName: 'continuous, integration, delivery'
+      href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
     - name: Kaynak kotalarını yönetme
       displayName: limits
       href: how-to-manage-quotas.md

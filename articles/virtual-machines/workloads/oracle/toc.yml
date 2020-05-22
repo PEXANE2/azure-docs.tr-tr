@@ -4,6 +4,8 @@
       href: oracle-overview.md
     - name: Azure VM’lerinde çözümler
       href: oracle-vm-solutions.md
+    - name: WebLogic Server Azure Uygulamaları
+      href: oracle-weblogic.md
     - name: OCI ile çözümler
       href: oracle-oci-overview.md
 - name: Hızlı Başlangıçlar

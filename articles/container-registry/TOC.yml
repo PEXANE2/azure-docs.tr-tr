@@ -91,7 +91,7 @@
           items:
             - name: Özel uç nokta kullanarak erişimi kısıtlama
               href: container-registry-private-link.md
-            - name: Hizmet güvenlik duvarı kurallarını yapılandırma
+            - name: Ortak kayıt defteri erişimini yapılandırma
               href: container-registry-access-selected-networks.md
             - name: Hizmet uç noktasını kullanarak erişimi kısıtlama (önizleme)
               href: container-registry-vnet.md

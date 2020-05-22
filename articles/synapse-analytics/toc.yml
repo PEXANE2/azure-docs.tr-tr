@@ -25,9 +25,13 @@
         - name: Web araçlarını kullanarak Apache Spark not defteri oluşturma
           href: quickstart-apache-spark-notebook.md
         - name: Azure portalını kullanarak Apache Spark havuzu oluşturma
-          href: quickstart-create-apache-spark-pool.md
-        - name: SQL havuzu oluşturma
-          href: quickstart-create-sql-pool.md
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Synapse Studio kullanarak Apache Spark havuzu oluşturma
+          href: quickstart-create-apache-spark-pool-studio.md
+        - name: Azure portal kullanarak SQL havuzu oluşturma
+          href: quickstart-create-sql-pool-portal.md
+        - name: Synapse Studio kullanarak SQL havuzu oluşturma
+          href: quickstart-create-sql-pool-studio.md
     - name: SQL havuzlarıyla verileri yükleme
       items:
         - name: COPY ifadesi
@@ -308,7 +312,7 @@
                   href: sql/develop-storage-files-overview.md
                 - name: Depolama Erişim Denetimi
                   href: sql/develop-storage-files-storage-access-control.md
-                - name: Spark tabloları
+                - name: Azure Synapse dış tabloları için Apache Spark
                   href: sql/develop-storage-files-spark-tables.md
         - name: İş yükü yönetimi
           items:
@@ -328,8 +332,16 @@
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Synapse Link
       items:
+        - name: Azure Cosmos DB için Synapse Link
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Analiz Mağazasına Genel Bakış
+          href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Desteklenen Synapse Link özellikleri
           href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
+        - name: Synapse Link hakkında SSS
+          href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Synapse Link kullanım örnekleri
+          href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 'Araç tümleştirmesi (AI, ETL, BI)'
       items:
         - name: Synapse Analytics Studio sorunlarını giderme
@@ -414,6 +426,8 @@
       items:
         - name: Synapse Link
           items:
+            - name: Synapse Link’i yapılandırma
+              href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Cosmos DB için Azure Synapse Link’e bağlanma
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Azure Synapse Analytics için Apache Spark ile Azure Cosmos DB analizleri mağazasında sorgu yapma
@@ -860,14 +874,16 @@
   items:
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: Özellik istekleri
+      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
     - name: Forum
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/synapse-analytics/'
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Özellik istekleri
-      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
+    - name: Sorular ve Yanıtlar
+      href: 'https://docs.microsoft.com/en-us/answers/questions/topics/single/25423.html'
     - name: Hizmet güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
     - name: Stack Overflow

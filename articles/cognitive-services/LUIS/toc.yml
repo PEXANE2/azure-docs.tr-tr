@@ -42,8 +42,6 @@
         - name: 2. Kullanıcı verilerini ayıklama
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
-        - name: 3. Kullanıcı sözlerinden yaklaşımı alma
-          href: tutorial-publish-settings.md
     - name: Uygulama geliştirme
       items:
         - name: Emin olunmayan tahminleri düzeltme
@@ -379,7 +377,7 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Özel varlık başvurusu
       items:
-        - name: Makine tarafından öğrenilen varlık
+        - name: Makine öğrenimi varlığı
           href: reference-entity-machine-learned-entity.md
         - name: Bileşik varlık
           href: reference-entity-composite.md

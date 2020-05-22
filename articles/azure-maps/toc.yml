@@ -259,6 +259,20 @@
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
         - name: Hava durumu hizmeti
           href: 'https://docs.microsoft.com/rest/api/maps/weather'
+        - name: Haritalar Oluşturucu hizmeti
+          items:
+            - name: Diğer ad hizmeti
+              href: 'https://docs.microsoft.com/rest/api/maps/alias'
+            - name: Dönüştürme hizmeti
+              href: 'https://docs.microsoft.com/rest/api/maps/conversion'
+            - name: Veri kümesi hizmeti
+              href: 'https://docs.microsoft.com/rest/api/maps/dataset'
+            - name: Özellik Durumu hizmeti
+              href: 'https://docs.microsoft.com/rest/api/maps/featurestate'
+            - name: Kutucuk kümesi hizmeti
+              href: 'https://docs.microsoft.com/rest/api/maps/tileset'
+            - name: WFS hizmeti
+              href: 'https://docs.microsoft.com/rest/api/maps/wfs'
         - name: Haritalar hesabı yönetimi
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript

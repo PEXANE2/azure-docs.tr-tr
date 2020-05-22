@@ -87,18 +87,26 @@
           href: understand-ea-roles.md
         - name: Azure EA portalı yönetimi
           href: ea-portal-administration.md
+        - name: İş ortakları için Azure EA portalı
+          href: ea-partner-portal-administration.md
+        - name: Azure Kurumsal aktarımlar
+          href: ea-transfers.md
         - name: Microsoft Müşteri Sözleşmesi’ndeki EA görevleri
           href: mca-enterprise-operations.md
         - name: Azure EA sözleşmeleri ve düzeltmeleri
           href: ea-portal-agreements.md
         - name: Kurumsal kayıt faturaları
           href: ea-portal-enrollment-invoices.md
+        - name: Azure EA fiyatlandırması
+          href: ea-pricing-overview.md
         - name: Azure Kurumsal REST API'leri
           href: ea-portal-rest-apis.md
         - name: Azure EA VM ayrılmış örnekleri
           href: ea-portal-vm-reservations.md
         - name: Azure EA portalı erişim sorunlarını giderme
           href: ea-portal-troubleshoot.md
+        - name: Azure Market
+          href: ea-azure-marketplace.md
 - name: Sorun giderme
   items:
     - name: Abonelik bulunamadı

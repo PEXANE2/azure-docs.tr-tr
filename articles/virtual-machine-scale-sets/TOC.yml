@@ -60,9 +60,39 @@
 - name: Örnekler
   items:
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: Sanal makine ölçek kümesi oluşturma
+          href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: Özel bir sanal makine görüntüsünden ölçek kümesi oluşturma
+          href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
+        - name: Ölçek kümesine uygulama yükleme
+          href: ./scripts/cli-sample-install-apps.md
+        - name: Disk oluşturma ve ölçek kümesine ekleme
+          href: ./scripts/cli-sample-attach-disks.md
+        - name: Ana bilgisayar tabanlı otomatik ölçeklendirmeyi etkinleştirme
+          href: ./scripts/cli-sample-enable-autoscale.md
+        - name: Tek bölgeli ölçek kümesi oluşturma
+          href: ./scripts/cli-sample-single-availability-zone-scale-set.md
+        - name: Alanlar arası yedekli ölçek kümesi oluşturma
+          href: ./scripts/cli-sample-zone-redundant-scale-set.md
     - name: PowerShell
-      href: powershell-samples.md
+      items:
+        - name: Basit bir sanal makine ölçek kümesi oluşturma
+          href: ./scripts/powershell-sample-create-simple-scale-set.md
+        - name: Tam bir sanal makine ölçek kümesi oluşturma
+          href: ./scripts/powershell-sample-create-complete-scale-set.md
+        - name: Özel bir sanal makine görüntüsünden ölçek kümesi oluşturma
+          href: ./scripts/powershell-sample-create-scale-set-from-custom-image.md
+        - name: Ölçek kümesine uygulama yükleme
+          href: ./scripts/powershell-sample-install-apps.md
+        - name: Disk oluşturma ve ölçek kümesine ekleme
+          href: ./scripts/powershell-sample-attach-disks.md
+        - name: Ana bilgisayar tabanlı otomatik ölçeklendirmeyi etkinleştirme
+          href: ./scripts/powershell-sample-enable-autoscale.md
+        - name: Tek bölgeli ölçek kümesi oluşturma
+          href: ./scripts/powershell-single-av-zone-scale-set.md
+        - name: Alanlar arası yedekli ölçek kümesi oluşturma
+          href: ./scripts/powershell-sample-zone-redundant-scale-set.md
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md

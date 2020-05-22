@@ -184,6 +184,8 @@
           href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: Yönetme
       items:
+        - name: Mesajlaşma birimlerini otomatik olarak güncelleştirme
+          href: automate-update-messaging-units.md
         - name: Varlıkları sağlamak için Azure PowerShell kullanma
           href: service-bus-manage-with-ps.md
         - name: Azure İzleyici ile Service Bus’ı izleme
@@ -209,7 +211,7 @@
           href: service-bus-ip-filtering.md
         - name: Sanal ağ hizmet uç noktalarını yapılandırma
           href: service-bus-service-endpoints.md
-        - name: Özel uç noktaları yapılandırma (önizleme)
+        - name: Özel uç noktaları yapılandırma
           href: private-link-service.md
         - name: Müşteri tarafından yönetilen anahtarları yapılandırma
           href: configure-customer-managed-key.md
