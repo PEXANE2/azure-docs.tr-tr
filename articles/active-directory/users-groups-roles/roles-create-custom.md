@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2682a85f88a537630fbca86dd55541a152d8f37e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025285"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758648"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory özel rol oluşturma ve atama
 
@@ -30,8 +30,8 @@ Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluştu
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Uygulama kayıtlarını yönetmek için erişim izni vermek üzere yeni bir özel rol oluşturun
 
-1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1. **Azure Active Directory** > **Roller ve yöneticiler** > **Yeni özel rol**' i seçin.
+1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com)oturum açın   .
+1. **Azure Active Directory**  >  **Roller ve yöneticiler**  >  **Yeni özel rol**' i seçin.
 
    ![Roller ve yöneticiler sayfasından roller oluşturma veya düzenleme](./media/roles-create-custom/new-custom-role.png)
 
@@ -40,7 +40,7 @@ Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluştu
    ![Temel bilgiler sekmesinde özel rol için bir ad ve açıklama girin](./media/roles-create-custom/basics-tab.png)
 
 1. **İzinler** sekmesinde, uygulama kayıtlarının temel özelliklerini ve kimlik bilgisi özelliklerini yönetmek için gerekli izinleri seçin. Her iznin ayrıntılı bir açıklaması için bkz. [Azure Active Directory 'de uygulama kaydı alt türleri ve izinleri](./roles-custom-available-permissions.md).
-   1. İlk olarak, arama çubuğuna "kimlik bilgileri" girin ve `microsoft.directory/applications/credentials/update` izni seçin.
+   1. İlk olarak, arama çubuğuna "kimlik bilgileri" girin ve izni seçin `microsoft.directory/applications/credentials/update` .
 
       ![Izinler sekmesinde özel bir rol için izinleri seçin](./media/roles-create-custom/permissions-tab.png)
 
@@ -141,6 +141,9 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
    }
     ```
 
+  > [!Note]
+  > "TemplateId": "GUID", gereksinime bağlı olarak gövdede gönderilen isteğe bağlı bir parametredir. Ortak parametrelerle birden çok farklı özel rol oluşturma gereksinimleriniz varsa, bir şablon oluşturmak ve bir TemplateId tanımlamak en iyisidir. PowerShell cmdlet 'ini (New-GUID) kullanarak önceden TemplateId oluşturabilirsiniz. 'İni. 
+
 1. Rol atamasını oluşturun.
 
     Özel bir rol tanımı oluşturmak için HTTP isteği.
@@ -160,6 +163,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
+
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Kaynağa kapsamlı özel bir rol atama
 

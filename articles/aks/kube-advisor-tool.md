@@ -7,12 +7,12 @@ author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 17e21c142dc354de7b72bc17396b19366027c5cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9dc5a38a05ef73863f85e4dbe92d52eb94b2715f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668389"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773795"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kümenizdeki Kubernetes en iyi yöntemlerini denetleme
 
@@ -34,7 +34,7 @@ Aracı, [rol tabanlı erişim denetimi (RBAC)](azure-ad-integration.md)için yap
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 
-kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }"
+kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }" --namespace default
 ```
 
 RBAC kullanmıyorsanız, komutu aşağıdaki gibi çalıştırabilirsiniz:
@@ -59,7 +59,7 @@ Varsayılan olarak, Pod belirtimlerinde hiçbir istek veya sınır ayarlanır. B
 
 ## <a name="cleaning-up"></a>Temizleme
 
-Kümenizin RBAC etkinse, aşağıdaki komutu kullanarak aracı çalıştırdıktan `ClusterRoleBinding` sonra ' yi temizleyebilirsiniz:
+Kümenizin RBAC etkinse, `ClusterRoleBinding` aşağıdaki komutu kullanarak aracı çalıştırdıktan sonra ' yi temizleyebilirsiniz:
 
 ```bash
 kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml

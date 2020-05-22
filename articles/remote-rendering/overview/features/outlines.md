@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 8b52dbe8cd12e51c42677ce37acbd57ad551ec50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f3889a0ba121cb9a3167c1f6ac95f0bed280539
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680836"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759022"
 ---
 # <a name="outline-rendering"></a>Ana hattı işleme
 
@@ -26,21 +26,33 @@ Sınıf `OutlineSettings` , genel anahat özellikleriyle ilgili ayarları barın
 |----------------|---------|---------------------------------------------------------|
 | `Color`          | Color4Ub | Anahattı çizmek için kullanılan renk. Alfa bölümü yok sayılır.         |
 | `PulseRateHz`    | float   | Ana hattın saniyedeki kaç saniyede ele alındığı oran|
-| `PulseIntensity` | float   | Ana hat Pulse efektinin yoğunluğu. Tam pulun için 0,0 arasında bir pulun ve 1,0 olmaması gerekir. Şiddette, ana hattın en düşük opaklığını örtülü olarak `MinOpacity = 1.0 - PulseIntensity`belirler. |
+| `PulseIntensity` | float   | Ana hat Pulse efektinin yoğunluğu. Tam pulun için 0,0 arasında bir pulun ve 1,0 olmaması gerekir. Şiddette, ana hattın en düşük opaklığını örtülü olarak belirler `MinOpacity = 1.0 - PulseIntensity` . |
 
-![Parametrenin sarıdan (solda) macenta (orta) ve](./media/outlines.png) `pulseIntensity` 0 ile 0,8 (sağ) arasında değiştirilmesini açıklar. `color`
+![](./media/outlines.png) `color` Parametrenin sarıdan (solda) macenta (orta) ve `pulseIntensity` 0 ile 0,8 (sağ) arasında değiştirilmesini açıklar.
 
 ## <a name="example"></a>Örnek
 
 Aşağıdaki kod, API aracılığıyla ana hat parametrelerini ayarlamak için bir örnek gösterir:
 
-``` cs
+```cs
 void SetOutlineParameters(AzureSession session)
 {
     OutlineSettings outlineSettings = session.Actions.OutlineSettings;
     outlineSettings.Color = new Color4Ub(255, 255, 0, 255);
     outlineSettings.PulseRateHz = 2.0f;
     outlineSettings.PulseIntensity = 0.5f;
+}
+```
+
+```cpp
+void SetOutlineParameters(ApiHandle<AzureSession> session)
+{
+    ApiHandle<OutlineSettings> outlineSettings = *session->Actions()->OutlineSettings();
+    Color4Ub outlineColor;
+    outlineColor.channels = { 255, 255, 0, 255 };
+    outlineSettings->Color(outlineColor);
+    outlineSettings->PulseRateHz(2.0f);
+    outlineSettings->PulseIntensity(0.5f);
 }
 ```
 

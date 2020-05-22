@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3e63063b3ea4e7fba3997ddd645aa59fe857488
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252507"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758580"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Office 365 günlüklerinden veri bağlama
 
@@ -36,6 +36,9 @@ Denetim günlüklerini [Office 365](https://docs.microsoft.com/office365/admin/a
 - Kiracınızda Birleşik denetim etkinleştirilmiş olmalıdır. Office 365 E3 veya E5 lisanslarına sahip kiracıların Birleşik denetim varsayılan olarak etkinleştirilmiştir. <br>Kiracınızda bu lisanslardan biri yoksa, aşağıdaki yöntemlerden birini kullanarak kiracınızda Birleşik denetimi etkinleştirmeniz gerekir:
     - [Set-AdminAuditLogConfig cmdlet 'Ini kullanarak](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) "UnifiedAuditLogIngestionEnabled" parametresini etkinleştirin.
     - [Güvenlik & Uyumluluk Merkezi Kullanıcı arabirimini kullanma](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
+   
+   > [!NOTE]
+   > Şu anda O365 veri Bağlayıcısı, veri türleri bölümündeki bağlayıcı sayfasında belirtildiği gibi yalnızca Exchange ve SharePoint Activty 'i yakalar. [Ekip denetim verileri ve Sentinel 'i kullanarak takımları korumak için bu makaleyi](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761)denetlemeniz önerilir. 
 
 ## <a name="connect-to-office-365"></a>Office 365’e bağlanın
 

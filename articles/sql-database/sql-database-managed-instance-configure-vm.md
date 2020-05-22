@@ -3,7 +3,7 @@ title: İstemci VM-yönetilen örneği bağlama
 description: Azure sanal makinesinden SQL Server Management Studio kullanarak Azure SQL veritabanı yönetilen örneğine bağlanın.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 8b5dce0b43fac7cfd0e974f26451338ca1541f8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2787756da048de0a4354d88feb8445c03fb3ef74
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80528413"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773681"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı yönetilen örneğine bağlanmak için Azure VM 'yi yapılandırma
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, [yönetilen bir örnek oluşturmak](sql-database-mana
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>Yönetilen örnek VNet 'te yeni bir alt ağ oluşturma
 
@@ -48,10 +48,10 @@ Aşağıdaki adımlar yönetilen örnek VNet 'inde bir Azure sanal makinesinin y
    | ---------------- | ----------------- | ----------- |
    | **Adı** | Geçerli bir ad|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming).|
    | **Adres aralığı (CIDR bloğu)** | Geçerli bir Aralık | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Ağ güvenlik grubu** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Yol tablosu** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Ağ güvenlik grubu** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Yol tablosu** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
    | **Hizmet uç noktaları** | 0 seçili | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Alt ağ temsilcisi** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Alt ağ temsilcisi** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
 
    ![İstemci VM için yeni yönetilen örnek alt ağı](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
 
@@ -76,7 +76,7 @@ Tüm gerekli araçlarla istemci sanal makinesi oluşturmanın en kolay yolu Azur
    | Ayar| Önerilen değer | Açıklama |
    | ---------------- | ----------------- | ----------- |
    | **Abonelik** | Geçerli bir abonelik | Yeni kaynaklar oluşturmak için izninizin olduğu bir abonelik olmalıdır. |
-   | **Kaynak grubu** |[Yönetilen örnek oluştur](sql-database-managed-instance-get-started.md) hızlı başlangıçta belirttiğiniz kaynak grubu.|Bu kaynak grubu, VNet 'in bulunduğu bir kaynak olmalıdır.|
+   | **Kaynak Grubu** |[Yönetilen örnek oluştur](sql-database-managed-instance-get-started.md) hızlı başlangıçta belirttiğiniz kaynak grubu.|Bu kaynak grubu, VNet 'in bulunduğu bir kaynak olmalıdır.|
    | **Konum** | Kaynak grubunun konumu | Bu değer, seçili kaynak grubuna göre doldurulur. |
    | **Sanal makine adı**  | Geçerli bir ad | Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming).|
    |**Yönetici Kullanıcı adı**|Geçerli bir Kullanıcı adı|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). Ayrılmış sunucu düzeyi rol olan gibi "serveradmin" kullanmayın.<br>Bu Kullanıcı adını [, sanal makineye bağlandığınız](#connect-to-virtual-machine)her seferinde kullanırsınız.|
@@ -107,7 +107,7 @@ Aşağıdaki adımlarda, uzak masaüstü bağlantısı kullanarak yeni oluşturd
 
     ![VM](./media/sql-database-managed-instance-configure-vm/vm.png)  
 
-2. **Bağlan**’ı seçin.
+2. **Bağlan**'ı seçin.
 
    Bir Uzak Masaüstü Protokolü dosya (. rdp dosyası) formu, sanal makinenin genel IP adresi ve bağlantı noktası numarasıyla birlikte görüntülenir.
 

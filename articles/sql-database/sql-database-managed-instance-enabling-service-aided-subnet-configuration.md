@@ -3,26 +3,26 @@ title: Azure SQL veritabanı yönetilen örneği için hizmet destekli alt ağ y
 description: Azure SQL veritabanı yönetilen örneği için hizmet destekli alt ağ yapılandırması etkinleştiriliyor
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
-ms.openlocfilehash: efc2b8578651f68d052f227694f85348853e191f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f22c713af700225ffe6954460c36217abdea5eea
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79533275"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770168"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği için hizmet destekli alt ağ yapılandırması etkinleştiriliyor
 Hizmet destekli alt ağ yapılandırması, yönetilen örnekleri barındıran alt ağlar için otomatik ağ yapılandırma yönetimi sağlar. Hizmet destekli alt ağ yapılandırması kullanıcısı, yönetilen örnek, SLA 'yı karşılamak için yönetim trafiğinin kesintisiz akışını güvence altına almak için bir sorumluluk sunarken, veri erişiminin (TDS trafik akışları) tam denetiminde kalır.
 
 Otomatik olarak yapılandırılan ağ güvenlik grupları ve yol tablosu kuralları müşteri tarafından görülebilir ve _Microsoft. SQL-managedInstances_UseOnly__ önekiyle birlikte açıklanmalıdır.
 
-Kaynak sağlayıcısı için `Microsoft.Sql/managedInstances` [alt ağ temsilcisini](../virtual-network/subnet-delegation-overview.md) etkinleştirdikten sonra hizmet destekli yapılandırma otomatik olarak etkinleştirilir.
+Kaynak sağlayıcısı için [alt ağ temsilcisini](../virtual-network/subnet-delegation-overview.md) etkinleştirdikten sonra hizmet destekli yapılandırma otomatik olarak etkinleştirilir `Microsoft.Sql/managedInstances` .
 
 > [!IMPORTANT] 
 > Alt ağ-temsili açık olduktan sonra, alt ağdan son sanal kümeyi kaldırana kadar devre dışı bırakabilirsiniz. Sanal kümeyi silme hakkında daha fazla bilgi için aşağıdaki [makaleye](sql-database-managed-instance-delete-virtual-cluster.md#delete-virtual-cluster-from-the-azure-portal)bakın.
@@ -31,13 +31,13 @@ Kaynak sağlayıcısı için `Microsoft.Sql/managedInstances` [alt ağ temsilcis
 > Hizmet destekli alt ağ yapılandırması SLA 'yı sürdürmek için gerekli bir özelliktir. 1 Mayıs 2020 tarihinden itibaren, yönetilen örnek kaynak sağlayıcısı için temsilci olmayan alt ağlarda yönetilen örnekleri dağıtmak mümkün olmayacaktır. 1 Temmuz 2020 ' de, yönetilen örnekler içeren tüm alt ağlar otomatik olarak yönetilen örnek kaynak sağlayıcısına devredilecektir. 
 
 ## <a name="enabling-subnet-delegation-for-new-deployments"></a>Yeni dağıtımlar için alt ağ temsilcisini etkinleştirme
-Yönetilen örneği boş alt ağa dağıtmak için, aşağıdaki `Microsoft.Sql/managedInstances` [makalede](../virtual-network/manage-subnet-delegation.md)açıklandığı gibi kaynak sağlayıcısına temsilci seçmeniz gerekir. _Başvurulan makalede örneğin kaynak sağlayıcısını kullandığını `Microsoft.DBforPostgreSQL/serversv2` lütfen unutmayın. Bunun yerine kaynak sağlayıcısını kullanmanız `Microsoft.Sql/managedInstances` gerekir._
+Yönetilen örneği boş alt ağa dağıtmak için, `Microsoft.Sql/managedInstances` aşağıdaki [makalede](../virtual-network/manage-subnet-delegation.md)açıklandığı gibi kaynak sağlayıcısına temsilci seçmeniz gerekir. _Başvurulan makalede `Microsoft.DBforPostgreSQL/serversv2` Örneğin kaynak sağlayıcısını kullandığını lütfen unutmayın. `Microsoft.Sql/managedInstances`Bunun yerine kaynak sağlayıcısını kullanmanız gerekir._
 
 ## <a name="enabling-subnet-delegation-for-existing-deployments"></a>Mevcut dağıtımlar için alt ağ temsilcisini etkinleştirme
 
 Mevcut yönetilen örnek dağıtımınız için alt ağ temsilciliğini etkinleştirmek üzere, yerleştirildiği sanal ağ alt ağını bulmanız gerekir. 
 
-Bunu `Virtual network/subnet` öğrenmek için, yönetilen örneğinizin `Overview` Portal dikey penceresine bakabilirsiniz.
+Bunu öğrenmek için, `Virtual network/subnet` `Overview` yönetilen örneğinizin Portal dikey penceresine bakabilirsiniz.
 
 Alternatif olarak, bunu öğrenmek için aşağıdaki PowerShell komutlarını çalıştırabilirsiniz. **Abonelik** KIMLIĞINI abonelik Kimliğinizle değiştirin. Ayrıca, **RG-Name** öğesini yönetilen örneğinizin kaynak grubuyla değiştirin ve **mı-adını** yönetilen örneğinizin adıyla değiştirin.
 
@@ -60,7 +60,7 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi.SubnetId
 ```
 
-Yönetilen örnek alt ağını bulduktan sonra, aşağıdaki `Microsoft.Sql/managedInstances` [makalede](../virtual-network/manage-subnet-delegation.md)açıklandığı gibi kaynak sağlayıcısına temsilci seçmeniz gerekir. _Başvurulan makalede örneğin kaynak sağlayıcısını kullandığını `Microsoft.DBforPostgreSQL/serversv2` lütfen unutmayın. Bunun yerine kaynak sağlayıcısını kullanmanız `Microsoft.Sql/managedInstances` gerekir._
+Yönetilen örnek alt ağını bulduktan sonra, `Microsoft.Sql/managedInstances` aşağıdaki [makalede](../virtual-network/manage-subnet-delegation.md)açıklandığı gibi kaynak sağlayıcısına temsilci seçmeniz gerekir. _Başvurulan makalede `Microsoft.DBforPostgreSQL/serversv2` Örneğin kaynak sağlayıcısını kullandığını lütfen unutmayın. `Microsoft.Sql/managedInstances`Bunun yerine kaynak sağlayıcısını kullanmanız gerekir._
 
 
 > [!IMPORTANT]

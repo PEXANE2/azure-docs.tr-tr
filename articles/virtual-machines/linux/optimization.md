@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 87776c14e45ff4bb3cce6661323d74a1315c8ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf674170ff49f55fc7997a87d07f9069306fc0cd
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757092"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774163"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure’da Linux VM’nizi iyileştirme
 Bir Linux sanal makinesi (VM) oluşturmak, komut satırından veya portaldan kolayca yapılır. Bu öğreticide, Microsoft Azure platformunda performansını en iyi duruma getirecek şekilde ayarlamış olduğunuzdan emin olmanız gösterilmektedir. Bu konu, Ubuntu sunucu sanal makinesini kullanır, ancak aynı zamanda [kendi görüntülerinizi şablon olarak](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)kullanarak Linux sanal makinesi de oluşturabilirsiniz.  
@@ -29,9 +29,9 @@ VM boyutuna bağlı olarak, bir G serisi makinede bir D serisi ve 64 disk üzeri
 
 Önbellek ayarlarının **ReadOnly** veya **none**olarak ayarlandığı Premium Depolama disklerinde en yüksek IOPS 'yi başarmak Için, dosya sistemini Linux 'a bağlama sırasında **engelleri** devre dışı bırakmanız gerekir. Premium Depolama ile desteklenen disklere yazma işlemleri bu önbellek ayarları için dayanıklı olduğundan, engelleri gerekmez.
 
-* **Reıfs**kullanıyorsanız, bağlama seçeneğini `barrier=none` kullanarak engelleri devre dışı bırakın (engelleri etkinleştirmek için kullanın) `barrier=flush`
-* **Ext3/ext4**kullanırsanız, bağlama seçeneğini `barrier=0` kullanarak engelleri devre dışı bırakın (engelleri etkinleştirmek için, kullanın) `barrier=1`
-* **XFS**kullanıyorsanız, bağlama seçeneğini `nobarrier` kullanarak engelleri devre dışı bırakın (engelleri etkinleştirmek için seçeneğini `barrier`kullanın)
+* **Reıfs**kullanıyorsanız, bağlama seçeneğini kullanarak engelleri devre dışı bırakın `barrier=none` (engelleri etkinleştirmek için kullanın `barrier=flush` )
+* **Ext3/ext4**kullanırsanız, bağlama seçeneğini kullanarak engelleri devre dışı bırakın `barrier=0` (engelleri etkinleştirmek için, kullanın `barrier=1` )
+* **XFS**kullanıyorsanız, bağlama seçeneğini kullanarak engelleri devre dışı bırakın `nobarrier` (engelleri etkinleştirmek için seçeneğini kullanın `barrier` )
 
 ## <a name="unmanaged-storage-account-considerations"></a>Yönetilmeyen depolama hesabı konuları
 Azure CLı ile bir VM oluşturduğunuzda varsayılan eylem, Azure yönetilen disklerini kullanmaktır.  Bu diskler Azure platformu tarafından işlenir ve bunları depolamak için herhangi bir hazırlık veya konum gerektirmez.  Yönetilmeyen diskler için bir depolama hesabı gerekir ve bazı ek performans konuları vardır.  Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure Yönetilen Disklere genel bakış](../windows/managed-disks-overview.md).  Aşağıdaki bölümde, yalnızca yönetilmeyen diskleri kullandığınızda performans konuları özetlenmektedir.  Yine, varsayılan ve önerilen depolama çözümü yönetilen diskleri kullanmaktır.
@@ -58,7 +58,7 @@ Düzgün şekilde etkinleştirilmiş bir diski ve bağlı takas dosyasını etki
 * ResourceDisk. EnableSwap = Y
 * ResourceDisk. SwapSizeMB = {gereksinimlerinizi karşılayacak şekilde MB olarak boyut} 
 
-Değişikliği yaptıktan sonra, bu değişiklikleri yansıtmak için waagent 'ı yeniden başlatmanız veya Linux VM 'nizi yeniden başlatmanız gerekir.  Bu değişikliklerin uygulandığını ve boş alanı görüntülemek için `free` komutunu kullandığınızda bir takas dosyası oluşturulduğunu bilirsiniz. Aşağıdaki örnekte, **waagent. conf** dosyasını değiştirmenin sonucu olarak bir 512MB takas dosyası oluşturuldu:
+Değişikliği yaptıktan sonra, bu değişiklikleri yansıtmak için waagent 'ı yeniden başlatmanız veya Linux VM 'nizi yeniden başlatmanız gerekir.  Bu değişikliklerin uygulandığını ve `free` boş alanı görüntülemek için komutunu kullandığınızda bir takas dosyası oluşturulduğunu bilirsiniz. Aşağıdaki örnekte, **waagent. conf** dosyasını değiştirmenin sonucu olarak bir 512MB takas dosyası oluşturuldu:
 
 ```bash
 azuseruser@myVM:~$ free
@@ -115,6 +115,8 @@ Red Hat dağıtım ailesi için yalnızca aşağıdaki komuta ihtiyacınız vard
 ```bash
 echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
+
+Azure tarafından ayarlanmış çekirdekte Ubuntu 18,04, çok kuyruğu olan g/ç zamanlayıcılar kullanır. Bu senaryoda, `none` yerine uygun seçim vardır `noop` . Daha fazla bilgi için bkz. [Ubuntu ı/O zamanlayıcılar](https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers).
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Daha yüksek g/Ops elde etmek için yazılım RAID kullanma
 İş yükleriniz tek bir diskin sağlayabileceğinden daha fazla IOPS gerektiriyorsa, birden çok diskin yazılım RAID yapılandırmasını kullanmanız gerekir. Azure, yerel yapı katmanında zaten disk esnekliği gerçekleştirdiğinden, RAID-0 dizme yapılandırmasından en yüksek düzeyde performans elde edersiniz.  Azure ortamında diskler sağlayın ve oluşturun ve sürücüleri bölümlemeden, biçimlendirmeden ve bağlamadan önce Linux sanal makinenize ekleyin.  Azure 'da Linux sanal makinenizde yazılım RAID kurulumunu yapılandırma hakkında daha fazla bilgi için, **[Linux 'Ta yazılım yapılandırma](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** belgesinde bulunabilir.

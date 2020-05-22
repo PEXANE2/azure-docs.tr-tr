@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 634f89b3123902d981ad07dd1404315387104322
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19fd257e76cdf811343f1c1c772fb3646933bb86
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68726736"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774058"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure tesisler, şirket içi ve fiziksel güvenlik
 Bu makalede, Microsoft 'un Azure altyapısını güvenli hale getirmek için ne olduğu açıklanır.
@@ -28,7 +28,7 @@ Bu makalede, Microsoft 'un Azure altyapısını güvenli hale getirmek için ne 
 ## <a name="datacenter-infrastructure"></a>Veri merkezi altyapısı
 Azure, binlerce çevrimiçi hizmetler desteklemeye ve dünya çapındaki 100 ' den fazla güvenli tesisden fazlasını kapsayan [küresel olarak dağıtılmış bir veri merkezi altyapısından](https://azure.microsoft.com/global-infrastructure/)oluşur.
 
-Altyapı, uygulamaları dünyanın dört bir yanındaki kullanıcılara yaklaştırmak, veri uygunluğunu korumak ve müşteriler için kapsamlı uyumluluk ve dayanıklılık seçenekleri sunmak üzere tasarlanmıştır. Azure, dünya çapındaki 52 bölgeye sahiptir ve 140 ülkede/bölgede kullanılabilir.
+Altyapı, uygulamaları dünyanın dört bir yanındaki kullanıcılara yaklaştırmak, veri uygunluğunu korumak ve müşteriler için kapsamlı uyumluluk ve dayanıklılık seçenekleri sunmak üzere tasarlanmıştır. Azure, dünya çapındaki 58 bölgeye sahiptir ve 140 ülkede/bölgede kullanılabilir.
 
 Bölge, büyük ve dayanıklı bir ağ aracılığıyla birbirine bağlanmış bir veri merkezleri kümesidir. Ağ, varsayılan olarak içerik dağıtımı, Yük Dengeleme, artıklık ve şifreleme içerir. Diğer tüm bulut sağlayıcılarından daha fazla genel bölge ile Azure, size ihtiyacınız olan uygulamaları dağıtma esnekliği sunar.
 

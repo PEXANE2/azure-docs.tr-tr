@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 29967c5f8d452fbf66d9a121357415176139b39d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ab9c93dc029498c70a828f38f297c1e02dcb29ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570674"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774142"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge"></a>Öğretici: Azure Stack Edge ile veri dönüştürme
 
@@ -22,7 +22,7 @@ Bu öğreticide, Azure Stack Edge cihazınızda bir işlem rolünün nasıl yap�
 
 Bu yordamın tamamlanması yaklaşık 10 ila 15 dakika sürebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * İşlem yapılandırma
@@ -53,7 +53,7 @@ Azure Stack Edge 'de işlem yapılandırmak için bir IoT Hub kaynağı oluştur
     |Alan  |Değer  |
     |---------|---------|
     |IoT Hub     | **Yeni** veya **mevcut**seçeneklerinden birini belirleyin. <br> Varsayılan olarak, bir IoT kaynağı oluşturmak için standart bir katman (S1) kullanılır. Ücretsiz bir IoT kaynağı kullanmak için, bir tane oluşturun ve ardından mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
-    |Adı     |IoT Hub kaynağınız için bir ad girin.         |
+    |Name     |IoT Hub kaynağınız için bir ad girin.         |
 
     ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
 
@@ -136,11 +136,11 @@ Modülün çalıştığını doğrulamak için aşağıdakileri yapın:
 
     ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute/verify-data-1.png)
  
-1.    Dosya Gezgini 'nde, daha önce oluşturduğunuz uç yerel ve kenar paylaşımlarına bağlanın.
+1. Dosya Gezgini 'nde, daha önce oluşturduğunuz uç yerel ve kenar paylaşımlarına bağlanın.
 
     ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
  
-1.    Yerel paylaşıma veri ekleyin.
+1. Yerel paylaşıma veri ekleyin.
 
     ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
  

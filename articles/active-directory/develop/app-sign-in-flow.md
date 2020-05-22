@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 7b326e17611b5f4b9520d8218a28a67afe9a851a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584356"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772208"
 ---
 # <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>Microsoft Identity platform ile uygulama oturum açma akışı
 
@@ -29,7 +29,7 @@ Bu konuda, Microsoft Identity platform kullanılarak Web, masaüstü ve mobil uy
 Bir kullanıcı tarayıcıda bir Web uygulamasına gittiğinde aşağıdakiler olur:
 
 * Web uygulaması, kullanıcının kimlik doğrulamasının yapılıp yapılmayacağını belirler.
-* Kullanıcının kimliği doğrulanmadıysa, Web uygulaması Kullanıcı oturumu açmak için Azure AD 'ye temsilciler atar. Bu oturum açma, kuruluşun ilkesiyle uyumlu olacaktır. Bu, kullanıcıdan çok faktörlü kimlik doğrulaması kullanarak veya bir parola (örneğin, Windows Hello kullanarak) kullanarak kimlik bilgilerini girmesini isteyebilir.
+* Kullanıcının kimliği doğrulanmadıysa, Web uygulaması Kullanıcı oturumu açmak için Azure AD 'ye temsilciler atar. Bu oturum açma, kuruluşun ilkesi ile uyumlu olacaktır. Bu, kullanıcıdan [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) (bazen iki öğeli kimlik doğrulama veya 2FA olarak adlandırılır) veya hiç parola (örneğin, Windows Hello) kullanarak kimlik bilgilerini girmesini isteyen bir sorun olabilir.
 * Kullanıcıdan, istemci uygulamasına gereken erişimi onaylaması istenir. Bu nedenle, Microsoft Identity platform kullanıcının tarafından onaylanan erişimi temsil eden belirteçleri sunabilmesi için istemci uygulamalarının Azure AD 'ye kaydedilmesi gerekir.
 
 Kullanıcının kimliği başarıyla doğrulandı:
@@ -44,9 +44,9 @@ Aşağıdaki sıra diyagramı bu etkileşimi özetler:
 
 ### <a name="how-a-web-app-determines-if-the-user-is-authenticated"></a>Web uygulaması, kullanıcının kimliğinin doğrulanmadığını nasıl belirler
 
-Web uygulaması geliştiricileri, kimlik doğrulaması gerektirdiğini veya yalnızca belirli sayfaların olduğunu belirtebilir. Örneğin, ASP.NET/ASP.NET Core 'da, denetleyici eylemlerine `[Authorize]` özniteliği eklenerek yapılır.
+Web uygulaması geliştiricileri, kimlik doğrulaması gerektirdiğini veya yalnızca belirli sayfaların olduğunu belirtebilir. Örneğin, ASP.NET/ASP.NET Core 'da, `[Authorize]` Denetleyici eylemlerine özniteliği eklenerek yapılır.
 
-Bu öznitelik, ASP.NET Kullanıcı kimliğini içeren bir oturum tanımlama bilgisinin varlığını denetlamasına neden olur. Bir tanımlama bilgisi yoksa, ASP.NET kimlik doğrulamasını belirtilen kimlik sağlayıcısına yönlendirir. Kimlik sağlayıcısı Azure AD ise, Web uygulaması, oturum açma iletişim kutusunu gösteren `https://login.microsoftonline.com`kimlik doğrulamasını yeniden yönlendirir.
+Bu öznitelik, ASP.NET Kullanıcı kimliğini içeren bir oturum tanımlama bilgisinin varlığını denetlamasına neden olur. Bir tanımlama bilgisi yoksa, ASP.NET kimlik doğrulamasını belirtilen kimlik sağlayıcısına yönlendirir. Kimlik sağlayıcısı Azure AD ise, Web uygulaması, `https://login.microsoftonline.com` oturum açma iletişim kutusunu gösteren kimlik doğrulamasını yeniden yönlendirir.
 
 ### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>Web uygulamasının Microsoft Identity platformunda oturum açması ve bir belirteç alacağı
 

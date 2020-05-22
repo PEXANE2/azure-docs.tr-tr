@@ -3,7 +3,7 @@ title: Bir yedeklemeyi yönetilen örneğe geri yükleme
 description: SSMS kullanarak veritabanı yedeklemesini Azure SQL Veritabanı Yönetilen Örneğine geri yükleyin.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 3b12aa860bee189f706bd98df63fc194a3a0cc71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b7d635a45929ead1ef67e10fef75e502c5005f7
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80874713"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770100"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Hızlı başlangıç: bir veritabanını yönetilen örneğe geri yükleme
 
@@ -90,7 +90,7 @@ SSMS 'de Wide World Importers veritabanını yönetilen örneğinize geri yükle
 
 > [!NOTE]
 > Veritabanı geri yükleme işlemi zaman uyumsuzdur ve yeniden alınamıyor. Bağlantı kesildiyse veya bir zaman aşımı süresi dolarsa SQL Server Management Studio bir hata alabilirsiniz. Azure SQL veritabanı, arka planda veritabanını geri yüklemeye çalışmaya devam eder ve [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ve [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) görünümlerini kullanarak geri yüklemenin ilerlemesini izleyebilirsiniz.
-> Geri yükleme işleminin bazı aşamalarında, sistem görünümlerinde gerçek veritabanı adı yerine benzersiz tanımlayıcı görürsünüz. Burada ekstre `RESTORE` davranışı farklılıkları hakkında [here](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)bilgi edinin.
+> Geri yükleme işleminin bazı aşamalarında, sistem görünümlerinde gerçek veritabanı adı yerine benzersiz tanımlayıcı görürsünüz. `RESTORE` [Burada](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)ekstre davranışı farklılıkları hakkında bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

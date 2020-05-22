@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: b7729ff0b81a9b0271a51272930d5052229ff884
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4fa3acf0e6cc767aeee4504bbc4df382a75e256b
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655279"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758767"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>Azure Işlevleri ile Azure statik Web Apps önizlemede API desteği
 
@@ -32,6 +32,7 @@ API uç noktaları, _API_ rotası aracılığıyla Web uygulaması tarafından k
 Azure statik Web Apps, Azure Işlevleri aracılığıyla bir API sağlar. Azure Işlevlerinin özellikleri, Web uygulaması için bir API oluşturmanıza ve Web uygulamasının API 'ye güvenli bir şekilde bağlanmasına olanak tanıyan belirli bir özellik kümesine odaklanır. Bu özellikler aşağıdakiler dahil bazı kısıtlamalarla gelir:
 
 - API yolu ön eki _API_olmalıdır.
+- API Işlevleri uygulaması JavaScript 'te olmalıdır.
 - Tetikleyiciler ve bağlamalar [http](../azure-functions/functions-bindings-http-webhook.md)ile sınırlıdır.
   - Çıkış bağlamaları hariç tüm diğer [Azure işlevleri Tetikleyicileri ve bağlamaları](../azure-functions/functions-triggers-bindings.md#supported-bindings) kısıtlıdır.
 - Günlükler yalnızca Işlevler uygulamanıza [Application Insights](../azure-functions/functions-monitoring.md) eklerseniz kullanılabilir.

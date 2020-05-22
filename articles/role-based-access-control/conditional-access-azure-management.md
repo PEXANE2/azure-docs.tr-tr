@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: f3341f1c30a1581b8507652c322c00581e3972aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a52635dbaa7a76034f3a535b099320a901e8c07
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77137403"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758784"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Koşullu erişimle Azure yönetimine erişimi yönetme
 
@@ -47,5 +47,4 @@ Oluşturduğunuz ilke, aşağıdakiler de dahil olmak üzere tüm Azure Yönetim
 
 İlkenin Azure Resource Manager API 'yi çağıran Azure PowerShell için geçerli olduğunu unutmayın. Microsoft Graph çağıran [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)için de geçerlidir.
 
-
-Koşullu erişimin nasıl ayarlanacağı ve kullanılacağı hakkında daha fazla bilgi için [Azure Active Directory 'de koşullu erişim](../active-directory/active-directory-conditional-access-azure-portal.md)konusuna bakın.
+Microsoft Azure yönetimi için koşullu erişimi etkinleştirmek üzere örnek bir ilke ayarlama hakkında daha fazla bilgi için bkz. [koşullu erişim: Azure IÇIN MFA gerektirme](../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md).

@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548450"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758631"
 ---
-# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Kimlik Yönetimi ve erişim denetimi için en iyi güvenlik uygulamaları
+# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları
 
 Bu makalede, bir Azure kimlik yönetimi ve erişim denetimi güvenliği en iyi yöntemleri koleksiyonu ele alınmaktadır. Bu en iyi uygulamalar, [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) ile deneyimimizden ve bizim gibi müşterilerin deneyimlerinden türetilir.
 
@@ -126,10 +126,10 @@ Kullanıcılar, her yerden çeşitli cihaz ve uygulamaları kullanarak kuruluşu
 Güvenlik ve verimliliği dengelemek için, Access Control ile ilgili bir karar vermeden önce bir kaynağa nasıl erişildiğini düşünmeniz gerekir. Azure AD koşullu erişim ile bu gereksinimi ele alabilirsiniz. Koşullu erişimle, bulut uygulamalarınıza erişim koşullarına bağlı olarak otomatik erişim denetimi kararları alabilirsiniz.
 
 **En iyi yöntem**: şirket kaynaklarına erişimi yönetme ve denetleme.  
-**Ayrıntı**: SaaS uygulamaları ve Azure AD ile bağlantılı uygulamalar için bir grup, konum ve uygulama duyarlılığı TEMELINDE Azure AD [koşullu erişimini](/azure/active-directory/active-directory-conditional-access-azure-portal) yapılandırın.
+**Ayrıntı**: SaaS uygulamaları ve Azure AD ile bağlantılı uygulamalar için bir grup, konum ve uygulama duyarlılığı temelinde ortak Azure AD [koşullu erişim ilkelerini](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) yapılandırın.
 
 **En iyi yöntem**: eski kimlik doğrulama protokollerini engelleyin.
-**Ayrıntı**: saldırganlar, özellikle parola spreyi saldırılarına karşı, her gün daha eski protokollerde zayıf noktalar yararlanabilir. Eski protokolleri engellemek için koşullu erişimi yapılandırın. Daha fazla bilgi için bkz. [Azure AD: Yapılacaklar ve yapılmayacak](https://www.youtube.com/watch?v=wGk0J4z90GI) .
+**Ayrıntı**: saldırganlar, özellikle parola spreyi saldırılarına karşı, her gün daha eski protokollerde zayıf noktalar yararlanabilir. [Eski protokolleri engellemek](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md)Için koşullu erişimi yapılandırın.
 
 ## <a name="plan-for-routine-security-improvements"></a>Rutin güvenlik iyileştirmeleri için plan yapın
 
@@ -175,11 +175,11 @@ Bu yöntem tüm lisanslama katmanlarında kullanılabilir ancak mevcut koşullu 
 Multi-Factor Authentication etkinleştirilmesi gerektiğini öğrenmek için, [Kuruluşum Için hangi Azure MFA sürümünün doğru olduğunu](/azure/active-directory/authentication/concept-mfa-whichversion)görün.
 
 **Seçenek 3**: [koşullu erişim ilkesiyle Multi-Factor Authentication etkinleştirin](/azure/active-directory/authentication/howto-mfa-getstarted).
-**Avantaj**: Bu seçenek, [koşullu erişim](/azure/active-directory/active-directory-conditional-access-azure-portal)kullanarak belirli koşullarda iki adımlı doğrulama isteyip istememe olanak tanır. Belirli koşullar, farklı konumlardan, güvenilmeyen cihazlardan veya riskli olarak düşündüğünüz uygulamalardan Kullanıcı oturumu açabilir. İki adımlı doğrulamanın gerekli olduğu belirli koşulları tanımlama, kullanıcılarınız için sabit istem yapmaktan kaçınmanızı sağlar; Bu, bir saldırgan Kullanıcı deneyimi olabilir.
+**Avantaj**: Bu seçenek, [koşullu erişim](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)kullanarak belirli koşullarda iki adımlı doğrulama isteyip istememe olanak tanır. Belirli koşullar, farklı konumlardan, güvenilmeyen cihazlardan veya riskli olarak düşündüğünüz uygulamalardan Kullanıcı oturumu açabilir. İki adımlı doğrulamanın gerekli olduğu belirli koşulları tanımlama, kullanıcılarınız için sabit istem yapmaktan kaçınmanızı sağlar; Bu, bir saldırgan Kullanıcı deneyimi olabilir.
 
 Bu, kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmenin en esnek yoludur. Koşullu erişim ilkesinin etkinleştirilmesi yalnızca Bulutta Azure Multi-Factor Authentication için geçerlidir ve Azure AD 'nin Premium bir özelliğidir. Bu yöntemle [bulut tabanlı Azure Multi-Factor Authentication dağıtma](/azure/active-directory/authentication/howto-mfa-getstarted)bölümünde daha fazla bilgi edinebilirsiniz.
 
-**4. seçenek**: [Azure AD kimlik koruması](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)Kullanıcı ve oturum açma riskini değerlendirerek koşullu erişim ilkeleriyle Multi-Factor Authentication etkinleştirin.   
+**4. seçenek**: [risk tabanlı koşullu erişim Ilkelerini](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md)değerlendirerek koşullu erişim ilkeleriyle Multi-Factor Authentication etkinleştirin.   
 **Avantaj**: Bu seçenek şunları yapmanızı sağlar:
 
 * Kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarını tespit edin.
@@ -261,7 +261,7 @@ Aşağıda, [Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı er
 **En iyi yöntem**: en az iki acil durum erişim hesabı tanımlayın.   
 **Ayrıntı**: acil erişim hesapları, kuruluşların mevcut bir Azure Active Directory ortamında ayrıcalıklı erişimi kısıtlamalarına yardımcı olur. Bu hesaplar son derece ayrıcalıklı ve belirli kişilere atanmamıştır. Acil durum erişim hesapları, normal yönetim hesaplarının kullanılabileceği senaryolarla sınırlıdır. Kuruluşların acil durum hesabının kullanımını yalnızca gerekli süre ile sınırlandırmalıdır.
 
-Genel yönetici rolü için atanan veya uygun olan hesapları değerlendirin. `*.onmicrosoft.com` Etki alanını (acil erişim için tasarlanan) kullanarak yalnızca herhangi bir bulut hesabı görmüyorsanız, bunları oluşturun. Daha fazla bilgi için bkz. [Azure AD 'de acil durum erişimi yönetim hesaplarını yönetme](/azure/active-directory/users-groups-roles/directory-emergency-access).
+Genel yönetici rolü için atanan veya uygun olan hesapları değerlendirin. `*.onmicrosoft.com`Etki alanını (acil erişim için tasarlanan) kullanarak yalnızca herhangi bir bulut hesabı görmüyorsanız, bunları oluşturun. Daha fazla bilgi için bkz. [Azure AD 'de acil durum erişimi yönetim hesaplarını yönetme](/azure/active-directory/users-groups-roles/directory-emergency-access).
 
 **En iyi yöntem**: acil durumda bir "cam" işlemine sahiptir.
 **Ayrıntı**: [Azure AD 'de karma ve bulut dağıtımları Için ayrıcalıklı erişimin güvenliğini sağlama konusundaki](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)adımları izleyin.

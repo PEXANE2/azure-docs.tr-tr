@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 55d544ecf6c96335ca65255e1af695f7757b818c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 2885df9e64bdbfa21eaaa38f423b90554f767cd7
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699511"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773296"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -354,7 +354,7 @@ Her planı herkese görünür olacak şekilde veya yalnızca seçtiğiniz belirl
 
 Planınızı özel ve yalnızca seçtiğiniz kısıtlanmış kitlele görünür hale getirmek için **özel bir plan olan bu bir plandır** . Özel bir plan olarak yayımlandıktan sonra izleyiciyi güncelleştirebilir veya planı herkes için kullanılabilir hale getirebilirsiniz. Bir plan herkese görünür olarak yayımlandıktan sonra herkese görünür olmalıdır; özel bir plan olarak yeniden yapılandırılamaz.
 
-Tesisi özel yaparsanız, bir **Azure abonelik kimlikleri** ve açıklamasını girin. Her biri, bu özel plana erişimi olacak olan bir hedef kitledir. Atanan her bir Azure abonelik KIMLIĞININ açıklamasını ekleme seçeneğiyle Azure abonelik kimlikleri kullanılarak erişim atanır. 10 adede kadar müşterinin abonelik kimliğini tek tek veya bir CSV dosyasını içeri aktararak 20.000 ekleyin. Azure abonelik kimlikleri, GUID 'Ler olarak temsil edilir ve harflerin küçük harf olması gerekir.
+Planı özel yaparsanız, bir **Azure abonelik kimlikleri** ve açıklamasını girin. Her biri, bu özel plana erişimi olacak olan bir hedef kitledir. Atanan her bir Azure abonelik KIMLIĞININ açıklamasını ekleme seçeneğiyle Azure abonelik kimlikleri kullanılarak erişim atanır. 10 adede kadar müşterinin abonelik kimliğini tek tek veya bir CSV dosyasını içeri aktararak 20.000 ekleyin. Azure abonelik kimlikleri, GUID 'Ler olarak temsil edilir ve harflerin küçük harf olması gerekir.
 
 >[!Note]
 >Özel veya kısıtlanmış bir hedef kitle, **Önizleme** sekmesinde tanımladığınız önizleme izleyicilerinizden farklıdır. Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan _önce_ teklifinizin erişimine açabilir. Özel hedef kitle seçimi yalnızca belirli bir plana uygulansa da, önizleme hedef kitlesi doğrulama amacıyla tüm planları (özel veya değil) görüntüleyebilir.
@@ -373,7 +373,7 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 #### <a name="markets"></a>Pazar
 
-Her plan en az bir pazarda kullanılabilir olmalıdır. Bu planı kullanılabilir yapmak istediğiniz tüm pazar konumları için onay kutusunu seçin. Microsoft remits Sales ve kullanım vergisinin sizin adınıza yardımına dahil olduğu "vergi havalesi" ülkelerinden oluşan bir arama kutusu ve düğmesi.
+Her plan en az bir pazarda kullanılabilir olmalıdır. Bu planı kullanılabilir yapmak istediğiniz tüm pazar konumları için onay kutusunu seçin. Microsoft remits Sales ve kullanım vergisinin sizin adınıza, yardım 'a dahil olduğu "vergi havalesi" ülkelerinden oluşan bir arama kutusu ve düğmesi.
 
 Planınız için Birleşik Devletler dolar (USD) cinsinden zaten fiyatlar ayarladıysanız ve başka bir pazar konumu eklerseniz, yeni pazar fiyatı geçerli döviz kurlarına göre hesaplanır. Yayımlamadan önce her bir pazar için fiyatı her zaman gözden geçirin. Fiyatlandırma, değişiklikleriniz kaydedildikten sonra "fiyatları dışarı aktar (xlsx)" bağlantısı kullanılarak incelenebilir.
 
@@ -399,7 +399,7 @@ Her planı herkese görünür olacak şekilde veya yalnızca seçtiğiniz belirl
 
 Planınızı özel ve yalnızca seçtiğiniz kısıtlanmış kitlele görünür hale getirmek için **özel bir plan olan bu bir plandır** . Özel bir plan olarak yayımlandıktan sonra izleyiciyi güncelleştirebilir veya planı herkes için kullanılabilir hale getirebilirsiniz. Bir plan herkese görünür olarak yayımlandıktan sonra herkese görünür olmalıdır; özel bir plan olarak yeniden yapılandırılamaz.
 
-Tesisi özel yaparsanız, bir **Azure abonelik kimlikleri** ve açıklamasını girin. Her biri, bu özel plana erişimi olacak olan bir hedef kitledir. Atanan her bir Azure abonelik KIMLIĞININ açıklamasını ekleme seçeneğiyle Azure abonelik kimlikleri kullanılarak erişim atanır. 10 adede kadar müşterinin abonelik kimliğini tek tek veya bir CSV dosyasını içeri aktararak 20.000 ekleyin. Azure abonelik kimlikleri, GUID 'Ler olarak temsil edilir ve harflerin küçük harf olması gerekir.
+Planı özel yaparsanız, bir **Azure abonelik kimlikleri** ve açıklamasını girin. Her biri, bu özel plana erişimi olacak olan bir hedef kitledir. Atanan her bir Azure abonelik KIMLIĞININ açıklamasını ekleme seçeneğiyle Azure abonelik kimlikleri kullanılarak erişim atanır. 10 adede kadar müşterinin abonelik kimliğini tek tek veya bir CSV dosyasını içeri aktararak 20.000 ekleyin. Azure abonelik kimlikleri, GUID 'Ler olarak temsil edilir ve harflerin küçük harf olması gerekir.
 
 >[!Note]
 >Özel veya kısıtlanmış bir hedef kitle, **Önizleme** sekmesinde tanımladığınız önizleme izleyicilerinizden farklıdır. Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan _önce_ teklifinizin erişimine açabilir. Özel hedef kitle seçimi yalnızca belirli bir plana uygulansa da, önizleme hedef kitlesi doğrulama amacıyla tüm planları (özel veya değil) görüntüleyebilir.

@@ -3,7 +3,7 @@ title: 'Azure portal: yönetilen örnek oluşturma'
 description: Erişim için bir SQL veritabanı yönetilen örneği, ağ ortamı ve istemci VM 'si oluşturun.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: 25128442cd922f6b9130586e245695b6880f661c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8a0b27f055f39186371e23e46c8b41679e05dea
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80257623"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770117"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı yönetilen örneği oluşturma
 
@@ -93,7 +93,7 @@ Aşağıdaki adımlarda, yönetilen bir örnek oluşturma adımları gösterilme
 
    | Ayar| Önerilen değer | Açıklama |
    | ------ | --------------- | ----------- |
-   | **Harmanlama** | Yönetilen örneğiniz için kullanmak istediğiniz harmanlamayı seçin. SQL Server veritabanlarını geçirirseniz, kullanarak `SELECT SERVERPROPERTY(N'Collation')` kaynak harmanlamasını denetleyin ve bu değeri kullanın.| Harmanlamalar hakkında daha fazla bilgi için bkz. [sunucu harmanlamasını ayarlama veya değiştirme](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
+   | **Harmanlama** | Yönetilen örneğiniz için kullanmak istediğiniz harmanlamayı seçin. SQL Server veritabanlarını geçirirseniz, kullanarak kaynak harmanlamasını denetleyin `SELECT SERVERPROPERTY(N'Collation')` ve bu değeri kullanın.| Harmanlamalar hakkında daha fazla bilgi için bkz. [sunucu harmanlamasını ayarlama veya değiştirme](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
    | **Saat dilimi** | Yönetilen örneğinizin gözleneceği saat dilimini seçin.|Daha fazla bilgi için bkz. [saat dilimleri](sql-database-managed-instance-timezone.md).|
    | **Yük devretme ikincili olarak kullan** | **Evet**' i seçin. | Yönetilen örneği yük devretme grubu ikincil olarak kullanmak için bu seçeneği etkinleştirin.|
    | **Birincil yönetilen örnek** ( **Yük devretme Ikincili olarak kullan** **Evet**olarak ayarlanırsa) | Oluşturmakta olduğunuz yönetilen örnekle aynı DNS bölgesine katılacak mevcut bir birincil yönetilen örnek seçin. | Bu adım, yük devretme grubunun oluşturma sonrası yapılandırmasını etkinleştirecektir. Daha fazla bilgi için bkz. [öğretici: bir yük devretme grubuna SQL veritabanı yönetilen örneği ekleme](sql-database-managed-instance-failover-group-tutorial.md).|

@@ -1,5 +1,6 @@
 ---
 title: Koşullu erişim Azure Active Directory için Geliştirici Kılavuzu
+titleSuffix: Microsoft identity platform
 description: Azure AD koşullu erişim ve Microsoft Identity platformu için Geliştirici Kılavuzu ve senaryoları.
 services: active-directory
 keywords: ''
@@ -7,28 +8,28 @@ author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
-ms.date: 03/16/2020
+ms.date: 05/18/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 4aaeb2ab6e22107d8c9edfbce45c4ae212e8649f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83640434"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771086"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory için Geliştirici Kılavuzu
 
 Azure Active Directory (Azure AD) içindeki koşullu erişim özelliği, uygulamanızın güvenliğini sağlamak ve bir hizmeti korumak için kullanabileceğiniz çeşitli yollarla bir tane sunmaktadır. Koşullu erişim, geliştiricilerin ve kurumsal müşterilerin hizmetleri dahil etmek için çok sayıda şekilde korunmasını sağlar:
 
-* Multi-factor authentication
+* [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * Yalnızca Intune 'a kayıtlı cihazların belirli hizmetlere erişmesine izin verme
 * Kullanıcı konumlarını ve IP aralıklarını kısıtlama
 
-Koşullu erişimin tam özellikleri hakkında daha fazla bilgi için bkz. [Azure Active Directory Koşullu erişim](../active-directory-conditional-access-azure-portal.md).
+Koşullu erişimin tam özellikleri hakkında daha fazla bilgi için, [koşullu erişim](../conditional-access/overview.md)nedir makalesine bakın.
 
 Azure AD için uygulama oluşturan geliştiriciler için, bu makalede Koşullu erişimi nasıl kullanabileceğiniz gösterilmektedir ve ayrıca, üzerinde denetim sahibi olmadığınız ve koşullu erişim ilkeleri uygulanmış olabilecek kaynaklara erişmenin etkileri hakkında bilgi edineceksiniz. Makalede ayrıca, şirket içi akış, Web uygulamaları, Microsoft Graph erişme ve API 'Leri çağırma içindeki Koşullu erişimin etkileri ele alınabilir.
 
@@ -90,7 +91,7 @@ Geliştiriciler bu zorluğu alabilir ve Azure AD 'ye yeni bir istek ekleyebilir.
 
 ## <a name="scenarios"></a>Senaryolar
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Azure AD koşullu erişimi, [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)eklenen bir özelliktir. [Microsoft 365 iş lisanslarına](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) sahip müşterilerin koşullu erişim özelliklerine de erişimi vardır.
 
@@ -130,13 +131,13 @@ Bu senaryoyu denemek için bkz. [.NET kod](https://github.com/Azure-Samples/acti
 
 ## <a name="scenario-app-accessing-multiple-services"></a>Senaryo: birden çok hizmete erişen uygulama
 
-Bu senaryoda, bir Web uygulamasının, bir koşullu erişim ilkesinin atandığı iki hizmete eriştiği bir durum ele aldık. Uygulama mantığınıza bağlı olarak, uygulamanızın her iki Web hizmetine de erişmesi gerekmeyen bir yol bulunabilir. Bu senaryoda, belirteç isteme sırası, son kullanıcı deneyiminde önemli bir rol oynar.
+Bu senaryoda, bir Web uygulamasının, bir koşullu erişim ilkesinin atandığı iki hizmete eriştiği bir durum ele aldık. Uygulama mantığınıza bağlı olarak, uygulamanızın her iki Web hizmetine de erişmesi gerekmeyen bir yol bulunabilir. Bu senaryoda, belirteç isteme sırası son kullanıcı deneyiminde önemli bir rol oynar.
 
 A ve B Web hizmeti ve B Web hizmeti, koşullu erişim ilkenizin uygulanmış olduğunu varsayalım. İlk etkileşimli kimlik doğrulama isteği her iki hizmet için de onay gerektirdiğinden, koşullu erişim ilkesi her durumda gerekli değildir. Uygulama Web hizmeti B için bir belirteç isterse, ilke çağrılır ve sonraki Web hizmeti istekleri de aşağıdaki gibi başarılı olur.
 
 ![Birden çok hizmet akışı diyagramına erişen uygulama](./media/v2-conditional-access-dev-guide/app-accessing-multiple-services-scenario.png)
 
-Alternatif olarak, uygulama başlangıçta Web hizmeti için bir belirteç isterse, Son Kullanıcı koşullu erişim ilkesini çağırmaz. Bu, uygulama geliştiricisinin Son Kullanıcı deneyimini denetlemesine izin verir ve koşullu erişim ilkesinin her durumda çağrılmasını zorlamaz. Karmaşık durum, uygulamanın daha sonra Web hizmeti B için bir belirteç istemesi durumunda olur. Bu noktada, son kullanıcının koşullu erişim ilkesiyle uyumlu olması gerekir. Uygulama `acquireToken` ' ı denediğinde, aşağıdaki hatayı oluşturabilir (Aşağıdaki diyagramda gösterilmiştir):
+Alternatif olarak, uygulama başlangıçta Web hizmeti için bir belirteç isterse, Son Kullanıcı koşullu erişim ilkesini çağırmaz. Bu, uygulama geliştiricisinin Son Kullanıcı deneyimini denetlemesine olanak tanır ve koşullu erişim ilkesinin her durumda çağrılmasını zorlamaz. Karmaşık durum, uygulamanın daha sonra Web hizmeti B için bir belirteç istemesi durumunda olur. Bu noktada, son kullanıcının koşullu erişim ilkesiyle uyumlu olması gerekir. Uygulama `acquireToken` ' ı denediğinde, aşağıdaki hatayı oluşturabilir (Aşağıdaki diyagramda gösterilmiştir):
 
 ```
 HTTP 400; Bad Request
@@ -175,7 +176,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Uygulamamız için catch gerekmektedir `error=interaction_required` . Uygulama daha sonra aynı kaynakta ya da kullanabilir `acquireTokenPopup()` `acquireTokenRedirect()` . Kullanıcı çok faktörlü kimlik doğrulaması yapmak için zorlanır. Kullanıcı Multi-Factor Authentication 'ı tamamladıktan sonra, uygulama istenen kaynak için yeni bir erişim belirteci vermiş olur.
 
-Bu senaryoyu denemek için, bkz. [js Spa-adına sahip kod örneği](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access). Bu kod örneği, bu senaryoyu göstermek için daha önce bir JS SPA ile kaydettiğiniz koşullu erişim ilkesini ve Web API 'sini kullanır. Talep sınamasını nasıl doğru bir şekilde işleyeceğinizi ve Web API 'niz için kullanılabilecek bir erişim belirteci nasıl alınacağını gösterir. Alternatif olarak, angular SPA ile ilgili yönergeler için genel [angular. js kod örneğini](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) kullanıma alın
+Bu senaryoyu denemek için, bkz. [js Spa-adına sahip kod örneği](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md). Bu kod örneği, bu senaryoyu göstermek için daha önce bir JS SPA ile kaydettiğiniz koşullu erişim ilkesini ve Web API 'sini kullanır. Talep sınamasını nasıl doğru bir şekilde işleyeceğinizi ve Web API 'niz için kullanılabilecek bir erişim belirteci nasıl alınacağını gösterir. Alternatif olarak, angular SPA ile ilgili yönergeler için genel [angular. js kod örneğini](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) kullanıma alın
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

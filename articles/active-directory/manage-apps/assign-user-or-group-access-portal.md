@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 186e36e4625a60362c54972b16b53f0f3e6753fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b52bc45287e0e3a8f4908630cb6e57130c1725df
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409201"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772429"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory ' de bir kurumsal uygulamaya Kullanıcı veya Grup atama
 
@@ -38,7 +38,7 @@ Aşağıdaki uygulama türleri ile, kullanıcıların uygulamaya erişebilmesi i
 - Azure Active Directory ön kimlik doğrulaması kullanan uygulama proxy uygulamaları
 - Bir kullanıcı veya yönetici bu uygulamaya alındıktan sonra OAuth 2,0/OpenID Connect kimlik doğrulaması kullanan Azure AD uygulama platformunda oluşturulan uygulamalar.
 
-Kullanıcı Ataması gerekli olduğunda, yalnızca uygulamaya açıkça atadığınız kullanıcılar oturum açabilir. Uygulamalar uygulamalarım sayfasında veya doğrudan bağlantı kullanarak uygulamalara erişebilirler. 
+Kullanıcı Ataması gerekli olduğunda, yalnızca uygulamaya açıkça atadığınız kullanıcılar (doğrudan kullanıcı ataması veya grup üyeliğine göre) oturum açabiliyor. Uygulamalar uygulamalarım sayfasında veya doğrudan bağlantı kullanarak uygulamalara erişebilirler. 
 
 Atama *gerekli*olmadığında, bu seçeneği **Hayır** olarak ayarlamış olmanız ya da uygulamanın başka bir SSO modu kullanması nedeniyle, uygulamanın doğrudan bir bağlantısı veya uygulamanın **Özellikler** sayfasında **Kullanıcı erişimi URL 'si** varsa, herhangi bir Kullanıcı uygulamaya erişebilecektir. 
 
@@ -90,9 +90,9 @@ Bir uygulama için Kullanıcı Ataması gerektirmek için:
 1. Yükseltilmiş bir Windows PowerShell komut istemi açın.
 
    > [!NOTE]
-   > AzureAD modülünü yüklemeniz gerekir (komutunu `Install-Module -Name AzureAD`kullanın). NuGet modülünü veya yeni Azure Active Directory v2 PowerShell modülünü yüklemek isteyip istemediğiniz sorulursa, Y yazın ve ENTER tuşuna basın.
+   > AzureAD modülünü yüklemeniz gerekir (komutunu kullanın `Install-Module -Name AzureAD` ). NuGet modülünü veya yeni Azure Active Directory v2 PowerShell modülünü yüklemek isteyip istemediğiniz sorulursa, Y yazın ve ENTER tuşuna basın.
 
-1. ' `Connect-AzureAD` İ çalıştırın ve bir genel yönetici kullanıcı hesabıyla oturum açın.
+1. `Connect-AzureAD`' İ çalıştırın ve bir genel yönetici kullanıcı hesabıyla oturum açın.
 1. Bir uygulamaya Kullanıcı ve rol atamak için aşağıdaki betiği kullanın:
 
     ```powershell
@@ -110,9 +110,11 @@ Bir uygulama için Kullanıcı Ataması gerektirmek için:
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-Bir kullanıcıyı bir uygulama rolüne atama hakkında daha fazla bilgi için, [New-Azureaduserapprotaatama](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) belgelerini ziyaret edin
+Bir kullanıcıyı bir uygulama rolüne atama hakkında daha fazla bilgi için, [New-Azureaduserapprotaatama](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)belgelerine bakın.
 
-Bir kurumsal uygulamaya bir grup atamak için ile `Get-AzureADUser` `Get-AzureADGroup`değiştirmeniz gerekir.
+Bir kurumsal uygulamaya bir grup atamak için `Get-AzureADUser` ile değiştirmeniz ve ile değiştirmeniz gerekir `Get-AzureADGroup` `New-AzureADUserAppRoleAssignment` `New-AzureADGroupAppRoleAssignment` .
+
+Bir uygulama rolüne Grup atama hakkında daha fazla bilgi için, [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0)belgelerine bakın.
 
 ### <a name="example"></a>Örnek
 
@@ -134,7 +136,7 @@ Bu örnek, PowerShell kullanarak [Microsoft çalışma alanı analizi](https://p
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
 
-1. Çalışma alanı analizi `$sp.AppRoles` uygulaması için kullanılabilen rolleri göstermek için komutunu çalıştırın. Bu örnekte, çözümleyici (sınırlı erişim) rolüne Britta Simı atamak istiyoruz.
+1. `$sp.AppRoles`Çalışma alanı analizi uygulaması için kullanılabilen rolleri göstermek için komutunu çalıştırın. Bu örnekte, çözümleyici (sınırlı erişim) rolüne Britta Simı atamak istiyoruz.
 
    ![Çalışma alanı analizi rolü kullanan bir kullanıcının kullanabileceği rolleri gösterir](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 

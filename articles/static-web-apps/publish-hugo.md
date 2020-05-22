@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: a0d1ba696b39b9331c4a85c9cf37d13d545ffad5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a6ea758de7f471cb15462d1ebadaecf24c851c70
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599796"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773453"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Hugo sitesi yayımlama
 
@@ -28,7 +28,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/).
 - GitHub hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://github.com/join).
@@ -133,13 +133,11 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. Derleme yapılandırmasını düzenlemek için **İleri: oluştur >** düğmesine tıklayın
 
-1. _Uygulama konumunu_ olarak ayarlayın **/** .
+1. _Uygulama konumunu_ **ortak**olarak ayarlayın.
 
-1. _Uygulama yapıtı konumunu_ **ortak**olarak ayarlayın.
+1. _Uygulama yapıtı konumunu_ boş bırakın.
 
    Şu anda bir API dağıtmadığından, _API konumu_ için bir değer gerekli değildir.
-
-   :::image type="content" source="./media/publish-hugo/build-details.png" alt-text="Derleme ayarları":::
 
 ### <a name="review-and-create"></a>Gözden geçirme ve oluşturma
 

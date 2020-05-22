@@ -7,14 +7,14 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 3c2c2e3d5a2ef48ddc212fc0df4906c91071d803
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2a1f35b86e21099c9fdd0397ae8a3b20aed3cd5d
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725982"
+ms.locfileid: "83758835"
 ---
-# <a name="become-and-event-grid-partner"></a>İş ortağı olun ve Event Grid
+# <a name="onboard-as-an-azure-event-grid-partner"></a>Azure Event Grid Iş ortağı olarak ekleme
 
 Bu makalede, Event Grid iş ortağı kaynaklarını özel olarak kullanma ve genel kullanıma açık Iş ortağı konu türü olma konuları açıklanır.
 
@@ -38,7 +38,7 @@ Ortak bir Event Grid iş ortağı olmak istiyorsanız, [Bu formu](https://aka.ms
 
     ![Iş ortağı oluşturma konusu](./media/partner-onboarding-how-to/create-partner-registration.png)
 
-1. Olayları yayımlamak istediğiniz her bölgede bir veya daha fazla oluşturun `partnerNamespaces` . Bunun bir parçası olarak, Event Grid hizmet bir yayımlama uç noktası (örneğin, https://contoso.westus-1.eventgrid.azure.net/api/events) ve erişim anahtarları) sağlayacak.
+1. Olayları yayımlamak istediğiniz her bölgede bir veya daha fazla oluşturun `partnerNamespaces` . Bunun bir parçası olarak, Event Grid hizmet bir yayımlama uç noktası (örneğin, `https://contoso.westus-1.eventgrid.azure.net/api/events` ) ve erişim anahtarları sağlayacak.
 
     ![Iş ortağı ad alanı oluştur](./media/partner-onboarding-how-to/create-partner-namespace.png)
 
@@ -105,10 +105,10 @@ CloudEvents 1,0 şemasını kullanarak Azure Event Grid olayları yayımlayın. 
 
 ### <a name="example-flow"></a>Örnek akış
 
-1.  Yayımlama hizmeti bir HTTP GÖNDERISINI https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01 .
+1.  Yayımlama hizmeti bir HTTP GÖNDERISINI `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 2.  İstekte, kimlik doğrulaması için bir anahtar içeren AEG-SAS-Key adlı bir başlık değeri ekleyin. Bu anahtar, partnerNamespace oluşturma sırasında sağlanır. Örneğin, geçerli bir üst bilgi değeri AEG-SAS-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = = olur.
 3.  Content-Type üstbilgisini "Application/cloudevents-Batch + JSON" olarak ayarlayın. charset = UTF-8 ".
-4.  Yukarıdaki yayımlama URL 'sinde, bu bölgeye karşılık gelen bir olay toplu iş içeren bir HTTP POST işlemi gerçekleştirin. Örnek:
+4.  Yukarıdaki yayımlama URL 'sinde, bu bölgeye karşılık gelen bir olay toplu iş içeren bir HTTP POST işlemi gerçekleştirin. Örneğin:
 
 ``` json
 [
@@ -158,10 +158,10 @@ PartnerNamespace uç noktasına gönderdikten sonra bir yanıt alırsınız. Yan
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM şablonu](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
   * [ARM şablon şeması](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [REST API'leri](https://docs.microsoft.com/rest/api/eventgrid/partnernamespaces)
+  * [REST API'leri](https://docs.microsoft.com/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
   * [CLı uzantısı](https://docs.microsoft.com/cli/azure/ext/eventgrid/?view=azure-cli-latest)
 
-### <a name="sdks"></a>SDK’lar
+### <a name="sdks"></a>SDK
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)
   * [Python](https://pypi.org/project/azure-mgmt-eventgrid/3.0.0rc6/)
   * [Java](https://search.maven.org/artifact/com.microsoft.azure.eventgrid.v2020_04_01_preview/azure-mgmt-eventgrid/1.0.0-beta-3/jar)

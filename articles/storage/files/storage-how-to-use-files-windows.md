@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 62b3445ba841a87f04dbe8c867411814b849be07
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4fef6102ac2ee69926c1c56af338b6e92670dd71
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682453"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773109"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows ve Windows Server’da sorunsuz bir şekilde kullanılabilir. Bu makalede Azure dosya paylaşımını Windows ve Windows Server ile kullanma konusunda dikkat edilmesi gerekenler anlatılmaktadır.
@@ -40,7 +40,7 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 > [!Note]  
 > Her zaman Windows sürümünüz için en yeni KB’yi almanızı öneririz.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 * **Depolama hesabı adı**: Azure dosya paylaşımını bağlayabilmeniz için depolama hesabınızın adı gerekir.
 
 * **Depolama hesabı anahtarı**: Azure dosya paylaşımını bağlayabilmeniz için birincil (veya ikincil) depolama anahtarı gerekir. SAS anahtarları şu an bağlama için desteklenmemektedir.
@@ -186,7 +186,7 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![“Ağ sürücüsüne bağlan” açılan menüsünün ekran görüntüsü](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. Sürücü harfini seçin ve UNC yolu biçiminde bir UNC yolu girin `<storageAccountName>.file.core.windows.net/<fileShareName>` . Örneğin: `anexampleaccountname.file.core.windows.net/example-share-name`.
+1. Sürücü harfini seçin ve UNC yolu biçiminde bir UNC yolu girin `\\<storageAccountName>.file.core.windows.net\<fileShareName>` . Örneğin: `\\anexampleaccountname.file.core.windows.net\example-share-name`.
     
     ![“Ağ Sürücüsüne Bağlan” iletişim kutusunun ekran görüntüsü](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 

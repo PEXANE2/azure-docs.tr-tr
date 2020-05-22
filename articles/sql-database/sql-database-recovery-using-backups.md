@@ -3,7 +3,7 @@ title: Bir veritabanını yedekten geri yükleme
 description: Azure SQL veritabanı 'nı 35 güne kadar geri almanıza olanak sağlayan bir noktadan noktaya geri yükleme hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
-ms.subservice: backup-restore
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: b98331a9cdb359aeefac5db1546f3a15b54010ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da841c2f1280bc0dc126e43a9f618e170d0d2553
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268749"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770695"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Otomatik veritabanı yedeklemeleri kullanarak bir Azure SQL veritabanını kurtarma
 
@@ -147,7 +147,7 @@ Azure portal, yeni bir tek veya yönetilen örnek veritabanı oluşturur ve kull
 
 Seçtiğiniz bölgedeki ve sunucudaki Azure portal tek bir SQL veritabanını coğrafi olarak geri yüklemek için şu adımları izleyin:
 
-1. **Panodan****SQL veritabanı oluştur**' **u seçin.** >  **Temel bilgiler** sekmesinde, gerekli bilgileri girin.
+1. **Panodan** **Add**  >  **SQL veritabanı oluştur**' u seçin. **Temel bilgiler** sekmesinde, gerekli bilgileri girin.
 2. **Ek ayarlar**' ı seçin.
 3. **Mevcut verileri kullan**için **Yedekle**' yi seçin.
 4. **Yedekleme**için, kullanılabilir coğrafi geri yükleme yedeklemeleri listesinden bir yedekleme seçin.
@@ -229,7 +229,7 @@ REST API kullanarak tek veya havuza alınmış bir veritabanını geri yüklemek
 | [REST (createMode = kurtarma)](https://docs.microsoft.com/rest/api/sql/databases) |Bir veritabanını geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](https://docs.microsoft.com/rest/api/sql/operations) |Geri yükleme işlemi sırasında durumu döndürür. |
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 #### <a name="single-azure-sql-database"></a>Tek Azure SQL veritabanı
 

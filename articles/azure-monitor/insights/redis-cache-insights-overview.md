@@ -4,13 +4,13 @@ description: Bu makalede, performans ve kullanım sorunlarını hızlı bir şek
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/07/2020
-ms.openlocfilehash: a6a8499a13e5c14869f9c9063528cea4ee82f419
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/21/2020
+ms.openlocfilehash: 8c8265242e09938126bfdb28900b64f2c0e7970a
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650422"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773853"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Redsıs için Azure önbelleği için Azure Izleyicisini keşfet (Önizleme)
 
@@ -81,7 +81,7 @@ Mavi renkle vurgulanmış Redsıs kaynak adı için Azure önbelleğini seçtiğ
 - **İsabetsiz Önbellek Okuma Sayısı**
 - **Hata Sayısı (En Fazla)**
 
-### <a name="operations"></a>İşlemler
+### <a name="operations"></a>Operations
 
 Sayfanın üst kısmında **işlemler** ' i seçtiğinizde, çalışma kitabı şablonunun **işlemler** tablosu açılır. Şu sütunları gösterir:
 
@@ -123,6 +123,38 @@ Sayfanın üst kısmında bulunan **hataların** seçtiğinizde, çalışma kita
 ### <a name="metric-definitions"></a>Ölçüm tanımları
 
 Bu çalışma kitaplarını oluşturan ölçüm tanımlarının tam listesi için, [kullanılabilir ölçümler ve raporlama aralıklarıyla ilgili makaleye](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals)göz atın.
+
+## <a name="view-from-an-azure-cache-for-redis-resource"></a>Redsıs kaynağı için bir Azure önbelleğinden görüntüleme
+
+Redo bir kaynaktan doğrudan Azure önbelleği için Azure Izleyicisi 'ne erişmek için:
+
+1. Azure portal Redsıs için Azure önbelleği ' ni seçin.
+
+2. Listeden, Redsıs kaynağı için tek bir Azure önbelleği seçin. İzleme bölümünde Öngörüler ' i (Önizleme) seçin.
+
+    !["Öngörüler (Önizleme)" kelimesinin kırmızı kutuda vurgulandığı menü seçeneklerinin ekran görüntüsü](./media/redis-cache-insights-overview/insights.png)
+
+Bu görünümlere Ayrıca, Azure Izleyici düzeyi çalışma kitabından Redsıs kaynağı için bir Azure önbelleğinin kaynak adı seçilerek erişilebilir.
+
+### <a name="resource-level-overview"></a>Kaynak düzeyinde genel bakış
+
+Azure Redis Cache için **genel bakış** çalışma kitabında, size erişim sağlayan çeşitli performans ölçümlerini gösterir:
+
+- Redsıs performansı için Azure önbelleğiyle ilgili en önemli ayrıntıları gösteren etkileşimli performans grafikleri.
+
+- Parça performansını, toplam bağlı istemci sayısını ve genel gecikme süresini vurgulayan ölçümler ve durum kutucukları.
+
+![CPU performansı, kullanılan bellek, bağlı istemciler, hatalar, kullanım dışı anahtarlar ve çıkarılan anahtarlar hakkındaki bilgileri görüntüleyen genel bakış panosunun ekran görüntüsü](./media/redis-cache-insights-overview/resource-overview.png)
+
+**Performans** veya **işlemler** için diğer sekmelerin seçilmesi ilgili çalışma kitaplarını açar.
+
+### <a name="resource-level-performance"></a>Kaynak düzeyinde performans
+
+![Kaynak performans grafiklerinin ekran görüntüsü](./media/redis-cache-insights-overview/resource-performance.png)
+
+### <a name="resource-level-operations"></a>Kaynak düzeyindeki işlemler
+
+![Kaynak işlemleri grafiklerinin ekran görüntüsü](./media/redis-cache-insights-overview/resource-operations.png)
 
 ## <a name="pin-export-and-expand"></a>Sabitle, dışarı aktar ve Genişlet
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
-ms.openlocfilehash: 49f675a56247433ce92763a69045fb214c7c37dc
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 433a652ffa3fa3ae5a570fac6160ef8a04ee11c8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723077"
+ms.locfileid: "83773194"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Öğretici: Azure Batch kullanarak Azure Data Factory Python betikleri çalıştırma
 
@@ -34,6 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Yerel test için yüklü bir [Python](https://www.python.org/downloads/) dağıtımı.
 * [Azure](https://pypi.org/project/azure/) `pip` paketi.
+* [Iris. csv veri kümesi](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
 * Bir Azure Batch hesabı ve bağlı bir Azure Depolama hesabı. Batch hesaplarını oluşturma ve depolama hesaplarına bağlama hakkında daha fazla bilgi için bkz. [Batch hesabı oluşturma](quick-create-portal.md#create-a-batch-account) .
 * Azure Data Factory hesabı. Azure portal aracılığıyla veri fabrikası oluşturma hakkında daha fazla bilgi için bkz. [Veri Fabrikası oluşturma](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) .
 * [Batch Explorer](https://azure.github.io/BatchExplorer/).
@@ -66,7 +67,7 @@ Burada, OCR toplu işi için giriş ve çıkış dosyalarınızı depolayacak bl
 1. Depolama Gezgini için Azure kimlik bilgilerinizi kullanarak oturum açın.
 1. Batch hesabınıza bağlı depolama hesabını kullanarak, [BLOB kapsayıcısı oluşturma](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)konumundaki adımları izleyerek iki blob kapsayıcı (bir diğeri çıkış dosyaları için bir tane) oluşturun.
     * Bu örnekte, giriş kapsayımuzu `input` ve çıkış kapsayımuzu arayacağız `output` .
-1. `main.py` `iris.csv` `input` [BLOB kapsayıcısında blob 'ları yönetme](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) adımlarını izleyerek Depolama Gezgini kullanarak giriş kapsayıcınızı karşıya yükleyin
+1. `main.py` [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) `input` [BLOB kapsayıcısında blob 'ları yönetme](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) adımlarını izleyerek Depolama Gezgini kullanarak giriş kapsayıcınızı karşıya yükleyin
 
 
 ## <a name="develop-a-script-in-python"></a>Python 'da betik geliştirme

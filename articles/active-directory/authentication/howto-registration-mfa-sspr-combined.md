@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466b063253ee49ab58c2685f359b4bb8a4079532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb77c2bc1d229ae75da89caae3d8613b27e70b96
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639690"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771341"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Azure Active Directory 'da Birleşik güvenlik bilgileri kaydını etkinleştirme
 
@@ -31,8 +31,8 @@ Yeni deneyimi etkinleştirmeden önce, bu özelliğin işlevselliğini ve etkile
 Birleşik kaydı etkinleştirmek için şu adımları uygulayın:
 
 1. Azure portal bir Kullanıcı Yöneticisi veya genel yönetici olarak oturum açın.
-2. **Azure Active Directory** > **Kullanıcı ayarları** > **Kullanıcı özelliği Önizleme ayarlarını yönet**' e gidin.
-3. Kullanıcılar ' ın altında, **güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir**, **Seçili** bir Kullanıcı grubu için veya **Tüm** kullanıcılar için etkinleştirmeyi seçebilirsiniz.
+2. **Azure Active Directory**  >  **Kullanıcı ayarları**  >  **Kullanıcı özelliği Önizleme ayarlarını yönet**' e gidin.
+3. Kullanıcılar ' ın altında, **birleştirilmiş güvenlik bilgileri kayıt deneyimini kullanabilir**, **Seçili** bir Kullanıcı grubu veya **Tüm** kullanıcılar için etkinleştirmeyi seçebilirsiniz.
 
    ![Tüm kullanıcılar için Birleşik güvenlik bilgileri önizleme deneyimini etkinleştir](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
@@ -55,7 +55,7 @@ Koşullu erişimde güvenilen konumlar oluşturma hakkında daha fazla bilgi iç
 
 Aşağıdaki ilke, Birleşik kayıt deneyimini kullanarak kaydolmayı deneyen tüm seçili kullanıcılar için geçerlidir ve güvenilen ağ olarak işaretlenen bir konumdan bağlanmadıkları sürece erişimi engeller.
 
-1. **Azure Portal** **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi** ' ne gidin
+1. **Azure Portal** **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi** ' ne gidin
 1. **+ Yeni ilke** Seç
 1. Bu ilke için *Güvenilen ağlarda Birleşik güvenlik bilgileri kaydı*gibi bir ad girin.
 1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin. Bu ilkenin uygulanmasını istediğiniz kullanıcıları ve grupları seçin, sonra **bitti**' yi seçin.
@@ -67,12 +67,12 @@ Aşağıdaki ilke, Birleşik kayıt deneyimini kullanarak kaydolmayı deneyen t�
 
     ![Güvenlik bilgileri kaydını denetlemek için koşullu erişim ilkesi oluşturma](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. **Koşullar** > **konumlar**bölümünde, aşağıdaki seçenekleri yapılandırın:
+1. **Koşullar**  >  **konumlar**bölümünde, aşağıdaki seçenekleri yapılandırın:
    1. **Evet** yapılandırma
    1. **Herhangi bir konum** Ekle
    1. **Tüm güvenilen konumları** Dışla
 1. *Konumlar* penceresinde **bitti** ' yi seçin ve ardından *koşullar* penceresinde **bitti** ' yi seçin.
-1. **Erişim denetimleri** > **izni**altında, **erişimi engelle** **' yi seçin ve ardından**
+1. **Erişim denetimleri**  >  **izni**altında, **erişimi engelle**' yi seçin **Select** ve ardından
 1. **Ilkeyi** **Açık** olarak ayarla
 1. İlkeyi sonlandırmak için **Oluştur** ' u seçin.
 

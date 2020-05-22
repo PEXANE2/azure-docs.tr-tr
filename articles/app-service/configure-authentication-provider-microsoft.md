@@ -7,12 +7,12 @@ ms.date: 08/08/2019
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 6fe0e39584cbaa001e11f712bb2f60b45dba6914
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203497"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772845"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>App Service veya Azure Işlevleri uygulamanızı Microsoft hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma
 
@@ -28,11 +28,11 @@ Bu konu başlığı altında, kişisel Microsoft hesabı oturumlarını destekle
 1. Azure portal [**uygulama kayıtları**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) gidin. Gerekirse Microsoft hesabı oturum açın.
 1. **Yeni kayıt**' ı seçin ve ardından bir uygulama adı girin.
 1. **Desteklenen hesap türleri**altında **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-çoklu kiracı) ve kişisel Microsoft hesaplarından (örn. Skype, Xbox) hesaplar** ' ı seçin
-1. **Yeniden yönlendirme URI 'lerinde**, **Web**' i seçin ve `https://<app-domain-name>/.auth/login/aad/callback`ardından girin. * \<App-Domain-Name>* değerini uygulamanızın etki alanı adıyla değiştirin.  Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. URL 'de HTTPS şemasını kullandığınızdan emin olun.
+1. **Yeniden yönlendirme URI 'lerinde**, **Web**' i seçin ve ardından girin `https://<app-domain-name>/.auth/login/aad/callback` . * \< App-Domain-Name>* değerini uygulamanızın etki alanı adıyla değiştirin.  Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. URL 'de HTTPS şemasını kullandığınızdan emin olun.
 
 1. **Kaydol**’u seçin.
 1. **Uygulama (istemci) kimliğini**kopyalayın. Buna daha sonra ihtiyacınız olacak.
-1. Sol bölmeden Sertifikalar ' ı**yeni istemci gizli** **&** > seçin. Bir açıklama girin, geçerlilik süresini seçin ve **Ekle**' yi seçin.
+1. Sol bölmeden **Sertifikalar**' ı  >  **yeni istemci gizli**& seçin. Bir açıklama girin, geçerlilik süresini seçin ve **Ekle**' yi seçin.
 1. **Sertifikalar & gizlilikler** sayfasında görüntülenen değeri kopyalayın. Sayfadan ayrıldıktan sonra yeniden görüntülenmezler.
 
     > [!IMPORTANT]
@@ -41,7 +41,7 @@ Bu konu başlığı altında, kişisel Microsoft hesabı oturumlarını destekle
 ## <a name="add-microsoft-account-information-to-your-app-service-application"></a><a name="secrets"> </a>App Service uygulamanıza Microsoft hesabı bilgilerini ekleme
 
 1. [Azure Portal]uygulamanıza gidin.
-1. **Ayarlar** > **kimlik doğrulaması/yetkilendirme**' yi seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
+1. **Ayarlar**  >  **kimlik doğrulaması/yetkilendirme**' yi seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
 1. **Kimlik doğrulama sağlayıcıları**altında **Azure Active Directory**' yi seçin. **Yönetim modu**altında **Gelişmiş** ' i seçin. Daha önce edindiğiniz uygulama (istemci) KIMLIĞINI ve istemci gizli anahtarını yapıştırın. **`https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0`** **Issuer URL 'si** alanı için kullanın.
 1. **Tamam**’ı seçin.
 

@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: f3be073857cc8583669ab26f306760478479e2ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40857e83457222365e61a224ead19bd1d1d31ae7
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680797"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758988"
 ---
 # <a name="hierarchical-state-override"></a>Hiyerarşik durumu geçersiz kılma
 
 Çoğu durumda, bir [modelin](../../concepts/models.md)bölümlerinin görünümünü dinamik olarak değiştirmek, örneğin alt grafikleri gizlemek veya bölümleri saydam işlemeye geçirmek gerekir. Dahil edilen her bir bölümün materyalini değiştirmek, tüm sahne grafiğinin üzerinde yineleme yapmak ve her düğümde malzeme kopyalamayı ve atamayı yönetmek gerektirdiğinden pratik değildir.
 
-En az olası ek yük ile bu kullanım örneğini başarmak için, kullanın `HierarchicalStateOverrideComponent`. Bu bileşen, sahne grafiğinin rastgele dallarında hiyerarşik durum güncelleştirmelerini uygular. Yani, bir durum sahne grafiğinde herhangi bir düzeyde tanımlanabilir ve yeni bir durum tarafından geçersiz kılınana ya da bir yaprak nesneye uygulanana kadar hiyerarşiyi aşağı doğru ayırır.
+En az olası ek yük ile bu kullanım örneğini başarmak için, kullanın `HierarchicalStateOverrideComponent` . Bu bileşen, sahne grafiğinin rastgele dallarında hiyerarşik durum güncelleştirmelerini uygular. Yani, bir durum sahne grafiğinde herhangi bir düzeyde tanımlanabilir ve yeni bir durum tarafından geçersiz kılınana ya da bir yaprak nesneye uygulanana kadar hiyerarşiyi aşağı doğru ayırır.
 
 Örnek olarak, bir otomobil modelini göz önünde bulundurun ve iç altyapı bölümü dışında tüm arabayı saydam olacak şekilde değiştirmek isteyebilirsiniz. Bu kullanım örneği, bileşenin yalnızca iki örneğini içerir:
 
@@ -55,7 +55,7 @@ Bu nedenle, her durum şunlardan birine ayarlanabilir:
 * `ForceOff`-Bu düğüm üzerindeki ve altındaki tüm kafesler için durum devre dışı bırakıldı
 * `InheritFromParent`-durum bu geçersiz kılma bileşeninden etkilenmemiştir
 
-Durumları doğrudan veya `SetState` işlev aracılığıyla değiştirebilirsiniz:
+Durumları doğrudan veya işlev aracılığıyla değiştirebilirsiniz `SetState` :
 
 ```cs
 HierarchicalStateOverrideComponent component = ...;
@@ -68,6 +68,21 @@ component.SetState(HierarchicalStates.SeeThrough, HierarchicalEnableState.Inheri
 
 // set multiple states at once with the SetState function
 component.SetState(HierarchicalStates.Hidden | HierarchicalStates.DisableCollision, HierarchicalEnableState.ForceOff);
+```
+
+```cpp
+ApiHandle<HierarchicalStateOverrideComponent> component = ...;
+
+// set one state directly
+component->HiddenState(HierarchicalEnableState::ForceOn);
+
+// set a state with the SetState function
+component->SetState(HierarchicalStates::SeeThrough, HierarchicalEnableState::InheritFromParent);
+
+// set multiple states at once with the SetState function
+component->SetState(
+    (HierarchicalStates)((int32_t)HierarchicalStates::Hidden | (int32_t)HierarchicalStates::DisableCollision), HierarchicalEnableState::ForceOff);
+
 ```
 
 ### <a name="tint-color"></a>Renk tonu rengi

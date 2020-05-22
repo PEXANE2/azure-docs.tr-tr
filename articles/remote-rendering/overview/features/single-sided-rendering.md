@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 34ee5d4978c6476da407cde33598a5713177078e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97e0456e274adee7d678e373cfd92b5003f3d801
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80682019"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759107"
 ---
 # <a name="single-sided-rendering"></a>Tek taraflı işleme
 
@@ -25,13 +25,13 @@ Bu sorunu güvenilir bir şekilde önlemenin yolu, üçgenler *çift taraflı*i�
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Tek taraflı işleme ayarının yalnızca `opaqueMaterialDefaultSidedness` seçeneği olarak `SingleSided` [ayarlanmış olan](../../how-tos/conversion/configure-model-conversion.md) kafesler için bir etkisi vardır. Varsayılan olarak, bu seçenek olarak `DoubleSided`ayarlanır.
+Tek taraflı işleme ayarının yalnızca seçeneği olarak ayarlanmış olan kafesler için bir etkisi vardır [converted](../../how-tos/conversion/configure-model-conversion.md) `opaqueMaterialDefaultSidedness` `SingleSided` . Varsayılan olarak, bu seçenek olarak ayarlanır `DoubleSided` .
 
 ## <a name="single-sided-rendering-setting"></a>Tek taraflı işleme ayarı
 
 Üç farklı mod vardır:
 
-**Normal:** Bu modda, kafesler dönüştürülürken her zaman oluşturulur. Bu, ayarlanmış olan `opaqueMaterialDefaultSidedness` kafeslerin, `SingleSided` kesilen bir düzlemi kesişdiklerinde bile, her zaman arka yüz yüzey kaldırma özelliği etkinleştirilmiş olarak işlendiğine yol açacaktır.
+**Normal:** Bu modda, kafesler dönüştürülürken her zaman oluşturulur. Bu, ayarlanmış olan kafeslerin `opaqueMaterialDefaultSidedness` `SingleSided` , kesilen bir düzlemi kesişdiklerinde bile, her zaman arka yüz yüzey kaldırma özelliği etkinleştirilmiş olarak işlendiğine yol açacaktır.
 
 **Dynamicdoublesıding:** Bu modda, kesilen bir düzlem bir kafesden kesişdiğinde, otomatik olarak çift taraflı işlemeye geçiş yapılır. Bu mod varsayılan moddur.
 
@@ -39,7 +39,7 @@ Tek taraflı işleme ayarının yalnızca `opaqueMaterialDefaultSidedness` seçe
 
 Tek taraflı işleme ayarlarını değiştirmek aşağıdaki şekilde yapılabilir:
 
-``` cs
+```cs
 void ChangeSingleSidedRendering(AzureSession session)
 {
     SingleSidedSettings settings = session.Actions.SingleSidedSettings;
@@ -49,6 +49,19 @@ void ChangeSingleSidedRendering(AzureSession session)
 
     // Single-sided geometry is always rendered double-sided
     settings.Mode = SingleSidedMode.AlwaysDoubleSided;
+}
+```
+
+```cpp
+void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
+{
+    ApiHandle<SingleSidedSettings> settings = *session->Actions()->SingleSidedSettings();
+
+    // Single-sided geometry is rendered as is
+    settings->Mode(SingleSidedMode::Normal);
+
+    // Single-sided geometry is always rendered double-sided
+    settings->Mode(SingleSidedMode::AlwaysDoubleSided);
 }
 ```
 

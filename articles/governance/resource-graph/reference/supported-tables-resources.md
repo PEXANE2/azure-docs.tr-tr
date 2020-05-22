@@ -1,14 +1,14 @@
 ---
 title: Desteklenen Kaynak Yöneticisi kaynak türleri
 description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Kaynak Yöneticisi kaynak türlerinin bir listesini sağlayın.
-ms.date: 05/16/2020
+ms.date: 05/21/2020
 ms.topic: reference
-ms.openlocfilehash: 61b4865f695fbee7bd425429fde03bc7161043db
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ccf8cc58ce19746958f89ff9d9207906aad16bd
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655873"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770593"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -217,11 +217,10 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. hardwaresecuritymodules/ayrılmış atedhsms
 - Microsoft. HDInsight/kümeler
 - Microsoft. healthgelişme API 'leri/Hizmetleri
+- Microsoft. healthgelişme API 'leri/Hizmetleri/privateendpointconnections
 - Microsoft. hybridcompute/makineler
 - Microsoft. hybridcompute/makineler/uzantılar
 - Microsoft. hybriddata/datayöneticileri
-- Microsoft. Hydra/bileşenler
-- Microsoft. Hydra/networkscopes
 - Microsoft. ımportexport/işler
 - Microsoft. industrydatalifecycle/derivedmodeller
 - Microsoft. Insights/actiongroups
@@ -361,9 +360,6 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. portalsdk/rootresources
 - Microsoft. PowerBI/workspacecollections
 - Microsoft. powerbiadanmış/kapasiteler
-- Microsoft. projectarcadia/çalışma alanları
-- Microsoft. projectarcadia/Workspaces/parlak hesaplar
-- Microsoft. projectarcadia/Workspaces/sqlhesaplar
 - Microsoft. projectbabylon/hesaplar
 - Microsoft. hisse/çalışma alanları
 - Microsoft. recoveryservices/kasa
@@ -440,8 +436,6 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. vmwarechoparlör basit/virtualmachines
 - Microsoft. vmwareonazure/privatebulutlar
 - Microsoft. vmwarevirtustream/privatebulutlar
-- Microsoft. vnfmanager/cihazlar
-- Microsoft. vnfmanager/vnfs
 - Microsoft. vsonline/hesapları
 - Microsoft. vsonline/planlar
 - Microsoft. Web/apimanagementaccounts/API 'ler

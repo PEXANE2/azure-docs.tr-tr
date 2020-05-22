@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: e60fa73af9bd33c22f8489520b683f244dc46302
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cbefe2e2b25db7ce16a7a1bde423f60fda412590
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655957"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773364"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 Azure Log Analytics Aracısı, tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)tarafından izlenen sanal makineler arasında kapsamlı yönetim için geliştirilmiştir. Windows ve Linux aracıları, toplanan verileri Azure Izleyici 'deki Log Analytics çalışma alanınıza, ayrıca bir izleme çözümünde tanımlanan tüm benzersiz günlüklere veya ölçümlere gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](../insights/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](/azure/security-center/)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler.
@@ -170,10 +170,10 @@ Aşağıdaki tabloda, Linux ve Windows aracılarının Azure Izleyici günlükle
 
 |Aracı Kaynağı|Bağlantı noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Gelen ve giden|Yes |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Gelen ve giden|Yes |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Gelen ve giden|Yes |
-|*.azure-automation.net |Bağlantı noktası 443 |Gelen ve giden|Yes |
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Yes |
+|*.azure-automation.net |Bağlantı noktası 443 |Giden|Yes |
 
 Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 

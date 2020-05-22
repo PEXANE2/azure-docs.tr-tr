@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9605d20fa6a1480b24d7b64963aa9579ed3b5a11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e393b653ecb9e9d7b8eff277b91215ccc5bf6342
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81115174"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770831"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Synapse SQL havuzu oluşturma ve sorgulama
 
@@ -33,7 +33,7 @@ Azure portal kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) bir Sy
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-sql-pool"></a>SQL havuzu oluşturma
 
@@ -66,7 +66,11 @@ Veri ambarları, Azure SYNAPSE Analytics 'te SQL havuzu kullanılarak oluşturul
 
    Performans düzeyleri hakkında daha fazla bilgi için bkz. [Azure SQL veri ambarı 'nda Işlem yönetme](sql-data-warehouse-manage-compute-overview.md).
 
-5. Azure SYNAPSE Analytics formunun temel bilgiler sekmesini tamamladığınıza göre, SQL havuzunu oluşturmak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Sağlama birkaç dakika sürer.
+5. **Ek ayarlar**' ı seçin, **var olan verileri kullan**bölümünde örnek veritabanı olarak AdventureWorksDW oluşturulacak şekilde **Sample** ' ı seçin.
+
+    ![mevcut verileri kullan seçeneğini belirleyin](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
+
+6. Azure SYNAPSE Analytics formunun temel bilgiler sekmesini tamamladığınıza göre, SQL havuzunu oluşturmak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Sağlama birkaç dakika sürer.
 
    ![Gözden geçir + oluştur ' u seçin](./media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -114,7 +118,7 @@ Artık SQL Server 'a ve SQL havuzlarına bu IP adresini kullanarak bağlanabilir
 
 SQL sunucunuzun tam sunucu adını Azure portalından alabilirsiniz. Daha sonra sunucuya bağlanırken tam adı kullanırsınız.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Sol taraftaki menüden **Azure SYNAPSE Analytics** ' i seçin ve **Azure SYNAPSE Analytics** sayfasında hesabınızı seçin.
 
@@ -135,7 +139,7 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
    | Sunucu türü | Veritabanı altyapısı | Bu değer gereklidir |
    | Sunucu adı | Tam sunucu adı | Örnek: **sqlpoolservername.Database.Windows.net**. |
    | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
-   | Oturum Aç | Sunucu yöneticisi hesabı | Sunucuyu oluştururken belirttiğiniz hesap. |
+   | Oturum aç | Sunucu yöneticisi hesabı | Sunucuyu oluştururken belirttiğiniz hesap. |
    | Parola | Sunucu yöneticisi hesabınızın parolası | Sunucuyu oluştururken belirttiğiniz parola. |
    ||||
 
@@ -148,6 +152,8 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
    ![veritabanı nesneleri](./media/create-data-warehouse-portal/connected-ssms.png)
 
 ## <a name="run-some-queries"></a>Sorgular çalıştırma
+
+[Sınırlı bir kaynak sınıfı](resource-classes-for-workload-management.md)kullandığından, sunucu yöneticisi olarak günlüğe yazılırken büyük sorguların çalıştırılması önerilmez. Bunun yerine [, öğreticilerde gösterildiği](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data)gibi [iş yükü yalıtımını](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql) yapılandırın.
 
 SQL Veri Ambarı sorgu dili olarak T-SQL kullanır. Bir sorgu penceresi açıp T-SQL sorguları çalıştırmak için, aşağıdaki adımları kullanın:
 

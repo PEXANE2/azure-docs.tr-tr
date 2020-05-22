@@ -3,7 +3,7 @@ title: 'Yönetilen örnek: uzun süreli yedek saklama (PowerShell)'
 description: PowerShell kullanarak Azure SQL veritabanı yönetilen örneği için ayrı Azure Blob depolama kapsayıcılarında otomatik yedeklemeleri depolamayı ve geri yüklemeyi öğrenin.
 services: sql-database
 ms.service: sql-database
-ms.subservice: backup-restore
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/29/2020
-ms.openlocfilehash: fba1dcdb8c4e5cfaa8071ae58ad75432b526c887
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 5fa117729503a8a6a379643e7afb464aa9ed4c3e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509712"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83769947"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL veritabanı yönetilen örneğini yönetme uzun süreli yedek saklama (PowerShell)
 

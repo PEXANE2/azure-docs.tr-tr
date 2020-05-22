@@ -2,14 +2,14 @@
 title: Konsol uygulamaları için Azure Application Insights | Microsoft Docs
 description: Kullanılabilirlik, performans ve kullanım için Web uygulamalarını izleyin.
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe34b2b48de8ef4f6c2cdd61623b885878bad2b4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655438"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774034"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET konsol uygulamaları için Application Insights
 
@@ -18,7 +18,7 @@ ms.locfileid: "77655438"
 [Microsoft Azure](https://azure.com)bir aboneliğiniz olması gerekir. Windows, Xbox Live veya diğer Microsoft bulut hizmetleri için sahip olabileceğiniz bir Microsoft hesabı oturum açın. Takımınız Azure 'a yönelik bir kurumsal aboneliğe sahip olabilir: sahibinden Microsoft hesabı kullanarak sizi eklemesini isteyin.
 
 > [!NOTE]
-> Herhangi bir konsol uygulaması için Application Insights etkinleştirmek üzere kullanılabilecek [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) adlı yenı bir SDK Application Insights. Bu paketin ve ilgili yönergelerin [burada](../../azure-monitor/app/worker-service.md)kullanılması önerilir. Bu paket [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard), .net Core 2,0 veya üzeri sürümlerde ve .NET Framework 4.7.2 veya üzeri sürümlerde kullanılabilir.
+> Herhangi bir konsol uygulaması için Application Insights etkinleştirmek üzere kullanılabilecek [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) adlı yenı bir SDK Application Insights. Bu paketin ve ilgili yönergelerin [burada](../../azure-monitor/app/worker-service.md)kullanılması önerilir. Bu paket [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) , .NET Core 2,0 veya üzeri sürümlerde ve .NET Framework 4.7.2 veya üzeri sürümlerde kullanılabilir.
 
 ## <a name="getting-started"></a>Başlarken
 
@@ -36,19 +36,19 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> Telemetri anında gönderilmez. Telemetri öğeleri, toplu olarak ApplicationInsights SDK 'Sı tarafından gönderilir. Yöntemler çağrıldıktan `Track()` hemen sonra gelen konsol uygulamalarında, bu makalede daha sonra [Tam örnekte](#full-example) gösterildiği gibi uygulamanın `Flush()` uygulamadan çıkmadan önce, telemetri gönderilemez `Sleep` .
+> Telemetri anında gönderilmez. Telemetri öğeleri, toplu olarak ApplicationInsights SDK 'Sı tarafından gönderilir. Yöntemler çağrıldıktan hemen sonra gelen konsol uygulamalarında `Track()` , `Flush()` `Sleep` / `Delay` Bu makalede daha sonra [Tam örnekte](#full-example) gösterildiği gibi uygulamanın uygulamadan çıkmadan önce, telemetri gönderilemez. `Sleep`kullanıyorsanız, gerekli değildir `InMemoryChannel` . Burada izlenen gereksinimlerle ilgili etkin bir sorun var `Sleep` : [ApplicationInsights-DotNet/sorunlar/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) paketinin en son sürümünü yükler-http, SQL veya diğer dış bağımlılık çağrılarını otomatik olarak izler.
 
-Koddan veya dosya kullanarak `ApplicationInsights.config` Application Insights başlatabilir ve yapılandırabilirsiniz. Başlatmanın olabildiğince erken göründüğünden emin olun. 
+Koddan veya dosya kullanarak Application Insights başlatabilir ve yapılandırabilirsiniz `ApplicationInsights.config` . Başlatmanın olabildiğince erken göründüğünden emin olun. 
 
 > [!NOTE]
 > **ApplicationInsights. config** dosyasına başvuran yönergeler yalnızca .NET Framework hedefleyen ve .NET Core uygulamaları için geçerli olmayan uygulamalar için geçerlidir.
 
 ### <a name="using-config-file"></a>Yapılandırma dosyası kullanma
 
-Varsayılan olarak, Application Insights SDK oluşturulduğunda `ApplicationInsights.config` dosyayı çalışma dizininde arar `TelemetryConfiguration`
+Varsayılan olarak, Application Insights SDK `ApplicationInsights.config` oluşturulduğunda dosyayı çalışma dizininde arar `TelemetryConfiguration`
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
@@ -98,7 +98,7 @@ Daha fazla bilgi için bkz. [yapılandırma dosyası başvurusu](configuration-w
 > [!NOTE]
 > Yapılandırma dosyası okuma, .NET Core 'da desteklenmez. [ASP.NET Core için APPLICATION INSIGHTS SDK](../../azure-monitor/app/asp-net-core.md) kullanmayı düşünebilirsiniz
 
-* Uygulama başlatma sırasında örnek oluşturma ve yapılandırma `DependencyTrackingTelemetryModule` -bu tek bir olmalıdır ve uygulama ömrü için korunması gerekir.
+* Uygulama başlatma sırasında örnek oluşturma ve yapılandırma `DependencyTrackingTelemetryModule` -Bu tek bir olmalıdır ve uygulama ömrü için korunması gerekir.
 
 ```csharp
 var module = new DependencyTrackingTelemetryModule();
@@ -125,7 +125,7 @@ module.Initialize(configuration);
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-Yapılandırmayı düz `TelemetryConfiguration()` Oluşturucu ile oluşturduysanız, ayrıca bağıntı desteğini etkinleştirmeniz gerekir. Dosyadan yapılandırmayı okuduğunuzda, veya `TelemetryConfiguration.CreateDefault()` `TelemetryConfiguration.Active`kullandıysanız **Bu gerekli değildir** .
+Yapılandırmayı düz Oluşturucu ile oluşturduysanız `TelemetryConfiguration()` , ayrıca bağıntı desteğini etkinleştirmeniz gerekir. Dosyadan yapılandırmayı okuduğunuzda, veya kullandıysanız **Bu gerekli değildir** `TelemetryConfiguration.CreateDefault()` `TelemetryConfiguration.Active` .
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
@@ -172,7 +172,8 @@ namespace ConsoleApp
             // before exit, flush the remaining data
             telemetryClient.Flush();
 
-            // flush is not blocking so wait a bit
+            // flush is not blocking when not using InMemoryChannel so wait a bit. There is an active issue regarding the need for `Sleep`/`Delay`
+            // which is tracked here: https://github.com/microsoft/ApplicationInsights-dotnet/issues/407
             Task.Delay(5000).Wait();
 
         }

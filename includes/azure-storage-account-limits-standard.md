@@ -5,21 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/13/2020
+ms.date: 05/20/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 6cd883289513091ff1a57a130b12e25e012c1160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72afa8ebea4cb9bf07cb3ce56583cbdf1849be9e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334619"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778207"
 ---
-Aşağıdaki tabloda, Azure genel amaçlı v1, v2, BLOB depolama, blok blob depolaması ve Data Lake Storage 2. etkinleştirilmiş depolama hesapları için varsayılan sınırlar açıklanmaktadır. Giriş *sınırı,* bir depolama hesabına gönderilen tüm verileri ifade eder. *Çıkış* sınırı, bir depolama hesabından alınan tüm verileri ifade eder.
+Aşağıdaki tabloda, Azure genel amaçlı v1, v2, BLOB depolama ve blok BLOB depolama hesapları için varsayılan sınırlar açıklanmaktadır. Giriş *sınırı,* bir depolama hesabına gönderilen tüm verileri ifade eder. *Çıkış* sınırı, bir depolama hesabından alınan tüm verileri ifade eder.
 
 | Kaynak | Sınır |
 | --- | --- |
-| Standart, Premium ve Data Lake Storage 2. etkinleştirilmiş depolama hesapları dahil olmak üzere, abonelik başına bölge başına depolama hesabı sayısı. <sup>3</sup> | 250 |
+| Standart ve Premium Depolama hesapları dahil olmak üzere, abonelik başına bölge başına depolama hesabı sayısı.| 250 |
 | Maksimum depolama hesabı kapasitesi | 5 PiB <sup>1</sup>|
 | Depolama hesabı başına en fazla BLOB kapsayıcısı, blob, dosya paylaşımı, tablo, kuyruk, varlık veya ileti sayısı | Sınır yok |
 | Depolama hesabı başına en fazla istek oranı<sup>1</sup> | saniye başına 20.000 istek |
@@ -37,7 +37,7 @@ Aşağıdaki tabloda, Azure genel amaçlı v1, v2, BLOB depolama, blok blob depo
 
 [!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
 
-<sup>3</sup> [Azure Data Lake Storage 2.](../articles/storage/blobs/data-lake-storage-introduction.md) , Azure Blob depolama üzerinde oluşturulmuş, büyük veri analizi için adanmış bir yetenekler kümesidir. Azure depolama ve BLOB depolama sınırlamaları Data Lake Storage 2. için geçerlidir.
+<sup>3</sup> [Azure Data Lake Storage 2.](../articles/storage/blobs/data-lake-storage-introduction.md) , Azure Blob depolama üzerinde oluşturulmuş, büyük veri analizi için adanmış bir yetenekler kümesidir.
 
 > [!NOTE]
 > Microsoft, çoğu senaryo için genel amaçlı v2 depolama hesabı kullanmanızı önerir. Genel amaçlı v1 veya bir Azure Blob Depolama hesabını, kapalı kalma süresi olmadan ve verileri kopyalamaya gerek kalmadan, genel amaçlı bir v2 hesabına kolayca yükseltebilirsiniz. Daha fazla bilgi için bkz. [genel amaçlı v2 depolama hesabına yükseltme](../articles/storage/common/storage-account-upgrade.md).

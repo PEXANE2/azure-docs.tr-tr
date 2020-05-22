@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: bd5686b30b07c0f7fb8961f8d1f71035cb2688a4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656436"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758954"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -105,7 +105,7 @@ Azure geçişi gereci internet bağlantısı gerektirir.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Gereç için Azure geçişi ile iletişim kurmak üzere Azure Active Directory (AD) uygulamalar oluşturun.
 management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Azure AD uygulamaları oluşturun.
 *.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
-*.vault.azure.net | Azure Key Vault gizli dizileri yönetin.
+*.vault.azure.net | Azure Key Vault gizli dizileri yönetin. Note: çoğaltılacak makinelerin buna erişimi olduğundan emin olun.
 aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver. Azure geçiş gereci güncellemeleri için kullanılır.
 download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
 *.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
@@ -440,12 +440,12 @@ Denetim masasını denetlemek için:
 Bileşenlerden herhangi biri için daha eski bir sürüm çalıştırıyorsanız, hizmeti kaldırmanız ve en son sürüme el ile güncelleştirmeniz gerekir.
 
 1. En son gereç hizmeti sürümlerini denetlemek için LatestComponents. json dosyasını [indirin](https://aka.ms/latestapplianceservices) .
-2.  İndirdikten sonra, Not defteri 'nde LatestComponents. json dosyasını açın.
-3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örnek:
+2.    İndirdikten sonra, Not defteri 'nde LatestComponents. json dosyasını açın.
+3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örneğin:
 
     "Ad": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
-4.  Güncel olmayan bir hizmetin, dosyadaki indirme bağlantısını kullanarak en son sürümünü indirin.
+4.    Güncel olmayan bir hizmetin, dosyadaki indirme bağlantısını kullanarak en son sürümünü indirin.
 5. İndirdikten sonra, indirilen MSI bütünlüğünü doğrulamak için yönetici komut penceresinde aşağıdaki komutu çalıştırın.
 
     ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Örneğin: C: \> certutil-HashFile C:\USERS\PUBLIC\DOWNLOADS\MICROSOFTAZUREAPPLIANCECONFIGURATIONMANAGER.MSI MD5

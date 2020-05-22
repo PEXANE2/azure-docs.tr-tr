@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/21/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: ea289dbdf22f76c8ea716acf87b0b1a2da6ef0f9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6e6be4cd0f8053d356183a75c5a012dee0bd8c68
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196587"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771324"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme
 
@@ -92,14 +92,20 @@ Ayrıca, parametresini kullanarak (Azure Resource Manager şablonunda) [Azure Re
 
 ## <a name="legacy-pricing-tiers"></a>Eski fiyatlandırma katmanları
 
-2 Nisan 2018 tarihinden önce Log Analytics çalışma alanına veya Application Insights kaynağına sahip olan abonelikler, 1 Şubat 2019 ' den önce başlatılan bir Kurumsal Anlaşma bağlı olmaya devam edecektir: **ücretsiz**, **tek başına (GB başına)** ve **düğüm başına (OMS)**.  Ücretsiz fiyatlandırma katmanındaki çalışma alanlarında, günlük veri alımı 500 MB ile sınırlıdır (Azure Güvenlik Merkezi tarafından toplanan güvenlik verileri türleri hariç) ve veri saklama süresi 7 gün ile sınırlıdır. Ücretsiz fiyatlandırma katmanı yalnızca değerlendirme amaçlarıyla tasarlanmıştır. Tek başına veya düğüm başına fiyatlandırma katmanlarında çalışma alanlarında, 30 ila 730 güne sahip kullanıcı tarafından yapılandırılabilir bir bekletme vardır.
+2 Nisan 2018 tarihinden önce Log Analytics çalışma alanına veya Application Insights kaynağına sahip olan abonelikler, 1 Şubat 2019 ' den önce başlatılan bir Kurumsal Anlaşma bağlı olmaya devam edecektir: **ücretsiz**, **tek başına (GB başına)** ve **düğüm başına (OMS)**.  Ücretsiz fiyatlandırma katmanındaki çalışma alanlarında, günlük veri alımı 500 MB ile sınırlıdır ( [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/)tarafından toplanan güvenlik verileri türleri hariç) ve veri saklama süresi 7 gün ile sınırlıdır. Ücretsiz fiyatlandırma katmanı yalnızca değerlendirme amaçlarıyla tasarlanmıştır. Tek başına veya düğüm başına fiyatlandırma katmanlarında çalışma alanlarında, 30 ila 730 güne sahip kullanıcı tarafından yapılandırılabilir bir bekletme vardır.
 
 Bir saat ayrıntı düzeyi temelinde izlenen VM başına (düğüm) düğüm başına fiyatlandırma katmanı ücretleri. İzlenen her düğüm için, çalışma alanı faturalandırılmamış günde 500 MB veri tahsis edilir. Bu ayırma, çalışma alanı düzeyinde toplanır. Günlük toplam veri ayırmanın üzerine gelen veriler, veri fazla yaşı olarak GB başına faturalandırılır. Faturanızda, çalışma alanı düğüm başına fiyatlandırma katmanındaysa hizmetin Log Analytics kullanımı için **öngörü ve analiz** olacağını unutmayın. 
 
 > [!TIP]
 > Çalışma alanınızın, **düğüm başına** fiyatlandırma katmanına erişimi varsa, ancak Kullandıkça Öde katmanında maliyeti daha az olup olmadığını merak ediyorsanız, kolayca bir öneri almak için [aşağıdaki sorguyu kullanabilirsiniz](#evaluating-the-legacy-per-node-pricing-tier) . 
 
-2016 Nisan 'dan önce oluşturulan çalışma alanları, 30 ve 365 günün sabit veri bekletmesini içeren orijinal **Standart** ve **Premium** fiyatlandırma katmanlarına de erişebilir. Yeni çalışma alanları **Standart** veya **Premium** fiyatlandırma katmanlarında oluşturulamaz ve bir çalışma alanı bu katmanlardan taşınmışsa, geri taşınamaz. 
+2016 Nisan 'dan önce oluşturulan çalışma alanları, 30 ve 365 günün sabit veri bekletmesini içeren orijinal **Standart** ve **Premium** fiyatlandırma katmanlarına de erişebilir. Yeni çalışma alanları **Standart** veya **Premium** fiyatlandırma katmanlarında oluşturulamaz ve bir çalışma alanı bu katmanlardan taşınmışsa, geri taşınamaz.
+
+Ayrıca, eski Log Analytics katmanların kullanımı ve [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/)için kullanımın faturalandırılması arasında bazı davranışlar da vardır. 
+
+1. Çalışma alanı eski standart veya Premium katmanındaysa Azure Güvenlik Merkezi, düğüm başına değil yalnızca Log Analytics veri alımı için faturalandırılır.
+2. Çalışma alanı eski düğüm başına katmanındaysa Azure Güvenlik Merkezi, geçerli [Azure Güvenlik Merkezi düğüm tabanlı fiyatlandırma modeli](https://azure.microsoft.com/pricing/details/security-center/)kullanılarak faturalandırılacaktır. 
+3. Diğer fiyatlandırma katmanlarında (kapasite rezervasyonları dahil), Azure Güvenlik Merkezi 19 Haziran 2017 ' den önce etkinleştirilmişse, Azure Güvenlik Merkezi yalnızca Log Analytics veri alımı için faturalandırılır. Aksi takdirde, Azure Güvenlik Merkezi, geçerli Azure Güvenlik Merkezi düğüm tabanlı fiyatlandırma modeli kullanılarak faturalandırılır.
 
 Fiyatlandırma Katmanı sınırlamalarıyla ilgili daha fazla ayrıntıya [buradan](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)ulaşabilirsiniz.
 
@@ -125,7 +131,7 @@ Bekletme düşürüldü, en eski veriler kaldırılmadan önce birkaç gün yetk
 Saklama Ayrıca parametresi kullanılarak [Azure Resource Manager ile de ayarlanabilir](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) `retentionInDays` . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` Bu, uyumluluk ile ilgili senaryolar için yararlı olabilecek parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz. Bu işlevsellik yalnızca Azure Resource Manager aracılığıyla sunulur. 
 
 
-İki veri türü-- `Usage` ve `AzureActivity` --varsayılan olarak 90 gün boyunca tutulur ve bu 90 günlük bekletme için ücret alınmaz. Bu veri türleri de veri alma ücretlerinden ücretsizdir. 
+İki veri türü-- `Usage` ve `AzureActivity` --Varsayılan olarak en az 90 gün boyunca tutulur ve bu 90 günlük bekletme için ücret alınmaz. Çalışma alanı bekletme 90 gün üzerinde arttırılırsa, bu veri türlerini bekletme de artacaktır.  Bu veri türleri de veri alma ücretlerinden ücretsizdir. 
 
 Çalışma alanı tabanlı Application Insights kaynak (,,,,,,,, `AppAvailabilityResults` `AppBrowserTimings` `AppDependencies` `AppExceptions` `AppEvents` `AppMetrics` `AppPageViews` `AppPerformanceCounters` `AppRequests` , `AppSystemEvents` ve) veri türleri `AppTraces` de varsayılan olarak 90 gün boyunca tutulur ve bu 90 günlük bekletmeye yönelik ücret alınmaz. Saklama, veri türü işlevselliğine göre bekletme kullanılarak ayarlanabilir. 
 

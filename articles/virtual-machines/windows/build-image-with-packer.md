@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: f813551ed665628898bb219a611947c3026ac67c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4180f62e589ef79227d8e60ca19661e1c65f0097
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084490"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773330"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Azure 'da Windows sanal makine görüntüleri oluşturmak için Packer kullanma
 Azure 'daki her sanal makine (VM), Windows Dağıtım ve işletim sistemi sürümünü tanımlayan bir görüntüden oluşturulur. Görüntüler, önceden yüklenmiş uygulamaları ve konfigürasyonları içerebilir. Azure Marketi, en yaygın işletim sistemi ve uygulama ortamları için pek çok birinci ve üçüncü taraf görüntü sağlar veya gereksinimlerinize uygun kendi özel görüntülerinizi de oluşturabilirsiniz. Bu makalede, Azure 'da özel görüntüler tanımlamak ve derlemek için açık kaynaklı araç [Packer](https://www.packer.io/) 'ın nasıl kullanılacağı açıklanır.
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Azure kimlik bilgilerini oluşturma
 Packer hizmet sorumlusu kullanarak Azure ile kimlik doğrular. Azure hizmet sorumlusu, Packer gibi uygulamalar, hizmetler ve otomasyon araçlarıyla kullanabileceğiniz bir güvenlik kimliğidir. İzinleri, hizmet sorumlusunun Azure 'da gerçekleştirebileceği işlemlere göre kontrol edersiniz ve tanımlar.
 
-New- [AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) ile bir hizmet sorumlusu oluşturun ve [Yeni-azroleatama](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)ile kaynakları oluşturmak ve yönetmek için hizmet sorumlusu için izinler atayın. Değerinin benzersiz olması `-DisplayName` gerekir; gerekirse kendi değeri ile değiştirin.  
+New- [AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) ile bir hizmet sorumlusu oluşturun ve [Yeni-azroleatama](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)ile kaynakları oluşturmak ve yönetmek için hizmet sorumlusu için izinler atayın. Değerinin `-DisplayName` benzersiz olması gerekir; gerekirse kendi değeri ile değiştirin.  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
@@ -70,8 +70,8 @@ Görüntü oluşturmak için JSON dosyası olarak bir şablon oluşturursunuz. �
 |-------------------------------------|----------------------------------------------------|
 | *client_id*                         | Hizmet sorumlusu KIMLIĞINI görüntüleme`$sp.applicationId` |
 | *client_secret*                     | Otomatik olarak oluşturulan parolayı görüntüle`$plainPassword` |
-| *tenant_id*                         | `$sub.TenantId` Komutun çıktısı |
-| *subscription_id*                   | `$sub.SubscriptionId` Komutun çıktısı |
+| *tenant_id*                         | Komutun çıktısı `$sub.TenantId` |
+| *subscription_id*                   | Komutun çıktısı `$sub.SubscriptionId` |
 | *managed_image_resource_group_name* | İlk adımda oluşturduğunuz kaynak grubunun adı |
 | *managed_image_name*                | Oluşturulan yönetilen disk görüntüsünün adı |
 
@@ -105,7 +105,7 @@ Görüntü oluşturmak için JSON dosyası olarak bir şablon oluşturursunuz. �
     },
 
     "location": "East US",
-    "vm_size": "Standard_DS2_v2"
+    "vm_size": "Standard_D2_v2"
   }],
   "provisioners": [{
     "type": "powershell",

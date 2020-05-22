@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 05/20/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a5026fa055307a3a37031dbf64128e4622fc2b8
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 738a5bd76cc15b9356275707aed0d0a695aa6367
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713939"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770933"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Azure kaynakları için Yönetilen kimlikler nelerdir?
 
@@ -54,9 +54,6 @@ Dahili olarak, Yönetilen kimlikler yalnızca Azure kaynaklarıyla kullanılmak 
 Ayrıca, Kullanıcı tarafından atanan veya sistem tarafından atanan bir kimlik oluşturulduğunda, yönetilen kimlik kaynak sağlayıcısı (MSRP) bir sertifikayı bu kimlik ile dahili olarak yayınlar. 
 
 Kodunuzda Azure AD kimlik doğrulamasını destekleyen hizmetler için erişim belirteci istemek üzere yönetilen kimlik kullanılabilir. Hizmet örneği tarafından kullanılan kimlik bilgilerinin dağıtımıyla Azure ilgilenir. 
-
-## <a name="credential-rotation"></a>Kimlik bilgisi döndürme
-Kimlik bilgisi döndürme, Azure kaynağını barındıran kaynak sağlayıcısı tarafından denetlenir. Kimlik bilgisinin varsayılan dönüşü her 46 günde bir gerçekleşir. Kaynak sağlayıcının 46 günden daha uzun süre beklemesi için, yeni kimlik bilgilerini çağıran kaynak sağlayıcısına kadar.
 
 Aşağıdaki diyagramda yönetilen hizmet kimliklerinin Azure sanal makineleriyle (VM) nasıl çalıştığı gösterilmektedir:
 
@@ -107,6 +104,9 @@ Aşağıdaki diyagramda yönetilen hizmet kimliklerinin Azure sanal makineleriyl
 
 6. Azure AD'ye erişim belirteci isteyen bir çağrı yapılır (5. adımda belirtildiği gibi) ve bu çağrıda 3. adımda yapılandırılan istemci kimliği ve sertifikası kullanılır. Azure AD bir JSON Web Token (JWT) erişim belirteci döndürür.
 7. Kodunuz erişim belirtecini bir çağrıda Azure AD kimlik doğrulamasını destekleyen hizmete gönderir.
+
+## <a name="credential-rotation"></a>Kimlik bilgisi döndürme
+Kimlik bilgisi döndürme, Azure kaynağını barındıran kaynak sağlayıcısı tarafından denetlenir. Kimlik bilgisinin varsayılan dönüşü her 46 günde bir gerçekleşir. Kaynak sağlayıcının 46 günden daha uzun süre beklemesi için, yeni kimlik bilgilerini çağıran kaynak sağlayıcısına kadar.
 
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri nasıl kullanabilirim?
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: e50534639f5f46b1675ba5c074fb8fdd843ac87e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744887"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770066"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>İş Ortağı Merkezi 'ne Azure uygulamaları eklemek için iş ortağı merkezi gönderme API 'SI
 
@@ -49,7 +49,7 @@ Microsoft Store gönderimi API 'sini kullanmak için, Iş Ortağı Merkezi hesab
 
 Iş Ortağı Merkezi gönderme API 'sindeki yöntemlerden herhangi birini çağırabilmeniz için önce API 'deki her yöntemin **Yetkilendirme** üstbilgisine geçirdiğiniz BIR Azure AD erişim belirteci edinmeniz gerekir. Erişim belirteci elde ettikten sonra, süresi dolmadan önce kullanmanız 60 dakika sürer. Belirtecin süresi dolduktan sonra, API 'yi sonraki çağrılarında kullanmaya devam edebilmeniz için belirteci yenileyebilirsiniz.
 
-Erişim belirtecini almak için, `HTTP POST` `https://login.microsoftonline.com/<tenant_id>/oauth2/token` uç noktaya göndermek üzere [Istemci kimlik bilgilerini kullanarak çağrılara hizmet vermek için Service](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) 'teki yönergeleri izleyin. Örnek bir istek aşağıda verilmiştir:
+Erişim belirtecini almak için, uç noktaya göndermek üzere [Istemci kimlik bilgilerini kullanarak çağrılara hizmet vermek Için Service](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) 'teki yönergeleri izleyin `HTTP POST` `https://login.microsoftonline.com/<tenant_id>/oauth2/token` . Örnek bir istek aşağıda verilmiştir:
 
 JSONCopy
 ```Json
@@ -63,7 +63,7 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-İçindeki *tenant_id* değeri `POST URI` ve *client_id* ve *Client_secret* parametreleri için, önceki bölümde iş ortağı MERKEZI 'nden aldığınız uygulamanızın Kiracı kimliğini, istemci kimliğini ve anahtarını belirtin. *Kaynak* parametresi için, belirtmeniz `https://api.partner.microsoft.com`gerekir.
+İçindeki *tenant_id* değeri `POST URI` ve *client_id* ve *Client_secret* parametreleri için, önceki bölümde Iş Ortağı Merkezi 'NDEN aldığınız uygulamanızın Kiracı kimliğini, istemci kimliğini ve anahtarını belirtin. *Kaynak* parametresi için, belirtmeniz gerekir `https://api.partner.microsoft.com` .
 
 ### <a name="step-3-use-the-microsoft-store-submission-api"></a>3. Adım: Microsoft Store gönderimi API 'sini kullanma
 
@@ -74,4 +74,4 @@ https://apidocs.microsoft.com/services/partneringestion/
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure VM oluşturma teknik varlığı](create-azure-container-technical-assets.md) oluşturma hakkında bilgi edinin
-* [Azure Container teklifi](create-azure-container-offer.md) oluşturmak için Hoe öğrenin
+* [Azure Container teklifi](create-azure-container-offer.md) oluşturmayı öğrenin

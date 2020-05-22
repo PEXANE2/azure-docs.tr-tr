@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c485c1612df526e813119239fd2202b7657db9c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969346"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774192"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Bir Linux VM 'sine veri diski eklemek için portalı kullanma 
 Bu makalede, Azure portal aracılığıyla bir Linux sanal makinesine hem yeni hem de mevcut diskleri nasıl ekleyebileceğiniz gösterilmektedir. Ayrıca [, Azure Portal bir WINDOWS sanal makinesine veri diski ekleyebilirsiniz](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -70,7 +70,7 @@ Linux sanal makinenizin kullanabilmesi için yeni diskinizi bölümlemek, biçim
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Sanal makinenize bağlandıktan sonra bir disk eklemeye hazırsınız demektir. İlk olarak, kullanarak `dmesg` diski bulun (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, *SCSI* disklerinde filtrelemek için dmesg kullanır:
+Sanal makinenize bağlandıktan sonra bir disk eklemeye hazırsınız demektir. İlk olarak, kullanarak diski bulun `dmesg` (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, *SCSI* disklerinde filtrelemek için dmesg kullanır:
 
 ```bash
 dmesg | grep SCSI
@@ -94,13 +94,13 @@ Veri içeren mevcut bir disk kullanıyorsanız, diski bağlamak için atlayın. 
 > [!NOTE]
 > Kendi oluşturduğunuz en son Fdisk sürümlerini kullanmanız veya uygulamanız için uygun olması önerilir.
 
-`fdisk` ile diski bölümlendirin. Disk boyutu 2 tebibayt (Tib) veya daha büyükse GPT bölümlendirme kullanmanız gerekir, bu durumda GPT bölümlendirme gerçekleştirmek için kullanabilirsiniz `parted` . Disk boyutu 2TiB altındaysa, MBR veya GPT bölümlemesini kullanabilirsiniz. Bölüm 1 ' de bir birincil disk oluşturun ve diğer varsayılanları kabul edin. Aşağıdaki örnek, */dev/SDC*üzerinde `fdisk` işlemi başlatır:
+`fdisk` ile diski bölümlendirin. Disk boyutu 2 tebibayt (Tib) veya daha büyükse GPT bölümlendirme kullanmanız gerekir, bu durumda `parted` GPT bölümlendirme gerçekleştirmek için kullanabilirsiniz. Disk boyutu 2TiB altındaysa, MBR veya GPT bölümlemesini kullanabilirsiniz. Bölüm 1 ' de bir birincil disk oluşturun ve diğer varsayılanları kabul edin. Aşağıdaki örnek, `fdisk` */dev/SDC*üzerinde işlemi başlatır:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Yeni bölüm eklemek için `n` komutunu kullanın. Bu örnekte, birincil bölüm için de `p` seçim yaptık ve varsayılan değerlerin geri kalanını kabul ediyoruz. Çıkış aşağıdaki örneğe benzeyecektir:
+Yeni bölüm eklemek için `n` komutunu kullanın. Bu örnekte, `p` birincil bölüm için de seçim yaptık ve varsayılan değerlerin geri kalanını kabul ediyoruz. Çıkış aşağıdaki örneğe benzeyecektir:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -122,7 +122,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Bölüm tablosunu yazarak `p` ve ardından tabloyu diske yazmak ve `w` çıkmak için kullanarak yazdırın. Çıktı aşağıdaki örneğe benzer şekilde görünmelidir:
+Bölüm tablosunu yazarak `p` ve ardından `w` tabloyu diske yazmak ve çıkmak için kullanarak yazdırın. Çıktı aşağıdaki örneğe benzer şekilde görünmelidir:
 
 ```bash
 Command (m for help): p
@@ -144,7 +144,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Şimdi, `mkfs` komutunu kullanarak bölüme bir dosya sistemi yazın. Dosya sistemi türünü ve cihaz adını belirtin. Aşağıdaki örnek, önceki adımlarda oluşturulan */dev/sdc1* bölümünde bir *ext4* FileSystem oluşturur:
+Şimdi, komutunu kullanarak bölüme bir dosya sistemi yazın `mkfs` . Dosya sistemi türünü ve cihaz adını belirtin. Aşağıdaki örnek, önceki adımlarda oluşturulan */dev/sdc1* bölümünde bir *ext4* FileSystem oluşturur:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -179,18 +179,19 @@ Writing superblocks and filesystem accounting information: done
 Fdisk yardımcı programı etkileşimli girişe ihtiyaç duyuyor ve bu nedenle Otomasyon betikleri içinde kullanılmak üzere ideal değildir. Ancak, [genişletilmiş](https://www.gnu.org/software/parted/) yardımcı program komut dosyası oluşturabilir ve bu nedenle Otomasyon senaryolarında daha iyi bir şekilde olabilir. Genişletilmiş yardımcı program, bir veri diskinin bölümlenmesi ve formatlanmaya yönelik olarak kullanılabilir. Aşağıdaki izlenecek yol için, yeni bir veri diski/dev/SDC ve [XFS](https://xfs.wiki.kernel.org/) FileSystem kullanarak biçimlendirin.
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo mkfs.xfs /dev/sdc1
 partprobe /dev/sdc1
 ```
 Yukarıda görüldüğü gibi, çekirdeğin yeni bölüm ve FileSystem 'ın hemen farkında olduğundan emin olmak için [partaraştırma](https://linux.die.net/man/8/partprobe) yardımcı programını kullanırız. Partaraştırması kullanma hatası, blkıd veya lslbk komutlarının, yeni FileSystem için UUID 'yi hemen döndürmemesine neden olabilir.
 
 ### <a name="mount-the-disk"></a>Diski bağlama
-Kullanarak `mkdir`dosya sistemini bağlamak için bir dizin oluşturun. Aşağıdaki örnek, */datadrive*dizininde bir dizin oluşturur:
+Kullanarak dosya sistemini bağlamak için bir dizin oluşturun `mkdir` . Aşağıdaki örnek, */datadrive*dizininde bir dizin oluşturur:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Daha `mount` sonra dosya sistemini bağlamak için kullanın. Aşağıdaki örnek */dev/sdc1* bölümünü */datadrive* bağlama noktasına bağlar:
+`mount`Daha sonra dosya sistemini bağlamak için kullanın. Aşağıdaki örnek */dev/sdc1* bölümünü */datadrive* bağlama noktasına bağlar:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
@@ -235,12 +236,12 @@ Bazı Linux çekirdekler, diskteki kullanılmayan blokları atmak için kesme/e�
 
 Linux sanal makinenizde KıRPMA desteğini etkinleştirmenin iki yolu vardır. Her zamanki gibi, önerilen yaklaşım için dağıtıma başvurun:
 
-* /Etc/fstab içindeki `discard` bağlama seçeneğini kullanın */etc/fstab*, örneğin:
+* `discard` */Etc/fstab*içindeki bağlama seçeneğini kullanın, örneğin:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* Bazı durumlarda, `discard` seçeneğinde performans olumsuz etkileri olabilir. Alternatif olarak, komut satırından `fstrim` komutu el ile çalıştırabilir veya bunları düzenli olarak çalıştırmak için crontab 'ize ekleyebilirsiniz:
+* Bazı durumlarda, `discard` seçeneğinde performans olumsuz etkileri olabilir. Alternatif olarak, komut `fstrim` satırından komutu el ile çalıştırabilir veya bunları düzenli olarak çalıştırmak için crontab 'ize ekleyebilirsiniz:
   
     **Ubuntu**
   

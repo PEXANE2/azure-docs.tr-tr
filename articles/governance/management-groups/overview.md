@@ -3,12 +3,12 @@ title: Kaynakları yönetim gruplarıyla düzenleme-Azure Idare
 description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupların nasıl kullanıldığı hakkında bilgi edinin.
 ms.date: 04/15/2020
 ms.topic: overview
-ms.openlocfilehash: cc60e4555f0fb2b920b8061fb044ce5dde990d38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381531"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773160"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Kaynaklarınızı Azure yönetim gruplarıyla düzenleme
 
@@ -154,7 +154,7 @@ Pazarlama Yönetimi grubunda tanımlanmış özel bir rol olduğunu varsayalım.
 Bu aboneliklerden birini üretim yönetim grubunun bir alt öğesi olacak şekilde taşımaya çalışırsam, bu taşıma, abonelik rolü atamasından pazarlama yönetim grubu rolü tanımına kadar olan yolu keser. Bu senaryoda, bu ilişkiyi bozduğundan beri taşımaya izin verilmediğini belirten bir hata alırsınız.  
 
 Bu senaryoyu gidermeye yönelik birkaç farklı seçenek vardır:
-- Aboneliği yeni bir üst MG öğesine taşımadan önce abonelikten rol atamasını kaldırın.
+- Aboneliği yeni bir üst MG öğesine taşımadan önce rol atamasını abonelikten kaldırın.
 - Aboneliği rol tanımının atanabilir kapsamına ekleyin.
 - Rol tanımı içindeki atanabilir kapsamı değiştirin. Yukarıdaki örnekte, bir şekilde atanabilir kapsamları, hiyerarşinin her iki dalı tarafından ulaşılabilmesi için, bir pazarlama üzerinden kök yönetim grubuna güncelleştirebilirsiniz.  
 - Diğer dalda tanımlanacak ek bir özel rol oluşturun. Bu yeni rol, rol atamasının abonelik üzerinde de değiştirilmesini gerektirir.  
@@ -163,13 +163,14 @@ Bu senaryoyu gidermeye yönelik birkaç farklı seçenek vardır:
 
 Yönetim gruplarında özel roller kullanılırken var olan sınırlamalar vardır. 
 
- - Yalnızca bir yönetim grubunu, yeni bir rolün atanabilir kapsamlarında tanımlayabilirsiniz. Bu sınırlama, rol tanımlarının ve rol atamalarının kesilmediği durumların sayısını azaltmak için kullanılır. Bu durum, rol atamasının bulunduğu bir abonelik veya yönetim grubu, rol tanımına sahip olmayan farklı bir üst öğeye taşındığında gerçekleşir.  
- - RBAC veri düzlemi eylemlerinin yönetim grubu özel rollerinde tanımlanmasına izin verilmez. Bu kısıtlama, veri düzlemi kaynak sağlayıcılarını güncelleştirmede RBAC eylemleriyle ilgili bir gecikme sorunu olduğu için gerçekleştirilir. Bu gecikme sorunu üzerinde çalışıyor ve tüm riskleri azaltmak için bu eylemler rol tanımından devre dışı bırakılacak.
+ - Yalnızca bir yönetim grubunu, yeni bir rolün atanabilir kapsamlarında tanımlayabilirsiniz. Bu sınırlama, rol tanımlarının ve rol atamalarının kesilmediği durumların sayısını azaltmak için kullanılır. Bu durum, rol atamasının bulunduğu bir abonelik veya yönetim grubu, rol tanımına sahip olmayan farklı bir üst öğeye taşındığında meydana gelir.  
+ - RBAC veri düzlemi eylemleri yönetim grubu özel rollerinde tanımlanamaz. Bu kısıtlama, veri düzlemi kaynak sağlayıcılarını güncelleştiren RBAC eylemleriyle ilgili bir gecikme sorunu olduğu için yerinde.
+   Bu gecikme sorunu üzerinde çalışıyor ve tüm riskleri azaltmak için bu eylemler rol tanımından devre dışı bırakılacak.
  - Azure Resource Manager, rol tanımının atanabilir kapsamındaki yönetim grubunun varlığını doğrulamaz. Bir yazım hatası veya yanlış bir yönetim grubu kimliği listeleniyorsa, rol tanımı yine de oluşturulur.  
 
 ## <a name="moving-management-groups-and-subscriptions"></a>Yönetim gruplarını ve abonelikleri taşıma 
 
-Bir yönetim grubuna veya aboneliğine başka bir yönetim grubunun alt öğesi olacak şekilde, üç kuralın da doğru olarak değerlendirilmesi gerekir.
+Bir yönetim grubunu veya aboneliğini başka bir yönetim grubunun alt öğesi olacak şekilde taşımak için, üç kuralın doğru olarak değerlendirilmesi gerekir.
 
 Taşıma eylemini gerçekleştiriyorsanız şunlar gerekir: 
 

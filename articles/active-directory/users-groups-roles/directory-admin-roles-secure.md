@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c580a39db97e1ce50c3d244db3023bf422bca08
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 16c87eabec8f09f082c258a439a17b9f3aa79336
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837201"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759039"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama
 
@@ -82,7 +82,7 @@ Azure AD Privileged Identity Management açtıktan sonra:
 
 4. **Tüm hizmetler** listesinden Privileged Identity Management açın ve panonuza sabitleyin.
 
-Kuruluşunuzda PıM 'yi kullanmak için ilk kişi **Güvenlik Yöneticisi** ve **ayrıcalıklı rol yöneticisi** rollerine atanır. Yalnızca ayrıcalıklı rol yöneticileri kullanıcıların Azure AD dizin rolü atamalarını yönetebilir. PıM Güvenlik Sihirbazı, ilk bulma ve atama deneyiminde size kılavuzluk eder. Bu sırada başka bir değişiklik yapmadan sihirbazdan çıkabilirsiniz.
+Kuruluşunuzda PıM 'yi kullanmak için ilk kişinin **Güvenlik Yöneticisi** ve **ayrıcalıklı rol yöneticisi** rollerine atandığından emin olun. Yalnızca ayrıcalıklı rol yöneticileri kullanıcıların Azure AD dizin rolü atamalarını yönetebilir. PıM Güvenlik Sihirbazı, ilk bulma ve atama deneyiminde size kılavuzluk eder. Bu sırada başka bir değişiklik yapmadan sihirbazdan çıkabilirsiniz.
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Yüksek ayrıcalıklı rollerdeki hesapları belirleme ve kategorilere ayırma
 
@@ -110,11 +110,11 @@ Bir kullanıcının rolünden yanlışlıkla kilitlenmesi mümkündür. Örneği
 
 Acil durum erişim hesapları, bir Azure AD kuruluşunda ayrıcalıklı erişimi kısıtlamaya yardımcı olur. Bu hesaplar son derece ayrıcalıklı ve belirli kişilere atanmamıştır. Acil durum erişim hesapları, normal yönetim hesaplarının kullanılabileceği "cam" senaryolarında acil durum ile sınırlıdır. Acil durum hesabının kullanımını yalnızca gerekli olduğu zamana göre kontrol edin ve azalttığınızdan emin olun.
 
-Genel yönetici rolü için atanan veya uygun olan hesapları değerlendirin. \*. Onmicrosoft.com etki alanını kullanarak yalnızca herhangi bir bulut hesabı görmüyorsanız ("cam" acil erişim için), bunları oluşturun. Daha fazla bilgi için bkz. [Azure AD 'de acil durum erişimi yönetim hesaplarını yönetme](directory-emergency-access.md).
+Genel yönetici rolü için atanan veya uygun olan hesapları değerlendirin. . Onmicrosoft.com etki alanını kullanarak yalnızca herhangi bir bulut hesabı görmüyorsanız \* ("cam" acil erişim için), bunları oluşturun. Daha fazla bilgi için bkz. [Azure AD 'de acil durum erişimi yönetim hesaplarını yönetme](directory-emergency-access.md).
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Multi-Factor Authentication 'ı açın ve diğer tüm yüksek ayrıcalıklı tek kullanıcılı yönetici hesaplarını kaydedin
 
-Azure AD Yönetici rollerinin bir veya daha fazlasına kalıcı olarak atanan tüm bireysel kullanıcılar için oturum açma sırasında Azure Multi-Factor Authentication (MFA) iste: genel yönetici, ayrıcalıklı rol yöneticisi, Exchange Online Yöneticisi ve SharePoint Online Yöneticisi. [Yönetici hesaplarınız Için Multi-Factor Authentication 'ı (MFA)](../authentication/howto-mfa-userstates.md) etkinleştirmek ve tüm bu kullanıcıların kaydoldiğinden emin olmak için kılavuzu kullanın [https://aka.ms/mfasetup](https://aka.ms/mfasetup). 2. adım ve [Office 365 ' de veri ve hizmetlere erişimi koruma](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)kılavuzunun 3. adımında daha fazla bilgi bulunabilir. 
+Azure AD Yönetici rollerinin bir veya daha fazlasına kalıcı olarak atanan tüm bireysel kullanıcılar için oturum açma sırasında Azure Multi-Factor Authentication (MFA) iste: genel yönetici, ayrıcalıklı rol yöneticisi, Exchange Online Yöneticisi ve SharePoint Online Yöneticisi. [Yönetici hesaplarınız Için Multi-Factor Authentication 'ı (MFA)](../authentication/howto-mfa-userstates.md) etkinleştirmek ve tüm bu kullanıcıların kaydoldiğinden emin olmak için kılavuzu kullanın [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . 2. adım ve [Office 365 ' de veri ve hizmetlere erişimi koruma](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)kılavuzunun 3. adımında daha fazla bilgi bulunabilir. 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>2. Aşama: sık kullanılan saldırıları azaltma
 
@@ -177,7 +177,7 @@ Azure AD Kimlik Koruması, kuruluşunuzun kimliklerini etkileyen olası güvenli
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Office 365 güvenli puanınızı edinin (Office 365 kullanıyorsanız)
 
-Güvenli puan, kullandığınız Office 365 hizmetleri için ayarlarınızı ve etkinliklerinizi arar ve bunları Microsoft tarafından belirlenen bir temel ile karşılaştırır. Güvenlik uygulamaları ile nasıl hizalandığını temel alarak bir puan alacaksınız. Office 365 Iş Premium veya kurumsal abonelik için yönetici izinlerine sahip olan herkes, tarihinde [https://securescore.office.com](https://securescore.office.com/)güvenli puana erişebilir.
+Güvenli puan, kullandığınız Office 365 hizmetleri için ayarlarınızı ve etkinliklerinizi arar ve bunları Microsoft tarafından belirlenen bir temel ile karşılaştırır. Güvenlik uygulamaları ile nasıl hizalandığını temel alarak bir puan alacaksınız. Office 365 Iş Premium veya kurumsal abonelik için yönetici izinlerine sahip olan herkes, tarihinde güvenli puana erişebilir [https://securescore.office.com](https://securescore.office.com/) .
 
 #### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Office 365 güvenlik ve Uyumluluk kılavuzunu gözden geçirin (Office 365 kullanıyorsanız)
 
@@ -207,7 +207,7 @@ Kuruluşunuzda üretim uygulamalarını barındıran abonelikleri belirlemek iç
 
 #### <a name="remove-microsoft-accounts-from-admin-roles"></a>Microsoft hesaplarını yönetici rollerinden kaldır
 
-Xbox, Live ve Outlook gibi diğer programlardaki Microsoft hesapları, kuruluşunuzun abonelikleri için yönetici hesabı olarak kullanılmamalıdır. Tüm Microsoft hesaplarından yönetici durumunu kaldırın ve Azure AD (örneğin, chris@contoso.com) iş veya okul hesapları ile değiştirin. Yönetici amacıyla, Azure AD 'de kimlik doğrulaması yapılan ve diğer hizmetlerde bulunmayan hesaplara bağımlıdır.
+Xbox, Live ve Outlook gibi diğer programlardaki Microsoft hesapları, kuruluşunuzun abonelikleri için yönetici hesabı olarak kullanılmamalıdır. Tüm Microsoft hesaplarından yönetici durumunu kaldırın ve Azure AD (örneğin, chris@contoso.com ) iş veya okul hesapları ile değiştirin. Yönetici amacıyla, Azure AD 'de kimlik doğrulaması yapılan ve diğer hizmetlerde bulunmayan hesaplara bağımlıdır.
 
 #### <a name="monitor-azure-activity"></a>Azure etkinliğini izleme
 
@@ -359,7 +359,7 @@ Yol haritasının 4. aşaması altı ayda ve daha fazla uygulanmalıdır. Günü
 Ayrıcalıklı erişimin güvenliğini sağlamak, iş varlıklarınız için güvenlik hakkı sağlamak açısından önemlidir. Bununla birlikte, sürekli güvenlik kesintileri sağlayan bir bütün güvenlik programının parçası olmalıdır. Bu program şöyle bir öğe içermelidir:
 
 * İlke
-* İşlemler
+* Operations
 * Bilgi güvenliği
 * Sunucular
 * Uygulamalar

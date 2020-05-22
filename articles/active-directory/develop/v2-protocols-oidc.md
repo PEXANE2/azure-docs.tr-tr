@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 88f647bbb72c92db194407b677e533a867261ce4
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0e1284b94500ae6b6f1aa5eb632e94e03f3d3df3
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926502"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771596"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform ve OpenID Connect Protokolü
 
@@ -41,16 +41,16 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> Deneyin! Kiracılar yapılandırmasını görmek için tıklayın [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) `common`
+> Deneyin! [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration)Kiracılar yapılandırmasını görmek için tıklayın `common` .
 
-`{tenant}` Dört değerden birini alabilir:
+`{tenant}`Dört değerden birini alabilir:
 
 | Değer | Açıklama |
 | --- | --- |
 | `common` |Azure AD 'den hem kişisel Microsoft hesabı hem de iş veya okul hesabı olan kullanıcılar uygulamada oturum açabilir. |
 | `organizations` |Yalnızca Azure AD 'den iş veya okul hesabı olan kullanıcılar uygulamada oturum açabilir. |
 | `consumers` |Yalnızca kişisel Microsoft hesabı kullanıcılar uygulamada oturum açabilir. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` veya `contoso.onmicrosoft.com` | Yalnızca belirli bir Azure AD kiracısından gelen kullanıcılar (iş veya okul hesabı ile dizinde üye olup olmadıkları veya bir kişisel Microsoft hesabı olan dizinde konuklardır) uygulamada oturum açabilir. Azure AD kiracının kolay etki alanı adı ya da kiracının GUID tanımlayıcısı kullanılabilir. Ayrıca, `consumers` kiracının yerine tüketici kiracısını `9188040d-6c67-4c5b-b112-36a304b66dad`de kullanabilirsiniz.  |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` veya `contoso.onmicrosoft.com` | Yalnızca belirli bir Azure AD kiracısından gelen kullanıcılar (iş veya okul hesabı ile dizinde üye olup olmadıkları veya bir kişisel Microsoft hesabı olan dizinde konuklardır) uygulamada oturum açabilir. Azure AD kiracının kolay etki alanı adı ya da kiracının GUID tanımlayıcısı kullanılabilir. Ayrıca, kiracının yerine tüketici kiracısını de kullanabilirsiniz `9188040d-6c67-4c5b-b112-36a304b66dad` `consumers` .  |
 
 Meta veriler basit bir JavaScript Nesne Gösterimi (JSON) belgesidir. Örnek için aşağıdaki kod parçacığına bakın. Kod parçacığının içeriği [OpenID Connect belirtiminde](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)tamamen açıklanmıştır.
 
@@ -69,7 +69,7 @@ Meta veriler basit bir JavaScript Nesne Gösterimi (JSON) belgesidir. Örnek iç
 }
 ```
 
-Uygulamanızda, [talep eşleme](active-directory-claims-mapping.md) özelliğini kullanmanın bir sonucu olarak özel İmzalama anahtarları varsa, uygulamanızın imzalama anahtarı bilgilerine `appid` `jwks_uri` işaret etmek için uygulama kimliğini içeren bir sorgu parametresi eklemeniz gerekir. Örneğin: `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` bir `jwks_uri` içerir. `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`
+Uygulamanızda, [talep eşleme](active-directory-claims-mapping.md) özelliğini kullanmanın bir sonucu olarak özel İmzalama anahtarları varsa, `appid` `jwks_uri` uygulamanızın imzalama anahtarı bilgilerine Işaret etmek için uygulama kimliğini içeren bir sorgu parametresi eklemeniz gerekir. Örneğin: `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` bir içerir `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` .
 
 Genellikle, bu meta veri belgesini bir OpenID Connect kitaplığı veya SDK 'Sı yapılandırmak için kullanacaksınız; Kitaplık, işini yapmak için meta verileri kullanır. Ancak, önceden oluşturulmuş bir OpenID Connect kitaplığı kullanmıyorsanız, Microsoft Identity platform uç noktasını kullanarak bir Web uygulamasında oturum açmak için bu makalenin geri kalanında bulunan adımları izleyebilirsiniz.
 
@@ -77,12 +77,12 @@ Genellikle, bu meta veri belgesini bir OpenID Connect kitaplığı veya SDK 'Sı
 
 Web uygulamanızın kimlik doğrulaması yapması gerektiğinde, kullanıcıyı `/authorize` uç noktaya yönlendirebilir. Bu istek, [OAuth 2,0 yetkilendirme kodu akışının](v2-oauth2-auth-code-flow.md)ilk bamasına benzer ve bu önemli farklılıklarla benzerdir:
 
-* İstek, `openid` `scope` parametresine kapsamı içermelidir.
-* `response_type` Parametrenin içermesi `id_token`gerekir.
+* İstek, `openid` parametresine kapsamı içermelidir `scope` .
+* `response_type`Parametrenin içermesi gerekir `id_token` .
 * İstek, `nonce` parametresini içermelidir.
 
 > [!IMPORTANT]
-> /Authorization uç noktasından bir KIMLIK belirteci istemek için, [kayıt portalındaki](https://portal.azure.com) uygulama kaydının kimlik doğrulama sekmesinde ( `oauth2AllowIdTokenImplicitFlow` [uygulama bildiriminde](reference-app-manifest.md) bayrağını olarak `true`ayarlayan) örtük id_tokens etkin izni olması gerekir. Etkin değilse, bir `unsupported_response` hata döndürülür: "' response_type ' giriş parametresi için sağlanan değere bu istemci için izin verilmiyor. Beklenen değer ' Code ' "
+> /Authorization uç noktasından bir KIMLIK belirteci istemek için, [kayıt portalındaki](https://portal.azure.com) uygulama kaydının kimlik doğrulama sekmesinde ( `oauth2AllowIdTokenImplicitFlow` [uygulama bildiriminde](reference-app-manifest.md) bayrağını olarak ayarlayan) örtük id_tokens etkin izni olması gerekir `true` . Etkin değilse, bir `unsupported_response` hata döndürülür: "' response_type ' giriş parametresi için sağlanan değere bu istemci için izin verilmiyor. Beklenen değer ' Code ' "
 
 Örneğin:
 
@@ -100,30 +100,30 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Bu isteği yürütmek için aşağıdaki bağlantıya tıklayın. Oturum açtıktan sonra tarayıcınız `https://localhost/myapp/`, adres çubuğunda bir kimlik belirteci ile yeniden yönlendirilir. Bu isteğin (yalnızca tanıtım `response_mode=fragment` amacıyla) kullandığını unutmayın. Kullanmanızı `response_mode=form_post`öneririz.
+> Bu isteği yürütmek için aşağıdaki bağlantıya tıklayın. Oturum açtıktan sonra tarayıcınız `https://localhost/myapp/` , adres çubuğunda BIR kimlik belirteci ile yeniden yönlendirilir. Bu isteğin `response_mode=fragment` (yalnızca tanıtım amacıyla) kullandığını unutmayın. Kullanmanızı öneririz `response_mode=form_post` .
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 | Parametre | Koşul | Açıklama |
 | --- | --- | --- |
-| `tenant` | Gerekli | Uygulamanın oturum açmasını denetlemek `{tenant}` için isteğin yolundaki değeri kullanabilirsiniz. İzin verilen değerler, `common`, `organizations`ve `consumers`kiracı tanımlayıcılarıdır. Daha fazla bilgi için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints). |
+| `tenant` | Gerekli | `{tenant}`Uygulamanın oturum açmasını denetlemek için isteğin yolundaki değeri kullanabilirsiniz. İzin verilen değerler, `common` , `organizations` `consumers` ve kiracı tanımlayıcılarıdır. Daha fazla bilgi için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints). |
 | `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
-| `response_type` | Gerekli | OpenID `id_token` Connect oturum açma için içermelidir. Ayrıca, gibi diğer `response_type` değerleri de içerebilir. `code` |
+| `response_type` | Gerekli | `id_token`OpenID Connect oturum açma için içermelidir. Ayrıca, gibi diğer değerleri de içerebilir `response_type` `code` . |
 | `redirect_uri` | Önerilen | Uygulamanızın kimlik doğrulama yanıtlarının gönderilebileceği ve alınabileceği, uygulamanızın yeniden yönlendirme URI 'SI. Portalın, URL kodlamalı olması dışında, portala kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. Mevcut değilse, uç nokta, kullanıcıyı öğesine geri göndermek için bir kayıtlı redirect_uri rastgele olarak seçer. |
-| `scope` | Gerekli | Kapsamların boşlukla ayrılmış listesi. OpenID Connect için, izin Kullanıcı arabirimindeki "oturum `openid`aç" iznine çeviren kapsamı içermelidir. Bu istekte izin istemek için diğer kapsamları da dahil edebilirsiniz. |
+| `scope` | Gerekli | Kapsamların boşlukla ayrılmış listesi. OpenID Connect için, `openid` izin Kullanıcı arabirimindeki "oturum aç" iznine çeviren kapsamı içermelidir. Bu istekte izin istemek için diğer kapsamları da dahil edebilirsiniz. |
 | `nonce` | Gerekli | Talep olarak sonuçta elde edilen id_token değerine dahil edilecek, uygulama tarafından oluşturulan, isteğe dahil edilen bir değer. Uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Değer genellikle, isteğin kaynağını belirlemek için kullanılabilecek rastgele, benzersiz bir dizedir. |
-| `response_mode` | Önerilen | Elde edilen yetkilendirme kodunu uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. `form_post` veya `fragment` olabilir. Web uygulamaları için, belirteçlerin uygulamanıza `response_mode=form_post`en güvenli şekilde aktarılmasını sağlamak üzere kullanmanızı öneririz. |
+| `response_mode` | Önerilen | Elde edilen yetkilendirme kodunu uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. `form_post` veya `fragment` olabilir. Web uygulamaları için, `response_mode=form_post` belirteçlerin uygulamanıza en güvenli şekilde aktarılmasını sağlamak üzere kullanmanızı öneririz. |
 | `state` | Önerilen | İstekte bulunan ve belirteç yanıtında de döndürülen bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Genellikle, [siteler arası istek sahteciliği saldırıları engellemek](https://tools.ietf.org/html/rfc6749#section-10.12)için rastgele oluşturulan benzersiz bir değer kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, örneğin, Kullanıcı veya görüntüleme gibi kimlik doğrulama isteği yapılmadan önce kodlamak için de kullanılır. |
-| `prompt` | İsteğe Bağlı | Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler, `login` `none`ve `consent`' dir. `prompt=login` Talep, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve çoklu oturum açma işlemini geçersiz kılar. `prompt=none` Talep, tersidir. Bu talep, kullanıcının ' de etkileşimli bir istem ile sunulmamasını sağlar. İstek çoklu oturum açma yoluyla sessizce tamamlanamayacak, Microsoft Identity platform uç noktası bir hata döndürür. `prompt=consent` Talep, Kullanıcı oturum açtıktan sonra OAuth onay iletişim kutusunu tetikler. İletişim kutusu kullanıcıdan uygulamaya izin vermesini ister. |
-| `login_hint` | İsteğe Bağlı | Bu parametreyi, kullanıcının Kullanıcı adı ve e-posta adresi alanını daha önce biliyorsanız, Kullanıcı için oturum açma sayfasının Kullanıcı adı ve e-posta adresi alanını önceden doldurmanız için kullanabilirsiniz. Uygulamalar genellikle bu parametreyi, `preferred_username` talebi kullanarak daha önceki bir oturum açma işleminden zaten ayıklandıktan sonra yeniden kimlik doğrulama sırasında kullanır. |
+| `prompt` | İsteğe Bağlı | Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler `login` , ve ' dir `none` `consent` . `prompt=login`Talep, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve çoklu oturum açma işlemini geçersiz kılar. `prompt=none`Talep, tersidir. Bu talep, kullanıcının ' de etkileşimli bir istem ile sunulmamasını sağlar. İstek çoklu oturum açma yoluyla sessizce tamamlanamayacak, Microsoft Identity platform uç noktası bir hata döndürür. `prompt=consent`Talep, Kullanıcı oturum açtıktan sonra OAuth onay iletişim kutusunu tetikler. İletişim kutusu kullanıcıdan uygulamaya izin vermesini ister. |
+| `login_hint` | İsteğe Bağlı | Bu parametreyi, kullanıcının Kullanıcı adı ve e-posta adresi alanını daha önce biliyorsanız, Kullanıcı için oturum açma sayfasının Kullanıcı adı ve e-posta adresi alanını önceden doldurmanız için kullanabilirsiniz. Uygulamalar genellikle bu parametreyi, talebi kullanarak daha önceki bir oturum açma işleminden zaten ayıklandıktan sonra yeniden kimlik doğrulama sırasında kullanır `preferred_username` . |
 | `domain_hint` | İsteğe Bağlı | Bir Federasyon dizinindeki kullanıcının bölgesi.  Bu, kullanıcının oturum açma sayfasında, biraz daha kolay bir kullanıcı deneyimi için gittiği e-posta tabanlı bulma işlemini atlar. AD FS gibi şirket içi bir dizin aracılığıyla federe olan kiracılar için, bu genellikle mevcut oturum açma oturumu nedeniyle sorunsuz bir oturum açma ile sonuçlanır. |
 
-Bu noktada kullanıcıdan kimlik bilgilerini girmesi ve kimlik doğrulamasını tamamlaması istenir. Microsoft Identity platform uç noktası, kullanıcının `scope` sorgu parametresinde belirtilen izinlere onay verildiğini doğrular. Kullanıcı bu izinlerden birine onay vermediyse, Microsoft Identity platform uç noktası kullanıcıdan gerekli izinleri vermesini ister. [İzinler, onay ve çok kiracılı uygulamalar](v2-permissions-and-consent.md)hakkında daha fazla bilgi edinebilirsiniz.
+Bu noktada kullanıcıdan kimlik bilgilerini girmesi ve kimlik doğrulamasını tamamlaması istenir. Microsoft Identity platform uç noktası, kullanıcının sorgu parametresinde belirtilen izinlere onay verildiğini doğrular `scope` . Kullanıcı bu izinlerden birine onay vermediyse, Microsoft Identity platform uç noktası kullanıcıdan gerekli izinleri vermesini ister. [İzinler, onay ve çok kiracılı uygulamalar](v2-permissions-and-consent.md)hakkında daha fazla bilgi edinebilirsiniz.
 
-Kullanıcı kimlik doğrulamasından ve onay verdikten sonra, `response_mode` parametrede belirtilen yöntemi kullanarak, belirtilen YENIDEN yönlendirme URI 'sindeki uygulamanıza bir yanıt döndürür.
+Kullanıcı kimlik doğrulamasından ve onay verdikten sonra, parametrede belirtilen yöntemi kullanarak, belirtilen yeniden yönlendirme URI 'sindeki uygulamanıza bir yanıt döndürür `response_mode` .
 
 ### <a name="successful-response"></a>Başarılı yanıt
 
-Kullanırken başarılı bir yanıt şu şekilde `response_mode=form_post` görünür:
+Kullanırken başarılı bir yanıt `response_mode=form_post` Şu şekilde görünür:
 
 ```HTTP
 POST /myapp/ HTTP/1.1
@@ -135,7 +135,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 | Parametre | Açıklama |
 | --- | --- |
-| `id_token` | Uygulamanın istediği KIMLIK belirteci. Kullanıcının kimliğini doğrulamak ve `id_token` kullanıcıyla oturum başlatmak için parametresini kullanabilirsiniz. Kimlik belirteçleri ve içerikleri hakkında daha fazla bilgi için bkz. [ `id_tokens` başvuru](id-tokens.md). |
+| `id_token` | Uygulamanın istediği KIMLIK belirteci. `id_token`Kullanıcının kimliğini doğrulamak ve kullanıcıyla oturum başlatmak için parametresini kullanabilirsiniz. KIMLIK belirteçleri ve içerikleri hakkında daha fazla bilgi için bkz. [ `id_tokens` başvuru](id-tokens.md). |
 | `state` | İsteğe bir `state` parametre dahil ise, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta durum değerlerinin özdeş olduğunu doğrulamalıdır. |
 
 ### <a name="error-response"></a>Hata yanıtı
@@ -157,7 +157,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ### <a name="error-codes-for-authorization-endpoint-errors"></a>Yetkilendirme uç noktası hataları için hata kodları
 
-Aşağıdaki tabloda hata yanıtının `error` parametresinde döndürülebilecek hata kodları açıklanmaktadır:
+Aşağıdaki tabloda hata yanıtının parametresinde döndürülebilecek hata kodları açıklanmaktadır `error` :
 
 | Hata kodu | Açıklama | İstemci eylemi |
 | --- | --- | --- |
@@ -173,13 +173,13 @@ Aşağıdaki tabloda hata yanıtının `error` parametresinde döndürülebilece
 
 Yalnızca id_token almak kullanıcının kimliğini doğrulamak için yeterli değildir; id_token imzasını doğrulamanız ve uygulamanızın gereksinimlerine göre belirteçteki talepleri doğrulamanız gerekir. Microsoft Identity platform uç noktası belirteçleri imzalamak ve bunların geçerli olduğunu doğrulamak için [JSON Web belirteçleri (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) ve ortak anahtar şifrelemesi kullanır.
 
-İstemci kodunda doğrulamayı `id_token` seçebilirsiniz, ancak bunu bir arka uç sunucusuna göndermek `id_token` ve doğrulama yapmak için sık kullanılan bir uygulamadır. İd_token imzasını doğruladıktan sonra, doğrulamanız gereken birkaç talep vardır. [Belirteçleri doğrulama](id-tokens.md#validating-an-id_token) ve [anahtar geçişi imzalama hakkındaki önemli bilgileri](active-directory-signing-key-rollover.md)içeren daha fazla bilgi için [ `id_token` başvuruya](id-tokens.md) bakın. Belirteçleri ayrıştırma ve doğrulama için bir kitaplık kullanmanızı öneririz. çoğu dil ve platform için en az bir kullanılabilir.
+`id_token`İstemci kodunda doğrulamayı seçebilirsiniz, ancak `id_token` bunu bir arka uç sunucusuna göndermek ve doğrulama yapmak için sık kullanılan bir uygulamadır. İd_token imzasını doğruladıktan sonra, doğrulamanız gereken birkaç talep vardır. [Belirteçleri doğrulama](id-tokens.md#validating-an-id_token) ve [anahtar geçişi Imzalama hakkındaki önemli bilgileri](active-directory-signing-key-rollover.md)içeren daha fazla bilgi için [ `id_token` başvuruya](id-tokens.md) bakın. Belirteçleri ayrıştırma ve doğrulama için bir kitaplık kullanmanızı öneririz. çoğu dil ve platform için en az bir kullanılabilir.
 
 Senaryonuza bağlı olarak ek talepler de doğrulamak isteyebilirsiniz. Bazı ortak doğrulamalar şunları içerir:
 
 * Kullanıcı/kuruluşun uygulama için kaydolmasını sağlama.
 * Kullanıcının uygun yetkilere/ayrıcalıklara sahip olmasını sağlama
-* Çok faktörlü kimlik doğrulaması gibi belirli bir kimlik doğrulaması kuvvetinin gerçekleştiği doğrulanıyor.
+* [Çok faktörlü kimlik doğrulaması](../authentication/concept-mfa-howitworks.md)gibi belirli bir kimlik doğrulaması kuvvetinin gerçekleştiği doğrulanıyor.
 
 İd_token doğrulandıktan sonra, Kullanıcı ile oturum başlatabilir ve uygulamanızdaki Kullanıcı hakkında bilgi edinmek için id_token talepleri kullanabilirsiniz. Bu bilgiler, görüntüleme, kayıtlar, kişiselleştirme vb. için kullanılabilir.
 
@@ -187,7 +187,7 @@ Senaryonuza bağlı olarak ek talepler de doğrulamak isteyebilirsiniz. Bazı or
 
 Kullanıcının uygulamanızdan oturumu kapatmak istediğinizde, uygulamanızın tanımlama bilgilerini temizlemek veya Kullanıcı oturumunu sonlandırmak yeterli değildir. Ayrıca oturumu kapatmak için kullanıcıyı Microsoft Identity platform uç noktasına yönlendirmeniz gerekir. Bunu yapmazsanız, Kullanıcı Microsoft Identity platform uç noktasıyla geçerli bir çoklu oturum açma oturumuna sahip olduklarından, kimlik bilgilerini tekrar girmeden uygulamanızı yeniden doğrular.
 
-Kullanıcıyı OpenID Connect meta veri belgesinde `end_session_endpoint` listelenen öğesine yeniden yönlendirebilirsiniz:
+Kullanıcıyı `end_session_endpoint` OpenID Connect meta veri belgesinde listelenen öğesine yeniden yönlendirebilirsiniz:
 
 ```HTTP
 GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
@@ -200,7 +200,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ## <a name="single-sign-out"></a>Çoklu oturum kapatma
 
-Kullanıcıyı uygulamasına yönlendirirseniz `end_session_endpoint`, Microsoft Identity platform uç noktası kullanıcının oturumunu tarayıcıdan temizler. Ancak Kullanıcı, kimlik doğrulaması için Microsoft hesapları kullanan diğer uygulamalarda oturum açmış olabilir. Bu uygulamaların kullanıcı tarafından aynı anda oturum açmasını sağlamak için, Microsoft Identity platform uç noktası, kullanıcının şu anda oturum açmış olduğu tüm `LogoutUrl` uygulamalara KAYıTLı BIR http get isteği gönderir. Uygulamalar, kullanıcıyı tanıtan ve `200` yanıt döndüren tüm oturumları temizleyerek bu isteğe yanıt vermelidir. Uygulamanızda çoklu oturum açmayı desteklemek istiyorsanız, uygulamanızın kodunda böyle bir `LogoutUrl` uygulama uygulamanız gerekir. Uygulamasını uygulama kayıt portalından `LogoutUrl` ayarlayabilirsiniz.
+Kullanıcıyı uygulamasına yönlendirirseniz `end_session_endpoint` , Microsoft Identity platform uç noktası kullanıcının oturumunu tarayıcıdan temizler. Ancak Kullanıcı, kimlik doğrulaması için Microsoft hesapları kullanan diğer uygulamalarda oturum açmış olabilir. Bu uygulamaların kullanıcı tarafından aynı anda oturum açmasını sağlamak için, Microsoft Identity platform uç noktası, `LogoutUrl` kullanıcının şu anda oturum açmış olduğu tüm uygulamalara kayıtlı BIR http get isteği gönderir. Uygulamalar, kullanıcıyı tanıtan ve yanıt döndüren tüm oturumları temizleyerek bu isteğe yanıt vermelidir `200` . Uygulamanızda çoklu oturum açmayı desteklemek istiyorsanız, uygulamanızın kodunda böyle bir uygulama uygulamanız gerekir `LogoutUrl` . `LogoutUrl`Uygulamasını uygulama kayıt portalından ayarlayabilirsiniz.
 
 ## <a name="protocol-diagram-access-token-acquisition"></a>Protokol diyagramı: erişim belirteci alma
 
@@ -229,14 +229,14 @@ https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 ```
 
 > [!TIP]
-> Bu isteği yürütmek için aşağıdaki bağlantıya tıklayın. Oturum açtıktan sonra, tarayıcınız bir KIMLIK belirteci ve adres `https://localhost/myapp/`çubuğundaki bir kodla yeniden yönlendirilir. Bu isteğin yalnızca tanıtım amacıyla `response_mode=fragment` kullandığını unutmayın. Kullanmanızı `response_mode=form_post`öneririz.
+> Bu isteği yürütmek için aşağıdaki bağlantıya tıklayın. Oturum açtıktan sonra, tarayıcınız `https://localhost/myapp/` BIR kimlik belirteci ve adres çubuğundaki bir kodla yeniden yönlendirilir. Bu isteğin `response_mode=fragment` yalnızca tanıtım amacıyla kullandığını unutmayın. Kullanmanızı öneririz `response_mode=form_post` .
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-İstekte izin kapsamları dahil ederek ve kullanarak `response_type=id_token code`, Microsoft Identity platform uç noktası kullanıcının `scope` sorgu parametresinde belirtilen izinlere onay almasını sağlar. Erişim belirteci için, uygulamanıza Exchange 'e bir yetkilendirme kodu döndürür.
+İstekte izin kapsamları dahil ederek ve kullanarak `response_type=id_token code` , Microsoft Identity platform uç noktası kullanıcının sorgu parametresinde belirtilen izinlere onay almasını sağlar `scope` . Erişim belirteci için, uygulamanıza Exchange 'e bir yetkilendirme kodu döndürür.
 
 ### <a name="successful-response"></a>Başarılı yanıt
 
-Kullanarak `response_mode=form_post` başarılı bir yanıt şöyle görünür:
+Kullanarak başarılı bir yanıt `response_mode=form_post` şöyle görünür:
 
 ```HTTP
 POST /myapp/ HTTP/1.1
@@ -248,7 +248,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 | Parametre | Açıklama |
 | --- | --- |
-| `id_token` | Uygulamanın istediği KIMLIK belirteci. KIMLIK belirtecini, kullanıcının kimliğini doğrulamak ve kullanıcıyla oturum başlatmak için kullanabilirsiniz. Kimliğin kimlik belirteçleri ve içerikleri [ `id_tokens` ](id-tokens.md)hakkında daha fazla ayrıntı bulacaksınız. |
+| `id_token` | Uygulamanın istediği KIMLIK belirteci. KIMLIK belirtecini, kullanıcının kimliğini doğrulamak ve kullanıcıyla oturum başlatmak için kullanabilirsiniz. Kimliğin kimlik belirteçleri ve içerikleri hakkında daha fazla ayrıntı [ `id_tokens` bulacaksınız.](id-tokens.md) |
 | `code` | Uygulamanın istediği yetkilendirme kodu. Uygulama, hedef kaynak için bir erişim belirteci istemek üzere yetkilendirme kodunu kullanabilir. Yetkilendirme kodu kısa ömürlü olur. Genellikle, bir yetkilendirme kodunun yaklaşık 10 dakika içinde süresi dolar. |
 | `state` | İsteğe bir durum parametresi dahil edilir, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta durum değerlerinin özdeş olduğunu doğrulamalıdır. |
 

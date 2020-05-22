@@ -8,19 +8,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
+ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: fb33e05eae52ebc0274296b5c18783233e3e8969
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f6b488fc4817e360ed512441f67d2e00356e6134
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657114"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758614"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>Azure Data Factory kullanarak Google bulut depolamadan veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, Google Cloud Storage 'dan verilerin nasıl kopyalanacağı özetlenmektedir. Azure Data Factory hakkında bilgi edinmek için [tanıtım makalesini](introduction.md)okuyun.
+Bu makalede, Google bulut depolamadan (GCS) verilerin nasıl kopyalanacağı özetlenmektedir. Azure Data Factory hakkında bilgi edinmek için [tanıtım makalesini](introduction.md)okuyun.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
@@ -31,27 +31,22 @@ Bu Google Cloud Storage Bağlayıcısı aşağıdaki etkinlikler için desteklen
 - [GetMetadata etkinliği](control-flow-get-metadata-activity.md)
 - [Etkinliği sil](delete-activity.md)
 
-Özellikle, bu Google Cloud Storage Bağlayıcısı, [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs.md)ile dosya kopyalamayı veya dosya ayrıştırmayı destekler.
+Özellikle, bu Google Cloud Storage Bağlayıcısı, [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs.md)ile dosya kopyalamayı veya dosya ayrıştırmayı destekler. GCS 'nin S3 uyumlu birlikte çalışabilirliğiyle yararlanır.
 
->[!NOTE]
->Google Cloud Storage, S3 ile uyumlu birlikte çalışabilirlik sağladığından, Google Cloud Storage 'dan veri kopyalama, karşılık gelen özel S3 uç noktasıyla [Amazon S3 bağlayıcısını](connector-amazon-simple-storage-service.md) kullanır.
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Google Cloud Storage hesabınızda aşağıdaki kurulum gereklidir:
 
 1. Google Cloud Storage hesabınız için birlikte çalışabilirliği etkinleştirin
-2. Kopyalamak istediğiniz verileri içeren varsayılan projeyi ayarlayın
-3. Bir erişim anahtarı oluşturun.
+2. Hedef GCS demetini kopyalamak istediğiniz verileri içeren varsayılan projeyi ayarla
+3. GCP 'de bulut ıAM kullanarak bir hizmet hesabı oluşturun ve doğru izinlerin düzeylerini tanımlayın 
+4. Bu hizmet hesabı için erişim anahtarları oluştur
 
 ![Google Cloud Storage için erişim anahtarını alma](media/connector-google-cloud-storage/google-storage-cloud-settings.png)
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Google Cloud Storage 'dan veri kopyalamak için aşağıdaki izinlerin verildiğinden emin olun:
-
-- **Kopyalama etkinliği yürütmesi için:**: `s3:GetObject` ve `s3:GetObjectVersion` nesne işlemleri için.
-- **Data Factory GUI yazma için**: `s3:ListAllMyBuckets` ve `s3:ListBucket` / `s3:GetBucketLocation` demet işlemleri için, test bağlantısı ve dosya yollarına gitme/gezinme gibi işlemler için ek olarak gereklidir. Bu izni vermek istemiyorsanız, bağlantılı hizmet oluşturma sayfasındaki test bağlantısını atlayın ve yolu doğrudan veri kümesi ayarlarında belirtin.
+Google Cloud Storage 'dan veri kopyalamak için gerekli izinleri vermiş olduğunuzdan emin olun. Hizmet hesabında tanımlanan izinler `storage.buckets.get` , `storage.buckets.list` nesne işlemleri için,, içerebilir `storage.objects.get` .
 
 ## <a name="getting-started"></a>Başlarken
 
@@ -68,8 +63,8 @@ Google Cloud Storage bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | tür | Type özelliği **GoogleCloudStorage**olarak ayarlanmalıdır. | Yes |
 | Accesskeyıd | Gizli dizi erişim anahtarının KIMLIĞI. Erişim anahtarını ve gizli anahtarı bulmak için bkz. [Önkoşullar](#prerequisites). |Yes |
 | secretAccessKey | Gizli dizi erişim anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Yes |
-| serviceUrl | Özel S3 uç noktasını olarak belirtin **`https://storage.googleapis.com`** . | Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| serviceUrl | Özel GCS uç noktasını olarak belirtin **`https://storage.googleapis.com`** . | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
 
 Örnek aşağıda verilmiştir:
 
@@ -102,10 +97,10 @@ Aşağıdaki özellikler, `location` Biçim tabanlı veri kümesindeki ayarlar a
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
-| tür       | DataSet içinde Type özelliği `location` **AmazonS3Location**olarak ayarlanmalıdır. | Yes      |
-| bucketName | S3 demet adı.                                          | Yes      |
-| folderPath | Verilen demet altındaki klasörün yolu. Klasörü filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
-| fileName   | Belirtilen demet + folderPath altındaki dosya adı. Dosyaları filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
+| tür       | DataSet içinde Type özelliği `location` **GoogleCloudStorageLocation**olarak ayarlanmalıdır. | Yes      |
+| bucketName | GCS demet adı.                                          | Yes      |
+| folderPath | Verilen demet altındaki klasörün yolu. Klasörü filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | No       |
+| fileName   | Belirtilen demet + folderPath altındaki dosya adı. Dosyaları filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | No       |
 
 **Örneğinde**
 
@@ -121,7 +116,7 @@ Aşağıdaki özellikler, `location` Biçim tabanlı veri kümesindeki ayarlar a
         "schema": [ < physical schema, optional, auto retrieved during authoring > ],
         "typeProperties": {
             "location": {
-                "type": "AmazonS3Location",
+                "type": "GoogleCloudStorageLocation",
                 "bucketName": "bucketname",
                 "folderPath": "folder/subfolder"
             },
@@ -146,17 +141,18 @@ Aşağıdaki özellikler, `storeSettings` Biçim tabanlı kopyalama kaynağı ay
 
 | Özellik                 | Açıklama                                                  | Gerekli                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| tür                     | İçindeki tür özelliği `storeSettings` **AmazonS3ReadSettings**olarak ayarlanmalıdır. | Yes                                                         |
+| tür                     | İçindeki tür özelliği `storeSettings` **GoogleCloudStorageReadSettings**olarak ayarlanmalıdır. | Yes                                                         |
 | ***Kopyalanacak dosyaları bulun:*** |  |  |
 | SEÇENEK 1: statik yol<br> | Veri kümesinde belirtilen belirli bir demet veya klasör/dosya yolundan kopyalama. Bir demet/klasörden tüm dosyaları kopyalamak istiyorsanız, ayrıca olarak öğesini belirtin `wildcardFileName` `*` . |  |
-| Seçenek 2: joker karakter<br>-Yavaya Cardfolderpath | Kaynak klasörleri filtrelemek için veri kümesinde yapılandırılan belirtilen demet altında joker karakter olan klasör yolu. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Hayır                                            |
-| Seçenek 2: joker karakter<br>-Yavaya Cardfilename | Kaynak dosyalarını filtrelemek için, belirtilen demet + folderPath/, Cardfolderpath altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.  [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Yes |
-| Seçenek 3: dosya listesi<br>-fileListPath | Belirli bir dosya kümesinin kopyalanıp ayrılmadığını gösterir. Veri kümesinde yapılandırılan yolun göreli yolu olan, kopyalamak istediğiniz dosyaların listesini içeren bir metin dosyası üzerine gelin.<br/>Bu seçeneği kullanırken, veri kümesinde dosya adı belirtmeyin. [Dosya listesi örneklerinde](#file-list-examples)daha fazla örneğe bakın. |Hayır |
+| Seçenek 2: GCS ön eki<br>-önek | Kaynak GCS dosyalarını filtrelemek için veri kümesinde yapılandırılan belirtilen demet altındaki GCS anahtar adının öneki. Adı ile başlayan GCS anahtarları `bucket_in_dataset/this_prefix` seçilidir. Bu, joker karakter filtresinden daha iyi performans sağlayan, GCS 'nin hizmet tarafı filtresini kullanır. | No |
+| Seçenek 3: joker karakter<br>-Yavaya Cardfolderpath | Kaynak klasörleri filtrelemek için veri kümesinde yapılandırılan belirtilen demet altında joker karakter olan klasör yolu. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | No                                            |
+| Seçenek 3: joker karakter<br>-Yavaya Cardfilename | Kaynak dosyalarını filtrelemek için, belirtilen demet + folderPath/, Cardfolderpath altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.  [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Yes |
+| Seçenek 3: dosya listesi<br>-fileListPath | Belirli bir dosya kümesinin kopyalanıp ayrılmadığını gösterir. Veri kümesinde yapılandırılan yolun göreli yolu olan, kopyalamak istediğiniz dosyaların listesini içeren bir metin dosyası üzerine gelin.<br/>Bu seçeneği kullanırken, veri kümesinde dosya adı belirtmeyin. [Dosya listesi örneklerinde](#file-list-examples)daha fazla örneğe bakın. |No |
 | ***Ek ayarlar:*** |  | |
-| öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri true olarak ayarlandığında ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın. <br>İzin verilen değerler **true** (varsayılan) ve **false**şeklindedir.<br>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . |Hayır |
-| modifiedDatetimeStart    | Öznitelikleri temel alan dosya filtresi: son değiştirme. <br>Son değiştirilme zamanı ve arasındaki zaman aralığı içinde ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmayacak anlamına gelir.  `modifiedDatetimeStart`Tarih saat değeri olduğunda ancak `modifiedDatetimeEnd` null olduğunda, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  `modifiedDatetimeEnd`Tarih saat değeri olduğunda ancak `modifiedDatetimeStart` null olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.<br/>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . | Hayır                                            |
-| modifiedDatetimeEnd      | Yukarıdaki gibi.                                               | Hayır                                                          |
-| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır                                                          |
+| öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri true olarak ayarlandığında ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın. <br>İzin verilen değerler **true** (varsayılan) ve **false**şeklindedir.<br>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . |No |
+| modifiedDatetimeStart    | Öznitelikleri temel alan dosya filtresi: son değiştirme. <br>Son değiştirilme zamanı ve arasındaki zaman aralığı içinde ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmayacak anlamına gelir.  `modifiedDatetimeStart`Tarih saat değeri olduğunda ancak `modifiedDatetimeEnd` null olduğunda, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  `modifiedDatetimeEnd`Tarih saat değeri olduğunda ancak `modifiedDatetimeStart` null olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.<br/>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . | No                                            |
+| modifiedDatetimeEnd      | Yukarıdaki gibi.                                               | No                                                          |
+| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | No                                                          |
 
 **Örneğinde**
 
@@ -185,7 +181,7 @@ Aşağıdaki özellikler, `storeSettings` Biçim tabanlı kopyalama kaynağı ay
                     "skipLineCount": 10
                 },
                 "storeSettings":{
-                    "type": "AmazonS3ReadSettings",
+                    "type": "GoogleCloudStorageReadSettings",
                     "recursive": true,
                     "wildcardFolderPath": "myfolder*A",
                     "wildcardFileName": "*.csv"
@@ -234,95 +230,7 @@ Aşağıdaki kaynak klasör yapısına sahip olduğunuz ve dosyaları kalın yaz
 
 ## <a name="legacy-models"></a>Eski modeller
 
->[!NOTE]
->Geriye dönük uyumluluk için aşağıdaki modeller hala desteklenmektedir. Yukarıdaki bölümlerde bahsedilen yeni modeli kullanmanız önerilir ve ADF yazma Kullanıcı arabirimi yeni modeli oluşturmaya geçti.
-
-### <a name="legacy-dataset-model"></a>Eski veri kümesi modeli
-
-| Özellik | Açıklama | Gerekli |
-|:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **AmazonS3Object** olarak ayarlanmalıdır |Yes |
-| bucketName | S3 demet adı. Joker karakter filtresi desteklenmiyor. |Kopyala/ara etkinliği için Evet, GetMetadata etkinliği için Hayır |
-| key | Belirtilen demet altındaki S3 nesne anahtarının **adı veya joker karakter filtresi** . Yalnızca "önek" özelliği belirtilmediğinde geçerlidir. <br/><br/>Joker karakter filtresi, hem klasör bölümü hem de dosya adı bölümü için desteklenir. İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir).<br/>-Örnek 1:`"key": "rootfolder/subfolder/*.csv"`<br/>-Örnek 2:`"key": "rootfolder/subfolder/???20180427.txt"`<br/>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. `^`Gerçek klasörünüz/dosya adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. |Hayır |
-| koy | S3 nesne anahtarı için ön ek. Anahtarları bu önek ile başlayan nesneler seçilidir. Yalnızca "Key" özelliği belirtilmediğinde geçerlidir. |Hayır |
-| sürüm | S3 sürümü etkinse S3 nesnesinin sürümü. |Hayır |
-| modifiedDatetimeStart | Öznitelikleri temel alan dosya filtresi: son değiştirme. Son değiştirilme zamanı ve arasındaki zaman aralığı içinde ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br/><br/> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmayacak anlamına gelir.  `modifiedDatetimeStart`Tarih saat değeri olduğunda ancak `modifiedDatetimeEnd` null olduğunda, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  `modifiedDatetimeEnd`Tarih saat değeri olduğunda ancak `modifiedDatetimeStart` null olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.| Hayır |
-| modifiedDatetimeEnd | Öznitelikleri temel alan dosya filtresi: son değiştirme. Son değiştirilme zamanı ve arasındaki zaman aralığı içinde ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br/><br/> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmayacak anlamına gelir.  `modifiedDatetimeStart`Tarih saat değeri olduğunda ancak `modifiedDatetimeEnd` null olduğunda, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  `modifiedDatetimeEnd`Tarih saat değeri olduğunda ancak `modifiedDatetimeStart` null olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.| Hayır |
-| biçim | Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın.<br/><br/>Belirli bir biçimdeki dosyaları ayrıştırmak veya oluşturmak isterseniz, aşağıdaki dosya biçimi türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON biçimi](supported-file-formats-and-compression-codecs-legacy.md#json-format), [avro Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [orc biçimi](supported-file-formats-and-compression-codecs-legacy.md#orc-format)ve [Parquet biçim](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) bölümleri. |Hayır (yalnızca ikili kopya senaryosu için) |
-| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Daha fazla bilgi için bkz. [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**.<br/>Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. |Hayır |
-
->[!TIP]
->Bir klasörün altındaki tüm dosyaları kopyalamak için, for Bucket için **bucketName** ve klasör bölümü için **önek** belirtin.<br>Belirli bir ada sahip tek bir dosyayı kopyalamak için, Aralık için **bucketName** ve klasör bölümü artı dosya adı için **anahtar** belirtin.<br>Bir klasörün altına bir dosya alt kümesini kopyalamak için, Bucket için **bucketName** ve klasör bölümü artı joker karakter filtresi için **anahtar** belirtin.
-
-**Örnek: Using öneki**
-
-```json
-{
-    "name": "GoogleCloudStorageDataset",
-    "properties": {
-        "type": "AmazonS3Object",
-        "linkedServiceName": {
-            "referenceName": "<linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "bucketName": "testbucket",
-            "prefix": "testFolder/test",
-            "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
-            "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
-            "format": {
-                "type": "TextFormat",
-                "columnDelimiter": ",",
-                "rowDelimiter": "\n"
-            },
-            "compression": {
-                "type": "GZip",
-                "level": "Optimal"
-            }
-        }
-    }
-}
-```
-
-### <a name="legacy-copy-activity-source-model"></a>Eski kopyalama etkinliği kaynak modeli
-
-| Özellik | Açıklama | Gerekli |
-|:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Filesystemsource** olarak ayarlanmalıdır |Yes |
-| öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri true olarak ayarlandığında ve havuz dosya tabanlı depo ise, boş klasör/alt klasör, havuzda kopyalanmayacak/oluşturulmaz.<br/>İzin verilen değerler: **true** (varsayılan), **false** | Hayır |
-| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır |
-
-**Örneğinde**
-
-```json
-"activities":[
-    {
-        "name": "CopyFromGoogleCloudStorage",
-        "type": "Copy",
-        "inputs": [
-            {
-                "referenceName": "<input dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "outputs": [
-            {
-                "referenceName": "<output dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "typeProperties": {
-            "source": {
-                "type": "FileSystemSource",
-                "recursive": true
-            },
-            "sink": {
-                "type": "<sink type>"
-            }
-        }
-    }
-]
-```
+Google bulut depolamadan veri kopyalamak için Amazon S3 bağlayıcısını kullanıyorsanız, geriye dönük uyumluluk için olduğu gibi hala desteklenmektedir. Yukarıdaki bölümlerde bahsedilen yeni modeli kullanmanız önerilir ve ADF yazma Kullanıcı arabirimi yeni modeli oluşturmaya geçti.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

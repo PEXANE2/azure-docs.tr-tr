@@ -3,7 +3,7 @@ title: Örnek havuzları (Önizleme)
 description: Bu makalede Azure SQL veritabanı örnek havuzları (Önizleme) açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a418972b78750dbed90f0148aac45dbcc2617f8e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878162"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773092"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>SQL veritabanı örnek havuzları (Önizleme) nedir?
 
@@ -31,7 +31,7 @@ Ayrıca, örnek havuzlar aynı alt ağda birden çok örnek havuzu ve birden ço
 
 Örnek havuzlar aşağıdaki avantajları sağlar:
 
-1. 2 sanal çekirdek örnekleri barındırma özelliği. *Yalnızca örnek havuzlardaki örnekler için. \**
+1. 2 sanal çekirdek örnekleri barındırma özelliği. * \* Yalnızca örnek havuzlardaki örnekler için*.
 2. Öngörülebilir ve hızlı örnek dağıtım süresi (5 dakikaya kadar).
 3. En az IP adresi ayırması.
 
@@ -59,7 +59,7 @@ Aşağıdaki listede, örnek havuzlarının göz önünde bulundurulması gereke
 
 ## <a name="architecture-of-instance-pools"></a>Örnek havuzlarının mimarisi
 
-Örnek havuzlarının normal yönetilen örneklere benzer mimarisi vardır (*tek örnekler*).   [Azure sanal ağları (VNet) içindeki dağıtımları](../virtual-network/virtual-network-for-azure-services.md)desteklemek ve müşterilere yalıtım ve güvenlik sağlamak için, örnek havuzları [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)da güvenir. Sanal kümeler, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eder.
+Örnek havuzlarının normal yönetilen örneklere benzer mimarisi vardır (*tek örnekler*).  [Azure sanal ağları (VNet) içindeki dağıtımları](../virtual-network/virtual-network-for-azure-services.md)desteklemek   ve müşterilere yalıtım ve güvenlik sağlamak için, örnek havuzları [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)da güvenir. Sanal kümeler, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eder.
 
 İki dağıtım modeli arasındaki temel fark, örnek havuzların [Windows Iş nesneleri](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)kullanılarak yönetilen aynı sanal makine düğümünde birden çok SQL Server işlem dağıtımına izin verişleridir, tek örnekler her zaman bir sanal makine düğümünde yer alır.
 
@@ -112,7 +112,7 @@ Belirli değerleri (örneğin, örnek düzeyi harmanlama, saat dilimi, veri traf
 
 Havuzlardaki yönetilen örneklerin ayrılmış sanal çekirdek ve RAM 'i olsa da, yerel disk (tempdb kullanımı için) ve ağ kaynakları paylaşır. Büyük olasılıkla, havuzda birden çok örnek aynı anda yüksek kaynak tüketimine sahip olursa *gürültülü komşu* efektini denemek mümkündür. Bu davranışı gözlemlerseniz, bu örnekleri daha büyük bir havuza veya tek örnek olarak dağıtmaya göz önünde bulundurun.
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Bir havuzda dağıtılan örnekler aynı sanal makineyi paylaştığından, daha yüksek güvenlik riskleri sunan özellikleri devre dışı bırakmayı veya bu özelliklere yönelik erişim izinlerini güvenli bir şekilde kontrol etmek isteyebilirsiniz. Örneğin, CLR tümleştirmesi, yerel yedekleme ve geri yükleme, veritabanı e-postası vb.
 

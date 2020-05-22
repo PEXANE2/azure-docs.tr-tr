@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672643"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771205"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Birincil yenileme belirteci nedir?
 
@@ -39,7 +39,7 @@ Aşağıdaki Windows bileşenleri, bir PRT isteğinde ve kullanarak bir anahtar 
 
 Bir PRT, genellikle herhangi bir Azure AD yenileme belirtecinde bulunan talepleri içerir. Ayrıca, PRT 'ye dahil edilen cihaza özgü bazı talepler vardır. Bunlar şu şekildedir:
 
-* **CIHAZ kimliği**: belirli bir cihazdaki bir kullanıcıya bir prt verilir. Cihaz KIMLIĞI talebi `deviceID` , prt 'nin kullanıcıya verildiği aygıtı belirler. Bu talep daha sonra PRT aracılığıyla elde edilen belirteçlere verilir. Cihaz KIMLIĞI talebi, cihaz durumu veya uyumluluğuna göre koşullu erişim için Yetkilendirmeyi belirlemede kullanılır.
+* **CIHAZ kimliği**: belirli bir cihazdaki bir kullanıcıya bir prt verilir. Cihaz KIMLIĞI talebi, `deviceID` PRT 'nin kullanıcıya verildiği aygıtı belirler. Bu talep daha sonra PRT aracılığıyla elde edilen belirteçlere verilir. Cihaz KIMLIĞI talebi, cihaz durumu veya uyumluluğuna göre koşullu erişim için Yetkilendirmeyi belirlemede kullanılır.
 * **Oturum anahtarı**: oturum anahtarı, prt 'nin bir parçası olarak VERILEN Azure AD kimlik doğrulama hizmeti tarafından oluşturulan şifreli bir simetrik anahtardır. Oturum anahtarı, diğer uygulamalar için belirteçleri elde etmek üzere bir PRT kullanıldığında, sahip olma kanıtı olarak davranır.
 
 ### <a name="can-i-see-whats-in-a-prt"></a>Bir PRT 'de ne olduğunu görebilir miyim?
@@ -60,7 +60,7 @@ PRT, bir Windows 10 cihazında Kullanıcı kimlik doğrulaması sırasında iki 
 * **Azure AD 'ye katılmış** veya **karma Azure AD 'ye katılmış**: bir Kullanıcı, kuruluş kimlik bilgileriyle oturum açtığında Windows oturum açma sırasında bir prt verilir. Windows 10 tarafından desteklenen tüm kimlik bilgileriyle (örneğin, parola ve Iş için Windows Hello) bir PRT verilir. Bu senaryoda, PRT için birincil yetkiliniz olan Azure AD CloudAP eklentisi.
 * **Azure AD kayıtlı cihazı**: bir Kullanıcı Windows 10 cihazına ikincil iş hesabı eklediğinde bir prt verilir. Kullanıcılar, Windows 10 ' a bir hesabı iki farklı şekilde ekleyebilir.  
    * Bir uygulamada oturum açtıktan sonra bu **cihaz isteminde bu hesabı her yerde kullan** hesabı ekleme (örneğin, Outlook)
-   * **Ayarlar** > **Accounts**hesaplarından > hesap ekleme**iş veya okul** > **Connect 'e** erişin
+   * Ayarlar hesaplarından hesap ekleme **Settings**  >  **Accounts**  >  **iş veya okul**  >  **Connect 'e** erişin
 
 Azure AD kayıtlı cihaz senaryolarında, Azure AD WAM eklentisi, bu Azure AD hesabında Windows oturum açma işlemi gerçekleşmediği için PRT 'in birincil yetkilisindir.
 
@@ -76,7 +76,7 @@ Verildikten sonra, bir PRT 14 gün boyunca geçerlidir ve Kullanıcı cihazı et
 Bir PRT, Windows 'da iki anahtar bileşeni tarafından kullanılır:
 
 * **Azure AD CloudAP eklentisi**: Windows oturum açma sırasında Azure AD cloudap eklentisi, Kullanıcı tarafından belirtilen kimlik bilgilerini kullanarak Azure AD 'den bir prt ister. Ayrıca, kullanıcının bir internet bağlantısına erişimi olmadığında önbelleğe alınmış oturum açma özelliğini etkinleştirmek için PRT 'yi önbelleğe alır.
-* **Azure AD WAM eklentisi**: kullanıcılar uygulamalara erişmeye çalıştığında, Azure AD WAM eklentisi Windows 10 ' da SSO 'yu etkinleştirmek için prt 'yi kullanır. Azure AD WAM eklentisi, belirteç istekleri için WAM 'yi kullanan uygulamalar için yenileme ve erişim belirteçleri istemek üzere PRT 'yi kullanır. Ayrıca, tarayıcılarda SSO 'yu tarayıcı isteklerine ekleme tarafından da sunar. Windows 10 ' da tarayıcı SSO 'SU, Microsoft Edge (yerel olarak) ve Chrome (Windows 10 hesapları veya Office Online uzantısı aracılığıyla) üzerinde desteklenir.
+* **Azure AD WAM eklentisi**: kullanıcılar uygulamalara erişmeye çalıştığında, Azure AD WAM eklentisi Windows 10 ' da SSO 'yu etkinleştirmek için prt 'yi kullanır. Azure AD WAM eklentisi, belirteç istekleri için WAM 'yi kullanan uygulamalar için yenileme ve erişim belirteçleri istemek üzere PRT 'yi kullanır. Ayrıca, tarayıcılarda SSO 'yu tarayıcı isteklerine ekleme tarafından da sunar. Windows 10 ' da tarayıcı SSO 'SU, Microsoft Edge (yerel olarak) ve Chrome ( [Windows 10 hesapları](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) veya [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) uzantıları aracılığıyla) üzerinde desteklenir.
 
 ## <a name="how-is-a-prt-renewed"></a>PRT nasıl yenilenir?
 

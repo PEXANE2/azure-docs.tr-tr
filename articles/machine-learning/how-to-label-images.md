@@ -7,14 +7,14 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 1a928726665a743cb874a2f8a51ee63fcf64d9ad
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 22b77b79ea3f8c6744c2eba064c52e6d9e29c2b9
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007533"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758920"
 ---
-# <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme
+# <a name="tag-images-in-a-labeling-project-preview"></a>Etiketleme projesindeki resimleri etiketleme (Önizleme)
 
 Proje yöneticiniz Azure Machine Learning [bir etiketleme projesi](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) oluşturduktan sonra etiketleme aracını (Genel Önizleme) kullanarak bir Machine Learning projesi için hızlı bir şekilde veri hazırlayabilir. Bu makalede şunları açıklanmaktadır:
 
@@ -105,7 +105,7 @@ Azure yalnızca, her görüntüye en az bir etiket uyguladıktan sonra **Gönder
 Projeniz "nesne kimliği (sınırlayıcı kutular)" türündedir, görüntüde bir veya daha fazla sınırlayıcı kutu belirtip her kutuya bir etiket uygularsınız. Görüntülerde, her biri tek etiketli birden çok sınırlayıcı kutusu olabilir. Projenizde birden fazla sınırlayıcı kutunun kullanıldığını öğrenmek için **ayrıntılı yönergeleri görüntüle** ' i kullanın.
 
 1. Oluşturmayı planladığınız sınırlama kutusu için bir etiket seçin.
-1. **Dikdörtgen kutu** aracı ![dikdörtgen kutusu aracını](./media/how-to-label-images/rectangular-box-tool.png) seçin veya "R" seçeneğini belirleyin.
+1. **Dikdörtgen kutu** aracı ![ dikdörtgen kutusu aracını seçin ](./media/how-to-label-images/rectangular-box-tool.png) veya "R" seçeneğini belirleyin.
 3. Kaba bir sınırlayıcı kutu oluşturmak için, Hedefinizdeki çapraz doğrultuda tıklayın ve sürükleyin. Sınırlayıcı kutuyu ayarlamak için kenarları veya köşeleri sürükleyin.
 
 ![Bir ekran görüntüsü temel sınırlayıcı kutusu oluşturmayı gösterir.](./media/how-to-label-images/bounding-box-sequence.png)
@@ -114,13 +114,13 @@ Bir sınırlayıcı kutuyu silmek için, oluşturulduktan sonra sınırlayıcı 
 
 Varolan bir sınırlayıcı kutunun etiketini değiştiremezsiniz. Etiket atama hatası yaparsanız, sınırlayıcı kutuyu silmeniz ve doğru etiketle yeni bir tane oluşturmanız gerekir.
 
-Varsayılan olarak, varolan sınırlayıcı kutuları düzenleyebilirsiniz. **Kilitleme/kilit açma bölgesi** aracı ![kilitleme/kilit açma bölgesi](./media/how-to-label-images/lock-bounding-boxes-tool.png) aracı veya "L" Bu davranışa geçiş yapar. Bölgeler kilitliyse, yalnızca yeni bir sınırlayıcı kutunun şeklini veya konumunu değiştirebilirsiniz.
+Varsayılan olarak, varolan sınırlayıcı kutuları düzenleyebilirsiniz. **Kilitleme/kilit açma bölgesi** aracı ![ kilitleme/kilit açma bölgesi aracı ](./media/how-to-label-images/lock-bounding-boxes-tool.png) veya "L" Bu davranışa geçiş yapar. Bölgeler kilitliyse, yalnızca yeni bir sınırlayıcı kutunun şeklini veya konumunu değiştirebilirsiniz.
 
-Mevcut bir sınırlayıcı kutuyu ayarlamak ![için **bölge işleme** aracı bölgeleri Işleme aracını](./media/how-to-label-images/regions-tool.png) veya "d" kullanın. Şekli ayarlamak için kenarları veya köşeleri sürükleyin. Tüm sınırlayıcı kutusunu sürüklemek için iç öğesine tıklayın. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz.
+**Regions manipulation** ![ ](./media/how-to-label-images/regions-tool.png) Mevcut bir sınırlayıcı kutuyu ayarlamak için bölge işleme aracı bölgeleri Işleme aracını veya "d" kullanın. Şekli ayarlamak için kenarları veya köşeleri sürükleyin. Tüm sınırlayıcı kutusunu sürüklemek için iç öğesine tıklayın. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz.
 
-Aynı boyutta birden fazla sınırlayıcı kutu oluşturmak için **şablon tabanlı kutu** aracı ![şablon kutusu aracını](./media/how-to-label-images/template-box-tool.png) veya "T" kullanın. Görüntüde hiçbir sınırlayıcı kutu yoksa ve şablon tabanlı kutuları etkinleştirirseniz, araç 50-50 piksel kutu üretir. Bir sınırlayıcı kutusu oluşturup şablon tabanlı kutuları etkinleştirirseniz, yeni sınırlama kutuları oluşturduğunuz son kutunun boyutu olur. Şablon tabanlı kutular, yerleştirme sonrasında yeniden boyutlandırılabilir. Şablon tabanlı bir kutunun yeniden boyutlandırılması yalnızca belirli bir kutuyu yeniden boyutlandırır.
+**Template-based box** ![ ](./media/how-to-label-images/template-box-tool.png) Aynı boyutta birden fazla sınırlayıcı kutu oluşturmak için şablon tabanlı kutu aracı şablon kutusu aracını veya "T" kullanın. Görüntüde hiçbir sınırlayıcı kutu yoksa ve şablon tabanlı kutuları etkinleştirirseniz, araç 50-50 piksel kutu üretir. Bir sınırlayıcı kutusu oluşturup şablon tabanlı kutuları etkinleştirirseniz, yeni sınırlama kutuları oluşturduğunuz son kutunun boyutu olur. Şablon tabanlı kutular, yerleştirme sonrasında yeniden boyutlandırılabilir. Şablon tabanlı bir kutunun yeniden boyutlandırılması yalnızca belirli bir kutuyu yeniden boyutlandırır.
 
-Geçerli görüntüdeki *Tüm* sınırlayıcı kutuları silmek için **tüm bölgeleri Sil** araç ![bölgelerini Sil aracını](./media/how-to-label-images/delete-regions-tool.png)seçin.
+Geçerli görüntüdeki *Tüm* sınırlayıcı kutuları silmek için **tüm bölgeleri Sil** araç ![ bölgelerini Sil aracını seçin ](./media/how-to-label-images/delete-regions-tool.png) .
 
 Bir görüntü için sınırlayıcı kutuları oluşturduktan sonra, çalışmanızı kaydetmek için **Gönder** ' i seçin veya sürmekte olan çalışmanız kaydedilmez.
 

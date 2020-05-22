@@ -3,7 +3,7 @@ title: Yönetilen örnekler hakkında SSS
 description: SQL veritabanı yönetilen örnek hakkında sık sorulan sorular (SSS)
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 99fbda6f6d5e8fc88f9f4f34c6e194412a120057
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 3ffa4bc905a08c1757865db7bab828193ff3c7ea
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598520"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770151"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL veritabanı yönetilen örnek hakkında sık sorulan sorular (SSS)
 
@@ -76,7 +76,7 @@ Varsayılan yerine başka bir DNS bölgesi kullanmak için, örneğin *. contoso
 
 Veritabanındaki tüm tablolarda birincil anahtarlar varsa işlemsel çoğaltma kullanılabilir.
 
-Yönetilen `COPY_ONLY` örnekten alınan yerel yedeklemeler, SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan SQL Server geri yüklenemez.
+Yönetilen örnekten `COPY_ONLY` alınan yerel yedeklemeler, SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan SQL Server geri yüklenemez.
 
 ## <a name="migrate-instance-db"></a>Örnek DB 'yi geçirme
 
@@ -129,7 +129,7 @@ Hayır, yedekleme depolama alanı yönetilen örnek depolama alanından kesilmiy
 
 Bunu [Azure maliyet yönetimi çözümünü](/azure/cost-management/)kullanarak yapabilirsiniz. [Azure Portal](https://portal.azure.com) **abonelikler** ' e gidin ve **Maliyet Analizi**' ni seçin. 
 
-**Birikmiş maliyetler** seçeneğini kullanın ve ardından **kaynak türüne** göre filtreleyin `microsoft.sql/managedinstances`. 
+**Birikmiş maliyetler** seçeneğini kullanın ve ardından **kaynak türüne** göre filtreleyin `microsoft.sql/managedinstances` . 
   
 ## <a name="inbound-nsg-rules"></a>Gelen NSG kuralları
 

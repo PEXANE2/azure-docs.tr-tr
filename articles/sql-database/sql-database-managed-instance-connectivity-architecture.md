@@ -3,7 +3,7 @@ title: Yönetilen örnek için bağlantı mimarisi
 description: Azure SQL veritabanı yönetilen örneği iletişimi ve bağlantı mimarisi hakkında bilgi edinin ve bileşenlerin yönetilen örneğe trafiği nasıl yönlendirmiş olduğunu öğrenin.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f341c3c2c299ca358b2a42210f04c6399fe2892
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677162"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773611"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL veritabanı 'nda yönetilen bir örnek için bağlantı mimarisi
 
@@ -66,7 +66,7 @@ Yönetilen örnekler için bağlantı mimarisine daha ayrıntılı bir şekilde 
 
 ![Sanal kümenin bağlantı mimarisi](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-İstemciler, form `<mi_name>.<dns_zone>.database.windows.net`içeren bir ana bilgisayar adı kullanarak yönetilen bir örneğe bağlanır. Bu ana bilgisayar adı, ortak bir etki alanı adı sistemi (DNS) bölgesinde kayıtlı ve genel olarak çözümlenebildiği halde özel bir IP adresi olarak çözümlenir. , `zone-id` Kümeyi oluşturduğunuzda otomatik olarak oluşturulur. Yeni oluşturulan bir küme, ikincil yönetilen bir örnek barındırıyorsa, birincil kümeyle bölge KIMLIĞINI paylaşır. Daha fazla bilgi için bkz. [otomatik yük devretme gruplarını kullanarak birden çok veritabanının saydam ve eşgüdümlü yük devretmesini etkinleştirme](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
+İstemciler, form içeren bir ana bilgisayar adı kullanarak yönetilen bir örneğe bağlanır `<mi_name>.<dns_zone>.database.windows.net` . Bu ana bilgisayar adı, ortak bir etki alanı adı sistemi (DNS) bölgesinde kayıtlı ve genel olarak çözümlenebildiği halde özel bir IP adresi olarak çözümlenir. , `zone-id` Kümeyi oluşturduğunuzda otomatik olarak oluşturulur. Yeni oluşturulan bir küme, ikincil yönetilen bir örnek barındırıyorsa, birincil kümeyle bölge KIMLIĞINI paylaşır. Daha fazla bilgi için bkz. [otomatik yük devretme gruplarını kullanarak birden çok veritabanının saydam ve eşgüdümlü yük devretmesini etkinleştirme](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Bu özel IP adresi, yönetilen örneğin iç yük dengeleyicisine aittir. Yük dengeleyici, trafiği yönetilen örneğin ağ geçidine yönlendirir. Aynı küme içinde birden çok yönetilen örnek çalıştırılabildiğinden ağ geçidi, trafiği doğru SQL altyapısı hizmetine yönlendirmek için yönetilen örneğin ana bilgisayar adını kullanır.
 
@@ -83,28 +83,28 @@ Bağlantılar yönetilen örnek içinde (yedeklemeler ve denetim günlükleri gi
 
 ## <a name="service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması
 
-Müşteri güvenliğine ve yönetilebilirlik gereksinimlerine yönelik olarak yönetilen örnek, el ile hizmet destekli alt ağ yapılandırmasına geçiyor.
+Yönetilen Örnek, müşteri güvenlik ve yönetilebilirlik gereksinimlerini karşılamak için el ile yapılandırmadan hizmet destekli alt ağ yapılandırmasına geçmektedir.
 
-Hizmet destekli alt ağ yapılandırması kullanıcısı, yönetilen örnek, SLA 'yı karşılamak için yönetim trafiğinin kesintisiz akışını güvence altına aldığından, veri (TDS) trafiği üzerinde tam denetime sahip olur.
+Hizmet destekli alt ağ yapılandırması sayesinde kullanıcı veri (TDS) trafiği üzerinde tam denetim sahibi olurken yönetim trafiğinin SLA'ya uygun şekilde kesintisiz bir şekilde yönetilmesi Yönetilen Örneğin sorumluluğunda olur.
 
-Hizmet destekli alt ağ yapılandırması, otomatik ağ yapılandırma yönetimi sağlamak ve hizmet uç noktalarını etkinleştirmek için sanal ağ [alt ağı temsili](../virtual-network/subnet-delegation-overview.md) özelliğinin en üstünde oluşturulur. Hizmet uç noktaları, yedeklemeleri/denetim günlüklerini tutan depolama hesaplarında sanal ağ güvenlik duvarı kurallarını yapılandırmak için kullanılabilir.
+Hizmet destekli alt ağ yapılandırması, otomatik ağ yapılandırması yönetimi sağlamak ve hizmet uç noktalarını etkinleştirmek için sanal ağ [alt ağ temsili](../virtual-network/subnet-delegation-overview.md) özelliğinden faydalanır. Hizmet uç noktaları, yedeklemeleri/denetim günlüklerini tutan depolama hesaplarında sanal ağ güvenlik duvarı kuralları yapılandırmak için kullanılabilir.
 
 ### <a name="network-requirements"></a>Ağ gereksinimleri 
 
-Yönetilen bir örneği sanal ağın içindeki ayrılmış bir alt ağda dağıtın. Alt ağ şu özelliklere sahip olmalıdır:
+Yönetilen örneği sanal ağ içindeki ayrılmış bir alt ağa dağıtın. Alt ağ şu özelliklere sahip olmalıdır:
 
-- **Ayrılmış alt ağ:** Yönetilen örneğin alt ağı kendisiyle ilişkili başka bir bulut hizmeti içeremez ve bir ağ geçidi alt ağı olamaz. Alt ağ herhangi bir kaynak ve yönetilen örnek içeremez ve daha sonra alt ağdaki diğer kaynak türlerini ekleyemezsiniz.
-- **Alt ağ temsili:** Yönetilen örneğin alt ağının, `Microsoft.Sql/managedInstances` kaynak sağlayıcısına atanmış olması gerekir.
-- **Ağ güvenlik grubu (NSG):** Bir NSG 'nin yönetilen örnek alt ağıyla ilişkilendirilmesi gerekir. Yönetilen örnek, yönlendirme bağlantıları için yapılandırıldığında, bağlantı noktası 1433 ve bağlantı noktaları 11000-11999 ' deki trafiği filtreleyerek, yönetilen örneğin veri uç noktasına erişimi denetlemek için NSG kullanabilirsiniz. Hizmet, yönetim trafiğinin kesintisiz akışına izin vermek için gereken geçerli [kuralları](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) otomatik olarak sağlayacak ve saklar.
-- **Kullanıcı tanımlı yol (UDR) tablosu:** Bir UDR tablosunun yönetilen örnek alt ağıyla ilişkilendirilmesi gerekir. Şirket içi özel IP aralıklarına sahip trafiği, sanal ağ geçidi veya sanal ağ gereci (NVA) aracılığıyla bir hedef olarak yönlendirmek için yol tablosuna giriş ekleyebilirsiniz. Hizmet, kesintisiz yönetim trafiği akışına izin vermek için gereken geçerli [girdileri](#user-defined-routes-with-service-aided-subnet-configuration) otomatik olarak sağlayacak ve saklar.
-- **Yeterlı IP adresi:** Yönetilen örnek alt ağı en az 16 IP adresine sahip olmalıdır. Önerilen minimum değer 32 IP adresleridir. Daha fazla bilgi için bkz. [yönetilen örnekler için alt ağın boyutunu belirleme](sql-database-managed-instance-determine-size-vnet-subnet.md). Yönetilen örnekleri, [yönetilen örnekler için ağ gereksinimlerini](#network-requirements)karşılayacak şekilde yapılandırdıktan sonra [, var olan ağda](sql-database-managed-instance-configure-vnet-subnet.md) dağıtabilirsiniz. Aksi takdirde, [Yeni bir ağ ve alt ağ](sql-database-managed-instance-create-vnet-subnet.md)oluşturun.
+- **Ayrılmış alt ağ:** Yönetilen örneğin alt ağında kendisiyle ilişkili başka bir bulut hizmeti bulunamaz ve ağ geçidi alt ağı kullanılamaz. Alt ağda yönetilen örnek dışında başka bir kaynak bulunamaz ve sonrasında alt ağa farklı türde kaynaklar eklenemez.
+- **Alt ağ temsili:** Yönetilen örneğin alt ağının, kaynak sağlayıcısına atanmış olması gerekir `Microsoft.Sql/managedInstances` .
+- **Ağ güvenlik grubu (NSG):** Yönetilen örneğin alt ağıyla bir NSG ilişkilendirilmelidir. NSG'yi kullanarak 1433 numaralı bağlantı noktasındaki trafiği filtreleyebilir ve yönetilen örneğin veri uç noktasına erişimi denetleyebilir veya yönetilen örneğin yeniden yönlendirme bağlantıları için yapılandırılmış olması durumunda 11000-11999 arası bağlantı noktalarını kullanabilirsiniz. Hizmet, kesintisiz yönetim trafiği akışına izin vermek için gerekli olan [kuralları](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) otomatik olarak sağlayacak ve güncel tutacaktır.
+- **Kullanıcı tanımlı yol (UDR) tablosu:** Yönetilen örneğin alt ağıyla bir UDR tablosu ilişkilendirilmelidir. Şirket içi özel IP aralıklarına sahip trafiği, sanal ağ geçidi veya sanal ağ gereci (NVA) aracılığıyla bir hedef olarak yönlendirmek için yol tablosuna giriş ekleyebilirsiniz. Hizmet, kesintisiz yönetim trafiği akışına izin vermek için gerekli olan [girişleri](#user-defined-routes-with-service-aided-subnet-configuration) otomatik olarak sağlayacak ve güncel tutacaktır.
+- **Yeterli sayıda IP adresi:** Yönetilen örnek alt ağı en az 16 IP adresine sahip olmalıdır. Önerilen minimum değer 32 IP adresidir. Daha fazla bilgi için bkz. [Yönetilen örnek alt ağının boyutunu belirleme](sql-database-managed-instance-determine-size-vnet-subnet.md). Yönetilen örnekleri [var olan ağa](sql-database-managed-instance-configure-vnet-subnet.md) dağıtmak için [yönetilen örnekler için ağ gereksinimlerini](#network-requirements) karşılayacak şekilde yapılandırmanız gerekir. Bunu yapamazsanız [yeni bir ağ ve alt ağ](sql-database-managed-instance-create-vnet-subnet.md) oluşturabilirsiniz.
 
 > [!IMPORTANT]
 > Yönetilen bir örnek oluşturduğunuzda, ağ kurulum üzerinde uyumsuz değişiklikler yapılmasını engellemek için alt ağa bir ağ hedefi ilkesi uygulanır. Son örnek alt ağdan kaldırıldıktan sonra, ağ hedefi ilkesi de kaldırılır.
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması ile zorunlu gelen güvenlik kuralları 
 
-| Adı       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
+| Name       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |Mı ALT AĞı  |İzin Ver |
 |            |9000, 9003                  |TCP     |Corpnetgördünüz       |Mı ALT AĞı  |İzin Ver |
@@ -114,14 +114,14 @@ Yönetilen bir örneği sanal ağın içindeki ayrılmış bir alt ağda dağıt
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması ile zorunlu giden güvenlik kuralları 
 
-| Adı       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
+| Name       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
 |------------|--------------|--------|-----------------|-----------|------|
 |yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |İzin Ver |
 |mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırmasıyla Kullanıcı tanımlı rotalar 
 
-|Adı|Adres ön eki|Sonraki atlama|
+|Name|Adres ön eki|Sonraki atlama|
 |----|--------------|-------|
 |alt ağdan vnetlocal|Mı ALT AĞı|Sanal ağ|
 |mi-13-64-11-sonrakii-Internet|13.64.0.0/11|Internet|
@@ -310,20 +310,20 @@ Aşağıdaki sanal ağ özellikleri şu anda yönetilen örnekle desteklenmiyor:
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>Kullanım dışı Hizmet destekli alt ağ yapılandırması olmayan ağ gereksinimleri
 
-Yönetilen bir örneği sanal ağın içindeki ayrılmış bir alt ağda dağıtın. Alt ağ şu özelliklere sahip olmalıdır:
+Yönetilen örneği sanal ağ içindeki ayrılmış bir alt ağa dağıtın. Alt ağ şu özelliklere sahip olmalıdır:
 
-- **Ayrılmış alt ağ:** Yönetilen örneğin alt ağı kendisiyle ilişkili başka bir bulut hizmeti içeremez ve bir ağ geçidi alt ağı olamaz. Alt ağ herhangi bir kaynak ve yönetilen örnek içeremez ve daha sonra alt ağdaki diğer kaynak türlerini ekleyemezsiniz.
-- **Ağ güvenlik grubu (NSG):** Sanal ağla ilişkili bir NSG 'nin, diğer kurallardan önce [gelen güvenlik kurallarını](#mandatory-inbound-security-rules) ve [giden güvenlik kurallarını](#mandatory-outbound-security-rules) tanımlamanız gerekir. Yönetilen örnek, yönlendirme bağlantıları için yapılandırıldığında, bağlantı noktası 1433 ve bağlantı noktaları 11000-11999 ' deki trafiği filtreleyerek, yönetilen örneğin veri uç noktasına erişimi denetlemek için NSG kullanabilirsiniz.
+- **Ayrılmış alt ağ:** Yönetilen örneğin alt ağında kendisiyle ilişkili başka bir bulut hizmeti bulunamaz ve ağ geçidi alt ağı kullanılamaz. Alt ağda yönetilen örnek dışında başka bir kaynak bulunamaz ve sonrasında alt ağa farklı türde kaynaklar eklenemez.
+- **Ağ güvenlik grubu (NSG):** Sanal ağla ilişkili bir NSG 'nin, diğer kurallardan önce [gelen güvenlik kurallarını](#mandatory-inbound-security-rules) ve [giden güvenlik kurallarını](#mandatory-outbound-security-rules) tanımlamanız gerekir. NSG'yi kullanarak 1433 numaralı bağlantı noktasındaki trafiği filtreleyebilir ve yönetilen örneğin veri uç noktasına erişimi denetleyebilir veya yönetilen örneğin yeniden yönlendirme bağlantıları için yapılandırılmış olması durumunda 11000-11999 arası bağlantı noktalarını kullanabilirsiniz.
 - **Kullanıcı tanımlı yol (UDR) tablosu:** Sanal ağla ilişkili bir UDR tablosu belirli [girdileri](#user-defined-routes)içermelidir.
 - **Hizmet uç noktası yok:** Yönetilen örnek alt ağıyla ilişkili hizmet uç noktası yok. Sanal ağı oluştururken hizmet uç noktaları seçeneğinin devre dışı olduğundan emin olun.
-- **Yeterlı IP adresi:** Yönetilen örnek alt ağı en az 16 IP adresine sahip olmalıdır. Önerilen minimum değer 32 IP adresleridir. Daha fazla bilgi için bkz. [yönetilen örnekler için alt ağın boyutunu belirleme](sql-database-managed-instance-determine-size-vnet-subnet.md). Yönetilen örnekleri, [yönetilen örnekler için ağ gereksinimlerini](#network-requirements)karşılayacak şekilde yapılandırdıktan sonra [, var olan ağda](sql-database-managed-instance-configure-vnet-subnet.md) dağıtabilirsiniz. Aksi takdirde, [Yeni bir ağ ve alt ağ](sql-database-managed-instance-create-vnet-subnet.md)oluşturun.
+- **Yeterli sayıda IP adresi:** Yönetilen örnek alt ağı en az 16 IP adresine sahip olmalıdır. Önerilen minimum değer 32 IP adresidir. Daha fazla bilgi için bkz. [Yönetilen örnek alt ağının boyutunu belirleme](sql-database-managed-instance-determine-size-vnet-subnet.md). Yönetilen örnekleri [var olan ağa](sql-database-managed-instance-configure-vnet-subnet.md) dağıtmak için [yönetilen örnekler için ağ gereksinimlerini](#network-requirements) karşılayacak şekilde yapılandırmanız gerekir. Bunu yapamazsanız [yeni bir ağ ve alt ağ](sql-database-managed-instance-create-vnet-subnet.md) oluşturabilirsiniz.
 
 > [!IMPORTANT]
 > Hedef alt ağda bu özellikler yoksa, yeni bir yönetilen örnek dağıtamazsınız. Yönetilen bir örnek oluşturduğunuzda, ağ kurulum üzerinde uyumsuz değişiklikler yapılmasını engellemek için alt ağa bir ağ hedefi ilkesi uygulanır. Son örnek alt ağdan kaldırıldıktan sonra, ağ hedefi ilkesi de kaldırılır.
 
 ### <a name="mandatory-inbound-security-rules"></a>Zorunlu gelen güvenlik kuralları
 
-| Adı       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
+| Name       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |Herhangi biri              |Mı ALT AĞı  |İzin Ver |
 |mi_subnet   |Herhangi biri                         |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
@@ -331,7 +331,7 @@ Yönetilen bir örneği sanal ağın içindeki ayrılmış bir alt ağda dağıt
 
 ### <a name="mandatory-outbound-security-rules"></a>Zorunlu giden güvenlik kuralları
 
-| Adı       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
+| Name       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
 |------------|--------------|--------|-----------------|-----------|------|
 |yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |İzin Ver |
 |mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
@@ -349,7 +349,7 @@ Yönetilen bir örneği sanal ağın içindeki ayrılmış bir alt ağda dağıt
 
 ### <a name="user-defined-routes"></a>Kullanıcı tanımlı yollar
 
-|Adı|Adres ön eki|Sonraki atlama|
+|Name|Adres ön eki|Sonraki atlama|
 |----|--------------|-------|
 |subnet_to_vnetlocal|Mı ALT AĞı|Sanal ağ|
 |mi-13-64-11-sonrakii-Internet|13.64.0.0/11|Internet|

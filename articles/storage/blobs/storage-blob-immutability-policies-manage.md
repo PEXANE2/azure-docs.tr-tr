@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 539154135c35e034c889294d911fb53b3d45daa4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970109"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771018"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB depolama için dengesde kullanılabilirlik ilkelerini ayarlama ve yönetme
 
@@ -61,7 +61,7 @@ Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak blob depolamada
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy` ve. `az storage container legal-hold` Komutları `-h` görmek için üzerinde çalıştırın.
+Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy` ve `az storage container legal-hold` . `-h`Komutları görmek için üzerinde çalıştırın.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -69,9 +69,9 @@ Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immut
 
 Az. Storage modülü, sabit depolamayı destekler.  Özelliği etkinleştirmek için şu adımları izleyin:
 
-1. PowerShellGet 'in en son sürümünün yüklü olduğundan emin olun: `Install-Module PowerShellGet –Repository PSGallery –Force`.
+1. PowerShellGet 'in en son sürümünün yüklü olduğundan emin olun: `Install-Module PowerShellGet –Repository PSGallery –Force` .
 2. Önceki Azure PowerShell yüklemesini kaldırın.
-3. Azure PowerShell yüklensin: `Install-Module Az –Repository PSGallery –AllowClobber`.
+3. Azure PowerShell yüklensin: `Install-Module Az –Repository PSGallery –AllowClobber` .
 
 Aşağıdaki örnek PowerShell betiği başvuru içindir. Bu betik yeni bir depolama hesabı ve kapsayıcısı oluşturur. Daha sonra yasal tutmaları ayarlama ve Temizleme, zaman tabanlı bir bekletme ilkesi oluşturma ve kilitleme (aynı zamanda, imlebilirlik ilkesi olarak da bilinir) ve bekletme aralığını genişletme işlemlerinin nasıl yapılacağını gösterir.
 
@@ -91,7 +91,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 
 # Create your Azure storage account
-$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup -StorageAccountName `
+$account = New-AzStorageAccount -ResourceGroupName $resourceGroup -StorageAccountName `
     $storageAccount -SkuName Standard_ZRS -Location $location -Kind StorageV2
 
 # Create a new container using the context
@@ -119,7 +119,7 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
 Zamana dayalı ve kullanılabilirlik ilkeleri oluşturun veya güncelleştirin:
 
 ```powershell
-# Create a time-based immutablity policy
+# Create a time-based immutability policy
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
@@ -132,7 +132,7 @@ Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container
 ```
 
-Dengesizin kullanılabilirliği ilkelerini kilitle (istemi `-Force` kapatmak için Ekle):
+Dengesizin kullanılabilirliği ilkelerini kilitle ( `-Force` istemi kapatmak için Ekle):
 
 ```powershell
 # Lock immutability policies
@@ -154,7 +154,7 @@ Set-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
     $policy -ImmutabilityPeriod 11 -ExtendPolicy
 ```
 
-Kilitsiz bir imlebilirlik ilkesini kaldırma (istemi `-Force` kapatmak için Ekle):
+Kilitsiz bir imlebilirlik ilkesini kaldırma ( `-Force` istemi kapatmak için Ekle):
 
 ```powershell
 # Remove an unlocked immutability policy
@@ -174,12 +174,12 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy` ve. `az storage container legal-hold` Komutları `-h` görmek için üzerinde çalıştırın.
+Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy` ve `az storage container legal-hold` . `-h`Komutları görmek için üzerinde çalıştırın.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
-# Create an immutablity policy with appends allowed
+# Create an immutability policy with appends allowed
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10 -AllowProtectedAppendWrite $true
 ```

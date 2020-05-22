@@ -3,12 +3,12 @@ title: Application Insights dağıtımınızı tasarlama-bir çok kaynak karşı
 description: Geliştirme, test ve üretim damgaları için farklı kaynaklara doğrudan telemetri.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 6df6622cbba251c221533c3307dc194f08e871fb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 187d84b29e42aa3264417dd66e66c3886b17e92a
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125698"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773690"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kaç Application Insights kaynak dağıtmalıyım?
 
@@ -45,7 +45,7 @@ Kod üretim aşamaları arasında taşındığı için Ikey 'in değiştirilmesi
 
 Bir ASP.NET hizmetinde global.aspx.cs gibi bir başlatma yönteminde anahtarı ayarlayın:
 
-*, #*
+*C#*
 
     protected void Application_Start()
     {
@@ -138,7 +138,7 @@ Yapı bilgisi mevcut olduğunda Application Insights web modülü **Uygulama sü
 Ancak, derleme sürüm numarasının Visual Studio 'daki geliştirici derlemesi tarafından değil, yalnızca Microsoft Build Engine tarafından oluşturulup oluşturulduğuna dikkat edin.
 
 ### <a name="release-annotations"></a>Sürüm ek açıklamaları
-Azure DevOps kullanıyorsanız, yeni bir sürüm yayınlayışınızda grafiklerinize [ek açıklama işaretleyicisi](../../azure-monitor/app/annotations.md) ekleyebilirsiniz. Aşağıdaki görüntüde bu işaretin nasıl göründüğü gösterilmiştir.
+Azure DevOps kullanıyorsanız, yeni bir sürüm yayınlayışınızda grafiklerinize [ek açıklama işaretleyicisi](../../azure-monitor/app/annotations.md) ekleyebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 987cdd76ba533fa0ae4b37c2755fe84a00d14de5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dfa3f00e668488574abeb08964909a8972c8913f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435856"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772956"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Güvenlik Merkezi Veri Güvenliği
-Müşterilerin tehditleri önlemesine, algılamasına ve yanıt vermesine yardımcı olmak amacıyla Azure Güvenlik Merkezi, güvenlikle ilgili veriler, meta veriler, olay günlükleri, kilitlenme dökümü dosyaları ve diğer verileri toplar ve işler. Microsoft kodlamadan hizmet çalıştırma konularına kadar her alanda uyumluluk ve güvenlik yönergelerine kesin olarak bağlı kalmaktadır.
+Azure Güvenlik Merkezi, müşterilerin tehditleri engellemesine, algılamasına ve yanıt vermesine yardımcı olmak için yapılandırma bilgileri, meta veriler, olay günlükleri ve daha fazlası dahil güvenlikle ilgili verileri toplar ve işler. Microsoft kodlamadan hizmet çalıştırma konularına kadar her alanda uyumluluk ve güvenlik yönergelerine kesin olarak bağlı kalmaktadır.
 
 Bu makalede Azure Güvenlik Merkezi'nde verilerin yönetilmesi ve korunması açıklanmaktadır.
 
@@ -31,23 +31,23 @@ Azure Güvenlik Merkezi, güvenlik durumunuzu görüntüleme, güvenlik açıkla
 - Azure Hizmetleri: Dağıttığınız Azure hizmetlerinin yapılandırmasına ilişkin bilgileri, ilgili hizmetin kaynak sağlayıcısıyla iletişim kurarak kullanır.
 - Ağ Trafiği: Microsoft’un altyapısından kaynak/hedef IP/bağlantı noktası, paket boyutu ve ağ protokolü gibi örneği alınmış ağ trafiği meta verilerini kullanır.
 - İş Ortağı Çözümleri: Güvenlik duvarları ve kötü amaçlı yazılımdan koruma çözümleri gibi tümleşik iş ortağı çözümlerinden güvenlik uyarılarını kullanır.
-- Sanal Makineleriniz ve Sunucularınız: Sanal makinelerinizdeki yapılandırma bilgilerinin yanı sıra Windows olay ve denetim günlükleri, IIS günlükleri, syslog iletileri ve kilitlenme bilgi dökümü dosyaları gibi güvenlik olaylarına ilişkin bilgileri kullanır. Ayrıca, bir uyarı oluşturulduğunda Azure Güvenlik Merkezi etkilenen VM diskinin anlık görüntüsünü oluşturur ve adli amaçlar için kayıt defteri dosyası gibi uyarıyla ilgili makine yapıtlarını VM diskinden ayıklar.
+- Sanal makineleriniz ve sunucularınız: Windows olay ve denetim günlükleri, IIS günlükleri ve sanal makinelerinizden Syslog iletileri gibi güvenlik olaylarıyla ilgili yapılandırma bilgilerini ve bilgileri kullanır. Ayrıca, bir uyarı oluşturulduğunda Azure Güvenlik Merkezi etkilenen VM diskinin anlık görüntüsünü oluşturur ve adli amaçlar için kayıt defteri dosyası gibi uyarıyla ilgili makine yapıtlarını VM diskinden ayıklar.
 
 
 ## <a name="data-protection"></a>Veri koruma
 **Veri ayırma**: Veriler hizmet boyunca her bir bileşende mantıksal olarak ayrı tutulur. Tüm veriler kuruluşa göre etiketlenir. Bu etiketleme, veri yaşam döngüsü boyunca devam eder ve her bir hizmet katmanında uygulanır.
 
-**Veri erişimi**: Microsoft personeli, güvenlik önerileri sunmak ve olası güvenlik tehditlerini araştırmak amacıyla Azure hizmetleri tarafından sunulan, Müşteri Verilerini ya da sanal makinelerinizdeki kişisel verileri de içerebilecek kilitlenme dökümü dosyaları, işlem oluşturma olayları, VM diski anlık görüntüleri ve yapıtları dahil toplanan veya analiz edilen bilgilere erişebilir. Microsoft’un Müşteri Verilerini kullanmayacağını veya reklam ya da benzeri ticari amaçlarla bundan bilgi türetmeyeceğini belirten [Microsoft Çevrimiçi Hizmet Koşulları ve Gizlilik Bildirimi](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) belgesine bağlı kalıyoruz. Müşteri Verileri yalnızca size Azure hizmetlerini sağlamak için, bu hizmetleri sağlamayla uyumlu amaçlar da dahil olmak üzere gerektiğinde kullanılır. Müşteri Verileri üzerindeki tüm haklarınız saklıdır.
+**Veri erişimi**: güvenlik önerileri sağlamak ve olası güvenlik tehditlerini araştırmak için Microsoft personeli, Azure hizmetleri tarafından toplanan veya çözümlenen bilgilere, işlem oluşturma OLAYLARı, VM diski anlık görüntüleri ve yapıtlar dahil, yanlışlıkla müşteri verilerini veya kişisel verileri dahil edebilir. Microsoft’un Müşteri Verilerini kullanmayacağını veya reklam ya da benzeri ticari amaçlarla bundan bilgi türetmeyeceğini belirten [Microsoft Çevrimiçi Hizmet Koşulları ve Gizlilik Bildirimi](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) belgesine bağlı kalıyoruz. Müşteri Verileri yalnızca size Azure hizmetlerini sağlamak için, bu hizmetleri sağlamayla uyumlu amaçlar da dahil olmak üzere gerektiğinde kullanılır. Müşteri Verileri üzerindeki tüm haklarınız saklıdır.
 
 **Veri kullanımı**: Microsoft önleme ve algılama özelliklerimizi geliştirmek amacıyla birden fazla kiracıda görülen modelleri ve tehdit bilgilerini kullanır; bunu [Gizlilik Bildirimi](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx) belgemizde açıklanan gizlilik taahhütlerine uygun şekilde yaparız.
 
 ## <a name="data-location"></a>Veri konumu
 
-**Çalışma Alanlarınız**: Aşağıdaki coğrafi bölgeler için bir çalışma alanı belirtilir ve kilitlenme bilgi dökümlerinin yanı sıra bazı uyarı verisi türleri de dahil olmak üzere Azure sanal makinelerinizden toplanan veriler en yakın çalışma alanında depolanır.
+**Çalışma alanınız**: aşağıdaki geos için bir çalışma alanı belirtilmiş ve bazı uyarı verisi türleri dahil olmak üzere Azure sanal makinelerinizden toplanan veriler en yakın çalışma alanında depolanır.
 
 | VM'nin Bulunduğu Coğrafi Bölge                              | Çalışma Alanının Bulunduğu Coğrafi Bölge |
 |-------------------------------------|---------------|
-| Birleşik Devletler, Brezilya, Güney Afrika | Amerika Birleşik Devletleri |
+| Birleşik Devletler, Brezilya, Güney Afrika | Birleşik Devletler |
 | Kanada                              | Kanada        |
 | Avrupa (Birleşik Krallık hariç)   | Avrupa        |
 | Birleşik Krallık                      | Birleşik Krallık |
@@ -63,16 +63,12 @@ VM diski anlık görüntüleri, VM diski ile aynı depolama hesabına kaydedilir
 
 Başka ortamlarda çalışan sanal makineler ve sunucular için (ör. şirket içi), toplanan verilerin depolanacağı çalışma alanını ve bölgeyi belirtebilirsiniz.
 
-**Azure Güvenlik Merkezi Depolama Alanı**: İş ortağı uyarılarının da dahil olduğu güvenlik uyarıları hakkındaki bilgiler, ilgili Azure kaynağının konumuna göre bölgesel olarak depolanırken güvenlik sistem durumu ve öneriler hakkındaki bilgiler, müşterinin konumuna göre merkezi olarak Amerika Birleşik Devletleri'nde veya Avrupa'da depolanır.
-Azure Güvenlik Merkezi, kilitlenme döküm dosyalarının kısa ömürlü kopyalarını toplar ve açıktan yararlanma girişimlerinin ve başarılı uzlaşmaların kanıtı olarak analiz eder. Azure Güvenlik Merkezi bu analizi çalışma alanıyla aynı coğrafi bölgede gerçekleştirir ve analiz tamamlandığında kısa ömürlü kopyaları siler.
-
-Makine yapıları VM ile aynı bölgede merkezi olarak depolanır.
-
+**Azure Güvenlik Merkezi Depolama Alanı**: İş ortağı uyarılarının da dahil olduğu güvenlik uyarıları hakkındaki bilgiler, ilgili Azure kaynağının konumuna göre bölgesel olarak depolanırken güvenlik sistem durumu ve öneriler hakkındaki bilgiler, müşterinin konumuna göre merkezi olarak Amerika Birleşik Devletleri'nde veya Avrupa'da depolanır. Makine yapıları VM ile aynı bölgede merkezi olarak depolanır.
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Sanal makinelerden veri toplamayı yönetme
 
 Azure'da Güvenlik Merkezi'ni etkinleştirdiğinizde her Azure aboneliğiniz için veri toplama etkinleştirilir. Abonelikleriniz için veri toplamayı Azure Güvenlik Merkezi'nin Güvenlik İlkesi bölümünden de etkinleştirebilirsiniz. Veri toplama açık olduğunda Azure Güvenlik Merkezi, desteklenen tüm Azure sanal makinelerinde ve oluşturulan tüm yeni makinelerde Log Analytics aracısını sağlar.
-Log Analytics Aracısı, güvenlikle ilgili çeşitli yapılandırma ve olayları [Windows Için olay izleme](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) izlemeleri halinde tarar. Ayrıca, işletim sistemi, makinenin çalışması sırasında olay günlüğü olaylarını ortaya koyar. Bu tür verilerin örnekleri şunlardır: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan işlemler, makine adı, IP adresleri, oturum açmış kullanıcı ve kiracı kimliği. Log Analytics Aracısı olay günlüğü girişlerini ve ETW izlemelerini okur ve bunları analiz için çalışma alanınıza kopyalar. Log Analytics Aracısı Ayrıca kilitlenme bilgi dökümü dosyalarını çalışma alanınıza kopyalar, işlem oluşturma olaylarını etkinleştirir ve komut satırı denetimini etkinleştirir.
+Log Analytics Aracısı, güvenlikle ilgili çeşitli yapılandırma ve olayları [Windows Için olay izleme](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) izlemeleri halinde tarar. Ayrıca, işletim sistemi, makinenin çalışması sırasında olay günlüğü olaylarını ortaya koyar. Bu tür verilerin örnekleri şunlardır: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan işlemler, makine adı, IP adresleri, oturum açmış kullanıcı ve kiracı kimliği. Log Analytics Aracısı olay günlüğü girişlerini ve ETW izlemelerini okur ve bunları analiz için çalışma alanınıza kopyalar. Log Analytics Aracısı Ayrıca işlem oluşturma olaylarını ve komut satırı denetimini de sunar.
 
 Azure Güvenlik Merkezi Ücretsiz sürümünü kullanıyorsanız Güvenlik İlkesi'nde sanal makinelerden veri toplamayı devre dışı bırakabilirsiniz. Veri Toplama, Standart katmandaki abonelikler için gereklidir. Veri toplama devre dışı bırakılsa bile, VM diski anlık görüntüleri ve yapıt toplama işlemi etkin olmaya devam eder.
 

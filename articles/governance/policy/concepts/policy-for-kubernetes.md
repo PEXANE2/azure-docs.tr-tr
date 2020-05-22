@@ -3,12 +3,12 @@ title: Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f168490a8e1bb58a0b3335a0e876658f0bea03e6
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 738b6ae0a2482d1229fdbfe89d0c3dd99a33ec6e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691337"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772769"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes kümeleri için Azure Ilkesini anlama
 
@@ -132,7 +132,7 @@ Yukarıdaki önkoşul adımları tamamlandıktan sonra, yönetmek istediğiniz A
      > [!NOTE]
      > **Eklentiyi etkinleştir** düğmesi gri ise, abonelik henüz önizlemeye eklenmedi. **Eklentiyi devre dışı bırak** düğmesi etkinse ve v2 iletisi için bir geçiş uyarısı görüntülenirse, Gatekeepver v2 hala yüklüdür ve kaldırılması gerekir.
 
-- Azure CLI
+- Azure CLI’si
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -172,7 +172,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Kaynak sağlayıcısını etkinleştirmek için [kaynak sağlayıcıları ve türlerindeki](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) adımları izleyin ya da Azure clı veya Azure PowerShell komutunu çalıştırın:
 
-   - Azure CLI
+   - Azure CLI’si
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
@@ -209,16 +209,16 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Azure Arc etkin Kubernetes kümesine ' Policy Insights veri yazıcısı (Önizleme) ' rolü atamasını atayın. `<subscriptionId>` `<rg>` Azure Arc 'ın, Kubernetes kümesinin kaynak grubuyla ve `<clusterName>` Azure Arc etkinleştirilmiş Kubernetes kümesinin ADıYLA birlikte abonelik Kimliğinizle değiştirin. Yükleme adımları için _uygulama kimliği_, _parola_ve _kiracı_ için döndürülen değerleri izleyin.
 
-   - Azure CLI
+   - Azure CLI’si
 
      ```azurecli-interactive
-     az ad sp create-for-rbac --role "Policy Insights Data Writer (Preview)" --scopes "/subscriptions/<subscriptionId>/resourceGroups/<rg>/Microsoft.Kubernetes/connectedClusters/<clusterName>"
+     az ad sp create-for-rbac --role "Policy Insights Data Writer (Preview)" --scopes "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
      ```
 
    - Azure PowerShell
 
      ```azure powershell-interactive
-     $sp = New-AzADServicePrincipal -Role "Policy Insights Data Writer (Preview)" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<rg>/Microsoft.Kubernetes/connectedClusters/<clusterName>"
+     $sp = New-AzADServicePrincipal -Role "Policy Insights Data Writer (Preview)" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
 
      @{ appId=$sp.ApplicationId;password=[System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret));tenant=(Get-AzContext).Tenant.Id } | ConvertTo-Json
      ```
@@ -245,7 +245,7 @@ Yukarıdaki önkoşul adımları tamamlandığında, Azure Arc etkin Kubernetes 
 
    ```bash
    # In below command, replace the following values with those gathered above.
-   #    <AzureArcClusterResourceId> with your Azure Arc enabled Kubernetes cluster resource Id. For example: /subscriptions/<subscriptionId>/resourceGroups/<rg>/Microsoft.Kubernetes/connectedClusters/<clusterName>
+   #    <AzureArcClusterResourceId> with your Azure Arc enabled Kubernetes cluster resource Id. For example: /subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>
    #    <ServicePrincipalAppId> with app Id of the service principal created during prerequisites.
    #    <ServicePrincipalPassword> with password of the service principal created during prerequisites.
    #    <ServicePrincipalTenantId> with tenant of the service principal created during prerequisites.
@@ -276,7 +276,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Kaynak sağlayıcısını etkinleştirmek için [kaynak sağlayıcıları ve türlerindeki](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) adımları izleyin ya da Azure clı veya Azure PowerShell komutunu çalıştırın:
 
-   - Azure CLI
+   - Azure CLI’si
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
@@ -464,7 +464,7 @@ Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure
 
      :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="AKS eklentisi için Azure Ilkesini devre dışı bırakma" border="false":::
 
-- Azure CLI
+- Azure CLI’si
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 05/18/2020
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5ae2dee68ec0da8e8a00d4f01583461462bc196c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76696104"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772089"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında (MSAL. js) bilinen sorunlar
 
@@ -30,7 +30,7 @@ Bu sorunların büyük bir kısmının nedeni aşağıdaki gibidir. Oturum depol
 
 ### <a name="issues"></a>Sorunlar
 
-- **Kimlik doğrulama sırasında sonsuz yeniden yönlendirme döngüleri ve sayfa yeniden yükler**. Kullanıcılar Microsoft Edge 'de uygulamada oturum açtıklarında, AAD oturum açma sayfasından geri yönlendirilir ve yinelenen sayfa yeniden yüklemeye neden olan sonsuz bir yeniden yönlendirme döngüsünde takılırlar. Bu, genellikle oturum depolama alanındaki `invalid_state` bir hata ile birlikte oluşur.
+- **Kimlik doğrulama sırasında sonsuz yeniden yönlendirme döngüleri ve sayfa yeniden yükler**. Kullanıcılar Microsoft Edge 'de uygulamada oturum açtıklarında, AAD oturum açma sayfasından geri yönlendirilir ve yinelenen sayfa yeniden yüklemeye neden olan sonsuz bir yeniden yönlendirme döngüsünde takılırlar. Bu, genellikle `invalid_state` oturum depolama alanındaki bir hata ile birlikte oluşur.
 
 - **Sonsuz belirteci alma döngüleri ve AADSTS50058 hatası**. Microsoft Edge üzerinde çalışan bir uygulama bir kaynak için belirteç almaya çalıştığında, uygulama, ağ izinizdeki AAD 'den aşağıdaki hata ile birlikte, belirteç alma çağrısının sonsuz bir döngüsüne takılmış olabilir:
 
@@ -39,9 +39,9 @@ Bu sorunların büyük bir kısmının nedeni aşağıdaki gibidir. Oturum depol
 - Açılan **pencere, kimlik doğrulaması Için açılan pencere aracılığıyla oturum açma kullanılırken kapanmaz veya takılmaz**. Microsoft Edge veya IE (InPrivate) üzerinde açılan pencere aracılığıyla kimlik doğrulaması yaparken, kimlik bilgilerini girdikten ve oturum açtıktan sonra, güvenlik bölgelerinde birden çok etki alanı gezinmede yer alıyorsa, MSAL. js açılan pencere için tanıtıcıyı kaybettiğinde açılan pencere kapanmaz.  
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Güncelleştirme: MSAL. js 0.2.3 'de çözüm kullanılabilir
-Kimlik doğrulama yönlendirme döngüsü sorunları için düzeltmeler [msal. js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)içinde yayımlanmıştır. Bu düzeltmeden `storeAuthStateInCookie` faydalanmak için msal. js config içindeki bayrağı etkinleştirin. Bu bayrak varsayılan olarak false değerine ayarlanır.
+Kimlik doğrulama yönlendirme döngüsü sorunları için düzeltmeler [msal. js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)içinde yayımlanmıştır. `storeAuthStateInCookie`Bu düzeltmeden faydalanmak IÇIN msal. js config içindeki bayrağı etkinleştirin. Bu bayrak varsayılan olarak false değerine ayarlanır.
 
-`storeAuthStateInCookie` Bayrak ETKINLEŞTIRILDIĞINDE, msal. js, kimlik doğrulama akışlarının doğrulanması için gereken istek durumunu depolamak üzere tarayıcı tanımlama bilgilerini kullanır.
+`storeAuthStateInCookie`Bayrak etkinleştirildiğinde, msal. js, kimlik doğrulama akışlarının doğrulanması için gereken istek durumunu depolamak üzere tarayıcı tanımlama bilgilerini kullanır.
 
 > [!NOTE]
 > Bu düzelme henüz msal-angular ve msal-AngularJS sarmalayıcıları için kullanılamaz. Bu düzeltilme, açılan pencereler ile ilgili sorunu gidermez.
@@ -50,7 +50,7 @@ Aşağıdaki geçici çözümleri kullanın.
 
 #### <a name="other-workarounds"></a>Diğer geçici çözümler
 Sorununuzun yalnızca Microsoft Edge tarayıcısının belirli bir sürümünde gerçekleştiğini ve bu geçici çözümleri benimseerek diğer tarayıcılarda çalışıp çalışmadığını test ettiğinizden emin olun.  
-1. Bu sorunları çözmek için ilk adım olarak, uygulama etki alanının ve kimlik doğrulama akışının yeniden yönlendirmelerine dahil olan tüm diğer sitelerin, tarayıcının güvenlik ayarlarında güvenilen siteler olarak eklendiğinden emin olun, böylece aynı güvenlik bölgesine ait olmaları gerekir.
+1. Bu sorunları çözmek için ilk adım olarak, uygulama etki alanının ve kimlik doğrulama akışının yeniden yönlendirmelerine dahil olan diğer sitelerin, tarayıcının güvenlik ayarlarında güvenilen siteler olarak eklendiğinden emin olun, böylece aynı güvenlik bölgesine ait olmaları gerekir.
 Bunu yapmak için şu adımları uygulayın:
     - **Internet Explorer** 'ı açın ve sağ üst köşedeki **Ayarlar** ' a (dişli simgesi) tıklayın
     - **Internet seçeneklerini** belirleyin
@@ -63,7 +63,7 @@ Not, bu, hem oturum hem de yerel depolama olmadığından, InPrivate Gözatma so
 
 ## <a name="issues-due-to-popup-blockers"></a>Açılır engelleyiciler nedeniyle oluşan sorunlar
 
-IE veya Microsoft Edge 'de açılan pencereler engellendiğinde, örneğin çok faktörlü kimlik doğrulaması sırasında ikinci bir açılan pencere oluştuğunda oluşan durumlar vardır. Tarayıcıda, açılan pencerede bir kez veya her zaman izin vermek için bir uyarı alırsınız. İzin vermeyi seçerseniz tarayıcı açılır pencereyi otomatik olarak açar ve kendisi için bir `null` tanıtıcı döndürür. Sonuç olarak, kitaplığın pencere için bir tutamacı yoktur ve açılır pencereyi kapatmak için bir yol yoktur. Aynı sorun, otomatik olarak bir açılan pencere açmadığından açılanları izin vermenizi isterse Chrome 'da gerçekleşmez.
+IE veya Microsoft Edge 'de açılan pencereler engellendiğinde, örneğin [çok faktörlü kimlik doğrulaması](../authentication/concept-mfa-howitworks.md)sırasında ikinci bir açılan pencere oluştuğunda oluşan durumlar vardır. Tarayıcıda, açılan pencerede bir kez veya her zaman izin vermek için bir uyarı alırsınız. İzin vermeyi seçerseniz tarayıcı açılır pencereyi otomatik olarak açar ve `null` kendisi için bir tanıtıcı döndürür. Sonuç olarak, kitaplığın pencere için bir tutamacı yoktur ve açılır pencereyi kapatmak için bir yol yoktur. Aynı sorun, otomatik olarak bir açılan pencere açmadığından açılanları izin vermenizi isterse Chrome 'da gerçekleşmez.
 
 Geçici bir **çözüm**olarak, geliştiricilerin bu sorundan kaçınmak üzere uygulamalarını kullanmaya başlamadan önce IE ve Microsoft Edge 'de açılan pencerelere izin vermesi gerekir.
 

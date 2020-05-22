@@ -2,13 +2,13 @@
 title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 7ab012c5363de643c4cb5de8777de56fad5a9711
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/21/2020
+ms.openlocfilehash: 553d0e33c4b9bc1aa238cf582f37be1e148eea5e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653708"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758903"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -59,9 +59,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Service/Openıdconnectproviders | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/ilkeler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/ürünler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/ürünler/API 'ler | ürün | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/ürünler/gruplar | ürün | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/ürünler/Etiketler | ürün | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/ürünler/API 'ler | product | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/ürünler/gruplar | product | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/ürünler/Etiketler | product | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/Özellikler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/abonelikler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/Etiketler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
@@ -696,6 +696,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | serverfarms | kaynak grubu | 1-40 | Alfasayısal karakterler ve kısa çizgiler. |
 > | Siteler | global | 2-60 | Alfasayısal ve kısa çizgi içerir.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
 > | siteler/yuvalar | Site | 2-59 | Alfasayısal karakterler ve kısa çizgiler. |
+
+> [!NOTE]
+> Azure Işlevleri, Microsoft. Web/Sites ile aynı adlandırma kurallarına ve kısıtlamalara sahiptir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

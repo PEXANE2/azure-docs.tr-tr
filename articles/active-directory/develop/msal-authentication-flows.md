@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/30/2020
+ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: db9937d87692a1221d72bd27cfd653d803b9a1c6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: ce81af90baeeda519f1b56d1e10a46923ebd22c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883252"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772140"
 ---
 # <a name="authentication-flows"></a>Kimlik doğrulama akışları
 
@@ -49,7 +49,7 @@ Bu makalede, Microsoft kimlik doğrulama kitaplığı (MSAL) tarafından sunulan
 |[Cihaz kod akışı](v2-oauth2-device-code.md) | | x| x| x| |
 |[İstemci kimlik bilgileri](v2-oauth2-client-creds-grant-flow.md) | | | x (yalnızca uygulama)| | |
  
-Örtülü mod aracılığıyla yayınlanan belirteçlerin, tarayıcıya URL aracılığıyla geri geçirilme nedeniyle bir uzunluk sınırlaması vardır (burada `response_mode` `query` veya `fragment`).  Bazı tarayıcıların, tarayıcı çubuğuna koyabileceğiniz ve çok uzun olduğunda başarısız olan URL 'nin boyutunda bir sınırı vardır.  Bu nedenle, bu belirteçlerin `groups` veya `wids` talepleri yoktur.
+Örtülü mod aracılığıyla yayınlanan belirteçlerin, tarayıcıya URL aracılığıyla geri geçirilme nedeniyle bir uzunluk sınırlaması vardır (burada `response_mode` `query` veya `fragment` ).  Bazı tarayıcıların, tarayıcı çubuğuna koyabileceğiniz ve çok uzun olduğunda başarısız olan URL 'nin boyutunda bir sınırı vardır.  Bu nedenle, bu belirteçlerin `groups` veya `wids` talepleri yoktur.
 
 ## <a name="interactive"></a>Etkileşimli
 
@@ -78,7 +78,7 @@ Bu kimlik doğrulama akışı, yerel platformlarla etkileşim için daha fazla �
 
 MSAL, [OAuth 2 yetkilendirme kodu vermeyi](v2-oauth2-auth-code-flow.md)destekler. Bu izin, Web API 'Leri gibi korumalı kaynaklara erişim kazanmak için bir cihaza yüklenen uygulamalarda kullanılabilir. Bu, mobil ve Masaüstü uygulamalarınıza oturum açma ve API erişimi eklemenize olanak tanır. 
 
-Kullanıcılar Web uygulamalarında (Web siteleri) oturum açtığında, Web uygulaması bir yetkilendirme kodu alır.  Yetkilendirme kodu, Web API 'Lerini çağırmak için bir belirteç almak üzere kullanılır. ASP.NET ve ASP.NET Core Web Apps 'te tek hedefi `AcquireTokenByAuthorizationCode` , belirteç önbelleğine bir belirteç eklemektir. Belirteç daha sonra uygulama tarafından (genellikle kullanılarak `AcquireTokenSilent`bir API için belirteç almış olan denetleyicilerde) kullanılabilir.
+Kullanıcılar Web uygulamalarında (Web siteleri) oturum açtığında, Web uygulaması bir yetkilendirme kodu alır.  Yetkilendirme kodu, Web API 'Lerini çağırmak için bir belirteç almak üzere kullanılır. ASP.NET ve ASP.NET Core Web Apps 'te tek hedefi, `AcquireTokenByAuthorizationCode` belirteç önbelleğine bir belirteç eklemektir. Belirteç daha sonra uygulama tarafından (genellikle kullanılarak bir API için belirteç almış olan denetleyicilerde `AcquireTokenSilent` ) kullanılabilir.
 
 ![Yetkilendirme kod akışı diyagramı](media/msal-authentication-flows/authorization-code.png)
 
@@ -91,7 +91,7 @@ Kullanıcılar Web uygulamalarında (Web siteleri) oturum açtığında, Web uyg
 
 - Bir belirteci kullanmak için yalnızca bir kez yetkilendirme kodu kullanabilirsiniz. Aynı yetkilendirme koduyla bir belirteci birden çok kez edinmeyi denemeyin (protokol standart belirtimi tarafından açıkça yasaklanmıştır). Kodu kasıtlı olarak birkaç kez kullandıysanız veya bir Framework 'ün sizin için de yaptığı farkında olmadığınız için aşağıdaki hatayı alırsınız:`AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 
-- Bir ASP.NET veya ASP.NET Core uygulaması yazıyorsanız, çerçeveye zaten yetkilendirme kodu kullandığınızı söylüyorsanız bu durum oluşabilir. Bunun için `context.HandleCodeRedemption()` `AuthorizationCodeReceived` olay işleyicisi yöntemini çağırmanız gerekir.
+- Bir ASP.NET veya ASP.NET Core uygulaması yazıyorsanız, çerçeveye zaten yetkilendirme kodu kullandığınızı söylüyorsanız bu durum oluşabilir. Bunun için `context.HandleCodeRedemption()` olay işleyicisi yöntemini çağırmanız gerekir `AuthorizationCodeReceived` .
 
 - Erişim belirtecinin ASP.NET ile paylaşılmasından kaçının, bu da artımlı izin doğru şekilde oluşmasını engelleyebilir. Daha fazla bilgi için bkz. [sorun #693](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693).
 
@@ -151,7 +151,7 @@ Uygulama, cihaz kod akışını kullanarak belirteçleri, özellikle bu cihazlar
 
 Yukarıdaki diyagramda:
 
-1. Kullanıcı kimlik doğrulaması gerekli olduğunda, uygulama bir kod sağlar ve kullanıcıdan bir URL 'ye (örneğin, `https://microsoft.com/devicelogin`internet 'e bağlı bir akıllı telefon) gitmesini ister. Daha sonra kullanıcıya kodu girmesi istenir ve gerekirse onay istemleri ve çok faktörlü kimlik doğrulaması dahil olmak üzere normal bir kimlik doğrulama deneyimi üzerinden ilerler.
+1. Kullanıcı kimlik doğrulaması gerekli olduğunda, uygulama bir kod sağlar ve kullanıcıdan bir URL 'ye (örneğin, internet 'e bağlı bir akıllı telefon) gitmesini ister `https://microsoft.com/devicelogin` . Daha sonra kullanıcıya kodu girmesi istenir ve gerekirse onay istemleri ve [çok faktörlü kimlik doğrulaması](../authentication/concept-mfa-howitworks.md) dahil olmak üzere normal bir kimlik doğrulama deneyimi üzerinden ilerler.
 
 2. Başarılı kimlik doğrulamasından sonra, komut satırı uygulaması gerekli belirteçleri bir arka kanal aracılığıyla alır ve bunları, gereken Web API çağrılarını gerçekleştirmek için kullanır.
 
@@ -159,8 +159,8 @@ Yukarıdaki diyagramda:
 
 - Cihaz kodu akışı yalnızca genel istemci uygulamalarında kullanılabilir.
 - Ortak istemci uygulamasını oluştururken geçirilen yetkili aşağıdakilerden biri olmalıdır:
-  - Kiracının ( `https://login.microsoftonline.com/{tenant}/` `{tenant}` , KIRACı kimliğini temsil eden GUID veya kiracı ile ilişkili bir etki alanı).
-  - Herhangi bir iş ve okul hesabı (`https://login.microsoftonline.com/organizations/`) için.
+  - Kiracının (, `https://login.microsoftonline.com/{tenant}/` `{tenant}` Kiracı kimliğini temsıl eden GUID veya kiracı ile ilişkili bir etki alanı).
+  - Herhangi bir iş ve okul hesabı ( `https://login.microsoftonline.com/organizations/` ) için.
 - Microsoft kişisel hesapları henüz Azure AD v 2.0 uç noktası tarafından desteklenmiyor ( `/common` veya `/consumers` kiracılar kullanılamıyor).
 
 ## <a name="integrated-windows-authentication"></a>Tümleşik Windows Kimlik Doğrulaması
@@ -182,11 +182,11 @@ IWA, .NET Framework, .NET Core ve Evrensel Windows Platformu platformları için
 
 IWA Multi-Factor Authentication 'ı atlamaz. Multi-Factor Authentication yapılandırılırsa, çok faktörlü kimlik doğrulama sınaması gerekliyse ıWA başarısız olabilir. Multi-Factor Authentication Kullanıcı etkileşimi gerektirir.
 
-Kimlik sağlayıcısı 'nın gerçekleştirilecek iki öğeli kimlik doğrulaması istediğinde bunu denetkalmazsınız. Kiracı Yöneticisi. Genellikle, farklı bir ülkede oturum açtığınızda iki öğeli kimlik doğrulaması gerekir, VPN aracılığıyla bir kurumsal ağa bağlı olmadığınız zaman ve bazen VPN aracılığıyla bağlı olduğunuzda bile. Azure AD, iki öğeli kimlik doğrulamasının gerekli olup olmadığını sürekli olarak öğrenmek için AI 'yi kullanır. IWA başarısız olursa, bir [etkileşimli kullanıcı istemi] (#interactive) öğesine geri dönebilmelisiniz.
+Kimlik sağlayıcısı 'nın gerçekleştirilecek iki öğeli kimlik doğrulaması istediğinde bunu denetkalmazsınız. Kiracı Yöneticisi. Genellikle, farklı bir ülke/bölgeden oturum açtığınızda iki öğeli kimlik doğrulaması gerekir. bir şirket ağına VPN aracılığıyla bağlı değilseniz ve bazen VPN aracılığıyla bağlandığınızda bile. Azure AD, iki öğeli kimlik doğrulamasının gerekli olup olmadığını sürekli olarak öğrenmek için AI 'yi kullanır. IWA başarısız olursa, bir [etkileşimli kullanıcı istemi] (#interactive) öğesine geri dönebilmelisiniz.
 
 Ortak istemci uygulamasını oluştururken geçirilen yetkili aşağıdakilerden biri olmalıdır:
-- Kiracının ( `https://login.microsoftonline.com/{tenant}/` `tenant` , Kiracı kimliğini temsil eden GUID veya kiracı ile ilişkili bir etki alanı).
-- Herhangi bir iş ve okul hesabı (`https://login.microsoftonline.com/organizations/`) için. Microsoft kişisel hesapları desteklenmez (veya `/common` `/consumers` kiracılar kullanamazsınız).
+- Kiracının (, `https://login.microsoftonline.com/{tenant}/` `tenant` Kiracı kimliğini temsil eden GUID veya kiracı ile ilişkili bir etki alanı).
+- Herhangi bir iş ve okul hesabı ( `https://login.microsoftonline.com/organizations/` ) için. Microsoft kişisel hesapları desteklenmez ( `/common` veya `/consumers` kiracılar kullanamazsınız).
 
 IWA sessiz akış olduğundan, aşağıdakilerden biri doğru olmalıdır:
 - Uygulamanızın kullanıcısının, uygulamayı kullanmak için önceden verilmiş olması gerekir. 

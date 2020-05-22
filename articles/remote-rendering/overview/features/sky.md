@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 7316df7bcf78e3a154510e69116c288b2b293d4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be3dc2b113cb21c2dfb54a29e7f426e0d925c6d9
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680615"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759124"
 ---
 # <a name="sky-reflections"></a>Gökyüzü yansımaları
 
@@ -37,9 +37,9 @@ Aydınlatma modeli hakkında daha fazla bilgi için bkz. [malzemeler](../../conc
 
 ## <a name="changing-the-sky-texture"></a>Gök dokusunu değiştirme
 
-Ortam eşlemesini değiştirmek için, tek yapmanız gereken [bir doku yükler](../../concepts/textures.md) ve oturum şu şekilde değişir `SkyReflectionSettings`:
+Ortam eşlemesini değiştirmek için, tek yapmanız gereken [bir doku yükler](../../concepts/textures.md) ve oturum şu şekilde değişir `SkyReflectionSettings` :
 
-``` cs
+```cs
 LoadTextureAsync _skyTextureLoad = null;
 void ChangeEnvironmentMap(AzureSession session)
 {
@@ -66,7 +66,31 @@ void ChangeEnvironmentMap(AzureSession session)
 }
 ```
 
-Yerleşik bir doku `LoadTextureFromSASAsync` yüklendiği için değişkenin yukarıda kullanıldığını unutmayın. [Bağlı BLOB depolama](../../how-tos/create-an-account.md#link-storage-accounts)alanından yükleme durumunda, `LoadTextureAsync` türevini kullanın.
+```cpp
+void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
+{
+    LoadTextureFromSASParams params;
+    params.TextureType = TextureType::CubeMap;
+    params.TextureUrl = "builtin://VeniceSunset";
+    ApiHandle<LoadTextureAsync> skyTextureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
+
+    skyTextureLoad->Completed([&](ApiHandle<LoadTextureAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            ApiHandle<SkyReflectionSettings> settings = *session->Actions()->SkyReflectionSettings();
+            settings->SkyReflectionTexture(*res->Result());
+        }
+        else
+        {
+            printf("Texture loading failed!");
+        }
+    });
+}
+
+```
+
+`LoadTextureFromSASAsync`Yerleşik bir doku yüklendiği için değişkenin yukarıda kullanıldığını unutmayın. [Bağlı BLOB depolama](../../how-tos/create-an-account.md#link-storage-accounts)alanından yükleme durumunda, `LoadTextureAsync` türevini kullanın.
 
 ## <a name="sky-texture-types"></a>Sky doku türleri
 
@@ -80,7 +104,7 @@ Başvuru için sarmalanmamış bir cubemap aşağıda verilmiştir:
 
 ![Sarmalanmamış bir küp harita](media/Cubemap-example.png)
 
-' İ kullanarak `AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` küp harita dokuları yükleyin. `TextureType.CubeMap`
+' İ kullanarak `AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` `TextureType.CubeMap` küp harita dokuları yükleyin.
 
 ### <a name="sphere-environment-maps"></a>Sphere ortam haritaları
 
@@ -88,7 +112,7 @@ Bir 2B dokusunu ortam haritası olarak kullanırken, görüntünün [küresel ko
 
 ![Küresel koordinatlardaki gök resmi](media/spheremap-example.png)
 
-Küresel `AzureSession.Actions.LoadTextureAsync` ortam `TextureType.Texture2D` haritalarını yüklemek için ile kullanın.
+`AzureSession.Actions.LoadTextureAsync` `TextureType.Texture2D` Küresel ortam haritalarını yüklemek için ile kullanın.
 
 ## <a name="built-in-environment-maps"></a>Yerleşik ortam haritaları
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 740a2174933e37e2737de0daa56e4b1670ecf55f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78402934"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773177"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>NVA 'lar için bir sanal WAN hub yol tablosu oluşturma: Azure portal
 
@@ -76,6 +76,9 @@ Hub 'ı bir hub yol tablosuyla güncelleştirin. Aşağıdaki örnek değerleri 
 3. **...** Öğesine ve ardından **sanal hub 'ı Düzenle**' ye tıklayın.
 4. **Sanal hub 'ı Düzenle** sayfasında, aşağı kaydırın ve yönlendirme için onay kutusu **kullan tablosunu**seçin.
 5. **IF Destination öneki** sütununda, adres alanlarını ekleyin. **Sonraki atlamaya gönder** sütununda, DMZ NVA ağ ARABIRIMI özel IP adresini ekleyin.
+>[!NOTE]
+>DMZ NVA ağı yerel Hub için geçerlidir.
+>
 6. Merkez kaynağını rota tablosu ayarlarıyla güncelleştirmek için **Onayla** ' ya tıklayın.
 
 ## <a name="5-create-the-vnet-connections"></a><a name="connections"></a>5. VNet bağlantıları oluşturma

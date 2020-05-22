@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ea52474f3b352fabf19050f20012438e9d0c19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c020bb70dc26945b013321b2d75cc2e231c39a4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76120652"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772939"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından Confluence SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -65,7 +65,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 - Confluence: 5,0-5,10
 - Confluence: 6.0.1 to 6.15.9
-- Confluence: 7.0.1 to 7.1.0
+- Confluence: 7.0.1 to 7.4.0
 
 > [!NOTE]
 > Lütfen Confluence denetimimizin Ubuntu sürüm 16,04 ' de çalışıp çalışmadığını unutmayın.
@@ -133,7 +133,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**' a tıklayın.
 
@@ -245,7 +245,7 @@ Azure AD kullanıcılarının, bir şirket içi sunucuda oturum açmasını sağ
 
     b. **Tam ad** metin kutusuna B. Simon gibi kullanıcının tam adını yazın.
 
-    c. **E-posta** metin kutusuna, gibi B.Simon@contoso.comkullanıcının e-posta adresini yazın.
+    c. **E-posta** metin kutusuna, gibi kullanıcının e-posta adresini yazın B.Simon@contoso.com .
 
     d. **Parola** metin kutusuna B. Simon parolasını yazın.
 

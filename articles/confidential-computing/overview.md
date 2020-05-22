@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: ae98325d98df1ac8a06e0c0bc950d89cc6b77eda
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82192272"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773288"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 'da gizli bilgi işlem
 
@@ -25,7 +25,7 @@ Azure gizli bilgi işlem, bulutta işlendiği sırada hassas verilerinizi yalıt
 - Birden çok kaynaktan şifrelenmiş veri kümelerinde algoritmalar gerçekleştirme
 
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 <p><p>
 
 
@@ -42,13 +42,13 @@ Microsoft Azure, saldırı yüzeyinizi daha güçlü veri koruma kazanmak için 
 
 ## <a name="introduction-to-confidential-computing"></a>Gizli bilgi işlem konusuna giriş<a id="intro to acc"></a>
 
-Gizli bilgi işlem, gizli bilgi işlem [Konsorsiyumu](https://confidentialcomputing.io/) (CCC) tarafından tanımlanan bir sektör terimidir. Bu bir temel, gizli bilgi işlem benimsemeyi tanımlamaya ve hızlandırmaya ayrılmıştır. Gizli bilgi işlem hesaplamaları gerçekleştirirken kullanılan verilerin bir korumasından oluşur. Hesaplamalar, donanım tabanlı bir güvenilir yürütme ortamında (t) oluşur.
+Gizli bilgi işlem, gizli bilgi işlem [Consortium](https://confidentialcomputing.io/) (CCC) tarafından tanımlanan bir sektör terimidir. Bu, gizli bilgi işlem benimsemeyi tanımlamaya ve hızlandırmaya ayrılmış bir temel hizmettir. CCC, donanım tabanlı bir güvenilir yürütme ortamında (t) hesaplamalar gerçekleştirerek kullanılan verilerin korunması olarak gizli bilgi işlem tanımlar.
 
 T, yalnızca yetkili kodun yürütülmesini zorlayan bir ortamdır. T 'deki herhangi bir veri, bu ortamın dışındaki herhangi bir kodla okunamaz veya üzerinde oynanamaz.
 
-### <a name="enclaves-and-trusted-execution-environments"></a>Şifreleme ve güvenilen yürütme ortamları
+### <a name="enclaves"></a>Kuşkukları
 
-Gizli bilgi işlem bağlamında, TEEs genellikle *şifreleme* veya *güvenli şifreleme*olarak adlandırılır. Kuşanın güvenliği, donanım işlemcisinin ve belleğinin güvenli bir kısımındadır. Bir hata ayıklayıcı ile birlikte, şifreleme içinde veri veya kod görüntülemenin bir yolu yoktur. Güvenilmeyen kod, şifreleme belleğindeki içeriği değiştirme girişiminde bulunursa ortam devre dışı bırakılır ve işlemler reddedilir.
+Kuşanın güvenliği, donanım işlemcisinin ve belleğinin güvenli bir kısımındadır. Bir hata ayıklayıcı ile birlikte, şifreleme içinde veri veya kod görüntülemenin bir yolu yoktur. Güvenilmeyen kod, şifreleme belleğindeki içeriği değiştirme girişiminde bulunursa ortam devre dışı bırakılır ve işlemler reddedilir.
 
 Uygulama geliştirirken, kodunuzun ve verilerinizin parçalarını kuşkuya içinde korumak için [yazılım araçlarını](#oe-sdk) kullanabilirsiniz. Bu araçlar, kodunuzun ve verilerinizin güvenilir ortam dışındaki kimseler tarafından görüntülenememesini veya değiştirilmesini güvence altına alacak. 
 
@@ -67,7 +67,7 @@ Kanıtlama, sistem yazılımıyla ve Silicon ile uyumlu olan güvenli bir kanıt
 
 Azure gizli bilgi işlem, sanallaştırılmış bir ortamda gizli bilgi işlem özelliklerinden yararlanmanızı sağlar. Artık güvenli donanımın üzerine derlemek için araçlar, yazılımlar ve bulut altyapısını kullanabilirsiniz. 
 
-### <a name="virtual-machines"></a>Virtual Machines
+### <a name="virtual-machines"></a>Sanal Makineler
 
 Azure, sanallaştırılmış bir ortamda gizli bilgi işlem olanağı sunan ilk bulut sağlayıcıdır. Donanım ve uygulamanız arasında bir soyutlama katmanı görevi gören sanal makineler geliştirdik. İş yüklerini ölçekli ve artıklık ve kullanılabilirlik seçenekleriyle çalıştırabilirsiniz.  
 
@@ -90,17 +90,17 @@ Azure gizli bilgi işlem sanal makinelerini donanım tabanlı güvenilen şifrel
 - [Açık şifreleme yazılım geliştirme seti (SDK)](https://github.com/openenclave/openenclave)
 - [Gizli konsorsiyum çatısı (CCF)](https://github.com/Microsoft/CCF)
 
-### <a name="overview"></a>Genel bakış
+### <a name="overview"></a>Genel Bakış
 
 Şifreleme ile oluşturulmuş bir uygulama iki şekilde bölümlenir:
 1. "Güvenilmeyen" bir bileşen (konak)
 1. "Güvenilir" bir bileşen (şifreleme)
 
-**Konak,** güvenilmeyen bir ortamda çalışan şifreleme uygulamanız. Konaktaki kod, şifreme 'ya yüklenen koda erişemez. 
+**Ana bilgisayar** , şifreleme uygulamanızın en üstünde çalıştığı ve güvenilmeyen bir ortam olduğu yerdir. Konakta dağıtılan şifreleme koduna konak tarafından erişilemiyor. 
 
-Kuşatma **,** kod ve verilerin t uygulamasında çalıştırıldığı yerdir. Parolaların ve hassas verilerin korunmamasını sağlamak için güvenli hesaplamalar kuşde gerçekleşmelidir. 
+**Şifreleme,** uygulama kodunun ve önbelleğe alınmış verilerinin/belleğin çalıştırıldığı yerdir. Güvenli hesaplamalar, gizli dizileri ve hassas verileri sağlamak için kuşlar halinde gerçekleşmelidir, korumalı kalır. 
 
-Bir kuşatma uygulaması geliştirmeye başladığınızda, hangi kod ve verilerin korunması gerektiğini belirlemeniz gerekir. Güvenilen bileşene yerleştirilmesi için seçtiğiniz kod uygulamanızın geri kalanından yalıtılmıştır. Şifreleme başlatıldıktan ve kod belleğe yüklendikten sonra bu kod, korunan ortamdan okunamaz veya değiştirilemez.
+Uygulama tasarımı sırasında, uygulamanın hangi bölümünün kuşkuta çalıştırılması gerektiğini belirlemek ve belirlemek önemlidir. Güvenilen bileşene yerleştirilmesi için seçtiğiniz kod uygulamanızın geri kalanından yalıtılmıştır. Şifreleme başlatıldıktan ve kod belleğe yüklendikten sonra, bu kod güvenilmeyen bileşenlerden okunamaz veya değiştirilemez. 
 
 ### <a name="open-enclave-software-development-kit-oe-sdk"></a>Açık şifreleme yazılım geliştirme seti (OE SDK)<a id="oe-sdk"></a>
 

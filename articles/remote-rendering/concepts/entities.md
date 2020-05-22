@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b9ecd048b080ae0ec9fd3fb7a4fb35009551b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7981a28db23ab8c0aed05013dd260ffd97a11c07
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681954"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758733"
 ---
 # <a name="entities"></a>Varlıklar
 
@@ -22,7 +22,7 @@ Varlıkların bir konum, döndürme ve ölçeğe göre tanımlanan bir dönüş�
 
 Varlığın kendisinin en önemli yönü hiyerarşinin ve sonuçta elde edilen sıradüzenli dönüşümüdür. Örneğin, birden çok varlık paylaşılan bir üst varlığa alt öğe olarak eklendiğinde, bu varlıkların tümü uyum içinde taşınabilir, döndürülebilir ve üst varlığın dönüşümü değiştirilerek ölçekleniyor.
 
-Bir varlık kendi üst öğesine sahip olduğu anlamına gelir, yani üst öğe ile `Entity.Destroy()`yok edildiğinde, alt öğeleri ve tüm bağlı [Bileşenler](components.md). Bu nedenle, bir modelin sahne alanından kaldırılması, bir modelin kök `Destroy` düğümüne çağırarak veya bunun SAS varyantı `AzureSession.Actions.LoadModelAsync()` `AzureSession.Actions.LoadModelFromSASAsync()`tarafından döndürülen bir şekilde gerçekleştirilir.
+Bir varlık kendi üst öğesine sahip olduğu anlamına gelir, yani üst öğe ile yok edildiğinde `Entity.Destroy()` , alt öğeleri ve tüm bağlı [Bileşenler](components.md). Bu nedenle, bir modelin sahne alanından kaldırılması `Destroy` , bir modelin kök düğümüne çağırarak `AzureSession.Actions.LoadModelAsync()` veya bunun SAS varyantı tarafından döndürülen bir şekilde gerçekleştirilir `AzureSession.Actions.LoadModelFromSASAsync()` .
 
 Varlıklar, sunucu içerik yüklediğinde veya Kullanıcı sahneye nesne eklemek istediğinde oluşturulur. Örneğin, bir Kullanıcı bir kafesin iç kısmını görselleştirmek için kesilmiş bir düzlem eklemek isterse, Kullanıcı düzlemin mevcut olması gereken bir varlık oluşturabilir ve ardından bu nesneye kesilen düzlemi bileşenini ekler.
 
@@ -32,13 +32,20 @@ Varlıklarda iki tür sorgu işlevi vardır: zaman uyumlu ve zaman uyumsuz çağ
 
 ### <a name="querying-components"></a>Bileşenler sorgulanıyor
 
-Belirli bir türün bileşenini bulmak için şunu kullanın `FindComponentOfType`:
+Belirli bir türün bileşenini bulmak için şunu kullanın `FindComponentOfType` :
 
 ```cs
 CutPlaneComponent cutplane = (CutPlaneComponent)entity.FindComponentOfType(ObjectType.CutPlaneComponent);
 
 // or alternatively:
 CutPlaneComponent cutplane = entity.FindComponentOfType<CutPlaneComponent>();
+```
+
+```cpp
+ApiHandle<CutPlaneComponent> cutplane = entity->FindComponentOfType(ObjectType::CutPlaneComponent)->as<CutPlaneComponent>();
+
+// or alternatively:
+ApiHandle<CutPlaneComponent> cutplane = *entity->FindComponentOfType<CutPlaneComponent>();
 ```
 
 ### <a name="querying-transforms"></a>Dönüşümler sorgulanıyor
@@ -53,6 +60,13 @@ Dönüştürme sorguları nesnedeki zaman uyumlu çağrılardır. API aracılı�
 Double3 translation = entity.Position;
 Quaternion rotation = entity.Rotation;
 ```
+
+```cpp
+// local space transform of the entity
+Double3 translation = *entity->Position();
+Quaternion rotation = *entity->Rotation();
+```
+
 
 ### <a name="querying-spatial-bounds"></a>Uzamsal sınırları sorgulama
 
@@ -77,6 +91,21 @@ metaDataQuery.Completed += (MetadataQueryAsync query) =>
         // ...
     }
 };
+```
+
+```cpp
+ApiHandle<MetadataQueryAsync> metaDataQuery = *entity->QueryMetaDataAsync();
+metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
+    {
+        if (query->IsRanToCompletion())
+        {
+            ApiHandle<ObjectMetaData> metaData = *query->Result();
+            ApiHandle<ObjectMetaDataEntry> entry = *metaData->GetMetadataByName("MyInt64Value");
+            int64_t intValue = *entry->AsInt64();
+
+            // ...
+        }
+    });
 ```
 
 Nesne herhangi bir meta veri tutmasa bile sorgu başarılı olur.

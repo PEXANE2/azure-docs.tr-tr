@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91a59e1398bf5e68799ad16a20dfb824904edc8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681694"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758869"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering Oturumları
 
@@ -24,9 +24,9 @@ Bu, Azure uzaktan Işleme kullandığınızda, gerekli donanım özelliklerine s
 
 ## <a name="managing-sessions"></a>Oturumları yönetme
 
-Oturumları yönetmek ve bunlarla etkileşim kurmak için birden çok yol vardır. Oturumların oluşturulması, güncelleştirilmesi ve kapatılmasından bağımsız olarak, [oturum yönetimi REST API](../how-tos/session-rest-api.md). C# ve C++ ' da, bu işlemler sınıflar ve `AzureFrontend` `AzureSession`sınıfları aracılığıyla sunulur. Unity uygulamalarında, `ARRServiceUnity` bileşen tarafından sağlanan başka yardımcı program işlevleri de vardır.
+Oturumları yönetmek ve bunlarla etkileşim kurmak için birden çok yol vardır. Oturumların oluşturulması, güncelleştirilmesi ve kapatılmasından bağımsız olarak, [oturum yönetimi REST API](../how-tos/session-rest-api.md). C# ve C++ ' da, bu işlemler sınıflar ve sınıfları aracılığıyla `AzureFrontend` sunulur `AzureSession` . Unity uygulamalarında, bileşen tarafından sağlanan başka yardımcı program işlevleri de vardır `ARRServiceUnity` .
 
-Etkin bir oturuma *bağlandıktan* sonra, [model yükleme](models.md) ve sahne ile etkileşim kurma gibi işlemler `AzureSession` sınıfı aracılığıyla sunulur.
+Etkin bir oturuma *bağlandıktan* sonra, [model yükleme](models.md) ve sahne ile etkileşim kurma gibi işlemler sınıfı aracılığıyla sunulur `AzureSession` .
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Birden çok oturumu eşzamanlı olarak yönetme
 
@@ -82,7 +82,7 @@ Etkin bir oturumun kira süresini, daha uzun bir süre sonra da ihtiyacınız ol
 
 Aşağıdaki kod, bir oturum başlatma, *hazırlık* durumunu bekleme, bağlanma ve sonra yeniden bağlantı kesme ve kapatma gibi basit bir uygulama gösterir.
 
-``` cs
+```cs
 RemoteRenderingInitialization init = new RemoteRenderingInitialization();
 // fill out RemoteRenderingInitialization parameters...
 
@@ -136,13 +136,13 @@ await session.StopAsync().AsTask();
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Birden `AzureFrontend` çok `AzureSession` ve örnek, koddan korunabilir, değiştirilebilir ve sorgulanabilir. Ancak tek `AzureSession` seferde yalnızca bir cihaz bağlanabilir.
+Birden çok `AzureFrontend` ve `AzureSession` örnek, koddan korunabilir, değiştirilebilir ve sorgulanabilir. Ancak tek seferde yalnızca bir cihaz bağlanabilir `AzureSession` .
 
-Bir sanal makinenin ömrü `AzureFrontend` örneğe veya `AzureSession` örneğe bağlı değildir. `AzureSession.StopAsync`bir oturumu durdurmak için çağrılmalıdır.
+Bir sanal makinenin ömrü `AzureFrontend` örneğe veya örneğe bağlı değildir `AzureSession` . `AzureSession.StopAsync`bir oturumu durdurmak için çağrılmalıdır.
 
-Kalıcı oturum KIMLIĞI ile yerel olarak sorgulanabilir `AzureSession.SessionUUID()` ve yerel olarak önbelleğe alınabilir. Bu KIMLIKLE, bir uygulama bu oturuma bağlamak `AzureFrontend.OpenSession` için çağrı yapabilir.
+Kalıcı oturum KIMLIĞI ile `AzureSession.SessionUUID()` yerel olarak sorgulanabilir ve yerel olarak önbelleğe alınabilir. Bu KIMLIKLE, bir uygulama bu `AzureFrontend.OpenSession` oturuma bağlamak için çağrı yapabilir.
 
-True `AzureSession.IsConnected` olduğunda, [model yükleme](models.md), [varlıkları](entities.md)işleme `RemoteManager`ve işlenmiş sahneye ilişkin [sorgu bilgilerini](../overview/features/spatial-queries.md) içeren öğesinin bir örneğini `AzureSession.Actions` döndürür.
+True olduğunda, `AzureSession.IsConnected` `AzureSession.Actions` `RemoteManager` [model yükleme](models.md), [varlıkları](entities.md)işleme ve işlenmiş sahneye ilişkin [sorgu bilgilerini](../overview/features/spatial-queries.md) içeren öğesinin bir örneğini döndürür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

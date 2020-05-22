@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 3947bf0dcad598bf52a742c790a2f99538d6facb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116448"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770968"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory hangi kimlik doğrulama ve doğrulama yöntemleri kullanılabilir?
 
@@ -31,19 +31,20 @@ Azure AD 'deki bir Kullanıcı, aşağıdaki kimlik doğrulama yöntemlerinden b
 
 Azure AD 'deki pek çok hesap self servis parola sıfırlama (SSPR) veya Azure Multi-Factor Authentication için etkinleştirilmiştir. Bu özellikler, telefon araması veya güvenlik soruları gibi ek doğrulama yöntemlerini içerir. Kullanıcıların birden çok doğrulama yöntemini kaydetmesini gerektirmesini öneririz. Bir kullanıcı için bir yöntem kullanılamadığında, başka bir yöntemle kimlik doğrulamayı seçebilirler.
 
-Aşağıdaki tabloda, farklı senaryolar için hangi kimlik doğrulama veya doğrulama yöntemlerinin kullanılabildiği özetlenmektedir:
+Aşağıdaki tabloda, birincil veya ikincil kimlik doğrulaması için hangi yöntemlerin kullanılabildiği özetlenmektedir:
 
-| Yöntem | Oturum açma sırasında kullanın | Doğrulama sırasında kullanın |
+| Yöntem | Birincil kimlik doğrulama | İkincil kimlik doğrulaması |
 | --- | --- | --- |
-| [Parola](#password) | Yes | MFA ve SSPR |
+| [Parola](#password) | Yes | |
 | [Microsoft Authenticator uygulaması](#microsoft-authenticator-app) | Evet (Önizleme) | MFA ve SSPR |
 | [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Yes | Yalnızca MFA |
-| [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens) | Yes | SSPR ve MFA |
+| [OATH yazılım belirteçleri](#oath-software-tokens) | No | MFA |
+| [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens-preview) | Yes | MFA |
 | [SMS](#phone-options) | Evet (Önizleme) | MFA ve SSPR |
-| [Sesli arama](#phone-options) | Hayır | MFA ve SSPR |
-| [Güvenlik soruları](#security-questions) | Hayır | Yalnızca SSPR |
-| [E-posta adresi](#email-address) | Hayır | Yalnızca SSPR |
-| [Uygulama parolaları](#app-passwords) | Hayır | Yalnızca belirli durumlarda MFA |
+| [Sesli arama](#phone-options) | No | MFA ve SSPR |
+| [Güvenlik soruları](#security-questions) | No | Yalnızca SSPR |
+| [E-posta adresi](#email-address) | No | Yalnızca SSPR |
+| [Uygulama parolaları](#app-passwords) | No | Yalnızca belirli durumlarda MFA |
 
 Bu makalede, Azure AD 'de bulunan bu farklı kimlik doğrulama ve doğrulama yöntemleri ve belirli sınırlamalar veya kısıtlamalar özetlenmektedir.
 
@@ -73,7 +74,7 @@ Authenticator uygulaması, Smartphone 'a veya tabletinize bir bildirim gönderer
 ![Oturum açma işlemini tamamlamaya yönelik kimlik doğrulayıcı uygulama bildirimi için Web tarayıcı istemi örnek ekran görüntüsü](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, Android cihazlarda *mobil uygulama yöntemi aracılığıyla bildirim* söz konusu ülkede çalışmaz. Diğer kimlik doğrulama yöntemleri bu kullanıcılar için kullanılabilir duruma getirilmelidir.
+> Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, Android cihazlarda *mobil uygulama yöntemi ile Ilgili bildirim* söz konusu ülkede/bölgede çalışmaz. Diğer kimlik doğrulama yöntemleri bu kullanıcılar için kullanılabilir duruma getirilmelidir.
 
 ### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadaki doğrulama kodu
 
@@ -96,15 +97,29 @@ Kullanıcılar, kimlik doğrulama yöntemi olarak oturum açma arabiriminde bir 
 
 Azure AD 'de FIDO2 güvenlik anahtarları şu anda önizlemededir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="oath-hardware-tokens"></a>OATH donanım belirteçleri
+## <a name="oath-tokens"></a>OATH belirteçleri
 
-OATH, bir kerelik parola (OTP) kodlarının nasıl oluşturulduğunu belirten bir açık standarttır. Azure AD, 30 saniyelik veya 60 saniyelik birçok farklı OATH-TOTP SHA-1 belirteçleri kullanımını destekler. Müşteriler bu belirteçleri kendi tercih ettiği satıcıdan satın alabilir.
+OATH TOTP (zaman tabanlı bir kerelik parola), bir kerelik parola (OTP) kodlarının nasıl oluşturulduğunu belirten bir açık standarttır. OATH TOTP, kodları oluşturmak için yazılım veya donanım kullanılarak uygulanabilir. Azure AD, farklı bir kod oluşturma standardı olan OATH HOTP 'yi desteklemez.
 
-Gizli anahtarlar 128 karakterle sınırlıdır ve bu, tüm belirteçlerle uyumlu olmayabilir. Gizli anahtar yalnızca *a-z* veya *a-z* karakterleri ve *1-7*rakamları içerebilir ve *Base32*içinde kodlanmalıdır.
+### <a name="oath-software-tokens"></a>OATH yazılım belirteçleri
 
-Azure AD 'de OATH Donanım belirteçleri Şu anda önizleme aşamasındadır. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Yazılım OATH belirteçleri genellikle Microsoft Authenticator uygulaması ve diğer kimlik doğrulayıcı uygulamaları gibi uygulamalardır. Azure AD, uygulamaya giriş yapan ve her OTP oluşturmak için kullanılan, gizli anahtar veya çekirdek oluşturur.
 
-![OATH belirteçleri MFA OATH belirteçleri penceresine yükleniyor](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+Kimlik doğrulayıcı uygulaması, bir kullanıcının cihazının bağlantısı olmasa bile bir yedeklemesi olması için, anında iletme bildirimleri için ayarlandığında, otomatik olarak kodlar üretir. Kod oluşturmak için OATH TOTP kullanan üçüncü taraf uygulamalar da kullanılabilir.
+
+Bazı OATH TOTP Donanım belirteçleri programlanabilir, yani gizli anahtar veya çekirdek önceden programlanabilir olarak gelmeyecektir. Bu programlanabilir donanım belirteçleri, yazılım belirteci kurulum akışından alınan gizli anahtar veya çekirdek kullanılarak ayarlanabilir. Müşteriler bu belirteçleri kendi tercih ettiği satıcıdan satın alabilir ve kendi satıcısının kurulum sürecinde gizli anahtarı veya kaynağı kullanabilir.
+
+### <a name="oath-hardware-tokens-preview"></a>OATH Donanım belirteçleri (Önizleme)
+
+Azure AD, her 30 veya 60 saniyede bir kodu yenileyen OATH-TOTP SHA-1 belirteçleri kullanımını destekler. Müşteriler bu belirteçleri kendi tercih ettiği satıcıdan satın alabilir.
+
+OATH TOTP Donanım belirteçleri genellikle, belirteçte önceden programlanabilir bir gizli anahtar veya çekirdek ile gelir. Bu anahtarların aşağıdaki adımlarda açıklandığı gibi Azure AD 'ye giriş olması gerekir. Gizli anahtarlar 128 karakterle sınırlıdır ve bu, tüm belirteçlerle uyumlu olmayabilir. Gizli anahtar yalnızca *a-z* veya *a-z* karakterleri ve *1-7*rakamları içerebilir ve *Base32*içinde kodlanmalıdır.
+
+Yeniden kullanılabilen programlanabilir OATH TOTP Donanım belirteçleri, yazılım belirteci kurulum akışında Azure AD ile de ayarlanabilir.
+
+OATH Donanım belirteçleri, genel önizlemenin bir parçası olarak desteklenir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+
+![OATH belirteçlerini MFA OATH belirteçleri dikey penceresine yükleme](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
 Belirteçler alındıktan sonra, aşağıdaki örnekte gösterildiği gibi, UPN, seri numarası, gizli anahtar, zaman aralığı, üretici ve model dahil olmak üzere bir virgülle ayrılmış değerler (CSV) dosya biçiminde karşıya yüklenmelidir:
 
@@ -116,7 +131,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 > [!NOTE]
 > Üst bilgi satırını CSV dosyanıza eklediğinizden emin olun.
 
-Bir CSV dosyası olarak düzgün biçimlendirildikten sonra, yönetici Azure Portal oturum açabilir, **Azure Active Directory**  >  **güvenlik**  >  **MFA**  >  **Oath belirteçleri**' ne gidebilir ve elde edilen CSV dosyasını karşıya yükleyebilir.
+Bir CSV dosyası olarak düzgün biçimlendirildikten sonra, bir yönetici Azure portal oturum açabilir, **Azure Active Directory > güvenlik > MFA > Oath belirteçleri**' ne gidebilir ve elde edilen CSV dosyasını karşıya yükleyebilir.
 
 CSV dosyasının boyutuna bağlı olarak, işlem birkaç dakika sürebilir. Geçerli durumu almak için **Yenile** düğmesini seçin. Dosyada herhangi bir hata varsa, çözmeniz için herhangi bir hatayı listeleyen bir CSV dosyası indirebilirsiniz. İndirilen CSV dosyasındaki alan adları karşıya yüklenen sürümden farklı.
 
@@ -133,7 +148,7 @@ Kullanıcılar ayrıca, Azure Multi-Factor Authentication veya self servis parol
 Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNumber*biçiminde olması gerekir, örneğin *+ 1 4251234567*.
 
 > [!NOTE]
-> Ülke kodu ile telefon numarası arasında bir boşluk olması gerekir.
+> Ülke/bölge kodu ve telefon numarası arasında bir boşluk olması gerekir.
 >
 > Parola sıfırlama, telefon uzantılarını desteklemez. *+ 1 4251234567X12345* biçiminde bile, çağrı yerleştirilmadan önce uzantılar kaldırılır.
 
@@ -167,7 +182,7 @@ Azure AD için telefon kimlik doğrulamasıyla ilgili sorunlar yaşıyorsanız, 
 
 * Tek bir cihazda engellenen arayan KIMLIĞI.
    * Cihazda yapılandırılan tüm engellenen numaraları gözden geçirin.
-* Yanlış telefon numarası veya yanlış ülke kodu ya da kişisel telefon numarası ile iş telefonu numarası arasında karışıklık.
+* Yanlış telefon numarası veya yanlış ülke/bölge kodu ya da kişisel telefon numarası ile iş telefonu numarası arasında karışıklık.
    * Kullanıcı nesnesi ve yapılandırılmış kimlik doğrulama yöntemleri sorunlarını giderin. Doğru telefon numaralarının kaydedildiğinden emin olun.
 * Yanlış PIN girildi.
    * Kullanıcının, hesabı için kayıtlı doğru PIN 'ı kullandığını onaylayın.

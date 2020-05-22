@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7ac085beaa85a7ddf3a6c3bfc61820e8e5a63ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8218b3dbe09e5ce7e6c28e1084b26c6eec4a16ca
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68496913"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773072"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Öğretici: Amazon Business ile Azure Active Directory tümleştirme
 
@@ -87,24 +87,22 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     
        | | |
        |-|-|
-       | `https://www.amazon.com`|
-       | `https://www.amazon.co.jp`|
-       | `https://www.amazon.de`|
+       | `https://www.amazon.com`| Kuzey Amerika |
+       | `https://www.amazon.co.jp`| Doğu Asya |
+       | `https://www.amazon.de`| Avrupa |
 
     1. **Yanıt URL 'si** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
     
        | | |
        |-|-|
-       | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
-       | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
-       | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
+       | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Kuzey Amerika |
+       | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Doğu Asya |
+       | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Avrupa |
 
        > [!NOTE]
-       > Yanıt URL 'SI değeri gerçek değil. Bu değeri gerçek yanıt URL 'siyle güncelleştirin. Bu `<idpid>` değeri, Öğreticinin ilerleyen kısımlarında açıklanan Amazon Business SSO yapılandırma bölümünden alırsınız. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+       > Yanıt URL 'SI değeri gerçek değil. Bu değeri gerçek yanıt URL 'siyle güncelleştirin. `<idpid>`Bu değeri, Öğreticinin ilerleyen kısımlarında açıklanan Amazon BUSINESS SSO yapılandırma bölümünden alırsınız. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
-
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://www.amazon.com/`
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız, Amazon Business Configuration ' da sunulan tam URL 'Yi **ek URL 'Ler ayarla** bölümünde **oturum açma URL** 'sine eklemeniz gerekir.
 
 1. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Öznitelikleri, **Kullanıcı öznitelikleri & talepler** bölümündeki **Düzenle** simgesine tıklayarak düzenleyin.
 
@@ -153,6 +151,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **SSO ayarlama** sihirbazında, Kuruluş gereksinimlerinize göre sağlayıcıyı seçin ve **İleri**' ye tıklayın.
 
     ![Varsayılan Grup](media/amazon-business-tutorial/default-group1.png)
+    
+    > [!NOTE]
+    > Microsoft ADFS listelenmiş bir seçenek olsa da Azure AD SSO ile çalışmaz.
 
 1. **Yeni Kullanıcı hesabı Varsayılanları** sihirbazında, **varsayılan grubu** seçin ve ardından kuruluşunuzda kullanıcı rolüne göre **varsayılan satın alma rolü** ' nü seçin ve **İleri**' ye tıklayın.
 
@@ -197,7 +198,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. Son olarak, **SSO bağlantı ayrıntıları** bölümünde **durum** **etkin**olarak gösterilir.
 
     ![Bağlantı](media/amazon-business-tutorial/sso-connection5.png)
-
+    
+    > [!NOTE]
+    > Uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımı tamamlayarak, Azure Portal **ek URL 'Leri ayarla** bölümünün **oturum açma URL 'si** metin kutusunda yukarıdaki ekran görüntüsünden oturum açma URL 'sini yapıştırın. Şu biçimi kullanın:
+    >
+    > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
+    
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
@@ -209,7 +215,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**' a tıklayın.
 

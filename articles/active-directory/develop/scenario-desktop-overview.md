@@ -1,5 +1,6 @@
 ---
-title: Web API 'Leri çağıran bir masaüstü uygulaması oluşturma-Microsoft Identity platform | Mavisi
+title: Web API 'Lerini çağıran bir masaüstü uygulaması oluşturun | Mavisi
+titleSuffix: Microsoft identity platform
 description: Web API 'Leri çağıran bir masaüstü uygulaması oluşturmayı öğrenin (genel bakış)
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 09cc43dec2eff48754f5a6e693badd6bb1907cce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883010"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771868"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran masaüstü uygulaması
 
@@ -26,7 +27,7 @@ Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmak için ihtiyac�
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Henüz yapmadıysanız, .NET Masaüstü hızlı başlangıcı, Evrensel Windows Platformu (UWP) hızlı başlangıcı veya macOS yerel uygulama hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluşturun:
 
@@ -50,7 +51,7 @@ Bir masaüstü uygulaması yazar ve kullanıcılara oturum açmak ve Microsoft G
   - Ya da bir .NET Core uygulaması ise ve Azure Active Directory (Azure AD) ile ilgili kimlik doğrulama etkileşiminin sistem tarayıcısında gerçekleşme olduğunu kabul ediyorsanız.
 
 - Windows barındırılan uygulamalar için, bir Windows etki alanına katılmış bilgisayarlarda çalışan uygulamalar veya Azure AD 'ye katılmış bir belirteci, tümleşik Windows kimlik doğrulaması kullanarak sessizce bir belirteç elde etmek için de mümkündür.
-- Son olarak, ancak önerilmese de, genel istemci uygulamalarında bir Kullanıcı adı ve parola kullanabilirsiniz. DevOps gibi bazı senaryolarda hala gereklidir. Bunu kullanarak uygulamanıza kısıtlamalar uygular. Örneğin, çok faktörlü kimlik doğrulaması (koşullu erişim) gerçekleştirmesi gereken bir Kullanıcı oturum açamaz. Ayrıca, uygulamanız çoklu oturum açma özelliğinden (SSO) faydalanır.
+- Son olarak, ancak önerilmese de, genel istemci uygulamalarında bir Kullanıcı adı ve parola kullanabilirsiniz. DevOps gibi bazı senaryolarda hala gereklidir. Bunu kullanarak uygulamanıza kısıtlamalar uygular. Örneğin, [çok faktörlü kimlik doğrulaması](../authentication/concept-mfa-howitworks.md) (koşullu erişim) gerçekleştirmesi gereken bir Kullanıcı oturum açamaz. Ayrıca, uygulamanız çoklu oturum açma özelliğinden (SSO) faydalanır.
 
   Bu, modern kimlik doğrulaması ilkelerine de karşı geçerlidir ve yalnızca eski nedenlerle sağlanır.
 

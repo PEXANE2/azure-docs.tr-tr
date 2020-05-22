@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 78ec45f5e6c354644e4303db53f276343225eff9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 86e1bc088c3e4327fbd0b9ad4a05e7c42c3fb776
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858841"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773498"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesi oluşturma
 
@@ -24,10 +24,20 @@ Bu öğreticide, üç bölümden biri olmak üzere, ortamınızı OpenShift 4 ç
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.0.75 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-### <a name="install-the-az-aro-extension"></a>`az aro` Uzantıyı yükler
-`az aro` Uzantı, Azure CLI kullanarak doğrudan komut satırından Azure Red Hat OpenShift kümelerini oluşturmanıza, erişimlerinize ve silmesine izin verir.
+### <a name="verify-your-permissions"></a>İzinlerinizi doğrulama
 
-`az aro` Uzantıyı yüklemek için aşağıdaki komutu çalıştırın.
+Azure Red Hat OpenShift kümesi oluşturmak için, Azure hesabınızda ve Kullanıcı üzerinde aşağıdaki izinleri doğrulayın:
+
+[!div class="mx-tdBreakAll"]
+|İzinler|VNet 'i içeren kaynak grubu|Kullanıcı yürütülüyor`az aro create`|Hizmet sorumlusu olarak geçildi`–client-id`|
+|----|:----:|:----:|:----:|
+|**Kullanıcı Erişimi Yöneticisi**|X|X| |
+|**Katkıda Bulunan**|X|X|X|
+
+### <a name="install-the-az-aro-extension"></a>Uzantıyı yükler `az aro`
+Uzantı, Azure `az aro` CLI kullanarak doğrudan komut satırından Azure Red Hat OpenShift kümelerini oluşturmanıza, erişimlerinize ve silmesine izin verir.
+
+Uzantıyı yüklemek için aşağıdaki komutu çalıştırın `az aro` .
 
 ```azurecli-interactive
 az extension add -n aro --index https://az.aroapp.io/stable
@@ -74,7 +84,7 @@ Red hat çekme gizli dizisi, kümenizin ek içerikle birlikte Red Hat kapsayıc�
 
 Kaydedilen `pull-secret.txt` dosyayı güvenli bir yerde tutun-bu, her küme oluşturmada kullanılacaktır.
 
-`az aro create` Komutunu çalıştırırken, `--pull-secret @pull-secret.txt` parametresini kullanarak çekme gizli dizinizi başvurabilirsiniz. Dosyanızı depoladığınız dizinden yürütün `az aro create` `pull-secret.txt` Aksi takdirde, `@pull-secret.txt` ile `@<path-to-my-pull-secret-file>`değiştirin.
+`az aro create`Komutunu çalıştırırken, parametresini kullanarak çekme gizli dizinizi başvurabilirsiniz `--pull-secret @pull-secret.txt` . `az aro create`Dosyanızı depoladığınız dizinden yürütün `pull-secret.txt` . Aksi takdirde, `@pull-secret.txt` ile değiştirin `@<path-to-my-pull-secret-file>` .
 
 Çekme sırlarınızı kopyalıyorsunuz veya başka betiklerin içine başvuruyorsa, çekme gizli anahtarı geçerli bir JSON dizesi olarak biçimlendirilmelidir.
 
@@ -196,12 +206,12 @@ az aro create \
   # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
-`az aro create` Komutu yürüttükten sonra, normalde bir küme oluşturmak yaklaşık 35 dakika sürer.
+Komutu yürüttükten sonra `az aro create` , normalde bir küme oluşturmak yaklaşık 35 dakika sürer.
 
 >[!IMPORTANT]
-> Özel bir etki alanı belirtmeyi seçerseniz (örneğin, **foo.example.com**) OpenShift konsolu yerleşik etki alanı `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io`yerine, gibi bir URL 'de kullanılabilir.
+> Özel bir etki alanı belirtmeyi seçerseniz (örneğin, **foo.example.com**) OpenShift Konsolu `https://console-openshift-console.apps.foo.example.com` yerleşik etki alanı yerine, gibi bir URL 'de kullanılabilir `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 >
-> Varsayılan olarak, Openshıft, üzerinde `*.apps.<random>.<location>.aroapp.io`oluşturulan tüm yollar için otomatik olarak imzalanan sertifikalar kullanır.  Kümeye bağlandıktan sonra özel DNS kullanmayı seçerseniz, giriş [denetleyiciniz için özel bır CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) ve [API sunucunuz IÇIN özel bir CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)yapılandırmak üzere OpenShift belgelerini izlemeniz gerekir.
+> Varsayılan olarak, Openshıft, üzerinde oluşturulan tüm yollar için otomatik olarak imzalanan sertifikalar kullanır `*.apps.<random>.<location>.aroapp.io` .  Kümeye bağlandıktan sonra özel DNS kullanmayı seçerseniz, giriş [denetleyiciniz için özel bır CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) ve [API sunucunuz IÇIN özel bir CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)yapılandırmak üzere OpenShift belgelerini izlemeniz gerekir.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar

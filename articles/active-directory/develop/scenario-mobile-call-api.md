@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 28f57c5657ce2f8537a654a7f67ed4481fab2c91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882701"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771749"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Mobil uygulamadan bir Web API 'SI çağırma
 
 Uygulamanız bir kullanıcıya kaydolduktan ve belirteçleri aldıktan sonra, Microsoft kimlik doğrulama kitaplığı (MSAL) Kullanıcı, kullanıcının ortamı ve verilen belirteçler hakkında bilgi gösterir. Uygulamanız, bu değerleri bir Web API 'SI çağırmak veya kullanıcıya bir hoş geldiniz iletisi göstermek için kullanabilir.
 
-Bu makalede, ilk olarak MSAL sonucuna bakacağız. Daha sonra korumalı bir Web API 'sini çağırmak için veya `AuthenticationResult` `result` ' den erişim belirtecinin nasıl kullanılacağını inceleyeceğiz.
+Bu makalede, ilk olarak MSAL sonucuna bakacağız. Daha sonra `AuthenticationResult` `result` korumalı BIR Web API 'sini çağırmak için veya ' den erişim belirtecinin nasıl kullanılacağını inceleyeceğiz.
 
 ## <a name="msal-result"></a>MSAL sonucu
 MSAL aşağıdaki değerleri sağlar: 
@@ -35,11 +35,11 @@ MSAL aşağıdaki değerleri sağlar:
 - `TenantId`kullanıcının oturum açmadığı kiracının tanımlayıcısıdır. Azure Active Directory (Azure AD) B2B 'daki Konuk kullanıcılar için bu değer, kullanıcının oturum açmakta olduğu kiracıyı tanımlar. Değer, kullanıcının ana kiracısını tanımlamaz.  
 - `Scopes`belirtecinizle verilen kapsamları gösterir. Verilen kapsamlar, istediğiniz kapsamların bir alt kümesi olabilir.
 
-MSAL Ayrıca bir `Account` değer için bir soyutlama sağlar. Bir `Account` değer, geçerli kullanıcının oturum açmış olan hesabını temsil eder:
+MSAL Ayrıca bir değer için bir soyutlama sağlar `Account` . Bir `Account` değer, geçerli kullanıcının oturum açmış olan hesabını temsil eder:
 
 - `HomeAccountIdentifier`kullanıcının ana kiracısını tanımlar.
 - `UserName`kullanıcının tercih ettiği kullanıcı adıdır. Azure AD B2C kullanıcılar için bu değer boş olabilir.
-- `AccountIdentifier`oturum açmış kullanıcıyı tanımlar. Çoğu durumda, Kullanıcı başka bir kiracıda Konuk olmadığı sürece `HomeAccountIdentifier` bu değer değeri ile aynıdır.
+- `AccountIdentifier`oturum açmış kullanıcıyı tanımlar. Çoğu durumda, `HomeAccountIdentifier` Kullanıcı başka bir kiracıda Konuk olmadığı sürece bu değer değeri ile aynıdır.
 
 ## <a name="call-an-api"></a>API çağırma
 
@@ -87,7 +87,7 @@ Erişim belirtecine sahip olduktan sonra, bir Web API 'SI çağırabilirsiniz. U
 
 ### <a name="msal-for-ios-and-macos"></a>iOS ve macOS için MSAL
 
-Belirteçleri elde etmek için yöntemler bir `MSALResult` nesne döndürür. `MSALResult`bir `accessToken` özellik sunar. Bir Web API `accessToken` 'sini çağırmak için ' i kullanabilirsiniz. Korumalı Web API 'sine erişmek için çağrı yapmadan önce bu özelliği HTTP yetkilendirme üstbilgisine ekleyin.
+Belirteçleri elde etmek için yöntemler bir `MSALResult` nesne döndürür. `MSALResult`bir `accessToken` özellik sunar. `accessToken`Bir Web API 'sini çağırmak için ' i kullanabilirsiniz. Korumalı Web API 'sine erişmek için çağrı yapmadan önce bu özelliği HTTP yetkilendirme üstbilgisine ekleyin.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -125,7 +125,7 @@ Aynı API 'yi birkaç kez çağırmanız gerekiyorsa veya birden çok API çağ�
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Artımlı onay ve koşullu erişim kullanarak birkaç API çağırın
 
-Aynı kullanıcı için birden çok API çağırmanız gerekiyorsa, Kullanıcı için bir belirteç aldıktan sonra, daha sonra bir belirteç almak üzere çağırarak `AcquireTokenSilent` kullanıcıdan kimlik bilgilerini tekrar tekrar sormaktan kaçınabilirsiniz:
+Aynı kullanıcı için birden çok API çağırmanız gerekiyorsa, Kullanıcı için bir belirteç aldıktan sonra, daha sonra `AcquireTokenSilent` bir belirteç almak üzere çağırarak kullanıcıdan kimlik bilgilerini tekrar tekrar sormaktan kaçınabilirsiniz:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -138,7 +138,7 @@ result = await app.AcquireTokenSilent("scopeApi2")
 Şu durumlarda etkileşim gerekir:
 
 - Kullanıcı ilk API 'ye onay verdi, ancak şimdi daha fazla kapsam için onay gerektirir. Bu durumda, artımlı onay kullanırsınız.
-- İlk API çok faktörlü kimlik doğrulaması gerektirmez, ancak sonraki API.
+- İlk API [çok faktörlü kimlik doğrulaması](../authentication/concept-mfa-howitworks.md)gerektirmez, ancak sonraki API.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

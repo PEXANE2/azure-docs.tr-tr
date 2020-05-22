@@ -4,12 +4,12 @@ description: Bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmak için Azure 
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 5f7bf75598c09c5c8c0654f7db863068f9e7be7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7fa547ca8a3907669c9e7671b11fe3a6307d97f4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128856"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773432"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
@@ -74,7 +74,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
-Azure Portal sol üst köşesinde **kaynak** > oluştur**Kubernetes hizmeti**' ni seçin.
+Azure Portal sol üst köşesinde **kaynak oluştur**  >  **Kubernetes hizmeti**' ni seçin.
 
 **Temel bilgiler** sayfasında, aşağıdaki seçenekleri yapılandırın:
 
@@ -101,7 +101,7 @@ AKS kümesinin oluşturulması ve kullanıma hazır olması birkaç dakika süre
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Bir Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi [kubectl][kubectl]’i kullanın. `kubectl` istemcisi Azure Cloud Shell’de önceden yüklüdür.
 
-Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 [az aks get-credentials][az-aks-get-credentials] komutunu kullanarak, `kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırın. Aşağıdaki örnek *myResourceGroup* adlı kaynak grubu içindeki *myAKSCluster* adlı kümenin kimlik bilgilerini alır:
 
@@ -125,7 +125,7 @@ aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Örnek uygulama dağıtma
 
-Azure Cloud Shell, aşağıdaki YAML 'de adlı `virtual-node.yaml` bir dosya oluşturun ve kopyalayın. Düğüm üzerinde kapsayıcıyı zamanlamak için bir [Nodeselector][node-selector] ve [toleranation][toleration] tanımlanmıştır. Bu ayarlar, Pod 'ın sanal düğümde zamanlanmasını sağlar ve özelliğin başarıyla etkinleştirildiğini doğrulayın.
+Azure Cloud Shell, `virtual-node.yaml` aşağıdaki YAML 'de adlı bir dosya oluşturun ve kopyalayın. Düğüm üzerinde kapsayıcıyı zamanlamak için bir [Nodeselector][node-selector] ve [toleranation][toleration] tanımlanmıştır. Bu ayarlar, Pod 'ın sanal düğümde zamanlanmasını sağlar ve özelliğin başarıyla etkinleştirildiğini doğrulayın.
 
 ```yaml
 apiVersion: apps/v1
@@ -154,8 +154,6 @@ spec:
       tolerations:
       - key: virtual-kubelet.io/provider
         operator: Exists
-      - key: azure.com/aci
-        effect: NoSchedule
 ```
 
 Uygulamayı [kubectl Apply][kubectl-apply] komutuyla çalıştırın.
@@ -164,7 +162,7 @@ Uygulamayı [kubectl Apply][kubectl-apply] komutuyla çalıştırın.
 kubectl apply -f virtual-node.yaml
 ```
 
-[Kubectl Get Pod][kubectl-get] komutunu `-o wide` bağımsız değişkenle birlikte kullanarak bir pod ve zamanlanan düğüm listesini çıkış. `virtual-node-helloworld` Pod 'ın `virtual-node-linux` düğüm üzerinde zamanlandığına dikkat edin.
+[Kubectl Get Pod][kubectl-get] komutunu bağımsız değişkenle birlikte kullanarak `-o wide` bir pod ve zamanlanan düğüm listesini çıkış. `virtual-node-helloworld`Pod 'ın düğüm üzerinde zamanlandığına dikkat edin `virtual-node-linux` .
 
 ```console
 kubectl get pods -o wide
@@ -178,7 +176,7 @@ virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m      
 Pod 'a sanal düğümlerle kullanılmak üzere atanan Azure sanal ağ alt ağından bir iç IP adresi atanır.
 
 > [!NOTE]
-> Azure Container Registry depolanan görüntüleri kullanıyorsanız, [bir Kubernetes gizli anahtarını yapılandırın ve kullanın][acr-aks-secrets]. Sanal düğümlerin geçerli sınırlaması, tümleşik Azure AD hizmet sorumlusu kimlik doğrulamasını kullanamıyoruz. Gizli anahtar kullanmıyorsanız, sanal düğümlerde zamanlanan Pod 'ler başlatılamaz ve hatayı `HTTP response status code 400 error code "InaccessibleImage"`bildirebilir.
+> Azure Container Registry depolanan görüntüleri kullanıyorsanız, [bir Kubernetes gizli anahtarını yapılandırın ve kullanın][acr-aks-secrets]. Sanal düğümlerin geçerli sınırlaması, tümleşik Azure AD hizmet sorumlusu kimlik doğrulamasını kullanamıyoruz. Gizli anahtar kullanmıyorsanız, sanal düğümlerde zamanlanan Pod 'ler başlatılamaz ve hatayı bildirebilir `HTTP response status code 400 error code "InaccessibleImage"` .
 
 ## <a name="test-the-virtual-node-pod"></a>Sanal düğüm Pod 'u test etme
 
@@ -188,13 +186,13 @@ Sanal düğümde çalışan Pod 'u test etmek için, bir web istemcisiyle tanıt
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
-Şunu `curl` kullanarak `apt-get`Pod 'a yüklensin:
+Şunu `curl` kullanarak Pod 'a yüklensin `apt-get` :
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Artık, kullanarak `curl`Pod 'nizin adresine erişin *http://10.241.0.4*. Önceki `kubectl get pods` komutta gösterilen kendı iç IP adresini belirtin:
+Artık, kullanarak Pod 'nizin adresine erişin `curl` *http://10.241.0.4* . Önceki komutta gösterilen kendi iç IP adresini belirtin `kubectl get pods` :
 
 ```console
 curl -L http://10.241.0.4
@@ -210,7 +208,7 @@ Demo uygulaması aşağıdaki sıkıştırılmış örnek çıktıda gösterildi
 [...]
 ```
 
-İle `exit`test Pod 'unuzla Terminal oturumunu kapatın. Oturumunuz sona erdikten sonra Pod silinir.
+İle test Pod 'unuzla Terminal oturumunu kapatın `exit` . Oturumunuz sona erdikten sonra Pod silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

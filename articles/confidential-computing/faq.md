@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: e9cb691ef60f612672078a9ef84db904c79cbc87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb821d00a168e3b8f0636b93696376dc8b5d492e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189454"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772907"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure gizli bilgi Işlem için sık sorulan sorular
 
@@ -23,41 +23,45 @@ Azure sorununuz bu makalede giderilmemişse, [MSDN ve Stack Overflow](https://az
 
 ## <a name="confidential-computing-virtual-machines"></a>Gizli Bilgi Işlem sanal makineleri<a id="vm-faq"></a>
 
-1. **DCsv2 serisi VM 'Leri dağıtmaya nasıl başlayabilmeniz gerekir?**
+**Azure 'da DCsv2 serisi VM 'Leri nasıl dağıtırım?**
 
-   Bir DCsv2 VM dağıtımı için bazı yollar şunlardır:
+Bir DCsv2 VM dağıtımı için bazı yollar şunlardır:
    - [Azure Resource Manager şablonu](../virtual-machines/windows/template-description.md) kullanma
    - [Azure Portal](https://portal.azure.com/#create/hub)
    - [Azure gizli bilgi işlem (sanal makine)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) marketi çözüm şablonunda. Market çözüm şablonu, bir müşteriyi desteklenen senaryolara (bölgeler, görüntüler, kullanılabilirlik, disk şifrelemesi) karşı sınırlandırılmasına yardımcı olur. 
 
-1. **Tüm işletim sistemi görüntüleri Azure gizli bilgi işlem ile çalışacak mı?**
+**Tüm işletim sistemi görüntüleri Azure gizli bilgi işlem ile çalışacak mı?**
 
-   Hayır. Sanal makineler yalnızca 2. nesil sanal makinelere dağıtılabilir. Ubuntu Server 18,04, Ubuntu Server 16,04 ve Windows Server 2016 Datacenter için 2. nesil destek sunuyoruz. [Linux](../virtual-machines/linux/generation-2.md) ve [Windows](../virtual-machines/windows/generation-2.md) üzerinde gen 2 VM 'ler hakkında daha fazla bilgi edinin
+Hayır. Sanal makineler yalnızca Ubuntu Server 18,04, Ubuntu Server 16,04, Windows Server 2019 Datacenter ve Windows Server 2016 Datacenter ile 2. nesil işletim makinelerine dağıtılabilir. [Linux](../virtual-machines/linux/generation-2.md) ve [Windows](../virtual-machines/windows/generation-2.md) üzerinde gen 2 VM 'ler hakkında daha fazla bilgi edinin
 
-1. **DCsv2 sanal makineler portalda gri renkte bulunur ve bir tane seçemiyorum**
+**DCsv2 sanal makineler portalda gri renkte bulunur ve bir tane seçemiyorum**
 
-   VM 'nin yanındaki bilgi kabarcığa göre gerçekleştirilecek farklı eylemler vardır:
-    -   **Unsupportedgeneration**: sanal makine görüntüsünün neslini "Gen2" olarak değiştirin.
-    -   **NotAvailableForSubscription** : bölge, aboneliğiniz için henüz kullanılamıyor. Kullanılabilir bir bölge seçin.
-    -   **InsufficientQuota**: [kotayı artırmak için bir destek isteği oluşturun](../azure-portal/supportability/per-vm-quota-requests.md). Ücretsiz deneme aboneliklerinin, gizli bilgi işlem VM 'Leri için kotası yoktur. 
+VM 'nin yanındaki bilgi kabarcığa göre gerçekleştirilecek farklı eylemler vardır:
+   -    **Unsupportedgeneration**: sanal makine görüntüsünün neslini "Gen2" olarak değiştirin.
+   -    **NotAvailableForSubscription**: bölge, aboneliğiniz için henüz kullanılamıyor. Kullanılabilir bir bölge seçin.
+   -    **InsufficientQuota**: [kotayı artırmak için bir destek isteği oluşturun](../azure-portal/supportability/per-vm-quota-requests.md). Ücretsiz deneme aboneliklerinin, gizli bilgi işlem VM 'Leri için kotası yoktur. 
 
-1. **DCsv2 sanal makineler, Portal boyut Seçicisi 'nde arama yapmayı denediğimde gösterilmez**
+**DCsv2 sanal makineler, Portal boyut Seçicisi 'nde arama yapmayı denediğimde gösterilmez**
 
-   Kullanılabilir bir bölge seçtiğinizden emin olun. Ayrıca, boyut seçicisindeki "tüm filtreleri temizle" yi seçtiğinizden emin olun. 
+[Kullanılabilir bir bölge](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)seçtiğinizden emin olun. Ayrıca, boyut seçicisindeki "tüm filtreleri temizle" yi seçtiğinizden emin olun. 
 
-1. **DCsv2 serisi ve DC Serisi VM 'Ler arasındaki fark nedir?**
+**Bir Azure Resource Manager şablonu dağıtım hatası hatası alıyorum: "onaylanan standart DcsV2 ailesi çekirdek kotasının aşıldığı için Işlem tamamlanamadı"**
 
-   DC Serisi VM 'Ler, Intel SGX ile daha eski 6 çekirdekli Intel Işlemcilerde çalışır. Bunlar, daha az toplam belleğe sahiptir, daha az EPC (şifreleme sayfası Kamage) belleğine sahiptir ve daha az bölgede kullanılabilir. Bu VM 'Ler yalnızca ABD Doğu kullanılabilir ve Batı Batı, iki boyutta sunulmaktadır: Standard_DC2s ve Standard_DC4s. Bunlar GA 'ye gitmeyecektir ve yalnızca [gizli Işlem DC-SERIES VM [Önizleme]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Market örneğinde dağıtılabilir
+[Kotayı artırmak için bir destek Isteği oluşturun](../azure-portal/supportability/per-vm-quota-requests.md). Ücretsiz deneme aboneliklerinin, gizli bilgi işlem VM 'Leri için kotası yoktur. 
 
-1. **DCsv2 sanal makineleri küresel olarak kullanılabilir mi?**
+**DCsv2 serisi ve DC Serisi VM 'Ler arasındaki fark nedir?**
 
-   Hayır, bu sanal makineler yalnızca seçim bölgelerinde kullanılabilir. Kullanılabilir en son bölgeler için [ürünleri bölgelere göre sayfasına](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) göz atın. 
+DC Serisi VM 'Ler, Intel SGX ile daha az toplam bellek, daha az şifreleme sayfa önbelleği (EPC) belleğine sahiptir ve yalnızca iki bölgede (ABD Doğu ve Standard_DC2s ve Standard_DC4s boyutlarda Avrupa Batı) kullanılabilir. Bu VM 'Lerin genel kullanıma açık hale getirilmesi planlanmamaktadır ve üretim kullanımı için önerilmez. Bu VM 'Leri dağıtmak için [Gizli Bilgi Işlem DC-SERIES VM [Önizleme]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Market örneğini kullanın.
 
-1. **Açık şifreleme SDK 'sını Nasıl yaparım? mi?**
+**DCsv2 sanal makineleri küresel olarak kullanılabilir mi?**
+
+Hayır. Şu anda, bu sanal makineler yalnızca seçim bölgelerinde kullanılabilir. Kullanılabilir en son bölgeler için [ürünleri bölgelere göre sayfasına](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) göz atın. 
+
+**DCsv2 sanal makinelerine açık şifreleme SDK 'sını Yükleme Nasıl yaparım??**
    
-   Azure 'da veya şirket içinde bulunan bir makineye OE SDK 'nın nasıl yükleneceğine ilişkin yönergeler için [Open Enclave SDK GitHub](https://github.com/openenclave/openenclave)' daki yönergeleri izleyin.
+Azure veya şirket içi bir makineye OE SDK 'Yı yükleme yönergeleri için, [Open Enclave SDK GitHub](https://github.com/openenclave/openenclave)' da yer alan yönergeleri izleyin.
      
-   Ayrıca, işletim sistemine özgü yükleme yönergeleri için açık şifreleme SDK GitHub ' a da gidebilirsiniz:
-     - [Windows 'a OE SDK 'Yı yükler](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)
-     - [Ubuntu 18,04 ' ye OE SDK 'Yı kurma](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)
-     - [Ubuntu 16,04 ' ye OE SDK 'Yı kurma](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md)
+Ayrıca, işletim sistemine özgü yükleme yönergeleri için açık şifreleme SDK GitHub ' a bakabilirsiniz:
+   - [Windows 'a OE SDK 'Yı yükler](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)
+   - [Ubuntu 18,04 ' ye OE SDK 'Yı kurma](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)
+   - [Ubuntu 16,04 ' ye OE SDK 'Yı kurma](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md)

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d6212692465270182db541889bed5f03a08a345
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa952e0a237ca30a3bd109f51ee45c2f4dafa533
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74008283"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758274"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile Azure AD etkinlik günlüklerini çözümleme
 
@@ -47,7 +47,7 @@ Bu arada izlemek için şunlar gerekir:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Log Analytics çalışma alanına gidin
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
 2. **Azure Active Directory**' yi seçin ve sonra Log Analytics çalışma alanınızı açmak için **izleme** bölümünde **Günlükler** ' i seçin. Çalışma alanı varsayılan bir sorgu ile açılır.
 
@@ -61,7 +61,7 @@ Günlükler, çalışma alanındaki **auditlogs** ve **signınlogs** tabloların
 1. Önceki bölümde bulunan varsayılan sorgu görünümünden **şema** ' ı seçin ve çalışma alanını genişletin. 
 
 2. Günlük **yönetimi** bölümünü genişletin ve ardından günlük şemasını görüntülemek Için **Auditlogs** veya **signınlogs** seçeneklerinden birini genişletin.
-    ![Denetim günlükleri](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![oturum açma günlükleri](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
+    ![Denetim günlükleri oturum ](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![ açma günlükleri](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>Azure AD etkinlik günlüklerini sorgulama
 

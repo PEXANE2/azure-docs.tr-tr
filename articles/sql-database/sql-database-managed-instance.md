@@ -3,7 +3,7 @@ title: SQL yönetilen örneğine genel bakış
 description: Bu makalede Azure SQL veritabanı yönetilen örneği açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: cce871d2f38d7871bd1ba9c5cb7b086e514a6913
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 55e56d918b1e0c16887f069713203a7e4701baaf
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120802"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772327"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği nedir?
 
@@ -63,7 +63,7 @@ Yönetilen örneklerin temel özellikleri aşağıdaki tabloda gösterilmiştir:
 | Veritabanı başına veri dosyası (satır) sayısı | Birden çok |
 | Veritabanı başına günlük dosyası (günlük) sayısı | 1 |
 | VNet-Azure Resource Manager dağıtımı | Yes |
-| VNet-klasik dağıtım modeli | Hayır |
+| VNet-klasik dağıtım modeli | No |
 | Portal desteği | Yes|
 | Yerleşik tümleştirme hizmeti (SSIS) | No-SSIS [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) 'in bir parçasıdır |
 | Yerleşik analiz hizmeti (SSAS) | Hayır-SSAS ayrı [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
@@ -151,13 +151,13 @@ Aşağıdaki tabloda işlemler ve genel toplam süreler özetlenmektedir:
 |Dağıtım |Boş veya boş olmayan bir alt ağda 4 sanal çekirdekler için ilk örnek oluşturma|Sanal küme oluşturma * *|işlemlerin %90 ' i 4 saat içinde sona ermesini|
 |Dağıtım |Boş olmayan alt ağ içinde sonraki örnek oluşturma (2., üçüncü, vb. örnek)|Sanal küme yeniden boyutlandırma|2,5 saat içinde işlem bitiş %90|
 |**Güncelleştir** |Örnek özelliği değişikliği (yönetici parolası, AAD oturum açma, Azure Hibrit Avantajı bayrağı)|Yok|En fazla 1 dakika|
-|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı hizmet katmanı)|Veritabanı dosyalarını iliştirme|İşlem %90, 5 dakika içinde tamamlanır|
-|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik hizmet katmanı)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
-|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma<br>-Veritabanı dosyaları iliştirme|2,5 saat içinde işlem bitiş %90|
-|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
-|Güncelleştirme |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Veritabanı dosyaları iliştirme|işlemin %90 ' u 4 saat 5 dakika içinde tamamlanır * *|
-|Güncelleştirme |Örnek ölçeği 4 sanal çekirdeğe kadar (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm 220 veritabanlarının çekirdeğini sağlamak için 5 saat + saat ile sona|
-|Güncelleştirme |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı hizmet katmanı)|Veritabanı dosyalarını iliştirme|İşlem %90, 5 dakika içinde tamamlanır|
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik hizmet katmanı)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma<br>-Veritabanı dosyaları iliştirme|2,5 saat içinde işlem bitiş %90|
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
+|Güncelleştir |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Veritabanı dosyaları iliştirme|işlemin %90 ' u 4 saat 5 dakika içinde tamamlanır * *|
+|Güncelleştir |Örnek ölçeği 4 sanal çekirdeğe kadar (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm 220 veritabanlarının çekirdeğini sağlamak için 5 saat + saat ile sona|
+|Güncelleştir |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
 |**Silme**|Örnek silme|Tüm veritabanları için günlük kuyruğu yedeklemesi|%90 işlem en fazla 1 dakika içinde tamamlanır.<br>Note: alt ağdaki son örnek silinirse, bu işlem 12 saat sonra sanal küme silmeyi zamanlar * * *|
 |Silme|Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak)|Sanal küme silme|İşlem %90, en fazla 1,5 saat içinde tamamlanır|
 
@@ -199,14 +199,14 @@ Aşağıdaki tablo belirli yönetim işlemlerini iptal etme ve genel toplam sür
 
 Kategori  |İşlem  |İptal edilebilir  |Tahmini iptal süresi  |
 |---------|---------|---------|---------|
-|Dağıtım |Örnek oluşturma |Hayır |  |
-|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı) |Hayır |  |
-|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
-|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
-|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
-|Güncelleştirme |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
-|Sil |Örnek silme |Hayır |  |
-|Sil |Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak) |Hayır |  |
+|Dağıtım |Örnek oluşturma |No |  |
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı) |No |  |
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
+|Güncelleştir |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
+|Sil |Örnek silme |No |  |
+|Sil |Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak) |No |  |
 
 Yönetim işlemini iptal etmek için genel bakış dikey penceresine gidin ve devam eden işlem bildirim kutusu ' na tıklayın. Sağ taraftan, devam eden bir ekran görüntülenir ve işlemi iptal etmek için düğme olacaktır. İlk tıkladıktan sonra yeniden tıklamalısınız ve işlemi iptal etmek istediğinizi onaylamanız istenir.
 
@@ -332,7 +332,7 @@ Yönetilen örnek dağıtım seçeneği, SQL veritabanı hizmeti bunları sizin 
 
 Aşağıdaki tabloda Transact SQL aracılığıyla erişilebilen, uygulamanızın yönetilen örnekle çalıştığını tespit etmek ve önemli özellikleri almak için kullanabileceğiniz çeşitli özellikler gösterilmektedir.
 
-|Özellik|Değer|Açıklama|
+|Özellik|Değer|Yorum|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM)-12.0.2000.8 2018-03-07 telif hakkı (C) 2018 Microsoft Corporation.|Bu değer SQL veritabanı ile aynıdır. Bu SQL Engine sürüm 12 ' i (SQL Server 2014 **) göstermez.** Yönetilen örnek, SQL Server en son kullanılabilir RTM sürümüne eşit veya ondan yüksek olan en son kararlı SQL altyapısı sürümünü her zaman çalıştırır.  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Bu değer SQL veritabanı ile aynıdır.|

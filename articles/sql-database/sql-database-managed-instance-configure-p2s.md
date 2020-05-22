@@ -3,7 +3,7 @@ title: P2S tarafından yönetilen örneği yapılandırma
 description: Şirket içi istemci bilgisayardan Noktadan siteye bağlantı kullanarak SQL Server Management Studio kullanarak Azure SQL veritabanı yönetilen örneğine bağlanın.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 434b3d46d19138b494c9e29add3affb2eecc9c45
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268892"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773748"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Hızlı başlangıç: şirket içi Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırma
 
@@ -54,7 +54,7 @@ Bu hızlı başlangıç:
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
 
-3. Betiği PowerShell pencerenize yapıştırın ve gerekli parametreleri sağlayın. `<subscriptionId>`, `<resourceGroup>`Ve `<virtualNetworkName>` değerlerinin, [yönetilen örnek oluşturma](sql-database-managed-instance-get-started.md) hızlı başlangıcı için kullandığınız olanlarla eşleşmesi gerekir. Değeri `<certificateNamePrefix>` , tercih ettiğiniz bir dize olabilir.
+3. Betiği PowerShell pencerenize yapıştırın ve gerekli parametreleri sağlayın. `<subscriptionId>`, Ve değerlerinin, `<resourceGroup>` `<virtualNetworkName>` [yönetilen örnek oluşturma](sql-database-managed-instance-get-started.md) hızlı başlangıcı için kullandığınız olanlarla eşleşmesi gerekir. Değeri, `<certificateNamePrefix>` tercih ettiğiniz bir dize olabilir.
 
 4. PowerShell betiğini yürütün.
 
@@ -63,7 +63,7 @@ Bu hızlı başlangıç:
 
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>Yönetilen örneğiniz için bir VPN bağlantısı oluşturma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Sanal ağ geçidini oluşturduğunuz kaynak grubunu açın ve sonra sanal ağ geçidi kaynağını açın.
 3. **Noktadan siteye yapılandırma** ' yı seçin ve ardından **VPN istemcisini indir**' i seçin.
 
@@ -81,7 +81,7 @@ Bu hızlı başlangıç:
 1. Şirket içi istemci bilgisayarınızda **ağ & Internet** 'Te bulunan **VPN** 'ye gidin ve bu VNET Ile bağlantı kurmak için yönetilen örnek Sanal ağınızı seçin. Aşağıdaki görüntüde VNet, **Mynewvnet**olarak adlandırılmıştır.
 
     ![VPN bağlantısı](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
-2. **Bağlan**’ı seçin.
+2. **Bağlan**'ı seçin.
 3. İletişim kutusunda **Bağlan**' ı seçin.
 
     ![VPN bağlantısı](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  

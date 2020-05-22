@@ -8,20 +8,20 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: e574ac33e5f7da814c4bd813fc1c083c7cb4c2c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187894"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773143"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure sanal makinelerinde çözümler
 
 Bu makalede, [Intel Software Guard uzantısı](https://software.intel.com/sgx) (Intel SGX) tarafından desteklenen Intel Işlemcileri çalıştıran Azure gizli bilgi işlem sanal makinelerini (VM 'ler) dağıtma hakkında bilgiler yer almaktadır. 
 
-## <a name="azure-confidential-computing-vm-sizes"></a>Azure gizli bilgi işlem VM boyutları
+## <a name="azure-confidential-computing-vm-sizes"></a>Azure gizli bilgi işlem VM'si boyutları
 
-Azure gizli bilgi işlem sanal makineleri, bulutta işlendiği sırada verilerinizin ve kodunuzun confidentially ve bütünlüğünü korumak için tasarlanmıştır 
+Azure gizli bilgi işlem sanal makineleri, bulutta işlendiği sırada verilerinizin ve kodunuzun gizliliğini ve bütünlüğünü korumak için tasarlanmıştır 
 
 [DCsv2 serisi](../virtual-machines/dcv2-series.md) VM 'Ler en son ve en son gizli bilgi işlem boyutu ailesidir. Bu VM 'Ler daha büyük bir dağıtım özelliği yelpazesi destekler, 2x disk belleği önbelleği (EPC) ve DC Serisi VM 'lerimize kıyasla daha büyük bir boyut seçimi vardır. [DC Serisi](../virtual-machines/sizes-previous-gen.md#preview-dc-series) VM 'ler Şu anda önizleme aşamasındadır ve genel kullanıma sunulmayacak ve kullanım dışı bırakılacak.
 
@@ -39,7 +39,7 @@ az vm list-skus
     --output table
 ```
 
-2020 Nisan itibariyle, bu SKU 'Lar aşağıdaki bölgelerde ve kullanılabilirlik bölgelerinde kullanılabilir:
+Mayıs 2020 itibariyle, bu SKU 'Lar aşağıdaki bölgelerde ve kullanılabilirlik bölgelerinde kullanılabilir:
 
 ```output
 Name              Locations      AZ_a
@@ -86,7 +86,7 @@ az vm list-skus
   
 - **Yeniden boyutlandırma** – özel donanımlar nedeniyle, yalnızca aynı büyüklükte aile içindeki gizli bilgi işlem örneklerini yeniden boyutlandırabilirsiniz. Örneğin, bir DCsv2 serisi VM 'yi yalnızca bir DCsv2 serisi boyutundan diğerine yeniden boyutlandırabilirsiniz. Gizli olmayan bir bilgi işlem boyutunun gizli bilgi işlem boyutuna göre yeniden boyutlandırılması desteklenmez.  
 
-- **Görüntü** : gizli bilgi işlem örnekleri üzerinde Intel Software Guard uzantısı (Intel SGX) desteği sağlamak için, tüm dağıtımların 2. nesil görüntülerde çalıştırılması gerekir. Azure gizli bilgi işlem, Ubuntu 18,04 Gen 2, Ubuntu 16,04 Gen 2 ve Windows Server 2016 Gen 2 üzerinde çalışan iş yüklerini destekler. Desteklenen ve desteklenmeyen senaryolar hakkında daha fazla bilgi edinmek için [Azure 'da 2. nesil VM 'ler için destek](../virtual-machines/linux/generation-2.md) konusunu okuyun. 
+- **Görüntü** : gizli bilgi işlem örnekleri üzerinde Intel Software Guard uzantısı (Intel SGX) desteği sağlamak için, tüm dağıtımların 2. nesil görüntülerde çalıştırılması gerekir. Azure gizli bilgi işlem, Ubuntu 18,04 Gen 2, Ubuntu 16,04 Gen 2, Windows Server 2019 Gen2 ve Windows Server 2016 Gen 2 ' de çalışan iş yüklerini destekler. Desteklenen ve desteklenmeyen senaryolar hakkında daha fazla bilgi edinmek için [Azure 'da 2. nesil VM 'ler için destek](../virtual-machines/linux/generation-2.md) konusunu okuyun. 
 
 - **Depolama** – Azure gizli bilgi işlem sanal makine veri diskleri ve kısa ömürlü işletim sistemi disklerimiz NVMe disklerinde. Örnekler, Ultra SSD veya Standart HDD değil yalnızca Premium SSD ve Standart SSD disklerini destekler. Sanal makine boyutu **DC8_v2** Premium depolamayı desteklemez. 
 
@@ -100,15 +100,15 @@ Azure gizli bilgi işlem, şu anda Kullanılabilirlik Alanları aracılığıyla
 
 ## <a name="deploying-via-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu aracılığıyla dağıtma 
 
-Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure aboneliğinizde kaynak oluşturmanıza, güncelleştirmenize ve silmenizi sağlayan bir yönetim katmanı sağlar. Dağıtımdan sonra kaynaklarınızı güvenli hale getirmek ve düzenlemek için erişim denetimi, kilitler ve Etiketler gibi yönetim özelliklerini kullanırsınız.
+Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure aboneliğinizde kaynak oluşturmanıza, güncelleştirmenize ve silmenizi sağlayan bir yönetim katmanı sağlar. Dağıtımdan sonra kaynaklarınızı güvenli hale getirmek ve düzenlemek için erişim denetimi, kilitler ve Etiketler gibi yönetim özelliklerini kullanabilirsiniz.
 
 Azure Resource Manager şablonları hakkında bilgi edinmek için bkz. [şablon dağıtımı genel bakış](../azure-resource-manager/templates/overview.md).
 
-ARM şablonunda bir DCsv2 serisi VM dağıtmak için [sanal makine kaynağını](../virtual-machines/windows/template-description.md)kullanacaksınız. **VMSize** ve **ImageReference**için doğru özellikleri belirttiğinizden emin olmanız gerekir.
+Bir Azure Resource Manager şablonunda bir DCsv2 serisi VM dağıtmak için [sanal makine kaynağını](../virtual-machines/windows/template-description.md)kullanacaksınız. **VMSize** ve **ImageReference**için doğru özellikleri belirttiğinizden emin olun.
 
 ### <a name="vm-size"></a>VM Boyutu
 
-Sanal makine kaynağında ARM şablonunuzda aşağıdaki boyutlardan birini belirtin. Bu dize, **özelliklerde** **VMSize** olarak konur.
+Sanal makine kaynağında Azure Resource Manager şablonunuzda aşağıdaki boyutlardan birini belirtin. Bu dize, **özelliklerde** **VMSize** olarak konur.
 
 ```json
   [
@@ -124,6 +124,12 @@ Sanal makine kaynağında ARM şablonunuzda aşağıdaki boyutlardan birini beli
 **Özellikler**altında, **storageprofile**altındaki bir görüntüye de başvurmanız gerekir. **ImageReference**için aşağıdaki görüntülerden *yalnızca birini* kullanın.
 
 ```json
+      "2019-datacenter-gensecond": {
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2019-datacenter-gensecond",
+        "version": "latest"
+      },
       "2016-datacenter-gensecond": {
         "offer": "WindowsServer",
         "publisher": "MicrosoftWindowsServer",
@@ -146,7 +152,7 @@ Sanal makine kaynağında ARM şablonunuzda aşağıdaki boyutlardan birini beli
 
 ## <a name="next-steps"></a>Sonraki Adımlar 
 
-Bu makalede, gizli bilgi işlem sanal makinesi oluştururken gereken nitelikleri ve konfigürasyonları öğrenmiş olursunuz. Artık bir DCsv2 serisi VM dağıtmak için Azure Market ' e gidebilirsiniz.
+Bu makalede, gizli bilgi işlem sanal makinesi oluştururken gereken niteliklerin ve yapılandırmaların öğrenildiği hakkında bilgi edindiniz. Artık bir DCsv2 serisi VM dağıtmak için Microsoft Azure Market gidebilirsiniz.
 
 > [!div class="nextstepaction"]
 > [Azure Marketi 'nde DCsv2 serisi bir sanal makine dağıtma](quick-create-marketplace.md)

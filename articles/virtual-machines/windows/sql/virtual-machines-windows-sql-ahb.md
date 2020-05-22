@@ -14,14 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 502d1fe599accb29ccc99c9e527f8d1c8e1d52b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6f05b96eb856e7d2f2b79141e8da1203408f892
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201840"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771443"
 ---
-# <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure 'da SQL Server bir sanal makine için lisans modelini değiştirme
+# <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure'da SQL Server sanal makinesi için lisans modelini değiştirme
 Bu makalede, Azure 'daki bir SQL Server sanal makinesi (VM) için lisans modelinin, **Microsoft. SqlVirtualMachine**ADLı yenı SQL VM kaynak sağlayıcısı kullanılarak nasıl değiştirileceği açıklanır.
 
 SQL Server barındıran bir VM için üç lisans modeli vardır: Kullandıkça öde, Azure Hibrit Avantajı ve olağanüstü durum kurtarma (DR). SQL Server VM lisans modelini, Azure portal, Azure CLı veya PowerShell kullanarak değiştirebilirsiniz. 
@@ -40,7 +40,7 @@ Bir Azure sanal makinesinde SQL Server için Azure Hibrit Avantajı kullanımın
 - Azure Marketi 'nden Kullandıkça Öde SQL Server görüntüsünü kullanarak bir sanal makine sağlayın ve Azure Hibrit Avantajı etkinleştirin.
 - Azure VM 'de kendi kendine SQL Server, [SQL VM kaynak sağlayıcısına](virtual-machines-windows-sql-register-with-resource-provider.md)el ile kaydolun ve Azure hibrit avantajı etkinleştirin.
 
-SQL Server lisans türü, VM sağlandığında ayarlanır. Daha sonra istediğiniz zaman değiştirebilirsiniz. Lisans modelleri arasında geçiş kesinti olmaz, VM 'yi veya SQL Server hizmetini yeniden başlatmaz, hiçbir ek maliyet eklemez ve hemen geçerli olur. Aslında Azure Hibrit Avantajı etkinleştirilmesi maliyeti *azaltır* .
+SQL Server lisans türü, VM sağlandığında veya daha sonra dilediğiniz zaman yapılandırılabilir. Lisans modelleri arasında geçiş kesinti olmaz, VM 'yi veya SQL Server hizmetini yeniden başlatmaz, hiçbir ek maliyet eklemez ve hemen geçerli olur. Aslında Azure Hibrit Avantajı etkinleştirilmesi maliyeti *azaltır* .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -117,7 +117,7 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
 ```
 
-**Olağanüstü durum kurtarma** 
+**Olağanüstü Durum Kurtarma** 
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -154,7 +154,7 @@ Lisans modelinin değiştirilmesi:
 
 ## <a name="known-errors"></a>Bilinen hatalar
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>'\<\<Resource-Group> ' kaynak grubundaki ' Microsoft. Sqlvirtualmachine/sqlvirtualmachines/Resource-Group> ' kaynağı bulunamadı.
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>\<' \< Resource-Group> ' kaynak grubundaki ' Microsoft. SqlVirtualMachine/SqlVirtualMachines/Resource-Group> ' kaynağı bulunamadı.
 
 Bu hata, SQL VM kaynak sağlayıcısına kayıtlı olmayan bir SQL Server VM lisans modelini değiştirmeye çalıştığınızda oluşur:
 
@@ -163,14 +163,14 @@ Bu hata, SQL VM kaynak sağlayıcısına kayıtlı olmayan bir SQL Server VM lis
 Aboneliğinizi kaynak sağlayıcısına kaydetmeniz ve ardından [SQL Server VM kaynak sağlayıcısına kaydetmeniz](virtual-machines-windows-sql-register-with-resource-provider.md)gerekir. 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>'\<VMName\>' sanal MAKINESINDE ilişkili birden fazla NIC vardır
+### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>' \< VMName ' sanal makinesinde \> ilişkili bırden fazla NIC vardır
 
 Bu hata, birden fazla NIC içeren sanal makinelerde oluşur. Lisanslama modelini değiştirmeden önce NIC 'lerden birini kaldırın. Lisans modelini değiştirdikten sonra NIC 'i sanal makineye geri ekleyebilseniz de, otomatik yedekleme ve düzeltme eki uygulama gibi Azure portal işlemler artık desteklenmeyecektir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makalelere bakın: 
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
 
 * [Windows VM 'de SQL Server genel bakış](virtual-machines-windows-sql-server-iaas-overview.md)
 * [Windows VM 'de SQL Server hakkında SSS](virtual-machines-windows-sql-server-iaas-faq.md)

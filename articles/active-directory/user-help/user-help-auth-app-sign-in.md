@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abf5d0d4aeeb18a11f50220e982448d41a9ac1b4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138952"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773211"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını kullanarak hesaplarınızda oturum açın
 
@@ -53,7 +53,7 @@ Microsoft Authenticator uygulamasını açın, iş veya okul hesabınıza gidin 
 
 Bir Android cihazında:
 
-- **Bu simge ![simgesini, ayarlamış olduğunuzu gösteren bir simge görürsünüz](media/user-help-auth-app-sign-in/icon.png).** Bu simge iş veya okul hesabınızın adının yanında görünürse, hesap için zaten telefonla oturum açma ayarlamış olmanız anlamına gelir. Hesabınız için anında iletme bildirimleri eklemeniz istenebilir, böylece uygulama dışındaki kimlik doğrulama istekleri hakkında bildirim alabilirsiniz.
+- **Bu simge simgesini, ayarlamış olduğunuzu gösteren bir simge görürsünüz ![ ](media/user-help-auth-app-sign-in/icon.png) .** Bu simge iş veya okul hesabınızın adının yanında görünürse, hesap için zaten telefonla oturum açma ayarlamış olmanız anlamına gelir. Hesabınız için anında iletme bildirimleri eklemeniz istenebilir, böylece uygulama dışındaki kimlik doğrulama istekleri hakkında bildirim alabilirsiniz.
 - **Uygulamayı iki öğeli doğrulama için zaten kullanıyorsanız.** Uygulamayı ve iki öğeli doğrulamayı zaten kullanıyorsanız, hesap adının yanındaki oku seçebilirsiniz ve ardından **telefonla oturum açmayı etkinleştir**' i seçebilirsiniz.
 - **İş veya okul hesabınızı bulamıyorsanız.** Uygulamanın **hesaplar** ekranında iş veya okul hesabınızı bulamıyorsanız, uygulamayı henüz uygulamaya eklemediniz demektir. İş veya okul hesabınızı [ekleme makalesindeki adımları](user-help-auth-app-add-work-school-account.md) izleyerek iş veya okul hesabınızı ekleyin.
 
@@ -62,6 +62,9 @@ Bir Android cihazında:
 - Hesap **kutucuğuna dokunduğunuzda**hesap, hesabın tam ekran görünümünde açılır. **Telefonla oturum açma özelliğinin etkin** olduğunu görürseniz, parolanız olmadan oturum açmak için tam olarak ayarladığınız anlamına gelir. **Telefonla oturum açmayı etkinleştir**' i görürseniz, telefonla oturum açma özelliğini etkinleştirmek için bu seçeneğe dokunun.
 - **Uygulamayı iki öğeli doğrulama için zaten kullanıyorsanız**, hesap kutucuğuna dokunarak hesabın tam ekran görünümüne de dokunabilirsiniz. Telefonla oturum açma özelliğini etkinleştirmek için telefonla **oturum açmayı etkinleştir** ' e dokunun.
 - Uygulamanın **hesaplar** ekranında **iş veya okul hesabınızı bulamıyorsanız** , uygulamayı henüz uygulamaya eklemediniz demektir. İş veya okul hesabınızı ekleme makalesindeki adımları izleyerek iş veya okul hesabınızı ekleyin.
+
+> [!NOTE]
+> İOS üzerinde kimlik doğrulayıcısında cihaz kaydı ve sertifika tabanlı kimlik doğrulaması birleşimini desteklemiyoruz. Oturum açmadan önce kullanıcının kimlik doğrulayıcı ayarları aracılığıyla cihazı el ile kaydederek geçici bir çözüm kullanması gerekir.
 
 Telefonla oturum açma özelliğini etkinleştirdikten sonra yalnızca Microsoft Authenticator uygulamasını kullanarak oturum açabilirsiniz.
 
@@ -92,7 +95,7 @@ Microsoft Authenticator uygulamasını açın, iş veya okul hesabınıza gidin 
 
 Bir Android cihazında:
 
-- **Bu simge ![simgesini, ayarlamış olduğunuzu gösteren bir simge görürsünüz](media/user-help-auth-app-sign-in/icon.png).** Bu simge kişisel Microsoft hesabı adınızın yanında görünürse, hesap için zaten telefonla oturum açma ayarlamış olmanız anlamına gelir. Hesabınız için anında iletme bildirimleri eklemeniz istenebilir, böylece uygulama dışındaki kimlik doğrulama istekleri hakkında bildirim alabilirsiniz.
+- **Bu simge simgesini, ayarlamış olduğunuzu gösteren bir simge görürsünüz ![ ](media/user-help-auth-app-sign-in/icon.png) .** Bu simge kişisel Microsoft hesabı adınızın yanında görünürse, hesap için zaten telefonla oturum açma ayarlamış olmanız anlamına gelir. Hesabınız için anında iletme bildirimleri eklemeniz istenebilir, böylece uygulama dışındaki kimlik doğrulama istekleri hakkında bildirim alabilirsiniz.
 - **Uygulamayı iki öğeli doğrulama için kullanıyorsanız.** Uygulamayı ve iki öğeli doğrulamayı zaten kullanıyorsanız, hesap adının yanındaki oku seçebilirsiniz ve ardından **telefonla oturum açmayı etkinleştir**' i seçebilirsiniz.
 - **İş veya okul hesabınızı bulamıyorsanız.** Hesabınızı uygulamanın **hesaplar** ekranında bulamıyorsanız, uygulamayı henüz uygulamaya eklemediniz demektir.) [Kişisel Microsoft hesapları ekleme](user-help-auth-app-add-personal-ms-account.md) makalesindeki adımları izleyerek hesabınızı ekleyin.
 

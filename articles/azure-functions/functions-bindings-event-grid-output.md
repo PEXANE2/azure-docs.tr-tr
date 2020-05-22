@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0237bcbf98578d9f83f3c9652661c786df54e73a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627696"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773944"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Azure Event Grid
 
@@ -27,7 +27,7 @@ Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakı
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, bir Event Grid özel konusuna ileti yazan, çıkış olarak yöntem dönüş değeri kullanılarak bir [C# işlevini](functions-dotnet-class-library.md) göstermektedir:
 
@@ -40,7 +40,7 @@ public static EventGridEvent Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTim
 }
 ```
 
-Aşağıdaki örnek, bir dizi ileti göndermek için `IAsyncCollector` arabirimi nasıl kullanacağınızı gösterir.
+Aşağıdaki örnek, `IAsyncCollector` bir dizi ileti göndermek için arabirimi nasıl kullanacağınızı gösterir.
 
 ```csharp
 [FunctionName("EventGridAsyncOutput")]
@@ -162,7 +162,53 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Event Grid çıktı bağlaması Python için kullanılamaz.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. Daha sonra, ile belirtilen özel Event Grid konusuna bir olay gönderir `topicEndpointUri` .
+
+Bu, *function. JSON* dosyasındaki bağlama verileri:
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    },
+    {
+      "type": "eventGrid",
+      "name": "outputEvent",
+      "topicEndpointUri": "MyEventGridTopicUriSetting",
+      "topicKeySetting": "MyEventGridTopicKeySetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Aşağıda, özel bir Event Grid konusuna bir olay göndermek için aşağıdaki öğesini ayarlayarak Python örneği verilmiştir `EventGridOutputEvent` :
+
+```python
+import logging
+import azure.functions as func
+import datetime
+
+
+def main(eventGridEvent: func.EventGridEvent, 
+         outputEvent: func.Out[func.EventGridOutputEvent]) -> None:
+
+    logging.log("eventGridEvent: ", eventGridEvent)
+
+    outputEvent.set(
+        func.EventGridOutputEvent(
+            id="test-id",
+            data={"tag1": "value1", "tag2": "value2"},
+            subject="test-subject",
+            event_type="test-event-1",
+            event_time=datetime.datetime.utcnow(),
+            data_version="1.0"))
+```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -172,7 +218,7 @@ Event Grid çıktı bağlaması Java için kullanılamaz.
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# sınıf kitaplıkları](functions-dotnet-class-library.md)Için [eventgridattribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) özniteliğini kullanın.
 
@@ -209,34 +255,34 @@ Event Grid çıktı bağlaması Java için kullanılamaz.
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `EventGrid` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `EventGrid` .
 
 |function. JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | "EventGrid" olarak ayarlanmalıdır. |
 |**Görünüm** | yok | "Out" olarak ayarlanmalıdır. Bu parametre, Azure portal bağlamayı oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok | Olayı temsil eden işlev kodunda kullanılan değişken adı. |
-|**topicEndpointUri** |**TopicEndpointUri** | Özel konu için URI 'yi içeren bir uygulama ayarının adı (örneğin,) `MyTopicEndpointUri`. |
+|**topicEndpointUri** |**TopicEndpointUri** | Özel konu için URI 'yi içeren bir uygulama ayarının adı (örneğin,) `MyTopicEndpointUri` . |
 |**topicKeySetting** |**TopicKeySetting** | Özel konu için erişim anahtarı içeren bir uygulama ayarının adı. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> `TopicEndpointUri` Yapılandırma özelliğinin değerini, özel konunun URI 'sini içeren bir uygulama ayarının adına ayarlamadiğinizden emin olun. Özel konunun URI 'sini doğrudan bu özellikte belirtmeyin.
+> `TopicEndpointUri`Yapılandırma özelliğinin değerini, özel konunun URI 'sini içeren bir uygulama ayarının adına ayarlamadiğinizden emin olun. Özel konunun URI 'sini doğrudan bu özellikte belirtmeyin.
 
 ## <a name="usage"></a>Kullanım
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Gibi bir yöntem parametresi kullanarak ileti gönderin `out EventGridEvent paramName`. Birden çok ileti yazmak için, veya `ICollector<EventGridEvent>` `IAsyncCollector<EventGridEvent>` yerinde kullanabilirsiniz. `out EventGridEvent`
+Gibi bir yöntem parametresi kullanarak ileti gönderin `out EventGridEvent paramName` . Birden çok ileti yazmak için, `ICollector<EventGridEvent>` veya yerinde kullanabilirsiniz `IAsyncCollector<EventGridEvent>` `out EventGridEvent` .
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Gibi bir yöntem parametresi kullanarak ileti gönderin `out EventGridEvent paramName`. C# komut dosyasında, `paramName` `name` *function. JSON*özelliğinde belirtilen değerdir. Birden çok ileti yazmak için, veya `ICollector<EventGridEvent>` `IAsyncCollector<EventGridEvent>` yerinde kullanabilirsiniz. `out EventGridEvent`
+Gibi bir yöntem parametresi kullanarak ileti gönderin `out EventGridEvent paramName` . C# komut dosyasında, `paramName` `name` *function. JSON*özelliğinde belirtilen değerdir. Birden çok ileti yazmak için, `ICollector<EventGridEvent>` veya yerinde kullanabilirsiniz `IAsyncCollector<EventGridEvent>` `out EventGridEvent` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Output olayına, *function. JSON* `name` özelliğinde `<name>` belirtilen değerin nerede olduğunu kullanarak `context.bindings.<name>` erişin.
+Output olayına, `context.bindings.<name>` `<name>` `name` *function. JSON*özelliğinde belirtilen değerin nerede olduğunu kullanarak erişin.
 
 # <a name="python"></a>[Python](#tab/python)
 

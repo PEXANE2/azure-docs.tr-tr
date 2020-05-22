@@ -3,7 +3,7 @@ title: Yönetilen örnek T-SQL farkları
 description: Bu makalede, Azure SQL veritabanı ve SQL Server yönetilen bir örnek arasındaki T-SQL farklılıkları ele alınmaktadır
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 2e121d94b27710eb952f98bf97c3b4e5602866f4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: bc5aed6c00afc5ffc9d44f43a9163b2ae2de1e17
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724641"
+ms.locfileid: "83772310"
 ---
 # <a name="managed-instance-t-sql-differences-and-limitations"></a>Yönetilen örnek T-SQL farkları ve sınırlamaları
 
@@ -389,7 +389,7 @@ Yönetilen örneklerdeki bağlı sunucular sınırlı sayıda hedef destekler:
 - Bağlı sunucular dağıtılmış yazılabilir işlemleri (MS DTC) desteklemez.
 - Desteklenmeyen hedefler dosya, Analysis Services ve diğer RDBMS ' dir. `BULK INSERT` `OPENROWSET` Dosya içeri aktarma için alternatif olarak veya kullanarak Azure Blob depolama 'DAN yerel CSV içeri aktarmayı kullanmayı deneyin.
 
-İşlemler
+Operations
 
 - Çapraz örnek yazma işlemleri desteklenmez.
 - `sp_dropserver`, bağlı bir sunucunun atılması için desteklenir. Bkz. [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).

@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: fca794d51e06c72f157dc063445d1cab09d92d28
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cfc2a7d161619efcd9eee2c32a4dabc2e3a2e6ed
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115872"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772072"
 ---
-# <a name="authentication-vs-authorization"></a>Kimlik doğrulama ve yetkilendirme karşılaştırması
+# <a name="authentication-vs-authorization"></a>Kimlik Doğrulaması ve yetkilendirme
 
 Bu makalede kimlik doğrulaması ve yetkilendirme tanımlanmaktadır ve Web uygulamalarınızda, Web API 'Lerinde veya korumalı Web API 'Leri çağıran uygulamalarda kullanıcıların kimliğini doğrulamak ve yetkilendirmek için Microsoft Identity platformunu nasıl kullanabileceğiniz kısaca ele alınmaktadır. Bildiğiniz bir terimi görürseniz, temel kavramları kapsayan [Sözlüğümüzü](developer-glossary.md) veya [Microsoft Identity platform videolarımızı](identity-videos.md) deneyin.
 
@@ -36,9 +36,9 @@ Bu makalede kimlik doğrulaması ve yetkilendirme tanımlanmaktadır ve Web uygu
 
 Her birinin kendi Kullanıcı adı ve parola bilgilerini korumalarına veya birden çok uygulama arasında Kullanıcı eklemeniz veya kaldırmanız gerektiğinde yüksek bir yönetim yükü sunan uygulamalar oluşturmak yerine, uygulamalar bu sorumluluğu merkezi bir kimlik sağlayıcısına devredebilir.
 
-Azure Active Directory (Azure AD), bulutta merkezi bir kimlik sağlayıcıdır. Kimlik doğrulama ve yetkilendirmeyi yetkilendirme, bir kullanıcının belirli bir konumda olmasını gerektiren koşullu erişim ilkeleri, Multi-Factor Authentication 'ın kullanılması ve bir kullanıcının bir kez oturum açmasını ve ardından aynı merkezi dizini paylaşan tüm Web uygulamalarında otomatik olarak oturum açmasını sağlar. Bu yetenek, **Çoklu oturum açma (SSO)** olarak adlandırılır.
+Azure Active Directory (Azure AD), bulutta merkezi bir kimlik sağlayıcıdır. Kimlik doğrulama ve yetkilendirmeyi yetkilendirme, bir kullanıcının belirli bir konumda olmasını gerektiren koşullu erişim ilkeleri, [çok faktörlü kimlik doğrulamasının](../authentication/concept-mfa-howitworks.md) kullanılması (bazen iki öğeli kimlik doğrulama veya 2FA olarak adlandırılır) ve bir kullanıcının bir kez oturum açmasını ve ardından aynı merkezi dizini paylaşan tüm Web uygulamalarında otomatik olarak oturum açmasını sağlar. Bu yetenek, **Çoklu oturum açma (SSO)** olarak adlandırılır.
 
-Microsoft Identity platform; OAuth 2,0 ve OpenID Connect gibi sektör standardı protokoller desteğiyle ve kodlamaya hızlı bir şekilde başlamanıza yardımcı olması için farklı platformlar için açık kaynak kitaplıkların yanı sıra, uygulama geliştiricileri için kimlik doğrulama ve yetkilendirmeyi basitleştirir. Geliştiricilerin tüm Microsoft kimliklerinden oturum açmasını, [Microsoft Graph](https://developer.microsoft.com/graph/), diğer Microsoft API 'lerini veya geliştiricilerin oluşturduğu API 'leri çağıracağınız belirteçler almasını sağlar. Daha fazla bilgi için bkz. [Microsoft Identity platform 'un gelişi](about-microsoft-identity-platform.md).
+Microsoft Identity platform; OAuth 2,0 ve OpenID Connect gibi sektör standardı protokoller desteğiyle ve kodlamaya hızlı bir şekilde başlamanıza yardımcı olması için farklı platformlar için açık kaynak kitaplıkların yanı sıra, uygulama geliştiricileri için Yetkilendirmeyi ve kimlik doğrulamasını basitleştirir. Geliştiricilerin tüm Microsoft kimliklerinden oturum açmasını, [Microsoft Graph](https://developer.microsoft.com/graph/), diğer Microsoft API 'lerini veya geliştiricilerin oluşturduğu API 'leri çağıracağınız belirteçler almasını sağlar. Daha fazla bilgi için bkz. [Microsoft Identity platform 'un gelişi](about-microsoft-identity-platform.md).
 
 Aşağıda, Microsoft Identity platform tarafından kullanılan çeşitli protokollerin kısa bir karşılaştırması verilmiştir:
 
@@ -50,11 +50,10 @@ Aşağıda, Microsoft Identity platform tarafından kullanılan çeşitli protok
 
 Kimlik doğrulama ve yetkilendirme temellerini kapsayan diğer konular için:
 
-* Kimlik doğrulama ve yetkilendirme için erişim belirteçlerinin, yenileme belirteçlerinin ve KIMLIK belirteçlerinin nasıl kullanıldığını öğrenmek için [güvenlik belirteçlerine](security-tokens.md) bakın.
+* Yetkilendirme ve kimlik doğrulamasında erişim belirteçlerinin, yenileme belirteçlerinin ve KIMLIK belirteçlerinin nasıl kullanıldığını öğrenmek için [güvenlik belirteçlerine](security-tokens.md) bakın.
 * Uygulamanızı Microsoft Identity platform ile tümleştirilebilen şekilde kaydetme süreci hakkında bilgi edinmek için bkz. [uygulama modeli](application-model.md) .
 * Microsoft Identity platformunda Web, masaüstü ve mobil uygulamaların oturum açma akışı hakkında bilgi edinmek için bkz. [uygulama oturum açma akışı](app-sign-in-flow.md) .
 
-Microsoft Identity platform 'un uyguladığı protokoller hakkında daha fazla bilgi edinmek için:
-
-* OpenID Connect ve OAuth 2,0 standartları hakkında daha fazla bilgi için bkz. [Microsoft Identity platformunda oauth 2,0 ve OpenID Connect protokolleri](active-directory-v2-protocols.md) .
+* Microsoft Identity platform 'un uyguladığı protokoller hakkında daha fazla bilgi edinmek için [Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri](active-directory-v2-protocols.md)bölümüne bakın.
 * Microsoft Identity platformunun çoklu oturum açmayı nasıl desteklediği hakkında daha fazla bilgi için bkz. [Çoklu oturum açma SAML Protokolü](single-sign-on-saml-protocol.md) .
+* Uygulamanızda çoklu oturum açma uygulayabileceğiniz farklı yollar hakkında daha fazla bilgi için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](../manage-apps/what-is-single-sign-on.md) .

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5d737b1e85a28661a7491b8d2822e6472538c7a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7832f999de2f6f16cfe816c061925e371f90662e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617946"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758699"
 ---
 # <a name="models"></a>Modeller
 
@@ -36,8 +36,8 @@ Model dönüştürüldükten sonra, Azure Blob depolamadan çalışma zamanına 
 
 Varlığın BLOB depolama alanında ilgilenme yöntemiyle farklı olan iki farklı yükleme işlevi vardır:
 
-* Model, SAS URI 'SI tarafından çözülebilir. İlgili yükleme işlevi parametresi `LoadModelFromSASAsync` `LoadModelFromSASParams`ile. [Yerleşik modeller](../samples/sample-model.md)yüklenirken de bu değişkeni kullanın.
-* BLOB depolama, bu [Hesapla](../how-tos/create-an-account.md#link-storage-accounts)doğrudan BLOB depolama parametreleri ile çözülebilir. Bu durumda ilgili yükleme işlevi parametresiyle `LoadModelAsync` `LoadModelParams`birlikte.
+* Model, SAS URI 'SI tarafından çözülebilir. İlgili yükleme işlevi `LoadModelFromSASAsync` parametresi ile `LoadModelFromSASParams` . [Yerleşik modeller](../samples/sample-model.md)yüklenirken de bu değişkeni kullanın.
+* BLOB depolama, bu [Hesapla](../how-tos/create-an-account.md#link-storage-accounts)doğrudan BLOB depolama parametreleri ile çözülebilir. Bu durumda ilgili yükleme işlevi `LoadModelAsync` parametresiyle birlikte `LoadModelParams` .
 
 Aşağıdaki kod parçacıkları, her iki işlevle de modellerin nasıl yükleneceğini gösterir. SAS URI 'sini kullanarak bir model yüklemek için aşağıdaki gibi bir kod kullanın:
 
@@ -58,6 +58,28 @@ async void LoadModel(AzureSession session, Entity modelParent, string modelUri)
 }
 ```
 
+```cpp
+ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string modelUri)
+{
+    LoadModelFromSASParams modelParams;
+    modelParams.ModelUrl = modelUri;
+    modelParams.Parent = modelParent;
+
+    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelFromSASAsync(modelParams);
+
+    loadOp->Completed([](const ApiHandle<LoadModelAsync>& async)
+    {
+        printf("Loading: finished.");
+    });
+    loadOp->ProgressUpdated([](float progress)
+    {
+        printf("Loading: %.1f%%", progress*100.f);
+    });
+
+    return loadOp;
+}
+```
+
 Bir modeli doğrudan BLOB depolama parametrelerini kullanarak yüklemek istiyorsanız, aşağıdaki kod parçacığına benzer bir kod kullanın:
 
 ```csharp
@@ -73,6 +95,20 @@ async void LoadModel(AzureSession session, Entity modelParent, string storageAcc
 
     var loadOp = session.Actions.LoadModelAsync(modelParams);
 
+    // ... (identical to the SAS URI snippet above)
+}
+```
+
+```cpp
+ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string storageAccount, std::string containerName, std::string assetFilePath)
+{
+    LoadModelParams modelParams;
+    modelParams.Parent = modelParent;
+    modelParams.Blob.StorageAccountName = std::move(storageAccount);
+    modelParams.Blob.BlobContainerName = std::move(containerName);
+    modelParams.Blob.AssetPath = std::move(assetFilePath);
+
+    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelAsync(modelParams);
     // ... (identical to the SAS URI snippet above)
 }
 ```

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b92d833e6f32821ad907ff966771bbba8bbb77ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54ec1392dab19491ba8c041d0342f0fe82e671fe
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755176"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758206"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Koşullu erişim: Azure yönetimi için MFA gerektir
 
@@ -39,19 +39,19 @@ Koşullu erişim ilkeleri güçlü araçlardır ve ilkenizde aşağıdaki hesapl
 
 ## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
-Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication gerçekleştirmesini gerektirmek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
+Aşağıdaki adımlar, çok faktörlü kimlik doğrulaması gerçekleştirmek üzere [Microsoft Azure Yönetim](concept-conditional-access-cloud-apps.md#microsoft-azure-management) uygulamasına erişimi olması Için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemler** > **altında,** **Uygulama Seç**' i seçin, **Microsoft Azure Yönetim**' i seçin ve sonra **Tamam**' **ı seçin.**
-1. **Koşullar** > **istemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi seçin.
-1. **Erişim denetimleri** > **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**' i seçin
+1. **Bulut uygulamaları veya eylemler**altında  >  **Include**, **Uygulama Seç**' i seçin, **Microsoft Azure Yönetim**' i seçin **Select** ve sonra **Tamam**' ı seçin.
+1. **Koşullar**  >  **istemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi seçin.
+1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**' i seçin
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 
