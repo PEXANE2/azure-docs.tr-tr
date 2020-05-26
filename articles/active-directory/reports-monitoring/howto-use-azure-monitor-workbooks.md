@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 094939ee62046c72f07ac46f0781e687034f731f
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3c6b8ef04e44a68290f61ed4688e3379130231ef
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690624"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799361"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory raporları için Azure Izleyici çalışma kitaplarını kullanma
 
@@ -42,13 +42,13 @@ ms.locfileid: "82690624"
 
 - Oturum açma günlüğü sorguları hakkında daha derin Öngörüler elde edin. çalışma kitabı, kaç kullanıcının erişim izni verildiğini veya reddedildiğini, Ayrıca kaynaklara erişirken kaç kullanıcının koşullu erişim ilkelerini atladığını bildirir.
 
-- Bu soruları ele almanıza yardımcı olmak Azure Active Directory, izleme için çalışma kitapları sağlar. [Azure izleyici çalışma kitapları](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) metin, analiz sorguları, ölçümler ve parametreleri zengin etkileşimli raporlara birleştirir.
+- Bu soruları ele almanıza yardımcı olmak Azure Active Directory, izleme için çalışma kitapları sağlar. [Azure izleyici çalışma kitapları](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) metin, analiz sorguları, ölçümler ve parametreleri zengin etkileşimli raporlara birleştirir.
 
 
 
 Bu makalede:
 
-- [İzleme çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)hakkında bilgi sahibi olduğunuz varsayılır.
+- [İzleme çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)hakkında bilgi sahibi olduğunuz varsayılır.
 
 - Koşullu erişim ilkelerinizin etkisini anlamak, oturum açma hatalarıyla ilgili sorunları gidermek ve eski kimlik doğrulamaları belirlemek için çalışma kitaplarının nasıl kullanılacağını açıklar.
  
@@ -81,9 +81,9 @@ Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 
 Çalışma kitaplarına erişmek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. **Azure Active Directory** > **Monitoring**izleme > **çalışma kitaplarına**gidin. 
+1. **Azure Active Directory**  >  **izleme**  >  **çalışma kitaplarına**gidin. 
 
 1. Bir rapor veya şablon seçin ya da araç çubuğunda **Aç**' ı seçin. 
 
@@ -302,4 +302,4 @@ Azure Izleyici, oturum açma sorunlarını gidermenize yardımcı olmak için a�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İzleme çalışma kitaplarını kullanarak etkileşimli raporlar oluşturun](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+[İzleme çalışma kitaplarını kullanarak etkileşimli raporlar oluşturun](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).

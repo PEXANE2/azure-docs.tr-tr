@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d783ce7193faed4110d07988d3f3f05951c80a45
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 775fae09c4d618551327669362cd28a0ae2cc801
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711406"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837017"
 ---
-# <a name="create-configurations-from-existing-servers-for-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırması için mevcut sunuculardan yapılandırmalar oluşturma
+# <a name="create-configurations-from-existing-servers"></a>Mevcut sunuculardan yapılandırma oluşturma
 
 > Uygulama hedefi: Windows PowerShell 5,1
 
@@ -45,6 +45,6 @@ Smardsc 'yi denemek için [PowerShell Galerisi](https://www.powershellgallery.co
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Windows PowerShell Istenen durum yapılandırmasına genel bakış](/powershell/scripting/dsc/overview/overview)
-- [DSC kaynakları](/powershell/scripting/dsc/resources/resources)
-- [Yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- PowerShell DSC 'yi anlamak için bkz. [Windows PowerShell Istenen durum yapılandırmasına genel bakış](/powershell/scripting/dsc/overview/overview).
+- [DSC kaynaklarında](/powershell/scripting/dsc/resources/resources)PowerShell DSC kaynakları hakkında bilgi edinin.
+- Yerel Configuration Manager yapılandırması hakkında daha fazla bilgi için bkz. [yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaconfig).

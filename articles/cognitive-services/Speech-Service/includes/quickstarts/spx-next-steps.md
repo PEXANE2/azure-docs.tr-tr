@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: d8a6f1b290786a8f23e81587d22b5fd605a52d86
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 9e16c1907a2196627456f45491402df86e3eac43
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714719"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806526"
 ---
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SPX aracının diğer özellikleri hakkında bilgi edinmek için temel bilgileri keşfetmeye devam edin.
+Konuşma CLı 'nın diğer özellikleri hakkında bilgi edinmek için temel bilgileri keşfetmeye devam edin.
 
 > [!div class="nextstepaction"]
-> [SPX araç temellerini keşfet](../../spx-basics.md)
+> [Konuşma CLı temel bilgilerini keşfet](../../spx-basics.md)

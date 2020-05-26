@@ -7,12 +7,12 @@ keywords: dsc, yapılandırma, otomasyon
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: ab9210042439e2199d633577c77429573b71d1be
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 28e8f921fa7620d1fec7dec1788ed769026624d7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711865"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836728"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Istenen durum yapılandırması ile VM yapılandırma
 
@@ -131,7 +131,4 @@ Otomasyon hesabınızdaki tüm durum yapılandırması tarafından yönetilen d�
 Bu hızlı başlangıçta, bir Linux sanal makinesini durum yapılandırması için etkinleştirdiniz, bir lamba yığını için yapılandırma oluşturdunuz ve yapılandırmayı VM 'ye dağıttınız. Azure Otomasyonu durum yapılandırması 'nı sürekli dağıtımı etkinleştirmek üzere nasıl kullanabileceğinizi öğrenmek için, makaleye devam edin:
 
 > [!div class="nextstepaction"]
-> [DSC ve Chocolatey kullanarak VM'ye sürekli dağıtım](./automation-dsc-cd-chocolatey.md)
-
-* PowerShell DSC hakkında daha fazla bilgi edinmek için bkz. [PowerShell Istenen durum yapılandırmasına genel bakış](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview).
-* DSC raporlarını raporlama ve uyarma için Azure Izleyici günlüklerine iletme hakkında bilgi edinmek için bkz. [DSC raporlamasını Azure izleyici günlüklerine iletme](automation-dsc-diagnostics.md).
+> [Chocolatey ile sürekli dağıtım ayarlama](./automation-dsc-cd-chocolatey.md)

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de84f2aee5f59d14ab70cb1687968643c4cdb31e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec1818fe4fa0a7ea2f57732a4230fd3c2732ba91
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79136389"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799246"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Öğretici: Facebook tarafından çalışma alanı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -113,7 +113,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**' a tıklayın.
 
@@ -150,7 +150,7 @@ Bu bölümde, Facebook tarafından çalışma alanına erişim izni vererek Azur
     > [!NOTE]
     > SAML kimlik doğrulama işleminin bir parçası olarak, çalışma alanı, parametreleri Azure AD 'ye geçirmek için boyut olarak en fazla 2,5 kilobayt olan Sorgu dizelerini kullanabilir.
 
-1. Sol gezinti panelinde **güvenlik** > **kimlik doğrulaması** sekmesine gidin.
+1. Sol gezinti panelinde **güvenlik**  >  **kimlik doğrulaması** sekmesine gidin.
 
     ![Yönetici paneli](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
@@ -206,7 +206,7 @@ Bu bölümde, Facebook tarafından çalışma alanında B. Simon adlı bir Kulla
 Bu bölümde sizin için herhangi bir eylem yoktur. Bir kullanıcı Facebook tarafından çalışma alanında yoksa Facebook tarafından çalışma alanına erişmeye çalıştığınızda yeni bir tane oluşturulur.
 
 >[!Note]
->Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [Facebook istemci destek ekibi tarafından çalışma alanına](https://workplace.fb.com/faq/) başvurun
+>Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [Facebook istemci destek ekibi tarafından çalışma alanına](https://www.workplace.com/help/work/) başvurun
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -228,7 +228,7 @@ Erişim panelinde Facebook tarafından çalışma alanı kutucuğuna tıkladığ
 
     ![Bir kez](./media/workplacebyfacebook-tutorial/test04.png)
 
-4. **İzin ver**’e tıklayın.
+4. **Izin ver**' e tıklayın.
 
     ![Izin ver](./media/workplacebyfacebook-tutorial/test03.png)
 

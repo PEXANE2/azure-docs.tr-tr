@@ -5,14 +5,14 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: df2de44c2c8831fa4319b80484a119052434f8fb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2be702ec6e820fe71dd8d2da7aa4cf831b52402e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749112"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828262"
 ---
-# <a name="unlink-workspace-from-automation-account-for-change-tracking-and-inventory"></a>Değişiklik İzleme ve envanter için çalışma alanının Otomasyon hesabından bağlantısını kaldırma
+# <a name="unlink-workspace-from-automation-account"></a>Çalışma alanının Otomasyon hesabından bağlantısını kaldırma
 
 [Değişiklik izleme ve envanter](change-tracking.md) Işlemlerini etkinleştirirken Otomasyon hesabınızı bir Log Analytics çalışma alanıyla tümleştirmemeye karar verebilirsiniz. Bu makalede, çalışma alanının hesabınızdaki bağlantısını kaldırmanız açıklanmaktadır.
 
@@ -37,7 +37,5 @@ Alternatif olarak, Log Analytics çalışma alanınızın, çalışma alanının
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Değişiklik İzleme ve stoku yönetme](change-tracking-file-contents.md)
-* [Değişiklik İzleme ve envanterden VM 'Leri kaldırma](automation-remove-vms-from-change-tracking.md)
-* [Azure VM 'deki değişikliklerle ilgili sorunları giderme](automation-tutorial-troubleshoot-changes.md)
-* [Değişiklik İzleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md)
+* Değişiklik İzleme ve envanterle çalışmak için bkz. [Manage değişiklik izleme and Inventory](change-tracking-file-contents.md).
+* Genel özellik sorunlarını gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md).

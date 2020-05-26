@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 95dcc135593c566eb1319ed52df3df6c1ada6609
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4bd01b737c4a80ff286458c122f3b0ab9573a40b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067674"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798667"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı başlangıç: Azure Sentinel ile çalışmaya başlama
 
@@ -53,7 +53,7 @@ Genel Bakış sayfasının ana gövdesi, çalışma alanınızın güvenlik duru
 
 ## <a name="use-built-in-workbooks"></a>Yerleşik çalışma kitaplarını kullanma<a name="dashboards"></a>
 
-Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemesine bir bakış sağlamak için bağlı veri kaynaklarınızdan tümleşik veriler sağlar. Yerleşik çalışma kitapları arasında Azure AD, Azure etkinlik olayları ve şirket içi, Windows olaylarına göre güvenlik duvarı trafik günlükleri, Office 365 ve güvenli olmayan protokoller dahil olmak üzere tüm üçüncü taraflardan sunuculardan gelen Windows olaylarından veri olabilir. Çalışma kitapları, kendi çalışma kitabınızı tasarlarken gelişmiş özelleştirme ve esneklik sağlamak için Azure Izleyici çalışma kitaplarını temel alır. Daha fazla bilgi için bkz. [çalışma kitapları](../azure-monitor/app/usage-workbooks.md).
+Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemesine bir bakış sağlamak için bağlı veri kaynaklarınızdan tümleşik veriler sağlar. Yerleşik çalışma kitapları arasında Azure AD, Azure etkinlik olayları ve şirket içi, Windows olaylarına göre güvenlik duvarı trafik günlükleri, Office 365 ve güvenli olmayan protokoller dahil olmak üzere tüm üçüncü taraflardan sunuculardan gelen Windows olaylarından veri olabilir. Çalışma kitapları, kendi çalışma kitabınızı tasarlarken gelişmiş özelleştirme ve esneklik sağlamak için Azure Izleyici çalışma kitaplarını temel alır. Daha fazla bilgi için bkz. [çalışma kitapları](../azure-monitor/platform/workbooks-overview.md).
 
 1. **Ayarlar**altında **çalışma kitapları**' nı seçin. **Yüklü**' ın altında, tüm yüklü çalışma kitabınızı görebilirsiniz. **Tümü**altında, yükleme için kullanılabilen yerleşik çalışma kitaplarının tamamını görebilirsiniz. 
 2. Tüm liste ve her bir tekliflerinin açıklamasını görmek için belirli bir çalışma kitabı arayın. 
@@ -67,7 +67,7 @@ Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemes
       ![PAL Alto panosu](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Ana sorgu ![düğmesini](./media/qs-get-visibility/edit-query-button.png)düzenleyerek çalışma kitaplarını özelleştirebilirsiniz. [Sorguyu düzenlemek için Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek ![üzere](./media/qs-get-visibility/go-to-la-button.png) düğme düğmesine tıklayabilir ve üç nokta (...) simgesini seçip, **kutucuk verilerini Özelleştir**' i seçerek ana saat filtresini düzenlemenizi veya belirli kutucukları çalışma kitabından kaldırmanızı sağlayabilirsiniz.
+Ana sorgu düğmesini düzenleyerek çalışma kitaplarını özelleştirebilirsiniz ![ ](./media/qs-get-visibility/edit-query-button.png) . ![ ](./media/qs-get-visibility/go-to-la-button.png) [Sorguyu düzenlemek için Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek üzere düğme düğmesine tıklayabilir ve üç nokta (...) simgesini seçip, **kutucuk verilerini Özelleştir**' i seçerek ana saat filtresini düzenlemenizi veya belirli kutucukları çalışma kitabından kaldırmanızı sağlayabilirsiniz.
 
 Sorgularla çalışma hakkında daha fazla bilgi için bkz [. Öğretici: Log Analytics Içindeki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

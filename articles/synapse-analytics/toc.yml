@@ -44,6 +44,8 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Öğreticiler
   items:
+    - name: başlarken
+      href: get-started.md
     - name: Spark havuzları için Apache Spark uygulamalarını çalıştırma
       href: ./spark/intellij-tool-synapse.md
     - name: Spark iş tanımları

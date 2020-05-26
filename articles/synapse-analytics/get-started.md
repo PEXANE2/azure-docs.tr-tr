@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 29e5ba149a99f350b8ad9244605470d8b9b61597
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e826075d2f0032f796ebe6d2c8648130e5b453b7
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749503"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800899"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kullanmaya başlama
 
@@ -37,7 +37,7 @@ Bu öğretici, Azure SYNAPSE Analytics 'i kurmak ve kullanmak için gereken tüm
 
     |Ayar | Önerilen değer | Açıklama |
     |---|---|---|
-    |**Data Lake Storage 2. Nesil**|`Enabled`| Azure SYNAPSE, yalnızca bu ayarın etkinleştirildiği depolama hesaplarıyla birlikte kullanılabilir.|
+    |**Data Lake Storage Gen2**|`Enabled`| Azure SYNAPSE, yalnızca bu ayarın etkinleştirildiği depolama hesaplarıyla birlikte kullanılabilir.|
     ||||
 
 * Depolama hesabı oluşturulduktan sonra, bu rol atamalarını yapın veya zaten atandıklarından emin olun. Depolama hesabında, sol gezinti bölmesinde **erişim denetimi (IAM)** seçeneğini belirleyin.
@@ -172,7 +172,7 @@ Bir SQL havuzu veritabanında kullanılabilir veri var. Şimdi bunu bir Spark ve
 * **Kod Ekle** ' yi seçerek bir not defteri kod hücresi ekleyin ve aşağıdaki metni yapıştırın:
 
     ```scala
-    %% spark
+    %%spark
     spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     val df = spark.read.sqlanalytics("SQLDB1.dbo.Trip") 
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")

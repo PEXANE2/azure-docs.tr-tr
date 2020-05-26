@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: abc71d644b44b432d0ebf2a8c849554fe8db0256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25753ce4c313a60b06147ab06dbf0b5e3e05865f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190342"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800509"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -36,7 +36,7 @@ Stoıd 'ler içinde yayımlamak için en düşük gereksinim bir MPNID olduğund
 
 Size sunulan kaynakları anlama ve en iyi uygulamaları uygulama konusunda, [kendi kendinize de gözden geçirebilmeniz](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)için destek alacaksınız.
 
-Tüm program avantajlarının ayrıntılı açıklamaları [Market 'Teki ödüller program destesi](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)' nde bulunabilir.
+Tüm program avantajlarının ayrıntılı açıklamaları [Market 'Teki ödüller program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
 
 Kullanmaya başlamak için adımlarınız kolaydır:
 
@@ -56,7 +56,7 @@ Kullanmaya başlamak için adımlarınız kolaydır:
 2. Azure Sponsorluk avantajlarının kullanımı, bu avantajlardan yararlanılması sırasında bir e-posta aracılığıyla paylaşılır.
 
 >[!Note]
->Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, Iş Ortağı Merkezi ' ne bakarak, söz konusu teklifin sahibi olan kuruluşunuz dahilinde lütfen kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa [Yardım ve destek](https://partner.microsoft.com/support/v2/?stage=1)' e bir destek bileti yükseltebilirsiniz.
+>Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, Iş Ortağı Merkezi ' ne bakarak, söz konusu teklifin sahibi olan kuruluşunuz dahilinde lütfen kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa [Yardım ve destek](https://aka.ms/marketplacepublishersupport)' e bir destek bileti yükseltebilirsiniz.
 
 Tekliflerinizi Market 'te büyürken genişleyebilmeniz için kullanabileceğiniz etkinliklerin kapsamı. Tüm dökümler, kaynakların ve en iyi yöntemlerin self servis e-postasıyla ilgili bir temel düzey iyileştirme önerisi ve promosyon alır.
 
@@ -68,7 +68,7 @@ Aşağıdaki tablo, liste ve deneme teklifleri için uygunluk gereksinimlerini �
 
 ![Go-to-market avantajları](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
-Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye program destesi](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)' nde bulunabilir.
+Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Transact iş ortakları için Market depoları
 
@@ -89,7 +89,7 @@ Canlı bir teklif sahibi olan tüm iş ortakları, Market teklifleriniz için en
 
 \*Satılan bilgisayar eşiği yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2020 tarihine kadar tamamlanması gerekir.
 
-Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye program destesi](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)' nde bulunabilir.
+Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
 
 Bu avantajlara ek olarak, Microsoft AppSource yayımlanan Dynamics teklifleriyle iş uygulamaları iş ortakları, [ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview)aracılığıyla bunlara sunulan tamamlayıcı programlamaya sahiptir. Bu, iş uygulamaları iş ortaklarının ihtiyaçları için özelleştirilmiş teknik, pazarlama ve satış desteği içerir.
 
@@ -97,7 +97,7 @@ Bu avantajlara ek olarak, Microsoft AppSource yayımlanan Dynamics teklifleriyle
 
 ### <a name="publisher-agreement"></a>Yayımcı Sözleşmesi
 
-Bu sayfada açıklanan tüm etkinlikler [Market Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) kapsamında ele alınmıştır ve ticari avantajlar program ekine göre işlenir.
+Bu sayfada açıklanan tüm etkinlikler [Market Yayımcı Sözleşmesi](https://go.microsoft.com/fwlink/?LinkID=699560) kapsamında ele alınmıştır ve ticari avantajlar program ekine göre işlenir.
 
 ### <a name="cancellation-policy"></a>İptal İlkesi
 
@@ -122,6 +122,6 @@ Teklifinizi [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/comme
 
 [Size sunulan self servis kaynaklarını](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)gözden geçirin.
 
-[Microsoft AppSource ve Azure Marketi topluluk forumuna](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) kaydolun ve ilgili konular hakkında bilgi edinin veya tartışmaya katın.
+[Microsoft AppSource ve Azure Marketi topluluk forumuna](https://aka.ms/MarketplaceCommunity) kaydolun ve ilgili konular hakkında bilgi edinin veya tartışmaya katın.
 
 ---

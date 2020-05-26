@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: cfdd0beac7d257a424d327df71602b4612c3da3b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dbace6b93e07571693b221bb3d2a947010b1e476
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79536862"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799992"
 ---
 # <a name="azure-monitor-overview"></a>Azure İzleyici’ye genel bakış
 
@@ -23,7 +23,7 @@ Azure Izleyici ile neler yapabileceğinize ilişkin birkaç örnek şunlardır:
 - [VM'ler için Azure izleyici](insights/vminsights-overview.md) ve [kapsayıcılar için Azure izleyici](insights/container-insights-overview.md)ile altyapı sorunlarını ilişkilendirme.
 - Sorun giderme ve ayrıntılı tanılama için [Log Analytics](log-query/log-query-overview.md) izleme verilerinize ulaşın.
 - [Akıllı uyarılarla](platform/alerts-smartgroups-overview.md) ve [Otomatik eylemlerle](platform/alerts-action-rules.md)birlikte işlem sırasında işlemler desteklenir.
-- Azure [panoları](learn/tutorial-logs-dashboards.md) ve [çalışma kitapları](app/usage-workbooks.md)ile görselleştirme oluşturun.
+- Azure [panoları](learn/tutorial-logs-dashboards.md) ve [çalışma kitapları](platform/workbooks-overview.md)ile görselleştirme oluşturun.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
 

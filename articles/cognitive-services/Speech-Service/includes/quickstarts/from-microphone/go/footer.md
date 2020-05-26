@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: travisw
-ms.openlocfilehash: 2f19cac2e834ee1e8cfc30129e02933c61c85f78
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: a7dd56102e17a4d7bd5abcc3e8d0cb734fc79898
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979631"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806215"
 ---
 > [!div class="nextstepaction"]
-> [GitHub 'da go örneklerini keşfet](https://aka.ms/speech/github-go)
+> [GitHub 'da go örneklerini keşfet](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)

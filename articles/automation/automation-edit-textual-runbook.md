@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2b30b807764159378c594f82ae6cfc55cfa4f7e4
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: d388162738930030ba311a04a0dce1db15590c79
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712919"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836847"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Azure Automation 'da metin runbook 'larını düzenleme
 
@@ -91,14 +91,14 @@ Import-AzAutomationRunbook -Path "$scriptfolder\Hello-World.ps1" -Name $runbookN
 Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName
 ```
 
-## <a name="related-articles"></a>İlgili makaleler:
+## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu 'nda runbook 'ları yönetme](manage-runbooks.md)
-* [PowerShell iş akışını öğrenme](automation-powershell-workflow.md)
-* [Azure Otomasyonu 'nda grafik yazma](automation-graphical-authoring-intro.md)
-* [Sertifikalar](automation-certificates.md)
-* [Bağlantılar](automation-connections.md)
-* [Kimlik Bilgileri](automation-credentials.md)
-* [Zamanlamalar](automation-schedules.md)
-* [Değişkenler](automation-variables.md)
-* [PowerShell cmdlet başvurusu](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* [Azure Otomasyonu 'nda runbook 'Ları yönetin](manage-runbooks.md).
+* [PowerShell iş akışını öğrenme](automation-powershell-workflow.md).
+* [Azure Otomasyonu 'Nda grafik yazma](automation-graphical-authoring-intro.md).
+* [Sertifikalar](automation-certificates.md).
+* [Bağlantı](automation-connections.md).
+* [Kimlik bilgileri](automation-credentials.md).
+* [Zamanlamalar](automation-schedules.md).
+* [Değişkenler](automation-variables.md).
+* [PowerShell cmdlet başvurusu](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

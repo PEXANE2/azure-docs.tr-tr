@@ -7,19 +7,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 705208d708b3e759d38c5ce1ad0d3110ec6d3832
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 515e64c3c70cc496d5af9761d1561a375f727a55
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698378"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800587"
 ---
 Tanımlarınızı yazmak için bazı ipuçları aşağıda verilmiştir:
 
-- Açıklamanız hakkında, tanımlarınızın ilk birkaç bölümünde, örneğin:
+- Teklifinizin değerini, ilk birkaç cümlede aşağıdakiler dahil olmak üzere net bir şekilde Açıklama:
   - Teklifin açıklaması.
-  - Tekliften faydalanan Kullanıcı türü
-  - Müşteri ihtiyaçları veya teklif adreslerini yayınlar.
+  - Tekliften faydalanan Kullanıcı türü.
+  - Müşteri ihtiyaçları veya teklifin adresleyen sorunlar.
 - İlk birkaç tümcenin arama sonuçlarında görüntülenebileceğini unutmayın.
-- Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin; Teklifinizin sağladığı değere odaklanın.
+- Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Teklifinizin sağladığı değere odaklanın.
 - Sektöre özgü sözlük veya avantaj temelli bir ifade kullanın.

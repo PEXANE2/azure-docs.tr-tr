@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bb1bd018866bda9270b78507f0462b6c4d4ea17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d4df4efc6dbee88e80e620860487636cc9210dd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79475901"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837221"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>IoT Edge üzerinde Azure Stream Analytics
  
@@ -188,7 +188,7 @@ Edge 'de başvuru verileriyle bir iş oluşturmak için:
 
 3. Cihaza bir başvuru veri dosyası hazırlayın. Bir Windows kapsayıcısı için, başvuru veri dosyasını yerel sürücüye yerleştirin ve yerel sürücüyü Docker kapsayıcısı ile paylaşabilirsiniz. Bir Linux kapsayıcısı için, bir Docker birimi oluşturun ve veri dosyasını birime doldurun.
 
-4. Dosya yolunu ayarlayın. Windows konak işletim sistemi ve Windows kapsayıcısı için mutlak yolu kullanın: `E:\<PathToFile>\v1.csv`. Bir Windows ana bilgisayarı işletim sistemi ve Linux kapsayıcısı veya Linux IŞLETIM sistemi ve Linux kapsayıcısı için, şu birimdeki yolu kullanın: `<VolumeName>/file1.txt`.
+4. Dosya yolunu ayarlayın. Windows konak işletim sistemi ve Windows kapsayıcısı için mutlak yolu kullanın: `E:\<PathToFile>\v1.csv` . Bir Windows ana bilgisayarı işletim sistemi ve Linux kapsayıcısı veya Linux IŞLETIM sistemi ve Linux kapsayıcısı için, şu birimdeki yolu kullanın: `<VolumeName>/file1.txt` .
 
 ![IoT Edge Azure Stream Analytics iş için yeni başvuru verileri girişi](./media/stream-analytics-edge/Reference-Data-New-Input.png)
 
@@ -226,7 +226,7 @@ Bu sürüm bilgileri 2019-06-27 tarihinde son güncelleştirilme tarihi:
       
       
 ## <a name="get-help"></a>Yardım alın
-Daha fazla yardım için [Azure Stream Analytics forumunu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

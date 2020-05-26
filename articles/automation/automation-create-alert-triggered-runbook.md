@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 30ef3e0ccef859ec183d8aad18c0b9910a5d3c9f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 1feadeaf2a905abee396c09829dab5e06c46d99c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712511"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837119"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma
 
@@ -191,8 +191,8 @@ Uyarılar, uyarı tarafından tetiklenen eylemlerin koleksiyonları olan eylem g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Web kancasından runbook başlatma](automation-webhooks.md)
-* [Runbook başlatma](automation-starting-a-runbook.md)
-* [Etkinlik günlüğü uyarıları oluşturma](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)
-* [Azure portal bir uyarı kuralı oluşturun](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Web kancası kullanarak bir runbook 'u başlatmak için bkz. [Web kancasından runbook başlatma](automation-webhooks.md).
+* Runbook 'u başlatmak için farklı yollar sağlamak üzere bkz. [runbook 'U başlatma](automation-starting-a-runbook.md).
+* Etkinlik günlüğü uyarısı oluşturmak için bkz. [etkinlik günlüğü uyarıları oluşturma](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
+* Neredeyse gerçek zamanlı uyarı oluşturmayı öğrenmek için [Azure Portal bir uyarı kuralı oluşturma](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)bölümüne bakın.
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 49b573c5cd0125ba378f01db05b925f8e5eef3eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743717"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827565"
 ---
-# <a name="query-logs-from-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur sorgu günlükleri
+# <a name="query-logs-from-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur özelliğinden sorgu günlükleri
 
 Azure Otomasyonu, iki kayıt türünü bağlı Log Analytics çalışma alanına iletir: iş günlükleri ve iş akışları. Bu makalede, Azure Izleyici 'de [sorgu](../azure-monitor/log-query/log-query-overview.md) için kullanılabilen veriler incelenir.
 
@@ -71,6 +71,6 @@ Aşağıdaki tabloda, VM'leri çalışma saatleri dışında başlat/durdur tara
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Izleyici ile günlük uyarıları oluşturma](../azure-monitor/platform/alerts-log.md)
-* [VM 'Leri çalışma saatleri dışında Durdur/Başlat](automation-solution-vm-management-config.md)
-* [VM'leri çalışma saatleri dışında başlat/durdur sorunlarını giderme](troubleshoot/start-stop-vm.md)
+* Özelliği ayarlamak için, bkz. [çalışma saatleri dışında VM 'Leri durdurmayı/başlatmayı yapılandırma](automation-solution-vm-management-config.md).
+* Özellik dağıtımı sırasında günlük uyarıları hakkında daha fazla bilgi için bkz. [Azure izleyici ile günlük uyarıları oluşturma](../azure-monitor/platform/alerts-log.md).
+* Özellik hatalarını çözümlemek için bkz. [sorun giderme VM'leri çalışma saatleri dışında Başlat/Durdur sorunları](troubleshoot/start-stop-vm.md).

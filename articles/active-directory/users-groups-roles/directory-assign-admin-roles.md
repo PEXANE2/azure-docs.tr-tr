@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef321e82f1737df4b13d259824acd943a7eea440
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a15de41dc2dce4cae0a6155bfce8a8a2001b9a8b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649361"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798807"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -82,7 +82,7 @@ Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik b
 [Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator) rolü, tüm kullanıcılar için yeniden kayıt ve Multi-Factor Authentication 'ı zorunlu hale verebilir.
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve kimlik doğrulama yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir kimlik doğrulama Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -99,14 +99,6 @@ Tüm kurumsal Azure DevOps ilkeleri, bu roldeki kullanıcılar tarafından yöne
 ### <a name="azure-information-protection-administrator"></a>[Azure Information Protection Yöneticisi](#azure-information-protection-administrator-permissions)
 
 Bu role sahip olan kullanıcılar Azure Information Protection hizmetinde tüm izinlere sahiptir. Bu rol, Azure Information Protection ilkesi için etiketlerin yapılandırılmasını, koruma şablonlarının yönetilmesini ve korumanın etkinleşmesini sağlar. Bu rol, kimlik koruma Merkezi, Privileged Identity Management, Office 365 hizmet durumunu Izleme veya Office 365 güvenlik & Uyumluluk Merkezi 'nde herhangi bir izin vermez.
-
-### <a name="b2c-user-flow-administrator"></a>[B2C Kullanıcı akış Yöneticisi](#b2c-user-flow-administrator-permissions)
-
-Bu role sahip olan kullanıcılar B2C Kullanıcı Akışları oluşturabilir ve yönetebilir ("yerleşik" ilkeleri olarak da bilinir) Azure portal.Kullanıcı akışları oluşturarak veya düzenleyerek, bu kullanıcılar kullanıcı deneyiminin HTML/CSS/JavaScript içeriğini değiştirebilir, Kullanıcı akışı başına MFA gereksinimlerini değiştirebilir, belirteçteki talepleri değiştirebilir ve Azure AD kuruluşundaki tüm ilkeler için oturum ayarlarını ayarlayabilir. Diğer taraftan, bu rol Kullanıcı verilerini gözden geçirme veya kuruluş şemasına dahil olan özniteliklerde değişiklik yapma özelliğini içermez.Kimlik deneyimi çerçevesi (özel olarak da bilinir) ilkeleri üzerinde yapılan değişiklikler, bu rolün kapsamı da dışındadır.
-
-### <a name="b2c-user-flow-attribute-administrator"></a>[B2C Kullanıcı akışı öznitelik Yöneticisi](#b2c-user-flow-attribute-administrator-permissions)
-
-Bu role sahip kullanıcılar, Azure AD kuruluşundaki tüm Kullanıcı akışları için kullanılabilir özel öznitelikler ekler veya siler.Bu nedenle, bu role sahip olan kullanıcılar Son Kullanıcı şemasına değiştirebilir veya yeni öğe ekleyebilir, tüm Kullanıcı akışlarının davranışını etkileyebilir ve son kullanıcılar ve son olarak uygulamalara talepler olarak gönderilebilir.Bu rol Kullanıcı akışlarını düzenleyemez.
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C ıEF anahtar kümesi Yöneticisi](#b2c-ief-keyset-administrator-permissions)
 
@@ -214,6 +206,15 @@ Bu role sahip olan kullanıcılar, hizmet mevcut olduğunda Microsoft Exchange O
 > [!NOTE]
 > Microsoft Graph API ve Azure AD PowerShell 'de, bu rol "Exchange hizmeti Yöneticisi" olarak tanımlanır. [Azure Portal](https://portal.azure.com), "Exchange Yöneticisi" dir. [Exchange Yönetim Merkezi](https://go.microsoft.com/fwlink/p/?LinkID=529144)'Nde "Exchange Online Yöneticisi" dir.
 
+
+### <a name="external-id-user-flow-administrator"></a>[Dış kimlik Kullanıcı akış Yöneticisi](#external-id-user-flow-administrator-permissions)
+
+Bu role sahip olan kullanıcılar B2C Kullanıcı Akışları oluşturabilir ve yönetebilir ("yerleşik" ilkeleri olarak da bilinir) Azure portal.Kullanıcı akışları oluşturarak veya düzenleyerek, bu kullanıcılar kullanıcı deneyiminin HTML/CSS/JavaScript içeriğini değiştirebilir, Kullanıcı akışı başına MFA gereksinimlerini değiştirebilir, belirteçteki talepleri değiştirebilir ve Azure AD kuruluşundaki tüm ilkeler için oturum ayarlarını ayarlayabilir. Diğer taraftan, bu rol Kullanıcı verilerini gözden geçirme veya kuruluş şemasına dahil olan özniteliklerde değişiklik yapma özelliğini içermez.Kimlik deneyimi çerçevesi (özel olarak da bilinir) ilkeleri üzerinde yapılan değişiklikler, bu rolün kapsamı da dışındadır.
+
+### <a name="external-id-user-flow-attribute-administrator"></a>[Dış kimlik Kullanıcı akışı öznitelik Yöneticisi](#external-id-user-flow-attribute-administrator-permissions)
+
+Bu role sahip kullanıcılar, Azure AD kuruluşundaki tüm Kullanıcı akışları için kullanılabilir özel öznitelikler ekler veya siler.Bu nedenle, bu role sahip olan kullanıcılar Son Kullanıcı şemasına değiştirebilir veya yeni öğe ekleyebilir, tüm Kullanıcı akışlarının davranışını etkileyebilir ve son kullanıcılar ve son olarak uygulamalara talepler olarak gönderilebilir.Bu rol Kullanıcı akışlarını düzenleyemez.
+
 ### <a name="external-identity-provider-administrator"></a>[Dış kimlik sağlayıcısı Yöneticisi](#external-identity-provider-administrator-permissions)
 
 Bu yönetici Azure AD kuruluşları ve dış kimlik sağlayıcıları arasında Federasyonu yönetir.Bu rolle, kullanıcılar yeni kimlik sağlayıcıları ekleyebilir ve tüm kullanılabilir ayarları (örneğin, kimlik doğrulama yolu, hizmet KIMLIĞI, atanan anahtar kapsayıcıları) yapılandırabilir.Bu Kullanıcı Azure AD kuruluşunun, dış kimlik sağlayıcılarından kimlik doğrulamaları güvenmesini sağlayabilir.Son Kullanıcı deneyimlerinde ortaya çıkan etki, kuruluşun türüne bağlıdır:
@@ -237,8 +238,6 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 > [!NOTE]
 > Genel okuyucu rolünde Şu anda birkaç kısıtlama vardır-
 >
->- [OneDrive Yönetim Merkezi](https://admin.onedrive.com/) -OneDrive Yönetim Merkezi, genel okuyucu rolünü desteklemez.
->- [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -genel okuyucu, bir kurumsal uygulamanın sağlama modunu okuyamıyor.
 >- [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, müşteri kasası isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde, **destek** altında **müşteri kasası istekleri** sekmesini bulmayacağız.
 >- [Office güvenlik & Uyumluluk Merkezi](https://sip.protection.office.com/homepage) -küresel okuyucu SCC denetim günlüklerini okuyamıyor, içerik araması yapamıyor veya güvenli puanı göremez.
 >- [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu **takımlar yaşam döngüsünü**, **analiz & raporlarını**, **IP telefon cihaz yönetimini** ve **uygulama kataloğunu**okuyamıyor.
@@ -267,7 +266,7 @@ Bu role sahip kullanıcılar parolaları değiştirebilir, yenileme belirteçler
 * Rapor okuyucu
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve yardım masası yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir yardım masası Yöneticisi, bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -478,7 +477,7 @@ Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara
 |Yalnızca yönetici olmayan veya aşağıdaki sınırlı Yönetici rollerinin hiçbirinde olan kullanıcılar için:<ul><li>Dizin okuyucuları<li>Konuk davetci<li>Yardım Masası Yöneticisi<li>İleti Merkezi okuyucusu<li>Rapor okuyucu<li>Kullanıcı Yöneticisi|<p>Sil ve geri yükle</p><p>Devre dışı bırak ve Etkinleştir</p><p>Yenileme belirteçlerini geçersiz kıl</p><p>Kullanıcı asıl adı dahil tüm kullanıcı özelliklerini yönet</p><p>Parola sıfırlama</p><p>Güncelleştirme (FIDO) cihaz anahtarları</p>|
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve Kullanıcı yöneticilerine başka bir yerde izin verilmez. Bu yoldan, bir Kullanıcı Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -599,22 +598,6 @@ Azure Information Protection hizmetinin tüm yönlerini yönetebilir.
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-
-### <a name="b2c-user-flow-administrator-permissions"></a>B2C Kullanıcı akış Yöneticisi izinleri
-
-Kullanıcı akışlarının tüm yönlerini oluşturun ve yönetin.
-
-| **Eylemler** | **Açıklama** |
-| --- | --- |
-| Microsoft. AAD. B2C/Userakışlar/allTasks | Azure Active Directory B2C Kullanıcı akışlarını okuyun ve yapılandırın. |
-
-### <a name="b2c-user-flow-attribute-administrator-permissions"></a>B2C Kullanıcı akış özniteliği yönetici izinleri
-
-Tüm Kullanıcı akışları için kullanılabilen öznitelik şemasını oluşturun ve yönetin.
-
-| **Eylemler** | **Açıklama** |
-| --- | --- |
-| Microsoft. AAD. B2C/userAttributes/allTasks | Azure Active Directory B2C Kullanıcı özniteliklerini okuyun ve yapılandırın. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C ıEF anahtar kümesi yönetici izinleri
 
@@ -1030,6 +1013,22 @@ Temel dizin bilgilerini okuyabilir & yazabilir. Uygulamalara erişim vermek içi
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+
+### <a name="external-id-user-flow-administrator-permissions"></a>Dış kimlik Kullanıcı akış Yöneticisi izinleri
+
+Kullanıcı akışlarının tüm yönlerini oluşturun ve yönetin.
+
+| **Eylemler** | **Açıklama** |
+| --- | --- |
+| Microsoft. AAD. B2C/Userakışlar/allTasks | Azure Active Directory B2C Kullanıcı akışlarını okuyun ve yapılandırın. |
+
+### <a name="external-id-user-flow-attribute-administrator-permissions"></a>Dış kimlik Kullanıcı akışı öznitelik Yöneticisi izinleri
+
+Tüm Kullanıcı akışları için kullanılabilen öznitelik şemasını oluşturun ve yönetin.
+
+| **Eylemler** | **Açıklama** |
+| --- | --- |
+| Microsoft. AAD. B2C/userAttributes/allTasks | Azure Active Directory B2C Kullanıcı özniteliklerini okuyun ve yapılandırın. |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>Dış kimlik sağlayıcısı yönetici izinleri
 
@@ -1809,8 +1808,6 @@ Uygulama Geliştirici | Uygulama geliştiricisi | CF1C38E5-3621-4004-A7CB-879624
 Kimlik doğrulama Yöneticisi | Kimlik doğrulama Yöneticisi | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Azure DevOps Yöneticisi | Azure DevOps Yöneticisi | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection Yöneticisi | Azure Information Protection Yöneticisi | 7495fdc4-34c4-4d15-A289-98788ce399fd
-B2C Kullanıcı akış Yöneticisi | B2C Kullanıcı akış Yöneticisi | 6e591065-9bad-43ed-90f3-e9424366d2f0
-B2C Kullanıcı akışı öznitelik Yöneticisi | B2C Kullanıcı akışı öznitelik Yöneticisi | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 B2C ıEF anahtar kümesi Yöneticisi | B2C ıEF anahtar kümesi Yöneticisi | aaf43236-0c0d-4d5f-883a-6955382ac081
 B2C ıEF Ilke Yöneticisi | B2C ıEF Ilke Yöneticisi | 3edaf663-341e-4475-9f94-5c398ef6c070
 Faturalama yöneticisi | Faturalama yöneticisi | b0f54661-2d74-4c50-afa3-1ec803f12efe
@@ -1831,6 +1828,8 @@ Dizin okuyucuları | Dizin okuyucuları | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Dizin eşitleme hesapları | Kullanılmaması nedeniyle gösterilmez | d29b2b05-8046-44ba-8758-1e26182fcf32
 Dizin yazarları | Kullanılmaması nedeniyle gösterilmez | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange hizmeti Yöneticisi | Exchange yöneticisi | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Dış kimlik Kullanıcı akış Yöneticisi | Dış kimlik Kullanıcı akış Yöneticisi | 6e591065-9bad-43ed-90f3-e9424366d2f0
+Dış kimlik Kullanıcı akışı öznitelik Yöneticisi | Dış kimlik Kullanıcı akışı öznitelik Yöneticisi | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 Dış kimlik sağlayıcısı Yöneticisi | Dış kimlik sağlayıcısı Yöneticisi | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Genel okuyucu | Genel okuyucu | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Grup Yöneticisi | Grup Yöneticisi | fdd7a751-b60b-444a-984c-02652fe8fa1c 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 65bbb35d041a48e68d01a50e88e42fbeb73f2ea6
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 2fbdf947eb36e1591cc9da52a85e389be63c8535
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864292"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826664"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın
 
@@ -55,7 +55,7 @@ Her uygulama, Kullanıcı veya grup oluşturmak için farklı öznitelikler gere
 |loginName|userName|userPrincipalName|
 |firstName|ad.|givenName|
 |lastName|Name. lastName|lastName|
-|Iş posta|E-postalar [tür EQ "iş"]. değer|Mail|
+|Iş posta|E-postalar [tür EQ "iş"]. değer|Posta|
 |manager|manager|manager|
 |etiket|urn: IETF: params: Scim: schemas: Extension: 2.0: Customexgerilim: Tag|extensionAttribute1|
 |durum|bkz|ısofdeleted (hesaplanan değer kullanıcı üzerinde depolanmaz)|
@@ -149,21 +149,21 @@ SCıM 2,0 kullanıcı yönetim API 'sini destekleyen bir uygulama oluşturuyorsa
 * , [SCıM protokolünün 3,3](https://tools.ietf.org/html/rfc7644#section-3.3)bölümünde olduğu gibi, kullanıcıların ve isteğe bağlı olarak grupların oluşturulmasını destekler.  
 * , [SCıM protokolünün Bölüm 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2)göre, yama istekleri olan kullanıcı veya grupların değiştirilmesini destekler.  
 * , [SCıM protokolünün bölüm başına 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1)göre daha önce oluşturulmuş bir kullanıcı veya grup için bilinen bir kaynağı almayı destekler.  
-* , [SCıM protokolünün](https://tools.ietf.org/html/rfc7644#section-3.4.2)bölüm başına 3.4.2 göre Kullanıcı veya grupların sorgulanmasını destekler.  Varsayılan olarak, `id` kullanıcılar, `username` ve `externalid`tarafından sorgulanır ve grupları tarafından sorgulanır. `displayName`  
+* , [SCıM protokolünün](https://tools.ietf.org/html/rfc7644#section-3.4.2)bölüm başına 3.4.2 göre Kullanıcı veya grupların sorgulanmasını destekler.  Varsayılan olarak, kullanıcılar, `id` ve tarafından sorgulanır ve grupları tarafından `username` `externalid` sorgulanır `displayName` .  
 * , SCıM protokolünün Bölüm 3.4.2 göre, kullanıcının KIMLIĞE ve yöneticiye göre sorgulanmasını destekler.  
 * , SCıM protokolünün Bölüm 3.4.2 göre grupların KIMLIĞE ve üyeye göre sorgulanmasını destekler.  
 * Azure AD 'nin uygulamanıza kimlik doğrulaması ve yetkilendirmesi için tek bir taşıyıcı belirtecini kabul eder.
 
 Azure AD ile uyumluluğu sağlamak için bir SCıM uç noktası uygularken bu genel yönergeleri izleyin:
 
-* `id`Tüm kaynaklar için gerekli bir özelliktir. Kaynak döndüren her yanıt, sıfır üye hariç olmak üzere `ListResponse` her bir kaynağın bu özelliğe sahip olduğundan emin olmalıdır.
-* Bir sorgu/filtre isteğine yanıt her zaman bir `ListResponse`olmalıdır.
+* `id`Tüm kaynaklar için gerekli bir özelliktir. Kaynak döndüren her yanıt, sıfır üye hariç olmak üzere her bir kaynağın bu özelliğe sahip olduğundan emin olmalıdır `ListResponse` .
+* Bir sorgu/filtre isteğine yanıt her zaman bir olmalıdır `ListResponse` .
 * Gruplar isteğe bağlıdır, ancak yalnızca SCıM uygulamasının yama isteklerini desteklemesi durumunda desteklenir.
 * Bu, tüm kaynağı yama yanıtına dahil etmek için gerekli değildir.
 * Microsoft Azure AD yalnızca aşağıdaki işleçleri kullanır:  
     - `eq`
     - `and`
-* İçinde `op` https://tools.ietf.org/html/rfc7644#section-3.5.2tanımlandığı gıbı, belirli bir düzeltme eki işlem değerlerinde SCIM içindeki yapısal öğelerde büyük/küçük harfe duyarlı bir eşleşme gerektirmez. Azure AD, ' op ' değerlerini, ve `Add` `Replace` `Remove`olarak yayar.
+* İçinde tanımlandığı gibi, belirli bir düzeltme eki işlem değerlerinde SCıM içindeki yapısal öğelerde büyük/küçük harfe duyarlı bir eşleşme gerektirmez `op` https://tools.ietf.org/html/rfc7644#section-3.5.2 . Azure AD, ' op ' değerlerini, ve olarak `Add` yayar `Replace` `Remove` .
 * Microsoft Azure AD bitiş noktasının ve kimlik bilgilerinin geçerli olduğundan emin olmak için rastgele bir Kullanıcı ve grup getirme isteklerinin olmasını sağlar. Ayrıca, [Azure Portal](https://portal.azure.com) **Test bağlantı** akışının bir parçası olarak da yapılır. 
 * Kaynakların sorgulanabileceği öznitelik, [Azure Portal](https://portal.azure.com)uygulamada eşleşen bir öznitelik olarak ayarlanmalıdır. Daha fazla bilgi için bkz. [Kullanıcı hazırlama öznitelik eşlemelerini özelleştirme](customize-application-attributes.md)
 
@@ -191,36 +191,36 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 > Azure AD Kullanıcı sağlama hizmeti 'nin aşağıda açıklanan işlemleri nasıl ve ne zaman yaydığı hakkında bilgi edinmek için bkz. sağlama [döngüleri: başlangıç ve artımlı](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) , [sağlama nasıl?](how-provisioning-works.md).
 
 [Kullanıcı Işlemleri](#user-operations)
-  - [Kullanıcı oluştur](#create-user) ([istek](#request) / [yanıtı](#response))
-  - [Kullanıcı al](#get-user) ([istek](#request-1) / [yanıtı](#response-1))
-  - [Sorguya göre Kullanıcı al](#get-user-by-query) ([istek](#request-2) / [yanıtı](#response-2))
-  - [Sorgu sıfır sonuçları](#get-user-by-query---zero-results) ([istek](#request-3)
-/ [yanıtı](#response-3)) ile Kullanıcı al
-  - [Kullanıcı güncelleştirme [çok değerli özellikler]](#update-user-multi-valued-properties) ([istek](#request-4) /  [yanıtı](#response-4))
-  - [Kullanıcı güncelleştirme [tek değerli özellikler]](#update-user-single-valued-properties) ([istek](#request-5)
-/ [yanıtı](#response-5)) 
-  - [Kullanıcıyı devre dışı bırak](#disable-user) ([istek](#request-14) / 
-[yanıtı](#response-14))
-  - [Kullanıcı silme](#delete-user) ([istek](#request-6) / 
-[yanıtı](#response-6))
+  - [Kullanıcı oluştur](#create-user) ([istek](#request)  /  [yanıtı](#response))
+  - [Kullanıcı al](#get-user) ([istek](#request-1)  /  [yanıtı](#response-1))
+  - [Sorguya göre Kullanıcı al](#get-user-by-query) ([istek](#request-2)  /  [yanıtı](#response-2))
+  - [Sorgu sıfır sonuçları](#get-user-by-query---zero-results) ([istek](#request-3) 
+/  [yanıtı](#response-3)) ile Kullanıcı al
+  - [Kullanıcı güncelleştirme [çok değerli özellikler]](#update-user-multi-valued-properties) ([istek](#request-4)  /   [yanıtı](#response-4))
+  - [Kullanıcı güncelleştirme [tek değerli özellikler]](#update-user-single-valued-properties) ([istek](#request-5) 
+/  [yanıtı](#response-5)) 
+  - [Kullanıcıyı devre dışı bırak](#disable-user) ([istek](#request-14)  / 
+ [yanıtı](#response-14))
+  - [Kullanıcı silme](#delete-user) ([istek](#request-6)  / 
+ [yanıtı](#response-6))
 
 
 [Grup Işlemleri](#group-operations)
-  - [Grup Oluştur](#create-group) ( [istek](#request-7) / [yanıtı](#response-7))
-  - [Grup Al](#get-group) ( [istek](#request-8) / [yanıtı](#response-8))
-  - [Group By DisplayName 'e göre Al](#get-group-by-displayname) ([istek](#request-9) / [yanıtı](#response-9))
+  - [Grup Oluştur](#create-group) ( [istek](#request-7)  /  [yanıtı](#response-7))
+  - [Grup Al](#get-group) ( [istek](#request-8)  /  [yanıtı](#response-8))
+  - [Group By DisplayName 'e göre Al](#get-group-by-displayname) ([istek](#request-9)  /  [yanıtı](#response-9))
   - [Güncelleştirme grubu [Üye olmayan öznitelikler]](#update-group-non-member-attributes) ([istek](#request-10) /
   [yanıtı](#response-10))
-  - [Güncelleştirme grubu [Üye Ekleme]](#update-group-add-members) ( [istek](#request-11) /
-[yanıtı](#response-11))
-  - [Güncelleştirme grubu [üyeleri kaldır]](#update-group-remove-members) ( [istek](#request-12) /
-[yanıtı](#response-12))
-  - [Grup silme](#delete-group) ([istek](#request-13) /
-[yanıtı](#response-13))
+  - [Güncelleştirme grubu [Üye Ekleme]](#update-group-add-members) ( [istek](#request-11)  /
+ [yanıtı](#response-11))
+  - [Güncelleştirme grubu [üyeleri kaldır]](#update-group-remove-members) ( [istek](#request-12)  /
+ [yanıtı](#response-12))
+  - [Grup silme](#delete-group) ([istek](#request-13)  /
+ [yanıtı](#response-13))
 
 ### <a name="user-operations"></a>Kullanıcı Işlemleri
 
-* Kullanıcılar veya `userName` `email[type eq "work"]` öznitelikleri tarafından sorgulanabilir.  
+* Kullanıcılar veya öznitelikleri tarafından sorgulanabilir `userName` `email[type eq "work"]` .  
 
 #### <a name="create-user"></a>Kullanıcı Oluştur
 
@@ -803,9 +803,9 @@ ASP.NET Core ' de HTTPS hakkında daha fazla bilgi için aşağıdaki bağlantı
 
 Azure Active Directory istekleri OAuth 2,0 taşıyıcı belirtecini içerir. İsteği alan herhangi bir hizmet, beklenen Azure Active Directory kiracının Azure Active Directory olarak veren tarafından doğrulanmalıdır.
 
-Belirteçte veren, gibi `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`bir ISS talebi tarafından tanımlanır. Bu örnekte, talep değerinin `https://sts.windows.net`temel adresi veren olarak Azure Active Directory tanımlar, göreli adres segmenti, _cbb1a5ac-f33b-45fa-9BF5-f37db0fed422_, belirtecin verildiği Azure Active Directory kiracının benzersiz tanımlayıcısıdır.
+Belirteçte veren, gibi bir ISS talebi tarafından tanımlanır `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` . Bu örnekte, talep değerinin temel adresi `https://sts.windows.net` veren olarak Azure Active Directory tanımlar, göreli adres segmenti, _cbb1a5ac-f33b-45fa-9BF5-f37db0fed422_, belirtecin verildiği Azure Active Directory kiracının benzersiz tanımlayıcısıdır.
 
-Belirtecin hedef kitlesi, galerideki uygulamanın uygulama şablonu KIMLIĞI olacaktır, tek bir kiracıya kayıtlı uygulamaların her biri SCIM istekleriyle aynı `iss` talebi alabilir. Tüm özel uygulamalar için uygulama şablonu KIMLIĞI, _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_' dir. Azure AD sağlama hizmeti tarafından oluşturulan belirteç yalnızca test için kullanılmalıdır. Üretim ortamlarında kullanılmamalıdır.
+Belirtecin hedef kitlesi, galerideki uygulamanın uygulama şablonu KIMLIĞI olacaktır, tek bir kiracıya kayıtlı uygulamaların her biri `iss` SCIM istekleriyle aynı talebi alabilir. Tüm özel uygulamalar için uygulama şablonu KIMLIĞI, _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_' dir. Azure AD sağlama hizmeti tarafından oluşturulan belirteç yalnızca test için kullanılmalıdır. Üretim ortamlarında kullanılmamalıdır.
 
 Örnek kodda, istekler Microsoft. AspNetCore. Authentication. Jwttaşıyıcı paketi kullanılarak doğrulanır. Aşağıdaki kod, belirli bir kiracı için Azure Active Directory tarafından verilen taşıyıcı belirteci kullanılarak hizmet uç noktalarından herhangi birine yönelik isteklerin kimliklerinin doğrulanmasını zorunlu kılar:
 
@@ -1127,7 +1127,7 @@ Bu makalede açıklanan SCıM profilini destekleyen uygulamalar, Azure AD uygula
 
 1. [Azure Active Directory portalında](https://aad.portal.azure.com)oturum açın. [Geliştirici programına](https://developer.microsoft.com/office/dev-program) kaydolduktan sonra, P2 lisanslarıyla Azure Active Directory ücretsiz bir denemeye erişebileceğinizi unutmayın.
 2. Sol bölmeden **Kurumsal uygulamalar** ' ı seçin. Galeriden eklenen uygulamalar dahil olmak üzere, yapılandırılan tüm uygulamaların bir listesi gösterilir.
-3. **+ Yeni uygulama** > **Tüm** > **Galeri dışı uygulamalar**' ı seçin.
+3. **+ Yeni uygulama**  >  **Tüm**  >  **Galeri dışı uygulamalar**' ı seçin.
 4. Uygulamanız için bir ad girin ve uygulama nesnesi oluşturmak için **Ekle** ' yi seçin. Yeni uygulama, kurumsal uygulamalar listesine eklenir ve uygulama yönetimi ekranına açılır.
 
    ![Ekran görüntüsünde Azure AD Uygulama Galerisi gösterilmektedir](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
@@ -1215,15 +1215,11 @@ Birleşme tümleştirmemiz için bir tanıma ve talep konusunda yardımcı olmak
 
 * **Satış ve müşteri desteği hazırlığı.** Satış ve destek ekiplerinizin farkında olduğundan ve tümleştirme özelliklerine konuşabildiğinden emin olun. Satış ve destek ekibinizin kısa bir yanı, bunları SSS ile sağlayın ve satış malzemelerinize tümleştirme dahil edin. 
 * **Blog gönderisi ve/veya basın yayını.** Birleşik tümleştirmeyi, avantajları ve nasıl başlaılacağını açıklayan bir blog gönderisi veya bir yayın yayını oluşturun. [Örnek: ımprivata ve Azure Active Directory Press yayını](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
-* **Sosyal medya.** Müşterilerinize tümleştirmeyi yükseltmek için Twitter, Facebook veya LinkedIn gibi sosyal medya ortamınızdan yararlanın. @AzureAD Gönderinizi retweet. [Örnek: ımprivata Twitter gönderisi](https://twitter.com/azuread/status/1123964502909779968)
+* **Sosyal medya.** Müşterilerinize tümleştirmeyi yükseltmek için Twitter, Facebook veya LinkedIn gibi sosyal medya ortamınızdan yararlanın. @AzureADGönderinizi retweet. [Örnek: ımprivata Twitter gönderisi](https://twitter.com/azuread/status/1123964502909779968)
 * **Pazarlama Web sitesi.** Ortak tümleştirmenin kullanılabilirliğini dahil etmek için pazarlama sayfalarınızı (örn. tümleştirme sayfası, iş ortağı sayfası, fiyatlandırma sayfası vb.) oluşturun veya güncelleştirin. [Örnek: Pingboard tümleştirme sayfası](https://pingboard.com/org-chart-for), [Smartsheet tümleştirme sayfası](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), [Monday.com fiyatlandırma sayfası](https://monday.com/pricing/) 
 * **Teknik belgeler.** Müşterilerin nasıl başlatıladığına ilişkin bir yardım merkezi makalesi veya teknik belgeler oluşturun. [Örnek: Envoy + Microsoft Azure Active Directory Tümleştirmesi.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
 ) 
 * **Müşteri iletişimi.** Müşteri iletişiminizdeki yeni tümleştirmede müşterileri uyarır (aylık bültenler, e-posta kampanyaları, ürün sürüm notları). 
-
-### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Azure AD sağlama hizmeti tarafından SCIM isteklerini yapmak için kullanılan IP adreslerine izin ver
-
-Belirli uygulamalar, uygulamalarına gelen trafiğe izin verir. Azure AD sağlama hizmeti 'nin beklenen şekilde çalışması için, kullanılan IP adreslerine izin verilmelidir. Her bir hizmet etiketi/bölgesinin IP adresleri listesi için bkz. JSON dosyası- [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519). Gerektiğinde bu IP 'Leri güvenlik duvarınızdan indirebilir ve programlayabilirsiniz. Azure AD sağlama için ayrılmış IP aralıkları "AzureActiveDirectoryDomainServices" altında bulunabilir.
 
 ## <a name="related-articles"></a>İlgili makaleler:
 

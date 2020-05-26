@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: c7b036e7adca1fe92425659ebd099feaa3891556
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743818"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836575"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Otomasyonu runbook türleri
 
@@ -115,7 +115,7 @@ Python runbook 'ları Python 2 altında derlenir. Azure portal metin düzenleyic
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu 'nda runbook 'ları yönetme](manage-runbooks.md)
-* [Azure Otomasyonu için PowerShell Iş akışını öğrenin](automation-powershell-workflow.md)
-* [Azure Otomasyonu 'nda grafik runbook 'ları yazma](automation-graphical-authoring-intro.md)
-* [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview)
+* PowerShell runbook 'ları hakkında bilgi edinmek için bkz. [öğretici: PowerShell runbook 'U oluşturma](learn/automation-tutorial-runbook-textual-powershell.md).
+* PowerShell Iş akışı runbook 'ları hakkında bilgi edinmek için bkz. [öğretici: PowerShell Iş akışı runbook 'U oluşturma](learn/automation-tutorial-runbook-textual.md).
+* Grafik runbook 'ları hakkında bilgi edinmek için bkz. [öğretici: grafik runbook 'U oluşturma](learn/automation-tutorial-runbook-graphical.md).
+* Python runbook 'ları hakkında bilgi edinmek için bkz. [öğretici: Python runbook oluşturma](learn/automation-tutorial-runbook-textual-python2.md).

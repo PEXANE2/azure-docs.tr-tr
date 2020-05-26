@@ -4,18 +4,21 @@ description: Yalnızca CLı komutlarıyla, bir havuz oluşturabilir, giriş veri
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2b1a28c817e0b0aa8047cdd9952065862bda9b73
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1029d2e156d219c88100a035f2ed4a51afa6ba36
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726783"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816005"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLı şablonlarını ve dosya aktarımını kullanın
 
-Azure CLı için Azure Batch uzantısı kullanarak, Batch işlerini kod yazmadan çalıştırmak mümkündür.
+Azure CLı için bir toplu iş uzantısı kullanarak, Batch işlerini kod yazmadan çalıştırmak mümkündür.
 
 Batch havuzları, işler ve görevler oluşturmak için Azure CLı ile JSON şablon dosyaları oluşturun ve kullanın. İş giriş dosyalarını Batch hesabıyla ilişkili depolama hesabına kolayca yüklemek ve iş çıktı dosyalarını indirmek için CLı uzantı komutlarını kullanın.
+
+> [!NOTE]
+> JSON dosyaları [Azure Resource Manager şablonlarla](../azure-resource-manager/templates/template-syntax.md)aynı işlevleri desteklemez. Ham REST istek gövdesi gibi biçimlendirilmesi amaçlanır. CLı uzantısı var olan komutları değiştirmez, ancak kısmi Azure Resource Manager şablon işlevselliği ekleyen benzer bir şablon seçeneği vardır. Bkz. [Windows, Mac ve Linux için Azure Batch CLI uzantıları](https://github.com/Azure/azure-batch-cli-extensions).
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -136,7 +139,7 @@ Aşağıda, FFmpeg yüklenmiş bir Linux VM havuzu oluşturan bir şablon örne�
 az batch pool create --template pool-ffmpeg.json
 ```
 
-CLı, ve parametreleri için değer vermenizi ister `poolId` `nodeCount` . Ayrıca, parametreleri bir JSON dosyasında da sağlayabilirsiniz. Örnek:
+CLı, ve parametreleri için değer vermenizi ister `poolId` `nodeCount` . Ayrıca, parametreleri bir JSON dosyasında da sağlayabilirsiniz. Örneğin:
 
 ```json
 {

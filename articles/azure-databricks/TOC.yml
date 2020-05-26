@@ -1631,20 +1631,6 @@
                       maintainContext: true
                     - name: Azure AD erişim belirteçlerine ilişkin sorunları giderme
                       href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
-                  maintainContext: true
-                - name: Azure Active Directory belirteçleri
-                  items:
-                    - name: Azure AD belirteci kimlik doğrulamasına genel bakış
-                      href: /azure/databricks/dev-tools/api/latest/aad/index
-                      maintainContext: true
-                    - name: Azure AD Kimlik Doğrulaması Kitaplığı’nı kullanarak Azure AD belirteci alma
-                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
-                      maintainContext: true
-                    - name: Bir hizmet sorumlusu kullanarak Azure AD belirteci alma
-                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
-                      maintainContext: true
-                    - name: Azure AD erişim belirteçlerine ilişkin sorunları giderme
-                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
                       maintainContext: true
             - name: Kümeler
               href: /azure/databricks/dev-tools/api/latest/clusters
@@ -1996,8 +1982,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/databricks/'
-    - name: 'Soru sorun: MSDN forumu'
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabricks'
+    - name: Soru sorma - Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-databricks.html'
     - name: 'Soru sorun: Stack Overflow'
       href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
     - name: Bölge kullanılabilirliği

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 8c8265242e09938126bfdb28900b64f2c0e7970a
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 0e1bb015025c2ea9c720aca5d72faef01926cc33
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773853"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800020"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Redsıs için Azure önbelleği için Azure Izleyicisini keşfet (Önizleme)
 
@@ -186,4 +186,4 @@ Bu deneyim, en üstteki Azure izleyici çalışma kitabı şablonları olduğund
 
 * Sorunları algılamaya yardımcı olan otomatik uyarılar ayarlamak için [ölçüm uyarılarını](../platform/alerts-metric.md) ve [hizmet durumu bildirimlerini](../../service-health/alerts-activity-log-service-notifications.md) yapılandırın.
 
-* Çalışma kitaplarının desteklediği senaryoları, raporları yazmak veya özelleştirmek ve [Azure izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../app/usage-workbooks.md)konusunu inceleyerek daha fazla bilgi edinin.
+* Çalışma kitaplarının desteklediği senaryoları, raporları yazmak veya özelleştirmek ve [Azure izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../platform/workbooks-overview.md)konusunu inceleyerek daha fazla bilgi edinin.

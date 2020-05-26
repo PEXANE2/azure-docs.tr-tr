@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: f78161590c897e6337e8694acb9f8a6b34258246
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d2b9f705c73e667f34e46fdeed3c80af1e65fb12
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743813"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830115"
 ---
 # <a name="automation-account-authentication-overview"></a>Otomasyon hesabı kimlik doğrulamasına genel bakış
 
@@ -47,6 +47,6 @@ Veri merkezinizdeki bir karma runbook çalışanı üzerinde çalışan runbook 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure portalından Otomasyon hesabı oluşturma](automation-create-standalone-account.md)
-* [Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma](automation-create-account-template.md)
-* [Amazon Web Services (AWS) ile kimlik doğrulama](automation-config-aws-account.md)
+* Azure portal bir Otomasyon hesabı oluşturmak için bkz. [tek başına Azure Otomasyonu hesabı oluşturma](automation-create-standalone-account.md).
+* Hesabınızı bir şablon kullanarak oluşturmayı tercih ediyorsanız, bkz. [Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma](automation-create-account-template.md).
+* Amazon Web Services kullanarak kimlik doğrulaması için bkz. [Amazon Web Services runbook 'Ları kimlik](automation-config-aws-account.md)doğrulama.

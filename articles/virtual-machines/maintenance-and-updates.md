@@ -5,14 +5,14 @@ author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 11/18/2019
+ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97605b0cdc7ac6368b21e9427f64e4bca7e35d4a
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250237"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815953"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure’da sanal makineler için bakım
 
@@ -21,7 +21,7 @@ Azure, sanal makineler için konak altyapısının güvenilirliğini, performans
 Güncelleştirmeler barındırılan VM 'Leri nadiren etkiler. Güncelleştirmelerin bir etkisi olduğunda Azure, güncelleştirmeler için en az ımpacımpact yöntemini seçer:
 
 - Güncelleştirme için bir yeniden başlatma gerektirmiyorsa, konak güncelleştirilirken VM duraklatılır veya VM canlı olarak zaten güncelleştirilmiş bir konağa geçirilir. 
-- Bakım için yeniden başlatma gerekiyorsa, planlı bakım hakkında bilgilendirilirsiniz. Azure aynı zamanda, sizin için uygun bir zamanda bakımı kendiniz başlatabileceğinizi bir zaman penceresi sağlar. Bakım acil olmadığı takdirde, kendi kendine bakım penceresi genellikle 30 gündür. Azure, planlı platform bakımının VM 'Lerin yeniden başlatılmasını gerektirdiği durum sayısını azaltmak için teknolojiden yatırım yapıyor. Planlı bakım yönetimi hakkında yönergeler için bkz. Azure [CLI](maintenance-notifications-cli.md), [PowerShell](maintenance-notifications-powershell.md) veya [Portal](maintenance-notifications-portal.md)kullanarak planlı bakım bildirimlerini işleme.
+- Bakım için yeniden başlatma gerekiyorsa, planlı bakım hakkında bilgilendirilirsiniz. Azure aynı zamanda, sizin için uygun bir zamanda bakımı kendiniz başlatabileceğinizi bir zaman penceresi sağlar. Bakım acil değilse, kendi kendine bakım penceresi genellikle 35 gün olur. Azure, planlı platform bakımının VM 'Lerin yeniden başlatılmasını gerektirdiği durum sayısını azaltmak için teknolojiden yatırım yapıyor. Planlı bakım yönetimi hakkında yönergeler için bkz. Azure [CLI](maintenance-notifications-cli.md), [PowerShell](maintenance-notifications-powershell.md) veya [Portal](maintenance-notifications-portal.md)kullanarak planlı bakım bildirimlerini işleme.
 
 Bu sayfa, Azure 'un her iki türde bakım gerçekleştirmesini açıklar. Planlanmamış Olaylar (kesintiler) hakkında daha fazla bilgi için bkz. [Windows Için VM 'lerin kullanılabilirliğini yönetme](./windows/manage-availability.md) veya [Linux](./linux/manage-availability.md)için ilgili makale.
 
@@ -37,11 +37,11 @@ Sıfır olmayan etki çok etkili bakım, VM 'yi 10 saniyeden daha az süreyle du
 
 Bellek koruma bakımı, Azure VM 'lerinin yüzde 90 ' sinden daha fazlası için geçerlidir. G, M, N ve H serisi için çalışmaz. Azure, dinamik geçiş teknolojileri kullanır ve duraklatma sürelerini azaltmak için bellek koruma bakım mekanizmalarını geliştirir.  
 
-Yeniden başlatma gerektirmeyen bu bakım işlemleri, tek seferde bir hata etki alanı uygulanır. Herhangi bir uyarı sistem durumu sinyali aldıklarında bunları durdurur. 
+Yeniden başlatma gerektirmeyen bu bakım işlemleri, tek seferde bir hata etki alanı uygulanır. Platform izleme araçlarından herhangi bir uyarı sistem durumu sinyali aldıklarında bunları durdurur. 
 
 Bu tür güncelleştirmeler bazı uygulamaları etkileyebilir. SANAL makine dinamik olarak farklı bir konağa geçirildiğinde, bazı hassas iş yükleri VM duraklatmaya en az birkaç dakika sonunda küçük bir performans düşüşü gösterebilir. VM bakımına hazırlanmak ve Azure Bakımı sırasında etkileri azaltmak için, bu tür uygulamalar için Windows veya [Linux](./linux/scheduled-events.md) [için zamanlanan olaylar kullanmayı](./windows/scheduled-events.md) deneyin. 
 
-Ayrıca, bir yeniden başlatma gerektirmeyen bakımın yönetilmesine yardımcı olabilecek genel önizlemede bir özellik, bakım denetimi de vardır. [Azure ayrılmış Konakları](./linux/dedicated-hosts.md) ya da [yalıtılmış bir VM](../security/fundamentals/isolation-choices.md)kullanıyor olmanız gerekir. Bakım denetimi, platform güncelleştirmelerini atlama ve güncelleştirme işlemini 35 günlük bir bir pencere içinde tercih ettiğiniz zamanda uygulama seçeneği sunar. Daha fazla bilgi için bkz. [bakım denetimi ve Azure CLI ile güncelleştirmeleri denetleme](maintenance-control-cli.md).
+Sıfır etki ve yeniden bootupdates gibi tüm bakım etkinliklerinin üzerinde daha fazla denetim için bakım denetim özelliğini kullanabilirsiniz. [Azure ayrılmış Konakları](./linux/dedicated-hosts.md) ya da [yalıtılmış bir VM](../security/fundamentals/isolation-choices.md)kullanıyor olmanız gerekir. Bakım denetimi, tüm platform güncelleştirmelerini atlama ve güncelleştirme işlemini 35 günlük bir bir pencere içinde dilediğiniz zaman uygulamak için kullanabileceğiniz bir seçenek sunar. Daha fazla bilgi için bkz. [bakım denetimi ve Azure CLI ile güncelleştirmeleri denetleme](maintenance-control.md).
 
 
 ### <a name="live-migration"></a>Canlı geçiş

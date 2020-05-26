@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: a2693803603e053f06c8b6886c6f6639f0859461
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: f30d15615e4f3c738d969d068bf2864df23e7cdb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713157"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836915"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasını etkinleştirme
 
@@ -22,7 +22,7 @@ Bu konu başlığı altında, Azure Otomasyonu durum yapılandırması ile makin
 
 ## <a name="enable-azure-vms"></a>Azure VM 'lerini etkinleştirin
 
-Azure Otomasyonu durum yapılandırması, Azure portal, Azure Resource Manager şablonlarını veya PowerShell 'i kullanarak Azure sanal makinelerini yapılandırma yönetimi için kolayca etkinleştirmenizi sağlar. Yönetim altında ve bir yöneticinin bir VM 'ye uzak olarak gerek kalmadan, Azure VM Istenen durum yapılandırma uzantısı VM 'yi Azure Otomasyonu durum yapılandırması ile kaydeder. Azure uzantısı zaman uyumsuz olarak çalıştığından, ilerleme durumunu izlemek veya sorun giderme adımları için [VM kurulumu 'Nda durum yapılandırması sorunlarını giderme](#troubleshoot-vm-setup-for-state-configuration)bölümünde verilmiştir.
+Azure Otomasyonu durum yapılandırması, Azure portal, Azure Resource Manager şablonlarını veya PowerShell 'i kullanarak Azure sanal makinelerini yapılandırma yönetimi için kolayca etkinleştirmenizi sağlar. Yönetim altında ve bir yöneticinin bir VM 'ye uzak olarak gerek kalmadan, Azure VM Istenen durum yapılandırma uzantısı VM 'yi Azure Otomasyonu durum yapılandırması ile kaydeder. Azure uzantısı zaman uyumsuz olarak çalıştığından, ilerleme durumunu izlemek için gereken adımlar [VM kurulumunun denetim durumu](#check-status-of-vm-setup)bölümünde verilmiştir.
 
 > [!NOTE]
 >DSC 'yi bir Linux düğümüne dağıtmak **/tmp** klasörünü kullanır. Gibi modüller, `nxautomation` uygun konumlarına yüklemeden önce, doğrulama için geçici olarak indirilir. Modüllerin doğru bir şekilde yüklendiğinden emin olmak için, Linux Log Analytics aracısına **/tmp** klasöründe okuma/yazma izinleri gerekir.<br><br>
@@ -307,27 +307,26 @@ Bir makineyi Azure Otomasyonu durum yapılandırması 'nda DSC düğümü olarak
 
 Bu belgede açıklanan yöntemlerden herhangi birini kullanarak düğümü başlangıçta hemen kaydettiğiniz şekilde yeniden kaydedebilirsiniz. Bir düğümün yeniden kaydolmadan önce Azure Otomasyonu durum yapılandırması 'ndan kaydını kaldırmanız gerekmez.
 
-## <a name="troubleshoot-vm-setup-for-state-configuration"></a>Durum yapılandırması için VM kurulumu sorunlarını giderme
+## <a name="check-status-of-vm-setup"></a>VM kurulumunun durumunu denetleme
 
 Durum Yapılandırması, Azure Windows VM 'lerini yapılandırma yönetimi için kolayca etkinleştirmenizi sağlar. Azure VM 'nin Istenen durum yapılandırma uzantısı, Azure Otomasyonu durum yapılandırması ile VM 'yi kaydetmek için kullanılır. Azure VM Istenen durum yapılandırma uzantısı zaman uyumsuz olarak çalıştığından, ilerleme durumunu izlemek ve yürütme sorunlarını gidermek önemli olabilir.
 
 > [!NOTE]
 > Azure VM Istenen durum yapılandırması uzantısının kullanıldığı durum yapılandırması için Azure Windows VM 'Leri etkinleştirme yöntemi, Azure Otomasyonu 'nun VM 'Leri kayıtlı olarak göstermesi için bir saate kadar zaman alabilir. Bu gecikme, VM 'nin durum yapılandırması için VM 'Leri etkinleştirmek için gerekli olan Azure VM Istenen durum yapılandırma uzantısı tarafından sanal makinede WMF 5 yüklemesi nedeniyle oluşur.
 
-Azure VM Istenen durum yapılandırma uzantısının durumunu sorun gidermek veya görüntülemek için:
+Azure VM Istenen durum yapılandırma uzantısının durumunu görüntülemek için:
 
 1. Azure portal, etkinleştirilen VM 'ye gidin.
 2. **Ayarlar**altında **Uzantılar** ' a tıklayın. 
 3. Şimdi işletim sisteminize bağlı olarak **DSC** veya **dscforlinux**' u seçin. 
 4. Daha fazla ayrıntı için **ayrıntılı durumu görüntüle**' ye tıklayabilirsiniz.
 
-Sorun giderme hakkında daha fazla bilgi için bkz. [Azure Automation durum yapılandırması sorunlarını giderme](./troubleshoot/desired-state-configuration.md).
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Başlamak için bkz. [Azure Otomasyonu durum yapılandırması ile çalışmaya](automation-dsc-getting-started.md)başlama.
-- Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum yapılandırmasında yapılandırmaları derleme](automation-dsc-compile.md).
+- Başlamak için bkz. [Azure Otomasyonu durum yapılandırmasını kullanmaya başlama](automation-dsc-getting-started.md).
+- Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
 - PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
 - Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
-- Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmanın bir örneği için bkz. [kullanım örneği: Azure Otomasyonu durum yapılandırması ve Chocolatey kullanarak sanal makinelere sürekli dağıtım](automation-dsc-cd-chocolatey.md).
+- Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmanın bir örneği için bkz. [Chocolatey ile sürekli dağıtımı ayarlama](automation-dsc-cd-chocolatey.md).
+- Sorun giderme bilgileri için bkz. [Azure Otomasyonu durum yapılandırması sorunlarını giderme](./troubleshoot/desired-state-configuration.md).

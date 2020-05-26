@@ -138,6 +138,8 @@
           href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: SMS tabanlı kimlik doğrulaması kullanma (önizleme)
       href: howto-authentication-sms-signin.md
+    - name: E-posta adresiyle oturum açmayı kullanma (önizleme)
+      href: howto-authentication-use-email-signin.md
     - name: Azure AD akıllı kilitleme
       href: howto-password-smart-lockout.md
     - name: Sertifika tabanlı kimlik doğrulaması
@@ -223,8 +225,8 @@
   items:
     - name: Azure geri bildirim forumu
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN forumu
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Hizmet güncelleştirmeleri

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 1/23/2020
-ms.openlocfilehash: c40aa9b0a94940f48a8edbd046a744678f02cbd2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e5dfdd41d3770cc49ed7a1e40ad6fbb12e5b10ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76775399"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827244"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Azure IoT desteği ve yardım seçenekleri
 
@@ -26,7 +26,7 @@ Azure IoT çözümlerinizi geliştirirken yardım alabileceğiniz öneriler aşa
 
 [Azure destek seçeneklerini bulun ve en uygun planı seçin](https://azure.microsoft.com/support/plans) , böylece yalnızca bulut yolculuğuna veya iş açısından kritik ve stratejik uygulamalar dağıtan büyük bir kuruluşa sahip bir geliştirici olursunuz. Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
 ## <a name="post-a-question-on-stack-overflow"></a>Stack Overflow soru gönderin
@@ -53,11 +53,11 @@ IoT çözümleri oluşturmaya yönelik Azure teknolojilerini ve hizmetlerini tar
 
 Arama yoluyla sorununuz için bir yanıt bulamazsanız, hizmetle ilgili forumda MSDN 'ye yeni bir soru gönderin:
 
-- [Azure Digital Twins](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredigitaltwins)
-- [Azure IoT Hub](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azureiothub)
-- [Azure IoT Edge](https://social.msdn.microsoft.com/Forums/en-US/home?forum=iotedge)
-- [Azure Haritalar](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelbs)
-- [Azure Zaman Serisi Görüşleri](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights)
+- [Microsoft soru&Azure dijital TWINS için soru sayfası](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
+- [Microsoft Q&Azure IoT Hub soru sayfası](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
+- [Microsoft Q&Azure IoT Edge için soru sayfası](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
+- [Microsoft Q&Azure Maps için soru sayfası](https://docs.microsoft.com/answers/topics/azure-maps.html)
+- [Microsoft Q&Azure Time Series Insights için soru sayfası](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
 
 ## <a name="submit-feedback-on-azure-feedback"></a>Azure geri bildirimi hakkında geri bildirim gönderin
 

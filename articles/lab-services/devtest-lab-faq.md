@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 8697c7a82e271919f8d5aaa48160aa93c833809b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: c5e5437db480646275a8bbe34e1a64c005a32a16
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996909"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827735"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
 Azure DevTest Labs hakkındaki en yaygın soruların bazılarına yanıt alın.
@@ -47,7 +47,7 @@ Twitter tanıtıcımız:[@azlabservices](https://twitter.com/azlabservices)
 Sorunuz burada listelenmiyorsa bize bilgi verin. bu nedenle bir yanıt bulmanıza yardımcı olabiliriz.
 
 - Bu SSS sonunda bir soru gönderin.
-- Daha geniş bir hedef kitleye ulaşmak için [Azure DEVTEST Labs MSDN forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)bir soru gönderin. Azure DevTest Labs ekiple ve topluluktaki diğer üyelerle birlikte katılın.
+- Daha geniş bir hedef kitleye ulaşmak için, [Azure DevTest Labs Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-devtestlabs.html)bir soru gönderin. Azure DevTest Labs ekiple ve topluluktaki diğer üyelerle birlikte katılın.
 - Özellik istekleri için isteklerinizi ve fikirlerinizi [Azure DevTest Labs Kullanıcı seslerine](https://feedback.azure.com/forums/320373-azure-devtest-labs)gönderebilirsiniz.
 
 ### <a name="what-is-a-microsoft-account"></a>Microsoft hesabı nedir?
@@ -288,7 +288,7 @@ Daha ayrıntılı bir açıklama için bkz. DevTest Labs 'de [özel resimleri ve
 
 Laboratuvarınız ile ilişkili hedef depolama hesabını bulmak için:
 
-1.  [Azure Portal](https://portal.azure.com) oturum açın.
+1.  [Azure portalında](https://portal.azure.com) oturum açın.
 2.  Sol taraftaki menüden **kaynak grupları**' nı seçin.
 3.  Laboratuvarınız ile ilişkili kaynak grubunu bulun ve seçin.
 4.  **Genel bakış**' ın altında, depolama hesaplarından birini seçin.
@@ -307,7 +307,7 @@ Belirli endişeleriniz veya kuruluş gereksinimleriniz yoksa, Azure Marketi vars
 - Tüm makineler için yerinde olması gereken uyumluluk veya yasal koşullar (örneğin, güvenlik ilkeleri).
 - Özel görüntülerin kullanılması, hafif olarak düşünülmemelidir. Bu temel görüntüler için VHD dosyalarını yönetmeniz gerektiği için, daha fazla karmaşıklık sağlar. Ayrıca, bu temel görüntülerin yazılım güncelleştirmeleriyle düzenli olarak yayama yapmanız gerekir. Bu güncelleştirmeler yeni işletim sistemi (OS) güncelleştirmelerini ve yazılım paketinin kendisi için gereken güncelleştirme veya yapılandırma değişikliklerini içerir.
 
-## <a name="artifacts"></a>Yapıtlar
+## <a name="artifacts"></a>Artifacts
 
 ### <a name="what-are-artifacts"></a>Yapıtlar nelerdir?
 Yapıtlar, en son bitleri dağıtmak veya geliştirme araçlarınızı bir VM 'ye dağıtmak için kullanabileceğiniz özelleştirilebilir öğelerdir. VM 'yi oluştururken sanal makinenize yapıt ekleyin. VM sağlandıktan sonra yapıtlar VM 'nizi dağıtıp yapılandırır. [Genel GitHub depolarımızda](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), önceden var olan çeşitli yapıtlar mevcuttur. [Kendi yapıtlarınızı](devtest-lab-artifact-author.md)da yazabilirsiniz.
@@ -327,7 +327,7 @@ Başarısız yapıtlarınız için günlük alma hakkında bilgi edinmek için b
 Kuruluşunuzun genel idare ve yapılandırma yönetimi stratejisinin bir parçası olarak, merkezi bir depo kullanmanızı öneririz. Birden çok depo kullandığınızda, bu kişiler zaman içinde yönetilmeyen yazılımların siloları haline gelebilir. Merkezi bir depoyla, birden fazla ekip projeleri için bu depodan yapıları kullanabilir. Standartlaştırma, güvenlik ve yönetim kolaylığı sağlar ve çabalarınızın çoğaltılmasını ortadan kaldırır. Merkezileşmeyi bir parçası olarak, uzun süreli yönetim ve sürdürülebilirlik için önerilen uygulamalar aşağıdaki eylemlerdir:
 
 - Azure Repos kimlik doğrulaması ve yetkilendirme için Azure aboneliğinin kullandığı Azure Active Directory kiracısıyla ilişkilendirin.
-- Merkezi olarak yönetilen Azure Active Directory `All DevTest Labs Developers` adında bir grup oluşturun. Yapıt geliştirmeye katkıda bulunan tüm geliştiriciler bu gruba yerleştirilmelidir.
+- `All DevTest Labs Developers`Merkezi olarak yönetilen Azure Active Directory adında bir grup oluşturun. Yapıt geliştirmeye katkıda bulunan tüm geliştiriciler bu gruba yerleştirilmelidir.
 - Aynı Azure Active Directory grubu, Azure Repos deposuna ve laboratuvarına erişim sağlamak için kullanılabilir.
 - Azure Repos, dallandırma veya dallama, birincil üretim deposundan ayrı bir geliştirme deposunda ayrı olarak kullanılmalıdır. İçerik yalnızca, doğru bir kod incelemesi sonrasında bir çekme isteğiyle birlikte Ana dala eklenir. Kod gözden geçiren değişikliği onayladığında, ana dalın bakımında sorumlu olan bir lider geliştiricisi, güncelleştirilmiş kodu birleştirir.
 

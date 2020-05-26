@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8c87b059d94d6b3be1a4b5cf2f83007b746f4156
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6d107dcbdc31a0049c7685e6dd8223bda694a526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658582"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836813"
 ---
 # <a name="quickstart-use-sql-on-demand"></a>Hızlı başlangıç: isteğe bağlı SQL kullanma
 
@@ -60,33 +60,21 @@ Tanıtım amacıyla kendi veritabanınızı oluşturun. Bu veritabanını, bu ma
 CREATE DATABASE mydbname
 ```
 
-### <a name="create-credentials"></a>Kimlik bilgileri oluştur
+### <a name="create-data-source"></a>Veri kaynağı oluştur
 
-SQL 'i isteğe bağlı olarak kullanarak sorguları çalıştırmak için, depolama alanındaki dosyalara erişmek üzere kullanılacak SQL isteğe bağlı olarak kimlik bilgileri oluşturun.
-
-> [!NOTE]
-> Bu bölümdeki örneklerin başarıyla çalıştırılabilmesi için bir SAS belirteci kullanmanız gerekir.
->
-> SAS belirteçlerini kullanmaya başlamak için, aşağıdaki [makalede](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)açıklanan UserIdentity öğesini bırakmalısınız.
->
-> İsteğe bağlı SQL, varsayılan olarak her zaman AAD geçişli geçiş kullanır.
-
-Depolama erişim denetimini yönetme hakkında daha fazla bilgi için bkz.[isteğe bağlı SQL için depolama hesabı erişimini denetleme](sql/develop-storage-files-storage-access-control.md) .
-
-Bu bölümdeki örneklerde kullanılan kimlik bilgilerini oluşturmak için aşağıdaki kod parçacığını yürütün:
+Sorguları SQL ile isteğe bağlı olarak çalıştırmak için, SQL isteğe bağlı SQL 'in depolama alanındaki dosyalara erişmek için kullanabileceği veri kaynağı oluşturun.
+Bu bölümdeki örneklerde kullanılan veri kaynağını oluşturmak için aşağıdaki kod parçacığını yürütün:
 
 ```sql
 -- create credentials for containers in our demo storage account
-IF EXISTS
-   (SELECT * FROM sys.credentials
-   WHERE name = 'https://sqlondemandstorage.blob.core.windows.net')
-   DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
+CREATE DATABASE SCOPED CREDENTIAL sqlondemand
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
 GO
+CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
+    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+    CREDENTIAL = sqlondemand
+);
 ```
 
 ## <a name="query-csv-files"></a>CSV dosyalarını sorgula
@@ -101,8 +89,9 @@ Aşağıdaki sorgu, üst bilgi satırı içermeyen bir CSV dosyasının nasıl o
 SELECT TOP 10 *
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/*.csv'
-    , FORMAT = 'CSV'
+      BULK 'csv/population/*.csv',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT = 'CSV', PARSER_VERSION = '2.0'
   )
 WITH
   (
@@ -129,8 +118,9 @@ Aşağıdaki örnek, Parquet dosyalarını sorgulamak için otomatik Şema çık
 SELECT COUNT_BIG(*)
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet'
-    , FORMAT='PARQUET'
+      BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT='PARQUET'
   ) AS nyc
 ```
 
@@ -169,7 +159,8 @@ SELECT
   , jsonContent
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/json/books/*.json'
+      BULK 'json/books/*.json',
+      DATA_SOURCE = 'SqlOnDemandDemo'
     , FORMAT='CSV'
     , FIELDTERMINATOR ='0x0b'
     , FIELDQUOTE = '0x0b'

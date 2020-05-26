@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: fc0a82617346f60b90de34b379b4a0a114faf804
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658076"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799855"
 ---
 # <a name="consulting-service-offers"></a>Danışmanlık hizmeti teklifleri
 
@@ -74,7 +74,7 @@ AppSource için uygun olan yeklikler aşağıdaki tabloda listelenmiştir:
 
 Ek kaynaklar ve destek:
 
-* [Microsoft bulut etkinleştirme masası](https://partner.microsoft.com/campaigns/ced-nomination-form/): bulut programı uzmanı ile bağlantı kurmak için iş ortağı aday formunu doldurun ve uzmanlığa yönelik bir kılavuz olarak, Microsoft iş ortağı ağı avantajlara yol açabilir ve sunabilir.  
+* [Microsoft bulut etkinleştirme masası](https://aka.ms/CEDnominate): bulut programı uzmanı ile bağlantı kurmak için iş ortağı aday formunu doldurun ve uzmanlığa yönelik bir kılavuz olarak, Microsoft iş ortağı ağı avantajlara yol açabilir ve sunabilir.  
 * [Power BI iş ortağı: Power BI tanıtıkta](https://powerbi.microsoft.com/become-a-partner/)listelenecek bir istek gönderme.
 
 Uzmanlıklar hakkında daha fazla bilgi için [Microsoft iş ortağı ağı yetkinlikleri](https://partner.microsoft.com/membership/competencies) sayfasına gidin.

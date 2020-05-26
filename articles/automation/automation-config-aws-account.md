@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c724b1782381c0499991124c359d3e1339109d3
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: acb056fb959fda320a14059e2b36a0f5e3fb0b37
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715809"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837203"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Amazon Web Services ile kimlik doğrulaması runbook’ları
 
@@ -39,4 +39,4 @@ AWS güvenlik anahtarlarınızı oluşturup kopyaladıktan sonra, Otomasyon hesa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Amazon Web Services sanal makinenin dağıtımını otomatikleştirin](automation-scenario-aws-deployment.md)
+* AWS 'de görevleri otomatikleştirmek için Runbook 'ların nasıl oluşturulacağını öğrenmek için bkz. [runbook ile Amazon Web SERVICES VM dağıtma](automation-scenario-aws-deployment.md).

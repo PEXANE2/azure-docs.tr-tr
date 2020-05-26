@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
-ms.openlocfilehash: ba67b1cd93bc1c713648f799090e0b2cd77cff1b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d29cf1819d844a8ba5446feeeb725307523fce1b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598622"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800536"
 ---
 # <a name="webhooks-automation-runbooks-logic-apps-as-event-handlers-for-azure-event-grid-events"></a>Web kancaları, Otomasyon Runbook 'ları Azure Event Grid olaylar için olay işleyicileri olarak Logic Apps
 Olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için başka bir eylem gerçekleştirir. Çeşitli Azure Hizmetleri, olayları işleyecek şekilde otomatik olarak yapılandırılır. Olayları işlemek için herhangi bir Web kancasını da kullanabilirsiniz. Web kancasının olayları işlemek için Azure 'da barındırılması gerekmez. Event Grid yalnızca HTTPS Web kancası uç noktalarını destekler.
@@ -47,6 +47,27 @@ Event Grid olaylarını işlemek için iş süreçlerini uygulamak üzere **Logi
 | [Öğretici: Azure Event Grid ve Logic Apps ile sanal makine değişikliklerini Izleme](monitor-virtual-machine-changes-event-grid-logic-app.md) | Mantıksal uygulama, bir sanal makinedeki değişiklikleri izler ve bu değişiklikler hakkında e-posta gönderir. |
 | [Öğretici: Logic Apps kullanarak Azure IoT Hub olaylarıyla ilgili e-posta bildirimleri gönderme](publish-iot-hub-events-to-logic-apps.md) | Logic App bir cihaz, IoT Hub 'ınıza her eklendiğinde bir bildirim e-postası gönderir. |
 | [Öğretici: Azure Işlevleri ve Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına yanıt verme](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid, Service Bus konudan işlev uygulaması ve mantıksal uygulama 'a ileti gönderir. |
+
+## <a name="rest-example-for-put"></a>REST örneği (PUT için)
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "WebHook",
+            "properties": 
+            {
+                "endpointUrl": "<WEB HOOK URL>",
+                "maxEventsPerBatch": 1,
+                "preferredBatchSizeInKilobytes": 64
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Desteklenen olay işleyicilerinin bir listesi için bkz. [olay işleyicileri](event-handlers.md) makalesi. 

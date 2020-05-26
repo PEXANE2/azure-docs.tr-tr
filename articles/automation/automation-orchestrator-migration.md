@@ -1,18 +1,18 @@
 ---
-title: Orchestrator 'dan Azure Otomasyonu 'na (Beta) geçiş
+title: Orchestrator’dan Azure Otomasyonu’na (Beta) geçiş
 description: Bu makalede runbook 'ları ve Tümleştirme paketlerini Orchestrator 'dan Azure Otomasyonu 'na nasıl geçirebileceğiniz açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e8bb448e88d7aaa3d59ec9392a3b3ac69373c4d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b6778c4eab4dee382ec38d6218aa647e8aedc4cc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715503"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836762"
 ---
-# <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Orchestrator 'dan Azure Otomasyonu 'na (Beta) geçiş
+# <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Orchestrator’dan Azure Otomasyonu’na (Beta) geçiş
 
 [System Center 2012-Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) içindeki runbook 'Lar, Azure Otomasyonu 'ndaki runbook 'Lar Windows PowerShell 'i temel alırken Orchestrator için özel olarak yazılmış tümleştirme paketlerindeki etkinliklere dayanır. Azure Otomasyonu 'ndaki [grafik runbook](automation-runbook-types.md#graphical-runbooks) 'larında, runbook 'ları PowerShell cmdlet 'lerini, alt runbook 'ları ve varlıkları temsil eden etkinlikleri içeren Orchestrator Runbook 'larına benzer bir görünüm vardır. Runbook 'ların kendilerini dönüştürmesinin yanı sıra, Tümleştirme paketlerini runbook 'ların Windows PowerShell cmdlet 'leriyle tümleştirmede kullandığı etkinliklerle dönüştürmeniz gerekir. 
 
@@ -130,8 +130,8 @@ Orchestrator Runbook 'ları bir veritabanı sunucusunda depolar ve Runbook sunuc
 
 ## <a name="related-articles"></a>İlgili makaleler:
 
-* [System Center 2012 - Orchestrator](https://technet.microsoft.com/library/hh237242.aspx)
-* [Hizmet Yönetimi Otomasyonu](https://technet.microsoft.com/library/dn469260.aspx)
-* [Karma Runbook Çalışanı](automation-hybrid-runbook-worker.md)
-* [Orchestrator Standart etkinlikleri](https://technet.microsoft.com/library/hh403832.aspx)
-* [System Center Orchestrator geçiş araç setini indir](https://www.microsoft.com/download/details.aspx?id=47323)
+* Orchestrator ayrıntıları için bkz. [System Center 2012-Orchestrator](https://technet.microsoft.com/library/hh237242.aspx).
+* [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx)içindeki hizmetlerin yönetimini otomatikleştirme hakkında daha fazla bilgi edinin.
+* Orchestrator etkinliklerinin ayrıntıları [Orchestrator Standart etkinliklerinde](https://technet.microsoft.com/library/hh403832.aspx)bulunabilir.
+* Orchestrator geçiş araç takımını edinmek için bkz. [System Center Orchestrator geçiş araç seti 'Ni indirme](https://www.microsoft.com/download/details.aspx?id=47323).
+* Azure Otomasyonu karma Runbook Worker 'a genel bakış için bkz. [karma Runbook Worker genel bakış](automation-hybrid-runbook-worker.md).

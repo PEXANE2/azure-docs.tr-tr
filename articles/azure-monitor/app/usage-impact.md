@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 787221c4df3f06029d19ee779a28bb763723f27d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d775e876a0cce1ba13964d6d4777307a34fdf3f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77671044"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797900"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights ile etki analizi
 
@@ -85,5 +85,5 @@ Etkili bir şekilde hesaplama, ölçüm veya boyuta göre analiz edilip etmediğ
     - [Huniler](usage-funnels.md)
     - [Bekletme](usage-retention.md)
     - [Kullanıcı Akışları](usage-flows.md)
-    - [Çalışma Kitapları](../../azure-monitor/app/usage-workbooks.md)
+    - [Çalışma Kitapları](../../azure-monitor/platform/workbooks-overview.md)
     - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)

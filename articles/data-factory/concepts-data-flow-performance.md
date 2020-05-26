@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 04/27/2020
-ms.openlocfilehash: 8ea26fc041f3fa6194ced65b3e3b9055848ead49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: 327fffd807d93fda67ff650954ece65e5db58e63
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188781"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798107"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -41,7 +41,7 @@ Eşleme veri akışları tasarlarken, yapılandırma panelinde veri önizleme se
 
 Daha fazla çekirdeğe sahip bir Integration Runtime Spark işlem ortamlarındaki düğümlerin sayısını artırır ve verilerinizi okumak, yazmak ve dönüştürmek için daha fazla işlem gücü sağlar. ADF veri akışları işlem altyapısı için Spark 'ı kullanır. Spark ortamı, bellek için iyileştirilmiş kaynaklarda çok iyi sonuç verir.
 * İşlem hızlarınızın giriş oranından daha yüksek olmasını istiyorsanız, **işlem Için iyileştirilmiş** bir küme deneyin.
-* Bellekte daha fazla veri önbelleğe almak istiyorsanız **bellek Için iyileştirilmiş** bir küme deneyin. Bellek için iyileştirilmiş, Işlem Iyileştirilenden çekirdek başına daha yüksek bir fiyat noktasına sahiptir, ancak büyük olasılıkla daha hızlı dönüştürme hızına neden olur.
+* Bellekte daha fazla veri önbelleğe almak istiyorsanız **bellek Için iyileştirilmiş** bir küme deneyin. Bellek için iyileştirilmiş, Işlem Iyileştirilenden çekirdek başına daha yüksek bir fiyat noktasına sahiptir, ancak büyük olasılıkla daha hızlı dönüştürme hızına neden olur. Verilerinizi çalıştırırken bellek hatalarından karşılaşırsanız bellek için iyileştirilmiş bir Azure IR yapılandırmasına geçin.
 
 ![Yeni IR](media/data-flow/ir-new.png "Yeni IR")
 
@@ -140,6 +140,10 @@ Kaynak dönüştürme her etkinlik Için kullanarak döngü yerine birden çok d
 ```DateFiles/*_201907*.txt```
 
 Joker karakter kullanımı ' nı kullanarak, işlem hattınız yalnızca bir veri akışı etkinliği içerir. Bu, içinde bir veri akışı yürütme etkinliği içeren bir ForEach kullanarak tüm eşleşen dosyalarda yineleme yapan blob deposuna karşı bir aramanın daha iyi bir şekilde gerçekleştirilir.
+
+Her biri paralel modda olan işlem hattı, yürütülen her veri akışı etkinliği için dönen iş kümelerine göre birden çok küme oluşturacak. Bu, yüksek sayıda eş zamanlı yürütmeler ile Azure hizmeti azaltmasına neden olabilir. Ancak, ardışık düzende sıralı kümesi olan her biri Için bir Için veri akışı yürütme kullanımı, azaltma ve kaynak tükenmesi yapmaktan kaçınacaktır. Bu, Data Factory her bir veri akışına karşı her dosyanızı yürütmek üzere zorlayacaktır.
+
+Her biri Için bir veri akışı ile kullanıyorsanız, Azure Integration Runtime TTL ayarını kullanmanız önerilir. Bunun nedeni, her bir dosyanın yineleyicisinin içinde tam 5 dakikalık bir küme başlatma süresi olacaktır.
 
 ### <a name="optimizing-for-cosmosdb"></a>CosmosDB için iyileştiriliyor
 

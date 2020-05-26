@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 50252d0a308c4232b84bffddd905d8a84e1be0d8
-  ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+  ms.openlocfilehash: 87190c5cab772e4b8dc04672066e575b10c14533
+  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83707981"
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83800775"
 highlightedContent:
   items:
   - title: Konuşma tanıma hizmeti nedir?
@@ -130,13 +130,13 @@ conceptualContent:
   - title: Araçlar
     links:
     - itemType: overview
-      text: SPX Hakkında - kod yazmadan Konuşma hizmetini kullanma
+      text: Konuşma CLI’si hakkında (kod gerektirmeyen komut satırı aracı)
       url: spx-overview.md
     - itemType: how-to-guide
-      text: SPX temel bilgileri
+      text: Konuşma CLI’si temel bilgileri (yükleme ve örnekler)
       url: spx-basics.md
     - itemType: overview
-      text: Speech Studio Hakkında - kod yazmadan Konuşma hizmetini özelleştirme
+      text: Speech Studio hakkında (özelleştirmeler)
       url: https://speech.microsoft.com
   - title: Barındırma
     links:

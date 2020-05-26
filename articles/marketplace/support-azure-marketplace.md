@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 9dacbbac1caad33a6ab2f5f09d3f6c9d31c32bb7
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 624bce67e01a0d7dbee382ed77a833705ecd5c89
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871559"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800377"
 ---
 # <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft ticari Market desteği
 
@@ -20,13 +20,13 @@ Microsoft ticari Market yayımcısı olarak çalışmaya başlama hakkında soru
 
 ## <a name="onboarding"></a>Ekleme
 
-Ekleme ve Başlarken sorunları için Microsoft [Marketplace Publisher desteğiyle](https://partner.microsoft.com/support/v2/?stage=1) bir bilet açın.
+Ekleme ve Başlarken sorunları için Microsoft [Marketplace Publisher desteğiyle](https://aka.ms/marketplacepublishersupport) bir bilet açın.
 
-## <a name="partner-center"></a>İş Ortağı Merkezi   
+## <a name="partner-center"></a>İş Ortağı Merkezi
 
 | Destek kanalı | Açıklama | Kullanılabilirlik |  
 |:--- |:--- |:--- |  
-| Yardım için [Market 'te](https://partner.microsoft.com/support/v2/?stage=1) bulunan bir olay oluştur sayfasını ziyaret edin</li> </ul> | Iş Ortağı Merkezi için destek. | Destek, 24x5 ' i sağlamıştır. |  
+| Yardım için [Market 'te](https://aka.ms/marketplacepublishersupport) bulunan bir olay oluştur sayfasını ziyaret edin</li> </ul> | Iş Ortağı Merkezi için destek. | Destek, 24x5 ' i sağlamıştır. |  
 
 ## <a name="technical"></a>Teknik  
 

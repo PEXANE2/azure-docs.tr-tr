@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 5d1bf859968c7b7a889abe635c917d0da11bf6e1
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837337"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800924"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Ticari Market teklifinizin müşteri adayları
 
@@ -48,9 +48,9 @@ Bir müşteri adayının oluşturulduğu yer şunlardır:
 
 ## <a name="understand-lead-data"></a>Müşteri adayı verilerini anlama
 
-Müşteri alma işlemi sırasında aldığınız her bir müşteri, belirli alanlardaki verilere sahiptir. İçin ilk `LeadSource` aranacak alan, şu biçimi izleyen alandır: **Kaynak-eylem** | **teklifi**.
+Müşteri alma işlemi sırasında aldığınız her bir müşteri, belirli alanlardaki verilere sahiptir. İçin ilk aranacak alan, şu `LeadSource` biçimi izleyen alandır: **Kaynak-eylem**  |  **teklifi**.
 
-**Kaynaklar**: Bu alanın değeri, müşteri adayını oluşturan Market 'e göre doldurulur. Olası değerler şunlardır `"AzureMarketplace"`, `"AzurePortal"`ve `"AppSource (SPZA)"`.
+**Kaynaklar**: Bu alanın değeri, müşteri adayını oluşturan Market 'e göre doldurulur. Olası değerler şunlardır `"AzureMarketplace"` , `"AzurePortal"` ve `"AppSource (SPZA)"` .
 
 **Eylemler**: Bu alanın değeri, müşterinin müşteri adayını oluşturan Market 'te aldığı eyleme göre doldurulur.
 
@@ -64,7 +64,7 @@ Olası değerler şunlardır:
 
 **Teklifler**: ticari Market 'te birden fazla teklifiniz olabilir. Bu alanın değeri, müşteri adayını oluşturan teklifine göre doldurulur. Yayımcı KIMLIĞI ve teklif KIMLIĞI bu alana gönderilir ve teklifi Market 'e yayımladığınızda verdiğiniz değerlerdir.
 
-Aşağıdaki örnekler, değerleri beklenen biçimde `publisherid.offerid`göstermektedir: 
+Aşağıdaki örnekler, değerleri beklenen biçimde göstermektedir `publisherid.offerid` : 
 
 - `checkpoint.check-point-r77-10sg-byol`
 - `bitnami.openedxcypress`
@@ -76,7 +76,7 @@ Müşterinin bilgileri birden çok alan aracılığıyla gönderilir. Aşağıda
 
 - FirstName: John
 - Soyadı: Smith
-- E-posta:\@jsmith Microsoft.com
+- E-posta: jsmith \@ Microsoft.com
 - Telefon: 1234567890
 - Ülke: ABD
 - Şirket: Microsoft
@@ -96,7 +96,7 @@ Müşterinin bilgileri birden çok alan aracılığıyla gönderilir. Aşağıda
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Lider hedefini ayarlama konusunda nereden yardım alabilirim?
 
-[CRM sisteminize bağlanma](#connect-to-your-crm-system)bölümündeki adımları Izleyin veya [Iş Ortağı Merkezi Yardım ve destek](https://partner.microsoft.com/support/v2/?stage=1)aracılığıyla bir destek bileti gönderebilirsiniz. Teklif oluşturma**müşteri adayı yönetimi yapılandırma****türünden** >  **teklif oluşturmayı** > seçin.
+[CRM sisteminize bağlanma](#connect-to-your-crm-system)bölümündeki adımları Izleyin veya [Iş Ortağı Merkezi Yardım ve destek](https://aka.ms/marketplacepublishersupport)aracılığıyla bir destek bileti gönderebilirsiniz. Teklif **oluşturma**  >  **Your type of offer**  >  **müşteri adayı yönetimi yapılandırma**türünden teklif oluşturmayı seçin.
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Ticari Market 'te teklif yayımlamak için bir müşteri adayı hedefi yapılandırmak istiyorum mu?
 
@@ -104,7 +104,7 @@ Yanıt, yayımlamakta olduğunuz teklifin türüne bağlıdır. Hizmet olarak ya
 
 ### <a name="how-can-i-find-the-test-lead"></a>Test lideri nasıl bulabilirim?
 
-`"MSFT_TEST"` Müşteri adayı Hedefinizdeki arama yapın. Microsoft 'tan örnek bir test lideri aşağıda verilmiştir:
+`"MSFT_TEST"`Müşteri adayı Hedefinizdeki arama yapın. Microsoft 'tan örnek bir test lideri aşağıda verilmiştir:
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -133,7 +133,7 @@ Azure Blob depolama, artık bir lider hedefi olarak desteklenmediğinden teklifi
 
 ### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Ticari Market 'ten bir e-posta aldım, ancak neden CRM 'de müşteri adayını bulamıyorum?
 
-Son kullanıcının e-posta etki alanı. edu 'dan olabilir. Gizlilik nedenleriyle,. edu etki alanından kişisel bilgileri geçirmeiyoruz. [Iş Ortağı Merkezi Yardım ve destek](https://partner.microsoft.com/support/v2/?stage=1)aracılığıyla bir destek bileti gönderebilirsiniz.
+Son kullanıcının e-posta etki alanı. edu 'dan olabilir. Gizlilik nedenleriyle,. edu etki alanından kişisel bilgileri geçirmeiyoruz. [Iş Ortağı Merkezi Yardım ve destek](https://aka.ms/marketplacepublishersupport)aracılığıyla bir destek bileti gönderebilirsiniz.
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Müşteri adayı hedefi olarak bir Azure tablosu yapılandırdım. Müşteri adaylarını nasıl görüntüleyebilirim?
 
@@ -155,11 +155,11 @@ Kişisel bilgi ilkeleri nedeniyle, güvenli olmayan e-posta ile müşteri adayı
 
 Müşteri adayı oluşturma verileri düşüktür. Neredeyse tüm yayımcılar için 1 GB 'tan az. Maliyet, alınan müşteri adaylarının sayısına bağlıdır. Örneğin, bir ayda 1.000 müşteri adayı alındıysa, maliyet 50 ilaaydır. Depolama fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure depolama genel bakış fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
-Sorunuz yanıtlanmazsa, [Iş Ortağı Merkezi Yardım ve destek](https://aka.ms/marketplacepublishersupport)aracılığıyla Microsoft desteği başvurun. Teklif oluşturma**müşteri adayı yönetimi yapılandırma****türünden** >  **teklif oluşturmayı** > seçin.
+Sorunuz yanıtlanmazsa, [Iş Ortağı Merkezi Yardım ve destek](https://aka.ms/marketplacepublishersupport)aracılığıyla Microsoft desteği başvurun. Teklif **oluşturma**  >  **Your type of offer**  >  **müşteri adayı yönetimi yapılandırma**türünden teklif oluşturmayı seçin.
 
 ### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Yeni müşteri adayları alındığında e-posta bildirimleri alıyorum. Başka birini bu e-postaları alacak şekilde nasıl yapılandırabilirim?
 
-İş Ortağı Merkezi ' nde teklifinizi erişin ve **teklif kurulumu** sayfasına gidin > **müşteri adayı yönetimi** > 'ni**düzenleyin**. **İletişim e-postası** alanındaki e-posta adreslerini güncelleştirin.
+İş Ortağı Merkezi ' nde teklifinizi erişin ve **teklif kurulumu** sayfasına gidin > **müşteri adayı yönetimi**'ni  >  **düzenleyin**. **İletişim e-postası** alanındaki e-posta adreslerini güncelleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

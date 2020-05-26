@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: f91ee5654b4add37d3cce4f875be1f9c2b398ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a3d8ee1d0c1625c9e7d3d83b590f38dcd8847fe
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259502"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836422"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için çoğaltma sorunlarını giderme
 
@@ -132,7 +132,7 @@ Sorunu çözmek için, hizmet durumunu doğrulamak üzere aşağıdaki adımlar�
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Hata KIMLIĞI 78144-son ' XXX ' dakika içinde VM için uygulamayla tutarlı bir kurtarma noktası yok
 
-Mobility Agent [9,23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher) & [9,27](site-recovery-whats-new.md#update-rollup-39) sürümlerinde VSS yükleme hatası davranışlarını işleyecek geliştirmeler yapılmıştır. VSS hatalarında sorun giderme konusunda en iyi yönergeler için en son sürümlere sahip olduğunuzdan emin olun.
+Mobility Agent [9,23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher)  &  [9,27](site-recovery-whats-new.md#update-rollup-39) sürümlerinde VSS yükleme hatası davranışlarını işleyecek geliştirmeler yapılmıştır. VSS hatalarında sorun giderme konusunda en iyi yönergeler için en son sürümlere sahip olduğunuzdan emin olun.
 
 En yaygın sorunlardan bazıları aşağıda listelenmiştir
 
@@ -193,4 +193,4 @@ VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarland�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla yardıma ihtiyacınız varsa sorunuzu [Azure Site Recovery forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)gönderin. Etkin bir topluluk sunuyoruz ve mühendislerimizden biri size yardımcı olabilir.
+Daha fazla yardıma ihtiyacınız varsa, [Azure Site Recovery Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)sorunuzu gönderin. Etkin bir topluluk sunuyoruz ve mühendislerimizden biri size yardımcı olabilir.

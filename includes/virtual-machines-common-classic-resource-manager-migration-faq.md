@@ -8,36 +8,36 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa97935c10b2a5df70c9babf031a889a9c1e9f34
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78383853"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837889"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>Geçiş için gereken süre nedir?
 
-Göçün planlanması ve yürütülmesi büyük ölçüde mimarinin karmaşıklığına bağlıdır ve birkaç ay sürebilir.  
+Geçişin planlanması ve yürütülmesi büyük ölçüde mimarinin karmaşıklığına bağlıdır ve birkaç ay sürebilir.  
 
-## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>IaaS VM'lerde (klasik) yeni bir müşterinin tanımı nedir?
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>IaaS VM 'lerinde (klasik) yeni bir müşterinin tanımı nedir?
 
-Şubat 2020 ayında (amortisman başlamadan bir ay önce) aboneliklerinde IaaS VM'leri (klasik) olmayan müşteriler yeni müşteri olarak kabul edilir. 
+Febrauary 2020 (kullanım dışı bırakılmadan önce bir ay) için aboneliklerinde IaaS VM 'Leri (klasik) olmayan müşteriler yeni müşteri olarak kabul edilir. 
 
-## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>IaaS Sanal Makineler (klasik) üzerinde mevcut bir müşteri tanımı nedir?
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>IaaS sanal makinelerinde (klasik) mevcut bir müşterinin tanımı nedir?
 
-Şubat 2020 ayında aboneliklerinde IaaS VM'leri (Klasik) aktif olarak kullanan veya durduran veya tahsis eden müşteri, varolan bir müşteri olarak kabul edilir. VM'lerini Azure Servis Yöneticisi'nden Azure Kaynak Yöneticisi'ne geçirmek için yalnızca bu müşteriler 1 Mart 2023'e kadar zaman alabilir. 
+Etkin veya durdurulmuş olan, ancak aboneliklerinde, IaaS VM 'Leri (klasik), Şubat 2020 ' nin ayından Itibaren, mevcut bir müşteri olarak kabul edilen müşteri. Yalnızca bu müşteriler, 1 Mart 2023 ' e kadar, sanal makinelerini Azure Service Manager Azure Resource Manager 'e geçirmeye kadar alır. 
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Neden "NewClassicVMCreationNotAllowedForSubscription" belirten bir hata alıyorum?
 
-Emeklilik sürecinin bir parçası olarak, IaaS VM (klasik) artık yeni müşteriler için kullanılabilir. Sizi yeni müşteriler olarak tanımladık ve bu nedenle operasyonunuz alıçlanmadı. [Azure Sanal Makineleri ARM kullanarak](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)kullanmanızı şiddetle öneririz. ARM kullanarak Azure VM'lerini kullanamıyorsanız, abonelik beyaz listesi için lütfen desteğe başvurun.
+Kullanımdan kaldırma işleminin bir parçası olarak, IaaS VM (klasik) artık yeni müşteriler için kullanılamaz. Size yeni müşteri olarak tanımladınız ve bu nedenle işlem yetkilendirilmedi. [ARM kullanarak Azure sanal makinelerini](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)kullanmanızı kesinlikle öneririz. ARM kullanarak Azure VM 'Leri kullanmıyorsanız, abonelik beyaz listesi için desteğe başvurun.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Bu geçiş planı Azure sanal makinelerde çalışan mevcut hizmetlerimi ya da uygulamaların herhangi birini etkiliyor mu? 
 
-1 Mart 2023'e kadar IaaS VM'ler için (klasik). IaaS VM'ler (klasik) genel kullanılabilirlik te tam olarak desteklenen hizmetlerdir. Microsoft Azure’da, ayak izinizi genişletmek için bu kaynakları kullanmaya devam edebilirsiniz. 1 Mart 2023'te, bu VM'ler tamamen kullanımdan kaldırılacak ve aktif veya tahsis edilmiş vm'ler & devre dışı bırakılacak. Bulut Hizmetleri (Klasik), Depolama Hesapları (Klasik) gibi diğer klasik kaynaklara hiçbir etkisi olmayacaktır.   
+IaaS VM 'Leri (klasik) için 1 Mart 2023 ' ye kadar değil. IaaS VM 'Leri (klasik) genel kullanıma yönelik olarak tam olarak desteklenen hizmetlerdir. Microsoft Azure’da, ayak izinizi genişletmek için bu kaynakları kullanmaya devam edebilirsiniz. 1 Mart 2023 ' de, bu VM 'Ler tamamen kullanımdan kaldırılacak ve etkin veya ayrılmış VM 'Ler serbest bırakılacak & durdurulur. Cloud Services (klasik), depolama hesapları (klasik) vb. gibi klasik diğer kaynaklara hiçbir etkisi olmaz.   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Yakın gelecekte geçirmeyi planlamadığım VM'lerime ne olur? 
 
-1 Mart 2023'te, IaaS VM'ler (Klasik) tamamen kullanımdan kaldırılacak ve aktif veya tahsis edilmiş vm'ler devre dışı & durdurulacaktır. İş üzerindeki etkiyi önlemek için, geçişinizi bugün planlamaya başlamak ve 1 Mart 2023'te tamamlamak için son derece yeniden yorum yapıyoruz. Mevcut klasik API'leri, Bulut Hizmetleri'ni ve kaynak modelini küçümsülsülse değiliz. Resource Manager dağıtım modelinde kullanılabilen gelişmiş özellikleri dikkate alarak geçiş kolaylaştırmak istiyoruz. Bu kaynakları Azure Kaynak Yöneticisi'ne geçirmeyi planlamaya başlamanızı öneririz. 
+1 Mart 2023 ' de, IaaS VM 'Leri (klasik) tamamen kullanımdan kaldırılacak ve etkin veya ayrılmış VM 'Ler serbest bırakılacak & durdurulur. İş etkisini engellemek için, şimdi geçişinizi planlamaya başlamak ve 1 Mart 2023 ' den önce bu öğeyi doldurmanız çok daha fazla yorum yaptık. Mevcut klasik API 'Leri, Cloud Services ve kaynak modelini kullanımdan kaldırmıyoruz. Resource Manager dağıtım modelinde kullanılabilen gelişmiş özellikleri dikkate alarak geçiş kolaylaştırmak istiyoruz. Bu kaynakları Azure Resource Manager geçirmeye yönelik planlamayı başlatmanız önerilir. 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Bu geçiş planı, mevcut araçlarım için ne anlama geliyor? 
 
@@ -53,7 +53,7 @@ Kaynaklar hazır durumda olduğu sürece geçişinizi iptal edebilirsiniz. Kayna
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>İşleme süreci başarısız olursa geçişi geri alabilir miyim? 
 
-İşleme süreci başarısız olursa geçişi geri alamazsınız. Kaydetme işlemi de dahil olmak üzere tüm geçiş işlemleri birden fazla kez denenebilir. Bu nedenle kısa bir süre sonra işlemi yeniden denemenizi öneririz. Hala bir hatayla karşı laşıyorsanız, bir destek bileti oluşturun.
+İşleme süreci başarısız olursa geçişi geri alamazsınız. Kaydetme işlemi de dahil olmak üzere tüm geçiş işlemleri birden fazla kez denenebilir. Bu nedenle kısa bir süre sonra işlemi yeniden denemenizi öneririz. Hala bir hata durumunda bir destek bileti oluşturun.
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Kaynak Yöneticisi altında IaaS kullanmam gerekiyorsa başka bir hızlı yol devresi satın almam gerekir mi? 
 
@@ -63,24 +63,24 @@ Hayır. Yakın zamanda [ExpressRoute devrelerini klasikten Resource Manager dağ
 
 Geçiş sırasında kaynaklar klasikten Resource Manager’a dönüşür. Bu nedenle geçişten sonra gerçekleşmesi gereken RBAC İlkesi güncelleştirmelerini planlamanızı öneririz.
 
-## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Klasik vm'lerimi bir kasada yedekledim. VM’lerimi klasik moddan Resource Manager moduna geçirip bunları bir Kurtarma Hizmetleri kasasında koruyabilir miyim?
+## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Klasik VM 'lerimi bir kasada yedekledim. VM’lerimi klasik moddan Resource Manager moduna geçirip bunları bir Kurtarma Hizmetleri kasasında koruyabilir miyim?
 
-Bir VM'yi klasikten Kaynak Yöneticisi moduna taşıdığınızda, geçişten önce alınan yedeklemeler yeni geçirilen Kaynak Yöneticisi VM'ye geçirilmeyecektir. Ancak, klasik VM yedeklemelerinizi tutmak istiyorsanız, geçişten önce aşağıdaki adımları izleyin. 
+Bir VM 'yi klasik moddan Kaynak Yöneticisi moduna taşıdığınızda, geçişten önce alınan yedeklemeler, yeni geçirilen Kaynak Yöneticisi sanal makinesine geçirilmez. Ancak, klasik sanal makinelerinize ait yedeklemelerinizi korumak istiyorsanız geçişten önce bu adımları izleyin. 
 
-1. Kurtarma Hizmetleri kasasında, **Korumalı Öğeler** sekmesine gidin ve VM'yi seçin. 
+1. Kurtarma Hizmetleri kasasında **korunan öğeler** sekmesine gidin ve VM 'yi seçin. 
 2. Korumayı Durdur’a tıklayın. *İlişkili yedekleme verilerini sil* seçeneğini **işaretlenmemiş** olarak bırakın.
 
 > [!NOTE]
-> Verileri saklarsanız yedek örnek maliyeti tahsil edilir. Yedekleme kopyaları bekletme aralığına göre budanacaktır. Ancak, yedekleme verilerini açıkça silene kadar son yedekleme kopyası her zaman tutulur. Sanal makinenin saklama aralığınızı kontrol etmeniz ve bekletme aralığı sona erdiğinde kasadaki korumalı kalemde "Yedekleme Verilerini Sil"i tetiklemeniz önerilir. 
+> Veri tutana kadar yedek örnek maliyeti ücretlendirilecektir. Yedekleme kopyaları, bekletme aralığına göre ayıklanacaktır. Ancak, yedekleme verilerini açıkça silinceye kadar son yedekleme kopyası her zaman tutulur. Bekletme aralığı bittikten sonra, sanal makinenin bekletme aralığınızı denetlemeniz ve kasadaki Korunan öğede "yedekleme verilerini silme" tetiklenmesi önerilir. 
 >
 >
 
-Sanal makineyi Kaynak Yöneticisi moduna geçirmek için, 
+Sanal makineyi Kaynak Yöneticisi moduna geçirmek için 
 
 1. Yedekleme/anlık görüntü uzantısını VM'den silin.
 2. Sanal makineyi, klasik moddan Resource Manager moduna geçirin. Sanal makineye karşılık gelen depolama ve ağ bilgilerinin de Resource Manager moduna geçirildiğinden emin olun.
 
-Ayrıca, geçirilen VM yedeklemek istiyorsanız, [yedekleme sağlamak](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm)için Sanal Makine yönetim bıçak gidin.
+Ayrıca, geçirilen VM 'yi yedeklemek istiyorsanız, [yedeklemeyi etkinleştirmek](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm)Için sanal makine yönetimi dikey penceresine gidin.
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Geçişe uygun olup olmadıklarını görmek için aboneliğimi ya da kaynaklarımı doğrulayabilir miyim? 
 
@@ -92,7 +92,7 @@ Geçiş işlemini durdurmanızı ve VM’leri geçirdiğiniz bölgede kotaları 
 
 ## <a name="how-do-i-report-an-issue"></a>Bir sorunu nasıl bildirebilirim? 
 
-Geçiş hakkında sorularınızı ve sorunlarınızı ClassicIaaSMigration anahtar sözcüğü ile [VM forumumuza](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows) gönderin. Tüm sorularınızı bu foruma göndermenizi öneririz. Destek anlaşmanız varsa, destek bileti de açabilirsiniz.
+[Microsoft Q&, bir sanal makine için soru sayfası](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)olan ve Classicıaasmigration anahtar sözcüğüyle ilgili sorunlarınızı ve sorularınızı gönderin. Tüm sorularınızı bu foruma göndermenizi öneririz. Destek anlaşmanız varsa, destek bileti de açabilirsiniz.
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>Geçiş sırasında platformun seçtiği kaynak adlarını beğenmezsem ne yapabilirim? 
 
@@ -102,6 +102,6 @@ Klasik dağıtım modelinde adlarını özellikle belirttiğiniz tüm kaynaklar 
 
 Çapraz abonelik yetkilendirme bağlantılar kullanan ExpressRoute devreleri kapalı kalma süresi olmadan otomatik olarak geçirilemez. Bunları elle nasıl geçirebileceğiniz hakkında yönergelerimiz vardır. Adımlar ve daha fazla bilgi için bkz. [ExpressRoute devrelerini ve ilgili sanal ağları klasikten Resource Manager dağıtım modeline geçirme](../articles/expressroute/expressroute-migration-classic-resource-manager.md).
 
-## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Ben mesajı aldım *"VM Hazır değil olarak genel ajan durumunu bildiriyor. Bu nedenle, VM geçirilemez. VM Aracısı'nın genel aracı durumunu Hazır olarak bildirdiğinden emin olun"* veya *"VM, Durumu VM'den bildirilmeyen Uzantı içerir. Bu nedenle, bu VM geçirilemez."*
+## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>*"VM, genel aracı durumunu kullanılamıyor olarak raporluyor" iletisini aldım. Bu nedenle, VM geçirilemez. VM aracısının genel aracı durumunu Ready olarak bildirdiğinden emin olun "* veya *" VM, durumu VM 'den bildirilmeyen bir uzantı içeriyor. Bu nedenle, bu VM geçirilemez. "*
 
 Bu ileti, VM’nin giden İnternet bağlantısı olmadığında alınır. VM aracısı, aracı durumunu güncelleştirmek için, giden bağlantı üzerinden her beş dakikada bir Azure depolama hesabına erişir.

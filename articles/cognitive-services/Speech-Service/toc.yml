@@ -32,8 +32,6 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Blob depolama alanında depolanan konuşmayı tanıma
           href: quickstarts/from-blob.md
-        - name: Başvuru girişi ile telaffuz değerlendirmesi
-          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Konuşma tanıma modunu seçme
@@ -563,11 +561,14 @@
           href: devices-sdk-release-notes.md
 - name: Araçlar
   items:
-    - name: SPX
+    - name: Konuşma CLI’si
+      displayName: SPX
       items:
-        - name: SPX nedir?
+        - name: Konuşma CLI’si nedir?
+          displayName: What is SPX?
           href: spx-overview.md
-        - name: SPX temel bilgileri
+        - name: Konuşma CLI’si hakkında temel bilgiler
+          displayName: SPX basics
           href: spx-basics.md
     - name: Speech Studio
       items:

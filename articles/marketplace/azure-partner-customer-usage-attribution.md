@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 4dd42c6eabf02bc7a4eb956b9cd5ab2aec28176b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186212"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800802"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -37,10 +37,10 @@ Müşteri kullanım attributıon üç dağıtım seçeneğini destekler:
 
 ## <a name="create-guids"></a>GUID 'Ler oluştur
 
-GUID, 32 onaltılık basamak içeren benzersiz bir başvuru tanımlayıcısıdır. İzleme için GUID 'Ler oluşturmak üzere bir GUID Oluşturucu kullanmanız gerekir. Azure depolama ekibi, doğru biçimin bir GUID 'sine e-posta sağlayacak bir [GUID Oluşturucu formu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu) oluşturdu ve farklı izleme sistemleri arasında yeniden kullanılabilir.
+GUID, 32 onaltılık basamak içeren benzersiz bir başvuru tanımlayıcısıdır. İzleme için GUID 'Ler oluşturmak üzere bir GUID Oluşturucu kullanmanız gerekir. Azure depolama ekibi, doğru biçimin bir GUID 'sine e-posta sağlayacak bir [GUID Oluşturucu formu](https://aka.ms/StoragePartners) oluşturdu ve farklı izleme sistemleri arasında yeniden kullanılabilir.
 
 > [!NOTE]
-> GUID 'nizi oluşturmak için [Azure Storage 'un GUID Oluşturucu formunu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu) kullanmanız önemle tavsiye edilir. Daha fazla bilgi için bkz. [SSS](#faq).
+> GUID 'nizi oluşturmak için [Azure Storage 'un GUID Oluşturucu formunu](https://aka.ms/StoragePartners) kullanmanız önemle tavsiye edilir. Daha fazla bilgi için bkz. [SSS](#faq).
 
 Her ürün için her bir teklif ve dağıtım kanalı için benzersiz bir GUID oluşturmanız önerilir. Raporlama 'nın bölünmesini istemiyorsanız, ürünün birden çok dağıtım kanalı için tek bir GUID kullanmayı tercih edebilirsiniz.
 
@@ -61,7 +61,7 @@ GUID 'lerin, müşteri kullanımı atısyonu sağlamak için Iş Ortağı Merkez
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)' nde oturum açın.
 
-1. [Ticari Market yayımcısı](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)olarak kaydolun.
+1. [Ticari Market yayımcısı](https://aka.ms/JoinMarketplace)olarak kaydolun.
 
    * İş ortaklarının [Iş Ortağı Merkezi 'nde bir profili olması](https://docs.microsoft.com/azure/marketplace/become-publisher)gerekir. Teklifi Azure Market veya AppSource 'ta listeliyoruz.
    * İş ortakları birden çok GUID kaydedebilir.
@@ -143,7 +143,7 @@ Müşteri kullanımı atısyonu 'nı etkinleştirmek için, API aramalarınızı
 
 #### <a name="example-the-python-sdk"></a>Örnek: Python SDK 'Sı
 
-Python için, **config** özniteliğini kullanın. Özniteliği yalnızca bir UserAgent öğesine ekleyebilirsiniz. Bir örneği aşağıda verilmiştir:
+Python için, **config** özniteliğini kullanın. Özniteliği yalnızca bir UserAgent öğesine ekleyebilirsiniz. İşte bir örnek:
 
 ![Özniteliği bir kullanıcı aracısına ekleyin](media/marketplace-publishers-guide/python-for-lu.PNG)
 
@@ -169,7 +169,7 @@ Daha fazla bilgi için bkz. [Go için Azure SDK](https://docs.microsoft.com/azur
 
 ## <a name="use-terraform"></a>Terrayform kullanma
 
-Terrayform desteği, Azure sağlayıcısı 'nın 1.21.0 sürümü ile kullanılabilir: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019).  Bu destek, çözümünü Terrayform aracılığıyla dağıtan tüm iş ortakları ve Azure sağlayıcısı tarafından dağıtılan ve ölçülen tüm kaynaklar için geçerlidir (sürüm 1.21.0 veya üzeri).
+Terrayform desteği, Azure sağlayıcısı 'nın 1.21.0 sürümü ile kullanılabilir: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019) .  Bu destek, çözümünü Terrayform aracılığıyla dağıtan tüm iş ortakları ve Azure sağlayıcısı tarafından dağıtılan ve ölçülen tüm kaynaklar için geçerlidir (sürüm 1.21.0 veya üzeri).
 
 Terrayform için Azure sağlayıcısı, çözümünüz için kullandığınız izleme GUID 'sini belirttiğiniz [*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) adlı yeni bir isteğe bağlı alan ekledi. Bu alanın değeri, *ARM_PARTNER_ID* ortam değişkeninden de kaynak oluşturulabilir.
 
@@ -230,7 +230,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Rapor
 
-Iş Ortağı Merkezi panonuzda ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)) müşteri kullanımı atısyonu için raporu bulabilirsiniz. Raporu görmek için Iş ortağı merkezi kimlik bilgilerinizi kullanarak oturum açın. Raporla veya oturum açma ile ilgili herhangi bir sorunla karşılaşırsanız destek al bölümündeki yönergeyi izleyerek bir destek isteği oluşturun.
+Iş Ortağı Merkezi panonuzda () müşteri kullanımı atısyonu için raporu bulabilirsiniz [https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure) . Raporu görmek için Iş ortağı merkezi kimlik bilgilerinizi kullanarak oturum açın. Raporla veya oturum açma ile ilgili herhangi bir sorunla karşılaşırsanız destek al bölümündeki yönergeyi izleyerek bir destek isteği oluşturun.
 
 Raporu görmek için Iş ortağı Ilişki türü açılan listesinde Izlenen şablon ' u seçin.
 
@@ -238,17 +238,17 @@ Raporu görmek için Iş ortağı Ilişki türü açılan listesinde Izlenen şa
 
 ## <a name="notify-your-customers"></a>Müşterilerinize bildirme
 
-İş ortakları, müşterilerine müşteri kullanımı attributıon kullanan dağıtımlar hakkında bilgi sağlamalıdır. Microsoft, bu dağıtımlarla ilişkili olan Azure kullanımını iş ortaklarına bildirir. Aşağıdaki örneklerde, bu dağıtımlar hakkında müşterilerinizi bilgilendirmek için kullanabileceğiniz içerikler yer alır. Örneklerde, iş ortağı> \<değerini şirket adınızla değiştirin. İş ortakları, kullanıcıların izlemenin dışında bırakılmasını sağlama seçenekleri de dahil olmak üzere, veri gizliliğiyle ve koleksiyon ilkeleriyle hizalandığından emin olmalıdır.
+İş ortakları, müşterilerine müşteri kullanımı attributıon kullanan dağıtımlar hakkında bilgi sağlamalıdır. Microsoft, bu dağıtımlarla ilişkili olan Azure kullanımını iş ortaklarına bildirir. Aşağıdaki örneklerde, bu dağıtımlar hakkında müşterilerinizi bilgilendirmek için kullanabileceğiniz içerikler yer alır. Örneklerde, \< iş ortağı> değerini şirket adınızla değiştirin. İş ortakları, kullanıcıların izlemenin dışında bırakılmasını sağlama seçenekleri de dahil olmak üzere, veri gizliliğiyle ve koleksiyon ilkeleriyle hizalandığından emin olmalıdır.
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Kaynak Yöneticisi Şablon dağıtımları için bildirim
 
-Bu şablonu dağıttığınızda, Microsoft, dağıtılan Azure kaynaklarıyla \<iş ortağı> yazılımını yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde https://www.microsoft.com/trustcenterbulunan gizlilik ilkelerine göre toplanır ve yönetilir.
+Bu şablonu dağıttığınızda, Microsoft, \< dağıtılan Azure kaynaklarıyla iş ortağı> yazılımını yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>SDK veya API dağıtımları için bildirim
 
-İş ortağı> \<yazılımını dağıtırken, Microsoft, dağıtılan Azure kaynaklarıyla \<iş ortağı> yazılımının yüklenmesini tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde https://www.microsoft.com/trustcenterbulunan gizlilik ilkelerine göre toplanır ve yönetilir.
+\<İş ortağı> yazılımını dağıtırken, Microsoft, \< dağıtılan Azure kaynaklarıyla iş ortağı> yazılımının yüklenmesini tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 Karşılaştığınız sorunlara bağlı olarak iki destek kanalı vardır.
 
@@ -271,7 +271,7 @@ Müşteri kullanımı attribuini ayarlama gibi Market ekleme ve/veya müşteri k
 
 1. **Isteği Başlat**' ı seçin.
 
-1. Sonraki sayfada gerekli değerleri girin. **Devam**'ı seçin.
+1. Sonraki sayfada gerekli değerleri girin. **Devam**’ı seçin.
 
 1. Sonraki sayfada gerekli değerleri girin.
 
@@ -286,7 +286,7 @@ Ayrıca, teknik satış, dağıtım ve uygulama geliştirme senaryolarına yöne
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Teknik bir danışmandaki istek gönderme
 
-1. [Iş ortağı teknik hizmetlerini](https://partner.microsoft.com/training/partner-technical-services)ziyaret edin.
+1. [Iş ortağı teknik hizmetlerini](https://aka.ms/TechnicalJourney)ziyaret edin.
 1. Bulut altyapısı ve Yönetimi ' ni seçin ve teknik yolculuğun görüntüleneceği yeni bir sayfa açılır.
 1. Dağıtım Hizmetleri altında istek gönder düğmesine tıklayın
 1. MSA (MPN hesabı) veya AAD 'nizi (Iş ortağı Pano hesabı) kullanarak oturum açın; oturum açma kimlik bilgileriniz temelinde bir çevrimiçi istek formu açılır:
@@ -295,7 +295,7 @@ Ayrıca, teknik satış, dağıtım ve uygulama geliştirme senaryolarına yöne
     * Sorun için bir başlık ve açıklama girin (mümkün olduğunca fazla ayrıntı sağlayın).
 1. Gönder’e tıklayın
 
-[Teknik satış ve dağıtım hizmetlerini kullanırken](https://support.microsoft.com/help/3121537/using-technical-presales-and-deployment-services#request%20a%20technical%20consultation)ekran görüntüleriyle birlikte adım adım yönergeleri görüntüleyin.
+[Teknik satış ve dağıtım hizmetlerini kullanırken](https://aka.ms/TechConsultInstructions)ekran görüntüleriyle birlikte adım adım yönergeleri görüntüleyin.
 
 ### <a name="whats-next"></a>Sırada ne var?
 
@@ -329,7 +329,7 @@ Azure depolama 'nın GUID Oluşturucu formu, gerekli biçimdeki bir GUID oluştu
 
 **Azure Marketi 'nde bir çözüm şablonu teklifi için özel, özel bir VHD kullanabilir miyim?**
 
-Hayır, şu yapılamıyor. Sanal makine görüntüsünün Azure Marketi 'nden gelmesi gerekir, bkz.: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines).
+Hayır, şu yapılamıyor. Sanal makine görüntüsünün Azure Marketi 'nden gelmesi gerekir, bkz [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) .:.
 
 Özel VHD 'nizi kullanarak Market 'te bir VM teklifi oluşturabilir ve bunu hiçbir kimse görememesi için özel olarak işaretleyebilirsiniz. Sonra çözüm şablonunuzda bu VM 'ye başvurun.
 

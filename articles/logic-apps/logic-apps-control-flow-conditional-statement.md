@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793259"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831509"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps iş akışı eylemlerini denetleyen koşullu deyimler oluşturma
 
@@ -36,7 +36,7 @@ Mantıksal uygulamanızda belirli eylemleri yalnızca belirtilen bir koşulu ge�
 
 1. İstediğiniz konuma bir koşul ekleyin. 
 
-   Adımlar arasında bir koşul eklemek için işaretçiyi koşulu eklemek istediğiniz oka taşıyın. Görüntülenen **artı işaretini** (**+**) seçin ve ardından **Eylem Ekle**' yi seçin. Örneğin:
+   Adımlar arasında bir koşul eklemek için işaretçiyi koşulu eklemek istediğiniz oka taşıyın. Görüntülenen **artı işaretini** () seçin ve **+** ardından **Eylem Ekle**' yi seçin. Örneğin:
 
    ![Adımlar arasında eylem ekleme](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
@@ -65,8 +65,8 @@ Mantıksal uygulamanızda belirli eylemleri yalnızca belirtilen bir koşulu ge�
 
    ![Tamamlanan koşul](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   Koşulunuz için başka bir satır eklemek üzere**satır ekle** **Ekle ' yi seçin.** >  
-   Alt koşullara sahip bir **Grup eklemek için** > **Grup Ekle**' yi seçin. 
+   Koşulunuz için başka bir satır eklemek üzere **Add**  >  **satır ekle**Ekle ' yi seçin. 
+   Alt koşullara sahip bir **Grup eklemek için**  >  **Grup Ekle**' yi seçin. 
    Mevcut satırları gruplandırmak için, bu satırların onay kutularını seçin, herhangi bir satır için üç nokta (...) düğmesini seçin ve ardından **Grup Oluştur**' u seçin.
 
 1. **True ise** ve **false ise**, koşulun karşılanıp karşılanmadığını temel alarak gerçekleştirilecek adımları ekleyin. Örneğin:
@@ -108,9 +108,9 @@ Bir koşullu deyimin arkasındaki üst düzey kod tanımı aşağıda verilmişt
 },
 ```
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

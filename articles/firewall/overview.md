@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 05/22/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: b54e8efc4f5f22a89526bb5d529805b33371529f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2f466c71673c9239f6f984f838d050af8bf52182
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655115"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816072"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -61,15 +61,15 @@ Ağ filtreleme kurallarını kaynak ve hedef IP adresine, bağlantı noktasına 
 
 ## <a name="fqdn-tags"></a>FQDN etiketleri
 
-FQDN etiketleri, güvenlik duvarınız aracılığıyla iyi bilinen Azure hizmeti ağ trafiğine izin vermeyi kolaylaştırır. Örneğin Windows Update ağ trafiğine güvenlik duvarınızda izin vermek istediğiniz varsayalım. Bir uygulama kuralı oluşturup Windows Update etiketini eklersiniz. Artık Windows Update’in ağ trafiği, güvenlik duvarınızdan geçebilir.
+[FQDN etiketleri](fqdn-tags.md) , güvenlik duvarınız aracılığıyla Iyi bilinen Azure hizmeti ağ trafiğine izin vermeyi kolaylaştırır. Örneğin Windows Update ağ trafiğine güvenlik duvarınızda izin vermek istediğiniz varsayalım. Bir uygulama kuralı oluşturup Windows Update etiketini eklersiniz. Artık Windows Update’in ağ trafiği, güvenlik duvarınızdan geçebilir.
 
 ## <a name="service-tags"></a>Hizmet etiketleri
 
-Hizmet etiketi, güvenlik kuralı oluşturma sırasındaki karmaşıklığı en aza indirmeye yardımcı olmak için bir IP adresi ön eki grubunu temsil eder. Kendi hizmet etiketinizi oluşturamaz ve bir etiket içinde hangi IP adreslerinin ekleneceğini belirtebilirsiniz. Hizmet etiketine dahil olan adres ön ekleri Microsoft tarafından yönetilir ve hizmet etiketi adresler değiştikçe otomatik olarak güncelleştirilir.
+[Hizmet etiketi](service-tags.md) , güvenlik kuralı oluşturma karmaşıklığını en aza indirmeye yardımcı olmak IÇIN bir IP adresi ön eki grubunu temsil eder. Kendi hizmet etiketinizi oluşturamaz ve bir etiket içinde hangi IP adreslerinin ekleneceğini belirtebilirsiniz. Hizmet etiketine dahil olan adres ön ekleri Microsoft tarafından yönetilir ve hizmet etiketi adresler değiştikçe otomatik olarak güncelleştirilir.
 
 ## <a name="threat-intelligence"></a>Tehdit bilgileri
 
-Güvenlik duvarınızın, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen/giden trafiği uyarmasını ve reddetmesi için tehdit zekası tabanlı filtreleme etkinleştirilebilir. IP adresleri ve etki alanları Microsoft Threat Intelligence akışından kaynaklıdır.
+Güvenlik duvarınızın, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen/giden trafiği uyarmasını ve reddetmesi için [tehdit zekası](threat-intel.md)tabanlı filtreleme etkinleştirilebilir. IP adresleri ve etki alanları Microsoft Threat Intelligence akışından kaynaklıdır.
 
 ## <a name="outbound-snat-support"></a>Giden SNAT desteği
 
@@ -83,7 +83,7 @@ Güvenlik duvarınızın genel IP adresine gelen Internet ağ trafiği çevrilir
 
 ## <a name="multiple-public-ip-addresses"></a>Birden çok genel IP adresi
 
-Güvenlik duvarınızla birden çok genel IP adresini (250 'e kadar) ilişkilendirebilirsiniz.
+Güvenlik duvarınızla [birden çok genel IP adresini](deploy-multi-public-ip-powershell.md) (250 'e kadar) ilişkilendirebilirsiniz.
 
 Bu, aşağıdaki senaryolara izin vermez:
 
@@ -92,7 +92,7 @@ Bu, aşağıdaki senaryolara izin vermez:
 
 ## <a name="azure-monitor-logging"></a>Azure İzleyici günlükleri
 
-Tüm olaylar Azure Izleyici ile tümleşiktir ve günlükleri bir depolama hesabında arşivlemenize, Olay Hub 'ınıza olayları akışlarınıza veya Azure Izleyici günlüklerine gönderebilmenizi sağlar.
+Tüm olaylar Azure Izleyici ile tümleşiktir ve günlükleri bir depolama hesabında arşivlemenize, Olay Hub 'ınıza olayları akışlarınıza veya Azure Izleyici günlüklerine gönderebilmenizi sağlar. Daha fazla bilgi için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme](tutorial-diagnostics.md).
 
 ## <a name="forced-tunneling"></a>Zorlamalı tünel oluşturma
 

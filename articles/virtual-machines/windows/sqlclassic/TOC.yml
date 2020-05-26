@@ -16,7 +16,7 @@
       href: virtual-machines-windows-classic-sql-connect.md
     - name: SQL Server veritabanını geçirme
       href: ../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
-- name: Nasıl yapılır?
+- name: Nasıl yapılır
   items:
     - name: Yüksek Kullanılabilirliği Yapılandırma
       items:
@@ -30,7 +30,7 @@
           href: virtual-machines-windows-classic-ps-sql-ext-listener.md
         - name: Şirket içi kullanılabilirlik grubunu Azure'a genişletme
           href: virtual-machines-windows-classic-sql-onprem-availability.md
-    - name: Yönet
+    - name: Yönetme
       items:
         - name: SQL Server IaaS Aracısı Uzantısını kullanma
           href: virtual-machines-windows-classic-sql-server-agent-extension.md
@@ -68,8 +68,8 @@
       href: /rest/api/
 - name: Kaynaklar
   items:
-    - name: MSDN forumu
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: SQL Server Veri Araçları (SSDT)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 1bcc13db3f503c80fda71a2104d0ff8d99e67df6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 745ec7ebf792fe1165022516be4c83fb9e864cc9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198005"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799873"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM 'Lere AMD GPU sürücülerini yükler
 
@@ -38,13 +38,9 @@ Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU 
 
 1. Uzak Masaüstü ile her NVv4 serisi VM 'ye bağlanın.
 
-2. Bir NVv4 Preview müşterisiyseniz lütfen VM 'yi durdurun ve bu işlemin durdurulmuş (serbest bırakılmış) duruma gelmesini bekleyin.
+2. En son sürücüyü indirip yükleyin.
 
-3. Lütfen VM 'yi başlatın ve en son [AMD Temizleme yardımcı programını](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)indirin. "Amdcleanuputility-x64. exe" çalıştırarak var olan sürücüyü kaldırın. Lütfen önceki sürücüyle yüklenmiş mevcut Temizleme yardımcı programını kullanmayın.  
-
-4. En son sürücüyü indirip yükleyin.
-
-5. VM 'yi yeniden başlatın.
+3. VM 'yi yeniden başlatın.
 
 ## <a name="verify-driver-installation"></a>Sürücü yüklemeyi doğrulama
 

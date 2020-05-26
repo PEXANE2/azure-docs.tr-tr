@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 248cbd42d86371742ad4985b515d70d022722385
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744923"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828891"
 ---
 # <a name="use-source-control-integration"></a>Kaynak denetimi tümleştirmesini kullanma
 
@@ -123,7 +123,7 @@ Aşağıdaki tabloda, GitHub için gereken en düşük PAT izinleri tanımlanmak
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Azure Repos için en düşük PAT izinleri
 
-Aşağıdaki liste Azure Repos için gereken en düşük PAT izinlerini tanımlar. Azure Repos bir PAT oluşturma hakkında daha fazla bilgi için bkz. [kişisel erişim belirteçleriyle erişim kimlik doğrulaması](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
+Aşağıdaki liste Azure Repos için gereken en düşük PAT izinlerini tanımlar. Azure Repos bir PAT oluşturma hakkında daha fazla bilgi için bkz. [kişisel erişim belirteçleriyle erişim kimlik doğrulaması](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).
 
 | Kapsam  |  Erişim türü  |
 |---------| ----------|
@@ -196,16 +196,16 @@ Kaynak denetim deposundan bağlantıyı kesmek için:
 
 ## <a name="handle-encoding-issues"></a>Kodlama sorunlarını işle
 
-Farklı düzenleyiciler kullanarak kaynak denetim deponuzdaki runbook 'ları birden çok kişi düzenliyorsanız, kodlama sorunları oluşabilir. Bu durumla ilgili daha fazla bilgi edinmek için bkz. [kodlama sorunlarının yaygın nedenleri](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
+Farklı düzenleyiciler kullanarak kaynak denetim deponuzdaki runbook 'ları birden çok kişi düzenliyorsanız, kodlama sorunları oluşabilir. Bu durumla ilgili daha fazla bilgi edinmek için bkz. [kodlama sorunlarının yaygın nedenleri](https://docs.microsoft.com/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
 
 ## <a name="update-the-pat"></a>PAT 'yi güncelleştirme
 
 Şu anda, kaynak denetimindeki PAT 'yi güncelleştirmek için Azure portal kullanamazsınız. PAT süreniz dolduğunda veya iptal edildiğinde, kaynak denetimini şu yollarla yeni bir erişim belirteciyle güncelleştirebilirsiniz:
 
 * [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update)kullanın.
-* [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet 'ini kullanın.
+* [Update-AzAutomationSourceControl](https://docs.microsoft.com//powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet 'ini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu: Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
-* [Azure Otomasyonu: Azure DevOps kullanarak runbook kaynak denetimini tümleştirme](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+* Azure Automation 'da kaynak denetimini tümleştirmek için bkz. Azure Otomasyonu [: Azure Otomasyonu 'Nda kaynak denetimi tümleştirmesi](https://azure.microsoft.com/blog/azure-automation-source-control-13/).  
+* Visual Studio Online ile runbook kaynak denetimini tümleştirmek için bkz. [Azure Otomasyonu: Visual Studio Online kullanarak runbook kaynak denetimini tümleştirme](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/).

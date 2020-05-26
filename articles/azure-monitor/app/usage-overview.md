@@ -3,12 +3,12 @@ title: Azure Application Insights Kullanım Analizi | Microsoft docs
 description: Kullanıcılarınıza ve uygulamalarınızla neler olduğunu anlayın.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: e964b1b5b9d5500f2d9f24ed765299389e6dbbb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283965"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797786"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights ile kullanım analizi
 
@@ -22,7 +22,7 @@ En iyi deneyim, hem App Server kodunuzda hem de Web sayfalarınızda Application
 
     * *Sunucu kodunu yüklemek istemiyor musunuz? Yalnızca [bir Azure Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md ).*
 
-2. **Web sayfası kodu:** Kapatmadan ``</head>``önce Web sayfanıza aşağıdaki betiği ekleyin. İzleme anahtarını Application Insights kaynağınız için uygun değerle değiştirin:
+2. **Web sayfası kodu:** Kapatmadan önce Web sayfanıza aşağıdaki betiği ekleyin ``</head>`` . İzleme anahtarını Application Insights kaynağınız için uygun değerle değiştirin:
     
     ```html
     <script type="text/javascript">
@@ -155,9 +155,9 @@ Global.asax.cs gibi Web uygulaması başlatıcısında:
 **ASP.NET Core uygulamaları**
 
 > [!NOTE]
-> `ApplicationInsights.config` Veya kullanarak `TelemetryConfiguration.Active` Başlatıcı eklemek ASP.NET Core uygulamaları için geçerli değildir. 
+> `ApplicationInsights.config`Veya kullanarak Başlatıcı eklemek `TelemetryConfiguration.Active` ASP.NET Core uygulamaları için geçerli değildir. 
 
-[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) uygulamalar için, aşağıda gösterildiği gibi `TelemetryInitializer` , yeni bir ekleme işlemi bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `ConfigureServices` `Startup.cs` sınıfınızın yönteminde yapılır.
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) uygulamalar için, aşağıda gösterildiği gibi, yeni bir ekleme `TelemetryInitializer` işlemi bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `ConfigureServices` sınıfınızın yönteminde yapılır `Startup.cs` .
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -175,5 +175,5 @@ Tüm yeni TelemetryClients, belirttiğiniz özellik değerini otomatik olarak ek
    - [Huniler](usage-funnels.md)
    - [Bekletme](usage-retention.md)
    - [Kullanıcı Akışları](usage-flows.md)
-   - [Çalışma Kitapları](../../azure-monitor/app/usage-workbooks.md)
+   - [Çalışma Kitapları](../../azure-monitor/platform/workbooks-overview.md)
    - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)

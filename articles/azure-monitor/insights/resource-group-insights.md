@@ -7,16 +7,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663547"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798133"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Izleyici ile kaynak gruplarını izleme (Önizleme)
 
-Modern uygulamalar genellikle karmaşık ve yüksek oranda bir hizmet sunmak için birlikte çalışan çok sayıda ayrı bölümden dağıtılır. Bu karmaşıklığı tanıma, Azure Izleyici, kaynak grupları için izleme öngörüleri sağlar. Bu, bireysel kaynaklarınızın karşılaştığı her türlü sorunu önceliklendirme ve tanılamanıza ve kaynak grubunun&mdash;ve uygulamanızın&mdash;bir bütün olarak sistem durumu ve performansına göre bağlam sunmanızı kolaylaştırır.
+Modern uygulamalar genellikle karmaşık ve yüksek oranda bir hizmet sunmak için birlikte çalışan çok sayıda ayrı bölümden dağıtılır. Bu karmaşıklığı tanıma, Azure Izleyici, kaynak grupları için izleme öngörüleri sağlar. Bu, bireysel kaynaklarınızın karşılaştığı her türlü sorunu önceliklendirme ve tanılamanıza ve kaynak grubunun &mdash; ve uygulamanızın bir bütün olarak sistem durumu ve performansına göre bağlam sunmanızı kolaylaştırır &mdash; .
 
 ## <a name="access-insights-for-resource-groups"></a>Kaynak grupları için Öngörüler 'e erişin
 
@@ -117,6 +117,6 @@ Kaynak grupları için Azure Izleyici, uyarı durumunu almak için Azure Izleyic
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Izleyici çalışma kitapları](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Azure Izleyici çalışma kitapları](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 - [Azure Kaynak Durumu](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Azure Izleyici uyarıları](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

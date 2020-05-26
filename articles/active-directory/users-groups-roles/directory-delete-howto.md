@@ -1,6 +1,6 @@
 ---
-title: Azure AD dizinini silme-Azure Active Directory | Microsoft Docs
-description: Self Servis dizinleri dahil olmak üzere bir Azure AD dizininin silinme için nasıl hazırlanacağını açıklar
+title: Azure AD kuruluşu (kiracı) silme-Azure Active Directory | Microsoft Docs
+description: Self Servis kuruluşları dahil olmak üzere bir Azure AD organizasyonunun (kiracı) silinme için nasıl hazırlanacağını açıklar.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,50 +9,50 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 05/21/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5ea42f5196b2c4ffe06c139e595dd4641752d35
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73961825"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816208"
 ---
-# <a name="delete-a-directory-in-azure-active-directory"></a>Azure Active Directory bir dizini silme
+# <a name="delete-a-tenant-in-azure-active-directory"></a>Azure Active Directory kiracı silme
 
-Bir Azure AD dizini silindiğinde, dizinde bulunan tüm kaynaklar da silinir. Silmeden önce ilişkili kaynaklarını indirerek kuruluşunuzu hazırlayın. Yalnızca bir Azure Active Directory (Azure AD) genel Yöneticisi portaldan bir Azure AD dizinini silebilir.
+Bir Azure AD kuruluşu (kiracı) silindiğinde, kuruluşta bulunan tüm kaynaklar da silinir. Silmeden önce ilişkili kaynaklarını indirerek kuruluşunuzu hazırlayın. Yalnızca bir Azure Active Directory (Azure AD) genel Yöneticisi portaldan bir Azure AD organizasyonunu silebilir.
 
-## <a name="prepare-the-directory"></a>Dizini hazırlama
+## <a name="prepare-the-organization"></a>Organizasyonu hazırlama
 
-Azure AD 'de birkaç denetim geçirene kadar bir dizini silemezsiniz. Bu denetimler, bir Azure AD dizinini silmenin, Office 365 ' de oturum açma veya Azure 'daki kaynaklara erişme gibi Kullanıcı erişimini olumsuz yönde etkilediği riskini azaltır. Örneğin, bir abonelikle ilişkilendirilen Dizin istenmeden silinirse, kullanıcılar söz konusu aboneliğin Azure kaynaklarına erişemez. Şu koşullar denetlenir:
+Birkaç denetim geçirene kadar Azure AD 'de bir kuruluşu silemezsiniz. Bu denetimler, bir Azure AD kuruluşunun silinmesinin, Office 365 ' de oturum açma veya Azure 'daki kaynaklara erişme olanağı gibi Kullanıcı erişimini olumsuz şekilde etkilemesinin riskini azaltır. Örneğin, bir abonelikle ilişkili kuruluş yanlışlıkla silinirse, kullanıcılar söz konusu aboneliğin Azure kaynaklarına erişemez. Şu koşullar denetlenir:
 
-* Dizinde silinecek bir genel yönetici dışında, dizinde hiç Kullanıcı olamaz. Dizin silinmeden önce diğer tüm kullanıcılar silinmelidir. Kullanıcılar Şirket içinden eşitlendiğinde, eşitlemenin önce kapatılması ve kullanıcıların Azure portal veya Azure PowerShell cmdlet 'leri kullanılarak bulut dizininde silinmesi gerekir.
-* Dizinde uygulama bulunamaz. Dizinin silinebilmesi için önce herhangi bir uygulamanın kaldırılması gerekir.
-* Dizine bağlı çok faktörlü kimlik doğrulama sağlayıcısı yok.
-* Microsoft Çevrimiçi Hizmetlerine (dizinle ilişkili Azure AD Premium, Microsoft Azure veya Office 365 gibi) ilişkin hiçbir aboneliğin bulunmaması gerekir. Örneğin, sizin için Azure'da varsayılan bir dizin oluşturulduysa ve Azure aboneliğinizin kimlik doğrulaması için hâlâ bu dizini kullanıyor olması halinde bu dizini silemezsiniz. Benzer şekilde, başka bir kullanıcı dizinle bir aboneliği ilişkilendirdiyse o dizini silemezsiniz.
+* Azure AD kuruluşunda (kiracı), kuruluşun silineceği bir genel yönetici haricinde hiçbir Kullanıcı olamaz. Kuruluşun silinebilmesi için önce diğer tüm kullanıcıların silinmesi gerekir. Kullanıcılar Şirket içinden eşitlendiğinde, eşitlemenin önce kapatılması ve kullanıcıların Azure portal veya Azure PowerShell cmdlet 'leri kullanılarak bulut kuruluşunda silinmesi gerekir.
+* Kuruluşta hiç uygulama yok. Kuruluşun silinebilmesi için önce herhangi bir uygulamanın kaldırılması gerekir.
+* Kuruluşa bağlı çok faktörlü kimlik doğrulama sağlayıcısı yok.
+* Microsoft Azure, Office 365 veya kuruluşla ilişkili Azure AD Premium gibi herhangi bir Microsoft Online hizmeti için abonelik olamaz. Örneğin, Azure 'da sizin için varsayılan bir Azure AD kuruluşu oluşturulduysa, Azure aboneliğiniz kimlik doğrulaması için bu kuruluşa hala dayandıysa bu kuruluşu silemezsiniz. Benzer şekilde, başka bir Kullanıcı abonelikle ilişkili olduğunda bir kuruluşu silemezsiniz.
 
-## <a name="delete-the-directory"></a>Dizini Sil
+## <a name="delete-the-organization"></a>Organizasyonu silme
 
 1. Kuruluşunuzun genel yöneticisi olan bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
 
 2. **Azure Active Directory**seçin.
 
-3. Silmek istediğiniz dizine geçiş yapın.
+3. Silmek istediğiniz kuruluşa geçiş yapın.
   
    ![Silmeden önce kuruluşu Onayla](./media/directory-delete-howto/delete-directory-command.png)
 
-4. **Dizini Sil**' i seçin.
+4. **Kiracıyı Sil**' i seçin.
   
    ![organizasyonu silmek için komutu seçin](./media/directory-delete-howto/delete-directory-list.png)
 
-5. Dizininiz bir veya daha fazla denetim geçirmezse, nasıl geçiyoruz hakkında daha fazla bilgi için bir bağlantı sunulur. Tüm denetimleri geçirdikten sonra, işlemi gerçekleştirmek için **Sil** ' i seçin.
+5. Kuruluşunuz bir veya daha fazla denetim geçirmezse, nasıl geçiyoruz hakkında daha fazla bilgi için bir bağlantı sunulur. Tüm denetimleri geçirdikten sonra, işlemi gerçekleştirmek için **Sil** ' i seçin.
 
-## <a name="if-you-cant-delete-the-directory"></a>Dizini silemiyorum
+## <a name="if-you-cant-delete-the-organization"></a>Organizasyonu silemiyorum
 
-Azure AD dizininizi yapılandırdığınızda, kuruluşunuz için Azure AD Premium P2, Office 365 Business Premium veya Enterprise Mobility + Security E5 gibi lisans tabanlı abonelikleri de etkinleştirmiş olabilirsiniz. Yanlışlıkla veri kaybını önlemek için, abonelikler tamamen silinene kadar bir dizini silemezsiniz. Abonelik, Dizin silmeye izin vermek için **sağlanması kaldırılmış** bir durumda olmalıdır. Bir **zaman aşımına uğradı** veya **iptal edildi** bir abonelik **devre dışı** durumuna geçer ve son aşama **sağlanmakta** olan durumdur.
+Azure AD kuruluşunuzu yapılandırdığınızda, kuruluşunuz için Azure AD Premium P2, Office 365 Business Premium veya Enterprise Mobility + Security E5 gibi lisans tabanlı abonelikleri de etkinleştirmiş olabilirsiniz. Yanlışlıkla veri kaybını önlemek için, abonelikler tamamen silinene kadar bir kuruluşu silemezsiniz. Aboneliklerin, kuruluşun silinmesine izin vermek için, **sağlaması kaldırılmış** durumda olmalıdır. Bir **zaman aşımına uğradı** veya **iptal edildi** bir abonelik **devre dışı** durumuna geçer ve son aşama **sağlanmakta** olan durumdur.
 
 Deneme sürümü Office 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değildir), aşağıdaki tabloya bakın. Office 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. [office 365 for Business aboneliğim sona erdiğinde verilere ne olur?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3) 
 
@@ -67,7 +67,7 @@ Sağlaması kaldırıldı (devre dışı bırakılsa 30 gün) | Silinen veriler 
 
 Microsoft 365 Yönetim merkezini kullanarak, üç gün içinde silinmek üzere, **sağlaması kaldırılmış** duruma bir abonelik koyabilirsiniz.
 
-1. [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com) kuruluşunuzda genel yönetici olan bir hesapla oturum açın. İlk varsayılan etki alanı contoso.onmicrosoft.com olan "contoso" dizinini silmeye çalışıyorsanız, gibi bir UPN ile oturum açın admin@contoso.onmicrosoft.com.
+1. [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com) kuruluşunuzda genel yönetici olan bir hesapla oturum açın. İlk varsayılan etki alanı contoso.onmicrosoft.com olan "contoso" organizasyonunu silmeye çalışıyorsanız, gibi bir UPN ile oturum açın admin@contoso.onmicrosoft.com .
 
 2. Yeni **yönetici merkezini dene** özelliğinin etkinleştirildiğinden emin olarak yeni Microsoft 365 Yönetim merkezini önizleyin.
 
@@ -91,18 +91,18 @@ Microsoft 365 Yönetim merkezini kullanarak, üç gün içinde silinmek üzere, 
 
 7. Artık abonelik durumu değişti ve abonelik silinmek üzere işaretlendi. Abonelik, **sağlaması kaldırılmış** durum 72 saat daha sonra girer.
 
-8. Dizininizde bir aboneliği sildikten ve 72 saat geçtikten sonra, Azure AD Yönetim merkezine yeniden oturum açabilir ve gerekli bir eylem olmaması ve Dizin silinmesini engelleyen bir abonelik olmaması gerekir. Azure AD dizininizi başarıyla silebilmelisiniz.
+8. Kuruluşunuzda bir aboneliği sildikten ve 72 saat geçtikten sonra, Azure AD Yönetim merkezine yeniden oturum açabilir ve gerekli bir eylem olmaması ve kuruluşunuzun silinmesini engelleyen bir abonelik olmaması gerekir. Azure AD kuruluşunuzu başarıyla silebilmelisiniz.
   
    ![silme ekranında abonelik denetimini geçir](./media/directory-delete-howto/delete-checks-passed.png)
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Silmeyi engelleyen bir deneme aboneliğine sahibim
 
-Microsoft Power BI, Rights Management Hizmetleri, Microsoft Power Apps veya Dynamics 365 gibi [self servis kaydolma ürünleri](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) vardır, bireysel kullanıcılar Office 365 aracılığıyla kaydolabilir ve bu da Azure AD dizininizde kimlik doğrulaması için bir Konuk kullanıcı oluşturur. Bu self servis ürünleri, veri kaybını önlemek için Dizin silmeleri, dizinden tamamen silinene kadar engeller. Yalnızca Azure AD yöneticisi tarafından, kullanıcının tek tek kaydolup kaydolmadığını veya ürünün atandığını de silinebilirler.
+Microsoft Power BI, Rights Management Hizmetleri, Microsoft Power Apps veya Dynamics 365 gibi [self servis kaydolma ürünleri](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) vardır; bireysel kullanıcılar, Azure AD kuruluşunuzda kimlik doğrulaması için bir Konuk Kullanıcı da oluşturan Office 365 aracılığıyla kaydolabilir. Bu self servis ürünleri, ürünler kuruluştan tamamen silinene kadar, veri kaybını önlemek için Dizin silmelerini engeller. Yalnızca Azure AD yöneticisi tarafından, kullanıcının tek tek kaydolup kaydolmadığını veya ürünün atandığını de silinebilirler.
 
 Nasıl atandıklarından bağımsız olarak iki tür self servis kaydolma ürünü vardır: 
 
 * Kuruluş düzeyinde atama: bir Azure AD yöneticisi, ürünü kuruluşun tamamına atar ve bir Kullanıcı, bireysel olarak lisanslansalar bile bu kuruluştan yararlanarak hizmeti bu kuruluş düzeyi atama ile etkin bir şekilde kullanabilir.
-* Kullanıcı düzeyi atama: Self Servis kaydolma sırasında bireysel bir Kullanıcı, ürünü yönetici olmadan kendilerine atar. Kuruluş, bir yönetici tarafından yönetildikten sonra (bkz. [yönetilmeyen bir dizinin yöneticisini](domains-admin-takeover.md)inceleyin), yönetici, ürünü self servis kaydolma olmadan doğrudan kullanıcılara atayabilir.  
+* Kullanıcı düzeyi atama: Self Servis kaydolma sırasında bireysel bir Kullanıcı, ürünü yönetici olmadan kendilerine atar. Kuruluş, bir yönetici tarafından yönetildikten sonra (bkz. [yönetilmeyen bir kuruluşun yöneticisini](domains-admin-takeover.md)inceleyin), yönetici, ürünü self servis kaydolma olmadan doğrudan kullanıcılara atayabilir.  
 
 Self Servis kaydolma ürününün silinmesine başladığınızda, eylem verileri kalıcı olarak siler ve hizmete tüm Kullanıcı erişimini kaldırır. Teklifin tek tek veya kuruluş düzeyinde atandığı herhangi bir kullanıcının, oturum açması veya mevcut verilere erişmesi engellenir. [Microsoft Power BI panoları](https://docs.microsoft.com/power-bi/service-export-to-pbix) veya [Rights Management Services ilke yapılandırması](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy)gibi self servis kaydolma ürünüyle veri kaybını engellemek isterseniz, verilerin yedeklenip başka bir yerde kaydedildiğinden emin olun.
 
@@ -113,13 +113,13 @@ Deneme sürümü Office 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı
 Ürün durumu | Veriler | Verilere erişim
 ------------- | ---- | --------------
 Etkin (deneme için 30 gün) | Tüm veriler erişilebilir | Kullanıcıların Self Servis kaydolma ürününe, dosyalarına veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır
-Silme | Silinen veriler | Kullanıcılar self servis kaydolma ürününe, dosyalarına veya uygulamalarına erişemez<br>Yöneticiler Microsoft 365 yönetim merkezine erişerek diğer abonelikleri satın alabilir ve yönetebilir
+Silindi | Silinen veriler | Kullanıcılar self servis kaydolma ürününe, dosyalarına veya uygulamalarına erişemez<br>Yöneticiler Microsoft 365 yönetim merkezine erişerek diğer abonelikleri satın alabilir ve yönetebilir
 
 ## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Azure portal bir self servis kaydolma ürününü nasıl silebilirim?
 
 Azure AD portalında hemen silinmek üzere Microsoft Power BI veya Azure Rights Management hizmetleri gibi bir self servis kaydolma ürününü bir **silme** durumuna getirebilirsiniz.
 
-1. Kuruluşunuzda genel yönetici olan bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oturum açın. İlk varsayılan etki alanı contoso.onmicrosoft.com olan "contoso" dizinini silmeye çalışıyorsanız, gibi bir UPN ile oturum açın admin@contoso.onmicrosoft.com.
+1. Kuruluşunuzda genel yönetici olan bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oturum açın. İlk varsayılan etki alanı contoso.onmicrosoft.com olan "contoso" organizasyonunu silmeye çalışıyorsanız, gibi bir UPN ile oturum açın admin@contoso.onmicrosoft.com .
 
 2. **Lisanslar**' ı seçin ve ardından **self servis kaydolma ürünleri**' ni seçin. Tüm self servis kaydolma ürünlerini, bilgisayar tabanlı aboneliklerden ayrı olarak görebilirsiniz. Kalıcı olarak silmek istediğiniz ürünü seçin. Microsoft Power BI 'de bir örnek aşağıda verilmiştir:
 
@@ -137,7 +137,7 @@ Azure AD portalında hemen silinmek üzere Microsoft Power BI veya Azure Rights 
 
     ![Kullanıcı adı yanlış yazılmış veya bulunamadı](./media/directory-delete-howto/product-deleted.png)
 
-6. Tüm ürünleri sildikten sonra Azure AD Yönetim merkezine yeniden oturum açabilirsiniz ve gerekli bir eylem olmaması ve Dizin silinmesini engelleyen bir ürün olmaması gerekir. Azure AD dizininizi başarıyla silebilmelisiniz.
+6. Tüm ürünleri sildikten sonra Azure AD Yönetim merkezine yeniden oturum açabilir ve gerekli bir eylem olmaması ve kuruluşunuzun silinmesini engelleyen bir ürün olmaması gerekir. Azure AD kuruluşunuzu başarıyla silebilmelisiniz.
 
     ![Kullanıcı adı yanlış yazılmış veya bulunamadı](./media/directory-delete-howto/delete-organization.png)
 

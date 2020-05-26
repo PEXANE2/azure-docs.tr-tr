@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: f0a3ea3aebeb9c96d7ccfba9c883ae208d93a44e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a2bce05288d0085306a59f3ff5ee62939941bbaf
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657975"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800612"
 ---
 # <a name="publish-an-integrated-solution"></a>Tümleşik bir çözüm yayımlama
 
@@ -52,7 +52,7 @@ Tümleşik çözümler programına genel bakış için [iş ortakları Için gen
 
 ## <a name="submit-a-nomination"></a>Aday olma
 
-Programa katılmak isteyen iş ortakları, birlikte çalışmak istedikleri diğer iş ortaklarını tanımmalıdır. [Tümleşik çözümler aday formunu](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx)tamamlamalıdır. Tümleşik çözümler program ekibi, aday 'yı gözden geçirir ve 10 iş günü içinde aşağıdaki işlemleri izler. Ekip onay ve sonraki adımları sağlar.
+Programa katılmak isteyen iş ortakları, birlikte çalışmak istedikleri diğer iş ortaklarını tanımmalıdır. [Tümleşik çözümler aday formunu](https://aka.ms/AA5qicu)tamamlamalıdır. Tümleşik çözümler program ekibi, aday 'yı gözden geçirir ve 10 iş günü içinde aşağıdaki işlemleri izler. Ekip onay ve sonraki adımları sağlar.
 
 ## <a name="develop-an-integrated-solution"></a>Tümleşik bir çözüm geliştirin
 
@@ -84,8 +84,8 @@ Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek iç
 
     Geliştirme süreci için bu kaynakları kullanın:
 
-    * [İş karar Atölyesi tartışma Kılavuzu](https://assetsprod.microsoft.com/mpn/integrated-solutions-discussion-guide-for-business-workshop.pptx)
-    * [Teknik karar Atölyesi tartışma Kılavuzu](https://assetsprod.microsoft.com/mpn/integrated-solutions-discussion-guide-for-technical-workshop.pptx)
+    * [İş karar Atölyesi tartışma Kılavuzu](https://aka.ms/AA5qicx)
+    * [Teknik karar Atölyesi tartışma Kılavuzu](https://aka.ms/AA5qid1)
     * [Hızlı başlangıç videosu: Tümleşik çözümler atölyeler](https://partner.microsoft.com/asset/detail/integrated-solutions-workshop-quickstart-guide-mp4)
 
 1. İş ve teknik atölyeler üzerinde geliştirdiğiniz proje planını ve zaman çizelgesini sağlamak için bir çapraz iş ortağı proje yöneticisini belirler.
@@ -98,8 +98,8 @@ Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek iç
 
     * Birleştirilmiş bir çözüm adı.
     * Tümleşik çözümün listeleme açıklaması. [Teklif listesi en iyi uygulamalarını](./gtm-offer-listing-best-practices.md)izleyin.
-    * Müşteriler için tek sayfalı bir Aralık. [Tek sayfalayıcı şablonunu](https://assetsprod.microsoft.com/mpn/integrated-solutions-customer-one-pager-template.pptx)kullanın.
-    * Bir müşteri sunumu. [Sunum şablonunu](https://assetsprod.microsoft.com/mpn/customer-presentation-template.pptx)kullanın.
+    * Müşteriler için tek sayfalı bir Aralık. [Tek sayfalayıcı şablonunu](https://aka.ms/AA5s08a)kullanın.
+    * Bir müşteri sunumu. [Sunum şablonunu](https://aka.ms/AA5s7ql)kullanın.
     * Birleşik çözüm için bir logo.
 
 ## <a name="publish-your-integrated-solution"></a>Tümleşik çözümünüzü yayımlayın

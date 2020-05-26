@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: ce3313f2e96dacff95ed1587e2e979c4628ec022
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4be2f61cb0a45f30f0201d1ecca0efc2d8cbd9ae
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674322"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836235"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Azure Cosmos DB Tablo API'si hakkında sık sorulan sorular
 
@@ -293,7 +293,7 @@ Azure Cosmos DB gecikme süresi, aktarım hızı, kullanılabilirlik ve tutarlı
 Görüşlerinizi aşağıdaki yollarla paylaşabilirsiniz:
 
 * [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [MSDN forumu](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow, programlama sorularına en iyisidir. Sorunuzun [konuyla ilgili](https://stackoverflow.com/help/on-topic) olduğundan emin olun ve mümkün olduğunca [fazla ayrıntı sağlayın ve bu soruyu açık ve answerable](https://stackoverflow.com/help/how-to-ask)yapın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

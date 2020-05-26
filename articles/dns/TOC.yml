@@ -71,7 +71,7 @@
           href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: SSS
           href: dns-faq-private.md
-- name: Nasıl yapılır?
+- name: Nasıl yapılır
   items:
     - name: Genel DNS
       items:
@@ -79,7 +79,7 @@
           href: dns-alias-appservice.md
         - name: DNS bölgelerini yönetme
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: dns-operations-dnszones-portal.md
             - name: Azure PowerShell
               href: dns-operations-dnszones.md
@@ -87,7 +87,7 @@
               href: dns-operations-dnszones-cli.md
         - name: DNS kayıtlarını yönetme
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: dns-operations-recordsets-portal.md
             - name: Azure PowerShell
               href: dns-operations-recordsets.md
@@ -163,8 +163,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Özellik istekleri
       href: 'https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager'
-    - name: MSDN forumu
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-virtual-network.html'
     - name: Ağ blogu
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Fiyatlandırma

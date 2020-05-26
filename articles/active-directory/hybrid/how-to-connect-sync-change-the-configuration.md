@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261170"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827304"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect eşitleme: Varsayılan yapılandırmada bir değişiklik yapın
 Bu makalenin amacı, Azure Active Directory (Azure AD) Connect Sync 'de varsayılan yapılandırmada değişiklik yapma konusunda size yol gösterir. Bazı yaygın senaryolar için adımlar sağlar. Bu bilgi ile kendi iş kurallarınızı temel alarak kendi yapılandırmanızda basit değişiklikler yapabiliyor olmanız gerekir.
@@ -48,7 +48,7 @@ Alt kısımdaki seçili bir eşitleme kuralında hareket eden düğmelerdir. Bun
 En yaygın değişiklikler öznitelik akışıdır. Kaynak dizininizdeki veriler Azure AD ile aynı olmayabilir. Bu bölümdeki örnekte, kullanıcının verilen adının her zaman *uygun durumda*olduğundan emin olun.
 
 ### <a name="disable-the-scheduler"></a>Zamanlayıcıyı devre dışı bırak
-[Zamanlayıcı](how-to-connect-sync-feature-scheduler.md) , varsayılan olarak her 30 dakikada bir çalışır. Değişiklik yaparken ve yeni kurallarınızın sorunlarını giderirken başlatılmadığından emin olun. Zamanlayıcıyı geçici olarak devre dışı bırakmak için PowerShell 'i başlatın `Set-ADSyncScheduler -SyncCycleEnabled $false`ve çalıştırın.
+[Zamanlayıcı](how-to-connect-sync-feature-scheduler.md) , varsayılan olarak her 30 dakikada bir çalışır. Değişiklik yaparken ve yeni kurallarınızın sorunlarını giderirken başlatılmadığından emin olun. Zamanlayıcıyı geçici olarak devre dışı bırakmak için PowerShell 'i başlatın ve çalıştırın `Set-ADSyncScheduler -SyncCycleEnabled $false` .
 
 ![Zamanlayıcıyı devre dışı bırak](./media/how-to-connect-sync-change-the-configuration/schedulerdisable.png)  
 
@@ -107,7 +107,7 @@ Bu yeni değişiklik ile, beklendiği gibi çalıştığından ve herhangi bir h
 ![Meta veri deposu arama](./media/how-to-connect-sync-change-the-configuration/mvsearch.png)  
 
 ### <a name="enable-the-scheduler"></a>Zamanlayıcıyı etkinleştirme
-Her şey bekleniyorsa, zamanlayıcıyı yeniden etkinleştirebilirsiniz. PowerShell 'den öğesini çalıştırın `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+Her şey bekleniyorsa, zamanlayıcıyı yeniden etkinleştirebilirsiniz. PowerShell 'den öğesini çalıştırın `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 ## <a name="other-common-attribute-flow-changes"></a>Diğer ortak öznitelik akışı değişiklikleri
 Önceki bölümde bir öznitelik akışında nasıl değişiklik yapılacağı açıklanmıştır. Bu bölümde bazı ek örnekler sağlanır. Eşitleme kuralını oluşturma adımları kısaltılmıştır, ancak önceki bölümde yer alarak tüm adımları bulabilirsiniz.
@@ -200,7 +200,7 @@ Varsayılan olarak, şirket içi Active Directory karşılık gelen UserType öz
 
 - Azure AD, UserType özniteliği için yalnızca iki değer kabul eder: **üye** ve **Konuk**.
 - UserType özniteliği Azure AD Connect eşitleme için etkinleştirilmemişse, Dizin eşitleme aracılığıyla oluşturulan Azure AD kullanıcıları, UserType özniteliği **üye**olarak ayarlanmalıdır.
-- Azure AD, mevcut Azure AD kullanıcılarının UserType özniteliğinin Azure AD Connect tarafından değiştirilmesine izin vermez. Yalnızca Azure AD kullanıcılarının oluşturulması sırasında ayarlanabilir ve [PowerShell aracılığıyla değiştirilebilir](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
+- 1.5.30.0 sürümünden önce Azure AD, mevcut Azure AD kullanıcılarının UserType özniteliğinin Azure AD Connect tarafından değiştirilmesine izin vermedi. Eski sürümlerde, bu yalnızca Azure AD kullanıcılarının oluşturulması sırasında ayarlanabilir ve [PowerShell aracılığıyla değiştirilebilir](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
 
 UserType özniteliğinin eşitlemesini etkinleştirmeden önce, ilk olarak özniteliğin şirket içi Active Directory nasıl türetileceğine karar vermelisiniz. En yaygın yaklaşımlar aşağıda verilmiştir:
 
@@ -208,9 +208,9 @@ UserType özniteliğinin eşitlemesini etkinleştirmeden önce, ilk olarak özni
 
     Bu yaklaşımı seçerseniz, UserType özniteliğinin eşitlenmesi etkinleştirilmeden önce, belirtilen özniteliğin Azure AD 'ye eşitlenen, şirket içi Active Directory tüm mevcut kullanıcı nesneleri için doğru değerle doldurulduğundan emin olmanız gerekir.
 
-- Alternatif olarak, diğer özelliklerden UserType özniteliğinin değerini de türetebilirsiniz. Örneğin, şirket içi AD userPrincipalName özniteliği etki alanı bölümüyle **Guest** <em>@partners.fabrikam123.org</em>sonlanıyorsa tüm kullanıcıları Konuk olarak eşitlemeniz gerekir. 
+- Alternatif olarak, diğer özelliklerden UserType özniteliğinin değerini de türetebilirsiniz. Örneğin, şirket içi AD userPrincipalName özniteliği etki alanı bölümüyle sonlanıyorsa tüm kullanıcıları **Konuk** olarak eşitlemeniz gerekir <em>@partners.fabrikam123.org</em> . 
 
-    Daha önce belirtildiği gibi, Azure AD Connect mevcut Azure AD kullanıcılarının UserType özniteliğinin Azure AD Connect tarafından değiştirilmesine izin vermez. Bu nedenle, karar verdiğiniz mantığın, kiracınızdaki tüm mevcut Azure AD kullanıcıları için UserType özniteliğinin zaten nasıl yapılandırıldığı ile tutarlı olduğundan emin olmanız gerekir.
+    Daha önce belirtildiği gibi Azure AD Connect eski sürümleri, mevcut Azure AD kullanıcılarının UserType özniteliğinin Azure AD Connect tarafından değiştirilmesine izin vermez. Bu nedenle, karar verdiğiniz mantığın, kiracınızdaki tüm mevcut Azure AD kullanıcıları için UserType özniteliğinin zaten nasıl yapılandırıldığı ile tutarlı olduğundan emin olmanız gerekir.
 
 UserType özniteliğinin eşitlemesini etkinleştirme adımları şu şekilde özetlenebilir:
 
@@ -229,8 +229,8 @@ UserType özniteliğinin eşitlemesini etkinleştirme adımları şu şekilde ö
 Azure AD 'de istenmeyen değişiklikleri dışarı aktarmayı önlemek için, eşitleme kurallarını güncelleştirme ortasında olduğunuz sırada hiçbir eşitlemenin bulunmadığından emin olun. Yerleşik eşitleme zamanlayıcısını devre dışı bırakmak için:
 
  1. Azure AD Connect sunucusunda bir PowerShell oturumu başlatın.
- 2. Cmdlet 'ini `Set-ADSyncScheduler -SyncCycleEnabled $false`çalıştırarak zamanlanmış eşitlemeyi devre dışı bırakın.
- 3. **Eşitleme hizmeti**'ni **başlatmak** > için Synchronization Service Manager açın.
+ 2. Cmdlet 'ini çalıştırarak zamanlanmış eşitlemeyi devre dışı bırakın `Set-ADSyncScheduler -SyncCycleEnabled $false` .
+ 3. **Start**  >  **Eşitleme hizmeti**'ni başlatmak için Synchronization Service Manager açın.
  4. **İşlemler** sekmesine gidin ve *sürmekte*olan bir işlem olmadığından emin olun.
 
 ### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>2. Adım: kaynak özniteliğini şirket içi AD bağlayıcı şemasına ekleme
@@ -257,14 +257,14 @@ Varsayılan olarak, UserType özniteliği Azure AD Connect alanına aktarılmaz.
 ### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>4. Adım: öznitelik değerini şirket içi Active Directory akıtmak için bir gelen eşitleme kuralı oluşturma
 Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kaynak özniteliğinden metadize 'ye akmasını sağlar:
 
-1. Eşitleme kuralları**düzenleyicisini** **Başlat** > ' a giderek eşitleme kuralları düzenleyicisini açın.
+1. Eşitleme kuralları düzenleyicisini **Başlat**' a giderek eşitleme kuralları düzenleyicisini açın  >  **Synchronization Rules Editor**.
 2. Arama filtresi **yönünü** **gelen**olarak ayarlayın.
 3. Yeni bir gelen kuralı oluşturmak için **Yeni kural ekle** düğmesine tıklayın.
 4. **Açıklama** sekmesinde aşağıdaki yapılandırmayı sağlayın:
 
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
-    | Adı | *Bir ad belirtin* | Örneğin, *ad 'Den içinde – Kullanıcı UserType* |
+    | Name | *Bir ad belirtin* | Örneğin, *ad 'Den içinde – Kullanıcı UserType* |
     | Açıklama | *Bir açıklama girin* |  |
     | Bağlı sistem | *Şirket içi AD bağlayıcısını seçin* |  |
     | Bağlı sistem nesne türü | **Kullanıcı** |  |
@@ -274,7 +274,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
 5. **Kapsam filtresi** sekmesine gidin ve aşağıdaki yan tümcesiyle **tek bir kapsam filtresi grubu** ekleyin:
 
-    | Öznitelik | İşleç | Değer |
+    | Öznitelik | Operatör | Değer |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Kullanıcı\_ |
 
@@ -284,13 +284,13 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | extensionAttribute1 | Olmayan | Güncelleştirme |
+    | Direct | UserType | extensionAttribute1 | Olmayan | Güncelleştir |
 
-    Başka bir örnekte, UserType özniteliğinin değerini diğer özelliklerden türetmek istiyorsunuz. Örneğin, şirket içi AD userPrincipalName özniteliği etki alanı bölümüyle <em>@partners.fabrikam123.org</em>sonlanıyorsa tüm kullanıcıları Konuk olarak eşitlemeniz gerekir. Şunun gibi bir ifade uygulayabilirsiniz:
+    Başka bir örnekte, UserType özniteliğinin değerini diğer özelliklerden türetmek istiyorsunuz. Örneğin, şirket içi AD userPrincipalName özniteliği etki alanı bölümüyle sonlanıyorsa tüm kullanıcıları Konuk olarak eşitlemeniz gerekir <em>@partners.fabrikam123.org</em> . Şunun gibi bir ifade uygulayabilirsiniz:
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | İfadeler | UserType | IıF (ısun ([userPrincipalName]), ııF (CBool (Instr (LCase ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "üye", "Konuk"), hata ("UserType belirleme için userPrincipalName yok")) | Olmayan | Güncelleştirme |
+    | İfade | UserType | IıF (ısun ([userPrincipalName]), ııF (CBool (Instr (LCase ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "üye", "Konuk"), hata ("UserType belirleme Için userPrincipalName yok")) | Olmayan | Güncelleştir |
 
 7. Gelen kuralını oluşturmak için **Ekle** ' ye tıklayın.
 
@@ -306,7 +306,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
 
     | Öznitelik | Değer | Ayrıntılar |
     | ----- | ------ | --- |
-    | Adı | *Bir ad belirtin* | Örneğin, *AAD 'ye kadar – Kullanıcı UserType* |
+    | Name | *Bir ad belirtin* | Örneğin, *AAD 'ye kadar – Kullanıcı UserType* |
     | Açıklama | *Bir açıklama girin* ||
     | Bağlı sistem | *AAD bağlayıcısını seçin* ||
     | Bağlı sistem nesne türü | **Kullanıcı** ||
@@ -316,7 +316,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
 
 5. **Kapsam filtresi** sekmesine gidin ve iki yan tümce içeren **tek bir kapsam filtresi grubu** ekleyin:
 
-    | Öznitelik | İşleç | Değer |
+    | Öznitelik | Operatör | Değer |
     | --- | --- | --- |
     | sourceObjectType | SıFıRA | Kullanıcı |
     | Cloudana kopyalı | Not QUAL | True |
@@ -327,7 +327,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | UserType | Olmayan | Güncelleştirme |
+    | Direct | UserType | UserType | Olmayan | Güncelleştir |
 
 7. Giden kuralı oluşturmak için **Ekle** ' ye tıklayın.
 
@@ -389,7 +389,7 @@ Tam eşitleme döngüsünü oluşturan adımları el ile çalıştırırken değ
 Yerleşik eşitleme zamanlayıcısını yeniden etkinleştirin:
 
 1. Bir PowerShell oturumu başlatın.
-2. Cmdlet 'ini `Set-ADSyncScheduler -SyncCycleEnabled $true`çalıştırarak zamanlanmış eşitlemeyi yeniden etkinleştirin.
+2. Cmdlet 'ini çalıştırarak zamanlanmış eşitlemeyi yeniden etkinleştirin `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

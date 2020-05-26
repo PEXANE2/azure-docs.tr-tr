@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f4435ca213584fff84f3ddad9bda6f7e06628a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283166"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836099"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Bilişsel Arama çok yönlü gezintiyi uygulama
 
@@ -27,7 +27,7 @@ ms.locfileid: "79283166"
 
 -   Uygulamanızın derlemedeki sorgularda, bu belge sonuç kümesi için kullanılabilir model filtresi değerlerini almak üzere bir sorgunun *model sorgu parametrelerini* gönderebilmesi gerekir.
 
--   Belge sonuç kümesini gerçekten kırpmak için, uygulamanın da bir `$filter` ifade uygulaması gerekir.
+-   Belge sonuç kümesini gerçekten kırpmak için, uygulamanın da bir ifade uygulaması gerekir `$filter` .
 
 Uygulama geliştirmede, sorgu oluşturan kod yazmak çalışmanın toplu işini oluşturur. Çok yönlü gezinmede bekleeceğiniz uygulama davranışlarından birçoğu, Aralık tanımlamaya ve model sonuçları için sayıları almaya yönelik yerleşik destek de dahil olmak üzere hizmet tarafından sağlanır. Hizmet Ayrıca, farkında olmayan gezinti yapıtlarından kaçınmanıza yardımcı olan, senerişilebilir varsayılanlar içerir. 
 
@@ -47,7 +47,7 @@ Arama geliştirmeye yeni başladıysanız, çok yönlü gezinme yapmanın en iyi
 
 Başlangıç noktası, genellikle Periphery üzerine yerleştirilmiş olan, çok yönlü gezinme sağlayan bir uygulama sayfasıdır. Çok yönlü gezinme, genellikle her bir değer için onay kutuları veya tıklatılabilir metinler içeren bir ağaç yapısıdır. 
 
-1. Azure Bilişsel Arama gönderilen bir sorgu, bir veya daha fazla model sorgu parametresi aracılığıyla çok yönlü gezinti yapısını belirtir. Örneğin, sorgu, belki de sunumu `facet=Rating`daha da belirginleştirmek `:values` için `:sort` bir veya seçeneği olabilir.
+1. Azure Bilişsel Arama gönderilen bir sorgu, bir veya daha fazla model sorgu parametresi aracılığıyla çok yönlü gezinti yapısını belirtir. Örneğin, sorgu, `facet=Rating` belki de `:values` `:sort` sunumu daha da belirginleştirmek için bir veya seçeneği olabilir.
 2. Sunu katmanı, istekte belirtilen modelleri kullanarak çok yönlü gezinme sağlayan bir arama sayfası oluşturur.
 3. Derecelendirme içeren çok yönlü bir gezinti yapısı verildiğinde, yalnızca 4 veya üzeri derecelendirmesine sahip ürünlerin gösterilmesi gerektiğini göstermek için "4" tıklayabiliyorsunuz. 
 4. Yanıt olarak, uygulama şunları içeren bir sorgu gönderir`$filter=Rating ge 4` 
@@ -55,11 +55,11 @@ Başlangıç noktası, genellikle Periphery üzerine yerleştirilmiş olan, çok
 
 Bir model bir sorgu parametresidir, ancak sorgu girişi ile karıştırmayın. Bir sorguda seçim ölçütü olarak hiçbir şekilde kullanılmaz. Bunun yerine, model sorgu parametrelerini yanıta geri gelen gezinti yapısına giriş olarak düşünün. Sağladığınız her model sorgu parametresi için, Azure Bilişsel Arama her bir model değerinin kısmi sonuçlarında kaç belgenin olduğunu değerlendirir.
 
-Adım 4 `$filter` ' te dikkat edin. Filtre, çok yönlü bir gezintinin önemli bir yönüdür. Modeller ve filtreler API 'ye bağımsız olsa da, istediğiniz deneyimi sağlamak için her ikisi de gereklidir. 
+`$filter`Adım 4 ' te dikkat edin. Filtre, çok yönlü bir gezintinin önemli bir yönüdür. Modeller ve filtreler API 'ye bağımsız olsa da, istediğiniz deneyimi sağlamak için her ikisi de gereklidir. 
 
 ### <a name="app-design-pattern"></a>Uygulama tasarım kalıbı
 
-Uygulama kodunda, model, çok yönlü gezinti yapısını, model sonuçları ve bir $filter ifadesiyle birlikte döndürmek için model sorgu parametrelerini kullanmaktır.  Filtre ifadesi, model değerindeki Click olayını işler. `$filter` İfadeyi, Sunu katmanına döndürülen arama sonuçlarının gerçek bölünmesi arkasındaki kod olarak düşünün. Renkler modeli verildiğinde, kırmızı renge tıklanması yalnızca kırmızı rengi olan öğeleri `$filter` seçen bir ifade ile uygulanır. 
+Uygulama kodunda, model, çok yönlü gezinti yapısını, model sonuçları ve bir $filter ifadesiyle birlikte döndürmek için model sorgu parametrelerini kullanmaktır.  Filtre ifadesi, model değerindeki Click olayını işler. `$filter`İfadeyi, Sunu katmanına döndürülen arama sonuçlarının gerçek bölünmesi arkasındaki kod olarak düşünün. Renkler modeli verildiğinde, kırmızı renge tıklanması `$filter` yalnızca kırmızı rengi olan öğeleri seçen bir ifade ile uygulanır. 
 
 ### <a name="query-basics"></a>Sorgu temelleri
 
@@ -68,10 +68,10 @@ Azure Bilişsel Arama, bir veya daha fazla sorgu parametresi aracılığıyla bi
 Önemli olmayan isabetlerin filtreleyebilme özelliği olarak anlaşıldığı duyarlık, bu ifadelerden biri veya her ikisi üzerinden elde edilir:
 
 -   **ara =**  
-    Bu parametrenin değeri, arama ifadesini oluşturur. Tek bir metin parçası veya birden çok terim ve işleç içeren bir karmaşık arama ifadesi olabilir. Sunucusunda, tam metin araması için bir arama ifadesi kullanılır, bu arada eşleşen terimler için dizinde aranabilir alanları sorgular ve sonuçları sıra sırasına geri döndürür. Null olarak ayarlarsanız `search` , sorgu yürütme tüm dizinin (yani, `search=*`) üzerinde bulunur. `$filter` Bu durumda, veya Puanlama profili gibi sorgunun diğer öğeleri, hangi belgelerin `($filter`döndürüleceğini ve hangi sırada (`scoringProfile` veya `$orderby`) olduğunu etkileyen birincil faktörlerdir.
+    Bu parametrenin değeri, arama ifadesini oluşturur. Tek bir metin parçası veya birden çok terim ve işleç içeren bir karmaşık arama ifadesi olabilir. Sunucusunda, tam metin araması için bir arama ifadesi kullanılır, bu arada eşleşen terimler için dizinde aranabilir alanları sorgular ve sonuçları sıra sırasına geri döndürür. `search`Null olarak ayarlarsanız, sorgu yürütme tüm dizinin (yani,) üzerinde bulunur `search=*` . Bu durumda, veya Puanlama profili gibi sorgunun diğer öğeleri, `$filter` hangi belgelerin döndürüleceğini `($filter` ve hangi sırada (veya) olduğunu etkileyen birincil faktörlerdir `scoringProfile` `$orderby` .
 
 -   **$filter =**  
-    Filtre, belirli belge özniteliklerinin değerlerine göre arama sonuçlarının boyutunu sınırlamak için güçlü bir mekanizmadır. İlk `$filter` önce değerlendirilir ve ardından her bir değer için kullanılabilir değerleri ve karşılık gelen sayıları üreten bir mantık mantığı gelir
+    Filtre, belirli belge özniteliklerinin değerlerine göre arama sonuçlarının boyutunu sınırlamak için güçlü bir mekanizmadır. `$filter`İlk önce değerlendirilir ve ardından her bir değer için kullanılabilir değerleri ve karşılık gelen sayıları üreten bir mantık mantığı gelir
 
 Karmaşık arama ifadeleri sorgunun performansını düşürür. Mümkün olduğunda duyarlık arttırmak ve sorgu performansını artırmak için iyi oluşturulmuş filtre ifadeleri kullanın.
 
@@ -91,13 +91,13 @@ Her iki sorgu de geçerlidir, ancak Seattle 'da Park ile Motels olmayan bir for 
 ## <a name="build-a-faceted-navigation-app"></a>Çok yönlü bir gezinti uygulaması oluşturun
 Azure Bilişsel Arama ile, arama isteğini oluşturan uygulama kodunuzda çok yönlü bir gezinti uygulabiliyorsunuz. Çok yönlü gezinme, şemanızda daha önce tanımladığınız öğeleri kullanır.
 
-Arama dizininizdeki ön tanımlı `Facetable [true|false]` Dizin özniteliğidir ve kullanımı çok yönlü bir gezinti yapısında kullanımını etkinleştirmek veya devre dışı bırakmak için seçili alanlar üzerinde ayarlanır. Olmadan `"Facetable" = true`, bir alan model gezinmede kullanılamaz.
+Arama dizininizdeki ön tanımlı `Facetable [true|false]` Dizin özniteliğidir ve kullanımı çok yönlü bir gezinti yapısında kullanımını etkinleştirmek veya devre dışı bırakmak için seçili alanlar üzerinde ayarlanır. Olmadan `"Facetable" = true` , bir alan model gezinmede kullanılamaz.
 
 Kodunuzda sunum katmanı Kullanıcı deneyimini sağlar. Etiket, değerler, onay kutuları ve sayı gibi çok yönlü gezintinin bileşen parçalarını listelemelidir. Azure Bilişsel Arama REST API platform belirsiz olduğundan istediğiniz dili ve platformu kullanın. Önemli şey, her ek model seçildiği için, güncelleştirilmiş Kullanıcı arabirimi durumu ile artımlı yenilemeyi destekleyen kullanıcı arabirimi öğelerini dahil etmek için kullanılır. 
 
-Sorgu zamanında, uygulama kodunuz `facet=[string]`, alanı tarafından modeli sağlayan bir istek parametresi içeren bir istek oluşturur. Bir sorgu `&facet=color&facet=category&facet=rating`, her biri bir ve işareti (&) karakteriyle ayrılmış gibi birden çok model içerebilir.
+Sorgu zamanında, uygulama kodunuz `facet=[string]` , alanı tarafından modeli sağlayan bir istek parametresi içeren bir istek oluşturur. Bir sorgu `&facet=color&facet=category&facet=rating` , her biri bir ve işareti (&) karakteriyle ayrılmış gibi birden çok model içerebilir.
 
-Uygulama kodu Ayrıca, çok yönlü `$filter` gezinmede tıklama olaylarını işlemek için bir ifade de oluşturmanız gerekir. , `$filter` Model değerini filtre ölçütü olarak kullanarak arama sonuçlarını azaltır.
+Uygulama kodu ayrıca `$filter` , çok yönlü gezinmede tıklama olaylarını işlemek için bir ifade de oluşturmanız gerekir. `$filter`, Model değerini filtre ölçütü olarak kullanarak arama sonuçlarını azaltır.
 
 Azure Bilişsel Arama, girdiğiniz bir veya daha fazla terim temelinde, çok yönlü gezinti yapısına yönelik güncelleştirmelerle birlikte arama sonuçlarını döndürür. Azure Bilişsel Arama 'de, çok yönlü gezinme, model değerleri olan tek düzeyli bir yapım ve her biri için kaç sonuç bulunduğunu sayar.
 
@@ -106,10 +106,10 @@ Aşağıdaki bölümlerde, her bir parçayı nasıl derlemenize daha yakından b
 <a name="buildindex"></a>
 
 ## <a name="build-the-index"></a>Dizini oluşturma
-Bu dizin özniteliği aracılığıyla, dizin içinde bir alan temelinde, her zaman bir alan temelinde etkin bir değer vardır: `"Facetable": true`.  
-Büyük olasılıkla çok yönlü gezintide kullanılabilecek tüm alan türleri varsayılan olarak ' dir `Facetable` . Bu tür alan türleri `Edm.String`, `Edm.DateTimeOffset`, ve tüm sayısal alan türlerini içerir (temel olarak, tüm alan türleri, çok `Edm.GeographyPoint`yönlü bir gezinmede kullanılamayacak olan 
+Bu dizin özniteliği aracılığıyla, dizin içinde bir alan temelinde, her zaman bir alan temelinde etkin bir değer vardır: `"Facetable": true` .  
+Büyük olasılıkla çok yönlü gezintide kullanılabilecek tüm alan türleri varsayılan olarak ' dir `Facetable` . Bu tür alan türleri `Edm.String` , `Edm.DateTimeOffset` , ve tüm sayısal alan türlerini içerir (temel olarak, tüm alan türleri, çok yönlü bir `Edm.GeographyPoint` gezinmede kullanılamayacak olan 
 
-Bir dizin oluştururken, çok yönlü gezinme için en iyi uygulama bir model olarak asla kullanılmamalıdır.  Özellikle, bir KIMLIK veya ürün adı gibi Singleton değerlerinin dize alanları, yanlışlıkla (ve verimsiz) çok yönlü gezintide `"Facetable": false` kullanımı engelleyecek şekilde ayarlanmalıdır. İhtiyacınız olmayan yere her ne kadar iyi hale getirmeniz, Dizin boyutunun küçük kalmasını sağlar ve genellikle performansı geliştirir.
+Bir dizin oluştururken, çok yönlü gezinme için en iyi uygulama bir model olarak asla kullanılmamalıdır.  Özellikle, bir KIMLIK veya ürün adı gibi Singleton değerlerinin dize alanları, `"Facetable": false` yanlışlıkla (ve verimsiz) çok yönlü gezintide kullanımı engelleyecek şekilde ayarlanmalıdır. İhtiyacınız olmayan yere her ne kadar iyi hale getirmeniz, Dizin boyutunun küçük kalmasını sağlar ve genellikle performansı geliştirir.
 
 Aşağıda, Iş portalı Demo örnek uygulaması şemasının bir parçası verilmiştir ve bu boyut, boyutu azaltmak için bazı özniteliklerin kırpılmakta:
 
@@ -142,7 +142,7 @@ Aşağıda, Iş portalı Demo örnek uygulaması şemasının bir parçası veri
 Örnek şemada gördüğünüz gibi, `Facetable` kimlik değerleri gibi model olarak kullanılmaması gereken dize alanları için kapalıdır. İhtiyacınız olmayan yere her ne kadar iyi hale getirmeniz, Dizin boyutunun küçük kalmasını sağlar ve genellikle performansı geliştirir.
 
 > [!TIP]
-> En iyi uygulama olarak, her alan için dizin özniteliklerinin tam kümesini ekleyin. , `Facetable` Neredeyse tüm alanlar için varsayılan olarak açık olsa da, her bir özniteliği özellikle ayarlamak her şema kararının etkilerini düşünmenize yardımcı olabilir. 
+> En iyi uygulama olarak, her alan için dizin özniteliklerinin tam kümesini ekleyin. `Facetable`, Neredeyse tüm alanlar için varsayılan olarak açık olsa da, her bir özniteliği özellikle ayarlamak her şema kararının etkilerini düşünmenize yardımcı olabilir. 
 
 <a name="checkdata"></a>
 
@@ -169,7 +169,7 @@ Sunu katmanından geri döndüğünüzde, aksi takdirde kaçırılmış olan ger
 
 Web uygulamaları için, AJAX genellikle sunu katmanında kullanılır, çünkü artımlı değişiklikleri yenileyebilirler. Ayrıca, HTTP üzerinden Azure Bilişsel Arama hizmetine bağlanabilecek ASP.NET MVC veya başka bir görselleştirme platformunu da kullanabilirsiniz. Bu makale boyunca başvurulan örnek uygulama-- **Azure bilişsel arama Iş portalı tanıtımı** – BIR ASP.NET MVC uygulaması olarak gerçekleşir.
 
-Örnekte, çok yönlü gezinme, arama sonuçları sayfasında yerleşiktir. Örnek uygulamanın `index.cshtml` dosyasından alınan aşağıdaki örnek, arama sonuçları sayfasında çok yönlü gezintiyi görüntülemek IÇIN statik HTML yapısını gösterir. Model listesi, bir arama terimi gönderdiğinizde veya bir modeli seçtiğinizde veya temizlediğinizde dinamik olarak oluşturulur veya yeniden oluşturulur.
+Örnekte, çok yönlü gezinme, arama sonuçları sayfasında yerleşiktir. `index.cshtml`Örnek uygulamanın dosyasından alınan aşağıdaki örnek, arama sonuçları sayfasında çok yönlü gezintiyi görüntülemek için STATIK HTML yapısını gösterir. Model listesi, bir arama terimi gönderdiğinizde veya bir modeli seçtiğinizde veya temizlediğinizde dinamik olarak oluşturulur veya yeniden oluşturulur.
 
 ```html
 <div class="widget sidebar-widget jobs-filter-widget">
@@ -196,7 +196,7 @@ Web uygulamaları için, AJAX genellikle sunu katmanında kullanılır, çünkü
 </div>
 ```
 
-`index.cshtml` Sayfada bulunan aşağıdaki kod parçacığı, ilk modeli, iş başlığını göstermek için HTML 'i dinamik olarak oluşturur. Benzer işlevler, diğer modeller için HTML 'i dinamik olarak oluşturur. Her modelin bir etiketi ve bir sayı vardır ve bu da bu model sonucu için bulunan öğelerin sayısını görüntüler.
+Sayfada bulunan aşağıdaki kod parçacığı, `index.cshtml` ilk modeli, Iş başlığını göstermek IÇIN HTML 'i dinamik olarak oluşturur. Benzer işlevler, diğer modeller için HTML 'i dinamik olarak oluşturur. Her modelin bir etiketi ve bir sayı vardır ve bu da bu model sonucu için bulunan öğelerin sayısını görüntüler.
 
 ```js
 function UpdateBusinessTitleFacets(data) {
@@ -210,7 +210,7 @@ function UpdateBusinessTitleFacets(data) {
 ```
 
 > [!TIP]
-> Arama sonuçları sayfasını tasarlarken, kısıtlamaları temizlemek için bir mekanizma eklemeyi unutmayın. Onay kutuları eklerseniz, filtrelerin nasıl temizleyeceğini kolayca görebilirsiniz. Diğer düzenler için bir içerik haritası deseninin veya başka bir yaratıcı yaklaşımın olması gerekebilir. Örneğin, Iş arama portalı örnek uygulamasında, modeli temizlemek için seçili olan bir modelin `[X]` ardından öğesine tıklayabilirsiniz.
+> Arama sonuçları sayfasını tasarlarken, kısıtlamaları temizlemek için bir mekanizma eklemeyi unutmayın. Onay kutuları eklerseniz, filtrelerin nasıl temizleyeceğini kolayca görebilirsiniz. Diğer düzenler için bir içerik haritası deseninin veya başka bir yaratıcı yaklaşımın olması gerekebilir. Örneğin, Iş arama portalı örnek uygulamasında, `[X]` modeli temizlemek için seçili olan bir modelin ardından öğesine tıklayabilirsiniz.
 
 <a name="buildquery"></a>
 
@@ -219,7 +219,7 @@ Sorgu oluşturmak için yazdığınız kod, arama ifadeleri, modeller, filtreler
 
 Bu örnek uygulamada modellerin integral olduğuna dikkat edin. Iş portalı tanıtımında arama deneyimi, çok yönlü gezinme ve filtreler etrafında tasarlanmıştır. Sayfada çok yönlü gezintinin belirgin yerleşimi, önemli olduğunu gösterir. 
 
-Bir örnek genellikle başlamak için iyi bir yerdir. `JobsSearch.cs` Dosyadan alınan aşağıdaki örnek, iş başlığına, konuma, nakil türüne ve en düşük ücret temelinde model gezintisi oluşturan bir istek oluşturur. 
+Bir örnek genellikle başlamak için iyi bir yerdir. Dosyadan alınan aşağıdaki örnek `JobsSearch.cs` , Iş başlığına, konuma, nakil türüne ve en düşük ücret temelinde model gezintisi oluşturan bir istek oluşturur. 
 
 ```cs
 SearchParameters sp = new SearchParameters()
@@ -230,11 +230,11 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Bir model sorgu parametresi bir alana ayarlanır ve veri türüne bağlı olarak, `count:<integer>`,, ve `sort:<>` `interval:<integer>` `values:<list>`içeren virgülle ayrılmış liste ile daha fazla parametreli olabilir. Aralıklar ayarlanırken sayısal veriler için bir değerler listesi desteklenir. Kullanım ayrıntıları için bkz. [arama belgeleri (Azure BILIŞSEL arama API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
+Bir model sorgu parametresi bir alana ayarlanır ve veri türüne bağlı olarak,,, ve içeren virgülle ayrılmış liste ile daha fazla parametreli olabilir `count:<integer>` `sort:<>` `interval:<integer>` `values:<list>` . Aralıklar ayarlanırken sayısal veriler için bir değerler listesi desteklenir. Kullanım ayrıntıları için bkz. [arama belgeleri (Azure BILIŞSEL arama API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
 
-Modellerle birlikte, uygulamanız tarafından formül oluşturan istek, bir model değer seçimine dayalı olarak aday belgeler kümesini daraltmak için de filtreler derlemelidir. Bir Bisiklet Mağazası için, çok yönlü gezinme *hangi renkler, üreticiler ve bisiklet türlerinin kullanılabildiği*gibi sorulara ipuçları sağlar. Filtreleme, *Bu fiyat aralığında tam Bisikletler kırmızı, Sıradağlar bisikletleri*gibi sorulara yanıt veriyor mu? Yalnızca kırmızı ürünlerin gösterilmesi gerektiğini belirtmek için "kırmızı" düğmesine tıkladığınızda, uygulamanın gönderdiği sonraki sorgu de buna dahildir `$filter=Color eq 'Red'`.
+Modellerle birlikte, uygulamanız tarafından formül oluşturan istek, bir model değer seçimine dayalı olarak aday belgeler kümesini daraltmak için de filtreler derlemelidir. Bir Bisiklet Mağazası için, çok yönlü gezinme *hangi renkler, üreticiler ve bisiklet türlerinin kullanılabildiği*gibi sorulara ipuçları sağlar. Filtreleme, *Bu fiyat aralığında tam Bisikletler kırmızı, Sıradağlar bisikletleri*gibi sorulara yanıt veriyor mu? Yalnızca kırmızı ürünlerin gösterilmesi gerektiğini belirtmek için "kırmızı" düğmesine tıkladığınızda, uygulamanın gönderdiği sonraki sorgu de buna dahildir `$filter=Color eq 'Red'` .
 
-Aşağıdaki kod parçacığı `JobsSearch.cs` , iş başlığı modeli 'nden bir değer seçerseniz, seçili iş başlığını filtreye ekler.
+Aşağıdaki kod parçacığı, `JobsSearch.cs` Iş başlığı modeli 'nden bir değer seçerseniz, seçili Iş başlığını filtreye ekler.
 
 ```cs
 if (businessTitleFacet != "")
@@ -248,7 +248,7 @@ if (businessTitleFacet != "")
 ### <a name="indexing-tips"></a>Dizin oluşturma ipuçları
 **Arama kutusu kullanmıyorsanız Dizin verimliliğini iyileştirme**
 
-Uygulamanız özel olarak çok yönlü gezinme kullanıyorsa (yani arama kutusu yoksa), daha kompakt bir dizin oluşturmak `searchable=false` `facetable=true` için alanı olarak işaretleyebilirsiniz. Ayrıca, dizin oluşturma işlemi yalnızca tüm model değerlerinde gerçekleşir, çok sözcüklü bir değerin bileşen bölümlerinin hiçbir kelime kesmesi veya dizinlemesi yoktur.
+Uygulamanız özel olarak çok yönlü gezinme kullanıyorsa (yani arama kutusu yoksa), `searchable=false` `facetable=true` daha kompakt bir dizin oluşturmak için alanı olarak işaretleyebilirsiniz. Ayrıca, dizin oluşturma işlemi yalnızca tüm model değerlerinde gerçekleşir, çok sözcüklü bir değerin bileşen bölümlerinin hiçbir kelime kesmesi veya dizinlemesi yoktur.
 
 **Hangi alanların model olarak kullanılabileceğini belirtin**
 
@@ -256,16 +256,16 @@ Dizin şemasının, bir model olarak kullanılabilecek alanları belirlediğini 
 
 Her etiket altında görünen değerler dizinden alınır. Örneğin, model alanı *renk*ise, ek filtreleme için kullanılabilen değerler bu alanın kırmızı, siyah ve benzeri değerleri olur.
 
-Yalnızca sayısal ve tarih saat değerleri için model alanında (örneğin, `facet=Rating,values:1|2|3|4|5`) değerleri açık bir şekilde ayarlayabilirsiniz. Bu alan türleri için değer listesine izin verilir. model sonuçlarının bitişik aralıklar halinde ayrılmasını basitleştirir (sayısal değerlere veya zaman dönemlerine göre aralıklar). 
+Yalnızca sayısal ve tarih saat değerleri için model alanında (örneğin,) değerleri açık bir şekilde ayarlayabilirsiniz `facet=Rating,values:1|2|3|4|5` . Bu alan türleri için değer listesine izin verilir. model sonuçlarının bitişik aralıklar halinde ayrılmasını basitleştirir (sayısal değerlere veya zaman dönemlerine göre aralıklar). 
 
 **Varsayılan olarak, çok yönlü bir gezinmede yalnızca bir düzeyinize sahip olabilirsiniz** 
 
-Belirtildiği gibi, bir hiyerarşide iç içe geçme modellerini doğrudan desteklemez. Varsayılan olarak, Azure Bilişsel Arama 'da çok yönlü gezinme yalnızca tek bir filtre düzeyini destekler. Ancak geçici çözümler mevcuttur. Hiyerarşide hiyerarşik bir model yapısını, hiyerarşi başına bir `Collection(Edm.String)` giriş noktasıyla birlikte kodlayabilirsiniz. Bu geçici çözümün uygulanması, bu makalenin kapsamı dışındadır. 
+Belirtildiği gibi, bir hiyerarşide iç içe geçme modellerini doğrudan desteklemez. Varsayılan olarak, Azure Bilişsel Arama 'da çok yönlü gezinme yalnızca tek bir filtre düzeyini destekler. Ancak geçici çözümler mevcuttur. Hiyerarşide hiyerarşik bir model yapısını, `Collection(Edm.String)` hiyerarşi başına bir giriş noktasıyla birlikte kodlayabilirsiniz. Bu geçici çözümün uygulanması, bu makalenin kapsamı dışındadır. 
 
 ### <a name="querying-tips"></a>İpuçları sorgulanıyor
 **Alanları doğrula**
 
-, Güvenilir olmayan kullanıcı girişine göre model listesini dinamik olarak oluşturursanız, çok yönlü alanların adlarının geçerli olduğunu doğrulayın. Ya da, .NET ' `Uri.EscapeDataString()` te veya tercih ettiğiniz platformunuzun eşdeğerini kullanarak URL 'ler oluştururken adları kaçış.
+, Güvenilir olmayan kullanıcı girişine göre model listesini dinamik olarak oluşturursanız, çok yönlü alanların adlarının geçerli olduğunu doğrulayın. Ya da, `Uri.EscapeDataString()` .net ' te veya tercih ettiğiniz platformunuzun eşdeğerini kullanarak URL 'ler oluştururken adları kaçış.
 
 ### <a name="filtering-tips"></a>Filtreleme ipuçları
 **Filtre ile arama hassasiyetini artır**
@@ -282,7 +282,7 @@ Arama için aday belgeler kümesini daraltmak ve bunları derecelendirmeden hari
 
 **Model sonuçlarını daha fazla filtreye göre Kırp**
 
-Model sonuçları, bir model terimiyle eşleşen arama sonuçlarında bulunan belgelerdir. Aşağıdaki örnekte, *bulut bilgi işlem*için arama sonuçlarında, 254 öğe de bir içerik türü olarak *iç belirtime* sahiptir. Öğelerin birbirini karşılıklı olarak dışlamalı olması gerekmez. Bir öğe her iki filtrenin ölçütlerine uyuyorsa, her birinde sayılır. Bu çoğaltma, genellikle belge etiketlemesini uygulamak için `Collection(Edm.String)` kullanılan alanlar üzerinde bir değer oluşturduğunuzda mümkündür.
+Model sonuçları, bir model terimiyle eşleşen arama sonuçlarında bulunan belgelerdir. Aşağıdaki örnekte, *bulut bilgi işlem*için arama sonuçlarında, 254 öğe de bir içerik türü olarak *iç belirtime* sahiptir. Öğelerin birbirini karşılıklı olarak dışlamalı olması gerekmez. Bir öğe her iki filtrenin ölçütlerine uyuyorsa, her birinde sayılır. Bu çoğaltma `Collection(Edm.String)` , genellikle belge etiketlemesini uygulamak için kullanılan alanlar üzerinde bir değer oluşturduğunuzda mümkündür.
 
         Search term: "cloud computing"
         Content type
@@ -297,12 +297,12 @@ Genel olarak, model sonuçlarının sürekli olarak çok büyük olduğunu fark 
 
 Gezinti ağacındaki her bir çok yönlü alan için varsayılan sınır olan 10 değer vardır. Bu varsayılan, değer listesini yönetilebilir bir boyuta tutacağından, gezinme yapıları için anlamlı hale gelir. Sayılacak bir değer atayarak varsayılanı geçersiz kılabilirsiniz.
 
-* `&facet=city,count:5`yalnızca üst dereceli sonuçlarda bulunan ilk beş şehrin bir model sonucu olarak döndürüleceğini belirtir. "Havaalanı" ve 32 eşleşme arama terimi ile örnek bir sorgu düşünün. Sorgu belirtiyorsa `&facet=city,count:5`, yalnızca arama sonuçlarında en çok belgeyi içeren ilk beş benzersiz şehir, model sonuçlarına dahil edilir.
+* `&facet=city,count:5`yalnızca üst dereceli sonuçlarda bulunan ilk beş şehrin bir model sonucu olarak döndürüleceğini belirtir. "Havaalanı" ve 32 eşleşme arama terimi ile örnek bir sorgu düşünün. Sorgu belirtiyorsa `&facet=city,count:5` , yalnızca arama sonuçlarında en çok belgeyi içeren ilk beş benzersiz şehir, model sonuçlarına dahil edilir.
 
 Model sonuçları ve arama sonuçları arasındaki ayrımı fark edin. Arama sonuçları sorguyla eşleşen tüm belgelerdir. Model sonuçları her bir model değeri için eşleşmeler olur. Örnekte, arama sonuçları, model sınıflandırma listesinde olmayan şehir adlarını içerir (örneğimizde 5). Çok yönlü gezinmede filtrelenmiş sonuçlar, modelleri temizlediğinizde veya City 'in yanı sıra diğer modelleri seçerken görünür hale gelir. 
 
 > [!NOTE]
-> `count` Birden fazla tür kafa karıştırıcı olabilir. Aşağıdaki tabloda, terimin Azure Bilişsel Arama API 'SI, örnek kod ve belgelerde nasıl kullanıldığı hakkında kısa bir Özet sunulmaktadır. 
+> Birden `count` fazla tür kafa karıştırıcı olabilir. Aşağıdaki tabloda, terimin Azure Bilişsel Arama API 'SI, örnek kod ve belgelerde nasıl kullanıldığı hakkında kısa bir Özet sunulmaktadır. 
 
 * `@colorFacet.count`<br/>
   Sunum kodunda, model sonuç sayısını görüntülemek için kullanılan model üzerinde bir count parametresi görmeniz gerekir. Model sonuçlarında, sayı, model terimi veya aralığında eşleşen belge sayısını gösterir.
@@ -313,20 +313,20 @@ Model sonuçları ve arama sonuçları arasındaki ayrımı fark edin. Arama son
 
 **Model sonuçlarında sayıları al**
 
-Çok yönlü bir sorguya filtre eklediğinizde, model ekstresini (örneğin, `facet=Rating&$filter=Rating ge 4`) saklamanız gerekebilir. Teknik olarak, model = derecelendirme gerekmez, ancak bu derecelendirme 4 ve üzeri için model değerleri sayısını döndürür. Örneğin, "4" e tıklarsanız ve sorgu "4" daha büyük veya buna eşit bir filtre içeriyorsa, 4 ve üzeri her bir derecelendirme için sayımlar döndürülür.  
+Çok yönlü bir sorguya filtre eklediğinizde, model ekstresini (örneğin,) saklamanız gerekebilir `facet=Rating&$filter=Rating ge 4` . Teknik olarak, model = derecelendirme gerekmez, ancak bu derecelendirme 4 ve üzeri için model değerleri sayısını döndürür. Örneğin, "4" e tıklarsanız ve sorgu "4" daha büyük veya buna eşit bir filtre içeriyorsa, 4 ve üzeri her bir derecelendirme için sayımlar döndürülür.  
 
 **Doğru model sayımlarını aldığınızdan emin olun**
 
-Belirli koşullarda, model sayılarının sonuç kümeleriyle eşleşip eşleşmediği fark edebilirsiniz (bkz. [Azure bilişsel arama (Forum gönderisi)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
+Belirli koşullarda, model sayılarının sonuç kümeleriyle eşleşip eşleşmediği fark edebilirsiniz (bkz. [Azure bilişsel arama 'da çok yönlü gezinme (Microsoft Q&bir soru sayfası)](https://docs.microsoft.com/answers/topics/azure-cognitive-search.html)).
 
 Parçalı mimari nedeniyle model sayısı yanlış olabilir. Her arama dizininin birden çok parçaları vardır ve her parça, ilk N modellerini belge sayısına göre rapor ederek tek bir sonuçla birleştirilir. Bazı parçalar daha fazla eşleşen değere sahip olsa da, diğerleri daha az olduğunda bazı model değerlerinin eksik veya eksik olduğunu fark edebilirsiniz.
 
-Bu davranış herhangi bir zamanda değişebilir, ancak bugün bu davranışla karşılaşırsanız, her bir parçadan tam raporlamayı zorlamak için sayıyı büyük bir sayıya> yapay\<ederek geçici bir çözüm bulabilirsiniz. Count değeri, alanındaki benzersiz değer sayısından büyükse veya buna eşitse, doğru sonuçlar garanti edilir. Ancak, belge sayıları yüksek olduğunda bir performans cezası vardır, bu nedenle bu bozacağından seçeneğini kullanın.
+Bu davranış herhangi bir zamanda değişebilir, ancak bugün bu davranışla karşılaşırsanız, \< her bir parçadan tam raporlamayı zorlamak için sayıyı büyük bir sayıya> yapay ederek geçici bir çözüm bulabilirsiniz. Count değeri, alanındaki benzersiz değer sayısından büyükse veya buna eşitse, doğru sonuçlar garanti edilir. Ancak, belge sayıları yüksek olduğunda bir performans cezası vardır, bu nedenle bu bozacağından seçeneğini kullanın.
 
 ### <a name="user-interface-tips"></a>Kullanıcı arabirimi ipuçları
 **Model gezintisinde her bir alan için etiketler ekleme**
 
-Etiketler genellikle HTML veya formda tanımlanır (`index.cshtml` örnek uygulamada). Azure Bilişsel Arama model gezinti etiketleri veya diğer meta veriler için bir API yok.
+Etiketler genellikle HTML veya formda tanımlanır ( `index.cshtml` örnek uygulamada). Azure Bilişsel Arama model gezinti etiketleri veya diğer meta veriler için bir API yok.
 
 <a name="rangefacets"></a>
 
@@ -350,7 +350,7 @@ Sayısal veriler için bir values listesi kullanabilirsiniz.  Bir `listPrice` al
 Her Aralık, başlangıç noktası olarak 0, listeden bir bitiş noktası olarak bir değer ve daha sonra ayrı aralıklar oluşturmak için önceki aralığın kırpılandır. Azure Bilişsel Arama, bu şeyleri çok yönlü gezintinin bir parçası olarak yapar. Her aralığı yapılandırmak için kod yazmanız gerekmez.
 
 ### <a name="build-a-filter-for-a-range"></a>Aralık için filtre oluşturma
-Belgelerinizi seçtiğiniz bir aralığa göre filtrelemek için, `"ge"` ve `"lt"` filtre işleçlerini aralığın uç noktalarını tanımlayan iki bölümlü bir ifadede kullanabilirsiniz. Örneğin, bir `listPrice` alan için 10-25 aralığını seçerseniz filtre olur `$filter=listPrice ge 10 and listPrice lt 25`. Örnek kodda, filtre ifadesi bitiş noktalarını ayarlamak için **pricefrom** ve **priceto** parametrelerini kullanır. 
+Belgelerinizi seçtiğiniz bir aralığa göre filtrelemek için, `"ge"` ve `"lt"` filtre işleçlerini aralığın uç noktalarını tanımlayan iki bölümlü bir ifadede kullanabilirsiniz. Örneğin, bir alan için 10-25 aralığını seçerseniz `listPrice` filtre olur `$filter=listPrice ge 10 and listPrice lt 25` . Örnek kodda, filtre ifadesi bitiş noktalarını ayarlamak için **pricefrom** ve **priceto** parametrelerini kullanır. 
 
   ![Değer aralığı sorgusu](media/search-faceted-navigation/Facet-6-buildfilter.PNG "Değer aralığı sorgusu")
 
@@ -377,7 +377,7 @@ Azure Bilişsel Arama Iş portalı tanıtımı, bu makalede başvurulan örnekle
 
 Arama sonuçlarıyla çalışırken, sorgu oluşturulmakta olan değişiklikler için URL 'YI izleyin. Bu uygulama, her birini seçerken URI 'ye model eklemek için yapılır.
 
-1. Tanıtım uygulamasının eşleme işlevini kullanmak için [Bing Haritalar geliştirme merkezi](https://www.bingmapsportal.com/)' nden bir Bing Haritalar anahtarı alın. `index.cshtml` Sayfadaki mevcut anahtarın üzerine yapıştırın. `Web.config` Dosyadaki `BingApiKey` ayar kullanılmaz. 
+1. Tanıtım uygulamasının eşleme işlevini kullanmak için [Bing Haritalar geliştirme merkezi](https://www.bingmapsportal.com/)' nden bir Bing Haritalar anahtarı alın. Sayfadaki mevcut anahtarın üzerine yapıştırın `index.cshtml` . `BingApiKey` `Web.config` Dosyadaki ayar kullanılmaz. 
 
 2. Uygulamayı çalıştırın. İsteğe bağlı turu alın veya iletişim kutusunu kapatın.
    
@@ -391,11 +391,11 @@ Arama sonuçlarıyla çalışırken, sorgu oluşturulmakta olan değişiklikler 
    
    ![Modelleri seçtikten sonra sonuçları ara](media/search-faceted-navigation/faceted-search-after-facets.png "Modelleri seçtikten sonra sonuçları ara")
 
-5. Farklı sorgu davranışlarını deneyebilmeniz için, çok yönlü sorguyu temizlemek üzere, modelleri temizlemek için seçilen `[X]` modellerle sonra öğesine tıklayın.
+5. Farklı sorgu davranışlarını deneyebilmeniz için, çok yönlü sorguyu temizlemek üzere, `[X]` modelleri temizlemek için seçilen modellerle sonra öğesine tıklayın.
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazlasını öğrenin
 [Azure bilişsel arama derin](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)ayrıntılarını izleyin. 45:25 ' de, nasıl model uygulanacağını gösteren bir tanıtım vardır.
 
 Çok yönlü gezinme için tasarım ilkeleri hakkında daha fazla bilgi için aşağıdaki bağlantıları öneririz:

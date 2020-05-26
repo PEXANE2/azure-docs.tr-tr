@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: e6d9be6bc6d7f90153e2fb58aa404e281568dbdd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892419"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797744"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Application Insights ile Web uygulamaları için Kullanıcı bekletme Analizi
 
@@ -63,7 +63,7 @@ ASP.NET sunucu kodu:
     - [Kullanıcılar, Oturumlar, Etkinlikler](usage-segmentation.md)
     - [Huniler](usage-funnels.md)
     - [Kullanıcı Akışları](usage-flows.md)
-    - [Çalışma Kitapları](../../azure-monitor/app/usage-workbooks.md)
+    - [Çalışma Kitapları](../../azure-monitor/platform/workbooks-overview.md)
     - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)
 
 

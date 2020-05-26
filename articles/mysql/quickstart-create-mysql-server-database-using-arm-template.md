@@ -1,19 +1,18 @@
 ---
 title: ARM şablonunu kullanarak MySQL için Azure DB oluşturma
 description: Bu makalede, bir Azure Resource Manager şablonu kullanarak, sanal ağ tümleştirmesiyle MySQL için Azure veritabanı sunucusu oluşturmayı öğrenin.
-services: azure-resource-manager
 author: mgblythe
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 6a007b14ad96efbef7fae0d606bf38b22383b0d4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ef3813840b1ecb3ad091a5b420ff8cfff9f6059a
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773347"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800209"
 ---
 # <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-mysql-server"></a>Hızlı başlangıç: MySQL için Azure veritabanı sunucusu oluşturmak için Kaynak Yöneticisi şablonu kullanma
 

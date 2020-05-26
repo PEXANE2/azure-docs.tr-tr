@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 033b603630fc219fc378556a2ccbaef4eae524e4
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: fb6fe624248a9098f37b94773b7162052b94b5ae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743526"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800410"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Hesabınızı Iş Ortağı Merkezi 'ne geçirme
 
@@ -85,7 +85,7 @@ Dynamics 365 müşteri katılımı, PowerApps ve Dynamics 365 Işlemler teklifle
 
 Forumlarda uzmanlardan ve eşlerden yardım alın ve [Microsoft DYNAMICS CRM](https://community.dynamics.com/crm?wa=wsignin1.0)'de blogları, web seminerlerini, Videoları, olayları ve daha fazlasını bulun.
 
-Market tekliflerinizi yayımlamaya, sertifikaya da yönetmeye yardımcı olması gerekiyorsa, [bir destek bileti gönderebilirsiniz](https://partner.microsoft.com/support/v2/?stage=1).
+Market tekliflerinizi yayımlamaya, sertifikaya da yönetmeye yardımcı olması gerekiyorsa, [bir destek bileti gönderebilirsiniz](https://aka.ms/MarketplacePublisherSupport).
 
 ## <a name="next-step"></a>Sonraki adım
 

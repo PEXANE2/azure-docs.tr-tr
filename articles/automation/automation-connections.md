@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2bd4a59ee1b82b8f6eb3bf172b11239af1a9f4c5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714279"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837136"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Otomasyonu 'nda bağlantıları yönetme
 
@@ -192,6 +192,6 @@ azure_credential = get_automation_runas_credential(runas_connection)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu’nda modülleri yönetme](shared-resources/modules.md)
-* [Azure Otomasyonu’nda runbook yürütme](automation-runbook-execution.md)
-* [Durum Yapılandırmasına genel bakış](automation-dsc-overview.md)
+* Bağlantılara erişmek için kullanılan cmdlet 'ler hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'da modülleri yönetme](shared-resources/modules.md).
+* Runbook 'lar hakkında genel bilgi için bkz. [Azure Otomasyonu 'Nda runbook yürütme](automation-runbook-execution.md).
+* DSC yapılandırmalarının ayrıntıları için bkz. [durum yapılandırmasına genel bakış](automation-dsc-overview.md).

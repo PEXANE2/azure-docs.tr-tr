@@ -74,6 +74,8 @@
           href: tutorial-setup-vscode-extension.md
         - name: TensorFlow görüntü sınıflandırma modelini eğitme ve dağıtma
           href: tutorial-train-deploy-image-classification-model-vscode.md
+    - name: Resource Manager şablonu kullanarak çalışma alanı oluşturma
+      href: tutorial-resource-manager-workspace.md
 - name: Örnekler
   items:
     - name: Jupyter Notebooks

@@ -159,6 +159,8 @@
               href: manage-self-service-access.md
             - name: Giriş Bölgesi Bulma
               href: configure-authentication-for-federated-users-portal.md
+        - name: MS Graph API’lerini kullanarak SAML tabanlı çoklu oturum açmayı otomatikleştirme
+          href: application-saml-sso-configure-api.md
         - name: Uygulamaları Azure AD’ye geçirme
           items:
             - name: Geçiş kaynakları

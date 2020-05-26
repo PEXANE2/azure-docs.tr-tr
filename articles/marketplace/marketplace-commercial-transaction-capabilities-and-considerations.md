@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: ce1c134c1940abecd7ecc6329b48802e02e74dc9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657915"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800042"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
@@ -165,7 +165,7 @@ Müşteriler genellikle Kurumsal Anlaşma veya kredi kartı etkin bir Kullandık
 
 Daha fazla bilgi ve yasal ilkeler için bkz. [Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (Iş Ortağı Merkezi 'nde kullanılabilir).
 
-Faturalandırma soruları hakkında yardım almak için [ticari Market yayımcı desteği](https://partner.microsoft.com/support/v2/?stage=1)'ne başvurun.
+Faturalandırma soruları hakkında yardım almak için [ticari Market yayımcı desteği](https://aka.ms/marketplacepublishersupport)'ne başvurun.
 
 ## <a name="transact-requirements"></a>Transact gereksinimleri
 

@@ -5,14 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 29d6edd5463de78bba039e4ed6219575d924ac10
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 26a38c0851643fbd6446acddd99a05abf8d5b26c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749147"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836660"
 ---
-# <a name="remove-vms-from-update-management"></a>Güncelleştirme Yönetimi VM 'Leri kaldırma
+# <a name="remove-vms-from-update-management"></a>VM’leri Güncelleştirme Yönetimi'nden kaldırma
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -40,12 +40,7 @@ Ortamınızdaki VM 'lere güncelleştirme dağıtma işiniz bittiğinde [güncel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)
-* [Güncelleştirme Yönetimi için çalışma alanının Otomasyon hesabından bağlantısını kaldır](automation-unlink-workspace-update-management.md)
-* [Otomasyon hesabından Güncelleştirme Yönetimi etkinleştirme](automation-onboard-solutions-from-automation-account.md)
-* [Azure portal Güncelleştirme Yönetimi etkinleştir](automation-onboard-solutions-from-browse.md)
-* [Runbook 'tan Güncelleştirme Yönetimi etkinleştirme](automation-onboard-solutions.md)
-* [Azure VM 'den Güncelleştirme Yönetimi etkinleştirme](automation-onboard-solutions-from-vm.md)
-* [Güncelleştirme Yönetimi sorunlarını giderme](troubleshoot/update-management.md)
-* [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md)
-* [Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md)
+* Güncelleştirme Yönetimi çalışmaya devam etmek için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).
+* Genel özellik sorunlarını gidermek için bkz. [sorun giderme güncelleştirme yönetimi sorunları](troubleshoot/update-management.md).
+* Windows Update Aracısı ile ilgili sorunlar için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
+* Linux güncelleştirme aracısındaki sorunlar için bkz. [Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).

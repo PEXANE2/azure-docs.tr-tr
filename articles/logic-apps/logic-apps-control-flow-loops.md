@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270582"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831628"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps’te iş akışı eylemlerini veya işlem dizilerini tekrarlayacak döngüler oluşturma
 
@@ -50,7 +50,7 @@ Bu örnek mantıksal uygulama, Web sitesi RSS akışı için günlük bir Özet 
 2. RSS tetikleyicisi ve e-posta gönder eylemi arasında bir "foreach" döngüsü ekleyin. 
 
    1. Adımlar arasında bir döngü eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. 
-   Görüntülenen **artı işaretini** (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Görüntülenen **artı işaretini** () seçin ve **+** ardından **Eylem Ekle**' yi seçin.
 
       !["Eylem Ekle" yi seçin](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
@@ -81,7 +81,7 @@ Bu örnek mantıksal uygulama, Web sitesi RSS akışı için günlük bir Özet 
 
 ## <a name="foreach-loop-definition-json"></a>"Foreach" döngü tanımı (JSON)
 
-Mantıksal uygulamanız için kod görünümünde çalışıyorsanız, `Foreach` döngüsünü MANTıKSAL uygulamanızın JSON tanımında tanımlayabilirsiniz, örneğin:
+Mantıksal uygulamanız için kod görünümünde çalışıyorsanız, `Foreach` döngüsünü mantıksal UYGULAMANıZıN JSON tanımında tanımlayabilirsiniz, örneğin:
 
 ``` json
 "actions": {
@@ -130,7 +130,7 @@ Varsayılan olarak, "foreach" döngüsündeki döngüler paralel olarak çalış
 
    ![Eşzamanlılık denetimini Aç](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
-Mantıksal uygulamanızın JSON tanımıyla çalışıyorsanız, `Sequential` `operationOptions` parametresini ekleyerek bu seçeneği kullanabilirsiniz, örneğin:
+Mantıksal uygulamanızın JSON tanımıyla çalışıyorsanız, `Sequential` parametresini ekleyerek bu seçeneği kullanabilirsiniz `operationOptions` , örneğin:
 
 ``` json
 "actions": {
@@ -193,7 +193,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
    | -------- | ----- | ----------- |
    | **Adı** | Sınır | Değişkeninin adı | 
    | **Tür** | Tamsayı | Değişkeninizin veri türü | 
-   | **Deeri** | 0 | Değişkeninizin başlangıç değeri | 
+   | **Değer** | 0 | Değişkeninizin başlangıç değeri | 
    |||| 
 
 1. **Değişken başlatma** eyleminin altında **yeni adım**' ı seçin. 
@@ -232,7 +232,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
       | Özellik | Değer | Açıklama |
       | -------- | ----- | ----------- | 
-      | **Hedef** | *\<e-posta\@adresi etki alanı>* | Alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
+      | **Hedef** | *\<e-posta adresi \@ etki alanı>* | Alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
       | **Konu** | "Limit" için geçerli değer **limit** | E-posta konusunu belirtin. Bu örnekte, **sınır** değişkenini eklediğinizden emin olun. | 
       | **Gövde** | <*e-posta-içerik*> | Göndermek istediğiniz e-posta iletisi içeriğini belirtin. Bu örnek için dilediğiniz metni girin. | 
       |||| 
@@ -259,7 +259,7 @@ Bu varsayılan sınırları değiştirmek için döngü eylemi şeklinin **Geli�
 
 ## <a name="until-definition-json"></a>"Until" tanımı (JSON)
 
-Mantıksal uygulamanız için kod görünümünde çalışıyorsanız, bunun yerine mantıksal uygulamanızın JSON tanımında bir `Until` döngü tanımlayabilirsiniz. Örneğin:
+Mantıksal uygulamanız için kod görünümünde çalışıyorsanız, `Until` bunun yerine mantıksal UYGULAMANıZıN JSON tanımında bir döngü tanımlayabilirsiniz. Örneğin:
 
 ``` json
 "actions": {
@@ -297,11 +297,11 @@ Mantıksal uygulamanız için kod görünümünde çalışıyorsanız, bunun yer
 }
 ```
 
-Bu örnek "Until" döngüsü bir kaynak oluşturan bir HTTP uç noktası çağırır. HTTP yanıt gövdesi durum ile `Completed` döndüğünde döngü durduruluyor. Sonsuz döngüleri engellemek için, bu koşullardan herhangi biri gerçekleşiyorsa döngü de duraklar:
+Bu örnek "Until" döngüsü bir kaynak oluşturan bir HTTP uç noktası çağırır. HTTP yanıt gövdesi durum ile döndüğünde döngü durduruluyor `Completed` . Sonsuz döngüleri engellemek için, bu koşullardan herhangi biri gerçekleşiyorsa döngü de duraklar:
 
-* Döngü, `count` öznitelik tarafından belirtilen 10 kez çalıştırıldı. Varsayılan değer 60 zamandır. 
+* Döngü, öznitelik tarafından belirtilen 10 kez çalıştırıldı `count` . Varsayılan değer 60 zamandır. 
 
-* Döngü, ISO 8601 biçimindeki `timeout` özniteliği tarafından belirtilen iki saat boyunca çalışır. Varsayılan değer bir saattir.
+* Döngü, `timeout` ıso 8601 biçimindeki özniteliği tarafından belirtilen iki saat boyunca çalışır. Varsayılan değer bir saattir.
   
 ``` json
 "actions": {
@@ -333,9 +333,9 @@ Bu örnek "Until" döngüsü bir kaynak oluşturan bir HTTP uç noktası çağı
 }
 ```
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Kullanıcı geri bildirim sitesini Azure Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Sonraki adımlar

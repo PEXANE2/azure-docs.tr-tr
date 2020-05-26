@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ffe7edd5faf5ae4f88f9f3e0c40256bee32395d7
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0734ac0843eec164ad2207020da9dd1a7e9fa429
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714874"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837102"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tek başına Azure Otomasyonu hesabı oluşturma
 
@@ -101,8 +101,9 @@ Klasik farklı çalıştır hesapları artık bir Azure Otomasyonu hesabı oluş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu 'nda grafik yazma](automation-graphical-authoring-intro.md)
-* [İlk PowerShell runbook’um](automation-first-runbook-textual-powershell.md)
-* [İlk PowerShell iş akışı runbook 'um](automation-first-runbook-textual.md)
-* [İlk Python2 runbook 'um](automation-first-runbook-textual-python2.md)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Grafik yazma hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'nda grafik runbook 'Ları yazma](automation-graphical-authoring-intro.md).
+* PowerShell runbook 'larını kullanmaya başlamak için bkz. [öğretici: PowerShell runbook 'U oluşturma](learn/automation-tutorial-runbook-textual-powershell.md).
+* PowerShell Iş akışı runbook 'larını kullanmaya başlamak için bkz. [öğretici: PowerShell iş akışı runbook 'U oluşturma](learn/automation-tutorial-runbook-textual.md).
+* Python 2 runbook 'ları kullanmaya başlamak için bkz. [öğretici: Python 2 runbook oluşturma](learn/automation-tutorial-runbook-textual-python2.md).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: edc2b1d7d6a97dd7d7ec35dadf946b5b8581bd06
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78851158"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833141"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics ve Power BI: veri akışı verileri için gerçek zamanlı analiz panosu
 
@@ -35,11 +35,11 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 ## <a name="add-power-bi-output"></a>Power BI çıkışı Ekle
 Gerçek zamanlı sahtekarlık algılama öğreticisinde, çıkış Azure Blob depolama alanına gönderilir. Bu bölümde, Power BI bilgi gönderen bir çıktı eklersiniz.
 
-1. Azure portal, daha önce oluşturduğunuz Akış Analizi işini açın. Önerilen adı kullandıysanız, iş adlandırılır `sa_frauddetection_job_demo`.
+1. Azure portal, daha önce oluşturduğunuz Akış Analizi işini açın. Önerilen adı kullandıysanız, iş adlandırılır `sa_frauddetection_job_demo` .
 
 2. Sol menüde, **iş topolojisi**altında **çıktılar** ' i seçin. Ardından **+ Ekle** ' yi seçin ve açılan menüden **Power BI** seçin.
 
-3. **+** > **Power BI**Ekle ' yi seçin. Ardından formu aşağıdaki bilgilerle doldurun ve **Yetkilendir**'i seçin:
+3. **+ Power BI Ekle**' yi seçin  >  **Power BI**. Ardından formu aşağıdaki bilgilerle doldurun ve **Yetkilendir**'i seçin:
 
    |**Ayar**  |**Önerilen değer**  |
    |---------|---------|
@@ -74,10 +74,10 @@ Power BI veri kümeleri hakkında daha fazla bilgi için [Power BI REST API](htt
 
 2. **Sorgu** kutusuna tıklayın. 
 
-3. Aşağıdaki sorguyu girin. Bu sorgu, sahtekarlık algılama öğreticisinde oluşturduğunuz kendi kendine JOIN sorgusuna benzer. Aradaki fark, bu sorgunun sonuçları oluşturduğunuz yeni çıktıya (`CallStream-PowerBI`) göndermesi gerektiğidir. 
+3. Aşağıdaki sorguyu girin. Bu sorgu, sahtekarlık algılama öğreticisinde oluşturduğunuz kendi kendine JOIN sorgusuna benzer. Aradaki fark, bu sorgunun sonuçları oluşturduğunuz yeni çıktıya () göndermesi gerektiğidir `CallStream-PowerBI` . 
 
     >[!NOTE]
-    >Sahtekarlık algılama öğreticisinde `CallStream` girişi belirtmediyseniz, sorgunuzu sorgudaki `CallStream` **from** ve **JOIN** yan tümcelerinde yerine koyun.
+    >`CallStream`Sahtekarlık algılama öğreticisinde girişi belirtmediyseniz, `CallStream` sorgunuzu sorgudaki **from** ve **JOIN** yan tümcelerinde yerine koyun.
 
    ```SQL
    /* Our criteria for fraud:
@@ -114,7 +114,7 @@ Bu bölüm isteğe bağlıdır, ancak önerilir.
 
        `telcodatagen.exe 1000 .2 2`
 
-2. Stream Analytics işinizin **sorgu** sayfasında, `CallStream` girişin yanındaki noktalara tıklayın ve ardından **girişten örnek veriler**' i seçin.
+2. Stream Analytics işinizin **sorgu** sayfasında, girişin yanındaki noktalara tıklayın `CallStream` ve ardından **girişten örnek veriler**' i seçin.
 
 3. Üç dakikalık verileri istediğinizi belirtip **Tamam**' a tıklayın. Veri örneğinin alındığını belirten bildirim gelene kadar bekleyin.
 
@@ -137,11 +137,11 @@ Akış Analizi işiniz, gelen akıştaki sahte çağrılar aramaya başlar. İş
 
     ![Power BI 'de akış veri kümesi konumu](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
-2. Çalışma alanınızda ** + &nbsp;oluştur**' a tıklayın.
+2. Çalışma alanınızda ** + &nbsp; Oluştur**' a tıklayın.
 
     ![Power BI çalışma alanındaki oluştur düğmesi](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
 
-3. Yeni bir pano oluşturun ve bu `Fraudulent Calls`panoyu adlandırın.
+3. Yeni bir pano oluşturun ve bu panoyu adlandırın `Fraudulent Calls` .
 
     ![Bir pano oluşturun ve Power BI çalışma alanında bir ad verin](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
 
@@ -228,14 +228,14 @@ Bu yapılandırma verildiğinde, özgün sorguyu aşağıdaki şekilde değişti
 ```
 
 ### <a name="renew-authorization"></a>Yetkilendirmeyi Yenile
-İşiniz oluşturulduktan veya en son kimlik doğrulamasından sonra parola değişmişse, Power BI hesabınızı yeniden kimlik doğrulaması yapmanız gerekir. Azure Multi-Factor Authentication Azure Active Directory (Azure AD) kiracınızda yapılandırılırsa, her iki haftada bir Power BI yetkilendirmeyi de yenilemeniz gerekir. ' Yi yenilemezseniz, iş çıktısının bulunmaması veya işlem günlüklerinde bir `Authenticate user error` olması gibi belirtilerle karşılaşabilirsiniz.
+İşiniz oluşturulduktan veya en son kimlik doğrulamasından sonra parola değişmişse, Power BI hesabınızı yeniden kimlik doğrulaması yapmanız gerekir. Azure Multi-Factor Authentication Azure Active Directory (Azure AD) kiracınızda yapılandırılırsa, her iki haftada bir Power BI yetkilendirmeyi de yenilemeniz gerekir. ' Yi yenilemezseniz, iş çıktısının bulunmaması veya işlem günlüklerinde bir olması gibi belirtilerle karşılaşabilirsiniz `Authenticate user error` .
 
 Benzer şekilde, bir iş, belirtecin süresi dolduktan sonra başlarsa bir hata oluşur ve iş başarısız olur. Bu sorunu çözmek için, çalıştıran işi durdurun ve Power BI çıktısına gidin. Veri kaybını önlemek için, **Yetkilendirmeyi Yenile** bağlantısını seçin ve ardından **son durdurulma zamanından**sonra işinizi yeniden başlatın.
 
 Yetkilendirme Power BI ile yenilendikten sonra, sorunun çözümlendiğini yansıtmak için yetkilendirme alanında yeşil bir uyarı belirir.
 
 ## <a name="get-help"></a>Yardım alın
-Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)

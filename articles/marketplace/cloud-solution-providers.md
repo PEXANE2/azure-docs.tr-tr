@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: a932f4ec37eda66c353df2c865bb4036ddcc59fa
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741072"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798142"
 ---
 # <a name="cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı
 
@@ -105,7 +105,7 @@ CSP programında bir iş ortağı yetkilendiriyorsunuz ve bu iş ortağı ürün
 
 CSP programındaki bir iş, ürününüzü müşterilerine satmamışsa ve teklifiniz yayımlandıktan sonra CSP 'yi kaldırmak istiyorsanız aşağıdaki yönergeleri kullanın:
 
-1. [Destek isteği sayfasına](https://partner.microsoft.com/support/v2/?stage=1)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur.
+1. [Destek isteği sayfasına](https://aka.ms/marketplacepublishersupport)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur.
 
    > [!NOTE]
    > Önceden doldurulmuş açılan menü seçimlerini değiştirmeyin.
@@ -127,7 +127,7 @@ CSP programındaki bir iş, ürününüzü müşterilerine satmamışsa ve tekli
 
 Teklifiniz Şu anda **1: varsa, CSP programında herhangi bir iş ortağı** varsa ve diğer iki seçenekten birine gitmek istiyorsanız, bir istek oluşturmak için aşağıdaki yönergeleri kullanın:
 
-1. [Destek isteği sayfasına](https://partner.microsoft.com/support/v2/?stage=1)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur.
+1. [Destek isteği sayfasına](https://aka.ms/marketplacepublishersupport)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur.
 
    > [!NOTE]
    > Önceden doldurulmuş açılan menü seçimlerini değiştirmeyin.
@@ -145,7 +145,7 @@ Teklifiniz Şu anda **1: varsa, CSP programında herhangi bir iş ortağı** var
 
 Teklifiniz Şu anda **2. seçenek ise, CSP programındaki belirli iş ortakları ' i seçin** ve tek yapmanız gerekırse, **CSP programındaki herhangi bir iş ortağı**olarak bir istek oluşturmak için aşağıdaki yönergeleri kullanın:
 
-1. [Destek isteği sayfasına](https://partner.microsoft.com/support/v2/?stage=1)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur.
+1. [Destek isteği sayfasına](https://aka.ms/marketplacepublishersupport)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur.
 
    > [!NOTE]
    > Önceden doldurulmuş açılan menü seçimlerini değiştirmeyin.
@@ -158,7 +158,7 @@ Teklifiniz Şu anda **2. seçenek ise, CSP programındaki belirli iş ortakları
 
  Teklifiniz Şu anda **2. seçenek: CSP programındaki belirli iş ortakları** ve **seçenek 3: CSP programında iş ortağı yok**' a gitmek istiyorsanız bu seçeneğe giderek yalnızca daha önce yetkilendirdiğiniz CSP programındaki iş ortakları, son müşterilere teklifinizi yeniden kişiselleştirmez. Bir istek oluşturmak için lütfen aşağıdaki yönergeleri kullanın:
 
-1. [Destek isteği sayfasına](https://partner.microsoft.com/support/v2/?stage=1)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur.
+1. [Destek isteği sayfasına](https://aka.ms/marketplacepublishersupport)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur.
 
    > [!NOTE]
    > Önceden doldurulmuş açılan menü seçimlerini değiştirmeyin.

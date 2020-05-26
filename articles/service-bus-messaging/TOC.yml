@@ -196,6 +196,8 @@
           href: service-bus-diagnostic-logs.md
         - name: Mesajlaşma varlıklarını askıya alma ve yeniden etkinleştirme
           href: entity-suspend.md
+        - name: Service Bus üzerinde veri işlemleri gerçekleştirmek için Service Bus Explorer’ı kullanma
+          href: explorer.md
         - name: ARM şablonlarını kullanma
           href: service-bus-resource-manager-overview.md
           items:

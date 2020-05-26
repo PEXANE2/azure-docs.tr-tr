@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c49467451963ceb52f114430343fafb955ec4f7
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: d28d7bd85326e8a4cf27dba1f3f605b64477c5aa
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786997"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829948"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Linux sanal makineleri için Azure disk şifrelemesi hakkında SSS
 
@@ -158,7 +158,7 @@ Azure Backup, şifrelenmiş VM 'nin aynı abonelik ve bölge içinde yedeklenmes
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Soru sormak veya geri bildirimde bulunmak için nereye gidebilirim?
 
-[Azure disk şifrelemesi Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption)hakkında soru sorabilir veya geri bildirim sağlayabilirsiniz.
+[Azure disk şifrelemesi Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html)sorular sorabilir veya geribildirim sağlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Azure disk şifrelemesi ile ilgili en sık sorulan sorular hakkında daha fazla bilgi edindiniz. Bu hizmet hakkında daha fazla bilgi için aşağıdaki makalelere bakın:

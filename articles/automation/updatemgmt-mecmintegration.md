@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 798cf3a7a8b94a06331e2f8e27c143b4182b718e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 183189253d11638751e1f8283b202f122131b005
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735846"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836320"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Windows uç noktası ile Güncelleştirme Yönetimi tümleştirme Configuration Manager
 
@@ -48,4 +48,4 @@ Bu yapılandırma değişikliğini gerçekleştirdikten sonra, uygun Windows uç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Güncelleştirme dağıtımı zamanlama](automation-tutorial-update-management.md#schedule-an-update-deployment)
+Tümleştirme zamanlaması ayarlamak için bkz. [güncelleştirme dağıtımı zamanlama](automation-tutorial-update-management.md#schedule-an-update-deployment).
