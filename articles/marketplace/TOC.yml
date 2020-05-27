@@ -324,9 +324,9 @@
               href: ./partner-center-portal/create-azure-container-technical-assets.md
             - name: Azure Kapsayıcısı teklifi oluşturma
               href: ./partner-center-portal/create-azure-container-offer.md
-        - name: Sanal Makine teklifi
+        - name: Sanal makine teklifi
           items:
-            - name: Azure Sanal Makine teklifi oluşturma
+            - name: Azure sanal makine teklifi oluşturma
               href: ./partner-center-portal/azure-vm-create-offer.md
             - name: Azure VM teknik varlığı oluşturma
               items:

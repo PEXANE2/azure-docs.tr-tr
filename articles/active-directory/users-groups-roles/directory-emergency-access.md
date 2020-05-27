@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74028140"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816191"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD 'de acil durum erişim hesaplarını yönetme
 
@@ -39,12 +39,12 @@ Bir kuruluşun bir acil durum erişim hesabını aşağıdaki durumlarda kullanm
 
 ## <a name="create-emergency-access-accounts"></a>Acil durum erişim hesapları oluşturma
 
-İki veya daha fazla acil durum erişim hesabı oluşturun. Bu hesaplar, \*. onmicrosoft.com etki alanını kullanan ve şirket içi bir ortamdan Federasyon veya eşitlenmemiş olan yalnızca bulut hesapları olmalıdır.
+İki veya daha fazla acil durum erişim hesabı oluşturun. Bu hesaplar, \* . onmicrosoft.com etki alanını kullanan ve şirket içi bir ortamdan Federasyon veya eşitlenmemiş olan yalnızca bulut hesapları olmalıdır.
 
 Bu hesapları yapılandırırken, aşağıdaki gereksinimlerin karşılanması gerekir:
 
 - Acil durum erişim hesapları, kuruluştaki herhangi bir kullanıcıyla ilişkilendirilmemelidir. Hesaplarınızın çalışanların sağladığı herhangi bir cep telefonlarıyla, bireysel çalışanlarla veya çalışanlara özgü diğer kimlik bilgileriyle birlikte seyahat eden donanım belirteçlerine bağlı olmadığından emin olun. Bu önlem, kimlik bilgileri gerektiğinde tek bir çalışanın ulaşılamaz olduğu örnekleri ele alır. Kayıtlı tüm cihazların Azure AD ile iletişim kurmak için birden çok yolu olan bilinen, güvenli bir konumda tutulduğundan emin olmanız önemlidir.
-- Bir acil durum erişim hesabı için kullanılan kimlik doğrulama mekanizması, diğer acil erişim hesapları da dahil olmak üzere diğer yönetim hesaplarınız tarafından kullanılan verilerden farklı olmalıdır.  Örneğin, normal yönetici oturum açma işlemi şirket içi MFA aracılığıyla kullanılıyorsa, Azure MFA farklı bir mekanizmadır.  Ancak, Azure MFA, yönetim hesaplarınız için kimlik doğrulamanın birincil parçasıysa, bunlar için bir üçüncü taraf MFA sağlayıcısıyla koşullu erişim kullanma gibi farklı bir yaklaşım düşünün.
+- Bir acil durum erişim hesabı için kullanılan kimlik doğrulama mekanizması, diğer acil erişim hesapları da dahil olmak üzere diğer yönetim hesaplarınız tarafından kullanılan verilerden farklı olmalıdır.  Örneğin, normal yönetici oturum açma işlemi şirket içi MFA aracılığıyla kullanılıyorsa, Azure MFA farklı bir mekanizmadır.  Ancak, Azure MFA, yönetim hesaplarınız için kimlik doğrulamanın birincil parçasıysa, [özel denetimler](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)aracılığıyla bir üçüncü taraf MFA sağlayıcısıyla koşullu erişim kullanma gibi, bunlar için farklı bir yaklaşım düşünün.
 - Cihazın veya kimlik bilgisinin süresi dolmaz veya kullanım olmaması nedeniyle otomatik temizleme kapsamında olmaması gerekir.  
 - Acil durum erişim hesaplarınız için genel yönetici rolü atamasını kalıcı hale getirin. 
 
@@ -79,7 +79,7 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>Kesme camı hesaplarının nesne kimliklerini alma
 
 1. Kullanıcı Yöneticisi rolüne atanan bir hesapla [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory** > **kullanıcıları**' nı seçin.
+1. **Azure Active Directory**  >  **kullanıcıları**' nı seçin.
 1. Kesme camı hesabını arayın ve kullanıcının adını seçin.
 1. Daha sonra kullanabilmeniz için nesne KIMLIĞI özniteliğini kopyalayın ve kaydedin.
 1. İkinci kesme camı hesabı için önceki adımları tekrarlayın.
@@ -89,7 +89,7 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
 1. Azure Izleyici 'de Izleme katılımcısı rolüne atanan bir hesapla [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Tüm hizmetler**' i seçin, ara ' ya "Log Analytics" yazın ve **Log Analytics çalışma alanları**' nı seçin.
 1. Bir çalışma alanı seçin.
-1. Çalışma alanınızda **Uyarılar** > **Yeni uyarı kuralı**' nı seçin.
+1. Çalışma alanınızda **Uyarılar**  >  **Yeni uyarı kuralı**' nı seçin.
     1. **Kaynak**altında, aboneliğin uyarı kuralını ilişkilendirmek istediğiniz bir tane olduğunu doğrulayın.
     1. **Koşul**altında **Ekle**' yi seçin.
     1. **Sinyal adı**altında **özel günlük araması** ' nı seçin.

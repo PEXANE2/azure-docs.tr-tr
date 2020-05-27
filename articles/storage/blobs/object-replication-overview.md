@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c23360360f97babebe9efe8afecc6a27052faad5
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f633c1816e9e2e977c52ab99b66a26f7d2c4d8e2
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758443"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800756"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltma (Önizleme)
 
@@ -54,7 +54,7 @@ Bir çoğaltma kuralı oluşturduğunuzda, varsayılan olarak yalnızca kaynak k
 
 Ayrıca, blok bloblarını ön eke göre filtrelemek için bir çoğaltma kuralının bir parçası olarak bir veya daha fazla filtre belirtebilirsiniz. Bir ön ek belirttiğinizde, yalnızca kaynak kapsayıcıda bu önekle eşleşen Bloblar hedef kapsayıcıya kopyalanacaktır.
 
-Kaynak ve hedef kapsayıcıların her ikisi de bir kuralda belirtmeleri için mevcut olmalıdır. Çoğaltma ilkesini oluşturduktan sonra, hedef kapsayıcı salt okunurdur. Hedef kapsayıcıya yazma girişimleri 409 (çakışma) hata koduyla başarısız olur. Ancak, farklı bir erişim katmanına taşımak için, hedef kapsayıcıdaki bir Blobun [BLOB katmanını ayarla](/rest/api/storageservices/set-blob-tier.md) işlemini çağırabilirsiniz. Örneğin, maliyetleri kazanmak için hedef kapsayıcıdaki Blobları arşiv katmanına taşıyabilirsiniz.
+Kaynak ve hedef kapsayıcıların her ikisi de bir kuralda belirtmeleri için mevcut olmalıdır. Çoğaltma ilkesini oluşturduktan sonra, hedef kapsayıcı salt okunurdur. Hedef kapsayıcıya yazma girişimleri 409 (çakışma) hata koduyla başarısız olur. Ancak, farklı bir erişim katmanına taşımak için, hedef kapsayıcıdaki bir Blobun [BLOB katmanını ayarla](/rest/api/storageservices/set-blob-tier) işlemini çağırabilirsiniz. Örneğin, maliyetleri kazanmak için hedef kapsayıcıdaki Blobları arşiv katmanına taşıyabilirsiniz.
 
 ## <a name="about-the-preview"></a>Önizleme hakkında
 

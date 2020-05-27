@@ -4,12 +4,12 @@ description: Bir Azure sanal ağında, işlem düğümlerinin bir dosya sunucusu
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5e973968e3396fbe714be5540244b867b7092e00
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 559cf3bc145deeed78b91def9d36211f885005d6
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779576"
+ms.locfileid: "83797515"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
 
@@ -49,13 +49,13 @@ VNet 'nizi oluşturduktan ve bu ağa bir alt ağ atadıktan sonra, bu VNet ile b
 
 Kuruluşunuzdaki Internet 'e bağlı trafiği İnceleme ve günlüğe kaydetme amacıyla Şirket içi konumunuza yeniden yönlendirmek (zorlamak) için gereken gereksinimlere sahip olabilirsiniz. VNet 'iniz içindeki alt ağlar için Zorlamalı tünel oluşturmayı etkinleştirmiş olabilirsiniz.
 
-Azure Batch havuzu işlem düğümlerinizin Zorlamalı tünel etkin olan bir VNet 'te çalıştığından emin olmak için, bu alt ağ için aşağıdaki [Kullanıcı tanımlı yolları](../virtual-network/virtual-networks-udr-overview.md) eklemeniz gerekir:
+Azure Batch havuzu işlem düğümlerinizin Zorlamalı tünel etkin olan bir VNet 'te çalıştığından emin olmak için, bu alt ağ için aşağıdaki [Kullanıcı tanımlı yolları](../virtual-network/virtual-networks-udr-overview.md) (UDR) eklemeniz gerekir:
 
-* Batch hizmetinin, görevleri zamanlamak için havuz işlem düğümleriyle iletişim kurması gerekir. Bu iletişimi etkinleştirmek için Batch hesabınızın bulunduğu bölgedeki Batch hizmeti tarafından kullanılan her IP adresi için Kullanıcı tanımlı bir yol ekleyin. Batch hizmetinin IP adreslerinin listesini edinme hakkında bilgi edinmek için bkz. [Şirket Içi hizmet etiketleri](../virtual-network/service-tags-overview.md). Batch hizmeti IP adresleri, `BatchNodeManagement` hizmet etiketiyle (veya Batch hesabı bölgesiyle eşleşen bölgesel değişkenle) ilişkilendirilir.
+* Batch hizmetinin, görevleri zamanlamak için havuz işlem düğümleriyle iletişim kurması gerekir. Bu iletişimi etkinleştirmek için Batch hesabınızın bulunduğu bölgedeki Batch hizmeti tarafından kullanılan her IP adresi için bir UDR ekleyin. Batch hizmetinin IP adreslerinin listesini edinme hakkında bilgi edinmek için bkz. [Şirket Içi hizmet etiketleri](../virtual-network/service-tags-overview.md).
 
 * Azure Storage 'a giden trafiğin (özellikle, formun URL 'Leri, `<account>.table.core.windows.net` `<account>.queue.core.windows.net` ve `<account>.blob.core.windows.net` ) Şirket içi ağ gereciniz aracılığıyla engellenmediğinden emin olun.
 
-Kullanıcı tanımlı bir yol eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve **sonraki atlama türünü** **Internet**olarak ayarlayın. Aşağıdaki örneğe bakın:
+Bir UDR eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve **sonraki atlama türünü** **Internet**olarak ayarlayın. Aşağıdaki örneğe bakın:
 
 ![Kullanıcı tanımlı yol](./media/batch-virtual-network/user-defined-route.png)
 

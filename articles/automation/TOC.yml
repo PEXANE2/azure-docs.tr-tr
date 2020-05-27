@@ -57,6 +57,8 @@
           href: automation-create-account-template.md
         - name: Amazon Web Services ile kimlik doğrulamasını yapılandırma
           href: automation-config-aws-account.md
+        - name: Azure AD ile kimlik doğrulamasını yapılandırma
+          href: automation-use-azure-ad.md
         - name: Otomasyon Farklı Çalıştır hesabı yönetme
           href: manage-runas-account.md
         - name: Rol izinlerini ve güvenliği yönetme

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: b9ca8a703ed8a84148abd23e90114402d8806bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667202"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797594"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Izleyici ile sürekli izleme
 
@@ -74,7 +74,7 @@ Sürekli tümleştirme/sürekli dağıtım, otomatik test sonuçlarına göre ko
 Geliştirme ve işlemlerinizin aynı telemetri ve araçların erişimine sahip olmasını sağlamak, bunların tüm ortamınızda desenleri görüntülemesine olanak tanır ve ortalama (MTTD) ve ortalama geri yükleme süresi (MTTR) süresini en aza indirir.
 
 - Kuruluşunuzdaki farklı roller için ortak ölçümleri ve günlükleri temel alan [özel panolar](../azure-monitor/learn/tutorial-app-dashboards.md) hazırlayın. Panolar, tüm Azure kaynaklarından verileri birleştirebilir.
-- Geliştirme ve işlemler arasında bilgi paylaşımını sağlamak için [çalışma kitaplarını](../azure-monitor/app/usage-workbooks.md) hazırlayın. Bunlar, ölçüm grafikleri ve günlük sorguları ile dinamik raporlar olarak hazırlanarak, geliştiriciler tarafından hazırlanan ve temel sorunları ele almak için müşterilerin destek veya işlemlerine yardımcı olan geliştiriciler tarafından hazırlanan sorun giderme kılavuzlarından de yararlanılabilir
+- Geliştirme ve işlemler arasında bilgi paylaşımını sağlamak için [çalışma kitaplarını](../azure-monitor/platform/workbooks-overview.md) hazırlayın. Bunlar, ölçüm grafikleri ve günlük sorguları ile dinamik raporlar olarak hazırlanarak, geliştiriciler tarafından hazırlanan ve temel sorunları ele almak için müşterilerin destek veya işlemlerine yardımcı olan geliştiriciler tarafından hazırlanan sorun giderme kılavuzlarından de yararlanılabilir
 
 ## <a name="continuously-optimize"></a>Sürekli iyileştirme
  İzleme, popüler derleme ölçümü-öğrenme felseflarından biridir. Bu, KPI ve Kullanıcı davranışı ölçümlerinizi sürekli olarak izlemeye ve ardından bunları planlama yinelemeleri aracılığıyla iyileştirmek için daha fazla çaba öneriyor. Azure Izleyici, işinizle ilgili ölçümleri ve günlükleri toplamanıza ve sonraki dağıtımda gerekli şekilde yeni veri noktaları eklemenize yardımcı olur.

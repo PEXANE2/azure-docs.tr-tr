@@ -4,12 +4,12 @@ description: Büyük ölçekli paralel iş yükleri bulutta çalıştırmak içi
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: adc333498e0b3074aaa40d40e076ae62c1759524
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 6cccef176e3e5ba0f4774a5897f082c4847a4005
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778602"
+ms.locfileid: "83800249"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure portalıyla Batch hesabı oluşturma
 
@@ -52,6 +52,9 @@ Batch hesapları ve senaryoları hakkında arka plan için bkz. [Batch hizmeti i
 ## <a name="view-batch-account-properties"></a>Batch hesabı özelliklerini görüntüleme
 
 Hesap oluşturulduktan sonra seçerek ayarlarına ve özelliklerine erişebilirsiniz. Sol menüyü kullanarak tüm hesap ayarlarına ve özelliklerine erişebilirsiniz.
+
+> [!NOTE]
+> Batch hesabının adı kendi KIMLIĞIDIR ve değiştirilemez. Bir Batch hesabının adını değiştirmeniz gerekiyorsa, hesabı silmeniz ve hedeflenen ada sahip yeni bir tane oluşturmanız gerekir.
 
 ![Azure portalında Batch hesabı sayfası][account_blade]
 

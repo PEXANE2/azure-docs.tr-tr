@@ -5,26 +5,26 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/18/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 57383668ef025b46d0bae1f98c5ed5cd75417c63
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 4d548c1b7614503919de2725acb02d7f808ceb93
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715044"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806521"
 ---
-## <a name="run-the-spx-tool"></a>SPX aracını çalıştırma
+## <a name="run-the-speech-cli"></a>Konuşma CLı 'sını çalıştırma
 
-Artık, farklı bir dilde konuşmayı metne dönüştürmek için SPX aracını çalıştırmaya hazırsınız demektir.
+Artık konuşmayı farklı bir dilde metne dönüştürmek için konuşma CLı 'yı çalıştırmaya hazırsınız.
 
-Komut satırından, SPX aracı ikili dosyasını içeren dizine geçin ve şunu yazın:
+Komut satırından, konuşma CLı ikili dosyasını içeren dizine geçin ve şunu yazın:
 
 ```bash
 spx translate --microphone --target de-DE
 ```
 
-SPX Aracı, Ingilizce 'ye konuşulan doğal dili, Almanca dilinde basılan metne dönüştürür.
+Konuşma CLı, Ingilizce 'ye konuşulan doğal dili, Almanca dilinde basılan metne dönüştürür.
 Aracı durdurmak için ENTER tuşuna basın.
 
 > [!NOTE]
-> SPX aracı varsayılan olarak Ingilizce 'Dir. [Konuşma-metin tablosundan](../../../../language-support.md)farklı bir dil seçebilirsiniz.
+> Konuşma CLı varsayılan olarak Ingilizce 'Dir. [Konuşma-metin tablosundan](../../../../language-support.md)farklı bir dil seçebilirsiniz.
 > Örneğin, `--source ja-JP` Japonca konuşmayı tanımak için ekleyin.

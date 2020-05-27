@@ -1,7 +1,7 @@
 ---
-title: SPX temelleri-konuşma hizmeti
+title: Konuşma CLı temelleri
 titleSuffix: Azure Cognitive Services
-description: Bir kod ve en düşük kurulum olmadan konuşma SDK 'Sı ile çalışmak için SPX komut satırı aracını nasıl kullanacağınızı öğrenin.
+description: Konuşma CLı komut aracını, kod olmadan ve en düşük kurulum ile konuşma hizmetiyle çalışmak için kullanmayı öğrenin.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 31c1d50962b2710fbeb249c61c8b3c144762be43
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 2e75e177c1a5af13c1907b3a1abc9218096e8d45
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715656"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800681"
 ---
-# <a name="learn-the-basics-of-spx"></a>SPX hakkında temel bilgileri öğrenin
+# <a name="learn-the-basics-of-the-speech-cli"></a>Konuşma CLı 'nın temellerini öğrenin
 
-Bu makalede, konuşma hizmetini kod yazmadan kullanmak için bir komut satırı aracı olan SPX 'in temel kullanım düzenlerini öğrenirsiniz. Kullanım durumlarınızın yeterince karşılanıp karşılanmadığını görmek için, geliştirme ortamları oluşturmadan veya herhangi bir kod yazmaya gerek kalmadan, konuşma hizmetinin ana özelliklerini hızlıca test edebilirsiniz. Ayrıca, SPX üretime hazırlanın ve konuşma hizmetindeki basit iş akışlarını otomatikleştirebilmek için `.bat` veya kabuk betikleri kullanılarak kullanılabilir.
+Bu makalede, konuşma hizmetini kod yazmadan kullanmak için bir komut satırı aracı olan konuşma CLı 'nın temel kullanım düzenlerini öğrenirsiniz. Kullanım durumlarınızın yeterince karşılanıp karşılanmadığını görmek için, geliştirme ortamları oluşturmadan veya herhangi bir kod yazmaya gerek kalmadan, konuşma hizmetinin ana özelliklerini hızlıca test edebilirsiniz. Ayrıca, konuşma CLı, üretime hazırlanın ve konuşma hizmetindeki basit iş akışlarını otomatik hale getirmek için `.bat` veya kabuk betikleri kullanılarak kullanılabilir.
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -31,15 +31,15 @@ Bu bölümde, genellikle ilk kez test ve deneme için yararlı olan birkaç teme
 spx recognize --microphone
 ```
 
-Komutu girdikten sonra, SPX geçerli etkin giriş cihazında sesi dinlemeye başlayacaktır ve ' ı bastıktan sonra durur `ENTER` . Kaydedilen konuşma daha sonra tanınır ve konsol çıkışında metne dönüştürülür. Ayrıca, metin okuma sen, SPX kullanmaya da kolay bir işlemdir. 
+Komutu girdikten sonra, SPX geçerli etkin giriş cihazında sesi dinlemeye başlayacaktır ve ' ı bastıktan sonra durur `ENTER` . Kaydedilen konuşma daha sonra tanınır ve konsol çıkışında metne dönüştürülür. Metinden konuşmaya birleştirme özelliği, konuşma CLı 'yi kullanmayı da kolaylaştırır. 
 
 Aşağıdaki komutun çalıştırılması girilen metni girdi olarak alır ve birleştirilmiş konuşmayı geçerli etkin çıkış cihazına çıktı olarak alır.
 
 ```shell
-spx synthesize --text "Testing synthesis using SPX" --speakers
+spx synthesize --text "Testing synthesis using the Speech CLI" --speakers
 ```
 
-Konuşma tanıma ve birleştirme özelliğine ek olarak, aynı zamanda SPX ile konuşma çevirisi de yapabilirsiniz. Yukarıdaki konuşma tanıma komutuna benzer şekilde, varsayılan mikrofonunuzdan ses yakalamak ve hedef dilde metne çeviri gerçekleştirmek için aşağıdaki komutu çalıştırın.
+Konuşma tanıma ve birleştirme özelliğine ek olarak konuşma CLı ile konuşma çevirisi de yapabilirsiniz. Yukarıdaki konuşma tanıma komutuna benzer şekilde, varsayılan mikrofonunuzdan ses yakalamak ve hedef dilde metne çeviri gerçekleştirmek için aşağıdaki komutu çalıştırın.
 
 ```shell
 spx translate --microphone --source en-US --target ru-RU --output file C:\some\file\path\russian_translation.txt
@@ -59,7 +59,7 @@ Bu komutta, hem kaynak **(çevrilecek**dil) hem de hedef (çevrilecek **dil) dil
 
 ## <a name="batch-speech-recognition"></a>Toplu konuşma tanıma
 
-Bir ses dosyası dizininiz varsa, toplu konuşma tanımayı hızlı bir şekilde çalıştırmak için SPX 'in kullanımı kolaydır. Aşağıdaki komutu çalıştırarak dizininizle birlikte `--files` komutunu çalıştırın. Bu örnekte, `\*.wav` dizinde bulunan tüm dosyaları tanımak için dizine eklenir `.wav` . Ayrıca, `--threads` tanımayı 10 paralel iş parçacığında çalıştırmak için bağımsız değişkenini belirtin.
+Bir ses dosyası dizininiz varsa, toplu konuşma tanımayı hızlı bir şekilde çalıştırmak için konuşma CLı 'yı kolayca kullanabilirsiniz. Aşağıdaki komutu çalıştırarak dizininizle birlikte `--files` komutunu çalıştırın. Bu örnekte, `\*.wav` dizinde bulunan tüm dosyaları tanımak için dizine eklenir `.wav` . Ayrıca, `--threads` tanımayı 10 paralel iş parçacığında çalıştırmak için bağımsız değişkenini belirtin.
 
 > [!NOTE]
 > `--threads`Bağımsız değişken, komutlar için sonraki bölümde de kullanılabilir `spx synthesize` ve kullanılabilir Iş parçacıkları CPU 'ya ve geçerli yük yüzdesine bağlıdır.
@@ -76,11 +76,11 @@ Tanınan konuşma çıktısı `speech_output.tsv` `--output file` bağımsız de
 
 ## <a name="batch-text-to-speech-synthesis"></a>Batch metin okuma senşü
 
-Batch metin okuma ' yı çalıştırmanın en kolay yolu, yeni bir `.tsv` (sekmeyle ayrılmış değer) dosyası oluşturmak ve `--foreach` SPX 'de komuttan faydalanır. Aşağıdaki dosyayı göz önünde bulundurun `text_synthesis.tsv` :
+Batch metin okuma 'yı çalıştırmanın en kolay yolu, yeni bir `.tsv` (sekmeyle ayrılmış-değer) dosyası oluşturmak ve `--foreach` konuşma CLI 'de komuttan faydalanır. Aşağıdaki dosyayı göz önünde bulundurun `text_synthesis.tsv` :
 
     audio.output    text
     C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-    C:\batch_wav_output\wav_2.wav    Using SPX to run batch-synthesis.
+    C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
     C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
 
  Ardından, öğesini işaret etmek için bir komut çalıştırırsınız `text_synthesis.tsv` , her bir alanda sen, `text` ve sonuç olarak karşılık gelen `audio.output` yola bir dosya olarak yazar `.wav` . 
@@ -99,7 +99,7 @@ Ancak, `.tsv` Aşağıdaki örnekte olduğu gibi bir dosyanız varsa, komut sat�
 
     wav_path    str_text
     C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-    C:\batch_wav_output\wav_2.wav    Using SPX to run batch-synthesis.
+    C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
     C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
 
 Bu alan adlarını, çağrıda aşağıdaki sözdizimini kullanarak doğru bağımsız değişkenlere geçersiz kılabilirsiniz `--foreach` . Bu, yukarıdaki çağrıdır.

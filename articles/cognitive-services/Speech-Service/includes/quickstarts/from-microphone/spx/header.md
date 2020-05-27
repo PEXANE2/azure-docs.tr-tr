@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 5/13/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 20c09c6bedec0ca2e7a45aaf9872732b0e4c1517
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 4a86959f99ed990d40220aaa2ec2ef506c8583a7
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715333"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806378"
 ---
-Bu hızlı başlangıçta, bir mikrofon girişinden konuşmayı etkileşimli olarak tanımak ve yakalanan sesten metin dökümünü almak için komut satırından SPX aracını kullanırsınız. Genel tanıma görevlerini gerçekleştirmek için (örneğin, derde Bing konuşmaları), SPX aracını kullanmak kolaydır. Bir kerelik yapılandırmadan sonra, SPX aracı bir mikrofonla veya Batch betiği kullanarak dosyaları etkileşimli bir şekilde metne aktarmanıza olanak tanır.
+Bu hızlı başlangıçta, bir mikrofon girişinden konuşmayı etkileşimli olarak tanımak ve yakalanan sesten metin dökümünü almak için komut satırından konuşma CLı 'sını kullanırsınız. Konuşma CLı gibi yaygın tanıma görevlerini gerçekleştirmek için konuşma CLı 'Yı kullanmak kolaydır. Bir kerelik yapılandırmadan sonra, konuşma CLı, bir mikrofonla veya Batch betiği kullanarak dosyaları etkileşimli bir şekilde metne eklemenizi sağlar.
