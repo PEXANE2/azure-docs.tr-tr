@@ -5,14 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: a11cc7f0c3e3c47fa1101272a73659368349fa84
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 014442dee1be23a189e22a505abf86050601b2aa
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749175"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826751"
 ---
-# <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Runbook 'tan Değişiklik İzleme ve envanteri etkinleştirme
+# <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Runbook’tan Değişiklik İzleme ve Stok özelliğini etkinleştirme
 
 Bu makalede, ortamınızdaki VM 'Ler için [değişiklik izleme ve envanter](change-tracking.md) özelliğini etkinleştirmek üzere bir runbook 'u nasıl kullanabileceğiniz açıklanır. Azure VM 'lerini ölçekli olarak etkinleştirmek için, Değişiklik İzleme ve envanterini kullanarak var olan bir VM 'yi etkinleştirmeniz gerekir. 
 
@@ -102,11 +102,10 @@ Bu runbook 'u başlatmak için bir Azure VM için Değişiklik İzleme ve envant
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Runbook 'ları zamanlama](automation-schedules.md)
-* [Değişiklik İzleme ve stoku yönetme](change-tracking-file-contents.md)
-* [Değişiklik İzleme ve envanter için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-change-tracking.md)
-* [VM üzerinde yazılım tanımlama](automation-tutorial-installed-software.md)
-* [Değişiklik İzleme ve envanter için çalışma alanının Otomasyon hesabından bağlantısını kaldırma](automation-unlink-workspace-change-tracking.md)
-* [Değişiklik İzleme ve envanterden VM 'Leri kaldırma](automation-remove-vms-from-change-tracking.md)
-* [Azure VM 'deki değişikliklerle ilgili sorunları giderme](automation-tutorial-troubleshoot-changes.md)
-* [Değişiklik İzleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md)
+* Bir runbook 'u zamanlamak için bkz. [Azure Otomasyonu 'nda zamanlamaları yönetme](shared-resources/schedules.md).
+* Özelliği ile çalışma hakkında ayrıntılı bilgi için bkz. [Manage değişiklik izleme and Inventory](change-tracking-file-contents.md).
+* Kapsam konfigürasyonları hakkında daha fazla bilgi için bkz. [değişiklik izleme ve envanter için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-change-tracking.md).
+* Ortamınızdaki yüklü yazılımları belirlemek için özelliğini kullanmayı öğrenmek için bkz. [sanal makinelerinize hangi yazılımın yüklendiğini keşfetme](automation-tutorial-installed-software.md).
+* Özelliği etkinleştirirken Otomasyon hesabınızı bir Log Analytics çalışma alanıyla tümleştirmek istemiyorsanız, bkz. [çalışma alanının Otomasyon hesabından bağlantısını](automation-unlink-workspace-change-tracking.md)kaldırma.
+* VM 'lere yapılan değişiklikleri dağıtma işlemi tamamlandığında, [değişiklik izleme ve envanterden VM 'Leri kaldırma](automation-remove-vms-from-change-tracking.md)bölümünde açıklandığı gibi bunları kaldırabilirsiniz.
+* Özellikle ilgili sorunları gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md).

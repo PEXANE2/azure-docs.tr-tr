@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
-ms.author: b-juche
-ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.author: ramakk
+ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667868"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797427"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files ağ planlaması yönergeleri
 
@@ -36,10 +36,12 @@ Azure NetApp Files ağını planlarken bazı noktaları anlamanız gerekir.
 Aşağıdaki özellikler Şu anda Azure NetApp Files için desteklenmiyor: 
 
 * Temsilci alt ağına uygulanan ağ güvenlik grupları (NSG 'ler)
-* Azure NetApp dosyaları alt ağı olarak adres ön ekine sahip kullanıcı tanımlı yollar (UDRs)
+* Temsilci alt ağına uygulanan Kullanıcı tanımlı yollar (UDRs)
 * Azure NetApp Files arabirimindeki Azure ilkeleri (örneğin, Özel adlandırma ilkeleri)
 * Azure NetApp Files trafiği için yük dengeleyiciler
-* Azure sanal WAN ile Azure NetApp Files desteklenmez
+* Azure Sanal WAN 
+* Bölgesel olarak yedekli sanal ağ geçitleri (az olan ağ geçidi SKU 'Ları) 
+* Etkin/etkin sanal ağ GWs 
 
 Aşağıdaki ağ kısıtlamaları Azure NetApp Files için geçerlidir:
 
@@ -55,7 +57,7 @@ Aşağıdaki tabloda Azure NetApp Files tarafından desteklenen ağ topolojileri
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Yerel VNet 'teki birime bağlantı    |    Yes    |         |
 |    Eşlenen VNet 'teki birime bağlantı (aynı bölge)    |    Yes    |         |
-|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    Hayır    |    Hiçbiri    |
+|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    No    |    Yok    |
 |    ExpressRoute ağ geçidi üzerinden bir birime bağlantı    |    Yes    |         |
 |    Şirket içinden bir bağlantı noktasında ExpressRoute ağ geçidi ile VNet eşlemesi ve ağ geçidi geçişi ile VNet eşlemesi    |    Yes    |        |
 |    Şirket içinden VPN Gateway üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Yes    |         |
@@ -82,9 +84,10 @@ VNet başka bir sanal ağ ile eşlenirse, VNet adres alanını genişletebilirsi
 
 ### <a name="udrs-and-nsgs"></a>UDRs ve NSG 'ler
 
-Kullanıcı tanımlı yollar (UDRs) ve ağ güvenlik grupları (NSG 'ler) Azure NetApp Files için temsilci alt ağlarda desteklenmez.
+Kullanıcı tanımlı yollar (UDRs) ve ağ güvenlik grupları (NSG 'ler) Azure NetApp Files için temsilci alt ağlarda desteklenmez. Ancak, Azure NetApp Files için Temsilcili alt ağ ile aynı VNet içinde bile UDRs ve NSG 'leri diğer alt ağlara uygulayabilirsiniz.
 
-Geçici bir çözüm olarak, Azure NetApp Files Temsilcili alt ağdan gelen ve giden trafiğe izin veren ya da reddeden diğer alt ağlara NSG 'ler uygulayabilirsiniz.  
+* UDRs daha sonra diğer alt ağlardan gelen trafik akışlarını Azure NetApp Files Temsilcili alt ağa tanımlar. Bu, sistem yollarını kullanarak bunun Azure NetApp Files trafik akışına doğru diğer alt ağlara hizalandığından emin olmaya yardımcı olur.  
+* NSG 'ler, Azure NetApp Files Temsilcili alt ağdan gelen ve giden trafiğe izin verir ya da reddeder. 
 
 ## <a name="azure-native-environments"></a>Azure yerel ortamları
 

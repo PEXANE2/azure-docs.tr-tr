@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1db133f52a99bd716c2228add0573e8d44255c9e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: cf05532f81d70d4d7b09de2ccbf9807273a85330
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736529"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799589"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Kuruluşunuz için Azure Multi-Factor Authentication genel bakış
 
@@ -32,7 +32,7 @@ Bu nedenle kuruluşunuz, istatistik olmadan önce, ücretsiz olarak MFA 'yı nas
 
 Azure AD 'nin ücretsiz avantajlarından yararlanan müşteriler, ortamınızda Multi-Factor Authentication 'ı etkinleştirmek için [güvenlik varsayılanlarını](../fundamentals/concept-fundamentals-security-defaults.md) kullanabilir.
 
-## <a name="office-365-business-premium-e3-or-e5"></a>Office 365 Business Premium, E3 veya E5
+## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 İş, E3 veya E5
 
 Office 365 ile müşteriler için iki seçenek vardır:
 

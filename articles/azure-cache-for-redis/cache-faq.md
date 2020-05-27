@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b95ee80a7a99009918f4869b62a3e3768e6e58d3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010231"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828279"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Redis için Azure Önbelleği SSS
 Reda için Azure önbelleği için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını öğrenin.
@@ -20,7 +20,7 @@ Reda için Azure önbelleği için sık sorulan soruların, desenlerin ve en iyi
 Sorunuz burada listelenmiyorsa, bize bilgi verin ve bir yanıt bulmanıza yardımcı olabiliriz.
 
 * Bu SSS sonundaki açıklamalara soru gönderebilir ve bu makaleyle ilgili olarak Azure önbellek ekibine ve diğer topluluk üyelerine da katılın.
-* Daha geniş bir hedef kitleye ulaşmak için [Azure önbellek MSDN forumuna](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) bir soru gönderebilir ve Azure önbellek ekibi ile topluluk diğer üyeleriyle iletişim sağlayabilirsiniz.
+* Daha geniş bir hedef kitleye ulaşmak için, [Azure önbelleği Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-cache-redis.html) soru gönderebilir ve Azure önbellek ekibine ve topluluğun diğer üyelerine ulaşabilirsiniz.
 * Bir özellik isteği yapmak istiyorsanız, [Redsıs Kullanıcı seslerine yönelik](https://feedback.azure.com/forums/169382-cache)isteklerinizi ve fikirlerinizi Azure önbelleğine gönderebilirsiniz.
 * Ayrıca, [Azure Cache dış geri bildirimlerinden](mailto:azurecache@microsoft.com)bize e-posta gönderebilirsiniz.
 
@@ -82,7 +82,7 @@ Redsıs için Azure önbelleği 'ni kullanmaya başlamanın birkaç yolu vardır
 
 * [.Net](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.net](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node. js](cache-nodejs-get-started.md)ve [Python](cache-python-get-started.md)için kullanılabilen öğreticilerimizden birine bakabilirsiniz.
 * [Redin için Microsoft Azure cache kullanarak yüksek performanslı uygulamalar oluşturmayı](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/)izleyebilirsiniz.
-* Redin 'in nasıl kullanılacağını görmek için, projenizin geliştirme diliyle eşleşen istemciler için istemci belgelerini kullanıma alabilirsiniz. Redsıs için Azure Cache ile kullanılabilen birçok Red, istemcisi vardır. Redsıs istemcilerinin bir listesi için bkz [https://redis.io/clients](https://redis.io/clients)..
+* Redin 'in nasıl kullanılacağını görmek için, projenizin geliştirme diliyle eşleşen istemciler için istemci belgelerini kullanıma alabilirsiniz. Redsıs için Azure Cache ile kullanılabilen birçok Red, istemcisi vardır. Redsıs istemcilerinin bir listesi için bkz [https://redis.io/clients](https://redis.io/clients) ..
 
 Henüz bir Azure hesabınız yoksa şunları yapabilirsiniz:
 
@@ -112,7 +112,7 @@ Aşağıda bir önbellek sunumu seçme konuları verilmiştir.
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Redsıs performansı için Azure önbelleği
-Aşağıdaki tabloda, bir IaaS VM 'sinden Redsıs uç noktası için Azure önbelleğine karşı kullanılan `redis-benchmark.exe` çeşitli standart ve Premium önbellekleri test edilirken gözlemlenen maksimum bant genişliği değerleri gösterilmektedir. TLS verimlilik için redsıs-kıyaslama, Redsıs uç noktası için Azure önbelleğine bağlanmak üzere Stunnel ile birlikte kullanılır.
+Aşağıdaki tabloda, `redis-benchmark.exe` bir IaaS VM 'Sinden redsıs uç noktası Için Azure önbelleğine karşı kullanılan çeşitli standart ve Premium önbellekleri test edilirken gözlemlenen maksimum bant genişliği değerleri gösterilmektedir. TLS verimlilik için redsıs-kıyaslama, Redsıs uç noktası için Azure önbelleğine bağlanmak üzere Stunnel ile birlikte kullanılır.
 
 >[!NOTE] 
 >Bu değerler garanti edilmez ve bu numaralar için SLA yoktur, ancak tipik olmalıdır. Uygulamanız için doğru önbellek boyutunu tespit etmek üzere kendi uygulamanızı test etmeniz gerekir.
@@ -142,7 +142,7 @@ Bu tablodan aşağıdaki ekibinizle çizebilirsiniz:
 | P4 |  53 GB |  8 | 6.000/750   | 400,000 | 373.000 |
 | P5 | 120 GB | 20 | 6.000/750   | 400,000 | 373.000 |
 
-Stunnel ayarlama veya gibi `redis-benchmark.exe`redsıs araçlarını indirme hakkında yönergeler için bkz. [Redsıs komutlarını nasıl çalıştırabilirim?](#cache-commands) bölümü.
+Stunnel ayarlama veya gibi Redsıs araçlarını indirme hakkında yönergeler için `redis-benchmark.exe` bkz. [redsıs komutlarını nasıl çalıştırabilirim?](#cache-commands) bölümü.
 
 <a name="cache-region"></a>
 
@@ -192,16 +192,16 @@ Genellikle istemcinin varsayılan değerleri yeterlidir. İş yükünüze göre 
   
 * **Zaman aşımı değerleri**
   * İş yükünüzü değerlendirin ve değerleri uygun şekilde ayarlayın. Büyük değerleri depoluyorsanız, zaman aşımını daha yüksek bir değere ayarlayın.
-  * False `AbortOnConnectFail` olarak ayarlayın ve StackExchange. redin sizin için yeniden bağlanmasına izin verin.
+  * `AbortOnConnectFail`False olarak ayarlayın ve StackExchange. redin sizin için yeniden bağlanmasına izin verin.
   * Uygulama için tek bir Connectionçoğullayıcı örneği kullanın. Bir bağlantı özelliği tarafından döndürülen tek bir örnek oluşturmak için bir LazyConnection kullanabilirsiniz, bu, [Connectionçoğullayıcı sınıfı kullanılarak önbelleğe bağlanma](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)bölümünde gösterilmiştir.
   * Özelliği, `ConnectionMultiplexer.ClientName` tanılama amacıyla bir uygulama örneği benzersiz adı olarak ayarlayın.
-  * Özel iş `ConnectionMultiplexer` yükleri için birden çok örnek kullanın.
+  * `ConnectionMultiplexer`Özel iş yükleri için birden çok örnek kullanın.
       * Uygulamanızda farklı yükleme yaptıysanız bu modeli takip edebilirsiniz. Örneğin:
       * Büyük anahtarlarla ilgilenirken bir Çoğullayıcı olabilir.
       * Küçük anahtarlarla ilgilenirken bir Çoğullayıcı olabilir.
       * Bağlantı zaman aşımları için farklı değerler ayarlayabilir ve kullandığınız her bir Connectionçoğullayıcı için yeniden deneme mantığı yapabilirsiniz.
       * Tanılama konusunda `ClientName` yardımcı olmak için her bir Çoğullayıcı özelliğini ayarlayın.
-      * Bu kılavuz, başına `ConnectionMultiplexer`daha kolay gecikme süresine neden olabilir.
+      * Bu kılavuz, başına daha kolay gecikme süresine neden olabilir `ConnectionMultiplexer` .
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Redsıs istemcileri için hangi Azure önbelleğinde kullanabilirim?
 Redin hakkında harika şeyler birçok farklı geliştirme dilini destekleyen çok sayıda istemci vardır. İstemcilerin geçerli listesi için bkz. [redsıs istemcileri](https://redis.io/clients). Birçok farklı dili ve istemciyi kapsayan öğreticiler için bkz. [Azure Cache 'ı redsıs için kullanma](cache-dotnet-how-to-use-azure-redis-cache.md) ve içerik tablosundaki eşdüzey makaleler.
@@ -240,11 +240,11 @@ Redsıs [komutlarında listelenen](https://redis.io/commands#) komutların herha
 * Standart veya Premium önbelleğiniz varsa, redsıs [konsolunu](cache-configure.md#redis-console)kullanarak redsıs komutlarını çalıştırabilirsiniz. Redin konsolu, Azure portal Redsıs komutlarını çalıştırmak için güvenli bir yol sağlar.
 * Redsıs komut satırı araçlarını da kullanabilirsiniz. Bunları kullanmak için aşağıdaki adımları gerçekleştirin:
 * [Redsıs komut satırı araçlarını](https://github.com/MSOpenTech/redis/releases/)indirin.
-* Kullanarak `redis-cli.exe`önbelleğe bağlanın. Aşağıdaki örnekte gösterildiği gibi-a anahtarını ve-a anahtarını kullanarak önbellek uç noktasını geçirin:
+* Kullanarak önbelleğe bağlanın `redis-cli.exe` . Aşağıdaki örnekte gösterildiği gibi-a anahtarını ve-a anahtarını kullanarak önbellek uç noktasını geçirin:
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Redsıs komut satırı araçları TLS bağlantı noktası ile çalışmaz, ancak reddo `stunnel` [komut satırı aracının reddo için Azure Cache ile nasıl kullanılacağına ilişkin](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) YÖNERGELERI izleyerek, araçları TLS bağlantı noktasına güvenli bir şekilde bağlamak için gibi bir yardımcı programı kullanabilirsiniz.
+> Redsıs komut satırı araçları TLS bağlantı noktası ile çalışmaz, ancak reddo `stunnel` [komut satırı aracının reddo Için Azure Cache Ile nasıl kullanılacağına ilişkin](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) yönergeleri IZLEYEREK, araçları TLS bağlantı noktasına güvenli bir şekilde bağlamak için gibi bir yardımcı programı kullanabilirsiniz.
 >
 >
 
@@ -256,7 +256,7 @@ Redsıs için Microsoft Azure önbelleği, redin için popüler açık kaynaklı
 Her istemci farklı olduğundan, MSDN 'de tek bir merkezi sınıf başvurusu yoktur ve her istemci kendi başvuru belgelerini korur. Başvuru belgelerine ek olarak, farklı diller ve önbellek istemcileri kullanarak redin için Azure önbelleği ile çalışmaya nasıl başladığının gösterildiği çeşitli öğreticiler vardır. Bu öğreticilere erişmek için bkz. [Azure Cache 'ı redsıs için kullanma](cache-dotnet-how-to-use-azure-redis-cache.md) ve içerik tablosundaki eşdüzey makaleler.
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Redsıs için Azure önbelleğini PHP oturum önbelleği olarak kullanabilir miyim?
-Evet, Redsıs için Azure önbelleğini PHP oturum önbelleği olarak kullanmak için, içindeki `session.save_path`redin örneği Için Azure önbelleğiniz için bağlantı dizesini belirtin.
+Evet, Redsıs için Azure önbelleğini PHP oturum önbelleği olarak kullanmak için, içindeki redin örneği için Azure önbelleğiniz için bağlantı dizesini belirtin `session.save_path` .
 
 > [!IMPORTANT]
 > Redsıs için Azure önbellek 'yi bir PHP oturum önbelleği olarak kullanırken, aşağıdaki örnekte gösterildiği gibi, önbelleğe bağlanmak için kullanılan güvenlik anahtarını URL 'ye kodlamanız gerekir:
@@ -289,7 +289,7 @@ Redsıs sunucusu, TLS 'yi yerel olarak desteklemez, ancak Redsıs için Azure ö
 >
 >
 
-Bu `redis-cli` gibi redsıs araçları, TLS bağlantı noktasıyla çalışmaz, ancak `stunnel` [redsıs önizleme sürümü blog gönderisine ilişkin ASP.NET oturum durumu sağlayıcısında](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) sunulan yönergeleri izleyerek, araçları TLS bağlantı noktasına güvenli bir şekilde bağlamak için gibi bir yardımcı programı kullanabilirsiniz.
+Bu gibi redsıs araçları `redis-cli` , TLS bağlantı noktasıyla çalışmaz, ancak `stunnel` [Redsıs önizleme sürümü blog gönderisine Ilişkin ASP.NET oturum durumu sağlayıcısında](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) sunulan YÖNERGELERI izleyerek, araçları TLS bağlantı noktasına güvenli bir şekilde bağlamak için gibi bir yardımcı programı kullanabilirsiniz.
 
 Redsıs araçlarını indirme yönergeleri için bkz. [redsıs komutlarını nasıl çalıştırabilirim?](#cache-commands) bölümü.
 
@@ -299,7 +299,7 @@ Redsıs araçlarını indirme yönergeleri için bkz. [redsıs komutlarını nas
 * [Performansı test etme](#performance-testing)
 
 #### <a name="stackexchangeredis-best-practices"></a>StackExchange. Redsıs en iyi uygulamaları
-* Yanlış `AbortConnect` olarak ayarlayın, ardından connectionçoğullayıcı 'nın otomatik olarak yeniden bağlanmasına izin verin. [Ayrıntılar için buraya bakın](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
+* Yanlış olarak ayarlayın `AbortConnect` , ardından Connectionçoğullayıcı 'nın otomatik olarak yeniden bağlanmasına izin verin. [Ayrıntılar için buraya bakın](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
 * Connectionçoğullayıcısı yeniden kullanma-her istek için yeni bir tane oluşturmayın. `Lazy<ConnectionMultiplexer>` [Burada gösterilen](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) model önerilir.
 * Red, daha küçük değerlerle çalışır, bu nedenle daha büyük verileri birden fazla anahtara chopping değerlendirin. [Bu redin tartışmasında](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)100 KB büyük olarak değerlendirilir. Büyük değerlerden kaynaklanmış olabilecek örnek bir sorun için [Bu makaleyi](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) okuyun.
 * Zaman aşımlarını önlemek için iş [parçacığı ayarlarınızı](#important-details-about-threadpool-growth) yapılandırın.
@@ -312,7 +312,7 @@ Redsıs araçlarını indirme yönergeleri için bkz. [redsıs komutlarını nas
 * [Düzeltme eki uygulama ve yük devretme nedeniyle](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md), sisteminizi, bağlantı bliıt 'leri işleyebilecek şekilde geliştirin.
 
 #### <a name="performance-testing"></a>Performansı test etme
-* Kendi performans testlerinizi `redis-benchmark.exe` yazmadan önce olası aktarım hızına yönelik bir fikir sahibi olmak için kullanarak başlayın. `redis-benchmark` , TLS 'yi desteklemediğinden, testi çalıştırmadan önce [Azure Portal aracılığıyla TLS olmayan bağlantı noktasını etkinleştirmeniz](cache-configure.md#access-ports) gerekir. Örnekler için bkz. [önbelleğim performansını nasıl ücretlendirilirim ve test edebilirim?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* `redis-benchmark.exe`Kendi performans testlerinizi yazmadan önce olası aktarım hızına yönelik bir fikir sahibi olmak için kullanarak başlayın. `redis-benchmark`, TLS 'yi desteklemediğinden, testi çalıştırmadan önce [Azure Portal aracılığıyla TLS olmayan bağlantı noktasını etkinleştirmeniz](cache-configure.md#access-ports) gerekir. Örnekler için bkz. [önbelleğim performansını nasıl ücretlendirilirim ve test edebilirim?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * Test için kullanılan istemci sanal makinesi, Redsıs örneği için Azure önbelleğiniz ile aynı bölgede olmalıdır.
 * Daha iyi donanımlar olduğundan ve en iyi sonuçları vermesi için istemciniz için dv2 VM serisini kullanmanızı öneririz.
 * Seçtiğiniz önbellek için en az bilgi işlem ve bant genişliği özelliği olan seçtiğiniz istemci VM 'nizin olduğundan emin olun.
@@ -352,7 +352,7 @@ Aşağıdaki komutlar, Redis-benchmark. exe ' nin kullanılmasına bir örnek sa
 ### <a name="important-details-about-threadpool-growth"></a>İş parçacığı büyümesi hakkında önemli ayrıntılar
 CLR ThreadPool 'ın iki tür iş parçacığı vardır-"Worker" ve "g/ç tamamlama bağlantı noktası" (IOCP) iş parçacıkları.
 
-* Çalışan iş parçacıkları `Task.Run(…)`, veya `ThreadPool.QueueUserWorkItem(…)` yöntemlerini işlemek gibi şeyler için kullanılır. Bu iş parçacıkları, bir arka plan iş parçacığında iş olması gerektiğinde CLR içindeki çeşitli bileşenler tarafından da kullanılır.
+* Çalışan iş parçacıkları, veya yöntemlerini işlemek gibi şeyler için kullanılır `Task.Run(…)` `ThreadPool.QueueUserWorkItem(…)` . Bu iş parçacıkları, bir arka plan iş parçacığında iş olması gerektiğinde CLR içindeki çeşitli bileşenler tarafından da kullanılır.
 * ICP iş parçacıkları, ağdan okurken olduğu gibi zaman uyumsuz GÇ gerçekleştiğinde kullanılır.
 
 İş parçacığı havuzu, her bir iş parçacığı türü için "En düşük" ayarına ulaşıncaya kadar isteğe bağlı olarak (herhangi bir daraltma olmadan) yeni çalışan iş parçacıkları veya g/ç Tamamlama iş parçacıkları sağlar. Varsayılan olarak, en az sayıda iş parçacığı bir sistemdeki işlemci sayısına ayarlanır.
@@ -381,7 +381,7 @@ Bu bilgiler verildiğinde, müşterilerin IOCP ve çalışan iş parçacıkları
 
 Bu ayar nasıl yapılandırılır:
 
-* İçindeki [ThreadPool. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metodunu kullanarak bu ayarı programlı bir şekilde `global.asax.cs`değiştirmenizi öneririz. Örneğin:
+* İçindeki [ThreadPool. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metodunu kullanarak bu ayarı programlı bir şekilde değiştirmenizi öneririz `global.asax.cs` . Örneğin:
 
 ```cs
 private readonly int minThreads = 200;
@@ -398,10 +398,10 @@ void Application_Start(object sender, EventArgs e)
   > [!NOTE]
   > Bu yöntem tarafından belirtilen değer genel bir ayardır ve tüm AppDomain etki alanı etkilendi. Örneğin, 4 çekirdekli bir makineniz varsa ve çalışma zamanı sırasında *MinWorkerThreads* ve *MINIOTHREADS* 'i CPU başına 50 olarak ayarlamak Istiyorsanız, **ThreadPool. SetMinThreads (200, 200)** kullanın.
 
-* En düşük iş parçacığı ayarlarını, içindeki `<processModel>` `Machine.config`yapılandırma öğesinin altında bulunan, [ *miniothreads* veya *MinWorkerThreads* yapılandırma ayarı](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) kullanılarak belirlemek de mümkündür. `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` **Bu şekilde en düşük iş parçacığı sayısını bu şekilde ayarlamak, sistem genelinde bir ayar olduğundan genellikle önerilmez.**
+* En düşük iş parçacığı ayarlarını, içindeki yapılandırma öğesinin altında bulunan, [ *miniothreads* veya *MinWorkerThreads* yapılandırma ayarı](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) kullanılarak belirlemek de mümkündür `<processModel>` `Machine.config` `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Bu şekilde en düşük iş parçacığı sayısını bu şekilde ayarlamak, sistem genelinde bir ayar olduğundan genellikle önerilmez.**
 
   > [!NOTE]
-  > Bu yapılandırma öğesinde belirtilen değer, *çekirdek başına* ayardır. Örneğin, 4 çekirdekli bir makineniz varsa ve *Miniothreads* ayarınızı çalışma zamanında 200 olarak istiyorsanız, kullanabilirsiniz `<processModel minIoThreads="50"/>`.
+  > Bu yapılandırma öğesinde belirtilen değer, *çekirdek başına* ayardır. Örneğin, 4 çekirdekli bir makineniz varsa ve *Miniothreads* ayarınızı çalışma zamanında 200 olarak istiyorsanız, kullanabilirsiniz `<processModel minIoThreads="50"/>` .
   >
 
 <a name="server-gc"></a>

@@ -131,6 +131,8 @@
               href: howto-manage-iot-central-from-cli.md
             - name: Azure PowerShell’den yönetme
               href: howto-manage-iot-central-from-powershell.md
+            - name: Programlama yoluyla yönetme
+              href: howto-manage-iot-central-programmatically.md
             - name: CSP portalından yönetme
               href: howto-create-and-manage-applications-csp.md
         - name: Uygulamayı kişiselleştirme

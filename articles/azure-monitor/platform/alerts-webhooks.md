@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0677c7a0521fe1f63c9c2c9fce65d8dbd8e6d5c4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248989"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826919"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Izleyici 'de klasik ölçüm uyarısıyla bir Web kancası çağırma
 
@@ -26,7 +26,7 @@ Web kancası URI 'sini eklemek veya güncelleştirmek için, [Azure Portal](http
 
 ![Uyarı kuralı bölmesi Ekle](./media/alerts-webhooks/Alertwebhook.png)
 
-Ayrıca, [Azure PowerShell cmdlet](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts)'leri, [platformlar arası CLI](../../azure-monitor/platform/cli-samples.md#work-with-alerts)veya [Azure izleyici REST API 'LERINI](https://msdn.microsoft.com/library/azure/dn933805.aspx)kullanarak bir Web kancası URI 'sine gönderilecek bir uyarı yapılandırabilirsiniz.
+Ayrıca, [Azure PowerShell cmdlet](../samples/powershell-samples.md#create-metric-alerts)'leri, [platformlar arası CLI](../samples/cli-samples.md#work-with-alerts)veya [Azure izleyici REST API 'LERINI](https://msdn.microsoft.com/library/azure/dn933805.aspx)kullanarak bir Web kancası URI 'sine gönderilecek bir uyarı yapılandırabilirsiniz.
 
 ## <a name="authenticate-the-webhook"></a>Web kancasının kimliğini doğrulama
 Web kancası, belirteç tabanlı yetkilendirme kullanarak kimlik doğrulaması yapabilir. Web kancası URI 'SI bir belirteç KIMLIĞIYLE kaydedilir. Örneğin, `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
@@ -73,8 +73,8 @@ POST işlemi, ölçüm tabanlı tüm uyarılar için aşağıdaki JSON yükünü
 | durum |E |Etkinleştirildi, çözümlendi |Ayarladığınız koşullara göre uyarının durumu. |
 | bağlam |E | |Uyarı bağlamı. |
 | timestamp |E | |Uyarının tetiklendiği zaman. |
-| id |E | |Her uyarı kuralının benzersiz bir KIMLIĞI vardır. |
-| ad |E | |Uyarı adı. |
+| kimlik |E | |Her uyarı kuralının benzersiz bir KIMLIĞI vardır. |
+| name |E | |Uyarı adı. |
 | açıklama |E | |Uyarının açıklaması. |
 | ConditionType 'ı seçin |E |Ölçüm, olay |İki tür uyarı desteklenir: ölçüm ve olay. Ölçüm uyarıları bir ölçüm koşulunu temel alır. Olay uyarıları, etkinlik günlüğündeki bir olaya dayalıdır. Uyarının bir ölçüye veya bir olaya dayalı olup olmadığını denetlemek için bu değeri kullanın. |
 | koşul |E | |**ConditionType** değerine göre denetlenecek belirli alanlar. |

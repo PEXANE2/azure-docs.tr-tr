@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585904"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826103"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği daveti kullanım
 
@@ -42,9 +42,9 @@ Davet e-postasına alternatif olarak, bir konuğa uygulamanız veya portalınız
 
 > [!IMPORTANT]
 > Doğrudan bağlantı, kiracıya özgü olmalıdır. Diğer bir deyişle, bir kiracı KIMLIĞI veya doğrulanmış etki alanı içermesi gerekir, bu sayede Konuk, paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulaması yapılabilir. https://myapps.microsoft.comKimlik doğrulaması için kendi giriş kiracısına yönlendirireceği için, benzer ortak BIR URL, konuk için çalışmaz. Kiracı bağlamıyla doğrudan bağlantı örnekleri aşağıda verilmiştir:
- > - Uygulamalar erişim paneli: https://myapps.microsoft.com/?tenantid=&lt ; Kiracı kimliği&gt; 
- > - Doğrulanan etki alanı için uygulamalar erişim paneli: https://myapps.microsoft.com/&lt ; doğrulanan etki alanı&gt;
- > - Azure portal: https://portal.azure.com/&lt ; Kiracı kimliği&gt;
+ > - Uygulamalar erişim paneli:`https://myapps.microsoft.com/?tenantid=<tenant id>`
+ > - Doğrulanmış bir etki alanı için uygulamalar erişim paneli:`https://myapps.microsoft.com/<;verified domain>`
+ > - Azure portal:`https://portal.azure.com/<tenant id>`
  > - Tek uygulama: bkz. [doğrudan oturum açma bağlantısı](../manage-apps/end-user-experiences.md#direct-sign-on-links) kullanma
 
 Davet e-postasında doğrudan bağlantı üzerinden önerilen bazı durumlar vardır. Bu özel durumlar kuruluşunuz için önemliyse, davet e-postasını hala gönderen yöntemleri kullanarak kullanıcıları davet etmenizi öneririz:

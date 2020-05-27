@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: juliako
-ms.openlocfilehash: 70d366551dc3130d2a1bdac6108e3b3de95976d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab775e8d93111f7494d2bf321216e2725c438fc8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76545934"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828517"
 ---
 # <a name="azure-media-services-v3-community"></a>Azure Media Services v3 topluluğu  
 
@@ -32,7 +32,7 @@ Bu Azure Media Services topluluk sayfasında, soru sorabileceğiniz, geri bildir
 
 ### <a name="twitter"></a>Twitter
 
-Twitter tanıtıcısını kullanarak [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) bizimle iletişim kurun veya Twitter 'daki güncelleştirmeleri takip edebilirsiniz. Twitter 'da [@AzureSupport](https://twitter.com/azuresupport) destek istemek için Twitter tanıtıcısını kullanın.  
+Twitter [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) tanıtıcısını kullanarak bizimle iletişim kurun veya Twitter 'daki güncelleştirmeleri takip edebilirsiniz. [@AzureSupport](https://twitter.com/azuresupport)Twitter 'da destek istemek için Twitter tanıtıcısını kullanın.  
 
 ### <a name="online-forums"></a>Çevrimiçi Forumlar
 
@@ -40,7 +40,7 @@ Aşağıdaki Forumlar, geçerli ürünler ve özellikler hakkında sorular sorma
 
 Şu anda, MSDN Media Services ekibin birincil topluluk Forumu ' dur.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
 
 Ekip, ' Azure-Media-Services ' ile Stack Overflow etiketli soruları de izler.
 

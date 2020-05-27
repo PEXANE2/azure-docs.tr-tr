@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6b3832662d2d03c7218da20d414a43a99a9bac8e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 892197c79285495f49a870bbe79eb75229af2940
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744189"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831033"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell modüllerini güncelleştirme
 
@@ -50,5 +50,5 @@ PowerShell Galerisi kullanılabilir en son modül yerine belirli bir Azure Power
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu’nda modülleri yönetme](shared-resources/modules.md)
-* [Azure modules runbook 'unu güncelleştirme](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)
+* Modül kullanma hakkında ayrıntılı bilgi için bkz. [Azure Automation 'da modülleri yönetme](shared-resources/modules.md).
+* Runbook 'u güncelleştirme hakkında daha fazla bilgi için bkz. [Azure modules runbook 'U güncelleştirme](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update).

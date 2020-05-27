@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: 90c3cc2e096b9b58465987bc53f718c5d06c6203
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78899044"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826069"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler işlerini Azure Logic Apps’e geçirme
 
@@ -53,7 +53,7 @@ Tek bir mantıksal uygulama oluşturarak birden çok tek seferlik iş çalışt�
 
    Temel adımlar için [hızlı başlangıç: ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı izleyin.
 
-1. Istek tetikleyicisini bulmak için arama kutusuna `when a http request` yazın. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **BIR http isteği alındığında**
+1. `when a http request`İstek tetikleyicisini bulmak için arama kutusuna yazın. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **BIR http isteği alındığında**
 
    !["Istek" tetikleyicisi Ekle](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
@@ -80,7 +80,7 @@ Tek bir mantıksal uygulama oluşturarak birden çok tek seferlik iş çalışt�
 
 1. Tetikleyici altında, **İleri adım**' ı seçin.
 
-1. Arama kutusuna filtreniz olarak yazın `delay until` . Eylemler listesi altında şu eylemi seçin: **gecikme tarihine kadar geciktir**
+1. Arama kutusuna `delay until` filtreniz olarak yazın. Eylemler listesi altında şu eylemi seçin: **gecikme tarihine kadar geciktir**
 
    Bu eylem, mantıksal uygulama iş akışınızı belirtilen bir tarih ve saate kadar duraklatır.
 
@@ -114,9 +114,9 @@ Tek seferlik bir işi el ile çalıştırmak veya tetiklemek için, mantıksal u
 
 Örneğin, Postman uygulamasını kullanarak bu örneğe benzer ayarlarla bir POST isteği oluşturabilir ve sonra isteği yapmak için **Gönder** ' i seçebilirsiniz.
 
-| İstek yöntemi | URL'si | Gövde | Üst bilgiler |
+| İstek yöntemi | URL | Gövde | Üst bilgiler |
 |----------------|-----|------|---------|
-| **POST** | <*uç nokta-URL*> | **Madde** <p>**JSON (uygulama/JSON)** <p>**Ham** kutusuna, istekte göndermek istediğiniz yükü girin. <p>**Note**: Bu ayar, **üst bilgiler** değerlerini otomatik olarak yapılandırır. | **Anahtar**: içerik türü <br>**Değer**: uygulama/JSON |
+| **Yayınla** | <*uç nokta-URL*> | **Madde** <p>**JSON (uygulama/JSON)** <p>**Ham** kutusuna, istekte göndermek istediğiniz yükü girin. <p>**Note**: Bu ayar, **üst bilgiler** değerlerini otomatik olarak yapılandırır. | **Anahtar**: içerik türü <br>**Değer**: uygulama/JSON |
 |||||
 
 ![Mantıksal uygulamanızı el ile tetikleme isteği gönderme](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -239,7 +239,7 @@ Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik d
 
 **Topluluk**
 
-* [Azure Logic Apps Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
+* [Microsoft Q&Azure Logic Apps için soru sayfası](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
 ## <a name="next-steps"></a>Sonraki adımlar

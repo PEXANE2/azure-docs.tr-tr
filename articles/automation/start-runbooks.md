@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20f2e0e4dec7602b69a24ed1eccd0c4ec946038b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5fc374cdb60d20896ef01c34f57897c902bbe532
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744911"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828874"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Otomasyonu'nda Runbook başlatma
 
@@ -179,7 +179,6 @@ Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu 'nda runbook 'ları yönetme](manage-runbooks.md)
-* [Karma Runbook Çalışanına genel bakış](automation-hybrid-runbook-worker.md)
-* [Modüler runbook’lar oluşturma](automation-child-runbooks.md)
-* [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview)
+* Runbook yönetimi hakkında ayrıntılı bilgi için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md).
+* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview).
+* Runbook yürütmeyle ilgili sorunları gidermek için bkz. [runbook sorunlarını giderme](troubleshoot/runbooks.md).

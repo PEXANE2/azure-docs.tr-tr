@@ -53,12 +53,26 @@
       items:
         - name: Güvenlik temeli
           href: security-baseline.md
-    - name: Geliştirici özellikleri
-      href: batch-api-basics.md
+    - name: Batch hizmeti iş akışı ve kaynakları
+      displayName: developer features
+      href: batch-service-workflow-features.md
+      items:
+        - name: Batch hesapları
+          displayName: storage account
+          href: accounts.md
+        - name: Düğümler ve havuzlar
+          displayName: 'compute node, application package, scaling, schedule, os'
+          href: nodes-and-pools.md
+        - name: İşler ve görevler
+          displayName: Batch job
+          href: jobs-and-tasks.md
+        - name: Dosyalar ve dizinler
+          displayName: Batch file
+          href: files-and-directories.md
     - name: API’ler ve araçlar
       href: batch-apis-tools.md
-    - name: Batch hizmeti hatalarını algılama ve işleme
-      href: batch-retry-after-errors.md
+    - name: Hata işleme ve algılama
+      href: error-handling.md
     - name: En iyi uygulamalar
       href: best-practices.md
     - name: Kotalar ve sınırlar
@@ -91,6 +105,10 @@
           href: batch-aad-auth-management.md
         - name: Batch ile Key Vault’a güvenli erişim
           href: credential-access-key-vault.md
+        - name: Batch ile sertifikaları kullanma
+          href: batch-certificates.md
+    - name: Uygulama paketlerini kullanma
+      href: batch-application-packages.md
     - name: Dosyaları ve uygulamaları havuz düğümlerine kopyalama
       items:
         - name: Uygulama ve verileri havuz düğümlerine kopyalama

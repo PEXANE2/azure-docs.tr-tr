@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cd6e0e55f471da83d15e26252b0730ab00f20d3c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e0c7418d7141a3b12f367f1b12ee740eaac64703
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713837"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797540"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -18,7 +18,7 @@ Yedekleme yöneticileri için ortak bir gereksinim, uzun bir süre yayılan veri
 - Yedeklemeler ve geri yüklemeler denetimi.
 - Farklı ayrıntı düzeyi düzeylerinde önemli eğilimleri tanımlama.
 
-Bugün Azure Backup [Azure izleyici günlüklerini](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) ve [Azure çalışma kitaplarını](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)kullanan bir raporlama çözümü sağlar. Bu kaynaklar, tüm yedeklemeleriniz genelinde yedeklemeleriniz hakkında zengin Öngörüler elde etmenize yardımcı olur. Bu makalede Azure Backup raporlarının nasıl yapılandırılacağı ve görüntüleneceği açıklanır.
+Bugün Azure Backup [Azure izleyici günlüklerini](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) ve [Azure çalışma kitaplarını](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)kullanan bir raporlama çözümü sağlar. Bu kaynaklar, tüm yedeklemeleriniz genelinde yedeklemeleriniz hakkında zengin Öngörüler elde etmenize yardımcı olur. Bu makalede Azure Backup raporlarının nasıl yapılandırılacağı ve görüntüleneceği açıklanır.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 

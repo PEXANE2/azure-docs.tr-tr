@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c243c6ded4057c9e4ac63345f300f3b3b690b363
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161894"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798937"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Sanal ağ eşlemesi için VPN ağ geçidi aktarımını yapılandırma
 
@@ -30,6 +30,11 @@ Bu belgede açıklanan iki senaryo vardır:
 
 1. Her iki sanal ağ da Resource Manager dağıtım modelini kullanır
 2. Uç sanal ağ klasiktir, ağ geçidini içeren merkez sanal ağ ise Resource Manager içinde bulunur
+
+
+>[!NOTE]
+> Ağınızın topolojisine bir değişiklik yaparsanız ve Windows VPN istemcileriniz varsa, değişikliklerin istemciye uygulanması için Windows istemcileri için VPN istemci paketinin indirilip yeniden yüklenmesi gerekir.
+>
 
 ## <a name="requirements"></a>Gereksinimler
 

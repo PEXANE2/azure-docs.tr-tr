@@ -330,8 +330,18 @@
           href: ./spark/spark-best-practices.md
         - name: Apache Spark ayarlarını yapılandırma
           href: ./spark/apache-spark-settings.md
-        - name: Apache Spark işlerini iyileştirme
-          href: ./spark/apache-spark-perf.md
+        - name: İyileştirme
+          items:
+            - name: Apache Spark işlerini iyileştirme
+              href: ./spark/apache-spark-perf.md
+            - name: Veri işlemeyi iyileştirme
+              href: ./spark/optimize-data-processing.md
+            - name: Veri depolamayı iyileştirme
+              href: ./spark/optimize-data-storage.md
+            - name: Bellek kullanımını iyileştirme
+              href: ./spark/optimize-memory-usage.md
+            - name: Küme yapılandırmasını iyileştirme
+              href: ./spark/optimize-cluster-configuration.md
         - name: Spark 2.3 veya 2.4’e geçirme
           href: ./spark/migrate-versions.md
     - name: Nasıl yapılır

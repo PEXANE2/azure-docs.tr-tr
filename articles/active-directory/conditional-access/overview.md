@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 05/20/2020
+ms.date: 05/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c3082fbd7c02cbb075fd118f8e6021ac951e8e3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.custom: contperfq4
+ms.openlocfilehash: 0e13fcba4b961efb6a839f95ad0e8100382619c0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737682"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798251"
 ---
 # <a name="what-is-conditional-access"></a>Koşullu Erişim nedir?
 
@@ -71,7 +72,7 @@ Bir ilke kararı verirken, Koşullu erişimin hesaba götürebileceğine ilişki
 
 ## <a name="commonly-applied-policies"></a>Yaygın olarak uygulanan ilkeler
 
-Birçok kuruluş, koşullu erişim ilkelerinin şu gibi yardımcı olabilecek yaygın erişim kaygılarına sahiptir:
+Birçok kuruluş, [koşullu erişim ilkelerinin şu gibi yardımcı olabilecek yaygın erişim kaygılarına](concept-conditional-access-policy-common.md) sahiptir:
 
 - Yönetici rollerine sahip kullanıcılar için Multi-Factor Authentication gerektirme
 - Azure yönetim görevleri için Multi-Factor Authentication gerektirme
@@ -96,12 +97,8 @@ Diğer kuruluşların otomatik erişim denetimi kararları tanımlamak ve uygula
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bir koşullu erişim ilkesi parçasını parça olarak oluşturma](concept-conditional-access-policies.md)
-
-Ortamınızda Koşullu erişimin nasıl uygulanacağını öğrenmek için, bkz. [Azure Active Directory Koşullu erişim dağıtımınızı planlayın](plan-conditional-access.md).
-
-[Kimlik koruması hakkında bilgi edinin](../identity-protection/overview-v2.md)
-
-[Microsoft Cloud App Security hakkında bilgi edinin](/cloud-app-security/what-is-cloud-app-security)
-
-[Microsoft Intune hakkında bilgi edinin](/intune/index)
+- [Bir koşullu erişim ilkesi parçasını parça olarak oluşturma](concept-conditional-access-policies.md)
+- [Koşullu Erişim dağıtımınızı planlama](plan-conditional-access.md)
+- [Kimlik koruması hakkında bilgi edinin](../identity-protection/overview-v2.md)
+- [Microsoft Cloud App Security hakkında bilgi edinin](/cloud-app-security/what-is-cloud-app-security)
+- [Microsoft Intune hakkında bilgi edinin](/intune/index)

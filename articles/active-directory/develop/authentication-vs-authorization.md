@@ -1,5 +1,5 @@
 ---
-title: Kimlik doğrulaması ile yetkilendirme | Mavisi
+title: Kimlik doğrulama vs yetkilendirme | Mavisi
 titleSuffix: Microsoft identity platform
 description: Microsoft Identity platformunda (v 2.0) kimlik doğrulaması ve yetkilendirmenin temelleri hakkında bilgi edinin.
 services: active-directory
@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: cfc2a7d161619efcd9eee2c32a4dabc2e3a2e6ed
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 2e9a50553a12c57c0043c7f2924245f6a907242a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772072"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83825967"
 ---
-# <a name="authentication-vs-authorization"></a>Kimlik Doğrulaması ve yetkilendirme
+# <a name="authentication-vs-authorization"></a>Kimlik doğrulama vs yetkilendirme
 
 Bu makalede kimlik doğrulaması ve yetkilendirme tanımlanmaktadır ve Web uygulamalarınızda, Web API 'Lerinde veya korumalı Web API 'Leri çağıran uygulamalarda kullanıcıların kimliğini doğrulamak ve yetkilendirmek için Microsoft Identity platformunu nasıl kullanabileceğiniz kısaca ele alınmaktadır. Bildiğiniz bir terimi görürseniz, temel kavramları kapsayan [Sözlüğümüzü](developer-glossary.md) veya [Microsoft Identity platform videolarımızı](identity-videos.md) deneyin.
 
@@ -42,9 +42,9 @@ Microsoft Identity platform; OAuth 2,0 ve OpenID Connect gibi sektör standardı
 
 Aşağıda, Microsoft Identity platform tarafından kullanılan çeşitli protokollerin kısa bir karşılaştırması verilmiştir:
 
-* **OAuth Ile OpenID Connect**: yetkilendirme için OAuth kullanılır ve OpenID Connect (OIDC) kimlik doğrulaması için kullanılır. OpenID Connect, OAuth 2,0 üzerine kurulmuştur, bu nedenle terminoloji ve akış ikisi arasında benzerdir. Her ikisi de bir kullanıcının kimliğini doğrulayabilir (OpenID Connect kullanarak) ve kullanıcının sahip olduğu korumalı bir kaynağa (OAuth 2,0 kullanarak) tek bir istekte erişim yetkisi alabilir. Daha fazla bilgi için bkz. [OAuth 2,0 ve OpenID Connect Protocols](active-directory-v2-protocols.md) ve [OpenID Connect Protocol](v2-protocols-oidc.md).
-* **OAuth**ve SAML için, YETKILENDIRME ve SAML kimlik doğrulaması için kullanılır. İki protokolün bir kullanıcının kimliğini doğrulamak (SAML kullanarak) ve korunan bir kaynağa erişmek için yetkilendirme alma (OAuth 2,0 kullanarak) ile birlikte nasıl kullanılabileceği hakkında daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0 SAML taşıyıcı onaylama akışı](v2-saml-bearer-assertion.md) .
-* **OpenID Connect Ile SAML**: bir kullanıcının kimliğini doğrulamak Için hem OpenID Connect hem de SAML kullanılır ve çoklu oturum açmayı etkinleştirmek için kullanılır. SAML kimlik doğrulaması, genellikle Azure AD 'ye federe Active Directory Federasyon Hizmetleri (AD FS) (ADFS) gibi kimlik sağlayıcılarıyla kullanılır ve bu nedenle kurumsal uygulamalarda sık kullanılır. OpenID Connect genellikle, mobil uygulamalar, Web siteleri ve Web API 'Leri gibi yalnızca bulutta bulunan uygulamalar için kullanılır.
+* **OAuth vs OpenID Connect**: yetkilendirme için OAuth kullanılır ve OpenID Connect (OIDC) kimlik doğrulaması için kullanılır. OpenID Connect, OAuth 2,0 üzerine kurulmuştur, bu nedenle terminoloji ve akış ikisi arasında benzerdir. Her ikisi de bir kullanıcının kimliğini doğrulayabilir (OpenID Connect kullanarak) ve kullanıcının sahip olduğu korumalı bir kaynağa (OAuth 2,0 kullanarak) tek bir istekte erişim yetkisi alabilir. Daha fazla bilgi için bkz. [OAuth 2,0 ve OpenID Connect Protocols](active-directory-v2-protocols.md) ve [OpenID Connect Protocol](v2-protocols-oidc.md).
+* **OAuth vs SAML**: OAuth YETKILENDIRME ve SAML için kullanılır kimlik doğrulaması için kullanılır. İki protokolün bir kullanıcının kimliğini doğrulamak (SAML kullanarak) ve korunan bir kaynağa erişmek için yetkilendirme alma (OAuth 2,0 kullanarak) ile birlikte nasıl kullanılabileceği hakkında daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0 SAML taşıyıcı onaylama akışı](v2-saml-bearer-assertion.md) .
+* **OpenID Connect vs SAML**: bir kullanıcının kimliğini doğrulamak Için hem OpenID Connect hem de SAML kullanılır ve çoklu oturum açmayı etkinleştirmek için kullanılır. SAML kimlik doğrulaması, genellikle Azure AD 'ye federe Active Directory Federasyon Hizmetleri (AD FS) (ADFS) gibi kimlik sağlayıcılarıyla kullanılır ve bu nedenle kurumsal uygulamalarda sık kullanılır. OpenID Connect genellikle, mobil uygulamalar, Web siteleri ve Web API 'Leri gibi yalnızca bulutta bulunan uygulamalar için kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

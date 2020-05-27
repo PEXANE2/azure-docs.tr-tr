@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28915967dc7697c08b2bbd7118f7e2377418045d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 088a87f4c4eb200cfeecff1d2513fefdb0088a38
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647253"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827056"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Mevcut şirket içi proxy sunucularıyla çalışma
 
@@ -204,4 +204,4 @@ Yukarıdaki filtrede yalnızca HTTPs istekleri ve proxy bağlantı noktasından/
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)
-* Bağlayıcı bağlantı sorunlarıyla ilgili sorun yaşıyorsanız sorunuzu [Azure Active Directory forumundan](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) isteyin veya destek ekibimiz ile bir bilet oluşturun.
+* Bağlayıcı bağlantı sorunlarıyla ilgili sorun yaşıyorsanız, [Azure Active Directory Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-active-directory.html) soru sorun veya destek ekibimiz ile bir bilet oluşturun.

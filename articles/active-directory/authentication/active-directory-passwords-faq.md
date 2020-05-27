@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407169"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826477"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Parola yönetimi hakkında sık sorulan sorular
 
 Aşağıda, parola sıfırlama ile ilgili tüm şeyler için sık sorulan bazı sorular (SSS) verilmiştir.
 
-Burada yanıtlanmayan Azure Active Directory (Azure AD) ve self servis parola sıfırlama (SSPR) hakkında genel bir sorunuz varsa, [Azure AD Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD)hakkında yardım almak için topluluğa soru sorabilirsiniz. Topluluk üyeleri; mühendisler, ürün yöneticileri, MVP 'ler ve BT uzmanlarına yönelik BT profesyonellerini içerir.
+Burada yanıtlanmayan Azure Active Directory (Azure AD) ve self servis parola sıfırlama (SSPR) hakkında genel bir sorunuz varsa, [Azure Active Directory Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-active-directory.html)hakkında yardım almak için topluluğa soru sorabilirsiniz. Topluluk üyeleri; mühendisler, ürün yöneticileri, MVP 'ler ve BT uzmanlarına yönelik BT profesyonellerini içerir.
 
 Bu SSS aşağıdaki bölümlere ayrılır:
 
@@ -36,7 +36,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
 
 * **S: Kullanıcılarım kendi parola sıfırlama verilerini kaydedebilirler mi?**
 
-  > **Y:** Evet. Parola sıfırlama etkin olduğu ve lisansladığı sürece, kullanıcılar, kimlik doğrulama bilgilerini kaydetmekhttps://aka.ms/ssprsetup) için parola sıfırlama kayıt portalına gidebilir. Kullanıcılar ayrıca erişim paneli (https://myapps.microsoft.com). Erişim paneli 'ne kaydolmak için profil resmini seçmesini, **profil**' i ve ardından **parola sıfırlama için kaydol** seçeneğini belirlemeniz gerekir.
+  > **Y:** Evet. Parola sıfırlama etkin olduğu ve lisansladığı sürece, kullanıcılar, https://aka.ms/ssprsetup) kimlik doğrulama bilgilerini kaydetmek için parola sıfırlama kayıt portalına gidebilir. Kullanıcılar ayrıca erişim paneli ( https://myapps.microsoft.com) . Erişim paneli 'ne kaydolmak için profil resmini seçmesini, **profil**' i ve ardından **parola sıfırlama için kaydol** seçeneğini belirlemeniz gerekir.
   >
   >
 * **S: bir grup için parola sıfırlamayı etkinleştirdiğimde ve Kullanıcılarım için izin verme izni varsa, Kullanıcılarım için yeniden kayıt gerekli midir?**
@@ -101,7 +101,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
   > Bu zaman çerçevesinde bildirim almazsanız:
   > * Önemsiz klasörünüzü denetleyin.
   > * İletişim kurulan numaranın veya e-postanın beklediğinizi doğrulayın.
-  > * Dizindeki kimlik doğrulama verilerinin doğru biçimlendirildiğinden emin olun, örneğin + 1 4255551234 veya *kullanıcı\@contoso.com*. 
+  > * Dizindeki kimlik doğrulama verilerinin doğru biçimlendirildiğinden emin olun, örneğin + 1 4255551234 veya *kullanıcı \@ contoso.com*. 
 * **S: parola sıfırlama hangi dilleri destekler?**
 
   > Y **:** Parola sıfırlama kullanıcı arabirimi, SMS iletileri ve sesli çağrılar, Office 365 ' de desteklenen dillerde yerelleştirilir.

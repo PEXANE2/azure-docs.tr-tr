@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793243"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834535"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps içindeki belirli değerlere göre iş akışı eylemlerini çalıştıran Switch deyimleri oluşturma
 
@@ -42,7 +42,7 @@ Nesnelerin, ifadelerin veya belirteçlerin değerlerine göre belirli eylemleri 
 
 1. Bu örnek için, örnek iş akışınızı sonuna bir switch açıklaması ekleyin. Son adımdan sonra **yeni adım**' ı seçin.
 
-   Adımlar arasında bir switch açıklaması eklemek istediğinizde, işaretçiyi switch ifadesini eklemek istediğiniz okun üzerine taşıyın. Görüntülenen **artı işaretini** (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Adımlar arasında bir switch açıklaması eklemek istediğinizde, işaretçiyi switch ifadesini eklemek istediğiniz okun üzerine taşıyın. Görüntülenen **artı işaretini** () seçin ve **+** ardından **Eylem Ekle**' yi seçin.
 
 1. Arama kutusuna filtreniz olarak "Switch" yazın. Şu eylemi seçin: **Switch-Control**
 
@@ -57,7 +57,7 @@ Nesnelerin, ifadelerin veya belirteçlerin değerlerine göre belirli eylemleri 
 
    !["SelectedOption" öğesini seçin](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-1. `Approve` Onaylayanın veya `Reject`seçtiği durumları Işlemek Için, **büyük/küçük harf** ve **varsayılan**arasında başka bir durum ekleyin. 
+1. Onaylayanın veya seçtiği durumları işlemek için `Approve` `Reject` , **büyük/küçük harf** ve **varsayılan**arasında başka bir durum ekleyin. 
 
    ![Başka bir durum ekleyin](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
@@ -67,7 +67,7 @@ Nesnelerin, ifadelerin veya belirteçlerin değerlerine göre belirli eylemleri 
    |--------|--------------------|--------|
    | Durum 1 | **Onaylama** | Outlook 'U, RSS öğesiyle ilgili ayrıntıları göndermek için yalnızca **onaylayan seçili olduğunda** **bir e-posta gönder** eylemi ekleyin. |
    | Durum 2 | **Reddet** | Outlook 'un RSS öğesinin reddedildiğini diğer onaylayanlara bildirmek için **e-posta gönder** eylemini ekleyin. |
-   | Varsayılan | Hiçbiri | Herhangi bir işlem gerekli değil. Bu örnekte, **SelectedOption** yalnızca iki seçeneğe sahip olduğundan, **varsayılan** durum boştur. |
+   | Varsayılan | Yok | Herhangi bir işlem gerekli değil. Bu örnekte, **SelectedOption** yalnızca iki seçeneğe sahip olduğundan, **varsayılan** durum boştur. |
    |||
 
    ![Tamamlanan Switch ekstresi](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
@@ -115,13 +115,13 @@ Artık bir switch ifadesini kullanarak bir mantıksal uygulama oluşturduğunuza
 | `"Switch"`         | Okunabilirlik için yeniden adlandırabileceği switch ifadesinin adı |
 | `"type": "Switch"` | Eylemin bir switch ifadesinin olduğunu belirtir |
 | `"expression"`     | Bu örnekte, daha sonra tanımda bildirildiği gibi her bir durumda değerlendirilen onaylayanın seçili seçeneğini belirtir |
-| `"cases"` | Herhangi bir sayıda durumu tanımlar. Her durumda, `"Case_*"` bu durumda okunabilirlik için yeniden adlandırılabileceği varsayılan addır. |
+| `"cases"` | Herhangi bir sayıda durumu tanımlar. Her durumda, `"Case_*"` Bu durumda okunabilirlik için yeniden adlandırılabileceği varsayılan addır. |
 | `"case"` | Anahtar ifadesinin karşılaştırma için kullandığı sabit ve benzersiz bir değer olması gereken Case değerini belirtir. Anahtar ifadesi sonucuyla eşleşen hiçbir durum yoksa, `"default"` bölümündeki eylemler çalıştırılır. | 
 | | | 
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri veya önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

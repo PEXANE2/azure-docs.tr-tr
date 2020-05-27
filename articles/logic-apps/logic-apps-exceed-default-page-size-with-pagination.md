@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 04/11/2019
-ms.openlocfilehash: 75d9660eb35b5d7ddc644d177c11ae489e2853dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f114dd0428e13b3e1a205fea353b38b1f8a6f97
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74792115"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835368"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Azure Logic Apps ' de sayfalandırma kullanarak daha fazla veri, öğe veya kayıt alın
 
@@ -27,7 +27,7 @@ Sayfalandırma ayarını açmak, bir bağlayıcının sayfa boyutuna bağlı ola
 
 Aşağıda, belirli eylemler için varsayılan sayfa boyutunu aştığınız bazı bağlayıcılardan yalnızca bazılarına sahip bir liste verilmiştir:
 
-* [Azure Blob depolama](https://docs.microsoft.com/connectors/azureblob/)
+* [Azure Blob Depolama](https://docs.microsoft.com/connectors/azureblob/)
 * [Dynamics 365](https://docs.microsoft.com/connectors/dynamicscrmonline/)
 * [Excel](https://docs.microsoft.com/connectors/excel/)
 * [HTTP](https://docs.microsoft.com/azure/connectors/connectors-native-http)
@@ -62,7 +62,7 @@ Mantıksal uygulama tasarımcısında bir eylemin sayfalandırmayı destekleyip 
 
 ## <a name="workflow-definition---pagination"></a>İş akışı tanımı-sayfalandırma
 
-Bu özelliği destekleyen bir eylem için sayfalandırmayı açtığınızda, mantıksal uygulamanızın iş akışı tanımı, bu eylemin `"paginationPolicy"` `"minimumItemCount"` `"runtimeConfiguration"` özelliğindeki özelliği ile birlikte özelliği içerir, örneğin:
+Bu özelliği destekleyen bir eylem için sayfalandırmayı açtığınızda, mantıksal uygulamanızın iş akışı tanımı, `"paginationPolicy"` Bu eylemin özelliğindeki özelliği ile birlikte özelliği içerir `"minimumItemCount"` `"runtimeConfiguration"` , örneğin:
 
 ```json
 "actions": {
@@ -82,6 +82,6 @@ Bu özelliği destekleyen bir eylem için sayfalandırmayı açtığınızda, ma
 },
 ```
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
+Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
