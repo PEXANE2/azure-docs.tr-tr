@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec59aa830fe314332d17091f17ef81d4a1d65470
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833413"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847234"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Öğretici: Maxdentitytıon Manager yazılımıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -69,7 +69,7 @@ Azure AD SSO 'yu Maxdentitywith Manager yazılımıyla yapılandırın ve test e
 Azure AD SSO 'yu Maxdentitywith Manager yazılımıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırma](#configure-azure-ad-sso)** -kullanıcılarınızın Maxdentityme Yöneticisi yazılımıyla kullanım için kimlik doğrulaması yapmasını sağlamak için
-    1. Kuruluşunuzdaki herkesin kimlik doğrulaması yapabilmesini sağlamak için **[tüm kullanıcıları maxsin ' i kullanacak şekilde atayın](#assign-all-users-to-be-able-to-authenticate-for-the-Maxient-Conduct-Manager-Software)** .
+    1. Kuruluşunuzdaki herkesin kimlik doğrulaması yapabilmesini sağlamak için **[tüm kullanıcıları maxsin ' i kullanacak şekilde atayın](#assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software)** .
 1. Configuration 'ın çalışıp çalışmadığını ve doğru özniteliklerin yayımlanmadığını doğrulamak için **[Azure AD kurulumunu test](#test-with-maxient)** edin.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma

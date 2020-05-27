@@ -4,21 +4,22 @@ description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel 
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 05/12/2020
+ms.date: 05/25/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6a95c021153a458a4e3f804e64724b73ea1f1937
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4c48a2fad927812cc45543243b48a2df81acf73b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198814"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846962"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web App için özel uç noktaları kullanma (Önizleme)
 
 > [!Note]
+> Önizleme yenilemesinde, veri Sızdırma Koruması özelliğini yayımladık.
 > Önizleme, tüm PremiumV2 Windows ve Linux Web Apps ve elastik Premium Işlevleri için Doğu ABD ve Batı ABD 2 bölgelerinde kullanılabilir. 
 
 Özel ağınızda bulunan istemcilerin uygulamaya özel bağlantı üzerinden güvenli bir şekilde erişmesini sağlamak için, Azure Web uygulamanız için özel uç nokta kullanabilirsiniz. Özel uç nokta, Azure VNet adres alanınızda bir IP adresi kullanır. Özel ağınızdaki bir istemci ile Web uygulaması arasındaki ağ trafiği, VNet üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden, genel Internet 'ten etkilenme olasılığını ortadan kaldırır.
@@ -27,6 +28,7 @@ Web uygulamanız için özel uç nokta kullanımı şunları yapmanızı sağlar
 
 - Özel uç noktayı yapılandırarak Web uygulamanızın güvenliğini sağlayın ve genel pozlamayı ortadan kaldırın.
 - VPN veya ExpressRoute özel eşlemesi kullanarak VNet 'e bağlanan şirket içi ağlardan Web uygulamasına güvenli bir şekilde bağlanın.
+- VNet 'inizden herhangi bir veri ayıklanmasını önleyin. 
 
 VNet ve Web uygulamanız arasında güvenli bir bağlantıya ihtiyacınız varsa, en basit çözüm bir hizmet uç noktasıdır. Ayrıca, bir Azure ağ geçidi, bölgesel olarak eşlenmiş VNet veya genel olarak eşlenmiş VNet aracılığıyla Web uygulamasına Şirket içinden erişmeniz gerekiyorsa, Özel uç nokta çözümdür.  
 
@@ -52,7 +54,7 @@ Bir güvenlik perspektifinden:
 - Özel uç noktanın NIC 'inde ilişkili bir NSG olamaz.
 - Özel uç noktayı barındıran alt ağın ilişkili bir NSG 'si olabilir, ancak özel uç nokta için ağ ilkeleri zorlamayı devre dışı bırakmanız gerekir: bkz. [Özel uç noktalar için ağ Ilkelerini devre dışı bırakma][disablesecuritype]. Sonuç olarak, Özel uç noktanıza erişimi herhangi bir NSG 'ye göre filtreleyemezsiniz.
 - Web uygulamanıza özel uç noktayı etkinleştirdiğinizde, Web uygulamasının [erişim kısıtlamaları][accessrestrictions] yapılandırması değerlendirilmez.
-- Hedefin Internet veya Azure hizmetleri olduğu tüm NSG kurallarını kaldırarak VNet 'ten veri kaybı riskini azaltabilirsiniz. Ancak alt ağınızdaki bir Web uygulaması özel uç noktası eklemek, aynı dağıtım damgasında barındırılan ve Internet 'e açık olan herhangi bir Web uygulamasına ulaşmanıza imkan tanır.
+- Hedefin Internet veya Azure hizmetleri olduğu tüm NSG kurallarını kaldırarak VNet 'ten veri kaybı riskini ortadan kaldırabilirsiniz. Bir Web uygulaması için özel bir uç nokta dağıttığınızda, bu belirli Web uygulamasına yalnızca özel uç nokta üzerinden ulaşabilirsiniz. Başka bir Web uygulamanız varsa, bu Web uygulaması için başka bir özel uç nokta dağıtmanız gerekir.
 
 Web uygulamanızın Web HTTP günlüklerinde istemci kaynak IP 'sini bulacaksınız. Bu, istemci IP özelliğini Web uygulamasına ileten TCP proxy protokolü kullanılarak uygulanır. Daha fazla bilgi için bkz. [TCP proxy v2 kullanarak bağlantı bilgilerini alma][tcpproxy].
 
@@ -77,7 +79,7 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 
 Azure Işlevi 'ni özel uç nokta ile elastik Premium planda kullandığınızda, işlevi Azure Web portalında çalıştırmak veya yürütmek için doğrudan ağ erişiminizin olması gerekir veya bir HTTP 403 hatası alırsınız. Diğer bir deyişle, tarayıcınız Azure Web portalından işlevi yürütmek için özel uç noktaya ulaşabilmelidir. 
 
-Önizleme sırasında yalnızca üretim yuvası özel uç noktasının arkasında kullanıma sunulduğunu, diğer yuvaların yalnızca ortak uç nokta tarafından erişilebilir olması gerekir.
+Önizleme sırasında, Özel uç noktanın arkasında yalnızca üretim yuvası sunulur, diğer yuvaların ortak uç nokta ile ulaşması gerekir.
 
 Özel bağlantı özelliğini ve özel uç noktayı düzenli olarak geliştirdik, sınırlamalar hakkında güncel bilgiler için [Bu makaleye][pllimitations] bakın.
 

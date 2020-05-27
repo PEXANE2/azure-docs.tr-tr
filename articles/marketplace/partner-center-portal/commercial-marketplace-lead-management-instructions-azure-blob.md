@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 076edc62a467701eaf0de23f280cdaf2abd945de
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792726"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845808"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Ticari Market müşteri adaylarını yönetmek için Azure Blob depolamayı kullanma
 
@@ -74,9 +74,9 @@ ms.locfileid: "82792726"
 Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini yapılandırmaya hazırsanız, aşağıdaki adımları izleyin:
 
 1. Teklifiniz için **teklif kurulumu** sayfasına gidin.
-2. Müşteri adayı Yönetimi bölümünde **Bağlan** ' ı seçin.
+2. **Müşteri müşteri adayları** bölümünde **Bağlan**' ı seçin.
 
-    ![Teklif bağla](./media/commercial-marketplace-lead-management-instructions-azure-blob/connect-offer.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="Müşteri liderleri":::
 
 3. Bağlantı ayrıntıları açılır penceresinde, müşteri adayı hedefi için **Azure Blob** ' u seçin.
 
@@ -85,7 +85,7 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini ya
 4. Bu yönergeleri izleyerek aldığınız **kapsayıcı adı** ve **depolama hesabı bağlantı dizesini** belirtin.
 
     * Kapsayıcı adı örneği:`marketplaceleadcontainer`
-    * Depolama hesabı bağlantı dizesi örneği: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![bağlantı ayrıntısı](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
+    * Depolama hesabı bağlantı dizesi örneği: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ bağlantı ayrıntısı](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. **Kaydet**’i seçin.
 

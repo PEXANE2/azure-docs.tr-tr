@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f90a6dd94a498b6de6b5e2ec8381180483d0ac8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113162"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845755"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure için ağ Ilkesi sunucusu uzantısını kullanarak VPN altyapınızı Azure MFA ile tümleştirin
 
@@ -228,9 +228,9 @@ Bu bölümde, VPN sunucunuzu RADIUS kimlik doğrulaması kullanacak şekilde yap
 
 2. Sunucu Yöneticisi **Araçlar**' ı seçin ve ardından **Yönlendirme ve uzaktan erişim**' i seçin.
 
-3. **Yönlendirme ve uzaktan erişim** penceresinde, ** \<sunucu adı> (yerel)**' e sağ tıklayın ve ardından **Özellikler**' i seçin.
+3. **Yönlendirme ve uzaktan erişim** penceresinde, ** \< sunucu adı> (yerel)**' e sağ tıklayın ve ardından **Özellikler**' i seçin.
 
-4. **Sunucu adı> (yerel) Özellikler penceresinde Güvenlik sekmesini seçin. \<** **Security**
+4. ** \< Sunucu adı> (yerel) Özellikler** penceresinde **güvenlik** sekmesini seçin.
 
 5. **Güvenlik** sekmesinde, **kimlik doğrulama sağlayıcısı**altında, **RADIUS kimlik doğrulaması**' nı seçin ve ardından **Yapılandır**' ı seçin.
 
@@ -245,9 +245,9 @@ Bu bölümde, VPN sunucunuzu RADIUS kimlik doğrulaması kullanacak şekilde yap
     b. **Paylaşılan gizlilik**Için, **Değiştir**' i seçin ve daha önce oluşturduğunuz ve kaydettiğiniz paylaşılan gizli parolayı girin.
 
     c. **Zaman aşımı (saniye)** kutusuna **30**değerini girin.  
-    İkinci kimlik doğrulama faktörünü tamamlamaya yetecek sürenin tamamlanmasına izin vermek için zaman aşımı değeri gereklidir.
+    İkinci kimlik doğrulama faktörünü tamamlamaya yetecek sürenin tamamlanmasına izin vermek için zaman aşımı değeri gereklidir. Bazı VPN 'Ler veya bölgeler, kullanıcıların birden çok telefon çağrısı almasını engellemek için 30 saniyeden daha uzun zaman aşımı ayarları gerektirir. Kullanıcılar bu sorunla karşılaşmazsa, sorun yeniden oluşana kadar 30 saniyelik artışlarla **zaman aşımı (saniye)** değerini artırın.
 
-    ![Zaman aşımını yapılandıran RADIUS sunucusu penceresi ekleme](./media/howto-mfa-nps-extension-vpn/image16.png)
+    ![Zaman aşımını yapılandıran RADIUS sunucusu penceresi ekleme](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
 8. **Tamam**’ı seçin.
 
@@ -376,7 +376,7 @@ Betiği kullanmak için, uzantıyı Azure Active Directory yönetici kimlik bilg
 
     ![AzureMfsNpsExtnConfigSetup. ps1 yapılandırma betiği çalıştırılıyor](./media/howto-mfa-nps-extension-vpn/image38.png)
 
-    TLS nedeniyle bir güvenlik hatası alırsanız, PowerShell isteminizden `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` komutunu kullanarak TLS 1,2 ' yi etkinleştirin.
+    TLS nedeniyle bir güvenlik hatası alırsanız, PowerShell isteminizden komutunu kullanarak TLS 1,2 ' yi etkinleştirin `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` .
     
     Betik, PowerShell modülünün yüklemesini doğruladıktan sonra, PowerShell modülü oturum açma penceresini Azure Active Directory görüntüler.
 

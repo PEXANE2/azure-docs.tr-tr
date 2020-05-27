@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB sorgu dilinde STARTSWITH
+title: Azure Cosmos DB sorgu dilinde StartsWith
 description: Azure Cosmos DB 'de SQL sistem işlevi STARTSWITH hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e915ea4be058f805e938ec8526ca0ee40d556271
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c64efb92de00291e6381e30af24e76df2b38aee0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715282"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847123"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
 
@@ -24,7 +24,7 @@ ms.locfileid: "83715282"
 STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
   
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *str_expr1*  
    Bir dize ifadesidir.
@@ -40,16 +40,22 @@ STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, "abc" dizesinin "b" ve "a" ile başlayıp başlamadığını denetler.  
+Aşağıdaki örnek, "abc" dizesinin "b" ve "A" ile başlayıp başlamadığını denetler.  
   
 ```sql
-SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2  
+SELECT STARTSWITH("abc", "b", false) AS s1, STARTSWITH("abc", "A", false) AS s2, STARTSWITH("abc", "A", true) AS s3
 ```  
   
  Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
-[{"s1": false, "s2": true}]  
+[
+    {
+        "s1": false,
+        "s2": false,
+        "s3": true
+    }
+]
 ```  
 
 ## <a name="remarks"></a>Açıklamalar

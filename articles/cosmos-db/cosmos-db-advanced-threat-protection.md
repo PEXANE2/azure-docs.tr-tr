@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b37f9be5eb3313cc451e65f90d7f2713c68806d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77614842"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845993"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Gelişmiş tehdit koruması (Önizleme)
 
@@ -36,11 +36,15 @@ Azure Cosmos DB için Gelişmiş tehdit koruması, veritabanları için olağand
 
 - **Olağan dışı veri ayıklama**: Bu uyarı, bir istemci bir Azure Cosmos DB hesabından olağan dışı miktarda veri ayıkladığında tetiklenir. Bu, hesapta depolanan tüm verilerin bir dış veri deposuna aktarılması için gerçekleştirilen bazı veri dışlanan belirtisi olabilir.
 
-## <a name="set-up-advanced-threat-protection"></a>Gelişmiş tehdit koruması ayarlama
 
-### <a name="set-up-atp-using-the-portal"></a>Portalı kullanarak ATP ayarlama
 
-1. Üzerinde [https://portal.azure.com](https://portal.azure.com/)Azure Portal başlatın.
+## <a name="configure-advanced-threat-protection"></a>Gelişmiş Tehdit Koruması'nı yapılandırma
+
+Gelişmiş tehdit korumasını aşağıdaki bölümlerde açıklanan çeşitli yollarla yapılandırabilirsiniz.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Üzerinde Azure portal başlatın [https://portal.azure.com](https://portal.azure.com/) .
 
 2. Azure Cosmos DB hesabından, **Ayarlar** menüsünden **Gelişmiş güvenlik**' i seçin.
 
@@ -51,14 +55,14 @@ Azure Cosmos DB için Gelişmiş tehdit koruması, veritabanları için olağand
     * **Gelişmiş tehdit koruması** seçeneğine tıklayarak **Açık**olarak ayarlayın.
     * Yeni veya güncelleştirilmiş Gelişmiş Tehdit Koruması ilkesini kaydetmek için **Kaydet**’e tıklayın.   
 
-### <a name="set-up-atp-using-rest-api"></a>REST API kullanarak ATP ayarlama
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 Belirli bir Azure Cosmos DB hesabına yönelik gelişmiş tehdit koruması ayarını oluşturmak, güncelleştirmek veya almak için REST API komutlarını kullanın.
 
 * [Gelişmiş tehdit koruması-oluştur](https://go.microsoft.com/fwlink/?linkid=2099745)
 * [Gelişmiş tehdit koruması-Get](https://go.microsoft.com/fwlink/?linkid=2099643)
 
-### <a name="set-up-atp-using-azure-powershell"></a>Azure PowerShell kullanarak ATP ayarlama
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aşağıdaki PowerShell cmdlet 'lerini kullanın:
 
@@ -66,12 +70,12 @@ Aşağıdaki PowerShell cmdlet 'lerini kullanın:
 * [Gelişmiş tehdit koruması al](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [Gelişmiş tehdit korumasını devre dışı bırak](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
 
-### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
+### <a name="arm-template"></a>[ARM şablonu](#tab/arm-template)
 
-Gelişmiş tehdit koruması etkinleştirilmiş Cosmos DB ayarlamak için bir Azure Resource Manager şablonu kullanın.
+Gelişmiş tehdit koruması etkinleştirilmiş Cosmos DB ayarlamak için bir Azure Resource Manager (ARM) şablonu kullanın.
 Daha fazla bilgi için bkz. [Gelişmiş tehdit koruması Ile CosmosDB hesabı oluşturma](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
 
-### <a name="using-azure-policy"></a>Azure Ilkesini kullanma
+### <a name="azure-policy"></a>[Azure İlkesi](#tab/azure-policy)
 
 Cosmos DB için Gelişmiş tehdit koruması 'nı etkinleştirmek üzere bir Azure Ilkesi kullanın.
 
@@ -90,6 +94,9 @@ Cosmos DB için Gelişmiş tehdit koruması 'nı etkinleştirmek üzere bir Azur
 
 
 1. Diğer parametreleri girip **ata**' ya tıklayın.
+
+
+
 
 ## <a name="manage-atp-security-alerts"></a>ATP güvenlik uyarılarını yönetme
 

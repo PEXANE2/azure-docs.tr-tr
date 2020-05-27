@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: cb82b3223d50c66b4d6c176a274d5ccf8d510911
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: d9d600b4ac34e4608b7747bee0e0a704ad2ab3be
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792114"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846061"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -61,7 +61,7 @@ Ancak göz önünde bulundurulması gereken sınırlamalar vardır:
 
 Ana sunucuda var olan bir çoğaltma sunucusu yoksa, önce yönetici kendisini çoğaltma için hazırlamak üzere ilk olarak yeniden başlatılır.
 
-Çoğaltma oluşturma iş akışı 'nı başlattığınızda, MySQL için boş bir Azure veritabanı sunucusu oluşturulur. Yeni sunucu, ana sunucuda bulunan verilerle doldurulur. Oluşturma süresi, ana bilgisayardaki veri miktarına ve son haftalık tam yedeklemeden bu yana geçen zamana bağlıdır. Süre, birkaç dakika ile birkaç saat arasında değişebilir.
+Çoğaltma oluşturma iş akışı 'nı başlattığınızda, MySQL için boş bir Azure veritabanı sunucusu oluşturulur. Yeni sunucu, ana sunucuda bulunan verilerle doldurulur. Oluşturma süresi, ana bilgisayardaki veri miktarına ve son haftalık tam yedeklemeden bu yana geçen zamana bağlıdır. Süre, birkaç dakika ile birkaç saat arasında değişebilir. Çoğaltma sunucusu her zaman aynı kaynak grubunda ve ana sunucuyla aynı abonelikte oluşturulur. Farklı bir kaynak grubuna veya farklı bir aboneliğe çoğaltma sunucusu oluşturmak istiyorsanız, oluşturulduktan sonra [Çoğaltma sunucusunu taşıyabilirsiniz](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) .
 
 Her çoğaltma, depolama [otomatik büyüme](concepts-pricing-tiers.md#storage-auto-grow)için etkinleştirilir. Otomatik büyüme özelliği, çoğaltmanın kendisine çoğaltılan verilerle kalmasına izin verir ve çoğaltma dışı hatalardan kaynaklanan bir kesintiye uğramasını önler.
 
@@ -85,7 +85,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 MySQL için Azure veritabanı, Azure Izleyici 'de **saniye cinsinden yineleme gecikmesi** sağlar. Bu ölçüm yalnızca çoğaltmalar için kullanılabilir.
 
-Bu ölçüm, MySQL 'in `seconds_behind_master` `SHOW SLAVE STATUS` komutunda kullanılabilir olan ölçüm kullanılarak hesaplanır.
+Bu ölçüm, `seconds_behind_master` MySQL 'in komutunda kullanılabilir olan ölçüm kullanılarak hesaplanır `SHOW SLAVE STATUS` .
 
 Çoğaltma gecikmesi iş yükünüz için kabul edilebilir bir değere ulaştığında sizi bilgilendirmek için bir uyarı ayarlayın.
 
@@ -144,7 +144,7 @@ Aşağıdaki sunucu parametreleri hem ana hem de çoğaltma sunucularında kilit
 - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) 
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) Parametresi, çoğaltma sunucularında kilitlidir. 
+[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametresi, çoğaltma sunucularında kilitlidir. 
 
 Ana sunucuda yukarıdaki parametrelerden birini güncelleştirmek için lütfen çoğaltma sunucularını silin, ana bilgisayardaki parametre değerini güncelleştirin ve çoğaltmaları yeniden oluşturun.
 

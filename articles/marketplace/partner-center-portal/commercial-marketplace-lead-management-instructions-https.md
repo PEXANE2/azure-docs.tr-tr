@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: a2be74f6c9178577f86e5522e37e7c210643dd07
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790992"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847831"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Ticari Market müşteri adaylarını yönetmek için bir HTTPS uç noktası kullanın
 
@@ -183,7 +183,7 @@ Bu makalede, Iş Ortağı Merkezi 'nde müşteri adaylarını yapılandırmak i�
 
 Yapılandırmanızı [Postman](https://app.getpostman.com/app/download/win64)ile test edebilirsiniz. Çevrimiçi Postman indirmesi Windows için kullanılabilir. 
 
-1. Postman 'ı başlatın ve test aracınızı ayarlamak için **Yeni** > **istek** ' ı seçin. 
+1. Postman 'ı başlatın ve **New**  >  Test aracınızı ayarlamak için yeni**istek** ' ı seçin. 
 
    ![Test aracınızı ayarlama isteği](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 
@@ -229,8 +229,9 @@ Yayımlama portalında teklifiniz için lider yönetimi bilgilerini yapılandır
 
 1. Teklifinizi seçin ve **teklif kurulumu** sekmesine gidin.
 
-1. **Müşteri adayı yönetimi** bölümünde **Bağlan**' ı seçin. 
-    ![Lider yönetimi bağlantı düğmesi](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+1. **Müşteri müşteri adayları** bölümünde **Bağlan**' ı seçin.
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-https/customer-leads.png" alt-text="Müşteri liderleri":::
 
 1. **Bağlantı ayrıntıları** açılır penceresinde, **müşteri adayı hedefi**için **https uç noktası** ' nı seçin. Önceki adımları izleyerek oluşturduğunuz akıştan HTTP POST URL 'sini **https uç noktası URL 'si** alanına yapıştırın.
     ![Bağlantı ayrıntıları Iletişim e-postası](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)

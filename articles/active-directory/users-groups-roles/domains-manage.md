@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2619af2959aa7d475c3e6bab9c8db55212ed0af4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582960"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845959"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory özel etki alanı adlarını yönetme
 
@@ -49,6 +49,10 @@ En fazla 900 yönetilen etki alanı adı ekleyebilirsiniz. Tüm etki alanların�
 
 Dizininize ' europe.contoso.com ' gibi bir üçüncü düzey etki alanı adı eklemek istiyorsanız, öncelikle contoso.com gibi ikinci düzey etki alanını eklemeniz ve doğrulamanız gerekir. Alt etki alanı, Azure AD tarafından otomatik olarak doğrulanır. Eklediğiniz alt etki alanının doğrulandığını görmek için tarayıcıdaki etki alanı listesini yenileyin.
 
+Not
+
+Zaten bir Azure AD kiracısına bir contoso.com etki alanı eklediyseniz, ikinci bir Azure AD kiracısına europe.contoso.com alt etki alanı ekleyebilirsiniz. Alt etki alanı eklenirken, DNS barındırma sağlayıcısına bir TXT kaydı eklemeniz istenir.
+
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Özel etki alanı adınızın DNS kaydedicisinde değişiklik yaparsanız yapmanız gerekenler
 
 DNS kayıt şirketlerinde değiştirirseniz, Azure AD 'de başka yapılandırma görevleri yoktur. Azure AD ile etki alanı adını kesinti olmadan kullanmaya devam edebilirsiniz. Özel etki alanı adınızı Office 365, Intune veya Azure AD 'de özel etki alanı adlarına bağlı diğer hizmetlerle kullanıyorsanız, bu hizmetler için belgelere bakın.
@@ -67,7 +71,7 @@ Kuruluşunuz artık bu etki alanı adını kullanmadıysanız veya başka bir Az
 
 ### <a name="forcedelete-option"></a>ForceDelete seçeneği
 
-[Azure AD Yönetim merkezinde](https://aad.portal.azure.com) veya [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)kullanarak bir etki alanı adını **silmeyi zorla** yapabilirsiniz. Bu seçenekler, zaman uyumsuz bir işlem kullanır ve "user@contoso.com" gibi özel etki alanı adındaki tüm başvuruları "user@contoso.onmicrosoft.com." gibi ilk varsayılan etki alanı adı ile güncelleştirir. 
+[Azure AD Yönetim merkezinde](https://aad.portal.azure.com) veya [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)kullanarak bir etki alanı adını **silmeyi zorla** yapabilirsiniz. Bu seçenekler, zaman uyumsuz bir işlem kullanır ve "" gibi özel etki alanı adındaki tüm başvuruları user@contoso.com "." gibi ilk varsayılan etki alanı adı ile güncelleştirir user@contoso.onmicrosoft.com . 
 
 Azure portal **Forcedelete** ' i çağırmak için, etki alanı adına 1000 ' den az başvuru olduğundan emin olmanız ve Exchange 'in sağlama hizmeti 'Nin [Exchange Yönetim merkezinde](https://outlook.office365.com/ecp/)güncellenmesi veya kaldırılması gerektiği tüm başvurular olması gerekir. Bu, Exchange posta etkin güvenlik gruplarını ve dağıtılmış listeleri içerir; daha fazla bilgi için bkz. [posta etkin güvenlik gruplarını kaldırma](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Ayrıca, aşağıdakilerden biri geçerliyse **Forcedelete** işlemi başarılı olmaz:
 
@@ -90,10 +94,10 @@ Azure portal **Forcedelete** ' i çağırmak için, etki alanı adına 1000 ' de
 **S: etki alanı silme neden, bu etki alanı adında ana kopyalı grupları değiş tokuş ederim belirten bir hata ile başarısız oluyor mu?** <br>
 Y **:** Bugün, posta etkin güvenlik grupları ve dağıtılmış listeler gibi bazı gruplar Exchange tarafından sağlanır ve [Exchange Yönetim Merkezi 'nde (EAC)](https://outlook.office365.com/ecp/)el ile temizlenmelidir. Özel etki alanı adını kullanan kalan ProxyAddresses olabilir ve başka bir etki alanı adına el ile güncelleştirilmeleri gerekir. 
 
-**S: yönetici\@contoso.com olarak oturum açdım, ancak "contoso.com" etki alanı adını silemiyorum?**<br>
-Y **:** Kullanıcı hesabınızın adında silmeye çalıştığınız özel etki alanı adına başvurulamıyor. Genel yönetici hesabının, gibi ilk varsayılan etki alanı adını (. onmicrosoft.com) kullandığından emin olun admin@contoso.onmicrosoft.com. Gibi farklı bir genel yönetici hesabıyla oturum açın; örneğin admin@contoso.onmicrosoft.com , hesabın olduğu admin@fabrikam.com"fabrikam.com" gibi başka bir özel etki alanı adı.
+**S: yönetici contoso.com olarak oturum açdım \@ , ancak "contoso.com" etki alanı adını silemiyorum?**<br>
+Y **:** Kullanıcı hesabınızın adında silmeye çalıştığınız özel etki alanı adına başvurulamıyor. Genel yönetici hesabının, gibi ilk varsayılan etki alanı adını (. onmicrosoft.com) kullandığından emin olun admin@contoso.onmicrosoft.com . Gibi farklı bir genel yönetici hesabıyla oturum açın; örneğin admin@contoso.onmicrosoft.com , hesabın olduğu "fabrikam.com" gibi başka bir özel etki alanı adı admin@fabrikam.com .
 
-**S: etki alanını Sil düğmesine tıkladıktan sonra silme işleminin `In Progress` durumunu görürsünüz. Ne kadar sürer? Başarısız olursa ne olur?**<br>
+**S: etki alanını Sil düğmesine tıkladıktan sonra `In Progress` silme işleminin durumunu görürsünüz. Ne kadar sürer? Başarısız olursa ne olur?**<br>
 Y **:** Etki alanı silme işlemi, etki alanı adına yapılan tüm başvuruları yeniden adlandıran zaman uyumsuz bir arka plan görevdir. Bir veya iki dakika içinde tamamlanır. Etki alanı silme işlemi başarısız olursa, şu olmadığından emin olun:
 
 * Etki alanı adı üzerinde Appıdentifieruri ile yapılandırılan uygulamalar

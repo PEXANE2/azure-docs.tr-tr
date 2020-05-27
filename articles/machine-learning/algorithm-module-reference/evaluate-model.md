@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: f69a3f61c288b320399d1b3abfc632c93261c540
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e522291bdf1982ff65a62f028107b15b3249898c
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983372"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847421"
 ---
 # <a name="evaluate-model-module"></a>Model modülünü değerlendir
 
@@ -49,7 +49,7 @@ Eğitilen bir modelin doğruluğunu ölçmek için bu modülü kullanın. Bir mo
 
 ## <a name="results"></a>Sonuçlar
 
-**Modeli değerlendir**' i çalıştırdıktan sonra, modüle sağ tıklayın ve sonuçları görmek için **değerlendirme sonuçlarını görselleştirin** ' i seçin.
+**Modeli değerlendir**' i çalıştırdıktan sonra, sağ taraftaki **modeli değerlendir** gezinti bölmesini açmak için modülü seçin.  Ardından, **çıktılar + Günlükler** sekmesini seçin ve bu sekmede **veri çıkışları** bölümünde çeşitli simgeler bulunur.   **Görselleştirilecek** simge çubuk grafik simgesine sahiptir ve sonuçları görmek için ilk yoldur.
 
 Veri kümelerini her iki **değerlendirme modeli**girişi için bağladığınızda, sonuçlar hem veri kümesinin hem de her iki modelin ölçümlerini içerir.
 Sol bağlantı noktasına eklenen model veya veriler, önce raporda, ardından veri kümesi için ölçümler veya sağ bağlantı noktasında eklenmiş model tarafından sunulur.  

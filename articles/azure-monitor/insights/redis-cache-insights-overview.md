@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 0e1bb015025c2ea9c720aca5d72faef01926cc33
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d892c58413803ff65fbd8ca8b25a61bc5ffeb26f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800020"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847370"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Redsıs için Azure önbelleği için Azure Izleyicisini keşfet (Önizleme)
 
@@ -34,8 +34,6 @@ Deneyimi başlatmadan önce, Redsıs için Azure Izleyici 'nin bilgileri görsel
 - Redsıs kaynağı için belirli bir Azure önbelleğinin **detaya gitme Analizi** . Sorunları tanılayabilir ve kullanım, başarısızlık, kapasite ve işlemlerin ayrıntılı analizini görebilirsiniz. İlgili bilgilerin derinlemesine bir görünümünü görmek için bu kategorilerden herhangi birini seçin.  
 
 - Bu deneyimin, en üst Azure Izleyici çalışma kitabı şablonları olan **özelleştirmesi** . Deneyim, hangi ölçümlerin görüntülendiğini değiştirmenize ve sınırlarınız ile hizalı eşikleri değiştirmenize veya ayarlamanıza olanak sağlar. Değişiklikleri özel bir çalışma kitabına kaydedebilir ve sonra çalışma kitabı grafiklerini Azure panolarına sabitleyebilirsiniz.
-
-- Bu deneyimin **özelleştirilmesi** , en üst Azure izleyici çalışma kitabı şablonlarından oluşur. Deneyim, hangi ölçümlerin görüntülendiğini değiştirmenize ve sınırlarınız ile hizalı eşikleri değiştirmenize veya ayarlamanıza olanak sağlar. Değişiklikleri özel bir çalışma kitabına kaydedebilir ve sonra çalışma kitabı grafiklerini Azure panolarına sabitleyebilirsiniz.
 
 Bu özellik, herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez. Redsıs bilgileri için Azure önbelleği varsayılan olarak toplanır.
 

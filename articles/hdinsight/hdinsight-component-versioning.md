@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 05/20/2020
-ms.openlocfilehash: 5f3b1fcb573358160707c0b29ad9e1806ea8e24c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 036548d61dbe6a6465ca28c72eacb48e61386577
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774297"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846231"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Azure HDInsight için kullanılabilen Apache bileşenleri ve sürümleri
 
@@ -43,15 +43,15 @@ HDInsight küme sürümleriyle ilişkili bileşen sürümleri aşağıdaki tablo
 | Apache Storm           | -             | 1.1.0                       |
 | Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2,4, 2.3.1 *   | 2.3.0, 2.2.0, 2.1.0         |
+| Apache Spark           | 2.4           | 2.3.0, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
-| Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (nota bakın.)   |
+| Apache Kafka           | 2.1           | 1.1                        |
 | Apache ambarı          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
-> Kafka sürüm 0,10 desteği, sistem performansı konuları nedeniyle 2019 Mart 'ta zaman aşımına uğradı.
+> HDInsight 4,0: Spark 2,4 ve Kafka 2,1 tam olarak desteklenmektedir. Ancak Spark 2,3 ve Kafka 1,1 hizmet verilmez. HDInsight 3,6: Spark 2,3 ve Kafka 1,1 tam olarak desteklenmektedir.  
 
 ## <a name="check-for-current-apache-component-version-information"></a>Geçerli Apache bileşen sürümü bilgilerini denetle
 

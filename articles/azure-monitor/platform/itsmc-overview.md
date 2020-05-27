@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0ae621791fb989fbb1fdab6a045bc8e9707bc74
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274547"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846537"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure 'ı BT Hizmet Yönetimi Bağlayıcısı kullanarak ıTSSM araçlarına bağlama
+# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı'nı kullanarak Azure'ı ITSM araçlarına bağlama
 
 ![BT Hizmet Yönetimi Bağlayıcısı simgesi](media/itsmc-overview/itsmc-symbol.png)
 
-BT Hizmet Yönetimi Bağlayıcısı (ıSMC), Azure ve desteklenen bir BT hizmet yönetimi (ıTSM) ürünü/hizmeti 'ne bağlanmanızı sağlar.
+BT Hizmet Yönetimi Bağlayıcısı (ITSMC), Azure ile desteklenen BT Hizmet Yönetimi (ITSM) ürünü/hizmeti arasında bağlantı kurmanızı sağlar.
 
 Log Analytics ve Azure Izleyici gibi Azure Hizmetleri, Azure ve Azure dışı kaynaklarla ilgili sorunları tespit etmek, çözümlemek ve sorunlarını gidermek için araçlar sağlar. Ancak, bir sorunla ilgili iş öğeleri genellikle ıTSM ürünü/hizmetinde bulunur. ITSM Bağlayıcısı, sorunları daha hızlı çözmenize yardımcı olmak için Azure ile ıTSM araçları arasında çift yönlü bir bağlantı sağlar.
 
@@ -57,7 +57,7 @@ Bir bağlantı oluşturabilmeniz için önce ITSM Bağlayıcısı çözümünü 
 3. **OMS çalışma alanı** bölümünde, çözümü yüklemek istediğiniz Azure Log Analytics çalışma alanını seçin.
    >[!NOTE]
    > * Microsoft Operations Management Suite (OMS) ile Azure Izleyici arasında devam eden geçişin bir parçası olarak, OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
-   > * ITSM Bağlayıcısı, yalnızca şu bölgelerde Log Analytics çalışma alanlarına yüklenebilir: Doğu ABD, Batı ABD2, Orta Güney ABD, Orta Batı ABD, Orta Kanada, Batı Avrupa, Güney UK, Güneydoğu Asya, Doğu Japonya, Orta Hindistan, Güneydoğu Avustralya.
+   > * ITSM Bağlayıcısı, yalnızca şu bölgelerde Log Analytics çalışma alanlarında yüklenebilir: Doğu ABD, Batı ABD2, Orta Güney ABD, Orta Batı ABD, Fairfax, Orta Kanada, Batı Avrupa, Güney UK, Güneydoğu Asya, Doğu Japonya, Orta Hindistan, Güneydoğu Avustralya.
 
 4. **OMS çalışma alanı ayarları** bölümünde, çözüm kaynağını oluşturmak istediğiniz ResourceGroup öğesini seçin.
 
@@ -290,7 +290,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 2. ServiceNow 'daki veriler Log Analytics ile eşitlenmediği için ServiceNow örneğinin uyku modunda olmadığından emin olun. ServiceNow dev örnekleri bazen uzun bir süre boşta kaldığında uyku moduna geçebilir. Aksi takdirde, sorunu bildirin.
 3. Log Analytics uyarılar harekete geçse ancak ıTSM ürününde iş öğeleri oluşturulmadıysa veya yapılandırma öğeleri, iş öğelerine ya da diğer genel bilgiler için oluşturulmadıysa veya bağlanmadıysa, aşağıdaki yerlere bakın:
    -  ISMC: çözüm, bağlantıların/iş öğelerinin/bilgisayarların, vb. bir özetini gösterir. **Bağlayıcı durumunu**gösteren kutucuğa tıklayın ve bu, arama ile Ilgili sorgu **günlüğü** için sizi yönlendirir. Daha fazla bilgi için LogType_S hata ile günlük kayıtlarına bakın.
-   - **Günlük arama** sayfası: sorgu `*`ServiceDeskLog_CL`*`kullanarak doğrudan hataları/ilgili bilgileri görüntüleyin.
+   - **Günlük arama** sayfası: sorgu ServiceDeskLog_CL kullanarak doğrudan hataları/ilgili bilgileri görüntüleyin `*` `*` .
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web uygulaması dağıtımı Service Manager sorunlarını giderme
 1.  Web uygulaması dağıtımıyla ilgili herhangi bir sorun olması durumunda, kaynak oluşturmak/dağıtmak için belirtilen abonelikte yeterli izinlere sahip olduğunuzdan emin olun.
@@ -300,7 +300,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 
 ## <a name="contact-us"></a>Bizimle iletişim kurun
 
-BT Hizmet Yönetimi Bağlayıcısı herhangi bir sorgu veya geri bildirimde bulunmak için, adresinden [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)bizimle iletişim kurun.
+BT Hizmet Yönetimi Bağlayıcısı herhangi bir sorgu veya geri bildirimde bulunmak için, adresinden bizimle iletişim kurun [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [BT hizmet yönetimi Bağlayıcısı IÇIN ITSM ürünleri/hizmetleri ekleyin](../../azure-monitor/platform/itsmc-connections.md).

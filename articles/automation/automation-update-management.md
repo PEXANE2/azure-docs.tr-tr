@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 05/04/2020
+ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4a48841a1c1f5225e5ce53c46c69bd3d29f6fe59
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4c27fa26b19b870f90f2e7d6ecd34f1f3c083323
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830710"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847337"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
@@ -97,7 +97,7 @@ Aşağıdaki tabloda desteklenmeyen işletim sistemleri listelenmektedir:
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
-|Windows istemcisi     | İstemci işletim sistemleri (örneğin, Windows 7 ve Windows 10) desteklenmez.        |
+|Windows istemcisi     | İstemci işletim sistemleri (örneğin, Windows 7 ve Windows 10) desteklenmez.<br> Azure Windows sanal masaüstü (WVD) için önerilen yöntem<br> güncelleştirmeleri yönetmek için [Windows Update for Business for](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) Windows 10 Client Machine Patch Management. |
 |Windows Server 2016 Nano Server     | Desteklenmiyor.       |
 |Azure Kubernetes hizmet düğümleri | Desteklenmiyor. [Azure Kubernetes Service (AKS) Içindeki Linux düğümlerine güvenlik ve çekirdek güncelleştirmelerini uygulama](../aks/node-updates-kured.md) bölümünde açıklanan düzeltme eki uygulama sürecini kullanın|
 
@@ -255,13 +255,5 @@ Güncelleştirme Yönetimi etkinleştirip yönetilecek makineleri seçebileceği
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Güncelleştirme Yönetimi ile çalışma hakkında daha fazla bilgi için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).
-* Güncelleştirmeler için dinamik bir VM grubunu hedefliyorsanız, bkz. [güncelleştirme yönetimi ile dinamik grupları kullanma](automation-update-management-groups.md).
-* Azure Resource Manager şablonu kullanarak özelliği etkinleştirmek için, bkz. [Azure Resource Manager şablonu kullanarak güncelleştirme yönetimi etkinleştirme](automation-update-management-deploy-template.md).
-* Bir runbook 'tan özelliği etkinleştirmek için bkz. [runbook 'tan güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions.md).
-* Otomasyon hesabından özelliği etkinleştirmek için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions-from-automation-account.md).
-* Azure portal göz atarak özelliği etkinleştirmek için, bkz. [Azure portal güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions-from-browse.md).
-* Özelliği bir Azure VM 'den etkinleştirmek için bkz. [Azure VM 'den güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions-from-vm.md).
-* Log Analytics çalışma alanınızda depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [sorgu güncelleştirme yönetimi günlükleri](automation-update-management-query-logs.md).
-* Özellik hatalarını gidermek için bkz. [sorun giderme güncelleştirme yönetimi sorunları](troubleshoot/update-management.md).
-* Windows Update Aracısı hatalarını gidermek için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
-* Linux Güncelleştirme Aracısı hatalarını gidermek için bkz. [Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).
+
+* [Azure Otomasyonu hakkında sık sorulan sorulardan](automation-faq.md)güncelleştirme yönetimi hakkında sıkça sorulan soruları gözden geçirin.
