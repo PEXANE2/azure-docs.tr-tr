@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 4261b3c3fa7aab830f5f57e86ee25f8ba5894849
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9129d10071a4c8da0376cbad3d64c10cbaceb8b9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749070"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835793"
 ---
 # <a name="unlink-workspace-from-automation-account-for-update-management"></a>Güncelleştirme Yönetimi için çalışma alanının Otomasyon hesabından bağlantısını kaldır
 
@@ -40,6 +40,7 @@ Alternatif olarak, Log Analytics çalışma alanınızın, çalışma alanının
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)
-* [Güncelleştirme Yönetimi VM 'Leri kaldırma](automation-remove-vms-from-update-management.md)
-* [Güncelleştirme Yönetimi sorunlarını giderme](troubleshoot/update-management.md)
+* Özelliği ile çalışmak için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).
+* Özellik hatalarını gidermek için bkz. [sorun giderme güncelleştirme yönetimi sorunları](troubleshoot/update-management.md).
+* Windows Update Aracısı hatalarını gidermek için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
+* Linux Güncelleştirme Aracısı hatalarını gidermek için bkz. [Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 465ca1d012c6d2057e33fe1460e794e4d5966be6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431663"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831220"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Program aracılığıyla Stream Analytics iş İzleyicisi oluşturma
 
@@ -144,7 +144,7 @@ Aşağıdaki kod, **mevcut** bir Stream Analytics işi için izlemeyi mümkün b
 > 
 > Aynı bölgedeki tüm Stream Analytics işleri (ve diğer tüm Azure kaynakları), izleme verilerini depolamak için bu depolama hesabını paylaşır. Farklı bir depolama hesabı sağlarsanız, diğer Stream Analytics işleriniz veya diğer Azure kaynaklarınızın izlenmesinde istenmeyen yan etkilere neden olabilir.
 > 
-> Aşağıdaki kodda değiştirmek `<YOUR STORAGE ACCOUNT NAME>` için kullandığınız depolama hesabı adı, izlemeyi etkinleştirirken Stream Analytics işle aynı abonelikte olan bir depolama hesabı olmalıdır.
+> Aşağıdaki kodda değiştirmek için kullandığınız depolama hesabı adı, `<YOUR STORAGE ACCOUNT NAME>` izlemeyi etkinleştirirken Stream Analytics işle aynı abonelikte olan bir depolama hesabı olmalıdır.
 > 
 > 
 >    ```csharp
@@ -167,9 +167,9 @@ Aşağıdaki kod, **mevcut** bir Stream Analytics işi için izlemeyi mümkün b
 >   ```
 
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

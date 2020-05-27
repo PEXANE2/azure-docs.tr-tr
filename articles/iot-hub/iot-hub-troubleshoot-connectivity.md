@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abce9387d4c23cd6cb5ecf73e3d5c8428d83d459
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759616"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833668"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub bağlantısını izleme, tanılama ve sorun giderme
 
@@ -28,7 +28,7 @@ Cihazların bağlantısı kesildiğinde uyarıları almak ve günlükleri yazmak
 
 Cihaz bağlantısı olaylarını ve hatalarını günlüğe kaydetmek için IoT Hub tanılamayı açın. Tanılama günlükleri etkinleştirilmemişse, cihazın bağlantısı kesildiğinde sorun gidermek için herhangi bir bilgi olmayacak ve bu günlükleri mümkün olduğunca erken açmanızı öneririz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. IoT Hub 'ınıza gidin.
 
@@ -48,7 +48,7 @@ Daha fazla bilgi edinmek için bkz. [Azure IoT Hub sistem durumunu izleme ve sor
 
 Cihazların bağlantısı kesildiğinde uyarı almak için, **bağlı cihazlar (Önizleme)** ölçümünde uyarıları yapılandırın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. IoT Hub 'ınıza gidin.
 
@@ -70,7 +70,7 @@ Daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılar nelerdir?](../azu
 
 Bağlı cihazlar için tanılama günlüklerini ve uyarılarını açtığınızda, hata oluştuğunda uyarılar alırsınız. Bu bölümde, bir uyarı aldığınızda yaygın sorunların nasıl aranacağı açıklanmaktadır. Aşağıdaki adımlarda, tanılama günlüklerinizin Azure Izleyici günlüklerini ayarlamış olduğunuz varsayılmaktadır.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. IoT Hub 'ınıza gidin.
 
@@ -83,7 +83,7 @@ Bağlı cihazlar için tanılama günlüklerini ve uyarılarını açtığınız
     | where ( ResourceType == "IOTHUBS" and Category == "Connections" and Level == "Error")
     ```
 
-1. Sonuçlar varsa, hata hakkında daha fazla `OperationName`ayrıntı `ResultType` almak için, (hata kodu `ResultDescription` ) ve (hata iletisi) bölümüne bakın.
+1. Sonuçlar varsa, `OperationName` `ResultType` `ResultDescription` hata hakkında daha fazla ayrıntı almak için, (hata kodu) ve (hata iletisi) bölümüne bakın.
 
    ![Hata günlüğü örneği](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
@@ -105,7 +105,7 @@ Bağlı cihazlar için tanılama günlüklerini ve uyarılarını açtığınız
 
 * Cihazınız MQTT protokolünü kullanıyorsa, 8883 numaralı bağlantı noktasının açık olduğunu doğrulayın. Daha fazla bilgi için bkz. [IoT Hub bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-* [Azure IoT Hub Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)veya [Azure desteğiyle](https://azure.microsoft.com/support/options/)yardım alın.
+* Azure IoT Hub, [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)veya [Azure desteği](https://azure.microsoft.com/support/options/) [için Microsoft Q&soru sayfasından](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)yardım alın.
 
 Herkesin belgelerinin artırılmasına yardımcı olmak için, bu kılavuz size yardımcı olmadıysa aşağıdaki geri bildirim bölümünde bir yorum bırakın.
 

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: f07cc109b21010df89b105576cb9afcf93df774a
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744779"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836167"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory sorunlarını giderme
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,7 +56,7 @@ Kopyalama etkinliğini kullanarak sorun giderme gibi bağlayıcı sorunları iç
 
 - **Neden**:`Bad authoring.`
 
-- **Öneri**: çalışma alanı adresleme şemaları için ya `dbfs:/folder/subfolder/foo.py` da Databricks dosya sisteminde (DFS) depolanan dosyalar için mutlak yollar belirtin.
+- **Öneri**: çalışma alanı adresleme şemaları için ya da `dbfs:/folder/subfolder/foo.py` Databricks dosya sisteminde (DFS) depolanan dosyalar için mutlak yollar belirtin.
 
 <br/> 
 
@@ -102,7 +102,7 @@ Kopyalama etkinliğini kullanarak sorun giderme gibi bağlayıcı sorunları iç
 
 <br/> 
 
-- **İleti**: `User: `simpleusercontext {UserID =..., Name =user@company.com, OrgID =...}` is not authorized to access cluster.`
+- **İleti**: `User: ` simpleusercontext {UserID =..., Name = user@company.com , OrgID =...}` is not authorized to access cluster.`
 
 - **Neden**: erişim belirtecini oluşturan kullanıcının bağlı hizmette belirtilen Databricks kümesine erişmesine izin verilmiyor.
 
@@ -226,7 +226,7 @@ Aşağıdaki tablo U-SQL için geçerlidir.
 
 - **Neden**: Azure işlevi etkinlik tanımı tamamlanmadı.
 
-- **Öneri**: giriş Azure IşLEVI etkinliği JSON tanımının adlı `functionKey`bir özelliğe sahip olup olmadığını denetleyin.
+- **Öneri**: giriş Azure IşLEVI etkinliği JSON tanımının adlı bir özelliğe sahip olup olmadığını denetleyin `functionKey` .
 
 ### <a name="error-code-3607"></a>Hata kodu: 3607
 
@@ -234,7 +234,7 @@ Aşağıdaki tablo U-SQL için geçerlidir.
 
 - **Neden**: Azure işlevi etkinlik tanımı tamamlanmadı.
 
-- **Öneri**: giriş Azure IşLEVI etkinliği JSON tanımının adlı `functionName`bir özelliğe sahip olup olmadığını denetleyin.
+- **Öneri**: giriş Azure IşLEVI etkinliği JSON tanımının adlı bir özelliğe sahip olup olmadığını denetleyin `functionName` .
 
 ### <a name="error-code-3608"></a>Hata kodu: 3608
 
@@ -250,7 +250,7 @@ Aşağıdaki tablo U-SQL için geçerlidir.
 
 - **Neden**: Azure işlevi etkinlik tanımı tamamlanmadı.
 
-- **Öneri**: giriş Azure IşLEVI etkinliği JSON tanımının adlı `functionAppUrl`bir özelliğe sahip olup olmadığını denetleyin.
+- **Öneri**: giriş Azure IşLEVI etkinliği JSON tanımının adlı bir özelliğe sahip olup olmadığını denetleyin `functionAppUrl` .
 
 ### <a name="error-code-3610"></a>Hata kodu: 3610
 
@@ -258,7 +258,7 @@ Aşağıdaki tablo U-SQL için geçerlidir.
 
 - **Neden**: Işlev URL 'si yanlış olabilir.
 
-- **Öneri**: JSON etkinliğinde ait `functionAppUrl` değerin doğru olduğundan emin olun ve yeniden deneyin.
+- **Öneri**: `functionAppUrl` JSON etkinliğinde ait değerin doğru olduğundan emin olun ve yeniden deneyin.
 
 ### <a name="error-code-3611"></a>Hata kodu: 3611
 
@@ -266,7 +266,7 @@ Aşağıdaki tablo U-SQL için geçerlidir.
 
 - **Neden**: Azure işlevi etkinlik tanımı tamamlanmadı.
 
-- **Öneri**: giriş Azure IşLEVI etkinliği JSON tanımının adlı `method`bir özelliğe sahip olup olmadığını denetleyin.
+- **Öneri**: giriş Azure IşLEVI etkinliği JSON tanımının adlı bir özelliğe sahip olup olmadığını denetleyin `method` .
 
 ### <a name="error-code-3612"></a>Hata kodu: 3612
 
@@ -282,9 +282,9 @@ Aşağıdaki tablo U-SQL için geçerlidir.
 
 - **İleti**:`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
 
-- **Neden**: Hatalı biçim veya özelliğin `%propertyName;`tanımı eksik.
+- **Neden**: Hatalı biçim veya özelliğin tanımı eksik `%propertyName;` .
 
-- **Öneri**: etkinliğin `%activityName;` doğru verilerle tanımlanmış özelliği `%propertyName;` olup olmadığını denetleyin.
+- **Öneri**: etkinliğin `%activityName;` `%propertyName;` doğru verilerle tanımlanmış özelliği olup olmadığını denetleyin.
 
 ### <a name="error-code-4110"></a>Hata kodu: 4110
 
@@ -308,7 +308,7 @@ Aşağıdaki tablo U-SQL için geçerlidir.
 
 - **Neden**: '% PropertyName; ' özelliğinin hatalı biçimi veya tanımı eksik.
 
-- **Öneri**: bağlı hizmetin, doğru verilerle tanımlanmış özelliğe `%propertyName;` sahip olup olmadığını denetleyin.
+- **Öneri**: bağlı hizmetin, doğru verilerle tanımlanmış özelliğe sahip olup olmadığını denetleyin `%propertyName;` .
 
 ### <a name="error-code-4121"></a>Hata kodu: 4121
 
@@ -330,7 +330,7 @@ Aşağıdaki tablo U-SQL için geçerlidir.
 
 - **İleti**:`Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Neden**: gibi etkinliğin `pipelineParameters` özellikleri Azure Machine Learning (ml) işlem hattı için geçersizdir.
+- **Neden**: gibi etkinliğin özellikleri `pipelineParameters` Azure Machine Learning (ml) işlem hattı için geçersizdir.
 
 - **Öneri**: etkinlik özellikleri değerinin, bağlı hizmette belirtilen YAYıMLANMıŞ Azure ML işlem hattının beklenen yüküyle eşleşip eşleşmediğini denetleyin.
 
@@ -464,7 +464,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **İleti**:`Operation returned an invalid status code 'BadRequest'.`
 
-- **Neden**: özel etkinliğin içinde `folderPath` çok fazla dosya vardır. Toplam Boyut `resourceFiles` 32.768 karakterden uzun olamaz.
+- **Neden**: özel etkinliğin içinde çok fazla dosya vardır `folderPath` . Toplam Boyut `resourceFiles` 32.768 karakterden uzun olamaz.
 
 - **Öneri**: gereksiz dosyaları kaldırın veya ZIP dosyalarını ayıklayın ve ayıklamak için bir unzip komutu ekleyin.
    
@@ -592,7 +592,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **İleti**:`Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
 
-- **Neden**: hata iletisi şuna benzer bir ileti içerir `The remote name could not be resolved.`. Belirtilen küme URI 'SI geçersiz olabilir.
+- **Neden**: hata iletisi şuna benzer bir ileti içerir `The remote name could not be resolved.` . Belirtilen küme URI 'SI geçersiz olabilir.
 
 - **Öneri**: kümenin silinmediğini ve belirtilen URI 'nin doğru olduğunu doğrulayın. URI 'yi bir tarayıcıda açtığınızda, ambarı Kullanıcı arabirimini görmeniz gerekir. Küme bir sanal ağda ise, URI özel URI olmalıdır. Açmak için, aynı sanal ağın parçası olan bir sanal makine (VM) kullanın.
 
@@ -600,7 +600,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
  
  </br>
 
-- **Neden**: hata iletisi öğesine `A task was canceled.`benzer bir ileti içeriyorsa iş gönderimi zaman aşımına uğradı.
+- **Neden**: hata iletisi öğesine benzer bir ileti içeriyorsa `A task was canceled.` iş gönderimi zaman aşımına uğradı.
 
 - **Öneri**: sorun genel HDInsight bağlantısı ya da ağ bağlantısı olabilir. Önce HDInsight ambarı Kullanıcı arabiriminin herhangi bir tarayıcıdan kullanılabilir olduğunu doğrulayın. Ardından, kimlik bilgilerinizin hala geçerli olduğundan emin olun.
    
@@ -610,7 +610,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
  </br>
 
-- **Neden**: hata iletisi veya `User admin is locked out in Ambari` `Unauthorized: Ambari user name or password is incorrect`Ile benzer bir ileti içerdiğinde, HDInsight için kimlik bilgileri yanlış veya zaman aşımına uğradı.
+- **Neden**: hata iletisi veya ile benzer bir ileti Içerdiğinde `User admin is locked out in Ambari` `Unauthorized: Ambari user name or password is incorrect` , HDInsight için kimlik bilgileri yanlış veya zaman aşımına uğradı.
 
 - **Öneri**: kimlik bilgilerini düzeltin ve bağlı hizmeti yeniden dağıtın. Önce, herhangi bir tarayıcıda küme URI 'sini açıp oturum açmaya çalışarak, kimlik bilgilerinin HDInsight 'ta çalıştığını doğrulayın. Kimlik bilgileri çalışmazsa, bunları Azure portal sıfırlayabilirsiniz.
 
@@ -618,12 +618,12 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
  </br>
 
-- **Neden**: hata iletisi öğesine `502 - Web server received an invalid response while acting as a gateway or proxy server`benzer bir ileti Içerdiğinde, bu hata HDInsight hizmeti tarafından döndürülür.
+- **Neden**: hata iletisi öğesine benzer bir ileti içerdiğinde `502 - Web server received an invalid response while acting as a gateway or proxy server` , bu hata HDInsight hizmeti tarafından döndürülür.
 
 - **Öneri**: 502 hatası genellikle, ambarı sunucu işleminiz kapatıldığında oluşur. Baş düğümü yeniden başlatarak, ambarı hizmetlerini yeniden başlatabilirsiniz.
 
     1. SSH kullanarak HDInsight 'ta düğümlerinizin birine bağlanın.
-    1. ' İ çalıştırarak `ping headnodehost`etkin baş düğüm ana bilgisayarınızı tespit edin.
+    1. ' İ çalıştırarak etkin baş düğüm ana bilgisayarınızı tespit edin `ping headnodehost` .
     1. Active baş düğümünüz için, SSH kullanarak etkin baş düğümde bulunan bir ambarı sunucusu olarak bağlanın. 
     1. Etkin baş düğümü yeniden başlatın.
 
@@ -635,11 +635,11 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
  </br>
 
-- **Neden**: hata iletisi veya `Unable to service the submit job request as templeton service is busy with too many submit job requests` `Queue root.joblauncher already has 500 applications, cannot accept submission of application`ile benzer bir ileti içerdiğinde, aynı anda HDInsight 'a çok fazla iş gönderiliyor.
+- **Neden**: hata iletisi veya ile benzer bir ileti içerdiğinde, `Unable to service the submit job request as templeton service is busy with too many submit job requests` `Queue root.joblauncher already has 500 applications, cannot accept submission of application` aynı anda HDInsight 'a çok fazla iş gönderiliyor.
 
 - **Öneri**: HDInsight 'a gönderilen eşzamanlı işlerin sayısını sınırlayın. İşlerin aynı etkinlik tarafından gönderiliyorsa Data Factory etkinlik eşzamanlılık bölümüne bakın. Yinelenen işlem hattı çalıştırmaları zaman içinde yayma için Tetikleyicileri değiştirin.
 
-   Hatanın önereceği şekilde ayarlamak `templeton.parallellism.job.submit` için [HDInsight belgelerine](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors) bakın.
+   Hatanın önereceği şekilde ayarlamak için [HDInsight belgelerine](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors) bakın `templeton.parallellism.job.submit` .
 
 ### <a name="error-code-2301"></a>Hata kodu: 2301
 
@@ -649,7 +649,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Öneri**: Bu hata, ADF, çalışan işin durumunu doğrulamaya çalışırken HDInsight kümesinden bir yanıt almazsa oluşur. Bu sorun kümenin kendisinde olabilir veya HDInsight hizmeti bir kesinti olabilir.
 
-   https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide' De HDInsight sorun giderme belgelerine başvurun veya daha fazla yardım için destek ekibiyle iletişime geçin.
+   ' De HDInsight sorun giderme belgelerine başvurun https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide veya daha fazla yardım için destek ekibiyle iletişime geçin.
 
 ### <a name="error-code-2302"></a>Hata kodu: 2302
 
@@ -667,10 +667,10 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
  1. Örnek bir test işi çalıştırın.
     1. Aynı işi HDInsight arka ucunda çalıştırırsanız, başarılı olup olmadığını kontrol edin. Örnek çalıştırmaların örnekleri için bkz [. HDInsight 'ta bulunan MapReduce örneklerini çalıştırma](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux) 
  1. İş HDInsight 'ta hala başarısız olduysa, destek sağlamak için uygulama günlüklerini ve bilgileri kontrol edin:
-    1. İşin YARN 'ye gönderilip gönderilmediğini denetleyin. İş Yarn 'ye gönderilmediyse kullanın `--master yarn`.
+    1. İşin YARN 'ye gönderilip gönderilmediğini denetleyin. İş Yarn 'ye gönderilmediyse kullanın `--master yarn` .
     1. Uygulama yürütmeyi bitirdiğinde YARN uygulamasının başlangıç saatini ve bitiş saatini toplayın. Uygulama yürütmeyi tamammadıysa, başlangıç zamanı/başlatma süresini toplayın.
-    1. İle `yarn logs -applicationId <Insert_Your_Application_ID>`uygulama günlüğünü denetleyip toplayın.
-    1. `/var/log/hadoop-yarn/yarn` Dizinin altındaki yarn Kaynak Yöneticisi günlüklerini denetleyin ve toplayın.
+    1. İle uygulama günlüğünü denetleyip toplayın `yarn logs -applicationId <Insert_Your_Application_ID>` .
+    1. Dizinin altındaki Yarn Kaynak Yöneticisi günlüklerini denetleyin ve toplayın `/var/log/hadoop-yarn/yarn` .
     1. Bu adımlar sorunu çözmek için yeterli değilse, destek için Azure HDInsight ekibine başvurun ve yukarıdaki günlükleri ve zaman damgalarını belirtin.
 
 ### <a name="error-code-2303"></a>Hata kodu: 2303
@@ -689,10 +689,10 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
  1. Örnek bir test işi çalıştırın.
     1. Aynı işi HDInsight arka ucunda çalıştırırsanız, başarılı olup olmadığını kontrol edin. Örnek çalıştırmaların örnekleri için bkz [. HDInsight 'ta bulunan MapReduce örneklerini çalıştırma](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux) 
  1. İş HDInsight 'ta hala başarısız olduysa, destek sağlamak için uygulama günlüklerini ve bilgileri kontrol edin:
-    1. İşin YARN 'ye gönderilip gönderilmediğini denetleyin. İş Yarn 'ye gönderilmediyse kullanın `--master yarn`.
+    1. İşin YARN 'ye gönderilip gönderilmediğini denetleyin. İş Yarn 'ye gönderilmediyse kullanın `--master yarn` .
     1. Uygulama yürütmeyi bitirdiğinde YARN uygulamasının başlangıç saatini ve bitiş saatini toplayın. Uygulama yürütmeyi tamammadıysa, başlangıç zamanı/başlatma süresini toplayın.
-    1. İle `yarn logs -applicationId <Insert_Your_Application_ID>`uygulama günlüğünü denetleyip toplayın.
-    1. `/var/log/hadoop-yarn/yarn` Dizinin altındaki yarn Kaynak Yöneticisi günlüklerini denetleyin ve toplayın.
+    1. İle uygulama günlüğünü denetleyip toplayın `yarn logs -applicationId <Insert_Your_Application_ID>` .
+    1. Dizinin altındaki Yarn Kaynak Yöneticisi günlüklerini denetleyin ve toplayın `/var/log/hadoop-yarn/yarn` .
     1. Bu adımlar sorunu çözmek için yeterli değilse, destek için Azure HDInsight ekibine başvurun ve yukarıdaki günlükleri ve zaman damgalarını belirtin.
 
 ### <a name="error-code-2304"></a>Hata kodu: 2304
@@ -801,7 +801,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
     1. HDInsight kümesinin ambarı Kullanıcı arabirimini bir tarayıcıda açarak kimlik bilgilerinin doğru olduğundan emin olun.
     1. Küme sanal ağ (VNet) ve şirket içinde barındırılan bir IR kullanılıyorsa, HDI URL 'SI VNET 'lerdeki özel URL olmalıdır ve küme adından sonra '-int ' listelenmiş olmalıdır.
     
-       Örneğin, olarak `https://mycluster-int.azurehdinsight.net/`değiştirin `https://mycluster.azurehdinsight.net/` . `-int` Sonra `mycluster`, önce, daha önce`.azurehdinsight.net`
+       Örneğin, olarak değiştirin `https://mycluster.azurehdinsight.net/` `https://mycluster-int.azurehdinsight.net/` . `-int`Sonra `mycluster` , önce, daha önce`.azurehdinsight.net`
     1. Küme VNet 'daysa, şirket içinde barındırılan IR kullanılır ve özel URL kullanılmıştır, ancak bağlantı hala başarısız olduysa, IR 'nin yüklü olduğu VM HDI 'ye bağlanmada sorun yaşadı. 
     
        IR 'nin yüklendiği VM 'ye bağlanın ve bir tarayıcıda ambarı Kullanıcı arabirimini açın. Küme için özel URL 'YI kullanın. Bu bağlantı tarayıcıdan çalışmalıdır. Değilse, daha fazla yardım için HDInsight destek ekibine başvurun.
@@ -919,7 +919,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **İleti**:`The '%value' provided for commandEnvironment is incorrect. The expected value should be an array of strings where each string has the format CmdEnvVarName=CmdEnvVarValue.`
 
-- **Neden**: için `commandEnvironment` belirtilen değer yanlış.
+- **Neden**: için belirtilen değer `commandEnvironment` yanlış.
 
 - **Öneri**: belirtilen değerin şuna benzediğini doğrulayın:
  
@@ -934,7 +934,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **İleti**:`The commandEnvironment already contains a variable named '%variableName;'.`
 
-- **Neden**: için `commandEnvironment` belirtilen değer yanlış.
+- **Neden**: için belirtilen değer `commandEnvironment` yanlış.
 
 - **Öneri**: belirtilen değerin şuna benzediğini doğrulayın:
  
@@ -957,7 +957,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **İleti**:`The value '%value;' for the required property 'TimeToLive' in the on demand HDInsight linked service '%linkedServiceName;' has invalid format. It should be a timespan between '00:05:00' and '24:00:00'.`
 
-- **Neden**: gerekli özelliğin `TimeToLive` belirtilen değeri geçersiz bir biçime sahip. 
+- **Neden**: gerekli özelliğin belirtilen değeri `TimeToLive` geçersiz bir biçime sahip. 
 
 - **Öneri**: değeri önerilen aralığa göre güncelleştirip yeniden deneyin.
 
@@ -965,7 +965,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **İleti**:`The value '%value;' for the property 'roles' is invalid. Expected types are 'zookeeper', 'headnode', and 'workernode'.`
 
-- **Neden**: özellik `roles` için girilen değer geçersiz.
+- **Neden**: özellik için girilen değer `roles` geçersiz.
 
 - **Öneri**: değeri önerilerden biri olacak şekilde güncelleştirip yeniden deneyin.
 
@@ -973,7 +973,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **İleti**:`The connection string in HCatalogLinkedService is invalid. Encountered an error while trying to parse: '%message;'.`
 
-- **Neden**: için `HCatalogLinkedService` belirtilen bağlantı dizesi geçersiz.
+- **Neden**: için belirtilen bağlantı dizesi `HCatalogLinkedService` geçersiz.
 
 - **Öneri**: değeri doğru BIR Azure SQL bağlantı dizesi olarak güncelleştirip yeniden deneyin.
 
@@ -1016,7 +1016,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 1. [Fiddler](https://www.telerik.com/download/fiddler)'i indirin, yükleyin ve açın.
 
-1. Web uygulamanız https kullanıyorsa, **Araçlar** > **Fiddler seçenekler** > **https**' ye gidin.
+1. Web uygulamanız https kullanıyorsa, **Araçlar**  >  **Fiddler seçenekler**  >  **https**' ye gidin.
 
    1. HTTPS sekmesinde, her iki **yakalama https** ve **https trafiğinin şifresini çöz**' ü seçin.
 
@@ -1024,9 +1024,9 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 1. Uygulamanız TLS/SSL sertifikaları kullanıyorsa, Fiddler sertifikasını cihazınıza ekleyin.
 
-   Git: **Araçlar** > **Fiddler seçenekler** > **https** > **eylemleri** > **kök sertifikayı masaüstüne dışarı aktarma**.
+   Git: **Araçlar**  >  **Fiddler seçenekler**  >  **https**  >  **eylemleri**  >  **kök sertifikayı masaüstüne dışarı aktarma**.
 
-1. **Dosya** > **yakalama trafiğine**giderek yakalamayı kapatın. Ya da **F12**tuşuna basın.
+1. **Dosya**  >  **yakalama trafiğine**giderek yakalamayı kapatın. Ya da **F12**tuşuna basın.
 
 1. Tüm önbelleğe alınmış öğelerin kaldırılması ve yeniden indirilmesi gereken şekilde tarayıcınızın önbelleğini temizleyin.
 
@@ -1042,7 +1042,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 1. Trafiği yeniden yakalamayı açın ve sayfada sorunlu işlemi doldurun.
 
-1. Git: **Dosya** > **Save** > **tüm oturumları**Kaydet.
+1. Git: **Dosya**  >  **Save**  >  **tüm oturumları**Kaydet.
 
 Daha fazla bilgi için bkz. [Fiddler ile çalışmaya](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)başlama.
 
@@ -1055,4 +1055,4 @@ Daha fazla sorun giderme Yardım için şu kaynakları deneyin:
 * [Data Factory için Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Data Factory hakkında Twitter bilgileri](https://twitter.com/hashtag/DataFactory)
 * [Azure videoları](https://azure.microsoft.com/resources/videos/index/)
-* [MSDN forumu](https://social.msdn.microsoft.com/Forums/home)
+* [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)

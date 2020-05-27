@@ -185,8 +185,8 @@
       href: 'https://blogs.msdn.microsoft.com/azuredatalake/'
     - name: UserVoice hakkında geri bildirimde bulunun
       href: 'https://feedback.azure.com/forums/327234-data-lake'
-    - name: MSDN Forumu
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake'
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-lake-storage.html'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/data-lake-store/'
     - name: Fiyatlandırma hesaplayıcı

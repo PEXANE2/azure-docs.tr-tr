@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 83410d5945a7fe462afa86a9d217ee7e005550f4
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696908"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835844"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için depolama hesabı erişimini denetleme (Önizleme)
 
@@ -26,11 +26,7 @@ Bu makalede, kullanabileceğiniz kimlik bilgileri türleri ve SQL ve Azure AD ku
 
 ## <a name="supported-storage-authorization-types"></a>Desteklenen depolama yetkilendirme türleri
 
-İsteğe bağlı bir SQL kaynağında oturum açan bir kullanıcının, dosyalar herkese açık değilse Azure Storage 'daki dosyalara erişme ve bunları sorgulama yetkisi olmalıdır. Üç yetkilendirme türü desteklenir:
-
-- [Paylaşılan erişim imzası](?tabs=shared-access-signature)
-- [Kullanıcı kimliği](?tabs=user-identity)
-- [Yönetilen Kimlik](?tabs=managed-identity)
+İsteğe bağlı bir SQL kaynağında oturum açan bir kullanıcının, dosyalar herkese açık değilse Azure Storage 'daki dosyalara erişme ve bunları sorgulama yetkisi olmalıdır. Genel olmayan depolama- [Kullanıcı kimliği](?tabs=user-identity), [paylaşılan erişim Imzası](?tabs=shared-access-signature)ve [yönetilen kimliğe](?tabs=managed-identity)erişmek için üç yetkilendirme türü kullanabilirsiniz.
 
 > [!NOTE]
 > [Azure AD geçiş](#force-azure-ad-pass-through) , bir çalışma alanı oluşturduğunuzda varsayılan davranıştır. Kullanıyorsanız, Azure AD oturum açmaları kullanılarak erişilen her depolama hesabı için kimlik bilgileri oluşturmanız gerekmez. [Bu davranışı devre dışı](#disable-forcing-azure-ad-pass-through)bırakabilirsiniz.
@@ -42,7 +38,7 @@ Bu makalede, kullanabileceğiniz kimlik bilgileri türleri ve SQL ve Azure AD ku
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 

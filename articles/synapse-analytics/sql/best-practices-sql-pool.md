@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f6af79a37369fe5775c402af011f4ba59807595d
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780425"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834994"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL havuzları için en iyi yöntemler
 
@@ -193,7 +193,7 @@ SQL havuzlarının sorgu yürütmeyi izlemek için kullanılabilecek çeşitli D
 
 Ayrıca yaygın sorunlar ve çözümleri için [sorun giderme](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) makalesine bakın.
 
-Bu makalede sağlanmayan bilgilere ihtiyacınız varsa, tüm SQL havuzu belgelerini aramak için bu sayfanın sol tarafındaki **başlığa göre filtrele** ' yi kullanın.  [SQL havuzu Forumu](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) , diğer KULLANıCıLARA ve SQL havuzu ürün grubuna yönelik sorularınızı oluşturabilmeniz için bir yerdir.  
+Bu makalede sağlanmış bilgilere ihtiyacınız varsa, [Azure SYNAPSE Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , diğer KULLANıCıLARA ve SQL havuzu ürün grubuna yönelik sorular oluşturabilmeniz için bir sorun olup olmadığını arayın.  
 
 Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  Stack Overflow sorularınızı sormayı tercih ediyorsanız [Azure SQL havuzu Stack Overflow forumumuz](https://stackoverflow.com/questions/tagged/azure-sqldw)de vardır.
 

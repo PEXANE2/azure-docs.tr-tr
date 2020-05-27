@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: reference
 ms.date: 11/1/2019
 ms.author: brendm
-ms.openlocfilehash: 36e9b272bb4648853829364b22881ab8bec1ff70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d65bd76fbef66f741f51292b24483e7df5da7c79
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733048"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836252"
 ---
 # <a name="azure-spring-cloud-developer-resources"></a>Azure Spring Cloud geliştirici kaynakları
 
@@ -20,7 +20,7 @@ Geliştirici olarak, aşağıdaki Azure Spring bulut kaynaklarını yararlı bul
 * [Azure yol haritası](https://azure.microsoft.com/updates)
 * [Sık sorulan sorular](spring-cloud-faq.md)
 * [Sorun giderme kılavuzu](spring-cloud-troubleshoot.md)
-* [MSDN Forumu](https://social.msdn.microsoft.com/Forums/home)
+* [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-spring-cloud.html)
 * [Java Spring Cloud web sitesi](https://spring.io/)
 * [Spring Framework](https://cloud.spring.io/spring-cloud-azure/)
 * [Azure’da Spring](https://docs.microsoft.com/azure/developer/java/spring-framework/)

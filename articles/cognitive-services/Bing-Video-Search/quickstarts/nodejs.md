@@ -8,25 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 6ae8afefae9a539812748c0ae5380ddaf1fb084c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 693b8209498f07928c811fd084eaf259bcbcb5ff
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382676"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849646"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Video Arama REST API ve Node. js kullanarak video arama
 
-Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama sonucu görüntülemek için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulama JavaScript 'te yazıldığı ve Node. js kullandığından, API çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu örneğin kaynak kodu, ek hata işleme ve kod açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js)’da bulunabilir.
+Bing Video Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve JSON yanıtını görüntüler. Bu uygulama JavaScript 'te yazılmış ve Node. js ' yi kullandığından, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. 
+
+Bu örneğin kaynak kodu, ek hata işleme ve kod açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js)’da bulunabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Node.js](https://nodejs.org/en/download/)
+* [Node. js](https://nodejs.org/en/download/).
 
-* JavaScript için Istek modülü
-    * Bu modülü kullanarak yükleyebilirsiniz`npm install request`
+* JavaScript için Istek modülü. Kullanarak bu modülü yükler `npm install request` .
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -39,7 +40,7 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
     let https = require('https');
     ```
 
-2. API uç noktanız, abonelik anahtarınız ve arama teriminiz için değişkenler oluşturun. `host`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir.
+2. API uç noktanız, abonelik anahtarınız ve arama teriminiz için değişkenler oluşturun. Değer için `host` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -50,7 +51,7 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
 
 ## <a name="create-a-response-handler"></a>Yanıt işleyici oluşturma
 
-1. API 'den JSON yanıtı `response_handler` almak için adlı bir işlev oluşturun. Yanıt gövdesi için bir değişken oluşturun. Kullanarak `data` `response.on()`bir bayrak alındığında yanıtı ekleyin.
+1. `response_handler`API 'den JSON yanıtı almak için adlı bir işlev oluşturun. Yanıt gövdesi için bir değişken oluşturun. `data`Kullanılarak bir bayrak alındığında yanıtı ekleyin `response.on()` .
 
     ```javascript
     let response_handler = function (response) {
@@ -61,39 +62,40 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
     };
     ```
     
-   1. Ne `end` zaman sinyalle, `response.on()` Bing ile `bingapis` ilgili üst bilgileri depolamak için kullanın (veya `x-msedge-`sürümünden itibaren). Ardından, kullanarak `JSON.parse()`JSON 'ı ayrıştırın, ile `JSON.stringify()`bir dizeye dönüştürün ve yazdırın.
+1. Bu işlevde, `response.on()` `end` Bing ile ilgili üst bilgileri (veya ' den itibaren) depolamak için ne zaman sinyalini kullanın `bingapis` `x-msedge-` . Kullanarak JSON 'u ayrıştırın, `JSON.parse()` ile bir dizeye dönüştürün `JSON.stringify()` ve yazdırın.
 
-       ```javascript
-       response.on('end', function () {
-           for (var header in response.headers)
-               // header keys are lower-cased by Node.js
-               if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                    console.log(header + ": " + response.headers[header]);
-           body = JSON.stringify(JSON.parse(body), null, '  ');
-           //JSON Response body
-           console.log(body);
-       });
-       ```
+    ```javascript
+    response.on('end', function () {
+        for (var header in response.headers)
+            // header keys are lower-cased by Node.js
+            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                 console.log(header + ": " + response.headers[header]);
+        body = JSON.stringify(JSON.parse(body), null, '  ');
+        //JSON Response body
+        console.log(body);
+    });
+    ```
 
 ## <a name="create-and-send-the-search-request"></a>Arama isteği oluştur ve Gönder
 
-1. Adlı `bing_video_search()`bir işlev oluşturun. İsteğiniz için ana bilgisayar adınızı ve üst bilgileri de içeren parametreleri ekleyin. Arama teriminizi kodlayın ve `?q=` parametresi ile Path parametresine ekleyin. Sonra isteği ile `req.end()`gönderin.
+Adlı bir işlev oluşturun `bing_video_search()` . İsteğiniz için ana bilgisayar adınızı ve üst bilgileri de içeren parametreleri ekleyin. Arama teriminizi kodlayın ve parametresi ile Path parametresine ekleyin `?q=` . Ardından, isteği ile gönderin `req.end()` .
 
-    ```javascript
-    let bing_video_search = function (search_term) {
-      console.log('Searching videos for: ' + term);
-      let request_params = {
-            method : 'GET',
-            hostname : host,
-            path : path + '?q=' + encodeURIComponent(search_term),
-            headers : {
-                'Ocp-Apim-Subscription-Key' : subscriptionKey,
-            }
-        };
-        let req = https.request(request_params, response_handler);
-        req.end();
-    }
-    ```
+```javascript
+let bing_video_search = function (search_term) {
+  console.log('Searching videos for: ' + term);
+let request_params = {
+    method : 'GET',
+    hostname : host,
+    path : path + '?q=' + encodeURIComponent(search_term),
+    headers : {
+        'Ocp-Apim-Subscription-Key' : subscriptionKey,
+        }
+    };
+    let req = https.request(request_params,
+      response_handler);
+    req.end();
+}
+```
 
 ## <a name="json-response"></a>JSON yanıtı
 

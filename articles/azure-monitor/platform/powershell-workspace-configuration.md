@@ -5,43 +5,49 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/19/2019
-ms.openlocfilehash: 2584cedceab1386cbab9c72bb4b510eebe2122bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 0b2f67424589958d5d81e01c2efee525311ee33c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80054705"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836377"
 ---
-# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell kullanarak Azure Izleyici 'de Log Analytics çalışma alanını yönetme
+# <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell kullanarak Azure Izleyici 'de Log Analytics çalışma alanı oluşturma ve yapılandırma
+Bu makale, Azure Izleyici 'de bir Log Analytics çalışma alanı oluşturmayı ve yapılandırmayı gösteren iki kod örneği sunar.  
 
-[Log Analytics PowerShell cmdlet 'lerini](https://docs.microsoft.com/powershell/module/az.operationalinsights/) , Azure izleyici 'deki bir Log Analytics çalışma alanında bir komut satırından veya bir betiğin parçası olarak çeşitli işlevler gerçekleştirmek için kullanabilirsiniz.  PowerShell ile gerçekleştirebileceğiniz görevlere örnekler şunlardır:
-
-* Çalışma alanı oluşturma
-* Çözüm ekleme veya kaldırma
-* Kaydedilmiş aramaları içeri ve dışarı aktarma
-* Bilgisayar grubu oluşturma
-* Windows aracısının yüklü olduğu bilgisayarlardan IIS günlükleri toplamayı etkinleştir
-* Linux ve Windows bilgisayarlarından performans sayaçlarını toplayın
-* Linux bilgisayarlarda Syslog 'tan olay topla
-* Windows olay günlüklerinden olay topla
-* Özel olay günlüklerini topla
-* Log Analytics aracısını bir Azure sanal makinesine ekleme
-* Log Analytics 'i Azure tanılama kullanılarak toplanan verileri dizinleyecek şekilde yapılandırma
-
-Bu makale, PowerShell 'den gerçekleştirebileceğiniz bazı işlevleri gösteren iki kod örneği sunar.  Diğer işlevler için [Log Analytics PowerShell cmdlet başvurusuna](https://docs.microsoft.com/powershell/module/az.operationalinsights/) başvurabilirsiniz.
 
 > [!NOTE]
 > Log Analytics daha önce Işletimsel içgörüler olarak adlandırılmıştı. Bu, cmdlet 'lerde kullanılan addır.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu örnekler, az. Operationalınsights modülünün Version 1.0.0 veya üzeri sürümleriyle çalışır.
 
+## <a name="create-workspace"></a>Çalışma alanı oluşturma
+Aşağıdaki örnek betik, veri kaynağı yapılandırmasına sahip olmayan bir çalışma alanı oluşturur. 
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma ve yapılandırma
-Aşağıdaki betik örneği, aşağıdakilerin nasıl yapılacağını göstermektedir:
+```powershell
+$ResourceGroup = "my-resource-group"
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
+$Location = "westeurope"
+
+# Create the resource group if needed
+try {
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
+} catch {
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
+}
+
+# Create the workspace
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
+```
+
+## <a name="create-workspace-and-configure-data-sources"></a>Çalışma alanı oluşturma ve veri kaynaklarını yapılandırma
+
+Aşağıdaki örnek betik örneği bir çalışma alanı oluşturur ve birden çok veri kaynağını yapılandırır. Bu veri kaynakları yalnızca [Log Analytics aracısını](log-analytics-agent.md)kullanarak sanal makineleri izliyorsanız gereklidir.
+
+Bu betik aşağıdaki işlevleri gerçekleştirir:
 
 1. Çalışma alanı oluşturma
 2. Kullanılabilir çözümleri listeleyin
@@ -57,10 +63,19 @@ Aşağıdaki betik örneği, aşağıdakilerin nasıl yapılacağını gösterme
 12. Özel bir günlük topla
 
 ```powershell
-
-$ResourceGroup = "oms-example"
+$ResourceGroup = "my-resource-group"
 $WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
 $Location = "westeurope"
+
+# Create the resource group if needed
+try {
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
+} catch {
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
+}
+
+# Create the workspace
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
 
 # List of solutions to enable
 $Solutions = "Security", "Updates", "SQLAssessment"
@@ -180,9 +195,9 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 > [!NOTE]
 > Özel bir günlük için yapılandırmayı tanımlayan **Customlograwjson** parametresinin biçimi karmaşık olabilir. Mevcut bir özel günlüğün yapılandırmasını almak için [Get-Azoperationalınsightsdatasource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) komutunu kullanın. **Properties** özelliği, **Customlograwjson** parametresi için gereken yapılandırmadır.
 
-Yukarıdaki örnekte regexDelimiter, yeni satır için "\\n" olarak tanımlandı. Günlük sınırlayıcısı de bir zaman damgası olabilir.  Desteklenen biçimler şunlardır:
+Yukarıdaki örnekte regexDelimiter, \\ yeni satır için "n" olarak tanımlandı. Günlük sınırlayıcısı de bir zaman damgası olabilir.  Desteklenen biçimler şunlardır:
 
-| Biçimlendir | Bir RegEx uygulamasında test etmek \\ \ ' a düşürüyorsam \\ , JSON Regex biçimi her bir Standart Regex için iki tane kullanır. | | |
+| Biçimlendir | \\Bir Regex uygulamasında test etmek \ ' a düşürüyorsam, JSON Regex biçimi her bir Standart Regex için iki tane kullanır. \\ | | |
 | --- | --- | --- | --- |
 | `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 | `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` | | |
@@ -196,81 +211,6 @@ Yukarıdaki örnekte regexDelimiter, yeni satır için "\\n" olarak tanımlandı
 | `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> Burada + ya da a- <br> Burada zzzz zaman kayması | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` | | |
 | `yyyy-MM-ddTHH:mm:ss` <br> T, sabit bir harf T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
-## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Azure tanılama göndermek için Log Analytics yapılandırma
-Azure kaynaklarının aracısız izlenmesi için, kaynakların Azure tanılama 'nın etkinleştirilmesi ve bir Log Analytics çalışma alanına yazmak üzere yapılandırılması gerekir. Bu yaklaşım, verileri doğrudan çalışma alanına gönderir ve verilerin depolama hesabına yazılmasına gerek yoktur. Desteklenen kaynaklar şunlardır:
-
-| Kaynak Türü | Günlükler | Ölçümler |
-| --- | --- | --- |
-| Uygulama Ağ Geçitleri    | Yes | Yes |
-| Automation hesapları     | Yes | |
-| Batch hesapları          | Yes | Yes |
-| Data Lake Analizi     | Yes | |
-| Data Lake deposu         | Yes | |
-| Elastik SQL havuzu        |     | Yes |
-| Olay hub'ı ad alanı     |     | Yes |
-| IoT Hub’ları                |     | Yes |
-| Key Vault               | Yes | |
-| Yük Dengeleyiciler          | Yes | |
-| Logic Apps              | Yes | Yes |
-| Ağ Güvenlik Grupları | Yes | |
-| Redis için Azure Önbelleği             |     | Yes |
-| Arama Hizmetleri         | Yes | Yes |
-| Service Bus ad alanı   |     | Yes |
-| SQL (V12)               |     | Yes |
-| Web siteleri               |     | Yes |
-| Web sunucusu grupları        |     | Yes |
-
-Kullanılabilir ölçümlerin ayrıntıları için [Azure izleyici ile desteklenen ölçümler](../../azure-monitor/platform/metrics-supported.md)bölümüne bakın.
-
-Kullanılabilir günlüklerin ayrıntıları için, [kaynak günlükleri için desteklenen hizmetler ve şemaya](../../azure-monitor/platform/diagnostic-logs-schema.md)bakın.
-
-```powershell
-$workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
-
-$resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
-
-Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
-```
-
-Ayrıca, farklı aboneliklerdeki kaynaklardan günlükleri toplamak için önceki cmdlet 'ini de kullanabilirsiniz. Her iki kaynağın KIMLIĞI ve günlüklerin gönderildiği çalışma alanını sağladığından, cmdlet abonelikler arasında çalışabilir.
-
-
-## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Depolama alanından Azure tanılama toplamak için Log Analytics çalışma alanı yapılandırma
-Klasik bir bulut hizmeti veya bir Service Fabric kümesinin çalışan bir örneği içinden günlük verilerini toplamak için, önce verileri Azure depolama 'ya yazmanız gerekir. Daha sonra bir Log Analytics çalışma alanı, günlükleri depolama hesabından toplayacak şekilde yapılandırılır. Desteklenen kaynaklar şunlardır:
-
-* Klasik bulut Hizmetleri (Web ve çalışan rolleri)
-* Service Fabric kümeleri
-
-Aşağıdaki örnek, aşağıdakilerin nasıl yapılacağını göstermektedir:
-
-1. Mevcut depolama hesaplarını ve çalışma alanının verileri dizinleyecek konumları listeleyin
-2. Depolama hesabından okumak için bir yapılandırma oluşturma
-3. Yeni oluşturulan yapılandırmayı ek konumlardan veri dizinleyecek şekilde Güncelleştir
-4. Yeni oluşturulan yapılandırmayı Sil
-
-```powershell
-# validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
-$workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
-
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want the workspace to index
-$storageId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
-$key = "abcd=="
-
-# List existing insights
-Get-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name
-
-# Create a new insight
-New-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -StorageAccountResourceId $storageId -StorageAccountKey $key -Tables @("WADWindowsEventLogsTable") -Containers @("wad-iis-logfiles")
-
-# Update existing insight
-Set-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -Tables @("WADWindowsEventLogsTable", "WADETWEventTable") -Containers @("wad-iis-logfiles")
-
-# Remove the insight
-Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight"
-
-```
-
-Farklı aboneliklerdeki depolama hesaplarından günlükleri toplamak için yukarıdaki betiği de kullanabilirsiniz. Depolama hesabı kaynak KIMLIĞI ve buna karşılık gelen bir erişim anahtarı sağlamaktan bu yana betik abonelikler arasında çalışabilir. Erişim anahtarını değiştirdiğinizde, depolama öngörülerini yeni anahtara sahip olacak şekilde güncelleştirmeniz gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: d892dc75d4e745912ceaf444b56494a2e0ed2a19
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005260"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834501"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps çağırabilmeniz için özel API 'Ler oluşturun
 
@@ -96,23 +96,23 @@ Genel desenler aşağıda verilmiştir:
 
 API 'nizin, API 'nin perspektifinden açıklanacak özel adımlar aşağıda verilmiştir:
 
-1. API 'niz çalışmaya başlamak için bir HTTP isteği aldığında, bu adımda daha sonra açıklanan `202 ACCEPTED` `location` üst bilgiyle bir http yanıtı döndürür. Bu yanıt, Logic Apps altyapısının API 'nizin isteği aldığı, istek yükünü kabul ettiğini (veri girişi) ve şimdi işleme olduğunu bilmesini sağlar. 
+1. API 'niz çalışmaya başlamak için bir HTTP isteği aldığında, `202 ACCEPTED` `location` Bu adımda daha sonra açıklanan üst BILGIYLE bir http yanıtı döndürür. Bu yanıt, Logic Apps altyapısının API 'nizin isteği aldığı, istek yükünü kabul ettiğini (veri girişi) ve şimdi işleme olduğunu bilmesini sağlar. 
    
-   `202 ACCEPTED` Yanıt şu üstbilgileri içermelidir:
+   `202 ACCEPTED`Yanıt şu üstbilgileri içermelidir:
    
-   * *Gerekli*: LOGIC Apps `location` altyapısının API 'nizin iş durumunu kontrol ettiği bir URL 'nin mutlak yolunu belirten bir üst bilgi
+   * *Gerekli*: `location` Logic Apps altyapısının API 'nizin iş durumunu kontrol ettiği bir URL 'nin mutlak yolunu belirten bir üst bilgi
 
-   * *Isteğe bağlı*: `retry-after` altyapının iş durumu için `location` URL 'yi denetlemeden önce bekleyeceği saniye sayısını belirten bir üstbilgi. 
+   * *Isteğe bağlı*: `retry-after` altyapının `location` iş durumu için URL 'yi denetlemeden önce bekleyeceği saniye sayısını belirten bir üstbilgi. 
 
-     Varsayılan olarak motor her 20 saniyede bir kontrol eder. Farklı bir Aralık belirtmek için, sonraki yoklamaya kadar `retry-after` üstbilgiyi ve saniye sayısını ekleyin.
+     Varsayılan olarak motor her 20 saniyede bir kontrol eder. Farklı bir Aralık belirtmek için, `retry-after` sonraki yoklamaya kadar üstbilgiyi ve saniye sayısını ekleyin.
 
-2. Belirtilen süre geçtikten sonra Logic Apps altyapısı, iş durumunu denetlemek için `location` URL 'yi yoklar. API 'niz bu denetimleri gerçekleştirmelidir ve bu yanıtları döndürmelidir:
+2. Belirtilen süre geçtikten sonra Logic Apps altyapısı, `location` iş durumunu denetlemek için URL 'yi yoklar. API 'niz bu denetimleri gerçekleştirmelidir ve bu yanıtları döndürmelidir:
    
-   * İş yapıldığında, yanıt yükünün yanı da (bir `200 OK` sonraki adım için giriş) bir http yanıtı döndürün.
+   * İş yapıldığında, `200 OK` Yanıt yükünün yanı da (bir sonraki adım için giriş) BIR http yanıtı döndürün.
 
    * İş hala işlenmeye devam ediyorsa, başka bir HTTP `202 ACCEPTED` yanıtı döndürün, ancak özgün Yanıtla aynı üst bilgilere sahip olur.
 
-API 'niz bu kalıbı izlediğinde, iş durumunu denetlemeye devam etmek için mantıksal uygulama iş akışı tanımında herhangi bir şey yapmanız gerekmez. Motor bir HTTP `202 ACCEPTED` yanıtı ve geçerli `location` bir üst bilgi aldığında, altyapı zaman uyumsuz düzene uyar ve API 'niz 202 olmayan `location` bir yanıt döndürünceye kadar üstbilgiyi denetler.
+API 'niz bu kalıbı izlediğinde, iş durumunu denetlemeye devam etmek için mantıksal uygulama iş akışı tanımında herhangi bir şey yapmanız gerekmez. Motor bir HTTP `202 ACCEPTED` yanıtı ve geçerli bir `location` üst bilgi aldığında, altyapı zaman uyumsuz düzene uyar ve `location` API 'niz 202 olmayan bir yanıt döndürünceye kadar üstbilgiyi denetler.
 
 > [!TIP]
 > Örnek bir zaman uyumsuz model için [GitHub 'daki bu zaman uyumsuz denetleyici yanıtı örneğini](https://github.com/logicappsio/LogicAppsAsyncResponseSample)inceleyin.
@@ -140,9 +140,9 @@ Bu düzende, denetleyicinizde iki uç nokta ayarlayın: `subscribe` ve`unsubscri
 
 Diğer ipuçları ve notlar aşağıda verilmiştir:
 
-* Geri çağırma URL 'sini geçirmek için, bir önceki alanda bulunan `@listCallbackUrl()` iş akışı işlevini gerekli şekilde kullanabilirsiniz.
+* Geri çağırma URL 'sini geçirmek için, `@listCallbackUrl()` bir önceki alanda bulunan iş akışı işlevini gerekli şekilde kullanabilirsiniz.
 
-* Hem mantıksal uygulamanın hem de abone olunan hizmetin sahibiyseniz, geri çağırma URL 'SI çağrıldıktan sonra `unsubscribe` uç noktayı çağırmanız gerekmez. Aksi takdirde, Logic Apps çalışma zamanının daha fazla çağrının `unsubscribe` beklenmediği ve sunucu tarafında kaynak temizlemeye izin verilmesi için uç noktayı çağırması gerekir.
+* Hem mantıksal uygulamanın hem de abone olunan hizmetin sahibiyseniz, `unsubscribe` geri çağırma URL 'si çağrıldıktan sonra uç noktayı çağırmanız gerekmez. Aksi takdirde, Logic Apps çalışma zamanının `unsubscribe` daha fazla çağrının beklenmediği ve sunucu tarafında kaynak temizlemeye izin verilmesi için uç noktayı çağırması gerekir.
 
 <a name="triggers"></a>
 
@@ -165,23 +165,23 @@ Aşağıda, API 'nin perspektifinden tanımlanan bir yoklama tetikleyicisi için
 
 | Yeni veri veya olay bulundu mu?  | API yanıtı | 
 | ------------------------- | ------------ |
-| Bulundu | Yanıt yüküne ( `200 OK` sonraki adım için giriş) sahıp bir HTTP durumu döndürün. <br/>Bu yanıt bir mantıksal uygulama örneği oluşturur ve iş akışını başlatır. | 
-| Bulunamadı | Üst bilgi ve `202 ACCEPTED` `retry-after` üst bilgi içeren bir HTTP durumu döndürür. `location` <br/>Tetikleyiciler için `location` üst bilgi, genellikle "timestamp" `triggerState` olan bir sorgu parametresi de içermelidir. API 'niz mantıksal uygulamanın tetiklendiği son saati izlemek için bu tanımlayıcıyı kullanabilir. | 
+| Bulundu | `200 OK`Yanıt yüküne (sonraki adım için giriş) sahip BIR http durumu döndürün. <br/>Bu yanıt bir mantıksal uygulama örneği oluşturur ve iş akışını başlatır. | 
+| Bulunamadı | `202 ACCEPTED` `location` Üst bilgi ve üst bilgi IÇEREN bir HTTP durumu döndürür `retry-after` . <br/>Tetikleyiciler için `location` üst bilgi, `triggerState` genellikle "timestamp" olan bir sorgu parametresi de içermelidir. API 'niz mantıksal uygulamanın tetiklendiği son saati izlemek için bu tanımlayıcıyı kullanabilir. | 
 ||| 
 
 Örneğin, hizmetinizi yeni dosyalara düzenli olarak denetlemek için, bu davranışları içeren bir yoklama tetikleyicisi oluşturabilirsiniz:
 
-| İstek şunları `triggerState`içerir? | API yanıtı | 
+| İstek şunları içerir `triggerState` ? | API yanıtı | 
 | -------------------------------- | -------------| 
-| No | Bir HTTP `202 ACCEPTED` durumu ve geçerli saate `location` ayarlanmış bir `triggerState` üstbilgi ve `retry-after` 15 saniyeye kadar olan bir üst bilgi döndürür. | 
-| Yes | `DateTime` İçin `triggerState`' den sonra eklenen dosyalar için hizmetinizi kontrol edin. | 
+| Hayır | Bir HTTP `202 ACCEPTED` durumu `location` `triggerState` ve geçerli saate ayarlanmış bir üstbilgi ve 15 saniyeye kadar olan bir üst bilgi döndürür `retry-after` . | 
+| Yes | İçin ' den sonra eklenen dosyalar için hizmetinizi kontrol edin `DateTime` `triggerState` . | 
 ||| 
 
 | Bulunan dosya sayısı | API yanıtı | 
 | --------------------- | -------------| 
-| Tek dosya | Bir HTTP `200 OK` durumu ve içerik yükü döndürün, döndürülen dosya `triggerState` `DateTime` için ' a güncelleştirin ve aralığı 15 saniyeye ayarlayın `retry-after` . | 
-| Birden çok dosya | Tek seferde bir dosya ve bir HTTP `200 OK` durumu döndürün, güncelleştirin `triggerState`ve `retry-after` aralığı 0 saniyeye ayarlayın. </br>Bu adımlar, altyapının daha fazla verinin kullanılabildiğini ve altyapının, `location` üstbilgideki URL 'den verileri hemen istemesi gerektiğini bilmesini sağlar. | 
-| Dosya yok | Bir HTTP `202 ACCEPTED` durumu döndürün, değiştirmeyin `triggerState`ve `retry-after` aralığı 15 saniyeye ayarlayın. | 
+| Tek dosya | Bir HTTP `200 OK` durumu ve içerik yükü döndürün, `triggerState` `DateTime` döndürülen dosya için ' a güncelleştirin ve `retry-after` aralığı 15 saniyeye ayarlayın. | 
+| Birden çok dosya | Tek seferde bir dosya ve bir HTTP durumu döndürün `200 OK` , güncelleştirin `triggerState` ve `retry-after` aralığı 0 saniyeye ayarlayın. </br>Bu adımlar, altyapının daha fazla verinin kullanılabildiğini ve altyapının, üstbilgideki URL 'den verileri hemen istemesi gerektiğini bilmesini sağlar `location` . | 
+| Dosya yok | Bir HTTP `202 ACCEPTED` durumu döndürün, değiştirmeyin `triggerState` ve `retry-after` aralığı 15 saniyeye ayarlayın. | 
 ||| 
 
 > [!TIP]
@@ -192,7 +192,7 @@ Aşağıda, API 'nin perspektifinden tanımlanan bir yoklama tetikleyicisi için
 ### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>Web kancası tetikleyici düzeniyle yeni verileri veya olayları bekleme ve dinleme
 
 Web kancası tetikleyicisi, hizmet uç noktanıza yeni verileri veya olayları bekleyen ve dinleyen bir *gönderim tetikleyicisine* sahiptir. Yeni veriler veya bir olay belirtilen koşulu karşılıyorsa, tetikleyici ateşlenir ve bir mantıksal uygulama örneği oluşturur ve daha sonra verileri girdi olarak işler.
-Web kancası Tetikleyicileri, bu konuda daha önce açıklanan [Web kancası eylemlerine](#webhook-actions) benzer bir şekilde davranır ve ve `subscribe` `unsubscribe` uç noktaları ile ayarlanır. 
+Web kancası Tetikleyicileri, bu konuda daha önce açıklanan [Web kancası eylemlerine](#webhook-actions) benzer bir şekilde davranır ve `subscribe` ve `unsubscribe` uç noktaları ile ayarlanır. 
 
 * `subscribe`uç nokta: mantıksal uygulamanızda bir Web kancası tetikleyicisi eklediğinizde ve kaydettiğinizde, Logic Apps altyapısı `subscribe` uç noktasını çağırır. Bu adım mantıksal uygulamanın API 'nizin depoladığını belirten bir geri çağırma URL 'SI oluşturmasına neden olur. Yeni veriler veya belirtilen koşulu karşılayan bir olay olduğunda, API 'niz URL 'ye bir HTTP gönderimiyle geri çağrı yapılır. İçerik yükü ve üstbilgiler, Logic App 'e giriş olarak geçer.
 
@@ -204,11 +204,11 @@ Web kancası Tetikleyicileri, bu konuda daha önce açıklanan [Web kancası eyl
 
 Diğer ipuçları ve notlar aşağıda verilmiştir:
 
-* Geri çağırma URL 'sini geçirmek için, bir önceki alanda bulunan `@listCallbackUrl()` iş akışı işlevini gerekli şekilde kullanabilirsiniz.
+* Geri çağırma URL 'sini geçirmek için, `@listCallbackUrl()` bir önceki alanda bulunan iş akışı işlevini gerekli şekilde kullanabilirsiniz.
 
 * Aynı verinin birden çok kez işlenmesini engellemek için, Tetikleyiciniz zaten okunmuş ve mantıksal uygulamaya geçirilen verileri temizlemelidir.
 
-* Hem mantıksal uygulamanın hem de abone olunan hizmetin sahibiyseniz, geri çağırma URL 'SI çağrıldıktan sonra `unsubscribe` uç noktayı çağırmanız gerekmez. Aksi takdirde, Logic Apps çalışma zamanının daha fazla çağrının `unsubscribe` beklenmediği ve sunucu tarafında kaynak temizlemeye izin verilmesi için uç noktayı çağırması gerekir.
+* Hem mantıksal uygulamanın hem de abone olunan hizmetin sahibiyseniz, `unsubscribe` geri çağırma URL 'si çağrıldıktan sonra uç noktayı çağırmanız gerekmez. Aksi takdirde, Logic Apps çalışma zamanının `unsubscribe` daha fazla çağrının beklenmediği ve sunucu tarafında kaynak temizlemeye izin verilmesi için uç noktayı çağırması gerekir.
 
 ## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Mantıksal uygulamalardan API 'lerinize yapılan çağrılar için güvenliği geliştirme
 
@@ -224,11 +224,11 @@ Kimlik doğrulamasını ayarladıktan sonra API 'niz için dağıtımı ayarlay�
 
 Özel API 'lerinizi Logic Apps, Power otomatikleştirmede ve Microsoft Power Apps 'teki tüm kullanıcılar için kullanılabilir hale getirmek için, güvenlik eklemeniz, API 'lerinizi Logic App bağlayıcıları olarak kaydetmeniz ve [Microsoft Azure Sertifikalı program](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)için bağlayıcılarınızı aday hale getirmeniz gerekir. 
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-* Özel API 'lerle ilgili belirli yardım için, [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)ile iletişim kurun.
+* Özel API 'lerle ilgili belirli yardım için, ile iletişim kurun [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 
 * Logic Apps’in geliştirilmesine yardımcı olmak için, [Logic Apps kullanıcı geri bildirim sitesinde](https://aka.ms/logicapps-wish) oy kullanın veya fikirlerinizi paylaşın. 
 

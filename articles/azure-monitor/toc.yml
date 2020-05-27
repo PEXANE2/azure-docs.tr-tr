@@ -60,6 +60,32 @@
           href: learn/tutorial-app-dashboards.md
 - name: Örnekler
   items:
+    - name: Resource Manager şablonları
+      items:
+        - name: Genel Bakış
+          href: samples/resource-manager-samples.md
+        - name: Aracılar
+          href: samples/resource-manager-agent.md
+        - name: Uyarılar
+          items:
+            - name: Günlük uyarı kuralları
+              href: samples/resource-manager-alerts-log.md
+            - name: Ölçüm uyarı kuralları
+              href: samples/resource-manager-alerts-metric.md
+            - name: Eylem grupları
+              href: samples/resource-manager-action-groups.md
+        - name: Tanılama ayarları
+          href: samples/resource-manager-diagnostic-settings.md
+        - name: Log Analytics çalışma alanları
+          href: samples/resource-manager-workspace.md
+        - name: Günlük sorguları
+          href: samples/resource-manager-log-queries.md
+        - name: Çalışma Kitapları
+          href: samples/resource-manager-workbooks.md
+        - name: Kapsayıcılar için Azure İzleyici
+          href: samples/resource-manager-container-insights.md
+        - name: VM'ler için Azure İzleyici
+          href: samples/resource-manager-vminsights.md
     - name: Azure CLI
       href: samples/cli-samples.md
     - name: Azure PowerShell

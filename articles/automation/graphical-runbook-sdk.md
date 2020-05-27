@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: b0733cd4f71a734511d5085473047eb7a6d030d3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 969e60cd08a65adb1dd731aa7c6c3f9872e288fd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744327"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835045"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk-preview"></a>Azure Otomasyonu grafik runbook SDK 'sını kullanma (Önizleme)
 
@@ -141,4 +141,4 @@ Serileştirilmiş biçim gelecekteki sürümlerinde değişebilir `Orchestrator.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Otomasyonu 'nda grafik runbook 'ları yazma](automation-graphical-authoring-intro.md)
+Daha fazla bilgi için bkz. [Azure Otomasyonu 'nda grafik runbook 'Ları yazma](automation-graphical-authoring-intro.md).

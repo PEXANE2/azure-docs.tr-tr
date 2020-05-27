@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff92ae0763a7e8cc10e89b0eb1a73fdbed6323b4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76987031"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834229"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanmaya başlama
 
@@ -91,7 +91,7 @@ Kitaplığı yüklemek için [Microsoft. Azure. SQLDatabase. Elaol Scale. Client
 
 5. İstemci kitaplığı özellikleri hakkında daha fazla bilgi edinmek için çeşitli seçeneklerle denemeler yapın. Uygulamanın konsol çıkışında aldığı ve arka planda kodu keşfetmeye yönelik adımlara göz atın.
    
-    ![İlerleme durumu][4]
+    ![İlerleme Durumu][4]
 
 Tebrikler! SQL veritabanı 'nda elastik veritabanı araçlarını kullanarak ilk parçalı uygulamanızı başarıyla oluşturup çalıştırın. SQL veritabanınıza bağlanmak için Visual Studio 'Yu veya SQL Server Management Studio kullanın ve örneğin oluşturulan parçalara hızlıca göz atın. Yeni örnek parça veritabanları ve örneğin oluşturduğu bir parça eşleme Yöneticisi veritabanı fark edeceksiniz.
 
@@ -132,7 +132,7 @@ Elastik veritabanı araçları hakkında daha fazla bilgi için aşağıdaki mak
   * [Betik merkezinde parça esnekliği](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [elastik ölçek duyurusu](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * Channel 9: [elastik ölçeğe genel bakış videosu](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Tartışma Forumu: [Azure SQL veritabanı Forumu](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* Tartışma Forumu: [Microsoft Q&Azure SQL veritabanı için soru sayfası](https://docs.microsoft.com/answers/topics/azure-sql-database.html)
 * Performansı ölçmek için: parça [eşleme Yöneticisi Için performans sayaçları](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->

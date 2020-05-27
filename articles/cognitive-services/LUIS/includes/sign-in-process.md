@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: a09f995f4d022c47b573281183d07b7973215494
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ef7208596ead8f7d3903bb614ccb980df782e581
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778256"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837928"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Lug portalında oturum açma
 
 LUBUNA yeni bir kullanıcının bu yordamı izlemesi gerekir:
 
-1. [Luo portalında](https://www.luis.ai)oturum açın, ülkenizi/bölgenizi seçin ve kullanım koşullarını kabul edin. Bunun yerine **uygulamalarımı** görürseniz, bir Luo kaynağı zaten mevcuttur ve bir uygulama oluşturmak için bir atlama yapmanız gerekir.
+1. [Luo portalında](https://www.luis.ai)oturum açın, ülkenizi/bölgenizi seçin ve kullanım koşullarını kabul edin. Bunun yerine **uygulamalarımı** görürseniz, bir Luo kaynağı zaten mevcuttur ve bir uygulama oluşturmak için bir atlama yapmanız gerekir. Desteklenen bölgeler için [yazma ve yayımlama bölgelerini ve ilişkili anahtarları](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)ziyaret edin.
 
 1. **Azure kaynağı oluştur** ' u seçin ve ardından **uygulamalarınızı geçirmek Için yazma kaynağı oluştur** ' u seçin.
 

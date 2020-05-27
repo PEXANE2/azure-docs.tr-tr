@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: dcd5668fa2c6e1840eed13a9ee0cbd30d8d8a25a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 9613b74b727d27bd47a05fadc1398bf898f667a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983253"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835741"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML deneme çalıştırmaları ve ölçümlerini izleme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Bir denemeye eğitim sırasında aşağıdaki ölçümler bir çalıştırmaya e
 |Tablo|Çalışmayacaktır<br>`run.log_table(name, value, description='')`<br><br>Örnek:<br>Run. log_table (X üzerinden "Y", {"X": [1, 2, 3], "Y": [0,6, 0,7, 0,89]}) | Bir sözlük nesnesini verilen ada sahip bir çalıştırmaya kaydedin. |
 |Görüntüler|Çalışmayacaktır<br>`run.log_image(name, path=None, plot=None)`<br><br>Örnek:<br>`run.log_image("ROC", plot=plt)` | Çalıştırma kaydına bir görüntü kaydedin. Günlüğe kaydetmek için log_image kullanın. PNG resim dosyası veya çalıştırılacak bir Matplotlib çizimi.  Bu görüntüler, çalıştırma kaydında görünür ve karşılaştırılabilir olacaktır.|
 |Bir çalıştırmayı etiketleme|Çalışmayacaktır<br>`run.tag(key, value=None)`<br><br>Örnek:<br>Run. Tag ("Selected", "Yes") | Çalıştırmayı bir dize anahtarıyla ve isteğe bağlı dize değeriyle etiketleyin.|
-|Dosya veya dizini karşıya yükle|Çalışmayacaktır<br>`run.upload_file(name, path_or_stream)`<br> <br> Örnek:<br>Run. upload_file ("best_model. pkl", "./model.exe") | Çalıştırma kaydına bir dosya yükleyin. , Belirtilen çıkış dizininde dosyayı otomatik olarak yakala, bu, çoğu çalıştırma türü için varsayılan olarak "./çıktılar" olarak belirlenmiştir.  Yalnızca ek dosyaların karşıya yüklenmesi gerektiğinde veya bir çıktı dizini belirtilmediğinde upload_file kullanın. Ada ekleme `outputs` önerdiğimiz için, çıktılar dizinine yüklenir. Bu çalıştırma kaydıyla ilişkili tüm dosyaları şu şekilde listeleyebilirsiniz.`run.get_file_names()`|
+|Dosya veya dizini karşıya yükle|Çalışmayacaktır<br>`run.upload_file(name, path_or_stream)`<br> <br> Örnek:<br>Run. upload_file ("best_model. pkl", "./model.exe") | Çalıştırma kaydına bir dosya yükleyin. , Belirtilen çıkış dizininde dosyayı otomatik olarak yakala, bu, çoğu çalıştırma türü için varsayılan olarak "./çıktılar" olarak belirlenmiştir.  Yalnızca ek dosyaların karşıya yüklenmesi gerektiğinde veya bir çıktı dizini belirtilmediğinde upload_file kullanın. Ada ekleme önerdiğimiz için `outputs` , çıktılar dizinine yüklenir. Bu çalıştırma kaydıyla ilişkili tüm dosyaları şu şekilde listeleyebilirsiniz.`run.get_file_names()`|
 
 > [!NOTE]
 > Dolandırıcıklar, listeler, satırlar ve tablolar için ölçümler şunlardır: float, integer veya String.
@@ -52,6 +52,7 @@ Bir denemeye eğitim sırasında aşağıdaki ölçümler bir çalıştırmaya e
 Denemenizi izlemek veya izlemek isterseniz, çalıştırmayı gönderdiğinizde günlüğe kaydetmeyi başlatmak için kod eklemeniz gerekir. Aşağıda, çalıştırma gönderimini tetiklemenin yolları verilmiştir:
 * ' İ __çalıştırın. start_logging__ -günlük işlevlerini eğitim betiğe ekleyin ve belirtilen deneyde etkileşimli bir günlüğe kaydetme oturumu başlatın. **start_logging** , Not defterleri gibi senaryolarda kullanılmak üzere etkileşimli bir çalıştırma oluşturur. Oturum sırasında günlüğe kaydedilen ölçümler, denemenin içindeki çalıştırma kaydına eklenir.
 * __ScriptRunConfig__ -günlük işlevlerini eğitim betiğe ekleyin ve tüm betik klasörünü çalıştırmaya yükleyin.  **ScriptRunConfig** , betik çalıştırmaları için yapılandırmaların ayarlanmasına yönelik bir sınıftır. Bu seçenekle, tamamlama hakkında bildirim almak veya izlenecek bir görsel pencere öğesi almak için izleme kodu ekleyebilirsiniz.
+* __Tasarımcı günlüğü__ -bir sürükle &-bırakma tasarımcı işlem hattına, __Python betiği yürütme komut dosyası__ modülünü kullanarak günlük işlevleri ekleyin. Python kodunu log Designer denemeleri 'a ekleyin. 
 
 ## <a name="set-up-the-workspace"></a>Çalışma alanını ayarlama
 Günlüğe kaydetme ve deneme göndermeden önce, çalışma alanını ayarlamanız gerekir.
@@ -78,7 +79,7 @@ Azure Machine Learning SDK kullanarak deneme izleme ekleyin ve deneme çalışt�
 
 [! Not defteri-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb? Name = create_experiment)]
 
-Komut dosyası ile ```run.complete()```biter ve çalıştırma tamamlandı olarak işaretlenir.  Bu işlev genellikle etkileşimli not defteri senaryolarında kullanılır.
+Komut dosyası ile biter ```run.complete()``` ve çalıştırma tamamlandı olarak işaretlenir.  Bu işlev genellikle etkileşimli not defteri senaryolarında kullanılır.
 
 ## <a name="option-2-use-scriptrunconfig"></a>Seçenek 2: ScriptRunConfig kullanma
 
@@ -86,11 +87,11 @@ Komut dosyası ile ```run.complete()```biter ve çalıştırma tamamlandı olara
 
 Bu örnek, yukarıdaki temel sköğren Ridge model üzerinde genişletilir. Bu, deneme kapsamındaki çalışma aşamasındaki ölçümleri ve eğitilen modelleri yakalamak için modelin Alfa değerlerinin üzerinde tarama yapmak üzere basit bir parametre tarama işlemi yapar. Örnek, Kullanıcı tarafından yönetilen bir ortamda yerel olarak çalışır. 
 
-1. Bir eğitim betiği `train.py`oluşturun.
+1. Bir eğitim betiği oluşturun `train.py` .
 
    [! Code-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
 
-2. Ridge modelinde kullanılacak Alfa değerlerinin listesini almanızı sağlayan `train.py` betik başvuruları `mylib.py` .
+2. `train.py` `mylib.py` Ridge modelinde kullanılacak Alfa değerlerinin listesini almanızı sağlayan betik başvuruları.
 
    [! Code-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/mylib.py)] 
 
@@ -99,12 +100,37 @@ Bu örnek, yukarıdaki temel sköğren Ridge model üzerinde genişletilir. Bu, 
    [! Not defteri-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb? Name = user_managed_env)]
 
 
-4. ```train.py``` Betiği Kullanıcı tarafından yönetilen ortamda çalıştırılacak şekilde gönderebilirsiniz. Bu tüm betik klasörü, ```mylib.py``` dosya dahil olmak üzere eğitim için gönderilir.
+4. ```train.py```Betiği Kullanıcı tarafından yönetilen ortamda çalıştırılacak şekilde gönderebilirsiniz. Bu tüm betik klasörü, dosya dahil olmak üzere eğitim için gönderilir ```mylib.py``` .
 
    [! Not defteri-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb? Name = src)] [! Not defteri-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb? ad = Run)]
 
+## <a name="option-3-log-designer-experiments"></a>Seçenek 3: log Designer denemeleri
 
+Tasarımcı denemeleri günlük mantığını eklemek için __Python betiği yürütme__ modülünü kullanın. Bu iş akışını kullanarak herhangi bir değeri günlüğe kaydedebilirsiniz, ancak farklı çalışmalardan model performansını izlemek için __model değerlendir__ modülünden ölçümleri günlüğe kaydetmek yararlı olur.
 
+1. Bir __Python betik__ modülünü, __değerlendirme modeli__ modülünüzün çıkışına bağlayın.
+
+    ![Model modülünü değerlendirmek için Python betik modülünü yürütmeyi bağlama](./media/how-to-track-experiments/designer-logging-pipeline.png)
+
+1. Eğitilen modelinize ilişkin ortalama mutlak hatayı günlüğe kaydetmek için __Python betik__ kodu düzenleyicisini Yürüt ' e aşağıdaki kodu yapıştırın:
+
+    ```python
+    # dataframe1 contains the values from Evaluate Model
+    def azureml_main(dataframe1 = None, dataframe2 = None):
+        print(f'Input pandas.DataFrame #1: {dataframe1}')
+
+        from azureml.core import Run
+
+        run = Run.get_context()
+
+        # Log the mean absolute error to the current run to see the metric in the module detail pane.
+        run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
+
+        # Log the mean absolute error to the parent run to see the metric in the run details page.
+        run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
+    
+        return dataframe1,
+    ```
 
 ## <a name="manage-a-run"></a>Bir çalıştırmayı yönetme
 
@@ -149,7 +175,7 @@ Bir çalıştırma tamamlandıktan sonra bu sayfada artık görüntülenmez. Tam
    print(run.get_portal_url())
    ```
 
-2. **[Otomatik makine öğrenimi çalıştırmaları için]** Önceki bir çalıştırmalardan grafiklere erişmek için. Uygun `<<experiment_name>>` deneme adıyla değiştirin:
+2. **[Otomatik makine öğrenimi çalıştırmaları için]** Önceki bir çalıştırmalardan grafiklere erişmek için. `<<experiment_name>>`Uygun deneme adıyla değiştirin:
 
    ``` 
    from azureml.widgets import RunDetails
@@ -168,13 +194,13 @@ Bir işlem hattının daha ayrıntılı ayrıntılarını görüntülemek için 
 
 ### <a name="get-log-results-upon-completion"></a>Tamamlandıktan sonra günlük sonuçlarını alma
 
-Model eğitimi ve izleme arka planda gerçekleşirken diğer görevleri beklerken çalıştırabilirsiniz. Ayrıca, modelin daha fazla kod çalıştırmadan önce eğitimi tamamlamasını de bekleyebilirsiniz. **ScriptRunConfig**kullandığınızda, model eğitiminin ne zaman ```run.wait_for_completion(show_output = True)``` tamamlandığını göstermek için kullanabilirsiniz. ```show_output``` Bayrak size ayrıntılı çıkış verir. 
+Model eğitimi ve izleme arka planda gerçekleşirken diğer görevleri beklerken çalıştırabilirsiniz. Ayrıca, modelin daha fazla kod çalıştırmadan önce eğitimi tamamlamasını de bekleyebilirsiniz. **ScriptRunConfig**kullandığınızda, ```run.wait_for_completion(show_output = True)``` model eğitiminin ne zaman tamamlandığını göstermek için kullanabilirsiniz. ```show_output```Bayrak size ayrıntılı çıkış verir. 
 
 <a id="queryrunmetrics"></a>
 
 ### <a name="query-run-metrics"></a>Sorgu çalıştırma ölçümleri
 
-İle ```run.get_metrics()```eğitilen bir modelin ölçümlerini görüntüleyebilirsiniz. Bundan böyle, en iyi modeli belirleyebilmek için yukarıdaki örnekte günlüğe kaydedilen tüm ölçümleri elde edebilirsiniz.
+İle eğitilen bir modelin ölçümlerini görüntüleyebilirsiniz ```run.get_metrics()``` . Bundan böyle, en iyi modeli belirleyebilmek için yukarıdaki örnekte günlüğe kaydedilen tüm ölçümleri elde edebilirsiniz.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 ## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studio"></a>[Azure Machine Learning Studio](https://ml.azure.com) 'daki çalışma alanınızdaki denemeyi görüntüleyin

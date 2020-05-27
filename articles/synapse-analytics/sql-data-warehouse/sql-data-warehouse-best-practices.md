@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4462bf0fc2057922340eb01cb8c786dbc63ce290
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce1121a4a006e4208c76193a38262d4309e67584
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745343"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834450"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu için en iyi Yöntemler (eski adıyla SQL DW)
 
@@ -54,7 +54,7 @@ Ayrıca bkz. DMVs, [etiket](sql-data-warehouse-develop-label.md), [seçenek](/sq
 
 ## <a name="group-insert-statements-into-batches"></a>INSERT deyimlerini gruplayın
 
-Bir INSERT ifadesiyle küçük bir tabloya bir kerelik yükleme veya hatta bir aramanın düzenli olarak yeniden yüklenmesi, gereksinimlerinize göre gereksinimleriniz için iyi bir şekilde çalışabilir `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  
+Bir INSERT ifadesiyle küçük bir tabloya bir kerelik yükleme veya hatta bir aramanın düzenli olarak yeniden yüklenmesi, gereksinimlerinize göre gereksinimleriniz için iyi bir şekilde çalışabilir `INSERT INTO MyLookup VALUES (1, 'Type 1')` .  
 
 Ancak gün içinde binlerce veya milyonlarca satır yüklemeniz gerekiyorsa, ayrı ayrı INSERT deyimleri gerekli performansı göstermeyebilir.  Bunun yerine işlemlerinizi bir dosyaya yazılacağı ve başka bir işlemin belirli aralıklarla bu dosyayı yükleyeceği şekilde geliştirin.
 
@@ -180,7 +180,7 @@ Ayrıca bkz. [iş yükü yönetimi Için kaynak sınıfları](resource-classes-f
 
 Genel sorunlar ve çözümleri için [Sorun giderme](sql-data-warehouse-troubleshoot.md) makalemizi de inceleyin.
 
-Bu makalede aradığınızı bulamazsanız, tüm Azure SYNAPSE belgelerini aramak için bu sayfanın sol tarafındaki "belgeleri ara" seçeneğini kullanmayı deneyin.  [Azure SYNAPSE Forumu](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) , diğer kullanıcılara ve Azure SYNAPSE ürün grubuna soru göndermek için kullanabileceğiniz bir yerdir. Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
+Bu makalede aradığınızı bulamazsanız, tüm Azure SYNAPSE belgelerini aramak için bu sayfanın sol tarafındaki "belgeleri ara" seçeneğini kullanmayı deneyin.  [Azure SYNAPSE Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , diğer kullanıcılara ve Azure SYNAPSE ürün grubuna soru göndermek için kullanabileceğiniz bir yerdir. Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
 
 Stack Overflow sorularınızı sormak isterseniz, [Azure Synapse Stack Overflow Forumumuzu](https://stackoverflow.com/questions/tagged/azure-sqldw)da sunuyoruz.
 

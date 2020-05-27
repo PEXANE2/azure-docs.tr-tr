@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 8f6022f03d28362e85fba3fd75e60c4d7032b41b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cd02a0ea51faa7dae14e0f9d61c446aae55dcbe1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448375"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849578"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Hızlı başlangıç: Bing Video Arama REST API ve Ruby kullanarak video arama
 
-Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama sonucu görüntülemek için bu hızlı başlangıcı kullanın. Bu basit Ruby uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu örneğin kaynak kodu, ek hata işleme ve kod açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb)’da bulunabilir.
+Bing Video Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit Ruby uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve JSON yanıtını görüntüler. Bu uygulama Python 'da yazılmış olsa da, API birçok programlama dili ile uyumlu olan bir yenilenmiş Web hizmetidir. 
+
+Bu örneğin kaynak kodu, ek hata işleme ve kod açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb)’da bulunabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -29,7 +31,7 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Aşağıdaki paketleri kod dosyanıza içeri aktarın.
+1. Aşağıdaki paketleri kod dosyanıza aktarın:
 
     ```ruby
     require 'net/https'
@@ -37,7 +39,7 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
     require 'json'
     ```
 
-2. API uç noktası, video API 'SI arama yolu, abonelik anahtarınız ve arama terimiyle ilgili değişkenler oluşturun. `uri`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir.
+2. API uç noktası, video API 'SI arama yolu, abonelik anahtarınız ve arama terimiyle ilgili değişkenler oluşturun. Değer için `url` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -48,7 +50,7 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
 
 ## <a name="create-and-send-an-api-request"></a>API isteği oluşturma ve gönderme
 
-1. İsteğin arama URL 'sini biçimlendirmek için son adımdaki değişkenleri kullanın. URI ve yolunu birleştirip URL 'yi `?q=` parametreye eklemeden önce arama teriminizi kodlayın.
+1. İstek için bir arama URL 'SI biçimlendirmek üzere önceki adımdaki değişkenleri kullanın. URI ve yolunu birleştirip URL 'yi parametreye eklemeden önce arama teriminizi kodlayın `?q=` .
 
     ```ruby
     uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -61,7 +63,7 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
     request['Ocp-Apim-Subscription-Key'] = accessKey
     ```
 
-3. İsteği gönderin ve yanıtı kaydedin.
+3. İsteği gönderin ve ardından yanıtı kaydedin.
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -71,11 +73,11 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
 
 ## <a name="process-and-view-the-response"></a>Yanıtı işleme ve görüntüleme
 
-1. Yanıt alındıktan sonra JSON yanıtını yazdırabilirsiniz.
+Yanıt alındıktan sonra JSON yanıtını yazdırın.
 
-    ```ruby
-    puts JSON::pretty_generate(JSON(response.body))
-    ```
+```ruby
+puts JSON::pretty_generate(JSON(response.body))
+```
 
 ## <a name="json-response"></a>JSON yanıtı
 
@@ -191,7 +193,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tek sayfalı Web uygulaması oluşturma](../tutorial-bing-video-search-single-page-app.md)
+> [Tek sayfalı web uygulaması oluşturma](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 

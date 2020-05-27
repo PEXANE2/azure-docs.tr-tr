@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: b26498357db6b1bc006c27285546fd0f3ebe6c4a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743783"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830132"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Azure Otomasyonu'nda güvenli varlıkların şifrelenmesi
 
@@ -189,8 +189,8 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için PowerShe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Anahtar Kasası nedir?](../key-vault/general/overview.md)
-- [Azure Otomasyonu 'nda sertifikaları yönetme](shared-resources/certificates.md)
-- [Azure Otomasyonu 'nda kimlik bilgilerini yönetme](shared-resources/credentials.md)
-- [Azure Otomasyonu 'nda değişkenleri yönetme](shared-resources/variables.md)
-- [Azure Otomasyonu 'nda bağlantıları yönetme](automation-connections.md)
+- Azure Key Vault anlamak için bkz. [Azure Key Vault nedir?](../key-vault/general/overview.md).
+- Sertifikalarla çalışmak için bkz. [Azure Otomasyonu 'nda sertifikaları yönetme](shared-resources/certificates.md).
+- Kimlik bilgilerini işlemek için bkz. [Azure Otomasyonu 'nda kimlik bilgilerini yönetme](shared-resources/credentials.md).
+- Otomasyon değişkenlerini kullanmak için [Azure Otomasyonu 'nda değişkenleri yönetin](shared-resources/variables.md).
+- Bağlantılarla çalışırken yardım için bkz. [Azure Otomasyonu 'nda bağlantıları yönetme](automation-connections.md).

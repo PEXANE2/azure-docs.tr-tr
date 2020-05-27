@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 11/16/2017
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 2ef50704d96cc51881594c778d1a4b109a1eae82
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 624f9bf512a28657808d9e2838149601c0bd2f99
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125154"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837238"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleriyle otomatik ölçeklendirme sorunlarını giderme
 **Sorun** : sanal makine ölçek kümelerini kullanarak Azure Resource Manager bir otomatik ölçeklendirme altyapısı oluşturdunuz; Örneğin, bunun gibi bir şablon dağıtarak, https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale Ölçek kurallarınızı tanımlamış ve VM 'lere ne kadar yük yerleştirdiğinize bakılmaksızın, otomatik ölçeklendirme yapmaz.
@@ -73,7 +73,7 @@ Göz önünde bulundurulması gereken bazı noktalar şunlardır:
     Veriler yoksa, bu sorun, VM 'lerde çalışan tanılama uzantısının bulunduğu anlamına gelir. Veriler varsa, ölçek kurallarınızın bir sorunu ya da Öngörüler hizmeti ile ilgili bir sorun olduğunu gösterir. [Azure durumunu](https://azure.microsoft.com/status/)denetleyin.
     
     Bu adımları tamamladıktan sonra otomatik ölçeklendirme sorunlarınız varsa, aşağıdaki kaynakları deneyebilirsiniz: 
-    * [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows)veya [yığın taşması](https://stackoverflow.com/questions/tagged/azure) hakkındaki forumları okuyun 
+    * [Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)veya [yığın taşması](https://stackoverflow.com/questions/tagged/azure) hakkındaki forumları okuyun 
     * Bir destek çağrısını günlüğe kaydedin. Şablonu paylaşmaya ve performans verilerinizin görünümüne hazırlıklı olun.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

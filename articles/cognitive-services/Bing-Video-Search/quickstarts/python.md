@@ -8,20 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: fbf20c2d54506b0f314697d6df34f9a430e7c016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 28d9726bfa1e195fa87b41914841083c56dbc844
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382693"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849595"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Hızlı başlangıç: Bing Video Arama REST API ve Python kullanarak video arama
 
-Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama sonucu görüntülemek için bu hızlı başlangıcı kullanın. Bu basit Python uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu örneğin kaynak kodu, ek hata işleme ve kod açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py)’da bulunabilir.
+Bing Video Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit Python uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve JSON yanıtını görüntüler. Bu uygulama Python 'da yazılmış olsa da, API birçok programlama dili ile uyumlu olan bir yenilenmiş Web hizmetidir. 
 
-Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://mybinder.org)’da bir Jupyter not defteri olarak çalıştırabilirsiniz: 
+Bu örneğin kaynak kodu, ek hata işleme ve kod açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py)’da bulunabilir.
+
+Bu örneği, [myciltçi](https://mybinder.org) üzerinde bir Jupyter Not defteri olarak **çalıştırabilirsiniz.** 
 
 [![Bağlayıcısı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
@@ -34,13 +36,13 @@ Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://
 
 ## <a name="initialize-the-application"></a>Uygulamayı başlatma
 
-1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki kitaplıkları içeri aktarın
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki kitaplıkları içeri aktarın:
 
     ```python
     import requests
     from IPython.display import HTML
     ```
-2.  Abonelik anahtarınız, arama uç noktası ve arama teriminiz için değişkenler oluşturun. `search_url`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir.
+2.  Abonelik anahtarınız, arama uç noktası ve arama teriminiz için değişkenler oluşturun. Değer için `search_url` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
     
     ```python
     subscription_key = None
@@ -49,7 +51,7 @@ Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://
     search_term = "kittens"
     ```
 
-3. Üst bilgi dizesini anahtarınızla ilişkilendirmek `Ocp-Apim-Subscription-Key` için yeni bir sözlük oluşturarak abonelik anahtarınızı bir üstbilgiye ekleyin.
+3. `Ocp-Apim-Subscription-Key`Üst bilgi dizesini anahtarınızla ilişkilendirmek için yeni bir sözlük oluşturarak abonelik anahtarınızı bir üstbilgiye ekleyin.
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
@@ -57,13 +59,13 @@ Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://
 
 ## <a name="send-your-request"></a>İsteğinizi gönderin
 
-1. Adlı `params`bir sözlük oluşturarak isteğinize parametreleri ekleyin. Döndürülen videoların fiyatlandırması ve `q` `free` `short` video uzunluğu için, arama teriminizi parametreye, video sayısı 5 ' e ekleyin.
+1. Adlı bir sözlük oluşturarak isteğinize parametreleri ekleyin `params` . Arama terimlerinizi `q` parametreye ekleyin: video sayısı 5, `free` döndürülen videoların fiyatlandırması ve `short` video uzunluğu için.
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}
     ```
 
-2. Bing Video Arama API'si çağırmak `requests` için Python 'da kitaplığı kullanın. `headers` Ve `params` sözlüğünü kullanarak API anahtarını ve arama parametrelerini geçirin.
+2. `requests`Bing video arama API'si çağırmak Için Python 'da kitaplığı kullanın. Ve sözlüğünü kullanarak API anahtarını ve arama parametrelerini geçirin `headers` `params` .
     
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -71,7 +73,7 @@ Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://
     search_results = response.json()
     ```
 
-3. Döndürülen videolardan birini görüntülemek için `search_results` nesnesinden bir arama sonucu alın. Sonucun `embedHtml` özelliğini bir `IFrame`öğesine ekleyin.  
+3. Döndürülen videolardan birini görüntülemek için nesnesinden bir arama sonucu alın `search_results` . Sonucun `embedHtml` özelliğini bir öğesine ekleyin `IFrame` .  
     
     ```python
     HTML(search_results["value"][0]["embedHtml"].replace("autoplay=1","autoplay=0"))

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 4cb2159b02635e659a8ca7236523e899bf01550c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cace4bdc1b8558fb7186f6300189c22753cc8bf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133249"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834858"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Veritabanı hizmeti nedir?
 
@@ -119,7 +119,7 @@ Azure Kullanılabilirlik Alanları, tek bir bölge içinde tek bir veri merkezi 
 
 Aslında, Microsoft tarafından yönetilen küresel bir veri merkezi ağı tarafından desteklenen Azure 'un hizmet düzeyi sözleşmesi [(SLA)](https://azure.microsoft.com/support/legal/sla/) , uygulamanızın 24/7 çalışmasına yardımcı olur. Azure platformu her veritabanını tamamen yönetir ve veri kaybı ve yüksek oranda veri kullanılabilirliği garantisi vermez. Azure, düzeltme eki uygulama, yedeklemeler, çoğaltma, hata algılama, temel alınan olası donanım, yazılım veya ağ hataları, hata düzeltmelerini dağıtma, yük devretme, veritabanı yükseltmeleri ve diğer bakım görevlerini otomatik olarak işler. Standart kullanılabilirlik düzeyine ulaşmak için işlem ve depolama katmanları ayrılır. Premium kullanılabilirlik, performans için işlem ve depolamayı tek bir düğümde tümleştirerek ve sonra her zaman açık kullanılabilirlik gruplarıyla benzer bir teknoloji uygulayarak elde edilir. Azure SQL veritabanı 'nın yüksek kullanılabilirlik özelliklerine ilişkin tam bir tartışma için bkz. [SQL veritabanı kullanılabilirliği](sql-database-high-availability.md). 
 
-Ayrıca, SQL veritabanı yerleşik [iş sürekliliği ve küresel ölçeklenebilirlik](sql-database-business-continuity.md) özellikleri sağlar. Bunlar:
+Ayrıca, SQL veritabanı yerleşik [iş sürekliliği ve küresel ölçeklenebilirlik](sql-database-business-continuity.md) özellikleri sağlar. Bu modüller şunlardır:
 
 - [Otomatik yedeklemeler](sql-database-automated-backups.md):
 
@@ -254,7 +254,7 @@ SQL veritabanı müşterileri, SQL Server için Azure Hibrit Avantajı ilişkili
 
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): veritabanı yönetim sorularına sorun.
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): geliştirme sorularını sorun.
-- [MSDN forumları](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Teknik sorular sorun.
+- [Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html): Teknik sorular sorun.
 - [Geri bildirim](https://aka.ms/sqlfeedback): hataları ve istek özelliğini bildir.
 - [Reddit](https://www.reddit.com/r/SQLServer/): SQL Server tartışın.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: e9f8fe17fa28cc5fcc4543bfb5e194bd3e7b837d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 252467a22ba37352cee4c3e7bffcf1ff910c86ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594106"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835453"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
@@ -24,7 +24,7 @@ Azure HDInsight kümeleri, Azure bulutu 'nda çalışan tanıdık bir Linux orta
 Bu belgedeki adımların birçoğu, sisteminizde yüklü olması gerekebilecek aşağıdaki yardımcı programları kullanır.
 
 * [kıvrımlı](https://curl.haxx.se/) -Web tabanlı hizmetlerle iletişim kurmak için kullanılır.
-* bir komut satırı JSON işlemcisi olan **JQ**.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)..
+* bir komut satırı JSON işlemcisi olan **JQ**.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) ..
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -Azure hizmetlerini uzaktan yönetmek için kullanılır.
 * **Bir SSH istemcisi**. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -42,13 +42,13 @@ Dahili olarak, kümedeki her düğümün küme yapılandırması sırasında ata
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-`CLUSTERNAME` değerini kümenizin adıyla değiştirin. İstendiğinde, yönetici hesabının parolasını girin. Bu komut, kümedeki ana bilgisayarların listesini içeren bir JSON belgesi döndürür. [JQ](https://stedolan.github.io/jq/) , her ana bilgisayar için `host_name` öğe değerini ayıklamak üzere kullanılır.
+`CLUSTERNAME` değerini kümenizin adıyla değiştirin. İstendiğinde, yönetici hesabının parolasını girin. Bu komut, kümedeki ana bilgisayarların listesini içeren bir JSON belgesi döndürür. [JQ](https://stedolan.github.io/jq/) , `host_name` her ana bilgisayar için öğe değerini ayıklamak üzere kullanılır.
 
 Belirli bir hizmet için düğümün adını bulmanız gerekiyorsa, bu bileşen için ambarı sorgulayabilirsiniz. Örneğin,,,,,,,,,,,,,,,,,,,,,
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-Bu komut, hizmeti açıklayan bir JSON belgesi döndürür ve ardından [JQ](https://stedolan.github.io/jq/) yalnızca konaklar için `host_name` değer alır.
+Bu komut, hizmeti açıklayan bir JSON belgesi döndürür ve ardından [JQ](https://stedolan.github.io/jq/) yalnızca `host_name` konaklar için değer alır.
 
 ## <a name="remote-access-to-services"></a>Hizmetlere uzaktan erişim
 
@@ -86,12 +86,12 @@ Daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop Services tarafından ku
 
 ## <a name="file-locations"></a>Dosya konumları
 
-Hadoop ile ilgili dosyalar konumundaki `/usr/hdp`küme düğümlerinde bulunabilir. Bu dizin aşağıdaki alt dizinleri içerir:
+Hadoop ile ilgili dosyalar konumundaki küme düğümlerinde bulunabilir `/usr/hdp` . Bu dizin aşağıdaki alt dizinleri içerir:
 
 * **2.6.5.3009-43**: Dizin adı, HDInsight tarafından kullanılan Hadoop platformunun sürümüdür. Kümenizdeki sayı burada listelenenden farklı olabilir.
 * **geçerli**: Bu dizin, **2.6.5.3009-43** dizininde bulunan alt dizinlere bağlantılar içerir. Bu dizin, sürüm numarasını anımsamanıza gerek kalmayacak şekilde bulunur.
 
-Örnek veri ve JAR dosyaları, `/example` ve ' `/HdiSamples`de Hadoop Dağıtılmış dosya sistemi bulunabilir.
+Örnek veri ve JAR dosyaları, ve ' de Hadoop Dağıtılmış Dosya Sistemi bulunabilir `/example` `/HdiSamples` .
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>, Azure depolama ve Data Lake Storage
 
@@ -136,9 +136,9 @@ Bazı komutlar bir dosyaya erişirken, şemayı URI 'nin bir parçası olarak be
 * `adl://<storage-name>.azuredatalakestore.net/`: Varsayılan olmayan bir Data Lake Storage iletişim kurulurken kullanılır. Ayrıca HDInsight kümenizin kök dizini dışındaki verilere erişmek için de kullanılır.
 
 > [!IMPORTANT]  
-> HDInsight için varsayılan depo olarak Data Lake Storage kullanırken, mağaza dahilinde HDInsight depolamanın kökü olarak kullanılacak bir yol belirtmeniz gerekir. Varsayılan yol `/clusters/<cluster-name>/`.
+> HDInsight için varsayılan depo olarak Data Lake Storage kullanırken, mağaza dahilinde HDInsight depolamanın kökü olarak kullanılacak bir yol belirtmeniz gerekir. Varsayılan yol `/clusters/<cluster-name>/` .
 >
-> Verileri kullanırken `/` veya `adl:///` veri erişimi için, yalnızca kümenin kökünde (örneğin, `/clusters/<cluster-name>/`) depolanan verilere erişebilirsiniz. Mağazadaki her yerden veriye erişmek için `adl://<storage-name>.azuredatalakestore.net/` biçimini kullanın.
+> Verileri kullanırken `/` veya `adl:///` veri erişimi için, yalnızca kümenin kökünde (örneğin,) depolanan verilere erişebilirsiniz `/clusters/<cluster-name>/` . Mağazadaki her yerden veriye erişmek için `adl://<storage-name>.azuredatalakestore.net/` biçimini kullanın.
 
 ### <a name="what-storage-is-the-cluster-using"></a>Hangi depolama alanı kullanılarak küme
 
@@ -149,7 +149,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 ```
 
 > [!NOTE]  
-> Bu komut, bu bilgileri içeren (`service_config_version=1`) sunucusuna uygulanan ilk yapılandırmayı döndürür. En güncel olanı bulmak için tüm yapılandırma sürümlerini listeetmeniz gerekebilir.
+> Bu komut `service_config_version=1` , bu bilgileri içeren () sunucusuna uygulanan ilk yapılandırmayı döndürür. En güncel olanı bulmak için tüm yapılandırma sürümlerini listeetmeniz gerekebilir.
 
 Bu komut aşağıdaki URI 'lere benzer bir değer döndürür:
 
@@ -163,7 +163,7 @@ Bu komut aşağıdaki URI 'lere benzer bir değer döndürür:
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
     ```
 
-    Bu komut şu ana bilgisayar adını döndürür: `<data-lake-store-account-name>.azuredatalakestore.net`.
+    Bu komut şu ana bilgisayar adını döndürür: `<data-lake-store-account-name>.azuredatalakestore.net` .
 
     HDInsight için kök olan mağaza içindeki dizini almak için aşağıdaki REST çağrısını kullanın:
 
@@ -171,7 +171,7 @@ Bu komut aşağıdaki URI 'lere benzer bir değer döndürür:
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
     ```
 
-    Bu komut aşağıdaki yola benzer bir yol döndürür: `/clusters/<hdinsight-cluster-name>/`.
+    Bu komut aşağıdaki yola benzer bir yol döndürür: `/clusters/<hdinsight-cluster-name>/` .
 
 Ayrıca, aşağıdaki adımları kullanarak Azure portal kullanarak depolama bilgilerini bulabilirsiniz:
 
@@ -185,7 +185,7 @@ HDInsight kümesi dışından verilere erişmenin çeşitli yolları vardır. A�
 
 __Azure Storage__kullanıyorsanız verilerinize erişebilmenizin yolları için aşağıdaki bağlantılara bakın:
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Azure ile çalışmaya yönelik komut satırı arabirimi komutları. Yükledikten sonra, depolamayı kullanma `az storage` hakkında yardım için veya `az storage blob` blob 'a özgü komutlar için komutunu kullanın.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Azure ile çalışmaya yönelik komut satırı arabirimi komutları. Yükledikten sonra, `az storage` depolamayı kullanma hakkında yardım için veya `az storage blob` BLOB 'a özgü komutlar için komutunu kullanın.
 * [blobxfer.py](https://github.com/Azure/blobxfer): Azure depolama 'da bloblarla çalışmaya yönelik bir Python betiği.
 * Çeşitli SDK 'lar:
 
@@ -239,7 +239,7 @@ Bir bileşenin farklı bir sürümünü kullanmak için, ihtiyacınız olan sür
 > [!IMPORTANT]
 > HDInsight kümesiyle birlikte sunulan bileşenler tam olarak desteklenir ve Microsoft Desteği bu bileşenlerle ilgili sorunları yalıtmaya ve çözmeye yardımcı olur.
 >
-> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Bu durum sorunu çözmeye veya bu teknolojinin derin uzmanlığı bulunan açık kaynaklı teknolojiler için kullanılabilir kanalları size sormaya neden olur. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [HDInsight Için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ayrıca Apache projelerinin üzerinde [https://apache.org](https://apache.org)proje siteleri vardır, örneğin: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
+> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Bu durum sorunu çözmeye veya bu teknolojinin derin uzmanlığı bulunan açık kaynaklı teknolojiler için kullanılabilir kanalları size sormaya neden olur. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [Microsoft Q&HDInsight için soru sayfası](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) [https://stackoverflow.com](https://stackoverflow.com) . Ayrıca Apache projelerinin üzerinde proje siteleri vardır [https://apache.org](https://apache.org) , örneğin: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
