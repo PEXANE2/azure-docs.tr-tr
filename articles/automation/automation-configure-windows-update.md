@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 22bec66467dc7a42470c3660b8505c4aa13557d4
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ea05e75c0d1db1ef27ae2e8e9364327528a7c8ed
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715792"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837170"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Azure Otomasyonu Güncelleştirme Yönetimi Windows Update ayarlarını yapılandırma
 
@@ -62,4 +62,4 @@ Makineleri iç güncelleştirme hizmetine kısıtlamak için [Windows Update Int
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)
+[Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)konusundaki yönergeleri uygulayarak bir güncelleştirme dağıtımı zamanlayın.

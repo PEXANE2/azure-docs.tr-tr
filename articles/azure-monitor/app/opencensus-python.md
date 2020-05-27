@@ -6,18 +6,18 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bbc9fe8d53f231f590dba7e2bd493633c39a1383
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6b8343d08962d8ce749e1160b0226b68571571f8
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701528"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815732"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python uygulamanız için Azure Izleyicisini ayarlama
 
 Azure Izleyici, [Opencensus](https://opencensus.io)ile tümleştirme yoluyla, Python uygulamalarının dağıtılmış izlemeyi, ölçüm toplamayı ve günlüğe kaydedilmesini destekler. Bu makale, Python için OpenCensus ayarlama ve izleme verilerinizi Azure Izleyici 'ye gönderme sürecinde size yol gösterecektir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 - Python yüklemesi. Bu makalede [Python 3.7.0](https://www.python.org/downloads/)kullanılmaktadır, ancak önceki sürümler büyük olasılıkla küçük değişikliklerle çalışacaktır.
@@ -39,7 +39,7 @@ Azure Izleyici, [Opencensus](https://opencensus.io)ile tümleştirme yoluyla, Py
    | Ayar        | Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
    | **Adı**      | Genel benzersiz değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
-   | **Kaynak grubu**     | myResourceGroup      | Application Insights verileri barındıracak yeni kaynak grubunun adı |
+   | **Kaynak Grubu**     | myResourceGroup      | Application Insights verileri barındıracak yeni kaynak grubunun adı |
    | **Konum** | Doğu ABD | Size yakın veya uygulamanızın barındırıldığı yerin yakınında bir konum |
 
 1. **Oluştur**’u seçin.
@@ -254,13 +254,13 @@ OpenCensus 'de örnekleme hakkında bilgi edinmek için, [opencensus 'de örnekl
 
 Varsayılan olarak, ölçüm Dışarı Aktarıcı Azure Izleyici 'ye bir dizi standart ölçüm gönderir. Bunu, `enable_standard_metrics` `False` ölçüm verme programı oluşturucusunda bayrağını olarak ayarlayarak devre dışı bırakabilirsiniz.
 
-    ```python
-    ...
-    exporter = metrics_exporter.new_metrics_exporter(
-      enable_standard_metrics=False,
-      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
-    ...
-    ```
+```python
+...
+exporter = metrics_exporter.new_metrics_exporter(
+  enable_standard_metrics=False,
+  connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+...
+```
 Şu anda gönderilen standart ölçümlerin bir listesi aşağıda verilmiştir:
 
 - Kullanılabilir bellek (bayt)
@@ -338,8 +338,8 @@ Bu ölçümleri ' de görebilmeniz gerekir `performanceCounters` . Gelen istek o
 
 4. Dışarı aktarma programı günlük verilerini Azure Izleyici 'ye gönderir. Verileri altında bulabilirsiniz `traces` . 
 
-> [!NOTE]
-> `traces`Bu bağlamda ile aynı değildir `Tracing` . `traces`kullanarak Azure Izleyici 'de göreceğiniz telemetri türünü ifade eder `AzureLogHandler` . `Tracing`OpenCensus içindeki bir kavramı ifade eder ve [Dağıtılmış izleme](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ile ilgilidir.
+    > [!NOTE]
+    > `traces`Bu bağlamda ile aynı değildir `Tracing` . `traces`kullanarak Azure Izleyici 'de göreceğiniz telemetri türünü ifade eder `AzureLogHandler` . `Tracing`OpenCensus içindeki bir kavramı ifade eder ve [Dağıtılmış izleme](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ile ilgilidir.
 
 5. Günlük iletilerinizi biçimlendirmek için, `formatters` yerleşik Python [günlüğü API](https://docs.python.org/3/library/logging.html#formatter-objects)'sinde öğesini kullanabilirsiniz.
 
@@ -371,8 +371,8 @@ Bu ölçümleri ' de görebilmeniz gerekir `performanceCounters` . Gelen istek o
     ```
 
 6. Ayrıca, custom_dimensions alanını kullanarak *fazladan* anahtar sözcük bağımsız değişkenine günlük iletilerinize özel özellikler ekleyebilirsiniz. Bunlar, Azure Izleyici 'de anahtar-değer çiftleri olarak görünür `customDimensions` .
-> [!NOTE]
-> Bu özelliğin çalışması için custom_dimensions alana bir sözlük geçirmeniz gerekir. Diğer herhangi bir türün bağımsız değişkenlerini geçirirseniz, günlükçü bunları yoksayar.
+    > [!NOTE]
+    > Bu özelliğin çalışması için custom_dimensions alana bir sözlük geçirmeniz gerekir. Diğer herhangi bir türün bağımsız değişkenlerini geçirirseniz, günlükçü bunları yoksayar.
 
     ```python
     import logging
@@ -395,25 +395,25 @@ Bu ölçümleri ' de görebilmeniz gerekir `performanceCounters` . Gelen istek o
 
 OpenCensus Python, Telemetriyi otomatik olarak izlemez ve göndermez `exception` . Bunlar, `AzureLogHandler` Python günlüğü kitaplığı aracılığıyla özel durumlar kullanılarak üzerinden gönderilir. Normal günlüğe kaydetme ile tıpkı özel özellikler ekleyebilirsiniz.
 
-    ```python
-    import logging
-    
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
-    # TODO: replace the all-zero GUID with your instrumentation key.
-    logger.addHandler(AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+```python
+import logging
 
-    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+from opencensus.ext.azure.log_exporter import AzureLogHandler
 
-    # Use properties in exception logs
-    try:
-        result = 1 / 0  # generate a ZeroDivisionError
-    except Exception:
-        logger.exception('Captured an exception.', extra=properties)
-    ```
+logger = logging.getLogger(__name__)
+# TODO: replace the all-zero GUID with your instrumentation key.
+logger.addHandler(AzureLogHandler(
+    connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+)
+
+properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+# Use properties in exception logs
+try:
+    result = 1 / 0  # generate a ZeroDivisionError
+except Exception:
+    logger.exception('Captured an exception.', extra=properties)
+```
 Özel durumları açıkça günlüğe yazmanız gerektiğinden, bu, işlenmemiş özel durumları nasıl günlüğe kaydetmek istediğinizdeki kullanıcıya kadar olur. OpenCensus, bir özel durum telemetrisini açık bir şekilde günlüğe kaydeden sürece kullanıcının bunu nasıl yapmak istediğini gösteren kısıtlamalar yerleştirmez.
 
 #### <a name="sampling"></a>Örnekleme

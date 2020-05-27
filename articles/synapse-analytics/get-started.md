@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: e826075d2f0032f796ebe6d2c8648130e5b453b7
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: dcad90713227e55437523c91997175242078e9e4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800899"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836490"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kullanmaya başlama
 
@@ -22,8 +22,8 @@ Bu öğretici, Azure SYNAPSE Analytics 'i kurmak ve kullanmak için gereken tüm
 
 ## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>Bir depolama hesabını bir Synapse çalışma alanıyla kullanılmak üzere hazırlama
 
-* [Azure Portal](https://portal.azure.com) açın
-* Aşağıdaki ayarlarla yeni bir depolama hesabı oluşturun:
+1. [Azure Portal](https://portal.azure.com) açın
+1. Aşağıdaki ayarlarla yeni bir depolama hesabı oluşturun:
     * **Temel bilgiler** sekmesinde
 
     |Ayar | Önerilen değer | Açıklama |
@@ -32,77 +32,81 @@ Bu öğretici, Azure SYNAPSE Analytics 'i kurmak ve kullanmak için gereken tüm
     |**Hesap türü**|Şu şekilde ayarlanmalıdır`StorageV2`||
     |**Konum**|Herhangi bir konum seçebilirsiniz| SYNAPSE çalışma alanınızın ve Azure Data Lake Storage (ADLS) Gen2 hesabının aynı bölgede olması önerilir.|
     ||||
-
+    
     * **Gelişmiş** sekmesinde
-
+    
     |Ayar | Önerilen değer | Açıklama |
     |---|---|---|
     |**Data Lake Storage Gen2**|`Enabled`| Azure SYNAPSE, yalnızca bu ayarın etkinleştirildiği depolama hesaplarıyla birlikte kullanılabilir.|
     ||||
 
-* Depolama hesabı oluşturulduktan sonra, bu rol atamalarını yapın veya zaten atandıklarından emin olun. Depolama hesabında, sol gezinti bölmesinde **erişim denetimi (IAM)** seçeneğini belirleyin.
-    * Depolama hesabındaki **sahibi** rolüne kendinizi atayın
-    * Depolama hesabındaki **Depolama Blobu veri sahibi** rolüne kendinizi atayın
-* Sol gezinti bölmesinde **kapsayıcılar** ' ı seçin ve bir kapsayıcı oluşturun. Herhangi bir ad verebilirsiniz. Varsayılan **genel erişim düzeyini**kabul edin. Bu belgede, kapsayıcıyı çağıracağız `users` . **Oluştur**’u seçin. 
+1. Depolama hesabı oluşturulduktan sonra sol gezinmede **erişim denetimi (IAM)** seçeneğini belirleyin. Ardından, aşağıdaki rolleri atayın veya zaten atanmış olduklarından emin olun. 
+    a. * Depolama hesabı b 'deki **sahip** rolüne kendiniz atayın. * Depolama hesabındaki **Depolama Blobu veri sahibi** rolüne kendinizi atayın
+1. Sol gezinti bölmesinde **kapsayıcılar** ' ı seçin ve bir kapsayıcı oluşturun. Herhangi bir ad verebilirsiniz. Varsayılan **genel erişim düzeyini**kabul edin. Bu belgede, kapsayıcıyı çağıracağız `users` . **Oluştur**’u seçin. 
 
 ## <a name="create-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
-* [Azure Portal](https://portal.azure.com) açın ve için en üstteki arama ' yı açın `Synapse` .
-* Arama sonuçlarında **Hizmetler**altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** seçeneğini belirleyin.
-* **+ Ekle** ' yi seçin
-* **Temel bilgiler** sekmesi:
+1. [Azure Portal](https://portal.azure.com) açın ve için en üstteki arama ' yı açın `Synapse` .
+1. Arama sonuçlarında **Hizmetler**altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** seçeneğini belirleyin.
+1. **+ Ekle** ' yi seçin
+1. **Temel bilgiler** sekmesi:
 
     |Ayar | Önerilen değer | Açıklama |
     |---|---|---|
     |**Çalışma alanı adı**|Her şeyi çağırabilirsiniz.| Bu belgede, şunu kullanacağız`myworkspace`
-    |**Bölge**|Depolama hesabının bölgesiyle Eşleştir||
+    |**Geli**|Depolama hesabının bölgesiyle Eşleştir||
     |||
 
-* **Data Lake Storage Gen 2** ' yi seçin altında, daha önce oluşturduğunuz hesabı ve kapsayıcıyı seçin
+1. **Data Lake Storage Gen 2**' yi seçin altında, daha önce oluşturduğunuz hesabı ve kapsayıcıyı seçin.
+    > [!NOTE]
+    > Burada, SYNAPSE çalışma alanının "birincil" depolama hesabı olarak seçilen depolama hesabına başvurduk. Bu hesap, verileri Apache Spark tablolarında depolamak ve Spark havuzları oluşturulduğunda ya da Spark uygulamaları çalıştırıldığında oluşturulan Günlükler için kullanılır.
 
-> [!NOTE]
-> Burada seçilen depolama hesabı, SYNAPSE çalışma alanının "birincil" depolama hesabı olarak anılacaktır.
-
-* **İncele ve oluştur**’u seçin. **Oluştur**’u seçin. Çalışma alanınız birkaç dakika içinde hazırlanacaktır.
+1. **İncele ve oluştur**’u seçin. **Oluştur**’u seçin. Çalışma alanınız birkaç dakika içinde hazırlanacaktır.
 
 ## <a name="verify-the-synapse-workspace-msi-has-access-to-the-storage-account"></a>SYNAPSE çalışma alanı MSI ' nin depolama hesabına erişimi olduğunu doğrulayın
 
 Bu, sizin için zaten yapılmış olabilir. Herhangi bir durumda, doğrulamanız gerekir.
 
-* Çalışma alanınız için seçilen birincil depolama hesabını açmak [Azure Portal](https://portal.azure.com) açın.
-* Aşağıdaki atamanın mevcut olduğundan emin olun veya yoksa oluşturun
-    * Depolama hesabındaki Depolama Blobu veri katılımcısı rolü çalışma alanınıza.
-    * Bu rolü çalışma alanına atamak için, Depolama Blobu veri katılımcısı rolünü seçin, varsayılan **erişim ata** ' yı seçin ve **Seç** kutusuna çalışma alanınızın adını yazın. **Kaydet**’i seçin.
+1. [Azure Portal](https://portal.azure.com) açın ve çalışma alanınız için seçilen birincil depolama hesabını açın.
+1. Sol gezinmede **erişim denetimi (IAM)** seçeneğini belirleyin. Ardından, aşağıdaki rolleri atayın veya zaten atanmış olduklarından emin olun. 
+    a. Depolama hesabındaki **Depolama Blobu veri katılımcısı** rolüne çalışma alanı kimliğini atayın. Çalışma alanı kimliği, çalışma alanıyla aynı ada sahip. Bu belgede, çalışma alanı `myworkspace` kimliği`myworkspaced`
+1. **Kaydet**’i seçin.
     
 ## <a name="launch-synapse-studio"></a>SYNAPSE Studio 'Yu Başlat
 
 SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu açmak için iki yol vardır:
 * [Azure Portal](https://portal.azure.com) SYNAPSE çalışma alanınızı açın ve **genel bakış** bölümünün üst kısmında **SYNAPSE Studio 'yu Başlat** ' ı seçin.
-* Doğrudan https://web.azuresynapse.net çalışma alanınıza gidin ve oturum açın.
+* Doğrudan çalışma alanınıza gidin https://web.azuresynapse.net ve oturum açın.
 
 ## <a name="create-a-sql-pool"></a>SQL havuzu oluşturma
 
-* SYNAPSE Studio 'da, sol taraftaki **> SQL havuzlarını Yönet** ' e gidin
-* NOTE: tüm SYNAPSE çalışma alanları, **SQL isteğe bağlı**olarak adlandırılan önceden oluşturulmuş bir havuz ile gelir.
-* **+ Yeni** ' yi seçin ve şu ayarları girin:
+1. SYNAPSE Studio 'da, sol taraftaki gezinmede **> SQL havuzlarını Yönet** ' i seçin.
+
+    > [!NOTE] 
+    > Tüm SYNAPSE çalışma alanları, **SQL isteğe bağlı**olarak adlandırılan önceden oluşturulmuş bir havuz ile gelir.
+
+1. **+ Yeni** ' yi seçin ve şu ayarları girin:
 
     |Ayar | Önerilen değer | 
     |---|---|---|
     |**SQL havuzu adı**| `SQLDB1`|
     |**Performans düzeyi**|`DW100C`|
-* **Gözden geçir + oluştur** ' u ve ardından **Oluştur**' u seçin.
-* Havuzunuz birkaç dakika içinde hazırlanacaktır.
+    |||
 
-> [!NOTE]
-> Bir Synapse SQL havuzu, "Azure SQL veri ambarı" olarak adlandırılabilecek şekilde karşılık gelir
+1. **Gözden geçir + oluştur** ' u ve ardından **Oluştur**' u seçin.
+1. SQL havuzunuz birkaç dakika içinde hazırlanacaktır.
 
-* Bir SQL havuzu, çalıştığı sürece faturalanabilir kaynakları tüketir. Bu nedenle, maliyetleri azaltmak için gerektiğinde havuzu duraklatabilirsiniz.
-* SQL havuzunuz oluşturulduğunda, **SQLDB1**ADLı bir SQL havuzu veritabanı ile ilişkilendirilir.
+    > [!NOTE]
+    > Bir Synapse SQL havuzu, "Azure SQL veri ambarı" olarak adlandırılabilecek şekilde karşılık gelir
 
-## <a name="create-an-apache-spark-pool-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Apache Spark havuzu oluşturma
+Bir SQL havuzu, çalıştığı sürece faturalanabilir kaynakları tüketir. Bu nedenle, maliyetleri azaltmak için gerektiğinde havuzu duraklatabilirsiniz.
 
-* SYNAPSE Studio 'da, sol taraftaki **> yönet Apache Spark havuzlar** ' ı seçin.
-* **+ Yeni** ' yi seçin ve şu ayarları girin:
+SQL havuzunuz oluşturulduğunda, **SQLDB1**ADLı bir SQL havuzu veritabanı ile ilişkilendirilir.
+
+## <a name="create-an-apache-spark-pool"></a>Apache Spark havuzu oluşturma
+
+1. SYNAPSE Studio 'da, sol taraftaki **> yönet Apache Spark havuzlar** ' ı seçin.
+1. **+ Yeni** ' yi seçin ve şu ayarları girin:
 
     |Ayar | Önerilen değer | 
     |---|---|---|
@@ -111,43 +115,42 @@ SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu açmak 
     |**Düğüm sayısı**| En az 3 ve en fazla 3 olarak ayarlayın|
     |||
 
-* **Gözden geçir + oluştur** ' u ve ardından **Oluştur**' u seçin.
-* Apache Spark havuzunuz birkaç saniye içinde hazırlanacaktır.
+1. **Gözden geçir + oluştur** ' u ve ardından **Oluştur**' u seçin.
+1. Apache Spark havuzunuz birkaç saniye içinde hazırlanacaktır.
 
 > [!NOTE]
 > Ada karşın, bir Apache Spark havuzu SQL havuzu gibi değildir. SYNAPSE çalışma alanını Spark ile nasıl etkileşim kuracağınızı bilgilendirmek için kullandığınız bir temel meta veriler vardır. 
 
-* Meta veri Spark havuzları olduklarından başlatılamaz veya durdurulamaz. 
-* SYNAPSE içinde herhangi bir Spark etkinliği gerçekleştirdiğinizde, kullanmak için bir Spark havuzu belirtirsiniz. Havuz, kaç Spark kaynağı kullanılacağını SYNAPSE bildirir. Yalnızca kullanılan kaynaklar için ödeme yaparsınız. Havuzu kullanmayı etkin bir şekilde durdurduğunuzda kaynaklar otomatik olarak zaman aşımına uğrar ve geri dönüştürülür.
+Meta veriler olduklarından Spark havuzları başlatılamaz veya durdurulamaz. 
+
+SYNAPSE içinde herhangi bir Spark etkinliği gerçekleştirdiğinizde, kullanmak için bir Spark havuzu belirtirsiniz. Havuz, kaç Spark kaynağı kullanılacağını SYNAPSE bildirir. Yalnızca kullanılan kaynaklar için ödeme yaparsınız. Havuzu kullanmayı etkin bir şekilde durdurduğunuzda, kaynaklar otomatik olarak zaman aşımına uğrar ve geri dönüştürülür.
+
 > [!NOTE]
 > Spark veritabanları Spark havuzlarından bağımsız olarak oluşturulur. Çalışma alanı her zaman **varsayılan** olarak adlandırılan BIR Spark veritabanına sahiptir ve ek Spark veritabanları oluşturabilirsiniz.
 
-## <a name="sql-on-demand-pools"></a>İsteğe bağlı SQL havuzları
+## <a name="the-sql-on-demand-pool"></a>SQL isteğe bağlı havuzu
 
-İsteğe bağlı SQL, her zaman bir Synapse çalışma alanıyla kullanılabilen özel bir tür SQL havuzudur. SYNAPSE SQL havuzu oluşturmak veya yönetmek zorunda kalmadan SQL ile çalışmanıza olanak sağlar.
+Her çalışma alanı, **SQL isteğe bağlı**olarak adlandırılmış ve önceden oluşturulmuş ve silinmek üzere olmayan bir havuz ile gelir. SQL isteğe bağlı havuzu, SYNAPSE bir SQL havuzu oluşturmak veya yönetmek zorunda kalmadan SQL ile çalışmanıza olanak sağlar. Diğer havuzların aksine, isteğe bağlı SQL için faturalama, sorguyu yürütmek için kullanılan kaynak sayısını değil, sorguyu çalıştırmak için taranan veri miktarına bağlıdır.
 
-> [!NOTE]
-> Diğer havuzların aksine, isteğe bağlı SQL için faturalama, sorguyu yürütmek için kullanılan kaynak sayısını değil, sorguyu çalıştırmak için taranan veri miktarına bağlıdır.
-
-* İsteğe bağlı SQL, tüm SQL isteğe bağlı havuzlarından bağımsız olarak mevcut olan SQL isteğe bağlı veritabanlarına sahiptir.
+* İsteğe bağlı SQL, tüm SQL isteğe bağlı havuzlarından bağımsız olarak bulunan kendi SQL isteğe bağlı veritabanlarına da sahiptir.
 * Şu anda bir çalışma alanı her zaman **isteğe bağlı SQL**ADLı bir SQL isteğe bağlı havuzu içerir.
 
 ## <a name="load-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>NYC TAXI örnek verilerini SQLDB1 veritabanına yükleme
 
-* SYNAPSE Studio 'da, en üstteki mavi menüsünde **?** seçeneğini belirleyin. simgesini seçin.
-* Kullanmaya başlama **> başlangıç hub 'ını** seçin
-* **Sorgu örnek verileri** etiketli kartta, adlı SQL havuzunu seçin`SQLDB1`
-* **Sorgu verileri**' ni seçin. "Örnek verileri yükleme" diyerek görüntülenen ve sonra kaybolan bir bildirim görürsünüz.
-* SYNAPSE Studio 'nun en üstünde, verilerin SQLDB1 'e yüklendiğini belirten açık mavi bir bildirim çubuğu göreceksiniz. Yeşil dönüşene kadar bekleyin ve ardından kapatın.
+1. SYNAPSE Studio 'da, en üstteki mavi menüsünde **?** seçeneğini belirleyin. simgesini seçin.
+1. Kullanmaya başlama **> başlangıç hub 'ını** seçin
+1. **Sorgu örnek verileri**etiketli kartta, adlı SQL havuzunu seçin`SQLDB1`
+1. **Sorgu verileri**' ni seçin. "Örnek verileri yükleme" diyerek görüntülenen ve sonra kaybolan bir bildirim görürsünüz.
+1. SYNAPSE Studio 'nun en üstünde, verilerin SQLDB1 'e yüklendiğini belirten açık mavi bir bildirim çubuğu göreceksiniz. Yeşil dönüşene kadar bekleyin ve ardından kapatın.
 
 ## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>SQL havuzundaki NYC TAXI verilerini keşfet
 
-* SYNAPSE Studio 'da **veri** merkezine gidin
-* **SQLDB1 > tablolarına**gidin. Birkaç tablo yüklendiğini görürsünüz.
-* Dbo öğesine sağ tıklayın **. Seyahat** tablosu ve **Yeni SQL betiği Seç > Ilk 100 satır seçin**
-* Yeni bir SQL betiği oluşturulup otomatik olarak çalıştırılacak.
-* SQL **komut dosyasının en üstünde, SQLDB1** adlı SQL havuzuna otomatik olarak ayarlandığını unutmayın.
-* SQL komut dosyasının metnini bu kodla değiştirin ve çalıştırın.
+1. SYNAPSE Studio 'da **veri** merkezine gidin
+1. **SQLDB1 > tablolarına**gidin. Birkaç tablo yüklendiğini görürsünüz.
+1. Dbo öğesine sağ tıklayın **. Seyahat** tablosu ve **Yeni SQL betiği Seç > Ilk 100 satır seçin**
+1. Yeni bir SQL betiği oluşturulup otomatik olarak çalıştırılacak.
+1. SQL **komut dosyasının en üstünde, SQLDB1** adlı SQL havuzuna otomatik olarak ayarlandığını unutmayın.
+1. SQL komut dosyasının metnini bu kodla değiştirin ve çalıştırın.
 
     ```sql
     SELECT PassengerCount,
@@ -159,17 +162,17 @@ SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu açmak 
     ORDER BY PassengerCount
     ```
 
-* Bu sorgu, toplam seyahat mesafeleri ve ortalama seyahat mesafesinin, pascların sayısıyla ilişkisini gösterir
-* SQL komut dosyası sonucu penceresinde, sonuçların bir çizgi grafik olarak görselliğini görmek için **görünümü** **grafik** olarak değiştirin
+1. Bu sorgu, toplam seyahat mesafeleri ve ortalama seyahat mesafesinin, pascların sayısıyla ilişkisini gösterir
+1. SQL komut dosyası sonucu penceresinde, sonuçların bir çizgi grafik olarak görselliğini görmek için **görünümü** **grafik** olarak değiştirin
 
-## <a name="create-a-spark-database-and-load-the-nyc-taxi-data-into-it"></a>Spark veritabanı oluşturun ve bu veritabanına NYC TAXI verilerini yükleyin
+## <a name="load-the-nyc-taxi-sample-data-into-the-spark-nyctaxi-database"></a>NYC TAXI örnek verilerini Spark nyctaxi veritabanına yükleme
 
-Bir SQL havuzu veritabanında kullanılabilir veri var. Şimdi bunu bir Spark veritabanına yükledik.
+İçindeki bir tabloda verileriniz var `SQLDB1` . Şimdi bunu ' nyctaxi ' adlı bir Spark veritabanına yükledik.
 
-* SYNAPSE Studio 'da, * * geliştirme merkezi ' ne gidin.
-* Seçin **+** ve **Not defteri** seçin
-* Not defterinin en üstünde, **Ekle** değerini olarak ayarlayın`Spark1`
-* **Kod Ekle** ' yi seçerek bir not defteri kod hücresi ekleyin ve aşağıdaki metni yapıştırın:
+1. SYNAPSE Studio 'da **geliştirme** merkezine gidin
+1. Seçin **+** ve **Not defteri** seçin
+1. Not defterinin en üstünde, **Ekle** değerini olarak ayarlayın`Spark1`
+1. **Kod Ekle** ' yi seçerek bir not defteri kod hücresi ekleyin ve aşağıdaki metni yapıştırın:
 
     ```scala
     %%spark
@@ -178,15 +181,15 @@ Bir SQL havuzu veritabanında kullanılabilir veri var. Şimdi bunu bir Spark ve
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 
- * Veri merkezine gidin, veritabanlarına sağ tıklayın ve **Yenile** ' yi seçin.
- * Şimdi şu veritabanlarını görmeniz gerekir:
-     * SQLDB (SQL havuzu)
-     * nyctaxi (Spark)
+1. **Veri** merkezine gidin, **veritabanlarına** sağ tıklayın ve **Yenile**' yi seçin.
+1. Şimdi şu veritabanlarını görmeniz gerekir:
+    - SQLDB (SQL havuzu)
+    - nyctaxi (Spark)
       
- ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark ve not defterlerini kullanarak NYC TAXI verilerini çözümleme
+## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark ve not defterlerini kullanarak NYC TAXI verilerini çözümleme
 
- * Not defterinize geri dön
- * Yeni bir kod hücresi oluşturun, aşağıdaki metni girin ve hücreyi çalıştırın
+1. Not defterinize geri dön
+1. Yeni bir kod hücresi oluşturun, aşağıdaki metni girin ve Spark VERITABANıNA yüklediğimiz NYC TAXI verilerini örnek olarak çalıştırın `nyctaxi` .
 
    ```py
    %%pyspark
@@ -194,7 +197,7 @@ Bir SQL havuzu veritabanında kullanılabilir veri var. Şimdi bunu bir Spark ve
    display(df)
    ```
 
- * Daha önce SQL havuzuyla yaptığımız analizi gerçekleştirmek için bu kodu çalıştırın
+1. Daha önce SQL havuzuyla yaptığımız analizi gerçekleştirmek için aşağıdaki kodu çalıştırın `SQLDB1` . Bu kod ayrıca analiz sonuçlarını adlı bir tabloya kaydeder `nyctaxi.passengercountstats` ve sonuçları görselleştirir.
 
    ```py
    %%pyspark
@@ -211,11 +214,11 @@ Bir SQL havuzu veritabanında kullanılabilir veri var. Şimdi bunu bir Spark ve
     df.write.saveAsTable("nyctaxi.passengercountstats")
     ```
 
- * Hücre sonuçlarında, görselleştirilen verileri görmek için **grafik** ' i seçin
+1. Hücre sonuçlarında, görselleştirilen verileri görmek için **grafik** ' i seçin
  
 ## <a name="customize-data-visualization-data-with-spark-and-notebooks"></a>Spark ve Not defterleri ile veri görselleştirme verilerini özelleştirme
 
-Spark Not defterleri sayesinde, tam olarak işleme grafiklerini denetleyebilirsiniz. Aşağıdaki kod, Matplotlib ve Sea-doğumu popüler kitaplıklarını kullanarak basit bir örnek gösterir. SQL sorgularını daha önce çalıştırırken gördüğünüz grafiği de işleyecek şekilde işleyebilir.
+Not defterleri ile, işleme grafiklerinin nasıl çalıştığını kontrol edebilirsiniz. Aşağıdaki kod, popüler kitaplıkları ve kullanarak basit bir örnek gösterir `matplotlib` `seaborn` . SQL sorgularını daha önce çalıştırırken gördüğünüz çizgi grafik türünü de işleyebilir.
 
 ```py
 %%pyspark
@@ -232,7 +235,9 @@ matplotlib.pyplot.show()
     
 ## <a name="load-data-from-a-spark-table-into-a-sql-pool-table"></a>Spark tablosundan SQL havuz tablosuna veri yükleme
 
-Daha önce bir SQL havuzu veritabanından Spark DB 'ye veri kopyaladık. Spark kullanarak, verileri nyctaxi. passengercountstats içine toplandık. Artık aşağıdaki hücreyi bir not defterinde çalıştırın ve toplanan tabloyu SQL havuzu veritabanına geri kopyalayacaktır.
+Daha önce bir SQL havuzu tablosundan Spark tablosuna veri kopyaladık `SQLDB1.dbo.Trip` `nyctaxi.trip` . Daha sonra Spark kullanarak verileri Spark tablosuna toplandık `nyctaxi.passengercountstats` . Şimdi, verileri `nyctaxi.passengercountstats` adlı BIR SQL havuzu tablosuna kopyalayacağız `SQLDB1.dbo.PassengerCountStats` . 
+
+Aşağıdaki hücreyi Not defterinizde çalıştırın. Toplanan Spark tablosunu SQL havuz tablosuna geri kopyalayacaktır.
 
 ```scala
 %%spark
@@ -240,44 +245,45 @@ val df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
 df.write.sqlanalytics("SQLDB1.dbo.PassengerCountStats", Constants.INTERNAL )
 ```
 
-## <a name="analyze-nyc-taxi-data-in-spark-databases-using-sql-on-demand"></a>SQL-on talebini kullanarak Spark veritabanlarında NYC TAXI verilerini çözümleme 
+## <a name="analyze-nyc-taxi-data-in-spark-databases-using-sql-on-demand"></a>İstek üzerine SQL kullanarak Spark veritabanlarında NYC TAXI verilerini çözümleyin 
 
-* Spark veritabanlarındaki tablolar, isteğe bağlı SQL tarafından otomatik olarak görünür ve sorgulanabilir
-* SYNAPSE Studio 'da geliştirme merkezine gidin ve yeni bir SQL betiği oluşturun
-* **İsteğe bağlı SQL** 'e **bağlanma** ayarla 
-* Aşağıdaki metni betiğe yapıştırın:
+Spark veritabanlarındaki tablolar otomatik olarak görünür ve isteğe bağlı SQL tarafından sorgulanabilir.
+
+1. SYNAPSE Studio 'da, **geliştirme** merkezine gidin ve yenı bir SQL betiği oluşturun
+1. **İsteğe bağlı SQL** 'e **bağlanma** ayarla 
+1. Aşağıdaki metni betiğe yapıştırın ve betiği çalıştırın.
 
     ```sql
     SELECT *
     FROM nyctaxi.dbo.passengercountstats
     ```
-
-* **Çalıştır** 'ı seçin
-* NOTE: Bu işlem ilk kez çalıştırıldığında, sorguları çalıştırmak için gereken SQL kaynaklarını toplamak üzere SQL isteğe bağlı olarak 10 saniye sürer. Sonraki sorgularda bu süre gerekli olmayacaktır.
+    > [!NOTE]
+    > İsteğe bağlı SQL kullanan bir sorguyu ilk kez çalıştırdığınızda, sorguları çalıştırmak için gereken SQL kaynaklarını toplamak üzere SQL isteğe bağlı SQL için yaklaşık 10 saniye sürer. Sonraki sorgular bu süreyi gerektirmez ve çok daha hızlı olur.
   
-## <a name="use-pipelines-to-orchestrate-activities"></a>Etkinlikleri düzenlemek için işlem hatlarını kullanma
+## <a name="orchestrate-activities-with-pipelines"></a>İşlem hatları ile etkinlikleri düzenleme
 
 Azure SYNAPSE 'te çok çeşitli görevleri düzenleyebilirsiniz. Bu bölümde, ne kadar kolay olduğunu göreceksiniz.
 
-* SYNAPSE Studio 'da, Orchestrate hub 'ına gidin.
-* **+** Sonra Işlem **hattı**' nı seçin. Yeni işlem hattı oluşturulur.
-* Geliştirme merkezine gidin ve daha önce oluşturduğunuz not defterlerini bulun.
-* Bu Not defterini ardışık düzene sürükleyin.
-* İşlem hattında **tetikleyici ekle > yeni/Düzenle**' yi seçin.
-* **Tetikleyici Seç** ' de **Yeni**' yi seçin ve ardından yineleme ' de tetikleyiciyi her 1 saatte bir çalışacak şekilde ayarlayın.
-* **Tamam**’ı seçin.
-* **Tümünü Yayımla** ' yı seçtiğinizde işlem hattı her saat çalışacaktır.
-* İşlem hattını bir sonraki saat beklemek zorunda kalmadan şimdi çalıştırmak istiyorsanız, **Yeni/düzenle > tetikleyici Ekle**' yi seçin.
+1. SYNAPSE Studio 'da, **orchestrate** hub 'ına gidin.
+1. **+** Sonra Işlem **hattı**' nı seçin. Yeni işlem hattı oluşturulur.
+1. Geliştirme merkezine gidin ve daha önce oluşturduğunuz Not defterini bulun.
+1. Bu Not defterini ardışık düzene sürükleyin.
+1. İşlem hattında **tetikleyici ekle > yeni/Düzenle**' yi seçin.
+1. **Tetikleyici Seç** ' de **Yeni**' yi seçin ve ardından yineleme ' de tetikleyiciyi her 1 saatte bir çalışacak şekilde ayarlayın.
+1. **Tamam**’ı seçin.
+1. **Tümünü Yayımla** ' yı seçtiğinizde işlem hattı her saat çalışacaktır.
+1. İşlem hattını bir sonraki saati beklemeden hemen çalıştırmak istiyorsanız, **Yeni/düzenle > tetikleyici Ekle**' yi seçin.
 
 ## <a name="working-with-data-in-a-storage-account"></a>Depolama hesabındaki verilerle çalışma
 
-Şimdiye kadar, senaryolar veritabanlarında yer alan senaryolar ele alınmıştır. Azure SYNAPSE 'in bir depolama hesabındaki basit dosyaları nasıl çözümleyebildiğimiz gösterilmektedir. Bu senaryoda, çalışma alanını bağladığımız depolama hesabını ve kapsayıcıyı kullanacağız.
+Şimdiye kadar, senaryolar çalışma alanındaki veritabanlarında yer verdik. Artık depolama hesaplarındaki dosyalarla nasıl çalışacağız. Bu senaryoda, çalışma alanını oluştururken belirttiğimiz çalışma alanının ve kapsayıcının birincil depolama hesabını kullanacağız.
 
-Depolama hesabının adı: contosolake depolama hesabındaki kapsayıcının adı: kullanıcılar
+* Depolama hesabının adı:`contosolake`
+* Depolama hesabındaki kapsayıcının adı:`users`
 
 ### <a name="creating-csv-and-parquet-files-in-your-storage-account"></a>Depolama hesabınızda CSV ve Parquet dosyaları oluşturma
 
-Aşağıdaki kodu bir not defterinde çalıştırın. Depolama hesabında bir CSV ve Parquet verileri oluşturur
+Aşağıdaki kodu bir not defterinde çalıştırın. Depolama hesabında bir CSV dosyası ve bir Parquet dosyası oluşturur
 
 ```py
 %%pyspark
@@ -289,13 +295,13 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 
 ### <a name="analyzing-data-in-a-storage-account"></a>Depolama hesabındaki verileri analiz etme
 
-* SYNAPSE Studio 'da **veri** merkezine gidin
-* **Bağlı** seçin
-* **> çalışmaalanıadı (birincil-contosolake) depolama hesaplarına** gidin
-* **Kullanıcıları Seç (birincil) "**
-* ' NYCTaxi ' adlı bir klasör görmeniz gerekir. İçinde ' PassengerCountStats. csv ' ve ' PassengerCountStats. parquet ' adlı iki klasör görmeniz gerekir.
-* ' PassengerCountStats. parquet ' klasörüne gidin.
-* İçindeki Parquet dosyasına sağ tıklayın ve yeni not defteri ' ni seçin, şöyle bir hücre içeren bir not defteri oluşturur:
+1. SYNAPSE Studio 'da **veri** merkezine gidin
+1. **Bağlı** seçin
+1. **Çalışma alanım > depolama hesaplarına gidin (birincil-contosolake)**
+1. **Kullanıcıları Seç (birincil) "**
+1. ' NYCTaxi ' adlı bir klasör görmeniz gerekir. İçinde ' PassengerCountStats. csv ' ve ' PassengerCountStats. parquet ' adlı iki klasör görmeniz gerekir.
+1. ' PassengerCountStats. parquet ' klasörüne gidin.
+1. İçindeki Parquet dosyasına sağ tıklayın ve **Yeni Not defteri**' ni seçin, şöyle bir hücre içeren bir not defteri oluşturur:
 
     ```py
     %%pyspark
@@ -303,10 +309,10 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     data_path.show(100)
     ```
 
-* Parquet dosyasını Spark ile çözümlemek için hücreyi çalıştırın.
-* İçindeki Parquet dosyasına sağ tıklayın ve yeni SQL betiği ' ni seçin **> en üstteki 100 satırları seçmek**için şöyle bir hücre içeren bir not defteri oluşturulur:
+1. Hücreyi çalıştırın.
+1. İçindeki Parquet dosyasına sağ tıklayın ve **yenı SQL betiği ' ni seçin > en üstteki 100 satırları seçin**, şöyle bir SQL betiği oluşturur:
 
-    ```py
+    ```sql
     SELECT TOP 100 *
     FROM OPENROWSET(
         BULK 'https://contosolake.dfs.core.windows.net/users/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet',
@@ -314,18 +320,26 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     ) AS [r];
     ```
     
-* Betik, isteğe bağlı olarak **SQL** 'e eklenecektir betiği çalıştırır. Parquet dosyasından şemayı içerdiğine dikkat edin.
+1. Betikte, **Attach** alanı **isteğe bağlı SQL**olarak ayarlanır.
+1. Betiği çalıştırın.
 
 ## <a name="visualize-data-with-power-bi"></a>Power BI ile verileri görselleştirme
 
-Verileriniz artık Power BI ' de kolayca analiz edilebilir ve görselleştirilir. SYNAPSE, Power BI çalışma alanını size SYNAPSE çalışma alanına bağlayabilmeniz için benzersiz bir tümleştirme sunar. Başlamadan önce, Power BI çalışma alanınızı bağlamak için öncelikle bu [hızlı](quickstart-power-bi.md) başlangıçta bulunan adımları izleyin.
+NYX TAXI verilerinden, iki tabloda toplanmış veri kümeleri oluşturduk:
+* `nyctaxi.passengercountstats`
+* `SQLDB1.dbo.PassengerCountStats`
 
-### <a name="create-a-power-bi-workspace-and-link-it-to-your-synapse-workspace"></a>Power BI çalışma alanı oluşturun ve SYNAPSE çalışma alanınıza bağlayın
+Bir Power BI çalışma alanını SYNAPSE çalışma alanınıza bağlayabilirsiniz. Bu, Power BI çalışma alanınıza kolayca veri almanıza olanak sağlar ve Power BI raporlarınızı doğrudan SYNAPSE çalışma alanınızda düzenleyebilirsiniz.
 
-* [Powerbi.Microsoft.com](https://powerbi.microsoft.com/)'de oturum açın.
-* Adlı yeni bir Power BI çalışma alanı oluşturun `NYCTaxiWorkspace1` .
-* SYNAPSE Studio 'da **> bağlı hizmetleri Yönet**' e gidin.
-* **+ Yeni** ' yi seçin ve **Power BI Bağlan** ' ı seçin ve bu alanları ayarlayın:
+### <a name="create-a-power-bi-workspace"></a>Power BI çalışma alanı oluşturma
+
+1. [Powerbi.Microsoft.com](https://powerbi.microsoft.com/)'de oturum açın.
+1. Adlı yeni bir Power BI çalışma alanı oluşturun `NYCTaxiWorkspace1` .
+
+### <a name="link-your-synapse-workspace-to-your-new-power-bi-workspace"></a>SYNAPSE çalışma alanınızı yeni Power BI çalışma alanınıza bağlama
+
+1. SYNAPSE Studio 'da **> bağlı hizmetleri Yönet**' e gidin.
+1. **+ Yeni** ' yi seçin ve **Power BI Bağlan** ' ı seçin ve bu alanları ayarlayın:
 
     |Ayar | Önerilen değer | 
     |---|---|---|
@@ -333,55 +347,52 @@ Verileriniz artık Power BI ' de kolayca analiz edilebilir ve görselleştirilir
     |**Çalışma alanı adı**|`NYCTaxiWorkspace1`|
     |||
     
-* **Oluştur**’u seçin.
+1. **Oluştur**’u seçin.
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-synapse-workspace"></a>SYNAPSE çalışma alanınızdaki verileri kullanan bir Power BI veri kümesi oluşturma
 
-* SYNAPSE Studio 'da **geliştirme > Power BI**gidin.
-* **NYCTaxiWorkspace1 > Power BI veri kümelerine** gidin ve **Yeni Power BI veri kümesi ' ni**seçin.
-* SQLDB1 veritabanının üzerine gelin ve **. pbıd dosyasını indir**' i seçin.
-* İndirilen dosyayı açın `.pbids` . Bu, masaüstü Power BI başlatacaktır ve SYNAPSE çalışma alanınızda SQLDB1 'e otomatik olarak bağlanır.
-* **SQL Server veritabanı**olarak adlandırılan bir iletişim kutusu görürseniz:
-    * **Microsoft hesabı**seçin. 
-    * **Oturum aç** ' ı seçin ve oturum açın.
-    * **Bağlan**'ı seçin.
-* **Gezgin** iletişim kutusu açılır. Bu, **Passengercountstats** tablosuna göz atın ve **Yükle**' yi seçin.
-* **Bağlantı ayarları** iletişim kutusu görüntülenir. **DirectQuery** 'yi seçin ve **Tamam 'ı** seçin
-* Sol taraftaki **rapor** düğmesini seçin.
-* Raporunuza **çizgi grafik** ekleyin.
-    * **Passsengercount** sütununu, **eksen > görselleştirmelere** sürükleyin
-    * **Sumüçlü mesafeyi** ve **avgüçlü uzaklığı** sütunlarını, **değerler > görselleştirmelere**sürükleyin.
-* **Giriş** sekmesinde **Yayımla**' yı seçin.
-* Değişikliklerinizi kaydetmek isteyip istemediğinizi sorar. **Kaydet**’i seçin.
-* Bir dosya adı seçmeniz istenir. Seçin `PassengerAnalysis.pbix` ve **Kaydet**' i seçin.
-* **Bir hedef** seçip Seç ' i seçmenizi ister `NYCTaxiWorkspace1` . **Select**
-* Yayımlamanın bitmesini bekleyin.
+1. SYNAPSE Studio 'da **geliştirme > Power BI**gidin.
+1. **NYCTaxiWorkspace1 > Power BI veri kümelerine** gidin ve **Yeni Power BI veri kümesi ' ni**seçin.
+1. Veritabanının üzerine gelin `SQLDB1` ve **. pbıd dosyasını indir**' i seçin.
+1. İndirilen dosyayı açın `.pbids` . 
+1. Bu işlem masaüstü Power BI başlatacaktır ve `SQLDB1` SYNAPSE çalışma alanınızda otomatik olarak bağlanır.
+1. **SQL Server veritabanı**: a olarak adlandırılan bir iletişim kutusu görürseniz. **Microsoft hesabı**seçin. 
+    b. **Oturum aç** ' ı seçin ve oturum açın.
+    c. **Bağlan**'ı seçin.
+1. **Gezgin** iletişim kutusu açılır. Ne zaman, **Passengercountstats** tablosunu denetleyip **Yükle**' yi seçin.
+1. **Bağlantı ayarları** iletişim kutusu görüntülenir. **DirectQuery** 'yi seçin ve **Tamam 'ı** seçin
+1. Sol taraftaki **rapor** düğmesini seçin.
+1. Raporunuza **çizgi grafik** ekleyin.
+    a. **Passsengercount** sütununu b **ekseni > görselleştirmelere** sürükleyin. **Sumüçlü mesafeyi** ve **avgüçlü uzaklığı** sütunlarını, **değerler > görselleştirmelere**sürükleyin.
+1. **Giriş** sekmesinde **Yayımla**' yı seçin.
+1. Değişikliklerinizi kaydetmek isteyip istemediğinizi sorar. **Kaydet**’i seçin.
+1. Bir dosya adı seçmeniz istenir. Seçin `PassengerAnalysis.pbix` ve **Kaydet**' i seçin.
+1. **Bir hedef** seçip Seç ' i seçmenizi ister `NYCTaxiWorkspace1` . **Select**
+1. Yayımlamanın bitmesini bekleyin.
 
 ### <a name="configure-authentication-for-your-dataset"></a>Veri kümeniz için kimlik doğrulamasını yapılandırma
 
-* [Powerbi.Microsoft.com](https://powerbi.microsoft.com/) açın ve **oturum açın**
-* Sol tarafta, **çalışma alanları** ' nın altında, `NYCTaxiWorkspace1` yayımladığınız çalışma alanını seçin.
-* Bu çalışma alanının içinde adlı bir veri kümesi `Passenger Analysis` ve adlı bir rapor görmeniz gerekir `Passenger Analysis` .
-* `PassengerAnalysis`Veri kümesinin üzerine gelin ve üç nokta ile simgeyi seçin ve **Ayarlar**' ı seçin.
-* **Veri kaynağı kimlik bilgileri** ' nde kimlik doğrulama yöntemini **OAuth2** olarak ayarlayın ve **oturum aç '** ı seçin.
+1. [Powerbi.Microsoft.com](https://powerbi.microsoft.com/) açın ve **oturum açın**
+1. Sol tarafta, çalışma **alanları** ' nın altında `NYCTaxiWorkspace1` çalışma alanını seçin.
+1. Bu çalışma alanının içinde adlı bir veri kümesi `Passenger Analysis` ve adlı bir rapor görmeniz gerekir `Passenger Analysis` .
+1. `PassengerAnalysis`Veri kümesinin üzerine gelin ve üç nokta ile simgeyi seçin ve **Ayarlar**' ı seçin.
+1. **Veri kaynağı kimlik bilgileri**' nde, **kimlik doğrulama yöntemini** **OAuth2** olarak ayarlayın ve **oturum aç '** ı seçin.
 
-### <a name="edit-a-report-report-in-synapse-studio"></a>SYNAPSE Studio 'da rapor raporu düzenleme
+### <a name="edit-a-report-in-synapse-studio"></a>SYNAPSE Studio 'da rapor düzenleme
 
-* SYNAPSE Studio 'ya dönün ve şimdi **Kapat ve Yenile '** yi seçerek şunları görmeniz gerekir:
-    * **Power BI veri kümeleri**altında, **Passengeranalysis**adlı yeni bir veri kümesi.
-    * **Power BI veri kümeleri**altında, **Passengeranalysis**adlı yeni bir rapor.
-* **Passengeranalysis** raporuna tıklayın. 
-    * Yine de veri kümesi için kimlik doğrulaması yapılandırmanız gerektiğinden hiçbir şey gösterilmez.
-* SynapseStudio ' de, **çalışma alanınızın adı > Power BI raporlar > > geliştirme Power BI ' a**gidin.
-* Power BI raporunu gösteren tüm pencereleri kapatın.
-* **Power BI Reports** düğümünü yenileyin.
-* Raporu seçin ve artık raporu doğrudan SYNAPSE Studio içinde düzenleyebilirsiniz.
+1. SYNAPSE Studio 'ya geri dönün ve **Kapat ve Yenile '** yi seçin. 
+1. **Geliştirme** merkezine gidin 
+1. **Power BI** üzerine gelin ve **Power BI Reports** düğümünü Yenile düğümüne tıklayın.
+1. Artık **Power BI** altında şunları görmeniz gerekir: a. * **NYCTaxiWorkspace1 >** altında, **Passengeranalysis**adlı yeni bir veri kümesi Power BI veri kümeleri.
+    b. * NYCTaxiWorkspace1 > altında, **Passengeranalysis**adlı yeni bir rapor **Power BI raporlar**.
+1. **Passengeranalysis** raporunu seçin. 
+1. Rapor açılır ve artık raporu doğrudan SYNAPSE Studio içinde düzenleyebilirsiniz.
 
 ## <a name="monitor-activities"></a>Etkinlikleri izleme
 
-* SYNAPSE Studio 'da izleyici hub 'ına gidin.
-* Bu konumda, çalışma alanında gerçekleşen tüm etkinliklerin geçmişini ve bunların şimdi etkin olduğunu görebilirsiniz.
-* İşlem **hattı çalıştırmalarını**, **Apache Spark uygulamalarını**ve **SQL isteklerini** inceleyin ve çalışma alanında daha önce ne yaptığını görebilirsiniz.
+1. SYNAPSE Studio 'da izleyici hub 'ına gidin.
+1. Bu konumda, çalışma alanında yer alan tüm etkinliklerin geçmişini görebilir ve bunların şimdi etkin olduğunu görebilirsiniz.
+1. İşlem **hattı çalıştırmalarını**, **Apache Spark uygulamalarını**ve **SQL isteklerini** inceleyin ve çalışma alanında daha önce ne yaptığını görebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

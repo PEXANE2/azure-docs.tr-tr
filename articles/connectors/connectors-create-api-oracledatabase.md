@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 5b4f016b53c6c42831d5f5ae08a30ec8ac176e6e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773381"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836286"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database Bağlayıcısı ile çalışmaya başlama
 
@@ -122,7 +122,7 @@ Swagger 'da tanımlanan Tetikleyicileri ve eylemleri görüntüleyin ve ayrıca 
 
 ## <a name="get-some-help"></a>Yardım alın
 
-[Azure Logic Apps Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) , sorular sormak, soruları yanıtlamak ve diğer Logic Apps kullanıcıları ne yaptığını görmek için harika bir yerdir. 
+[Azure Logic Apps Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-logic-apps.html) , sorularınızı sormak, soruları yanıtlamak ve diğer Logic Apps kullanıcıların ne yaptığını görmek için harika bir yerdir. 
 
 Fikirlerinizi oylama ve göndererek Logic Apps ve bağlayıcıların artırılmasına yardımcı olabilirsiniz [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 

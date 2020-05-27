@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 54f4b38e01b51289319390779a140346befc6f0c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4a96f31588e199d5696e2d9eff351051d46c1f96
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76168813"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873954"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Web Araması REST API ve Node. js kullanarak Web 'de arama yapın
 
-Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Node. js uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
+Bing Web Araması API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu Node. js uygulaması, API 'ye bir arama isteği gönderir ve JSON yanıtını gösterir. Bu uygulama JavaScript 'e yazılsa da, API çoğu programlama dili ile uyumlu olan yeniden yazılmış bir Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -33,8 +33,7 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Bir proje oluşturun ve gerekli modülleri bildirin
 
-Sık kullandığınız IDE veya düzenleyicide yeni bir Node.js projesi oluşturun.
-Ardından aşağıdaki kod parçacığını projenizde `search.js` adlı bir dosyaya kopyalayın.
+Sık kullandığınız IDE veya düzenleyicide yeni bir Node.js projesi oluşturun. Ardından, aşağıdaki kod parçacığını, Search. js adlı bir dosyada projenize kopyalayın:
 
 ```javascript
 // Use this simple app to query the Bing Web Search API and get a JSON response.
@@ -44,9 +43,9 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Abonelik anahtarını ayarlama
 
-Bu kod parçacığı, abonelik anahtarınızı depolamak için, kod dağıtırken anahtarlarınızın yanlışlıkla ortaya çıkmasını engellemek için iyi bir uygulama olarak `AZURE_SUBSCRIPTION_KEY` ortam değişkenini kullanır. Abonelik anahtarınızı aramak için [API 'lerinizi sayfanıza](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) gidin.
+Bu kod parçacığı, `AZURE_SUBSCRIPTION_KEY` kod dağıtımı sırasında anahtarlarınızın yanlışlıkla açıklanmasını engellemek için iyi bir uygulamadır olan abonelik anahtarınızı depolamak için ortam değişkenini kullanır. Abonelik anahtarınızı aramak için [API 'lerinize](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)bakın.
 
-Ortam değışkeni kullanmaya alışkın değilseniz veya bu uygulamayı olabildiğince çabuk çalıştırmak istiyorsanız, `process.env['AZURE_SUBSCRIPTION_KEY']` değişkenini abonelik anahtar kümenizle dize olarak değiştirebilirsiniz.
+Ortam değişkenlerinin kullanımı hakkında bilginiz varsa veya bu uygulamayı mümkün olduğunca hızlı bir şekilde çalıştırmak istiyorsanız, `process.env['AZURE_SUBSCRIPTION_KEY']` bir dize olarak kendi abonelik anahtarınızla değiştirin.
 
 ```javascript
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
@@ -57,7 +56,15 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>İstekte bulunmak için işlev oluşturma
 
-Bu işlev, arama sorgusunu yola parametre olarak kaydederek güvenli bir GET isteği gönderir. `hostname`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir.  `encodeURIComponent` geçersiz karakterleri atlatmak için kullanılır ve abonelik anahtarı bir üstbilgide geçilir. Geri çağrı, JSON gövdesini birleştirmek için `data` olayına, sorunları günlüğe kaydetmek için `error` olayına ve iletinin ne zaman tamamlanmış kabul edileceğini bilmek için de `end` olayına abone olan bir [yanıt](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) alır. İşlem tamamlandığında uygulama ilgi çekici üstbilgileri ve ileti gövdesini yazdırır. Renkleri değiştirebilir ve derinliği tercihinize göre ayarlayabilirsiniz; `1` derinliği yanıtın güzel bir özetini verir.
+Bu işlev, güvenli bir GET isteği yapar ve arama sorgusunu yola sorgu parametresi olarak kaydeder. 
+
+1. Değer için `hostname` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.  
+
+2. `encodeURIComponent`Geçersiz karakterleri atlamak için kullanın. Abonelik anahtarı bir üst bilgiye geçirilir. 
+
+3. Geri çağrı, JSON gövdesini birleştirmek için `data` olayına, sorunları günlüğe kaydetmek için `error` olayına ve iletinin ne zaman tamamlanmış kabul edileceğini bilmek için de `end` olayına abone olan bir [yanıt](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) alır. 
+
+4. Uygulama tamamlandığında, ilgili üstbilgileri ve ileti gövdesini yazdırır. Renkleri ayarlayabilir ve derinliği tercihlerinize uyacak şekilde ayarlayabilirsiniz. Derinlik `1` , yanıtın iyi bir özetini verir.
 
 ```javascript
 function bingWebSearch(query) {
@@ -87,7 +94,7 @@ function bingWebSearch(query) {
 
 ## <a name="get-the-query"></a>Sorguyu alma
 
-Sorguyu bulmak için programın bağımsız değişkenlerine bakalım. İlk bağımsız değişken düğüme giden yoldur, ikincisi dosyamızın adıdır, üçüncüsü ise sorgunuzdur. Sorgu yoksa, varsayılan olarak "Microsoft Bilişsel Hizmetler" sorgusu kullanılır.
+Sorguyu bulmak için programın bağımsız değişkenlerine bakalım. İlk bağımsız değişken, düğümün yoludur, ikincisi dosya dosyamız ve üçüncüsü ise sorgunuz olur. Sorgu yoksa, varsayılan olarak "Microsoft Bilişsel Hizmetler" sorgusu kullanılır.
 
 ```javascript
 const query = process.argv[2] || 'Microsoft Cognitive Services'
@@ -95,7 +102,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 
 ## <a name="make-a-request-and-print-the-response"></a>İstekte bulunma ve yanıtı yazdırma
 
-Artık her şey tanımlandığına göre işlevimizi çağıralım!
+Artık her şey tanımlandığına göre işlevimizi arayalım.
 
 ```javascript
 bingWebSearch(query)
@@ -103,7 +110,7 @@ bingWebSearch(query)
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Son adım kodunuzu çalıştırmaktır: `node search.js "<your query>"`.
+Son adım, kodunuzu şu komutla çalıştıralım: `node search.js "<your query>"` .
 
 Kodunuzu bizimkiyle karşılaştırmak isterseniz, tam program aşağıdadır:
 
@@ -140,7 +147,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 bingWebSearch(query)
 ```
 
-## <a name="sample-response"></a>Örnek yanıt
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek yanıt, tek bir sonuç göstermek için kısaltıldı.
 
@@ -269,6 +276,6 @@ Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek y
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing Web araması tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Araması API'si tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

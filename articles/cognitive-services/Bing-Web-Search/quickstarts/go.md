@@ -8,20 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0d0bd9dfa8dc115ae10831d997dccc8000a1ae25
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74978807"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873909"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Hızlı başlangıç: Bing Web Araması REST API kullanarak Web 'de arama yapın ve git
 
-Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Go uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama go 'da yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
+Bing Web Araması API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu Go uygulaması, API 'ye bir arama isteği gönderir ve JSON yanıtını gösterir. Bu uygulama go 'da yazılsa da, API çoğu programlama dili ile uyumlu olan bir yenilenmiş Web hizmetidir.
+
+ Bu hızlı başlangıçtaki kod örnekleri yalnızca çekirdek kitaplıklar gerektirir; Dış bağımlılıklar yok.  
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
@@ -29,13 +31,11 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 * [Go ikilileri](https://golang.org/dl/)
 * Abonelik anahtarı
 
-Bu hızlı başlangıç için yalnızca **çekirdek** kitaplıkları gerekir, dış bağımlılıklar yoktur.  
-
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
 ## <a name="create-a-project-and-import-core-libraries"></a>Proje oluşturma ve çekirdek kitaplıkları içeri aktarma
 
-Sık kullandığınız IDE'de veya düzenleyicide yeni bir Go projesi oluşturun. Ardından istekler için `net/http`, yanıtı okumak için `ioutil`, JSON işlemek için `time` ve `encoding/json` ile çıkışı yazdırmak için `fmt` öğelerini içeri aktarın.
+Sık kullandığınız IDE'de veya düzenleyicide yeni bir Go projesi oluşturun. Ardından, `net/http` istekleri `ioutil` okumak için, yanıtı okumak `time` ve `encoding/json` JSON 'u işlemek ve `fmt` çıktıyı yazdırmak için içeri aktarın.
 
 ```go
 package main
@@ -111,7 +111,13 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Ana işlevi ve değişkenleri tanımlama  
 
-Bu kod, ana işlevi tanımlar ve gerekli değişkenleri ayarlar. `endpoint`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `searchTerm` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz.
+Bu kod, ana işlevi bildirir ve gerekli değişkenleri ayarlar: 
+
+1. Değer için `endpoint` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz. 
+
+2. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. 
+ 
+3. İsteğe bağlı olarak, için değerini değiştirerek arama sorgusunu özelleştirin `searchTerm` .
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -170,7 +176,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Yanıtı işleme
 
-Yukarıda oluşturduğumuz yapıyı hatırlıyor musunuz? Yanıtı biçimlendirmek ve arama sonuçlarını yazdırmak için bunu kullanacağız.
+Yanıtı biçimlendirmek ve arama sonuçlarını yazdırmak için daha önce oluşturduğumuz yapıyı kullanın.
 
 ```go
 // Create a new answer.  
@@ -187,7 +193,7 @@ for _, result := range ans.WebPages.Value {
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Son adım kodunuzu doğrulayıp çalıştırmaktır! Kodunuzu bizimkiyle karşılaştırmak isterseniz, tam program aşağıdadır:
+Son adım, kodunuzu doğrulamak ve çalıştırmak için kullanılır. Kodunuzu bizimkiyle karşılaştırmak isterseniz, tam program aşağıdadır:
 
 ```go
 package main
@@ -305,9 +311,9 @@ func main() {
 }
 ```
 
-## <a name="sample-response"></a>Örnek yanıt  
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
-Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek yanıt `BingAnswer` struct kullanılarak biçimlendirildi ve `result.Name` ve `result.URL`gösterir.
+Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek yanıt struct kullanılarak biçimlendirildi `BingAnswer` ve `result.Name` ve gösterir `result.URL` .
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services
@@ -324,6 +330,6 @@ Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/magazine/m
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing Web araması tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Araması API'si tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

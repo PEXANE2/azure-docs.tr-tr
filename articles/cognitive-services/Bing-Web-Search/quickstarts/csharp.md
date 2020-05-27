@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cf12b279cf7bcb20aa655646ce34fb9df2bda016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c13931c7ab7c084b635abb7080f97de6d4bf4bb
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76167661"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873885"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Hızlı başlangıç: Bing Web Araması REST API ve C kullanarak Web 'de arama yapın #
 
-Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu C# uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bing Web Araması API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu C# uygulaması, API 'ye bir arama isteği gönderir ve JSON yanıtını gösterir. Bu uygulama C# dilinde yazılsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
+
+Bu hızlı başlangıçta bu örnek program yalnızca .NET Core sınıfları kullanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -30,13 +32,11 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 * Linux/macOS: [Mono](https://www.mono-project.com/)  
 * Abonelik anahtarı
 
-Bu örnek programda yalnızca .NET Core sınıfları kullanılır.
-
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>Proje oluşturma ve bağımlılıkları tanımlama
 
-Visual Studio veya Mono'da yeni bir proje oluşturun. Ardından bu kodu kullanarak gerekli ad alanlarını ve türleri içeri aktarın.
+Visual Studio veya Mono'da yeni bir proje oluşturun. Gerekli ad alanlarını ve türleri içeri aktarmak için aşağıdaki kodu kullanın:
 
 ```csharp
 using System;
@@ -62,7 +62,13 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
-Devam etmeden önce birkaç değişkeni ayarlamamız gerekir.  `uriBase`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir. `uriBase` öğesinin geçerli olduğunu doğrulayın ve `accessKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `searchTerm` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz. Bu kodu, `Program` yukarıda belirtildiği gibi sınıfa eklemeyi unutmayın.
+Devam etmeden önce birkaç değişkeni ayarlamamız gerekir. Bu kodu, `Program` önceki bölümde oluşturduğunuz sınıfa ekleyin: 
+
+1. Değer için `uriBase` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz. 
+
+2. Geçerli olduğunu doğrulayın `uriBase` ve `accessKey` değeri Azure hesabınızdaki bir abonelik anahtarıyla değiştirin. 
+
+3. İsteğe bağlı olarak, için değerini değiştirerek arama sorgusunu özelleştirin `searchTerm` . 
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,9 +84,9 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>Main metodunu tanımlama
 
-`Main()` Yöntemi zorunludur ve program başlatıldığında çağrılan ilk yöntem. Bu uygulamada main metodu `accessKey` öğesini doğrular, istekte bulunur ve yanıtı yazdırır.
+`Main()`Yöntemi zorunludur ve programı başlattığınızda ilk yöntem çağrılır. Bu uygulamada main metodu `accessKey` öğesini doğrular, istekte bulunur ve yanıtı yazdırır.
 
-`main()` öğesinin sonraki bölümlerde oluşturulan metotlara bağlı olduğunu unutmayın.
+`main()`Yöntemi, sonraki bölümlerde oluşturduğunuz yöntemlere bağımlıdır.
 
 ```csharp
 static void Main()
@@ -109,7 +115,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Arama sonuçları için bir yapı oluşturma
 
-Bu yapı arama sonuçlarını ve ilgili üst bilgileri döndürür. Bir sonuç nesnesi oluşturmak için Bing Web Araması API'si bir istek yapıldığında çağrılır.
+İlgili üst bilgilerle arama sonuçları döndüren bir struct oluşturun. Bir sonuç nesnesi oluşturmak için Bing Web Araması API'si bir istek yaptığınızda bunu çağırabilirsiniz.
 
 ```csharp
 // Returns search results with headers.
@@ -158,7 +164,7 @@ static SearchResult BingWebSearch(string searchQuery)
 
 ## <a name="format-the-response"></a>Yanıtı biçimlendirme
 
-Bu metot öncelikle girintileme ve satır sonu ekleme ile JSON yanıtını biçimlendirme işlemlerini gerçekleştirir.
+Bu yöntem JSON yanıtını, birincil olarak girintileme ve satır sonları ekleyerek biçimlendirir.
 
 ```csharp
 /// <summary>
@@ -235,9 +241,9 @@ static string JsonPrettyPrint(string json)
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Son adım kodunuzu çalıştırmaktır! Kodunuzu bizimkiyle karşılaştırmak isterseniz [GitHub'daki örnek kodu inceleyebilirsiniz](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs).
+Son adım, kodunuzu çalıştıralım. Kodunuzu bizle karşılaştırmak istiyorsanız [GitHub 'daki örnek koda](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs)bakın.
 
-## <a name="sample-response"></a>Örnek yanıt
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek yanıt, tek bir sonuç göstermek için kısaltıldı.  
 
@@ -366,6 +372,6 @@ Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek y
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing Web araması tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Araması API'si tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

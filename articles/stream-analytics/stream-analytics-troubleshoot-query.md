@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a55515be478781a2f2448924c209a3348ae462c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd2440ecf04bb4481b5497317e0acd2641710ccf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133305"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836881"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics sorgularının sorunlarını giderme
 
@@ -77,11 +77,11 @@ Daha sonra sorguyu şunun gibi yeniden yazabilirsiniz:
 
 Şimdi işi yeniden başlatın ve birkaç dakika boyunca çalışmasına izin verin. Daha sonra aşağıdaki tabloları oluşturmak için Temp1 ve Temp2 'i Visual Studio Cloud Explorer ile sorgulayın:
 
-**Temp1 tablo**
-![Stream Analytics tablo seçin Temp1 tablo](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+**Temp1 tablosu** 
+ ![ Sorgu Stream Analytics Temp1 tablo SEÇIN](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
-**Temp2 tablo**
-![Stream Analytics tablo seçin Temp2 tablo](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+**Temp2 tablosu** 
+ ![ Sorgu Stream Analytics Temp2 tablo SEÇIN](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
 Gördüğünüz gibi, Temp1 ve Temp2 her ikisinde de veri bulunur ve ad sütunu Temp2 içinde doğru doldurulur. Ancak hala çıktıda hiç veri bulunmadığından bir sorun oluştu:
 
@@ -103,7 +103,7 @@ Bu kez, çıkışdaki veriler biçimlendirilir ve beklendiği gibi doldurulur.
 
 ## <a name="get-help"></a>Yardım alın
 
-Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

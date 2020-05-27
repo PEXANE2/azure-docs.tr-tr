@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: b56f6743b642904349797ac5b6167194f7916b45
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7b33a857953b7f96180e306195dd0e8b21450556
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446599"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874010"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Python kullanarak görüntü öngörülerini alın
 
-Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülemek için bu hızlı başlangıcı kullanın. Bu Python uygulaması, API 'ye bir görüntü yükler ve döndürdüğü bilgileri görüntüler. Bu uygulama Python 'da yazılmış olsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
+Bing Görsel Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu Python uygulaması, API 'ye bir görüntü yükler ve döndürdüğü bilgileri görüntüler. Bu uygulama Python 'da yazılmış olsa da, API birçok programlama dili ile uyumlu olan bir yenilenmiş Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -35,7 +35,7 @@ Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülem
     import requests, json
     ```
 
-2. Abonelik anahtarınız, uç noktanız ve karşıya yüklediğiniz görüntünün yolu için değişkenler oluşturun. `BASE_URI`Aşağıdaki genel uç nokta veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir:
+2. Abonelik anahtarınız, uç noktanız ve karşıya yüklediğiniz görüntünün yolu için değişkenler oluşturun. Değeri için `BASE_URI` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```python
 
@@ -44,7 +44,7 @@ Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülem
     imagePath = 'your-image-path'
     ```
     
-    Yerel bir görüntüyü karşıya yüklediğinizde, form verileri `Content-Disposition` üstbilgiyi içermelidir. `name` Parametresini "Image" olarak ayarlamanız gerekir ve `filename` parametreyi herhangi bir dizeye ayarlayabilirsiniz. Formun içeriği görüntünün ikili verilerini içerir. Karşıya yükleyebileceğiniz en büyük görüntü boyutu 1 MB 'tır.
+3. Yerel bir görüntüyü karşıya yüklediğinizde, form verileri `Content-Disposition` üstbilgiyi içermelidir. `name`Parametresini "Image" olarak ayarlayın ve bu `filename` parametreyi görüntünüzün dosya adına ayarlayın. Formun içeriği görüntünün ikili verilerini içerir. Karşıya yükleyebileceğiniz en büyük görüntü boyutu 1 MB 'tır.
     
     ```
     --boundary_1234-abcd
@@ -55,13 +55,13 @@ Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülem
     --boundary_1234-abcd--
     ```
 
-3. İsteğiniz başlık bilgilerini tutmak için bir sözlük nesnesi oluşturun. Abonelik anahtarınızı aşağıda gösterildiği gibi dizeye `Ocp-Apim-Subscription-Key`bağlayın:
+4. İsteğiniz başlık bilgilerini tutmak için bir sözlük nesnesi oluşturun. Abonelik anahtarınızı dizeye bağlayın `Ocp-Apim-Subscription-Key` .
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. Görüntüsünü içeren ve isteği gönderdiğinizde açılan ve yüklenen bir başka sözlük oluşturun:
+5. Görüntüsünü içeren ve isteği gönderdiğinizde açılan ve yüklenen bir sözlük oluşturun.
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -69,27 +69,27 @@ Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülem
 
 ## <a name="parse-the-json-response"></a>JSON yanıtını Ayrıştır
 
-1. API yanıtında gerçekleştirilecek adlı `print_json()` bir yöntem oluşturun ve JSON 'u yazdırın:
+`print_json()`API yanıtını kabul etmek ve JSON 'u yazdırmak için adlı bir yöntem oluşturun.
 
-    ```python
-    def print_json(obj):
-        """Print the object as json"""
-        print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
-    ```
+```python
+def print_json(obj):
+    """Print the object as json"""
+    print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
+```
 
 ## <a name="send-the-request"></a>İsteği gönder
 
-1. Bing Görsel Arama API'si `requests.post()` bir istek göndermek için kullanın. Uç nokta, başlık ve dosya bilgileriniz için dize ekleyin. Yazdır `response.json()` `print_json()`:
+`requests.post()`Bing Görsel Arama API'si bir istek göndermek için kullanın. Uç nokta, başlık ve dosya bilgileriniz için dize ekleyin. `response.json()`İle Yazdır `print_json()` .
 
-    ```python
-    try:
-        response = requests.post(BASE_URI, headers=HEADERS, files=file)
-        response.raise_for_status()
-        print_json(response.json())
+```python
+try:
+    response = requests.post(BASE_URI, headers=HEADERS, files=file)
+    response.raise_for_status()
+    print_json(response.json())
     
-    except Exception as ex:
-        raise ex
-    ```
+except Exception as ex:
+    raise ex
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

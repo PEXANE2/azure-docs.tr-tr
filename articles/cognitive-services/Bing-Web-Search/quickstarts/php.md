@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bbb6acd4e976d345daa99cde7635febc3755963f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169723"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873817"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Hızlı Başlangıç: Bing Web Araması API’sini çağırmak için PHP kullanma  
 
-Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Node. js uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
+Bing Web Araması API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu Node. js uygulaması, API 'ye bir arama isteği gönderir ve JSON yanıtını gösterir. Bu uygulama JavaScript 'e yazılsa da, API çoğu programlama dili ile uyumlu olan yeniden yazılmış bir Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 
 ## <a name="enable-secure-http-support"></a>Güvenli HTTP desteğini etkinleştirme
 
-Başlamadan önce `php.ini` dosyasını bulun ve şu satırın açıklamasını kaldırın:
+Başlamadan önce php. ini dosyasını bulun ve bu satırın açıklamasını kaldırın:
 
 ```php
 ; extension=php_openssl.dll
@@ -41,9 +41,13 @@ Başlamadan önce `php.ini` dosyasını bulun ve şu satırın açıklamasını 
 
 ## <a name="create-a-project-and-define-variables"></a>Proje oluşturma ve değişkenleri tanımlama
 
-Sık kullandığınız IDE veya düzenleyicide yeni bir PHP projesi oluşturun. `<?php` ve `?>` açılış ve kapanış etiketlerini eklemeyi unutmayın.
+1. Sık kullandığınız IDE veya düzenleyicide yeni bir PHP projesi oluşturun. Açılış ve kapanış etiketleri ekle: `<?php` ve `?>` .
 
-Devam etmeden önce birkaç değişkeni ayarlamamız gerekir. `$endpoint`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir. `$endpoint` öğesinin geçerli olduğunu doğrulayın ve `$accesskey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `$term` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz.
+2. Değer için `$endpoint` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz. 
+
+3. `$endpoint`Değerin doğru olduğunu onaylayın ve `$accesskey` değeri Azure hesabınızdan geçerli bir abonelik anahtarıyla değiştirin. 
+
+4. İsteğe bağlı olarak, için değerini değiştirerek arama sorgusunu özelleştirin `$term` .
 
 ```php
 $accessKey = 'enter key here';
@@ -53,7 +57,7 @@ $term = 'Microsoft Cognitive Services';
 
 ## <a name="construct-a-request"></a>İstek oluşturma
 
-Bu kod, Bing Web Araması API'sine gönderilecek istekleri oluşturmak için kullanılan `BingWebSearch` işlevini tanımlar. Üç bağımsız değişken alır: `$url`, `$key` ve `$query`.
+Bu kod `BingWebSearch` , Bing Web araması API'si istek oluşturmak için kullanılan adlı bir işlevi bildirir. Üç bağımsız değişken alır: `$url`, `$key` ve `$query`.
 
 ```php
 function BingWebSearch ($url, $key, $query) {
@@ -113,7 +117,7 @@ if (strlen($accessKey) == 32) {
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Son adım kodunuzu doğrulayıp çalıştırmaktır! Kodunuzu bizimkiyle karşılaştırmak isterseniz, tam program aşağıdadır:
+Son adım, kodunuzu doğrulamak ve çalıştırmak için kullanılır. Kodunuzu bizimkiyle karşılaştırmak isterseniz, tam program aşağıdadır:
 
 ```php
 <?php
@@ -155,7 +159,7 @@ if (strlen($accessKey) == 32) {
 ?>
 ```
 
-## <a name="sample-response"></a>Örnek yanıt
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek yanıt, tek bir sonuç göstermek için kısaltıldı.  
 
@@ -284,6 +288,6 @@ Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek y
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing Web araması tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Araması API'si tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]
