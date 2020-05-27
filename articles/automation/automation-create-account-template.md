@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/24/2020
-ms.openlocfilehash: 10b53da1ef277d7a3d6ab7c850192ce8f08ded68
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 05/22/2020
+ms.openlocfilehash: 1418b26a2a498c43ff61f42b2761c59cbca5d0f4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712681"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837153"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma
 
@@ -26,6 +26,8 @@ Kaynak grubunuzda Azure Otomasyonu hesabı oluşturmak için [Azure Resource Man
 
 >[!NOTE]
 >Azure Resource Manager şablonu kullanırken Otomasyon farklı çalıştır hesabının oluşturulması desteklenmez. Portaldan veya PowerShell ile el ile bir farklı çalıştır hesabı oluşturmak için bkz. [Farklı Çalıştır hesaplarını yönetme](manage-runas-account.md).
+
+Bu adımları tamamladıktan sonra, bağlı Log Analytics çalışma alanına runbook iş durumu ve iş akışları göndermek üzere otomasyon hesabınız için [tanılama ayarlarını yapılandırmanız](automation-manage-send-joblogs-log-analytics.md) gerekir. 
 
 ## <a name="api-versions"></a>API sürümleri
 
@@ -310,6 +312,4 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [PowerShell runbook’u oluşturma](automation-first-runbook-textual-powershell.md)
-* [PowerShell Iş akışı runbook 'u oluşturma](automation-first-runbook-textual.md)
-* [Python runbook'u oluşturma](automation-first-runbook-textual-python2.md)
+Runbook iş durumu ve iş akışlarını bağlı Log Analytics çalışma alanınıza iletmek için [Azure Otomasyonu iş verilerini Azure izleyici günlüklerine ilet](automation-manage-send-joblogs-log-analytics.md)' i gözden geçirin. Bu, analiz için çalışma alanına günlük gönderme tümleştirmesini tamamlamaya yönelik Azure PowerShell komutlarını kullanarak Otomasyon hesabının tanılama ayarlarını yapılandırır. 

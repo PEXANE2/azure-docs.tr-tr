@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: fc08916967b4d64667065373cf2d0828a05069d0
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 0d41e1cb1d022ffd9eff2320d462304c6f1a8a9d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890938"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836643"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Elastik veritabanı araçları ve satır düzeyi güvenliği olan çok kiracılı uygulamalar
 
@@ -53,18 +53,18 @@ Uygulamayı derleyin ve çalıştırın. Bu çalıştırma, elastik veritabanı 
 
 RLS 'nin parça veritabanlarında henüz etkinleştirilmediği için, bu testlerin her birinde bir sorun ortaya çıkaran için bu testlerin her biri bir sorunla karşılaşırsınız: kiracılar bu dosyalara ait olmayan blogları görebilir ve uygulamanın yanlış kiracı için blog eklemesini önlenemez. Bu makalenin geri kalanında, bu sorunların nasıl çözümleneceği RLS ile kiracı yalıtımı zorlanarak açıklanmaktadır. İki adım vardır:
 
-1. **Uygulama katmanı**: bir bağlantı açtıktan sonra, oturum\_bağlamındaki geçerli tenantıd 'yi her zaman ayarlamak için uygulama kodunu değiştirin. Örnek proje zaten Tenantıd 'yi bu şekilde ayarlıyor.
-2. **Veri katmanı**: oturum\_bağlamında depolanan tenantıd 'ye göre satırları filtrelemek için her parça veritabanında bir RLS güvenlik ilkesi oluşturun. Parça veritabanlarınızın her biri için bir ilke oluşturun, aksi halde çok kiracılı parçaların satırları filtrelenmez.
+1. **Uygulama katmanı**: \_ bir bağlantı AÇTıKTAN sonra, oturum bağlamındaki geçerli tenantıd 'yi her zaman ayarlamak için uygulama kodunu değiştirin. Örnek proje zaten Tenantıd 'yi bu şekilde ayarlıyor.
+2. **Veri katmanı**: oturum bağlamında depolanan tenantıd 'ye göre satırları filtrelemek için her parça VERITABANıNDA bir RLS güvenlik ilkesi oluşturun \_ . Parça veritabanlarınızın her biri için bir ilke oluşturun, aksi halde çok kiracılı parçaların satırları filtrelenmez.
 
-## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. uygulama katmanı: oturum\_bağlamında Tenantıd ayarlayın
+## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. uygulama katmanı: oturum bağlamında Tenantıd ayarlayın \_
 
-İlk olarak, elastik veritabanı istemci kitaplığının veri bağımlı yönlendirme API 'Lerini kullanarak bir parça veritabanına bağlanırsınız. Uygulamanın, bağlantıyı hangi Tenantıd 'nin kullandığını söylemeye devam etmelidir. Tenantıd, RLS güvenlik ilkesine, hangi satırların diğer kiracılara ait olarak filtrelenmesini gerektiğini söyler. Geçerli Tenantıd 'yi bağlantının [oturum\_bağlamında](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) depolayın.
+İlk olarak, elastik veritabanı istemci kitaplığının veri bağımlı yönlendirme API 'Lerini kullanarak bir parça veritabanına bağlanırsınız. Uygulamanın, bağlantıyı hangi Tenantıd 'nin kullandığını söylemeye devam etmelidir. Tenantıd, RLS güvenlik ilkesine, hangi satırların diğer kiracılara ait olarak filtrelenmesini gerektiğini söyler. Geçerli Tenantıd 'yi bağlantının [oturum \_ bağlamında](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) depolayın.
 
-OTURUM\_bağlamına bir alternatif, [Bağlam\_bilgilerini](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql)kullanmaktır. Ancak oturum\_bağlamı daha iyi bir seçenektir. OTURUM\_bağlamının kullanımı daha kolaydır, varsayılan olarak null değerini döndürür ve anahtar-değer çiftlerini destekler.
+OTURUM bağlamına bir alternatif \_ , [Bağlam \_ bilgilerini](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql)kullanmaktır. Ancak oturum \_ bağlamı daha iyi bir seçenektir. OTURUM \_ bağlamının kullanımı daha kolaydır, varsayılan olarak null değerini döndürür ve anahtar-değer çiftlerini destekler.
 
 ### <a name="entity-framework"></a>Varlık Çerçevesi
 
-Entity Framework kullanan uygulamalar için en kolay yaklaşım,\_ [EF DbContext kullanarak veriye bağımlı yönlendirmelerde](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)açıklanan Elakıscalecontext geçersiz kılma içinde oturum bağlamını ayarlamaya yöneliktir. OTURUM\_bağlamındaki tenantıd 'yi bağlantı Için belirtilen shardingKey olarak ayarlayan bir SqlCommand oluşturma ve yürütme. Ardından, bağlantıyı verilere bağımlı yönlendirme aracılığıyla aracılı olarak döndürün. Bu şekilde, oturum\_bağlamını ayarlamak için yalnızca bir kez kod yazmanız gerekir.
+Entity Framework kullanan uygulamalar için en kolay yaklaşım, \_ [EF DbContext kullanarak veriye bağımlı yönlendirmelerde](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)açıklanan Elakıscalecontext GEÇERSIZ kılma içinde oturum bağlamını ayarlamaya yöneliktir. OTURUM bağlamındaki Tenantıd \_ 'yi bağlantı için belirtilen shardingKey olarak ayarlayan bir SqlCommand oluşturma ve yürütme. Ardından, bağlantıyı verilere bağımlı yönlendirme aracılığıyla aracılı olarak döndürün. Bu şekilde, oturum bağlamını ayarlamak için yalnızca bir kez kod yazmanız gerekir \_ .
 
 ```csharp
 // ElasticScaleContext.cs
@@ -122,7 +122,7 @@ public static SqlConnection OpenDDRConnection(
 // ...
 ```
 
-Artık, her\_Elaun scalecontext çağrıldığında, belirtilen tenantıd ile oturum bağlamı otomatik olarak ayarlanır:
+Artık, \_ her Elaun scalecontext çağrıldığında, belirtilen Tenantıd Ile oturum bağlamı otomatik olarak ayarlanır:
 
 ```csharp
 // Program.cs
@@ -146,7 +146,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 ### <a name="adonet-sqlclient"></a>ADO.NET SqlClient
 
-ADO.NET SqlClient kullanan uygulamalar için, ShardMap. OpenConnectionForKey yöntemi etrafında bir sarmalayıcı işlevi oluşturun. Sarmalayıcı bir bağlantı döndürmeden önce, oturum\_bağlamındaki tenantıd 'yi otomatik olarak geçerli tenantıd 'ye ayarlamış. OTURUM\_bağlamının her zaman ayarlandığından emin olmak için, yalnızca bu sarmalayıcı işlevini kullanarak bağlantı açmanız gerekir.
+ADO.NET SqlClient kullanan uygulamalar için, ShardMap. OpenConnectionForKey yöntemi etrafında bir sarmalayıcı işlevi oluşturun. Sarmalayıcı \_ bir bağlantı döndürmeden önce, oturum bağlamındaki tenantıd 'yi otomatik olarak geçerli tenantıd 'ye ayarlamış. OTURUM \_ bağlamının her zaman ayarlandığından emin olmak için, yalnızca bu sarmalayıcı işlevini kullanarak bağlantı açmanız gerekir.
 
 ```csharp
 // Program.cs
@@ -216,16 +216,16 @@ All blogs for TenantId {0} (using ADO.NET SqlClient):", tenantId4);
 
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>Her kiracının erişebileceği satırları filtrelemek için bir güvenlik ilkesi oluşturun
 
-Uygulama sorgulanmadan önce geçerli Tenantıd\_ile oturum bağlamını ayarlamadığına göre, bir RLS güvenlik ilkesi sorguları filtreleyebilir ve farklı bir tenantıd 'ye sahip satırları dışlayabilir.
+Uygulama \_ sorgulanmadan önce geçerli Tenantıd Ile oturum bağlamını ayarlamadığına göre, BIR RLS güvenlik ilkesi sorguları filtreleyebilir ve farklı bir tenantıd 'ye sahip satırları dışlayabilir.
 
 RLS, Transact-SQL ' t a uygulanır. Kullanıcı tanımlı bir işlev, erişim mantığını tanımlar ve bir güvenlik ilkesi bu işlevi herhangi bir sayıda tabloya bağlar. Bu proje için:
 
-1. İşlevi uygulamanın veritabanına bağlı olduğunu ve oturum\_bağlamında depolanan tenantıd 'nin belirli bir satırın tenantıd ile eşleştiğini doğrular.
+1. İşlevi uygulamanın veritabanına bağlı olduğunu ve oturum bağlamında depolanan Tenantıd 'nin \_ belirli bir satırın tenantıd ile eşleştiğini doğrular.
     - Uygulama, başka bir SQL kullanıcısı yerine bağlı.
 
 2. FILTRE koşulu, Tenantıd filtresini karşılayan satırların SELECT, UPDATE ve DELETE sorguları için geçişine olanak sağlar.
     - Bir blok koşulu, filtrenin eklenmesini veya güncelleştirilmesini başarısız olan satırları engeller.
-    - OTURUM\_bağlamı ayarlanmamışsa, işlev null değerini döndürür ve hiçbir satır görünür değil veya eklenebilir.
+    - OTURUM \_ bağlamı ayarlanmamışsa, Işlev null değerini döndürür ve hiçbir satır görünür değil veya eklenebilir.
 
 Tüm parçalarda RLS 'yi etkinleştirmek için, Visual Studio (SSDT), SSMS veya projeye dahil olan PowerShell betiğini kullanarak aşağıdaki T-SQL ' i yürütün. Ya da [elastik veritabanı işleri](elastic-jobs-overview.md)kullanıyorsanız, bu T-SQL ' i tüm parçalar üzerinde otomatik hale getirebilirsiniz.
 
@@ -268,7 +268,7 @@ GO
 
 ### <a name="add-default-constraints-to-automatically-populate-tenantid-for-inserts"></a>Tenantıd ekleme için otomatik olarak doldurmak üzere varsayılan kısıtlamalar ekleyin
 
-Tenantıd\_'yi otomatik olarak doldurmak için her tabloya varsayılan bir kısıtlama koyabilirsiniz. Aşağıda bir örnek verilmiştir.
+Tenantıd 'yi otomatik olarak doldurmak için her tabloya varsayılan bir kısıtlama koyabilirsiniz \_ . Aşağıda bir örnek verilmiştir.
 
 ```sql
 -- Create default constraints to auto-populate TenantId with the
@@ -301,14 +301,14 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ```
 
 > [!NOTE]
-> Bir Entity Framework projesi için varsayılan kısıtlamalar kullanıyorsanız, EF veri modelinize Tenantıd sütununu *dahil etmeniz* önerilir. Bu öneri Entity Framework sorgularının, oturum\_bağlamını kullanan T-SQL içinde oluşturulan varsayılan kısıtlamaları geçersiz kılan varsayılan değerleri otomatik olarak sağlamalarından kaynaklanır.
+> Bir Entity Framework projesi için varsayılan kısıtlamalar kullanıyorsanız, EF veri modelinize Tenantıd sütununu *dahil etmeniz* önerilir. Bu öneri Entity Framework sorgularının, oturum bağlamını kullanan T-SQL içinde oluşturulan varsayılan kısıtlamaları geçersiz kılan varsayılan değerleri otomatik olarak sağlamalarından kaynaklanır \_ .
 > Örnek projede varsayılan kısıtlamaları kullanmak için, örneğin Tenantıd 'yi DataClasses.cs 'den kaldırmanız gerekir (ve Paket Yöneticisi konsolunda Add-Migration ' ı çalıştırmalısınız) ve alanın veritabanı tablolarında mevcut olduğundan emin olmak için T-SQL ' i kullanın. Bu şekilde, EF veri eklenirken yanlış varsayılan değerleri otomatik olarak sağlar.
 
 ### <a name="optional-enable-a-superuser-to-access-all-rows"></a>Seçim *Süper kullanıcının* tüm satırlara erişmesini sağlama
 
 Bazı uygulamalar, tüm satırlara erişebilen bir *Süper Kullanıcı* oluşturmak isteyebilir. Bir süper kullanıcı tüm parçalardaki tüm kiracılar üzerinde raporlamayı etkinleştirebilir. Ya da bir süper Kullanıcı, kiracı satırlarını veritabanları arasında taşımayı kapsayan parçalar üzerinde bölünmüş birleştirme işlemleri gerçekleştirebilir.
 
-Bir süper kullanıcıyı etkinleştirmek için, her parça veritabanında yeni bir SQL`superuser` kullanıcısı (Bu örnekte) oluşturun. Ardından güvenlik ilkesini, bu kullanıcının tüm satırlara erişmesine izin veren yeni bir koşul işleviyle değiştirin. Böyle bir işlev daha sonra verilir.
+Bir süper kullanıcıyı etkinleştirmek için, her parça veritabanında yeni bir SQL kullanıcısı ( `superuser` Bu örnekte) oluşturun. Ardından güvenlik ilkesini, bu kullanıcının tüm satırlara erişmesine izin veren yeni bir koşul işleviyle değiştirin. Böyle bir işlev daha sonra verilir.
 
 ```sql
 -- New predicate function that adds superuser logic.
@@ -357,7 +357,7 @@ Esnek veritabanı araçları ve satır düzeyi güvenliği, bir uygulamanın ver
 
 ## <a name="questions-and-feature-requests"></a>Sorular ve özellik Istekleri
 
-Sorular için [SQL veritabanı forumundan](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)bizimle iletişim kurun. Ve [SQL veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)herhangi bir özellik isteği ekleyin.
+Sorular için, [SQL veritabanı Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-sql-database.html)bizimle iletişim kurun. Ve [SQL veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)herhangi bir özellik isteği ekleyin.
 
 <!--Image references-->
 [1]: ./media/saas-tenancy-elastic-tools-multi-tenant-row-level-security/blogging-app.png
