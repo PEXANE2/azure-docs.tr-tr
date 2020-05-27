@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 02/01/2020
+ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a437e474a923edc15689639b7180ebed73242bb5
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77915648"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816378"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure ön kapıda Azure Web uygulaması güvenlik duvarı
 
@@ -26,7 +26,7 @@ WAF, Sanal ağınızı girmeden önce saldırı kaynaklarına yakın kötü ama�
 
 ## <a name="waf-policy-and-rules"></a>WAF ilkesi ve kuralları
 
-Bir WAF ilkesi yapılandırabilir ve bu ilkeyi koruma için bir veya daha fazla ön kapı ön uçları ile ilişkilendirebilirsiniz. Bir WAF ilkesi, iki tür güvenlik kuralından oluşur:
+Bir [WAF ilkesi](waf-front-door-create-portal.md) yapılandırabilir ve bu ilkeyi koruma için bir veya daha fazla ön kapı ön uçları ile ilişkilendirebilirsiniz. Bir WAF ilkesi, iki tür güvenlik kuralından oluşur:
 
 - Müşteri tarafından yazılan özel kurallar.
 
