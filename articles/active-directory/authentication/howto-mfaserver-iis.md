@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6189e2bc6c3c8f28b767902b525b03cb72968bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2377ca4b929200ecd0a3a7de01dd3a58be6b7863
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80652907"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845449"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS web uygulamaları için Azure Multi-Factor Authentication Sunucusu
 
 Microsoft IIS web uygulamaları ile IIS kimlik doğrulamasını etkinleştirmek ve yapılandırmak için Azure Multi-Factor Authentication (MFA) Sunucusu’nun IIS Kimlik Doğrulaması bölümünü kullanın. Azure MFA Sunucusu, Azure Multi-Factor Authentication eklemek üzere IIS web sunucusuna yapılan istekleri filtreleyebilen bir eklenti yükler. IIS eklentisi Form Tabanlı Kimlik Doğrulaması ve Tümleşik Windows HTTP Kimlik Doğrulaması için destek sağlar. Güvenilen IP’ler iç IP adreslerini iki öğeli kimlik doğrulamasından muaf tutmak için de kullanılabilir.
 
 > [!IMPORTANT]
-> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
+> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir. Bulut tabanlı Azure Multi-Factor Authentication kullandığınızda, Azure Multi-Factor Authentication (MFA) sunucusu tarafından sunulan IIS eklentisine bir alternatif yoktur. Bunun yerine, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) veya Azure Active Directory uygulama proxy 'Si ile Web uygulaması ara sunucusu (WAP) kullanın.
 
 ![MFA sunucusunda IIS kimlik doğrulaması](./media/howto-mfaserver-iis/iis.png)
 
@@ -34,7 +34,7 @@ Form tabanlı kimlik doğrulaması kullanan bir IIS web uygulamasını güvenli 
 1. Azure Multi-Factor Authentication Sunucusu’nun soldaki menüsünde IIS Kimlik Doğrulaması simgesine tıklayın.
 2. **Form Tabanlı** sekmesine tıklayın.
 3. **Ekle**'ye tıklayın.
-4. Kullanıcı adı, parola ve etki alanı değişkenlerini otomatik olarak algılamak için, otomatik yapılandırma form `https://localhost/contoso/auth/login.aspx`tabanlı Web sitesi Iletişim kutusuna oturum açma URL 'sini (gibi) girin ve **Tamam**' a tıklayın.
+4. Kullanıcı adı, parola ve etki alanı değişkenlerini otomatik olarak algılamak için, `https://localhost/contoso/auth/login.aspx` otomatik yapılandırma form tabanlı Web sitesi iletişim kutusuna oturum açma URL 'sini (gibi) girin ve **Tamam**' a tıklayın.
 5. Tüm kullanıcılar sunucuya aktarılmışsa veya sunucuya aktarılacaksa ve Multi-Factor Authentication 'a tabi olursa **Kullanıcı eşleştirme Multi-Factor Authentication iste** kutusunu işaretleyin. Çok sayıda kullanıcı Sunucu’ya henüz aktarılmadı ve/veya multi-factor authentication’da muaf tutulacaksa, kutunun işaretini kaldırın.
 6. Sayfa değişkenleri otomatik olarak algılanamıyorsa Otomatik Yapılandırma Form Tabanlı Web Sitesi iletişim kutusunda **Elle Belirt**’e tıklayın.
 7. Otomatik Yapılandırma Form Tabanlı Web Sitesi iletişim kutusunda, URL Gönder alanına oturum açma sayfası URL’sini girin ve Uygulama adı girin (isteğe bağlı). Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
@@ -58,7 +58,7 @@ Tümleşik Windows HTTP kimlik doğrulaması kullanan bir IIS web uygulamasını
 1. Azure Multi-Factor Authentication Sunucusu’nun soldaki menüsünde IIS Kimlik Doğrulaması simgesine tıklayın.
 2. **HTTP** sekmesine tıklayın.
 3. **Ekle**'ye tıklayın.
-4. Taban URL 'SI Ekle iletişim kutusunda, HTTP kimlik doğrulamasının gerçekleştirildiği Web sitesinin URL 'sini girin (gibi <http://localhost/owa>) ve bir uygulama adı sağlayın (isteğe bağlı). Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
+4. Taban URL 'SI Ekle iletişim kutusunda, HTTP kimlik doğrulamasının gerçekleştirildiği Web sitesinin URL 'sini girin (gibi <http://localhost/owa> ) ve bir uygulama adı sağlayın (isteğe bağlı). Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
 5. Varsayılan yeterli değilse, Boşta kalma zaman aşımı ve Maksimum oturum sürelerini ayarlayın.
 6. Tüm kullanıcılar sunucuya aktarılmışsa veya sunucuya aktarılacaksa ve Multi-Factor Authentication 'a tabi olursa **Kullanıcı eşleştirme Multi-Factor Authentication iste** kutusunu işaretleyin. Çok sayıda kullanıcı Sunucu’ya henüz aktarılmadı ve/veya multi-factor authentication’da muaf tutulacaksa, kutunun işaretini kaldırın.
 7. İsterseniz **tanımlama bilgisi önbelleği** kutusunu işaretleyin.

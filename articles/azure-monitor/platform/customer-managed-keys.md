@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: 6603985df39afaa2fa2871977d6e577c04f7b569
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 037edb8af6e04a2ff65977a92a66482c9f4f880f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800024"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845107"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Izleyici müşteri tarafından yönetilen anahtar 
 
@@ -35,8 +35,10 @@ CMK özelliği adanmış Log Analytics kümelerine teslim edilir. Bölgenizde ge
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Azure Izleyici 'de CMK nasıl çalışmaktadır
 
-Azure Izleyici, Azure Key Vault erişim sağlamak için sistem tarafından atanan yönetilen kimliğin yararlanır.Sistem tarafından atanan yönetilen kimlik, Log Analytics kümesinin kimliği küme düzeyinde desteklenirken yalnızca tek bir Azure kaynağıyla ilişkilendirilebilir.Bu, CMK özelliğinin adanmış bir Log Analytics kümesine teslim edildiğini belirler.Birden çok çalışma alanı üzerinde CMK 'yi desteklemek için yeni bir Log Analytics *küme*   kaynağı, Key Vault ve Log Analytics çalışma alanlarınız arasında ara kimlik bağlantısı olarak gerçekleştirilir.Log Analytics küme depolaması, \'  *Cluster*   Azure Active Directory aracılığıyla Azure Key Vault kimlik doğrulaması yapmak için küme kaynağıyla ilişkili yönetilen kimliği kullanır. 
-CMK yapılandırmasından sonra, küme kaynağınızın ilişkili çalışma alanlarına alınan tüm veriler, *Cluster*   Key Vault anahtarındaki anahtarınızla şifrelenir. Çalışma alanlarının *Cluster*   herhangi bir zamanda küme kaynağıyla ilişkisini kaldırabilirsiniz.Yeni veriler, yeni ve eski verilerinizi sorunsuz bir şekilde sorgulayabilir Log Analytics depolama ve Microsoft anahtar ile şifrelenmiş olarak kullanıma alınır.
+Azure Izleyici, Azure Key Vault erişim sağlamak için sistem tarafından atanan yönetilen kimliğin yararlanır. Sistem tarafından atanan yönetilen kimlik yalnızca tek bir Azure kaynağıyla ilişkilendirilebilir ancak Log Analytics kümesinin kimliği, küme düzeyinde desteklenirken, bu, CMK özelliğinin adanmış bir Log Analytics kümesinde teslim edildiğini belirler. Birden çok çalışma alanı üzerinde CMK 'yi desteklemek için yeni bir Log Analytics *küme* kaynağı, Key Vault ve Log Analytics çalışma alanlarınız arasında ara kimlik bağlantısı olarak gerçekleştirilir. Log Analytics küme depolaması, \' Azure Active Directory aracılığıyla Azure Key Vault kimlik doğrulaması yapmak Için *küme* kaynağıyla ilişkili yönetilen kimliği kullanır. 
+
+CMK yapılandırmasından sonra, *küme* kaynağınızın ilişkili çalışma alanlarına alınan tüm veriler, Key Vault anahtarındaki anahtarınızla şifrelenir. Çalışma alanlarının herhangi bir zamanda *küme* kaynağıyla ilişkisini kaldırabilirsiniz. Yeni veriler, yeni ve eski verilerinizi sorunsuz bir şekilde sorgulayabilir Log Analytics depolama ve Microsoft anahtar ile şifrelenmiş olarak kullanıma alınır.
+
 
 ![CMK genel bakış](media/customer-managed-keys/cmk-overview-8bit.png)
 
@@ -118,6 +120,29 @@ Yanıt, işlem ve *durumu*hakkında bilgi içerir. Bu, bunlardan biri olabilir:
     "name": "operation-id", 
     "status" : "InProgress", 
     "startTime": "2017-01-06T20:56:36.002812+00:00",
+}
+```
+
+Anahtar tanımlayıcı güncelleştirme işlemi devam ediyor
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Updating", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
+
+*Küme* kaynağı silme işlemi devam ediyor. çalışma alanları ilişkili çalışma alanları olan bir *küme* kaynağını sildiğinizde, zaman uyumlu olmayan işlemlerdeki her çalışma alanı için bir ilişkilendirme işlemi yapılır.
+Bu, ilişkili bir çalışma alanı olmayan bir *kümeyi* sildiğinizde ilgili değildir; bu durumda *küme* kaynağı hemen silinir.
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Deleting", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
 }
 ```
 

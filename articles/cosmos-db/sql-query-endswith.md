@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB sorgu dilinde ENDSWITH
+title: Azure Cosmos DB sorgu dilinde EndsWith
 description: İlk dize ifadesinin ikinci ile bitip bitmediğini gösteren bir Boole değeri döndürmek için Azure Cosmos DB içindeki ENDSWITH SQL System işlevi hakkında bilgi edinin
 author: ginamr
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d7e7f3e33389d4a201ec3281829cb9f0415978e6
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0cd927af50eca04aa8162d9d8f292077d9e4165c
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713565"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844973"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
 
@@ -24,7 +24,7 @@ ms.locfileid: "83713565"
 ENDSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])
 ```  
   
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *str_expr1*  
    Bir dize ifadesidir.  
@@ -40,21 +40,41 @@ ENDSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek "abc" ucunu "b" ve "BC" ile döndürür.  
+Aşağıdaki örnek, "abc" dizesinin "b" ve "bC" ile bitip bitmediğini denetler.  
   
 ```sql
-SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2 
+SELECT ENDSWITH("abc", "b", false) AS e1, ENDSWITH("abc", "bC", false) AS e2, ENDSWITH("abc", "bC", true) AS e3
 ```  
   
  Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
-[{"e1": false, "e2": true}]  
+[
+    {
+        "e1": false,
+        "e2": false,
+        "e3": true
+    }
+]
 ```  
 
 ## <a name="remarks"></a>Açıklamalar
 
 Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
+
+System işlevindeki özelliğin kardinalitesi arttıkça, EndsWith 'ın RU tüketimi artar. Diğer bir deyişle, bir özellik değerinin belirli bir dizeyle bitip bitmediğini denetlereniz, bu özellik için bu özellik için olası değer sayısına göre RU ücreti uygulanır.
+
+Örneğin, iki özellik düşünün: Town ve ülke. Şehir kardinalitesi 5.000 ve ülkenin kardinalitesi 200 ' dir. İki örnek sorgu aşağıda verilmiştir:
+
+```sql
+    SELECT * FROM c WHERE ENDSWITH(c.town, "York", false)
+```
+
+```sql
+    SELECT * FROM c WHERE ENDSWITH(c.country, "States", false)
+```
+
+İlk sorgu büyük olasılıkla ikinci sorgudan daha fazla bir değer kullanacaktır çünkü kasabanın kardinalitesi ülkeden daha yüksektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8081bb8145a6654c168fb2d664e1666b32dc18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d9eb3c8f34308271eb216cad25a5db4a62d03cb
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457918"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845382"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Koşullu erişim: güvenlik bilgilerini kaydettirme güvenliğini sağlama
 
@@ -26,7 +26,7 @@ Kullanıcıların Azure Multi-Factor Authentication ve self servis parola sıfı
 
 Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmayı deneyen ve güvenilen ağ olarak işaretlenen bir konumdan bağlanmadıkları sürece erişimi engelleyen tüm seçili kullanıcılar için geçerlidir.
 
-1. **Azure Portal** **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**' ne gidin.
+1. **Azure Portal** **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**' ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. Ad alanına bu ilke için bir ad girin. Örneğin, **güvenilir ağlarda Birleşik güvenlik bilgileri kaydı**.
 1. **Atamalar**' ın altında, **Kullanıcılar ve gruplar**' ı seçin ve bu ilkenin uygulanmasını istediğiniz kullanıcıları ve grupları seçin.
@@ -35,14 +35,14 @@ Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmayı den
    > [Birleşik kayıt](../authentication/howto-registration-mfa-sspr-combined.md)için kullanıcıların etkinleştirilmiş olması gerekir.
 
 1. **Bulut uygulamaları veya eylemler**altında **Kullanıcı eylemleri**' ni seçin, **güvenlik bilgilerini kaydet**' i işaretleyin.
-1. **Koşul** > **konumları**altında.
+1. **Koşul**  >  **konumları**altında.
    1. **Evet 'i**yapılandırın.
    1. **Herhangi bir konum**ekleyin.
    1. **Tüm güvenilen konumları**hariç tutun.
    1. Konumlar dikey penceresinde **bitti** ' yi seçin.
    1. Koşullar dikey penceresinde **bitti** ' yi seçin.
-1. **Koşullar** > **istemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi seçin.
-1. **Erişim denetimleri** > **izni**altında.
+1. **Koşullar**  >  **istemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi seçin.
+1. **Erişim denetimleri**  >  **izni**altında.
    1. **Erişimi engelle**' yi seçin.
    1. Ardından **Seç**'e tıklayın.
 1. **İlkeyi etkinleştir**’i **Açık** duruma getirin.
@@ -52,7 +52,7 @@ Bu ilkedeki 6. adımda, kuruluşların yapabilecekleri seçimler vardır. Yukar�
 
 Bazıları, yukarıdaki 6. adımdaki konum yerine cihaz durumunu kullanmayı seçebilir:
 
-6. **Koşullar** > **cihaz durumu (Önizleme)** altında.
+6. **Koşullar**  >  **cihaz durumu (Önizleme)** altında.
    1. **Evet 'i**yapılandırın.
    1. **Tüm cihaz durumunu**ekleyin.
    1. **Cihaza karma Azure AD 'ye katılmış** ve/veya **uyumlu olarak işaretlenmiş cihaz** hariç tut
@@ -61,6 +61,7 @@ Bazıları, yukarıdaki 6. adımdaki konum yerine cihaz durumunu kullanmayı se�
 
 > [!WARNING]
 > İlkenizde bir koşul olarak cihaz durumunu kullanıyorsanız, bu, dizindeki Konuk kullanıcıları etkileyebilir. [Yalnızca rapor modu](concept-conditional-access-report-only.md) , ilke kararlarının etkisini belirlemenize yardımcı olabilir.
+> Yalnızca rapor modunun "Kullanıcı eylemleri" kapsamına sahip CA ilkeleri için geçerli olmadığına unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
