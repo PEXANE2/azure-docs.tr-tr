@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: cda803c886a3db9099a8c47bb70a582b6a1f6d52
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c996c51583d81905e7853323166407e38ae79225
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745048"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830047"
 ---
 # <a name="configure-runbook-input-parameters"></a>Runbook girdi parametrelerini yapılandırma
 
@@ -357,5 +357,5 @@ Artık Azure PowerShell kullanarak runbook 'u yerel makinenizden çağırabilirs
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Automation 'da metin runbook 'larını düzenleme](automation-edit-textual-runbook.md)
-* [Azure Otomasyonu 'nda grafik runbook 'ları yazma](automation-graphical-authoring-intro.md)
+* Metinsel runbook hazırlamak için bkz. [Azure Automation 'da metin runbook 'Larını düzenleme](automation-edit-textual-runbook.md).
+* Grafik runbook 'u hazırlamak için bkz. [Azure Otomasyonu 'nda grafik runbook 'Ları yazma](automation-graphical-authoring-intro.md).

@@ -7,12 +7,12 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: f9e8dbe2021c5700fe0223ff7ce246ac54f2abbd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2e168abaf522fa1126e3cb4618941952b562df31
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650290"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831883"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>İOS 'dan blob depolamayı kullanma
 
@@ -394,5 +394,5 @@ Artık iOS 'dan blob Storage 'ı nasıl kullanacağınızı öğrendiğinize gö
 - [Azure Storage Hizmetleri REST API’si](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 - [Azure Depolama Ekibi Blogu](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 
-Bu kitaplıkla ilgili sorularınız varsa, [MSDN Azure forumumuza](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)göndermekten çekinmeyin.
+Bu kitaplıkla ilgili sorularınız varsa [Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-blob-storage.html) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)gönderebilirsiniz.
 Azure depolama için özellik önerileriniz varsa lütfen [Azure Storage geri bildirimlerine](https://feedback.azure.com/forums/217298-storage/)gönderin.

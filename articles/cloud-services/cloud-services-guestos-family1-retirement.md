@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: ae2df6f47d99fc5d452a6d3ea70f2dd2e4e7416b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68359592"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835640"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Konuk İşletim Sistemi Ailesi 1 kullanımdan kaldırma bildirimi
 OS ailesi 1 ' in kullanımdan kaldırılması ilk olarak 1 Haziran 2013 ' de duyuruldu.
@@ -23,7 +23,7 @@ OS ailesi 1 ' in kullanımdan kaldırılması ilk olarak 1 Haziran 2013 ' de duy
 
 **3 kasım 2014** Konuk işletim sistemi ailesi 1 için genişletilmiş destek sona erdi ve tamamen kullanımdan kaldırıldı. Tüm hizmetler hala aile 1 ' de etkilenecektir. Bu hizmetleri dilediğiniz zaman durduracağız. Kendiniz de el ile yükseltmediğiniz müddetçe hizmetlerinizin çalışmaya devam edeceğini garanti yoktur.
 
-Başka sorularınız varsa [Cloud Services forumlarını](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc) ziyaret edin veya [Azure desteği 'ne başvurun](https://azure.microsoft.com/support/options/).
+Başka sorularınız varsa, [Cloud Services Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-cloud-services.html) ziyaret edin veya [Azure desteği 'ne başvurun](https://azure.microsoft.com/support/options/).
 
 ## <a name="are-you-affected"></a>Etkilensin mi?
 Aşağıdakilerden biri geçerliyse Cloud Services etkilenir:

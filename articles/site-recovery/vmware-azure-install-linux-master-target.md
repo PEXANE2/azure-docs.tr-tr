@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954369"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829792"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Yeniden çalışma için bir Linux ana hedef sunucusu yükleme
 Sanal makinelerinizin yükünü Azure 'a devretmek için sanal makineleri şirket içi siteye geri alabilirsiniz. Yeniden yük devretmek için sanal makineyi Azure 'dan şirket içi siteye yeniden korumanız gerekir. Bu işlem için, trafiği almak için bir şirket içi ana hedef sunucusuna ihtiyacınız vardır. 
@@ -27,7 +27,7 @@ Korumalı sanal makineniz bir Windows sanal makinedir, bir Windows Ana hedefine 
 ## <a name="overview"></a>Genel Bakış
 Bu makalede bir Linux ana hedefinin nasıl yükleneceğine ilişkin yönergeler sağlanmaktadır.
 
-Bu makalenin sonunda veya [Azure kurtarma hizmetleri Forumu](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)' nda yorum veya soru gönderin.
+Bu makalenin sonunda veya [Azure kurtarma hizmetleri Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)yorum veya soru gönderin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -160,7 +160,7 @@ Bir Linux sanal makinesindeki her SCSI sabit diskinin KIMLIĞINI almak için **d
 
 3. **Seçenekler** sekmesini seçin.
 
-4. Sol bölmede **Gelişmiş** > **genel**' i seçin ve ardından ekranın sağ alt kısmındaki **yapılandırma parametreleri** düğmesini seçin.
+4. Sol bölmede **Gelişmiş**  >  **genel**' i seçin ve ardından ekranın sağ alt kısmındaki **yapılandırma parametreleri** düğmesini seçin.
 
     ![Yapılandırma parametresini aç](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
@@ -244,7 +244,7 @@ Bir saklama diski oluşturmak için aşağıdaki adımları kullanın:
 
     ![Çok yollu KIMLIĞI](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Sürücüyü biçimlendirin ve ardından yeni sürücüde bir dosya sistemi oluşturun: **mkfs. ext4/dev/mapper/\<bekletme diskinin çok yollu kimliği>**.
+3. Sürücüyü biçimlendirin ve ardından yeni sürücüde bir dosya sistemi oluşturun: **mkfs. ext4/dev/mapper/ \< bekletme diskinin çok yollu kimliği>**.
     
     ![Dosya sistemi](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +261,7 @@ Bir saklama diski oluşturmak için aşağıdaki adımları kullanın:
     
     Dosyayı düzenlemeyle başlamak için **Ekle** ' yi seçin. Yeni bir satır oluşturun ve ardından aşağıdaki metni ekleyin. Önceki komuttan vurgulanan çok yollu KIMLIĞE göre disk çok yollu KIMLIĞINI düzenleyin.
 
-    **/dev/mapper/\<bekletme diskleri çok yollu kimlik>/mnt/bekletme ext4 RW 0 0**
+    **/dev/mapper/ \< bekletme diskleri çok yollu kimlik>/mnt/bekletme ext4 rw 0 0**
 
     **ESC**' yi seçin ve ardından düzenleyici penceresini kapatmak için **WQ** (yazma ve çıkış) yazın.
 

@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f6773d9f2210fd1b0342c9586d89155082bf8ff
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: fbd721bc54ce2de6b7923b0f582c53ffc7da1a73
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711457"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837034"
 ---
 # <a name="configure-data-at-scale-for-azure-automation-state-configuration"></a>Verileri Azure Otomasyonu durum yapılandırması için ölçeklendirerek yapılandırma
 
@@ -51,6 +51,6 @@ Datum denemek için [PowerShell Galerisi](https://www.powershellgallery.com/pack
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Windows PowerShell Istenen durum yapılandırmasına genel bakış](/powershell/scripting/dsc/overview/overview)
-- [DSC kaynakları](/powershell/scripting/dsc/resources/resources)
-- [Yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- PowerShell DSC 'yi anlamak için bkz. [Windows PowerShell Istenen durum yapılandırmasına genel bakış](/powershell/scripting/dsc/overview/overview).
+- [DSC kaynaklarında](/powershell/scripting/dsc/resources/resources)PowerShell DSC kaynakları hakkında bilgi edinin.
+- Yerel Configuration Manager yapılandırması hakkında daha fazla bilgi için bkz. [yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaconfig).

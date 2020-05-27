@@ -3,13 +3,13 @@ title: Dağıtım geçmişi
 description: Portal, PowerShell, Azure CLı ve REST API Azure Resource Manager dağıtım işlemlerinin nasıl görüntüleneceğini açıklar.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 11/26/2019
-ms.openlocfilehash: b0f196f86bed05094b04bfc20c7cef2248a91c65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/22/2020
+ms.openlocfilehash: 1f22bdfac5eb12688a5b5778d4da1505e36ef6bf
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460305"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816293"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager ile dağıtım geçmişini görüntüle
 
@@ -145,22 +145,22 @@ Başarısız işlemlerin durum iletisini almak için aşağıdaki komutu kullan�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bir kaynak grubuna dağıtıma yönelik dağıtım işlemlerini görüntülemek için [az Deployment Group Operation List](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-deployment-group-operation-list) komutunu kullanın.
+Bir kaynak grubuna dağıtıma yönelik dağıtım işlemlerini görüntülemek için [az Deployment Operation Group List](/cli/azure/deployment/operation/group#az-deployment-operation-group-list) komutunu kullanın. Azure CLı 2.6.0 veya sonraki bir sürümü olmalıdır.
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeployment
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
 Başarısız işlemleri görüntülemek için, **başarısız** durumundaki işlemleri filtreleyin.
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
 ```
 
 Başarısız işlemlerin durum iletisini almak için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
 # <a name="http"></a>[HTTP](#tab/http)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: f6dea00bf3b3e8a58f42da8fd8ad59ccec2dea72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17c73866a11aae23efea90073f64b61808c13a35
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537806"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834722"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma
 
@@ -61,17 +61,18 @@ Edge düğümü oluşturduktan sonra, SSH kullanarak kenar düğümüne bağlana
 > [!WARNING]
 > Edge düğümüne yüklenen özel bileşenler, Microsoft 'tan ticari olarak makul bir destek alır. Bu, karşılaştığınız sorunların çözümlenmesinde ortaya çıkabilir. Ya da, daha fazla yardım için topluluk kaynaklarına da başvurulabilir. Topluluktan yardım almak için en etkin sitelerin bazıları aşağıda verilmiştir:
 >
-> * [HDInsight için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
+> * [Microsoft Q&HDInsight için soru sayfası] (https://docs.microsoft.com/answers/topics/azure-hdinsight.html
+
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
-> Apache teknolojisi kullanıyorsanız, üzerinde [https://apache.org](https://apache.org) [Apache Hadoop](https://hadoop.apache.org/) sitesi gibi Apache proje siteleri aracılığıyla yardım bulabilirsiniz.
+> Apache teknolojisi kullanıyorsanız, üzerinde Apache Hadoop sitesi gibi Apache proje siteleri aracılığıyla yardım bulabilirsiniz [https://apache.org](https://apache.org) . [Apache Hadoop](https://hadoop.apache.org/)
 
 > [!IMPORTANT]
 > Ubuntu görüntüleri, yayımlanmakta olan 3 ay içinde yeni HDInsight kümesi oluşturma için kullanılabilir hale gelir. 2019 Ocak itibariyle, çalışan kümeler (kenar düğümleri dahil) Otomatik Düzeltme Eki **uygulanmaz** . Müşterilerin çalışan bir kümeyi yaması için betik eylemleri veya diğer mekanizmaları kullanması gerekir.  Daha fazla bilgi için bkz. [HDInsight Için Işletim sistemi düzeltme eki uygulama](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Var olan bir kümeye kenar düğümü ekleme
 
-Bu bölümde, var olan bir HDInsight kümesine Edge düğümü eklemek için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)' da bulunabilir. Kaynak Yöneticisi şablonu, konumunda https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.shbulunan bir betik eylemini çağırır. Betik herhangi bir eylem yapmaz.  Bu, bir Kaynak Yöneticisi şablonundan betik eylemini çağırma işlemini gösterir.
+Bu bölümde, var olan bir HDInsight kümesine Edge düğümü eklemek için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)' da bulunabilir. Kaynak Yöneticisi şablonu, konumunda bulunan bir betik eylemini çağırır https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh . Betik herhangi bir eylem yapmaz.  Bu, bir Kaynak Yöneticisi şablonundan betik eylemini çağırma işlemini gösterir.
 
 1. Azure 'da oturum açmak için aşağıdaki görüntüyü seçin ve Azure portal Azure Resource Manager şablonu açın.
 
@@ -89,11 +90,11 @@ Bu bölümde, var olan bir HDInsight kümesine Edge düğümü eklemek için bir
 1. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u işaretleyin ve ardından kenar düğümünü oluşturmak Için **satın al** ' ı seçin.
 
 > [!IMPORTANT]  
-> Mevcut HDInsight kümesi için Azure kaynak grubunu seçtiğinizden emin olun.  Aksi halde, "iç içe kaynak üzerinde istenen işlem gerçekleştirilemiyor" hata iletisini alırsınız. '&lt;Clustername> ' üst kaynağı bulunamadı. "
+> Mevcut HDInsight kümesi için Azure kaynak grubunu seçtiğinizden emin olun.  Aksi halde, "iç içe kaynak üzerinde istenen işlem gerçekleştirilemiyor" hata iletisini alırsınız. ' &lt; ClusterName> ' üst kaynağı bulunamadı. "
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Küme oluştururken kenar düğümü ekleme
 
-Bu bölümde, bir Edge düğümü ile HDInsight kümesi oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu, [Azure hızlı başlangıç şablonları galerisinde](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)bulunabilir. Kaynak Yöneticisi şablonu, konumunda https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.shbulunan bir betik eylemini çağırır. Betik herhangi bir eylem yapmaz.  Bu, bir Kaynak Yöneticisi şablonundan betik eylemini çağırma işlemini gösterir.
+Bu bölümde, bir Edge düğümü ile HDInsight kümesi oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu, [Azure hızlı başlangıç şablonları galerisinde](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)bulunabilir. Kaynak Yöneticisi şablonu, konumunda bulunan bir betik eylemini çağırır https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh . Betik herhangi bir eylem yapmaz.  Bu, bir Kaynak Yöneticisi şablonundan betik eylemini çağırma işlemini gösterir.
 
 1. Henüz yoksa bir HDInsight kümesi oluşturun.  Bkz. [HDInsight 'Ta Hadoop kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -125,7 +126,7 @@ Bir HDInsight kümesine birden çok Edge düğümü ekleyebilirsiniz.  Birden ç
 
 ## <a name="access-an-edge-node"></a>Kenar düğümüne erişme
 
-Edge düğümü SSH uç noktası &lt;edgenodename>. &lt;Clustername>-SSH.azurehdinsight.net:22.  Örneğin, new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22.
+Edge düğümü SSH uç noktası &lt; edgenodename>. &lt; ClusterName>-ssh.azurehdinsight.net:22.  Örneğin, new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22.
 
 Edge düğümü Azure portal bir uygulama olarak görünür.  Portal, size SSH kullanarak Edge düğümüne erişme bilgileri verir.
 

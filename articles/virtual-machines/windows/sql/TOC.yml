@@ -69,7 +69,7 @@
           href: virtual-machines-windows-sql-register-with-resource-provider.md
         - name: Birden fazla VM'yi toplu kaydetme
           href: virtual-machines-windows-sql-bulk-register-with-resource-provider.md
-    - name: Yönet
+    - name: Yönetme
       items:
         - name: Lisanslama modeli
           displayName: 'ahb, ahub, payg, change, modify, update'
@@ -101,7 +101,7 @@
               href: virtual-machines-windows-sql-workgroup-availability-group.md
             - name: El ile yapılandırma
               items:
-                - name: Önkoşullar
+                - name: Ön koşullar
                   href: virtual-machines-windows-portal-sql-availability-group-prereq.md
                 - name: Öğretici
                   href: virtual-machines-windows-portal-sql-availability-group-tutorial.md
@@ -141,7 +141,7 @@
       href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: MSDN forumu
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'

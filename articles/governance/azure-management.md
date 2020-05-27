@@ -1,14 +1,14 @@
 ---
 title: Azure yönetimine genel bakış-Azure Idare
 description: Azure Yönetim Araçları 'ndaki içeriklere yönelik bağlantılarla Azure uygulamaları ve kaynakları için yönetim bölümlerine genel bakış.
-ms.date: 12/06/2018
+ms.date: 05/22/2020
 ms.topic: overview
-ms.openlocfilehash: 644f4fc3a04f86426c2eb04b02c29882fa39fb88
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75980910"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828156"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure 'da Yönetim Hizmetleri 'ne genel bakış
 
@@ -18,7 +18,7 @@ Yönetim, iş uygulamalarınızı ve onları destekleyen kaynaklarınızı korum
 
 Aşağıdaki diyagramda herhangi bir uygulamayı veya kaynağı korumak için gereken farklı yönetim alanları gösterilmektedir. Bu farklı bölgeler yaşam döngüsü olarak düşünülebilir. Her alan, bir kaynağın kullanım ömrü boyunca sürekli olarak her bir şekilde gereklidir. Bu kaynak yaşam döngüsü ilk dağıtım ile başlar, devam eden işlem ve son kullanımdan kalkmıştır.
 
-![Azure 'da disiplindeki yönetim hatları](../monitoring/media/management-overview/management-capabilities.png)
+:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Azure 'da disiplindeki yönetim hatları" border="false":::
 
 Tek bir Azure hizmeti belirli bir yönetim alanının gereksinimlerini tamamen doldurmıyor. Bunun yerine, her biri birlikte çalışan çeşitli hizmetler tarafından gerçekleştirilir. Application Insights gibi bazı hizmetler, Web uygulamaları için hedeflenen izleme işlevlerini sağlar. Azure Izleyici günlükleri gibi diğerleri, diğer hizmetler için yönetim verilerini depolar. Bu özellik farklı hizmetler tarafından toplanan farklı türlerdeki verileri analiz etmenizi sağlar.
 
@@ -36,7 +36,9 @@ Bu görevlerin otomasyonu, artıklığı ortadan kaldırmanıza, zaman ve çabal
 ## <a name="govern"></a>İdare
 
 İdare, Azure’daki uygulama ve kaynaklarınız üzerindeki denetimi sürdürmenize yönelik mekanizmalar ve süreçler sağlar. Girişimlerinizi planlama ve stratejik öncelikleri belirleme de bu kapsama dahildir.
-Azure’da İdare, temelde iki hizmet ile uygulanır. [Azure ilkesi](./policy/overview.md) , kaynaklarınız için kuralları zorlamak üzere ilke tanımları oluşturmanıza, atamanıza ve yönetmenize olanak sağlar. Bu özellik, bu kaynakları kurumsal standartlarınızla uyumlu tutar. [Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md) , Azure kaynaklarınız ve diğer bulut sağlayıcıları için bulut kullanımını ve harcamalarınızı izlemenize olanak sağlar.
+Azure’da İdare, temelde iki hizmet ile uygulanır. [Azure ilkesi](./policy/overview.md) , kaynaklarınız için kuralları zorlamak üzere ilke tanımları oluşturmanıza, atamanıza ve yönetmenize olanak sağlar.
+Bu özellik, bu kaynakları kurumsal standartlarınızla uyumlu tutar.
+[Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md) , Azure kaynaklarınız ve diğer bulut sağlayıcıları için bulut kullanımını ve harcamalarınızı izlemenize olanak sağlar.
 
 ## <a name="secure"></a>Güvenlik
 

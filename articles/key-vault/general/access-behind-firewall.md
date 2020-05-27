@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 07ae08f87c9a3e788944a48f6d5a24e2b076d16f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: db5c35db271f84a88fdc03f4f0178ee1c35f727e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732334"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834331"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Güvenlik duvarının ardındayken Azure Anahtar Kasası’na erişme
 
@@ -31,9 +31,9 @@ Yapılandırmanıza ve ortamınıza bağlı olarak, bazı farklılıklar mevcutt
 
 ## <a name="ports"></a>Bağlantı noktaları
 
-Üç işlev (kimlik doğrulama, yönetim ve veri düzlemi erişimi) için de anahtar kasası trafiği HTTPS: bağlantı noktası 443 üzerinden gider. Ancak CRL için zaman zaman HTTP (bağlantı noktası 80) trafiği de olacaktır. OCSP 'yi destekleyen istemciler CRL 'ye ulaşmamalıdır ancak zaman zaman alabilir [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl).  
+Üç işlev (kimlik doğrulama, yönetim ve veri düzlemi erişimi) için de anahtar kasası trafiği HTTPS: bağlantı noktası 443 üzerinden gider. Ancak CRL için zaman zaman HTTP (bağlantı noktası 80) trafiği de olacaktır. OCSP 'yi destekleyen istemciler CRL 'ye ulaşmamalıdır ancak zaman zaman alabilir [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl) .  
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Anahtar kasası istemci uygulamasının, kimlik doğrulaması için Azure Active Directory uç noktalarına erişmesi gerekir. Kullanılan uç nokta, Azure AD kiracı yapılandırmasına, sorumlu türüne (kullanıcı sorumlusu veya hizmet sorumlusu) ve hesap türüne (örneğin, Microsoft hesabı ya da iş veya okul hesabı) bağlıdır.  
 
@@ -52,7 +52,7 @@ Anahtar Kasası yönetimi için (CRUD ve erişim ilkesi ayarı), anahtar kasası
 | İşlem türü | Uç nokta:bağlantı noktası |
 | --- | --- |
 | Anahtar Kasası denetim düzlemi işlemleri<br> Azure Resource Manager yoluyla |**Genel**<br> management.azure.com:443<br><br> **Azure Çin:**<br> management.chinacloudapi.cn:443<br><br> **Azure ABD kamu:**<br> management.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> management.microsoftazure.de:443 |
-| Microsoft Graph API'si |**Genel**<br> graph.microsoft.com:443<br><br> **Azure Çin:**<br> graph.chinacloudapi.cn:443<br><br> **Azure ABD kamu:**<br> graph.microsoft.com:443<br><br> **Azure Almanya:**<br> graph.cloudapi.de:443 |
+| Microsoft Graph API’si |**Genel**<br> graph.microsoft.com:443<br><br> **Azure Çin:**<br> graph.chinacloudapi.cn:443<br><br> **Azure ABD kamu:**<br> graph.microsoft.com:443<br><br> **Azure Almanya:**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>Anahtar Kasası işlemleri
 
@@ -68,10 +68,10 @@ Anahtar Kasası hizmeti, PaaS altyapısı gibi diğer Azure kaynaklarını kulla
 * [Geneldir](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
 * [US Gov](https://www.microsoft.com/en-us/download/details.aspx?id=57063)
 * [Almanya](https://www.microsoft.com/en-us/download/details.aspx?id=57064)
-* [Çin](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
+* [Arasında](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
 
 Kimlik doğrulama ve Kimlik (Azure Active Directory) genel bir hizmettir ve diğer bölgelere yük devredebilir veya trafiği bilgi vermeden taşıyabilir. Bu senaryoda, [Kimlik Doğrulama ve Kimlik IP Adresleri](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)’nde listelenen tüm IP aralıklarının güvenlik duvarına eklenmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Key Vault hakkında sorularınız varsa [Azure Key Vault forumlarını](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)ziyaret edin.
+Key Vault hakkında sorularınız varsa [Azure Key Vault Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-key-vault.html)ziyaret edin.

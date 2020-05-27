@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48ce72ee501252e35388f958b5c2e166edc2678f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 21289874792987e35fa1cc5731a63e3f55fedc35
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196166"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835776"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar.
@@ -42,29 +42,31 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 
 |Desteklenen hizmetler  |Kullanılabilir bölgeler | Durum  |
 |:-------------------|:-----------------|:--------|
-|Standart Azure Load Balancer arkasındaki özel bağlantı Hizmetleri | Tüm ortak bölgeler  | GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
-| Azure Storage        |  Tüm ortak bölgeler       | GA <br/> [Daha fazla bilgi](/azure/storage/common/storage-private-endpoints)  |
-| Azure Data Lake Storage Gen2        |  Tüm ortak bölgeler      | GA <br/> [Daha fazla bilgi](/azure/storage/common/storage-private-endpoints)  |
-|  Azure SQL Veritabanı         | Tüm ortak bölgeler      |   GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
-|Azure SYNAPSE Analytics (SQL veri ambarı)| Tüm ortak bölgeler |GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|Azure Cosmos DB|  Tüm ortak bölgeler |GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
-|  PostgreSQL için Azure veritabanı-tek sunucu         | Tüm ortak bölgeler      |   GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
-|  MySQL için Azure Veritabanı         | Tüm ortak bölgeler      |   GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
-|  MariaDB için Azure Veritabanı         | Tüm ortak bölgeler      |   GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
-|  Azure Key Vault         | Tüm ortak bölgeler      |   GA   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
-|Azure Kubernetes hizmeti-Kubernetes API 'SI | Tüm ortak bölgeler      |   GA   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/aks/private-clusters)   |
-|Azure Search | Tüm ortak bölgeler |   GA   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/search/search-security-overview#endpoint-access)    |
-|Azure Container Registry | Tüm ortak bölgeler      |   GA   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/container-registry/container-registry-private-link)   |
+|Standart Azure Load Balancer arkasındaki özel bağlantı Hizmetleri | Tüm ortak bölgeler  | GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+| Azure Storage        |  Tüm ortak bölgeler       | GA <br/> [Daha fazla bilgi edinin](/azure/storage/common/storage-private-endpoints)  |
+| Azure Data Lake Storage Gen2        |  Tüm ortak bölgeler      | GA <br/> [Daha fazla bilgi edinin](/azure/storage/common/storage-private-endpoints)  |
+|  Azure SQL Veritabanı         | Tüm ortak bölgeler      |   GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+|Azure SYNAPSE Analytics (SQL veri ambarı)| Tüm ortak bölgeler |GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
+|Azure Cosmos DB|  Tüm ortak bölgeler |GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  PostgreSQL için Azure veritabanı-tek sunucu         | Tüm ortak bölgeler      |   GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  MySQL için Azure Veritabanı         | Tüm ortak bölgeler      |   GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  MariaDB için Azure Veritabanı         | Tüm ortak bölgeler      |   GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|  Azure Key Vault         | Tüm ortak bölgeler      |   GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
+|Azure Kubernetes hizmeti-Kubernetes API 'SI | Tüm ortak bölgeler      |   GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/aks/private-clusters)   |
+|Azure Search | Tüm ortak bölgeler |   GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/search/search-security-overview#endpoint-access)    |
+|Azure Container Registry | Tüm ortak bölgeler      |   GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/container-registry/container-registry-private-link)   |
 |Azure Uygulama Yapılandırması | Tüm ortak bölgeler      |   Önizleme   |
-|Azure Backup | Tüm ortak bölgeler     |   GA   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/backup/private-endpoints)   |
-|Azure Event Hub | Tüm ortak bölgeler      |    GA   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/event-hubs/private-link-service)  |
-|Azure Service Bus | Tüm ortak bölgeler      |  GA   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
-|Azure Geçişi | Tüm ortak bölgeler      |   Önizleme <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
-|Azure Event Grid| Tüm ortak bölgeler       |   GA   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web Apps | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD      |   Önizleme   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|Azure Machine Learning | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD      |   Önizleme   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
-| IoT Hub | Tüm ortak bölgeler    |   Önizleme   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
-| Azure SignalR | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD      |   Önizleme   <br/> [Daha fazla bilgi](https://aka.ms/asrs/privatelink)   |
+|Azure Backup | Tüm ortak bölgeler     |   GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/private-endpoints)   |
+|Azure Event Hub | Tüm ortak bölgeler      |    GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/event-hubs/private-link-service)  |
+|Azure Service Bus | Tüm ortak bölgeler      |  GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
+|Azure Geçişi | Tüm ortak bölgeler      |   Önizleme <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
+|Azure Event Grid| Tüm ortak bölgeler       |   GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/event-grid/network-security) |
+|Azure Web Apps | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD      |   Önizleme   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|Azure Machine Learning | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD      |   Önizleme   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+| IoT Hub | Tüm ortak bölgeler    |   Önizleme   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
+| Azure SignalR | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD      |   Önizleme   <br/> [Daha fazla bilgi edinin](https://aka.ms/asrs/privatelink)   |
+| Azure İzleyici <br/>(Log Analytics & Application Insights) | Tüm ortak bölgeler      |   GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   |
+
 
 En güncel bildirimler için, [Azure sanal ağ güncelleştirmeleri sayfasını](https://azure.microsoft.com/updates/?product=virtual-network)inceleyin.
 

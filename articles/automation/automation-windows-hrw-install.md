@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3a27cee7a94ee6f33c399d10f90e47ec574e7380
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e4b8bcf2b6ed5ab9c1160df49b1a6082aaf02f65
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744188"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830472"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -204,5 +204,5 @@ Karma runbook çalışanı grubunu kaldırmak için, önce karma runbook çalı�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Karma Runbook Çalışanı üzerinde runbook çalıştırma](automation-hrw-run-runbooks.md)
-* [Karma Runbook Worker sorunlarını giderme](troubleshoot/hybrid-runbook-worker.md#windows)
+* Runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatik hale getirmek üzere nasıl yapılandıracağınızı öğrenmek için bkz. [runbook 'Ları karma Runbook Worker üzerinde çalıştırma](automation-hrw-run-runbooks.md).
+* Karma runbook çalışanlarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. [karma Runbook Worker sorunlarını giderme](troubleshoot/hybrid-runbook-worker.md#general).

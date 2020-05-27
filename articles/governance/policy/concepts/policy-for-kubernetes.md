@@ -3,12 +3,12 @@ title: Önizleme-Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin. Bu bir önizleme özelliğidir.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0d663d7bf7ce70c605551422f600258943d1efd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: fb66510b55f9d3f08ab8e058bb8f67fb1954db6f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828636"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800349"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes kümeleri için Azure Ilkesini anlama (Önizleme)
 
@@ -403,7 +403,7 @@ Aşağıdaki adımlarla Azure portal kullanarak kümenizi yönetmeye yönelik ye
 
 1. **Parametre değerlerini** ayarla 
 
-   - Kubernetes ad alanlarını ilke değerlendirmesinden dışlamak için, parametre **ad uzayı dışlamaları**içindeki ad alanlarının listesini belirtin. Şunları hariç tutmak önerilir: _KUVE sistem_, _Gatekeeper-System_ve _Azure-Arc_.
+   - Kubernetes ad alanlarını ilke değerlendirmesinden dışlamak için, parametre **ad uzayı dışlamaları**içindeki ad alanlarının listesini belirtin. Şunları hariç tutmak önerilir: _Kue-sistem_ 
 
 1. **İncele ve oluştur**’u seçin.
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
-ms.openlocfilehash: f298b331d53eb8bab67a6f99194065dc5f889236
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94e214c55a0109beb85cd08ce87303e5bd0f8016
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414885"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835436"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -45,7 +45,7 @@ Bu makalede Azure Data Factory içindeki şirket içinde barındırılan tümle�
     ```
         
    > [!NOTE]     
-   > Data Factory konumunuza bağlı olarak hizmet URL 'SI farklılık gösterebilir. Hizmet URL 'sini **ADF Kullanıcı arabirimi** > **bağlantıları** > **tümleştirme çalışma zamanları** > altında bulabilirsiniz**Şirket içinde barındırılan IR** > **düğümlerini** > düzenleme**hizmeti URL 'lerini**düzenleyin.
+   > Data Factory konumunuza bağlı olarak hizmet URL 'SI farklılık gösterebilir. Hizmet URL 'sini **ADF Kullanıcı arabirimi**  >  **bağlantıları**  >  **tümleştirme çalışma zamanları**altında bulabilirsiniz  >  **Şirket içinde barındırılan IR**  >  **düğümlerini**düzenleme  >  **hizmeti URL 'lerini**düzenleyin.
             
     Beklenen yanıt aşağıda verilmiştir:
             
@@ -54,8 +54,8 @@ Bu makalede Azure Data Factory içindeki şirket içinde barındırılan tümle�
 1. Beklenen yanıtı almazsanız, durumunuza uygun şekilde aşağıdaki yöntemlerden birini kullanın:
             
     * "Uzak ad çözümlenemedi" iletisini alırsanız, bir etki alanı adı sistemi (DNS) sorunu vardır. Bu sorunu çözmesi için ağ ekibinize başvurun.
-    * "SSL/TLS sertifikası güvenilir değil" iletisini alırsanız, için https://wu2.frontend.clouddatahub.net/ sertifikasının makinede güvenilir olup olmadığını denetleyin ve ardından Sertifika Yöneticisi 'ni kullanarak ortak sertifikayı yükler. Bu eylem sorunu azaltmalıdır.
-    * **Windows** > **Olay Görüntüleyicisi (Günlükler)** > **uygulama ve hizmet günlükleri** > **Integration Runtime** gidin ve DNS, güvenlik duvarı kuralı veya şirket ağı ayarlarından kaynaklanan tüm hataları kontrol edin. (Böyle bir hata bulursanız bağlantıyı zorla kapatın.) Her şirket ağ ayarlarını özelleştirdiğinden, bu sorunları gidermek için ağ ekibinize başvurun.
+    * "SSL/TLS sertifikası güvenilir değil" iletisini alırsanız, için sertifikasının makinede güvenilir olup olmadığını denetleyin https://wu2.frontend.clouddatahub.net/ ve ardından Sertifika Yöneticisi 'ni kullanarak ortak sertifikayı yükler. Bu eylem sorunu azaltmalıdır.
+    * **Windows**  >  **Olay Görüntüleyicisi (Günlükler)**  >  **uygulama ve hizmet günlükleri**  >  **Integration Runtime** gidin ve DNS, güvenlik duvarı kuralı veya şirket ağı ayarlarından kaynaklanan tüm hataları kontrol edin. (Böyle bir hata bulursanız bağlantıyı zorla kapatın.) Her şirket ağ ayarlarını özelleştirdiğinden, bu sorunları gidermek için ağ ekibinize başvurun.
 
 1. Şirket içinde barındırılan tümleştirme çalışma zamanında "proxy" yapılandırılmışsa, proxy sunucunuzun hizmet uç noktasına erişebileceğini doğrulayın. Örnek bir komut için bkz. [PowerShell, Web istekleri ve proxy 'ler](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
                 
@@ -98,7 +98,7 @@ Bu davranış, düğümler birbirleriyle iletişim kuramıyorsa oluşur.
 
 #### <a name="resolution"></a>Çözüm
 
-1. Düğüm tarafından barındırılan VM 'de oturum açın. **Uygulama ve hizmet günlükleri** > altında**Integration Runtime**, Olay Görüntüleyicisi açın ve tüm hata günlüklerini filtreleyin.
+1. Düğüm tarafından barındırılan VM 'de oturum açın. **Uygulama ve hizmet günlükleri**altında  >  **Integration Runtime**, Olay Görüntüleyicisi açın ve tüm hata günlüklerini filtreleyin.
 
 1. Hata günlüğünde aşağıdaki hatayı içerip içermediğini kontrol edin: 
     
@@ -135,7 +135,7 @@ For more help with troubleshooting, try the following resources:
 *  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory feature requests](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Microsoft Q&A question page](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack overflow forum for Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter information about Data Factory](https://twitter.com/hashtag/DataFactory)
 *  [Mapping data flows performance guide](concepts-data-flow-performance.md)

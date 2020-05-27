@@ -4,23 +4,23 @@ description: Bu makalede, Azure Cosmos DB ' de etcd API 'sinin genel bakış ve 
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/21/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16aac5c765c36c49919685ee58e8034786ddf1ae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79498599"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797369"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Azure Cosmos DB etcd API 'sine giriş (Önizleme)
 
 Azure Cosmos DB, Microsoft'un görev açısından kritik uygulamalar için genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Kullanıma hazır küresel dağıtım, verimlilik ve depolama için esnek ölçeklendirme, 99. yüzdede tek basamaklı milisaniyelik gecikme süreleri ve hepsi sektörde önde gelen SLA 'lar tarafından desteklenen garantili yüksek kullanılabilirlik sağlar.
 
-[Etcd](https://github.com/etcd-io/etcd) , dağıtılmış bir anahtar/değer deposudur. [Kubernetes](https://kubernetes.io/)'de, Kubernetes kümelerinin durumunu ve yapılandırmasını depolamak için etcd kullanılır. Bir Kubernetes kümesinin kullanılabilirlik, güvenilirlik ve performansının yanı sıra tüm küme durumu, ölçeklenebilirlik, esneklik kullanılabilirliği ve performansı açısından önemlidir. 
+[Etcd](https://github.com/etcd-io/etcd) , dağıtılmış bir anahtar/değer deposudur. [Kubernetes](https://kubernetes.io/)'de, Kubernetes kümelerinin durumunu ve yapılandırmasını depolamak için etcd kullanılır. Bir Kubernetes kümesinin kullanılabilirlik, güvenilirlik ve performansının yanı sıra tüm küme durumu, ölçeklenebilirlik, esneklik kullanılabilirliği ve performansı açısından önemlidir.
 
-Azure Cosmos DB ' deki etcd API 'SI, [Azure Kubernetes](../aks/index.yml)için arka uç deposu olarak Azure Cosmos DB kullanmanıza olanak tanır. Azure Cosmos DB ' deki etcd API 'SI Şu anda önizlemededir. Azure Cosmos DB, etcd tel protokolünü uygular. Azure Cosmos DB ' deki etcd API 'siyle, geliştiriciler otomatik olarak güvenilir, [kullanılabilir](high-availability.md)ve [Global olarak dağıtılmış](distribute-data-globally.md) Kubernetes sağlar. Bu API, geliştiricilerin tamamen yönetilen bir bulut Yerel PaaS hizmetinde Kubernetes durum yönetimini ölçeklendirmesine olanak tanır. 
+Azure Cosmos DB ' deki etcd API 'SI, Azure Kubernetes için arka uç deposu olarak Azure Cosmos DB kullanmanıza olanak tanır. Azure Cosmos DB ' deki etcd API 'SI Şu anda önizlemededir. Azure Cosmos DB, etcd tel protokolünü uygular. Azure Cosmos DB ' deki etcd API 'siyle, geliştiriciler otomatik olarak güvenilir, [kullanılabilir](high-availability.md)ve [Global olarak dağıtılmış](distribute-data-globally.md) Kubernetes sağlar. Bu API, geliştiricilerin tamamen yönetilen bir bulut Yerel PaaS hizmetinde Kubernetes durum yönetimini ölçeklendirmesine olanak tanır. 
 
 > [!NOTE]
 > Azure Cosmos DB diğer API 'lerden farklı olarak, Azure portal, CLı veya SDK 'Lar aracılığıyla bir etcd API hesabı sağlayamazsınız. Yalnızca Kaynak Yöneticisi şablonunu dağıtarak bir etcd API hesabı sağlayabilirsiniz; ayrıntılı adımlar için bkz. [Azure Kubernetes 'i Azure Cosmos DB makalesiyle sağlama](bootstrap-kubernetes-cluster.md) . Azure Cosmos DB etcd API 'SI Şu anda sınırlı önizlemededir. [Ön izleme için](https://aka.ms/cosmosetcdapi-signup)Kaydolma formunu doldurarak kayıt yapabilirsiniz.

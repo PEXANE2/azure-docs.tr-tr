@@ -289,8 +289,8 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: Apache Hadoop hizmetleri için yığın dökümlerini etkinleştirme
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: Forumdan yardım alma
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
+        - name: Microsoft Soru-Cevap soru sayfasında yardım alma
+          href: 'https://docs.microsoft.com/answers/topics/azure-hdinsight.html'
         - name: Fiyatlandırma hesaplayıcı
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: HDInsight için Windows araçları

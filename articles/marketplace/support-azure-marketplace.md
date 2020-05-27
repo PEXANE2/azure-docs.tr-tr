@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 624bce67e01a0d7dbee382ed77a833705ecd5c89
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: bd973a859ce1fa6a9ce5566b1403331988630960
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800377"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828109"
 ---
 # <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft ticari Market desteği
 
@@ -32,7 +32,7 @@ Ekleme ve Başlarken sorunları için Microsoft [Marketplace Publisher desteğiy
 
 | Destek kanalı | Açıklama |  
 |:--- |:--- |  
-| MSDN forumları: market [Social.msdn.Microsoft.com/forums/Azure/Home?Forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) adresinde bulunur | Microsoft Developer Network Forumu. |  
+| MSDN forumları: [Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/products/azure) 'Nda bulunan Market | Microsoft Developer Network Forumu. |  
 | Stack Overflow: Azure [StackOverflow.com/Questions/Tagged/Azure](https://stackoverflow.com/questions/tagged/azure) adresinde bulunur | Azure Market ile ilgili her şey hakkında çözüm almak ve soru sormak için Stack Overflow ortam.<ul> <li>Stack Overflow: [StackOverflow.com/Questions/Tagged/Azure-Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) adresinde bulunan Azure Marketi</li> <li>Stack Overflow: [StackOverflow.com/Questions/Tagged/Azure-Resource-Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager) konumunda bulunan Azure Resource Manager</li> <li>Stack Overflow: Azure 'daki sanal makineler [StackOverflow.com/Questions/Tagged/Azure-Virtual-Machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) adresinde bulunur</li> <li>Stack Overflow: Azure 'daki kapsayıcılar [StackOverflow.com/search?q=Azure+Container](https://stackoverflow.com/search?q=azure+container) adresinde bulunur</li> </ul> |
 
 ## <a name="marketing-resources"></a>Pazarlama Kaynakları  

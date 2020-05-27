@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 3c0c29e1793e56efae8d13cb01d57faf257d8805
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00e1175cc85f1c34260c5e03ed3f81ac25cf7448
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426067"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836507"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>İş diyagramını kullanarak veri odaklı hata ayıklama
 
@@ -79,7 +79,7 @@ Yukarıdaki sorgu adımı bir giriş işlemcisidir, aşağıdaki hedeflenen soru
 
 
 ## <a name="get-help"></a>Yardım alın
-Ek Yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin. 
+Ek Yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Stream Analytics giriş](stream-analytics-introduction.md)
