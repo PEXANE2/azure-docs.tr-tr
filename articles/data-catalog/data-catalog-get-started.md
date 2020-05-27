@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
-ms.date: 08/01/2019
-ms.openlocfilehash: 854760ea0158d356cc5449c9f1fdab6161588640
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/26/2020
+ms.openlocfilehash: e37bd22e0bd0f750ef7b4ae9cc8465ed5292883e
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68976871"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860996"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Hızlı başlangıç: Azure Veri Kataloğu oluşturma
 
@@ -22,6 +22,9 @@ Bu hızlı başlangıç, Azure Veri Kataloğu oluşturmaya başlamanıza yardım
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
+
+> [!Note]
+> Azure Güvenlik gereksinimleri nedeniyle, Azure Veri Kataloğu, Aktarım Katmanı Güvenliği (TLS) 1,2 ' i içerir. TLS 1,0 ve TLS 1,1 devre dışı bırakıldı. Makineniz TLS 1,2 için güncellenmemişse kayıt aracını çalıştırırken hatalarla karşılaşabilirsiniz. Makinenizi TLS 1,2 için güncelleştirmek üzere bkz. [Aktarım katmanı güvenliğini etkinleştirme (1,2)](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2) .
 
 Başlamak için şunları yapmanız gerekir:
 
@@ -34,7 +37,7 @@ Veri Kataloğu 'Nu ayarlamak için bir Azure aboneliğinin sahibi veya ortak sah
 
 Bir kuruluş (Azure Active Directory etki alanı) için yalnızca bir tane veri kataloğu hazırlayabilirsiniz. Bu nedenle, bu Azure Active Directory etki alanına ait olan bir Azure aboneliğinin sahibi veya ortak sahibi zaten bir katalog oluşturduysanız, birden fazla Azure aboneliğiniz olsa bile bir katalog oluşturamazsınız. Azure Active Directory etki alanınızda bir kullanıcı tarafından veri kataloğu oluşturulup oluşturulmadığını test etmek için [Azure Veri Kataloğu giriş sayfasına](http://azuredatacatalog.com) gidin ve kataloğu görüp görmediğinizi doğrulayın. Sizin için katalog zaten oluşturulmuşsa aşağıdaki yordamı atlayın ve sonraki bölümüne gidin.
 
-1. **Kaynak oluşturmak** [Azure Portal](https://portal.azure.com) > gidin ve **Veri Kataloğu**' nu seçin.
+1. [Azure portal](https://portal.azure.com)  >  **Kaynak oluşturmak** Azure Portal gidin ve **Veri Kataloğu**' nu seçin.
 
     ![Azure Veri Kataloğu oluştur düğmesi](media/data-catalog-get-started/data-catalog-create.png)
 

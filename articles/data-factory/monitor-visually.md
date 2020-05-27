@@ -1,5 +1,5 @@
 ---
-title: Görsel olarak izleme Azure Data Factory
+title: Azure Data Factory’yi görsel olarak izleme
 description: Azure veri fabrikalarını görsel olarak izlemeyi öğrenin
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 9a81ab58335e968e5ce4816de85ed1b63bc93455
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 44a95430ece9c55bb088ae5b968c33691f25b4c5
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699597"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860831"
 ---
-# <a name="visually-monitor-azure-data-factory"></a>Görsel olarak izleme Azure Data Factory
+# <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory’yi görsel olarak izleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -142,7 +142,7 @@ Simgeye tıkladığınızda, bu işlem hattı çalıştırması tarafından kull
 
 ![Tüketimi izleme](media/monitor-visually/monitor-consumption-2.png)
 
-Bu değerleri [Azure Fiyatlandırma Hesaplayıcı] içine ekleyebilirsiniz. (işlem https://azure.microsoft.com/pricing/details/data-factory/) hattı çalıştırmasının maliyetini tahmin etmek için. Azure Data Factory fiyatlandırması hakkında daha fazla bilgi için bkz. [fiyatlandırmayı anlama](pricing-concepts.md).
+İşlem hattı çalıştırmasının maliyetini tahmin etmek için bu değerleri [Azure fiyatlandırma hesaplayıcıya](https://azure.microsoft.com/pricing/details/data-factory/) takabilirsiniz. Azure Data Factory fiyatlandırması hakkında daha fazla bilgi için bkz. [fiyatlandırmayı anlama](pricing-concepts.md).
 
 > [!NOTE]
 > Fiyatlandırma Hesaplayıcı tarafından döndürülen bu değerler bir tahmindir. Azure Data Factory, faturalandırılacaksınız tam miktarı yansıtmaz 
@@ -170,7 +170,7 @@ Sol alt köşedeki **bilgi** simgesini seçin. Ardından, işlem hattınızı ve
 
 Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak **Monitor**  >  için Data Factory izleme sayfasında,**uyarıları & ölçümleri** izleyin ' ı seçin.
 
-![Data Factory Izleyici sayfası](media/monitor-visually/alerts01.png)
+![Data Factory Izleyici sayfası](media/monitor-visually/start-page.png)
 
 Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki videoyu izleyin:
 
@@ -180,31 +180,31 @@ Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki vide
 
 1.  Yeni bir uyarı oluşturmak için **Yeni uyarı kuralı** ' nı seçin.
 
-    ![Yeni uyarı kuralı düğmesi](media/monitor-visually/alerts02.png)
+    ![Yeni uyarı kuralı düğmesi](media/monitor-visually/new-alerts.png)
 
 1.  Kural adını belirtin ve uyarı önem derecesini seçin.
 
-    ![Kural adı ve önem derecesi için kutular](media/monitor-visually/alerts03.png)
+    ![Kural adı ve önem derecesi için kutular](media/monitor-visually/name-and-severity.png)
 
 1.  Uyarı ölçütlerini seçin.
 
-    ![Hedef ölçütü kutusu](media/monitor-visually/alerts04.png)
+    ![Hedef ölçütü kutusu](media/monitor-visually/add-criteria-1.png)
 
-    ![Ölçüt listesi](media/monitor-visually/alerts05.png)
+    ![Ölçüt listesi](media/monitor-visually/add-criteria-2.png)
 
 1.  Uyarı mantığını yapılandırın. Tüm işlem hatları ve ilgili etkinlikler için seçili ölçüm için bir uyarı oluşturabilirsiniz. Ayrıca belirli bir etkinlik türünü, etkinlik adını, işlem hattı adını veya hata türünü de seçebilirsiniz.
 
-    ![Uyarı mantığını yapılandırma seçenekleri](media/monitor-visually/alerts06.png)
+    ![Uyarı mantığını yapılandırma seçenekleri](media/monitor-visually/alert-logic.png)
 
 1.  Uyarı için e-posta, SMS, push ve sesli bildirimleri yapılandırın. Uyarı bildirimleri için bir eylem grubu oluşturun veya mevcut olanı seçin.
 
-    ![Bildirimleri yapılandırma seçenekleri](media/monitor-visually/alerts07.png)
+    ![Bildirimleri yapılandırma seçenekleri](media/monitor-visually/configure-notification-1.png)
 
-    ![Bildirim ekleme seçenekleri](media/monitor-visually/alerts08.png)
+    ![Bildirim ekleme seçenekleri](media/monitor-visually/configure-notification-2.png)
 
 1.  Uyarı kuralını oluşturun.
 
-    ![Uyarı kuralı oluşturma seçenekleri](media/monitor-visually/alerts09.png)
+    ![Uyarı kuralı oluşturma seçenekleri](media/monitor-visually/create-alert-rule.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

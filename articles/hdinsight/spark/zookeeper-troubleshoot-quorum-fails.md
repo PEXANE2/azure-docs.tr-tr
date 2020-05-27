@@ -6,54 +6,124 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/20/2019
-ms.openlocfilehash: 41ac109e5c5379e6085dd57a3fcd8119915558fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: dc93121d7565b95b9bd604160028659f3a741b0c
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133284"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860503"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper sunucusu Azure HDInsight 'ta çekirdek oluşturmuyor
 
-Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
+Bu makalede, Azure HDInsight kümelerinde zookeepers ile ilgili sorunlar için sorun giderme adımları ve olası çözümler açıklanmaktadır.
 
-## <a name="issue"></a>Sorun
+## <a name="symptoms"></a>Belirtiler
 
-Apache ZooKeeper sunucusu sağlıksız, belirtiler şunları içerebilir: hem kaynak yöneticileri/ad düğümleri bekleme modunda, basit Ise işlemleri çalışmaz, `zkFailoverController` durdurulur ve başlatılamaz, Yarn/Spark/Livy işleri ZooKeeper hataları nedeniyle başarısız olur. LLAP Daemon 'ları, güvenli Spark veya etkileşimli Hive kümelerinde da başlayamaz. Şuna benzer bir hata iletisi görebilirsiniz:
+* Hem kaynak yöneticileri bekleme moduna gider
+* Süs 'lar her ikisi de bekleme modunda
+* Spark, Hive ve Yarn işleri ya da Hive sorguları Zookeeper bağlantı hatalarından dolayı başarısız oluyor
+* LLAP Daemon 'ları, güvenli Spark veya güvenli etkileşimli Hive kümelerinde başlatılamaz
 
+## <a name="sample-log"></a>Örnek günlük
+
+Şuna benzer bir hata iletisi görebilirsiniz:
+
+```output
+2020-05-05 03:17:18.3916720|Lost contact with Zookeeper. Transitioning to standby in 10000 ms if connection is not reestablished.
+Message
+2020-05-05 03:17:07.7924490|Received RMFatalEvent of type STATE_STORE_FENCED, caused by org.apache.zookeeper.KeeperException$NoAuthException: KeeperErrorCode = NoAuth
+...
+2020-05-05 03:17:08.3890350|State store operation failed 
+2020-05-05 03:17:08.3890350|Transitioning to standby state
 ```
-19/06/19 08:27:08 ERROR ZooKeeperStateStore: Fatal Zookeeper error. Shutting down Livy server.
-19/06/19 08:27:08 INFO LivyServer: Shutting down Livy server.
+
+## <a name="related-issues"></a>İlgili sorunlar
+
+* Yarn, süs Yot ve Livy gibi yüksek kullanılabilirlik Hizmetleri pek çok nedenden dolayı aşağı gidebilirler.
+* Zookeeper bağlantılarıyla ilgili olan günlüklerden onaylama
+* Sorunun sürekli olduğundan emin olun (Bu çözümleri bir kapalı servis talebi için kullanmayın)
+* Zookeeper bağlantı sorunları nedeniyle işler geçici olarak başarısız olabilir
+
+## <a name="common-causes-for-zookeeper-failure"></a>Zookeeper hatasının yaygın nedenleri
+
+* Zookeeper sunucularında yüksek CPU kullanımı
+  * Ambarı Kullanıcı arabiriminde, Zookeeper sunucularında yaklaşık %100 sürekli CPU kullanımı görürseniz, bu süre içinde açılan Zookeeper oturumlarının süresi sona erer ve zaman aşımına uğrar
+* Zookeeper istemcileri sıklıkla zaman aşımlarını bildiriyor
+  * Kaynak Yöneticisi, süs kodu ve diğerleri için günlüklerde sık görülen istemci bağlantı zaman aşımlarını görürsünüz
+  * Bu, çekirdek kaybına, sık yük devretmesine ve diğer sorunlara yol açabilir
+
+## <a name="check-for-zookeeper-status"></a>Zookeeper durumunu denetle
+
+* /Etc/hosts dosyasından veya ambarı kullanıcı arabiriminden Zookeeper sunucularını bulma
+* Aşağıdaki komutu çalıştırın
+  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181`(veya 2182)  
+  * 2181 numaralı bağlantı noktası Apache Zookeeper örneğidir
+  * 2182 numaralı bağlantı noktası, HDInsight Zookeeper tarafından kullanılır (yerel olarak HA olmayan hizmetler için HA sağlamak üzere)
+  * Komutta hiçbir çıkış gösterilmediğinden, Zookeeper sunucularının çalışmadığı anlamına gelir.
+  * Sunucular çalışıyorsa, sonuç istemci bağlantılarının ve diğer istatistiklerin bir listesini içerir
+
+```output
+Zookeeper version: 3.4.6-8--1, built on 12/05/2019 12:55 GMT
+Clients:
+ /10.2.0.57:50988[1](queued=0,recved=715,sent=715)
+ /10.2.0.57:46632[1](queued=0,recved=138340,sent=138347)
+ /10.2.0.34:14688[1](queued=0,recved=264653,sent=353420)
+ /10.2.0.52:49680[1](queued=0,recved=134812,sent=134814)
+ /10.2.0.57:50614[1](queued=0,recved=19812,sent=19812)
+ /10.2.0.56:35034[1](queued=0,recved=2586,sent=2586)
+ /10.2.0.52:63982[1](queued=0,recved=72215,sent=72217)
+ /10.2.0.57:53024[1](queued=0,recved=19805,sent=19805)
+ /10.2.0.57:45126[1](queued=0,recved=19621,sent=19621)
+ /10.2.0.56:41270[1](queued=0,recved=1348743,sent=1348788)
+ /10.2.0.53:59097[1](queued=0,recved=72215,sent=72217)
+ /10.2.0.56:41088[1](queued=0,recved=788,sent=802)
+ /10.2.0.34:10246[1](queued=0,recved=19575,sent=19575)
+ /10.2.0.56:40944[1](queued=0,recved=717,sent=717)
+ /10.2.0.57:45466[1](queued=0,recved=19861,sent=19861)
+ /10.2.0.57:59634[0](queued=0,recved=1,sent=0)
+ /10.2.0.34:14704[1](queued=0,recved=264622,sent=353355)
+ /10.2.0.57:42244[1](queued=0,recved=49245,sent=49248)
+
+Latency min/avg/max: 0/3/14865
+Received: 238606078
+Sent: 239139381
+Connections: 18
+Outstanding: 0
+Zxid: 0x1004f99be
+Mode: follower
+Node count: 133212
 ```
 
-/Var/log/Zookeeper/Zookeeper-Zookeeper-Server-\*. out konumundaki herhangi bir Zookeeper konağında bulunan Zookeeper Server günlüklerinde aşağıdaki hatayı da görebilirsiniz:
+## <a name="cpu-load-peaks-up-every-hour"></a>Her saat için CPU yükü üst düzeye
 
-```
-2020-02-12 00:31:52,513 - ERROR [CommitProcessor:1:NIOServerCnxn@178] - Unexpected Exception:
-java.nio.channels.CancelledKeyException
-```
+* Zookeeper sunucusunda oturum açın ve/etc/crontab denetleyin
+* Şu anda çalışan saatlik iş varsa, farklı Zookeeper sunucularındaki başlangıç saatini rastgele yapın.
+  
+## <a name="purging-old-snapshots"></a>Eski anlık görüntüleri Temizleme
 
-## <a name="cause"></a>Nedeni
+* Zookeepers, eski anlık görüntüleri otomatik olarak temizlemek için yapılandırılır
+* Varsayılan olarak, son 30 anlık görüntü korunur
+* Korunan anlık görüntü sayısı, yapılandırma anahtarı tarafından denetlenir `autopurge.snapRetainCount` . Bu özellik aşağıdaki dosyalarda bulunabilir:
+  * `/etc/zookeeper/conf/zoo.cfg`Hadoop Zookeeper için
+  * `/etc/hdinsight-zookeeper/conf/zoo.cfg`HDInsight için Zookeeper
+* `autopurge.snapRetainCount`3 değerine ayarlayın ve Zookeeper sunucularını yeniden başlatın
+  * Hadoop Zookeeper yapılandırması güncelleştirilebilen ve hizmet, ambarı aracılığıyla yeniden başlatılabilir
+  * HDInsight Zookeeper 'i el ile durdurun ve yeniden başlatın
+    * `sudo lsof -i :2182`Bu işlem KIMLIĞINI sonlandırmak için
+    * `sudo python /opt/startup_scripts/startup_hdinsight_zookeeper.py`
+* Anlık görüntüleri el ile temizleme-anlık görüntülerin el ile silinmesi veri kaybına neden olabilir
 
-Anlık görüntü dosyaları hacmi büyük veya anlık görüntü dosyaları bozuksa, ZooKeeper sunucusu bir çekirdek oluşturmayacak ve bu da ZooKeeper ilgili hizmetlerin sağlıksız olmasına neden olur. ZooKeeper sunucusu eski anlık görüntü dosyalarını veri dizininden kaldırmayacak, bunun yerine, ZooKeeper 'in sistem durumunu korumak için Kullanıcı tarafından gerçekleştirilecek düzenli bir görevdir. Daha fazla bilgi için bkz. [ZooKeeper güçleri ve sınırlamaları](https://zookeeper.apache.org/doc/r3.3.5/zookeeperAdmin.html#sc_strengthsAndLimitations).
+## <a name="cancelledkeyexception-in-the-zookeeper-server-log-doesnt-require-snapshot-cleanup"></a>Zookeeper sunucu günlüğündeki CancelledKeyException, anlık görüntü Temizleme gerektirmez
 
-## <a name="resolution"></a>Çözüm
-
-ZooKeeper veri dizinini `/hadoop/zookeeper/version-2` denetleyin ve `/hadoop/hdinsight-zookeeper/version-2` anlık görüntülerin dosya boyutunun büyük olup olmadığını öğrenin. Büyük anlık görüntüler varsa aşağıdaki adımları uygulayın:
-
-1. "`echo stat | nc {zk_host_ip} 2181 (or 2182)`" Komutuyla sorunsuz çalıştıdiklerinden emin olmak için aynı çekirdekte diğer ZooKeeper sunucularının durumunu kontrol edin.  
-
-1. Sorunlu ZooKeeper konağını, yedekleme anlık görüntülerini ve işlem günlüklerini ve içinde `/hadoop/zookeeper/version-2` oturum `/hadoop/hdinsight-zookeeper/version-2`açın ve ardından bu dosyaları iki dizinde temizleyin. 
-
-1. ZooKeeper veya ZooKeeper konağındaki sorunlu bir sunucuyu yeniden başlatın. Ardından sorunları olan hizmeti yeniden başlatın.
+* Bu özel durum genellikle istemcinin artık etkin olmadığı ve sunucunun ileti gönderemediği anlamına gelir
+* Bu özel durum ayrıca Zookeeper istemcisinin oturumu erken sonlandırdığını gösterir
+* Bu belgede özetlenen diğer belirtileri arayın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
 - Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
-
-- [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
-
+- [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 - Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

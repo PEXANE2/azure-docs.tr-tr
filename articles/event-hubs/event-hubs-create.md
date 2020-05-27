@@ -9,19 +9,19 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/04/2020
 ms.author: spelluru
-ms.openlocfilehash: c678965048a6437deb8cbf39f38f12dc116d39ab
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 7562dc9a70fc462cb9d623a5184fb672a7f7ca39
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743942"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860265"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Hızlı başlangıç: Azure portalı kullanarak olay hub'ı oluşturma
 Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
 
 Bu hızlı başlangıçta [Azure portalı](https://portal.azure.com) kullanarak olay hub'ı oluşturacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
 Kaynak grubu, Azure kaynakları için mantıksal bir koleksiyondur. Tüm kaynaklar bir kaynak grubuna dağıtılır ve buradan yönetilir. Kaynak grubu oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Soldaki menüden **Kaynak grupları**'na tıklayın. Daha sonra **Ekle**'ye tıklayın.
 
    ![Kaynak grupları - Ekle düğmesi](./media/event-hubs-quickstart-portal/resource-groups1.png)
@@ -51,7 +51,7 @@ Kaynak grubu, Azure kaynakları için mantıksal bir koleksiyondur. Tüm kaynakl
 Event Hubs ad alanı, tam etki alanı adının başvurduğu, içinde bir veya daha fazla olay hub'ı oluşturduğunuz benzersiz bir kapsam kapsayıcısı sağlar. Portalı kullanarak kaynak grubunuzda bir ad alanı oluşturmak için aşağıdaki eylemleri gerçekleştirin:
 
 1. Azure portalda ekranın sol üst köşesindeki **Kaynak oluştur**'a tıklayın.
-2. Sol taraftaki menüden **tüm hizmetler** ' i seçin ve **analiz** kategorisinde **Event Hubs** ' ın yanındaki **yıldız (`*`)** seçeneğini belirleyin. **Event Hubs** sol gezinti menüsünde **Sık kullanılanlara** eklendiğini doğrulayın. 
+2. Sol taraftaki menüden **tüm hizmetler** ' i seçin ve **analiz** kategorisinde **Event Hubs** ' ın yanındaki **yıldız ( `*` )** seçeneğini belirleyin. **Event Hubs** sol gezinti menüsünde **Sık kullanılanlara** eklendiğini doğrulayın. 
     
    ![Event Hubs arayın](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
 3. Sol gezinti menüsünde **Sık Kullanılanlar** ' ın altında **Event Hubs** ' ı seçin ve araç çubuğunda **Ekle** ' yi seçin.
@@ -102,7 +102,7 @@ Bu makalede bir kaynak grubu, bir Event Hubs ad alanı ve bir olay hub'ı oluşt
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-java-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)
 - [Git](event-hubs-go-get-started-send.md)
 - [C (yalnızca gönderme)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (yalnızca alma)](event-hubs-storm-getstarted-receive.md)

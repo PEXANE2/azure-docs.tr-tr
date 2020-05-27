@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03f6e3d6edde51598b1d148469aceb1ff3b3d636
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: ed8c3563f9a17a30e0d5df5f00c35f34510d6029
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203427"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848932"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu olarak oluşturma
 
@@ -39,7 +39,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla oluşturmanıza yardımcı
 İndirilen bir CSV şablonundaki satırlar aşağıdaki gibidir:
 
 - **Sürüm numarası**: sürüm numarasını içeren ilk satır, KARŞıYA yükleme CSV 'ye eklenmelidir.
-- **Sütun başlıkları**: sütun &lt;başlıklarının biçimi *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş*&gt;. Örneğin, `Name [displayName] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir.
+- **Sütun başlıkları**: sütun başlıklarının biçimi &lt; *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş* &gt; . Örneğin, `Name [displayName] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir.
 - **Örnekler satırı**: şablona her sütun için kabul edilebilir değer örneklerinin bir satırını ekledik. Örnekler satırını kaldırmalı ve kendi girişlerinizin yerine değiştirmelisiniz.
 
 ### <a name="additional-guidance"></a>Ek yönergeler
@@ -52,7 +52,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla oluşturmanıza yardımcı
 ## <a name="to-create-users-in-bulk"></a>Toplu olarak Kullanıcı oluşturmak için
 
 1. Kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
-1. Azure AD 'de **Kullanıcılar** > **toplu oluştur**' u seçin.
+1. Azure AD 'de **Kullanıcılar**  >  **toplu oluştur**' u seçin.
 1. **Toplu kullanıcı oluştur** sayfasında, kullanıcı özelliklerinin geçerli bir virgülle ayrılmış değerler (CSV) dosyasını almak için **İndir** ' i seçin ve sonra oluşturmak istediğiniz kullanıcı ekleme ' yi ekleyin.
 
    ![İçinde eklemek istediğiniz kullanıcıları listeettiğiniz yerel bir CSV dosyası seçin](./media/users-bulk-add/upload-button.png)
@@ -66,7 +66,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla oluşturmanıza yardımcı
 1. Dosyanız doğrulamayı geçtiğinde, yeni kullanıcıları içeri aktaran Azure toplu işlemini başlatmak için **Gönder** ' i seçin.
 1. İçeri aktarma işlemi tamamlandığında, toplu işlem iş durumunun bir bildirimini görürsünüz.
 
-Hatalar varsa, sonuçlar dosyasını **toplu işlem sonuçları** sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
+Hatalar varsa, sonuçlar dosyasını **toplu işlem sonuçları** sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir. Dosya gönderimi, belirtilen şablonla eşleşmelidir ve tam sütun adlarını içermelidir.
 
 ## <a name="check-status"></a>Durumu kontrol etme
 

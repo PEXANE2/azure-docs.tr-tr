@@ -5,15 +5,15 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 04/29/2019
-ms.author: rolyon
+ms.date: 05/26/2020
+ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee02200f1fb32d430a858d218e27534561ebc24a
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67476245"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83868043"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Bir veya daha fazla erişim incelemesi oluşturun
 
@@ -36,13 +36,14 @@ ms.locfileid: "67476245"
     ![Rol üyeliğini gözden geçirmek için kullanıcılara kapsam](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
-    > Birden fazla rol seçilmesi birden çok erişim incelemesi oluşturacaktır. Örneğin beş rol seçilmesi beş ayrı erişim incelemesi oluşturacaktır.
+    > - Burada seçilen roller hem [kalıcı hem de uygun rolleri](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)içerir.
+    > - Birden fazla rol seçilmesi birden çok erişim incelemesi oluşturacaktır. Örneğin beş rol seçilmesi beş ayrı erişim incelemesi oluşturacaktır.
 
-    Azure AD rolleri için erişim gözden geçirmesi oluşturuyorsanız, aşağıda gözden geçirme üyeliği listesini gösteren bir örnek gösterilir.
+    **Azure AD rolleri**için erişim gözden geçirmesi oluşturuyorsanız, aşağıda gözden geçirme üyeliği listesini gösteren bir örnek gösterilir.
 
     ![Üyelik bölmesini İnceleme Azure AD rollerini listeleme](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
-    Azure Kaynak rolleri için erişim gözden geçirmesi oluşturuyorsanız, aşağıda gözden geçirme üyeliği listesini gösteren bir örnek gösterilir.
+    **Azure Kaynak rolleri**için erişim gözden geçirmesi oluşturuyorsanız aşağıdaki görüntüde üyelik İnceleme listesinin bir örneği gösterilir.
 
     ![Üyelik bölmesini İnceleme Azure Kaynak rollerini listeleme](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 

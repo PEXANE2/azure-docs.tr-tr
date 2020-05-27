@@ -9,13 +9,13 @@ author: nabhishek
 ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
-ms.date: 01/16/2018
-ms.openlocfilehash: e3060f7e36f9e2696194da12c3c800555103d271
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 48afff71d4b5241ede1783a270658e56e4b8c242
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418924"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849255"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory Hadoop MapReduce etkinliğini kullanarak verileri dönüştürme
 
@@ -64,17 +64,17 @@ HDInsight Pig ve Hive etkinliklerini kullanarak bir işlem hattından HDInsight 
 
 | Özellik          | Açıklama                              | Gerekli |
 | ----------------- | ---------------------------------------- | -------- |
-| ad              | Etkinliğin adı                     | Yes      |
-| açıklama       | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
-| type              | MapReduce etkinliği için etkinlik türü HDinsightMapReduce | Yes      |
+| name              | Etkinliğin adı                     | Yes      |
+| açıklama       | Etkinliğin ne için kullanıldığını açıklayan metin | No       |
+| tür              | MapReduce etkinliği için etkinlik türü HDinsightMapReduce | Yes      |
 | linkedServiceName | Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
 | Sınıf         | Yürütülecek sınıfın adı         | Yes      |
-| jarLinkedService  | Jar dosyalarını depolamak için kullanılan bir Azure depolama bağlı hizmetine başvuru. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | Hayır       |
+| jarLinkedService  | Jar dosyalarını depolamak için kullanılan bir Azure depolama bağlı hizmetine başvuru. Burada yalnızca **[Azure Blob depolama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** ve **[ADLS 2.](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** bağlı hizmetleri desteklenir. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | No       |
 | jarFilePath       | JarLinkedService tarafından başvurulan Azure Storage 'da depolanan jar dosyalarının yolunu belirtin. Dosya adı büyük/küçük harfe duyarlıdır. | Yes      |
-| jarlibs           | JarLinkedService içinde tanımlanan Azure depolama alanında depolanan iş tarafından başvurulan jar kitaplık dosyalarının yolunun dize dizisi. Dosya adı büyük/küçük harfe duyarlıdır. | Hayır       |
-| GetDebugInfo      | Günlük dosyalarının HDInsight kümesi tarafından kullanılan Azure depolama 'ya (veya) jarLinkedService tarafından belirtilen şekilde kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | Hayır       |
-| değişkenlerinden         | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | Hayır       |
-| tanımlar           | Hive betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | Hayır       |
+| jarlibs           | JarLinkedService içinde tanımlanan Azure depolama alanında depolanan iş tarafından başvurulan jar kitaplık dosyalarının yolunun dize dizisi. Dosya adı büyük/küçük harfe duyarlıdır. | No       |
+| GetDebugInfo      | Günlük dosyalarının HDInsight kümesi tarafından kullanılan Azure depolama 'ya (veya) jarLinkedService tarafından belirtilen şekilde kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | No       |
+| değişkenlerinden         | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | No       |
+| tanımlar           | Hive betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | No       |
 
 
 
@@ -112,7 +112,7 @@ HDInsight MapReduce etkinliğini bir HDInsight kümesinde herhangi bir MapReduce
     }
 }
 ```
-**Bağımsız değişkenler** bölümünde MapReduce programı için herhangi bir bağımsız değişken belirtebilirsiniz. Çalışma zamanında, MapReduce çerçevesinden birkaç ek bağımsız değişken (örneğin: MapReduce. job. Tag) görürsünüz. Bağımsız değişkenlerinizi MapReduce bağımsız değişkenleriyle ayırt etmek için, aşağıdaki örnekte gösterildiği gibi her iki seçeneği ve değeri bağımsız değişken olarak kullanmayı düşünün (-s,--Input,--Output vb.), bu seçenekler hemen arkasından değerleri izler.
+**Bağımsız değişkenler** bölümünde MapReduce programı için herhangi bir bağımsız değişken belirtebilirsiniz. Çalışma zamanında, MapReduce çerçevesinden birkaç ek bağımsız değişken (örneğin: MapReduce. job. Tag) görürsünüz. Bağımsız değişkenlerinizi MapReduce bağımsız değişkenleriyle ayırt etmek için, aşağıdaki örnekte gösterildiği gibi her iki seçeneği ve değeri bağımsız değişken olarak kullanmayı düşünün (-s,--Input,--Output vb.).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Verileri başka yollarla nasıl dönüştürebileceğinizi açıklayan aşağıdaki makalelere bakın:

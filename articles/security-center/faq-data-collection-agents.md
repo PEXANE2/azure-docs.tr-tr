@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbad1a94479430426dae47df7ca3a3ecd9dc980
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436191"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849051"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>SSS-veri toplama, aracılar ve çalışma alanları hakkında sorular
 
@@ -49,6 +49,22 @@ Windows veya Linux IaaS VM 'Leri şu durumlarda niteler:
 - VM çalışıyor durumunda.
 - Windows veya Linux [Azure sanal makine Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) yüklendi.
 - VM, Web uygulaması güvenlik duvarı veya yeni nesil güvenlik duvarı gibi bir gereç olarak kullanılmaz.
+
+
+## <a name="where-is-the-default-log-analytics-workspace-created"></a>Varsayılan Log Analytics çalışma alanı nerede oluşturulur?
+
+Varsayılan çalışma alanının konumu, Azure bölgenize bağlıdır:
+
+- Birleşik Devletler ve Brezilya 'daki VM 'Ler için çalışma alanı konumu Birleşik Devletler
+- Kanada 'daki VM 'Ler için çalışma alanı konumu Kanada
+- Avrupa 'daki VM 'Ler için çalışma alanı konumu Avrupa
+- UK 'teki VM 'Ler için çalışma alanı konumu UK
+- Doğu Asya ve Güneydoğu Asya 'daki VM 'Ler için çalışma alanı konumu Asya
+- Kore 'deki VM 'Ler için çalışma alanı konumu Kore 'dir
+- Hindistan 'daki VM 'Ler için çalışma alanı konumu Hindistan ' dır
+- Japonya 'daki VM 'Ler için çalışma alanı konumu Japonya olur
+- Çin 'deki VM 'Ler için çalışma alanı konumu Çin 'dir
+- Avustralya 'daki VM 'Ler için çalışma alanı konumu Avustralya ' dır
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Güvenlik Merkezi tarafından oluşturulan varsayılan çalışma alanlarını silebilir miyim?

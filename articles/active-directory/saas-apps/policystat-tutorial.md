@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4f467e061ad52fdcc6d1e8706bb902088b237c24
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68943435"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Öğretici: PolicyStat ile tümleştirme Azure Active Directory
 
@@ -80,10 +80,9 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek iç
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
 2. **[PolicyStat çoklu oturum açmayı yapılandırma](#configure-policystat-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. PolicyStat ' de kullanıcının Azure AD gösterimine bağlı olan bir Britta Simon 'un bir karşılığı olacak **[PolicyStat test kullanıcısı oluşturun](#create-policystat-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+3. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+4. PolicyStat ' de kullanıcının Azure AD gösterimine bağlı olan bir Britta Simon 'un bir karşılığı olacak **[PolicyStat test kullanıcısı oluşturun](#create-policystat-test-user)** .
+5. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
@@ -124,7 +123,7 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
 
 6. PolicyStat uygulaması, yukarıdakine ek olarak, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Adı | Kaynak özniteliği |
+    | Name | Kaynak özniteliği |
     |------------------- | -------------------- |
     | 'sini | Extractmailprefıx ([mail]) |
 
@@ -164,25 +163,7 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
    
     ![Yönetici Menüsü](./media/policystat-tutorial/ic808633.png "Yönetici Menüsü")
 
-3. **Kurulum** bölümünde **Çoklu oturum açma tümleştirmesini etkinleştir**' i seçin.
-   
-    ![Çoklu oturum açma yapılandırması](./media/policystat-tutorial/ic808634.png "Çoklu oturum açma yapılandırması")
-
-4. **Öznitelikleri Yapılandır**' a tıklayın ve ardından **öznitelikleri Yapılandır** bölümünde aşağıdaki adımları gerçekleştirin:
-   
-    ![Çoklu oturum açma yapılandırması](./media/policystat-tutorial/ic808635.png "Çoklu oturum açma yapılandırması")
-   
-    a. **Kullanıcı adı özniteliği** metin kutusuna **uid**yazın.
-
-    b. **First Name öznitelik** metin kutusuna kullanıcı **Britta** **adı yazın.**
-
-    c. **Last Name öznitelik** metin kutusunda, user **Simon**'ın **LastName** yazın.
-
-    d. **E-posta özniteliği** metin kutusunda, kullanıcının `BrittaSimon@contoso.com` **emadresi** yazın.
-
-    e. **Değişiklikleri Kaydet**’e tıklayın.
-
-5. **IDP meta verilerinize**tıklayın ve sonra **IDP meta verileri** bölümünde aşağıdaki adımları uygulayın:
+3. **IDP meta verilerinize**tıklayın ve sonra **IDP meta verileri** bölümünde aşağıdaki adımları uygulayın:
    
     ![Çoklu oturum açma yapılandırması](./media/policystat-tutorial/ic808636.png "Çoklu oturum açma yapılandırması")
    
@@ -190,33 +171,26 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
 
     b. **Değişiklikleri Kaydet**’e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
+4. **Öznitelikleri Yapılandır**' a tıklayın ve ardından **öznitelikleri Yapılandır** bölümünde aşağıdaki adımları gerçekleştirin:
+   
+    a. **Kullanıcı adı özniteliği** metin kutusuna **uid**yazın.
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+    b. **First Name öznitelik** metin kutusunda, Azure 'Dan ad özniteliği talep adınızı yazın **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+    c. **Son ad öznitelik** metin kutusunda, Azure 'Dan son ad öznitelik talebi adınızı yazın **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .
 
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
+    d. **E-posta özniteliği** metin kutusunda, Azure 'Dan e-posta öznitelik talep adınızı yazın **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+    e. **Değişiklikleri Kaydet**’e tıklayın.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+5. **Kurulum** bölümünde **Çoklu oturum açma tümleştirmesini etkinleştir**' i seçin.
+   
+    ![Çoklu oturum açma yapılandırması](./media/policystat-tutorial/ic808634.png "Çoklu oturum açma yapılandırması")
 
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, PolicyStat 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, PolicyStat 'a erişim vererek kendi hesabınızı Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştirirsiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **PolicyStat**' yi seçin.
 
@@ -234,7 +208,7 @@ Bu bölümde, PolicyStat 'a erişim vererek Azure çoklu oturum açma özelliği
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+5. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden hesabınızı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
 6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
@@ -260,4 +234,3 @@ Erişim panelinde PolicyStat kutucuğuna tıkladığınızda, SSO 'yu ayarladı�
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

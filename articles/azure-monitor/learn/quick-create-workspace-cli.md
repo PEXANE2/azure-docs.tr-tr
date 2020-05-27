@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/12/2019
-ms.openlocfilehash: 0e91bc9c994a48b335c3ccb7373a9f4f5dc6d1e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 11fb2b7785540f24b0a8318428da01a4edd5cb5b
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605079"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860656"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLı 2,0 ile Log Analytics çalışma alanı oluşturma
 
@@ -117,6 +117,14 @@ Aşağıdaki parametreler varsayılan bir değer ayarlar:
 Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonucu içeren aşağıdakine benzer bir ileti görürsünüz:
 
 ![Dağıtım tamamlandığında örnek sonuç](media/quick-create-workspace-cli/template-output-01.png)
+
+## <a name="troubleshooting"></a>Sorun giderme
+Son 14 gün içinde silinen bir çalışma alanı oluşturduğunuzda ve [geçici silme durumunda](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior)işlem, çalışma alanı yapılandırmanıza bağlı olarak farklı bir sonuca sahip olabilir:
+1. Silinen çalışma alanında aynı çalışma alanı adı, kaynak grubu, abonelik ve bölge sağlarsanız, çalışma alanınız veri, yapılandırma ve bağlı aracılar dahil kurtarılacak.
+2. Aynı çalışma alanı adını, ancak farklı kaynak grubunu, aboneliği veya bölgeyi kullanıyorsanız, *' Workspace-Name ' çalışma alanı adı benzersiz değil*veya *Çakışma*olduğunda bir hata alırsınız. Geçici silme işlemini geçersiz kılmak ve çalışma alanınızı kalıcı olarak silmek ve aynı ada sahip yeni bir çalışma alanı oluşturmak için, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:
+   * Çalışma alanınızı [kurtarın](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
+   * Çalışma alanınızı [kalıcı olarak silme](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)
+   * Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluştur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık kullanılabilir bir çalışma alanınız olduğuna göre, izleme telemetri koleksiyonunu yapılandırabilir, bu verileri çözümlemek için günlük aramalarını çalıştırabilir ve ek veri ve analitik Öngörüler sağlamak için bir yönetim çözümü ekleyebilirsiniz.  

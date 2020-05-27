@@ -3,12 +3,12 @@ title: Özel bağlantıyı ayarla
 description: Bir kapsayıcı kayıt defterinde özel bir uç nokta ayarlama ve yerel bir sanal ağdaki özel bir bağlantı üzerinden erişimi etkinleştirme
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: 93cdbab8bcdaa9787373407fe8d6619dd5fd49c6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: da51a35b66b793294f146c5a0a30b6a91d8aa01b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701405"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850054"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure Container Registry için Azure özel bağlantısını yapılandırma 
 
@@ -22,11 +22,11 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 
 * Şu anda, Azure Güvenlik Merkezi 'ni kullanan görüntü tarama, özel bir uç noktayla yapılandırılmış bir kayıt defterinde kullanılamaz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu makalede Azure CLı adımlarını kullanmak için, Azure CLı sürüm 2.6.0 veya sonraki bir sürümü önerilir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli]. Veya [Azure Cloud Shell](../cloud-shell/quickstart.md)içinde çalıştırın.
 * Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Docker Hub 'dan gibi örnek bir görüntüyü [içeri aktarın](container-registry-import-images.md) `hello-world` . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun.
-* Farklı bir Azure aboneliğinde özel bir bağlantı kullanarak kayıt defteri erişimini yapılandırmak için bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydetmeniz gerekir. Örnek:
+* Farklı bir Azure aboneliğinde özel bir bağlantı kullanarak kayıt defteri erişimini yapılandırmak için bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydetmeniz gerekir. Örneğin:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of private link>
@@ -299,7 +299,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Genel erişimi devre dışı bırak-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
-1. **Genel erişim** sekmesinde, **ortak erişime izin ver**' in altında **devre dışı**' yı seçin. Sonra **Kaydet**' i seçin.
+1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Sonra **Kaydet**' i seçin.
 
 ## <a name="validate-private-link-connection"></a>Özel bağlantı bağlantısını doğrula
 
@@ -351,7 +351,7 @@ Docker görüntüyü sanal makineye başarıyla çeker.
 
 Azure portal kullanarak veya [az ACR Private-Endpoint-Connection][az-acr-private-endpoint-connection] komut grubundaki komutları kullanarak bir kayıt defterinin özel uç nokta bağlantılarını yönetin. İşlemler, bir kayıt defterinin özel uç nokta bağlantılarının onaylama, silme, listeleme, reddetme veya ayrıntılarını içerir.
 
-Örneğin, bir kayıt defterinin özel uç nokta bağlantılarını listelemek için [az ACR Private-Endpoint-Connection List][az-acr-private-endpoint-connection-list] komutunu çalıştırın. Örnek:
+Örneğin, bir kayıt defterinin özel uç nokta bağlantılarını listelemek için [az ACR Private-Endpoint-Connection List][az-acr-private-endpoint-connection-list] komutunu çalıştırın. Örneğin:
 
 ```azurecli
 az acr private-endpoint-connection list \

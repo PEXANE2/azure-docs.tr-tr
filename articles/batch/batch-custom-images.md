@@ -1,30 +1,30 @@
 ---
 title: Yönetilen görüntüden özel havuz sağlama
 description: Uygulamanıza yönelik yazılım ve verilerle işlem düğümleri sağlamak için yönetilen bir görüntü kaynağından bir Batch havuzu oluşturun.
-ms.topic: article
-ms.date: 09/16/2019
-ms.openlocfilehash: b08c6a609516bcebaca64cf1c186d75887b098e3
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.topic: conceptual
+ms.date: 05/22/2020
+ms.openlocfilehash: fbb336ff9d3d53cc53004c577e291afdba7702f6
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780215"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847999"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Bir sanal makine havuzu oluşturmak için yönetilen bir görüntü kullanma
 
-Batch havuzunuzun sanal makineleri (VM 'Ler) için özel bir görüntü oluşturmak üzere [paylaşılan görüntü galerisini](batch-sig-images.md)veya *yönetilen bir görüntü* kaynağını kullanabilirsiniz.
+Batch havuzunuzun sanal makineleri (VM 'Ler) için özel bir görüntü oluşturmak üzere paylaşılan bir görüntü [Galerisi](batch-sig-images.md)oluşturmak için yönetilen bir görüntü kullanabilirsiniz. Yalnızca yönetilen bir görüntünün kullanılması de desteklenir, ancak yalnızca 2019-08-01 olan API sürümleri için de geçerlidir.
 
-> [!TIP]
+> [!IMPORTANT]
 > Çoğu durumda, paylaşılan görüntü Galerisi 'Ni kullanarak özel görüntüler oluşturmanız gerekir. Paylaşılan görüntü Galerisi 'ni kullanarak, havuzları daha hızlı sağlayabilir, daha büyük miktarlarda VM 'Ler ölçeklendirebilir ve VM 'Ler sağlanırken güvenilirliği daha iyi bir şekilde sağlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [paylaşılan görüntü galerisini kullanarak özel bir havuz oluşturma](batch-sig-images.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- **Yönetilen bir görüntü kaynağı**. Özel bir görüntü kullanarak bir sanal makine havuzu oluşturmak için, Batch hesabıyla aynı Azure aboneliği ve bölgesinde bir yönetilen görüntü kaynağı oluşturmanız veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır. Yönetilen bir görüntüyü hazırlama hakkında daha fazla bilgi ve adım için aşağıdaki bölüme bakın.
+- **Yönetilen bir görüntü kaynağı**. Özel bir görüntü kullanarak bir sanal makine havuzu oluşturmak için, Batch hesabıyla aynı Azure aboneliği ve bölgesinde bir yönetilen görüntü kaynağı oluşturmanız veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır.
   - Oluşturduğunuz her havuz için benzersiz bir özel görüntü kullanın.
-  - Batch API 'Lerini kullanarak görüntüyle bir havuz oluşturmak için, bu formdan olan görüntünün **kaynak kimliğini** belirtin `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` . Portalı kullanmak için görüntünün **adını** kullanın.  
+  - Batch API 'Lerini kullanarak görüntüyle bir havuz oluşturmak için, bu formdan olan görüntünün **kaynak kimliğini** belirtin `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` .
   - Yönetilen görüntü kaynağı, havuzun kullanım ömrü için mevcut olmalıdır ve havuz silindikten sonra kaldırılabilirler.
 
-- **Azure Active Directory (AAD) kimlik doğrulaması**. Batch istemci API 'sinin AAD kimlik doğrulamasını kullanması gerekir. AAD için Azure Batch desteği [Active Directory Batch hizmeti çözümlerinin kimlik doğrulaması konusunda](batch-aad-auth.md)belgelenmiştir.
+- **Azure Active Directory (Azure AD) kimlik doğrulaması**. Batch istemcisi API 'SI, Azure AD kimlik doğrulaması kullanmalıdır. Azure AD için Azure Batch desteği, [Batch hizmeti çözümlerinin kimliğini Active Directory ile doğrulama](batch-aad-auth.md) makalesinde belirtilmiştir.
 
 ## <a name="prepare-a-custom-image"></a>Özel görüntü hazırlama
 
@@ -34,16 +34,14 @@ Azure 'da, yönetilen bir görüntüyü şuradan hazırlayabilirsiniz:
 - Yönetilen disklere sahip genelleştirilmiş bir Azure VM
 - Buluta yüklenen genelleştirilmiş bir şirket içi VHD
 
-Toplu Iş havuzlarını özel bir görüntüyle güvenilir bir şekilde ölçeklendirmek için, *yalnızca* ilk yöntemi kullanarak yönetilen bir görüntü oluşturmanız ÖNERILIR: VM disklerinin anlık görüntülerini kullanma. Bir VM hazırlamak, anlık görüntü almak ve anlık görüntüden görüntü oluşturmak için aşağıdaki adımlara bakın.
+Toplu Iş havuzlarını yönetilen bir görüntüyle güvenilir bir şekilde ölçeklendirmek için, yönetilen görüntünün *yalnızca* ilk yöntemi kullanarak oluşturulmasını ÖNERIRIZ: VM disklerinin anlık görüntülerini kullanma. Aşağıdaki adımlarda, bir VM 'yi hazırlama, anlık görüntü alma ve anlık görüntüden yönetilen bir görüntü oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 ### <a name="prepare-a-vm"></a>VM hazırlama
 
 Görüntü için yeni bir VM oluşturuyorsanız, yönetilen görüntünüz için temel görüntü olarak Batch tarafından desteklenen ilk taraf Azure Marketi görüntüsünü kullanın. Yalnızca ilk taraf görüntüleri temel görüntü olarak kullanılabilir. Azure Batch tarafından desteklenen Azure Market görüntüsü başvurularının tam listesini almak için bkz. [düğüm Aracısı SKU 'Larını Listele](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) işlemi.
 
 > [!NOTE]
-> Temel görüntünüz için ek lisans ve satın alma koşullarına sahip bir üçüncü taraf görüntüsü kullanamazsınız. Bu market görüntüleri hakkında daha fazla bilgi için bkz. [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) veya [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) VM 'leri Kılavuzu.
+> Temel görüntünüz için ek lisans ve satın alma koşullarına sahip bir üçüncü taraf görüntüsü kullanamazsınız. Bu market görüntüleri hakkında daha fazla bilgi için bkz. [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) veya [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM 'leri Kılavuzu.
 
 - VM 'nin yönetilen bir disk ile oluşturulduğundan emin olun. Bu, bir VM oluşturduğunuzda varsayılan depolama ayarıdır.
 - Özel Betik uzantısı gibi Azure uzantılarını VM 'ye yüklemeyin. Görüntü önceden yüklenmiş bir uzantı içeriyorsa, Azure Batch havuzunu dağıttığınızda sorunlarla karşılaşabilir.
@@ -59,29 +57,70 @@ Anlık görüntü, bir VHD 'nin tam ve salt okunurdur kopyasıdır. Bir sanal ma
 
 Bir anlık görüntüden yönetilen bir görüntü oluşturmak için [az Image Create](/cli/azure/image) komutu gibi Azure komut satırı araçlarını kullanın. Bir işletim sistemi disk anlık görüntüsü ve isteğe bağlı olarak bir veya daha fazla veri diski anlık görüntüsü belirterek görüntü oluşturabilirsiniz.
 
-## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>Portalda özel görüntüden havuz oluşturma
+## <a name="create-a-pool-from-a-custom-image"></a>Özel görüntüden havuz oluşturma
 
-Özel görüntünüzü kaydettikten ve kaynak KIMLIĞINI veya adını öğrendikten sonra, bu görüntüden bir Batch havuzu oluşturun. Aşağıdaki adımlarda Azure portal havuzun nasıl oluşturulacağı gösterilmektedir.
+Yönetilen görüntünüzün kaynak KIMLIĞINI bulduktan sonra, bu görüntüden özel bir görüntü havuzu oluşturun. Aşağıdaki adımlarda, Batch hizmeti ya da Batch yönetimi kullanarak nasıl özel bir görüntü havuzu oluşturacağınız gösterilmektedir.
 
 > [!NOTE]
-> Havuzu Batch API 'Lerinden birini kullanarak oluşturuyorsanız, AAD kimlik doğrulaması için kullandığınız kimliğin görüntü kaynağı için izinlere sahip olduğundan emin olun. Bkz. [Active Directory Batch hizmeti çözümlerini kimlik doğrulama](batch-aad-auth.md).
+> Azure AD kimlik doğrulaması için kullandığınız kimliğin görüntü kaynağı için izinlere sahip olduğundan emin olun. Bkz. [Active Directory Batch hizmeti çözümlerini kimlik doğrulama](batch-aad-auth.md).
 >
 > Yönetilen görüntünün kaynağı havuzun ömrü için mevcut olmalıdır. Temeldeki kaynak silinirse, havuz ölçeklenmeyebilir.
 
-1. Azure portalında Batch hesabınıza gidin. Bu hesabın, özel görüntüyü içeren kaynak grubuyla aynı abonelikte ve bölgede olması gerekir.
-2. Soldaki **Ayarlar** penceresinde **havuzlar** menü öğesini seçin.
-3. **Havuzlar** penceresinde **Ekle** komutunu seçin.
-4. **Havuz Ekle** penceresinde, **görüntü türü** açılan menüsünden **özel görüntü (Linux/Windows)** öğesini seçin. **Özel VM görüntüsü** açılan menüsünde, görüntü adını (kaynak kimliği için kısa biçim) seçin.
-5. Özel görüntünüz için doğru **yayımcıyı/teklifi/SKU 'yu** seçin.
-6. **Düğüm boyutu**, **hedef adanmış düğümler**ve **düşük öncelikli düğümlerin**yanı sıra istediğiniz isteğe bağlı ayarları da kapsayan, kalan gerekli ayarları belirtin.
+### <a name="batch-service-net-sdk"></a>Batch hizmeti .NET SDK 'Sı
 
-    Örneğin, Microsoft Windows Server Datacenter 2016 özel görüntüsü için, **Havuz Ekle** penceresi aşağıda gösterildiği gibi görünür:
+```csharp
+private static VirtualMachineConfiguration CreateVirtualMachineConfiguration(ImageReference imageReference)
+{
+    return new VirtualMachineConfiguration(
+        imageReference: imageReference,
+        nodeAgentSkuId: "batch.node.windows amd64");
+}
 
-    ![Özel Windows görüntüsünden havuz ekleme](media/batch-custom-images/add-pool-custom-image.png)
-  
-Mevcut bir havuzun özel bir görüntüye dayalı olup olmadığını denetlemek için **Havuz** penceresinin kaynak Özeti bölümünde **işletim sistemi** özelliğine bakın. Havuz özel bir görüntüden oluşturulduysa, **özel VM görüntüsü**olarak ayarlanır.
+private static ImageReference CreateImageReference()
+{
+    return new ImageReference(
+        virtualMachineImageId: "/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/images/{image definition name}");
+}
 
-Bir havuz ile ilişkili tüm özel görüntüler havuzun **Özellikler** penceresinde görüntülenir.
+private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfiguration vmConfiguration)
+{
+    try
+    {
+        CloudPool pool = batchClient.PoolOperations.CreatePool(
+            poolId: PoolId,
+            targetDedicatedComputeNodes: PoolNodeCount,
+            virtualMachineSize: PoolVMSize,
+            virtualMachineConfiguration: vmConfiguration);
+
+        pool.Commit();
+    }
+```
+
+### <a name="batch-management-rest-api"></a>Batch Yönetimi REST API’si
+
+REST API URI'si
+
+```http
+ PUT https://management.azure.com/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Batch/batchAccounts/{account name}/pools/{pool name}?api-version=2020-03-01
+```
+
+İstek Gövdesi
+
+```json
+ {
+   "properties": {
+     "vmSize": "{VM size}",
+     "deploymentConfiguration": {
+       "virtualMachineConfiguration": {
+         "imageReference": {
+           "id": "/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/images/{image name}"
+         },
+         "nodeAgentSkuId": "{Node Agent SKU ID}"
+       }
+     }
+   }
+ }
+```
 
 ## <a name="considerations-for-large-pools"></a>Büyük havuzlara dikkat edilecek noktalar
 
@@ -113,4 +152,5 @@ Sanal makine oluşturmak için Packer kullanma hakkında daha fazla bilgi için 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Paylaşılan görüntü Galerisi](batch-sig-images.md) 'ni kullanarak özel bir havuz oluşturma hakkında bilgi edinin.
 - Toplu Iş hakkında ayrıntılı genel bakış için bkz. [Batch hizmeti iş akışı ve kaynaklar](batch-service-workflow-features.md).

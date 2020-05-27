@@ -3,12 +3,12 @@ title: Azure Işlevleri 'nde işlevleri devre dışı bırakma
 description: Azure Işlevleri 'nde işlevleri devre dışı bırakmayı ve etkinleştirmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 8922edb7aaa41bcf50dcce5257b6600f1bde224a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ee701e8df8faddef9bbdb16e7a1048c4dc2e40a5
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115583"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848748"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Işlevleri 'nde işlevleri devre dışı bırakma
 
@@ -122,7 +122,8 @@ veya
 
 İkinci örnekte, IS_DISABLED adlı ve veya 1 olarak ayarlanmış bir uygulama ayarı olduğunda işlev devre dışıdır `true` .
 
-Azure portal dosyayı düzenleyebilir veya işlevin **genel bakış** sayfasındaki **Etkinleştir** ve **devre dışı bırak** düğmelerini kullanabilirsiniz. Portal anahtarı, *function. JSON* dosyası değiştirilerek çalışır.
+>[!IMPORTANT]  
+>Portal artık v1. x işlevlerini devre dışı bırakmak için uygulama ayarlarını kullanır. Bir uygulama ayarı function. JSON dosyasıyla çakışırsa bir hata oluşabilir. `disabled`Hataları engellemek için function. json dosyasından özelliği kaldırmalısınız. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

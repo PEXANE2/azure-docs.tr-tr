@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 75baddbefc2babf73fee18cafe07177a3f0fb6f2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 1a027eb4cb3351934738319f342afac8d8407e6f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701037"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848813"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container teklifi oluşturma
 
@@ -48,7 +48,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örnek:
+Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örneğin:
 
 - Teklif bir taslak- [silme taslağı tekliftir](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -59,7 +59,7 @@ Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gös
 
 Teklifinizi ayarlamak için bu adımları izleyin.
 
-### <a name="connect-lead-management--optional"></a>Connect lider yönetimi – isteğe bağlı
+### <a name="customer-leads--optional"></a>Müşteri liderleri – isteğe bağlı
 
 Teklifinizi Iş Ortağı Merkezi ile ticari Market 'te yayımlarken, Müşteri Ilişkileri yönetimi (CRM) sisteminize bağlayabilirsiniz. Bu, bir kişi, ürününüzü ilgilendiren veya ürünü kullandığı anda müşteri iletişim bilgilerini almanızı sağlar.
 

@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: feea0266b3a724f3d85944073a47e260277cc362
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72025665"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860027"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Kesintisiz çoklu oturum açma Azure Active Directory: sık sorulan sorular
 
@@ -37,32 +37,32 @@ Sorunsuz SSO ücretsiz bir özelliktir ve Azure AD 'nin bu sürümü kullanabilm
 
 **S: [Microsoft Azure Almanya bulutta](https://www.microsoft.de/cloud-deutschland) ve [MICROSOFT Azure Kamu bulutta](https://azure.microsoft.com/features/gov/)sorunsuz SSO bulunabilir mi?**
 
-Hayır. Sorunsuz SSO yalnızca dünya çapındaki Azure AD örneğinde bulunabilir.
+Azure Kamu Bulutu için sorunsuz SSO vardır. Ayrıntılar için [Azure Kamu 'Nun karma kimlik konularını](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)görüntüleyin.
 
-**S: sorunsuz SSO 'nun `domain_hint` veya `login_hint` parametre özelliğinden yararlanan uygulamalar nelerdir?**
+**S: `domain_hint` sorunsuz SSO 'nun veya parametre özelliğinden yararlanan uygulamalar nelerdir `login_hint` ?**
 
 Aşağıda, bu parametreleri Azure AD 'ye gönderebilen kapsamlı bir uygulama listesi verilmiştir ve bu nedenle kullanıcılara sorunsuz SSO (yani, kullanıcılarınızın Kullanıcı adlarını veya parolalarını girmesi gerekmez) kullanarak sessiz bir oturum açma deneyimi sağlar:
 
 | Uygulama adı | Kullanılacak uygulama URL 'SI |
 | -- | -- |
-| Erişim paneli | https:\//myapps.Microsoft.com/contoso.com |
-| Web 'de Outlook | https:\//Outlook.office365.com/contoso.com |
-| Office 365 portalları | https:\//portal.office.com? domain_hint = contoso. com, https:\//www.Office.com? domain_hint = contoso. com |
+| Erişim paneli | https: \/ /myapps.Microsoft.com/contoso.com |
+| Web 'de Outlook | https: \/ /Outlook.office365.com/contoso.com |
+| Office 365 portalları | https: \/ /Portal.Office.com? domain_hint = contoso. com, https: \/ /www.office.com? domain_hint = contoso. com |
 
-Ayrıca, bir uygulama Azure AD uç noktalarına kiracı olarak ayarlanan bir oturum açma isteği gönderirse, bu, https:\//Login.microsoftonline.com/contoso.com/<.. > veya https:\//Login.microsoftonline.com/<tenant_ID>/<.. >-Azure AD 'nin ortak uç noktası yerine, https:\//Login.microsoftonline.com/Common/<... >. Aşağıda, bu tür oturum açma isteklerini yapan, kapsamlı bir uygulamalar listesi aşağıda verilmiştir.
+Ayrıca, bir uygulama Azure AD uç noktalarına kiracı olarak ayarlanan bir oturum açma isteği gönderirse, bu, https: \/ /login.microsoftonline.com/contoso.com/<.. > veya https: \/ /login.microsoftonline.com/<tenant_ID>/<.. >-Azure AD 'nin ortak uç noktası yerine, https: \/ /login.microsoftonline.com/common/<... >. Aşağıda, bu tür oturum açma isteklerini yapan, kapsamlı bir uygulamalar listesi aşağıda verilmiştir.
 
 | Uygulama adı | Kullanılacak uygulama URL 'SI |
 | -- | -- |
-| SharePoint Online | https:\//contoso.SharePoint.com |
-| Azure portal | https:\//Portal.Azure.com/contoso.com |
+| SharePoint Online | https: \/ /contoso.SharePoint.com |
+| Azure portal | https: \/ /Portal.Azure.com/contoso.com |
 
 Yukarıdaki tablolarda, kiracınızın doğru uygulama URL 'Lerine ulaşmak için "contoso.com" yerine etki alanı adınızı koyun.
 
 Diğer uygulamaların sessiz oturum açma deneyimimizi kullanmasını istiyorsanız geri bildirim bölümünde bize bilgi verin.
 
-**S: Kullanıcı adı yerine sorunsuz `Alternate ID` SSO Desteği `userPrincipalName`ister misiniz?**
+**S: `Alternate ID` Kullanıcı adı yerine sorunsuz SSO Desteği `userPrincipalName` ister misiniz?**
 
-Evet. Sorunsuz SSO, `Alternate ID` [burada](how-to-connect-install-custom.md)gösterildiği gibi Azure AD Connect ' de yapılandırıldığında Kullanıcı adı olarak destekler. Office 365 uygulamalarının hepsi desteklenmez `Alternate ID`. Destek bildirimiyle ilgili uygulamanın belgelerine bakın.
+Evet. Sorunsuz SSO `Alternate ID` , [burada](how-to-connect-install-custom.md)gösterildiği gibi Azure AD Connect ' de yapılandırıldığında Kullanıcı adı olarak destekler. Office 365 uygulamalarının hepsi desteklenmez `Alternate ID` . Destek bildirimiyle ilgili uygulamanın belgelerine bakın.
 
 **S: [Azure AD JOIN](../active-directory-azureadjoin-overview.md) ve sorunsuz SSO tarafından sunulan çoklu oturum açma deneyimi arasındaki fark nedir?**
 
@@ -74,9 +74,9 @@ Kiracınızda Azure AD JOIN ve sorunsuz SSO kullanabilirsiniz. Bu iki özellik t
 
 Evet, bu senaryo, [çalışma alanına katılma istemcisinin](https://www.microsoft.com/download/details.aspx?id=53554)2,1 veya sonraki bir sürümünü gerektirir.
 
-**S: `AZUREADSSOACC` bilgisayar hesabının Kerberos şifre çözme anahtarını nasıl alabilirim?**
+**S: bilgisayar hesabının Kerberos şifre çözme anahtarını nasıl alabilirim `AZUREADSSO` ?**
 
-Şirket içi AD ormanınızda oluşturulan `AZUREADSSOACC` bilgisayar hesabının (Azure AD 'yi temsil eden) Kerberos şifre çözme anahtarını çok sık almak önemlidir.
+Şirket `AZUREADSSO` ıçı ad ormanınızda oluşturulan bilgisayar hesabının (Azure AD 'yi temsil eden) Kerberos şifre çözme anahtarını çok sık almak önemlidir.
 
 >[!IMPORTANT]
 >Kerberos şifre çözme anahtarını en az 30 günde bir almanızı önemle tavsiye ederiz.
@@ -87,13 +87,13 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
 
    1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
    2. `%programfiles%\Microsoft Azure Active Directory Connect` klasörüne gidin.
-   3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
-   4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext`. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
-   5. Çağrısı `Get-AzureADSSOStatus | ConvertFrom-Json`yapın. Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini ("etki alanları" listesine bakın) sağlar.
+   3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1` .
+   4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext` . Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
+   5. Çağrısı yapın `Get-AzureADSSOStatus | ConvertFrom-Json` . Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini ("etki alanları" listesine bakın) sağlar.
 
    **2. adım. Üzerinde ayarlandığı her bir AD ormanında Kerberos şifre çözme anahtarını güncelleştirme**
 
-   1. Çağrısı `$creds = Get-Credential`yapın. İstendiğinde, hedeflenen AD ormanının etki alanı yönetici kimlik bilgilerini girin.
+   1. Çağrısı yapın `$creds = Get-Credential` . İstendiğinde, hedeflenen AD ormanının etki alanı yönetici kimlik bilgilerini girin.
 
    > [!NOTE]
    >Etki alanı yöneticisi kimlik bilgileri Kullanıcı adı, SAM hesap adı biçiminde girilmelidir (contoso\johntikan veya contoso. com\johntikan). DNS kullanarak etki alanı yöneticisinin etki alanı denetleyicisini bulmak için Kullanıcı adının etki alanı bölümünü kullanıyoruz.
@@ -101,11 +101,11 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
    >[!NOTE]
    >Kullanılan etki alanı yönetici hesabı, protected Users grubunun bir üyesi olmamalıdır. Öyleyse, işlem başarısız olur.
 
-   2. Çağrısı `Update-AzureADSSOForest -OnPremCredentials $creds`yapın. Bu komut, bu belirli AD ormanındaki `AZUREADSSOACC` bilgisayar hesabının Kerberos şifre çözme anahtarını güncelleştirir ve Azure AD 'de güncelleştirir.
+   2. Çağrısı yapın `Update-AzureADSSOForest -OnPremCredentials $creds` . Bu komut, `AZUREADSSO` Bu belırlı ad ormanındaki bilgisayar hesabının Kerberos şifre çözme anahtarını güncelleştirir ve Azure AD 'de güncelleştirir.
    3. Özelliği ayarladığınız her AD Ormanı için önceki adımları tekrarlayın.
 
    >[!IMPORTANT]
-   >Komutu birden çok kez çalıştırmayın emin olun. _don't_ `Update-AzureADSSOForest` Aksi takdirde, kullanıcılarınızın Kerberos biletlerinin süresi dolana ve şirket içi Active Directory tarafından yeniden yayımlanıncaya kadar özellik çalışmayı sonlandırır.
+   >Komutu birden çok kez _çalıştırmayın_ emin olun `Update-AzureADSSOForest` . Aksi takdirde, kullanıcılarınızın Kerberos biletlerinin süresi dolana ve şirket içi Active Directory tarafından yeniden yayımlanıncaya kadar özellik çalışmayı sonlandırır.
 
 **S: sorunsuz SSO 'yu nasıl devre dışı bırakabilirim?**
 
@@ -128,9 +128,9 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
 
    1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
    2. `%programfiles%\Microsoft Azure Active Directory Connect` klasörüne gidin.
-   3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
-   4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext`. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
-   5. Çağrısı `Enable-AzureADSSO -Enable $false`yapın.
+   3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1` .
+   4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext` . Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
+   5. Çağrısı yapın `Enable-AzureADSSO -Enable $false` .
 
    >[!IMPORTANT]
    >PowerShell kullanarak sorunsuz SSO devre dışı bırakmak, Azure AD Connect durumunu değiştirmez. Sorunsuz SSO, **Kullanıcı oturum açma** sayfasında etkin olarak görünür.
@@ -141,11 +141,11 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
 
    1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
    2. `%programfiles%\Microsoft Azure Active Directory Connect` klasörüne gidin.
-   3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
-   4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext`. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
-   5. Çağrısı `Get-AzureADSSOStatus | ConvertFrom-Json`yapın. Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini ("etki alanları" listesine bakın) sağlar.
+   3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1` .
+   4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext` . Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
+   5. Çağrısı yapın `Get-AzureADSSOStatus | ConvertFrom-Json` . Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini ("etki alanları" listesine bakın) sağlar.
 
-   **3. adım. Listede gördüğünüz her `AZUREADSSOACCT` ad ormanındaki bilgisayar hesabını el ile silin.**
+   **3. adım. `AZUREADSSO`Listede gördüğünüz her ad ormanındaki bilgisayar hesabını el ile silin.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

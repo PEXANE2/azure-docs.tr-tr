@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791026"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848032"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Tablo Depolamayı kullanarak ticari Market müşteri adaylarını yönetme
 
@@ -123,7 +123,7 @@ Azure depolama tablonuza bir müşteri adayı her eklendiğinde bildirimleri oto
 
 1. **Koşul** penceresinde, **bir değer seçin**' i seçin. Ardından açılır pencerede **ifade** ' ı seçin.
 
-1. FX `length(body('Get_entities')?['value'])` kutusuna yapıştırın **fx** . Bu işlevi eklemek için **Tamam ' ı** seçin. 
+1. `length(body('Get_entities')?['value'])` **FX** kutusuna yapıştırın. Bu işlevi eklemek için **Tamam ' ı** seçin. 
 
 1. Koşulu ayarlamayı tamamlaması için:
     1. Aşağı açılan listeden **büyüktür** ' i seçin.
@@ -151,7 +151,7 @@ Azure depolama tablonuza bir müşteri adayı her eklendiğinde bildirimleri oto
 
     1. **Kime**: Bu bildirimi alacak herkes için bir e-posta adresi girin.
     1. **Konu**: e-posta için bir konu belirtin. **Yeni müşteri adayları** bir örnektir!
-    1. **Gövde**: her bir e-postaya eklemek istediğiniz metni ekleyin (isteğe bağlı) ve ardından içine `body('Get_entities')?['value']`yapıştırın.
+    1. **Gövde**: her bir e-postaya eklemek istediğiniz metni ekleyin (isteğe bağlı) ve ardından içine yapıştırın `body('Get_entities')?['value']` .
 
     >[!NOTE]
     >Bu e-postanın gövdesine ek statik veya dinamik veri noktaları ekleyebilirsiniz.
@@ -182,8 +182,9 @@ Yayımlama portalında teklifiniz için lider yönetimi bilgilerini yapılandır
 
 1. Teklifiniz için **teklif kurulumu** sayfasına gidin.
 
-1. **Müşteri adayı yönetimi** bölümünde **Bağlan** ' ı seçin.
-     ![Müşteri adayı yönetimi](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+1. **Müşteri müşteri adayları** bölümünde **Bağlan**' ı seçin.
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Müşteri liderleri":::
 
 1. **Bağlantı ayrıntıları** açılır penceresinde, **müşteri adayı hedefi**için **Azure tablosu** ' nu seçin. 
      ![Lider yönetimi, bağlantı ayrıntıları](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)

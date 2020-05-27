@@ -3,12 +3,12 @@ title: Azure VM yedekleme için destek matrisi
 description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 01c81257ab2cc9882ec1d388702a00f58694a7e4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b331fe757fc18029aa270f805c72150161a38f47
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724267"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849425"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -172,7 +172,7 @@ Paylaşılan depolama alanı| Küme Paylaşılan Birimi (CSV) veya Genişleme Do
 
 ### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>En fazla 32 diski olan Azure sanal makinelerini yedekleme
 
-Azure Backup artık 32 'e kadar ekli diski olan Azure VM 'lerinin yedeklenmesini desteklemektedir.  Bu özellik Orta Batı ABD ' de genel önizlemeye sunuldu.  Bu özellikle başka bölgelerde ilgileniyorsanız, daha sonra bize yazarak sınırlı önizlemeye kaydolun AskAzureBackupTeam@microsoft.com .  
+Azure Backup artık 32 'e kadar ekli diski olan Azure VM 'lerinin yedeklenmesini desteklemektedir.  Bu özellik Orta Batı ABD, Kanada Orta, Asya Güneydoğu, Brezilya Güney, Kanada Doğu, Fransa Orta, Fransa Güney, Hindistan Orta, Hindistan Güney, Japonya Doğu, Japonya Batı, Kore orta, Kore Güney, Güney Afrika Kuzey, UK Güney, UK Batı, Avustralya Doğu ' de genel önizlemeye sunuldu.  Bu özellikle başka bölgelerde ilgileniyorsanız, daha sonra bize yazarak sınırlı önizlemeye kaydolun AskAzureBackupTeam@microsoft.com .  
 
 >[!NOTE]
 >Azure Backup, yalnızca yönetilmeyen diskler veya klasik VM 'Ler ile Azure VM 'Leri için en fazla 16 disk destekler.
@@ -231,10 +231,10 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 
 **Makine** | **MABS/DPM 'ye Sıkıştır (TCP)** | **Kasaya Sıkıştır (HTTPS)**
 --- | --- | ---
-DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Evet][green]
+DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Yes][green]
 Azure VM’leri | NA | NA
 DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Evet][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

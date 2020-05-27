@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: b7226e5ae8c468339e02dbe87e279266e4609da8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0aab6957f6078a59aafd0c9967b0d88e97e50cda
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063484"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849442"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -28,7 +28,7 @@ Bu makalede, Azure portal kullanarak MySQL için Azure veritabanı hizmetinde ok
 
 Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturulabilir:
 
-1. [Azure Portal](https://portal.azure.com/)oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Ana sunucu olarak kullanmak istediğiniz MySQL için Azure veritabanı sunucusunu seçin. Bu eylem **genel bakış** sayfasını açar.
 
@@ -52,7 +52,7 @@ Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturul
 7. Çoğaltmanın oluşturulmasını onaylamak için **Tamam ' ı** seçin.
 
 > [!NOTE]
-> Okuma çoğaltmaları, ana sunucuyla aynı sunucu yapılandırmasıyla oluşturulur. Çoğaltma sunucusu yapılandırması oluşturulduktan sonra değiştirilebilir. Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının ana değerden eşit veya daha büyük tutulması önerilir.
+> Okuma çoğaltmaları, ana sunucuyla aynı sunucu yapılandırmasıyla oluşturulur. Çoğaltma sunucusu yapılandırması oluşturulduktan sonra değiştirilebilir. Çoğaltma sunucusu her zaman aynı kaynak grubunda ve ana sunucuyla aynı abonelikte oluşturulur. Farklı bir kaynak grubuna veya farklı bir aboneliğe çoğaltma sunucusu oluşturmak istiyorsanız, oluşturulduktan sonra [Çoğaltma sunucusunu taşıyabilirsiniz](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) . Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının ana değerden eşit veya daha büyük tutulması önerilir.
 
 Çoğaltma sunucusu oluşturulduktan sonra **çoğaltma** dikey penceresinden görüntülenebilir.
 

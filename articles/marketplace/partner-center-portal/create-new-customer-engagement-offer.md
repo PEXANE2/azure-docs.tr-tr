@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: f975abcd05b92dd57eb736f076b63c88b4bf6769
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e49ed542af140b28e8ebe58e5c8920d0959c9387
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747251"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848913"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement ve PowerApps teklifi oluşturma
 
@@ -67,7 +67,7 @@ Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başla
 
 #### <a name="contact-me"></a>Benimle iletişim kurun
 
-Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşterinin, bilgilerini paylaşması için izin istenir. Bu müşteri ayrıntıları, teklifinizin bulunduğu teklif adı, KIMLIĞI ve Market kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM 'nizi yapılandırma hakkında daha fazla bilgi için bkz. [Connect lider yönetimi](#connect-lead-management). 
+Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşterinin, bilgilerini paylaşması için izin istenir. Bu müşteri ayrıntıları, teklifinizin bulunduğu teklif adı, KIMLIĞI ve Market kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM 'nizi yapılandırma hakkında daha fazla bilgi için bkz. [müşteri adayları](#customer-leads).
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -96,7 +96,7 @@ Aşağıdaki seçeneklerden seçim yapın:
 - [En Iyi pazarlama uygulamaları](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Sınama sürücülerine genel bakış](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun)
 
-## <a name="connect-lead-management"></a>Müşteri adayı yönetimini bağlama
+### <a name="customer-leads"></a>Müşteri liderleri
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 

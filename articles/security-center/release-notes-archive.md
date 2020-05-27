@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: c0883e91d5e806fb166c3ddeafc4ce130ff3f66f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 253ea748462ec09cd9cf4eab14c05be678cfb82d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210849"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860911"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler için Arşiv mi var?
 
-[Azure Active Directory 'deki yenilikler nelerdir?](release-notes.md) sürüm notları sayfasında son altı aya yönelik güncelleştirmeler bulunur ve Bu sayfa eski öğeler içerdiğinde.
+[Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?](release-notes.md) sürüm notları sayfasında son altı aya yönelik güncelleştirmeler bulunur, Bu sayfa eski öğeler içerir.
 
 Bu sayfa hakkında bilgi sağlar:
 

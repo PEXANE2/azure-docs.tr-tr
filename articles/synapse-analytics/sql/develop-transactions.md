@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9b9ce5110a03ec4d67b3e8af6d9b18e5ad6836af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c921b05dd98c55c8e7db8beac93d1b724de1cd7
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428725"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869311"
 ---
 # <a name="using-transactions-in-sql-pool"></a>SQL havuzunda işlemleri kullanma
 
@@ -92,7 +92,7 @@ Günlüğe yazılan veri miktarını iyileştirmek ve en aza indirmek için lüt
 SQL havuzu,-2 değerini kullanarak başarısız bir işlemi raporlamak için XACT_STATE () işlevini kullanır. Bu değer, işlemin başarısız olduğu ve yalnızca geri alma için işaretlenen anlamına gelir.
 
 > [!NOTE]
-> Başarısız bir işlemi göstermek için XACT_STATE işlevi tarafından-2 kullanılması SQL Server farklı davranışları temsil eder. SQL Server, bir uncommittable işlemini göstermek için-1 değerini kullanır. SQL Server, bir işlem içindeki bazı hatalara, uncommittable olarak işaretlenmesi gerekmeden tolerans sağlayabilir. Örneğin `SELECT 1/0` , bir hataya neden olur, ancak bir işlemi committable durumuna zorlamaz. SQL Server ayrıca, komuntable işleminde okuma izni verir. Ancak, SQL havuzu bunu yapmanızı sağlar. Bir SQL havuzu işleminin içinde bir hata oluşursa, otomatik olarak-2 durumunu girer ve deyim geri alınana kadar başka bir SELECT deyimi de yapamazsınız. Bu nedenle, kod değişiklikleri yapmanız gerekebilmeniz için uygulama kodunuzun XACT_STATE () kullanıp kullanmadığını denetlemek önemlidir.
+> Başarısız bir işlemi göstermek için XACT_STATE işlevi tarafından-2 kullanılması SQL Server farklı davranışları temsil eder. SQL Server, bir uncommittable işlemini göstermek için-1 değerini kullanır. SQL Server, bir işlem içindeki bazı hatalara, uncommittable olarak işaretlenmesi gerekmeden tolerans sağlayabilir. Örneğin, bir `SELECT 1/0` hataya neden olur, ancak bir işlemi committable durumuna zorlamaz. SQL Server ayrıca, komuntable işleminde okuma izni verir. Ancak, SQL havuzu bunu yapmanızı sağlar. Bir SQL havuzu işleminin içinde bir hata oluşursa, otomatik olarak-2 durumunu girer ve deyim geri alınana kadar başka bir SELECT deyimi de yapamazsınız. Bu nedenle, kod değişiklikleri yapmanız gerekebilmeniz için uygulama kodunuzun XACT_STATE () kullanıp kullanmadığını denetlemek önemlidir.
 
 Örneğin SQL Server, aşağıdaki gibi görünen bir işlem görebilirsiniz:
 
@@ -206,4 +206,4 @@ Bunlar şu şekildedir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İşlemleri iyileştirme hakkında daha fazla bilgi edinmek için bkz. [işlem en iyi uygulamaları](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). [SQL havuzu](best-practices-sql-pool.md) ve [isteğe bağlı SQL (Önizleme)](on-demand-workspace-overview.md)için ek en iyi yöntemler kılavuzlarından de yer verilmiştir.
+İşlemleri iyileştirme hakkında daha fazla bilgi edinmek için bkz. [işlem en iyi uygulamaları](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). [SQL havuzu](best-practices-sql-pool.md) ve [isteğe bağlı SQL (Önizleme)](best-practices-sql-on-demand.md)için ek en iyi yöntemler kılavuzlarından de yer verilmiştir.

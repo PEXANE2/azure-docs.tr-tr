@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile VMware VM değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a0d05c56670c54aca25232a86b5a0e89d2f0bcfd
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0ec7006ce240df8c6e07afffa886e78ca9bc2a4d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983661"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849374"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -18,11 +18,11 @@ VMware VM 'lerini değerlendirmek için bir Azure geçişi projesi oluşturun ve
 
 ## <a name="limitations"></a>Sınırlamalar
 
-**Destek** | **Bilgileri**
+**Destek** | **Ayrıntılar**
 --- | ---
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz.<br/><br/> Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)en fazla 35.000 VMware VM 'yi bulabilir ve değerlendirebilirsiniz. Bir proje, fiziksel sunucular ve Hyper-V VM 'lerini her biri için değerlendirme sınırlarına kadar de içerebilir.
 **Bulma** | Azure geçişi gereci vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.
-**Değerlendirme** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
+**Değerlendirmesini** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
 
 Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
 
@@ -31,7 +31,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 
 Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalışan uygulamalar, rol ve özellikleri bulabilir. Uygulama envanterinizi keşfetmek, şirket içi iş yükleriniz için uyarlanmış bir geçiş yolu tanımlamanızı ve planlamanızı sağlar. 
 
-**Destek** | **Bilgileri**
+**Destek** | **Ayrıntılar**
 --- | ---
 **Desteklenen makineler** | Uygulama bulma Şu anda yalnızca VMware VM 'Leri için destekleniyor.
 **Bulma** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
@@ -39,7 +39,7 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 **vCenter kimlik bilgileri** | Uygulama bulma, salt okuma erişimi olan bir vCenter Server hesabına ve konuk Işlemleri > sanal makineler için etkinleştirilmiş ayrıcalıklara sahip olmalıdır.
 **VM kimlik bilgileri** | Uygulama bulma Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
 **VMware araçları** | Keşif yapmak istediğiniz VM 'lerde VMware araçları yüklü ve çalışır olmalıdır. <br/> VMware araçları sürümü 10.2.0 'dan daha sonra olmalıdır.
-**PowerShell** | VM 'Lerin PowerShell sürüm 2,0 veya sonraki bir sürümü yüklü olmalıdır.
+**PowerShell** | Windows VM 'lerinin PowerShell sürüm 2,0 veya sonraki bir sürümü yüklü olmalıdır.
 **Bağlantı noktası erişimi** | Bulmayı istediğiniz VM 'Leri çalıştıran ESXi konağında, Azure geçiş gereci 443 numaralı TCP bağlantı noktasına bağlanabilmelidir.
 **Sınırlar** | Uygulama bulma için, her bir Azure geçişi gereci üzerinde en fazla 10000 VM bulabilirsiniz.
 
@@ -47,13 +47,13 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 
 ## <a name="vmware-requirements"></a>VMware gereksinimleri
 
-**VMware** | **Bilgileri**
+**VMware** | **Ayrıntılar**
 --- | ---
 **VMware Sanal Makineleri** | Değerlendirme, tüm Windows ve Linux işletim sistemleri için desteklenir.
 **vCenter Server** | Bulmak ve değerlendirmek istediğiniz makineler vCenter Server sürüm 5,5, 6,0, 6,5 veya 6,7 tarafından yönetilmelidir.
 **İzinler (değerlendirme)** | salt vCenter Server hesabı.
 **İzinler (App-Discovery)** | salt okuma erişimi olan ve **Konuk işlemleri > sanal makineler**için etkinleştirilen ayrıcalıkların vCenter Server hesabı.
-**İzinler (bağımlılık görselleştirme)** | salt okuma erişimi olan ve **sanal makineler** > **Konuk işlemleri**için etkinleştirilen ayrıcalıkların vCenter Server hesabı.
+**İzinler (bağımlılık görselleştirme)** | salt okuma erişimi olan ve **sanal makineler**  >  **Konuk işlemleri**için etkinleştirilen ayrıcalıkların vCenter Server hesabı.
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Geçişi aleti gereksinimleri
@@ -67,7 +67,7 @@ Azure geçişi, bulma ve değerlendirme için [Azure geçişi](migrate-appliance
 
 ## <a name="port-access"></a>Bağlantı noktası erişimi
 
-**Cihaz** | **Bağlanma**
+**Cihaz** | **Bağlantı**
 --- | ---
 Elektrikli | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası üzerinden gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar:```https://<appliance-ip-or-name>:44368``` <br/><br/>Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS) bağlantı noktası üzerinden giden bağlantılar.
 vCenter server | TCP bağlantı noktası 443 ' deki gelen bağlantılar, gerecin değerlendirmeler için yapılandırma ve performans meta verilerini toplamasına izin verir. <br/><br/> Gereç, bağlantı noktası 443 ' de varsayılan olarak vCenter 'a bağlanır. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bulmayı ayarlarken bağlantı noktasını değiştirebilirsiniz.
@@ -77,7 +77,7 @@ ESXi Konakları (uygulama bulma/aracısız bağımlılık Analizi) | [Uygulama b
 
 Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalışan uygulamalar, rol ve özellikleri bulabilir. Uygulama envanterinizi keşfetmek, şirket içi iş yükleriniz için uyarlanmış bir geçiş yolu tanımlamanızı ve planlamanızı sağlar. 
 
-**Destek** | **Bilgileri**
+**Destek** | **Ayrıntılar**
 --- | ---
 **Desteklenen makineler** | Uygulama bulma Şu anda yalnızca VMware VM 'Leri için destekleniyor.
 **Bulma** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
@@ -94,7 +94,7 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 
 [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz şirket içi makineler arasındaki bağımlılıkları belirlemenize yardımcı olur. Tablo aracısız bağımlılık analizini ayarlamaya yönelik gereksinimleri özetler. 
 
-**Gereksinim** | **Bilgileri**
+**Gereksinim** | **Ayrıntılar**
 --- | --- 
 **Dağıtımdan önce** | Sunucu değerlendirme aracı projeye eklenerek bir Azure geçişi projesi olması gerekir.<br/><br/>  Şirket içi VMWare makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız.<br/><br/> İlk kez bir proje oluşturmayı [öğrenin](create-manage-projects.md) .<br/> Mevcut bir projeye değerlendirme aracı eklemeyi [öğrenin](how-to-assess.md) .<br/> VMware VM 'lerinin değerlendirmesi için Azure geçişi gerecini ayarlamayı [öğrenin](how-to-set-up-appliance-vmware.md) .
 **VM desteği** | Şu anda yalnızca VMware VM 'Leri için destekleniyor.
@@ -105,7 +105,7 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 **Gerekli aracılar** | Çözümlemek istediğiniz makinelerde aracı gerekmez.
 **VMware araçları** | VMware araçları (10,2 ' den sonraki sürümler), çözümlemek istediğiniz her sanal makinede yüklü ve çalışır olmalıdır.
 **vCenter Server kimlik bilgileri** | Bağımlılık görselleştirmesine, salt okuma erişimi olan bir vCenter Server hesabına ve konuk Işlemleri > sanal makineler için etkinleştirilmiş ayrıcalıklara sahip olması gerekir. 
-**PowerShell** | VM 'Lerin PowerShell sürüm 2,0 veya üzeri yüklü olmalıdır.
+**PowerShell** | Windows VM 'lerinin PowerShell sürüm 2,0 veya üzeri yüklü olmalıdır.
 **Bağlantı noktası erişimi** | Çözümlemek istediğiniz VM 'Leri çalıştıran ESXi konağında, Azure geçiş gereci 443 numaralı TCP bağlantı noktasına bağlanabilmelidir.
 
 
@@ -113,7 +113,7 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 
 [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz şirket içi makineler arasındaki bağımlılıkları belirlemenize yardımcı olur. Tablo, aracı tabanlı bağımlılık analizini ayarlamaya yönelik gereksinimleri özetler. 
 
-**Gereksinim** | **Bilgileri** 
+**Gereksinim** | **Ayrıntılar** 
 --- | --- 
 **Dağıtımdan önce** | Azure geçişi: Sunucu değerlendirmesi aracı projeye eklenmiş bir Azure geçişi projesi olması gerekir.<br/><br/>  Şirket içi makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız<br/><br/> İlk kez bir proje oluşturmayı [öğrenin](create-manage-projects.md) .<br/> Mevcut bir projeye değerlendirme aracı eklemeyi [öğrenin](how-to-assess.md) .<br/> [Hyper-V](how-to-set-up-appliance-hyper-v.md), [VMware](how-to-set-up-appliance-vmware.md)veya fiziksel sunucu değerlendirmesi için Azure geçişi gerecini ayarlamayı öğrenin.
 **Azure Devlet Kurumları** | Bağımlılık görselleştirmesi Azure Kamu 'da kullanılamaz.

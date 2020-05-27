@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 9c31c6ca4ccb5ff328faa5db1803134aa6b0c873
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 16b44b3a4496e98f8b6b643bf76aa5aa7ce593c6
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701126"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849102"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Microsoft AppSource için Power BI uygulaması oluşturma
 
@@ -53,7 +53,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 Bu sayfa, bu teklifi yayımlamak için gereken adımların görsel bir gösterimini gösterir (hem tamamlandı hem de yaklaşan) ve her adımın tamamlanması gereken süre.
 
-Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örnek:
+Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örneğin:
 
 - Teklif bir taslak- [silme taslağı tekliftir](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -62,7 +62,7 @@ Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirm
 
 ## <a name="offer-setup"></a>Teklif kurulumu
 
-### <a name="connect-lead-management"></a>Müşteri adayı yönetimini bağlama
+### <a name="customer-leads"></a>Müşteri liderleri
 
 Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken, Müşteri Ilişkileri yönetimi (CRM) sisteminize bağlamanız gerekir. Bu, bir kişi, ürününüzü ilgilendiren veya ürünü kullandığı anda müşteri iletişim bilgilerini almanızı sağlar.
 

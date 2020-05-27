@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/26/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 517ff16cd1cbf9bfe31404d3b1b3993a02d6dae9
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 450e6aa1b22806fbd4d142e47caee720d7f63648
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871563"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860180"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Azure Active Directory kullanarak SMS tabanlı kimlik doğrulaması için kullanıcıları yapılandırma ve etkinleştirme (Önizleme)
 
@@ -38,9 +38,9 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 * Aboneliğinizle ilişkili bir Azure Active Directory kiracısı.
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * SMS tabanlı kimlik doğrulamasını etkinleştirmek için Azure AD kiracınızda *genel yönetici* ayrıcalıklarına sahip olmanız gerekir.
-* SMS mesajı kimlik doğrulama yöntemi ilkesinde etkin olan her bir kullanıcının, kullanmasa bile lisanslanması gerekir. Her etkin kullanıcı aşağıdaki Azure AD, Office 365 veya Microsoft 365 lisanslarından birine sahip olmalıdır:
+* SMS mesajı kimlik doğrulama yöntemi ilkesinde etkin olan her bir kullanıcının, kullanmasa bile lisanslanması gerekir. Her etkin kullanıcı aşağıdaki Azure AD, EMS ve Microsoft 365 lisanslarından birine sahip olmalıdır:
     * [Azure AD Premium P1 veya P2][azuread-licensing]
-    * [Microsoft 365 (M365) F1 veya F3][m365-firstline-workers-licensing] ya da [Office 365 F1][o365-f1] veya [F3][o365-f3]
+    * [Microsoft 365 (M365) F1 veya F3][m365-firstline-workers-licensing]
     * [Enterprise Mobility + Security (EMS) E3 veya E5][ems-licensing] ya da [Microsoft 365 (M365) E3 veya E5][m365-licensing]
 
 ## <a name="limitations"></a>Sınırlamalar

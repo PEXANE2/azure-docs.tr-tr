@@ -3,12 +3,12 @@ title: Güvenlik Duvarı erişim kuralları
 description: ("Beyaz listeye") REST API ve veri uç noktası etki alanı adlarına veya hizmete özel IP adresi aralıklarına erişime izin vererek bir güvenlik duvarının arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırın.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 109764a5697920547230530de41a3e5acfe0117d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4774191087b3e88e657e8dc9bc6a9f9c406153e2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701930"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850003"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma
 
@@ -137,7 +137,7 @@ Portalı kullanarak veri uç noktalarını etkinleştirmek için:
 
 Veri uç noktası veya uç noktalar portalda görüntülenir.
 
-![Portalda adanmış veri uç noktaları](./media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png)
+:::image type="content" source="media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png" alt-text="Portalda adanmış veri uç noktaları":::
 
 ### <a name="azure-cli"></a>Azure CLI
 

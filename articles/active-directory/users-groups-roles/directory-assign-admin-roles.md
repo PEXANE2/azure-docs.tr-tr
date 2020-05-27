@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a15de41dc2dce4cae0a6155bfce8a8a2001b9a8b
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3abf7b4acfae5e90d0b3f6781b8fbbf0f6f1427d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798807"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860605"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -306,6 +306,21 @@ Bu roldeki kullanıcılar, veri gizlilik iletileri dahil olmak üzere Ileti merk
 ### <a name="message-center-reader"></a>[İleti Merkezi okuyucusu](#message-center-reader-permissions)
 
 Bu roldeki kullanıcılar, Exchange, Intune ve Microsoft ekipleri gibi yapılandırılmış hizmetlerde kuruluşları için [Office 365 İleti merkezindeki](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) bildirimleri ve danışmanlık sistem durumu güncelleştirmelerini izleyebilir. İleti Merkezi okuyucuları, Office 365 ' de ileti merkezi gönderilerini bir haftalık e-posta ile alırlar. Azure AD 'de, bu role atanan kullanıcılar yalnızca kullanıcılar ve gruplar gibi Azure AD hizmetlerinde salt okuma erişimine sahip olur. Bu rolün destek biletlerini görüntüleme, oluşturma veya yönetme erişimi yok.
+
+### <a name="modern-commerce-administrator"></a>[Modern ticari yönetici](#modern-commerce-administrator-permissions)
+Kullanmayın. Bu rol, otomatik olarak ticari olarak atanır ve başka bir kullanım için tasarlanmamıştır veya desteklenmez. Ayrıntıları aşağıda bulabilirsiniz.
+
+Modern ticaret yöneticisi rolü, belirli kullanıcılara Microsoft 365 yönetim merkezine erişme izni verir ve **giriş**, **faturalandırma**ve **destek**için sol gezinti girişlerini görebilir. Bu alanlarda bulunan içerik, kullanıcılara kendi veya kuruluşunuz için satın aldıkları ürünleri yönetmek üzere atanan, [ticari özel roller](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles) tarafından denetlenir. Bu, faturalandırma veya faturalama hesaplarına ve faturalandırma profillerine erişim için ödeme gibi görevleri içerebilir. 
+
+Modern ticaret yöneticisi rolüne sahip kullanıcılar genellikle diğer Microsoft satın alma sistemlerinde yönetici izinlerine sahiptir ancak yönetim merkezine erişmek için genel yönetici veya faturalandırma yöneticisi rollerine sahip değildir. 
+
+**Modern ticari yönetici rolü ne zaman atanır?**
+* **Microsoft 365 Yönetim Merkezi 'Nde self servis satın alma** – self servis satın alma, kullanıcılara kendi kendilerine satın alarak veya kendi kendilerine kaydolup yeni ürünleri denemenize olanak tanır. Bu ürünler Yönetim merkezinde yönetilir. Self servis satın alma yapan kullanıcılara, Commerce sisteminde bir rol atanır ve bu sayede, Yönetim Merkezi 'nde satın alımları yönetebilmesi için modern ticaret yönetici rolü vardır. Yöneticiler, [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide)aracılığıyla self servis satın alımları (Power BI, Power Apps, Power otomatikleştirmek) engelleyebilir. Daha fazla bilgi için bkz. [self servis satın alma hakkında SSS](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
+* **Microsoft Commercial Market 'Ten satın** alma – self servis satın almaya benzer şekilde, bir Kullanıcı Microsoft AppSource veya Azure Marketi 'nden bir ürün veya hizmet satın aldığında, genel yönetici veya faturalama yöneticisi rolüne sahip olmadıkları durumlarda modern ticaret yöneticisi rolü atanır. Bazı durumlarda, kullanıcıların bu satınalmaları yapmasını engellemiş olabilir. Daha fazla bilgi için bkz. [Microsoft ticari Market](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase).   
+* Microsoft **'un teklifleri** : teklif, Microsoft 'un Microsoft ürün ve hizmetlerini satın alması için Microsoft 'un sunduğu resmi bir tekliftir. Teklifi kabul eden kişinin Azure AD 'de Genel yönetici veya faturalama yöneticisi rolü yoksa, teklife ve yönetim merkezine erişmek için modern ticaret yöneticisi rolüne sahip olmak üzere hem ticari özel bir rol atanır. Yönetim merkezine erişirken yalnızca, ticari olarak verilen rolleri karşılayan özellikleri kullanabilir. 
+* **Ticarete özgü roller** – bazı kullanıcılara ticari özel roller atanır. Bir Kullanıcı genel veya faturalama yöneticisi değilse, yönetim merkezine erişebilmeleri için modern ticaret yöneticisi rolünü alırlar.  
+
+Modern ticari yönetici rolü bir kullanıcıdan atanmadıklarında, Microsoft 365 yönetim merkezine erişimi kaybeder. Kendileri veya kuruluşunuz için herhangi bir ürünü yönetiyorsanız, bunları yönetemezler. Bu, lisansları atama, ödeme yöntemlerinin değiştirilmesi, faturalandırların faturalandırılır veya abonelikleri yönetmek için başka görevler içerebilir. 
 
 ### <a name="network-administrator"></a>[Ağ Yöneticisi](#network-administrator-permissions)
 
@@ -1318,6 +1333,23 @@ Ileti merkezi gönderilerini, veri gizliliği iletilerini, grupları, etki alanl
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 | Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
 
+### <a name="modern-commerce-administrator-permissions"></a>Modern ticari yönetici izinleri
+, Bir şirket, departman veya takım için ticari satınalmaları yönetebilir. 
+
+> [!NOTE]
+> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
+>
+>
+
+| **Eylemler** | **Açıklama** |
+| --- | --- |
+| Microsoft. Commerce. faturalandırma/iş ortakları/okuma | O365 faturalandırması 'nın iş ortağı özelliğini okuyun. |
+| Microsoft. Commerce. volumeLicenseServiceCenter/allEntities/allTasks | Toplu Lisanslama hizmeti Merkezi 'nin tüm yönlerini yönetin. |
+| Microsoft. Directory/kuruluş/temel/güncelleştirme | Azure Active Directory 'da kuruluştaki temel özellikleri güncelleştirin. |
+| Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
+
+
 ### <a name="network-administrator-permissions"></a>Ağ Yöneticisi izinleri
 , Hizmet uygulamaları olarak Microsoft 365 yazılım için ağ konumlarını yönetebilir ve kurumsal ağ tasarımı öngörülerini gözden geçirebilir.
 
@@ -1842,6 +1874,7 @@ Lisans Yöneticisi | Lisans Yöneticisi | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync Hizmet Yöneticisi | Skype Kurumsal yöneticisi | 75941009-915a-4869-ABE7-691bff18279e
 İleti Merkezi Gizlilik okuyucusu | İleti Merkezi Gizlilik okuyucusu | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 İleti Merkezi okuyucusu | İleti Merkezi okuyucusu | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Modern ticari yönetici | Modern ticari yönetici | d24aef57-1500-4070-84db-2666f29cf966
 Ağ Yöneticisi | Ağ Yöneticisi | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office uygulamaları Yöneticisi | Office uygulamaları Yöneticisi | 2b745bdf-0803-4d80-aa65-822c4493dadac
 Partner Katman1 desteği | Kullanılmaması nedeniyle gösterilmez | 4ba39ca4-527c-499a-B93D-d9b492c50246

@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: a09781efd58c29acbd8ca445b58b89c04daa94f8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 49776fb50eabeef8238e54c7a2f3128c99c2514b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674380"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849697"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
@@ -17,7 +17,7 @@ ms.locfileid: "83674380"
 
 Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından yönetilen bir Azure aboneliğinde bulunur. Müşterinin kümesi veya düğüm havuzu müşterinin aboneliğine ait. Sunucu ve küme veya düğüm havuzu, API sunucusu sanal ağındaki [Azure özel bağlantı hizmeti][private-link-service] ve müşterinin aks kümesinin alt ağında kullanıma sunulan özel bir uç nokta aracılığıyla birbirleriyle iletişim kurabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure CLı sürüm 2.2.0 veya üzeri
 
@@ -102,7 +102,8 @@ Belirtildiği gibi, VNet eşlemesi özel kümenize erişmenin bir yoludur. VNet 
 * IP yetkili aralıkları özel API sunucusu uç noktasına uygulanamıyor, yalnızca ortak API sunucusu için geçerlidir
 * Kullanılabilirlik Alanları Şu anda belirli bölgelerde destekleniyor, bu belgenin başlangıcına bakın 
 * [Azure özel bağlantı hizmeti sınırlamaları][private-link-service] özel kümeler için geçerlidir.
-* Özel kümeler ile kutudan Azure DevOps tümleştirmesi desteği yok
+* Özel bir kümede özel bir Azure sanal ağında özel Azure Container Instances (ACI) döndürme için sanal düğümler desteklenmez
+* Özel kümelerle Azure DevOps Microsoft tarafından barındırılan aracılar için destek yoktur. [Şirket içinde barındırılan aracıları][devops-agents]kullanmayı göz önünde bulundurun. 
 * Azure Container Registry özel AKS ile çalışmak üzere etkinleştirmesi gereken müşteriler için, Container Registry sanal ağı aracı kümesi sanal ağıyla eşlenmelidir.
 * Azure Dev Spaces için geçerli destek yok
 * Mevcut AKS kümelerini özel kümelere dönüştürme desteği yok
@@ -120,4 +121,4 @@ Belirtildiği gibi, VNet eşlemesi özel kümenize erişmenin bir yoludur. VNet 
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
-
+[devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops

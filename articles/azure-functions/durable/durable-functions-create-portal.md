@@ -4,12 +4,12 @@ description: Portal geliştirme için Azure Işlevleri Dayanıklı İşlevler uz
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 6416ae4aba8b045c6c4fb0fe6557bdcd1efb3a9b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7aa283480d95693e2630e24d5642fc7cb909b34b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83120173"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848769"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal kullanarak Dayanıklı İşlevler oluşturun
 
@@ -57,6 +57,8 @@ JavaScript Dayanıklı İşlevler oluşturuyorsanız [ `durable-functions` NPM p
 4. Karşıya yüklendikten sonra `package.json` `npm install` kudu uzaktan yürütme konsolundan komutunu çalıştırın.
 
    ![Kudu çalıştırma NPM yüklemesi](./media/durable-functions-create-portal/kudu-npm-install.png)
+   
+5. Son olarak, https://docs.microsoft.com/en-us/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1 değerine sahip bir uygulama ayarı ekleyerek (uyumluluk modunu etkinleştir) [] `FUNCTIONS_V2_COMPATIBILITY_MODE` `true` .
 
 ## <a name="create-an-orchestrator-function"></a>Orchestrator işlevi oluşturma
 

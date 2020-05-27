@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a875cee7e6796a2c865bde4a62f2f0463eb12130
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f66a5ba491a5afed4007f73b88a38719ec71fb63
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78967717"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849204"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Öğretici: Salesforce ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -93,8 +93,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     Kurumsal Hesap:`https://<subdomain>.my.salesforce.com`
 
     Geliştirici hesabı:`https://<subdomain>-dev-ed.my.salesforce.com`
+    
+    b. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak değeri yazın:
 
-    b. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak değeri yazın:
+    Kurumsal Hesap:`https://<subdomain>.my.salesforce.com`
+
+    Geliştirici hesabı:`https://<subdomain>-dev-ed.my.salesforce.com`
+
+    c. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak değeri yazın:
 
     Kurumsal Hesap:`https://<subdomain>.my.salesforce.com`
 
@@ -119,7 +125,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**' a tıklayın.
 
@@ -229,7 +235,7 @@ Erişim panelinde Salesforce kutucuğuna tıkladığınızda, SSO 'yu ayarladı�
 
 1. Son olarak, başarıyla oturum açtıktan sonra uygulama giriş sayfası görüntülenir.
 
-    ![Salesforce mobil uygulaması](media/salesforce-tutorial/mobile-app5.png) ![Salesforce mobil uygulaması](media/salesforce-tutorial/mobile-app6.png)
+    ![Salesforce mobil uygulaması ](media/salesforce-tutorial/mobile-app5.png) ![ Salesforce mobil uygulaması](media/salesforce-tutorial/mobile-app6.png)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

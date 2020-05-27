@@ -4,12 +4,12 @@ description: Sorgu tahmin uç noktası v3 API 'Leri değişti. Sürüm 3 uç nok
 ms.topic: conceptual
 ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: d6e5981bcdc81383454c65d3cf7b6c1195b70a4a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 84afcbcd348c3fd91014096877de2315722b53a0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653857"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849340"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 için tahmin uç noktası değişiklikleri
 
@@ -283,4 +283,4 @@ V2 API 'SI, v3 önizlemesi sonrasında en az 9 ay boyunca kullanım dışı olma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-LUıS [Endpoint](https://aka.ms/luis-api-v3) API 'LERINE mevcut Rest çağrılarını güncelleştirmek IÇIN v3 API belgelerini kullanın.
+LUıS [Endpoint](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8) API 'LERINE mevcut Rest çağrılarını güncelleştirmek IÇIN v3 API belgelerini kullanın.

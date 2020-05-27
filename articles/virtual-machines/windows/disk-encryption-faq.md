@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a6748ef520b3d03727aca045660f7563f75b200d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d9374f83110176e6705e2c6cca6c7794738a8c6e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828347"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848847"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Windows sanal makineleri için Azure disk şifrelemesi hakkında SSS
 
@@ -48,8 +48,6 @@ Başlamak için [Azure disk şifrelemesi 'ne genel bakış](disk-encryption-over
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Hem önyükleme hem de veri hacimlerini Azure disk şifrelemesi ile şifreleyebilir miyim?
 
 Hem önyükleme hem de veri birimlerini şifreleyebilirsiniz, ancak önce işletim sistemi birimini şifrelemeden verileri şifreleyebilirsiniz.
-
-İşletim sistemi birimini şifreledikten sonra, işletim sistemi biriminde şifrelemeyi devre dışı bırakmak desteklenmez.
 
 ## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Takılmamış bir birimi Azure disk şifrelemesi ile şifreleyebilir miyim?
 

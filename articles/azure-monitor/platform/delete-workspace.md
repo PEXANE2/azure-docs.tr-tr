@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/19/2020
-ms.openlocfilehash: 5ab71ee67b66cacbcd1b23fa35d6f424021fa9cc
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.date: 05/26/2020
+ms.openlocfilehash: 3784eda2db5f375f04cdde84108a78ae277baf60
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757557"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860673"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve kurtarma
 
@@ -57,16 +57,6 @@ Bir çalışma alanını [PowerShell](https://docs.microsoft.com/powershell/modu
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
 
-### <a name="troubleshooting"></a>Sorun giderme
-
-Bir çalışma alanını silmek için en az *Log Analytics katkıda bulunan* izinlerinizin olması gerekir.<br>
-Bir hata iletisi alırsanız, *Bu çalışma alanı adı zaten kullanımda* veya bir çalışma alanı oluştururken *çakışıyor* olabilir:
-* Çalışma alanı adı, kuruluşunuzdaki birisi veya diğer müşteri tarafından kullanılabilir değil.
-* Çalışma alanı son 14 gün içinde silindi ve bu ad, geçici silme dönemi için ayrılmış olarak tutuldu. Geçici silme işlemini geçersiz kılmak ve aynı ada sahip yeni bir çalışma alanı oluşturmak için çalışma alanınızı kalıcı olarak silmek üzere, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:<br>
-   1. Çalışma alanınızı [kurtarın](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) .
-   2. Çalışma alanınızı [kalıcı olarak silin](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
-   3. Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluşturun.
-
 ## <a name="permanent-workspace-delete"></a>Kalıcı çalışma alanı silme
 Geçici silme yöntemi, aynı ayarlar ve çalışma alanı adıyla bir dağıtımı tekrarlamanız gereken geliştirme ve test gibi bazı senaryolara uygun olmayabilir. Bu gibi durumlarda, çalışma alanınızı kalıcı olarak silebilir ve geçici silme dönemini "geçersiz kılabilirsiniz". Kalıcı çalışma alanı silme işlemi çalışma alanı adını serbest bırakır ve aynı adı kullanarak yeni bir çalışma alanı oluşturabilirsiniz.
 
@@ -74,22 +64,21 @@ Geçici silme yöntemi, aynı ayarlar ve çalışma alanı adıyla bir dağıtı
 > [!IMPORTANT]
 > Kalıcı çalışma alanı silme işlemini, geri döndürülemez bu yana dikkatli bir şekilde kullanın, çalışma alanınızı ve verilerini kurtaramayacağız.
 
-Kalıcı çalışma alanı silme, şu anda REST API aracılığıyla gerçekleştirilebilir.
+Çalışma alanınızı kalıcı olarak silmek için [çalışma alanları –](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) bir zorla etiketiyle Rest isteğini sil ' i kullanın:
 
-> [!NOTE]
-> Herhangi bir API isteği, istek üst bilgisinde bir taşıyıcı yetkilendirme belirteci içermelidir.
->
-> Belirteci şunları kullanarak edinebilirsiniz:
-> - [Uygulama kayıtları](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
-> - Tarayıcıda geliştirici konsolunu (F12) kullanarak Azure portal gidin. **Batch** , **istek üstbilgileri**altındaki kimlik doğrulama dizesinin örneklerinden birine bakın. Bu, model *yetkilendirmesi: taşıyıcı <token> *içinde olacaktır. Örnekte gösterildiği gibi bunu kopyalayın ve API çağra ekleyin.
-> - Azure REST belgeleri sitesine gidin. herhangi bir API üzerinde **deneyin** , taşıyıcı belirtecini KOPYALAYıN ve API çağra ekleyin.
-Çalışma alanınızı kalıcı olarak silmek için, [çalışma alanları-Rest]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) API çağrısını bir zorlama etiketiyle birlikte kullanın:
->
-> ```rst
-> DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
-> Authorization: Bearer eyJ0eXAiOiJKV1Qi….
-> ```
-WHERE ' eyJ0eXAiOiJKV1Qi... ' tam yetkilendirme belirtecini temsil eder.
+```rst
+DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
+Authorization: Bearer <token>
+```
+
+Alternatif olarak, Azure REST belgeleri sitesinden işlemi çalıştırabilirsiniz:
+1.  [Çalışma alanları – REST API Sil](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) ' e gidin ve **dene**' ye tıklayın. 
+2.  Kalıcı olarak silmek istediğiniz çalışma alanının ayrıntılarını girin
+3.  *True* değeri olan yeni bir parametre *zorla*
+4.  Değerin sağındaki ' + ' simgesine tıklayın. Bu işlem, istekteki URI 'ye *zorla = true* ekler
+5.  *Çalıştır* düğmesine tıklayın
+
+Yanıt 200 olmalıdır
 
 ## <a name="recover-workspace"></a>Çalışma alanını kurtar
 Bir Log Analytics çalışma alanını yanlışlıkla veya isteyerek sildiğinizde, hizmet, çalışma alanını herhangi bir işlem için erişilebilir hale getiren bir geçici silme durumuna koyar. Silinen çalışma alanının adı, geçici silme dönemi sırasında korunur ve yeni bir çalışma alanı oluşturmak için kullanılamaz. Geçici silme süresinden sonra, çalışma alanı kurtarılamaz, kalıcı silme için zamanlanır ve yeni bir çalışma alanı oluşturmak için kullanılabilir.
@@ -123,6 +112,13 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 Çalışma alanı ve tüm verileri kurtarma işleminden sonra geri getirilir. Çözüm ve bağlı hizmetler silindiği zaman çalışma alanından kalıcı olarak kaldırılmıştır ve çalışma alanını daha önce yapılandırılmış durumuna getirmek için yeniden yapılandırılması gerekir. İlişkili çözümler yeniden yüklenene ve şemaları çalışma alanına eklenene kadar, bazı veriler, çalışma alanı kurtarmasından sonra sorgu için kullanılamayabilir.
 
 > [!NOTE]
-> * [Azure Portal](https://portal.azure.com)çalışma alanı kurtarma desteklenmiyor. 
 > * Geçici silme dönemi sırasında çalışma alanının yeniden oluşturulması, bu çalışma alanı adının zaten kullanımda olduğunu belirten bir bildirim sağlar. 
-> 
+ 
+### <a name="troubleshooting"></a>Sorun giderme
+Bir çalışma alanını silmek için en az *Log Analytics katkıda bulunan* izinlerinizin olması gerekir.<br>
+Bir hata iletisi alırsanız, *Bu çalışma alanı adı zaten kullanımda* veya bir çalışma alanı oluştururken *çakışıyor* olabilir:
+* Çalışma alanı adı, kuruluşunuzdaki birisi veya diğer müşteri tarafından kullanılabilir değil.
+* Çalışma alanı son 14 gün içinde silindi ve bu ad, geçici silme dönemi için ayrılmış olarak tutuldu. Geçici silme işlemini geçersiz kılmak ve aynı ada sahip yeni bir çalışma alanı oluşturmak için çalışma alanınızı kalıcı olarak silmek üzere, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:<br>
+   1. Çalışma alanınızı [kurtarın](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) .
+   2. Çalışma alanınızı [kalıcı olarak silin](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
+   3. Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluşturun.

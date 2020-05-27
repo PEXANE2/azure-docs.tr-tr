@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 429a342fcc5dd69e1ae8d0be5611e908e216b2d1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 51afa118be75c7e9ea2cb6e394d27cc39a58de0b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659699"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849663"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
@@ -57,12 +57,13 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Özel bağlantı hizmeti** (kendi hizmetiniz)   |  Microsoft. Network/privateLinkServices       | empty |
 |**Azure SQL Veritabanı** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        | 
-|**Azure Depolama**  | Microsoft. Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Kuyruk (kuyruk, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (Web, web_secondary)        |
+|**Azure depolama**  | Microsoft. Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Kuyruk (kuyruk, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (Web, web_secondary)        |
 |**Azure Data Lake Storage 2. Nesil**  | Microsoft. Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Data Lake dosya sistemi Gen2 (DFS, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft. Azu, Smosdb/databaseAccounts    | SQL, MongoDB, Cassandra, Gremlin, tablo|
 |**PostgreSQL için Azure veritabanı-tek sunucu** | Microsoft. DBforPostgreSQL/sunucuları    | Postgressqlserver |
 |**MySQL için Azure Veritabanı** | Microsoft. Dbformyısql/sunucuları    | Te yapılandırılmış MySQLServer |
 |**MariaDB için Azure Veritabanı** | Microsoft. Dbformarıdb/sunucular    | mariadbServer |
+|**Azure IoT Hub** | Microsoft. Devices/IotHubs    | ıothub |
 |**Azure Key Vault** | Microsoft. Keykasası/kasa    | kasa |
 |**Azure Kubernetes hizmeti-Kubernetes API 'SI** | Microsoft. ContainerService/Managedkümeler    | managedCluster |
 |**Azure Search** | Microsoft. Search/searchService| searchService|  

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/11/2020
-ms.openlocfilehash: 0b2f67424589958d5d81e01c2efee525311ee33c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 05/26/2020
+ms.openlocfilehash: a03fcf5748eaa215aa90b70dbd11e788e8beb3e4
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836377"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860979"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell kullanarak Azure Izleyici 'de Log Analytics çalışma alanı oluşturma ve yapılandırma
 Bu makale, Azure Izleyici 'de bir Log Analytics çalışma alanı oluşturmayı ve yapılandırmayı gösteren iki kod örneği sunar.  
@@ -211,6 +211,13 @@ Yukarıdaki örnekte regexDelimiter, \\ yeni satır için "n" olarak tanımland�
 | `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> Burada + ya da a- <br> Burada zzzz zaman kayması | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` | | |
 | `yyyy-MM-ddTHH:mm:ss` <br> T, sabit bir harf T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
+## <a name="troubleshooting"></a>Sorun giderme
+Son 14 gün içinde silinen bir çalışma alanı oluşturduğunuzda ve [geçici silme durumunda](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior)işlem, çalışma alanı yapılandırmanıza bağlı olarak farklı bir sonuca sahip olabilir:
+1. Silinen çalışma alanında aynı çalışma alanı adı, kaynak grubu, abonelik ve bölge sağlarsanız, çalışma alanınız veri, yapılandırma ve bağlı aracılar dahil kurtarılacak.
+2. Aynı çalışma alanı adını, ancak farklı kaynak grubunu, aboneliği veya bölgeyi kullanıyorsanız, *' Workspace-Name ' çalışma alanı adı benzersiz değil*veya *Çakışma*olduğunda bir hata alırsınız. Geçici silme işlemini geçersiz kılmak ve çalışma alanınızı kalıcı olarak silmek ve aynı ada sahip yeni bir çalışma alanı oluşturmak için, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:
+   * Çalışma alanınızı [kurtarın](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
+   * Çalışma alanınızı [kalıcı olarak silme](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)
+   * Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluştur
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

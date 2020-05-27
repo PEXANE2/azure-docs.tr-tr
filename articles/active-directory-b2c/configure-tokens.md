@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a2b9cc0c69f0c559c9561a02de4192974ee7f521
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: dca235374ca20ef8a17e685706f952127d5ece2a
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926196"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869444"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçleri yapılandırma
 
@@ -29,7 +29,7 @@ Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bi
 
 Belirteç ömrünü herhangi bir Kullanıcı akışında yapılandırabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
@@ -54,7 +54,7 @@ Belirteç ömrünü herhangi bir Kullanıcı akışında yapılandırabilirsiniz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Erişim belirteçlerini kullanma](access-tokens.md)hakkında daha fazla bilgi edinin.
+[Erişim belirteçleri isteme](access-tokens.md)hakkında daha fazla bilgi edinin.
 
 
 

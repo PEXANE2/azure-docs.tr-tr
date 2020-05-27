@@ -1,24 +1,24 @@
 ---
 title: Müşteri tarafından yönetilen anahtar ile veri şifreleme-MySQL için Azure veritabanı
-description: Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi, bekleyen veri koruması için Kendi Anahtarını Getir (BYOK) sağlar. Ayrıca, kuruluşların anahtar ve veri yönetiminde görev ayrımı uygulamasına olanak tanır.
+description: Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi, bekleyen veri koruması için Kendi Anahtarını Getir (BYOK) sağlar. Kuruluşlar bu sayede anahtarların ve verilerin yönetiminde görev ayrımı yapabilir.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: a97fee619858aa024ff208b72d3b2594c30d2fd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 24b52042e037e998069550599ca006eded70d1c4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299133"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849747"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi
 
 > [!NOTE]
-> Şu anda bu özelliği kullanmak için erişim istemeniz gerekir. Bunu yapmak için, iletişim AskAzureDBforMySQL@service.microsoft.comkurun.
+> Şu anda bu özelliği kullanmak için erişim istemeniz gerekir. Bunu yapmak için, iletişim kurun AskAzureDBforMySQL@service.microsoft.com .
 
-MySQL için Azure veritabanı için müşteri tarafından yönetilen anahtarlarla veri şifreleme, bekleyen veri koruması için kendi anahtarınızı (BYOK) getirmenize olanak sağlar. Ayrıca, kuruluşların anahtar ve veri yönetiminde görev ayrımı uygulamasına olanak tanır. Müşteri tarafından yönetilen şifreleme ile, bir anahtarın yaşam döngüsü, anahtar kullanım izinleri ve anahtarlar üzerindeki işlemlerin denetimi ile ilgili tam bir denetim ile sorumludur.
+MySQL için Azure Veritabanı'nda verilerin müşteri tarafından yönetilen anahtarlarla şifrelenmesini sağlayarak bekleyen veriler için kendi anahtarını getir (KAG) yaklaşımından faydalanabilirsiniz. Kuruluşlar bu sayede anahtarların ve verilerin yönetiminde görev ayrımı yapabilir. Müşteri tarafından yönetilen şifreleme senaryosunda anahtarın yaşam döngüsü, anahtar kullanım izinleri ve anahtar işlemlerinin denetimi konusunda sorumlu ve tam denetim sahibi olursunuz.
 
 MySQL için Azure veritabanı 'nda müşteri tarafından yönetilen anahtarlarla veri şifreleme, sunucu düzeyinde ayarlanır. Belirli bir sunucu için, anahtar şifreleme anahtarı (KEK) olarak adlandırılan ve hizmet tarafından kullanılan veri şifreleme anahtarını (DEK) şifrelemek için kullanılan müşteri tarafından yönetilen bir anahtar kullanılır. KEK, müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) örneğinde depolanan bir asimetrik anahtardır. Anahtar şifreleme anahtarı (KEK) ve veri şifreleme anahtarı (DEK), bu makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır.
 
@@ -45,7 +45,7 @@ MySQL için Azure veritabanı veri şifrelemesi aşağıdaki avantajları sağla
 
 KEKs ile şifrelenen DEKs 'ler ayrı olarak depolanır. Yalnızca KEK erişimi olan bir varlık bu DEKs 'in şifresini çözebilir. Daha fazla bilgi için bkz. [rest 'de şifrelemede güvenlik](../security/fundamentals/encryption-atrest.md).
 
-## <a name="how-data-encryption-with-a-customer-managed-key-works"></a>Müşteri tarafından yönetilen bir anahtarla veri şifrelemenin çalışması
+## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>Müşteri tarafından yönetilen anahtar çalışma ile veri şifreleme
 
 ![Kendi Anahtarını Getir bir genel bakış gösteren diyagram](media/concepts-data-access-and-security-data-encryption/mysqloverview.png)
 
@@ -64,17 +64,15 @@ Sunucu, anahtar kasasında depolanan müşteri tarafından yönetilen anahtarı 
 Key Vault yapılandırmaya yönelik gereksinimler aşağıda verilmiştir:
 
 * MySQL için Azure veritabanı Key Vault ve aynı Azure Active Directory (Azure AD) kiracısına ait olmalıdır. Çapraz kiracı Key Vault ve sunucu etkileşimleri desteklenmez. Kaynakları taşımak daha sonra veri şifrelemeyi yeniden yapılandırmanız gerekir.
-* Yanlışlıkla bir anahtar (veya Key Vault) silme işlemi gerçekleştiğinde, anahtar kasasında geçici silme özelliğini etkinleştirmeniz gerekir. Kullanıcı bu sırada kurtarmadığı veya silmediği takdirde, geçici olarak silinen kaynaklar 90 gün boyunca tutulur. Kurtarma ve Temizleme eylemlerinin Key Vault erişim ilkesiyle ilişkili kendi izinleri vardır. Geçici silme özelliği varsayılan olarak kapalıdır, ancak PowerShell veya Azure CLı aracılığıyla etkinleştirebilir (Azure portal aracılığıyla etkinleştirebileceğinizi unutmayın).
+* Yanlışlıkla bir anahtar (veya Key Vault) silme işlemi gerçekleşdiğinde, anahtar kasasındaki geçici silme özelliğini etkinleştirin. Kullanıcı bu sırada kurtarmadığı veya silmediği takdirde, geçici olarak silinen kaynaklar 90 gün boyunca tutulur. Kurtarma ve Temizleme eylemlerinin Key Vault erişim ilkesiyle ilişkili kendi izinleri vardır. Geçici silme özelliği varsayılan olarak kapalıdır, ancak PowerShell veya Azure CLı aracılığıyla etkinleştirebilir (Azure portal aracılığıyla etkinleştirebileceğinizi unutmayın).
 * MySQL için Azure veritabanı 'na, benzersiz yönetilen kimliğini kullanarak Get, wrapKey ve unwrapKey izinleriyle anahtar kasasına erişim izni verin. Azure portal, MySQL üzerinde veri şifrelemesi etkinleştirildiğinde benzersiz kimlik otomatik olarak oluşturulur. Azure portal kullanırken, ayrıntılı, adım adım yönergeler için bkz. [MySQL için veri şifrelemeyi yapılandırma](howto-data-encryption-portal.md) .
-
-* Key Vault bir güvenlik duvarı kullanırken, **Güvenilen Microsoft hizmetlerinin güvenlik duvarını atlamasına Izin ver**seçeneğini etkinleştirmeniz gerekir.
 
 Aşağıda, müşteri tarafından yönetilen anahtarı yapılandırmaya yönelik gereksinimler verilmiştir:
 
-* DEK şifrelemek için kullanılan müşteri tarafından yönetilen anahtar yalnızca asimetrik, RSA 2028 olabilir.
+* DEK şifrelemek için kullanılan müşteri tarafından yönetilen anahtar yalnızca asimetrik, RSA 2048 olabilir.
 * Anahtar etkinleştirme tarihi (ayarlandıysa), geçmişteki bir tarih ve saat olmalıdır. Sona erme tarihi (ayarlandıysa) gelecekteki bir tarih ve saat olmalıdır.
 * Anahtar *etkin* durumda olmalıdır.
-* Anahtar kasasında mevcut bir anahtarı içeri aktarıyorsanız, bunu desteklenen dosya biçimlerinde (`.pfx`, `.byok`, `.backup`) sağladığınızdan emin olun.
+* Anahtar kasasında mevcut bir anahtarı içeri aktarıyorsanız, bunu desteklenen dosya biçimlerinde ( `.pfx` ,,) sağladığınızdan emin olun `.byok` `.backup` .
 
 ## <a name="recommendations"></a>Öneriler
 
@@ -82,8 +80,10 @@ Müşteri tarafından yönetilen bir anahtar kullanarak veri şifrelemeyi kullan
 
 * Bu kritik kaynağı kimlerin silebilen ve yanlışlıkla veya yetkisiz silme işlemini engelleyebilecek kişileri denetlemek için Key Vault bir kaynak kilidi ayarlayın.
 * Tüm şifreleme anahtarlarında denetim ve raporlamayı etkinleştirin. Key Vault, diğer güvenlik bilgilerine ve olay yönetim araçlarına eklemek kolay olan Günlükler sağlar. Azure Izleyici Log Analytics, zaten tümleştirilmiş bir hizmetin bir örneğidir.
+* MySQL için Key Vault ve Azure veritabanı 'nın aynı bölgede bulunduğundan emin olun ve bu DEK sarmalama için daha hızlı bir erişim sağlayın ve sarmalama işlemlerini geri sarın.
+* Azure Keykasasını yalnızca **Özel uç nokta ve seçili ağlarda** kilitleyin ve yalnızca *Güvenilen Microsoft* hizmetlerinin kaynakları güvenli hale getirmeye izin verin.
 
-* DEK sarmalama ve sarmalama işlemlerine daha hızlı erişim sağlamak için MySQL için Key Vault ve Azure veritabanı 'nın aynı bölgede bulunduğundan emin olun.
+    ![Güvenilen-hizmet-AKV](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
 
 Müşteri tarafından yönetilen anahtarı yapılandırmaya yönelik öneriler aşağıda verilmiştir:
 
@@ -93,7 +93,13 @@ Müşteri tarafından yönetilen anahtarı yapılandırmaya yönelik öneriler a
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>Erişilemeyen müşteri tarafından yönetilen anahtar koşulu
 
-Key Vault, müşteri tarafından yönetilen bir anahtarla veri şifrelemeyi yapılandırdığınızda, sunucunun çevrimiçi kalması için bu anahtara sürekli erişim gerekir. Sunucu, Key Vault müşterinin yönettiği anahtara erişimi kaybederse, sunucu 10 dakikalık bir süre içinde tüm bağlantıları reddetmeye başlar. Sunucu karşılık gelen bir hata iletisi yayınlar ve sunucu durumunu *erişilemez*olarak değiştirir. Bu durumdaki bir veritabanında izin verilen tek eylem, silme işlemini siliyor.
+Key Vault, müşteri tarafından yönetilen bir anahtarla veri şifrelemeyi yapılandırdığınızda, sunucunun çevrimiçi kalması için bu anahtara sürekli erişim gerekir. Sunucu, Key Vault müşterinin yönettiği anahtara erişimi kaybederse, sunucu 10 dakikalık bir süre içinde tüm bağlantıları reddetmeye başlar. Sunucu karşılık gelen bir hata iletisi yayınlar ve sunucu durumunu *erişilemez*olarak değiştirir. Sunucunun bu duruma ulaşmasının bazı nedenleri şunlardır:
+
+* Veri şifrelemesi etkin olan MySQL için Azure veritabanınız için zaman Içinde geri yükleme sunucusunda bir nokta oluşturuyorsanız, yeni oluşturulan sunucu *erişilemez* durumda olur. [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) veya [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)aracılığıyla bu hatayı çözebilirsiniz.
+* Veri şifrelemesi etkin olan MySQL için Azure veritabanı için bir okuma çoğaltması oluşturuyorsanız, çoğaltma sunucusu *erişilemez* durumda olur. [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) veya [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)aracılığıyla bu hatayı çözebilirsiniz.
+* Keykasasını silerseniz, MySQL için Azure veritabanı anahtara erişemez ve *erişilemez* duruma geçer. [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) kurtarın ve sunucuyu *kullanılabilir*hale getirmek için veri şifrelemeyi yeniden doğrulayın.
+* Anahtar kasasından anahtarı sileriz, MySQL için Azure veritabanı anahtara erişemez ve *erişilemez* duruma geçer. [Anahtarı](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) kurtarın ve sunucuyu *kullanılabilir*hale getirmek için veri şifrelemeyi yeniden doğrulayın.
+* Azure Keykasasında depolanan anahtarın süresi dolarsa, anahtar geçersiz hale gelir ve MySQL için Azure veritabanı *erişilemez* duruma geçer. [CLI](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-set-attributes) kullanarak anahtar sona erme tarihini genişletin ve ardından sunucuyu *kullanılabilir*hale getirmek için veri şifrelemesini yeniden doğrulayın.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Key Vault 'den yanlışlıkla anahtar erişimi iptali
 
@@ -103,7 +109,6 @@ Key Vault için yeterli erişim haklarına sahip birinin, yanlışlıkla anahtar
 * Anahtar siliniyor.
 * Anahtar Kasası siliniyor.
 * Anahtar kasasının güvenlik duvarı kurallarını değiştirme.
-
 * Azure AD 'de sunucunun yönetilen kimliğini silme.
 
 ## <a name="monitor-the-customer-managed-key-in-key-vault"></a>Key Vault 'de müşteri tarafından yönetilen anahtarı izleyin
@@ -113,7 +118,7 @@ Veritabanı durumunu izlemek ve saydam veri şifreleme koruyucusu erişiminin ka
 * [Azure Kaynak durumu](../service-health/resource-health-overview.md): müşteri anahtarına erişimi kesilen erişilemeyen bir veritabanı, veritabanına ilk bağlantı reddedildikten sonra "erişilemez" olarak gösterilir.
 * [Etkinlik günlüğü](../service-health/alerts-activity-log-service-notifications.md): müşteri tarafından yönetilen Key Vault müşteri anahtarına erişim başarısız olursa, girdiler etkinlik günlüğüne eklenir. Bu olaylar için uyarı oluşturursanız, erişimi mümkün olan en kısa sürede yeniden yükleyebilirsiniz.
 
-* [Eylem grupları](../azure-monitor/platform/action-groups.md): tercihlerinizi temel alarak size bildirim ve uyarı göndermek için bunları tanımlayın.
+* [Eylem grupları](../azure-monitor/platform/action-groups.md): tercihlerinize göre size bildirim ve uyarı göndermek için bu grupları tanımlayın.
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Key Vault bir müşterinin yönetilen anahtarıyla geri yükleme ve çoğaltma
 
@@ -123,7 +128,7 @@ Geri yükleme veya okuma çoğaltması oluşturma sırasında müşteri tarafın
 
 * MySQL için ana Azure veritabanından geri yükleme veya okuma çoğaltması oluşturma sürecini başlatın.
 * Yeni oluşturulan sunucuyu (geri yüklenmiş/çoğaltma) erişilemez durumda tutun, çünkü benzersiz kimliği henüz Key Vault izinler olarak verilmemiştir.
-* Geri yüklenen/çoğaltma sunucusunda, veri şifreleme ayarları 'nda müşteri tarafından yönetilen anahtarı yeniden doğrulayın. Bu, yeni oluşturulan sunucuya Key Vault ' de depolanan anahtara sarmalama ve sarmalama izinleri verilmesini sağlar.
+* Geri yüklenen/çoğaltma sunucusunda, yeni oluşturulan sunucuya Key Vault ' de depolanan anahtara sarmalama ve sarmalama izinleri verilmesini sağlamak için veri şifreleme ayarlarındaki müşteri tarafından yönetilen anahtarı yeniden doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,15 +1,15 @@
 ---
 title: Azure blok zinciri çalışma ekranı önizlemesine genel bakış
 description: Azure blok zinciri çalışma ekranı önizlemesine ve özelliklerine genel bakış.
-ms.date: 09/05/2019
+ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 65eea1b87daf31908d96e95bff0c12b72e4791c6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9f2eafb892be4134d4fb178235249e5640544459
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835912"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850037"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Azure Blockchain Workbench nedir?
 
@@ -55,7 +55,7 @@ Azure blok zinciri haberleri için Azure blok zinciri [blogu](https://azure.micr
 
 Microsoft mühendisleri ve Azure blok zinciri topluluk uzmanlarıyla birlikte katılın.
 
-* [Microsoft Q&Azure blok zinciri için soru sayfası](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
+* [Microsoft Q&Azure blok zinciri için soru sayfası çalışma ekranı](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)
 * [Microsoft Teknoloji Topluluğu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 

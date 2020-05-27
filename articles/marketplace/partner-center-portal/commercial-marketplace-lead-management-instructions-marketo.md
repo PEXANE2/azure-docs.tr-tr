@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f1db7cc34a77c342a3d11e4b509d45a745a200db
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789887"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849195"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Ticari Market müşteri adaylarını yönetmek için Marketo kullanın
 
@@ -59,8 +59,8 @@ Bu makalede, Microsoft AppSource ve Azure Marketi 'ndeki tekliflerinizin satış
 
     Bu değerleri anlamak için başka bir yol:
 
-    - Sunucu KIMLIĞI, Marketo örneğinizin URL 'sinde bulunur (örneğin, `serverID.marketo.com`).
-    - Daha fazla **hesap kimliği** alanındaki **yönetici** > **kaldırma menünüzün** veya Marketo REST API ana bilgisayar alt etki alanınızın ilk kısmından, aboneliğinizin daha ucuz bir kimliğini alın: `https://{Munchkin ID}.mktorest.com`.
+    - Sunucu KIMLIĞI, Marketo örneğinizin URL 'sinde bulunur (örneğin,) `serverID.marketo.com` .
+    - **Admin**  >  Daha fazla **hesap kimliği** alanındaki yönetici kaldırma menünüzün veya Marketo REST API ana bilgisayar alt etki alanınızın ilk kısmından, aboneliğinizin daha**ucuz bir** kimliğini alın: `https://{Munchkin ID}.mktorest.com` .
     - Form KIMLIĞI, Market 'ten gelen müşteri adaylarını yönlendirmek için 7. adımda oluşturduğunuz ekleme kodu formunun KIMLIĞIDIR.
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Teklifinizi müşteri adaylarını Marketo 'ya gönderecek şekilde yapılandırma
@@ -71,9 +71,9 @@ Yayımlama portalında teklifiniz için lider yönetimi bilgilerini yapılandır
 
 1. Teklifinizi seçin ve **teklif kurulumu** sekmesine gidin.
 
-1. **Müşteri adayı yönetimi** bölümünde **Bağlan**' ı seçin. 
+1. **Müşteri müşteri adayları** bölümünde **Bağlan**' ı seçin.
 
-    ![Lider yönetimi bölümü Bağlan düğmesi](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-marketo/customer-leads.png" alt-text="Müşteri liderleri":::
 
 1. **Bağlantı ayrıntıları** açılır penceresinde, **müşteri adayı hedefi**için **Marketo** ' yı seçin.
 

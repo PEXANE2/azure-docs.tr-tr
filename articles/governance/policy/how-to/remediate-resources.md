@@ -3,12 +3,12 @@ title: Uyumlu olmayan kaynakları düzeltme
 description: Bu kılavuzda, Azure Ilkesindeki ilkelerle uyumlu olmayan kaynakların düzeltilme adımları gösterilmektedir.
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: f4846b6eb1ea03c6706a610cab16ec376d19b060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acdb067e888ecbe68e3221944568b202f2510c41
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195239"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849969"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Ilkesiyle uyumlu olmayan kaynakları düzelt
 
@@ -72,11 +72,11 @@ $resourceGroup = Get-AzResourceGroup -Name 'MyResourceGroup'
 $assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
 ```
 
-Değişken `$assignment` , bir ilke ataması oluştururken döndürülen standart değerlerle birlikte, yönetilen KIMLIğIN asıl kimliğini de içerir. Üzerinden `$assignment.Identity.PrincipalId`erişilebilir.
+`$assignment`Değişken, bir ilke ataması oluştururken döndürülen standart değerlerle birlikte, yönetilen kimliğin asıl kimliğini de içerir. Üzerinden erişilebilir `$assignment.Identity.PrincipalId` .
 
 ### <a name="grant-defined-roles-with-powershell"></a>PowerShell ile tanımlı roller verme
 
-Yeni yönetilen kimliğin, gerekli rollere verilebilmesi için Azure Active Directory aracılığıyla çoğaltmayı tamamlaması gerekir. Çoğaltma tamamlandıktan sonra aşağıdaki örnek, `$policyDef` **roledefinitionıds** için içindeki ilke tanımını yineler ve yeni yönetilen kimliğe roller vermek Için [New-azroleatama](/powershell/module/az.resources/new-azroleassignment) kullanır.
+Yeni yönetilen kimliğin, gerekli rollere verilebilmesi için Azure Active Directory aracılığıyla çoğaltmayı tamamlaması gerekir. Çoğaltma tamamlandıktan sonra aşağıdaki örnek, `$policyDef` **Roledefinitionıds** için içindeki ilke tanımını yineler ve yeni yönetilen kimliğe roller vermek Için [New-azroleatama](/powershell/module/az.resources/new-azroleassignment) kullanır.
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -109,7 +109,7 @@ Atamanın yönetilen kimliğine bir rol eklemek için aşağıdaki adımları iz
    /subscriptions/{subscriptionId}/resourceGroups/PolicyTarget/providers/Microsoft.Authorization/policyAssignments/2802056bfc094dfb95d4d7a5
    ```
 
-   Yönetilen kimliğin adı, `2802056bfc094dfb95d4d7a5` atama kaynak kimliğinin bu örnekteki son bölümüdür. Atama kaynak KIMLIĞININ bu kısmını kopyalayın.
+   Yönetilen kimliğin adı, atama kaynak KIMLIĞININ `2802056bfc094dfb95d4d7a5` Bu örnekteki son bölümüdür. Atama kaynak KIMLIĞININ bu kısmını kopyalayın.
 
 1. Rol tanımı el ile eklenmiş olması gereken kaynağa veya kaynak üst kapsayıcısına (kaynak grubu, abonelik, yönetim grubu) gidin.
 
@@ -157,7 +157,7 @@ Bir **Düzeltme görevi** aracılığıyla dağıtılan kaynaklar, ilke uyumlulu
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Azure CLı aracılığıyla bir düzeltme görevi oluşturma
 
-Azure CLı ile bir **Düzeltme görevi** oluşturmak için `az policy remediation` komutlarını kullanın. Abonelik `{subscriptionId}` kimliğinizle ve `{myAssignmentId}` **deployıfnotexists** Ile değiştirin ya da ilke atama kimliğini **değiştirin** .
+Azure CLı ile bir **Düzeltme görevi** oluşturmak için `az policy remediation` komutlarını kullanın. `{subscriptionId}`ABONELIK kimliğinizle ve `{myAssignmentId}` **Deployıfnotexists** ile değiştirin ya da ilke atama kimliğini **değiştirin** .
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -170,7 +170,7 @@ Diğer düzeltme komutları ve örnekleri için, [az Policy düzeltme](/cli/azur
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Azure PowerShell aracılığıyla düzeltme görevi oluşturma
 
-Azure PowerShell bir **Düzeltme görevi** oluşturmak için `Start-AzPolicyRemediation` komutları kullanın. Abonelik `{subscriptionId}` kimliğinizle ve `{myAssignmentId}` **deployıfnotexists** Ile değiştirin ya da ilke atama kimliğini **değiştirin** .
+Azure PowerShell bir **Düzeltme görevi** oluşturmak için `Start-AzPolicyRemediation` komutları kullanın. `{subscriptionId}`ABONELIK kimliğinizle ve `{myAssignmentId}` **Deployıfnotexists** ile değiştirin ya da ilke atama kimliğini **değiştirin** .
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -180,6 +180,10 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 ```
 
 Diğer düzeltme cmdlet 'leri ve örnekleri için bkz. [az. Policınsıghts](/powershell/module/az.policyinsights/#policy_insights) modülü.
+
+### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>Azure portal ilke ataması sırasında bir düzeltme görevi oluşturma
+
+Bir düzeltme görevi oluşturmanın kolaylaştırılmış bir yolu, bunu ilke ataması sırasında Azure portal. Atanacak ilke tanımı bir **Deployifnotexists** veya bir **değişiklik** efekti ise, **Düzeltme** sekmesindeki sihirbaz bir _remeisti görevi oluşturma_ seçeneği sunar. Bu seçenek belirlendiğinde, ilke atamasıyla aynı anda bir remehiri görevi oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

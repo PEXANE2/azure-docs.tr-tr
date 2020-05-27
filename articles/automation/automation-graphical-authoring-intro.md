@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6f7335b92d7c26b33f9b156d434d895a1bca40c2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835402"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849765"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda grafik runbook 'ları yazma
 
@@ -268,7 +268,7 @@ Grafik yazma, [runbook 'un çıkışına](https://docs.microsoft.com/azure/autom
 
 ## <a name="work-with-powershell-expressions"></a>PowerShell ifadelerle çalışma
 
-Grafik yazmanın avantajlarından biri, en az PowerShell bilgisine sahip bir runbook oluşturmanıza olanak sağlar. Şu anda, bazı [parametre değerlerini](#use-activities) doldurmak ve [bağlantı koşullarını](#use-links-for-workflow)ayarlamak için bir PowerShell 'i bilmeniz gerekir. Bu bölüm, PowerShell ifadelerine hızlı bir giriş sağlar. PowerShell 'in tüm ayrıntıları, [Windows PowerShell Ile komut dosyası oluşturma](https://technet.microsoft.com/library/bb978526.aspx)sırasında kullanılabilir.
+Grafik yazmanın avantajlarından biri, en az PowerShell bilgisine sahip bir runbook oluşturmanıza olanak sağlar. Şu anda, bazı [parametre değerlerini](#use-activities) doldurmak ve [bağlantı koşullarını](#use-links-for-workflow)ayarlamak için bir PowerShell 'i bilmeniz gerekir. Bu bölüm, PowerShell ifadelerine hızlı bir giriş sağlar. PowerShell 'in tüm ayrıntıları, [Windows PowerShell Ile komut dosyası oluşturma](https://docs.microsoft.com/powershell/scripting/overview)sırasında kullanılabilir.
 
 ### <a name="use-a-powershell-expression-as-a-data-source"></a>Veri kaynağı olarak bir PowerShell ifadesi kullanma
 

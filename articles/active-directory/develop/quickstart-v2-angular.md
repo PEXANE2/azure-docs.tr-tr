@@ -12,17 +12,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 4b6a2481c18314a44470a020033ffdc4ba1d7259
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81380025"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860061"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Hızlı başlangıç: angular tek sayfalı uygulamada Kullanıcı oturumu açma ve erişim belirteci edinme
-
-> [!IMPORTANT]
-> Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma (GA) önce değişebilir.
 
 Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel Microsoft hesapları, iş hesapları veya okul hesapları olan kullanıcıların oturumunu nasıl imzalayabileceğinizi öğrenmek için bir kod örneği kullanırsınız. Angular SPA, Microsoft Graph API 'sini veya herhangi bir Web API 'sini çağırmak için bir erişim belirteci de alabilir.
 
@@ -38,7 +35,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel 
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Seçenek 1 (Express): uygulamayı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğini indirin
 >
-> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. [Azure portalında](https://portal.azure.com) oturum açın.
 > 1. Hesabınızın birden fazla kiracıya erişimi varsa, sağ üst köşedeki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure Active Directory (Azure AD) kiracısına ayarlayın.
 > 1. Yeni [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) bölmesini Azure Portal açın.
 > 1. Uygulamanız için bir ad girin ve ardından **Kaydet**' i seçin.
@@ -48,10 +45,10 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel 
 >
 > #### <a name="step-1-register-the-application"></a>1. Adım: uygulamayı kaydetme
 >
-> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. [Azure portalında](https://portal.azure.com) oturum açın.
 > 1. Hesabınızın birden fazla kiracıya erişimi varsa, sağ üst köşedeki hesabınızı seçin ve Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 > 1. Azure portal [tek sayfalı bir uygulamayı kaydetmek](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) için yönergeleri izleyin.
-> 1. Uygulama kaydlarınızın **kimlik doğrulama** bölmesine yeni bir platform ekleyin ve yenıden yönlendirme URI 'sini kaydedin: `http://localhost:4200/`.
+> 1. Uygulama kaydlarınızın **kimlik doğrulama** bölmesine yeni bir platform ekleyin ve yenıden yönlendirme URI 'sini kaydedin: `http://localhost:4200/` .
 > 1. Bu hızlı başlangıç, [örtük verme akışını](v2-oauth2-implicit-grant-flow.md)kullanır. **Kimlik belirteçleri** ve **erişim belirteçleri**için **örtülü izin** ayarlarını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulama kullanıcılar üzerinde oturum açar ve bir API çağırır.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -73,7 +70,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel 
 > [!div renderon="docs"]
 >#### <a name="step-3-configure-the-javascript-app"></a>3. Adım: JavaScript uygulamasını yapılandırma
 >
-> *Src/App* klasöründe *app. Module. TS* öğesini düzenleyin ve altındaki `clientId` `authority` `MsalModule.forRoot`ve değerlerini ayarlayın.
+> *Src/App* klasöründe *app. Module. TS* öğesini düzenleyin ve `clientId` `authority` altındaki ve değerlerini ayarlayın `MsalModule.forRoot` .
 >
 >```javascript
 >MsalModule.forRoot({
@@ -102,9 +99,9 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel 
 >|Değer adı|Açıklama|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Uygulama kaydlarınızın **genel bakış** sayfasında bu, **uygulamanızın (istemci) kimlik** değeridir. |
->|Enter_the_Cloud_Instance_Id_Here|Bu, Azure bulutunun örneğidir. Ana veya küresel Azure bulutu için girin **https://login.microsoftonline.com**. Ulusal bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
+>|Enter_the_Cloud_Instance_Id_Here|Bu, Azure bulutunun örneğidir. Ana veya küresel Azure bulutu için girin **https://login.microsoftonline.com** . Ulusal bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
 >|Enter_the_Tenant_Info_Here| Aşağıdaki seçeneklerden birine ayarlayın: uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu değeri dizin (KIRACı) kimliği veya kiracı adı (örneğin, **contoso.Microsoft.com**) ile değiştirin. Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri **kuruluşlar**ile değiştirin. Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri **ortak**ile değiştirin. *Yalnızca kişisel Microsoft hesaplarına*yönelik desteği kısıtlamak için bu değeri **tüketicilerle**değiştirin. |
->|Enter_the_Redirect_Uri_Here|İle **http://localhost:4200**değiştirin.|
+>|Enter_the_Redirect_Uri_Here|İle değiştirin **http://localhost:4200** .|
 >|Önbellekelocation  | Seçim Kimlik doğrulama durumu için tarayıcı depolamayı ayarlayın. Varsayılan değer **sessionStorage**' dır.   |
 >|Storeauthstateıncookie  | Seçim Kimlik doğrulama isteği durumunu depolayan kitaplığı belirler. Tarayıcı tanımlama bilgilerinde kimlik doğrulama akışlarını doğrulamak için bu durum gereklidir. Bu tanımlama bilgisi, Internet Explorer ve Edge 'in bu iki tarayıcıyı kapsayacak şekilde ayarlanır. Daha fazla ayrıntı için bkz. [bilinen sorunlar](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
 > > [!TIP]
@@ -129,7 +126,7 @@ Node. js kullanıyorsanız:
    npm start
    ```
 
-1. Öğesine **http://localhost:4200/** gidin.
+1. Öğesine gidin **http://localhost:4200/** .
 1. **Oturum aç**' ı seçin.
 1. Microsoft Graph çağırmak için **profil** ' i seçin.
 

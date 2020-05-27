@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a079f42f63e232c21a52bd108b34c3b022dcee5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176099"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869728"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -60,7 +60,7 @@ Azure Dosya Eşitleme dağıttığınızda şunları yapmanızı öneririz:
 - Azure dosya paylaşımları dağıtımında bir depolama hesabının ıOPS kısıtlamalarına dikkat edin. İdeal olarak, 1:1 dosya paylaşımlarını depolama hesaplarıyla eşlersiniz, ancak bu, hem kuruluşunuzdan hem de Azure 'dan çeşitli sınırlar ve kısıtlamalar nedeniyle her zaman mümkün olmayabilir. Tek bir depolama hesabında yalnızca bir dosya paylaşımının dağıtılması mümkün olmadığında, en son hangi Paylaşımların etkin olacağını ve en yoğun dosya paylaşımlarının aynı depolama hesabına birlikte yerleştirmemesini sağlamak için hangi paylaşımların daha az etkin olacağını düşünün.
 
 ## <a name="windows-file-server-considerations"></a>Windows dosya sunucusu konuları
-Windows Server 'da eşitleme özelliğini etkinleştirmek için, indirilebilir Azure Dosya Eşitleme aracısını yüklemelisiniz. Azure Dosya Eşitleme Aracısı iki ana bileşen sağlar: `FileSyncSvc.exe`, sunucu uç noktalarında değişiklikleri izlemekten sorumlu olan ve eşitleme oturumlarını başlatan ve `StorageSync.sys`bulut katmanlaması ve hızlı olağanüstü durum kurtarmayı sağlayan bir dosya sistemi filtresi.  
+Windows Server 'da eşitleme özelliğini etkinleştirmek için, indirilebilir Azure Dosya Eşitleme aracısını yüklemelisiniz. Azure Dosya Eşitleme Aracısı iki ana bileşen sağlar: `FileSyncSvc.exe` , sunucu uç noktalarında değişiklikleri izlemekten sorumlu olan ve eşitleme oturumlarını başlatan ve `StorageSync.sys` bulut katmanlaması ve hızlı olağanüstü durum kurtarmayı sağlayan bir dosya sistemi filtresi.  
 
 ### <a name="operating-system-requirements"></a>İşletim sistemi gereksinimleri
 Azure Dosya Eşitleme, Windows Server 'ın aşağıdaki sürümleriyle desteklenir:
@@ -275,7 +275,7 @@ Azure Dosya Eşitleme, NTFS şifreli dosya sistemi (NTFS EFS) veya dosya sistemi
 ### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
 
 > [!NOTE]
-> Azure Dosya Eşitleme hizmeti, Ağustos 2020 ' de TLS 1.0 ve 1,1 desteğini kaldırır. Desteklenen tüm Azure Dosya Eşitleme Aracısı sürümleri zaten TLS 1.2 'yi varsayılan olarak kullanıyor. TLS 1.2 sunucunuzda devre dışı bırakılmışsa veya bir ara sunucu kullanılıyorsa TLS 'nin önceki bir sürümünün kullanılması gerçekleşebilir. Ara sunucu kullanıyorsanız, ara sunucu yapılandırmasını kontrol etmenizi öneririz. 5/1/2020 sonra eklenen Azure Dosya Eşitleme hizmet bölgeleri, yalnızca TLS 1.2 'ı ve TLS 1.0 desteğini destekler ve 1,1 2020 Ağustos 'taki mevcut bölgelerden kaldırılır.  Daha fazla bilgi için bkz. [sorun giderme kılavuzu](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync).
+> Azure Dosya Eşitleme hizmeti, 1 Ağustos 2020 tarihinde TLS 1.0 ve 1,1 desteğini kaldırır. Desteklenen tüm Azure Dosya Eşitleme Aracısı sürümleri zaten TLS 1.2 'yi varsayılan olarak kullanıyor. TLS 1.2 sunucunuzda devre dışı bırakılmışsa veya bir ara sunucu kullanılıyorsa TLS 'nin önceki bir sürümünün kullanılması gerçekleşebilir. Ara sunucu kullanıyorsanız, ara sunucu yapılandırmasını kontrol etmenizi öneririz. 5/1/2020 sonra eklenen Azure Dosya Eşitleme hizmet bölgeleri, yalnızca TLS 1.2 'ı ve TLS 1.0 desteğini destekler ve 1,1, 1 Ağustos, 2020 tarihinde mevcut bölgelerden kaldırılır.  Daha fazla bilgi için bkz. [sorun giderme kılavuzu](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync).
 
 Azure Dosya Eşitleme Aracısı, her ikisi de 443 bağlantı noktası üzerinden HTTPS kullanan Azure Dosya Eşitleme REST protokolünü ve en iyi dosya protokolünü kullanarak depolama eşitleme hizmetiniz ve Azure dosya paylaşımınızla iletişim kurar. Azure Dosya Eşitleme, HTTP üzerinden şifrelenmemiş istekler göndermez. 
 
@@ -354,7 +354,7 @@ Mevcut bir Windows dosya sunucunuz varsa, verileri yeni bir sunucuya taşımaya 
 
 - Eski dosya paylaşımınız ve yeni dosya paylaşımınız için sunucu uç noktaları oluşturun ve Azure Dosya Eşitleme sunucu uç noktaları arasında verileri eşitlemeye izin verin. Bu yaklaşımın avantajı, Azure Dosya Eşitleme bulut katmanlama kullandığından, yeni dosya sunucunuzdaki depolamanın fazla bir şekilde abone olmayı çok kolay hale getiriyor. Hazırsanız, yeni sunucudaki dosya paylaşımında son kullanıcıları kesebilir ve eski dosya paylaşımının sunucu uç noktasını kaldırabilirsiniz.
 
-- Yalnızca yeni dosya sunucusunda bir sunucu uç noktası oluşturun ve kullanarak `robocopy`verileri eski dosya paylaşımından içine kopyalayın. Yeni sunucunuzdaki dosya paylaşımlarının topolojisine (her birimde sahip olduğunuz paylaşım sayısı, her birimin ne kadar boş olduğu vb.) bağlı olarak, eski sunucunuzdaki şirket içi veri merkezinizdeki yeni sunucunuza, verileri Azure 'a taşıyaAzure dosya eşitleme bileceğinden daha hızlı işlem `robocopy` yapması beklendiğinden ek depolama sağlamanız gerekebilir.
+- Yalnızca yeni dosya sunucusunda bir sunucu uç noktası oluşturun ve kullanarak verileri eski dosya paylaşımından içine kopyalayın `robocopy` . Yeni sunucunuzdaki dosya paylaşımlarının topolojisine (her birimde sahip olduğunuz paylaşım sayısı, her birimin ne kadar boş olduğu vb.) bağlı olarak, `robocopy` eski sunucunuzdaki şirket içi veri merkezinizdeki yeni sunucunuza, verileri Azure 'a taşıyaAzure Dosya Eşitleme bileceğinden daha hızlı işlem yapması beklendiğinden ek depolama sağlamanız gerekebilir.
 
 Ayrıca, verileri bir Azure Dosya Eşitleme dağıtımına geçirmek için Data Box kullanmak da mümkündür. Çoğu zaman, müşteriler verileri almak için Data Box kullanmak istediklerinde, bunların dağıtım hızını artıracağından veya kısıtlanmış bant genişliği senaryolarında yardımcı olacağı için bu şekilde yapılır. Azure Dosya Eşitleme dağıtımınıza verileri almak için bir Data Box kullanmanın, bant genişliği kullanımını düşürmesi doğru olsa da, yukarıda açıklanan yöntemlerden biri aracılığıyla çevrimiçi bir veri yüklemesi yapmak için büyük olasılıkla daha hızlı bir hale gelir. Azure Dosya Eşitleme dağıtımınıza verileri almak için Data Box kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure Data Box ile verileri Azure dosya eşitleme 'A geçirme](storage-sync-offline-data-transfer.md).
 

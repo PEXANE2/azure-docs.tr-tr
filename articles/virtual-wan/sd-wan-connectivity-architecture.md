@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: sukishen
-ms.openlocfilehash: 17db9d615dcdd78ca50f88b5dad72d596bf29276
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 9b935c1f612e7634bad86818cd8331fba0078a9d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402471"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860588"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>SD-Azure sanal WAN ile WAN bağlantısı mimarisi
 
@@ -39,7 +39,7 @@ SD-WAN CPE, trafik iyileştirmesinin yanı sıra yol seçiminin uygulandığı v
 
 Bu modelde, sanal WAN bağlantısı IPSec üzerinden yapıldığından ve sanal WAN VPN ağ geçidinde IPSec VPN sonlandırıldığı için, gerçek zamanlı trafik özelliklerine dayanan bazı satıcıya özel trafik iyileştirmesi desteklenmiyor olabilir. Örneğin, şubedeki dinamik yol seçimi, şube cihazı başka bir SD-WAN düğümüyle çeşitli ağ paketi bilgilerini değiş tokuş eden, bu nedenle dalda dinamik olarak önceliklendirilmiş çeşitli trafik için kullanılacak en iyi bağlantıyı tanımlayarak uygulanabilir. Bu özellik, son mil iyileştirmesinin (en yakın Microsoft POP 'una dallan) gerekli olduğu alanlarda yararlı olabilir.
 
-Sanal WAN ile kullanıcılar Azure yol seçimini alabilir ve bu, CPE 'ten sanal WAN VPN ağ geçitleri arasında birden çok ISS bağlantısı arasında ilke tabanlı yol seçimidir. Sanal WAN, aynı SD-WAN dalından birden çok bağlantı (yol) kurulumuna izin verir; her bağlantı, SD-WAN CPE 'ın benzersiz bir genel IP 'sinden iki farklı Azure sanal WAN VPN Gateway örneğine bir çift tünelden bağlantı temsil eder. SD-WAN satıcıları, en iyi Azure yolunu, kendi ilke altyapısı tarafından CPE bağlantılarında ayarlanan trafik ilkelerine bağlı olarak Azure 'a uygulayabilirler.
+Sanal WAN ile kullanıcılar Azure yol seçimini alabilir ve bu, CPE 'ten sanal WAN VPN ağ geçitleri arasında birden çok ISS bağlantısı arasında ilke tabanlı yol seçimidir. Sanal WAN, aynı SD-WAN dalından birden çok bağlantı (yol) kurulumuna izin verir; her bağlantı, SD-WAN CPE 'ın benzersiz bir genel IP 'sinden iki farklı Azure sanal WAN VPN Gateway örneğine bir çift tünelden bağlantı temsil eder. SD-WAN satıcıları, en iyi Azure yolunu, kendi ilke altyapısı tarafından CPE bağlantılarında ayarlanan trafik ilkelerine bağlı olarak Azure 'a uygulayabilirler. Azure sonunda, içinde gelen tüm bağlantılar eşit olarak değerlendirilir.
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Dolaylı Interconnect modeli
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: efb9e8b8abdcb442e2c5c4d8bfd1b2e1e60865ce
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b7b3556896f2d8bb8fea7ffc4543356e248df60d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197845"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848830"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>TLS 1,0 ve 1,1 ' i Redsıs için Azure Cache ile birlikte kullanarak kaldırma
 
@@ -31,12 +31,12 @@ Bu makalede, bu önceki TLS sürümlerindeki bağımlılıkların nasıl algıla
 
 Bu değişikliklerin etkili olması için tarihler şunlardır:
 
-| Bulut               | Aşama 1 başlangıç tarihi | 2. aşama başlangıç tarihi      |
-|---------------------|--------------------|-------------------------|
-| Azure (genel)      |  13 Ocak 2020  | 11 Mayıs 2020            |
-| Azure Kamu    |  13 Mart 2020    | 11 Mayıs 2020            |
-| Azure Almanya       |  13 Mart 2020    | 11 Mayıs 2020            |
-| Azure Çin         |  13 Mart 2020    | 11 Mayıs 2020            |
+| Bulut                | Aşama 1 başlangıç tarihi | 2. aşama başlangıç tarihi      |
+|----------------------|--------------------|-------------------------|
+| Azure (genel)       |  13 Ocak 2020  | 11 Mayıs 2020            |
+| Azure Kamu     |  13 Mart 2020    | 11 Mayıs 2020            |
+| Azure Almanya        |  13 Mart 2020    | 11 Mayıs 2020            |
+| Azure Çin 21Vianet |  13 Mart 2020    | 11 Mayıs 2020            |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Uygulamanızın zaten uyumlu olup olmadığını denetleyin
 
@@ -55,7 +55,12 @@ Redsıs .NET istemcileri, en eski TLS sürümünü varsayılan olarak .NET Frame
 
 ### <a name="net-core"></a>.NET Core
 
-Redsıs .NET Core istemcileri varsayılan olarak en son TLS sürümünü kullanır.
+Redis .NET Core istemcileri varsayılan işletim sistemi varsayılan TLS sürümüne göre değişir. 
+
+İşletim sisteminin ne zaman yayınlandığına ve başka herhangi bir düzeltme eklerinin varsayılan TLS sürümünü değiştirdiğine bağlı olarak, işletim sistemi TLS sürümü oldukça değiştirilebilir. Bunun hakkında [tüm bilgiler olmasa](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)da, Windows işletim sistemi için özellikle daha fazla bilgi edinebilirsiniz. 
+
+Ancak, eski bir işletim sistemi kullanıyorsanız veya tercih ettiğiniz TLS sürümünü istemci aracılığıyla el ile yapılandırmak istediğimizi unutmayın.
+
 
 ### <a name="java"></a>Java
 

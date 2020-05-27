@@ -12,15 +12,15 @@ f1_keywords:
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/27/2020
-ms.openlocfilehash: 7656944af16db650ec1fea36f0bdefc81b99922e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/26/2020
+ms.openlocfilehash: 66c2c5e52ef81f74f7177af897f33eec4ae1779e
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654635"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860652"
 ---
-# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Veritabanı yönetilen örneğinde denetimle çalışmaya başlama
+# <a name="azure-sql-database-managed-instance-auditing"></a>Azure SQL veritabanı yönetilen örnek denetimi
 
 [Yönetilen örnek](sql-database-managed-instance.md) denetimi, veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar. Denetim şunları da sağlar:
 
@@ -37,7 +37,9 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
    1. Denetim günlüklerinizi depolamak istediğiniz Azure depolama 'ya gidin.
 
       > [!IMPORTANT]
-      > Bölgeler arası okuma/yazma işlemlerini önlemek için yönetilen örnekle aynı bölgedeki bir depolama hesabını kullanın. Depolama hesabınız bir sanal ağın veya güvenlik duvarının arkasındaysa, lütfen bkz. [bir sanal ağ üzerinden erişim verme](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network).
+      > - Bölgeler arası okuma/yazma işlemlerini önlemek için yönetilen örnekle aynı bölgedeki bir depolama hesabını kullanın. 
+      > - Depolama hesabınız bir sanal ağın veya güvenlik duvarının arkasındaysa, lütfen bkz. [bir sanal ağ üzerinden erişim verme](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network).
+      > - Saklama süresini 0 ' dan (sınırsız saklama) başka herhangi bir değere değiştirirseniz, lütfen bekletme 'nin yalnızca bekletme değeri değiştirildikten sonra yazılan günlüklere uygulanacağını unutmayın (bekletme etkin olduktan sonra bile, bekletme olarak sınırsız olarak ayarlandığında zaman içinde yazılır).
 
    1. Depolama hesabında **Genel Bakış ' a** gidin ve **Bloblar**' a tıklayın.
 

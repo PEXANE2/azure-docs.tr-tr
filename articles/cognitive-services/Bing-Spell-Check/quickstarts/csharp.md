@@ -8,33 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: aa76a5773a20a103ceec075a58c79fac691eec6f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3bb126dc31620515c54a653ef595bfc017aaac73
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747322"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869602"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve C ile yazım denetimi #
 
-Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit C# uygulaması, API 'ye bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür. Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs)' da kullanılabilir.
+Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit C# uygulaması, API 'ye bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür. 
+
+Bu uygulama C# dilinde yazılsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs)' da kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
-* `Newtonsoft.Json`Visual Studio 'da bir NuGet paketi olarak yüklemek için:
-    1. **Çözüm Gezgini**, çözüm dosyasına sağ tıklayın.
-    1. **Çözüm Için NuGet Paketlerini Yönet**' i seçin.
-    1. Paketi arayın `Newtonsoft.Json` ve yükler.
-* Linux/MacOS kullanıyorsanız, bu uygulama [mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
+* Newtonsoft. JSON NuGet paketi. 
+     
+   Bu paketi Visual Studio 'ya yüklemek için:
+
+     1. **Çözüm Gezgini**, çözüm dosyasına sağ tıklayın.
+     1. **Çözüm Için NuGet Paketlerini Yönet**' i seçin.
+     1. *Newtonsoft. JSON* araması yapın ve paketi yükler.
+
+* Linux/MacOS kullanıyorsanız, [mono](https://www.mono-project.com/)kullanarak bu uygulamayı çalıştırabilirsiniz.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Visual Studio 'da adlı yeni bir konsol çözümü oluşturun `SpellCheckSample` . Ardından ana kod dosyasına aşağıdaki ad alanlarını ekleyin.
+1. Visual Studio 'da SpellCheckSample adlı yeni bir konsol çözümü oluşturun. Ardından, aşağıdaki ad alanlarını ana kod dosyasına ekleyin:
     
     ```csharp
     using System;
@@ -46,7 +52,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
     using Newtonsoft.Json;
     ```
 
-2. API uç noktası, abonelik anahtarınız ve yazım denetimi yapılacak metin için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+2. API uç noktası, abonelik anahtarınız ve yazım denetimi yapılacak metin için değişkenler oluşturun. Aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```csharp
     namespace SpellCheckSample
@@ -62,7 +68,11 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
     }
     ```
 
-3. Arama parametreleriniz için bir değişken oluşturun. Pazar kodunuzu sonuna ekleyin `mkt=` . Pazar kodu, isteği yaptığınız ülke/bölgedir. Ayrıca, daha sonra yazım denetimi modlarınızı ekleyin `&mode=` . Mod `proof` (en fazla yazım/dilbilgisi hatalarını yakalar) veya `spell` (çok sayıda dilbilgisi hatası değil, en fazla yazım yakalar).
+3. Arama parametreleriniz için bir dize oluşturun: 
+
+   a. Pazar kodunuzu `mkt` parametreye, `=` işleçle atayın. Pazar kodu, isteği yaptığınız ülkenin/bölgenin kodudur. 
+
+   b. `mode`Parametresini `&` işleçle ekleyin ve ardından yazım denetimi modunu atayın. Mod `proof` (en fazla yazım/dilbilgisi hatalarını yakalar) ya da `spell` (en fazla yazım hatalarını yakalar, ancak çok sayıda dilbilgisi hatası) olabilir.
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -70,7 +80,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
 
 ## <a name="create-and-send-a-spell-check-request"></a>Yazım denetimi isteği oluşturma ve gönderme
 
-1. `SpellCheck()`API 'ye bir istek göndermek için çağrılan bir zaman uyumsuz işlev oluşturun. Oluşturun `HttpClient` ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin. Sonra işlevi içinde aşağıdaki adımları gerçekleştirin.
+1. `SpellCheck()`API 'ye bir istek göndermek için çağrılan bir zaman uyumsuz işlev oluşturun. Oluşturun `HttpClient` ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin. İşlev içinde sonraki adımları izleyin.
 
     ```csharp
     async static void SpellCheck()
@@ -127,7 +137,7 @@ Console.WriteLine(jsonObj);
 
 ## <a name="call-the-spell-check-function"></a>Yazım denetimi işlevini çağırın
 
-Projenizin ana işlevinde, çağırın `SpellCheck()` .
+`Main()`Projenizin işlevinde, çağırın `SpellCheck()` .
 
 ```csharp
 static void Main(string[] args)
@@ -189,4 +199,4 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 > [Tek sayfalı web uygulaması oluşturma](../tutorials/spellcheck.md)
 
 - [Bing Yazım Denetimi API’si nedir?](../overview.md)
-- [Bing Yazım Denetimi API’si v7 Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Bing Yazım Denetimi API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

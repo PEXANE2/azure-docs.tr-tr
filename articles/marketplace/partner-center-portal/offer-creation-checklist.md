@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 60111b6a23c76314383c5f95be3eb4b38f90d3e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec276c765c2a574dbbc2fc14b7b23507b4cc4798
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80281349"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850020"
 ---
 # <a name="saas-offer-creation-checklist"></a>SaaS teklifi oluşturma denetim listesi
 
@@ -58,7 +58,7 @@ Teklif kurulumu sayfası, farklı kanalları kabul edebilir ve ücretlerinizi sa
 | Kanallar  | İsteğe bağlı. Varsayılan: CSP (satıcı) kanalına kabul edilmedi.  |
 | Test Sürüşü | İsteğe bağlı. Varsayılan: etkin bir test sürücüsü yok.  |
 | Test sürücüsünün türü | Bir sınama sürücüsü etkinleştirildiyse gereklidir. Varsayılan: hiçbiri seçili değil. Seçenekler: Azure Resource Manager, Iş Merkezi için Dynamics 365, müşteri katılımı için Dynamics 365, Işlemler için Dynamics 365, mantıksal uygulama, Power BI.  |
-| Müşteri adayı yönetimi-bir CRM sistemine bağlanma | Microsoft üzerinden satılırken veya liste "bana başvur" olarak sunulduğunda gereklidir. Varsayılan: hiçbir CRM sistemi bağlanmadı. CRM seçenekleri: Azure tablosu, Azure blobu, Dynamics CRM Online, HTTPs ' uç noktası, Marketo, Salesforce  |
+| Müşteri adayları-bir CRM sistemine bağlanma | Microsoft üzerinden satılırken veya liste "bana başvur" olarak sunulduğunda gereklidir. Varsayılan: hiçbir CRM sistemi bağlanmadı. CRM seçenekleri: Azure tablosu, Azure blobu, Dynamics CRM Online, HTTPs ' uç noktası, Marketo, Salesforce  |
 
 ## <a name="properties-page"></a>Özellikler sayfası
 
@@ -78,7 +78,7 @@ Liste sayfası, müşterilerin Market 'te teklifinizin listesini görüntülerke
 
 | **Alan adı**    | **Notlar**   |
 | :---------------- | :-----------| 
-| Adı  | Gerekli, en fazla 50 karakter. |
+| Name  | Gerekli, en fazla 50 karakter. |
 | Özet  | Gerekli, en fazla 100 karakter. | 
 | Açıklama  | Gerekli, en fazla 3000 karakter. |
 | Başlarken yönergeleri  | Gerekli, en fazla 3000 karakter. |

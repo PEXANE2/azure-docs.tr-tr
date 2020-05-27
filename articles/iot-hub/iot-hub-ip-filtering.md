@@ -5,14 +5,14 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/25/2020
 ms.author: robinsh
-ms.openlocfilehash: 74ee9506d7b21e5f0654c8a46976b4d5c63b5197
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 742706f4daa518faf06e5c8b735e679f345f1279
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649380"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849901"
 ---
 # <a name="use-ip-filters"></a>IP filtrelerini kullanma
 
@@ -39,17 +39,19 @@ IoT Hub 'ınızdaki reddetme IP kuralıyla eşleşen bir IP adresinden gelen ba�
 
 Varsayılan olarak, bir IoT Hub 'ının portalındaki **IP filtresi** Kılavuzu boştur. Bu varsayılan ayar, hub 'ınızın herhangi bir IP adresinden gelen bağlantıları kabul ettiği anlamına gelir. Bu varsayılan ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir.
 
-![IoT Hub varsayılan IP filtresi ayarları](./media/iot-hub-ip-filtering/ip-filter-default.png)
+IP filtresi ayarları sayfasına ulaşmak için **ağ**, **ortak erişim**' i SEÇIN ve ardından **Seçili IP aralıkları**' nı seçin:
+
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="IoT Hub varsayılan IP filtresi ayarları":::
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>IP filtresi kuralı ekleme veya düzenleme
 
 Bir IP filtre kuralı eklemek için **+ IP filtre kuralı ekle**' yi seçin.
 
-![IoT Hub 'ına bir IP filtre kuralı ekleme](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IoT Hub 'ına bir IP filtre kuralı ekleme":::
 
 **IP filtre kuralı ekle**' yi seçtikten sonra alanları girin.
 
-![IP filtre kuralı ekle seçeneğini belirledikten sonra](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="IP filtre kuralı ekle seçeneğini belirledikten sonra":::
 
 * IP filtresi kuralı için bir **ad** girin. Bu, 128 karakter uzunluğunda benzersiz, büyük/küçük harfe duyarsız, alfasayısal bir dize olmalıdır. Yalnızca ASCII 7 bit alfasayısal karakterler ve kabul edilir `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` .
 
@@ -59,7 +61,7 @@ Bir IP filtre kuralı eklemek için **+ IP filtre kuralı ekle**' yi seçin.
 
 Alanları doldurduktan sonra, kuralı kaydetmek için **Kaydet** ' i seçin. Güncelleştirmenin devam ettiğini bildiren bir uyarı görürsünüz.
 
-![IP filtresi kuralını kaydetme bildirimi](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="IP filtresi kuralını kaydetme bildirimi":::
 
 En fazla 10 IP filtresi kuralına ulaştığınızda **Ekle** seçeneği devre dışıdır.
 
@@ -69,7 +71,7 @@ Mevcut bir kuralı düzenlemek için, değiştirmek istediğiniz verileri seçin
 
 Bir IP filtre kuralını silmek için söz konusu satırdaki çöp kutusu simgesini seçin ve ardından **Kaydet**' i seçin. Kural kaldırılır ve değişiklik kaydedilir.
 
-![IoT Hub IP filtresi kuralını silme](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT Hub IP filtresi kuralını silme":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Azure CLı kullanarak IP filtrelerini alma ve güncelleştirme
 
@@ -159,11 +161,10 @@ Kılavuzdaki IP filtre kurallarınızın sırasını, bir satırın başlangıc�
 
 Yeni IP filtresi kuralı siparişinizi kaydetmek için **Kaydet**' e tıklayın.
 
-![IoT Hub IP filtresi kurallarınızın sırasını değiştirme](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="IoT HUb IP filtresi kurallarınızın sırasını değiştirme":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
-* [İşlemleri izleme](iot-hub-operations-monitoring.md)
 * [IoT Hub ölçümleri](iot-hub-metrics.md)

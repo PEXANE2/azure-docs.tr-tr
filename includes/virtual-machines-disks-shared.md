@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 57b6bf06e34068b5560829838eb9ee1315df6cde
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778251"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83868010"
 ---
 Azure paylaşılan diskler (Önizleme), Azure yönetilen disklere yönelik olarak birden çok sanal makineye (VM) aynı anda bir yönetilen disk iliştirmeyi sağlayan yeni bir özelliktir. Yönetilen bir diskin birden çok VM 'ye eklenmesi, yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmenize olanak sağlar.
 
@@ -37,15 +37,15 @@ Paylaşılan yönetilen diskler, SMB/NFS kullanılarak erişilebilen tam olarak 
 
 ### <a name="windows"></a>Windows
 
-Küme düğümü iletişimi için tüm çekirdek altyapısını işleyen, WSFC üzerinde en çok Windows tabanlı kümeleme derlemesi, uygulamalarınızın paralel erişim desenlerinden yararlanmasını sağlar. WSFC, Windows Server sürümünüze bağlı olarak hem CSV hem de CSV olmayan seçeneklere izin vermez. Ayrıntılar için [Yük devretme kümesi oluşturma](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)bölümüne bakın.
+Çoğu Windows tabanlı kümeler WSFC üzerinde oluşturulur ve bu ortam küme düğümü iletişimi için gerekli temel altyapıyı yöneterek uygulamalarınızın paralel erişim desenlerinden faydalanmasını sağlar. WSFC, Windows Server sürümünüze bağlı olarak hem CSV hem de CSV dışı seçenekleri etkinleştirir. Ayrıntılar için bkz. [Yük devretme kümesi oluşturma](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster).
 
 WSFC üzerinde çalışan bazı popüler uygulamalar şunlardır:
 
-- SQL Server yük devretme kümesi örnekleri (FCı)
-- Genişleme dosya sunucusu (SoFS)
-- Genel kullanım için dosya sunucusu (ıW iş yükü)
-- Uzak Masaüstü sunucusu kullanıcı profili diski (RDS UPD)
-- SAP YOKS/SCS
+- SQL Server Yük Devretme Kümesi Örnekleri (FCI)
+- Genişleme Dosya Sunucusu (SoFS)
+- Genel Kullanıma Yönelik Dosya Sunucusu (IW iş yükü)
+- Uzak Masaüstü Sunucusu Kullanıcı Profili Diski (RDS UPD)
+- SAP ASCS/SCS
 
 ### <a name="linux"></a>Linux
 
@@ -85,7 +85,7 @@ Akış şu şekildedir:
 
 Ultra diskler, toplam iki kısıtlamak için ek bir kısıtlama sağlar. Bu nedenle, Ultra disklerin rezervasyon akışı, önceki bölümde açıklandığı gibi çalışabilir veya performansı daha fazla azaltabilecek ve dağıtabilirler.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text=" ":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Ayırma tutucusu, kayıtlı ve diğerleri için salt okunur veya okuma/yazma erişimini gösteren bir tablo görüntüsü.":::
 
 ## <a name="ultra-disk-performance-throttles"></a>Ultra disk performansı azaltıcı Les
 
@@ -119,22 +119,16 @@ Aşağıdaki örneklerde, kısıtlama 'nin paylaşılan Ultra disklerle özel ol
 
 Aşağıda, kümelenmiş paylaşılan birimleri kullanarak 2 düğümlü bir WSFC örneği verilmiştir. Bu yapılandırmayla, her iki VM için aynı anda diske yazma erişimi vardır ve bu da iki VM 'de ve salt okunur kısıtlama kullanılmakta olan okuma kısıtlaması ile sonuçlanır.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV iki düğümlü Ultra örnek":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV iki düğümlü Ultra örnek":::
 
 #### <a name="two-node-cluster-without-cluster-share-volumes"></a>Küme paylaşma birimleri olmayan iki düğümlü küme
 
 Aşağıda, kümelenmiş paylaşılan birimleri kullanmayan 2 düğümlü bir WSFC örneği verilmiştir. Bu yapılandırmayla, yalnızca bir VM 'nin diske yazma erişimi vardır. Bu durum, yalnızca birincil VM için ve salt okunur kısıtlama yalnızca ikincil tarafından kullanılan okuma kısıtlaması ile sonuçlanır.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV iki düğüm hiçbir CSV Ultra disk örneği":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV iki düğüm hiçbir CSV Ultra disk örneği":::
 
 #### <a name="four-node-linux-cluster"></a>Dört düğümlü Linux kümesi
 
 Aşağıda, tek bir yazıcı ve üç genişleme okuyucuları içeren 4 düğümlü Linux kümesine bir örnek verilmiştir. Bu yapılandırmayla, yalnızca bir VM 'nin diske yazma erişimi vardır. Bu durum, birincil VM için özel olarak kullanılan okuma kısıtlaması ve ikincil VM 'Ler tarafından bölünen salt okunur kısıtlama ile sonuçlanır.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Dört düğümlü Ultra azaltma örneği":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Dört düğümlü Ultra azaltma örneği":::

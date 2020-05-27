@@ -4,12 +4,12 @@ description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüst�
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 8101f00f4ffc3735becbad2ecde26f5a208ff4a1
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 970046f000a844ce6ee7207ad1bb33f4a327a63d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744829"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848116"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure VM olağanüstü durum kurtarma için destek matrisi
 
@@ -178,7 +178,7 @@ Azure galeri görüntüleri-üçüncü taraf yayımlandı | Destekleniyor | VM d
 Özel görüntüler-üçüncü taraf yayımlandı | Destekleniyor | VM desteklenen bir işletim sisteminde çalışıyorsa desteklenir.
 Site Recovery kullanılarak geçirilen VM 'Ler | Destekleniyor | Site Recovery kullanılarak Azure 'a bir VMware VM veya fiziksel makine geçirilirse, makinede çalışan Mobility hizmetinin eski sürümünü kaldırmanız ve makineyi başka bir Azure bölgesine çoğaltmadan önce yeniden başlatmanız gerekir.
 RBAC ilkeleri | Desteklenmiyor | VM 'lerde rol tabanlı erişim denetimi (RBAC) ilkeleri hedef bölgedeki yük devretme VM 'sine çoğaltılmaz.
-Uzantıları | Desteklenmiyor | Uzantılar, hedef bölgedeki yük devretme VM 'sine çoğaltılmaz. Yük devretmenin ardından el ile yüklenmesi gerekir.
+Uzantılar | Desteklenmiyor | Uzantılar, hedef bölgedeki yük devretme VM 'sine çoğaltılmaz. Yük devretmenin ardından el ile yüklenmesi gerekir.
 Yakınlık yerleştirme grupları | Desteklenmiyor | Bir yakınlık yerleşimi grubunda bulunan sanal makineler Site Recovery kullanılarak korunamaz.
 
 
@@ -231,6 +231,7 @@ Seyrek erişimli ve sık erişimli depolama | Desteklenmiyor | Seyrek erişimli 
 Sanal ağlar için Azure Storage güvenlik duvarları  | Destekleniyor | Depolama hesaplarına sanal ağ erişimini kısıtladıysanız, [Güvenilen Microsoft hizmetlerine Izin vermeyi](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)etkinleştirin.
 Genel amaçlı v2 depolama hesapları (sık erişimli ve Seyrek Erişimli Katman) | Destekleniyor | İşlem maliyetleri, genel amaçlı v1 depolama hesaplarıyla karşılaştırıldığında önemli ölçüde artar
 2. nesil (UEFı önyüklemesi) | Destekleniyor
+NVMe diskleri | Desteklenmiyor
 
 >[!IMPORTANT]
 > Performans sorunlarından kaçınmak için, [Linux](../virtual-machines/linux/disk-scalability-targets.md) veya [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 'leri için VM disk ölçeklenebilirliğini ve performans hedeflerini izlediğinizden emin olun. Varsayılan ayarları kullanıyorsanız, Site Recovery, kaynak yapılandırmasına göre gerekli diskleri ve depolama hesaplarını oluşturur. Kendi ayarlarınızı özelleştirip seçerseniz, kaynak sanal makinelerinize yönelik disk ölçeklenebilirlik ve performans hedeflerini izleyin.

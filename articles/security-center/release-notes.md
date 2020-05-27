@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2020
+ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: f71bffd1db023ece19071bb8f71ec49a855e828b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6909bcbc67680f9205af8a79782907d4671d668b
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654656"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860724"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -45,12 +45,12 @@ Gizleme kuralları, uyarıların otomatik olarak hangi ölçütlere göre kapat�
 
 - çok sık tetiklenen uyarıları, faydalı olması için gösterme
 
-[Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gizleme hakkında daha fazla bilgi edinin](alerts-suppression-rules.md).
+[Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gizleme](alerts-suppression-rules.md)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="virtual-machine-vulnerability-assessment-is-now-generally-available"></a>Sanal makine güvenlik açığı değerlendirmesi genel kullanıma sunuldu
 
-Güvenlik Merkezi 'nin standart katmanı artık, ek ücret ödemeden sanal makinelere yönelik yerleşik bir güvenlik açığı değerlendirmesi içerir. Bu uzantı Qualys tarafından desteklenmektedir ancak bulgularını doğrudan güvenlik merkezi 'ne geri bildirir. Bir Qualys lisansına veya hatta bir Qualys hesabına ihtiyacınız yoktur. her şey güvenlik merkezi 'nin içinde sorunsuz bir şekilde işlenir.
+Güvenlik Merkezi 'nin standart katmanı artık, ek ücret ödemeden sanal makinelere yönelik tümleşik bir güvenlik açığı değerlendirmesi içerir. Bu uzantı Qualys tarafından desteklenmektedir ancak bulgularını doğrudan güvenlik merkezi 'ne geri bildirir. Bir Qualys lisansına veya hatta bir Qualys hesabına ihtiyacınız yoktur. her şey güvenlik merkezi 'nin içinde sorunsuz bir şekilde işlenir.
 
 Yeni çözüm Güvenlik Merkezi 'nde güvenlik açıklarını bulmak ve bulguları sunmak için sanal makinelerinizi sürekli tarayabilir. 
 
@@ -58,7 +58,7 @@ Yeni çözüm Güvenlik Merkezi 'nde güvenlik açıklarını bulmak ve bulgular
 
 "Yerleşik güvenlik açığı değerlendirme çözümünü sanal makinelerde etkinleştir (Qualys tarafından desteklenir)"
 
-[Daha fazla bilgi edinin](built-in-vulnerability-assessment.md).
+[Güvenlik Merkezi 'nin sanal makineler için tümleşik güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)hakkında daha fazla bilgi edinin.
 
 
 
@@ -72,7 +72,7 @@ Bu güncelleştirme, bu özelliğe aşağıdaki değişiklikleri getirir:
 
 - Öneri yalnızca açık yönetim bağlantı noktaları varsa tetiklenecek şekilde ayarlanmıştır.
 
-[JIT erişim özelliği hakkında daha fazla bilgi edinin](security-center-just-in-time.md).
+[JIT erişim özelliği](security-center-just-in-time.md)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>Özel öneriler ayrı bir güvenlik denetimine taşındı
@@ -122,14 +122,6 @@ Denetime eklenen iki yeni öneri şunlardır:
 [Azure Güvenlik Merkezi 'Nde gelişmiş güvenli skor (Önizleme)](secure-score-security-controls.md)bölümünde güvenlik denetimleri hakkında daha fazla bilgi edinin.
 
 
-
-
-
-
-
-
-
-
 ### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Özel meta verileri olan özel ilkeler artık genel kullanıma sunuldu
 
 Özel ilkeler artık Güvenlik Merkezi öneri deneyiminin, güvenli puanın ve mevzuat uyumluluk standartları panosunun bir parçasıdır. Bu özellik genel kullanıma sunulmuştur ve kuruluşunuzun güvenlik değerlendirmesi kapsamını güvenlik merkezi 'nde genişletmenizi sağlar. 
@@ -138,7 +130,23 @@ Azure ilkesinde özel bir girişim oluşturun, buna ilke ekleyin ve Azure Güven
 
 Artık özel öneri meta verilerini düzenleme seçeneğini de ekledik. Meta veri seçenekleri önem derecesi, düzeltme adımları, tehdit bilgileri ve daha fazlasını içerir.  
 
-[Ayrıntılı bilgilerle özel önerilerinizi geliştirme hakkında daha fazla bilgi edinin](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information).
+[Ayrıntılı bilgilerle özel önerilerinizi geliştirme](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information)hakkında daha fazla bilgi edinin.
+
+
+### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Kilitlenme bilgi döküm çözümleme özellikleri, dosya daha az saldırı algılamasına geçiriliyor 
+
+Windows kilitlenme dökümü Analizi (CDA) algılama yeteneklerini [dosya daha az saldırı algılamasında](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless)tümleştireceğiz. Dosya daha az saldırı algılama analizi, Windows makineleri için aşağıdaki güvenlik uyarılarının gelişmiş sürümlerini getirir: kod ekleme keşfedilen, kendini gizleyen Windows modülü algılanan, shellcode keşfedilen ve şüpheli kod segmenti tespit etti.
+
+Bu geçişin avantajlarından bazıları:
+
+- **Proaktif ve zamanında kötü amaçlı yazılım algılama** -bir kilitlenme oluşması ve sonra etkin kötü amaçlı yazılımı bulmak için çözümleme çalıştırma. Dosya kullanmayan saldırı algılama özelliğinin kullanılması, çalışırken bellek içi tehditlere yönelik proaktif kimlik tanımlamayı sağlar. 
+
+- **Zenginleştirilmiş uyarılar** -dosya daha az saldırı algılamasında bulunan güvenlik uyarıları,, etkin ağ bağlantısı bilgileri gıbı, CDA ' den kullanılamayan zenginler içerir. 
+
+- **Uyarı toplama** -CDA, tek çökme dökümü içinde birden çok saldırı deseni algıladığında birden çok güvenlik uyarısı tetikledi. Dosya Less saldırı algılaması, aynı işlemden alınan tüm saldırı düzenlerini tek bir uyarıya birleştirerek birden çok uyarıyı ilişkilendirme gereksinimini ortadan kaldırır.
+
+- **Log Analytics çalışma alanınızda daha az gereksinim** vardır; potansiyel olarak hassas veriler içeren kilitlenme dökümleri artık Log Analytics çalışma alanınıza yüklenmeyecektir.
+
 
 
 ## <a name="april-2020"></a>Nisan 2020
@@ -159,7 +167,7 @@ Dinamik uyumluluk paketleri, Güvenlik Merkezi güvenlik ilkesi sayfasından abo
 
 Ayrıca, Azure **güvenlik kıyaslaması**' nı son zamanlarda, genel uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan Azure 'a özgü yönergeleri ekledik. Panoda kullanılabilir hale geldiğinde ek standartlar desteklenecektir.  
  
-[Yasal uyumluluk panonuzda standartlar kümesini özelleştirme hakkında daha fazla bilgi edinin](update-regulatory-compliance-packages.md).
+[Yasal uyumluluk panonuzda standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="identity-recommendations-now-included-in-azure-security-center-free-tier"></a>Kimlik önerileri artık Azure Güvenlik Merkezi Ücretsiz katmanına eklenmiştir
@@ -174,8 +182,9 @@ Kimlik ve erişim önerilerine örnek olarak şunlar verilebilir:
 
 Ücretsiz fiyatlandırma katmanında abonelikleriniz varsa, bu değişiklik, kimlik ve erişim güvenliği için hiçbir şekilde değerlendirilmediğinden, bu değişiklikten etkilenmez.
 
-[Kimlik ve erişim önerileri hakkında daha fazla bilgi edinin](recommendations-reference.md#recs-identity).
-[Kimlik ve erişim izleme hakkında daha fazla bilgi edinin](security-center-identity-access.md).
+[Kimlik ve erişim önerileri](recommendations-reference.md#recs-identity)hakkında daha fazla bilgi edinin.
+
+[Kimlik ve erişim izleme](security-center-identity-access.md)hakkında daha fazla bilgi edinin.
 
 
 ## <a name="march-2020"></a>Mart 2020
@@ -188,7 +197,7 @@ Her güvenlik programı, olay yanıtı için birden çok iş akışı içerir. B
 
 İş akışlarınızı çalıştırmaya yönelik otomatik ve el ile güvenlik merkezi özellikleri hakkında daha fazla bilgi için bkz. [iş akışı Otomasyonu](workflow-automation.md).
 
-Logic Apps oluşturma hakkında bilgi edinmek için bkz. [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+[Logic Apps oluşturma](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Azure Güvenlik Merkezi 'Ni Windows Yönetim Merkezi ile tümleştirme
@@ -215,8 +224,9 @@ Güvenlik Merkezi savunması şunları içerir:
 - **Güvenlik önerileri** -aks için en iyi güvenlik uygulamalarıyla uyum sağlamanıza yardımcı olacak öneriler. Bu öneriler, kuruluşunuzun güvenlik duruşunuzun bir parçası olarak görüntülendiklerinden emin olmak için güvenli puanına dahil edilmiştir. "Bir Kubernetes hizmet kümesine erişimi kısıtlamak için rol tabanlı erişim denetimi kullanılmalıdır" ifadesini görebilirsiniz.
 - **Tehdit koruması** -aks dağıtımınızın sürekli analizi sayesinde, Güvenlik Merkezi, ana bilgisayar ve aks kümesi düzeyinde algılanan tehditler ve kötü amaçlı etkinlikler hakkında sizi uyarır.
 
-[Güvenlik Merkezi Ile Azure Kubernetes Hizmetleri Tümleştirmesi hakkında daha fazla bilgi edinin](azure-kubernetes-service-integration.md).
-[Güvenlik Merkezi 'ndeki kapsayıcı güvenliği özellikleri hakkında daha fazla bilgi edinin](container-security.md).
+[Azure Kubernetes Hizmetleri ' ni Güvenlik Merkezi ile tümleştirme](azure-kubernetes-service-integration.md)hakkında daha fazla bilgi edinin.
+
+[Güvenlik Merkezi 'ndeki kapsayıcı güvenliği özellikleri](container-security.md)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="improved-just-in-time-experience"></a>Anında iyileştirilmiş deneyim
@@ -226,7 +236,7 @@ Azure Güvenlik Merkezi 'nin Yönetim bağlantı noktalarınızı güvenli hale 
 - **Gerekçe alanı** -Azure Portal tam zamanında sayfasında bir sanal MAKINEYE (VM) erişim isteğinde bulunduğunda, istek için bir gerekçe girmek üzere yeni bir isteğe bağlı alan kullanılabilir. Bu alana girilen bilgiler etkinlik günlüğünde izlenebilir. 
 - **Yedekli tam zamanında (JIT) kuralları otomatik temizleme** -bir JIT ilkesini her güncelleştirdiğinizde, tüm RuleSet 'nizin geçerliliğini denetlemek için otomatik olarak bir temizleme aracı çalışır. Araç, ilkenizin kuralları ile NSG 'deki kurallar arasında uyuşmazlıkları arar. Temizleme Aracı bir uyumsuzluk bulursa, nedeni belirler ve bunu yapmak güvenli olduğunda, artık gerekmeyen yerleşik kuralları kaldırır. Temizleyici, oluşturduğunuz kuralları hiçbir şekilde silmez. 
 
-[JIT erişim özelliği hakkında daha fazla bilgi edinin](security-center-just-in-time.md).
+[JIT erişim özelliği](security-center-just-in-time.md)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="two-security-recommendations-for-web-applications-deprecated"></a>Web uygulamaları için iki güvenlik önerisi kullanım dışı
@@ -241,7 +251,9 @@ Web uygulamalarıyla ilgili iki güvenlik önerisi kullanım dışı bırakılm�
 
 Bu öneriler artık Güvenlik Merkezi öneri listesinde görünmez. İlgili ilkeler artık "Güvenlik Merkezi varsayılanı" adlı girişimde yer alınmaz.
 
-[Güvenlik önerileri hakkında daha fazla bilgi edinin](recommendations-reference.md).
+[Güvenlik önerileri](recommendations-reference.md)hakkında daha fazla bilgi edinin.
+
+
 
 ## <a name="february-2020"></a>Şubat 2020
 
@@ -263,4 +275,4 @@ Azure Güvenlik Merkezi 'nin güvenli Puanlama özelliğinin gelişmiş bir sür
 
 Önizleme aşamasında güvenli puan değişiklikleri hakkında bilgi edinin ve ortamınızı daha da güvenli hale getirmenize yardımcı olacak diğer düzeltmeleri öğrenin.
 
-[Azure Güvenlik Merkezi 'Nde gelişmiş güvenli Puanlama (Önizleme)](secure-score-security-controls.md)hakkında daha fazla bilgi edinin.
+[Azure Güvenlik Merkezi 'Nde gelişmiş güvenli skor (Önizleme)](secure-score-security-controls.md)hakkında daha fazla bilgi edinin.

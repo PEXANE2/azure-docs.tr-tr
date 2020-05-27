@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 01/15/2019
-ms.openlocfilehash: 8c5c917e12b1314c40763f58a7723a4df787ffa0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2019
+ms.openlocfilehash: 877c1719a76f23f8446164b641dc2dac84261e0e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418941"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849289"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Data Factory Hadoop Hive etkinliğini kullanarak verileri dönüştürme
 
@@ -60,15 +60,15 @@ Azure Data Factory yeni bir deyişle, [Azure Data Factory 'ye giriş](introducti
 ## <a name="syntax-details"></a>Söz dizimi ayrıntıları
 | Özellik            | Açıklama                                                  | Gerekli |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| ad                | Etkinliğin adı                                         | Yes      |
-| açıklama         | Etkinliğin ne için kullanıldığını açıklayan metin                | Hayır       |
-| type                | Hive etkinliği için etkinlik türü Hdınsighthive        | Yes      |
+| name                | Etkinliğin adı                                         | Yes      |
+| açıklama         | Etkinliğin ne için kullanıldığını açıklayan metin                | No       |
+| tür                | Hive etkinliği için etkinlik türü Hdınsighthive        | Yes      |
 | linkedServiceName   | Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
-| scriptLinkedService | Yürütülecek Hive betiğini depolamak için kullanılan bir Azure depolama bağlı hizmetine yönelik başvuru. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | Hayır       |
+| scriptLinkedService | Yürütülecek Hive betiğini depolamak için kullanılan bir Azure depolama bağlı hizmetine yönelik başvuru. Burada yalnızca **[Azure Blob depolama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** ve **[ADLS 2.](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** bağlı hizmetleri desteklenir. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır.  | No       |
 | scriptPath          | ScriptLinkedService tarafından başvurulan Azure depolama alanında depolanan betik dosyasının yolunu belirtin. Dosya adı büyük/küçük harfe duyarlıdır. | Yes      |
-| GetDebugInfo        | Günlük dosyalarının, HDInsight kümesi tarafından kullanılan (veya) scriptLinkedService tarafından belirtilen Azure depolama 'ya ne zaman kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | Hayır       |
-| değişkenlerinden           | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | Hayır       |
-| tanımlar             | Hive betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | Hayır       |
+| GetDebugInfo        | Günlük dosyalarının, HDInsight kümesi tarafından kullanılan (veya) scriptLinkedService tarafından belirtilen Azure depolama 'ya ne zaman kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | No       |
+| değişkenlerinden           | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | No       |
+| tanımlar             | Hive betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | No       |
 | queryTimeout        | Sorgu zaman aşımı değeri (dakika). HDInsight kümesi Kurumsal Güvenlik Paketi etkinken geçerlidir. | Hayır       |
 
 ## <a name="next-steps"></a>Sonraki adımlar

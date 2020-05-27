@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 01d188e0e39888297ff8d6a57129a3a17e1654fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8072dec6b5f5dbd35c86573dd43d3925a271bc43
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249275"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849680"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Izleyici ile Azure kaynaklarını izleme
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure kaynakları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
@@ -49,7 +49,7 @@ Aşağıdakiler ile ilişkili Azure Izleyici maliyeti olabilir. Bkz. [Azure izle
 - API aracılığıyla ölçümlere erişme.
 
 ## <a name="monitoring-data"></a>Verileri izleme
-Azure 'daki kaynaklar, aşağıdaki diyagramı gösterilen şekilde [Günlükler](../platform/data-platform-logs.md) ve [ölçümler](../platform/data-platform-metrics.md) oluşturur. Oluşturdukları belirli veriler ve sağladıkları tüm ek çözümler veya içgörüler için her bir Azure hizmeti için belgelere bakın.
+Azure 'daki kaynaklar, aşağıdaki diyagramda gösterilen [Günlükler](../platform/data-platform-logs.md) ve [ölçümler](../platform/data-platform-metrics.md) oluşturur. Oluşturdukları belirli veriler ve sağladıkları tüm ek çözümler veya içgörüler için her bir Azure hizmeti için belgelere bakın.
 
 ![Genel Bakış](media/monitor-azure-resource/logs-metrics.png)
 

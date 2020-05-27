@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 1da862a7994d7db5ee8c9f090119e14f19c6b13a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 05dd9f6c2f1f08ec0e420bd4257d2c26e1963e5b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637885"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850071"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Karma ortamda bir Linux bilgisayarından veri toplama
 
@@ -87,7 +87,7 @@ Linux bilgisayarınızın bir ara sunucu üzerinden Log Analytics’le iletişim
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-    Aşağıdaki komut proxy parametresini ve `-p` kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
+    Aşağıdaki komut proxy `-p` parametresini ve kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
@@ -99,7 +99,7 @@ Linux bilgisayarınızın bir ara sunucu üzerinden Log Analytics’le iletişim
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-    Aşağıdaki komut proxy parametresini ve `-p` kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
+    Aşağıdaki komut proxy `-p` parametresini ve kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
@@ -115,11 +115,11 @@ Linux bilgisayarınızın bir ara sunucu üzerinden Log Analytics’le iletişim
 
 Azure Izleyici, daha uzun süreli analiz ve raporlama için belirttiğiniz Linux Syslog ve performans sayaçlarından olayları toplayabilir. Ayrıca, belirli bir koşul algıladığında eylem gerçekleştirebilir. Linux Syslog’dan olayları toplamayı yapılandırmak ve birkaç ortak performans sayacı ile başlamak için bu adımları izleyin.  
 
-1. Azure portal sol alt köşesinde **diğer hizmetler**' i seçin. Arama kutusuna **Log Analytics**girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Log Analytics çalışma alanlarını**seçin.
+1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde Log Analytics yazın. Siz yazarken, liste, girişinizi temel alarak filtreler. **Log Analytics çalışma alanları** ' nı seçin ve Log Analytics çalışma alanları listenizde, aradığınız çalışma alanını seçin ve **Log Analytics** çalışma alanının **Gelişmiş ayarları** ' nı seçin.
 
 2. **Veri**' yi seçin ve **Syslog**' ı seçin.  
 
-3. Günlüğün adını yazarak Syslog eklersiniz. **Syslog** girin ve ardından artı işaretini **+** seçin.  
+3. Günlüğün adını yazarak Syslog eklersiniz. **Syslog** girin ve ardından artı işaretini seçin **+** .  
 
 4. Tabloda, **Bilgiler**, **Bildirim** ve **Hata Ayıklama** önem derecelerinin işaretini kaldırın. 
 
@@ -141,7 +141,7 @@ Veri toplamayı etkinleştirdiyseniz, şimdi hedef bilgisayardan verileri görme
 
 1. Seçilen çalışma alanında, sol bölmedeki **Günlükler**' i seçin.
 
-2. Günlük sorgusu sayfasında, sorgu Düzenleyicisi ' `Perf` ni yazın ve **Çalıştır**' ı seçin.
+2. Günlük sorgusu sayfasında, sorgu Düzenleyicisi ' ni yazın `Perf` ve **Çalıştır**' ı seçin.
  
     ![Log Analytics günlük araması](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 

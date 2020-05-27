@@ -7,19 +7,19 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bfae8c7afbfdc6e73dd8bb17b94e6543361e9ce
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367576"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848237"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub IP adresleri
 
 Ortak uç noktaların IoT Hub IP adresi önekleri, düzenli aralıklarla _AzureIoTHub_ [Service etiketi](../virtual-network/service-tags-overview.md)altında yayımlanır.
 
 > [!NOTE]
-> Azure IoT Hub, şirket içi ağların içine dağıtılan cihazlar için özel uç noktalarla VNET bağlantısı tümleştirmesini destekler. Daha fazla bilgi için bkz. [VNET için IoT Hub desteği](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints) .
+> Azure IoT Hub, şirket içi ağların içine dağıtılan cihazlar için özel uç noktalarla VNET bağlantısı tümleştirmesini destekler. Daha fazla bilgi için bkz. [VNET için IoT Hub desteği](./virtual-network-support.md) .
 
 
 Bu IP adresi öneklerini, çeşitli ağ yalıtımı hedefleri uygulamak üzere IoT Hub ile cihazlarınız veya Ağ varlıkları arasındaki bağlantıyı denetlemek için kullanabilirsiniz:

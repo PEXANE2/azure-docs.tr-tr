@@ -3,17 +3,17 @@ title: Internet eşlemesi ile eşleme hizmeti
 titleSuffix: Azure
 description: Internet eşlemesi ile eşleme hizmeti
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: overview
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 6c1205fcacd3d7228f1aecf1e603b66d9e1fcee5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/22/2020
+ms.author: derekol
+ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75775708"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849391"
 ---
 # <a name="internet-peering-vs-peering-service"></a>Internet eşlemesi ile eşleme hizmeti
 
@@ -38,15 +38,15 @@ Küresel bir kuruluşun her bir şubesi yukarıdaki şekilde, iş ortağının a
 
 **Eşleme hizmeti müşteri avantajları:**
 * En iyi performans ve güvenilirlik için Microsoft Bulut Hizmetleri Internet üzerinden en iyi genel yönlendirme.
-* Microsoft Bulut bağlanmak için tercih edilen SP 'yi seçme özelliği.
+* Microsoft Bulut bağlanmak için tercih edilen hizmet sağlayıcısını seçme özelliği.
 * Gecikme süresi raporlama ve önek izleme gibi trafik öngörüleri.
 * Microsoft Bulut 'den en uygun ağ atlaması (atlama olarak).
 * Rota Analizi ve istatistikleri-Sınır Ağ Geçidi Protokolü ([BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)) yol bozukluileri (sızıntı/hijak Detection) ve alt öğe yönlendirme yönlendirmesi için olaylar.
 
 ## <a name="peering-service-partnership-requirements"></a>Eşleme hizmeti ortaklığı gereksinimleri
-* Müşteriye yakın bir konumda Microsoft Bulut bağlantı. Bir iş ortağı hizmeti sağlayıcısı, Kullanıcı trafiğini kullanıcıya en yakın Microsoft Edge 'e yönlendirir. Benzer şekilde, kullanıcıya doğru olan trafik üzerinde, Microsoft trafiği (BGP etiketi kullanılarak) kullanıcıya en yakın kenar konumuna yönlendirir ve SP, trafiği kullanıcıya teslim eder.
+* Müşteriye yakın bir konumda Microsoft Bulut bağlantı. Bir iş ortağı hizmeti sağlayıcısı, Kullanıcı trafiğini kullanıcıya en yakın Microsoft Edge 'e yönlendirir. Benzer şekilde, kullanıcıya doğru olan trafik üzerinde, Microsoft trafiği (BGP etiketi kullanılarak) kullanıcıya en yakın kenar konumuna yönlendirir ve hizmet sağlayıcısına trafiği kullanıcıya teslim eder.
 * İş ortağı, Microsoft Global Network ile yüksek oranda kullanılabilir, yüksek aktarım hızı ve coğrafi olarak yedekli bağlantıyı koruyacaktır.
-* İş ortağı, gereksinimi karşılıyorsa eşleme hizmetini desteklemek için mevcut eşlerinden yararlanabilir
+* İş ortağı, gereksinimi karşılıyorsa eşleme hizmetini desteklemek için mevcut eşlerinden yararlanabilir.
 
 ## <a name="faq"></a>SSS
 Sık sorulan sorular için bkz. [eşleme hizmeti-SSS](service-faqs.md).

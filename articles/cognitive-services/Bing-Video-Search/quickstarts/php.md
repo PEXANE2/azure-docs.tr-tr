@@ -8,21 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 357cc85991ac88aef4fd0958e2bc776373f56dc8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c43abc6c87b88e9fc4a15d4ca5d5506389a8a81a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448356"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849629"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Hızlı başlangıç: Bing Video Arama REST API ve PHP kullanarak video arama
 
-Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama sonucu görüntülemek için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulama JavaScript 'te yazıldığı ve Node. js kullandığından, API çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
-Örnek kod PHP 5.6 ile çalışmak üzere yazılmıştır.
+Bing Video Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit PHP uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve JSON yanıtını görüntüler. Örnek kod PHP 5,6 altında çalışacak şekilde yazılmıştır.
 
-API'lerle ilgili teknik ayrıntılar için [API başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)'na bakın.
+Bu uygulama PHP 'de yazılmış olsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -34,10 +33,10 @@ API'lerle ilgili teknik ayrıntılar için [API başvurusu](https://docs.microso
 
 [Bing Video Arama API'si](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) Bing arama motorundan video sonuçları döndürür.
 
-1. Kod açıklamasında belirtildiği gibi `php.ini` dosyanızda güvenli HTTP desteğinin etkinleştirildiğinden emin olun.
+1. `php.ini` `;extension=php_openssl.dll` Aşağıdaki kodda açıklandığı gibi, satırı açıklama ekleyerek DOSYANıZDA güvenli http desteğini etkinleştirin.
 2. Sık kullandığınız IDE veya düzenleyicide yeni bir PHP projesi oluşturun.
 3. Aşağıda sağlanan kodu ekleyin.
-4. `$accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin. `$endpoint`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir.
+4. `$accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin. Değer için `$endpoint` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 5. Programı çalıştırın.
 
 ```php

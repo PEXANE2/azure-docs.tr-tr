@@ -6,14 +6,14 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: bdef440fb8273dbbc5053d1c4eb6607fba0cdab3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744551"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849034"
 ---
-# <a name="getting-paid-in-commercial-marketplace"></a>Ticari Market 'te ücretli olarak edinme
+# <a name="getting-paid-in-the-commercial-marketplace"></a>Ticari Market 'te ücretli olarak edinme
 
 Tekliflerinizin, eklentilerin ve reklam gelirlerine ilişkin ödeme alma hakkında bazı önemli bilgiler aşağıda verilmiştir.
 
@@ -43,17 +43,15 @@ Ayrıca, belirli bir pazara ait yerel para birimiyle seçtiğiniz bir serbest bi
 
 Seçtiğiniz fiyata müşterilerinizin ödemesi gereken satış veya katma değer vergisi dahil olabileceğini göz önünde bulundurun. Ayrıntılar için bkz. [ücretli teklif Için vergi ayrıntıları](tax-details-paid-transactions.md).
 
-
 ## <a name="payout-reporting"></a>Ödeme raporlama
 
 Ödeme bilgilerinize ilişkin ayrıntılara erişip, [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)'nin **ödeme özetinde** rapor indirebilirsiniz. Burada gösterilen bilgiler ve kazandığınız paradan nasıl sınıflandırdığımız hakkında ayrıntılı bilgi için bkz. [ödeme özetine genel bakış](payout-summary-overview.md).
-
 
 ## <a name="payout-time-frame"></a>Ödeme zaman dilimi
 
 Ödemeler aylık olarak yapılır (geçerli ödeme eşiği karşılanmıştır ve ödemenizi aşağıda açıklandığı gibi ayrı tutmaya yerleştirmezsiniz). Genellikle söz konusu ayın 15. gününe kadar, belirli bir ayda ödenmesi gereken tüm ödemeleri göndereceğiz. Ödemelerden, ödeme hesabınıza ulaşmak için genellikle 3 ila 10 ek iş günü ele alındığına göz atın. Ayrıntılar için bkz. [ödeme eşikleri, Yöntemler ve zaman kareleri](payment-thresholds-methods-timeframes.md).
 
-##  <a name="payout-hold-status"></a>Ödeme tutma durumu
+## <a name="payout-hold-status"></a>Ödeme tutma durumu
 
 Varsayılan olarak, yukarıda açıklandığı gibi ödemeleri aylık olarak göndereceğiz. Ancak, ücretlerinizi bir program için yerleştirme seçeneğiniz vardır. Bu, ücretlerinizi hesabınıza göndermemize engel olur. Ödelerinizi beklemeye almaya çalışırsanız, aldığınız herhangi bir geliri kaydetmeye devam edeceğiz ve **ödek özetinizdeki**ayrıntıları sağlarsınız. Ancak, tutmayı kaldırana kadar hesabınıza herhangi bir ödeme gönderemeyiz.
 

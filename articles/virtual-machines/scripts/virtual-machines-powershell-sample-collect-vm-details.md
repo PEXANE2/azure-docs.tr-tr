@@ -1,6 +1,6 @@
 ---
-title: PowerShell ile bir abonelikteki tüm VM 'Lerle ilgili ayrıntıları toplama
-description: PowerShell ile bir abonelikteki tüm VM 'Lerle ilgili ayrıntıları toplama
+title: PowerShell ile bir abonelikteki tüm VM’lerle ilgili ayrıntıları toplama
+description: PowerShell ile bir abonelikteki tüm VM’lerle ilgili ayrıntıları toplama
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
@@ -15,24 +15,24 @@ ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: 237081380445f2b2e4168ee3afe9a3ed7544fc89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27e88966759eaa158ffe86efce9905b1709ddbbe
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74900193"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848731"
 ---
-# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>PowerShell ile bir abonelikteki tüm VM 'Lerle ilgili ayrıntıları toplama
+# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>PowerShell ile bir abonelikteki tüm VM’lerle ilgili ayrıntıları toplama
 
-Bu betik VM adı, kaynak grubu adı, bölge, sanal ağ, alt ağ, özel IP adresi, işletim sistemi türü ve belirtilen abonelikteki VM 'Lerin genel IP adresini içeren bir CSV oluşturur.
+Bu betik VM adı, kaynak grubu adı, bölge, VM boyutu, sanal ağ, alt ağ, özel IP adresi, işletim sistemi türü ve belirtilen abonelikteki VM 'Lerin genel IP adresini içeren bir CSV oluşturur.
 
-[Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
+[Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -49,7 +49,7 @@ $vms = Get-AzVM
 $publicIps = Get-AzPublicIpAddress 
 $nics = Get-AzNetworkInterface | ?{ $_.VirtualMachine -NE $null} 
 foreach ($nic in $nics) { 
-    $info = "" | Select VmName, ResourceGroupName, Region, VirturalNetwork, Subnet, PrivateIpAddress, OsType, PublicIPAddress 
+    $info = "" | Select VmName, ResourceGroupName, Region, VmSize, VirturalNetwork, Subnet, PrivateIpAddress, OsType, PublicIPAddress 
     $vm = $vms | ? -Property Id -eq $nic.VirtualMachine.id 
     foreach($publicIp in $publicIps) { 
         if($nic.IpConfigurations.id -eq $publicIp.ipconfiguration.Id) {
@@ -60,12 +60,13 @@ foreach ($nic in $nics) {
         $info.VMName = $vm.Name 
         $info.ResourceGroupName = $vm.ResourceGroupName 
         $info.Region = $vm.Location 
+        $info.VmSize = $vm.HardwareProfile.VmSize
         $info.VirturalNetwork = $nic.IpConfigurations.subnet.Id.Split("/")[-3] 
         $info.Subnet = $nic.IpConfigurations.subnet.Id.Split("/")[-1] 
         $info.PrivateIpAddress = $nic.IpConfigurations.PrivateIpAddress 
         $report+=$info 
     } 
-$report | ft VmName, ResourceGroupName, Region, VirturalNetwork, Subnet, PrivateIpAddress, OsType, PublicIPAddress 
+$report | ft VmName, ResourceGroupName, Region, VmSize, VirturalNetwork, Subnet, PrivateIpAddress, OsType, PublicIPAddress 
 $report | Export-CSV "$home/$reportName"
 ```
 

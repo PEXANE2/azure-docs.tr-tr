@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 474eb4f5247aeb77edce0ebfde1611bf2deef493
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0a4d0c22318399370b9ec11046c33a4eb5460eb3
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930412"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860129"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>PowerShell ile ana bilgisayar havuzu oluşturma
 
@@ -114,7 +114,7 @@ Windows sanal masaüstü aracılarını kaydettirmek için, her bir sanal makine
 1. Sanal makineyi oluştururken girdiğiniz kimlik bilgileriyle [sanal makineye bağlanın](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) .
 2. Windows sanal masaüstü aracısını indirip yükleyin.
    - [Windows sanal masaüstü aracısını](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv)indirin.
-   - Yükleyiciyi çalıştırın. Yükleyici kayıt belirtecini istediğinde, **Export-RdsRegistrationInfo** cmdlet 'inden aldığınız değeri girin.
+   - Yükleyiciyi çalıştırın. Yükleyici kayıt belirtecini istediğinde, **Export-AzWVDRegistrationInfo** cmdlet 'inden aldığınız değeri girin.
 3. Windows sanal masaüstü Aracısı önyükleme yükleyicisine indirin ve yükleyin.
    - [Windows sanal masaüstü Aracısı önyükleme yükleyicisine](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH)indirin.
    - Yükleyiciyi çalıştırın.
