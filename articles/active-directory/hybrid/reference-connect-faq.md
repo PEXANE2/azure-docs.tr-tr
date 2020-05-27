@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77149822"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827157"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -218,7 +218,7 @@ Evet, hala sürüm 1.1.750.0 veya sonraki sürüme yükseltmeniz gerekir. PowerS
 Azure AD Connect yükseltmek için başlangıçta kullanılan Kullanıcı adını ve parolayı bilmeniz gerekmez. Genel yönetici rolüne sahip herhangi bir Azure AD hesabını kullanın.
 
 **S: hangi Azure AD Connect sürümünü kullandığım hakkında nasıl öğrenebilirim?**  
-Sunucunuza hangi Azure AD Connect sürümünün yüklendiğini doğrulamak için, Denetim Masası ' na gidin ve aşağıda gösterildiği gibi **Programlar** > **Programlar ve Özellikler**' i seçerek Microsoft Azure AD Connect ' in yüklü sürümünü bulun:
+Sunucunuza hangi Azure AD Connect sürümünün yüklendiğini doğrulamak için, Denetim Masası ' na gidin ve **Programs**  >  aşağıda gösterildiği gibi programlar**Programlar ve Özellikler**' i seçerek Microsoft Azure AD Connect ' in yüklü sürümünü bulun:
 
 ![Denetim Masası 'nda Azure AD Connect sürümü](./media/reference-connect-faq/faq1.png)
 
@@ -265,9 +265,9 @@ Azure AD Connect daha yeni bir sürüme yükseltme için yardıma ihtiyacınız 
 
 * Azure AD Connect desteğiyle ilgili sık karşılaşılan sorunları gidermek için KB 'de teknik çözümler arayın.
 
-[Azure Active Directory forumları](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+[Microsoft Q&Azure Active Directory için soru sayfası](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
 
-* [Azure AD Community](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)'ye giderek Teknik sorular ve yanıtlar arayın veya kendi sorularınızı sorun.
+* [Azure AD Community](https://docs.microsoft.com/answers/topics/azure-active-directory.html)'ye giderek Teknik sorular ve yanıtlar arayın veya kendi sorularınızı sorun.
 
 [Azure AD için destek alma](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 6a838455bfda47dee55e8726e5eab071d2dfe4f7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 348ddb0fa8bd973a7e8ebcf5ae14de1eee57d5a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121159"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827531"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Anahtar kasasına güvenli erişim
 
@@ -52,7 +52,7 @@ Uygulamalar, uç noktalar aracılığıyla düzlemleri erişir. İki düzlemi i�
 
 Aşağıdaki tabloda yönetim ve veri düzlemleri için uç noktalar gösterilmektedir.
 
-| Erişim &nbsp; düzlemi | Erişim uç noktaları | İşlemler | Erişim &nbsp; denetimi mekanizması |
+| Erişim &nbsp; düzlemi | Erişim uç noktaları | Operations | Erişim &nbsp; denetimi mekanizması |
 | --- | --- | --- | --- |
 | Yönetim düzlemi | **Genel**<br> management.azure.com:443<br><br> **Azure Çin 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure ABD kamu:**<br> management.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> management.microsoftazure.de:443 | Anahtar kasaları oluşturun, okuyun, güncelleştirin ve silin<br><br>Key Vault erişim ilkelerini ayarlama<br><br>Key Vault etiketlerini ayarla | RBAC Azure Resource Manager |
 | Veri düzlemi | **Genel**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure Çin 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure ABD kamu:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | Anahtarlar: şifre çözme, şifreleme,<br> sarmalama geri al, sarmala, doğrula, imzala,<br> Al, Listele, Güncelleştir, oluştur,<br> İçeri aktarma, silme, yedekleme, geri yükleme<br><br> Gizlilikler: get, List, set, Delete | Key Vault erişim ilkesi |
@@ -233,4 +233,4 @@ Key Vault için kullanım günlüğü hakkında daha fazla bilgi için bkz. [Azu
 
 Azure Key Vault ile anahtarları ve gizli dizileri kullanma hakkında daha fazla bilgi için bkz. [anahtarlar ve gizli diziler hakkında](https://msdn.microsoft.com/library/azure/dn903623.aspx).
 
-Key Vault hakkında sorularınız varsa [forumları](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)ziyaret edin.
+Key Vault hakkında sorularınız varsa [Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-key-vault.html)ziyaret edin.

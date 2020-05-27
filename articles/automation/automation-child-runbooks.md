@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5c562fb43966fda203e92cc5003ef3c85945364b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c15ed6e9409bee71a778986d8f38ae1ab126c180
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742827"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828653"
 ---
 # <a name="create-modular-runbooks"></a>Modüler runbook’lar oluşturma
 
@@ -117,5 +117,5 @@ Start-AzAutomationRunbook `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu'nda Runbook başlatma](start-runbooks.md)
-* [Azure Otomasyonu 'nda Runbook çıkışı ve iletileri](automation-runbook-output-and-messages.md)
+* Runbook 'unuzu çalıştırmayı çalıştırmak için bkz. [Azure Otomasyonu 'nda runbook başlatma](start-runbooks.md).
+* Runbook işleminin izlenmesi için bkz. [Azure Otomasyonu 'Nda Runbook çıkışı ve iletileri](automation-runbook-output-and-messages.md).

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 8ffd0fd558cf759fadd912de9dff4acf49d9659f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2db6d614c3c12cb1be87724e79d79a16769d6b8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789095"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829605"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Twitter 'ı izleyin ve yönetin
 
@@ -55,7 +55,7 @@ Twitter hesabınızdan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı d
        -veya-
 
      * Eylem eklemek istediğiniz adımlar arasında, işaretçinizi adımlar arasındaki oka taşıyın. 
-     Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+     Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
      
        Arama kutusuna filtreniz olarak "Twitter" yazın. 
        Eylemler listesi altında istediğiniz eylemi seçin.
@@ -82,9 +82,9 @@ Bu eylem bir tweet nakleder, ancak bu eylemi, Tweet 'in daha önce açıklanan t
 
 Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/twitterconnector/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

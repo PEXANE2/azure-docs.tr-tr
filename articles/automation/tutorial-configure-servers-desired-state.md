@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 93fb896dfc373a7402bbb3d1a38a655088d27fdf
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a45aa8299d61e89f2a21bc9c53de3a88f88cbb93
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735929"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827905"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Makineleri istenen duruma yapılandırma
 
@@ -26,8 +26,6 @@ Azure Otomasyonu durum yapılandırması sunucularınız için yapılandırmalar
 Bu öğreticide, IIS 'nin VM 'de yüklü olmasını sağlayan basit bir [DSC yapılandırması](/powershell/scripting/dsc/configurations/configurations) kullanırız.
 
 ## <a name="prerequisites"></a>Ön koşullar
-
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 - Azure Otomasyonu hesabı. Bir Azure Otomasyonu Garklı Çalıştır hesabı oluşturma yönergeleri için bkz. [Azure Farklı Çalıştır Hesabı](automation-sec-configure-azure-runas-account.md).
 - Windows Server 2008 R2 veya üstünü çalıştıran bir Azure Resource Manager VM (klasik değil). VM oluşturma yönergeleri için [Azure Portal Ilk Windows sanal makinenizi oluşturma](../virtual-machines/virtual-machines-windows-hero-tutorial.md)bölümüne bakın.
@@ -163,9 +161,10 @@ PowerShell kullanarak Azure Otomasyonu durum yapılandırma hizmeti 'nden bir d�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu durum yapılandırması 'nı kullanmaya başlama](automation-dsc-getting-started.md)
-* [Azure Otomasyonu durum yapılandırmasını etkinleştirme](automation-dsc-onboarding.md)
-* [Azure Otomasyonu durum yapılandırmasında yapılandırmaları derleme](automation-dsc-compile.md)
-* [Azure Otomasyonu durum yapılandırması cmdlet 'leri](/powershell/module/azurerm.automation/#automation)
-* [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/)
-- [Chocolatey ile sürekli dağıtım ayarlama](automation-dsc-cd-chocolatey.md)
+- Başlamak için bkz. [Azure Otomasyonu durum yapılandırmasını kullanmaya başlama](automation-dsc-getting-started.md).
+- Düğümleri nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure Otomasyonu durum yapılandırmasını etkinleştirme](automation-dsc-onboarding.md).
+- Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
+- Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Chocolatey ile sürekli dağıtımı ayarlama](automation-dsc-cd-chocolatey.md).
+- Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

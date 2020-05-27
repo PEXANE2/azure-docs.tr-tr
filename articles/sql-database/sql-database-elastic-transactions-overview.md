@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7568a8a80550677e1608e1a8a52ebeacce765c81
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68568290"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826426"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Bulut veritabanlarında dağıtılmış işlemler
 
@@ -143,9 +143,9 @@ Devam eden elastik veritabanı işlemlerinizin durumunu ve ilerlemesini izlemek 
 
 Bu DMVs 'ler özellikle yararlıdır:
 
-* **sys.DM\_Tran\_etkin\_işlemler**: etkin olan işlemleri ve bunların durumlarını listeler. UOW (Iş birimi) sütunu, aynı dağıtılmış işleme ait farklı alt işlemleri tanımlayabilir. Aynı dağıtılmış işlem içindeki tüm işlemler aynı UOW değerini taşır. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms174302.aspx) .
-* **sys.DM\_Tran\_veritabanı\_işlemleri**: işlemin günlüğe yerleştirilmesi gibi işlemler hakkında ek bilgiler sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms186957.aspx) .
-* **sys.DM\_Tran\_kilitleri**: devam eden işlemler tarafından şu anda tutulan kilitler hakkında bilgi sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms190345.aspx) .
+* **sys.DM \_ Tran \_ etkin \_ işlemler**: etkin olan işlemleri ve bunların durumlarını listeler. UOW (Iş birimi) sütunu, aynı dağıtılmış işleme ait farklı alt işlemleri tanımlayabilir. Aynı dağıtılmış işlem içindeki tüm işlemler aynı UOW değerini taşır. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms174302.aspx) .
+* **sys.DM \_ Tran \_ veritabanı \_ işlemleri**: işlemin günlüğe yerleştirilmesi gibi işlemler hakkında ek bilgiler sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms186957.aspx) .
+* **sys.DM \_ Tran \_ kilitleri**: devam eden işlemler tarafından şu anda tutulan kilitler hakkında bilgi sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms190345.aspx) .
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -157,7 +157,7 @@ Aşağıdaki sınırlamalar şu anda SQL DB 'de elastik veritabanı işlemleri i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorularınız için lütfen [SQL veritabanı forumundan](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) bize ulaşın ve özellik istekleri için lütfen bunları [SQL veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)ekleyin.
+Sorularınız için lütfen SQL veritabanı ve özellik istekleri için [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-sql-database.html) bize ulaşın, lütfen bunları [SQL veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)ekleyin.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

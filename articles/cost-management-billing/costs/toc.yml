@@ -10,7 +10,7 @@
       items:
         - name: Maliyet analizini başlatın
           href: quick-acm-cost-analysis.md
-        - name: Şablon kullanarak bütçe oluşturma
+        - name: Bütçe oluşturma - ARM şablonu
           href: quick-create-budget-template.md
           displayName: 'ARM template, resource manager template'
     - name: Öğreticiler

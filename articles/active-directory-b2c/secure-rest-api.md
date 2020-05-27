@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 34ed6d043f713aa55bfe464c48d4332364df805d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f1897a4f58276bbac2a7de673544e592a562562
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680373"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826681"
 ---
 # <a name="secure-your-restful-services"></a>Yeniden takip eden hizmetlerinizi güvenli hale getirin 
 
@@ -43,7 +43,7 @@ HTTP temel kimlik doğrulaması, [RFC 2617](https://tools.ietf.org/html/rfc2617)
 
 HTTP temel kimlik doğrulamasıyla REST API teknik bir profil yapılandırmak için, Kullanıcı adını ve parolayı depolamak üzere aşağıdaki şifreleme anahtarlarını oluşturun:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C dizininizi seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -68,11 +68,11 @@ HTTP temel kimlik doğrulamasıyla REST API teknik bir profil yapılandırmak i�
 Gerekli anahtarları oluşturduktan sonra, REST API teknik profil meta verilerinizi kimlik bilgilerine başvuracak şekilde yapılandırın.
 
 1. Çalışma dizininizde, uzantı ilkesi dosyasını açın (TrustFrameworkExtensions. xml).
-1. REST API teknik profilini arayın. Örneğin `REST-ValidateProfile`, veya `REST-GetProfile`.
-1. `<Metadata>` Öğesini bulun.
-1. *AuthenticationType* öğesini olarak `Basic`değiştirin.
-1. *Allowınsecureauthınproduction* öğesini olarak `false`değiştirin.
-1. Kapanış `</Metadata>` öğesinden hemen sonra aşağıdaki XML kod parçacığını ekleyin:
+1. REST API teknik profilini arayın. Örneğin `REST-ValidateProfile` , veya `REST-GetProfile` .
+1. Öğesini bulun `<Metadata>` .
+1. *AuthenticationType* öğesini olarak değiştirin `Basic` .
+1. *Allowınsecureauthınproduction* öğesini olarak değiştirin `false` .
+1. Kapanış öğesinden hemen sonra `</Metadata>` AŞAĞıDAKI XML kod parçacığını ekleyin:
     ```xml
     <CryptographicKeys>
         <Key Id="BasicAuthenticationUsername" StorageReferenceId="B2C_1A_RestApiUsername" />
@@ -113,7 +113,7 @@ Aşağıda, HTTP temel kimlik doğrulaması ile yapılandırılmış bir RESTAN 
 
 Üretim dışı ortamlar için, zaten bir sertifikanız yoksa, kendinden imzalı bir sertifika kullanabilirsiniz. Windows 'da, bir sertifika oluşturmak için PowerShell 'in [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet 'ini kullanabilirsiniz.
 
-1. Otomatik olarak imzalanan bir sertifika oluşturmak için bu PowerShell komutunu yürütün. Bağımsız değişkeni `-Subject` , uygulamanız için uygun şekilde değiştirin ve kiracı adı Azure AD B2C. Ayrıca, sertifika için farklı `-NotAfter` bir süre sonu belirtmek üzere tarihi de ayarlayabilirsiniz.
+1. Otomatik olarak imzalanan bir sertifika oluşturmak için bu PowerShell komutunu yürütün. `-Subject`Bağımsız değişkeni, uygulamanız için uygun şekilde değiştirin ve kiracı adı Azure AD B2C. Ayrıca, `-NotAfter` sertifika için farklı bir süre sonu belirtmek üzere tarihi de ayarlayabilirsiniz.
     ```PowerShell
     New-SelfSignedCertificate `
         -KeyExportPolicy Exportable `
@@ -124,15 +124,15 @@ Aşağıda, HTTP temel kimlik doğrulaması ile yapılandırılmış bir RESTAN 
         -NotAfter (Get-Date).AddMonths(12) `
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```    
-1. **Kullanıcı sertifikalarını** > Yönet**Geçerli Kullanıcı** > **Kişisel** > **sertifikaları** > *YourAppName.yourtenant.onmicrosoft.com*' nı açın.
-1. **Action** > **Tüm**görevler > **dışarı aktarma**> sertifika eylemini seçin.
-1. **Evet** > **İleri****Next****Yes, export the private key** > Evet ' i seçin, ardından özel anahtarı dışarı aktarın. > 
+1. **Kullanıcı sertifikalarını Yönet**  >  **Geçerli Kullanıcı**  >  **Kişisel**  >  **sertifikaları**  >  *YourAppName.yourtenant.onmicrosoft.com*' nı açın.
+1. **Action**  >  **Tüm görevler**  >  **dışarı aktarma**> sertifika eylemini seçin.
+1. **Evet**  >  **İleri**  >  **Evet ' i seçin, ardından özel anahtarı dışarı aktarın**  >  **Next**.
 1. **Dışarı aktarma dosya biçimi**için varsayılanları kabul edin.
 1. Sertifika için bir parola girin.
 
 ### <a name="add-a-client-certificate-policy-key"></a>İstemci sertifikası ilke anahtarı ekleme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C dizininizi seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -149,11 +149,11 @@ Aşağıda, HTTP temel kimlik doğrulaması ile yapılandırılmış bir RESTAN 
 Gerekli anahtarı oluşturduktan sonra, REST API teknik profil meta verilerinizi istemci sertifikasına başvuracak şekilde yapılandırın.
 
 1. Çalışma dizininizde, uzantı ilkesi dosyasını açın (TrustFrameworkExtensions. xml).
-1. REST API teknik profilini arayın. Örneğin `REST-ValidateProfile`, veya `REST-GetProfile`.
-1. `<Metadata>` Öğesini bulun.
-1. *AuthenticationType* öğesini olarak `ClientCertificate`değiştirin.
-1. *Allowınsecureauthınproduction* öğesini olarak `false`değiştirin.
-1. Kapanış `</Metadata>` öğesinden hemen sonra aşağıdaki XML kod parçacığını ekleyin:
+1. REST API teknik profilini arayın. Örneğin `REST-ValidateProfile` , veya `REST-GetProfile` .
+1. Öğesini bulun `<Metadata>` .
+1. *AuthenticationType* öğesini olarak değiştirin `ClientCertificate` .
+1. *Allowınsecureauthınproduction* öğesini olarak değiştirin `false` .
+1. Kapanış öğesinden hemen sonra `</Metadata>` AŞAĞıDAKI XML kod parçacığını ekleyin:
     ```xml
     <CryptographicKeys>
        <Key Id="ClientCertificate" StorageReferenceId="B2C_1A_RestApiClientCertificate" />
@@ -208,7 +208,7 @@ Aşağıdaki adımlarda, istemci kimlik bilgilerinin bir taşıyıcı belirtecin
 
 Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici olarak depolanmasını sağlar. [Talep şeması](claimsschema.md) , taleplerinizi bildirdiğiniz yerdir. Erişim belirtecinin daha sonra kullanılabilmesi için bir talep halinde depolanması gerekir. 
 
-1. İlkenizin uzantıları dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+1. İlkenizin uzantıları dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. [Claimsschema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
 1. Aşağıdaki talepleri **Claimsschema** öğesine ekleyin.  
@@ -241,7 +241,7 @@ ServiceUrl 'Si için-kiracı adınızı Azure AD kiracınızın adıyla değişt
   <DisplayName></DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
-    <Item Key="ServiceUrl">https://login.microsoftonline.com/your-tenant-name.microsoft.com/oauth2/v2.0/token</Item>
+    <Item Key="ServiceUrl">https://login.microsoftonline.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token</Item>
     <Item Key="AuthenticationType">Basic</Item>
      <Item Key="SendClaimsIn">Form</Item>
   </Metadata>
@@ -265,13 +265,13 @@ ServiceUrl 'Si için-kiracı adınızı Azure AD kiracınızın adıyla değişt
 Özel ilkenizde taşıyıcı belirteç kimlik doğrulamasını desteklemek için REST API teknik profilini aşağıdaki şekilde değiştirin:
 
 1. Çalışma dizininizde, *TrustFrameworkExtensions. xml* uzantısı ilke dosyasını açın.
-1. İçeren `<TechnicalProfile>` `Id="REST-API-SignUp"`düğümü arayın.
-1. `<Metadata>` Öğesini bulun.
+1. `<TechnicalProfile>`İçeren düğümü arayın `Id="REST-API-SignUp"` .
+1. Öğesini bulun `<Metadata>` .
 1. *AuthenticationType* *'yi aşağıdaki şekilde değiştirin*:
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
     ```
-1. *Useclaimasyataertoken* öğesini aşağıdaki gibi *yataertoken*'a değiştirin veya ekleyin. *Pulertoken* , taşıyıcı belirtecin alınacağı talebin adıdır (çıkış talebi kaynağından `SecureREST-AccessToken`).
+1. *Useclaimasyataertoken* öğesini aşağıdaki gibi *yataertoken*'a değiştirin veya ekleyin. *Pulertoken* , taşıyıcı belirtecin alınacağı talebin adıdır (çıkış talebi kaynağından `SecureREST-AccessToken` ).
 
     ```xml
     <Item Key="UseClaimAsBearerToken">bearerToken</Item>
@@ -314,15 +314,15 @@ Yukarıdaki kod parçacıklarını ekledikten sonra teknik profiliniz aşağıda
 
 Taşıyıcı belirteç değerini depolamak için bir ilke anahtarı oluşturun.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C dizininizi seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
 1. **Ilke anahtarlarını**seçin ve ardından **Ekle**' yi seçin.
-1. **Seçenekler**için öğesini seçin `Manual`.
-1. İlke anahtarı için bir **ad** girin. Örneğin, `RestApiBearerToken`. Ön ek `B2C_1A_` , anahtarınızın adına otomatik olarak eklenir.
+1. **Seçenekler**için öğesini seçin `Manual` .
+1. İlke anahtarı için bir **ad** girin. Örneğin, `RestApiBearerToken`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
 1. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
-1. **Anahtar kullanımı**için öğesini seçin `Encryption`.
+1. **Anahtar kullanımı**için öğesini seçin `Encryption` .
 1. **Oluştur**’u seçin.
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-the-bearer-token-policy-key"></a>REST API teknik profilinizi, taşıyıcı belirteç ilkesi anahtarını kullanacak şekilde yapılandırın
@@ -330,11 +330,11 @@ Taşıyıcı belirteç değerini depolamak için bir ilke anahtarı oluşturun.
 Gerekli anahtarı oluşturduktan sonra, REST API teknik profil meta verilerinizi taşıyıcı belirtecine başvuracak şekilde yapılandırın.
 
 1. Çalışma dizininizde, uzantı ilkesi dosyasını açın (TrustFrameworkExtensions. xml).
-1. REST API teknik profilini arayın. Örneğin `REST-ValidateProfile`, veya `REST-GetProfile`.
-1. `<Metadata>` Öğesini bulun.
-1. *AuthenticationType* öğesini olarak `Bearer`değiştirin.
-1. *Allowınsecureauthınproduction* öğesini olarak `false`değiştirin.
-1. Kapanış `</Metadata>` öğesinden hemen sonra aşağıdaki XML kod parçacığını ekleyin:
+1. REST API teknik profilini arayın. Örneğin `REST-ValidateProfile` , veya `REST-GetProfile` .
+1. Öğesini bulun `<Metadata>` .
+1. *AuthenticationType* öğesini olarak değiştirin `Bearer` .
+1. *Allowınsecureauthınproduction* öğesini olarak değiştirin `false` .
+1. Kapanış öğesinden hemen sonra `</Metadata>` AŞAĞıDAKI XML kod parçacığını ekleyin:
     ```xml
     <CryptographicKeys>
        <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_RestApiBearerToken" />

@@ -266,7 +266,7 @@
     - name: Azure Dosya Eşitleme yayın notları
       href: storage-files-release-notes.md
     - name: Azure Depolama forumu
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+      href: 'https://docs.microsoft.com/answers/products/azure?product=storage'
     - name: Stack Overflow üzerinde Azure Depolama
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
     - name: Azure depolama fiyatlandırması

@@ -11,16 +11,16 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: b27b046d53a45c91d0a55a468758386437a7a6a5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9606bf0108186cd73adbdb38aef3ac428da229d6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739673"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828415"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Güvenlik bilgilerini kullanarak iş veya okul parolanızı sıfırlayın
 
-İş veya okul parolanızı unuttuysanız, kuruluşunuzda hiç parola yoksa veya hesabınızı kilitlediyseniz, iş veya okul parolanızı sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz. Bilgilerinizi ayarlayabilmeniz ve kendi parolanızı sıfırlayabilmeniz için yöneticinizin bu özelliği açmanız gerekir.
+İş veya okul parolanızı unuttuysanız, kuruluşunuzda hiç parola yoksa veya hesabınızı kilitlediyseniz, iş veya okul parolanızı sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz. Bilgilerinizi ayarlayabilmeniz ve [kendi parolanızı sıfırlayabilmeniz](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register)için yöneticinizin bu özelliği açmanız gerekir.
 
 Parolanızı biliyorsanız, ancak bunu değiştirmek istiyorsanız, bu makalenin [parola adımlarınızı değiştirme](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) başlıklı bölüme bakın.
 

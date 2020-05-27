@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 792f69c900853d76dc260ad1de2e635e47bb2b4a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c440862f1379983d4644fe99f33207456f747d23
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744381"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830948"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Güncelleştirme Yönetimi ile dinamik grupları kullanma
 
@@ -49,4 +49,4 @@ Azure dışı makineler için dinamik bir grup, bilgisayar grupları olarak da a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)
+Güncelleştirme Yönetimi çalışmak için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).

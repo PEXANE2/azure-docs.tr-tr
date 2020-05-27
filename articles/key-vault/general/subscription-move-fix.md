@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 94bcba80e5768d57e3dc97bed1a74a8369ac60b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e35f5c9288860056a910f54f9601b2178a628bb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422896"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828092"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Abonelik taşıma işlemi sonrasında anahtar kasası kiracı kimliğini değiştirme
 
@@ -61,4 +61,4 @@ MSI kullanıyorsanız, eski kimlik artık doğru AAD kiracısında yer kalmadı�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Anahtar Kasası ile ilgili sorularınız varsa bkz. [Azure Anahtar Kasası Forumları](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+Azure Key Vault hakkında sorularınız varsa [Azure Key Vault Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-key-vault.html)ziyaret edin.

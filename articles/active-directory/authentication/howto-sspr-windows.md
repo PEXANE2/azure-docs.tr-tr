@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95d1ffec6a849cb97a6151717c3e30dc362b1403
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743353"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826613"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Nasıl yapılır: Windows oturum açma ekranından parola sıfırlamayı etkinleştirme
 
@@ -30,7 +30,7 @@ Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekr
 - Bazı 3 taraf kimlik bilgileri sağlayıcılarının bu özellikle ilgili sorunlara neden olduğu bilinmektedir.
 - [EnableLUA kayıt defteri anahtarı](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) DEĞIŞIKLIĞI aracılığıyla UAC 'nin devre dışı bırakılması, sorunlara yol açabilecek şekilde bilinmektedir.
 - Bu özellik, 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda ve "Kullanıcı oturum açmadan hemen önce gerçekleştir" seçeneği için çalışmaz. 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda, bu özelliği etkinleştirmek için makine kimlik doğrulamasının kullanılması önerilir.
-- Hibrit Azure AD 'ye katılmış makineler, yeni parolayı kullanmak ve önbelleğe alınmış kimlik bilgilerini güncelleştirmek için bir etki alanı denetleyicisine görüşün ağ bağlantısı hattına sahip olmalıdır.
+- Hibrit Azure AD 'ye katılmış makineler, yeni parolayı kullanmak ve önbelleğe alınmış kimlik bilgilerini güncelleştirmek için bir etki alanı denetleyicisine görüşün ağ bağlantısı hattına sahip olmalıdır. Bu, cihazların kuruluşun iç ağı üzerinde veya şirket içi etki alanı denetleyicisine ağ erişimi olan bir VPN üzerinde olması gerektiği anlamına gelir. 
 - Bir görüntü kullanıyorsanız, Sysprep 'i çalıştırmadan önce, CopyProfile adımını gerçekleştirmeden önce yerleşik yönetici için Web önbelleğinin temizlendiğinden emin olun. Bu adım hakkında daha fazla bilgi, [özel varsayılan kullanıcı profili kullanılırken destek makalesinde performans düşüklede](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)bulunabilir.
 - Aşağıdaki ayarların Windows 10 cihazlarında parola kullanma ve sıfırlama yeteneğinin kesintiye uğratabileceği bilinmektedir
     - V1809 öncesi Windows 10 sürümlerindeki ilke için Ctrl + Alt + Del gerekliyse, **parola sıfırlama** işlemi çalışmaz.
@@ -53,7 +53,7 @@ Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekr
 - **Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir**
 - Ağ proxy 'si gereksinimleri
    - Windows 10 cihazları 
-       - 443 numaralı bağlantı `passwordreset.microsoftonline.com` noktası ve`ajax.aspnetcdn.com`
+       - 443 numaralı bağlantı noktası `passwordreset.microsoftonline.com` ve`ajax.aspnetcdn.com`
        - Windows 10 cihazları yalnızca makine düzeyinde ara sunucu yapılandırmasını destekler
 - En az Windows 10, sürüm 2018 Güncelleştirmesi (v1803) çalıştırın ve cihazların şunlardan biri olması gerekir:
     - Azure AD'ye katılanlar
@@ -66,7 +66,7 @@ Oturum açma ekranından parola sıfırlama yapılmasını sağlayan yapılandı
 #### <a name="create-a-device-configuration-policy-in-intune"></a>Intune'da cihaz yapılandırma ilkesi oluşturma
 
 1. [Azure Portal](https://portal.azure.com)'da oturum açın ve **Intune**'a tıklayın.
-1. **Cihaz yapılandırma** > **profilleri** > **Profil oluştur** ' a giderek yeni bir cihaz yapılandırma profili oluşturun
+1. **Cihaz yapılandırma**  >  **profilleri**  >  **Profil oluştur** ' a giderek yeni bir cihaz yapılandırma profili oluşturun
    - Profil için anlamlı bir ad girin
    - İsteğe bağlı olarak, profil için anlamlı bir açıklama girin
    - Platform **Windows 10 ve üstü**
@@ -97,7 +97,7 @@ Azure AD denetim günlüğü parola sıfırlamanın oluştuğu yerin IP adresi v
 
 ![Örnek Windows 7 parola sıfırlama Azure AD denetim günlüğünde](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Kullanıcılar bir Windows 10 cihazının oturum açma ekranından parolalarını sıfırlarında, adlı `defaultuser1` düşük ayrıcalıklı geçici bir hesap oluşturulur. Bu hesap, parola sıfırlama işleminin güvenli kalmasını sağlamak için kullanılır. Hesabın kendisi rastgele oluşturulmuş bir parolaya sahiptir, cihaz oturum açma için gösterilmez ve Kullanıcı parolasını sıfırladıktan sonra otomatik olarak kaldırılacaktır. Birden `defaultuser` çok profil var olabilir, ancak güvenle yoksayılabilir.
+Kullanıcılar bir Windows 10 cihazının oturum açma ekranından parolalarını sıfırlarında, adlı düşük ayrıcalıklı geçici bir hesap `defaultuser1` oluşturulur. Bu hesap, parola sıfırlama işleminin güvenli kalmasını sağlamak için kullanılır. Hesabın kendisi rastgele oluşturulmuş bir parolaya sahiptir, cihaz oturum açma için gösterilmez ve Kullanıcı parolasını sıfırladıktan sonra otomatik olarak kaldırılacaktır. Birden çok `defaultuser` profil var olabilir, ancak güvenle yoksayılabilir.
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 ve 8,1 parola sıfırlama
 
@@ -141,8 +141,8 @@ Ek günlüğe kaydetme gerekliyse, ayrıntılı günlük kaydını etkinleştirm
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Ayrıntılı günlüğü etkinleştirmek için, oluşturun `REG_DWORD: "EnableLogging"`ve 1 olarak ayarlayın.
-- Ayrıntılı günlük kaydını devre dışı bırakmak için `REG_DWORD: "EnableLogging"` öğesini 0 olarak değiştirin.
+- Ayrıntılı günlüğü etkinleştirmek için, oluşturun `REG_DWORD: "EnableLogging"` ve 1 olarak ayarlayın.
+- Ayrıntılı günlük kaydını devre dışı bırakmak için öğesini `REG_DWORD: "EnableLogging"` 0 olarak değiştirin.
 
 ## <a name="what-do-users-see"></a>Kullanıcıların ne görecek
 
