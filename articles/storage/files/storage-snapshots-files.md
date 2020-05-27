@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b50407b3ea7389388577d229f67a4e4baca4296d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176150"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873587"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Dosyaları için paylaşım anlık görüntülerine genel bakış 
 Azure dosyaları, dosya paylaşımlarının paylaşım anlık görüntülerini alma özelliğini sağlar. Anlık görüntü paylaşma, zaman içinde bu noktada paylaşma durumunu yakalar. Bu makalede, paylaşma anlık görüntülerinin sağladığı özellikleri ve özel kullanım kasaınızda bunlardan nasıl yararlanacağınızı anladık.
@@ -37,7 +37,7 @@ Bir paylaşma anlık görüntüsü oluşturulduktan sonra okunabilir, kopyalanab
 
 Paylaşılan anlık görüntü özelliği dosya paylaşma düzeyinde sağlanır. Tek tek dosyaları geri yüklemeye izin vermek için tek tek dosya düzeyinde alma sağlanır. SMB, REST API, Portal, istemci kitaplığı veya PowerShell/CLı araçları kullanarak bir dosya paylaşımının tamamını geri yükleyebilirsiniz.
 
-Bir dosya paylaşımının paylaşma anlık görüntüsü, temel dosya paylaşımıyla aynıdır. Tek fark, paylaşma anlık görüntüsünün alındığı saati göstermek için Share URI 'sine bir **DateTime** değeri eklenmeiydi. Örneğin, bir dosya paylaşımının URI 'SI http:\//storagesample.Core.File.Windows.net/myshare ise, paylaşılan anlık görüntü URI 'si şuna benzerdir:
+Bir dosya paylaşımının paylaşma anlık görüntüsü, temel dosya paylaşımıyla aynıdır. Tek fark, paylaşma anlık görüntüsünün alındığı saati göstermek için Share URI 'sine bir **DateTime** değeri eklenmeiydi. Örneğin, bir dosya paylaşımının URI 'SI http: \/ /storagesample.Core.File.Windows.net/myshare ise, paylaşılan anlık görüntü URI 'si şuna benzerdir:
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -80,7 +80,7 @@ Azure üzerinde altyapı çalıştırırken, mümkün olduğunda veri kurtarma y
 
 Paylaşma anlık görüntüsü Zamanlayıcı 'yı dağıtmadan önce, paylaşılan anlık görüntü sıklığınızı ve bekletme ayarlarını dikkatle gözden geçirin ve gereksiz ücretleri kullanmaktan kaçının.
 
-Paylaşılan anlık görüntüler yalnızca dosya düzeyinde koruma sağlar. Paylaşılan anlık görüntüler bir dosya paylaşımında veya depolama hesabında FAT-parmak silme işlemlerini engellemez. Bir depolama hesabının yanlışlıkla silinmekten korunmasını sağlamak için, depolama hesabını veya kaynak grubunu kilitlemeniz gerekir.
+Paylaşılan anlık görüntüler yalnızca dosya düzeyinde koruma sağlar. Paylaşılan anlık görüntüler bir dosya paylaşımında veya depolama hesabında FAT-parmak silme işlemlerini engellemez. Bir depolama hesabının yanlışlıkla silinmekten korunmasını sağlamak için, [geçici silme özelliğini etkinleştirebilir](storage-files-prevent-file-share-deletion.md)veya depolama hesabını ve/veya kaynak grubunu kilitleyemezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Paylaşma anlık görüntüleriyle çalışma:

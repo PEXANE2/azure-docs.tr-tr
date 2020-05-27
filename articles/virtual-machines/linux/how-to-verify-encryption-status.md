@@ -1,89 +1,73 @@
 ---
-title: Linux için şifreleme durumunu doğrulama
-description: Bu makale, platform ve işletim sistemi düzeyinden şifreleme durumunu doğrulamaya ilişkin yönergeler sağlar.
+title: Linux için şifreleme durumunu doğrulama-Azure disk şifrelemesi
+description: Bu makale, platform ve işletim sistemi düzeylerinden şifreleme durumunu doğrulamaya ilişkin yönergeler sağlar.
 author: kailashmsft
 ms.service: security
 ms.topic: article
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0aaa32c46d915eafffcfac9d95cfdd3a24d4086d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2916a71f167c415f6bf1dde8ff82a38b0e0557c
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80123417"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873996"
 ---
-# <a name="how-to-verify-encryption-status-for-linux"></a>Linux için şifreleme durumunu doğrulama 
+# <a name="verify-encryption-status-for-linux"></a>Linux için şifreleme durumunu doğrulama 
 
-**Bu senaryo, ADE çift geçiş ve tek Pass uzantıları için geçerlidir.**  
-Bu belge kapsamı, farklı yöntemler kullanarak bir sanal makinenin şifreleme durumunu doğrulamak için kullanılır.
+Bu makalenin kapsamı, farklı yöntemler kullanarak bir sanal makinenin şifreleme durumunu doğrulamak: Azure portal, PowerShell, Azure CLı veya sanal makinenin (VM) işletim sistemi. 
 
-### <a name="environment"></a>Ortam
+Şifreleme durumunu şifreleme sırasında veya sonrasında, aşağıdakilerden birini yaparak doğrulayabilirsiniz:
 
-- Linux dağıtımları
+- Belirli bir VM 'ye bağlı diskler denetleniyor. 
+- Diskin bağlı veya bağlı olup olmadığı her bir diskte şifreleme ayarlarını sorgulama.
 
-### <a name="procedure"></a>Yordam
-
-Bir sanal makine, çift geçişli veya tek geçişli kullanılarak şifrelendi.
-
-Şifreleme durumu, farklı yöntemler kullanılarak şifreleme sırasında veya sonrasında doğrulanabilir.
+Bu senaryo, Azure disk şifrelemesi çift yönlü ve tek geçiş uzantıları için geçerlidir. Linux dağıtımları, bu senaryonun tek ortamıdır.
 
 >[!NOTE] 
->Belge boyunca değişkenler kullanıyoruz, değerleri uygun şekilde değiştirin.
+>Makale genelinde değişkenler kullanıyoruz. Değerleri uygun şekilde değiştirin.
 
-### <a name="verification"></a>Doğrulama
+## <a name="portal"></a>Portal
 
-Doğrulama, Portal, PowerShell, AZ CLı ve veya VM işletim sistemi tarafında yapılabilir. 
+Azure portal **Uzantılar** bölümünün içinde, listeden Azure disk şifrelemesi uzantısını seçin. **Durum iletisi** bilgileri geçerli şifreleme durumunu gösterir:
 
-Bu doğrulama, belirli bir sanal makineye bağlı diskler denetlenerek yapılabilir. 
+![Durum, sürüm ve durum iletisi vurgulanmış şekilde Portal denetimi](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
 
-Ya da diskin bağlı veya eklenmemiş olduğu her bir diskte şifreleme ayarlarını sorgulayarak.
+Uzantılar listesinde, karşılık gelen Azure disk şifrelemesi uzantısı sürümünü görürsünüz. Sürüm 0. x, Azure disk şifrelemesi ikili geçişine karşılık gelir ve sürüm 1. x, Azure disk şifrelemesi tek geçişine karşılık gelir.
 
-Farklı doğrulama yöntemlerinin altında:
+Uzantıyı seçip **ayrıntılı durumu görüntüle**' yi seçerek daha fazla bilgi edinebilirsiniz. Şifreleme işleminin ayrıntılı durumu JSON biçiminde görüntülenir.
 
-## <a name="using-the-portal"></a>Portalı kullanma
+!["Ayrıntılı durumu görüntüle" bağlantısı vurgulanmış şekilde Portal denetimi](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
 
-Azure portal uzantılar bölümünü denetleyerek şifreleme durumunu doğrulayın.
+![JSON biçiminde ayrıntılı durum](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
 
-**Uzantılar** bölümünün IÇINDE, Ade uzantısını listelendiğini görürsünüz. 
+Şifreleme durumunu doğrulamak için bir diğer yol ise **disk ayarları** bölümüne bakar.
 
-Buraya tıklayın ve **durum iletisine**göz atın, geçerli şifreleme durumunu gösterir:
-
-![Portal denetim numarası 1](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
-
-Uzantılar listesinde, karşılık gelen ADE uzantısı sürümünü görürsünüz. 0. x sürümü ADE çift yönlü ve sürüm 1. x 'e karşılık gelir.
-
-Daha fazla ayrıntı için uzantıya tıklayıp *ayrıntılı durumu görüntüle*' ye gidebilirsiniz.
-
-JSON biçiminde şifreleme işleminin daha ayrıntılı bir durumunu göreceksiniz:
-
-![Portal denetim numarası 2](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
-
-![Portal denetim numarası 3](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
-
-Şifreleme durumunu doğrulamanın bir başka yolu da **diskler** bölümüne göz atabilmenizdir.
-
-![Portal denetim numarası 4](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
+![İşletim sistemi diski ve veri diskleri için şifreleme durumu](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
 
 >[!NOTE] 
-> Bu durum, disklerin şifreleme ayarlarına atılabilecek ancak gerçekte işletim sistemi düzeyinde şifrelendikleri anlamına gelir. Tasarıma göre, diskler önce damgalı ve daha sonra şifrelenir. Şifreleme işlemi başarısız olursa, diskler kesilebilir ancak şifrelenmez. Disklerin gerçekten şifrelenip şifrelenmediğini onaylamak için, işletim sistemi düzeyinde her diskin şifrelemesini iki kez kontrol edebilirsiniz.
+> Bu durum, disklerin, aslında işletim sistemi düzeyinde şifrelendikleri için şifreleme ayarlarına sahip olduğu anlamına gelir.
+>
+> Tasarım yaparak diskler önce damgalı ve daha sonra şifrelenir. Şifreleme işlemi başarısız olursa, diskler kesilebilir ancak şifrelenmez. 
+>
+> Disklerin gerçekten şifrelenip şifrelenmediğini onaylamak için, işletim sistemi düzeyinde her diskin şifrelemesini iki kez kontrol edebilirsiniz.
 
-## <a name="using-powershell"></a>PowerShell’i kullanma
+## <a name="powershell"></a>PowerShell
 
-Aşağıdaki PowerShell komutlarını kullanarak, şifrelenmiş bir sanal makinenin **genel** şifreleme durumunu doğrulayabilirsiniz:
+Aşağıdaki PowerShell komutlarını kullanarak, şifrelenmiş bir sanal makinenin *genel* şifreleme durumunu doğrulayabilirsiniz:
 
 ```azurepowershell
    $VMNAME="VMNAME"
    $RGNAME="RGNAME"
    Get-AzVmDiskEncryptionStatus -ResourceGroupName  ${RGNAME} -VMName ${VMNAME}
 ```
-![PowerShell 1 ' i denetle](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
+![PowerShell 'de genel şifreleme durumu](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
 
-Aşağıdaki PowerShell komutlarını kullanarak her bir diskten şifreleme ayarlarını yakalayabilirsiniz:
+Aşağıdaki PowerShell komutlarını kullanarak her bir diskten şifreleme ayarlarını yakalayabilirsiniz.
 
 ### <a name="single-pass"></a>Tek pass
-Tek geçişte, şifreleme ayarları her bir diskte (işletim sistemi ve veri) damganız ise, işletim sistemi disk şifreleme ayarlarını tek geçişte aşağıda gösterildiği gibi yakalayabilirsiniz:
+Tek bir geçişte, şifreleme ayarları her bir disk (işletim sistemi ve veri) üzerinde damgalanır. Bir işletim sistemi diskinin şifreleme ayarlarını, tek bir geçişte şu şekilde yakalayabilirsiniz:
 
 ``` powershell
 $RGNAME = "RGNAME"
@@ -101,13 +85,13 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
  Write-Host "============================================================================================================================================================="
 ```
-![İşletim sistemi tek geçiş 01 ' i doğrula](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
+![Bir işletim sistemi diski için şifreleme ayarları](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
 
-Diskte şifreleme ayarları atımı yoksa, çıkış aşağıda gösterildiği gibi boş olur:
+Diskte şifreleme ayarları damgalı yoksa, çıkış boş olur:
 
-![İşletim sistemi şifreleme ayarları 2](./media/disk-encryption/verify-encryption-linux/os-encryption-settings-2.png)
+![Boş çıkış](./media/disk-encryption/verify-encryption-linux/os-encryption-settings-2.png)
 
-Veri diskleri şifreleme ayarlarını yakala:
+Veri disklerinin şifreleme ayarlarını yakalamak için aşağıdaki komutları kullanın:
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -128,12 +112,12 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "============================================================================================================================================================="
  }
 ```
-![Tek PS 001 verileri doğrulama](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
+![Veri diskleri için şifreleme ayarları](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
 
 ### <a name="dual-pass"></a>Çift geçiş
-Çift geçişte, şifreleme ayarları, her bir diskte değil, VM modeline damgalanır.
+İkili geçişte, şifreleme ayarları her bir diskte değil, VM modeline damgalanır.
 
-Şifreleme ayarlarının çift geçişte damgalanmış olduğunu doğrulamak için aşağıdaki komutları kullanabilirsiniz:
+Şifreleme ayarlarının ikili bir geçişte damgalı olduğunu doğrulamak için aşağıdaki komutları kullanın:
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -152,7 +136,7 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-![Çift Pass PowerShell 1 ' i doğrula](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
+![İkili geçişte şifreleme ayarları](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
 
 ### <a name="unattached-disks"></a>Eklenmemiş diskler
 
@@ -171,19 +155,19 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-## <a name="using-az-cli"></a>AZ CLı kullanma
+## <a name="azure-cli"></a>Azure CLI
 
-Aşağıdaki AZ CLı komutlarını kullanarak, şifrelenmiş bir sanal makinenin **genel** şifreleme durumunu doğrulayabilirsiniz:
+Aşağıdaki Azure CLı komutlarını kullanarak, şifrelenmiş bir sanal makinenin *genel* şifreleme durumunu doğrulayabilirsiniz:
 
 ```bash
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
 ```
-![CLı kullanarak genel doğrulama ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
+![Azure CLı 'dan genel şifreleme durumu ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
 
 ### <a name="single-pass"></a>Tek pass
-Şifreleme ayarlarını, aşağıdaki AZ CLı komutlarını kullanarak her bir diskten doğrulayabilirsiniz:
+Aşağıdaki Azure CLı komutlarını kullanarak her bir disk için şifreleme ayarlarını doğrulayabilirsiniz:
 
 ```bash
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
@@ -192,11 +176,11 @@ az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuse
 ![Veri şifreleme ayarları](./media/disk-encryption/verify-encryption-linux/data-encryption-settings-2.png)
 
 >[!IMPORTANT]
-> Diskin şifreleme ayarlarına damgalı olmaması durumunda, "disk şifrelenmedi" olarak gösterilir
+> Diskte şifreleme ayarları atıyamazsa, metin **diskinin şifrelenmediğini**görürsünüz.
 
-Ayrıntılı durum ve şifreleme ayarları:
+Ayrıntılı durum ve şifreleme ayarları almak için aşağıdaki komutları kullanın.
 
-İşletim sistemi diski:
+İşletim Sistemi diski:
 
 ```bash
 RGNAME="RGNAME"
@@ -214,7 +198,7 @@ echo "==========================================================================
 done
 ```
 
-![Ossingtaclı](./media/disk-encryption/verify-encryption-linux/os-single-cli.png)
+![İşletim sistemi diski için ayrıntılı durum ve şifreleme ayarları](./media/disk-encryption/verify-encryption-linux/os-single-cli.png)
 
 Veri diskleri:
 
@@ -234,7 +218,7 @@ echo "==========================================================================
 done
 ```
 
-![Veri tek CLı ](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
+![Veri diskleri için ayrıntılı durum ve şifreleme ayarları](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
 
 ### <a name="dual-pass"></a>Çift geçiş
 
@@ -242,7 +226,9 @@ done
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
-![CLı ](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png) kullanarak genel çift 'yi doğrulayın Ayrıca, işletim sistemi diskinin VM modeli depolama profilindeki şifreleme ayarlarını da kontrol edebilirsiniz:
+![Azure CLı aracılığıyla ikili geçiş için genel şifreleme ayarları](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png)
+
+Ayrıca, işletim sistemi diskinin VM modeli depolama profilindeki şifreleme ayarlarını da denetleyebilirsiniz:
 
 ```bash
 disk=`az vm show -g ${RGNAME} -n ${VMNAME} --query storageProfile.osDisk.name -o tsv`
@@ -257,7 +243,7 @@ echo "==========================================================================
 done
 ```
 
-![CLı kullanarak VM profilini doğrulama ](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
+![Azure CLı aracılığıyla çift geçiş için VM profili](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
 
 ### <a name="unattached-disks"></a>Eklenmemiş diskler
 
@@ -282,10 +268,10 @@ Yönetilmeyen diskler, Azure depolama hesaplarında sayfa Blobları olarak depol
 
 Belirli bir diskin ayrıntılarını almak için şunları sağlamanız gerekir:
 
-Diski içeren depolama hesabının KIMLIĞI.
-Söz konusu depolama hesabı için bir bağlantı dizesi.
-Diski depolayan kapsayıcının adı.
-Disk adı.
+- Diski içeren depolama hesabının KIMLIĞI.
+- Söz konusu depolama hesabı için bir bağlantı dizesi.
+- Diski depolayan kapsayıcının adı.
+- Disk adı.
 
 Bu komut tüm depolama hesaplarınızın tüm kimliklerini listeler:
 
@@ -294,13 +280,12 @@ az storage account list --query [].[id] -o tsv
 ```
 Depolama hesabı kimlikleri aşağıdaki biçimde listelenir:
 
-/Subscriptions/\<abonelik kimliği>/resourceGroups/\<kaynak grubu adı>/providers/microsoft.storage/storageaccounts/\<depolama hesabı adı>
+/Subscriptions/ \< abonelik kimliği>/resourceGroups/ \< kaynak grubu adı>/Providers/Microsoft.Storage/storageaccounts/ \< depolama hesabı adı>
 
 Uygun KIMLIĞI seçin ve bir değişkende depolayın:
 ```bash
 id="/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name>"
 ```
-Bağlantı dizesi.
 
 Bu komut, belirli bir depolama hesabı için bağlantı dizesini alır ve bir değişkende depolar:
 
@@ -308,57 +293,51 @@ Bu komut, belirli bir depolama hesabı için bağlantı dizesini alır ve bir de
 ConnectionString=$(az storage account show-connection-string --ids $id --query connectionString -o tsv)
 ```
 
-Kapsayıcı adı.
-
 Aşağıdaki komut, bir depolama hesabı altındaki tüm kapsayıcıları listeler:
 ```bash
 az storage container list --connection-string $ConnectionString --query [].[name] -o tsv
 ```
-Diskler için kullanılan kapsayıcı normalde "VHD 'ler" olarak adlandırılır
+Diskler için kullanılan kapsayıcı normalde "VHD 'ler" olarak adlandırılır.
 
-Kapsayıcı adını bir değişkende depolayın 
+Kapsayıcı adını bir değişkende depolayın: 
 ```bash
 ContainerName="name of the container"
 ```
 
-Disk adı.
-
-Belirli bir kapsayıcıdaki tüm Blobları listelemek için bu komutu kullanın
+Belirli bir kapsayıcıdaki tüm Blobları listelemek için bu komutu kullanın:
 ```bash 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
-Sorgulamak istediğiniz diski seçin ve adını bir değişkende depolayın.
+Sorgulamak istediğiniz diski seçin ve adını bir değişkende depolayın:
 ```bash
 DiskName="diskname.vhd"
 ```
-Disk şifreleme ayarlarını sorgulama
+Disk şifreleme ayarlarını sorgulayın:
 ```bash
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
-## <a name="from-the-os"></a>IŞLETIM sisteminden
-Veri diski bölümlerinin şifrelendiğini (ve işletim sistemi diskinin olmadığını) doğrula
+## <a name="operating-system"></a>İşletim sistemi
+Veri diski bölümlerinin şifrelendiğini (ve işletim sistemi diskinin olmadığını) doğrulayın.
 
-Bir bölüm/disk şifrelendiğinde, şifrelenmediğinde, bölüm **/disk** türü olarak **gösterildiği gibi, şifreli bir tür olarak** görüntülenir
+Bir bölüm veya disk şifrelendiğinde **, şifreli bir tür olarak** görüntülenir. Şifrelenmediğinde, **bölüm/disk** türü olarak gösterilir.
 
 ``` bash
 lsblk
 ```
 
-![İşletim sistemi Crypt katmanı ](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
+![Bölüm için işletim sistemi Crypt katmanı](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
 
-Aşağıdaki "lsblk" türevini kullanarak daha ayrıntılı bilgi edinebilirsiniz. 
+Aşağıdaki **lsblk** türevini kullanarak daha fazla bilgi edinebilirsiniz. 
 
-Uzantı tarafından bağlanan bir **Crypt** türü katmanı görürsünüz.
-
-Aşağıdaki örnek, mantıksal birimleri ve normal diskleri "**şifre\_Luks fsType**" olarak gösterir.
+Uzantı tarafından bağlanan bir **Crypt** türü katmanı görürsünüz. Aşağıdaki örnek, mantıksal birimleri ve **şifre \_ Luks fsType**olan normal diskleri gösterir.
 
 ```bash
 lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 ```
-![İşletim sistemi Crypt katman 2](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
+![Mantıksal birimler ve normal diskler için işletim sistemi Crypt katmanı](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
 
-Ek bir adım olarak, veri diskinde yüklenmiş herhangi bir anahtar olup olmadığını da doğrulayabilirsiniz
+Ek bir adım olarak, veri diskinde yüklenmiş bir anahtar olup olmadığını doğrulayabilirsiniz:
 
 ``` bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
@@ -368,12 +347,12 @@ cryptsetup luksDump /dev/VGNAME/LVNAME
 cryptsetup luksDump /dev/sdd1
 ```
 
-Ve hangi DM cihazlarının şifreli olarak listelendiğini
+Ve hangi **DM** cihazlarının **şifreli**olarak listelendiğini kontrol edebilirsiniz:
 
 ```bash
 dmsetup ls --target crypt
 ```
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Disk Şifrelemesi sorunlarını giderme](disk-encryption-troubleshooting.md)

@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1fdeffb5ee5b1e2d66fbf5586d307cd8d8b78858
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0fa70cfb287cc4a68892ada1044283a996d8dd50
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166739"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873921"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Hızlı başlangıç: bir Azure bilişsel hizmeti olan Bing Web Araması REST API web 'de aramak için Java kullanın
 
-Bu hızlı başlangıçta, Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bir Java uygulaması kullanacaksınız. Bu Java uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bu hızlı başlangıçta, Bing Web Araması API'si ilk çağrısını yapmak için bir Java uygulaması kullanacaksınız. Bu Java uygulaması, API 'ye bir arama isteği gönderir ve JSON yanıtını gösterir. Bu uygulama Java 'da yazılsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -49,7 +49,7 @@ import com.google.gson.JsonParser;
 
 ### <a name="declare-gson-in-the-maven-pom-file"></a>Maven POM dosyasında Gson tanımlama
 
-Maven kullanıyorsanız `POM.xml` içinde Gson öğesini tanımlayın. Gson için yerel yükleme gerçekleştirdiyseniz bu adımı atlayın.
+Maven kullanıyorsanız, Pod. xml içinde Gson bildirin. Gson için yerel yükleme gerçekleştirdiyseniz bu adımı atlayın.
 
 ```xml
 <dependency>
@@ -61,7 +61,7 @@ Maven kullanıyorsanız `POM.xml` içinde Gson öğesini tanımlayın. Gson içi
 
 ## <a name="declare-the-bingwebsearch-class"></a>BingWebSearch sınıfını tanımlama
 
-`BingWebSearch` sınıfını tanımlayın. `main` metodu dahil olmak üzere bu hızlı başlangıçta incelediğimiz kodun çoğunu kapsayacaktır.  
+`BingWebSearch` sınıfını tanımlayın. Bu hızlı başlangıçta, yöntemi de dahil olmak üzere inceduğumuz kodun çoğunu içerir `main()` .  
 
 ```java
 public class BingWebSearch {
@@ -73,7 +73,13 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
-Bu kod `subscriptionKey`, `host`, `path` ve `searchTerm` tanımlaması yapar. `host`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir. `subscriptionKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `searchTerm` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz. Bu kodu, `BingWebSearch` yukarıda belirtildiği gibi sınıfa eklemeyi unutmayın.
+Aşağıdaki kod,,, ve ' ı ayarlar `subscriptionKey` `host` `path` `searchTerm` . Bu kodu, `BingWebSearch` önceki bölümde açıklanan sınıfa ekleyin:
+
+1. Değer için `host` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz. 
+
+2. `subscriptionKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. 
+
+3. İsteğe bağlı olarak, için değerini değiştirerek arama sorgusunu özelleştirin `searchTerm` . 
 
 ```java
 // Enter a valid subscription key.
@@ -91,7 +97,7 @@ static String searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="construct-a-request"></a>İstek oluşturma
 
-`BingWebSearch` sınıfında bulunan, `url` öğesini oluşturan, yanıtı alıp ayrıştıran ve Bing ile ilgili HTTP üst bilgilerini ayıklayan bu metot.  
+`SearchWeb()`Sınıfına dahil olan yöntemi, öğesini oluşturur, `BingWebSearch` `url` yanıtı alır ve ayrıştırır ve BING ile ilgili HTTP üstbilgilerini ayıklar.  
 
 ```java
 public static SearchResults SearchWeb (String searchQuery) throws Exception {
@@ -137,7 +143,7 @@ public static String prettify(String json_text) {
 
 ## <a name="declare-the-main-method"></a>main metodunu tanımlama
 
-Bu metot gereklidir ve program başlatıldığında ilk çağrılan metottur. Bu uygulamada `subscriptionKey` öğesini doğrulayan, istekte bulunan ve JSON yanıtını yazdıran kodu içerir.
+`main()`Yöntemi zorunludur ve programı başlattığınızda ilk yöntem çağrılır. Bu uygulamada, `subscriptionKey` öğesini doğrulayan, bir istek yapan ve sonra JSON yanıtını yazdıran kodu içerir.
 
 ```java
 public static void main (String[] args) {
@@ -167,7 +173,7 @@ public static void main (String[] args) {
 
 ## <a name="create-a-container-class-for-search-results"></a>Arama sonuçları için kapsayıcı sınıfı oluşturma
 
-`SearchResults` kapsayıcı sınıfı, `BingWebSearch` sınıfının dışındadır. Yanıtla ilgili üst bilgileri ve JSON verilerini içerir.
+`SearchResults`Kapsayıcı sınıfı, sınıfının dışında tanımlanır `BingWebSearch` . Yanıtla ilgili üst bilgileri ve JSON verilerini içerir.
 
 ```java
 class SearchResults{
@@ -182,7 +188,7 @@ class SearchResults{
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Son adım kodunuzu derleyip çalıştırmaktır! Komutlar şunlardır:
+Son adım, kodunuzu derlemek ve çalıştırmak için kullanılır. Aşağıdaki komutları kullanın:
 
 ```powershell
 javac BingWebSearch.java -classpath ./gson-2.8.5.jar -encoding UTF-8
@@ -191,7 +197,7 @@ java -cp ./gson-2.8.5.jar BingWebSearch
 
 Kodunuzu bizimkiyle karşılaştırmak isterseniz [GitHub'daki örnek kodu inceleyebilirsiniz](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java).
 
-## <a name="sample-response"></a>Örnek yanıt
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek yanıt, tek bir sonuç göstermek için kısaltıldı.
 
@@ -320,6 +326,6 @@ Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek y
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing Web araması tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Araması API'si tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  

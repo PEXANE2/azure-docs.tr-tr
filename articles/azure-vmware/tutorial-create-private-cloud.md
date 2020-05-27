@@ -3,12 +3,12 @@ title: Öğretici-Azure 'da vSphere kümesi dağıtma
 description: Azure VMWare çözümünü (AVS) kullanarak Azure 'da bir vSphere kümesi dağıtmayı öğrenin
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 6a192454367f2e6ca071e9cfe0a9f1a94868cbdb
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: fc753f43563650357cf43c102e94f0057b62a406
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977717"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873746"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Öğretici: Azure 'da AVS özel bulutu dağıtma
 
@@ -16,7 +16,7 @@ Azure VMware çözümü (AVS), Azure 'da bir vSphere kümesi dağıtmanıza olan
 
 AVS, özel bulutunuzu başlatma sırasında şirket içi vCenter 'inizle yönetmenizi sağlayacağından, yerel bir vCenter örneğine, sanal ağa ve daha fazlasına yönelik ek yapılandırma ve bağlantı gerçekleştirmeniz gerekir. Bu yordamlar ve ilgili Önkoşullar Bu öğretici serisinde ele alınacaktır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * AVS özel bulutu oluşturma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
 
-Azure VMWare çözümünü kullanabilmeniz için öncelikle kaynak sağlayıcısını kaydetmeniz gerekir. Aşağıdaki örnek, aboneliğiniz ile kaynak sağlayıcısını kaydeder.
+Azure VMware çözümünü kullanabilmeniz için öncelikle kaynak sağlayıcısını kaydetmeniz gerekir. Aşağıdaki örnek, aboneliğiniz ile kaynak sağlayıcısını kaydeder.
 
 ```azurecli-interactive
 az provider register -n Microsoft.AVS --subscription <your subscription ID>
@@ -40,7 +40,7 @@ Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sa�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-private-cloud"></a>Özel Bulut oluşturma
 
@@ -48,7 +48,7 @@ Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sa�
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure portal **+ Yeni kaynak oluştur**' u seçin. **Market** metin kutusu yazın `Azure VMware Solution`ve listeden **Azure VMware çözümü** ' nü seçin. **Azure VMware Çözüm** penceresinde **Oluştur** ' u seçin.
+Azure portal **+ Yeni kaynak oluştur**' u seçin. **Market** metin kutusu yazın `Azure VMware Solution` ve listeden **Azure VMware çözümü** ' nü seçin. **Azure VMware Çözüm** penceresinde **Oluştur** ' u seçin.
 
 **Temel bilgiler** sekmesinde, alanlar için değerler girin. Aşağıdaki tabloda özelliklerin ayrıntılı bir listesi gösterilmektedir.
 

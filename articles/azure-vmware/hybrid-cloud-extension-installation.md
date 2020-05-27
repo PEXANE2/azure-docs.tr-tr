@@ -1,18 +1,18 @@
 ---
 title: Karma bulut uzantısı 'nı (HCX) yükler
-description: Azure VMWare çözümünüz (AVS) özel bulutunuz için VMWare hibrit bulut uzantısı (HCX) çözümünü ayarlama
+description: Azure VMware çözümünüz (AVS) özel bulutunuz için VMware hibrit bulut uzantısı (HCX) çözümünü ayarlama
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 74bc0dece2fc565aebc6e5301ef7a36187d6a250
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: dc5f7f82b83c82538b2d5a7b4c87131afb3fcc20
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776478"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873660"
 ---
-# <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMWare çözümü için HCX 'i yükler
+# <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMware çözümü için HCX 'i yükler
 
-Bu makalede, Azure VMWare çözümünüz (AVS) özel bulutunuz için VMWare hibrit bulut uzantısı (HCX) çözümünü ayarlama yordamlarına ilerliyoruz. HCX Gelişmiş (varsayılan yükleme), her bir dış sitenin bir HCX Enterprise Manager veya bağlayıcısının yüklü ve etkin olmasını gerektiren en fazla üç dış siteyi destekler.
+Bu makalede, Azure VMware çözümünüz (AVS) özel bulutunuz için VMware hibrit bulut uzantısı (HCX) çözümünü ayarlama yordamlarına ilerliyoruz. HCX Gelişmiş (varsayılan yükleme), her bir dış sitenin bir HCX Enterprise Manager veya bağlayıcısının yüklü ve etkin olmasını gerektiren en fazla üç dış siteyi destekler.
 HCX, VMware iş yüklerinizin farklı yerleşik HCX desteklenen geçiş türleri aracılığıyla buluta ve diğer bağlı sitelere geçirilmesini sağlar. Üçten fazla site gerekliyse, müşteriler destek aracılığıyla HCX kurumsal eklentisini etkinleştirme seçeneğine sahiptir. HCX kurumsal, genel kullanılabilirlik (GA) sonrasında müşterilere ek ücretler taşır, ancak [ek özellikler](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)sağlar.
 
 [Başlamadan önce](#before-you-begin), [yazılım sürümü gereksinimlerinden](#software-version-requirements)ve [önkoşullardan](#prerequisites) önce ayrıntılı bir şekilde gözden geçirin. 

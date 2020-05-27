@@ -7,19 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81481980"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874077"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics Azure Machine Learning ile tümleştirme (Önizleme)
 
 Akış girişi verilerinizde gerçek zamanlı Puanlama ve tahmin işlemleri yapmak için Azure Stream Analytics işlerinizde Kullanıcı tanımlı bir işlev (UDF) olarak makine öğrenimi modelleri uygulayabilirsiniz. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) , modellerinizi geliştirmek, eğitme ve dağıtmak Için TensorFlow, scikit-öğren veya PyTorch gibi popüler açık kaynak araçlarından birini kullanmanıza olanak sağlar.
-
-> [!NOTE]
-> Bu işlevsellik genel önizlemede. Bu özelliğe yalnızca [Stream Analytics Portal Önizleme bağlantısını](https://aka.ms/asaportalpreview)kullanarak Azure Portal erişebilirsiniz. Bu işlevsellik, [Visual Studio için Stream Analytics araçları](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)'nın en son sürümünde de mevcuttur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -31,7 +28,7 @@ Machine Learning modelini Stream Analytics işinize bir işlev olarak eklemeden 
 
 3. Web hizmetinizin JSON seri hale getirilmiş verileri kabul ettiğinden ve döndürdüğünden emin olun.
 
-4. Modelinizi [Azure Kubernetes hizmetinde](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) yüksek ölçekli üretim dağıtımları için dağıtın. Web hizmeti, işinizden gelen istek sayısını işleyemediğinde, Stream Analytics işinizin performansı düşecek ve bu da gecikmeyi etkiler. Azure Container Instances dağıtılan modeller bugün desteklenmez, ancak önümüzdeki aylarda kullanılabilir hale gelir.
+4. Modelinizi [Azure Kubernetes hizmetinde](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) yüksek ölçekli üretim dağıtımları için dağıtın. Web hizmeti, işinizden gelen istek sayısını işleyemediğinde, Stream Analytics işinizin performansı düşecek ve bu da gecikmeyi etkiler. Azure Container Instances dağıtılan modeller yalnızca Azure portal kullandığınızda desteklenir.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>İşinize bir makine öğrenme modeli ekleyin
 
@@ -73,7 +70,7 @@ Stream Analytics, yalnızca Azure Machine Learning işlevleri için bir parametr
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>UDF 'ye birden çok giriş parametresi geçirme
 
-Makine öğrenimi modellerine yapılan girişlerin en yaygın örnekleri, sayısal olarak y dizileri ve veri çerçevelerdir. JavaScript UDF kullanarak bir dizi oluşturabilir ve `WITH` yan TÜMCESINI kullanarak JSON serileştirilmiş bir veri çerçevesi oluşturabilirsiniz.
+Makine öğrenimi modellerine yapılan girişlerin en yaygın örnekleri, sayısal olarak y dizileri ve veri çerçevelerdir. JavaScript UDF kullanarak bir dizi oluşturabilir ve yan tümcesini kullanarak JSON serileştirilmiş bir veri çerçevesi oluşturabilirsiniz `WITH` .
 
 ### <a name="create-an-input-array"></a>Giriş dizisi oluşturma
 
@@ -110,7 +107,7 @@ Aşağıdaki JSON bir örnek istedir:
 
 ### <a name="create-a-pandas-or-pyspark-dataframe"></a>Pandas veya PySpark DataFrame oluşturma
 
-`WITH` Yan tümcesini kullanarak aşağıda gösterildiği gıbı Azure Machine Learning UDF 'nize girdi olarak geçirilebilecek JSON serileştirilmiş bir veri çerçevesi oluşturabilirsiniz.
+`WITH`Yan tümcesini kullanarak aşağıda gösterildiği gibi Azure MACHINE LEARNING UDF 'nize girdi olarak GEÇIRILEBILECEK JSON serileştirilmiş bir veri çerçevesi oluşturabilirsiniz.
 
 Aşağıdaki sorgu, gerekli alanları seçerek ve veri çerçevesini Azure Machine Learning UDF için girdi olarak kullanan bir DataFrame oluşturur.
 

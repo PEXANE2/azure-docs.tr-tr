@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces çalışması için bir Azure Kubernetes hizmet kümesi ayarlamayı açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 00f8262f3008ce9ba82726960f78d18395458a2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241731"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873555"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Azure Dev Spaces için küme ayarlama çalışması
 
@@ -18,7 +18,7 @@ Azure Dev Spaces, Kubernetes uygulamalarının hızla yinelenemez ve hata ayıkl
 
 ## <a name="prepare-your-aks-cluster"></a>AKS kümenizi hazırlama
 
-AKS kümenizi geliştirme alanları için hazırlamak üzere AKS kümenizin [Azure dev Spaces tarafından desteklenen][supported-regions] bir bölgede olduğunu ve Kubernetes 1.10.3 veya üstünü çalıştırdığınızı doğrulayın. Azure portal kümenizdeki Azure Dev Spaces etkinleştirmek için kümenize gidin, *geliştirme alanları*' na tıklayın, *dev alanlarını kullan* ' ı *Evet*olarak değiştirin ve *Kaydet*' e tıklayın. Ayrıca, çalıştırarak `az aks use-dev-spaces`Azure clı 'dan Azure dev Spaces etkinleştirebilirsiniz.
+AKS kümenizi geliştirme alanları için hazırlamak üzere AKS kümenizin [Azure dev Spaces tarafından desteklenen][supported-regions] bir bölgede olduğunu ve Kubernetes 1.10.3 veya üstünü çalıştırdığınızı doğrulayın. Azure portal kümenizdeki Azure Dev Spaces etkinleştirmek için kümenize gidin, *geliştirme alanları*' na tıklayın, *dev alanlarını kullan* ' ı *Evet*olarak değiştirin ve *Kaydet*' e tıklayın. Ayrıca, çalıştırarak Azure CLı 'dan Azure Dev Spaces etkinleştirebilirsiniz `az aks use-dev-spaces` .
 
 Geliştirme alanları için AKS kümesi ayarlamaya ilişkin bir örnek için, bkz. [Takım geliştirme hızlı başlangıç][quickstart-team].
 
@@ -50,7 +50,7 @@ Azure Dev Spaces kullanmak için en az bir dev alanı olmalıdır. Azure Dev Spa
 
 Bir ad alanı bir geliştirme alanı olarak belirlendiyse, denetleyici *azds.io/Space=true* etiketini bir geliştirme alanı olarak tanımlamak için bu ad alanına ekler. Kümenizi hazırladıktan sonra oluşturduğunuz veya belirleyeceğiniz ilk geliştirme alanı varsayılan olarak seçilidir. Bir boşluk seçildiğinde, yeni iş yükleri oluşturmak için Azure Dev Spaces tarafından kullanılır.
 
-Yeni dev alanları oluşturmak ve var olan geliştirme alanlarını kaldırmak için istemci tarafı araçları 'nı kullanabilirsiniz. Kubernetes kısıtlamasından dolayı *varsayılan* dev alanı kaldırılamaz. Denetleyici Ayrıca, *azds* adlı mevcut Kubernetes ad alanlarını kaldırır ve bu, istemci tarafı `azds` araçları tarafından kullanılan komutla çakışmaları ortadan kaldırır.
+Yeni dev alanları oluşturmak ve var olan geliştirme alanlarını kaldırmak için istemci tarafı araçları 'nı kullanabilirsiniz. Kubernetes kısıtlamasından dolayı *varsayılan* dev alanı kaldırılamaz. Denetleyici Ayrıca, *azds* adlı mevcut Kubernetes ad alanlarını kaldırır ve bu `azds` , istemci tarafı araçları tarafından kullanılan komutla çakışmaları ortadan kaldırır.
 
 Kubernetes Web kancası giriş sunucusu, izleme dağıtımı sırasında üç kapsayıcıyla düğüm eklemek için kullanılır: bir devspaces-proxy kapsayıcısı, bir devspaces-proxy-init kapsayıcı ve bir devspaces oluşturma kapsayıcısı. **Bu kapsayıcıların üçü de AKS kümenizde kök erişimle çalışır.** Ayrıca, AKS kümenizin diğer Azure Dev Spaces bileşenlerine hizmet çağrısı yapmak için kullandığı hizmet sorumlusunu kullanır.
 
@@ -78,15 +78,15 @@ AKS kümenizi hazırladıktan sonra, geliştirme alanınızda kodunuzu hazırlam
 
 Uygulamanız çalışırken, istemci tarafı araçları da:
 * AKS 'de çalışan uygulamanızdan stdout ve stderr 'leri alır ve görüntüler.
-* Http:\//localhost. kullanarak uygulamanıza Web erişimi sağlamak için [bağlantı noktası iletme](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) kullanır
+* Http:/localhost. kullanarak uygulamanıza Web erişimi sağlamak için [bağlantı noktası iletme](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) kullanır \/
 * AKS 'teki çalışan uygulamanıza bir hata ayıklayıcı ekler.
 * Artımlı derlemeler için bir değişiklik algılandığında hızlı yinelemeye izin veren kaynak kodu dev alanınızda eşitler.
 * Geliştirici makinenize doğrudan AKS kümenize bağlanmanızı sağlar.
 
-Komutun bir `azds` parçası olarak komut satırından istemci tarafı araçları ' nı kullanabilirsiniz. Ayrıca, ile birlikte istemci tarafı araçları 'nı kullanabilirsiniz:
+Komutun bir parçası olarak komut satırından istemci tarafı araçları ' nı kullanabilirsiniz `azds` . Ayrıca, ile birlikte istemci tarafı araçları 'nı kullanabilirsiniz:
 
 * [Azure dev Spaces uzantısını](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)kullanarak Visual Studio Code.
-* [Kubernetes için Visual Studio Araçları](https://aka.ms/get-vsk8stools)Ile Visual Studio.
+* Azure geliştirme iş yüküyle Visual Studio.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

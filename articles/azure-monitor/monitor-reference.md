@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 27503defa23b2a35e767156139228aa2e177652f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d154029e20ed952ca371685b00d5520f9d7850c8
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405172"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873837"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Izleyici ile neler izlenir?
 Bu makalede, Azure Izleyici tarafından izlenen farklı uygulama ve hizmetler açıklanır. 
@@ -27,11 +27,14 @@ Temel Öngörüler ve çözümler Azure Izleyici 'nin bir parçası olarak kabul
 |:---|:---|
 | [Uygulama Bilgileri](app/app-insights-overview.md) | Canlı Web uygulamanızı herhangi bir platformda izlemek için Genişletilebilir uygulama performans yönetimi (APM) hizmeti. |
 | [Kapsayıcılar için Azure Izleyici](insights/container-insights-overview.md) | Azure Kubernetes Service (AKS) üzerinde barındırılan Azure Container Instances ya da yönetilen Kubernetes kümelerine dağıtılan kapsayıcı iş yüklerinin performansını izler. |
-| [Cosmos DB için Azure Izleyici (Önizleme)](insights/cosmosdb-insights-overview.md) | Birleşik etkileşimli bir deneyime sahip tüm Azure Cosmos DB kaynaklarınızın genel performans, başarısızlık, kapasite ve işlemsel sistem durumunun bir görünümünü sağlar. |
+| [Cosmos DB için Azure Izleyici](insights/cosmosdb-insights-overview.md) | Birleşik etkileşimli bir deneyime sahip tüm Azure Cosmos DB kaynaklarınızın genel performans, başarısızlık, kapasite ve işlemsel sistem durumunun bir görünümünü sağlar. |
 | [Ağlar için Azure Izleyici (Önizleme)](insights/network-insights-overview.md) | Tüm ağ kaynağınız için sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlar. Gelişmiş arama özelliği, yalnızca Web sitenizin adını arayarak Web sitenizi barındıran kaynağı tanımlama gibi senaryoları etkinleştirerek Kaynak bağımlılıklarını belirlemenize yardımcı olur. |
 [Kaynak grupları için Azure Izleyici (Önizleme)](insights/resource-group-insights.md) |  Tek tek kaynaklarınızın karşılaştığı sorunları önceliklendirin ve tanılayın ve kaynak grubunun bir bütün olarak sistem durumu ve performansına göre bağlamı sunar. |
-| [Depolama için Azure Izleyici (Önizleme)](insights/storage-insights-overview.md) | Azure depolama hizmetleri Performanslarınızın, kapasitesinin ve kullanılabilirliğinden oluşan Birleşik bir görünüm sunarak Azure depolama hesaplarınızın kapsamlı bir şekilde izlenmesini sağlar. |
+| [Depolama için Azure İzleyici](insights/storage-insights-overview.md) | Azure depolama hizmetleri Performanslarınızın, kapasitesinin ve kullanılabilirliğinden oluşan Birleşik bir görünüm sunarak Azure depolama hesaplarınızın kapsamlı bir şekilde izlenmesini sağlar. |
 | [VM'ler için Azure İzleyici](insights/container-insights-overview.md) | Azure sanal makinelerinizi (VM) ve sanal makine ölçek kümelerinizi ölçeklendirerek izler. İşlemlerini ve diğer kaynaklarla dış işlemlere olan bağımlılıklarını izleyerek Windows ve Linux VM'lerinizin performansını ve sistem durumunu analiz eder. |
+| [Key Vault için Azure Izleyici (Önizleme)](insights/key-vaults-insights-overview.md) | Key Vault isteklerinizin, performanlarınızın ve gecikmelerinden oluşan Birleşik bir görünüm sunarak, önemli kasalarınızın kapsamlı bir şekilde izlenmesini de ortaya çıkarabilirsiniz. |
+| [Redin için Azure önbelleği için Azure Izleyici (Önizleme)](insights/redis-cache-insights-overview.md) |  Genel performans, başarısızlık, kapasite ve işlemsel sistem durumunun Birleşik, etkileşimli bir görünümünü sağlar. |
+
 
 ### <a name="core-solutions"></a>Temel çözümler
 
@@ -54,49 +57,49 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 
 | Hizmet | Ölçümler | Günlükler | İçgörü | Notlar |
 |:---|:---|:---|:---|:---|
-|Active Directory | Hayır | Yes | [Evet](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
+|Active Directory | No | Yes | [Evet](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | Hayır | Hayır | Hayır |  |
-|Active Directory Domain Services | Hayır | Yes | Hayır |  |
-|Etkinlik günlüğü | Hayır | Yes | Hayır | |
+|Active Directory Domain Services | No | Yes | No |  |
+|Etkinlik günlüğü | No | Yes | No | |
 |Gelişmiş Tehdit Koruması | Hayır | Hayır | Hayır |  |
 |Advisor | Hayır | Hayır | Hayır |  |
-|Yapay Zeka Oluşturucusu | Hayır | Hayır | Hayır |  |
-|Analysis Services | Yes | Yes | Hayır |  |
+|AI Builder | Hayır | Hayır | Hayır |  |
+|Analysis Services | Yes | Yes | No |  |
 |FHIR için API | Hayır | Hayır | Hayır |  |
-|API Management | Yes | Yes | Hayır |  |
-|App Service | Yes | Yes | Hayır |  |
+|API Management | Yes | Yes | No |  |
+|App Service | Yes | Yes | No |  |
 |AppConfig | Hayır | Hayır | Hayır |  |
-|Application Gateway | Yes | Yes | Hayır |  |
+|Application Gateway | Yes | Yes | No |  |
 |Kanıtlama hizmeti | Hayır | Hayır | Hayır |  |
-|Otomasyon | Yes | Yes | Hayır |  |
+|Otomasyon | Yes | Yes | No |  |
 |Azure Service Manager (RDFE) | Hayır | Hayır | Hayır |  |
-|Backup | Hayır | Yes | Hayır |  |
+|Backup | No | Yes | No |  |
 |Bastion | Hayır | Hayır | Hayır |  |
-|Batch | Yes | Yes | Hayır |  |
+|Batch | Yes | Yes | No |  |
 |Batch AI | Hayır | Hayır | Hayır |  |
-|Blok Zinciri Hizmeti | Hayır | Yes | Hayır |  |
-|Şemalar | Hayır | Hayır | Hayır |  |
+|Blok Zinciri Hizmeti | No | Yes | No |  |
+|Blueprints | Hayır | Hayır | Hayır |  |
 |Bot Hizmeti | Hayır | Hayır | Hayır |  |
-|Cloud Services | Yes | Yes | Hayır | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir.  |
+|Cloud Services | Yes | Yes | No | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir.  |
 |Cloud Shell | Hayır | Hayır | Hayır |  |
-|Bilişsel Hizmetler | Yes | Yes | Hayır |  |
+|Bilişsel Hizmetler | Yes | Yes | No |  |
 |Container Instances | Yes | Hayır | Hayır |  |
-|Container Kayıt Defteri | Yes | Yes | Hayır |  |
-|Content Delivery Network (CDN) | Hayır | Yes | Hayır |  |
+|Container Kayıt Defteri | Yes | Yes | No |  |
+|Content Delivery Network (CDN) | No | Yes | No |  |
 |Cosmos DB | Yes | Yes | [Evet](insights/cosmosdb-insights-overview.md) |  |
 |Maliyet Yönetimi | Hayır | Hayır | Hayır |  |
 |Data Box | Hayır | Hayır | Hayır |  |
 |Veri Kataloğu Gen2 | Hayır | Hayır | Hayır |  |
-|Veri Gezgini | Yes | Yes | Hayır |  |
-|Data Factory | Yes | Yes | Hayır |  |
-|Data Factory v2 | Hayır | Yes | Hayır |  |
+|Veri Gezgini | Yes | Yes | No |  |
+|Data Factory | Yes | Yes | No |  |
+|Data Factory v2 | No | Yes | No |  |
 |Veri Paylaşımı | Hayır | Hayır | Hayır |  |
-|MariaDB için Veritabanı | Yes | Yes | Hayır |  |
-|MySQL için Veritabanı | Yes | Yes | Hayır |  |
-|PostgreSQL için Veritabanı | Yes | Yes | Hayır |  |
+|MariaDB için Veritabanı | Yes | Yes | No |  |
+|MySQL için Veritabanı | Yes | Yes | No |  |
+|PostgreSQL için Veritabanı | Yes | Yes | No |  |
 |Veritabanı geçiş hizmeti | Hayır | Hayır | Hayır |  |
-|Databricks | Hayır | Yes | Hayır |  |
-|DDOS Koruması | Yes | Yes | Hayır |  |
+|Databricks | No | Yes | No |  |
+|DDOS Koruması | Yes | Yes | No |  |
 |DevOps | Hayır | Hayır | Hayır |  |
 |DNS | Yes | Hayır | Hayır |  |
 |Etki alanı adları | Hayır | Hayır | Hayır |  |
@@ -104,68 +107,68 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |Dynamics 365 müşteri katılımı | Hayır | Hayır | Hayır |  |
 |Dynamics 365 finans ve Işlemler | Hayır | Hayır | Hayır |  |
 |Event Grid | Yes | Hayır | Hayır |  |
-|Event Hubs | Yes | Yes | Hayır |  |
-|ExpressRoute | Yes | Yes | Hayır |  |
-|Güvenlik duvarı | Yes | Yes | Hayır |  |
-|Front Door | Yes | Yes | Hayır |  |
-|İşlevler | Yes | Yes | Hayır |  |
-|HDInsight | Hayır | Yes | Hayır |  |
+|Event Hubs | Yes | Yes | No |  |
+|ExpressRoute | Yes | Yes | No |  |
+|Güvenlik Duvarı | Yes | Yes | No |  |
+|Front Door | Yes | Yes | No |  |
+|İşlevler | Yes | Yes | No |  |
+|HDInsight | No | Yes | No |  |
 |HPC Önbelleği | Hayır | Hayır | Hayır |  |
-|Bilgi Koruma | Hayır | Yes | Hayır |  |
-|Intune | Hayır | Yes | Hayır |  |
+|Information Protection | No | Yes | No |  |
+|Intune | No | Yes | No |  |
 |IoT Central | Hayır | Hayır | Hayır |  |
-|IoT Hub | Yes | Yes | Hayır |  |
-|Key Vault | Yes | Yes | Hayır |  |
-|Kubernetes Hizmeti (AKS) | Hayır | Hayır | [Evet](insights/container-insights-overview.md)  |  |
-|Load Balancer | Yes | Yes | Hayır |  |
-|Logic Apps | Yes | Yes | Hayır |  |
-|Machine Learning Hizmeti | Hayır | Hayır | Hayır |  |
-|Yönetilen Uygulamalar  | Hayır | Hayır | Hayır |  |
-|Haritalar  | Hayır | Hayır | Hayır |  |
-|Media Services | Yes | Yes | Hayır |  |
-|Microsoft Flow | Hayır | Hayır | Hayır |  |
-|Microsoft Yönetilen Masaüstü | Hayır | Hayır | Hayır |  |
-|Microsoft PowerApps | Hayır | Hayır | Hayır |  |
-|Microsoft Social Engagement | Hayır | Hayır | Hayır |  |
-|Microsoft Stream | Yes | Yes | Hayır |  |
-|Geçiş | Hayır | Hayır | Hayır |  |
-|Multi-Factor Authentication | Hayır | Yes | Hayır |  |
-|Ağ İzleyicisi | Yes | Yes | Hayır |  |
-|Notification Hubs | Yes | Hayır | Hayır |  |
-|Açık Veri Kümeleri | Hayır | Hayır | Hayır |  |
-|İlke | Hayır | Hayır | Hayır |  |
+|IoT Hub | Yes | Yes | No |  |
+|Key Vault | Yes | Yes | [Evet](insights/key-vaults-insights-overview.md) |  |
+|Kubernetes Hizmeti (AKS) | No | No | [Evet](insights/container-insights-overview.md)  |  |
+|Load Balancer | Yes | Yes | No |  |
+|Logic Apps | Yes | Yes | No |  |
+|Machine Learning Hizmeti | No | No | No |  |
+|Yönetilen Uygulamalar  | No | No | No |  |
+|Haritalar  | No | No | No |  |
+|Media Services | Yes | Yes | No |  |
+|Microsoft Flow | No | No | No |  |
+|Microsoft Yönetilen Masaüstü | No | No | No |  |
+|Microsoft PowerApps | No | No | No |  |
+|Microsoft Social Engagement | No | No | No |  |
+|Microsoft Stream | Yes | Yes | No |  |
+|Geçiş | No | No | No |  |
+|Multi-Factor Authentication | No | Yes | No |  |
+|Ağ İzleyicisi | Yes | Yes | No |  |
+|Notification Hubs | Yes | No | No |  |
+|Açık Veri Kümeleri | No | No | No |  |
+|İlke | No | No | No |  |
 |Power BI | Yes | Yes | Hayır |  |
-|Power BI Embedded | Hayır | Hayır | Hayır |  |
-|Özel Bağlantı | Hayır | Hayır | Hayır |  |
-|Proje biriktirme Iletişim platformu | Hayır | Hayır | Hayır |  |
-|Red Hat OpenShift | Hayır | Hayır | Hayır |  |
-|Redis Cache | Yes | Yes | Hayır |  |
-|Kaynak Grafiği | Hayır | Hayır | Hayır |  |
+|Power BI Embedded | Hayır | No | No |  |
+|Özel Bağlantı | No | No | No |  |
+|Proje biriktirme Iletişim platformu | No | No | No |  |
+|Red Hat OpenShift | No | No | No |  |
+|Redis Cache | Yes | Yes | [Evet](insights/redis-cache-insights-overview.md) | |
+|Kaynak Grafı | No | Hayır | Hayır |  |
 |Resource Manager | Hayır | Hayır | Hayır |  |
 |Perakende arama-Bing tarafından | Hayır | Hayır | Hayır |  |
-|Arama | Yes | Yes | Hayır |  |
-|Service Bus | Yes | Yes | Hayır |  |
-|Service Fabric | Hayır | Yes | Hayır | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir.  |
+|Arama | Yes | Yes | No |  |
+|Service Bus | Yes | Yes | No |  |
+|Service Fabric | No | Yes | No | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir.  |
 |Kaydolma portalı | Hayır | Hayır | Hayır |  |
-|Site Recovery | Hayır | Yes | Hayır |  |
+|Site Recovery | No | Yes | No |  |
 |Yay bulut hizmeti | Hayır | Hayır | Hayır |  |
-|SQL Veri Ambarı | Yes | Yes | Hayır |  |
-|SQL Veritabanı | Yes | Yes | Hayır |  |
-|SQL Server Stretch Database | Yes | Yes | Hayır |  |
+|SQL Veri Ambarı | Yes | Yes | No |  |
+|SQL Veritabanı | Yes | Yes | No |  |
+|SQL Server Stretch Database | Yes | Yes | No |  |
 |Yığın | Hayır | Hayır | Hayır |  |
-|Depolama | Yes | Hayır | [Evet](insights/storage-insights-overview.md) |  |
+|Depolama | Yes | No | [Evet](insights/storage-insights-overview.md) |  |
 |Depolama önbelleği | Hayır | Hayır | Hayır |  |
 |Depolama Eşitleme Hizmetleri | Hayır | Hayır | Hayır |  |
-|Stream Analytics | Yes | Yes | Hayır |  |
-|Time Series Insights | Yes | Yes | Hayır |  |
+|Stream Analytics | Yes | Yes | No |  |
+|Time Series Insights | Yes | Yes | No |  |
 |TINA | Hayır | Hayır | Hayır |  |
-|Traffic Manager | Yes | Yes | Hayır |  |
+|Traffic Manager | Yes | Yes | No |  |
 |Evrensel Yazdırma | Hayır | Hayır | Hayır |  |
-|Sanal Makine Ölçek Kümeleri | Hayır | Yes | [Evet](insights/vminsights-overview.md) | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir. |
-|Virtual Machines | Yes | Yes | [Evet](insights/vminsights-overview.md) | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir. |
+|Sanal Makine Ölçek Kümeleri | No | Yes | [Evet](insights/vminsights-overview.md) | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir. |
+|Sanal Makineler | Yes | Yes | [Evet](insights/vminsights-overview.md) | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir. |
 |Sanal Ağ | Yes | Yes | [Evet](insights/network-insights-overview.md) |  |
-|Sanal ağ-NSG akış günlükleri | Hayır | Yes | Hayır |  |
-|VPN Gateway | Yes | Yes | Hayır |  |
+|Sanal ağ-NSG akış günlükleri | No | Yes | No |  |
+|VPN Gateway | Yes | Yes | No |  |
 |Windows Sanal Masaüstü | Hayır | Hayır | Hayır |  |
 
 
@@ -210,7 +213,7 @@ Farklı uygulama ve hizmetleri izlemek için diğer çözümler mevcuttur, ancak
 
 | Çözüm | Açıklama |
 |:---|:---|
-| [ITSM](platform/itsmc-overview.md) | BT Hizmet Yönetimi Bağlayıcısı (ıSMC), Azure ve desteklenen bir BT hizmet yönetimi (ıTSM) ürünü/hizmeti 'ne bağlanmanızı sağlar.  |
+| [ITSM](platform/itsmc-overview.md) | BT Hizmet Yönetimi Bağlayıcısı (ITSMC), Azure ile desteklenen BT Hizmet Yönetimi (ITSM) ürünü/hizmeti arasında bağlantı kurmanızı sağlar.  |
 
 
 ## <a name="resources-outside-of-azure"></a>Azure dışındaki kaynaklar

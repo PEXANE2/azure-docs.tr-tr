@@ -1,20 +1,14 @@
 ---
 title: 'Hızlı başlangıç: Soru-Cevap Oluşturma portalına soru ve yanıt ekleme'
 description: Bu hızlı başlangıçta, kullanıcılarınızın sorularınızın doğru yanıtını bulabilmesi için meta verilerle soru ve yanıt kümelerinin nasıl ekleneceği gösterilmektedir.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/08/2020
-ms.author: diberry
-ms.openlocfilehash: f067bae55c38fc783c12bf9d0bc6fbcdf881e4e4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/26/2020
+ms.openlocfilehash: fc8bac425723e9194c447f1cf6ee13547c09d772
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756692"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873684"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı başlangıç: Soru-Cevap Oluşturma portalı ile soru ve yanıt ekleme
 
@@ -82,11 +76,11 @@ Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrele
 
 1. **Görünüm seçeneklerini**belirleyin ve **meta verileri göster**' i seçin.
 
-1. Az önce eklediğiniz QnA çifti için, **meta veri etiketleri Ekle**' yi seçin, sonra adını `service` ve değerini ekleyin. `search` Şöyle görünür: `service:search`.
+1. Az önce eklediğiniz QnA çifti için, **meta veri etiketleri Ekle**' yi seçin, sonra adını `service` ve değerini ekleyin `search` . Şöyle görünür: `service:search` .
 
-1. Adı `link_in_answer` ve değeri olan başka bir meta veri etiketi ekleyin `false`. Şöyle görünür: `link_in_answer:false`.
+1. Adı ve değeri olan başka bir meta veri etiketi ekleyin `link_in_answer` `false` . Şöyle görünür: `link_in_answer:false` .
 
-1. Tablodaki ilk yanıtı arayın, `How large a knowledge base can I create?`.
+1. Tablodaki ilk yanıtı arayın, `How large a knowledge base can I create?` .
 
 1. Aynı iki meta veri etiketi için meta veri çiftleri ekleyin:
 

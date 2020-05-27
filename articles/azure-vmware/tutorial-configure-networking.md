@@ -1,20 +1,20 @@
 ---
-title: Öğretici-Azure 'da VMWare özel bulutunuz için ağı yapılandırma
+title: Öğretici-Azure 'da VMware özel bulutunuz için ağı yapılandırma
 description: Özel bulutunuzu Azure 'da dağıtmak için gereken ağı oluşturmayı ve yapılandırmayı öğrenin
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 41043b98a6e270d8d9f4373de7876b3fcae86747
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 5a8086f78f465f52d0f9107932c09c4690f505e8
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837626"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873860"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Öğretici: Azure 'da VMWare özel bulutunuz için ağı yapılandırma
 
 Bir Azure VMware çözümü (AVS) özel bulutu bir sanal ağ gerektirir. AVS, önizleme sırasında şirket içi vCenter 'ı desteklemediğinden, şirket içi ortamınıza tümleştirme için ek adımlar gereklidir. ExpressRoute bağlantı hattını ve bir sanal ağ geçidini ayarlamak da gereklidir ve bu öğreticide değinilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Sanal Ağ Oluşturma
@@ -24,7 +24,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
@@ -128,4 +128,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Özel bulutunuzu yerel olarak yönetebilmeniz için ortamınıza bağlanmak üzere kullanılan bir bağlantı kutusu oluşturmayı öğrenmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Özel buluta erişin](tutorial-access-private-cloud.md)
+> [Özel Buluta Erişme](tutorial-access-private-cloud.md)

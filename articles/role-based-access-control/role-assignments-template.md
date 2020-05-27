@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 777d11a129f02d1a2f5c796dea0af438ca81ba8c
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: baf309a93f8ba976cb6511c05ba5032ad07a0fc9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735632"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874048"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme
 
@@ -26,7 +26,7 @@ ms.locfileid: "82735632"
 
 ## <a name="get-object-ids"></a>Nesne kimliklerini al
 
-Rol atamak için, rolü atamak istediğiniz kullanıcı, Grup veya uygulamanın KIMLIĞINI belirtmeniz gerekir. KIMLIK şu biçimdedir: `11111111-1111-1111-1111-111111111111`. Azure portal, Azure PowerShell veya Azure CLı kullanarak KIMLIĞI edinebilirsiniz.
+Rol atamak için, rolü atamak istediğiniz kullanıcı, Grup veya uygulamanın KIMLIĞINI belirtmeniz gerekir. KIMLIK şu biçimdedir: `11111111-1111-1111-1111-111111111111` . Azure portal, Azure PowerShell veya Azure CLı kullanarak KIMLIĞI edinebilirsiniz.
 
 ### <a name="user"></a>Kullanıcı
 
@@ -77,7 +77,7 @@ Aşağıdaki şablonda rol ataması eklemenin temel bir yolu gösterilmektedir. 
 Şablonu kullanmak için aşağıdakileri yapmanız gerekir:
 
 - Yeni bir JSON dosyası oluşturun ve şablonu kopyalayın
-- Rolün `<your-principal-id>` atanacağı bir Kullanıcı, Grup veya uygulamanın kimliğiyle değiştirin
+- `<your-principal-id>`Rolün atanacağı bir Kullanıcı, Grup veya UYGULAMANıN kimliğiyle değiştirin
 
 ```json
 {
@@ -173,7 +173,7 @@ Aşağıda, şablonu dağıttıktan sonra bir kaynak grubu için kullanıcıya o
 ```
 
 > [!NOTE]
-> Bu şablon, şablon dağıtımı için bir parametre `roleNameGuid` olarak aynı değer sağlanmamışsa ıdempotent değildir. Hayır `roleNameGuid` sağlanmazsa, varsayılan olarak her dağıtımda yenı bir GUID oluşturulur ve sonraki dağıtımlar `Conflict: RoleAssignmentExists` hata vererek başarısız olur.
+> Bu şablon, `roleNameGuid` şablon dağıtımı için bir parametre olarak aynı değer sağlanmamışsa ıdempotent değildir. Hayır `roleNameGuid` sağlanmazsa, varsayılan olarak her dağıtımda yeni BIR GUID oluşturulur ve sonraki dağıtımlar hata vererek başarısız olur `Conflict: RoleAssignmentExists` .
 
 Rol atamasının kapsamı, dağıtımın düzeyinden belirlenir. Örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve bir kaynak grubu kapsamında dağıtımın nasıl başlatılacağı hakkında daha [az grup dağıtımı oluşturma](/cli/azure/group/deployment#az-group-deployment-create) komutları aşağıda verilmiştir.
 
@@ -293,7 +293,7 @@ Aşağıda, şablonu dağıttıktan sonra bir depolama hesabı için kullanıcı
 
 ### <a name="new-service-principal"></a>Yeni hizmet sorumlusu
 
-Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir. Örneğin, yeni bir yönetilen kimlik oluşturup aynı Azure Resource Manager şablonunda bu hizmet sorumlusuna bir rol atamayı denerseniz, rol ataması başarısız olabilir. Bu hatanın nedeni büyük olasılıkla çoğaltma gecikmesi. Hizmet sorumlusu tek bir bölgede oluşturulur; Ancak, rol ataması henüz hizmet sorumlusunu çoğaltılmamış farklı bir bölgede gerçekleşebilir. Bu senaryoya yönelik olarak, rol atamasını oluştururken `principalType` özelliğini olarak `ServicePrincipal` ayarlamanız gerekir.
+Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir. Örneğin, yeni bir yönetilen kimlik oluşturup aynı Azure Resource Manager şablonunda bu hizmet sorumlusuna bir rol atamayı denerseniz, rol ataması başarısız olabilir. Bu hatanın nedeni büyük olasılıkla çoğaltma gecikmesi. Hizmet sorumlusu tek bir bölgede oluşturulur; Ancak, rol ataması henüz hizmet sorumlusunu çoğaltılmamış farklı bir bölgede gerçekleşebilir. Bu senaryoya yönelik olarak, `principalType` rol atamasını oluştururken özelliğini olarak ayarlamanız gerekir `ServicePrincipal` .
 
 Aşağıdaki şablonda şunları gösterilmektedir:
 
@@ -358,6 +358,15 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 Aşağıda, şablonu dağıttıktan sonra yeni bir yönetilen kimlik hizmeti sorumlusuna katkıda bulunan rolü atamasının bir örneği gösterilmektedir.
 
 ![Yeni yönetilen kimlik hizmeti sorumlusu için rol ataması](./media/role-assignments-template/role-assignment-template-msi.png)
+
+## <a name="remove-a-role-assignment"></a>Rol atamasını kaldırma
+
+Azure RBAC 'de, bir Azure kaynağına erişimi kaldırmak için rol atamasını kaldırırsınız. Şablon kullanarak rol atamasını kaldırmanın bir yolu yoktur. Rol atamasını kaldırmak için, gibi diğer araçları kullanmanız gerekir:
+
+- [Azure portal](role-assignments-portal.md#remove-a-role-assignment)
+- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
+- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+- [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

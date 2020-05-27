@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5f3e05752967be8872c0e6fd9008bfae05d950fa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9400558f8ea26199a2f7ac406fd6d94647243e11
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169547"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873813"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Hızlı Başlangıç: Bing Web Araması API’sini çağırmak için Ruby kullanma  
 
-Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Ruby uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bing Web Araması API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu Ruby uygulaması, API 'ye bir arama isteği gönderir ve JSON yanıtını gösterir. Bu uygulama Ruby dilinde yazılmış olsa da, API çoğu programlama dili ile uyumlu olan bir yenilenmiş Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Bir proje oluşturun ve gerekli modülleri bildirin
 
-Sık kullandığınız IDE veya kod düzenleyicisinde yeni bir Ruby projesi oluşturun. Daha sonra istekler için `net/https`, URI işleme için `uri` ve yanıtı ayrıştırmak için `json` gerektirin.
+Sık kullandığınız IDE veya kod düzenleyicisinde yeni bir Ruby projesi oluşturun. Ardından, `net/https` istek için gerekli, `uri` URI işleme ve `json` yanıtı ayrıştırma.
 
 ```ruby
 require 'net/https'
@@ -43,7 +43,13 @@ require 'json'
 
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
-Devam etmeden önce birkaç değişkeni ayarlamamız gerekir. `uri`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir. `uri` ve `path` öğelerinin geçerli olduğunu doğrulayın ve `accessKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `term` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz.
+Devam edebilmek için birkaç değişkenin ayarlanması gerekir:
+
+1. Değer için `uri` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz. 
+
+2. `uri`Ve `path` değerlerinin geçerli olduğunu doğrulayın ve `accessKey` değeri Azure hesabınızdaki bir abonelik anahtarıyla değiştirin. 
+
+3. İsteğe bağlı olarak, için değerini değiştirerek arama sorgusunu özelleştirin `term` .
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"
@@ -60,7 +66,7 @@ end
 
 ## <a name="make-a-request"></a>İstekte bulunma
 
-Bir istekte bulunmak ve yanıtı işlemek için bu kodu kullanın.
+Bir istek yapmak ve yanıtı işlemek için bu kodu kullanın:
 
 ```ruby
 # Construct the endpoint uri.
@@ -96,7 +102,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Son adım kodunuzu doğrulayıp çalıştırmaktır! Kodunuzu bizimkiyle karşılaştırmak isterseniz, tam program aşağıdadır:
+Son adım, kodunuzu doğrulamak ve çalıştırmak için kullanılır. Kodunuzu bizimkiyle karşılaştırmak isterseniz, tam program aşağıdadır:
 
 ```ruby
 require 'net/https'
@@ -135,7 +141,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="sample-response"></a>Örnek yanıt
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek yanıt, tek bir sonuç göstermek için kısaltıldı.
 
@@ -264,6 +270,6 @@ Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek y
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing Web araması tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Araması API'si tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

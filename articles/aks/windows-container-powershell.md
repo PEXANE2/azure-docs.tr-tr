@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) kümesinde Windows Server kapsayıcısı o
 description: Hızlı bir şekilde bir Kubernetes kümesi oluşturmayı, PowerShell kullanarak Azure Kubernetes Service (AKS) içindeki bir Windows Server kapsayıcısında uygulamayı dağıtmayı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 05/12/2020
-ms.openlocfilehash: d488935a9f45d775578179cb58423d882a1cee27
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 05/26/2020
+ms.openlocfilehash: c0c4849d76676cf165dbb051fbd904c28a98fa3b
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725049"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873562"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>PowerShell kullanarak bir Azure Kubernetes Service (AKS) kümesi üzerinde Windows Server kapsayıcısı oluşturma
 
@@ -24,9 +24,6 @@ Bu makalede, Kubernetes kavramlarının temel bir şekilde anlaşıldığı vars
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 PowerShell 'i yerel olarak kullanmayı seçerseniz, bu makale az PowerShell modülünü yüklemenizi ve [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanmanızı gerektirir. Az PowerShell modülünü yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell][install-azure-powershell].
-
-> [!IMPORTANT]
-> Bu makalede, az. AKS PowerShell modülünün önizleme sürümü kullanılmaktadır. Aşağıdaki komutu kullanarak az PowerShell modülünden ayrı olarak yüklemelisiniz: `Install-Module -Name Az.AKS -AllowPrerelease -RequiredVersion 1.1.0-preview` . Önizleme sürümü az. AKS PowerShell modülünün genel kullanıma sunulduğunda, gelecekteki az PowerShell modülü sürümlerinin bir parçası haline gelir ve Azure Cloud Shell içinden yerel olarak kullanılabilir.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 

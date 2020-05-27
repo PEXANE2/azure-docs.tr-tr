@@ -1,21 +1,14 @@
 ---
 title: 'Hızlı başlangıç: toplu iş soruları ile test bilgi tabanı'
-titleSuffix: Azure Cognitive Services
-description: ''
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: Beklenen yanıtlar, güvenirlik puanları ve çok yönlü istemler için Soru-Cevap Oluşturma kaynaklarınızın bilgi temellerini test etmek üzere Soru-Cevap Oluşturma Batch test aracını kullanın.
 ms.topic: quickstart
-ms.date: 02/08/2020
-ms.author: diberry
-ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/26/2020
+ms.openlocfilehash: 9845b7c7cc19550c450a1eb00ec02731ef2d9d44
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756704"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873670"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Hızlı başlangıç: toplu sorularla ve beklenen yanıtlardan test Bilgi Bankası
 
@@ -26,7 +19,7 @@ Beklenen yanıtlar, güvenirlik puanları ve çok yönlü istemler için Soru-Ce
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Soru-cevap oluşturma bir hizmet oluşturun](create-publish-knowledge-base.md) ya da İngilizce dilini kullanan mevcut bir hizmeti kullanın.
 * [Çoklu çift örnek `.docx` dosyasını](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) indirin
-* [Batch test aracı](https://aka.ms/qnamakerbatchtestingtool)'nı indirin, `.zip` dosyadan yürütülebilir dosyayı ayıklayın.
+* [Batch test aracı](https://aka.ms/qnamakerbatchtestingtool)'nı indirin, dosyadan yürütülebilir dosyayı ayıklayın `.zip` .
 
 ## <a name="sign-into-qna-maker-portal"></a>Soru-Cevap Oluşturma portalında oturum açın
 
@@ -40,7 +33,7 @@ Soru-Cevap Oluşturma portalında [oturum açın](https://www.qnamaker.ai/) .
     * Azure abonelik adı
     * Azure QnA hizmeti adı
     * Dil-Ingilizce dili
-1. Bilgi Bankalarınızın `Multi-turn batch test quickstart` adı olarak adı girin.
+1. `Multi-turn batch test quickstart`Bilgi Bankalarınızın adı olarak adı girin.
 
 1. **4. adımda**ayarları aşağıdaki tabloyla yapılandırın:
 
@@ -63,16 +56,16 @@ Soru-Cevap Oluşturma portalında [oturum açın](https://www.qnamaker.ai/) .
     |Gerekli veriler| Örnek|
     |--|--|
     |Yayınlanan konak|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
-    |Yayınlanan anahtar|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 karakter dizesi sonra `Endpoint` gösteriliyor)|
-    |Uygulama Kimliği|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 bir `POST`parçası olarak gösterilen karakter dizesi) |
+    |Yayınlanan anahtar|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 karakter dizesi sonra gösteriliyor `Endpoint` )|
+    |Uygulama Kimliği|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 bir parçası olarak gösterilen karakter dizesi `POST` ) |
 
 ## <a name="create-batch-test-file-with-question-ids"></a>Soru kimlikleriyle Batch test dosyası oluşturma
 
-Batch test aracını kullanmak için metin düzenleyici ile adlı `batch-test-data-1.tsv` bir dosya oluşturun. Dosyanın aşağıdaki sütunları bir sekmeyle ayrılmış olması gerekir.
+Batch test aracını kullanmak için metin düzenleyici ile adlı bir dosya oluşturun `batch-test-data-1.tsv` . Dosyanın aşağıdaki sütunları bir sekmeyle ayrılmış olması gerekir.
 
 |TSV giriş dosyası alanları|Notlar|Örnek|
 |--|--|--|
-|Bilgi Bankası KIMLIĞI|Bilgi Bankası KIMLIĞINIZ Yayımla sayfasında bulunur. Tek bir dosyada farklı Bilgi Bankası kimliklerini kullanarak tek bir dosyada aynı hizmette bulunan birçok bilgi bankasını test edin.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 bir `POST`parçası olarak gösterilen karakter dizesi) |
+|Bilgi Bankası KIMLIĞI|Bilgi Bankası KIMLIĞINIZ Yayımla sayfasında bulunur. Tek bir dosyada farklı Bilgi Bankası kimliklerini kullanarak tek bir dosyada aynı hizmette bulunan birçok bilgi bankasını test edin.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 bir parçası olarak gösterilen karakter dizesi `POST` ) |
 |Soru|Kullanıcının girebileceği soru metni. en fazla 1.000 karakter.|`How do I sign out?`|
 |Meta veri etiketleri|isteğe bağlı|`topic:power`_anahtar: değer_ biçimini kullanır|
 |Üst parametre|isteğe bağlı|`25`|
@@ -99,7 +92,7 @@ Daha sonra, aynı Bilgi Bankası KIMLIĞI kullanılarak bu sorulara benzer ancak
 > [!CAUTION]
 > Her sütunun yalnızca bir sekme sınırlayıcısıyla ayrıldığından emin olun. Sütun verilerine baştaki veya sondaki boşluklar eklenir ve tür veya boyut yanlış olduğunda programın özel durum oluşturmasına neden olur.
 
-Excel 'de açıldığında, toplu işlem test dosyası aşağıdaki görüntüde gibi görünür. Bilgi Bankası KIMLIĞI güvenlik `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` için değiştirilmiştir. Kendi Batch testiniz için, sütunun Bilgi Bankası KIMLIĞINIZI görüntülediğinden emin olun.
+Excel 'de açıldığında, toplu işlem test dosyası aşağıdaki görüntüde gibi görünür. Bilgi Bankası KIMLIĞI `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` güvenlik için değiştirilmiştir. Kendi Batch testiniz için, sütunun Bilgi Bankası KIMLIĞINIZI görüntülediğinden emin olun.
 
 > [!div class="mx-imgBorder"]
 > ![Toplu iş testinde. tsv dosyasının ilk sürümünü girin](../media/batch-test/batch-test-1-input.png)
@@ -108,7 +101,7 @@ Excel 'de açıldığında, toplu işlem test dosyası aşağıdaki görüntüde
 
 Komut satırında aşağıdaki CLı biçimini kullanarak Batch test programı 'nı çalıştırın.
 
-Ve `YOUR-RESOURCE-NAME` `ENDPOINT-KEY` değerlerini hizmet adı ve uç nokta anahtarı için kendi değerlerinizle değiştirin. Bu değerler Soru-Cevap Oluşturma portalındaki **Ayarlar** sayfasında bulunur.
+`YOUR-RESOURCE-NAME`Ve `ENDPOINT-KEY` değerlerini hizmet adı ve uç nokta anahtarı için kendi değerlerinizle değiştirin. Bu değerler Soru-Cevap Oluşturma portalındaki **Ayarlar** sayfasında bulunur.
 
 ```console
 batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.net ENDPOINT-KEY out.tsv
@@ -118,7 +111,7 @@ Test tamamlanır ve `out.tsv` dosyayı oluşturur:
 > [!div class="mx-imgBorder"]
 > ![Batch testinde. tsv dosyasının ilk sürümünü çıkar](../media/batch-test/batch-test-1-output.png)
 
-Bilgi Bankası KIMLIĞI güvenlik `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` için değiştirilmiştir. Kendi Batch testiniz için, sütun Bilgi Bankası KIMLIĞINIZI görüntüler.
+Bilgi Bankası KIMLIĞI `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` güvenlik için değiştirilmiştir. Kendi Batch testiniz için, sütun Bilgi Bankası KIMLIĞINIZI görüntüler.
 
 Her soru Bilgi Bankası 'nda göründüğü gibi tam olarak aynı olduğu için, 4 sütunundaki Güvenirlik puanı test çıktısı, en çok 100 puanı döndüren ilk 3 soruyu gösterir. Son 3 soru, söz konusu sorudan yeni bir deyişle, Güvenirlik puanı olarak 100 ' i döndürmeyin. Hem test hem de kullanıcılarınız için puanı artırmak üzere Bilgi Bankası 'na daha fazla başka soru eklemeniz gerekir.
 
@@ -142,7 +135,7 @@ Veri kaynağı ve işlemi otomatikleştiriltiğinden, doğru değerleri belirley
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Bilgi Bankası 'na meta veri ekleme
 
-1. QnA portalında, **düzenleme** sayfasında, aşağıdaki sorulara meta verileri `topic:power` ekleyin:
+1. QnA portalında, **düzenleme** sayfasında, aşağıdaki sorulara meta verileri ekleyin `topic:power` :
 
     |Sorular|
     |--|
@@ -152,7 +145,7 @@ Veri kaynağı ve işlemi otomatikleştiriltiğinden, doğru değerleri belirley
     İki QnA çiftinin meta veri kümesi var.
 
     > [!TIP]
-    > Her bir küme için meta verileri ve QnA kimliklerini görmek üzere Bilgi Bankası 'nı dışarı aktarın. **Ayarlar** sayfasını seçin ve ardından `.xls` dosya olarak **Dışa Aktar** ' ı seçin. Bu indirilen dosyayı bulun ve meta veriler ve KIMLIK için Excel gözden geçirimiyle açın.
+    > Her bir küme için meta verileri ve QnA kimliklerini görmek üzere Bilgi Bankası 'nı dışarı aktarın. **Ayarlar** sayfasını seçin ve ardından dosya olarak **Dışa Aktar** ' ı seçin `.xls` . Bu indirilen dosyayı bulun ve meta veriler ve KIMLIK için Excel gözden geçirimiyle açın.
 
 1. **Kaydet ve eğit**' i seçin, ardından **Yayımla** sayfasını seçin ve ardından **Yayınla** düğmesini seçin. Bu eylemler, değişikliği toplu test için kullanılabilir hale getirir. Bilgi Bankası 'nı **Ayarlar** sayfasından indirin.
 
@@ -169,9 +162,9 @@ Toplu test için iki ana senaryo vardır:
 
 Aşağıdaki yordamda, senaryonun sohbet günlüklerini işlemek için olduğu varsayılmaktadır
 
-1. İsteğe bağlı verileri dahil etmek için yeni bir Batch test dosyası `batch-test-data-2.tsv`oluşturun. Orijinal Batch testi giriş dosyasından 6 satır ekleyin, ardından her satır için meta veri, üst ve QnA çifti KIMLIĞINI ekleyin.
+1. İsteğe bağlı verileri dahil etmek için yeni bir Batch test dosyası oluşturun `batch-test-data-2.tsv` . Orijinal Batch testi giriş dosyasından 6 satır ekleyin, ardından her satır için meta veri, üst ve QnA çifti KIMLIĞINI ekleyin.
 
-    Bilgi Bankası 'nda sohbet günlüklerinden yeni metin denetleme işleminin benzetimini yapmak için, her bir sütunun meta verilerini aynı değere ayarlayın: `topic:power`.
+    Bilgi Bankası 'nda sohbet günlüklerinden yeni metin denetleme işleminin benzetimini yapmak için, her bir sütunun meta verilerini aynı değere ayarlayın: `topic:power` .
 
     > [!div class="mx-imgBorder"]
     > ![Batch testinde. tsv dosyasının ikinci sürümünü girin](../media/batch-test/batch-test-2-input.png)
