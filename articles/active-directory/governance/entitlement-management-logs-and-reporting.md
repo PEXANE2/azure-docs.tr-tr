@@ -16,12 +16,12 @@ ms.date: 04/14/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87bb08e08bca3a9f715590098cfaa22ce7da8017
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380179"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799499"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Izleyici 'de Azure AD yetkilendirme yönetiminde arşiv günlükleri ve raporları
 
@@ -158,10 +158,10 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-Gibi `Connect-AzAccount –Subscription $subs[0].id`bir komut kullanarak PowerShell oturumunuzu yeniden kimlik doğrulaması yapabilir ve bu abonelikle ilişkilendirebilirsiniz. Etkileşimli olmayanlar dahil olmak üzere PowerShell 'den Azure 'da kimlik doğrulaması yapma hakkında daha fazla bilgi edinmek için bkz. [Azure PowerShell oturum açma](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
+Gibi bir komut kullanarak PowerShell oturumunuzu yeniden kimlik doğrulaması yapabilir ve bu abonelikle ilişkilendirebilirsiniz `Connect-AzAccount –Subscription $subs[0].id` . Etkileşimli olmayanlar dahil olmak üzere PowerShell 'den Azure 'da kimlik doğrulaması yapma hakkında daha fazla bilgi edinmek için bkz. [Azure PowerShell oturum açma](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
 ).
 
-Bu abonelikte birden çok Log Analytics çalışma alanınız varsa, [Get-Azoperationalınsightsworkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) cmdlet 'i, çalışma alanlarının listesini döndürür. Daha sonra Azure AD günlüklerine sahip olan bir tane bulabilirsiniz. Bu `CustomerId` cmdlet tarafından döndürülen alan, Log Analytics çalışma alanına genel bakış alanındaki Azure Portal gösterildiği "çalışma alanı kimliği" değeri ile aynıdır.
+Bu abonelikte birden çok Log Analytics çalışma alanınız varsa, [Get-Azoperationalınsightsworkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) cmdlet 'i, çalışma alanlarının listesini döndürür. Daha sonra Azure AD günlüklerine sahip olan bir tane bulabilirsiniz. `CustomerId`Bu cmdlet tarafından döndürülen alan, Log Analytics çalışma alanına genel bakış alanındaki Azure Portal gösterildiği "çalışma alanı kimliği" değeri ile aynıdır.
  
 ```powershell
 $wks = Get-AzOperationalInsightsWorkspace
@@ -189,5 +189,5 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar:
-- [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../../azure-monitor/app/usage-workbooks.md) 
+- [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../../azure-monitor/platform/workbooks-overview.md) 
 

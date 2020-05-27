@@ -131,8 +131,8 @@
           href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
         - name: Azure Yol Haritası
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
-        - name: MSDN forumu
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+        - name: Microsoft Soru-Cevap soru sayfası
+          href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
         - name: Fiyatlandırma
           href: 'https://azure.microsoft.com/pricing/details/active-directory/'
         - name: Fiyatlandırma hesaplayıcı

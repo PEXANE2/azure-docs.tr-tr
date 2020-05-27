@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d57f02b9aff56c83aa1c12bd441df2863f6d6fa7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6768bc2420008db1e708cdbe3ef70a6146ed8010
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658492"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835521"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) mimarisi
 
@@ -50,7 +50,7 @@ Ayrılmış depolama ve işlem ile, SYNAPSE SQL havuzu bir arada kullanıldığ�
 - Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 - Çalışma saatleri içinde işlem kapasitesini sürdürür.
 
-### <a name="azure-storage"></a>Azure Depolama
+### <a name="azure-storage"></a>Azure Storage
 
 SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
 
@@ -119,6 +119,6 @@ Azure SYNAPSE hakkında biraz bilgi sahibi olduğunuza göre hızlıca [BIR SQL 
 - [Özellik istekleri](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [Videolar](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Destek bileti oluşturun](sql-data-warehouse-get-started-create-support-ticket.md)
-- [MSDN forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+- [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
 - [Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

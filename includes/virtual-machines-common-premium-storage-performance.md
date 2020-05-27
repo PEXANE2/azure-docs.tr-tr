@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1827d44f4d4ac812a33aee4791c2103a10328ba7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: dba0dd4e52913e0998b088fb2ccf90c98f0a89c2
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204434"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83821499"
 ---
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
@@ -140,7 +140,7 @@ GÇ isteği, uygulamanızın gerçekleştirmesi için bir giriş/çıkış işle
 GÇ boyutu, daha önemli faktörlerden biridir. GÇ boyutu, uygulamanız tarafından oluşturulan giriş/çıkış işlemi isteğinin boyutudur. GÇ boyutunun, özellikle de uygulamanın elde edebildii ıOPS ve bant genişliği üzerinde performans üzerinde önemli bir etkisi vardır. Aşağıdaki formül ıOPS, GÇ boyutu ve bant genişliği/aktarım hızı arasındaki ilişkiyi gösterir.  
     ![](media/premium-storage-performance/image1.png)
 
-Bazı uygulamalar, bazı uygulamalar olmasa da bunun GÇ boyutunu değiştirmelerini sağlar. Örneğin, SQL Server en iyi GÇ boyutunu belirler ve bunu değiştirmek için kullanıcılara herhangi bir KBS sağlamaz. Diğer yandan, Oracle, veritabanı [\_blok\_boyutu](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) adlı bir parametre sağlar ve bu, veritabanının g/ç istek boyutunu yapılandırabilirsiniz.
+Bazı uygulamalar, bazı uygulamalar olmasa da bunun GÇ boyutunu değiştirmelerini sağlar. Örneğin, SQL Server en iyi GÇ boyutunu belirler ve bunu değiştirmek için kullanıcılara herhangi bir KBS sağlamaz. Diğer yandan, Oracle, veritabanı [ \_ blok \_ boyutu](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) adlı bir parametre sağlar ve bu, veritabanının g/ç istek boyutunu yapılandırabilirsiniz.
 
 GÇ boyutunu değiştirmenize izin verilmeyen bir uygulama kullanıyorsanız, uygulamanızla en uygun performans KPI 'sini iyileştirmek için bu makaledeki yönergeleri kullanın. Örneğin,
 
@@ -189,15 +189,15 @@ VM başına en fazla ıOPS sınırı ve disk başına her ikisi birbirinden fark
 *Işlem maliyeti*  
 Çoğu durumda, Premium depolama kullanan genel işlem maliyetiniz standart depolamayı kullanmaktan daha düşüktür.
 
-Örneğin, 16.000 ıOPS gerektiren bir uygulamayı düşünün. Bu performansı elde etmek için standart\_bir D14 Azure ıAAS sanal makinesi gerekir ve bu, 32 standart depolama 1 TB disklerini kullanarak en fazla 16.000 IOPS sağlayabilir. Her 1 TB standart depolama diski en fazla 500 ıOPS elde edebilir. Bu VM 'nin aylık tahmini maliyeti $1.570 olacaktır. 32 standart depolama disklerinin aylık maliyeti $1.638 olacaktır. Tahmini toplam aylık maliyet $3.208 olacaktır.
+Örneğin, 16.000 ıOPS gerektiren bir uygulamayı düşünün. Bu performansı elde etmek için standart bir \_ D14 Azure IaaS sanal makinesi gerekir ve bu, 32 standart depolama 1 TB disklerini kullanarak en fazla 16.000 IOPS sağlayabilir. Her 1 TB standart depolama diski en fazla 500 ıOPS elde edebilir. Bu VM 'nin aylık tahmini maliyeti $1.570 olacaktır. 32 standart depolama disklerinin aylık maliyeti $1.638 olacaktır. Tahmini toplam aylık maliyet $3.208 olacaktır.
 
-Ancak, Premium depolamada aynı uygulamayı barındırdıysanız, daha küçük bir VM boyutu ve daha az Premium Depolama diski gerekir ve bu sayede genel maliyeti azaltabilirsiniz. Standart\_BIR DS13 VM, dört P30 diski kullanarak 16.000 IOPS gereksinimini karşılayabilir. DS13 VM en fazla 25.600 ıOPS 'ye sahiptir ve her P30 diskte en fazla 5.000 ıOPS vardır. Genel olarak, bu yapılandırma 5.000 x 4 = 20.000 ıOPS elde edebilir. Bu VM 'nin aylık tahmini maliyeti $1.003 olacaktır. Dört P30 Premium Depolama diskinin aylık maliyeti $544,34 olacaktır. Tahmini toplam aylık maliyet $1.544 olacaktır.
+Ancak, Premium depolamada aynı uygulamayı barındırdıysanız, daha küçük bir VM boyutu ve daha az Premium Depolama diski gerekir ve bu sayede genel maliyeti azaltabilirsiniz. Standart bir \_ DS13 VM, dört P30 diski kullanarak 16.000 IOPS gereksinimini karşılayabilir. DS13 VM en fazla 25.600 ıOPS 'ye sahiptir ve her P30 diskte en fazla 5.000 ıOPS vardır. Genel olarak, bu yapılandırma 5.000 x 4 = 20.000 ıOPS elde edebilir. Bu VM 'nin aylık tahmini maliyeti $1.003 olacaktır. Dört P30 Premium Depolama diskinin aylık maliyeti $544,34 olacaktır. Tahmini toplam aylık maliyet $1.544 olacaktır.
 
 Aşağıdaki tablo, standart ve Premium Depolama için bu senaryonun maliyet dökümünü özetler.
 
 | &nbsp; | **Standart** | **Premium** |
 | --- | --- | --- |
-| **Aylık VM maliyeti** |$1.570,58 (Standart\_D14) |$1.003,66 (Standart\_DS13) |
+| **Aylık VM maliyeti** |$1.570,58 (Standart \_ D14) |$1.003,66 (Standart \_ DS13) |
 | **Aylık disk maliyeti** |$1.638,40 (32 x 1-TB disk) |$544,34 (4 x P30 disk) |
 | **Aylık genel maliyet** |$3.208,98 |$1.544,34 |
 
@@ -237,7 +237,7 @@ Azure Premium Depolamalarından yararlanan yüksek ölçekli VM 'Ler BlobCache a
 > [!WARNING]
 > Disk önbelleği 4 TiB ve daha büyük diskler için desteklenmez. Sanal makinenize birden çok disk iliştirilmişse, 4 TiB 'den küçük olan her bir disk önbelleğe almayı destekleyecektir.
 >
-> Bir Azure diskinin önbellek ayarını değiştirmek diski ayırıp yeniden ekler. İşletim sistemi diski ise, VM yeniden başlatılır. Disk önbellek ayarını değiştirmeden önce bu kesintiden etkilenebilecek tüm uygulamaları/hizmetleri durdurun.
+> Bir Azure diskinin önbellek ayarını değiştirmek diski ayırıp yeniden ekler. İşletim sistemi diski ise, VM yeniden başlatılır. Disk önbellek ayarını değiştirmeden önce bu kesintiden etkilenebilecek tüm uygulamaları/hizmetleri durdurun. Bu önerilerin takip edilmez veri bozulmasına yol açabilir.
 
 BlobCache 'in nasıl çalıştığı hakkında daha fazla bilgi edinmek için [Azure Premium Depolama](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) blog gönderisine bakın.
 
@@ -252,7 +252,7 @@ Veri diskleri için önerilen disk önbelleği ayarları aşağıda verilmiştir
 
 | **Disk önbelleğe alma ayarı** | **Bu ayarın ne zaman kullanılacağı önerisi** |
 | --- | --- |
-| Hiçbiri |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
+| Yok |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
 | ReadOnly |Salt okunur ve okuma/yazma diskleri için konak önbelleğini ReadOnly olarak yapılandırın. |
 | ReadWrite |Konak ön belleğini yalnızca, uygulamanız gerektiğinde kalıcı disklere önbelleğe alınmış verileri yazmayı doğru şekilde işlediğinde, salt yazılır olarak yapılandırın. |
 
@@ -280,9 +280,9 @@ Varsayılan olarak, işletim sistemi disklerinin ReadWrite önbelleği etkindir.
 
 Önbelleği **ReadOnly** veya **none**olarak ayarlanmış tüm Premium SSD 'ler veya ultra diskler için, dosya sistemini bağladığınızda "engelleri" devre dışı bırakmanız gerekir. Premium Depolama disklerine yazma işlemleri bu önbellek ayarları için dayanıklı olduğundan, bu senaryoda engellere ihtiyacınız yoktur. Yazma isteği başarıyla tamamlandığında, veriler kalıcı depoya yazıldı. "Engelleri" devre dışı bırakmak için aşağıdaki yöntemlerden birini kullanın. Dosya sisteminiz için bir tane seçin:
   
-* **Reıfs**için, engelleri devre dışı bırakmak için `barrier=none` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier=flush`.)
-* **Ext3/ext4**için, engelleri devre dışı bırakmak için `barrier=0` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier=1`.)
-* **XFS**için, engelleri devre dışı bırakmak için `nobarrier` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier`.)
+* **Reıfs**için, engelleri devre dışı bırakmak için `barrier=none` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier=flush` .)
+* **Ext3/ext4**için, engelleri devre dışı bırakmak için `barrier=0` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier=1` .)
+* **XFS**için, engelleri devre dışı bırakmak için `nobarrier` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier` .)
 * Önbellek **okuma**olarak ayarlanan Premium Depolama disklerinde, yazma dayanıklılığı için engelleri etkinleştirin.
 * VM 'yi yeniden başlattıktan sonra birim etiketlerinin devam etmesi için,/etc/fstab ' ı disklere evrensel benzersiz tanımlayıcı (UUID) başvuruları ile güncelleştirmeniz gerekir. Daha fazla bilgi için bkz. [LINUX VM 'ye yönetilen disk ekleme](../articles/virtual-machines/linux/add-disk.md).
 
@@ -384,3 +384,4 @@ Sıra derinliğini herhangi bir yüksek değere, ancak en uygun değere göre ya
 Azure Premium Depolama, seçtiğiniz VM boyutlarına ve disk boyutlarına göre belirtilen ıOPS ve aktarım hızı sayısını sağlar. Uygulamanız her zaman VM 'nin veya diskin işleyebileceği Bu limitlerin üzerinde ıOPS veya aktarım hızını sorgulamaya çalıştığında, Premium depolama alanı kısıtlayıp azalmasını sağlar. Bu bildirimler uygulamanızdaki performans düşüklüğü biçiminde. Bu, daha yüksek gecikme süresi, düşük aktarım hızı veya düşük ıOPS anlamına gelebilir. Premium Depolama kısıtlama uygulamamılamaz, uygulamanız kaynakları elde edebilen bir süreyi aşarak tamamen başarısız olabilir. Bu nedenle, azaltma nedeniyle performans sorunlarından kaçınmak için her zaman uygulamanız için yeterli kaynak sağlayın. Yukarıdaki VM boyutları ve disk boyutları bölümünde açıklandığımız şeyleri dikkate alın. Sınama, uygulamanızı barındırmak için hangi kaynakların gerekli olacağını belirlemenin en iyi yoludur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+

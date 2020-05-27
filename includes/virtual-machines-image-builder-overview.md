@@ -5,12 +5,12 @@ ms.date: 05/15/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9bbf2288ac92c33c2b24af4e6a97882013a4ff1d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673467"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83821512"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
@@ -80,7 +80,7 @@ Azure görüntü Oluşturucu, bir Azure Kaynak sağlayıcısı tarafından eriş
 
 Azure VM Image Builder 'ın görüntüleri yönetilen görüntülere veya paylaşılan bir görüntü galerisine dağıtmasını sağlamak için, görüntüleri okuma ve yazma izinlerine sahip Azure Kullanıcı tarafından atanan bir kimlik oluşturmanız gerekir. Azure depolama 'ya erişiyorsanız, bu durumda özel kapsayıcıları okumak için izinler gerekir.
 
-Başlangıçta kimlik oluşturma hakkında [Azure Kullanıcı tarafından atanan yönetilen kimlik belgelerini oluşturmanız](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli) gerekir.
+Başlangıçta kimlik oluşturma hakkında [Azure Kullanıcı tarafından atanan yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli) belgelerini izlemeniz gerekir.
 
 İzin vermek için gereken kimliğe sahip olduktan sonra, bunu yapmak için bir Azure özel rol tanımı kullanabilir ve ardından Kullanıcı tarafından atanan yönetilen kimliği özel rol tanımını kullanacak şekilde atayabilirsiniz.
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 54bff88e9650240a3703e18d583f603cafeb3022
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 11cb598420b4cecf803b17a78f14f9268e1c8be2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611900"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831288"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics iş izlemeyi ve sorguların nasıl izleneceğini anlayın
 
@@ -59,7 +59,7 @@ Grafik türünü, gösterilen ölçümleri ve zaman aralığını düzenleme gra
 Bu süre, işinizin en son çıktısının uygulama zamanı (örneğin, olay verilerinden zaman damgası kullanılarak).
 
 ## <a name="get-help"></a>Yardım alın
-Daha fazla yardım için [Azure Stream Analytics forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) deneyin.
+Daha fazla yardım için [Microsoft Q&soru sayfasını Azure Stream Analytics için](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) deneyin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)

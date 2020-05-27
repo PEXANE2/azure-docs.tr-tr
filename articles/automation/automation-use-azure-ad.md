@@ -4,12 +4,12 @@ description: Bu makalede Azure AD 'nin Azure 'da kimlik doğrulaması için sağ
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1361ecf3ab7b726310df9e3b1040e0726d7658e2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 017341fd72329d0538a3cf2a6ec20d03ee6152cc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745250"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830574"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Azure’da kimlik doğrulaması yapmak için Azure AD’yi kullanma
 
@@ -159,7 +159,7 @@ Workflow Stop-Start-AzureVM
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu 'nda kimlik bilgilerini yönetme](shared-resources/credentials.md)
-* [Azure Otomasyonu’nda modülleri yönetme](shared-resources/modules.md)
-* [Azure Otomasyonu'nda Runbook başlatma](start-runbooks.md)
-* [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview)
+* Kimlik bilgileri kullanımı hakkında ayrıntılı bilgi için bkz. [Azure Otomasyonu 'nda kimlik bilgilerini yönetme](shared-resources/credentials.md).
+* Modüller hakkında daha fazla bilgi için bkz. [Azure Automation 'da modülleri yönetme](shared-resources/modules.md).
+* Bir runbook 'u başlatmanız gerekiyorsa bkz. [Azure Otomasyonu 'nda runbook başlatma](start-runbooks.md).
+* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview).

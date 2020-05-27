@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: f1d60c19b05de218ab985b2087071733602c7f2c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bf2a60e1387ccdfb24ff5c5e166780c00506bac8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743899"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832308"
 ---
-# <a name="use-runbooks-and-modules-in-powershell-gallery"></a>PowerShell Galerisi runbook 'ları ve modülleri kullanma
+# <a name="use-runbooks-and-modules-in-powershell-gallery"></a>PowerShell Galerisi’nde runbook’ları ve modülleri kullanma
 
 Azure Otomasyonu 'nda kendi runbook 'larınızı ve modüllerinizi oluşturmak yerine, Microsoft ve Community tarafından önceden oluşturulmuş senaryolara erişebilirsiniz. Betik Merkezi galerisindeki PowerShell Galerisi ve [Python runbook](#use-python-runbooks) 'lardan PowerShell runbook 'ları ve [modülleri](#modules-in-powershell-gallery) alabilirsiniz. Ayrıca, [geliştirdiğiniz senaryoları](#add-a-powershell-runbook-to-the-gallery)paylaşarak topluluğa katkıda bulunabilirsiniz. 
 
@@ -101,10 +101,12 @@ Python runbook 'Ları, [betik Merkezi galerisinde](https://gallery.technet.micro
 
 ## <a name="request-a-runbook-or-module"></a>Runbook veya modül isteme
 
-İstekleri [Kullanıcı seslerine](https://feedback.azure.com/forums/246290-azure-automation/)gönderebilirsiniz.  Bir Runbook yazma veya PowerShell hakkında sorularınız konusunda yardıma ihtiyacınız varsa [forumumuza](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)soru gönderin.
+İstekleri [Kullanıcı seslerine](https://feedback.azure.com/forums/246290-azure-automation/)gönderebilirsiniz.  Bir Runbook yazma veya PowerShell hakkında sorularınız ile ilgili yardıma ihtiyacınız varsa [Microsoft Q&soru sayfasına](https://docs.microsoft.com/answers/topics/azure-automation.html)bir soru gönderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu 'nda runbook 'ları yönetme](manage-runbooks.md)
-* [Azure Otomasyonu için PowerShell Iş akışını öğrenin](automation-powershell-workflow.md)
-* [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview)
+* PowerShell runbook 'unu kullanmaya başlamak için bkz. [öğretici: PowerShell runbook 'U oluşturma](learn/automation-tutorial-runbook-textual-powershell.md).
+* Runbook 'larla çalışmak için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md).
+* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview).
+* * PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

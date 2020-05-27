@@ -876,10 +876,10 @@
   items:
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html'
     - name: Özellik istekleri
       href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
-    - name: Forum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/synapse-analytics/'
     - name: Fiyatlandırma hesaplayıcı

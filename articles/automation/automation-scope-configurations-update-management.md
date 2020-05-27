@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 95563e816fa4f0931e547b6bd163dce23c338a44
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 23ec49f2d68cf376ef0beb118d8bf69ada7bc0de
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749126"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832036"
 ---
 # <a name="work-with-scope-configurations-for-update-management"></a>Güncelleştirme Yönetimi için kapsam yapılandırmasıyla çalışma
 
@@ -52,12 +52,7 @@ Bir bilgisayar Güncelleştirme Yönetimi eklendiğinde, çalışma alanınızda
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Özelliği hakkında genel bilgi için bkz. [güncelleştirme yönetimi genel bakış](automation-update-management.md).
 * Özelliği ile çalışmak için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).
-* Özelliği etkinleştirmek üzere bir Otomasyon hesabı kullanmak için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions-from-automation-account.md).
-* Özelliği etkinleştirmek üzere Azure portal gezinmek için, bkz. [Azure portal güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions-from-browse.md).
-* Özelliği etkinleştirmek üzere bir runbook kullanmak için bkz. [runbook 'tan güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions.md).
-* Özelliği etkinleştirmek üzere bir Azure VM kullanmak için bkz. [Azure VM 'den güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions-from-vm.md).
 * Özellik hatalarını gidermek için bkz. [sorun giderme güncelleştirme yönetimi sorunları](troubleshoot/update-management.md).
 * Windows Update Aracısı hatalarını gidermek için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
 * Linux Güncelleştirme Aracısı hatalarını gidermek için bkz. [Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).

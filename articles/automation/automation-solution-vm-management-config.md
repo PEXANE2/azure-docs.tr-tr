@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: dd3d48b358c41868f4d433f7fcc8301dbba98621
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 127c924da44c7e596d93b21d89ff4591a90ba7cf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743735"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827684"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur Yapılandır
 
@@ -177,6 +177,5 @@ Bu özellikte başlangıç ve kapalı zamanlamaların yönetilmesi, [Azure Otoma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [VM'leri çalışma saatleri dışında başlat/durdur etkinleştir](automation-solution-vm-management.md)
-* [VM'leri çalışma saatleri dışında başlat/durdur sorgu günlükleri](automation-solution-vm-management-logs.md)
-* [VM'leri çalışma saatleri dışında başlat/durdur sorunlarını giderme](troubleshoot/start-stop-vm.md)
+* İşlem sırasında özelliği izlemek için bkz. [VM'leri çalışma saatleri dışında Başlat/Durdur sorgu günlükleri](automation-solution-vm-management-logs.md).
+* VM yönetimi sırasında sorunları işlemek için bkz. [VM'leri çalışma saatleri dışında Başlat/Durdur sorunları giderme](troubleshoot/start-stop-vm.md).

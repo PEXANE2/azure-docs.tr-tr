@@ -113,7 +113,7 @@
           href: how-to-connect-power-bi.md
 - name: Başvuru
   items:
-    - name: Zaman Serisi Öngörüleri
+    - name: Time Series Insights
       items:
         - name: Azure Zaman Serisi Görüşleri
           href: /rest/api/time-series-insights/index
@@ -166,12 +166,12 @@
           href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: MSDN forumu
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Microsoft Soru-Cevap soru sayfası
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
     - name: Geri bildirim ve forumlar
       items:
-        - name: MSDN forumu
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Microsoft Soru-Cevap soru sayfası
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
         - name: Ürün istekleri ve öneriler
           href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure videoları

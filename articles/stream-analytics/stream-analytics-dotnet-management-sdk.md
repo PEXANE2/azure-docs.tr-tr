@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52800f52e72e4aabcc8f6ebc733443615607f3a3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426270"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835504"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Yönetim .NET SDK: .NET için Azure Stream Analytics API 'sini kullanarak analiz işlerini ayarlama ve çalıştırma
 Yönetim .NET SDK 'sını kullanarak .NET için Stream Analytics API 'sini kullanarak analiz işlerini ayarlamayı ve çalıştırmayı öğrenin. Bir proje kurun, giriş ve çıkış kaynakları, dönüşümler ve işleri başlatın ve durdurun. Analiz işleriniz için blob depolamadan veya bir olay hub 'ından veri akışı yapabilirsiniz.
@@ -284,8 +284,8 @@ Aşağıdaki örnek kod, özel bir çıkış başlangıç saati 12 Aralık 2012,
    streamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, streamingJobName);
    ```
 
-## <a name="get-support"></a>Destek alma
-Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
+## <a name="get-support"></a>Destek alın
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Analiz işleri oluşturmak ve çalıştırmak için .NET SDK kullanmanın temellerini öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:

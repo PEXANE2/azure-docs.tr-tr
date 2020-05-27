@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
-ms.openlocfilehash: 33b2ca8db75acff1ce423aa50087961cce6092b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 122725bff616a49d27981b88f465e04418db9526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418414"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826126"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory'de veri kümeleri
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -72,8 +72,8 @@ Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
 Özellik | Açıklama | Gerekli |
 -------- | ----------- | -------- |
-ad | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
-type | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Yes |
+name | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
+tür | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Yes |
 yapı | Veri kümesinin şeması. Ayrıntılar için bkz. [DataSet şeması](#dataset-structure-or-schema). | Hayır |
 typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Yes |
 
@@ -117,8 +117,8 @@ Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
 Özellik | Açıklama | Gerekli |
 -------- | ----------- | -------- |
-ad | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
-type | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Yes |
+name | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
+tür | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Yes |
 manızı | Veri kümesinin şeması. Ayrıntılar için bkz. [veri akışı ile uyumlu veri kümeleri](#dataset-type). | Hayır |
 typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Yes |
 
@@ -183,10 +183,10 @@ Yapıdaki her sütun aşağıdaki özellikleri içerir:
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-ad | Sütunun adı. | Yes
-type | Sütunun veri türü. Data Factory, izin verilen değerler olarak şu veri türlerini destekler: **Int16, Int32, Int64, Single, Double, Decimal, Byte [], Boolean, String, Guid, DateTime, DateTimeOffset ve TimeSpan** | Hayır
-kültür | . Tür bir .NET türü olduğunda kullanılacak NET tabanlı kültür: `Datetime` veya. `Datetimeoffset` Varsayılan değer: `en-us`. | Hayır
-biçim | Tür bir .NET türü olduğunda kullanılacak biçim dizesi: `Datetime` veya. `Datetimeoffset` Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır
+name | Sütunun adı. | Yes
+tür | Sütunun veri türü. Data Factory, izin verilen değerler olarak şu veri türlerini destekler: **Int16, Int32, Int64, Single, Double, Decimal, Byte [], Boolean, String, Guid, DateTime, DateTimeOffset ve TimeSpan** | Hayır
+kültür | . Tür bir .NET türü olduğunda kullanılacak NET tabanlı kültür: `Datetime` veya `Datetimeoffset` . Varsayılan değer: `en-us`. | Hayır
+biçim | Tür bir .NET türü olduğunda kullanılacak biçim dizesi: `Datetime` veya `Datetimeoffset` . Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır
 
 ### <a name="example"></a>Örnek
 Aşağıdaki örnekte, kaynak blobu verilerinin CSV biçiminde olduğunu ve üç sütun içerdiğini varsayalım: UserID, Name ve LastLoginDate. Bu değerler, haftanın günü için kısaltılmış Fransız adlarını kullanarak özel bir tarih saat biçimiyle Int64, dize ve tarih/saat türündedir.
@@ -207,7 +207,7 @@ Blob veri kümesi yapısını, sütunlar için tür tanımlarıyla birlikte aşa
 Aşağıdaki yönergeler, yapı bilgilerinin ne zaman ekleneceğini ve **Yapı** bölümüne nelerin ekleneceğini anlamanıza yardımcı olur. Data Factory 'nin kaynak verileri havuza nasıl eşlediğini ve [şemadan ve tür eşleştirmesinin](copy-activity-schema-and-type-mapping.md)yapı bilgilerini ne zaman belirtmesi hakkında daha fazla bilgi edinin.
 
 - **Güçlü şema veri kaynakları için**, yalnızca kaynak sütunlarının havuz sütunlarına eşlenmesi istiyorsanız yapı bölümünü belirtin ve adları aynı değildir. Bu tür bir yapılandırılmış veri kaynağı, veri şemasını ve tür bilgilerini verilerin kendisiyle birlikte depolar. Yapılandırılmış veri kaynaklarına örnek olarak SQL Server, Oracle ve Azure SQL veritabanı verilebilir.<br/><br/>Tür bilgileri zaten yapılandırılmış veri kaynakları için kullanılabilir olduğundan, yapı bölümünü dahil ettiğinizde tür bilgilerini içermemelidir.
-- **BLOB depolamada metin dosyası olmayan/zayıf şema veri kaynakları için**, veri kümesi bir kopyalama etkinliği girişi olduğunda yapıyı ekleyin ve kaynak veri kümesinin veri türleri havuz için yerel türlere dönüştürülmelidir. Ve kaynak sütunlarını havuz sütunlarına eşlemek istediğinizde yapıyı dahil edin.
+- **Örneğin, blob depolamada metin dosyası olmayan/zayıf şema veri kaynakları için**, veri kümesi bir kopyalama etkinliği girişi olduğunda ve kaynak veri kümesinin veri türleri havuz için yerel türlere dönüştürülebilmelidir. Ve kaynak sütunlarını havuz sütunlarına eşlemek istediğinizde yapıyı ekleyin
 
 ## <a name="create-datasets"></a>Veri kümeleri oluşturma
 Şu araçlardan veya SDK 'Lardan birini kullanarak veri kümeleri oluşturabilirsiniz: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager şablonu ve Azure Portal

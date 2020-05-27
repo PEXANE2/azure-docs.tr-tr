@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 5abb373d4b3f9c66b2dc2f103e4a89ef0dc5af89
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1eae45eea35a118be51dc1e2f95055238212560d
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744842"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800667"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -71,7 +71,7 @@ Daha fazla bilgi için bkz. [ticari Market 'e hoş geldiniz](https://docs.micros
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Ticari Market için destek yardımına Nasıl yaparım? misiniz?
 
-Market yayımcı desteği takımımız ile iletişim kurmak için Iş Ortağı Merkezi içinden [bir destek bileti gönderebilirsiniz](https://partner.microsoft.com/support/v2/?stage=1) . 
+Market yayımcı desteği takımımız ile iletişim kurmak için Iş Ortağı Merkezi içinden [bir destek bileti gönderebilirsiniz](https://aka.ms/marketplacepublishersupport) . 
 
 En iyi yöntemler ve bilgi paylaşma hakkında bilgi edinmek için [etkin topluluk forumumuza da katılabilir](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222) .
 

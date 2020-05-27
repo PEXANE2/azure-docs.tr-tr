@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 5c4fcb9b4fea1a4d982b5cf665564599d371b7cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1426bbe2064067b26f53a8f8e5d4aa842ede8c0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789146"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829707"
 ---
 # <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Azure Logic Apps Trello 'yi izleme ve yönetme
 
@@ -53,7 +53,7 @@ Trello hesabınızdan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı di
    Eylemler listesi altında istediğiniz eylemi seçin.
 
    Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. 
-   Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. Trello 'da oturum açmanız istenirse, mantıksal uygulamanız için erişimi yetkilendirin ve oturum açın.
 
@@ -63,9 +63,9 @@ Trello hesabınızdan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı di
 
 Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/trello/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

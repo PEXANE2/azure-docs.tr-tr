@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 9133a7087285aa6e01a2431bf1a65dfa3c6f8857
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189105"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827973"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server üzerinde çalıştırılan bir tek başına küme oluşturma
 Azure Service Fabric 'yi, Windows Server çalıştıran tüm sanal makinelerde veya bilgisayarlarda Service Fabric kümeler oluşturmak için kullanabilirsiniz. Bu, birbirine bağlı bir Windows Server bilgisayarları kümesi içeren herhangi bir ortamda Service Fabric uygulamaları dağıtabileceğiniz ve çalıştırabileceğiniz anlamına gelir. Bu durumda, şirket içinde veya herhangi bir bulut sağlayıcısıyla olabilirsiniz. Service Fabric, tek başına Windows Server paketi olarak adlandırılan Service Fabric kümeleri oluşturmak için bir kurulum paketi sağlar. Azure 'daki geleneksel Service Fabric kümeleri yönetilen bir hizmet olarak kullanılabilir, tek başına Service Fabric kümeler self servis. Farklar hakkında daha fazla bilgi için bkz. [Azure ve tek başına Service Fabric kümelerini karşılaştırma](./service-fabric-deploy-anywhere.md).
@@ -25,7 +25,7 @@ Bu makale, Service Fabric tek başına kümesi oluşturma adımlarında size yol
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Windows Server paketi Service Fabric için destek alın
-* [Azure Service Fabric forumundaki](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?)Windows Server için Service Fabric tek başına paketi hakkında Topluluğa sorun.
+* [Azure Service Fabric Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-service-fabric.html)Windows Server için Service Fabric tek başına paketi hakkında Topluluğa sorun.
 * [Service Fabric Için profesyonel destek](https://support.microsoft.com/oas/default.aspx?prid=16146)bileti açın.  [Microsoft 'Tan](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)profesyonel destek hakkında daha fazla bilgi edinin.
 * [Microsoft Premier destek](https://support.microsoft.com/en-us/premier)bir parçası olarak bu paket için de destek alabilirsiniz.
 * Daha ayrıntılı bilgi için lütfen bkz. [Azure Service Fabric destek seçenekleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
@@ -109,7 +109,7 @@ Kümeyi dağıtan ve yapılandıran küme yöneticisinin bilgisayarda yönetici 
 
 #### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>Senaryo C: çevrimdışı (internet bağlantısı kesilen) küme oluşturma
 Service Fabric çalışma zamanı paketi, küme oluşturma sırasında otomatik olarak indirilir. Bir kümeyi Internet 'e bağlı olmayan makinelere dağıttığınızda, Service Fabric çalışma zamanı paketini ayrı olarak indirmeniz ve küme oluşturma sırasında bu yolu sağlamanız gerekir.
-Çalışma zamanı paketi, [Indirme bağlantı Service Fabric çalışma zamanı-Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)' da, internet 'e bağlı başka bir makineden ayrı olarak indirilebilir. Çalışma zamanı paketini çevrimdışı kümeyi dağıttığınız yere kopyalayın ve aşağıdaki örnekte gösterildiği gibi, dahil edilen `CreateServiceFabricCluster.ps1` `-FabricRuntimePackagePath` parametresiyle çalıştırarak kümeyi oluşturun: 
+Çalışma zamanı paketi, [Indirme bağlantı Service Fabric çalışma zamanı-Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)' da, internet 'e bağlı başka bir makineden ayrı olarak indirilebilir. Çalışma zamanı paketini çevrimdışı kümeyi dağıttığınız yere kopyalayın ve `CreateServiceFabricCluster.ps1` `-FabricRuntimePackagePath` Aşağıdaki örnekte gösterildiği gibi, dahil edilen parametresiyle çalıştırarak kümeyi oluşturun: 
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
@@ -144,7 +144,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>3. Adım: Service Fabric gezginini kullanarak kümeyi görselleştirme
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), kümenizi görselleştirmek ve uygulamaları yönetmek için iyi bir araçtır.  Service Fabric Explorer, ' a giderek bir tarayıcı kullanarak erişebileceğiniz, kümede çalışan bir hizmettir `http://localhost:19080/Explorer`.
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), kümenizi görselleştirmek ve uygulamaları yönetmek için iyi bir araçtır.  Service Fabric Explorer, ' a giderek bir tarayıcı kullanarak erişebileceğiniz, kümede çalışan bir hizmettir `http://localhost:19080/Explorer` .
 
 Küme panosu, kümenize uygulama ve düğüm durumunun özetini de içeren bir genel bakış sağlar. Düğüm görünümü, kümenin fiziksel düzenini gösterir. Belirli bir düğümde, hangi uygulamalara kod dağıtıldığını denetleyebilirsiniz.
 
@@ -172,9 +172,9 @@ Bu betik, küme yapılandırma dosyasında düğüm olarak listelenen tüm makin
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Toplanan telemetri verileri ve devre dışı bırakma
-Ürün, varsayılan olarak ürünü geliştirmek için Service Fabric kullanımı üzerinde telemetri toplar. Kurulumun bir parçası olarak çalışan En Iyi Yöntem Çözümleyicisi, bağlantısını denetler [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1). Erişilebilir değilse, Telemetri devre dışı bırakılmadığınız takdirde kurulum başarısız olur.
+Ürün, varsayılan olarak ürünü geliştirmek için Service Fabric kullanımı üzerinde telemetri toplar. Kurulumun bir parçası olarak çalışan En Iyi Yöntem Çözümleyicisi, bağlantısını denetler [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) . Erişilebilir değilse, Telemetri devre dışı bırakılmadığınız takdirde kurulum başarısız olur.
 
-1. Telemetri ardışık düzeni, her gün [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) bir kez aşağıdaki verileri karşıya yüklemeye çalışır. Bu en iyi çaba yükleme, küme işlevselliğini etkilemez. Telemetri yalnızca yük devretme Yöneticisi birincisini çalıştıran düğümden gönderilir. Başka hiçbir düğüm telemetri göndermedi.
+1. Telemetri ardışık düzeni, [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) her gün bir kez aşağıdaki verileri karşıya yüklemeye çalışır. Bu en iyi çaba yükleme, küme işlevselliğini etkilemez. Telemetri yalnızca yük devretme Yöneticisi birincisini çalıştıran düğümden gönderilir. Başka hiçbir düğüm telemetri göndermedi.
 2. Telemetri aşağıdakilerden oluşur:
 
 * Hizmet sayısı

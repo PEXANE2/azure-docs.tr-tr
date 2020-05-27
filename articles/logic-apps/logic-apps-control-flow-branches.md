@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f857449d4511b6ae0a5a25bf7aca9e1abc1ae7c0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75453425"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833702"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps iş akışı eylemleri için paralel dallar oluşturun veya ekleyin
 
@@ -34,14 +34,14 @@ Bağımsız adımları aynı anda çalıştırmak için, var olan bir adımın y
 
 ![Adımları paralel olarak çalıştır](media/logic-apps-control-flow-branches/parallel.png)
 
-Mantıksal uygulamanız, iş akışına devam etmeden önce tüm dalların bitmesini bekler. Paralel dallar yalnızca `runAfter` özellik değerleri tamamlanan üst adımın durumuyla eşleşiyorsa çalışır. Örneğin, her ikisi `branchAction1` de `branchAction2` yalnızca `parentAction` `Succeeded` durumu tamamlandığında çalıştırılacak şekilde ayarlanır.
+Mantıksal uygulamanız, iş akışına devam etmeden önce tüm dalların bitmesini bekler. Paralel dallar yalnızca `runAfter` özellik değerleri tamamlanan üst adımın durumuyla eşleşiyorsa çalışır. Örneğin, her ikisi `branchAction1` de `branchAction2` yalnızca durumu tamamlandığında çalıştırılacak şekilde ayarlanır `parentAction` `Succeeded` .
 
 > [!NOTE]
 > Başlamadan önce mantıksal uygulamanızda, paralel dallar ekleyebileceğiniz bir adım zaten olmalıdır.
 
 1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a>mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
-1. İşaretçinizi, paralel dallar eklemek istediğiniz adımın üzerindeki oka taşıyın. Görüntülenen **artı** işaretini (**+**) seçin ve ardından **paralel dal Ekle**' yi seçin. 
+1. İşaretçinizi, paralel dallar eklemek istediğiniz adımın üzerindeki oka taşıyın. Görüntülenen **artı** işaretini ( **+** ) seçin ve ardından **paralel dal Ekle**' yi seçin. 
 
    ![Paralel dal Ekle](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
@@ -53,7 +53,7 @@ Mantıksal uygulamanız, iş akışına devam etmeden önce tüm dalların bitme
 
    ![İstediğiniz eylemi bulun ve seçin](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. Şimdi, her bir paralel dalda istediğiniz adımları ekleyin. Bir dala başka bir eylem eklemek için, işaretçinizi sıralı bir eylem eklemek istediğiniz eylemin altına taşıyın. Görüntülenen **artı** (**+**) işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
+1. Şimdi, her bir paralel dalda istediğiniz adımları ekleyin. Bir dala başka bir eylem eklemek için, işaretçinizi sıralı bir eylem eklemek istediğiniz eylemin altına taşıyın. Görüntülenen **artı** ( **+** ) işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
    ![Paralel dala sıralı eylem ekleme](media/logic-apps-control-flow-branches/add-sequential-action.png)
 
@@ -181,9 +181,9 @@ Kod görünümünde çalışıyorsanız, bunun yerine mantıksal uygulamanızın
 }
 ```
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

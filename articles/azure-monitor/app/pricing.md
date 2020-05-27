@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: b99c1c9348f8442233eeee8fd4442736c78ee4e4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 82ea6a27d5bd75c180928f6a8b5c9742c54ea5a1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199035"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834433"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -20,7 +20,7 @@ ms.locfileid: "83199035"
 
 Application Insights, Azure 'da veya şirket içinde barındırıldığından, Web uygulamalarınızın kullanılabilirliğini, performansını ve kullanımını izlemek için gereken her şeyi almak üzere tasarlanmıştır. Application Insights, .NET, Java ve Node. js gibi popüler dilleri ve çerçeveleri destekler ve Azure DevOps, Jira ve Pagerharcı gibi DevOps işlemleri ve araçları ile tümleşir. Uygulamalarınızı izlemenin maliyetlerinin ne olduğunu anlamak önemlidir. Bu makalede, uygulama izleme maliyetlerinizi ve bunları nasıl proaktif olarak izleyip denetleyebileceğinize ilişkin hangi sürücüleri gözden geçiyoruz.
 
-Fiyatlandırma Application Insights için nasıl çalıştığı hakkında sorularınız varsa [forumumuza](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc)soru gönderebilirsiniz.
+Fiyatlandırmanın Application Insights nasıl çalıştığı hakkında sorularınız varsa, [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-monitor.html)bir soru gönderebilirsiniz.
 
 ## <a name="pricing-model"></a>Fiyatlandırma modeli
 

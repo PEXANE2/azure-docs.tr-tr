@@ -388,6 +388,8 @@
               href: service-updates-how-to.md
             - name: Bir kasayı silme
               href: delete-vault.md
+    - name: Yakın Yerleştirilen Gruplar için Site Recovery desteği
+      href: how-to-enable-replication-proximity-placement-groups.md
     - name: Uygulamalar için olağanüstü durum kurtarma
       items:
         - name: Şirket içi uygulamalar için olağanüstü durum kurtarma hakkında
@@ -514,8 +516,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/tag/azure-site-recovery/'
-    - name: Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-site-recovery.html'
     - name: Öğrenme yolu
       href: /learn/azure/
     - name: Fiyatlandırma

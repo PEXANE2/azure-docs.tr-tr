@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c827a19fd2b3e946154a3ee0acf6dddc6ad45a0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74036380"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830013"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Bir Linux sanal makinesindeki veri diskini ayırma
 
@@ -82,7 +82,7 @@ Bu örnekte, */etc/fstab* dosyasından aşağıdaki satırın silinmesi gerekir:
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-Diski `umount` çıkarmak için kullanın. Aşağıdaki örnek */datadrive* bağlama noktasından */dev/sdc1* bölümünü çıkarır:
+`umount`Diski çıkarmak için kullanın. Aşağıdaki örnek */datadrive* bağlama noktasından */dev/sdc1* bölümünü çıkarır:
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
@@ -106,12 +106,10 @@ Disk depolamada kalır, ancak artık bir sanal makineye bağlı değildir.
 ## <a name="detach-a-data-disk-using-the-portal"></a>Portalı kullanarak veri diski çıkarma
 
 1. Sol taraftaki menüden **sanal makineler**' i seçin.
-2. Ayırmak istediğiniz veri diskine sahip sanal makineyi seçin ve VM 'yi serbest bırakmak için **Durdur** ' a tıklayın.
-3. Sanal makine bölmesinde, **diskler**' i seçin.
-4. **Diskler** bölmesinin üst kısmında **Düzenle**' yi seçin.
-5. **Diskler** bölmesinde, ayırmak istediğiniz veri diskinin en sağına doğru ![ayır düğmesine tıklayın resmi](./media/detach-disk/detach.png) ayır düğmesine tıklayın.
-5. Disk kaldırıldıktan sonra bölmenin en üstünde yer alan Kaydet ' e tıklayın.
-6. Sanal makine bölmesinde **genel bakış** ' a tıklayın ve ardından sanal makineyi yeniden başlatmak için bölmenin üst kısmındaki **Başlat** düğmesine tıklayın.
+1. Sanal makine dikey penceresinde **diskler**' i seçin.
+1. **Diskler** dikey penceresinin üst kısmında **Düzenle**' yi seçin.
+1. **Diskler** dikey penceresinde, ayırmak istediğiniz veri diskinin en sağında bulunan ![ düğme görüntüsünü ayır ](./media/detach-disk/detach.png) düğmesine tıklayın.
+1. Disk kaldırıldıktan sonra, dikey pencerenin en üstündeki **Kaydet** ' e tıklayın.
 
 Disk depolamada kalır, ancak artık bir sanal makineye bağlı değildir.
 

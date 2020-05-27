@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: c30bd8a3bb4fa1085e56dd93c66c016c3612e352
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4fac94cc2f8f378b7e9d8e9485baed6a0ffa838b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749140"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832172"
 ---
 # <a name="work-with-scope-configurations-for-change-tracking-and-inventory"></a>Değişiklik İzleme ve envanter için kapsam yapılandırmalarına sahip çalışma
 
@@ -52,11 +52,5 @@ Bir bilgisayar Değişiklik İzleme ve envantere eklendiğinde, çalışma alan�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Özelliği hakkında genel bilgi için bkz. [değişiklik izleme ve envantere genel bakış](change-tracking.md).
-* Özelliği ile çalışmak için bkz. [Manage değişiklik izleme and Inventory](change-tracking-file-contents.md).
-* Özelliği etkinleştirmek üzere bir Otomasyon hesabı kullanmak için bkz. [Otomasyon hesabından değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-auto-acct.md).
-* Özelliği etkinleştirmek üzere Azure portal kullanmak için, bkz. [Azure portal değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-browse.md).
-* Özelliği etkinleştirmek üzere bir runbook kullanmak için bkz. [runbook 'tan değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-runbook.md).
-* Özelliği etkinleştirmek üzere bir Azure VM kullanmak için bkz. [Azure VM 'den değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-vm.md).
-* Bir VM 'deki değişiklik izleme ve stokla ilgili sorunları gidermek için bkz. [Azure VM 'de değişikliklerle ilgili sorunları giderme](automation-tutorial-troubleshoot-changes.md).
-* Özellik hatalarını gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md).
+* Değişiklik İzleme ve envanterle çalışmak için bkz. [Manage değişiklik izleme and Inventory](change-tracking-file-contents.md).
+* Genel özellik sorunlarını gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md).

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/19/2019
 ms.author: danis
-ms.openlocfilehash: 989e265c83cb2a71d93453b0c3bcbc3e41079447
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9e42229b08d7817b64c66c4ab23877c837339475
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701583"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827327"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Cloud-init desteği
 Bu makalede, Azure 'da sağlama sırasında bir sanal makineyi (VM) veya sanal makine ölçek kümelerini yapılandırmak üzere [Cloud-init](https://cloudinit.readthedocs.io) için mevcut destek açıklanmaktadır. Bu Cloud-init yapılandırması, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalıştırılır.  
@@ -53,11 +53,12 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |evet | Evet-paket sürümünden destek: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' den Itibaren kaldırılır) | Evet-paket sürümünden destek: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL |7-LVM | yok| Mayıs işleminin bitmesini tamamlamaya yönelik görüntü yok| Evet-paket sürümünden destek: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL |7,7 | yok| Mayıs işleminin bitmesini tamamlamaya yönelik görüntü yok | Evet-paket sürümünden destek: *18.5 -3. EL7*|
-|RedHat 7,7 (Gen1) |RHEL-byos | RHEL-lvm77 | 7.7.2020051912 | Uçuş aşamasında görüntü yok, bu durum sonunda Mayıs işleminin tamamlanmasını  | Evet-paket sürümünden destek: *18.5 -3. EL7*|
-|RedHat 7,7 (Gen2) |RHEL-byos | RHEL-lvm77 | 7.7.2020051913 |Uçuş aşamasında görüntü yok, bu durum sonunda Mayıs işleminin tamamlanmasını  | Evet-paket sürümünden destek: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' den Itibaren kaldırılır) | Evet-paket sürümünden destek: *18.5 -6. EL7*|
+|RedHat 7,7 (Gen1)|RHEL |7,7 | 7.7.2020051912 | Uçuş aşamasında görüntü yok, bu durum sonunda Mayıs işleminin tamamlanmasını | Evet-paket sürümünden destek: *18.5 -6. EL7*|
+|RedHat 7,7 (Gen2)|RHEL | 77-Gen2 | 7.7.2020051913 | Uçuş aşamasında görüntü yok, bu durum sonunda Mayıs işleminin tamamlanmasını | Evet-paket sürümünden destek: *18.5 -6. EL7*|
+|RedHat 7,7 (Gen1)|RHEL |7-LVM | 7.7.2020051921 | Uçuş aşamasında görüntü yok, bu durum sonunda Mayıs işleminin tamamlanmasını | Evet-paket sürümünden destek: *18.5 -6. EL7*|
+|RedHat 7,7 (Gen2)|RHEL | 7lvm-Gen2 | 7.7.2020051922  | Uçuş aşamasında görüntü yok, bu durum sonunda Mayıs işleminin tamamlanmasını | Evet-paket sürümünden destek: *18.5 -6. EL7*|
+|RedHat 7,7 (Gen1) |RHEL-byos | RHEL-lvm77 | 7.7.20200416 | Uçuş aşamasında görüntü yok, bu durum sonunda Mayıs işleminin tamamlanmasını  | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 8,1 (Gen1) |RHEL |8,1-CI |8.1.2020042511 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Hayır, tam destek için ETA 2020 Haziran|
 |RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Hayır, tam destek için ETA 2020 Haziran |
 

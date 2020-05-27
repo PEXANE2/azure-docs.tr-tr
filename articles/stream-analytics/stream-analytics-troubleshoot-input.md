@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 920755e128f10a79a056d47813b1b65d8633c937
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 9d8d87e0a2fb21603802f533a3566aa6743a9a79
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628751"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831900"
 ---
 # <a name="troubleshoot-input-connections"></a>Giriş bağlantısı sorunlarını giderme
 
@@ -51,7 +51,7 @@ Hatanın ayrıntılarını ve hataya neden olan iletiyi (yükü) görüntülemek
 
 Event Hubs kullanmak için en iyi yöntem, iş ölçeklenebilirliği için birden çok tüketici grubu kullanmaktır. Belirli bir giriş için Stream Analytics işteki okuyucu sayısı, tek bir tüketici grubundaki okuyucu sayısını etkiler. Tam alıcı sayısı, genişleme topolojisi mantığının iç uygulama ayrıntılarına dayanır ve dışarıdan gösterilmez. Bir iş başlatıldığında veya iş yükseltmeleri sırasında okuyucu sayısı değişebilir.
 
-Alıcı sayısı üst sınırı aştığında aşağıdaki hata iletileri gösterilir. Hata iletisi, bir tüketici grubu altında Olay Hub 'ına yapılan mevcut bağlantıların bir listesini içerir. Etiket `AzureStreamAnalytics` , bağlantıların Azure Streaming Service 'ten olduğunu gösterir.
+Alıcı sayısı üst sınırı aştığında aşağıdaki hata iletileri gösterilir. Hata iletisi, bir tüketici grubu altında Olay Hub 'ına yapılan mevcut bağlantıların bir listesini içerir. Etiket, `AzureStreamAnalytics` bağlantıların Azure Streaming Service 'ten olduğunu gösterir.
 
 ```
 The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.
@@ -141,7 +141,7 @@ FROM data
 
 ## <a name="get-help"></a>Yardım alın
 
-Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

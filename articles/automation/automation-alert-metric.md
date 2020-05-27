@@ -4,12 +4,12 @@ description: Bu makalede, ölçümler temelinde runbook 'ların nasıl izlenece�
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: c5f51ec34ea0b31f4c8fc349246b439425112104
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 20aaee5b699e9721bf9083030604df1385da1915
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715860"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828755"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Ölçüm uyarıları ile runbook’ları izleme
 
@@ -77,4 +77,4 @@ Uyarı ölçütleri karşılandığında, eylem grubu tanımlanan eylemi çalı�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma](automation-create-alert-triggered-runbook.md)
+* Daha fazla bilgi için bkz. [Azure Otomasyonu runbook 'u tetiklemek için uyarı kullanma](automation-create-alert-triggered-runbook.md).

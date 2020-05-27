@@ -4,12 +4,12 @@ description: Bu makale Language Understanding (LUO) hakkında sık sorulan sorul
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 79cee94a0f04cb89aa65f65cde63e48b6f078d2c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592857"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835011"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding ile ilgili Sık Sorulan Sorular (SSS)
 
@@ -333,4 +333,4 @@ Videolar:
 
 LUO hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 * [LUSıS ile etiketlenmiş Stack Overflow soruları](https://stackoverflow.com/questions/tagged/luis)
-* [MSDN Language Understanding Intelligent Services (LUA) Forumu](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)
+* [Microsoft Q&MSDN Language Understanding Intelligent Services (LUSıS) için soru sayfası](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)

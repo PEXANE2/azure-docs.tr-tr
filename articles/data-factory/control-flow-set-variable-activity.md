@@ -11,12 +11,12 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417989"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832801"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure Data Factory değişken etkinliğini ayarla
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,15 +27,15 @@ Bir Data Factory işlem hattında tanımlanmış dize, bool veya dizi türünde 
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-ad | İşlem hattının etkinlik adı | evet
+name | İşlem hattının etkinlik adı | evet
 açıklama | Etkinliğin ne yaptığını açıklayan metin | hayır
-type | **SetVariable** olarak ayarlanmalıdır | evet
-value | Değişkenin atanacağı dize sabiti veya ifade nesnesi değeri | evet
-variableName | Bu etkinlik tarafından ayarlanacak değişkenin adı | evet
+tür | **SetVariable** olarak ayarlanmalıdır | evet
+value | Değişkenin atandığı dize sabiti veya ifade nesnesi değeri | evet
+variableName | Bu etkinlik tarafından ayarlanan değişkenin adı | evet
 
 ## <a name="incrementing-a-variable"></a>Bir değişkeni artırma
 
-Azure Data Factory değişkenleri içeren yaygın bir senaryo, bir Until veya ForEach etkinliği içinde bir yineleyici olarak bir değişken kullanmaktır. Bir değişken kümesi etkinliğinde, `value` alanında ayarlanan değişkene başvurulamıyor. Bu sınırlamaya geçici çözüm olarak, geçici bir değişken ayarlayın ve ardından ikinci bir değişken kümesi etkinliği oluşturun. İkinci değişken kümesi etkinliği yineleyicinin değerini geçici değişken olarak ayarlar. 
+Azure Data Factory değişkenleri içeren yaygın bir senaryo, bir Until veya ForEach etkinliği içinde bir yineleyici olarak bir değişken kullanmaktır. Bir değişken kümesi etkinliğinde, alanında ayarlanan değişkene başvurulamıyor `value` . Bu sınırlamaya geçici çözüm olarak, geçici bir değişken ayarlayın ve ardından ikinci bir değişken kümesi etkinliği oluşturun. İkinci değişken kümesi etkinliği yineleyicinin değerini geçici değişken olarak ayarlar. 
 
 Aşağıda bu düzenin bir örneği verilmiştir:
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2541e9e10103d66c6c2fb6978c3029d61b813eab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ddfd9346f4a72ceb2e8bf5c336fb3de9b5c8c5c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614973"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827480"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Kişisel masaüstü konak havuzu atama türünü yapılandırma
 
@@ -75,6 +75,18 @@ Bir kullanıcıyı belirli bir oturum konağına atamak için aşağıdaki Power
 ```powershell
 Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -AssignedUser <userupn>
 ```
+
+## <a name="remove-a-user-assignment"></a>Kullanıcı atamasını kaldırma
+
+Kullanıcının artık kişisel masaüstüne ihtiyacı olmadığından, Kullanıcı şirketten ayrıldığından veya başka biri için Masaüstünü yeniden kullanmak istediğinizde, Kullanıcı atamasını kaldırmak isteyebilirsiniz.
+
+Şu anda, kişisel bir masaüstü için Kullanıcı atamasını kaldırmanın tek yolu, oturum konağını tamamen kaldırmamaktadır. Oturum konağını kaldırmak için şu cmdlet 'i çalıştırın:
+
+```powershell
+Remove-RdsSessionHost
+```
+
+Oturum konağını kişisel masaüstü ana bilgisayar havuzuna eklemeniz gerekiyorsa, bu makinede Windows sanal masaüstünü kaldırın ve ardından oturum konağını yeniden kaydetmek için [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell-2019.md) ' daki adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

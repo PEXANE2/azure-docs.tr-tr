@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 86e1bc088c3e4327fbd0b9ad4a05e7c42c3fb776
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: f8b34f1678d39471a1d0b91756ac93a01cbfedba
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773498"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800175"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesi oluşturma
 
@@ -28,7 +28,6 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Az
 
 Azure Red Hat OpenShift kümesi oluşturmak için, Azure hesabınızda ve Kullanıcı üzerinde aşağıdaki izinleri doğrulayın:
 
-[!div class="mx-tdBreakAll"]
 |İzinler|VNet 'i içeren kaynak grubu|Kullanıcı yürütülüyor`az aro create`|Hizmet sorumlusu olarak geçildi`–client-id`|
 |----|:----:|:----:|:----:|
 |**Kullanıcı Erişimi Yöneticisi**|X|X| |

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3eedfb1e9ec59fbe12ee94a65d3702a7ef8ca95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b83dbdb928b7b5810864a9202134dee30f9582df
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73823649"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834263"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Elastik veritabanı araçları sık sorulan sorular (SSS)
 
@@ -34,7 +34,7 @@ Elastik veritabanı istemci kitaplığı kullanmak herhangi bir maliyet uygulama
 
 ## <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Farklı bir sunucudan parça eklerken neden kimlik bilgilerim çalışmıyor?
 
-"User ID =username@servername" biçiminde kimlik bilgilerini kullanmayın, bunun yerine "User ID = username" kullanın.  Ayrıca, "Kullanıcı adı" oturumunun parça üzerinde izinlere sahip olduğundan emin olun.
+"User ID =" biçiminde kimlik bilgilerini kullanmayın username@servername , bunun yerine "User ID = username" kullanın.  Ayrıca, "Kullanıcı adı" oturumunun parça üzerinde izinlere sahip olduğundan emin olun.
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Uygulamalarımı her başlattığımda parça eşleme Yöneticisi oluşturup parçaları doldurmanız gerekir
 
@@ -42,7 +42,7 @@ Hayır — parça eşleme yöneticisinin oluşturulması (örneğin, [Shardmapma
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Elastik veritabanı araçlarını kullanma hakkında sorularım var, bunların cevaplanmasını nasıl edinebilirim?
 
-Lütfen [SQL veritabanı forumundan](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)bize ulaşın.
+Lütfen [SQL veritabanı Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-sql-database.html)bize ulaşın.
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Bir parçalama anahtarı kullanarak bir veritabanı bağlantısı aldığımda, aynı parça üzerindeki diğer parçalara ayırma anahtarları için de verileri sorgulayabilir.  Bu, tasarıma göre
 

@@ -3,17 +3,17 @@ title: Azure portal kullanarak bir Exchange eşlemesi oluşturun veya değiştir
 titleSuffix: Azure
 description: Azure portal kullanarak bir Exchange eşlemesi oluşturun veya değiştirin
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: e4f2ee72cbe17c094567aab5c7cc4720b02cde68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/21/2020
+ms.author: derekol
+ms.openlocfilehash: 62aec65498f75e51ecb1df15b525294aef026745
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680934"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800521"
 ---
 # <a name="create-or-modify-an-exchange-peering-by-using-the-azure-portal"></a>Azure portal kullanarak bir Exchange eşlemesi oluşturun veya değiştirin
 
@@ -32,10 +32,31 @@ Bu makalede, Azure portal kullanarak bir Microsoft Exchange eşlemesinin nasıl 
 
 ### <a name="create-an-exchange-peering"></a><a name=create></a>Exchange eşlemesi oluşturma
 
-**Eşleme** kaynağını kullanarak yeni bir eşleme isteği oluşturabilirsiniz.
 
-#### <a name="launch-the-resource-and-configure-basic-settings"></a>Kaynağı başlatın ve temel ayarları yapılandırın
-[!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
+Bir Internet Exchange sağlayıcısı olarak, [eşleme oluşturarak]( https://go.microsoft.com/fwlink/?linkid=2129593)doğrudan eşleme isteği oluşturabilirsiniz.
+
+1. **Eşleme oluştur** sayfasında, **temel bilgiler** sekmesinde, kutulara aşağıda gösterildiği gibi kutuyu girin:
+
+>    [!div class="mx-imgBorder"]
+>   ![Eşleme Hizmeti'ni kaydetme](./media/setup-basics-tab.png)
+
+* Azure aboneliğinizi seçin.
+
+* Kaynak grubu için, açılan listeden var olan bir kaynak grubunu seçebilir veya yeni oluştur ' u seçerek yeni bir grup oluşturabilirsiniz. Bu örnek için yeni bir kaynak grubu oluşturacağız.
+
+* Ad, kaynak adına karşılık gelir ve seçtiğiniz herhangi bir şey olabilir.
+
+* Mevcut bir kaynak grubunu seçerseniz bölge otomatik olarak seçilir. Yeni bir kaynak grubu oluşturmayı seçerseniz, kaynağın bulunmasını istediğiniz Azure bölgesini de seçmeniz gerekir.
+
+>[!NOTE]
+    Kaynak grubunun bulunduğu bölge, Microsoft ile eşleme oluşturmak istediğiniz konumdan bağımsızdır. Ancak, en yakın Azure bölgelerinde bulunan kaynak grupları içindeki eşleme kaynaklarınızı düzenlemek en iyi uygulamadır. Örneğin, Ashburn içindeki eşlemeler için Doğu ABD veya Doğu ABD2 içinde bir kaynak grubu oluşturabilirsiniz.
+
+* **Peerasn** kutusunda ASN 'nizi seçin.
+
+>[!IMPORTANT] 
+Bir eşleme isteği göndermeden önce, yalnızca onay durumu ile bir ASN seçebilirsiniz. PeerAsn isteğinizi gönderdikten sonra, ASN ilişkisinin onaylanabilmesi için 12 saat bekleyin. Seçtiğiniz ASN, doğrulama bekliyor ise, bir hata iletisi görürsünüz. Seçmeniz gereken ASN 'yi görmüyorsanız doğru aboneliği seçtiğinizden emin olun. Bu durumda, **[EŞDÜZEY ASN 'Yi Azure aboneliğine ilişkilendir](https://go.microsoft.com/fwlink/?linkid=2129592)**' i kullanarak peerasn 'yi zaten oluşturmuş olup olmadığınızı kontrol edin.
+
+* **İleri ' yi seçin:** devam etmek için yapılandırma.
 
 #### <a name="configure-connections-and-submit"></a>Bağlantıları yapılandırma ve gönderme
 [!INCLUDE [exchange-peering-configuration](./includes/exchange-portal-configuration.md)]

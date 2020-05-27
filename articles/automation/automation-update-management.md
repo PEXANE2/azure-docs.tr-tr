@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: b064e22b56d63055cede400fa2b06cee96d21664
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4a48841a1c1f5225e5ce53c46c69bd3d29f6fe59
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745309"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830710"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
@@ -254,4 +254,14 @@ Güncelleştirme Yönetimi etkinleştirip yönetilecek makineleri seçebileceği
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Otomasyonu sık sorulan sorular](automation-faq.md)
+* Güncelleştirme Yönetimi ile çalışma hakkında daha fazla bilgi için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).
+* Güncelleştirmeler için dinamik bir VM grubunu hedefliyorsanız, bkz. [güncelleştirme yönetimi ile dinamik grupları kullanma](automation-update-management-groups.md).
+* Azure Resource Manager şablonu kullanarak özelliği etkinleştirmek için, bkz. [Azure Resource Manager şablonu kullanarak güncelleştirme yönetimi etkinleştirme](automation-update-management-deploy-template.md).
+* Bir runbook 'tan özelliği etkinleştirmek için bkz. [runbook 'tan güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions.md).
+* Otomasyon hesabından özelliği etkinleştirmek için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions-from-automation-account.md).
+* Azure portal göz atarak özelliği etkinleştirmek için, bkz. [Azure portal güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions-from-browse.md).
+* Özelliği bir Azure VM 'den etkinleştirmek için bkz. [Azure VM 'den güncelleştirme yönetimi etkinleştirme](automation-onboard-solutions-from-vm.md).
+* Log Analytics çalışma alanınızda depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [sorgu güncelleştirme yönetimi günlükleri](automation-update-management-query-logs.md).
+* Özellik hatalarını gidermek için bkz. [sorun giderme güncelleştirme yönetimi sorunları](troubleshoot/update-management.md).
+* Windows Update Aracısı hatalarını gidermek için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
+* Linux Güncelleştirme Aracısı hatalarını gidermek için bkz. [Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).

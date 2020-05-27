@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bc2acc4303a270a2bf71f0c9ff249b60a0328a09
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983287"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834586"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure 'dan Azure 'a olağanüstü durum kurtarma
 
@@ -163,7 +163,7 @@ Hayır, Site Recovery önceki tüm kurtarma noktalarınızı tutacaktır. Kurtar
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>VM 'de çoğaltma etkinleştirildikten sonra, çoğaltma ilkesini nasıl değiştirebilirim?
 
-Altyapı > **çoğaltma ilkelerine** **Site Recovery kasa** > **Site Recovery**gidin. Düzenlemek istediğiniz ilkeyi seçin ve değişiklikleri kaydedin. Tüm değişiklikler, mevcut tüm çoğaltmalar için de geçerli olacaktır.
+**Site Recovery Vault**  >  **Altyapı**  >  **çoğaltma ilkelerine**Site Recovery kasa Site Recovery gidin. Düzenlemek istediğiniz ilkeyi seçin ve değişiklikleri kaydedin. Tüm değişiklikler, mevcut tüm çoğaltmalar için de geçerli olacaktır.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Tüm kurtarma noktaları VM 'nin ya da bir Farklıdan oluşan tüm bir kopyası mı?
 
@@ -315,4 +315,4 @@ Evet, hem geçiş hem de [Azure 'da bekleyen şifreleme](https://docs.microsoft.
 
 - [Azure 'Dan Azure 'a destek gereksinimlerini gözden geçirin](azure-to-azure-support-matrix.md).
 - [Azure 'Dan Azure 'a çoğaltma ayarlayın](azure-to-azure-tutorial-enable-replication.md).
-- Bu makaleyi okuduktan sonra sorularınız varsa, bunları [Azure kurtarma hizmetleri forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)gönderin.
+- Bu makaleyi okuduktan sonra sorularınız varsa, [Azure kurtarma hizmetleri Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)bu makaleye gönderin.

@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 9e4396a1def5b032077c1c15c2d10b7f3452853f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743455"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831000"
 ---
-# <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi etkinleştirme
+# <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi’ni etkinleştirme
 
 Kaynak grubunuzda Azure Otomasyonu Güncelleştirme Yönetimi özelliğini etkinleştirmek için bir [Azure Resource Manager şablonu](../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Bu makale, aşağıdakileri otomatikleştiren örnek bir şablon sağlar:
 
@@ -241,10 +241,9 @@ Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluştur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güncelleştirme Yönetimi etkin olduğuna göre, VM 'Leri yönetim için etkinleştirebilir, güncelleştirme değerlendirmelerini gözden geçirebilir ve güncelleştirmeleri uyumluluğa getirecek şekilde dağıtabilirsiniz.
-
-- Azure [Otomasyonu hesabınızdan](automation-onboard-solutions-from-automation-account.md) bir veya daha fazla Azure makinesi Için ve Azure dışı makineler için el ile
-
-- Tek bir Azure VM için Azure portal sanal makine sayfasından. Bu senaryo [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM 'leri için kullanılabilir
-
-- [Birden çok Azure VM](manage-update-multi.md) için, Azure Portal **sanal makineler** sayfasından seçin 
+* VM 'Ler için Güncelleştirme Yönetimi kullanmak için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).
+* Artık Log Analytics çalışma alanına ihtiyacınız yoksa, [güncelleştirme yönetimi için çalışma alanının Otomasyon hesabından bağlantısını kaldır](automation-unlink-workspace-update-management.md)' daki yönergelere bakın.
+* VM 'Leri Güncelleştirme Yönetimi silmek için bkz. [güncelleştirme yönetimi VM 'Leri kaldırma](automation-remove-vms-from-update-management.md).
+* Genel Güncelleştirme Yönetimi hatalarıyla ilgili sorunları gidermek için bkz. [güncelleştirme yönetimi sorunlarını giderme](troubleshoot/update-management.md).
+* Windows Update Aracısı sorunlarını gidermek için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
+* Linux Güncelleştirme Aracısı sorunlarını gidermek için bkz.[Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: d6ea604446cb9d56bb699685d24c81992bcac3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79d7bd57ff4ba5533caba1927703ea545e077f2c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382905"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830438"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL Data Sync ile ilgili sorunları giderme
 
@@ -39,7 +39,7 @@ SQL Data Sync hizmetine genel bakış için bkz. [Azure SQL Data Sync ile birden
 
 - [Performans açısından önemli bir düşme görüyorum](#sync-perf)
 
-- [Şu iletiyi görüyorum: "NULL değeri sütun \<sütununa eklenemiyor>. Sütun null değerlere izin vermiyor. " Bu ne anlama geliyor ve nasıl çözebilirim?](#sync-nulls)
+- [Şu iletiyi görüyorum: "NULL değeri sütun \< sütununa eklenemiyor>. Sütun null değerlere izin vermiyor. " Bu ne anlama geliyor ve nasıl çözebilirim?](#sync-nulls)
 
 - [Veri eşitleme, dairesel başvuruları nasıl işler? Diğer bir deyişle, aynı veriler birden çok eşitleme grubunda eşitlendiğinde ve sonuç olarak değişene devam ediyor mu?](#sync-circ)
 
@@ -78,7 +78,7 @@ Aşağıdaki koşullardan herhangi biri, bir eşitleme grubunun işleme durumund
     1. Hizmet durumu **durdurulmuşsa**, hizmet adına sağ tıklayın ve ardından **Başlat**' ı seçin.
 
 > [!NOTE]
-> Yukarıdaki bilgiler eşitleme grubunuzu işleme durumundan taşımazsa, Microsoft Desteği eşitleme grubunuzun durumunu sıfırlayabilir. Eşitleme grubunuzun durumunu sıfırlamasını sağlamak için [Azure SQL veritabanı forumundaki](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)bir gönderi oluşturun. Gönderinizden, sıfırlanması gereken grubun abonelik KIMLIĞINI ve eşitleme grubu KIMLIĞINI dahil edin. Microsoft Desteği mühendis gönderinize yanıt verir ve durumun ne zaman sıfırlandığını size verir.
+> Yukarıdaki bilgiler eşitleme grubunuzu işleme durumundan taşımazsa, Microsoft Desteği eşitleme grubunuzun durumunu sıfırlayabilir. Eşitleme grubunuz durumunu sıfırlamanıza sahip olmak için, [Azure SQL veritabanı Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-sql-database.html)bir gönderi oluşturun. Gönderinizden, sıfırlanması gereken grubun abonelik KIMLIĞINI ve eşitleme grubu KIMLIĞINI dahil edin. Microsoft Desteği mühendis gönderinize yanıt verir ve durumun ne zaman sıfırlandığını size verir.
 
 ### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a>Tablomda hatalı veri görüyorum
 
@@ -104,7 +104,7 @@ Performansı önemli ölçüde düşürür, muhtemelen veri eşitleme Kullanıc�
 
 - **Çözümleme**. En iyi çözüm engeldir. Eşitleme gruplarında döngüsel başvurular olmadığından emin olun. Bir eşitleme grubu tarafından eşitlenen herhangi bir satır başka bir eşitleme grubu tarafından eşitlenemez.
 
-### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>Şu iletiyi görüyorum: "NULL değeri sütun \<sütununa eklenemiyor>. Sütun null değerlere izin vermiyor. " Bu ne anlama geliyor ve nasıl çözebilirim? 
+### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>Şu iletiyi görüyorum: "NULL değeri sütun \< sütununa eklenemiyor>. Sütun null değerlere izin vermiyor. " Bu ne anlama geliyor ve nasıl çözebilirim? 
 Bu hata iletisi aşağıdaki iki sorunlardan birinin oluştuğunu gösterir:
 -  Tablonun birincil anahtarı yok. Bu sorunu onarmak için, eşitmekte olduğunuz tüm tablolara birincil bir anahtar ekleyin.
 -  CREATE INDEX deyiminizde WHERE yan tümcesi vardır. Veri eşitleme bu koşulu işlemez. Bu sorunu onarmak için WHERE yan tümcesini kaldırın veya değişiklikleri tüm veritabanlarında el ile yapın. 
@@ -138,7 +138,7 @@ Veri eşitleme döngüsel başvuruları işlemez. Kaçındığınızdan emin olu
 
 - **Neden**. Soltover dosyalarının silinmesi gerekiyorsa "disk alanı yetersiz" iletisi görünebilir. Bu, virüsten koruma yazılımından kaynaklanıyor olabilir veya silme işlemleri denendiğinde dosyalar açık olur.
 
-- **Çözümleme**. % Temp% klasöründe (`del \*sync\* /s`) bulunan eşitleme dosyalarını el ile silin. Ardından,% Temp% klasöründeki alt dizinleri silin.
+- **Çözümleme**. % Temp% klasöründe () bulunan eşitleme dosyalarını el ile silin `del \*sync\* /s` . Ardından,% Temp% klasöründeki alt dizinleri silin.
 
 > [!IMPORTANT]
 > Eşitleme sürerken hiçbir dosyayı silmeyin.
@@ -193,7 +193,7 @@ Bir eşitleme grubunu silme denemeniz başarısız olur. Aşağıdaki senaryolar
 
 - **Çözümleme**. Kullanıcı hesabına hizmet olarak oturum açma kimlik bilgileri verin:
 
-  1. **Başlat** > **Denetim Masası** > **Yönetim Araçları** > **yerel güvenlik ilkesi** > **yerel ilke** > **Kullanıcı Rights Management**' ye gidin.
+  1. **Başlat**  >  **Denetim Masası**  >  **Yönetim Araçları**  >  **yerel güvenlik ilkesi**  >  **yerel ilke**  >  **Kullanıcı Rights Management**' ye gidin.
   1. **Hizmet olarak oturum aç '** ı seçin.
   1. **Özellikler** iletişim kutusunda Kullanıcı hesabını ekleyin.
   1. **Uygula**’yı ve sonra **Tamam**’ı seçin.

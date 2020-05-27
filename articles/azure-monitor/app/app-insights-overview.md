@@ -4,12 +4,12 @@ description: Uygulama Performansı Yönetimi ve canlı web uygulamanızın kulla
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 96ac0d81e477f4ac45208971282b3be982bf4fa5
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6630de971dd9cc7ece2e0f87821db5fd62c39af0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698219"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828738"
 ---
 # <a name="what-is-application-insights"></a>Application Insights nedir?
 [Azure izleyici](../overview.md)'nin bir özelliği olan Application Insights, geliştiriciler ve DevOps uzmanları için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı uygulamalarınızı izlemek için bu uygulamayı kullanın. Performans sorunlarını otomatik olarak algılar ve sorunları tanılamanıza ve hangi kullanıcıların uygulamanızla gerçekten ne yaptığını anlamanıza yardımcı olacak güçlü analiz araçları içerir.  Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. .NET, Node. js, Java ve şirket içi, karma veya herhangi bir genel bulutu içeren çok çeşitli platformlarda uygulamalar için geçerlidir. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır. Visual Studio App Center ile tümleştirerek mobil uygulamalardan telemetriyi izleyebilir ve çözümleyebilir.
@@ -127,7 +127,7 @@ Geliştirme zamanında şunlarla kullanmaya başlayın:
 ## <a name="support-and-feedback"></a>Destek ve geri bildirim
 * Sorular ve Sorunlar:
   * [Sorun giderme][qna]
-  * [MSDN Forumu](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+  * [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-monitor.html)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * Önerileriniz:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)

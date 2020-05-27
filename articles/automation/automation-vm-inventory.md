@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: stok, otomasyon, değişiklik, izleme
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5142286bc50620d5a12a0722b3c4f9b8b75f5b73
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745275"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830625"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>VM’lerden stok koleksiyonunu yönetme
 
@@ -112,7 +112,7 @@ Yeni bir makine grubu oluşturmak istiyorsanız **+ makine grubu oluştur ' a**t
 
 ## <a name="disconnect-your-vm-from-management"></a>VM 'nizin yönetimden bağlantısını kesme
 
-VM 'nizi stok yönetiminden kaldırmak için:
+VM 'nizi Değişiklik İzleme ve stok yönetiminden kaldırmak için:
 
 1. Azure portal sol bölmesinde **Log Analytics**' i seçin ve ardından VM 'nizi değişiklik izleme ve envanter için etkinleştirirken kullandığınız çalışma alanını seçin.
 2. Log Analytics sayfasında, **kaynak** menüsünü açın.
@@ -127,6 +127,6 @@ VM 'nizi stok yönetiminden kaldırmak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Değişiklik İzleme ve stoku yönetme](change-tracking-file-contents.md)
-* [Değişiklik izleme ile ortamınızdaki yazılım değişikliklerini izleyin](../log-analytics/log-analytics-change-tracking.md).
-* [Azure 'da güncelleştirme yönetimi](../operations-management-suite/oms-solution-update-management.md).
+* Özelliği ile çalışma hakkında ayrıntılı bilgi için bkz. [Manage değişiklik izleme and Inventory](change-tracking-file-contents.md).
+* Yazılım değişikliklerini izleme hakkında daha fazla bilgi edinmek için bkz. [ortamınızdaki yazılım değişikliklerini izleme değişiklik izleme](../log-analytics/log-analytics-change-tracking.md).
+* Özellikle ilgili sorunları gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md).

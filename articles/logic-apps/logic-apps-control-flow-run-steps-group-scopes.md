@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74791497"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831594"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps kapsamları kullanarak Grup durumuna göre eylemleri çalıştırma
 
@@ -77,12 +77,12 @@ Mantıksal uygulamanızı dilediğiniz zaman kaydedebilirsiniz, bu nedenle işin
       | ------- | ----- | ----------- |
       | **Güzergah noktası 1** | <*başından*> | Yol başlangıcının kaynağını girin. | 
       | **Güzergah noktası 2** | <*erer*> | Yolun hedefini girin. | 
-      | **Kaçının** | Hiçbiri | Yollarınızın önüne geçmek için, otoyollar, Tolls gibi öğeleri girin. Olası değerler için bkz. [Rota hesaplama](https://msdn.microsoft.com/library/ff701717.aspx). | 
-      | **Getirileceğini** | timeWithTraffic | Rotayı iyileştirmek için bir parametre seçin (uzaklık, geçerli trafik bilgileriyle zaman vb.). Bu örnek şu değeri kullanır: "timeWithTraffic" | 
+      | **Kaçının** | Yok | Yollarınızın önüne geçmek için, otoyollar, Tolls gibi öğeleri girin. Olası değerler için bkz. [Rota hesaplama](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **İyileştirme** | timeWithTraffic | Rotayı iyileştirmek için bir parametre seçin (uzaklık, geçerli trafik bilgileriyle zaman vb.). Bu örnek şu değeri kullanır: "timeWithTraffic" | 
       | **Mesafe birimi** | <*tercih edin*> | Rotayı hesaplamak için mesafe birimini girin. Bu örnek şu değeri kullanır: "mil" | 
       | **Seyahat modu** | Sürüş | Yönlendirmenize ait seyahat modunu girin. Bu örnekte bu değer "Itici" kullanılmaktadır | 
-      | **Toplu Ulaşım Tarih-Saati** | Hiçbiri | Yalnızca aktarım modu için geçerlidir. | 
-      | **Transit Tarih-tür türü** | Hiçbiri | Yalnızca aktarım modu için geçerlidir. | 
+      | **Toplu Ulaşım Tarih-Saati** | Yok | Yalnızca aktarım modu için geçerlidir. | 
+      | **Transit Tarih-tür türü** | Yok | Yalnızca aktarım modu için geçerlidir. | 
       ||||  
 
 1. Geçerli seyahat zamanının trafik ile belirtilen bir süreyi aşıp aşmadığını denetleyen [bir koşul ekleyin](../logic-apps/logic-apps-control-flow-conditional-statement.md) . 
@@ -130,7 +130,7 @@ Mantıksal uygulamanızı dilediğiniz zaman kaydedebilirsiniz, bu nedenle işin
 
       !["Trafik süresi trafiği" ni seçin](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. Alan JSON biçimine çözümlendikten sonra, **trafik süresi trafiğinden** saniyeler```,```arasında bir değer dönüştürmeniz için ```60``` sayının ardından bir **virgül** () ekleyin. 
+   1. Alan JSON biçimine çözümlendikten sonra, **comma** ```,``` ```60``` **trafik süresi trafiğinden** saniyeler arasında bir değer dönüştürmeniz için sayının ardından bir virgül () ekleyin. 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -161,7 +161,7 @@ Ardından, belirli eylemleri gruplandırabilmeniz ve durumlarını değerlendire
 1. İş akışı konumuna istediğiniz kapsamı ekleyin. Örneğin, mantıksal uygulama iş akışındaki mevcut adımlar arasında bir kapsam eklemek için aşağıdaki adımları izleyin: 
 
    1. İşaretçinizi, kapsamı eklemek istediğiniz oka taşıyın. 
-   **Eylem eklemek**> **artı işaretini** (**+**) seçin.
+   Eylem eklemek > **artı işaretini** ( **+** ) **Add an action**seçin.
 
       ![Kapsam Ekle](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
@@ -196,8 +196,8 @@ Ardından, belirli eylemleri gruplandırabilmeniz ve durumlarını değerlendire
 
    1. Her iki satır için işleç olarak **eşittir** ' i seçin. 
    
-   1. Karşılaştırma değerleri için, ilk satırda girin `Failed`. 
-   İkinci satırda, girin `Aborted`. 
+   1. Karşılaştırma değerleri için, ilk satırda girin `Failed` . 
+   İkinci satırda, girin `Aborted` . 
 
       İşlem tamamlandığında koşulunuz şu örnekteki gibi görünür:
 
@@ -386,9 +386,9 @@ Kod görünümünde çalışıyorsanız, bunun yerine mantıksal uygulamanızın
 },
 ```
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

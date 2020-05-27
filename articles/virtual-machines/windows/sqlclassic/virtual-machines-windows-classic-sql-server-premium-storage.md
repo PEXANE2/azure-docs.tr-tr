@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75965663"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833940"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Sanal Makineler’de SQL Server ile Azure Premium Depolama kullanma
 
@@ -68,7 +68,7 @@ DS * VM 'leri için VM 'lerinizi barındıran sanal ağı (VNET) bölgesel olara
 
 ![RegionalVNET][1]
 
-Bölgesel VNET 'e geçiş yapmak için bir Microsoft destek bileti yükseltebilirsiniz. Microsoft daha sonra bir değişiklik yapar. Bölgesel sanal ağlara geçişi gerçekleştirmek için ağ yapılandırmasındaki AffinityGroup özelliğini değiştirin. Önce PowerShell 'deki ağ yapılandırmasını dışarı aktarın ve **Virtualnetworksite** öğesindeki **affinitygroup** özelliğini bir **Location** özelliği ile değiştirin. Nerede `Location = XXXX` `XXXX` bir Azure bölgesi belirtin. Ardından Yeni yapılandırmayı içeri aktarın.
+Bölgesel VNET 'e geçiş yapmak için bir Microsoft destek bileti yükseltebilirsiniz. Microsoft daha sonra bir değişiklik yapar. Bölgesel sanal ağlara geçişi gerçekleştirmek için ağ yapılandırmasındaki AffinityGroup özelliğini değiştirin. Önce PowerShell 'deki ağ yapılandırmasını dışarı aktarın ve **Virtualnetworksite** öğesindeki **affinitygroup** özelliğini bir **Location** özelliği ile değiştirin. `Location = XXXX`Nerede `XXXX` bir Azure bölgesi belirtin. Ardından Yeni yapılandırmayı içeri aktarın.
 
 Örneğin, aşağıdaki VNET yapılandırmasını göz önünde bulundurarak:
 
@@ -142,7 +142,7 @@ Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 1. DiskName ve LUN 'A göz önünde edin.
 
     ![DisknameAndLUN][2]
-1. SANAL makineye Uzak Masaüstü. Sonra **Bilgisayar Yönetimi** | **Aygıt Yöneticisi** | **disk sürücüleri**' ne gidin. ' Microsoft sanal disklerinin ' her birinin özelliklerine bakın
+1. SANAL makineye Uzak Masaüstü. Sonra **Bilgisayar Yönetimi**  |  **Aygıt Yöneticisi**  |  **disk sürücüleri**' ne gidin. ' Microsoft sanal disklerinin ' her birinin özelliklerine bakın
 
     ![VirtualDiskProperties][3]
 1. Burada LUN numarası, VHD 'yi VM 'ye eklerken belirttiğiniz LUN numarasına bir başvurudur.
@@ -271,7 +271,7 @@ $pass = "mycomplexpwd4*"
 $vmConfigsl = New-AzureVMConfig -Name $vmName -InstanceSize $newInstanceSize -ImageName $image  -AvailabilitySetName $availabilitySet  ` | Add-AzureProvisioningConfig -Windows ` -AdminUserName $userName -Password $pass | Set-AzureSubnet -SubnetNames $subnet | Set-AzureStaticVNetIP -IPAddress $ipaddr
 
 #Add Data and Log Disks to VM Config
-#Note the size specified ‘-DiskSizeInGB 1023’, this attaches 2 x P30 Premium Storage Disk Type
+#Note the size specified '-DiskSizeInGB 1023', this attaches 2 x P30 Premium Storage Disk Type
 #Utilising the Premium Storage enabled Storage account
 
 $vmConfigsl | Add-AzureDataDisk -CreateNew -DiskSizeInGB 1023 -LUN 0 -HostCaching "ReadOnly"  -DiskLabel "DataDisk1" -MediaLocation "https://$newxiostorageaccountname.blob.core.windows.net/vhds/$vmName-data1.vhd"
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. Adım: isteğe bağlı kaynakların \<izin verilen başarısızlıklarını artırma>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. Adım: isteğe bağlı kaynakların izin verilen başarısızlıklarını artırma \<>
 
 Her zaman açık kullanılabilirlik grubunuza ait olan belirli kaynaklarda, küme hizmetinin kaynak grubunu yeniden başlatmaya çalıştığı, bir dönemde oluşabilecek hataların sayısı sınırlar vardır. Bu yordamda ilerlemeniz önerilir. bu şekilde, makineyi kapatarak yük devretmeleri el ile gerçekleştirerek ve tetikleyemezseniz bu sınıra kadar kapatabilirsiniz.
 
@@ -691,7 +691,7 @@ Hata indirimini ikiye katmaya devam ediyor, bunu Yük Devretme Kümesi Yönetici
 
 En yüksek başarısızlık sayısını 6 olarak değiştirin.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. Adım: küme grubu \<Için IP adresi kaynağı ekleme isteğe bağlı>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. Adım: küme grubu için IP adresi kaynağı ekleme \< isteğe bağlı>
 
 Küme grubu için yalnızca bir IP adresiniz varsa ve bu bulut alt ağına hizalanmışsa, bu ağ üzerinde bulutta tüm küme düğümlerini yanlışlıkla çevrimdışı duruma getirdiğinizde, küme IP kaynağı ve küme ağı adı çevrimiçi duruma gelmeyecektir. Bu durumda, diğer küme kaynaklarının güncelleştirilmesini engeller.
 
@@ -1249,7 +1249,7 @@ IP adresini eklemek için bkz. ek, 14. adım.
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Azure Premium Depolama](../disks-types.md)
-* [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
+* [Sanal makineler](https://azure.microsoft.com/services/virtual-machines/)
 * [Azure sanal makineler 'de SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 <!-- IMAGES -->

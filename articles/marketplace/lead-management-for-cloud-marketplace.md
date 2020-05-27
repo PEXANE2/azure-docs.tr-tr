@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789853"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798584"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Ticari Market için lider yönetimi
 
@@ -86,7 +86,7 @@ Müşteri adayları, ürünlerinizi Market 'ten dağıtan müşterilerdir. Ürü
 
 **Lider hedefini ayarlama konusunda nereden yardım alabilirim?** 
 
-[Müşteri adaylarını al](./partner-center-portal/commercial-marketplace-get-customer-leads.md) veya [Yardım ve destek '](https://partner.microsoft.com/support/v2/?stage=1)de destek bileti Gönder ' de belgeleri bulabilirsiniz. Teklif türü ve lider Yönetimi ' ni seçin. 
+[Müşteri adaylarını al](./partner-center-portal/commercial-marketplace-get-customer-leads.md) veya [Yardım ve destek '](https://aka.ms/marketplacepublishersupport)de destek bileti Gönder ' de belgeleri bulabilirsiniz. Teklif türü ve lider Yönetimi ' ni seçin. 
 
 **Market 'te teklif yayımlamak için bir lider hedefi yapılandırmak istiyorum mu?**
 
@@ -116,7 +116,7 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \<Teklif adı> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \< Teklif adı> 
 
 OID = 00Do0000000ZHog 
 
@@ -183,7 +183,7 @@ Lider yalnızca, müşteri adayı hedefi olarak Azure BLOB depolamayı seçtiği
 
 **Market 'ten bir e-posta aldım, neden CRM 'de müşteri adayını bulamıyorum?**  
 
-Son kullanıcının e-posta etki alanı. edu 'dan olabilir. Gizlilik nedeniyle,. edu etki alanından kişisel olarak tanımlanabilen verileri geçirmedik. [Yardım ve destek](https://partner.microsoft.com/support/v2/?stage=1)'te bir destek bileti gönderebilirsiniz.
+Son kullanıcının e-posta etki alanı. edu 'dan olabilir. Gizlilik nedeniyle,. edu etki alanından kişisel olarak tanımlanabilen verileri geçirmedik. [Yardım ve destek](https://aka.ms/marketplacepublishersupport)'te bir destek bileti gönderebilirsiniz.
 
 **Azure Tablo/Azure blobu 'nı lider hedefim olarak yapılandırdım, müşteri adaylarını nasıl görüntüleyebilirim?** 
 
@@ -193,7 +193,7 @@ Azure portal blob veya tabloya erişebilir veya Azure depolama hesabınızın ta
 
 Evet, [buradaki](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md)belgelerde Azure tablo + işlevini ayarlamak için yönergeleri izleyin. 
 
-**Salesforce 'um hedefi olarak Salesforce yapılandırdım, neden müşteri adaylarını bulamıyorum?** 
+**Salesforce 'um hedefi olarak Salesforce yapılandırdım, neden müşteri adaylarını bulamıyorum?**
 
 Müşteri adayı formunun bir seçim listesine göre zorunlu bir alan olup olmadığını denetleyin. Yanıt Evet ise, alanı üzerinde zorunlu olmayan bir metin alanına geçin.  
  

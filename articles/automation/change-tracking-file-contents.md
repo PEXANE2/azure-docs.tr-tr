@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8e5ee8df1dfd250a6713d832bf176daecdaef7ea
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4b8bf6a3f583e4c17f61e0a46911990ac5cc827c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744402"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830489"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok yönetimi
 
@@ -178,6 +178,5 @@ Bu örneği bir değişiklik üzerinde uyarı oluşturma adımlarını tartışm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Değişiklik İzleme ve envantere genel bakış](change-tracking.md)
-* [Değişiklik İzleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md)
-* [Azure Izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md)
+* Log Analytics çalışma alanınızda depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [Azure izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md).
+* Özellik hatalarını gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md).

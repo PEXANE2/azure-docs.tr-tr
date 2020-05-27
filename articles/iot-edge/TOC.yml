@@ -263,8 +263,8 @@
       href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics tool
       href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: MSDN forumu
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge'
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-iot-edge.html'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/iot-edge/'
     - name: Fiyatlandırma hesaplayıcı

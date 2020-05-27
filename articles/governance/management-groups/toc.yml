@@ -14,6 +14,8 @@
       href: ./create.md
     - name: Kaynaklarınızı yönetme
       href: ./manage.md
+    - name: Kaynak hiyerarşinizi koruma
+      href: ./how-to/protect-resource-hierarchy.md
 - name: Başvuru
   items:
     - name: Azure CLI

@@ -60,17 +60,17 @@
           href: learn/tutorial-app-dashboards.md
 - name: Örnekler
   items:
+    - name: Azure CLI
+      href: samples/cli-samples.md
     - name: Azure PowerShell
-      href: platform/powershell-samples.md
+      href: samples/powershell-samples.md
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
+      href: samples/policy-samples.md
 - name: Kavramlar
   items:
     - name: Neleri izleyebilirsiniz?
       href: monitor-reference.md
-    - name: Azure yönetimi
-      href: azure-management.md
     - name: Sürekli izleme
       href: continuous-monitoring.md
     - name: Veri kaynakları
@@ -90,14 +90,16 @@
           href: platform/data-ingestion-time.md
     - name: Insights
       href: insights/insights-overview.md
-    - name: İzleme çözümleri
-      href: insights/solutions-inventory.md
     - name: Veri güvenliği
       items:
         - name: Günlük verileri
           href: platform/data-security.md
         - name: Müşteri tarafından yönetilen anahtarlar
           href: platform/customer-managed-keys.md
+        - name: Özel Bağlantı ağı oluşturma
+          href: platform/private-link-security.md
+        - name: Özel depolama alanı
+          href: platform/private-storage.md
         - name: Kişisel günlük verilerini işleme
           href: platform/personal-data-mgmt.md
         - name: 'Uygulama verilerini toplama, bekletme ve depolama'
@@ -118,33 +120,20 @@
       href: platform/partners.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Azure İzleyici'yi yönetme
+    - name: Senaryolar
       items:
-        - name: Çalışma alanı dağıtımını tasarlama
-          href: platform/design-logs-deployment.md
+        - name: Azure kaynağını izleme
+          href: insights/monitor-azure-resource.md
+        - name: Azure sanal makinelerini izleme
+          href: insights/monitor-vm-azure.md
+          displayname: VM
+    - name: Yönetme ve yapılandırma
+      items:
         - name: Rol izinleri ve güvenlik
           href: platform/roles-permissions-security.md
         - name: IP adresleri
           href: app/ip-addresses.md
           displayname: 'firewall, firewall exceptions, whitelist'
-        - name: Log Analytics çalışma alanları
-          items:
-            - name: Çalışma alanı oluşturma
-              items:
-                - name: Azure portalı kullanma
-                  href: learn/quick-create-workspace.md
-                - name: Azure CLI kullanma
-                  href: learn/quick-create-workspace-cli.md
-                - name: Azure PowerShell kullanma
-                  href: learn/quick-create-workspace-posh.md
-            - name: Çalışma alanını silme ve kurtarma
-              href: platform/delete-workspace.md
-            - name: Çalışma alanı taşıma
-              href: platform/move-workspace.md
-            - name: Hizmet sağlayıcılarına yönelik tasarım
-              href: platform/service-providers.md
-            - name: Erişimi yönetme
-              href: platform/manage-access.md
         - name: Kullanım ve maliyet
           items:
             - name: Kullanım ve tahmini maliyetler
@@ -153,6 +142,392 @@
               href: app/pricing.md
             - name: Veri kullanımı ve maliyetlerini günlüğe kaydetme
               href: platform/manage-cost-storage.md
+        - name: Log Analytics çalışma alanları
+          items:
+            - name: Çalışma alanı dağıtımını tasarlama
+              href: platform/design-logs-deployment.md
+            - name: Çalışma alanı oluşturma
+              items:
+                - name: Azure portalı kullanma
+                  href: learn/quick-create-workspace.md
+                - name: Azure CLI kullanma
+                  href: learn/quick-create-workspace-cli.md
+                - name: PowerShell kullanma
+                  href: platform/powershell-workspace-configuration.md
+                - name: Resource Manager şablonu kullanma
+                  href: platform/template-workspace-configuration.md
+            - name: Çalışma alanını silme ve kurtarma
+              href: platform/delete-workspace.md
+            - name: Çalışma alanı taşıma
+              href: platform/move-workspace.md
+            - name: Hizmet sağlayıcılarına yönelik tasarım
+              href: platform/service-providers.md
+            - name: Erişimi yönetme
+              href: platform/manage-access.md
+        - name: Sanal makine aracıları
+          items:
+            - name: Genel Bakış
+              href: platform/agents-overview.md
+            - name: SSS
+              href: 'faq.md#agents'
+            - name: Azure Tanılama uzantısı
+              items:
+                - name: Genel Bakış
+                  href: platform/diagnostics-extension-overview.md
+                - name: Windows
+                  displayname: diagnostics extension
+                  items:
+                    - name: Yükleme ve yapılandırma
+                      items:
+                        - name: Yükleme seçenekleri
+                          href: platform/diagnostics-extension-windows-install.md
+                        - name: PowerShell
+                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                        - name: Resource Manager şablonu
+                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                    - name: Azure İzleyici Ölçümleri’ne gönderme
+                      items:
+                        - name: Sanal Makine
+                          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                        - name: VM ölçek kümesi
+                          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                        - name: VM klasik
+                          href: platform/collect-custom-metrics-guestos-vm-classic.md
+                        - name: Bulut hizmeti
+                          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Event Hubs’a gönderme
+                      href: platform/diagnostics-extension-stream-event-hubs.md
+                    - name: Günlükler’e gönderme
+                      href: platform/diagnostics-extension-logs.md
+                    - name: Application Insights’a gönderme
+                      href: platform/diagnostics-extension-to-application-insights.md
+                    - name: Sürüm geçmişi
+                      href: platform/diagnostics-extension-versions.md
+                    - name: JSON Satırları kaynak günlüklerinin biçimi
+                      href: platform/diagnostic-logs-append-blobs.md
+                    - name: Sorun giderme
+                      href: platform/diagnostics-extension-troubleshooting.md
+                - name: Linux
+                  displayname: diagnostics extension
+                  items:
+                    - name: Genel Bakış
+                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                    - name: Telegraf ile ölçümleri toplama
+                      href: platform/collect-custom-metrics-linux-telegraf.md
+            - name: Log Analytics aracısı
+              items:
+                - name: Genel Bakış
+                  href: platform/log-analytics-agent.md
+                - name: Windows aracıları
+                  href: platform/agent-windows.md
+                - name: Linux aracıları
+                  href: platform/agent-linux.md
+                - name: Windows için VM Uzantısı
+                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                - name: Linux için VM Uzantısı
+                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                - name: Log Analytics ağ geçidi
+                  href: platform/gateway.md
+                - name: Aracı yönetimi
+                  href: platform/agent-manage.md
+                - name: Aracı Durumu
+                  href: insights/solution-agenthealth.md
+                - name: Veri kaynakları
+                  items:
+                    - name: Genel Bakış
+                      href: platform/agent-data-sources.md
+                    - name: Windows olayları
+                      href: platform/data-sources-windows-events.md
+                    - name: Özel JSON verileri
+                      href: platform/data-sources-json.md
+                    - name: Toplanan performans verileri
+                      href: platform/data-sources-collectd.md
+                    - name: Syslog
+                      href: platform/data-sources-syslog.md
+                    - name: Performans sayaçları
+                      href: platform/data-sources-performance-counters.md
+                    - name: Linux uygulama performansı
+                      href: platform/data-sources-linux-applications.md
+                    - name: IIS günlükleri
+                      href: platform/data-sources-iis-logs.md
+                    - name: Özel günlükler
+                      href: platform/data-sources-custom-logs.md
+                    - name: Özel alanlar
+                      href: platform/custom-fields.md
+            - name: Sorun giderme
+              items:
+                - name: Log Analytics VM Uzantısı
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: platform/vmext-troubleshoot.md
+                - name: Log Analytics Windows aracısı
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: platform/agent-windows-troubleshoot.md
+                - name: Log Analytics Linux aracısı
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: platform/agent-linux-troubleshoot.md
+    - name: Platform günlükleri
+      items:
+        - name: Genel Bakış
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/platform-logs-overview.md
+        - name: Etkinlik günlüğü
+          items:
+            - name: Azure portalında görüntüleme
+              displayName: 'Platform logs, Activity log'
+              href: platform/activity-log-view.md
+            - name: Toplama ve analiz etme
+              displayName: 'Platform logs, Activity log'
+              href: platform/activity-log-collect.md
+            - name: Dışarı aktarma (eski)
+              displayname: Activity log
+              href: platform/activity-log-export.md
+        - name: Log Analytics çalışma alanına gönderme
+          displayname: 'Resource logs, Activity log, Platform logs'
+          href: platform/resource-logs-collect-workspace.md
+        - name: Azure Depolama’ya gönderme
+          displayname: 'Resource logs, Activity log, Platform logs'
+          href: platform/resource-logs-collect-storage.md
+        - name: Event Hubs’a gönderme
+          displayname: 'Resource logs, Activity log, Platform logs'
+          href: platform/resource-logs-stream-event-hubs.md
+        - name: Tanılama ayarı oluşturma
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings.md
+        - name: Kaynak Yöneticisi ile tanılama ayarı oluşturma
+          displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings-template.md
+        - name: Blob depolama biçimiyle değiştirme
+          displayname: Diagnostic settings
+          href: platform/resource-logs-blob-format.md
+        - name: Event Hubs’a veri akışı sağlama
+          href: platform/stream-monitoring-data-event-hubs.md
+    - name: Log Analytics
+      items:
+        - name: Günlük sorgusuna genel bakış
+          displayname: 'log query, log queries, query, queries'
+          href: log-query/log-query-overview.md
+        - name: Basit günlükler deneyimi
+          href: log-query/simple-logs.md
+        - name: Öğreticiler
+          items:
+            - name: Log Analytics öğreticisi
+              href: log-query/get-started-portal.md
+            - name: Günlük sorguları öğreticisi
+              href: log-query/get-started-queries.md
+        - name: Günlük verileri
+          items:
+            - name: Günlük verileri yapısı
+              href: log-query/logs-structure.md
+            - name: Sorgu kapsamı
+              href: log-query/scope.md
+            - name: Standart özellikler
+              href: platform/log-standard-properties.md
+            - name: Bilgisayar grupları
+              href: platform/computer-groups.md
+        - name: Sorgu dili
+          items:
+            - name: Sorgu dili Belgeleri
+              href: log-query/query-language.md
+            - name: Dil farkları
+              href: log-query/data-explorer-difference.md
+            - name: Yararlı işleçler
+              href: log-query/useful-operators.md
+            - name: İşlevler
+              href: log-query/functions.md
+            - name: Günlük aramasından geçiş
+              href: log-query/log-search-transition.md
+            - name: Dersler
+              items:
+                - name: Dize işlemleri
+                  href: log-query/string-operations.md
+                - name: Tarih ve saat işlemleri
+                  href: log-query/datetime-operations.md
+                - name: Toplama işlevleri
+                  href: log-query/aggregations.md
+                - name: Gelişmiş toplamalar
+                  href: log-query/advanced-aggregations.md
+                - name: Birleştirme
+                  href: log-query/joins.md
+                - name: JSON ve veri yapıları
+                  href: log-query/json-data-structures.md
+                - name: Gelişmiş sorgu yazma
+                  href: log-query/advanced-query-writing.md
+                - name: Grafikler ve diyagramlar
+                  href: log-query/charts.md
+                - name: Arama sorguları
+                  href: log-query/search-queries.md
+            - name: Başvuru sayfaları
+              items:
+                - name: SQL
+                  href: log-query/sql-cheatsheet.md
+                - name: Splunk
+                  href: log-query/splunk-cheatsheet.md
+        - name: Kaynaklar arası
+          items:
+            - name: Kaynaklar arası sorgular
+              href: log-query/cross-workspace-query.md
+            - name: uygulama ifadesi
+              href: log-query/app-expression.md
+            - name: çalışma alanı ifadesi
+              href: log-query/workspace-expression.md
+            - name: kaynak ifadesi
+              href: log-query/resource-expression.md
+            - name: Uygulama veri kaynaklarını birleştirme
+              href: log-query/unify-app-resource-data.md
+        - name: Örnekler ve yönergeler
+          items:
+            - name: Günlük sorgusu örnekleri
+              href: log-query/examples.md
+            - name: Akıllı analiz örnekleri
+              href: log-query/smart-analytics.md
+            - name: Sorguları iyileştirme
+              href: log-query/query-optimization.md
+            - name: Metin verilerini ayrıştırma
+              href: log-query/parse-text.md
+    - name: Ölçüm gezgini
+      items:
+        - name: Ölçüm Gezgini’ni kullanmaya başlama
+          href: platform/metrics-getting-started.md
+        - name: Ölçüm Gezgini’nin gelişmiş özellikleri
+          href: platform/metrics-charts.md
+        - name: Ölçüm grafiği örnekleri
+          href: platform/metric-chart-samples.md
+        - name: Ölçüm grafikleri için sorun çözümü
+          href: platform/metrics-troubleshoot.md
+    - name: Otomatik Ölçeklendirme
+      items:
+        - name: Genel Bakış
+          href: platform/autoscale-overview.md
+        - name: Kılavuz
+          href: platform/autoscale-get-started.md
+        - name: Yapılandırma ayarları
+          href: platform/autoscale-understanding-settings.md
+        - name: En iyi uygulamalar
+          href: platform/autoscale-best-practices.md
+        - name: Ortak ölçümler
+          href: platform/autoscale-common-metrics.md
+        - name: Ortak desenler
+          href: platform/autoscale-common-scale-patterns.md
+        - name: Özel ölçümlerle ölçeklendirme
+          href: platform/autoscale-custom-metric.md
+        - name: VM ölçek kümelerini ölçeklendirme
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
+        - name: Resource Manager şablonlarını kullanarak VM ölçek kümelerini ölçeklendirme
+          href: platform/autoscale-virtual-machine-scale-sets.md
+        - name: Web kancalarını ve e-posta bildirimlerini kullanma
+          href: platform/autoscale-webhook-email.md
+        - name: Sorun giderme
+          href: platform/autoscale-troubleshoot.md
+        - name: Kaynak Günlüğü şemaları
+          href: platform/autoscale-resource-log-schema.md
+    - name: Uyarılar
+      items:
+        - name: Uygulama uyarı kuralları
+          items:
+            - name: Kullanılabilirlik
+              href: app/monitor-web-app-availability.md
+            - name: Ölçüm uyarıları
+              href: app/alerts.md
+        - name: Ölçüm uyarı kuralları
+          items:
+            - name: Ölçüm uyarılarını yönetme
+              href: platform/alerts-metric.md
+            - name: Dinamik eşikleri kullanma
+              href: platform/alerts-dynamic-thresholds.md
+            - name: Günlüklerde ölçüm uyarıları
+              href: platform/alerts-metric-logs.md
+            - name: Resource Manager şablonunu kullanma
+              href: platform/alerts-metric-create-templates.md
+        - name: Günlük uyarı kuralları
+          items:
+            - name: Analiz sorgusuyla uyarıları yapılandırma
+              href: platform/alerts-log.md
+            - name: Sorgular
+              href: platform/alerts-log-query.md
+            - name: Web kancası eylemleri
+              href: platform/alerts-log-webhook.md
+            - name: Günlük uyarılarıyla ilgili sorunları giderme
+              href: platform/alert-log-troubleshoot.md
+        - name: Etkinlik günlüğü uyarı kuralları
+          items:
+            - name: Etkinlik günlüğü olayıyla ilgili uyarı
+              href: platform/alerts-activity-log.md
+            - name: Yönetim olaylarını etkinlik günlüğü uyarılarına geçirme
+              href: platform/migrate-management-alerts.md
+            - name: Web kancası şeması
+              href: platform/activity-log-alerts-webhook.md
+        - name: Hizmet durumu uyarıları
+          items:
+            - name: Bildirimleri görüntüleme
+              href: platform/service-notifications.md
+            - name: Bildirim olaylarıyla ilgili uyarıları yapılandırma
+              href: platform/alerts-activity-log-service-notifications.md
+        - name: Bildirimler ve eylemler
+          items:
+            - name: Eylem kuralları (Önizleme)
+              href: platform/alerts-action-rules.md
+            - name: Eylem grubu oluşturma
+              href: platform/action-groups.md
+            - name: Ortak uyarı şeması
+              href: platform/alerts-common-schema.md
+            - name: Ortak uyarı şeması tanımı
+              href: platform/alerts-common-schema-definitions.md
+            - name: Ortak uyarı şemasını Logic Apps ile tümleştirme
+              href: platform/alerts-common-schema-integrations.md
+            - name: SMS uyarısı davranışı
+              href: platform/alerts-sms-behavior.md
+            - name: Bildirim hızı sınırlandırma
+              href: platform/alerts-rate-limiting.md
+            - name: Resource Manager ile eylem grupları oluşturma
+              href: platform/action-groups-create-resource-manager-template.md
+            - name: Bir Mantıksal Uygulama eylemi gerçekleştirme
+              href: platform/action-groups-logic-app.md
+        - name: Uyarı kullanıcı arabirimi
+          items:
+            - name: Akıllı gruplar hakkında
+              href: platform/alerts-smartgroups-overview.md
+            - name: Uyarı örneklerini yönetme
+              href: platform/alerts-managing-alert-instances.md
+            - name: Akıllı grupları yönetme
+              href: platform/alerts-managing-smart-groups.md
+            - name: Uyarı ve akıllı grup durumlarını yönetme
+              href: platform/alerts-managing-alert-states.md
+            - name: Diğer izleme hizmetlerinden gelen uyarıları yönetme
+              href: platform/alerts-managing-nagios-zabbix-scom.md
+        - name: Uyarı API’si
+          href: platform/api-alerts.md
+        - name: Sorun giderme uyarıları
+          href: platform/alerts-troubleshoot.md
+        - name: BT Hizmet Yönetimi
+          items:
+            - name: BT Hizmet Yönetimi Bağlayıcısı
+              href: platform/itsmc-overview.md
+            - name: BT Hizmet Yönetimi bağlantıları
+              href: platform/itsmc-connections.md
+            - name: Service Manager web uygulaması oluşturma
+              href: platform/itsmc-service-manager-script.md
+            - name: ServiceNow ITSM eşitleme sorunlarını düzeltme
+              href: platform/itsmc-resync-servicenow.md
+        - name: Uyarı Yönetimi çözümü
+          href: platform/alert-management-solution.md
+        - name: Klasik uyarı kurallarını geçirme
+          items:
+            - name: Klasik uyarılar hakkında
+              href: platform/alerts-classic.overview.md
+            - name: Geçiş için hazırlanma
+              href: platform/alerts-prepare-migration.md
+            - name: Geçiş aracını anlama
+              href: platform/alerts-understand-migration.md
+            - name: Geçiş aracını kullanma
+              href: platform/alerts-using-migration-tool.md
+            - name: Otomatik geçiş süreci
+              href: platform/alerts-automatic-migration.md
+            - name: Klasik ölçüm uyarılarını yönetme
+              href: platform/alerts-classic-portal.md
+            - name: Resource Manager şablonunu kullanarak klasik ölçüm uyarısı
+              href: platform/alerts-enable-template.md
+            - name: Web kancasını çağıran klasik ölçüm uyarısı
+              href: platform/alerts-webhooks.md
     - name: Application Insights
       items:
         - name: Application Insights'a genel bakış
@@ -457,6 +832,10 @@
                   href: app/separate-resources.md
                 - name: Application Insights’ta nasıl ... yapabilirim?
                   href: app/how-do-i.md
+                - name: Application Insights’ı yönetme
+                  href: app/powershell.md
+                - name: Azure Cloud Services’ı yönetme
+                  href: app/powershell-azure-diagnostics.md
         - name: Dışarı Aktarma
           items:
             - name: Sürekli dışarı aktarma
@@ -481,476 +860,173 @@
               href: app/sharepoint.md
             - name: Windows masaüstü
               href: app/windows-desktop.md
-    - name: Azure kaynaklarını izleme
+    - name: VM'ler için Azure İzleyici
       items:
-        - name: Azure hizmetini izleme
-          href: insights/monitor-azure-resource.md
-        - name: Kaynak gruplarını izleme
-          href: insights/resource-group-insights.md
-        - name: Platform günlükleri
+        - name: Genel Bakış
+          href: insights/vminsights-overview.md
+        - name: Genel Kullanılabilirlik Hakkında SSS
+          href: insights/vminsights-ga-release-faq.md
+        - name: SSS
+          href: 'faq.md#azure-monitor-for-vms'
+        - name: İzlemeyi etkinleştirme
           items:
-            - name: Genel Bakış
-              displayName: 'Platform logs, Resource logs, Activity log'
-              href: platform/platform-logs-overview.md
-            - name: Etkinlik günlüğü
-              items:
-                - name: Azure portalında görüntüleme
-                  displayName: 'Platform logs, Activity log'
-                  href: platform/activity-log-view.md
-                - name: Toplama ve analiz etme
-                  displayName: 'Platform logs, Activity log'
-                  href: platform/activity-log-collect.md
-                - name: Dışarı aktarma (eski)
-                  displayname: Activity log
-                  href: platform/activity-log-export.md
-            - name: Hedeflere gönderme
-              items:
-                - name: Log Analytics çalışma alanı
-                  displayname: 'Resource logs, Activity log, Platform logs'
-                  href: platform/resource-logs-collect-workspace.md
-                - name: Azure Storage
-                  displayname: 'Resource logs, Activity log, Platform logs'
-                  href: platform/resource-logs-collect-storage.md
-                - name: Event Hubs
-                  displayname: 'Resource logs, Activity log, Platform logs'
-                  href: platform/resource-logs-stream-event-hubs.md
-        - name: Tanılama ayarları
+            - name: İzlemeyi etkinleştirmeye genel bakış
+              href: insights/vminsights-enable-overview.md
+            - name: Tek bir Azure VM için etkinleştirme
+              href: insights/vminsights-enable-single-vm.md
+            - name: Azure İlkesi’ni kullanarak etkinleştirme
+              href: insights/vminsights-enable-at-scale-policy.md
+            - name: Azure PowerShell kullanarak etkinleştirme
+              href: insights/vminsights-enable-at-scale-powershell.md
+            - name: Hibrit ortam için etkinleştirme
+              href: insights/vminsights-enable-hybrid-cloud.md
+        - name: Bağımlılıkları eşleme
+          href: insights/vminsights-maps.md
+        - name: Performansı izleme
+          href: insights/vminsights-performance.md
+        - name: Günlük sorgularıyla verileri çözümleme
+          href: insights/vminsights-log-search.md
+        - name: Çalışma kitapları ile verileri görselleştirme
+          href: insights/vminsights-workbooks.md
+        - name: Uyarı kuralları oluşturma
+          href: insights/vminsights-alerts.md
+        - name: Dependency Agent’ı yükseltme
+          href: insights/vminsights-dependency-agent-maintenance.md
+        - name: İzlemeyi devre dışı bırakma
+          href: insights/vminsights-optout.md
+    - name: Kapsayıcılar için Azure İzleyici
+      items:
+        - name: Genel Bakış
+          href: insights/container-insights-overview.md
+        - name: SSS
+          href: 'faq.md#azure-monitor-for-containers'
+        - name: İzlemeyi etkinleştirme
           items:
-            - name: Tanılama ayarı oluşturma
-              displayName: 'Platform logs, Resource logs, Activity log'
-              href: platform/diagnostic-settings.md
-            - name: Resource Manager ile oluşturma
-              displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
-              href: platform/diagnostic-settings-template.md
-            - name: Blob depolama biçimiyle değiştirme
-              displayname: Diagnostic settings
-              href: platform/resource-logs-blob-format.md
-        - name: Event Hubs’a veri akışı sağlama
-          href: platform/stream-monitoring-data-event-hubs.md
-        - name: Anahtar Kasasını izleme
-          href: insights/key-vaults-insights-overview.md
-        - name: Değişiklik analizi
-          href: app/change-analysis.md
+            - name: İzlemeyi etkinleştirmeye genel bakış
+              href: insights/container-insights-onboard.md
+            - name: Yeni AKS kümesi için etkinleştirme
+              href: insights/container-insights-enable-new-cluster.md
+            - name: Mevcut AKS kümesi için etkinleştirme
+              href: insights/container-insights-enable-existing-clusters.md
+            - name: Karma küme için etkinleştirme
+              href: insights/container-insights-hybrid-setup.md
+            - name: Azure Red Hat OpenShift v3 için etkinleştirme
+              href: insights/container-insights-azure-redhat-setup.md
+            - name: Azure Red Hat OpenShift v4 için etkinleştirme
+              href: insights/container-insights-azure-redhat4-setup.md
+            - name: Bölge eşlemeleri
+              href: insights/container-insights-region-mapping.md
+        - name: Performansı izleme
+          href: insights/container-insights-analyze.md
+        - name: Sistem durumunu izleme
+          href: insights/container-insights-health.md
+        - name: GPU performansını izleme
+          href: insights/container-insights-gpu-monitoring.md
+        - name: Canlı verileri görüntüleme
+          items:
+            - name: Canlı Verilere (önizleme) genel bakış
+              href: insights/container-insights-livedata-overview.md
+            - name: Kurulum
+              href: insights/container-insights-livedata-setup.md
+            - name: Küme ölçümlerini görüntüleme
+              href: insights/container-insights-livedata-metrics.md
+            - name: Dağıtımları görüntüleme
+              href: insights/container-insights-livedata-deployments.md
+        - name: Günlük sorgularıyla verileri çözümleme
+          href: insights/container-insights-log-search.md
+        - name: Uyarı
+          href: insights/container-insights-alerts.md
+        - name: Aracı yönetimi
+          href: insights/container-insights-manage-agent.md
+        - name: Prometheus ölçüm veri dönüştürmeyi yapılandırma
+          href: insights/container-insights-prometheus-integration.md
+        - name: Aracı koleksiyonu ayarlarını yapılandırma
+          href: insights/container-insights-agent-config.md
+        - name: Ölçümleri etkinleştirmek için güncelleştirme
+          href: insights/container-insights-update-metrics.md
+        - name: Sistem durumu izleme yapılandırması
+          href: insights/container-insights-health-monitors-config.md
+        - name: İzlemeyi devre dışı bırakma
+          items:
+            - name: AKS’yi izlemeyi devre dışı bırakma
+              href: insights/container-insights-optout.md
+            - name: Red Hat OpenShift v3’ü izlemeyi devre dışı bırakma
+              href: insights/container-insights-optout-openshift-v3.md
+            - name: Red Hat OpenShift v4’ü izlemeyi devre dışı bırakma
+              href: insights/container-insights-optout-openshift-v4.md
+            - name: Hibrit kümeyi izlemeyi devre dışı bırakma
+              href: insights/container-insights-optout-hybrid.md
+        - name: Sorun giderme
+          href: insights/container-insights-troubleshoot.md
+    - name: Diğer içgörüler
+      items:
         - name: Redis için Azure Cache (önizleme)
           href: insights/redis-cache-insights-overview.md
-    - name: VM’leri ve konuk işletim sistemini izleme
+        - name: Azure Cosmos DB
+          href: insights/cosmosdb-insights-overview.md
+        - name: Key Vault
+          href: insights/key-vault-insights-overview.md
+        - name: Ağlar
+          href: insights/network-insights-overview.md
+        - name: Depolama
+          displayname: 'storage, monitor, insights, storage accounts, azure storage'
+          href: insights/storage-insights-overview.md
+        - name: Kaynak grupları
+          href: insights/resource-group-insights.md
+    - name: Çözümler
       items:
-        - name: Azure sanal makinelerini izleme
-          href: insights/monitor-vm-azure.md
-        - name: Aracılar
+        - name: Genel Bakış
+          href: insights/solutions.md
+        - name: Hedef çözümler
+          href: insights/solution-targeting.md
+        - name: Kullanılabilir çözümler
           items:
-            - name: Aracılara genel bakış
-              href: platform/agents-overview.md
-            - name: SSS
-              href: 'faq.md#agents'
-            - name: Azure Tanılama uzantısı
-              items:
-                - name: Genel Bakış
-                  href: platform/diagnostics-extension-overview.md
-                - name: Windows
-                  displayname: diagnostics extension
-                  items:
-                    - name: Yükleme ve yapılandırma
-                      items:
-                        - name: Yükleme seçenekleri
-                          href: platform/diagnostics-extension-windows-install.md
-                        - name: PowerShell
-                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
-                        - name: Resource Manager şablonu
-                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
-                    - name: Azure İzleyici Ölçümleri’ne gönderme
-                      items:
-                        - name: Sanal Makine
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                        - name: VM ölçek kümesi
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                        - name: VM klasik
-                          href: platform/collect-custom-metrics-guestos-vm-classic.md
-                        - name: Bulut hizmeti
-                          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: Event Hubs’a gönderme
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Günlükler’e gönderme
-                      href: platform/diagnostics-extension-logs.md
-                    - name: Application Insights’a gönderme
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Sürüm geçmişi
-                      href: platform/diagnostics-extension-versions.md
-                    - name: JSON Satırları kaynak günlüklerinin biçimi
-                      href: platform/diagnostic-logs-append-blobs.md
-                    - name: Sorun giderme
-                      href: platform/diagnostics-extension-troubleshooting.md
-                - name: Linux
-                  displayname: diagnostics extension
-                  items:
-                    - name: Genel Bakış
-                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
-                    - name: Telegraf ile ölçümleri toplama
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Log Analytics aracısı
-              items:
-                - name: Genel Bakış
-                  href: platform/log-analytics-agent.md
-                - name: Windows aracıları
-                  href: platform/agent-windows.md
-                - name: Linux aracıları
-                  href: platform/agent-linux.md
-                - name: Windows için VM Uzantısı
-                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
-                - name: Linux için VM Uzantısı
-                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
-                - name: Log Analytics ağ geçidi
-                  href: platform/gateway.md
-                - name: Aracı yönetimi
-                  href: platform/agent-manage.md
-                - name: Aracı Durumu
-                  href: insights/solution-agenthealth.md
-                - name: Veri kaynakları
-                  items:
-                    - name: Genel Bakış
-                      href: platform/agent-data-sources.md
-                    - name: Windows olayları
-                      href: platform/data-sources-windows-events.md
-                    - name: Özel JSON verileri
-                      href: platform/data-sources-json.md
-                    - name: Toplanan performans verileri
-                      href: platform/data-sources-collectd.md
-                    - name: Syslog
-                      href: platform/data-sources-syslog.md
-                    - name: Performans sayaçları
-                      href: platform/data-sources-performance-counters.md
-                    - name: Linux uygulama performansı
-                      href: platform/data-sources-linux-applications.md
-                    - name: IIS günlükleri
-                      href: platform/data-sources-iis-logs.md
-                    - name: Özel günlükler
-                      href: platform/data-sources-custom-logs.md
-                    - name: Özel alanlar
-                      href: platform/custom-fields.md
-            - name: Sorun giderme
-              items:
-                - name: Log Analytics VM Uzantısı
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/vmext-troubleshoot.md
-                - name: Log Analytics Windows aracısı
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-windows-troubleshoot.md
-                - name: Log Analytics Linux aracısı
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-linux-troubleshoot.md
-        - name: VM'ler için Azure İzleyici
-          items:
-            - name: Genel Bakış
-              href: insights/vminsights-overview.md
-            - name: Genel Kullanılabilirlik Hakkında SSS
-              href: insights/vminsights-ga-release-faq.md
-            - name: SSS
-              href: 'faq.md#azure-monitor-for-vms'
-            - name: İzlemeyi etkinleştirme
-              items:
-                - name: İzlemeyi etkinleştirmeye genel bakış
-                  href: insights/vminsights-enable-overview.md
-                - name: Tek bir Azure VM için etkinleştirme
-                  href: insights/vminsights-enable-single-vm.md
-                - name: Azure İlkesi’ni kullanarak etkinleştirme
-                  href: insights/vminsights-enable-at-scale-policy.md
-                - name: Azure PowerShell kullanarak etkinleştirme
-                  href: insights/vminsights-enable-at-scale-powershell.md
-                - name: Hibrit ortam için etkinleştirme
-                  href: insights/vminsights-enable-hybrid-cloud.md
-            - name: Bağımlılıkları eşleme
-              href: insights/vminsights-maps.md
-            - name: Performansı izleme
-              href: insights/vminsights-performance.md
-            - name: Günlük sorgularıyla verileri çözümleme
-              href: insights/vminsights-log-search.md
-            - name: Çalışma kitapları ile verileri görselleştirme
-              href: insights/vminsights-workbooks.md
-            - name: Uyarı kuralları oluşturma
-              href: insights/vminsights-alerts.md
-            - name: Dependency Agent’ı yükseltme
-              href: insights/vminsights-dependency-agent-maintenance.md
-            - name: İzlemeyi devre dışı bırakma
-              href: insights/vminsights-optout.md
-        - name: Çözümler
-          items:
+            - name: AD sistem durumu değerlendirmesi
+              href: insights/ad-assessment.md
+            - name: AD Çoğaltma Durumu
+              href: insights/ad-replication-status.md
             - name: Kapasite ve performans çözümü
               href: insights/capacity-performance.md
-            - name: VMware Analytics çözümü
-              href: insights/vmware.md
-            - name: Wire Data çözümü
-              href: insights/wire-data.md
+            - name: Docker ve Windows Kapsayıcıları’nı izleme
+              href: insights/containers.md
+            - name: Key Vault Analytics
+              href: insights/azure-key-vault.md
+            - name: Ağlar
+              items:
+                - name: Ağ Analizi
+                  href: insights/azure-networking-analytics.md
+                - name: DNS
+                  href: insights/dns-analytics.md
+                - name: Ağ Performansı İzleyicisi
+                  items:
+                    - name: Çözüme genel bakış
+                      href: insights/network-performance-monitor.md
+                    - name: Performans İzleyicisi
+                      href: insights/network-performance-monitor-performance-monitor.md
+                    - name: Hizmet Bağlantısı İzleyicisi
+                      href: insights/network-performance-monitor-service-connectivity.md
+                    - name: ExpressRoute
+                      href: insights/network-performance-monitor-expressroute.md
+                    - name: Fiyatlandırma
+                      href: insights/network-performance-monitor-pricing-faq.md
+                    - name: SSS
+                      href: insights/network-performance-monitor-faq.md
+            - name: Office 365
+              href: insights/solution-office-365.md
             - name: Hizmet Eşlemesi çözümü
               href: insights/service-map.md
             - name: Hizmet Eşlemesi ve Operations Manager
               href: insights/service-map-scom.md
-        - name: Bilgisayar grupları
-          href: platform/computer-groups.md
-    - name: Kapsayıcıları izleme
-      items:
-        - name: Kapsayıcılar için Azure İzleyici
-          items:
-            - name: Genel Bakış
-              href: insights/container-insights-overview.md
-            - name: SSS
-              href: 'faq.md#azure-monitor-for-containers'
-            - name: İzlemeyi etkinleştirme
-              items:
-                - name: İzlemeyi etkinleştirmeye genel bakış
-                  href: insights/container-insights-onboard.md
-                - name: Yeni AKS kümesi için etkinleştirme
-                  href: insights/container-insights-enable-new-cluster.md
-                - name: Mevcut AKS kümesi için etkinleştirme
-                  href: insights/container-insights-enable-existing-clusters.md
-                - name: Karma küme için etkinleştirme
-                  href: insights/container-insights-hybrid-setup.md
-                - name: Azure Red Hat OpenShift v3 için etkinleştirme
-                  href: insights/container-insights-azure-redhat-setup.md
-                - name: Azure Red Hat OpenShift v4 için etkinleştirme
-                  href: insights/container-insights-azure-redhat4-setup.md
-                - name: Bölge eşlemeleri
-                  href: insights/container-insights-region-mapping.md
-            - name: Performansı izleme
-              href: insights/container-insights-analyze.md
-            - name: Sistem durumunu izleme
-              href: insights/container-insights-health.md
-            - name: GPU performansını izleme
-              href: insights/container-insights-gpu-monitoring.md
-            - name: Canlı verileri görüntüleme
-              items:
-                - name: Canlı Verilere (önizleme) genel bakış
-                  href: insights/container-insights-livedata-overview.md
-                - name: Kurulum
-                  href: insights/container-insights-livedata-setup.md
-                - name: Küme ölçümlerini görüntüleme
-                  href: insights/container-insights-livedata-metrics.md
-                - name: Dağıtımları görüntüleme
-                  href: insights/container-insights-livedata-deployments.md
-            - name: Günlük sorgularıyla verileri çözümleme
-              href: insights/container-insights-log-search.md
-            - name: Uyarı
-              href: insights/container-insights-alerts.md
-            - name: Aracı yönetimi
-              href: insights/container-insights-manage-agent.md
-            - name: Prometheus ölçüm veri dönüştürmeyi yapılandırma
-              href: insights/container-insights-prometheus-integration.md
-            - name: Aracı koleksiyonu ayarlarını yapılandırma
-              href: insights/container-insights-agent-config.md
-            - name: Ölçümleri etkinleştirmek için güncelleştirme
-              href: insights/container-insights-update-metrics.md
-            - name: Sistem durumu izleme yapılandırması
-              href: insights/container-insights-health-monitors-config.md
-            - name: İzlemeyi devre dışı bırakma
-              items:
-                - name: AKS’yi izlemeyi devre dışı bırakma
-                  href: insights/container-insights-optout.md
-                - name: Red Hat OpenShift v3’ü izlemeyi devre dışı bırakma
-                  href: insights/container-insights-optout-openshift-v3.md
-                - name: Red Hat OpenShift v4’ü izlemeyi devre dışı bırakma
-                  href: insights/container-insights-optout-openshift-v4.md
-                - name: Hibrit kümeyi izlemeyi devre dışı bırakma
-                  href: insights/container-insights-optout-hybrid.md
-            - name: Sorun giderme
-              href: insights/container-insights-troubleshoot.md
-        - name: Docker ve Windows Kapsayıcıları’nı izleme
-          href: insights/containers.md
-    - name: Diğer kaynakları izleme
-      items:
-        - name: Depolama
-          items:
-            - name: Depolama için Azure İzleyici
-              displayname: 'storage, monitor, insights, storage accounts, azure storage'
-              href: insights/storage-insights-overview.md
-        - name: Veritabanları
-          items:
             - name: Azure SQL
               href: insights/azure-sql.md
             - name: SQL Server
               href: insights/sql-assessment.md
-            - name: Azure Cosmos DB
-              href: insights/cosmosdb-insights-overview.md
-        - name: Ağlar
-          items:
-            - name: Ağlar için Azure İzleyici
-              href: insights/network-insights-overview.md
-            - name: Ağ Analizi
-              href: insights/azure-networking-analytics.md
-            - name: DNS
-              href: insights/dns-analytics.md
-            - name: Ağ Performansı İzleyicisi
-              items:
-                - name: Çözüme genel bakış
-                  href: insights/network-performance-monitor.md
-                - name: Performans İzleyicisi
-                  href: insights/network-performance-monitor-performance-monitor.md
-                - name: Hizmet Bağlantısı İzleyicisi
-                  href: insights/network-performance-monitor-service-connectivity.md
-                - name: ExpressRoute
-                  href: insights/network-performance-monitor-expressroute.md
-                - name: Fiyatlandırma
-                  href: insights/network-performance-monitor-pricing-faq.md
-                - name: SSS
-                  href: insights/network-performance-monitor-faq.md
-        - name: İzleme çözümleri
-          items:
-            - name: Genel Bakış
-              href: insights/solutions.md
-            - name: Hedef çözümler
-              href: insights/solution-targeting.md
-            - name: AD Durumunu değerlendirme
-              href: insights/ad-assessment.md
-            - name: AD Çoğaltma Durumu
-              href: insights/ad-replication-status.md
-            - name: Key Vault Analytics
-              href: insights/azure-key-vault.md
-            - name: Office 365
-              href: insights/solution-office-365.md
             - name: Surface Hub
               href: insights/surface-hubs.md
-    - name: Özel verileri toplama
-      items:
-        - name: Özel ölçümler
-          href: platform/metrics-custom-overview.md
-        - name: Ölçümler REST API'si
-          href: platform/metrics-store-custom-rest-api.md
-        - name: Log Analytics Veri toplayıcı API’si
-          href: platform/data-collector-api.md
-        - name: Log Analytics Veri Toplayıcı API’si İşlem Hattı örneği
-          href: platform/create-pipeline-datacollector-api.md
-    - name: Verileri çözümleme
-      items:
-        - name: Ölçümler
-          items:
-            - name: Ölçüm Gezgini’ni kullanmaya başlama
-              href: platform/metrics-getting-started.md
-            - name: Ölçüm Gezgini’nin gelişmiş özellikleri
-              href: platform/metrics-charts.md
-            - name: Ölçüm grafiği örnekleri
-              href: platform/metric-chart-samples.md
-            - name: Ölçüm grafikleri için sorun çözümü
-              href: platform/metrics-troubleshoot.md
-        - name: Günlükler
-          items:
-            - name: Günlük sorgusuna genel bakış
-              displayname: 'log query, log queries, query, queries'
-              href: log-query/log-query-overview.md
-            - name: Basit günlükler deneyimi
-              href: log-query/simple-logs.md
-            - name: Öğreticiler
-              items:
-                - name: Log Analytics öğreticisi
-                  href: log-query/get-started-portal.md
-                - name: Günlük sorguları öğreticisi
-                  href: log-query/get-started-queries.md
-            - name: Günlük verileri
-              items:
-                - name: Günlük verileri yapısı
-                  href: log-query/logs-structure.md
-                - name: Sorgu kapsamı
-                  href: log-query/scope.md
-                - name: Standart özellikler
-                  href: platform/log-standard-properties.md
-            - name: Sorgu dili
-              items:
-                - name: Sorgu dili Belgeleri
-                  href: log-query/query-language.md
-                - name: Dil farkları
-                  href: log-query/data-explorer-difference.md
-                - name: Yararlı işleçler
-                  href: log-query/useful-operators.md
-                - name: İşlevler
-                  href: log-query/functions.md
-                - name: Günlük aramasından geçiş
-                  href: log-query/log-search-transition.md
-                - name: Dersler
-                  items:
-                    - name: Dize işlemleri
-                      href: log-query/string-operations.md
-                    - name: Tarih ve saat işlemleri
-                      href: log-query/datetime-operations.md
-                    - name: Toplama işlevleri
-                      href: log-query/aggregations.md
-                    - name: Gelişmiş toplamalar
-                      href: log-query/advanced-aggregations.md
-                    - name: Birleştirme
-                      href: log-query/joins.md
-                    - name: JSON ve veri yapıları
-                      href: log-query/json-data-structures.md
-                    - name: Gelişmiş sorgu yazma
-                      href: log-query/advanced-query-writing.md
-                    - name: Grafikler ve diyagramlar
-                      href: log-query/charts.md
-                    - name: Arama sorguları
-                      href: log-query/search-queries.md
-                - name: Başvuru sayfaları
-                  items:
-                    - name: SQL
-                      href: log-query/sql-cheatsheet.md
-                    - name: Splunk
-                      href: log-query/splunk-cheatsheet.md
-            - name: Kaynaklar arası
-              items:
-                - name: Kaynaklar arası sorgular
-                  href: log-query/cross-workspace-query.md
-                - name: uygulama ifadesi
-                  href: log-query/app-expression.md
-                - name: çalışma alanı ifadesi
-                  href: log-query/workspace-expression.md
-                - name: kaynak ifadesi
-                  href: log-query/resource-expression.md
-                - name: Uygulama veri kaynaklarını birleştirme
-                  href: log-query/unify-app-resource-data.md
-            - name: Örnekler ve yönergeler
-              items:
-                - name: Günlük sorgusu örnekleri
-                  href: log-query/examples.md
-                - name: Akıllı analiz örnekleri
-                  href: log-query/smart-analytics.md
-                - name: Sorguları iyileştirme
-                  href: log-query/query-optimization.md
-                - name: Metin verilerini ayrıştırma
-                  href: log-query/parse-text.md
-        - name: Logic Apps
-          items:
-            - name: Azure İzleyici Günlükleri bağlayıcısı
-              href: platform/logicapp-flow-connector.md
-            - name: Application Insights bağlayıcısı
-              href: app/automate-with-logic-apps.md
-        - name: REST API
-          displayname: 'metrics, analyze'
-          href: platform/rest-api-walkthrough.md
-    - name: Verileri görselleştirme
-      items:
-        - name: Çalışma Kitapları
-          items:
-            - name: Genel Bakış
-              href: platform/workbooks-overview.md
-            - name: Görsel öğeler
-              href: platform/workbooks-visualizations.md
-            - name: Veri kaynakları
-              href: platform/workbooks-data-sources.md
-            - name: Azure Resource Manager ile dağıtım yapma
-              href: platform/workbooks-automate.md
-            - name: Gruplar
-              href: platform/workbooks-groups.md
-            - name: JSONPath ile JSON verilerini dönüştürme
-              href: platform/workbooks-jsonpath.md
-            - name: Yapılandırma
-              items:
-                - name: Erişim denetimi
-                  href: platform/workbooks-access-control.md
-                - name: Parametreler
-                  items:
-                    - name: Parametre özeti
-                      href: platform/workbooks-parameters.md
-                    - name: Açılır parametreler
-                      href: platform/workbooks-dropdowns.md
-                    - name: Etkileşimli parametreler
-                      href: platform/workbooks-interactive.md
-                    - name: Zaman parametreleri
-                      href: platform/workbooks-time.md
-                    - name: Metin parametreleri
-                      href: platform/workbooks-text.md
+            - name: VMware Analytics çözümü
+              href: insights/vmware.md
+            - name: Wire Data çözümü
+              href: insights/wire-data.md
         - name: Görünümler
           items:
             - name: Görünümleri çalışma kitaplarına dönüştürme
@@ -975,6 +1051,48 @@
               href: platform/view-designer-parts.md
             - name: Filtreler
               href: platform/view-designer-filters.md
+        - name: Özel çözümler
+          items:
+            - name: Tasarım ve derleme
+              href: insights/solutions-creating.md
+            - name: Çözüm dosyası
+              href: insights/solutions-solution-file.md
+            - name: Otomasyon kaynakları
+              href: insights/solutions-resources-automation.md
+            - name: Günlük aramaları ve uyarıları
+              href: insights/solutions-resources-searches-alerts.md
+            - name: Görünümler
+              href: insights/solutions-resources-views.md
+            - name: En iyi uygulamalar
+              href: insights/solutions-best-practices.md
+    - name: Çalışma Kitapları
+      items:
+        - name: Genel Bakış
+          href: platform/workbooks-overview.md
+        - name: Görsel öğeler
+          href: platform/workbooks-visualizations.md
+        - name: Veri kaynakları
+          href: platform/workbooks-data-sources.md
+        - name: Azure Resource Manager ile dağıtım yapma
+          href: platform/workbooks-automate.md
+        - name: Yapılandırma
+          items:
+            - name: Erişim denetimi
+              href: platform/workbooks-access-control.md
+            - name: Parametreler
+              items:
+                - name: Parametre özeti
+                  href: platform/workbooks-parameters.md
+                - name: Açılır parametreler
+                  href: platform/workbooks-dropdowns.md
+                - name: Etkileşimli parametreler
+                  href: platform/workbooks-interactive.md
+                - name: Zaman parametreleri
+                  href: platform/workbooks-time.md
+                - name: Metin parametreleri
+                  href: platform/workbooks-text.md
+    - name: Diğer görselleştirmeler
+      items:
         - name: Power BI
           items:
             - name: Günlük verilerini dışarı aktarma
@@ -989,174 +1107,29 @@
               href: learn/tutorial-app-dashboards.md
         - name: Grafana'ya veri gönderme
           href: platform/grafana-plugin.md
-    - name: Uyarı
+    - name: Özel veri koleksiyonu ve analiz
       items:
-        - name: Sorun giderme uyarıları
-          href: platform/alerts-troubleshoot.md
-        - name: Uygulama uyarı kuralları
+        - name: Özel ölçümler
           items:
-            - name: Kullanılabilirlik
-              href: app/monitor-web-app-availability.md
-        - name: Ölçüm uyarı kuralları
+            - name: Özel ölçümler
+              href: platform/metrics-custom-overview.md
+            - name: Ölçümler REST API'si
+              href: platform/metrics-store-custom-rest-api.md
+        - name: Özel günlükler
           items:
-            - name: Ölçüm uyarılarını yönetme
-              href: platform/alerts-metric.md
-            - name: Dinamik eşikleri kullanma
-              href: platform/alerts-dynamic-thresholds.md
-            - name: Günlüklerde ölçüm uyarıları
-              href: platform/alerts-metric-logs.md
-            - name: Resource Manager şablonunu kullanma
-              href: platform/alerts-metric-create-templates.md
-        - name: Günlük uyarı kuralları
+            - name: Log Analytics Veri toplayıcı API’si
+              href: platform/data-collector-api.md
+            - name: Log Analytics Veri Toplayıcı API’si İşlem Hattı örneği
+              href: platform/create-pipeline-datacollector-api.md
+        - name: Logic Apps
           items:
-            - name: Analiz sorgusuyla uyarıları yapılandırma
-              href: platform/alerts-log.md
-            - name: Sorgular
-              href: platform/alerts-log-query.md
-            - name: Web kancası eylemleri
-              href: platform/alerts-log-webhook.md
-            - name: Günlük uyarılarıyla ilgili sorunları giderme
-              href: platform/alert-log-troubleshoot.md
-        - name: Etkinlik günlüğü uyarı kuralları
-          items:
-            - name: Etkinlik günlüğü olayıyla ilgili uyarı
-              href: platform/alerts-activity-log.md
-            - name: Yönetim olaylarını etkinlik günlüğü uyarılarına geçirme
-              href: platform/migrate-management-alerts.md
-            - name: Web kancası şeması
-              href: platform/activity-log-alerts-webhook.md
-        - name: Etkinlik günlüğündeki hizmet durumu uyarıları
-          items:
-            - name: Bildirimleri görüntüleme
-              href: platform/service-notifications.md
-            - name: Bildirim olaylarıyla ilgili uyarıları yapılandırma
-              href: platform/alerts-activity-log-service-notifications.md
-        - name: Bildirimler ve eylemler
-          items:
-            - name: Eylem kuralları (Önizleme)
-              href: platform/alerts-action-rules.md
-            - name: Eylem grubu oluşturma
-              href: platform/action-groups.md
-            - name: Ortak uyarı şeması
-              href: platform/alerts-common-schema.md
-            - name: Ortak uyarı şeması tanımı
-              href: platform/alerts-common-schema-definitions.md
-            - name: Ortak uyarı şemasını Logic Apps ile tümleştirme
-              href: platform/alerts-common-schema-integrations.md
-            - name: SMS uyarısı davranışı
-              href: platform/alerts-sms-behavior.md
-            - name: Bildirim hızı sınırlandırma
-              href: platform/alerts-rate-limiting.md
-            - name: Resource Manager ile eylem grupları oluşturma
-              href: platform/action-groups-create-resource-manager-template.md
-            - name: Bir Mantıksal Uygulama eylemi gerçekleştirme
-              href: platform/action-groups-logic-app.md
-        - name: Uyarı Yönetimi çözümü
-          href: platform/alert-management-solution.md
-        - name: Uyarı kullanıcı arabirimi
-          items:
-            - name: Akıllı gruplar hakkında
-              href: platform/alerts-smartgroups-overview.md
-            - name: Uyarı örneklerini yönetme
-              href: platform/alerts-managing-alert-instances.md
-            - name: Akıllı grupları yönetme
-              href: platform/alerts-managing-smart-groups.md
-            - name: Uyarı ve akıllı grup durumlarını yönetme
-              href: platform/alerts-managing-alert-states.md
-            - name: Diğer izleme hizmetlerinden gelen uyarıları yönetme
-              href: platform/alerts-managing-nagios-zabbix-scom.md
-        - name: Klasik uyarı kurallarını geçirme
-          items:
-            - name: Klasik uyarılar hakkında
-              href: platform/alerts-classic.overview.md
-            - name: Geçiş için hazırlanma
-              href: platform/alerts-prepare-migration.md
-            - name: Geçiş aracını anlama
-              href: platform/alerts-understand-migration.md
-            - name: Geçiş aracını kullanma
-              href: platform/alerts-using-migration-tool.md
-            - name: Otomatik geçiş süreci
-              href: platform/alerts-automatic-migration.md
-            - name: Klasik ölçüm uyarılarını yönetme
-              href: platform/alerts-classic-portal.md
-            - name: Resource Manager şablonunu kullanarak klasik ölçüm uyarısı
-              href: platform/alerts-enable-template.md
-            - name: Web kancasını çağıran klasik ölçüm uyarısı
-              href: platform/alerts-webhooks.md
-        - name: Uyarı API’si
-          href: platform/api-alerts.md
-        - name: BT Hizmet Yönetimi
-          items:
-            - name: BT Hizmet Yönetimi Bağlayıcısı
-              href: platform/itsmc-overview.md
-            - name: BT Hizmet Yönetimi bağlantıları
-              href: platform/itsmc-connections.md
-            - name: Service Manager web uygulaması oluşturma
-              href: platform/itsmc-service-manager-script.md
-            - name: ServiceNow ITSM eşitleme sorunlarını düzeltme
-              href: platform/itsmc-resync-servicenow.md
-    - name: Otomatikleştirme
-      items:
-        - name: Otomatik Ölçeklendirme
-          items:
-            - name: Genel Bakış
-              href: platform/autoscale-overview.md
-            - name: Kılavuz
-              href: platform/autoscale-get-started.md
-            - name: Yapılandırma ayarları
-              href: platform/autoscale-understanding-settings.md
-            - name: En iyi uygulamalar
-              href: platform/autoscale-best-practices.md
-            - name: Ortak ölçümler
-              href: platform/autoscale-common-metrics.md
-            - name: Ortak desenler
-              href: platform/autoscale-common-scale-patterns.md
-            - name: Özel ölçümlerle ölçeklendirme
-              href: platform/autoscale-custom-metric.md
-            - name: VM ölçek kümelerini ölçeklendirme
-              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
-            - name: Resource Manager şablonlarını kullanarak VM ölçek kümelerini ölçeklendirme
-              href: platform/autoscale-virtual-machine-scale-sets.md
-            - name: Web kancalarını ve e-posta bildirimlerini kullanma
-              href: platform/autoscale-webhook-email.md
-            - name: Sorun giderme
-              href: platform/autoscale-troubleshoot.md
-            - name: Kaynak Günlüğü şemaları
-              href: platform/autoscale-resource-log-schema.md
-        - name: PowerShell
-          items:
-            - name: PowerShell ile yönetme
-              href: platform/powershell-quickstart-samples.md
-            - name: Uyarı oluşturma
-              href: app/powershell-alerts.md
-            - name: Log Analytics’i yönetme
-              href: platform/powershell-workspace-configuration.md
-            - name: Application Insights
-              items:
-                - name: Application Insights’ı yönetme
-                  href: app/powershell.md
-                - name: Azure Cloud Services’ı yönetme
-                  href: app/powershell-azure-diagnostics.md
-        - name: Azure CLI örnekleri
-          href: platform/cli-samples.md
-        - name: Resource Manager şablonları
-          href: platform/template-workspace-configuration.md
-    - name: Genişletme
-      items:
-        - name: İzleme çözümleri
-          items:
-            - name: Tasarım ve derleme
-              href: insights/solutions-creating.md
-            - name: Çözüm dosyası
-              href: insights/solutions-solution-file.md
-            - name: Otomasyon kaynakları
-              href: insights/solutions-resources-automation.md
-            - name: Günlük aramaları ve uyarıları
-              href: insights/solutions-resources-searches-alerts.md
-            - name: Görünümler
-              href: insights/solutions-resources-views.md
-            - name: En iyi uygulamalar
-              href: insights/solutions-best-practices.md
+            - name: Azure İzleyici Günlükleri bağlayıcısı
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights bağlayıcısı
+              href: app/automate-with-logic-apps.md
+        - name: REST API
+          displayname: 'metrics, analyze'
+          href: platform/rest-api-walkthrough.md
     - name: System Center tümleştirmesi
       items:
         - name: Operations Manager'ı bağlama
@@ -1169,12 +1142,28 @@
   items:
     - name: Hizmet sınırlamaları
       href: service-limits.md
-    - name: Tanılama uzantısı
-      items:
-        - name: Windows yapılandırma şeması
-          href: platform/diagnostics-extension-schema-windows.md
     - name: Terminoloji değişiklikleri
       href: terminology.md
+    - name: Veri başvurusu
+      href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
+    - name: Desteklenen ölçümler
+      items:
+        - name: Platform ölçümleri
+          href: platform/metrics-supported.md
+        - name: Tanılama ayarlarındaki ölçümler
+          href: platform/metrics-supported-export-diagnostic-settings.md
+        - name: Uyarılardaki ölçümler
+          href: platform/alerts-metric-near-real-time.md
+    - name: Platform günlükleri
+      items:
+        - name: Kaynak günlüğü şemaları
+          href: platform/diagnostic-logs-schema.md
+        - name: Etkinlik günlüğü şeması
+          href: platform/activity-log-schema.md
+    - name: Tanılama uzantısı şemaları
+      items:
+        - name: Windows tanılama uzantısı
+          href: platform/diagnostics-extension-schema-windows.md
     - name: Application Insights
       items:
         - name: Bağımlılık otomatik toplama
@@ -1187,6 +1176,8 @@
           href: app/platforms.md
         - name: Uç nokta geçersiz kılmaları
           href: app/custom-endpoints.md
+        - name: Azure İşlevleri
+          href: app/azure-functions-supported-features.md
         - name: Veri modeli
           items:
             - name: Genel Bakış
@@ -1209,47 +1200,31 @@
               href: app/azure-functions-supported-features.md
             - name: Çalışma alanı tabanlı şema
               href: app/apm-tables.md
-    - name: Ölçümler
-      items:
-        - name: Desteklenen ölçümler
-          href: platform/metrics-supported.md
-        - name: Tanılama Ayarlarıyla dışarı aktarılabilir ölçümler
-          href: platform/metrics-supported-export-diagnostic-settings.md
-        - name: Yeni uyarılarda desteklenen ölçümler
-          href: platform/alerts-metric-near-real-time.md
-    - name: Platform günlükleri
-      items:
-        - name: 'Kaynak günlüğü hizmetleri, kategorileri ve şemaları'
-          href: platform/diagnostic-logs-schema.md
-        - name: Etkinlik günlüğü şeması
-          href: platform/activity-log-schema.md
-    - name: Azure İzleyici Günlükleri tablo başvurusu
-      href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
-    - name: Azure CLI
-      href: /cli/azure/monitor?view=azure-cli-latest
-    - name: Azure CLI - Application Insights (Önizleme)
-      href: 'https://docs.microsoft.com/cli/azure/ext/application-insights/monitor?view=azure-cli-latest'
-    - name: Azure İşlevleri
-      href: app/azure-functions-supported-features.md
     - name: Azure PowerShell
       items:
-        - name: 'Uyarılar, Ölçümler, Etkinlik Günlüğü, Otomatik Ölçeklendirme'
+        - name: Azure İzleyici
           href: /powershell/module/az.monitor
+        - name: Azure İzleyici Günlükleri
+          href: /powershell/module/az.operationalinsights
         - name: Application Insights
           href: /powershell/module/az.applicationinsights
-        - name: Log Analytics
-          href: /powershell/module/az.operationalinsights
+    - name: Azure CLI
+      items:
+        - name: Azure İzleyici
+          href: /cli/azure/monitor?view=azure-cli-latest
+        - name: Application Insights
+          href: 'https://docs.microsoft.com/cli/azure/ext/application-insights/monitor?view=azure-cli-latest'
     - name: REST API
       items:
-        - name: İzleme
+        - name: Azure İzleyici
           href: /rest/api/monitor/
-        - name: Günlükler
+        - name: Azure İzleyici Günlükleri
           href: /rest/api/loganalytics
-    - name: Resource Manager şablonu
+    - name: Resource Manager şablonları
       items:
-        - name: İzleme
+        - name: Azure İzleyici
           href: /azure/templates/microsoft.insights/allversions
-        - name: Günlükler
+        - name: Azure İzleyici Günlükleri
           href: /azure/templates/microsoft.operationalinsights/allversions
     - name: Özellik ve API'yi Kullanımdan Kaldırma
       items:
@@ -1279,21 +1254,7 @@
       href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Haberler
-      items:
-        - name: Application Insights hizmet güncelleştirmeleri
-          href: 'https://azure.microsoft.com/updates/?product=application-insights'
-        - name: Log Analytics hizmet güncelleştirmeleri
-          href: 'https://azure.microsoft.com/updates/?product=log-analytics'
-        - name: SDK sürüm notları
-          href: app/release-notes.md
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
-    - name: Videolar
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=monitor'
-    - name: Hızlı başlangıç şablonları
-      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=monitoring'
-    - name: Kod örnekleri
-      href: 'https://azure.microsoft.com/resources/samples/?service=monitor'
+    - name: Haberler
+      href: 'https://azure.microsoft.com/updates/?product=monitor'

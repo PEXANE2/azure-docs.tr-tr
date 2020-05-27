@@ -8,12 +8,12 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: c9ac8d7ea465a26d29bf8f8fbc15dcefaf9d7575
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2edd5b661240b6156cf8a02059b2b9a668c402f3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187288"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829129"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışları sorunlarını giderme
 
@@ -82,7 +82,7 @@ Daha fazla sorun giderme Yardım için şu kaynakları deneyin:
 *  [Data Factory blogu](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory Özellik istekleri](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure videoları](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN forumu](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Data Factory için Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory hakkında Twitter bilgileri](https://twitter.com/hashtag/DataFactory)
 *  [ADF eşleme veri akışları performans Kılavuzu](concepts-data-flow-performance.md)
