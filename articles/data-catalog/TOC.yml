@@ -20,7 +20,7 @@
       href: data-catalog-dsr.md
     - name: Azure Veri Kataloğu'nu benimseme
       href: data-catalog-adopting-data-catalog.md
-    - name: Önkoşullar
+    - name: Ön koşullar
       href: data-catalog-prerequisites.md
     - name: SSS
       href: data-catalog-frequently-asked-questions.md
@@ -68,8 +68,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Azure Veri Kataloğu için klavye kısayolları
       href: data-catalog-keyboard-shortcuts.md
-    - name: MSDN forumu
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog'
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-catalog.html'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
     - name: Fiyatlandırma hesaplayıcı

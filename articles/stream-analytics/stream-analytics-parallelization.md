@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 5bae53c04867233138929867c4895e7f6a2f2149
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: ead0041e26b5dff5cfd81b6fa02b7efff6e6e9d1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838782"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831204"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics sorgu paralelleştirme özelliğinden yararlanın
 Bu makalede, Azure Stream Analytics paralelleştirme avantajlarından nasıl yararlanabilmeniz gösterilmektedir. Giriş bölümlerini yapılandırarak ve analiz sorgu tanımını ayarlayarak Stream Analytics işlerinin nasıl ölçeklendirileyeceğinizi öğrenirsiniz.
@@ -315,7 +315,7 @@ Stream Analytics çıkış [Cosmos DB](https://github.com/Azure-Samples/streamin
 
 ## <a name="get-help"></a>Yardım alın
 
-Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)

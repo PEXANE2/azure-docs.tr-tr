@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: b-juche
-ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 6cb3fa56e679bc911f12e99379152fc8e1fb7526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82625569"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832850"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -58,7 +58,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
     |    SAM/LSA            |    445       |    UDP           |
     |    W32Time            |    123       |    UDP           |
 
-* Hedeflenen Active Directory Domain Services yönelik site topolojisi, Azure NetApp Files dağıtıldığı Azure VNet 'te en iyi yöntemlere uymalıdır.  
+* Hedeflenen Active Directory Domain Services yönelik site topolojisi, özel olarak Azure NetApp Files dağıtıldığı Azure VNet 'te yönergelere uymalıdır.  
 
     Azure NetApp Files dağıtıldığı sanal ağın adres alanı yeni veya var olan bir Active Directory sitesine eklenmelidir (Azure NetApp Files tarafından erişilebilen bir etki alanı denetleyicisi). 
 
@@ -79,7 +79,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
     For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
 
-    You can enable the account options in the properties of the Active Directory Users and Computers MMC console:   
+    You can enable the account options in the properties of the Active Directory Users and Computers Microsoft Management Console (MMC):   
 
     ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
 -->
@@ -98,7 +98,7 @@ Azure NetApp Files için tercih edilen [Active Directory Siteleri ve Hizmetleri]
 
 EKLEME kullandığınızda sitenizin adını bulmak için, kuruluşunuzda Active Directory Domain Services sorumlu yönetim grubuyla iletişim sağlayabilirsiniz. Aşağıdaki örnekte, site adının görüntülendiği Active Directory Siteleri ve Hizmetleri eklentisi gösterilmektedir: 
 
-![Active Directory Siteleri ve Hizmetleri](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-and-services.png)
+![Active Directory Siteleri ve Hizmetleri](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-services.png)
 
 Azure NetApp Files için bir AD bağlantısı yapılandırdığınızda, **ad site adı** alanı için kapsam içinde site adını belirtirsiniz.
 
@@ -110,16 +110,16 @@ Azure NetApp Files için ek AEKLEYEN konular geçerlidir:
 
 * AEKLEMELERI 'nin dağıtıldığı VNet veya alt ağın Azure NetApp Files dağıtımıyla aynı Azure bölgesinde olduğundan emin olun.
 * Azure NetApp Files dağıtıldığı bölgede başka bir VNet kullanırsanız, iki sanal ağ arasında bir eşleme oluşturmanız gerekir.
-* Azure NetApp Files ve `user` `resource forest` türlerini destekler.
-* Eşitleme türü için, veya `All` `Scoped`seçebilirsiniz.   
-    Seçeneğini belirlerseniz `Scoped`, SMB paylaşımlarına erişmek Için doğru Azure AD grubunun seçildiğinden emin olun.  Emin değilseniz, `All` eşitleme türünü kullanabilirsiniz.
+* Azure NetApp Files `user` ve `resource forest` türlerini destekler.
+* Eşitleme türü için, `All` veya seçebilirsiniz `Scoped` .   
+    Seçeneğini belirlerseniz `Scoped` , SMB paylaşımlarına erişmek için doğru Azure AD grubunun seçildiğinden emin olun.  Emin değilseniz, `All` eşitleme türünü kullanabilirsiniz.
 * Enterprise veya Premium SKU kullanımı gereklidir. Standart SKU desteklenmiyor.
 
 Bir Active Directory bağlantısı oluşturduğunuzda, AEKLEMELERI için aşağıdaki özellikleri aklınızda bulabilirsiniz:
 
 * **BIRINCIL DNS**, **Ikincil DNS**ve **ad DNS etki alanı ADıNA** ilişkin bilgileri, aeklemeleri menüsünde bulabilirsiniz.  
 DNS sunucuları için, Active Directory bağlantısını yapılandırmak için iki IP adresi kullanılacaktır. 
-* **Kuruluş birimi yolu** `OU=AADDC Computers`.  
+* **Kuruluş birimi yolu** `OU=AADDC Computers` .  
 Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** yapılandırılır:
 
   ![Kuruluş birimi yolu](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
@@ -152,11 +152,20 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
 
         Hizmet, gerektiğinde Active Directory daha fazla makine hesabı oluşturur.
 
+        > [!IMPORTANT] 
+        > Active Directory bağlantısını oluşturduktan sonra SMB sunucusu ön ekinin yeniden adlandırılması kesintiye uğramasıdır. SMB sunucu önekini yeniden adlandırdıktan sonra mevcut SMB paylaşımlarını yeniden bağlamanız gerekecektir.
+
     * **Kuruluş birimi yolu**  
         Bu, SMB sunucu makinesi hesaplarının oluşturulacağı kuruluş birimi (OU) için LDAP yoludur. Diğer bir deyişle, OU = ikinci düzey, OU = ilk düzey. 
 
-        Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, kuruluş birimi yolu, NetApp hesabınız için `OU=AADDC Computers` Active Directory yapılandırdığınızda olur.
-        
+        Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, kuruluş birimi yolu, `OU=AADDC Computers` NetApp hesabınız için Active Directory yapılandırdığınızda olur.
+
+     * **Yedekleme ilkesi kullanıcıları**  
+        Azure NetApp Files ile kullanım için oluşturulan bilgisayar hesabına yükseltilmiş ayrıcalıklar gerektiren ek hesaplar ekleyebilirsiniz. Belirtilen hesapların dosya veya klasör düzeyinde NTFS izinlerini değiştirmesine izin verilir. Örneğin, Azure NetApp Files bir SMB dosya paylaşımında veri geçirmek için kullanılan ayrıcalıklı olmayan bir hizmet hesabı belirtebilirsiniz.  
+
+        > [!IMPORTANT] 
+        > Yedekleme İlkesi Kullanıcı özelliğinin kullanılması için beyaz liste gerekir. anffeedback@microsoft.comBu özelliği istemek için ABONELIK Kimliğiniz ile e-posta gönderin. 
+
     * **Kullanıcı adınız** ve **Parolanız** dahil kimlik bilgileri
 
     ![Active Directory Birleştir](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
@@ -185,12 +194,12 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
 
         Birim adı her bir kapasite havuzu içinde benzersiz olmalıdır. En az üç karakter uzunluğunda olmalıdır. Herhangi bir alfasayısal karakter kullanabilirsiniz.   
 
-        Birim adı olarak `default` kullanamazsınız.
+        `default`Birim adı olarak kullanamazsınız.
 
     * **Kapasite havuzu**  
         Birimin oluşturulmasını istediğiniz kapasite havuzunu belirtin.
 
-    * **Kotasının**  
+    * **Kota**  
         Birime ayrılmış mantıksal depolama miktarını belirtin.  
 
         **Kullanılabilir kota** alanı, yeni birimi oluştururken kullanabildiğiniz, seçilen kapasite havuzundaki kullanılmamış alan miktarını gösterir. Yeni birimin boyutu kullanılabilir kotayı aşamaz.  
@@ -231,8 +240,8 @@ SMB birimine erişim izinler aracılığıyla yönetilir.
 
 Varsayılan olarak, yeni bir birimde **Everyone/Full denetim** Share izinleri vardır. Domain Admins grubunun üyeleri, Azure NetApp Files birimi için kullanılan bilgisayar hesabında Bilgisayar Yönetimi ' ni kullanarak paylaşma izinlerini değiştirebilir.
 
-![SMB bağlama yolu](../media/azure-netapp-files/smb-mount-path.png) 
-![kümesi paylaşma izinleri](../media/azure-netapp-files/set-share-permissions.png) 
+![SMB bağlama yolu ](../media/azure-netapp-files/smb-mount-path.png) 
+ ![ kümesi paylaşma izinleri](../media/azure-netapp-files/set-share-permissions.png) 
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS dosya ve klasör izinleri  
 
@@ -244,6 +253,6 @@ Windows SMB istemcisinde nesnenin özelliklerinin **güvenlik** sekmesini kullan
 
 * [Windows veya Linux sanal makineleri için birimi bağlama veya ayırma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
-* [SMB SSS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
+* [SMB hakkında SSS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
 * [Azure hizmetleri için sanal ağ tümleştirmesi hakkında bilgi edinin](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
 * [Azure CLı kullanarak yeni bir Active Directory ormanı yüklemesi](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

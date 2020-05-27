@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74787378"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831934"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak REST uç noktalarını çağırma
 
@@ -42,7 +42,7 @@ ms.locfileid: "74787378"
 
 Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyası için bir URL 'ye HTTP isteği gönderir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
 1. Tasarımcıda arama kutusuna filtreniz olarak "Swagger" yazın. **Tetikleyiciler** listesinden **http + Swagger** tetikleyicisi ' ni seçin.
 
@@ -78,11 +78,11 @@ Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini i
 
 Bu yerleşik eylem, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyasının URL 'sine bir HTTP isteği oluşturur.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
 1. HTTP + Swagger eylemini eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. Tasarımcıda arama kutusuna filtreniz olarak "Swagger" yazın. **Eylemler** listesinden **http + Swagger** eylemini seçin.
 
@@ -137,9 +137,9 @@ Bu dosyayı bir Azure depolama hesabındaki blob kapsayıcısına yükleyerek ve
 
 1. Swagger dosyasını [Azure Portal](https://portal.azure.com) ya da [Azure Depolama Gezgini](https://storageexplorer.com/)aracılığıyla [BLOB kapsayıcısına yükleyin](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob).
 
-1. Blob kapsayıcısındaki dosyaya başvurmak için, bu biçimi izleyen, büyük/küçük harfe duyarlı bir HTTPS bağlantısı kullanın:
+1. Blob kapsayıcısındaki dosyaya başvurmak için, bu biçimi izleyen, Azure Depolama Gezgini büyük/küçük harfe duyarlı HTTPS URL 'sini alın:
 
-   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
+   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<complete-swagger-file-name>?<query-parameters>`
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
@@ -147,15 +147,15 @@ HTTP + Swagger tetikleyicisinden veya eylemden gelen çıktılar hakkında daha 
 
 | Özellik adı | Tür | Açıklama |
 |---------------|------|-------------|
-| bilgisinde | object | İstekten gelen üstbilgiler |
-| body | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
+| bilgisinde | nesne | İstekten gelen üstbilgiler |
+| body | nesne | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
 | durum kodu | int | İstekteki durum kodu |
 |||
 
-| Durum kodu | Açıklama |
+| Durum kodu | Description |
 |-------------|-------------|
 | 200 | Tamam |
-| 202 | Accepted |
+| 202 | Kabul edildi |
 | 400 | Hatalı istek |
 | 401 | Yetkisiz |
 | 403 | Yasak |

@@ -4,12 +4,12 @@ description: Bu makalede, Azure Otomasyonu 'nu kullanarak Office 365 abonelik hi
 services: automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: cbd01f3868f44d975e0822a7812262d9e15ca299
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 322e2a3679ed29ab9ecc4cdc3c6e1fe4d0f20276
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745352"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831185"
 ---
 # <a name="manage-office-365-services"></a>Office 365 hizmetlerini yönetme
 
@@ -111,7 +111,7 @@ Runbook 'unuzu yayımlamak ve zamanlamak için bkz. [Azure Otomasyonu 'nda runbo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu 'nda runbook 'ları yönetme](https://docs.microsoft.com/azure/automation/manage-runbooks)
-* [Azure Otomasyonu’nda modülleri yönetme](shared-resources/modules.md)
-* [Azure Otomasyonu 'nda kimlik bilgilerini yönetme](shared-resources/credentials.md)
-* [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview)
+* Kimlik bilgileri kullanımı hakkında ayrıntılı bilgi için bkz. [Azure Otomasyonu 'nda kimlik bilgilerini yönetme](shared-resources/credentials.md).
+* Modüller hakkında daha fazla bilgi için bkz. [Azure Automation 'da modülleri yönetme](shared-resources/modules.md).
+* Bir runbook 'u başlatmanız gerekiyorsa bkz. [Azure Otomasyonu 'nda runbook başlatma](start-runbooks.md).
+* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview).

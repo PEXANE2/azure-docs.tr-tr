@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8d66a96baa182672ecbfc9d617f82728812f0f27
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4dcc095648111348a6935225a6aa10798109f76e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743850"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832241"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Runbook ile Amazon Web Services VM dağıtma
 
@@ -99,6 +99,9 @@ AWS PowerShell modülünün Azure Otomasyonu 'na aktarıldığından emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
  
-* [Azure Otomasyonu runbook türleri](automation-runbook-types.md)
-* [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md)
-* [Azure Otomasyonu 'nda yerel PowerShell betiği desteği](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
+* Hangi runbook 'ların desteklendiğini öğrenmek için bkz.[Azure Otomasyonu runbook türleri](automation-runbook-types.md).
+* Runbook 'larla çalışmak için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md).
+* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview).
+* Betik desteği için bkz. [Azure Otomasyonu 'Nda yerel PowerShell betiği desteği](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
