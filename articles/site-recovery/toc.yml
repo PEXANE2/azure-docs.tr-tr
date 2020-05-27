@@ -388,7 +388,7 @@
               href: service-updates-how-to.md
             - name: Bir kasayı silme
               href: delete-vault.md
-    - name: Yakın Yerleştirilen Gruplar için Site Recovery desteği
+    - name: Yakın Yerleştirilen Gruplar için Site Recovery
       href: how-to-enable-replication-proximity-placement-groups.md
     - name: Uygulamalar için olağanüstü durum kurtarma
       items:

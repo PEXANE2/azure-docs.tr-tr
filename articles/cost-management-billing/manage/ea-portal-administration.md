@@ -3,34 +3,20 @@ title: Azure EA portalı yönetimi
 description: Bu makalede, bir yöneticinin Azure EA portalında gerçekleştirdiği genel görevler açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 2b2ec7a5954649c36cf9da5d7933c83eec67faa3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a3551b4f09202b33cee768a69f31a6c5d5d36777
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692653"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648199"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
 Bu makalede, bir yöneticinin Azure EA portalında gerçekleştirdiği genel görevler açıklanmaktadır (https://ea.azure.com). Azure EA portalı, müşterilerin Azure EA hizmetlerinin maliyetini yönetmesine yardımcı olan bir çevrimiçi yönetim portalıdır. Azure EA portalı hakkında giriş bilgileri için [Azure EA portalı ile çalışmaya başlama](ea-portal-get-started.md) makalesini okuyun.
-
-## <a name="add-a-new-enterprise-administrator"></a>Yeni bir kuruluş yöneticisi ekleme
-
-Kuruluş yöneticileri bir Azure EA kaydını yönetirken en fazla ayrıcalığa sahip olan kullanıcılardır. İlk Azure EA yöneticisi, EA sözleşmesi ayarlanırken oluşturulmuştur. Ancak, dilediğiniz zaman yeni yöneticiler ekleyebilir veya kaldırabilirsiniz. Yeni yöneticiler yalnızca var olan yöneticiler tarafından eklenir. Ek kuruluş yöneticileri ekleme hakkında daha fazla bilgi için bkz. [Başka bir kuruluş yöneticisi oluşturma](ea-portal-get-started.md#create-another-enterprise-administrator). Faturalama profili rolleri ve görevleri hakkında daha fazla bilgi için bkz. [Faturalama profili rolleri ve görevleri](understand-mca-roles.md#billing-profile-roles-and-tasks).
-
-## <a name="update-user-state-from-pending-to-active"></a>Beklemede olan kullanıcı durumunu etkin olarak güncelleştirme
-
-Bir Azure EA kaydına ilk kez yeni Hesap Sahipleri (AO) eklendiğinde durumları _beklemede_ olarak görünür. Yeni bir hesap sahibi etkinleştirme karşılama e-postasını aldığında, hesabını etkinleştirmek için oturum açabilir. Hesabını etkinleştirdiğinde, _beklemede_ olan hesap durumu _etkin_ olarak güncelleştirilir. Hesap sahibinin "Uyarı" iletisini okuması ve **Devam**'ı seçmesi gerekir. Yeni kullanıcılardan Bir Ticari Hesap oluşturmak için ad ve soyadı girmeleri istenebilir. Bu durumda, devam etmek için gerekli bilgileri eklemesi gerekir. Bundan sonra hesap etkinleştirilir.
-
-## <a name="add-a-department-admin"></a>Departman yöneticisi ekleme
-
-Azure EA yöneticisi bir departman oluşturduktan sonra, Azure Kuruluş yöneticisi departman yöneticileri ekleyebilir ve her birini bir departmanla ilişkilendirebilir. Bir departman yöneticisi yeni hesaplar oluşturabilir. Azure EA aboneliklerinin oluşturulabilmesi için yeni hesaplar gereklidir.
-
-Departman yöneticisi ekleme hakkında daha fazla bilgi için bkz. [Azure EA departman yöneticisi oluşturma](ea-portal-get-started.md#add-a-department-administrator).
 
 ## <a name="associate-an-account-to-a-department"></a>Bir hesabı bir departmanla ilişkilendirme
 
@@ -114,108 +100,6 @@ Bir kullanıcı Azure EA Portal aracılığıyla hesap sahibi olarak eklendiğin
 
 Geliştirme ve Test Teklifi şu an için Azure Kamu müşterilerinin kullanımına açık değildir.
 
-## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Kurumsal bir hesabı yeni bir kayda aktarma
-
-Hesap aktarımı işlemi, bir hesap sahibini bir kayıttan diğerine taşır. Hesap sahibine ilişkin tüm abonelikler hedef kayda taşınır. Birden fazla etkin kaydınız olduğunda ve yalnızca seçili hesap sahiplerini taşımak istediğinizde hesap aktarımını kullanın.
-
-Eylem bir kurumsal yönetici tarafından gerçekleştirilemediği için bu bölüm yalnızca bilgilendirme amaçlıdır. Bir kurumsal hesabı yeni bir kayda aktarmak için destek isteği oluşturulması gerekir.
-
-Kurumsal bir hesabı yeni bir kayda aktarırken aşağıdaki noktaları aklınızda bulundurun:
-
-- Yalnızca istekte belirtilen hesaplar aktarılır. Tüm hesaplar seçilirse hepsi aktarılır.
-- Kaynak kaydının durumu etkin veya genişletilmiş olarak korunur. Kaydı süresi dolana kadar kullanmaya devam edebilirsiniz.
-
-### <a name="prerequisites"></a>Ön koşullar
-
-Bir hesap aktarımı istediğinizde aşağıdaki bilgileri sağlayın:
-
-- Hedef kaydın sayısı, hesap adı ve aktarımın yapılacağı hesabın sahibinin e-posta adresi
-- Kaynak kaydı için, aktarılacak kayıt numarası ve hesap
-
-Hesap aktarımından önce göz önünde bulundurmanız gereken diğer noktalar:
-
-- Hedef ve kaynak kaydı için bir EA yöneticisinden onay gerekir
-- Hesap aktarımı gereksinimlerinizi karşılamıyorsa, kayıt aktarımı yapmayı düşünün.
-- Hesap aktarımı, belirli hesaplarla ilgili tüm hizmetleri ve abonelikleri aktarır.
-- Aktarım tamamlandıktan sonra, aktarılan hesap kaynak kayıt altında etkin değil olarak, hedef kaydın altında ise etkin olarak görünür.
-- Hesap, kaynak kayıtta etkin aktarım tarihine ve hedef kayıtta başlangıç tarihine karşılık gelen bitiş tarihini gösterir.
-- Hesap için etkin aktarım tarihi öncesinde gerçekleştirilen tüm kullanımlar, kaynak kaydın altında kalır.
-
-
-## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Kuruluş kaydını yeni bir kayda aktarma
-
-Kayıt aktarımı şu durumlarda göz önünde bulundurulur:
-
-- Geçerli bir kaydın taahhüt döneminin sona ermesi.
-- Bir kaydın süresi dolmuş/uzatılmış durumda olması ve yeni bir anlaşmanın yapılması.
-- Birden fazla kaydınızın olması ve tüm hesaplarla faturaları tek kayıtta birleştirmek istemeniz.
-
-Eylem bir kurumsal yönetici tarafından gerçekleştirilemediği için bu bölüm yalnızca bilgilendirme amaçlıdır. Bir kurumsal kaydı yeni bir kayda aktarmak için destek isteği oluşturulması gerekir.
-
-Bir kuruluş kaydının tamamını bir kayda aktarmak istediğinizde aşağıdaki eylemler gerçekleşir:
-
-- Tüm EA departman yöneticileri de dahil olmak üzere tüm Azure hizmetleri, abonelikleri, hesapları, departmanları ve kayıt yapısının tamamı yeni hedef kayda aktarılır.
-- Kayıt durumu _Aktarıldı_ olarak ayarlanır. Aktarılan kayıt yalnızca geçmiş kullanım raporlama amacıyla kullanılabilir.
-- Aktarılan bir kayda rol veya abonelik ekleyemezsiniz. Aktarıldı durumu, kayda aykırı ek kullanım yapılmasını önler.
-- Anlaşmadaki kalan parasal taahhüt bakiyeleri, geleceğe dönük hükümler de dahil olmak üzere kaybedilir.
--    Aktardığınız kayıtta satın alınmış ayrılmış örnekler varsa ayrılmış örnek satın alma ücreti kaynak kayıtta kalır ancak tüm ayrılmış örnek avantajları yeni kayıtta kullanılmak üzere aktarılır.
--    Market için tek seferlik satın alma ücreti ve eski kayıtta tahakkuk etmiş olan aylık sabit ücretler yeni kayda aktarılmaz. Tüketime dayalı market ücretleri aktarılır.
-
-### <a name="effective-transfer-date"></a>Geçerli aktarım tarihi
-
-Geçerli aktarım tarihi, hedef kaydın başlangıç tarihi veya daha sonraki bir tarih olabilir.
-
-Kaynak kayıt kullanımı, parasal taahhüt karşılığında veya fazla kullanım olarak ücretlendirilir. Geçerli aktarım tarihinden sonra gerçekleşen kullanımlar yeni kayda aktarılır ve uygun şekilde ücretlendirilir.
-
-### <a name="prerequisites"></a>Ön koşullar
-
-Bir kayıt aktarımı istediğinizde aşağıdaki bilgileri sağlayın:
-
-- Kaynak kaydı için, kayıt numarası.
-- Hedef kaydı için, aktarımın yapılacağı kayıt numarası.
-- Kayıt aktarımı geçerlilik tarihi, hedef kaydın başlangıç tarihi veya sonrasındaki bir tarih olabilir. Seçilen tarih, daha önce düzenlenmiş bir fazla kullanım faturası için kullanımı etkilemez.
-
-Kayıt aktarımından önce göz önünde bulundurmanız gereken diğer noktalar:
-
-- Hem hedef hem de kaynak kaydı EA Yöneticilerinden onay gerekir.
-- Kayıt aktarımı gereksinimlerinizi karşılamıyorsa, hesap aktarımı yapmayı düşünün.
-- Kaynak kaydı durumu aktarıldı olarak güncelleştirilir ve yalnızca geçmiş kullanım raporlama amaçları için kullanılabilir olur.
-
-### <a name="monetary-commitment"></a>Parasal taahhüt
-
-Parasal taahhüt, kayıtlar arasında aktarılamaz. Parasal taahhüt bakiyeleri, sipariş edildiği kayda sözleşmeyle bağlıdır. Parasal taahhüt, hesap veya kayıt aktarma işleminin bir parçası olarak aktarılmaz.
-
-### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Hesap ve kayıt aktarımları için etkilenen hizmet yok
-
-Hesap veya kayıt aktarımı esnasında kesinti süresi yoktur. Gerekli tüm bilgiler sağlanırsa isteğiniz gün içinde tamamlanabilir.
-
-## <a name="change-account-owner"></a>Hesap sahibini değiştirme
-
-Azure EA portalı, abonelikleri bir hesap sahibinden diğerine aktarabilir. Daha fazla bilgi için bkz. [Hesap sahibini değiştirme](ea-portal-get-started.md#change-account-owner).
-
-## <a name="subscription-transfer-effects"></a>Abonelik aktarımının etkileri
-
-Bir Azure aboneliği aynı Azure Active Directory kiracısındaki bir hesaba aktarılırsa, abonelikteki kaynakları yönetmek için [rol tabanlı erişim denetimine (RBAC)](../../role-based-access-control/overview.md) sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları aynı erişime sahip olmaya devam eder.
-
-Aboneliğe RBAC erişimi olan kullanıcıları görüntülemek için:
-
-1. Azure portalında **Abonelikler**’i açın.
-2. Görüntülemek istediğiniz aboneliği seçin ve ardından **Erişim denetimi (IAM)** seçeneğini belirleyin.
-3. **Rol atamaları**’nı seçin. Rol atamaları sayfasında, aboneliğe RBAC erişimi olan tüm kullanıcılar listelenir.
-
-Abonelik farklı bir Azure AD kiracısındaki bir hesaba aktarılırsa, abonelikteki kaynakları yönetmek için [RBAC](../../role-based-access-control/overview.md) iznine sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları _erişimi_ kaybeder. RBAC erişimi mevcut olmasa da aboneliğe aşağıdaki güvenlik mekanizmaları aracılığıyla erişilebilir:
-
-- Abonelik kaynaklarına kullanıcı yöneticisi hakları veren yönetim sertifikaları. Daha fazla bilgi için bkz. [Azure için Yönetim Sertifikası Oluşturma ve Karşıya Yükleme](../../cloud-services/cloud-services-certs-create.md).
-- Depolama gibi hizmetler için erişim anahtarları. Daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../../storage/common/storage-account-overview.md).
-- Azure Sanal Makineleri gibi hizmetler için Uzaktan Erişim kimlik bilgileri.
-
-Alıcının Azure kaynaklarına erişimi kısıtlaması gerekiyorsa, hizmetle ilişkili tüm gizli dizileri güncelleştirmeyi düşünmelidir. Çoğu kaynak aşağıdaki adımlar kullanılarak güncelleştirilebilir:
-
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Merkez menüsünde **Tüm kaynaklar**'ı seçin.
-3. Kaynağı seçin.
-4. Kaynak sayfasında, mevcut gizli dizileri görüntülemek ve güncelleştirmek için **Ayarlar**’ı seçin.
-
 ## <a name="delete-subscription"></a>Aboneliği silme
 
 Hesap sahibi olduğunuz bir aboneliği silmek için:
@@ -260,60 +144,6 @@ Kişi eklemek için:
 Yeni bildirim kişisi **Bildirim Kişisi** bölümünde gösterilir. Bildirim sıklığını değiştirmek için, bildirim kişisini seçin ve seçili satırın sağ tarafındaki kalem simgesini seçin. Sıklığı **günlük**, **haftalık**, **aylık** veya **hiçbiri** olarak ayarlayın.
 
 _Yaklaşan kapsama dönemi bitiş tarihi_ ve _yaklaşan tarih_ yaşam döngüsü bildirimlerini devre dışı bırakıp sağlamayı bırakabilirsiniz. Yaşam döngüsü bildirimlerini devre dışı bırakmak, kapsama dönemi ve anlaşma bitiş tarihi hakkındaki bildirimleri gizler.
-
-## <a name="manage-partner-administrators"></a>İş ortağı yöneticilerini yönetme
-
-Azure EA Portal'daki iş ortağı yöneticileri, başka iş ortağı yöneticilerini ekleyebilir veya kaldırabilir. İş ortağı yöneticileri dolaylı kayıtların iş ortağı kuruluşlarıyla ilişkilendirilir, doğrudan kayıtlarla ilişkilendirilmez.
-
-### <a name="add-a-partner-administrator"></a>İş ortağı yöneticisi ekleme
-
-Mevcut kullanıcıyla aynı iş ortağı kuruluşuyla ilişkilendirilmiş olan tüm kayıtların listesini görüntülemek için **Kayıt** sekmesini seçin ve istediğiniz kayıt kutusunu seçin.
-
-1. İş ortağı yöneticisi olarak oturum açın.
-1. Sol gezinti panelinde **Yönet**’i seçin.
-1. **İş ortağı** sekmesini seçin.
-1. **+ Yönetici ekle**'yi seçip e-posta adresini, bildirim için gerekli iletişim bilgilerini ve bildirim ayrıntılarını girin.
-1. **Add (Ekle)** seçeneğini belirleyin.
-
-### <a name="remove-a-partner-administrator"></a>İş ortağı yöneticisini kaldırma
-
-Mevcut kullanıcıyla aynı iş ortağı kuruluşuyla ilişkilendirilmiş olan tüm kayıtların listesini görüntülemek için **Kayıt** sekmesini seçin ve istediğiniz kayıt kutusunu seçin.
-
-1. İş ortağı yöneticisi olarak oturum açın.
-1. Sol gezinti panelinde **Yönet**’i seçin.
-1. **İş ortağı** sekmesini seçin.
-1. Yönetici bölümünde, kaldırmak istediğiniz yöneticinin bulunduğu satırı seçin.
-1. Sağ tarafta X simgesini seçin.
-1. Silmek istediğinizi onaylayın.
-
-## <a name="manage-partner-notifications"></a>İş ortağı bildirimlerini yönetme
-
-İş Ortağı Yöneticileri, kayıtları için kullanım bildirimlerini ne sıklıkla alacaklarını yönetebilir. Bu yöneticiler, faturalandırılmamış bakiyeleriyle ilgili haftalık bildirimleri otomatik olarak alırlar. Bildirimlerin sıklığını aylık, haftalık, günlük olarak tek tek değiştirebilir veya tamamen devre dışı bırakabilirler.
-
-Bir kullanıcı tarafından bildirim alınmadıysa, kullanıcının bildirim ayarlarının doğru olduğunu aşağıdaki adımlarla onaylayın.
-
-1. Azure EA portalında İş Ortağı Yöneticisi olarak oturum açın.
-2. **Yönet**’i ve sonra **İş Ortağı** sekmesini seçin.
-3. Yönetici bölümünde yönetici listesini göreceksiniz.
-4. Bildirim tercihlerini düzenlemek için uygun yöneticinin üzerine gelin ve kalem simgesini seçin.
-5. Bildirim sıklığını ve yaşam döngüsü bildirimlerini gerektiği gibi artırın.
-6. Gerekirse bir kişi ekleyin ve **Ekle**'yi seçin.
-7. **Kaydet**’i seçin.
-
-![Kişi Ekle kutusunu gösteren örnek ](./media/ea-portal-administration/create-ea-manage-partner-notification.png)
-
-## <a name="view-enrollments-for-partner-administrators"></a>İş ortağı yöneticileri için kayıtları görüntüleme
-
-İş ortağı yöneticileri, Azure EA Portal'daki doğrudan ve dolaylı kayıtlarının listesini görüntüleyebilir. Her kayıtla ilgili kayıt numarası, kayıt adı, bakiye ve fazla kullanım miktarı gibi özet görüntüleri içeren kutular görüntülenir.
-
-### <a name="view-a-list-of-enrollments"></a>Kayıt listesini görüntüleme
-
-1. İş ortağı yöneticisi olarak oturum açın.
-1. Sayfanın sol tarafındaki gezintide **Yönet**'i seçin.
-1. **Kayıt** sekmesini seçin.
-1. Kayda ait olan kutuyu seçin.
-
-Sayfanın en üst kısmında tüm kayıtları içeren ve her kaydın bir kutuyla gösterildiği bir görünüm yer alır. İsterseniz sayfanın sol tarafındaki gezinti menüsünden geçerli kayıt numarasını seçerek kayıtlar arasında geçiş yapabilirsiniz. Kayıtlar arasında arama yapmanızı sağlayan bir pencere açılır. Dilerseniz ilgili kutuyu seçerek de farklı bir kayıt belirtebilirsiniz.
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorluğu Teklifi
 

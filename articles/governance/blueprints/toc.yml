@@ -284,13 +284,15 @@
   items:
     - name: GitHub - Azure Blueprints örnekleri
       href: 'https://github.com/Azure/azure-blueprints'
+    - name: Azure Blueprints için Microsoft Soru-Cevap
+      href: /answers/topics/azure-blueprints.html
+    - name: Governance YouTube Kanalı
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+    - name: Azure Friday - Azure Blueprints’e Genel Bakış
+      href: 'https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints'
     - name: Azure yol haritası
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance'
-    - name: Governance YouTube Kanalı
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-    - name: Azure Friday - Azure Blueprints’e Genel Bakış
-      href: 'https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints'
+      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345058'

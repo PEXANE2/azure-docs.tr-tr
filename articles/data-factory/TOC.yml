@@ -543,6 +543,8 @@
       items:
         - name: Veri taşırken güvenlikle ilgili dikkat edilmesi gerekenler
           href: data-movement-security-considerations.md
+        - name: Veri erişim stratejileri
+          href: data-access-strategies.md
         - name: Azure Integration Runtime IP adresleri
           href: azure-integration-runtime-ip-addresses.md
         - name: Kimlik bilgilerini Azure Key Vault’ta depolama

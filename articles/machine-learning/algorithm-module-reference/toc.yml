@@ -32,6 +32,8 @@
       href: clean-missing-data.md
     - name: Meta Verileri Düzenleme
       href: edit-metadata.md
+    - name: Verileri Kutulara Gruplama
+      href: group-data-into-bins.md
     - name: Verileri birleştirme
       href: join-data.md
     - name: Verileri Normalleştirme
@@ -130,6 +132,8 @@
       href: execute-r-script.md
 - name: Metin analizi
   items:
+    - name: Sözcüğü Vektöre Dönüştürme
+      href: convert-word-to-vector.md
     - name: Metinden N-Gram Özelliklerini Ayıklama
       href: extract-n-gram-features-from-text.md
     - name: Özellik Karma

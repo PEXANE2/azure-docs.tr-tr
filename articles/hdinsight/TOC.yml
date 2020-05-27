@@ -762,8 +762,12 @@
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: Apache Hive ve Apache Pig ile Python kullanma
               href: ./hadoop/python-udf-hdinsight.md
-            - name: Apache Spark ile Apache Hive
+            - name: Apache Spark ve Apache Hive ile HWC tümleştirmesi
               href: ./interactive-query/apache-hive-warehouse-connector.md
+            - name: HWC ve Apache Spark işlemleri
+              href: ./interactive-query/apache-hive-warehouse-connector-operations.md
+            - name: Apache Zeppelin ile HWC tümleştirmesi
+              href: ./interactive-query/apache-hive-warehouse-connector-zeppelin.md
             - name: Hadoop ile Apache Hive
               href: ./hadoop/hdinsight-use-hive.md
             - name: Apache Hive Görünümünü kullanma

@@ -31,6 +31,8 @@
       href: storage-files-networking-overview.md
     - name: Bulutta katmanlama hakkında
       href: storage-sync-cloud-tiering.md
+    - name: Yanlışlıkla veri silinmesini engelleme
+      href: storage-files-prevent-file-share-deletion.md
     - name: Depolama hesapları hakkında
       href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Azure dosya paylaşımı anlık görüntüleri
@@ -118,6 +120,8 @@
           href: storage-sync-files-server-registration.md
         - name: Azure Dosya Eşitleme Sunucusu uç noktası ekleme
           href: storage-sync-files-server-endpoint.md
+        - name: Geçici silmeyi etkinleştirme
+          href: storage-files-enable-soft-delete.md
         - name: Azure bağımsız bulutlarında depolamayı yönetme
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Veri yedekliğini yönetme
