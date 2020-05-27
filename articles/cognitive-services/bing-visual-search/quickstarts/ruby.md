@@ -8,45 +8,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: e19f582084bec6915f95cf16fd8571b8d99da6fd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75379649"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870353"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Ruby kullanarak görüntü öngörülerini alın
 
-Bu hızlı başlangıç, Bing Görsel Arama çağırmak ve sonuçları göstermek için Ruby programlama dilini kullanır. POST isteği bir görüntüyü API uç noktasına yükler. Sonuçlar, karşıya yüklenen görüntüye benzer görüntüler ve URL 'Ler hakkında açıklayıcı bilgiler içerir.
+Ruby programlama dilini kullanarak Bing Görsel Arama API'si ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. POST isteği bir görüntüyü API uç noktasına yükler. Sonuçlar, karşıya yüklenen görüntüye benzer görüntüler ve URL 'Ler hakkında açıklayıcı bilgiler içerir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı çalıştırmak için:
-
-* [Ruby 2,4 veya üstünü](https://www.ruby-lang.org/en/downloads/) yükler
-* Abonelik anahtarı al:
+* [Ruby 2,4 veya üstünü](https://www.ruby-lang.org/en/downloads/)yükler.
+* Abonelik anahtarı alın.
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-required-modules"></a>Proje ve gerekli modüller
 
-IDE veya Düzenleyicinizde yeni bir Ruby projesi oluşturun. Sonuçların JSON metnini işlemek `json` için ve içeri aktarın `net/http` `uri` `base64` Kitaplık, dosya adı dizesini kodlamak için kullanılır: 
+IDE veya Düzenleyicinizde yeni bir Ruby projesi oluşturun. `net/http` `uri` `json` Sonuçların JSON metnini işlemek için ve içeri aktarın. `base64`Dosya adı dizesini kodlayan kitaplığı içeri aktarın. 
 
-```
+```ruby
 require 'net/https'
 require 'uri'
 require 'json'
 require 'base64'
-
 ```
 
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
-Aşağıdaki kod gerekli değişkenleri atar. Uç noktanın doğru olduğundan emin olun ve `accessKey` değeri Azure hesabınızdaki bir abonelik anahtarıyla değiştirin.  , `batchNumber` Post verilerinin baştaki ve sondaki sınırları için gereken bir GUID 'dir.  `fileName` DEĞIŞKEN, gönderi için resim dosyasını tanımlar.  Blok `if` , geçerli bir abonelik anahtarı için test eder.
+Aşağıdaki kod Main işlevini bildirir ve gerekli değişkenleri atar: 
 
-```
+1. Uç noktasının geçerli olduğunu doğrulayın ve `accessKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. 
+2. İçin `batchNumber` , post verilerinin baştaki ve sondaki sınırları için gerekli olan BIR GUID atayın. 
+3. İçin `fileName` , gönderi için kullanılacak görüntü dosyasını atayın. 
+4. `if`Geçerli bir abonelik anahtarı için test etmek üzere bir blok kullanın.
+
+```ruby
 accessKey = "ACCESS-KEY"
 uri  = "https://api.cognitive.microsoft.com"
 path = "/bing/v7.0/images/visualsearch"
@@ -63,40 +65,40 @@ end
 
 ## <a name="form-data-for-post-request"></a>POST isteği için veri formu
 
-GÖNDERILECEK görüntü verileri, baştaki ve sondaki sınırlara göre alınmıştır. Aşağıdaki işlevler sınırları ayarlar:
+1. Baştaki ve sondaki sınırlara göre göndermek için görüntü verilerini alın. Aşağıdaki işlevler sınırları ayarlar:
 
-```
-def BuildFormDataStart(batNum, fileName)
-    startBoundary = "--batch_" + batNum
-    return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"   
-end
+   ```ruby
+   def BuildFormDataStart(batNum, fileName)
+       startBoundary = "--batch_" + batNum
+       return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"    
+   end
 
-def BuildFormDataEnd(batNum)
-    return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
-end
-```
+   def BuildFormDataEnd(batNum)
+       return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
+   end
+   ```
 
-Sonra, uç nokta URI 'sini ve POST gövdesini içeren bir diziyi oluşturun.  Başlangıç sınırını diziye yüklemek için Previous işlevini kullanın. Görüntü dosyasını diziye okuyun. Ardından, bitiş sınırını diziye okuyun:
+2. Son nokta URI 'sini ve POST gövdesini içeren bir diziyi oluşturun. Başlangıç sınırını diziye yüklemek için Previous işlevini kullanın. Görüntü dosyasını diziye okuyun ve ardından dizinin içindeki bitiş sınırını okuyun.
 
-```
-uri = URI(uri + path)
-print uri
-print "\r\n\r\n"
+   ```ruby
+   uri = URI(uri + path)
+   print uri
+   print "\r\n\r\n"
 
-post_body = []
+   post_body = []
 
-post_body << BuildFormDataStart(batchNumber, fileName)
+   post_body << BuildFormDataStart(batchNumber, fileName)
 
-post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
+   post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
-post_body << BuildFormDataEnd(batchNumber)
-```
+   post_body << BuildFormDataEnd(batchNumber)
+   ```
 
 ## <a name="create-the-http-request"></a>HTTP isteği oluşturma
 
-`Ocp-Apim-Subscription-Key` Üstbilgiyi ayarlayın.  İsteği oluşturma. Ardından, üst bilgi ve içerik türünü atayın. Daha önce oluşturulan POST gövdesini isteğe ekleyin:
+Üstbilgiyi ayarlayın `Ocp-Apim-Subscription-Key` . İsteği oluşturun ve sonra üst bilgi ve içerik türünü atayın. Daha önce oluşturduğunuz posta gövdesine isteğe ekleyin.
 
-```
+```ruby
 header = {'Ocp-Apim-Subscription-Key': accessKey}
 request = Net::HTTP::Post.new(uri)  # , 'ImageKnowledge' => 'ImageKnowledge'
 
@@ -108,9 +110,9 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>İstek ve yanıt
 
-Ruby isteği gönderir ve aşağıdaki kod satırıyla yanıtı alır:
+Ruby isteği gönderir ve aşağıdaki kodla yanıtı alır:
 
-```
+```ruby
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
    http.request(request)
 end
@@ -121,7 +123,7 @@ end
 
 Yanıtın üst bilgilerini yazdırın ve çıktıyı biçimlendirmek için JSON kitaplığını kullanın:
 
-```
+```ruby
 puts "\nRelevant Headers:\n\n"
 response.each_header do |key, value|
     if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
@@ -134,11 +136,11 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ```
 
-## <a name="results"></a>Sonuçlar
+## <a name="json-response"></a>JSON yanıtı
 
 Aşağıdaki JSON, çıktının bir segmentine sahiptir:
 
-```
+```JSON
 Relevant Headers:
 
 bingapis-traceid: 6E19E78D4FEC4A61AB4F85977EEDB8E6
@@ -284,5 +286,5 @@ JSON Response:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing Görsel Arama genel bakış](../overview.md)
-> [görsel arama tek sayfalı Web uygulaması oluşturma](../tutorial-bing-visual-search-single-page-app.md)
+> [Bing Görsel Arama API'si nedir?](../overview.md) 
+>  [Görsel arama tek sayfalı Web uygulaması oluşturma](../tutorial-bing-visual-search-single-page-app.md)

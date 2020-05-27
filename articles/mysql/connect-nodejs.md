@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: a8c4f84fe958c1b2762509432596fea772e39d7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: 38ac57ca49608a528b8f810dac7967562f83d7d0
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067944"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870145"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Node. js kullanma
 
@@ -25,6 +25,9 @@ Bu konuda, Node. js kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve 
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - MySQL için Azure veritabanı sunucusu. [Azure Portal kullanarak MySQL Için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-portal.md) veya [Azure CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-cli.md).
+
+> [!IMPORTANT] 
+> Bağlanmakta olduğunuz IP adresinin [Azure Portal](./howto-manage-firewall-using-portal.md) veya [Azure CLI](./howto-manage-firewall-using-cli.md) kullanarak sunucunun güvenlik duvarı kurallarını eklendiğinden emin olun
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>Node.js’yi ve MySQL bağlayıcısını yükleme
 
@@ -43,7 +46,7 @@ Platformunuza bağlı olarak, [Node. js](https://nodejs.org)' yi yüklemek için
    "C:\Program Files\nodejs\npm" list
    ```
 
-5. `npm list` Çıkış metnini denetleyerek yüklemeyi doğrulayın. Yeni yamalar yayımlandıkça sürüm numarası değişebilir.
+5. Çıkış metnini denetleyerek yüklemeyi doğrulayın `npm list` . Yeni yamalar yayımlandıkça sürüm numarası değişebilir.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 
@@ -53,7 +56,7 @@ Platformunuza bağlı olarak, [Node. js](https://nodejs.org)' yi yüklemek için
    sudo apt-get install -y nodejs npm
    ```
 
-2. Bir proje klasörü `mysqlnodejs` oluşturmak ve MySQL paketini bu klasöre yüklemek için aşağıdaki komutları çalıştırın.
+2. Bir proje klasörü oluşturmak `mysqlnodejs` ve MySQL paketini bu klasöre yüklemek için aşağıdaki komutları çalıştırın.
 
    ```bash
    mkdir nodejsmysql
@@ -71,7 +74,7 @@ Platformunuza bağlı olarak, [Node. js](https://nodejs.org)' yi yüklemek için
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
    brew install node
    ```
-2. Bir proje klasörü `mysqlnodejs` oluşturmak ve MySQL paketini bu klasöre yüklemek için aşağıdaki komutları çalıştırın.
+2. Bir proje klasörü oluşturmak `mysqlnodejs` ve MySQL paketini bu klasöre yüklemek için aşağıdaki komutları çalıştırın.
 
    ```bash
    mkdir nodejsmysql
@@ -80,7 +83,7 @@ Platformunuza bağlı olarak, [Node. js](https://nodejs.org)' yi yüklemek için
    npm list
    ```
 
-3. `npm list` Çıkış metnini denetleyerek yüklemeyi doğrulayın. Yeni yamalar yayımlandıkça sürüm numarası değişebilir.
+3. Çıkış metnini denetleyerek yüklemeyi doğrulayın `npm list` . Yeni yamalar yayımlandıkça sürüm numarası değişebilir.
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 
@@ -95,8 +98,8 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
 ## <a name="running-the-javascript-code-in-nodejs"></a>Node.js’de JavaScript kodunu çalıştırma
 
 1. JavaScript kodunu metin dosyalarına yapıştırın ve dosyaları .js uzantısıyla bir proje klasörüne kaydedin (örneğin, C:\nodejsmysql\createtable.js veya /home/username/nodejsmysql/createtable.js).
-2. Komut istemi veya bash kabuğunu açın ve ardından dizini proje klasörünüze `cd nodejsmysql`değiştirin.
-3. Uygulamayı çalıştırmak için, Node komutunu ve ardından dosya adını girin (örneğin,) `node createtable.js`.
+2. Komut istemi veya bash kabuğunu açın ve ardından dizini proje klasörünüze değiştirin `cd nodejsmysql` .
+3. Uygulamayı çalıştırmak için, Node komutunu ve ardından dosya adını girin (örneğin,) `node createtable.js` .
 4. Windows’da düğüm uygulamanız ortam değişkeni yolunuzda değilse düğüm uygulamasını başlatmak için tam yolu kullanmanız gerekebilir; örneğin, `"C:\Program Files\nodejs\node.exe" createtable.js`
 
 ## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691332"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871369"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -22,7 +22,7 @@ Bu hızlı başlangıçta, el ile etiketlenmiş verileri içeren özel bir model
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
@@ -143,6 +143,7 @@ Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin tanımasını 
     > * Değerleri formda göründükleri şekilde etiketleyin; iki farklı etikete sahip iki parçaya bir değeri bölmeye çalışmayın. Örneğin, bir adres alanının birden çok satıra yayılsa bile tek bir etiketle etiketlenmesi gerekir.
     > * Etiketli alanlarınıza anahtar eklemeyin &mdash; yalnızca değerleri.
     > * Tablo verileri otomatik olarak algılanmalı ve son çıktı JSON dosyasında kullanılabilir olacaktır. Ancak, model tüm tablo verilerinizi algılayamazsa, bu alanları da el ile etiketleyebilirsiniz. Tablodaki her hücreyi farklı bir etiketle etiketleyin. Formlarınızın farklı sayıda satır içeren tabloları varsa, en büyük olası tabloyla en az bir form etiketlediğinizden emin olun.
+    > * Uygulanan bir etiketi silmek için, belge görünümünde dikdörtgeni seçin ve DELETE tuşuna basın.
 
 ![Örnek etiketleme aracının ana düzenleyici penceresi](../media/label-tool/main-editor.png)
 
@@ -164,6 +165,27 @@ Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
     * Varsayılan, `dmy` , `mdy` ,`ymd`
 * `time`
 * `integer`
+
+> [!NOTE]
+> Tarih biçimlendirme için şu kurallara bakın:
+> 
+> Aşağıdaki karakterler DMY Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örneğin:
+> * 01, 01, 2020
+> * 01-01-2020
+> * 01/01/2020
+>
+> Gün ve ay her biri bir veya iki rakam olarak yazılabilir ve yıl iki veya dört basamaklı olabilir:
+> * 1-1-2020
+> * 1-01-20
+>
+> Bir DMY Tarih dizesinde sekiz basamak varsa sınırlayıcı isteğe bağlıdır:
+> * 01012020
+> * 01 01 2020
+>
+> Ay, tam veya kısa ad olarak da yazılabilir. Ad kullanılırsa, sınırlayıcı karakterler isteğe bağlıdır:
+> * 01/Jan/2020
+> * 01Oc2020
+> * 01 Ocak 2020
 
 ## <a name="train-a-custom-model"></a>Özel bir modeli eğitme
 

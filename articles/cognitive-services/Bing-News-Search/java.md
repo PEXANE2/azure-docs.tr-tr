@@ -8,36 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1a3e98afacf85bde8180253078cb53eae9a03d2f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c3ce10b6d3acb947d3fde6e3c872a2c2a83ddb69
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383621"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871131"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: Java ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirme
 
-Bing Haber Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit Java uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler.
+Bing Haber Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit Java uygulaması, API 'ye bir haber arama sorgusu gönderir ve JSON yanıtını görüntüler.
 
-Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bu uygulama Java 'da yazılsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
-Bu örneğe ilişkin kaynak kodu [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) kullanılabilir 
+Bu örneğe ilişkin kaynak kodu [GitHub '](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java)da kullanılabilir. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Java Development Kit (JDK) 7 veya 8](https://aka.ms/azure-jdks)
-
-* [Gson kitaplığı](https://github.com/google/gson)
+* [Java Development Kit (JDK) 7 veya 8](https://aka.ms/azure-jdks).
+* [Gson kitaplığı](https://github.com/google/gson).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi oluşturun ve aşağıdaki kitaplıkları içeri aktarın.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Java projesi oluşturun ve aşağıdaki kitaplıkları içeri aktarın:
 
     ```java
     import java.net.*;
@@ -50,7 +49,7 @@ Bu örneğe ilişkin kaynak kodu [GitHub 'da](https://github.com/Azure-Samples/c
     import com.google.gson.JsonParser;
     ```
 
-2. API uç noktası, abonelik anahtarınız ve arama terimiyle ilgili değişkenlerle yeni bir sınıf oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+2. Yeni bir sınıf oluşturun. API uç noktası, abonelik anahtarınız ve arama terimine yönelik değişkenler ekleyin. Aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -64,7 +63,7 @@ Bu örneğe ilişkin kaynak kodu [GitHub 'da](https://github.com/Azure-Samples/c
 
 ## <a name="construct-the-search-request-and-receive-a-json-response"></a>Arama isteğini oluşturun ve bir JSON yanıtı alın
 
-1. API isteğine yönelik bir arama URL’sini biçimlendirmek için son adımdaki değişkenleri kullanın. Arama teriminizin isteğe eklenmeden önce URL olarak kodlanmış olması gerektiğini unutmayın.
+1. API isteği için bir arama URL 'SI biçimlendirmek üzere önceki adımdaki değişkenleri kullanın. URL-isteği sonuna eklemeden önce arama teriminizi kodlayın.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -88,6 +87,7 @@ Bu örneğe ilişkin kaynak kodu [GitHub 'da](https://github.com/Azure-Samples/c
 ## <a name="process-the-json-response"></a>JSON yanıtını işleme
 
 1. Bing ile ilgili HTTP üstbilgilerini JSON gövdesinden ayırın, sonra akışı kapatıp API yanıtını döndürün.
+
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -101,7 +101,8 @@ Bu örneğe ilişkin kaynak kodu [GitHub 'da](https://github.com/Azure-Samples/c
     return results;
     ```
 
-2. JSON ayrıştırmak ve yeniden serileştirmek için bir yöntem oluşturma
+2. JSON sonuçlarını ayrıştırmak ve yeniden serileştirmek için bir yöntem oluşturun.
+
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
@@ -112,8 +113,9 @@ Bu örneğe ilişkin kaynak kodu [GitHub 'da](https://github.com/Azure-Samples/c
     }
     ```
 
-3. Uygulamanızın Main yönteminde arama yöntemini çağırın ve sonuçları görüntüleyin.
-    ```csharp
+3. Uygulamanızın ana yönteminde arama yöntemini çağırın ve sonuçları görüntüleyin.
+
+    ```java
    public static void main (String[] args) {
        System.out.println("Searching the Web for: " + searchTerm);
        SearchResults result = SearchNews(searchTerm);
@@ -126,7 +128,7 @@ Bu örneğe ilişkin kaynak kodu [GitHub 'da](https://github.com/Azure-Samples/c
     }
     ```
 
-## <a name="json-response"></a>JSON yanıtı
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür:
 

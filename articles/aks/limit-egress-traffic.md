@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de çıkış trafiğini denetlemek
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: d723f7b1e7331e65d17dca5873b891ec46d76c0e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 194e799daf107220c28404001d223e521dceeb3f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207182"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870897"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
@@ -42,7 +42,7 @@ AKS 'de, iki bağlantı noktası ve adres kümesi vardır:
 * [AKS kümeleri için isteğe bağlı önerilen adresler ve bağlantı noktaları](#optional-recommended-addresses-and-ports-for-aks-clusters) tüm senaryolar için gerekli değildir, ancak Azure izleyici gibi diğer hizmetlerle tümleştirme doğru çalışmaz. İsteğe bağlı bağlantı noktaları ve FQDN 'Ler listesini gözden geçirin ve AKS Kümenizde kullanılan hizmet ve bileşenlerden herhangi birini yetkilendirin.
 
 > [!NOTE]
-> Çıkış trafiğini kısıtlamak yalnızca yeni AKS kümelerinde kullanılabilir. Mevcut kümeler için çıkış trafiğini sınırlandırmadan önce `az aks upgrade` komutunu kullanarak [bir küme yükseltme işlemi gerçekleştirin][aks-upgrade] .
+> Çıkış trafiğini kısıtlamak yalnızca yeni AKS kümelerinde kullanılabilir. Mevcut kümeler için çıkış trafiğini sınırlandırmadan önce komutunu kullanarak [bir küme yükseltme işlemi gerçekleştirin][aks-upgrade] `az aks upgrade` .
 
 ## <a name="required-ports-and-addresses-for-aks-clusters"></a>AKS kümeleri için gerekli bağlantı noktaları ve adresler
 
@@ -51,14 +51,14 @@ AKS kümesi için aşağıdaki giden bağlantı noktaları/ağ kuralları gerekl
 * TCP bağlantı noktası *443*
 * API sunucusuyla iletişim kurmayı gerektiren bir uygulamanız varsa, TCP [ıpaddrofyourapiserver]: 443 gereklidir.  Bu değişiklik küme oluşturulduktan sonra ayarlanabilir.
 * Tünel ön pod için TCP bağlantı noktası *9000*, TCP bağlantı noktası *22* ve UDP bağlantı noktası *1194* , API sunucusundaki tünel sonuyla iletişim kuracak.
-    * Daha fazla bilgi almak için **. HCP öğesine bakın.\< Location\>. azmk8s.io* ve **. tun.\< Aşağıdaki\>tablodaki location. azmk8s.io* adresleri.
+    * Daha fazla bilgi almak için **. HCP öğesine bakın. \< Location \> . azmk8s.io* ve **. tun. \< Aşağıdaki tablodaki Location \> . azmk8s.io* adresleri.
 * Ağ zaman Protokolü (NTP) zaman eşitleme (Linux düğümleri) için UDP bağlantı noktası *123* .
 * API sunucusuna doğrudan erişiyorsanız, DNS için UDP bağlantı noktası *53* de gereklidir.
 
 Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
 > [!IMPORTANT]
-> ***. blob.Core.Windows.net ve aksrepos.azurecr.io** artık çıkış kilidi için gereklı olan FQDN kuralları değildir.  Mevcut kümeler için, bu kuralları kaldırmak üzere `az aks upgrade` komutunu kullanarak [bir küme yükseltme işlemi gerçekleştirin][aks-upgrade] .
+> ***. blob.Core.Windows.net ve aksrepos.azurecr.io** artık çıkış kilidi için gereklı olan FQDN kuralları değildir.  Mevcut kümeler için, bu kuralları kaldırmak üzere komutunu kullanarak [bir küme yükseltme işlemi gerçekleştirin][aks-upgrade] `az aks upgrade` .
 
 > [!IMPORTANT]
 > *. cdn.mscr.io, Azure genel bulut bölgeleri için *. data.mcr.microsoft.com ile değiştirilmiştir. Değişikliklerin etkili olması için lütfen mevcut güvenlik duvarı kurallarınızı yükseltin.
@@ -67,8 +67,8 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
 | FQDN                       | Bağlantı noktası      | Kullanım      |
 |----------------------------|-----------|----------|
-| *. HCP. \<location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \<Konumu\> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
-| *. tun. \<location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \<Konumu\> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. HCP. \< Location \> . azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \< Konumu \> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. tun. \< Location \> . azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \< Konumu \> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
 | *. cdn.mscr.io       | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolaması için gereklidir. |
 | mcr.microsoft.com          | HTTPS: 443 | Bu adres, Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri, kümenin yükseltilmesi ve ölçeklendirilmesi sırasında kümenin çalışması için gerekli olan ilk taraf görüntülerini/grafikleri (örneğin, Moby, vb.) içerir |
 | *. data.mcr.microsoft.com             | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
@@ -82,8 +82,8 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
 | FQDN                       | Bağlantı noktası      | Kullanım      |
 |----------------------------|-----------|----------|
-| *. HCP. \<location\>. cx.prod.Service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \<Konumu\> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
-| *. tun. \<location\>. cx.prod.Service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \<Konumu\> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. HCP. \< Location \> . cx.prod.Service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \< Konumu \> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. tun. \< Location \> . cx.prod.Service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \< Konumu \> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
 | *. azk8s.cn        | HTTPS: 443 | Gerekli ikili dosyaları ve resimleri indirmek için bu adres gereklidir|
 | mcr.microsoft.com          | HTTPS: 443 | Bu adres, Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri, kümenin yükseltilmesi ve ölçeklendirilmesi sırasında kümenin çalışması için gerekli olan ilk taraf görüntülerini/grafikleri (örneğin, Moby, vb.) içerir |
 | *. cdn.mscr.io       | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolaması için gereklidir. |
@@ -97,8 +97,8 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
 | FQDN                       | Bağlantı noktası      | Kullanım      |
 |----------------------------|-----------|----------|
-| *. HCP. \<location\>. cx.aks.Containerservice.Azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \<Konumu\> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
-| *. tun. \<location\>. cx.aks.Containerservice.Azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \<Konumu\> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. HCP. \< Location \> . cx.aks.Containerservice.Azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \< Konumu \> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. tun. \< Location \> . cx.aks.Containerservice.Azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. * \< Konumu \> * aks kümenizin dağıtıldığı bölge ile değiştirin. |
 | mcr.microsoft.com          | HTTPS: 443 | Bu adres, Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri, kümenin yükseltilmesi ve ölçeklendirilmesi sırasında kümenin çalışması için gerekli olan ilk taraf görüntülerini/grafikleri (örneğin, Moby, vb.) içerir |
 |*. cdn.mscr.io              | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolaması için gereklidir. |
 | *. data.mcr.microsoft.com             | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
@@ -147,9 +147,9 @@ Azure Dev Spaces etkin olan AKS kümeleri için aşağıdaki FQDN/uygulama kural
 | FQDN                                    | Bağlantı noktası      | Kullanım      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS: 443 | Bu adres, Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için kullanılır |
-| gcr.io | HTTP: 443 | Bu adres, Held/Tiller görüntülerini çekmek için kullanılır |
-| storage.googleapis.com | HTTP: 443 | Bu adres, Held/Tiller görüntülerini çekmek için kullanılır |
-| azds-\<Guid\>. \<location\>. azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON Içindeki "dataplaneFqdn" IÇINDE tam FQDN bulunabilir |
+| gcr.io | HTTPS: 443 | Bu adres, Held/Tiller görüntülerini çekmek için kullanılır |
+| storage.googleapis.com | HTTPS: 443 | Bu adres, Held/Tiller görüntülerini çekmek için kullanılır |
+| azds- \< Guid \> . \< Location \> . azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE% azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir \. |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Azure Ilkesi ile AKS kümeleri için gerekli adresler ve bağlantı noktaları (genel önizlemede) etkin
 
@@ -162,7 +162,7 @@ Azure Ilkesi etkinleştirilmiş AKS kümeleri için aşağıdaki FQDN/uygulama k
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS: 443 | Bu adres, Azure Ilkesi 'nin doğru çalışması için kullanılır. (Şu anda AKS 'deki önizlemededir) |
 | raw.githubusercontent.com | HTTPS: 443 | Bu adres, Azure Ilkesinde doğru işlem yapıldığından emin olmak için yerleşik ilkeleri GitHub 'dan çekmek için kullanılır. (Şu anda AKS 'deki önizlemededir) |
-| *. gk. \<location\>. azmk8s.io | HTTPS: 443    | Denetim sonuçlarını almak için ana sunucuda çalışan Gatekeeper denetim uç noktası ile iletişim kuran Azure Ilke eklentisi. |
+| *. gk. \< Location \> . azmk8s.io | HTTPS: 443    | Denetim sonuçlarını almak için ana sunucuda çalışan Gatekeeper denetim uç noktası ile iletişim kuran Azure Ilke eklentisi. |
 | dc.services.visualstudio.com | HTTPS: 443 | Uygulama öngörüleri uç noktasına telemetri verileri gönderen Azure Ilke eklentisi. |
 
 ## <a name="required-by-windows-server-based-nodes-enabled"></a>Windows Server tabanlı düğümlerin gerektirdiği etkin
@@ -172,7 +172,7 @@ Windows Server tabanlı düğüm havuzlarını kullanmak için aşağıdaki FQDN
 | FQDN                                    | Bağlantı noktası      | Kullanım      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS: 443 | Windows ile ilgili ikili dosyaları yüklemek için |
-| mp.microsoft.com, www<span></span>. msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Windows ile ilgili ikili dosyaları yüklemek için |
+| mp.microsoft.com, www <span></span> . msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Windows ile ilgili ikili dosyaları yüklemek için |
 | kms.core.windows.net | TCP: 1688 | Windows ile ilgili ikili dosyaları yüklemek için |
 
 ## <a name="next-steps"></a>Sonraki adımlar

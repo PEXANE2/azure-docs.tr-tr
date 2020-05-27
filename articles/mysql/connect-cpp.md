@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: c09327e208719d31b1ae1587c14d0223269abfa9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: a8c922912cae72e1b4344d4d970ec9f3b4949d9f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80062576"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871506"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Connector/C++ kullanarak bağlanma ve veri sorgulama
 Bu hızlı başlangıçta C++ uygulaması kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu konuda, C++ kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure veritabanı ile çalışmaya yeni başladığınızı varsaymaktadır.
@@ -29,6 +29,9 @@ Bu hızlı başlangıçta, başlangıç noktası olarak aşağıdaki kılavuzlar
 - [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) yükleyin 
 - [Boost](https://www.boost.org/)’u yükleyin
 
+> [!IMPORTANT] 
+> Bağlanmakta olduğunuz IP adresinin [Azure Portal](./howto-manage-firewall-using-portal.md) veya [Azure CLI](./howto-manage-firewall-using-cli.md) kullanarak sunucunun güvenlik duvarı kurallarını eklendiğinden emin olun
+
 ## <a name="install-visual-studio-and-net"></a>Visual Studio'yu ve .NET'i yükleme
 Bu bölümdeki adımlarda, .NET kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz varsayılır.
 
@@ -40,15 +43,15 @@ Bu bölümdeki adımlarda, .NET kullanarak geliştirmeyle ilgili bilgi sahibi ol
 ### <a name="configure-visual-studio"></a>**Visual Studio'yu Yapılandırma**
 1. Visual Studio, proje-> Özellikler-> bağlayıcı-> Genel > ek kitaplık dizinleri ' ni, C++ bağlayıcısının "\lib\opt" dizinini (örneğin: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ lib\opt) ekleyin.
 2. Visual Studio'dan Proje -> Özellikler -> C/C++ -> Genel -> Ek Ekleme Dizinleri:
-   - C++ bağlayıcısının "\include" dizinini ekleyin (örneğin: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ include\).
-   - Yükseltme kitaplığının kök dizinini ekleyin (örneğin: C:\ boost_1_64_0\).
+   - C++ bağlayıcısının "\include" dizinini ekleyin (örneğin: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ include \) .
+   - Yükseltme kitaplığının kök dizinini ekleyin (örneğin: C:\ boost_1_64_0 \) .
 3. Visual Studio'dan Proje -> Özellikler -> Bağlayıcı -> Giriş > Ek Bağımlılıklar’a gidip metin alanına **mysqlcppconn.lib** değerini ekleyin.
 4. Adım 3 ' teki C++ bağlayıcı kitaplığı klasöründen **mysqlcppconn. dll** dosyasını uygulama yürütülebilir dosyası ile aynı dizine kopyalayın ya da uygulamanızın bulması için ortam değişkenine ekleyin.
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
 3. Sunucunun adına tıklayın.
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.

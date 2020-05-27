@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1de2d647a6292467a5ac4cc333ccacdedfc3c9ea
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8c27a50f823dcda74d735e6314c9004ec36769d4
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638988"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870875"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla bir Xamarin Android uygulaması oluşturma
 
@@ -63,7 +63,9 @@ Alanı bulun `SpatialAnchorsAccountKey` ve `Set me` Hesap anahtarıyla değişti
 
 Alanı bulun `SpatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla değiştirin.
 
-`AzureSpatialAnchorsManager(Session arCoreSession)`Hesap etki alanında yer alan aşağıdaki satırı bulun ve daha önce ekleyin: `this.spatialAnchorsSession.Configuration.AccountId = "MyAccountDomain";` .
+`Xamarin/SampleXamarin.Android/AzureSpatialAnchorsManager.cs` dosyasını açın.
+
+`AzureSpatialAnchorsManager(Session arCoreSession)`Hesap etki alanında yer alan aşağıdaki satırı bulun ve daha önce ekleyin: `this.spatialAnchorsSession.Configuration.AccountDomain = "MyAccountDomain";` .
 
 ## <a name="deploy-the-app-to-your-android-device"></a>Uygulamayı Android cihazınıza dağıtma
 

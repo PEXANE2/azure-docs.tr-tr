@@ -7,38 +7,18 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: 820005bca008ea3bdb59659c815da3ec36beb0d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a20ec1039dc8fc477410891495762395b408f2d6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241045"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870585"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>Mobil uygulamalarınızdaki kimlik doğrulaması ve Kullanıcı kimliklerini yönetme
 
 Kullanıcı görünümünü ve uygulamanızda davranışlarını, geliştiricilerin kendilerine yönelik özel deneyimler oluşturarak daha iyi bir şekilde devreye girmesini sağlar. Kuruluşunuzdaki kullanıcılar için işbirliği uygulaması oluşturan veya bir sonraki sosyal ağ platformunu oluşturduğunuz bir uygulama geliştiricisi olup olmadığınız, kullanıcıların kimliğini doğrulamak ve Kullanıcı kimliklerini yönetmek için bir yol gerekir. Bir kimlik yönetimi hizmeti, bir mobil arka uç hizmetinin en önemli özelliklerinden biridir.
 
 Mobil uygulamalarınızda Kullanıcı kimlik doğrulamasını etkinleştirmek için aşağıdaki hizmetleri kullanın.
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center auth](/appcenter/auth/) , geliştiricilerin kullanıcıların kimliğini doğrulamak ve Kullanıcı kimliklerini yönetmek için kullanabileceği bulut tabanlı bir kimlik yönetimi hizmetidir. App Center kimlik doğrulaması, Visual Studio App Center diğer bölümleriyle de tümleştirilir. Geliştiriciler Kullanıcı kimliğini diğer hizmetlerde [Kullanıcı verilerini görüntülemek](/appcenter/data/index) ve hatta [tek tek cihazlar yerine kullanıcılara anında iletme bildirimleri göndermek](/appcenter/push/push-to-user#setting-user-identity)için kullanabilir. 
-
-**Önemli özellikler**
-- Azure Active Directory B2C ile desteklenir (Azure AD B2C). 
-    - Kurumsal sınıf.
-    - Yüksek oranda kullanılabilir.
-    - Güvenli ve küresel hizmet.
-- Auth0 ve Firebase gibi diğer popüler kimlik ve erişim yönetimi sağlayıcılarını kullanma seçeneğini ve kendi kimliğinizi getirin.
-- Azure Active Directory desteği.
-    - Mevcut Azure AD kiracılarını bağlayın. 
-    - Şirket etki alanında kimlik doğrulamasını etkinleştirin.
-    - Gizli verilere erişimi yönetin.
-- Visual Studio App Center SDK ile Microsoft kimlik doğrulama kitaplığı 'nı sarmalayarak basit kullanıcı deneyimi ve mıknatıik SDK deneyimi.
-- İOS, Android, Xamarin ve yerel olarak tepki verme için platform desteği.
-
-**Başvurular**
-- [Visual Studio App Center kaydolun](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
-- [App Center kimlik doğrulaması ile çalışmaya başlama](/appcenter/auth/)
 
 ## <a name="azure-active-directory-b2c"></a>Azure Active Directory B2C
 [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/) , geliştiricilerin müşterilerinin kimliğini doğrulamak için kullanabileceği, işletmeden MÜŞTERIYE (B2C) kimlik yönetimi hizmetidir. Bu beyaz etiket Hizmeti, geliştiricilerin Web, Masaüstü, mobil veya tek sayfalı uygulamalarla güvenli şekilde nasıl etkileşim kuracağını özelleştirip denetlemesine olanak tanır. Azure AD B2C kullanarak, kullanıcılar kaydolabilir, oturum açabilir, parolaları sıfırlayabilir ve profilleri düzenleyebilir. Azure AD B2C, OpenID Connect ve OAuth 2,0 protokollerinin bir formunu uygular. 

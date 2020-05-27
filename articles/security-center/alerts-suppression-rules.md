@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 83ee59ca4353cd1af6c613e7624ee15f21b0a27e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 84b5cd8a59103f60249da861238acb45f8aa2fd5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650915"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871692"
 ---
 # <a name="suppressing-alerts-from-azure-security-centers-threat-protection"></a>Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gizleme
 
@@ -22,8 +22,10 @@ Bu sayfada, Azure Güvenlik Merkezi 'nde yanlış pozitifleri veya diğer istenm
 ## <a name="availability"></a>Kullanılabilirlik
 
 - Yayın durumu: **Önizleme**
-- Gerekli roller: Güvenlik Yöneticisi ve sahibi, kurallar oluşturabilir/silebilir. Güvenlik okuyucu ve okuyucu, kuralları görüntüleyebilir.
-- Bulutlar: tümü (küresel, ulusal, kamu ve Sovereign)
+- Gerekli roller: **Güvenlik Yöneticisi** ve **sahibi** , kurallar oluşturabilir/silebilir. **Güvenlik okuyucu** ve **okuyucu** , kuralları görüntüleyebilir.
+- Larının 
+    - Ticari bulutlar ✔
+    - ✔ National/Sovereign (US Gov, Çin gov, diğer gov)
 
 
 ## <a name="introduction-to-suppression-rules"></a>Gizleme kurallarına giriş

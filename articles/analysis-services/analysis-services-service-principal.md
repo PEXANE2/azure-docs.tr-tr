@@ -4,15 +4,15 @@ description: Azure Analysis Services yönetim görevlerini otomatikleştirmek i�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/26/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1ea9b978cce22ae6d99cbce5b4b85558f2a47b59
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 638ba26c8c8aed9385e10242b86a7587c1d9a7c5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699068"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871166"
 ---
 # <a name="automation-with-service-principals"></a>Hizmet sorumlularıyla otomasyon
 
@@ -110,5 +110,7 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure PowerShell oturum açın](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Logic Apps ile yenileme](analysis-services-refresh-logic-app.md)  
+[Azure Otomasyonu ile yenileme](analysis-services-refresh-azure-automation.md)  
 [Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md)  
 [Hizmet sorumluları ile Power BI Premium çalışma alanını ve veri kümesi görevlerini otomatikleştirme](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 
