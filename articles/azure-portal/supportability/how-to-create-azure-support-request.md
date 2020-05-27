@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: kfollis
-ms.openlocfilehash: 2b68b6ddf19d6b07475e7009b47e162bfb2d0d2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0bd1191c0b92203b100b1713971119ec828352ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478992"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835555"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
@@ -106,7 +106,7 @@ Bir destek Aracısı belirttiğiniz yöntemi kullanarak sizinle iletişim kuraca
 
 ## <a name="all-support-requests"></a>Tüm destek istekleri
 
-Destek isteklerinin ayrıntılarını ve durumunu, **Yardım +** >  **tüm destek isteklerini**destekle ' ya giderek görebilirsiniz.
+Destek isteklerinin ayrıntılarını ve durumunu, **Yardım +**  >   **tüm destek isteklerini**destekle ' ya giderek görebilirsiniz.
 
 ![Tüm destek istekleri](./media/how-to-create-azure-support-request/allrequestslower.png)
 
@@ -128,5 +128,5 @@ Azure 'da kendi kendine yardım destek seçenekleri hakkında daha fazla bilgi e
 
 * [Görüşlerinizi ve önerilerinizi bize gönderin](https://feedback.azure.com/forums/266794-support-feedback)
 * [Twitter](https://twitter.com/azuresupport) 'da bizimle iletişime katılın
-* [MSDN forumlarında](https://social.msdn.microsoft.com/Forums/azure) Meslektaşlarınızdan yardım alın
+* [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/products/azure) Meslektaşlarınızdan yardım alın
 * [Azure DESTEĞI hakkında](https://azure.microsoft.com/support/faq) daha fazla bilgi

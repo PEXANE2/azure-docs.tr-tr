@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: cc7babdb7b64b12ecc9ef4590a91c7a3683a6558
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: a92f65bd88a5aec79a179a6e2d53de15c274add4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799795"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834569"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Runbook’tan e-posta gönderme
 
@@ -138,7 +138,7 @@ Runbook 'un başarıyla yürütüldüğünü doğrulamak için, [runbook 'U test
 
 Test e-postanızı başlangıçta görmüyorsanız, istenmeyen ve **Istenmeyen posta** **klasörlerinizi denetleyin** .
 
-## <a name="clean-up-after-the-email-operation"></a>E-posta işleminden sonra temizle
+## <a name="clean-up-resources-after-the-email-operation"></a>E-posta işleminden sonra kaynakları temizle
 
 1. Runbook artık gerekli olmadığında runbook listesinden seçin ve **Sil**' e tıklayın.
 
@@ -152,7 +152,6 @@ Remove-AzKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)
-* [Azure Otomasyonu iş verilerini Azure İzleyici günlüklerine iletme](automation-manage-send-joblogs-log-analytics.md)
-* [Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma](automation-create-alert-triggered-runbook.md)
-* [Runbook sorunlarını giderme](./troubleshoot/runbooks.md)
+* Log Analytics çalışma alanınıza runbook iş verilerini göndermek için bkz. [Azure Otomasyonu iş verilerini Azure izleyici günlüklerine iletme](automation-manage-send-joblogs-log-analytics.md).
+* Taban düzeyi ölçümlerini ve günlüklerini izlemek için bkz. [Azure Otomasyonu runbook 'u tetiklemek için uyarı kullanma](automation-create-alert-triggered-runbook.md).
+* Runbook işlemleri sırasında kaynaklanan sorunları düzeltmek için bkz. [runbook sorunlarını giderme](./troubleshoot/runbooks.md).

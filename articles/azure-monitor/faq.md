@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: df3e107b111161284c697aa8f619eed96443a893
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4cf851022a2b2b0c9a9781f4d41b40982bf2ad57
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651833"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835351"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -185,7 +185,7 @@ Mevcut veya yeni bir [eylem grubu](platform/action-groups.md) belirtin, böylece
 Güvenlik Duvarı gereksinimleriyle ilgili ayrıntılar için bkz. [ağ güvenlik duvarı gereksinimleri](platform/log-analytics-agent.md#network-requirements).
 
 
-## <a name="visualizations"></a>Görselleştirmeler
+## <a name="visualizations"></a>Görsel öğeler
 
 ### <a name="why-cant-i-see-view-designer"></a>Neden görünüm tasarımcısını göremiyorum?
 
@@ -735,7 +735,7 @@ Bu koşulun altında, VM 'yi açıp, zaten VM 'ye yüklendikten sonra bile sol b
 ## <a name="next-steps"></a>Sonraki adımlar
 Sorunuz burada yanıtlanmazsa, ek sorular ve yanıtlar için aşağıdaki forumlara başvurabilirsiniz.
 
-- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
-- [Uygulama Bilgileri](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+- [Log Analytics](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+- [Uygulama Bilgileri](https://docs.microsoft.com/answers/topics/azure-monitor.html)
 
 Azure Izleyici hakkında genel geri bildirimde bulunmak için lütfen [geri bildirim forumunu](https://feedback.azure.com/forums/34192--general-feedback)ziyaret edin.

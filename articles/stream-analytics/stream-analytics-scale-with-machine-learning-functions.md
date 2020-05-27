@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c03b9fbd06b0a9bc4a70b0fb3a78bc9ce136b704
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929052"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835589"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Stream Analytics işinizi Azure Machine Learning Studio (klasik) işlevlerle ölçeklendirin
 
@@ -140,7 +140,7 @@ Machine Learning işlevlerle bir Stream Analytics işini ölçeklendirmek için 
 2. Çalışan Stream Analytics işi için toleranslı gecikme süresi (ve bu nedenle Machine Learning Web hizmeti isteklerinin toplu iş boyutu).
 3. Sağlanan Stream Analytics SUs ve Machine Learning Web hizmeti isteklerinin sayısı (işlevle ilgili ek maliyetler).
 
-Örnek olarak, tamamen bölümlenmiş bir Stream Analytics sorgusu kullanılmıştır. Daha karmaşık bir sorgu gerekliyse, [Azure Stream Analytics forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) Stream Analytics takımdan ek yardım almak için harika bir kaynaktır.
+Örnek olarak, tamamen bölümlenmiş bir Stream Analytics sorgusu kullanılmıştır. Daha karmaşık bir sorgu gerekliyse, [Azure Stream Analytics Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) Stream Analytics takımdan ek yardım almak için harika bir kaynaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Stream Analytics hakkında daha fazla bilgi edinmek için bkz.:

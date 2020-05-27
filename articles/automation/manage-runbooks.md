@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 28ddd2a2d75ab8a57dfc3176eefd703f6c43d0b6
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 93b34af0baed89fd312948aeffe8ea4ac8ef806c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745060"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834705"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda runbook 'ları yönetme
 
@@ -338,6 +338,8 @@ foreach($item in $output)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Otomasyonu’nda runbook yürütme](automation-runbook-execution.md)
-* [Azure Automation 'da metin runbook 'larını düzenleme](automation-edit-textual-runbook.md)
-* [Azure Otomasyonu 'nda grafik runbook 'ları yazma](automation-graphical-authoring-intro.md)
+* Runbook yönetiminin ayrıntılarını öğrenmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](automation-runbook-execution.md).
+* PowerShell runbook 'unu hazırlamak için bkz. [Azure Automation 'da metin runbook 'Larını düzenleme](automation-edit-textual-runbook.md).
+* PowerShell Iş akışı runbook 'u yazma konusunda yardım için bkz. [Azure Otomasyonu Için PowerShell Iş akışını öğrenme](automation-powershell-workflow.md).
+* Grafik runbook 'ları yazma hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'nda grafik runbook 'ları](automation-graphical-authoring-intro.md)yazma.
+* Runbook yürütmeyle ilgili sorunları gidermek için bkz. [runbook sorunlarını giderme](troubleshoot/runbooks.md).

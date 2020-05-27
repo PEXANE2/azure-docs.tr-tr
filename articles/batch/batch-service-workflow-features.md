@@ -3,12 +3,12 @@ title: Batch hizmeti iş akışı ve kaynakları
 description: Batch hizmetinin özellikleri ve bir geliştirme açısından üst düzey iş akışı hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: 8112f6059a14bb18bf1fbf4011ceb074d71b5837
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 5084ae222d0a9da0d8aa171bc89dba48377a9dd4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791137"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835929"
 ---
 # <a name="batch-service-workflow-and-resources"></a>Batch hizmeti iş akışı ve kaynakları
 
@@ -47,4 +47,4 @@ Aşağıdaki konularda, dağıtılmış hesaplama senaryolarınızı etkinleşti
 - Batch çözümleri oluşturmak için kullanılabilen [Batch API’leri ve araçları](batch-apis-tools.md) hakkında bilgi alın.
 - [Batch .NET istemci kitaplığı](quick-run-dotnet.md) veya [Python](quick-run-python.md) kullanarak Batch özellikli bir uygulama geliştirmenin temellerini öğrenin. Bu hızlı başlangıçlar, bir iş yükünü birden fazla işlem düğümünde yürütmek üzere Batch hizmetini kullanan örnek uygulamalar konusunda size rehberlik sağlamanın yanı sıra, iş yükü dosyası hazırlama ve alma işlemleri için Azure Depolama kullanma ile ilgili bilgiler de içerir.
 - Batch çözümlerinizi geliştirirken kullanmak üzere [Batch Explorer](https://azure.github.io/BatchExplorer/) uygulamasını indirin ve yükleyin. Batch Explorer; Azure uygulamalarıyla ilgili oluşturma, hata ayıklama ve izleme işlemlerinde yardımcı olabilir.
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch), [Batch community deposunun](https://github.com/Azure/Batch)ve [Azure Batch forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebatch)içeren topluluk kaynaklarına bakın.
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch), [Batch community deposunun](https://github.com/Azure/Batch)ve [Azure Batch forumunu](https://docs.microsoft.com/answers/topics/azure-batch.html)içeren topluluk kaynaklarına bakın.

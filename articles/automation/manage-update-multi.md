@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 864b6793f65c69c83c0e26d01a10e156b1094889
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741037"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834637"
 ---
 # <a name="manage-updates-for-multiple-vms"></a>Birden çok VM için güncelleştirmesini yönetme
 
@@ -79,7 +79,7 @@ Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı 
 | Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar. |
-| Azure Storage hesabı |No |Azure depolama, sistem güncelleştirmeleriyle ilgili bilgiler içermez. |
+| Azure Storage hesabı |Hayır |Azure depolama, sistem güncelleştirmeleriyle ilgili bilgiler içermez. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
@@ -182,4 +182,4 @@ Dağıtımla ilgili her türlü hata hakkında ayrıntılı bilgi için **Hatala
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Güncelleştirme Yönetimi günlüklerini sorgulama](automation-update-management-query-logs.md)
+* Güncelleştirme günlüklerinde arama yapmanız gerekiyorsa bkz. [sorgu güncelleştirme yönetimi günlükleri](automation-update-management-query-logs.md).

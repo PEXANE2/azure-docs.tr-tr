@@ -33,7 +33,7 @@
     - name: Verileri dönüştürmek için bir işlem hattı oluşturma
       href: data-factory-build-your-first-pipeline.md
       items:
-        - name: Azure portalı
+        - name: Azure portal
           href: data-factory-build-your-first-pipeline-using-editor.md
         - name: Visual Studio
           href: data-factory-build-your-first-pipeline-using-vs.md
@@ -201,8 +201,8 @@
       href: data-factory-customer-case-studies.md
     - name: Öğrenme yolu
       href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
-    - name: MSDN Forumu
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Fiyatlandırma hesaplayıcı

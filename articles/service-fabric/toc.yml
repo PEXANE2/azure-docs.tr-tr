@@ -892,8 +892,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Sık sorulan sorular
       href: service-fabric-common-questions.md
-    - name: MSDN Forumu
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
     - name: Azure Resource Manager Dağıtım Korkulukları
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: Fiyatlandırma

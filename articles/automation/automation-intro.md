@@ -7,12 +7,12 @@ keywords: Azure Otomasyonu, DSC, PowerShell, durum yapılandırması, güncelle�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 5e9d680e2f7d4a0ed3439d5acb6106fa1415aec1
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712783"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835283"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Otomasyonu'na giriş
 
@@ -98,4 +98,3 @@ Azure Otomasyonu, altyapınızın ve uygulamalarınızın yaşam döngüsü boyu
 
 > [!div class="nextstepaction"]
 > [Otomasyon hesabı oluşturma](automation-quickstart-create-account.md)
-

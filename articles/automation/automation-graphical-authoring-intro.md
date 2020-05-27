@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 35d3146c0ca5571e6e16793c97378de1e2db362e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 6f7335b92d7c26b33f9b156d434d895a1bca40c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711729"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835402"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda grafik runbook 'ları yazma
 
@@ -432,9 +432,7 @@ Runbook 'un yayımlanmış sürümüne dönmek için seçeneğiniz vardır. Bu i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* PowerShell İş Akışı runbook'larını kullanmaya başlamak için bkz. [İlk PowerShell İş Akışı runbook uygulamam](automation-first-runbook-textual.md).
-* Grafik runbook 'ları kullanmaya başlamak için bkz. [ilk grafik runbook 'Um](automation-first-runbook-graphical.md).
+* Grafik runbook 'larını kullanmaya başlamak için bkz. [öğretici: grafik runbook 'U oluşturma](learn/automation-tutorial-runbook-graphical.md).
 * Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu runbook türleri](automation-runbook-types.md).
-* Otomasyon farklı çalıştır hesabını kullanarak kimlik doğrulaması yapılacağını anlamak için bkz. [Azure farklı çalıştır hesabını yapılandırma](automation-sec-configure-azure-runas-account.md).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* Otomasyon farklı çalıştır hesabını kullanarak kimlik doğrulaması yapılacağını anlamak için bkz. [Farklı Çalıştır hesabı](automation-security-overview.md#run-as-account).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

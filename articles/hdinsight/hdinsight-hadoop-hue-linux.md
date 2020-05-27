@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: dea7e8d5679c8c5a14d6a4253b8a4b36343e6ed8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fabc8b7b2a97b75959eb7d82723d6af6bc55bbe5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887104"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835487"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop kümelerinde ton 'u yükleyip kullanma
 
@@ -33,7 +33,7 @@ Ton Apache Hadoop bir kümeyle etkileşim kurmak için kullanılan bir Web uygul
 > [!WARNING]  
 > HDInsight kümesiyle sağlanan bileşenler tam olarak desteklenir ve Microsoft Desteği bu bileşenlerle ilgili sorunları yalıtmaya ve çözmeye yardımcı olur.
 >
-> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Bu durum sorunu çözmeye veya bu teknolojinin derin uzmanlığı bulunan açık kaynaklı teknolojiler için kullanılabilir kanalları size sormaya neden olur. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [HDInsight Için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ayrıca Apache projelerinin üzerinde [https://apache.org](https://apache.org)proje siteleri vardır, örneğin: [Hadoop](https://hadoop.apache.org/).
+> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Bu durum sorunu çözmeye veya bu teknolojinin derin uzmanlığı bulunan açık kaynaklı teknolojiler için kullanılabilir kanalları size sormaya neden olur. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [Microsoft Q&HDInsight için soru sayfası](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) [https://stackoverflow.com](https://stackoverflow.com) . Ayrıca Apache projelerinin üzerinde proje siteleri vardır [https://apache.org](https://apache.org) , örneğin: [Hadoop](https://hadoop.apache.org/).
 
 ## <a name="install-hue-using-script-actions"></a>Betik eylemlerini kullanarak ton yüklemesi
 
@@ -45,7 +45,7 @@ Betik eyleminiz için aşağıdaki tablodaki bilgileri kullanın. Betik eylemler
 |Özellik |Değer |
 |---|---|
 |Betik türü:|-Özel|
-|Adı|Ton 'yi yükler|
+|Name|Ton 'yi yükler|
 |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
 |Düğüm türleri:|Head|
 
@@ -76,7 +76,7 @@ Normal kümeler üzerinde ton ile yalnızca bir Kullanıcı hesabınız olabilir
 
     Bu, ton Web sitesinin bulunduğu birincil yayın düğümünün ana bilgisayar adıdır.
 
-1. ' De `http://HOSTNAME:8888`ton Portalını açmak için tarayıcıyı kullanın. Ana BILGISAYAR adını önceki adımda edindiğiniz adla değiştirin.
+1. ' De ton Portalını açmak için tarayıcıyı kullanın `http://HOSTNAME:8888` . Ana BILGISAYAR adını önceki adımda edindiğiniz adla değiştirin.
 
    > [!NOTE]  
    > İlk kez oturum açtığınızda, ton portalında oturum açmak için bir hesap oluşturmanız istenir. Burada belirttiğiniz kimlik bilgileri portalla sınırlandırılır ve kümeyi sağlarken belirttiğiniz yönetici veya SSH kullanıcı kimlik bilgileriyle ilgili değildir.
@@ -105,7 +105,7 @@ Normal kümeler üzerinde ton ile yalnızca bir Kullanıcı hesabınız olabilir
 3. Kullanılabilir işlemleri görmek için bir dosyaya veya klasöre sağ tıklayın. Dosyaları geçerli dizine yüklemek için sağ köşedeki **karşıya yükle** düğmesini kullanın. Yeni dosya veya dizin oluşturmak için **Yeni** düğmesini kullanın.
 
 > [!NOTE]  
-> Ton dosya tarayıcısı yalnızca HDInsight kümesiyle ilişkili varsayılan kapsayıcının içeriğini gösterebilir. Kümeyle ilişkili olabileceğiniz tüm ek depolama hesaplarına/kapsayıcılara dosya tarayıcısı kullanılarak erişilemeyecektir. Ancak, küme ile ilişkili ek kapsayıcılar her zaman Hive işleri için erişilebilir olacaktır. Örneğin, Hive düzenleyicide komutunu `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` girerseniz, ek kapsayıcıların içeriğini de görebilirsiniz. Bu komutta **newcontainer** bir kümeyle ilişkili varsayılan kapsayıcı değildir.
+> Ton dosya tarayıcısı yalnızca HDInsight kümesiyle ilişkili varsayılan kapsayıcının içeriğini gösterebilir. Kümeyle ilişkili olabileceğiniz tüm ek depolama hesaplarına/kapsayıcılara dosya tarayıcısı kullanılarak erişilemeyecektir. Ancak, küme ile ilişkili ek kapsayıcılar her zaman Hive işleri için erişilebilir olacaktır. Örneğin, `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` Hive düzenleyicide komutunu girerseniz, ek kapsayıcıların içeriğini de görebilirsiniz. Bu komutta **newcontainer** bir kümeyle ilişkili varsayılan kapsayıcı değildir.
 
 ## <a name="important-considerations"></a>Önemli noktalar
 
@@ -123,7 +123,7 @@ Normal kümeler üzerinde ton ile yalnızca bir Kullanıcı hesabınız olabilir
 
    Bunun nedeni bilinen bir sorundur. Geçici bir çözüm olarak, Active Kaynak Yöneticisi birincil headnode üzerinde de çalışacak şekilde ambarı değiştirin.
 
-1. Bir ton, HDInsight kümeleri kullanarak `wasbs://`Azure Storage kullanırken Web 'e anlamıştır. Bu nedenle, komut dosyası eylemiyle kullanılan özel betik, bir Weblerile uyumlu bir hizmet olan WEBLERB 'yi yükleyerek. Bu nedenle, ton portalı bir yerde (farenizi **Dosya tarayıcısının**üzerine getirdiğinizde olduğu gibi), o da, It b olarak yorumlanmalıdır.
+1. Bir ton, HDInsight kümeleri kullanarak Azure Storage kullanırken Web 'e anlamıştır `wasbs://` . Bu nedenle, komut dosyası eylemiyle kullanılan özel betik, bir Weblerile uyumlu bir hizmet olan WEBLERB 'yi yükleyerek. Bu nedenle, ton portalı bir yerde (farenizi **Dosya tarayıcısının**üzerine getirdiğinizde olduğu gibi), o da, It b olarak yorumlanmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: b0f0762ded6804c0b0d90a19223c082f0fb8fd49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a88cb4ff2385edd3c867c84774df1d0e21422be
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843659"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835997"
 ---
 # <a name="region-or-sku-unavailable"></a>Bölge veya SKU kullanılamıyor
 
@@ -68,7 +68,7 @@ Uygun bir bölge veya SKU bulamıyorsanız, şu adımları izleyerek bir **Abone
 
 1. **Sorun türü**için **sorun türünü seç**' i seçin.
 
-1. **Sorun türü seç**için bir seçenek belirleyin, örneğin, **aboneliğime veya kaynak** > sorunumu**Yukarıda listelenmeyen**bir seçeneğe tıklayın. **Kaydet**’i seçin.
+1. **Sorun türü seç**için bir seçenek belirleyin, örneğin, **aboneliğime veya kaynak**sorunumu  >  **Yukarıda listelenmeyen**bir seçeneğe tıklayın. **Kaydet**’i seçin.
 
    ![İstek için bir sorun belirtin](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
@@ -80,8 +80,8 @@ Uygun bir bölge veya SKU bulamıyorsanız, şu adımları izleyerek bir **Abone
 
 ## <a name="send-us-your-suggestions"></a>Önerilerinizi bize gönderin
 
-Her zaman geri bildirim ve önerilerle karşılaşıyoruz! [Önerilerinizi](https://feedback.azure.com/forums/266794-support-feedback)bize gönderin. Ayrıca, [Twitter](https://twitter.com/azuresupport) veya [MSDN forumlarında](https://social.msdn.microsoft.com/Forums/azure)bizimle iletişim sağlayabilirsiniz.
+Her zaman geri bildirim ve önerilerle karşılaşıyoruz! [Önerilerinizi](https://feedback.azure.com/forums/266794-support-feedback)bize gönderin. Ayrıca, [Twitter](https://twitter.com/azuresupport) 'Da veya [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/products/azure)bizimle iletişim sağlayabilirsiniz.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazlasını öğrenin
 
 [Azure desteği SSS](https://azure.microsoft.com/support/faq)

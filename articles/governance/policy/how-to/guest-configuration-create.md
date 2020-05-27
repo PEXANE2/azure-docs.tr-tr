@@ -3,12 +3,12 @@ title: Windows için konuk yapılandırma ilkeleri oluşturma
 description: Windows için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: d72b9b2dbf4c9f88f94fcfea2a99e6b27fd1fccd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a8231840cc20f03da44d489ae5226e7a0b4e0d48
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647769"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835963"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için konuk yapılandırma ilkeleri oluşturma
 
@@ -171,6 +171,9 @@ Ayrıca, özel bir ağdaki makineler için [hizmet uç noktası](../../../storag
 Ayarları denetlemek için bir DSC yapılandırması oluşturun. Aşağıdaki PowerShell betiği örneği, **Auditbitlocker**adlı bir yapılandırma oluşturur, **Psdscresources** kaynak modülünü içeri aktarır ve `Service` çalışan bir hizmeti denetlemek için kaynağını kullanır. Yapılandırma betiği bir Windows veya macOS makinesinden yürütülebilir.
 
 ```powershell
+# Add PSDscResources module to environment
+Install-Module 'PSDscResources'
+
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {

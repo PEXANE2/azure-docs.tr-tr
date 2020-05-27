@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
-ms.openlocfilehash: 116922e018410f260b33f4dfd76e5983fbbcc0a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3e90fa3e3f57c1575a7ab09f9ce6941c13adcd1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789333"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834875"
 ---
 # <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Project Online projelerini, görevlerini ve kaynaklarını yönetme
 
@@ -60,9 +60,9 @@ Project Online, güçlü proje yönetimi özellikleri sağlayarak neredeyse tüm
 
 Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/projectonline/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

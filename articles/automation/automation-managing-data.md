@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 44fe626abd71c13b7f16aa07c4ddf261ff3cacea
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: de60ef31a39a698f9a797a5836546f9b75b67594
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715435"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835215"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Otomasyonu verilerinin yönetilmesi
 
@@ -76,6 +76,5 @@ Bir bölgesel hata varsa, Otomasyon coğrafi çoğaltma hizmetine doğrudan dı�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Automation 'da güvenli varlıklar hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'da güvenli varlıkları şifreleme](automation-secure-asset-encryption.md).
-
+* Azure Automation 'da güvenli varlıklar hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'da güvenli varlıkların şifrelenmesi](automation-secure-asset-encryption.md).
 * Coğrafi çoğaltma hakkında daha fazla bilgi edinmek için bkz. [etkin coğrafi çoğaltma oluşturma ve kullanma](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication).

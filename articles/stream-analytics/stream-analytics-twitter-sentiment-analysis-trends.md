@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 4b265bb574895e4728ad93ee25c9dad0da226ea4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60fde4ca1d8aaf47367fcdb4b5dc7c73753b7496
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240293"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834773"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics’te gerçek zamanlı Twitter yaklaşım analizi
 
@@ -56,7 +56,7 @@ Bu bölümde, bir olay hub 'ı ad alanı oluşturur ve bu ad alanına bir olay h
  
 4. Ad alanı dağıtımı tamamladığında, kaynak grubunuza gidin ve Azure kaynakları listenizde Olay Hub 'ı ad alanını bulun. 
 
-5. Yeni ad alanında ** + &nbsp;Olay Hub**'ı ' nı seçin. 
+5. Yeni ad alanında ** + &nbsp; Olay Hub**'ı ' nı seçin. 
 
 6. Yeni Olay Hub 'ı *socialtwiur-Eh*olarak adlandırın. Farklı bir ad kullanabilirsiniz. Bunu yaparsanız, bu adı daha sonra gerekli olduğunuzdan emin olun. Olay Hub 'ı için başka herhangi bir seçenek ayarlamanıza gerek yoktur.
  
@@ -89,7 +89,7 @@ Bir işlemin bir olay hub 'ına veri gönderebilmesi için, Olay Hub 'ının eri
    Endpoint=sb://EVENTHUBS-NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=;EntityPath=socialtwitter-eh
    ```
 
-   Bağlantı dizesinin, noktalı virgülle ayrılmış birden çok anahtar-değer çifti içerdiğini unutmayın `Endpoint`:, `SharedAccessKeyName` `SharedAccessKey`, ve. `EntityPath`  
+   Bağlantı dizesinin, noktalı virgülle ayrılmış birden çok anahtar-değer çifti içerdiğini unutmayın: `Endpoint` ,, `SharedAccessKeyName` `SharedAccessKey` ve `EntityPath` .  
 
    > [!NOTE]
    > Güvenlik için örnekteki bağlantı dizesinin parçaları kaldırılmıştır.
@@ -127,16 +127,16 @@ Uygulama çalışmadan önce, Twitter anahtarları ve Olay Hub 'ı bağlantı di
 
 1. Ön koşullar bölümünde listelendiği gibi, [dallı](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore) , sanal çekirdek uygulamasını indirdiğinizden emin olun.
 
-2. *App. config* dosyasını açmak için bir metin düzenleyicisi kullanın. `<appSettings>` Öğesinde aşağıdaki değişiklikleri yapın:
+2. *App. config* dosyasını açmak için bir metin düzenleyicisi kullanın. Öğesinde aşağıdaki değişiklikleri yapın `<appSettings>` :
 
-   * Twitter `oauth_consumer_key` tüketici ANAHTARıNA (API anahtarı) ayarlayın. 
-   * Twitter `oauth_consumer_secret` tüketicisi gizli anahtarı (API gizli anahtarı) olarak ayarlanır.
-   * Twitter `oauth_token` erişim belirtecine ayarlayın.
-   * Twitter `oauth_token_secret` erişim belirteci parolası olarak ayarlayın.
-   * Bağlantı `EventHubNameConnectionString` dizesine ayarlayın.
-   * Olay `EventHubName` hub 'ı adına (varlık yolunun değeri) ayarlayın.
+   * `oauth_consumer_key`Twitter tüketici anahtarına (API anahtarı) ayarlayın. 
+   * `oauth_consumer_secret`Twitter tüketicisi gizli anahtarı (API gizli anahtarı) olarak ayarlanır.
+   * `oauth_token`Twitter erişim belirtecine ayarlayın.
+   * `oauth_token_secret`Twitter erişim belirteci parolası olarak ayarlayın.
+   * `EventHubNameConnectionString`Bağlantı dizesine ayarlayın.
+   * `EventHubName`Olay Hub 'ı adına (varlık yolunun değeri) ayarlayın.
 
-3. Komut satırını açın ve sanal kuruluşunuzun çekirdek uygulamanızın bulunduğu dizine gidin. Projeyi derlemek için `dotnet build` komutunu kullanın. Ardından, uygulamayı çalıştırmak `dotnet run` için komutunu kullanın. Uygulama, Olay Hub 'ınıza çimler gönderir.
+3. Komut satırını açın ve sanal kuruluşunuzun çekirdek uygulamanızın bulunduğu dizine gidin. `dotnet build`Projeyi derlemek için komutunu kullanın. Ardından, `dotnet run` uygulamayı çalıştırmak için komutunu kullanın. Uygulama, Olay Hub 'ınıza çimler gönderir.
 
 ## <a name="create-a-stream-analytics-job"></a>Akış Analizi işi oluşturma
 
@@ -144,7 +144,7 @@ Artık Tweet olayları Twitter 'dan gerçek zamanlı olarak akışa alındığı
 
 1. Azure portal, kaynak grubunuza gidin ve **+ Ekle**' yi seçin. **Stream Analytics işi** arayın ve **Oluştur**' u seçin.
 
-2. İşi `socialtwitter-sa-job` adlandırın ve bir abonelik, kaynak grubu ve konum belirtin.
+2. İşi adlandırın `socialtwitter-sa-job` ve bir abonelik, kaynak grubu ve konum belirtin.
 
     En iyi performans için işi ve Olay Hub 'ını aynı bölgeye yerleştirmeniz ve bu sayede verileri bölgeler arasında aktarmaya ödeme yapmanız iyi bir fikirdir.
 
@@ -154,7 +154,7 @@ Artık Tweet olayları Twitter 'dan gerçek zamanlı olarak akışa alındığı
 
 1. Stream Analytics işiniz için, **Iş topolojisi**altında sol menüden **girişler** ' i seçin.
 
-2. ** + &nbsp;Akış girişi** > **Olay Hub 'ı**Ekle ' yi seçin. **Yeni giriş** formunu aşağıdaki bilgilerle doldurun:
+2. ** + &nbsp; Akış girişi**  >  **Olay Hub 'ı**Ekle ' yi seçin. **Yeni giriş** formunu aşağıdaki bilgilerle doldurun:
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
@@ -205,12 +205,12 @@ Bu nasıl yapılır kılavuzunda, toplanan Tweet olaylarını iş sorgusundan Az
 
 1. Sol gezinti menüsündeki **Iş topolojisi** bölümünde, **çıktılar**' i seçin. 
 
-2. **Çıktılar** sayfasında, ** + &nbsp;Ekle** ve **BLOB depolama/Data Lake Storage 2.**' a tıklayın:
+2. **Çıktılar** sayfasında, ** + &nbsp; Ekle** ve **BLOB depolama/Data Lake Storage 2.**' a tıklayın:
 
-   * **Çıkış diğer adı**: adı `TwitterStream-Output`kullanın. 
+   * **Çıkış diğer adı**: adı kullanın `TwitterStream-Output` . 
    * **Içeri aktarma seçenekleri**: **aboneliklerinizden depolamayı Seç**' i seçin.
    * **Depolama hesabı**. Depolama hesabınızı seçin.
-   * **Kapsayıcı**. **Yeni oluştur** ' u seçin `socialtwitter`ve girin.
+   * **Kapsayıcı**. **Yeni oluştur** ' u seçin ve girin `socialtwitter` .
    
 4. **Kaydet**’i seçin.   
 
@@ -224,8 +224,8 @@ Bir iş girişi, sorgu ve çıkış belirtilir. Stream Analytics işi başlamaya
 
 3. İşi **Başlat** sayfasında, **iş çıkışı başlangıç zamanı**için **Şimdi** ' yi seçin ve ardından **Başlat**' ı seçin.
 
-## <a name="get-support"></a>Destek alma
-Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
+## <a name="get-support"></a>Destek alın
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)

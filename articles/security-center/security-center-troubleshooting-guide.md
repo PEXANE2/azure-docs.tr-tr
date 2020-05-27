@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585334"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836014"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Güvenlik Merkezi Sorun Giderme Kılavuzu
 
@@ -132,7 +132,7 @@ Güvenlik Merkezi panosunu yüklemeyle ilgili sorun yaşıyorsanız, aboneliği 
 
 ## <a name="contacting-microsoft-support"></a>Microsoft Destek ile iletişim kurma
 
-Bazı sorunlar bu makalede verilen yönergeler kullanılarak tanımlanabilirken, bazılarını Güvenlik Merkezi genel [Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)’nda da bulabilirsiniz. Ancak, daha fazla sorun giderme bilgisi gerekirse, **Azure portalında** aşağıda gösterildiği gibi yeni bir destek isteği oluşturabilirsiniz:
+Bu makalede sunulan yönergeler kullanılarak bazı sorunlar belirlenebilir, diğer kişiler de güvenlik merkezi genel [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-security-center.html)açıklanabilecek şekilde bulunabilir. Ancak, daha fazla sorun giderme bilgisi gerekirse, **Azure portalında** aşağıda gösterildiği gibi yeni bir destek isteği oluşturabilirsiniz:
 
 ![Microsoft Destek](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

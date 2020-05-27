@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 296254db83a065623b692d7947c130dfd71cd413
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257075"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835062"
 ---
 # <a name="monitor-the-process-server"></a>İşlem sunucusunu izleme
 
@@ -51,7 +51,7 @@ Bu sorunların tümü, VM 'lerin kurtarma noktası hedefini (RPO) etkileyebilir.
 
 İşlem sunucusu, aşağıdaki tabloda özetlenen bir dizi sistem durumu uyarısı oluşturur.
 
-**Uyarı türü** | **Bilgileri**
+**Uyarı türü** | **Ayrıntılar**
 --- | ---
 ![Sağlam][green] | İşlem sunucusu bağlandı ve sağlıklı.
 ![Uyarı][yellow] | Son 15 dakika boyunca %80 > CPU kullanımı
@@ -96,7 +96,7 @@ Ayrıca, **Site Recovery altyapı**altında kasadaki işlem sunucularını da iz
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Herhangi bir işlem sunucusu sorununuz varsa, [sorun giderme kılavuzumuzu](vmware-physical-azure-troubleshoot-process-server.md) izleyin
-- Daha fazla yardıma ihtiyacınız varsa sorunuzu [Azure Site Recovery forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)gönderin. 
+- Daha fazla yardıma ihtiyacınız varsa, [Azure Site Recovery Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)sorunuzu gönderin. 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 54e44a12f593d2074eefe5b2ff890863db3199f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ef38829a18f9e43f38cbdb291a799110d710cd7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478946"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834739"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM veya fiziksel makinenin Azure 'a yük devretmesinde oluşan hata sorunlarını giderme
 
@@ -76,10 +76,10 @@ Azure 'da herhangi bir makineyi getirmek için, Azure ortamı bazı sürücüler
 
 Azure 'daki yük devredilen VM 'deki **Bağlan** düğmesi gri Ise ve Azure 'A bir Express Route veya sıteden siteye VPN bağlantısı aracılığıyla bağlı değilseniz,
 
-1. **Sanal makine** > **ağı**' na gidin, gerekli ağ arabiriminin adına tıklayın.  ![Ağ arabirimi](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+1. **Sanal makine**  >  **ağı**' na gidin, gerekli ağ arabiriminin adına tıklayın.  ![Ağ arabirimi](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
 2. **IP yapılandırmaları**' na gidin ve gerekli IP yapılandırmasının ad alanına tıklayın. ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Genel IP adresini etkinleştirmek için **Etkinleştir**' e tıklayın. ![IP 'yi etkinleştir](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. **Gerekli ayarları** > Yapılandır**Yeni oluştur**' a tıklayın. ![Yeni oluştur](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+4. **Gerekli ayarları Yapılandır**  >  **Yeni oluştur**' a tıklayın. ![Yeni oluştur](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. Ortak adres adını girin, **SKU** ve **atama**için varsayılan seçenekleri belirleyin ve ardından **Tamam**' a tıklayın.
 6. Şimdi yaptığınız değişiklikleri kaydetmek için **Kaydet**' e tıklayın.
 7. Panelleri kapatın ve sanal makinenin bağlanmak/RDP 'ye **genel bakış** bölümüne gidin.
@@ -173,4 +173,4 @@ Sorunu çözmek için:
 - [WINDOWS VM Ile RDP bağlantısı](../virtual-machines/windows/troubleshoot-rdp-connection.md) sorunlarını giderme
 - [LINUX VM 'ye SSH bağlantısı](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md) sorunlarını giderme
 
-Daha fazla yardıma ihtiyacınız varsa sorgunuzu [Site Recovery forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) gönderin veya bu belgenin sonunda bir yorum bırakın. Size yardımcı olabilmemiz gereken etkin bir topluluk var.
+Daha fazla yardıma ihtiyacınız varsa sorgunuzu [Microsoft Q&soru sayfasında Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html) gönderin veya bu belgenin sonunda bir yorum bırakın. Size yardımcı olabilmemiz gereken etkin bir topluluk var.

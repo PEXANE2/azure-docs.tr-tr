@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 04e32a88dcfb9f069e51b2f18207155b95da37d6
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e7a190792714e1dd1a54da7e674e63d4453c548e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744342"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835079"
 ---
 # <a name="compose-dsc-configurations"></a>DSC yapılandırmaları oluşturma
 
@@ -42,8 +42,9 @@ Derleme başarıyla tamamlandığında, yeni yapılandırma **derlenen yapıland
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Otomasyonu durum yapılandırması 'nı kullanmaya başlama](automation-dsc-getting-started.md)
-- [Azure Otomasyonu durum yapılandırmasını etkinleştirme](automation-dsc-onboarding.md)
-- [Azure Otomasyonu durum yapılandırmasında DSC yapılandırmalarını derleme](automation-dsc-compile.md)
-- [Chocolatey ile sürekli dağıtım ayarlama](automation-dsc-cd-chocolatey.md)
-- [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/)
+- Düğümleri nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure Otomasyonu durum yapılandırmasını etkinleştirme](automation-dsc-onboarding.md).
+- Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
+- Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Chocolatey ile sürekli dağıtımı ayarlama](automation-dsc-cd-chocolatey.md).
+- Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

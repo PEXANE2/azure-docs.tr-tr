@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: d828103bef8e57f5d0cdfe6c243c52e2d0526663
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d982cc94a9ab0517d6453a30371635c1e3100676
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80257555"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835606"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Azure Stream Analytics işini, aktarım hızını artırmak için ölçeklendirin
 Bu makalede, Akış Analizi işlerinin aktarım hızını artırmak için bir Stream Analytics sorgusunun nasıl ayarlanacağı gösterilmektedir. Daha yüksek yükü işleyecek ve daha fazla sistem kaynaklarından (daha fazla bant genişliği, daha fazla CPU kaynağı, daha fazla bellek gibi) yararlanmak üzere işinizi ölçeklendirmek için aşağıdaki kılavuzu kullanabilirsiniz.
@@ -78,7 +78,7 @@ Her kiracı için ayrı girişler ve çıktılar kullanarak tek bir iş içindek
 
 
 ## <a name="get-help"></a>Yardım alın
-Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)

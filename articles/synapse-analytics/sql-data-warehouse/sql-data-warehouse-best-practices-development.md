@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9c4f08b143ab4a0d3e780f68f8d5ab823d4eae12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e149c45c720a5da6b051b7ce9581d74c64fa35
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745373"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834484"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>SYNAPSE SQL havuzu için geliştirme en iyi yöntemleri
 
@@ -120,7 +120,7 @@ Ayrıca bkz. [tablo dizinleri](sql-data-warehouse-tables-index.md), [columnstore
 
 Bu makalede aradığınızı bulamazsanız, tüm Azure SYNAPSE belgelerini aramak için bu sayfanın sol tarafındaki "belgeleri ara" seçeneğini kullanmayı deneyin.  
 
-[Azure SYNAPSE Forumu](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) , diğer kullanıcılara ve Azure SYNAPSE ürün grubuna soru göndermek için kullanabileceğiniz bir yerdir.  Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
+[Azure SYNAPSE Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , diğer kullanıcılara ve Azure SYNAPSE ürün grubuna soru göndermek için kullanabileceğiniz bir yerdir.  Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
 
 Sorularınızı Stack Overflow sitesinde sormak isterseniz, [Azure SQL Veri Ambarı Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-sqldw)’nu da kullanabilirsiniz.
 

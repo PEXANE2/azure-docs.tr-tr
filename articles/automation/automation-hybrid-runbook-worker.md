@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: f555d603756159dd108345260d71233c23c01ce5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 9305d0d6443c923c680af0d5fafc58887dadb902
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715724"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835300"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Karma Runbook Çalışanına genel bakış
 
@@ -61,7 +61,7 @@ Karma Runbook Worker için aşağıdaki bağlantı noktası ve URL 'Ler gereklid
 
 Belirli bir bölge için tanımlanan bir Otomasyon hesabınız varsa, karma Runbook Worker iletişimini ilgili bölge veri merkezi ile kısıtlayabilirsiniz. Aşağıdaki tabloda her bölge için DNS kaydı sağlanmaktadır.
 
-| **Bölge** | **DNS kaydı** |
+| **Geli** | **DNS kaydı** |
 | --- | --- |
 | Orta Avustralya |ac-jobruntimedata-prod-su1.azure-automation.net</br>ac-agentservice-prod-1.azure-automation.net |
 | Doğu Avustralya |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
@@ -133,4 +133,4 @@ Azure dışı kaynaklara erişirken, karma runbook çalışanı üzerinde çalı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatik hale getirmek üzere nasıl yapılandıracağınızı öğrenmek için bkz. [runbook 'Ları karma Runbook Worker üzerinde çalıştırma](automation-hrw-run-runbooks.md).
-* Karma runbook çalışanlarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. [karma runbook çalışanları sorunlarını giderme](troubleshoot/hybrid-runbook-worker.md#general).
+* Karma runbook çalışanlarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. [karma Runbook Worker sorunlarını giderme](troubleshoot/hybrid-runbook-worker.md#general).

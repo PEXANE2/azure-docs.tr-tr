@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: dbe13b2d1291f212af7da9d1176bc3d90997978b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd8557a33971be9fd0913bfdf84397d344901581
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428972"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834387"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault güvenliği
 
@@ -42,11 +42,11 @@ Her iki düzlemde kimlik doğrulama için tek bir mekanizmanın çeşitli avanta
 
 - Kuruluşlar, kuruluştaki tüm anahtar kasaları için merkezi olarak erişimi denetleyebilir.
 - Bir Kullanıcı ayrılsa bile, kuruluştaki tüm anahtar kasalarına erişimi anında kaybeder.
-- Kuruluşlar, ek güvenlik için Multi-Factor Authentication 'ı etkinleştirmek gibi Azure AD 'deki seçenekleri kullanarak kimlik doğrulamasını özelleştirebilir
+- Kuruluşlar, ek güvenlik için Multi-Factor Authentication 'ı etkinleştirmek gibi Azure AD 'deki seçenekleri kullanarak kimlik doğrulamasını özelleştirebilir.
 
 ### <a name="managing-administrative-access-to-key-vault"></a>Key Vault için yönetici erişimini yönetme
 
-Bir kaynak grubunda bir Anahtar Kasası oluşturduğunuzda, Azure AD 'yi kullanarak erişimi yönetirsiniz. Kullanıcılara veya gruplara bir kaynak grubundaki anahtar kasalarını yönetme yeteneği vermiş olursunuz. Uygun RBAC rollerini atayarak belirli bir kapsam düzeyinde erişim izni verebilirsiniz. Anahtar kasalarını yönetmek üzere bir kullanıcıya erişim izni vermek için, belirli bir kapsamdaki kullanıcıya `key vault Contributor` önceden tanımlanmış bir rol atarsınız. Aşağıdaki kapsamlar düzeyleri RBAC rolüne atanabilir:
+Bir kaynak grubunda bir Anahtar Kasası oluşturduğunuzda, Azure AD 'yi kullanarak erişimi yönetirsiniz. Kullanıcılara veya gruplara bir kaynak grubundaki anahtar kasalarını yönetme yeteneği vermiş olursunuz. Uygun RBAC rollerini atayarak belirli bir kapsam düzeyinde erişim izni verebilirsiniz. Anahtar kasalarını yönetmek üzere bir kullanıcıya erişim izni vermek için, belirli bir kapsamdaki kullanıcıya önceden tanımlanmış bir `key vault Contributor` rol atarsınız. Aşağıdaki kapsamlar düzeyleri RBAC rolüne atanabilir:
 
 - **Abonelik**: abonelik düzeyinde atanan bir RBAC rolü, bu aboneliğin içindeki tüm kaynak grupları ve kaynaklar için geçerlidir.
 - **Kaynak grubu**: kaynak grubu düzeyinde atanan bir RBAC rolü, kaynak grubundaki tüm kaynaklar için geçerlidir.
@@ -55,7 +55,7 @@ Bir kaynak grubunda bir Anahtar Kasası oluşturduğunuzda, Azure AD 'yi kullana
 Önceden tanımlanmış birkaç rol vardır. Önceden tanımlanmış bir rol gereksinimlerinize uygun değilse, kendi rolünüzü tanımlayabilirsiniz. Daha fazla bilgi için bkz. [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md).
 
 > [!IMPORTANT]
-> Bir kullanıcının bir anahtar `Contributor` Kasası yönetim düzlemine izinleri varsa, Kullanıcı Key Vault erişim ilkesi ayarlayarak kendilerine veri düzlemine erişim izni verebilir. Anahtar kasalarınıza kimin rol erişimi `Contributor` olduğunu sıkı bir şekilde denetleyebilirsiniz. Anahtar kasalarınızı, anahtarlarınızı, sırları ve sertifikalarınızı yalnızca yetkili kişilerin erişebildiğinden ve yönetebilmesi için emin olun.
+> Bir kullanıcının bir `Contributor` Anahtar Kasası yönetim düzlemine izinleri varsa, kullanıcı Key Vault erişim ilkesi ayarlayarak kendilerine veri düzlemine erişim izni verebilir. `Contributor`Anahtar kasalarınıza kimin rol erişimi olduğunu sıkı bir şekilde denetleyebilirsiniz. Anahtar kasalarınızı, anahtarlarınızı, sırları ve sertifikalarınızı yalnızca yetkili kişilerin erişebildiğinden ve yönetebilmesi için emin olun.
 
 <a id="data-plane-access-control"></a>
 ### <a name="controlling-access-to-key-vault-data"></a>Key Vault verilerine erişimi denetleme
@@ -97,6 +97,6 @@ Depolama hesaplarını güvenle yönetme önerisi için [Azure depolama Güvenli
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Azure Key Vault Için sanal ağ hizmeti uç noktaları](overview-vnet-service-endpoints.md))
+- [Azure Key Vault için sanal ağ hizmeti uç noktaları](overview-vnet-service-endpoints.md)
 - [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md)
-- [Azure Key Vault için sanal ağ hizmeti uç noktaları](overview-vnet-service-endpoints.md))
+- [Azure Key Vault için sanal ağ hizmeti uç noktaları](overview-vnet-service-endpoints.md)

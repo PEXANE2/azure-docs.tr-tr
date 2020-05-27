@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 599eb527a349278caf2e4e22e9458a9cd2d08d24
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: a6cf348142d694a03da24f32793fc72325701931
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712460"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835232"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -131,4 +131,4 @@ Linux bilgisayarların karma Runbook Worker grubunu kaldırmak için bir Windows
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatik hale getirmek üzere nasıl yapılandıracağınızı öğrenmek için bkz. [runbook 'Ları karma Runbook Worker üzerinde çalıştırma](automation-hrw-run-runbooks.md).
-* Karma runbook çalışanlarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. [Linux karma runbook çalışanları sorunlarını giderme](troubleshoot/hybrid-runbook-worker.md#linux).
+* Karma runbook çalışanlarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. [karma Runbook Worker sorunlarını giderme-Linux](troubleshoot/hybrid-runbook-worker.md#linux).

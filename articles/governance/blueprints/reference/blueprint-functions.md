@@ -1,14 +1,14 @@
 ---
 title: Azure şemaları işlevleri
 description: Azure şemaları tanımlarında ve atamalarında şema yapıtları ile kullanılabilecek işlevleri açıklar.
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280683"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834790"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure şemaları ile kullanım için işlevler
 
@@ -19,7 +19,7 @@ Aşağıdaki işlevler desteklenir:
 - [Yapıt](#artifacts)
 - [Concat](#concat)
 - [parametrelere](#parameters)
-- [Kaynak](#resourcegroup)
+- [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
 - [aboneliğiniz](#subscription)
 
@@ -30,7 +30,7 @@ Aşağıdaki işlevler desteklenir:
 Bu şema yapıtları çıkışları ile doldurulmuş özelliklerin bir nesnesini döndürür.
 
 > [!NOTE]
-> İşlev `artifacts()` , Kaynak Yöneticisi şablonunun içinden kullanılamaz. İşlev yalnızca şema tanımı JSON ' de veya şema tanımı Azure PowerShell ya da [kod olarak planlar](https://github.com/Azure/azure-blueprints/blob/master/README.md)' ın bir parçası olarak REST API şema YÖNETIMI sırasında JSON yapısı içinde kullanılabilir.
+> `artifacts()`İşlev, Kaynak Yöneticisi şablonunun içinden kullanılamaz. İşlev yalnızca şema tanımı JSON ' de veya şema tanımı Azure PowerShell ya da [kod olarak planlar](https://github.com/Azure/azure-blueprints/blob/master/README.md)' ın bir parçası olarak REST API şema YÖNETIMI sırasında JSON yapısı içinde kullanılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -106,7 +106,7 @@ Aşağıdaki örnek çıktı özelliğini içeren _Mytemplateyapıt_ kimlikli bi
 
 _Mytemplateyapıt_ örneğinden veri almaya ilişkin bazı örnekler şunlardır:
 
-| İfadeler | Tür | Değer |
+| İfade | Tür | Değer |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Dizi | \["First", "Second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Dize | adı |
@@ -184,7 +184,7 @@ Azure Blueprint işlevi, Azure Resource Manager şablonu işlevinden farklıdır
 }
 ```
 
-Ardından, bir şema yapıtı içinde için `parameters()` bağımsız değişken olarak _prenalid_ 'leri kullanın:
+Ardından, bir şema yapıtı içinde için bağımsız değişken olarak _Prenalid_ 'leri kullanın `parameters()` :
 
 ```json
 {
@@ -218,9 +218,9 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 ### <a name="remarks"></a>Açıklamalar
 
-Azure Blueprint işlevi Azure Resource Manager şablonu işlevinden farklıdır. İşlev `resourceGroup()` , abonelik düzeyindeki yapıt veya şema tanımında kullanılamaz. Yalnızca bir kaynak grubu yapısının parçası olan şema yapıtları için kullanılabilir.
+Azure Blueprint işlevi Azure Resource Manager şablonu işlevinden farklıdır. `resourceGroup()`İşlev, abonelik düzeyindeki yapıt veya şema tanımında kullanılamaz. Yalnızca bir kaynak grubu yapısının parçası olan şema yapıtları için kullanılabilir.
 
-`resourceGroup()` İşlevin yaygın kullanımı, kaynak grubu yapıtı ile aynı konumda kaynak oluşturmaktır.
+İşlevin yaygın kullanımı, `resourceGroup()` kaynak grubu yapıtı ile aynı konumda kaynak oluşturmaktır.
 
 ### <a name="example"></a>Örnek
 
@@ -265,7 +265,7 @@ Ardından, `resourceGroup()` bir kaynak grubu yer tutucu nesnesini hedefleyen bi
 
 `resourceGroups(placeholderName)`
 
-Belirtilen kaynak grubu yapıtını temsil eden bir nesne döndürür. Yapıt `resourceGroup()`bağlamını gerektiren aksine, bu işlev, kaynak grubunun bağlamında olmayan belirli bir kaynak grubu yer tutucusunun özelliklerini almak için kullanılır.
+Belirtilen kaynak grubu yapıtını temsil eden bir nesne döndürür. `resourceGroup()`Yapıt bağlamını gerektiren aksine, bu işlev, kaynak grubunun bağlamında olmayan belirli bir kaynak grubu yer tutucusunun özelliklerini almak için kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -344,7 +344,7 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 ### <a name="example"></a>Örnek
 
-Şablon yapıtı için _resourceName_ parametresi olarak geçirilen `concat()` bir adlandırma kuralı oluşturmak için aboneliğin görünen adını ve işlevini kullanın.
+`concat()`Şablon yapıtı Için _resourceName_ parametresi olarak geçirilen bir adlandırma kuralı oluşturmak için aboneliğin görünen adını ve işlevini kullanın.
 
 ```json
 {

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 13ea1043d05c9f349e25623086c2908e176772a8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: ec914db1e26e6f052715440c3e418df09fe8a361
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583957"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835980"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
@@ -41,7 +41,7 @@ HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 > [!IMPORTANT]
 > HDInsight kümesiyle birlikte sunulan bileşenler tam olarak desteklenmektedir. Microsoft Desteği, bu bileşenlerle ilgili sorunları yalıtmaya ve çözmeye yardımcı olur.
 >
-> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Microsoft desteği sorunu çözebiliyor olabilir veya bu teknoloji için derin uzmanlığın bulunduğu açık kaynaklı teknolojiler için kullanılabilir kanalları ister. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [HDInsight Için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), `https://stackoverflow.com`. Ayrıca Apache projelerinin üzerinde `https://apache.org`proje siteleri vardır.
+> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Microsoft desteği sorunu çözebiliyor olabilir veya bu teknoloji için derin uzmanlığın bulunduğu açık kaynaklı teknolojiler için kullanılabilir kanalları ister. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [Microsoft Q&HDInsight için soru sayfası](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) `https://stackoverflow.com` . Ayrıca Apache projelerinin üzerinde proje siteleri vardır `https://apache.org` .
 
 ## <a name="understand-default-python-installation"></a>Varsayılan Python yüklemesini anlama
 
@@ -105,7 +105,7 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
         sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
         ```
 
-    sanal ortam adını bilmiyorsanız, kümenin baş düğümüne SSH gönderebilir ve tüm sanal ortamları göstermek için çalıştırabilirsiniz `/usr/bin/anaconda/bin/conda info -e` .
+    sanal ortam adını bilmiyorsanız, kümenin baş düğümüne SSH gönderebilir ve `/usr/bin/anaconda/bin/conda info -e` tüm sanal ortamları göstermek için çalıştırabilirsiniz.
 
 3. Spark ve Livy yapılandırmalarını değiştirip oluşturulan sanal ortama işaret edin.
 
@@ -146,9 +146,9 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
 
 ## <a name="known-issue"></a>Bilinen sorun
 
-Anaconda sürümü `4.7.11`, `4.7.12`ve `4.8.0`için bilinen bir hata var. Betik eylemlerinizin askıda olduğunu `"Collecting package metadata (repodata.json): ...working..."` ve ile `"Python script has been killed due to timeout after waiting 3600 secs"`başarısız olduğunu görürseniz. Sorunu çözebilmeniz için [bu betiği](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) indirebilir ve tüm düğümlerde betik eylemleri olarak çalıştırabilirsiniz.
+Anaconda sürümü, ve için bilinen bir hata `4.7.11` var `4.7.12` `4.8.0` . Betik eylemlerinizin askıda olduğunu `"Collecting package metadata (repodata.json): ...working..."` ve ile başarısız olduğunu görürseniz `"Python script has been killed due to timeout after waiting 3600 secs"` . Sorunu çözebilmeniz için [bu betiği](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) indirebilir ve tüm düğümlerde betik eylemleri olarak çalıştırabilirsiniz.
 
-Anaconda sürümünüzü denetlemek için, küme üst bilgisi düğümüne SSH oluşturabilir ve çalıştırabilirsiniz `/usr/bin/anaconda/bin/conda --v`.
+Anaconda sürümünüzü denetlemek için, küme üst bilgisi düğümüne SSH oluşturabilir ve çalıştırabilirsiniz `/usr/bin/anaconda/bin/conda --v` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

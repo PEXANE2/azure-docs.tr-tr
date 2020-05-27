@@ -74,8 +74,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Ağ blogu
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Ağ forumu
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Ağ için Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: Ağ geri bildirimi
       href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
     - name: Fiyatlandırma

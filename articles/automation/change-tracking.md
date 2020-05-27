@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: ab091ba413a8429a8fea131c643cceee7007f927
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4f6ae1ad5b0f3904b84d47316c11aa1a67531a28
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744374"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835113"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -77,7 +77,7 @@ Değişiklik izleme grafiğini ve değişiklik türü ve zaman aralıklarına g�
 
 Ayrıntılarını görüntülemek için bir değişikliğe veya olaya tıklayabilirsiniz. Kullanılabilir değişiklik türleri şunlardır:
 
-* Ekinlikler
+* Olaylar
 * Daemon 'ları
 * Dosyalar
 * Kayıt Defteri
@@ -195,7 +195,10 @@ Değişiklik İzleme ve envanterin önemli bir özelliği, karma ortamınızın 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Değişiklik İzleme ve stoku yönetme](change-tracking-file-contents.md)
-* [Azure Izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md)
-* [Değişiklik İzleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md)
-* [Azure VM 'deki değişikliklerle ilgili sorunları giderme](automation-tutorial-troubleshoot-changes.md)
+* Değişiklik İzleme ve envanterle çalışma hakkında daha fazla bilgi için bkz. [değişiklik izleme ve envanteri yönetme](change-tracking-file-contents.md).
+* Bir runbook 'tan özelliği etkinleştirmek için, bkz. [runbook 'tan değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-runbook.md).
+* Otomasyon hesabından özelliği etkinleştirmek için bkz. [Otomasyon hesabından değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-auto-acct.md).
+* Azure portal göz atarak özelliği etkinleştirmek için, bkz. [Azure portal değişiklik izleme ve envanterini etkinleştirme](automation-onboard-solutions-from-browse.md).
+* Özelliği bir Azure VM 'den etkinleştirmek için bkz. [Azure VM 'den değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-vm.md).
+* Log Analytics çalışma alanınızda depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [Azure izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md).
+* Özellik hatalarını gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md).

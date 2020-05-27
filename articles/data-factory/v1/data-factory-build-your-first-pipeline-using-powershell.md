@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 94f11e306f866496d4ae03dad03b070d26d616e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1857d3ee8b607d91b6fdd13b4499518d06fb9913
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438987"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834552"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak ilk Azure data factory’nizi derleme
 > [!div class="op_single_selector"]
@@ -25,8 +25,6 @@ ms.locfileid: "75438987"
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Kaynak Yöneticisi şablonu](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
->
->
 
 
 > [!NOTE]
@@ -117,7 +115,7 @@ Bu adımda, Azure Depolama hesabınızı veri fabrikanıza bağlarsınız. Giri�
         }
     }
     ```
-    **accountname** sözcüğünü Azure depolama hesabınızın adıyla, **accountkey** sözcüğünü de Azure depolama hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
+    **Hesap adını** Azure depolama hesabınızın adı ve **hesap anahtarı** ile Azure depolama hesabının erişim anahtarı ile değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 2. Azure PowerShell’de ADFGetStarted klasörüne geçin.
 3. Bağlı bir hizmet oluşturan **New-AzDataFactoryLinkedService** cmdlet 'ini kullanabilirsiniz. Bu öğreticide kullandığınız bu cmdlet ve diğer Data Factory cmdlet 'leri, *Resourcegroupname* ve *datafactoryname* parametreleri için değerleri geçirmeniz gerekir. Alternatif olarak, bir **DataFactory** nesnesini almak ve bir cmdlet 'i her çalıştırdığınızda *Resourcegroupname* ve *datafactoryname* yazmadan nesneyi geçirmek için **Get-azdatafactory** ' yi kullanabilirsiniz. **Get-AzDataFactory** cmdlet 'inin çıkışını bir **$df** değişkenine atamak için aşağıdaki komutu çalıştırın.
 
@@ -170,7 +168,7 @@ Bu adımda, isteğe bağlı HDInsight kümesini data factory’nize bağlarsın�
    * İsteğe bağlı HDInsight kümesi kullanmak yerine **kendi HDInsight kümenizi** kullanabilirsiniz. Ayrıntılar için bkz. [HDInsight Bağlı Hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
    * HDInsight kümesi JSON 'da belirttiğiniz blob depolamada (**Linkedservicename**) bir **varsayılan kapsayıcı** oluşturur. HDInsight, küme silindiğinde bu kapsayıcıyı silmez. Bu davranış tasarım gereğidir. İsteğe bağlı HDInsight bağlı hizmeti sayesinde, mevcut canlı bir küme (**TimeToLive**) olmadıkça bir dilim her Işlendiğinde bir HDInsight kümesi oluşturulur. Küme, işlem tamamlandığında otomatik olarak silinir.
 
-       Daha fazla dilim işlendikçe, Azure blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcıların adları bir kalıbı izler: "ADF**yourdatafactoryname**-**linkedservicename**-DateTimeStamp". Azure blob depolamada kapsayıcı silmek için [Microsoft Storage Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
+       Daha fazla dilim işlendikçe, Azure blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcıların adları bir kalıbı izler: "ADF**yourdatafactoryname** - **linkedservicename**-DateTimeStamp". Azure blob depolamada kapsayıcı silmek için [Microsoft Storage Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
 
      Ayrıntılar için bkz. [İsteğe Bağlı HDInsight Bağlı Hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 2. Hdınsightondemandlinkedservice adlı bağlı hizmeti oluşturan **New-AzDataFactoryLinkedService** cmdlet 'ini çalıştırın.
@@ -214,10 +212,10 @@ Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek ver
 
    | Özellik | Açıklama |
    |:--- |:--- |
-   | type |Veriler Azure blob depolamada yer aldığından type özelliği AzureBlob olarak ayarlanmıştır. |
+   | tür |Veriler Azure blob depolamada yer aldığından type özelliği AzureBlob olarak ayarlanmıştır. |
    | linkedServiceName |daha önce oluşturduğunuz StorageLinkedService’e başvurur. |
    | fileName |Bu özellik isteğe bağlıdır. Bu özelliği atarsanız, tüm folderPath dosyaları alınır. Bu durumda, yalnızca input.log işlenir. |
-   | type |Günlük dosyaları metin biçiminde olduğundan TextFormat kullanacağız. |
+   | tür |Günlük dosyaları metin biçiminde olduğundan TextFormat kullanacağız. |
    | columnDelimiter |Günlük dosyalarındaki sütunlar virgül (,) ile ayrılmıştır. |
    | frequency/interval |frequency Ay, interval de 1 olarak ayarlanmıştır; girdi dilimlerinin aylık olarak kullanılabileceğini belirtir. |
    | external |bu özellik, girdi verileri Data Factory hizmetiyle oluşturulmadıysa true olarak ayarlanır. |
@@ -315,7 +313,7 @@ Bu adımda, **HDInsightHive** etkinliğiyle ilk işlem hattınızı oluşturursu
     ```
     JSON parçacığında, HDInsight kümesinde Veri işleyecek Hive’ı kullanan etkinlikten oluşmuş bir işlem hattı oluşturuyorsunuz.
 
-    **partitionweblogs.hql** Hive betik dosyası Azure depolama hesabında (scriptLinkedService tarafından belirtilen **StorageLinkedService** adıyla) ve **adfgetstarted** kapsayıcısındaki **betik** klasöründe depolanır.
+    **Partitionweblogs. HQL**Hive betik dosyası Azure depolama hesabında (scriptlinkedservice tarafından belirtilen **StorageLinkedService**adıyla) ve **adfgetstarted**kapsayıcısındaki **betik** klasöründe depolanır.
 
     Burada, **defines** bölümü hive betiğine Hive yapılandırma değerleri olarak (örn., ${hiveconf:inputtable}, ${hiveconf:partitionedtable}) geçirilecek çalışma zamanı ayarlarını belirtmek için kullanılır.
 
@@ -416,7 +414,7 @@ Bu makalede, isteğe bağlı Azure HDInsight kümesinde bir Hive betiği çalı�
 | Konu başlığı | Açıklama |
 |:--- |:--- |
 | [Data Factory Cmdlet Başvurusu](/powershell/module/az.datafactory) |Data Factory cmdlet'leri hakkında kapsamlı belgelere bakma |
-| [İşlem hatları](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarının ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |
+| [Pipelines](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarının ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |
 | [Veri kümeleri](data-factory-create-datasets.md) |Bu makale, Azure Data Factory’deki veri kümelerini anlamanıza yardımcı olur. |
 | [Zamanlama ve Yürütme](data-factory-scheduling-and-execution.md) |Bu makalede Azure Data Factory uygulama modelinin zamanlama ve yürütme yönleri açıklanmaktadır. |
 | [İzleme Uygulaması kullanılarak işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md) |Bu makalede İzleme ve Yönetim Uygulaması kullanılarak işlem hatlarını izleme, yönetme ve hatalarını ayıklama işlemleri açıklanmaktadır. |

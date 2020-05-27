@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
-ms.openlocfilehash: 998020c5e39c8d50e8a14c74c43b7b435752f43d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b86a38278ae345fac376958d18912a878a53872b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789316"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834807"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak e-posta gönderme ve gönderme listesini SendGrid içinde yönetme
 
@@ -52,7 +52,7 @@ Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-ap
      -veya-
 
    * Eylem eklemek istediğiniz adımlar arasında, işaretçinizi adımlar arasındaki oka taşıyın. 
-   Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. Arama kutusuna filtreniz olarak "SendGrid" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
 
@@ -66,9 +66,9 @@ Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-ap
 
 Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/sendgrid/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

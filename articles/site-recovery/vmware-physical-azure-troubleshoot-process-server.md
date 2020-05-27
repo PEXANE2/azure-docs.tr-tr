@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79256867"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835810"
 ---
 # <a name="troubleshoot-the-process-server"></a>İşlem sunucusunda sorun giderme
 
@@ -32,9 +32,9 @@ Sorun gidermeye başlamadan önce:
 
 İşlem sunucularının en iyi performansı için, çok sayıda genel en iyi uygulama özetlenmektedir.
 
-**En iyi uygulama** | **Bilgileri**
+**En iyi uygulama** | **Ayrıntılar**
 --- |---
-**Kullanımıyla** | Yapılandırma sunucusu/tek başına işlem sunucusunun yalnızca amaçlanan amaç için kullanıldığından emin olun. Makinede başka bir şey çalıştırmayın.
+**Kullanım** | Yapılandırma sunucusu/tek başına işlem sunucusunun yalnızca amaçlanan amaç için kullanıldığından emin olun. Makinede başka bir şey çalıştırmayın.
 **IP adresi** | İşlem sunucusunun statik bir IPv4 adresi olduğundan ve NAT 'nin yapılandırılmadığından emin olun.
 **Belleği/CPU kullanımını denetleme** |CPU ve bellek kullanımını %70 altında tutun.
 **Boş alan sağlayın** | Boş alan, işlem sunucusundaki önbellek disk alanını gösterir. Çoğaltma verileri Azure 'a yüklenmeden önce önbellekte depolanır.<br/><br/> Boş alanı %25 üzerinde tutun. %20 ' nin altına gittiğinde işlem sunucusuyla ilişkili çoğaltılan makineler için çoğaltma kısıtlanacaktır.
@@ -51,7 +51,7 @@ Sorun gidermenin ilk adımı, işlem sunucusunun sistem durumunu ve durumunu den
 
 **Uyarı türü** | **Hata** | **Sorun giderme**
 --- | --- | --- 
-![Sağlam][green] | Hiçbiri  | İşlem sunucusu bağlandı ve sağlıklı.
+![Sağlam][green] | Yok  | İşlem sunucusu bağlandı ve sağlıklı.
 ![Uyarı][yellow] | Belirtilen hizmetler çalışmıyor. | 1. hizmetlerin çalıştığını denetleyin.<br/> 2. hizmetler beklendiği gibi çalışıyorsa, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
 ![Uyarı][yellow]  | Son 15 dakika boyunca %80 > CPU kullanımı. | 1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
 ![Kritik][red] |  Son 15 dakika boyunca %95 > CPU kullanımı. | 1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 4. sorun devam ederse, VMware/fiziksel sunucu çoğaltması için [dağıtım planlayıcısı](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
@@ -113,7 +113,7 @@ Microsoft Azure Kurtarma Hizmetleri Aracısı (obengine) dışındaki tüm hizme
 3. Bağlantının başarılı olup olmadığını doğrulayın.
 
 
-**Bağlantı** | **Bilgileri** | **Eylem**
+**Bağlantı** | **Ayrıntılar** | **Eylem**
 --- | --- | ---
 **Başarısız** | Telnet boş bir ekran gösterir ve işlem sunucusuna erişilebilir. | Başka eylem gerekmiyor.
 **Dır** | Bağlanamazsınız | İşlem sunucusunda 9443 numaralı bağlantı noktasına izin verildiğinden emin olun. Örneğin, bir çevre ağınız veya bir denetimli alt ağınız varsa. Bağlantıyı yeniden denetleyin.
@@ -235,7 +235,7 @@ Kaynak makinelerden işlem hizmetine engellenen veri karşıya yüklemelerle ilg
 
     a) **Microsoft Azure Backup**için arama yapın.
 
-    b) **Microsoft Azure Backup**açın ve **eylem** > **Değiştir Özellikler**' i seçin.
+    b) **Microsoft Azure Backup**açın ve **eylem**  >  **Değiştir Özellikler**' i seçin.
 
     c) ara sunucu **yapılandırması** sekmesinde, proxy adresi, kayıt defteri ayarlarında gösterilen ara sunucu adresiyle aynı olmalıdır. Aksi takdirde, aynı adresle değiştirin.
 
@@ -246,7 +246,7 @@ Kaynak makinelerden işlem hizmetine engellenen veri karşıya yüklemelerle ilg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla yardıma ihtiyacınız varsa sorunuzu [Azure Site Recovery forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)gönderin. 
+Daha fazla yardıma ihtiyacınız varsa, [Azure Site Recovery Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)sorunuzu gönderin. 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png
