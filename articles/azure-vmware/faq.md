@@ -4,12 +4,12 @@ description: Azure VMware çözümü (AVS) ile ilgili bazı yaygın soruların y
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 6d8e87dd52871b82109ccc794af04244efe95b06
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854609"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873312"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware çözümü (AVS) önizleme hakkında sık sorulan sorular
 
@@ -17,7 +17,7 @@ Azure VMware çözümü (AVS) hakkında sık sorulan sorular için yanıtlar.
 
 ## <a name="general"></a>Genel
 
-**Azure VMware Çözümü (AVS) nedir?**
+**Azure VMware çözümü (AVS) nedir?**
 
 Kuruluşlar, iş çevikliği geliştirmek, maliyetleri azaltmak ve yeniliklerini hızlandırmak için strateji yaparken, hibrit bulut platformları, müşterilerin dijital dönüşümünde önemli etkinleştiriciler olarak ortaya çıktı. AVS, VMware 'nin yazılım tanımlı veri merkezi (SDDC) yazılımını Microsoft Azure küresel bulut hizmeti ekosistemi ile birleştirir. AVS çözümü, performans, kullanılabilirlik, güvenlik ve uyumluluk gereksinimlerini karşılayacak şekilde yönetilir.
 
@@ -45,7 +45,7 @@ Belirli tümleştirmeler ve kullanım durumları, büyük/küçük harf esasına
 
 **VSphere sanal makinelerini şirket içi ortamlardan AVS özel bulutlarına geçirebilir miyim?**
 
-Evet. Standart çapraz vCenter [vMotion Requirements] [https://kb.vmware.com/s/article/210695] karşılanıyorsa VM 'leri özel buluta TAŞıMAK için VM geçişi ve vMotion kullanılabilir.
+Evet. Standart çapraz vCenter [vMotion Requirements] [] karşılanıyorsa VM 'Leri özel buluta taşımak için VM geçişi ve vMotion kullanılabilir https://kb.vmware.com/s/article/210695 .
 
 **Şirket içi ortamlarda gerekli olan belirli bir vSphere sürümü mi?**
 
@@ -66,6 +66,35 @@ CloudSimple ile mevcut Azure VMware çözümünde değişiklik yapılmaz. Azure 
 **Bu yeni çözüme CloudSimple ile Azure VMware çözümünden geçiş yapabilir miyim?**
 
 Evet, Azure VMware çözümü, HCX gibi tanıdık VMware araçları kullanılarak geçişi destekler. Yeni çözüme geçiş yapmak isteyen müşteriler için lütfen seçenekleri ve kullanılabilir desteği incelemek üzere Microsoft hesabı ekibinizle birlikte çalışın.
+
+<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**Nasıl yaparım? var olan bir Azure VMware çözümü için bir konak kotası artışı ister misiniz?**
+
+Bir [destek isteği göndererek](..\azure-portal\supportability\how-to-create-azure-support-request.md)kota artışı isteyebilirsiniz. Kota yönetimi ekibi, isteği değerlendirir ve üç iş günü içinde onaylar.  
+
+> [!IMPORTANT]
+> Kota artışı isteyebilmeniz için önce [ **MICROSOFT. AVS** kaynak sağlayıcısını](tutorial-create-private-cloud.md) Azure Portal kaydettiğinizden emin olun.  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types).
+
+1. Azure portal, **Yardım + Destek**altında, **Yeni bir destek isteği** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:
+   - **Sorun türü:** Teknik
+   - **Abonelik:** Abonelik KIMLIĞINIZ
+   - **Hizmet:**  Azure VMware çözümü 
+   - **Özet:** Kota artışı
+   - **Sorun türü:** Kapasite yönetimi sorunları
+   - **Sorun alt türü:** Ek konak kotası/kapasitesi için müşteri Isteği
+
+1. Destek bileti açıklamasında, Ayrıntılar sekmesinde şunları sağlayın:
+   - Ek düğüm sayısı   
+   - Düğüm SKU 'SU
+   - Bölge
+
+   > [!NOTE] 
+   > Varsayılan olarak, en az dört düğüm verilecektir.
+
+1. İsteği göndermek için **gözden geçir + oluştur** ' a tıklayın.
 
 ## <a name="compute-network-and-storage"></a>İşlem, ağ ve depolama
 

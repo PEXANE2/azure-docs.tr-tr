@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 7a017f9485ec847c0a2c045e4c511b6a68db0cb2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889942"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873333"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Yasal uyumluluk panonuzda standartlar kümesini özelleştirme
 
@@ -29,7 +29,7 @@ Azure Güvenlik Merkezi, kaynaklarınızın yapılandırmalarını endüstri sta
 
 Endüstri standartları, mevzuat standartları ve değerlendirmeleri, güvenlik merkezi 'nde *uyumluluk paketleri*olarak temsil edilir.  Her paket Azure Ilkesinde tanımlanan bir girişimdir. Panonuzda değerlendirmelere eşlenen uyumluluk verilerini görmek için, **güvenlik ilkesi** sayfasından yönetim grubunuza veya aboneliğinize bir uyumluluk paketi ekleyin. (Azure Ilkesi ve [güvenlik Ilkeleriyle çalışma](tutorial-security-policy.md)girişimleri hakkında daha fazla bilgi edinin.)
 
-Seçtiğiniz kapsamınızda bir standart veya kıyaslandığınızda, tüm ilişkili uyumluluk verileriyle değerlendirmelere sahip olan standart, mevzuat uyumluluk panonuzda görünür. Ayrıca, eklendi olan standartlardan herhangi biri için Özet raporlar indirebilirsiniz.
+Seçtiğiniz kapsamınızda bir standart veya kıyaslama eklendi aldığınızda, girişimi kapsama atar ve standart, mevzuat uyumluluk panonuzda değerlendirmelere eşlenen tüm ilişkili uyumluluk verileriyle birlikte görünür. Ayrıca, eklendi olan standartlardan herhangi biri için Özet raporlar indirebilirsiniz.
 
 Microsoft ayrıca yasal düzenleme standartlarını de izler ve zaman içindeki bazı paketlerdeki kapsamı otomatik olarak geliştirir. Microsoft, girişim için yeni içerik yayımlarsa (Standart içindeki daha fazla denetim ile eşlenen yeni ilkeler), panonuzda ek içerik otomatik olarak görünür.
 

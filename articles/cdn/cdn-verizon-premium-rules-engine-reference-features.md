@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2d4090934a940809fe75ad70e0650eb1c9353f1
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253501"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872726"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium kural altyapısı özelliklerinden Azure CDN
 
@@ -20,150 +20,9 @@ Bu makalede, Azure Content Delivery Network (CDN) [kuralları altyapısının](c
 
 Kuralın üçüncü bölümü özelliğidir. Bir özellik, bir eşleşme koşulları kümesi tarafından tanımlanan istek türüne uygulanan eylemin türünü tanımlar.
 
-## <a name="access-features"></a>Erişim özellikleri
 
-Bu özellikler, içeriğe erişimi denetlemek için tasarlanmıştır.
+En son özellikler için [Verizon Rules Engine belgelerine](https://docs.vdms.com/cdn/index.html#Quick_References/HRE_QR.htm#Actions)bakın.
 
-Adı | Amaç
------|--------
-[Erişimi Reddet (403)](#deny-access-403) | Tüm isteklerin 403 yasaklanmış bir Yanıt ile reddedildiğini belirler.
-[Belirteç kimlik doğrulaması](#token-auth) | Belirteç tabanlı kimlik doğrulamasının bir isteğe uygulanıp uygulanmadığı belirler.
-[Belirteç kimlik doğrulaması reddi kodu](#token-auth-denial-code) | Belirteç tabanlı kimlik doğrulaması nedeniyle bir istek reddedildiğinde kullanıcıya döndürülen yanıtın türünü belirler.
-[Belirteç kimlik doğrulaması URL 'sini yoksay](#token-auth-ignore-url-case) | Belirteç tabanlı kimlik doğrulaması tarafından yapılan URL karşılaştırmalarının büyük/küçük harfe duyarlı olup olmadığını belirler.
-[Belirteç kimlik doğrulaması parametresi](#token-auth-parameter) | Belirteç tabanlı kimlik doğrulama sorgu dizesi parametresinin yeniden adlandırılması gerekip gerekmediğini belirler.
-
-## <a name="caching-features"></a>Önbelleğe alma özellikleri
-
-Bu özellikler, içeriğin ne zaman ve nasıl önbelleğe alınacağını özelleştirmek için tasarlanmıştır.
-
-Adı | Amaç
------|--------
-[Bant genişliği parametreleri](#bandwidth-parameters) | Bant genişliği azaltma parametrelerinin (örneğin, ec_rate ve ec_prebuf) etkin olup olmadığını belirler.
-[Bant genişliği azaltma](#bandwidth-throttling) | Varlık noktası (POP) tarafından belirtilen yanıtın bant genişliğini kısıtlar.
-[Atlama önbelleği](#bypass-cache) | İsteğin önbelleğe alma işleminin atlanıp atlanmayacağını belirler.
-[Cache-Control üst bilgisi Işleme](#cache-control-header-treatment) | Dış en büyük yaş `Cache-Control` özelliği etkin olduğunda, pop 'un üst bilgi üretimini denetler.
-[Cache-Key sorgu dizesi](#cache-key-query-string) | Önbellek anahtarının bir istekle ilişkili sorgu dizesi parametrelerini içerip içermediğini veya dışmadığını belirler.
-[Cache-Key yeniden yazma](#cache-key-rewrite) | Bir istekle ilişkili önbellek anahtarını yeniden yazar.
-[Önbellek dolgusunu tamamla](#complete-cache-fill) | Bir istek bir POP 'ta kısmi önbellek isabetsizliği ile sonuçlanırsa ne olacağını belirler.
-[Dosya türlerini sıkıştır](#compress-file-types) | Sunucuda sıkıştırılan dosyalar için dosya biçimlerini tanımlar.
-[Varsayılan dahili maksimum yaş](#default-internal-max-age) | POP/kaynak sunucu önbelleği yeniden doğrulama için varsayılan en yüksek yaş aralığını belirler.
-[Süre sonu üst bilgisi Işleme](#expires-header-treatment) | Dış en büyük yaş `Expires` özelliği etkin olduğunda, bir pop ile üstbilgileri oluşturmayı denetler.
-[Dış maksimum yaş](#external-max-age) | Tarayıcı için AÇıLAN önbellek yeniden doğrulama için maksimum yaş aralığını belirler.
-[Maksimum Iç kullanım süresi](#force-internal-max-age) | POP/kaynak sunucu önbelleği yeniden doğrulama için maksimum yaş aralığını belirler.
-[H. ula desteği (HTTP aşamalı Indirme)](#h264-support-http-progressive-download) | İçerik akışı için kullanılabilen H., dosya biçimlerinin türlerini belirler.
-[Önbellek Isteğini kabul edin](#honor-no-cache-request) | HTTP istemcisinin önbelleğe alma isteklerinin kaynak sunucuya iletilip iletilmeyeceğini belirler.
-[Önbellek yok sayma](#ignore-origin-no-cache) | CDN 'nin bir kaynak sunucudan sunulan belirli yönergeleri yoksayıp saymayacağını belirler.
-[Unsatisfiable aralıklarını yoksay](#ignore-unsatisfiable-ranges) | İstek bir 416 Istenen Aralık Satisfiable durum kodu oluşturduğunda istemcilere döndürülen yanıtı belirler.
-[İç maksimum-eski](#internal-max-stale) | AÇıLAN bir varlık, önbelleğe alınmış varlığı kaynak sunucu ile yeniden doğrulayamamışsa, ön belleğe alınmış bir varlığın bir POP 'tan ne kadar süre geçmiş olduğunu denetler.
-[Kısmi önbellek paylaşımı](#partial-cache-sharing) | Bir isteğin kısmen önbelleğe alınmış içerik oluşturup üretmeyeceğini belirler.
-[Önbelleğe alınmış Içeriği önceden doğrula](#prevalidate-cached-content) | Önbelleğe alınan içeriğin TTL 'nin süresi dolmadan erken yeniden doğrulama için uygun olup olmadığını belirler.
-[Sıfır baytlık önbellek dosyalarını Yenile](#refresh-zero-byte-cache-files) | Bir HTTP istemcisinin 0 baytlık önbellek varlığı için nasıl bir istek pop tarafından işleneceğini belirler.
-[Önbelleklenebilir durum kodlarını ayarlama](#set-cacheable-status-codes) | Önbelleğe alınmış içerikle sonuçlanabilme durum kodları kümesini tanımlar.
-[Hatada eski Içerik teslimi](#stale-content-delivery-on-error) | Önbellek yeniden doğrulama sırasında bir hata oluştuğunda veya müşteri kaynak sunucusundan istenen içerik alınırken, zaman aşımına uğradı önbelleğe alınmış içeriğin teslim edilip edilmeyeceğini belirler.
-[Yeniden doğrulama eski](#stale-while-revalidate) | , Yeniden doğrulama gerçekleştiğinde pop 'Ların eski istemciye istek sahibine erişmesine izin vererek performansı geliştirir.
-
-## <a name="comment-feature"></a>Açıklama özelliği
-
-Bu özellik, bir kural içinde ek bilgi sağlamak için tasarlanmıştır.
-
-Adı | Amaç
------|--------
-[Açıklamanın](#comment) | Kuralın içine bir notun eklenmesine izin verir.
-
-## <a name="header-features"></a>Üst bilgi özellikleri
-
-Bu özellikler, istek veya yanıta üstbilgiler eklemek, değiştirmek veya silmek için tasarlanmıştır.
-
-Adı | Amaç
------|--------
-[Yaş yanıt üst bilgisi](#age-response-header) | İstek sahibine gönderilen yanıta bir yaş yanıtı üstbilgisinin eklenip eklenmeyeceğini belirler.
-[Önbellek yanıtı üst bilgilerinde hata ayıkla](#debug-cache-response-headers) | Bir yanıtın, istenen varlık için önbellek ilkesi hakkında bilgi sağlayan X-EC-Debug yanıt üst bilgisini içerip içeremeyeceğini belirler.
-[Istemci Isteği üst bilgisini Değiştir](#modify-client-request-header) | Bir istekten üst bilgi üzerine yazar, ekler veya siler.
-[Istemci yanıtı başlığını Değiştir](#modify-client-response-header) | Bir yanıttan üst bilgi üzerine yazar, ekler veya siler.
-[Istemci IP özel üstbilgisini ayarla](#set-client-ip-custom-header) | İstekte bulunan istemcinin IP adresinin isteğe özel bir istek üst bilgisi olarak eklenmesine izin verir.
-
-## <a name="logging-features"></a>Günlüğe kaydetme özellikleri
-
-Bu özellikler ham günlük dosyalarında depolanan verileri özelleştirmek için tasarlanmıştır.
-
-Adı | Amaç
------|--------
-[Özel günlük alanı 1](#custom-log-field-1) | Ham günlük dosyasındaki özel günlük alanına atanan biçimi ve içeriği belirler.
-[Günlük sorgu dizesi](#log-query-string) | Sorgu dizesinin, erişim günlüklerindeki URL ile birlikte saklanıp saklanmadığını belirler.
-
-
-<!---
-## Optimize
-
-These features determine whether a request will undergo the optimizations provided by Edge Optimizer.
-
-Name | Purpose
------|--------
-Edge Optimizer | Determines whether Edge Optimizer can be applied to a request.
-Edge Optimizer – Instantiate Configuration | Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-### Edge Optimizer
-**Purpose:** Determines whether Edge Optimizer can be applied to a request.
-
-If this feature has been enabled, then the following criteria must also be met before the request will be processed by Edge Optimizer:
-
-- The requested content must use an edge CNAME URL.
-- The edge CNAME referenced in the URL must correspond to a site whose configuration has been activated in a rule.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Value|Result
--|-
-Enabled|Indicates that the request is eligible for Edge Optimizer processing.
-Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
-
-**Default Behavior:** Disabled
-
-
-### Edge Optimizer - Instantiate Configuration
-**Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Key information:
-
-- Instantiation of a site configuration is required before requests to the corresponding edge CNAME can be processed by Edge Optimizer.
-- This instantiation only needs to be performed a single time per site configuration. A site configuration that has been instantiated will remain in that state until the Edge Optimizer – Instantiate Configuration feature that references it is removed from the rule.
-- The instantiation of a site configuration does not mean that all requests to the corresponding edge CNAME will automatically be processed by Edge Optimizer. The Edge Optimizer feature determines whether an individual request will be processed.
-
-If the desired site does not appear in the list, then you should edit its configuration and verify that the Active option has been marked.
-
-**Default Behavior:** Site configurations are inactive by default.
---->
-
-## <a name="origin-features"></a>Kaynak özellikleri
-
-Bu özellikler, CDN 'nin bir kaynak sunucu ile nasıl iletişim kuracağını denetlemek için tasarlanmıştır.
-
-Adı | Amaç
------|--------
-[Maksimum etkin tut Istekleri](#maximum-keep-alive-requests) | Kapalı bir bağlantıyı kapatmadan önce, etkin tutma bağlantısı için en fazla istek sayısını tanımlar.
-[Proxy özel üstbilgileri](#proxy-special-headers) | Bir POP 'tan kaynak sunucuya iletilen CDN 'e özgü istek üst bilgileri kümesini tanımlar.
-
-## <a name="specialty-features"></a>Özel Özellikler
-
-Bu özellikler gelişmiş kullanıcılar için gelişmiş işlevsellik sağlar.
-
-Adı | Amaç
------|--------
-[Önbelleklenebilir HTTP yöntemleri](#cacheable-http-methods) | Ağda Önbelleğe alınabilecek ek HTTP yöntemleri kümesini belirler.
-[Önbelleklenebilir Istek gövdesi boyutu](#cacheable-request-body-size) | Bir POST yanıtının önbelleğe alınıp alınmayacağını belirlemek için eşiği tanımlar.
-[Kullanıcı değişkeni](#user-variable) | Yalnızca dahili kullanım içindir.
-
-## <a name="url-features"></a>URL özellikleri
-
-Bu özellikler, bir isteğin farklı bir URL 'ye yönlendirilmesini veya yeniden yönlendirilmesine izin verir.
-
-Adı | Amaç
------|--------
-[Yeniden yönlendirmeleri takip et](#follow-redirects) | İsteklerin bir müşteri kaynak sunucusu tarafından döndürülen konum üstbilgisinde tanımlanan ana bilgisayar adına yönlendirilip yönlendirilmeyeceğini belirler.
-[URL yeniden yönlendirme](#url-redirect) | İstekleri konum üst bilgisi aracılığıyla yeniden yönlendirir.
-[URL yeniden yazma](#url-rewrite)  | İstek URL 'sini yeniden yazar.
 
 ## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a>Verizon Premium kural altyapısı Özellikler başvurusundan Azure CDN
 
@@ -255,7 +114,7 @@ Devre dışı|Pop 'Ların, yanıt üst bilgilerinde tanımlanan önbellek ilkele
 Anahtar bilgileri:
 
 - Bu özellik, GET yanıtlarının her zaman önbelleğe alınması gerektiğini varsayar. Sonuç olarak, bu özellik ayarlanırken GET HTTP yöntemi eklenmemelidir.
-- Bu özellik yalnızca POST HTTP yöntemini destekler. Bu özelliği olarak `POST`ayarlayarak yanıt verme işlemini etkinleştirin.
+- Bu özellik yalnızca POST HTTP yöntemini destekler. Bu özelliği olarak ayarlayarak yanıt verme işlemini etkinleştirin `POST` .
 - Varsayılan olarak, yalnızca gövdesi 14 KB 'tan küçük olan istekler önbelleğe alınır. En büyük istek gövdesi boyutunu ayarlamak için önbelleklenebilir Istek gövdesi boyutu özelliğini kullanın.
 
 **Varsayılan davranış:** Yalnızca yanıtları al önbelleğe alınır.
@@ -292,16 +151,16 @@ Anahtar bilgileri:
 
 ### <a name="cache-control-header-treatment"></a>Cache-Control üst bilgisi Işleme
 
-**Amaç:** Dış en büyük yaş `Cache-Control` özelliği etkin olduğunda, pop 'un üst bilgi üretimini denetler.
+**Amaç:** `Cache-Control`Dış en büyük yaş özelliği etkin olduğunda, pop 'un üst bilgi üretimini denetler.
 
 Bu tür yapılandırmayı gerçekleştirmenin en kolay yolu, dış en yüksek yaş ve Cache-Control üst bilgisi Işleme özelliklerini aynı deyime yerleştirmekten biridir.
 
 Değer|Sonuç
 --|--
-Üzerine yaz|Aşağıdaki eylemlerin gerçekleşmesini sağlar:<br/> -Kaynak sunucu `Cache-Control` tarafından oluşturulan üstbilginin üzerine yazar. <br/>-Dış en `Cache-Control` büyük yaş özelliği tarafından üretilen üstbilgiyi yanıta ekler.
-Geçiş|Dış en büyük `Cache-Control` yaş özelliği tarafından üretilen üstbilginin yanıta hiçbir zaman eklenmemesini sağlar. <br/> Kaynak sunucu bir `Cache-Control` üst bilgi üretirse, son kullanıcıya geçer. <br/> Kaynak sunucu bir `Cache-Control` üst bilgi oluşturmuyorsa, bu seçenek yanıt üst bilgisinin bir `Cache-Control` başlık içermediği oluşmasına neden olabilir.
-Eksikse Ekle|Kaynak sunucudan `Cache-Control` bir üst bilgi alınmadığında, bu seçenek dış en yüksek yaş özelliği tarafından `Cache-Control` üretilen üstbilgiyi ekler. Bu seçenek, tüm varlıkların bir `Cache-Control` üst bilgi atanmasını sağlamak için yararlıdır.
-Kaldır| Bu seçenek, üst bilgi `Cache-Control` yanıtına bir üst bilgi dahil olmamasını sağlar. Bir `Cache-Control` üst bilgi zaten atanmışsa, üstbilgi yanıtından kaldırılır.
+Üzerine yaz|Aşağıdaki eylemlerin gerçekleşmesini sağlar:<br/> - `Cache-Control` Kaynak sunucu tarafından oluşturulan üstbilginin üzerine yazar. <br/>- `Cache-Control` Dış en büyük yaş özelliği tarafından üretilen üstbilgiyi yanıta ekler.
+Geçiş|`Cache-Control`Dış en büyük yaş özelliği tarafından üretilen üstbilginin yanıta hiçbir zaman eklenmemesini sağlar. <br/> Kaynak sunucu bir `Cache-Control` üst bilgi üretirse, son kullanıcıya geçer. <br/> Kaynak sunucu bir `Cache-Control` üst bilgi oluşturmuyorsa, bu seçenek yanıt üst bilgisinin bir başlık içermediği oluşmasına neden olabilir `Cache-Control` .
+Eksikse Ekle|`Cache-Control`Kaynak sunucudan bir üst bilgi alınmadığında, bu seçenek `Cache-Control` dış en yüksek yaş özelliği tarafından üretilen üstbilgiyi ekler. Bu seçenek, tüm varlıkların bir üst bilgi atanmasını sağlamak için yararlıdır `Cache-Control` .
+Kaldır| Bu seçenek `Cache-Control` , üst bilgi yanıtına bir üst bilgi dahil olmamasını sağlar. Bir `Cache-Control` üst bilgi zaten atanmışsa, üstbilgi yanıtından kaldırılır.
 
 **Varsayılan davranış:** Yazılacak.
 
@@ -338,7 +197,7 @@ Sorgu dizesi önbelleğe alma sayfasında "önbelleğe alma" sorgu dizesi önbel
 
 Bu özellik için aşağıdaki örnek kullanım örnek bir istek ve varsayılan önbellek anahtarı sağlar:
 
-- **Örnek istek:** http://wpc.0001.&lt;D omain&gt;/800001/Origin/Folder/Asset.htm? SessionID = 1234&Language = en&UserID = 01
+- **Örnek istek:** http://wpc.0001.&lt ;D omain &gt; /800001/Origin/Folder/Asset.htm? SessionID = 1234&language = EN&UserID = 01
 - **Varsayılan önbellek-anahtar:** /800001/Origin/Folder/Asset.htm
 
 ##### <a name="include"></a>Şunları Dahil Et:
@@ -487,8 +346,8 @@ Internet medya türü|Açıklama
 metin/düz|Düz metin dosyaları
 text/html| HTML dosyaları
 text/css|Geçişli Stil Sayfaları (CSS)
-uygulama/x-JavaScript|Javascript
-Uygulama/JavaScript|Javascript
+uygulama/x-JavaScript|JavaScript
+Uygulama/JavaScript|JavaScript
 
 Anahtar bilgileri:
 
@@ -569,15 +428,15 @@ Devre dışı|X-EC-Debug yanıt üst bilgisi yanıttan dışlanır.
 
 Anahtar bilgileri:
 
-- Bu eylem yalnızca `Cache-Control` veya `Expires` üst bilgisinde maksimum yaş bildirimi atamamış olan bir kaynak sunucudan yanıt almak için geçerlidir.
+- Bu eylem yalnızca `Cache-Control` veya üst bilgisinde maksimum yaş bildirimi atamamış olan bir kaynak sunucudan yanıt almak için geçerlidir `Expires` .
 - Bu eylem, önbelleğe alınabilir olarak kabul edilen varlıklar için gerçekleşmeyecektir.
-- Bu eylem, tarayıcıyı POP önbelleği yeniden doğrulamaları için etkilemez. Bu tür yeniden doğrulamaları, dış en yüksek yaş `Cache-Control` özelliğiyle `Expires` özelleştirilebilen, tarayıcıya gönderilen ve üst bilgileri tarafından belirlenir.
+- Bu eylem, tarayıcıyı POP önbelleği yeniden doğrulamaları için etkilemez. Bu tür yeniden doğrulamaları, `Cache-Control` `Expires` dış en yüksek yaş özelliğiyle özelleştirilebilen, tarayıcıya gönderilen ve üst bilgileri tarafından belirlenir.
 - Bu eylemin sonuçlarında, yanıt üst bilgileri ve içeriklerinizin pop 'Larından döndürülen içerik üzerinde bir observable etkisi yoktur, ancak pop 'lerden kaynak sunucunuza gönderilen yeniden doğrulama trafiği miktarı üzerinde bir etkisi olabilir.
 - Bu özelliği şu şekilde yapılandırın:
     - Varsayılan dahili maksimum yaş için uygulanabilir durum kodunu seçme.
     - Bir tamsayı değeri belirtip istenen zaman birimini seçin (örneğin, saniye, dakika, saat, vb.). Bu değer, varsayılan dahili maksimum yaş aralığını tanımlar.
 
-- Zaman biriminin "kapalı" olarak ayarlanması, `Cache-Control` veya `Expires` üst bilgisinde maksimum yaş göstergesi atanmamış istekler için 7 günlük varsayılan bir iç maksimum yaş aralığı atar.
+- Zaman biriminin "kapalı" olarak ayarlanması, `Cache-Control` veya üst bilgisinde maksimum yaş göstergesi atanmamış istekler için 7 günlük varsayılan bir iç maksimum yaş aralığı atar `Expires` .
 
 **Varsayılan değer:** 7 gün
 
@@ -630,16 +489,16 @@ Devre dışı| Varsayılan davranışı geri yükler. Varsayılan davranış, ka
 
 ### <a name="expires-header-treatment"></a>Süre sonu üst bilgisi Işleme
 
-**Amaç:** Dış en büyük yaş `Expires` özelliği etkin olduğunda, bir pop ile üstbilgileri oluşturmayı denetler.
+**Amaç:** `Expires`Dış en büyük yaş özelliği etkin olduğunda, BIR pop ile üstbilgileri oluşturmayı denetler.
 
 Bu tür yapılandırmayı gerçekleştirmenin en kolay yolu, dış en büyük yaş ve süre sonu üst bilgisi Işleme özelliklerini aynı deyime yerleştirmekten biridir.
 
 Değer|Sonuç
 --|--
-Üzerine yaz|Aşağıdaki eylemlerin gerçekleşmesini sağlar:<br/>-Kaynak sunucu `Expires` tarafından oluşturulan üstbilginin üzerine yazar.<br/>-Dış en `Expires` büyük yaş özelliği tarafından üretilen üstbilgiyi yanıta ekler.
-Geçiş|Dış en büyük `Expires` yaş özelliği tarafından üretilen üstbilginin yanıta hiçbir zaman eklenmemesini sağlar. <br/> Kaynak sunucu bir `Expires` üst bilgi üretirse, son kullanıcıya geçiş yapılır. <br/>Kaynak sunucu bir `Expires` üst bilgi oluşturmuyorsa, bu seçenek yanıt üst bilgisinin bir `Expires` başlık içermediği oluşmasına neden olabilir.
-Eksikse Ekle| Kaynak sunucudan `Expires` bir üst bilgi alınmadığında, bu seçenek dış en yüksek yaş özelliği tarafından `Expires` üretilen üstbilgiyi ekler. Bu seçenek, tüm varlıkların bir `Expires` üst bilgi atanmasını sağlamak için yararlıdır.
-Kaldır| Üst bilgi yanıtına `Expires` bir üst bilgi dahil olmamasını sağlar. Bir `Expires` üst bilgi zaten atanmışsa, üstbilgi yanıtından kaldırılır.
+Üzerine yaz|Aşağıdaki eylemlerin gerçekleşmesini sağlar:<br/>- `Expires` Kaynak sunucu tarafından oluşturulan üstbilginin üzerine yazar.<br/>- `Expires` Dış en büyük yaş özelliği tarafından üretilen üstbilgiyi yanıta ekler.
+Geçiş|`Expires`Dış en büyük yaş özelliği tarafından üretilen üstbilginin yanıta hiçbir zaman eklenmemesini sağlar. <br/> Kaynak sunucu bir `Expires` üst bilgi üretirse, son kullanıcıya geçiş yapılır. <br/>Kaynak sunucu bir `Expires` üst bilgi oluşturmuyorsa, bu seçenek yanıt üst bilgisinin bir başlık içermediği oluşmasına neden olabilir `Expires` .
+Eksikse Ekle| `Expires`Kaynak sunucudan bir üst bilgi alınmadığında, bu seçenek `Expires` dış en yüksek yaş özelliği tarafından üretilen üstbilgiyi ekler. Bu seçenek, tüm varlıkların bir üst bilgi atanmasını sağlamak için yararlıdır `Expires` .
+Kaldır| Üst `Expires` bilgi yanıtına bir üst bilgi dahil olmamasını sağlar. Bir `Expires` üst bilgi zaten atanmışsa, üstbilgi yanıtından kaldırılır.
 
 **Varsayılan davranış:** Yazılacak
 
@@ -653,14 +512,14 @@ Kaldır| Üst bilgi yanıtına `Expires` bir üst bilgi dahil olmamasını sağl
 
 **Amaç:** Tarayıcı için AÇıLAN önbellek yeniden doğrulama için maksimum yaş aralığını belirler. Diğer bir deyişle, bir tarayıcıdan, bir tarayıcıdan bir varlığın yeni bir sürümünü kontrol etmeden önce geçirilecek zaman miktarı.
 
-Bu özelliğin etkinleştirilmesi, pop `Cache-Control: max-age` 'ları `Expires` oluşturur ve bunları http istemcisine gönderir. Varsayılan olarak, bu üst bilgiler kaynak sunucu tarafından oluşturulan üstbilgilerin üzerine yazılır. Ancak, bu davranışı değiştirmek için Cache-Control üst bilgisi Işleme ve süre sonu üst bilgisi Işleme özellikleri kullanılabilir.
+Bu özelliğin etkinleştirilmesi, `Cache-Control: max-age` `Expires` pop 'ları oluşturur ve bunları http istemcisine gönderir. Varsayılan olarak, bu üst bilgiler kaynak sunucu tarafından oluşturulan üstbilgilerin üzerine yazılır. Ancak, bu davranışı değiştirmek için Cache-Control üst bilgisi Işleme ve süre sonu üst bilgisi Işleme özellikleri kullanılabilir.
 
 Anahtar bilgileri:
 
-- Bu eylem, başlangıç kaynak sunucu önbelleği yeniden doğrulamaları 'nı etkilemez. Bu tür yeniden doğrulamaları, kaynak sunucudan alınan `Cache-Control` ve `Expires` üst bilgileri tarafından belirlenir ve varsayılan dahili maksimum yaş ve en uzun iç kullanım süresi özellikleriyle özelleştirilebilir.
+- Bu eylem, başlangıç kaynak sunucu önbelleği yeniden doğrulamaları 'nı etkilemez. Bu tür yeniden doğrulamaları, `Cache-Control` `Expires` kaynak sunucudan alınan ve üst bilgileri tarafından belirlenir ve varsayılan dahili maksimum yaş ve en uzun Iç kullanım süresi özellikleriyle özelleştirilebilir.
 - Bu özelliği bir tamsayı değer belirterek ve istediğiniz zaman birimini seçerek yapılandırın (örneğin, saniye, dakika, saat, vb.).
 - Bu özelliğin negatif bir değere ayarlanması, pop 'Ların bir `Cache-Control: no-cache` `Expires` kez ve tarayıcıya her yanıt olarak ayarlanan bir zaman gönderilmesine neden olur. Bir HTTP istemcisi yanıtı önbelleğe sunmayacak olsa da, bu ayar pop 'Ların kaynak sunucudan gelen yanıtı önbelleğe alma yeteneğini etkilemez.
-- Zaman biriminin "kapalı" olarak ayarlanması, bu özelliği devre dışı bırakır. Kaynak `Cache-Control` sunucunun `Expires` yanıtı ile önbelleğe alınan ve üst bilgiler tarayıcıya geçiş yapılır.
+- Zaman biriminin "kapalı" olarak ayarlanması, bu özelliği devre dışı bırakır. `Cache-Control` `Expires` Kaynak sunucunun yanıtı ile önbelleğe alınan ve üst bilgiler tarayıcıya geçiş yapılır.
 
 **Varsayılan davranış:** Dışına
 
@@ -697,8 +556,8 @@ Devre dışı|İstekler yeniden yönlendirilmeyecektir.
 
 Anahtar bilgileri:
 
-- Bu özellik, içinde `Cache-Control` tanımlanan en büyük yaş aralığını veya `Expires` bir kaynak sunucudan oluşturulan üst bilgileri geçersiz kılar.
-- Bu özellik, tarayıcıyı POP önbelleği yeniden doğrulamaları için etkilemez. Bu tür yeniden doğrulamaları, `Cache-Control` tarayıcıya gönderilen veya `Expires` üstbilgilere göre belirlenir.
+- Bu özellik, içinde tanımlanan en büyük yaş aralığını `Cache-Control` veya `Expires` bir kaynak sunucudan oluşturulan üst bilgileri geçersiz kılar.
+- Bu özellik, tarayıcıyı POP önbelleği yeniden doğrulamaları için etkilemez. Bu tür yeniden doğrulamaları, `Cache-Control` `Expires` tarayıcıya gönderilen veya üstbilgilere göre belirlenir.
 - Bu özelliğin istek sahibine bir POP tarafından teslim edilen yanıt üzerinde bir observable etkisi yoktur. Ancak, pop 'lerden kaynak sunucuya gönderilen yeniden doğrulama trafiği miktarı üzerinde bir etkisi olabilir.
 - Bu özelliği şu şekilde yapılandırın:
     - Bir iç maksimum yaş için uygulanacak durum kodunu seçme.
@@ -756,7 +615,7 @@ Anahtar bilgileri:
 
 **Amaç:** HTTP istemcisinin önbelleğe alma isteklerinin kaynak sunucuya iletilip iletilmeyeceğini belirler.
 
-Http istemcisi HTTP isteğinde bir `Cache-Control: no-cache` ve/veya `Pragma: no-cache` üst bilgisi gönderdiğinde, No-Cache isteği oluşur.
+Http istemcisi `Cache-Control: no-cache` http isteğinde bir ve/veya üst bilgisi gönderdiğinde, No-Cache isteği oluşur `Pragma: no-cache` .
 
 Değer|Sonuç
 --|--
@@ -765,7 +624,7 @@ Devre dışı|Varsayılan davranışı geri yükler. Varsayılan davranış, ön
 
 Tüm üretim trafiği için, bu özelliğin varsayılan devre dışı durumunda bırakılması kesinlikle önerilir. Aksi takdirde, kaynak sunucular, Web sayfalarını yenilerken çok sayıda önbellek isteğini yanlışlıkla tetikleyebilen son kullanıcılardan veya her video isteğiyle hiç önbellek üst bilgisi gönderecek şekilde kodlanmış birçok popüler medya oynatıcısında korumasız olmayacaktır. Bununla birlikte, yeni içeriğin kaynak sunucudan isteğe bağlı olarak çekebilmesini sağlamak için, bu özellik belirli bir üretim dışı hazırlama veya test etme dizinine uygulamak yararlı olabilir.
 
-Bu özellik nedeniyle bir kaynak sunucuya iletilemeyen bir istek için bildirilen önbellek durumu `TCP_Client_Refresh_Miss`. Çekirdek raporlama modülünde kullanılabilen önbellek durumları raporu, önbellek durumuna göre istatistiksel bilgiler sağlar. Bu rapor, bu özellik nedeniyle bir kaynak sunucuya iletilemekte olan isteklerin sayısını ve yüzdesini izlemenize olanak sağlar.
+Bu özellik nedeniyle bir kaynak sunucuya iletilemeyen bir istek için bildirilen önbellek durumu `TCP_Client_Refresh_Miss` . Çekirdek raporlama modülünde kullanılabilen önbellek durumları raporu, önbellek durumuna göre istatistiksel bilgiler sağlar. Bu rapor, bu özellik nedeniyle bir kaynak sunucuya iletilemekte olan isteklerin sayısını ve yüzdesini izlemenize olanak sağlar.
 
 **Varsayılan davranış:** Devre dışı.
 
@@ -1168,7 +1027,7 @@ Devre dışı|Kaynak sunucunun hatası, istek sahibine iletilir.
 Anahtar bilgileri:
 
 - Bu özelliğin davranışı, seçilen zaman birimine göre farklılık gösterir.
-    - **Zaman birimi:** Eski içerik teslimine izin vermek için bir süre belirtin ve bir zaman birimi (örneğin, saniye, dakika, saat, vb.) seçin. Bu tür bir kurulum, CDN 'nin, aşağıdaki formüle göre doğrulama gerektirmeksizin içerik teslim etmesi için gereken süreyi genişlemesine olanak tanır: **TTL** + ,**yeniden doğrulama zamanı**
+    - **Zaman birimi:** Eski içerik teslimine izin vermek için bir süre belirtin ve bir zaman birimi (örneğin, saniye, dakika, saat, vb.) seçin. Bu tür bir kurulum, CDN 'nin, aşağıdaki formüle göre doğrulama gerektirmeksizin içerik teslim etmesi için gereken süreyi genişlemesine olanak tanır: TTL, **TTL**  +  **yeniden doğrulama zamanı**
     - **Kapalı:** Eski içerik için bir istek sunulmadan önce yeniden doğrulama gerektirmek için "kapalı" seçeneğini belirleyin.
         - Uygulanmadığından ve yok sayılacak bu yana zaman uzunluğu belirtmeyin.
 
@@ -1322,25 +1181,25 @@ Mutlak bir URL kullanmanız önemle önerilir. Göreli URL kullanımı, CDN URL 
 
 **Örnek senaryo**
 
-Bu örnek, bu temel CDN URL 'sine çözümlenen bir Edge CNAME URL 'sini yeniden yönlendirmeyi gösterir: http:\//Marketing.azureedge.net/Brochures
+Bu örnek, bu temel CDN URL 'sine çözümlenen bir Edge CNAME URL 'sini yeniden yönlendirmeyi gösterir: http: \/ /Marketing.azureedge.net/Brochures
 
-Uygun istekler bu temel kenar CNAME URL 'sine yönlendirilecek: http:\//CDN.mydomain.com/resources
+Uygun istekler bu temel kenar CNAME URL 'sine yönlendirilecek: http: \/ /CDN.mydomain.com/resources
 
-Bu URL yeniden yönlendirmesi şu yapılandırma ile sağlanabilir: ![URL yeniden yönlendirme](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
+Bu URL yeniden yönlendirmesi şu yapılandırma ile sağlanabilir: ![ URL yeniden yönlendirme](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
 **Anahtar noktaları:**
 
 - URL yeniden yönlendirme özelliği, yönlendirileceği istek URL 'Lerini tanımlar. Sonuç olarak, ek eşleşme koşulları gerekli değildir. Eşleşme koşulu "Always" olarak tanımlansa da, yalnızca "pazarlama" müşteri başlangıcının "broşürler" klasörüne işaret eden istekler yeniden yönlendirilir.
 - Tüm eşleşen istekler, hedef seçeneğinde tanımlanan Edge CNAME URL 'sine yeniden yönlendirilir.
     - Örnek Senaryo #1:
-        - Örnek istek (CDN URL 'SI): http\/:/Marketing.azureedge.net/Brochures/widgets.PDF
-        - İstek URL 'SI (yeniden yönlendirdikten sonra)\/: http:/cdn.mydomain.com/resources/widgets.PDF  
+        - Örnek istek (CDN URL 'SI): http: \/ /Marketing.azureedge.net/Brochures/widgets.PDF
+        - İstek URL 'SI (yeniden yönlendirdikten sonra): http: \/ /CDN.mydomain.com/resources/widgets.PDF  
     - Örnek Senaryo #2:
-        - Örnek istek (Edge CNAME URL 'SI): http\/:/Marketing.mydomain.com/Brochures/widgets.PDF
-        - İstek URL 'SI (yeniden yönlendirdikten sonra)\/: http:/cdn.mydomain.com/resources/widgets.PDF örnek senaryosu
+        - Örnek istek (Edge CNAME URL 'SI): http: \/ /Marketing.mydomain.com/Brochures/widgets.PDF
+        - İstek URL 'SI (yeniden yönlendirdikten sonra): http: \/ /CDN.mydomain.com/resources/widgets.PDF örnek senaryosu
     - Örnek Senaryo #3:
-        - Örnek istek (Edge CNAME URL 'SI): http\/:/Brochures.mydomain.com/campaignA/final/productC.ppt
-        - İstek URL 'SI (yeniden yönlendirdikten sonra)\/: http:/cdn.mydomain.com/resources/campaignA/final/productC.ppt 
+        - Örnek istek (Edge CNAME URL 'SI): http: \/ /Brochures.mydomain.com/campaignA/final/productC.ppt
+        - İstek URL 'SI (yeniden yönlendirdikten sonra): http: \/ /CDN.mydomain.com/resources/campaignA/final/productC.ppt 
 - Istek düzeni (% {Scheme}) değişkeni, hedef seçeneğinde yararlanılabilir, bu da isteğin düzeninin yeniden yönlendirmeden sonra değişmeden kalmasını sağlar.
 - İstekten yakalanan URL kesimleri, "$1" aracılığıyla yeni URL 'ye eklenir.
 
@@ -1367,17 +1226,17 @@ Seçenek|Açıklama
 
 **Örnek Senaryo 1**
 
-Bu örnek, bu temel CDN URL 'sine çözümlenen bir Edge CNAME URL 'sini yeniden yönlendirmeyi gösterir: http:\//Marketing.azureedge.net/Brochures/
+Bu örnek, bu temel CDN URL 'sine çözümlenen bir Edge CNAME URL 'sini yeniden yönlendirmeyi gösterir: http: \/ /Marketing.azureedge.net/Brochures/
 
-Uygun istekler bu temel kenar CNAME URL 'sine yönlendirilecek: http:\//MyOrigin.azureedge.net/Resources/
+Uygun istekler bu temel kenar CNAME URL 'sine yönlendirilecek: http: \/ /MyOrigin.azureedge.net/Resources/
 
-Bu URL yeniden yönlendirmesi şu yapılandırma ile sağlanabilir: ![URL yeniden yönlendirme](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+Bu URL yeniden yönlendirmesi şu yapılandırma ile sağlanabilir: ![ URL yeniden yönlendirme](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
 **Örnek Senaryo 2**
 
 Bu örnek, bir Edge CNAME URL 'sini normal ifadeler kullanılarak büyük harfe küçük harfe nasıl yönlendirebileceğinizi gösterir.
 
-Bu URL yeniden yönlendirmesi şu yapılandırma ile sağlanabilir: ![URL yeniden yönlendirme](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+Bu URL yeniden yönlendirmesi şu yapılandırma ile sağlanabilir: ![ URL yeniden yönlendirme](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
 **Anahtar noktaları:**
 
@@ -1416,9 +1275,6 @@ Bu özellik, bir isteğe uygulanmadan önce karşılanması gereken eşleştirme
 **Amaç:** Yalnızca iç kullanım içindir.
 
 [Başa dön](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kural altyapısı başvurusu](cdn-verizon-premium-rules-engine-reference.md)

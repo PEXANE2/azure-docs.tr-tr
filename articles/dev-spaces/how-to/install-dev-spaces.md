@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: AKS kümesinde Azure Dev Spaces etkinleştirmeyi ve istemci tarafı araçları yüklemeyi öğrenin.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: a6b3be5ceba5e60b99b2f75e060f3321cd3151f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3666eeb995c73615c522200a3619d785814ea0b5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898943"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873513"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>AKS kümesinde Azure Dev Spaces etkinleştirme ve istemci tarafı araçları 'nı yüklemeye
 
@@ -23,7 +23,7 @@ CLı kullanarak dev alanlarını etkinleştirebilmeniz için şunlar gerekir:
 * [Azure CLI yüklendi][install-cli].
 * [Desteklenen bir bölgedeki][supported-regions] [aks kümesi][create-aks-cli] .
 
-AKS `use-dev-spaces` kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için komutunu kullanın.
+`use-dev-spaces`AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için komutunu kullanın.
 
 ```azurecli
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
@@ -47,7 +47,7 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-`use-dev-spaces` Komut ayrıca Azure dev Spaces CLI 'yi de yüklüyor.
+`use-dev-spaces`Komut ayrıca Azure dev Spaces CLI 'yi de yüklüyor.
 
 AKS kümenizdeki Azure Dev Spaces kaldırmak için `azds remove` komutunu kullanın. Örneğin:
 
@@ -67,7 +67,7 @@ Azure portal kullanarak dev alanlarını etkinleştirebilmeniz için önce şunl
 * [Desteklenen bir bölgedeki][supported-regions] [aks kümesi][create-aks-portal] .
 
 Azure Dev Spaces Azure portal kullanarak etkinleştirmek için:
-1. [Azure Portal][az-portal] oturum açın.
+1. [Azure portalında][az-portal] oturum açın.
 1. AKS kümenize gidin.
 1. *Geliştirme alanları* menü öğesini seçin.
 1. Değişiklik *geliştirme alanlarını* *Evet* olarak etkinleştirin ve *Kaydet*' e tıklayın.
@@ -84,7 +84,6 @@ Yerel makinenizden bir AKS kümesindeki dev Spaces ile etkileşim kurmak için A
 
 * [Visual Studio Code][vscode], [Azure dev Spaces uzantısını][vscode-extension]yükler.
 * [Visual Studio 2019][visual-studio]' de Azure geliştirme iş yükünü yükledikten sonra.
-* Visual Studio 2017 ' de Web geliştirme iş yükünü ve [Kubernetes için Visual Studio Araçları][visual-studio-k8s-tools]yüklemesini yapın.
 * [Windows][cli-win], [Mac][cli-mac]veya [Linux][cli-linux] CLI 'yı indirip yükleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

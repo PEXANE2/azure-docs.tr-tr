@@ -6,16 +6,16 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/27/2020
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c638004d209996e52b0e57b467bfa184a77779c
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457850"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873469"
 ---
-# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Azure PowerShell kullanarak TLS sonlandırmasını Key Vault sertifikalarla yapılandırma
+# <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>Azure PowerShell kullanarak TLS sonlandırmasını Key Vault sertifikalarla yapılandırma
 
 [Azure Key Vault](../key-vault/general/overview.md) , gizli dizileri, anahtarları ve TLS/SSL sertifikalarını korumak için kullanabileceğiniz, platform tarafından yönetilen bir gizli depodır. Azure Application Gateway, HTTPS özellikli dinleyicilerine eklenen sunucu sertifikaları için Key Vault tümleştirmeyi destekler. Bu destek Application Gateway v2 SKU 'SU ile sınırlıdır.
 
@@ -23,7 +23,7 @@ Daha fazla bilgi için bkz. [Key Vault sertifikalarla TLS sonlandırma](key-vaul
 
 Bu makalede, anahtar kasasını TLS/SSL sonlandırma sertifikaları için uygulama ağ geçidiniz ile bütünleştirmek üzere bir Azure PowerShell betiğini nasıl kullanacağınız gösterilmektedir.
 
-Bu makale, Azure PowerShell modülü sürüm 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). Bu makaledeki komutları çalıştırmak için, komutunu çalıştırarak `Connect-AzAccount`Azure ile bir bağlantı da oluşturmanız gerekir.
+Bu makale, Azure PowerShell modülü sürüm 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). Bu makaledeki komutları çalıştırmak için, komutunu çalıştırarak Azure ile bir bağlantı da oluşturmanız gerekir `Connect-AzAccount` .
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -44,9 +44,11 @@ Select-AzSubscription -Subscription <your subscription>
 ```azurepowershell
 $rgname = "KeyVaultTest"
 $location = "East US"
-$kv = "TestKeyVaultAppGw"
+$kv = "<your key vault name>"
 $appgwName = "AppGwKVIntegration"
 ```
+> [!IMPORTANT]
+> Anahtar Kasası adı, evrensel olarak benzersiz olmalıdır.
 
 ### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Kaynak grubu ve Kullanıcı tarafından yönetilen kimlik oluşturma
 

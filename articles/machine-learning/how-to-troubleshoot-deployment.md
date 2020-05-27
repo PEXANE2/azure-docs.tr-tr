@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: d51fd5af5ce553bbe9325154e3f854cdf5410d4d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929256"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873377"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Kubernetes hizmeti ve Azure Container Instances dağıtımı Azure Machine Learning sorunlarını giderme
 
@@ -44,7 +44,7 @@ Model dağıtımı için önerilen ve en güncel yaklaşım, bir [ortam](how-to-
 * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md).
 * Yerel olarak hata ayıklamak için yerel sisteminizde çalışan bir Docker yüklemeniz olmalıdır.
 
-    Docker yüklemenizi doğrulamak için, bir Terminal veya komut `docker run hello-world` isteminden komutunu kullanın. Docker 'ı yükleme veya Docker hataları sorunlarını giderme hakkında bilgi için bkz. [Docker belgeleri](https://docs.docker.com/).
+    Docker yüklemenizi doğrulamak için, `docker run hello-world` bir Terminal veya komut isteminden komutunu kullanın. Docker 'ı yükleme veya Docker hataları sorunlarını giderme hakkında bilgi için bkz. [Docker belgeleri](https://docs.docker.com/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -102,7 +102,7 @@ Bir modeli ACG veya AKS 'e dağıtmaya yönelik sorunlarla karşılaşırsanız,
 > [!WARNING]
 > Yerel Web hizmeti dağıtımları, üretim senaryolarında desteklenmez.
 
-Yerel olarak dağıtmak için kodunuzu bir dağıtım yapılandırması oluşturmak `LocalWebservice.deploy_configuration()` üzere değiştirin. Ardından hizmeti `Model.deploy()` dağıtmak için kullanın. Aşağıdaki örnek, bir modeli (model değişkeninde yer alan) yerel bir Web hizmeti olarak dağıtır:
+Yerel olarak dağıtmak için kodunuzu `LocalWebservice.deploy_configuration()` bir dağıtım yapılandırması oluşturmak üzere değiştirin. Ardından `Model.deploy()` hizmeti dağıtmak için kullanın. Aşağıdaki örnek, bir modeli (model değişkeninde yer alan) yerel bir Web hizmeti olarak dağıtır:
 
 ```python
 from azureml.core.environment import Environment
@@ -146,10 +146,10 @@ Python ortamınızı özelleştirme hakkında daha fazla bilgi için bkz. [eğit
 
 ### <a name="update-the-service"></a>Hizmeti güncelleştirme
 
-Yerel test sırasında, kayıt eklemek veya bulduğunuz herhangi bir `score.py` sorunu çözmeye çalışmak için dosyayı güncelleştirmeniz gerekebilir. Değişiklikleri `score.py` dosyaya yeniden yüklemek için kullanın `reload()`. Örneğin, aşağıdaki kod, hizmeti için betiği yeniden yükler ve ardından verileri bu sunucuya gönderir. Veriler, güncelleştirilmiş `score.py` dosya kullanılarak puanlanır:
+Yerel test sırasında, `score.py` kayıt eklemek veya bulduğunuz herhangi bir sorunu çözmeye çalışmak için dosyayı güncelleştirmeniz gerekebilir. Değişiklikleri dosyaya yeniden yüklemek için `score.py` kullanın `reload()` . Örneğin, aşağıdaki kod, hizmeti için betiği yeniden yükler ve ardından verileri bu sunucuya gönderir. Veriler, güncelleştirilmiş dosya kullanılarak puanlanır `score.py` :
 
 > [!IMPORTANT]
-> `reload` Yöntemi yalnızca yerel dağıtımlar için kullanılabilir. Bir dağıtımı başka bir işlem hedefine güncelleştirme hakkında daha fazla bilgi için bkz. dağıtım [modellerini](how-to-deploy-and-where.md#update)güncelleştirme bölümü.
+> `reload`Yöntemi yalnızca yerel dağıtımlar için kullanılabilir. Bir dağıtımı başka bir işlem hedefine güncelleştirme hakkında daha fazla bilgi için bkz. dağıtım [modellerini](how-to-deploy-and-where.md#update)güncelleştirme bölümü.
 
 ```python
 service.reload()
@@ -157,7 +157,7 @@ print(service.run(input_data=test_sample))
 ```
 
 > [!NOTE]
-> Betik, hizmet tarafından kullanılan `InferenceConfig` nesne tarafından belirtilen konumdan yeniden yüklenir.
+> Betik, `InferenceConfig` hizmet tarafından kullanılan nesne tarafından belirtilen konumdan yeniden yüklenir.
 
 Modeli, Conda bağımlılıklarını veya dağıtım yapılandırmasını değiştirmek için [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-)kullanın. Aşağıdaki örnek, hizmet tarafından kullanılan modeli güncelleştirir:
 
@@ -180,16 +180,21 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
+## <a name="container-cannot-be-scheduled"></a>Kapsayıcı zamanlanamaz
+
+Bir Azure Kubernetes hizmet işlem hedefine bir hizmet dağıttığınızda, Azure Machine Learning hizmeti istenen miktarda kaynakla zamanlamayı dener. 5 dakika sonra, kümede uygun miktarda kaynakla kullanılabilir düğüm yoksa dağıtım iletiyle başarısız olur `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Daha fazla düğüm ekleyerek, düğümlerinizin SKU 'sunu değiştirerek veya hizmetinizin kaynak gereksinimlerini değiştirerek bu hatayı ele alabilirsiniz. 
+
+Hata iletisi genellikle ne kaynak için daha fazla gereksinim duyacağını gösterir. Örneğin, `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` hizmetin GPU gerektirdiğini ve kümede kullanılabilir GPU olmayan 3 düğüm olduğunu belirten bir hata iletisi görürseniz. Bu, bir GPU SKU 'SU kullanıyorsanız daha fazla düğüm eklenerek, bir GPU etkin SKU 'ya geçiş yaparak, ortamınızda GPU gerektirmez.  
 
 ## <a name="service-launch-fails"></a>Hizmet başlatılamadı
 
-Görüntü başarıyla derlendikten sonra, sistem dağıtım yapılandırmanızı kullanarak bir kapsayıcı başlatmaya çalışır. Kapsayıcı başlatma işleminin bir parçası olarak, Puanlama betiğinizdeki `init()` işlev sistem tarafından çağırılır. `init()` İşlevde yakalanamayan özel durumlar varsa, hata Iletisinde **crashloopgeri** alma hatası ' nı görebilirsiniz.
+Görüntü başarıyla derlendikten sonra, sistem dağıtım yapılandırmanızı kullanarak bir kapsayıcı başlatmaya çalışır. Kapsayıcı başlatma işleminin bir parçası olarak, `init()` Puanlama betiğinizdeki işlev sistem tarafından çağırılır. İşlevde yakalanamayan özel durumlar varsa `init()` , hata Iletisinde **Crashloopgeri** alma hatası ' nı görebilirsiniz.
 
 Günlükleri denetlemek için [Docker günlüğünü İnceleme](#dockerlog) bölümündeki bilgileri kullanın.
 
 ## <a name="function-fails-get_model_path"></a>İşlev başarısız oldu: get_model_path ()
 
-Genellikle, Puanlama betiğindeki `init()` işlevinde model [. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) işlevi, bir model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için çağırılır. Model dosyası veya klasörü bulunamazsa, işlev başarısız olur. Bu hatada hata ayıklamanın en kolay yolu, kapsayıcı kabuğu 'nda aşağıdaki python kodunu çalıştırmalıdır:
+Genellikle, `init()` Puanlama betiğindeki işlevinde model [. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) işlevi, bir model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için çağırılır. Model dosyası veya klasörü bulunamazsa, işlev başarısız olur. Bu hatada hata ayıklamanın en kolay yolu, kapsayıcı kabuğu 'nda aşağıdaki python kodunu çalıştırmalıdır:
 
 ```python
 from azureml.core.model import Model
@@ -198,13 +203,13 @@ logging.basicConfig(level=logging.DEBUG)
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-Bu örnek, Puanlama betiğinizin model dosyasını veya `/var/azureml-app`klasörünü bulmasını beklediği kapsayıcıda yerel yolu (göreli olarak) yazdırır. Dosya veya klasörün gerçekten beklenen yerde olduğunu doğrulayabilirsiniz.
+Bu örnek, `/var/azureml-app` Puanlama betiğinizin model dosyasını veya klasörünü bulmasını beklediği kapsayıcıda yerel yolu (göreli olarak) yazdırır. Dosya veya klasörün gerçekten beklenen yerde olduğunu doğrulayabilirsiniz.
 
 Günlüğe kaydetme düzeyinin hata ayıklama olarak ayarlanması ek bilgilerin günlüğe kaydedilmesine neden olabilir ve bu da hatayı belirlemek için yararlı olabilir.
 
 ## <a name="function-fails-runinput_data"></a>İşlev başarısız: çalıştırma (input_data)
 
-Hizmet başarıyla dağıtılırsa ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, bunun yerine ayrıntılı hata mesajı döndürmesi için işlevinize `run(input_data)` hata yakalama ifadesini ekleyebilirsiniz. Örneğin:
+Hizmet başarıyla dağıtılırsa ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` bunun yerine ayrıntılı hata mesajı döndürmesi için işlevinize hata yakalama ifadesini ekleyebilirsiniz. Örneğin:
 
 ```python
 def run(input_data):
@@ -219,11 +224,11 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Note**: `run(input_data)` çağrıdan hata iletilerinin döndürülmesi yalnızca hata ayıklama amacıyla yapılmalıdır. Güvenlik nedenleriyle, bir üretim ortamında bu şekilde hata iletileri döndürmemelisiniz.
+**Note**: çağrıdan hata iletilerinin döndürülmesi `run(input_data)` yalnızca hata ayıklama amacıyla yapılmalıdır. Güvenlik nedenleriyle, bir üretim ortamında bu şekilde hata iletileri döndürmemelisiniz.
 
 ## <a name="http-status-code-502"></a>HTTP durum kodu 502
 
-502 durum kodu hizmetin bir özel durum yaptığını veya score.py dosyasının `run()` yönteminde kilitlendiğini gösterir. Dosyada hata ayıklamak için bu makaledeki bilgileri kullanın.
+502 durum kodu hizmetin bir özel durum yaptığını veya `run()` Score.py dosyasının yönteminde kilitlendiğini gösterir. Dosyada hata ayıklamak için bu makaledeki bilgileri kullanın.
 
 ## <a name="http-status-code-503"></a>HTTP durum kodu 503
 
@@ -233,16 +238,16 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
 
 * Otomatik ölçeklendirmenin yeni çoğaltmalar oluşturduğu kullanım düzeyini değiştirin.
     
-    Varsayılan olarak, otomatik ölçeklendirme hedef kullanımı %70 olarak ayarlanır, bu da hizmetin saniyede %30 ' a varan (RPS) istek sayısını işleyebileceği anlamına gelir. Daha düşük bir değere ayarlayarak `autoscale_target_utilization` kullanım hedefini ayarlayabilirsiniz.
+    Varsayılan olarak, otomatik ölçeklendirme hedef kullanımı %70 olarak ayarlanır, bu da hizmetin saniyede %30 ' a varan (RPS) istek sayısını işleyebileceği anlamına gelir. `autoscale_target_utilization`Daha düşük bir değere ayarlayarak kullanım hedefini ayarlayabilirsiniz.
 
     > [!IMPORTANT]
     > Bu değişiklik çoğaltmaların *daha hızlı*oluşturulmasına neden olmaz. Bunun yerine, daha düşük bir kullanım eşiğine göre oluşturulur. Hizmetin %70 olması beklenene kadar beklemek yerine %30 kullanım gerçekleştiğinde, çoğaltmanın oluşturulmasına neden olur.
     
-    Web hizmeti zaten geçerli en fazla çoğaltmaları kullanıyorsa ve 503 durum kodu görmeye devam ediyorsanız, en fazla çoğaltma sayısını artırmak için `autoscale_max_replicas` değeri arttırın.
+    Web hizmeti zaten geçerli en fazla çoğaltmaları kullanıyorsa ve 503 durum kodu görmeye devam ediyorsanız, `autoscale_max_replicas` en fazla çoğaltma sayısını artırmak için değeri arttırın.
 
 * En az çoğaltma sayısını değiştirin. En düşük çoğaltmaları artırmak, gelen ani artışları işlemek için daha büyük bir havuz sağlar.
 
-    En az çoğaltma sayısını artırmak için, daha yüksek `autoscale_min_replicas` bir değere ayarlayın. Aşağıdaki kodu kullanarak gerekli çoğaltmaları hesaplayabilirsiniz ve değerleri projenize özgü değerlerle değiştirin:
+    En az çoğaltma sayısını artırmak için, `autoscale_min_replicas` daha yüksek bir değere ayarlayın. Aşağıdaki kodu kullanarak gerekli çoğaltmaları hesaplayabilirsiniz ve değerleri projenize özgü değerlerle değiştirin:
 
     ```python
     from math import ceil
@@ -264,7 +269,7 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
     > [!NOTE]
     > Yeni en düşük çoğaltmalardan daha büyük istek ani artışları alırsanız, yeniden 503s alabilirsiniz. Örneğin, hizmetinizin trafiği arttıkça, en düşük çoğaltmaları artırmanız gerekebilir.
 
-`autoscale_target_utilization`, Ve `autoscale_max_replicas` `autoscale_min_replicas` için ayarları hakkında daha fazla bilgi için, bkz. [akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modül başvurusu.
+, Ve için ayarları hakkında daha fazla bilgi için, `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` bkz. [akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modül başvurusu.
 
 ## <a name="http-status-code-504"></a>HTTP durum kodu 504
 
@@ -277,7 +282,7 @@ Gereksiz çağrıları kaldırmak için score.py değiştirerek, zaman aşımın
 Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. Örneğin, giriş betiği başarısız olursa ve neden ek günlüğe kaydetme ile saptanamaz. Visual Studio Code ve Visual Studio için Python Araçları (PTVSD) kullanarak Docker kapsayıcısının içinde çalışan koda iliştirebilirsiniz.
 
 > [!IMPORTANT]
-> Bu hata ayıklama yöntemi, bir modeli yerel olarak `Model.deploy()` dağıtırken `LocalWebservice.deploy_configuration` ve kullanılırken çalışmaz. Bunun yerine, [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) yöntemini kullanarak bir görüntü oluşturmanız gerekir.
+> Bu hata ayıklama yöntemi, `Model.deploy()` `LocalWebservice.deploy_configuration` bir modeli yerel olarak dağıtırken ve kullanılırken çalışmaz. Bunun yerine, [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) yöntemini kullanarak bir görüntü oluşturmanız gerekir.
 
 Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Docker kullanma hakkında daha fazla bilgi için [Docker belgelerine](https://docs.docker.com/)bakın.
 
@@ -295,7 +300,7 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
 
     1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__' ı seçin. __Launch. JSON__ adlı bir dosya açılır.
 
-    1. __Launch. JSON__ dosyasında, içeren `"configurations": [`satırı bulun ve sonra aşağıdaki metni ekleyin:
+    1. __Launch. JSON__ dosyasında, içeren satırı bulun `"configurations": [` ve sonra aşağıdaki metni ekleyin:
 
         ```json
         {
@@ -322,7 +327,7 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
 
 ### <a name="create-an-image-that-includes-ptvsd"></a>PTVSD içeren bir görüntü oluşturma
 
-1. Dağıtım için Conda ortamını, PTVSD öğesini içerecek şekilde değiştirin. Aşağıdaki örnek, `pip_packages` parametresini kullanarak eklemeyi gösterir:
+1. Dağıtım için Conda ortamını, PTVSD öğesini içerecek şekilde değiştirin. Aşağıdaki örnek, parametresini kullanarak eklemeyi gösterir `pip_packages` :
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
@@ -338,7 +343,7 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
         f.write(myenv.serialize_to_string())
     ```
 
-1. PTVSD başlatmak ve hizmet başlatıldığında bir bağlantı beklemek için, `score.py` dosyanızın en üstüne aşağıdakileri ekleyin:
+1. PTVSD başlatmak ve hizmet başlatıldığında bir bağlantı beklemek için, dosyanızın en üstüne aşağıdakileri ekleyin `score.py` :
 
     ```python
     import ptvsd
@@ -352,7 +357,7 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
 1. Ortam tanımına dayalı bir görüntü oluşturun ve görüntüyü yerel kayıt defterine çekin. Hata ayıklama sırasında görüntünün dosyalarında yeniden oluşturmanız gerekmeden değişiklikler yapmak isteyebilirsiniz. Docker görüntüsüne bir metin Düzenleyicisi (VIM) yüklemek için `Environment.docker.base_image` ve `Environment.docker.base_dockerfile` özelliklerini kullanın:
 
     > [!NOTE]
-    > Bu örnek, Azure Machine Learning `ws` çalışma alanınıza işaret ettiğini ve `model` bu modelin dağıtılmakta olduğunu varsayar. Dosya `myenv.yml` , 1. adımda oluşturulan Conda bağımlılıklarını içerir.
+    > Bu örnek `ws` , Azure Machine Learning çalışma alanınıza işaret ettiğini ve bu `model` modelin dağıtılmakta olduğunu varsayar. `myenv.yml`Dosya, 1. adımda oluşturulan Conda bağımlılıklarını içerir.
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies
@@ -375,18 +380,18 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. Görüntüyle çalışmayı kolaylaştırmak için, bir etiket eklemek üzere aşağıdaki komutu kullanın. Önceki `myimagepath` adımdaki konum değeriyle değiştirin.
+1. Görüntüyle çalışmayı kolaylaştırmak için, bir etiket eklemek üzere aşağıdaki komutu kullanın. `myimagepath`Önceki adımdaki konum değeriyle değiştirin.
 
     ```bash
     docker tag myimagepath debug:1
     ```
 
-    Adımlar geri kalanında, tam görüntü yolu değeri `debug:1` yerine yerel görüntüye başvurabilirsiniz.
+    Adımlar geri kalanında, `debug:1` tam görüntü yolu değeri yerine yerel görüntüye başvurabilirsiniz.
 
 ### <a name="debug-the-service"></a>Hizmette hata ayıkla
 
 > [!TIP]
-> `score.py` Dosyadaki PTVSD bağlantısı için bir zaman aşımı ayarlarsanız, zaman aşımı süresi dolmadan önce vs Code hata ayıklama oturumuna bağlamanız gerekir. VS Code başlatın, yerel kopyasını açın `score.py`, bir kesme noktası ayarlayın ve bu bölümdeki adımları kullanmadan önce başlamaya hazırlanın.
+> Dosyadaki PTVSD bağlantısı için bir zaman aşımı ayarlarsanız `score.py` , zaman aşımı süresi dolmadan önce vs Code hata ayıklama oturumuna bağlamanız gerekir. VS Code başlatın, yerel kopyasını açın `score.py` , bir kesme noktası ayarlayın ve bu bölümdeki adımları kullanmadan önce başlamaya hazırlanın.
 >
 > Hata ayıklama ve kesme noktaları ayarlama hakkında daha fazla bilgi için bkz. [hata ayıklama](https://code.visualstudio.com/Docs/editor/debugging).
 
@@ -415,13 +420,13 @@ Görüntüdeki dosyalarda değişiklik yapmak için çalışan kapsayıcıya ili
     docker exec -it debug /bin/bash
     ```
 
-1. Hizmet tarafından kullanılan dosyaları bulmak için, varsayılan dizin şundan `/var/azureml-app`farklıysa, kapsayıcıda Bash kabuğundan aşağıdaki komutu kullanın:
+1. Hizmet tarafından kullanılan dosyaları bulmak için, varsayılan dizin şundan farklıysa, kapsayıcıda Bash kabuğundan aşağıdaki komutu kullanın `/var/azureml-app` :
 
     ```bash
     cd /var/azureml-app
     ```
 
-    Buradan, `score.py` dosyayı düzenlemek için VIM kullanabilirsiniz. VIM kullanma hakkında daha fazla bilgi için bkz. [VIM düzenleyicisini kullanma](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
+    Buradan, dosyayı düzenlemek için VIM kullanabilirsiniz `score.py` . VIM kullanma hakkında daha fazla bilgi için bkz. [VIM düzenleyicisini kullanma](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
 
 1. Kapsayıcıda yapılan değişiklikler normalde kalıcı olmaz. Yaptığınız değişiklikleri kaydetmek için aşağıdaki komutu kullanın, kabuktan çıkmadan önce, yukarıdaki adımda (başka bir kabukta) başlamadan önce aşağıdaki komutu kullanın:
 
@@ -429,7 +434,7 @@ Görüntüdeki dosyalarda değişiklik yapmak için çalışan kapsayıcıya ili
     docker commit debug debug:2
     ```
 
-    Bu komut, düzenlemelerinizi içeren adlı `debug:2` yeni bir görüntü oluşturur.
+    Bu komut, düzenlemelerinizi içeren adlı yeni bir görüntü oluşturur `debug:2` .
 
     > [!TIP]
     > Değişikliklerin etkili olabilmesi için geçerli kapsayıcıyı durdurmanız ve yeni sürümü kullanmaya başlamanız gerekir.

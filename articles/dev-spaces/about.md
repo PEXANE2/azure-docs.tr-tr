@@ -6,12 +6,12 @@ ms.topic: overview
 description: Azure Dev Spaces Azure Kubernetes hizmet kümelerinde takımlar için hızlı ve yinelemeli bir Kubernetes geliştirme deneyimi sağlar
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8b22181bcddda9e4156c0e0dbe61d7d813498d96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd757d5392a7cefcacdd1d77807beb72e34c8f89
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80529724"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873361"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Azure Dev Spaces nedir?
 
@@ -38,7 +38,7 @@ Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [
 
 ## <a name="supported-regions-and-configurations"></a>Desteklenen bölgeler ve Konfigürasyonlar
 
-Azure Dev Spaces yalnızca [bazı bölgelerde][supported-regions]aks kümeleri tarafından desteklenir. Azure Dev Spaces, uygulamalarınızı bir AKS üzerinde derlemek ve çalıştırmak için Linux, macOS veya Windows 8 veya sonraki bir sürümü yüklü [Azure dev Spaces uzantılı](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Visual Studio Code](https://code.visualstudio.com/download) kullanımını destekler. Ayrıca, Windows 8 veya üzeri bir sürümü yüklü [Visual Studio 'yu](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) kullanmayı da destekler. Visual Studio 2019 için Azure geliştirme iş yüküne ihtiyacınız olacak. Visual Studio 2017 için Web geliştirme iş yüküne ve [Kubernetes için Visual Studio Araçları](https://aka.ms/get-vsk8stools)ihtiyacınız olacaktır.
+Azure Dev Spaces yalnızca [bazı bölgelerde][supported-regions]aks kümeleri tarafından desteklenir. Azure Dev Spaces, uygulamalarınızı bir AKS üzerinde derlemek ve çalıştırmak için Linux, macOS veya Windows 8 veya sonraki bir sürümü yüklü [Azure dev Spaces uzantılı](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Visual Studio Code](https://code.visualstudio.com/download) kullanımını destekler. Ayrıca, Azure geliştirme iş yükü ile Windows 'da yüklü [Visual Studio 2019](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) kullanmayı da destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

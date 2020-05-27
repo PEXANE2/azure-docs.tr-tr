@@ -8,40 +8,38 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: d366195f9cd72e6baa88c17203ae93cbbc6cbe6a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3bb31c36e8c614a72b86f95cb7e7d1c588692f97
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475527"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873074"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak Bing yerel Iş Arama API 'sine bir sorgu gönderme
 
-Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu basit uygulama Node. js ' de yazıldığı sırada, API, HTTP istekleri yapma ve JSON 'u ayrıştırma yeteneğine sahip olan herhangi bir programlama diliyle uyumlu olan bir yeniden takip eden Web hizmetidir.
+Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek gönderme hakkında bilgi edinmek için bu hızlı başlangıcı kullanın. Bu basit uygulama Node. js ' de yazılmış olsa da, API, HTTP istekleri yapma ve JSON 'u ayrıştırma yeteneğine sahip olan herhangi bir programlama diliyle uyumlu olan bir yeniden takip eden Web hizmetidir.
 
-Bu örnek uygulama, arama sorgusu `hotel in Bellevue`için API 'den gelen yerel yanıt verilerini alır.
+Bu örnek uygulama, bir arama sorgusu için API 'den gelen yerel yanıt verilerini alır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
+* [JavaScript Istek kitaplığı](https://github.com/request/request).
+* Bing Arama API'leri olan bilişsel [Hizmetler API 'si hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Bu hızlı başlangıçta [ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) yeterlidir. Ücretsiz deneme sürümünüzü etkinleştirdiğinizde sunulan API anahtarını kaydedin. Daha fazla bilgi için bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-* [JavaScript İstek Kitaplığı](https://github.com/request/request)
-
-Bing API 'lerle bir bilişsel [Hizmetler API 'si hesabınızın](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) olması gerekir. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir. Ücretsiz deneme tarafından sunulan erişim anahtarını kullanın.  Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="code-scenario"></a>Kod senaryosu
 
-Aşağıdaki kod, isteği tanımlar ve gönderir. Aşağıdaki adımları izler:
+Aşağıdaki kod, aşağıdaki adımlarda uygulanan isteği tanımlar ve gönderir:
 
 1. Ana bilgisayar ve yol ile uç noktayı belirtmek için değişkenleri bildirme.
 2. Sorguyu belirtin ve sorgu parametresini ekleyin.
 3. Yanıt için bir işleyici işlevi oluşturma.
-4. İsteği oluşturan ve Ocp-Apim-Subscription-Key üst bilgisini ekleyen Search işlevini tanımlama.
-5. Search işlevini çalıştırma.
+4. İsteği oluşturan ve üstbilgiyi ekleyen arama işlevini tanımlayın `Ocp-Apim-Subscription-Key` .
+5. Search işlevini çalıştırın.
 
-Bu tanıtımda kullanılan kodun tamamı aşağıda verilmiştir:
 
 ```javascript
 'use strict';
@@ -94,6 +92,6 @@ Search();
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Yerel Iş araması hızlı başlangıç](local-quickstart.md)
+* [Yerel Iş arama C# hızlı başlangıç](local-quickstart.md)
 * [Yerel Iş arama Java hızlı başlangıç](local-search-java-quickstart.md)
 * [Yerel Iş arama Python hızlı başlangıç](local-search-python-quickstart.md)

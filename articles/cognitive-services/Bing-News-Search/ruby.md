@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ad52116e11f9d89bf55a23692ae4e27f53b51319
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448543"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873416"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: Ruby ve Bing Haber Arama REST API kullanarak bir haber arama gerçekleştirme
 
-Bing Haber Arama API'si ilk çağrısını yapmak ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir arama sorgusu gönderir ve sonuçları işler.
+Bing Haber Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit Ruby uygulaması, API 'ye bir arama sorgusu gönderir ve JSON yanıtını işler.
 
-Bu uygulama Python 'da yazıldığı sırada API, bir veya daha fazla programlama dili ile uyumlu bir Web hizmeti hizmetidir. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb)' da kullanılabilir.
+Bu uygulama Ruby dilinde yazılmış olsa da, API çoğu programlama dili ile uyumlu olan bir yenilenmiş Web hizmetidir. 
+
+Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb)' da kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -32,7 +34,7 @@ Bu uygulama Python 'da yazıldığı sırada API, bir veya daha fazla programlam
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Aşağıdaki paketleri kod dosyanıza içeri aktarın.
+1. Aşağıdaki paketleri kod dosyanıza aktarın:
 
     ```ruby
     require 'net/https'
@@ -40,7 +42,7 @@ Bu uygulama Python 'da yazıldığı sırada API, bir veya daha fazla programlam
     require 'json'
     ```
 
-2. API uç noktası, haber arama URL 'SI, abonelik anahtarınız ve arama terimiyle ilgili değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+2. API uç noktası, haber arama URL 'SI, abonelik anahtarınız ve arama terimiyle ilgili değişkenler oluşturun. Aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```ruby
     accessKey = "enter key here"
@@ -51,7 +53,7 @@ Bu uygulama Python 'da yazıldığı sırada API, bir veya daha fazla programlam
 
 ## <a name="format-and-make-an-api-request"></a>API isteğini biçimlendirme ve API isteğinde bulunma
 
-API isteğine yönelik bir arama URL’sini biçimlendirmek için son adımdaki değişkenleri kullanın. Daha sonra isteği gönderin.
+API isteği için bir arama URL 'SI biçimlendirmek üzere önceki adımdaki değişkenleri kullanın. Sonra, isteği gönderin.
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -64,7 +66,7 @@ end
 
 ## <a name="process-and-print-the-json-response"></a>JSON yanıtını işleme ve yazdırma
 
-Yanıt alındıktan sonra, JSON 'u ayrıştırarak hem yanıt gövdesini hem de onun üst bilgilerini yazdırabilirsiniz:
+Yanıt alındıktan sonra JSON 'ı ayrıştırır ve sonra hem yanıt gövdesini hem de üst bilgilerini yazdırın.
 
 ```ruby
 puts "\nRelevant Headers:\n\n"
@@ -78,7 +80,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="json-response"></a>JSON yanıtı
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür:
 
@@ -177,4 +179,4 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bir signle sayfalı uygulama oluşturma](tutorial-bing-news-search-single-page-app.md)
+> [Tek sayfalı web uygulaması oluşturma](tutorial-bing-news-search-single-page-app.md)

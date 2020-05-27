@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcıl
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: e6fa490285582c827b8704496fb7a20a7eb9cfbc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1aa2545f3bd4e7558c99a31dca43f65510bab59e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166028"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872147"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'te hata ayıklama ve yineleme: Visual Studio & .NET Core-Azure Dev Spaces
 
@@ -31,7 +31,7 @@ Azure Dev Spaces ayrıca şunları kullanarak hata ayıklamanıza ve yinelemeniz
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
-- Azure geliştirme iş yükü yüklü olan Windows üzerinde Visual Studio 2019. Ayrıca, Web geliştirme iş yükü ve yüklü [Kubernetes için Visual Studio Araçları](https://aka.ms/get-vsk8stools) Windows üzerinde Visual Studio 2017 ' i de kullanabilirsiniz. Visual Studio yüklü değilse, [buradan](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)indirin.
+- Azure geliştirme iş yükü yüklü olan Windows üzerinde Visual Studio 2019. Visual Studio yüklü değilse, [buradan](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)indirin.
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma
 
@@ -94,7 +94,7 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-Yukarıdaki örnekte, genel URL olur `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/`. 
+Yukarıdaki örnekte, genel URL olur `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/` . 
 
 **Hata Ayıkla** ' yı seçin ve **hata ayıklamayı başlatın**. Birkaç saniye sonra hizmetiniz başlatılır ve Visual Studio, hizmetin genel URL 'sini içeren bir tarayıcı açar. Bir tarayıcı otomatik olarak açılmadığından, bir tarayıcıda hizmetinizin genel URL 'sine gidin ve geliştirme alanınızda çalışan hizmetle etkileşime geçin.
 
@@ -102,7 +102,7 @@ Bu işlem hizmetinize genel erişimi devre dışı bırakmış olabilir. Ortak e
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-Visual Studio hala geliştirme alanınıza bağlıysa Durdur düğmesine tıklayın. Satır 20 ' `Controllers/HomeController.cs` sini şu şekilde değiştirin:
+Visual Studio hala geliştirme alanınıza bağlıysa Durdur düğmesine tıklayın. Satır 20 ' sini şu `Controllers/HomeController.cs` şekilde değiştirin:
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
@@ -114,13 +114,13 @@ Kod düzenlemeleri her yapıldığında yeni bir kapsayıcı görüntüsünü ye
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Hata ayıklama için kesme noktaları ayarlama ve kullanma
 
-Visual Studio hala geliştirme alanınıza bağlıysa Durdur düğmesine tıklayın. İmlecinizi `Controllers/HomeController.cs` buraya yerleştirmek için açın ve 20. satırda herhangi bir yere tıklayın. Kesme noktası isabet *F9* ayarlamak Için, *Hata Ayıkla* ' ya tıklayın ve ardından *kesme noktasını değiştirin* Uygulamanızı geliştirme alanınızda hata ayıklama modunda başlatmak için *F5* tuşuna basın veya *Hata Ayıkla* ' ya tıkladıktan sonra *hata ayıklamayı başlatın*.
+Visual Studio hala geliştirme alanınıza bağlıysa Durdur düğmesine tıklayın. `Controllers/HomeController.cs`İmlecinizi buraya yerleştirmek için açın ve 20. satırda herhangi bir yere tıklayın. Kesme noktası isabet *F9* ayarlamak Için, *Hata Ayıkla* ' ya tıklayın ve ardından *kesme noktasını değiştirin* Uygulamanızı geliştirme alanınızda hata ayıklama modunda başlatmak için *F5* tuşuna basın veya *Hata Ayıkla* ' ya tıkladıktan sonra *hata ayıklamayı başlatın*.
 
 Hizmetinizi bir tarayıcıda açın ve hiçbir ileti görüntülenmediğini unutmayın. Visual Studio 'ya dönün ve 20. satırı vurgulanmıştır. Ayarladığınız kesme noktası, hizmeti 20. satırda duraklattı. Hizmeti sürdürmek için *F5* 'e basın veya *Hata Ayıkla* 'Ya tıkladıktan sonra *devam edin*. Tarayıcınıza geri dönün ve iletinin şimdi görüntülendiğini unutmayın.
 
 Bir hata ayıklayıcı eklenmiş olarak Kubernetes 'de hizmetinizi çalıştırırken, çağrı yığını, yerel değişkenler ve özel durum bilgileri gibi bilgileri hata ayıklamaya yönelik tam erişime sahip olursunuz.
 
-İmlecinizi 20. satıra koyarak `Controllers/HomeController.cs` ve *F9*'a basarak kesme noktasını kaldırın.
+İmlecinizi 20. satıra koyarak ve F9 'a basarak kesme noktasını kaldırın `Controllers/HomeController.cs` . *F9*
 
 ## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı Temizleme
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: fd5617af2da9aa00cb75deb82f83be29db78d79d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836708"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873500"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -94,7 +94,7 @@ Bkz. [Application Gateway alt ağ boyutu konuları](https://docs.microsoft.com/a
 
 Evet. Belirli bir Application Gateway dağıtımının birden çok örneğine ek olarak, farklı bir Application Gateway kaynağı içeren mevcut bir alt ağa başka bir benzersiz Application Gateway kaynağı sağlayabilirsiniz.
 
-Tek bir alt ağ hem Standard_v2 hem de standart Application Gateway birlikte destekleyemez.
+Tek bir alt ağ hem v2 hem de v1 Application Gateway SKU 'Larını destekleyemez.
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Application Gateway V2 Kullanıcı tanımlı yolları (UDR) destekliyor mu?
 
@@ -211,7 +211,7 @@ Bkz. [işleme kuralları sırası](https://docs.microsoft.com/azure/application-
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Özel yoklamalar için, ana bilgisayar alanı ne işaret eder?
 
-Konak alanı, Application Gateway üzerinde çok siteli yapılandırdığınız zaman, araştırmanın gönderileceği adı belirtir. Aksi takdirde ' 127.0.0.1 ' kullanın. Bu değer, sanal makine ana bilgisayar adından farklıdır. \<Biçimi protokol\>://\<ana bilgisayar\>:\<bağlantı noktası\>\<yoludur\>.
+Konak alanı, Application Gateway üzerinde çok siteli yapılandırdığınız zaman, araştırmanın gönderileceği adı belirtir. Aksi takdirde ' 127.0.0.1 ' kullanın. Bu değer, sanal makine ana bilgisayar adından farklıdır. Biçimi \< Protokol \> :// \< ana bilgisayar \> : \< bağlantı noktası \> \< yoludur \> .
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Yalnızca birkaç kaynak IP adresine Application Gateway erişimine izin verebilir miyim?
 
@@ -246,7 +246,7 @@ Ancak Application Gateway v2 'yi yalnızca özel IP ile kullanmak istiyorsanız,
     
     e. Giden internet bağlantısı engellenmiyor. Aksi takdirde, oturum açma, ölçümler vb. ile ilgili sorunlar olur.
 
-Yalnızca özel IP erişimi için örnek NSG yapılandırması: ![yalnızca özel IP erişimi Için Application Gateway v2 NSG yapılandırması](./media/application-gateway-faq/appgw-privip-nsg.png)
+Yalnızca özel IP erişimi için örnek NSG yapılandırması: ![ yalnızca özel IP erişimi için Application Gateway v2 NSG yapılandırması](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 ## <a name="configuration---tls"></a>Yapılandırma-TLS
 
@@ -334,8 +334,8 @@ Hayır,. pfx dosya parolanda yalnızca alfasayısal karakterler kullanın.
 
 ### <a name="what-is-an-ingress-controller"></a>Giriş denetleyicisi nedir?
 
-Kubernetes, `deployment` ve `service` kaynak oluşturulmasına izin verir. Aynı hizmeti dışarıdan göstermek için, Yük Dengeleme [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) , TLS sonlandırma ve ad tabanlı sanal barındırma sağlayan bir kaynak tanımlanmıştır.
-Bu `Ingress` kaynağı karşılamak için, `Ingress` kaynaklarda yapılan tüm değişiklikleri dinleyen ve yük dengeleyici Ilkelerini yapılandıran bir giriş denetleyicisi gerekir.
+Kubernetes `deployment` , ve kaynak oluşturulmasına izin verir `service` . Aynı hizmeti dışarıdan göstermek için, [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) Yük Dengeleme, TLS sonlandırma ve ad tabanlı sanal barındırma sağlayan bir kaynak tanımlanmıştır.
+Bu kaynağı karşılamak için `Ingress` , kaynaklarda yapılan tüm değişiklikleri dinleyen `Ingress` ve yük dengeleyici ilkelerini yapılandıran bir giriş denetleyicisi gerekir.
 
 Application Gateway giriş denetleyicisi, [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) 'nin bir aks kümesi olarak da bilinen bir [Azure Kubernetes hizmeti](https://azure.microsoft.com/services/kubernetes-service/) için giriş olarak kullanılmasına izin verir.
 
@@ -357,7 +357,7 @@ Tüm Günlükler her 60 saniyede toplanır. Daha fazla bilgi için bkz. [Applica
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Nasıl yaparım?, arka uç havuzu Üyelerimin sağlıklı olup olmadığını bilmelidir mi?
 
-PowerShell cmdlet 'ini `Get-AzApplicationGatewayBackendHealth` veya portalını kullanarak sistem durumunu doğrulayın. Daha fazla bilgi için bkz. [tanılama Application Gateway](application-gateway-diagnostics.md).
+PowerShell cmdlet 'ini veya portalını kullanarak sistem durumunu doğrulayın `Get-AzApplicationGatewayBackendHealth` . Daha fazla bilgi için bkz. [tanılama Application Gateway](application-gateway-diagnostics.md).
 
 ### <a name="whats-the-retention-policy-for-the-diagnostic-logs"></a>Tanılama günlükleri için bekletme ilkesi nedir?
 
@@ -409,7 +409,7 @@ Ancak Application Gateway v2 'yi yalnızca özel IP ile kullanmak istiyorsanız,
     
     e. Giden internet bağlantısı engellenmiyor. Aksi takdirde, oturum açma, ölçümler vb. ile ilgili sorunlar olur.
 
-Yalnızca özel IP erişimi için örnek NSG yapılandırması: ![yalnızca özel IP erişimi Için Application Gateway v2 NSG yapılandırması](./media/application-gateway-faq/appgw-privip-nsg.png)
+Yalnızca özel IP erişimi için örnek NSG yapılandırması: ![ yalnızca özel IP erişimi için Application Gateway v2 NSG yapılandırması](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway benzeşim tanımlama bilgisi SameSite özniteliğini destekliyor mu?
 Evet, [Kmıum Browser](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) , SameSite = LAX olarak değerlendirilmeyeceği bir SAMESITE özniteliği olmadan http tanımlama bilgilerinde bir mantarih getirdi. Bu, Application Gateway benzeşim tanımlama bilgisinin tarayıcı tarafından üçüncü taraf bir bağlamda gönderilemeyeceği anlamına gelir. Bu senaryoyu desteklemek için, mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisini Application Gateway çıkartır.  Bu tanımlama bilgileri benzerdir, ancak *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenmiş iki özniteliği vardır: *SameSite = None; Güvenli*. Bu öznitelikler, çapraz kaynak istekleri için bile yapışkan oturumları korur. Daha fazla bilgi için [tanımlama bilgisi tabanlı benzeşim bölümüne](configuration-overview.md#cookie-based-affinity) bakın.

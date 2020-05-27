@@ -8,24 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: 373d6fa5402ba703cbebe88ad562974ba97f3391
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7dfb3adb5d7bf5b005beb7e7b75fb339d456cd15
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75379717"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872597"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Node. js kullanarak görüntü öngörülerini alın
 
-Bing Görsel Arama API'si ilk çağrısını yapmak ve arama sonuçlarını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir görüntü yükler ve onunla ilgili olarak döndürülen bilgileri görüntüler. Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
+Bing Görsel Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir görüntü yükler ve onunla ilgili olarak döndürülen bilgileri görüntüler. Bu uygulama JavaScript 'e yazılsa da, API çoğu programlama dili ile uyumlu olan yeniden yazılmış bir Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/en/download/)
-* JavaScript için Istek modülü. Modülünü yüklemek için `npm install request` komutunu kullanabilirsiniz.
-* Form veri modülü. Modülünü yüklemek için `npm install form-data` komutunu kullanabilirsiniz. 
+* JavaScript için Istek modülü. `npm install request`Modülünü yüklemek için komutunu kullanabilirsiniz.
+* Form veri modülü. `npm install form-data`Modülünü yüklemek için komutunu kullanabilirsiniz. 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
@@ -39,7 +39,7 @@ Bing Görsel Arama API'si ilk çağrısını yapmak ve arama sonuçlarını gör
     var fs = require('fs');
     ```
 
-2. API uç noktanız, abonelik anahtarınız ve görüntünüzün yolu için değişkenler oluşturun. `baseUri`Aşağıdaki genel uç nokta veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir:
+2. API uç noktanız, abonelik anahtarınız ve görüntünüzün yolu için değişkenler oluşturun. Değer için `baseUri` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -47,7 +47,7 @@ Bing Görsel Arama API'si ilk çağrısını yapmak ve arama sonuçlarını gör
     var imagePath = "path-to-your-image";
     ```
 
-3. API 'den yanıtı yazdırmak `requestCallback()` için adlı bir işlev oluşturun:
+3. `requestCallback()`API 'den yanıtı yazdırmak için adlı bir işlev oluşturun.
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -57,25 +57,25 @@ Bing Görsel Arama API'si ilk çağrısını yapmak ve arama sonuçlarını gör
 
 ## <a name="construct-and-send-the-search-request"></a>Arama isteğini oluşturun ve gönderin
 
-Yerel bir görüntü karşıya yüklenirken, form verileri `Content-Disposition` üstbilgiyi içermelidir. `name` Parametresini "Image" olarak ayarlamanız gerekir ve `filename` parametresi herhangi bir dizeye ayarlanabilir. Formun içeriği görüntünün ikili verilerini içerir. Karşıya yükleyebileceğiniz resim boyutu üst sınırı 1 MB'tır.
+1. Yerel bir görüntüyü karşıya yüklediğinizde, form verileri `Content-Disposition` üstbilgiyi içermelidir. `name`Parametresini "Image" olarak ayarlayın ve bu `filename` parametreyi görüntünüzün dosya adına ayarlayın. Formun içeriği görüntünün ikili verilerini içerir. Karşıya yükleyebileceğiniz en büyük görüntü boyutu 1 MB 'tır.
 
-```
---boundary_1234-abcd
-Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
+   ```
+   --boundary_1234-abcd
+   Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+   ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
 
---boundary_1234-abcd--
-```
+   --boundary_1234-abcd--
+   ```
 
-1. Kullanarak `FormData()`yeni `fs.createReadStream()`bir **FormData** nesnesi oluşturun ve bunu kullanarak görüntü yolunuzu ekleyin:
+2. İle yeni bir `FormData` nesne oluşturun `FormData()` ve kullanarak görüntü yolunu ekleyin `fs.createReadStream()` .
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. Görüntüyü karşıya yüklemek için istek kitaplığını kullanın ve yanıtı yazdırmak için `requestCallback()` çağrısı yapın. Abonelik anahtarınızı istek üstbilgisine eklediğinizden emin olun:
+3. Görüntüyü karşıya yüklemek için istek kitaplığını kullanın ve `requestCallback()` yanıtı yazdırmak için çağrısı yapın. Abonelik anahtarınızı istek üstbilgisine ekleyin.
 
     ```javascript
     form.getLength(function(err, length){

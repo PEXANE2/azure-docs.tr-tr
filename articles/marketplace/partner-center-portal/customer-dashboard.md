@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b8492a6740eb9acfa20fbbe5dd5beed5e985fafc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dcb9f554b214813439ab8753cf21e7d11a0fba56
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744583"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872563"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Müşteri Panosu
 
@@ -99,6 +99,7 @@ Isı haritasını, müşteri sayısını ve% müşteriyi ülke/bölge olarak gö
 - Kayıt numarası 1000 üzerinden ise, verilen veriler sonraki 30 gün boyunca bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
 - Filtreler, yalnızca ilgilendiğiniz verileri göstermek için tabloya uygulanabilir. Veriler şirket adı, müşteri KIMLIĞI, Market abonelik KIMLIĞI, Azure lisans türü, alınma tarihi, tarih kaybı, müşteri e-postası, müşteri ülkesi/bölgesi/eyalet/şehir/posta, müşteri dili vb. tarafından filtrelenebilir.
 - Bir teklif, korunan bir müşteri tarafından satın alındığında, **müşterinin ayrıntılı verilerinde** bilgiler maskelenecek (* * * * * * * * * * * *).
+- Şirket adı, müşteri adı ve müşteri e-postası gibi müşteri boyut ayrıntıları, Azure Marketi veya AppSource işlem düzeyinde değil, bir kuruluş KIMLIĞI düzeyidir.
 
 ### <a name="customer-page-filters"></a>Müşteri sayfası filtreleri
 

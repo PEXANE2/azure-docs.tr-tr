@@ -5,12 +5,12 @@ ms.date: 07/03/2018
 ms.topic: conceptual
 description: Azure Dev Spaces komut satırı araçlarını, Visual Studio Code uzantısını ve Visual Studio uzantısını nasıl yükselteceğinizi öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
-ms.openlocfilehash: 748ed4699591a21a5a09da924e093011b0813b46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dad455b834bbef046b295b2cba040831a74f757
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265239"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873475"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Azure Dev Spaces araçlarını yükseltme
 
@@ -35,11 +35,9 @@ az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group>
 
 Yüklendikten sonra uzantı otomatik olarak güncelleştirilir. Yeni özellikleri kullanmak için uzantıyı yeniden yüklemeniz gerekebilir. VS Code, **Uzantılar** bölmesini açın, **Azure dev Spaces** uzantıları ' nı seçin ve **yeniden yükle**' yi seçin.
 
-## <a name="update-the-visual-studio-extension"></a>Visual Studio uzantısını güncelleştirme
+## <a name="update-visual-studio"></a>Visual Studio’yu güncelleştirme
 
-Diğer uzantılar ve güncelleştirmelerle benzer şekilde, Visual Studio, Azure Dev Spaces de içeren Kubernetes için Visual Studio Araçları için kullanılabilir bir güncelleştirme olduğunda size bildirimde bulunur. Ekranın sağ üst kısmındaki bayrak simgesine bakın.
-
-Visual Studio 'daki araçları güncelleştirmek için **araçlar > Uzantılar ve güncelleştirmeler** menü öğesini seçin ve sol tarafta **güncelleştirmeler**' i seçin. **Kubernetes için Visual Studio Araçları** bulun ve **Güncelleştir** düğmesini seçin.
+Azure Dev Spaces, Azure geliştirme iş yükünün bir parçasıdır ve tüm Visual Studio güncelleştirmelerine dahildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

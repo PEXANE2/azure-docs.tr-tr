@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 90ceb2b716df429eaf4541f13cfa96cb9e0eac7d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745209"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871927"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SharePoint Online listesinden veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,7 +52,7 @@ SharePoint listesi çevrimiçi Bağlayıcısı, SharePoint 'e bağlanmak için h
     > [!NOTE]
     > Bu işlem SharePoint Online site sahibi iznini gerektirir. Site giriş sayfasına giderek sahibini bulabilirsiniz-> sağ köşedeki "X üyeleri" ne >, "sahip" rolüne kimin sahip olduğunu denetleyin.
 
-    1. SharePoint Online site bağlantısını açın, örneğin `https://[your_site_url]/_layouts/15/appinv.aspx` (kiracı ve site adını değiştirin).
+    1. SharePoint Online site bağlantısını açın, örn. `https://[your_site_url]/_layouts/15/appinv.aspx` (site URL 'sini değiştirin).
     2. Kaydettiğiniz uygulama KIMLIĞINDE arama yapın, boş alanları doldurup "Oluştur" a tıklayın.
 
         - Uygulama etki alanı:`localhost.com`
@@ -69,7 +69,7 @@ SharePoint listesi çevrimiçi Bağlayıcısı, SharePoint 'e bağlanmak için h
 
     3. Bu uygulama için "Ona güvenin" düğmesine tıklayın.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -117,7 +117,7 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 | tür | Veri kümesinin **Type** özelliği, **Sharepointonlinelresource**olarak ayarlanmalıdır. | Yes |
 | tanımlamalıdır | SharePoint Online listesinin adı. | Yes |
 
-**Örnek**
+**Örneğinde**
 
 ```json
 {
@@ -151,7 +151,7 @@ SharePoint Online listesinden veri kopyalamak için, etkinlik **kaynağını** k
 | sorgu | Verileri filtrelemek için özel OData sorgu seçenekleri. Örnek: `"$top=10&$select=Title,Number"`. | No |
 | httpRequestTimeout | HTTP isteğinin yanıt alması için zaman aşımı (saniye olarak). Varsayılan değer 300 ' dir (5 dakikadır). | No |
 
-**Örnek**
+**Örneğinde**
 
 ```json
 "activities":[

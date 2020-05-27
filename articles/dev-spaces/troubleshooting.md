@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 9fcf14bf42fc843a126fea269038087ee7fb0c6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1242aa0e6c8255d778da55b0e574f3d12f61c381
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382056"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872024"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -22,11 +22,11 @@ Azure Dev Spaces kullanırken bir sorununuz varsa, [Azure dev Spaces GitHub depo
 
 Sorunları daha etkili bir şekilde gidermek için inceleme için daha ayrıntılı Günlükler oluşturmaya yardımcı olabilir.
 
-Visual Studio uzantısı için `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` ortam değişkenini 1 olarak ayarlayın. Ortam değişkeninin etkili olması için Visual Studio 'Yu yeniden başlattığınızdan emin olun. Etkinleştirildikten sonra, ayrıntılı Günlükler `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` dizininize yazılır.
+Visual Studio için, `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` ortam değişkenini 1 olarak ayarlayın. Ortam değişkeninin etkili olması için Visual Studio 'Yu yeniden başlattığınızdan emin olun. Etkinleştirildikten sonra, ayrıntılı Günlükler `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` dizininize yazılır.
 
-CLı içinde, komut yürütme sırasında `--verbose` anahtarı kullanarak daha fazla bilgi alabilirsiniz. Ayrıca, içinde `%TEMP%\Azure Dev Spaces`daha ayrıntılı günlüklere de gidebilirsiniz. Bir Mac üzerinde, *geçici* Dizin bir terminal penceresinden çalıştırılarak `echo $TMPDIR` bulunabilir. Bir Linux bilgisayarda, *geçici* dizin genellikle `/tmp`olur. Ayrıca, [Azure CLI yapılandırma dosyanızda](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)günlüğe kaydetme özelliğinin etkinleştirildiğini doğrulayın.
+CLı içinde, komut yürütme sırasında anahtarı kullanarak daha fazla bilgi alabilirsiniz `--verbose` . Ayrıca, içinde daha ayrıntılı günlüklere de gidebilirsiniz `%TEMP%\Azure Dev Spaces` . Bir Mac üzerinde, *geçici* Dizin `echo $TMPDIR` bir terminal penceresinden çalıştırılarak bulunabilir. Bir Linux bilgisayarda, *geçici* dizin genellikle olur `/tmp` . Ayrıca, [Azure CLI yapılandırma dosyanızda](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)günlüğe kaydetme özelliğinin etkinleştirildiğini doğrulayın.
 
-Azure Dev Spaces, tek bir örneğin veya Pod hata ayıklaması yaparken en iyi şekilde de geçerlidir. `azds.yaml` Dosya, Kubernetes 'in hizmetinize çalıştığı düğüm sayısını gösteren bir, *replicacount*ayarı içerir. Uygulamanızı belirli bir hizmet için birden çok Pod çalıştıracak şekilde yapılandırmak üzere *replicacount* değerini değiştirirseniz, hata ayıklayıcı alfabetik olarak listelendiğinde ilk Pod 'a iliştirir. Özgün Pod geri dönüştürüldüğünde hata ayıklayıcı farklı bir pod 'a iliştirir, muhtemelen beklenmedik davranışa neden olur.
+Azure Dev Spaces, tek bir örneğin veya Pod hata ayıklaması yaparken en iyi şekilde de geçerlidir. `azds.yaml`Dosya, Kubernetes 'in hizmetinize çalıştığı düğüm sayısını gösteren bir, *replicacount*ayarı içerir. Uygulamanızı belirli bir hizmet için birden çok Pod çalıştıracak şekilde yapılandırmak üzere *replicacount* değerini değiştirirseniz, hata ayıklayıcı alfabetik olarak listelendiğinde ilk Pod 'a iliştirir. Özgün Pod geri dönüştürüldüğünde hata ayıklayıcı farklı bir pod 'a iliştirir, muhtemelen beklenmedik davranışa neden olur.
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Azure Dev Spaces etkinleştirilirken yaygın sorunlar
 
@@ -78,7 +78,7 @@ Bu sorunu giderecek en az bir Linux düğümünün tolerans belirtmeden zamanlam
 
 ### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Az aks Use-dev-Spaces çalıştırılırken "Azure Dev Spaces CLı düzgün yüklenmemiş" hatası
 
-CLı Azure Dev Spaces güncelleştirme, yükleme yolunu değiştirdi. Azure CLı 'nın 2.0.63 'den önceki bir sürümünü kullanıyorsanız, bu hatayı görebilirsiniz. Azure CLı sürümünüzü göstermek için kullanın `az --version`.
+CLı Azure Dev Spaces güncelleştirme, yükleme yolunu değiştirdi. Azure CLı 'nın 2.0.63 'den önceki bir sürümünü kullanıyorsanız, bu hatayı görebilirsiniz. Azure CLı sürümünüzü göstermek için kullanın `az --version` .
 
 ```azurecli
 az --version
@@ -89,9 +89,9 @@ azure-cli                         2.0.60 *
 ...
 ```
 
-2.0.63 öncesinde bir Azure CLı sürümü `az aks use-dev-spaces` ile çalışırken hata iletisine rağmen yükleme başarılı olur. Herhangi bir sorun olmadan kullanmaya `azds` devam edebilirsiniz.
+`az aks use-dev-spaces`2.0.63 öncesinde bir Azure CLI sürümü ile çalışırken hata iletisine rağmen yükleme başarılı olur. `azds`Herhangi bir sorun olmadan kullanmaya devam edebilirsiniz.
 
-Bu sorunu onarmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) yüklemenizi 2.0.63 veya üzeri bir sürüme güncelleştirin. Bu güncelleştirme, çalışırken `az aks use-dev-spaces`aldığınız hata mesajını çözmeyecektir. Alternatif olarak, geçerli Azure CLı sürümünüzü ve Azure Dev Spaces CLı 'yi kullanmaya devam edebilirsiniz.
+Bu sorunu onarmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) yüklemenizi 2.0.63 veya üzeri bir sürüme güncelleştirin. Bu güncelleştirme, çalışırken aldığınız hata mesajını çözmeyecektir `az aks use-dev-spaces` . Alternatif olarak, geçerli Azure CLı sürümünüzü ve Azure Dev Spaces CLı 'yi kullanmaya devam edebilirsiniz.
 
 ### <a name="error-unable-to-reach-kube-apiserver"></a>Hata "Kuto-apiserver 'e ulaşılamıyor"
 
@@ -104,29 +104,29 @@ Kubectl komutlarını çalıştırarak API sunucusunun kullanılabilir olduğund
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Projenizi Azure Dev Spaces hazırlarken yaygın sorunlar
 
 ### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Uyarı "desteklenmeyen dil nedeniyle Dockerfile üretilemedi"
-Azure Dev Spaces, C# ve Node. js için yerel destek sağlar. Bu dillerden birinde `azds prep` yazılmış kodla bir dizinde çalıştırdığınızda, Azure dev Spaces sizin için otomatik olarak uygun bir Dockerfile oluşturur.
+Azure Dev Spaces, C# ve Node. js için yerel destek sağlar. `azds prep`Bu dillerden birinde yazılmış kodla bir dizinde çalıştırdığınızda, Azure dev Spaces sizin için otomatik olarak uygun bir Dockerfile oluşturur.
 
-Azure Dev Spaces başka dillerde yazılmış kodla kullanmaya devam edebilirsiniz, ancak ilk kez çalışmadan önce `azds up` Dockerfile 'ı el ile oluşturmanız gerekir.
+Azure Dev Spaces başka dillerde yazılmış kodla kullanmaya devam edebilirsiniz, ancak ilk kez çalışmadan önce Dockerfile 'ı el ile oluşturmanız gerekir `azds up` .
 
 Uygulamanız Azure Dev Spaces yerel olarak desteklenmeyen bir dilde yazılmışsa, kodunuzu çalıştıran bir kapsayıcı görüntüsü oluşturmak için uygun bir Dockerfile sağlamanız gerekir. Docker, Dockerfiles ve gereksinimlerinize uygun bir Dockerfile başvurusu yazmanıza yardımcı olabilecek bir [dockerfile başvurusu](https://docs.docker.com/engine/reference/builder/) [yazmak için en iyi yöntemlerin bir listesini](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) sağlar.
 
-Uygun bir Dockerfile varsa, uygulamanızı Azure Dev Spaces çalıştırmak için çalıştırırsınız `azds up` .
+Uygun bir Dockerfile varsa, `azds up` uygulamanızı Azure dev Spaces çalıştırmak için çalıştırırsınız.
 
 ## <a name="common-issues-when-starting-or-stopping-services-with-azure-dev-spaces"></a>Azure Dev Spaces ile hizmetleri başlatırken veya durdurulurken karşılaşılan yaygın sorunlar
 
 ### <a name="error-config-file-not-found"></a>"Yapılandırma dosyası bulunamadı:" hatası
 
-Çalışırken `azds up`bu hatayı görebilirsiniz. `azds prep` Her ikisi de `azds up` geliştirme alanınızda çalıştırmak istediğiniz projenin kök dizininden çalıştırılmalıdır.
+Çalışırken `azds up` Bu hatayı görebilirsiniz. Her ikisi de `azds up` `azds prep` geliştirme alanınızda çalıştırmak istediğiniz projenin kök dizininden çalıştırılmalıdır.
 
 Bu sorunu düzeltmek için:
 1. Geçerli dizininizi, hizmet kodunuzu içeren kök klasör olarak değiştirin. 
-1. Kod klasöründe _azds. YAML_ dosyanız yoksa, Docker, Kubernetes ve Azure dev Spaces varlıkları oluşturmak için komutunu çalıştırın `azds prep` .
+1. Kod klasöründe _azds. YAML_ dosyanız yoksa, `azds prep` Docker, Kubernetes ve Azure dev Spaces varlıkları oluşturmak için komutunu çalıştırın.
 
 ### <a name="timeout-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>"Kapsayıcı görüntüsü derlemesi bekleniyor..." saatinde zaman aşımı AKS sanal düğümleri ile adımla
 
 Bu zaman aşımı, bir [aks sanal düğümünde](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)çalışacak şekilde yapılandırılmış bir hizmeti çalıştırmak Için geliştirme alanlarını kullanmaya çalıştığınızda oluşur. Geliştirme alanları şu anda sanal düğümlerde Hizmetleri oluşturmayı veya hata ayıklamayı desteklememektedir.
 
-`--verbose` Anahtarla çalıştırırsanız `azds up` veya Visual Studio 'da ayrıntılı günlük kaydını etkinleştirirseniz, ek ayrıntı görürsünüz:
+`azds up` `--verbose` Anahtarla çalıştırırsanız veya Visual Studio 'da ayrıntılı günlük kaydını etkinleştirirseniz, ek ayrıntı görürsünüz:
 
 ```cmd
 azds up --verbose
@@ -150,13 +150,13 @@ Bu hata, Helm istemcisi artık kümede çalışan Tiller Pod ile iletişim kurmu
 
 Bu sorunu onarmak için kümenizdeki aracı düğümlerini yeniden başlatın.
 
-### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Azds-\<Identifier\>-\<spacename\>-\<ServiceName\> ' hatası başarısız oldu: '\<ServiceName\>' Hizmetleri zaten var" veya "ServiceName \<\>için çekme erişimi reddedildi, depo yok veya ' Docker login' gerektirebilir"
+### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Azds- \< Identifier \> - \< spacename \> - \< ServiceName ' hatası \> başarısız oldu: ' \< ServiceName \> ' Hizmetleri zaten var" veya "ServiceName için çekme erişimi reddedildi \< \> , depo yok veya ' Docker login' gerektirebilir"
 
-Bu hatalar, aynı geliştirme alanı içinde dev Spaces komutlarıyla `helm install`( `helm upgrade` `helm delete` `azds up` ve `azds down`gibi) çalışan doğrudan HELD komutlarının (örneğin, veya) karıştıradıysanız meydana gelebilir. Bu durum, dev Spaces 'ın aynı geliştirme alanında çalışan kendi Tiller örneğinizle çakışan kendi Tiller örneğine sahip olduğu için oluşur.
+Bu hatalar, `helm install` `helm upgrade` `helm delete` `azds up` `azds down` aynı geliştirme alanı içinde dev Spaces komutlarıyla (ve gibi) çalışan doğrudan HELD komutlarının (örneğin, veya) karıştıradıysanız meydana gelebilir. Bu durum, dev Spaces 'ın aynı geliştirme alanında çalışan kendi Tiller örneğinizle çakışan kendi Tiller örneğine sahip olduğu için oluşur.
 
 Aynı AKS kümesinde hem HELI komutları hem de dev Spaces komutlarının kullanılması ince, ancak her dev Spaces özellikli ad alanı birini ya da diğerini kullanmalıdır.
 
-Örneğin, tüm uygulamanızı bir üst geliştirme alanında çalıştırmak için Held komutunu kullandığınızı varsayalım. Bu üst öğeden alt dev alanları oluşturabilir, her bir hizmeti alt geliştirme alanında çalıştırmak için geliştirme alanlarını kullanabilir ve Hizmetleri birlikte test edebilirsiniz. Değişikliklerinizi iade etmeye hazırsanız, güncelleştirilmiş kodu üst geliştirme alanına dağıtmak için Held komutunu kullanın. Ana geliştirme `azds up` alanında güncelleştirilmiş hizmeti çalıştırmak için kullanmayın, çünkü başlangıçta Held kullanılarak çalıştırılan hizmetle çakışacaktır.
+Örneğin, tüm uygulamanızı bir üst geliştirme alanında çalıştırmak için Held komutunu kullandığınızı varsayalım. Bu üst öğeden alt dev alanları oluşturabilir, her bir hizmeti alt geliştirme alanında çalıştırmak için geliştirme alanlarını kullanabilir ve Hizmetleri birlikte test edebilirsiniz. Değişikliklerinizi iade etmeye hazırsanız, güncelleştirilmiş kodu üst geliştirme alanına dağıtmak için Held komutunu kullanın. `azds up`Ana geliştirme alanında güncelleştirilmiş hizmeti çalıştırmak için kullanmayın, çünkü başlangıçta Held kullanılarak çalıştırılan hizmetle çakışacaktır.
 
 ### <a name="existing-dockerfile-not-used-to-build-a-container"></a>Mevcut Dockerfile bir kapsayıcı oluşturmak için kullanılmıyor
 
@@ -176,9 +176,9 @@ configurations:
 
 Kimlik doğrulaması gerektiren özel bir kayıt defterinden Docker görüntüsü kullanıyorsunuz.
 
-Bu sorunu onarmak için, geliştirici alanlarının, [ımagepullgizlilikler](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets)kullanarak bu özel kayıt defterinden görüntü doğrulamasına ve çekmelerine izin verebilirsiniz. Imagepullgizliliklerini kullanmak için, görüntüyü kullandığınız ad alanında [bir Kubernetes gizli anahtarı oluşturun](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) . Daha sonra gizli anahtarı ' de `azds.yaml`bir ımagepullsecret olarak sağlayın.
+Bu sorunu onarmak için, geliştirici alanlarının, [ımagepullgizlilikler](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets)kullanarak bu özel kayıt defterinden görüntü doğrulamasına ve çekmelerine izin verebilirsiniz. Imagepullgizliliklerini kullanmak için, görüntüyü kullandığınız ad alanında [bir Kubernetes gizli anahtarı oluşturun](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) . Daha sonra gizli anahtarı ' de bir ımagepullsecret olarak sağlayın `azds.yaml` .
 
-Aşağıda ımagepullgizliliklerin belirtilmesine ilişkin bir örnek verilmiştir `azds.yaml`.
+Aşağıda ımagepullgizliliklerin belirtilmesine ilişkin bir örnek verilmiştir `azds.yaml` .
 
 ```yaml
 kind: helm-release
@@ -203,13 +203,13 @@ install:
 ```
 
 > [!IMPORTANT]
-> ' De `azds.yaml` ımagepullgizlilikler ayarlandığında, `values.yaml`Içinde belirtilen ımagepullgizlilikler geçersiz kılınır.
+> ' De ımagepullgizlilikler ayarlandığında `azds.yaml` , içinde belirtilen ımagepullgizlilikler geçersiz kılınır `values.yaml` .
 
 ### <a name="error-service-cannot-be-started"></a>"Hizmet başlatılamıyor" hatası.
 
 Hizmet kodunuz başlatılamıyorsa bu hatayla karşılaşabilirsiniz. Nedeni genellikle kullanıcı kodudur. Daha fazla tanılama bilgisi edinmek için, hizmetinizi başlatırken daha ayrıntılı günlük kaydını etkinleştirin.
 
-Komut satırından, `--verbose` daha ayrıntılı günlüğe kaydetmeyi etkinleştirmek için öğesini kullanın. Ayrıca, kullanarak `--output`bir çıktı biçimi de belirtebilirsiniz. Örneğin:
+Komut satırından, `--verbose` daha ayrıntılı günlüğe kaydetmeyi etkinleştirmek için öğesini kullanın. Ayrıca, kullanarak bir çıktı biçimi de belirtebilirsiniz `--output` . Örneğin:
 
 ```cmd
 azds up --verbose --output json
@@ -261,18 +261,18 @@ Bu hata, Azure Dev Spaces Şu anda çok aşamalı derlemeleri desteklemediğinde
 
 [AKS kümenizi geliştirme makinenize bağlamak için Azure dev Spaces](how-to/connect.md)kullanırken, ağ trafiğinin geliştirme makineniz ve aks kümeniz arasında iletilemediği bir sorunla karşılaşabilirsiniz.
 
-Geliştirme makinenizi AKS kümenize bağlarken, geliştirme makinenizin `hosts` dosyasını değiştirerek aks kümeniz ile geliştirme makineniz arasındaki ağ trafiğini iletir Azure dev spaces. Azure Dev Spaces, `hosts` bir ana bilgisayar adı olarak değiştirdiğiniz Kubernetes hizmetinin adresiyle öğesinde bir giriş oluşturur. Bu giriş, geliştirme makineniz ve AKS kümesi arasında ağ trafiğini yönlendirmek için bağlantı noktası iletme ile kullanılır. Geliştirme makinenizdeki bir hizmet, değiştirdiğiniz Kubernetes hizmetinin bağlantı noktasıyla çakışıyorsa, Azure Dev Spaces Kubernetes hizmeti için ağ trafiğini iletemez. Örneğin, *Windows BranchCache* hizmeti genellikle *0.0.0.0:80*' e bağlanır, bu da çakışmalar tüm yerel ıp 'lerde bağlantı noktası 80 ' de çakışmaya neden olur.
+Geliştirme makinenizi AKS kümenize bağlarken, geliştirme makinenizin dosyasını değiştirerek AKS kümeniz ile geliştirme makineniz arasındaki ağ trafiğini iletir Azure Dev Spaces `hosts` . Azure Dev Spaces, `hosts` bir ana bilgisayar adı olarak değiştirdiğiniz Kubernetes hizmetinin adresiyle öğesinde bir giriş oluşturur. Bu giriş, geliştirme makineniz ve AKS kümesi arasında ağ trafiğini yönlendirmek için bağlantı noktası iletme ile kullanılır. Geliştirme makinenizdeki bir hizmet, değiştirdiğiniz Kubernetes hizmetinin bağlantı noktasıyla çakışıyorsa, Azure Dev Spaces Kubernetes hizmeti için ağ trafiğini iletemez. Örneğin, *Windows BranchCache* hizmeti genellikle *0.0.0.0:80*' e bağlanır, bu da çakışmalar tüm yerel ıp 'lerde bağlantı noktası 80 ' de çakışmaya neden olur.
 
 Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetinin bağlantı noktasıyla çakışan tüm hizmetleri veya süreçlerini durdurmanız gerekir. Geliştirme makinenizde hangi hizmetlerin veya işlemlerin çakışıp çakışmadığını denetlemek için *netstat*gibi araçları kullanabilirsiniz.
 
 Örneğin, *Windows BranchCache* hizmetini durdurmak ve devre dışı bırakmak için:
-* Komutunu `services.msc` komut isteminden çalıştırın.
+* `services.msc`Komutunu komut isteminden çalıştırın.
 * *BranchCache* ' e sağ tıklayın ve *Özellikler*' i seçin.
 * *Durdur*' a tıklayın.
 * İsteğe bağlı olarak, *Başlangıç türünü* *devre dışı*olarak ayarlayarak devre dışı bırakabilirsiniz.
 * *Tamam*'a tıklayın.
 
-### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment-\<ID\> atanmış durumda"
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment- \< ID \> atanmış durumda"
 
 [Yönetilen kimliğe](../aks/use-managed-identity.md) sahip bir aks kümesinde Azure dev Spaces bir hizmeti çalıştırırken ve [Pod tarafından yönetilen kimlikleri](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) yüklüyken, bu işlem *grafik yükleme* adımından sonra askıda kalabilir. Azds *-Injector-Web kancasını* *azds* ad alanında inceleyebilir, bu hatayı görebilirsiniz.
 
@@ -293,13 +293,13 @@ spec:
     azds.io/uses-cluster-identity: "true"
 ```
 
-Yukarıdaki dosya *azds-Injector-Web kancası*Için bir *AzurePodIdentityException* nesnesi oluşturur. Bu nesneyi dağıtmak için şunu kullanın `kubectl`:
+Yukarıdaki dosya *azds-Injector-Web kancası*Için bir *AzurePodIdentityException* nesnesi oluşturur. Bu nesneyi dağıtmak için şunu kullanın `kubectl` :
 
 ```cmd
 kubectl apply -f webhookException.yaml
 ```
 
-Yönetilen kimliğe erişmek üzere Azure dev Spaces tarafından işaretlenmiş olan Pod 'yi güncelleştirmek için aşağıdaki YAML tanımındaki *ad alanını* güncelleştirin ve her geliştirme alanı `kubectl` için uygulamak üzere kullanın.
+Yönetilen kimliğe erişmek üzere Azure dev Spaces tarafından işaretlenmiş olan Pod 'yi güncelleştirmek için aşağıdaki YAML tanımındaki *ad alanını* güncelleştirin ve `kubectl` her geliştirme alanı için uygulamak üzere kullanın.
 
 ```yaml
 apiVersion: "aadpodidentity.k8s.io/v1"
@@ -354,7 +354,7 @@ spec:
   Selector: my-label-value
 ```
 
-*AzureIdentity* ve *AzureIdentityBinding* nesnelerini dağıtmak için şunu kullanın `kubectl`:
+*AzureIdentity* ve *AzureIdentityBinding* nesnelerini dağıtmak için şunu kullanın `kubectl` :
 
 ```cmd
 kubectl apply -f clusteridentity.yaml
@@ -412,9 +412,9 @@ Bu sorunu giderecek [Azure dev Spaces için vs Code uzantısını](get-started-n
 
 ### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Hata "geçersiz ' CWD ' değeri '/src '. Sistem belirtilen dosyayı bulamıyor. " veya "Launch: program '/src/[proje ikilisinde yol] ' yok"
 
-Visual Studio Code hata ayıklayıcıyı çalıştırırken bu hatayı görebilirsiniz. Varsayılan olarak, VS Code uzantısı kapsayıcıda proje `src` için çalışma dizini olarak kullanılır. Hesabınızı `Dockerfile` farklı bir çalışma dizini belirtmek üzere güncelleştirdiyseniz, bu hatayı görebilirsiniz.
+Visual Studio Code hata ayıklayıcıyı çalıştırırken bu hatayı görebilirsiniz. Varsayılan olarak, VS Code uzantısı `src` kapsayıcıda proje için çalışma dizini olarak kullanılır. Hesabınızı `Dockerfile` farklı bir çalışma dizini belirtmek üzere güncelleştirdiyseniz, bu hatayı görebilirsiniz.
 
-Bu sorunu onarmak için, `launch.json` dosyayı proje klasörünüzün `.vscode` alt dizininde güncelleştirin. `configurations->cwd` Yönergesini, projenizde `WORKDIR` tanımlanan dizinle aynı dizine işaret etmek üzere değiştirin `Dockerfile`. Ayrıca, `configurations->program` yönergeyi de güncelleştirmeniz gerekebilir.
+Bu sorunu onarmak için, `launch.json` dosyayı `.vscode` proje klasörünüzün alt dizininde güncelleştirin. Yönergesini, `configurations->cwd` projenizde tanımlanan dizinle aynı dizine işaret etmek üzere değiştirin `WORKDIR` `Dockerfile` . Ayrıca, yönergeyi de güncelleştirmeniz gerekebilir `configurations->program` .
 
 ### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Hata "' azds ' Kanal programının kodu 126 ile beklenmedik şekilde çıktı."
 
@@ -428,16 +428,16 @@ Bu hata, bir hata ayıklayıcı ile eklemeye çalıştığınız Node. js uygula
 
 Bu soruna yönelik geçici bir geçici çözüm, kümedeki her bir düğümde *FS. inotify. max_user_watches* değerini artırmanız ve değişikliklerin etkili olması için bu düğümü yeniden başlatvermektir.
 
-## <a name="other-common-issues"></a>Diğer yaygın sorunlar
+## <a name="other-common-issues"></a>Diğer yaygın sorunları çözme
 
 ### <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>"AZD" hatası iç veya dış komut, çalıştırılabilir program veya toplu iş dosyası olarak tanınmıyor
 
-Bu hata, yüklü değilse `azds.exe` veya doğru yapılandırılmamışsa oluşabilir.
+Bu hata, `azds.exe` yüklü değilse veya doğru yapılandırılmamışsa oluşabilir.
 
 Bu sorunu düzeltmek için:
 
-1. İçin `azds.exe`% programfiles%/Microsoft SDKs\Azure\Azure dev Spaces CLI konumunu denetleyin. Varsa, bu konumu PATH ortam değişkenine ekleyin.
-2. Yüklü `azds.exe` değilse, aşağıdaki komutu çalıştırın:
+1. İçin% ProgramFiles%/Microsoft SDKs\Azure\Azure dev Spaces CLı konumunu denetleyin `azds.exe` . Varsa, bu konumu PATH ortam değişkenine ekleyin.
+2. `azds.exe`Yüklü değilse, aşağıdaki komutu çalıştırın:
 
     ```azurecli
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
@@ -451,7 +451,7 @@ Azure Dev Spaces yönetmek için Azure aboneliğinizde *sahip* veya *katkıda bu
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
 ```
 
-Bu sorunu onarmak için, Azure aboneliğine *sahip* veya *katkıda* bulunan erişimi olan bir hesap kullanarak, `Microsoft.DevSpaces` ad alanını el ile kaydedin:
+Bu sorunu onarmak için, Azure aboneliğine *sahip* veya *katkıda* bulunan erişimi olan bir hesap kullanarak, ad alanını el ile kaydedin `Microsoft.DevSpaces` :
 
 ```azurecli
 az provider register --namespace Microsoft.DevSpaces
@@ -479,7 +479,7 @@ kubectl delete InitializerConfiguration azds
 
 *Azds ınitializerconfiguration* 'ı Azure dev Spaces denetleyicisinden kaldırdıktan sonra, `kubectl delete` *bekleyen* bir durumdaki tüm yığınları kaldırmak için kullanın. Tüm bekleyen Pod 'ler kaldırıldıktan sonra, yığınlarınızı yeniden dağıtın.
 
-Yeni yığınların yeniden dağıtım sonrasında *bekleyen* bir durumda takılmasına devam ediyorsa, *bekleyen* bir `kubectl delete` durumdaki tüm yığınları kaldırmak için kullanın. Tüm bekleyen Pod 'ler kaldırıldıktan sonra, denetleyiciyi kümeden silin ve yeniden yükleyin:
+Yeni yığınların yeniden dağıtım sonrasında *bekleyen* bir durumda takılmasına devam ediyorsa, `kubectl delete` *bekleyen* bir durumdaki tüm yığınları kaldırmak için kullanın. Tüm bekleyen Pod 'ler kaldırıldıktan sonra, denetleyiciyi kümeden silin ve yeniden yükleyin:
 
 ```bash
 azds remove -g <resource group name> -n <cluster name>
@@ -508,7 +508,7 @@ Denetleyicinin Kullanıcı RBAC rolünü güncelleştirmek için:
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Geliştirme alanları hizmeti ile ilişkili genel bir URL için DNS ad çözümlemesi başarısız oluyor
 
-Komutuna olan `--enable-ingress` anahtarı belirterek veya Visual Studio 'daki `Publicly Accessible` onay kutusunu seçerek HIZMETINIZ için genel bir URL uç noktası yapılandırabilirsiniz. `azds prep` Genel DNS adı, hizmetinizi geliştirme alanlarında çalıştırdığınızda otomatik olarak kaydedilir. Bu DNS adı kayıtlı değilse, genel URL 'ye bağlanılırken bir *sayfa görüntülenemiyor* veya Web tarayıcınızda *siteye ulaşılamıyor* hatası görürsünüz.
+`--enable-ingress` `azds prep` Komutuna olan anahtarı belirterek veya `Publicly Accessible` Visual Studio 'daki onay kutusunu seçerek hizmetiniz IÇIN genel bir URL uç noktası yapılandırabilirsiniz. Genel DNS adı, hizmetinizi geliştirme alanlarında çalıştırdığınızda otomatik olarak kaydedilir. Bu DNS adı kayıtlı değilse, genel URL 'ye bağlanılırken bir *sayfa görüntülenemiyor* veya Web tarayıcınızda *siteye ulaşılamıyor* hatası görürsünüz.
 
 Bu sorunu düzeltmek için:
 
@@ -529,14 +529,14 @@ Bu sorunu düzeltmek için:
 
 Hizmetinize erişmeye çalışırken bu hatayı görebilirsiniz. Örneğin, bir tarayıcıda hizmetin URL 'sine gittiğinizde. Bu hata kapsayıcı bağlantı noktasının kullanılamadığı anlamına gelir. Bu, aşağıdaki nedenlerden kaynaklanabilir:
 
-* Kapsayıcı, hala oluşturulup dağıtılmakta olan bir işlemdir. Bu sorun, hata ayıklayıcıyı çalıştırıp `azds up` başlattığınızda ve sonra başarıyla dağıtılmadan önce kapsayıcıya erişmeyi denerseniz oluşabilir.
+* Kapsayıcı, hala oluşturulup dağıtılmakta olan bir işlemdir. Bu sorun, `azds up` hata ayıklayıcıyı çalıştırıp başlattığınızda ve sonra başarıyla dağıtılmadan önce kapsayıcıya erişmeyi denerseniz oluşabilir.
 * Bağlantı noktası yapılandırması, _Dockerfile_, Helmchart ve bir bağlantı noktasını açan tüm sunucu kodları arasında tutarlı değildir.
 
 Bu sorunu düzeltmek için:
 
 1. Kapsayıcı oluşturma/dağıtım süreciyorsa 2-3 saniye bekleyip hizmete erişmeyi yeniden deneyebilirsiniz. 
 1. Aşağıdaki varlıklarda bağlantı noktası yapılandırmanızı denetleyin:
-    * **[Held grafiği](https://docs.helm.sh):** `service.port` ve `deployment.containerPort` değerleri ile belirtilir. YAML scafkatby `azds prep` komutu.
+    * ** [Helb grafiği](https://docs.helm.sh):** `service.port`Ve değerleri ile belirtilir `deployment.containerPort` . YAML scafkatby `azds prep` komutu.
     * Uygulama kodunda açılan ve örneğin Node. js ' de bulunan bağlantı noktaları:`var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>"MyLibrary" tür veya ad alanı adı bulunamadı
@@ -545,10 +545,10 @@ Kullanmakta olduğunuz bir kitaplık projesi bulunamıyor. Geliştirme alanları
 
 Bu sorunu düzeltmek için:
 
-1. Yapı bağlamını `azds.yaml` çözüm düzeyine ayarlamak için dosyayı değiştirin.
-2. Ve dosyalarını proje dosyalarına başvuracak şekilde değiştirin, örneğin `.csproj`, yeni derleme bağlamına doğru göreli. `Dockerfile.develop` `Dockerfile`
-3. `.dockerignore` Dosyası ile aynı dizine `.sln` ekleyin.
-4. `.dockerignore` Gerektiğinde ek girişlerle güncelleştirin.
+1. `azds.yaml`Yapı bağlamını çözüm düzeyine ayarlamak için dosyayı değiştirin.
+2. `Dockerfile`Ve `Dockerfile.develop` dosyalarını proje dosyalarına başvuracak şekilde değiştirin, örneğin `.csproj` , yeni derleme bağlamına doğru göreli.
+3. `.dockerignore`Dosyası ile aynı dizine ekleyin `.sln` .
+4. `.dockerignore`Gerektiğinde ek girişlerle güncelleştirin.
 
 [Burada](https://github.com/sgreenmsft/buildcontextsample)bir örnek bulabilirsiniz.
 
@@ -556,7 +556,7 @@ Bu sorunu düzeltmek için:
 
 Bir hizmeti bir geliştirme alanında çalıştırdığınızda, bu hizmetin Pod 'ı, [izleme için ek kapsayıcılarla birlikte](how-dev-spaces-works-cluster-setup.md#prepare-your-aks-cluster) eklenir ve pod içindeki tüm kapsayıcılar, yatay Pod otomatik ölçeklendirme için kaynak limitlerinin ve isteklerin ayarlanmış olması gerekir.
 
-Bu sorunu onarmak için bir kaynak isteği uygulayın ve eklenen dev Spaces kapsayıcılarıyla sınırlayın. Pod belirtilerinize `azds.io/proxy-resources` ek açıklama eklenerek, eklenen kapsayıcı (devspaces-proxy) için kaynak istekleri ve sınırları uygulanabilir. Değer, proxy için kapsayıcı belirtiminin kaynaklar bölümünü temsil eden bir JSON nesnesi olarak ayarlanmalıdır.
+Bu sorunu onarmak için bir kaynak isteği uygulayın ve eklenen dev Spaces kapsayıcılarıyla sınırlayın. Pod belirtilerinize ek açıklama eklenerek, eklenen kapsayıcı (devspaces-proxy) için kaynak istekleri ve sınırları uygulanabilir `azds.io/proxy-resources` . Değer, proxy için kapsayıcı belirtiminin kaynaklar bölümünü temsil eden bir JSON nesnesi olarak ayarlanmalıdır.
 
 Pod belirtimde uygulanacak bir proxy kaynakları ek açıklamasına örnek aşağıda verilmiştir.
 ```
@@ -567,7 +567,7 @@ azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"}
 
 Azure Dev Spaces etkinleştirmek istediğiniz yerde, çalışan bir AKS kümeniz ve ad alanınız olabilir.
 
-Bir AKS kümesindeki mevcut bir ad alanında Azure Dev Spaces etkinleştirmek için, bu ad `use-dev-spaces` alanındaki tüm `kubectl` yığınların yeniden başlatılmasını sağlamak üzere çalıştırın ve kullanın.
+Bir AKS kümesindeki mevcut bir ad alanında Azure Dev Spaces etkinleştirmek için, `use-dev-spaces` `kubectl` Bu ad alanındaki tüm yığınların yeniden başlatılmasını sağlamak üzere çalıştırın ve kullanın.
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -589,22 +589,22 @@ Küme düğümlerinden gelen çıkış trafiğinin kısıtlandığı bir AKS kü
 | cloudflare.docker.com | HTTPS: 443 | Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için |
 | gcr.io | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
 | storage.googleapis.com | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
-| AZD 'ler<guid>-. <location>. azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON Içindeki "dataplaneFqdn" IÇINDE tam FQDN bulunabilir|
+| AZD 'ler- <guid> . <location> . azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE% azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir \.|
 
-### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>\<Hata "küme\> kümesi, abonelik \<SubscriptionID\>'da bulunamadı"
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hata "küme \< kümesi, \> abonelik SubscriptionID 'da bulunamadı \< \> "
 
 Kubeconfig dosyanız, Azure Dev Spaces istemci tarafı araçları ile kullanmaya çalıştığınız sayıdan farklı bir kümeyi veya aboneliği hedefliyorsanız bu hatayı görebilirsiniz. Azure Dev Spaces istemci tarafı araçları, kümesini seçmek ve kümeyle iletişim kurmak için [bir veya daha fazla kubeconfig dosyası](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) kullanan *kubectl*davranışını çoğaltır.
 
 Bu sorunu düzeltmek için:
 
-* Geçerli `az aks use-dev-spaces -g <resource group name> -n <cluster name>` bağlamı güncelleştirmek için kullanın. Bu komut, zaten etkinleştirilmemişse AKS kümenizdeki Azure Dev Spaces de etkinleştirilir. Alternatif olarak, geçerli bağlamı `kubectl config use-context <cluster name>` güncelleştirmek için kullanabilirsiniz.
-* Hedeflediğiniz `az account show` geçerli Azure aboneliğini göstermek ve bunun doğru olduğunu doğrulamak için kullanın. Kullanarak `az account set`hedeflediğiniz aboneliği değiştirebilirsiniz.
+* `az aks use-dev-spaces -g <resource group name> -n <cluster name>`Geçerli bağlamı güncelleştirmek için kullanın. Bu komut, zaten etkinleştirilmemişse AKS kümenizdeki Azure Dev Spaces de etkinleştirilir. Alternatif olarak, `kubectl config use-context <cluster name>` geçerli bağlamı güncelleştirmek için kullanabilirsiniz.
+* `az account show`Hedeflediğiniz geçerli Azure aboneliğini göstermek ve bunun doğru olduğunu doğrulamak için kullanın. Kullanarak hedeflediğiniz aboneliği değiştirebilirsiniz `az account set` .
 
 ### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>AKS sertifikalarını döndürmeden sonra dev alanları kullanılırken hata oluştu
 
-[AKS kümenizdeki sertifikaları döndürmeden](../aks/certificate-rotation.md)sonra, `azds space list` ve `azds up` gibi bazı işlemler başarısız olur. Ayrıca, kümenizdeki sertifikaları döndürmeden Azure Dev Spaces denetleyicinizde sertifikaları yenilemeniz gerekir.
+[AKS kümenizdeki sertifikaları döndürmeden](../aks/certificate-rotation.md)sonra, ve gibi bazı işlemler `azds space list` `azds up` başarısız olur. Ayrıca, kümenizdeki sertifikaları döndürmeden Azure Dev Spaces denetleyicinizde sertifikaları yenilemeniz gerekir.
 
-Bu sorunu onarmak için, *kubeconfig* 'nizin güncelleştirilmiş sertifikalara sahip olduğundan emin olun `az aks get-credentials` ve `azds controller refresh-credentials` ardından komutunu çalıştırın. Örneğin:
+Bu sorunu onarmak için, *kubeconfig* 'nizin güncelleştirilmiş sertifikalara sahip olduğundan emin olun `az aks get-credentials` ve ardından `azds controller refresh-credentials` komutunu çalıştırın. Örneğin:
 
 ```azurecli
 az aks get-credentials -g <resource group name> -n <cluster name>

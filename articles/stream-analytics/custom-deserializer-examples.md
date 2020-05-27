@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 5cde80bf3205557884dfe8f2b8f5e79031bbca69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: b7994754d3ca9c43fe7935b2b52c42f2f113b1d3
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612070"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873060"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET özel seri hale getiriciler kullanarak her biçimdeki girişi oku
 
@@ -20,9 +20,9 @@ ms.locfileid: "82612070"
 
 ## <a name="net-custom-deserializer"></a>.NET özel seri hale getirici
 
-Aşağıdaki kod örnekleri, özel seri hale getirici 'yi tanımlayan ve uygulayan `StreamDeserializer<T>`arabirimlerdir.
+Aşağıdaki kod örnekleri, özel seri hale getirici 'yi tanımlayan ve uygulayan arabirimlerdir `StreamDeserializer<T>` .
 
-`UserDefinedOperator`Tüm özel akış işleçleri için temel sınıftır. Bu işlem `StreamingContext`başlatılır, bu, seri hale getiriciniz ile ilgili herhangi bir sorun için hata ayıklamanız gereken tanılama yayımlamak için düzenek içeren bağlam sağlar.
+`UserDefinedOperator`Tüm özel akış işleçleri için temel sınıftır. Bu işlem başlatılır `StreamingContext` , bu, seri hale getiriciniz ile ilgili herhangi bir sorun için hata ayıklamanız gereken tanılama yayımlamak için düzenek içeren bağlam sağlar.
 
 ```csharp
     public abstract class UserDefinedOperator
@@ -33,19 +33,19 @@ Aşağıdaki kod örnekleri, özel seri hale getirici 'yi tanımlayan ve uygulay
 
 Aşağıdaki kod parçacığı, akış verilerinin serisini kaldırma işlemi olur. 
 
-Geçişli `UserDefinedOperator`hatalar, geçirilen Initialize yöntemi kullanılarak `IStreamingDiagnostics` verilmelidir. Tüm özel durumlar hata olarak değerlendirilir ve seri hale getirici yeniden oluşturulur. Belirli sayıda hatalardan sonra iş başarısız durumuna geçer.
+Geçişli hatalar, `IStreamingDiagnostics` geçirilen `UserDefinedOperator` Initialize yöntemi kullanılarak verilmelidir. Tüm özel durumlar hata olarak değerlendirilir ve seri hale getirici yeniden oluşturulur. Belirli sayıda hatalardan sonra iş başarısız durumuna geçer.
 
-`StreamDeserializer<T>`bir akışı, türünde `T`bir nesneye ayırır. Aşağıdaki koşulların karşılanması gerekir:
+`StreamDeserializer<T>`bir akışı, türünde bir nesneye ayırır `T` . Aşağıdaki koşulların karşılanması gerekir:
 
 1. T, bir sınıf veya struct.
 1. T 'deki tüm ortak alanlar
     1. [SByte, Byte, Short, ushort, int, uint, Long, DateTime, String, float, Double] ya da Nullable eşdeğerlerine biridir.
     1. Aynı kuralları takip eden başka bir struct veya Class.
-    1. Aynı kuralları izleyen `T2` tür dizisi.
-    1. T2`T2` 'nin aynı kuralları izlediği IList.
+    1. `T2`Aynı kuralları izleyen tür dizisi.
+    1. `T2`T2 'nin aynı kuralları Izlediği IList.
     1. Özyinelemeli tür yok.
 
-Parametresi `stream` seri hale getirilen nesneyi içeren akışdır. `Deserialize``T` örnek koleksiyonunu döndürür.
+Parametresi `stream` seri hale getirilen nesneyi içeren akışdır. `Deserialize`örnek koleksiyonunu döndürür `T` .
 
 ```csharp
     public abstract class StreamDeserializer<T> : UserDefinedOperator
@@ -112,7 +112,7 @@ message MessageBodyProto {
 }
 ```
 
-`protoc.exe` **Google. Protoarabellek. Tools** NuGet 'den çalıştırmak, tanımıyla bir. cs dosyası oluşturur. Oluşturulan dosya burada gösterilmez.
+`protoc.exe` **Google. Protoarabellek. Tools** NuGet 'den çalıştırmak, tanımıyla bir. cs dosyası oluşturur. Oluşturulan dosya burada gösterilmez. Stream Analytics projenizde kullandığınız Prototipsiz NuGet sürümünün girişi oluşturmak için kullanılan prototiple sürümle eşleştiğinden emin olmanız gerekir. 
 
 Aşağıdaki kod parçacığı, üretilen dosyanın projeye dahil edildiğini kabul eden seri hale getirici uygulamasıdır. Bu uygulama, oluşturulan dosya üzerinde yalnızca bir ince sarmalayıcı olur.
 
@@ -219,7 +219,7 @@ Aşağıdaki JavaScript kodu, REST API kullanılırken .NET seri hale getirici s
 }  
 ```
 
-`serializationClassName`, uygulayan `StreamDeserializer<T>`bir sınıf olmalıdır. Bu, aşağıdaki bölümde açıklanmıştır.
+`serializationClassName`, uygulayan bir sınıf olmalıdır `StreamDeserializer<T>` . Bu, aşağıdaki bölümde açıklanmıştır.
 
 ## <a name="region-support"></a>Bölge desteği
 

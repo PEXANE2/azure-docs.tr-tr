@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: 166847325fa9094136f1c2a143f1751420f05f66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb76151a3f952f932cc533b771283b5d45382366
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240906"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873442"
 ---
 # <a name="store-sync-and-query-mobile-application-data-from-the-cloud"></a>Buluttan mobil uygulama verilerini depolayın, eşitleyin ve sorgulayın
 Oluşturduğunuz uygulama türü ne olsun, büyük olasılıkla veri oluşturabilir ve işleyebilirsiniz. Uygulamanızın kullanıcılarınızın yüksek beklentileri vardır. Bunlar, uygulamanın her durumda hızlı ve sorunsuz çalışmasını ister. Çoğu uygulama birden çok cihazda da çalışır. Uygulamanıza bir masaüstü veya mobil cihazdan erişebilirsiniz. Birden çok kullanıcı aynı anda uygulamayı kullanabilir ve verilere anında ve gerçek zamanlı erişim elde etme beklentisiyle verileri paylaşabilir.
@@ -22,21 +22,6 @@ Uygulama kullanıcılarınız her zaman internet bağlantısına sahip olmaz. Uy
 Microsoft, sunucuları alma, veritabanınızı seçme veya mümkün olduğunca zengin deneyim sağlamak için ölçek veya güvenlik konusunda endişelenmeye gerek duymanızı ortadan kaldıran çeşitli hizmetler sunar. Bu hizmetler, SQL veya NoSQL API 'Leri kullanarak uygulama verilerini bulutta depolamanıza olanak sağlayan harika bir geliştirici deneyimi sağlar. Ayrıca, tüm cihazlarda verileri eşitleyebilir ve ölçeklenebilir ve sağlam uygulamalar oluşturmaya yardımcı olmak için uygulamanın ağ bağlantısı olmadan veya olmadan çalışmasını sağlayabilirsiniz.
 
 Mobil uygulama verilerini bulutta yönetmek ve depolamak için aşağıdaki hizmetleri kullanın.
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center veriler](/appcenter/data/) bir veri yönetimi hizmetidir. Uygulamaların, bulutta uygulama verilerini, çevrimiçi ve çevrimdışı senaryolarda farklı cihazlar ve platformlar arasında yönetmesine, kalıcı hale getirebilmesine ve eşitlemesini sağlar. Azure Cosmos DB üzerine inşa, Kullanıcı tabanınız ve uygulama sayısı büyüdükçe verilerin ölçeklendirildiği App Center. Tüm verileriniz için düşük gecikme süresi, yüksek kullanılabilirlik ve yüksek ölçeklenebilirlik sağlar.
-
-**Önemli özellikler**
-- Visual Studio App Center portalından yeni bir Azure Cosmos DB veritabanına veya var olan bir Azure Cosmos DB veritabanına kolay sağlama.
-- Uygulama verilerini kolayca depolamak, eşitlemek ve sorgulamak için NoSQL veritabanı desteği.
-- Azure Cosmos DB üzerine inşa edilen bu hizmet, Azure Cosmos DB tarafından sunulan başlıca özelliklerin çoğunu devralır ve iş gereksinimlerinizi karşılamak için küresel olarak ölçeklenebilirler.
-- Verileri cihazlarda eşitlemek için çevrimiçi ve çevrimdışı eşitleme özellikleri.
-- Özel uygulama verilerini kolayca yönetmek için kullanabileceğiniz mobil istemci SDK 'Ları.
-- İOS, Android, Xamarin ve yerel olarak tepki verme için platform desteği.
-
-**Başvurular**
-- [Visual Studio App Center kaydolun](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-- [App Center verilerle çalışmaya başlama](/appcenter/data/getting-started)
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) , genel olarak dağıtılmış, çok modelli bir veritabanı hizmetidir. Bu uygulamayı, Planet ölçekli uygulamalar oluşturmak için kullanabilirsiniz. Azure Cosmos DB ile, dünyanın her yerindeki Azure bölgesinde işleme ve depolamayı esnek ve bağımsız olarak ölçeklendirebilirsiniz. En sevdiğiniz API yüzeylerini kullanarak hızlı, tek basamaklı milisaniyelik veri erişiminin avantajlarından yararlanabilirsiniz. Bu yüzeyler SQL, MongoDB, Cassandra, tablolar veya Gremlin içerir. Azure Cosmos DB, üretilen iş, gecikme süresi, kullanılabilirlik ve tutarlılık için kapsamlı hizmet düzeyi sözleşmeleri (SLA 'Lar) sağlar.

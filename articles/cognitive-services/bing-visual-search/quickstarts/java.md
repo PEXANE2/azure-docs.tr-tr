@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: fe323fc27062ad1bee9abdfaf3408430e28523a9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3d52a58e3e890ff3baff31322096038d06a1bee6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446626"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872580"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Java kullanarak görüntü öngörülerini alın
 
-Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülemek için bu hızlı başlangıcı kullanın. Bu Java uygulaması, API 'ye bir görüntü yükler ve döndürdüğü bilgileri görüntüler. Bu uygulama Java 'da yazılmış olsa da, API çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
+Bing Görsel Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu Java uygulaması, API 'ye bir görüntü yükler ve döndürdüğü bilgileri görüntüler. Bu uygulama Java 'da yazılsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -52,7 +52,7 @@ Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülem
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. API uç noktanız, abonelik anahtarınız ve görüntünüzün yolu için değişkenler oluşturun. `endpoint`Aşağıdaki genel uç nokta veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir:
+2. API uç noktanız, abonelik anahtarınız ve görüntünüzün yolu için değişkenler oluşturun. Değer için `endpoint` aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -61,7 +61,7 @@ Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülem
     ```
 
     
-    Yerel bir görüntüyü karşıya yüklediğinizde, form verileri `Content-Disposition` üstbilgiyi içermelidir. `name` Parametresini "Image" olarak ayarlamanız gerekir ve `filename` parametreyi herhangi bir dizeye ayarlayabilirsiniz. Formun içeriği görüntünün ikili verilerini içerir. Karşıya yükleyebileceğiniz en büyük görüntü boyutu 1 MB 'tır.
+3. Yerel bir görüntüyü karşıya yüklediğinizde, form verileri `Content-Disposition` üstbilgiyi içermelidir. `name`Parametresini "image" olarak ayarlayın ve bu `filename` parametreyi görüntünün dosya adı olarak ayarlayın. Formun içeriği görüntünün ikili verilerini içerir. Karşıya yükleyebileceğiniz en büyük görüntü boyutu 1 MB 'tır.
     
     ```
     --boundary_1234-abcd
@@ -74,7 +74,7 @@ Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülem
 
 ## <a name="create-the-json-parser"></a>JSON ayrıştırıcısı oluşturma
 
-API 'den gelen JSON yanıtının kullanarak `JsonParser`daha okunaklı olmasını sağlamak için bir yöntem oluşturun:
+Kullanarak, API 'den gelen JSON yanıtının daha okunaklı olmasını sağlamak için bir yöntem oluşturun `JsonParser` .
 
 ```java
 public static String prettify(String json_text) {
@@ -87,13 +87,13 @@ public static String prettify(String json_text) {
 
 ## <a name="construct-the-search-request-and-query"></a>Arama isteği ve sorgu oluşturma
 
-1. Uygulamanızın ana yönteminde, şunu kullanarak `HttpClientBuilder.create().build();`bir http istemcisi oluşturun:
+1. Uygulamanızın ana yönteminde, kullanarak bir HTTP istemcisi oluşturun `HttpClientBuilder.create().build();` .
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Görüntünüzü API `HttpEntity` 'ye yüklemek için bir nesne oluşturun:
+2. `HttpEntity`GÖRÜNTÜNÜZÜ API 'ye yüklemek için bir nesne oluşturun.
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -102,7 +102,7 @@ public static String prettify(String json_text) {
         .build();
     ```
 
-3. Uç noktanızla bir `httpPost` nesne oluşturun ve üst bilgiyi abonelik anahtarınızı kullanacak şekilde ayarlayın:
+3. Uç noktanızla bir `httpPost` nesne oluşturun ve üst bilgiyi abonelik anahtarınızı kullanacak şekilde ayarlayın.
 
     ```java
     HttpPost httpPost = new HttpPost(endpoint);
@@ -112,14 +112,14 @@ public static String prettify(String json_text) {
 
 ## <a name="receive-and-process-the-json-response"></a>JSON yanıtını alma ve işleme
 
-1. API 'ye `HttpClient.execute()` bir istek göndermek için yöntemini kullanın ve yanıtı bir `InputStream` nesneye depolayın:
+1. `HttpClient.execute()`API 'ye bir istek göndermek ve yanıtı bir nesne içinde depolamak için yöntemini kullanın `InputStream` .
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. JSON dizesini depolayın ve yanıtı yazdırın:
+2. JSON dizesini depolayın ve yanıtı yazdırın.
 
     ```java
     String json = new Scanner(stream).useDelimiter("\\A").next();

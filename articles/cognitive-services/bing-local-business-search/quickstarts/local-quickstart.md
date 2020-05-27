@@ -8,31 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 62e975121c05bd4fde2438480f7042b0957a9c82
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: da7d210140bf348e734f16cef2aaa01caf7e4f8b
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475603"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873126"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Hızlı başlangıç: C 'de Bing yerel Iş Arama API 'sine bir sorgu gönderme #
 
-Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu basit uygulama C# dilinde yazıldığı sırada, API, HTTP istekleri yapma ve JSON 'u ayrıştırma yeteneğine sahip olan herhangi bir programlama diliyle uyumlu olan bir yeniden takip eden Web hizmetidir.
+Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek gönderme hakkında bilgi edinmek için bu hızlı başlangıcı kullanın. Bu basit uygulama C# dilinde yazılsa da, API, HTTP istekleri yapma ve JSON 'u ayrıştırma yeteneğine sahip olan herhangi bir programlama diliyle uyumlu olan bir yeniden takip eden Web hizmetidir.
 
-Bu örnek uygulama, arama sorgusu `hotel in Bellevue`için API 'den gelen yerel yanıt verilerini alır.
+Bu örnek uygulama, bir arama sorgusu için API 'den gelen yerel yanıt verilerini alır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Herhangi bir [Visual Studio 2019](https://www.visualstudio.com/downloads/)sürümü.
-* Linux/MacOS kullanıyorsanız bu uygulama, [Mono](https://www.mono-project.com/) kullanılarak çalıştırılabilir.
-
-Bing Arama API'lerine sahip bir [Bilişsel Hizmetler API hesabınız](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) olması gerekir. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir.  Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+* Linux/MacOS kullanıyorsanız, bu uygulama [mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
+* Bing Arama API'leri olan bilişsel [Hizmetler API 'si hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Bu hızlı başlangıçta [ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) yeterlidir. Ücretsiz deneme sürümünüzü etkinleştirdiğinizde sunulan API anahtarını kaydedin. Daha fazla bilgi için bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-the-request"></a>İstek oluştur 
 
-Aşağıdaki kod bir `WebRequest`oluşturur, erişim anahtarı üst bilgisini ayarlar ve "Bellevue içinde restoran" için bir sorgu dizesi ekler.  Ardından isteği gönderir ve yanıtı JSON metnini içeren bir dizeye atar.
+Aşağıdaki kod bir oluşturur `WebRequest` , erişim anahtarı üst bilgisini ayarlar ve *Bellevue içinde restoran*için bir sorgu dizesi ekler.  Ardından isteği gönderir ve yanıtı JSON metnini içeren bir dizeye atar.
 
 ```csharp
     // Replace the accessKey string value with your valid access key.
@@ -54,10 +53,10 @@ Aşağıdaki kod bir `WebRequest`oluşturur, erişim anahtarı üst bilgisini ay
 
 ## <a name="run-the-complete-application"></a>Uygulamanın tamamını Çalıştır
 
-Bing yerel Iş Arama API 'SI, Bing arama altyapısından yerelleştirilmiş arama sonuçları döndürür.
-1. Visual Studio'da (Community Edition uygundur) yeni bir Konsol çözümü oluşturun.
+Aşağıdaki kod, Bing arama altyapısından yerelleştirilmiş arama sonuçlarını döndürmek için Bing yerel Iş araması API 'sini kullanır. Bu kodu aşağıdaki adımları izleyerek kullanabilirsiniz:
+1. Visual Studio 'da yeni bir konsol çözümü oluşturun (Community sürümü yeterlidir).
 2. Program.cs dosyasını aşağıda sağlanan kod ile değiştirin.
-3. AccessKey değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
+3. `accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
 4. Programı çalıştırın.
 
 ```csharp
@@ -210,5 +209,5 @@ namespace localSearch
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Yerel Iş arama Java hızlı başlangıç](local-search-java-quickstart.md)
-- [Yerel Iş arama düğümü hızlı başlangıç](local-search-node-quickstart.md)
+- [Yerel Iş arama Node. js hızlı başlangıç](local-search-node-quickstart.md)
 - [Yerel Iş arama Python hızlı başlangıç](local-search-python-quickstart.md)

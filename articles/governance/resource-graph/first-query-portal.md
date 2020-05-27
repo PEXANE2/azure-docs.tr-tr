@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: ilk portal sorgunuz'
 description: Bu hızlı başlangıçta, Azure Kaynak Grafiği gezginini kullanarak Azure portal ilk sorgunuzu çalıştırmak için adımları izleyin.
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69fb1262de706185d8968e9381bb34dd0d84a3b7
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74406789"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872095"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak Graph sorgunuzu çalıştırma
 
@@ -26,28 +26,28 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 1. Sol bölmede **Tüm hizmetler**'i seçin. **Kaynak Grafiği Gezginini**arayın ve seçin.
 
-1. Pencerenin **sorgu 1** bölümünde sorguyu `Resources | project name, type | limit 5` girin ve **Sorguyu Çalıştır**' ı seçin.
+1. Pencerenin **sorgu 1** bölümünde sorguyu girin `Resources | project name, type | limit 5` ve **Sorguyu Çalıştır**' ı seçin.
 
    > [!NOTE]
-   > Bu sorgu örneği gibi bir sıralama değiştiricisi sağlamadığından `order by`, bu sorguyu birden çok kez çalıştırmak, istek başına farklı bir kaynak kümesi sunmamasından kaynaklanıyor olabilir.
+   > Bu sorgu örneği gibi bir sıralama değiştiricisi sağlamadığından `order by` , bu sorguyu birden çok kez çalıştırmak, istek başına farklı bir kaynak kümesi sunmamasından kaynaklanıyor olabilir.
 
 1. **Sonuçlar** sekmesindeki sorgu yanıtını gözden geçirin. sorgu hakkındaki ayrıntıları ve sorgu süresini görmek için **iletiler** sekmesini seçin. Varsa, bu sekme altında hatalar görüntülenir.
 
-1. Sorguyu Name özelliği olarak `order by` güncelleştirin **Name** : `Resources | project name, type | limit 5 | order by name asc`. Sonra **Sorguyu Çalıştır**' ı seçin.
+1. Sorguyu `order by` **Name** özelliği olarak güncelleştirin: `Resources | project name, type | limit 5 | order by name asc` . Sonra **Sorguyu Çalıştır**' ı seçin.
 
    > [!NOTE]
-   > İlk sorguda olduğu gibi, bu sorguyu birden çok kez çalıştırmak, muhtemelen istek başına farklı bir kaynak kümesi sunacaktır. Sorgu komutlarının düzeni önemlidir. Bu örnekte `order by`, `limit`’den sonra gelmektedir. Bu, sorgu sonuçlarını önce sınırlar, sonra düzenler.
+   > İlk sorguda olduğu gibi, bu sorguyu birden çok kez çalıştırmak, muhtemelen istek başına farklı bir kaynak kümesi sunacaktır. Sorgu komutlarının düzeni önemlidir. Bu örnekte `order by`, `limit`’den sonra gelmektedir. Bu komut sırası ilk olarak sorgu sonuçlarını kısıtlar ve sonra sıralar.
 
-1. `order by` Sorguyu önce **ad** özelliğine, sonra `limit` da en üstteki beş sonuca güncelleştirin:. `Resources | project name, type | order by name asc | limit 5` Sonra **Sorguyu Çalıştır**' ı seçin.
+1. Sorguyu önce `order by` **ad** özelliğine, sonra da `limit` en üstteki beş sonuca güncelleştirin: `Resources | project name, type | order by name asc | limit 5` . Sonra **Sorguyu Çalıştır**' ı seçin.
 
-Son sorgu birkaç kez çalıştırıldığında, ortamınızdaki hiçbir şeyin değişmediği kabul edildiğinde döndürülen sonuçlar, **ad** özelliğine göre sıralanmış, ancak yine de en üstteki beş sonuçla sınırlandırıldı.
+Son sorgu birkaç kez çalıştırıldığında, ortamınızdaki hiçbir şeyin değişmediği kabul edildiğinde döndürülen sonuçlar tutarlı ve **ad** özelliğine göre sıralanır, ancak yine de en üstteki beş sonuçla sınırlıdır.
 
 ### <a name="schema-browser"></a>Şema tarayıcısı
 
 Şema tarayıcısı, kaynak grafik Gezgini 'nin sol bölmesinde bulunur. Bu kaynak listesi, Azure Kaynak Grafiği tarafından desteklenen ve erişim sahibi olduğunuz bir kiracıda bulunan Azure kaynaklarının tüm _kaynak türlerini_ gösterir. Kaynak türü veya alt özellikleri genişletmek, kaynak grafik sorgusu oluşturmak için kullanılabilecek alt özellikleri gösterir.
 
-Kaynak türünü seçme sorgu kutusuna `where type =="<resource type>"` yer koyar. Alt özelliklerden birini seçmek sorgu kutusuna eklenir `where <propertyName> == "INSERT_VALUE_HERE"` .
-Şema tarayıcısı, sorgularda kullanılacak özellikleri bulmayı çok iyi bir yoldur. _Buraya, ekleme\_değerini\__ kendi değer ile değiştirdiğinizden emin olun, sorguyu koşullar, işleçler ve işlevlerle ayarlayıp amaçlanan sonuçlara ulaşın.
+Kaynak türünü seçme `where type =="<resource type>"` sorgu kutusuna yer koyar. Alt özelliklerden birini seçmek `where <propertyName> == "INSERT_VALUE_HERE"` sorgu kutusuna eklenir.
+Şema tarayıcısı, sorgularda kullanılacak özellikleri bulmayı çok iyi bir yoldur. _ \_ \_ Buraya, ekleme değerini_ kendi değer ile değiştirdiğinizden emin olun, sorguyu koşullar, işleçler ve işlevlerle ayarlayıp amaçlanan sonuçlara ulaşın.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Kaynak grafik sorgusundan grafik oluşturma
 
@@ -97,7 +97,7 @@ Kaynak Grafiği sorgularına örnek sağlamak ve kaynak Graph Explorer 'ın Azur
   [![Örnek Pano için örnek resim #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
-> Yukarıdaki örnek panodaki sayımlar ve grafikler, Azure ortamınıza bağlı olarak değişir.
+> Yukarıdaki örnek Pano ekran görüntülerinin sayısı ve grafikleri, Azure ortamınıza bağlı olarak farklılık gösterir.
 
 1. Değerlendirmek istediğiniz örnek panoyu seçin ve indirin.
 

@@ -2,14 +2,13 @@
 title: Çok adımlı Web testleri ile izleme-Azure Application Insights
 description: Web uygulamalarınızı Azure Application Insights izlemek için çok adımlı Web testleri ayarlayın
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.reviewer: sdash
-ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655949"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873344"
 ---
 # <a name="multi-step-web-tests"></a>Çok adımlı web testleri
 
@@ -17,13 +16,16 @@ ms.locfileid: "77655949"
 
 > [!NOTE]
 > Çok adımlı Web testleri, Visual Studio WebTest dosyalarına bağımlıdır. Visual Studio 2019 ' nin, WebTest işlevselliğiyle ilgili son sürüm olacağı [duyurulmuştur](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) . Yeni özellik eklenmadığında, Visual Studio 2019 ' deki WebTest işlevinin hala desteklenmekte olduğunu ve ürünün destek yaşam döngüsü sırasında desteklenmeye devam edecek olduğunu anlamak önemlidir. Azure Izleyici ürün ekibi, [buradaki](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)çok adımlı kullanılabilirlik testlerinin geleceği hakkında sorular buldu.  
+> </br>
+> [Azure Kamu](https://docs.microsoft.com/azure/azure-government/) bulutu 'nda çok adımlı Web testleri **desteklenmez** .
+
 
 ## <a name="pre-requisites"></a>Ön koşullar
 
 * Visual Studio 2017 Enterprise veya üzeri.
 * Visual Studio Web performansı ve yük testi araçları.
 
-Test araçlarını önkoşul olarak belirlemek için. **Hata ayıklama ve** > **Web performansını ve yük testi araçlarını**test etmek **Visual Studio yükleyicisi** > **bireysel bileşenleri** > başlatın.
+Test araçlarını önkoşul olarak belirlemek için. **Visual Studio Installer**  >  **Individual components**  >  **Hata ayıklama ve**  >  **Web performansını ve yük testi araçlarını**test etmek Visual Studio yükleyicisi bireysel bileşenleri başlatın.
 
 ![Web performans ve yük testi araçları için öğenin yanında bir onay kutusu ile seçili tek bileşenlere sahip Visual Studio Installer Kullanıcı arabiriminin ekran görüntüsü](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -39,7 +41,7 @@ Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual st
 
 ## <a name="upload-the-web-test"></a>Web testini karşıya yükleyin
 
-1. Kullanılabilirlik bölmesindeki Application Insights portalında, **Test** > **test türü** > **çoklu adım Web testi**oluştur ' u seçin.
+1. Kullanılabilirlik bölmesindeki Application Insights portalında, **Test**  >  **test türü**  >  **çoklu adım Web testi**oluştur ' u seçin.
 
 2. Test konumlarını, sıklığını ve uyarı parametrelerini ayarlayın.
 
@@ -64,7 +66,7 @@ Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual st
 |----|----|----|
 |**Neredeyse gerçek zamanlı (Önizleme)** | Neredeyse gerçek zamanlı uyarıların kullanılması önerilir. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
 |**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
-|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile test konumlarından oluşan** **Uyarı konum eşiği** = sayısıdır-2.|
+|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki, **alert location threshold**  =  **en az beş test konumu ile test konumlarından oluşan uyarı konum eşiği sayısıdır-2.**|
 
 ## <a name="configuration"></a>Yapılandırma
 
