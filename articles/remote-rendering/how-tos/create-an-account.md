@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: b9b72fb9e80c588eb3e6642d0228bffa50b35c6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681304"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844514"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering hesabı oluşturma
 
@@ -46,7 +46,7 @@ Azure uzaktan Işleme hizmeti için bir hesap oluşturmak için aşağıdaki ad�
 
 *Bölge* seçeneğini doldurmak için [kullanılabilir bölgelerin listesine](../reference/regions.md) bakın.
 
-**`arrAccountId`** Ve **`arrAccountKey`** değerlerini aşağıdaki adımlarda açıklandığı gibi portalda bulabilirsiniz:
+**`arrAccountId`** Ve değerlerini **`arrAccountKey`** Aşağıdaki adımlarda açıklandığı gibi portalda bulabilirsiniz:
 
 * [Azure Portal](https://www.portal.azure.com) git
 * **"Uzaktan Işleme hesabınızı"** bulun; **"en son kaynaklar"** listesinde olması gerekir. Ayrıca, üstteki arama çubuğunda da arama yapabilirsiniz. Bu durumda, kullanmak istediğiniz aboneliğin varsayılan abonelik filtresi (arama çubuğu ' nun yanında bulunan filtre simgesi) seçildiğinden emin olun:
@@ -61,7 +61,7 @@ Anahtar için sol taraftaki panelde **erişim tuşları** ' nı seçin. Bir sonr
 
 ![Azure erişim tuşları](./media/azure-account-primary-key.png)
 
-Değeri **`arrAccountKey`** , birincil veya ikincil anahtar olabilir.
+Değeri, **`arrAccountKey`** birincil veya ikincil anahtar olabilir.
 
 ## <a name="link-storage-accounts"></a>Depolama hesaplarını bağlama
 
@@ -81,9 +81,12 @@ Artık bir depolama hesabınız olduğunu varsaymıştır. Portalda depolama hes
 
 ![Depolama hesabı ıAM](./media/azure-add-role-assignment.png)
 
-* Atanacak ilk rol, yukarıdaki ekran görüntüsünde gösterildiği gibi **sahibidir** . 
-* * **Uzaktan Işleme hesabını** , * açılan**listeye erişim ata** ' yı seçin.
+* Atanacak ilk rol, yukarıdaki ekran görüntüsünde gösterildiği gibi **sahibidir** .
+* **Uzaktan Işleme hesabı** ' na **erişimi ata** açılan listesinden seçin.
 * Son açılan kutudan aboneliğinizi ve uzaktan Işleme hesabınızı seçin.
+
+> [!WARNING]
+> Uzaktan Işleme hesabınız listede yoksa, bu [sorun giderme bölümüne](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account)bakın.
 
 **Rol** açılan listesinden ilgili seçimler için yeni roller eklemeyi iki kez daha yineleyin:
 * **Depolama Hesabı Katılımcısı**

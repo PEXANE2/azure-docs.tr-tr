@@ -1,14 +1,14 @@
 ---
 title: Özel bir havuz oluşturmak için paylaşılan görüntü galerisini kullanma
-description: Uygulamanız için ihtiyaç duyduğunuz yazılımı ve verileri içeren işlem düğümlerine özel görüntüler sağlamak için paylaşılan görüntü Galerisi ile bir Batch havuzu oluşturun. Özel görüntüler, işlem düğümlerini toplu iş yüklerinizi çalıştıracak şekilde yapılandırmanın etkili bir yoludur.
-ms.topic: article
-ms.date: 08/28/2019
-ms.openlocfilehash: 1f03d637ffc6e443fdd429ca7fd647603b668cc1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+description: Özel görüntüler, işlem düğümlerini toplu iş yüklerinizi çalıştıracak şekilde yapılandırmanın etkili bir yoludur.
+ms.topic: conceptual
+ms.date: 05/22/2020
+ms.openlocfilehash: 6731086bfcbe6a671c579593791fb7467b280bca
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780496"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844497"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Özel bir havuz oluşturmak için paylaşılan görüntü galerisini kullanma
 
@@ -24,50 +24,51 @@ Paylaşılan bir görüntü kullanmak, havuzunuzun işlem düğümlerini toplu i
 
 Senaryonuz için yapılandırılmış paylaşılan bir görüntünün kullanılması çeşitli avantajlar sağlayabilir:
 
-* **Bölgeler genelinde aynı görüntüleri kullanın.** Farklı bölgelerde paylaşılan görüntü çoğaltmaları oluşturabilirsiniz, böylece tüm havuzlarınız aynı görüntüyü kullanır.
-* **İşletim sistemini (OS) yapılandırın.** Görüntünün işletim sistemi diskinin yapılandırmasını özelleştirebilirsiniz.
-* **Uygulamaları önceden yükler.** İşletim düğümleri bir başlangıç göreviyle sağlandıktan sonra uygulamaları yüklemekten daha verimli ve daha az hata, işletim sistemi diskine önceden yükleme.
-* **Büyük miktarlarda veriyi bir kez kopyalayın.** Yönetilen bir görüntünün veri disklerine kopyalayarak, yönetilen paylaşılan görüntünün statik veri parçasını oluşturun. Bu yalnızca bir kez yapılmalıdır ve verileri havuzun her bir düğümü için kullanılabilir hale getirir.
-* **Daha büyük boyutlarda havuzları büyütün.** Paylaşılan görüntü Galerisi ile, daha fazla paylaşılan görüntü çoğaltmalarıyla birlikte özelleştirilmiş görüntülerinize sahip daha büyük havuzlar da oluşturabilirsiniz.
-* **Özel görüntüden daha iyi performans.** Paylaşılan görüntüleri kullanarak havuzun kararlı duruma ulaşması için gereken süre %25 daha hızlı ve VM boşta kalma gecikmesi %30 ' a kadar daha kısadır.
-* **Daha kolay yönetim için görüntü sürümü oluşturma ve gruplama.** Görüntü gruplandırma tanımı, görüntünün neden oluşturulduğu, ne kadar işletim sistemi olduğu ve görüntüyü kullanma hakkında bilgi içeren bilgileri içerir. Görüntülerin gruplandırılması, daha kolay görüntü yönetimine olanak tanır. Daha fazla bilgi için bkz. [görüntü tanımları](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
+- **Bölgeler genelinde aynı görüntüleri kullanın.** Farklı bölgelerde paylaşılan görüntü çoğaltmaları oluşturabilirsiniz, böylece tüm havuzlarınız aynı görüntüyü kullanır.
+- **İşletim sistemini (OS) yapılandırın.** Görüntünün işletim sistemi diskinin yapılandırmasını özelleştirebilirsiniz.
+- **Uygulamaları önceden yükler.** İşletim düğümleri bir başlangıç göreviyle sağlandıktan sonra uygulamaları yüklemekten daha verimli ve daha az hata, işletim sistemi diskine önceden yükleme.
+- **Büyük miktarlarda veriyi bir kez kopyalayın.** Yönetilen bir görüntünün veri disklerine kopyalayarak, yönetilen paylaşılan görüntünün statik veri parçasını oluşturun. Bu yalnızca bir kez yapılmalıdır ve verileri havuzun her bir düğümü için kullanılabilir hale getirir.
+- **Daha büyük boyutlarda havuzları büyütün.** Paylaşılan görüntü Galerisi ile, daha fazla paylaşılan görüntü çoğaltmalarıyla birlikte özelleştirilmiş görüntülerinize sahip daha büyük havuzlar da oluşturabilirsiniz.
+- **Özel görüntüden daha iyi performans.** Paylaşılan görüntüleri kullanarak havuzun kararlı duruma ulaşması için gereken süre %25 daha hızlı ve VM boşta kalma gecikmesi %30 ' a kadar daha kısadır.
+- **Daha kolay yönetim için görüntü sürümü oluşturma ve gruplama.** Görüntü gruplandırma tanımı, görüntünün neden oluşturulduğu, ne kadar işletim sistemi olduğu ve görüntüyü kullanma hakkında bilgi içeren bilgileri içerir. Görüntülerin gruplandırılması, daha kolay görüntü yönetimine olanak tanır. Daha fazla bilgi için bkz. [görüntü tanımları](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 > [!NOTE]
 > Azure AD 'yi kullanarak kimlik doğrulaması yapmanız gerekir. Paylaşılan anahtar kimlik doğrulaması kullanırsanız, bir kimlik doğrulama hatası alırsınız.  
 
-* **Bir Azure Batch hesabı.** Batch hesabı oluşturmak için, [Azure Portal](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md)kullanarak Batch hızlı başlangıçlara bakın.
+- **Bir Azure Batch hesabı.** Batch hesabı oluşturmak için, [Azure Portal](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md)kullanarak Batch hızlı başlangıçlara bakın.
 
-* **Paylaşılan görüntü Galerisi görüntüsü**. Paylaşılan bir görüntü oluşturmak için, yönetilen bir görüntü kaynağınız olması veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır. Daha fazla bilgi için bkz. [yönetilen bir görüntü hazırlama](#prepare-a-managed-image).
+- **Paylaşılan görüntü Galerisi görüntüsü**. Paylaşılan bir görüntü oluşturmak için, yönetilen bir görüntü kaynağınız olması veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır.
 
 > [!NOTE]
-> Paylaşılan görüntünüz Batch hesabıyla aynı abonelikte olmalıdır. Paylaşılan görüntünüz, Batch hesabınızla aynı bölgede çoğaltmalar olduğu sürece farklı bölgelerde olabilir.
+> Paylaşılan görüntünüz Batch hesabıyla aynı abonelikte olmalıdır. Görüntü, Batch hesabınızla aynı bölgede çoğaltmalar olduğu sürece farklı bölgelerde olabilir.
 
-## <a name="prepare-a-managed-image"></a>Yönetilen bir görüntü hazırlama
+## <a name="prepare-a-custom-image"></a>Özel görüntü hazırlama
 
-Azure 'da, yönetilen bir görüntüyü şuradan hazırlayabilirsiniz:
+Azure 'da özel bir görüntüyü hazırlayacaksınız:
 
-* Azure VM 'nin işletim sistemi ve veri disklerinin anlık görüntüleri
-* Yönetilen disklere sahip genelleştirilmiş bir Azure VM
-* Buluta yüklenen genelleştirilmiş bir şirket içi VHD
+- Azure VM 'nin işletim sistemi ve veri disklerinin anlık görüntüleri
+- Yönetilen disklere sahip genelleştirilmiş bir Azure VM
+- Buluta yüklenen genelleştirilmiş bir şirket içi VHD
 
-Toplu Iş havuzlarını özel bir görüntüyle güvenilir bir şekilde ölçeklendirmek için, *yalnızca* ilk yöntemi kullanarak yönetilen bir görüntü oluşturmanız ÖNERILIR: VM disklerinin anlık görüntülerini kullanma. Bir VM hazırlamak, anlık görüntü almak ve anlık görüntüden görüntü oluşturmak için aşağıdaki adımlara bakın.
+> [!NOTE]
+> Şu anda Batch yalnızca Genelleştirilmiş paylaşılan görüntüleri destekler. Şu anda özelleştirilmiş bir paylaşılan görüntüden özel bir görüntü havuzu oluşturamazsınız.
+
+Aşağıdaki adımlarda, bir VM 'yi hazırlama, anlık görüntü alma ve anlık görüntüden görüntü oluşturma işlemleri gösterilmektedir.
 
 ### <a name="prepare-a-vm"></a>VM hazırlama
 
 Görüntü için yeni bir VM oluşturuyorsanız, yönetilen görüntünüz için temel görüntü olarak Batch tarafından desteklenen ilk taraf Azure Marketi görüntüsünü kullanın. Yalnızca ilk taraf görüntüleri temel görüntü olarak kullanılabilir. Azure Batch tarafından desteklenen Azure Market görüntüsü başvurularının tam listesini almak için bkz. [düğüm Aracısı SKU 'Larını Listele](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) işlemi.
 
 > [!NOTE]
-> Temel görüntünüz için ek lisans ve satın alma koşullarına sahip bir üçüncü taraf görüntüsü kullanamazsınız. Bu market görüntüleri hakkında daha fazla bilgi için bkz. [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) veya [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) VM 'leri Kılavuzu.
+> Temel görüntünüz için ek lisans ve satın alma koşullarına sahip bir üçüncü taraf görüntüsü kullanamazsınız. Bu market görüntüleri hakkında daha fazla bilgi için bkz. [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) veya [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM 'leri Kılavuzu.
 
-* VM 'nin yönetilen bir disk ile oluşturulduğundan emin olun. Bu, bir VM oluşturduğunuzda varsayılan depolama ayarıdır.
-* Özel Betik uzantısı gibi Azure uzantılarını VM 'ye yüklemeyin. Görüntü önceden yüklenmiş bir uzantı içeriyorsa, Azure Batch havuzunu dağıttığınızda sorunlarla karşılaşabilir.
-* Bağlı veri diskleri kullanılırken, bunları kullanmak için diskleri bir VM içinden bağlamanız ve biçimlendirmeniz gerekir.
-* Sağladığınız temel işletim sistemi görüntüsünün varsayılan geçici sürücüyü kullandığından emin olun. Batch düğüm Aracısı Şu anda varsayılan geçici sürücüyü bekliyor.
-* VM çalışmaya başladıktan sonra RDP (Windows için) veya SSH (Linux için) aracılığıyla buna bağlanın. Gerekli yazılımları yükler veya istenen verileri kopyalayın.  
+- VM 'nin yönetilen bir disk ile oluşturulduğundan emin olun. Bu, bir VM oluşturduğunuzda varsayılan depolama ayarıdır.
+- Özel Betik uzantısı gibi Azure uzantılarını VM 'ye yüklemeyin. Görüntü önceden yüklenmiş bir uzantı içeriyorsa, Azure Batch havuzunu dağıttığınızda sorunlarla karşılaşabilir.
+- Bağlı veri diskleri kullanılırken, bunları kullanmak için diskleri bir VM içinden bağlamanız ve biçimlendirmeniz gerekir.
+- Sağladığınız temel işletim sistemi görüntüsünün varsayılan geçici sürücüyü kullandığından emin olun. Batch düğüm Aracısı Şu anda varsayılan geçici sürücüyü bekliyor.
+- VM çalışmaya başladıktan sonra RDP (Windows için) veya SSH (Linux için) aracılığıyla buna bağlanın. Gerekli yazılımları yükler veya istenen verileri kopyalayın.  
 
 ### <a name="create-a-vm-snapshot"></a>VM anlık görüntüsü oluşturma
 
@@ -212,10 +213,11 @@ Azure portal paylaşılan görüntüden bir havuz oluşturmak için aşağıdaki
 
 Paylaşılan bir görüntü kullanarak yüzlerce veya binlerce VM veya daha fazlasını içeren bir havuz oluşturmayı planlıyorsanız, aşağıdaki kılavuzu kullanın.
 
-* **Paylaşılan görüntü Galerisi çoğaltma numaraları.**  En fazla 600 örneği olan her havuz için en az bir çoğaltma tutmanız önerilir. Örneğin, 3000 VM 'Ler içeren bir havuz oluşturuyorsanız, resminizin en az 5 çoğaltmasını tutmanız gerekir. Daha iyi performans için en düşük gereksinimlerden her zaman daha fazla çoğaltma tutulması önerilir.
+- **Paylaşılan görüntü Galerisi çoğaltma numaraları.**  En fazla 600 örneği olan her havuz için en az bir çoğaltma tutmanız önerilir. Örneğin, 3000 VM 'Ler içeren bir havuz oluşturuyorsanız, resminizin en az 5 çoğaltmasını tutmanız gerekir. Daha iyi performans için en düşük gereksinimlerden her zaman daha fazla çoğaltma tutulması önerilir.
 
-* **Yeniden boyutlandırma zaman aşımı.** Havuzunuz sabit sayıda düğüm içeriyorsa (otomatik ölçeklendirme yoksa) havuz `resizeTimeout` boyutuna bağlı olarak havuzun özelliğini arttırın. Her 1000 VM için önerilen yeniden boyutlandırma zaman aşımı en az 15 dakikadır. Örneğin, 2000 VM içeren bir havuz için önerilen yeniden boyutlandırma zaman aşımı süresi en az 30 dakikadır.
+- **Yeniden boyutlandırma zaman aşımı.** Havuzunuz sabit sayıda düğüm içeriyorsa (otomatik ölçeklendirme yoksa) havuz `resizeTimeout` boyutuna bağlı olarak havuzun özelliğini arttırın. Her 1000 VM için önerilen yeniden boyutlandırma zaman aşımı en az 15 dakikadır. Örneğin, 2000 VM içeren bir havuz için önerilen yeniden boyutlandırma zaman aşımı süresi en az 30 dakikadır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Toplu Iş hakkında ayrıntılı genel bakış için bkz. [Batch hizmeti iş akışı ve kaynaklar](batch-service-workflow-features.md).
+- Toplu Iş hakkında ayrıntılı genel bakış için bkz. [Batch hizmeti iş akışı ve kaynaklar](batch-service-workflow-features.md).
+- [Paylaşılan görüntü Galerisi](../virtual-machines/windows/shared-image-galleries.md)hakkında bilgi edinin.

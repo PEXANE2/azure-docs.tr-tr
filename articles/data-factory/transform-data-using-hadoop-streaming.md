@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/16/2018
-ms.openlocfilehash: c1bba6903fe1cb8cc5bae9a12153553594180b43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 5acfef94a98f105a7cc09c5b72b65e8c228ed87d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418890"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844636"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory 'de Hadoop akışı etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -71,19 +71,19 @@ Azure Data Factory yeni bir deyişle, [Azure Data Factory 'ye giriş](introducti
 
 | Özellik          | Açıklama                              | Gerekli |
 | ----------------- | ---------------------------------------- | -------- |
-| ad              | Etkinliğin adı                     | Yes      |
-| açıklama       | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
-| type              | Hadoop akışı etkinliği için etkinlik türü Hdınsightstreaming olur | Yes      |
+| name              | Etkinliğin adı                     | Yes      |
+| açıklama       | Etkinliğin ne için kullanıldığını açıklayan metin | No       |
+| tür              | Hadoop akışı etkinliği için etkinlik türü Hdınsightstreaming olur | Yes      |
 | linkedServiceName | Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
 | Eşleyici            | Eşleyici yürütülebilir dosyasının adını belirtir | Yes      |
 | reducer           | Reducer yürütülebilir dosyasının adını belirtir | Yes      |
-| Birleştirici          | Birleştirici yürütülebilir dosyasının adını belirtir | Hayır       |
-| Dosya Linkedservice | Yürütülecek Eşleyici, birleştirici ve Reducer programlarını depolamak için kullanılan bir Azure depolama bağlı hizmetine başvuru. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | Hayır       |
+| Birleştirici          | Birleştirici yürütülebilir dosyasının adını belirtir | No       |
+| Dosya Linkedservice | Yürütülecek Eşleyici, birleştirici ve Reducer programlarını depolamak için kullanılan bir Azure depolama bağlı hizmetine başvuru. Burada yalnızca **[Azure Blob depolama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** ve **[ADLS 2.](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** bağlı hizmetleri desteklenir. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | No       |
 | Null          | FileLinkedService tarafından başvurulan Azure depolama alanında depolanan Mapper, birleştirici ve Reducer programlarının yolunu dizisini belirtin. Bu yol büyük/küçük harfe duyarlıdır. | Yes      |
 | giriş             | Eşleyici için giriş dosyasının yer aldığı yolu belirtir. | Yes      |
 | çıkış            | Reducer için çıkış dosyasının yer aldığı yolu belirtir. | Yes      |
-| GetDebugInfo      | Günlük dosyalarının, HDInsight kümesi tarafından kullanılan (veya) scriptLinkedService tarafından belirtilen Azure depolama 'ya ne zaman kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | Hayır       |
-| değişkenlerinden         | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | Hayır       |
+| GetDebugInfo      | Günlük dosyalarının, HDInsight kümesi tarafından kullanılan (veya) scriptLinkedService tarafından belirtilen Azure depolama 'ya ne zaman kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | No       |
+| değişkenlerinden         | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | No       |
 | tanımlar           | Hive betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | Hayır       | 
 
 ## <a name="next-steps"></a>Sonraki adımlar

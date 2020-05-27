@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b518b2b92ba6d2529ffdefce754a3b29b74fb21b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b6cb9c70de27e40c62d6a7adeece5cb39554c090
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674281"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844582"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
 Bu sayfada, Azure uzaktan Işleme ile müdahale eden genel sorunlar ve bunları çözme yolları listelenmektedir.
+
+## <a name="cant-link-storage-account-to-arr-account"></a>Depolama hesabı ARR hesabına bağlanamıyor
+
+Bazen [bir depolama hesabının bağlanması](../how-tos/create-an-account.md#link-storage-accounts) sırasında uzaktan işleme hesabı listelenmez. Bu sorunu onarmak için Azure portal ARR hesabına gidin ve soldaki **Ayarlar** grubunda bulunan **kimlik** ' i seçin. **Durumun** **Açık**olarak ayarlandığından emin olun.
+![Unity çerçevesi hata ayıklayıcısı](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>İstemci sunucuya bağlanamıyor
 
