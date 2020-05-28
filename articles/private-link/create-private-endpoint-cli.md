@@ -7,19 +7,20 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: dbcb833e6f8b90cebd3d013e58168558bcd96827
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f2e21bddf0701ee6ce45af8012c853064e23168
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75459963"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021764"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak özel uç nokta oluşturma
-Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, Azure CLı kullanarak özel bir uç noktaya sahip bir SQL veritabanı sunucusu olan bir sanal ağ üzerinde bir VM oluşturmayı öğreneceksiniz. Ardından, VM 'ye erişebilir ve özel bağlantı kaynağına (Bu örnekteki özel bir Azure SQL veritabanı sunucusu) güvenli bir şekilde erişebilirsiniz. 
+
+Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, Azure CLı kullanarak özel bir uç nokta ile SQL veritabanı 'nda bir sanal ağ üzerinde bir VM oluşturmayı öğreneceksiniz. Daha sonra, özel bağlantı kaynağına (Bu örnekteki SQL veritabanı 'nda özel bir sunucu) yönelik olarak sanal makineye erişebilir ve güvenli bir şekilde erişebilirsiniz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version`. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version` . Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -30,6 +31,7 @@ az group create --name myResourceGroup --location westcentralus
 ```
 
 ## <a name="create-a-virtual-network"></a>Sanal Ağ Oluşturma
+
 [Az Network VNET Create](/cli/azure/network/vnet)komutuyla bir sanal ağ oluşturun. Bu örnek, *Mysubnet*adlı bir alt ağ ile *myVirtualNetwork* adlı varsayılan bir sanal ağ oluşturur:
 
 ```azurecli-interactive
@@ -38,7 +40,9 @@ az network vnet create \
  --resource-group myResourceGroup \
  --subnet-name mySubnet
 ```
-## <a name="disable-subnet-private-endpoint-policies"></a>Alt ağ özel uç nokta ilkelerini devre dışı bırak 
+
+## <a name="disable-subnet-private-endpoint-policies"></a>Alt ağ özel uç nokta ilkelerini devre dışı bırak
+
 Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
 
 ```azurecli-interactive
@@ -48,73 +52,81 @@ az network vnet subnet update \
  --vnet-name myVirtualNetwork \
  --disable-private-endpoint-network-policies true
 ```
-## <a name="create-the-vm"></a>Sanal makine oluşturma 
-Az VM Create ile bir VM oluşturun. İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir parola girin. Bu örnek, *myvm*ADLı bir VM oluşturur: 
+
+## <a name="create-the-vm"></a>Sanal makine oluşturma
+
+Az VM Create ile bir VM oluşturun. İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir parola girin. Bu örnek, *myvm*ADLı bir VM oluşturur:
+
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm \
   --image Win2019Datacenter
 ```
- VM 'nin genel IP adresini aklınızda edin. Sonraki adımda İnternet 'ten VM 'ye bağlanmak için bu adresi kullanacaksınız.
 
-## <a name="create-a-sql-database-server"></a>SQL veritabanı sunucusu oluşturma 
-Az SQL Server Create komutuyla bir SQL veritabanı sunucusu oluşturun. SQL Server adının Azure genelinde benzersiz olması gerektiğini unutmayın, bu nedenle yer tutucu değerini köşeli ayraç içinde kendi benzersiz değer ile değiştirin: 
+VM 'nin genel IP adresini bir yere getirin. Sonraki adımda İnternet 'ten VM 'ye bağlanmak için bu adresi kullanacaksınız.
+
+## <a name="create-a-server-in-sql-database"></a>SQL veritabanında sunucu oluşturma
+
+Az SQL Server Create komutuyla SQL veritabanı 'nda bir sunucu oluşturun. Sunucunuzun adının Azure genelinde benzersiz olması gerektiğini unutmayın, bu nedenle yer tutucu değerini köşeli ayraç içinde kendi benzersiz değer ile değiştirin:
 
 ```azurecli-interactive
-# Create a logical server in the resource group 
-az sql server create \ 
-    --name "myserver"\ 
-    --resource-group myResourceGroup \ 
-    --location WestUS \ 
-    --admin-user "sqladmin" \ 
-    --admin-password "CHANGE_PASSWORD_1" 
- 
-# Create a database in the server with zone redundancy as false 
-az sql db create \ 
-    --resource-group myResourceGroup  \ 
-    --server myserver \ 
-    --name mySampleDatabase \ 
-    --sample-name AdventureWorksLT \ 
-    --edition GeneralPurpose \ 
-    --family Gen4 \ 
-    --capacity 1 
+# Create a server in the resource group
+az sql server create \
+    --name "myserver"\
+    --resource-group myResourceGroup \
+    --location WestUS \
+    --admin-user "sqladmin" \
+    --admin-password "CHANGE_PASSWORD_1"
+
+# Create a database in the server with zone redundancy as false
+az sql db create \
+    --resource-group myResourceGroup  \
+    --server myserver \
+    --name mySampleDatabase \
+    --sample-name AdventureWorksLT \
+    --edition GeneralPurpose \
+    --family Gen4 \
+    --capacity 1
 ```
 
-SQL Server KIMLIĞI, bir sonraki adımda SQL Server ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` kimliği kullanacağınızı göz önünde bulunanlara benzer. 
+Sunucu KIMLIĞI, bir  ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` sonraki adımda sunucu kimliğini kullanmanıza benzer.
 
-## <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma 
-Sanal ağınızdaki SQL veritabanı sunucusu için özel bir uç nokta oluşturun: 
+## <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma
+
+Sanal ağınızdaki mantıksal SQL Server için özel bir uç nokta oluşturun:
+
 ```azurecli-interactive
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<SQL Server ID>" \  
+    --private-connection-resource-id "<server ID>" \  
     --group-ids sqlServer \  
     --connection-name myConnection  
  ```
-## <a name="configure-the-private-dns-zone"></a>Özel DNS bölgesini yapılandırma 
-SQL veritabanı sunucusu etki alanı için bir Özel DNS bölgesi oluşturun ve sanal ağla bir ilişki bağlantısı oluşturun. 
+
+## <a name="configure-the-private-dns-zone"></a>Özel DNS bölgesini yapılandırma
+
+SQL veritabanı etki alanı için bir Özel DNS bölgesi oluşturun ve sanal ağla bir ilişki bağlantısı oluşturun.
+
 ```azurecli-interactive
-az network private-dns zone create --resource-group myResourceGroup \ 
-   --name  "privatelink.database.windows.net" 
-az network private-dns link vnet create --resource-group myResourceGroup \ 
-   --zone-name  "privatelink.database.windows.net"\ 
-   --name MyDNSLink \ 
-   --virtual-network myVirtualNetwork \ 
-   --registration-enabled false 
+az network private-dns zone create --resource-group myResourceGroup \
+   --name  "privatelink.database.windows.net"
+az network private-dns link vnet create --resource-group myResourceGroup \
+   --zone-name  "privatelink.database.windows.net"\
+   --name MyDNSLink \
+   --virtual-network myVirtualNetwork \
+   --registration-enabled false
 
 #Query for the network interface ID  
 networkInterfaceId=$(az network private-endpoint show --name myPrivateEndpoint --resource-group myResourceGroup --query 'networkInterfaces[0].id' -o tsv)
- 
- 
-az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 
-# Copy the content for privateIPAddress and FQDN matching the SQL server name 
- 
- 
-#Create DNS records 
+
+az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json
+# Copy the content for privateIPAddress and FQDN matching the SQL server name
+
+#Create DNS records
 az network private-dns record-set a create --name myserver --zone-name privatelink.database.windows.net --resource-group myResourceGroup  
 az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
 ```
@@ -136,7 +148,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için > **farklı bir hesap kullan**' **ı seçmeniz gerekebilir**.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -144,38 +156,46 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL veritabanı sunucusuna VM 'den özel olarak erişme
+## <a name="access-sql-database-privately-from-the-vm"></a>SQL veritabanına özel olarak VM 'den erişin
 
-Bu bölümde, Özel uç nokta kullanarak VM 'den SQL veritabanı sunucusuna bağlanacaksınız.
+Bu bölümde, Özel uç nokta kullanarak VM 'den SQL veritabanı 'na bağlanırsınız.
 
- 1. *Myvm*uzak masaüstünde PowerShell ' i açın.
- 2. Nslookup myserver.database.windows.net  girin ve şuna benzer bir ileti alırsınız: 
+1. *Myvm*uzak masaüstünde PowerShell ' i açın.
+2. Nslookup myserver.database.windows.net girin
 
-```
-      Server:  UnKnown 
-      Address:  168.63.129.16 
-      Non-authoritative answer: 
-      Name:    myserver.privatelink.database.windows.net 
-      Address:  10.0.0.5 
-      Aliases:  myserver.database.windows.net 
-```
- 3. SQL Server Management Studio yüklensin 
- 4. Sunucuya Bağlan ' da bu bilgileri girin veya seçin: sunucu türü: veritabanı altyapısını seçin.
- Sunucu adı: Select myserver.database.windows.net username: oluşturma sırasında belirtilen bir Kullanıcı adı girin.
- Parola: oluşturma sırasında bir parola girin.
- Parolayı anımsa: Evet ' i seçin.
- 
- 5. **Bağlan**’ı seçin.
- 6. Sol menüden **veritabanlarına** gözatamazsınız.
- 7. I *MyDatabase* 'teki bilgileri oluşturma veya sorgulama
- 8. *Myvm*ile uzak masaüstü bağlantısını kapatın.
+   Şuna benzer bir ileti alacaksınız:
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme 
-Artık gerekli değilse, az Group DELETE ' i kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz: 
+    ```
+    Server:  UnKnown
+    Address:  168.63.129.16
+    Non-authoritative answer:
+    Name:    myserver.privatelink.database.windows.net
+    Address:  10.0.0.5
+    Aliases:  myserver.database.windows.net
+    ```
+
+3. SQL Server Management Studio yüklensin
+4. Sunucuya Bağlan ' da bu bilgileri girin veya seçin:
+
+   - Sunucu türü: veritabanı altyapısını seçin.
+   - Sunucu adı: myserver.database.windows.net seçin
+   - Kullanıcı adı: oluşturma sırasında sağlanmış bir Kullanıcı adı girin.
+   - Parola: oluşturma sırasında bir parola girin.
+   - Parolayı anımsa: Evet ' i seçin.
+
+5. **Bağlan**'ı seçin.
+6. Sol menüden **veritabanlarına** gözatamazsınız.
+7. I *MyDatabase* 'teki bilgileri oluşturma veya sorgulama
+8. *Myvm*ile uzak masaüstü bağlantısını kapatın.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Artık gerekli değilse, az Group DELETE ' i kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz:
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes 
+az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure özel bağlantısı](private-link-overview.md) hakkında daha fazla bilgi edinin
+
+[Azure özel bağlantısı](private-link-overview.md) hakkında daha fazla bilgi edinin

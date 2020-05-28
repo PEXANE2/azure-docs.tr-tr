@@ -75,7 +75,7 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Kongo (KDC) | Yes | Yes | Yes | No |
 | Kongo Cumhuriyeti | Yes | Yes | Yes | No |
 | Kosta Rika | Yes | Yes | Yes | Yes |
-| Fildişi Sahili | Yes | Yes | Yes | No |
+| Fildişi Sahili (Cote d'Ivoire) | Yes | Yes | Yes | No |
 | Hırvatistan | Yes | Yes | Yes | No |
 | Kıbrıs | Yes | Yes | Yes | Yes |
 | Çek Cumhuriyeti | Yes | Yes | Yes | Yes |

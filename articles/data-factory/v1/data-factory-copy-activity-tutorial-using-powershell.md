@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 215ed088b17125e7e41877e3c188a6bf3d77e8bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f34103bb42999f6d2e9bfe35dbc257db7cecd909
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73682853"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119277"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak verileri taşıyan bir Data Factory işlem hattı oluşturma
 > [!div class="op_single_selector"]
@@ -90,7 +90,7 @@ Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hatt�
     Get-AzSubscription
     ```
 
-    Çalışmak isteğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. ** &lt;Nameofazuyeniden gönderme Scription** &gt; değerini Azure aboneliğinizin adıyla değiştirin:
+    Çalışmak isteğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. ** &lt; Nameofazuyeniden gönderme Scription** &gt; değerini Azure aboneliğinizin adıyla değiştirin:
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -189,7 +189,7 @@ Bu adımda, Azure SQL veritabanınızı veri fabrikanıza bağlarsınız.
 1. C:\ADFGetStartedPSH klasöründe aşağıdaki içeriğe sahip AzureSqlLinkedService.json adlı bir JSON dosyası oluşturun:
 
     > [!IMPORTANT]
-    > &lt;servername&gt;, &lt;databasename&gt;, &lt;username@servername&gt; ve &lt;password&gt; sözcüklerini Azure SQL sunucunuzun, veritabanınızın, kullanıcı hesabınızın adlarıyla ve parolasıyla değiştirin.
+    > &lt;ServerName &gt; , &lt; DatabaseName &gt; , &lt; username@servername &gt; ve &lt; Password &gt; değerini sunucunuzun, veritabanınızın, Kullanıcı hesabınızın adlarıyla ve parolasıyla değiştirin.
     
     ```json
     {
@@ -218,7 +218,7 @@ Bu adımda, Azure SQL veritabanınızı veri fabrikanıza bağlarsınız.
     ProvisioningState : Succeeded
     ```
 
-   **Azure hizmetlerine erişime izin ver** ayarının SQL veritabanı sunucusunda açık olduğunu onaylayın. Doğrulayıp etkinleştirmek için aşağıdaki adımları uygulayın:
+   Sunucunuz için **Azure hizmetlerine erişime Izin ver** ayarının açık olduğundan emin olun. Doğrulayıp etkinleştirmek için aşağıdaki adımları uygulayın:
 
     1. [Azure Portal](https://portal.azure.com) oturum açın
     1. Soldaki **Diğer hizmetler >** öğesine ve **VERİTABANLARI** kategorisindeki **SQL sunucuları** seçeneğine tıklayın.
@@ -276,7 +276,7 @@ Bu adımda, InputDataset adlı bir veri kümesi oluşturursunuz. Bu veri kümesi
 
     | Özellik | Açıklama |
     |:--- |:--- |
-    | type | Veriler Azure blob depolama alanında yer aldığından type özelliği **AzureBlob** olarak ayarlanmıştır. |
+    | tür | Veriler Azure blob depolama alanında yer aldığından type özelliği **AzureBlob** olarak ayarlanmıştır. |
     | linkedServiceName | Daha önce oluşturduğunuz **AzureStorageLinkedService**’e başvurur. |
     | folderPath | blob **kapsayıcıyı** ve girdi blob’larını içeren **klasörü** belirtir. Bu öğreticide adftutorial, blob kapsayıcısıdır ve klasör, kök klasördür. | 
     | fileName | Bu özellik isteğe bağlıdır. Bu özelliği atarsanız tüm folderPath dosyaları alınır. Bu öğreticide fileName için **emp.txt** belirtilir, bu nedenle işlem için yalnızca bu dosya seçilir. |
@@ -341,7 +341,7 @@ Adımın bu bölümünde **OutputDataset** adlı bir çıktı veri kümesi oluş
 
     | Özellik | Açıklama |
     |:--- |:--- |
-    | type | type özelliği, veriler Azure SQL veritabanındaki bir tabloya kopyalandığından **AzureSqlTable** olarak ayarlanır. |
+    | tür | type özelliği, veriler Azure SQL veritabanındaki bir tabloya kopyalandığından **AzureSqlTable** olarak ayarlanır. |
     | linkedServiceName | Daha önce oluşturduğunuz **AzureSqlLinkedService**’e başvurur. |
     | tableName | Verilerin kopyalandığı **tabloyu** belirtir. | 
     | frequency/interval | frequency **Saatlik** ve interval **1** olarak ayarlanır. Bu durumda çıktı dilimleri, işlem hattı başlangıç ve bitiş zamanları arasında **saatlik** olarak üretilir, bu zamanlardan önce veya sonra üretilmez.  |
@@ -455,7 +455,7 @@ Bu adımda, girdi olarak **InputDataset** ve çıktı olarak **OutputDataset** k
 ## <a name="monitor-the-pipeline"></a>İşlem hattını izleme
 Bu adımda, Azure data factory’de neler olduğunu izlemek için Azure PowerShell kullanırsınız.
 
-1. Datafactoryname &lt;&gt; değerini veri fabrikanızın adıyla değiştirin ve **Get-azdatafactory**komutunu çalıştırın ve çıktıyı bir değişkene atayın $df.
+1. &lt;Datafactoryname &gt; değerini veri fabrikanızın adıyla değiştirin ve **Get-azdatafactory**komutunu çalıştırın ve çıktıyı bir değişkene atayın $df.
 
     ```powershell  
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>

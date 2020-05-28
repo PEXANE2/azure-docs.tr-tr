@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 34aab24bf39e387715cfa5783b801d45ed488750
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732720"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996661"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Gradle kullanma
 
@@ -60,7 +60,7 @@ azurefunctions {
 Yeni Function. Java dosyasını bir metin düzenleyicisinde *src/Main/Java* yolundan açın ve oluşturulan kodu gözden geçirin. Bu kod, isteğin gövdesini yansıtan [http ile tetiklenen](functions-bindings-http-webhook.md) bir işlevdir. 
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
@@ -93,14 +93,16 @@ curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 Beklenen çıkış şunlardır:
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
-Yerel olarak çalıştırılırken [işlev anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) gerekli değildir.  
+> [!NOTE]
+> AuthLevel 'ı veya olarak ayarlarsanız `FUNCTION` `ADMIN` , yerel olarak çalıştırılırken [işlev anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) gerekli değildir.  
+
 İşlev kodunu durdurmak için terminalde `Ctrl+C` komutunu kullanın.
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=local-run)
 
 ## <a name="deploy-the-function-to-azure"></a>İşlevi Azure’a dağıtma
 
@@ -128,10 +130,10 @@ Bu, Build. Gradle dosyasındaki değerlere bağlı olarak aşağıdaki kaynaklar
 
 Dağıtım ayrıca proje dosyalarını paketleyip, paket Çalıştır modu etkin olan [ZIP dağıtımını](functions-deployment-technologies.md#zip-deploy)kullanarak yeni işlev uygulamasına dağıtır.
 
-Yayımladığımız HTTP tetikleyicisi kullandığından `authLevel = AuthorizationLevel.FUNCTION`, http üzerinden işlev uç noktasını çağırmak için işlev anahtarını almanız gerekir. İşlev anahtarını almanın en kolay yolu [Azure Portal].
+Örnek projede HTTP tetikleyicisi için authLevel, `ANONYMOUS` kimlik doğrulamasını atlayacak. Ancak, veya gibi başka bir authLevel kullanıyorsanız `FUNCTION` `ADMIN` , http üzerinden işlev uç noktasını çağırmak için işlev anahtarını almanız gerekir. İşlev anahtarını almanın en kolay yolu [Azure Portal].
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>HTTP tetikleyici URL 'sini al
 
@@ -139,9 +141,9 @@ Yayımladığımız HTTP tetikleyicisi kullandığından `authLevel = Authorizat
 
 1. [Azure Portal]gidin, oturum açın, sayfanın üst kısmında **arama** yapmak için işlev uygulamanızın _appname_ öğesini yazın ve ENTER tuşuna basın.
  
-1. İşlev uygulamanızda Işlevler ' i genişletin **(salt okunurdur)**, işlevinizi seçin, sonra **</> Işlev URL 'sini al** ' ı seçin. 
+1. İşlev uygulamanızda **işlevler**' i seçin, işlevinizi seçin ve sonra sağ üst köşedeki **Işlev Url 'sini al</>** ' a tıklayın. 
 
-    ![Azure portalından işlev URL’sini kopyalama](./media/functions-create-java-maven/get-function-url-portal.png)
+    :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="Azure portalından işlev URL’sini kopyalama":::
 
 1. **Varsayılan (işlev anahtarı)** öğesini seçin ve **Kopyala**' yı seçin. 
 
@@ -149,20 +151,20 @@ Yayımladığımız HTTP tetikleyicisi kullandığından `authLevel = Authorizat
 
 ## <a name="verify-the-function-in-azure"></a>Azure 'da işlevi doğrulama
 
-Kullanarak `cURL`Azure 'da çalışan işlev uygulamasını doğrulamak için, aşağıdaki örnekteki URL 'yi portaldan kopyaladığınız URL ile değiştirin.
+Kullanarak Azure 'da çalışan işlev uygulamasını doğrulamak için `cURL` , aşağıdaki örnekteki URL 'yi portaldan KOPYALADıĞıNıZ URL ile değiştirin.
 
 ```console
-curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
+curl -w "\n" http://azure-functions-sample-demo.azurewebsites.net/api/HttpExample --data AzureFunctions
 ```
 
-Bu, isteğin gövdesinde bulunan `AzureFunctions` işlev uç noktasına bir post isteği gönderir. Aşağıdaki yanıtı görürsünüz.
+Bu, isteğin gövdesinde bulunan işlev uç noktasına bir POST isteği gönderir `AzureFunctions` . Aşağıdaki yanıtı görürsünüz.
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=verify-deployment)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -173,4 +175,4 @@ HTTP ile tetiklenen bir işlev içeren bir Java işlevleri projesi oluşturdunuz
 
 
 [Azure CLI]: /cli/azure
-[Azure portal]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com

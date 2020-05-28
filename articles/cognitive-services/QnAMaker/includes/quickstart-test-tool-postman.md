@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 1f47b4532a009694d4167c08f6f04312f8020acc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 095f3396c483f4b8f80ab6c31ee369f2082f560c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673484"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83998083"
 ---
 Bu Postman tabanlı hızlı başlangıç, bilgi tabanınızdan yanıt alma konusunda size yol gösterir.
 
@@ -64,7 +64,7 @@ Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini y
     }
     ```
 
-    Bu soru, `size` iki sorudan ve yanıt kümelerinden birini döndürebilen yalnızca tek bir sözcüktür. `strictFilters`Dizi, yanıta yalnızca yanıtları azaltmasını söyler `qna_maker` .
+    Bu soru, `size` iki soru ve yanıt çiftinin her birini döndürebilen tek bir sözcüktür. `strictFilters`Dizi, yanıta yalnızca yanıtları azaltmasını söyler `qna_maker` .
 
 1. Yanıt yalnızca filtre ölçütlerini karşılayan yanıtı içerir.
 
@@ -103,12 +103,12 @@ Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini y
     }
     ```
 
-    Arama terimini karşılamayan ancak filtreye uyan bir soru ve yanıt kümesi varsa, bu geri döndürülemez. Bunun yerine, genel yanıt `No good match found in KB.` döndürülür.
+    Arama terimini karşılamayan ancak filtreye uyan bir soru ve yanıt çifti varsa döndürülmüyor. Bunun yerine, genel yanıt `No good match found in KB.` döndürülür.
 
 ## <a name="use-debug-query-property"></a>Hata ayıklama sorgu özelliğini kullan
 
 > [!NOTE]
->Herhangi bir bağımlılık için hata ayıklama poreperty kullanılması önerilmez. Bu özellik, ürün ekibine sorun gidermeye yardımcı olmak için eklenmiştir. 
+>Herhangi bir bağımlılık için hata ayıklama poreperty kullanılması önerilmez. Bu özellik, ürün ekibine sorun gidermeye yardımcı olmak için eklenmiştir.
 
 Hata ayıklama bilgileri döndürülen yanıtın nasıl belirlendiğini anlamanıza yardımcı olur. Faydalı olsa da gerekli değildir. Hata ayıklama bilgileriyle bir yanıt oluşturmak için, özelliği ekleyin `debug` :
 

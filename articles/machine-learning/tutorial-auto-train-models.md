@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
+author: aniththa
+ms.author: anumamah
+ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 75e61ea3f4fa6c2b346f912a9effd66ad94e7e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 97b129bfaa1a8612040e59c6378aa1965c5c49cd
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77116454"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118886"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: taksi Fares 'yi tahmin etmek için otomatik makine öğrenimi kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,11 +38,11 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azur
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
 * Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak *öğreticiler/Regression-automl-NYC-Taxi-Data/Regression-Automated-ml. ipynb* Not defterini açın.
 
-Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)çalıştırmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir. Gerekli `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` paketleri almak için öğesini çalıştırın.
+Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)çalıştırmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir. `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets`Gerekli paketleri almak için öğesini çalıştırın.
 
 ## <a name="download-and-prepare-data"></a>Verileri indirme ve hazırlama
 
-Gerekli paketleri içeri aktarın. Açık veri kümeleri paketi, indirilmeden önce tarih parametrelerini kolayca filtrelemek`NycTlcGreen` için her bir veri kaynağını temsil eden bir sınıf içerir (örneğin).
+Gerekli paketleri içeri aktarın. Açık veri kümeleri paketi, `NycTlcGreen` indirilmeden önce tarih parametrelerini kolayca filtrelemek için her bir veri kaynağını temsil eden bir sınıf içerir (örneğin).
 
 ```python
 from azureml.opendatasets import NycTlcGreen
@@ -51,9 +51,9 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 ```
 
-Taxı verilerini tutmak için bir veri çerçevesi oluşturarak başlayın. Spark olmayan bir ortamda çalışırken, açık veri kümeleri, büyük veri kümelerinde kaçınmak `MemoryError` için belirli sınıflarla tek seferde bir aydan verilerin indirilmesini sağlar.
+Taxı verilerini tutmak için bir veri çerçevesi oluşturarak başlayın. Spark olmayan bir ortamda çalışırken, açık veri kümeleri, büyük veri kümelerinde kaçınmak için belirli sınıflarla tek seferde bir aydan verilerin indirilmesini sağlar `MemoryError` .
 
-Taxı verilerini indirmek için, bir kerede bir ayda bir kez ve veri çerçevesini bloktan kaçınmak için bu `green_taxi_df` dosyayı her ayın rastgele örnek 2.000 kayıtlarına eklemeden önce bir ay olarak yeniden koyun. Sonra verileri önizleyin.
+Taxı verilerini indirmek için, bir kerede bir ayda bir kez ve `green_taxi_df` veri çerçevesini bloktan kaçınmak için bu dosyayı her ayın rastgele örnek 2.000 kayıtlarına eklemeden önce bir ay olarak yeniden koyun. Sonra verileri önizleyin.
 
 
 ```python
@@ -115,8 +115,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -139,8 +139,8 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0,69</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
@@ -163,8 +163,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -187,8 +187,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0,00</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -211,8 +211,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0,50</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -235,8 +235,8 @@ green_taxi_df.head(10)
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1.10</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -259,8 +259,8 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
@@ -283,8 +283,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -307,8 +307,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
@@ -331,8 +331,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -354,7 +354,7 @@ green_taxi_df.head(10)
 </div>
 
 
-Artık ilk veriler yüklendikten sonra, toplama tarih/saati alanından çeşitli zamana dayalı özellikler oluşturmak için bir işlev tanımlayın. Bu işlem, ay numarası, ay günü, haftanın günü ve günün saati için yeni alanlar oluşturur ve modelin zaman tabanlı mevsimsellik açısından çarpaya izin verir. İşlevi, `apply()` TAXI verilerinde her satıra yinelemeli olarak uygulamak için dataframe üzerindeki işlevini kullanın. `build_time_features()`
+Artık ilk veriler yüklendikten sonra, toplama tarih/saati alanından çeşitli zamana dayalı özellikler oluşturmak için bir işlev tanımlayın. Bu işlem, ay numarası, ay günü, haftanın günü ve günün saati için yeni alanlar oluşturur ve modelin zaman tabanlı mevsimsellik açısından çarpaya izin verir. İşlevi, `apply()` `build_time_features()` TAXI verilerinde her satıra yinelemeli olarak uygulamak için dataframe üzerindeki işlevini kullanın.
 
 ```python
 def build_time_features(vector):
@@ -416,8 +416,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -440,8 +440,8 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0,69</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
@@ -464,8 +464,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -488,8 +488,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0,00</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -512,8 +512,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0,50</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -536,8 +536,8 @@ green_taxi_df.head(10)
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1.10</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -560,8 +560,8 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
@@ -584,8 +584,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -608,8 +608,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
@@ -632,8 +632,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
+      <td>Yok</td>
+      <td>Yok</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -751,7 +751,7 @@ green_taxi_df.describe()
       <td>6,83</td>
     </tr>
     <tr>
-      <th>min</th>
+      <th>dk</th>
       <td>1,00</td>
       <td>0,00</td>
       <td>0,00</td>
@@ -850,7 +850,7 @@ for col in columns_to_remove_for_training:
     final_df.pop(col)
 ```
 
-Temizleme `describe()` 'nin beklendiği gibi çalıştığından emin olmak için verileri yeniden çağırın. Artık makine öğrenimi model eğitimi için kullanılacak, hazırlanmış ve yeniden hazırlanan bir TAXI, tatil ve hava durumu verisi ayarlamış olursunuz.
+`describe()`Temizleme 'nin beklendiği gibi çalıştığından emin olmak için verileri yeniden çağırın. Artık makine öğrenimi model eğitimi için kullanılacak, hazırlanmış ve yeniden hazırlanan bir TAXI, tatil ve hava durumu verisi ayarlamış olursunuz.
 
 ```python
 final_df.describe()
@@ -858,7 +858,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Çalışma alanını yapılandırma
 
-Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. [Çalışma alanı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) , Azure aboneliğinizi ve kaynak bilgilerinizi kabul eden bir sınıftır. Ayrıca, modelinizi izlemek ve izlemek için bir bulut kaynağı oluşturur. `Workspace.from_config()`**config. JSON** dosyasını okur ve kimlik doğrulama ayrıntılarını adlı `ws`bir nesneye yükler. Bu öğreticideki kodun kalanında `ws` kullanılır.
+Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. [Çalışma alanı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) , Azure aboneliğinizi ve kaynak bilgilerinizi kabul eden bir sınıftır. Ayrıca, modelinizi izlemek ve izlemek için bir bulut kaynağı oluşturur. `Workspace.from_config()`**config. JSON** dosyasını okur ve kimlik doğrulama ayrıntılarını adlı bir nesneye yükler `ws` . Bu öğreticideki kodun kalanında `ws` kullanılır.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -867,9 +867,9 @@ ws = Workspace.from_config()
 
 ## <a name="split-the-data-into-train-and-test-sets"></a>Verileri eğitme ve test kümelerine Böl
 
-`scikit-learn` Kitaplığındaki `train_test_split` işlevini kullanarak verileri eğitim ve test kümelerine ayırın. Bu işlev, model eğitimi için verileri x (**Özellikler**) veri kümesine ayırır ve test için y (**tahmin edilecek değerler**) veri kümesini gösterir.
+Kitaplığındaki işlevini kullanarak verileri eğitim ve test kümelerine ayırın `train_test_split` `scikit-learn` . Bu işlev, model eğitimi için verileri x (**Özellikler**) veri kümesine ayırır ve test için y (**tahmin edilecek değerler**) veri kümesini gösterir.
 
-`test_size` Parametresi, teste ayrılacak verilerin yüzdesini belirler. `random_state` Parametresi, tren-test bölünmeleri belirleyici olacak şekilde rastgele oluşturucuya bir çekirdek ayarlar.
+`test_size`Parametresi, teste ayrılacak verilerin yüzdesini belirler. `random_state`Parametresi, tren-test bölünmeleri belirleyici olacak şekilde rastgele oluşturucuya bir çekirdek ayarlar.
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -918,7 +918,7 @@ automl_settings = {
 }
 ```
 
-Tanımlı eğitim ayarlarınızı bir `**kwargs` `AutoMLConfig` nesne için parametre olarak kullanın. Ayrıca, bu durumda eğitim verilerinizi ve model `regression` türünü de belirtin.
+Tanımlı eğitim ayarlarınızı bir `**kwargs` nesne için parametre olarak kullanın `AutoMLConfig` . Ayrıca, bu durumda eğitim verilerinizi ve model türünü de belirtin `regression` .
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -935,9 +935,9 @@ automl_config = AutoMLConfig(task='regression',
 
 ### <a name="train-the-automatic-regression-model"></a>Otomatik regresyon modelini eğitme
 
-Çalışma alanınızda bir deneme nesnesi oluşturun. Deneme, bireysel çalışmalarınız için bir kapsayıcı olarak davranır. Tanımlanan `automl_config` nesneyi denemenize geçirin ve çalıştırma sırasında ilerlemeyi görüntülemek `True` için çıktıyı ayarlayın.
+Çalışma alanınızda bir deneme nesnesi oluşturun. Deneme, bireysel çalışmalarınız için bir kapsayıcı olarak davranır. Tanımlanan `automl_config` nesneyi denemenize geçirin ve `True` çalıştırma sırasında ilerlemeyi görüntülemek için çıktıyı ayarlayın.
 
-Denemeyi başlattıktan sonra, bu gösterilen çıkış, deney olarak canlı güncelleştirmeler çalışır. Her yineleme için model türünü, çalışma süresini ve eğitim doğruluğunu görürsünüz. Alan `BEST` , ölçüm türünüz temelinde en iyi çalışan eğitim Puanını izler.
+Denemeyi başlattıktan sonra, bu gösterilen çıkış, deney olarak canlı güncelleştirmeler çalışır. Her yineleme için model türünü, çalışma süresini ve eğitim doğruluğunu görürsünüz. Alan, `BEST` Ölçüm Türünüz temelinde en iyi çalışan eğitim Puanını izler.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -993,12 +993,12 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-![Jupi pencere öğesi çalıştırma ayrıntıları](./media/tutorial-auto-train-models/automl-dash-output.png)
-![jupi pencere öğesi çizimi](./media/tutorial-auto-train-models/automl-chart-output.png)
+![Jupi pencere öğesi çalıştırma ayrıntıları ](./media/tutorial-auto-train-models/automl-dash-output.png)
+ ![ jupi pencere öğesi çizimi](./media/tutorial-auto-train-models/automl-chart-output.png)
 
 ### <a name="retrieve-the-best-model"></a>En iyi modeli alma
 
-Yinelemeinizden en iyi modeli seçin. `get_output` İşlevi, en iyi çalışmayı ve en son çağrıya yönelik olarak sığdırılmış modeli döndürür. Üzerinde aşırı yüklemeleri kullanarak, `get_output`herhangi bir günlüğe kaydedilmiş ölçüm veya belirli bir yineleme için en iyi çalıştırma ve bağlı modeli elde edebilirsiniz.
+Yinelemeinizden en iyi modeli seçin. İşlevi, en `get_output` iyi çalışmayı ve en son çağrıya yönelik olarak sığdırılmış modeli döndürür. Üzerinde aşırı yüklemeleri kullanarak `get_output` , herhangi bir günlüğe kaydedilmiş ölçüm veya belirli bir yineleme için en iyi çalıştırma ve bağlı modeli elde edebilirsiniz.
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1008,14 +1008,14 @@ print(fitted_model)
 
 ### <a name="test-the-best-model-accuracy"></a>En iyi model doğruluğunu test edin
 
-Taksi Fares 'yi tahmin etmek için test verileri kümesindeki tahminleri çalıştırmak için en iyi modeli kullanın. İşlevi `predict` en iyi modeli kullanır ve `x_test` veri kümesinden y, **seyahat maliyeti**değerlerini tahmin eder. İlk 10 tahmini maliyet değerini ' den `y_predict`yazdırın.
+Taksi Fares 'yi tahmin etmek için test verileri kümesindeki tahminleri çalıştırmak için en iyi modeli kullanın. İşlevi `predict` en iyi modeli kullanır ve veri kümesinden y, **seyahat maliyeti**değerlerini tahmin eder `x_test` . İlk 10 tahmini maliyet değerini ' den yazdırın `y_predict` .
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-Sonuçların `root mean squared error` sayısını hesaplayın. Tahmin edilen `y_test` değerlerle karşılaştırmak için veri çerçevesini bir listeye dönüştürün. İşlevi `mean_squared_error` iki dizi değer alır ve aralarındaki ortalama kare içinde hata sayısını hesaplar. Sonucun kare kökünü almak, y **değişkeni ile aynı**birimlerde bir hata verir. EPI tarifeli havayolu tahminlerinin gerçek farlarından ne kadar olduğunu kabaca gösterir.
+`root mean squared error`Sonuçların sayısını hesaplayın. Tahmin edilen `y_test` değerlerle karşılaştırmak için veri çerçevesini bir listeye dönüştürün. İşlevi `mean_squared_error` iki dizi değer alır ve aralarındaki ortalama kare içinde hata sayısını hesaplar. Sonucun kare kökünü almak, y **değişkeni ile aynı**birimlerde bir hata verir. EPI tarifeli havayolu tahminlerinin gerçek farlarından ne kadar olduğunu kabaca gösterir.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1026,7 +1026,7 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-Tam `y_actual` ve `y_predict` veri kümelerini kullanarak ortalama mutlak yüzde hatasını (mape) hesaplamak için aşağıdaki kodu çalıştırın. Bu ölçüm, tahmin edilen ve gerçek değerler arasındaki mutlak bir farkı hesaplar ve tüm farkları toplar. Ardından, bu toplamı gerçek değerlerin toplamının yüzdesi olarak ifade eder.
+Tam `y_actual` ve veri kümelerini kullanarak ortalama mutlak yüzde hatasını (MAPE) hesaplamak için aşağıdaki kodu çalıştırın `y_predict` . Bu ölçüm, tahmin edilen ve gerçek değerler arasındaki mutlak bir farkı hesaplar ve tüm farkları toplar. Ardından, bu toplamı gerçek değerlerin toplamının yüzdesi olarak ifade eder.
 
 ```python
 sum_actuals = sum_errors = 0

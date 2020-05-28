@@ -3,12 +3,12 @@ title: Azure Kaynak Grafiği'ne Genel Bakış
 description: Azure Kaynak Grafiği hizmeti 'nin, abonelikler ve kiracılar arasında ölçeklendirerek kaynakların karmaşık şekilde sorgulanmasını nasıl sağladığını anlayın.
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c3ac82c823df8cdde7b616b62ee409de500b5990
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381527"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995867"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Kaynak Grafı nedir?
 
@@ -22,8 +22,8 @@ Azure Kaynak Grafiği, ortamınızı etkili bir şekilde yönetebilmeniz için, 
 Bu belgede her özelliği ayrıntılı olarak inceleyeceksiniz.
 
 > [!NOTE]
-> Azure Kaynak Grafiği Azure Portal 'nin arama çubuğunu, yeni ' tüm kaynaklar ' deneyimini ve Azure ilkesinin [değişiklik geçmişi](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> _görsel farkını_bir şekilde güçlendirir. Müşterilerin büyük ölçekli ortamları yönetmesine yardımcı olmak için tasarlanmıştır.
+> Azure Kaynak Grafiği Azure Portal 'nin arama çubuğunu, yeni ' tüm kaynaklar ' deneyimini ve Azure ilkesinin [değişiklik geçmişi](../policy/how-to/determine-non-compliance.md#change-history-preview) 
+>  _görsel farkını_bir şekilde güçlendirir. Müşterilerin büyük ölçekli ortamları yönetmesine yardımcı olmak için tasarlanmıştır.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -44,7 +44,7 @@ Bir Azure kaynağı güncelleştirildiği zaman, kaynak grafiğine değişikliğ
 Kaynak Grafiği daha sonra veritabanını güncelleştirir. Kaynak Grafiği de düzenli bir _tam tarama_yapar. Bu tarama, eksik bildirimler varsa veya bir kaynağın Kaynak Yöneticisi dışında güncelleştirildiği durumlarda kaynak Grafik verilerinin güncel olmasını sağlar.
 
 > [!NOTE]
-> Kaynak Grafiği, özellikleri `GET` ve değerleri toplamak için her kaynak sağlayıcının en son ÖNIZLEME olmayan API 'sine kullanır. Sonuç olarak, beklenen özellik kullanılamıyor olabilir. Bazı durumlarda kullanılan API sürümü, sonuçlarda daha güncel veya yaygın olarak kullanılan özellikler sağlamak için geçersiz kılındı. Ortamınızdaki tüm bir liste için [her kaynak türü örneği IÇIN API sürümünü göster](./samples/advanced.md#apiversion) ' i inceleyin.
+> Kaynak Grafiği `GET` , özellikleri ve değerleri toplamak için her kaynak sağlayıcının en son Önizleme olmayan API 'sine kullanır. Sonuç olarak, beklenen özellik kullanılamıyor olabilir. Bazı durumlarda kullanılan API sürümü, sonuçlarda daha güncel veya yaygın olarak kullanılan özellikler sağlamak için geçersiz kılındı. Ortamınızdaki tüm bir liste için [her kaynak türü örneği IÇIN API sürümünü göster](./samples/advanced.md#apiversion) ' i inceleyin.
 
 ## <a name="the-query-language"></a>Sorgu dili
 
@@ -62,7 +62,7 @@ Kaynak Grafı’nı kullanmak için, sorgulamak istediğiniz kaynaklara en az ok
 > [!NOTE]
 > Kaynak Grafiği, oturum açma sırasında bir sorumlu için kullanılabilen abonelikleri kullanır. Etkin bir oturum sırasında eklenen yeni aboneliğin kaynaklarını görmek için sorumlu bağlamı yenilemeniz gerekir. Bu eylem, oturumunuzu kapatıp yeniden oturum açarken otomatik olarak gerçekleşir.
 
-Azure CLı ve Azure PowerShell kullanıcının erişimi olan abonelikleri kullanır. REST API doğrudan kullanırken, abonelik listesi Kullanıcı tarafından sağlanır. Kullanıcının listedeki aboneliklerden herhangi birine erişimi varsa, sorgu sonuçları kullanıcının erişimi olan abonelikler için döndürülür. Bu davranış, [kaynak grupları çağırma ile](/rest/api/resources/resourcegroups/list) \- aynıdır; sonucun kısmi olabileceğini belirten herhangi bir gösterge olmadan, erişebileceğiniz kaynak gruplarını elde edersiniz.
+Azure CLı ve Azure PowerShell kullanıcının erişimi olan abonelikleri kullanır. REST API doğrudan kullanırken, abonelik listesi Kullanıcı tarafından sağlanır. Kullanıcının listedeki aboneliklerden herhangi birine erişimi varsa, sorgu sonuçları kullanıcının erişimi olan abonelikler için döndürülür. Bu davranış, [kaynak grupları çağırma ile](/rest/api/resources/resourcegroups/list) aynıdır \- ; sonucun kısmi olabileceğini belirten herhangi bir gösterge olmadan, erişebileceğiniz kaynak gruplarını elde edersiniz.
 Abonelik listesinde kullanıcının uygun haklara sahip bir abonelik yoksa, yanıt _403_ (yasak) olur.
 
 ## <a name="throttling"></a>Azaltma
@@ -79,16 +79,17 @@ Daha fazla bilgi için bkz. [Kısıtlanmış istekler Için rehberlik](./concept
 
 ## <a name="running-your-first-query"></a>İlk sorgunuzu çalıştırma
 
-Azure portal bir parçası olan Azure Kaynak grafik Gezgini, kaynak grafik sorgularını doğrudan Azure portal üzerinde çalıştırmaya izin verebilir. Portal iş akışınıza gerçek zamanlı dinamik bilgiler sağlamak için sonuçları dinamik grafik olarak sabitleyin. Daha fazla bilgi için bkz. [Azure Resource Graph Explorer Ile ilk sorgu](first-query-portal.md).
+Azure portal bir parçası olan Azure Kaynak grafik Gezgini, kaynak grafik sorgularını doğrudan Azure portal üzerinde çalıştırmaya izin verebilir. Portal iş akışınıza gerçek zamanlı dinamik bilgiler sağlamak için sonuçları dinamik grafik olarak sabitleyin. Daha fazla bilgi için bkz. [Azure Resource Graph Explorer Ile ilk sorgu](./first-query-portal.md).
 
-Kaynak Grafiği Azure CLı, Azure PowerShell, .NET için Azure SDK ve daha fazlasını destekler. Sorgu her dil için aynı şekilde yapılandırılmıştır. Kaynak grafiğini nasıl etkinleştireceğinizi öğrenin:
+Kaynak Grafiği Azure CLı, Azure PowerShell, Python için Azure SDK ve daha fazlasını destekler. Sorgu her dil için aynı şekilde yapılandırılmıştır. Kaynak grafiğini nasıl etkinleştireceğinizi öğrenin:
 
-- [Azure portal ve kaynak grafiği Gezgini](first-query-portal.md) 
-- [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
-- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
+- [Azure portal ve kaynak grafiği Gezgini](./first-query-portal.md) 
+- [Azure CLI](./first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](./first-query-powershell.md#add-the-resource-graph-module)
+- [Python](./first-query-python.md#add-the-resource-graph-library)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal](first-query-portal.md)kullanarak ilk sorgunuzu çalıştırın.
-- [Azure CLI](first-query-azurecli.md)ile ilk sorgunuzu çalıştırın.
-- [Azure PowerShell](first-query-powershell.md)ile ilk sorgunuzu çalıştırın.
+- [Sorgu dili](./concepts/query-language.md)hakkında daha fazla bilgi edinin.
+- Bkz. [Başlangıç sorgularında](./samples/starter.md)kullanılan dil.
+- Gelişmiş [sorgularda](./samples/advanced.md)gelişmiş kullanımlar bölümüne bakın.

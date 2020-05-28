@@ -1,22 +1,22 @@
 ---
 title: 'Hızlı başlangıç: Soru-Cevap Oluşturma portalına soru ve yanıt ekleme'
-description: Bu hızlı başlangıçta, kullanıcılarınızın sorularınızın doğru yanıtını bulabilmesi için meta verilerle soru ve yanıt kümelerinin nasıl ekleneceği gösterilmektedir.
+description: Bu hızlı başlangıçta, kullanıcılarınızın sorularınızın doğru yanıtını bulabilmesi için meta verilerle soru ve yanıt çiftleri ekleme gösterilmektedir.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: fc8bac425723e9194c447f1cf6ee13547c09d772
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: fc40c6a6e0543d4d558da2c8a17c155fbb7cbf1f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873684"
+ms.locfileid: "83994672"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı başlangıç: Soru-Cevap Oluşturma portalı ile soru ve yanıt ekleme
 
-Bilgi Bankası oluşturulduktan sonra, yanıtı filtrelemek için meta verilerle soru ve yanıt (QnA) kümeleri ekleyin. Aşağıdaki tablodaki sorular Azure hizmet limitleri ile ilgilidir, ancak her birinin farklı bir Azure hizmeti ile yapması gerekir.
+Bilgi Bankası oluşturulduktan sonra, yanıtı filtrelemek için meta verilerle soru ve cevap (QnA) çiftleri ekleyin. Aşağıdaki tablodaki sorular Azure hizmet limitleri ile ilgilidir, ancak her birinin farklı bir Azure hizmeti ile yapması gerekir.
 
 <a name="qna-table"></a>
 
-|Ayarla|Sorular|Yanıt|Meta Veriler|
+|Çifti|Sorular|Yanıt|Meta Veriler|
 |--|--|--|--|
 |1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -39,11 +39,11 @@ Bir QnA çiftine meta veriler eklendikten sonra istemci uygulama şunları yapab
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>Ek alternatif olarak phrased soruları ekleyin
 
-Geçerli Bilgi Bankası 'nda Soru-Cevap Oluşturma sorun giderme QnA çiftleri vardır. Bu kümeler, oluşturma işlemi sırasında URL Bilgi Bankası 'na eklendiğinde oluşturulmuştur.
+Geçerli Bilgi Bankası 'nda Soru-Cevap Oluşturma sorun giderme QnA çiftleri vardır. Bu çiftler, oluşturma işlemi sırasında URL Bilgi Bankası 'na eklendiğinde oluşturulmuştur.
 
 Bu URL içeri aktarıldığında, yalnızca bir yanıtla birlikte tek bir soru oluşturulur. Bu yordamda, ek sorular ekleyin.
 
-1. **Düzenleme** sayfasında, soruyu bulmak için soru ve yanıt kümelerinin üzerindeki arama metin kutusunu kullanın`How large a knowledge base can I create?`
+1. **Düzenleme** sayfasında, soruyu bulmak için soru ve yanıt çiftlerinin üzerindeki arama metin kutusunu kullanın`How large a knowledge base can I create?`
 
 1. **Soru** sütununda **+ Alternatif ifade Ekle** ' yi seçin ve aşağıdaki tabloda belirtilen her yeni bir ifade ekleyin.
 
@@ -70,9 +70,9 @@ Bu URL içeri aktarıldığında, yalnızca bir yanıtla birlikte tek bir soru o
 
 ## <a name="add-metadata-to-filter-the-answers"></a>Yanıtları filtrelemek için meta veriler ekleyin
 
-Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrelenmiş yanıtlar istemesine izin verir. Bu filtre, [ilk ve ikinci ranranlar](../concepts/query-knowledge-base.md#ranker-process) uygulanmadan önce uygulanır.
+Bir soru ve yanıt çiftinin meta verilerini eklemek, istemci uygulamanızın filtrelenmiş yanıtlar istemesine izin verir. Bu filtre, [ilk ve ikinci ranranlar](../concepts/query-knowledge-base.md#ranker-process) uygulanmadan önce uygulanır.
 
-1. İkinci soruyu ve yanıt kümesini meta veriler olmadan, [Bu hızlı başlangıçtaki ilk tablodan](#qna-table)ekleyin ve ardından aşağıdaki adımlarla devam edin.
+1. İkinci soruyu ve yanıt çiftini, [Bu hızlı başlangıçtaki ilk tablodan](#qna-table)meta veriler olmadan ekleyin, ardından aşağıdaki adımlarla devam edin.
 
 1. **Görünüm seçeneklerini**belirleyin ve **meta verileri göster**' i seçin.
 

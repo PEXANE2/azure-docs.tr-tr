@@ -1,5 +1,5 @@
 ---
-title: Güvenlik konuları
+title: Güvenlikle ilgili dikkat edilmesi gerekenler
 description: Verilerinizin güvenliğini sağlamaya yardımcı olmak için Azure Data Factory veri taşıma hizmetlerinin kullandığı temel güvenlik altyapısını açıklar.
 services: data-factory
 ms.author: abnarain
@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416462"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019988"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory veri hareketine yönelik güvenlik konuları
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -47,7 +47,7 @@ Data Factory için sertifikalıdır:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Azure uyumluluğu ile ilgileniyorsanız ve Azure 'un kendi altyapısını nasıl güvenlik altına alırsanız, [Microsoft Güven Merkezi](https://microsoft.com/en-us/trustcenter/default.aspx)' ni ziyaret edin. Tüm Azure uyumluluk teklifleri denetiminin en son listesi için https://aka.ms/AzureCompliance.
+Azure uyumluluğu ile ilgileniyorsanız ve Azure 'un kendi altyapısını nasıl güvenlik altına alırsanız, [Microsoft Güven Merkezi](https://microsoft.com/en-us/trustcenter/default.aspx)' ni ziyaret edin. Tüm Azure uyumluluk teklifleri denetiminin en son listesi için https://aka.ms/AzureCompliance .
 
 Bu makalede, aşağıdaki iki veri taşıma senaryosunda güvenlik konularını gözden geçiririz: 
 
@@ -155,6 +155,12 @@ Aşağıdaki resimlerde ExpressRoute ve IPSec VPN (Azure sanal ağı ile) kullan
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>Güvenlik Duvarı konfigürasyonları ve izin verilenler listesi IP adresleri için ayarlanıyor
 
+> [!NOTE] 
+> Bağlantı noktalarını yönetmeniz veya şirket güvenlik duvarı düzeyindeki etki alanları için izin verilenler listesini ilgili veri kaynaklarının gerektirdiği şekilde ayarlamanız gerekebilir. Bu tablo, örnek olarak yalnızca Azure SQL veritabanı, Azure SQL veri ambarı ve Azure Data Lake Store kullanır.
+
+> [!NOTE] 
+> Azure Data Factory aracılığıyla veri erişimi stratejileri hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory)bakın.
+
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Şirket içi/özel ağ için güvenlik duvarı gereksinimleri    
 Bir kuruluşta kurumsal güvenlik duvarı kuruluşun merkezi yönlendiricisinde çalışır. Windows Güvenlik Duvarı, şirket içinde barındırılan tümleştirme çalışma zamanının yüklendiği yerel makinede bir daemon olarak çalışır. 
 
@@ -178,7 +184,7 @@ Buluttaki bazı veri depoları da depoya erişen makinenin IP adresine izin verm
 
 Aşağıdaki bulut veri depoları, şirket içinde barındırılan tümleştirme çalışma zamanı makinesinin IP adresine izin vermeniz gerekir. Bu veri mağazalarından bazıları varsayılan olarak izin verilenler listesine gerek olmayabilir. 
 
-- [Azure SQL Veritabanı](../sql-database/sql-database-firewall-configure.md) 
+- [Azure SQL Veritabanı](../azure-sql/database/firewall-configure.md) 
 - [Azure SQL Veri Ambarı](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)

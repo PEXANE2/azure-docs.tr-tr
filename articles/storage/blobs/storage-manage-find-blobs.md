@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f1a4d9af8a1b1095527078dd790e80ef45a5ee9a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3e5507069a3e1eeadfaf4c3eeee288b2651e88a1
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722901"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996049"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Blob dizini (Önizleme) ile Azure Blob depolama üzerinde verileri yönetme ve bulma
 
@@ -26,7 +26,7 @@ Blob dizini şunları yapmanızı sağlar:
 - Dizin etiketlerinin değerlendirmesini temel alan blob API 'Leri için koşullu davranışları belirtin
 - [Yaşam döngüsü yönetimi](storage-lifecycle-management-concepts.md) gibi BLOB platformu özelliklerinin Gelişmiş denetimleri için Dizin etiketlerini kullanın
 
-Depolama hesabınızda yazılmış ve birçok farklı uygulama tarafından erişilen milyonlarca blob 'un bulunduğu senaryoyu göz önünde bulundurun. Tek bir projeden ilgili tüm verileri bulmak istiyorsunuz, ancak veriler farklı blob adlandırma kurallarıyla birden çok kapsayıcıya yayılabilecek olduğundan kapsamda ne olduğundan emin değilsiniz. Ancak, uygulamalarınızın tüm verileri ilgili proje ve açıklama tanımlama özelliklerine göre karşıya yükleyeceğimizi bilirsiniz. Milyonlarca blob 'u aramak ve adları ve özellikleri karşılaştırmak yerine yalnızca bulma ölçütünüz olarak kullanabilirsiniz `Project = Contoso` . Blob dizini, tüm depolama hesabınızdaki tüm kapsayıcıları filtreleyecek ve yalnızca 50 Blobları kümesini hızlı bir şekilde bulup döndürecek `Project = Contoso`. 
+Depolama hesabınızda yazılmış ve birçok farklı uygulama tarafından erişilen milyonlarca blob 'un bulunduğu senaryoyu göz önünde bulundurun. Tek bir projeden ilgili tüm verileri bulmak istiyorsunuz, ancak veriler farklı blob adlandırma kurallarıyla birden çok kapsayıcıya yayılabilecek olduğundan kapsamda ne olduğundan emin değilsiniz. Ancak, uygulamalarınızın tüm verileri ilgili proje ve açıklama tanımlama özelliklerine göre karşıya yükleyeceğimizi bilirsiniz. Milyonlarca blob 'u aramak ve adları ve özellikleri karşılaştırmak yerine yalnızca `Project = Contoso` bulma ölçütünüz olarak kullanabilirsiniz. Blob dizini, tüm depolama hesabınızdaki tüm kapsayıcıları filtreleyecek ve yalnızca 50 Blobları kümesini hızlı bir şekilde bulup döndürecek `Project = Contoso` . 
 
 Blob dizininin nasıl kullanılacağına ilişkin örneklere başlamak için bkz. [verileri yönetmek ve bulmak Için blob dizinini](storage-blob-index-how-to.md)kullanma.
 
@@ -43,7 +43,7 @@ Depolama hesabınızda aşağıdaki beş blobu göz önünde bulundurun:
 > Günlükler/2020/01/01/LogFile. txt  
 >
 
-Bu Bloblar Şu anda kapsayıcı/sanal klasör/blob adı öneki kullanılarak ayrılmıştır. Blob diziniyle, bu beş `Project = Contoso` blobda bir dizin etiketi özniteliğini, geçerli ön ek kuruluşlarını koruyarak birlikte kategorilere ayırmak için ayarlayabilirsiniz. Bu, depolama platformunun çok boyutlu dizinini kullanarak verileri filtreleme ve bulma özelliğini açığa çıkararak verileri taşıma gereksinimini ortadan kaldırır.
+Bu Bloblar Şu anda kapsayıcı/sanal klasör/blob adı öneki kullanılarak ayrılmıştır. Blob diziniyle, bu beş blobda bir dizin etiketi özniteliğini, `Project = Contoso` geçerli ön ek kuruluşlarını koruyarak birlikte kategorilere ayırmak için ayarlayabilirsiniz. Bu, depolama platformunun çok boyutlu dizinini kullanarak verileri filtreleme ve bulma özelliğini açığa çıkararak verileri taşıma gereksinimini ortadan kaldırır.
 
 ## <a name="setting-blob-index-tags"></a>Blob dizini etiketlerini ayarlama
 
@@ -70,14 +70,14 @@ Aşağıdaki sınırlar blob dizin etiketleri için geçerlidir:
 - Etiket anahtarları 1 ila 128 karakter arasında olmalıdır
 - Etiket değerleri 0 ila 256 karakter arasında olmalıdır
 - Etiket anahtarları ve değerleri büyük/küçük harfe duyarlıdır
-- Etiket anahtarları ve değerleri yalnızca dize veri türlerini destekler; tüm sayılar veya özel karakterler dizeler olarak kaydedilir
+- Etiket anahtarları ve değerleri yalnızca dize veri türlerini destekler; herhangi bir sayı, tarih, saat veya özel karakter dizeler olarak kaydedilir
 - Etiket anahtarları ve değerleri aşağıdaki adlandırma kurallarına uymalıdır:
   - Alfa sayısal karakterler: a-z, A-Z, 0-9
   - Özel karakterler: boşluk, artı, eksi, nokta, iki nokta, eşittir, alt çizgi, eğik çizgi
 
 ## <a name="getting-and-listing-blob-index-tags"></a>Blob dizini etiketlerini alma ve listeleme
 
-Blob dizin etiketleri, blob verileriyle birlikte alt kaynak olarak depolanır ve temel alınan blob veri içeriğinden bağımsız olarak alınabilir. Bir kez ayarlandıktan sonra, tek bir Blobun blob dizin etiketleri, GetBlobTags işlemiyle hemen alınabilir ve incelenebilir. WITH parametresi ile `include:tags` listbloblar işlemi, uygulanan blob Dizin etiketleriyle birlikte bir kapsayıcı içindeki tüm Blobları da döndürür. 
+Blob dizin etiketleri, blob verileriyle birlikte alt kaynak olarak depolanır ve temel alınan blob veri içeriğinden bağımsız olarak alınabilir. Bir kez ayarlandıktan sonra, tek bir Blobun blob dizin etiketleri, GetBlobTags işlemiyle hemen alınabilir ve incelenebilir. WITH parametresi ile Listbloblar işlemi, `include:tags` uygulanan blob Dizin etiketleriyle birlikte bir kapsayıcı içindeki tüm Blobları da döndürür. 
 
 En az 1 blob Dizin etiketine sahip tüm Bloblar için x-MS-Tag-Count, blob üzerinde var olan blob dizini etiketlerinin sayısını belirten Listbloblar, GetBlob ve GetBlobProperties işlemlerinde döndürülür.
 
@@ -101,14 +101,21 @@ Aşağıdaki tabloda FindBlobsByTags için geçerli tüm işleçler gösterilmek
 |------------|---------------|---------|
 |     =      |     Eşittir     | "Status" = ' sürüyor ' | 
 |     >      |  Büyüktür |  "Date" > ' 2018-06-18 ' |
-|     >=     |  Büyük veya eşittir | "Öncelik" >= ' 5 ' | 
+|     >=     |  Büyüktür veya eşittir | "Öncelik" >= ' 5 ' | 
 |     <      |  Küçüktür    | "Age" < ' 32 ' |
-|     <=     |  Küçük veya eşittir  | "Şirket" <= ' contoso ' |
+|     <=     |  Küçüktür veya eşittir  | "Şirket" <= ' contoso ' |
 |    AND     |  Mantıksal and  | "Rank" >= ' 010 ' ve "Rank" < ' 100 ' |
 | @container |  Belirli bir kapsayıcının kapsamı   | @container= ' videof, ' ve "Status" = ' bitti ' |
 
+> [!NOTE]
+> Etiketler üzerinde ayarlama ve sorgulama yaparken naicografik sıralaması hakkında bilgi sahibi olun.
+> - Sayılar mektuplardan önce sıralanır. Sayılar ilk basamağa göre sıralanır.
+> - Büyük harfler küçük harflerden önce sıralanır.
+> - Semboller standart değildir. Bazı semboller sayısal değerlerden önce sıralanır. Diğer semboller, harften önce veya sonra sıralanır.
+>
+
 ## <a name="conditional-blob-operations-with-blob-index-tags"></a>Blob dizini etiketleriyle koşullu blob işlemleri
-REST sürümleri 2019-10-10 ve üzeri sürümlerde, çoğu [BLOB hizmeti API 'leri](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs) artık, belirtilen blob dizini koşulu karşılandığında işlemin başarılı olabilmesi için bir koşullu üst bilgi olan x-MS-if-Tag ' i desteklemektedir. Koşul karşılanmazsa, alacaksınız `error 412: The condition specified using HTTP conditional header(s) is not met`.
+REST sürümleri 2019-10-10 ve üzeri sürümlerde, çoğu [BLOB hizmeti API 'leri](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs) artık, belirtilen blob dizini koşulu karşılandığında işlemin başarılı olabilmesi için bir koşullu üst bilgi olan x-MS-if-Tag ' i desteklemektedir. Koşul karşılanmazsa, alacaksınız `error 412: The condition specified using HTTP conditional header(s) is not met` .
 
 X-MS-If-Tags üstbilgisi, var olan diğer HTTP koşullu üstbilgileri (IF-Match, If-None-Match, vb.) ile birleştirilebilir.  Bir istekte birden fazla koşullu başlık sağlanmışsa, işlemin başarılı olması için hepsi true olarak değerlendirilmelidir.  Tüm koşullu üstbilgiler mantıksal ve ile etkili bir şekilde birleştirilir. 
 
@@ -119,9 +126,9 @@ Aşağıdaki tabloda koşullu işlemlere yönelik tüm geçerli işleçler göst
 |     =      |     Eşittir     | "Status" = ' sürüyor ' |
 |     <>     |   Eşit değildir   | "Durum"  <>  ' bitti '  | 
 |     >      |  Büyüktür |  "Date" > ' 2018-06-18 ' |
-|     >=     |  Büyük veya eşittir | "Öncelik" >= ' 5 ' | 
+|     >=     |  Büyüktür veya eşittir | "Öncelik" >= ' 5 ' | 
 |     <      |  Küçüktür    | "Age" < ' 32 ' |
-|     <=     |  Küçük veya eşittir  | "Şirket" <= ' contoso ' |
+|     <=     |  Küçüktür veya eşittir  | "Şirket" <= ' contoso ' |
 |    AND     |  Mantıksal and  | "Rank" >= ' 010 ' ve "Rank" < ' 100 ' |
 |     OR     |  Mantıksal or   | "Status" = ' bitti ' veya "Priority" >= ' 05 ' |
 
@@ -138,7 +145,7 @@ Yeni blobIndexMatch ' i yaşam döngüsü yönetiminde kural filtresi olarak kul
 
 Etiketli verilere yönelik eylemler uygulamak için yaşam döngüsü kuralında bağımsız bir filtre kümesi olarak bir blob dizini eşleşmesi ayarlayabilirsiniz. Ya da, daha belirli veri kümeleriyle eşleşecek şekilde hem önek eşleşmesi hem de bir blob dizini eşleşmesi birleştirebilirsiniz. Bir yaşam döngüsü kuralına birden çok filtre uygulamak, eylemin yalnızca tüm filtre ölçütleri eşleşiyorsa uygulanması gibi mantıksal bir işlemdir. 
 
-Aşağıdaki örnek yaşam döngüsü yönetim kuralı, ' videofler ' kapsayıcısının ve katman Bloblarındaki blok bloblarının yalnızca veri blobu Dizin etiketi ölçütleriyle eşleşiyorsa depolama alanını arşivlemek için geçerlidir ```"Status" = 'Processed' AND "Source" == 'RAW'```.
+Aşağıdaki örnek yaşam döngüsü yönetim kuralı, ' videofler ' kapsayıcısının ve katman Bloblarındaki blok bloblarının yalnızca veri blobu Dizin etiketi ölçütleriyle eşleşiyorsa depolama alanını arşivlemek için geçerlidir ```"Status" = 'Processed' AND "Source" == 'RAW'``` .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 ![Azure portal 'de yaşam döngüsü yönetimi için blob dizin eşleştirme kuralı örneği](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
@@ -246,9 +253,11 @@ Blob dizini fiyatlandırması Şu anda genel önizleme aşamasındadır ve genel
 
 ## <a name="regional-availability-and-storage-account-support"></a>Bölgesel kullanılabilirlik ve depolama hesabı desteği
 
-Blob dizini şu anda yalnızca Genel Amaçlı v2 (GPv2) hesapları ile kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).
+Blob dizini şu anda yalnızca hiyerarşik ad alanı (HNS) devre dışı olan Genel Amaçlı v2 (GPv2) hesaplarında kullanılabilir. Genel Amaçlı (GPV1) hesapları desteklenmez, ancak herhangi bir GPv1 hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).
 
 Genel önizlemede, blob dizini şu anda yalnızca aşağıdaki seçim bölgelerinde kullanılabilir:
+- Orta Kanada
+- Doğu Kanada
 - Orta Fransa
 - Güney Fransa
 
@@ -276,9 +285,9 @@ az provider register --namespace 'Microsoft.Storage'
 Bu bölümde, blob dizininin geçerli genel önizlemesinin bilinen sorunları ve koşulları açıklanmaktadır. Çoğu önizlemede olduğu gibi, bu özellik, davranışlar değişene kadar, bu özellik, üretim iş yükleri için kullanılmamalıdır.
 
 -   Önizleme için, önizleme bölgelerinde depolama hesabınız için blob dizinini kullanabilmeniz için önce aboneliğinizi kaydetmeniz gerekir.
--   Şu anda önizleme aşamasında yalnızca GPv2 hesapları desteklenmektedir. Blob, blok Blobstorage ve HNS etkin DataLake Gen2 hesapları Şu anda blob diziniyle desteklenmiyor.
+-   Şu anda önizleme aşamasında yalnızca GPv2 hesapları desteklenmektedir. Blob, blok Blobstorage ve HNS etkin DataLake Gen2 hesapları Şu anda blob diziniyle desteklenmiyor. GPv1 hesapları desteklenecek.
 -   Sayfa bloblarını Dizin etiketleriyle karşıya yüklemek şu anda etiketleri kalıcı tutmaz. Sayfa Blobu karşıya yükledikten sonra etiketleri ayarlamanız gerekir.
--   Filtreleme tek bir kapsayıcının @container kapsamına eklendiğinde, yalnızca filtre ifadesindeki tüm dizin etiketleri eşitlik denetimleri ise (anahtar = değer) geçirilebilir. 
+-   Filtreleme tek bir kapsayıcının kapsamına eklendiğinde, @container yalnızca filtre ifadesindeki tüm dizin etiketleri eşitlik denetimleri ise (anahtar = değer) geçirilebilir. 
 -   VE koşulunun bulunduğu Aralık işlecini kullanırken, yalnızca aynı dizin etiketi anahtar adını (Age > ' 013 ' ve Age < ' 100 ') belirtebilirsiniz.
 -   Sürüm oluşturma ve blob dizini şu anda desteklenmiyor. Blob dizin etiketleri sürümler için korunur ancak şu anda blob dizin altyapısına geçirilmiyor.
 -   Hesap yük devretmesi Şu anda desteklenmiyor. Blob dizini yük devretmeden sonra düzgün şekilde güncelleştirilemez.
@@ -290,6 +299,9 @@ Bu bölümde, blob dizininin geçerli genel önizlemesinin bilinen sorunları ve
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Blob dizini, bloblarım içindeki içeriği filtrelemenize ve sorgularıma yardımcı olur mu? 
 Hayır, blob dizin etiketleri Aradığınız Blobları bulmanıza yardımcı olabilir. Bloblarınızda arama yapmanız gerekiyorsa sorgu hızlandırma veya Azure Search kullanın.
+
+### <a name="are-there-any-special-considerations-regarding-blob-index-tag-values"></a>Blob dizini etiket değerleriyle ilgili özel konular var mı?
+Blob dizin etiketleri yalnızca dize veri türlerini destekler ve sorgulıgraf sıralaması ile sonuçları döndürür. Sayılar için, sayıyı sıfır olarak doldurma önerilir. Tarih ve saatler için, ISO 8601 ile uyumlu bir biçim olarak depolanması önerilir.
 
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>Blob dizin etiketleri ve ilişkili Etiketler Azure Resource Manager?
 Hayır, Azure Resource Manager Etiketler, abonelikler, kaynak grupları ve depolama hesapları gibi denetim düzlemi kaynaklarını düzenlemenize yardımcı olur. Blob dizin etiketleri, bir depolama hesabındaki Bloblar gibi veri düzlemi kaynaklarında nesne yönetimi ve bulma sağlar.

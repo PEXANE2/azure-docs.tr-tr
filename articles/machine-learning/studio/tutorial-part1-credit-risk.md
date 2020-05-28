@@ -10,16 +10,14 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09026d7f2aeb25f9a7c4a3c31c4f8d0b4cdb223a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79204282"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117825"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Öğretici 1: kredi riskini tahmin etme-Azure Machine Learning Studio (klasik)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -58,7 +56,7 @@ Machine Learning Studio (klasik) kullanmak için bir Microsoft Azure Machine Lea
 
 Bir çalışma alanı oluşturmak için, bkz. [Azure Machine Learning Studio (klasik) çalışma alanı oluşturma ve paylaşma](create-workspace.md).
 
-Çalışma alanınız oluşturulduktan sonra Machine Learning Studio (klasik) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)) öğesini açın. Birden fazla çalışma alanınız varsa, pencerenin sağ üst köşesindeki araç çubuğundan çalışma alanını seçebilirsiniz.
+Çalışma alanınız oluşturulduktan sonra Machine Learning Studio (klasik) () öğesini açın [https://studio.azureml.net/Home](https://studio.azureml.net/Home) . Birden fazla çalışma alanınız varsa, pencerenin sağ üst köşesindeki araç çubuğundan çalışma alanını seçebilirsiniz.
 
 ![Studio 'da çalışma alanı seçme (klasik)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
@@ -113,9 +111,9 @@ Her iki durumda da, denemenize kullanabileceğiniz **Almanca. csv** adlı bir do
 
 Veriler CSV biçimine dönüştürüldükten sonra Machine Learning Studio (klasik) uygulamasına yüklemeniz gerekir. 
 
-1. Machine Learning Studio (klasik) giriş sayfasını ([https://studio.azureml.net](https://studio.azureml.net)) açın. 
+1. Machine Learning Studio (klasik) giriş sayfasını () açın [https://studio.azureml.net](https://studio.azureml.net) . 
 
-2. Pencerenin sol üst ![köşesindeki](./media/tutorial-part1-credit-risk/menu.png) menü menüsüne tıklayın, **Azure Machine Learning**' ye tıklayın, **Studio**' yı seçin ve oturum açın.
+2. ![ ](./media/tutorial-part1-credit-risk/menu.png) Pencerenin sol üst köşesindeki menü menüsüne tıklayın, **Azure Machine Learning**' ye tıklayın, **Studio**' yı seçin ve oturum açın.
 
 3. Pencerenin alt kısmındaki **+ Yeni** seçeneğine tıklayın.
 

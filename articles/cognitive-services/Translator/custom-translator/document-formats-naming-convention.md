@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 41b15cc998a7bacd033ef2fe083fc99f1bff0286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e976b59c0128adef6536e78985e7cf89d256062c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68595858"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992717"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Belge biçimleri ve adlandırma kuralı Kılavuzu
 
@@ -22,7 +22,7 @@ ms.locfileid: "68595858"
 
 Bu tablo, çeviri sisteminizi oluşturmak için kullanabileceğiniz tüm desteklenen dosya biçimlerini içerir:
 
-| Biçimlendir            | Uzantıları   | Açıklama                                                                                                                                                                                                                                                                    |
+| Biçimlendir            | Uzantılar   | Açıklama                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | DOSYASıNA             | . XLF,. DOSYASıNA | Bir paralel belge biçimi, çeviri belleği sistemlerini dışarı aktarma. Kullanılan diller dosya içinde tanımlanmıştır.                                                                                                                                                              |
 | TMX               | . TMX         | Bir paralel belge biçimi, çeviri belleği sistemlerini dışarı aktarma. Kullanılan diller dosya içinde tanımlanmıştır.                                                                                                                                                              |
@@ -32,7 +32,7 @@ Bu tablo, çeviri sisteminizi oluşturmak için kullanabileceğiniz tüm destekl
 | Adobe Acrobat     | . BELGESINI         | Adobe Acrobat taşınabilir belgesi                                                                                                                                                                                                                                                |
 | HTML              | . HTML,. DOSYASıNı  | HTML belgesi                                                                                                                                                                                                                                                                  |
 | Metin dosyası         | . TXT         | UTF-16 veya UTF-8 kodlu metin dosyaları. Dosya adı Japonca karakterler içermemelidir.                                                                                                                                                                                        |
-| Hizalanmış metin dosyası | . ACAKTıR       | Uzantı `.ALIGN` , belge çiftindeki Tümcelerin kusursuz hizalandığını biliyorsanız kullanabileceğiniz özel bir uzantıdır. Bir `.ALIGN` dosya sağlarsanız, özel çevirici cümleleri sizin için hizalayıp etmez. |
+| Hizalanmış metin dosyası | . ACAKTıR       | Uzantı, `.ALIGN` belge çiftindeki Tümcelerin kusursuz hizalandığını biliyorsanız kullanabileceğiniz özel bir uzantıdır. Bir `.ALIGN` Dosya sağlarsanız, özel çevirici cümleleri sizin için hizalayıp etmez. |
 | Excel dosyası        | . XLSX        | Excel dosyası (2013 veya üzeri). Elektronik tablonun ilk satırı/satırı dil kodu olmalıdır.                                                                                                                                                                                                                                                      |
 
 ## <a name="dictionary-formats"></a>Sözlük biçimleri
@@ -45,7 +45,7 @@ Belgeler tek bir ZIP dosyasında gruplandırılabilir ve karşıya yüklenebilir
 
 ZIP dosyasındaki uzantı TXT, HTML, HTM, PDF, DOCX, ALıGN olan her belge, bu adlandırma kuralını izlemelidir:
 
-{belge adı} \_{Language Code} burada {belge adı} belgenizin adı, {Language Code} ise belgenin söz konusu dildeki cümleler IÇERDIĞINI gösteren ISO LanguageID (iki karakterdir). Dil kodundan önce bir alt çizgi (_) olmalıdır.
+{belge adı} \_ {Language Code} burada {belge adı} belgenizin adı, {Language Code} ise belgenin söz konusu dildeki cümleler içerdiğini gösteren ISO LanguageID (iki karakterdir). Dil kodundan önce bir alt çizgi (_) olmalıdır.
 
 Örneğin, bir ZIP içindeki iki paralel belgeyi Ingilizce ile Ispanyolca sisteme yüklemek için dosyalar "data_en" ve "data_es" olarak adlandırılmalıdır.
 

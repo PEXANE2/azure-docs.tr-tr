@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 386f34e001457da4c5ae0e170ab2c090725ad5b7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592245"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995794"
 ---
 # <a name="request-limits-for-translator"></a>Çevirmen için istek sınırları
 
@@ -27,14 +27,14 @@ Her çeviri isteği, çeviri yaptığınız tüm hedef dillerde 5.000 karakterle
 
 Aşağıdaki tabloda, çeviricisinin her bir işlemi için dizi öğesi ve karakter sınırları listelenmektedir.
 
-| İşlem | Dizi öğesinin en büyük boyutu |   En fazla dizi öğesi sayısı |  En fazla Istek boyutu (karakter) |
+| Çalışma | Dizi öğesinin en büyük boyutu |    En fazla dizi öğesi sayısı |    En fazla Istek boyutu (karakter) |
 |:----|:----|:----|:----|
-| Çevirme | 5.000 | 100   | 5.000 |
-| Karakter Dönüştürme | 5.000 | 10    | 5.000 |
-| Algılama | 10,000 | 100 |   50.000 |
-| BreakSentence | 10,000    | 100 | 50.000 |
-| Sözlük Arama| 100 |  10  | 1000 |
-| Sözlük Örnekleri | "metin için 100 ve çeviri için 100 (200 toplam)| 10|   2.000 |
+| Çevirme | 5.000    | 100    | 5.000 |
+| Karakter Dönüştürme | 5.000    | 10    | 5.000 |
+| Algılama | 10,000 |    100 |    50.000 |
+| BreakSentence | 10,000    | 100 |    50.000 |
+| Sözlük Arama| 100 |    10    | 1000 |
+| Sözlük Örnekleri | "metin için 100 ve çeviri için 100 (200 toplam)| 10|    2.000 |
 
 ## <a name="character-limits-per-hour"></a>Saat başına karakter sınırları
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 18bcd57c804746da5cff2efe8713616174fc794d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f84098d376f2494805465a8c713a21fceae6438d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739490"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116861"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -45,7 +45,7 @@ V2 SKU 'SU ile, fiyatlandırma modeli tüketim ile çalıştırılır ve artık 
 - **Sabit fiyat** -bu, bir Standard_v2 veya WAF_v2 ağ geçidi sağlamak için saatlik (veya kısmi saat) fiyatıdır. Lütfen 0 ek minimum örnek, her zaman sabit fiyata dahil edilen hizmetin yüksek kullanılabilirliğe sahip olduğundan emin olun.
 - **Kapasite birim fiyatı** -bu, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı bir maliyettir. Kapasite Birimi ücreti de saatlik veya kısmi olarak hesaplanır. Kapasite birimi işlem biriminin, kalıcı bağlantıların ve aktarım hızının üç boyutu vardır. İşlem birimi, tüketilen işlemci kapasitesinin bir ölçüsüdür. İşlem birimini etkileyen faktörler, TLS bağlantısı/sn, URL Yeniden yazma hesaplamaları ve WAF kural işlemedir. Kalıcı bağlantı, belirli bir fatura aralığındaki uygulama ağ geçidine kurulan TCP bağlantılarının bir ölçümüdür. Aktarım hızı, belirli bir fatura aralığında sistem tarafından işlenen ortalama megabit/sn 'dir.  Faturalandırma, ayrılmış örnek sayısının üzerinde her şey için bir kapasite birimi düzeyinde yapılır.
 
-Her kapasite birimi en çok: 1 işlem birimi veya 2500 kalıcı bağlantı ya da 2,22 Mbps aktarım hızı ' ten oluşur.
+Her kapasite birimi, en fazla: 1 işlem birimi, 2500 kalıcı bağlantı ve 2,22 Mbps aktarım hızı ' ten oluşur.
 
 İşlem birimi Kılavuzu:
 

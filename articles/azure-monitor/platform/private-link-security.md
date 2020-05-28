@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: ddd34295bfe64fdd336d8b237482b45f02e30201
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: a1b111ddfc134d2ec51fb2d0e9787a6eac8648f2
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816720"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996457"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure Izleyici 'ye güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
 
@@ -188,7 +188,7 @@ Windows ve Linux aracılarının en son sürümleri, Log Analytics çalışma al
 
 **Log Analytics Windows aracısı**
 
-Log Analytics Agent sürümü 18.20.18038.0 veya üstünü kullanın.
+Log Analytics Agent sürümü 10.20.18038.0 veya üstünü kullanın.
 
 **Log Analytics Linux aracısı**
 
@@ -199,7 +199,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -X
 $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace key>
 ```
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini kullanmak için, Azure portal ve Azure Izleyici uzantılarına özel ağlarda erişilebilir durumda izin vermeniz gerekir. Güvenlik duvarınızdan **AzureActiveDirectory**, **AzureResourceManager**, * * Azurefrontkapısı. Firstpartisi ve **Azurefrontkapısı. ön uç** [hizmeti etiketleri](../../firewall/service-tags.md) ekleyin.
 
@@ -222,5 +222,5 @@ Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uy
 |:--|:--|:--|:--|
 |Azure Genel     | scadvisor.blob.core.windows.net         | 443 | Giden
 |Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Giden
-|Azure Çin 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Giden
+|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Giden
 

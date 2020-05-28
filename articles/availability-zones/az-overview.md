@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 9014d446b29b9a81a807c002cd7f83a2c3bdaa51
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 124aac96550b5d462c0794053452ed28dba27452
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231348"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013223"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 'da bölgeler ve Kullanılabilirlik Alanları
 
@@ -112,7 +112,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Service Bus | Azure Güvenlik Duvarı | Data Box Heavy |
 > | Service Fabric | Azure İşlevleri | Veri Kataloğu |
 > | Sanal Makine Ölçek Kümeleri | Azure HPC Önbelleği | Data Factory: Data Factory v1 |
-> | Virtual Machines | Azure IoT Hub | Data Lake Analytics |
+> | Sanal Makineler | Azure IoT Hub | Data Lake Analytics |
 > | Sanal makineler: AV2-Series | Azure Kubernetes Hizmeti (AKS) | Machine Learning Studio |
 > | Sanal makineler: BS serisi | Azure Machine Learning | Microsoft Genomiks |
 > | Sanal makineler: DSv2-Series | Azure Özel Bağlantı | Remote Rendering |
@@ -133,7 +133,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > |  | Bilişsel hizmetler: konuşma Hizmetleri | Sanal makineler: H serisi |
 > |  | Bilişsel hizmetler: Soru-Cevap Oluşturma | Sanal makineler: LS Serisi |
 > |  | Container Instances | Sanal makineler: LSv2-Series |
-> |  | Container Kayıt Defteri | Sanal makineler: Mv2-Series |
+> |  | Container Registry | Sanal makineler: Mv2-Series |
 > |  | Data Factory | Sanal makineler: NC serisi |
 > |  | Event Grid | Sanal makineler: NCv2-Series |
 > |  | HDInsight | Sanal makineler: NCv3-Series |
@@ -166,7 +166,7 @@ Bir kullanılabilirlik bölgesinde dağıtılan sanal makineler için ek ücret 
 - [Bölgesel olarak yedekli bir ön uç ile bir Standart Load Balancer kullanarak VM 'lerde Yük Dengeleme](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 - [Bir bölge içindeki VM 'leri, bölgesel ön ucu ile standart Load Balancer kullanarak yük dengeleme](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [Alanlar arası yedekli depolama](../storage/common/storage-redundancy-zrs.md)
-- [SQL Veritabanı](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
+- [SQL Veritabanı](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [Event Hubs coğrafi olağanüstü durum kurtarma](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Service Bus coğrafi olağanüstü durum kurtarma](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [Alanlar arası yedekli sanal ağ geçidi oluşturma](../vpn-gateway/create-zone-redundant-vnet-gateway.md)

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 483f60138dcaa6252999b9d15e846fbd1c68e9a2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77648538"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021526"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS paketlerini Azure veritabanı geçiş hizmeti ile Azure SQL veritabanı 'na yeniden dağıtma
 
@@ -26,7 +26,7 @@ SQL Server Integration Services (SSIS) kullanıyorsanız ve SSIS projelerinizi/p
 SSIS 'nin kullandığınız sürümü 2012 'den daha eski ise, SSIS projelerinizi/paketlerinizi proje dağıtım modeline yeniden dağıtmadan önce, SSIS 'den de başlatılabilen Tümleştirme Hizmetleri proje Dönüştürme Sihirbazı 'Nı kullanarak bunları dönüştürmeniz gerekir. Daha fazla bilgi için [projeleri proje dağıtım modeline dönüştürme](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)makalesine bakın.
 
 > [!NOTE]
-> Azure veritabanı geçiş hizmeti (DMS) Şu anda bir kaynak SSSıSDB 'nin bir Azure SQL veritabanı sunucusuna geçirilmesini desteklemez, ancak aşağıdaki işlemi kullanarak SSIS projelerinizi/paketlerinizi yeniden dağıtabilirsiniz.
+> Azure veritabanı geçiş hizmeti (DMS) Şu anda bir kaynak SSSıSDB 'nin Azure SQL veritabanı 'na geçişini desteklemez, ancak aşağıdaki işlemi kullanarak SSIS projelerinizi/paketlerinizi yeniden dağıtabilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 > [!div class="checklist"]
@@ -39,20 +39,20 @@ Bu makalede şunları öğreneceksiniz:
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 * SSMS sürüm 17,2 veya üzeri.
-* SSıSDB barındırmak için hedef veritabanı sunucunuzun bir örneği. Henüz yoksa, SQL Server (yalnızca mantıksal sunucu) [formuna](https://ms.portal.azure.com/#create/Microsoft.SQLServer)giderek Azure Portal kullanarak BIR Azure SQL veritabanı sunucusu (veritabanı olmadan) oluşturun.
-* SSIS, Azure SQL veritabanı sunucusu örneği tarafından barındırılan hedef SSSıSDB ile Azure-SSIS Integration Runtime (IR) içeren Azure Data Factory (ADF) ( [Azure Data Factory içinde Azure-SSIS Integration Runtime sağlama](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)makalesinde açıklandığı gibi) sağlanmalıdır.
+* SSıSDB barındırmak için hedef veritabanı sunucunuzun bir örneği. Henüz yoksa, SQL Server (yalnızca mantıksal sunucu) [formuna](https://ms.portal.azure.com/#create/Microsoft.SQLServer)giderek Azure Portal kullanarak BIR [mantıksal SQL Server](../azure-sql/database/logical-servers.md) (veritabanı olmadan) oluşturun.
+* SSIS, SQL veritabanı tarafından barındırılan hedef SSSıSDB ile Azure-SSIS Integration Runtime (IR) içeren Azure Data Factory (ADF) ( [Azure Data Factory 'de Azure-SSIS Integration Runtime sağlama](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)makalesinde açıklandığı gibi) sağlanmalıdır.
 
 ## <a name="assess-source-ssis-projectspackages"></a>Kaynak SSIS projelerini/paketlerini değerlendir
 
-Kaynak SSSıSDB değerlendirmesi, veritabanı Geçiş Yardımcısı (DMA) veya Azure veritabanı geçiş hizmeti (DMS) ile henüz tümleştirilmediğinde, SSIS projeleriniz/paketleriniz bir Azure SQL veritabanı sunucusunda barındırılan hedef SSıSDB 'ye yeniden dağıtıldıklarında değerlendirilecek/doğrulanacak.
+Kaynak SSSıSDB değerlendirmesi, veritabanı Geçiş Yardımcısı (DMA) veya Azure veritabanı geçiş hizmeti (DMS) ile henüz tümleştirilmediğinde, SSIS projeleriniz/paketleriniz Azure SQL veritabanı tarafından barındırılan hedef SSıSDB 'ye yeniden dağıtıldıklarında değerlendirilecek/doğrulanacak.
 
 ## <a name="migrate-ssis-projectspackages"></a>SSIS projelerini/paketlerini geçirme
 
-SSIS projelerini/paketlerini Azure SQL veritabanı sunucusuna geçirmek için aşağıdaki adımları uygulayın.
+SSIS projelerini/paketlerini Azure SQL veritabanı 'na geçirmek için aşağıdaki adımları uygulayın.
 
 1. SSMS 'yi açın ve sonra **sunucuya Bağlan** iletişim kutusunu göstermek için **Seçenekler** ' i seçin.
 
-2. **Oturum açma** sekmesinde, hedef Sssısdb BARıNDıRACAK Azure SQL veritabanı sunucusuna bağlanmak için gereken bilgileri belirtin.
+2. **Oturum açma** sekmesinde, hedef sssısdb barındıracak sunucuya bağlanmak için gereken bilgileri belirtin.
 
     ![SSIS oturum açma sekmesi](media/how-to-migrate-ssis-packages/dms-ssis-login-tab.png)
 
@@ -81,7 +81,7 @@ SSIS projelerini/paketlerini Azure SQL veritabanı sunucusuna geçirmek için a�
 8. **İleri**’yi seçin.
 9. **Hedef Seç** sayfasında, projenizin hedefini belirtin.
 
-    a. Sunucu adı metin kutusuna tam Azure SQL veritabanı sunucu adını (<server_name>. database.windows.net) girin.
+    a. Sunucu adı metin kutusuna tam sunucu adını (<server_name>. database.windows.net) girin.
 
     b. Kimlik doğrulama bilgilerini sağlayın ve sonra **Bağlan**' ı seçin.
 

@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3737603360d3fce9d6e11e6c4ce9b2de58f76a6d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b80d20084f45dd2212cdc03f9c7417a67833d887
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583117"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116625"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama
 
@@ -175,9 +175,9 @@ ve Windows performans sayaçları.
 
 ![Performans Izleyicisi ile bağlayıcıya sayaç ekleme](./media/application-proxy-connectors/performance-monitor.png)
 
-Bağlayıcılar yönetici ve oturum günlüklerine sahiptir. Yönetici günlükleri, anahtar olayları ve bunların hatalarını içerir. Oturum günlükleri tüm işlemleri ve bunların işleme ayrıntılarını içerir.
+Bağlayıcılar **yönetici** ve **oturum** günlüklerine sahiptir. **Yönetici** günlüğü, anahtar olayları ve bunların hatalarını içerir. **Oturum** günlüğü tüm işlemleri ve bunların işleme ayrıntılarını içerir.
 
-Günlükleri görmek için Olay Görüntüleyicisi gidin, **Görünüm** menüsünü açın ve **analitik ve hata ayıklama günlüklerini göster**' i etkinleştirin. Sonra, olayları toplamaya başlamak için bunları etkinleştirin. Bu Günlükler, bağlayıcılar daha yeni bir sürümü temel aldığı için Windows Server 2012 R2 'de Web uygulaması ara sunucusu 'nda görünmez.
+Günlükleri görmek için **Olay Görüntüleyicisi** açın ve **uygulamalar ve hizmetler Günlükler**  >  **Microsoft**  >  **aadapplicationproxy**  >  **Bağlayıcısı**' na gidin. **Oturum** günlüğünün görünür olması Için, **Görünüm** menüsünde **analitik ve hata ayıklama günlüklerini göster**' i seçin. **Oturum** günlüğü genellikle sorun giderme için kullanılır ve varsayılan olarak devre dışıdır. Olayları toplamaya başlamasını ve artık gerekli olmadığında devre dışı bırakmayı etkinleştirir.
 
 Hizmetin durumunu Hizmetler penceresinde inceleyebilirsiniz. Bağlayıcı iki Windows hizmetinden oluşur: gerçek bağlayıcı ve Güncelleştirici. Her ikisinin de her ikisi de her zaman çalıştırması gerekir.
 

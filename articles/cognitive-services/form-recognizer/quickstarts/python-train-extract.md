@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 66668f46595c22426984a02c489297e962d061d0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3f8f0ff50138c3b08abd118493cc30a6476640f5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118097"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116831"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama
 
@@ -41,10 +41,10 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Azure Blob kapsayıcısındaki belgelerle bir form tanıyıcı modeli eğitmek için aşağıdaki python kodunu çalıştırarak **[özel model eğitimi](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API 'sini çağırın. Kodu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Azure `<SAS URL>` BLOB depolama kapsayıcısının paylaşılan erişim IMZASı (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
-1. Önceki `<subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
-1. Form `<endpoint>` tanıyıcı kaynağınız için uç nokta URL 'siyle değiştirin.
-1. Formlarınızın `<Blob folder name>` bulunduğu BLOB depolama alanındaki klasörün yoluyla değiştirin. Formlarınızın kapsayıcının kökü varsa, bu dizeyi boş bırakın.
+1. `<SAS URL>`Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+1. `<subscription key>`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. `<endpoint>`Form tanıyıcı kaynağınız için uç nokta URL 'siyle değiştirin.
+1. `<Blob folder name>`Formlarınızın bulunduğu BLOB depolama alanındaki klasörün yoluyla değiştirin. Formlarınızın kapsayıcının kökü varsa, bu dizeyi boş bırakın.
 
     ```python
     ########### Python Form Recognizer Labeled Async Train #############
@@ -66,7 +66,7 @@ Azure Blob kapsayıcısındaki belgelerle bir form tanıyıcı modeli eğitmek i
         'Ocp-Apim-Subscription-Key': '<subsription key>',
     }
     
-    body =  {
+    body =     {
         "source": source,
         "sourceFilter": {
             "prefix": prefix,
@@ -124,7 +124,7 @@ while n_try < n_tries:
 print("Train operation did not complete within the allocated time.")
 ```
 
-Eğitim süreci tamamlandığında, JSON içeriğiyle aşağıdaki gibi bir `201 (Success)` yanıt alacaksınız:
+Eğitim süreci tamamlandığında, `201 (Success)` JSON içeriğiyle aşağıdaki gibi bir yanıt alacaksınız:
 
 ```json
 { 
@@ -192,11 +192,11 @@ Eğitim süreci tamamlandığında, JSON içeriğiyle aşağıdaki gibi bir `201
 }
 ```
 
-Aşağıdaki adımlarda `"modelId"` kullanılacak değeri kopyalayın.
+`"modelId"`Aşağıdaki adımlarda kullanılacak değeri kopyalayın.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-İşlem tamamlandığında, JSON içeriğiyle aşağıdaki biçimde bir `200 (Success)` yanıt alırsınız. Yanıt kolaylık sağlaması için kısaltıldı. Ana anahtar/değer çifti ilişkilendirmeleri ve tabloları `"pageResults"` düğümüdür. Ayrıca, *ıncludetekxtdetails* URL parametresi aracılığıyla düz metin ayıklama belirttiyseniz, `"readResults"` düğüm belgedeki tüm metinlerin içeriğini ve konumlarını gösterir.
+İşlem tamamlandığında, `200 (Success)` JSON içeriğiyle aşağıdaki biçimde bir yanıt alırsınız. Yanıt kolaylık sağlaması için kısaltıldı. Ana anahtar/değer çifti ilişkilendirmeleri ve tabloları `"pageResults"` düğümüdür. Ayrıca, *ıncludetekxtdetails* URL parametresi aracılığıyla düz metin ayıklama belirttiyseniz, `"readResults"` düğüm belgedeki tüm metinlerin içeriğini ve konumlarını gösterir.
 
 ```bash
 {

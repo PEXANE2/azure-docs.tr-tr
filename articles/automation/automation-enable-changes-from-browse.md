@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 0491f10f22e35c81e5bc35d537546001f136be50
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d235b00e0939c07737639035f757f3f9d7254867
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826834"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117969"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Azure portal Değişiklik İzleme ve stoku etkinleştir
 
@@ -61,7 +61,6 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Özelliği ile çalışma hakkında ayrıntılı bilgi için bkz. [Manage değişiklik izleme and Inventory](change-tracking-file-contents.md).
-* Kapsam konfigürasyonları hakkında daha fazla bilgi için bkz. [değişiklik izleme ve envanter için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-change-tracking.md).
 * Ortamınızdaki yüklü yazılımları belirlemek için özelliğini kullanmayı öğrenmek için bkz. [sanal makinelerinize hangi yazılımın yüklendiğini keşfetme](automation-tutorial-installed-software.md).
 * Özelliği etkinleştirirken Otomasyon hesabınızı bir Log Analytics çalışma alanıyla tümleştirmek istemiyorsanız, bkz. [çalışma alanının Otomasyon hesabından bağlantısını](automation-unlink-workspace-change-tracking.md)kaldırma.
 * VM 'lere yapılan değişiklikleri dağıtma işlemi tamamlandığında, [değişiklik izleme ve envanterden VM 'Leri kaldırma](automation-remove-vms-from-change-tracking.md)bölümünde açıklandığı gibi bunları kaldırabilirsiniz.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 022942778b714d5d66ce6eeb2c29351b11c66e40
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849051"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996253"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>SSS-veri toplama, aracılar ve çalışma alanları hakkında sorular
 
@@ -65,6 +65,14 @@ Varsayılan çalışma alanının konumu, Azure bölgenize bağlıdır:
 - Japonya 'daki VM 'Ler için çalışma alanı konumu Japonya olur
 - Çin 'deki VM 'Ler için çalışma alanı konumu Çin 'dir
 - Avustralya 'daki VM 'Ler için çalışma alanı konumu Avustralya ' dır
+
+
+## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Log Analytics Aracısı tarafından hangi veriler toplanır?
+
+Aracı tarafından izlenen uygulamaların ve hizmetlerin tam listesi için bkz. [Azure izleyici tarafından Izlenen nedir?](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services).
+
+> [!IMPORTANT]
+> Azure Güvenlik Duvarı gibi bazı hizmetlerde günlüğe kaydetmeyi etkinleştirdiyseniz ve günlüğe kaydedilecek bir geveze kaynağı seçtiyseniz (örneğin, günlüğü *verbose*olarak ayarlamak), Log Analytics çalışma alanı depolama gereksinimlerinizin önemli etkilerini görebilirsiniz. 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Güvenlik Merkezi tarafından oluşturulan varsayılan çalışma alanlarını silebilir miyim?
@@ -201,9 +209,17 @@ Aracıyı el ile kaldırmak için:
 
 ## <a name="how-do-i-disable-data-collection"></a>Veri toplamayı devre dışı Nasıl yaparım?.
 
-Otomatik sağlama varsayılan olarak kapalıdır. Bu ayarı güvenlik ilkesinde devre dışı bırakarak, her zaman kaynaklardan otomatik sağlamayı devre dışı bırakabilirsiniz. Sistem güncelleştirmeleri, işletim sistemi güvenlik açıkları ve uç nokta koruması hakkında güvenlik uyarıları ve öneriler almak için otomatik sağlama kesinlikle önerilir.
+Sistem güncelleştirmeleri, işletim sistemi güvenlik açıkları ve uç nokta koruması hakkında güvenlik uyarıları ve öneriler almak için otomatik sağlama kesinlikle önerilir. Varsayılan olarak otomatik sağlama devre dışıdır.
 
-Veri toplamayı devre dışı bırakmak için [Azure Portal oturum açın](https://portal.azure.com), **Araştır**' ı seçin, **Güvenlik Merkezi**' ni seçin ve **ilke Seç**' i seçin. Otomatik sağlamayı hangi abonelik için devre dışı bırakmak istediğinizi belirtin. Bir abonelik **güvenlik ilkesi seçtiğinizde, veri toplama** açılır. **Otomatik sağlama**altında **kapalı**' yı seçin.
+Onu etkinleştirdiyseniz, ancak şimdi devre dışı bırakmak istiyorsam:
+
+1. [Azure Portal](https://portal.azure.com), **Güvenlik Merkezi** 'ni açın ve **güvenlik ilkesi**' ni seçin.
+
+1. Otomatik sağlamayı devre dışı bırakmak istediğiniz aboneliği seçin.
+
+    **Güvenlik ilkesi-veri toplama** açılır.
+
+1. **Otomatik sağlama**altında **kapalı**' yı seçin.
 
 
 ## <a name="how-do-i-enable-data-collection"></a>Veri toplamayı etkinleştirmek Nasıl yaparım? mı?
@@ -233,9 +249,6 @@ Verileri toplamak için, her VM ve sunucunun HTTPS kullanarak Internet 'e bağla
 Aracı nominal miktarda sistem kaynağı tüketir ve performansı çok az etkiler. Performans etkisi ve aracı ve uzantı hakkında daha fazla bilgi için bkz. [planlama ve işlemler Kılavuzu](security-center-planning-and-operations-guide.md#data-collection-and-storage).
 
 
-## <a name="where-is-my-data-stored"></a>Verilerim nerede depolanır?
-
-Bu aracıdan toplanan veriler, aboneliğiniz veya yeni bir çalışma alanıyla ilişkili mevcut bir Log Analytics çalışma alanında depolanır. Daha fazla bilgi için bkz. [veri güvenliği](security-center-data-security.md).
 
 
 <!--Image references-->

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454654"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012985"
 ---
 # <a name="azure-encryption-overview"></a>Azure şifrelemeye genel bakış
 
@@ -28,7 +28,7 @@ Bu makalede, Microsoft Azure ' de şifrelemenin nasıl kullanıldığına ilişk
 
 ## <a name="encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi
 
-Bekleyen veriler, fiziksel medyada kalıcı depolamada bulunan ve herhangi bir dijital biçimdeki bilgileri içerir. Medya, manyetik veya optik medya, arşivlenmiş veriler ve veri yedeklemeleri üzerinde dosya içerebilir. Microsoft Azure, dosya, disk, blob ve tablo depolama dahil olmak üzere farklı ihtiyaçları karşılamak için çeşitli veri depolama çözümleri sunar. Microsoft ayrıca [Azure SQL veritabanı](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md)ve Azure Data Lake korumak için şifreleme sağlar.
+Bekleyen veriler, fiziksel medyada kalıcı depolamada bulunan ve herhangi bir dijital biçimdeki bilgileri içerir. Medya, manyetik veya optik medya, arşivlenmiş veriler ve veri yedeklemeleri üzerinde dosya içerebilir. Microsoft Azure, dosya, disk, blob ve tablo depolama dahil olmak üzere farklı ihtiyaçları karşılamak için çeşitli veri depolama çözümleri sunar. Microsoft ayrıca [Azure SQL veritabanı](../../azure-sql/database/sql-database-paas-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md)ve Azure Data Lake korumak için şifreleme sağlar.
 
 Bekleyen veri şifrelemesi, hizmet olarak yazılım (SaaS), hizmet olarak platform (PaaS) ve hizmet olarak altyapı (IaaS) bulut modelleri arasında hizmetler için kullanılabilir. Bu makale, Azure şifreleme seçeneklerini kullanmanıza yardımcı olacak kaynakları özetler ve sağlar.
 
@@ -85,11 +85,11 @@ Son olarak, Azure depolama 'ya veri yüklemeden önce, istemci tarafı şifrelem
 
 ### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>Azure SQL veritabanı ile bekleyen verilerin şifrelenmesi
 
-[Azure SQL veritabanı](../../sql-database/sql-database-technical-overview.md) , Azure 'da ilişkisel VERI, JSON, uzamsal ve XML gibi yapıları destekleyen genel amaçlı bir ilişkisel veritabanı hizmetidir. SQL veritabanı, Always Encrypted özelliği aracılığıyla Saydam Veri Şifrelemesi (TDE) özelliği ve istemci tarafı şifreleme aracılığıyla sunucu tarafı şifrelemeyi destekler.
+[Azure SQL veritabanı](../../azure-sql/database/sql-database-paas-overview.md) , Azure 'da ilişkisel VERI, JSON, uzamsal ve XML gibi yapıları destekleyen genel amaçlı bir ilişkisel veritabanı hizmetidir. SQL veritabanı, Always Encrypted özelliği aracılığıyla Saydam Veri Şifrelemesi (TDE) özelliği ve istemci tarafı şifreleme aracılığıyla sunucu tarafı şifrelemeyi destekler.
 
 #### <a name="transparent-data-encryption"></a>Saydam Veri Şifrelemesi
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) , kurtarma sırasında kullanılabilirlik için veritabanı önyükleme kaydında depolanan bir veritabanı şifreleme anahtarı (dek) kullanarak [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL veritabanı](../../sql-database/sql-database-technical-overview.md)ve [Azure SQL veri ambarı](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) veri dosyalarını gerçek zamanlı olarak şifrelemek için kullanılır.
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) , kurtarma sırasında kullanılabilirlik için veritabanı önyükleme kaydında depolanan bir veritabanı şifreleme anahtarı (dek) kullanarak [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL veritabanı](../../azure-sql/database/sql-database-paas-overview.md)ve [Azure SQL veri ambarı](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) veri dosyalarını gerçek zamanlı olarak şifrelemek için kullanılır.
 
 TDE, AES ve üçlü veri şifreleme standardı (3DES) şifreleme algoritmaları kullanarak verileri ve günlük dosyalarını korur. Veritabanı dosyasının şifrelenmesi sayfa düzeyinde gerçekleştirilir. Şifrelenmiş bir veritabanındaki sayfalar diske yazılmadan önce şifrelenir ve belleğe okunduklarında şifresi çözülür. TDE, yeni oluşturulan Azure SQL veritabanlarında varsayılan olarak etkinleştirilmiştir.
 

@@ -4,15 +4,15 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d679767f1a4be3ecdcf1811662c72dbbe2df33a0
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67188312"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014800"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Veritabanı Altyapısı’nın varsayılan örneği için Windows güvenlik duvarında TCP bağlantı noktalarını açma
-1. Uzak Masaüstü kullanarak sanal makineye bağlanın. Sanal makineye bağlanma işleminin ayrıntılı yönergeleri için bkz. [Uzak Masaüstü ile SQL VM’yi Açma](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
+1. Uzak Masaüstü kullanarak sanal makineye bağlanın. Sanal makineye bağlanma işleminin ayrıntılı yönergeleri için bkz. [Uzak Masaüstü ile SQL VM’yi Açma](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md#remotedesktop).
 2. Oturum açıldıktan sonra, başlangıç ekranında, **WF. msc**YAZıN ve ENTER tuşuna basın.
    
     ![Güvenlik Duvarı Programını başlatın](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
@@ -67,7 +67,7 @@ SQL Server Veritabanı Altyapısı, etki alanı ortamı olmadan Windows Kimlik D
 5. SQL Server Management Studio iletişim kutusunda **Tamam**’a tıklayarak SQL Server’ı yeniden başlatma gereksinimine ilişkin istemi kabul edin.
 6. Nesne Gezgini’nde, sunucunuza sağ tıklayın ve ardından **Yeniden Başlat**’a tıklayın. (SQL Server Agent çalışıyorsa, onun da yeniden başlatılması gerekir.)
    
-    ![Yeniden Başlatma](./media/virtual-machines-sql-server-connection-steps/22Restart2.png)
+    ![Yeniden başlat](./media/virtual-machines-sql-server-connection-steps/22Restart2.png)
 7. SQL Server’ı yeniden başlatmak istediğinizi kabul etmek için SQL Server Management Studio iletişim kutusunda **Evet**’e tıklayın.
 
 ### <a name="create-sql-server-authentication-logins"></a>SQL Server kimlik doğrulaması için oturum açma kimliği oluşturma

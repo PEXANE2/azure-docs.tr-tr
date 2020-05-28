@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b0238d8026bff435fce9c03b6517efb6a55311d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70139255"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019920"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory örnekleri
 > [!NOTE]
@@ -62,7 +62,7 @@ Veri fabrikanıza örnek işlem hatlarını ve bunlarla ilişkili varlıkları (
 3. Örnek işlem **hatları** dikey penceresinde, dağıtmak istediğiniz **örneğe** tıklayın.
 
     ![Örnek işlem hatları dikey penceresi](./media/data-factory-samples/SampleTile.png)
-4. Örnek için yapılandırma ayarlarını belirtin. Örneğin, Azure depolama hesabınızın adı ve hesap anahtarınız, Azure SQL Server adı, veritabanı, Kullanıcı KIMLIĞI ve parola vb.
+4. Örnek için yapılandırma ayarlarını belirtin. Örneğin, Azure depolama hesabınızın adı ve hesap anahtarınız, mantıksal SQL Server adı, veritabanı, Kullanıcı KIMLIĞI ve parola vb.
 
     ![Örnek dikey pencere](./media/data-factory-samples/SampleBlade.png)
 5. Yapılandırma ayarlarını belirterek tamamladıktan sonra, işlem hatları tarafından kullanılan örnek işlem hatlarını ve bağlı hizmetleri/tabloları oluşturmak/dağıtmak için **Oluştur** ' a tıklayın.
@@ -80,7 +80,7 @@ Bilgisayarınızda şunların yüklü olması gerekir:
 
 * Visual Studio 2013 veya Visual Studio 2015
 * Visual Studio 2013 veya Visual Studio 2015 için Azure SDK’sını indirin. [Azure İndirme Sayfası](https://azure.microsoft.com/downloads/)’na gidin ve **.NET** bölümündeki **VS 2013** veya **VS 2015**’e tıklayın.
-* Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Visual Studio 2013 kullanıyorsanız, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar** -> **Uzantılar ve güncelleştirmeler** -> **çevrimiçi** -> **Visual Studio Galerisi** -> **Data Factory Microsoft Azure Visual Studio** -> **güncelleştirmesi**için Araçlar ' a tıklayın.
+* Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Visual Studio 2013 kullanıyorsanız, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Data Factory Microsoft Azure Visual Studio güncelleştirmesi için Araçlar**  ->  **Update**' a tıklayın.
 
 ### <a name="use-data-factory-templates"></a>Data Factory şablonları kullanma
 1. Menüdeki **Dosya** ' ya tıklayın, **Yeni**' nin üzerine gelin ve **Proje**' ye tıklayın.

@@ -1,24 +1,24 @@
 ---
 title: Veri kaynaklarından içeri aktarma-Soru-Cevap Oluşturma
-description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) kümesi ve isteğe bağlı meta veri kümesinden oluşur.
+description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) çiftleri ve isteğe bağlı meta veri kümesi içerir.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eaa19cb2abf84f31cda9d8894e91ec1540980b27
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804291"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993108"
 ---
 # <a name="importing-from-data-sources"></a>Veri kaynaklarından içeri aktarma
 
-Bilgi Bankası, genel URL 'Ler ve dosyalar tarafından getirilen soru ve yanıt kümelerinden oluşur.
+Bilgi Bankası, ortak URL 'Ler ve dosyalar tarafından getirilen sorulardan ve yanıt çiftlerinden oluşur.
 
 ## <a name="data-source-locations"></a>Veri kaynağı konumları
 
 İçerik bir veri kaynağından bilgi tabanına getirilir. Veri kaynağı konumları, kimlik doğrulaması gerektirmeyen **Genel URL 'ler veya dosyalardır**.
 
-Kimlik doğrulamasıyla güvenli hale getirilen [SharePoint dosyaları](../how-to/add-sharepoint-datasources.md)özel durumdur. SharePoint kaynakları, Web sayfaları değil, dosyalar olmalıdır. URL, gibi bir Web uzantısıyla sonlanıyorsa. ASPX, SharePoint 'ten Soru-Cevap Oluşturma içine aktarılmaz.
+Kimlik doğrulamasıyla güvenli hale getirilen [SharePoint dosyaları](../how-to/add-sharepoint-datasources.md)özel durumdur. SharePoint kaynakları, Web sayfaları değil, dosyalar olmalıdır. URL'nin .ASPX gibi bir web uzantısıyla bitmesi durumunda SharePoint'ten Soru-Cevap Oluşturma hizmetine aktarma gerçekleştirilmez.
 
 ## <a name="chit-chat-content"></a>CHIT sohbet içeriği
 
@@ -26,7 +26,7 @@ CHIT sohbeti QnA içerik kümesi, çeşitli dillerde ve konuşma stillerinde tü
 
 ## <a name="structured-data-format-through-import"></a>İçeri aktarma yoluyla yapılandırılmış veri biçimi
 
-Bilgi bankasını içeri aktarmak, mevcut bilgi bankasındaki içeriğin yerini alır. İçeri aktarma, sorular `.tsv` ve yanıt içeren yapılandırılmış bir dosya gerektirir. Bu bilgiler, soru-cevap kümelerini ve özniteliklerini belirli bir veri kaynağına göre gruplamak Soru-Cevap Oluşturma yardımcı olur.
+Bilgi bankasını içeri aktarmak, mevcut bilgi bankasındaki içeriğin yerini alır. İçeri aktarma `.tsv` , sorular ve yanıt içeren yapılandırılmış bir dosya gerektirir. Bu bilgiler, soru-cevap çiftlerini ve onları belirli bir veri kaynağına göre gruplamak Soru-Cevap Oluşturma yardımcı olur.
 
 | Soru  | Yanıt  | Kaynak| Meta veriler (1 anahtar: 1 değer) |
 |-----------|---------|----|---------------------|
@@ -40,7 +40,7 @@ Bilgi bankasını içeri aktarmak, mevcut bilgi bankasındaki içeriğin yerini 
 > [!div class="mx-imgBorder"]
 > ![3 düzey çoklu çift soruda kavramsal model](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-Birden çok açma için özel `.tsv`, birden çok yönlü bir sütun, **ister**. Excel 'de `.tsv`gösterilen, çoklu çift alt öğeleri tanımlamak için dahil edilecek bilgileri gösteren bir örnek:
+Birden çok açma için özel, birden çok yönlü bir sütun, `.tsv` **ister**. `.tsv`Excel 'de gösterilen, çoklu çift alt öğeleri tanımlamak için dahil edilecek bilgileri gösteren bir örnek:
 
 ```JSON
 [
@@ -56,9 +56,9 @@ Birden çok açma için özel `.tsv`, birden çok yönlü bir sütun, **ister**.
 
 ## <a name="export-as-example"></a>Örnek olarak dışarı aktar
 
-`.tsv` Dosyada QNA çiftini nasıl temsil ettiğini bilmiyorsanız:
+Dosyada QnA çiftini nasıl temsil ettiğini bilmiyorsanız `.tsv` :
 * Bu [indirilebilir örneği GitHub 'dan](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true) kullan
-* Ya da Soru-Cevap Oluşturma portalında kümeyi oluşturun, ardından kümeyi nasıl temsil ettiğini gösteren bir örnek için Bilgi Bankası 'nı dışarı aktarın.
+* Veya Soru-Cevap Oluşturma portalında çift oluşturun, bu çiftin nasıl kullanılacağına ilişkin bir örnek için Bilgi Bankası 'nı kaydedin ve dışarı aktarın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

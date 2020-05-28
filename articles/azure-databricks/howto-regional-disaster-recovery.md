@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f68bbb4e73758e44e775e1c0c23ad007ca60aa2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161945"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016942"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks kümeleri için bölgesel olağanüstü durum kurtarma
 
@@ -150,7 +150,7 @@ Kendi bölgesel olağanüstü durum kurtarma topolojinizi oluşturmak için aşa
    clusters_list = []
    ##for cluster_info in clusters_info_list: clusters_list.append(cluster_info.split(None, 1)[0])
 
-   for cluster_info in clusters_info_list: 
+   for cluster_info in clusters_info_list:
       if cluster_info != '':
          clusters_list.append(cluster_info.split(None, 1)[0])
 
@@ -176,7 +176,7 @@ Kendi bölgesel olağanüstü durum kurtarma topolojinizi oluşturmak için aşa
       cluster_json_keys = cluster_req_json.keys()
 
       #Don't migrate Job clusters
-      if cluster_req_json['cluster_source'] == u'JOB' : 
+      if cluster_req_json['cluster_source'] == u'JOB' :
          print ("Skipping this cluster as it is a Job cluster : " + cluster_req_json['cluster_id'] )
          print ("---------------------------------------------------------")
          continue
@@ -188,10 +188,10 @@ Kendi bölgesel olağanüstü durum kurtarma topolojinizi oluşturmak için aşa
       # Create the cluster, and store the mapping from old to new cluster ids
 
       #Create a temp file to store the current cluster info as JSON
-      strCurrentClusterFile = "tmp_cluster_info.json" 
+      strCurrentClusterFile = "tmp_cluster_info.json"
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
       fClusterJSONtmp = open(strCurrentClusterFile,"w+")
@@ -207,7 +207,7 @@ Kendi bölgesel olağanüstü durum kurtarma topolojinizi oluşturmak için aşa
       print ("---------------------------------------------------------")
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
    print ("Cluster mappings: " + json.dumps(cluster_old_new_mappings))
@@ -225,7 +225,7 @@ Kendi bölgesel olağanüstü durum kurtarma topolojinizi oluşturmak için aşa
 
    İş yapılandırması, yeni veya var olan bir küme için ayarları gerektirir. Mevcut küme kullanılıyorsa, aşağıdaki komut dosyası/Code, eski küme KIMLIĞINI yeni küme KIMLIĞIYLE değiştirmeye çalışır.
 
-   Aşağıdaki Python betiğini kopyalayın ve bir dosyaya kaydedin. `old_cluster_id` Ve `new_cluster_id`değerlerini, önceki adımda yapılan küme geçişinin çıktısındaki çıkış ile değiştirin. Bunu databricks-CLI komut satırında çalıştırın, örneğin, `python scriptname.py`.
+   Aşağıdaki Python betiğini kopyalayın ve bir dosyaya kaydedin. `old_cluster_id`Ve değerlerini `new_cluster_id` , önceki adımda yapılan küme geçişinin çıktısındaki çıkış ile değiştirin. Bunu databricks-CLI komut satırında çalıştırın, örneğin, `python scriptname.py` .
 
    ```python
    from subprocess import call, check_output
@@ -308,7 +308,7 @@ Kendi bölgesel olağanüstü durum kurtarma topolojinizi oluşturmak için aşa
 
 ## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Azure Ekosisteminiz için olağanüstü durum kurtarma
 
-Diğer Azure hizmetlerini kullanıyorsanız, bu hizmetler için olağanüstü durum kurtarma en iyi uygulamalarını da uyguladığınızdan emin olun. Örneğin, bir dış Hive meta veri deposu örneği kullanmayı seçerseniz, [azure SQL Server](../sql-database/sql-database-disaster-recovery.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)ve/veya [MySQL için Azure veritabanı](../mysql/concepts-business-continuity.md)için olağanüstü durum kurtarmayı göz önünde bulundurmanız gerekir. Olağanüstü durum kurtarma hakkında genel bilgi için bkz. [Azure uygulamaları Için olağanüstü durum kurtarma](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Diğer Azure hizmetlerini kullanıyorsanız, bu hizmetler için olağanüstü durum kurtarma en iyi uygulamalarını da uyguladığınızdan emin olun. Örneğin, bir dış Hive meta veri deposu örneği kullanmayı seçerseniz, [Azure SQL veritabanı](../azure-sql/database/disaster-recovery-guidance.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)ve/veya [MySQL için Azure veritabanı](../mysql/concepts-business-continuity.md)için olağanüstü durum kurtarmayı göz önünde bulundurmanız gerekir. Olağanüstü durum kurtarma hakkında genel bilgi için bkz. [Azure uygulamaları Için olağanüstü durum kurtarma](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

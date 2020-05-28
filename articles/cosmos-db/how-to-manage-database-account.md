@@ -3,15 +3,15 @@ title: Azure Cosmos DB'de veritabanı hesaplarını yönetmeyi öğrenin
 description: Azure portal, PowerShell, CLı ve Azure Resource Manager şablonlarını kullanarak Azure Cosmos DB kaynaklarını yönetmeyi öğrenin
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 76e8167a5d0dc83a5cc1b238d3015594278e344d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82745019"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116702"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos hesabını yönetme
 
@@ -43,9 +43,9 @@ Lütfen bkz. [Azure Resource Manager şablonlarla Azure Cosmos DB hesap oluştur
 
 1. Azure Cosmos hesabınıza gidin ve **verileri genel olarak Çoğalt** menüsünü açın.
 
-1. Bölge eklemek için, haritada istediğiniz bölge (ler) e karşılık gelen **+** etiketi içeren altıons 'yi seçin. Alternatif olarak, bir bölge eklemek için **+ bölge Ekle** seçeneğini belirleyip açılan menüden bir bölge seçin.
+1. Bölge eklemek için, haritada **+** istediğiniz bölge (ler) e karşılık gelen etiketi içeren altıons 'yi seçin. Alternatif olarak, bir bölge eklemek için **+ bölge Ekle** seçeneğini belirleyip açılan menüden bir bölge seçin.
 
-1. Bölgeleri kaldırmak için, bir veya daha fazla bölgeyi onay işaretleri içeren mavi altıgenler seçerek haritalardan kaldırın. Ya da sağ taraftaki bölgenin yanındaki "wastesepet" (🗑) simgesini seçin.
+1. Bölgeleri kaldırmak için, bir veya daha fazla bölgeyi onay işaretleri içeren mavi altıgenler seçerek haritalardan kaldırın. Ya da sağ taraftaki bölgenin yanındaki "wastesepet" ( 🗑 ) simgesini seçin.
 
 1. Değişikliklerinizi kaydetmek için **Tamam**' ı seçin.
 
@@ -81,7 +81,7 @@ Lütfen bkz. [PowerShell ile birden çok yazma bölgelerini etkinleştirme](mana
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager şablonu
 
-Hesabı ve ayarı `enableMultipleWriteLocations: true`oluşturmak için kullanılan kaynak yöneticisi şablonunu dağıtarak, bir hesap, tek ASILDAN çoklu ana 'e geçirilebilir. Aşağıdaki Azure Resource Manager şablonu, iki bölgeyle SQL API için bir Azure Cosmos hesabı ve birden çok yazma konumu etkinleştirilmiş olan en az bir şablondur.
+Hesabı ve ayarı oluşturmak için kullanılan Kaynak Yöneticisi şablonunu dağıtarak, bir hesap, tek ASILDAN çoklu ana 'e geçirilebilir `enableMultipleWriteLocations: true` . Aşağıdaki Azure Resource Manager şablonu, iki bölgeyle SQL API için bir Azure Cosmos hesabı ve birden çok yazma konumu etkinleştirilmiş olan en az bir şablondur.
 
 ```json
 {

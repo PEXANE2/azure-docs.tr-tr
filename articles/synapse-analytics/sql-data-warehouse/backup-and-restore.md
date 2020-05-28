@@ -11,12 +11,12 @@ ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 1d82c7c22bb5aeb2740884b0d7ede4a4d8f07f86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea9a9430f9abee6179bacd4f999b7eeca92a8129
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631210"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020855"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzunda yedekleme ve geri yükleme
 
@@ -30,7 +30,7 @@ Azure SYNAPSE SQL havuzunda yedekleme ve geri yüklemeyi nasıl kullanacağını
 
 ## <a name="automatic-restore-points"></a>Otomatik Geri Yükleme Noktaları
 
-Anlık görüntüler, geri yükleme noktaları oluşturan hizmetin yerleşik bir özelliğidir. Bu özelliği etkinleştirmek zorunda değilsiniz. Ancak, SQL havuzu geri yükleme noktası oluşturma için etkin durumda olmalıdır. SQL havuzu sıklıkla duraklatılmışsa, otomatik geri yükleme noktaları oluşturulmayabilir, bu nedenle SQL havuzunu duraklatmadan önce Kullanıcı tanımlı geri yükleme noktası oluşturulmasını sağlayın. Otomatik geri yükleme noktaları şu anda Kullanıcı tarafından silinemez çünkü hizmet bu geri yükleme noktalarını kurtarmak için SLA 'Ları sürdürmek üzere kullanır.
+Anlık görüntüler, geri yükleme noktaları oluşturan yerleşik bir özelliktir. Bu özelliği etkinleştirmek zorunda değilsiniz. Ancak, SQL havuzu geri yükleme noktası oluşturma için etkin durumda olmalıdır. SQL havuzu sıklıkla duraklatılmışsa, otomatik geri yükleme noktaları oluşturulmayabilir, bu nedenle SQL havuzunu duraklatmadan önce Kullanıcı tanımlı geri yükleme noktası oluşturulmasını sağlayın. Otomatik geri yükleme noktaları şu anda Kullanıcı tarafından silinemez çünkü hizmet bu geri yükleme noktalarını kurtarmak için SLA 'Ları sürdürmek üzere kullanır.
 
 Veri ambarınızın anlık görüntüleri, yedi gün boyunca kullanılabilen geri yükleme noktaları oluşturma gününde alınır. Bu saklama dönemi değiştirilemez. SQL havuzu sekiz saatlik bir kurtarma noktası hedefini (RPO) destekler. Son yedi gün içinde alınan anlık görüntülerden herhangi birinden, birincil bölgedeki veri Ambarınızı geri yükleyebilirsiniz.
 
@@ -65,7 +65,7 @@ Geri yükleme noktası bekletme dönemlerinde ayrıntıları aşağıda listelen
 Bir SQL havuzunu bıraktığınızda, son bir anlık görüntü oluşturulur ve yedi gün boyunca kaydedilir. SQL havuzunu silme sırasında oluşturulan son geri yükleme noktasına geri yükleyebilirsiniz. SQL havuzu duraklatılmış bir durumda bırakılmışsa, hiçbir anlık görüntü alınmaz. Bu senaryoda, SQL havuzunu bırakmadan önce Kullanıcı tanımlı bir geri yükleme noktası oluşturduğunuzdan emin olun.
 
 > [!IMPORTANT]
-> Bir mantıksal SQL Server örneğini silerseniz, örneğe ait olan tüm veritabanları da silinir ve kurtarılamaz. Silinen bir sunucuyu geri yükleyemezsiniz.
+> SQL havuzu barındıran sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Silinen bir sunucuyu geri yükleyemezsiniz.
 
 ## <a name="geo-backups-and-disaster-recovery"></a>Coğrafi yedeklemeler ve olağanüstü durum kurtarma
 
@@ -96,7 +96,7 @@ Silinen veya duraklatılmış bir veri ambarını geri yüklemek için [bir dest
 
 ## <a name="cross-subscription-restore"></a>Çapraz abonelik geri yükleme
 
-Abonelik genelinde doğrudan geri yüklemeniz gerekiyorsa [Bu yetenek için](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)bu özelliği oylayın. Farklı bir mantıksal sunucuya geri yükleme yapın ve çapraz abonelik geri yükleme işlemi gerçekleştirmek için sunucuyu abonelikler arasında [' taşıyın '](/azure/azure-resource-manager/resource-group-move-resources?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
+Abonelik genelinde doğrudan geri yüklemeniz gerekiyorsa [Bu yetenek için](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)bu özelliği oylayın. Farklı bir sunucuya geri yükleyin ve çapraz abonelik geri yüklemesi gerçekleştirmek için sunucuyu abonelikler arasında [' taşıyın '](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
 ## <a name="geo-redundant-restore"></a>Coğrafi olarak yedekli geri yükleme
 
@@ -107,4 +107,4 @@ Abonelik genelinde doğrudan geri yüklemeniz gerekiyorsa [Bu yetenek için](htt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Olağanüstü durum planlaması hakkında daha fazla bilgi için bkz. [iş sürekliliği genel bakış](../../sql-database/sql-database-business-continuity.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+Olağanüstü durum planlaması hakkında daha fazla bilgi için bkz. [iş sürekliliği genel bakış](../../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)

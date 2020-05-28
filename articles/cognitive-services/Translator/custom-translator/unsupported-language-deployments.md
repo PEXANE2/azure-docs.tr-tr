@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/24/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 252759139de7f53cd7875efeb7f477219092aa0b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ea2761712e4bbb7a3abd1483766f4eae47b7c350
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584713"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996372"
 ---
 # <a name="unsupported-language-deployments"></a>Desteklenmeyen dil dağıtımları
 
@@ -25,7 +25,7 @@ Microsoft Translator hub 'ının yakında kullanımdan kaldırılması sayesinde
 
 Artık, desteklenmeyen modellerinizi özel çevirici aracılığıyla dağıtmanıza izin veren bir işlemdir.  Bu işlem, en son v3 API 'sini kullanarak içerik çevirmeye devam etmenize olanak sağlar.  Bu modeller, dağıtımını kaldırmak seçinceye kadar veya dil çiftinin özel çevirmende kullanılabilir hale gelene kadar barındırılacak.  Bu makalede, desteklenmeyen dil çiftlerine sahip modelleri dağıtma işlemi açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Modellerinizin dağıtıma aday olması için aşağıdaki ölçütleri karşılaması gerekir:
 * Modeli içeren proje, geçiş aracı kullanılarak hub 'dan özel çevirmene geçirilmiş olmalıdır.  Projeleri ve çalışma alanlarını geçirme işlemi [burada](how-to-migrate.md)bulunabilir.

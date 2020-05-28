@@ -1,19 +1,19 @@
 ---
 title: Azure blok zinciri hizmetine eklemek için geth kullanma
 description: Azure blok zinciri hizmeti işlem düğümündeki bir geth örneğine iliştirme
-ms.date: 11/20/2019
+ms.date: 05/26/2020
 ms.topic: quickstart
-ms.reviewer: janders
-ms.openlocfilehash: 9da78eac1dc429bcc0ad52bb9cb2f1fb743a90d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: maheshna
+ms.openlocfilehash: 2c5b6a56d96ac132949052e9879c8f61d41ffb06
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74455837"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994798"
 ---
 # <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Hızlı başlangıç: Azure blok zinciri hizmeti işlem düğümüne eklemek için geth kullanma
 
-Bu hızlı başlangıçta, Azure blok zinciri hizmeti işlem düğümündeki bir geth örneğine eklemek için geth istemcisini kullanırsınız. İliştirildikten sonra, Web3 JavaScript Dapp API 'sini çağırmak için geth JavaScript konsolunu kullanırsınız.
+Bu hızlı başlangıçta, Azure blok zinciri hizmeti işlem düğümündeki bir geth örneğine eklemek için geth istemcisini kullanırsınız. İliştirildikten sonra, bir Ethereum JavaScript API 'sini çağırmak için geth konsolunu kullanırsınız.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, Azure blok zinciri hizmeti işlem düğümündeki bir
 
 Azure portal bir Azure blok zinciri hizmeti işlem düğümü için geth bağlantı dizesini edinebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
 
     ![Varsayılan işlem düğümünü seçin](./media/connect-geth/transaction-nodes.png)
@@ -45,7 +45,7 @@ Azure portal bir Azure blok zinciri hizmeti işlem düğümü için geth bağlan
     geth attach <connection string>
     ```
 
-1. İşlem düğümünün Ethereum konsoluna bağlandıktan sonra Web3 JavaScript Dapp API 'sini veya yönetim API 'sini çağırabilirsiniz.
+1. İşlem düğümünün Ethereum konsoluna bağlandıktan sonra Ethereum JavaScript API 'sini kullanabilirsiniz.
 
     Örneğin, Chainıd 'yi bulmak için aşağıdaki API 'yi kullanın.
 
@@ -57,7 +57,7 @@ Azure portal bir Azure blok zinciri hizmeti işlem düğümü için geth bağlan
 
     ![Azure blok zinciri hizmeti seçeneği](./media/connect-geth/geth-attach.png)
 
-1. Konsola bağlantıyı kesmek için yazın `exit`.
+1. Konsola bağlantıyı kesmek için yazın `exit` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

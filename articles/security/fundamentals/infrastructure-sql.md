@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942966"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021866"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL veritabanı güvenlik özellikleri    
 Azure SQL veritabanı, Azure 'da bir ilişkisel veritabanı hizmeti sağlar. Müşteri verilerini korumak ve müşterilerin ilişkisel bir veritabanı hizmetinden beklediği güçlü güvenlik özellikleri sağlamak için, SQL veritabanı 'nın kendi güvenlik özellikleri kümesi vardır. Bu yetenekler, Azure 'dan devralınan denetimleri oluşturur.
@@ -31,13 +31,13 @@ Azure SQL veritabanı, Azure 'da bir ilişkisel veritabanı hizmeti sağlar. Mü
 Azure SQL veritabanı yalnızca varsayılan TCP/1433 bağlantı noktası üzerinden erişilebilir olmasını gerektiren tablo veri akışı (TDS) protokolünü destekler.
 
 ### <a name="azure-sql-database-firewall"></a>Azure SQL veritabanı güvenlik duvarı
-Azure SQL veritabanı, müşteri verilerini korumaya yardımcı olmak için, aşağıda gösterildiği gibi, varsayılan olarak SQL veritabanı sunucusuna tüm erişimi engeller.
+Azure SQL veritabanı, müşteri verilerini korumaya yardımcı olmak için, aşağıda gösterildiği gibi, varsayılan olarak SQL veritabanı 'na erişimi önlediği bir güvenlik duvarı işlevi içerir.
 
 ![Azure SQL veritabanı güvenlik duvarı](./media/infrastructure-sql/sql-database-firewall.png)
 
 Ağ geçidi güvenlik duvarı, müşterilerin ayrıntılı IP adresi aralıklarını belirtmesini sağlayan adresleri sınırlayabilir. Güvenlik Duvarı, her isteğin kaynak IP adresine göre erişime izin verir.
 
-Müşteriler bir yönetim portalını kullanarak veya Azure SQL veritabanı yönetim REST API kullanarak program aracılığıyla güvenlik duvarı yapılandırması elde edebilir. Azure SQL veritabanı ağ geçidi güvenlik duvarı varsayılan olarak Azure SQL veritabanı örneklerine tüm müşteri TDS erişimini engeller. Müşteriler, Azure SQL veritabanı bağlantılarına kaynak ve hedef Internet adresleri, protokoller ve bağlantı noktası numaralarıyla izin vermek için erişim denetimi listelerini (ACL 'Ler) kullanarak erişimi yapılandırmalıdır.
+Müşteriler bir yönetim portalını kullanarak veya Azure SQL veritabanı yönetim REST API kullanarak program aracılığıyla güvenlik duvarı yapılandırması elde edebilir. Azure SQL veritabanı ağ geçidi güvenlik duvarı varsayılan olarak Azure SQL veritabanı 'na tüm müşteri TDS erişimini engeller. Müşteriler, Azure SQL veritabanı bağlantılarına kaynak ve hedef Internet adresleri, protokoller ve bağlantı noktası numaralarıyla izin vermek için erişim denetimi listelerini (ACL 'Ler) kullanarak erişimi yapılandırmalıdır.
 
 ### <a name="dosguard"></a>DoSGuard
 Hizmet reddi (DoS) saldırıları, DoSGuard adlı bir SQL veritabanı ağ geçidi hizmeti tarafından azaltılır. DoSGuard IP adreslerinden gelen başarısız oturum açma işlemlerini etkin bir şekilde izler. Belirli bir IP adresinden belirli bir süre içinde birden çok başarısız oturum açma işlemi varsa, IP adresinin önceden tanımlanmış bir dönem için hizmetteki kaynaklara erişimi engellenir.

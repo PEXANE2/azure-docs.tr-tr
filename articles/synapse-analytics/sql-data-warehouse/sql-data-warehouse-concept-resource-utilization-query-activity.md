@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7c09e9d9f93ead6f894c954f647ebe33918cf41d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e80ff74ad1dec25c815a9dd28a04133502b82085
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653006"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012917"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak kullanımını ve sorgu etkinliğini izleme
 
@@ -49,7 +49,7 @@ Aşağıdaki ölçümler, SYNAPSE SQL için Azure portal kullanılabilir. Bu öl
 Ölçümleri görüntülerken ve uyarıları ayarlarken dikkate alınması gereken noktalar:
 
 - Kullanılan DWU, SQL havuzundaki **kullanım için yalnızca üst düzey bir temsili** temsil eder ve kapsamlı bir kullanım göstergesi olması anlamına gelir. Ölçeği artırma veya azaltma yapılıp yapılmayacağını anlamak için eşzamanlılık, bellek, tempdb ve Uyarlamalı önbellek kapasitesi gibi DWU tarafından etkilenen tüm faktörleri göz önünde bulundurun. İş hedeflerinizi karşılayacak en iyi şeyi belirlemek için iş [yükünüzü farklı DWU ayarlarında çalıştırmayı](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) öneririz.
-- Başarısız ve başarılı bağlantılar, belirli bir veri ambarı için (mantıksal sunucu için değil) raporlanır
+- Başarısız ve başarılı bağlantılar, belirli bir veri ambarı için (sunucunun kendisi için değil) raporlanır.
 - Veri ambarı boşta durumunda olsa bile bellek yüzdesi kullanımı yansıtır; etkin iş yükü bellek tüketimini yansıtmaz. Ek önbellek kapasitesi için ölçeklendirmenin, gereksinimlerinizi karşılamak üzere iş yükü performansını artırabilmesi için bu ölçümü diğer kullanıcılarla birlikte (tempdb, Gen2 Cache) kullanın ve izleyin.
 
 ## <a name="query-activity"></a>Sorgu etkinliği

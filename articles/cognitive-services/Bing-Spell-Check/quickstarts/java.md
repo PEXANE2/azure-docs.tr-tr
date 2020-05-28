@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 70ed795032c3d6d46aa57afaf5b5ece94bc74ea9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869819"
+ms.locfileid: "83995982"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve Java ile yazım denetimi yapma
 
@@ -59,9 +59,9 @@ Bu uygulama Java 'da yazılsa da, API birçok programlama dili ile uyumlu olan b
 
 1. `check()`API isteği oluşturmak ve göndermek için adlı bir işlev oluşturun. Bu işlev içinde, sonraki adımlarda belirtilen kodu ekleyin. İstek parametreleri için bir dize oluşturun:
 
-   a. Pazar kodunuzu `mkt` parametreye, `=` işleçle atayın. 
+   1. Pazar kodunuzu `mkt` parametreye, `=` işleçle atayın. 
 
-   b. `mode`Parametresini `&` işleçle ekleyin ve ardından yazım denetimi modunu atayın. 
+   1. `mode`Parametresini `&` işleçle ekleyin ve ardından yazım denetimi modunu atayın. 
 
    ```java
    public static void check () throws Exception {

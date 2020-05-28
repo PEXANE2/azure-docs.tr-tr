@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: da29785547d1b6eb4b38d07f020ba885dc5137ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bd0afe4d0ea01671c996a0f536151d943e4fca7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767595"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013019"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>HDInsight 'ta kıvrımlı ile Apache Sqoop işleri çalıştırma
 
@@ -26,7 +26,7 @@ Kıvrımlı, Sqoop işlerinin sonuçlarını çalıştırmak, izlemek ve almak i
 
 * [Test ortamını ayarlama](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) , [HDInsight 'Ta Hadoop Ile Apache Sqoop kullanın](./hdinsight-use-sqoop.md).
 
-* Azure SQL veritabanını sorgulamak için bir istemci. [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) veya [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md)kullanmayı düşünün.
+* Azure SQL veritabanını sorgulamak için bir istemci. [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) veya [Visual Studio Code](../../azure-sql/database/connect-query-vscode.md)kullanmayı düşünün.
 
 * [Kıvır](https://curl.haxx.se/). Kıvrımlı bir HDInsight kümesine veya bir HDInsight kümesinden veri aktarmaya yönelik bir araçtır.
 
@@ -41,7 +41,7 @@ Azure depolama 'dan SQL Server ' ye Apache Sqoop işleri kullanarak verileri dı
 > [!NOTE]  
 > Curl’ü veya WebHCat ile başka bir REST iletişimini kullanırken HDInsight küme yöneticisinin kullanıcı adı ve parolasını sağlayarak isteklerin kimliğini doğrulamanız gerekir. Ayrıca, sunucuya istek göndermek için kullanılan Tekdüzen Kaynak Tanımlayıcısı’nın (URI) bir parçası olarak küme adını kullanmanız gerekir.
 
-Bu bölümdeki komutlar için, küme kimliğini doğrulamak `USERNAME` için kullanıcıyla değiştirin ve Kullanıcı hesabı parolasıyla değiştirin `PASSWORD` . `CLUSTERNAME` değerini kümenizin adıyla değiştirin.
+Bu bölümdeki komutlar için, `USERNAME` küme kimliğini doğrulamak için kullanıcıyla değiştirin ve `PASSWORD` Kullanıcı hesabı parolasıyla değiştirin. `CLUSTERNAME` değerini kümenizin adıyla değiştirin.
 
 REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.org/wiki/Basic_access_authentication) ile sağlanır. Kimlik bilgilerinizin sunucuya güvenli bir şekilde gönderilmesi için istekleri her zaman Güvenli HTTP (HTTPS) kullanarak yapmanız gerekir.
 
@@ -77,7 +77,7 @@ REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.o
 
     Bu komutta kullanılan parametreler aşağıdaki gibidir:
 
-   * **-d** -bu `-G` yana KULLANıLMADıĞıNDAN, istek varsayılan Post yöntemine göre yapılır. `-d`istekle birlikte gönderilen veri değerlerini belirtir.
+   * **-d** -bu yana `-G` kullanılmadığından, istek varsayılan Post yöntemine göre yapılır. `-d`istekle birlikte gönderilen veri değerlerini belirtir.
 
        * **User.Name** -komutunu çalıştıran kullanıcı.
 
@@ -91,7 +91,7 @@ REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.o
        {"id":"job_1415651640909_0026"}
        ```
 
-1. İşin durumunu denetlemek için aşağıdaki komutu kullanın. Önceki `JOBID` adımda döndürülen değerle değiştirin. Örneğin, dönüş değeri `{"id":"job_1415651640909_0026"}` `JOBID` olsaydı, olur. `job_1415651640909_0026` Gerektiğinde konumunu `jq` gözden geçirin.
+1. İşin durumunu denetlemek için aşağıdaki komutu kullanın. `JOBID`Önceki adımda döndürülen değerle değiştirin. Örneğin, dönüş değeri `{"id":"job_1415651640909_0026"}` olsaydı, olur `JOBID` `job_1415651640909_0026` . Gerektiğinde konumunu gözden geçirin `jq` .
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -104,7 +104,7 @@ REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.o
    > [!NOTE]  
    > Bu kıvrımlı istek, işle ilgili bilgiler içeren bir JavaScript Nesne Gösterimi (JSON) belgesi döndürür; JQ yalnızca durum değerini almak için kullanılır.
 
-1. İşin durumu **başarılı**olarak değiştirildikten sonra, Azure Blob depolamadan iş sonuçlarını alabilirsiniz. Sorguyla `statusdir` geçirilen parametre, çıkış dosyasının konumunu içerir; Bu durumda, `wasb:///example/data/sqoop/curl`. Bu adres, iş çıktısını HDInsight kümeniz tarafından kullanılan varsayılan `example/data/sqoop/curl` depolama kapsayıcısının dizininde depolar.
+1. İşin durumu **başarılı**olarak değiştirildikten sonra, Azure Blob depolamadan iş sonuçlarını alabilirsiniz. `statusdir`Sorguyla geçirilen parametre, çıkış dosyasının konumunu içerir; bu durumda, `wasb:///example/data/sqoop/curl` . Bu adres, iş çıktısını `example/data/sqoop/curl` HDInsight kümeniz tarafından kullanılan varsayılan depolama kapsayıcısının dizininde depolar.
 
     Stderr ve STDOUT bloblarına erişmek için Azure portal kullanabilirsiniz.
 
@@ -118,7 +118,7 @@ REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.o
 ## <a name="limitations"></a>Sınırlamalar
 
 * Toplu dışa aktarma-Linux tabanlı HDInsight Ile, Microsoft SQL Server veya Azure SQL veritabanı 'na veri aktarmak için kullanılan Sqoop Bağlayıcısı Şu anda toplu eklemeleri desteklememektedir.
-* Toplu işleme-Linux tabanlı HDInsight Ile, eklemeleri gerçekleştirirken `-batch` anahtarı kullanırken, ekleme işlemlerini toplu olarak tamamlamak yerine Sqoop birden çok ekleme gerçekleştirir.
+* Toplu işleme-Linux tabanlı HDInsight Ile, `-batch` eklemeleri gerçekleştirirken anahtarı kullanırken, ekleme işlemlerini toplu olarak tamamlamak yerine Sqoop birden çok ekleme gerçekleştirir.
 
 ## <a name="summary"></a>Özet
 

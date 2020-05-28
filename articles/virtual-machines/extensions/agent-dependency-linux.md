@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 82f9c5a67cb056752cf8310be3b7c9f0bd2501e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf4653ea7e49404af9e6d46796a7b00d9373c6da
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254046"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996559"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Linux için Azure Izleyici bağımlılığı sanal makine uzantısı
 
@@ -73,11 +73,11 @@ Aşağıdaki JSON, Azure Linux VM 'de Azure VM bağımlılık Aracısı uzantıs
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek |
+| Name | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | yayımcı | Microsoft. Azure. Monitoring. DependencyAgent |
-| type | DependencyAgentLinux |
+| tür | DependencyAgentLinux |
 | typeHandlerVersion | 9,5 |
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
@@ -86,7 +86,7 @@ Azure VM uzantılarını Azure Resource Manager şablonlarıyla dağıtabilirsin
 
 Bir sanal makine uzantısı için JSON, sanal makine kaynağının içinde iç içe olabilir. Ya da, bunu bir Kaynak Yöneticisi JSON şablonunun kök veya üst düzeyine yerleştirebilirsiniz. JSON yerleştirmesi, kaynak adının ve türün değerini etkiler. Daha fazla bilgi için bkz. [alt kaynaklar için ad ve tür ayarlama](../../azure-resource-manager/templates/child-resource-name-type.md).
 
-Aşağıdaki örnek, bağımlılık Aracısı uzantısının sanal makine kaynağının içinde iç içe olduğunu varsayar. Uzantı kaynağını iç içe aktardığınızda JSON, sanal makinenin `"resources": []` nesnesine yerleştirilir.
+Aşağıdaki örnek, bağımlılık Aracısı uzantısının sanal makine kaynağının içinde iç içe olduğunu varsayar. Uzantı kaynağını iç içe aktardığınızda JSON, `"resources": []` sanal makinenin nesnesine yerleştirilir.
 
 
 ```json
@@ -154,7 +154,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 Uzantı yürütme çıkışı aşağıdaki dosyaya kaydedilir:
 
 ```
-/opt/microsoft/dependcency-agent/log/install.log 
+/opt/microsoft/dependency-agent/log/install.log 
 ```
 
 ### <a name="support"></a>Destek

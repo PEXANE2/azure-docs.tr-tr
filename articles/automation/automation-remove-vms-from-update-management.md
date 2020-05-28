@@ -5,18 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 26a38c0851643fbd6446acddd99a05abf8d5b26c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9bb9ee93be4e045b52355255ecb86e54e48e5c5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836660"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117408"
 ---
 # <a name="remove-vms-from-update-management"></a>VM’leri Güncelleştirme Yönetimi'nden kaldırma
-
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
-
-https://portal.azure.com adresinden Azure portalında oturum açın.
 
 Ortamınızdaki VM 'lere güncelleştirme dağıtma işiniz bittiğinde [güncelleştirme yönetimi](automation-update-management.md) özelliğinden kaldırabilirsiniz.
 
@@ -28,7 +24,7 @@ Ortamınızdaki VM 'lere güncelleştirme dağıtma işiniz bittiğinde [güncel
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. Log Analytics çalışma alanınızda, **genel**altında, kaydedilen aramalara erişin.
+3. Log Analytics çalışma alanınızda, **genel**altında, kapsam yapılandırması için kaydedilen aramalara erişin `MicrosoftDefaultScopeConfig-Updates` .
 
 4. Kayıtlı arama için `MicrosoftDefaultComputerGroup` , sağdaki üç noktaya tıklayın ve **Düzenle**' yi seçin. 
 

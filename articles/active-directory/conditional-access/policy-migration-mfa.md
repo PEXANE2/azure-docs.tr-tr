@@ -4,19 +4,19 @@ description: Bu makalede, Azure portal çok faktörlü kimlik doğrulaması gere
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 12/04/2019
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d637ac464b689a25ce5d5a79cf47da0c85d38d0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1dc7b7227dbaee488726a75fe7120bd26614dbf
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74846053"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993737"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Azure portal klasik bir ilkeyi geçirme
 
@@ -32,7 +32,7 @@ Geçiş işlemi aşağıdaki adımlardan oluşur:
 
 ## <a name="open-a-classic-policy"></a>Klasik bir ilke açın
 
-1. [Azure Portal](https://portal.azure.com) **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**' ne gidin.
+1. [Azure Portal](https://portal.azure.com) **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**' ne gidin.
 1. **Klasik ilkeler**' i seçin.
 
    ![Klasik ilkeler görünümü](./media/policy-migration-mfa/12.png)
@@ -41,7 +41,7 @@ Geçiş işlemi aşağıdaki adımlardan oluşur:
 
 ## <a name="create-a-new-conditional-access-policy"></a>Yeni bir koşullu erişim ilkesi oluşturma
 
-1. [Azure Portal](https://portal.azure.com) **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**' ne gidin.
+1. [Azure Portal](https://portal.azure.com) **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**' ne gidin.
 1. Yeni bir koşullu erişim ilkesi oluşturmak için **Yeni ilke**' yi seçin.
 1. **Yeni** sayfada, **ad** metin kutusuna ilkeniz için bir ad yazın.
 1. **Atamalar** bölümünde **Kullanıcılar ve gruplar**' a tıklayın.

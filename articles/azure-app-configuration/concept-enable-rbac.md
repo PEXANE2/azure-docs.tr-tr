@@ -6,18 +6,18 @@ ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 3ec30aafe63259237a89de6597970b908fb969cf
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c2812219e689cb42fd871f85300239a10ab0da0e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773449"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116715"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Uygulama yapılandırmasına erişim yetkisi verme
-Azure Uygulama yapılandırması, istekleri uygulama yapılandırma örneklerine yetkilendirmek için Azure Active Directory (Azure AD) kullanılmasını destekler.  Azure AD, bir güvenlik sorumlusu için izin vermek üzere rol tabanlı erişim denetimi (RBAC) kullanmanıza olanak tanır.  Bir güvenlik sorumlusu, bir kullanıcı veya bir [uygulama hizmeti sorumlusu](../active-directory/develop/app-objects-and-service-principals.md)olabilir.  Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
+Karma tabanlı İleti Kimlik Doğrulama Kodu (HMAC) kullanmanın yanı sıra Azure Uygulama yapılandırması, istekleri uygulama yapılandırma örneklerine yetkilendirmek için Azure Active Directory (Azure AD) kullanımını destekler.  Azure AD, bir güvenlik sorumlusu için izin vermek üzere rol tabanlı erişim denetimi (RBAC) kullanmanıza olanak tanır.  Bir güvenlik sorumlusu, bir Kullanıcı, yönetilen bir [kimlik](../active-directory/managed-identities-azure-resources/overview.md) veya [uygulama hizmeti sorumlusu](../active-directory/develop/app-objects-and-service-principals.md)olabilir.  Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
 
 ## <a name="overview"></a>Genel Bakış
-Güvenlik sorumlusu (bir kullanıcı veya uygulama) tarafından bir uygulama yapılandırma kaynağına erişmek için yapılan isteklerin yetkilendirilmiş olması gerekir.  Azure AD ile bir kaynağa erişim iki adımlı bir işlemdir.
+Bir güvenlik sorumlusu tarafından bir uygulama yapılandırma kaynağına erişmek için yapılan isteklerin yetkilendirilmiş olması gerekir. Azure AD ile bir kaynağa erişim iki adımlı bir işlemdir:
 1. Güvenlik sorumlusunun kimliği doğrulanır ve bir OAuth 2,0 belirteci döndürülür.  Belirteç istemek için kaynak adı, `https://login.microsoftonline.com/{tenantID}` `{tenantID}` hizmet sorumlusunun ait olduğu Azure ACTIVE DIRECTORY kiracı kimliğiyle aynıdır.
 2. Belirteç, belirtilen kaynağa erişim yetkisi vermek için uygulama yapılandırma hizmetine yapılan bir isteğin bir parçası olarak geçirilir.
 
@@ -35,8 +35,11 @@ Azure, Azure AD ve OAuth kullanarak uygulama yapılandırma verilerine erişim y
 
 - **Uygulama yapılandırma verileri sahibi**: uygulama yapılandırma verilerine okuma/yazma/silme erişimi sağlamak için bu rolü kullanın. Bu, uygulama yapılandırma kaynağına erişim vermez.
 - **Uygulama yapılandırma veri okuyucusu**: uygulama yapılandırma verilerine okuma erişimi sağlamak için bu rolü kullanın. Bu, uygulama yapılandırma kaynağına erişim vermez.
-- **Katkıda bulunan**: uygulama yapılandırma kaynağını yönetmek için bu rolü kullanın. Uygulama yapılandırma verilerine erişim anahtarları kullanılarak erişilebilirken, bu rol Azure AD kullanarak verilere erişim izni vermez.
+- **Katkıda bulunan**: uygulama yapılandırma kaynağını yönetmek için bu rolü kullanın. Uygulama yapılandırma verilerine erişim tuşları kullanılarak erişilebilirken, bu rol Azure AD kullanarak verilere doğrudan erişim vermez.
 - **Okuyucu**: uygulama yapılandırma kaynağına okuma erişimi sağlamak için bu rolü kullanın. Bu, kaynağın erişim anahtarlarına veya uygulama yapılandırmasında depolanan verilere erişim vermez.
+
+> [!NOTE]
+> Şu anda Azure portal ve CLı yalnızca, uygulama yapılandırma verilerine erişmek için HMAC kimlik doğrulamasını destekler. Azure AD kimlik doğrulaması desteklenmiyor. Bu nedenle, Azure portal ve CLı kullanıcıları uygulama yapılandırma kaynağının erişim anahtarlarını almak için *katkıda* bulunan rolünü gerektirir. *Uygulama yapılandırma veri okuyucusu* veya *uygulama yapılandırma veri sahibi* rollerinin verılmesı, Portal ve CLI aracılığıyla erişim üzerinde hiçbir etkiye sahip değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Uygulama yapılandırma hizmetinizi yönetmek için [Yönetilen kimlikler](howto-integrate-azure-managed-service-identity.md) kullanma hakkında daha fazla bilgi edinin.

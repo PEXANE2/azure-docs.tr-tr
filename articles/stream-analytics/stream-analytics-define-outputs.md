@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/8/2020
-ms.openlocfilehash: c4790585d089ab287260f74001a8aa3f1cb7e5f7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5f4988ad5df5507f9d6acd330a8f8bba9062be0d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647507"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012951"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışlarını anlayın
 
@@ -59,7 +59,7 @@ Aşağıdaki tabloda, bir SQL veritabanı çıkışı oluşturmak için özellik
 | --- | --- |
 | Çıktı diğer adı |Sorgu çıkışını bu veritabanına yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Veritabanı | Çıktlarınızı gönderdiğiniz veritabanının adı. |
-| Sunucu adı | SQL veritabanı sunucu adı. Azure SQL veritabanı yönetilen örneği için 3342 numaralı bağlantı noktasını belirtmeniz gerekir. Örneğin, *sampleserver. public. Database. Windows. net, 3342* |
+| Sunucu adı | Mantıksal SQL Server adı veya yönetilen örnek adı. Azure SQL veritabanı yönetilen örneği için 3342 numaralı bağlantı noktasını belirtmeniz gerekir. Örneğin, *sampleserver. public. Database. Windows. net, 3342* |
 | Kullanıcı adı | Veritabanına yazma erişimi olan Kullanıcı adı. Stream Analytics yalnızca SQL kimlik doğrulamasını destekler. |
 | Parola | Veritabanına bağlanmak için parola. |
 | Tablo | Çıktının yazıldığı tablo adı. Tablo adı büyük/küçük harfe duyarlıdır. Bu tablonun şeması, alan sayısı ve iş çıktılarınızın oluşturduğu türleri ile tam olarak eşleşmelidir. |
@@ -107,7 +107,7 @@ Aşağıdaki tabloda, bir blob veya ADLS 2. çıkışı oluşturmak için özell
 | Depolama hesabı     | Çıktlarınızı gönderdiğiniz depolama hesabının adı.               |
 | Depolama hesabı anahtarı | Depolama hesabıyla ilişkili gizli anahtar.                              |
 | Depolama kapsayıcısı   | Azure Blob hizmetinde depolanan BLOB 'lar için mantıksal gruplama. Blob hizmetine bir blob yüklediğinizde, o blob için bir kapsayıcı belirtmeniz gerekir. |
-| Yol deseni | İsteğe bağlı. Belirtilen kapsayıcı içinde bloblarınızı yazmak için kullanılan dosya yolu deseninin. <br /><br /> Yol modelinde, Blobların yazıldığı sıklığı belirtmek için tarih ve saat değişkenlerinin bir veya daha fazla örneğini kullanmayı seçebilirsiniz: <br /> {date}, {Time} <br /><br />Blob 'ları bölümlemek için olay verilerinize özel bir {Field} adı belirtmek için özel blob bölümlemesini kullanabilirsiniz. Alan adı alfasayısal olur ve boşluk, kısa çizgi ve alt çizgi içerebilir. Özel alanlardaki kısıtlamalar şunlardır: <ul><li>Alan adları büyük/küçük harfe duyarlı değildir. Örneğin, hizmet "ID" sütununu ve "ID" sütununu ayırt edemiyor.</li><li>İç içe alanlara izin verilmez. Bunun yerine, alanı "düzleştirmek" için iş sorgusunda bir diğer ad kullanın.</li><li>İfadeler alan adı olarak kullanılamaz.</li></ul> <br />Bu özellik, yoldaki özel tarih/saat biçimi belirleyici yapılandırmalarının kullanılmasını mümkün. Özel tarih ve saat biçimleri tek seferde belirtilmelidir ve {DateTime: \< belirleyicisi>} anahtar sözcüğü ile alınmıştır. Belirleyici> için izin verilen girişler \< yyyy, mm, m, gg, d, hh, H, mm, m, SS veya s şeklindedir. {DateTime: \< belirleyicisi>} anahtar sözcüğü, özel tarih/saat yapılandırması oluşturmak için yolda birden çok kez kullanılabilir. <br /><br />Örnekler: <ul><li>Örnek 1: Cluster1/logs/{Date}/{Time}</li><li>Örnek 2: Cluster1/logs/{Date}</li><li>Örnek 3: Cluster1/{client_id}/{Date}/{Time}</li><li>Örnek 4: Cluster1/{DateTime: ss}/{myField} burada sorgunun olduğu yer: Data. myField ' ı girişte myField olarak BELIRLEYIN;</li><li>Örnek 5: Cluster1/Year = {DateTime: yyyy}/ay = {DateTime: DD}/gün = {DateTime: dd}</ul><br />Oluşturulan klasör yapısının zaman damgası UTC ve yerel saate göre değil.<br /><br />Dosya adlandırma aşağıdaki kuralı kullanır: <br /><br />{Path önek kalıbı}/schemaHashcode_Guid_Number. Extension<br /><br />Örnek çıkış dosyaları:<ul><li>Mbir put/20170901/00/45434_gguid_1. csv</li>  <li>Mbir put/20170901/01/45434_gguid_1. csv</li></ul> <br />Bu özellik hakkında daha fazla bilgi için bkz. [özel blob çıkış bölümlendirme Azure Stream Analytics](stream-analytics-custom-path-patterns-blob-storage-output.md). |
+| Yol deseni | İsteğe bağlı. Belirtilen kapsayıcı içinde bloblarınızı yazmak için kullanılan dosya yolu deseninin. <br /><br /> Yol modelinde, Blobların yazıldığı sıklığı belirtmek için tarih ve saat değişkenlerinin bir veya daha fazla örneğini kullanmayı seçebilirsiniz: <br /> {date}, {Time} <br /><br />Blob 'ları bölümlemek için olay verilerinize özel bir {Field} adı belirtmek için özel blob bölümlemesini kullanabilirsiniz. Alan adı alfasayısal olur ve boşluk, kısa çizgi ve alt çizgi içerebilir. Özel alanlardaki kısıtlamalar şunlardır: <ul><li>Alan adları büyük/küçük harfe duyarlı değildir. Örneğin, hizmet "ID" sütununu ve "ID" sütununu ayırt edemiyor.</li><li>İç içe alanlara izin verilmez. Bunun yerine, alanı "düzleştirmek" için iş sorgusunda bir diğer ad kullanın.</li><li>İfadeler alan adı olarak kullanılamaz.</li></ul> <br />Bu özellik, yoldaki özel tarih/saat biçimi belirleyici yapılandırmalarının kullanılmasını mümkün. Özel tarih ve saat biçimleri tek seferde belirtilmelidir ve {DateTime: \<specifier> } anahtar sözcüğü ile alınmıştır. İçin izin verilen girişler \<specifier> yyyy, mm, m, gg, d, hh, H, mm, m, SS veya s şeklindedir. {DateTime: \<specifier> } anahtar sözcüğü, özel tarih/saat yapılandırması oluşturmak için yolunda birden çok kez kullanılabilir. <br /><br />Örnekler: <ul><li>Örnek 1: Cluster1/logs/{Date}/{Time}</li><li>Örnek 2: Cluster1/logs/{Date}</li><li>Örnek 3: Cluster1/{client_id}/{Date}/{Time}</li><li>Örnek 4: Cluster1/{DateTime: ss}/{myField} burada sorgunun olduğu yer: Data. myField ' ı girişte myField olarak BELIRLEYIN;</li><li>Örnek 5: Cluster1/Year = {DateTime: yyyy}/ay = {DateTime: DD}/gün = {DateTime: dd}</ul><br />Oluşturulan klasör yapısının zaman damgası UTC ve yerel saate göre değil.<br /><br />Dosya adlandırma aşağıdaki kuralı kullanır: <br /><br />{Path önek kalıbı}/schemaHashcode_Guid_Number. Extension<br /><br />Örnek çıkış dosyaları:<ul><li>Mbir put/20170901/00/45434_gguid_1. csv</li>  <li>Mbir put/20170901/01/45434_gguid_1. csv</li></ul> <br />Bu özellik hakkında daha fazla bilgi için bkz. [özel blob çıkış bölümlendirme Azure Stream Analytics](stream-analytics-custom-path-patterns-blob-storage-output.md). |
 | Tarih biçimi | İsteğe bağlı. Ön ek yolunda Tarih belirteci kullanılıyorsa, dosyalarınızın düzenlendiği tarih biçimini seçebilirsiniz. Örnek: YYYY/AA/GG |
 | Saat biçimi | İsteğe bağlı. Ön ek yolunda zaman belirteci kullanılıyorsa, dosyalarınızın düzenlendiği saat biçimini belirtin. Şu anda desteklenen tek değer HH 'dir. |
 | Olay serileştirme biçimi | Çıkış verileri için serileştirme biçimi. JSON, CSV, avro ve Parquet destekleniyor. |
@@ -201,7 +201,7 @@ Int64 | Int64 | Dize | Dize | Çift
 Dize | Dize | Dize | Dize | Dize 
 Tarih saat | Dize | Dize |  Tarih saat | Dize
 
-## <a name="table-storage"></a>Tablo depolama
+## <a name="table-storage"></a>Table Storage
 
 [Azure Tablo depolama](../storage/common/storage-introduction.md) , yüksek oranda kullanılabilir ve yüksek düzeyde ölçeklenebilir depolama sunarak, bir uygulamanın kullanıcı talebini karşılayacak şekilde otomatik olarak ölçeklenebilmesini sağlar. Tablo depolama, Microsoft 'un NoSQL anahtar/öznitelik deposudur ve bu, şema üzerinde daha az kısıtlama sunan yapılandırılmış veriler için kullanabileceğiniz bir veritabanıdır. Azure Tablo depolaması, verileri Kalıcılık ve verimli bir şekilde depolamak için kullanılabilir.
 
@@ -353,9 +353,9 @@ Aşağıdaki tabloda, her bir çıkış türü için bölüm desteği ve çıkı
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Yes | Yol öneki düzeninde {Date} ve {Time} belirteçlerini kullanın. YYYY/AA/GG, GG/AA/YYYY veya AA-GG-YYYY gibi bir tarih biçimi seçin. SS, saat biçimi için kullanılır. | [Tam paralelleştirilebilir sorgular](stream-analytics-scale-jobs.md)için giriş bölümlemesini izler. |
 | Azure SQL Veritabanı | Evet, etkin olmalıdır. | Sorgudaki bölüm BY yan tümcesine göre. | Bölümleme seçeneği etkin olduğunda, [tam paralelleştirilebilir sorgular](stream-analytics-scale-jobs.md)için giriş bölümlemesini izler. Azure SQL veritabanı 'na veri yüklerken daha iyi yazma performansı elde etmek hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı 'na Azure Stream Analytics çıktı](stream-analytics-sql-output-perf.md). |
-| Azure Blob depolama | Yes | Yol deseninin olay alanlarınızın {Date} ve {Time} belirteçlerini kullanın. YYYY/AA/GG, GG/AA/YYYY veya AA-GG-YYYY gibi bir tarih biçimi seçin. SS, saat biçimi için kullanılır. Blob çıktısı, {FieldName} veya {DateTime: belirleyicisi>} tek bir özel olay özniteliğiyle bölümlenebilir \< . | [Tam paralelleştirilebilir sorgular](stream-analytics-scale-jobs.md)için giriş bölümlemesini izler. |
+| Azure Blob depolama | Yes | Yol deseninin olay alanlarınızın {Date} ve {Time} belirteçlerini kullanın. YYYY/AA/GG, GG/AA/YYYY veya AA-GG-YYYY gibi bir tarih biçimi seçin. SS, saat biçimi için kullanılır. Blob çıktısı, {FieldName} veya {DateTime:} tek bir özel olay özniteliğiyle bölümlenebilir \<specifier> . | [Tam paralelleştirilebilir sorgular](stream-analytics-scale-jobs.md)için giriş bölümlemesini izler. |
 | Azure Event Hubs | Yes | Yes | Bölüm hizalamasına göre değişir.<br /> Olay Hub 'ı çıkışı için bölüm anahtarı, yukarı akış (önceki) sorgu adımıyla eşit olarak hizalandığında, yazıcı sayısı, Olay Hub 'ı çıkışındaki bölüm sayısıyla aynıdır. Her yazıcı, olayları belirli bir bölüme göndermek için [Eventhubsender sınıfını](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) kullanır. <br /> Olay Hub 'ı çıkışı için bölüm anahtarı, yukarı akış (önceki) sorgu adımıyla hizalanmazsa, yazıcı sayısı önceki adımdaki bölüm sayısıyla aynıdır. Her yazıcı, olayları tüm çıkış bölümlerine göndermek için **Eventhubclient** Içindeki [sendbatchasync sınıfını](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) kullanır. |
-| Power BI | Hayır | Yok | Geçerli değildir. |
+| Power BI | No | Yok | Geçerli değildir. |
 | Azure Tablo depolama | Yes | Herhangi bir çıkış sütunu.  | [Tam paralelleştirilmiş sorgular](stream-analytics-scale-jobs.md)için giriş bölümlemesini izler. |
 | Azure Service Bus konusu | Yes | Otomatik olarak seçildi. Bölüm sayısı [SERVICE Bus SKU 'sunu ve boyutunu](../service-bus-messaging/service-bus-partitioning.md)temel alır. Bölüm anahtarı, her bölüm için benzersiz bir tamsayı değeridir.| Çıktı konusundaki bölüm sayısıyla aynı.  |
 | Azure Service Bus kuyruğu | Yes | Otomatik olarak seçildi. Bölüm sayısı [SERVICE Bus SKU 'sunu ve boyutunu](../service-bus-messaging/service-bus-partitioning.md)temel alır. Bölüm anahtarı, her bölüm için benzersiz bir tamsayı değeridir.| Çıktı sırasındaki bölüm sayısıyla aynı. |

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: 8b67574f435681d8071eda1ad954dcafb5124cbf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1195bb2676634dd3e7c9310da4e8855c4ff814f3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655111"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015973"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Güvenlik Duvarı uygulama kurallarını SQL FQDN 'leri ile yapılandırma
 
@@ -63,4 +63,4 @@ SQL IaaS trafiği için varsayılan olmayan bağlantı noktaları kullanırsanı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL proxy ve yeniden yönlendirme modları hakkında bilgi edinmek için bkz. [Azure SQL veritabanı bağlantı mimarisi](../sql-database/sql-database-connectivity-architecture.md).
+SQL proxy ve yeniden yönlendirme modları hakkında bilgi edinmek için bkz. [Azure SQL veritabanı bağlantı mimarisi](../azure-sql/database/connectivity-architecture.md).

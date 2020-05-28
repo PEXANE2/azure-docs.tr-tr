@@ -15,12 +15,12 @@ ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5bfdcfab37091a5f581ce147c0a6af5ccd8147a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6de80278aa6919fecf67c28356c0917bd6b159d3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77914798"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014885"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Azure PowerShell’i kullanarak bir SQL Server sanal makinesi sağlama (Klasik)
 
@@ -31,7 +31,7 @@ Bu makalede, PowerShell cmdlet 'lerini kullanarak Azure 'da SQL Server sanal mak
 > [!NOTE] 
 > Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir.
 
-Bu konunun Kaynak Yöneticisi sürümü için bkz. [Azure PowerShell Kaynak Yöneticisi kullanarak SQL Server sanal makine sağlama](../sql/virtual-machines-windows-ps-sql-create.md).
+Bu konunun Kaynak Yöneticisi sürümü için bkz. [Azure PowerShell Kaynak Yöneticisi kullanarak SQL Server sanal makine sağlama](../../../azure-sql/virtual-machines/windows/create-sql-vm-powershell.md).
 
 ### <a name="install-and-configure-powershell"></a>PowerShell 'i yükleyip yapılandırın:
 1. Bir Azure hesabınız yoksa, [Azure ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/)yi ziyaret edin.
@@ -203,8 +203,8 @@ Uzak Masaüstü ile makinede oturum açtıktan sonra, [Azure VM 'de SQL Server b
 
 Sanal [makineler belgelerinde](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)PowerShell ile sanal makine sağlamaya yönelik ek yönergeler bulabilirsiniz.
 
-Birçok durumda, bir sonraki adım veritabanlarınızı bu yeni SQL Server VM geçirmeyecektir. Veritabanı geçiş kılavuzu için bkz. [Azure VM 'de bir veritabanını SQL Server geçirme](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+Birçok durumda, bir sonraki adım veritabanlarınızı bu yeni SQL Server VM geçirmeyecektir. Veritabanı geçiş kılavuzu için bkz. [Azure VM 'de bir veritabanını SQL Server geçirme](../../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
-Ayrıca, SQL sanal makineleri oluşturmak için Azure portal kullanmaya da ilgileniyorsanız, bkz. [Azure 'da SQL Server sanal makinesi sağlama](../sql/virtual-machines-windows-portal-sql-server-provision.md). Portalda size yol gösteren öğreticinin, bu PowerShell konusunda kullanılan klasik model yerine önerilen Kaynak Yöneticisi modelini kullanarak VM 'Ler oluşturduğunu unutmayın.
+Ayrıca, SQL sanal makineleri oluşturmak için Azure portal kullanmaya da ilgileniyorsanız, bkz. [Azure 'da SQL Server sanal makinesi sağlama](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md). Portalda size yol gösteren öğreticinin, bu PowerShell konusunda kullanılan klasik model yerine önerilen Kaynak Yöneticisi modelini kullanarak VM 'Ler oluşturduğunu unutmayın.
 
-Bu kaynaklara ek olarak, [Azure sanal makinelerinde SQL Server çalıştırmaya ilişkin diğer konuları](../sql/virtual-machines-windows-sql-server-iaas-overview.md)incelemenizi öneririz.
+Bu kaynaklara ek olarak, [Azure sanal makinelerinde SQL Server çalıştırmaya ilişkin diğer konuları](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)incelemenizi öneririz.

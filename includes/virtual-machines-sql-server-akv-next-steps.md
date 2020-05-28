@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 9df08151e4af6e82a775b3ee99dab88134a2f032
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82784104"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014714"
 ---
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -17,9 +17,9 @@ Azure Key Vault tümleştirmeyi etkinleştirdikten sonra SQL sanal makinenizde S
 
 Avantajlarından faydalanabilirsiniz birkaç şifreleme biçimi vardır:
 
-* [Saydam Veri Şifrelemesi (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Şifrelenmiş yedeklemeler](https://msdn.microsoft.com/library/dn449489.aspx)
-* [Sütun düzeyinde şifreleme (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [Saydam Veri Şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)
+* [Şifrelenmiş yedeklemeler](/sql/relational-databases/backup-restore/backup-encryption)
+* [Sütun düzeyinde şifreleme (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)
 
 Aşağıdaki Transact-SQL betikleri, bu alanların her biri için örnekler sağlar.
 
@@ -146,4 +146,4 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 Bu şifreleme özelliklerinin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [SQL Server şifreleme ÖZELLIKLERIYLE ekm kullanma](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
 
-Bu makaledeki adımlarda, zaten bir Azure sanal makinesinde SQL Server çalıştırmakta olduğunuz varsayılmaktadır. Aksi takdirde bkz. [Azure 'da SQL Server sanal makinesi sağlama](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Azure VM 'lerinde SQL Server çalıştırmaya ilişkin diğer yönergeler için bkz. [Azure sanal makinelerine genel bakış SQL Server](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Bu makaledeki adımlarda, zaten bir Azure sanal makinesinde SQL Server çalıştırmakta olduğunuz varsayılmaktadır. Aksi takdirde bkz. [Azure 'da SQL Server sanal makinesi sağlama](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md). Azure VM 'lerinde SQL Server çalıştırmaya ilişkin diğer yönergeler için bkz. [Azure sanal makinelerine genel bakış SQL Server](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).

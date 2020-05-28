@@ -34,7 +34,7 @@ Bu makalede, öğrencilerin kullanarak laboratuvardaki bir Linux sanal makinesin
    
 1. Kutucukta, durdurulmuş durumdaysa sanal makineyi başlatmak için düğmeyi değiştirin. 
 
-2. **Bağlan**’ı seçin. SANAL makineye bağlanmak için iki seçenek görürsünüz: **SSH** ve **RDP**.
+2. **Bağlan**'ı seçin. SANAL makineye bağlanmak için iki seçenek görürsünüz: **SSH** ve **RDP**.
 
     ![Öğrenci VM-bağlantı seçenekleri](../media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
 

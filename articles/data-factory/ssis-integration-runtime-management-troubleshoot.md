@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 0324044d93f12f6ac6ec96ff1a31be8ee02ada41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414708"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118825"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory 'de SSIS Integration Runtime yönetimi sorunlarını giderme
 
@@ -30,27 +30,27 @@ SSIS IR sağlama veya sağlamayı kaldırma sırasında herhangi bir sorunla kar
 
 Hata kodu ınternalservererror ise, hizmette geçici sorunlar olur ve işlemi daha sonra yeniden denemeniz gerekir. Yeniden deneme işlemi yardım vermezse, Azure Data Factory destek ekibine başvurun.
 
-Aksi takdirde, üç önemli dış bağımlılıklar hatalara neden olabilir: bir Azure SQL veritabanı sunucusu veya yönetilen örnek, özel bir kurulum betiği ve sanal ağ yapılandırması.
+Aksi takdirde, üç önemli dış bağımlılıklar hatalara neden olabilir: Azure SQL veritabanı veya Azure SQL yönetilen örneği, özel bir kurulum betiği ve sanal ağ yapılandırması.
 
-## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Azure SQL veritabanı sunucusu veya yönetilen örnek sorunları
+## <a name="sql-database-or-sql-managed-instance-issues"></a>SQL veritabanı veya SQL yönetilen örnek sorunları
 
-SSIS IR'yi bir SSIS katalog veritabanıyla sağlıyorsanız Azure SQL Veritabanı sunucusu veya yönetilen örneği gereklidir. SSIS IR'nin Azure SQL Veritabanı sunucusuna veya yönetilen örneğine erişebilmesi gerekir. Ayrıca Azure SQL Veritabanı sunucusu veya yönetilen örneğinin hesabı bir SSIS katalog veritabanı (SSISDB) oluşturma iznine sahip olmalıdır. Hata varsa, ayrıntılı SQL özel durum iletisiyle hata kodu Data Factory portalında gösterilir. Hata kodlarındaki sorunları gidermek için aşağıdaki listede yer alan bilgileri kullanın.
+SSIS IR 'yi bir SSIS Katalog veritabanıyla sağlıyorsanız SQL veritabanı veya SQL yönetilen örneği gereklidir. SSIS IR, SQL veritabanı veya SQL yönetilen örneğine erişebilmelidir. Ayrıca, SQL veritabanı veya SQL yönetilen örneği için oturum açma hesabının bir SSIS Katalog veritabanı (SSıSDB) oluşturma izni olmalıdır. Hata varsa, ayrıntılı SQL özel durum iletisiyle hata kodu Data Factory portalında gösterilir. Hata kodlarındaki sorunları gidermek için aşağıdaki listede yer alan bilgileri kullanın.
 
 ### <a name="azuresqlconnectionfailure"></a>AzureSqlConnectionFailure
 
 Yeni SSIS IR sağlarken veya IR çalıştırılırken bu hatayı görebilirsiniz. IR sağlama sırasında bu hatayla karşılaşırsanız hata iletisinde aşağıdaki sorunlardan birine işaret eden ayrıntılı bir hata alabilirsiniz:
 
-* Ağ bağlantısı sorunu. SQL Server veya yönetilen örnek konak adının erişilebilir olup olmadığını denetleyin. Ayrıca hiçbir güvenlik duvarı veya ağ güvenlik grubunun (NSG) SSIS IR'nin sunucuya erişimini engellemediğini doğrulayın.
+* Ağ bağlantısı sorunu. SQL veritabanı veya SQL yönetilen örneği için konak adının erişilebilir olup olmadığını denetleyin. Ayrıca hiçbir güvenlik duvarı veya ağ güvenlik grubunun (NSG) SSIS IR'nin sunucuya erişimini engellemediğini doğrulayın.
 * SQL kimlik doğrulaması sırasında oturum açma başarısız oldu. Sağlanan hesap SQL Server veritabanında oturum açamıyor. Doğru kullanıcı hesabını sağladığınızdan emin olun.
 * Microsoft Azure Active Directory (Azure AD) kimlik doğrulaması (yönetilen kimlik) sırasında oturum açma başarısız oldu. Fabrikanızın yönetilen kimliğini bir AAD grubuna ekleyin ve yönetilen kimliğin katalog veritabanı sunucunuza erişim izinleri olduğundan emin olun.
 * Bağlantı zaman aşımı. Bu hatanın nedeni her zaman güvenlikle ilgili yapılandırmadır. Şunları yapmanızı öneririz:
   1. Yeni bir VM oluşturun.
   1. IR bir sanal ağda ise, VM 'yi IR 'nin aynı Microsoft Azure Sanal Ağ birleştirin.
-  1. SSMS 'yi yükleyip Azure SQL veritabanı sunucusunu veya yönetilen örnek durumunu denetleyin.
+  1. SSMS 'yi yükleyip SQL veritabanı veya SQL yönetilen örnek durumunu denetleyin.
 
-Diğer sorunlar için, ayrıntılı SQL Özel Durum hata iletisinde gösterilen sorunu çözün. Sorun yaşamaya devam ediyorsanız Azure SQL Veritabanı sunucusu veya yönetilen örneğinin destek takımına başvurun.
+Diğer sorunlar için, ayrıntılı SQL Özel Durum hata iletisinde gösterilen sorunu çözün. Hala sorun yaşıyorsanız SQL veritabanı veya SQL yönetilen örnek destek ekibine başvurun.
 
-Hatayı IR çalıştırılırken görüyorsanız, ağ güvenlik grubu veya güvenlik duvarı değişiklikleri SSIS IR çalışan düğümünün Azure SQL Veritabanı sunucusuna veya yönetilen örneğine erişmesini engelliyor olabilir. SSIS IR çalışan düğümünün engelini kaldırarak Azure SQL Veritabanı sunucusuna veya yönetilen örneğine erişebilmesini sağlayın.
+IR çalışırken hata görürseniz, ağ güvenlik grubu veya güvenlik duvarı değişiklikleri büyük olasılıkla SSIS IR çalışan düğümünün SQL veritabanı 'na veya SQL yönetilen örneğine erişmesini engelleyebilir. SQL veritabanı veya SQL yönetilen örneği 'ne erişebilmeleri için SSIS IR çalışan düğümünün engellemesini kaldırın.
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
@@ -65,20 +65,20 @@ Olası çözümler şunlardır:
 
 ### <a name="catalogdbbelongstoanotherir"></a>CatalogDbBelongsToAnotherIR
 
-Bu hata Azure SQL Veritabanı sunucusunun veya yönetilen örneğinin zaten bir SSISDB'si olduğu ve bunun başka bir IR tarafından kullanıldığı anlamına gelir. Farklı bir Azure SQL Veritabanı sunucusu veya yönetilen örneği sağlamalı veya mevcut SSISDB'yi silip yeni IR'yi yeniden başlatmalısınız.
+Bu hata SQL veritabanı veya SQL yönetilen örneğinin zaten bir SSSıSDB 'ye sahip olduğu ve başka bir IR tarafından kullanıldığı anlamına gelir. Farklı bir SQL veritabanı veya SQL yönetilen örneği sağlamanız ya da var olan SSSıSDB 'yi silmeniz ve yeni IR 'yi yeniden başlatmanız gerekir.
 
 ### <a name="catalogdbcreationfailure"></a>CatalogDbCreationFailure
 
 Bu hatanın oluşmasının nedeni aşağıdakilerden biri olabilir:
 
 * SSIS IR için yapılandırılan kullanıcı hesabının veritabanı oluşturma izni yoktur. Kullanıcıya veritabanını oluşturma izni verebilirsiniz.
-* Veritabanı oluşturma sırasında yürütme zaman aşımı veya DB işlemi zaman aşımı gibi bir zaman aşımı oluşmuştur. İşlemi daha sonra yeniden denemelisiniz. Yeniden deneme işe yaramazsa Azure SQL Veritabanı sunucusu veya Yönetilen Örneğinin destek takımına başvurun.
+* Veritabanı oluşturma sırasında yürütme zaman aşımı veya DB işlemi zaman aşımı gibi bir zaman aşımı oluşmuştur. İşlemi daha sonra yeniden denemelisiniz. Yeniden deneme işe yaramazsa SQL veritabanı veya SQL yönetilen örnek destek ekibine başvurun.
 
-Diğer sorunlar için SQL Özel Durumu hata iletisini gözden geçirin ve hata ayrıntılarında belirtilen sorunu çözün. Sorun yaşamaya devam ediyorsanız Azure SQL Veritabanı sunucusu veya yönetilen örneğinin destek takımına başvurun.
+Diğer sorunlar için SQL Özel Durumu hata iletisini gözden geçirin ve hata ayrıntılarında belirtilen sorunu çözün. Hala sorun yaşıyorsanız SQL veritabanı veya SQL yönetilen örnek destek ekibine başvurun.
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Bu tür bir hata iletisi şöyle görünür: "geçersiz nesne adı ' kataloğu. catalog_properties '." Bu durumda, zaten SSSıSDB adlı bir veritabanınız var, ancak SSIS IR tarafından oluşturulmamış veya veritabanı, son SSIS IR sağlama hatalarından kaynaklanan geçersiz bir durumda. SSISDB adlı mevcut veritabanını bırakabilir veya IR için yeni bir Azure SQL Veritabanı sunucusu veya yönetilen örneği yapılandırabilirsiniz.
+Bu tür bir hata iletisi şöyle görünür: "geçersiz nesne adı ' kataloğu. catalog_properties '." Bu durumda, zaten SSSıSDB adlı bir veritabanınız var, ancak SSIS IR tarafından oluşturulmamış veya veritabanı, son SSIS IR sağlama hatalarından kaynaklanan geçersiz bir durumda. Var olan veritabanını SSSıSDB adıyla bırakabilir veya IR için yeni bir SQL veritabanı ya da SQL yönetilen örneği yapılandırabilirsiniz.
 
 ## <a name="custom-setup-issues"></a>Özel Kurulum sorunları
 

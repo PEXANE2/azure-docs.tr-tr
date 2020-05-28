@@ -1,52 +1,44 @@
 ---
-title: Azure Otomasyonu Güncelleştirme Yönetimi kapsam yapılandırmalarına göre çalışma
-description: Bu makalede, Güncelleştirme Yönetimi kullanırken kapsam yapılandırmalarına nasıl çalışacağınızı söyliyoruz.
+title: Azure Otomasyonu Güncelleştirme Yönetimi dağıtım kapsamını sınırlandırma
+description: Bu makalede, Güncelleştirme Yönetimi dağıtımının kapsamını sınırlamak için kapsam yapılandırmalarının nasıl kullanılacağı açıklanır.
 services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 23ec49f2d68cf376ef0beb118d8bf69ada7bc0de
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 72065b388f348da1d268f875a10d5b13d2f8cf3b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832036"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117394"
 ---
-# <a name="work-with-scope-configurations-for-update-management"></a>Güncelleştirme Yönetimi için kapsam yapılandırmasıyla çalışma
+# <a name="limit-update-management-deployment-scope"></a>Güncelleştirme Yönetimi dağıtım kapsamını sınırla
 
-Bu makalede, VM 'lerde [güncelleştirme yönetimi](automation-update-management.md) özelliğini kullanırken kapsam yapılandırmalarına nasıl çalışabileceğinizi açıklanmaktadır. 
+Bu makalede, sanal makinelerinize güncelleştirmeler ve düzeltme ekleri dağıtmak için [güncelleştirme yönetimi](automation-update-management.md) özelliği kullanılırken kapsam yapılandırmalarının nasıl çalıştığı açıklanır. Daha fazla bilgi için bkz. [Azure izleyici 'de izleme çözümlerini hedefleme (Önizleme)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="about-scope-configurations"></a>Kapsam konfigürasyonları hakkında
 
-https://portal.azure.com adresinden Azure portalında oturum açın.
+Kapsam yapılandırması, Güncelleştirme Yönetimi kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama (sorgu) grubudur. Kapsam yapılandırması, etkinleştirmek üzere bilgisayarları hedeflemek için Log Analytics çalışma alanında kullanılır. Güncelleştirme Yönetimi güncelleştirmeleri almak üzere bir bilgisayar eklediğinizde, bilgisayar çalışma alanındaki kayıtlı bir aramaya de eklenir.
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>Kapsam yapılandırmasını denetleme
+## <a name="set-the-scope-limit"></a>Kapsam sınırını ayarla
 
-Güncelleştirme Yönetimi, özelliği etkinleştirmek üzere bilgisayarları hedeflemek için Log Analytics çalışma alanındaki kapsam yapılandırmasını kullanır. Kapsam yapılandırması, özelliğin kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Kapsam yapılandırmalarına erişmek için:
+Güncelleştirme Yönetimi dağıtımınızın kapsamını sınırlandırmak için:
 
-1. Otomasyon hesabınızda **ilgili kaynaklar**altında **çalışma alanı**' nı seçin. 
+1. Otomasyon hesabınızda **ilgili kaynaklar**altında **bağlantılı çalışma alanı** ' nı seçin.
 
-2. **Çalışma alanı veri kaynakları**altında çalışma alanını seçin ve **kapsam yapılandırması**' nı seçin.
+2. **Çalışma alanına git ' e**tıklayın.
 
-3. Seçilen çalışma alanında Güncelleştirme Yönetimi özelliği henüz etkinleştirilmemişse, `MicrosoftDefaultScopeConfig-Updates` kapsam yapılandırması oluşturulur. 
+3. **Çalışma alanı veri kaynakları**altında **kapsam yapılandırma (Önizleme)** öğesini seçin.
 
-4. Seçilen çalışma alanı özelliği zaten etkinse, yeniden dağıtılır ve kapsam yapılandırması buna eklenmez. 
+4. Kapsam yapılandırmasının sağ tarafındaki üç noktayı seçin `MicrosoftDefaultScopeConfig-Updates` ve **Düzenle**' ye tıklayın. 
 
-5. Kapsam yapılandırmalarının herhangi birinde üç noktayı seçin ve ardından **Düzenle**' ye tıklayın. 
+5. Düzen bölmesinde **bilgisayar grupları seç**' i genişletin. Bilgisayar grupları bölmesi, kapsam yapılandırmasını oluşturmak için kullanılan kaydedilmiş aramaları gösterir. Güncelleştirme Yönetimi tarafından kullanılan kayıtlı arama:
 
-6. Düzen bölmesinde **bilgisayar gruplarını Seç**' i seçin. Bilgisayar grupları bölmesi, kapsam yapılandırmasını oluşturmak için kullanılan kaydedilmiş aramaları gösterir.
+    |Name     |Kategori  |Diğer ad  |
+    |---------|---------|---------|
+    |MicrosoftDefaultComputerGroup     | Güncelleştirmeler        | Updates__MicrosoftDefaultComputerGroup         |
 
-## <a name="view-a-saved-search"></a>Kayıtlı bir aramayı görüntüleme
-
-Bir bilgisayar Güncelleştirme Yönetimi eklendiğinde, çalışma alanınızda kayıtlı bir aramaya de eklenir. Kayıtlı arama, hedeflenen bilgisayarları içeren bir sorgudur.
-
-1. Log Analytics çalışma alanınıza gidin ve **genel**altında **kaydedilmiş aramalar** ' ı seçin. Güncelleştirme Yönetimi tarafından kullanılan kayıtlı arama:
-
-|Name     |Kategori  |Diğer ad  |
-|---------|---------|---------|
-|MicrosoftDefaultComputerGroup     | Güncelleştirmeler        | Updates__MicrosoftDefaultComputerGroup         |
-
-2. Grubu doldurmak için kullanılan sorguyu görüntülemek için kayıtlı aramayı seçin. Aşağıdaki görüntüde sorgu ve sonuçları gösterilmektedir:
+6. Grubu doldurmak için kullanılan sorguyu görüntülemek ve düzenlemek için kayıtlı aramayı seçin. Aşağıdaki görüntüde sorgu ve sonuçları gösterilmektedir:
 
     ![Kayıtlı aramalar](media/automation-scope-configurations-update-management/logsearch.png)
 

@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyicisine genel bakış | Microsoft Docs
 description: Bu makalede AKS kapsayıcı öngörüleri çözümünü izleyen kapsayıcılar için Azure Izleyici ve AKS kümelerinizin sistem durumunu ve Azure 'daki Container Instances izleyerek sunduğu değer açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5bd951f7dcb2def62893df48709f1e57bd340bb2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275236"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118074"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Kapsayıcılar için Azure İzleyici'ye genel bakış
 
@@ -48,7 +48,7 @@ Kapsayıcılar için Azure Izleyici, Azure Izleyici 'nin farklı özelliklerini 
 
 Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan izlemedeki başlıca farklar şunlardır:
 
-- Bellek RSS ölçümü Windows düğüm ve kapsayıcıları için kullanılamaz.
+- Windows 'un bellek RSS ölçümü yoktur ve bu nedenle Windows düğüm ve kapsayıcılar için kullanılamaz. Çalışma kümesi kullanılabilir. [Windows 'da bellek yönetimi](https://docs.microsoft.com/windows/win32/memory/working-set)hakkında daha fazla bilgi edinin.
 - Disk depolama kapasitesi bilgileri Windows düğümleri için kullanılamaz.
 - Kapsayıcı günlükleri Windows düğümlerinde çalışan kapsayıcılar için kullanılamaz.
 - Canlı veriler (Önizleme) özelliği desteği, Windows kapsayıcı günlükleri dışında bulunur.

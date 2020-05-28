@@ -4,19 +4,19 @@ description: Tüm kullanıcıların Multi-Factor Authentication gerçekleştirme
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d0ad0a1c0a1b4d13ce4d386df22406a8ab8e51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7af1347ac57e1a5c5ae99744924ea04fe9757581
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617622"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995362"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Koşullu erişim: tüm kullanıcılar için MFA gerektir
 
@@ -44,17 +44,17 @@ Kuruluşların kullanımda olan çok sayıda bulut uygulaması olabilir. Bu uygu
 Aşağıdaki adımlar, tüm kullanıcıların Multi-Factor Authentication gerçekleştirmesini gerektirmek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Dahil et**altında **tüm kullanıcılar** ' ı seçin
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemleri** > **dahil**, **tüm bulut uygulamaları**' nı seçin.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin.
    1. **Hariç tut**' un altında, Multi-Factor Authentication gerektirmeyen tüm uygulamaları seçin.
-1. **Koşullar** > **istemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi seçin.
-1. **Erişim denetimleri** > **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**' i seçin
+1. **Conditions**  >  **İstemci uygulamaları (Önizleme)** koşulları altında **Yapılandır** ' ı **Evet**olarak ayarlayın. Bu ilke, tüm varsayılanları seçili bırakmak **için uygulanacak istemci uygulamalarını seçin** ' in altında, **bitti**' yi seçin.
+1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**' i seçin
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 
@@ -64,7 +64,7 @@ Kuruluşlar, **adlandırılmış konumlar** olarak bilinen bilinen ağ konumlar�
 
 Yukarıdaki örnek ilkede, bir kuruluş, kurumsal ağından bir bulut uygulamasına erişiyorsanız çok faktörlü kimlik doğrulaması gerektirmeyebilir. Bu durumda, şu yapılandırmayı ilkeye ekleyebilirler:
 
-1. **Atamalar**' ın altında, **koşullar** > **konumlar**' ı seçin.
+1. **Atamalar**' ın altında, **koşullar**  >  **konumlar**' ı seçin.
    1. **Evet 'i**yapılandırın.
    1. **Herhangi bir konum**ekleyin.
    1. **Tüm güvenilen konumları**hariç tutun.

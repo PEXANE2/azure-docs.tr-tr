@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3abf7b4acfae5e90d0b3f6781b8fbbf0f6f1427d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 451d0709a8b0a1c0993ff879d675eb056e721c36
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860605"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116628"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -238,6 +238,7 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 > [!NOTE]
 > Genel okuyucu rolünde Şu anda birkaç kısıtlama vardır-
 >
+>- [OneDrive Yönetim Merkezi](https://admin.onedrive.com/) -OneDrive Yönetim Merkezi, genel okuyucu rolünü desteklemez
 >- [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, müşteri kasası isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde, **destek** altında **müşteri kasası istekleri** sekmesini bulmayacağız.
 >- [Office güvenlik & Uyumluluk Merkezi](https://sip.protection.office.com/homepage) -küresel okuyucu SCC denetim günlüklerini okuyamıyor, içerik araması yapamıyor veya güvenli puanı göremez.
 >- [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu **takımlar yaşam döngüsünü**, **analiz & raporlarını**, **IP telefon cihaz yönetimini** ve **uygulama kataloğunu**okuyamıyor.
