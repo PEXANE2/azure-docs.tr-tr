@@ -29,7 +29,7 @@
           href: tutorial-run-ml-model-on-sql-edge.md
 - name: Nasıl yapılır
   items:
-    - name: DAC paketleri ve Stream Analytics işleri
+    - name: Stream Analytics işlerini dağıtma
       href: stream-analytics.md
     - name: Çoğaltmayı yapılandırma
       href: configure-replication.md

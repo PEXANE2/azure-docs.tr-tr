@@ -3,12 +3,12 @@ title: Azure Backup için geçici silme
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d7831488482ef154ce00685e513b36ed235e335e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 2b0d7a00bce8dfa427958f6db6d7174b9d5f7a79
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791400"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116411"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup için geçici silme
 
@@ -16,7 +16,10 @@ Kötü amaçlı yazılım, fidye ve yetkisiz erişim gibi güvenlik sorunları h
 
 Bu tür bir özellik, geçici bir DELETE. Kötü niyetli bir aktör bir yedeği silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin ek 14 gün bekletmesi müşteriye hiçbir ücret vermez.
 
-Azure [sanal makineleri Için geçici silme](soft-delete-virtual-machines.md) ve Azure VM ['de SQL Server için geçici SILME ve Azure VM iş yüklerindeki SAP HANA için](soft-delete-sql-saphana-in-azure-vm.md) geçici silme, herkes tarafından kullanılabilir.
+Bu hizmetler için geçici silme koruması kullanılabilir:
+
+- [Azure sanal makineleri için geçici silme](soft-delete-virtual-machines.md)
+- [Azure VM 'de SQL Server için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme](soft-delete-sql-saphana-in-azure-vm.md)
 
 Bu akış grafiği, geçici silme etkinleştirildiğinde bir yedekleme öğesinin farklı adımlarını ve durumlarını gösterir:
 
@@ -32,8 +35,8 @@ Geçici silme, yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı 
 
 Geçici silme devre dışı bırakmak için şu adımları izleyin:
 
-1. Azure Portal, kasanıza gidin ve **Ayarlar** -> **Özellikler**' e gidin.
-2. Özellikler bölmesinde **güvenlik ayarları** -> **güncelleştirme**' yi seçin.  
+1. Azure Portal, kasanıza gidin ve **Ayarlar**  ->  **Özellikler**' e gidin.
+2. Özellikler bölmesinde **güvenlik ayarları**  ->  **güncelleştirme**' yi seçin.  
 3. Güvenlik ayarları bölmesinde, **geçici silme**altında **devre dışı bırak**' ı seçin.
 
 ![Geçici silmeyi devre dışı bırak](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
@@ -41,7 +44,7 @@ Geçici silme devre dışı bırakmak için şu adımları izleyin:
 ### <a name="disabling-soft-delete-using-azure-powershell"></a>Azure PowerShell kullanarak geçici silme devre dışı bırakılıyor
 
 > [!IMPORTANT]
-> Azure PS kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü min 2.2.0. En ```Install-Module -Name Az.RecoveryServices -Force``` son sürümü almak için kullanın.
+> Azure PS kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü min 2.2.0. ```Install-Module -Name Az.RecoveryServices -Force```En son sürümü almak için kullanın.
 
 Devre dışı bırakmak için [set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS cmdlet 'ini kullanın.
 

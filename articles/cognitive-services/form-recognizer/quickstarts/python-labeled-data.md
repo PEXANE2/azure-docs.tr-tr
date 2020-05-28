@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 59f969a920c30bb017e10d2aa233df02d69918e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594177"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116901"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API ve Python kullanarak etiketli form tanıyıcı modelini eğitme
 
@@ -22,11 +22,11 @@ Bu hızlı başlangıçta, el ile etiketlenmiş verileri olan özel bir modeli e
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
-- Aynı türde en az altı biçim kümesi. Bu verileri, modeli eğitme ve bir formu test etmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
+- Aynı türde en az altı biçim kümesi. Bu verileri modeli eğitme ve bir formu test etmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
 
 ## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
 
@@ -34,15 +34,15 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 ## <a name="set-up-training-data"></a>Eğitim verilerini ayarlama
 
-Daha sonra gerekli giriş verilerini ayarlamanız gerekir. Etiketli veri özelliği, özel bir modeli eğitmek için gerekenlerden daha fazla özel giriş gereksinimlerine sahiptir. 
+Daha sonra gerekli giriş verilerini ayarlamanız gerekir. Etiketli veri özelliği, etiketleri olmayan özel bir modeli eğitme gereksinimlerinden daha fazla özel giriş gereksinimlerine sahiptir.
 
 Tüm eğitim belgelerinin aynı biçimde olduğundan emin olun. Birden çok biçimdeki formlara sahipseniz, bunları ortak biçime göre alt klasörlere göre düzenleyin. Eğitedığınızda, API 'yi bir alt klasöre yönlendirmeniz gerekir.
 
 Etiketli verileri kullanarak bir modeli eğitebilmek için, alt klasörde giriş olarak aşağıdaki dosyalar gerekir. Aşağıda bu dosyanın nasıl oluşturulacağını öğreneceksiniz.
 
 * **Kaynak formları** : verilerin ayıklanacağı formlar. Desteklenen türler JPEG, PNG, PDF veya TIFF.
-* **OCR düzen dosyaları** -her kaynak formunda tüm okunabilir metinlerin boyutlarını ve konumlarını tanımlayan JSON dosyaları. Bu verileri oluşturmak için form tanıyıcı düzeni API 'SI kullanılır. 
-* **Etiket dosyaları** -bir kullanıcının el ile girdiği veri etiketlerini açıklayan JSON dosyaları.
+* **OCR düzen dosyaları** -bunlar her kaynak formunda tüm okunabilir metinlerin boyutlarını ve KONUMLARıNı tanımlayan JSON dosyalarıdır. Bu verileri oluşturmak için form tanıyıcı düzeni API 'SI kullanılır. 
+* **Etiket dosyaları** -bu, bir kullanıcının el ile girdiği veri ETIKETLERINI tanımlayan JSON dosyalarıdır.
 
 Tüm bu dosyalar aynı alt klasörü kaplamalıdır ve aşağıdaki biçimde olmalıdır:
 
@@ -116,7 +116,7 @@ Hizmetin etiketli eğitim için karşılık gelen giriş dosyalarını göz ön�
 
 ### <a name="create-the-label-files"></a>Etiket dosyalarını oluşturma
 
-Etiket dosyaları, bir kullanıcının el ile girdiği anahtar-değer ilişkilerini içerir. Etiketlendirilmiş veri eğitiminde olmaları gerekir, ancak her kaynak dosyanın karşılık gelen bir etiket dosyası olması gerekmez. Etiketleri olmayan kaynak dosyalar, sıradan eğitim belgeleri olarak değerlendirilir. Güvenilir eğitim için beş veya daha fazla etiketlenmiş dosya öneririz.
+Etiket dosyaları, bir kullanıcının el ile girdiği anahtar-değer ilişkilerini içerir. Etiketlendirilmiş veri eğitiminde olmaları gerekir, ancak her kaynak dosyanın karşılık gelen bir etiket dosyası olması gerekmez. Etiketleri olmayan kaynak dosyalar, sıradan eğitim belgeleri olarak değerlendirilir. Güvenilir eğitim için beş veya daha fazla etiketlenmiş dosya öneririz. Bu dosyaları oluşturmak için [örnek etiketleme aracı](./label-tool.md) gibi bir kullanıcı arabirimi aracı kullanabilirsiniz.
 
 Bir etiket dosyası oluşturduğunuzda, isteğe bağlı olarak &mdash; belgedeki değerlerin tam konumlarını belirtebilirsiniz. Bu, eğitime daha da fazla doğruluk sağlar. Bölgeler dört X, Y koordinatlarına karşılık gelen sekiz değer kümesi olarak biçimlendirilir: sol üst, sağ üst, sağ alt ve sol alt. Koordinat değerleri, sayfanın boyutlarına ölçeklendirilen sıfır ve diğeri arasındadır.
 
@@ -187,8 +187,8 @@ Her kaynak formu için, karşılık gelen etiket dosyası eklenmiş özgün dosy
                 ...
 ```
 
-> [!NOTE]
-> Her metin öğesine yalnızca bir etiket uygulayabilirsiniz ve her etiket sayfa başına yalnızca bir kez uygulanabilir. Şu anda birden çok sayfada bir etiket uygulayamazsınız.
+> [!IMPORTANT]
+> Her metin öğesine yalnızca bir etiket uygulayabilirsiniz ve her etiket sayfa başına yalnızca bir kez uygulanabilir. Birden çok sayfada bir etiket uygulayamazsınız.
 
 
 ## <a name="train-a-model-using-labeled-data"></a>Etiketli verileri kullanarak bir modeli eğitme
@@ -554,4 +554,7 @@ Bu senaryonun müşterilerimiz için önemli olduğunu anladık ve gelecekte bun
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, el ile etiketlenmiş verilerle bir modeli eğitmek için Python ile REST API form tanıyıcıyı kullanmayı öğrendiniz. Sonra, form tanıyıcı API 'sini daha ayrıntılı incelemek için [API başvuru belgelerine](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) bakın.
+Bu hızlı başlangıçta, el ile etiketlenmiş verilerle bir modeli eğitmek için Python ile REST API form tanıyıcıyı kullanmayı öğrendiniz. Sonra, form tanıyıcı API 'sini daha ayrıntılı incelemek için API başvuru belgelerine bakın.
+
+> [!div class="nextstepaction"]
+> [REST API başvuru belgeleri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

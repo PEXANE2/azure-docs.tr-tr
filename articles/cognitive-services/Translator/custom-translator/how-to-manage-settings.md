@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 50bff8e55d1b125f56696ac485bc1e05193dea55
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587263"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992955"
 ---
 # <a name="how-to-manage-settings"></a>Ayarları yönetme
 
@@ -39,17 +39,17 @@ Aboneliğiniz yoksa, aşağıdaki adımları izleyin:
 
 ### <a name="add-existing-key"></a>Mevcut anahtarı Ekle
 
-1.  Çalışma alanınızın "Ayarlar" sayfasına gidin.
-2.  Anahtar Ekle 'ye tıklayın
+1.    Çalışma alanınızın "Ayarlar" sayfasına gidin.
+2.    Anahtar Ekle 'ye tıklayın
 
-    ![Abonelik anahtarı ekleme](media/how-to/how-to-add-subscription-key.png)
+   ![Abonelik anahtarı ekleme](media/how-to/how-to-add-subscription-key.png)
 
 3. İletişim kutusunda, Translator aboneliğiniz için anahtarı girin ve ardından "Ekle" düğmesine tıklayın.
 
     ![Abonelik anahtarı ekleme](media/how-to/how-to-add-subscription-key-dialog.png)
-4.  Bir anahtar ekledikten sonra, anahtarı dilediğiniz zaman değiştirebilir veya silebilirsiniz.
+4.    Bir anahtar ekledikten sonra, anahtarı dilediğiniz zaman değiştirebilir veya silebilirsiniz.
 
-    ![Ekleme sonrasında abonelik anahtarı](media/how-to/subscription-key-after-add.png)
+   ![Ekleme sonrasında abonelik anahtarı](media/how-to/subscription-key-after-add.png)
 
 ## <a name="manage-your-workspace"></a>Çalışma alanınızı yönetme
 
@@ -59,47 +59,47 @@ Aboneliğiniz yoksa, aşağıdaki adımları izleyin:
 
 ## <a name="create-a-new-workspace"></a>Yeni çalışma alanı oluşturma
 
-1.  Çalışma alanı "ayarları" sayfasına gidin.
-2.  "Yeni çalışma alanı oluştur" bölümünde "yeni çalışma alanı" düğmesine tıklayın.
+1.    Çalışma alanı "ayarları" sayfasına gidin.
+2.    "Yeni çalışma alanı oluştur" bölümünde "yeni çalışma alanı" düğmesine tıklayın.
 
-    ![Yeni çalışma alanı oluştur](media/how-to/create-new-workspace.png)
+   ![Yeni çalışma alanı oluştur](media/how-to/create-new-workspace.png)
 
-4.  İletişim kutusunda yeni çalışma alanının adını girin.
-5.  "Oluştur" a tıklayın.
+4.    İletişim kutusunda yeni çalışma alanının adını girin.
+5.    "Oluştur" a tıklayın.
 
-    ![Yeni çalışma alanı oluştur iletişim kutusu](media/how-to/create-new-workspace-dialog.png)
+   ![Yeni çalışma alanı oluştur iletişim kutusu](media/how-to/create-new-workspace-dialog.png)
 
 ## <a name="share-your-workspace"></a>Çalışma alanınızı paylaşma
 
 Özel çevirmende, çalışmanızın farklı bir kısmının farklı kişilerle paylaşılması gerekiyorsa, çalışma alanınızı başkalarıyla paylaşabilirsiniz.
 
-1.  Çalışma alanı "ayarları" sayfasına gidin.
-2.  "Paylaşım ayarları" bölümünde "paylaşım" düğmesine tıklayın.
+1.    Çalışma alanı "ayarları" sayfasına gidin.
+2.    "Paylaşım ayarları" bölümünde "paylaşım" düğmesine tıklayın.
 
-    ![Çalışma alanını paylaşma](media/how-to/share-workspace.png)
+   ![Çalışma alanını paylaşma](media/how-to/share-workspace.png)
 
-3.  İletişim kutusunda, bu çalışma alanının paylaşılacağını istediğiniz, virgülle ayrılmış bir e-posta adresi listesi girin. İle özel çevirmende oturum açmak için kişinin kullandığı e-posta adresiyle paylaşımda olduğunuzdan emin olun. Ardından uygun paylaşım düzeyini seçin.
+3.    İletişim kutusunda, bu çalışma alanının paylaşılacağını istediğiniz, virgülle ayrılmış bir e-posta adresi listesi girin. İle özel çevirmende oturum açmak için kişinin kullandığı e-posta adresiyle paylaşımda olduğunuzdan emin olun. Ardından uygun paylaşım düzeyini seçin.
 
-4.  Çalışma alanınız "My Workspace" varsayılan adına sahipse, çalışma alanınızı paylaşmadan önce değiştirmeniz gerekecektir.
-5.  "Kaydet" e tıklayın.
+4.    Çalışma alanınız "My Workspace" varsayılan adına sahipse, çalışma alanınızı paylaşmadan önce değiştirmeniz gerekecektir.
+5.    "Kaydet" e tıklayın.
 
 ## <a name="sharing-permissions"></a>Paylaşım izinleri
 
-1.  **Okuyucu:** Çalışma alanındaki bir okuyucu, çalışma alanındaki tüm bilgileri görüntüleyebilecektir.
+1.    **Okuyucu:** Çalışma alanındaki bir okuyucu, çalışma alanındaki tüm bilgileri görüntüleyebilecektir.
 
-2.  **Düzenleyici:** Çalışma alanındaki bir düzenleyici belge ekleyebilir, modelleri eğitebilir ve belge ve projeleri silebilir. Abonelik anahtarı ekleyebilirler, ancak çalışma alanının kimlerle paylaşıldığını değiştiremezler, çalışma alanını silebilir veya çalışma alanı adını değiştirebilirsiniz.
+2.    **Düzenleyici:** Çalışma alanındaki bir düzenleyici belge ekleyebilir, modelleri eğitebilir ve belge ve projeleri silebilir. Abonelik anahtarı ekleyebilirler, ancak çalışma alanının kimlerle paylaşıldığını değiştiremezler, çalışma alanını silebilir veya çalışma alanı adını değiştirebilirsiniz.
 
-3.  **Sahip:** Bir sahibin çalışma alanı üzerinde tam izinleri vardır.
+3.    **Sahip:** Bir sahibin çalışma alanı üzerinde tam izinleri vardır.
 
 ## <a name="change-sharing-permission"></a>Paylaşım iznini Değiştir
 
 Bir çalışma alanı paylaşıldığında, "paylaşım ayarları" bölümü, bu çalışma alanının paylaşıldığı tüm e-posta adreslerini gösterir. Çalışma alanına sahip erişiminiz varsa, her bir e-posta adresi için varolan paylaşım iznini değiştirebilirsiniz.
 
-1.  Her e-posta için "paylaşım ayarları" bölümünde, bir açılan menü, geçerli izin düzeyini gösterir.
+1.    Her e-posta için "paylaşım ayarları" bölümünde, bir açılan menü, geçerli izin düzeyini gösterir.
 
-2.  Açılır menüye tıklayın ve bu e-posta adresine atamak istediğiniz yeni izin düzeyini seçin.
+2.    Açılır menüye tıklayın ve bu e-posta adresine atamak istediğiniz yeni izin düzeyini seçin.
 
-    ![İzin ayarlarını paylaşma](media/how-to/sharing-permission-settings.png)
+   ![İzin ayarlarını paylaşma](media/how-to/sharing-permission-settings.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

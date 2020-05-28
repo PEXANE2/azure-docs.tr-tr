@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) içindeki kümeler için kimlik doğ
 services: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0e3569be769fcf70a65cbfee62a3b80a5abdc3b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e02b542f74a2dd7b7e88f1fa075ad6a736895e76
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668307"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020056"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetinde (AKS) kimlik doğrulama ve yetkilendirme için en iyi yöntemler
 
@@ -19,6 +19,7 @@ Azure Kubernetes Service (AKS) içinde kümeler dağıtıp bakımını yaparken,
 Bu en iyi yöntemler makalesi, bir küme işlecinin AKS kümelerinin erişimini ve kimliğini nasıl yönetebileceğini ele alır. Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Azure Active Directory ile AKS kümesi kullanıcılarının kimliğini doğrulama
 > * Rol tabanlı erişim denetimleri (RBAC) ile kaynaklara erişimi denetleme
 > * Diğer hizmetlerle kimlik doğrulamak için yönetilen bir kimlik kullanın
@@ -62,7 +63,7 @@ rules:
   verbs: ["*"]
 ```
 
-Daha sonra, aşağıdaki YAML bildiriminde gösterildiği gibi Azure AD user *developer1\@contoso.com* öğesini RoleBinding 'e bağlayan bir rolebinding oluşturulur:
+Daha sonra, aşağıdaki YAML bildiriminde gösterildiği gibi Azure AD user *developer1 \@ contoso.com* öğesini rolebinding 'e bağlayan bir rolebinding oluşturulur:
 
 ```yaml
 kind: RoleBinding
@@ -80,7 +81,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-AKS kümesinde *developer1\@contoso.com* kimlik doğrulaması yapıldığında, *finans-uygulama* ad alanındaki kaynaklar üzerinde tam izinlere sahip olurlar. Bu şekilde, kaynaklara erişimi mantıksal olarak ayırabilirsiniz ve kontrol edersiniz. Kubernetes RBAC, önceki bölümde anlatıldığı gibi Azure AD tümleştirmesi ile birlikte kullanılmalıdır.
+AKS kümesinde *developer1 \@ contoso.com* kimlik doğrulaması yapıldığında, *finans-uygulama* ad alanındaki kaynaklar üzerinde tam izinlere sahip olurlar. Bu şekilde, kaynaklara erişimi mantıksal olarak ayırabilirsiniz ve kontrol edersiniz. Kubernetes RBAC, önceki bölümde anlatıldığı gibi Azure AD tümleştirmesi ile birlikte kullanılmalıdır.
 
 RBAC kullanarak Kubernetes kaynaklarına erişimi denetlemek için Azure AD gruplarını nasıl kullanacağınızı görmek için bkz. [rol tabanlı erişim denetimleri ve AKS 'de Azure Active Directory kimlikleri kullanarak küme kaynaklarına erişimi denetleme][azure-ad-rbac].
 
@@ -97,14 +98,14 @@ Azure kaynakları için Yönetilen kimlikler (Şu anda ilişkili bir AKS açık 
 
 Pod bir Azure hizmetine erişim isteğinde bulunduğunda, ağ kuralları trafiği düğüm yönetim kimliği (NMI) sunucusuna yönlendirir. NMI sunucusu, uzak adreslerine bağlı olarak Azure hizmetlerine erişim isteyen Pod 'yi tanımlar ve yönetilen kimlik denetleyicisini (MIC) sorgular. MıC, AKS kümesinde Azure kimlik eşlemelerini denetler ve NMI sunucusu, Pod 'un kimlik eşlemesine göre Azure Active Directory (AD) öğesinden bir erişim belirteci ister. Azure AD, Pod 'a döndürülen NMI sunucusuna erişim sağlar. Bu erişim belirteci, Pod tarafından Azure 'daki hizmetlere erişim istemek için kullanılabilir.
 
-Aşağıdaki örnekte, bir geliştirici Azure SQL Server örneğine erişim istemek için yönetilen kimlik kullanan bir pod oluşturuyor:
+Aşağıdaki örnekte, bir geliştirici Azure SQL veritabanı 'na erişim istemek için yönetilen kimlik kullanan bir pod oluşturuyor:
 
 ![Pod kimlikleri, Pod 'ın diğer hizmetlere otomatik olarak erişim istemesine izin verir](media/operator-best-practices-identity/pod-identities.png)
 
 1. Küme operatörü ilk olarak, bir pod hizmetlere erişim isteğinde bulunduğunda kimlikleri eşlemek için kullanılabilen bir hizmet hesabı oluşturur.
 1. Azure AD 'ye erişim belirteçleri için herhangi bir pod isteği geçirmek üzere NMI sunucusu ve MIK dağıtılır.
 1. Bir geliştirici, NMI sunucusu aracılığıyla erişim belirteci isteyen yönetilen bir kimlikle Pod dağıtır.
-1. Belirteç Pod 'a döndürülür ve Azure SQL Server örneğine erişmek için kullanılır.
+1. Belirteç Pod 'a döndürülür ve Azure SQL veritabanına erişmek için kullanılır
 
 > [!NOTE]
 > Yönetilen Pod kimlikleri açık kaynaklı bir projem ve Azure teknik desteği tarafından desteklenmiyor.

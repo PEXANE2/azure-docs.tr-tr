@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 28fa9dddda94845511ead7d8fb7481aff6b6b044
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ef24e78ea88bb0922c0affbe47f2591475024601
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80130860"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016024"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Öğretici: Event Grid ve Azure Işlevlerini kullanarak yakalanan Event Hubs verilerini SQL veri ambarı 'na geçirme
 
@@ -22,18 +22,19 @@ Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capt
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
-*   Öncelikle, **Capture** özelliğinin etkin olduğu bir olay hub'ı oluşturun ve hedef olarak bir Azure Blob depolama alanını belirleyin. WindTurbineGenerator tarafından oluşturulan verilerin olay hub'ına akışı yapılır ve bu veriler Azure Depolama'da otomatik olarak Avro dosyaları biçiminde yakalanır. 
-*   Ardından, kaynağı Event Hubs ad alanı, hedefi ise Azure İşlevi uç noktası olan bir Azure Event Grid aboneliği oluşturun.
-*   Azure Depolama blobuna Event Hubs Capture özelliği ile yeni bir Avro dosyası aktarıldığında Event Grid, Azure İşlevi'ne blob URI'sini bildirir. Ardından, işlev blob verilerini bir SQL veri ambarına geçirir.
+- Öncelikle, **Capture** özelliğinin etkin olduğu bir olay hub'ı oluşturun ve hedef olarak bir Azure Blob depolama alanını belirleyin. WindTurbineGenerator tarafından oluşturulan verilerin olay hub'ına akışı yapılır ve bu veriler Azure Depolama'da otomatik olarak Avro dosyaları biçiminde yakalanır.
+- Ardından, kaynağı Event Hubs ad alanı, hedefi ise Azure İşlevi uç noktası olan bir Azure Event Grid aboneliği oluşturun.
+- Azure Depolama blobuna Event Hubs Capture özelliği ile yeni bir Avro dosyası aktarıldığında Event Grid, Azure İşlevi'ne blob URI'sini bildirir. Ardından, işlev blob verilerini bir SQL veri ambarına geçirir.
 
-Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz: 
+Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 
 > [!div class="checklist"]
-> * Altyapıyı dağıtma
-> * Kodu bir İşlevler uygulamasında yayımlama
-> * İşlevler uygulamasında bir Event Grid aboneliği oluşturma
-> * Event Hub'a örnek veri akışı yapma. 
-> * Yakalanan verileri SQL Veri Ambarı'nda doğrulama
+>
+> - Altyapıyı dağıtma
+> - Kodu bir İşlevler uygulamasında yayımlama
+> - İşlevler uygulamasında bir Event Grid aboneliği oluşturma
+> - Event Hub'a örnek veri akışı yapma.
+> - Yakalanan verileri SQL Veri Ambarı'nda doğrulama
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -41,20 +42,22 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 
 - [Visual studio 2019](https://www.visualstudio.com/vs/). Yükleme işlemi sırasında şu iş yüklerini de yüklediğinizden emin olun: .NET masaüstü geliştirme, Azure geliştirme, ASP.NET ve web geliştirme, Node.js geliştirme ve Python geliştirme
 - [Git örneğini](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) indirin örnek çözüm aşağıdaki bileşenleri içerir:
-    - *WindTurbineDataGenerator* - Capture özelliğinin etkin olduğu bir olay hub'ına örnek rüzgar türbini verisi gönderen basit bir yayımcı
-    - *FunctionDWDumper* - Azure Depolama blobunda bir Avro dosyası yakalandığında Event Grid bildirimi alan Azure İşlevi. Blobun URI yolunu alır, içeriğini okur ve bu verileri bir SQL Veri Ambarı'na gönderir.
 
-    Bu örnek, en son Azure. Messaging. EventHubs paketini kullanır. [Burada](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)Microsoft. Azure. EventHubs paketini kullanan eski örneği bulabilirsiniz. 
+  - *WindTurbineDataGenerator* - Capture özelliğinin etkin olduğu bir olay hub'ına örnek rüzgar türbini verisi gönderen basit bir yayımcı
+  - *FunctionDWDumper* - Azure Depolama blobunda bir Avro dosyası yakalandığında Event Grid bildirimi alan Azure İşlevi. Blobun URI yolunu alır, içeriğini okur ve bu verileri bir SQL Veri Ambarı'na gönderir.
+
+  Bu örnek, en son Azure. Messaging. EventHubs paketini kullanır. [Burada](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)Microsoft. Azure. EventHubs paketini kullanan eski örneği bulabilirsiniz.
 
 ### <a name="deploy-the-infrastructure"></a>Altyapıyı dağıtma
+
 Bu [Azure Resource Manager şablonunu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json) kullanarak söz konusu öğretici için gerekli altyapıyı dağıtmak üzere Azure PowerShell veya Azure CLI'yi kullanın. Bu şablon aşağıdaki kaynakları oluşturur:
 
--   Capture özelliği etkin Event Hub
--   Yakalanan olay verileri için depolama hesabı
--   İşlevler uygulamasının barındırılması için Azure App Service planı
--   Yakalanan etkinlik verilerinin işlenmesi için İşlev uygulaması
--   Veri Ambarının barındırılması için SQL Server
--   Geçirilen verileri depolamak için SQL Veri Ambarı
+- Capture özelliği etkin Event Hub
+- Yakalanan olay verileri için depolama hesabı
+- İşlevler uygulamasının barındırılması için Azure App Service planı
+- Yakalanan etkinlik verilerinin işlenmesi için İşlev uygulaması
+- Veri ambarını barındırmak için mantıksal SQL Server
+- Geçirilen verileri depolamak için SQL Veri Ambarı
 
 Aşağıdaki bölümlerde, öğretici için gerekli altyapının dağıtılmasına yönelik Azure CLI ve Azure PowerShell komutları sunulmuştur. Komutları çalıştırmadan önce aşağıdaki nesnelerin adlarını güncelleştirin: 
 
@@ -62,7 +65,7 @@ Aşağıdaki bölümlerde, öğretici için gerekli altyapının dağıtılması
 - Kaynak grubu bölgesi
 - Event Hubs ad alanı
 - Olay hub'ı
-- Azure SQL sunucusu
+- Mantıksal SQL Server
 - SQL kullanıcısı (ve parolası)
 - Azure SQL veritabanı
 - Azure Storage 
@@ -70,7 +73,8 @@ Aşağıdaki bölümlerde, öğretici için gerekli altyapının dağıtılması
 
 Bu betiklerin tüm Azure yapıtlarını oluşturması biraz zaman alır. Betik tamamlanana kadar başka işlem yapmayın. Dağıtım bir nedenle başarısız olursa kaynak grubunu silin, bildirilen sorunu çözün ve komutu yeniden çalıştırın. 
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
+
 Şablonu Azure CLI kullanarak dağıtmak için şu komutları kullanın:
 
 ```azurecli-interactive
@@ -91,8 +95,8 @@ New-AzResourceGroup -Name rgDataMigration -Location westcentralus
 New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
+### <a name="create-a-table-in-sql-data-warehouse"></a>SQL Veri Ambarında tablo oluşturma
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>SQL Veri Ambarında tablo oluşturma 
 [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), [SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md) veya portaldaki Sorgu Düzenleyicisi ile [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) betiğini çalıştırarak SQL veri ambarınızda bir tablo oluşturun. 
 
 ```sql

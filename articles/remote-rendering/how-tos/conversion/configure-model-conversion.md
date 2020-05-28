@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 83f80f893620a225c928be2ad7ad1679b3a9c465
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 104a583122fa08cf145191b8bcee49ce5f042599
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652224"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021407"
 ---
 # <a name="configure-the-model-conversion"></a>Model dönüştürmeyi yapılandırma
 
@@ -74,7 +74,7 @@ Son ölçeklendirme faktörü, geometri köşelerine ve sahne grafiği düğüml
 Kaynak modelin kaynağı kaynaktan uzakta olması durumunda ortalama, bu durumda kayan nokta duyarlık sorunları işleme yapıtlarına neden olabileceğinden önemlidir.
 
 * `opaqueMaterialDefaultSidedness`-İşleme altyapısı, donuk malzemelerin çift taraflı olduğunu varsayar.
-Bu, amaçlanan davranış değilse, bu parametre "Singleyüzlü" olarak ayarlanmalıdır. Daha fazla bilgi için bkz. [tek taraflı işleme](../../overview/features/single-sided-rendering.md).
+Bu, amaçlanan davranış değilse, bu parametre "Singleyüzlü" olarak ayarlanmalıdır. Daha fazla bilgi için bkz. [ :::no-loc text="single sided"::: işleme](../../overview/features/single-sided-rendering.md).
 
 ### <a name="material-overrides"></a>Malzeme geçersiz kılmaları
 
@@ -90,7 +90,7 @@ Bu, amaçlanan davranış değilse, bu parametre "Singleyüzlü" olarak ayarlanm
 Bir model gama alanı kullanılarak tanımlanmışsa, bu seçenekler true olarak ayarlanmalıdır.
 
 * `gammaToLinearMaterial`-Gama alanından doğrusal alana malzeme renkleri dönüştürün
-* `gammaToLinearVertex`-Gama alanından doğrusal alana köşe renklerini dönüştürür
+* `gammaToLinearVertex`- :::no-loc text="vertex"::: Gamma alanından doğrusal alana Renkleri Dönüştür
 
 > [!NOTE]
 > FBX dosyaları için bu ayarlar `true` Varsayılan olarak olarak ayarlanır. Tüm diğer dosya türleri için varsayılan olarak ' dir `false` .
@@ -127,12 +127,12 @@ Her mod farklı çalışma zamanı performansına sahiptir. `dynamic`Modunda, hi
 
 * `axis`-Koordinat sistem birimi vektörlerini geçersiz kılmak için. Varsayılan değerler şunlardır `["+x", "+y", "+z"]` . Teorik olarak, FBX biçiminde bu vektörler tanımlanmış ve dönüştürme söz konusu bilgileri sahneyi dönüştürmek için kullandığı bir üst bilgi vardır. GlTF biçimi de sabit bir koordinat sistemi tanımlar. Uygulamada, bazı varlıkların başlığında yanlış bilgiler var veya farklı bir koordinat sistemi kuralıyla kaydedilmiş. Bu seçenek, telafi sistemini dengelemek için geçersiz kılmanızı sağlar. Örneğin: `"axis" : ["+x", "+z", "-y"]` Z ekseni ve y eksenini değiş tokuş eder ve y ekseni yönünü tersine getirerek koordinat sistem hanliðini koruyun.
 
-### <a name="vertex-format"></a>Köşe biçimi
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::formatını
 
-Bir kafesin köşe biçimini, bellek tasarrufları için bir hassaslığına ayarlamak mümkündür. Daha düşük bir bellek kaplama daha büyük modeller yüklemenize veya daha iyi performans elde etmenize olanak tanır. Ancak verilerinize bağlı olarak, yanlış biçim işleme kalitesini önemli ölçüde etkileyebilir.
+:::no-loc text="vertex":::Bir kafesin biçimini, bellek tasarrufları için bir hassaslığına ayarlamak mümkündür. Daha düşük bir bellek kaplama daha büyük modeller yüklemenize veya daha iyi performans elde etmenize olanak tanır. Ancak verilerinize bağlı olarak, yanlış biçim işleme kalitesini önemli ölçüde etkileyebilir.
 
 > [!CAUTION]
-> Modeller artık belleğe sığmıyor veya mümkün olan en iyi performansı elde etmek için köşe biçiminin değiştirilmesi son çare olmalıdır. Değişiklikler, hem açık hem de hafif olan işleme yapıtları kolayca ortaya çıkarabilir. Ne bakabileceğinizi bilmiyorsanız, Varsayılanı değiştirmemelisiniz.
+> :::no-loc text="vertex":::Modeller artık belleğe sığmıyor veya mümkün olan en iyi performans için iyileştirirken biçimin değiştirilmesi son çare olmalıdır. Değişiklikler, hem açık hem de hafif olan işleme yapıtları kolayca ortaya çıkarabilir. Ne bakabileceğinizi bilmiyorsanız, Varsayılanı değiştirmemelisiniz.
 
 Bu ayarlamalar mümkündür:
 
@@ -159,11 +159,11 @@ Dosyadaki aşağıdaki `vertex` bölüm `.json` isteğe bağlıdır. Açıkça b
 
 Bir bileşeni uygulamasına zorlayarak `NONE` , çıkış kafesinin ilgili akışa sahip olmadığı garanti edilir.
 
-#### <a name="component-formats-per-vertex-stream"></a>Köşe akışı başına bileşen biçimleri
+#### <a name="component-formats-per-no-loc-textvertex-stream"></a>Akış başına bileşen biçimleri :::no-loc text="vertex":::
 
 İlgili bileşenler için bu biçimlere izin verilir:
 
-| Köşe bileşeni | Desteklenen biçimler (kalın = varsayılan) |
+| :::no-loc text="Vertex"::: bileşeni | Desteklenen biçimler (kalın = varsayılan) |
 |:-----------------|:------------------|
 |konum| **32_32_32_FLOAT**, 16_16_16_16_FLOAT |
 |color0| **8_8_8_8_UNSIGNED_NORMALIZED**, yok |
@@ -178,7 +178,7 @@ Bir bileşeni uygulamasına zorlayarak `NONE` , çıkış kafesinin ilgili akı�
 
 Biçimlerin bellek yazmalar aşağıdaki gibidir:
 
-| Biçimlendir | Açıklama | Köşe başına bayt |
+| Biçimlendir | Açıklama | Bayt başına:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|iki bileşen tam kayan nokta duyarlığı|8
 |16_16_FLOAT|iki bileşenden oluşan yarı kayan nokta duyarlığı|4
@@ -197,11 +197,11 @@ Biçimlerin bellek yazmalar aşağıdaki gibidir:
 
 #### <a name="example"></a>Örnek
 
-Dokularla aydınlatma sağlayan bir photogrammetri modeliniz olduğunu varsayalım. Modeli işlemek için gerekli olan tüm köşe konumları ve doku koordinatları.
+Dokularla aydınlatma sağlayan bir photogrammetri modeliniz olduğunu varsayalım. Modeli işlemek için gereken tek şey, :::no-loc text="vertex"::: konumlar ve doku koordinatları.
 
-Varsayılan olarak, dönüştürücünün her zaman bir modelde PBR malzemeleri kullanmak isteyebileceğiniz varsayımında, bu nedenle `normal` `tangent` sizin için, ve verileri üretecektir `binormal` . Sonuç olarak, köşe başına bellek kullanımı (12 bayt) + (8 bayt) + (4 bayt) + ( `position` `texcoord0` `normal` `tangent` 4 bayt) + `binormal` (4 bayt) = 32 bayttır. Bu türden daha büyük modeller kolayca birçok sayıda köşe içerebilir ve bu da birden çok gigabayt belleği elde edebilir. Bu çok büyük miktarlarda veri performansı etkiler ve hatta belleğiniz tükenmez.
+Varsayılan olarak, dönüştürücünün her zaman bir modelde PBR malzemeleri kullanmak isteyebileceğiniz varsayımında, bu nedenle `normal` `tangent` sizin için, ve verileri üretecektir `binormal` . Sonuç olarak, köşe başına bellek kullanımı (12 bayt) + (8 bayt) + (4 bayt) + ( `position` `texcoord0` `normal` `tangent` 4 bayt) + `binormal` (4 bayt) = 32 bayttır. Bu türün daha büyük modelleri, :::no-loc text="vertices"::: birden fazla gigabayt belleği elde eden çok sayıda daha fazla model elde edebilir. Bu çok büyük miktarlarda veri performansı etkiler ve hatta belleğiniz tükenmez.
 
-Model üzerinde hiçbir şey dinamik aydınlatma gerektirmez ve tüm doku koordinatlarının aralıkta olduğunu bilmenin yanı sıra,,, ve ' ı `[0; 1]` yarı duyarlık () olarak ayarlayabilir, bu, `normal` `tangent` `binormal` `NONE` `texcoord0` `16_16_FLOAT` köşe başına yalnızca 16 bayt elde edebilir. Ağ verilerini yarı bir şekilde kesmek, daha büyük modeller yüklemeniz ve potansiyel olarak performansı artırmanızı sağlar.
+Model üzerinde hiçbir şey dinamik aydınlatma gerektirmez ve tüm doku koordinatlarının aralıkta olduğunu bilmenin yanı sıra,,, `[0; 1]` `normal` ve ile `tangent` `binormal` `NONE` `texcoord0` yarı duyarlık ( `16_16_FLOAT` ) ayarlayabilirsiniz :::no-loc text="vertex"::: . Ağ verilerini yarı bir şekilde kesmek, daha büyük modeller yüklemeniz ve potansiyel olarak performansı artırmanızı sağlar.
 
 ## <a name="typical-use-cases"></a>Tipik kullanım örnekleri
 
@@ -215,7 +215,7 @@ Belirli iyileştirmeler için uygun olan bazı kullanım örneği sınıfları v
 
 * Parçaları taşımaya ihtiyacınız olduğunda, genellikle bu bölümleri ilk yerde seçebilmeniz için raylara veya diğer [uzamsal sorgulara](../../overview/features/spatial-queries.md)yönelik desteğe ihtiyacınız olduğu anlamına gelir. Öte yandan, bir şeyi hareket ettirmek istemiyorsanız, bunun da uzamsal sorgulara katılmasını gerektirmez ve bu nedenle `generateCollisionMesh` bayrağı kapatabilir. Bu anahtar, dönüştürme sürelerini, yükleme sürelerini ve ayrıca kare başına güncelleştirme maliyetlerini önemli ölçüde etkiler.
 
-* Uygulama [kesme düzlemleri](../../overview/features/cut-planes.md)kullanmıyorsa, `opaqueMaterialDefaultSidedness` bayrağın kapalı olması gerekir. Performans kazancı genellikle %20-%30 ' dur. Kesme düzlemleri hala kullanılabilir, ancak sayaç kullanımı kolay olan nesnelerin iç bölümlerine baktığı sırada arka yüz kalmaz. Daha fazla bilgi için bkz. [tek taraflı işleme](../../overview/features/single-sided-rendering.md).
+* Uygulama [kesme düzlemleri](../../overview/features/cut-planes.md)kullanmıyorsa, `opaqueMaterialDefaultSidedness` bayrağın kapalı olması gerekir. Performans kazancı genellikle %20-%30 ' dur. Kesme düzlemleri hala kullanılabilir, ancak sayaç kullanımı kolay olan nesnelerin iç bölümlerine baktığı sırada arka yüz kalmaz. Daha fazla bilgi için bkz. [ :::no-loc text="single sided"::: işleme](../../overview/features/single-sided-rendering.md).
 
 ### <a name="use-case-photogrammetry-models"></a>Kullanım örneği: Photogrammetri modelleri
 

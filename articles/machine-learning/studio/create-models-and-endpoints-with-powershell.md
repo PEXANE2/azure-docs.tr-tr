@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 70fafa79c87d19d62ef936b286c82813d8e7fe17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a2f55798afe7b817ab366e8fa55f07078277352d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208525"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117305"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>ML Studio (klasik) ve PowerShell ile bir deneyden birden çok Web hizmeti uç noktası oluşturma
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Ortak bir makine öğrenimi sorunu: aynı eğitim iş akışına sahip birçok model oluşturmak ve aynı algoritmayı kullanmak istiyorsunuz. Ancak, giriş olarak farklı eğitim veri kümelerine sahip olmalarını istiyorsunuz. Bu makalede, yalnızca tek bir deneme kullanılarak bu Azure Machine Learning Studio (klasik) ölçekte nasıl yapılacağı gösterilmektedir.
 
@@ -96,7 +94,7 @@ Artık 10 uç noktası oluşturdunuz ve hepsi, *customer001. csv*üzerinde eğit
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>Uç noktaları PowerShell kullanarak ayrı eğitim veri kümeleri kullanacak şekilde güncelleştirme
 Sonraki adım, her bir müşterinin bireysel verilerinde benzersiz olarak eğitilen modellerle uç noktaları güncelleştirmedir. Ancak öncelikle bu modelleri **Bisiklet Kiralama eğitimi** Web hizmetinden üretmeniz gerekir. **Bisiklet Kiralama eğitimi** Web hizmetine geri dönelim. 10 farklı model üretmek için BES bitiş noktası 10 kez 10 farklı eğitim veri kümesi ile çağırmanız gerekir. Bunu yapmak için **ınovkeamlwebservicebesendpoint** PowerShell cmdlet 'ini kullanın.
 
-Ayrıca, BLOB depolama hesabınızın kimlik bilgilerini ' de sağlamanız gerekir `$configContent`. Yani, ve `AccountName` `AccountKey` `RelativeLocation`alanlarında. `AccountName` **Azure Portal** (*depolama* sekmesi) görüldüğü gibi hesap adlarınızın biri olabilir. Bir depolama hesabına tıkladığınızda, `AccountKey` alt kısımdaki **erişim tuşlarını Yönet** düğmesine basılarak ve *birincil erişim anahtarı*kopyalanırken bulunabilir. , `RelativeLocation` Yeni bir modelin depolanacağı depolama alanına göre yoldur. Örneğin, aşağıdaki komut dosyasındaki `hai/retrain/bike_rental/` yol adlı `hai`bir kapsayıcıya işaret eder ve `/retrain/bike_rental/` alt klasörlerdir. Şu anda, Portal Kullanıcı arabirimi aracılığıyla alt klasör oluşturamazsınız, ancak bunu yapmanıza izin veren [birkaç Azure depolama araştırması](../../storage/common/storage-explorers.md) vardır. Yeni eğitilen modelleri (. iLearner dosyaları) şu şekilde depolamak için depolama ortamınızda yeni bir kapsayıcı oluşturmanız önerilir: depolama sayfanızda, alttaki **Ekle** düğmesine tıklayın ve adlandırın `retrain`. Özet olarak, aşağıdaki betikte gerekli `AccountName`değişiklikler, `AccountKey`, ve `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) ile ilgilidir.
+Ayrıca, BLOB depolama hesabınızın kimlik bilgilerini ' de sağlamanız gerekir `$configContent` . Yani, `AccountName` `AccountKey` ve alanlarında `RelativeLocation` . `AccountName` **Azure Portal** (*depolama* sekmesi) görüldüğü gibi hesap adlarınızın biri olabilir. Bir depolama hesabına tıkladığınızda, `AccountKey` alt kısımdaki **erişim tuşlarını Yönet** düğmesine basılarak ve *birincil erişim anahtarı*kopyalanırken bulunabilir. , `RelativeLocation` Yeni bir modelin depolanacağı depolama alanına göre yoldur. Örneğin, `hai/retrain/bike_rental/` aşağıdaki komut dosyasındaki yol adlı bir kapsayıcıya işaret eder `hai` ve `/retrain/bike_rental/` alt klasörlerdir. Şu anda, Portal Kullanıcı arabirimi aracılığıyla alt klasör oluşturamazsınız, ancak bunu yapmanıza izin veren [birkaç Azure depolama araştırması](../../storage/common/storage-explorers.md) vardır. Yeni eğitilen modelleri (. iLearner dosyaları) şu şekilde depolamak için depolama ortamınızda yeni bir kapsayıcı oluşturmanız önerilir: depolama sayfanızda, alttaki **Ekle** düğmesine tıklayın ve adlandırın `retrain` . Özet olarak, aşağıdaki betikte gerekli değişiklikler `AccountName` ,, `AccountKey` ve `RelativeLocation` (:) ile ilgilidir `"retrain/model' + $seq + '.ilearner"` .
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service

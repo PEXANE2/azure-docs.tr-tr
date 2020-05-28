@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 2d6f18e373327b758e766dffba341c080622301f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42cc10398fce831b6343f69df03104d428700ac3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061932"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022786"
 ---
 # <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>CLı kullanarak bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme
 
@@ -61,4 +61,4 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure/overview).
 
-Ek SQL veritabanı Azure CLı betiği örnekleri, [Azure SQL veritabanı Azure CLI betikleri](../sql-database-cli-samples.md)içinde bulunabilir.
+Ek SQL veritabanı Azure CLı betiği örnekleri, [Azure SQL veritabanı Azure CLI betikleri](../../azure-sql/database/az-cli-script-samples-content-guide.md)içinde bulunabilir.

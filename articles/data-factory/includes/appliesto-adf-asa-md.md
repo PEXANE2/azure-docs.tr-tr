@@ -6,5 +6,5 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408994"
 ---
-<Token>**Uygulama hedefi:** ![Evet](../media/applies-to/yes.png)Azure Data Factory ![Evet](../media/applies-to/yes.png)Azure SYNAPSE Analytics (Önizleme)</Token>
+<Token>**Uygulama hedefi:** ![ Evet ](../media/applies-to/yes.png) Azure Data Factory ![ Evet ](../media/applies-to/yes.png) Azure SYNAPSE Analytics (Önizleme)</Token>
 

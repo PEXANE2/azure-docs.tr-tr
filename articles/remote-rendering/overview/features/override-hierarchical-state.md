@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 40857e83457222365e61a224ead19bd1d1d31ae7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5ef5af77831c01ae484398c1f2d8905e5e2bc11e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758988"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021339"
 ---
 # <a name="hierarchical-state-override"></a>Hiyerarşik durumu geçersiz kılma
 
@@ -27,23 +27,23 @@ En az olası ek yük ile bu kullanım örneğini başarmak için, kullanın `Hie
 
 Geçersiz kılınabilen sabit durumlar kümesi şunlardır:
 
-* **Gizli**: sahne grafiğindeki ilgili kafesler gizlenir veya gösterilir.
-* Renk **tonu rengi**: işlenmiş bir nesne, tek tek renk tonu rengi ve renk tonu ağırlığı ile renk tonlu olabilir. Aşağıdaki görüntüde, bir tekerleğin kıyısı renk gösterilmektedir.
+* **`Hidden`**: Sahne grafiğinde ilgili kafesler gizlenir veya gösterilir.
+* **`Tint color`**: İşlenmiş bir nesne, tek bir renk tonu rengi ve renk tonu ağırlığı ile renk tonlu olabilir. Aşağıdaki görüntüde, bir tekerleğin kıyısı renk gösterilmektedir.
   
   ![Renk renk tonu](./media/color-tint.png)
 
-* **Bkz.-Through**: geometri, örneğin bir nesnenin iç parçalarını açığa çıkarmak için yarı şeffaf olarak işlenir. Aşağıdaki görüntüde, kırmızı hızınızı düşüren Caliper dışında, bkz.-Through modunda işlenen tüm otomobil gösterilmektedir:
+* **`See-through`**: Geometri yarı saydam olarak işlenir, örneğin bir nesnenin iç parçalarını açığa çıkarmak için. Aşağıdaki görüntüde, kırmızı hızınızı düşüren Caliper dışında, bkz.-Through modunda işlenen tüm otomobil gösterilmektedir:
 
   ![Bkz.](./media/see-through.png)
 
   > [!IMPORTANT]
   > Yalnızca *Tilebasedcomposition* [işleme modu](../../concepts/rendering-modes.md) kullanıldığında, diğer adım etkisi geçerlidir.
 
-* **Seçili**: geometri bir [seçim ana hattı](outlines.md)ile işlenir.
+* **`Selected`**: Geometri bir [seçim ana hattı](outlines.md)ile işlenir.
 
   ![Seçim ana hattı](./media/selection-outline.png)
 
-* **Disableçarpışma**: geometri, [uzamsal sorgulardan](spatial-queries.md)muaf tutulur. **Gizli** bayrağı, çakışmaları devre dışı bırakır, bu nedenle bu iki bayrak genellikle birlikte ayarlanır.
+* **`DisableCollision`**: Geometri, [uzamsal sorgulardan](spatial-queries.md)muaf tutulur. **`Hidden`** Bayrak, çakışma durumu bayrağını etkilemez, bu nedenle bu iki bayrak genellikle birlikte ayarlanır.
 
 ## <a name="hierarchical-overrides"></a>Hiyerarşik geçersiz kılmalar
 
@@ -87,7 +87,7 @@ component->SetState(
 
 ### <a name="tint-color"></a>Renk tonu rengi
 
-Hem açık/kapalı/devralma durumu hem de bir renk tonu rengi özelliği olan renk tonu rengi geçersiz kılma biraz özeldir. Renk tonu renginin alfa kısmı, renk azaltma efektinin kalınlığını tanımlar: 0,0 olarak ayarlanırsa, renk tonu rengi görünür olmaz ve 1,0 olarak ayarlandıysa nesne saf renk tonu rengiyle işlenir. -Between değerleri için, son renk, renk tonu rengiyle karışacaktır. Renkli bir animasyon elde etmek için renk tonu rengi çerçeve başına temelinde değiştirilebilir.
+`tint color`Geçersiz kılma, hem bir açık/kapalı/devralma durumu hem de bir renk tonu rengi özelliği olduğundan biraz özeldir. Renk tonu renginin alfa kısmı, renk azaltma efektinin kalınlığını tanımlar: 0,0 olarak ayarlanırsa, renk tonu rengi görünür olmaz ve 1,0 olarak ayarlandıysa nesne saf renk tonu rengiyle işlenir. -Between değerleri için, son renk, renk tonu rengiyle karışacaktır. Renkli bir animasyon elde etmek için renk tonu rengi çerçeve başına temelinde değiştirilebilir.
 
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 

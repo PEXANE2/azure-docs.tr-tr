@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
 ms.date: 04/21/2020
-ms.openlocfilehash: 865c39ea9a48f9f5e0fbf04dea629b6886cf7ae4
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: fb4a21946b848ad05abac9b06999c7982812a361
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584071"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021220"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar
 
@@ -323,7 +323,7 @@ Aşağıdaki tablo, aksi belirtilmediği takdirde v1, v2, standart ve WAF SKU 'L
 
 ## <a name="sql-database-limits"></a>SQL veritabanı limitleri
 
-SQL veritabanı limitleri için bkz. [SQL veritabanı kaynak limitleri tek veritabanları için](../../sql-database/sql-database-vcore-resource-limits-single-databases.md), [elastik havuzlar ve havuza alınmış veritabanları için SQL veritabanı kaynak limitleri](../../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)ve [yönetilen örnekler için SQL veritabanı kaynak sınırları](../../sql-database/sql-database-managed-instance-resource-limits.md).
+SQL veritabanı limitleri için bkz. [SQL veritabanı kaynak limitleri tek veritabanları için](../../azure-sql/database/resource-limits-vcore-single-databases.md), [elastik havuzlar ve havuza alınmış veritabanları için SQL veritabanı kaynak limitleri](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)ve [yönetilen örnekler için SQL veritabanı kaynak sınırları](../../azure-sql/managed-instance/resource-limits.md).
 
 ## <a name="sql-data-warehouse-limits"></a>SQL veri ambarı sınırları
 

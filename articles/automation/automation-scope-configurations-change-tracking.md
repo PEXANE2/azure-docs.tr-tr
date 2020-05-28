@@ -1,52 +1,44 @@
 ---
-title: Azure Otomasyonu Değişiklik İzleme ve envanteri için kapsam yapılandırmasıyla çalışma
-description: Bu makalede, Değişiklik İzleme ve envanterini kullanırken kapsam yapılandırmalarına nasıl çalışacağınızı söyliyoruz.
+title: Azure Otomasyonu Değişiklik İzleme ve envanter dağıtım kapsamını sınırlayın
+description: Bu makalede, bir Değişiklik İzleme ve envanter dağıtımının kapsamını sınırlamak için kapsam yapılandırmalarına nasıl çalışılacağı açıklanmaktadır.
 services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 4fac94cc2f8f378b7e9d8e9485baed6a0ffa838b
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 49655d11858086b16099a1864fd4d2dc5988f02a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832172"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117440"
 ---
-# <a name="work-with-scope-configurations-for-change-tracking-and-inventory"></a>Değişiklik İzleme ve envanter için kapsam yapılandırmalarına sahip çalışma
+# <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Değişiklik İzleme ve envanter dağıtım kapsamını sınırlandırma
 
-Bu makalede, VM 'lerde [güncelleştirme yönetimi](automation-update-management.md) özelliğini etkinleştirirken kapsam yapılandırmalarına nasıl çalışabileceğinizi açıklanmaktadır. 
+Bu makalede, sanal makinelerinizdeki değişiklikleri dağıtmak üzere [değişiklik izleme ve envanter](change-tracking.md) özelliği kullanılırken kapsam yapılandırmalarının nasıl çalıştığı açıklanır. Daha fazla bilgi için bkz. [Azure izleyici 'de izleme çözümlerini hedefleme (Önizleme)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="about-scope-configurations"></a>Kapsam konfigürasyonları hakkında
 
-https://portal.azure.com adresinden Azure portalında oturum açın.
+Kapsam yapılandırması, Değişiklik İzleme ve envanterinin kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama (sorgu) grubudur. Kapsam yapılandırması, etkinleştirmek üzere bilgisayarları hedeflemek için Log Analytics çalışma alanında kullanılır. Özellikten değişikliklere bir bilgisayar eklediğinizde, bilgisayar çalışma alanındaki kayıtlı bir aramaya de eklenir.
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>Kapsam yapılandırmasını denetleme
+## <a name="set-the-scope-limit"></a>Kapsam sınırını ayarla
 
-Güncelleştirme Yönetimi, Güncelleştirme Yönetimi etkinleştirmek üzere bilgisayarları hedeflemek için Log Analytics çalışma alanındaki kapsam yapılandırmasını kullanır. Kapsam yapılandırması, özelliğin kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Kapsam yapılandırmalarına erişmek için:
+Değişiklik İzleme ve envanter dağıtımınızın kapsamını sınırlandırmak için:
 
-1. Otomasyon hesabınızda **ilgili kaynaklar**altında **çalışma alanı**' nı seçin. 
+1. Otomasyon hesabınızda **ilgili kaynaklar**altında **bağlantılı çalışma alanı** ' nı seçin.
 
-2. **Çalışma alanı veri kaynakları**altında çalışma alanını seçin ve **kapsam yapılandırması**' nı seçin.
+2. **Çalışma alanına git ' e**tıklayın.
 
-3. Seçilen çalışma alanında Güncelleştirme Yönetimi özelliği henüz etkinleştirilmemişse, `MicrosoftDefaultScopeConfig-ChangeTracking` kapsam yapılandırması oluşturulur. 
+3. **Çalışma alanı veri kaynakları**altında **kapsam yapılandırma (Önizleme)** öğesini seçin.
 
-4. Seçilen çalışma alanı özelliği zaten etkinse, yeniden dağıtılır ve kapsam yapılandırması buna eklenmez. 
+4. Kapsam yapılandırmasının sağ tarafındaki üç noktayı seçin `MicrosoftDefaultScopeConfig-ChangeTracking` ve **Düzenle**' ye tıklayın. 
 
-5. Kapsam yapılandırmalarının herhangi birinde üç noktayı seçin ve ardından **Düzenle**' ye tıklayın. 
-
-6. Düzen bölmesinde **bilgisayar gruplarını Seç**' i seçin. Bilgisayar grupları bölmesi, kapsam yapılandırmasını oluşturmak için kullanılan kaydedilmiş aramaları gösterir.
-
-## <a name="view-a-saved-search"></a>Kayıtlı bir aramayı görüntüleme
-
-Bir bilgisayar Değişiklik İzleme ve envantere eklendiğinde, çalışma alanınızdaki kayıtlı bir aramaya de eklenir. Kayıtlı arama, hedeflenen bilgisayarları içeren bir sorgudur.
-
-1. Log Analytics çalışma alanınıza gidin ve **genel**altında **kaydedilmiş aramalar** ' ı seçin. Güncelleştirme Yönetimi tarafından kullanılan kayıtlı arama:
+5. Düzen bölmesinde **bilgisayar gruplarını Seç**' i seçin. Bilgisayar grupları bölmesi, kapsam yapılandırmasını oluşturmak için kullanılan kaydedilmiş aramaları gösterir. Değişiklik İzleme ve envanter tarafından kullanılan kayıtlı arama:
 
     |Name     |Kategori  |Diğer ad  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Değişiklik izleme dosyanız       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 
-2. Grubu doldurmak için kullanılan sorguyu görüntülemek için kayıtlı aramayı seçin. Aşağıdaki görüntüde sorgu ve sonuçları gösterilmektedir:
+6. Grubu doldurmak için kullanılan sorguyu görüntülemek ve düzenlemek için kayıtlı aramayı seçin. Aşağıdaki görüntüde sorgu ve sonuçları gösterilmektedir:
 
     ![Kayıtlı aramalar](media/automation-scope-configurations-change-tracking/logsearch.png)
 

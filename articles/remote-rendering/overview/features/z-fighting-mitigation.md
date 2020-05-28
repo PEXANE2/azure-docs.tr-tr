@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 69774c0014aac26c7266620bbe7d06ba37d6023b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f4c49be5f5a0f2c89831891dc2640b64fee9fc44
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758818"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022427"
 ---
 # <a name="z-fighting-mitigation"></a>Z dikişini azaltma
 
-İki yüzey çakıştığında, bunlardan birinin üzerine oluşturulması gereken açık olmaz. Sonuç, her piksel için de farklılık gösterir ve görünüme bağımlı yapıtlar elde edilir. Sonuç olarak, kamera veya ağ taşırken, bu desenler önemli ölçüde titreşdiğinde. Bu yapıt *z-Fighting*olarak adlandırılır. AR ve VR uygulamalarında, baş bağlı cihazlar doğal olarak her zaman hareket ettiğinden sorun belirlenir. Görüntüleyiciye engel olmak için, Azure uzaktan Işlemede risk azaltma işlevselliği kullanılabilir.
+İki yüzey çakıştığında, bunlardan birinin üzerine oluşturulması gereken açık olmaz. Sonuç, piksel başına farklılık gösterir ve kamera görünümüne bağımlı yapıtlar ile sonuçlanır. Sonuç olarak, kamera veya ağ taşırken, bu desenler önemli ölçüde titreşdiğinde. Bu yapıt *z-Fighting*olarak adlandırılır. AR ve VR uygulamalarında, baş bağlı cihazlar doğal olarak her zaman hareket ettiğinden sorun belirlenir. Görüntüleyiciye engel olmak için, Azure uzaktan Işlemede risk azaltma işlevselliği kullanılabilir.
 
 ## <a name="z-fighting-mitigation-modes"></a>Z-mücadele azaltma modları
 

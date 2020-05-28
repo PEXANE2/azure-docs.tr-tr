@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680264"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021322"
 ---
 # <a name="pbr-materials"></a>PBR malzemeleri
 
@@ -26,7 +26,7 @@ PBR malzemeleri evrensel bir çözüm değildir, ancak. Görüntüleme açısın
 
 Bu özellikler tüm malzemelerde ortaktır:
 
-* **Albedocolor:** Bu renk, *Albedomap* veya *köşe renkleri*gibi diğer renklerle çarpılır. Bir malzemeden *Saydamlık* etkinse alfa kanalı, tam donuk ve `1` `0` anlamı tamamen saydam olan opaklığı ayarlamak için kullanılır. Varsayılan değer beyazdır.
+* **Albedocolor:** Bu renk, *Albedomap* veya * :::no-loc text="vertex "::: renkler*gibi diğer renklerle çarpılır. Bir malzemeden *Saydamlık* etkinse alfa kanalı, `1` tam donuk ve anlamı tamamen saydam olan opaklığı ayarlamak için kullanılır `0` . Varsayılan değer beyazdır.
 
   > [!NOTE]
   > Bir PBR malzemesi tamamen saydam olduğunda, mükemmel bir cam taş gibi, ortamı yine de yansıtır. Güneş gibi parlak noktalar hala yansıma içinde görünür. Bu [renk malzemeleri](color-materials.md)için farklıdır.
@@ -37,9 +37,9 @@ Bu özellikler tüm malzemelerde ortaktır:
 
 * **textureCoordinateScale** ve **TEXTURECOORDINATEOFFSET:** ölçek UV doku koordinatlarına çarpılır, bu da ona eklenir. Dokuları uzatmak ve kaydırmak için kullanılabilir. Varsayılan ölçek (1, 1) ve konum (0, 0).
 
-* **Usevertexcolor:** Kafes köşe renkleri içeriyorsa ve bu seçenek etkinleştirilirse, kafeslerin köşe renkleri *Albedocolor* ve *Albedomap*ile çarpılır. Varsayılan olarak köşe renkleri devre dışıdır.
+* **Usevertexcolor:** Kafes :::no-loc text="vertex"::: renkler içeriyorsa ve bu seçenek etkinleştirilirse, kafeslerin :::no-loc text="vertex"::: rengi *Albedocolor* ve *albedomap*ile çarpılır. Varsayılan olarak *UI, Texcolor* devre dışıdır.
 
-* **ıdoubleyüzlü:** Çift sidebir değer true olarak ayarlanırsa, kamera arka yüzlerine baksa bile bu malzemeden üçgenler işlenir. PBR malzemeleri için aydınlatma, arka yüzlere uygun olarak da hesaplanır. Varsayılan olarak bu seçenek devre dışıdır. Ayrıca bkz. [tek taraflı işleme](single-sided-rendering.md).
+* **ıdoubleyüzlü:** Çift sidebir değer true olarak ayarlanırsa, kamera arka yüzlerine baksa bile bu malzemeden üçgenler işlenir. PBR malzemeleri için aydınlatma, arka yüzlere uygun olarak da hesaplanır. Varsayılan olarak bu seçenek devre dışıdır. Ayrıca bkz. [ :::no-loc text="Single-sided"::: işleme](single-sided-rendering.md).
 
 ## <a name="pbr-material-properties"></a>PBR malzeme özellikleri
 
@@ -47,11 +47,11 @@ Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada ma
 
 * **Basecolor:** PBR malzemeleri ' nde, *Albedo rengi* *temel renk*olarak adlandırılır. Azure uzaktan Işlemede *Albedo Color* özelliği ortak malzeme özellikleri aracılığıyla zaten mevcut olduğundan, ek bir temel renk özelliği yoktur.
 
-* **kabalık** ve **kabonlik** , yüzlü, yüzeyin ne kadar kaba veya düzgün olduğunu tanımlar. Kaba yüzeyler, ışığın keskin yüzeylere göre daha fazla yönde dağılımı ve bu da yansımaları keskin hale getirir. Değer aralığı `0.0` - `1.0`' dır. Eşit `roughness` `0.0`olduğunda, yansımalar keskin olur. `roughness` Eşitse `0.5`, yansıtımları bulanık hale gelir.
+* **kabalık** ve **kabonlik** , yüzlü, yüzeyin ne kadar kaba veya düzgün olduğunu tanımlar. Kaba yüzeyler, ışığın keskin yüzeylere göre daha fazla yönde dağılımı ve bu da yansımaları keskin hale getirir. Değer aralığı-' dır `0.0` `1.0` . `roughness`Eşit olduğunda `0.0` , yansımalar keskin olur. `roughness`Eşitse `0.5` , yansıtımları bulanık hale gelir.
 
   Hem bir kabın değeri hem de bir kabonu eşleme sağlanırsa, son değer iki ürünün çarpımı olur.
 
-* **metalness** ve **metalnessMap:** bu özellik, bir yüzeyin iletken ya da dielektrik olup olmadığına karşılık gelir. İletken malzemeler farklı yansıtmalı özelliklere sahiptir ve Albedo rengi olmadan yansıtıcı olarak eğilimlidir. PBR malzemelerde, bu özellik, çevreleyen ortamı ne kadar bir yüzey yansıttığını etkiler. Değerler ile `1.0`arasında `0.0` değişir. Metalness olduğunda `0.0`, Albedo rengi tamamen görünür olur ve malzemeler plastik ya da ceramikler gibi görünür. Metalness olduğunda `0.5`, boyanmış metal gibi görünür. Metalness `1.0`olduğunda yüzey, Albedo rengini neredeyse kaybeder ve yalnızca surlaları yansıtır. `metalness` Örneğin, `1.0` ve `roughness` `0.0` ise, bir yüzey gerçek dünya yansıtmaya benzer şekilde görünür.
+* **metalness** ve **metalnessMap:** bu özellik, bir yüzeyin iletken ya da dielektrik olup olmadığına karşılık gelir. İletken malzemeler farklı yansıtmalı özelliklere sahiptir ve Albedo rengi olmadan yansıtıcı olarak eğilimlidir. PBR malzemelerde, bu özellik, çevreleyen ortamı ne kadar bir yüzey yansıttığını etkiler. Değerler ile arasında `0.0` değişir `1.0` . Metalness olduğunda `0.0` , Albedo rengi tamamen görünür olur ve malzemeler plastik ya da ceramikler gibi görünür. Metalness olduğunda `0.5` , boyanmış metal gibi görünür. Metalness olduğunda `1.0` yüzey, Albedo rengini neredeyse kaybeder ve yalnızca surlaları yansıtır. Örneğin, ve ise `metalness` , `1.0` `roughness` `0.0` bir yüzey gerçek dünya yansıtmaya benzer şekilde görünür.
 
   Hem bir metalness değeri hem de bir metalness eşlemesi sağlanırsa, son değer iki ürünün çarpımı olur.
 
@@ -61,7 +61,7 @@ Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada ma
 
 * **NormalMap:** İnce ayrıntıların benzetimini yapmak için, [normal bir eşleme](https://en.wikipedia.org/wiki/Normal_mapping) sağlanverilebilir.
 
-* **Occlusionmap** ve **aoscale:** [ortam occlusiyon](https://en.wikipedia.org/wiki/Ambient_occlusion) , occluya ve daha gerçekçi alanlara gölge ekleyerek nesnelerin daha gerçekçi görünmesini sağlar. `0.0` Occlusiyon değeri `1.0`, değerinden (occluded) `0.0` anlamına gelir ve `1.0` hiçbir anlamı yoktur. Bir 2B doku bir occlusiyon eşlemesi olarak sağlanıyorsa, efekt etkinleştirilir ve *AOCE ölçeği* bir çarpan gibi davranır.
+* **Occlusionmap** ve **aoscale:** [ortam occlusiyon](https://en.wikipedia.org/wiki/Ambient_occlusion) , occluya ve daha gerçekçi alanlara gölge ekleyerek nesnelerin daha gerçekçi görünmesini sağlar. Occlusiyon değeri, değerinden `0.0` `1.0` `0.0` (occluded) anlamına gelir ve `1.0` hiçbir anlamı yoktur. Bir 2B doku bir occlusiyon eşlemesi olarak sağlanıyorsa, efekt etkinleştirilir ve *AOCE ölçeği* bir çarpan gibi davranır.
 
   ![Occlusiyon eşleme](./media/boom-box-ao2.gif)
 
@@ -69,7 +69,7 @@ Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada ma
 
   Saydam geometri işleme pahalıdır. Yalnızca bir yüzeydeki deliklere ihtiyacınız varsa (örneğin, bir ağacın yaprakları için), bunun yerine Alfa kırpması kullanmak daha iyidir.
 
-  ![Yukarıdaki](./media/transparency.png) görüntüde, en sağdaki Sphere 'in tamamen saydam olduğu, ancak yansıma hala görünür durumda olan saydamlık bildirimi.
+  ![](./media/transparency.png)Yukarıdaki görüntüde, en sağdaki Sphere 'in tamamen saydam olduğu, ancak yansıma hala görünür durumda olan saydamlık bildirimi.
 
   > [!IMPORTANT]
   > Çalışma zamanında, herhangi bir malzemenin donuk ' den saydam 'e geçiş olması gerekiyorsa, oluşturucunun *Tilebasedcomposition* [işleme modunu](../../concepts/rendering-modes.md)kullanması gerekir. Bu sınırlama, ile başlamak için saydam malzemeler olarak dönüştürülmüş malzemeler için geçerlidir.

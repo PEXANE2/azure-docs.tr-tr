@@ -4,12 +4,12 @@ description: Azure 'a geçiş için Contoso örnek geçiş senaryolarına bağla
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: raynew
-ms.openlocfilehash: c57a9f85e8b12bd4e1e66a4fcd5d08ab5f7b9118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e19bcbd041232504a81ac0799e71cae2f459428
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676319"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016925"
 ---
 # <a name="contoso-migration-series"></a>Contoso geçiş serisi
 
@@ -26,7 +26,7 @@ Serideki makaleler aşağıdaki tabloda özetlenmiştir.
 - Her dağıtım senaryosunda, iş sürücüleri ve hedefleri, önerilen bir mimari, geçişi gerçekleştirmeye yönelik adımlar ve geçiş tamamlandıktan sonra temizlik ve sonraki adımlar için öneriler sağlıyoruz.
 
 
-**Makalenin** | **Bilgileri** 
+**Makale** | **Ayrıntılar** 
 --- | --- 
 [Makale 1: genel bakış](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview) | Makale serisine, contoso 'nun geçiş stratejisine ve serideki kullanılan örnek uygulamalara genel bakış. 
 [Makale 2: Azure altyapısını dağıtma](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-infrastructure) | Contoso, şirket içi altyapısını ve geçiş için Azure altyapısını hazırlar. Serideki tüm makaleler için aynı altyapı kullanılır. 
@@ -36,7 +36,7 @@ Serideki makaleler aşağıdaki tabloda özetlenmiştir.
 [Makale 6: Azure VM 'lerde ve bir SQL Server AlwaysOn kullanılabilirlik grubunda uygulamayı yeniden barındırma](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-vm-sql-ag) | Contoso, SmartHotel360 uygulamasını geçirir. Contoso, uygulama VM 'lerini geçirmek için Azure geçişi kullanır. Uygulama veritabanını bir AlwaysOn kullanılabilirlik grubu tarafından korunan bir SQL Server kümesine geçirmek için veritabanı geçiş hizmetini kullanır. 
 [Makale 7: Azure VM 'lerinde bir Linux uygulamasını yeniden barındırma](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-linux-vm) | Contoso, Linux Osbilet uygulamasının Azure sanal makinelerine, Azure geçişi 'ni kullanarak bir kaldırma ve kaydırma geçişi tamamlar.
 [Makale 8: Azure VM 'lerinde Linux uygulamasını yeniden barındırma ve MySQL için Azure veritabanı](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-linux-vm-mysql) | Contoso, Linux Osbilet uygulamasını Azure geçişi kullanarak Azure VM 'lerine geçirir. Azure veritabanı geçiş hizmeti 'ni kullanarak uygulama veritabanını MySQ için Azure veritabanı 'na geçirir (MySQL çalışma ekranı kullanılarak alternatif bir seçenek içerir).
-[Makale 9: bir Azure Web uygulaması ve Azure SQL veritabanı 'nda uygulamayı yeniden düzenleme](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-web-app-sql) | Contoso, SmartHotel360 uygulamasını bir Azure Web uygulamasına geçirir ve Azure veritabanı geçiş hizmeti 'ni kullanarak uygulama veritabanını bir Azure SQL Server örneğine geçirir.
+[Makale 9: bir Azure Web uygulaması ve Azure SQL veritabanı 'nda uygulamayı yeniden düzenleme](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-web-app-sql) | Contoso, SmartHotel360 uygulamasını bir Azure Web uygulamasına geçirir ve Azure veritabanı geçiş hizmeti 'ni kullanarak uygulama veritabanını Azure SQL veritabanı 'na geçirir.
 [Makale 10: Azure uygulama hizmetleri ve SQL yönetilen örneği kullanarak bir Windows uygulamasını yeniden düzenleme](https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-refactor-web-app-sql-managed-instance) | Contoso, şirket içi Windows tabanlı bir uygulamayı bir Azure Web uygulamasına geçirir ve Azure veritabanı geçiş hizmeti 'ni kullanarak uygulama veritabanını bir Azure SQL yönetilen örneğine geçirir.
 [Makale 11: bir Azure Web uygulamasındaki Linux uygulamasını ve MySQL için Azure veritabanı 'nı yeniden düzenleme](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-linux-app-service-mysql) | Contoso, Azure Traffic Manager kullanarak Linux Osbilet uygulamasını birden fazla Azure bölgesinde bir Azure Web uygulamasına geçirir ve sürekli teslim için GitHub ile tümleşiktir. Contoso, uygulama veritabanını bir MySQL için Azure veritabanı örneğine geçirir. 
 [Makale 12: Azure DevOps Services Team Foundation Server yeniden düzenleme](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-tfs-vsts) | Contoso, şirket içi Team Foundation Server dağıtımını Azure 'daki Azure DevOps Services geçirir.

@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: 7a935fa4c4e91cf8adcd6df467ac56eeecaf46c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9309f431a820b800e652d7fa8afcea8f03a46062
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605931"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114519"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory'de Saklı Yordam etkinliğiyle bir SSIS paketi çalıştırma
 
@@ -29,7 +29,7 @@ Bu makalede, bir Azure Data Factory Işlem hattındaki bir SSIS paketinin saklı
 ## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-sql-database"></a>Azure SQL Veritabanı 
-Bu makaledeki izlenecek yol, SSIS kataloğunu barındıran bir Azure SQL veritabanı kullanır. Azure SQL veritabanı yönetilen örneği de kullanabilirsiniz.
+Bu makaledeki izlenecek yol, SSIS kataloğunu barındırmak için Azure SQL veritabanı 'nı kullanır. Azure SQL yönetilen örneği de kullanabilirsiniz.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Azure SSIS tümleştirme çalışma zamanı oluşturma
 Öğreticideki Adım adım yönergeleri izleyerek bir Azure-SSIS tümleştirme çalışma zamanı oluşturun [: SSIS paketlerini dağıtma](tutorial-create-azure-ssis-runtime-portal.md).
@@ -86,7 +86,7 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
 4. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin: 
 
     1. **Tür**IÇIN **Azure SQL veritabanı** ' nı seçin.
-    2. Veritabanını barındıran Azure SQL veritabanına bağlanmak için varsayılan Azure Integration Runtime seçin. **Default** `SSISDB`
+    2. Veritabanını barındıran Azure SQL veritabanına bağlanmak için **varsayılan** Azure Integration Runtime seçin `SSISDB` .
     3. **Sunucu adı** alanı IÇIN SSISDB veritabanını BARıNDıRAN Azure SQL veritabanını seçin.
     4. **Veritabanı adı**Için **SSISDB** 'yi seçin.
     5. **Kullanıcı adı**için, veritabanına erişimi olan kullanıcının adını girin.
@@ -98,7 +98,7 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
 5. Özellikler penceresinde, **SQL hesabı** sekmesinden **saklı yordam** sekmesine geçin ve aşağıdaki adımları uygulayın: 
 
     1. **Düzenle**' yi seçin. 
-    2. **Saklı yordam adı** alanı için girin `sp_executesql`. 
+    2. **Saklı yordam adı** alanı için girin `sp_executesql` . 
     3. **Saklı yordam parametreleri** bölümünde **+ Yeni** ' ye tıklayın. 
     4. Parametrenin **adı** için **stmt**girin. 
     5. Parametre **türü** için **dize**girin. 
@@ -134,7 +134,7 @@ Bu bölümde bir işlem hattı çalıştırması tetiklersiniz ve sonra bunu izl
 
     ![Etkinlik çalıştırmaları](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
 
-4. Paketin yürütüldüğünü doğrulamak için, Azure SQL sunucunuzdaki SSıSDB veritabanında aşağıdaki **sorguyu** çalıştırabilirsiniz. 
+4. Paketin yürütüldüğünü doğrulamak için SQL veritabanı 'ndaki SSıSDB veritabanında aşağıdaki **sorguyu** çalıştırabilirsiniz. 
 
     ```sql
     select * from catalog.executions
@@ -201,7 +201,7 @@ SSIS kataloğunu barındıran Azure SQL veritabanınızı veri fabrikasına bağ
 1. **C:\adf\runssispackage** klasöründe aşağıdaki Içeriğe sahip **Azuressındatabaselinkedservice. JSON** adlı bir JSON dosyası oluşturun: 
 
     > [!IMPORTANT]
-    > Dosyayı &lt;kaydetmeden&gt;önce &lt;ServerName&gt;, username &lt;ve&gt; Password değerlerini Azure SQL veritabanınızın değerleriyle değiştirin.
+    > &lt; &gt; &lt; &gt; Dosyayı kaydetmeden önce ServerName, username ve &lt; Password &gt; değerlerini Azure SQL veritabanınızın değerleriyle değiştirin.
 
     ```json
     {
@@ -229,7 +229,7 @@ Bu adımda, saklı yordam etkinliği ile bir işlem hattı oluşturacaksınız. 
 1. **C:\adf\runssispackage** klasöründe aşağıdaki Içeriğe sahip **Runssıspackagepipeline. JSON** adlı bir JSON dosyası oluşturun:
 
     > [!IMPORTANT]
-    > Dosyayı &lt;kaydetmeden önce&gt;, &lt;klasör adı&gt;, &lt;proje adı&gt; , paket adı ' nı SSIS kataloğunda klasör, proje ve paket adlarıyla değiştirin. 
+    > &lt; &gt; Dosyayı kaydetmeden önce, klasör adı, &lt; Proje adı &gt; , &lt; paket adı ' &gt; nı SSIS kataloğunda klasör, proje ve paket adlarıyla değiştirin. 
 
     ```json
     {
@@ -353,7 +353,7 @@ while ($True) {
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-06" -TriggerRunStartedBefore "2017-12-09"
     ```
 
-    Paketin yürütüldüğünü doğrulamak için, Azure SQL sunucunuzdaki SSıSDB veritabanında aşağıdaki sorguyu çalıştırabilirsiniz. 
+    Paketin yürütüldüğünü doğrulamak için SQL veritabanı 'ndaki SSıSDB veritabanında aşağıdaki sorguyu çalıştırabilirsiniz. 
 
     ```sql
     select * from catalog.executions

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 429f46156da728bbc24108090eac8c04f68da71c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4146553d59607e1512d8f15391d143d44815cea9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74084751"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016483"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server için olağanüstü durum kurtarmayı ayarlama
 
@@ -37,8 +37,8 @@ Dağıtım türü | BCDR teknolojisi | SQL Server için RTO bekleniyor | SQL Ser
 Bir Azure hizmet olarak altyapı (IaaS) sanal makinesi (VM) veya şirket içinde SQL Server.| [AlwaysOn kullanılabilirlik grubu](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | İkincil çoğaltmayı birincil olarak yapmak için geçen süre. | İkincil çoğaltmaya çoğaltma zaman uyumsuz olduğundan, bazı veri kaybı vardır.
 Azure IaaS sanal makinesinde veya şirket içinde SQL Server.| [Yük Devretme Kümelemesi (Always on FCı)](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | Düğümler arasında yük devretmek için geçen süre. | Her zaman FCı üzerinde paylaşılan depolama kullandığından, yük devretme sırasında depolama örneğinin aynı görünümü kullanılabilir.
 Azure IaaS sanal makinesinde veya şirket içinde SQL Server.| [Veritabanı yansıtma (yüksek performanslı mod)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | Bir yarı bekleyen sunucu olarak yansıtma sunucusunu kullanan hizmeti zorlamak için geçen süre. | Çoğaltma zaman uyumsuzdur. Yansıtma veritabanı, asıl veritabanının arkasında biraz gecikme alabilir. Gecikme genellikle küçüktür. Ancak asıl veya yansıtma sunucusunun sistemi ağır bir yükün altındaysa büyük hale gelebilir.<br/><br/>Günlük aktarma, veritabanı yansıtma için bir ek olabilir. Zaman uyumsuz veritabanı yansıtma için iyi bir alternatiftir.
-Azure 'da hizmet olarak platform (PaaS) olarak SQL.<br/><br/>Bu dağıtım türü, elastik havuzlar ve Azure SQL veritabanı sunucularını içerir. | Etkin coğrafi çoğaltma | Yük devretme işlemi tetiklendiğinde 30 saniye.<br/><br/>İkincil veritabanlarından biri için yük devretme etkinleştirildiğinde, diğer tüm ikincil öğeler yeni birincil ile otomatik olarak bağlanır. | Beş saniyelik RPO 'SU.<br/><br/>Etkin coğrafi çoğaltma SQL Server her zaman açık teknolojisini kullanır. Anlık görüntü yalıtımı kullanarak birincil veritabanında yürütülen işlemleri ikincil veritabanına zaman uyumsuz olarak çoğaltır.<br/><br/>İkincil verilere hiçbir şekilde kısmi işlem olmadığı garanti edilir.
-Azure 'da etkin coğrafi çoğaltma ile SQL as PaaS yapılandırıldı.<br/><br/>Bu dağıtım türü bir SQL veritabanı yönetilen örneği, elastik havuzlar ve SQL veritabanı sunucuları içerir. | Otomatik yük devretme grupları | RTO bir saat. | Beş saniyelik RPO 'SU.<br/><br/>Otomatik yük devretme grupları, etkin coğrafi çoğaltmanın en üstünde grup semantiğini sağlar. Ancak aynı zaman uyumsuz çoğaltma mekanizması kullanılır.
+Azure 'da hizmet olarak platform (PaaS) olarak SQL.<br/><br/>Bu dağıtım türü, tek veritabanları ve elastik havuzlar içerir. | Etkin coğrafi çoğaltma | Yük devretme işlemi tetiklendiğinde 30 saniye.<br/><br/>İkincil veritabanlarından biri için yük devretme etkinleştirildiğinde, diğer tüm ikincil öğeler yeni birincil ile otomatik olarak bağlanır. | Beş saniyelik RPO 'SU.<br/><br/>Etkin coğrafi çoğaltma SQL Server her zaman açık teknolojisini kullanır. Anlık görüntü yalıtımı kullanarak birincil veritabanında yürütülen işlemleri ikincil veritabanına zaman uyumsuz olarak çoğaltır.<br/><br/>İkincil verilere hiçbir şekilde kısmi işlem olmadığı garanti edilir.
+Azure 'da etkin coğrafi çoğaltma ile SQL as PaaS yapılandırıldı.<br/><br/>Bu dağıtım türü bir SQL veritabanı yönetilen örnekleri, elastik havuzlar ve tek veritabanlarını içerir. | Otomatik yük devretme grupları | RTO bir saat. | Beş saniyelik RPO 'SU.<br/><br/>Otomatik yük devretme grupları, etkin coğrafi çoğaltmanın en üstünde grup semantiğini sağlar. Ancak aynı zaman uyumsuz çoğaltma mekanizması kullanılır.
 Azure IaaS sanal makinesinde veya şirket içinde SQL Server.| Azure Site Recovery ile çoğaltma | RTO, genellikle 15 dakikadan azdır. Daha fazla bilgi edinmek için [Site Recovery tarafından sunulan RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)makalesini okuyun. | Uygulama tutarlılığı için bir saat ve kilitlenme tutarlılığı için beş dakika. Daha düşük bir RPO arıyorsanız, diğer BCDR teknolojilerini kullanın.
 
 > [!NOTE]
@@ -71,8 +71,8 @@ Hedef Azure bölgesinde veritabanı katmanı çalıştıktan sonra uygulama ve W
 
 Bağlantı hususları için uygulamaları nasıl tasarlayabileceğinizi anlamak için aşağıdaki örneklere bakın:
 
-* [Bulut olağanüstü durum kurtarma için uygulama tasarlama](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-* [Elastik havuz olağanüstü durum kurtarma stratejileri](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+* [Bulut olağanüstü durum kurtarma için uygulama tasarlama](../azure-sql/database/designing-cloud-solutions-for-disaster-recovery.md)
+* [Elastik havuz olağanüstü durum kurtarma stratejileri](../azure-sql/database/disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
 ### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>3. Adım: her zaman açık, etkin coğrafi çoğaltma ve otomatik yük devretme gruplarıyla birlikte çalışma
 
@@ -162,6 +162,6 @@ Site Recovery uygulamanın belirsiz olması. Site Recovery, desteklenen bir işl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Site Recovery mimari](site-recovery-components.md)hakkında daha fazla bilgi edinin.
-* Azure 'da SQL Server için, ikincil bir Azure bölgesinde kurtarmaya yönelik [yüksek kullanılabilirlik çözümleri](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions) hakkında daha fazla bilgi edinin.
-* SQL veritabanı için, ikincil bir Azure bölgesinde kurtarmaya yönelik [iş sürekliliği](../sql-database/sql-database-business-continuity.md) ve [yüksek kullanılabilirlik](../sql-database/sql-database-high-availability.md) seçenekleri hakkında daha fazla bilgi edinin.
-* Şirket içi SQL Server makineler için, Azure sanal makinelerinde kurtarmaya yönelik [yüksek kullanılabilirlik seçenekleri](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#hybrid-it-disaster-recovery-solutions) hakkında daha fazla bilgi edinin.
+* Azure 'da SQL Server için, ikincil bir Azure bölgesinde kurtarmaya yönelik [yüksek kullanılabilirlik çözümleri](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions) hakkında daha fazla bilgi edinin.
+* SQL veritabanı için, ikincil bir Azure bölgesinde kurtarmaya yönelik [iş sürekliliği](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md) ve [yüksek kullanılabilirlik](../azure-sql/database/high-availability-sla.md) seçenekleri hakkında daha fazla bilgi edinin.
+* Şirket içi SQL Server makineler için, Azure sanal makinelerinde kurtarmaya yönelik [yüksek kullanılabilirlik seçenekleri](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#hybrid-it-disaster-recovery-solutions) hakkında daha fazla bilgi edinin.

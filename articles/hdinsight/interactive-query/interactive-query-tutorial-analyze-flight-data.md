@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81313738"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021747"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -42,7 +42,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 2. Sayfasında, tüm alanlar ' ı temizleyin ve ardından aşağıdaki değerleri seçin:
 
-   | Adı | Değer |
+   | Name | Değer |
    | --- | --- |
    | Yıl Filtresi |2019 |
    | Dönem Filtresi |Ocak |
@@ -54,7 +54,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Bir HDInsight kümesiyle ilişkili depolama birimine veri yüklemenin birçok yolu vardır. Bu bölümde, verileri karşıya yüklemek için `scp` kullanacaksınız. Verileri karşıya yüklemenin diğer yollarını öğrenmek için bkz. [Verileri HDInsight'a yükleme](../hdinsight-upload-data.md).
 
-1. . Zip dosyasını HDInsight kümesi baş düğümüne yükleyin. . Zip dosyasının adıyla ve `FILENAME` `CLUSTERNAME` HDInsight kümesinin adıyla değiştirerek aşağıdaki komutu düzenleyin. Sonra bir komut istemi açın, çalışma dizininizi dosya konumu olarak ayarlayın ve ardından komutunu girin.
+1. . Zip dosyasını HDInsight kümesi baş düğümüne yükleyin. `FILENAME`. Zip dosyasının adıyla ve HDInsight kümesinin adıyla değiştirerek aşağıdaki komutu düzenleyin `CLUSTERNAME` . Sonra bir komut istemi açın, çalışma dizininizi dosya konumu olarak ayarlayın ve ardından komutunu girin.
 
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
@@ -62,13 +62,13 @@ Bir HDInsight kümesiyle ilişkili depolama birimine veri yüklemenin birçok yo
 
     İstenirse devam etmek için Evet veya Hayır girin. Metin, yazarken pencerede görünmez.
 
-2. Karşıya yükleme tamamlandıktan sonra SSH kullanarak kümeye bağlanın. Aşağıdaki komutu, HDInsight kümesinin adıyla `CLUSTERNAME` değiştirerek düzenleyin. Ardından aşağıdaki komutu girin:
+2. Karşıya yükleme tamamlandıktan sonra SSH kullanarak kümeye bağlanın. Aşağıdaki komutu, `CLUSTERNAME` HDInsight kümesinin adıyla değiştirerek düzenleyin. Ardından aşağıdaki komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Bir SSH bağlantısı kurulduktan sonra ortam değişkenini ayarlayın. `SQL_USER` `SQL_PASWORD` `FILE_NAME` `SQL_SERVERNAME`,,, Ve değerlerini uygun değerlerle değiştirin. `SQL_DATABASE` Sonra şu komutu girin:
+3. Bir SSH bağlantısı kurulduktan sonra ortam değişkenini ayarlayın. ,,, `FILE_NAME` `SQL_SERVERNAME` `SQL_DATABASE` `SQL_USER` Ve `SQL_PASWORD` değerlerini uygun değerlerle değiştirin. Sonra şu komutu girin:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -205,7 +205,7 @@ SQL Veritabanına bağlanıp tablo oluşturmanın çok sayıda yolu vardır. Aş
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. Yükleme tamamlandıktan sonra SQL Veritabanı sunucusuna bağlanmak için aşağıdaki komutu kullanın.
+2. Yükleme tamamlandıktan sonra, SQL veritabanına bağlanmak için aşağıdaki komutu kullanın.
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD
@@ -260,15 +260,15 @@ SQL Veritabanına bağlanıp tablo oluşturmanın çok sayıda yolu vardır. Aş
     sqoop list-databases --connect jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433 --username $SQLUSER --password $SQLPASWORD
     ```
 
-    Bu komut, daha önce `delays` tabloyu oluşturduğunuz veritabanı da dahil olmak üzere veritabanlarının bir listesini döndürür.
+    Bu komut, daha önce tabloyu oluşturduğunuz veritabanı da dahil olmak üzere veritabanlarının bir listesini döndürür `delays` .
 
-2. Aşağıdaki komutu girerek `/tutorials/flightdelays/output` verileri `delays` tabloya aktarın:
+2. `/tutorials/flightdelays/output` `delays` Aşağıdaki komutu girerek verileri tabloya aktarın:
 
     ```bash
     sqoop export --connect "jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433;database=$DATABASE" --username $SQLUSER --password $SQLPASWORD --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    Sqoop, `delays` tabloyu içeren veritabanına bağlanır ve `/tutorials/flightdelays/output` dizinden verileri `delays` tabloya aktarır.
+    Sqoop, tabloyu içeren veritabanına bağlanır `delays` ve `/tutorials/flightdelays/output` dizinden verileri tabloya aktarır `delays` .
 
 3. Sqoop komutu bittikten sonra, aşağıdaki komutu girerek veritabanına bağlanmak için TSQL yardımcı programını kullanın:
 

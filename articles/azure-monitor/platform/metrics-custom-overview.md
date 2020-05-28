@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: b2d2d14f89fa25bba1a19538c758aa0c930b3964
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837320"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018540"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Izleyici 'de özel ölçümler (Önizleme)
 
@@ -28,7 +28,7 @@ Azure Izleyici özel ölçümleri genel önizlemede geçerli.
 - Azure Application Insights SDK 'sını kullanarak uygulamanızı işaretleyin ve Azure Izleyici 'ye özel telemetri gönderin. 
 - [Azure](collect-custom-metrics-guestos-resource-manager-vm.md)sanal makinenize, [sanal makine ölçek KÜMESINE](collect-custom-metrics-guestos-resource-manager-vmss.md), [klasik VM](collect-custom-metrics-guestos-vm-classic.md)'ye veya [Klasik Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) Windows Azure tanılama (wad) uzantısını yükleyip performans sayaçlarını Azure izleyici 'ye gönderin. 
 - Azure Izleme çıkış eklentisini kullanarak Azure Linux sanal makinenize etkileyen bir Azure [Data telegraf Aracısı](collect-custom-metrics-linux-telegraf.md) 'nı yükleyip ölçümleri gönderin.
-- Özel ölçümleri [doğrudan Azure izleyici REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)gönderin `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+- Özel ölçümleri [doğrudan Azure izleyici REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)gönderin `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
 
 ## <a name="pricing-model-and-rentention"></a>Fiyatlandırma modeli ve randevu
 
@@ -51,7 +51,7 @@ Azure Izleyici 'ye özel ölçümler göndermek için, ölçümü gönderen varl
 Azure Izleyici, isteğin kimliğini doğrulamak için Azure AD ortak anahtarlarını kullanarak uygulama belirtecini doğrular. Mevcut **Izleme ölçümleri yayımcı** rolü zaten bu izne sahip. Azure portal kullanılabilir. Hizmet sorumlusu, için özel ölçümleri yaydığı kaynaklara bağlı olarak, gereken kapsamda **Izleme ölçümleri yayımcı** rolü verilebilir. Örnek olarak bir abonelik, kaynak grubu veya belirli bir kaynaktır.
 
 > [!TIP]  
-> Özel ölçümleri yayan bir Azure AD belirteci istediğinizde, belirtecin istendiği hedef kitle veya kaynak için olduğundan emin olun `https://monitoring.azure.com/`. Sondaki '/' öğesini eklediğinizden emin olun.
+> Özel ölçümleri yayan bir Azure AD belirteci istediğinizde, belirtecin istendiği hedef kitle veya kaynak için olduğundan emin olun `https://monitoring.azure.com/` . Sondaki '/' öğesini eklediğinizden emin olun.
 
 ### <a name="subject"></a>Özne
 Bu özellik, için özel ölçümün hangi Azure Kaynak KIMLIĞIYLE bildirileceğini yakalar. Bu bilgiler, yapılmakta olan API çağrısının URL 'SI ile kodlanacak. Her API yalnızca tek bir Azure kaynağı için ölçüm değerleri gönderebilir.
@@ -189,31 +189,31 @@ Genel Önizleme sırasında, özel ölçümleri yayımlama özelliği yalnızca 
 |Azure bölgesi |Bölgesel uç nokta ön eki|
 |---|---|
 | **ABD ve Kanada** | |
-|Orta Batı ABD | https:\//westcentralus.Monitoring.Azure.com/ |
-|Batı ABD 2       | https:\//westus2.Monitoring.Azure.com/ |
-|Orta Kuzey ABD | https:\//northcentralus.Monitoring.Azure.com
-|Orta Güney ABD| https:\//southcentralus.Monitoring.Azure.com/ |
-|Orta ABD      | https:\//centralus.Monitoring.Azure.com |
-|Orta Kanada | https:\//canadacentral.Monitoring.Azure.Comc
-|Doğu ABD| https:\//eastus.Monitoring.Azure.com/ |
+|Orta Batı ABD | https: \/ /westcentralus.Monitoring.Azure.com/ |
+|Batı ABD 2       | https: \/ /westus2.Monitoring.Azure.com/ |
+|Orta Kuzey ABD | https: \/ /northcentralus.Monitoring.Azure.com
+|Orta Güney ABD| https: \/ /southcentralus.Monitoring.Azure.com/ |
+|Orta ABD      | https: \/ /centralus.Monitoring.Azure.com |
+|Orta Kanada | https: \/ /canadacentral.Monitoring.Azure.Comc
+|Doğu ABD| https: \/ /eastus.Monitoring.Azure.com/ |
 | **Avrupa** | |
-|Kuzey Avrupa    | https:\//northeurope.Monitoring.Azure.com/ |
-|Batı Avrupa     | https:\//westeurope.Monitoring.Azure.com/ |
-|Güney Birleşik Krallık | https:\//uksouth.Monitoring.Azure.com
-|Orta Fransa | https:\//francecentral.Monitoring.Azure.com |
+|Kuzey Avrupa    | https: \/ /northeurope.Monitoring.Azure.com/ |
+|Batı Avrupa     | https: \/ /westeurope.Monitoring.Azure.com/ |
+|Güney Birleşik Krallık | https: \/ /uksouth.Monitoring.Azure.com
+|Orta Fransa | https: \/ /francecentral.Monitoring.Azure.com |
 | **Afrika** | |
-|Güney Afrika Kuzey | https:\//southafricanorth.Monitoring.Azure.com
-| **Noktası** | |
-|Orta Hindistan | https:\//centralindia.Monitoring.Azure.com
-|Doğu Avustralya | https:\//australiaeast.Monitoring.Azure.com
-|Doğu Japonya | https:\//japaneast.Monitoring.Azure.com
-|Güneydoğu Asya  | https:\//SoutheastAsia.Monitoring.Azure.com |
-|Doğu Asya | https:\//eastasia.Monitoring.Azure.com
-|Güney Kore - Orta   | https:\//koreacentral.Monitoring.Azure.com
+|Güney Afrika Kuzey | https: \/ /southafricanorth.Monitoring.Azure.com
+| **Asya** | |
+|Orta Hindistan | https: \/ /centralindia.Monitoring.Azure.com
+|Doğu Avustralya | https: \/ /australiaeast.Monitoring.Azure.com
+|Doğu Japonya | https: \/ /japaneast.Monitoring.Azure.com
+|Güneydoğu Asya  | https: \/ /SoutheastAsia.Monitoring.Azure.com |
+|Doğu Asya | https: \/ /eastasia.Monitoring.Azure.com
+|Güney Kore - Orta   | https: \/ /koreacentral.Monitoring.Azure.com
 
 ## <a name="latency-and-storage-retention"></a>Gecikme süresi ve depolama saklama
 
-Yeni bir ölçüm veya bir ölçüme eklenen yeni bir boyutun eklenmesi, en fazla 2 ila 3 dakika sürer. Sistemde bir kez, verilerin 30 saniyeden az %99 ' dan az bir süre içinde olması gerekir. 
+Yeni bir ölçüm veya bir ölçüme eklenen yeni bir boyutun eklenmesi, en fazla 2 ila 3 dakika sürer. Sistemde bir kez, verilerin 30 saniyeden az %99 ' de bir süre içinde görüntülenmesi gerekir. 
 
 Bir ölçümü siler veya bir boyut kaldırırsanız, değişiklik sistemden silinecek bir aya kadar sürebilir.
 

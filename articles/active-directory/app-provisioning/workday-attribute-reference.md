@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/21/2020
+ms.date: 05/25/2020
 ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: 1ac45d88c0af33114106f36798fd56473d18ea28
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d1e432ef99a3c83fe06c00b15acbb00c630e1be1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798021"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014409"
 ---
 # <a name="workday-attribute-reference"></a>Workday öznitelik başvurusu
 
@@ -30,7 +30,7 @@ Aşağıdaki tablo, Workday özniteliklerinin listesini ve iş günü gelen sağ
 :::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-no-version-info.png" alt-text="Sürüm bilgisi olmayan Workday":::
 
 
-| \# | Name                                  | Workday API ifadesi                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | Workday öznitelik adı                                  | Workday XPATH API ifadesi                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Etkin                                | WD: Worker/WD: Worker \_ Data/WD: iş \_ verileri/WD: çalışan \_ durumu \_ verileri/WD: etkin/metin\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | WD: Worker/WD: çalışan \_ verileri/WD: \_ iş verileri/WD: konum \_ verileri/WD: iş \_ sitesi \_ Özet \_ verileri/WD: Adres \_ verileri/WD: Adres \_ satırı \_ verileri \[ @wd:Type = ' adres \_ satırı \_ 2 ' \] /Text\(\)                                                                                                                                                                                                                             |
@@ -125,7 +125,7 @@ Aşağıda gösterildiği gibi, bağlantı URL 'sinde WWS API v 30.0 veya üstü
 Ek XPATHs yapılandırmak için, [yapılandırmanızı yönetme](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)bölümüne bakın. 
 
 
-| \# | Name                                  | Workday XPATH API ifadesi                                                                                                                                                                                                                                                                                                                                                |
+| \# | Workday öznitelik adı                                  | Workday XPATH API ifadesi                                                                                                                                                                                                                                                                                                                                                |
 |----|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Etkin                                | WD: Worker/WD: Worker \_ Data/WD: iş \_ verileri/WD: çalışan \_ durumu \_ verileri/WD: etkin/metin\(\)                                                                                                                                                                                                                                                                                               |
 | 2  | AddressLine2Data                      | WD: Worker/WD: Worker \_ Data/WD: istihdam \_ Data/WD: Worker \_ iş \_ verileri \[ @wd:Primary_Job = 1]/WD: konum \_ verisi/WD: iş \_ sitesi \_ Özet \_ verileri/WD: Adres \_ verileri/WD: Adres \_ satırı \_ verileri \[ @wd:Type = ' adres \_ satırı \_ 2 ' \] /Text\(\)                                                                                                                                                            |
@@ -208,4 +208,44 @@ Ek XPATHs yapılandırmak için, [yapılandırmanızı yönetme](../saas-apps/wo
 | 79 | WorkerType                            | WD: Worker/WD: çalışan \_ verileri/WD: iş \_ verileri/WD: çalışan \_ iş \_ verileri \[ @wd:Primary_Job = 1]/WD: konum \_ verisi/WD: çalışan \_ türü \_ başvurusu/WD: ID \[ @wd:type = "çalışan \_ türü \_ kimliği" \] /Text\(\)                                                                                                                                                                                                 |
 | 80 | WorkSpaceReference                    | WD: Worker/WD: çalışan \_ verileri/WD: iş \_ verileri/WD: çalışan \_ iş \_ verileri \[ @wd:Primary_Job = 1]/WD: konum \_ verileri/WD: çalışma \_ alanı\_\_Reference/@wd:Descriptor                                                                                                                                                                                                                                  |
 
+## <a name="custom-xpath-values"></a>Özel XPATH değerleri
+Aşağıdaki tablo, Workday 'den Active Directory veya Azure AD 'ye çalışanları sağlarken, yaygın olarak kullanılan özel XPATH API ifadelerinin bir listesini sağlar. Lütfen burada belirtilen XPATH API deyimlerini, bölüm [öğreticisi: yapılandırmanızı yönetme](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)bölümünde yakalanan yönergelere başvuran Workday sürümü ile test edin.
+
+Bu tümleştirmeyi uygulayan müşterilerin avantajlarından yararlanmak üzere XPATH tablosuna daha fazla öznitelik eklemek için, lütfen aşağıdaki bir yorum bırakın veya makaleye doğrudan [katkıda bulunun](https://docs.microsoft.com/contribute) . 
+
+> [!div class="mx-tdBreakAll"]
+> | \# | Workday öznitelik adı  | Workday API sürümü | Workday XPATH API ifadesi   |
+> |----|-------------------------|---------------------|--------------------------------|
+> | 1  | Evrensel KIMLIK  | v 30.0 +   | WD: Worker/WD: Worker_Data/WD: Universal_ID/Text ()      |
+> | 2  | User Name     | v 30.0 +   | WD: Worker/WD: Worker_Data/WD: User_Account_Data/WD: User_Name/Text () |
+> | 3  | Yönetim düzeyi KIMLIĞI  | v 30.0 +  | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Worker_Job_Data [ @wd:Primary_Job = 1]/WD: Position_Data/WD: Job_Profile_Summary_Data/WD: Management_Level_Reference/WD: ID [ @wd:type = "Management_Level_ID"]/text ()  |
+> | 4 | İşe alma kurtarıldı | v 30.0 + | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Worker_Status_Data/WD: Hire_Rescinded/Text () |
+> | 5 | Atanan sağlama grubu | v 21.1 + | WD: Worker/WD: Worker_Data/WD: Account_Provisioning_Data/WD: Provisioning_Group_Assignment_Data [WD: Status = ' atandı ']/WD: Provisioning_Group/Text () | 
+
+
+## <a name="supported-xpath-functions"></a>Desteklenen XPATH işlevleri
+Aşağıda verilen XPath API deyiminizi oluştururken kullanabileceğiniz [MICROSOFT .net XPath kitaplığı](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) tarafından desteklenen XPath işlevlerinin listesi aşağıda verilmiştir. 
+
+* name
+* Son
+* konum
+* string
+* dizeden
+* concat
+* alt dize-After
+* starts-with
+* dize uzunluğu
+* içerir
+* translate
+* boşluğu Normalleştir
+* alt dize-önce
+* boole
+* true
+* not
+* yanlış
+* sayı
+* Tavan
+* TOPLA
+* round
+* sını
 

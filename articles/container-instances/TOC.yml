@@ -52,8 +52,12 @@
       href: container-instances-region-availability.md
     - name: Düzenleyicilerle ilişki
       href: container-instances-orchestrator-relationship.md
-    - name: Güvenlikle ilgili dikkat edilmesi gerekenler
-      href: container-instances-image-security.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
+        - name: Güvenlikle ilgili dikkat edilmesi gerekenler
+          href: container-instances-image-security.md
     - name: Sanal ağ
       href: container-instances-virtual-network-concepts.md
 - name: Nasıl yapılır kılavuzları

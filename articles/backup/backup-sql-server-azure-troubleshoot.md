@@ -3,12 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: cec3f8530d8a48a870c672d418d42d12a62aa2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93e06cc3219d5588c1740220af01950a25fcb52f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183339"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017027"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -20,7 +20,7 @@ Yedekleme işlemi ve sınırlamaları hakkında daha fazla bilgi için bkz. [Azu
 
 Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için, **AzureBackupWindowsWorkload** uzantısını bu sanal makineye yüklemelisiniz. **Usererrorsqlnosysadminmembership**hatasını alırsanız, SQL Server Örneğiniz gereken yedekleme izinlerine sahip olmadığı anlamına gelir. Bu hatayı onarmak için [VM Izinlerini ayarlama](backup-azure-sql-database.md#set-vm-permissions)bölümündeki adımları izleyin.
 
-## <a name="troubleshoot-discover-and-configure-issues"></a>Sorunları bulma ve yapılandırma sorunlarını giderme
+## <a name="troubleshoot-discover-and-configure-issues"></a>Bulma ve yapılandırma sorunlarını giderme
 
 Bir kurtarma hizmetleri Kasası oluşturup yapılandırdıktan sonra, veritabanlarının keşfedilmesinden ve yedeklemenin yapılandırılması iki adımlı bir işlemdir.<br>
 
@@ -46,7 +46,7 @@ Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabili
 
     `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
 
-    SystemDrive `C:\` 'larınızın harfiyle değiştirin. *SystemDrive*
+    `C:\` *Systemdrive*'larınızın harfiyle değiştirin.
 
 1. Bir VM içinde çalışan aşağıdaki üç işlemi virüsten koruma taramayla hariç tutun:
 
@@ -209,7 +209,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
-Bir örneği aşağıda verilmiştir:
+İşte bir örnek:
 
 ```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
@@ -219,7 +219,7 @@ Bir örneği aşağıda verilmiştir:
 
 ### <a name="override-the-default-target-restore-file-path"></a>Varsayılan hedef geri yükleme dosya yolunu geçersiz kıl
 
-Geri yükleme işlemi sırasında hedef geri yükleme dosya yolunu, veritabanı dosyasının hedef geri yükleme yoluna eşlemesini içeren bir JSON dosyası yerleştirerek geçersiz kılabilirsiniz. Bir `database_name.json` dosya oluşturun ve konuma `C:\Program Files\Azure Workload Backup\bin\plugins\SQL*`yerleştirin.
+Geri yükleme işlemi sırasında hedef geri yükleme dosya yolunu, veritabanı dosyasının hedef geri yükleme yoluna eşlemesini içeren bir JSON dosyası yerleştirerek geçersiz kılabilirsiniz. Bir `database_name.json` dosya oluşturun ve konuma yerleştirin `C:\Program Files\Azure Workload Backup\bin\plugins\SQL*` .
 
 Dosyanın içeriği şu biçimde olmalıdır:
 
@@ -238,7 +238,7 @@ Dosyanın içeriği şu biçimde olmalıdır:
 ]
 ```
 
-Bir örneği aşağıda verilmiştir:
+İşte bir örnek:
 
 ```json
 [
@@ -267,4 +267,4 @@ Geri yükleme işlemini tetiklemeniz için bu dosyanın yerleştirilmesi gerekir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL Server VM 'Ler için Azure Backup (Genel Önizleme) hakkında daha fazla bilgi için bkz. [SQL VM 'leri Azure Backup](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup).
+SQL Server VM 'Ler için Azure Backup (Genel Önizleme) hakkında daha fazla bilgi için bkz. [SQL VM 'leri Azure Backup](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup).

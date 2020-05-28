@@ -3,12 +3,12 @@ title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 9bb8d91d141997a7dd466d247ddcb0bd364e1c80
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 95846a74f9556fcccb3f583f365679c8ebadecee
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559861"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020158"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -21,7 +21,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. AAD | [Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml) |
 | Microsoft. addons | çekirdeğin |
 | Microsoft. ADHybridHealthService | [Azure Active Directory](/azure/active-directory/) |
-| Microsoft. Advisor | [Azure Advisor](../../advisor/index.yml) |
+| Microsoft. Advisor | [Azure Danışmanı](../../advisor/index.yml) |
 | Microsoft. AlertsManagement | [Azure İzleyici](../../azure-monitor/index.yml) |
 | Microsoft. AnalysisServices | [Azure Analysis Services](/azure/analysis-services/) |
 | Microsoft. Apimanane | [API Management](../../api-management/index.yml) |
@@ -54,7 +54,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft.Compute | [Sanal makineler](/azure/virtual-machines/)<br />[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets/) |
 | Microsoft. tüketim | [Maliyet yönetimi](/azure/cost-management/) |
 | Microsoft. Containerınstance | [Container Instances](/azure/container-instances/) |
-| Microsoft. ContainerRegistry | [Container Kayıt Defteri](/azure/container-registry/) |
+| Microsoft. ContainerRegistry | [Container Registry](/azure/container-registry/) |
 | Microsoft. ContainerService | [Azure Kubernetes Hizmeti (AKS)](/azure/aks/) |
 | Microsoft. CostManagement | [Maliyet yönetimi](/azure/cost-management/) |
 | Microsoft. CostManagementExports | [Maliyet yönetimi](/azure/cost-management/) |
@@ -96,7 +96,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Insights | [Azure İzleyici](../../azure-monitor/index.yml) |
 | Microsoft. ıotcentral | [Azure IoT Central](/azure/iot-central/) |
 | Microsoft. ıotspaces | [Azure Digital Twins](../../digital-twins/index.yml) |
-| Microsoft. Keykasası | [Key Vault](../../key-vault/index.yml) |
+| Microsoft. Keykasası | [Anahtar Kasası](../../key-vault/index.yml) |
 | Microsoft. Kubernetes | [Azure Kubernetes Hizmeti (AKS)](/azure/aks/) |
 | Microsoft.Kusto | [Azure Veri Gezgini](/azure/data-explorer/) |
 | Microsoft. LabServices | [Azure Lab Services](../../lab-services/index.yml) |
@@ -120,9 +120,9 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. OffAzure | [Azure Geçişi](../../migrate/migrate-overview.md) |
 | Microsoft. Operationalınsights | [Azure İzleyici](../../azure-monitor/index.yml) |
 | Microsoft. OperationsManagement | [Azure İzleyici](../../azure-monitor/index.yml) |
-| Microsoft. eşleme | [Azure eşleme hizmeti](../../peering-service/index.yml) |
+| Microsoft. eşleme | [Azure Eşleme Hizmeti](../../peering-service/index.yml) |
 | Microsoft.PolicyInsights | [Azure İlkesi](../../governance/policy/index.yml) |
-| Microsoft. Portal | [Azure portal](/azure/azure-portal/) |
+| Microsoft. Portal | [Azure portalı](/azure/azure-portal/) |
 | Microsoft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft. Powerbiadanmış | [Power BI Embedded](/azure/power-bi-embedded/) |
 | Microsoft. RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
@@ -143,13 +143,13 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. SignalRService | [Azure SignalR Service](../../azure-signalr/index.yml) |
 | Microsoft. SoftwarePlan | Lisans |
 | Microsoft. Solutions | [Azure Yönetilen Uygulamalar](../managed-applications/index.yml) |
-| Microsoft.Sql | [Azure SQL Veritabanı](../../sql-database/index.yml)<br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Microsoft. SqlVirtualMachine | [Azure Sanal Makinelerde SQL Server](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) |
+| Microsoft.Sql | [Azure SQL Veritabanı](../../azure-sql/database/index.yml)<br /> [Azure SQL Yönetilen Örnek](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
+| Microsoft. SqlVirtualMachine | [Azure Sanal Makinelerde SQL Server](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
 | Microsoft.Storage | [Depolama](../../storage/index.yml) |
 | Microsoft. StorageCache | [Azure HPC Önbelleği](/azure/hpc-cache/) |
 | Microsoft. Storagessync | [Depolama](../../storage/index.yml) |
 | Microsoft. StorSimple | [StorSimple](/azure/storsimple/) |
-| Microsoft. StreamAnalytics | [Azure Stream Analytics](../../stream-analytics/index.yml) |
+| Microsoft. StreamAnalytics | [Azure Akış Analizi](../../stream-analytics/index.yml) |
 | Microsoft. Subscription | çekirdeğin |
 | Microsoft. support | çekirdeğin |
 | Microsoft. SYNAPSE | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |

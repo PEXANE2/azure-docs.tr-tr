@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680992"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022189"
 ---
 # <a name="late-stage-reprojection"></a>Geç aşama yeniden projeksiyonu
 
@@ -24,7 +24,7 @@ Her iki LSR modu, farklı sınırlamalara sahip olsa da hologram kararlılığı
 
 ## <a name="choose-lsr-mode-in-unity"></a>Unity 'de LSR modunu seçme
 
-Unity düzenleyicisinde *dosya > derleme ayarları*' na gidin. Sol alt köşedeki *oynatıcı ayarları* ' nı seçin ve ardından *Player > xr ayarları > sanal gerçeklik SDK 'Ları >* , **derinlik arabelleği paylaşımının** etkinleştirilip etkinleştirilmeyeceğini belirleyin:
+Unity düzenleyicisinde öğesine gidin *:::no-loc text="File > Build Settings":::* . *:::no-loc text="Player Settings":::* Sol alt köşedeki ' ı seçin, sonra da *:::no-loc text="Player > XR Settings > Virtual Reality SDKs > Windows Mixed Reality":::* işaretli olup olmadığını kontrol edin **:::no-loc text="Enable Depth Buffer Sharing":::** :
 
 ![Derinlik arabelleği paylaşımı etkin bayrağı](./media/unity-depth-buffer-sharing-enabled.png)
 
@@ -44,9 +44,9 @@ Planar LSR, sağlanan düzleme yakın olan nesneleri en iyi şekilde yeniden pro
 
 ### <a name="configure-planar-lsr-in-unity"></a>Unity 'de planar LSR yapılandırma
 
-Düzlem parametreleri, her kareyi ile `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`sağlamanız gereken *odak noktası*olarak adlandırılan bir öğesinden türetilir. Ayrıntılar için bkz. [Unity Focus POINT API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) . Bir odak noktası ayarlamazsanız, sizin için bir geri dönüş seçilir. Ancak otomatik geri dönüş, genellikle sonuçları daha iyi halleyen sonuçlara yol açar.
+Düzlem parametreleri, her kareyi ile sağlamanız gereken *odak noktası*olarak adlandırılan bir öğesinden türetilir `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . Ayrıntılar için bkz. [Unity Focus POINT API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) . Bir odak noktası ayarlamazsanız, sizin için bir geri dönüş seçilir. Ancak otomatik geri dönüş, genellikle sonuçları daha iyi halleyen sonuçlara yol açar.
 
-Odak noktasını kendiniz hesaplayabilirsiniz, ancak bu işlem, uzak Işleme ana bilgisayarı tarafından hesaplanabilecek şekilde mantıklı olabilir. Bunu `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` elde etmek için çağırın. Odak noktasını ifade etmek için bir koordinat çerçevesi sağlamanız istenir. Çoğu durumda, sonucu yalnızca `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` buradan sağlamak isteyeceksiniz.
+Odak noktasını kendiniz hesaplayabilirsiniz, ancak bu işlem, uzak Işleme ana bilgisayarı tarafından hesaplanabilecek şekilde mantıklı olabilir. Bunu `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` elde etmek için çağırın. Odak noktasını ifade etmek için bir koordinat çerçevesi sağlamanız istenir. Çoğu durumda, sonucu yalnızca buradan sağlamak isteyeceksiniz `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` .
 
 Genellikle hem istemci hem de konak oluşturma içeriği diğer tarafın, istemci üzerindeki UI öğeleri gibi farkında değildir. Bu nedenle, uzak odak noktasını yerel olarak hesaplanan bir şekilde birleştirmek mantıklı olabilir.
 

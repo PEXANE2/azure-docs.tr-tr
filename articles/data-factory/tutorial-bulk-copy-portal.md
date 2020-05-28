@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/27/2020
-ms.openlocfilehash: 04469fa1bd0473710d9fa0bf0190c6459f1f8a07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd14945069b2786fa4acb994c37c17d3b434893e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418788"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118279"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
@@ -33,7 +33,7 @@ Yüksek düzeyde, bu öğretici aşağıdaki adımları içerir:
 > * Veri fabrikası oluşturma.
 > * Azure SQL veritabanı, Azure SYNAPSE Analytics (eski adıyla SQL DW) ve Azure Storage bağlı hizmetleri oluşturun.
 > * Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla SQL DW) veri kümeleri oluşturun.
-> * Kopyalanacak tabloları aramak için bir işlem hattı ve gerçek kopyalama işlemini gerçekleştirmek için başka bir işlem hattı oluşturma. 
+> * Kopyalanacak tabloları aramak için bir işlem hattı ve gerçek kopyalama işlemini gerçekleştirmek için başka bir işlem hattı oluşturun. 
 > * Bir işlem hattı çalıştırması başlatma.
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.
 
@@ -58,7 +58,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 **Kaynak Azure SQL Veritabanı’nı hazırlama**:
 
-[Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md) makalesini izleyerek Adventure Works LT örnek verileriyle bir Azure SQL Veritabanı oluşturun. Bu öğretici bu örnek veritabanındaki tüm tabloları bir Azure SYNAPSE Analytics 'e (eski adıyla SQL DW) kopyalar.
+[Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) makalesini izleyerek Adventure Works LT örnek verileriyle bir Azure SQL Veritabanı oluşturun. Bu öğretici bu örnek veritabanındaki tüm tabloları bir Azure SYNAPSE Analytics 'e (eski adıyla SQL DW) kopyalar.
 
 **Havuz Azure SYNAPSE Analytics (eski ADıYLA SQL DW) hazırlama**:
 
@@ -68,14 +68,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="azure-services-to-access-sql-server"></a>SQL sunucusuna erişime yönelik Azure hizmetleri
 
-Hem SQL veritabanı hem de Azure SYNAPSE Analytics (eski adıyla SQL DW) için, Azure hizmetlerinin SQL Server 'a erişmesine izin verin. Azure SQL sunucunuz için **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** ayarının **açık olduğundan** emin olun. Bu ayar Data Factory hizmetinin Azure SQL veritabanınızdaki verileri okumasını ve Azure SYNAPSE Analizinizden (eski adıyla SQL DW) veri yazmasına izin verir. 
+Hem SQL veritabanı hem de Azure SYNAPSE Analytics (eski adıyla SQL DW) için, Azure hizmetlerinin SQL Server 'a erişmesine izin verin. Sunucunuz için **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** **ayarının açık olduğundan** emin olun. Bu ayar Data Factory hizmetinin Azure SQL veritabanınızdaki verileri okumasını ve Azure SYNAPSE Analizinizden (eski adıyla SQL DW) veri yazmasına izin verir. 
 
-Bu ayarı doğrulamak ve etkinleştirmek için Azure SQL Server > Security > güvenlik duvarları ve sanal ağlar ' a gidin > **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** ayarını **Açık**olarak ayarlayın.
+Bu ayarı doğrulamak ve etkinleştirmek için, sunucunuza > güvenlik > güvenlik duvarları ve sanal ağlar ' a gidin > **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** ayarını **Açık**olarak ayarlayın.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
+
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
 1. [Azure Portal](https://portal.azure.com)gidin. 
-1. Azure Portal menüsünün solunda, **kaynak** > **Analizi** > oluştur**Data Factory**' u seçin. 
+1. Azure Portal menüsünün solunda, **kaynak**  >  **Analizi**oluştur  >  **Data Factory**' u seçin. 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. **Yeni Veri Fabrikası** sayfasında **ad**için **ADFTutorialBulkCopyDF** girin. 
  
@@ -114,7 +115,7 @@ Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlamak için bağl�
 
     a. **Ad** için **AzureSqlDatabaseLinkedService** adını girin.
     
-    b. **Sunucu adı** IÇIN Azure SQL Server 'ı seçin
+    b. **Sunucu adı** için sunucunuzu seçin
     
     c. **Veritabanı adı** için Azure SQL veritabanınızı seçin. 
     
@@ -135,7 +136,7 @@ Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlamak için bağl�
    
     a. **Ad** için **AzureSqlDWLinkedService** adını girin.
      
-    b. **Sunucu adı** IÇIN Azure SQL Server 'ı seçin
+    b. **Sunucu adı** için sunucunuzu seçin
      
     c. **Veritabanı adı** için Azure SQL veritabanınızı seçin. 
      
@@ -193,7 +194,7 @@ Bu öğreticide, kaynak ve hedef SQL tabloları veri kümesi tanımında sabit k
 
     ![Veri kümesi bağlantısı TableName](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
 
-    b. **Dinamik Içerik Ekle** sayfasında, **Parametreler**altındaki `@dataset().DWTableName` **dwtablename** öğesine tıklayarak üstteki Ifade metin kutusunu otomatik olarak doldurur ve ardından **son**' a tıklayın. Veri kümesinin **tableName** özelliği, **DWTableName** parametresine bağımsız değişken olarak geçirilen değere ayarlanır. ForEach etkinliği bir tablo listesi boyunca yinelenir ve birer birer Kopyalama etkinliğine geçirilir. 
+    b. **Dinamik Içerik Ekle** sayfasında, **Parametreler**altındaki **dwtablename** öğesine tıklayarak üstteki ifade metin kutusunu otomatik olarak doldurur `@dataset().DWTableName` ve ardından **son**' a tıklayın. Veri kümesinin **tableName** özelliği, **DWTableName** parametresine bağımsız değişken olarak geçirilen değere ayarlanır. ForEach etkinliği bir tablo listesi boyunca yinelenir ve birer birer Kopyalama etkinliğine geçirilir. 
 
     ![Veri kümesi parametresi derleyici](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
  
@@ -228,7 +229,7 @@ Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** 
 
     b. **Ayarlar** sekmesine geçin, **öğeler**için giriş kutusuna tıklayın, ardından aşağıdaki **dinamik içerik Ekle** bağlantısına tıklayın. 
 
-    c. **Dinamik Içerik Ekle** sayfasında, **Sistem değişkenleri** ve **işlevler** bölümlerini daraltın, **Parametreler**altındaki `@pipeline().parameter.tableList` **tablelist** öğesine tıklayarak üstteki ifade metin kutusunu otomatik olarak doldurur. Ardından, **Son**'a tıklayın. 
+    c. **Dinamik Içerik Ekle** sayfasında, **Sistem değişkenleri** ve **işlevler** bölümlerini daraltın, **Parametreler**altındaki **tablelist** öğesine tıklayarak üstteki ifade metin kutusunu otomatik olarak doldurur `@pipeline().parameter.tableList` . Ardından, **Son**'a tıklayın. 
 
     ![Foreach parametresi derleyici](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
@@ -253,7 +254,7 @@ Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** 
 1. **Havuz** sekmesine geçin ve aşağıdaki adımları izleyin: 
 
     1. **Havuz Veri Kümesi** olarak **AzureSqlDWDataset** seçin.
-    1. DWTableName parametresinin DEĞERI için giriş kutusuna tıklayın-> aşağıdan **dinamik Içerik Ekle** ' yi seçin, komut dosyası olarak `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` ifade girin,-> **son**' u seçin.
+    1. DWTableName parametresinin DEĞERI için giriş kutusuna tıklayın-> aşağıdan **dinamik Içerik Ekle** ' yi seçin, `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` komut dosyası olarak ifade girin,-> **son**' u seçin.
     1. Copy yöntemi için **PolyBase**' i seçin. 
     1. **Varsayılan tür kullan** seçeneğini temizleyin. 
     1. **Betiği kopyala** giriş kutusuna tıklayın -> aşağıdaki **Dinamik içerik ekle**'yi seçin -> betik için aşağıdaki ifadeyi girin -> **Son**'u seçin. 
@@ -401,4 +402,4 @@ Bu öğreticide aşağıdaki adımları gerçekleştirdiniz:
 
 Kaynaktan hedefe verileri artımlı olarak koppyalama hakkında bilgi edinmek için aşağıdaki öğreticiye geçin:
 > [!div class="nextstepaction"]
->[Veri artımlı olarak kopyalama](tutorial-incremental-copy-portal.md)
+>[Verileri artımlı olarak kopyalama](tutorial-incremental-copy-portal.md)

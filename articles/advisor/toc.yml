@@ -34,7 +34,7 @@
   items:
     - name: Güvenlik Merkezi
       href: 'https://azure.microsoft.com/services/security-center/'
-    - name: SQL DB Danışmanı
+    - name: SQL Veritabanı Danışmanı
       href: 'https://azure.microsoft.com/documentation/articles/sql-database-advisor/'
     - name: App Service
       href: 'https://docs.microsoft.com/azure/app-service/app-service-best-practices'

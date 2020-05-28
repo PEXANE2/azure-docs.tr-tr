@@ -11,19 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ed7b01fb83ebd0c494f3f0f06a28dbf4e98c0b2d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592096"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996695"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Atlayan pencerede işlem hattı çalıştıran bir tetikleyici oluşturma
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, bir atlayan pencere tetikleyicisi oluşturma, başlatma ve izlemeye yönelik adımlar sağlanmaktadır. Tetikleyiciler ve desteklenen türler hakkında genel bilgi için bkz. işlem [hattı yürütme ve Tetikleyiciler](concepts-pipeline-execution-triggers.md).
 
-Atlayan pencere tetikleyicileri, durumu korurken belirtilen bir başlangıç zamanından itibaren periyodik bir zaman aralığında başlatılan bir tetikleyici türüdür. Atlayan pencereler sabit boyutlu, çakışmayan ve bitişik zaman aralıkları dizisidir. Atlayan pencere tetikleyicisinin bir işlem hattı ile bire bir ilişkisi vardır ve yalnızca tekil bir işlem hattına başvurabilir.
+Atlayan pencere tetikleyicileri, durumu korurken belirtilen bir başlangıç zamanından itibaren periyodik bir zaman aralığında başlatılan bir tetikleyici türüdür. Atlayan pencereler sabit boyutlu, çakışmayan ve bitişik zaman aralıkları dizisidir. Atlayan pencere tetikleyicisinin bir işlem hattı ile bire bir ilişkisi vardır ve yalnızca tekil bir işlem hattına başvurabilir. Atlayan pencere tetikleyicisi, zamanlama tetikleyicisinin karmaşık senaryolara yönelik bir özellik paketi ([diğer pencere tetikleyicilerine bağımlılığı](#tumbling-window-trigger-dependency), [başarısız bir işi yeniden çalıştırma ve işlem](tumbling-window-trigger-dependency.md#monitor-dependencies) [hatları için Kullanıcı yeniden denemesi ayarlama](#user-assigned-retries-of-pipelines)) için daha ağır bir alternatiftir. Zamanlama tetikleyicisi ve atlayan pencere tetikleyicisi arasındaki farkı daha fazla anlamak için lütfen [buraya](concepts-pipeline-execution-triggers.md#trigger-type-comparison)göz atın.
 
 ## <a name="data-factory-ui"></a>Data Factory Kullanıcı Arabirimi (UI)
 
@@ -97,10 +97,10 @@ Aşağıdaki tabloda, atlayan bir pencere tetikleyicisinin yinelenme ve zamanlam
 | JSON öğesi | Açıklama | Tür | İzin verilen değerler | Gerekli |
 |:--- |:--- |:--- |:--- |:--- |
 | **türüyle** | Tetikleyicinin türü. Tür, "TumblingWindowTrigger" sabit değeridir. | Dize | "TumblingWindowTrigger" | Yes |
-| **runtimeState** | Tetikleyici çalışma zamanının geçerli durumu.<br/>**Note**: Bu öğe \<ReadOnly>. | Dize | "Başlatıldı," "durduruldu," "devre dışı" | Yes |
+| **runtimeState** | Tetikleyici çalışma zamanının geçerli durumu.<br/>**Note**: Bu öğe \<readOnly> . | Dize | "Başlatıldı," "durduruldu," "devre dışı" | Yes |
 | **lemiyor** | Tetikleyicinin yineleneceği sıklık birimini (dakika veya saat) temsil eden bir dize. **StartTime** tarih değerleri **Sıklık** değerinden daha ayrıntılı ise, pencere sınırları hesaplandıktan sonra **StartTime** tarihleri kabul edilir. Örneğin **Sıklık** değeri saat Ise ve **StartTime** değeri 2017-09-01T10:10:10z ise, ilk pencere (2017-09-01T10:10:10z, 2017-09-01T11:10:10z). | Dize | "dakika", "saat"  | Yes |
 | **aralığında** | Tetikleyicinin çalışma sıklığını belirten **frequency** değerinin aralığını gösteren bir pozitif tamsayı. Örneğin, **Aralık** 3, **Sıklık** ise "saat" ise, tetikleyici her 3 saatte bir yinelenir. <br/>**Note**: en düşük pencere aralığı 5 dakikadır. | Tamsayı | Pozitif bir tamsayı. | Yes |
-| **startTime**| Geçmişte olabilecek ilk oluşum. İlk tetikleyici aralığı (**başlangıçsaati**, **başlangıçsaati** + **aralığı**). | DateTime | Bir tarih saat değeri. | Yes |
+| **startTime**| Geçmişte olabilecek ilk oluşum. İlk tetikleyici aralığı (**başlangıçsaati**, **başlangıçsaati**  +  **aralığı**). | DateTime | Bir tarih saat değeri. | Yes |
 | **endTime**| Geçmişte olabilecek son oluşum. | DateTime | Bir tarih saat değeri. | Yes |
 | **ilir** | Pencere için veri işleme başlangıcını geciktirmek için geçen süre. İşlem hattı çalıştırması beklenen yürütme süresi artı **gecikme**miktarı ile başlatılır. **Gecikme** , tetikleyicinin yeni bir çalıştırmayı tetiklemeden önce geçen süreyi ne kadar bekleyeceğini tanımlar. **Gecikme** , pencerenin **StartTime**öğesini değiştirmez. Örneğin, 00:10:00 **gecikme** değeri 10 dakikalık bir gecikme anlamına gelir. | Timespan<br/>(SS: DD: SS)  | Varsayılan değer 00:00:00 olan bir TimeSpan değeri. | No |
 | **maxConcurrency** | Kullanılabilir olan Windows için tetiklenen eşzamanlı tetikleyici çalışmalarının sayısı. Örneğin, saat başı için saatlik çalıştırmaları, 24 Windows ile sonuçlarınıza geri dönmek için. **MaxConcurrency** = 10 ise, tetikleyici olayları yalnızca ilk 10 pencere için tetiklenir (00:00-01:00-09:00-10:00). İlk 10 tetiklenen işlem hattı çalıştıktan sonra, sonraki 10 Windows için tetikleyici çalıştırmaları tetiklenir (10:00-11:00-19:00-20:00). **MaxConcurrency** = 10 ' un bu örneğine devam ederseniz, 10 Windows varsa, toplam 10 işlem hattı çalıştırması vardır. Yalnızca 1 pencere hazırlandıysanız yalnızca 1 işlem hattı çalıştırması vardır. | Tamsayı | 1 ile 50 arasında bir tamsayı. | Yes |
@@ -146,13 +146,19 @@ Aşağıdaki tabloda, atlayan bir pencere tetikleyicisinin yinelenme ve zamanlam
 İşlem hattı tanımında **Windowstart** ve **windowend** sistem değişkeni değerlerini kullanmak için, buna uygun olarak "mywindowstart" ve "mywindowend" parametrelerinizi kullanın.
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>Arka doldurma senaryosunda Windows 'un yürütme sırası
-Yürütme için birden çok pencere (özellikle bir geri doldurma senaryosunda) olduğunda, Windows için yürütme sırası en eskiyi en eskiye ve en yeni aralıklara göre belirleyici olur. Şu anda bu davranışın değiştirilmesi mümkün değildir.
+
+Tetikleyicinin startTime öğesi geçmişte ise, bu formüle dayalı olarak, z = (CurrentTime-TriggerStartTime)/Triggerdilimleyicesize, tetikleyici, gelecekteki çalıştırmaları yürütmeden önce {z} geri doldurma (geçmiş) ile paralel olarak çalışır. Windows için yürütme sırası, en eskiden en yeni aralıklarda belirleyici olur. Şu anda bu davranışın değiştirilmesi mümkün değildir.
 
 ### <a name="existing-triggerresource-elements"></a>Mevcut TriggerResource öğeleri
-Aşağıdaki noktaları var olan **Triggerresource** öğeleri için geçerlidir:
 
-* Tetikleyicinin **Sıklık** öğesi (veya pencere boyutu) değeri değişirse, zaten işlenmiş olan pencerelerin *durumu sıfırlanmaz.* Tetikleyici, yeni pencere boyutunu kullanarak yürütüldüğü son pencereden Windows için çalışmaya devam eder.
+Aşağıdaki noktaları var olan **Triggerresource** öğelerinin güncelleştirilmesi için geçerlidir:
+
+* Tetikleyici oluşturulduktan sonra Trigger öğesinin **Sıklık** öğesi (veya pencere boyutu) değeri, **Aralık** öğesiyle birlikte değiştirilemez. Bu, triggerRun yeniden yönlendirme ve bağımlılık değerlendirmelerinin düzgün çalışması için gereklidir
 * Tetikleyicinin **bitişi** öğesi için değer değişirse (eklenmiş veya güncelleştirilmiş), zaten işlenmiş olan pencerelerin *durumu sıfırlanmaz.* Tetikleyici, yeni **bitişsaati** değerini verir. Yeni bir **bitişsaati** değeri zaten yürütülmüş olan pencerelerin önünde ise, tetikleyici duraklar. Aksi takdirde tetikleyici, yeni **bitişsaati** değerine rastlana kadar duraklar.
+
+### <a name="user-assigned-retries-of-pipelines"></a>Kullanıcı ardışık düzenleri yeniden denemeye atandı
+
+Ardışık düzen hatalarında, iç içe geçmiş pencere tetikleyicisi, Kullanıcı müdahalesi olmadan aynı giriş parametrelerini kullanarak başvurulan işlem hattının yürütülmesini otomatik olarak yeniden deneyebilir. Bu, tetikleyici tanımında "retryPolicy" özelliği kullanılarak belirtilebilir.
 
 ### <a name="tumbling-window-trigger-dependency"></a>Atlayan pencere tetikleme bağımlılığı
 

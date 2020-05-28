@@ -3,26 +3,26 @@ title: Azure dosya paylaşma yedeklemesi için destek matrisi
 description: Azure dosya paylaşımları yedeklenirken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 42578cc83ef193801fa700ec7d136385411e5f79
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 09ca5264280c990db8f57400aef1a876f842a210
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684629"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117693"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi için destek matrisi
 
 Azure dosya paylaşımlarını yedeklemek için [Azure Backup hizmetini](https://docs.microsoft.com/azure/backup/backup-overview) kullanabilirsiniz. Bu makale, Azure Backup ile Azure dosya paylaşımlarını yedeklerken destek ayarlarını özetler.
 
-## <a name="supported-geos"></a>Desteklenen GEOS
+## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Azure dosya paylaşımları için yedekleme aşağıdaki GEOS 'da kullanılabilir:
+### <a name="ga-regions-for-azure-file-shares-backup"></a>Azure dosya paylaşımları yedeklemesi için GA bölgeleri
 
-**Ga bölgeleri**:<br>
-Avustralya Güney Doğu (Ao), Kanada Orta (CNC), Orta Batı ABD (WCUS), Orta Güney ABD (SCUS), Batı ABD 2 (WUS 2), Hindistan Güney (INS), Orta Kuzey ABD (NCUS), Japonya Doğu (JPE), Brezilya Güney (BRS), Güney Doğu Asya (SEA), İsviçre Batı (SZW), BAE Orta (UAC), Norveç Doğu (NWE), Hindistan Batı (ıNW), Avustralya Orta (ACL), Kore orta (KRC), Japonya Batı (JPW), Güney Afrika Kuzey (SAN) UK Güney (UKS), UK Batı (UKW), Kore Güney (KRS), Kuzey Avrupa (NE), Almanya Kuzey (GN), Norveç Batı (NWW), Güney Afrika Batı (gördüğünüz), İsviçre Kuzey (SZN), Almanya Orta Batı (GWC), BAE Kuzey (UA), Fransa Orta (FRC), Hindistan Orta (ıNC), Kanada Doğu (CNE), Doğu Asya (EA), Avustralya Doğu (AE), Orta ABD (cu DÜZEYINDE KAPSANıR), Batı ABD (WUS), US gov Arizona (UGA), US Gov Teksas (UGT) , US Gov Virginia (UGV), US DoD Orta (UDC), US DoD Doğu (NCESI)
+Azure dosya paylaşımları yedeklemesi, **şunlar hariç** tüm bölgelerde kullanılabilir: Almanya Orta (Sovereign), Almanya Kuzeydoğu (Sovereign), Çin Doğu, Çin Doğu 2, Çin Kuzey, Çin Kuzey 2, US gov Iowa
 
-**Desteklenen bölgeler (Önizleme kapsamında) ancak henüz GA**:<br>
-Doğu ABD (EUS), Doğu ABD 2 (EUS2), Batı Avrupa (WE)
+### <a name="supported-regions-for-accidental-delete-protection"></a>Yanlışlıkla silme koruması için desteklenen bölgeler
+
+Orta Batı ABD
 
 ## <a name="supported-storage-accounts"></a>Desteklenen depolama hesapları
 

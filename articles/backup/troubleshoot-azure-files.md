@@ -3,12 +3,12 @@ title: Azure dosya paylaşımını yedekleme sorunlarını giderme
 description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırasında oluşan sorunlarla ilgili sorun giderme bilgileri verilmektedir.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 3d04a60b8bab5ba764818eab341ac08836b0dfd1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562092"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116744"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedeklerken sorunları giderme
 
@@ -50,7 +50,7 @@ Kaydı yeniden deneyin. Sorun devam ederse desteğe başvurun.
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Dosya paylaşımının korumasını kaldırdıktan sonra kurtarma hizmetleri Kasası silinemiyor
 
-Azure Portal, **kasa** > **Yedekleme altyapısı** > **depolama hesaplarınızı** açın ve kurtarma hizmetleri kasasından depolama hesaplarını kaldırmak için **kayıt Sil** ' e tıklayın.
+Azure Portal, **kasa**  >  **Yedekleme altyapısı**  >  **depolama hesaplarınızı** açın ve kurtarma hizmetleri kasasından depolama hesaplarını kaldırmak için **kayıt Sil** ' e tıklayın.
 
 >[!NOTE]
 >Kurtarma Hizmetleri Kasası, yalnızca kasaya kayıtlı tüm depolama hesaplarının kaydı kaldırıldıktan sonra silinebilir.
@@ -276,6 +276,45 @@ Hata kodu: Bmsusererrorobjectkilitlendi
 Hata Iletisi: seçili öğede başka bir işlem devam ediyor.
 
 Devam eden diğer işlemin tamamlanmasını bekleyin ve daha sonra yeniden deneyin.
+
+Dosyadan: troubleshoot-azure-files.md
+
+## <a name="common-soft-delete-related-errors"></a>Yaygın geçici silme ile Ilgili hatalar
+
+### <a name="usererrorrestoreafsinsoftdeletestate--this-restore-point-is-not-available-as-the-snapshot-associated-with-this-point-is-in-a-file-share-that-is-in-soft-deleted-state"></a>UserErrorRestoreAFSInSoftDeleteState-bu nokta ile ilişkili anlık görüntü, geçici olarak silinmiş durumdaki bir dosya paylaşımında yer aldığı için bu geri yükleme noktası kullanılamıyor
+
+Hata kodu: UserErrorRestoreAFSInSoftDeleteState
+
+Hata Iletisi: Bu nokta ile ilişkili anlık görüntü, geçici olarak silinmiş durumdaki bir dosya paylaşımında olduğundan, bu geri yükleme noktası kullanılamıyor.
+
+Dosya paylaşımının geçici olarak silinmiş durumunda olduğu durumlarda geri yükleme işlemini gerçekleştiremezsiniz. Dosya paylaşımından dosyalar portalından silmeyi veya [silmeyi](scripts/backup-powershell-script-undelete-file-share.md) geri yüklemeyi deneyin.
+
+### <a name="usererrorrestoreafsindeletestate--listed-restore-points-are-not-available-as-the-associated-file-share-containing-the-restore-point-snapshots-has-been-deleted-permanently"></a>UserErrorRestoreAFSInDeleteState-geri yükleme noktası anlık görüntülerini içeren ilişkili dosya paylaşımında kalıcı olarak silindiğinden listelenen geri yükleme noktaları kullanılamıyor
+
+Hata kodu: UserErrorRestoreAFSInDeleteState
+
+Hata Iletisi: geri yükleme noktası anlık görüntülerini içeren ilişkili dosya paylaşımında kalıcı olarak silindiğinden listelenen geri yükleme noktaları kullanılamıyor.
+
+Yedeklenen dosya paylaşımının silinip silinmediğini denetleyin. Geçici olarak silinmiş durumdaysa, geçici silme bekletme döneminin daha fazla olup olmadığını ve geri kurtarılamamış olduğunu kontrol edin. Bu durumda, tüm anlık görüntülerinizi kalıcı olarak kaybedersiniz ve verileri kurtaramayacaksınız.
+
+>[!NOTE]
+> Yedeklenen dosya paylaşımının silinmesini veya geçici olarak silinmiş durumda olup olmadığını, tüm geri yükleme noktalarınızın kaybedilmesini önlemek için geçici silme bekletme süresi bitmeden önce geri silmeyi öneririz.
+
+### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState-Azure dosya paylaşma geçici olarak silinmiş durumda olduğundan yedekleme başarısız oldu
+
+Hata kodu: UserErrorBackupAFSInSoftDeleteState
+
+Hata Iletisi: Azure dosya paylaşma geçici olarak silinmiş durumda olduğundan yedekleme başarısız oldu
+
+Yedekleme işlemine devam etmek ve verilerin kalıcı olarak silinmesini engellemek için **dosyalar portalından** dosya paylaşımının veya [silmeyi geri alma betiği](scripts/backup-powershell-script-undelete-file-share.md) kullanarak silmeyi geri alın.
+
+### <a name="usererrorbackupafsindeletestate--backup-failed-as-the-associated-azure-file-share-is-permanently-deleted"></a>UserErrorBackupAFSInDeleteState-ilişkili Azure dosya paylaşımının kalıcı olarak silindiği için yedekleme başarısız oldu
+
+Hata kodu: UserErrorBackupAFSInDeleteState
+
+Hata Iletisi: ilişkili Azure dosya paylaşımının kalıcı olarak silindiği için yedekleme başarısız oldu
+
+Yedeklenen dosya paylaşımının kalıcı olarak silinip silinmediğini denetleyin. Yanıt Evet ise, yinelenen yedekleme hatalarından kaçınmak için dosya paylaşımının yedeklemesini durdurun. Korumayı durdurmayı öğrenmek için bkz. [Azure dosya paylaşımının korumasını durdurma](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

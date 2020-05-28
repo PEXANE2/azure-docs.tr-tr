@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b6cb9c70de27e40c62d6a7adeece5cb39554c090
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844582"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018829"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -29,7 +29,7 @@ Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) aşağıd
 * **8266 (TCP + UDP)** -veri aktarımı için gereklidir
 * **5000 (TCP)**, **5433 (tcp)**, **8443 (TCP)** - [ArrInspector](tools/arr-inspector.md) için gereklidir
 
-## <a name="error-disconnected-videoformatnotavailable"></a>' Bağlantısı kesildi: VideoFormatNotAvailable ' hatası
+## <a name="error-disconnected-videoformatnotavailable"></a>Hata ' `Disconnected: VideoFormatNotAvailable` '
 
 GPU 'nun donanım video kodunu çözmeyi destekleyip desteklemediğini denetleyin. Bkz. [GELIŞTIRME bilgisayarı](../overview/system-requirements.md#development-pc).
 
@@ -37,7 +37,7 @@ GPU 'nun donanım video kodunu çözmeyi destekleyip desteklemediğini denetleyi
 
 ## <a name="h265-codec-not-available"></a>H265 codec bileşeni kullanılamıyor
 
-Sunucunun bir **codec bileşeni kullanılamıyor** hatası ile bağlanmayı reddedebileceği iki neden vardır.
+Sunucunun bir hatayla bağlanmayı reddedebileceği iki neden vardır `codec not available` .
 
 **H265 codec bileşeni yüklü değil:**
 
@@ -107,7 +107,7 @@ Bu iki adım yardımcı olduysa, video çerçevelerinin istemci tarafından alı
 
 Bkz. belirli [VM boyut sınırlamaları](../reference/limits.md#overall-number-of-polygons).
 
-**Model Frustum görünümü içinde değil:**
+**Model, bu kameranın Frustum içinde değil:**
 
 Çoğu durumda, model doğru şekilde görüntülenir, ancak kameranın dışında bulunur. Yaygın bir nedenden dolayı modelin, kameranın en kırpma düzlemine göre kırpılması için, modelin en dışı bir özete aktarılmasının yaygın bir nedeni vardır. Modelin sınırlayıcı kutusunun programlı bir şekilde sorgulanmasına ve kutuyu bir satır kutusu olarak görselleştirmeye veya değerlerini hata ayıklama günlüğüne yazdırmaya yardımcı olur.
 
@@ -142,7 +142,7 @@ Bu sınırlama kutusuyla ilgili olarak görünmeyen geometriye yol açabilecek i
 
 **Unity oluşturma işlem hattı işleme kancalarını içermez:**
 
-Azure uzaktan Işleme, video ile çerçeve oluşturmayı ve yeniden projeksiyonu yapmak için Unity işleme ardışık düzenine takılır. Bu kancalarının mevcut olduğunu doğrulamak için, *> Analysis > Frame Debugger menü penceresini*açın. Bunu etkinleştirin ve `HolographicRemotingCallbackPass` ardışık düzende ' ın iki girişi olduğundan emin olun:
+Azure uzaktan Işleme, video ile çerçeve oluşturmayı ve yeniden projeksiyonu yapmak için Unity işleme ardışık düzenine takılır. Bu kancalarının mevcut olduğunu doğrulamak için menüsünü açın *:::no-loc text="Window > Analysis > Frame debugger":::* . Bunu etkinleştirin ve `HolographicRemotingCallbackPass` ardışık düzende ' ın iki girişi olduğundan emin olun:
 
 ![Unity çerçevesi hata ayıklayıcısı](./media/troubleshoot-unity-pipeline.png)
 

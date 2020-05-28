@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68950241"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021611"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Öğretici: Azure Veri Kataloğu 'nda veri varlıklarını kaydetme
 
@@ -39,7 +39,7 @@ Veri Kataloğu 'Nu ayarlamak için bir Azure aboneliğinin sahibi veya ortak sah
 
 ### <a name="register-a-data-source"></a>Veri kaynağını kaydetme
 
-Veri varlıklarını (tablolarını) bir [Azure SQL veritabanı örneğinden](../sql-database/sql-database-single-database-get-started.md)kaydedersiniz, ancak rolünüz ile ilgili tanıdık ve alakalı verilerle çalışmayı tercih ediyorsanız desteklenen herhangi bir veri kaynağını kullanabilirsiniz. Desteklenen veri kaynaklarının listesi için bkz. [Desteklenen veri kaynakları](data-catalog-dsr.md).
+Veri varlıklarını (tablolarını) bir [Azure SQL veritabanı örneğinden](../azure-sql/database/single-database-create-quickstart.md)kaydedersiniz, ancak rolünüz ile ilgili tanıdık ve alakalı verilerle çalışmayı tercih ediyorsanız desteklenen herhangi bir veri kaynağını kullanabilirsiniz. Desteklenen veri kaynaklarının listesi için bkz. [Desteklenen veri kaynakları](data-catalog-dsr.md).
 
 Bu öğreticide kullandığımız Azure SQL veritabanı adı, *Rlstest*' dir.
 
@@ -71,7 +71,7 @@ Artık Azure Veri Kataloğu 'nu kullanarak Azure SQL veritabanı örneğinden ve
 
     2. CTRL + SELECT kullanarak **Product**, **ProductCategory**, **ProductDescription**ve **ProductModel** ' i seçin.
 
-    3. **Taşı-seçili oku** (**>**) seçin. Bu eylem seçilen tüm nesneleri **Kaydedilecek nesneler** listesine taşır.
+    3. **Taşı-seçili oku** () seçin **>** . Bu eylem seçilen tüm nesneleri **Kaydedilecek nesneler** listesine taşır.
 
           ![Azure Veri Kataloğu öğreticisi--nesnelere göz atma ve seçme](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
 
@@ -190,7 +190,7 @@ Bu alıştırmada, Azure Veri Kataloğu portalı 'nı kullanarak katalogdaki mev
 
 Bu alıştırmada tek bir veri varlığına (ProductPhoto) açıklama eklersiniz. ProductPhoto veri varlığına kolay bir ad ve açıklama eklersiniz.  
 
-1. [Azure Veri Kataloğu giriş sayfasına](https://www.azuredatacatalog.com) gidin ve kaydettiğiniz veri varlıklarını bulmak `tags:product` için ile arama yapın.
+1. [Azure Veri Kataloğu giriş sayfasına](https://www.azuredatacatalog.com) gidin ve `tags:product` kaydettiğiniz veri varlıklarını bulmak için ile arama yapın.
 
 2. arama sonuçlarında **ProductModel** ' i seçin.  
 

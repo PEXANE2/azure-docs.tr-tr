@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d97fae777b06625488234eb6d48a74a60a83f4d6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382732"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018727"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -65,7 +65,7 @@ Bu öğreticiye başlamadan önce bu görevleri doldurun:
 
    * Makalenin [oturum açma için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve gizli değerleri bir metin dosyasına yapıştırın.
 
-* [Azure Portal](https://portal.azure.com/) oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="gather-the-information-that-you-need"></a>İhtiyaç duyduğunuz bilgileri toplayın
 
@@ -93,7 +93,7 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
 
     ![Azure portal kaynak oluşturma](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png)
 
-    Ardından **analiz** > **Azure Databricks**seçin.
+    Ardından **analiz**  >  **Azure Databricks**seçin.
 
     ![Azure portal üzerinde Azure Databricks oluşturma](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-resource-create.png)
 
@@ -105,7 +105,7 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
     |---------|---------|
     |**Çalışma alanı adı**     | Databricks çalışma alanınız için bir ad sağlayın.        |
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
-    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/management/overview.md). |
+    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümüne ilişkin kaynakları tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/management/overview.md). |
     |**Konum**     | **Batı ABD 2**'yi seçin.  Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).      |
     |**Fiyatlandırma Katmanı**     |  **Standart**' ı seçin.     |
 
@@ -129,7 +129,7 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
 
     * Küme için bir ad girin.
 
-    * **Etkinliksizlik süresi \_ \_ dolduktan sonra Sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmıyorsa, kümeyi sonlandırmak için bir süre (dakika cinsinden) belirtin.
+    * ** \_ \_ Etkinliksizlik süresi dolduktan sonra Sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmıyorsa, kümeyi sonlandırmak için bir süre (dakika cinsinden) belirtin.
 
     * **Küme oluştur**’u seçin. Küme çalıştırıldıktan sonra, kümeye Not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
@@ -185,9 +185,9 @@ Bu bölümde, Azure Databricks çalışma alanında bir not defteri oluşturun v
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. Bu kod bloğunda, bu kod bloğundaki `<app-id>`, `<secret>` `<tenant-id>`, ve `<storage-account-name>` yer tutucu değerlerini, Bu öğreticinin önkoşullarını tamamlarken topladığınız değerlerle değiştirin. Yer tutucu `<file-system-name>` değerini, dosya sistemine vermek istediğiniz herhangi bir adla değiştirin.
+6. Bu kod bloğunda, bu `<app-id>` `<secret>` Kod bloğundaki,, `<tenant-id>` ve `<storage-account-name>` yer tutucu değerlerini, Bu öğreticinin önkoşullarını tamamlarken topladığınız değerlerle değiştirin. `<file-system-name>`Yer tutucu değerini, dosya sistemine vermek istediğiniz herhangi bir adla değiştirin.
 
-   * `<app-id>`, Ve `<secret>` , hizmet sorumlusu oluşturmanın bir parçası olarak Active Directory ile kaydettiğiniz uygulamadan alınır.
+   * `<app-id>`, Ve, `<secret>` hizmet sorumlusu oluşturmanın bir parçası olarak Active Directory ile kaydettiğiniz uygulamadan alınır.
 
    * , `<tenant-id>` Aboneliğinizden.
 
@@ -368,9 +368,9 @@ Daha önce belirtildiği gibi, Azure SYNAPSE Connector, Azure Databricks ile Azu
    ```
 
    > [!NOTE]
-   > Bu örnekte, Azure `forward_spark_azure_storage_credentials` SYNAPSE 'In bir erişim anahtarı kullanarak blob depolamadan verilere erişmesine neden olan bayrak kullanılmaktadır. Bu, kimlik doğrulama için desteklenen tek yöntemdir.
+   > Bu örnekte `forward_spark_azure_storage_credentials` , Azure SYNAPSE 'in bir erişim anahtarı kullanarak blob depolamadan verilere erişmesine neden olan bayrak kullanılmaktadır. Bu, kimlik doğrulama için desteklenen tek yöntemdir.
    >
-   > Azure Blob depolama alanı sanal ağları seçme kısıtlanmışsa, Azure SYNAPSE [erişim tuşları yerine yönetilen hizmet kimliği](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)gerektirir. Bu, "Bu istek bu işlemi gerçekleştirmek için yetkilendirilmemiş." hatasına neden olur.
+   > Azure Blob depolama alanı sanal ağları seçme kısıtlanmışsa, Azure SYNAPSE [erişim tuşları yerine yönetilen hizmet kimliği](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)gerektirir. Bu, "Bu istek bu işlemi gerçekleştirmek için yetkilendirilmemiş." hatasına neden olur.
 
 6. SQL veritabanına bağlanın ve **SampleTable**adlı bir veritabanı gördiğinizi doğrulayın.
 
@@ -386,7 +386,7 @@ Daha önce belirtildiği gibi, Azure SYNAPSE Connector, Azure Databricks ile Azu
 
 ![Databricks kümesini durdurma](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Kümeyi el ile sonlandırmazsanız, kümeyi oluştururken **işlem yapılmadan dakika \_ \_ sonra Sonlandır** onay kutusunu seçtiğiniz belirtilen otomatik olarak duraklar. Böyle bir durumda, belirtilen süre boyunca etkin olmadığında küme otomatik olarak duraklar.
+Kümeyi el ile sonlandırmazsanız, kümeyi oluştururken ** \_ \_ işlem yapılmadan dakika sonra Sonlandır** onay kutusunu seçtiğiniz belirtilen otomatik olarak duraklar. Böyle bir durumda, belirtilen süre boyunca etkin olmadığında küme otomatik olarak duraklar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,19 +4,19 @@ description: İlkeler için kimlik koruması geliştirmelerini etkinleştirmek �
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/25/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8054d8985596095db32d9262322d7fb0f4aab8c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9cfba377aba30d4687bab4ba7c5a311c70c4905
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295147"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995165"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Koşullu erişim: risk tabanlı koşullu erişim
 
@@ -30,7 +30,7 @@ Azure AD Premium P2 lisanslarına sahip kuruluşlar, Azure AD Kimlik Koruması r
 
 Bu ilkeyi etkinleştirmek, tüm kullanıcıların Azure Multi-Factor Authentication için 14 gün içinde kaydolmanızı gerektirir. 
 
-1. **Azure Portal** oturum açın.
+1. **Azure portalında** oturum açın.
 1. **Tüm hizmetler**'e tıklayıp **Azure AD Kimlik Koruması**'na gidin.
 1. **MFA kaydı**'na tıklayın.
 1. **Atamalar**altında **Kullanıcılar**' ı seçin.
@@ -44,7 +44,7 @@ Bu ilkeyi etkinleştirmek, tüm kullanıcıların Azure Multi-Factor Authenticat
 
 Microsoft, kullanıcı adı ve parola çiftlerini bulma amacıyla araştırmacılar, kolluk kuvvetleri, Microsoft'taki çeşitli güvenlik ekipleri ve diğer güvenilir kaynaklarla birlikte çalışmalar yapmaktadır. Bu çiftlerden biri ortamınızdaki bir hesapla eşleştiğinde aşağıdaki ilkeyi kullanarak risk tabanlı parola değişikliğinin tetiklenmesini sağlayabilirsiniz.
 
-1. **Azure Portal** oturum açın.
+1. **Azure portalında** oturum açın.
 1. **Tüm hizmetler**'e tıklayıp **Azure AD Kimlik Koruması**'na gidin.
 1. **Kullanıcı risk ilkesi**' ne tıklayın.
 1. **Atamalar**altında **Kullanıcılar** ' ı seçin.
@@ -53,7 +53,7 @@ Microsoft, kullanıcı adı ve parola çiftlerini bulma amacıyla araştırmacı
    1. **Done** (Bitti) öğesini seçin.
 1. **Koşullar**' ın altında, **Kullanıcı riski**' nı seçin ve **yüksek**' ı seçin
    1. **Seç** **' e tıklayın**.
-1. **Denetimler** > **erişimi**altında, erişime **izin ver**' i seçin ve ardından **parola değişikliği gerektir**' i seçin.
+1. **Denetimler**  >  **erişimi**altında, erişime **izin ver**' i seçin ve ardından **parola değişikliği gerektir**' i seçin.
    1. **Seç**' e tıklayın.
 1. **Ilke uygulanmasını** **Açık**olarak ayarlayın.
 1. **Kaydet**’e tıklayın.
@@ -62,7 +62,7 @@ Microsoft, kullanıcı adı ve parola çiftlerini bulma amacıyla araştırmacı
 
 Çoğu kullanıcı, takip edilebilen normal bir davranışa sahiptir ve davranışları normalin dışına çıktığında oturum açmalarına izin vermek riskli olabilir. Bu kullanıcıyı engellemek veya belki de gerçekten söylediklerini kanıtlamak üzere çok faktörlü kimlik doğrulaması gerçekleştirmesini istemeniz gerekebilir. Riskli oturum açma algılandığında MFA gerektiren ilkeyi kullanmak için aşağıdaki ilkeyi etkinleştirin.
 
-1. **Azure Portal** oturum açın.
+1. **Azure portalında** oturum açın.
 1. **Tüm hizmetler**'e tıklayıp **Azure AD Kimlik Koruması**'na gidin.
 1. **Oturum açma risk ilkesine** tıklayın
 1. **Atamalar**altında **Kullanıcılar** ' ı seçin.
@@ -71,7 +71,7 @@ Microsoft, kullanıcı adı ve parola çiftlerini bulma amacıyla araştırmacı
    1. **Done** (Bitti) öğesini seçin.
 1. **Koşullar**' ın altında, **oturum açma riski**' nı **ve ardından orta ve üst**' i seçin.
    1. **Seç** **' e tıklayın**.
-1. **Denetimleri** > **erişimi**altında, erişime **izin ver**' i seçin ve ardından **çok faktörlü kimlik doğrulaması gerektir**' i seçin.
+1. **Denetimleri**  >  **erişimi**altında, erişime **izin ver**' i seçin ve ardından **çok faktörlü kimlik doğrulaması gerektir**' i seçin.
    1. **Seç**' e tıklayın.
 1. **Ilke uygulanmasını** **Açık**olarak ayarlayın.
 1. **Kaydet**’e tıklayın.

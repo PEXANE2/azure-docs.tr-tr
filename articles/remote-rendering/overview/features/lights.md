@@ -1,18 +1,18 @@
 ---
-title: Işıklar
+title: Sahne aydınlatma
 description: Hafif kaynak açıklaması ve özellikleri
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 0a4a226af1347b5302b0c3964889fc072f89e7f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680953"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022155"
 ---
-# <a name="lights"></a>Işıklar
+# <a name="scene-lighting"></a>Sahne aydınlatma
 
 Varsayılan olarak, uzaktan işlenen nesneler bir [gök ışığı](sky.md)kullanılarak aydınlatılır. Çoğu uygulama için bu zaten yeterlidir, ancak sahneye daha açık kaynaklar ekleyebilirsiniz.
 
@@ -24,7 +24,7 @@ Varsayılan olarak, uzaktan işlenen nesneler bir [gök ışığı](sky.md)kulla
 
 ## <a name="common-light-component-properties"></a>Ortak açık bileşen özellikleri
 
-Tüm ışık türleri soyut temel sınıftan `LightComponent` türetilir ve bu özellikleri paylaşır:
+Tüm ışık türleri soyut temel sınıftan türetilir `LightComponent` ve bu özellikleri paylaşır:
 
 * **Renk:** [Gama](https://en.wikipedia.org/wiki/SRGB)alanındaki ışığın rengi. Alfa yok sayılır.
 
@@ -40,23 +40,23 @@ Azure uzaktan Işlemede, `PointLightComponent` Softer ışık kaynaklarının be
 
 * **Uzunluk:** Her ikisi `Length` de `Radius` sıfır değilse, ışık bir boru ışığı işlevi görür. Bu, Neon boruları benzetimini yapmak için kullanılabilir.
 
-* **Zayıflauationkesme:** (0, 0) ise, ışığın zayıflatılaması yalnızca öğesine bağlıdır `Intensity`. Ancak, ışığın şiddette doğrusal olarak ölçeği sıfıra ölçeklendiği özel min/maksimum uzaklıklar sağlayabilirsiniz. Bu özellik, belirli bir ışığın daha küçük bir etkisi aralığını zorlamak için kullanılabilir.
+* **Zayıflauationkesme:** (0, 0) ise, ışığın zayıflatılaması yalnızca öğesine bağlıdır `Intensity` . Ancak, ışığın şiddette doğrusal olarak ölçeği sıfıra ölçeklendiği özel min/maksimum uzaklıklar sağlayabilirsiniz. Bu özellik, belirli bir ışığın daha küçük bir etkisi aralığını zorlamak için kullanılabilir.
 
 * **Projectedcubemap:** Geçerli bir [küp harita](../../concepts/textures.md)olarak ayarlandıysa, doku ışığın çevresindeki geometri üzerine yansıtıldır. Cubemap 'in rengi ışığın rengi ile modüle edilir.
 
 ## <a name="spot-light"></a>Spot ışığı
 
-`SpotLightComponent` , Öğesine benzerdir `PointLightComponent` ancak ışık bir koni şekli ile sınırlıdır. Koni yönü, *sahip varlığın negatif z ekseni*tarafından tanımlanır.
+, `SpotLightComponent` Öğesine benzerdir `PointLightComponent` ancak ışık bir koni şekli ile sınırlıdır. Koni yönü, *sahip varlığın negatif z ekseni*tarafından tanımlanır.
 
 ### <a name="spotlightcomponent-properties"></a>SpotLightComponent özellikleri
 
-* **Yarıçap:** İle aynı `PointLightComponent`.
+* **Yarıçap:** İle aynı `PointLightComponent` .
 
 * **Spotangleder:** Bu Aralık, derece cinsinden ölçülen koni iç ve dış açısını tanımlar. İç açıdaki her şey tam parlaklık ile aydınlatılır. Bir azalma, bir penra benzeri bir efekt üreten dış açıya doğru uygulanır.
 
 * **Falloffüs:** İç ve dış koni açısı arasındaki dönüşlerin ne kadar keskin olduğunu tanımlar. Daha yüksek bir değer daha net bir geçişe neden olur. Varsayılan 1,0, doğrusal bir geçişe neden olur.
 
-* **Zayıflauationkesme:** İle aynı `PointLightComponent`.
+* **Zayıflauationkesme:** İle aynı `PointLightComponent` .
 
 * **Projected2dTexture:** Geçerli bir [2B dokusunu](../../concepts/textures.md)ayarlandıysa, görüntü, ışığın bulunduğu geometriye yansıtılır. Dokunun rengi ışığın rengine göre modüle edilir.
 

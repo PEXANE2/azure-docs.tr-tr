@@ -5,12 +5,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Visual Studio Code ve Azure Dev Spaces Kubernetes uygulamalarınızı hata ayıklamanıza ve hızla yinelemenize nasıl yardımcı olduğunu öğrenin
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 91440e59fdb8c21579ef1f04e78e66f933221ba0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2f6f2ef072748bddee5b3004dc69f3a9c03be16
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240458"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996236"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Visual Studio Code nasıl kullanılır Azure Dev Spaces
 
@@ -26,22 +26,22 @@ Visual Studio Code ve Azure Dev Spaces uzantısı projeniz için aşağıdaki va
 
 * Maven, Node. js uygulamaları ve .NET Core uygulamaları kullanılarak sunulan Java uygulamaları için dockerfiles
 * Dockerfile ile neredeyse tüm diller için helb grafikleri
-* Projeniz `azds.yaml` için [Azure dev Spaces yapılandırma dosyası][azds-yaml] olan bir dosya
-* Maven, Node. js uygulamaları ve .NET Core uygulamalarını kullanarak Java uygulamaları için projenizin Visual Studio Code başlatma yapılandırmasına sahip bir `.vscode` klasör
+* `azds.yaml`Projeniz için [Azure dev Spaces yapılandırma dosyası][azds-yaml] olan bir dosya
+* `.vscode`Maven, Node. js uygulamaları ve .NET Core uygulamalarını kullanarak Java uygulamaları için projenizin Visual Studio Code başlatma yapılandırmasına sahip bir klasör
 
-Dockerfile, HELI grafiği ve `azds.yaml` dosyaları çalışırken `azds prep`oluşturulan varlıklardır. Bu dosyalar, Visual Studio Code dışında, projenizi çalıştırmak gibi AKS 'de çalıştırmak için de kullanılabilir `azds up`. `.vscode` Klasör yalnızca Visual Studio code tarafından Visual Studio Code ' den aks 'de Projenizi çalıştırmak için kullanılır.
+Dockerfile, HELI grafiği ve `azds.yaml` dosyaları çalışırken oluşturulan varlıklardır `azds prep` . Bu dosyalar, Visual Studio Code dışında, projenizi çalıştırmak gibi AKS 'de çalıştırmak için de kullanılabilir `azds up` . `.vscode`Klasör yalnızca Visual Studio Code tarafından Visual Studio Code ' den AKS 'de Projenizi çalıştırmak için kullanılır.
 
 ## <a name="run-your-service-in-aks"></a>Hizmetinizi AKS 'de çalıştırın
 
-Projeniz için varlıkları oluşturduktan sonra, Java, Node. js ve .NET Core hizmetlerinizi Visual Studio Code ' den mevcut bir geliştirme alanında çalıştırabilirsiniz. Visual Studio Code *hata ayıklama* sayfasında, projenizi çalıştırmak için `.vscode` dizinden başlatma yapılandırmasını çağırabilirsiniz.
+Projeniz için varlıkları oluşturduktan sonra, Java, Node. js ve .NET Core hizmetlerinizi Visual Studio Code ' den mevcut bir geliştirme alanında çalıştırabilirsiniz. Visual Studio Code *hata ayıklama* sayfasında, `.vscode` Projenizi çalıştırmak için dizinden başlatma yapılandırmasını çağırabilirsiniz.
 
-AKS kümenizi oluşturmanız ve kümenizdeki Azure Dev Spaces Visual Studio Code dışında etkinleştirmeniz gerekir. Örneğin, bu kurulumu yapmak için Azure CLı veya Azure portal kullanabilirsiniz. Mevcut Dockerfiles, helk grafiklerini ve `azds.yaml` Visual Studio Code dışında oluşturulan dosyaları, örneğin çalıştırılarak `azds prep`oluşturulan varlıklar gibi yeniden kullanabilirsiniz. Visual Studio Code dışında oluşturulan varlıkları yeniden kullanıyorsanız, yine de bir `.vscode` dizininiz olması gerekir. Bu `.vscode` Dizin, Visual Studio code ve Azure dev Spaces uzantısı tarafından yeniden üretilebilir ve mevcut varlıklarınızın üzerine yazılmayacak.
+AKS kümenizi oluşturmanız ve kümenizdeki Azure Dev Spaces Visual Studio Code dışında etkinleştirmeniz gerekir. Mevcut Dockerfiles, helk grafiklerini ve `azds.yaml` Visual Studio Code dışında oluşturulan dosyaları, örneğin çalıştırılarak oluşturulan varlıklar gibi yeniden kullanabilirsiniz `azds prep` . Visual Studio Code dışında oluşturulan varlıkları yeniden kullanıyorsanız, yine de bir dizininiz olması gerekir `.vscode` . Bu `.vscode` Dizin, Visual Studio Code ve Azure dev Spaces uzantısı tarafından yeniden üretilebilir ve mevcut varlıklarınızın üzerine yazılmayacak.
 
 .NET Core projelerinde, .NET hizmetinizi Visual Studio Code çalıştırmak için [C# uzantısının][csharp-extension] yüklü olması gerekir. Ayrıca Maven kullanan Java projeleri için, [Azure dev Spaces uzantısı Için Java Debugger][java-extension] 'ın yanı sıra, Visual Studio Code ' dan Java hizmetinizi çalıştıracak şekilde [yüklenip yapılandırılmış][maven] olması gerekir.
 
 ## <a name="debug-your-service-in-aks"></a>AKS 'de hizmetinizde hata ayıklama
 
-Projenizi başlattıktan sonra, geliştirici alanında çalışan Java, Node. js ve .NET Core hizmetlerinde doğrudan Visual Studio Code hata ayıklaması yapabilirsiniz. `.vscode` Dizindeki başlatma yapılandırması, bir geliştirme alanında hata ayıklama etkinken bir hizmeti çalıştırmaya yönelik ek hata ayıklama bilgileri sağlar. Visual Studio Code Ayrıca, geliştirme boşluklarında çalışan kapsayıcıda hata ayıklama işlemine ekler. böylece kesme noktaları ayarlayabilir, değişkenleri inceleyebilir ve diğer hata ayıklama işlemlerini gerçekleştirebilirsiniz.
+Projenizi başlattıktan sonra, geliştirici alanında çalışan Java, Node. js ve .NET Core hizmetlerinde doğrudan Visual Studio Code hata ayıklaması yapabilirsiniz. Dizindeki başlatma yapılandırması, `.vscode` bir geliştirme alanında hata ayıklama etkinken bir hizmeti çalıştırmaya yönelik ek hata ayıklama bilgileri sağlar. Visual Studio Code Ayrıca, geliştirme boşluklarında çalışan kapsayıcıda hata ayıklama işlemine ekler. böylece kesme noktaları ayarlayabilir, değişkenleri inceleyebilir ve diğer hata ayıklama işlemlerini gerçekleştirebilirsiniz.
 
 
 ## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>Azure Dev Spaces ile Visual Studio Code kullanma

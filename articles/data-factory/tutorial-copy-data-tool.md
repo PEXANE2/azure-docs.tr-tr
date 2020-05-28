@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
-ms.openlocfilehash: be9395b908461b54b607fff32747ca0d9f20f45c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0ed57657a461e4af8e58931b133437e5897796a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418669"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022070"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak Azure Blob depolamadan SQL veritabanına veri kopyalama
 
@@ -42,7 +42,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**: BLOB depolama alanını _kaynak_ veri deposu olarak kullanın. Azure depolama hesabınız yoksa [depolama hesabı oluşturma](../storage/common/storage-account-create.md)bölümündeki yönergelere bakın.
-* **Azure SQL veritabanı**: _Havuz_ VERI deposu olarak bir SQL veritabanı kullanın. SQL veritabanınız yoksa, [SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md)bölümündeki yönergelere bakın.
+* **Azure SQL veritabanı**: _Havuz_ VERI deposu olarak bir SQL veritabanı kullanın. SQL veritabanınız yoksa, [SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümündeki yönergelere bakın.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Bir blob ve SQL tablosu oluşturma
 
@@ -76,11 +76,11 @@ Bu adımları gerçekleştirerek BLOB depolama alanınızı ve SQL veritabanın�
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Azure hizmetlerinin SQL Server’a erişmesine izin ver. **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** ayarının SQL veritabanı çalıştıran sunucunuz için etkinleştirildiğini doğrulayın. Bu ayar, Data Factory’nin veritabanı örneğinize veri yazmasına imkan tanır. Bu ayarı doğrulamak ve etkinleştirmek için Azure SQL Server > güvenlik > güvenlik duvarları ve sanal ağlar ' a gidin > **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** seçeneğini **Açık**olarak ayarlayın.
+2. Azure hizmetlerinin SQL Server’a erişmesine izin ver. **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** ayarının SQL veritabanı çalıştıran sunucunuz için etkinleştirildiğini doğrulayın. Bu ayar, Data Factory’nin veritabanı örneğinize veri yazmasına imkan tanır. Bu ayarı doğrulamak ve etkinleştirmek için, mantıksal SQL Server > güvenlik > güvenlik duvarları ve sanal ağlar ' a gidin > **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** seçeneğini **Açık**olarak ayarlayın.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol menüde, **kaynak** > **Analizi** > **Data Factory**oluştur ' u seçin:
+1. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory**oluştur ' u seçin:
 
     ![Yeni veri fabrikası oluşturma](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. **Yeni veri fabrikası** sayfasında **Ad** bölümüne **ADFTutorialDataFactory** girin.

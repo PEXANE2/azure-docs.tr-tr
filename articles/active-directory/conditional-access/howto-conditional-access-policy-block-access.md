@@ -4,19 +4,19 @@ description: İçin özel bir koşullu erişim ilkesi oluşturun
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2834fd3d4901b6394eabe000f9efc572c2efd497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3ee7287f2a5cf9491ae91d434caf2f653c853a3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755089"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995318"
 ---
 # <a name="conditional-access-block-access"></a>Koşullu erişim: erişimi engelle
 
@@ -43,7 +43,7 @@ Aşağıdaki adımlar, kullanıcılar güvenilir bir ağda değilse [Office 365]
 İlk ilke, güvenilir bir konumda değilse Office 365 uygulamaları hariç tüm uygulamalara erişimi engeller.
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
@@ -54,13 +54,13 @@ Aşağıdaki adımlar, kullanıcılar güvenilir bir ağda değilse [Office 365]
    1. **Ekle**' nin altında **tüm bulut uygulamaları**' nı seçin.
    1. **Dışla**altında **Office 365 (Önizleme)** öğesini seçin, **Seç**' i seçin ve **bitti**' yi seçin.
 1. **Koşullar**altında:
-   1. **Koşulların** > bulunduğu**konum**.
+   1. **Koşulların**bulunduğu  >  **konum**.
       1. **Yapılandır** 'ı **Evet** olarak ayarla
       1. **Dahil et**altında **herhangi bir konum**seçin.
       1. **Hariç tut**altında **tüm güvenilen konumlar**' ı seçin.
       1. **Done** (Bitti) öğesini seçin.
    1. **İstemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi ve **bitti ' yi seçin.**
-1. **Erişim denetimleri** > **izni**altında, **erişimi engelle**' yi seçin ve ardından **Seç**' i seçin.
+1. **Erişim denetimleri**  >  **izni**altında, **erişimi engelle**' yi seçin ve ardından **Seç**' i seçin.
 1. Ayarlarınızı onaylayın ve **ilkeyi** **yalnızca rapor**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 
@@ -72,8 +72,8 @@ Office 365 kullanıcıları için Multi-Factor Authentication veya uyumlu bir ci
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemler** > **altında,** **Uygulama Seç**' i seçin, **Office 365 (Önizleme)** seçeneğini belirleyin ve **Seç**' i ve sonra **Tamam**' ı seçin.
-1. **Erişim denetimleri** > **izni**altında, **erişim ver**' i seçin.
+1. **Bulut uygulamaları veya eylemler**  >  **Include**altında, **Uygulama Seç**' i seçin, **Office 365 (Önizleme)** seçeneğini belirleyin ve **Seç**' i ve sonra **Tamam**' ı seçin.
+1. **Erişim denetimleri**  >  **izni**altında, **erişim ver**' i seçin.
    1. **Multi-Factor Authentication gerektir** ' i seçin ve **cihazın uyumlu olarak işaretlenmesini gerektir** ' **i seçin.**
    1. **Seçili denetimlerin tümünün** seçili olduğundan emin olun.
    1. **Seç**’i seçin.

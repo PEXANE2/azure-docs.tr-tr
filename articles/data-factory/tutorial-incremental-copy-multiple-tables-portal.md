@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4649ac8bbef23711ed45baffa15bb9e8bff8daec
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419281"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119192"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server’daki birden fazla tablodan Azure SQL veritabanı’na artımlı olarak veri yükleme
 
@@ -69,7 +69,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="prerequisites"></a>Ön koşullar
 * **SQL Server**. Bu öğreticide şirket içi SQL Server veritabanını kaynak veri deposu olarak kullanırsınız. 
-* **Azure SQL veritabanı**. SQL veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md). 
+* **Azure SQL veritabanı**. SQL veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md). 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server veritabanınızda kaynak tabloları oluşturma
 
@@ -116,7 +116,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 1. **Sunucu Gezgini**’nde veritabanına sağ tıklayın ve **Yeni Sorgu**’yu seçin.
 
-1. Ve `customer_table` `project_table`adlı tablolar oluşturmak için Azure SQL veritabanınızda aşağıdaki SQL komutunu çalıştırın:  
+1. Ve adlı tablolar oluşturmak için Azure SQL veritabanınızda aşağıdaki SQL komutunu çalıştırın `customer_table` `project_table` :  
     
     ```sql
     create table customer_table
@@ -135,7 +135,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     ```
 
 ### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Üst eşik değerini depolamak için Azure SQL veritabanında başka bir tablo oluşturma
-1. Eşik değerini depolamak için adlı `watermarktable` bir tablo oluşturmak üzere Azure SQL VERITABANıNıZDA aşağıdaki SQL komutunu çalıştırın: 
+1. Eşik değerini depolamak için adlı bir tablo oluşturmak üzere Azure SQL veritabanınızda aşağıdaki SQL komutunu çalıştırın `watermarktable` : 
     
     ```sql
     create table watermarktable
@@ -233,7 +233,7 @@ END
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-2. Sol menüde, **kaynak** > **Analizi** > **Data Factory**oluştur ' u seçin: 
+2. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory**oluştur ' u seçin: 
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -310,7 +310,7 @@ Son adımda, kaynak SQL Server veritabanınızı veri fabrikasına bağlamak iç
 1. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin:
 
     1. **Ad** için **AzureSqlDatabaseLinkedService** adını girin. 
-    1. **Sunucu adı** alanına açılan listeden Azure SQL Server’ınızın adını seçin. 
+    1. **Sunucu adı**için, açılan listeden sunucunuzun adını seçin. 
     1. **Veritabanı adı** alanına, ön koşulların bir parçası olarak içinde customer_table ve project_table tablolarını oluşturduğunuz Azure SQL veritabanını girin. 
     1. **Kullanıcı adı** alanına SQL Server veritabanına erişimi olan kullanıcının adını girin. 
     1. **Parola** alanına kullanıcının **parolasını** girin. 
@@ -354,7 +354,7 @@ Bu adımda veri kaynağı, veri hedefi ve eşiğin depolanacağı yeri temsil ed
     
 1. **Dinamik Içerik Ekle** penceresinde **Parametreler** bölümünde **sinktablename** ' ı seçin. 
  
-1. **Son**' a tıkladıktan sonra "(@dataset)" görürsünüz. SinkTableName "Tablo adı olarak.
+1. **Son**' a tıkladıktan sonra " @dataset ()" görürsünüz. SinkTableName "Tablo adı olarak.
 
    ![Havuz Veri Kümesi - bağlantı](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -450,10 +450,10 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
         
 1. Aşağıdaki adımları uygulayın:
 
-    1. **DataSet özelliklerinde**, **sinktablename** parametresi için girin `@{item().TABLE_NAME}`.
-    1. **Saklı yordam adı** özelliği için girin `@{item().StoredProcedureNameForMergeOperation}`.
-    1. **Tablo türü** özelliği için girin `@{item().TableType}`.
-    1. **Tablo türü parametre adı**için girin `@{item().TABLE_NAME}`.
+    1. **DataSet özelliklerinde**, **sinktablename** parametresi için girin `@{item().TABLE_NAME}` .
+    1. **Saklı yordam adı** özelliği için girin `@{item().StoredProcedureNameForMergeOperation}` .
+    1. **Tablo türü** özelliği için girin `@{item().TableType}` .
+    1. **Tablo türü parametre adı**için girin `@{item().TABLE_NAME}` .
 
     ![Kopyalama Etkinliği - parametreler](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. **Etkinlikler** araç kutusundan **Saklı Yordam** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. **Kopyalama** etkinliğini **saklı yordam** etkinliğine bağlayın. 
@@ -469,7 +469,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
     1. **Parametreyi içeri aktar**’ı seçin. 
     1. Parametreler için aşağıdaki değerleri belirtin: 
 
-        | Adı | Tür | Değer | 
+        | Name | Tür | Değer | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Dize | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

@@ -3,12 +3,12 @@ title: Azure Dosyalarını yedekleme hakkında SSS
 description: Bu makalede, Azure dosya paylaşımlarınızı Azure Backup hizmetiyle koruma hakkında sık sorulan soruların yanıtlarını bulun.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1be509f3b82cece3afb1e728a19da4c4d9526195
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 70ed8594be09ab74478f4703aa632b9ce966b5ee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836116"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118016"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 
@@ -95,13 +95,13 @@ Bunun nasıl çalıştığını gösteren bir örnek aşağıda verilmiştir:
 
 #### <a name="existing-policy-p1"></a>Mevcut Ilke [P1]
 
-|Bekletme türü |Zamanlama |Bekletme  |
+|Bekletme türü |Zamanla |Bekletme  |
 |---------|---------|---------|
 |Günlük    |    Her gün 8 saat    |  100 gün       |
 
 #### <a name="new-policy-modified-p1"></a>Yeni Ilke [değiştirilmiş P1]
 
-| Bekletme türü | Zamanlama                       | Bekletme |
+| Bekletme türü | Zamanla                       | Bekletme |
 | -------------- | ------------------------------ | --------- |
 | Günlük          | Her gün 9 saat              | 50 gün   |
 | Haftalık         | Pazar günü saat 9 ' da              | 3 hafta   |
@@ -129,14 +129,14 @@ Bunun nasıl çalıştığını gösteren bir örnek aşağıda verilmiştir:
 
 #### <a name="existing-policy-p2"></a>Mevcut Ilke [P2]
 
-| Bekletme türü | Zamanlama           | Bekletme |
+| Bekletme türü | Zamanla           | Bekletme |
 | -------------- | ------------------ | --------- |
 | Günlük          | Her gün 8 saat | 50 gün   |
 | Haftalık         | Pazartesi günü 8 saat  | 3 hafta   |
 
 #### <a name="new-policy-modified-p2"></a>Yeni Ilke [Modified P2]
 
-| Bekletme türü | Zamanlama               | Bekletme |
+| Bekletme türü | Zamanla               | Bekletme |
 | -------------- | ---------------------- | --------- |
 | Günlük          | Her gün 9 saat     | 10 gün   |
 | Haftalık         | Pazartesi günü saat 9 ' da      | 2 hafta   |
@@ -157,8 +157,4 @@ Bunun nasıl çalıştığını gösteren bir örnek aşağıda verilmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Backup diğer alanlarıyla ilgili daha fazla bilgi edinmek için, bu diğer yedekleme hakkında SSS bölümüne bakın:
-
-- [Kurtarma Hizmetleri kasası hakkında SSS](backup-azure-backup-faq.md)
-- [Azure VM yedeklemesi hakkında SSS](backup-azure-vm-backup-faq.md)
-- [Azure Backup aracısı hakkında SSS](backup-azure-file-folder-backup-faq.md)
+- [Azure dosya paylaşımlarını yedeklerken sorunları giderme](troubleshoot-azure-files.md)

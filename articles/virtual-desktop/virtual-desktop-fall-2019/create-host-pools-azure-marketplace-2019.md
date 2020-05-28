@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 741bd94b290560bdc850cbf7bc24ec57104d8a66
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8afc8b70257f07c95b34c4e372e0e7425ae20fcd
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614357"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112675"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Marketi 'ni kullanarak bir konak havuzu oluşturma
 
@@ -46,7 +46,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırın
 
@@ -62,7 +62,7 @@ Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer al
 
 **Temel kavramlar** sekmesi için şunları yapın:
 
-1. Bir **Abonelik** seçin.
+1. Bir **abonelik**seçin.
 1. **Kaynak grubu**Için **Yeni oluştur** ' u seçin ve yeni kaynak grubu için bir ad sağlayın.
 1. Bir **bölge**seçin.
 1. Windows sanal masaüstü kiracısı içinde benzersiz olan konak havuzu için bir ad girin.
@@ -148,7 +148,7 @@ Kullanıcıları Masaüstü uygulama grubuna atamak için:
    Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
    ```
 
-   Kullanıcının UPN 'si kullanıcının Azure AD 'deki kimliğiyle eşleşmelidir; Örneğin, *user1@contoso.com*. Birden çok kullanıcı eklemek istiyorsanız, her kullanıcı için komutunu çalıştırın.
+   Kullanıcının UPN 'si kullanıcının Azure AD 'deki kimliğiyle eşleşmelidir; Örneğin, *user1@contoso.com* . Birden çok kullanıcı eklemek istiyorsanız, her kullanıcı için komutunu çalıştırın.
 
 Masaüstü uygulama grubuna eklediğiniz kullanıcılar, desteklenen uzak masaüstü istemcileri ile Windows sanal masaüstü 'nde oturum açabilir ve oturum Masaüstü için bir kaynak görebilirler.
 
@@ -162,4 +162,4 @@ Desteklenen geçerli istemciler şunlardır:
 Bir konak havuzu oluşturdunuz ve kullanıcılara masaüstüne erişim atadık. Konak havuzunuzu RemoteApp programları ile doldurabilirsiniz. Windows sanal masaüstündeki uygulamaları yönetme hakkında daha fazla bilgi edinmek için şu öğreticiye bakın:
 
 > [!div class="nextstepaction"]
-> [Uygulama gruplarını yönetme öğreticisi](../manage-app-groups.md)
+> [Uygulama gruplarını yönetme öğreticisi](manage-app-groups-2019.md)

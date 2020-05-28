@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bba37b5d72bd9dca2e10c699f4ba259319a6c71
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263289"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995112"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma
 
@@ -49,7 +49,11 @@ Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokolle
 - SharePoint ve OneDrive
 - Takımlar Web istemcisi
 - Dynamics CRM Online
-- Azure portal
+- Azure portalı
+
+### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Kullanıcı oturum açma sıklığı ve Multi-Factor Authentication
+
+Daha önce Azure AD 'ye katılmış olan, karma Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazlarda yalnızca birinci faktör kimlik doğrulamasına uygulanan oturum açma sıklığı. Müşterilerimizin bu cihazlarda Multi Factor Authentication 'ı (MFA) yeniden zorlaması için kolay bir yol yoktu. Müşteri geri bildirimlerine dayalı olarak oturum açma sıklığı, MFA için de geçerlidir.
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Kullanıcı oturum açma sıklığı ve cihaz kimlikleri
 
@@ -90,7 +94,7 @@ Koşullu erişim Azure AD Premium bir yetenektir ve Premium lisans gerektirir. K
    > [!NOTE]
    > En iyi kullanıcı deneyimi için Exchange Online ve SharePoint Online gibi anahtar Microsoft Office uygulamalar için eşit kimlik doğrulama istem sıklığı ayarlamanız önerilir.
 
-1. **Erişim denetimleri** > **oturumuna** gidin ve **oturum açma sıklığı** ' na tıklayın
+1. **Erişim denetimleri**  >  **oturumuna** gidin ve **oturum açma sıklığı** ' na tıklayın
 1. İlk metin kutusuna gereken gün ve saat değerlerini girin
 1. Açılan menüden **saat** veya **gün** değeri seçin
 1. İlkenizi kaydetme
@@ -109,7 +113,7 @@ Aynı tarayıcı oturumunda çalışan farklı Web uygulamaları için farklı o
    > [!NOTE]
    > Lütfen bu denetimin koşul olarak "tüm bulut uygulamaları" seçmesini gerektirdiğini unutmayın. Tarayıcı oturumu kalıcılığı, kimlik doğrulama oturumu belirteci tarafından denetlenir. Bir tarayıcı oturumundaki tüm sekmeler tek bir oturum belirtecini paylaşır ve bu nedenle tümünün kalıcılık durumunu paylaşması gerekir.
 
-1. **Erişim denetimleri** > **oturumuna** gidin ve **kalıcı tarayıcı oturumu** ' na tıklayın.
+1. **Erişim denetimleri**  >  **oturumuna** gidin ve **kalıcı tarayıcı oturumu** ' na tıklayın.
 1. Açılan listeden bir değer seçin
 1. İlkenizi kaydetme
 

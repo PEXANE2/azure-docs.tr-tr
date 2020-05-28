@@ -1,29 +1,29 @@
 ---
 title: Tasarım Bilgi Bankası-Soru-Cevap Oluşturma
-description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) kümesi ve isteğe bağlı meta veri kümesinden oluşur.
+description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) çiftleri ve isteğe bağlı meta veri kümesi içerir.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756792"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993006"
 ---
-# <a name="question-and-answer-set-concepts"></a>Soru ve yanıt kümesi kavramları
+# <a name="question-and-answer-pair-concepts"></a>Soru ve yanıt çifti kavramları
 
-Bilgi Bankası, soru ve yanıt (QnA) kümelerinden oluşur.  Her küme bir yanıta sahiptir ve bir küme, bu _Yanıt_ile ilişkili tüm bilgileri içerir. Bir yanıt, bir veritabanı satırına veya bir veri yapısı örneğine benzeyebilirler.
+Bilgi Bankası, soru ve yanıt (QnA) çiftlerinden oluşur.  Her çiftin bir yanıtı vardır ve bir çift, bu _Yanıt_ile ilişkili tüm bilgileri içerir. Bir yanıt, bir veritabanı satırına veya bir veri yapısı örneğine benzeyebilirler.
 
-## <a name="question-and-answer-sets"></a>Soru ve yanıt kümeleri
+## <a name="question-and-answer-pairs"></a>Soru ve yanıt çiftleri
 
-Bir soru-cevap (QnA) kümesindeki **gerekli** ayarlar şunlardır:
+Soru-cevap (QnA) çiftinde **gerekli** ayarlar şunlardır:
 
 * farklı bir metinle, ancak aynı Yanıt ile Kullanıcı sorusunun metniyle hizalamak için makine öğrenimine Soru-Cevap Oluşturma için kullanılan Kullanıcı sorgusunun **soru** metni.
-* **Yanıt** -kümenin yanıtı, bir Kullanıcı sorgusu ilişkili soru ile eşleştiğinde döndürülen yanıttır
+* **Yanıt** -çiftin yanıtı, bir Kullanıcı sorgusu ilişkili soru ile eşleştiğinde döndürülen yanıttır
 
-Her küme bir **kimlik**ile temsil edilir.
+Her çift bir **kimlik**ile temsil edilir.
 
-Bir küme için **isteğe bağlı** ayarlar şunlardır:
+Bir çiftin **isteğe bağlı** ayarları şunlardır:
 
 * **Sorunun alternatif biçimleri** -bu, soru-cevap oluşturma çok çeşitli soru açısından doğru yanıtı döndürmenize yardımcı olur
 * **Meta**veri: meta veriler bir QNA çiftiyle ilişkili etiketlerdir ve anahtar-değer çiftleri olarak temsil edilir. Meta veri etiketleri, QnA çiftlerini filtrelemek ve sorgu eşleştirmesinin gerçekleştirileceği kümeyi sınırlamak için kullanılır.

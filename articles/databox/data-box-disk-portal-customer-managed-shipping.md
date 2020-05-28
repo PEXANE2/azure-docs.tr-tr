@@ -29,7 +29,7 @@ Bu makalede, Azure Data Box Disk sipariş, çekme ve bırakma işlemleri için k
 * Singapur
 * Güney Kore
 
-## <a name="use-self-managed-shipping"></a>Kendi kendine yönetilen kargo kullan
+## <a name="use-self-managed-shipping"></a>Otomatik gönderimi kullanma
 
 Data Box Disk bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim seçeneğini belirleyebilirsiniz.
 

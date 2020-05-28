@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774280"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118648"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Öğretici: Azure Content Moderator ile orta Facebook gönderileri ve komutları
 
@@ -70,18 +70,18 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
     
     | Uygulama ayarı adı | value   | 
     | -------------------- |-------------|
-    | cm:TeamId   | Content Moderator Takım Kimliğiniz  | 
-    | cm:SubscriptionKey | Content Moderator abonelik anahtarınız. Bkz. [Kimlik Bilgileri](review-tool-user-guide/credentials.md) |
-    | cm:Region | Content Moderator bölge adınız (boşluk içermez). Bunu, Azure kaynağınızın **genel bakış** sekmesinin **konum** alanında bulabilirsiniz.|
-    | cm:ImageWorkflow | Görüntüler üzerinde çalıştırılacak iş akışının adı |
-    | cm:TextWorkflow | Metinler üzerinde çalıştırılacak iş akışının adı |
-    | cm:CallbackEndpoint | Bu kılavuzda daha sonra oluşturacağınız İşlev Uygulaması CMListener URL 'si |
-    | fb:VerificationToken | Facebook akış olaylarına abone olmak için kullanılan, sizin oluşturduğunuz gizli bir belirteç |
-    | fb:PageAccessToken | Facebook graph api'si erişim belirtecinin süresi dolmaz ve işlevin sizin adınıza gönderileri Gizlemesini/Silmesini sağlar. Daha sonraki bir adımda bu belirteci alacaksınız. |
+    | `cm:TeamId`   | Content Moderator Takım Kimliğiniz  | 
+    | `cm:SubscriptionKey` | Content Moderator abonelik anahtarınız. Bkz. [Kimlik Bilgileri](review-tool-user-guide/credentials.md) |
+    | `cm:Region` | Content Moderator bölge adınız (boşluk içermez). Bu adı, Azure kaynağınızın **genel bakış** sekmesinin **konum** alanında bulabilirsiniz.|
+    | `cm:ImageWorkflow` | Görüntüler üzerinde çalıştırılacak iş akışının adı |
+    | `cm:TextWorkflow` | Metinler üzerinde çalıştırılacak iş akışının adı |
+    | `cm:CallbackEndpoint` | Bu kılavuzda daha sonra oluşturacağınız İşlev Uygulaması CMListener URL 'si |
+    | `fb:VerificationToken` | Facebook akış olaylarına abone olmak için kullanılan, sizin oluşturduğunuz gizli bir belirteç |
+    | `fb:PageAccessToken` | Facebook graph api'si erişim belirtecinin süresi dolmaz ve işlevin sizin adınıza gönderileri Gizlemesini/Silmesini sağlar. Daha sonraki bir adımda bu belirteci alacaksınız. |
 
     Sayfanın üst kısmındaki **Kaydet** düğmesine tıklayın.
 
-1. **Platform özellikleri** sekmesine geri dönün. **yeni işlev** bölmesini açmak **+** için sol bölmedeki düğmeyi kullanın. Oluşturmak üzere olduğunuz işlev Facebook 'tan olayları alacak.
+1. **Platform özellikleri** sekmesine geri dönün. **+** **yeni işlev** bölmesini açmak için sol bölmedeki düğmeyi kullanın. Oluşturmak üzere olduğunuz işlev Facebook 'tan olayları alacak.
 
     ![Işlev Ekle düğmesi vurgulanmış şekilde Azure Işlevleri bölmesi.](images/new-function.png)
 

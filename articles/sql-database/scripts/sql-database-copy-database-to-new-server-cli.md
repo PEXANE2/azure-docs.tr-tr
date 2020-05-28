@@ -1,6 +1,6 @@
 ---
-title: CLı örneği-Copy-Azure SQL Database-yeni sunucu
-description: Bir SQL veritabanını yeni bir sunucuya kopyalamak için Azure CLı örnek betiği
+title: "Azure CLı: Azure SQL veritabanı 'ndaki veritabanını yeni sunucuya kopyalama"
+description: Azure SQL veritabanında bir veritabanını yeni bir sunucuya kopyalamak için Azure CLı örnek betiği
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: b7e04d7b1ed51a45e132d088b0dd29377312027c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e7a83478654b848b8e001dd3fea276c5cc9e125a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067470"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022701"
 ---
-# <a name="use-cli-to-copy-a-sql-database-to-a-new-server"></a>SQL veritabanını yeni bir sunucuya kopyalamak için CLı kullanma
+# <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>Azure SQL veritabanındaki bir veritabanını yeni bir sunucuya kopyalamak için CLı kullanma
 
 Bu Azure CLı betik örneği, var olan bir veritabanının yeni bir sunucuda kopyasını oluşturur.
 
@@ -61,4 +61,4 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
-Ek SQL Veritabanı CLI betiği örnekleri, [Azure SQL Veritabanı belgeleri](../sql-database-cli-samples.md) içinde bulunabilir.
+Ek SQL Veritabanı CLI betiği örnekleri, [Azure SQL Veritabanı belgeleri](../../azure-sql/database/az-cli-script-samples-content-guide.md) içinde bulunabilir.

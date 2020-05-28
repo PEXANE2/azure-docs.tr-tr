@@ -3,17 +3,18 @@ author: garyericson
 ms.service: sql-database
 ms.subservice: machine-learning
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 05/27/2020
 ms.author: garye
-ms.openlocfilehash: 3e8bdafd8f024e7bd2ab0c9f894bb9d714094ab6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 235aa6b50ef413dacb461320e50dceac7cce460d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80345751"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014205"
 ---
 > [!IMPORTANT]
 > Azure SQL veritabanı Machine Learning Services Şu anda önizleme aşamasındadır. Önizleme için kaydolma Şu anda **kapalı**.
-> 
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> 30 Haziran 2020 itibariyle destek kullanımdan kaldırılacak ve Önizleme Genel kullanıma sunulmayacak. 30 Haziran 2020 ' den sonra kullanımdaki R betikleri çalışmayacak.
+>
+> Azure SQL 'de Machine Learning ile çalışmaya devam etmek için bkz. [ **Azure SQL yönetilen örneği** (Önizleme) Machine Learning Services](../articles/azure-sql/managed-instance/machine-learning-services-overview.md).

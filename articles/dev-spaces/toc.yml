@@ -113,8 +113,6 @@
           href: how-to/ingress-https-nginx.md
         - name: Geliştirme bilgisayarınızı AKS kümesine bağlama (önizleme)
           href: how-to/connect.md
-        - name: Azure Dev Spaces kümenizi Helm 3 kullanacak şekilde yapılandırma (önizleme)
-          href: how-to/helm-3.md
     - name: Sorun giderme
       href: troubleshooting.md
     - name: SSS

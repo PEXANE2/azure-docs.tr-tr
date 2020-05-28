@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 74cad0ab9ffc3eb05219cb9e2c2585e73498c9bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cd07bf86852d608a6d872f4c6b973b0a81b2a1c3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664861"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015304"
 ---
 # <a name="use-azure-sql-database-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory Azure SQL veritabanı yönetilen örneğini SQL Server Integration Services (SSIS) ile kullanın
 
@@ -24,17 +24,17 @@ ms.locfileid: "83664861"
 
 Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş yüklerinizi Azure bulutuna taşıyabilirsiniz. Azure SQL veritabanı veya SQL veritabanı yönetilen örneği 'nde SQL Server Management Studio (SSMS) gibi tanıdık araçlarla SSIS projelerini ve paketlerini dağıtın, çalıştırın ve yönetin. Bu makalede, Azure-SSIS tümleştirme çalışma zamanı (IR) ile Azure SQL veritabanı yönetilen örneği kullanılırken aşağıdaki belirli bölgeler vurgulanmıştır:
 
-- [Azure SQL veritabanı yönetilen örneği tarafından barındırılan SSIS Kataloğu (SSSıSDB) ile bir Azure-SSIS IR sağlama](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance)
+- [Azure SQL veritabanı yönetilen örneği tarafından barındırılan SSIS Kataloğu (SSSıSDB) ile bir Azure-SSIS IR sağlama](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [SSIS paketlerini Azure SQL yönetilen örnek Aracısı işine göre yürütme](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [SSSıSDB günlüklerini Azure SQL yönetilen örnek Aracısı işine göre temizle](#clean-up-ssisdb-logs)
 - [Azure SQL veritabanı yönetilen örneği ile yük devretmeyi Azure-SSIS IR](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-database-managed-instance)
-- [Azure SQL veritabanı yönetilen örneği ile veritabanı iş yükü hedefi olarak on-premises SSIS iş yüklerini OBSıS 'e geçirme](scenario-ssis-migration-overview.md#azure-sql-database-managed-instance-as-database-workload-destination)
+- [Azure SQL veritabanı yönetilen örneği ile veritabanı iş yükü hedefi olarak on-premises SSIS iş yüklerini OBSıS 'e geçirme](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
-## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği tarafından barındırılan SSSıSDB ile Azure-SSIS IR sağlama
+## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği tarafından barındırılan SSSıSDB ile Azure-SSIS IR sağlama
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-1. Azure Active Directory kimlik doğrulaması seçerken [Azure SQL veritabanı yönetilen örneği 'nde Azure Active Directory (Azure AD) etkinleştirin](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance).
+1. Azure Active Directory kimlik doğrulaması seçerken [Azure SQL veritabanı yönetilen örneği 'nde Azure Active Directory (Azure AD) etkinleştirin](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
 1. Özel uç nokta veya genel uç nokta üzerinden SQL yönetilen örneği bağlamayı seçin:
 
@@ -90,8 +90,8 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
     1. Sanal ağın kaynak grubunun belirli Azure ağ kaynaklarını oluşturup silmesi için emin olun.
 
         Azure-SSIS IR, sanal ağ ile aynı kaynak grubunda belirli ağ kaynaklarını oluşturması gerekir. Bu kaynaklar şunları içerir:
-        - * \< GUID>-azurebatch-cloudserviceloaddengeleyici* olan bir Azure yük dengeleyici
-        - * \< Guıd>-azurebatch-cloudservicenetworksecuritygroup adlı bir ağ güvenlik grubu
+        - * \<Guid> -Azurebatch-cloudserviceloaddengeleyici* adlı bir Azure yük dengeleyici
+        - * \<Guid> -Azurebatch-cloudservicenetworksecuritygroup adlı bir ağ güvenlik grubu
         - -Azurebatch-cloudservicepublicıp adlı bir Azure genel IP adresi
 
         Azure-SSIS IR, bu kaynaklar oluşturulur. Azure-SSIS IR durdurulduğunda bunlar silinir. Azure-SSIS IR durdurmadan engellemeden kaçınmak için, diğer kaynaklarınızda bu ağ kaynaklarını yeniden kullanmayın.
@@ -147,7 +147,7 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
 
     ![Katalog-ortak uç nokta](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
 
-    Azure AD kimlik doğrulamasını etkinleştirme hakkında daha fazla bilgi için bkz. Azure [SQL veritabanı yönetilen örneği üzerinde Azure AD 'Yi etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance).
+    Azure AD kimlik doğrulamasını etkinleştirme hakkında daha fazla bilgi için bkz. Azure [SQL veritabanı yönetilen örneği üzerinde Azure AD 'Yi etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
 1. Azure-SSIS IR, geçerli olduğunda sanal ağa birleştirin.
 

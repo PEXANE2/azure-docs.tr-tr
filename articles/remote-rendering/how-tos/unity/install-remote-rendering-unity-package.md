@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 86ffe47c009f9e0ae121ffc6ab57bff8fb73210f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3375b28d94956d5c368db4bf3026bdf52ee2d58e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681187"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021152"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>Unity için Remote Rendering paketini yükleme
 
@@ -22,7 +22,7 @@ Unity paketleri, Unity 'nin [Paket Yöneticisi](https://docs.unity3d.com/Package
 Bu paket tüm C# API 'SININ yanı sıra Unity ile Azure uzaktan Işlemeyi kullanmak için gereken tüm eklenti ikililerini içerir.
 Aşağıdaki Unity 'nin paketlere yönelik adlandırma şeması, pakete **com. Microsoft. Azure. Remote-Rendering**olarak adlandırılır.
 
-Paket, [ARR örnekleri deposunun](https://github.com/Azure/azure-remote-rendering)bir parçası değildir ve Unity 'nin iç paket kayıt defterinde kullanılamaz. Projeyi bir projeye eklemek için, aşağıdakileri eklemek üzere projenin `manifest.md` dosyasını el ile düzenlemeniz gerekir:
+Paket, [ARR örnekleri deposunun](https://github.com/Azure/azure-remote-rendering)bir parçası değildir ve Unity 'nin iç paket kayıt defterinde kullanılamaz. Projeyi bir projeye eklemek için, aşağıdakileri eklemek üzere projenin dosyasını el ile düzenlemeniz gerekir `manifest.md` :
 ```json
 {
   "scopedRegistries": [
@@ -43,9 +43,9 @@ Bu eklendikten sonra Unity paket yöneticisini kullanarak en son sürüme sahip 
 
 ## <a name="unity-render-pipelines"></a>Unity işleme işlem hatları
 
-Uzaktan Işleme hem **evrensel işleme işlem hattı** hem de **standart işleme işlem hattı**ile birlikte kullanılabilir. Performans nedenleriyle, evrensel işleme işlem hattı önerilir.
+Uzaktan Işleme hem hem de ile birlikte çalışarak **:::no-loc text="Universal render pipeline":::** **:::no-loc text="Standard render pipeline":::** . Performans nedenleriyle, evrensel işleme işlem hattı önerilir.
 
-**Evrensel işleme**işlem hattını kullanmak için, paketinin Unity 'de yüklü olması gerekir. Bu, Unity 'nin **Paket Yöneticisi** Kullanıcı arabiriminde (paket adı **Universal RP**, sürüm 7.2.1 veya üzeri) ya da `Packages/manifest.json` [Unity proje kurulumu öğreticisinde](../../tutorials/unity/project-setup.md#configure-the-projects-manifest)açıklandığı gibi dosya aracılığıyla yapılabilir.
+Öğesini kullanmak için **:::no-loc text="Universal render pipeline":::** , paketinin Unity 'ye yüklenmesi gerekir. Bu, Unity 'nin **Paket Yöneticisi** Kullanıcı arabiriminde (paket adı **Universal RP**, sürüm 7.2.1 veya üzeri) ya da `Packages/manifest.json` [Unity proje kurulumu öğreticisinde](../../tutorials/unity/project-setup.md#configure-the-projects-manifest)açıklandığı gibi dosya aracılığıyla yapılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

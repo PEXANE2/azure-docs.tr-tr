@@ -7,19 +7,21 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/16/2019
-ms.openlocfilehash: 32a40f3d4da93318c6d2ec25295c89a7b53141e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 8189228d6707812fb943e9925dc2bbf1b6da4972
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606434"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112805"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Eşleme veri akışında filtre dönüşümü
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Filtre dönüştürmeleri bir koşula göre satır filtrelemesine izin verir. Çıkış akışı, filtreleme durumuyla eşleşen tüm satırları içerir. Filtre dönüşümü SQL 'deki WHERE yan tümcesine benzerdir.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xnxN]
 
 ## <a name="configuration"></a>Yapılandırma
 
@@ -40,7 +42,7 @@ Filtre koşulu için bir ifade girmek üzere veri akışı ifade oluşturucusunu
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen Stream `FilterBefore1960` `CleanData`'e ait adlı bir filtre dönüştürmesinin yer aldığı bir filtredir. Filtre koşulu ifadedir `year <= 1960`.
+Aşağıdaki örnek, gelen Stream 'e ait adlı bir filtre dönüştürmesinin yer aldığı bir filtredir `FilterBefore1960` `CleanData` . Filtre koşulu ifadedir `year <= 1960` .
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
