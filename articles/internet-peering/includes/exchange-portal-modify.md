@@ -28,7 +28,7 @@ Bu bölümde, doğrudan eşleme için aşağıdaki değişiklik işlemlerinin na
 
 ### <a name="remove-exchange-peering-connections"></a>Exchange eşleme bağlantılarını kaldır
 
-1. Silmek istediğiniz eşleme bağlantısını seçin ve ardından **..** . seçeneğini belirleyin.  >  **Bağlantıyı silin**.
+1. Silmek istediğiniz eşleme bağlantısını seçin ve ardından **..**  >  . seçeneğini belirleyin. **Bağlantıyı silin**.
     > [!div class="mx-imgBorder"]
     > ![Bağlantıyı Sil düğmesi](../media/setup-exchange-modify-deleteconnection.png)
 1. **Onaylama silme** kutusuna kaynak kimliğini girin ve **Sil**' i seçin.
@@ -37,7 +37,7 @@ Bu bölümde, doğrudan eşleme için aşağıdaki değişiklik işlemlerinin na
 
 ### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>Etkin bağlantılara IPv4 veya IPv6 oturumu ekleme
 
-1. Değiştirmek istediğiniz eşleme bağlantısını seçin ve ardından **..** . seçeneğini belirleyin.  >  **Bağlantıyı Düzenle**.
+1. Değiştirmek istediğiniz eşleme bağlantısını seçin ve ardından **..**  >  . seçeneğini belirleyin. **Bağlantıyı Düzenle**.
     > [!div class="mx-imgBorder"]
     > ![Bağlantıyı Düzenle düğmesi](../media/setup-exchange-modify-editconnection.png)
 1. **IPv4 adresi** veya **IPv6 adresi** bilgileri ekleyin ve **Kaydet**' i seçin.

@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c69d28d2be6b04286bb04a2ede6eebc69400c777
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631961"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014902"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzundaki işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanma
 
@@ -29,7 +29,7 @@ Azure İşlev Uygulaması 'yi SQL havuzuyla kullanabilmek için, SQL havuzu örn
 Şablonu dağıtmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
 - SQL havuzu örneğinizin bulunduğu kaynak grubunun adı
-- SQL havuzu örneğinizin bulunduğu mantıksal sunucunun adı
+- SQL havuzu örneğinizin bulunduğu sunucunun adı
 - SQL havuzu örneğinizin adı
 - Azure Active Directory'nizin Kiracı Kimliği (Dizin Kimliği)
 - Abonelik Kimliği
@@ -97,11 +97,11 @@ Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 
 Şu anda, şablona dahil edilmiş yalnızca iki ölçeklendirme işlevi vardır. Bu işlevlerle, bir gün boyunca yalnızca bir kez ve bir kez ölçeği azaltabilirsiniz. Gün başına birden çok kez ölçekleme veya hafta sonları üzerinde farklı ölçeklendirme davranışına sahip gibi daha ayrıntılı denetim için, başka bir tetikleyici eklemeniz gerekir.
 
-1. Yeni boş bir işlev oluşturun. İşlev şablonu *+* bölmesini göstermek için işlevlerinizin konumunun yakınındaki düğmeyi seçin.
+1. Yeni boş bir işlev oluşturun. *+* İşlev şablonu bölmesini göstermek Için işlevlerinizin konumunun yakınındaki düğmeyi seçin.
 
    ![Yeni işlev oluşturma](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. Dil'de *Javascript*'i seçin ve sonra da *TimerTrigger*'ı seçin.
+2. Dilden *JavaScript*' i seçin, sonra *timertrigger*' ı seçin.
 
    ![Yeni işlev oluşturma](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -115,7 +115,7 @@ Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 
 5. İşlem değişkeninizi istenen davranışa aşağıdaki şekilde ayarlayın:
 
-   ```javascript
+   ```JavaScript
    // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
@@ -141,7 +141,7 @@ Bu bölüm, duraklatma, devam etmeyi ve ölçeklendirme özelliklerini daha karm
 
 Gündelik olarak 08:00'da DW600'a ölçeği artırma ve 20:00'da DW200'e ölçeği azaltma.
 
-| İşlev  | Zamanlama     | İşlem                                |
+| İşlev  | Zamanla     | Çalışma                                |
 | :-------- | :----------- | :--------------------------------------- |
 | İşlev1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
 | İşlev2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
@@ -150,7 +150,7 @@ Gündelik olarak 08:00'da DW600'a ölçeği artırma ve 20:00'da DW200'e ölçe�
 
 Günlük ölçeği, 10:00 ' da DW1000 ' ye kadar bir kez ölçeklendirin, 4pm 'de DW600.
 
-| İşlev  | Zamanlama     | İşlem                                |
+| İşlev  | Zamanla     | Çalışma                                |
 | :-------- | :----------- | :--------------------------------------- |
 | İşlev1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | İşlev2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -160,7 +160,7 @@ Günlük ölçeği, 10:00 ' da DW1000 ' ye kadar bir kez ölçeklendirin, 4pm 'd
 
 Hafta içi günlerinde 08:00'da DW1000'e ölçeği artırma ve 16:00'da bir kez DW600'e ölçeği azaltma. Cuma 23:00'da duraklatılır, Pazartesi sabahı 07:00'da sürdürülür.
 
-| İşlev  | Zamanlama       | İşlem                                |
+| İşlev  | Zamanla       | Çalışma                                |
 | :-------- | :------------- | :--------------------------------------- |
 | İşlev1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | İşlev2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f780ad3d2c95f9d23ea9a0b675b59ba22e25016
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651941"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021696"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics işi için bir SQL veritabanındaki başvuru verilerini kullanma
 
@@ -40,7 +40,7 @@ Azure portal kullanarak Azure SQL veritabanını başvuru giriş kaynağı olara
 
    ![SQL veritabanı başvuru yapılandırması](./media/sql-reference-data/sql-input-config.png)
 
-3. SQL sorgu Düzenleyicisi 'nde anlık görüntü sorgusunu test edin. Daha fazla bilgi için bkz [. Azure Portal SQL sorgu düzenleyicisini kullanarak bağlanma ve veri sorgulama](../sql-database/sql-database-connect-query-portal.md)
+3. SQL sorgu Düzenleyicisi 'nde anlık görüntü sorgusunu test edin. Daha fazla bilgi için bkz [. Azure Portal SQL sorgu düzenleyicisini kullanarak bağlanma ve veri sorgulama](../azure-sql/database/connect-query-portal.md)
 
 ### <a name="specify-storage-account-in-job-config"></a>Iş yapılandırmasında depolama hesabı belirtin
 
@@ -69,7 +69,7 @@ Visual Studio kullanarak Azure SQL veritabanını başvuru giriş kaynağı olar
 
 ### <a name="create-a-sql-database-table"></a>SQL veritabanı tablosu oluşturma
 
-Başvuru verilerinizi depolamak üzere bir tablo oluşturmak için SQL Server Management Studio kullanın. Ayrıntılar için bkz. [SSMS kullanarak Ilk Azure SQL veritabanınızı tasarlama](../sql-database/sql-database-design-first-database.md) .
+Başvuru verilerinizi depolamak üzere bir tablo oluşturmak için SQL Server Management Studio kullanın. Ayrıntılar için bkz. [SSMS kullanarak Ilk Azure SQL veritabanınızı tasarlama](../azure-sql/database/design-first-database-tutorial.md) .
 
 Aşağıdaki örnekte kullanılan örnek tablo aşağıdaki deyimden oluşturulmuştur:
 
@@ -129,7 +129,7 @@ SQL başvuru anlık görüntülerini depolamaya yönelik depolama hesabını bel
 
 ## <a name="delta-query"></a>Delta sorgusu
 
-Delta sorgu kullanılırken, [Azure SQL veritabanı 'nda](../sql-database/sql-database-temporal-tables.md) zamana bağlı tablolar önerilir.
+Delta sorgu kullanılırken, [Azure SQL veritabanı 'nda](../azure-sql/temporal-tables.md) zamana bağlı tablolar önerilir.
 
 1. Azure SQL veritabanı 'nda zamana bağlı bir tablo oluşturun.
    

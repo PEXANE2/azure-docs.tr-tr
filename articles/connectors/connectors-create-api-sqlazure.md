@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 5090d772be4f68c696e8dd4882a78ba6954b6058
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402591"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020736"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server veya Azure SQL veritabanı için iş akışlarını Azure Logic Apps kullanarak otomatikleştirin
 
@@ -26,7 +26,7 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* [SQL Server veritabanı](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) veya [Azure SQL veritabanı](../sql-database/sql-database-get-started-portal.md)
+* [SQL Server veritabanı](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) veya [Azure SQL veritabanı](../azure-sql/database/single-database-create-quickstart.md)
 
   Mantıksal uygulamanızın işlemleri çağırırken sonuçlar döndürebilmesi için tablolarınızın verileri olmalıdır. Azure SQL veritabanı oluşturursanız, dahil edilen örnek veritabanlarını kullanabilirsiniz.
 

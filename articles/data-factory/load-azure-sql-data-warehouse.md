@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/16/2020
-ms.openlocfilehash: 1a764f392402acf9aa405468470d0fb6f680d755
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0a9a00aa6abd35ad723f02a30869e8f7734b1f3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461117"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020566"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Azure SQL Veri Ambarı’na yükleme
 
@@ -42,12 +42,12 @@ Bu makalede, _Azure SQL veritabanından Azure SQL veri ambarı 'na veri yükleme
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Azure SQL veri ambarı: veri ambarı, SQL veritabanından kopyalandığı verileri tutar. Azure SQL veri ambarınız yoksa, [SQL veri ambarı oluşturma](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)' daki yönergelere bakın.
-* Azure SQL veritabanı: Bu öğretici, Adventure Works LT örnek verileriyle bir Azure SQL veritabanından veri kopyalar. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md)bölümündeki yönergeleri IZLEYEREK bir SQL veritabanı oluşturabilirsiniz.
+* Azure SQL veritabanı: Bu öğretici, Adventure Works LT örnek verileriyle bir Azure SQL veritabanından veri kopyalar. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümündeki yönergeleri IZLEYEREK bir SQL veritabanı oluşturabilirsiniz.
 * Azure depolama hesabı: Azure depolama, toplu kopyalama işleminde _hazırlama_ blobu olarak kullanılır. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) bölümündeki yönergelere bakın.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol taraftaki menüden > **veri ve analiz** >  **kaynak oluştur**' u seçin**Data Factory**:
+1. Sol taraftaki menüden veri ve analiz **kaynak oluştur**' u seçin  >  **Data + Analytics**  >  **Data Factory**:
 
 2. **Yeni Veri Fabrikası** sayfasında, aşağıdaki öğeler için değerler girin:
 

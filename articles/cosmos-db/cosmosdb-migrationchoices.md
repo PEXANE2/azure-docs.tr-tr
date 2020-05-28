@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 34698a215477abdd7d68c3dfe050657ecf049690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 281cdea42975172b7e2366ab5d3e1606f61d5025
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984904"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020549"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Şirket içi veya bulut verilerinizi Azure Cosmos DB 'e geçirmeye yönelik seçenekler
 
@@ -22,7 +22,7 @@ Azure Cosmos DB için çeşitli veri kaynaklarından veri yükleyebilirsiniz. Ay
 Aşağıdaki etmenler geçiş aracının seçimini belirlemektir:
 * **Çevrimiçi ve çevrimdışı geçiş**: birçok geçiş aracı yalnızca bir kerelik geçiş yapmak için bir yol sağlar. Bu, veritabanına erişen uygulamaların bir süre kapalı kalma süresine neden olabileceği anlamına gelir. Bazı geçiş çözümleri, kaynak ve hedef arasında bir çoğaltma işlem hattının ayarlandığı dinamik geçiş yapmak için bir yol sağlar.
 
-* **Veri kaynağı**: mevcut VERILER Oracle DB2, DataStax Cassanda, Azure SQL Server, PostgreSQL vb. gibi çeşitli veri kaynaklarında bulunabilir. Veriler de mevcut bir Azure Cosmos DB hesabında olabilir ve geçiş amacı veri modelini değiştirebilir veya bir kapsayıcıdaki verileri farklı bir bölüm anahtarıyla yeniden bölümleyebilir.
+* **Veri kaynağı**: mevcut VERILER Oracle DB2, DataStax Cassanda, Azure SQL veritabanı, PostgreSQL vb. gibi çeşitli veri kaynaklarında bulunabilir. Veriler de mevcut bir Azure Cosmos DB hesabında olabilir ve geçiş amacı veri modelini değiştirebilir veya bir kapsayıcıdaki verileri farklı bir bölüm anahtarıyla yeniden bölümleyebilir.
 
 * **Azure Cosmos DB API**: Azure Cosmos db SQL API 'si için, farklı geçiş senaryolarına yardımcı olan Azure Cosmos DB ekibi tarafından geliştirilen çeşitli araçlar vardır. Diğer tüm API 'Lerde, topluluk tarafından geliştirilen ve tutulan kendi özelleştirilmiş araç kümesi vardır. Azure Cosmos DB, bu API 'Leri bir kablo protokol düzeyinde desteklediğinden, bu araçların verileri Azure Cosmos DB geçirirken olduğu gibi çalışması gerekir. Ancak, bu kavram Azure Cosmos DB özel olarak, bu kavram için özel işleme gerektirebilir.
 

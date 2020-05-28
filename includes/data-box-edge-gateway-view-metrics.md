@@ -47,4 +47,4 @@ Seçili cihaz ölçümleri için bir grafik oluşturmak üzere Azure portal aşa
 
 8. Grafik verilerini bir Excel elektronik tablosuna aktarmak veya paylaşabileceğiniz grafiğin bir bağlantısını almak için komut çubuğundan Share (paylaşma) seçeneğini belirleyin.
 
-    ![Verileri dışarı aktar](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)
+    ![Verileri dışarı aktarma](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)

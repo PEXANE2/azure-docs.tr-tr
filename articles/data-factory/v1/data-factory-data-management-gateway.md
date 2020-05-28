@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1340c205477b256e3d96ff7ccacb64e575725c2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76f8b741eb49949bb59ab5e1a4b7279f84b77111
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065396"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021577"
 ---
 # <a name="data-management-gateway"></a>Veri Yönetimi Ağ Geçidi
 > [!NOTE]
@@ -51,7 +51,7 @@ Veri yönetimi ağ geçidi aşağıdaki özellikleri sağlar:
 ### <a name="command-flow-and-data-flow"></a>Komut akışı ve veri akışı
 Şirket içi ve bulut arasında veri kopyalamak için bir kopyalama etkinliği kullandığınızda, etkinlik şirket içi veri kaynağından buluta veri aktarmak için bir ağ geçidi kullanır ve tam tersi de geçerlidir.
 
-Aşağıda, veri ağ geçidi ile kopyalama adımları için üst düzey veri akışı ve ağ geçidi kullanarak veri akışı ![verilmiştir:](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
+Aşağıda, veri ağ geçidi ile kopyalama adımları için üst düzey veri akışı ve ![ ağ geçidi kullanarak veri akışı verilmiştir:](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
 
 1. Veri geliştirici, [Azure Portal](https://portal.azure.com) veya [PowerShell cmdlet 'ini](https://docs.microsoft.com/powershell/module/az.datafactory/)kullanarak bir Azure Data Factory için ağ geçidi oluşturur.
 2. Veri geliştiricisi, ağ geçidini belirterek şirket içi veri deposu için bağlı bir hizmet oluşturur. Bağlı hizmeti ayarlamanın bir parçası olarak, veri geliştiricisi kimlik doğrulama türlerini ve kimlik bilgilerini belirtmek için kimlik bilgilerini ayarla uygulamasını kullanır. Kimlik bilgileri uygulama iletişim kutusu, bağlantıyı test etmek için veri deposuyla ve kimlik bilgilerini kaydetmek için ağ geçidine iletişim kurar.
@@ -161,7 +161,7 @@ Güvenlik Duvarı kurallarının kurumsal güvenlik duvarı, ağ geçidi makines
 Örneğin, **Şirket içi bir veri deposundan bir Azure SQL veritabanı havuzuna veya bir Azure SQL veri ambarı havuzuna**kopyalamak için aşağıdaki adımları uygulayın:
 
 * Windows Güvenlik Duvarı ve kurumsal güvenlik duvarı için **1433** numaralı bağlantı noktasında giden **TCP** iletişimine izin verin.
-* Azure SQL Server 'ın güvenlik duvarı ayarlarını, ağ geçidi makinesinin IP adresini izin verilen IP adresleri listesine ekleyecek şekilde yapılandırın.
+* Mantıksal SQL Server 'ın güvenlik duvarı ayarlarını, ağ geçidi makinesinin IP adresini izin verilen IP adresleri listesine ekleyecek şekilde yapılandırın.
 
 > [!NOTE]
 > Güvenlik duvarınız giden bağlantı noktası 1433 ' ye izin vermediğinden, ağ geçidi Azure SQL 'e doğrudan erişemez. Bu durumda, veritabanı/SQL Azure DW SQL Azure için [hazırlanan kopyayı](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) kullanabilirsiniz. Bu senaryoda, veri taşıma için yalnızca HTTPS (bağlantı noktası 443) gereklidir.
@@ -204,8 +204,8 @@ Configuration Manager aracını kullanarak HTTP proxy 'sini görüntüleyebilir 
 ### <a name="configure-proxy-server-settings"></a>Proxy sunucusu ayarlarını yapılandırma
 HTTP proxy için **sistem proxy ayarını kullan** ' ı seçerseniz, ağ geçidi diahost. exe. config ve diawp. exe. config dosyasındaki proxy ayarını kullanır. Diahost. exe. config ve diawp. exe. config dosyasında bir proxy belirtilmemişse, ağ geçidi doğrudan proxy 'ye geçmeden bulut hizmetine bağlanır. Aşağıdaki yordam diahost. exe. config dosyasını güncelleştirmek için yönergeler sağlar.
 
-1. Dosya Gezgini 'nde, özgün dosyayı yedeklemek için *C\\\\\\: Program Files Microsoft veri yönetimi Gateway\\2,0\\paylaşılan\\diahost. exe. config* ' in güvenli bir kopyasını oluşturun.
-2. Yönetici olarak çalışan Notepad. exe ' yi başlatın ve metin dosyası *C:\\\\Program Files\\Microsoft veri yönetimi Gateway\\2,0\\paylaşılan\\diahost. exe. config*dosyasını açın. Aşağıdaki kodda gösterildiği gibi, system.net için varsayılan etiketi bulabilirsiniz:
+1. Dosya Gezgini 'nde, özgün dosyayı yedeklemek için *C: \\ \\ Program Files \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ paylaşılan \\ diahost. exe. config* ' in güvenli bir kopyasını oluşturun.
+2. Yönetici olarak çalışan Notepad. exe ' yi başlatın ve metin dosyası *C: \\ \\ Program Files \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ paylaşılan \\ diahost. exe. config*dosyasını açın. Aşağıdaki kodda gösterildiği gibi, system.net için varsayılan etiketi bulabilirsiniz:
 
     ```
     <system.net>
@@ -251,7 +251,7 @@ Aşağıdakine benzer hatalarla karşılaşırsanız, büyük olasılıkla güve
 
 Ağ Geçidi makinesinde 8050 bağlantı noktasını açmayı seçerseniz, veri deposu kimlik bilgilerini yapılandırmak için **kimlik bilgilerini ayarlama** uygulamasını kullanmaktan farklı mekanizmaları kullanın. Örneğin, [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell cmdlet 'ini kullanabilirsiniz. Veri deposunun kimlik bilgilerinin nasıl ayarlanacağı hakkında bilgi için bkz. kimlik bilgileri ve güvenlik bölümü.
 
-## <a name="update"></a>Güncelleştirme
+## <a name="update"></a>Güncelleştir
 Varsayılan olarak, veri yönetimi ağ geçidi, ağ geçidinin daha yeni bir sürümü kullanılabilir olduğunda otomatik olarak güncelleştirilir. Tüm zamanlanmış görevler tamamlanana kadar ağ geçidi güncellenmez. Güncelleştirme işlemi tamamlanana kadar ağ geçidi tarafından başka görev işlenmeyecektir. Güncelleştirme başarısız olursa, ağ geçidi eski sürüme geri alınır.
 
 Zamanlanan güncelleştirme saatini aşağıdaki konumlarda görürsünüz:
@@ -279,7 +279,7 @@ Aşağıdaki adımları uygulayarak otomatik güncelleştirme özelliğini devre
 
 [Tek düğümlü ağ geçidi için]
 1. Ağ Geçidi makinesinde Windows PowerShell 'i başlatın.
-2. *\\\\C: Program Files\\Microsoft Integration Runtime\\3,0\\powershellscript\\ * klasörüne geçin.
+2. *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ powershellscript \\ * klasörüne geçin.
 3. Otomatik güncelleştirme özelliğini devre dışı bırakmak için aşağıdaki komutu çalıştırın (devre dışı bırakın).
 
     ```powershell
@@ -292,7 +292,7 @@ Aşağıdaki adımları uygulayarak otomatik güncelleştirme özelliğini devre
     ```
    [Çok düğümlü yüksek düzeyde kullanılabilir ve ölçeklenebilir ağ geçidi için](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Ağ Geçidi makinesinde Windows PowerShell 'i başlatın.
-2. *\\\\C: Program Files\\Microsoft Integration Runtime\\3,0\\powershellscript\\ * klasörüne geçin.
+2. *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ powershellscript \\ * klasörüne geçin.
 3. Otomatik güncelleştirme özelliğini devre dışı bırakmak için aşağıdaki komutu çalıştırın (devre dışı bırakın).
 
     Yüksek kullanılabilirlik özelliğine sahip ağ geçidi için ek bir AuthKey parametresi gerekir.
@@ -309,7 +309,7 @@ Aşağıdaki adımları uygulayarak otomatik güncelleştirme özelliğini devre
 Ağ geçidini yükledikten sonra, aşağıdaki yollarla Veri Yönetimi ağ geçidi Configuration Manager başlatabilirsiniz:
 
 1. **Ara** penceresinde, bu yardımcı programa erişmek Için **veri yönetimi ağ geçidi** yazın.
-2. Şu klasörde çalıştırılabilir *configmanager. exe* dosyasını çalıştırın: *\\\\C: Program Files\\Microsoft veri yönetimi Gateway\\2,0\\Shared*.
+2. Şu klasörde çalıştırılabilir *configmanager. exe* dosyasını çalıştırın: *C: \\ \\ Program Files \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ Shared*.
 
 ### <a name="home-page"></a>Giriş sayfası
 Giriş sayfası aşağıdaki eylemleri yapmanıza olanak sağlar:
@@ -364,7 +364,7 @@ Aşağıdaki tabloda **ağ geçidi düğümleri** listesindeki sütunların aç�
 
 İzleme özelliği | Açıklama
 :------------------ | :----------
-Adı | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı. Düğüm, ağ geçidinin yüklü olduğu şirket içi bir Windows makinedir. Tek bir mantıksal ağ geçidinde birden fazla düğüm (en fazla dört düğüme) olma hakkında bilgi için, bkz. [veri yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik](data-factory-data-management-gateway-high-availability-scalability.md).
+Name | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı. Düğüm, ağ geçidinin yüklü olduğu şirket içi bir Windows makinedir. Tek bir mantıksal ağ geçidinde birden fazla düğüm (en fazla dört düğüme) olma hakkında bilgi için, bkz. [veri yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik](data-factory-data-management-gateway-high-availability-scalability.md).
 Durum | Mantıksal ağ geçidinin ve ağ geçidi düğümlerinin durumu. Örnek: çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için bkz. [ağ geçidi durumu](#gateway-status) bölümü.
 Sürüm | Mantıksal ağ geçidi ve her ağ geçidi düğümünün sürümünü gösterir. Mantıksal ağ geçidinin sürümü, gruptaki düğümlerin çoğunluğu sürümüne göre belirlenir. Mantıksal ağ geçidi kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal ağ geçidi ile aynı sürüm numarasına sahip düğümler düzgün şekilde çalışır. Diğerleri sınırlı moddadır ve el ile güncelleştirilmesi gerekir (yalnızca büyük/küçük harfe otomatik güncelleştirme başarısız olur).
 Kullanılabilir bellek | Bir ağ geçidi düğümündeki kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür.
@@ -388,7 +388,7 @@ Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından f
 
 Aşağıdaki tabloda, **mantıksal bir ağ geçidinin**olası durumları verilmiştir. Ağ Geçidi, ağ geçidi düğümlerinin durumlarına bağlıdır.
 
-Durum | Açıklamalar
+Durum | Yorumlar
 :----- | :-------
 Kayıt gerekiyor | Henüz bu mantıksal ağ geçidine kayıtlı düğüm yok
 Çevrimiçi | Ağ Geçidi düğümleri çevrimiçi
@@ -510,7 +510,7 @@ Bu bölümde, Azure PowerShell cmdlet 'lerini kullanarak bir ağ geçidinin nas�
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Azure PowerShell ' de klasöre geçin: *\\\\C: Program Files\\Microsoft Integration Runtime\\3,0\\powershellscript\\*. Aşağıdaki komutta gösterildiği gibi **$Key** yerel değişkenle Ilişkili *registergateway. ps1* komutunu çalıştırın. Bu betik, makinenizde yüklü olan istemci aracısını daha önce oluşturduğunuz mantıksal ağ geçidine kaydeder.
+1. Azure PowerShell ' de klasöre geçin: *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ powershellscript \\ *. Aşağıdaki komutta gösterildiği gibi **$Key** yerel değişkenle Ilişkili *registergateway. ps1* komutunu çalıştırın. Bu betik, makinenizde yüklü olan istemci aracısını daha önce oluşturduğunuz mantıksal ağ geçidine kaydeder.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

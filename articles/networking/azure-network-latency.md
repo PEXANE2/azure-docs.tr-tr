@@ -5,14 +5,14 @@ services: networking
 author: nayak-mahesh
 ms.service: virtual-network
 ms.topic: article
-ms.date: 03/10/2020
+ms.date: 05/26/2020
 ms.author: kumud
-ms.openlocfilehash: d9cae04499f046749e504bcab89b893fcc31a81c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8cf5d07bb071217a5ecafca8f351c94590291603
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886967"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994025"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Azure ağ gidiş dönüş gecikme süresi istatistikleri
 
@@ -22,9 +22,9 @@ Azure, iç izleme araçlarının yanı sıra üçüncü taraf yapay bir izleme h
 
 Gecikme ölçümleri, dünya çapındaki Azure bulut bölgelerinde barındırılan ThousandEyes aracılarından toplanır ve bunlar arasında sürekli olarak 1 dakikalık aralıklarla ağ araştırmaları gönderilir. Aylık gecikme istatistikleri, bu ay için toplanan örneklerin ortalarından ortalaması alınır.
 
-## <a name="march-2020-round-trip-latency-figures"></a>Mart 2020 gidiş dönüş gecikme süresi rakamları
+## <a name="april-2020-round-trip-latency-figures"></a>Nisan 2020 gidiş dönüş gecikme süresi rakamları
 
-Son 31 gün boyunca Azure bölgeleri arasındaki aylık ortalama gidiş dönüş süreleri (31 Mart 2020 ' de sona eriyor) aşağıda gösterilmiştir. Aşağıdaki ölçümler [ThousandEyes](https://thousandeyes.com)tarafından desteklenmektedir.
+Son 30 güne ait Azure bölgeleri arasındaki aylık ortalama gidiş dönüş süreleri (30 Nisan 2020 ' de sona eriyor) aşağıda gösterilmiştir. Aşağıdaki ölçümler [ThousandEyes](https://thousandeyes.com)tarafından desteklenmektedir.
 
 [![Azure bölgeler arası gecikme istatistikleri](media/azure-network-latency/azure-network-latency.png)](media/azure-network-latency/azure-network-latency.png#lightbox)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: nitinme
-ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ff160c57b86e2269165f5fe1d2808684d2e6e86e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118273"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118546"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Öğretici: faturaları çözümlemek için Azure Logic Apps ile form tanıyıcı kullanma
 
@@ -58,7 +58,7 @@ Bu kapsayıcıyı kullanarak modeli eğitebilmeniz için gereken örnek verileri
 
 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451)'da bulunan örnek verileri indirin. Verileri yerel bir klasöre ayıklayın ve **/tren** klasörünün içeriğini daha önce oluşturduğunuz **formbir kapsayıcıya** yükleyin. Bir kapsayıcıya veri yüklemek için [Blok Blobu yükleme](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) bölümündeki yönergeleri izleyin.
 
-Kapsayıcının URL 'sini kopyalayın. Bu URL 'nin öğreticide daha sonra olması gerekir. Depolama hesabı ve kapsayıcıyı bu öğreticide listelenen aynı adlarla oluşturduysanız, URL *https:\//formrecostorage.blob.Core.Windows.net/formrecocontainer/* olur.
+Kapsayıcının URL 'sini kopyalayın. Bu URL 'nin öğreticide daha sonra olması gerekir. Depolama hesabı ve kapsayıcıyı bu öğreticide listelenen aynı adlarla oluşturduysanız, URL *https: \/ /formrecostorage.blob.Core.Windows.net/formrecocontainer/* olur.
 
 ## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
 
@@ -73,20 +73,20 @@ Görevleri ve iş akışlarını otomatikleştirebilmek ve düzenlemek için Azu
 
 İş akışınızı ayarlamak için bu adımları izleyin.
 
-1. Ana Azure menüsünden **kaynak** > **tümleştirme** > **mantıksal uygulaması**oluştur ' u seçin.
+1. Ana Azure menüsünden **kaynak**  >  **tümleştirme**  >  **mantıksal uygulaması**oluştur ' u seçin.
 
 1. **Mantıksal uygulama oluştur** bölümünde, mantıksal uygulamanızın ayrıntılarını burada gösterildiği gibi sağlayın. İşiniz bittiğinde **Oluştur**' u seçin.
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa`-`çizgi (), alt çizgi (`_`), parantez (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
+   | **Adı** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) ve nokta ( `.` ) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
    | **Abonelik** | <*Azure-abonelik-adı*> | Azure abonelik adınız |
    | **Kaynak grubu** | <*Azure-Resource-Group-Name*> | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](./../../azure-resource-manager/management/overview.md) adı. Bu örnek "My-First-LA-RG" kullanır. |
    | **Konum** | <*Azure-bölge*> | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
    | **Log Analytics** | Kapalı | Tanılama günlüğüne kaydetme ayarını **Kapalı** durumda bırakın. |
    ||||
 
-1. Azure, uygulamanızı dağıttıktan sonra Azure araç çubuğunda **Bildirimler** > ' i seçerek dağıtılan mantıksal uygulamanız için**kaynağa gidin** . Ya da, arama kutusuna adı yazarak mantıksal uygulamanızı bulabilir ve seçebilirsiniz.
+1. Azure, uygulamanızı dağıttıktan sonra Azure araç çubuğunda bildirimler ' i seçerek **Notifications**  >  dağıtılan mantıksal uygulamanız için**kaynağa gidin** . Ya da, arama kutusuna adı yazarak mantıksal uygulamanızı bulabilir ve seçebilirsiniz.
 
    Logic Apps Tasarımcısı açılır ve bir tanıtım videosu ile sık kullanılan tetikleyicilerin bulunduğu bir sayfa görüntülenir. **Şablonlar** altında **Boş Mantıksal Uygulama**'yı seçin.
 
@@ -377,7 +377,6 @@ Mantıksal uygulamayı test etmek için [GitHub](https://go.microsoft.com/fwlink
       }
     ]
     ```
-    Bu öğreticiyi başarıyla tamamladınız!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
