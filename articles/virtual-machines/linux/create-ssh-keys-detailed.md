@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: c34a88c39104d3af2c5747d1cd6d3dea6929379a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5add789809f274ef5634f3c33dfedd3cd96b36d0
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969549"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142478"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ayrıntılı adımlar: Azure 'da bir Linux VM 'sine kimlik doğrulaması için SSH anahtarları oluşturma ve yönetme 
 Güvenli Kabuk (SSH) anahtar çifti ile Azure 'da, kimlik doğrulaması için SSH anahtarlarını kullanan varsayılan bir Linux sanal makinesi oluşturabilir ve parolaların oturum açması gereksinimini ortadan kaldırabilirsiniz. Azure portal, Azure CLı, Kaynak Yöneticisi şablonları veya diğer araçlarla oluşturulan VM 'Ler, SSH bağlantıları için SSH anahtarı kimlik doğrulamasını ayarlayan dağıtımın bir parçası olarak SSH ortak anahtarınızı içerebilir. 
@@ -29,19 +29,19 @@ SSH özel anahtarının korunması için çok güvenli bir parola olmalıdır. B
 
 ## <a name="ssh-keys-use-and-benefits"></a>SSH anahtarlarının kullanımı ve avantajları
 
-Ortak anahtarı belirterek bir Azure VM oluşturduğunuzda, Azure ortak anahtarı ( `.pub` BIÇIMDE) VM 'deki `~/.ssh/authorized_keys` klasöre kopyalar. İçindeki `~/.ssh/authorized_keys` SSH anahtarları, ISTEMCININ bir SSH bağlantısında karşılık gelen özel anahtarla eşleşmesini sağlamak için kullanılır. Kimlik doğrulaması için SSH anahtarları kullanan bir Azure Linux sanal makinesinde Azure, SSHD sunucusunu parola oturum açma ve yalnızca SSH anahtarlarına izin verecek şekilde yapılandırır. Bu nedenle, SSH anahtarlarıyla bir Azure Linux VM 'si oluşturarak, VM dağıtımının güvenliğini sağlamaya ve `sshd_config` dosyadaki parolaları devre dışı bırakmaya yönelik tipik dağıtım sonrası yapılandırma adımını kaydetmenizi sağlayabilirsiniz.
+Ortak anahtarı belirterek bir Azure VM oluşturduğunuzda, Azure ortak anahtarı ( `.pub` biçimde) `~/.ssh/authorized_keys` VM 'deki klasöre kopyalar. İçindeki SSH anahtarları, `~/.ssh/authorized_keys` istemcinin BIR SSH bağlantısında karşılık gelen özel anahtarla eşleşmesini sağlamak için kullanılır. Kimlik doğrulaması için SSH anahtarları kullanan bir Azure Linux sanal makinesinde Azure, SSHD sunucusunu parola oturum açma ve yalnızca SSH anahtarlarına izin verecek şekilde yapılandırır. Bu nedenle, SSH anahtarlarıyla bir Azure Linux VM 'si oluşturarak, VM dağıtımının güvenliğini sağlamaya ve dosyadaki parolaları devre dışı bırakmaya yönelik tipik dağıtım sonrası yapılandırma adımını kaydetmenizi sağlayabilirsiniz `sshd_config` .
 
 SSH anahtarlarını kullanmak istemiyorsanız, Linux sanal makinenizin parolasını parola kimlik doğrulaması kullanacak şekilde ayarlayabilirsiniz. SANAL makinenizin Internet 'e açık olmaması durumunda parolaların kullanılması yeterli olabilir. Ancak, her bir Linux sanal makinesi için parolalarınızı yönetmeniz ve minimum parola uzunluğu ve normal güncelleştirmeler gibi sağlıklı parola ilkelerini ve uygulamaları korumanız gerekir. SSH anahtarlarının kullanılması, birden çok VM genelinde bireysel kimlik bilgilerini yönetmenin karmaşıklığını azaltır.
 
 ## <a name="generate-keys-with-ssh-keygen"></a>SSH-keygen ile anahtar oluşturma
 
-Anahtarları oluşturmak için, Azure Cloud Shell, macOS veya `ssh-keygen`Linux ana bilgisayarı, [Linux Için Windows alt sistemi](https://docs.microsoft.com/windows/wsl/about)ve diğer araçlar ile birlikte OpenSSH yardımcı programları ile kullanılabilen tercih edilen bir komut vardır. `ssh-keygen`bir dizi soru sorar ve sonra özel bir anahtar ve eşleşen bir ortak anahtar yazar. 
+Anahtarları oluşturmak için, `ssh-keygen` Azure Cloud Shell, macOS veya Linux ana bilgisayarı ve Windows 10 ' da OpenSSH yardımcı programları ile kullanılabilen tercih edilen bir komut vardır. `ssh-keygen`bir dizi soru sorar ve sonra özel bir anahtar ve eşleşen bir ortak anahtar yazar. 
 
 SSH anahtarları, varsayılan olarak `~/.ssh` dizininde tutulur.  `~/.ssh` dizininiz yoksa `ssh-keygen` komutu, doğru izinler ile sizin için oluşturur.
 
 ### <a name="basic-example"></a>Temel örnek
 
-Aşağıdaki `ssh-keygen` komut, `~/.ssh` dizinde varsayılan olarak 2048 bitlik ssh rsa ortak ve özel anahtar dosyaları oluşturur. Geçerli konumda bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır.
+Aşağıdaki `ssh-keygen` komut, dizinde varsayılan olarak 2048 BITLIK ssh rsa ortak ve özel anahtar dosyaları oluşturur `~/.ssh` . Geçerli konumda bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır.
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096
@@ -72,7 +72,7 @@ ssh-keygen \
 
 `-C "azureuser@myserver"` = kolayca tanımlamak için ortak anahtar dosyasının sonuna eklenen bir açıklama. Normalde açıklama olarak bir e-posta adresi kullanılır, ancak altyapınız için en iyi şeyi kullanın.
 
-`-f ~/.ssh/mykeys/myprivatekey`= varsayılan adı kullanmayı tercih ederseniz, özel anahtar dosyasının dosya adı. Birlikte `.pub` eklenmiş karşılık gelen ortak anahtar dosyası aynı dizinde oluşturulur. Dizinin var olması gerekir.
+`-f ~/.ssh/mykeys/myprivatekey`= varsayılan adı kullanmayı tercih ederseniz, özel anahtar dosyasının dosya adı. Birlikte eklenmiş karşılık gelen ortak anahtar dosyası `.pub` aynı dizinde oluşturulur. Dizinin var olması gerekir.
 
 `-N mypassphrase`= özel anahtar dosyasına erişmek için kullanılan ek bir parola. 
 
@@ -106,9 +106,9 @@ The key's randomart image is:
 
 `Enter file in which to save the key (/home/azureuser/.ssh/id_rsa): ~/.ssh/id_rsa`
 
-Bu makale için anahtar çifti adı. Adında `id_rsa` bir anahtar çiftinin olması varsayılandır; Bazı araçlar `id_rsa` özel anahtar dosya adını bekleyebilir, bu nedenle bir tane olması iyi bir fikirdir. `~/.ssh/` dizini, SSH anahtar çiftleri ve SSH yapılandırma dosyası için varsayılan konumdur. Tam yol belirtilmezse `ssh-keygen` tarafından oluşturulan anahtarlar varsayılan `~/.ssh` dizininde değil geçerli çalışma dizininde olur.
+Bu makale için anahtar çifti adı. Adında bir anahtar çiftinin olması `id_rsa` varsayılandır; bazı araçlar `id_rsa` özel anahtar dosya adını bekleyebilir, bu nedenle bir tane olması iyi bir fikirdir. `~/.ssh/` dizini, SSH anahtar çiftleri ve SSH yapılandırma dosyası için varsayılan konumdur. Tam yol belirtilmezse `ssh-keygen` tarafından oluşturulan anahtarlar varsayılan `~/.ssh` dizininde değil geçerli çalışma dizininde olur.
 
-#### <a name="list-of-the-ssh-directory"></a>`~/.ssh` Dizinin listesi
+#### <a name="list-of-the-ssh-directory"></a>`~/.ssh`Dizinin listesi
 
 ```bash
 ls -al ~/.ssh
@@ -124,13 +124,13 @@ ls -al ~/.ssh
 
 ## <a name="generate-keys-automatically-during-deployment"></a>Dağıtım sırasında anahtarları otomatik olarak oluştur
 
-VM 'nizi oluşturmak için [Azure CLI](/cli/azure) kullanıyorsanız, isteğe bağlı olarak [az VM Create](/cli/azure/vm) komutunu `--generate-ssh-keys` seçeneğiyle çalıştırarak SSH genel ve özel anahtar dosyaları oluşturabilirsiniz. Anahtarlar ~/PST SSH dizininde depolanır. Bu komut seçeneğinin, bu konumda zaten varsa anahtarların üzerine yazılmadığını unutmayın.
+VM 'nizi oluşturmak için [Azure CLI](/cli/azure) kullanıyorsanız, isteğe bağlı olarak [az VM Create](/cli/azure/vm) komutunu seçeneğiyle çalıştırarak SSH genel ve özel anahtar dosyaları oluşturabilirsiniz `--generate-ssh-keys` . Anahtarlar ~/PST SSH dizininde depolanır. Bu komut seçeneğinin, bu konumda zaten varsa anahtarların üzerine yazılmadığını unutmayın.
 
 ## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>VM dağıtımında SSH ortak anahtarı sağla
 
-Kimlik doğrulaması için SSH anahtarları kullanan bir Linux sanal makinesi oluşturmak için Azure portal, CLı, Kaynak Yöneticisi şablonları veya diğer yöntemleri kullanarak VM oluştururken SSH ortak anahtarınızı sağlayın. Portalı kullanırken, ortak anahtarın kendisini girersiniz. VM 'nizi mevcut bir ortak anahtarla oluşturmak için [Azure CLI](/cli/azure) 'yı kullanırsanız, [az VM Create](/cli/azure/vm) komutunu `--ssh-key-value` seçeneğiyle çalıştırarak bu ortak anahtarın değerini veya konumunu belirtin. 
+Kimlik doğrulaması için SSH anahtarları kullanan bir Linux sanal makinesi oluşturmak için Azure portal, CLı, Kaynak Yöneticisi şablonları veya diğer yöntemleri kullanarak VM oluştururken SSH ortak anahtarınızı sağlayın. Portalı kullanırken, ortak anahtarın kendisini girersiniz. VM 'nizi mevcut bir ortak anahtarla oluşturmak için [Azure CLI](/cli/azure) 'yı kullanırsanız, [az VM Create](/cli/azure/vm) komutunu seçeneğiyle çalıştırarak bu ortak anahtarın değerini veya konumunu belirtin `--ssh-key-value` . 
 
-SSH ortak anahtarının biçimiyle ilgili bilgi sahibi değilseniz, ortak anahtarınızı aşağıdaki şekilde çalıştırarak `cat` , kendi ortak anahtar dosyası konumuyla değiştirin: `~/.ssh/id_rsa.pub`
+SSH ortak anahtarının biçimiyle ilgili bilgi sahibi değilseniz, ortak anahtarınızı `cat` aşağıdaki şekilde çalıştırarak, `~/.ssh/id_rsa.pub` kendi ortak anahtar dosyası konumuyla değiştirin:
 
 ```bash
 cat ~/.ssh/id_rsa.pub
@@ -142,7 +142,7 @@ cat ~/.ssh/id_rsa.pub
 ssh-rsa XXXXXXXXXXc2EAAAADAXABAAABAXC5Am7+fGZ+5zXBGgXS6GUvmsXCLGc7tX7/rViXk3+eShZzaXnt75gUmT1I2f75zFn2hlAIDGKWf4g12KWcZxy81TniUOTjUsVlwPymXUXxESL/UfJKfbdstBhTOdy5EG9rYWA0K43SJmwPhH28BpoLfXXXXXG+/ilsXXXXXKgRLiJ2W19MzXHp8z3Lxw7r9wx3HaVlP4XiFv9U4hGcp8RMI1MP1nNesFlOBpG4pV2bJRBTXNXeY4l6F8WZ3C4kuf8XxOo08mXaTpvZ3T1841altmNTZCcPkXuMrBjYSJbA8npoXAXNwiivyoe3X2KMXXXXXdXXXXXXXXXXCXXXXX/ azureuser@myserver
 ```
 
-Ortak anahtar dosyasının içeriğini kopyalayıp Azure portal veya bir Kaynak Yöneticisi şablonuna yapıştırırsanız, ek boşluk kopyalamayın veya ek satır sonları eklediğinizden emin olun. Örneğin, macOS kullanıyorsanız, içeriği kopyalamak için ortak anahtar dosyasını (varsayılan olarak, `~/.ssh/id_rsa.pub`) **pbcopy** 'e kanal oluşturarak (örneğin, aynı şeyi yapan diğer Linux programları vardır `xclip`).
+Ortak anahtar dosyasının içeriğini kopyalayıp Azure portal veya bir Kaynak Yöneticisi şablonuna yapıştırırsanız, ek boşluk kopyalamayın veya ek satır sonları eklediğinizden emin olun. Örneğin, macOS kullanıyorsanız, içeriği kopyalamak için ortak anahtar dosyasını (varsayılan olarak, `~/.ssh/id_rsa.pub` ) **pbcopy** 'e kanal oluşturarak (örneğin, aynı şeyi yapan diğer Linux programları vardır `xclip` ).
 
 Çok satırlı biçimdeki bir ortak anahtar kullanmayı tercih ederseniz, daha önce oluşturduğunuz ortak anahtardan bir ped kapsayıcısında RFC4716 biçimli bir anahtar oluşturabilirsiniz.
 
@@ -168,9 +168,9 @@ VM tam zamanında erişim ilkesi kullanıyorsa, VM 'ye bağlanabilmeniz için ö
 
 ## <a name="use-ssh-agent-to-store-your-private-key-passphrase"></a>Özel anahtar parolanızı depolamak için SSH-Agent kullanın
 
-Her SSH oturum açma ile özel anahtar dosya parolanızı yazmadan kaçınmak için, özel anahtar dosya parolanızı önbelleğe `ssh-agent` almak için kullanabilirsiniz. Mac kullanıyorsanız macOS anahtarlığı, çağırdığınızda `ssh-agent`özel anahtar parolasını güvenli bir şekilde depolar.
+Her SSH oturum açma ile özel anahtar dosya parolanızı yazmadan kaçınmak için, `ssh-agent` özel anahtar dosya parolanızı önbelleğe almak için kullanabilirsiniz. Mac kullanıyorsanız macOS anahtarlığı, çağırdığınızda özel anahtar parolasını güvenli bir şekilde depolar `ssh-agent` .
 
-Parolayı etkileşimli olarak `ssh-agent` kullanmanıza `ssh-add` gerek kalmayacak şekılde anahtar dosyaları hakkında SSH sistemini bilgilendirmek için ve kullanın.
+`ssh-agent` `ssh-add` Parolayı etkileşimli olarak kullanmanıza gerek kalmayacak şekilde anahtar dosyaları hakkında SSH sistemini bilgilendirmek için ve kullanın.
 
 ```bash
 eval "$(ssh-agent -s)"
@@ -182,7 +182,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 ```
 
-Özel anahtar parolası artık ' de `ssh-agent`depolanır.
+Özel anahtar parolası artık ' de depolanır `ssh-agent` .
 
 ## <a name="use-ssh-copy-id-to-copy-the-key-to-an-existing-vm"></a>Anahtarı mevcut bir sanal makineye kopyalamak için SSH-Copy-ID kullanın
 Zaten bir VM oluşturduysanız, aşağıdaki gibi bir komutla Linux sanal makinenize yeni SSH ortak anahtarını yükleyebilirsiniz:
@@ -193,7 +193,7 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub azureuser@myserver
 
 ## <a name="create-and-configure-an-ssh-config-file"></a>SSH yapılandırma dosyası oluşturma ve yapılandırma
 
-, Oturum açma işlemlerini hızlandırmak ve SSH istemci davranışınızı`~/.ssh/config`iyileştirmek IÇIN bir SSH yapılandırma dosyası () oluşturup yapılandırabilirsiniz. 
+, `~/.ssh/config` Oturum açma işlemlerini hızlandırmak ve SSH istemci davranışınızı iyileştirmek için BIR SSH yapılandırma dosyası () oluşturup yapılandırabilirsiniz. 
 
 Aşağıdaki örnek, varsayılan SSH özel anahtarını kullanarak belirli bir VM 'ye Kullanıcı olarak hızlı bir şekilde oturum açmak için kullanabileceğiniz basit bir yapılandırmayı gösterir. 
 
@@ -223,7 +223,7 @@ Host myvm
 
 Her birinin kendi adanmış anahtar çiftini kullanmasını sağlamak için ek konaklar için yapılandırma ekleyebilirsiniz. Daha gelişmiş yapılandırma seçenekleri için bkz. [SSH yapılandırma dosyası](https://www.ssh.com/ssh/config/) .
 
-Artık bir SSH anahtar çiftiniz ve yapılandırılmış bir SSH yapılandırma dosyasına sahip olduğunuza göre, Linux VM 'niz üzerinde hızlı ve güvenli bir şekilde oturum açabiliyor olabilirsiniz. Aşağıdaki komutu çalıştırdığınızda SSH, SSH yapılandırma dosyasındaki `Host myvm` bloğundan ayarları bulur ve yükler.
+Artık bir SSH anahtar çiftiniz ve yapılandırılmış bir SSH yapılandırma dosyasına sahip olduğunuza göre, Linux VM 'niz üzerinde hızlı ve güvenli bir şekilde oturum açabiliyor olabilirsiniz. Aşağıdaki komutu çalıştırdığınızda SSH, `Host myvm` SSH yapılandırma dosyasındaki bloğundan ayarları bulur ve yükler.
 
 ```bash
 ssh myvm

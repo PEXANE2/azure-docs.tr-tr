@@ -1,6 +1,6 @@
 ---
-title: CLı örneği-geri yükleme-yedekleme-Azure SQL veritabanı
-description: Azure SQL tek veritabanını otomatik yedeklemelerden önceki bir zaman noktasına geri yüklemek için Azure CLı örnek betiği
+title: 'Azure CLı: bir yedeklemeyi geri yükleme'
+description: Azure SQL veritabanındaki bir veritabanını otomatik yedeklemelerden önceki bir zaman noktasına geri yüklemek için Azure CLı örnek betiği.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,16 +11,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: efb73bc04e3c79740651fecdd98258b8101f84b1
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c33191097afc54189df1099a2d13f606e1516e54
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774271"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022633"
 ---
-# <a name="use-cli-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>CLı kullanarak bir Azure SQL tek veritabanını daha önceki bir noktaya geri yükleme
+# <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>Azure SQL veritabanı 'ndaki tek bir veritabanını önceki bir zaman noktasına geri yüklemek için CLı kullanma
 
-Bu Azure CLı örneği, bir Azure SQL veritabanını zaman içinde belirli bir noktaya geri yükler.  
+Bu Azure CLı örneği, Azure SQL veritabanı 'ndaki tek bir veritabanını belirli bir zaman noktasına geri yükler.  
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
@@ -60,4 +60,4 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
-Ek SQL Veritabanı CLI betiği örnekleri, [Azure SQL Veritabanı belgeleri](../sql-database-cli-samples.md) içinde bulunabilir.
+Ek SQL Veritabanı CLI betiği örnekleri, [Azure SQL Veritabanı belgeleri](../../azure-sql/database/az-cli-script-samples-content-guide.md) içinde bulunabilir.

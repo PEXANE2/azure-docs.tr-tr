@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: af18a32143ebc9db7be923b09de106b79022321f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c57e370cf2f43fc5636cc6c70d2a9bdce4a1923
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969051"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141747"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Hızlı adımlar: Azure 'da Linux VM 'Ler için SSH genel-özel anahtar çifti oluşturma ve kullanma
 
@@ -29,7 +29,7 @@ Windows bilgisayarda SSH anahtarları oluşturma ve kullanma hakkında ek yollar
 
 ## <a name="create-an-ssh-key-pair"></a>SSH anahtar çifti oluşturma
 
-SSH ortak `ssh-keygen` ve özel anahtar dosyaları oluşturmak için komutunu kullanın. Varsayılan olarak, bu dosyalar ~/PST SSH dizininde oluşturulur. Özel anahtar dosyasına erişmek için farklı bir konum ve isteğe bağlı bir parola (*parola*) belirtebilirsiniz. Verilen konumda aynı ada sahip bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır.
+`ssh-keygen`SSH ortak ve özel anahtar dosyaları oluşturmak için komutunu kullanın. Varsayılan olarak, bu dosyalar ~/PST SSH dizininde oluşturulur. Özel anahtar dosyasına erişmek için farklı bir konum ve isteğe bağlı bir parola (*parola*) belirtebilirsiniz. Verilen konumda aynı ada sahip bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır.
 
 Aşağıdaki komut RSA şifrelemesini ve 4096 bit uzunluğunu kullanarak bir SSH anahtar çifti oluşturur:
 
@@ -37,7 +37,7 @@ Aşağıdaki komut RSA şifrelemesini ve 4096 bit uzunluğunu kullanarak bir SSH
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-[Az VM Create](/cli/azure/vm#az-vm-create) komutuyla VM 'nizi oluşturmak IÇIN `--generate-ssh-keys` [Azure CLI](/cli/azure) kullanıyorsanız, Isteğe bağlı olarak, seçeneğini kullanarak SSH ortak ve özel anahtar dosyaları oluşturabilirsiniz. Anahtar dosyaları, `--ssh-dest-key-path` seçeneğiyle, aksi belirtilmedikçe ~/PST SSH dizininde depolanır. Bu `--generate-ssh-keys` seçenek, mevcut anahtar dosyalarının üzerine yazılmayacak, bunun yerine bir hata döndürüyor. Aşağıdaki komutta, *VMName* ve *RgName* değerlerini kendi değerlerinizle değiştirin:
+[Az VM Create](/cli/azure/vm#az-vm-create) komutuyla VM 'nizi oluşturmak IÇIN [Azure CLI](/cli/azure) kullanıyorsanız, isteğe bağlı olarak, seçeneğini kullanarak SSH ortak ve özel anahtar dosyaları oluşturabilirsiniz `--generate-ssh-keys` . Anahtar dosyaları, seçeneğiyle, aksi belirtilmedikçe ~/PST SSH dizininde depolanır `--ssh-dest-key-path` . `--generate-ssh-keys`Bu seçenek, mevcut anahtar dosyalarının üzerine yazılmayacak, bunun yerine bir hata döndürüyor. Aşağıdaki komutta, *VMName* ve *RgName* değerlerini kendi değerlerinizle değiştirin:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --generate-ssh-keys 
@@ -51,7 +51,7 @@ Kimlik doğrulaması için SSH anahtarları kullanan bir Linux sanal makinesi ol
 * [Azure CLI ile Linux sanal makinesi oluşturma](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Bir Azure şablonu kullanarak bir Linux VM oluşturma](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-SSH ortak anahtarının biçimiyle ilgili bilgi sahibi değilseniz, ortak anahtarınızı aşağıdaki `cat` komutla görüntüleyebilirsiniz ve gerekirse kendi ortak anahtar dosyanızın yolu ve dosya adı ile değiştirin `~/.ssh/id_rsa.pub` :
+SSH ortak anahtarının biçimiyle ilgili bilgi sahibi değilseniz, ortak anahtarınızı aşağıdaki komutla görüntüleyebilirsiniz ve `cat` `~/.ssh/id_rsa.pub` gerekirse kendi ortak anahtar dosyanızın yolu ve dosya adı ile değiştirin:
 
 ```bash
 cat ~/.ssh/id_rsa.pub
@@ -63,15 +63,21 @@ Tipik bir ortak anahtar değeri şu örneğe benzer şekilde görünür:
 ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
 ```
 
-Azure portal veya Kaynak Yöneticisi şablonunda kullanmak üzere ortak anahtar dosyasının içeriğini kopyalayıp yapıştırırsanız, sondaki boşluğu kopyalamadığınızdan emin olun. MacOS 'ta ortak anahtar kopyalamak için ortak anahtar dosyasını ' a kanal oluşturarak aktarabilirsiniz `pbcopy`. Linux 'ta benzer şekilde, ortak anahtar dosyasını gibi `xclip`programlara kanal oluşturarak aktarabilirsiniz.
+Azure portal veya Kaynak Yöneticisi şablonunda kullanmak üzere ortak anahtar dosyasının içeriğini kopyalayıp yapıştırırsanız, sondaki boşluğu kopyalamadığınızdan emin olun. MacOS 'ta ortak anahtar kopyalamak için ortak anahtar dosyasını ' a kanal oluşturarak aktarabilirsiniz `pbcopy` . Linux 'ta benzer şekilde, ortak anahtar dosyasını gibi programlara kanal oluşturarak aktarabilirsiniz `xclip` .
 
-Azure 'daki Linux sanal makinenize yerleştirdiğiniz ortak anahtar, anahtar çiftini oluştururken farklı bir konum belirtmediğiniz müddetçe varsayılan olarak ~/. ssh/id_rsa. pub ' da depolanır. VM 'nizi var olan bir ortak anahtarla oluşturmak için [Azure clı 2,0](/cli/azure) 'yi kullanmak için, `--ssh-key-values` seçeneği ile [az VM Create](/cli/azure/vm#az-vm-create) komutunu kullanarak bu ortak anahtarın değerini ve isteğe bağlı olarak konumunu belirtin. Aşağıdaki komutta, *VMName*, *RgName*ve *keyFile* değerlerini kendi değerlerinizle değiştirin:
+Azure 'daki Linux sanal makinenize yerleştirdiğiniz ortak anahtar, anahtar çiftini oluştururken farklı bir konum belirtmediğiniz müddetçe varsayılan olarak ~/. ssh/id_rsa. pub ' da depolanır. VM 'nizi var olan bir ortak anahtarla oluşturmak için [Azure clı 2,0](/cli/azure) 'yi kullanmak için, seçeneği ile [az VM Create](/cli/azure/vm#az-vm-create) komutunu kullanarak bu ortak anahtarın değerini ve isteğe bağlı olarak konumunu belirtin `--ssh-key-values` . Aşağıdaki komutta *Myvm*, *myresourcegroup*, *ubuntults*, *azureuser*ve *hayal shkey. pub* değerlerini kendi değerlerinizle değiştirin:
+
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --ssh-key-values mysshkey.pub
 ```
 
-VM 'niz ile birden çok SSH anahtarı kullanmak istiyorsanız, bunları buna `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub`benzer bir yere ayrılmış listeye girebilirsiniz.
+VM 'niz ile birden çok SSH anahtarı kullanmak istiyorsanız, bunları buna benzer bir yere ayrılmış listeye girebilirsiniz `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub` .
 
 
 ## <a name="ssh-into-your-vm"></a>VM’ye SSH uygulama

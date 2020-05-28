@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265733"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020141"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -49,11 +49,11 @@ Aşağıdaki izlenecek yol, özel bir .NET etkinliği oluşturmaya ve bir işlem
 ### <a name="azure-batch-prerequisites"></a>Azure Batch önkoşulları
 İzlenecek yolda, işlem kaynağı olarak Azure Batch kullanarak özel .NET etkinliklerinizi çalıştırırsınız. **Azure Batch** , bulutta etkin bir şekilde büyük ölçekli paralel ve yüksek performanslı bilgi Işlem (HPC) uygulamaları çalıştırmaya yönelik bir platform hizmetidir. Azure Batch, yönetilen bir **sanal makine koleksiyonunda**çalışacak işlem yoğunluğu olan işleri zamanlar ve işlerin ihtiyaçlarını karşılamak için işlem kaynaklarını otomatik olarak ölçeklendirebilir. Azure Batch hizmetine ayrıntılı bir genel bakış için [Azure Batch temel bilgiler][batch-technical-overview] makalesine bakın.
 
-Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Adımlar aşağıdaki gibidir:
+Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Uygulamanız gereken adımlar:
 
 1. [Azure Portal](https://portal.azure.com)kullanarak bir **Azure Batch hesabı** oluşturun. Yönergeler için [Azure Batch hesap oluşturma ve yönetme][batch-create-account] makalesine bakın.
 2. Azure Batch hesap adı, hesap anahtarı, URI ve havuz adı ' na göz önüne alın. Azure Batch bağlı bir hizmet oluşturmak için bunlara ihtiyacınız vardır.
-    1. Azure Batch hesabının giriş sayfasında, aşağıdaki biçimde bir **URL** görürsünüz: `https://myaccount.westus.batch.azure.com`. Bu örnekte, **myaccount** Azure Batch hesabının adıdır. Bağlı hizmet tanımında kullandığınız URI, hesap adı olmayan URL 'dir. Örneğin: `https://<region>.batch.azure.com`.
+    1. Azure Batch hesabının giriş sayfasında, aşağıdaki biçimde bir **URL** görürsünüz: `https://myaccount.westus.batch.azure.com` . Bu örnekte, **myaccount** Azure Batch hesabının adıdır. Bağlı hizmet tanımında kullandığınız URI, hesap adı olmayan URL 'dir. Örneğin: `https://<region>.batch.azure.com`.
     2. Sol menüdeki **anahtarlar** ' a tıklayın ve **birincil erişim anahtarı**' nı kopyalayın.
     3. Mevcut bir havuzu kullanmak için menüdeki **havuzlar** ' a tıklayın ve havuzun **kimliğini** aklınızda edin. Mevcut bir havuzunuz yoksa, sonraki adıma geçin.
 2. **Azure Batch havuzu**oluşturun.
@@ -372,7 +372,7 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
     > .NET Framework 4.5.2 sürümünü projeniz için hedef çerçeve olarak ayarlayın: projeye sağ tıklayın ve **Özellikler** ' e tıklayarak hedef Framework 'ü ayarlayın. Data Factory, 4.5.2 ' den sonraki sürümlere .NET Framework göre derlenen özel etkinlikleri desteklemez.
 
 11. **Windows Gezgini**'ni başlatın ve derleme türüne göre **bin\Debug** veya **bin\release** klasörüne gidin.
-12. \Debug klasöründeki \<proje klasöründeki\>tüm Ikilileri içeren bir **MyDotNetActivity. zip** dosyası oluşturun. Hata oluştuğunda soruna neden olan kaynak kodundaki satır numarası gibi ek ayrıntılar almak için **MyDotNetActivity. pdb** dosyasını dahil edin.
+12. \Bin\debug klasöründeki tüm ikili dosyaları içeren bir **MyDotNetActivity. zip** dosyası oluşturun \<project folder\> . Hata oluştuğunda soruna neden olan kaynak kodundaki satır numarası gibi ek ayrıntılar almak için **MyDotNetActivity. pdb** dosyasını dahil edin.
 
     > [!IMPORTANT]
     > Özel etkinliğin zip dosyasındaki tüm dosyalar alt klasör olmadan **en üst düzeyde** olmalıdır.
@@ -440,7 +440,7 @@ Bağlı hizmetler veri depolarını veya işlem hizmetlerini Azure data factory�
 2. Komut çubuğunda **Yeni veri deposu** ' na tıklayın ve **Azure Storage**' ı seçin. Düzenleyicide Azure Storage bağlı hizmeti oluşturmak için JSON betiğini görmeniz gerekir.
 
     ![Yeni veri deposu-Azure depolama](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. Azure `<accountname>` depolama hesabınızın adıyla ve `<accountkey>` Azure Storage hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
+3. Azure depolama hesabınızın `<accountname>` adıyla ve `<accountkey>` Azure Storage hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 
     ![Azure Storage beğenilen hizmeti](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt**’a tıklayın.
@@ -451,7 +451,7 @@ Bağlı hizmetler veri depolarını veya işlem hizmetlerini Azure data factory�
     ![Yeni işlem-Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. JSON betiğine aşağıdaki değişiklikleri yapın:
 
-   1. **AccountName** özelliği için Azure Batch hesap adı belirtin. **Azure Batch hesabı dikey** penceresindeki `http://accountname.region.batch.azure.com` **URL** şu biçimdedir:. JSON 'daki **Batchuri** özelliği IÇIN, URL 'den kaldırmanız `accountname.` ve `accountname` `accountName` JSON özelliği için öğesini kullanmanız gerekir.
+   1. **AccountName** özelliği için Azure Batch hesap adı belirtin. **Azure Batch hesabı dikey** penceresindeki **URL** şu biçimdedir: `http://accountname.region.batch.azure.com` . JSON 'daki **Batchuri** özelliği IÇIN, `accountname.` URL 'den kaldırmanız ve `accountname` JSON özelliği için öğesini kullanmanız gerekir `accountName` .
    2. **AccessKey** özelliği için Azure Batch hesap anahtarını belirtin.
    3. **PoolName** özelliği için önkoşulların bir parçası olarak oluşturduğunuz havuzun adını belirtin. Havuzun adı yerine havuzun KIMLIĞINI de belirtebilirsiniz.
    4. **Batchuri** özelliği IÇIN Azure Batch URI belirtin. Örnek: `https://westus.batch.azure.com`.
@@ -1031,7 +1031,7 @@ GitHub 'daki [Azure Data Factory yerel ortam](https://github.com/gbrueckl/Azure.
 
 [batch-net-library]: ../../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../../batch/batch-account-create-portal.md
-[batch-technical-overview]: ../../batch/batch-technical-overview.md
+[batch-technical-overview]:../../azure-sql/database/sql-database-paas-overview.md
 [batch-get-started]: ../../batch/batch-dotnet-get-started.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md

@@ -16,16 +16,16 @@ ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f878c6f7a59328e2f68ffbaee066bba4a5b6c898
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c84be9a23713080f348daf8dddf0ad6b0390ded
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978141"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014715"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Azure sanal makinelerinde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (klasik)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-ps-sql-keyvault.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/azure-key-vault-integration-configure.md)
 > * [Klasik](../classic/ps-sql-keyvault.md)
 > 
 > 
@@ -53,7 +53,7 @@ Aşağıdaki tabloda, sonraki bölümde PowerShell betiğini çalıştırmak iç
 
 | Parametre | Açıklama | Örnek |
 | --- | --- | --- |
-| **$akvURL** |**Anahtar Kasası URL 'SI** |"https:\//contosokeyvault.Vault.Azure.net/" |
+| **$akvURL** |**Anahtar Kasası URL 'SI** |"https: \/ /contosokeyvault.Vault.Azure.net/" |
 | **$spName** |**Hizmet sorumlusu adı** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
 | **$spSecret** |**Hizmet sorumlusu gizli anahtarı** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM =" |
 | **$credName** |**Kimlik bilgisi adı**: AKV Tümleştirme, VM’nin anahtar kasasına erişim sağlamasına izin vererek, SQL Server’da bir kimlik bilgisi oluşturur Bu kimlik bilgisi için bir ad seçin. |"mycred1" |

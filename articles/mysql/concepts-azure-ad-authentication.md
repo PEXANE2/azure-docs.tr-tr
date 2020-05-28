@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0c56652b4e098213bae0c69d4be5ac77e1b1393c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a94b2897b3e84688cd7dc5c7bca96a0f7a4449d1
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635300"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142087"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -74,6 +74,7 @@ Active Directory göre kimlik doğrulamasından sonra bir belirteç alırsınız
 
 ## <a name="additional-considerations"></a>Diğer konular
 
+- Azure Active Directory kimlik doğrulaması yalnızca MySQL 5,7 ve üzeri sürümlerde kullanılabilir.
 - Bir MySQL için Azure veritabanı sunucusu için herhangi bir anda yalnızca bir Azure AD yöneticisi yapılandırılabilir.
 - Yalnızca MySQL için bir Azure AD yöneticisi, Azure Active Directory bir hesabı kullanarak MySQL için Azure veritabanı 'na ilk kez bağlanabilir. Active Directory Yöneticisi, sonraki Azure AD veritabanı kullanıcılarını yapılandırabilir.
 - Bir Kullanıcı Azure AD 'den silinirse, bu kullanıcı artık Azure AD 'de kimlik doğrulaması yapamaz ve bu nedenle bu kullanıcı için bir erişim belirteci elde etmek mümkün olmayacaktır. Bu durumda, eşleşen kullanıcı hala veritabanında olmaya devam etse de, bu kullanıcıyla sunucuya bağlanmak mümkün olmayacaktır.

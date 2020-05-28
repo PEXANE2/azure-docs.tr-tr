@@ -10,30 +10,30 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: 02952c3baea5d9089061b10f2429be57a9322398
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d15ab5f08b7f9f5bc4824aec8980ed4b711ae1d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606171"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020294"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure esnek veritabanı Işleriyle SSSıSDB günlüklerini Temizleme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, Azure elastik veritabanı Işlerinin, `SSISDB`SQL Server Integration Services Katalog veritabanı için günlükleri temizleyen saklı yordamı tetiklemek üzere nasıl kullanılacağı açıklanır.
+Bu makalede, Azure elastik veritabanı Işlerinin, SQL Server Integration Services Katalog veritabanı için günlükleri temizleyen saklı yordamı tetiklemek üzere nasıl kullanılacağı açıklanır `SSISDB` .
 
 Elastik veritabanı Işleri, işleri bir veritabanına veya veritabanı grubuna karşı otomatik hale getirmeyi ve çalıştırmayı kolaylaştıran bir Azure hizmetidir. Azure portal, Transact-SQL, PowerShell veya REST API 'Lerini kullanarak bu işleri zamanlayabilir, çalıştırabilir ve izleyebilirsiniz. Günlük Temizleme için saklı yordamı bir kez veya bir zamanlamaya göre tetiklemek için elastik veritabanı Işini kullanın. Yoğun veritabanı yüküne engel olmak için SSSıSDB kaynak kullanımına göre zamanlama aralığını seçebilirsiniz.
 
-Daha fazla bilgi için bkz. [elastik veritabanı işlerinde veritabanı gruplarını yönetme](../sql-database/elastic-jobs-overview.md).
+Daha fazla bilgi için bkz. [elastik veritabanı işlerinde veritabanı gruplarını yönetme](../azure-sql/database/elastic-jobs-overview.md).
 
-Aşağıdaki bölümlerde, yönetici tarafından ayarlanan bekletme penceresinin dışındaki SSSıSDB günlüklerini kaldıran saklı yordamın `[internal].[cleanup_server_retention_window_exclusive]`nasıl tetiklenmesi anlatılmaktadır.
+Aşağıdaki bölümlerde `[internal].[cleanup_server_retention_window_exclusive]` , yönetici tarafından ayarlanan bekletme penceresinin dışındaki sssısdb günlüklerini kaldıran saklı yordamın nasıl tetiklenmesi anlatılmaktadır.
 
 ## <a name="clean-up-logs-with-power-shell"></a>Power Shell ile günlükleri Temizleme
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-Aşağıdaki örnek PowerShell betikleri, SSıSDB günlüğü temizleme için saklı yordamı tetiklemek üzere yeni bir elastik Iş oluşturur. Daha fazla bilgi için bkz. [PowerShell kullanarak elastik iş Aracısı oluşturma](../sql-database/elastic-jobs-powershell.md).
+Aşağıdaki örnek PowerShell betikleri, SSıSDB günlüğü temizleme için saklı yordamı tetiklemek üzere yeni bir elastik Iş oluşturur. Daha fazla bilgi için bkz. [PowerShell kullanarak elastik iş Aracısı oluşturma](../azure-sql/database/elastic-jobs-powershell-create.md).
 
 ### <a name="create-parameters"></a>Parametreler oluşturma
 
@@ -41,7 +41,7 @@ Aşağıdaki örnek PowerShell betikleri, SSıSDB günlüğü temizleme için sa
 # Parameters needed to create the Job Database
 param(
 $ResourceGroupName = $(Read-Host "Please enter an existing resource group name"),
-$AgentServerName = $(Read-Host "Please enter the name of an existing Azure SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
+$AgentServerName = $(Read-Host "Please enter the name of an existing logical SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
 $SSISDBLogCleanupJobDB = $(Read-Host "Please enter a name for the Job Database to be created in the given SQL Server"),
 # The Job Database should be a clean,empty,S0 or higher service tier. We set S0 as default.
 $PricingTier = "S0",
@@ -52,7 +52,7 @@ $SSISDBLogCleanupAgentName = $(Read-Host "Please enter a name for your new Elast
 # Parameters needed to create the job credential in the Job Database to connect to SSISDB
 $PasswordForSSISDBCleanupUser = $(Read-Host "Please provide a new password for SSISDBLogCleanup job user to connect to SSISDB database for log cleanup"),
 # Parameters needed to create a login and a user in the SSISDB of the target server
-$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target Azure SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
+$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target logical SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
 $SSISDBServerAdminUserName = $(Read-Host "Please enter the target server admin username for SQL authentication"),
 $SSISDBServerAdminPassword = $(Read-Host "Please enter the target server admin password for SQL authentication"),
 $SSISDBName = "SSISDB",
@@ -191,7 +191,7 @@ Aşağıdaki örnek Transact-SQL betikleri, SSıSDB günlüğü temizleme için 
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. SSıSDB veritabanı için uygun izinleri verin. Sssısdb kataloğunun, SSıSDB günlüğü temizleme işlemini başarıyla çalıştırması için, saklı yordam için doğru izinlere sahip olması gerekir. Ayrıntılı kılavuz için bkz. [oturum açma bilgilerini yönetme](../sql-database/sql-database-manage-logins.md).
+4. SSıSDB veritabanı için uygun izinleri verin. Sssısdb kataloğunun, SSıSDB günlüğü temizleme işlemini başarıyla çalıştırması için, saklı yordam için doğru izinlere sahip olması gerekir. Ayrıntılı kılavuz için bkz. [oturum açma bilgilerini yönetme](../azure-sql/database/logins-create-manage.md).
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 

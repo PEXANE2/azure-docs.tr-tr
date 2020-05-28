@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 33801316e4c0446865169560bb42f98052acba70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d68a3b1291d2e001c535a0c5a6b0c754c9d2b2e1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679600"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021356"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Öğretici: sıfırdan Unity projesi ayarlama
 
@@ -44,13 +44,13 @@ Bu öğreticide şunlar gerekir:
 ## <a name="create-a-new-unity-project"></a>Yeni bir Unity projesi oluştur
 
 Unity hub 'ında yeni bir proje oluşturun.
-Bu örnekte, projenin adlı `RemoteRendering`bir klasörde oluşturulduğunu varsayacağız.
+Bu örnekte, projenin adlı bir klasörde oluşturulduğunu varsayacağız `RemoteRendering` .
 
 ![Yeni Proje penceresi](media/new-project.png)
 
 ## <a name="configure-the-projects-manifest"></a>Projenin bildirimini yapılandırma
 
-Unity proje klasörünüzde bulunan dosyasını `Packages/manifest.json` değiştirmeniz gerekir. Dosyayı bir metin düzenleyicisinde açın ve aşağıda listelenen satırları ekleyin:
+`Packages/manifest.json`Unity proje klasörünüzde bulunan dosyasını değiştirmeniz gerekir. Dosyayı bir metin düzenleyicisinde açın ve aşağıda listelenen satırları ekleyin:
 
 ```json
 {
@@ -77,9 +77,9 @@ Bildirim değiştirildikten ve kaydedildikten sonra Unity otomatik olarak yenile
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Paketin en son sürümüne sahip olduğunuzdan emin olun
 
 Aşağıdaki adımlarda, projenizin uzaktan işleme paketinin en son sürümünü kullandığından emin olabilirsiniz.
-1. Proje penceresinde paketi seçin ve paket simgesine tıklayın: ![paket simgesini seçme](media/package-icons.png)
-1. Denetçisinde, "Paket Yöneticisi 'nde görünüm" ' e tıklayın: ![paket denetçisi](media/package-properties.png)
-1. Uzaktan işleme paketine ait Paket Yöneticisi sayfasında, Güncelleştir düğmesinin kullanılabilir olup olmadığını görün. Bu durumda, bunu tıklatmak, paketi paketin en son sürümüne güncelleştirir: ![paket yöneticisinde ARR paketi](media/package-manager.png)
+1. Proje penceresinde paketi seçin ve :::no-loc text="package"::: simgeye tıklayın: ![ paket simgesini seçme](media/package-icons.png)
+1. Denetçisinde, "Paket Yöneticisi 'nde görünüm" ' e tıklayın: ![ paket denetçisi](media/package-properties.png)
+1. Uzaktan işleme paketine ait Paket Yöneticisi sayfasında, Güncelleştir düğmesinin kullanılabilir olup olmadığını görün. Bu durumda, bunu tıklatmak, paketi paketin en son sürümüne güncelleştirir: ![ paket yöneticisinde ARR paketi](media/package-manager.png)
 1. Bazen paketin güncelleştirilmesi konsolunda hatalara neden olabilir. Bu durumda projeyi kapatıp yeniden açmayı deneyin.
 
 ## <a name="configure-the-camera"></a>Kamerayı yapılandırma
@@ -90,11 +90,11 @@ Aşağıdaki adımlarda, projenizin uzaktan işleme paketinin en son sürümün�
 
     ![Kamera dönüşümünü Sıfırla](media/camera-reset-transform.png)
 
-1. **Clear bayraklarını** *düz renge* ayarla
+1. Ayarla **:::no-loc text="Clear flags":::***:::no-loc text="Solid Color":::*
 
-1. **Arka planı** *siyaha* ayarla
+1. Ayarla **:::no-loc text="Background":::***:::no-loc text="Black":::*
 
-1. **Kırpma düzlemleri** *Near = 0,3* ve *Far = 20*olarak ayarlayın. Bu, işlemenin 30 cm 'den daha yakın veya 20 ölçümden daha büyük olan bir geometriyi kırpmak anlamına gelir.
+1. Öğesini **:::no-loc text="Clipping Planes":::** *Near = 0,3* ve *Far = 20*olarak ayarlayın. Bu, işlemenin 30 cm 'den daha yakın veya 20 ölçümden daha büyük olan bir geometriyi kırpmak anlamına gelir.
 
     ![Unity kamera özellikleri](media/camera-properties.png)
 
@@ -109,10 +109,10 @@ Aşağıdaki adımlarda, projenizin uzaktan işleme paketinin en son sürümün�
 1. Sol taraftaki **grafikler** ' i seçin.
 1. **Komut dosyası oluşturma Işlem hattı** ayarını *Hybridrenderingpipeline*olarak değiştirin. Evrensel işleme işlem hattı kullanılmazsa bu adımı atlayın.
 
-    ![Proje grafik ayarlarını](media/settings-graphics-lwrp.png) değiştirme bazen kullanıcı arabirimi, kullanılabilir işlem hattı türlerinin listesini paketlerden doldurmaz, bu durumda *Hybridrenderingpipeline* varlığı alanın el ile sürüklenmesi gerekir: ![proje grafik ayarlarını değiştirme](media/hybrid-rendering-pipeline.png)
+    ![Proje grafik ayarlarını değiştirme ](media/settings-graphics-lwrp.png) bazen kullanıcı arabirimi, kullanılabilir işlem hattı türlerinin listesini paketlerden doldurmaz, bu durumda *Hybridrenderingpipeline* varlığı alanın el ile sürüklenmesi gerekir: ![ Proje grafik ayarlarını değiştirme](media/hybrid-rendering-pipeline.png)
 1. Sol taraftaki **oynatıcı** ' yı seçin.
 1. **Evrensel Windows platformu ayarları** sekmesini seçin
-1. **XR ayarlarını** Windows Mixed Reality 'yi destekleyecek şekilde değiştirin: ![oynatıcı ayarları](media/xr-player-settings.png)
+1. **XR ayarlarını** Windows Mixed Reality 'yi destekleyecek şekilde değiştirin: ![ oynatıcı ayarları](media/xr-player-settings.png)
 1. Yukarıdaki ekran görüntüsünde olduğu gibi ayarları seçin:
     1. **Sanal Reality** 'Yi etkinleştirme destekleniyor
     1. **Derinlik biçimini** *16 bit derinliğe* ayarla
@@ -420,7 +420,7 @@ Aşağıdaki kodu *RemoteRendering* betiğe ekleyin ve yinelenen işlevlerin esk
 **Automatic Startsessionasync** işlevi, düzenleyicinin dışında düğme basma işleminin benzetimini yapmak için kullanılır.
 
 > [!TIP]
-> Durdurulmuş, zaman aşımına uğramış veya bir hata durumunda olan oturumları açmak mümkündür. Artık işleme için kullanılamazken, etkin olmayan bir oturumu açtıktan sonra ayrıntılarını sorgulayabilirsiniz. Yukarıdaki kod, oturum kullanılamaz duruma geldiğinde otomatik olarak `ARRService_OnSessionStarted`durdurmak için bir oturumun durumunu denetler.
+> Durdurulmuş, zaman aşımına uğramış veya bir hata durumunda olan oturumları açmak mümkündür. Artık işleme için kullanılamazken, etkin olmayan bir oturumu açtıktan sonra ayrıntılarını sorgulayabilirsiniz. Yukarıdaki kod, `ARRService_OnSessionStarted` oturum kullanılamaz duruma geldiğinde otomatik olarak durdurmak için bir oturumun durumunu denetler.
 
 Bu işlevle artık, geliştirme iş akışınızı önemli ölçüde iyileştirebilmeniz için oturumları oluşturabilir ve yeniden kullanabilirsiniz.
 

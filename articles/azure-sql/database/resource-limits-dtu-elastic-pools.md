@@ -49,7 +49,7 @@ Azure SQL veritabanı elastik havuzlar için aşağıdaki tablolarda, her bir hi
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Havuz başına dahil edilen depolama alanı (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Havuz başına en fazla depolama seçimi (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Havuz başına maks. bellek Içi OLTP depolaması (GB) | Yok | Yok | Yok | Yok | Yok | Yok | Yok | Yok |
+| Havuz başına maks. bellek Içi OLTP depolaması (GB) | YOK | YOK | YOK | YOK | YOK | YOK | YOK | YOK |
 | Havuz başına en fazla veritabanı sayısı <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Her havuz <sup>2</sup> için maksimum eş zamanlı çalışan (istek) | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Her havuz için en fazla eşzamanlı oturum <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -68,7 +68,7 @@ Azure SQL veritabanı elastik havuzlar için aşağıdaki tablolarda, her bir hi
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Havuz başına dahil edilen depolama alanı (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | Havuz başına en fazla depolama seçimi (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Havuz başına maks. bellek Içi OLTP depolaması (GB) | Yok | Yok | Yok | Yok | Yok | Yok |
+| Havuz başına maks. bellek Içi OLTP depolaması (GB) | YOK | YOK | YOK | YOK | YOK | YOK |
 | Havuz başına en fazla veritabanı sayısı <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | Her havuz <sup>2</sup> için maksimum eş zamanlı çalışan (istek) | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Her havuz için en fazla eşzamanlı oturum <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -87,7 +87,7 @@ Azure SQL veritabanı elastik havuzlar için aşağıdaki tablolarda, her bir hi
 |:---|---:|---:|---:| ---: | ---: |
 | Havuz başına dahil edilen depolama alanı (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Havuz başına en fazla depolama seçimi (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Havuz başına maks. bellek Içi OLTP depolaması (GB) | Yok | Yok | Yok | Yok | Yok |
+| Havuz başına maks. bellek Içi OLTP depolaması (GB) | YOK | YOK | YOK | YOK | YOK |
 | Havuz başına en fazla veritabanı sayısı <sup>1</sup> | 500 | 500 | 500 | 500 | 500 |
 | Her havuz <sup>2</sup> için maksimum eş zamanlı çalışan (istek) | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Her havuz için en fazla eşzamanlı oturum <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
