@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f8e1be92d77dc928389dffb61da52f2db4c804d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655246"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142070"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure statik Web Apps önizleme 'de özel etki alanı ayarlama
 
@@ -80,7 +80,7 @@ Bir CNAME kaydı bir etki alanını diğerine eşler. `www.example.com`Azure sta
 
 1. **Doğrula** düğmesine tıklayın.
 
-Özel etki alanı yapılandırıldığına göre, DNS sağlayıcısının değişiklikleri Dünya çapında yaymasını birkaç saat sürebilir. [Dnspropagation.net](https://dnspropagation.net)' a giderek yayılmanın durumunu kontrol edebilirsiniz. Dahil olmak üzere özel etki alanınızı girin `www` , açılan LISTEDEN CNAME ' i seçin ve **Başlat**' ı seçin.
+Özel etki alanı yapılandırıldığına göre, DNS sağlayıcısının dünyanın her yerindeki değişiklikleri yaymasını birkaç saat sürebilir. [Dnspropagation.net](https://dnspropagation.net)' a giderek yayılmanın durumunu kontrol edebilirsiniz. Dahil olmak üzere özel etki alanınızı girin `www` , açılan LISTEDEN CNAME ' i seçin ve **Başlat**' ı seçin.
 
 DNS değişiklikleriniz doldurulduktan sonra, Web sitesi statik Web uygulamanızın otomatik olarak oluşturulan URL 'sini (örneğin, _Random-Name-123456789c.azurestaticapps.net_) döndürür.
 

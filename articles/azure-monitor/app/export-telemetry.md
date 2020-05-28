@@ -2,13 +2,13 @@
 title: Application Insights 'ten Telemetriyi sürekli dışa aktarma | Microsoft Docs
 description: Tanılama ve kullanım verilerini Microsoft Azure depolama alanına aktarın ve buradan indirin.
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 05/26/2020
+ms.openlocfilehash: 42a96cf014d7d02e440af03bc3a9c1d40e5f0cbc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744858"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017551"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights’tan telemetriyi dışarı aktarma
 Telemetrinizi standart saklama süresinden daha uzun süre tutmak mı istiyorsunuz? Ya da özel bir şekilde işlesin mi? Sürekli dışa aktarma bu için idealdir. Application Insights portalında gördüğünüz olaylar JSON biçiminde Microsoft Azure depoya aktarılabilir. Buradan, verilerinizi indirebilir ve işlemek için gereken her kodu yazabilirsiniz.  
@@ -53,7 +53,8 @@ Sürekli dışarı aktarma, aşağıdaki Azure depolama özelliklerini/yapıland
 
 4. Depolama alanında bir kapsayıcı oluşturun veya seçin.
 
-Dışarı aktarma işlemini oluşturduktan sonra çalışmaya devam edersiniz. Yalnızca dışa aktarma oluşturduktan sonra gelen verileri alırsınız.
+> [!NOTE]
+> Dışarı aktarma işlemini oluşturduktan sonra, yeni alınan veriler Azure Blob depolama alanına akacak. Sürekli dışarı aktarma işlemi, yalnızca sürekli dışarı aktarma etkinleştirildikten sonra oluşturulan/alınan yeni telemetri iletir. Sürekli dışarı aktarmayı etkinleştirmeden önce var olan tüm veriler dışarı aktarılmayacak ve daha önce oluşturulmuş verileri sürekli dışarı aktarma kullanarak dışarı aktarmaya yönelik desteklenen bir yol yoktur.
 
 Verilerin depolamada görünmesi için bir saat yaklaşık bir gecikme olabilir.
 

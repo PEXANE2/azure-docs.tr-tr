@@ -1,0 +1,133 @@
+---
+title: 'Azure Resource Manager: tek bir veritabanı oluşturma'
+description: Azure Resource Manager şablonunu kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturun.
+services: sql-database
+ms.service: sql-database
+ms.subservice: single-database
+ms.custom: subject-armqs sqldbrb=1
+ms.devlang: ''
+ms.topic: quickstart
+author: mumian
+ms.author: jgao
+ms.reviewer: carlrab
+ms.date: 06/28/2019
+ms.openlocfilehash: 03d598e0c0756cd304248ab19ab28a25836c57ab
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84054338"
+---
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonunu kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturma
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+Tek bir [veritabanı](single-database-overview.md) oluşturmak, Azure SQL veritabanı 'nda veritabanı oluşturmak için en hızlı ve en basit seçenektir. Bu hızlı başlangıçta, Azure Resource Manager şablonunu kullanarak tek bir veritabanının nasıl oluşturulacağı gösterilmektedir.
+
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
+
+Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+
+## <a name="prerequisites"></a>Ön koşullar
+
+Yok
+
+## <a name="create-a-single-database"></a>Tek bir veritabanı oluşturma
+
+Tek bir veritabanı, iki [satın alma modelinden](purchasing-models.md)birini kullanarak tanımlı bir işlem, bellek, GÇ ve depolama kaynakları kümesine sahiptir. Tek bir veritabanı oluşturduğunuzda, bunu yönetmek için bir [sunucu](logical-servers.md) tanımlar ve belirli bir bölgedeki [Azure Kaynak grubu](../../active-directory-b2c/overview.md) içine yerleştirebilirsiniz.
+
+### <a name="review-the-template"></a>Şablonu gözden geçirin
+
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-sql-logical-server/).
+
+:::code language="json" source="~/quickstart-templates/101-sql-logical-server/azuredeploy.json" range="1-163" highlight="63-132":::
+
+Bu kaynaklar şablonda tanımlanmıştır:
+
+- [**Microsoft. SQL/sunucuları**](/azure/templates/microsoft.sql/servers)
+- [**Microsoft. SQL/Servers/firewallRules**](/azure/templates/microsoft.sql/servers/firewallrules)
+- [**Microsoft. SQL/Servers/Securityalcertpolicies**](/azure/templates/microsoft.sql/servers/securityalertpolicies)
+- [**Microsoft. SQL/Servers/% sunucuadı**](/azure/templates/microsoft.sql/servers/vulnerabilityassessments)
+- [**Microsoft. SQL/Servers/connectionPolicies**](/azure/templates/microsoft.sql/servers/connectionpolicies)
+- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts)
+- [**Microsoft. Storage/storageAccounts/Providers/Roleatamaları**](/azure/templates/microsoft.authorization/roleassignments)
+
+[Azure hızlı başlangıç şablonlarında](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular), daha fazla Azure SQL veritabanı şablonu örneği bulunabilir.
+
+### <a name="deploy-the-template"></a>Şablonu dağıtma
+
+Azure Cloud Shell açmak için aşağıdaki PowerShell kod bloğundan **deneyin** öğesini seçin.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+$location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
+$adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
+$adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
+
+$resourceGroupName = "${projectName}rg"
+
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-sql-logical-server/azuredeploy.json" -administratorLogin $adminUser -administratorLoginPassword $adminPassword
+
+Read-Host -Prompt "Press [ENTER] to continue ..."
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+$location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
+$adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
+$adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
+
+$resourceGroupName = "${projectName}rg"
+
+az group create --location $location --name $resourceGroupName
+
+az group deployment create -g $resourceGroupName --template-uri "D:\GitHub\azure-docs-json-samples\SQLServerAndDatabase\azuredeploy.json" `
+    --parameters 'projectName=' + $projectName \
+                 'administratorLogin=' + $adminUser \
+                 'administratorLoginPassword=' + $adminPassword
+
+Read-Host -Prompt "Press [ENTER] to continue ..."
+```
+
+* * *
+
+## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
+
+Veritabanını sorgulamak için bkz. [Veritabanını sorgulama](single-database-create-quickstart.md#query-the-database).
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+[Sonraki adımlara](#next-steps)gitmek istiyorsanız bu kaynak grubunu, sunucuyu ve tek veritabanını saklayın. Sonraki adımlarda, farklı yöntemler kullanarak veritabanınızı nasıl bağlayabilmeniz ve Sorgulayabileceğiniz gösterilmektedir.
+
+Kaynak grubunu silmek için:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName
+```
+
+* * *
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- Şirket içi veya uzak araçlardan tek veritabanına bağlanmak için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturun. Daha fazla bilgi için bkz. [sunucu düzeyinde güvenlik duvarı kuralı oluşturma](firewall-create-server-level-portal-quickstart.md).
+- Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturduktan sonra, birkaç farklı araç ve dil kullanarak veritabanınızı [bağlayın ve sorgulayın](connect-query-content-reference-guide.md) .
+  - [SQL Server Management Studio kullanarak bağlanma ve sorgulama](connect-query-ssms.md)
+  - [Azure Data Studio kullanarak bağlanma ve sorgulama](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+- Azure CLı kullanarak tek bir veritabanı oluşturmak için bkz. [Azure CLI örnekleri](az-cli-script-samples-content-guide.md).
+- Azure PowerShell kullanarak tek bir veritabanı oluşturmak için bkz. [Azure PowerShell örnekleri](powershell-script-content-guide.md).
+- Kaynak Yöneticisi şablonları oluşturmayı öğrenmek için bkz. [ilk şablonunuzu oluşturma](../../azure-resource-manager/templates/template-tutorial-create-first-template.md).

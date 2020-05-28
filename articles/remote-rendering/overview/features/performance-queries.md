@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 2e843216bf973033868e75c027b11d27ddfe2e93
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3207ffca6fd0fbc943f4a2873b8b6c9029d565af
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757475"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022803"
 ---
 # <a name="server-side-performance-queries"></a>Sunucu tarafı performans sorguları
 
@@ -18,7 +18,7 @@ Sunucu üzerinde iyi işleme performansı, kararlı çerçeve ücretleri ve iyi 
 
 İşleme performansı için en etkili model giriş verileri ' dir. [Model dönüştürmeyi yapılandırma](../../how-tos/conversion/configure-model-conversion.md)bölümünde açıklandığı gibi giriş verilerini ince ayar yapabilirsiniz.
 
-İstemci tarafı uygulama performansı bir performans sorunu olabilir. İstemci tarafı performansının derinlemesine çözümlenmesi için bir [performans izlemesi](../../how-tos/performance-tracing.md)yapmanız önerilir.
+İstemci tarafı uygulama performansı bir performans sorunu olabilir. İstemci tarafı performansının derinlemesine çözümlenmesi için yapmanız önerilir [:::no-loc text="performance trace":::](../../how-tos/performance-tracing.md) .
 
 ## <a name="clientserver-timeline"></a>İstemci/sunucu zaman çizelgesi
 

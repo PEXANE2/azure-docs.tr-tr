@@ -65,13 +65,13 @@ Zaman içinde nokta geri yükleme (ıNR) için desteklenen en fazla yedekleme sa
 
 |                                              | Coğrafi çoğaltma | Yük devretme grupları  |
 |:---------------------------------------------| :-------------- | :----------------|
-| Otomatik yük devretme                           |     Hayır          |      Yes         |
-| Birden çok veritabanını aynı anda devret  |     Hayır          |      Yes         |
-| Kullanıcı, yük devretmeden sonra bağlantı dizesini güncelleştirmemelidir      |     Yes         |      Hayır          |
-| SQL yönetilen örnek desteği                   |     Hayır          |      Yes         |
-| Birincil ile aynı bölgede olabilir             |     Yes         |      Hayır          |
-| Birden çok çoğaltma                            |     Yes         |      Hayır          |
-| Okuma ölçeğini destekler                          |     Yes         |      Yes         |
+| Otomatik yük devretme                           |     Hayır          |      Evet         |
+| Birden çok veritabanını aynı anda devret  |     Hayır          |      Evet         |
+| Kullanıcı, yük devretmeden sonra bağlantı dizesini güncelleştirmemelidir      |     Evet         |      Hayır          |
+| SQL yönetilen örnek desteği                   |     Hayır          |      Evet         |
+| Birincil ile aynı bölgede olabilir             |     Evet         |      Hayır          |
+| Birden çok çoğaltma                            |     Evet         |      Hayır          |
+| Okuma ölçeğini destekler                          |     Evet         |      Yes         |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Bir veritabanını mevcut sunucuya kurtar

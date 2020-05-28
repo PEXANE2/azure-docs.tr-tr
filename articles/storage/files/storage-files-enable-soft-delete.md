@@ -1,6 +1,6 @@
 ---
 title: Geçici silme özelliğini etkinleştirme-Azure dosya paylaşımları
-description: Veri kurtarma için Azure dosya paylaşımlarında geçici silme özelliğini etkinleştirmeyi ve yanlışlıkla silmeyi engellemeyi öğrenin.
+description: Veri kurtarma için Azure dosya paylaşımlarında geçici silme (Önizleme) özelliğini etkinleştirmeyi ve yanlışlıkla silmeyi engellemeyi öğrenin.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 05/26/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 70081114995d46e7c5db7c9549cfce2fdff42975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a31fc675ca32697ece1fe7240112bb5610feda9d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116505"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142104"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure dosya paylaşımlarında geçici silme özelliğini etkinleştirme
 
-Azure depolama, dosya paylaşımları için geçici silme olanağı sunarak, verileri yanlışlıkla bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından daha kolay kurtarabilirsiniz. Geçici silme hakkında daha fazla bilgi edinmek için bkz. [Azure dosya paylaşımlarının yanlışlıkla silinmesini engelleme](storage-files-prevent-file-share-deletion.md).
+Azure depolama, bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından yanlışlıkla silindiğinde verilerinizi daha kolay kurtarabilmeniz için dosya paylaşımları (Önizleme) için geçici silme olanağı sağlar. Geçici silme hakkında daha fazla bilgi edinmek için bkz. [Azure dosya paylaşımlarının yanlışlıkla silinmesini engelleme](storage-files-prevent-file-share-deletion.md).
 
 Aşağıdaki bölümlerde, var olan bir depolama hesabında Azure dosya paylaşımları için geçici silme 'nin nasıl etkinleştirileceği ve kullanılacağı gösterilmektedir:
 

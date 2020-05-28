@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f328b86d07a997ea761b4381f1d6a2f8a1dae269
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: dc40668ec7008042b5f1600214184cbf8bba4701
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683087"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119079"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -35,14 +35,15 @@ Sektörler genelinde veri bilimcileri, analistleri ve geliştiriciler otomatik M
 
 ### <a name="classification"></a>Sınıflandırma
 
-Sınıflandırma, ortak bir makine öğrenimi görevidir. Sınıflandırma, modellerin eğitim verilerini kullanarak öğreniminde denetlenen bir denetlenen öğrenme türüdür ve bu dersleri yeni verilere uygulanır. Azure Machine Learning, özellikle bu görevler için derin sinir ağ metni özellikleri sınıflandırıcılarıyla ilgili özellikler sunar. [Uygulanabilirlik seçenekleri](how-to-use-automated-ml-for-ml-models.md#featurization)hakkında daha fazla bilgi edinin. 
+Sınıflandırma, ortak bir makine öğrenimi görevidir. Sınıflandırma, modellerin eğitim verilerini kullanarak öğreniminde denetlenen bir denetlenen öğrenme türüdür ve bu dersleri yeni verilere uygulanır. Azure Machine Learning, özellikle bu görevler için derin sinir ağ metni özellikleri sınıflandırıcılarıyla ilgili özellikler sunar. [Uygulanabilirlik seçenekleri](how-to-configure-auto-features.md#featurization)hakkında daha fazla bilgi edinin. 
 
 Sınıflandırma modellerinin ana amacı, yeni verilerin eğitim verilerinden dersleri göre hangi kategorilerin üzerine dönemeyeceğini tahmin etmeye yönelik olarak tasarlanmıştır. Ortak sınıflandırma örnekleri arasında sahtekarlık algılama, el yazısı tanıma ve nesne algılama sayılabilir.  Daha fazla bilgi edinin ve [otomatik makine öğrenimi ile sınıflandırma](tutorial-train-models-with-aml.md)örneği görüntüleyin.
 
 Bu Python not defterlerinde sınıflandırma ve otomatik makine öğrenimine yönelik örneklere bakın: [sahtekarlık algılama](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [Pazarlama tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)ve [haber grubu veri sınıflandırması](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
 
 ### <a name="regression"></a>Regresyon
-Sınıflandırmaya benzer şekilde, regresyon görevleri de ortak denetimli bir öğrenme görevidir. Azure Machine Learning, [Bu görevlere özel olarak](how-to-use-automated-ml-for-ml-models.md#featurization)özellikler sunar.
+
+Sınıflandırmaya benzer şekilde, regresyon görevleri de ortak denetimli bir öğrenme görevidir. Azure Machine Learning, [Bu görevlere özel olarak](how-to-configure-auto-features.md#featurization)özellikler sunar.
 
 Tahmin edilen çıkış değerlerinin kategorik olduğu sınıflandırmadan farklı, regresyon modelleri bağımsız tahmine göre sayısal çıkış değerlerini tahmin eder. Gerileme ' de amaç, bir değişkenin diğerlerini nasıl etkilediğini tahmin ederek bu bağımsız tahmine dayalı değişkenler arasında ilişki kurmaya yardımcı olur. Örneğin,, gaz mesafe, güvenlik derecelendirmesi vb. gibi özelliklere göre Otomobil Fiyatları. Daha fazla bilgi edinin ve [otomatik makine öğrenimine bir gerileme](tutorial-auto-train-models.md)örneği görüntüleyin.
 
@@ -99,18 +100,19 @@ Model oluşturma otomatikleştirilmiş olsa da, [önemli veya ilgili özellikler
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
-<a name="preprocess"></a>
 
-## <a name="preprocessing"></a>Ön
+## <a name="feature-engineering"></a>Özellik mühendisliği
 
-Her otomatik makine öğrenimi denemesinde, verileriniz varsayılan yöntemler kullanılarak ve isteğe bağlı olarak gelişmiş ön işleme aracılığıyla önceden işlenir.
+Özellik Mühendisliği, ML algoritmalarının daha iyi öğrenilmesine yardımcı olan özellikler oluşturmak için verilerin etki alanı bilgisini kullanma işlemidir. Azure Machine Learning, ölçeklendirme ve normalleştirme teknikleri Özellik mühendisliğini kolaylaştırmak için uygulanır. Toplu olarak, bu teknikler ve özellik Mühendisliği, korleştirme olarak adlandırılır.
+
+Otomatik makine öğrenimi denemeleri için, korleştirme otomatik olarak uygulanır, ancak verilerinize göre de özelleştirilebilir. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-configure-auto-features.md#featurization).  
 
 > [!NOTE]
-> Otomatik makine öğrenimi ön işleme adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı ön işleme adımları, giriş verilerinize otomatik olarak uygulanır.
+> Otomatik makine öğrenimi adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı özellik adımları, giriş verilerinize otomatik olarak uygulanır.
 
-### <a name="automatic-preprocessing-standard"></a>Otomatik ön işleme (Standart)
+### <a name="automatic-featurization-standard"></a>Otomatik fealeştirme (Standart)
 
-Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek için verileriniz otomatik olarak ölçeklendirilir veya normalleştirilir.  Model eğitimi sırasında, her bir modele aşağıdaki ölçeklendirmeden veya normalleştirme tekniklerinden biri uygulanır. Oto ml 'nin modellerinizde [fazla sığdırma ve ıdengeli verilerin nasıl engellenmesine](concept-manage-ml-pitfalls.md) yardımcı olduğunu öğrenin.
+Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek için verileriniz otomatik olarak ölçeklendirilir veya normalleştirilir. Model eğitimi sırasında, her bir modele aşağıdaki ölçeklendirmeden veya normalleştirme tekniklerinden biri uygulanır. Oto ml 'nin modellerinizde [fazla sığdırma ve ıdengeli verilerin nasıl engellenmesine](concept-manage-ml-pitfalls.md) yardımcı olduğunu öğrenin.
 
 |Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Açıklama |
 | ------------- | ------------- |
@@ -122,15 +124,15 @@ Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek i�
 | [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |Bu transformatör, kesilen tekil değer ayrıştırma (SVD) yoluyla doğrusal Boyut azaltma gerçekleştirir. PCA 'nın aksine, bu tahmin aracı, tekil değer ayrıştırma 'yı hesaplamadan önce verileri ortalamaz ve bu da SciPy. seyrek matrisleri verimli bir şekilde çalışabilir. |
 | [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | Her bir örnek (yani, veri matrisinin her bir satırı) en az bir sıfır olmayan bileşen ile ölçeklendirildi, norm (L1 veya L2) bir değere eşit olacak şekilde diğer örneklerden bağımsız olarak |
 
-### <a name="advanced-preprocessing--featurization"></a>Gelişmiş ön işleme & fealeştirme
+### <a name="customize-featurization"></a>Özelleştirmeleri özelleştirme
 
-Veri guardı, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve korkleştirme de mevcuttur. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-use-automated-ml-for-ml-models.md#featurization). Bu ayarı şu şekilde etkinleştirin:
+Kodlama ve dönüşümler gibi ek özellik mühendisliği teknikleri de mevcuttur. 
 
-+ Azure Machine Learning Studio: [Bu adımlarla](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment) **ek yapılandırmayı görüntüle** bölümünde **Otomatik** özelliği etkinleştirin.
+Bu ayarı şu şekilde etkinleştirin:
 
-+ Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` [ `AutoMLConfig` sınıfı](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)için belirtme. 
++ Azure Machine Learning Studio: [Bu adımlarla](how-to-use-automated-ml-for-ml-models.md#customize-featurization) **ek yapılandırmayı görüntüle** bölümünde **Otomatik** özelliği etkinleştirin.
 
-
++ Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` , [oto mlconfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) nesneniz içinde belirtin. [Fealeştirme] ((nasıl yapılır-yapılandırma-Auto-features.md) hakkında daha fazla bilgi edinin. 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a>Ensesıme modelleri
 
@@ -168,7 +170,7 @@ Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz ön
 
  Aşağıdaki tabloda gösterildiği gibi uzak işlem kullandığınızda daha fazla özellik mevcuttur. Bu özelliklerden bazıları yalnızca bir kurumsal çalışma alanında kullanılabilir.
 
-| Öne çıkan özelliği                                                    | Remote | Yerel | Gerektirmeyen <br>Kurumsal çalışma alanı |
+| Özellik                                                    | Remote | Yerel | Gerektirmeyen <br>Kurumsal çalışma alanı |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Veri akışı (büyük veri desteği, 100 GB 'a kadar)          | ✓      |       | ✓                             |
 | DNN-BERT tabanlı metin korleştirme ve eğitim             | ✓      |       | ✓                             |

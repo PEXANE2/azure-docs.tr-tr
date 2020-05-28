@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: c04280bf1cffea08204e1ea5ab54dbb87c23cf9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0bc1890fd5ca9c045caa6325f474e85f1b85622
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193216"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022257"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Azure SQL veritabanı 'na veri okumak ve yazmak için HDInsight Spark kümesi kullanma
 
@@ -23,13 +23,13 @@ Azure HDInsight 'ta bir Apache Spark kümesini Azure SQL veritabanı ile bağlam
 
 * Azure HDInsight Spark küme.  [HDInsight 'ta Apache Spark kümesi oluşturma bölümündeki](apache-spark-jupyter-spark-sql.md)yönergeleri izleyin.
 
-* Azure SQL Veritabanı çözümünü karşılaştırabilirsiniz. [Azure SQL veritabanı oluşturma](../../sql-database/sql-database-get-started-portal.md)bölümündeki yönergeleri izleyin. Örnek **AdventureWorksLT** şeması ve verilerle bir veritabanı oluşturduğunuzdan emin olun. Ayrıca, istemci IP adresinin sunucudaki SQL veritabanına erişmesine izin vermek için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturduğunuzdan emin olun. Güvenlik duvarı kuralını ekleme yönergeleri aynı makalede bulunur. Azure SQL veritabanınızı oluşturduktan sonra, aşağıdaki değerleri yararlı tutmanız gerekir. Bir Spark kümesinden veritabanına bağlanmanız gerekir.
+* Azure SQL Veritabanı çözümünü karşılaştırabilirsiniz. [Azure SQL veritabanı oluşturma](../../azure-sql/database/single-database-create-quickstart.md)bölümündeki yönergeleri izleyin. Örnek **AdventureWorksLT** şeması ve verilerle bir veritabanı oluşturduğunuzdan emin olun. Ayrıca, istemci IP adresinin sunucudaki SQL veritabanına erişmesine izin vermek için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturduğunuzdan emin olun. Güvenlik duvarı kuralını ekleme yönergeleri aynı makalede bulunur. Azure SQL veritabanınızı oluşturduktan sonra, aşağıdaki değerleri yararlı tutmanız gerekir. Bir Spark kümesinden veritabanına bağlanmanız gerekir.
 
     * Azure SQL veritabanını barındıran sunucu adı.
     * Azure SQL veritabanı adı.
     * Azure SQL veritabanı yönetici Kullanıcı adı/parolası.
 
-* SQL Server Management Studio (SSMS). [Verileri bağlanmak ve sorgulamak IÇIN SSMS kullanma](../../sql-database/sql-database-connect-query-ssms.md)yönergelerini izleyin.
+* SQL Server Management Studio (SSMS). [Verileri bağlanmak ve sorgulamak IÇIN SSMS kullanma](../../azure-sql/database/connect-query-ssms.md)yönergelerini izleyin.
 
 ## <a name="create-a-jupyter-notebook"></a>Jupyter Notebook oluşturma
 
@@ -78,7 +78,7 @@ Bu bölümde, AdventureWorks veritabanında bulunan bir tablodan (örneğin, **S
 
     Kod hücresini çalıştırmak için **SHIFT + ENTER** tuşlarına basın.  
 
-1. Spark dataframe API 'Lerine geçirebilmeniz için bir JDBC URL 'SI oluşturmak üzere aşağıdaki kod parçacığını kullanın. Kod, parametreleri tutacak `Properties` bir nesne oluşturur. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
+1. Spark dataframe API 'Lerine geçirebilmeniz için bir JDBC URL 'SI oluşturmak üzere aşağıdaki kod parçacığını kullanın. Kod, `Properties` parametreleri tutacak bir nesne oluşturur. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     import java.util.Properties
@@ -89,7 +89,7 @@ Bu bölümde, AdventureWorks veritabanında bulunan bir tablodan (örneğin, **S
     connectionProperties.put("password", s"${jdbcPassword}")
     ```
 
-1. Azure SQL veritabanınızdaki bir tablodaki verilerle bir dataframe oluşturmak için aşağıdaki kod parçacığını kullanın. Bu kod parçacığında, **AdventureWorksLT** veritabanının bir `SalesLT.Address` parçası olarak kullanılabilen bir tablo kullanıyoruz. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
+1. Azure SQL veritabanınızdaki bir tablodaki verilerle bir dataframe oluşturmak için aşağıdaki kod parçacığını kullanın. Bu kod parçacığında, `SalesLT.Address` **AdventureWorksLT** veritabanının bir parçası olarak kullanılabilen bir tablo kullanıyoruz. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
@@ -119,7 +119,7 @@ Bu bölümde, AdventureWorks veritabanında bulunan bir tablodan (örneğin, **S
 
 ## <a name="write-data-into-azure-sql-database"></a>Azure SQL veritabanı 'na veri yazma
 
-Bu bölümde, Azure SQL veritabanı 'nda tablo oluşturmak ve verileri veriyle doldurmak için kümede bulunan örnek bir CSV dosyası kullanıyoruz. Örnek CSV dosyası (**HVAC. csv**), adresindeki `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`tüm HDInsight kümelerinde kullanılabilir.
+Bu bölümde, Azure SQL veritabanı 'nda tablo oluşturmak ve verileri veriyle doldurmak için kümede bulunan örnek bir CSV dosyası kullanıyoruz. Örnek CSV dosyası (**HVAC. csv**), adresindeki tüm HDInsight kümelerinde kullanılabilir `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv` .
 
 1. Yeni bir Jupyter not defterinde, bir kod hücresinde aşağıdaki kod parçacığını yapıştırın ve yer tutucu değerlerini Azure SQL veritabanınızın değerleriyle değiştirin.
 
@@ -135,7 +135,7 @@ Bu bölümde, Azure SQL veritabanı 'nda tablo oluşturmak ve verileri veriyle d
 
     Kod hücresini çalıştırmak için **SHIFT + ENTER** tuşlarına basın.  
 
-1. Aşağıdaki kod parçacığı Spark dataframe API 'Lerine geçirebilmeniz için bir JDBC URL 'SI oluşturur. Kod, parametreleri tutacak `Properties` bir nesne oluşturur. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
+1. Aşağıdaki kod parçacığı Spark dataframe API 'Lerine geçirebilmeniz için bir JDBC URL 'SI oluşturur. Kod, `Properties` parametreleri tutacak bir nesne oluşturur. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     import java.util.Properties
@@ -146,27 +146,27 @@ Bu bölümde, Azure SQL veritabanı 'nda tablo oluşturmak ve verileri veriyle d
     connectionProperties.put("password", s"${jdbcPassword}")
     ```
 
-1. HVAC. csv içindeki verilerin şemasını ayıklamak için aşağıdaki kod parçacığını kullanın ve veri çerçevesindeki CSV 'den verileri yüklemek için şemayı kullanın `readDf`. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
+1. HVAC. csv içindeki verilerin şemasını ayıklamak için aşağıdaki kod parçacığını kullanın ve veri çerçevesindeki CSV 'den verileri yüklemek için şemayı kullanın `readDf` . Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
     val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
     ```
 
-1. Geçici bir `readDf` tablo oluşturmak için veri çerçevesini kullanın `temphvactable`. Ardından, `hvactable_hive`bir Hive tablosu oluşturmak için geçici tabloyu kullanın.
+1. `readDf`Geçici bir tablo oluşturmak için veri çerçevesini kullanın `temphvactable` . Ardından, bir Hive tablosu oluşturmak için geçici tabloyu kullanın `hvactable_hive` .
 
     ```scala
     readDf.createOrReplaceTempView("temphvactable")
     spark.sql("create table hvactable_hive as select * from temphvactable")
     ```
 
-1. Son olarak, Hive tablosunu kullanarak Azure SQL veritabanı 'nda tablo oluşturun. Aşağıdaki kod parçacığı Azure `hvactable` SQL veritabanı 'nda oluşturulur.
+1. Son olarak, Hive tablosunu kullanarak Azure SQL veritabanı 'nda tablo oluşturun. Aşağıdaki kod parçacığı `hvactable` Azure SQL veritabanı 'nda oluşturulur.
 
     ```scala
     spark.table("hvactable_hive").write.jdbc(jdbc_url, "hvactable", connectionProperties)
     ```
 
-1. SSMS kullanarak Azure SQL veritabanı 'na bağlanın ve `dbo.hvactable` burada görmediğinizi doğrulayın.
+1. SSMS kullanarak Azure SQL veritabanı 'na bağlanın ve burada görmediğinizi doğrulayın `dbo.hvactable` .
 
     a. SSMS 'yi başlatın ve aşağıdaki ekran görüntüsünde gösterildiği gibi bağlantı ayrıntılarını sağlayarak Azure SQL veritabanına bağlanın.
 
@@ -184,9 +184,9 @@ Bu bölümde, Azure SQL veritabanı 'nda tablo oluşturmak ve verileri veriyle d
 
 ## <a name="stream-data-into-azure-sql-database"></a>Azure SQL veritabanı 'na veri akışı
 
-Bu bölümde, önceki bölümde yer alan Azure SQL `hvactable` veritabanı 'nda zaten oluşturduğunuz ' a veri akışı yaptık.
+Bu bölümde, `hvactable` önceki bölümde yer alan Azure SQL veritabanı 'nda zaten oluşturduğunuz ' a veri akışı yaptık.
 
-1. İlk adım olarak, içinde hiçbir kayıt bulunmadığından emin olun `hvactable`. SSMS 'yi kullanarak tabloda aşağıdaki sorguyu çalıştırın.
+1. İlk adım olarak, içinde hiçbir kayıt bulunmadığından emin olun `hvactable` . SSMS 'yi kullanarak tabloda aşağıdaki sorguyu çalıştırın.
 
     ```sql
     TRUNCATE TABLE [dbo].[hvactable]
@@ -202,7 +202,7 @@ Bu bölümde, önceki bölümde yer alan Azure SQL `hvactable` veritabanı 'nda 
     import java.sql.{Connection,DriverManager,ResultSet}
     ```
 
-1. **HVAC. csv** dosyasından veri akışı `hvactable`. HVAC. csv dosyası, konumundaki `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`kümede kullanılabilir. Aşağıdaki kod parçacığında, ilk olarak akışa alınacak verilerin şemasını alırız. Daha sonra, bu şemayı kullanarak bir akış veri çerçevesi oluşturacağız. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
+1. **HVAC. csv** dosyasından veri akışı `hvactable` . HVAC. csv dosyası, konumundaki kümede kullanılabilir `/HdiSamples/HdiSamples/SensorSampleData/HVAC/` . Aşağıdaki kod parçacığında, ilk olarak akışa alınacak verilerin şemasını alırız. Daha sonra, bu şemayı kullanarak bir akış veri çerçevesi oluşturacağız. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
@@ -210,11 +210,11 @@ Bu bölümde, önceki bölümde yer alan Azure SQL `hvactable` veritabanı 'nda 
     readStreamDf.printSchema
     ```
 
-1. Çıkış **HVAC. csv**şemasını gösterir. Aynı `hvactable` şemaya da sahiptir. Çıktı, tablodaki sütunları listeler.
+1. Çıkış **HVAC. csv**şemasını gösterir. `hvactable`Aynı şemaya da sahiptir. Çıktı, tablodaki sütunları listeler.
 
     ![' HDInsight Apache Spark şeması tablosu '](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tablo şeması")
 
-1. Son olarak, HVAC. csv dosyasından verileri okumak ve Azure SQL veritabanı `hvactable` 'nda ' de akışa almak için aşağıdaki kod parçacığını kullanın. Parçacığı bir kod hücresine yapıştırın, yer tutucu değerlerini Azure SQL veritabanınızın değerleriyle değiştirin ve ardından çalıştırmak için **SHIFT + enter** tuşlarına basın.
+1. Son olarak, HVAC. csv dosyasından verileri okumak ve `hvactable` Azure SQL veritabanı 'nda ' de akışa almak için aşağıdaki kod parçacığını kullanın. Parçacığı bir kod hücresine yapıştırın, yer tutucu değerlerini Azure SQL veritabanınızın değerleriyle değiştirin ve ardından çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     val WriteToSQLQuery  = readStreamDf.writeStream.foreach(new ForeachWriter[Row] {
@@ -257,7 +257,7 @@ Bu bölümde, önceki bölümde yer alan Azure SQL `hvactable` veritabanı 'nda 
     var streamingQuery = WriteToSQLQuery.start()
     ```
 
-1. SQL Server Management Studio (SSMS) ' de aşağıdaki sorguyu `hvactable` çalıştırarak verilerin öğesine aktarılmakta olduğunu doğrulayın. Sorguyu her çalıştırdığınızda, tablodaki satır sayısını artan şekilde gösterir.
+1. `hvactable`SQL Server Management Studio (SSMS) ' de aşağıdaki sorguyu çalıştırarak verilerin öğesine aktarılmakta olduğunu doğrulayın. Sorguyu her çalıştırdığınızda, tablodaki satır sayısını artan şekilde gösterir.
 
     ```sql
     SELECT COUNT(*) FROM hvactable

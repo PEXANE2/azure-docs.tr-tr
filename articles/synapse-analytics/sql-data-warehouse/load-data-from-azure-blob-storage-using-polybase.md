@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 741779e8328c38e544b1ad297e59155dab4e8c0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f3d4a14f92aa9271f094db5e2315b64b0fe3151
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633897"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015004"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Öğretici: New York Taxicab veri kümesini yükleme
 
@@ -45,7 +45,7 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="create-a-blank-database"></a>Boş veritabanı oluşturma
 
-Bir SQL havuzu tanımlanmış bir [işlem kaynakları](memory-concurrency-limits.md)kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ve bir [Azure SQL mantıksal sunucusu](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) içinde oluşturulur.
+Bir SQL havuzu tanımlanmış bir [işlem kaynakları](memory-concurrency-limits.md)kümesiyle oluşturulur. Veritabanı bir [Azure Kaynak grubu](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) içinde ve [mantıksal SQL Server](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)'da oluşturulur.
 
 Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
@@ -75,7 +75,7 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
     | **Parola**           | Geçerli bir parola       | Parolanızda en az 8 karakter bulunmalı ve parolanız şu üç kategoriden karakterler içermelidir: büyük harf karakterler, küçük harf karakterler, sayılar ve alfasayısal olmayan karakterler. |
     | **Konum**           | Geçerli bir konum       | Bölgeler hakkında bilgi için bkz. [Azure Bölgeleri](https://azure.microsoft.com/regions/). |
 
-    ![veritabanı oluşturma](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
+    ![Sunucu oluştur](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
 5. **Seç**’i seçin.
 
@@ -85,7 +85,7 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
     ![performansı yapılandırma](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. **Uygula**’yı seçin.
+8. **Apply** (Uygula) seçeneğini belirleyin.
 9. Sağlama dikey penceresinde boş veritabanı için bir **harmanlama** seçin. Bu öğreticide varsayılan değeri kullanın. Harmanlamalar hakkında daha fazla bilgi için bkz. [Harmanlamalar](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 10. Formu tamamladığınıza göre, veritabanını sağlamak için **Oluştur** ' u seçin. Sağlama birkaç dakika sürer.
@@ -96,14 +96,14 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
 ## <a name="create-a-server-level-firewall-rule"></a>Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 
-Sunucu düzeyinde, dış uygulamaların ve araçların sunucuya ya da sunucu üzerindeki herhangi bir veritabanına bağlanmasını engelleyen bir güvenlik duvarı. Bağlantıyı etkinleştirmek için, belirli IP adresleri için bağlantıyı etkinleştiren güvenlik duvarı kuralları ekleyebilirsiniz.  İstemcinizin IP adresine yönelik bir [sunucu düzeyi güvenlik duvarı kuralı](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturmak için bu adımları izleyin.
+Sunucu düzeyinde, dış uygulamaların ve araçların sunucuya ya da sunucu üzerindeki herhangi bir veritabanına bağlanmasını engelleyen bir güvenlik duvarı. Bağlantıyı etkinleştirmek için, belirli IP adresleri için bağlantıyı etkinleştiren güvenlik duvarı kuralları ekleyebilirsiniz.  İstemcinizin IP adresine yönelik bir [sunucu düzeyi güvenlik duvarı kuralı](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturmak için bu adımları izleyin.
 
 > [!NOTE]
-> SQL Veri Ambarı 1433 numaralı bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız.
+> SQL Veri Ambarı 1433 numaralı bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı takdirde sunucunuza bağlanamazsınız.
 
 1. Dağıtım tamamlandıktan sonra, sol taraftaki menüden **SQL veritabanları** ' nı seçin ve ardından **SQL veritabanları** sayfasında **mysampledatabase** ' i seçin. Veritabanınızın genel bakış sayfası açılır ve tam sunucu adı (örneğin, **MyNewServer-20180430.Database.Windows.net**) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
 
-2. Sonraki hızlı başlangıçlarda sunucunuza ve veritabanlarına bağlanmak için bu tam sunucu adını kopyalayın. Sonra sunucu adı ' nı seçerek sunucu ayarları ' nı açın.
+2. Sonraki hızlı başlangıçlarda sunucunuza ve veritabanlarına bağlanmak için bu tam sunucu adını kopyalayın. Sonra sunucu ayarlarını açmak için sunucu adını seçin.
 
     ![sunucu adını bulma](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
@@ -111,24 +111,24 @@ Sunucu düzeyinde, dış uygulamaların ve araçların sunucuya ya da sunucu üz
 
     ![sunucu ayarları](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-4. **Güvenlik Duvarı ayarlarını göster**' i seçin. SQL Veritabanı sunucusu için **Güvenlik duvarı ayarları** sayfası açılır.
+4. **Güvenlik Duvarı ayarlarını göster**' i seçin. Sunucu için **güvenlik duvarı ayarları** sayfası açılır.
 
     ![sunucu güvenlik duvarı kuralı](./media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
 5. Geçerli IP adresinizi yeni bir güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Güvenlik duvarı kuralı, 1433 numaralı bağlantı noktasını tek bir IP adresi veya bir IP adresi aralığı için açabilir.
 
-6. **Kaydet**’i seçin. Geçerli IP adresiniz için mantıksal sunucuda 1433 numaralı bağlantı noktası açılarak sunucu düzeyinde güvenlik duvarı kuralı oluşturulur.
+6. **Kaydet**’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturulur.
 
 7. **Tamam** ' ı seçin ve ardından **güvenlik duvarı ayarları** sayfasını kapatın.
 
-Şimdi bu IP adresini kullanarak SQL sunucusuna ve veri ambarlarına bağlanabilirsiniz. Bağlantı SQL Server Management Studio’dan veya seçtiğiniz diğer bir araçtan çalışır. Bağlandığınızda, daha önce oluşturduğunuz ServerAdmin hesabını kullanın.  
+Artık bu IP adresini kullanarak sunucuya ve veri ambarlarına bağlanabilirsiniz. Bağlantı SQL Server Management Studio’dan veya seçtiğiniz diğer bir araçtan çalışır. Bağlandığınızda, daha önce oluşturduğunuz ServerAdmin hesabını kullanın.  
 
 > [!IMPORTANT]
 > Varsayılan olarak, SQL Veritabanı güvenlik duvarı üzerinden erişim tüm Azure hizmetleri için etkindir. Bu sayfada **kapalı** ' yı seçin ve ardından **Kaydet** ' i seçerek tüm Azure hizmetleri için güvenlik duvarını devre dışı bırakın.
 
 ## <a name="get-the-fully-qualified-server-name"></a>Tam sunucu adını alma
 
-SQL sunucunuzun tam sunucu adını Azure portalından alabilirsiniz. Daha sonra sunucuya bağlanırken tam adı kullanacaksınız.
+Azure portal sunucunuzun tam sunucu adını alın. Daha sonra sunucuya bağlanırken tam adı kullanacaksınız.
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
 2. Sol taraftaki menüden **Azure SYNAPSE Analytics** ' i seçin ve **Azure SYNAPSE Analytics** sayfasında veritabanınızı seçin.
@@ -138,7 +138,7 @@ SQL sunucunuzun tam sunucu adını Azure portalından alabilirsiniz. Daha sonra 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Sunucu yöneticisi olarak sunucuya bağlanma
 
-Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanılmaktadır.
+Bu bölüm, sunucunuza bağlantı kurmak için [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanır.
 
 1. SQL Server Management Studio’yu açın.
 
@@ -149,12 +149,12 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
     | Sunucu türü    | Veritabanı altyapısı                            | Bu değer gereklidir                                       |
     | Sunucu adı    | Tam sunucu adı            | Ad şuna benzer olmalıdır: **MyNewServer-20180430.Database.Windows.net**. |
     | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması                  | Bu öğreticide yapılandırdığımız tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
-    | Oturum Aç          | Sunucu yöneticisi hesabı                   | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
+    | Oturum aç          | Sunucu yöneticisi hesabı                   | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
     | Parola       | Sunucu yöneticisi hesabınızın parolası | Bu, sunucuyu oluştururken belirttiğiniz paroladır. |
 
     ![sunucuya bağlan](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. **Bağlan**’ı seçin. SSMS’te Nesne Gezgini penceresi açılır.
+3. **Bağlan**'ı seçin. SSMS’te Nesne Gezgini penceresi açılır.
 
 4. Nesne Gezgini’nde, **Veritabanları**’nı genişletin. Ardından **Sistem veritabanları**'nı ve **asıl** öğesini genişleterek asıl veritabanındaki nesneleri görüntüleyin.  Yeni veritabanınızdaki nesneleri görüntülemek için **mySampleDatabase**’i genişletin.
 
@@ -205,7 +205,7 @@ Verileri yüklemenin ilk adımı LoaderRC20 olarak oturum açmaktır.
 
 2. Tam sunucu adını girin ve Oturum Açma bilgisi olarak **LoaderRC20** girin.  LoaderRC20 için parolanızı girin.
 
-3. **Bağlan**’ı seçin.
+3. **Bağlan**'ı seçin.
 
 4. Bağlantınız hazır olduğunda, Nesne Gezgini'nde iki sunucu bağlantısı görürsünüz. Bağlantılardan biri ServerAdmin ve diğeri de MedRCLogin olarak gösterilir.
 
@@ -570,7 +570,7 @@ PolyBase kullanarak yükleme ve yönetilen kimlikler aracılığıyla kimlik do�
 
 #### <a name="steps"></a>Adımlar
 
-1. PowerShell 'de **SQL Server** 'ı Azure ACTIVE DIRECTORY (AAD) ile kaydedin:
+1. PowerShell 'de, **sunucunuzu** Azure ACTIVE DIRECTORY (AAD) ile kaydedin:
 
    ```powershell
    Connect-AzAccount
@@ -583,7 +583,7 @@ PolyBase kullanarak yükleme ve yönetilen kimlikler aracılığıyla kimlik do�
    > [!NOTE]
    > Genel amaçlı bir v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak **v2 'ye yükseltmeniz** gerekir.
 
-3. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. SQL veritabanı sunucunuza **Depolama Blobu veri katılımcısı** RBAC rolü atayın.
+3. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. Sunucunuza **Depolama Blobu veri katılımcısı** RBAC rolünü atayın.
 
    > [!NOTE]
    > Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Azure kaynakları için çeşitli yerleşik roller için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
@@ -605,7 +605,7 @@ PolyBase kullanarak yükleme ve yönetilen kimlikler aracılığıyla kimlik do�
 
 3. [Dış tablolar](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanarak normal şekilde sorgulama.
 
-Azure SYNAPSE Analytics için sanal ağ hizmet uç noktalarını ayarlamak isterseniz aşağıdaki [belgelere](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bakın.
+Azure SYNAPSE Analytics için sanal ağ hizmet uç noktalarını ayarlamak isterseniz aşağıdaki [belgelere](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -624,7 +624,7 @@ Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
 3. Veri ambarını kaldırmak için işlem veya depolama için ücretlendirilmezsiniz, **Sil**' i seçin.
 
-4. Oluşturduğunuz SQL Server 'ı kaldırmak için önceki görüntüde **MyNewServer-20180430.Database.Windows.net** ' ı seçin ve **Sil**' i seçin.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu işlemi gerçekleştirirken dikkatli olun.
+4. Oluşturduğunuz sunucuyu kaldırmak için önceki görüntüde **MyNewServer-20180430.Database.Windows.net** ' ı seçin ve **Sil**' i seçin.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu işlemi gerçekleştirirken dikkatli olun.
 
 5. Kaynak grubunu kaldırmak için **Myresourcegroup**' ı seçin ve **kaynak grubunu sil**' i seçin.
 

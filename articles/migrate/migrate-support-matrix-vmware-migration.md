@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware geçişi desteği
 description: Azure geçişi 'nde VMware VM geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 666fcc3771dfd4adadeab30fa5d1ec51da5bc038
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: ed51361ca4d605487a5d273505df21780003bdbb
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743660"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140489"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -27,11 +27,11 @@ Kullanmak istediğiniz yöntemi öğrenmek için [Bu makaleyi](server-migrate-ov
 ## <a name="migration-limitations"></a>Geçiş sınırlamaları
 
 - Çoğaltma için aynı anda en fazla 10 VM seçebilirsiniz. Daha fazla makine geçirmek istiyorsanız, 10 grup içinde çoğaltın.
-- VMware aracısız geçiş için aynı anda en fazla 100 çoğaltma çalıştırabilirsiniz.
+- VMware aracısız geçiş için aynı anda en fazla 300 çoğaltma çalıştırabilirsiniz.
 
 ## <a name="agentless-vmware-servers"></a>Aracısız-VMware sunucuları
 
-**VMware** | **Bilgileri**
+**VMware** | **Ayrıntılar**
 --- | ---
 **VMware vCenter Server** | Sürüm 5,5, 6,0, 6,5 veya 6,7.
 **VMware vSphere ESXI Konağı** | Sürüm 5,5, 6,0, 6,5 veya 6,7.
@@ -41,7 +41,7 @@ Kullanmak istediğiniz yöntemi öğrenmek için [Bu makaleyi](server-migrate-ov
 
 ## <a name="agentless-vmware-vms"></a>Aracısız-VMware VM 'Leri
 
-**Destek** | **Bilgileri**
+**Destek** | **Ayrıntılar**
 --- | ---
 **Desteklenen işletim sistemleri** | Azure tarafından desteklenen [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) işletim sistemleri, aracısız geçiş kullanılarak geçirilebilir.
 **Azure için gereken değişiklikler** | Bazı VM 'Ler, Azure 'da çalışabilecek şekilde değişiklik gerektirebilir. Azure geçişi, bu değişiklikleri aşağıdaki işletim sistemleri için otomatik olarak yapar:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Detem 7, 8<br/><br/> Diğer işletim sistemleri için geçişten önce el ile ayarlamalar yapmanız gerekir. İlgili makaleler, bunun nasıl yapılacağı hakkında yönergeler içerir.
@@ -60,7 +60,7 @@ Kullanmak istediğiniz yöntemi öğrenmek için [Bu makaleyi](server-migrate-ov
 **Ekip oluşturulmuş NIC 'ler** | Desteklenmiyor.
 **IPv6** | Desteklenmiyor.
 **Hedef disk** | VM 'Ler yalnızca Azure 'da yönetilen disklere (Standart HDD, Premium SSD) geçirilebilirler.
-**Eşzamanlı çoğaltma** | vCenter Server başına 100 VM. Daha fazlasına sahipseniz, bunları 100 toplu işlem halinde geçirin.
+**Eşzamanlı çoğaltma** | vCenter Server başına 300 VM. Daha fazlasına sahipseniz, bunları 300 toplu işlem halinde geçirin.
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>Aracısız-Azure geçişi gereci 
@@ -73,7 +73,7 @@ Aracısız geçiş, [Azure geçişi](migrate-appliance.md)gereci kullanır. Gere
 
 ## <a name="agentless-ports"></a>Aracısız bağlantı noktaları
 
-**Cihaz** | **Bağlanma**
+**Cihaz** | **Bağlantı**
 --- | ---
 Elektrikli | 443 numaralı bağlantı noktası, çoğaltılan verileri Azure 'a yüklemek ve Azure geçiş Hizmetleri ile iletişim kurmak için çoğaltma ve geçiş işlemlerini düzenleyen giden bağlantılar.
 vCenter server | Bağlantı noktası 443 ' deki gelen bağlantılar, gerecin çoğaltma düzenlemesine olanak tanımak için anlık görüntü oluşturma, veri kopyalama, anlık görüntüleri yayınlama
@@ -83,7 +83,7 @@ vSphere/EXSI Konağı | Gereç için TCP bağlantı noktası 902 ' den gelen, ve
 ## <a name="agent-based-vmware-servers"></a>Aracı tabanlı-VMware sunucuları
 Bu tablo, VMware sanallaştırma sunucuları için değerlendirme desteğini ve sınırlamalarını özetler.
 
-**VMware gereksinimleri** | **Bilgileri**
+**VMware gereksinimleri** | **Ayrıntılar**
 --- | ---
 **VMware vCenter Server** | Sürüm 5,5, 6,0, 6,5 veya 6,7.
 **VMware vSphere ESXI Konağı** | Sürüm 5,5, 6,0, 6,5 veya 6,7.
@@ -93,7 +93,7 @@ Bu tablo, VMware sanallaştırma sunucuları için değerlendirme desteğini ve 
 
 Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz VMware VM 'Leri için VMware VM desteğini özetler.
 
-**Destek** | **Bilgileri**
+**Destek** | **Ayrıntılar**
 --- | ---
 **Makine iş yükü** | Azure geçişi, desteklenen bir makinede çalışan herhangi bir iş yükünün (Active Directory, SQL Server vb.) geçirilmesini destekler.
 **İşletim sistemleri** | En son bilgiler için Site Recovery [işletim sistemi desteğini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) gözden geçirin. Azure geçişi, özdeş VM işletim sistemi desteği sağlar.
@@ -130,7 +130,7 @@ Azure geçişi hub 'ında belirtilen OVA şablonunu kullanarak çoğaltma gereci
 
 ## <a name="agent-based-ports"></a>Aracı tabanlı bağlantı noktaları
 
-**Cihaz** | **Bağlanma**
+**Cihaz** | **Bağlantı**
 --- | ---
 VM'ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
 Çoğaltma gereci | Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.
@@ -140,7 +140,7 @@ VM'ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS
 
 Azure 'a çoğaltılan tüm şirket içi VM 'Lerin bu tabloda özetlenen Azure VM gereksinimlerini karşılaması gerekir. Site Recovery, çoğaltma için bir önkoşul denetimi çalıştırdığında, bazı gereksinimler karşılanmazsa denetim başarısız olur.
 
-**Bileşen** | **Gereksinimler** | **Bilgileri**
+**Bileşen** | **Gereksinimler** | **Ayrıntılar**
 --- | --- | ---
 Konuk işletim sistemi | Geçiş için desteklenen VMware VM işletim sistemlerini doğrular.<br/> Desteklenen bir işletim sistemi üzerinde çalışan herhangi bir iş yükünü geçirebilirsiniz. | Desteklenmiyorsa denetim başarısız olur.
 Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısız olur.
@@ -153,7 +153,7 @@ Paylaşılan VHD | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
 FC diski | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
 BitLocker | Desteklenmiyor. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
 VM adı | 1 ile 63 karakter arasında.<br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayıyla başlamalı ve bitmelidir. |  Site Recovery makine özelliklerindeki değeri güncelleştirin.
-Geçişten sonra Bağlan-Windows | Geçişten sonra Windows çalıştıran Azure VM 'lerine bağlanmak için:<br/> -Geçiş öncesinde, şirket içi VM 'de RDP 'yi mümkün. TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.<br/> Siteden siteye VPN erişimi için, RDP 'yi etkinleştirin ve **etki alanı ve özel** ağlar için **Windows Güvenlik Duvarı** -> **izin verilen uygulamalar ve Özellikler** ' de RDP 'ye izin verin. Ayrıca, işletim sisteminin SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](prepare-for-migration.md). |
+Geçişten sonra Bağlan-Windows | Geçişten sonra Windows çalıştıran Azure VM 'lerine bağlanmak için:<br/> -Geçiş öncesinde, şirket içi VM 'de RDP 'yi mümkün. TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.<br/> Siteden siteye VPN erişimi için, RDP 'yi etkinleştirin ve **Windows Firewall**  ->  **etki alanı ve özel** ağlar için Windows Güvenlik Duvarı**izin verilen uygulamalar ve Özellikler** ' de RDP 'ye izin verin. Ayrıca, işletim sisteminin SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](prepare-for-migration.md). |
 Geçişten sonra Bağlan-Linux | SSH kullanarak geçişten sonra Azure VM 'lerine bağlanmak için:<br/> Geçişten önce, şirket içi makinede, Secure Shell hizmetinin başlangıç olarak ayarlandığını ve Güvenlik Duvarı kurallarının bir SSH bağlantısına izin vermeyi kontrol edin.<br/> Yük devretmenin ardından Azure VM 'de, yük devredilen VM 'deki ağ güvenlik grubu kuralları için SSH bağlantı noktasına gelen bağlantılara ve bağlı olduğu Azure alt ağına izin verin. Ayrıca, VM için bir genel IP adresi ekleyin. |  
 
 

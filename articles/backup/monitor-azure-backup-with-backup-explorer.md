@@ -32,7 +32,7 @@ Bu yetenekler, Azure Kaynak Grafiği ve Azure Izleyici çalışma kitapları ile
 > * Azure Kaynak Grafiği verilerinde özel geliştirmeler yazılmasını önermiyoruz.
 > * Yedekleme Gezgini Şu anda en fazla 1000 abonelik (kiracılar arasında) üzerinde yedeklemeleri izlemenize olanak sağlar.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Kurtarma Hizmetleri kasalarınıza gidip **genel bakış** bölmesinde **yedek gezgin** bağlantısını seçerek yedekleme Gezgini 'ne erişebilirsiniz.
 

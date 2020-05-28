@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76261628"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142002"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -29,7 +29,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -45,7 +45,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu doğrulayın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Service Bus *ad alanına*gidin. Ad alanı sayfasında, **Ayarlar**' ın altında, **paylaşılan erişim ilkeleri**' ni seçin. **Talepler**altında, bu ad alanı Için izinleri **yönetme** izinlerine sahip olup olmadığınızı kontrol edin.
 
@@ -60,7 +60,7 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
       ![Service Bus ad alanı bağlantı dizesini Kopyala](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Bağlantı dizeniz Service Bus ad alanınız veya bir kuyruk gibi bir mesajlaşma varlığı ile ilişkili olup olmadığını doğrulamak için, `EntityPath`  parametre için bağlantı dizesini arayın. Bu parametreyi bulursanız, bağlantı dizesi belirli bir varlık içindir ve mantıksal uygulamanızla birlikte kullanılacak doğru dize değildir.
+   > Bağlantı dizeniz Service Bus ad alanınız veya bir kuyruk gibi bir mesajlaşma varlığı ile ilişkili olup olmadığını doğrulamak için, parametre için bağlantı dizesini arayın `EntityPath`   . Bu parametreyi bulursanız, bağlantı dizesi belirli bir varlık içindir ve mantıksal uygulamanızla birlikte kullanılacak doğru dize değildir.
 
 ## <a name="add-service-bus-trigger"></a>Service Bus tetikleyicisi Ekle
 
@@ -114,7 +114,7 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 
 1. Eylem eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
-   Ya da adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini (**+**) seçin ve **Eylem Ekle**' yi seçin.
+   Ya da adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve **Eylem Ekle**' yi seçin.
 
 1. **Eylem seçin**altında, arama kutusuna filtreniz olarak "Azure Service Bus" yazın. Eylemler listesinden istediğiniz eylemi seçin. 
 
@@ -152,11 +152,21 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 
 1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
+<a name="sequential-convoy"></a>
+
+## <a name="send-correlated-messages-in-order"></a>Bağıntılı iletileri sırayla gönderin
+
+İlgili iletileri belirli bir sırada göndermeniz gerektiğinde, [Azure Service Bus bağlayıcısını](../connectors/connectors-create-api-servicebus.md)kullanarak [ *sıralı konvoy* düzenini](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) kullanabilirsiniz. Bağıntılı iletiler, Service Bus [oturum](../service-bus-messaging/message-sessions.md) kimliği gibi bu iletiler arasındaki ilişkiyi tanımlayan bir özelliğe sahiptir.
+
+Bir mantıksal uygulama oluşturduğunuzda, sıralı konvoy düzenini uygulayan **Service Bus oturumları şablonunu kullanarak bağıntılı sıralı teslimi** seçebilirsiniz. Daha fazla bilgi için bkz. [ilgili iletileri sırayla gönderme](../logic-apps/send-related-messages-sequential-convoy.md).
+
+<a name="connector-reference"></a>
+
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
 Service Bus Bağlayıcısı, bir hizmet veri yolundan bağlayıcı önbelleğine en çok 1.500 benzersiz oturum kaydedebilir. Oturum sayısı bu sınırı aşarsa, eski oturumlar önbellekten kaldırılır. Daha fazla bilgi için bkz. [ileti oturumları](../service-bus-messaging/message-sessions.md).
 
-Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili diğer teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/servicebus/)gözden geçirin. Azure Service Bus mesajlaşma hakkında daha fazla bilgi için bkz. [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)nedir?
+Bağlayıcının Swagger açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili diğer teknik ayrıntılar için [bağlayıcı başvurusu sayfasını](/connectors/servicebus/)gözden geçirin. Azure Service Bus mesajlaşma hakkında daha fazla bilgi için bkz. [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)nedir?
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

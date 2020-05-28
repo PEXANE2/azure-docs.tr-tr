@@ -16,12 +16,12 @@ ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a711fa522f6b105eb98d57d4f63afb90be255b3f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262093"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995046"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmesi nedir?
 
@@ -78,6 +78,12 @@ Erişim İncelemeleri oluşturmak için aşağıdaki adımları izleyin:
 
    ![Erişim İncelemeleri başlangıç sayfası](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
+### <a name="creating-access-review-on-a-group-that-can-be-assigned-to-azure-ad-role"></a>Azure AD rolüne atanabilecek bir grupta erişim incelemesi oluşturma
+En yeni erişim gözden geçirmeleri sürümünüzde (gözden geçirenler varsayılan olarak **erişimime** yönlendirilir), bu durumda yalnızca genel yönetici rol atanabilir gruplar üzerinde erişim gözden geçirmesi oluşturabilir. Ancak, erişim gözden geçirmelerinden daha eski bir sürümünüzde (gözden geçirenler varsayılan olarak **erişim paneline** yönlendirilir), her Iki genel yönetici ve Kullanıcı Yöneticisi de rol atanabilir gruplar üzerinde erişim gözden geçirmesi oluşturabilir.  
+
+Yeni deneyim, 1 Ağustos 2020 ' de tüm müşterilere alınacaktır, ancak daha önce yükseltmek istiyorsanız, lütfen buradan bir istek yapın; [erişim Onayumdaki Azure AD erişim İncelemeleri-güncelleştirilmiş gözden geçiren deneyimi](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u).
+
+[Azure AD rollerine Grup atama hakkında daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2103037).
 
 ## <a name="learn-about-access-reviews"></a>Erişim incelemeleri hakkında bilgi edinin
 
@@ -120,7 +126,7 @@ Sahip olmanız gereken lisans sayısını belirlemenize yardımcı olacak bazı 
 | Yönetici, 500 Kullanıcı ve 3 Grup sahibi olan B grubunun erişim incelemesini oluşturur ve 3 Grup sahibini gözden geçirenler olarak atar. | Her grup sahibi için gözden geçirenler olarak 3 lisans | 3 |
 | Yönetici, 500 Kullanıcıyla Grup B 'ye erişim incelemesi oluşturur. Kendi kendine İnceleme yapar. | Her Kullanıcı için kendi kendini gözden geçirenler olarak 500 lisans | 500 |
 | Yönetici, 50 üye kullanıcıları ve 25 Konuk kullanıcıyla Grup C 'nin erişim incelemesini oluşturur. Kendi kendine İnceleme yapar. | Her Kullanıcı için kendi kendine gözden geçirenler olarak 50 lisans.<br/>(Konuk kullanıcılar gereken 1:5 oranına göre ele alınmıştır) | 50 |
-| Yönetici, 6 üye kullanıcısı ve 108 Konuk kullanıcıyla Grup D 'ye yönelik bir erişim incelemesi oluşturur. Kendi kendine İnceleme yapar. | Her bir kullanıcı için kendi kendine gözden geçirenler olarak 6 lisans ve gerekli 1:5 oranında tüm 108 Konuk kullanıcıları kapsayacak ek lisanslar. 6\*5 = 30 Konuk kullanıcıyı kapsayan 6 lisans. Kalan (108-6\*5) = 78 Konuk kullanıcılar için 78/5 = 16 ek lisans gerekir. Bu nedenle Total, 6 + 16 = 22 lisans gerekir. | 22 |
+| Yönetici, 6 üye kullanıcısı ve 108 Konuk kullanıcıyla Grup D 'ye yönelik bir erişim incelemesi oluşturur. Kendi kendine İnceleme yapar. | Her bir kullanıcı için kendi kendine gözden geçirenler olarak 6 lisans ve gerekli 1:5 oranında tüm 108 Konuk kullanıcıları kapsayacak ek lisanslar. 6 \* 5 = 30 Konuk kullanıcıyı kapsayan 6 lisans. Kalan (108-6 \* 5) = 78 Konuk kullanıcılar için 78/5 = 16 ek lisans gerekir. Bu nedenle Total, 6 + 16 = 22 lisans gerekir. | 22 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

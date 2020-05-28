@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 7cbcaefcc087c9f1c7c09668a27fbdef9a4802d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681083"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021390"
 ---
 # <a name="color-materials"></a>Renk malzemeleri
 
@@ -22,7 +22,7 @@ Renk malzemeleri, daha basit gölgeleme modeli nedeniyle [PBR malzemelerinden](p
 
 Bu özellikler tüm malzemelerde ortaktır:
 
-* **Albedocolor:** Bu renk, *Albedomap* veya *köşe renkleri*gibi diğer renklerle çarpılır. Bir malzemeden *Saydamlık* etkinse alfa kanalı, tam donuk ve `1` `0` anlamı tamamen saydam olan opaklığı ayarlamak için kullanılır. Varsayılan değer beyazdır.
+* **Albedocolor:** Bu renk, *Albedomap* veya * :::no-loc text="vertex"::: renkler*gibi diğer renklerle çarpılır. Bir malzemeden *Saydamlık* etkinse alfa kanalı, `1` tam donuk ve anlamı tamamen saydam olan opaklığı ayarlamak için kullanılır `0` . Varsayılan değer beyazdır.
 
   > [!NOTE]
   > Renk malzemeleri ortamı yansıtmadığı için tamamen saydam bir renk malzemesi görünmez hale gelir. Bu, [PBR malzemeleri](pbr-materials.md)için farklıdır.
@@ -33,15 +33,15 @@ Bu özellikler tüm malzemelerde ortaktır:
 
 * **textureCoordinateScale** ve **TEXTURECOORDINATEOFFSET:** ölçek UV doku koordinatlarına çarpılır, bu da ona eklenir. Dokuları uzatmak ve kaydırmak için kullanılabilir. Varsayılan ölçek (1, 1) ve konum (0, 0).
 
-* **Usevertexcolor:** Kafes köşe renkleri içeriyorsa ve bu seçenek etkinleştirilirse, kafeslerin köşe renkleri *Albedocolor* ve *Albedomap*ile çarpılır. Varsayılan olarak köşe renkleri devre dışıdır.
+* **Usevertexcolor:** Kafes :::no-loc text="vertex"::: renkler içeriyorsa ve bu seçenek etkinleştirilirse, kafeslerin :::no-loc text="vertex"::: rengi *Albedocolor* ve *albedomap*ile çarpılır. Varsayılan olarak *UI, Texcolor* devre dışıdır.
 
-* **ıdoubleyüzlü:** Çift sidebir değer true olarak ayarlanırsa, kamera arka yüzlerine baksa bile bu malzemeden üçgenler işlenir. Varsayılan olarak bu seçenek devre dışıdır. Ayrıca bkz. [tek taraflı işleme](single-sided-rendering.md).
+* **ıdoubleyüzlü:** Çift sidebir değer true olarak ayarlanırsa, kamera arka yüzlerine baksa bile bu malzemeden üçgenler işlenir. Varsayılan olarak bu seçenek devre dışıdır. Ayrıca bkz. [ :::no-loc text="Single-sided"::: işleme](single-sided-rendering.md).
 
 ## <a name="color-material-properties"></a>Renk malzemesi özellikleri
 
 Aşağıdaki özellikler renk malzemelere özgüdür:
 
-* **Vertexmix:** Bu değer `0` , ve `1` bir [kafesteki](../../concepts/meshes.md) köşe renginin son renge ne kadar katkıda bulunduğunu belirtir. Varsayılan değer olan 1 ' de, köşe rengi Albedo rengine tamamen çarpılır. 0 değeri ile köşe renkleri tamamen yok sayılır.
+* **Vertexmix:** Bu değer `0` , ve `1` :::no-loc text="vertex"::: bir [kafesteki](../../concepts/meshes.md) rengin son renge ne kadar sıkı katkıda bulunduğunu belirtir. Varsayılan değer olan 1 ' de, :::no-loc text="vertex"::: renk Albedo rengine tamamen çarpılır. 0 değeri ile :::no-loc text="vertex"::: renkler tamamen yok sayılır.
 
 * **transparencyMode:** [PBR malzemelerinin](pbr-materials.md)aksine, renk malzemeleri farklı saydamlık modları arasında ayrım yapar:
 

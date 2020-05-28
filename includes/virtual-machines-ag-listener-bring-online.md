@@ -31,7 +31,7 @@ ms.locfileid: "67188322"
 
 8. SQL Server Management Studio başlatın ve ardından birincil çoğaltmaya bağlanın.
 
-9. **AlwaysOn High AVAILABILITY** > **AVAILABILITY Groups** > **\<AVAILABILITY bilitygroupname\>** > **kullanılabilirlik grubu dinleyicilerine**gidin.  
+9. **AlwaysOn High AVAILABILITY**  >  **AVAILABILITY Groups**AVAILABILITY  >  ** \< \> bilitygroupname**  >  **kullanılabilirlik grubu dinleyicilerine**gidin.  
     Yük Devretme Kümesi Yöneticisi içinde oluşturduğunuz dinleyici adı görüntülenmelidir.
 
 10. Dinleyici adına sağ tıklayın ve ardından **Özellikler**' e tıklayın.

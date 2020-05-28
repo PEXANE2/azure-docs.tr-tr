@@ -9,27 +9,27 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 6acf9301367ae2c6947f6935c43f420d3d7cac65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb9e12f29c148ea6854dde57456d8cf796cc8c34
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655003"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994077"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Klasik sanal ağ modelinden Azure AD Domain Services Kaynak Yöneticisi 'ye geçirin
 
 Azure Active Directory Domain Services (AD DS), şu anda klasik sanal ağ modelini kullanan müşterilerin Kaynak Yöneticisi sanal ağ modeline tek seferlik bir taşımayı destekler. Kaynak Yöneticisi dağıtım modelini kullanan Azure AD DS yönetilen etki alanları, hassas parola ilkesi, denetim günlükleri ve hesap kilitleme koruması gibi ek özellikler sağlar.
 
-Bu makalede, var olan bir Azure AD DS örneğini başarılı bir şekilde geçirmek için gereken adımlar ve geçiş konuları özetlenmektedir.
+Bu makalede, var olan bir Azure AD DS örneğini başarılı bir şekilde geçirmek için gerekli adımlar ve geçiş hakkında konular özetlenmektedir. Bazı avantajlar için bkz. [Azure AD DS 'de klasik sürümüne Kaynak Yöneticisi dağıtım modelinden geçişin avantajları][migration-benefits].
 
 > [!NOTE]
 > 2017 ' de Azure AD Domain Services Azure Resource Manager ağda barındırana bilgisayar için kullanılabilir duruma geldi. Bu tarihten sonra, Azure Resource Manager modern yeteneklerini kullanarak daha güvenli bir hizmet oluşturuyoruz. Azure Resource Manager dağıtımları klasik dağıtımları tamamen yerine getirmek için Azure AD DS klasik sanal ağ dağıtımları 1 Mart 2023 ' de kullanımdan kaldırılacaktır.
 >
-> Daha fazla bilgi için bkz. [resmi kullanımdan kaldırma bildirimi](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
+> Daha fazla bilgi için bkz. [resmi kullanımdan kaldırma bildirimi](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/).
 
 ## <a name="overview-of-the-migration-process"></a>Geçiş işlemine genel bakış
 
-Geçiş işlemi, klasik bir sanal ağda çalışan mevcut bir Azure AD DS örneğini alır ve var olan bir Kaynak Yöneticisi sanal ağa taşıır. Geçiş, PowerShell kullanılarak gerçekleştirilir ve iki ana yürütme- *hazırlama* ve *geçiş*aşamasına sahiptir.
+Geçiş işlemi, klasik bir sanal ağda çalışan mevcut bir Azure AD DS örneğini alır ve var olan bir Kaynak Yöneticisi sanal ağa taşıır. Geçiş, PowerShell kullanılarak gerçekleştirilir ve iki ana yürütme aşamasına sahiptir: *hazırlama* ve *geçiş*.
 
 ![Azure AD DS için geçiş işlemine genel bakış](media/migrate-from-classic-vnet/migration-overview.png)
 
@@ -40,21 +40,6 @@ Geçiş işlemi, klasik bir sanal ağda çalışan mevcut bir Azure AD DS örne�
 *Geçiş* aşamasında, klasik Azure AD DS yönetilen etki alanındaki etki alanı denetleyicileri için temel sanal diskler, Kaynak Yöneticisi dağıtım modelini kullanarak VM 'ler oluşturmak için kopyalanır. Azure AD DS yönetilen etki alanı daha sonra, LDAPS ve DNS yapılandırmasını içeren yeniden oluşturulur. Azure AD ile eşitleme yeniden başlatılır ve LDAP sertifikaları geri yüklenir. Tüm makineleri Azure AD DS yönetilen bir etki alanına yeniden eklemeye gerek yoktur. Bunlar yönetilen etki alanına katılmaları ve değişiklik yapılmadan çalıştırırlar.
 
 ![Azure AD DS geçişi](media/migrate-from-classic-vnet/migration-process.png)
-
-## <a name="migration-benefits"></a>Geçiş avantajları
-
-Bu geçiş işlemini kullanarak Azure AD DS yönetilen bir etki alanını taşıdığınızda, makineleri yönetilen etki alanına yeniden ekleme veya Azure AD DS örneğini silme ve sıfırdan bir tane oluşturma ihtiyacını ortadan kaldırma. VM 'Ler, geçiş işleminin sonunda Azure AD DS tarafından yönetilen etki alanına katılalmaya devam eder.
-
-Geçişten sonra Azure AD DS, yalnızca Kaynak Yöneticisi sanal ağları kullanan etki alanları için kullanılabilen birçok özellik sağlar; örneğin:
-
-* Hassas parola ilkesi desteği.
-* AD hesabı kilitleme koruması.
-* Azure AD DS yönetilen etki alanındaki uyarıların e-posta bildirimleri.
-* Azure Izleyici kullanarak günlükleri denetleyin.
-* Azure dosyaları tümleştirmesi
-* HD Insights tümleştirmesi
-
-Kaynak Yöneticisi sanal ağ kullanan Azure AD DS yönetilen etki alanları, en son yeni özelliklerle güncel kalmanıza yardımcı olur. Klasik sanal ağları kullanarak Azure AD DS desteği gelecekte kullanım dışı olacaktır.
 
 ## <a name="example-scenarios-for-migration"></a>Geçiş için örnek senaryolar
 
@@ -367,6 +352,7 @@ Azure AD DS yönetilen etki alanınız Kaynak Yöneticisi dağıtım modeline ge
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [tshoot-ldaps]: tshoot-ldaps.md
 [get-credential]: /powershell/module/microsoft.powershell.security/get-credential
+[migration-benefits]: concepts-migration-benefits.md
 
 <!-- EXTERNAL LINKS -->
 [powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/

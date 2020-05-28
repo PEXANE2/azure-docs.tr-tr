@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 05/27/2020
 ms.author: b-juche
-ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70995110"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142155"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Azure NetApp Files için maliyet modeli 
 
@@ -50,6 +50,8 @@ Aşağıdaki diyagramda bu kavramlar gösterilmektedir.
 ## <a name="overage-in-capacity-consumption"></a>Kapasite tüketimine fazla kullanım  
 
 Bir havuzun toplam kullanılan kapasitesi sağlanan kapasiteyi aşarsa, veri yazmaları gene de izin verilir.  Yetkisiz kullanım süresi (bir saat) geçtikten sonra, havuzun kullanılan kapasitesi sağlanan kapasiteyi aşarsa, sağlanan kapasite toplam kullanılan kapasiteden daha fazla olana kadar havuz boyutu otomatik olarak 1 TiB artışlarına yükseltilir.  Örneğin, yukarıdaki çizimde, hacim 3 büyümeye devam ediyorsa ve gerçek tüketim 1,2 TiB 'ye ulaşırsa, yetkisiz kullanım süresinden sonra havuz otomatik olarak 5 TiB olarak yeniden boyutlandırılır.  Sonuç olarak, sağlanan havuz kapasitesi (5 TiB) kullanılan kapasiteyi (4,2 TiB) aşmaktadır.  
+
+Kapasite havuzu boyutu birimin taleplerini karşılamak üzere otomatik olarak genişlebilse de, birim boyutu azaldığında otomatik olarak azalmıştır. Bir birim boyutu azaltıldıktan sonra kapasite havuzunun boyutunu azaltmak istiyorsanız (örneğin, bir birimin veri temizliği yapıldıktan sonra), kapasite havuzu boyutunu _el ile_ azaltmanız gerekir.
 
 ## <a name="manual-changes-of-the-pool-size"></a>Havuz boyutunun el ile değişiklikleri  
 

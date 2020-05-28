@@ -6,18 +6,18 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: e7a190792714e1dd1a54da7e674e63d4453c548e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef8145f0b447f24265ff4576884b0977190b063e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835079"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020362"
 ---
 # <a name="compose-dsc-configurations"></a>DSC yapılandırmaları oluşturma
 
 Kaynağı tek bir istenen durum yapılandırması (DSC) ile yönetihtiyacınız olduğunda, en iyi yol [bileşik kaynakları](/powershell/scripting/dsc/resources/authoringresourcecomposite)kullanmaktır. Bileşik kaynak, başka bir yapılandırma içinde DSC kaynağı olarak kullanılan iç içe ve parametreli bir yapılandırmadır. Bileşik kaynakların kullanımı, temel alınan bileşik kaynakların tek tek yönetilmesine ve oluşturulmasına izin verirken karmaşık yapılandırma oluşturmanıza olanak sağlar.
 
-Azure Otomasyonu [bileşik kaynakların içeri ve derlemesini](automation-dsc-compile.md)sunar. Otomasyon hesabınıza bileşik kaynakları içeri aktardıktan sonra, Azure portal **Durum Yapılandırması (DSC** özelliği aracılığıyla Azure Automation durum yapılandırması 'nı kullanabilirsiniz.
+Azure Otomasyonu [bileşik kaynakların içeri ve derlemesini](automation-dsc-compile.md)sunar. Otomasyon hesabınıza bileşik kaynakları içeri aktardıktan sonra Azure portal **Durum Yapılandırması (DSC)** özelliği aracılığıyla Azure Otomasyonu durum yapılandırması ' nı kullanabilirsiniz.
 
 ## <a name="compose-a-configuration"></a>Yapılandırma oluşturma
 

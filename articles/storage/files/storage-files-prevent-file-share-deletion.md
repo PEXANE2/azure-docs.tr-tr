@@ -8,18 +8,18 @@ ms.date: 05/26/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 96e3d5001d11455337ae092776a1a4c5c3738012
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 9ffc065cb877c7f87cd38671f586f0754a42b2b8
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83883075"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141594"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Azure dosya paylaşımlarının yanlışlıkla silinmesini engelle
 
-Azure depolama, artık dosya paylaşımları için geçici silme olanağı sunmaktadır. Geçici silme, bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından yanlışlıkla silindiğinde verilerinizi kurtarmanıza olanak sağlar.
+Azure depolama, artık dosya paylaşımları (Önizleme) için geçici silme olanağı sunuyor. Geçici silme, bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından yanlışlıkla silindiğinde verilerinizi kurtarmanıza olanak sağlar.
 
-## <a name="how-soft-delete-works"></a>Geçici silmenin çalışması
+## <a name="how-soft-delete-preview-works"></a>Geçici silme (Önizleme) nasıl işe yarar?
 
 Etkinleştirildiğinde, geçici silme, dosya paylaşımlarınızı silindiklerinde kaydetmenizi ve kurtarmanızı sağlar. Veriler silindiğinde, kalıcı olarak silinmesi yerine geçici olarak silinen bir duruma geçer. Geçici olarak silinen verilerin kalıcı olarak silinmeden önce kurtarılabilir olduğu süreyi yapılandırabilirsiniz.
 
@@ -29,7 +29,7 @@ Geçici olarak silinen Premium dosya paylaşımları için dosya paylaşım kota
 
 ### <a name="availability"></a>Kullanılabilirlik
 
-Azure dosya paylaşımları için geçici silme, tüm depolama katmanlarında, tüm depolama hesabı türlerinde ve Azure dosyalarının kullanılabildiği her bölgede kullanılabilir.
+Azure dosya paylaşımları için geçici silme (Önizleme), tüm depolama katmanlarında, tüm depolama hesabı türlerinde ve Azure dosyalarının kullanılabildiği her bölgede kullanılabilir.
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 786b4141ed83121dce069b45ce7ddcd91bb3b00e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757197"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020804"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure’daki yük dengeleme hizmetlerini kullanma
 
@@ -65,7 +65,7 @@ Aşağıdaki diyagramda bu senaryonun mimarisi gösterilmektedir:
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>1. Adım: Traffic Manager profili oluşturma
 
-1. Azure Portal, **kaynak** > **ağı** > oluştur**Traffic Manager profil** > **Oluştur**' a tıklayın.
+1. Azure Portal, **kaynak**  >  **ağı**oluştur  >  **Traffic Manager profil**  >  **Oluştur**' a tıklayın.
 2. Aşağıdaki temel bilgileri girin:
 
    * **Ad**: Traffic Manager PROFILINIZE bir DNS ön eki adı verin.
@@ -80,7 +80,7 @@ Aşağıdaki diyagramda bu senaryonun mimarisi gösterilmektedir:
 
 ### <a name="step-2-create-the-application-gateways"></a>2. Adım: uygulama ağ geçitlerini oluşturma
 
-1. Azure Portal, sol bölmedeki **kaynak** > **ağı** > oluştur**Application Gateway**' a tıklayın.
+1. Azure Portal, sol bölmedeki **kaynak**  >  **ağı**oluştur  >  **Application Gateway**' a tıklayın.
 2. Uygulama ağ geçidi hakkında aşağıdaki temel bilgileri girin:
 
    * **Ad**: uygulama ağ geçidinin adı.
@@ -96,7 +96,7 @@ Aşağıdaki diyagramda bu senaryonun mimarisi gösterilmektedir:
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Uygulama ağ geçitleri için URL yönlendirmeyi yapılandırma
 
-Bir arka uç havuzu seçtiğinizde, yol tabanlı bir kuralla yapılandırılmış bir uygulama ağ geçidi, hepsini bir kez deneme dağıtımına ek olarak istek URL 'sinin yol modelini alır. Bu senaryoda, "/images/\*" ile herhangi bir URL 'yi görüntü sunucusu havuzuna yönlendirmek için yol tabanlı bir kural ekliyoruz. Uygulama ağ geçidi için URL yolu tabanlı yönlendirmeyi yapılandırma hakkında daha fazla bilgi için, bkz. [uygulama ağ geçidi için yol tabanlı bir kural oluşturma](../application-gateway/application-gateway-create-url-route-portal.md).
+Bir arka uç havuzu seçtiğinizde, yol tabanlı bir kuralla yapılandırılmış bir uygulama ağ geçidi, hepsini bir kez deneme dağıtımına ek olarak istek URL 'sinin yol modelini alır. Bu senaryoda, "/images/" ile herhangi bir URL 'YI görüntü sunucusu havuzuna yönlendirmek için yol tabanlı bir kural ekliyoruz \* . Uygulama ağ geçidi için URL yolu tabanlı yönlendirmeyi yapılandırma hakkında daha fazla bilgi için, bkz. [uygulama ağ geçidi için yol tabanlı bir kural oluşturma](../application-gateway/application-gateway-create-url-route-portal.md).
 
 ![Application Gateway Web katmanı diyagramı](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -127,7 +127,7 @@ Bir arka uç havuzu seçtiğinizde, yol tabanlı bir kuralla yapılandırılmı�
    + **Http ayarı**: Bu KURALLA kullanılacak http ayarları.
 
    > [!IMPORTANT]
-   > Yollar: geçerli yollar "/" ile başlamalıdır. "\*" Joker karakterine yalnızca sonda izin verilir. Geçerli örnekler;/xaçıklık,\*/x, veya/xyız/.\*
+   > Yollar: geçerli yollar "/" ile başlamalıdır. "" Joker karakterine \* yalnızca sonda izin verilir. Geçerli örnekler;/xaçıklık, \* /x, veya/xyız/ \* .
 
    ![Application Gateway "yol tabanlı kural ekle" dikey penceresi](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
 
@@ -154,11 +154,11 @@ Bu senaryoda Traffic Manager, farklı bölgelerde bulunan uygulama ağ geçitler
 
 Bu senaryoda, Load Balancer Web katmanından yüksek kullanılabilirlik kümesi içindeki veritabanlarına bağlantı dağıtır.
 
-Yüksek kullanılabilirlik veritabanı kümeniz SQL Server AlwaysOn kullanıyorsa, adım adım yönergeler için [bir veya daha fazla Always on kullanılabilirlik grubu dinleyicilerini yapılandırma](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) bölümüne bakın.
+Yüksek kullanılabilirlik veritabanı kümeniz SQL Server AlwaysOn kullanıyorsa, adım adım yönergeler için [bir veya daha fazla Always on kullanılabilirlik grubu dinleyicilerini yapılandırma](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) bölümüne bakın.
 
 İç yük dengeleyiciyi yapılandırma hakkında daha fazla bilgi için, [Azure Portal iç yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)bölümüne bakın.
 
-1. Azure Portal, sol bölmedeki **kaynak** > **ağ** > **yükü dengeleyici**oluştur ' a tıklayın.
+1. Azure Portal, sol bölmedeki **kaynak**  >  **ağ**  >  **yükü dengeleyici**oluştur ' a tıklayın.
 2. Yük dengeleyiciniz için bir ad seçin.
 3. **Türü** **iç**olarak ayarlayın ve yük dengeleyicinin içinde bulunacağı uygun sanal ağı ve alt ağı seçin.
 4. **IP adresi ataması**altında **dinamik** veya **statik**' ı seçin.
@@ -211,4 +211,4 @@ Artık, herhangi bir veritabanı bağlantısı için Web katmanı sanal makinele
 
 * [Traffic Manager'a Genel Bakış](traffic-manager-overview.md)
 * [Application Gateway’e genel bakış](../application-gateway/application-gateway-introduction.md)
-* [Azure Load Balancer genel bakış](../load-balancer/load-balancer-overview.md)
+* [Azure Load Balancer’a genel bakış](../load-balancer/load-balancer-overview.md)

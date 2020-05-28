@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/01/2020
 ms.topic: tutorial
-ms.openlocfilehash: db1f6a53121e05b29f7e3441af027985a141bc2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d995e9a5cdb6fc18532e0c3533959e9feece908
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310202"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021254"
 ---
 # <a name="tutorial-working-with-remote-entities-in-unity"></a>Öğretici: Unity 'de uzak varlıklarla çalışma
 
@@ -192,7 +192,7 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 > [!CAUTION]
-> Aşağıdaki kod tarafından programlı olarak atanabileceği için, bu betiği herhangi bir oyun nesnesine atamayın.
+> Aşağıdaki kod tarafından programlı olarak atanabileceği için, bu betiği herhangi bir Unity oyun nesnesine atamayın.
 
 Daha sonra, yeni çekdiğimiz nesneye *Remotemodelentity* bileşeni eklemek için *Remoterdecaster* ' ı genişletireceğiz.
 

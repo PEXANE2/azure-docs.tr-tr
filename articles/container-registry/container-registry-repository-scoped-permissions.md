@@ -2,13 +2,13 @@
 title: Azure Container Registry içindeki depoların izinleri
 description: Görüntü çekmek veya göndermek veya başka eylemler gerçekleştirmek için bir kayıt defterindeki belirli depolara kapsamlı izinlere sahip bir belirteç oluşturun
 ms.topic: article
-ms.date: 02/13/2020
-ms.openlocfilehash: eeb2155e035dd4a3a7aa09f634c229676cd87db3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 05/27/2020
+ms.openlocfilehash: 8534c62db862f5c929d0145948fc4049c036d412
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683476"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142237"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Depo kapsamlı izinlerle belirteç oluşturma
 
@@ -20,12 +20,13 @@ Belirteç oluşturma senaryoları şunları içerir:
 * Belirli bir depoya yönelik izinlere sahip bir dış kuruluş sağlayın 
 * Depo erişimini kuruluşunuzdaki farklı kullanıcı gruplarıyla sınırlayın. Örneğin, belirli depoları hedefleyen görüntüler oluşturan geliştiriciler için yazma ve okuma erişimi ve bu depolardan dağıtım yapan takımlara okuma erişimi sağlayın.
 
+Bu özellik **Premium** kapsayıcı kayıt defterlerinde kullanılabilir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry hizmet katmanları](container-registry-skus.md).
+
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme aşamasındadır ve bazı [sınırlamalar geçerlidir](#preview-limitations). Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
-* Bu özellik **Premium** kapsayıcı kayıt defterlerinde kullanılabilir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry hizmet katmanları](container-registry-skus.md).
 * Şu anda, hizmet sorumlusu veya yönetilen kimlik gibi Azure Active Directory bir kimliğe depo kapsamındaki izinler atayamazsınız.
 * [Anonim çekme erişimi](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)için etkinleştirilmiş bir kayıt defterinde kapsam eşlemesi oluşturamazsınız.
 
@@ -52,7 +53,7 @@ Depo kapsamındaki izinleri yapılandırmak için, ilişkili *kapsam haritasına
     * Birden çok belirteci bir depolar kümesi için özdeş izinlerle yapılandırma
     * Kapsam eşlemesinde depo eylemleri eklediğinizde veya kaldırdığınızda veya farklı bir kapsam eşlemesi uyguladığınızda belirteç izinlerini güncelleştirme 
 
-  Azure Container Registry Ayrıca, tüm depolarda sabit izinlerle uygulayabileceğiniz, sistem tarafından tanımlanan çeşitli kapsam haritaları sağlar.
+  Azure Container Registry, belirteçleri oluştururken uygulayabileceğiniz, sistem tarafından tanımlanan çeşitli kapsam eşlemeleri de sağlar. Sistem tanımlı kapsam eşlemelerinin izinleri, kayıt defterinizde bulunan tüm depolar için geçerlidir.
 
 Aşağıdaki görüntüde belirteçler ve kapsam haritaları arasındaki ilişki gösterilmektedir. 
 
@@ -68,7 +69,7 @@ Aşağıdaki görüntüde belirteçler ve kapsam haritaları arasındaki ilişki
 
 ### <a name="create-token-and-specify-repositories"></a>Belirteç oluşturma ve depoları belirtme
 
-[Az ACR Token Create][az-acr-token-create] komutunu kullanarak bir belirteç oluşturun. Belirteç oluştururken, her depoda bir veya daha fazla depo ve ilişkili eylem belirtebilirsiniz. Depoların kayıt defterinde henüz olması gerekmez. Var olan bir kapsam haritasını belirterek belirteç oluşturmak için bir sonraki bölüme bakın.
+[Az ACR Token Create][az-acr-token-create] komutunu kullanarak bir belirteç oluşturun. Belirteç oluştururken, her depoda bir veya daha fazla depo ve ilişkili eylem belirtebilirsiniz. Depoların kayıt defterinde henüz olması gerekmez. Var olan bir kapsam haritasını belirterek belirteç oluşturmak için bir [sonraki bölüme](#create-token-and-specify-scope-map)bakın.
 
 Aşağıdaki örnek, kayıt defteri *myregistry* dosyasında depo üzerinde aşağıdaki izinlerle bir belirteç oluşturur `samples/hello-world` : `content/write` ve `content/read` . Varsayılan olarak, komut varsayılan belirteç durumunu olarak ayarlar `enabled` , ancak durumu istediğiniz `disabled` zaman güncelleştirebilirsiniz.
 
@@ -78,7 +79,7 @@ az acr token create --name MyToken --registry myregistry \
   content/write content/read
 ```
 
-Çıktı, iki oluşturulan parola dahil olmak üzere belirteçle ilgili ayrıntıları gösterir. Daha sonra kimlik doğrulaması için kullanmak üzere parolaları güvenli bir yere kaydetmeniz önerilir. Parolalar yeniden alınamaz, ancak yeni olanlar oluşturulabilir.
+Çıktı, belirteç hakkındaki ayrıntıları gösterir. Varsayılan olarak, iki parola oluşturulur. Daha sonra kimlik doğrulaması için kullanmak üzere parolaları güvenli bir yere kaydetmeniz önerilir. Parolalar yeniden alınamaz, ancak yeni olanlar oluşturulabilir.
 
 ```console
 {
@@ -111,6 +112,9 @@ az acr token create --name MyToken --registry myregistry \
   "type": "Microsoft.ContainerRegistry/registries/tokens"
 ```
 
+> [!NOTE]
+> Belirteç parolalarını yeniden oluşturmak ve parola sona erme sürelerini ayarlamak istiyorsanız, bu makalede daha sonra [belirteç parolalarını](#regenerate-token-passwords) yeniden oluşturma bölümüne bakın.
+
 Çıktı, oluşturulan komutun kapsam eşlemesi hakkındaki ayrıntıları içerir. `MyToken-scope-map`Aynı depo eylemlerini diğer belirteçlere uygulamak için burada adlı kapsam haritasını kullanabilirsiniz. Ya da, ilişkili belirteçlerin izinlerini değiştirmek için kapsam eşlemini daha sonra güncelleştirin.
 
 ### <a name="create-token-and-specify-scope-map"></a>Belirteç oluştur ve kapsam eşlemesini belirt
@@ -134,7 +138,10 @@ az acr token create --name MyToken \
   --scope-map MyScopeMap
 ```
 
-Çıktı, iki oluşturulan parola dahil olmak üzere belirteçle ilgili ayrıntıları gösterir. Daha sonra kimlik doğrulaması için kullanmak üzere parolaları güvenli bir yere kaydetmeniz önerilir. Parolalar yeniden alınamaz, ancak yeni olanlar oluşturulabilir.
+Çıktı, belirteç hakkındaki ayrıntıları gösterir. Varsayılan olarak, iki parola oluşturulur. Daha sonra kimlik doğrulaması için kullanmak üzere parolaları güvenli bir yere kaydetmeniz önerilir. Parolalar yeniden alınamaz, ancak yeni olanlar oluşturulabilir.
+
+> [!NOTE]
+> Belirteç parolalarını yeniden oluşturmak ve parola sona erme sürelerini ayarlamak istiyorsanız, bu makalede daha sonra [belirteç parolalarını](#regenerate-token-passwords) yeniden oluşturma bölümüne bakın.
 
 ## <a name="create-token---portal"></a>Belirteç oluşturma-Portal
 
@@ -143,14 +150,16 @@ Belirteçleri ve kapsam eşlemelerini oluşturmak için Azure portal kullanabili
 Aşağıdaki örnek bir belirteç oluşturur ve depo üzerinde aşağıdaki izinlerle bir kapsam haritası oluşturur `samples/hello-world` : `content/write` ve `content/read` .
 
 1. Portalda kapsayıcı Kayıt defterinize gidin.
-1. **Hizmetler**altında **belirteçler (Önizleme) > + Ekle**' yi seçin.
-  ![Portalda belirteç oluşturma](media/container-registry-repository-scoped-permissions/portal-token-add.png)
+1. **Depo izinleri**altında **belirteçler (Önizleme) > + Ekle**' yi seçin.
+
+      :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-add.png" alt-text="Portalda belirteç oluşturma":::
 1. Bir belirteç adı girin.
 1. **Kapsam eşlemesi**altında **Yeni oluştur**' u seçin.
 1. Kapsam eşlemesini yapılandırma:
     1. Kapsam eşlemesi için bir ad ve açıklama girin. 
     1. **Depolar**' ın altında `samples/hello-world` , ve **izinler**altında, ve ' ı seçin `content/read` `content/write` . Ardından **+ Ekle**' yi seçin.  
-    ![Portalda kapsam haritası oluşturma](media/container-registry-repository-scoped-permissions/portal-scope-map-add.png)
+
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Portalda kapsam haritası oluşturma":::
 
     1. Depoları ve izinleri ekledikten sonra, kapsam eşlemesini eklemek için **Ekle** ' yi seçin.
 1. **Etkin** ' in varsayılan belirteç **durumunu** kabul edin ve **Oluştur**' u seçin.
@@ -159,26 +168,26 @@ Belirteç doğrulandıktan ve oluşturulduktan sonra, **belirteçler** ekranınd
 
 ### <a name="add-token-password"></a>Belirteç parolası Ekle
 
-Belirteç oluşturduktan sonra bir parola oluşturun. Kayıt defteri ile kimlik doğrulaması yapmak için belirtecin etkinleştirilmesi ve geçerli bir parolaya sahip olması gerekir.
-
-Bir veya iki parola oluşturabilir ve her biri için bir sona erme tarihi ayarlayabilirsiniz. 
+Portalda oluşturulan bir belirteci kullanmak için bir parola oluşturmanız gerekir. Bir veya iki parola oluşturabilir ve her biri için bir sona erme tarihi ayarlayabilirsiniz. 
 
 1. Portalda kapsayıcı Kayıt defterinize gidin.
-1. **Hizmetler**altında **belirteçler (Önizleme)** öğesini seçin ve bir belirteç seçin.
+1. **Depo izinleri**altında **belirteçler (Önizleme)** öğesini seçin ve bir belirteç seçin.
 1. Belirteç ayrıntılarında **Parola1** veya **paSsWorD2**' yi seçin ve Oluştur simgesini seçin.
-1. Parola ekranında, isteğe bağlı olarak parola için bir sona erme tarihi ayarlayın ve **Oluştur**' u seçin.
+1. Parola ekranında, isteğe bağlı olarak parola için bir sona erme tarihi ayarlayın ve **Oluştur**' u seçin. Sona erme tarihi ayarlamanız önerilir.
 1. Parola oluşturduktan sonra güvenli bir konuma kopyalayın ve kaydedin. Ekran kapatıldıktan sonra oluşturulan bir parolayı alamazsınız, ancak yeni bir tane oluşturabilirsiniz.
 
-    ![Portalda belirteç parolası oluşturma](media/container-registry-repository-scoped-permissions/portal-token-password.png)
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Portalda belirteç parolası oluşturma":::
 
 ## <a name="authenticate-with-token"></a>Belirteç ile kimlik doğrulama
 
-Bir kullanıcı veya hizmet, hedef kayıt defteri ile kimlik doğrulaması yapmak için bir belirteç kullandığında, belirteç adını Kullanıcı adı ve oluşturduğu parolalardan biri olarak sağlar. Kimlik doğrulama yöntemi, belirteç ile ilişkili eyleme veya eylemlere bağlıdır.
+Bir kullanıcı veya hizmet, hedef kayıt defteri ile kimlik doğrulaması yapmak için bir belirteç kullandığında, belirteç adını Kullanıcı adı ve oluşturduğu parolalardan biri olarak sağlar. 
+
+Kimlik doğrulama yöntemi, belirteç ile ilişkili eyleme veya eylemlere bağlıdır.
 
 |Eylem  |Kimlik doğrulaması nasıl yapılır?  |
   |---------|---------|
-  |`content/delete`    | `az acr repository delete`Azure CLı 'da |
-  |`content/read`     |  `docker login`<br/><br/>`az acr login`Azure CLı 'da  |
+  |`content/delete`    | `az acr repository delete`Azure CLı 'da<br/><br/>Örnek: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
+  |`content/read`     |  `docker login`<br/><br/>`az acr login`Azure CLı 'da<br/><br/>Örnek: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
   |`content/write`     |  `docker login`<br/><br/>`az acr login`Azure CLı 'da     |
   |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests`Azure CLı 'da   |
   |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update`Azure CLı 'da |
@@ -200,7 +209,7 @@ docker tag hello-world myregistry.azurecr.io/samples/alpine:v1
 
 ### <a name="authenticate-using-token"></a>Belirteç kullanarak kimlik doğrulama
 
-`docker login`Kayıt defteri ile kimlik doğrulaması yapmak için ' i çalıştırın, Kullanıcı adı olarak belirteç adını sağlayın ve parolalarından birini sağlayın. Belirtecin `Enabled` durumu olmalıdır.
+`docker login` `az acr login` Görüntüleri göndermek veya çekmek için kayıt defteri ile kimlik doğrulaması yapmak için veya çalıştırın. Kullanıcı adı olarak belirteç adını sağlayın ve parolalarından birini sağlayın. Belirtecin `Enabled` durumu olmalıdır.
 
 Aşağıdaki örnek bash kabuğu için biçimlendirilir ve ortam değişkenlerini kullanarak değerleri sağlar.
 
@@ -231,7 +240,7 @@ Belirtecin depoya yönelik izinleri yoktur `samples/alpine` , bu nedenle aşağ�
 docker push myregistry.azurecr.io/samples/alpine:v1
 ```
 
-### <a name="change-pushpull-permissions"></a>Gönderme/çekme izinlerini değiştir
+### <a name="update-token-permissions"></a>Belirteç izinlerini güncelleştirme
 
 Bir belirtecin izinlerini güncelleştirmek için, ilişkili kapsam eşlemesindeki izinleri güncelleştirin. Güncelleştirilmiş kapsam eşlemesi tüm ilişkili belirteçlere hemen uygulanır. 
 
@@ -250,7 +259,7 @@ az acr scope-map update \
 Azure portalında:
 
 1. Kapsayıcı Kayıt defterinize gidin.
-1. **Hizmetler**' ın altında **kapsam haritaları ' nı (Önizleme)** seçin ve güncelleştirilecek kapsam eşlemesini seçin.
+1. **Depo izinleri**altında **kapsam haritaları ' nı (Önizleme)** seçin ve güncelleştirilecek kapsam eşlemesini seçin.
 1. **Depolar**' ın altında `samples/alpine` , ve **izinler**altında, ve ' ı seçin `content/read` `content/write` . Ardından **+ Ekle**' yi seçin.
 1. **Depolar**' ın altında, `samples/hello-world` **izinler**' i seçin ve sonra seçimini kaldırın `content/write` . Sonra **Kaydet**' i seçin.
 
@@ -285,9 +294,9 @@ az acr scope-map update \
   --add samples/alpine content/delete
 ``` 
 
-Portalı kullanarak kapsam eşlemesini güncelleştirmek için önceki bölüme bakın.
+Portalı kullanarak kapsam eşlemesini güncelleştirmek için [önceki bölüme](#update-token-permissions)bakın.
 
-Depoyu silmek için aşağıdaki [az ACR Repository Delete][az-acr-repository-delete] komutunu kullanın `samples/alpine` . Görüntüleri veya depoları silmek için, belirteç aracılığıyla kimlik doğrulaması yapmaz `docker login` . Bunun yerine, belirtecin adını ve parolasını komuta geçirin. Aşağıdaki örnek, makalesinde daha önce oluşturulan ortam değişkenlerini kullanır:
+Depoyu silmek için aşağıdaki [az ACR Repository Delete][az-acr-repository-delete] komutunu kullanın `samples/alpine` . Görüntüleri veya depoları silmek için, belirtecin adını ve parolasını komuta geçirin. Aşağıdaki örnek, makalesinde daha önce oluşturulan ortam değişkenlerini kullanır:
 
 ```azurecli
 az acr repository delete \
@@ -308,11 +317,11 @@ az acr scope-map update \
   --add samples/hello-world metadata/read 
 ```  
 
-Portalı kullanarak kapsam eşlemesini güncelleştirmek için önceki bölüme bakın.
+Portalı kullanarak kapsam eşlemesini güncelleştirmek için [önceki bölüme](#update-token-permissions)bakın.
 
 Depodaki meta verileri okumak için `samples/hello-world` [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests] veya [az ACR Repository Show-Tags][az-acr-repository-show-tags] komutunu çalıştırın. 
 
-Meta verileri okumak için, belirteç aracılığıyla kimlik doğrulaması yapmaz `docker login` . Bunun yerine, belirtecin adını ve parolasını her iki komuta de geçirin. Aşağıdaki örnek, makalesinde daha önce oluşturulan ortam değişkenlerini kullanır:
+Meta verileri okumak için, belirtecin adını ve parolasını her iki komuta de geçirin. Aşağıdaki örnek, makalesinde daha önce oluşturulan ortam değişkenlerini kullanır:
 
 ```azurecli
 az acr repository show-tags \
@@ -327,18 +336,19 @@ az acr repository show-tags \
   "v1"
 ]
 ```
+
 ## <a name="manage-tokens-and-scope-maps"></a>Belirteçleri ve kapsam haritalarını yönetme
 
 ### <a name="list-scope-maps"></a>Kapsam haritalarını Listele
 
-Bir kayıt defterinde yapılandırılmış tüm kapsam haritalarını listelemek için [az ACR Scope-Map List][az-acr-scope-map-list] komutunu veya portaldaki **kapsam haritaları (Önizleme)** ekranını kullanın. Örnek:
+Bir kayıt defterinde yapılandırılmış tüm kapsam haritalarını listelemek için [az ACR Scope-Map List][az-acr-scope-map-list] komutunu veya portaldaki **kapsam haritaları (Önizleme)** ekranını kullanın. Örneğin:
 
 ```azurecli
 az acr scope-map list \
   --registry myregistry --output table
 ```
 
-Çıktıda, tanımladığınız kapsam haritaları ve belirteçleri yapılandırmak için kullanabileceğiniz sistem tanımlı çeşitli kapsam haritaları gösterilmektedir:
+Çıktı, sistem tarafından tanımlanan üç kapsam haritasından ve sizin tarafınızdan oluşturulan diğer kapsam eşlemlerinden oluşur. Belirteçler, bu kapsam eşlemelerinden herhangi biriyle yapılandırılabilir.
 
 ```
 NAME                 TYPE           CREATION DATE         DESCRIPTION
@@ -351,22 +361,22 @@ MyScopeMap           UserDefined    2019-11-15T21:17:34Z  Sample scope map
 
 ### <a name="show-token-details"></a>Belirteç ayrıntılarını göster
 
-Durum ve parola süre sonu tarihleri gibi bir belirtecin ayrıntılarını görüntülemek için [az ACR Token Show][az-acr-token-show] komutunu çalıştırın veya portalda **belirteçler (Önizleme)** ekranında belirteci seçin. Örnek:
+Durum ve parola süre sonu tarihleri gibi bir belirtecin ayrıntılarını görüntülemek için [az ACR Token Show][az-acr-token-show] komutunu çalıştırın veya portalda **belirteçler (Önizleme)** ekranında belirteci seçin. Örneğin:
 
 ```azurecli
 az acr scope-map show \
   --name MyScopeMap --registry myregistry
 ```
 
-Bir kayıt defterinde yapılandırılan tüm belirteçleri listelemek için [az ACR Token List][az-acr-token-list] komutunu veya portalda **belirteçler (Önizleme)** ekranını kullanın. Örnek:
+Bir kayıt defterinde yapılandırılan tüm belirteçleri listelemek için [az ACR Token List][az-acr-token-list] komutunu veya portalda **belirteçler (Önizleme)** ekranını kullanın. Örneğin:
 
 ```azurecli
 az acr token list --registry myregistry --output table
 ```
 
-### <a name="generate-passwords-for-token"></a>Belirteç için parolalar oluştur
+### <a name="regenerate-token-passwords"></a>Belirteç parolalarını yeniden oluştur
 
-Belirteç parolanız yoksa veya yeni parolalar oluşturmak istiyorsanız [az ACR Token Credential Generate][az-acr-token-credential-generate] komutunu çalıştırın. 
+Belirteç parolası oluşturmadıysanız veya yeni parolalar oluşturmak istiyorsanız [az ACR Token Credential Generate][az-acr-token-credential-generate] komutunu çalıştırın. 
 
 Aşağıdaki örnek, Parola1 for the *Mytoken* token için 30 günlük süre sonu ile yeni bir değer oluşturur. Parolayı ortam değişkeninde depolar `TOKEN_PWD` . Bu örnek bash kabuğu için biçimlendirilir.
 
@@ -380,7 +390,7 @@ Belirteç parolası oluşturmak için Azure portal kullanmak için, bu makalenin
 
 ### <a name="update-token-with-new-scope-map"></a>Belirteci yeni kapsam eşlemesiyle Güncelleştir
 
-Farklı bir kapsam eşlemesine sahip bir belirteci güncelleştirmek istiyorsanız [az ACR Token Update][az-acr-token-update] ' i çalıştırın ve yeni kapsam haritasını belirtin. Örnek:
+Farklı bir kapsam eşlemesine sahip bir belirteci güncelleştirmek istiyorsanız [az ACR Token Update][az-acr-token-update] ' i çalıştırın ve yeni kapsam haritasını belirtin. Örneğin:
 
 ```azurecli
 az acr token update --name MyToken --registry myregistry \

@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Azure Dev Spaces ve Azure Kubernetes hizmetlerini kullanarak iş sürekliliği sağlamanıza ve olağanüstü durum kurtarma için hazırlık yapmayı öğrenin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78295836"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996933"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 'de iş sürekliliği ve olağanüstü durum kurtarma
 
@@ -26,14 +26,6 @@ Azure Dev Spaces, Azure Kubernetes hizmeti 'nin (AKS) bir özelliğidir. AKS 'de
 Farklı bölgelerdeki AKS kümelerinde dev alanlarını etkinleştirmek, Azure bölge hatasından hemen sonra dev alanlarını kullanmayı sürdürmeye olanak tanır.
 
 AKS 'nin çok bölgeli dağıtımları hakkında genel bilgi için bkz. [çok bölgeli dağıtım Için plan](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
-
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>Azure portal aracılığıyla dev alanlarını etkinleştirme
-
-Azure portal her kümenin ayarlarının altında bulunan **dev Spaces** menü öğesini seçin. Ardından, dev alanlarını etkinleştirme ve kaydetme seçeneğini belirleyin.
-
-![Azure portal aracılığıyla dev alanlarını etkinleştirme](../media/common/enable-dev-spaces.jpg)
-
-Her küme için bu işlemi tekrarlayın.
 
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>Azure CLı aracılığıyla dev alanlarını etkinleştirme
 
@@ -88,11 +80,11 @@ Doğru kümeyi ve boşluğu seçtikten sonra, geliştirme alanlarında hizmeti �
 
 ## <a name="access-a-service-on-a-backup-cluster"></a>Bir yedekleme kümesindeki bir hizmete erişme
 
-Hizmetinizi ortak bir DNS adı kullanacak şekilde yapılandırdıysanız, bir yedekleme kümesinde çalıştırırsanız hizmetin farklı bir URL 'SI olur. Ortak DNS adları her zaman biçimindedir `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. Farklı bir kümeye geçerseniz, küme GUID 'SI ve muhtemelen bölge değişir.
+Hizmetinizi ortak bir DNS adı kullanacak şekilde yapılandırdıysanız, bir yedekleme kümesinde çalıştırırsanız hizmetin farklı bir URL 'SI olur. Ortak DNS adları her zaman biçimindedir `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io` . Farklı bir kümeye geçerseniz, küme GUID 'SI ve muhtemelen bölge değişir.
 
-Geliştirme alanları her zaman, çalışırken `azds up`HIZMETIN doğru URL 'sini veya **Azure dev Spaces**altında Visual Studio 'daki çıkış penceresinde gösterir.
+Geliştirme alanları her zaman, çalışırken hizmetin doğru URL 'sini `azds up` veya **Azure dev Spaces**altında Visual Studio 'daki çıkış penceresinde gösterir.
 
-Ayrıca, `azds list-uris` komutunu çalıştırarak URL 'yi bulabilirsiniz:
+Ayrıca, komutunu çalıştırarak URL 'YI bulabilirsiniz `azds list-uris` :
 ```
 $ azds list-uris
 Uri                                                     Status

@@ -3,12 +3,12 @@ title: Azure VM yedeğinden dosya ve klasörleri kurtarma
 description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klasörleri kurtarmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 0cb3b588aadcda232d1a9a07fc6d9336448cb5a5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757985"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118127"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -181,7 +181,7 @@ mount [RAID Disk Path] [/mountpath]
 
 RAID diskinde yapılandırılmış başka bir LVM varsa, LVM bölümleri için önceki yordamı kullanın, ancak RAID disk adı yerine birim adını kullanın.
 
-## <a name="system-requirements"></a>Sistem Gereksinimleri
+## <a name="system-requirements"></a>Sistem gereksinimleri
 
 ### <a name="for-windows-os"></a>Windows işletim sistemi için
 
@@ -228,7 +228,7 @@ Betiği kısıtlı erişimi olan bir bilgisayarda çalıştırırsanız, erişim
 
 - `download.microsoft.com`
 - Kurtarma Hizmeti URL 'Leri (coğrafi ad, kurtarma hizmeti kasasının bulunduğu bölgeyi ifade eder)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Azure genel geos için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Azure ortak bölgeleri için)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn`(Azure Çin 21Vianet için)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us`(Azure ABD kamu için)
   - `https://pod01-rec2.geo-name.backup.windowsazure.de`(Azure Almanya için)

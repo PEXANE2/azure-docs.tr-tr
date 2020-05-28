@@ -32,7 +32,7 @@ Microsoft, en azından aşağıdaki rollerde MFA gerektirmenizi önerir:
 * Parola yöneticisi
 * Güvenlik yöneticisi
 * SharePoint yöneticisi
-* Kullanıcı Yöneticisi
+* Kullanıcı yöneticisi
 
 Kuruluşlar, uygun gördüğünüz şekilde rolleri dahil etmek veya hariç tutmak seçebilirler.
 
@@ -64,7 +64,7 @@ Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication ge
       * Parola yöneticisi
       * Güvenlik yöneticisi
       * SharePoint yöneticisi
-      * Kullanıcı Yöneticisi
+      * Kullanıcı yöneticisi
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
    1. **Done** (Bitti) öğesini seçin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin ve **bitti**' yi seçin.

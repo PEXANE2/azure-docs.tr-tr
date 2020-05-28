@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: fd11fd32c4c6901302d1f7960ad38ad426e6a3a6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 156d960571f4d5f28f64823ecbe8f0465739bb23
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664672"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141730"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na yönetilen kimlikle bağlanma
 
@@ -22,6 +22,9 @@ Bu makalede, bir Azure sanal makinesi (VM) için bir Azure veritabanına MySQL s
 > * Veritabanında, VM 'nin Kullanıcı tarafından atanan kimliğini temsil eden bir kullanıcı oluşturun
 > * VM kimliğini kullanarak bir erişim belirteci alın ve bunu kullanarak MySQL için Azure veritabanı sunucusunu sorgulayın
 > * C# örnek uygulamasında belirteç alımı uygulama
+
+> [!IMPORTANT]
+> Yönetilen kimlikle bağlantı yalnızca MySQL 5,7 ve üzeri sürümlerde kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

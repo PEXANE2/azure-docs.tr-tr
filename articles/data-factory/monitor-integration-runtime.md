@@ -46,7 +46,7 @@ Aşağıdaki tabloda, bir Azure tümleştirme çalışma zamanı için cmdlet ta
 | Özellik | Açıklama |
 -------- | ------------- | 
 | Name | Azure tümleştirme çalışma zamanının adı. |  
-| Durum | Azure tümleştirme çalışma zamanının durumu. | 
+| Eyalet | Azure tümleştirme çalışma zamanının durumu. | 
 | Konum | Azure tümleştirme çalışma zamanının konumu. Bir Azure tümleştirme çalışma zamanının konumu hakkındaki ayrıntılar için bkz. [Integration Runtime 'A giriş](concepts-integration-runtime.md). |
 | DataFactoryName | Azure tümleştirme çalışma zamanının ait olduğu veri fabrikasının adı. | 
 | ResourceGroupName | Data Factory 'nin ait olduğu kaynak grubunun adı.  |
@@ -165,7 +165,7 @@ Azure-SSIS Integration Runtime, SSIS paketlerinizi çalıştırmak için adanmı
 | Düğümler | Azure-SSIS tümleştirme çalışma zamanının ayrılan/kullanılabilir düğümleri, düğüme özgü durumlar (başlangıç/kullanılabilir/geri dönüştürme/kullanılamaz) ve eylem yapılabilir hatalar ile. |
 | Diğer hatalar | Azure-SSIS tümleştirme çalışma zamanı 'nda düğüme özgü olmayan işlem yapılabilir hatalar. |
 | LastOperation | Azure-SSIS tümleştirme çalışma zamanmağınızda son başlatma/durdurma işleminin sonucu başarısız olursa, işlem yapılabilir hata (ler). |
-| Durum | Azure-SSIS tümleştirme çalışma zamanının genel durumu (ilk/başlangıç/başlatma/durdurma/durdurma). |
+| Eyalet | Azure-SSIS tümleştirme çalışma zamanının genel durumu (ilk/başlangıç/başlatma/durdurma/durdurma). |
 | Konum | Azure-SSIS tümleştirme çalışma zamanının konumu. |
 | NodeSize | Azure-SSIS tümleştirme çalışma zamanının her bir düğümünün boyutu. |
 | NodeCount | Azure-SSIS tümleştirme çalışma zamanının düğüm sayısı. |

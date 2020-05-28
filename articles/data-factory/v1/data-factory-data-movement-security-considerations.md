@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1f19d258531e5368238cba72c986aede3f4a64ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c22168aade11bbba66682efea0e2f5a1fcc2ac1f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80130830"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021509"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-veri hareketine yönelik güvenlik konuları
 
@@ -173,7 +173,7 @@ Buluttaki bazı veri depoları da bunlara erişen makinenin IP adresinin beyaz l
 
 Aşağıdaki bulut veri depoları, ağ geçidi makinesinin IP adresinin beyaz listesini gerektirir. Bu veri mağazalarından bazıları varsayılan olarak IP adresinin beyaz listesini gerektirmeyebilir. 
 
-- [Azure SQL Veritabanı](../../sql-database/sql-database-firewall-configure.md) 
+- [Azure SQL Veritabanı](../../azure-sql/database/firewall-configure.md) 
 - [Azure SQL Veri Ambarı](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)

@@ -9,17 +9,17 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8501f9d07ffa2d04915d4d1a351317cc145f9844
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116256"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118259"
 ---
 # <a name="overview-query-data-in-storage"></a>Genel Bakış: depolamada verileri sorgulama
 
 Bu bölümde, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kaynağını denemek için kullanabileceğiniz örnek sorgular yer almaktadır.
-Şu anda Desteklenen dosyalar: 
+Şu anda desteklenen dosya biçimleri şunlardır:  
 - CSV
 - Parquet
 - JSON
@@ -44,67 +44,13 @@ Ayrıca parametreler aşağıdaki gibidir:
 
 ## <a name="first-time-setup"></a>İlk kez kurulum
 
-Bu makalenin ilerleyen kısımlarında yer alan örnekleri kullanmadan önce iki adım vardır:
-
-- Görünümleriniz için bir veritabanı oluşturma (görünümleri kullanmak istediğiniz durumlarda)
-- Depolamadaki dosyalara erişmek için SQL isteğe bağlı olarak kullanılacak kimlik bilgilerini oluşturun
-
-### <a name="create-database"></a>Veritabanı oluşturma
-
-Görünümler oluşturmak için bir veritabanı gerekir. Bu veritabanını, bu belgede bazı örnek sorgular için kullanacaksınız.
+İlk adımınız sorguları yürütebileceğiniz **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde verileri okumak için kullanılan harici dosya biçimlerini oluşturacaktır.
 
 > [!NOTE]
 > Veritabanları, gerçek veriler için değil yalnızca meta verileri görüntülemek için kullanılır.  Kullandığınız veritabanı adını, daha sonra ihtiyacınız olacak şekilde yazın.
 
 ```sql
 CREATE DATABASE mydbname;
-```
-
-### <a name="create-credentials"></a>Kimlik bilgileri oluştur
-
-Sorguları çalıştırabilmeniz için önce kimlik bilgileri oluşturmanız gerekir. Bu kimlik bilgisi, depolama alanındaki dosyalara erişmek için SQL isteğe bağlı hizmeti tarafından kullanılacaktır.
-
-> [!NOTE]
-> Bu bölümde nasıl yapılacağını başarıyla çalıştırmak için SAS belirtecini kullanmanız gerekir.
->
-> SAS belirteçlerini kullanmaya başlamak için, aşağıdaki [makalede](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)açıklanan UserIdentity öğesini bırakmalısınız.
->
-> İsteğe bağlı SQL, varsayılan olarak her zaman AAD geçişli geçiş kullanır.
-
-Depolama erişim denetimini yönetme hakkında daha fazla bilgi için bu [bağlantıyı](develop-storage-files-storage-access-control.md)inceleyin.
-
-CSV, JSON ve Parquet kapsayıcıları için kimlik bilgileri oluşturmak üzere aşağıdaki kodu çalıştırın:
-
-```sql
--- create credentials for CSV container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/csv')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for JSON container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/json')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for PARQUET container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/parquet')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
 ```
 
 ## <a name="provided-demo-data"></a>Sunulan tanıtım verileri
@@ -132,24 +78,6 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 | nesnesinde                                                       | JSON biçimindeki veriler için üst klasör                        |
 | /JSON/Books/                                                 | Kitap verileri içeren JSON dosyaları                                   |
 
-## <a name="validation"></a>Doğrulama
-
-Aşağıdaki üç sorguyu yürütün ve kimlik bilgilerinin doğru şekilde oluşturulup oluşturulmadığını denetleyin.
-
-> [!NOTE]
-> Örnek sorgulardaki tüm URI 'Ler Kuzey Avrupa Azure bölgesinde bulunan bir depolama hesabı kullanır. Uygun kimlik bilgisini oluşturduğunuza emin olun. Aşağıdaki sorguyu çalıştırın ve depolama hesabının listelendiğinden emin olun.
-
-```sql
-SELECT name
-FROM sys.credentials
-WHERE
-     name IN ( 'https://sqlondemandstorage.blob.core.windows.net/csv',
-     'https://sqlondemandstorage.blob.core.windows.net/parquet',
-     'https://sqlondemandstorage.blob.core.windows.net/json');
-```
-
-Uygun kimlik bilgisini bulamıyorsanız, [ilk kez kurulumunu](#first-time-setup)denetleyin.
-
 ### <a name="sample-query"></a>Örnek sorgu
 
 Doğrulamanın son adımı aşağıdaki sorguyu yürütmeniz olur:
@@ -159,7 +87,8 @@ SELECT
     COUNT_BIG(*)
 FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet',
+        BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+        DATA_SOURCE = 'sqlondemanddemo',
         FORMAT='PARQUET'
     ) AS nyc;
 ```

@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 7f91d8eab2e7a29163dae5ae2a4d34792ddd0cb0
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 6c6191936f76431bd4e7b6f1d4eff2074ce4b04d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005502"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141798"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps ' de HTTPS uç noktalarını kullanarak Logic Apps 'i çağırma, tetikleme veya iç içe geçme
 
@@ -28,7 +28,7 @@ Mantıksal uygulamanızın diğer hizmetlerden gelen istekleri alabilmesi için 
 
 Logic Apps 'e yeni başladıysanız, bkz. [Azure Logic Apps nedir](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -36,11 +36,11 @@ Logic Apps 'e yeni başladıysanız, bkz. [Azure Logic Apps nedir](../logic-apps
 
 ## <a name="create-a-callable-endpoint"></a>Çağrılabilir bir uç nokta oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş bir mantıksal uygulama oluşturun ve açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş bir mantıksal uygulama oluşturun ve açın.
 
    Bu örnek, Istek tetikleyicisini kullanır, ancak gelen HTTPS isteklerini alabilen herhangi bir tetikleyiciyi kullanabilirsiniz. Tüm ilkeler bu Tetikleyiciler için aynı şekilde geçerlidir. Istek tetikleyicisi hakkında daha fazla bilgi için, bkz. [Azure Logic Apps kullanarak gelen https çağrılarını alma ve yanıtlama](../connectors/connectors-native-reqres.md).
 
-1. Arama kutusunda, **yerleşik**' i seçin. Arama kutusuna filtreniz olarak yazın `request` . Tetikleyiciler listesinden **BIR http isteği alındığında**öğesini seçin.
+1. Arama kutusunda, **yerleşik**' i seçin. Arama kutusuna `request` filtreniz olarak yazın. Tetikleyiciler listesinden **BIR http isteği alındığında**öğesini seçin.
 
    ![Istek tetikleyicisini bul ve Seç](./media/logic-apps-http-endpoint/find-and-select-request-trigger.png)
 
@@ -148,11 +148,14 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
 * [PARAMETRELERI Al veya URL parametreleri aracılığıyla kabul edin](#get-parameters) .
 
-  Bu değerler, uç noktanın URL 'sinde ad-değer çiftleri olarak geçirilir. Bu seçenek için, Istek tetikleyicinizdeki GET yöntemini kullanmanız gerekir. Sonraki bir eylemde, bir ifadede `triggerOutputs()` işlevini kullanarak parametre değerlerini tetikleyici çıkışları olarak alabilirsiniz.
+  Bu değerler, uç noktanın URL 'sinde ad-değer çiftleri olarak geçirilir. Bu seçenek için, Istek tetikleyicinizdeki GET yöntemini kullanmanız gerekir. Sonraki bir eylemde, bir ifadede işlevini kullanarak parametre değerlerini tetikleyici çıkışları olarak alabilirsiniz `triggerOutputs()` .
 
 * Istek tetikleyicinizdeki parametreler için [göreli bir yol aracılığıyla değerleri kabul edin](#relative-path) .
 
   Bu değerler bitiş noktasının URL 'sindeki göreli bir yol üzerinden geçirilir. Ayrıca, tetikleyicinin beklediği [yöntemi açıkça seçmeniz](#select-method) gerekir. Sonraki bir eylemde, bu çıkışlara doğrudan başvurarak parametre değerlerini tetikleyici çıkışları olarak alabilirsiniz.
+
+> [!NOTE]
+> URL, "at" sembolünün () kullanılmasına izin verir **@** , ancak karma simgesini () değil **#** .
 
 <a name="get-parameters"></a>
 
@@ -164,15 +167,15 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
 1. Istek tetikleyicisi altında, parametre değerini kullanmak istediğiniz eylemi ekleyin. Bu örnekte, **Yanıt** eylemini ekleyin.
 
-   1. İstek tetikleyicisi altında **yeni adım** > **Eylem Ekle**' yi seçin.
+   1. İstek tetikleyicisi altında **yeni adım**  >  **Eylem Ekle**' yi seçin.
    
-   1. **Eylem seçin**altında, arama kutusuna filtreniz olarak girin `response` . Eylemler listesinden, **Yanıt** eylemini seçin.
+   1. **Eylem seçin**altında, arama kutusuna `response` filtreniz olarak girin. Eylemler listesinden, **Yanıt** eylemini seçin.
 
-1. Parametre değerini alan `triggerOutputs()` ifadeyi oluşturmak için aşağıdaki adımları izleyin:
+1. `triggerOutputs()`Parametre değerini alan ifadeyi oluşturmak için aşağıdaki adımları izleyin:
 
    1. Dinamik içerik listesi görünecek şekilde yanıt eyleminin **gövde** özelliğinin içine tıklayın ve **ifade**' i seçin.
 
-   1. **İfade** kutusuna bu ifadeyi girip parametre adınızla değiştirin `parameter-name` ve **Tamam**' ı seçin.
+   1. **İfade** kutusuna bu ifadeyi girip `parameter-name` parametre adınızla değiştirin ve **Tamam**' ı seçin.
 
       `triggerOutputs()['queries']['parameter-name']`
 
@@ -190,11 +193,11 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
       `"body": "@{triggerOutputs()['queries']['parameter-name']}",`
 
-      Örneğin, adlı `postalCode`bir parametre için bir değer geçirmek istediğinizi varsayalım. **Body** özelliği, izleyen bir boşluk `Postal Code: ` ile, ardından karşılık gelen ifade olan dizeyi belirtir:
+      Örneğin, adlı bir parametre için bir değer geçirmek istediğinizi varsayalım `postalCode` . **Body** özelliği, `Postal Code: ` izleyen bir boşluk ile, ardından karşılık gelen ifade olan dizeyi belirtir:
 
       ![Tetiklenecek "Triggerçıktılar ()" ifadesini ekleyin](./media/logic-apps-http-endpoint/trigger-outputs-expression-postal-code.png)
 
-1. Çağrılabilir uç noktanızı test etmek için, Istek tetikleyicisinden geri çağırma URL 'sini kopyalayın ve URL 'YI başka bir tarayıcı penceresine yapıştırın. URL 'de, soru işaretini (`?`) izleyen parametre adını ve değerini AŞAĞıDAKI biçimde URL 'ye ekleyin ve ENTER tuşuna basın.
+1. Çağrılabilir uç noktanızı test etmek için, Istek tetikleyicisinden geri çağırma URL 'sini kopyalayın ve URL 'YI başka bir tarayıcı penceresine yapıştırın. URL 'de, soru işaretini () izleyen parametre adını ve değerini `?` aşağıdaki BIÇIMDE URL 'ye ekleyin ve ENTER tuşuna basın.
 
    `...?{parameter-name=parameter-value}&api-version=2016-10-01...`
 
@@ -204,11 +207,11 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
    ![İsteği geri çağırma URL 'sine gönderme yanıtı](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
-1. Parametre adını ve değerini URL içindeki farklı bir konuma yerleştirmek için, ampersan (`&`) önekini önek olarak kullandığınızdan emin olun, örneğin:
+1. Parametre adını ve değerini URL içindeki farklı bir konuma yerleştirmek için, ampersan ( `&` ) önekini önek olarak kullandığınızdan emin olun, örneğin:
 
    `...?api-version=2016-10-01&{parameter-name=parameter-value}&...`
 
-   Bu örnekte, URL içindeki farklı konumlarda örnek parametre adı ve değeri `postalCode=123456` ile geri çağırma URL 'si gösterilmektedir:
+   Bu örnekte, `postalCode=123456` URL içindeki farklı konumlarda örnek parametre adı ve değeri ile geri çağırma URL 'si gösterilmektedir:
 
    * ilk konum:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
@@ -222,21 +225,21 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
    ![Tetikleyiciye "göreli yol" özelliği Ekle](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
-1. **Göreli yol** ÖZELLIĞINDE, JSON ŞEMANıZDA URL 'nizin kabul etmesini istediğiniz parametrenin göreli yolunu belirtin, örneğin, `/address/{postalCode}`.
+1. **Göreli yol** ÖZELLIĞINDE, JSON ŞEMANıZDA URL 'nizin kabul etmesini istediğiniz parametrenin göreli yolunu belirtin, örneğin, `/address/{postalCode}` .
 
    ![Parametre için göreli yolu belirtin](./media/logic-apps-http-endpoint/relative-path-url-value.png)
 
 1. Istek tetikleyicisi altında, parametre değerini kullanmak istediğiniz eylemi ekleyin. Bu örnekte, **Yanıt** eylemini ekleyin.
 
-   1. İstek tetikleyicisi altında **yeni adım** > **Eylem Ekle**' yi seçin.
+   1. İstek tetikleyicisi altında **yeni adım**  >  **Eylem Ekle**' yi seçin.
 
-   1. **Eylem seçin**altında, arama kutusuna filtreniz olarak girin `response` . Eylemler listesinden, **Yanıt** eylemini seçin.
+   1. **Eylem seçin**altında, arama kutusuna `response` filtreniz olarak girin. Eylemler listesinden, **Yanıt** eylemini seçin.
 
 1. Yanıt eyleminin **gövde** özelliğinde, tetikleyicinizin göreli yolunda belirttiğiniz parametreyi temsil eden belirteci ekleyin.
 
-   Örneğin, yanıt eyleminin dönmesini `Postal Code: {postalCode}`istediğinizi varsayalım.
+   Örneğin, yanıt eyleminin dönmesini istediğinizi varsayalım `Postal Code: {postalCode}` .
 
-   1. **Body** özelliğine bir sonundaki boşluk girin `Postal Code: ` . Dinamik içerik listesi açık kalacak şekilde imlecinizi düzenleme kutusunun içinde tutun.
+   1. **Body** özelliğine `Postal Code: ` bir sonundaki boşluk girin. Dinamik içerik listesi açık kalacak şekilde imlecinizi düzenleme kutusunun içinde tutun.
 
    1. Dinamik içerik listesinde, **http isteği alındığında** bölümünde, **PostaKodu** belirtecini seçin.
 
@@ -252,7 +255,7 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
    `https://prod-07.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-1. Çağrılabilir uç noktanızı test etmek için, Istek tetikleyicisinden güncelleştirilmiş geri çağırma URL 'sini kopyalayın, URL 'yi başka bir tarayıcı penceresine yapıştırın, `{postalCode}` URL 'de ile `123456`değiştirin ve ENTER tuşuna basın.
+1. Çağrılabilir uç noktanızı test etmek için, Istek tetikleyicisinden güncelleştirilmiş geri çağırma URL 'sini kopyalayın, URL 'yi başka bir tarayıcı penceresine yapıştırın, `{postalCode}` URL 'de ile değiştirin `123456` ve ENTER tuşuna basın.
 
    Tarayıcı şu metinle bir yanıt döndürür:`Postal Code: 123456`
 
@@ -260,7 +263,7 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Uç nokta URL 'SI aracılığıyla mantıksal uygulama çağırma
 
-Uç noktasını oluşturduktan sonra, uç noktanın tam URL 'sine bir HTTPS `POST` isteği göndererek mantıksal uygulamayı tetikleyebilirsiniz. Logic Apps, doğrudan erişimli uç noktalar için yerleşik desteğe sahiptir.
+Uç noktasını oluşturduktan sonra, `POST` uç noktanın tam URL 'sine BIR https isteği göndererek mantıksal uygulamayı tetikleyebilirsiniz. Logic Apps, doğrudan erişimli uç noktalar için yerleşik desteğe sahiptir.
 
 <a name="generated-tokens"></a>
 
@@ -268,7 +271,7 @@ Uç noktasını oluşturduktan sonra, uç noktanın tam URL 'sine bir HTTPS `POS
 
 Istek tetikleyicisinde bir JSON şeması sağladığınızda, mantıksal uygulama Tasarımcısı bu şemadaki özellikler için belirteçler oluşturur. Daha sonra bu belirteçleri, mantıksal uygulama iş akışınız aracılığıyla veri geçirmek için kullanabilirsiniz.
 
-Örneğin, JSON şemanıza gibi daha fazla özellik `"suite"`eklerseniz, bu özelliklerin belirteçleri mantıksal uygulamanıza yönelik sonraki adımlarda kullanabileceğiniz şekilde kullanılabilir. Tüm JSON şeması aşağıda verilmiştir:
+Örneğin, JSON şemanıza gibi daha fazla özellik eklerseniz, `"suite"` Bu özelliklerin belirteçleri mantıksal uygulamanıza yönelik sonraki adımlarda kullanabileceğiniz şekilde kullanılabilir. Tüm JSON şeması aşağıda verilmiştir:
 
 ```json
    {
@@ -302,9 +305,9 @@ Istek tetikleyicisinde bir JSON şeması sağladığınızda, mantıksal uygulam
 
 İstekleri alabilen diğer mantıksal uygulamaları ekleyerek mantıksal uygulamanıza iş akışlarını iç içe yerleştirebilirsiniz. Bu mantıksal uygulamaları eklemek için aşağıdaki adımları izleyin:
 
-1. Başka bir mantıksal uygulamayı çağırmak istediğiniz adım altında **yeni adım** > **Eylem Ekle**' yi seçin.
+1. Başka bir mantıksal uygulamayı çağırmak istediğiniz adım altında **yeni adım**  >  **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna filtreniz olarak yazın `logic apps` . Eylemler listesinden **Logic Apps iş akışı**Seç ' i seçin.
+1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna `logic apps` filtreniz olarak yazın. Eylemler listesinden **Logic Apps iş akışı**Seç ' i seçin.
 
    ![Geçerli mantıksal uygulamanın içinde iç içe mantıksal uygulama](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -316,9 +319,9 @@ Istek tetikleyicisinde bir JSON şeması sağladığınızda, mantıksal uygulam
 
 ## <a name="reference-content-from-an-incoming-request"></a>Gelen bir istekten başvuru içeriği
 
-Gelen isteğin içerik türü ise `application/json`, gelen istekteki özelliklere başvurabilirsiniz. Aksi takdirde, bu içerik diğer API 'lere geçirebilmeniz için tek bir ikili birim olarak değerlendirilir. Mantıksal uygulamanızın iş akışı içindeki bu içeriğe başvurmak için, önce bu içeriği dönüştürmeniz gerekir.
+Gelen isteğin içerik türü ise `application/json` , gelen istekteki özelliklere başvurabilirsiniz. Aksi takdirde, bu içerik diğer API 'lere geçirebilmeniz için tek bir ikili birim olarak değerlendirilir. Mantıksal uygulamanızın iş akışı içindeki bu içeriğe başvurmak için, önce bu içeriği dönüştürmeniz gerekir.
 
-Örneğin, `application/xml` türü olan içerik geçirmekte olduğunuz bir XPath ayıklama işlemini gerçekleştirmek için [ `@xpath()` ifadesini](../logic-apps/workflow-definition-language-functions-reference.md#xpath) kullanabilir veya XML 'yi JSON 'ye dönüştürmek için [ `@json()` ifadesini](../logic-apps/workflow-definition-language-functions-reference.md#json) kullanabilirsiniz. Desteklenen [içerik türleriyle](../logic-apps/logic-apps-content-type.md)çalışma hakkında daha fazla bilgi edinin.
+Örneğin, türü olan içerik `application/xml` geçirmekte olduğunuz bir XPath ayıklama işlemini gerçekleştirmek için [ `@xpath()` IFADESINI](../logic-apps/workflow-definition-language-functions-reference.md#xpath) KULLANABILIR veya XML 'yi JSON 'ye dönüştürmek için [ `@json()` ifadesini](../logic-apps/workflow-definition-language-functions-reference.md#json) kullanabilirsiniz. Desteklenen [içerik türleriyle](../logic-apps/logic-apps-content-type.md)çalışma hakkında daha fazla bilgi edinin.
 
 Gelen bir istekten gelen çıktıyı almak için, [ `@triggerOutputs` ifadesini](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs)kullanabilirsiniz. Örneğin, şu örneğe benzer bir çıktı olduğunu varsayalım:
 
@@ -333,7 +336,7 @@ Gelen bir istekten gelen çıktıyı almak için, [ `@triggerOutputs` ifadesini]
 }
 ```
 
-Özellikle `body` özelliğine erişmek için, [ `@triggerBody()` ifadesini](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) bir kısayol olarak kullanabilirsiniz.
+Özellikle özelliğine erişmek için `body` , [ `@triggerBody()` ifadesini](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) bir kısayol olarak kullanabilirsiniz.
 
 ## <a name="respond-to-requests"></a>İsteklere yanıt verme
 
@@ -345,7 +348,7 @@ Bazen, çağrı yapana içerik döndürerek mantıksal uygulamanızı tetikleyen
 
 ### <a name="construct-the-response"></a>Yanıtı oluşturun
 
-Yanıt gövdesinde, birden fazla üstbilgiyi ve herhangi bir içerik türünü dahil edebilirsiniz. Örneğin, bu yanıtın üst bilgisi, yanıtın içerik türünün olduğunu `application/json` ve gövdenin, istek tetikleyicisi için bu konuda daha önce açıklanan `town` JSON `postalCode` şemasına dayanarak, ve özellikleri için değerler içerdiğini belirtir.
+Yanıt gövdesinde, birden fazla üstbilgiyi ve herhangi bir içerik türünü dahil edebilirsiniz. Örneğin, bu yanıtın üst bilgisi, yanıtın içerik türünün olduğunu `application/json` ve gövdenin, `town` `postalCode` istek tetikleyicisi için bu konuda daha önce açıklanan JSON şemasına dayanarak, ve özellikleri için değerler içerdiğini belirtir.
 
 ![HTTPS yanıt eylemi için yanıt içeriği sağlama](./media/logic-apps-http-endpoint/content-for-response-action.png)
 
@@ -354,7 +357,7 @@ Yanıtlar şu özelliklere sahiptir:
 | Özellik (görüntüleme) | Özellik (JSON) | Açıklama |
 |--------------------|-----------------|-------------|
 | **Durum kodu** | `statusCode` | Gelen istek için yanıtta kullanılacak HTTPS durum kodu. Bu kod, 2xx, 4xx veya 5xx ile başlayan geçerli bir durum kodu olabilir. Ancak, 3xx durum kodlarına izin verilmez. |
-| **Bilgisinde** | `headers` | Yanıta eklenecek bir veya daha fazla üst bilgi |
+| **Üst Bilgiler** | `headers` | Yanıta eklenecek bir veya daha fazla üst bilgi |
 | **Gövde** | `body` | Bir dize, JSON nesnesi veya hatta önceki adımdan başvurulan ikili içerik olabilecek bir gövde nesnesi |
 ||||
 

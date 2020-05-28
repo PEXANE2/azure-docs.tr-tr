@@ -4,12 +4,12 @@ description: Uygulamanız için önceden oluşturulmuş bir PHP kapsayıcısın�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 9e87466f810dc4ebf767c36ad74c358cbf6069e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97ccc309e6fd4efd48a609ab558e9842f376ccf5
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758882"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142121"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service için bir Linux PHP uygulaması yapılandırma
 
@@ -43,11 +43,11 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
 
-1. Tarafından `PRE_BUILD_SCRIPT_PATH`belirtilmişse özel betiği çalıştırın.
+1. Tarafından belirtilmişse özel betiği çalıştırın `PRE_BUILD_SCRIPT_PATH` .
 1. `php composer.phar install` öğesini çalıştırın.
-1. Tarafından `POST_BUILD_SCRIPT_PATH`belirtilmişse özel betiği çalıştırın.
+1. Tarafından belirtilmişse özel betiği çalıştırın `POST_BUILD_SCRIPT_PATH` .
 
-`PRE_BUILD_COMMAND`ve `POST_BUILD_COMMAND` varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND`. Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND`.
+`PRE_BUILD_COMMAND`ve `POST_BUILD_COMMAND` Varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND` . Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND` .
 
 Aşağıdaki örnek, virgülle ayrılmış bir dizi komuta iki değişkeni belirtir.
 
@@ -62,7 +62,7 @@ App Service nasıl çalıştığı ve Linux 'ta PHP uygulamaları oluşturma hak
 
 ## <a name="customize-start-up"></a>Başlatmayı özelleştirme
 
-Varsayılan olarak, yerleşik PHP kapsayıcısı Apache sunucusunu çalıştırır. Başlangıçta çalışır `apache2ctl -D FOREGROUND"`. İsterseniz, aşağıdaki komutu [Cloud Shell](https://shell.azure.com)çalıştırarak başlangıç sırasında farklı bir komut çalıştırabilirsiniz:
+Varsayılan olarak, yerleşik PHP kapsayıcısı Apache sunucusunu çalıştırır. Başlangıçta çalışır `apache2ctl -D FOREGROUND"` . İsterseniz, aşağıdaki komutu [Cloud Shell](https://shell.azure.com)çalıştırarak başlangıç sırasında farklı bir komut çalıştırabilirsiniz:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -70,7 +70,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a> Ortam değişkenlerine erişme
 
-App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Ardından, standart [getenv ()](https://secure.php.net/manual/function.getenv.php) modelini kullanarak bunlara erişebilirsiniz. Örneğin, adlı `DB_HOST`bir uygulama ayarına erişmek için aşağıdaki kodu kullanın:
+App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Ardından, standart [getenv ()](https://secure.php.net/manual/function.getenv.php) modelini kullanarak bunlara erişebilirsiniz. Örneğin, adlı bir uygulama ayarına erişmek için `DB_HOST` aşağıdaki kodu kullanın:
 
 ```php
 getenv("DB_HOST")
@@ -85,7 +85,7 @@ App Service için varsayılan PHP görüntüsü Apache kullanır ve uygulamanız
 ```
 <IfModule mod_rewrite.c>
     RewriteEngine on
-
+    RewriteCond %{REQUEST_URI} ^/$
     RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
 </IfModule>
 ```
@@ -102,7 +102,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 }
 ```
 
-Popüler Web çerçeveleri standart uygulama hiyerarşinizdeki `X-Forwarded-*` bilgilere erişmenizi sağlar. [Codeigniter](https://codeigniter.com/)'da, [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) varsayılan `X_FORWARDED_PROTO` olarak değerini denetler.
+Popüler Web çerçeveleri `X-Forwarded-*` Standart uygulama hiyerarşinizdeki bilgilere erişmenizi sağlar. [Codeigniter](https://codeigniter.com/)'da, [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) `X_FORWARDED_PROTO` Varsayılan olarak değerini denetler.
 
 ## <a name="customize-phpini-settings"></a>Php. ini ayarlarını özelleştirme
 
@@ -116,7 +116,7 @@ PHP yüklemenizde değişiklik yapmanız gerekiyorsa, bu adımları izleyerek [p
 
 PHP_INI_USER, PHP_INI_PERDIR ve PHP_INI_ALL yönergeleri (bkz. [php. ını yönergeleri](https://www.php.net/manual/ini.list.php)) özelleştirmek için uygulamanızın kök dizinine bir *. htaccess* dosyası ekleyin.
 
-*. Htaccess* dosyasında, `php_value <directive-name> <value>` söz dizimini kullanarak yönergeleri ekleyin. Örneğin:
+*. Htaccess* dosyasında, söz dizimini kullanarak yönergeleri ekleyin `php_value <directive-name> <value>` . Örneğin:
 
 ```
 php_value upload_max_filesize 1000M
@@ -134,19 +134,19 @@ Değişiklikleri ile uygulamanızı yeniden dağıtın ve yeniden başlatın. Ku
 
 ### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM yönergeleri özelleştirme
 
-PHP_INI_SYSTEM yönergeleri özelleştirmek için (bkz. [php. ını yönergeleri](https://www.php.net/manual/ini.list.php)), *. htaccess* yaklaşımını kullanamazsınız. App Service, `PHP_INI_SCAN_DIR` uygulama ayarını kullanarak ayrı bir mekanizma sağlar.
+PHP_INI_SYSTEM yönergeleri özelleştirmek için (bkz. [php. ını yönergeleri](https://www.php.net/manual/ini.list.php)), *. htaccess* yaklaşımını kullanamazsınız. App Service, uygulama ayarını kullanarak ayrı bir mekanizma sağlar `PHP_INI_SCAN_DIR` .
 
-İlk olarak, adlı `PHP_INI_SCAN_DIR`bir uygulama ayarı eklemek için [Cloud Shell](https://shell.azure.com) aşağıdaki komutu çalıştırın:
+İlk olarak, adlı bir uygulama ayarı eklemek için [Cloud Shell](https://shell.azure.com) aşağıdaki komutu çalıştırın `PHP_INI_SCAN_DIR` :
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`, *php. ini* dosyasının bulunduğu varsayılan dizindir. `/home/site/ini`, özel bir *. ini* dosyası ekleyeceğiniz özel dizindir. Değerleri bir `:`ile ayırın.
+`/usr/local/etc/php/conf.d`, *php. ini* dosyasının bulunduğu varsayılan dizindir. `/home/site/ini`, özel bir *. ini* dosyası ekleyeceğiniz özel dizindir. Değerleri bir ile ayırın `:` .
 
-Linux kapsayıcınızda (`https://<app-name>.scm.azurewebsites.net/webssh/host`) Web SSH oturumuna gidin.
+Linux kapsayıcınızda () Web SSH oturumuna gidin `https://<app-name>.scm.azurewebsites.net/webssh/host` .
 
-`/home/site` Çağrılan `ini`bir dizin oluşturun ve ardından `/home/site/ini` dizinde (örneğin, *Settings. ini)* özelleştirmek istediğiniz yönergeleri kullanarak bir *. ini* dosyası oluşturun. *Php. ini* dosyasında kullanacağınız söz dizimini kullanın. 
+Çağrılan bir dizin oluşturun `/home/site` `ini` ve ardından *.ini* `/home/site/ini` dizinde (örneğin, *Settings. ini)* özelleştirmek istediğiniz yönergeleri kullanarak bir. ini dosyası oluşturun. *Php. ini* dosyasında kullanacağınız söz dizimini kullanın. 
 
 > [!TIP]
 > App Service 'daki yerleşik Linux kapsayıcılarında, */Home* kalıcı paylaşılan depolama alanı olarak kullanılır. 
@@ -172,7 +172,7 @@ Yerleşik PHP yüklemeleri en yaygın olarak kullanılan uzantıları içerir. [
 
 Ek uzantıları etkinleştirmek için aşağıdaki adımları izleyin:
 
-Uygulamanızın kök `bin` dizinine bir dizin ekleyin ve `.so` uzantı dosyalarını içine yerleştirin (örneğin, *MongoDB.so*). Uzantıların Azure 'daki PHP sürümü ile uyumlu olduğundan ve VC9 ve iş parçacığı olmayan güvenli (,) uyumlu olduğundan emin olun.
+`bin`Uygulamanızın kök dizinine bir dizin ekleyin ve `.so` uzantı dosyalarını içine yerleştirin (örneğin, *MongoDB.so*). Uzantıların Azure 'daki PHP sürümü ile uyumlu olduğundan ve VC9 ve iş parçacığı olmayan güvenli (,) uyumlu olduğundan emin olun.
 
 Değişikliklerinizi dağıtın.
 
@@ -199,10 +199,10 @@ Değişikliklerin etkili olması için uygulamayı yeniden başlatın.
 
 - [Günlük akışına erişin](#access-diagnostic-logs).
 - Uygulamayı üretim modunda yerel olarak test edin. App Service, Node. js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örneğin:
-    - *Besteci. JSON*'unuza bağlı olarak, üretim modu (`require` vs. `require-dev`) için farklı paketler yüklenebilir.
+    - *Besteci. JSON*'unuza bağlı olarak, üretim modu ( `require` vs.) için farklı paketler yüklenebilir `require-dev` .
     - Bazı Web çerçeveleri, statik dosyaları üretim modunda farklı şekilde dağıtabilir.
     - Belirli Web çerçeveleri, üretim modunda çalışırken özel başlatma betikleri kullanabilir.
-- Uygulamanızı hata ayıklama modunda App Service çalıştırın. Örneğin, [Laraesin](https://meanjs.org/)içinde, uygulama [ayarını olarak ayarlayarak `APP_DEBUG` `true` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)uygulamanızı üretim sırasında hata ayıklama iletilerini verecek şekilde yapılandırabilirsiniz.
+- Uygulamanızı hata ayıklama modunda App Service çalıştırın. Örneğin, [Laraesin](https://meanjs.org/)içinde, uygulama [ `APP_DEBUG` ayarını `true` olarak ayarlayarak ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)uygulamanızı üretim sırasında hata ayıklama iletilerini verecek şekilde yapılandırabilirsiniz.
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 

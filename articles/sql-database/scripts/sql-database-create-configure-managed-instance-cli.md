@@ -1,6 +1,6 @@
 ---
-title: CLı örneği-Azure SQL veritabanı 'nda yönetilen bir örnek oluşturma
-description: Azure SQL veritabanı 'nda yönetilen bir örnek oluşturmak için Azure CLı örnek betiği
+title: 'Azure CLı: yönetilen örnek oluşturma'
+description: Azure SQL yönetilen örneği 'nde yönetilen bir örnek oluşturmak için Azure CLı örnek betiği
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: f52a460be33b23da3da0cb32075ab5f75bb8d129
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: fd2c7a33c0747aa21a8bda53ad5437c9e79a6557
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772639"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115402"
 ---
-# <a name="use-cli-to-create-an-azure-sql-database-managed-instance"></a>CLı kullanarak Azure SQL veritabanı yönetilen örneği oluşturma
+# <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>CLı kullanarak Azure SQL yönetilen örneği oluşturma
 
-Bu Azure CLı betik örneği, yeni bir sanal ağ içindeki ayrılmış bir alt ağda Azure SQL veritabanı yönetilen örneği oluşturur. Ayrıca, bir yol tablosu ve sanal ağ için bir ağ güvenlik grubu yapılandırır. Betik başarıyla çalıştırıldığında, yönetilen örneğe sanal ağ içinden veya şirket içi bir ortamdan erişilebilir. Azure [SQL veritabanı yönetilen örneğine bağlanmak için](../sql-database-managed-instance-configure-vm.md) bkz. Azure VM 'yi yapılandırma ve [ŞIRKET Içi Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırma](../sql-database-managed-instance-configure-p2s.md).
+Bu Azure CLı betik örneği, yeni bir sanal ağ içindeki adanmış bir alt ağda Azure SQL yönetilen örneği oluşturur. Ayrıca, bir yol tablosu ve sanal ağ için bir ağ güvenlik grubu yapılandırır. Betik başarıyla çalıştırıldığında, yönetilen örneğe sanal ağ içinden veya şirket içi bir ortamdan erişilebilir. Bkz. [Azure VM 'yi Azure SQL yönetilen örneğine bağlanmak için yapılandırma].. /.. /Azure-SQL/Managed-instance/Connect-VM-instance-configure.MD) ve [Şirket içinden bir Azure SQL yönetilen örneğine Noktadan siteye bağlantı yapılandırın](../../azure-sql/managed-instance/point-to-site-p2s-configure.md).
 
 > [!IMPORTANT]
-> Sınırlamalar için bkz. [Desteklenen bölgeler](../sql-database-managed-instance-resource-limits.md#supported-regions) ve [desteklenen Abonelik türleri](../sql-database-managed-instance-resource-limits.md#supported-subscription-types).
+> Sınırlamalar için bkz. [Desteklenen bölgeler](../../azure-sql/managed-instance/resource-limits.md#supported-regions) ve [desteklenen Abonelik türleri](../../azure-sql/managed-instance/resource-limits.md#supported-subscription-types).
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
@@ -54,10 +54,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [az Network VNET](/cli/azure/network/vnet) | Sanal ağ komutları. |
 | [az Network VNET subnet](/cli/azure/network/vnet/subnet) | Sanal ağ alt ağ komutları. |
 | [az Network Route-Table](/cli/azure/network/route-table) | Ağ yol tablosu komutları. |
-| [az SQL mi](/cli/azure/sql/mi) | Yönetilen örnek komutları. |
+| [az SQL mi](/cli/azure/sql/mi) | SQL yönetilen örnek komutları. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
-Ek SQL Veritabanı CLI betiği örnekleri, [Azure SQL Veritabanı belgeleri](../sql-database-cli-samples.md) içinde bulunabilir.
+Ek SQL Veritabanı CLI betiği örnekleri, [Azure SQL Veritabanı belgeleri](../../azure-sql/database/az-cli-script-samples-content-guide.md) içinde bulunabilir.

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: 142cd2611e0dcf3227474efadded7bac88a4390a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e38711cbb5ccd9fe4cc8584a9229a1c57550d618
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207647"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021237"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service’tan Azure SQL Veritabanı bağlantısını güvenli hale getirme
 
@@ -45,39 +45,39 @@ ms.locfileid: "82207647"
 
 Bu makale, öğreticide kaldığınız yerden devam eder [: SQL veritabanı Ile Azure 'da bir ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md) veya [öğretici: Azure App Service IÇINDE ASP.NET Core ve SQL veritabanı uygulaması oluşturma](app-service-web-tutorial-dotnetcore-sqldb.md). Henüz yapmadıysanız, önce iki öğreticiden birini izleyin. Alternatif olarak, kendi .NET uygulamanıza yönelik adımları SQL veritabanı ile uyarlayabilirsiniz.
 
-Arka uç olarak SQL veritabanı 'nı kullanarak uygulamanızda hata ayıklamak için, bilgisayarınızdan istemci bağlantısına izin verildiğinden emin olun. Aksi takdirde, [Azure Portal kullanarak sunucu DÜZEYI IP güvenlik duvarı kurallarını yönetme](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)konumundaki adımları IZLEYEREK istemci IP 'sini ekleyin.
+Arka uç olarak SQL veritabanı 'nı kullanarak uygulamanızda hata ayıklamak için, bilgisayarınızdan istemci bağlantısına izin verildiğinden emin olun. Aksi takdirde, [Azure Portal kullanarak sunucu DÜZEYI IP güvenlik duvarı kurallarını yönetme](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)konumundaki adımları IZLEYEREK istemci IP 'sini ekleyin.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="grant-database-access-to-azure-ad-user"></a>Azure AD kullanıcısına veritabanı erişimi verme
 
-İlk olarak, SQL veritabanı sunucusunun Active Directory yöneticisi olarak bir Azure AD kullanıcısı atayarak SQL veritabanı 'na Azure AD kimlik doğrulamasını etkinleştirin. Bu Kullanıcı, Azure aboneliğinize kaydolmak için kullandığınız Microsoft hesabı farklıdır. Oluşturduğunuz, içeri aktardığınız, eşitlediği veya Azure AD 'ye davet ettiğiniz bir kullanıcı olmalıdır. İzin verilen Azure AD kullanıcıları hakkında daha fazla bilgi için bkz. [SQL veritabanı 'Nda Azure AD özellikleri ve sınırlamaları](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations).
+İlk olarak, bir Azure AD kullanıcısını sunucunun Active Directory yöneticisi olarak atayarak SQL veritabanı 'na Azure AD kimlik doğrulamasını etkinleştirin. Bu Kullanıcı, Azure aboneliğinize kaydolmak için kullandığınız Microsoft hesabı farklıdır. Oluşturduğunuz, içeri aktardığınız, eşitlediği veya Azure AD 'ye davet ettiğiniz bir kullanıcı olmalıdır. İzin verilen Azure AD kullanıcıları hakkında daha fazla bilgi için bkz. [SQL veritabanı 'Nda Azure AD özellikleri ve sınırlamaları](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations).
 
 Azure AD kiracınızda henüz bir kullanıcı yoksa, [Azure Active Directory kullanarak Kullanıcı ekleme veya silme](../active-directory/fundamentals/add-users-azure-active-directory.md)adımlarını izleyerek bir tane oluşturun.
 
-Kullanarak Azure AD kullanıcısının nesne kimliğini bulun [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) ve * \<Kullanıcı-asıl-adı>* değiştirin. Sonuç bir değişkene kaydedilir.
+Ve yerini kullanarak Azure AD kullanıcısının nesne KIMLIĞINI bulun [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) *\<user-principal-name>* . Sonuç bir değişkene kaydedilir.
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
 ```
 > [!TIP]
-> Azure AD 'deki tüm Kullanıcı asıl adlarının listesini görmek için, öğesini çalıştırın `az ad user list --query [].userPrincipalName`.
+> Azure AD 'deki tüm Kullanıcı asıl adlarının listesini görmek için, öğesini çalıştırın `az ad user list --query [].userPrincipalName` .
 >
 
-Bu Azure AD kullanıcısını Cloud Shell komut kullanarak [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) Active Directory yönetici olarak ekleyin. Aşağıdaki komutta * \<sunucu adı>* yerine SQL veritabanı sunucu adını ( `.database.windows.net` sonek olmadan) değiştirin.
+Bu Azure AD kullanıcısını Cloud Shell komut kullanarak Active Directory yönetici olarak ekleyin [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) . Aşağıdaki komutta, yerine *\<server-name>* sunucu adı (sonek olmadan) ile değiştirin `.database.windows.net` .
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
 ```
 
-Active Directory Yöneticisi ekleme hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı sunucunuz için Azure Active Directory Yöneticisi sağlama](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)
+Active Directory Yöneticisi ekleme hakkında daha fazla bilgi için bkz. [sunucunuz için Azure Active Directory Yöneticisi sağlama](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)
 
 ## <a name="set-up-visual-studio"></a>Visual Studio'yu ayarlama
 
 ### <a name="windows"></a>Windows
-Windows için Visual Studio, Azure AD kimlik doğrulamasıyla tümleşiktir. Visual Studio 'da geliştirme ve hata ayıklamayı etkinleştirmek için, menüden **Dosya** > **Hesap ayarları** ' nı seçerek Azure AD kullanıcısını Visual Studio 'ya ekleyin ve **Hesap Ekle**' ye tıklayın.
+Windows için Visual Studio, Azure AD kimlik doğrulamasıyla tümleşiktir. Visual Studio 'da geliştirme ve hata ayıklamayı etkinleştirmek için, menüden **Dosya**hesap ayarları ' nı seçerek Azure AD kullanıcısını Visual Studio 'ya ekleyin  >  **Account Settings** ve **Hesap Ekle**' ye tıklayın.
 
-Azure hizmet kimlik doğrulaması için Azure AD kullanıcısını ayarlamak için, menüden **Araçlar** > **Seçenekler** ' i seçin ve ardından **Azure hizmeti kimlik doğrulama** > **hesabı seçimi**' ni seçin. Eklediğiniz Azure AD kullanıcısını seçip **Tamam**' a tıklayın.
+Azure hizmet kimlik doğrulaması için Azure AD kullanıcısını ayarlamak için, menüden **Araçlar**  >  **Seçenekler** ' i seçin ve ardından **Azure hizmeti kimlik doğrulama**  >  **hesabı seçimi**' ni seçin. Eklediğiniz Azure AD kullanıcısını seçip **Tamam**' a tıklayın.
 
 Artık Azure AD kimlik doğrulaması ile SQL veritabanıyla arka uç olarak uygulamanızı geliştirmeye ve hata ayıklamaya hazırsınız.
 
@@ -109,13 +109,13 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 
 *Web. config*dosyasında, dosyanın en üstünden çalışarak aşağıdaki değişiklikleri yapın:
 
-- İçinde `<configSections>`, aşağıdaki bölüm bildirimini içine ekleyin:
+- İçinde `<configSections>` , aşağıdaki bölüm bildirimini içine ekleyin:
 
     ```xml
     <section name="SqlAuthenticationProviders" type="System.Data.SqlClient.SqlAuthenticationProviderConfigurationSection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     ```
 
-- kapanış `</configSections>` etiketinin altında, IÇIN `<SqlAuthenticationProviders>`aşağıdaki XML kodunu ekleyin.
+- kapanış etiketinin altında `</configSections>` , için AŞAĞıDAKI XML kodunu ekleyin `<SqlAuthenticationProviders>` .
 
     ```xml
     <SqlAuthenticationProviders>
@@ -125,14 +125,14 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
     </SqlAuthenticationProviders>
     ```    
 
-- Çağrılan `MyDbConnection` bağlantı dizesini bulun ve `connectionString` değerini ile `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`değiştirin. _ \<Sunucu adı>_ ve _ \<db-adı>_ sunucu adınızla ve veritabanı adınızla değiştirin.
+- Çağrılan bağlantı dizesini bulun `MyDbConnection` ve `connectionString` değerini ile değiştirin `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"` . _\<server-name>_ Ve ' i _\<db-name>_ sunucu adınızla ve veritabanı adınızla değiştirin.
 
 > [!NOTE]
 > Az önce kaydettiğiniz SqlAuthenticationProvider, daha önce yüklediğiniz AppAuthentication kitaplığının üzerine dayalıdır. Varsayılan olarak, sistem tarafından atanan bir kimlik kullanır. Kullanıcı tarafından atanan bir kimliğin yararlanmak için ek bir yapılandırma sağlamanız gerekir. Lütfen AppAuthentication kitaplığı için [bağlantı dizesi desteği](../key-vault/general/service-to-service-authentication.md#connection-string-support) 'ne bakın.
 
-Bu, SQL veritabanına bağlanmak için gereken her şey. Visual Studio 'da hata ayıklarken, kodunuz [Visual Studio 'Yu ayarlama](#set-up-visual-studio)bölümünde YAPıLANDıRDıĞıNıZ Azure AD kullanıcısını kullanır. SQL veritabanı sunucusunu daha sonra App Service uygulamanızın yönetilen kimliğinden bağlantıya izin verecek şekilde ayarlayacaksınız.
+Bu, SQL veritabanına bağlanmak için gereken her şey. Visual Studio 'da hata ayıklarken, kodunuz [Visual Studio 'Yu ayarlama](#set-up-visual-studio)bölümünde YAPıLANDıRDıĞıNıZ Azure AD kullanıcısını kullanır. SQL veritabanı 'nı daha sonra App Service uygulamanızın yönetilen kimliğinden bağlantıya izin verecek şekilde ayarlayacaksınız.
 
-Uygulamayı `Ctrl+F5` yeniden çalıştırmak için yazın. Tarayıcınızdaki aynı CRUD uygulaması artık Azure AD kimlik doğrulamasını kullanarak doğrudan Azure SQL veritabanına bağlanıyor. Bu kurulum, Visual Studio 'dan veritabanı geçişleri çalıştırmanızı sağlar.
+`Ctrl+F5`Uygulamayı yeniden çalıştırmak için yazın. Tarayıcınızdaki aynı CRUD uygulaması artık Azure AD kimlik doğrulamasını kullanarak doğrudan Azure SQL veritabanına bağlanıyor. Bu kurulum, Visual Studio 'dan veritabanı geçişleri çalıştırmanızı sağlar.
 
 ### <a name="modify-aspnet-core"></a>ASP.NET Core Değiştir
 
@@ -142,13 +142,13 @@ Visual Studio 'da Paket Yöneticisi konsolunu açın ve [Microsoft. Azure. Servi
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-[ASP.NET Core ve SQL veritabanı öğreticisinde](app-service-web-tutorial-dotnetcore-sqldb.md), yerel geliştirme `MyDbConnection` ortamı bir SQLite veritabanı dosyası kullandığından ve Azure üretim ortamı App Service bir bağlantı dizesi kullandığından, bağlantı dizesi hiç kullanılmıyor. Active Directory kimlik doğrulamasıyla, her iki ortamın de aynı bağlantı dizesini kullanmasını istersiniz. *AppSettings. JSON*içinde, `MyDbConnection` bağlantı dizesinin değerini ile değiştirin:
+[ASP.NET Core ve SQL veritabanı öğreticisinde](app-service-web-tutorial-dotnetcore-sqldb.md), `MyDbConnection` yerel geliştirme ortamı bir SQLite veritabanı dosyası kullandığından ve Azure üretim ortamı App Service bir bağlantı dizesi kullandığından, bağlantı dizesi hiç kullanılmıyor. Active Directory kimlik doğrulamasıyla, her iki ortamın de aynı bağlantı dizesini kullanmasını istersiniz. *AppSettings. JSON*içinde, `MyDbConnection` bağlantı dizesinin değerini ile değiştirin:
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
 ```
 
-Daha sonra, SQL veritabanı için erişim belirtecine sahip Entity Framework veritabanı bağlamını sağlarsınız. *Data\MyDatabaseContext.cs*' de, boş `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` oluşturucunun küme ayraçları içine aşağıdaki kodu ekleyin:
+Daha sonra, SQL veritabanı için erişim belirtecine sahip Entity Framework veritabanı bağlamını sağlarsınız. *Data\MyDatabaseContext.cs*' de, boş oluşturucunun küme ayraçları içine aşağıdaki kodu ekleyin `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` :
 
 ```csharp
 var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();
@@ -158,23 +158,23 @@ conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceT
 > [!NOTE]
 > Bu tanıtım kodu, açıklık ve basitlik için zaman uyumludur.
 
-Bu, SQL veritabanına bağlanmak için gereken her şey. Visual Studio 'da hata ayıklarken, kodunuz [Visual Studio 'Yu ayarlama](#set-up-visual-studio)bölümünde YAPıLANDıRDıĞıNıZ Azure AD kullanıcısını kullanır. SQL veritabanı sunucusunu daha sonra App Service uygulamanızın yönetilen kimliğinden bağlantıya izin verecek şekilde ayarlayacaksınız. `AzureServiceTokenProvider` Sınıfı, belirteci bellekte önbelleğe alır ve süresi dolmadan hemen önce Azure AD 'den alır. Belirteci yenilemek için özel kod gerekmez.
+Bu, SQL veritabanına bağlanmak için gereken her şey. Visual Studio 'da hata ayıklarken, kodunuz [Visual Studio 'Yu ayarlama](#set-up-visual-studio)bölümünde YAPıLANDıRDıĞıNıZ Azure AD kullanıcısını kullanır. SQL veritabanı 'nı daha sonra App Service uygulamanızın yönetilen kimliğinden bağlantıya izin verecek şekilde ayarlayacaksınız. `AzureServiceTokenProvider`Sınıfı, belirteci bellekte önbelleğe alır ve süresi dolmadan hemen önce Azure AD 'den alır. Belirteci yenilemek için özel kod gerekmez.
 
 > [!TIP]
-> Yapılandırdığınız Azure AD kullanıcısının birden çok kiracıya erişimi varsa, uygun erişim belirtecini `GetAccessTokenAsync("https://database.windows.net/", tenantid)` almak için Istenen kiracı kimliğiyle çağrı yapın.
+> Yapılandırdığınız Azure AD kullanıcısının birden çok kiracıya erişimi varsa, `GetAccessTokenAsync("https://database.windows.net/", tenantid)` uygun erişim belirtecini almak için istenen KIRACı kimliğiyle çağrı yapın.
 
-Uygulamayı `Ctrl+F5` yeniden çalıştırmak için yazın. Tarayıcınızdaki aynı CRUD uygulaması artık Azure AD kimlik doğrulamasını kullanarak doğrudan Azure SQL veritabanına bağlanıyor. Bu kurulum, Visual Studio 'dan veritabanı geçişleri çalıştırmanızı sağlar.
+`Ctrl+F5`Uygulamayı yeniden çalıştırmak için yazın. Tarayıcınızdaki aynı CRUD uygulaması artık Azure AD kimlik doğrulamasını kullanarak doğrudan Azure SQL veritabanına bağlanıyor. Bu kurulum, Visual Studio 'dan veritabanı geçişleri çalıştırmanızı sağlar.
 
 ## <a name="use-managed-identity-connectivity"></a>Yönetilen kimlik bağlantısı kullan
 
 Daha sonra, App Service uygulamanızı, sistem tarafından atanan yönetilen kimlik ile SQL veritabanına bağlanacak şekilde yapılandırırsınız.
 
 > [!NOTE]
-> Bu bölümdeki yönergeler sistem tarafından atanan bir kimlik için olduğunda, Kullanıcı tarafından atanan bir kimlik yalnızca kolayca kullanılabilir. Bunu yapmak için: istenen kullanıcı tarafından atanan kimliği atamak `az webapp identity assign command` için değişikliğini yapmanız gerekir. Ardından, SQL kullanıcısını oluştururken, site adı yerine Kullanıcı tarafından atanan kimlik kaynağının adını kullandığınızdan emin olun.
+> Bu bölümdeki yönergeler sistem tarafından atanan bir kimlik için olduğunda, Kullanıcı tarafından atanan bir kimlik yalnızca kolayca kullanılabilir. Bunu yapmak için: `az webapp identity assign command`istenen kullanıcı tarafından atanan kimliği atamak için değişikliğini yapmanız gerekir. Ardından, SQL kullanıcısını oluştururken, site adı yerine Kullanıcı tarafından atanan kimlik kaynağının adını kullandığınızdan emin olun.
 
 ### <a name="enable-managed-identity-on-app"></a>Uygulamada yönetilen kimliği etkinleştir
 
-Azure uygulamanızda bir yönetilen kimlik etkinleştirmek için Cloud Shell’de [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) komutunu kullanın. Aşağıdaki komutta, * \<app-name>* değiştirin.
+Azure uygulamanızda bir yönetilen kimlik etkinleştirmek için Cloud Shell’de [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) komutunu kullanın. Aşağıdaki komutta, öğesini değiştirin *\<app-name>* .
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>
@@ -204,7 +204,7 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 > ```
 >
 
-Cloud Shell’de SQLCMD komutunu kullanarak SQL Veritabanı oturumunu açın. _ \<Sunucu-adı>_ yerine SQL veritabanı sunucunuzun adını, _ \<DB-Name>_ , uygulamanızın kullandığı veritabanı adını ve _ \<AAD-User-Name>_ ve _ \<AAD-Password>_ ' i Azure AD Kullanıcı kimlik bilgileriyle değiştirin.
+Cloud Shell’de SQLCMD komutunu kullanarak SQL Veritabanı oturumunu açın. _\<server-name>_ _\<db-name>_ Uygulamanızın kullandığı veritabanı adı Ile ve _\<aad-user-name>_ _\<aad-password>_ Azure AD Kullanıcı kimlik bilgilerinizle birlikte sunucu adınızla değiştirin.
 
 ```azurecli-interactive
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
@@ -220,7 +220,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-kimlik-adı>, Azure AD 'de yönetilen kimliğin adıdır. * \<* Kimlik sistem tarafından atanmışsa, ad App Service uygulamanızın adı ile her zaman aynıdır. Bir Azure AD grubuna izinler vermek için, bunun yerine grubun görünen adını kullanın (örneğin, *Myazuresqldbaccessgroup*).
+*\<identity-name>*, Azure AD 'de yönetilen kimliğin adıdır. Kimlik sistem tarafından atanmışsa, ad App Service uygulamanızın adı ile her zaman aynıdır. Bir Azure AD grubuna izinler vermek için, bunun yerine grubun görünen adını kullanın (örneğin, *Myazuresqldbaccessgroup*).
 
 Cloud Shell istemine geri dönmek için `EXIT` yazın.
 
@@ -229,7 +229,7 @@ Cloud Shell istemine geri dönmek için `EXIT` yazın.
 
 ### <a name="modify-connection-string"></a>Bağlantı dizesini değiştirme
 
-*Web. config* veya *appSettings. JSON* ' da yaptığınız aynı değişikliklerin yönetilen kimlikle birlikte çalışıp çalışmadığını unutmayın. bu nedenle tek şey, Visual Studio 'nun uygulamanızı ilk kez dağıttığı App Service var olan bağlantı dizesini kaldırmaktan emin olur. Aşağıdaki komutu kullanın, ancak * \<app-name>* değerini uygulamanızın adıyla değiştirin.
+*Web. config* veya *appSettings. JSON* ' da yaptığınız aynı değişikliklerin yönetilen kimlikle birlikte çalışıp çalışmadığını unutmayın. bu nedenle tek şey, Visual Studio 'nun uygulamanızı ilk kez dağıttığı App Service var olan bağlantı dizesini kaldırmaktan emin olur. Aşağıdaki komutu kullanın, ancak *\<app-name>* uygulamanızın adıyla değiştirin.
 
 ```azurecli-interactive
 az webapp config connection-string delete --resource-group myResourceGroup --name <app-name> --setting-names MyDbConnection

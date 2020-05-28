@@ -4,14 +4,14 @@ description: Bir sanal ağda özel bir IP adresi kullanarak bir Azure Cosmos hes
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/14/2020
+ms.date: 05/27/2020
 ms.author: thweiss
-ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c5b82e8cdea49f8dd761844ff5492df0ad109943
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697891"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116676"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma
 
@@ -398,7 +398,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-PowerShell betikte, `GroupId` değişken yalnızca bir değer içerebilir. Bu değer, hesabın API türüdür. İzin verilen değerler: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` , ve `Table` . Bazı Azure Cosmos hesap türlerine birden çok API aracılığıyla erişilebilir. Örnek:
+PowerShell betikte, `GroupId` değişken yalnızca bir değer içerebilir. Bu değer, hesabın API türüdür. İzin verilen değerler: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` , ve `Table` . Bazı Azure Cosmos hesap türlerine birden çok API aracılığıyla erişilebilir. Örneğin:
 
 * Gremlin API hesabına hem Gremlin hem de SQL API hesaplarından erişilebilir.
 * Tablo API'si hesaba hem tablo hem de SQL API hesaplarından erişilebilir.
@@ -618,9 +618,11 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 * Herhangi bir güvenlik duvarı kuralı yapılandırmazsanız, varsayılan olarak tüm trafik bir Azure Cosmos hesabına erişebilir.
 
-* Ortak trafiği veya bir hizmet uç noktasını yapılandırırsanız ve özel uç noktalar oluşturursanız, ilgili güvenlik duvarı kuralı tarafından farklı gelen trafik türlerine izin verilir.
+* Ortak trafiği veya bir hizmet uç noktasını yapılandırırsanız ve özel uç noktalar oluşturursanız, ilgili güvenlik duvarı kuralı tarafından farklı gelen trafik türlerine izin verilir. Hizmet uç noktasının de yapılandırıldığı bir alt ağda özel bir uç nokta yapılandırılmışsa:
+  * Özel uç noktayla eşlenen veritabanı hesabına giden trafik, Özel uç nokta aracılığıyla yönlendirilir,
+  * alt ağdan diğer veritabanı hesaplarına giden trafik, hizmet uç noktası aracılığıyla yönlendirilir.
 
-* Herhangi bir ortak trafik veya hizmet uç noktası yapılandırmazsanız ve özel uç noktalar oluşturursanız, Azure Cosmos hesabına yalnızca özel uç noktalar aracılığıyla erişilebilir. Ortak trafiği veya bir hizmet uç noktasını yapılandırmazsanız, tüm onaylanan özel uç noktalar reddedildikten veya silindikten sonra hesap tüm ağa açıktır.
+* Herhangi bir ortak trafik veya hizmet uç noktası yapılandırmazsanız ve özel uç noktalar oluşturursanız, Azure Cosmos hesabına yalnızca özel uç noktalar aracılığıyla erişilebilir. Genel trafiği veya bir hizmet uç noktası yapılandırmazsanız, tüm onaylanan özel uç noktalar reddedildikten veya silindikten sonra, PublicNetworkAccess devre dışı olarak ayarlanmadığı takdirde hesap tüm ağa açıktır (aşağıdaki bölüme bakın).
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>Hesap oluşturma sırasında ortak ağ erişimini engelleme
 

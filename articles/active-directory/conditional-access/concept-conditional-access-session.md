@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671905"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993872"
 ---
 # <a name="conditional-access-session"></a>Koşullu erişim: oturum
 
@@ -48,7 +48,7 @@ Koşullu Erişim Uygulama Denetimi, erişim ve oturum ilkelerine bağlı olarak,
 
 Daha fazla bilgi için bkz. [öne çıkan uygulamalar için koşullu erişim uygulama denetimi dağıtma](/cloud-app-security/proxy-deployment-aad)makalesi.
 
-## <a name="sign-in-frequency-preview"></a>Oturum açma sıklığı (Önizleme)
+## <a name="sign-in-frequency"></a>Oturum açma sıklığı
 
 Oturum açma sıklığı, bir kullanıcıdan bir kaynağa erişmeye çalışırken yeniden oturum açması istenmeden önce geçen süreyi tanımlar.
 
@@ -66,7 +66,7 @@ Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokolle
 
 Daha fazla bilgi için, [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](howto-conditional-access-session-lifetime.md#user-sign-in-frequency)makalesine bakın.
 
-## <a name="persistent-browser-session-preview"></a>Kalıcı tarayıcı oturumu (Önizleme)
+## <a name="persistent-browser-session"></a>Kalıcı tarayıcı oturumu
 
 Kalıcı bir tarayıcı oturumu, kullanıcıların tarayıcı pencerelerini kapatıp yeniden açtıktan sonra oturum açmasına olanak tanır.
 

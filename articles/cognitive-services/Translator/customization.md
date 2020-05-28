@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: c1928f9aa2c2b011e1cf54b4ef6cfc5cb8251904
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6db43300632ec5b2c4f6c18848442901a40561b0
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588658"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997007"
 ---
 # <a name="customize-your-text-translations"></a>Metin çevirilerinizi özelleştirin
 
@@ -49,12 +49,12 @@ Kullanılabilir verilere göre çeşitli özelleştirme düzeyleri hakkında dah
 
 |   | **Hub** | **Özel Çevirmen**|
 |:-----|:----:|:----:|
-|Özelleştirme özelliği durumu   | Genel kullanılabilirlik  | Genel kullanılabilirlik |
-| Metin API 'SI sürümü  | Yalnızca v2   | Yalnızca v3 |
-| SMT özelleştirmesi | Yes   | Hayır |
-| NMT özelleştirmesi | Hayır    | Yes |
-| Yeni Birleşik konuşma Hizmetleri özelleştirmesi | Hayır    | Yes |
-| [Izleme yok](https://www.aka.ms/notrace) | Yes  | Yes |
+|Özelleştirme özelliği durumu    | Genel kullanılabilirlik    | Genel kullanılabilirlik |
+| Metin API 'SI sürümü    | Yalnızca v2    | Yalnızca v3 |
+| SMT özelleştirmesi    | Yes    | Hayır |
+| NMT özelleştirmesi    | Hayır    | Yes |
+| Yeni Birleşik konuşma Hizmetleri özelleştirmesi    | Hayır    | Yes |
+| [Izleme yok](https://www.aka.ms/notrace) | Yes    | Yes |
 
 ## <a name="collaborative-translations-framework"></a>İşbirliğine dayalı Çeviriler çerçevesi
 

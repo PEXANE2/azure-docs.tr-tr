@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81454263"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016398"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma
 
@@ -59,7 +59,7 @@ Kalan görevlerde sunucunuza bağlanmak ve sunucunuzu yönetmek için SSMS kulla
     ![SSMS'de bağlanma](./media/analysis-services-tutorial-roles/aas-connect-ssms-auth.png)
 
     > [!TIP]
-    > MFA Desteğiyle Active Directory Universal'ın seçilmesi önerilir. Bu tür bir kimlik doğrulaması, [etkileşimsiz ve çok faktörlü kimlik doğrulamasını](../../sql-database/sql-database-ssms-mfa-authentication.md) destekler. 
+    > MFA Desteğiyle Active Directory Universal'ın seçilmesi önerilir. Bu tür bir kimlik doğrulaması, [etkileşimsiz ve çok faktörlü kimlik doğrulamasını](../../azure-sql/database/authentication-mfa-ssms-overview.md) destekler. 
 
 3. **Nesne Gezgini**'nde, sunucu nesnelerini görmek için sunucuyu genişletin. Sunucu özelliklerini görmek için sağ tıklatın.
    
@@ -67,7 +67,7 @@ Kalan görevlerde sunucunuza bağlanmak ve sunucunuzu yönetmek için SSMS kulla
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Sunucu yöneticisi rolüne bir kullanıcı hesabı ekleme
 
-Bu görevde, Azure AD'nizden sunucu yöneticisi rolüne bir kullanıcı veya grup hesabı ekleyeceksiniz. Bir güvenlik grubu belirtiyorsanız, kullanın `obj:groupid@tenantid`.
+Bu görevde, Azure AD'nizden sunucu yöneticisi rolüne bir kullanıcı veya grup hesabı ekleyeceksiniz. Bir güvenlik grubu belirtiyorsanız, kullanın `obj:groupid@tenantid` .
 
 1. **Nesne Gezgini**'nde sunucu adınızı sağ tıklatın, sonra **Özellikler**'i tıklatın. 
 2. **Analysis Server Özellikleri** penceresinde **Güvenlik** > **Ekle**'ye tıklayın.
@@ -130,13 +130,13 @@ Bu görevde yeni bir Internet Satış Genel rolü oluşturmak için bir TMSL bet
 ## <a name="verify-your-changes"></a>Değişikliklerinizi doğrulama
 
 1. **Nesne Gezgini**'nde, servername'inize tıklayın, sonra **Yenile**'yi tıklayın ve **F5**'e basın.
-2. **Veritabanları** > **adventureworks**AdventureWorks > **rollerini**genişletin. Önceki görevlerde eklediğiniz kullanıcı hesabının ve yeni rol değişikliklerinin göründüğünü doğrulayın.   
+2. **Veritabanları**  >  **AdventureWorks**  >  **rollerini**genişletin. Önceki görevlerde eklediğiniz kullanıcı hesabının ve yeni rol değişikliklerinin göründüğünü doğrulayın.   
 
     ![Nesne Gezgini'nde doğrulama](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, kullanıcı ve grup hesaplarını ve rolleri silin. Bunu yapmak için, Kullanıcı hesaplarını kaldırmak için **rol özellikleri** > **üyeliğini** kullanın veya bir role sağ tıklayıp **Sil**' e tıklayın.
+Artık gerekmediğinde, kullanıcı ve grup hesaplarını ve rolleri silin. Bunu yapmak için, Kullanıcı hesaplarını kaldırmak için **rol özellikleri**  >  **üyeliğini** kullanın veya bir role sağ tıklayıp **Sil**' e tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

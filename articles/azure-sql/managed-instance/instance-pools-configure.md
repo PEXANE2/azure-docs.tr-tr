@@ -30,16 +30,16 @@ Aşağıdaki tabloda, Azure portal ve PowerShell 'de örnek havuzlarla ilgili ku
 
 |Komut|Azure portal|PowerShell|
 |:---|:---|:---|
-|Örnek havuzu oluşturma|Hayır|Yes|
-|Örnek havuzunu güncelleştir (sınırlı sayıda özellik)|Hayır |Yes |
-|Örnek havuzunun kullanımını ve özelliklerini denetleme|Hayır|Yes |
-|Örnek havuzunu Sil|Hayır|Yes|
-|Örnek havuzu içinde SQL yönetilen örneği oluştur|Hayır|Yes|
-|SQL yönetilen örnek kaynak kullanımını Güncelleştir|Yes |Yes|
-|SQL yönetilen örnek kullanımını ve özelliklerini denetle|Yes|Yes|
-|SQL yönetilen örneğini havuzdan Sil|Yes|Yes|
-|Havuzda bir örnek içinde veritabanı oluşturma|Yes|Yes|
-|SQL yönetilen örneğinden bir veritabanını silme|Yes|Yes|
+|Örnek havuzu oluşturma|Hayır|Evet|
+|Örnek havuzunu güncelleştir (sınırlı sayıda özellik)|Hayır |Evet |
+|Örnek havuzunun kullanımını ve özelliklerini denetleme|Hayır|Evet |
+|Örnek havuzunu Sil|Hayır|Evet|
+|Örnek havuzu içinde SQL yönetilen örneği oluştur|Hayır|Evet|
+|SQL yönetilen örnek kaynak kullanımını Güncelleştir|Evet |Yes|
+|SQL yönetilen örnek kullanımını ve özelliklerini denetle|Evet|Yes|
+|SQL yönetilen örneğini havuzdan Sil|Evet|Yes|
+|Havuzda bir örnek içinde veritabanı oluşturma|Evet|Yes|
+|SQL yönetilen örneğinden bir veritabanını silme|Evet|Yes|
 
 Kullanılabilir [PowerShell komutları](https://docs.microsoft.com/powershell/module/az.sql/)
 

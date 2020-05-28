@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcıl
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 1aa2545f3bd4e7558c99a31dca43f65510bab59e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 909e4638b3b0919919320a09cbfa0e8d9ac92f2e
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872147"
+ms.locfileid: "83995947"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'te hata ayıklama ve yineleme: Visual Studio & .NET Core-Azure Dev Spaces
 
@@ -32,25 +32,43 @@ Azure Dev Spaces ayrıca şunları kullanarak hata ayıklamanıza ve yinelemeniz
 
 - Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 - Azure geliştirme iş yükü yüklü olan Windows üzerinde Visual Studio 2019. Visual Studio yüklü değilse, [buradan](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)indirin.
+- [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma
 
-[Desteklenen bir bölgede][supported-regions]aks kümesi oluşturmanız gerekir. Bir küme oluşturmak için:
+[Desteklenen bir bölgede][supported-regions]aks kümesi oluşturmanız gerekir. Aşağıdaki komutlar *Myresourcegroup* adlı bir kaynak grubu ve *myaks*adlı bir aks kümesi oluşturur.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın
-1. *Kubernetes hizmeti > + kaynak oluştur*' u seçin. 
-1. _Abonelik_, _kaynak grubu_, _Kubernetes kümesi adı_, _bölge_, _Kubernetes sürümü_ve _DNS adı ön eki_girin.
-
-    ![Azure portal AKS oluşturma](media/get-started-netcore-visualstudio/create-aks-portal.png)
-
-1. *Gözden geçir ve oluştur*’a tıklayın.
-1. *Oluştur*' a tıklayın.
+```azurecli
+az group create --name MyResourceGroup --location eastus
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
+```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
 
-Azure portal AKS kümenize gidin ve *geliştirme alanları*' na tıklayın. *Geliştirme alanlarını kullan* seçeneğini *Evet* olarak değiştirin ve *Kaydet*' e tıklayın.
+`use-dev-spaces`AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için komutunu kullanın. Aşağıdaki komut *Myresourcegroup* grubundaki *myaks* kümesinde dev alanlarını etkinleştiriyor ve *varsayılan* bir dev alanı oluşturuyor.
 
-![Azure portal dev alanlarını etkinleştirme](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
+> [!NOTE]
+> `use-dev-spaces`Bu komut, zaten yüklenmemişse Azure dev Spaces CLI 'yi de yükleyecek. Azure Dev Spaces CLı 'yi Azure Cloud Shell yükleyemezsiniz.
+
+```azurecli
+az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+```
+
+```output
+'An Azure Dev Spaces Controller' will be created that targets resource 'MyAKS' in resource group 'MyResourceGroup'. Continue? (y/N): y
+
+Creating and selecting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup'...2m 24s
+
+Select a dev space or Kubernetes namespace to use as a dev space.
+ [1] default
+Type a number or a new name: 1
+
+Kubernetes namespace 'default' will be configured as a dev space. This will enable Azure Dev Spaces instrumentation for new workloads in the namespace. Continue? (Y/n): Y
+
+Configuring and selecting dev space 'default'...3s
+
+Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
+```
 
 ## <a name="create-a-new-aspnet-web-app"></a>Yeni bir ASP.NET Web uygulaması oluşturma
 
