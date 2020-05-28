@@ -148,7 +148,7 @@ Aşağıda örnek olarak bir modüllü temel katmanlı dağıtım bildirimi veri
 }
 ```
 
-Önceki örnekte, bir modül için bir katmanlı dağıtım ayarı gösteriliyordu `properties.desired` . Bu katmanlı dağıtım, aynı modülün zaten uygulanmış olduğu bir cihazı hedeflediğinden, istenen tüm özellikler üzerine yazılır. Güncelleştirmek için, istenen özelliklerin üzerine yazmak yerine yeni bir alt bölüm tanımlayabilirsiniz. Örnek:
+Önceki örnekte, bir modül için bir katmanlı dağıtım ayarı gösteriliyordu `properties.desired` . Bu katmanlı dağıtım, aynı modülün zaten uygulanmış olduğu bir cihazı hedeflediğinden, istenen tüm özellikler üzerine yazılır. Güncelleştirmek için, istenen özelliklerin üzerine yazmak yerine yeni bir alt bölüm tanımlayabilirsiniz. Örneğin:
 
 ```json
 "SimulatedTEmperatureSensor": {

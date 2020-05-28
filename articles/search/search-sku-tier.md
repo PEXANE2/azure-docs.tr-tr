@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: eb11a5cc2deef372ca91c23a8b9c82e17143c85b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617716"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119219"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
@@ -41,7 +41,7 @@ Katmanlar şu şekilde farklılaştırılabilir:
 
 Seçtiğiniz katman faturalandırılabilir ücreti belirler. Azure portal aşağıdaki ekran görüntüsünde, kullanılabilir katmanlar, eksi fiyatlandırma (portalda ve [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulabilirsiniz) gösterilmektedir. **Ücretsiz**, **temel**ve **Standart** en yaygın katmanlardır.
 
-**Ücretsiz** , hızlı başlangıç ve öğreticiler dahil daha küçük projeler için sınırlı bir arama hizmeti oluşturur. Dahili, çoğaltmalar ve bölümler birden çok abone arasında paylaşılır. Ücretsiz bir hizmeti ölçeklendiremez veya önemli iş yüklerini çalıştıramazsınız.
+**Ücretsiz** , hızlı başlangıç ve öğreticiler dahil daha küçük projeler için sınırlı bir arama hizmeti oluşturur. Dahili olarak, çoğaltmalar ve bölümler birden çok abone arasında paylaşılır. Ücretsiz bir hizmeti ölçeklendiremez veya önemli iş yüklerini çalıştıramazsınız.
 
 **Temel** ve **Standart** , **Standart** olarak varsayılan değer olan en yaygın olarak kullanılan faturalanabilir katmanlardır. Denetiminizin altında adanmış kaynaklar sayesinde, daha büyük projeler dağıtabilir, performansı iyileştirir ve kapasiteyi ayarlayabilirsiniz.
 
@@ -83,7 +83,7 @@ Hizmetler farklı bölgelerde olduğunda, giden veriler için ücretler uygulan�
 
 [AI zenginleştirme](cognitive-search-concept-intro.md)için, Kullandıkça Öde Işleme için S0 fiyatlandırma katmanında Azure bilişsel arama ile aynı bölgede [faturalandırılabilir bir Azure bilişsel hizmetler kaynağı eklemeyi](cognitive-search-attach-cognitive-services.md)planlamalısınız. Bilişsel hizmetler ekleme ile ilişkili sabit bir maliyet yoktur. Yalnızca ihtiyacınız olan işleme için ödeme yaparsınız.
 
-| İşlem | Faturalama etkisi |
+| Çalışma | Faturalama etkisi |
 |-----------|----------------|
 | Belge çözme, metin ayıklama | Ücretsiz |
 | Belge çözme, görüntü ayıklama | Belgelerinizden ayıklanan görüntü sayısına göre faturalandırılır. Bir [Dizin Oluşturucu yapılandırmasında](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) **ımageaction** , görüntü ayıklamayı tetikleyen parametredir. **Imageaction** "none" (varsayılan) olarak ayarlandıysa, görüntü ayıklama için ücretlendirilmezsiniz. Görüntü ayıklama oranı, Azure Bilişsel Arama için [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/search/) sayfasında belgelenmiştir.|

@@ -16,16 +16,16 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 4627d9c4fa5c87e8e80ab80892062dabd77e9229
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0717f6f75b6bd8bb7ba4d53f8240414b5169540d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249717"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014799"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Azure’daki bir SQL Server Sanal Makinesi’ne Bağlanma (Klasik Dağıtım)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-connect.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md)
 > * [Klasik](../classic/sql-connect.md)
 > 
 > 
@@ -34,7 +34,7 @@ ms.locfileid: "79249717"
 Bu konu, bir Azure sanal makinesinde çalışan SQL Server örneğine nasıl bağlanabileceğinizi açıklamaktadır. Bazı [genel bağlantı senaryolarını](#connection-scenarios) ele alır ve [Azure VM 'de SQL Server bağlantısını yapılandırmaya yönelik ayrıntılı adımlar](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)sağlar.
 
 > [!IMPORTANT] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. Kaynak Yöneticisi VM 'Leri kullanıyorsanız, bkz. [Kaynak Yöneticisi kullanarak Azure 'da SQL Server sanal makinesine bağlanma](../sql/virtual-machines-windows-sql-connect.md).
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. Kaynak Yöneticisi VM 'Leri kullanıyorsanız, bkz. [Kaynak Yöneticisi kullanarak Azure 'da SQL Server sanal makinesine bağlanma](../../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md).
 
 ## <a name="connection-scenarios"></a>Bağlantı senaryoları
 Bir istemcinin sanal makinede çalışan SQL Server bağlandığı şekilde, istemcinin konumuna ve makine/ağ yapılandırmasına bağlı olarak farklılık gösterir. Bu senaryolar şunlardır:
@@ -106,9 +106,9 @@ Bağlantı yolu aşağıdaki diyagram tarafından özetlenir:
 ## <a name="next-steps"></a>Sonraki Adımlar
 Ayrıca yüksek kullanılabilirlik ve olağanüstü durum kurtarma için AlwaysOn Kullanılabilirlik Grupları kullanmayı planlıyorsanız, bir dinleyici uygulamayı düşünmelisiniz. Veritabanı istemcileri, SQL Server örneklerinden birine doğrudan değil, dinleyiciye bağlanır. Dinleyici, istemcileri kullanılabilirlik grubundaki birincil çoğaltmaya yönlendirir. Daha fazla bilgi için bkz. [Azure 'da AlwaysOn kullanılabilirlik grupları için BIR ıLB dinleyicisi yapılandırma](../classic/ps-sql-int-listener.md).
 
-Azure sanal makinesinde çalışan SQL Server için en iyi güvenlik uygulamalarını gözden geçirmeniz önemlidir. Daha fazla bilgi için bkz. [Azure Sanal Makineler'de SQL Server için Güvenlikle İlgili Dikkat Edilmesi Gerekenler](../sql/virtual-machines-windows-sql-security.md).
+Azure sanal makinesinde çalışan SQL Server için en iyi güvenlik uygulamalarını gözden geçirmeniz önemlidir. Daha fazla bilgi için bkz. [Azure Sanal Makineler'de SQL Server için Güvenlikle İlgili Dikkat Edilmesi Gerekenler](../../../azure-sql/virtual-machines/windows/security-considerations-best-practices.md).
 
 Azure Virtual Machines’de SQL Server için.[Öğrenme Yolunu keşfedin](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/). 
 
-Azure VM 'lerinde SQL Server çalıştırmaya ilişkin diğer konular için bkz. [Azure sanal makinelerinde SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Azure VM 'lerinde SQL Server çalıştırmaya ilişkin diğer konular için bkz. [Azure sanal makinelerinde SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 

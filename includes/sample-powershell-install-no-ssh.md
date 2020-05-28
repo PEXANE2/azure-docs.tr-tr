@@ -11,6 +11,6 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263990"
 ---
-Bu örnek Azure PowerShell az 1,0 veya üzeri bir sürüm gerektirir. Hangi `Get-Module -ListAvailable Az` sürümlerin yüklü olduğunu görmek için ' i çalıştırın. Yüklemeniz gerekiyorsa bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-az-ps). 
+Bu örnek Azure PowerShell az 1,0 veya üzeri bir sürüm gerektirir. `Get-Module -ListAvailable Az`Hangi sürümlerin yüklü olduğunu görmek için ' i çalıştırın. Yüklemeniz gerekiyorsa bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-az-ps). 
 
 Azure 'da oturum açmak için [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) komutunu çalıştırın.

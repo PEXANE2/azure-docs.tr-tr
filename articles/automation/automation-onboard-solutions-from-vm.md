@@ -5,14 +5,14 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: cab114e50852f293a3d1caf5bdc9a341f75f2557
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 254ff2906d2b80b6c34ba930daffbb2c65f2b22f
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743956"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117920"
 ---
-# <a name="enable-update-management-from-an-azure-vm"></a>Azure VM 'den Güncelleştirme Yönetimi etkinleştirme
+# <a name="enable-update-management-from-an-azure-vm"></a>Azure VM’den Güncelleştirme Yönetimi’ni etkinleştirme
 
 Bu makalede, diğer makinelerde [güncelleştirme yönetimi](automation-update-management.md) özelliğini etkinleştirmek Için BIR Azure VM 'yi nasıl kullanabileceğiniz açıklanır. Azure VM 'lerini ölçekli olarak etkinleştirmek için, Güncelleştirme Yönetimi kullanarak var olan bir VM 'yi etkinleştirmeniz gerekir. 
 
@@ -43,14 +43,14 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     ![Güncelleştirme Yönetimi’ni etkinleştirme](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>Kapsam yapılandırmasını denetleme
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Dağıtımın kapsamını sınırlandırma
 
-Güncelleştirme Yönetimi, özelliği etkinleştirmek üzere bilgisayarları hedeflemek için çalışma alanındaki kapsam yapılandırmasını kullanır. Kapsam yapılandırması, özelliğin kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Daha fazla bilgi için bkz. [güncelleştirme yönetimi için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-update-management.md).
+Güncelleştirme Yönetimi, güncelleştirmeleri almak için bilgisayarları hedeflemek üzere çalışma alanı içinde bir kapsam yapılandırması kullanır. Daha fazla bilgi için bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](automation-scope-configurations-update-management.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * VM 'Ler için Güncelleştirme Yönetimi kullanmak için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).
-* Kapsam yapılandırmalarında bkz. [güncelleştirme yönetimi için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-update-management.md).
+* Kapsam yapılandırmalarında bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](automation-scope-configurations-update-management.md).
 * Artık Log Analytics çalışma alanına ihtiyacınız yoksa, [güncelleştirme yönetimi için çalışma alanının Otomasyon hesabından bağlantısını kaldır](automation-unlink-workspace-update-management.md)' daki yönergelere bakın.
 * VM 'Leri Güncelleştirme Yönetimi silmek için bkz. [güncelleştirme yönetimi VM 'Leri kaldırma](automation-remove-vms-from-update-management.md).
 * Genel Güncelleştirme Yönetimi hatalarıyla ilgili sorunları gidermek için bkz. [güncelleştirme yönetimi sorunlarını giderme](troubleshoot/update-management.md).

@@ -13,7 +13,7 @@ ms.locfileid: "68881361"
 ---
 #### <a name="built-in-log-streaming"></a>Yerleşik günlük akışı
 
-Aşağıdaki örnekte `logstream` olduğu gibi, Azure 'da çalışan belirli bir işlev uygulamasının akış günlüklerini almaya başlamak için seçeneğini kullanın:
+`logstream`Aşağıdaki örnekte olduğu gibi, Azure 'da çalışan belirli bir işlev uygulamasının akış günlüklerini almaya başlamak için seçeneğini kullanın:
 
 ```bash
 func azure functionapp logstream <FunctionAppName>
@@ -21,7 +21,7 @@ func azure functionapp logstream <FunctionAppName>
 
 #### <a name="live-metrics-stream"></a>Canlı Ölçüm Akışı
 
-Ayrıca, aşağıdaki örnekte olduğu [Live Metrics Stream](../articles/azure-monitor/app/live-stream.md) gibi `--browser` seçeneğini ekleyerek işlev uygulamanızın canlı ölçüm akışı yeni bir tarayıcı penceresinde görüntüleyebilirsiniz:
+Ayrıca, [Live Metrics Stream](../articles/azure-monitor/app/live-stream.md) `--browser` Aşağıdaki örnekte olduğu gibi seçeneğini ekleyerek işlev uygulamanızın canlı ölçüm akışı yeni bir tarayıcı penceresinde görüntüleyebilirsiniz:
 
 ```bash
 func azure functionapp logstream <FunctionAppName> --browser

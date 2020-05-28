@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 007fe7cb90c651c346bc7fbea46d74aa41605d2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 999a181a812157a3e408d3e95b3e7fc00e29ecea
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744074"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118380"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure SYNAPSE Analytics (çalışma alanı önizlemesi) sık sorulan sorular
 
@@ -32,13 +32,6 @@ Y: Azure SYNAPSE, BI, AI ve sürekli zeka için tümleşik bir veri platformudur
 - Dilediğiniz katmandaki çalışma alanı etkinliklerinizde oluşan olayları kolayca Izleyip hızlı bir şekilde iyileştirin, tepki verin ve hatalarını ayıklayın.
 - Altyapılarınızın tamamında meta verilerinizi yönetin. Spark tablosu oluşturun ve Azure SYNAPSE veritabanlarında otomatik olarak kullanılabilir.
 - Birleştirilmiş bir kullanıcı deneyimi aracılığıyla verilerle etkileşime geçin. SYNAPSE Studio, büyük veri geliştiricileri, veri mühendisleri, DBAs, veri analistleri ve veri bilimcilerini aynı platforma taşır.
-
-### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>S: Azure SYNAPSE Analytics 'i kullanmaya başlama Nasıl yaparım?
-
-Y: Azure SYNAPSE Analytics 'i kullanmaya başlamak Için kaynak sağlayıcıları listesinden *Microsoft. SYNAPSE* ' yi seçerek [Azure SYNAPSE kaynak sağlayıcısını kaydedin](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types) . Sonra bir [SYNAPSE çalışma alanı](https://portal.azure.com) (ücretsiz!) oluşturun ve bu çalışma alanı altında istediğiniz kaynakları oluşturun. [SYNAPSE SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md) veya [bir çalışma alanı oluşturma](quickstart-create-workspace.md)gibi hızlı başlangıç öğreticilerimizden birini izleyerek basit kullanım ihtimaline yol gösterecektir. Ayrıca, [depolarımızda](https://github.com/Azure-Samples/Synapse)örnek Not DEFTERLERI ve SQL betikleri bulabilirsiniz. Ortak bir veri kümesine bağlanmanız gerekiyorsa, aşağıdaki özniteliklere sahip yeni bir bağlı hizmet oluşturun:
-
-- azure_storage_account_name = "azureopendatastorage"
-- azure_storage_sas_token = "" (yazma **""**)
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>S: Azure SYNAPSE Analytics 'in ana bileşenleri nelerdir?
 

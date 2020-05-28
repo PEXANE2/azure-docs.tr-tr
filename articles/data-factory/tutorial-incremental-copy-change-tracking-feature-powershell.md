@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 551cf909e6f78b26f3432f3ad9fdbe2140b9702b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7937c2c623fdca4e59dc0aac059bd1b8fd735a21
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415289"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119159"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Değişiklik izleme bilgilerini kullanarak Azure SQL Veritabanından Azure Blob Depolama alanına verileri artımlı olarak yükleme
 
@@ -74,11 +74,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure PowerShell. [Azure PowerShell nasıl yükleneceği ve yapılandırılacağı](/powershell/azure/install-Az-ps)konusundaki yönergeleri izleyerek en son Azure PowerShell modüllerini yükler.
-* **Azure SQL veritabanı**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure SQL Veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md) makalesine bakın.
+* **Azure SQL veritabanı**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure SQL Veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) makalesine bakın.
 * **Azure depolama hesabı**. Blob depolamayı **Havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın. **adftutorial** adlı bir kapsayıcı oluşturun. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Azure SQL veritabanınızda bir veri kaynağı tablosu oluşturma
-1. **SQL Server Management Studio**’yu başlatın ve Azure SQL Server'ınıza bağlanın.
+1. **SQL Server Management Studio**başlatın ve SQL veritabanı 'na bağlanın.
 2. **Sunucu Gezgini**’nde **veritabanınıza** sağ tıklayın ve **Yeni Sorgu**’yu seçin.
 3. Azure SQL veritabanınızda aşağıdaki SQL komutunu çalıştırarak veri kaynağı deponuz olarak `data_source_table` adlı bir tablo oluşturun.  
 
@@ -234,7 +234,7 @@ Bu adımda, Azure Depolama Hesabınızı veri fabrikasına bağlarsınız.
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Veritabanı bağlı hizmeti oluşturun.
 Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlarsınız.
 
-1. **C:\ADFTutorials\IncCopyChangeTrackingTutorial** klasöründe, **AzureSQLDatabaseLinkedService.json** adlı ve şu içeriğe sahip bir JSON dosyası oluşturun: Dosyayı kaydetmeden önce **&lt;server&gt; &lt;database name&gt;, &lt;user id&gt; ve &lt;password&gt;** değerlerini Azure SQL sunucunuzun adı, veritabanınızın adı, kullanıcı kimliği ve parola ile değiştirin.
+1. **C:\ADFTutorials\IncCopyChangeTrackingTutorial** klasöründe şu Içeriğe sahip **Azuresubdatabaselinkedservice. JSON** adlı bir JSON dosyası oluşturun: dosyayı kaydetmeden önce ** &lt; sunucu &gt; &lt; veritabanı adını &gt; , &lt; Kullanıcı KIMLIĞINI &gt; ve &lt; parolayı &gt; ** sunucunuzun adı, veritabanınızın adı, Kullanıcı kimliği ve parola ile değiştirin.
 
     ```json
     {

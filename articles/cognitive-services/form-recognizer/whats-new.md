@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c2b67989cbffb03eb182b4de2bf471a02ee33e7b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: e3bf279142383ccdb3e82ffee49bd593640bb937
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628002"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996831"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
@@ -27,11 +27,10 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
 
 ### <a name="new-features"></a>Yeni özellikler
 * **Form TANıYıCı API v 2.0 genel önizlemesi Için SDK desteği** Bu ay, form tanıyıcı v 2.0 (Önizleme) sürümü için bir önizleme SDK 'Sı eklemek üzere hizmet desteğimizi genişlettik. Seçtiğiniz dille çalışmaya başlamak için aşağıdaki bağlantıları kullanın: 
-   * [.NET SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer)
-   * [Java SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
-   * [Python SDK'sı](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
-   * [JavaScript SDK'sı](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer)
-
+   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview)
+   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview)
+   * [Python SDK'sı](https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-previewr)
+   * [JavaScript SDK'sı](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer?view=azure-node-preview)
 
   Yeni SDK, form tanıyıcı için v 2.0 REST API tüm özelliklerini destekler. Örneğin, etiketlere sahip veya olmayan bir modeli eğitebilir ve formlarınızdaki metin, anahtar değer çiftleri ve tablolar çıkarabilir, önceden oluşturulmuş alındılar hizmeti ile alış irsaliyelerinden verileri ayıklayabilir ve belgelerden düzen hizmetiyle birlikte metin ve tabloları ayıklayabilir. [SDK geri bildirim formu aracılığıyla SDK](https://aka.ms/FR_SDK_v1_feedback)'larda geri bildirimlerinizi paylaşabilirsiniz.
  
@@ -39,6 +38,10 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
    * [Kopya yetkilendirmesi oluşturma](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModelAuthorization) REST API
    * [Özel bir modeli kopyalama](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModel) REST API 
 
+### <a name="security-improvements"></a>Güvenlik iyileştirmeleri
+
+* Müşteri tarafından yönetilen anahtarlar artık Formtanıyıcı için kullanılabilir. Daha fazla bilgi için bkz. [rest for form tanıyıcı Için veri şifreleme](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest).
+* Azure Active Directory ile Azure kaynaklarına erişim için Yönetilen kimlikler kullanın. Daha fazla bilgi için bkz. [yönetilen kimliklere erişim yetkisi verme](https://docs.microsoft.com/azure/cognitive-services/authentication#authorize-access-to-managed-identities).
 
 ## <a name="march-2020"></a>Mart 2020 
 
@@ -46,11 +49,11 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
 
 * **Etiketleme Için değer türleri** Artık etiketettiğiniz değer türlerini, tanıyıcı örnek etiketleme aracı ile belirtebilirsiniz. Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
   * `string`
-    * Varsayılan, `no-whitespaces`,`alphanumeric`
+    * Varsayılan, `no-whitespaces` ,`alphanumeric`
   * `number`
     * varsayılanını`currency`
   * `date` 
-    * Varsayılan, `dmy`, `mdy`,`ymd`
+    * Varsayılan, `dmy` , `mdy` ,`ymd`
   * `time`
   * `integer`
 
@@ -64,7 +67,7 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
   > [!div class="mx-imgBorder"]
   > ![Örnek etiketleme aracını kullanarak tablo görselleştirme](./media/whats-new/formre-table-viz.png)
 
-    Ayıklanan tablolar altındaki `"pageResults"`JSON çıktısında kullanılabilir.
+    Ayıklanan tablolar altındaki JSON çıktısında kullanılabilir `"pageResults"` .
 
   > [!IMPORTANT]
   > Tabloların etiketlenmesi desteklenmiyor. Tablolar tanınmazsa ve otomatik olarak yoksa, bunları anahtar/değer çiftleri olarak etiketleyebilir. Tabloları anahtar/değer çiftleri olarak etiketleyerek, her hücreyi benzersiz bir değer olarak etiketleyin.

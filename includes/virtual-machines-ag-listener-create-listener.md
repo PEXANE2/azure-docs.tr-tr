@@ -19,7 +19,7 @@ Bu adımda, Yük Devretme Kümesi Yöneticisi ve SQL Server Management Studio ' 
 
 3. Küme adını genişletin ve ardından **Roller**' e tıklayın.
 
-4. **Roller** bölmesinde, kullanılabilirlik grubu adına sağ tıklayın ve ardından **kaynak** > **istemci erişim noktası**Ekle ' yi seçin.
+4. **Roller** bölmesinde, kullanılabilirlik grubu adına sağ tıklayın ve ardından **kaynak**  >  **istemci erişim noktası**Ekle ' yi seçin.
    
     ![Kullanılabilirlik grubu için Istemci erişim noktası ekle](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
 

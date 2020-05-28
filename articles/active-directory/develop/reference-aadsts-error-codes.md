@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3ec1e7e9aa84c01cd62836f3c09f22cdb143817a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 51567ff07930599b0c13d8a9546ebeca396c4b45
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611339"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993550"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD kimlik doğrulaması ve yetkilendirme hatası kodları
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) güvenlik belirteci hizmeti 'nden (STS) dönd�
 
 ## <a name="handling-error-codes-in-your-application"></a>Uygulamanızda hata kodlarını işleme
 
-[OAuth 2.0 belirtimi](https://tools.ietf.org/html/rfc6749#section-5.2) , hata yanıtının `error` bölümünü kullanarak kimlik doğrulaması sırasında hataların nasıl işleneceği hakkında rehberlik sağlar. 
+[OAuth 2.0 belirtimi](https://tools.ietf.org/html/rfc6749#section-5.2) , hata yanıtının bölümünü kullanarak kimlik doğrulaması sırasında hataların nasıl işleneceği hakkında rehberlik sağlar `error` . 
 
 Örnek bir hata yanıtı aşağıda verilmiştir:
 
@@ -58,29 +58,29 @@ Azure Active Directory (Azure AD) güvenlik belirteci hizmeti 'nden (STS) dönd�
 | `correlation_id` | İsteğe ait, bileşenler genelinde tanılamada yardımcı olabilecek benzersiz bir tanımlayıcı. |
 | `error_uri` |  Hata hakkında ek bilgi içeren hata arama sayfasına bir bağlantı.  Bu yalnızca geliştirici kullanımı içindir, bunu kullanıcılara sunmayın.  Yalnızca hata arama sisteminde hata hakkında ek bilgi varsa, tüm hatalar için ek bilgi sağlanmamıştır.|
 
-`error` Alanda birkaç olası değer vardır. belirli hatalar (örneğin, `authorization_pending` [cihaz kodu akışında](v2-oauth2-device-code.md)) hakkında daha fazla bilgi edinmek ve bunlara tepki vermek için protokol belge bağlantılarını ve OAuth 2,0 özelliklerini gözden geçirin.  Bazı yaygın olanlar aşağıda listelenmiştir:
+`error`Alanda birkaç olası değer vardır. belirli hatalar (örneğin, `authorization_pending` [cihaz kodu akışında](v2-oauth2-device-code.md)) hakkında daha fazla bilgi edinmek ve bunlara tepki vermek için protokol belge bağlantılarını ve OAuth 2,0 özelliklerini gözden geçirin.  Bazı yaygın olanlar aşağıda listelenmiştir:
 
 | Hata Kodu         | Açıklama        | İstemci eylemi    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Eksik gerekli bir parametre gibi protokol hatası. | İsteği onarın ve yeniden gönderin.|
-| `invalid_grant`    | Bazı kimlik doğrulama malzemeleri (auth kodu, yenileme belirteci, erişim belirteci, PKCE çekişmesi) geçersiz, çözümlenemez, eksik veya başka bir şekilde unuseable | Yeni bir yetkilendirme kodu almak için `/authorize` uç noktaya yeni bir istek deneyin.  Uygulamanın protokollerin kullanımını gözden geçirmeyi ve doğrulamayı düşünün. |
+| `invalid_grant`    | Bazı kimlik doğrulama malzemeleri (auth kodu, yenileme belirteci, erişim belirteci, PKCE çekişmesi) geçersiz, çözümlenemez, eksik veya başka bir şekilde unuseable | `/authorize`Yeni bir yetkilendirme kodu almak için uç noktaya yeni bir istek deneyin.  Uygulamanın protokollerin kullanımını gözden geçirmeyi ve doğrulamayı düşünün. |
 | `unauthorized_client` | Kimliği doğrulanmış istemci, bu yetkilendirme verme türünü kullanma yetkisine sahip değil. | Bu durum genellikle istemci uygulaması Azure AD 'de kayıtlı olmadığında veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir. |
 | `invalid_client` | İstemci kimlik doğrulaması başarısız oldu.  | İstemci kimlik bilgileri geçerli değil. Bu uygulamayı onarmak için, uygulama Yöneticisi kimlik bilgilerini güncelleştirir.   |
 | `unsupported_grant_type` | Yetkilendirme sunucusu yetkilendirme verme türünü desteklemiyor. | İstekteki izin türünü değiştirin. Bu tür bir hata yalnızca geliştirme sırasında ve ilk test sırasında algılanarak gerçekleştirilmelidir. |
 | `invalid_resource` | Hedef kaynak geçersiz, çünkü mevcut değil, Azure AD bu dosyayı bulamıyor veya doğru şekilde yapılandırılmamış. | Bu, varsa kaynağın kiracıda yapılandırılmamış olduğunu gösterir. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir.  Geliştirme sırasında bu genellikle yanlış bir kurulum test kiracısı veya istenen kapsam adında bir yazım hatası olduğunu gösterir. |
-| `interaction_required` | İstek, Kullanıcı etkileşimi gerektirir. Örneğin, ek bir kimlik doğrulama adımı gereklidir. | Aynı kaynağa sahip olan isteği yeniden deneyin, böylece kullanıcı gerekli tüm sorunları tamamlayabilirler.  |
+| `interaction_required` | İstek, Kullanıcı etkileşimi gerektirir. Örneğin, ek bir kimlik doğrulama adımı gereklidir. | Kullanıcının gereken tüm zorlukları tamamlayabilmesi için, etkileşimli olarak aynı kaynağa sahip isteği yeniden deneyin.  |
 | `temporarily_unavailable` | Sunucu, isteği işlemek için geçici olarak çok meşgul. | İsteği yeniden deneyin. İstemci uygulaması, geçici bir durum nedeniyle yanıtı geciktirildiği kullanıcıya açıklanmayabilir. |
 
 ## <a name="lookup-current-error-code-information"></a>Geçerli hata kodu bilgilerini ara
-Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, AADSTS hata açıklamalarını, [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) düzeltmeleri ve önerilen bazı geçici çözümleri bulmak için sayfaya göz atın.  
+Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) AADSTS hata açıklamalarını, düzeltmeleri ve önerilen bazı geçici çözümleri bulmak için sayfaya göz atın.  
 
-Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADSTS16000" hata kodunu aldıysanız, "16000" [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) için bir arama yapın.  Ayrıca, URL 'ye hata kodu numarasını ekleyerek doğrudan belirli bir hataya da bağlanabilirsiniz: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
+Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADSTS16000" hata kodunu aldıysanız, [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "16000" için bir arama yapın.  Ayrıca, URL 'ye hata kodu numarasını ekleyerek doğrudan belirli bir hataya da bağlanabilirsiniz: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000) .
 
 ## <a name="aadsts-error-codes"></a>AADSTS hata kodları
 
 | Hata | Açıklama |
 |---|---|
-| AADSTS16000 | Selectkullanıcıhesabı-bu, Azure AD tarafından oluşturulan ve kullanıcının birden çok geçerli SSO oturumu arasından seçim yapmasına izin veren kullanıcı ARABIRIMI ile sonuçlanan bir kesintiye neden olur. Bu hata oldukça yaygındır ve belirtilirse uygulamaya `prompt=none` döndürülür. |
+| AADSTS16000 | Selectkullanıcıhesabı-bu, Azure AD tarafından oluşturulan ve kullanıcının birden çok geçerli SSO oturumu arasından seçim yapmasına izin veren kullanıcı ARABIRIMI ile sonuçlanan bir kesintiye neden olur. Bu hata oldukça yaygındır ve belirtilirse uygulamaya döndürülür `prompt=none` . |
 | AADSTS16001 | Useraccountselectiongeçersiz-Kullanıcı, oturumun seçim mantığı tarafından reddedildiği bir kutucuğa tıkladığı takdirde bu hatayı görürsünüz. Bu hata tetiklendiğinde, kullanıcının güncelleştirilmiş kutucuk/oturumlar listesinden seçerek veya başka bir hesap seçerek kurtarılmasına izin verir. Bu hata, bir kod hatası veya yarış durumu nedeniyle oluşabilir. |
 | AADSTS16002 | Appsessionselectiongeçersiz-uygulama tarafından belirtilen SID gereksinimi karşılanmadı.  |
 | AADSTS16003 | SsoUserAccountNotFoundInResourceTenant-kullanıcının kiracıya açıkça eklenmediğini belirtir. |
@@ -95,7 +95,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS50000 | Tokenıssuanceerror-oturum açma hizmetiyle ilgili bir sorun var. Bu sorunu çözmek için bir [destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md). |
 | AADSTS50001 | Invalidresource-kaynak devre dışı veya yok. Erişmeye çalıştığınız kaynağın tam kaynak URL 'sini belirttiğinizden emin olmak için uygulamanızın kodunu kontrol edin.  |
 | AADSTS50002 | NotAllowedTenant-kiracı üzerinde kısıtlanmış bir ara sunucu erişimi nedeniyle oturum açma başarısız oldu. Kendi kiracı ilkeniz varsa, bu sorunu giderecek şekilde kısıtlı kiracı ayarlarınızı değiştirebilirsiniz. |
-| AADSTS50003 | Eksik bir imzalama anahtarı veya sertifikası nedeniyle MissingSigningKey-oturum açma başarısız oldu. Bu, uygulamada bir imzalama anahtarı yapılandırılmadığı için olabilir. Bölümünde özetlenen çözünürlüğe göz atın [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured). Sorun yaşamaya devam ederseniz uygulama sahibine veya bir uygulama yöneticisine başvurun. |
+| AADSTS50003 | Eksik bir imzalama anahtarı veya sertifikası nedeniyle MissingSigningKey-oturum açma başarısız oldu. Bu, uygulamada bir imzalama anahtarı yapılandırılmadığı için olabilir. Bölümünde özetlenen çözünürlüğe göz atın [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) . Sorun yaşamaya devam ederseniz uygulama sahibine veya bir uygulama yöneticisine başvurun. |
 | AADSTS50005 | DevicePolicyError-Kullanıcı, şu anda koşullu erişim ilkesi aracılığıyla desteklenmeyen bir platformdan cihazda oturum açmaya çalıştı. |
 | AADSTS50006 | Invalidsignature-geçersiz bir imza nedeniyle Imza doğrulaması başarısız oldu. |
 | AADSTS50007 | PartnerEncryptionCertificateMissing-bu uygulama için iş ortağı şifreleme sertifikası bulunamadı. Bunu sağlamak için Microsoft ile [bir destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md) . |
@@ -139,7 +139,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS50089 | Akış belirtecinin süresi doldu - Kimlik Doğrulaması Başarısız Oldu. Kullanıcının Kullanıcı adı-parolasıyla yeniden oturum açmayı denemesini sağlayabilirsiniz. |
 | AADSTS50097 | DeviceAuthenticationRequired-cihaz kimlik doğrulaması gerekiyor. |
 | AADSTS50099 | Pkeyauthınvalidjwtunyetkilendirme-JWT imzası geçersiz. |
-| AADSTS50105 | EntitlementGrantsNotFound-oturum açmış olan Kullanıcı, oturum açmış olan uygulama için bir role atanmaz. Kullanıcıyı uygulamaya atayın. Daha fazla bilgi için[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role):. |
+| AADSTS50105 | EntitlementGrantsNotFound-oturum açmış olan Kullanıcı, oturum açmış olan uygulama için bir role atanmaz. Kullanıcıyı uygulamaya atayın. Daha fazla bilgi için: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role) . |
 | AADSTS50107 | Invalidrealmuri-istenen Federasyon Bölgesi nesnesi yok. Kiracı yöneticisine başvurun. |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat-JWT üstbilgisiyle sorun. Kiracı yöneticisine başvurun. |
 | AADSTS50124 | Claimstransformationınvalidınputparameter-talep dönüştürmesi geçersiz giriş parametresi içeriyor. İlke güncelleştirmek için kiracı yöneticisine başvurun. |
@@ -189,7 +189,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS65001 | Delegationsuz notexist-Kullanıcı veya yönetici, KIMLIĞI X olan uygulamayı kullanmaya Medi. bu kullanıcı ve kaynak için etkileşimli bir yetkilendirme isteği gönderin. |
 | AADSTS65004 | Userdeclinedonay-Kullanıcı uygulamaya erişim iznini reddetti. Kullanıcıdan oturum açmayı yeniden denemesini ve uygulamaya izin vermesini isteyin|
 | AADSTS65005 | Hatalı Configuredapplication-uygulama gerekli kaynak erişim listesi, kaynak tarafından bulunabilecek uygulamaları içermiyor veya istemci uygulaması, gerekli kaynak erişimi listesinde veya grafik hizmetinde belirtilmeyen bir istek ya da kaynak bulunamamıştır ve kaynak erişimi istedi. Uygulama SAML destekliyorsa, uygulamayı yanlış tanımlayıcıyla (varlık) yapılandırmış olabilirsiniz. Aşağıdaki bağlantıyı kullanarak SAML için listelenen çözümlemeyi deneyin:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
-| AADSTS650052 | Uygulamanın, kuruluşunuzun `\"{organization}\"` abone olmadığı veya etkinleştirilmediği `(\"{name}\")` bir hizmete erişmesi gerekir. Hizmet aboneliklerinizin yapılandırmasını gözden geçirmek için BT yöneticinize başvurun. |
+| AADSTS650052 | Uygulamanın, `(\"{name}\")` kuruluşunuzun `\"{organization}\"` abone olmadığı veya etkinleştirilmediği bir hizmete erişmesi gerekir. Hizmet aboneliklerinizin yapılandırmasını gözden geçirmek için BT yöneticinize başvurun. |
 | AADSTS67003 | Actornotvalidserviceıdentity |
 | AADSTS70000 | Invalidgrant-kimlik doğrulaması başarısız oldu. Yenileme belirteci geçerli değil. Hatanın nedeni aşağıdakilerden biri olabilir:<ul><li>Belirteç bağlama üst bilgisi boş</li><li>Belirteç bağlama karması eşleşmiyor</li></ul> |
 | AADSTS70001 | UnauthorizedClient-uygulama devre dışı bırakıldı. |
@@ -197,7 +197,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS70003 | UnsupportedGrantType-uygulama, desteklenmeyen bir izin türü döndürdü. |
 | AADSTS70004 | Invalidredirecturi-uygulama geçersiz bir yeniden yönlendirme URI 'SI döndürdü. İstemci tarafından belirtilen yeniden yönlendirme adresi, yapılandırılmış bir adresle veya OIDC onay listesindeki herhangi bir adresle eşleşmiyor. |
 | AADSTS70005 | UnsupportedResponseType-uygulama, aşağıdaki nedenlerden dolayı desteklenmeyen bir yanıt türü döndürdü:<ul><li>' token ' yanıt türü uygulama için etkin değil</li><li>'id_token' yanıt türü 'OpenID' kapsamı gerektiriyor -kodlanmış wctx içinde desteklenmeyen bir OAuth parametre değeri içeriyor</li></ul> |
-| AADSTS70007 | UnsupportedResponseMode-uygulama, belirteç istenirken desteklenmeyen bir değer `response_mode` döndürdü.  |
+| AADSTS70007 | UnsupportedResponseMode-uygulama, belirteç istenirken desteklenmeyen bir değer döndürdü `response_mode` .  |
 | AADSTS70008 | ExpiredOrRevokedGrant-yenileme belirtecinin süresi eylemsizlik nedeniyle doldu. Belirteç XXX 'de verildi ve belirli bir süre boyunca etkin değil. |
 | AADSTS70011 | Invalidscope-uygulama tarafından istenen kapsam geçersiz. |
 | AADSTS70012 | MsaServerError-MSA (tüketici) kullanıcısının kimliği doğrulanırken bir sunucu hatası oluştu. Yeniden Deneyin. Başarısız olmaya devam ederse, [bir destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md) |
@@ -250,7 +250,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS90043 | Ülke Alclouduuthcoderedirection-özellik devre dışı. |
 | AADSTS90051 | Invalidülke Alcloudıd-Ulusal bulut tanımlayıcısı geçersiz bir bulut tanımlayıcısı içeriyor. |
 | AADSTS90055 | Tenantkısıtlar Lingerror-çok fazla gelen istek var. Bu özel durum engellenen kiracılar için oluşturulur. |
-| AADSTS90056 | BadResourceRequest-bir erişim belirtecinin kodunu kullanmak Için, uygulamanın `/token` uç noktaya bir post isteği gönderilmesi gerekir. Ayrıca, bundan önce bir yetkilendirme kodu sağlamalı ve bunu `/token` uç noktaya gönder isteğinde göndermeniz gerekir. OAuth 2,0 yetkilendirme kodu akışına genel bakış için bu makaleye başvurun: [https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code). Kullanıcıyı bir authorization_code döndürecek `/authorize` uç noktaya yönlendirin. `/token` Uç noktaya istek göndererek, Kullanıcı erişim belirtecini alır. Azure portal oturum açın ve iki uç noktanın doğru şekilde yapılandırıldığını onaylamak için **Uygulama kayıtları > uç noktalarına** bakın. |
+| AADSTS90056 | BadResourceRequest-bir erişim belirtecinin kodunu kullanmak Için, uygulamanın uç noktaya bir POST isteği gönderilmesi gerekir `/token` . Ayrıca, bundan önce bir yetkilendirme kodu sağlamalı ve bunu uç noktaya gönder isteğinde göndermeniz gerekir `/token` . OAuth 2,0 yetkilendirme kodu akışına genel bakış için bu makaleye başvurun: [https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) . Kullanıcıyı `/authorize` bir authorization_code döndürecek uç noktaya yönlendirin. `/token`Uç noktaya istek göndererek, Kullanıcı erişim belirtecini alır. Azure portal oturum açın ve iki uç noktanın doğru şekilde yapılandırıldığını onaylamak için **Uygulama kayıtları > uç noktalarına** bakın. |
 | AADSTS90072 | PassThroughUserMfaError-kullanıcının oturum açtığı kiracı üzerinde oturum açtığı dış hesap yok; Böylece Kullanıcı kiracının MFA gereksinimlerini karşılayamaz. Hesabın, önce kiracıda bir dış Kullanıcı olarak eklenmesi gerekir. Oturumu kapatın ve farklı bir Azure AD kullanıcı hesabıyla oturum açın. |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid-hizmet bir WS-Federation iletisini işlemeye çalışırken hata oluştu. İleti geçerli değil. |
 | AADSTS90082 | OrgIdWsFederationNotSupported-istek için seçilen kimlik doğrulama ilkesi Şu anda desteklenmiyor. |
@@ -266,7 +266,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS900382 | Çapraz bulut isteğinde gizli Istemci desteklenmez. |
 | AADSTS90100 | Invalidrequestparameter-parametre boş veya geçerli değil. |
 | AADSTS901002 | AADSTS901002: ' Resource ' istek parametresi desteklenmiyor. |
-| AADSTS90101 | Invalidemapostano-sağlanan veriler geçerli bir e-posta adresi değil. E-posta adresi biçiminde `someone@example.com`olmalıdır. |
+| AADSTS90101 | Invalidemapostano-sağlanan veriler geçerli bir e-posta adresi değil. E-posta adresi biçiminde olmalıdır `someone@example.com` . |
 | AADSTS90102 | Invaliduriparameter-değer geçerli bir mutlak URI olmalıdır. |
 | AADSTS90107 | Invalidxml-istek geçerli değil. Verilerinizde geçersiz karakterler bulunmadığından emin olun.|
 | AADSTS90114 | Invalidexpıryıdate-toplu belirtecin süre sonu zaman damgası, süresi dolmasının verilmemesine neden olur. |
@@ -275,10 +275,10 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS90120 | Invaliddeviceflowrequest-istek zaten yetkilendirildi veya reddedildi. |
 | AADSTS90121 | Invalidemptyrequest-geçersiz boş istek.|
 | AADSTS90123 | Identityprovideraccessreddedildi-kimlik veya talep verme sağlayıcısı isteği reddettiğinden belirteç verilemez. |
-| AADSTS90124 | V1ResourceV2GlobalEndpointNotSupported-kaynak, `/common` veya `/consumers` uç noktalar üzerinde desteklenmez. Bunun yerine `/organizations` veya kiracıya özgü uç noktasını kullanın. |
+| AADSTS90124 | V1ResourceV2GlobalEndpointNotSupported-kaynak, `/common` veya `/consumers` uç noktalar üzerinde desteklenmez. `/organizations`Bunun yerine veya kiracıya özgü uç noktasını kullanın. |
 | AADSTS90125 | Debugmodekayıtlarını Tenantnotfound-Kullanıcı sistemde yok. Kullanıcı adını doğru girdiğinizden emin olun. |
 | AADSTS90126 | Debugmodekayıtlarını Tenantnotçıkarılan-Kullanıcı türü bu uç noktada desteklenmiyor. Sistem Kullanıcı adından kullanıcının kiracısını çıkarsanamıyor. |
-| AADSTS90130 | NonConvergedAppV2GlobalEndpointNotSupported-uygulama `/common` veya `/consumers` uç noktalar üzerinde desteklenmez. Bunun yerine `/organizations` veya kiracıya özgü uç noktasını kullanın. |
+| AADSTS90130 | NonConvergedAppV2GlobalEndpointNotSupported-uygulama `/common` veya `/consumers` uç noktalar üzerinde desteklenmez. `/organizations`Bunun yerine veya kiracıya özgü uç noktasını kullanın. |
 | AADSTS120000 | PasswordChangeIncorrectCurrentPassword |
 | AADSTS120002 | Passwordchangeınvalidnewpasswordzayıf |
 | AADSTS120003 | Passwordchangeınvalidnewpasswordcontainsmembername |
@@ -307,9 +307,9 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS220501 | Invalidcrldownload |
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource-kaynak yalnızca cihaz belirteçlerini kabul edecek şekilde yapılandırılmadı. |
 | AADSTS240001 | BulkAADJTokenUnauthorized-Kullanıcı Azure AD 'ye cihaz kaydetme yetkisine sahip değil. |
-| AADSTS240002 | Requiredclaimısmissing-id_token ver olarak `urn:ietf:params:oauth:grant-type:jwt-bearer` kullanılamaz.|
+| AADSTS240002 | Requiredclaimısmissing-id_token ver olarak kullanılamaz `urn:ietf:params:oauth:grant-type:jwt-bearer` .|
 | AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy-kiracı yöneticisi, bu isteği engelleyen bir güvenlik ilkesi yapılandırmıştır. İsteğiniz ilke gereksinimlerini karşılayıp karşılamadığını öğrenmek için kiracı düzeyinde tanımlanan güvenlik ilkelerini kontrol edin. |
-| AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest-uygulama dizinde/kiracıda bulunamadı. Bu durum, uygulama kiracının Yöneticisi tarafından yüklenmediyse veya kiracının kiracısındaki herhangi bir kullanıcı tarafından ' a onaylı olması durumunda gerçekleşebilir. Uygulamanın tanımlayıcı değerini yanlış yapılandırılmış veya kimlik doğrulama isteğinizi yanlış kiracıya göndermiş olabilirsiniz. |
+| AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest-uygulama dizinde/kiracıda bulunamadı. Uygulama, kiracının yöneticisi tarafından yüklenmediyse veya kiracıdaki herhangi bir kullanıcı tarafından onaylanmadıysa bu durum ortaya çıkabilir. Uygulamanın Tanımlayıcı değerini yanlış yapılandırılmış veya uygulama isteğinizi yanlış kiracıya göndermiş olabilirsiniz. |
 | AADSTS700020 | Interactionrequired-erişim izni etkileşim gerektiriyor. |
 | AADSTS700022 | Invalidmultipleresourcesscope-giriş parametresi kapsamı için girilen değer, birden fazla kaynak içerdiğinden geçerli değil. |
 | AADSTS700023 | Invalidresourcelessscope-girilen parametre kapsamı için girilen değer, erişim belirteci isteğinde geçerli değildir. |

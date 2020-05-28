@@ -3,25 +3,25 @@ title: Bir kapsayıcıda .NET uygulamasını Azure Service Fabric dağıtma
 description: Visual Studio'yu ve Service Fabric'teki hata ayıklama kapsayıcılarını yerel olarak kullanıp mevcut .NET uygulamasını kapsayıcılı hale getirmeyi öğrenin. Kapsayıcılı hale getirilen uygulama Azure Container Registry'ye gönderilir ve Service Fabric kümesine dağıtılır. Azure'a dağıtıldığında, verilerin kalıcı olmasını sağlamak için uygulama Azure SQL veritabanını kullanır.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 08bbab2d92e9631f75c46be2e3f822532b62718a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 06c284a06be4879f9ecb514ed30c28332cd11cc8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82136667"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017010"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Öğretici: Azure Service Fabric’e Windows kapsayıcısındaki bir .NET uygulamasını dağıtma
 
-Bu öğreticide mevcut ASP.NET uygulamasını kapsayıcılı hale getirme ve bir Service Fabric uygulaması olarak paketleme işlemleri gösterilir.  Kapsayıcıları yerel olarak Service Fabric geliştirme kümesinde çalıştırın ve ardından uygulamayı Azure'a dağıtın.  Uygulama verileri [Azure SQL Veritabanında](/azure/sql-database/sql-database-technical-overview) kalıcı olarak bulundurur. 
+Bu öğreticide mevcut ASP.NET uygulamasını kapsayıcılı hale getirme ve bir Service Fabric uygulaması olarak paketleme işlemleri gösterilir.  Kapsayıcıları yerel olarak Service Fabric geliştirme kümesinde çalıştırın ve ardından uygulamayı Azure'a dağıtın.  Uygulama verileri [Azure SQL Veritabanında](/azure/sql-database/sql-database-technical-overview) kalıcı olarak bulundurur.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Visual Studio kullanarak mevcut uygulamayı kapsayıcılı hale getirme
-> * Bir Azure SQL veritabanı oluşturma
+> * Azure SQL veritabanı 'nda veritabanı oluşturma
 > * Azure Container Registry oluşturma
 > * Service Fabric uygulamasını Azure'a dağıtma
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -31,41 +31,43 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 2. Windows 10’da kapsayıcıları çalıştırabilmek için [Docker Windows CE](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)’yi yükleyin.
 3. [Service Fabric çalışma zamanı sürümü 6.2 veya üstünü](service-fabric-get-started.md) ve [Service Fabric SDK sürüm 3.1](service-fabric-get-started.md) veya üstünü yükleyin.
 4. **Azure geliştirme** ve **ASP.net ve Web geliştirme** Iş yükleriyle [Visual Studio 2019 sürüm 16,1](https://www.visualstudio.com/) veya üstünü yükledikten sonra.
-5. [Azure PowerShell][link-azure-powershell-install]'i yükleyin
- 
+5. [Azure PowerShell][link-azure-powershell-install] yüklensin
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Fabrikam Fiber CallCenter'ı indirme ve çalıştırma
-[Fabrikam Fiber CallCenter][link-fabrikam-github] örnek uygulamasını indirin.  **Arşivi indir** bağlantısına tıklayın.  *fabrikam.zip* dosyasındaki *sourceCode* dizininden *sourceCode.zip* dosyasını ayıklayın ve ardından *VS2015* dizininizi bilgisayarınıza ayıklayın.
 
-Fabrikam Fiber CallCenter uygulamasının hatasız derlendiğinden ve çalıştırıldığından emin olun.  Visual Studio’yu **yönetici** olarak başlatın ve [FabrikamFiber.CallCenter.sln][link-fabrikam-github] dosyasını açın.  Uygulamada hata ayıklaması yapmak ve uygulamayı çalıştırmak için F5'e basın.
+1. [Fabrikam Fiber CallCenter][link-fabrikam-github] örnek uygulamasını indirin.  **Arşivi indir** bağlantısına tıklayın.  *fabrikam.zip* dosyasındaki *sourceCode* dizininden *sourceCode.zip* dosyasını ayıklayın ve ardından *VS2015* dizininizi bilgisayarınıza ayıklayın.
 
-![Fabrikam web örneği][fabrikam-web-page]
+2. Fabrikam Fiber CallCenter uygulamasının hatasız derlendiğinden ve çalıştırıldığından emin olun.  Visual Studio’yu **yönetici** olarak başlatın ve [FabrikamFiber.CallCenter.sln][link-fabrikam-github] dosyasını açın.  Uygulamada hata ayıklaması yapmak ve uygulamayı çalıştırmak için F5'e basın.
+
+   ![Fabrikam web örneği][fabrikam-web-page]
 
 ## <a name="containerize-the-application"></a>Uygulamayı kapsayıcılı hale getirme
-**FabrikamFiber.Web** projesi > **Ekle** > **Container Orchestrator Desteği**'ne sağ tıklayın.  Kapsayıcı düzenleyicisi olarak **Service Fabric**'i seçin ve **Tamam**'a tıklayın.
 
-Docker’ı şimdi Windows kapsayıcılarına geçirmek için **Evet**’e tıklayın.
+1. **FabrikamFiber.Web** projesi > **Ekle** > **Container Orchestrator Desteği**'ne sağ tıklayın.  Kapsayıcı düzenleyicisi olarak **Service Fabric**'i seçin ve **Tamam**'a tıklayın.
 
-Çözümde yeni bir Service Fabric uygulama projesi (**FabrikamFiber.CallCenterApplication**) oluşturulur.  Mevcut **FabrikamFiber.Web** projesine bir Dockerfile eklenir.  Ayrıca **FabrikamFiber.Web** projesine bir **PackageRoot** dizini de eklenir ve bu dizin yeni FabrikamFiber.Web hizmetinin hizmet bildirimiyle ayarlarını içerir. 
+2. Docker’ı şimdi Windows kapsayıcılarına geçirmek için **Evet**’e tıklayın.
 
-Artık kapsayıcı, Service Fabric uygulamasında oluşturulup paketlenmeye hazırdır. Makinenizde kapsayıcı görüntüsü oluşturulduğunda, bu görüntüyü herhangi bir kapsayıcı kayıt defterine gönderebilir ve çalıştırmak için herhangi bir ana bilgisayara çekebilirsiniz.
+   Çözümde yeni bir Service Fabric uygulama projesi (**FabrikamFiber.CallCenterApplication**) oluşturulur.  Mevcut **FabrikamFiber.Web** projesine bir Dockerfile eklenir.  Ayrıca **FabrikamFiber.Web** projesine bir **PackageRoot** dizini de eklenir ve bu dizin yeni FabrikamFiber.Web hizmetinin hizmet bildirimiyle ayarlarını içerir.
+
+   Artık kapsayıcı, Service Fabric uygulamasında oluşturulup paketlenmeye hazırdır. Makinenizde kapsayıcı görüntüsü oluşturulduğunda, bu görüntüyü herhangi bir kapsayıcı kayıt defterine gönderebilir ve çalıştırmak için herhangi bir ana bilgisayara çekebilirsiniz.
 
 ## <a name="create-an-azure-sql-db"></a>Azure SQL Veritabanı oluşturma
+
 Fabrikam Fiber CallCenter uygulamasını üretim ortamında çalıştırırken, verilerin bir veritabanında kalıcı olarak bulunması gerekir. Şu anda kapsayıcıdaki verilerin kalıcı olmasını garanti altına alan bir yöntem olmadığından üretim verileriniz, kapsayıcıdaki bir SQL Server’da depolanamaz.
 
-[Azure SQL Veritabanı](/azure/sql-database/sql-database-get-started-powershell)'nı öneririz. Azure'da yönetilen SQL Server Veritabanı ayarlamak ve çalıştırmak için aşağıdaki betiği çalıştırın.  Betik değişkenlerinde gerekli değişiklikleri yapın. *clientIP*, geliştirme bilgisayarınızın IP adresidir. Betiği tarafından çıktılanın sunucu adını bir yere göz atın. 
+[Azure SQL Veritabanı](/azure/sql-database/sql-database-get-started-powershell)'nı öneririz. Azure'da yönetilen SQL Server Veritabanı ayarlamak ve çalıştırmak için aşağıdaki betiği çalıştırın.  Betik değişkenlerinde gerekli değişiklikleri yapın. *clientIP*, geliştirme bilgisayarınızın IP adresidir. Betiği tarafından çıktılanın sunucu adını bir yere göz atın.
 
 ```powershell
 $subscriptionID="<subscription ID>"
 
 # Sign in to your Azure account and select your subscription.
-Login-AzAccount -SubscriptionId $subscriptionID 
+Login-AzAccount -SubscriptionId $subscriptionID
 
 # The data center and resource name for your resources.
 $dbresourcegroupname = "fabrikam-fiber-db-group"
 $location = "southcentralus"
 
-# The logical server name: Use a random value or replace with your own value (do not capitalize).
+# The server name: Use a random value or replace with your own value (do not capitalize).
 $servername = "fab-fiber-$(Get-Random)"
 
 # Set an admin login and password for your database.
@@ -101,10 +103,12 @@ New-AzSqlDatabase  -ResourceGroupName $dbresourcegroupname `
 
 Write-Host "Server name is $servername"
 ```
+
 > [!TIP]
 > Bir şirket güvenlik duvarının arkasındaysanız, geliştirme bilgisayarınızın IP adresi İnternet'e gösterilen IP adresi olmayabilir. Veritabanının güvenlik duvarı kuralı için doğru IP adresine sahip olduğunun doğrulamak için [Azure portal](https://portal.azure.com)’a gidin ve SQL Veritabanları bölümünde veritabanınızı bulun. Adına tıklayın ve sonra Genel Bakış bölümünde “Sunucu güvenlik duvarını ayarla”ya tıklayın. "İstemci IP adresi", geliştirme makinenizin IP adresidir. "AllowClient" kuralındaki IP adresiyle eşleştiğinden emin olun.
 
 ## <a name="update-the-web-config"></a>Web yapılandırmasını güncelleştirme
+
 **FabrikamFiber.Web** projesine geri dönüp **web.config** dosyasındaki bağlantı dizesini kapsayıcıdaki SQL Server noktası ile güncelleştirin.  Bağlantı dizesinin *sunucu* bölümünü, önceki komut dosyası tarafından oluşturulan sunucu adı olacak şekilde güncelleştirin. "Fab-fiber-751718376.database.windows.net" gibi bir şey olmalıdır.
 
 ```xml
@@ -112,13 +116,16 @@ Write-Host "Server name is $servername"
 <add name="FabrikamFiber-DataWarehouse" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
   
 ```
+
 >[!NOTE]
 >Ana bilgisayarınızdan erişilebilir olduğu sürece, yerel hata ayıklama için tercih ettiğiniz herhangi bir SQL Server’ı kullanabilirsiniz. Ancak **localdb**, `container -> host` iletişimini desteklemez. Web uygulamanızın sürüm derlemesini oluştururken farklı bir SQL veritabanı kullanmak isterseniz, *web.release.config* dosyasına başka bir bağlantı dizesi ekleyin.
 
 ## <a name="run-the-containerized-application-locally"></a>Kapsayıcılı hale getirilen uygulamayı yerel olarak çalıştırma
+
 Uygulamayı yerel Service Fabric geliştirme kümesindeki bir kapsayıcıda çalıştırmak ve hatalarını ayıklamak için **F5** tuşuna basın. 'ServiceFabricAllowedUsers' grubuna, Visual Studio proje dizininize yönelik okuma ve yürütme izni verilmesini isteyen bir ileti kutusu sunulursa **Evet**’e tıklayın.
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
+
 Artık uygulama yerel olarak çalıştırıldığına göre, Azure'a dağıtmak için hazırlamaya başlayın.  Kapsayıcı görüntülerinin bir kapsayıcı kayıt defterinde depolanması gerekir.  Aşağıdaki betiği kullanarak bir [Azure kapsayıcı kayıt defteri](/azure/container-registry/container-registry-intro) oluşturun. Kapsayıcı kayıt defteri adı diğer Azure aboneliklerine görünür olduğundan benzersiz olmalıdır.
 Uygulamayı Azure'a dağıtmadan önce kapsayıcı görüntüsünü bu kayıt defterine gönderirsiniz.  Uygulama Azure'daki kümeye dağıtılırken kapsayıcı görüntüsü bu kayıt defterinden çekilir.
 
@@ -134,24 +141,23 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 ```
 
 ## <a name="create-a-service-fabric-cluster-on-azure"></a>Azure’da Service Fabric kümesi oluşturma
+
 Service Fabric uygulamaları, ağ bağlantılı sanal veya fiziksel makinelerin bulunduğu bir kümede çalışır.  Uygulamayı Azure 'a dağıtabilmeniz için önce Azure 'da bir Service Fabric kümesi oluşturun.
 
 Şunları yapabilirsiniz:
-- Visual Studio'dan test kümesi oluşturma. Bu seçenek doğrudan Visual Studio'dan tercih ettiğiniz yapılandırmalarla güvenli bir küme oluşturmanızı sağlar. 
-- [Şablondan güvenli bir küme oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
-Bu öğretici Visual Studio'dan bir küme oluşturur; bu test senaryoları için idealdir. Başka herhangi bir yolla küme oluşturursanız veya mevcut kümelerden birini kullanırsanız, bağlantı uç noktanızı kopyalayıp yapıştırabilir veya aboneliğinizden seçebilirsiniz. 
+* Visual Studio'dan test kümesi oluşturma. Bu seçenek doğrudan Visual Studio'dan tercih ettiğiniz yapılandırmalarla güvenli bir küme oluşturmanızı sağlar.
+* [Şablondan güvenli bir küme oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
-Başlamadan önce, Çözüm Gezgini FabrikamFiber. Web->PackageRoot->ServiceManifest. xml ' yi açın. **Uç noktada**listelenen Web ön ucunun bağlantı noktasını bir yere göz atın. 
+Bu öğretici Visual Studio'dan bir küme oluşturur; bu test senaryoları için idealdir. Başka herhangi bir yolla küme oluşturursanız veya mevcut kümelerden birini kullanırsanız, bağlantı uç noktanızı kopyalayıp yapıştırabilir veya aboneliğinizden seçebilirsiniz.
 
-Kümeyi oluştururken, 
+Başlamadan önce, Çözüm Gezgini FabrikamFiber. Web-> PackageRoot-> ServiceManifest. xml ' yi açın. **Uç noktada**listelenen Web ön ucunun bağlantı noktasını bir yere göz atın.
+
+Küme oluşturulurken:
 
 1. Çözüm Gezgini'nde **FabrikamFiber.CallCenterApplication** uygulama projesine sağ tıklayın ve **Yayımla**’yı seçin.
-
-2. Aboneliklerinize erişebilmek için Azure hesabınızı kullanarak oturum açın. 
-
-3. **Bağlantı Uç Noktası**'nın açılan listesini seçin ve sonra da **Yeni Küme Oluştur...** seçeneğini belirtin.    
-        
+2. Aboneliklerinize erişebilmek için Azure hesabınızı kullanarak oturum açın.
+3. **Bağlantı Uç Noktası**'nın açılan listesini seçin ve sonra da **Yeni Küme Oluştur...** seçeneğini belirtin.
 4. **Küme oluştur** iletişim kutusunda aşağıdaki ayarları değiştirin:
 
     a. Küme **adı** alanında kümenizin adını ve kullanmak istediğiniz aboneliği ve konumu belirtin. Küme kaynak grubunuzun adını bir yere göz atın.
@@ -160,19 +166,20 @@ Kümeyi oluştururken,
 
     c. **Sertifika** sekmesini seçin. Bu sekmede, kümenizin sertifikasını güvenli hale getirmek için kullanılacak bir parola yazın. Bu sertifika, kümenizin güvenliğine yardımcı olur. Ayrıca sertifikayı kaydetmek istediğiniz yolu da değiştirebilirsiniz. Visual Studio sertifikayı sizin için içeri aktarabilir, çünkü uygulamayı kümeye yayımlarken bu gerekli bir adımdır.
 
-    d. **VM ayrıntısı** sekmesini seçin. kümeyi oluşturan sanal MAKINELER (VM) için kullanmak Istediğiniz parolayı belirtin. Kullanıcı adı ve parola, VM'lere uzaktan bağlanmak için kullanılabilir. Ayrıca VM makine boyutu da seçmelisiniz ve gerekirse VM görüntüsü değiştirebilirsiniz. 
+    d. **VM ayrıntısı** sekmesini seçin. kümeyi oluşturan sanal MAKINELER (VM) için kullanmak Istediğiniz parolayı belirtin. Kullanıcı adı ve parola, VM'lere uzaktan bağlanmak için kullanılabilir. Ayrıca VM makine boyutu da seçmelisiniz ve gerekirse VM görüntüsü değiştirebilirsiniz.
 
     > [!IMPORTANT]
-    >Çalışan kapsayıcıları destekleyen bir SKU seçin. Küme düğümlerinizdeki Windows Server işletim sistemi, kapsayıcınızın Windows Server işletim sistemiyle uyumlu olmalıdır. Daha fazla bilgi için bkz. [Windows Server kapsayıcı işletim sistemi ve ana bilgisayar işletim sistemi uyumluluğu](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). Varsayılan olarak bu öğretici, Windows Server 2016 LTSC’yi temel alan bir Docker görüntüsü oluşturur. Bu görüntüyü temel alan kapsayıcılar, Kapsayıcılar içeren Windows Server 2016 Veri Merkezi ile oluşturulan kümelerde çalıştırılır. Ancak bir küme oluşturur veya Kapsayıcılar içeren Windows Server Datacenter Core 1709’u temel alan mevcut bir kümeyi kullanırsanız, kapsayıcının temel aldığı Windows Server işletim sistemi görüntüsünü değiştirmeniz gerekir. **FabrikamFiber.Web** projesinde **Dockerfile** öğesini açın, mevcut `FROM` deyimini açıklama satırı yapın (`windowsservercore-ltsc` temelinde) ve `windowsservercore-1709` temelinde `FROM` deyiminin açıklamasını kaldırın. 
+    > Çalışan kapsayıcıları destekleyen bir SKU seçin. Küme düğümlerinizdeki Windows Server işletim sistemi, kapsayıcınızın Windows Server işletim sistemiyle uyumlu olmalıdır. Daha fazla bilgi için bkz. [Windows Server kapsayıcı işletim sistemi ve ana bilgisayar işletim sistemi uyumluluğu](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). Varsayılan olarak bu öğretici, Windows Server 2016 LTSC’yi temel alan bir Docker görüntüsü oluşturur. Bu görüntüyü temel alan kapsayıcılar, Kapsayıcılar içeren Windows Server 2016 Veri Merkezi ile oluşturulan kümelerde çalıştırılır. Ancak bir küme oluşturur veya Kapsayıcılar içeren Windows Server Datacenter Core 1709’u temel alan mevcut bir kümeyi kullanırsanız, kapsayıcının temel aldığı Windows Server işletim sistemi görüntüsünü değiştirmeniz gerekir. **FabrikamFiber.Web** projesinde **Dockerfile** öğesini açın, mevcut `FROM` deyimini açıklama satırı yapın (`windowsservercore-ltsc` temelinde) ve `windowsservercore-1709` temelinde `FROM` deyiminin açıklamasını kaldırın.
 
     e. **Gelişmiş** sekmesinde, küme dağıtılırken yük dengeleyicide açılacak uygulama bağlantı noktasını listeleyin. Bu, kümeyi oluşturmaya başlamadan önce Bu bağlantı noktasıdır. Ayrıca uygulama günlük dosyalarını yönlendirmek için kullanılacak mevcut bir Application Insights anahtarı ekleyebilirsiniz.
 
-    f. Ayarları değiştirmeyi tamamladığınızda **Oluştur** düğmesini seçin. 
-1. Oluşturma işleminin tamamlanması birkaç dakika sürer; çıkış penceresinde kümenin ne zaman tam olarak oluşturulduğu gösterilir.
-    
+    f. Ayarları değiştirmeyi tamamladığınızda **Oluştur** düğmesini seçin.
 
-## <a name="allow-your-application-running-in-azure-to-access-the-sql-db"></a>Azure'da çalıştırılan uygulamanızın SQL veritabanına erişmesine izin verme
-Daha önce, yerel olarak çalıştırılan uygulamanıza erişim vermek için bir SQL güvenlik duvarı kuralı oluşturmuştunuz.  Bundan sonra, Azure'da çalıştırılan uygulamanın SQL veritabanına erişimini etkinleştirmeniz gerekir.  Service Fabric kümesi için bir [sanal ağ hizmet uç noktası](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) oluşturun ve ardından bu uç noktanın SQL veritabanına erişmesine izin verecek bir kural oluşturun. Kümeyi oluştururken dikkat ettiğiniz küme kaynak grubu değişkenini belirttiğinizden emin olun. 
+5. Oluşturma işleminin tamamlanması birkaç dakika sürer; çıkış penceresinde kümenin ne zaman tam olarak oluşturulduğu gösterilir.
+
+## <a name="allow-your-application-running-in-azure-to-access-sql-database"></a>Azure 'da çalışan uygulamanızın SQL veritabanına erişmesine izin verin
+
+Daha önce, yerel olarak çalıştırılan uygulamanıza erişim vermek için bir SQL güvenlik duvarı kuralı oluşturmuştunuz.  Bundan sonra, Azure'da çalıştırılan uygulamanın SQL veritabanına erişimini etkinleştirmeniz gerekir.  Service Fabric kümesi için bir [sanal ağ hizmet uç noktası](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) oluşturun ve ardından bu uç noktanın SQL veritabanına erişmesine izin verecek bir kural oluşturun. Kümeyi oluştururken dikkat ettiğiniz küme kaynak grubu değişkenini belirttiğinizden emin olun.
 
 ```powershell
 # Create a virtual network service endpoint
@@ -180,7 +187,7 @@ $clusterresourcegroup = "<cluster resource group>"
 $resource = Get-AzResource -ResourceGroupName $clusterresourcegroup -ResourceType Microsoft.Network/virtualNetworks | Select-Object -first 1
 $vnetName = $resource.Name
 
-Write-Host 'Virtual network name: ' $vnetName 
+Write-Host 'Virtual network name: ' $vnetName
 
 # Get the virtual network by name.
 $vnet = Get-AzVirtualNetwork `
@@ -219,19 +226,23 @@ $vnetRuleObject1 = New-AzSqlServerVirtualNetworkRule `
   -VirtualNetworkRuleName $VNetRuleName `
   -VirtualNetworkSubnetId $subnetID;
 ```
+
 ## <a name="deploy-the-application-to-azure"></a>Uygulamayı Azure’a dağıtma
+
 Uygulama hazır olduğuna göre, doğrudan Visual Studio'dan Azure'daki bir kümeye dağıtabilirsiniz.  Çözüm Gezgini'nde **FabrikamFiber.CallCenterApplication** uygulama projesine sağ tıklayın ve **Yayımla**'yı seçin.  **Bağlantı Uç Noktası**'nda, daha önce oluşturmuş olduğunuz kümenin uç noktasını seçin.  **Azure Container Registry**'de, daha önce oluşturmuş olduğunuz kapsayıcı kayıt defterini seçin.  Uygulamayı Azure'daki kümeye dağıtmak için **Yayımla**’ya tıklayın.
 
 ![Uygulama yayımlama][publish-app]
 
-Çıkış penceresinde dağıtımın ilerleme durumunu izleyin.  Uygulama dağıtıldığında, tarayıcıyı açın ve küme adresiyle uygulama bağlantı noktasını yazın. Örneğin, http:\//fabrikamfibercallcenter.southcentralus.cloudapp.Azure.com:8659/.
+Çıkış penceresinde dağıtımın ilerleme durumunu izleyin. Uygulama dağıtıldığında, tarayıcıyı açın ve küme adresiyle uygulama bağlantı noktasını yazın. Örneğin, https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
 
 ![Fabrikam web örneği][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Service Fabric kümesi ile Sürekli Tümleştirme ve Dağıtımı (CI/CD) ayarlama
+
 Service Fabric kümesinde CI/CD uygulama dağıtımını yapılandırmak için Azure DevOps kullanma hakkında bilgi edinmek için bkz. [Öğretici: CI/CD ile Service Fabric kümesine uygulama dağıtma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Bu öğreticide anlatılan işlem, bu (FabrikamFiber) projesiyle aynıdır, tek yapmanız gereken Voting örneğini indirme adımını atlayıp depo adını Voting yerine FabrikamFiber olarak değiştirmektir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
+
 İşiniz bittiğinde, oluşturduğunuz tüm kaynakları kaldırmayı unutmayın.  Bunun en basit yolu Service Fabric kümesini, Azure SQL veritabanını ve Azure Container Registry'yi içeren kaynak gruplarını kaldırmaktır.
 
 ```powershell
@@ -250,11 +261,13 @@ Remove-AzResourceGroup -Name $clusterresourcegroupname
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
+>
 > * Visual Studio kullanarak mevcut uygulamayı kapsayıcılı hale getirme
-> * Bir Azure SQL veritabanı oluşturma
+> * Azure SQL veritabanı 'nda veritabanı oluşturma
 > * Azure Container Registry oluşturma
 > * Service Fabric uygulamasını Azure'a dağıtma
 

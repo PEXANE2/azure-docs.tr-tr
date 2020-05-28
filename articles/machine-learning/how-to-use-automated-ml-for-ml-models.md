@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: nibaccam
-author: tsikiksr
+author: aniththa
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 03/10/2020
-ms.openlocfilehash: 841d518c02dbc76a172890f6019d78d048f4e8bb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/20/2020
+ms.openlocfilehash: 20d98f8eb4971d2aba1ecfbf8abeaba261cde8c4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653839"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115888"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,13 +27,13 @@ Uçtan uca örnek için [Azure Machine Learning OTOMATIKLEŞTIRILMIŞ ml arabiri
 
 Python kod tabanlı bir deneyim için [otomatik makine öğrenimi denemeleri](how-to-configure-auto-train.md) Azure Machine Learning SDK ile yapılandırın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 * **Enterprise Edition**türünde bir Azure Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).  Mevcut bir çalışma alanını Enterprise Edition 'a yükseltmek için bkz. [Enterprise Edition 'A yükseltme](how-to-manage-workspace.md#upgrade).
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 1. Azure Machine Learning için oturum açın https://ml.azure.com . 
 
@@ -120,14 +120,16 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
     Ek yapılandırmalar|Açıklama
     ------|------
     Birincil ölçüm| Modelinize Puanlama için kullanılan ana ölçüm. [Model ölçümleri hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md#explore-model-metrics).
-    Otomatik olarak korleştirme| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme özelliğini etkinleştirmek veya devre dışı bırakmak için seçin. Ön işleme, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürme içerir. Zaman serisi tahmin görev türü için desteklenmez. [Ön işleme hakkında daha fazla bilgi edinin](#featurization). 
+    Otomatik olarak korleştirme| Otomatik makine öğrenimi tarafından yapılan seçimi etkinleştirmek veya devre dışı bırakmak için seçin. Otomatik hale getirme, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir. Zaman serisi tahmin görev türü için desteklenmez. [Korleştirme hakkında daha fazla bilgi edinin](how-to-configure-auto-features.md#featurization). 
     En iyi modeli açıkla | Önerilen en iyi modelin explainability gösterilmesini etkinleştirmek veya devre dışı bırakmak için seçin
     Engellenen algoritma| Eğitim işinden dışlamak istediğiniz algoritmaları seçin.
     Çıkış ölçütü| Bu ölçütlerden herhangi biri karşılandığında eğitim işi durdurulur. <br> *Eğitim işi süresi (saat)*: eğitim işinin ne kadar süreyle çalışmasına izin verme. <br> *Ölçüm puan eşiği*: tüm işlem hatları için en düşük ölçüm puanı. Bu, ulaşmak istediğiniz tanımlı bir hedef ölçüsünün olması durumunda eğitim işinde gerekli olandan daha fazla zaman harcamamanızı sağlar.
     Doğrulama| Eğitim işinde kullanmak için çapraz doğrulama seçeneklerinden birini seçin. [Çapraz doğrulama hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md).
     Eşzamanlılık| *Maksimum eşzamanlı yineleme*: eğitim işinde sınanacak maksimum işlem hattı sayısı (yineleme). İş, belirtilen sayıda yinelemeden daha fazla çalıştırmayacak.
 
-1. Seçim Özellik ayarlarını görüntüleme: **ek yapılandırma ayarları** formunda **Otomatik** özelliği etkinleştirmeyi seçerseniz bu form, bu özelliği hangi sütunların gerçekleştireceğini ve eksik imputations değeri için hangi istatistiksel değerin kullanılacağını seçin.
+1. Seçim Özelliği görüntüleme ayarları: **ek yapılandırma ayarları** formunda **Otomatik** özelliği etkinleştirmeyi seçerseniz, varsayılan özellikler uygulanır. Görünüm özelliği **ayarları** ' nda bu Varsayılanları değiştirebilir ve uygun şekilde özelleştirebilirsiniz. [Korturleri özelleştirmeyi](#customize-featurization)öğrenin. 
+
+    ![Azure Machine Learning Studio görev türü formu](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
 <a name="profile"></a>
 
@@ -140,7 +142,7 @@ Veri ayarlanmış olup olmadığını doğrulamak için veri kümesi genelinde �
 
 İstatistik|Açıklama
 ------|------
-Öne çıkan özelliği| Özetlenen sütunun adı.
+Özellik| Özetlenen sütunun adı.
 Profil| Çıkarılan türe göre satır içi görselleştirme. Örneğin, dizeler, Boole değerleri ve tarihler değer sayılarına sahip olacaktır, ancak Ondalıklar (Numerics) de yaklaşık histogramlar olur. Bu, verilerin dağıtımını hızlı bir şekilde anlayabilmeniz için size izin verir.
 Tür dağılımı| Bir sütun içindeki türlerin satır içi değer sayısı. Null değerler kendi türlerdir, bu nedenle bu görselleştirme tek veya eksik değerleri algılamak için yararlıdır.
 Tür|Sütunun Çıkarsanan türü. Olası değerler şunlardır: dizeler, Boole değerleri, tarihler ve ondalıklar.
@@ -155,58 +157,19 @@ Varyans| Bu sütunun verilerinin ne kadar yayıldığı, ortalama değerinden ol
 Eğrilikleri| Bu sütun verilerinin normal bir dağılıma göre ne kadar farklı olduğunu gösteren ölçü.
 Sıklık| Bu sütun verilerinin ne kadar süden bir normal dağıtımla karşılaştırıldığı ölçüdür.
 
-<a name="featurization"></a>
+## <a name="customize-featurization"></a>Özelleştirmeleri özelleştirme
 
-## <a name="advanced-featurization-options"></a>Gelişmiş özellik seçenekleri
+**Korleştirme** formunda, otomatik özelliği etkinleştirebilir/devre dışı bırakabilir ve denemenizin otomatik hale getirme ayarlarını özelleştirebilirsiniz. Bu formu açmak için, [deneme oluşturma ve çalıştırma](#create-and-run-experiment) bölümünde 10. adıma bakın. 
 
-Otomatik makine öğrenimi, verilerle ilgili olası sorunları [belirlemenize ve yönetmenize](concept-manage-ml-pitfalls.md#prevent-over-fitting)yardımcı olmak için otomatik olarak ön işleme ve veri guardları sunar. 
+Aşağıdaki tabloda, şu anda Studio aracılığıyla kullanılabilen özelleştirmeler özetlenmektedir. 
 
-### <a name="preprocessing"></a>Ön
+Sütun| Özelleştirme
+---|---
+Dahil | Eğitim için hangi sütunların ekleneceğini belirtir.
+Özellik türü| Seçili sütun için değer türünü değiştirin.
+Impute with| Verilerinizde hangi değerin eksik olduğunu belirlemek için değerleri seçin.
 
-> [!NOTE]
-> Auto ML tarafından oluşturulan modellerinizi bir [onnx modeline](concept-onnx.md)dışarı aktarmayı planlıyorsanız, onnx biçiminde yalnızca bir * ile gösterilen featurleştirme seçenekleri desteklenir. [Modelleri ONNX 'e dönüştürme](concept-automated-ml.md#use-with-onnx)hakkında daha fazla bilgi edinin. 
-
-|Ön işleme &nbsp; adımları| Açıklama |
-| ------------- | ------------- |
-|Yüksek önem düzeyi bırakma veya varyans özelliği yok * |Tüm değerleri eksik olan özellikler de dahil olmak üzere eğitim ve doğrulama kümelerinden bunları bırakın, tüm satırlarda veya çok yüksek kardinalite (örneğin, karma, kimlik veya GUID) ile aynı değeri kullanın.|
-|Impute eksik değerler * |Sayısal özellikler için sütunundaki değerleri ortalama olan ımpute.<br/><br/>Kategorik özellikler için en sık değer içeren ımpute.|
-|Ek özellikler oluştur * |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br/><br/>Metin özellikleri için: tekli gram, Çift gram ve üçlü karakter-gram temelinde Dönem sıklığı.|
-|Dönüştür ve kodla *|Birkaç benzersiz değer içeren sayısal özellikler kategorik özelliklere dönüştürülür.<br/><br/>Düşük kardinalite kategorik için tek bir etkin kodlama gerçekleştirilir; yüksek kardinalite, tek bir sıcak karma kodlama için.|
-|Sözcük katıştırlamaları|Metin belirteçlerinin vektörlerini, önceden eğitilen bir model kullanarak tümce vektörlerine dönüştüren metin korleştirici. Belge özellik vektörü oluşturmak için bir belgedeki her bir sözcüğün katıştırma vektörü birlikte toplanır.|
-|Hedef kodlamalar|Kategorik özellikler için, her bir kategoriyi gerileme sorunları için Ortalama hedef değeriyle ve sınıflandırma sorunları için her bir sınıfın sınıf olasılığa eşler. Sıklık tabanlı ağırlığa ve k katlamalı çapraz doğrulama, seyrek veri kategorilerinin neden olduğu eşlemenin ve gürültü üzerine gitmek için geçerlidir.|
-|Metin hedefi kodlaması|Metin girişi için, her bir sınıfın olasılığını oluşturmak için kelimeleri olan bir yığılmış Doğrusal model kullanılır.|
-|Kanıt ağırlığı (WoE)|, Kategorik sütunların bağıntısı olarak hedef sütuna bir ölçü olarak, WoE hesaplar. Sınıf içi ve sınıf dışı olasılıkların oranının günlüğü olarak hesaplanır. Bu adım, her sınıf için bir sayısal özellik sütunu verir ve eksik değerler ve aykırı değer işleme gereksinimini ortadan kaldırır.|
-|Küme uzaklığı|K. a, tüm sayısal sütunlarda kümeleme modeli anlamına gelir.  Her bir örneğin her bir kümenin centroıd değerine her bir örnek arasındaki mesafeyi içeren, her küme için yeni bir sayısal özellik olan yeni özellik çıkışları.|
-
-### <a name="data-guardrails"></a>Veri, guardrayları
-
-Otomatik özellik etkinleştirildiğinde veya doğrulama otomatik olarak ayarlandığında, veri guardları uygulanır. Data guardrayları, verileriniz ile ilgili olası sorunları belirlemenize yardımcı olur (örneğin, eksik değerler, sınıf dengesizliği) ve geliştirilmiş sonuçlar için düzeltici eylemler elde etmenize yardımcı olur. 
-
-Kullanıcılar, bir otomatik ML çalıştırmasının **veri verileri** , veya ```show_output=True``` Python SDK 'sını kullanarak bir deneme gönderdiğinizde, Studio 'daki veri guardları sekmesindeki verileri gözden geçirebilir. 
-
-#### <a name="data-guardrail-states"></a>Veri Guardlığı durumları
-
-Data guardrayları şu üç durumdan birini görüntüler: **başarılı**, **bitti**veya **Uyarı**.
-
-Durum| Açıklama
-----|----
-Geçiril| Hiçbir veri sorunu algılanmadı ve Kullanıcı eylemi gerekli değildir. 
-Bitti| Verilerinize değişiklikler uygulandı. Kullanıcıların, değişikliklerin beklenen sonuçlarla hizalandığını garantilemek için otomatik ML 'nin düzeltici eylemleri gözden geçirmesini öneririz. 
-Uyarı| Düzeltmelere neden olan bir veri sorunu algılandı. Kullanıcıları sorunu gözden geçirmenizi ve düzeltmesini öneririz. 
-
->[!NOTE]
-> Önceki otomatikleştirilmiş ML denemeleri sürümleri dördüncü bir durum görüntülendi: **düzeltildi**. Daha yeni denemeleri bu durumu görüntülemez ve **sabit** durumu görüntülenen tüm guardrayları artık **tamamlandı**olarak görüntülenecektir.   
-
-Aşağıdaki tabloda, şu anda desteklenmekte olan veriler ve kullanıcıların denedikleri zaman içinde karşılaşabileceğiniz ilgili durumlar açıklanmaktadır.
-
-Guarddemiryolu|Durum|&nbsp;Tetikleyici için &nbsp; koşul
----|---|---
-Eksik özellik değerleri imputation |**Geçiril** <br><br><br> **Bitti**| Eğitim verilerinizde eksik özellik değeri algılanmadı. [Eksik imputation değeri](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) hakkında daha fazla bilgi edinin. <br><br> Eğitim verilerinizde eksik özellik değerleri algılandı ve genişletilmiş.
-Yüksek kardinalite özelliği işleme |**Geçiril** <br><br><br> **Bitti**| Girişlerinizin çözümlenmesi ve yüksek kardinalite özelliklerinin saptanmamış olması. [Yüksek kardinalite Özellik algılaması](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) hakkında daha fazla bilgi edinin. <br><br> Girdilerde yüksek kardinalite özellikleri algılandı ve işlendi.
-Doğrulama bölünmüş işleme |**Bitti**| *Doğrulama yapılandırması ' Auto ' olarak ayarlandı ve eğitim verileri 20.000 satırdan **daha az** satır içeriyordu.* <br> Eğitilen modelin her yinelemesi çapraz doğrulama aracılığıyla doğrulanmıştı. [Doğrulama verileri](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) hakkında daha fazla bilgi edinin. <br><br> *Doğrulama yapılandırması ' Auto ' olarak ayarlandı ve eğitim verileri 20.000 satırdan **fazla** satır içeriyordu.* <br> Giriş verileri, modelin doğrulanması için bir eğitim veri kümesine ve bir doğrulama veri kümesine bölündü.
-Sınıf Dengeleme algılaması |**Geçiril** <br><br><br><br> **Uyarı** | Girişlerinizin çözümlenmesi ve tüm sınıfların eğitim verilerinizde dengelenmesi. Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir. <br><br><br> Girdilerde imdengelenmiş sınıflar algılandı. Model sapmalarının giderilmesi için, Dengeleme sorununu düzeltir. [İmdengelenmiş veriler](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data) hakkında daha fazla bilgi edinin.
-Bellek sorunları algılama |**Geçiril** <br><br><br><br> **Bitti** |<br> Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve olası bellek dışı sorunlar algılandı. Zaman serisi [tahmin yapılandırması](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) hakkında daha fazla bilgi edinin. <br><br><br>Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Öteleme veya sıralı pencere yapılandırması kapatılmış.
-Sıklık algılama |**Geçiril** <br><br><br><br> **Bitti** |<br> Zaman serisi çözümlendi ve tüm veri noktaları algılanan sıklığa göre hizalanır. <br> <br> Zaman serisi çözümlendi ve algılanan sıklığa göre hizalanmayan veri noktaları algılandı. Bu veri noktaları, veri kümesinden kaldırılmıştır. [Zaman serisi tahminiyle ilgili veri hazırlığı](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data) hakkında daha fazla bilgi edinin.
+![Azure Machine Learning Studio görev türü formu](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
 ## <a name="run-experiment-and-view-results"></a>Deneme çalıştırma ve sonuçları görüntüleme
 
@@ -255,6 +218,7 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
     *Gelişmiş* menü, [veri toplama](how-to-enable-app-insights.md) ve kaynak kullanımı ayarları gibi varsayılan dağıtım özelliklerini sunar. Bu Varsayılanları geçersiz kılmak istiyorsanız bu menüdeki bu ayarları yapın.
 
 1. **Dağıt**'ı seçin. Dağıtımın tamamlanması yaklaşık 20 dakika sürebilir.
+    Dağıtım başladıktan sonra **model ayrıntıları** sekmesi görüntülenir. **Özellikler** bölmesinin dağıtım **durumu** bölümünde dağıtım ilerlemesini inceleyin. 
 
 Artık tahmin oluşturmak için işlemsel bir Web hizmetiniz vardır! [Power BI yerleşik Azure Machine Learning desteği '](how-to-consume-web-service.md#consume-the-service-from-power-bi)nden hizmeti sorgulayarak tahminleri test edebilirsiniz.
 

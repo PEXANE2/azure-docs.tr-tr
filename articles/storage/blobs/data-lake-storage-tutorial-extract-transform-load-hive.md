@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74327569"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014919"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Öğretici: Azure HDInsight kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -50,7 +50,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 2. Sayfada aşağıdaki değerleri seçin:
 
-   | Adı | Değer |
+   | Name | Değer |
    | --- | --- |
    | Yıl Filtresi |2013 |
    | Dönem Filtresi |Ocak |
@@ -70,9 +70,9 @@ Bu bölümde, HDInsight kümenize verileri yükleyecek ve ardından bu verileri 
    scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
    ```
 
-   * `<file-name>` Yer tutucusunu. zip dosyasının adıyla değiştirin.
-   * `<ssh-user-name>` Yer tutucusunu HDInsight KÜMESI için SSH oturum açma ile değiştirin.
-   * `<cluster-name>` Yer tutucusunu HDInsight kümesinin adıyla değiştirin.
+   * `<file-name>`Yer tutucusunu. zip dosyasının adıyla değiştirin.
+   * `<ssh-user-name>`Yer tutucusunu HDInsight kümesi IÇIN SSH oturum açma ile değiştirin.
+   * `<cluster-name>`Yer tutucusunu HDInsight kümesinin adıyla değiştirin.
 
    SSH oturum açma bilgilerinizi doğrulamak için bir parola kullanıyorsanız parola girmeniz istenir.
 
@@ -98,9 +98,9 @@ Bu bölümde, HDInsight kümenize verileri yükleyecek ve ardından bu verileri 
    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   Yer tutucusunu `<container-name>` , kapsayıcınıza vermek istediğiniz adla değiştirin.
+   `<container-name>`Yer tutucusunu, kapsayıcınıza vermek istediğiniz adla değiştirin.
 
-   `<storage-account-name>` Yer tutucusunu depolama hesabınızın adıyla değiştirin.
+   `<storage-account-name>`Yer tutucusunu depolama hesabınızın adıyla değiştirin.
 
 5. Bir dizin oluşturmak için aşağıdaki komutu kullanın.
 
@@ -128,7 +128,7 @@ Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler**adlı bir
    nano flightdelays.hql
    ```
 
-2. `<container-name>` Ve `<storage-account-name>` yer tutucuları kapsayıcınıza ve depolama hesabı adınızla değiştirerek aşağıdaki metni değiştirin. Sonra sağ fare tıklama düğmesi ile birlikte SHIFT tuşuna basarak metni nano konsola kopyalayıp yapıştırın.
+2. `<container-name>`Ve `<storage-account-name>` yer tutucuları kapsayıcınıza ve depolama hesabı adınızla değiştirerek aşağıdaki metni değiştirin. Sonra sağ fare tıklama düğmesi ile birlikte SHIFT tuşuna basarak metni nano konsola kopyalayıp yapıştırın.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -244,16 +244,16 @@ Bu işlem için SQL veritabanınızda sunucu adına ihtiyacınız vardır. Sunuc
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. Yükleme tamamlandıktan sonra, SQL veritabanı sunucusuna bağlanmak için aşağıdaki komutu kullanın.
+6. Yükleme tamamlandıktan sonra, SQL veritabanına bağlanmak için aşağıdaki komutu kullanın.
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * `<server-name>` Yer tutucusunu SQL veritabanı sunucu adıyla değiştirin.
+   * `<server-name>`Yer tutucusunu MANTıKSAL SQL Server adıyla değiştirin.
 
-   * `<admin-login>` Yer tutucusunu SQL veritabanı için yönetici oturum kimliğiyle değiştirin.
+   * `<admin-login>`Yer TUTUCUSUNU SQL veritabanı için yönetici oturum kimliğiyle değiştirin.
 
-   * `<database-name>` Yer tutucusunu veritabanı adıyla değiştirin
+   * `<database-name>`Yer tutucusunu veritabanı adıyla değiştirin
 
    İstendiğinde, SQL veritabanı yönetici oturumu açma parolasını girin.
 
@@ -267,7 +267,7 @@ Bu işlem için SQL veritabanınızda sunucu adına ihtiyacınız vardır. Sunuc
    1>
    ```
 
-7. `1>` İsteminde aşağıdaki deyimleri girin:
+7. `1>`İsteminde aşağıdaki deyimleri girin:
 
    ```hiveql
    CREATE TABLE [dbo].[delays](
@@ -300,7 +300,7 @@ Bu işlem için SQL veritabanınızda sunucu adına ihtiyacınız vardır. Sunuc
 
 ## <a name="export-and-load-the-data"></a>Verileri dışarı ve yükleme
 
-Önceki bölümlerde, dönüştürülen verileri konumda `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`kopyaladınız. Bu bölümde, verileri `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL veritabanında oluşturduğunuz tabloya aktarmak Için Sqoop 'yi kullanırsınız.
+Önceki bölümlerde, dönüştürülen verileri konumda kopyaladınız `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . Bu bölümde, verileri `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL veritabanında oluşturduğunuz tabloya aktarmak Için Sqoop 'yi kullanırsınız.
 
 1. Sqoop’un SQL veritabanınızı görebildiğini doğrulamak için aşağıdaki komutu kullanın:
 
@@ -318,7 +318,7 @@ Bu işlem için SQL veritabanınızda sunucu adına ihtiyacınız vardır. Sunuc
 
    Sqoop, **gecikmeler** tablosunu içeren veritabanına bağlanır ve verileri `/tutorials/flightdelays/output` dizinden **gecikmeler** tablosuna aktarır.
 
-3. `sqoop` Komut bittikten sonra, veritabanına bağlanmak için TSQL yardımcı programını kullanın:
+3. `sqoop`Komut bittikten sonra, veritabanına bağlanmak için TSQL yardımcı programını kullanın:
 
    ```bash
    TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
@@ -333,7 +333,7 @@ Bu işlem için SQL veritabanınızda sunucu adına ihtiyacınız vardır. Sunuc
 
    Tabloda verilerin listesini görürsünüz. Tablo, şehir adını ve bu şehre ait ortalama uçuş gecikme süresini içerir.
 
-5. TSQL `exit` yardımcı programından çıkmak için girin.
+5. `exit`TSQL yardımcı programından çıkmak için girin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -344,4 +344,4 @@ Bu öğreticide kullanılan tüm kaynaklar önceden yüklenir. Temizlik gerekmez
 HDInsight 'ta verilerle çalışmanın daha fazla yolunu öğrenmek için aşağıdaki makaleye bakın:
 
 > [!div class="nextstepaction"]
-> [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

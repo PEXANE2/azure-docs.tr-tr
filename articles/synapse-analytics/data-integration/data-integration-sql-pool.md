@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: ab25b2e300f9fe9b0b1d077a42538c69fa543af2
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: acfe367033d1553f5ee408ad0f4170e5d981377e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982709"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021832"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>Verileri bir SQL havuzuna yerleştirme
 
@@ -24,7 +24,7 @@ Bu makalede, Azure SYNAPSE Analytics kullanarak bir Azure Data Lake Gen 2 depola
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**: Azure Data Lake Storage Gen 2 ' nı *kaynak* veri deposu olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
-* **Azure SYNAPSE Analytics**: bir SQL havuzunu *Havuz* veri deposu olarak kullanırsınız. Azure SYNAPSE Analytics örneğiniz yoksa, oluşturma adımları için bkz. [SQL havuzu oluşturma](../../sql-database/sql-database-get-started-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+* **Azure SYNAPSE Analytics**: bir SQL havuzunu *Havuz* veri deposu olarak kullanırsınız. Azure SYNAPSE Analytics örneğiniz yoksa, oluşturma adımları için bkz. [SQL havuzu oluşturma](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 

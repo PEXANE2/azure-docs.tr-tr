@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 83ccc3160ed62a1ea801dd8c5795328fd2b5109f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0023bcc4a7c31a0e337683fa3d3080a45445fc49
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584013"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117901"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime'ı belirli bir zamanlamaya göre başlatma ve durdurma
 
@@ -91,22 +91,22 @@ Her gün gece yarısı çalışacak ve üçüncü işlem hattı ile ilişkili ol
    
 2. **Etkinlikler** araç kutusunda **genel** menü ' i genişletin ve bir **Web** etkinliğini ardışık düzen Tasarımcısı yüzeyine bırakın & sürükleyin. Etkinlik özellikleri penceresinin **genel** sekmesinde, etkinlik adını **startmyar**olarak değiştirin. **Ayarlar** sekmesine geçin ve aşağıdaki eylemleri yapın.
 
-    1. **URL**için, Azure-SSIS IR, `{subscriptionId}`,, ve `{resourceGroupName}` `{factoryName}` `{integrationRuntimeName}` yerine IR 'nizin gerçek değerleriyle başlayan REST API için aşağıdaki URL 'yi girin: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` alternatif olarak, yukarıdaki URL 'nin aşağıdaki kısmını değiştirmek için, IR 'nin kaynak kimliğini ADF Kullanıcı arabirimi/uygulama üzerindeki izleme sayfasından kopyalamak & de yapıştırabilirsiniz:`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
+    1. **URL**için, Azure-SSIS IR,,, ve yerine IR 'nizin gerçek değerleriyle başlayan REST API için aşağıdaki URL 'yi girin `{subscriptionId}` `{resourceGroupName}` `{factoryName}` `{integrationRuntimeName}` : `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` Alternatif olarak, yukarıdaki URL 'nin aşağıdaki kısmını değiştirmek için, IR 'nin kaynak kimliğini ADF Kullanıcı arabirimi/uygulama üzerindeki izleme sayfasından kopyalamak & de yapıştırabilirsiniz:`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
     
        ![ADF SSIS IR kaynak KIMLIĞI](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
     2. **Yöntemi**için **gönderi**' ı seçin. 
-    3. **Gövde**için girin `{"message":"Start my IR"}`. 
+    3. **Gövde**için girin `{"message":"Start my IR"}` . 
     4. **Kimlik doğrulaması**IÇIN, ADF 'niz için yönetilen kimliği kullanmak üzere **MSI** ' yi seçin. daha fazla bilgi için bkz. [Data Factory için yönetilen kimlik](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) makalesi.
-    5. **Kaynak**için girin `https://management.azure.com/`.
+    5. **Kaynak**için girin `https://management.azure.com/` .
     
        ![ADF Web etkinlik zamanlaması SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
   
 3. İkinci bir tane oluşturmak için ilk işlem hattını klonlayın, etkinlik adını **Stopmyır** olarak değiştirin ve aşağıdaki özellikleri değiştirin.
 
-    1. **URL**için, Azure-SSIS IR durduran REST API,, `{subscriptionId}`, ve `{resourceGroupName}` `{integrationRuntimeName}` değerlerini, IR 'nizin gerçek değerleriyle `{factoryName}`değiştirerek aşağıdaki URL 'yi girin:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
+    1. **URL**için, Azure-SSIS IR durduran REST API,,, `{subscriptionId}` `{resourceGroupName}` `{factoryName}` ve `{integrationRuntimeName}` değerlerini, IR 'nizin gerçek değerleriyle değiştirerek aşağıdaki URL 'yi girin:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
     
-    2. **Gövde**için girin `{"message":"Stop my IR"}`. 
+    2. **Gövde**için girin `{"message":"Stop my IR"}` . 
 
 4. Üçüncü bir işlem hattı oluşturun, **Eylemler** araç kutusundan bir **SSIS paketi yürütme** etkinliğini bir işlem hattı Tasarımcısı yüzeyine bırakın & SÜRÜKLEYIP, [ADF makalesinde SSIS paketi yürütme etkinliğini kullanarak SSIS paketini çağırma](how-to-invoke-ssis-package-ssis-activity.md) bölümündeki yönergeleri izleyerek yapılandırın.  Alternatif olarak, bir **saklı yordam** etkinliği kullanarak, [ADF makalesinde saklı yordam ETKINLIĞINI kullanarak bir SSIS paketini çağırma](how-to-invoke-ssis-package-stored-procedure-activity.md) bölümündeki yönergeleri izleyerek yapılandırabilirsiniz.  Ardından, ilk/ikinci işlem hatlarındaki bu Web etkinliklerine benzer şekilde, IR 'yi Başlatan/durduran iki Web etkinliği arasında Execute SSIS Package/saklı yordam etkinliğini zincirler.
 
@@ -121,7 +121,7 @@ Her gün gece yarısı çalışacak ve üçüncü işlem hattı ile ilişkili ol
     
    ![ADF yönetilen kimlik rolü ataması](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
-6. Fabrika/ardışık düzen araç çubuğunda **Tümünü doğrula/Doğrula ' ya** tıklayarak ADF ve tüm işlem hattı ayarlarınızı doğrulayın. Düğmeye tıklayarak **>>** **fabrika/Işlem hattı doğrulama çıkışını** kapatın.  
+6. Fabrika/ardışık düzen araç çubuğunda **Tümünü doğrula/Doğrula ' ya** tıklayarak ADF ve tüm işlem hattı ayarlarınızı doğrulayın. Düğmeye tıklayarak **fabrika/Işlem hattı doğrulama çıkışını** kapatın **>>** .  
 
    ![İşlem hattını doğrulama](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
 
@@ -133,12 +133,12 @@ Her gün gece yarısı çalışacak ve üçüncü işlem hattı ile ilişkili ol
     
 2. Üçüncü işlem hattını test etmek için SQL Server Management Studio başlatın (SSMS). **Sunucuya Bağlan** penceresinde aşağıdaki eylemleri yapın. 
 
-    1. **Sunucu adı**için ** &lt;Azure SQL veritabanı sunucunuzun&gt;adı. Database.Windows.net**girin.
+    1. **Sunucu adı**için ** &lt; sunucu adı &gt; . Database.Windows.net**girin.
     2. ** >>seçeneklerini **belirleyin.
     3. **Veritabanına Bağlan**Için **SSISDB**' yi seçin.
-    4. **Bağlan**’ı seçin. 
-    5. **Integration Services katalogları** -> **sssıı** ' nı genişletin-klasör > **projelerinizi** >-SSIS proje-> **paketlerinizi**>. 
-    6. Çalıştırmak için belirtilen SSIS paketine sağ tıklayın ve **raporlar** -> **Standart raporlar** -> **Tüm yürütmeler**' i seçin. 
+    4. **Bağlan**'ı seçin. 
+    5. **Integration Services katalogları**  ->  **sssıı** ' nı genişletin-klasör > **projelerinizi** >-SSIS proje-> **paketlerinizi**>. 
+    6. Çalıştırmak için belirtilen SSIS paketine sağ tıklayın ve **raporlar**  ->  **Standart raporlar**  ->  **Tüm yürütmeler**' i seçin. 
     7. Çalıştığını doğrulayın. 
 
    ![SSIS paketi çalıştırmasını doğrula](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)
@@ -244,7 +244,7 @@ Zaten bir Azure Otomasyonu hesabınız yoksa, bu adımdaki yönergeleri izleyere
 
 ### <a name="import-adf-modules"></a>ADF modüllerini içeri aktar
 
-1. Sol menüdeki **paylaşılan kaynaklarda** **modüller** ' i seçin ve modüller listesinde **az. DataFactory** + **az. Profile** sahip olup olmadığını doğrulayın.
+1. Sol menüdeki **paylaşılan kaynaklarda** **modüller** ' i seçin ve modüller listesinde **az. DataFactory**  +  **az. Profile** sahip olup olmadığını doğrulayın.
 
    ![Gerekli modülleri doğrulama](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 

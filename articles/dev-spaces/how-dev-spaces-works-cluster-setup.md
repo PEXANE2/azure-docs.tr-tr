@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces çalışması için bir Azure Kubernetes hizmet kümesi ayarlamayı açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873555"
+ms.locfileid: "83995896"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Azure Dev Spaces için küme ayarlama çalışması
 
@@ -18,7 +18,7 @@ Azure Dev Spaces, Kubernetes uygulamalarının hızla yinelenemez ve hata ayıkl
 
 ## <a name="prepare-your-aks-cluster"></a>AKS kümenizi hazırlama
 
-AKS kümenizi geliştirme alanları için hazırlamak üzere AKS kümenizin [Azure dev Spaces tarafından desteklenen][supported-regions] bir bölgede olduğunu ve Kubernetes 1.10.3 veya üstünü çalıştırdığınızı doğrulayın. Azure portal kümenizdeki Azure Dev Spaces etkinleştirmek için kümenize gidin, *geliştirme alanları*' na tıklayın, *dev alanlarını kullan* ' ı *Evet*olarak değiştirin ve *Kaydet*' e tıklayın. Ayrıca, çalıştırarak Azure CLı 'dan Azure Dev Spaces etkinleştirebilirsiniz `az aks use-dev-spaces` .
+AKS kümenizi geliştirme alanları için hazırlamak üzere AKS kümenizin [Azure dev Spaces tarafından desteklenen][supported-regions] bir bölgede olduğunu ve Kubernetes 1.10.3 veya üstünü çalıştırdığınızı doğrulayın. ' İ çalıştırarak Azure CLı 'dan Azure Dev Spaces etkinleştirebilirsiniz `az aks use-dev-spaces` .
 
 Geliştirme alanları için AKS kümesi ayarlamaya ilişkin bir örnek için, bkz. [Takım geliştirme hızlı başlangıç][quickstart-team].
 

@@ -4,12 +4,12 @@ description: Komut satırından bir işlev oluşturmayı ve ardından yerel proj
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 7826701a2d328fe40ad75bb3d68b2764d53f9590
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: bfd956a4423031db370eb3a8ad94c59dd0f5931c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626267"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996542"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
@@ -53,7 +53,7 @@ Bu makalenin [Visual Studio Code tabanlı bir sürümü](functions-create-first-
 Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye yanıt verdiği bir veya daha fazla bağımsız işlev için bir kapsayıcıdır. Projedeki tüm işlevler aynı yerel ve barındırma yapılandırmalarına sahiptir. Bu bölümde, tek bir işlev içeren bir işlev projesi oluşturursunuz.
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-Belirtilen çalışma `func init` zamanına sahip *localfunctionproj* adlı klasörde bir işlevler projesi oluşturmak için komutu aşağıdaki gibi çalıştırın:  
+`func init`Belirtilen çalışma zamanına sahip *Localfunctionproj* adlı klasörde bir işlevler projesi oluşturmak için komutu aşağıdaki gibi çalıştırın:  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 ```
@@ -105,11 +105,11 @@ Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değe
 | **groupId** | `com.fabrikam` | Java için [paket adlandırma kurallarını](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) takip eden tüm projelerde projenizi benzersiz bir şekilde tanımlayan bir değer. |
 | **ArtifactId** | `fabrikam-functions` | Bir sürüm numarası olmadan jar adı olan bir değer. |
 | **Sürüm** | `1.0-SNAPSHOT` | Varsayılan değeri seçin. |
-| **leyebilir** | `com.fabrikam.functions` | Oluşturulan işlev kodu için Java paketi olan bir değer. Varsayılan değeri kullanın. |
+| **leyebilir** | `com.fabrikam` | Oluşturulan işlev kodu için Java paketi olan bir değer. Varsayılan değeri kullanın. |
 
-Onaylamak `Y` için yazın veya ENTER tuşuna basın.
+`Y`Onaylamak için yazın veya ENTER tuşuna basın.
 
-Maven, proje dosyalarını, bu örnekte olduğu `fabrikam-functions`gibi, _ArtifactId_adında yeni bir klasörde oluşturur. 
+Maven, proje dosyalarını, bu örnekte olduğu gibi, _ArtifactId_adında yeni bir klasörde oluşturur `fabrikam-functions` . 
 ::: zone-end  
 Proje klasörüne gidin:
 
@@ -134,7 +134,7 @@ Bu klasör, [yerel. Settings. JSON](functions-run-local.md#local-settings-file) 
 ::: zone pivot="programming-language-csharp"
 #### <a name="httpexamplecs"></a>HttpExample.cs
 
-*HttpExample.cs* `req` , değişkende `Run` istek verilerini alan bir yöntem Içerir, tetikleme davranışını tanımlayan **httptriggerattribute**ile donatılmış bir [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) ' dir. 
+*HttpExample.cs* , `Run` değişkende istek verilerini alan bir yöntem içerir `req` , tetikleme davranışını tanımlayan **Httptriggerattribute**ile donatılmış bir [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) ' dir. 
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
@@ -143,32 +143,32 @@ Dönüş nesnesi, bir [Okobjectresult](/dotnet/api/microsoft.aspnetcore.mvc.okob
 
 ::: zone pivot="programming-language-java"
 #### <a name="functionjava"></a>Function. Java
-*Function. Java* `request` , değişkende `run` istek verilerini alan bir yöntem içerir. Bu, tetikleme davranışını tanımlayan [Httptrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) ek açıklaması ile donatılmış bir [HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage) 'dir. 
+*Function. Java* , `run` değişkende istek verilerini alan bir yöntem içerir `request` . Bu, tetikleme davranışını tanımlayan [httptrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) ek açıklaması ile donatılmış bir [HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage) 'dir. 
 
-:::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java":::
+:::code language="java" source="~/azure-functions-samples-java/src/main/java/com/functions/Function.java":::
 
 Yanıt iletisi [HttpResponseMessage. Builder](/java/api/com.microsoft.azure.functions.httpresponsemessage.builder) API 'si tarafından oluşturulur.
 
 #### <a name="pomxml"></a>Pod. xml
 
-Uygulamanızı barındırmak için oluşturulan Azure kaynakları ayarları, oluşturulan Pod. xml dosyasında bir **GroupID** `com.microsoft.azure` 'si olan eklentisinin **yapılandırma** öğesinde tanımlanmıştır. Örneğin, aşağıdaki yapılandırma öğesi, bir Maven tabanlı dağıtıma `java-functions-group` `westus` bölge içindeki kaynak grubunda bir işlev uygulaması oluşturmasını söyler. İşlev uygulaması, `java-functions-app-service-plan` planda barındırılan Windows üzerinde çalışır; bu, varsayılan olarak sunucusuz bir tüketim plandır.    
+Uygulamanızı barındırmak için oluşturulan Azure kaynakları ayarları, oluşturulan Pod. xml dosyasında bir **GroupID** 'si olan eklentisinin **yapılandırma** öğesinde tanımlanmıştır `com.microsoft.azure` . Örneğin, aşağıdaki yapılandırma öğesi, bir Maven tabanlı dağıtıma `java-functions-group` bölge içindeki kaynak grubunda bir işlev uygulaması oluşturmasını söyler `westus` . İşlev uygulaması, planda barındırılan Windows üzerinde çalışır `java-functions-app-service-plan` ; Bu, varsayılan olarak sunucusuz bir tüketim plandır.    
 
-:::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="116-155":::
+:::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
-Bu ayarları, kaynakların Azure 'da nasıl oluşturulduğunu denetlemek için, ilk dağıtımdan `runtime.os` `windows` `linux` önce ' dan önce ' ye geçiş yaparak yapabilirsiniz. Maven eklentisi tarafından desteklenen ayarların tam listesi için [yapılandırma ayrıntılarına](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)bakın.
+Bu ayarları, kaynakların Azure 'da nasıl oluşturulduğunu denetlemek için, `runtime.os` `windows` ilk dağıtımdan önce ' dan önce ' ye geçiş yaparak yapabilirsiniz `linux` . Maven eklentisi tarafından desteklenen ayarların tam listesi için [yapılandırma ayrıntılarına](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)bakın.
 
 #### <a name="functiontestjava"></a>FunctionTest. Java
 
 Ayrıca, bu, işleviniz için bir birim testi de oluşturur. Bağlama eklemek veya projeye yeni işlevler eklemek için işlevinizi değiştirdiğinizde, *Functiontest. Java* dosyasındaki testleri de değiştirmeniz gerekir.
 ::: zone-end  
 ::: zone pivot="programming-language-python"
-#### <a name="__init__py"></a>\_\_init\_\_. Kopyala
+#### <a name="__init__py"></a>\_\_init \_ \_ . Kopyala
 
-*\_\_\_init\_. Kopyala* , *function. JSON*içindeki yapılandırmaya göre tetiklenen bir `main()` Python işlevi içerir.
+* \_ \_ init \_ \_ . Kopyala* `main()` , *function. JSON*içindeki yapılandırmaya göre tetiklenen bir Python işlevi içerir.
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-Bir HTTP tetikleyicisi için işlev, değişkende `req` , *function. JSON*içinde tanımlanan şekilde istek verilerini alır. `req`, [Azure. Functions. HttpRequest sınıfının](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. `$return` *Function. JSON*içinde olarak tanımlanan Return nesnesi, [Azure. Functions. HttpResponse sınıfının](/python/api/azure-functions/azure.functions.httpresponse)bir örneğidir. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
+Bir HTTP tetikleyicisi için işlev, değişkende, `req` *function. JSON*içinde tanımlanan şekilde istek verilerini alır. `req`, [Azure. Functions. HttpRequest sınıfının](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. `$return` *Function. JSON*içinde olarak tanımlanan Return nesnesi, [Azure. Functions. HttpResponse sınıfının](/python/api/azure-functions/azure.functions.httpresponse)bir örneğidir. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
@@ -178,7 +178,7 @@ Bir HTTP tetikleyicisi için işlev, değişkende `req` , *function. JSON*içind
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-Bir HTTP tetikleyicisi için işlev, değişkende `req` , *function. JSON*içinde tanımlanan şekilde istek verilerini alır. `$return` *Function. JSON*içinde olarak tanımlanan Return nesnesi yanıt olur. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
+Bir HTTP tetikleyicisi için işlev, değişkende, `req` *function. JSON*içinde tanımlanan şekilde istek verilerini alır. `$return` *Function. JSON*içinde olarak tanımlanan Return nesnesi yanıt olur. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
@@ -198,17 +198,17 @@ Bir HTTP tetikleyicisi için işlev, istek verilerini `req` **HttpRequest** tür
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-Bir HTTP tetikleyicisi için işlev, `$Request` *function. JSON*içinde tanımlanan param öğesine geçirilen istek verilerini alır. `Response` *Function. JSON*içinde olarak tanımlanan Return nesnesi, yanıt olarak `Push-OutputBinding` cmdlet 'ine geçirilir. 
+Bir HTTP tetikleyicisi için işlev, `$Request` *function. JSON*içinde tanımlanan param öğesine geçirilen istek verilerini alır. `Response` *Function. JSON*içinde olarak tanımlanan Return nesnesi, `Push-OutputBinding` yanıt olarak cmdlet 'ine geçirilir. 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 #### <a name="functionjson"></a>function.json
 
-*function. JSON* , tetikleyici türü de dahil olmak üzere işlevin giriş ve `bindings` çıkışını tanımlayan bir yapılandırma dosyasıdır. 
+*function. JSON* , `bindings` tetikleyici türü de dahil olmak üzere işlevin giriş ve çıkışını tanımlayan bir yapılandırma dosyasıdır. 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-İsterseniz farklı bir `scriptFile` Python dosyası çağırmak için ' i değiştirebilirsiniz.
+İsterseniz `scriptFile` farklı bir Python dosyası çağırmak için ' i değiştirebilirsiniz.
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 ::: zone-end
@@ -222,7 +222,7 @@ Bir HTTP tetikleyicisi için işlev, `$Request` *function. JSON*içinde tanımla
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"  
-Her bağlama bir yön, tür ve benzersiz bir ad gerektirir. HTTP tetikleyicisinin tür [`httpTrigger`](functions-bindings-http-webhook-trigger.md) ve çıkış bağlaması türünde bir giriş bağlaması vardır [`http`](functions-bindings-http-webhook-output.md).
+Her bağlama bir yön, tür ve benzersiz bir ad gerektirir. HTTP tetikleyicisinin tür ve çıkış bağlaması türünde bir giriş bağlaması vardır [`httpTrigger`](functions-bindings-http-webhook-trigger.md) [`http`](functions-bindings-http-webhook-output.md) .
 ::: zone-end  
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
@@ -244,17 +244,17 @@ Bu öğeleri oluşturmak için aşağıdaki Azure CLı komutlarını kullanın. 
 az login
 ```
     
-[az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, `AzureFunctionsQuickstart-rg` `westeurope` bölgesinde adlı bir kaynak grubu oluşturur. (Bir bölgede kullanılabilir bir bölge `az account list-locations` kullanarak, genellikle kaynak grubunuzu ve kaynaklarınızı size yakın bir bölgede oluşturursunuz.)
+[az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, bölgesinde adlı bir kaynak grubu oluşturur `AzureFunctionsQuickstart-rg` `westeurope` . (Bir bölgede kullanılabilir bir bölge kullanarak, genellikle kaynak grubunuzu ve kaynaklarınızı size yakın bir bölgede oluşturursunuz `az account list-locations` .)
 
 ```azurecli
 az group create --name AzureFunctionsQuickstart-rg --location westeurope
 ```
 
 > [!NOTE]
-> Linux ve Windows uygulamalarını aynı kaynak grubunda barındıralamazsınız. Bir Windows işlev uygulaması veya Web uygulaması ile `AzureFunctionsQuickstart-rg` adlandırılmış bir kaynak grubunuz varsa, farklı bir kaynak grubu kullanmanız gerekir.
+> Linux ve Windows uygulamalarını aynı kaynak grubunda barındıralamazsınız. `AzureFunctionsQuickstart-rg`Bir Windows işlev uygulaması veya Web uygulaması ile adlandırılmış bir kaynak grubunuz varsa, farklı bir kaynak grubu kullanmanız gerekir.
  
     
-[Az Storage Account Create](/cli/azure/storage/account#az-storage-account-create) komutunu kullanarak kaynak grubunuzda ve bölgenizde genel amaçlı bir depolama hesabı oluşturun. Aşağıdaki örnekte, öğesini sizin için `<STORAGE_NAME>` uygun olan bir genel benzersiz adla değiştirin. Adlar yalnızca üç ile 24 karakter arasında ve küçük harflerden oluşmalıdır. `Standard_LRS`[işlevleri tarafından desteklenen](storage-considerations.md#storage-account-requirements), genel amaçlı bir hesabı belirtir.
+[Az Storage Account Create](/cli/azure/storage/account#az-storage-account-create) komutunu kullanarak kaynak grubunuzda ve bölgenizde genel amaçlı bir depolama hesabı oluşturun. Aşağıdaki örnekte, öğesini `<STORAGE_NAME>` sizin için uygun olan bir genel benzersiz adla değiştirin. Adlar yalnızca üç ile 24 karakter arasında ve küçük harflerden oluşmalıdır. `Standard_LRS`[işlevleri tarafından desteklenen](storage-considerations.md#storage-account-requirements), genel amaçlı bir hesabı belirtir.
 
 ```azurecli
 az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
@@ -262,13 +262,13 @@ az storage account create --name <STORAGE_NAME> --location westeurope --resource
 
 Depolama hesabı bu hızlı başlangıç için yalnızca birkaç ilay (USD) doğurur.
     
-[Az functionapp Create](/cli/azure/functionapp#az-functionapp-create) komutunu kullanarak işlev uygulamasını oluşturun. Aşağıdaki örnekte, değerini, önceki `<STORAGE_NAME>` adımda kullandığınız hesabın adıyla değiştirin ve öğesini sizin için uygun olan bir genel benzersiz adla `<APP_NAME>` değiştirin. `<APP_NAME>` aynı zamanda işlev uygulamasının varsayılan DNS etki alanıdır. 
+[Az functionapp Create](/cli/azure/functionapp#az-functionapp-create) komutunu kullanarak işlev uygulamasını oluşturun. Aşağıdaki örnekte, değerini, `<STORAGE_NAME>` önceki adımda kullandığınız hesabın adıyla değiştirin ve öğesini `<APP_NAME>` sizin için uygun olan bir genel benzersiz adla değiştirin. `<APP_NAME>` aynı zamanda işlev uygulamasının varsayılan DNS etki alanıdır. 
 ::: zone-end  
 
 ::: zone pivot="programming-language-python"  
-Python `--runtime-version` 3,8 kullanıyorsanız, `3.8` ve `--functions_version` ile değiştirin. `3`
+Python 3,8 kullanıyorsanız, ve ile değiştirin `--runtime-version` `3.8` `--functions_version` `3` .
 
-Python 3,6 kullanıyorsanız, olarak `--runtime-version` `3.6`değiştirin.
+Python 3,6 kullanıyorsanız, `--runtime-version` olarak değiştirin `3.6` .
 
 ```azurecli
 az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
@@ -276,7 +276,7 @@ az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Lin
 ::: zone-end  
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-Node. js 8 kullanıyorsanız, olarak `--runtime-version` `8`da değiştirin.
+Node. js 8 kullanıyorsanız, olarak da değiştirin `--runtime-version` `8` .
 
 
 ```azurecli
@@ -313,13 +313,13 @@ npm run build:production
 ::: zone-end  
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp"  
-Gerekli kaynaklarla, artık yerel işlevler projenizi, [Func Azure functionapp Publish](functions-run-local.md#project-file-deployment) komutunu kullanarak Azure 'daki işlev uygulamasına dağıtmaya hazırsınız demektir. Aşağıdaki örnekte, değerini uygulamanızın adıyla `<APP_NAME>` değiştirin.
+Gerekli kaynaklarla, artık yerel işlevler projenizi, [Func Azure functionapp Publish](functions-run-local.md#project-file-deployment) komutunu kullanarak Azure 'daki işlev uygulamasına dağıtmaya hazırsınız demektir. Aşağıdaki örnekte, değerini `<APP_NAME>` uygulamanızın adıyla değiştirin.
 
 ```
 func azure functionapp publish <APP_NAME>
 ```
 
-"Adı olan uygulama bulunamıyor..." hatasını görürseniz, birkaç saniye bekleyip yeniden deneyin. Bu işlem, Azure önceki `az functionapp create` komuttan sonra uygulamayı tam olarak başlatılamayabilir.
+"Adı olan uygulama bulunamıyor..." hatasını görürseniz, birkaç saniye bekleyip yeniden deneyin. Bu işlem, Azure önceki komuttan sonra uygulamayı tam olarak başlatılamayabilir `az functionapp create` .
 
 Yayımla komutu aşağıdaki çıktıya benzer sonuçları gösterir (basitlik için kesildi):
 
@@ -347,7 +347,7 @@ Functions in msdocs-azurefunctions-qs:
 İşlevler projenizi ilk kez dağıttığınızda Azure 'da bir işlev uygulaması ve ilgili kaynaklar oluşturulur. Uygulamanızı barındırmak üzere oluşturulan Azure kaynakları için ayarlar [Pod. xml dosyasında](#pomxml)tanımlanmıştır. Bu makalede, Varsayılanları kabul edersiniz.
 
 > [!TIP]
-> Windows yerine Linux üzerinde çalışan bir işlev uygulaması oluşturmak için, Pok. `runtime.os` XML dosyasındaki öğesini `windows` olarak `linux`değiştirin. [Bu bölgelerde](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)Linux çalıştırmak bir tüketim planında desteklenir. Linux ve uygulamalar üzerinde çalışan ve aynı kaynak grubunda Windows üzerinde çalışan uygulamalar olamaz.
+> Windows yerine Linux üzerinde çalışan bir işlev uygulaması oluşturmak için, `runtime.os` Pok. xml dosyasındaki öğesini `windows` olarak değiştirin `linux` . [Bu bölgelerde](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)Linux çalıştırmak bir tüketim planında desteklenir. Linux ve uygulamalar üzerinde çalışan ve aynı kaynak grubunda Windows üzerinde çalışan uygulamalar olamaz.
 
 Dağıtmadan önce, Azure aboneliğinizde oturum açmak için [az Login](/cli/azure/authenticate-azure-cli) Azure CLI komutunu kullanın. 
 
@@ -377,14 +377,14 @@ Dağıtım proje dosyalarını paketler ve bunları [ZIP dağıtımı](functions
 
 # <a name="browser"></a>[Tarayıcı](#tab/browser)
 
-Yayımla komutunun çıktısında gösterilen tüm **ÇAĞıRMA URL** 'sini, sorgu parametresini `&name=Functions`ekleyerek bir tarayıcı adres çubuğuna kopyalayın. , İşlevi yerel olarak çalıştırdığınızda tarayıcı benzer bir çıktı görüntülemelidir.
+Yayımla komutunun çıktısında gösterilen tüm **ÇAĞıRMA URL** 'sini, sorgu parametresini ekleyerek bir tarayıcı adres çubuğuna kopyalayın `&name=Functions` . , İşlevi yerel olarak çalıştırdığınızda tarayıcı benzer bir çıktı görüntülemelidir.
 
 ![Azure üzerinde çalışan işlevin çıktısı bir tarayıcıda](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-browser.png)
 
 
 # <a name="curl"></a>[kıvr](#tab/curl)
 
-Parametresini [`curl`](https://curl.haxx.se/) `&name=Functions`ekleyerek **Invoke URL 'si**ile çalıştırın. Komutun çıktısı, "Hello Functions" metni olmalıdır.
+[`curl`](https://curl.haxx.se/)Parametresini ekleyerek **Invoke URL 'si**ile çalıştırın `&name=Functions` . Komutun çıktısı, "Hello Functions" metni olmalıdır.
 
 ![İşlevin çıktısı, Azure 'da kıvrımlı kullanarak çalıştırıldı](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
 

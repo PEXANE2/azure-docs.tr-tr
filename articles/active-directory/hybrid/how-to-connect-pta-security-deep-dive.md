@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8c8d6c1aca81d59b42ceca17ecfb071ee5f13bd
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185551"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014375"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory geçişli kimlik doğrulama güvenliğini derinlemesine bakış
 
@@ -72,9 +72,12 @@ Aşağıdaki bölümlerde bu aşamalar ayrıntılı olarak ele alınmaktadır.
 
 ### <a name="authentication-agent-installation"></a>Kimlik doğrulama Aracısı yüklemesi
 
-Yalnızca genel Yöneticiler, bir kimlik doğrulama aracısını (Azure AD Connect veya tek başına) Şirket içi sunucuda yükleyebilir. Yükleme, **Denetim Masası** > **Programlar** > **Programlar ve Özellikler** listesine iki yeni giriş ekler:
+Yalnızca genel Yöneticiler, bir kimlik doğrulama aracısını (Azure AD Connect veya tek başına) Şirket içi sunucuda yükleyebilir. Yükleme, **Denetim Masası**  >  **Programlar**  >  **Programlar ve Özellikler** listesine iki yeni giriş ekler:
 - Kimlik doğrulama Aracısı uygulaması. Bu uygulama [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) ayrıcalıklarıyla çalışır.
 - Kimlik Doğrulama aracısını otomatik olarak güncelleştirmek için kullanılan Güncelleştirici uygulaması. Bu uygulama [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) ayrıcalıklarıyla çalışır.
+
+>[!IMPORTANT]
+>Bir güvenlik açısından, Yöneticiler, PTA aracısını çalıştıran sunucuyu bir etki alanı denetleyicisi gibi kabul etmelidir.  PTA aracı sunucuları, [etki alanı denetleyicilerinin saldırıya karşı güvenliğini sağlamak](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) için özetlenen aynı satırlar üzerinde sağlamlaştırılmış olmalıdır
 
 ### <a name="authentication-agent-registration"></a>Kimlik doğrulama Aracısı kaydı
 

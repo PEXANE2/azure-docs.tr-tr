@@ -9,10 +9,17 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: DB Oluşturma - Portal
-      href: quickstart-create-mariadb-server-database-using-azure-portal.md
-    - name: DB Oluşturma - Azure CLI
-      href: quickstart-create-mariadb-server-database-using-azure-cli.md
+    - name: DB oluşturma
+      items:
+        - name: DB Oluşturma - Portal
+          href: quickstart-create-mariadb-server-database-using-azure-portal.md
+        - name: DB Oluşturma - Azure CLI
+          href: quickstart-create-mariadb-server-database-using-azure-cli.md
+        - name: DB Oluşturma - Azure PowerShell
+          href: quickstart-create-mariadb-server-database-using-azure-powershell.md
+        - name: DB oluşturma - ARM şablonu
+          href: quickstart-create-mariadb-server-database-arm-template.md
+          displayName: deploy azure resource manager template
     - name: Bağlanma ve sorgulama
       items:
         - name: MySQL Workbench
@@ -25,6 +32,8 @@
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-cli.md
+        - name: Azure PowerShell
+          href: tutorial-design-database-using-powershell.md
 - name: Örnekler
   items:
     - name: Azure CLI
@@ -119,6 +128,8 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restore-server-powershell.md
     - name: Veritabanını geçirme
       items:
         - name: Döküm ve geri yükleme
@@ -137,12 +148,16 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-cli.md
+        - name: Azure PowerShell
+          href: howto-configure-server-parameters-using-powershell.md
     - name: Otomatik büyüyen depolama alanı
       items:
         - name: Azure portal
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+        - name: Azure PowerShell
+          href: howto-auto-grow-storage-powershell.md
     - name: Genel Ağ Erişimini engelleme
       items:
         - name: Azure portal
@@ -173,6 +188,8 @@
           href: howto-read-replicas-portal.md
         - name: 'Azure CLI, REST API okuma amaçlı çoğaltma oluşturma'
           href: howto-read-replicas-cli.md
+        - name: Azure PowerShell’de okuma amaçlı çoğaltma oluşturma
+          href: howto-read-replicas-powershell.md
     - name: Sorun giderme
       items:
         - name: Bağlantı hatalarını giderme
@@ -201,6 +218,8 @@
           href: howto-restart-server-portal.md
         - name: Azure CLI
           href: howto-restart-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restart-server-powershell.md
 - name: Başvuru
   items:
     - name: Azure CLI
