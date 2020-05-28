@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: b97fe6e55e2c36b6f101071e702952f529146281
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 537c7e70176d902c5bc7458b60de7a70ea040c85
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631651"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117354"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasik) Web hizmetini kullanma
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Bir Web hizmeti olarak Azure Machine Learning Studio (klasik) tahmine dayalı bir model dağıttıktan sonra, verileri göndermek ve öngörüleri almak için bir REST API kullanabilirsiniz. Verileri gerçek zamanlı veya toplu işlem modunda gönderebilirsiniz.
 
@@ -99,7 +97,7 @@ Bir Machine Learning Web hizmetine bağlanmak için **Microsoft. Aspnet. WebApi.
 **Visual Studio 'da Microsoft. AspNet. WebApi. Client NuGet 'i yükler**
 
 1. Indirme veri kümesini UCI: Yetişkin 2 sınıfı veri kümesi Web hizmetinden yayımlayın.
-2. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' na tıklayın.
+2. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' na tıklayın.
 3. **Install-Package Microsoft. Aspnet. WebApi. Client**öğesini seçin.
 
 **Kod örneğini çalıştırmak için**
@@ -306,7 +304,7 @@ print(fromJSON(result))
 
 ### <a name="javascript-sample"></a>JavaScript örneği
 
-Bir Machine Learning Web hizmetine bağlanmak için, projenizdeki **istek** NPM paketini kullanın. Ayrıca, `JSON` girişinizi biçimlendirmek ve sonucu ayrıştırmak için nesnesini de kullanacaksınız. ' Yi `npm install request --save`kullanarak yüklemek veya `"request": "*"` ' ın altında `dependencies` Package. json ' a `npm install`ekleyin.
+Bir Machine Learning Web hizmetine bağlanmak için, projenizdeki **istek** NPM paketini kullanın. Ayrıca, `JSON` girişinizi biçimlendirmek ve sonucu ayrıştırmak için nesnesini de kullanacaksınız. `npm install request --save`' Yi kullanarak yüklemek veya ' `"request": "*"` ın altında Package. json ' a ekleyin `dependencies` `npm install` .
 
 **Bunun için bir bütün istek şöyle görünecektir.**
 ```js

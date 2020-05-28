@@ -9,21 +9,24 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2019
+ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 5cbef1f31ea7088d4fab4888f5630af1b765a910
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f4b5713aed6bae574c30f555ef7f63307138a96
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588663"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014987"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel 'i AWS Cloudtrato 'a bağlama
 
 AWS Cloudiz olaylarınızın tümünü Azure Sentinel 'e göndermek için AWS bağlayıcısını kullanın. Bu bağlantı işlemi, AWS Cloudtraı ve Azure Sentinel arasında bir güven ilişkisi oluşturarak AWS kaynak günlüklerinizi Azure Sentinel 'e erişimi devreder. Bu, AWS günlüklerinde Azure Sentinel 'e erişim izni veren bir rol oluşturarak AWS 'de gerçekleştirilir.
+
+> [!NOTE]
+> AWS Cloudizinin LookupEvents API 'sinde [yerleşik sınırlamaları](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) vardır. Hesap başına saniye başına iki işlem (TPS) ve her bir sorgu en fazla 50 kayıt döndürebilir. Sonuç olarak, tek bir kiracının bir bölgede saniyede 100 'den fazla kayıt oluşturması halinde, biriktirme listeleri ve veri alma gecikmelerinin sonucu olur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -32,7 +35,7 @@ Azure Sentinel çalışma alanında yazma izninizin olması gerekir.
 > [!NOTE]
 > Azure Sentinel, tüm bölgelerde Cloudtraizetkinlikleri toplar. Bir bölgeden diğerine olay akışı yapmanız önerilmez.
 
-## <a name="connect-aws"></a>AWS’ye bağlanma 
+## <a name="connect-aws"></a>AWS’yi bağlama 
 
 
 1. Azure Sentinel 'de, **veri bağlayıcıları** ' nı seçin ve ardından tablodaki **Amazon Web Services** satırı seçin ve sağdaki AW bölmesinde **bağlayıcı sayfasını aç**' a tıklayın.

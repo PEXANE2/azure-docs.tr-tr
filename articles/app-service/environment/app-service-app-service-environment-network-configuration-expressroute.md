@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abe08da95416dd73035115361cb0d87822ad9239
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804444"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013406"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute ile PowerApps için App Service Ortamı ağ yapılandırması ayrıntıları
 
@@ -35,7 +35,7 @@ App Service Ortamı aşağıdaki ağ bağlantısı ayarlarının düzgün şekil
 
 * 445 numaralı bağlantı noktasında Azure Files hizmetine giden ağ bağlantısı.
 
-* App Service Ortamı ile aynı bölgede bulunan Azure SQL veritabanı uç noktalarına giden ağ bağlantısı. SQL veritabanı uç noktaları, 1433, 11000-11999 ve 14000-14999 bağlantı noktalarına açık erişim gerektiren database.windows.net etki alanı altında çözümlenmektedir. SQL Database V12 bağlantı noktası kullanımı hakkında daha fazla bilgi için bkz. [ADO.NET 4,5 için 1433 üzerindeki bağlantı noktaları](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
+* App Service Ortamı ile aynı bölgede bulunan Azure SQL veritabanı uç noktalarına giden ağ bağlantısı. SQL veritabanı uç noktaları, 1433, 11000-11999 ve 14000-14999 bağlantı noktalarına açık erişim gerektiren database.windows.net etki alanı altında çözümlenmektedir. SQL Database V12 bağlantı noktası kullanımı hakkında daha fazla bilgi için bkz. [ADO.NET 4,5 için 1433 üzerindeki bağlantı noktaları](../../azure-sql/database/adonet-v12-develop-direct-route-ports.md).
 
 * Azure Yönetim düzlemi uç noktalarına giden ağ bağlantısı (hem Azure klasik dağıtım modeli hem de Azure Resource Manager uç noktaları). Bu uç noktalara yönelik bağlantı management.core.windows.net ve management.azure.com etki alanlarını içerir. 
 
@@ -87,7 +87,7 @@ Bu bölümde App Service Ortamı için bir örnek UDR yapılandırması gösteri
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-* [Azure İndirmeleri sayfasından][AzureDownloads]Azure PowerShell ' i yükler. Haziran 2015 veya üzeri bir tarih içeren bir indirme seçin. En son PowerShell cmdlet 'lerini yüklemek için **komut satırı araçları** > **Windows PowerShell**altında, **yüklemek** ' ı seçin.
+* [Azure İndirmeleri sayfasından][AzureDownloads]Azure PowerShell ' i yükler. Haziran 2015 veya üzeri bir tarih içeren bir indirme seçin. **Command-line tools**  >  En son PowerShell cmdlet 'lerini yüklemek için komut satırı araçları**Windows PowerShell**altında, **yüklemek** ' ı seçin.
 
 * App Service Ortamı tarafından özel kullanım için benzersiz bir alt ağ oluşturun. Benzersiz alt ağ, alt ağa uygulanan UDRs 'nin yalnızca App Service Ortamı için giden trafiği açmasını sağlar.
 

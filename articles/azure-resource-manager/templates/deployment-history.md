@@ -3,17 +3,19 @@ title: Dağıtım geçmişi
 description: Portal, PowerShell, Azure CLı ve REST API Azure Resource Manager dağıtım işlemlerinin nasıl görüntüleneceğini açıklar.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 1f22bdfac5eb12688a5b5778d4da1505e36ef6bf
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.date: 05/26/2020
+ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816293"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117842"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager ile dağıtım geçmişini görüntüle
 
-Azure Resource Manager, dağıtım geçmişinizi görüntülemenize ve geçmiş dağıtımlarda belirli işlemleri incelemenize olanak sağlar. Dağıtılan kaynakları görebilir ve hatalar hakkında bilgi alabilirsiniz.
+Azure Resource Manager, dağıtım geçmişinizi görüntülemenize olanak sağlar. Geçmiş dağıtımlarda belirli işlemleri inceleyebilir ve hangi kaynakların dağıtıldığını görebilirsiniz. Bu geçmiş hatalar hakkında bilgi içerir.
+
+Bir kaynak grubunun dağıtım geçmişi 800 dağıtım ile sınırlıdır. Sınıra yaklaştıklarında, dağıtımlar geçmişten otomatik olarak silinir. Daha fazla bilgi için bkz. [dağıtım geçmişinden otomatik silme işlemleri](deployment-history-deletions.md).
 
 Belirli dağıtım hatalarını çözümlemede yardım için bkz. [Azure 'a kaynak dağıtılırken sık karşılaşılan hataları çözümleme Azure Resource Manager](common-deployment-errors.md).
 
@@ -117,7 +119,7 @@ Her dağıtım birden çok işlem içerebilir. Bir dağıtım hakkında daha faz
 
 1. Bir dağıtımın özetinde **işlem ayrıntıları**' nı seçin.
 
-    ![Dağıtım işlemlerini seçin](./media/deployment-history/get-operation-details.png)
+    ![İşlem ayrıntılarını Seç](./media/deployment-history/get-operation-details.png)
 
 1. Dağıtım adımının ayrıntılarını görürsünüz. Bir hata oluştuğunda, Ayrıntılar hata mesajını içerir.
 
@@ -210,6 +212,6 @@ Yanıt bir hata iletisi içerir.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Belirli dağıtım hatalarını çözümlemede yardım için bkz. [Azure 'a kaynak dağıtılırken sık karşılaşılan hataları çözümleme Azure Resource Manager](common-deployment-errors.md).
-* Diğer eylem türlerini izlemek için etkinlik günlüklerini kullanma hakkında bilgi edinmek için bkz. [Azure kaynaklarını yönetmek için etkinlik günlüklerini görüntüleme](../management/view-activity-logs.md).
+* Dağıtımların geçmişte nasıl yönetildiği hakkında bilgi edinmek için bkz. [dağıtım geçmişinden otomatik silme işlemleri](deployment-history-deletions.md).
 * Yürütmeden önce dağıtımınızı doğrulamak için, bkz. [Azure Resource Manager şablonuyla kaynak grubu dağıtma](deploy-powershell.md).
 

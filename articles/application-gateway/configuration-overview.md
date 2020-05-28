@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bd6f04ca7e24e380ad657f967284704ad613375a
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856063"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996406"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -20,7 +20,7 @@ Azure Application Gateway, farklı senaryolar için çeşitli şekillerde yapıl
 
 ![Application Gateway bileşenleri akış grafiği](./media/configuration-overview/configuration-overview1.png)
 
-Bu görüntüde, üç dinleyici içeren bir uygulama gösterilmektedir. İlk ikisi sırasıyla ve `http://acme.com/*` `http://fabrikam.com/*`için çok siteli dinleyiclardır. Her ikisi de 80 numaralı bağlantı noktasını dinler. Üçüncü, daha önce Güvenli Yuva Katmanı (SSL) sonlandırma olarak bilinen uçtan uca Aktarım Katmanı Güvenliği (TLS) sonlandırmasına sahip temel bir dinleyiciye sahiptir.
+Bu görüntüde, üç dinleyici içeren bir uygulama gösterilmektedir. İlk ikisi sırasıyla ve için çok siteli dinleyiclardır `http://acme.com/*` `http://fabrikam.com/*` . Her ikisi de 80 numaralı bağlantı noktasını dinler. Üçüncü, daha önce Güvenli Yuva Katmanı (SSL) sonlandırma olarak bilinen uçtan uca Aktarım Katmanı Güvenliği (TLS) sonlandırmasına sahip temel bir dinleyiciye sahiptir.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -219,14 +219,12 @@ Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, varsayılan
 
 Bir kural oluşturduğunuzda [ *temel* ve *yol tabanlı*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules)arasında seçim yapabilirsiniz.
 
-- İlişkili dinleyicide (örneğin, *Blog<i></i>. contoso.com/\*)* tüm istekleri tek bir arka uç havuzuna iletmek istiyorsanız temel ' yı seçin.
+- İlişkili dinleyicide (örneğin, *Blog <i></i> . contoso.com/ \* )* tüm istekleri tek bir arka uç havuzuna iletmek istiyorsanız temel ' yı seçin.
 - Belirli URL yollarındaki istekleri belirli arka uç havuzlarına yönlendirmek istiyorsanız yol tabanlı ' i seçin. Yol deseninin Sorgu parametrelerine değil yalnızca URL 'nin yoluna uygulanması.
 
 #### <a name="order-of-processing-rules"></a>İşleme kuralları sırası
 
-V1 SKU 'SU için, gelen isteklerin düzen eşleşmesi, yolların yol tabanlı kuralın URL yol haritasında listelendiği sırada işlenir. Bir istek, yol eşlemesindeki iki veya daha fazla yoldaki Düzenle eşleşiyorsa, önce listelenen yol eşleştirilir. Ve istek bu yol ile ilişkili arka uca iletilir.
-
-V2 SKU 'SU için, tam eşleşme URL yol eşlemesindeki yol sıraından daha yüksek önceliktir. Bir istek iki veya daha fazla yoldaki Düzenle eşleşiyorsa, istek, istekle tam olarak eşleşen yol ile ilişkili arka uca iletilir. Gelen istekteki yol haritadaki herhangi bir yol ile tam olarak eşleşmiyorsa, isteğin düzen eşleşmesi yol tabanlı kural için yol eşleme sırası listesinde işlenir.
+V1 ve v2 SKU 'SU için, gelen isteklerin düzen eşleştirmesi, yolların yol tabanlı kuralın URL yol haritasında listelendiği sırada işlenir. Bir istek, yol eşlemesindeki iki veya daha fazla yoldaki Düzenle eşleşiyorsa, önce listelenen yol eşleştirilir. Ve istek bu yol ile ilişkili arka uca iletilir.
 
 ### <a name="associated-listener"></a>İlişkili dinleyici
 
@@ -250,7 +248,7 @@ Yol tabanlı bir kural için, her bir URL yoluna karşılık gelen birden fazla 
 
 ### <a name="redirection-setting"></a>Yeniden yönlendirme ayarı
 
-Bir temel kural için yeniden yönlendirme yapılandırılırsa, ilişkili dinleyicinin tüm istekleri hedefe yeniden yönlendirilir. Bu, *genel* yeniden yönlendirme 'dir. Yol tabanlı bir kural için yeniden yönlendirme yapılandırılırsa, yalnızca belirli bir site alanındaki istekler yeniden yönlendirilir. Örnek, */cart/\** tarafından belirtilen bir alışveriş sepeti alanıdır. Bu, *yol tabanlı* yeniden yönlendirme 'dir.
+Bir temel kural için yeniden yönlendirme yapılandırılırsa, ilişkili dinleyicinin tüm istekleri hedefe yeniden yönlendirilir. Bu, *genel* yeniden yönlendirme 'dir. Yol tabanlı bir kural için yeniden yönlendirme yapılandırılırsa, yalnızca belirli bir site alanındaki istekler yeniden yönlendirilir. Örnek, */cart/ \* *tarafından belirtilen bir alışveriş sepeti alanıdır. Bu, *yol tabanlı* yeniden yönlendirme 'dir.
 
 Yeniden yönlendirmeler hakkında daha fazla bilgi için bkz. [Application Gateway yönlendirmeye genel bakış](redirect-overview.md).
 
@@ -378,7 +376,7 @@ Var olan özel DNS adı App Service 'e eşlenmiş özel bir etki alanı için bu
 
 Bu özellik, uygulama ağ geçidinde gelen istekteki *ana bilgisayar* üstbilgisinin yerine belirttiğiniz ana bilgisayar adını koyar.
 
-Örneğin, *www.contoso.com* **konak adı** ayarında belirtilmişse, istek arka uç sunucusuna iletildiğinde, * özgün istek`https://appgw.eastus.cloudapp.azure.com/path1` * olarak`https://www.contoso.com/path1` değiştirilir.
+Örneğin, *www.contoso.com* **konak adı** ayarında belirtilmişse, `https://appgw.eastus.cloudapp.azure.com/path1` `https://www.contoso.com/path1` istek arka uç sunucusuna iletildiğinde, * özgün istek * olarak değiştirilir.
 
 ## <a name="back-end-pool"></a>Arka uç havuzu
 

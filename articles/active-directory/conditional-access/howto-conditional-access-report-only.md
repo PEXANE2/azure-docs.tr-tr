@@ -4,19 +4,19 @@ description: Benimseme yardımcı olması için koşullu erişimde yalnızca rap
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 05/01/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690366"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994978"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırma
 
@@ -26,7 +26,7 @@ Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırmak için:
 > Kuruluşunuz henüz yoksa Azure [ad ile Azure izleyici tümleştirmesini kurun](#set-up-azure-monitor-integration-with-azure-ad). Verilerin incelenmek üzere kullanılabilmesi için bu işlemin gerçekleşmesi gerekir.
 
 1. **Azure Portal** , koşullu erişim Yöneticisi, güvenlik yöneticisi veya genel yönetici olarak oturum açın.
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlke koşullarını ve gereken izin denetimlerini gerekli şekilde yapılandırın.
 1. **Ilkeyi etkinleştir** altında, değiştirme modunu **yalnızca rapor** moduna ayarlayın.
@@ -40,7 +40,7 @@ Yalnızca raporu görüntüle-Azure AD oturum açma günlüklerinde yalnızca so
 Belirli bir oturum açma için yalnızca rapor ilkesinin sonucunu görüntülemek için:
 
 1. **Azure Portal** bir rapor okuyucu, güvenlik okuyucusu, güvenlik yöneticisi veya genel yönetici olarak oturum açın.
-1. **Azure Active Directory** > **oturum açma**işlemlerini inceleyin.
+1. **Azure Active Directory**  >  **oturum açma**işlemlerini inceleyin.
 1. Bir oturum açma seçin veya dar sonuçlara filtre ekleyin.
 1. **Ayrıntılar** çekmecede, oturum açma sırasında değerlendirilen ilkeleri görüntülemek Için **yalnızca rapor** sekmesini seçin.
 
@@ -61,7 +61,7 @@ Azure Izleyici fiyatlandırması hakkında daha fazla bilgi için [Azure izleyic
 Azure AD günlüklerinizi Azure Izleyici ile tümleştirdikten sonra, koşullu erişim ilkelerinin etkilerini yeni koşullu erişim öngörüleri çalışma kitaplarını kullanarak izleyebilirsiniz.
 
 1. **Azure Portal** bir güvenlik yöneticisi veya genel yönetici olarak oturum açın.
-1. **Azure Active Directory** > **çalışma kitaplarına**gidin.
+1. **Azure Active Directory**  >  **çalışma kitaplarına**gidin.
 1. **Koşullu erişim öngörülerini**seçin.
 1. **Koşullu erişim ilkesi** açılan listesinden bir veya daha fazla ilke seçin. Etkinleştirilen tüm ilkeler varsayılan olarak seçilidir.
 1. Bir zaman aralığı seçin (zaman aralığı kullanılabilir veri kümesini aşarsa, rapor tüm kullanılabilir verileri gösterir). **Koşullu erişim ilkesini** ve **zaman aralığı** parametrelerini ayarladıktan sonra rapor yüklenir.

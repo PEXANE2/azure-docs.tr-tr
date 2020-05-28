@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2143546e10b413d1492b8734d2594de42fd37cf3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c6fb590cbb57e8798bf65d0aa30585ae3db3691d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684410"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021543"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory ve Batch kullanarak büyük ölçekli veri kümelerini işleme
 > [!NOTE]
@@ -38,8 +38,8 @@ Batch hizmetiyle, uygulamalarınızı paralel olarak ve ölçekte yürütmek iç
 
  Batch hakkında bilginiz yoksa, aşağıdaki makaleler Bu makalede açıklanan çözümün mimarisini/uygulanmasını anlamanıza yardımcı olur:   
 
-* [Toplu Iş temelleri](../../batch/batch-technical-overview.md)
-* [Batch özelliklerine genel bakış](../../batch/batch-api-basics.md)
+* [Toplu Iş temelleri](../../azure-sql/database/sql-database-paas-overview.md)
+* [Batch özelliklerine genel bakış](../../batch/batch-service-workflow-features.md)
 
 İsteğe bağlı olarak, toplu Iş hakkında daha fazla bilgi edinmek için [Batch belgelerine](https://docs.microsoft.com/azure/batch/)bakın.
 
@@ -86,7 +86,7 @@ Aşağıdaki listede işlemin temel adımları verilmiştir. Çözüm, uçtan uc
 
 **Süre:** Azure, Data Factory ve Batch temel bilgileri hakkında bilgi sahibiyseniz ve aşağıdaki önkoşulları tamamladıysanız, bu çözümün tamamlanması iki saate kadar sürer.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 #### <a name="azure-subscription"></a>Azure aboneliği
 Azure aboneliğiniz yoksa hızla ücretsiz bir deneme hesabı oluşturabilirsiniz. Daha fazla bilgi için bkz. [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -578,7 +578,7 @@ Bu adımda, Batch hesabınız için, Data Factory özel etkinliğini çalıştı
    d. **Batchuri** JSON özelliği IÇIN Batch URI 'sini girin.
 
       > [!IMPORTANT]
-      > **Batch hesabı** dikey penceresinin URL 'si şu biçimdedir: \< AccountName \> . \< Region \> . Batch.Azure.com. JSON betiğinin **Batchuri** özelliği için, A88 "AccountName" öğesini kaldırmanız gerekir. * * URL 'den. `"batchUri": "https://eastus.batch.azure.com"` bunun bir örneğidir.
+      > **Batch hesabı** DIKEY penceresindeki URL şu biçimdedir: \<accountname\> . \<region\> . batch.azure.com. JSON betiğinin **Batchuri** özelliği için, A88 "AccountName" öğesini kaldırmanız gerekir. * * URL 'den. `"batchUri": "https://eastus.batch.azure.com"` bunun bir örneğidir.
       >
       >
 
@@ -793,9 +793,9 @@ Bu adımda, daha önce oluşturduğunuz özel etkinliği tek bir etkinliğe sahi
 
    * Yalnızca bir etkinlik ardışık düzen içinde ve **Dotnetactivity**türünde.
    * **AssemblyName** , dll **MyDotNetActivity. dll**' nin adına ayarlanır.
-   * **EntryPoint** , **MyDotNetActivityNS. MyDotNetActivity**olarak ayarlanır. Bu, temelde \< ad alanıdır \> . \< \>kodunuzda ClassName.
+   * **EntryPoint** , **MyDotNetActivityNS. MyDotNetActivity**olarak ayarlanır. Bu, temel olarak \<namespace\> .\<classname\> kodunuzda.
    * **PackageLinkedService** , özel etkinlik ZIP dosyasını içeren BLOB depolama alanına Işaret eden **StorageLinkedService**olarak ayarlanır. Giriş/çıkış dosyaları ve özel etkinlik ZIP dosyası için farklı depolama hesapları kullanıyorsanız, başka bir depolama bağlı hizmeti oluşturmanız gerekir. Bu makalede aynı depolama hesabını kullandığınız varsayılır.
-   * **PackageFile** , **customactivitycontainer/MyDotNetActivity. zip**olarak ayarlanır. Bu, \< containerforthezip \> / \< nameofthezip. zip biçimindedir \> .
+   * **PackageFile** , **customactivitycontainer/MyDotNetActivity. zip**olarak ayarlanır. Bu biçimindedir \<containerforthezip\> / \<nameofthezip.zip\> .
    * Özel etkinlik **ınputdataset** 'i giriş ve **outputdataset** olarak çıktı olarak alır.
    * Özel etkinliğin **Linkedservicename** özelliği **AzureBatchLinkedService**öğesine işaret eder. Bu, özel etkinliğin Batch üzerinde çalıştırılması gerektiğini Data Factory söyler.
    * **Eşzamanlılık** ayarı önemlidir. 1 olan varsayılan değeri kullanırsanız, toplu Iş havuzunda iki veya daha fazla işlem düğümü olsa bile, dilimler bir den sonra işlenir. Bu nedenle, Batch 'in paralel işleme özelliğinden faydalanırsınız. **Eşzamanlılık** değerini daha yüksek bir değere ayarlarsanız 2, iki dilim (toplu işteki iki göreve karşılık gelir) aynı anda işlenebileceği anlamına gelir. Bu durumda, Batch havuzundaki VM 'Ler kullanılır. Eşzamanlılık özelliğini uygun şekilde ayarlayın.
@@ -972,8 +972,8 @@ Verileri tamamladıktan sonra, Power BI gibi çevrimiçi araçlarla kullanabilir
   * [Data Factory işlem hattında özel etkinlikler kullanma](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
-  * [Toplu Iş temelleri](../../batch/batch-technical-overview.md)
-  * [Batch özelliklerine genel bakış](../../batch/batch-api-basics.md)
+  * [Toplu Iş temelleri](../../azure-sql/database/sql-database-paas-overview.md)
+  * [Batch özelliklerine genel bakış](../../batch/batch-service-workflow-features.md))
   * [Azure portal Batch hesabı oluşturma ve yönetme](../../batch/batch-account-create-portal.md)
   * [.NET için Batch istemci kitaplığı ile çalışmaya başlama](../../batch/quick-run-dotnet.md)
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 16c7af4d66bd550eb4a286de7c86c436b1fe10e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: efbd8dfa34f5d954e302b421dfcea6c46d9469ca
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75922656"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022837"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Veri analizi işlem hattını kullanıma hazır hale getirme
 
@@ -51,11 +51,11 @@ Bu işlem hattı aynı konumda bir Azure SQL veritabanı ve bir HDInsight Hadoop
 
 ### <a name="provision-azure-sql-database"></a>Azure SQL veritabanı sağlama
 
-1. Azure SQL veritabanı oluşturun. Bkz. [Azure Portal Azure SQL veritabanı oluşturma](../sql-database/sql-database-single-database-get-started.md).
+1. Azure SQL veritabanı oluşturun. Bkz. [Azure Portal Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md).
 
-1. HDInsight kümenizin bağlı Azure SQL veritabanına erişebildiğinizden emin olmak için Azure SQL veritabanı güvenlik duvarı kurallarını Azure hizmetleri ve kaynaklarının sunucuya erişmesine izin verecek şekilde yapılandırın. **Sunucu güvenlik duvarını ayarla**' yı seçerek Azure Portal bu seçeneği etkinleştirebilir ve Azure SQL veritabanı sunucusu veya veritabanı için **Bu sunucuya Azure hizmetleri ve kaynakları erişmesine izin ver** ' **i seçin.** Daha fazla bilgi için bkz. [IP güvenlik duvarı kuralları oluşturma ve yönetme](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
+1. HDInsight kümenizin bağlı Azure SQL veritabanına erişebildiğinizden emin olmak için Azure SQL veritabanı güvenlik duvarı kurallarını Azure hizmetleri ve kaynaklarının sunucuya erişmesine izin verecek şekilde yapılandırın. Bu seçeneği, Azure portal **sunucu güvenlik duvarını ayarla**' yı seçerek ve Azure hizmetleri ve kaynaklarının Azure SQL veritabanı için **Bu sunucuya erişmesine izin ver** ' **i seçerek etkinleştirebilirsiniz** . Daha fazla bilgi için bkz. [IP güvenlik duvarı kuralları oluşturma ve yönetme](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
-1. İşlem hattının her çalıştırmasıyla özetlenen verileri depolayacak `dailyflights` tabloyu oluşturmak için [sorgu Düzenleyicisi](../sql-database/sql-database-single-database-get-started.md#query-the-database) 'ni kullanarak aşağıdaki SQL deyimlerini yürütün.
+1. İşlem hattının her çalıştırmasıyla özetlenen verileri depolayacak tabloyu oluşturmak için [sorgu Düzenleyicisi](../azure-sql/database/single-database-create-quickstart.md#query-the-database) 'ni kullanarak aşağıdaki SQL deyimlerini yürütün `dailyflights` .
 
     ```sql
     CREATE TABLE dailyflights
@@ -85,7 +85,7 @@ Azure SQL veritabanınız artık hazır.
 Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozie web konsolunu kullanmak istiyorsanız, HDInsight kümenize bir SSH tüneli ayarlayın. Daha fazla bilgi için bkz. [SSH tüneli](hdinsight-linux-ambari-ssh-tunnel.md).
 
 > [!NOTE]  
-> Ayrıca, SSH tüneli genelinde kümenizin Web kaynaklarına gözatabilmeniz için [Foxy ara sunucu](https://getfoxyproxy.org/) Uzantısı ile Chrome 'ı kullanabilirsiniz. Tünelin bağlantı noktası 9876 üzerindeki ana bilgisayar `localhost` aracılığıyla tüm istekleri proxy olarak yapılandırın. Bu yaklaşım, Windows 10 üzerinde Bash olarak da bilinen Linux için Windows alt sistemi ile uyumludur.
+> Ayrıca, SSH tüneli genelinde kümenizin Web kaynaklarına gözatabilmeniz için [Foxy ara sunucu](https://getfoxyproxy.org/) Uzantısı ile Chrome 'ı kullanabilirsiniz. Tünelin bağlantı noktası 9876 üzerindeki ana bilgisayar aracılığıyla tüm istekleri proxy olarak yapılandırın `localhost` . Bu yaklaşım, Windows 10 üzerinde Bash olarak da bilinen Linux için Windows alt sistemi ile uyumludur.
 
 1. Kümenize bir SSH tüneli açmak için aşağıdaki komutu çalıştırın; burada `CLUSTERNAME` kümenizin adıdır:
 
@@ -97,13 +97,13 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 
     `http://headnodehost:8080`
 
-1. **Oozie web konsoluna** , ambarı içinden erişmek için Oozie **Oozie** > **hızlı bağlantılara** > [Active Server] > **Oozie Web Kullanıcı arabirimine**gidin.
+1. **Oozie web konsoluna** , ambarı içinden erişmek için **Oozie**  >  **hızlı bağlantılara** > [Active Server] > **Oozie Web Kullanıcı arabirimine**gidin.
 
 ## <a name="configure-hive"></a>Hive 'yi yapılandırma
 
 ### <a name="upload-data"></a>Karşıya veri yükleme
 
-1. Bir ay için uçuş verileri içeren örnek bir CSV dosyası indirin. [HDInsight GitHub DEPOSUNDAN](https://github.com/hdinsight/hdinsight-dev-guide) `2017-01-FlightData.csv`ZIP `2017-01-FlightData.zip` dosyasını indirin ve CSV dosyasına ayıklayın.
+1. Bir ay için uçuş verileri içeren örnek bir CSV dosyası indirin. `2017-01-FlightData.zip` [HDInsight GITHUB deposundan](https://github.com/hdinsight/hdinsight-dev-guide) ZIP dosyasını indirin ve CSV dosyasına ayıklayın `2017-01-FlightData.csv` .
 
 1. Bu CSV dosyasını HDInsight kümenize bağlı Azure depolama hesabına kopyalayın ve `/example/data/flights` klasöre yerleştirin.
 
@@ -113,7 +113,7 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
         scp ./2017-01-FlightData.csv sshuser@CLUSTERNAME-ssh.azurehdinsight.net:2017-01-FlightData.csv
         ```
 
-    1. Kümenize bağlanmak için [SSH komutunu](./hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. Aşağıdaki komutu, kümenizin adıyla değiştirerek `CLUSTERNAME` düzenleyin ve ardından şu komutu girin:
+    1. Kümenize bağlanmak için [SSH komutunu](./hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. Aşağıdaki komutu, `CLUSTERNAME` kümenizin adıyla değiştirerek düzenleyin ve ardından şu komutu girin:
 
         ```cmd
         ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -128,9 +128,9 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 
 ### <a name="create-tables"></a>Tablo oluşturma
 
-Örnek veriler artık kullanılabilir. Ancak, işlem hattı, bir diğeri (`rawFlights`) ve özetlenen veriler (`flights`) Için olmak üzere iki Hive tablosu gerektirir. Bu tabloları aşağıdaki şekilde ambarı 'nda oluşturun.
+Örnek veriler artık kullanılabilir. Ancak, işlem hattı, bir diğeri ( `rawFlights` ) ve özetlenen veriler () için olmak üzere Iki Hive tablosu gerektirir `flights` . Bu tabloları aşağıdaki şekilde ambarı 'nda oluşturun.
 
-1. ' A giderek, ambarı 'nda oturum `http://headnodehost:8080`açın.
+1. ' A giderek, ambarı 'nda oturum açın `http://headnodehost:8080` .
 
 2. Hizmetler listesinden **Hive**öğesini seçin.
 
@@ -140,7 +140,7 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 
     ![Ambarı Apache Hive özet listesi](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
-4. Sorgu metin alanında, `rawFlights` tabloyu oluşturmak için aşağıdaki deyimleri yapıştırın. `rawFlights` Tablo, Azure depolama 'daki `/example/data/flights` klasörü içinde CSV dosyaları için bir şema okuması sağlar.
+4. Sorgu metin alanında, tabloyu oluşturmak için aşağıdaki deyimleri yapıştırın `rawFlights` . `rawFlights`Tablo, `/example/data/flights` Azure depolama 'daki klasörü içinde CSV dosyaları için bir şema okuması sağlar.
 
     ```sql
     CREATE EXTERNAL TABLE IF NOT EXISTS rawflights (
@@ -169,7 +169,7 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 
     ![HDI ambarı Hizmetleri Hive sorgusu](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
-6. `flights` Tabloyu oluşturmak için, sorgu metin alanındaki metni aşağıdaki deyimlerle değiştirin. `flights` Tablo, verileri yıla, aya ve aya göre yüklenen verileri bölümleyerek Hive tarafından yönetilen bir tablodur. Bu tablo, uçuşa göre bir satırın kaynak verilerinde en düşük ayrıntı düzeyi olan tüm geçmiş uçuş verilerini içerir.
+6. Tabloyu oluşturmak için `flights` , sorgu metin alanındaki metni aşağıdaki deyimlerle değiştirin. `flights`Tablo, verileri yıla, aya ve aya göre yüklenen verileri bölümleyerek Hive tarafından yönetilen bir tablodur. Bu tablo, uçuşa göre bir satırın kaynak verilerinde en düşük ayrıntı düzeyi olan tüm geçmiş uçuş verilerini içerir.
 
     ```sql
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -203,13 +203,13 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 
 Örnek iş akışı, üç önemli adımda uçuş verilerini gün içinde işler:
 
-1. Bu güne ait tarih aralığına ait verileri `rawFlights` tablo tarafından temsil EDILEN kaynak CSV dosyasından ayıklamak ve verileri `flights` tabloya eklemek için bir Hive sorgusu çalıştırın.
+1. Bu güne ait tarih aralığına ait verileri tablo tarafından temsil edilen kaynak CSV dosyasından ayıklamak `rawFlights` ve verileri tabloya eklemek için bir Hive sorgusu çalıştırın `flights` .
 2. Bir Hive sorgusu çalıştırarak, günlük ve taşıyıcı tarafından özetlenen uçuş verilerinin bir kopyasını içeren, Hive içindeki bir hazırlama tablosunu dinamik olarak oluşturun.
-3. Hive içindeki günlük hazırlama tablosundaki tüm verileri Azure SQL veritabanı 'ndaki hedef `dailyflights` tabloya kopyalamak Için Apache Sqoop 'yi kullanın. Sqoop, Azure depolama 'da bulunan Hive tablosunun arkasındaki verilerden kaynak satırları okur ve bir JDBC bağlantısı kullanarak bunları SQL veritabanı 'na yükler.
+3. Hive içindeki günlük hazırlama tablosundaki tüm verileri `dailyflights` Azure SQL veritabanı 'ndaki hedef tabloya kopyalamak Için Apache Sqoop 'yi kullanın. Sqoop, Azure depolama 'da bulunan Hive tablosunun arkasındaki verilerden kaynak satırları okur ve bir JDBC bağlantısı kullanarak bunları SQL veritabanı 'na yükler.
 
 Bu üç adım bir Oozie iş akışı tarafından koordine edilir.
 
-1. Yerel iş istasyonunuzdan adlı `job.properties`bir dosya oluşturun. Dosya için başlangıç içeriği olarak aşağıdaki metni kullanın.
+1. Yerel iş istasyonunuzdan adlı bir dosya oluşturun `job.properties` . Dosya için başlangıç içeriği olarak aşağıdaki metni kullanın.
 Ardından, belirli ortamınızın değerlerini güncelleştirin. Metnin altındaki tablo her bir özelliği özetler ve kendi ortamınız için değerleri nerede bulabileceğinizi gösterir.
 
     ```text
@@ -237,18 +237,18 @@ Ardından, belirli ortamınızın değerlerini güncelleştirin. Metnin altında
     | Adı | Hive eylemleri planlanırken kullanılan YARN kuyruğunun adı. Varsayılan olarak bırakın. |
     | Oozie.. System. libpath kullanın | Doğru olarak bırakın. |
     | Uygulama tabanı dizininin | Oozie iş akışını ve destekleyici dosyaları dağıttığınız Azure depolama 'daki alt klasörün yolu. |
-    | Oozie. WF. Application. Path | Çalıştırılacak Oozie iş akışının `workflow.xml` konumu. |
-    | hiveScriptLoadPartition | Azure depolama 'daki yol, Hive sorgu dosyasına `hive-load-flights-partition.hql`. |
-    | hiveScriptCreateDailyTable | Azure depolama 'daki yol, Hive sorgu dosyasına `hive-create-daily-summary-table.hql`. |
+    | Oozie. WF. Application. Path | Çalıştırılacak Oozie iş akışının konumu `workflow.xml` . |
+    | hiveScriptLoadPartition | Azure depolama 'daki yol, Hive sorgu dosyasına `hive-load-flights-partition.hql` . |
+    | hiveScriptCreateDailyTable | Azure depolama 'daki yol, Hive sorgu dosyasına `hive-create-daily-summary-table.hql` . |
     | hiveDailyTableName | Hazırlama tablosu için kullanılacak dinamik olarak oluşturulan ad. |
     | hiveDataFolder | Azure depolama 'daki, hazırlama tablosunun içerdiği verilere yönelik yol. |
     | sqlDatabaseConnectionString | Azure SQL veritabanınıza JDBC sözdizimi bağlantı dizesi. |
-    | sqlDatabaseTableName | Azure SQL veritabanı 'ndaki özet satırlarının eklendiği tablonun adı. Farklı `dailyflights`bırak. |
+    | sqlDatabaseTableName | Azure SQL veritabanı 'ndaki özet satırlarının eklendiği tablonun adı. Farklı bırak `dailyflights` . |
     | yıl | Uçuş özetlerinin hesaplandığı günün yıl bileşeni. Olduğu gibi bırakın. |
     | ay | Uçuş özetlerinin hesaplandığı günün ay bileşeni. Olduğu gibi bırakın. |
     | gün | Uçuş özetlerinin hesaplandığı günün ayın günü bileşeni. Olduğu gibi bırakın. |
 
-1. Yerel iş istasyonunuzdan adlı `hive-load-flights-partition.hql`bir dosya oluşturun. Aşağıdaki kodu dosyanın içeriği olarak kullanın.
+1. Yerel iş istasyonunuzdan adlı bir dosya oluşturun `hive-load-flights-partition.hql` . Aşağıdaki kodu dosyanın içeriği olarak kullanın.
 
     ```sql
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -272,9 +272,9 @@ Ardından, belirli ortamınızın değerlerini güncelleştirin. Metnin altında
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
 
-    Oozie değişkenleri söz dizimini `${variableName}`kullanır. Bu değişkenler `job.properties` dosyada ayarlanır. Oozie, çalışma zamanında gerçek değerleri yerine koyar.
+    Oozie değişkenleri söz dizimini kullanır `${variableName}` . Bu değişkenler `job.properties` dosyada ayarlanır. Oozie, çalışma zamanında gerçek değerleri yerine koyar.
 
-1. Yerel iş istasyonunuzdan adlı `hive-create-daily-summary-table.hql`bir dosya oluşturun. Aşağıdaki kodu dosyanın içeriği olarak kullanın.
+1. Yerel iş istasyonunuzdan adlı bir dosya oluşturun `hive-create-daily-summary-table.hql` . Aşağıdaki kodu dosyanın içeriği olarak kullanın.
 
     ```sql
     DROP TABLE ${hiveTableName};
@@ -300,7 +300,7 @@ Ardından, belirli ortamınızın değerlerini güncelleştirin. Metnin altında
 
     Bu sorgu yalnızca bir gün için özetlenen verileri depolayacak bir hazırlama tablosu oluşturur, gün bazında taşıyıcının ortalama gecikmelerini ve toplam mesafe akış sayısını hesaplayan SELECT ifadesine göz atın. Bir sonraki adımda Sqoop için kaynak olarak kullanılabilmesi için, bilinen bir konumda (hiveDataFolder değişkeni tarafından belirtilen yol) depolanan bu tabloya eklenen veriler.
 
-1. Yerel iş istasyonunuzdan adlı `workflow.xml`bir dosya oluşturun. Aşağıdaki kodu dosyanın içeriği olarak kullanın. Yukarıdaki bu adımlar, Oozie iş akışı dosyasında ayrı eylemler olarak ifade edilir.
+1. Yerel iş istasyonunuzdan adlı bir dosya oluşturun `workflow.xml` . Aşağıdaki kodu dosyanın içeriği olarak kullanın. Yukarıdaki bu adımlar, Oozie iş akışı dosyasında ayrı eylemler olarak ifade edilir.
 
     ```xml
     <workflow-app name="loadflightstable" xmlns="uri:oozie:workflow:0.5">
@@ -378,13 +378,13 @@ Ardından, belirli ortamınızın değerlerini güncelleştirin. Metnin altında
     </workflow-app>
     ```
 
-İki Hive sorgusuna Azure Storage 'daki yolundan erişilir ve kalan değişken değerleri `job.properties` dosya tarafından sağlanır. Bu dosya, iş akışını 3 Ocak 2017 tarihi için çalışacak şekilde yapılandırır.
+İki Hive sorgusuna Azure Storage 'daki yolundan erişilir ve kalan değişken değerleri dosya tarafından sağlanır `job.properties` . Bu dosya, iş akışını 3 Ocak 2017 tarihi için çalışacak şekilde yapılandırır.
 
 ## <a name="deploy-and-run-the-oozie-workflow"></a>Oozie iş akışını dağıtma ve çalıştırma
 
-Oozie iş`workflow.xml`akışınızı (), Hive sorgularını (`hive-load-flights-partition.hql` ve `hive-create-daily-summary-table.hql`) ve iş yapılandırmasını (`job.properties`) dağıtmak için bash oturumunuzda SCP 'yi kullanın.  Oozie 'de, yalnızca `job.properties` dosya, headnode 'un yerel deposunda bulunabilir. Diğer tüm dosyalar, bu durumda Azure Storage 'da, bu durumda, Azure depolama 'da olmalıdır. İş akışı tarafından kullanılan Sqoop eylemi, SQL veritabanınız ile iletişim kurmak için bir JDBC sürücüsüne bağlıdır ve bu, baş düğümden,
+Oozie iş akışınızı ( `workflow.xml` ), Hive sorgularını ( `hive-load-flights-partition.hql` ve `hive-create-daily-summary-table.hql` ) ve iş yapılandırmasını () dağıtmak için bash oturumunuzda SCP 'yi kullanın `job.properties` .  Oozie 'de, yalnızca `job.properties` Dosya, headnode 'un yerel deposunda bulunabilir. Diğer tüm dosyalar, bu durumda Azure Storage 'da, bu durumda, Azure depolama 'da olmalıdır. İş akışı tarafından kullanılan Sqoop eylemi, SQL veritabanınız ile iletişim kurmak için bir JDBC sürücüsüne bağlıdır ve bu, baş düğümden,
 
-1. Baş düğümün `load_flights_by_day` yerel depolamadaki Kullanıcı yolunun altında alt klasörü oluşturun. Açık SSH oturumunda aşağıdaki komutu yürütün:
+1. `load_flights_by_day`Baş düğümün yerel depolamadaki Kullanıcı yolunun altında alt klasörü oluşturun. Açık SSH oturumunda aşağıdaki komutu yürütün:
 
     ```bash
     mkdir load_flights_by_day
@@ -404,7 +404,7 @@ Oozie iş`workflow.xml`akışınızı (), Hive sorgularını (`hive-load-flights
     hdfs dfs -put ./* /oozie/load_flights_by_day
     ```
 
-1. Yerel `mssql-jdbc-7.0.0.jre8.jar` baş düğümden, 1. adımda iş akışı klasörüne kopyalayın. Kümeniz farklı bir jar dosyası içeriyorsa, komutu gereken şekilde gözden geçirin. Farklı `workflow.xml` bir JAR dosyasını yansıtmak için gerektiğinde gözden geçirin. Açık SSH oturumunda aşağıdaki komutu yürütün:
+1. `mssql-jdbc-7.0.0.jre8.jar`Yerel baş düğümden, 1. adımda iş akışı klasörüne kopyalayın. Kümeniz farklı bir jar dosyası içeriyorsa, komutu gereken şekilde gözden geçirin. `workflow.xml`Farklı bir JAR dosyasını yansıtmak için gerektiğinde gözden geçirin. Açık SSH oturumunda aşağıdaki komutu yürütün:
 
     ```bash
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /oozie/load_flights_by_day
@@ -428,7 +428,7 @@ Oozie iş`workflow.xml`akışınızı (), Hive sorgularını (`hive-load-flights
 
 ## <a name="run-the-workflow-with-a-coordinator"></a>İş akışını bir düzenleyici ile çalıştırma
 
-Bu iş akışını günlük olarak (veya bir tarih aralığındaki tüm günler) çalışacak şekilde zamanlamak için bir düzenleyici kullanabilirsiniz. Bir düzenleyici bir XML dosyası tarafından tanımlanır, örneğin `coordinator.xml`:
+Bu iş akışını günlük olarak (veya bir tarih aralığındaki tüm günler) çalışacak şekilde zamanlamak için bir düzenleyici kullanabilirsiniz. Bir düzenleyici bir XML dosyası tarafından tanımlanır, örneğin `coordinator.xml` :
 
 ```xml
 <coordinator-app name="daily_export" start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" timezone="UTC" xmlns="uri:oozie:coordinator:0.4">
@@ -499,13 +499,13 @@ Bu iş akışını günlük olarak (veya bir tarih aralığındaki tüm günler)
 
 Gördüğünüz gibi, düzenleyicinin çoğunluğu yalnızca yapılandırma bilgilerini iş akışı örneğine geçirmektir. Ancak, kullanıma almak için birkaç önemli öğe vardır.
 
-* 1. nokta: `start` `coordinator-app` öğe `end` üzerindeki ve öznitelikleri, düzenleyicinin çalıştığı zaman aralığını denetler.
+* 1. nokta: `start` `end` öğe üzerindeki ve öznitelikleri, `coordinator-app` Düzenleyicinin çalıştığı zaman aralığını denetler.
 
     ```
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    Bir düzenleyici, `start` ve `end` tarih aralığı içindeki eylemlerin, `frequency` öznitelik tarafından belirtilen aralığa göre planlanmasından sorumludur. Her zamanlanmış eylem, iş akışını yapılandırılmış olarak çalıştırır. Yukarıdaki düzenleyici tanımında, Koordinatör 1 Ocak 2017 ' den 5 Ocak 2017 ' e kadar olan eylemleri çalıştıracak şekilde yapılandırılmıştır. Sıklık, [Oozie Ifade dili](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) sıklık ifadesi `${coord:days(1)}`tarafından bir güne ayarlanır. Bu, düzenleyicinin bir eylemi (ve dolayısıyla iş akışını) günde bir kez zamanlamaya neden olur. Geçmişte olan tarih aralıkları için, bu örnekte olduğu gibi, eylem gecikme olmadan çalışacak şekilde zamanlanır. Bir eylemin çalıştırılmak üzere zamanlandığı tarihin başlangıcı *nominal zaman*olarak adlandırılır. Örneğin, 1 Ocak 2017 ' den itibaren verileri işlemek için, düzenleyici işlemi, saat 2017-01-01T00:00:00 ' da olan eylemi zamancak.
+    Bir düzenleyici, ve tarih aralığı içindeki eylemlerin, `start` `end` öznitelik tarafından belirtilen aralığa göre planlanmasından sorumludur `frequency` . Her zamanlanmış eylem, iş akışını yapılandırılmış olarak çalıştırır. Yukarıdaki düzenleyici tanımında, Koordinatör 1 Ocak 2017 ' den 5 Ocak 2017 ' e kadar olan eylemleri çalıştıracak şekilde yapılandırılmıştır. Sıklık, [Oozie Ifade dili](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) sıklık ifadesi tarafından bir güne ayarlanır `${coord:days(1)}` . Bu, düzenleyicinin bir eylemi (ve dolayısıyla iş akışını) günde bir kez zamanlamaya neden olur. Geçmişte olan tarih aralıkları için, bu örnekte olduğu gibi, eylem gecikme olmadan çalışacak şekilde zamanlanır. Bir eylemin çalıştırılmak üzere zamanlandığı tarihin başlangıcı *nominal zaman*olarak adlandırılır. Örneğin, 1 Ocak 2017 ' den itibaren verileri işlemek için, düzenleyici işlemi, saat 2017-01-01T00:00:00 ' da olan eylemi zamancak.
 
 * 2. nokta: iş akışının tarih aralığı Içinde, `dataset` öğesi belirli bir tarih aralığı için verilerin ne şekilde görüneceğini belirtir ve Oozie 'nin verilerin henüz işlenmek üzere kullanılabilir olup olmadığını nasıl belirlediğini yapılandırır.
 
@@ -516,11 +516,11 @@ Gördüğünüz gibi, düzenleyicinin çoğunluğu yalnızca yapılandırma bilg
     </dataset>
     ```
 
-    IBU içindeki verilerin yolu, `uri-template` öğesinde belirtilen ifadeye göre dinamik olarak oluşturulur. Bu koordinatda, veri kümesiyle bir günün sıklığı da kullanılır. (Ve süresi belirlenen zamanları tanımlar) düzenleyici öğe denetimindeki başlangıç ve bitiş tarihleri sırasında, veri kümesindeki `initial-instance` ve `frequency` üzerinde, `uri-template`oluşturulurken kullanılan tarihin hesaplanması kontrol edilir. Bu durumda, ilk örneği düzenleyicinin başlangıcından önce bir gün önce, ilk günün (1/1/2017) değerinde veri aldığından emin olmak için ayarlayın. Veri kümesinin tarih hesaplaması, `initial-instance` (12/31/2016) veri kümesi sıklığının (bir gün), düzenleyici tarafından ayarlanan nominal süreyi (ilk eylem için 2017-01-01T00:00:00 GMT) atlayarak en son tarihi bulana kadar ilerletir.
+    IBU içindeki verilerin yolu, öğesinde belirtilen ifadeye göre dinamik olarak oluşturulur `uri-template` . Bu koordinatda, veri kümesiyle bir günün sıklığı da kullanılır. (Ve süresi belirlenen zamanları tanımlar) düzenleyici öğe denetimindeki başlangıç ve bitiş tarihleri sırasında, `initial-instance` `frequency` veri kümesindeki ve üzerinde, oluşturulurken kullanılan tarihin hesaplanması kontrol edilir `uri-template` . Bu durumda, ilk örneği düzenleyicinin başlangıcından önce bir gün önce, ilk günün (1/1/2017) değerinde veri aldığından emin olmak için ayarlayın. Veri kümesinin tarih hesaplaması, `initial-instance` (12/31/2016) veri kümesi sıklığının (bir gün), düzenleyici tarafından ayarlanan nominal süreyi (ilk eylem için 2017-01-01T00:00:00 GMT) atlayarak en son tarihi bulana kadar ilerletir.
 
     Boş `done-flag` öğe, Oozie 'nin bir süre içinde giriş verilerinin varlığını denetlediğini gösteriyorsa, Oozie bir dizin veya dosya olup olmadığını belirler. Bu durumda, bir CSV dosyası var demektir. Bir CSV dosyası varsa, Oozie verilerin hazır olduğunu varsayar ve dosyayı işlemek için bir iş akışı örneği başlatır. Hiçbir CSV dosyası yoksa Oozie verilerin henüz hazır olmadığını ve iş akışının çalışmasının bekleme durumuna gireceğini varsayar.
 
-* Nokta 3: `data-in` öğesi, ilişkili veri kümesi için içindeki `uri-template` değerleri değiştirirken nominal zaman olarak kullanılacak belirli bir zaman damgasını belirtir.
+* Nokta 3: `data-in` öğesi, `uri-template` ilişkili veri kümesi için içindeki değerleri değiştirirken nominal zaman olarak kullanılacak belirli bir zaman damgasını belirtir.
 
     ```xml
     <data-in name="event_input1" dataset="ds_input1">
@@ -528,17 +528,17 @@ Gördüğünüz gibi, düzenleyicinin çoğunluğu yalnızca yapılandırma bilg
     </data-in>
     ```
 
-    Bu durumda, örneği, ilk olarak düzenleyici tarafından zamanlanan `${coord:current(0)}`eylemin nominal süresini kullanmaya çeviren ifadesi olarak ayarlayın. Diğer bir deyişle, düzenleyici eylemi nominal 01/01/2017 süresi ile çalışacak şekilde zamanlıyor olduğunda, URI şablonundaki YEAR (2017) ve MONTH (01) değişkenlerini değiştirmek için 01/01/2017 kullanılır. Bu örnek için URI şablonu hesaplandıktan sonra Oozie beklenen dizin veya dosyanın kullanılabilir olup olmadığını denetler ve iş akışının bir sonraki çalıştırmasını uygun şekilde zamanlar.
+    Bu durumda, örneği, `${coord:current(0)}` ilk olarak düzenleyici tarafından zamanlanan eylemin nominal süresini kullanmaya çeviren ifadesi olarak ayarlayın. Diğer bir deyişle, düzenleyici eylemi nominal 01/01/2017 süresi ile çalışacak şekilde zamanlıyor olduğunda, URI şablonundaki YEAR (2017) ve MONTH (01) değişkenlerini değiştirmek için 01/01/2017 kullanılır. Bu örnek için URI şablonu hesaplandıktan sonra Oozie beklenen dizin veya dosyanın kullanılabilir olup olmadığını denetler ve iş akışının bir sonraki çalıştırmasını uygun şekilde zamanlar.
 
 Önceki üç noktası, düzenleyicinin kaynak verileri bir gün içinde işlemeyi zamanladığı bir durum sağlamak için birleşmelidir.
 
 * 1. nokta: düzenleyici nominal Tarih 2017-01-01 ile başlar.
 
-* 2. nokta: Oozie ' de `sourceDataFolder/2017-01-FlightData.csv`bulunan verileri arar.
+* 2. nokta: Oozie ' de bulunan verileri arar `sourceDataFolder/2017-01-FlightData.csv` .
 
 * Nokta 3: Oozie bu dosyayı bulduğunda, 2017-01-01 için verileri işleyecek iş akışının bir örneğini zamanlar. Oozie, 2017-01-02 için işlemeye devam eder. Bu değerlendirme, 2017-01-05 içermez ancak dahil değildir.
 
-İş akışlarında olduğu gibi, bir düzenleyicinin yapılandırması, iş akışı tarafından kullanılan `job.properties` ayarların üst kümesini içeren bir dosyada tanımlanır.
+İş akışlarında olduğu gibi, bir düzenleyicinin yapılandırması, `job.properties` iş akışı tarafından kullanılan ayarların üst kümesini içeren bir dosyada tanımlanır.
 
 ```text
 nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
@@ -556,11 +556,11 @@ sqlDatabaseConnectionString="jdbc:sqlserver://[SERVERNAME].database.windows.net;
 sqlDatabaseTableName=dailyflights
 ```
 
-Bu `job.properties` dosyada sunulan tek yeni özellikler şunlardır:
+Bu dosyada sunulan tek yeni özellikler `job.properties` şunlardır:
 
 | Özellik | Değer kaynağı |
 | --- | --- |
-| Oozie. cozı. Application. Path | Çalıştırmak için Oozie `coordinator.xml` düzenleyicisini içeren dosyanın konumunu gösterir. |
+| Oozie. cozı. Application. Path | `coordinator.xml`Çalıştırmak Için Oozie düzenleyicisini içeren dosyanın konumunu gösterir. |
 | hiveDailyTableNamePrefix | Hazırlama tablosunun tablo adını dinamik olarak oluştururken kullanılan önek. |
 | hiveDataFolderPrefix | Tüm hazırlama tablolarının depolanacağı yolun öneki. |
 

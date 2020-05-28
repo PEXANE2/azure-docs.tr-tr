@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 28c61e637a37c158dcd80c0f02b748b4813945fb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 31390d260f51bdc1e9858d21153aa96ea7c54405
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826851"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116646"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Otomasyon hesabından Değişiklik İzleme ve Stok özelliğini etkinleştirme
 
@@ -37,9 +37,9 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 
     ![Değişiklik İzlemeyi ve Sayımı Etkinleştirme](media/automation-enable-changes-from-auto-acct/onboardsolutions.png)
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>Kapsam yapılandırmasını denetleme
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Dağıtımın kapsamını sınırlandırma
 
-Değişiklik İzleme ve stok, değişiklikleri almak üzere bilgisayarları hedeflemek için çalışma alanındaki kapsam yapılandırmasını kullanır. Kapsam yapılandırması, özelliğin kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Daha fazla bilgi için bkz. [değişiklik izleme ve envanter için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-change-tracking.md).
+Değişiklik İzleme ve stok, değişiklikleri almak üzere bilgisayarları hedeflemek için çalışma alanındaki kapsam yapılandırmasını kullanır. Daha fazla bilgi için bkz. [Limit değişiklik izleme ve Inventory Deployment Scope](automation-scope-configurations-change-tracking.md).
 
 ## <a name="enable-azure-vms"></a>Azure VM 'lerini etkinleştirin
 
@@ -47,7 +47,7 @@ Değişiklik İzleme ve stok, değişiklikleri almak üzere bilgisayarları hede
 
 2. **+ Azure VM 'Leri Ekle** ' ye tıklayın ve listeden bir veya daha fazla VM seçin. Etkin olmayan sanal makineler gri, seçilemez ve seçilemiyor. Azure VM 'Ler, Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın herhangi bir bölgede bulunabilir. 
 
-3. Seçilen VM 'Leri, özellik için kayıtlı bilgisayar grubu aramasına eklemek için **Etkinleştir** ' e tıklayın. Daha fazla bilgi için bkz. [değişiklik izleme ve envanter için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-change-tracking.md).
+3. Seçilen VM 'Leri, özellik için kayıtlı bilgisayar grubu aramasına eklemek için **Etkinleştir** ' e tıklayın. Daha fazla bilgi için bkz. [Limit değişiklik izleme ve Inventory Deployment Scope](automation-scope-configurations-change-tracking.md).
 
     ![Azure VM 'lerini etkinleştirin](media/automation-enable-changes-from-auto-acct/enable-azure-vms.png)
 
@@ -80,7 +80,7 @@ Azure 'da bulunmayan makinelerin el ile eklenmesi gerekir.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Özelliği hakkında daha fazla bilgi için bkz. [Manage değişiklik izleme and Inventory](change-tracking-file-contents.md).
-* Kapsam konfigürasyonları hakkında daha fazla bilgi için bkz. [değişiklik izleme ve envanter için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-change-tracking.md).
+* Kapsam konfigürasyonları hakkında daha fazla bilgi için bkz. [Limit değişiklik izleme and Inventory Deployment Scope](automation-scope-configurations-change-tracking.md).
 * Ortamınızdaki yüklü yazılımları belirlemek için özelliğini kullanmayı öğrenmek için bkz. [sanal makinelerinize hangi yazılımın yüklendiğini keşfetme](automation-tutorial-installed-software.md).
 * Özelliği etkinleştirirken Otomasyon hesabınızı bir Log Analytics çalışma alanıyla tümleştirmek istemiyorsanız, bkz. [çalışma alanının Otomasyon hesabından bağlantısını](automation-unlink-workspace-change-tracking.md)kaldırma.
 * VM 'lere yapılan değişiklikleri dağıtma işlemi tamamlandığında, [değişiklik izleme ve envanterden VM 'Leri kaldırma](automation-remove-vms-from-change-tracking.md)bölümünde açıklandığı gibi bunları kaldırabilirsiniz.

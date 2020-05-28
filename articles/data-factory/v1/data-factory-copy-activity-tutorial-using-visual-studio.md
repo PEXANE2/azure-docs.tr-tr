@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d9059c9386af6fab6bb1068d6a9e64b763206f94
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69f63615d3c5f10bdcef071e18a7379ecf52338e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74929198"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119301"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Öğretici: Visual Studio kullanarak Kopyalama Etkinliği ile işlem hattı oluşturma
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış v
 3. Bilgisayarınızda şunların yüklü olması gerekir: 
    * Visual Studio 2013 veya Visual Studio 2015
    * Visual Studio 2013 veya Visual Studio 2015 için Azure SDK’sını indirin. [Azure İndirme Sayfası](https://azure.microsoft.com/downloads/)’na gidin ve **.NET** bölümündeki **VS 2013** veya **VS 2015**’e tıklayın.
-   * Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ayrıca, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar** -> **Uzantılar ve güncelleştirmeler** -> **çevrimiçi** -> **Visual Studio Galerisi** -> **Microsoft Azure Visual Studio** -> **Update**Data Factory Araçları ' na tıklayın.
+   * Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ayrıca, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Microsoft Azure Visual Studio Update Data Factory araçları**  ->  **Update**' na tıklayın.
 
 ## <a name="steps"></a>Adımlar
 Bu eğitimin bir parçası olarak gerçekleştireceğiniz adımlar şunlardır:
@@ -108,7 +108,7 @@ Bağlı hizmetler veri depolarını veya işlem hizmetlerini Azure data factory�
 ### <a name="create-the-azure-sql-linked-service"></a>Azure SQL bağlı hizmeti oluşturma
 1. **Çözüm Gezgini**’nde bir kez daha **Bağlı Hizmetler** düğümüne sağ tıklayın, **Ekle**’nin üzerine gelip **Yeni Öğe**’ye tıklayın. 
 2. Bu sefer, **Azure SQL Bağlı Hizmeti**’ni seçin ve **Ekle**’ye tıklayın. 
-3. **AzureSqlLinkedService1. json dosyasında**,,, ve `<servername>` `<password>` öğesini `<databasename>`Azure `<username@servername>`SQL sunucunuzun, veritabanınızın, Kullanıcı hesabınızın ve parolanızın adlarıyla değiştirin.    
+3. **AzureSqlLinkedService1. json dosyasında**,,, ve ' ı `<servername>` `<databasename>` `<username@servername>` `<password>` sunucunuzun, veritabanınızın, Kullanıcı hesabınızın ve parolanızın adlarıyla değiştirin.    
 4. **AzureSqlLinkedService1.json** dosyasını kaydedin. 
     
     Bu JSON özellikleri hakkında daha fazla bilgi için [Azure SQL Veritabanı bağlayıcısı](data-factory-azure-sql-connector.md#linked-service-properties) makalesine bakın.
@@ -165,7 +165,7 @@ Burada, "veri kümeleri" terimi yerine "tablo" terimini kullanırsınız. Tablo 
 
     | Özellik | Açıklama |
     |:--- |:--- |
-    | type | Veriler Azure blob depolama alanında yer aldığından type özelliği **AzureBlob** olarak ayarlanmıştır. |
+    | tür | Veriler Azure blob depolama alanında yer aldığından type özelliği **AzureBlob** olarak ayarlanmıştır. |
     | linkedServiceName | Daha önce oluşturduğunuz **AzureStorageLinkedService**’e başvurur. |
     | folderPath | blob **kapsayıcıyı** ve girdi blob’larını içeren **klasörü** belirtir. Bu öğreticide adftutorial, blob kapsayıcısıdır ve klasör, kök klasördür. | 
     | fileName | Bu özellik isteğe bağlıdır. Bu özelliği atarsanız tüm folderPath dosyaları alınır. Bu öğreticide fileName için **emp.txt** belirtilir, bu nedenle işlem için yalnızca bu dosya seçilir. |
@@ -213,7 +213,7 @@ Bu adımda **OutputDataset** adlı bir çıktı veri kümesi oluşturursunuz. Bu
 
     | Özellik | Açıklama |
     |:--- |:--- |
-    | type | type özelliği, veriler Azure SQL veritabanındaki bir tabloya kopyalandığından **AzureSqlTable** olarak ayarlanır. |
+    | tür | type özelliği, veriler Azure SQL veritabanındaki bir tabloya kopyalandığından **AzureSqlTable** olarak ayarlanır. |
     | linkedServiceName | Daha önce oluşturduğunuz **AzureSqlLinkedService**’e başvurur. |
     | tableName | Verilerin kopyalandığı **tabloyu** belirtir. | 
     | frequency/interval | frequency **Saatlik** ve interval **1** olarak ayarlanır. Bu durumda çıktı dilimleri, işlem hattı başlangıç ve bitiş zamanları arasında **saatlik** olarak üretilir, bu zamanlardan önce veya sonra üretilmez.  |
@@ -436,7 +436,7 @@ Aşağıdaki adımları uygulayarak her ortam için bir yapılandırma dosyası 
         "AzureSqlLinkedService1": [
             {
                 "name": "$.properties.typeProperties.connectionString",
-                "value":  "Server=tcp:<Azure SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         ]
     }

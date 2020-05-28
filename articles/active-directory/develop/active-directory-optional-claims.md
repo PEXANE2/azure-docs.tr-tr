@@ -37,7 +37,7 @@ Standart talepler listesi için bkz. [erişim belirteci](access-tokens.md) ve [i
 
 | Hesap türü               | v 1.0 belirteçleri | v 2.0 belirteçleri |
 |----------------------------|-------------|-------------|
-| Kişisel Microsoft hesabı | Yok         | Destekleniyor   |
+| Kişisel Microsoft hesabı | YOK         | Destekleniyor   |
 | Azure AD hesabı           | Destekleniyor   | Destekleniyor   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 ve v 2.0 isteğe bağlı talepler kümesi

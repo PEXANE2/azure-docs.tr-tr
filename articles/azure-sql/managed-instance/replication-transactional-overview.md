@@ -43,10 +43,10 @@ Aşağıdaki resimde gösterildiği gibi, işlemsel çoğaltma 'daki anahtar bil
 
 | Rol | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| **Publisher** | No | Yes |
-| **Dağıtım** | No | Yes|
-| **Çekme abonesi** | No | Yes|
-| **İtme abonesi**| Yes | Yes|
+| **Publisher** | Hayır | Evet |
+| **Dağıtım** | Hayır | Evet|
+| **Çekme abonesi** | Hayır | Evet|
+| **İtme abonesi**| Evet | Yes|
 | &nbsp; | &nbsp; | &nbsp; |
 
 **Yayımcı** , güncelleştirmeleri dağıtıcıya göndererek bazı tablolarda (makaleler) yapılan değişiklikleri yayımlar. Yayımcı bir Azure SQL yönetilen örneği veya bir SQL Server olabilir.
@@ -72,11 +72,11 @@ Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-database
 
 | Çoğaltma | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Yes |
-| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Yes|
+| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Evet |
+| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Evet|
 | [**Birleştirme çoğaltması**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Hayır | Hayır|
 | [**Eşler arası**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Hayır | Hayır|
-| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
+| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Evet|
 | [**Güncelleştirilebilir abonelikler**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Hayır | Hayır|
 | &nbsp; | &nbsp; | &nbsp; |
 

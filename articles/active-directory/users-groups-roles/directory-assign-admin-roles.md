@@ -114,7 +114,7 @@ Bu roldeki kullanıcılar, Azure AD B2C tüm özel ilkeleri oluşturma, okuma, g
 > [!IMPORTANT]
 > B2 ıEF Ilke Yöneticisi, üretimde kuruluşlar için çok sınırlı bir temelde atanması gereken son derece duyarlı bir roldür.Bu kullanıcıların etkinlikleri, özellikle üretimde kuruluşlar için yakından denetlenmelidir.
 
-### <a name="billing-administrator"></a>[Faturalama yöneticisi](#billing-administrator-permissions)
+### <a name="billing-administrator"></a>[Faturalama Yöneticisi](#billing-administrator-permissions)
 
 Satın alma işlemleri yapar, abonelikleri yönetir, destek biletlerini yönetir ve hizmetin sistem durumunu izler.
 
@@ -1843,7 +1843,7 @@ Azure DevOps Yöneticisi | Azure DevOps Yöneticisi | e3973bdf-4987-49ae-837a-ba
 Azure Information Protection Yöneticisi | Azure Information Protection Yöneticisi | 7495fdc4-34c4-4d15-A289-98788ce399fd
 B2C ıEF anahtar kümesi Yöneticisi | B2C ıEF anahtar kümesi Yöneticisi | aaf43236-0c0d-4d5f-883a-6955382ac081
 B2C ıEF Ilke Yöneticisi | B2C ıEF Ilke Yöneticisi | 3edaf663-341e-4475-9f94-5c398ef6c070
-Faturalama yöneticisi | Faturalama yöneticisi | b0f54661-2d74-4c50-afa3-1ec803f12efe
+Faturalama Yöneticisi | Faturalama yöneticisi | b0f54661-2d74-4c50-afa3-1ec803f12efe
 Bulut Uygulaması Yöneticisi | Bulut uygulaması Yöneticisi | 158c047a-C907-4556-b7ef-446551a6b5f7
 Bulut Cihaz Yöneticisi | Bulut Cihaz Yöneticisi | 7698a772-787B-4ac8-901f-60d6b08afd2
 Şirket Yöneticisi | Genel yönetici | 62e90394-69f5-4237-9190-012177145e10
@@ -1871,7 +1871,7 @@ Yardım Masası Yöneticisi | Yardım Masası Yöneticisi | 729827e3-9c14-49f7-b
 Karma kimlik yöneticisi | Karma kimlik yöneticisi | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Intune Hizmet Yöneticisi | Intune yöneticisi | 3a2c62db-5318-420d-8d74-23afee5d9d5
 Kaizala Yöneticisi | Kaizala Yöneticisi | 74ef975b-6605-40af-a5d2-b9539d836353
-Lisans Yöneticisi | Lisans Yöneticisi | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
+Lisans Yöneticisi | Lisans yöneticisi | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync Hizmet Yöneticisi | Skype Kurumsal yöneticisi | 75941009-915a-4869-ABE7-691bff18279e
 İleti Merkezi Gizlilik okuyucusu | İleti Merkezi Gizlilik okuyucusu | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 İleti Merkezi okuyucusu | İleti Merkezi okuyucusu | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
@@ -1900,7 +1900,7 @@ Takımlar Iletişimleri Destek Mühendisi | Takımlar Iletişimleri Destek Mühe
 Takımlar Iletişimleri destek uzmanı | Takımlar Iletişimleri destek uzmanı | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Takımlar Hizmet Yöneticisi | Takımlar Hizmet Yöneticisi | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Kullanıcı | Kullanılmadığından gösterilmez | a0b1b346-4d3e-4e8b-98f8-753987be4970
-Kullanıcı hesabı Yöneticisi | Kullanıcı Yöneticisi | fe930be7-5e62-47db-91af-98c3a49a38b1
+Kullanıcı hesabı Yöneticisi | Kullanıcı yöneticisi | fe930be7-5e62-47db-91af-98c3a49a38b1
 Çalışma alanına cihaz katılımı | Kullanım Dışı | c34f683f-4d5a-4403-AFD-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>Kullanım dışı roller

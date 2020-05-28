@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 8a69cb83492fabc692886fe6966a147de3bcbb04
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780853"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022223"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Sık sorulan sorular
 
@@ -44,6 +44,14 @@ Daha fazla bilgi için bkz. [HDInsight kümeleri Için kapasite planlaması](htt
 
 Bkz. [Azure HDInsight kümelerinde kaynak türleri](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters).
 
+### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>Büyük HDInsight kümeleri oluşturmak için en iyi uygulamalar nelerdir?
+
+1. Küme ölçeklenebilirliğini geliştirmek için [özel bir AMBARı DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db) ile HDInsight kümeleri ayarlamayı öneririz.
+2. Daha yüksek bant genişliğinden ve Azure Data Lake Storage 2. diğer performans özelliklerinden faydalanmak için HDInsight kümeleri oluşturmak için [Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) kullanın.
+3. Bu düğümlerde çalışan birden çok ana hizmete uyum sağlamak için headnodes yeterince büyük olmalıdır.
+4. Etkileşimli sorgu gibi bazı özel iş yüklerinin de daha büyük Zookeeper düğümleri olması gerekir. Lütfen en az 8 çekirdekli VM 'yi değerlendirin.
+5. Hive ve Spark durumunda [dış Hive meta veri deposu](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores)kullanın.
+
 ## <a name="individual-components"></a>Tek Tek Bileşenler
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>Kümeme ek bileşenler yükleyebilir miyim?
@@ -68,7 +76,7 @@ Hayır, aynı HDInsight kümesinde Apache Kafka ve Apache Spark çalıştırmak 
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Nasıl yaparım?, ambarı 'nda saat dilimini değiştirmek mi istiyorsunuz?
 
-1. Konumundaki `https://CLUSTERNAME.azurehdinsight.net`ambarı Web Kullanıcı arabirimini açın, burada clustername kümenizin adıdır.
+1. Konumundaki ambarı Web Kullanıcı arabirimini açın `https://CLUSTERNAME.azurehdinsight.net` , burada clustername kümenizin adıdır.
 2. Sağ üst köşede Yönetici ' yi seçin | Ayarlar. 
 
    ![Ambarı ayarları](media/hdinsight-faq/ambari-settings.png)
@@ -79,9 +87,9 @@ Hayır, aynı HDInsight kümesinde Apache Kafka ve Apache Spark çalıştırmak 
 
 ## <a name="metastore"></a>Meta Veri Deposu
 
-### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>Mevcut meta veri deposunu Azure SQL Server nasıl geçirebilirim? 
+### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-database"></a>Mevcut meta veri deposunu Azure SQL veritabanı 'na nasıl geçirebilirim? 
 
-SQL Server 'den Azure SQL Server 'e geçiş yapmak için bkz. [öğretici: Azure SQL veritabanı 'NDA DMS kullanarak SQL Server tek bir veritabanına veya havuza alınmış veritabanına geçirme](../dms/tutorial-sql-server-to-azure-sql.md).
+SQL Server 'den Azure SQL veritabanı 'na geçiş yapmak için bkz. [öğretici: SQL Server Azure SQL veritabanı 'NDA DMS kullanarak tek bir veritabanına veya havuza alınmış bir veritabanına geçirme](../dms/tutorial-sql-server-to-azure-sql.md).
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>Hive meta veri deposu, küme silindiğinde silinir mi?
 
@@ -133,7 +141,7 @@ Evet, bir HDInsight kümesiyle aynı alt ağ içinde ek bir sanal makine dağıt
 
 - Kenar düğümleri: [HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma](hdinsight-apps-use-edge-node.md)bölümünde açıklandığı gibi, kümeye başka bir kenar düğümü ekleyebilirsiniz.
 
-- Tek başına düğümler: tek başına bir sanal makineyi aynı alt ağa ekleyebilir ve özel uç noktasını `https://<CLUSTERNAME>-int.azurehdinsight.net`kullanarak bu sanal makineden kümeye erişebilirsiniz. Daha fazla bilgi için bkz. [ağ trafiğini denetleme](./control-network-traffic.md).
+- Tek başına düğümler: tek başına bir sanal makineyi aynı alt ağa ekleyebilir ve özel uç noktasını kullanarak bu sanal makineden kümeye erişebilirsiniz `https://<CLUSTERNAME>-int.azurehdinsight.net` . Daha fazla bilgi için bkz. [ağ trafiğini denetleme](./control-network-traffic.md).
 
 ### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>Verileri bir kenar düğümünün yerel diskine depolamam gerekir mi?
 
@@ -180,9 +188,9 @@ Sertifika yetkilisi tarafından verilen bir sertifikanın kullanılması öneril
 
 Denetim gereksinimleri için, Microsoft, [HDInsight kümelerini izlemek Için Azure izleyici günlüklerini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial)bölümünde açıklandığı gibi Azure izleyici günlüklerini etkinleştirmenizi önerir.
 
-### <a name="can-i-disable-clamscan-on-my-cluster"></a>Kümeimde devre `Clamscan` dışı bırakabilir miyim?
+### <a name="can-i-disable-clamscan-on-my-cluster"></a>Kümeimde devre dışı bırakabilir miyim `Clamscan` ?
 
-`Clamscan`, HDInsight kümesinde çalışan ve Azure güvenliği (azsecd) tarafından, kümelerinizi virüs saldırılarına karşı korumak için kullanılan virüsten koruma yazılımıdır. Microsoft, kullanıcıların varsayılan `Clamscan` yapılandırmada herhangi bir değişiklik yapmasını kesinlikle önerir.
+`Clamscan`, HDInsight kümesinde çalışan ve Azure güvenliği (azsecd) tarafından, kümelerinizi virüs saldırılarına karşı korumak için kullanılan virüsten koruma yazılımıdır. Microsoft, kullanıcıların varsayılan yapılandırmada herhangi bir değişiklik yapmasını kesinlikle önerir `Clamscan` .
 
 Bu işlem, diğer işlemlerden herhangi bir döngüden müdahale etmez veya bu işlemleri yapmaz. Her zaman başka bir işleme göre yapılır. CPU artışlarından `Clamscan` yalnızca sistem boştayken görülebilmelidir.  
 
@@ -203,7 +211,7 @@ LLAP, performans için değil güvenlik nedenleriyle (Apache Ranger) etkinleşti
 
 ### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>Bir ESP kümesi oluşturduktan sonra nasıl ek AAD grupları ekleyebilirim?
 Bu hedefe ulaşmanın iki yolu vardır: 1-kümeyi yeniden oluşturabilir ve küme oluşturma sırasında ek grubu ekleyebilirsiniz. AAD-DS ' d a kapsamlı eşitleme kullanıyorsanız, Grup B 'nin kapsamlı eşitlemeye eklendiğinden emin olun.
-2-grubu, ESP kümesini oluşturmak için kullanılan önceki grubun iç içe geçmiş alt grubu olarak ekleyin. Örneğin, Grup `A`Ile bir ESP kümesi oluşturduysanız, daha sonra grup `B` ekleme ' yi iç içe geçmiş alt grubu olarak `A` ve yaklaşık bir saatten sonra otomatik olarak eşitlenecek ve kullanılabilir hale gelir. 
+2-grubu, ESP kümesini oluşturmak için kullanılan önceki grubun iç içe geçmiş alt grubu olarak ekleyin. Örneğin, grup ile bir ESP kümesi oluşturduysanız `A` , daha sonra grup ekleme ' yi `B` iç içe geçmiş alt grubu olarak `A` ve yaklaşık bir saatten sonra otomatik olarak eşitlenecek ve kullanılabilir hale gelir. 
 
 ## <a name="storage"></a>Depolama
 
@@ -276,14 +284,14 @@ Kalıcı betikleri, ölçek işlemleri aracılığıyla kümeye eklenen yeni ça
 
 Gerekli bilgileri JSON biçiminde çekmek için aşağıdaki REST uç noktalarını kullanabilirsiniz. İstekleri yapmak için temel kimlik doğrulama üst bilgilerini kullanın.
 
-- `Tez Query View`: *https:\//\<küme adı>. azurehdinsight.net/WS/v1/Timeline/HIVE_QUERY_ID/*
-- `Tez Dag View`: *https:\//\<küme adı>. azurehdinsight.net/WS/v1/Timeline/TEZ_DAG_ID/*
+- `Tez Query View`: *https: \/ / \<cluster name> . azurehdinsight.net/WS/v1/Timeline/HIVE_QUERY_ID/*
+- `Tez Dag View`: *https: \/ / \<cluster name> . azurehdinsight.net/WS/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Nasıl yaparım? Azure Active Directory Kullanıcı kullanarak HDI kümesinden yapılandırma ayrıntılarını almak istiyor musunuz?
 
 AAD kullanıcılarınız ile uygun kimlik doğrulama belirteçlerini anlaşmak için aşağıdaki biçimi kullanarak ağ geçidine gidin:
 
-* https://`<cluster dnsname>`. azurehdinsight.net/api/v1/Clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https:// `<cluster dnsname>` . azurehdinsight.net/api/v1/Clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>YARN performansını izlemek için Nasıl yaparım? ambarı yeniden oluşturma API 'sini kullanmak mı istiyorsunuz?
 

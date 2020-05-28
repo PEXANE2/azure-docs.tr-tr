@@ -11,18 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: bfae651dabab9c3ecebc10bbdb553b1d52e3a79a
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: c72a49d938bbf89b727d3f3e5896359df3c3911d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872950"
+ms.locfileid: "84019033"
 ---
-# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'te (eski adıyla Azure SQL veri ambarı) veri kopyalama ve dönüştürme 
+# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'te (eski adıyla Azure SQL veri ambarı) veri kopyalama ve dönüştürme
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
-> * [Version1](v1/data-factory-azure-sql-data-warehouse-connector.md)
-> * [Geçerli sürüm](connector-azure-sql-data-warehouse.md)
+>
+> - [Version1](v1/data-factory-azure-sql-data-warehouse-connector.md)
+> - [Geçerli sürüm](connector-azure-sql-data-warehouse.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -44,8 +45,8 @@ Kopyalama etkinliği için bu Azure SYNAPSE Analytics Bağlayıcısı şu işlev
 - Havuz olarak, [PolyBase](#use-polybase-to-load-data-into-azure-sql-data-warehouse) veya [Copy deyiminizi](#use-copy-statement) (Önizleme) veya toplu ekleme 'yi kullanarak verileri yükleyin. Daha iyi kopyalama performansı için PolyBase veya COPY deyiminizi (Önizleme) öneririz.
 
 > [!IMPORTANT]
-> Azure Data Factory Integration Runtime kullanarak verileri kopyalarsanız Azure hizmetlerinin sunucuya erişebilmesi için bir [Azure SQL Server güvenlik duvarı](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) yapılandırın.
-> Şirket içinde barındırılan tümleştirme çalışma zamanı kullanarak verileri kopyalarsanız, Azure SQL Server güvenlik duvarını uygun IP aralığına izin verecek şekilde yapılandırın. Bu Aralık, Azure SYNAPSE Analytics 'e bağlanmak için kullanılan makinenin IP 'sini içerir.
+> Azure Data Factory Integration Runtime kullanarak verileri kopyalarsanız, Azure hizmetlerinin [MANTıKSAL SQL Server](../azure-sql/database/logical-servers.md)'a erişebilmesi için [sunucu düzeyinde bir güvenlik duvarı kuralı](../azure-sql/database/firewall-configure.md) yapılandırın.
+> Şirket içinde barındırılan tümleştirme çalışma zamanı kullanarak verileri kopyalarsanız, güvenlik duvarını uygun IP aralığına izin verecek şekilde yapılandırın. Bu Aralık, Azure SYNAPSE Analytics 'e bağlanmak için kullanılan makinenin IP 'sini içerir.
 
 ## <a name="get-started"></a>başlarken
 
@@ -107,13 +108,13 @@ Farklı kimlik doğrulama türleri için sırasıyla Önkoşullar ve JSON örnek
         "type": "AzureSqlDW",
         "typeProperties": {
             "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                    "referenceName": "<Azure Key Vault linked service name>",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "<secretName>"
             }
         },
         "connectVia": {
@@ -130,13 +131,13 @@ Hizmet sorumlusu tabanlı Azure AD uygulama belirteci kimlik doğrulamasını ku
 
 1. Azure portal **[bir Azure Active Directory uygulaması oluşturun](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)** . Uygulama adını ve bağlı hizmeti tanımlayan aşağıdaki değerleri unutmayın:
 
-    - Uygulama Kimliği
-    - Uygulama anahtarı
-    - Kiracı Kimliği
+   - Uygulama Kimliği
+   - Uygulama anahtarı
+   - Kiracı Kimliği
 
-2. Daha önce yapmadıysanız, Azure portal Azure SQL Server için **[Azure Active Directory Yöneticisi sağlayın](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** . Azure AD yöneticisi bir Azure AD kullanıcısı veya Azure AD grubu olabilir. Gruba yönetilen kimliğe sahip bir yönetici rolü verirseniz, 3 ve 4. adımları atlayın. Yöneticinin veritabanına tam erişimi olur.
+2. Daha önce yapmadıysanız Azure portal sunucunuz için **[bir Azure Active Directory Yöneticisi sağlayın](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-database)** . Azure AD yöneticisi bir Azure AD kullanıcısı veya Azure AD grubu olabilir. Gruba yönetilen kimliğe sahip bir yönetici rolü verirseniz, 3 ve 4. adımları atlayın. Yöneticinin veritabanına tam erişimi olur.
 
-3. Hizmet sorumlusu için **[Kapsanan Veritabanı kullanıcıları oluşturun](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** . SSMS gibi araçları kullanarak verileri kopyalamak istediğiniz veri ambarına ya da en az BIR kullanıcı izni olan bir Azure AD kimliğiyle bağlanın. Aşağıdaki T-SQL ' i çalıştırın:
+3. Hizmet sorumlusu için **[Kapsanan Veritabanı kullanıcıları oluşturun](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)** . SSMS gibi araçları kullanarak verileri kopyalamak istediğiniz veri ambarına ya da en az BIR kullanıcı izni olan bir Azure AD kimliğiyle bağlanın. Aşağıdaki T-SQL ' i çalıştırın:
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
@@ -149,7 +150,6 @@ Hizmet sorumlusu tabanlı Azure AD uygulama belirteci kimlik doğrulamasını ku
     ```
 
 5. Azure Data Factory 'de **Azure SYNAPSE Analytics bağlı hizmetini yapılandırın** .
-
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Hizmet sorumlusu kimlik doğrulaması kullanan bağlı hizmet örneği
 
@@ -181,9 +181,9 @@ Bir veri fabrikası, belirli bir fabrikası temsil eden [Azure kaynakları için
 
 Yönetilen kimlik kimlik doğrulamasını kullanmak için şu adımları izleyin:
 
-1. Daha önce yapmadıysanız, Azure portal Azure SQL Server için **[Azure Active Directory Yöneticisi sağlayın](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** . Azure AD yöneticisi bir Azure AD kullanıcısı veya Azure AD grubu olabilir. Gruba yönetilen kimliğe sahip bir yönetici rolü verirseniz, 3 ve 4. adımları atlayın. Yöneticinin veritabanına tam erişimi olur.
+1. Daha önce yapmadıysanız Azure portal sunucunuza yönelik **[bir Azure Active Directory Yöneticisi sağlayın](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-database)** . Azure AD yöneticisi bir Azure AD kullanıcısı veya Azure AD grubu olabilir. Gruba yönetilen kimliğe sahip bir yönetici rolü verirseniz, 3 ve 4. adımları atlayın. Yöneticinin veritabanına tam erişimi olur.
 
-2. Data Factory yönetilen kimlik için **[Kapsanan Veritabanı kullanıcıları oluşturun](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** . SSMS gibi araçları kullanarak verileri kopyalamak istediğiniz veri ambarına ya da en az BIR kullanıcı izni olan bir Azure AD kimliğiyle bağlanın. Aşağıdaki T-SQL ' i çalıştırın. 
+2. Data Factory yönetilen kimlik için **[Kapsanan Veritabanı kullanıcıları oluşturun](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)** . SSMS gibi araçları kullanarak verileri kopyalamak istediğiniz veri ambarına ya da en az BIR kullanıcı izni olan bir Azure AD kimliğiyle bağlanın. Aşağıdaki T-SQL ' i çalıştırın.
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
@@ -195,7 +195,7 @@ Yönetilen kimlik kimlik doğrulamasını kullanmak için şu adımları izleyin
     EXEC sp_addrolemember db_owner, [your Data Factory name];
     ```
 
-5. Azure Data Factory 'de **Azure SYNAPSE Analytics bağlı hizmetini yapılandırın** .
+4. Azure Data Factory 'de **Azure SYNAPSE Analytics bağlı hizmetini yapılandırın** .
 
 **Örneğinde**
 
@@ -217,7 +217,7 @@ Yönetilen kimlik kimlik doğrulamasını kullanmak için şu adımları izleyin
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. 
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi.
 
 Aşağıdaki özellikler Azure SYNAPSE Analytics veri kümesi için desteklenir:
 
@@ -228,7 +228,7 @@ Aşağıdaki özellikler Azure SYNAPSE Analytics veri kümesi için desteklenir:
 | tablo | Tablo/görünüm adı. |Kaynak için Hayır, havuz için Evet  |
 | tableName | Şema ile tablonun/görünümün adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve kullanın `table` . | Kaynak için Hayır, havuz için Evet |
 
-#### <a name="dataset-properties-example"></a>DataSet özellikleri örneği
+### <a name="dataset-properties-example"></a>DataSet özellikleri örneği
 
 ```json
 {
@@ -358,7 +358,7 @@ Azure Data Factory, verileri SQL veri ambarı 'na yüklemek için üç yolu dest
 
 ![SQL DW havuz kopyalama seçenekleri](./media/connector-azure-sql-data-warehouse/sql-dw-sink-copy-options.png)
 
-- [PolyBase kullanma](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 
+- [PolyBase kullanma](#use-polybase-to-load-data-into-azure-sql-data-warehouse)
 - [COPY ifadesini kullanma (Önizleme)](#use-copy-statement)
 - Toplu ekleme kullan
 
@@ -399,11 +399,11 @@ Azure SQL veri ambarı 'na veri kopyalamak için kopyalama etkinliğindeki havuz
 
 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 'in kullanılması, yüksek aktarım hızı Ile Azure SYNAPSE Analytics 'e büyük miktarda veri yüklemek için etkili bir yoldur. Varsayılan BULKıNSERT mekanizması yerine PolyBase kullanarak üretilen iş için büyük bir kazanç görürsünüz. Kullanım örneği ile ilgili bir anlatım için bkz. [1 TB 'Yi Azure SYNAPSE Analytics 'e yükleme](v1/data-factory-load-sql-data-warehouse.md).
 
-* Kaynak verileriniz Azure Blob 'dayken **, Azure Data Lake Storage 1. veya Azure Data Lake Storage 2.** ve **Biçim PolyBase UYUMLUYSA**, Azure SQL veri ambarı 'nın verileri kaynaktan çekmesini sağlamak üzere doğrudan PolyBase 'i çağırmak için kopyalama etkinliğini kullanabilirsiniz. Ayrıntılar için bkz. **[PolyBase kullanarak doğrudan kopyalama](#direct-copy-by-using-polybase)**.
-* Kaynak veri depoluü ve biçimlendirmeniz ilk olarak PolyBase tarafından desteklenmiyorsa, bunun yerine **[PolyBase özelliğini kullanarak hazırlanan kopyayı](#staged-copy-by-using-polybase)** kullanın. Hazırlanan kopya özelliği de size daha iyi aktarım hızı sağlar. Verileri otomatik olarak PolyBase uyumlu biçime dönüştürür, verileri Azure Blob depolama alanında depolar. daha sonra verileri SQL veri ambarı 'na yüklemek için PolyBase 'i çağırır.
+- Kaynak verileriniz Azure Blob 'dayken **, Azure Data Lake Storage 1. veya Azure Data Lake Storage 2.** ve **Biçim PolyBase UYUMLUYSA**, Azure SQL veri ambarı 'nın verileri kaynaktan çekmesini sağlamak üzere doğrudan PolyBase 'i çağırmak için kopyalama etkinliğini kullanabilirsiniz. Ayrıntılar için bkz. **[PolyBase kullanarak doğrudan kopyalama](#direct-copy-by-using-polybase)**.
+- Kaynak veri depoluü ve biçimlendirmeniz ilk olarak PolyBase tarafından desteklenmiyorsa, bunun yerine **[PolyBase özelliğini kullanarak hazırlanan kopyayı](#staged-copy-by-using-polybase)** kullanın. Hazırlanan kopya özelliği de size daha iyi aktarım hızı sağlar. Verileri otomatik olarak PolyBase uyumlu biçime dönüştürür, verileri Azure Blob depolama alanında depolar. daha sonra verileri SQL veri ambarı 'na yüklemek için PolyBase 'i çağırır.
 
->[!TIP]
->[PolyBase 'i kullanmaya yönelik en iyi uygulamalar](#best-practices-for-using-polybase)hakkında daha fazla bilgi edinin.
+> [!TIP]
+> [PolyBase 'i kullanmaya yönelik en iyi uygulamalar](#best-practices-for-using-polybase)hakkında daha fazla bilgi edinin.
 
 Kopyalama etkinliğinde aşağıdaki PolyBase ayarları desteklenir `polyBaseSettings` :
 
@@ -432,7 +432,7 @@ Gereksinimler karşılanmazsa, Azure Data Factory ayarları denetler ve veri ta�
     | [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | Hesap anahtarı kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
 
     >[!IMPORTANT]
-    >Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, yönetilen kimlik kimlik doğrulaması kullanmanız gerekir- [VNET hizmet uç noktalarını Azure depolama ile kullanmanın etkileri](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)için başvurun. [Azure Blob tarafından yönetilen kimlik doğrulama](connector-azure-blob-storage.md#managed-identity) ve [Azure Data Lake Storage 2. tarafından yönetilen kimlik doğrulama](connector-azure-data-lake-storage.md#managed-identity) bölümündeki Data Factory gereken konfigürasyonları öğrenin.
+    >Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, yönetilen kimlik kimlik doğrulaması kullanmanız gerekir- [VNET hizmet uç noktalarını Azure depolama ile kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)için başvurun. [Azure Blob tarafından yönetilen kimlik doğrulama](connector-azure-blob-storage.md#managed-identity) ve [Azure Data Lake Storage 2. tarafından yönetilen kimlik doğrulama](connector-azure-data-lake-storage.md#managed-identity) bölümündeki Data Factory gereken konfigürasyonları öğrenin.
 
 2. **Kaynak veri biçimi** , aşağıdaki yapılandırmalara **sahip Parquet**, **orc**veya **sınırlandırılmış bir metindir**:
 
@@ -492,7 +492,7 @@ Kaynak verileriniz PolyBase ile yerel olarak uyumlu değilse, geçici hazırlama
 Bu özelliği kullanmak için, ara BLOB depolama alanı ile Azure depolama hesabına başvuran bir [Azure Blob depolama bağlı hizmeti](connector-azure-blob-storage.md#linked-service-properties) oluşturun. Ardından, `enableStaging` `stagingSettings` aşağıdaki kodda gösterildiği gibi kopyalama etkinliğinin ve özelliklerini belirtin.
 
 >[!IMPORTANT]
->Hazırlama Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, yönetilen kimlik kimlik doğrulaması kullanmanız gerekir- [VNET hizmet uç noktalarını Azure depolama ile kullanmanın etkileri](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)için başvurun. [Azure Blob tarafından yönetilen kimlik kimlik doğrulamasından](connector-azure-blob-storage.md#managed-identity)Data Factory, gerekli konfigürasyonları öğrenin.
+>Hazırlama Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, yönetilen kimlik kimlik doğrulaması kullanmanız gerekir- [VNET hizmet uç noktalarını Azure depolama ile kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)için başvurun. [Azure Blob tarafından yönetilen kimlik kimlik doğrulamasından](connector-azure-blob-storage.md#managed-identity)Data Factory, gerekli konfigürasyonları öğrenin.
 
 ```json
 "activities":[
@@ -562,7 +562,7 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 ```
 
 Çözüm, "**tür Varsayılanı kullan**" seçeneğinin (false olarak) kopyalama etkinliği havuzu-> PolyBase ayarları ' nda seçimini kaldırır. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
-)", PolyBase metin dosyasından verileri aldığında sınırlandırılmış metin dosyalarında eksik değerlerin nasıl Işleneceğini belirten PolyBase yerel bir yapılandırmadır. 
+)", PolyBase metin dosyasından verileri aldığında sınırlandırılmış metin dosyalarında eksik değerlerin nasıl Işleneceğini belirten PolyBase yerel bir yapılandırmadır.
 
 **`tableName`Azure SYNAPSE Analytics 'te**
 
@@ -610,7 +610,7 @@ COPY ifadesinin kullanılması aşağıdaki yapılandırmayı destekler:
     | [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | [Sınırlandırılmış metin](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | Hesap anahtarı kimlik doğrulaması, hizmet sorumlusu kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
 
     >[!IMPORTANT]
-    >Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, yönetilen kimlik kimlik doğrulaması kullanmanız gerekir- [VNET hizmet uç noktalarını Azure depolama ile kullanmanın etkileri](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)için başvurun. [Azure Blob tarafından yönetilen kimlik doğrulama](connector-azure-blob-storage.md#managed-identity) ve [Azure Data Lake Storage 2. tarafından yönetilen kimlik doğrulama](connector-azure-data-lake-storage.md#managed-identity) bölümündeki Data Factory gereken konfigürasyonları öğrenin.
+    >Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, yönetilen kimlik kimlik doğrulaması kullanmanız gerekir- [VNET hizmet uç noktalarını Azure depolama ile kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)için başvurun. [Azure Blob tarafından yönetilen kimlik doğrulama](connector-azure-blob-storage.md#managed-identity) ve [Azure Data Lake Storage 2. tarafından yönetilen kimlik doğrulama](connector-azure-data-lake-storage.md#managed-identity) bölümündeki Data Factory gereken konfigürasyonları öğrenin.
 
 2. Biçim ayarları şunlardır:
 
@@ -662,17 +662,17 @@ Kopyalama etkinliğinde aşağıdaki COPY deyimin ayarları desteklenir `allowCo
             },
             "sink": {
                 "type": "SqlDWSink",
-                "allowCopyCommand": true, 
+                "allowCopyCommand": true,
                 "copyCommandSettings": {
-                    "defaultValues": [ 
-                        { 
-                            "columnName": "col_string", 
-                            "defaultValue": "DefaultStringValue" 
+                    "defaultValues": [
+                        {
+                            "columnName": "col_string",
+                            "defaultValue": "DefaultStringValue"
                         }
                     ],
-                    "additionalOptions": { 
-                        "MAXERRORS": "10000", 
-                        "DATEFORMAT": "'ymd'" 
+                    "additionalOptions": {
+                        "MAXERRORS": "10000",
+                        "DATEFORMAT": "'ymd'"
                     }
                 }
             },
@@ -682,14 +682,13 @@ Kopyalama etkinliğinde aşağıdaki COPY deyimin ayarları desteklenir `allowCo
 ]
 ```
 
-
 ## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
 Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 ## <a name="getmetadata-activity-properties"></a>GetMetadata etkinlik özellikleri
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [GetMetadata etkinliğini](control-flow-get-metadata-activity.md) denetleyin 
+Özelliklerle ilgili ayrıntıları öğrenmek için [GetMetadata etkinliğini](control-flow-get-metadata-activity.md) denetleyin
 
 ## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için veri türü eşlemesi
 
@@ -699,22 +698,22 @@ Eşleme veri akışındaki verileri dönüştürürken Azure SYNAPSE Analytics '
 
 ### <a name="source-transformation"></a>Kaynak dönüştürme
 
-Azure SYNAPSE Analytics 'e özgü ayarlar, kaynak dönüşümünün **kaynak seçenekleri** sekmesinde bulunabilir. 
+Azure SYNAPSE Analytics 'e özgü ayarlar, kaynak dönüşümünün **kaynak seçenekleri** sekmesinde bulunabilir.
 
 **Giriş:** Kaynağınızı bir tabloya (eşdeğerini) işaret edip etmeyeceğinizi seçin ```Select * from <table-name>``` ya da özel BIR SQL sorgusu girin.
 
-**Sorgu**: giriş alanında sorgu ' yı seçerseniz, kaynağınız IÇIN bir SQL sorgusu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar. **Order by** yan tümceleri burada desteklenmez, ancak BIR tam select from ifadesini ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , bir tablo döndüren SQL 'de bir UDF 'dir. Bu sorgu, veri akışınızda kullanabileceğiniz bir kaynak tablosu oluşturur. Sorguların kullanılması, test veya aramalar için satırları azaltmanın harika bir yoludur. 
+**Sorgu**: giriş alanında sorgu ' yı seçerseniz, kaynağınız IÇIN bir SQL sorgusu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar. **Order by** yan tümceleri burada desteklenmez, ancak BIR tam select from ifadesini ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , bir tablo döndüren SQL 'de bir UDF 'dir. Bu sorgu, veri akışınızda kullanabileceğiniz bir kaynak tablosu oluşturur. Sorguların kullanılması, test veya aramalar için satırları azaltmanın harika bir yoludur.
 
-* SQL örneği:```Select * from MyTable where customerId > 1000 and customerId < 2000```
+SQL örneği:```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
 **Toplu iş boyutu**: büyük verileri okuma işleminde öbek için bir toplu iş boyutu girin. Veri akışlarında, ADF bu ayarı Spark sütunlu önbelleğe alma ayarlamak için kullanır. Bu, boş bırakılırsa Spark varsayılanlarını kullanacak bir seçenek alanıdır.
 
 **Yalıtım düzeyi**: eşleme VERI akışındaki SQL kaynakları için varsayılan değer read UNCOMMITTED ' dır. Yalıtım düzeyini buradaki değerlerden birine değiştirebilirsiniz:
-* Okuma Işlendi
-* Kaydedilmeyen oku
-* Yinelenebilir okuma
-* Seri hale getirilebilir
-* Hiçbiri (yalıtım düzeyini yoksay)
+
+- Okuma Işlendi
+- Kaydedilmeyen oku
+- Yinelenebilir okuma
+- Seri hale getirilebilir *-yok (yalıtım düzeyini yoksay)
 
 ![Yalıtım düzeyi](media/data-flow/isolationlevel.png "Yalıtım düzeyi")
 
@@ -725,9 +724,10 @@ Azure SYNAPSE Analytics 'e özgü ayarlar, havuz dönüşümünün **Ayarlar** s
 **Güncelleştirme yöntemi:** Veritabanı Hedefinizdeki hangi işlemlere izin verileceğini belirler. Varsayılan değer yalnızca eklemeleri izin verir. Satırları güncelleştirmek, kaldırmak veya silmek için, bu eylemler için satırları etiketlemek üzere alter-Row dönüşümü gereklidir. Güncelleştirmeler, yukarı ve silme için bir anahtar sütunu veya sütunları ayarlanacak satırı belirleyecek şekilde ayarlanmalıdır.
 
 **Tablo eylemi:** Yazmadan önce hedef tablodaki tüm satırların yeniden oluşturulup kaldırılacağını belirler.
-* Hiçbiri: tabloya hiçbir eylem yapılmaz.
-* Yeniden oluştur: tablo bırakılır ve yeniden oluşturulur. Dinamik olarak yeni bir tablo oluşturuluyoruz gereklidir.
-* Kes: hedef tablodaki tüm satırlar kaldırılacak.
+
+- Hiçbiri: tabloya hiçbir eylem yapılmaz.
+- Yeniden oluştur: tablo bırakılır ve yeniden oluşturulur. Dinamik olarak yeni bir tablo oluşturuluyoruz gereklidir.
+- Kes: hedef tablodaki tüm satırlar kaldırılacak.
 
 **Hazırlamayı etkinleştir:** Azure SYNAPSE Analytics 'e yazarken [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15) 'i kullanıp kullanmayacağınızı belirler
 
@@ -775,4 +775,5 @@ Veya Azure SYNAPSE Analytics 'ten veri kopyaladığınızda, Azure SYNAPSE Analy
 | varchar                               | Dize, Char []                 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Azure Data Factory ' de kopyalama etkinliğine göre kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları ve biçimleri](copy-activity-overview.md#supported-data-stores-and-formats).

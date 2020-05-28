@@ -65,7 +65,7 @@ Yukarıda belirtildiği gibi, bölgeye karşı bölge olağanüstü durum kurtar
 
 Sanal makinelerinize bölge olağanüstü durum kurtarmaya dağıtım yapmadan önce, sanal makinede etkinleştirilen diğer özelliklerin bölge olağanüstü durum kurtarma ile birlikte kullanılabildiğinden emin olmak önemlidir.
 
-|Özellik  | Support bildirisi  |
+|Öne çıkan özelliği  | Support bildirisi  |
 |---------|---------|
 |Klasik VM'ler   |     Desteklenmiyor    |
 |ARM VM 'Leri    |    Destekleniyor    |
