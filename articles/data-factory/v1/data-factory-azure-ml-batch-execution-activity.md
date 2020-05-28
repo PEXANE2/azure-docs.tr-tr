@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: eba5df587d6bd6dda6083314cfb94836c6669393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c40b58dfb63ac6bf1b5532eb06bfd2ad0cdccde9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73683136"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022036"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning ve Azure Data Factory kullanarak tahmine dayalı işlem hatları oluşturma
 
@@ -80,7 +80,7 @@ Bu senaryoda Azure Machine Learning Web hizmeti, Azure Blob depolama alanındaki
 > [!IMPORTANT]
 > Web hizmeti birden çok giriş alırsa, WebServiceInput özelliğini **kullanmak** yerine **WebServiceInput**özelliğini kullanın. Webservicegirdilerle ilgili bir örnek için bkz. [Web hizmeti birden çok giriş gerektirir](#web-service-requires-multiple-inputs) bölümü.
 >
-> **WebServiceInput**/**webservicegirdilerden** ve **webserviceçıktılar** özelliklerinin ( **typeproperties**içinde) başvurduğu veri kümeleri de etkinlik **girişlerinde** ve **çıkışlarına**eklenmelidir.
+> **WebServiceInput** / **webservicegirdilerden** ve **webserviceçıktılar** özelliklerinin ( **typeproperties**içinde) başvurduğu veri kümeleri de etkinlik **girişlerinde** ve **çıkışlarına**eklenmelidir.
 >
 > Azure Machine Learning Studio denemenize, Web hizmeti giriş ve çıkış bağlantı noktalarında ve genel parametrelerde, özelleştirebileceğiniz varsayılan adlar ("input1", "input2") vardır. Webservicegirişlerinde, Webserviceçıktılar ve globalParameters ayarları için kullandığınız adlar, denemeleri adlarıyla tam olarak eşleşmelidir. Beklenen eşlemeyi doğrulamak için Azure Machine Learning Studio uç noktanıza yönelik toplu yürütme Yardım sayfasında örnek istek yükünü görüntüleyebilirsiniz.
 >
@@ -311,7 +311,7 @@ Bu örneğe geçmeden önce [ilk işlem hattınızı Data Factory öğreticiyle 
 ### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Senaryo: çeşitli depolama alanındaki verilere başvurmak için okuyucu/yazıcı modüllerini kullanma denemeleri
 Azure Machine Learning Studio denemeleri oluşturma sırasında başka bir yaygın senaryo Reader ve yazıcı modüllerini kullanmaktır. Okuyucu modülü, bir denemenize veri yüklemek için kullanılır ve yazıcı modülü, verileri denemeleri veritabanından kaydetmeni. Okuyucu ve yazıcı modülleri hakkında daha fazla bilgi için MSDN Kitaplığı 'ndaki [okuyucu](https://msdn.microsoft.com/library/azure/dn905997.aspx) ve [Yazıcı](https://msdn.microsoft.com/library/azure/dn905984.aspx) konularına bakın.
 
-Okuyucu ve yazıcı modüllerini kullanırken, bu okuyucu/yazıcı modüllerinin her özelliği için bir Web hizmeti parametresi kullanmak iyi bir uygulamadır. Bu Web parametreleri, çalışma zamanı sırasında değerleri yapılandırmanızı sağlar. Örneğin, bir Azure SQL veritabanı kullanan okuyucu modülü ile bir deneme oluşturabilirsiniz: XXX.database.windows.net. Web hizmeti dağıtıldıktan sonra, Web hizmetinin tüketicilerini YYY.database.windows.net adlı başka bir Azure SQL Server belirtmesini etkinleştirmek isteyebilirsiniz. Bu değerin yapılandırılmasına izin vermek için bir Web hizmeti parametresi kullanabilirsiniz.
+Okuyucu ve yazıcı modüllerini kullanırken, bu okuyucu/yazıcı modüllerinin her özelliği için bir Web hizmeti parametresi kullanmak iyi bir uygulamadır. Bu Web parametreleri, çalışma zamanı sırasında değerleri yapılandırmanızı sağlar. Örneğin, bir Azure SQL veritabanı kullanan okuyucu modülü ile bir deneme oluşturabilirsiniz: XXX.database.windows.net. Web hizmeti dağıtıldıktan sonra, Web hizmetinin tüketicilerini YYY.database.windows.net adlı başka bir mantıksal SQL Server belirtmesini etkinleştirmek isteyebilirsiniz. Bu değerin yapılandırılmasına izin vermek için bir Web hizmeti parametresi kullanabilirsiniz.
 
 > [!NOTE]
 > Web hizmeti girişi ve çıkışı Web hizmeti parametrelerinden farklıdır. İlk senaryoda, bir giriş ve çıkışın bir Azure Machine Learning Studio Web hizmeti için nasıl belirtilebileceği gördünüz. Bu senaryoda, okuyucu/yazıcı modüllerinin özelliklerine karşılık gelen bir Web hizmeti için parametreleri geçitirsiniz.
@@ -347,7 +347,7 @@ Ayrıca, aşağıdaki örnekte gösterildiği gibi, Web hizmeti parametrelerinin
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>Azure Blob 'da birden çok dosyadan veri okumak için okuyucu modülünü kullanma
 Pig ve Hive gibi etkinliklere sahip büyük veri işlem hatları, uzantıları olmayan bir veya daha fazla çıktı dosyası üretebilir. Örneğin, bir dış Hive tablosu belirttiğinizde, dış Hive tablosu verileri, şu ad 000000_0 olan Azure Blob depolama alanında depolanabilir. Okuyucu modülünü, birden çok dosyayı okumak ve bunları tahmine dayalı olarak kullanmak için bir deneyde kullanabilirsiniz.
 
-Okuyucu modülünü Azure Machine Learning bir deneyde kullanırken, Azure Blob 'U girdi olarak belirtebilirsiniz. Azure Blob Storage 'daki dosyalar, HDInsight üzerinde çalışan bir Pig ve Hive betiği tarafından üretilen çıkış dosyaları (örnek: 000000_0) olabilir. Okuyucu modülü, **kapsayıcı, Dizin/blob yolunu**yapılandırarak dosyaları okumanızı (uzantısız) sağlar. **Kapsayıcının yolu** , kapsayıcıyı ve **Dizin/blobu** , aşağıdaki görüntüde gösterildiği gibi dosyaları içeren klasörü işaret eder. Bir olan yıldız işareti \*), **kapsayıcıdaki/klasördeki tüm dosyaların (yani, Data/aggregteddata/Year = 2014/month-6/\*)** denemenin bir parçası olarak okunduğunu belirtir.
+Okuyucu modülünü Azure Machine Learning bir deneyde kullanırken, Azure Blob 'U girdi olarak belirtebilirsiniz. Azure Blob Storage 'daki dosyalar, HDInsight üzerinde çalışan bir Pig ve Hive betiği tarafından üretilen çıkış dosyaları (örnek: 000000_0) olabilir. Okuyucu modülü, **kapsayıcı, Dizin/blob yolunu**yapılandırarak dosyaları okumanızı (uzantısız) sağlar. **Kapsayıcının yolu** , kapsayıcıyı ve **Dizin/blobu** , aşağıdaki görüntüde gösterildiği gibi dosyaları içeren klasörü işaret eder. Bir olan yıldız işareti \* ), **kapsayıcıdaki/klasördeki tüm dosyaların (yani, Data/aggregteddata/Year = 2014/month-6/ \* )** denemenin bir parçası olarak okunduğunu belirtir.
 
 ![Azure Blob özellikleri](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 

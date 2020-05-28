@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75969284"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021900"
 ---
 # <a name="use-case---customer-profiling"></a>Kullanım örneği-müşteri profili oluşturma
 Azure Data Factory, çözüm Hızlandırıcıların Cortana Intelligence Suite uygulamak için kullanılan birçok hizmetlerden biridir.  Cortana Intelligence hakkında daha fazla bilgi için [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics)ziyaret edin. Bu belgede, Azure Data Factory ortak analiz sorunlarını nasıl çözebileceğini anlamak için basit bir kullanım durumu açıklıyoruz.
@@ -38,7 +38,7 @@ Bu basit kullanım örneğini erişmeniz ve denemeniz, bir Azure [aboneliği](ht
 3. Örnek işlem **hatları** dikey penceresinde, dağıtmak istediğiniz **müşteri profili oluşturma** ' ya tıklayın.
 
     ![Örnek işlem hatları dikey penceresi](./media/data-factory-samples/SampleTile.png)
-4. Örnek için yapılandırma ayarlarını belirtin. Örneğin, Azure depolama hesabınızın adı ve anahtarınız, Azure SQL Server adı, veritabanı, Kullanıcı KIMLIĞI ve parola.
+4. Örnek için yapılandırma ayarlarını belirtin. Örneğin, Azure depolama hesabınızın adı ve anahtarı, mantıksal SQL Server adı, veritabanı, Kullanıcı KIMLIĞI ve parola.
 
     ![Örnek dikey pencere](./media/data-factory-samples/SampleBlade.png)
 5. Yapılandırma ayarlarını belirterek tamamladıktan sonra, işlem hatları tarafından kullanılan örnek işlem hatlarını ve bağlı hizmetleri/tabloları oluşturmak/dağıtmak için **Oluştur** ' a tıklayın.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/30/2020
-ms.openlocfilehash: 14d4a3616a1be0964029ddfd8d2697df8e4e8031
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: d956a9c93280ac22c4707f22c0769853f0f36c83
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929341"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015157"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight’ta dış meta veri depolarını kullanma
 
@@ -38,7 +38,7 @@ Varsayılan olarak HDInsight, her küme türüyle bir meta veri deposu oluşturu
 
 * Varsayılan meta veri deposunu diğer kümelerle paylaşamazsınız.
 
-* Varsayılan meta veri deposu, beş DTU (veritabanı işlem birimi) sınırına sahip olan temel Azure SQL DB 'yi kullanır.
+* Varsayılan meta veri deposu, beş DTU (veritabanı işlem birimi) sınırına sahip olan temel Azure SQL veritabanını kullanır.
 Bu varsayılan meta veri deposu genellikle görece basit iş yükleri için kullanılır. Birden çok küme gerektirmeyen ve kümenin yaşam döngüsünün ötesinde meta verilerin korunması gerekmeyen iş yükleri.
 
 * Üretim iş yükleri için dış bir meta veri yüklemeye geçiş yapmanızı öneririz. Daha fazla bilgi için lütfen aşağıdaki bölüme bakın.
@@ -53,7 +53,7 @@ HDInsight, üretim kümeleri için önerilen özel meta tasmres 'i de destekler:
 
 * Özel bir meta veri deposu, bu meta veri deposu için birden çok küme ve küme türü eklemenize olanak tanır. Örneğin, tek bir meta veri deposu HDInsight 'ta etkileşimli sorgu, Hive ve Spark kümeleri arasında paylaşılabilir.
 
-* Seçtiğiniz performans düzeyine göre bir metasrasyonun (Azure SQL DB) maliyeti için ödeme yaparsınız.
+* Seçtiğiniz performans düzeyine göre bir metasrasyonun (Azure SQL veritabanı) maliyeti için ödeme yaparsınız.
 
 * Gerektiğinde meta veri deposunu ölçeklendirebilirsiniz.
 
@@ -63,9 +63,9 @@ HDInsight, üretim kümeleri için önerilen özel meta tasmres 'i de destekler:
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Özel meta veri deposu için Azure SQL veritabanı oluşturma ve yapılandırma
 
-HDInsight kümesi için özel bir Hive meta veri deposu ayarlamadan önce mevcut bir Azure SQL veritabanı oluşturun veya var olan bir Azure SQL veritabanı oluşturun.  Daha fazla bilgi için bkz. [hızlı başlangıç: Azure SQL DB 'de tek bir veritabanı oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
+HDInsight kümesi için özel bir Hive meta veri deposu ayarlamadan önce mevcut bir Azure SQL veritabanı oluşturun veya var olan bir Azure SQL veritabanı oluşturun.  Daha fazla bilgi için bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda tek bir veritabanı oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
 
-Küme oluştururken, HDInsight hizmetinin dış meta veri deposu 'na bağlanması ve kimlik bilgilerinizi doğrulaması gerekir. Azure hizmet ve kaynaklarının sunucuya erişmesine izin vermek için Azure SQL veritabanı güvenlik duvarı kurallarını yapılandırın. **Sunucu güvenlik duvarını ayarla**' yı seçerek Azure Portal bu seçeneği etkinleştirin. Ardından, **genel ağ erişimini reddetme**altında **Hayır** ' ı ve Azure SQL veritabanı sunucusu veya veritabanı için **Bu sunucuya Azure hizmetlerinin ve kaynaklarının erişmesine Izin ver** ' in altında **Evet** ' i seçin. Daha fazla bilgi için bkz. [IP güvenlik duvarı kuralları oluşturma ve yönetme](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+Küme oluştururken, HDInsight hizmetinin dış meta veri deposu 'na bağlanması ve kimlik bilgilerinizi doğrulaması gerekir. Azure hizmet ve kaynaklarının sunucuya erişmesine izin vermek için Azure SQL veritabanı güvenlik duvarı kurallarını yapılandırın. **Sunucu güvenlik duvarını ayarla**' yı seçerek Azure Portal bu seçeneği etkinleştirin. Ardından, **genel ağ erişimini reddetme**altında **Hayır** **' ı ve Azure** Hizmetleri ve kaynaklarının Azure SQL veritabanı için **Bu sunucuya erişmesine izin ver** ' i seçin. Daha fazla bilgi için bkz. [IP güvenlik duvarı kuralları oluşturma ve yönetme](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
 SQL depoları için özel uç noktalar desteklenmez.
 
@@ -87,7 +87,7 @@ Kümenizi dilediğiniz zaman daha önce oluşturulmuş bir Azure SQL veritabanı
 
 * Ayrı verilere erişmek için birden çok HDInsight kümesi düşünüyorsanız, her kümede meta veri deposu için ayrı bir veritabanı kullanın. Birden çok HDInsight kümesi arasında bir meta veri deposu paylaşırsanız, kümelerin aynı meta verileri ve temel alınan kullanıcı veri dosyalarını kullanması anlamına gelir.
 
-* Düzenli aralıklarla özel meta veri deposunu yedekleyin. Azure SQL veritabanı yedeklemeleri otomatik olarak oluşturur, ancak yedekleme bekletme zaman dilimi değişir. Daha fazla bilgi için bkz. [OTOMATIK SQL veritabanı yedeklemeleri hakkında bilgi edinin](../sql-database/sql-database-automated-backups.md).
+* Düzenli aralıklarla özel meta veri deposunu yedekleyin. Azure SQL veritabanı yedeklemeleri otomatik olarak oluşturur, ancak yedekleme bekletme zaman dilimi değişir. Daha fazla bilgi için bkz. [OTOMATIK SQL veritabanı yedeklemeleri hakkında bilgi edinin](../azure-sql/database/automated-backups-overview.md).
 
 * Metasgeli ve HDInsight kümenizi aynı bölgede bulun. Bu yapılandırma en yüksek performans ve en düşük ağ çıkış ücretlerini sağlar.
 

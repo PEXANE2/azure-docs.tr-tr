@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f20d79ea353830b41290c7b91d8d1de2b1b3abe
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978152"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014868"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>PowerShell ile her zaman açık kullanılabilirlik grubunu bir Azure VM üzerinde yapılandırma
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "75978152"
 > * [Klasik: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
-Başlamadan önce, artık bu görevi Azure Resource Manager modelinde tamamlayacağınızı düşünün. Yeni dağıtımlar için Azure Resource Manager modeli önerilir. Bkz. [Azure sanal makineler 'de Always on kullanılabilirlik grupları SQL Server](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
+Başlamadan önce, artık bu görevi Azure Resource Manager modelinde tamamlayacağınızı düşünün. Yeni dağıtımlar için Azure Resource Manager modeli önerilir. Bkz. [Azure sanal makineler 'de Always on kullanılabilirlik grupları SQL Server](../../../azure-sql/virtual-machines/windows/availability-group-overview.md).
 
 > [!IMPORTANT]
 > En yeni dağıtımların Kaynak Yöneticisi modelini kullanmasını öneririz. Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: [Resource Manager ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makale klasik dağıtım modelini incelemektedir.
@@ -158,7 +158,7 @@ Bu öğretici, her adımın ayrıntılarında elaborating olmadan yukarıda aç�
    * **Add-AzureDataDisk** , önbelleğe alma seçeneği None olarak ayarlanmış şekilde, Active Directory verilerini depolamak için kullanacağınız veri diskini ekler.
    * **New-AzureVM** yeni bir bulut hizmeti oluşturur ve yeni bulut hizmetinde yenı Azure VM oluşturur.
 
-7. Yeni VM 'nin tam olarak sağlanması için bekleyin ve uzak masaüstü dosyasını çalışma dizininize indirin. Yeni Azure VM 'nin sağlanması uzun zaman aldığı için, `while` döngü kullanıma hazırlanana kadar yeni VM 'yi yoklamaya devam eder.
+7. Yeni VM 'nin tam olarak sağlanması için bekleyin ve uzak masaüstü dosyasını çalışma dizininize indirin. Yeni Azure VM 'nin sağlanması uzun zaman aldığı için, `while` döngü kullanıma hazırlanana kadar yenı VM 'yi yoklamaya devam eder.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -354,7 +354,7 @@ Etki alanı denetleyicisi sunucusu artık başarıyla sağlandı. Ardından, bu 
    * **Set-Azuyeniden gönderme ağ** , VM 'yi arka alt ağa koyar.
    * **Add-AzureEndpoint** , Istemci uygulamaların Internet 'teki bu SQL Server Hizmetleri örneklerine erişebilmeleri için erişim uç noktaları ekler. ContosoSQL1 ve ContosoSQL2 için farklı bağlantı noktaları verilir.
    * **New-AzureVM** , contosoquorum ile aynı bulut hizmetindeki yeni SQL Server VM oluşturur. Aynı Kullanılabilirlik kümesinde olmasını istiyorsanız VM 'Leri aynı bulut hizmetine yerleştirmeniz gerekir.
-4. Her VM 'nin, uzak masaüstü dosyasını çalışma dizininize indirmesi için her bir sanal makinenin tam olarak sağlanması ve her VM için bekleyin. `for` Döngü üç yeni VM 'de döngü yapar ve komutları her biri için üst düzey küme ayraçları içinde yürütür.
+4. Her VM 'nin, uzak masaüstü dosyasını çalışma dizininize indirmesi için her bir sanal makinenin tam olarak sağlanması ve her VM için bekleyin. `for`Döngü üç yeni VM 'de döngü yapar ve komutları her biri için üst düzey küme ayraçları içinde yürütür.
 
         Foreach ($VM in $VMs = Get-AzureVM -ServiceName $sqlServiceName)
         {
@@ -481,7 +481,7 @@ Son olarak, kullanılabilirlik grubunu yapılandırmaya hazırsınız demektir. 
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. [Azure VM 'Deki her zaman açık kullanılabilirlik grupları Için yük devretme kümesi oluşturmak Için](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) **CreateAzureFailoverCluster. ps1** öğesini yerel çalışma dizinine indirin. İşlevsel yük devretme kümesi oluşturmanıza yardımcı olması için bu betiği kullanacaksınız. Windows Yük Devretme Kümelemesi 'nin Azure ağıyla nasıl etkileşime girdiği hakkında önemli bilgiler için bkz. [Azure sanal makinelerinde SQL Server Için yüksek kullanılabilirlik ve olağanüstü durum kurtarma](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+7. [Azure VM 'Deki her zaman açık kullanılabilirlik grupları Için yük devretme kümesi oluşturmak Için](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) **CreateAzureFailoverCluster. ps1** öğesini yerel çalışma dizinine indirin. İşlevsel yük devretme kümesi oluşturmanıza yardımcı olması için bu betiği kullanacaksınız. Windows Yük Devretme Kümelemesi 'nin Azure ağıyla nasıl etkileşime girdiği hakkında önemli bilgiler için bkz. [Azure sanal makinelerinde SQL Server Için yüksek kullanılabilirlik ve olağanüstü durum kurtarma](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 8. Çalışma dizininizi değiştirin ve indirilen betiği kullanarak yük devretme kümesini oluşturun.
 
         Set-ExecutionPolicy Unrestricted -Force
@@ -567,4 +567,4 @@ Son olarak, kullanılabilirlik grubunu yapılandırmaya hazırsınız demektir. 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure 'da bir kullanılabilirlik grubu oluşturarak SQL Server her zaman açık bir şekilde başarıyla uyguladık. Bu kullanılabilirlik grubuna yönelik bir dinleyici yapılandırmak için bkz. [Azure 'Da Always on kullanılabilirlik grupları için BIR ıLB dinleyicisi yapılandırma](../classic/ps-sql-int-listener.md).
 
-Azure 'da SQL Server kullanma hakkında diğer bilgiler için bkz. [Azure sanal makinelerinde SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Azure 'da SQL Server kullanma hakkında diğer bilgiler için bkz. [Azure sanal makinelerinde SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15f94e93c270c8d62436b81a7caedbf181c1aeb8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645853"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022551"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımı
 
@@ -281,9 +281,9 @@ ms.locfileid: "75645853"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -374,10 +374,10 @@ En düşük yapılandırma aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle\<SID> \Origlogaa & Irrlogb | Premium | Hiçbiri | Gerekli değil |
-| \oracle\<SID> \Origlogab & Irrloga | Premium | Hiçbiri | Gerekli değil |
-| \oracle\<SID> \sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| \oracle\<SID> \oraarch | Standart | Hiçbiri | Gerekli değil |
+| \oracle \<SID> \origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
+| \oracle \<SID> \origlogaB & Irrloga | Premium | Yok | Gerekli değil |
+| \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
+| \ Oracle \<SID> \ oraarch | Standart | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 
@@ -387,13 +387,13 @@ Performans yapılandırması aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle\<SID> \origlogaa | Premium | Hiçbiri | Kullanılabilir  |
-| \oracle\<SID> \origlogab | Premium | Hiçbiri | Kullanılabilir |
-| \oracle\<SID> \mirrlogAB | Premium | Hiçbiri | Kullanılabilir |
-| \oracle\<SID> \mirrlogBA | Premium | Hiçbiri | Kullanılabilir |
-| \oracle\<SID> \sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| \Oracle\sıd\sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
-| \oracle\<SID> \oraarch * | Premium | Hiçbiri | Gerekli değil |
+| \oracle \<SID> \origlogaA | Premium | Yok | Kullanılabilir  |
+| \oracle \<SID> \origlogaB | Premium | Yok | Kullanılabilir |
+| \ Oracle \<SID> \Mirrlogab | Premium | Yok | Kullanılabilir |
+| \ Oracle \<SID> \ mrlogba | Premium | Yok | Kullanılabilir |
+| \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
+| \Oracle\sıd\sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
+| \ Oracle \<SID> \ oraarch * | Premium | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces. Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
@@ -464,10 +464,10 @@ En düşük yapılandırma:
 
 | Bileşen | Disk | Önbelleğe alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/\<SID>/Origlogaa & Irrlogb | Premium | Hiçbiri | Gerekli değil |
-| /Oracle/\<SID>/Origlogab & Irrloga | Premium | Hiçbiri | Gerekli değil |
-| /Oracle/\<SID>/sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| /Oracle/\<SID>/oraarch | Standart | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Yok | Gerekli değil |
+| /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
+| /Oracle/ \<SID> /oraarch | Standart | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -478,13 +478,13 @@ Performans yapılandırması:
 
 | Bileşen | Disk | Önbelleğe alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/\<SID>/origlogaa | Premium | Hiçbiri | Kullanılabilir  |
-| /Oracle/\<SID>/origlogab | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/\<SID>/mirrlogAB | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/\<SID>/mirrlogBA | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/\<SID>/sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| /Oracle/\<SID>/sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/\<SID>/oraarch * | Premium | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA | Premium | Yok | Kullanılabilir  |
+| /Oracle/ \<SID> /origlogaB | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogab | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogba | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /oraarch * | Premium | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM

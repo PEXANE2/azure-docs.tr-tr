@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dba0dd4e52913e0998b088fb2ccf90c98f0a89c2
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83821499"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017622"
 ---
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
@@ -333,7 +333,7 @@ Disk şeridi oluşturma bölümünde önemli bir yapılandırma, şerit boyutudu
 
 Örneğin, uygulamanız tarafından oluşturulan bir GÇ isteği disk Stripe boyutundan büyükse, depolama sistemi bu dosyayı birden fazla diskte dizili birim sınırlarına yazar. Bu verilere erişmek için zaman olduğunda, isteği tamamlaması için birden fazla Stripe biriminde arama yapmak gerekir. Bu davranışın birikimli etkisi önemli performans düşüşüne neden olabilir. Öte yandan, GÇ istek boyutu Stripe boyutundan küçükse ve doğası halinde rastgele ise, GÇ istekleri aynı disk üzerinde bir performans sorununa neden olabilir ve sonuç olarak GÇ performansını düşürür.
 
-Uygulamanızın çalıştırıldığı iş yükünün türüne bağlı olarak uygun bir şerit boyutu seçin. Rastgele küçük GÇ istekleri için daha küçük bir şerit boyutu kullanın. Öte yandan, büyük sıralı GÇ istekleri için daha büyük bir şerit boyutu kullanır. Premium depolama alanında çalıştırdığınız uygulamanın Stripe boyut önerilerini bulun. SQL Server için, OLTP iş yükleri için 64 KB 'lık şeritli boyut ve veri ambarı iş yükleri için 256 KB yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'lerinde SQL Server için En Iyi performans uygulamaları](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) .
+Uygulamanızın çalıştırıldığı iş yükünün türüne bağlı olarak uygun bir şerit boyutu seçin. Rastgele küçük GÇ istekleri için daha küçük bir şerit boyutu kullanın. Öte yandan, büyük sıralı GÇ istekleri için daha büyük bir şerit boyutu kullanır. Premium depolama alanında çalıştırdığınız uygulamanın Stripe boyut önerilerini bulun. SQL Server için, OLTP iş yükleri için 64 KB 'lık şeritli boyut ve veri ambarı iş yükleri için 256 KB yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'lerinde SQL Server için En Iyi performans uygulamaları](../articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
 
 > [!NOTE]
 > Bir DS serisi VM 'de en fazla 32 Premium Depolama diski ve bir GS serisi VM 'de 64 Premium Depolama diski ekleyebilirsiniz.

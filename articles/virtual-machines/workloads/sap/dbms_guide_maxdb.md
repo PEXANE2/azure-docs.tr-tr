@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90de49ae3137735683bae6a18b5f7c8951b021ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645880"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022599"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 'lerinde SAP MaxDB, liveCache ve Content Server dağıtımı
 
@@ -281,9 +281,9 @@ ms.locfileid: "75645880"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -313,8 +313,8 @@ Bu belge, Azure IaaS 'de MaxDB, liveCache ve Content Server dağıtımında dikk
 
 ## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Windows üzerinde SAP MaxDB dağıtımları için Ayrıntılar
 ### <a name="sap-maxdb-version-support-on-azure"></a>Azure 'da SAP MaxDB sürüm desteği
-SAP, Azure 'da SAP NetWeaver tabanlı ürünlerle birlikte kullanılmak üzere SAP MaxDB sürüm 7,9 veya üstünü desteklemektedir. SAP NetWeaver tabanlı ürünlerle birlikte kullanılacak SAP MaxDB Server için tüm güncelleştirmeler veya JDBC ve ODBC sürücüleri yalnızca tarihinde <https://support.sap.com/swdc>SAP hizmeti Marketi aracılığıyla sağlanır.
-SAP NetWeaver ile SAP MaxDB üzerinde çalışan genel bilgiler, adresinde <https://www.sap.com/community/topic/maxdb.html>bulunabilir.
+SAP, Azure 'da SAP NetWeaver tabanlı ürünlerle birlikte kullanılmak üzere SAP MaxDB sürüm 7,9 veya üstünü desteklemektedir. SAP NetWeaver tabanlı ürünlerle birlikte kullanılacak SAP MaxDB Server için tüm güncelleştirmeler veya JDBC ve ODBC sürücüleri yalnızca tarihinde SAP hizmeti Marketi aracılığıyla sağlanır <https://support.sap.com/swdc> .
+SAP NetWeaver ile SAP MaxDB üzerinde çalışan genel bilgiler, adresinde bulunabilir <https://www.sap.com/community/topic/maxdb.html> .
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>SAP MaxDB DBMS için desteklenen Microsoft Windows sürümleri ve Azure VM türleri
 Azure 'da SAP MaxDB DBMS için desteklenen Microsoft Windows sürümünü bulmak için bkz.:

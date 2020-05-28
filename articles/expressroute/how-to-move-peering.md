@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc5740fef87497d881f689f888e446dbf4d100e1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436851"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019460"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Genel eşlemeden Microsoft eşlemesine geçiş yapma
 
@@ -33,7 +33,7 @@ Microsoft eşlemesiyle bağlantı kurmak için NAT ayarlamanız ve yönetmeniz g
 
 Microsoft eşlemesini yapılandırmadan önce asimetrik yönlendirme uyarıları için [birden çok ağ yoluyla asimetrik yönlendirmeye](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) bakın.
 
-* Ortak eşleme kullanıyorsanız ve şu anda [Azure depolama](../storage/common/storage-network-security.md) veya [Azure SQL veritabanı](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)'na erışmek için kullanılan genel IP adresleri için IP ağ kurallarına sahipseniz, MICROSOFT EŞLEMESIYLE yapılandırılmış NAT IP havuzunun Azure depolama hesabı veya Azure SQL hesabı için genel IP adresleri listesine eklendiğinden emin olmanız gerekir.<br>
+* Ortak eşleme kullanıyorsanız ve şu anda [Azure depolama](../storage/common/storage-network-security.md) veya [Azure SQL veritabanı](../azure-sql/database/vnet-service-endpoint-rule-overview.md)'na erışmek için kullanılan genel IP adresleri için IP ağ kurallarına sahipseniz, MICROSOFT EŞLEMESIYLE yapılandırılmış NAT IP havuzunun Azure depolama hesabı veya Azure SQL hesabı için genel IP adresleri listesine eklendiğinden emin olmanız gerekir.<br>
 * Kapalı kalma süresi olmadan Microsoft eşlemesine geçiş yapmak için, bu makaledeki adımları sunuldukları sırada kullanın.
 
 ## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. Microsoft eşlemesi oluştur

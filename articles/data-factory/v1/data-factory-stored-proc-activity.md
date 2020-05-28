@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f9f4db0119b10a2df3a1007f9e5fa710e31f0e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931637"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113710"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server saklı yordam etkinliği
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -84,7 +84,7 @@ Aşağıdaki izlenecek yol, bir Azure SQL veritabanında saklı yordam çağırm
     ```
 
    > [!IMPORTANT]
-   > Parametrenin **adı** ve büyük **harfleri** (Bu örnekteki DateTime), ARDıŞıK düzen/etkinlik JSON öğesinde belirtilen parametreyle eşleşmelidir. Saklı yordam tanımında parametresi için önek olarak kullanıldığından **\@** emin olun.
+   > Parametrenin **adı** ve büyük **harfleri** (Bu örnekteki DateTime), ARDıŞıK düzen/etkinlik JSON öğesinde belirtilen parametreyle eşleşmelidir. Saklı yordam tanımında **\@** parametresi için önek olarak kullanıldığından emin olun.
 
 ### <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 1. [Azure portalı](https://portal.azure.com/)’nda oturum açın.
@@ -114,10 +114,10 @@ Data Factory 'yi oluşturduktan sonra, SampleTable tablosu ve usp_sample saklı 
    ![Yeni veri deposu](media/data-factory-stored-proc-activity/new-data-store.png)
 3. JSON betiğine aşağıdaki değişiklikleri yapın:
 
-   1. Öğesini `<servername>` Azure SQL veritabanı sunucunuzun adıyla değiştirin.
-   2. Tabloyu `<databasename>` ve saklı yordamı oluşturduğunuz veritabanıyla değiştirin.
-   3. Veritabanına `<username@servername>` erişimi olan kullanıcı hesabı ile değiştirin.
-   4. Kullanıcı `<password>` hesabının parolasıyla değiştirin.
+   1. `<servername>`Sunucunuzun adıyla değiştirin.
+   2. `<databasename>`Tabloyu ve saklı yordamı oluşturduğunuz veritabanıyla değiştirin.
+   3. `<username@servername>`Veritabanına erişimi olan kullanıcı hesabı ile değiştirin.
+   4. `<password>`Kullanıcı hesabının parolasıyla değiştirin.
 
       ![Yeni veri deposu](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
 4. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt** ' a tıklayın. Sol taraftaki ağaç görünümünde Azuressqllinkedservice öğesini gördüğünüzü onaylayın.
@@ -204,10 +204,10 @@ Aşağıdaki özelliklere dikkat edin:
 2. **Diyagram görünümünde**, işlem hatlarına ve bu öğreticide kullanılan veri kümelerine bir genel bakış görürsünüz.
 
     ![Diyagram kutucuğu](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. Diyagram görünümünde veri kümesine `sprocsampleout`çift tıklayın. Dilimleri, Ready durumunda görürsünüz. JSON 'dan başlangıç saati ve bitiş saati arasındaki her saat için bir dilim üretildiği için beş dilim olmalıdır.
+3. Diyagram görünümünde veri kümesine çift tıklayın `sprocsampleout` . Dilimleri, Ready durumunda görürsünüz. JSON 'dan başlangıç saati ve bitiş saati arasındaki her saat için bir dilim üretildiği için beş dilim olmalıdır.
 
     ![Diyagram kutucuğu](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. Bir dilim **Ready** durumunda olduğunda, verilerin tabloya saklı yordam `select * from sampletable` tarafından EKLENDIĞINI doğrulamak için Azure SQL veritabanı 'na karşı bir sorgu çalıştırın.
+4. Bir dilim **Ready** durumunda olduğunda, `select * from sampletable` verilerin tabloya saklı yordam tarafından eklendiğini doğrulamak için Azure SQL veritabanı 'na karşı bir sorgu çalıştırın.
 
    ![Çıktı verileri](./media/data-factory-stored-proc-activity/output.png)
 
@@ -305,13 +305,13 @@ Aşağıdaki tabloda bu JSON özellikleri açıklanmaktadır:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| ad | Etkinliğin adı |Yes |
-| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
-| type | Şu şekilde ayarlanmalıdır: **Sqlserverstoredprocedure** | Yes |
-| girişi | İsteğe bağlı. Bir giriş veri kümesi belirtirseniz, saklı yordam etkinliğinin çalışması için (' hazır ' durumunda) kullanılabilir olmalıdır. Giriş veri kümesi, saklı yordamda parametre olarak tüketilemiyor. Yalnızca saklı yordam etkinliğini başlatmadan önce bağımlılığı denetlemek için kullanılır. |Hayır |
+| name | Etkinliğin adı |Yes |
+| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |No |
+| tür | Şu şekilde ayarlanmalıdır: **Sqlserverstoredprocedure** | Yes |
+| girişi | İsteğe bağlı. Bir giriş veri kümesi belirtirseniz, saklı yordam etkinliğinin çalışması için (' hazır ' durumunda) kullanılabilir olmalıdır. Giriş veri kümesi, saklı yordamda parametre olarak tüketilemiyor. Yalnızca saklı yordam etkinliğini başlatmadan önce bağımlılığı denetlemek için kullanılır. |No |
 | çıkışı | Saklı yordam etkinliği için bir çıkış veri kümesi belirtmeniz gerekir. Çıktı veri kümesi, saklı yordam etkinliğinin **zamanlamasını** belirtir (saatlik, haftalık, aylık, vb.). <br/><br/>Çıktı veri kümesi, bir Azure SQL veritabanı veya Azure SQL veri ambarı ya da saklı yordamın çalıştırılmasını istediğiniz bir SQL Server veritabanına başvuran **bağlı bir hizmet** kullanmalıdır. <br/><br/>Çıktı veri kümesi, diğer bir etkinlik tarafından sonraki işleme için saklı yordamın sonucunu geçirmek için bir yol işlevi görebilir (işlem hattındaki[etkinlikleri zincirleyerek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) ). Ancak, Data Factory saklı yordamın çıkışını bu veri kümesine otomatik olarak yazmaz. Bu, çıktı veri kümesinin işaret ettiği bir SQL tablosuna yazan saklı yordamdır. <br/><br/>Bazı durumlarda, çıkış veri kümesi yalnızca saklı yordam etkinliğini çalıştırmaya yönelik zamanlamayı belirtmek için kullanılan bir **kukla veri kümesi**olabilir. |Yes |
 | storedProcedureName |Azure SQL veritabanı veya Azure SQL veri ambarı 'nda saklı yordamın adını veya çıkış tablosunun kullandığı bağlı hizmet tarafından temsil edilen SQL Server veritabanını belirtin. |Yes |
-| storedProcedureParameters |Saklı yordam parametrelerinin değerlerini belirtin. Bir parametre için null değer geçirmeniz gerekiyorsa, "Param1": null (tümü küçük harf) sözdizimini kullanın. Bu özelliği kullanma hakkında bilgi edinmek için aşağıdaki örneğe bakın. |Hayır |
+| storedProcedureParameters |Saklı yordam parametrelerinin değerlerini belirtin. Bir parametre için null değer geçirmeniz gerekiyorsa, "Param1": null (tümü küçük harf) sözdizimini kullanın. Bu özelliği kullanma hakkında bilgi edinmek için aşağıdaki örneğe bakın. |No |
 
 ## <a name="passing-a-static-value"></a>Statik bir değer geçirme
 Şimdi ' senaryo ' adlı, ' belge örneği ' adlı statik bir değer içeren tabloya ' senaryo ' adlı başka bir sütun eklemeyi düşünün.

@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: bdb38e36a9f1344a3adde15d349a2ec176c0fe95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a384db9c3c0b4beee6063fd503abadcb4c6b5158
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74424012"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016959"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>U-SQL geliştiricileri için Apache Spark kodunu anlayın
 
@@ -44,7 +44,7 @@ U-SQL betikleri aşağıdaki işleme modelini izler:
 
 1. Veriler, yapılandırılmamış dosyalardan, `EXTRACT` bildirimi, konum veya dosya kümesi belirtimini, yerleşik veya Kullanıcı tanımlı Extractor ve istenen şemayı, ya da U-SQL tablolarından (yönetilen veya dış tablolar) kullanarak okur. Satır kümesi olarak temsil edilir.
 2. Satır kümeleri, satır kümelerine U-SQL ifadeleri uygulayan ve yeni satır kümeleri üreten birden çok U-SQL deyiminde dönüştürülür.
-3. Son olarak, ortaya çıkan satır kümeleri, konumları ve yerleşik ya `OUTPUT` da Kullanıcı tanımlı bir çıktıyı ve bir U-SQL tablosunu belirten deyimden herhangi bir dosyaya çıktılardır.
+3. Son olarak, ortaya çıkan satır kümeleri, `OUTPUT` konumları ve yerleşik ya da Kullanıcı tanımlı bir çıktıyı ve bir U-SQL tablosunu belirten deyimden herhangi bir dosyaya çıktılardır.
 
 Komut dosyası değerlendirilir, yani ayıklama ve dönüştürme adımının bir ifade ağacında (veri akışı) bulunduğu ve genel olarak değerlendirilen anlamına gelir.
 
@@ -141,9 +141,9 @@ Spark 'ta, varsayılan olarak türler, U-SQL ' i n Ken NULL değerlere izin veri
 
 Spark içinde NULL değeri, değerin bilinmediğini gösterir. Spark NULL değeri, kendisi de dahil olmak üzere herhangi bir değerden farklıdır. İki Spark NULL değeri veya NULL değer ile diğer herhangi bir değer arasında karşılaştırmalar, her NULL değeri bilinmediği için bilinmeyen döndürür.  
 
-Bu davranış U-SQL ' den farklıdır ve bu, herhangi bir değerden `null` farklı ancak kendi başına eşit olan C# semantiğini izler.  
+Bu davranış U-SQL ' den farklıdır ve bu, `null` herhangi bir değerden farklı ancak kendi başına eşit olan C# semantiğini izler.  
 
-Bu nedenle, ' `SELECT` de `WHERE column_name = NULL` `column_name`null değerler olsa bile, kullanan bir mini SQL deyimleri sıfır satır döndürür, çünkü U-SQL ' de, olarak ayarlandığı satırları `column_name` döndürür. `null` Benzer şekilde, ' `SELECT` de `column_name`null olmayan `WHERE column_name != NULL` değerler olsa bile, kullanan bir Spark DEYIMLERI, ' ın U-SQL ' de null olmayan satırları döndürmesini sağlayan sıfır satır döndürür. Bu nedenle, U-SQL null denetimi semantiğini istiyorsanız, sırasıyla [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) ve [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) kullanmanız gerekır (ya da DSL eşdeğerini).
+Bu nedenle, ' `SELECT` `WHERE column_name = NULL` de null değerler olsa bile, kullanan bir mini SQL deyimleri sıfır satır döndürür `column_name` , çünkü U-SQL ' de, olarak ayarlandığı satırları döndürür `column_name` `null` . Benzer şekilde, ' `SELECT` `WHERE column_name != NULL` de null olmayan değerler olsa bile, kullanan bir Spark deyimleri, ' ın `column_name` U-SQL ' de null olmayan satırları döndürmesini sağlayan sıfır satır döndürür. Bu nedenle, U-SQL null denetimi semantiğini istiyorsanız, sırasıyla [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) ve [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) kullanmanız gerekır (ya da DSL eşdeğerini).
 
 ## <a name="transform-u-sql-catalog-objects"></a>U-SQL Katalog nesnelerini dönüştürme
 
@@ -160,8 +160,8 @@ U-SQL kataloğu, projeler ve takımlar arasında veri ve kod nesneleri paylaşma
 U-SQL ' n i n temel dili, satır kümelerini dönüştürülüyor ve SQL tabanlı. Aşağıda, U-SQL ' de sunulan en yaygın satır kümesi ifadelerinin ayrıntılı olmayan bir listesi verilmiştir:
 
 - `SELECT`/`FROM`/`WHERE`/`GROUP BY`+ Toplamalar +`HAVING`/`ORDER BY`+`FETCH`
-- `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN` ifadeler
-- `CROSS`/`OUTER``APPLY` ifadeler
+- `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN`ifadeler
+- `CROSS`/`OUTER``APPLY`ifadeler
 - `PIVOT`/`UNPIVOT`ifadelerde
 - `VALUES`satır kümesi Oluşturucusu
 
@@ -170,8 +170,8 @@ U-SQL ' n i n temel dili, satır kümelerini dönüştürülüyor ve SQL tabanl�
 Ayrıca, U-SQL gibi çeşitli SQL tabanlı skalar ifadeler sağlar
 
 - `OVER`Pencereleme ifadeleri
-- çeşitli yerleşik toplayıcısını değiştirme 'lar ve derecelendirme işlevleri (`SUM`, `FIRST` vb.)
-- `CASE`En tanıdık SQL skaler ifadelerinin bazıları:, `LIKE`, (`NOT`) `IN`, `AND`, `OR` vb.
+- çeşitli yerleşik toplayıcısını değiştirme 'lar ve derecelendirme işlevleri ( `SUM` , `FIRST` vb.)
+- En tanıdık SQL skaler ifadelerinin bazıları: `CASE` , `LIKE` , ( `NOT` ) `IN` , `AND` , `OR` vb.
 
 Spark, bu ifadelerin çoğu için hem DSL hem de mini SQL biçiminde denk ifadeler sunar. Spark içinde yerel olarak desteklenmeyen ifadelerden bazılarının, yerel Spark ifadelerinin ve anlamsal olarak denk desenlerin bir birleşimi kullanılarak yeniden yazılması gerekir. Örneğin, `OUTER UNION` projeksiyonlar ve birleşimlerin eşdeğer birleşimine çevrilmesi gerekecektir.
 
@@ -179,24 +179,24 @@ NULL değerlerin farklı işlemesi nedeniyle, bir U-SQL birleştirmesi her ikisi
 
 ## <a name="transform-other-u-sql-concepts"></a>Diğer U-SQL kavramlarını Dönüştür
 
-U-SQL Ayrıca SQL Server veritabanlarına, parametrelere, skaler ve lambda ifadesi değişkenlerine, sistem değişkenlerine ve `OPTION` ipuçlarına karşılık gelen federal sorgular gibi çeşitli özellikler ve kavramlar sunmaktadır.
+U-SQL Ayrıca SQL Server veritabanlarına, parametrelere, skaler ve lambda ifadesi değişkenlerine, sistem değişkenlerine ve ipuçlarına karşılık gelen federal sorgular gibi çeşitli özellikler ve kavramlar sunmaktadır `OPTION` .
 
 ### <a name="federated-queries-against-sql-server-databasesexternal-tables"></a>SQL Server veritabanlarına/dış tablolara yönelik Federasyon sorguları
 
-U-SQL, Azure SQL veritabanı 'nda veri kaynağı ve dış tablolar ve doğrudan sorgular sağlar. Spark aynı nesne soyutlamalarını sunmadığından, SQL veritabanlarını sorgulamak için kullanılabilen [Azure SQL veritabanı Spark bağlayıcısını](../sql-database/sql-database-spark-connector.md) sağlar.
+U-SQL, Azure SQL veritabanı 'nda veri kaynağı ve dış tablolar ve doğrudan sorgular sağlar. Spark aynı nesne soyutlamalarını sunmadığından, SQL veritabanlarını sorgulamak için kullanılabilen [Azure SQL veritabanı Spark bağlayıcısını](../azure-sql/database/spark-connector.md) sağlar.
 
 ### <a name="u-sql-parameters-and-variables"></a>U-SQL parametreleri ve değişkenleri
 
 Parametrelerde ve Kullanıcı değişkenlerinde, Spark ve barındırma dillerinde eşdeğer kavramlar vardır.
 
-Örneğin Scala 'da, `var` anahtar sözcüğüyle bir değişken tanımlayabilirsiniz:
+Örneğin Scala 'da, anahtar sözcüğüyle bir değişken tanımlayabilirsiniz `var` :
 
 ```
 var x = 2 * 3;
 println(x)
 ```
 
-U-SQL ' n i n Sistem değişkenleri ( `@@`ile başlayan değişkenler), iki kategoriye ayrılabilir:
+U-SQL ' n i n Sistem değişkenleri (ile başlayan değişkenler `@@` ), iki kategoriye ayrılabilir:
 
 - Betik davranışlarını etkilemek için belirli değerlere ayarlanabilen ayarlanabilir sistem değişkenleri
 - Sistem ve iş düzeyi bilgilerini sorgulama yapan bilgilendirici sistem değişkenleri
@@ -208,8 +208,8 @@ Ayarlanabilen sistem değişkenlerinin çoğunun Spark içinde doğrudan eşdeğ
 U-SQL, sorgu iyileştiricisi ve yürütme altyapısına ipuçları sağlamak için çeşitli sözdizimsel yollar sunar:  
 
 - U-SQL sistem değişkenini ayarlama
-- veri `OPTION` veya plan ipucu sağlamak için satır kümesi ifadesiyle ilişkili bir yan tümce
-- JOIN ifadesinin sözdiziminde bir JOIN ipucu (örneğin, `BROADCASTLEFT`)
+- `OPTION`veri veya plan ipucu sağlamak için satır kümesi ifadesiyle ilişkili bir yan tümce
+- JOIN ifadesinin sözdiziminde bir JOIN ipucu (örneğin, `BROADCASTLEFT` )
 
 Spark 'un maliyet tabanlı sorgu iyileştiricisi, ipuçları sağlamak ve sorgu performansını ayarlamak için kendi özelliklerine sahiptir. Lütfen ilgili belgelere başvurun.
 

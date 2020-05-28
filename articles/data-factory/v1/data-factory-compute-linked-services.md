@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cdb913434d7aab3ceadbbf19d7a95000abf6776c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281554"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022019"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory tarafından desteklenen işlem ortamları
 > [!NOTE]
@@ -49,7 +49,7 @@ Microsoft, desteklenen HDInsight sürümlerinin listesini en son Hadoop ekosiste
 15 Aralık 2017 ' den sonra:
 
 - Artık Data Factory sürüm 1 ' de isteğe bağlı bir HDInsight bağlı hizmetini kullanarak Linux tabanlı HDInsight sürüm 3,3 (veya önceki sürümler) kümeleri oluşturamazsınız. 
-- [ **OSType** ve **Sürüm** özellikleri](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) , var olan bir Data Factory 1. sürüm için JSON tanımında açıkça belirtilmemişse, varsayılan değer **sürüm = 3.1, OSType = Windows** to **Version =\<en son HDI varsayılan sürümü\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), OSType = Linux**) ile değiştirilir.
+- [ **OSType** ve **Sürüm** özellikleri](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) , mevcut bir Data Factory 1. sürüm 1 Isteğe bağlı HDInsight bağlantılı hizmetine yönelik JSON tanımında açıkça belirtilmemişse, varsayılan değer **sürüm = 3.1, OSType = Windows** to **Version = \<latest HDI default version\> ( https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , OSType = Linux**) olarak değişir.
 
 31 Temmuz 2018 ' den sonra:
 
@@ -121,14 +121,14 @@ Aşağıdaki JSON, Linux tabanlı isteğe bağlı HDInsight bağlı hizmetini ta
 ### <a name="properties"></a>Özellikler
 | Özellik                     | Açıklama                              | Gerekli |
 | ---------------------------- | ---------------------------------------- | -------- |
-| type                         | Type özelliğini **hdınsightondemand**olarak ayarlayın. | Yes      |
-| clusterSize                  | Kümedeki çalışan ve veri düğümlerinin sayısı. HDInsight kümesi, bu özellik için belirttiğiniz çalışan düğümü sayısına ek olarak 2 baş düğüm ile oluşturulur. Düğümler, 4 çekirdek içeren Standard_D3 boyutudur. 4 çalışan düğüm kümesi 24 çekirdek alır (çalışan düğümleri için\*4 4 = 16 çekirdek, ve baş düğümler için\*2 4 = 8 çekirdek). Standard_D3 katmanı hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Linux tabanlı Hadoop kümeleri oluşturma](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Yes      |
+| tür                         | Type özelliğini **hdınsightondemand**olarak ayarlayın. | Yes      |
+| clusterSize                  | Kümedeki çalışan ve veri düğümlerinin sayısı. HDInsight kümesi, bu özellik için belirttiğiniz çalışan düğümü sayısına ek olarak 2 baş düğüm ile oluşturulur. Düğümler, 4 çekirdek içeren Standard_D3 boyutudur. 4 çalışan düğüm kümesi 24 çekirdek alır ( \* çalışan düğümleri için 4 4 = 16 çekirdek, ve \* baş düğümler için 2 4 = 8 çekirdek). Standard_D3 katmanı hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Linux tabanlı Hadoop kümeleri oluşturma](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Yes      |
 | timeToLive                   | İsteğe bağlı HDInsight kümesi için izin verilen boşta kalma süresi. Kümede başka etkin iş yoksa, bir etkinlik çalıştırması bittiğinde isteğe bağlı HDInsight kümesinin ne kadar süreyle etkin kalacağını belirtir.<br /><br />Örneğin, bir etkinlik çalıştırması 6 dakika sürüyorsa ve **TimeToLive** , 5 dakika olarak ayarlanırsa, etkinlik çalıştırmasının sonunda 6 dakikadan sonra küme, 5 dakika boyunca etkin kalır. 6 dakikalık bir pencerede başka bir etkinlik çalıştırması yürütülürse aynı küme tarafından işlenir.<br /><br />İsteğe bağlı HDInsight kümesi oluşturmak pahalı bir işlemdir (biraz zaman alabilir). İsteğe bağlı HDInsight kümesini yeniden kullanarak bir veri fabrikasının performansını artırmak için bu ayarı gereken şekilde kullanın.<br /><br />**TimeToLive** değerini **0**olarak ayarlarsanız, etkinlik çalıştırması tamamlandıktan hemen sonra küme silinir. Ancak, yüksek bir değer ayarlarsanız küme boşta kalabilir ve gereksiz bir şekilde yüksek maliyetlerle sonuçlanır. Gereksinimlerinize göre uygun değeri ayarlamanız önemlidir.<br /><br />**TimeToLive** değeri uygun şekilde ayarlanmışsa, Isteğe bağlı HDInsight kümesinin örneğini birden çok işlem hattı paylaşabilir. | Yes      |
-| version                      | HDInsight kümesinin sürümü. İzin verilen HDInsight sürümleri için bkz. [desteklenen HDInsight sürümleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Bu değer belirtilmezse, [en son HDI varsayılan sürümü](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) kullanılır. | Hayır       |
+| sürüm                      | HDInsight kümesinin sürümü. İzin verilen HDInsight sürümleri için bkz. [desteklenen HDInsight sürümleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Bu değer belirtilmezse, [en son HDI varsayılan sürümü](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) kullanılır. | No       |
 | linkedServiceName            | Verileri depolamak ve işlemek için isteğe bağlı küme tarafından kullanılacak Azure depolama bağlı hizmeti. HDInsight kümesi bu depolama hesabı ile aynı bölgede oluşturulur.<p>Şu anda depolama olarak Azure Data Lake Store kullanan isteğe bağlı bir HDInsight kümesi oluşturamazsınız. Data Lake Store 'de HDInsight işlemeden elde edilen sonuç verilerini depolamak istiyorsanız, verileri blob depolamadan Data Lake Store kopyalamak için kopyalama etkinliğini kullanın. </p> | Yes      |
-| additionalLinkedServiceNames | HDInsight bağlı hizmeti için ek depolama hesapları belirtir. Data Factory depolama hesaplarını sizin yerinize kaydeder. Bu depolama hesaplarının, HDInsight kümesiyle aynı bölgede olması gerekir. HDInsight kümesi, **Linkedservicename** özelliği tarafından belirtilen depolama hesabıyla aynı bölgede oluşturulur. | Hayır       |
-| osType                       | İşletim sisteminin türü. İzin verilen değerler **Linux** ve **Windows**. Bu değer belirtilmemişse, **Linux** kullanılır.  <br /><br />Linux tabanlı HDInsight kümelerinin kullanılması önemle önerilir. Windows 'da HDInsight için emeklilik tarihi 31 Temmuz 2018 ' dir. | Hayır       |
-| hcatalogLinkedServiceName    | HCatalog veritabanına işaret eden Azure SQL bağlı hizmetinin adı. İsteğe bağlı HDInsight kümesi, SQL veritabanı, meta veri deposu olarak kullanılarak oluşturulur. | Hayır       |
+| additionalLinkedServiceNames | HDInsight bağlı hizmeti için ek depolama hesapları belirtir. Data Factory depolama hesaplarını sizin yerinize kaydeder. Bu depolama hesaplarının, HDInsight kümesiyle aynı bölgede olması gerekir. HDInsight kümesi, **Linkedservicename** özelliği tarafından belirtilen depolama hesabıyla aynı bölgede oluşturulur. | No       |
+| osType                       | İşletim sisteminin türü. İzin verilen değerler **Linux** ve **Windows**. Bu değer belirtilmemişse, **Linux** kullanılır.  <br /><br />Linux tabanlı HDInsight kümelerinin kullanılması önemle önerilir. Windows 'da HDInsight için emeklilik tarihi 31 Temmuz 2018 ' dir. | No       |
+| hcatalogLinkedServiceName    | HCatalog veritabanına işaret eden Azure SQL bağlı hizmetinin adı. İsteğe bağlı HDInsight kümesi, SQL veritabanı, meta veri deposu olarak kullanılarak oluşturulur. | No       |
 
 #### <a name="example-linkedservicenames-json"></a>Örnek: LinkedServiceNames JSON
 
@@ -144,14 +144,14 @@ Aşağıdaki JSON, Linux tabanlı isteğe bağlı HDInsight bağlı hizmetini ta
 
 | Özellik               | Açıklama                              | Gerekli |
 | :--------------------- | :--------------------------------------- | :------- |
-| coreConfiguration      | Oluşturulacak HDInsight kümesi için çekirdek yapılandırma parametrelerini (Core-site. xml) belirtir. | Hayır       |
-| hBaseConfiguration     | HDInsight kümesi için HBase yapılandırma parametrelerini (HBase-site. xml) belirtir. | Hayır       |
-| hdfsConfiguration      | HDInsight kümesi için bir yapılandırma parametreleri (HDFS-site. xml) belirtir. | Hayır       |
-| hiveConfiguration      | HDInsight kümesi için Hive yapılandırma parametrelerini (Hive-site. xml) belirtir. | Hayır       |
-| mapReduceConfiguration | HDInsight kümesi için MapReduce yapılandırma parametrelerini (mapred-site. xml) belirtir. | Hayır       |
-| Oozıeconfiguration     | HDInsight kümesi için Oozie yapılandırma parametrelerini (Oozie-site. xml) belirtir. | Hayır       |
-| stormConfiguration     | HDInsight kümesi için fırtınası yapılandırma parametrelerini (Storm-site. xml) belirtir. | Hayır       |
-| yarnConfiguration      | HDInsight kümesi için YARN yapılandırma parametrelerini (Yarn-site. xml) belirtir. | Hayır       |
+| coreConfiguration      | Oluşturulacak HDInsight kümesi için çekirdek yapılandırma parametrelerini (Core-site. xml) belirtir. | No       |
+| hBaseConfiguration     | HDInsight kümesi için HBase yapılandırma parametrelerini (HBase-site. xml) belirtir. | No       |
+| hdfsConfiguration      | HDInsight kümesi için bir yapılandırma parametreleri (HDFS-site. xml) belirtir. | No       |
+| hiveConfiguration      | HDInsight kümesi için Hive yapılandırma parametrelerini (Hive-site. xml) belirtir. | No       |
+| mapReduceConfiguration | HDInsight kümesi için MapReduce yapılandırma parametrelerini (mapred-site. xml) belirtir. | No       |
+| Oozıeconfiguration     | HDInsight kümesi için Oozie yapılandırma parametrelerini (Oozie-site. xml) belirtir. | No       |
+| stormConfiguration     | HDInsight kümesi için fırtınası yapılandırma parametrelerini (Storm-site. xml) belirtir. | No       |
+| yarnConfiguration      | HDInsight kümesi için YARN yapılandırma parametrelerini (Yarn-site. xml) belirtir. | No       |
 
 #### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>Örnek: gelişmiş özelliklerle isteğe bağlı HDInsight kümesi yapılandırması
 
@@ -197,9 +197,9 @@ Baş, veri ve ZooKeeper düğümlerinin boyutunu belirtmek için aşağıdaki ö
 
 | Özellik          | Açıklama                              | Gerekli |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | Baş düğümün boyutunu ayarlar. Varsayılan değer **Standard_D3**. Ayrıntılar için bkz. [düğüm boyutlarını belirtme](#specify-node-sizes). | Hayır       |
-| Davtanodesize      | Veri düğümünün boyutunu ayarlar. Varsayılan değer **Standard_D3**. | Hayır       |
-| zookeeperNodeSize | ZooKeeper düğümünün boyutunu ayarlar. Varsayılan değer **Standard_D3**. | Hayır       |
+| headNodeSize      | Baş düğümün boyutunu ayarlar. Varsayılan değer **Standard_D3**. Ayrıntılar için bkz. [düğüm boyutlarını belirtme](#specify-node-sizes). | No       |
+| Davtanodesize      | Veri düğümünün boyutunu ayarlar. Varsayılan değer **Standard_D3**. | No       |
+| zookeeperNodeSize | ZooKeeper düğümünün boyutunu ayarlar. Varsayılan değer **Standard_D3**. | No       |
 
 #### <a name="specify-node-sizes"></a>Düğüm boyutlarını belirtin
 Önceki bölümde açıklanan özellikler için belirtmeniz gereken dize değerleri için bkz. [sanal makine boyutları](../../virtual-machines/linux/sizes.md). Değerler, [sanal makine boyutlarında](../../virtual-machines/linux/sizes.md)başvurulan cmdlet 'Ler ve API 'lerle uyumlu olmalıdır. Büyük (varsayılan) veri düğümü boyutunun 7 GB belleği vardır. Bu senaryo için yeterli olmayabilir. 
@@ -257,7 +257,7 @@ Kendi HDInsight kümenizi Data Factory kaydetmek için bir HDInsight bağlı hiz
 ### <a name="properties"></a>Özellikler
 | Özellik          | Açıklama                              | Gerekli |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | Type özelliğini **HDInsight**olarak ayarlayın. | Yes      |
+| tür              | Type özelliğini **HDInsight**olarak ayarlayın. | Yes      |
 | clusterUri        | HDInsight kümesinin URI 'SI.        | Yes      |
 | kullanıcı adı          | Mevcut bir HDInsight kümesine bağlanmak için kullanılacak kullanıcı hesabının adı. | Yes      |
 | password          | Kullanıcı hesabının parolası.   | Yes      |
@@ -268,7 +268,7 @@ Bir veri fabrikasına sanal makinelerin (VM 'Ler) Batch havuzunu kaydetmek için
 
 Batch hizmetini kullanmaya yeni çalışıyorsanız:
 
-* [Azure Batch temel bilgileri](../../batch/batch-technical-overview.md)hakkında bilgi edinin.
+* [Azure Batch temel bilgileri](../../azure-sql/database/sql-database-paas-overview.md)hakkında bilgi edinin.
 * [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) cmdlet 'i hakkında bilgi edinin. Batch hesabı oluşturmak için bu cmdlet 'i kullanın. Ya da, Batch hesabını [Azure Portal](../../batch/batch-account-create-portal.md)kullanarak oluşturabilirsiniz. Cmdlet 'ini kullanma hakkında ayrıntılı bilgi için bkz. [PowerShell kullanarak Batch hesabını yönetme](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx).
 * [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) cmdlet 'i hakkında bilgi edinin. Batch havuzu oluşturmak için bu cmdlet 'i kullanın.
 
@@ -289,7 +289,7 @@ Batch hizmetini kullanmaya yeni çalışıyorsanız:
 }
 ```
 
-**AccountName** özelliği için, ekleyin **.\< Batch hesabınızın\> adına bölge adı** . Örneğin:
+**AccountName** özelliği için, ekleyin **. \<region name\> ** Batch hesabınızın adına. Örneğin:
 
 ```json
 "accountName": "mybatchaccount.eastus"
@@ -305,7 +305,7 @@ Diğer bir seçenek de **Batchuri** uç noktası sağlamaktır. Örneğin:
 ### <a name="properties"></a>Özellikler
 | Özellik          | Açıklama                              | Gerekli |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | Type özelliğini **AzureBatch**olarak ayarlayın. | Yes      |
+| tür              | Type özelliğini **AzureBatch**olarak ayarlayın. | Yes      |
 | accountName       | Batch hesabının adı.         | Yes      |
 | accessKey         | Batch hesabı için erişim anahtarı.  | Yes      |
 | poolName          | VM havuzunun adı.    | Yes      |
@@ -343,11 +343,11 @@ Aşağıdaki tabloda JSON tanımında kullanılan genel özellikler açıklanmak
 
 | Özellik                 | Açıklama                              | Gerekli                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| type                 | Type özelliğini **AzureDataLakeAnalytics**olarak ayarlayın. | Yes                                      |
+| tür                 | Type özelliğini **AzureDataLakeAnalytics**olarak ayarlayın. | Yes                                      |
 | accountName          | Data Lake Analytics hesap adı.  | Yes                                      |
-| Datalakeanaliz Ticsurı | Data Lake Analytics URI 'SI.           | Hayır                                       |
-| subscriptionId       | Azure abonelik KIMLIĞI.                    | Hayır<br /><br />(Belirtilmemişse, Data Factory aboneliği kullanılır.) |
-| resourceGroupName    | Azure Kaynak grubu adı.                | Hayır<br /><br /> (Belirtilmemişse, Data Factory kaynak grubu kullanılır.) |
+| Datalakeanaliz Ticsurı | Data Lake Analytics URI 'SI.           | No                                       |
+| subscriptionId       | Azure abonelik KIMLIĞI.                    | No<br /><br />(Belirtilmemişse, Data Factory aboneliği kullanılır.) |
+| resourceGroupName    | Azure Kaynak grubu adı.                | No<br /><br /> (Belirtilmemişse, Data Factory kaynak grubu kullanılır.) |
 
 ### <a name="authentication-options"></a>Kimlik doğrulaması seçenekleri
 Data Lake Analytics bağlı hizmetiniz için, hizmet sorumlusu veya Kullanıcı kimlik bilgileri kullanarak kimlik doğrulaması arasında seçim yapabilirsiniz.

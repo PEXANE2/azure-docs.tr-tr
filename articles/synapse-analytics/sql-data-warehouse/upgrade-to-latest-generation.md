@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 13b1f33ffe653627bcf45f6c995e82e741de32ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 701f2ac7b7cbba113ead5a6d3e465a4e0c37e024
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742742"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015752"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzunu yükselterek performansı iyileştirin
 
@@ -65,7 +65,7 @@ Artık [Desteklenen bölgeler](gen2-migration-schedule.md#automated-schedule-and
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- [Azure Portal](https://portal.azure.com/) oturum açın.
+- [Azure portalında](https://portal.azure.com/) oturum açın.
 - SQL havuzunun çalıştığından emin olun; Gen2 'e geçirilmesi gerekir
 
 ### <a name="powershell-upgrade-commands"></a>PowerShell yükseltme komutları
@@ -110,7 +110,7 @@ Artık [Desteklenen bölgeler](gen2-migration-schedule.md#automated-schedule-and
 ## <a name="start-the-upgrade"></a>Yükseltmeyi Başlat
 
 1. Azure portal, Işlem için Iyileştirilmiş Gen1 SQL havuzunuza gidin. Yükseltilecek Işlem için Iyileştirilmiş Gen1 katman SQL havuzu duraklatıldığında, [SQL havuzunu sürdürür](pause-and-resume-compute-portal.md).
-2. Görevler sekmesinin altında **Gen2 kartına Yükselt** ' i seçin: ![Upgrade_1](./media/upgrade-to-latest-generation/upgrade-to-gen2-1.png)
+2. Görevler sekmesinin altında **Gen2 kartına Yükselt** ' i seçin: ![ Upgrade_1](./media/upgrade-to-latest-generation/upgrade-to-gen2-1.png)
 
    > [!NOTE]
    > Görevler sekmesinde **Gen2 kartına yükseltme** seçeneğini görmüyorsanız, abonelik türü geçerli bölgede sınırlandırılır.
@@ -182,7 +182,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Azure portal kullanarak Kullanıcı tanımlı geri yükleme noktası oluşturma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. İçin geri yükleme noktası oluşturmak istediğiniz SQL havuzuna gidin.
 
@@ -196,7 +196,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Azure portal kullanarak etkin veya duraklatılmış bir veritabanını geri yükleme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Geri yüklemek istediğiniz SQL havuzuna gidin.
 3. Genel Bakış bölümünün en üstünde **geri yükle**' yi seçin.
 
@@ -238,7 +238,7 @@ $GeoRestoredDatabase.status
 ```
 
 > [!NOTE]
-> Geri yükleme tamamlandıktan sonra veritabanınızı yapılandırmak için, [kurtarma sonrasında veritabanınızı yapılandırma](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)konusuna bakın.
+> Geri yükleme tamamlandıktan sonra veritabanınızı yapılandırmak için, [kurtarma sonrasında veritabanınızı yapılandırma](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)konusuna bakın.
 
 Kaynak veritabanı TDE etkinse Kurtarılan veritabanı TDE etkinleştirilir.
 

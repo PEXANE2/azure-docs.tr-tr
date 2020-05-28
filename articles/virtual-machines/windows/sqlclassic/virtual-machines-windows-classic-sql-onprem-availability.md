@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 928162282ca973811315728a07b4fbe40100324e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978041"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017588"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Şirket içi AlwaysOn Kullanılabilirlik Grupları’nı Azure’a Genişletme
 Her zaman açık kullanılabilirlik grupları, ikincil çoğaltmalar ekleyerek veritabanı grupları için yüksek kullanılabilirlik sağlar. Bu çoğaltmalar hata durumunda veritabanlarının yük devretmesini sağlar. Bunlara ek olarak, okuma iş yüklerini veya yedekleme görevlerini boşaltmak için de kullanılabilir.
@@ -41,7 +41,7 @@ Bu bölümde, Azure **çoğaltması Ekleme Sihirbazı 'nı** kullanarak her zama
 > [!IMPORTANT]
 > **Azure çoğaltma ekleme Sihirbazı** yalnızca klasik dağıtım modeliyle oluşturulan sanal makineleri destekler. Yeni VM dağıtımları, daha yeni Kaynak Yöneticisi modelini kullanmalıdır. Kaynak Yöneticisi sahip VM 'Leri kullanıyorsanız, Transact-SQL komutlarını kullanarak ikincil Azure çoğaltmasını el ile eklemeniz gerekir (burada gösterilmez). Bu sihirbaz Kaynak Yöneticisi senaryosunda çalışmayacaktır.
 
-1. SQL Server Management Studio içinde, **her zaman yüksek kullanılabilirlik** > **kullanılabilirlik grupları** > **[kullanılabilirlik grubunuzun adı]**' nı genişletin.
+1. SQL Server Management Studio içinde, **her zaman yüksek kullanılabilirlik**  >  **kullanılabilirlik grupları**  >  **[kullanılabilirlik grubunuzun adı]**' nı genişletin.
 2. **Kullanılabilirlik çoğaltmaları**' na sağ tıklayın ve ardından **çoğaltma ekle**' ye tıklayın.
 3. Varsayılan olarak, **kullanılabilirlik grubuna çoğaltma Ekle Sihirbazı** görüntülenir. **İleri**’ye tıklayın.  Bu sihirbazın önceki bir kez başlatılması sırasında sayfanın altındaki **Bu sayfayı bir daha gösterme** seçeneğini belirlediyseniz bu ekran görüntülenmez.
    
@@ -90,7 +90,7 @@ Bu bölümde, Azure **çoğaltması Ekleme Sihirbazı 'nı** kullanarak her zama
 Kullanılabilirlik grubu oluşturulduktan sonra, istemcilerin çoğaltmalara bağlanması için bir dinleyici oluşturmalısınız. Dinleyiciler, birincil veya salt okunurdur ikincil çoğaltmaya doğrudan gelen bağlantılar sağlar. Dinleyiciler hakkında daha fazla bilgi için bkz. [Azure 'Da Always on kullanılabilirlik grupları için BIR ıLB dinleyicisi yapılandırma](../classic/ps-sql-int-listener.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Her zaman açık kullanılabilirlik grubunuzu Azure 'a genişletmek için **Azure çoğaltma ekleme Sihirbazı 'nı** kullanmanın yanı sıra, bazı SQL Server Iş yüklerini Azure 'a tamamen de taşıyabilirsiniz. Başlamak için bkz. [Azure 'da SQL Server sanal makinesi sağlama](../sql/virtual-machines-windows-portal-sql-server-provision.md).
+Her zaman açık kullanılabilirlik grubunuzu Azure 'a genişletmek için **Azure çoğaltma ekleme Sihirbazı 'nı** kullanmanın yanı sıra, bazı SQL Server Iş yüklerini Azure 'a tamamen de taşıyabilirsiniz. Başlamak için bkz. [Azure 'da SQL Server sanal makinesi sağlama](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
 
-Azure VM 'lerinde SQL Server çalıştırmaya ilişkin diğer konular için bkz. [Azure sanal makinelerinde SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Azure VM 'lerinde SQL Server çalıştırmaya ilişkin diğer konular için bkz. [Azure sanal makinelerinde SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 

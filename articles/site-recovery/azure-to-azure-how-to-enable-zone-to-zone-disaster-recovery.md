@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 27b433ba33d287a183d8ce6cc05d87649b2d0b00
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 367ca77b0f3a142d8aa36143052993d1ed96f052
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891508"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996508"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Azure sanal makineleri için bölgeyi bölgeye olağanüstü durum kurtarmaya etkinleştirme
 
@@ -117,6 +117,9 @@ Site Recovery Team ve Azure kapasite yönetimi ekibi, yeterli altyapı kapasites
 
 **4. hangi işletim sistemleri destekleniyor?**
 Bölgeden bölgeye olağanüstü durum kurtarma, Azure ile Azure olağanüstü durum kurtarma ile aynı işletim sistemlerini destekler. [Buradaki](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)destek matrisine bakın.
+
+**5. kaynak ve hedef kaynak grupları aynı olabilir mi?**
+Hayır, farklı bir kaynak grubuna yük devretmeli.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

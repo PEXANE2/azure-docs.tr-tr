@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 011904d7ce14f346b678c753c10a8f3258730ee1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645812"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014528"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler DBMS dağıtımı SQL Server
 
@@ -281,9 +281,9 @@ ms.locfileid: "75645812"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/eresources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -332,7 +332,7 @@ Devam etmeden önce bilmeniz gereken IaaS özel bilgilerinde bazı SQL Server va
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>SAP ile ilgili SQL Server dağıtımlar için VM/VHD yapısına yönelik öneriler
-Genel açıklamaya uygun olarak, SQL Server yürütülebilir dosyaları, VM 'nin IŞLETIM sistemi diskinin sistem sürücüsüne yerleştirilmelidir veya yüklü olmalıdır (sürücü C:\).  Genellikle, SQL Server sistem veritabanlarının çoğu SAP NetWeaver iş yükünde yüksek düzeyde kullanılmaz. Sonuç olarak, SQL Server (Master, msdb ve model) sistem veritabanları C:\ dizininde kalabilir. aynı zamanda. SAP iş yükleri söz konusu olduğunda bir özel durum tempdb olmalıdır ve daha yüksek veri hacmi veya g/ç işlemleri birimi gerektirebilir. İşletim sistemi VHD 'sine uygulanmamalıdır, g/ç iş yükü. Bu tür sistemler için aşağıdaki adımlar gerçekleştirilmelidir:
+Genel açıklamaya uygun olarak, SQL Server yürütülebilir dosyaları, VM 'nin IŞLETIM sistemi diskinin sistem sürücüsüne yerleştirilmelidir veya yüklü olmalıdır (sürücü C: \) .  Genellikle, SQL Server sistem veritabanlarının çoğu SAP NetWeaver iş yükünde yüksek düzeyde kullanılmaz. Sonuç olarak, SQL Server (Master, msdb ve model) sistem veritabanları C:\ dizininde kalabilir. aynı zamanda. SAP iş yükleri söz konusu olduğunda bir özel durum tempdb olmalıdır ve daha yüksek veri hacmi veya g/ç işlemleri birimi gerektirebilir. İşletim sistemi VHD 'sine uygulanmamalıdır, g/ç iş yükü. Bu tür sistemler için aşağıdaki adımlar gerçekleştirilmelidir:
 
 
 * Tüm SAP sertifikalı VM türleriyle (bkz. SAP Note [1928533]), A serisi VM 'ler, tempdb verileri ve günlük dosyaları, kalıcı olmayan d:\ üzerine yerleştirilebilecek sürücü. 
@@ -439,7 +439,7 @@ Bu yedekleme yönteminin, merkezi yedekleme yapılandırmalarının, izlemenin v
 ## <a name="using-a-sql-server-image-out-of-the-microsoft-azure-marketplace"></a><a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Microsoft Azure Market SQL Server bir görüntü kullanma
 Microsoft, Azure Marketi 'nde zaten SQL Server sürümlerini içeren VM 'Leri sunmaktadır. SQL Server ve Windows için lisans gerektiren SAP müşterileri için, bu görüntüleri kullanmak, SQL Server zaten yüklü olan VM 'Leri çağırarak lisans gereksinimini kapsayan bir fırsat olabilir. Bu tür görüntüleri SAP için kullanabilmeniz için aşağıdaki noktalara dikkat edilmesi gerekir:
 
-* Değerlendirme dışı sürümler SQL Server, Azure Marketi 'nden dağıtılan ' yalnızca Windows-yalnızca ' VM 'den daha yüksek maliyetler elde edin. Fiyatları karşılaştırmak için şu makalelere bakın: <https://azure.microsoft.com/pricing/details/virtual-machines/windows/> ve <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/>. 
+* Değerlendirme dışı sürümler SQL Server, Azure Marketi 'nden dağıtılan ' yalnızca Windows-yalnızca ' VM 'den daha yüksek maliyetler elde edin. Fiyatları karşılaştırmak için şu makalelere bakın: <https://azure.microsoft.com/pricing/details/virtual-machines/windows/> ve <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/> . 
 * Yalnızca SAP tarafından desteklenen SQL Server yayınları kullanabilirsiniz.
 * Azure Marketi 'nde sunulan VM 'lerde yüklü olan SQL Server örneğinin harmanlaması, SAP NetWeaver 'in SQL Server örneğinin çalıştırılmasını gerektirir. Harmanlamayı, aşağıdaki bölümdeki yönleri de değiştirebilirsiniz.
 
@@ -448,7 +448,7 @@ Azure Marketi 'ndeki SQL Server görüntüleri, SAP NetWeaver uygulamaları içi
 
 * Yönetici olarak bir Windows komut penceresi açın.
 * Dizini C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\sqlserver2012olarak değiştirin.
-* Komutu yürütün: Setup. exe/QUIET/ACTION = REBUILDDATABASE/ıNSTANCENAME = MSSQLSERVER/SQLSYSADMINACCOUNTS =`<local_admin_account_name`>/Sqlharmanlama = SQL_Latin1_General_Cp850_BIN2   
+* Komutu yürütün: Setup. exe/QUIET/ACTION = REBUILDDATABASE/ıNSTANCENAME = MSSQLSERVER/SQLSYSADMINACCOUNTS = `<local_admin_account_name` >/SQLHARMANLAMA = SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`>, sanal makine Galeri aracılığıyla ilk kez dağıtıldığında yönetici hesabı olarak tanımlanan hesaptır.
 
 İşlem yalnızca birkaç dakika sürer. Adımın doğru sonuçla sonlandırıp sonlanmadığını doğrulamak için aşağıdaki adımları gerçekleştirin:
@@ -480,7 +480,7 @@ Azure 'da SQL Server günlük aktarma işlevselliği, tek bir Azure bölgesinde 
 
 
 
-### <a name="database-mirroring"></a>Veritabanı yansıtma
+### <a name="database-mirroring"></a>Veritabanı Yansıtması
 SAP tarafından desteklenen veritabanı yansıtma (bkz. SAP Note [965908]) SAP bağlantı dizesinde yük devretme ortağı tanımlamayı kullanır. Şirketler arası durumlarda iki VM 'nin aynı etki alanında olduğunu ve iki SQL Server örneğinin Kullanıcı bağlamının bir etki alanı kullanıcısı altında çalıştığını ve söz konusu iki SQL Server örneğinde yeterli ayrıcalıklara sahip olduğunu varsaytık. Bu nedenle, Azure 'da veritabanı yansıtma kurulumu, tipik bir şirket içi kurulum/yapılandırma arasında farklılık gösterir.
 
 Yalnızca bulutta gerçekleştirilen dağıtımlarda, en kolay yöntem, Azure 'daki başka bir etki alanı kurulumunun, bu DBMS VM 'Leri (ve ideal SAP VM 'Leri) bir etki alanı içinde olmasını sağlar.

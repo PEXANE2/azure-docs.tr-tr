@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: 795247cd0d6adfd27115b73c1d0de02e6810d670
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 479e57a6001e143e233457967d55ea0e2fb6d3de
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201133"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021067"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>Azure-SSIS tümleştirme çalışma zamanını SQL veritabanı coğrafi çoğaltma ve yük devretme ile yapılandırma
 
@@ -87,27 +87,27 @@ Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın:
 2. İkincil örnek için yeni bölge, uç nokta ve sanal ağ bilgileriyle Azure-SSIS IR düzenleyin.
 
     ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                -VNetId "new VNet" `
-                -Subnet "new subnet" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+                    -CatalogServerEndpoint "Azure SQL Database endpoint" `
+                    -CatalogAdminCredential "Azure SQL Database admin credentials" `
+                    -VNetId "new VNet" `
+                    -Subnet "new subnet" `
+                    -SetupScriptContainerSasUri "new custom setup SAS URI"
+        ```
 
-3. Azure-SSIS IR yeniden başlatın.
+3. Restart the Azure-SSIS IR.
 
-### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-database-managed-instance"></a>Senaryo 3: Azure-SSIS IR SQL veritabanı yönetilen örneğinin genel uç noktasını işaret ediyor
+### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Database managed instance
 
-Azure-SSIS IR, Azure SQL veritabanı yönetilen örneği 'nin Genel uç noktasını işaret ettiğinden ve sanal bir ağa katılamazsa bu senaryo uygundur. Senaryo 2 ' den tek fark, yük devretmeden sonra Azure-SSIS IR için sanal ağ bilgilerini düzenlemenize gerek kalmaz.
+This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of an Azure SQL Database managed instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
 
-#### <a name="solution"></a>Çözüm
+#### Solution
 
-Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın:
+When failover occurs, take the following steps:
 
-1. Birincil bölgedeki Azure-SSIS IR durdurun.
+1. Stop the Azure-SSIS IR in the primary region.
 
-2. Azure-SSIS IR ikincil örnek için yeni bölge ve uç nokta bilgileriyle düzenleyin.
+2. Edit the Azure-SSIS IR with the new region and endpoint information for the secondary instance.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
@@ -131,13 +131,13 @@ Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın.
 
 1. Birincil bölgedeki Azure-SSIS IR durdurun.
 
-2. ** \< New_data_factory_name \> ** ve ** \< new_integration_runtime_name \> **bağlantılarını kabul etmek için sssısdb 'deki meta verileri güncelleştirmek üzere bir saklı yordamı çalıştırın.
+2. Ve ' den gelen bağlantıları kabul etmek için SSSıSDB içindeki meta verileri güncelleştirmek için bir saklı yordam çalıştırın **\<new_data_factory_name\>** **\<new_integration_runtime_name\>** .
    
     ```sql
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
     ```
 
-3. Yeni bölgede ** \< new_data_factory_name \> ** adlı yeni bir veri fabrikası oluşturun.
+3. Yeni bölgede adlı yeni bir veri fabrikası oluşturun **\<new_data_factory_name\>** .
 
     ```powershell
     Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
@@ -147,7 +147,7 @@ Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın.
     
     Bu PowerShell komutu hakkında daha fazla bilgi için bkz. [PowerShell kullanarak Azure Veri Fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
 
-4. Yeni bölgede Azure PowerShell kullanarak ** \< new_integration_runtime_name \> ** adlı yeni bir Azure-SSIS IR oluşturun.
+4. Azure PowerShell kullanarak yeni bölgede adlı yeni bir Azure-SSIS IR oluşturun **\<new_integration_runtime_name\>** .
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
@@ -202,12 +202,12 @@ Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın:
 2. İkincil örnek için yeni bölge, uç nokta ve sanal ağ bilgileriyle Azure-SSIS IR düzenleyin.
 
     ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                    -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                    -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                    -VNetId "new VNet" `
-                    -Subnet "new subnet" `
-                    -SetupScriptContainerSasUri "new custom setup SAS URI"
+      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+                        -CatalogServerEndpoint "Azure SQL Database endpoint" `
+                        -CatalogAdminCredential "Azure SQL Database admin credentials" `
+                        -VNetId "new VNet" `
+                        -Subnet "new subnet" `
+                        -SetupScriptContainerSasUri "new custom setup SAS URI"
     ```
 
 3. Azure-SSIS IR yeniden başlatın.
@@ -225,13 +225,13 @@ Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın.
 
 1. Birincil bölgedeki Azure-SSIS IR durdurun.
 
-2. ** \< New_data_factory_name \> ** ve ** \< new_integration_runtime_name \> **bağlantılarını kabul etmek için sssısdb 'deki meta verileri güncelleştirmek üzere bir saklı yordamı çalıştırın.
+2. Ve ' den gelen bağlantıları kabul etmek için SSSıSDB içindeki meta verileri güncelleştirmek için bir saklı yordam çalıştırın **\<new_data_factory_name\>** **\<new_integration_runtime_name\>** .
    
     ```sql
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
     ```
 
-3. Yeni bölgede ** \< new_data_factory_name \> ** adlı yeni bir veri fabrikası oluşturun.
+3. Yeni bölgede adlı yeni bir veri fabrikası oluşturun **\<new_data_factory_name\>** .
 
     ```powershell
     Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
@@ -241,7 +241,7 @@ Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın.
     
     Bu PowerShell komutu hakkında daha fazla bilgi için bkz. [PowerShell kullanarak Azure Veri Fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
 
-4. Yeni bölgede Azure PowerShell kullanarak ** \< new_integration_runtime_name \> ** adlı yeni bir Azure-SSIS IR oluşturun.
+4. Azure PowerShell kullanarak yeni bölgede adlı yeni bir Azure-SSIS IR oluşturun **\<new_integration_runtime_name\>** .
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `

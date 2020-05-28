@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 8f64c4a9a438b07fef428a5ed044985736055525
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3f808d45197f7d9ee23d3f809a2ab0452e92c20e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758852"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021305"
 ---
 # <a name="spatial-queries"></a>Uzamsal sorgular
 
@@ -88,9 +88,9 @@ void CastRay(ApiHandle<AzureSession> session)
 
 Üç isabet toplama modu vardır:
 
-* **En yakın:** Bu modda, yalnızca en yakın isabet raporlanır.
-* **Herhangi biri:** Tüm bilmeniz için bu modu tercih etmek istediğiniz zaman, bir ışın her şeyi vurmasına, ancak tam olarak isabet *duymadığını dikkate almamasını* sağlar. Bu sorgu, değerlendirmek için önemli ölçüde olabilir, ancak aynı zamanda yalnızca birkaç uygulama içerir.
-* **Tümü:** Bu modda, ışın üzerinde tüm isabetler raporlanır ve uzaklığa göre sıralanır. Gerçekten ilk isabetden daha fazlasına ihtiyaç duymadığınız takdirde bu modu kullanmayın. Bildirilen isabetlerin sayısını `MaxHits` seçeneğiyle sınırlayın.
+* ** `Closest` :** Bu modda yalnızca en yakın isabet raporlanır.
+* ** `Any` :** Bir ışın her şey için ne zaman isabet eteceğine, ancak tam olarak ne olduğunu *önemsemediğini* bildirmek istiyorsanız bu modu tercih edin. Bu sorgu, değerlendirmek için önemli ölçüde olabilir, ancak aynı zamanda yalnızca birkaç uygulama içerir.
+* ** `All` :** Bu modda, ışın üzerindeki tüm isabetlerin bildirilmesi, uzaklığına göre sıralanır. Gerçekten ilk isabetden daha fazlasına ihtiyaç duymadığınız takdirde bu modu kullanmayın. Bildirilen isabetlerin sayısını `MaxHits` seçeneğiyle sınırlayın.
 
 Nesneleri seçmeli bir şekilde kabul edilmeden dışlamak için, [HierarchicalStateOverrideComponent](override-hierarchical-state.md) bileşeni kullanılabilir.
 
@@ -106,11 +106,11 @@ Bir Ray cast sorgusunun sonucu bir isabet dizisidir. Bir nesne isabet ettirilse 
 
 Bir Isabet aşağıdaki özelliklere sahiptir:
 
-* **Hitentity:** Hangi [varlığa](../../concepts/entities.md) ulaşıldı.
-* **Alt partid:** Bir [Meshcomponent](../../concepts/meshes.md)'ta hangi *alt kafesde* ulaşıldı. , İçinde dizin kurmak `MeshComponent.UsedMaterials` ve bu noktada [malzemenin](../../concepts/materials.md) aramak için kullanılabilir.
-* **Hitposition:** Ray 'un nesnenin kesişen bulunduğu dünya alanı konumu.
-* **Hitnormal:** Dünyanın her yerindeki Dünya alanı, kesişme konumunun normal yüzeyi.
-* **DistanceToHit:** Işın başlangıç konumundan isabetden uzaklığı.
+* ** `HitEntity` :** Hangi [varlığa](../../concepts/entities.md) ulaşıldı.
+* ** `SubPartId` :** Bir [meshcomponent](../../concepts/meshes.md)'ta hangi *alt kafesde* ulaşıldı. , İçinde dizin kurmak `MeshComponent.UsedMaterials` ve bu noktada [malzemenin](../../concepts/materials.md) aramak için kullanılabilir.
+* ** `HitPosition` :** Ray 'un nesnenin kesişen bulunduğu dünya alanı konumu.
+* ** `HitNormal` :** Dünya alanı, kesişme konumundaki kafesin normal yüzeyi.
+* ** `DistanceToHit` :** Ray başlangıç konumundan hit 'e kadar olan uzaklık.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

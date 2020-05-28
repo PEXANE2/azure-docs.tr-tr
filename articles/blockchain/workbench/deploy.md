@@ -4,12 +4,12 @@ description: Azure blok zinciri çalışma ekranı önizlemesi nasıl dağıtıl
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e1a5efe4dd5a6f2a0b016626421f33202ede419
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943196"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021186"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure blok zincirini dağıtma çalışma ekranı önizlemesi
 
@@ -28,7 +28,7 @@ Blok zinciri çalışma ekranı, blok zinciri tabanlı bir uygulama oluşturmak 
 * Event Grid
 * Azure Key Vault
 * Service Bus
-* SQL veritabanı (Standart S0) + SQL mantıksal sunucusu
+* SQL veritabanı (Standart S0)
 * Azure depolama hesabı (Standart LRS)
 * 1 kapasiteye sahip sanal makine ölçek kümesi
 * Sanal ağ kaynak grubu (Load Balancer, ağ güvenlik grubu, genel IP adresi, sanal ağ)
@@ -51,10 +51,10 @@ Azure blok zinciri çalışma ekranı, Azure AD yapılandırması ve uygulama ka
 
 Önkoşul adımları tamamlandıktan sonra, blok zinciri çalışma ekranına dağıtmaya hazırlanın. Aşağıdaki bölümler Framework 'ün nasıl dağıtılacağını özetler.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sağ üst köşede hesabınızı seçin ve Azure blok zinciri 'ni dağıtmak istediğiniz Azure AD kiracısına geçiş yapın.
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
-1. **Blok zinciri** > **Azure blok zinciri (Önizleme)** öğesini seçin.
+1. **Blok zinciri**  >  **Azure blok zinciri (Önizleme)** öğesini seçin.
 
     ![Azure blok zinciri oluşturma çalışma ekranı](media/deploy/blockchain-workbench-settings-basic.png)
 
@@ -64,8 +64,8 @@ Azure blok zinciri çalışma ekranı, Azure AD yapılandırması ve uygulama ka
     | VM Kullanıcı adı | Kullanıcı adı tüm sanal makineler (VM) için yönetici olarak kullanılır. |
     | Kimlik doğrulaması türü | VM 'lere bağlanmak için bir parola veya anahtar kullanmak istiyorsanız seçin. |
     | Parola | Parola, VM 'lere bağlanmak için kullanılır. |
-    | SSH | **Ssh-rsa** ile başlayan tek satırlı BIÇIMDEKI bir RSA ortak anahtarı kullanın veya çok satırlı ped biçimini kullanın. Linux ve OS X veya Windows `ssh-keygen` üzerinde PUTTYGEN kullanarak SSH anahtarları oluşturabilirsiniz. SSH anahtarları hakkında daha fazla bilgi için bkz. [Azure 'Da Windows Ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md). |
-    | Veritabanı ve blok zinciri parolası | Dağıtımın bir parçası olarak oluşturulan veritabanına erişim için kullanılacak parolayı belirtin. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak (\`), çift tırnak ("), tek tırnak ('), tire (-) ve semicolumn (;)) arasında olmalıdır. |
+    | SSH | **Ssh-rsa** ile başlayan tek satırlı BIÇIMDEKI bir RSA ortak anahtarı kullanın veya çok satırlı ped biçimini kullanın. `ssh-keygen`Linux ve OS X veya Windows üzerinde PuTTYGen kullanarak SSH anahtarları oluşturabilirsiniz. SSH anahtarları hakkında daha fazla bilgi için bkz. [Azure 'Da Windows Ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md). |
+    | Veritabanı ve blok zinciri parolası | Dağıtımın bir parçası olarak oluşturulan veritabanına erişim için kullanılacak parolayı belirtin. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak ( \` ), çift tırnak ("), tek tırnak ('), tire (-) ve semicolumn (;)) arasında olmalıdır. |
     | Dağıtım Bölgesi | Blok zinciri çalışma ekranı kaynaklarının nereye dağıtılacağını belirtin. En iyi kullanılabilirlik için bu, **konum** ayarıyla eşleşmelidir. |
     | Abonelik | Dağıtımınız için kullanmak istediğiniz Azure aboneliğini belirtin. |
     | Kaynak grupları | **Yeni oluştur** ' a tıklayarak yeni bir kaynak grubu oluşturun ve benzersiz bir kaynak grubu adı belirtin. |
@@ -123,7 +123,7 @@ Dağıtım 90 dakikaya kadar sürebilir. İlerlemeyi izlemek için Azure portal 
 
 Blok zinciri çalışma ekranı dağıtımı tamamlandıktan sonra, yeni bir kaynak grubu blok zinciri çalışma ekranı kaynaklarınızı içerir. Blok zinciri çalışma ekranı hizmetlerine bir Web URL 'SI üzerinden erişilir. Aşağıdaki adımlarda, dağıtılan çerçevenin Web URL 'sini alma yöntemi gösterilmektedir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol taraftaki Gezinti bölmesinde **kaynak grupları**' nı seçin.
 1. Blok zinciri çalışma ekranı dağıtımı sırasında belirttiğiniz kaynak grubu adını seçin.
 1. Listeyi türe göre alfabetik olarak sıralamak için **tür** sütun başlığını seçin.
@@ -177,10 +177,9 @@ Dağıtımdan önce Azure AD ayarlarını el ile yapılandırmayı veya doğrula
 
 Blok zinciri çalışma ekranı dağıtımı, bir Azure AD uygulamasının kaydedilmesini gerektirir. Uygulamayı kaydettirmek için bir Azure Active Directory (Azure AD) kiracısına sahip olmanız gerekir. Mevcut bir kiracıyı kullanabilir veya yeni bir kiracı oluşturabilirsiniz. Mevcut bir Azure AD kiracısı kullanıyorsanız, uygulamaları kaydetmek, Graph API izinleri vermek ve bir Azure AD kiracısı içinde Konuk erişimine izin vermek için yeterli izinlere sahip olmanız gerekir. Mevcut bir Azure AD kiracısında yeterli izinlere sahip değilseniz yeni bir kiracı oluşturun.
 
-
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sağ üst köşede hesabınızı seçin ve istediğiniz Azure AD kiracısına geçiş yapın. Kiracı, Azure blok zinciri çalışma ekranı 'nın dağıtıldığı ve uygulamaları kaydetmek için yeterli izinlere sahip olduğunuz aboneliğin abonelik yöneticisinin kiracı kiracısı olmalıdır.
-1. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. Yeni **uygulama kayıtları** > **kayıt**' ı seçin.
+1. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. Yeni **uygulama kayıtları**  >  **kayıt**' ı seçin.
 
     ![Uygulama kaydı](media/deploy/app-registration.png)
 
@@ -194,11 +193,9 @@ Blok zinciri çalışma ekranı dağıtımı, bir Azure AD uygulamasının kayde
 
 Daha sonra, blok zinciri çalışma ekranı yöneticilerini belirtmek için bildirimi Azure AD içindeki uygulama rollerini kullanacak şekilde değiştirmeniz gerekir.  Uygulama bildirimleri hakkında daha fazla bilgi için bkz. [uygulama bildirimi Azure Active Directory](../../active-directory/develop/reference-app-manifest.md).
 
-
-1. Bildirim için bir GUID gereklidir. PowerShell komutunu `[guid]::NewGuid()` veya `New-GUID` CMDLET 'ini kullanarak bir GUID oluşturabilirsiniz. Başka bir seçenek de GUID Oluşturucu Web sitesi kullanmaktır.
+1. Bildirim için bir GUID gereklidir. PowerShell komutunu `[guid]::NewGuid()` veya cmdlet 'ini kullanarak BIR GUID oluşturabilirsiniz `New-GUID` . Başka bir seçenek de GUID Oluşturucu Web sitesi kullanmaktır.
 1. Kaydettiğiniz uygulama için **Yönet** bölümünde **bildirim** ' ı seçin.
-1. Sonra, bildirimin **Approles** bölümünü güncelleştirin. Belirtilen `"appRoles": []` JSON ile değiştirin. **Kimlik** alanı değerini, oluşturduğunuz GUID ile değiştirdiğinizden emin olun. 
-
+1. Sonra, bildirimin **Approles** bölümünü güncelleştirin. `"appRoles": []`BELIRTILEN JSON ile değiştirin. Alan değerini, `id` oluşturduğunuz GUID ile değiştirdiğinizden emin olun.
     ![Bildirimi Düzenle](media/deploy/edit-manifest.png)
 
     ``` json
@@ -262,7 +259,7 @@ Dağıtım için uygulama KIMLIĞI ve kiracı bilgileri gereklidir. Dağıtım s
 
 ### <a name="get-tenant-domain-name"></a>Kiracı etki alanı adını al
 
-Uygulamaların kaydedildiği Active Directory kiracı etki alanı adını toplayın ve depolayın. 
+Uygulamaların kaydedildiği Active Directory kiracı etki alanı adını toplayın ve depolayın.
 
 Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. **Özel etki alanı adları**'nı seçin. Etki alanı adını kopyalayıp depolayın.
 
@@ -280,12 +277,12 @@ Azure AD kiracınızda Konuk kullanıcılarınız varsa, blok zinciri çalışma
 
 Azure blok zinciri çalışma ekranı dağıtıldıktan sonra, dağıtılan blok zinciri çalışma ekranı web URL 'sinin Azure Active Directory (Azure AD) istemci uygulaması **yanıt URL** 'sini yapılandırmanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure AD istemci uygulamasını kaydettiğiniz kiracıda olduğunuzu doğrulayın.
 1. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. **Uygulama kayıtları**'nı seçin.
 1. Önkoşul bölümünde kaydettiğiniz Azure AD istemci uygulamasını seçin.
-1. **Kimlik Doğrulaması**'nı seçin.
-1. [Blok zinciri çalışma ekranı web URL 'si](#blockchain-workbench-web-url) bölümünde aldığınız Azure blok zinciri çalışma ekranı dağıtımının ana Web URL 'sini belirtin. Yanıt URL 'SI ön ekine sahiptir `https://`. Örneğin, `https://myblockchain2-7v75.azurewebsites.net`
+1. **Kimlik doğrulaması**' nı seçin.
+1. [Blok zinciri çalışma ekranı web URL 'si](#blockchain-workbench-web-url) bölümünde aldığınız Azure blok zinciri çalışma ekranı dağıtımının ana Web URL 'sini belirtin. Yanıt URL 'SI ön ekine sahiptir `https://` . Örneğin, `https://myblockchain2-7v75.azurewebsites.net`
 
     ![Kimlik doğrulama yanıtı URL 'Leri](media/deploy/configure-reply-url.png)
 
@@ -299,7 +296,7 @@ Azure blok zinciri çalışma ekranı dağıtıldıktan sonra, dağıtılan blok
 
 Bir dağıtıma artık gerek kalmadığında, blok zinciri çalışma ekranı kaynak grubunu silerek bir dağıtımı kaldırabilirsiniz.
 
-1. Azure portal sol gezinti bölmesindeki **kaynak grubu** ' na gidin ve silmek istediğiniz kaynak grubunu seçin. 
+1. Azure portal sol gezinti bölmesindeki **kaynak grubu** ' na gidin ve silmek istediğiniz kaynak grubunu seçin.
 1. **Kaynak grubunu sil**'i seçin. Kaynak grubu adını girip **Sil**' i seçerek silmeyi doğrulayın.
 
     ![Kaynak grubunu silme](media/deploy/delete-resource-group.png)

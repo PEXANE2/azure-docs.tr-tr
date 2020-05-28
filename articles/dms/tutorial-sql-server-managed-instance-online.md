@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 236c68b3c26049073d3e6e942ce2a6be8b7f4fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82d6fe190b191b6aca3bd51dcefb03ecda95b4f2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298896"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020447"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Öğretici: DMS kullanarak Azure SQL veritabanı yönetilen örneğine çevrimiçi olarak SQL Server geçirme
 
-Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını şirket içi SQL Server örneğinden bir [Azure SQL veritabanı yönetilen örneğine](../sql-database/sql-database-managed-instance.md) en az kapalı kalma süresiyle geçirebilirsiniz. Bazı el ile efor gerektirebilecek ek yöntemler için bkz. [Azure SQL veritabanı yönetilen örneği 'ne örnek geçişi SQL Server](../sql-database/sql-database-managed-instance-migrate.md)makalesi.
+Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını şirket içi SQL Server örneğinden bir [Azure SQL veritabanı yönetilen örneğine](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) en az kapalı kalma süresiyle geçirebilirsiniz. Bazı el ile efor gerektirebilecek ek yöntemler için bkz. [Azure SQL veritabanı yönetilen örneği 'ne örnek geçişi SQL Server](../azure-sql/managed-instance/migrate-to-instance-from-sql-server.md)makalesi.
 
 Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak, **Adventureworks2012** veritabanını SQL Server şirket içi ÖRNEĞINDEN bir SQL veritabanı yönetilen örneğine geçirmiş olursunuz.
 
@@ -212,7 +212,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
     |**Kullanıcı adı** | Windows kullanıcısının yukarıda belirttiğiniz ağ paylaşımında tam denetim ayrıcalığına sahip olduğundan emin olun. Azure veritabanı geçiş hizmeti, yedekleme dosyalarını geri yükleme işlemi için Azure depolama kapsayıcısına yüklemek üzere Kullanıcı kimlik bilgisinin kimliğine bürünecektir. Azure dosya paylaşımının kullanılması durumunda Kullanıcı adı olarak AZURE \ ile önceden tamamlandı depolama hesabı adını kullanın. |
     |**Parola** | Kullanıcının parolası. Azure dosya paylaşımının kullanılması durumunda, parola olarak bir depolama hesabı anahtarı kullanın. |
     |**Azure Depolama Hesabının aboneliği** | Azure Depolama Hesabını içeren aboneliği seçin. |
-    |**Azure depolama hesabı** | DMS'nin SMB ağ paylaşımındaki yedekleme dosyalarını yükleyebileceği ve veritabanı geçişi için kullanabileceği Azure Depolama Hesabını seçin.  En iyi dosya yükleme performansı için DMS hizmetiyle aynı bölgede bir Depolama Hesabı seçmenizi öneririz. |
+    |**Azure Depolama Hesabı** | DMS'nin SMB ağ paylaşımındaki yedekleme dosyalarını yükleyebileceği ve veritabanı geçişi için kullanabileceği Azure Depolama Hesabını seçin.  En iyi dosya yükleme performansı için DMS hizmetiyle aynı bölgede bir Depolama Hesabı seçmenizi öneririz. |
 
     ![Geçiş Ayarlarını Yapılandırma](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
@@ -267,5 +267,5 @@ Tam veritabanı yedeklemesi SQL veritabanı yönetilen örneği 'nin hedef örne
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * T-SQL RESTORE komutunu kullanarak bir veritabanını yönetilen bir örneğe nasıl geçirebileceğiniz hakkında bir öğretici için [restore komutunu kullanarak bir veritabanını yönetilen örneğe geri yükleme](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)bölümüne bakın.
-* Yönetilen örnek hakkında daha fazla bilgi için bkz. [yönetilen örnek nedir](../sql-database/sql-database-managed-instance.md).
-* Uygulamaları yönetilen bir örneğe bağlama hakkında daha fazla bilgi için bkz. [uygulamaları bağlama](../sql-database/sql-database-managed-instance-connect-app.md).
+* Yönetilen örnek hakkında daha fazla bilgi için bkz. [yönetilen örnek nedir](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
+* Uygulamaları yönetilen bir örneğe bağlama hakkında daha fazla bilgi için bkz. [uygulamaları bağlama](../azure-sql/managed-instance/connect-application-instance.md).

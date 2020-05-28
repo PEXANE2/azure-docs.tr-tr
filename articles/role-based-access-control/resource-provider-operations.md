@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3d8851004c5d976961d96ca7d9f315780765fcde
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 679b5e60f65daac2006598c6bf12c9cdeec5541d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199574"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015922"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager kaynak sağlayıcısı işlemleri
 
@@ -31,7 +31,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 Azure hizmeti: [Azure Active Directory Domain Services](../active-directory-domain-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. AAD/Unregister/eylem | Etki alanı hizmetinin kaydını sil |
 > | Eylem | Microsoft. AAD/Register/ACTION | Etki alanı hizmetini Kaydet |
@@ -53,7 +53,7 @@ Azure hizmeti: [Azure Active Directory Domain Services](../active-directory-doma
 Azure Active Directory
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | Eylem | Microsoft. aadihar/diagnosticsettings/Write | Tanılama ayarı yazma |
@@ -88,7 +88,7 @@ Azure Active Directory
 Azure hizmeti: çekirdek
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. addons/Register/ACTION | Belirtilen aboneliği Microsoft. addons ile kaydedin |
 > |  | **operasyonları** |  |
@@ -105,7 +105,7 @@ Azure hizmeti: çekirdek
 Azure hizmeti: [Azure Active Directory](../active-directory/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ADHybridHealthService/yapılandırma/eylem | Kiracı yapılandırmasını güncelleştirir. |
 > | Eylem | Microsoft. ADHybridHealthService/Services/Action | Kiracıdaki bir hizmet örneğini güncelleştirir. |
@@ -239,7 +239,7 @@ Azure hizmeti: [Azure Active Directory](../active-directory/index.yml)
 Azure hizmeti: [Azure Danışmanı](../advisor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Advisor/Generatereyorumları/eylem | Öneri durumunu al |
 > | Eylem | Microsoft. Advisor/Register/ACTION | Microsoft Advisor için aboneliği kaydeder |
@@ -270,7 +270,7 @@ Azure hizmeti: [Azure Danışmanı](../advisor/index.yml)
 Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. AlertsManagement/Register/Action | Microsoft Uyarıları yönetimi için aboneliği kaydeder |
 > |  | **actionRules** |  |
@@ -309,7 +309,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 Azure hizmeti: [Azure Analysis Services](../analysis-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. AnalysisServices/Register/ACTION | Analysis Services kaynak sağlayıcısını kaydeder. |
 > |  | **yerlerini** |  |
@@ -337,7 +337,7 @@ Azure hizmeti: [Azure Analysis Services](../analysis-services/index.yml)
 Azure hizmeti: [API Management](../api-management/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Apimanayönetimi/kaydet/eylem | Microsoft. Apimanayönetimi kaynak sağlayıcısı için aboneliği kaydedin |
 > | Eylem | Microsoft. Apimanayönetimi/kaydını kaldırma/eylem | Microsoft. Apimana, kaynak sağlayıcısı için aboneliği kayıt kaldırmayı kaldır |
@@ -635,7 +635,7 @@ Azure hizmeti: [API Management](../api-management/index.yml)
 Azure hizmeti: çekirdek
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. AppConfiguration/Register/ACTION | Microsoft uygulama yapılandırmasını kullanmak için bir abonelik kaydeder. |
 > |  | **Checknameavaılabılıty** |  |
@@ -682,7 +682,7 @@ Azure hizmeti: çekirdek
 Azure hizmeti: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Authorization/yükseltir Teaccess/Action | Çağrı yapana kiracı kapsamında Kullanıcı Erişimi Yöneticisi erişim izni verir |
 > |  | **classicAdministrators** |  |
@@ -736,7 +736,7 @@ Azure hizmeti: [Azure Resource Manager](../azure-resource-manager/index.yml)
 Azure hizmeti: [Otomasyon](../automation/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Automation/Register/ACTION | Aboneliği Azure Otomasyonu 'na kaydeder |
 > |  | **automationAccounts** |  |
@@ -917,7 +917,7 @@ Azure hizmeti: [Otomasyon](../automation/index.yml)
 Azure hizmeti: [Azure Active Directory B2C](../active-directory-b2c/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. AzureActiveDirectory/Register/ACTION | Microsoft. AzureActiveDirectory kaynak sağlayıcısı için aboneliği kaydetme |
 > |  | **b2cDirectories** |  |
@@ -934,7 +934,7 @@ Azure hizmeti: [Azure Active Directory B2C](../active-directory-b2c/index.yml)
 Azure hizmeti: çekirdek
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. AzureStack/Register/Action | Aboneliği Microsoft. AzureStack kaynak sağlayıcısına kaydeder |
 > |  | **cloudManifestFiles** |  |
@@ -962,7 +962,7 @@ Azure hizmeti: çekirdek
 Azure hizmeti: [Batch](../batch/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Batch/Register/ACTION | Batch kaynak sağlayıcısı için aboneliği kaydeder ve Batch hesaplarının oluşturulmasını etkinleştirilir |
 > | Eylem | Microsoft. Batch/Unregister/eylem | Batch kaynak sağlayıcısı için aboneliğin kaydını siler Batch hesaplarının oluşturulmasını önler |
@@ -1028,7 +1028,7 @@ Azure hizmeti: [Batch](../batch/index.yml)
 Azure hizmeti: [maliyet yönetimi + faturalandırma](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. faturalandırma/validateAddress/ACTION |  |
 > | Eylem | Microsoft. faturalandırma/Register/ACTION |  |
@@ -1097,7 +1097,7 @@ Azure hizmeti: [maliyet yönetimi + faturalandırma](../cost-management-billing/
 Azure hizmeti: [Bing Haritalar](https://docs.microsoft.com/BingMaps/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. BingMaps/updateCommunicationPreference/eylem | Microsoft. BingMaps sahibi için iletişim tercihlerini güncelleştirir |
 > | Eylem | Microsoft. BingMaps/listCommunicationPreference/eylem | Microsoft. BingMaps sahibi için iletişim tercihlerini alır |
@@ -1116,7 +1116,7 @@ Azure hizmeti: [Bing Haritalar](https://docs.microsoft.com/BingMaps/)
 Azure hizmeti: [Azure blok zinciri hizmeti](../blockchain/workbench/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Blockzincirine/Register/ACTION | Blok zinciri kaynak sağlayıcısı için aboneliği kaydeder. |
 > |  | **blockchainMembers** |  |
@@ -1147,7 +1147,7 @@ Azure hizmeti: [Azure blok zinciri hizmeti](../blockchain/workbench/index.yml)
 Azure hizmeti: [Azure şemaları](../governance/blueprints/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. BLUEPRINT/Register/Action | Azure şemaları kaynak sağlayıcısını kaydeder |
 > |  | **Şema tasmi** |  |
@@ -1177,7 +1177,7 @@ Azure hizmeti: [Azure şemaları](../governance/blueprints/index.yml)
 Azure hizmeti: [Azure bot hizmeti](https://docs.microsoft.com/azure/bot-service/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. BotService/checknameavaılabılıty/Action | Bir bot 'ın ad kullanılabilirliğini denetleme |
 > | Eylem | Microsoft. BotService/listauthserviceproviders/Action | Kimlik doğrulama hizmeti sağlayıcılarını listeleme |
@@ -1206,7 +1206,7 @@ Azure hizmeti: [Azure bot hizmeti](https://docs.microsoft.com/azure/bot-service/
 Azure hizmeti: [redsıs Için Azure önbelleği](../azure-cache-for-redis/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Cache/checknameavaılabılıty/Action | Bir adın yeni bir Redis Cache kullanılmak üzere kullanılabilir olup olmadığını denetler |
 > | Eylem | Microsoft. Cache/Register/ACTION | ' Microsoft. cache ' kaynak sağlayıcısını bir abonelikle kaydeder |
@@ -1246,7 +1246,7 @@ Azure hizmeti: [redsıs Için Azure önbelleği](../azure-cache-for-redis/index.
 Azure hizmeti: çekirdek
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Capacity/calculateprice/Action | Herhangi bir rezervasyon fiyatını hesapla |
 > | Eylem | Microsoft. Capacity/checktekliflere/eyleme | Tüm abonelik tekliflerini denetleyin |
@@ -1295,7 +1295,7 @@ Azure hizmeti: çekirdek
 Azure hizmeti: [Content Delivery Network](../cdn/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. CDN/Register/ACTION | CDN kaynak sağlayıcısı için aboneliği kaydeder ve CDN profillerinin oluşturulmasına izin vermez. |
 > | Eylem | Microsoft. CDN/Checknameavaılabılıty/Action |  |
@@ -1379,7 +1379,7 @@ Azure hizmeti: [Content Delivery Network](../cdn/index.yml)
 Azure hizmeti: [App Service sertifikaları](../app-service/configure-ssl-certificate.md#import-an-app-service-certificate)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. CertificateRegistration/provisionGlobalAppServicePrincipalInUserTenant/Action | Hizmet uygulaması sorumlusu için hizmet sorumlusu sağlama |
 > | Eylem | Microsoft. CertificateRegistration/Validatecertificateregistrationınformation/Action | Sertifika satın alma nesnesini göndermeden doğrula |
@@ -1408,7 +1408,7 @@ Azure hizmeti: [App Service sertifikaları](../app-service/configure-ssl-certifi
 Azure hizmeti: klasik dağıtım modeli sanal makinesi
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ClassicCompute/Register/Action | Klasik Işlem 'a kaydol |
 > | Eylem | Microsoft. ClassicCompute/Checkdomainnameavaılabılıty/Action | Belirli bir etki alanı adının kullanılabilirliğini denetler. |
@@ -1582,7 +1582,7 @@ Azure hizmeti: klasik dağıtım modeli sanal makinesi
 Azure hizmeti: klasik dağıtım modeli sanal ağı
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ClassicNetwork/Register/Action | Klasik ağa Kaydet |
 > |  | **expressroutecrossconnections** |  |
@@ -1689,7 +1689,7 @@ Azure hizmeti: klasik dağıtım modeli sanal ağı
 Azure hizmeti: klasik dağıtım modeli depolaması
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ClassicStorage/Register/Action | Klasik depolamaya kaydolun |
 > | Eylem | Microsoft. ClassicStorage/checkStorageAccountAvailability/eylem | Bir depolama hesabının kullanılabilirliğini denetler. |
@@ -1788,7 +1788,7 @@ Azure hizmeti: klasik dağıtım modeli depolaması
 Azure hizmeti: bilişsel [Hizmetler](../cognitive-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Biliveservices/Register/Action | Abonelik kaydı eylemi |
 > | Eylem | Microsoft. Biliveservices/Register/Action | Bilişsel hizmetler için aboneliği kaydeder |
@@ -2152,7 +2152,7 @@ Azure hizmeti: bilişsel [Hizmetler](../cognitive-services/index.yml)
 Azure hizmeti: çekirdek
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Commerce/Register/ACTION | Microsoft Commerce UsageAggregate için abonelik kaydetme |
 > | Eylem | Microsoft. Commerce/Unregister/eylem | Microsoft Commerce Usagetoplamasını abonelik kaydını sil |
@@ -2166,7 +2166,7 @@ Azure hizmeti: çekirdek
 Azure hizmeti: [sanal makineler](../virtual-machines/index.yml), [Sanal Makine Ölçek Kümeleri](../virtual-machine-scale-sets/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. COMPUTE/Register/ACTION | Aboneliği Microsoft. COMPUTE kaynak sağlayıcısına kaydeder |
 > | Eylem | Microsoft. COMPUTE/kaydını kaldırma/eylem | Microsoft. COMPUTE kaynak sağlayıcısı ile aboneliğin kaydını siler |
@@ -2406,7 +2406,7 @@ Azure hizmeti: [sanal makineler](../virtual-machines/index.yml), [Sanal Makine �
 Azure hizmeti: [maliyet yönetimi](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. tüketim/Register/ACTION | Tüketim RP 'ye kaydol |
 > |  | **aggregmalyt maliyeti** |  |
@@ -2464,7 +2464,7 @@ Azure hizmeti: [maliyet yönetimi](../cost-management-billing/index.yml)
 Azure hizmeti: [Container Instances](../container-instances/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Containerınstance/Register/ACTION | Kapsayıcı örneği kaynak sağlayıcısı için aboneliği kaydeder ve kapsayıcı gruplarının oluşturulmasına izin vermez. |
 > |  | **Kapsayıcı grupları** |  |
@@ -2507,7 +2507,7 @@ Azure hizmeti: [Container Instances](../container-instances/index.yml)
 Azure hizmeti: [Container Registry](../container-registry/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ContainerRegistry/Register/ACTION | Kapsayıcı kayıt defteri kaynak sağlayıcısı için aboneliği kaydeder ve kapsayıcı kayıt defterlerinin oluşturulmasını sunar. |
 > |  | **Checknameavaılabılıty** |  |
@@ -2625,7 +2625,7 @@ Azure hizmeti: [Container Registry](../container-registry/index.yml)
 Azure hizmeti: [Azure Kubernetes hizmeti (AKS)](../aks/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ContainerService/Register/Action | Aboneliği Microsoft. ContainerService kaynak sağlayıcısına kaydeder |
 > | Eylem | Microsoft. ContainerService/Unregister/eylem | Microsoft. ContainerService kaynak sağlayıcısı ile aboneliğin kaydını siler |
@@ -2683,7 +2683,7 @@ Azure hizmeti: [Azure Kubernetes hizmeti (AKS)](../aks/index.yml)
 Azure hizmeti: [maliyet yönetimi](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. CostManagement/Query/Action | Kullanım verilerini bir kapsama göre sorgulama. |
 > | Eylem | Microsoft. CostManagement/Reports/Action | Kullanım verileri hakkında raporları bir kapsama göre zamanlayın. |
@@ -2727,7 +2727,7 @@ Azure hizmeti: [maliyet yönetimi](../cost-management-billing/index.yml)
 > | Eylem | Microsoft. CostManagement/Externalabonelikleriniz/tahmin/okuma | Dış BillingAccounts için kullanım verilerini tahmin edin. |
 > |  | **Externalabonelikler/sorgu** |  |
 > | Eylem | Microsoft. CostManagement/Externalabonelikleriniz/sorgu/okuma | Dış abonelik için kullanım verilerini sorgula. |
-> |  | **t** |  |
+> |  | **tahmin** |  |
 > | Eylem | Microsoft. CostManagement/tahmin/okuma | Kullanım verilerini bir kapsama göre tahmin edin. |
 > |  | **operasyonları** |  |
 > | Eylem | Microsoft. CostManagement/işlemler/okuma | Desteklenen tüm işlemleri Microsoft. CostManagement kaynak sağlayıcısına listeleyin. |
@@ -2747,7 +2747,7 @@ Azure hizmeti: [maliyet yönetimi](../cost-management-billing/index.yml)
 Azure hizmeti: [Azure Data Box](../databox-family/index.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. DataBox/Register/Action | Sağlayıcıyı kaydet Microsoft. databox |
 > | Eylem | Microsoft. DataBox/kaydını kaldırma/eylem | Kaydettirme sağlayıcısını Kaldır Microsoft. databox |
@@ -2778,7 +2778,7 @@ Azure hizmeti: [Azure Data Box](../databox-family/index.md)
 Azure hizmeti: [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > |  | **dataBoxEdgeDevices** |  |
 > | Eylem | Microsoft. DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/Action | Cihaz kaydı için sertifikayı karşıya yükle |
@@ -2884,7 +2884,7 @@ Azure hizmeti: [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md
 Azure hizmeti: [Azure Databricks](../azure-databricks/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Databricks/Register/ACTION | Databricks 'e kaydolun. |
 > |  | **yerlerini** |  |
@@ -2920,7 +2920,7 @@ Azure hizmeti: [Azure Databricks](../azure-databricks/index.yml)
 Azure hizmeti: [Veri Kataloğu](../data-catalog/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. DataCatalog/Register/ACTION | Veri Kataloğu kaynak sağlayıcısı için aboneliği kaydetme |
 > | Eylem | Microsoft. DataCatalog/Unregister/ACTION | Veri Kataloğu kaynak sağlayıcısı aboneliğini silme |
@@ -2942,7 +2942,7 @@ Azure hizmeti: [Veri Kataloğu](../data-catalog/index.yml)
 Azure hizmeti: [Data Factory](../data-factory/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. DataFactory/Register/ACTION | Data Factory kaynak sağlayıcısı için aboneliği kaydeder. |
 > | Eylem | Microsoft. DataFactory/Unregister/eylem | Data Factory kaynak sağlayıcısı için aboneliğin kaydını siler. |
@@ -3114,7 +3114,7 @@ Azure hizmeti: [Data Factory](../data-factory/index.yml)
 Azure hizmeti: [Data Lake Analytics](../data-lake-analytics/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. DataLakeAnalytics/Register/Action | Aboneliği DataLakeAnalytics 'e kaydedin. |
 > |  | **hesapları** |  |
@@ -3164,7 +3164,7 @@ Azure hizmeti: [Data Lake Analytics](../data-lake-analytics/index.yml)
 Azure hizmeti: [Azure Data Lake Store](../storage/blobs/data-lake-storage-introduction.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. DataLakeStore/Register/ACTION | Aboneliği DataLakeStore 'ye kaydedin. |
 > |  | **hesapları** |  |
@@ -3211,7 +3211,7 @@ Azure hizmeti: [Azure Data Lake Store](../storage/blobs/data-lake-storage-introd
 Azure hizmeti: [Azure veritabanı geçiş hizmeti](../dms/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. DataMigration/Register/Action | Aboneliği Azure veritabanı geçiş hizmeti sağlayıcısına kaydeder |
 > |  | **konumlar/operationResults** |  |
@@ -3257,7 +3257,7 @@ Azure hizmeti: [Azure veritabanı geçiş hizmeti](../dms/index.yml)
 Azure hizmeti: [MariaDB Için Azure veritabanı](../mariadb/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Dbformarıdb/Register/ACTION | MariaDB kaynak sağlayıcısını Kaydet |
 > | Eylem | Microsoft. Dbformarıdb/Checknameavaılabılıty/Action | Belirli bir abonelik için verilen sunucu adının dünya genelinde sağlanması için kullanılabilir olup olmadığını doğrulayın. |
@@ -3366,7 +3366,7 @@ Azure hizmeti: [MariaDB Için Azure veritabanı](../mariadb/index.yml)
 Azure hizmeti: [MySQL Için Azure veritabanı](../mysql/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Dbformyısql/Register/Action | MySQL kaynak sağlayıcısını Kaydet |
 > | Eylem | Microsoft. Dbformyısql/Checknameavaılabılıty/Action | Belirli bir abonelik için verilen sunucu adının dünya genelinde sağlanması için kullanılabilir olup olmadığını doğrulayın. |
@@ -3475,7 +3475,7 @@ Azure hizmeti: [MySQL Için Azure veritabanı](../mysql/index.yml)
 Azure hizmeti: [PostgreSQL Için Azure veritabanı](../postgresql/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. DBforPostgreSQL/Register/Action | PostgreSQL kaynak sağlayıcısını Kaydet |
 > | Eylem | Microsoft. DBforPostgreSQL/Checknameavaılabılıty/Action | Belirli bir abonelik için verilen sunucu adının dünya genelinde sağlanması için kullanılabilir olup olmadığını doğrulayın. |
@@ -3610,7 +3610,7 @@ Azure hizmeti: [PostgreSQL Için Azure veritabanı](../postgresql/index.yml)
 Azure hizmeti: [IoT Hub](../iot-hub/index.yml) [IoT Hub cihaz sağlama hizmeti](../iot-dps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Devices/Register/Action | Iothub kaynak sağlayıcısı için aboneliği kaydedin ve ıothub kaynaklarının oluşturulmasını etkinleştirilir |
 > | Eylem | Microsoft. Devices/Checknameavaılabılıty/Action | Iothub adının kullanılabilir olup olmadığını denetle |
@@ -3802,7 +3802,7 @@ Azure hizmeti: [IoT Hub](../iot-hub/index.yml) [IoT Hub cihaz sağlama hizmeti](
 Azure hizmeti: [Azure dev Spaces](../dev-spaces/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. DevSpaces/Register/ACTION | Microsoft dev Spaces kaynak sağlayıcısını abonelikle kaydetme |
 > |  | **örleri** |  |
@@ -3822,7 +3822,7 @@ Azure hizmeti: [Azure dev Spaces](../dev-spaces/index.yml)
 Azure hizmeti: [Azure Lab Services](../lab-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. DevTestLab/Register/Action | Aboneliği kaydeder |
 > |  | **labCenters** |  |
@@ -3971,7 +3971,7 @@ Azure hizmeti: [Azure Lab Services](../lab-services/index.yml)
 Azure hizmeti: [Azure Cosmos DB](../cosmos-db/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. DocumentDB/Register/ACTION |  Abonelik için Microsoft DocumentDB kaynak sağlayıcısını kaydedin |
 > |  | **databaseAccountNames** |  |
@@ -4272,7 +4272,7 @@ Azure hizmeti: [Azure Cosmos DB](../cosmos-db/index.yml)
 Azure hizmeti: [App Service](../app-service/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. DomainRegistration/generateSsoRequest/ACTION | Etki alanı Denetim Merkezi 'nde oturum açmak için bir istek oluşturun. |
 > | Eylem | Microsoft. DomainRegistration/Validatedomainregistrationınformation/Action | Etki alanı satın alma nesnesini göndermeden doğrula |
@@ -4304,7 +4304,7 @@ Azure hizmeti: [App Service](../app-service/index.yml)
 Azure hizmeti: [Event Grid](../event-grid/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. EventGrid/Register/Action | EventGrid kaynak sağlayıcısı için aboneliği kaydeder. |
 > | Eylem | Microsoft. EventGrid/Unregister/eylem | EventGrid kaynak sağlayıcısı için aboneliğin kaydını siler. |
@@ -4433,7 +4433,7 @@ Azure hizmeti: [Event Grid](../event-grid/index.yml)
 Azure hizmeti: [Event Hubs](../event-hubs/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. EventHub/checkNamespaceAvailability/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. Bu API kullanım dışı, lütfen bunun yerine Checknameavaılabılıty kullanın. |
 > | Eylem | Microsoft. EventHub/Checknameavaılabılıty/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. |
@@ -4538,7 +4538,7 @@ Azure hizmeti: [Event Hubs](../event-hubs/index.yml)
 Azure hizmeti: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Features/Register/Action | Bir aboneliğin özelliğini kaydeder. |
 > |  | **özelliklerinde** |  |
@@ -4555,7 +4555,7 @@ Azure hizmeti: [Azure Resource Manager](../azure-resource-manager/index.yml)
 Azure hizmeti: [Azure ilkesi](../governance/policy/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. GuestConfiguration/Register/Action | Microsoft. GuestConfiguration kaynak sağlayıcısı için aboneliği kaydeder. |
 > |  | **Guestconfigurationatamaları** |  |
@@ -4572,7 +4572,7 @@ Azure hizmeti: [Azure ilkesi](../governance/policy/index.yml)
 Azure hizmeti: [HDInsight](../hdinsight/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. HDInsight/Register/ACTION | Abonelik için HDInsight kaynak sağlayıcısını Kaydet |
 > | Eylem | Microsoft. HDInsight/Unregister/eylem | Abonelik için HDInsight kaynak sağlayıcısı kaydını sil |
@@ -4611,7 +4611,7 @@ Azure hizmeti: [HDInsight](../hdinsight/index.yml)
 Azure hizmeti: [Azure Arc](../azure-arc/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. HybridCompute/Register/Action | Microsoft. HybridCompute kaynak sağlayıcısı için aboneliği kaydeder |
 > | Eylem | Microsoft. HybridCompute/kaydını kaldırma/eylem | Microsoft. HybridCompute kaynak sağlayıcısı için aboneliğin kaydını siler |
@@ -4634,7 +4634,7 @@ Azure hizmeti: [Azure Arc](../azure-arc/index.yml)
 Azure hizmeti: [Azure içeri/dışarı aktarma](../storage/common/storage-import-export-service.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ımportexport/Register/Action | İçeri/dışarı aktarma kaynak sağlayıcısı için aboneliği kaydeder ve içeri/dışarı aktarma işlerinin oluşturulmasına izin verir. |
 > |  | **Çizelge** |  |
@@ -4652,7 +4652,7 @@ Azure hizmeti: [Azure içeri/dışarı aktarma](../storage/common/storage-import
 Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Insights/ölçümler/eylem | Ölçüm eylemi |
 > | Eylem | Microsoft. Insights/Register/ACTION | Microsoft Insights sağlayıcısını kaydedin |
@@ -5127,7 +5127,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Eylem | Microsoft. Insights/MetricDefinitions/sağlayıcılar/Microsoft. Insights/Read | Ölçüm tanımlarını oku |
 > |  | **Metricnamespaces** |  |
 > | Eylem | Microsoft. Insights/Metricnamespaces/Read | Ölçüm ad alanlarını oku |
-> |  | **Ölçümler** |  |
+> |  | **Metrics** (Ölçümler) |  |
 > | Eylem | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
 > |  | **Ölçümler/Microsoft. Öngörüler** |  |
 > | Eylem | Microsoft. Insights/ölçümler/Microsoft. Öngörüler/okuma | Ölçümleri oku |
@@ -5181,7 +5181,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Eylem | Microsoft. Insights/çalışma kitapları/okuma | Çalışma kitabını okuma |
 > |  | **DataCollectionRules/veri** |  |
 > | DataAction | Microsoft. Insights/DataCollectionRules/veri/yazma | Verileri bir veri toplama kuralına gönder |
-> |  | **Ölçümler** |  |
+> |  | **Metrics** (Ölçümler) |  |
 > | DataAction | Microsoft. Insights/ölçümler/yazma | Ölçümleri yaz |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
@@ -5189,7 +5189,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 Microsoft Monitoring Insights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | Eylem | Microsoft. Intune/diagnosticsettings/Write | Tanılama ayarı yazma |
@@ -5203,7 +5203,7 @@ Microsoft Monitoring Insights
 Azure hizmeti: [IoT Central](../iot-central/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ıotcentral/Checknameavaılabılıty/Action | IoT Central bir uygulama adının kullanılabilir olup olmadığını denetler |
 > | Eylem | Microsoft. ıotcentral/Checksubdomainavaılabılıty/Action | IoT Central uygulama alt etki alanının kullanılabilir olup olmadığını denetler |
@@ -5221,7 +5221,7 @@ Azure hizmeti: [IoT Central](../iot-central/index.yml)
 Azure hizmeti: [Azure dijital TWINS](../digital-twins/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ıotspaces/yazmaç/Action | Kaynak oluşturmayı etkinleştirmek için Microsoft. ıotspaces Graph kaynak sağlayıcısı için aboneliği kaydedin |
 > |  | **Graph** |  |
@@ -5234,7 +5234,7 @@ Azure hizmeti: [Azure dijital TWINS](../digital-twins/index.yml)
 Azure hizmeti: [Key Vault](../key-vault/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Keykasası/Register/ACTION | Bir aboneliği kaydeder |
 > | Eylem | Microsoft. Keykasası/kaydını kaldırma/eylem | Aboneliğin kaydını siler |
@@ -5318,7 +5318,7 @@ Azure hizmeti: [Key Vault](../key-vault/index.yml)
 Azure hizmeti: [azure Veri Gezgini](/azure/data-explorer/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. kusto/Register/ACTION | Abonelik kaydı eylemi |
 > | Eylem | Microsoft. kusto/Register/ACTION | Aboneliği kusto kaynak sağlayıcısına kaydeder. |
@@ -5389,7 +5389,7 @@ Azure hizmeti: [azure Veri Gezgini](/azure/data-explorer/)
 Azure hizmeti: [Azure Lab Services](../lab-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. LabServices/Register/ACTION | Aboneliği kaydeder |
 > |  | **labAccounts** |  |
@@ -5457,7 +5457,7 @@ Azure hizmeti: [Azure Lab Services](../lab-services/index.yml)
 Azure hizmeti: [Logic Apps](../logic-apps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Logic/Register/ACTION | Belirli bir abonelik için Microsoft. Logic Resource sağlayıcısını kaydeder. |
 > |  | **Tümleştirme hesapları** |  |
@@ -5609,7 +5609,7 @@ Azure hizmeti: [Logic Apps](../logic-apps/index.yml)
 Azure hizmeti: [Machine Learning Studio](../machine-learning/studio/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Machinöğretim/Register/ACTION | Machine Learning Web hizmeti kaynak sağlayıcısı için aboneliği kaydeder ve Web Hizmetleri oluşturmayı sunar. |
 > | Eylem | Microsoft. Machinöğrenim/webServices/eylem | Desteklenen bölgeler için bölgesel Web hizmeti özellikleri oluşturma |
@@ -5635,7 +5635,7 @@ Azure hizmeti: [Machine Learning Studio](../machine-learning/studio/index.yml)
 > | Eylem | Microsoft. Machinöğrenim/webServices/Delete | Tüm Machine Learning Web hizmetini silme |
 > |  | **webServices/ListKeys** |  |
 > | Eylem | Microsoft. Machinöğrenim/webServices/ListKeys/Read | Machine Learning Web hizmetine anahtar al |
-> |  | **Çalışma Alanları** |  |
+> |  | **Çalışma alanları** |  |
 > | Eylem | Microsoft. Machinöğrenim/çalışma alanları/okuma | Machine Learning Çalışma Alanı okuyun |
 > | Eylem | Microsoft. Machinöğrenim/çalışma alanları/yazma | Machine Learning Çalışma Alanı oluşturun veya güncelleştirin |
 > | Eylem | Microsoft. Machinöğrenim/çalışma alanları/silme | Machine Learning Çalışma Alanı silme |
@@ -5647,7 +5647,7 @@ Azure hizmeti: [Machine Learning Studio](../machine-learning/studio/index.yml)
 Azure hizmeti: [Machine Learning hizmeti](../machine-learning/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. MachineLearningServices/Register/Action | Machine Learning Services kaynak sağlayıcısı için aboneliği kaydeder |
 > |  | **yerlerini** |  |
@@ -5799,7 +5799,7 @@ Azure hizmeti: [Machine Learning hizmeti](../machine-learning/index.yml)
 Azure hizmeti: [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Managedıdentity/Register/Action | Yönetilen kimlik kaynak sağlayıcısı için aboneliği kaydeder |
 > |  | **lerinizde** |  |
@@ -5817,7 +5817,7 @@ Azure hizmeti: [Azure kaynakları Için Yönetilen kimlikler](../active-director
 Azure hizmeti: [Azure](../lighthouse/index.yml) açık bir kullanım
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ManagedServices/Register/ACTION | Yönetilen hizmetlere kaydolun. |
 > | Eylem | Microsoft. ManagedServices/kaydını kaldırma/eylem | Yönetilen hizmetlerden kayıt silme. |
@@ -5841,7 +5841,7 @@ Azure hizmeti: [Azure](../lighthouse/index.yml) açık bir kullanım
 Azure hizmeti: [Yönetim grupları](../governance/management-groups/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Management/Checknameavaılabılıty/Action | Belirtilen yönetim grubu adının geçerli ve benzersiz olup olmadığını denetler. |
 > | Eylem | Microsoft. Management/getEntities/Action | Kimliği doğrulanmış kullanıcı için tüm varlıkları (Yönetim Grupları, abonelikler vb.) listeleyin. |
@@ -5865,7 +5865,7 @@ Azure hizmeti: [Yönetim grupları](../governance/management-groups/index.yml)
 Azure hizmeti: [Azure Maps](../azure-maps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Maps/Register/ACTION | Sağlayıcıyı Kaydet |
 > |  | **hesapları** |  |
@@ -5892,7 +5892,7 @@ Azure hizmeti: [Azure Maps](../azure-maps/index.yml)
 Azure hizmeti: çekirdek
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Market/Register/ACTION | Microsoft. Market kaynak sağlayıcısını abonelikte kaydeder. |
 > | Eylem | Microsoft. Market/Privatemağazaların/eylemin | PrivateStore güncelleştirir. |
@@ -5917,7 +5917,7 @@ Azure hizmeti: çekirdek
 Azure hizmeti: çekirdek
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > |  | **ClassicDevServices** |  |
 > | Eylem | Microsoft. MarketplaceApps/ClassicDevServices/Read | Klasik bir geliştirme hizmetinde bir GET işlemi yapar. |
@@ -5933,7 +5933,7 @@ Azure hizmeti: çekirdek
 Azure hizmeti: çekirdek
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > |  | **anlaşmalar** |  |
 > | Eylem | Microsoft. Marketplacesıralaması/sözleşmeleri/okumak | Belirtilen abonelik altındaki tüm anlaşmaları döndür |
@@ -5952,7 +5952,7 @@ Azure hizmeti: çekirdek
 Azure hizmeti: [Media Services](../media-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Media/Register/ACTION | Media Services kaynak sağlayıcısı için aboneliği kaydeder ve Media Services hesaplarının oluşturulmasını sunar |
 > | Eylem | Microsoft. Media/Unregister/eylem | Media Services kaynak sağlayıcısı için aboneliğin kaydını siler |
@@ -6085,7 +6085,7 @@ Azure hizmeti: [Media Services](../media-services/index.yml)
 Azure hizmeti: [Azure geçişi](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Migrate/Register/ACTION | Aboneliği Microsoft. Migrate kaynak sağlayıcısına kaydeder |
 > |  | **assessmentprojects** |  |
@@ -6178,7 +6178,7 @@ Azure hizmeti: [Azure geçişi](../migrate/migrate-services-overview.md)
 Azure hizmeti: [Azure uzamsal bağlantıları](../spatial-anchors/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. MixedReality/Register/ACTION | Karma Gerçeklik kaynak sağlayıcısı için bir abonelik kaydeder. |
 > |  | **remoteRenderingAccounts/Providers/Microsoft. Insights/metricDefinitions** |  |
@@ -6223,7 +6223,7 @@ Azure hizmeti: [Azure uzamsal bağlantıları](../spatial-anchors/index.yml)
 Azure hizmeti: [Azure NetApp Files](../azure-netapp-files/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. NetApp/Register/ACTION | Abonelik kaydı eylemi |
 > | Eylem | Microsoft. NetApp/Unregister/eylem | Microsoft. NetApp kaynak sağlayıcısı ile aboneliğin kaydını siler |
@@ -6287,7 +6287,7 @@ Azure hizmeti: [Azure NetApp Files](../azure-netapp-files/index.yml)
 Azure hizmeti: [sanal ağ](../virtual-network/index.yml), [Load Balancer](../load-balancer/index.yml), [Application Gateway](../application-gateway/index.yml), [Azure DNS](../dns/index.yml), [ExpressRoute](../expressroute/index.yml), [VPN Gateway](../vpn-gateway/index.yml), [Traffic Manager](../traffic-manager/index.yml), [Ağ İzleyicisi](../network-watcher/index.yml), [Azure Güvenlik Duvarı](../firewall/index.yml) [Azure ön kapı hizmeti](../frontdoor/index.yml), [Azure](../bastion/index.yml) savunma
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Network/Register/ACTION | Aboneliği kaydeder |
 > | Eylem | Microsoft. Network/Unregister/ACTION | Aboneliğin kaydını siler |
@@ -6987,12 +6987,12 @@ Azure hizmeti: [sanal ağ](../virtual-network/index.yml), [Load Balancer](../loa
 Azure hizmeti: [Notification Hubs](../notification-hubs/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Notificationhub/Register/ACTION | Notificationhub 'Lar kaynak sağlayıcısı için aboneliği kaydeder ve ad alanları ile Notificationhub 'ların oluşturulmasını sunar |
 > | Eylem | Microsoft. Notificationhub 'Lar/kaydını kaldırma/eylem | Notificationhub 'Lar kaynak sağlayıcısı için aboneliğin kaydını siler ve ad alanları ile Notificationhub 'ların oluşturulmasını etkinleştirilir |
 > | Eylem | Microsoft. Notificationhub 'Lar/CheckNamespaceAvailability/Action | Belirtilen bir ad alanı kaynak adının NotificationHub hizmeti içinde kullanılabilir olup olmadığını denetler. |
-> |  | **Ad Alanları** |  |
+> |  | **Ad alanları** |  |
 > | Eylem | Microsoft. Notificationhub 'Lar/ad alanları/yazma | Bir ad alanı kaynağı oluşturun ve özelliklerini güncelleştirin. Ad alanının etiketleri ve kapasitesi, güncelleştirilebilen özelliklerdir. |
 > | Eylem | Microsoft. Notificationhub 'Lar/ad alanları/okuma | Ad alanı kaynağı açıklaması listesini al |
 > | Eylem | Microsoft. Notificationhub 'Lar/ad alanları/silme | Ad alanı kaynağını Sil |
@@ -7029,7 +7029,7 @@ Azure hizmeti: [Notification Hubs](../notification-hubs/index.yml)
 Azure hizmeti: [Azure geçişi](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. OffAzure/Register/ACTION | Aboneliği Microsoft. OffAzure kaynak sağlayıcısına kaydeder |
 > | Eylem | Microsoft. OffAzure/Register/ACTION | Aboneliği Microsoft. OffAzure kaynak sağlayıcısına kaydeder |
@@ -7301,7 +7301,7 @@ Azure hizmeti: [Azure geçişi](../migrate/migrate-services-overview.md)
 Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Operationalınsights/Register/ACTION | Bir kaynak sağlayıcısına abonelik kaydedin. |
 > | Eylem | Microsoft. operationalınsights/Register/ACTION | Aboneliği yeniden yönlendirme. |
@@ -7969,7 +7969,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. OperationsManagement/Register/Action | Bir kaynak sağlayıcısına abonelik kaydedin. |
 > |  | **managementAssociations** |  |
@@ -7990,7 +7990,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 Azure hizmeti: [Azure ilkesi](../governance/policy/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Poliyeleghts/Register/Action | Microsoft Policy Insights kaynak sağlayıcısını kaydeder ve üzerinde eylemler sunar. |
 > | Eylem | Microsoft. Policınghts/Unregister/eylem | Microsoft Policy Insights kaynak sağlayıcısının kaydını siler. |
@@ -8030,7 +8030,7 @@ Azure hizmeti: [Azure ilkesi](../governance/policy/index.yml)
 Azure hizmeti: [Azure Portal](../azure-portal/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Portal/kaydet/eylem | Portala kaydolun |
 > |  | **konsolları** |  |
@@ -8051,7 +8051,7 @@ Azure hizmeti: [Azure Portal](../azure-portal/index.yml)
 Azure hizmeti: [Power BI Embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Powerbiadanmış/yazmaç/eylem | Adanmış Power BI kaynak sağlayıcısını kaydeder. |
 > |  | **kapasiteler** |  |
@@ -8078,7 +8078,7 @@ Azure hizmeti: [Power BI Embedded](https://docs.microsoft.com/azure/power-bi-emb
 Azure hizmeti: [Site Recovery](../site-recovery/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. RecoveryServices/Register/Action | Belirtilen kaynak sağlayıcısı için aboneliği kaydeder |
 > |  | **Konumlar** |  |
@@ -8381,7 +8381,7 @@ Azure hizmeti: [Site Recovery](../site-recovery/index.yml)
 Azure hizmeti: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Relay/checkNamespaceAvailability/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. Bu API kullanım dışı, lütfen bunun yerine Checknameavaılabılıty kullanın. |
 > | Eylem | Microsoft. Relay/Checknameavaılabılıty/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. |
@@ -8460,7 +8460,7 @@ Azure hizmeti: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 Azure hizmeti: [Azure hizmet durumu](../service-health/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ResourceHealth/Register/ACTION | Microsoft ResourceHealth için aboneliği kaydeder |
 > | Eylem | Microsoft. ResourceHealth/Unregister/ACTION | Microsoft ResourceHealth için aboneliğin kaydını siler |
@@ -8493,7 +8493,7 @@ Azure hizmeti: [Azure hizmet durumu](../service-health/index.yml)
 Azure hizmeti: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. resources/checkResourceName/Action | Kaynak adını geçerlilik için denetleyin. |
 > | Eylem | Microsoft. resources/calculateTemplateHash/Action | Belirtilen şablonun karmasını hesaplayın. |
@@ -8572,7 +8572,7 @@ Azure hizmeti: [Azure Resource Manager](../azure-resource-manager/index.yml)
 Azure hizmeti: [Zamanlayıcı](../scheduler/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > |  | **işlere** |  |
 > | Eylem | Microsoft. Scheduler/jobcollections/Read | Iş toplamayı al |
@@ -8594,7 +8594,7 @@ Azure hizmeti: [Zamanlayıcı](../scheduler/index.yml)
 Azure hizmeti: [Azure Search](../search/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Search/Register/ACTION | Arama kaynak sağlayıcısı için aboneliği kaydeder ve arama hizmetleri oluşturmayı sunar. |
 > | Eylem | Microsoft. Search/Checknameavaılabılıty/Action | Hizmet adının kullanılabilirliğini denetler. |
@@ -8623,7 +8623,7 @@ Azure hizmeti: [Azure Search](../search/index.yml)
 Azure hizmeti: [Güvenlik Merkezi](../security-center/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Security/Register/ACTION | Azure Güvenlik Merkezi için aboneliği kaydeder |
 > | Eylem | Microsoft. Security/Unregister/ACTION | Azure Güvenlik Merkezi ' nden aboneliğin kaydını siler |
@@ -8730,7 +8730,7 @@ Azure hizmeti: [Güvenlik Merkezi](../security-center/index.yml)
 Microsoft Monitoring Insights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | Eylem | Microsoft. SecurityGraph/diagnosticsettings/Write | Tanılama ayarı yazma |
@@ -8744,7 +8744,7 @@ Microsoft Monitoring Insights
 Azure hizmeti: [Azure Sentinel](../sentinel/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Securityınsights/Register/ACTION | Aboneliği Azure Sentinel 'e kaydeder |
 > | Eylem | Microsoft. Securityınsights/kaydını kaldırma/eylem | Azure Sentinel 'deki aboneliğin kaydını siler |
@@ -8759,7 +8759,7 @@ Azure hizmeti: [Azure Sentinel](../sentinel/index.yml)
 > | Eylem | Microsoft. Securityınsights/alertRules/eylemler/okuma | Bir uyarı kuralının yanıt eylemlerini alır |
 > | Eylem | Microsoft. Securityınsights/alertRules/Actions/Write | Bir uyarı kuralının yanıt eylemlerini güncelleştirir |
 > | Eylem | Microsoft. Securityınsights/alertRules/Actions/Delete | Bir uyarı kuralının yanıt eylemlerini siler |
-> |  | **Yer İşaretleri** |  |
+> |  | **Yer işaretleri** |  |
 > | Eylem | Microsoft. Securityınsights/yer Işaretleri/okuma | Yer imlerini alır |
 > | Eylem | Microsoft. Securityınsights/yer Işaretleri/yazma | Güncelleştirmeler yer işaretlerini |
 > | Eylem | Microsoft. Securityınsights/yer Işaretleri/silme | Yer imlerini siler |
@@ -8806,7 +8806,7 @@ Azure hizmeti: [Azure Sentinel](../sentinel/index.yml)
 Azure hizmeti: [Service Bus](../service-bus/index.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ServiceBus/checkNamespaceAvailability/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. Bu API kullanım dışı, lütfen bunun yerine Checknameavaılabılıty kullanın. |
 > | Eylem | Microsoft. ServiceBus/Checknameavaılabılıty/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. |
@@ -8927,7 +8927,7 @@ Azure hizmeti: [Service Bus](../service-bus/index.md)
 Azure hizmeti: [Service Fabric](../service-fabric/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. ServiceFabric/Register/ACTION | Tüm eylemleri kaydetme |
 > |  | **leriniz** |  |
@@ -8976,7 +8976,7 @@ Azure hizmeti: [Service Fabric](../service-fabric/index.yml)
 Azure hizmeti: [Azure SignalR hizmeti](../azure-signalr/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. SignalRService/Register/Action | ' Microsoft. SignalRService ' kaynak sağlayıcısını bir abonelikle kaydeder |
 > | Eylem | Microsoft. SignalRService/Unregister/eylem | ' Microsoft. SignalRService ' kaynak sağlayıcısının aboneliğini bir abonelikle siler |
@@ -9026,7 +9026,7 @@ Azure hizmeti: [Azure SignalR hizmeti](../azure-signalr/index.yml)
 Azure hizmeti: [Azure yönetilen uygulamalar](../azure-resource-manager/managed-applications/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Solutions/Register/ACTION | Çözümlere kaydolun. |
 > | Eylem | Microsoft. Solutions/Unregister/Action | Çözümlerdeki kaydını siler. |
@@ -9055,10 +9055,10 @@ Azure hizmeti: [Azure yönetilen uygulamalar](../azure-resource-manager/managed-
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure hizmeti: [Azure SQL veritabanı](../sql-database/index.yml), [SQL veri ambarı](../sql-data-warehouse/index.yml)
+Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure SQL yönetilen örnek](../azure-sql/managed-instance/index.yml) [SQL veri ambarı](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. SQL/Checknameavaılabılıty/Action | Belirli bir abonelik için verilen sunucu adının dünya genelinde sağlanması için kullanılabilir olup olmadığını doğrulayın. |
 > | Eylem | Microsoft. SQL/Register/ACTION | Microsoft SQL veritabanı kaynak sağlayıcısı için aboneliği kaydeder ve Microsoft SQL veritabanlarının oluşturulmasına izin vermez. |
@@ -9333,7 +9333,7 @@ Azure hizmeti: [Azure SQL veritabanı](../sql-database/index.yml), [SQL veri amb
 > | Eylem | Microsoft. SQL/işlemler/okuma | Kullanılabilir REST işlemlerini alır |
 > |  | **larý** |  |
 > | Eylem | Microsoft. SQL/Servers/tdeCertificates/ACTION | TDE sertifikası oluştur/güncelleştir |
-> | Eylem | Microsoft. SQL/Servers/disableAzureADOnlyAuthentication/eylem | Yalnızca mantıksal sunucuda Azure Active Directory kimlik doğrulamasını devre dışı bırak |
+> | Eylem | Microsoft. SQL/Servers/disableAzureADOnlyAuthentication/eylem | Azure SQL veritabanındaki bir sunucuda yalnızca Azure Active Directory kimlik doğrulamasını devre dışı bırak|
 > | Eylem | Microsoft. SQL/Servers/Read | Sunucu listesini döndürün veya belirtilen sunucunun özelliklerini alır. |
 > | Eylem | Microsoft. SQL/Servers/Write | Belirtilen parametrelere sahip bir sunucu oluşturur veya belirtilen sunucu için özellikleri veya etiketleri güncelleştirir. |
 > | Eylem | Microsoft. SQL/Servers/Delete | Var olan bir sunucuyu siler. |
@@ -9628,7 +9628,7 @@ Azure hizmeti: [Azure SQL veritabanı](../sql-database/index.yml), [SQL veri amb
 > |  | **sunucular/ımportexportoperationsonuçları** |  |
 > | Eylem | Microsoft. SQL/Servers/ımportexportoperationresults/Read | Devam eden içeri/dışarı aktarma işlemlerini alır |
 > |  | **sunucular/ınblebledatabases** |  |
-> | Eylem | Microsoft. SQL/Servers/ınblebledatabases/Read | Bir mantıksal sunucuda erişilemeyen veritabanlarının listesini döndürür. |
+> | Eylem | Microsoft. SQL/Servers/ınblebledatabases/Read | Azure SQL datbase 'deki bir sunucuda erişilemeyen veritabanlarının bir listesini döndürür. |
 > |  | **sunucular/ınterfaceendpointprofiles** |  |
 > | Eylem | Microsoft. SQL/Servers/ınterfaceendpointprofiles/Write | Belirtilen parametrelerle bir arabirim uç noktası profili oluşturur veya belirtilen arabirim uç noktası için özellikleri veya etiketleri güncelleştirir |
 > | Eylem | Microsoft. SQL/Servers/ınterfaceendpointprofiles/okuma | Belirtilen arabirim uç noktası profilinin özelliklerini döndürür |
@@ -9699,10 +9699,10 @@ Azure hizmeti: [Azure SQL veritabanı](../sql-database/index.yml), [SQL veri amb
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
-Azure hizmeti: [Azure sanal makinelerinde SQL Server](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+Azure hizmeti: [Azure sanal makinelerinde SQL Server](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. SqlVirtualMachine/yazmaç/Action | Aboneliği Microsoft. SqlVirtualMachine kaynak sağlayıcısına Kaydet |
 > | Eylem | Microsoft. SqlVirtualMachine/kayıt kaldırma/eylem | Microsoft. SqlVirtualMachine kaynak sağlayıcısı ile aboneliğin kaydını sil |
@@ -9736,7 +9736,7 @@ Azure hizmeti: [Azure sanal makinelerinde SQL Server](../virtual-machines/window
 Azure hizmeti: [depolama](../storage/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Storage/Register/ACTION | Depolama kaynak sağlayıcısı için aboneliği kaydeder ve depolama hesaplarının oluşturulmasına izin vermez. |
 > |  | **checknameavaılabılıty** |  |
@@ -9875,7 +9875,7 @@ Azure hizmeti: [depolama](../storage/index.yml)
 Azure hizmeti: [depolama](../storage/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. storagessync/Register/ACTION | Depolama eşitleme sağlayıcısı için aboneliği kaydeder |
 > | Eylem | Microsoft. storagessync/Unregister/Action | Depolama eşitleme sağlayıcısı için aboneliğin kaydını siler |
@@ -9934,7 +9934,7 @@ Azure hizmeti: [depolama](../storage/index.yml)
 Azure hizmeti: [StorSimple](../storsimple/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. StorSimple/Register/ACTION | Sağlayıcıyı kaydet Microsoft. StorSimple |
 > |  | **ilerinde** |  |
@@ -10199,7 +10199,7 @@ Azure hizmeti: [StorSimple](../storsimple/index.yml)
 Azure hizmeti: [Stream Analytics](../stream-analytics/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. StreamAnalytics/Register/ACTION | Aboneliği Stream Analytics kaynak sağlayıcısına Kaydet |
 > |  | **konumlar/kotalar** |  |
@@ -10258,7 +10258,7 @@ Azure hizmeti: [Stream Analytics](../stream-analytics/index.yml)
 Azure hizmeti: çekirdek
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Subscription/CreateSubscription/eylem | Azure aboneliği oluşturma |
 > | Eylem | Microsoft. Subscription/Register/ACTION | Aboneliği Microsoft. Subscription kaynak sağlayıcısına kaydeder |
@@ -10273,7 +10273,7 @@ Azure hizmeti: çekirdek
 Azure hizmeti: çekirdek
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft.Support/register/action | Destek kaynak sağlayıcısını kaydeder |
 > | Eylem | Microsoft. support/Checknameavaılabılıty/Action | Bu adın, kaynak türü için geçerli ve kullanımda olup olmadığını denetler |
@@ -10299,7 +10299,7 @@ Azure hizmeti: çekirdek
 Azure hizmeti: [Time Series Insights](../time-series-insights/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Timeseriesınsights/Register/ACTION | Time Series Insights kaynak sağlayıcısı için aboneliği kaydeder ve Time Series Insights ortamların oluşturulmasını sunar. |
 > |  | **lý** |  |
@@ -10326,7 +10326,7 @@ Azure hizmeti: [Time Series Insights](../time-series-insights/index.yml)
 Azure hizmeti: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. VisualStudio/Register/ACTION | Azure aboneliğini Microsoft. VisualStudio sağlayıcısıyla kaydetme |
 > |  | **Hesap** |  |
@@ -10352,7 +10352,7 @@ Azure hizmeti: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 Azure hizmeti: [App Service](../app-service/index.yml), [işlevler](../azure-functions/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft. Web/Unregister/eylem | Abonelik için Microsoft. Web kaynak sağlayıcısı kaydını silin. |
 > | Eylem | Microsoft. Web/Validate/ACTION | Doğrulamalısınız. |
@@ -11011,7 +11011,7 @@ Azure hizmeti: [App Service](../app-service/index.yml), [işlevler](../azure-fun
 Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem Türü | İşlem | Açıklama |
+> | Eylem Türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > |  | **bileşenleri** |  |
 > | Eylem | Microsoft. WorkloadMonitor/Components/Read | Kaynak için bileşenleri alır |

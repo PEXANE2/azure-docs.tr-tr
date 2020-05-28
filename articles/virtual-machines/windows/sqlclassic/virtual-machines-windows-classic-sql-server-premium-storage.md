@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ca11fce252192cbf8e5f0bc2cfb5fcd38f5d4443
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833940"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020889"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Sanal Makineler’de SQL Server ile Azure Premium Depolama kullanma
 
@@ -41,7 +41,7 @@ IAAS VM 'lerinde SQL Server Azure Premium Storage 'ın kullanılmasıyla ilgili 
 * Olası geçiş yaklaşımları.
 * Mevcut her zaman açık uygulamanın geçişine yönelik Azure, Windows ve SQL Server adımlarını gösteren tam uçtan uca örnek.
 
-Azure sanal makineler 'de SQL Server ilgili daha fazla arka plan bilgisi için bkz. [Azure sanal makineler 'de SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Azure sanal makineler 'de SQL Server ilgili daha fazla arka plan bilgisi için bkz. [Azure sanal makineler 'de SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 
 **Yazar:** Daniel Nuevo **Teknik gözden geçirenler:** Lusıs Carlos Vargaz Herhalka, Sanjay Mishra, Pravin mcar, Juergen Thomas, Gonzalo Ruiz.
 
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. Adım: isteğe bağlı kaynakların izin verilen başarısızlıklarını artırma \<>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. Adım: kaynaklarda izin verilen sorunları artırma\<Optional>
 
 Her zaman açık kullanılabilirlik grubunuza ait olan belirli kaynaklarda, küme hizmetinin kaynak grubunu yeniden başlatmaya çalıştığı, bir dönemde oluşabilecek hataların sayısı sınırlar vardır. Bu yordamda ilerlemeniz önerilir. bu şekilde, makineyi kapatarak yük devretmeleri el ile gerçekleştirerek ve tetikleyemezseniz bu sınıra kadar kapatabilirsiniz.
 
@@ -691,7 +691,7 @@ Hata indirimini ikiye katmaya devam ediyor, bunu Yük Devretme Kümesi Yönetici
 
 En yüksek başarısızlık sayısını 6 olarak değiştirin.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. Adım: küme grubu için IP adresi kaynağı ekleme \< isteğe bağlı>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. Adım: küme grubu için IP adresi kaynağı ekleme\<Optional>
 
 Küme grubu için yalnızca bir IP adresiniz varsa ve bu bulut alt ağına hizalanmışsa, bu ağ üzerinde bulutta tüm küme düğümlerini yanlışlıkla çevrimdışı duruma getirdiğinizde, küme IP kaynağı ve küme ağı adı çevrimiçi duruma gelmeyecektir. Bu durumda, diğer küme kaynaklarının güncelleştirilmesini engeller.
 
@@ -1250,7 +1250,7 @@ IP adresini eklemek için bkz. ek, 14. adım.
 
 * [Azure Premium Depolama](../disks-types.md)
 * [Sanal makineler](https://azure.microsoft.com/services/virtual-machines/)
-* [Azure sanal makineler 'de SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [Azure sanal makineler 'de SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 <!-- IMAGES -->
 [1]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/1_VNET_Portal.png

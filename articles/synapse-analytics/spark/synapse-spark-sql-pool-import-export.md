@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739286"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020872"
 ---
 # <a name="introduction"></a>Giriş
 
@@ -59,7 +59,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 İçeri aktarma deyimleri gerekli değildir, Not defteri deneyimi için önceden içeri aktarırlar.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Çalışma alanıyla eklenen mantıksal sunucudaki (DW örneği) bir SQL havuzundan veri aktarma
+### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Çalışma alanıyla eklenmiş bir SQL havuzuna veya veri aktarımı
 
 > [!NOTE]
 > **Not defteri deneyiminde içeri aktarmalar gerekmez**
@@ -92,7 +92,7 @@ df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 
 Depolama ve SQL Server kimlik doğrulaması yapılır
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Çalışma alanı dışındaki bir mantıksal sunucudaki bir SQL havuzuna veya veritabanına veri aktardıysanız
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Bir SQL havuzuna veya çalışma alanı dışında bir veritabanına veri aktardıysanız
 
 > [!NOTE]
 > Not defteri deneyiminde içeri aktarmalar gerekmez

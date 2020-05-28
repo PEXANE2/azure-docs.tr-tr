@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: 7fb87380047d046a580d1ad62b1d7107a94bb297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddcf1d05933daadd29bf2f93850ac3299dc9e734
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80239897"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020124"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -284,9 +284,9 @@ ms.locfileid: "80239897"
 [virtual-machines-sizes]:../../linux/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
@@ -497,7 +497,7 @@ Azure portal, şablon için aşağıdaki parametreleri girin:
    * **Yönetici Kullanıcı adı** ve **yönetici parolası**: bir Kullanıcı adı ve parola.
      Sanal makinede oturum açmak için yeni bir Kullanıcı oluşturulur.
    * **Yeni veya mevcut alt ağ**: yeni bir sanal ağın ve alt ağın oluşturulup oluşturulmayacağını veya var olan bir alt ağın kullanılıp kullanılmadığını belirler. Şirket içi ağınıza bağlı bir sanal ağınız zaten varsa, **mevcut**' ı seçin.
-   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:&lt;/Subscriptions/abonelik kimliği>/resourceGroups/&lt;kaynak grubu adı>/providers/microsoft.network/virtualnetworks/&lt;sanal ağ adı>/subnets/&lt;alt ağ adı>
+   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:/Subscriptions/ &lt; abonelik kimliği>/resourceGroups/ &lt; kaynak grubu adı>/Providers/Microsoft.Network/virtualnetworks/ &lt; sanal ağ adı>/Subnets/ &lt; alt ağ adı>
 
 1. **Hüküm ve koşullar**:  
     Yasal koşulları gözden geçirin ve kabul edin.
@@ -540,7 +540,7 @@ Linux için özel bir görüntü oluşturmak üzere Windows için bir tane oluş
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Birden çok sanal makine dağıtmak için kullanabileceğiniz bir Linux görüntüsünü hazırlamak için bazı Linux ayarlarının, şirket içi VM 'de soyut veya Genelleştirilmiş olması gerekir. Bunu yapmak için `waagent -deprovision` kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure 'da çalışan bir Linux sanal makinesini][virtual-machines-linux-capture-image] ve [Azure Linux Aracısı kullanıcı kılavuzunu][virtual-machines-linux-agent-user-guide-command-line-options]yakalama.
+> Birden çok sanal makine dağıtmak için kullanabileceğiniz bir Linux görüntüsünü hazırlamak için bazı Linux ayarlarının, şirket içi VM 'de soyut veya Genelleştirilmiş olması gerekir. `waagent -deprovision`Bunu yapmak için kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure 'da çalışan bir Linux sanal makinesini][virtual-machines-linux-capture-image] ve [Azure Linux Aracısı kullanıcı kılavuzunu][virtual-machines-linux-agent-user-guide-command-line-options]yakalama.
 >
 >
 
@@ -630,14 +630,14 @@ Azure portal, şablon için aşağıdaki parametreleri girin:
       * [RDBMS dağıtımları için bir sanal makinenin depolama yapısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Depolama: Azure sanal makine iş yükleri için yüksek performanslı depolama][storage-premium-storage-preview-portal]
       * [Microsoft Azure Depolama'ya Giriş][storage-introduction]
-   * **Kullanıcı görüntüsü VHD URI 'si** (yalnızca yönetilmeyen disk görüntü şablonu): özel işletim SISTEMI görüntüsü VHD 'sinin URI 'si (örneğin, https://&lt;AccountName>. blob.Core.Windows.net/VHDs/userimage.vhd).
-   * **Kullanıcı görüntüsü depolama hesabı** (yalnızca yönetilmeyen disk görüntüsü şablonu): özel işletim sistemi görüntüsünün depolandığı depolama hesabının adı, örneğin &lt;accountname> https://&lt;AccountName>. blob.Core.Windows.net/VHDs/userimage.vhd.
+   * **Kullanıcı görüntüsü VHD URI 'si** (yalnızca yönetilmeyen disk görüntü şablonu): özel işletim SISTEMI görüntüsü VHD 'sinin URI 'si (örneğin, https:// &lt; accountname>. blob.Core.Windows.net/VHDs/userimage.vhd).
+   * **Kullanıcı görüntüsü depolama hesabı** (yalnızca yönetilmeyen disk görüntüsü şablonu): özel işletim sistemi görüntüsünün depolandığı depolama hesabının adı, örneğin &lt; AccountName> https:// &lt; AccountName>. blob.Core.Windows.net/VHDs/userimage.vhd.
    * **Userımageıd** (yalnızca yönetilen disk görüntüsü şablonu): kullanmak Istediğiniz yönetilen disk görüntüsünün kimliği
    * **Yönetici Kullanıcı adı** ve **yönetici parolası**: Kullanıcı adı ve parola.
 
      Sanal makinede oturum açmak için yeni bir Kullanıcı oluşturulur.
    * **Yeni veya mevcut alt ağ**: yeni bir sanal ağın ve alt ağın oluşturulup oluşturulmayacağını veya var olan bir alt ağın kullanılıp kullanılmadığını belirler. Şirket içi ağınıza bağlı bir sanal ağınız zaten varsa, **mevcut**' ı seçin.
-   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:&lt;/Subscriptions/abonelik kimliği>/resourceGroups/&lt;kaynak grubu adı>/providers/microsoft.network/virtualnetworks/&lt;sanal ağ adı>/subnets/&lt;alt ağ adı>
+   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:/Subscriptions/ &lt; abonelik kimliği>/resourceGroups/ &lt; kaynak grubu adı>/Providers/Microsoft.Network/virtualnetworks/ &lt; sanal ağ adı>/Subnets/ &lt; alt ağ adı>
 
 1. **Hüküm ve koşullar**:  
     Yasal koşulları gözden geçirin ve kabul edin.
@@ -722,10 +722,10 @@ Azure portal, şablon için aşağıdaki parametreleri girin:
       * [RDBMS dağıtımları için bir sanal makinenin depolama yapısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Depolama: Azure sanal makine iş yükleri için yüksek performanslı depolama][storage-premium-storage-preview-portal]
       * [Microsoft Azure Depolama'ya Giriş][storage-introduction]
-   * **Işletim sistemi DISKI VHD URI 'si** (yalnızca yönetilmeyen disk şablonu): özel işletim sistemi diskinin URI 'si (örneğin, https://&lt;AccountName>. blob.Core.Windows.net/VHDs/OSDisk.vhd).
+   * **Işletim sistemi DISKI VHD URI 'si** (yalnızca yönetilmeyen disk şablonu): özel işletim sistemi diskinin URI 'si (örneğin, https:// &lt; accountname>. blob.Core.Windows.net/VHDs/OSDisk.vhd).
    * **Işletim sistemi diski yönetilen disk kimliği** (yalnızca yönetilen disk şablonu): yönetilen disk işletim sistemi diskinin kimliği,/Subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/Group/Providers/Microsoft.COMPUTE/Disks/WIN
    * **Yeni veya mevcut alt ağ**: yeni bir sanal ağ ve alt ağ oluşturulup oluşturulmayacağını veya var olan bir alt ağın kullanılıp kullanılmadığını belirler. Şirket içi ağınıza bağlı bir sanal ağınız zaten varsa, **mevcut**' ı seçin.
-   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:&lt;/Subscriptions/abonelik kimliği>/resourceGroups/&lt;kaynak grubu adı>/providers/microsoft.network/virtualnetworks/&lt;sanal ağ adı>/subnets/&lt;alt ağ adı>
+   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:/Subscriptions/ &lt; abonelik kimliği>/resourceGroups/ &lt; kaynak grubu adı>/Providers/Microsoft.Network/virtualnetworks/ &lt; sanal ağ adı>/Subnets/ &lt; alt ağ adı>
 
 1. **Hüküm ve koşullar**:  
     Yasal koşulları gözden geçirin ve kabul edin.
@@ -879,8 +879,8 @@ Windows 'da proxy 'yi yapılandırmak için gerçekleştirmeniz gereken adımlar
 Yerel sistem hesabının Internet 'e erişmesi için proxy ayarlarının doğru ayarlanmış olması gerekir. Proxy ayarlarınız grup ilkesi tarafından ayarlanmamışsa, yerel sistem hesabı için ayarları yapılandırabilirsiniz.
 
 1. **Başlat**' a gidin, **gpedit. msc**yazın ve ardından **ENTER**' u seçin.
-1.  > **Windows bileşenleri****Internet Explorer****Yönetim Şablonları** >  **bilgisayar yapılandırması** > ' nı seçin. **Proxy ayarlarını makine başına (Kullanıcı başına değil)** ayarla ayarının devre dışı veya yapılandırılmamış olduğundan emin olun.
-1. **Denetim Masası**' nda **Ağ ve Paylaşım Merkezi** > **Internet seçenekleri**' ne gidin.
+1. **Computer Configuration**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**Yönetim Şablonları bilgisayar yapılandırması ' nı seçin. **Proxy ayarlarını makine başına (Kullanıcı başına değil)** ayarla ayarının devre dışı veya yapılandırılmamış olduğundan emin olun.
+1. **Denetim Masası**' nda **Ağ ve Paylaşım Merkezi**  >  **Internet seçenekleri**' ne gidin.
 1. **Bağlantılar** sekmesinde, **LAN ayarları** düğmesini seçin.
 1. **Ayarları otomatik olarak algıla** onay kutusunu temizleyin.
 1. **LAN için bir proxy sunucusu kullan** onay kutusunu seçin ve ardından proxy adresini ve bağlantı noktasını girin.
@@ -889,7 +889,7 @@ Yerel sistem hesabının Internet 'e erişmesi için proxy ayarlarının doğru 
 
 #### <a name="linux"></a>Linux
 
-Aynı anda \\\\waagent. conf dosyasında bulunan Microsoft Azure Konuk aracısının yapılandırma dosyasında doğru proxy 'yi yapılandırın.
+Aynı anda \\ waagent. conf dosyasında bulunan Microsoft Azure Konuk aracısının yapılandırma dosyasında doğru proxy 'yi yapılandırın \\ .
 
 Aşağıdaki parametreleri ayarlayın:
 
@@ -913,18 +913,18 @@ Aşağıdaki parametreleri ayarlayın:
    sudo service waagent restart
    ```
 
-Ya da\\waagent \\. conf içindeki ara sunucu ayarları, gerekli VM uzantıları için de geçerlidir. Azure depolarını kullanmak istiyorsanız, bu depoların trafiğinin şirket içi intranetinizden gitmediğinden emin olun. Zorlamalı tüneli etkinleştirmek için Kullanıcı tanımlı yollar oluşturduysanız, siteden siteye VPN bağlantınız üzerinden değil, trafiği depolara doğrudan Internet 'e yönlendiren bir yol eklediğinizden emin olun.
+Ya \\ \\ da waagent. conf içindeki ara sunucu ayarları, gerekli VM uzantıları için de geçerlidir. Azure depolarını kullanmak istiyorsanız, bu depoların trafiğinin şirket içi intranetinizden gitmediğinden emin olun. Zorlamalı tüneli etkinleştirmek için Kullanıcı tanımlı yollar oluşturduysanız, siteden siteye VPN bağlantınız üzerinden değil, trafiği depolara doğrudan Internet 'e yönlendiren bir yol eklediğinizden emin olun.
 
 * **SLES**
 
-  Ayrıca, vs \\\\regionserverclnt. cfg ' de listelenen IP adreslerine yönelik yollar eklemeniz gerekir. Aşağıdaki şekilde bir örnek gösterilmektedir:
+  Ayrıca, \\ vs regionserverclnt. cfg ' de LISTELENEN IP adreslerine yönelik yollar eklemeniz gerekir \\ . Aşağıdaki şekilde bir örnek gösterilmektedir:
 
   ![Zorlamalı tünel oluşturma][deployment-guide-figure-50]
 
 
 * **RHEL**
 
-  Ayrıca, \\vb\\.. Repos. d\\rhuı-Load-dengeleyicilerde listelenen konakların IP adresleri için yollar eklemeniz gerekir. Bir örnek için, yukarıdaki şekle bakın.
+  Ayrıca, \\ vb. \\ . Repos. d \\ rhuı-Load-dengeleyicilerde LISTELENEN konakların IP adresleri için yollar eklemeniz gerekir. Bir örnek için, yukarıdaki şekle bakın.
 
 * **Oracle Linux**
 
@@ -944,7 +944,7 @@ PowerShell kullanarak SAP için Azure uzantısı 'nı yüklemek için:
 
 1. Azure PowerShell cmdlet 'inin en son sürümünü yüklediğinizden emin olun. Daha fazla bilgi için bkz. [Azure PowerShell cmdlet 'Leri dağıtma][deployment-guide-4.1].  
 1. Aşağıdaki PowerShell cmdlet’ini çalıştırın.
-    Kullanılabilir ortamların bir listesi için, öğesini çalıştırın `commandlet Get-AzEnvironment`. Küresel Azure 'u kullanmak istiyorsanız, ortamınız **Azurecyüksek**' dir. Çin 'de Azure için **AzureChinaCloud**öğesini seçin.
+    Kullanılabilir ortamların bir listesi için, öğesini çalıştırın `commandlet Get-AzEnvironment` . Küresel Azure 'u kullanmak istiyorsanız, ortamınız **Azurecyüksek**' dir. Çin 'de Azure için **AzureChinaCloud**öğesini seçin.
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -955,11 +955,11 @@ PowerShell kullanarak SAP için Azure uzantısı 'nı yüklemek için:
     ```
 
 Hesap verilerinizi girdikten ve Azure sanal makinesini tanımladıktan sonra, komut dosyası gerekli uzantıları dağıtır ve gerekli özellikleri sunar. Bu işlem birkaç dakika sürebilir.
-Hakkında `Set-AzVMAEMExtension`daha fazla bilgi için bkz. [set-AzVMAEMExtension][msdn-set-Azvmaemextension].
+Hakkında daha fazla bilgi için `Set-AzVMAEMExtension` bkz. [set-AzVMAEMExtension][msdn-set-Azvmaemextension].
 
 ![SAP 'ye özgü Azure cmdlet kümesi 'nin başarılı yürütülmesi-AzVMAEMExtension][deployment-guide-figure-900]
 
-`Set-AzVMAEMExtension` Yapılandırma, SAP için konak verileri toplamayı yapılandırmak için tüm adımları yapar.
+`Set-AzVMAEMExtension`Yapılandırma, SAP için konak verileri toplamayı yapılandırmak için tüm adımları yapar.
 
 Betik çıktısı aşağıdaki bilgileri içerir:
 
@@ -1015,7 +1015,7 @@ Azure CLı kullanarak SAP için Azure uzantısı 'nı yüklemek için:
       az vm aem set -g <resource-group-name> -n <vm name>
       ```
 
-1. SAP için Azure uzantısının Azure Linux VM 'de etkin olduğunu doğrulayın. Dosya \\var\\lib\\AzureEnhancedMonitor\\PerfCounters 'in var olup olmadığını denetleyin. Varsa, bir komut isteminde, SAP için Azure uzantısı tarafından toplanan bilgileri göstermek için bu komutu çalıştırın:
+1. SAP için Azure uzantısının Azure Linux VM 'de etkin olduğunu doğrulayın. Dosya \\ var \\ lib \\ AzureEnhancedMonitor \\ PerfCounters 'in var olup olmadığını denetleyin. Varsa, bir komut isteminde, SAP için Azure uzantısı tarafından toplanan bilgileri göstermek için bu komutu çalıştırın:
 
    ```console
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
@@ -1044,7 +1044,7 @@ Bu denetim SAP uygulamanızın içinde görüntülenen tüm performans ölçüml
 
 1. Azure sanal makinesinde oturum açın (yönetici hesabı kullanarak gerekli değildir).
 1. Bir komut istemi penceresi açın.
-1. Komut isteminde, SAP için Azure uzantısının yükleme klasörü olarak değiştirin: C\\: Packages\\eklentileri\\Microsoft. AzureCAT. AzureEnhancedMonitoring. AzureCATExtensionHandler\\&lt;Version>Drop \\
+1. Komut isteminde, SAP için Azure uzantısının yükleme klasörü olarak değiştirin: C: \\ Packages \\ eklentileri \\ Microsoft. AzureCAT. AzureEnhancedMonitoring. AzureCATExtensionHandler \\ &lt; Version>\\ Drop
 
    Uzantının yolundaki *sürümü* farklılık gösterebilir. Yükleme klasöründe uzantının birden çok sürümü için klasörler görürseniz, AzureEnhancedMonitoring Windows hizmetinin yapılandırmasını denetleyin ve sonra *yürütülebilir dosyanın yolu*olarak belirtilen klasöre geçin.
 
@@ -1123,7 +1123,7 @@ Yukarıdaki denetim başarılı olmazsa, şu ek denetimleri çalıştırın:
 
    **Beklenen sonuç**: şuna benzer bir giriş görüntüler:`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
-1. SAP ana bilgisayar aracısını SAP Note [1031096]' de açıklandığı gibi yükleyip çıktısını denetleyin `saposcol`.
+1. SAP ana bilgisayar aracısını SAP Note [1031096]' de açıklandığı gibi yükleyip çıktısını denetleyin `saposcol` .
 
    a.  `/usr/sap/hostctrl/exe/saposcol -d` öğesini çalıştırın
 
@@ -1137,10 +1137,10 @@ Bu denetimlerden herhangi biri başarısız olursa ve uzantının nasıl yeniden
 
 ### <a name="health-check-for-the-azure-extension-for-sap-configuration"></a><a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>SAP yapılandırması için Azure uzantısı için sistem durumu denetimi
 
-Altyapı verilerinden bazıları [SAP Için Azure uzantısı Için hazırlık denetimi][deployment-guide-5.1]bölümünde açıklanan test tarafından belirtilen şekilde doğru şekilde iletilemiyorsa, Azure ALTYAPıSıNıN ve SAP Için Azure `Test-AzVMAEMExtension` uzantısının doğru yapılandırılıp yapılandırılmadığını denetlemek için cmdlet 'ini çalıştırın.
+Altyapı verilerinden bazıları [SAP Için Azure uzantısı Için hazırlık denetimi][deployment-guide-5.1]bölümünde açıklanan test tarafından belirtilen şekilde doğru şekilde iletilemiyorsa, `Test-AzVMAEMExtension` Azure altyapısının ve SAP için Azure uzantısının doğru yapılandırılıp yapılandırılmadığını denetlemek için cmdlet 'ini çalıştırın.
 
 1. [Azure PowerShell cmdlet 'Leri dağıtma][deployment-guide-4.1]bölümünde açıklandığı gibi Azure PowerShell cmdlet 'inin en son sürümünü yüklediğinizden emin olun.
-1. Aşağıdaki PowerShell cmdlet’ini çalıştırın. Kullanılabilir ortamların bir listesi için cmdlet 'ini `Get-AzEnvironment`çalıştırın. Küresel Azure 'u kullanmak için **Azurecyüksek** ortamını seçin. Çin 'de Azure için **AzureChinaCloud**öğesini seçin.
+1. Aşağıdaki PowerShell cmdlet’ini çalıştırın. Kullanılabilir ortamların bir listesi için cmdlet 'ini çalıştırın `Get-AzEnvironment` . Küresel Azure 'u kullanmak için **Azurecyüksek** ortamını seçin. Çin 'de Azure için **AzureChinaCloud**öğesini seçin.
 
    ```powershell
    $env = Get-AzEnvironment -Name <name of the environment>
@@ -1173,11 +1173,11 @@ AzureEnhancedMonitoring Windows hizmeti, Azure 'da performans ölçümlerini top
 
 ###### <a name="issue"></a>Sorun
 
-Yükleme dizini C:\\\\\\Microsoft. AzureCAT. AzureEnhancedMonitoring. AzureCATExtensionHandler\\&lt;sürüm>\\Drop paketleri boş.
+Yükleme dizini C: \\ \\ \\ Microsoft. AzureCAT. AzureEnhancedMonitoring. AzureCATExtensionHandler \\ &lt; Sürüm>\\ Drop paketleri boş.
 
 ###### <a name="solution"></a>Çözüm
 
-Uzantı yüklü değil. Bunun bir ara sunucu sorunu olup olmadığını (daha önce açıklandığı gibi) öğrenin. Makineyi yeniden başlatmanız veya `Set-AzVMAEMExtension` yapılandırma betiğini yeniden çalıştırmanız gerekebilir.
+Uzantı yüklü değil. Bunun bir ara sunucu sorunu olup olmadığını (daha önce açıklandığı gibi) öğrenin. Makineyi yeniden başlatmanız veya yapılandırma betiğini yeniden çalıştırmanız gerekebilir `Set-AzVMAEMExtension` .
 
 ##### <a name="service-for-azure-extension-for-sap-does-not-exist"></a>SAP için Azure uzantısı hizmeti yok
 
@@ -1220,11 +1220,11 @@ Azure 'daki performans ölçümleri bir Daemon tarafından toplanır. Arka plan 
 
 ###### <a name="issue"></a>Sorun
 
-Var \\\\olan LıB\\waagent\\ dizininde SAP için Azure uzantısı için bir alt dizin yok.
+Var olan \\ \\ LIB \\ WAAGENT dizininde \\ SAP için Azure uzantısı için bir alt dizin yok.
 
 ###### <a name="solution"></a>Çözüm
 
-Uzantı yüklü değil. Bunun bir ara sunucu sorunu olup olmadığını (daha önce açıklandığı gibi) öğrenin. Makineyi yeniden başlatmanız ve/veya `Set-AzVMAEMExtension` yapılandırma betiğini yeniden çalıştırmanız gerekebilir.
+Uzantı yüklü değil. Bunun bir ara sunucu sorunu olup olmadığını (daha önce açıklandığı gibi) öğrenin. Makineyi yeniden başlatmanız ve/veya yapılandırma betiğini yeniden çalıştırmanız gerekebilir `Set-AzVMAEMExtension` .
 
 ##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Set-AzVMAEMExtension ve test-AzVMAEMExtension yürütme, Standart yönetilen disklerin desteklenmediğini belirten uyarı iletilerini gösterir
 

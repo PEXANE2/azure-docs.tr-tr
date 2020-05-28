@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 091ce1cc0b2540a02e62e1e85c5515f6aa62b93c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74951862"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018846"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight'ta Hadoop ile Apache Sqoop'u kullanma
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-HDInsight 'ta Apache Sqoop kullanarak bir HDInsight kümesi ile Azure SQL veritabanı arasında veri içeri ve dışarı aktarma hakkında bilgi edinin.
+HDInsight 'ta Apache Sqoop kullanarak HDInsight kümesi ile Azure SQL veritabanı arasında veri içeri ve dışarı aktarma hakkında bilgi edinin.
 
 Apache Hadoop, Günlükler ve dosyalar gibi yapılandırılmamış ve yarı yapılandırılmış verilerin işlenmesine yönelik doğal bir seçim olsa da, ilişkisel veritabanlarında depolanan yapılandırılmış verilerin işlenmesi da gerekebilir.
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) , Hadoop kümeleri ve ilişkisel veritabanları arasında veri aktarmak için tasarlanan bir araçtır. SQL Server, MySQL veya Oracle gibi bir ilişkisel veritabanı yönetim sisteminden (RDBMS) verileri Hadoop Dağıtılmış dosya sistemine (ISE) içeri aktarmak, Hadoop 'daki verileri MapReduce veya Apache Hive dönüştürmek ve ardından verileri bir RDBMS 'ye dışarı aktarmak için kullanabilirsiniz. Bu makalede, ilişkisel veritabanınız için bir SQL Server veritabanı kullanıyorsunuz.
+[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) , Hadoop kümeleri ve ilişkisel veritabanları arasında veri aktarmak için tasarlanan bir araçtır. SQL Server, MySQL veya Oracle gibi bir ilişkisel veritabanı yönetim sisteminden (RDBMS) verileri Hadoop Dağıtılmış dosya sistemine (ISE) içeri aktarmak, Hadoop 'daki verileri MapReduce veya Apache Hive dönüştürmek ve ardından verileri bir RDBMS 'ye dışarı aktarmak için kullanabilirsiniz. Bu makalede, ilişkisel veritabanınız için Azure SQL veritabanı 'nı kullanıyorsunuz.
 
 > [!IMPORTANT]  
 > Bu makalede, veri aktarımını gerçekleştirmek için bir test ortamı ayarlanır. Daha sonra bu ortam için bir veri aktarım yöntemi seçin [Sqoop Işlerini Çalıştır](#run-sqoop-jobs)bölümünde aşağıdaki adımları izleyin.
@@ -33,7 +33,7 @@ HDInsight kümelerinde desteklenen Sqoop sürümleri için bkz. [HDInsight taraf
 
 HDInsight kümesi bazı örnek verilerle birlikte gelir. Aşağıdaki iki örneği kullanabilirsiniz:
 
-* Konumunda `/example/data/sample.log`bulunan bir Apache Log4J günlük dosyası. Aşağıdaki Günlükler dosyadan ayıklanır:
+* Konumunda bulunan bir Apache Log4J günlük dosyası `/example/data/sample.log` . Aşağıdaki Günlükler dosyadan ayıklanır:
 
 ```text
 2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
@@ -42,7 +42,7 @@ HDInsight kümesi bazı örnek verilerle birlikte gelir. Aşağıdaki iki örne�
 ...
 ```
 
-* Adlı `hivesampletable`Hive tablosu, konumunda `/hive/warehouse/hivesampletable`bulunan veri dosyasına başvuruda bulunur. Tablo, bazı mobil cihaz verileri içerir.
+* Adlı Hive tablosu `hivesampletable` , konumunda bulunan veri dosyasına başvuruda bulunur `/hive/warehouse/hivesampletable` . Tablo, bazı mobil cihaz verileri içerir.
   
   | Alan | Veri türü |
   | --- | --- |
@@ -62,7 +62,7 @@ Bu makalede, Sqoop içeri aktarma ve dışarı aktarma sınamasını yapmak içi
 
 ## <a name="set-up-test-environment"></a><a name="create-cluster-and-sql-database"></a>Test ortamını ayarlama
 
-Küme, SQL veritabanı ve diğer nesneler, Azure portal aracılığıyla Azure Resource Manager şablonu kullanılarak oluşturulur. Şablon, [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)' nda bulunabilir. Kaynak Yöneticisi şablonu, tablo şemalarını bir SQL veritabanına dağıtmak için bacpac paketini çağırır.  Bacpac paketi ortak bir blob kapsayıcısında bulunur https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Bacpac dosyaları için özel bir kapsayıcı kullanmak istiyorsanız, şablonda aşağıdaki değerleri kullanın:
+Küme, SQL veritabanı ve diğer nesneler, Azure portal aracılığıyla Azure Resource Manager şablonu kullanılarak oluşturulur. Şablon, [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)' nda bulunabilir. Kaynak Yöneticisi şablonu, tablo şemalarını bir SQL veritabanına dağıtmak için bacpac paketini çağırır.  Bacpac paketi ortak bir blob kapsayıcısında bulunur https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac . Bacpac dosyaları için özel bir kapsayıcı kullanmak istiyorsanız, şablonda aşağıdaki değerleri kullanın:
 
 ```json
 "storageKeyType": "Primary",
@@ -84,18 +84,18 @@ Küme, SQL veritabanı ve diğer nesneler, Azure portal aracılığıyla Azure R
     |Kaynak grubu |Açılan listeden kaynak grubunuzu seçin veya yeni bir tane oluşturun|
     |Konum |Açılan listeden bir bölge seçin.|
     |Küme Adı |Hadoop kümesi için bir ad girin. Yalnızca küçük harf kullanın.|
-    |Küme Oturum Açma Kullanıcı Adı |Önceden doldurulmuş değeri `admin`saklayın.|
+    |Küme Oturum Açma Kullanıcı Adı |Önceden doldurulmuş değeri saklayın `admin` .|
     |Küme Oturum Açma Parolası |Bir parola girin.|
-    |SSH Kullanıcı adı |Önceden doldurulmuş değeri `sshuser`saklayın.|
+    |SSH Kullanıcı adı |Önceden doldurulmuş değeri saklayın `sshuser` .|
     |SSH parolası |Bir parola girin.|
-    |SQL Yöneticisi oturum açma |Önceden doldurulmuş değeri `sqluser`saklayın.|
+    |SQL Yöneticisi oturum açma |Önceden doldurulmuş değeri saklayın `sqluser` .|
     |SQL yönetici parolası |Bir parola girin.|
     |_artifacts konumu | Kendi bacpac dosyanızı farklı bir konumda kullanmak istemediğiniz müddetçe varsayılan değeri kullanın.|
     |_artifacts konumu SAS belirteci |Boş bırakın.|
     |Bacpac dosya adı |Kendi bacpac dosyanızı kullanmak istemediğiniz müddetçe varsayılan değeri kullanın.|
     |Konum |Varsayılan değeri kullanın.|
 
-    Azure SQL Server adı olacaktır `<ClusterName>dbserver`. Veritabanı adı olacaktır `<ClusterName>db`. Varsayılan depolama hesabı adı olacaktır `e6qhezrh2pdqu`.
+    [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) adı olacaktır `<ClusterName>dbserver` . Veritabanı adı olacaktır `<ClusterName>db` . Varsayılan depolama hesabı adı olacaktır `e6qhezrh2pdqu` .
 
 3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum '** u seçin.
 
@@ -113,8 +113,8 @@ HDInsight, çeşitli yöntemler kullanarak Sqoop işlerini çalıştırabilir. S
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Toplu dışa aktarma-Linux tabanlı HDInsight Ile, Microsoft SQL Server veya Azure SQL veritabanı 'na veri aktarmak için kullanılan Sqoop Bağlayıcısı Şu anda toplu eklemeleri desteklememektedir.
-* Toplu işleme-Linux tabanlı HDInsight Ile, eklemeleri gerçekleştirirken `-batch` anahtarı kullanırken, ekleme işlemlerini toplu olarak gerçekleştirmek yerine Sqoop birden çok ekleme gerçekleştirir.
+* Toplu dışa aktarma-Linux tabanlı HDInsight Ile, verileri Microsoft SQL Server veya SQL veritabanına aktarmak için kullanılan Sqoop Bağlayıcısı Şu anda toplu eklemeleri desteklememektedir.
+* Toplu işleme-Linux tabanlı HDInsight Ile, `-batch` eklemeleri gerçekleştirirken anahtarı kullanırken, ekleme işlemlerini toplu olarak gerçekleştirmek yerine Sqoop birden çok ekleme gerçekleştirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

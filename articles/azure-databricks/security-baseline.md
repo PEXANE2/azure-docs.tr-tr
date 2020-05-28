@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 23057723d46ed5d9203741ab2eb1a15edb5bd510
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 229485b5aa1bf3a97429c8d82c4c962cd9fab5c7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681704"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016347"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure Databricks için Azure Güvenlik temeli
 
@@ -200,7 +200,7 @@ Azure Databricks denetim günlüğü için, Azure Databricks kullanıcılar tara
 
 Note: Azure Databricks tanılama günlükleri Azure Databricks Premium planı gerektirir
 
-* [Azure etkinlik günlüğü Için tanılama ayarlarını etkinleştirme](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy))
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
 * [Azure Databricks için tanılama ayarlarını etkinleştirme](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs)
 
@@ -262,7 +262,7 @@ Alternatif olarak, Azure Sentinel 'e veya üçüncü taraf SıEM 'ye yönelik ve
 
 Note: Azure Databricks tanılama günlükleri Azure Databricks Premium planı gerektirir
 
-* [Log Analytics çalışma alanına Azure Databricks günlükleri gönderme](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs#configure-diagnostic-log-delivery))
+* [Log Analytics çalışma alanına Azure Databricks günlükleri gönderme](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs#configure-diagnostic-log-delivery)
 
 * [Log Analytics çalışma alanında uyarıları yapılandırma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
 

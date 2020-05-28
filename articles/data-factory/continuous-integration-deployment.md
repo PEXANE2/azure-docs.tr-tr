@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 0feab5c4c03ddce6fb4df2395316484bf35bae81
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 77cba087ec578a478f4de9c8eebec3eb1e8d41b2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772871"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022410"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -569,26 +569,6 @@ Tam Kaynak Yöneticisi şablonu yerine bağlantılı şablonlar kullanmak için,
 Dağıtım görevinden önce ve sonra, CI/CD işlem hattınızda Data Factory betikleri eklemeyi unutmayın.
 
 Git 'in yapılandırılıp yapılandırılmadığını, **ARM şablon** listesindeki **ARM şablonunu dışarı aktar** aracılığıyla bağlı şablonlara erişebilirsiniz.
-
-## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>CI/CD 'den Azure-SSIS tümleştirme çalışma zamanlarını hariç tut
-
-Geliştirme fabrikanızın Azure-SSIS tümleştirme çalışma zamanı varsa, aşağıdaki senaryoda bulunan tüm Azure-SSIS tümleştirme çalışma zamanlarını CI/CD işleminden hariç bırakabilirsiniz:
-
-- Azure-SSIS IR altyapı karmaşıktır ve her bir ortamda farklılık gösterir.  
-- Azure-SSIS IR, aynı ada sahip her bir ortam için el ile ayarlanır. Aksi takdirde, Azure-SSIS IR bağlı olarak etkinlik varsa yayımlama başarısız olur.
-
-Azure-SSIS tümleştirme çalışma zamanını dışlamak için:
-
-1. Mevcut değilse, işbirliği dalında kök klasöre bir publish_config. JSON dosyası ekleyin.
-1. Publish_config. JSON öğesine aşağıdaki ayarı ekleyin: 
-
-```json
-{
-    " excludeIRs": "true"
-}
-```
-
-İşbirliği dalından yayımlarken, Azure-SSIS tümleştirme çalışma zamanları oluşturulan Kaynak Yöneticisi şablondan dışlanır.
 
 ## <a name="hotfix-production-branch"></a>Düzeltme üretim Dalı
 

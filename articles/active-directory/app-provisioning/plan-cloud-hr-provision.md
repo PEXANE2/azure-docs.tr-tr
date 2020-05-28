@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 66a5bceb5b59c0e1b14577176cfed933e4503f31
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593310"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014443"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
 
@@ -81,10 +81,11 @@ Ayrıca, bulut HR uygulamasından kaynaklayacağı ve Active Directory ya da Azu
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-- Azure AD Connect sağlama aracısını yapılandırmak için Azure AD Genel Yöneticisi erişimi.
+- Azure AD Connect sağlama aracısını yapılandırmak için Azure AD [karma kimlik yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) .
+- Azure portal sağlama uygulamasını yapılandırmak için Azure AD [Uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) rolü
 - Bulut HR uygulamasının test ve üretim örneği.
 - Bulut HR uygulamasındaki Yönetici izinleri bir sistem tümleştirme kullanıcısı oluşturur ve test amacıyla çalışan verilerini test etmek için değişiklikler yapar.
-- Active Directory Kullanıcı sağlaması için, [Azure AD Connect sağlama aracısını](https://go.microsoft.com/fwlink/?linkid=847801)barındırmak üzere .NET 4.7.1 + Runtime Ile Windows Server 2012 veya üstünü çalıştıran bir sunucu gerekir.
+- Active Directory Kullanıcı sağlaması için, Azure AD Connect sağlama aracısını barındırmak üzere .NET 4.7.1 + Runtime ile Windows Server 2012 veya üstünü çalıştıran bir sunucu gerekir
 - Kullanıcıları Active Directory ve Azure AD arasında eşitlemeye yönelik [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) .
 
 ### <a name="training-resources"></a>Eğitim kaynakları
@@ -248,7 +249,7 @@ Varsayılan olarak, bulut HR uygulamasındaki benzersiz çalışan KIMLIĞINI te
 
 Birden çok eşleşen öznitelik ayarlayabilir ve eşleşen önceliği atayabilirsiniz. Eşleşen önceliğe göre değerlendirilir. Bir eşleşme bulunur başlamaz, başka eşleşen öznitelikler değerlendirilir.
 
-Ayrıca, varolan öznitelik eşlemelerini değiştirme veya silme gibi [varsayılan öznitelik eşlemelerini özelleştirebilirsiniz](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types). Ayrıca, iş gereksinimlerinize göre yeni öznitelik eşlemeleri de oluşturabilirsiniz. Daha fazla bilgi için, eşlenecek özel özniteliklerin bir listesi için Cloud HR App öğreticisi ( [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)gibi) konusuna bakın.
+Ayrıca, varolan öznitelik eşlemelerini değiştirme veya silme gibi [varsayılan öznitelik eşlemelerini özelleştirebilirsiniz](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types). Ayrıca, iş gereksinimlerinize göre yeni öznitelik eşlemeleri de oluşturabilirsiniz. Daha fazla bilgi için, eşlenecek özel özniteliklerin bir listesi için Cloud HR App öğreticisi ( [Workday](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)gibi) konusuna bakın.
 
 ### <a name="determine-user-account-status"></a>Kullanıcı hesabı durumunu belirleme
 
@@ -285,7 +286,7 @@ Birleştiriciler-Taşımacılar sürecini başlattığınızda, aşağıdaki ger
 | | Kullanıcı sonlandırmasını işlemek için hangi etkin tarihler dikkate alınır? |
 | | Çalışan ve iş çalışanı dönüştürmelerinde var olan Active Directory hesapları nasıl etkiler? |
 
-Gereksinimlerinize bağlı olarak, eşlemeleri tümleştirme hedeflerinize uyacak şekilde değiştirebilirsiniz. Daha fazla bilgi için, eşlenecek özel özniteliklerin bir listesi için belirli bulut HR uygulama öğreticisine ( [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)gibi) bakın.
+Gereksinimlerinize bağlı olarak, eşlemeleri tümleştirme hedeflerinize uyacak şekilde değiştirebilirsiniz. Daha fazla bilgi için, eşlenecek özel özniteliklerin bir listesi için belirli bulut HR uygulama öğreticisine ( [Workday](../saas-apps/workday-inbound-tutorial.md#part-4-configure-attribute-mappings)gibi) bakın.
 
 ### <a name="generate-a-unique-attribute-value"></a>Benzersiz bir öznitelik değeri oluştur
 
@@ -365,7 +366,9 @@ Bulut HR Kullanıcı sağlama uygulamasının üretim ortamında istendiği gibi
 
 Çözüm gereksinimlerinize göre hizalanan bulut HR uygulamasını seçin.
 
-**Workday**: çalışan profillerini Workday 'den Active Directory ve Azure AD 'ye aktarmak için bkz. [öğretici: otomatik Kullanıcı sağlaması Için Workday 'yi yapılandırma](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). İsteğe bağlı olarak, e-posta adresini ve Kullanıcı adını Workday 'e geri yazabilirsiniz.
+**Workday**: çalışan profillerini Workday 'den Active Directory ve Azure AD 'ye aktarmak için bkz. [öğretici: otomatik Kullanıcı sağlaması Için Workday 'yi yapılandırma](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). İsteğe bağlı olarak, e-posta adresini, Kullanıcı adını ve telefon numarasını Workday 'e geri yazabilirsiniz.
+
+**SAP başarılı etmenleri**: çalışan profillerini başarılı bir şekilde Active Directory ve Azure AD 'ye aktarmak için bkz. [öğretici: otomatik Kullanıcı sağlama Için SAP başarılı faktörlerini yapılandırma](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md). İsteğe bağlı olarak, e-posta adresini ve Kullanıcı adını başarılı etkenlere geri yazabilirsiniz.
 
 ## <a name="manage-your-configuration"></a>Yapılandırmanızı yönetin
 

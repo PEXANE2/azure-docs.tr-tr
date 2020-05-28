@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: a06c63152cb56be6d94cccc472d2e1d65651d6ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679957"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021457"
 ---
 # <a name="about-azure-remote-rendering"></a>Azure Remote Rendering hakkında
 
@@ -22,7 +22,11 @@ ms.locfileid: "80679957"
 
 ![Örnek model](../media/arr-engine.png)
 
-Untethered cihazlar karmaşık modelleri işlemek için sınırlı hesaplama gücüne sahiptir. Birçok uygulama için, bu kabul edilemez, ancak her türlü şekilde görsel uygunluğu azaltır.
+Untethered cihazlar karmaşık modelleri işlemek için sınırlı hesaplama gücüne sahiptir. Birçok uygulama için, bu kabul edilemez, ancak her türlü şekilde görsel uygunluğu azaltır. Aşağıdaki ekran görüntüsünde, model ortak bir içerik oluşturma aracı kullanılarak seçilmiş olan bir modelle tam ayrıntılarla karşılaştırılır:
+
+![Örnek model](./media/engine-model-decimated.png)
+
+Azaltılmış model yaklaşık 200.000 üçgenden oluşur (ayrıntılı iç parçalar dahil) ve özgün modeldeki 18.000.000 üçgenden fazla.
 
 *Uzaktan işleme* , işleme iş yükünü buluttaki yüksek kaliteli GPU 'lara taşıyarak bu sorunu çözer. Bulutta barındırılan bir grafik Altyapısı görüntüyü işler, video akışı olarak kodlar ve hedef cihaza akışlar.
 

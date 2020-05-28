@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: aa4881aef9f3a9ba5d19fb0b768f13a1eb372296
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 55ef2ee7d39d68804fe44c9d7a6eb0ee199e6109
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131429"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019869"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Gen1 'den Gen2 'e geçiş Azure Data Lake Storage
 
@@ -79,7 +79,7 @@ Tercih ettiğiniz kalıbı kullanarak verileri, iş yüklerini ve uygulamaları 
    
 5. Data Lake Storage 2. [PowerShell cmdlet 'leri](data-lake-storage-directory-file-acl-powershell.md)ve [Azure CLI komutlarını](data-lake-storage-directory-file-acl-cli.md)kullanmak için betikleri güncelleştirin.
    
-6. Kod dosyalarında dize `adl://` veya Databricks Not defterleri, Apache Hive HQL dosyaları ya da iş yüklerinizin bir parçası olarak kullanılan başka bir dosya içeren URI başvurularını arayın. Bu başvuruları, yeni depolama hesabınızın [Gen2 BIÇIMLI URI](data-lake-storage-introduction-abfs-uri.md) 'siyle değiştirin. Örneğin: Gen1 URI: `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` olabilir. `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` 
+6. `adl://`Kod dosyalarında dize veya Databricks Not defterleri, Apache Hive HQL dosyaları ya da iş yüklerinizin bir parçası olarak kullanılan başka bir dosya IÇEREN URI başvurularını arayın. Bu başvuruları, yeni depolama hesabınızın [Gen2 BIÇIMLI URI](data-lake-storage-introduction-abfs-uri.md) 'siyle değiştirin. Örneğin: Gen1 URI: `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` olabilir `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` . 
 
 7. [Rol tabanlı erişim denetimi (RBAC) rolleri](../common/storage-auth-aad-rbac-portal.md), [dosya ve klasör düzeyi güvenliği](data-lake-storage-access-control.md)ve [Azure Storage güvenlik duvarları ve sanal ağlar](../common/storage-network-security.md)dahil olmak üzere hesabınızdaki güvenliği yapılandırın.
 
@@ -103,7 +103,7 @@ Bu tablo, Gen1 'in yeteneklerini Gen2 ile karşılaştırır.
 |VNET desteği|[Sanal Ağ Tümleştirmesi](../../data-lake-store/data-lake-store-network-security.md)|[Hizmet uç noktaları](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Özel uç noktalar](../common/storage-private-endpoints.md)|
 |Geliştirici deneyimi|[Rest](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [Python](../../data-lake-store/data-lake-store-data-operations-python.md), [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|Genel olarak kullanılabilir- [rest](/rest/api/storageservices/data-lake-storage-gen2), [.net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md)<br>Genel Önizleme- [JavaScript](data-lake-storage-directory-file-acl-javascript.md), [POWERSHELL](data-lake-storage-directory-file-acl-powershell.md), [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Kaynak günlükleri|Klasik Günlükler<br>[Azure Izleyici tümleşik](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klasik Günlükler](../common/storage-analytics-logging.md) -genel kullanıma sunuldu<br>Azure izleyici tümleştirmesi – zaman çizelgesi TBD|
-|Ekosistem|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 ve üzeri)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 ve üzeri)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [SQL DW](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|Ekosistem|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 ve üzeri)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 ve üzeri)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns" />
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0b738f394c4a544ddb31e25b4570890ccfa9235
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79479260"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995879"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Işlevleri özel işleyiciler (Önizleme)
 
@@ -20,9 +20,9 @@ Her Işlevler uygulaması dile özgü bir işleyici tarafından yürütülür. A
 
 Özel işleyiciler şunları yapmak istediğiniz durumlar için idealdir:
 
-- Resmi olarak desteklenen dillerin ötesinde bir dilde Işlevler uygulaması uygulama
-- Bir dil sürümünde veya çalışma zamanında bir Işlevler uygulamasını varsayılan olarak desteklenmez
-- Uygulama yürütme ortamı üzerinde ayrıntılı denetim sahibi olmak
+- Resmi olarak desteklenmeyen bir dilde işlev uygulaması uygulama.
+- Bir işlev uygulamasını dil sürümünde veya çalışma zamanında varsayılan olarak desteklenmeyen bir şekilde uygulayın.
+- İşlev uygulaması yürütme ortamı üzerinde daha ayrıntılı denetim sağlayın.
 
 Özel işleyicilerle, tüm [Tetikleyiciler ve giriş ve çıkış bağlamaları](./functions-triggers-bindings.md) [uzantı paketleri](./functions-bindings-register.md)aracılığıyla desteklenir.
 
@@ -60,7 +60,7 @@ Aşağıdaki diyagramda, bu dosyaların "Order" adlı bir işlevin dosya sistemi
 
 Uygulama, *Host. JSON* dosyası aracılığıyla yapılandırılır. Bu dosya, Işlevleri HTTP olaylarını işleyebilen bir Web sunucusuna işaret ederek istekleri nereye göndereceğini belirtir.
 
-Özel bir işleyici, *Host. JSON* dosyası, `httpWorker` bölümünde Web sunucusunun nasıl çalıştırılacağı hakkındaki ayrıntılarla yapılandırılarak tanımlanır.
+Özel bir işleyici, *Host. JSON* dosyası, bölümünde Web sunucusunun nasıl çalıştırılacağı hakkındaki ayrıntılarla yapılandırılarak tanımlanır `httpWorker` .
 
 ```json
 {
@@ -73,9 +73,9 @@ Uygulama, *Host. JSON* dosyası aracılığıyla yapılandırılır. Bu dosya, I
 }
 ```
 
-`httpWorker` Bölümü tarafından tanımlanan bir hedefe işaret eder `defaultExecutablePath`. Yürütme hedefi, Web sunucusunun uygulandığı bir komut, yürütülebilir dosya ya da dosya olabilir.
+`httpWorker`Bölümü tarafından tanımlanan bir hedefe işaret eder `defaultExecutablePath` . Yürütme hedefi, Web sunucusunun uygulandığı bir komut, yürütülebilir dosya ya da dosya olabilir.
 
-Betikleştirilmiş uygulamalar için `defaultExecutablePath` , komut dosyası dilinin çalışma zamanını işaret eder `defaultWorkerPath` ve betik dosyası konumunu işaret eder. Aşağıdaki örnek, Node. js içindeki bir JavaScript uygulamasının özel bir işleyici olarak nasıl yapılandırıldığını gösterir.
+Betikleştirilmiş uygulamalar için, `defaultExecutablePath` komut dosyası dilinin çalışma zamanını işaret eder ve `defaultWorkerPath` betik dosyası konumunu işaret eder. Aşağıdaki örnek, Node. js içindeki bir JavaScript uygulamasının özel bir işleyici olarak nasıl yapılandırıldığını gösterir.
 
 ```json
 {
@@ -89,7 +89,7 @@ Betikleştirilmiş uygulamalar için `defaultExecutablePath` , komut dosyası di
 }
 ```
 
-Ayrıca, `arguments` diziyi kullanarak bağımsız değişkenleri geçirebilirsiniz:
+Ayrıca, diziyi kullanarak bağımsız değişkenleri geçirebilirsiniz `arguments` :
 
 ```json
 {
@@ -123,11 +123,11 @@ Saf HTTP işlevlerine yönelik istek yükü ham HTTP istek yükleridir. Saf HTTP
 
 Giriş, çıkış bağlamaları veya HTTP dışında bir olay kaynağı aracılığıyla tetiklenen diğer işlev türleri özel bir istek yüküne sahiptir.
 
-Aşağıdaki kod bir örnek istek yükünü temsil eder. Yük, iki üyeye sahip bir JSON yapısı içerir: `Data` ve `Metadata`.
+Aşağıdaki kod bir örnek istek yükünü temsil eder. Yük, iki üyeye sahip bir JSON yapısı içerir: `Data` ve `Metadata` .
 
-Üye `Data` , *function. JSON* dosyasındaki Bindings dizisinde tanımlanan giriş ve tetikleyici adlarıyla eşleşen anahtarlar içerir.
+`Data`Üye, *function. JSON* dosyasındaki Bindings dizisinde tanımlanan giriş ve tetikleyici adlarıyla eşleşen anahtarlar içerir.
 
-`Metadata` Üye, [olay kaynağından oluşturulan meta verileri](./functions-bindings-expressions-patterns.md#trigger-metadata)içerir.
+`Metadata`Üye, [olay kaynağından oluşturulan meta verileri](./functions-bindings-expressions-patterns.md#trigger-metadata)içerir.
 
 Aşağıdaki *function. JSON* dosyasında tanımlanan bağlamalar verildi:
 
@@ -181,9 +181,9 @@ Kurala göre, işlev yanıtları anahtar/değer çiftleri olarak biçimlendirili
 
 | <nobr>Yük anahtarı</nobr>   | Veri türü | Açıklamalar                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | Response değerlerini, `bindings` Array tarafından *function. JSON* dosyası tarafından tanımlanan şekilde tutar.<br /><br />Örneğin, bir işlev "blob" adlı bir BLOB depolama çıkış bağlaması ile yapılandırıldıysa, blob 'un değerine ayarlanan `Outputs` adlı `blob`bir anahtar içerir. |
+| `Outputs`     | JSON      | Response değerlerini, `bindings` Array tarafından *function. JSON* dosyası tarafından tanımlanan şekilde tutar.<br /><br />Örneğin, bir işlev "blob" adlı bir BLOB depolama çıkış bağlaması ile yapılandırıldıysa, `Outputs` `blob` BLOB 'un değerine ayarlanan adlı bir anahtar içerir. |
 | `Logs`        | array     | İletiler, Işlev çağırma günlüklerinde görüntülenir.<br /><br />Azure 'da çalışırken iletiler Application Insights görüntülenir. |
-| `ReturnValue` | string    | Bir çıktı, `$return` *function. JSON* dosyasında olarak yapılandırıldığında bir yanıt sağlamak için kullanılır. |
+| `ReturnValue` | string    | Bir çıktı `$return` , *function. JSON* dosyasında olarak yapılandırıldığında bir yanıt sağlamak için kullanılır. |
 
 [Örnek yük için örneğe](#bindings-implementation)bakın.
 
@@ -196,7 +196,7 @@ Kurala göre, işlev yanıtları anahtar/değer çiftleri olarak biçimlendirili
 
 ## <a name="http-only-function"></a>Yalnızca HTTP işlevi
 
-Aşağıdaki örnek, HTTP ile tetiklenen bir işlevin ek bağlama veya çıkış olmadan nasıl yapılandırılacağını gösterir. Bu örnekte uygulanan senaryo, `http` `GET` veya `POST` kabul eden adlı bir işlevi sunar.
+Aşağıdaki örnek, HTTP ile tetiklenen bir işlevin ek bağlama veya çıkış olmadan nasıl yapılandırılacağını gösterir. Bu örnekte uygulanan senaryo, veya kabul eden adlı bir işlevi sunar `http` `GET` `POST` .
 
 Aşağıdaki kod parçacığı, işleve yapılan bir isteğin nasıl oluştuğunu temsil eder.
 
@@ -233,7 +233,7 @@ content-type: application/json
 }
 ```
 
-İşlevi hem hem de `GET` `POST` isteklerini kabul edecek şekilde yapılandırılmıştır ve sonuç değeri adlı `res`bir bağımsız değişken aracılığıyla sağlanır.
+İşlevi hem hem de isteklerini kabul edecek şekilde yapılandırılmıştır `GET` `POST` ve sonuç değeri adlı bir bağımsız değişken aracılığıyla sağlanır `res` .
 
 Uygulamanın kökünde, *Host. JSON* dosyası Node. js çalıştıracak şekilde yapılandırılır ve `server.js` dosyayı işaret.
 
@@ -274,18 +274,18 @@ app.post("/hello", (req, res) => {
 });
 ```
 
-Bu örnekte, Express HTTP olaylarını işlemek üzere bir Web sunucusu oluşturmak için kullanılır ve aracılığıyla istekleri dinlemek üzere ayarlanır `FUNCTIONS_HTTPWORKER_PORT`.
+Bu örnekte, Express HTTP olaylarını işlemek üzere bir Web sunucusu oluşturmak için kullanılır ve aracılığıyla istekleri dinlemek üzere ayarlanır `FUNCTIONS_HTTPWORKER_PORT` .
 
-İşlevi, yolunda tanımlanmıştır `/hello`. `GET`istekler basit bir JSON nesnesi döndürerek işlenir ve `POST` istekler aracılığıyla `req.body`istek gövdesine erişimi vardır.
+İşlevi, yolunda tanımlanmıştır `/hello` . `GET`istekler basit bir JSON nesnesi döndürerek işlenir ve `POST` istekler aracılığıyla istek gövdesine erişimi vardır `req.body` .
 
-Burada `/hello` Order işlevinin yolu, işlevler ana bilgisayarı özel işleyiciye `/api/hello` isteği proxy olarak oluşturduğundan değildir.
+Burada Order işlevinin yolu, `/hello` `/api/hello` işlevler ana bilgisayarı özel işleyiciye isteği proxy olarak oluşturduğundan değildir.
 
 >[!NOTE]
 >, `FUNCTIONS_HTTPWORKER_PORT` İşlevi çağırmak için kullanılan genel kullanıma yönelik bağlantı noktasıdır. Bu bağlantı noktası, Işlevler ana bilgisayarı tarafından özel işleyiciyi çağırmak için kullanılır.
 
 ## <a name="function-with-bindings"></a>Bağlamalarla işlev
 
-Bu örnekte uygulanan senaryo, bir ürün sırasını temsil eden `order` bir `POST` yük ile birlikte kabul eden adlı bir işlevi sunar. İşleve bir sipariş gönderildiğinde, bir kuyruk depolama iletisi oluşturulur ve bir HTTP yanıtı döndürülür.
+Bu örnekte uygulanan senaryo, `order` bir `POST` ürün sırasını temsil eden bir yük ile birlikte kabul eden adlı bir işlevi sunar. İşleve bir sipariş gönderildiğinde, bir kuyruk depolama iletisi oluşturulur ve bir HTTP yanıtı döndürülür.
 
 ```http
 POST http://127.0.0.1:7071/api/order HTTP/1.1
@@ -379,20 +379,20 @@ app.post("/order", (req, res) => {
 });
 ```
 
-Bu örnekte, Express HTTP olaylarını işlemek üzere bir Web sunucusu oluşturmak için kullanılır ve aracılığıyla istekleri dinlemek üzere ayarlanır `FUNCTIONS_HTTPWORKER_PORT`.
+Bu örnekte, Express HTTP olaylarını işlemek üzere bir Web sunucusu oluşturmak için kullanılır ve aracılığıyla istekleri dinlemek üzere ayarlanır `FUNCTIONS_HTTPWORKER_PORT` .
 
-İşlevi, yolunda tanımlanmıştır `/order` .  Burada `/order` Order işlevinin yolu, işlevler ana bilgisayarı özel işleyiciye `/api/order` isteği proxy olarak oluşturduğundan değildir.
+İşlevi, yolunda tanımlanmıştır `/order` .  Burada Order işlevinin yolu, `/order` `/api/order` işlevler ana bilgisayarı özel işleyiciye isteği proxy olarak oluşturduğundan değildir.
 
-Bu `POST` işleve istekler gönderildiğinde, veriler birkaç noktayla gösterilir:
+`POST`Bu işleve istekler gönderildiğinde, veriler birkaç noktayla gösterilir:
 
 - İstek gövdesi ile kullanılabilir`req.body`
 - İşleve gönderilen veriler ile kullanılabilir`req.body.Data.req.Body`
 
 İşlevin yanıtı, `Outputs` üyenin *function. JSON* dosyasında tanımlanan ÇıKıŞLARLA eşleştiği bir JSON değeri tutulduğu bir anahtar/değer çiftine biçimlendirilir.
 
-Bu işlev `message` , istekten gelen iletiye ve `res` beklenen HTTP yanıtına eşit olarak ayarlanarak bir ILETI verir ve bir http yanıtı döndürür.
+`message`Bu işlev, istekten gelen iletiye ve `res` beklenen HTTP yanıtına eşit olarak ayarlanarak bir ileti verir ve bir http yanıtı döndürür.
 
-## <a name="debugging"></a>Hata Ayıklama
+## <a name="debugging"></a>Hata ayıklama
 
 Işlevlerinizin özel işleyici uygulamasında hata ayıklaması yapmak için, hata ayıklamayı etkinleştirmek üzere dile ve çalışma zamanına uygun bağımsız değişkenler eklemeniz gerekir.
 
