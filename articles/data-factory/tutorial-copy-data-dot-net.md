@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: a835e67b1091a55c832955d8dac8615289a6d99e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ad257d0bea38d03803bf2be44313a3e086e7654c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418708"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118161"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob’dan Azure SQL Veritabanına veri kopyalama
 
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 ## <a name="prerequisites"></a>Ön koşullar
 
 * *Azure depolama hesabı*. Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, bkz. [genel amaçlı depolama hesabı oluşturma](../storage/common/storage-account-create.md).
-* *Azure SQL veritabanı*. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanınız yoksa bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-single-database-get-started.md).
+* *Azure SQL veritabanı*. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanınız yoksa bkz. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md).
 * *Visual Studio*. Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır.
 * *[.Net Için Azure SDK](/dotnet/azure/dotnet-tools)*.
 * *Azure Active Directory Uygulama*. Azure Active Directory uygulamanız yoksa, [nasıl yapılır: Azure AD uygulaması oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md)konusunun [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) bölümüne bakın. Sonraki adımlarda kullanılmak üzere aşağıdaki değerleri kopyalayın: **uygulama (istemci) kimliği**, **kimlik doğrulama anahtarı**ve **Dizin (kiracı) kimliği**. Aynı makaledeki yönergeleri izleyerek uygulamayı **katkıda bulunan** rolüne atayın.
@@ -81,7 +81,7 @@ Ardından, bir havuz SQL tablosu oluşturun:
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Azure hizmetlerinin SQL sunucusuna erişmesine izin ver. Data Factory hizmetinin Azure SQL sunucunuza veri yazabilmesi için Azure SQL sunucunuzdaki Azure hizmetlerine erişime izin verildiğinden emin olun. Bu ayarı doğrulamak ve etkinleştirmek için aşağıdaki adımları uygulayın:
+2. Azure hizmetlerinin SQL veritabanına erişmesine izin verin. Data Factory hizmetinin SQL veritabanına veri yazabilmesi için sunucunuzdaki Azure hizmetlerine erişime izin verildiğinden emin olun. Bu ayarı doğrulamak ve etkinleştirmek için aşağıdaki adımları uygulayın:
 
     1. SQL Server 'nizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **SQL Server 'lar**için arama yapın ve seçin.
 
@@ -104,7 +104,7 @@ Visual Studio 'yu kullanarak bir C# .NET konsol uygulaması oluşturun.
 
 Ardından, NuGet Paket Yöneticisi 'ni kullanarak gerekli kitaplık paketlerini yükler.
 
-1. Menü çubuğunda **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin.
+1. Menü çubuğunda **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin.
 2. **Paket Yöneticisi konsolu** bölmesinde, paketleri yüklemek için aşağıdaki komutları çalıştırın. NuGet paketi Azure Data Factory hakkında daha fazla bilgi için bkz. [Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```package manager console
@@ -117,7 +117,7 @@ Ardından, NuGet Paket Yöneticisi 'ni kullanarak gerekli kitaplık paketlerini 
 
 Data Factory istemcisi oluşturmak için bu adımları izleyin.
 
-1. *Program.cs*' i açın, ardından ad `using` alanlarına başvurular eklemek için aşağıdaki kodla mevcut deyimlerin üzerine yazın.
+1. *Program.cs*' i açın, ardından `using` ad alanlarına başvurular eklemek için aşağıdaki kodla mevcut deyimlerin üzerine yazın.
 
     ```csharp
     using System;
@@ -131,9 +131,9 @@ Data Factory istemcisi oluşturmak için bu adımları izleyin.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Aşağıdaki kodu, değişkenleri ayarlayan `Main` yönteme ekleyin. 14 yer tutucuları kendi değerlerinizle değiştirin.
+2. Aşağıdaki kodu, `Main` değişkenleri ayarlayan yönteme ekleyin. 14 yer tutucuları kendi değerlerinizle değiştirin.
 
-    Data Factory Şu anda kullanılabildiği Azure bölgelerinin listesini görmek için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). **Ürünler** açılan listesi altında**analiz** > **Data Factory** **Araştır** > ' ı seçin. Sonra **bölgeler** açılan listesinde ilgilendiğiniz bölgeleri seçin. Seçtiğiniz bölgeler için Data Factory ürünlerin kullanılabilirlik durumuyla birlikte bir kılavuz görüntülenir.
+    Data Factory Şu anda kullanılabildiği Azure bölgelerinin listesini görmek için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). **Ürünler** açılan listesi altında **Browse**  >  **analiz**  >  **Data Factory**Araştır ' ı seçin. Sonra **bölgeler** açılan listesinde ilgilendiğiniz bölgeleri seçin. Seçtiğiniz bölgeler için Data Factory ürünlerin kullanılabilirlik durumuyla birlikte bir kılavuz görüntülenir.
 
     > [!NOTE]
     > Azure depolama ve Azure SQL veritabanı gibi veri depoları ve Data Factory kullanımları, Data Factory için seçtiğiniz sayıdan başka bölgelerde olabilir.
@@ -171,7 +171,7 @@ Data Factory istemcisi oluşturmak için bu adımları izleyin.
     string pipelineName = "Adfv2TutorialBlobToSqlCopy";
     ```
 
-3. Aşağıdaki kodu, `DataFactoryManagementClient` sınıfının bir örneğini `Main` oluşturan yöntemine ekleyin. Veri fabrikası, bağlı hizmet, veri kümeleri ve işlem hattı oluşturmak için bu nesneyi kullanırsınız. Bu nesneyi ayrıca işlem hattı ayrıntılarını izlemek için kullanabilirsiniz.
+3. Aşağıdaki kodu, `Main` sınıfının bir örneğini oluşturan yöntemine ekleyin `DataFactoryManagementClient` . Veri fabrikası, bağlı hizmet, veri kümeleri ve işlem hattı oluşturmak için bu nesneyi kullanırsınız. Bu nesneyi ayrıca işlem hattı ayrıntılarını izlemek için kullanabilirsiniz.
 
     ```csharp
     // Authenticate and create a data factory management client
@@ -186,7 +186,7 @@ Data Factory istemcisi oluşturmak için bu adımları izleyin.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-Aşağıdaki kodu bir *Veri Fabrikası*oluşturan `Main` yöntemine ekleyin.
+Aşağıdaki kodu `Main` bir *Veri Fabrikası*oluşturan yöntemine ekleyin.
 
 ```csharp
 // Create a data factory
@@ -244,7 +244,7 @@ Console.WriteLine(
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Veritabanı bağlı hizmeti oluşturma
 
-Aşağıdaki kodu bir `Main` *Azure SQL veritabanı bağlı hizmeti*oluşturan yöntemine ekleyin. Desteklenen özellikler ve ayrıntılar hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı bağlı hizmeti özellikleri](connector-azure-sql-database.md#linked-service-properties).
+Aşağıdaki kodu `Main` bir *Azure SQL veritabanı bağlı hizmeti*oluşturan yöntemine ekleyin. Desteklenen özellikler ve ayrıntılar hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı bağlı hizmeti özellikleri](connector-azure-sql-database.md#linked-service-properties).
 
 ```csharp
 // Create an Azure SQL Database linked service
@@ -271,7 +271,7 @@ Bu bölümde, kaynak için diğeri havuz için olmak üzere iki veri kümesi olu
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Kaynak Azure Blob için veri kümesi oluşturma
 
-Aşağıdaki kodu bir `Main` *Azure blob veri kümesi*oluşturan yönteme ekleyin. Desteklenen özellikler ve ayrıntılar hakkında daha fazla bilgi için bkz. [Azure blob veri kümesi özellikleri](connector-azure-blob-storage.md#dataset-properties).
+Aşağıdaki kodu `Main` bir *Azure blob veri kümesi*oluşturan yönteme ekleyin. Desteklenen özellikler ve ayrıntılar hakkında daha fazla bilgi için bkz. [Azure blob veri kümesi özellikleri](connector-azure-blob-storage.md#dataset-properties).
 
 Azure Blob’da kaynak verilerini temsil eden bir veri kümesi tanımlayın. Bu Blob veri kümesi, önceki adımda oluşturduğunuz Azure Depolama bağlı hizmetini ifade eder:
 
@@ -309,7 +309,7 @@ Console.WriteLine(
 
 ### <a name="create-a-dataset-for-sink-azure-sql-database"></a>Havuz Azure SQL Veritabanı için veri kümesi oluşturma
 
-Aşağıdaki kodu bir `Main` *Azure SQL veritabanı veri kümesi*oluşturan yönteme ekleyin. Desteklenen özellikler ve ayrıntılar hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı veri kümesi özellikleri](connector-azure-sql-database.md#dataset-properties).
+Aşağıdaki kodu `Main` bir *Azure SQL veritabanı veri kümesi*oluşturan yönteme ekleyin. Desteklenen özellikler ve ayrıntılar hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı veri kümesi özellikleri](connector-azure-sql-database.md#dataset-properties).
 
 Azure SQL Veritabanı’nda havuz verilerini temsil eden bir veri kümesi tanımlayın. Bu veri kümesi, önceki adımda oluşturduğunuz Azure SQL veritabanı bağlı hizmetini ifade eder. Ayrıca, kopyalanan verileri tutan SQL tablosunu belirtir.
 
@@ -337,7 +337,7 @@ Console.WriteLine(
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-Aşağıdaki kodu `Main` *bir kopyalama etkinliği ile işlem hattı*oluşturan yöntemine ekleyin. Bu öğreticide, bu işlem hattı bir etkinlik içerir `CopyActivity`:, blob veri kümesini kaynak olarak ve SQL veri kümesini havuz olarak alır. Kopyalama etkinliği ayrıntıları hakkında daha fazla bilgi için bkz. [Azure Data Factory etkinliği kopyalama](copy-activity-overview.md).
+Aşağıdaki kodu `Main` *bir kopyalama etkinliği ile işlem hattı*oluşturan yöntemine ekleyin. Bu öğreticide, bu işlem hattı bir etkinlik içerir: `CopyActivity` , blob veri kümesini kaynak olarak ve SQL veri kümesini havuz olarak alır. Kopyalama etkinliği ayrıntıları hakkında daha fazla bilgi için bkz. [Azure Data Factory etkinliği kopyalama](copy-activity-overview.md).
 
 ```csharp
 // Create a pipeline with copy activity
@@ -371,7 +371,7 @@ Console.WriteLine(
 
 ## <a name="create-a-pipeline-run"></a>İşlem hattı çalıştırması oluşturma
 
-Aşağıdaki kodu bir işlem `Main` *hattı çalıştırmasını tetikleyen*yönteme ekleyin.
+Aşağıdaki kodu `Main` *bir işlem hattı çalıştırmasını tetikleyen*yönteme ekleyin.
 
 ```csharp
 // Create a pipeline run
@@ -386,7 +386,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 Şimdi işlem hattı çalıştırma durumlarını denetlemek ve kopyalama etkinliği çalıştırma hakkındaki ayrıntıları almak için kodu ekleyin.
 
-1. Veri kopyalamayı bitirene kadar işlem hattının `Main` çalışmasının durumlarını sürekli olarak denetlemek için yöntemine aşağıdaki kodu ekleyin.
+1. `Main`Veri kopyalamayı bitirene kadar işlem hattının çalışmasının durumlarını sürekli olarak denetlemek için yöntemine aşağıdaki kodu ekleyin.
 
     ```csharp
     // Monitor the pipeline run
@@ -405,7 +405,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     }
     ```
 
-2. , Okunan veya yazılan verilerin boyutu `Main` gibi kopyalama etkinliği çalıştırma ayrıntılarını alan yönteme aşağıdaki kodu ekleyin.
+2. `Main`, Okunan veya yazılan verilerin boyutu gibi kopyalama etkinliği çalıştırma ayrıntılarını alan yönteme aşağıdaki kodu ekleyin.
 
     ```csharp
     // Check the copy activity run details
@@ -432,7 +432,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-Build > **Build Solution** **öğesini seçerek uygulamayı**derleyin. Ardından **Hata Ayıkla** > **başlatma hata ayıklamayı**seçerek uygulamayı başlatın ve işlem hattı yürütmesini doğrulayın.
+**Build**  >  **Build Solution**öğesini seçerek uygulamayı derleyin. Ardından **Hata Ayıkla**  >  **başlatma hata ayıklamayı**seçerek uygulamayı başlatın ve işlem hattı yürütmesini doğrulayın.
 
 Konsol; veri fabrikası, bağlı hizmet, veri kümeleri, işlem hattı ve işlem hattı çalıştırmasının ilerleme durumunu yazdırır. Daha sonra işlem hattı çalıştırma durumunu denetler. Kopyalama etkinliğinin çalışma ayrıntılarını görene kadar bekleyin ve okunan veri okuma/yazma boyutudur. Daha sonra, SQL Server Management Studio (SSMS) veya Visual Studio gibi araçları kullanarak hedef Azure SQL veritabanınıza bağlanabilir ve belirttiğiniz hedef tablonun kopyalanmış verileri içerip içermediğini kontrol edebilirsiniz.
 

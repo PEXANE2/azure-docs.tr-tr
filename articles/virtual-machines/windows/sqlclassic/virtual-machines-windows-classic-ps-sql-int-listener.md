@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f05e1d46485b337acbd9390441359e086067db74
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978164"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014833"
 ---
 # <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Azure SQL Server VM 'lerinde kullanılabilirlik grupları için bir ıLB dinleyicisi yapılandırma
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "75978164"
 > [!IMPORTANT]
 > Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Azure Resource Manager ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede klasik dağıtım modelinin kullanımı ele alınmaktadır. En yeni dağıtımların Kaynak Yöneticisi modelini kullanmasını öneririz.
 
-Kaynak Yöneticisi modelinde her zaman açık kullanılabilirlik grubu için bir dinleyici yapılandırmak üzere bkz. [Azure 'Da Always on kullanılabilirlik grubu için yük dengeleyici yapılandırma](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
+Kaynak Yöneticisi modelinde her zaman açık kullanılabilirlik grubu için bir dinleyici yapılandırmak üzere bkz. [Azure 'Da Always on kullanılabilirlik grubu için yük dengeleyici yapılandırma](../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md).
 
 Kullanılabilirlik grubunuz yalnızca şirket içinde veya yalnızca Azure 'da olan veya hem şirket içi hem de karma Yapılandırma için Azure 'a yayılan çoğaltmalar içerebilir. Azure çoğaltmaları aynı bölgede veya birden çok sanal ağ kullanan birden çok bölgede bulunabilir. Bu makaledeki yordamlarda, bir [kullanılabilirlik grubunu zaten yapılandırdığınız](../classic/portal-sql-alwayson-availability-groups.md) ancak henüz bir dinleyici yapılandırdığınızı varsayalım.
 
@@ -67,7 +67,7 @@ Azure çoğaltması barındıran her VM için yük dengeli bir uç nokta oluştu
 
 6. `Get-AzurePublishSettingsFile` öğesini çalıştırın. Bu cmdlet, bir yayımlama ayarları dosyasını yerel bir dizine indirmek için sizi bir tarayıcıya yönlendirir. Azure aboneliğiniz için oturum açma kimlik bilgileriniz istenebilir.
 
-7. İndirdiğiniz yayımlama ayarları `Import-AzurePublishSettingsFile` dosyasının yoluyla aşağıdaki komutu çalıştırın:
+7. `Import-AzurePublishSettingsFile`İndirdiğiniz yayımlama ayarları dosyasının yoluyla aşağıdaki komutu çalıştırın:
 
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
 
@@ -78,7 +78,7 @@ Azure çoğaltması barındıran her VM için yük dengeli bir uç nokta oluştu
         (Get-AzureVNetConfig).XMLConfiguration
 9. Çoğaltmaları barındıran VM 'Leri içeren alt ağın *alt ağ* adını unutmayın. Bu ad, betikteki $SubnetName parametresinde kullanılır.
 
-10. Çoğaltmaları barındıran VM 'Leri içeren alt ağ için *Virtualnetworksite* adı ve başlangıç *adresispredüzeltmesini* unutmayın. Her iki değeri de `Test-AzureStaticVNetIP` komuta geçirerek ve *availableaddresses*inceleyerek kullanılabilir bir IP adresi arayın. Örneğin, sanal ağın adı *Myvnet* ise ve *172.16.0.128*adresinde başlayan bir alt ağ adres aralığı varsa, aşağıdaki komut kullanılabilir adresleri listeler:
+10. Çoğaltmaları barındıran VM 'Leri içeren alt ağ için *Virtualnetworksite* adı ve başlangıç *adresispredüzeltmesini* unutmayın. Her iki değeri de `Test-AzureStaticVNetIP` komuta geçirerek ve *availableaddresses*Inceleyerek kullanılabilir bir IP adresi arayın. Örneğin, sanal ağın adı *Myvnet* ise ve *172.16.0.128*adresinde başlayan bir alt ağ adres aralığı varsa, aşağıdaki komut kullanılabilir adresleri listeler:
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 11. Kullanılabilir adreslerden birini seçin ve sonraki adımda betiğin $ILBStaticIP parametresinde kullanın.
@@ -105,7 +105,7 @@ Azure çoğaltması barındıran her VM için yük dengeli bir uç nokta oluştu
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Değişkenleri ayarladıktan sonra dosyayı çalıştırmak için metin düzenleyicisinden betiği PowerShell oturumunuza kopyalayın. İstem hala gösteriyorsa **>>**, betiğin çalışmaya başlamasını sağlamak Için yeniden ENTER tuşuna basın.
+13. Değişkenleri ayarladıktan sonra dosyayı çalıştırmak için metin düzenleyicisinden betiği PowerShell oturumunuza kopyalayın. İstem hala gösteriyorsa **>>** , betiğin çalışmaya başlamasını sağlamak için yeniden ENTER tuşuna basın.
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Gerekirse KB2854082 yüklendiğini doğrulayın
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -151,7 +151,7 @@ Kullanılabilirlik grubu dinleyicisini iki adımda oluşturun. İlk olarak, iste
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Değişkenleri ayarladıktan sonra, yükseltilmiş bir Windows PowerShell penceresi açın ve betiği çalıştırmak için metin düzenleyicisinden komut dosyasını PowerShell oturumunuza yapıştırın. İstem hala gösteriyorsa **>>**, betiğin çalışmaya devam ettiğinden emin olmak için ENTER tuşuna basın.
+3. Değişkenleri ayarladıktan sonra, yükseltilmiş bir Windows PowerShell penceresi açın ve betiği çalıştırmak için metin düzenleyicisinden komut dosyasını PowerShell oturumunuza yapıştırın. İstem hala gösteriyorsa **>>** , betiğin çalışmaya devam ettiğinden emin olmak Için ENTER tuşuna basın.
 
 4. Her VM için önceki adımları tekrarlayın.  
     Bu betik, IP adresi kaynağını bulut hizmetinin IP adresiyle yapılandırır ve araştırma bağlantı noktası gibi diğer parametreleri ayarlar. IP adresi kaynağı çevrimiçi duruma getirildiğinde, daha önce oluşturduğunuz yük dengeli uç noktadan yoklama bağlantı noktasındaki yoklamaya yanıt verebilir.

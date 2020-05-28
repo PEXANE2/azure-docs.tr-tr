@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 894eecc7746ddb1352708f2dfe5d6d2d53cdd8c9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82086105"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021662"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>SYNAPSE SQL ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullanma
 
@@ -22,7 +22,7 @@ Azure Active Directory kimlik doğrulaması, Azure Active Directory (Azure AD) k
 Azure AD kimlik doğrulamasıyla, izin yönetimini basitleştirmek için Azure SYNAPSE erişimi olan kullanıcı kimliklerini merkezi olarak yönetebilirsiniz. Avantajları şunlardır:
 
 - Normal Kullanıcı adı ve parola kimlik doğrulamasına bir alternatif sağlar.
-- Veritabanı sunucuları arasında kullanıcı kimliklerinin uzamasını durdurmaya yardımcı olur.
+- Sunucu genelindeki Kullanıcı kimliklerinin uzamasını durdurmaya yardımcı olur.
 - Tek bir yerde parola döndürmeye izin verir.
 - Müşteriler, dış (Azure AD) gruplarını kullanarak izinleri yönetebilir.
 - Tümleşik Windows kimlik doğrulamasını ve Azure Active Directory tarafından desteklenen diğer kimlik doğrulama biçimlerini etkinleştirerek parolaların depolanmasını ortadan kaldırabilir.
@@ -70,7 +70,7 @@ Grup hesabını yönetici olarak kullanmak, SYNAPSE Analytics çalışma alanın
 
 ## <a name="permissions"></a>İzinler
 
-Yeni kullanıcılar oluşturmak için, veritabanında `ALTER ANY USER` izninizin olması gerekir. Herhangi `ALTER ANY USER` bir veritabanı kullanıcısına izin verilebilir. Ayrıca `ALTER ANY USER` , bu izin Sunucu Yöneticisi hesapları tarafından ve bu veritabanı için `CONTROL ON DATABASE` veya `ALTER ON DATABASE` iznine sahip veritabanı kullanıcıları ve `db_owner` veritabanı rolünün üyeleri tarafından tutulur.
+Yeni kullanıcılar oluşturmak için, veritabanında izninizin olması gerekir `ALTER ANY USER` . `ALTER ANY USER`Herhangi bir veritabanı kullanıcısına izin verilebilir. `ALTER ANY USER`Ayrıca, bu izin Sunucu Yöneticisi hesapları tarafından ve `CONTROL ON DATABASE` Bu veritabanı için veya iznine sahip veritabanı kullanıcıları `ALTER ON DATABASE` ve veritabanı rolünün üyeleri tarafından tutulur `db_owner` .
 
 SYNAPSE SQL 'de kapsanan bir veritabanı kullanıcısı oluşturmak için, bir Azure AD kimliği kullanarak veritabanına veya örneğe bağlanmanız gerekir. İlk kapsanan veritabanı kullanıcısını oluşturmak için, bir Azure AD Yöneticisi (veritabanının sahibi olan) kullanarak veritabanına bağlanmanız gerekir. 
 
@@ -85,11 +85,11 @@ Tüm Azure AD kimlik doğrulaması yalnızca Azure AD yöneticisi SYNAPSE SQL i�
   - Diğer Azure AD 'den, yerel veya Federasyon etki alanı üyesi olan Üyeler içeri aktarıldı.
   - Güvenlik grupları olarak oluşturulan grupları Active Directory.
 
-- Sunucu rolüne sahip bir grubun parçası olan Azure AD kullanıcıları, `db_owner` SYNAPSE SQL 'de **[VERITABANı kapsamlı kimlik bilgisi oluşturma](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** söz dizimini kullanamaz. Aşağıdaki hatayı görürsünüz:
+- Sunucu rolüne sahip bir grubun parçası olan Azure AD kullanıcıları `db_owner` , SYNAPSE SQL 'de **[VERITABANı KAPSAMLı kimlik bilgisi oluşturma](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** söz dizimini kullanamaz. Aşağıdaki hatayı görürsünüz:
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
-    `db_owner` **VERITABANı kapsamlı kimlik bilgileri oluşturma** sorununu hafifletmek için role doğrudan tek bir Azure AD kullanıcısına izin verin.
+    `db_owner` **VERITABANı KAPSAMLı kimlik bilgileri oluşturma** sorununu hafifletmek için role doğrudan tek bir Azure AD kullanıcısına izin verin.
 
 - Bu sistem işlevleri, Azure AD sorumluları altında yürütüldüğünde NULL değerler döndürüyor:
 
@@ -118,7 +118,7 @@ Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum 
 
 - Yönetilebilirlik geliştirmek için, bir yönetici olarak adanmış bir Azure AD grubu sağlamanızı öneririz.
 - Yalnızca bir Azure AD Yöneticisi (bir kullanıcı veya grup), SYNAPSE SQL havuzu için dilediğiniz zaman yapılandırılabilir.
-  - İsteğe bağlı SQL (Önizleme) için Azure AD Server sorumlularını (oturum açma) ekleme, `sysadmin` role eklenebilen birden çok Azure AD Server sorumlusu (oturum açma) oluşturma olasılığa izin verir.
+  - İsteğe bağlı SQL (Önizleme) için Azure AD Server sorumlularını (oturum açma) ekleme, role eklenebilen birden çok Azure AD Server sorumlusu (oturum açma) oluşturma olasılığa izin verir `sysadmin` .
 - SYNAPSE SQL için yalnızca bir Azure AD yöneticisi başlangıçta Azure Active Directory bir hesabı kullanarak SYNAPSE SQL 'e bağlanabilir. Active Directory Yöneticisi, sonraki Azure AD veritabanı kullanıcılarını yapılandırabilir.
 - Bağlantı zaman aşımını 30 saniyeye ayarlamayı öneririz.
 - SQL Server 2016 Management Studio ve SQL Server Veri Araçları Visual Studio 2015 için (sürüm 14.0.60311.1 Nisan 2016 veya üzeri) Azure Active Directory kimlik doğrulamasını destekler. (Azure AD kimlik doğrulaması, **SqlServer için .NET Framework veri sağlayıcısı**tarafından desteklenir; en az sürüm .NET Framework 4,6). Bu nedenle, bu araçların ve veri katmanı uygulamalarının en yeni sürümleri (DAC ve. BACPAC), Azure AD kimlik doğrulaması kullanabilir.

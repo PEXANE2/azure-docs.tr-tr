@@ -1,6 +1,6 @@
 ---
-title: Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanarak SSIS paket yürütmelerini zamanlama
-description: Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanarak SSIS paket yürütmelerini zamanlamayı öğrenin.
+title: Azure SQL yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırma
+description: Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırmayı öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,16 +9,14 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: f230e4d33686b006b20e856d5e8033847e3f3d67
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 1a0015c12f942eebb0a26738f5d7144bbe28ef1c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628495"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022299"
 ---
-# <a name="schedule-ssis-package-executions-by-using-azure-sql-database-managed-instance-agent"></a>Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanarak SSIS paket yürütmelerini zamanlama
-
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+# <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırma
 
 Bu makalede, Azure SQL veritabanı yönetilen örnek Aracısı kullanılarak bir SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır. Bu özellik, SSIS paketlerini şirket içi ortamınızda SQL Server Agent kullanarak zamanladığınızda benzer davranışlar sağlar.
 
@@ -81,7 +79,7 @@ Bu yordamda, dosya sisteminde depolanan bir SSIS paketini çalıştırmak için 
 
         ![Dosya kaynak türü seçenekleri](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
       
-        Paket yolu **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`**.
+        Paket yolu **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`** .
       
         **Paket dosyası erişimi kimlik bilgileri**altında Azure dosyasına erişmek için Azure dosya hesabı adını ve hesap anahtarını girin. Etki alanı **Azure**olarak ayarlanır.
 
@@ -92,14 +90,14 @@ Bu yordamda, dosya sisteminde depolanan bir SSIS paketini çalıştırmak için 
         Ağ paylaşımının paket dosyasına erişmek için karşılık gelen etki alanını, Kullanıcı adını ve parolayı girin.
    1. Paket dosyanız bir parolayla şifrelenirse, **şifreleme parolası** ' nı seçin ve parolayı girin.
 1. **Yapılandırmalar** SEKMESINDE, SSIS paketini çalıştırmak için bir yapılandırma dosyası gerekiyorsa yapılandırma dosyası yolunu girin.
-   Yapılandırmanızı Azure dosyalarında depolarsanız, yapılandırma yolu olacaktır **`\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`**.
+   Yapılandırmanızı Azure dosyalarında depolarsanız, yapılandırma yolu olacaktır **`\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`** .
 1. **Yürütme seçenekleri** SEKMESINDE, SSIS paketini çalıştırmak için **Windows kimlik doğrulaması** mı yoksa **32 bit çalışma zamanı** mi kullanacağınızı seçebilirsiniz.
 1. **Günlüğe kaydetme sekmesinde günlüğe** kaydetme yolunu ve günlük dosyalarını depolamak için karşılık gelen günlük erişimi kimlik bilgilerini seçebilirsiniz. 
    Varsayılan olarak, günlük kaydı, paket klasörü yoluyla aynıdır ve günlük erişimi kimlik bilgileri, paket erişimi kimlik bilgileriyle aynıdır.
-   Günlüklerinizi Azure dosyalarında depolarsanız, günlük yolunuz olur **`\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`**.
+   Günlüklerinizi Azure dosyalarında depolarsanız, günlük yolunuz olur **`\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`** .
 1. **Değerleri ayarla** sekmesinde, paket özelliklerini geçersiz kılmak için özellik yolunu ve değerini girebilirsiniz.
  
-   Örneğin, Kullanıcı değişkeninizin değerini geçersiz kılmak için yolunu aşağıdaki biçimde girin: **`\Package.Variables[User::<variable name>].Value`**.
+   Örneğin, Kullanıcı değişkeninizin değerini geçersiz kılmak için yolunu aşağıdaki biçimde girin: **`\Package.Variables[User::<variable name>].Value`** .
 1. Aracı iş yapılandırmasını kaydetmek için **Tamam ' ı** seçin.
 1. SSIS paketini çalıştırmak için aracı işini başlatın.
 

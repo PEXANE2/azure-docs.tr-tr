@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0a508e52189938447ea6fc1928d441d81deab392
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 2bdb305e0342dc9b7807ad64de9b5d872237afcc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714041"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014341"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Son kullanıcıların uygulamalara nasıl izin vermesini yapılandırın
 
@@ -49,7 +49,7 @@ Azure portal aracılığıyla Kullanıcı izin ayarlarını yapılandırmak içi
 1. **Uygulamalar Için kullanıcı onayı**altında, tüm kullanıcılar için yapılandırmak istediğiniz izin ayarını seçin.
 1. Ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
 
-![Kullanıcı izin ayarları](./media/configure-user-consent/setting-for-all-users.png)
+:::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="Kullanıcı izin ayarları":::
 
 > [!TIP]
 > Kullanıcıların, kullanıcı onayı devre dışı bırakıldığında veya bir uygulama kullanıcının izin vermediği izinleri istemesi durumunda kullanıcının izin vermediği bir uygulamanın gözden geçirilmesini ve onayını istememe olanağı tanımak için [yönetici onayı iş akışını etkinleştirmeyi](configure-admin-consent-workflow.md) düşünün.
@@ -102,7 +102,7 @@ Uygulamalara yönelik Kullanıcı onayını hangi onay ilkesinin yöneteceğini 
 
 Bu örnekte, çoklu oturum açma için gereken en düşük izin kümesini sınıflandırdık:
 
-![İzin sınıflandırmaları](./media/configure-user-consent/permission-classifications.png)
+:::image type="content" source="media/configure-user-consent/permission-classifications.png" alt-text="İzin sınıflandırmaları":::
 
 > [!TIP]
 > Microsoft Graph API 'si için, temel çoklu oturum açma için gereken en düşük izinler `openid` , ve ' `profile` dir `User.Read` `offline_access` . Bu izinlerle bir uygulama, oturum açmış kullanıcının profil ayrıntılarını okuyabilir ve Kullanıcı artık uygulamayı kullanmıyor olsa bile bu erişimi koruyabilir.
@@ -192,7 +192,7 @@ Hangi kullanıcıların grupların verilerine erişen uygulamalara izin verilece
 
 Bu örnekte, tüm Grup sahiplerinin grupların verilerine erişen uygulamalara izin vermesini sağlar:
 
-![İzin sınıflandırmaları](./media/configure-user-consent/group-owner-consent.png)
+:::image type="content" source="media/configure-user-consent/group-owner-consent.png" alt-text="Grup sahibi izin ayarları":::
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>PowerShell kullanarak Grup sahibi onayını yapılandırma
 

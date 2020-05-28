@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 1bdc089bb89a732e329bf7d3ffd3d5b5c09ba408
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ef6d49c9046ba04bbac40ec9bf555e12d2faa8f6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637253"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021713"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel uç nokta oluşturma
 
-Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, bir Azure sanal ağında, Azure portal kullanarak Azure özel uç noktası olan bir SQL veritabanı sunucusu olan bir VM oluşturmayı öğreneceksiniz. Ardından, VM 'den SQL veritabanı sunucusuna güvenle erişebilirsiniz.
+Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, bir Azure sanal ağında, Azure portal kullanarak bir Azure özel uç noktası içeren mantıksal bir SQL Server olan bir VM oluşturmayı öğreneceksiniz. Daha sonra, VM 'den SQL veritabanına güvenli bir şekilde erişebilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -36,18 +36,18 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 | Parametre                   | Değer                |
 |-----------------------------|----------------------|
-| **\<Kaynak-Grup adı>**  | myResourceGroup |
-| **\<sanal ağ-adı>** | myVirtualNetwork          |
-| **\<bölge adı>**          | Orta Batı ABD    |
-| **\<IPv4-adres-alanı>**   | 10.1.0.0/16          |
-| **\<alt ağ-adı>**          | mySubnet        |
-| **\<alt ağ-adres aralığı>** | 10.1.0.0/24          |
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | Orta Batı ABD    |
+| **\<IPv4-address-space>**   | 10.1.0.0/16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machine"></a>Sanal makine oluştur
 
-1. Azure Portal ekranın sol üst tarafında **kaynak** > oluştur**işlem** > **sanal makinesi**' ni seçin.
+1. Azure Portal ekranın sol üst tarafında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi**' ni seçin.
 
 1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
 
@@ -93,10 +93,11 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
 
-## <a name="create-a-sql-database-server"></a>SQL veritabanı sunucusu oluşturma
-Bu bölümde, Azure 'da bir SQL veritabanı sunucusu oluşturacaksınız. 
+## <a name="create-a-logical-sql-server"></a>Mantıksal SQL Server oluştur
 
-1. Ekranın sol üst tarafında Azure Portal **kaynak** > **veritabanları** > oluştur**SQL veritabanı**' nı seçin.
+Bu bölümde, Azure 'da bir mantıksal SQL Server oluşturacaksınız. 
+
+1. Ekranın sol üst tarafında Azure Portal **kaynak**  >  **veritabanları**oluştur  >  **SQL veritabanı**' nı seçin.
 
 1. **SQL veritabanı oluşturma-temel**bilgiler bölümünde, bu bilgileri girin veya seçin:
 
@@ -127,7 +128,7 @@ Bu bölümde, Azure 'da bir SQL veritabanı sunucusu oluşturacaksınız.
 
 Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokta ekleyeceksiniz. 
 
-1. Azure Portal ekranın sol üst tarafında, **kaynak** > oluştur**ağ** > **özel bağlantı merkezi (Önizleme)** öğesini seçin.
+1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **ağ**  >  **özel bağlantı merkezi (Önizleme)** öğesini seçin.
 2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma**seçeneğinde, **Başlat**' ı seçin.
 1. **Özel uç nokta oluştur (Önizleme)-temel**bilgiler için, bu bilgileri girin veya seçin:
 
@@ -137,7 +138,7 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | **ÖRNEK AYRıNTıLARı** |  |
-    | Adı | *Myprivateendpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
+    | Name | *Myprivateendpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
     |Bölge|**WestCentralUS**öğesini seçin.|
     |||
 5. **Sonraki: kaynak**' ı seçin.
@@ -185,7 +186,7 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için > **farklı bir hesap kullan**' **ı seçmeniz gerekebilir**.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -193,7 +194,7 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
 
 1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
 
-## <a name="access-the-sql-database-server-privately-from-the-vm"></a>SQL veritabanı sunucusuna VM 'den özel olarak erişme
+## <a name="access-sql-database-privately-from-the-vm"></a>SQL veritabanına özel olarak VM 'den erişin
 
 1. *Myvm*uzak masaüstünde PowerShell ' i açın.
 
@@ -216,11 +217,11 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
     | ------- | ----- |
     | Sunucu türü| **Veritabanı Altyapısı**’nı seçin.|
     | Sunucu adı| *Myserver.Database.Windows.net* seçin |
-    | Kullanıcı adı | SQL Server oluşturma username@servername sırasında belirtilen kullanıcı adını girin. |
+    | Kullanıcı adı | username@servernameSQL Server oluşturma sırasında belirtilen kullanıcı adını girin. |
     |Parola |SQL Server oluşturma sırasında girilen bir parolayı girin. |
     |Parolayı anımsa|**Evet**' i seçin.|
     |||
-1. **Bağlan**’ı seçin.
+1. **Bağlan**'ı seçin.
 2. Sol menüden veritabanlarına gözatamazsınız.
 3. I MyDatabase 'ten bilgi oluşturun veya sorgulayın.
 4. *Myvm*ile uzak masaüstü bağlantısını kapatın. 
@@ -233,4 +234,4 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir sanal ağ, bir SQL veritabanı sunucusu ve özel erişim için özel bir uç nokta üzerinde bir VM oluşturdunuz. İnternet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak SQL veritabanı sunucusuna güvenli bir şekilde iletilecaksınız. Özel uç noktalar hakkında daha fazla bilgi edinmek için bkz. [Azure özel uç noktası nedir?](private-endpoint-overview.md).
+Bu hızlı başlangıçta, bir sanal ağ, bir mantıksal SQL Server ve özel erişim için özel bir uç nokta üzerinde bir VM oluşturdunuz. İnternet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak SQL veritabanına güvenli bir şekilde iletilecaksınız. Özel uç noktalar hakkında daha fazla bilgi edinmek için bkz. [Azure özel uç noktası nedir?](private-endpoint-overview.md).

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 470cc8cc16c8bdb32bac32a7227690899abb9c51
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 291e81261f8841b3d4629b077f0a244f10aa1fd8
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644663"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118567"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark nedir?
 
@@ -32,7 +32,7 @@ Apache Spark, bellek içi küme bilgi işlem için temel öğeler sağlar. Bir S
 
 Azure 'daki Spark havuzları, tam olarak yönetilen bir Spark hizmeti sunar. SYNAPSE Analytics 'te Spark havuzu oluşturmanın avantajları burada listelenmiştir.
 
-| Öne çıkan özelliği | Açıklama |
+| Özellik | Açıklama |
 | --- | --- |
 | Hız ve verimlilik |Spark örnekleri 60 ' den az düğüm için yaklaşık 2 dakika ve 60 ' den fazla düğüm için yaklaşık 5 dakika içinde başlar. Örnek, varsayılan olarak, son işi bir not defteri bağlantısı tarafından etkin tutulmadığı takdirde 5 dakikada bir kapatır. |
 | Oluşturma kolaylığı |Azure portal, Azure PowerShell veya SYNAPSE Analytics .NET SDK kullanarak dakikalar içinde Azure SYNAPSE 'te yeni bir Spark havuzu oluşturabilirsiniz. Bkz. [SYNAPSE Analytics 'Te Spark havuzlarıyla çalışmaya başlama](../quickstart-create-apache-spark-pool-studio.md). |
@@ -41,7 +41,7 @@ Azure 'daki Spark havuzları, tam olarak yönetilen bir Spark hizmeti sunar. SYN
 | Azure Data Lake Storage oluşturma için destek 2| Azure SYNAPSE ' deki Spark havuzları, BLOB depolamayı Azure Data Lake Storage oluşturma 2 ' de kullanabilir. Data Lake Storage hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage genel bakış](../../data-lake-store/data-lake-store-overview.md). |
 | Üçüncü taraf IDE’lerle tümleştirme | Azure SYNAPSE, bir Spark havuzunda uygulama oluşturmak ve göndermek için yararlı olan [JetBrains](https://www.jetbrains.com/idea/) IÇIN bir IDE eklentisi sağlar. |
 | Önceden yüklenmiş Anaconda kitaplıkları |Azure 'daki Spark havuzları, önceden yüklenmiş Anaconda kitaplıkları ile gelir. [Anaconda](https://docs.continuum.io/anaconda/) machine learning, veri analizi, görselleştirme vb. için 200’e yakın kitaplık sağlar. |
-| Ölçeklenebilirlik | Azure SYNAPSE havuzlarındaki Apache Spark, havuzların gerektikçe ölçeği artırma ve azaltma için otomatik ölçeklendirmeyi etkinleştirilmiş olabilir. Ayrıca, tüm veriler Azure depolama 'da depolandığından veya Data Lake Storage, Spark havuzları veri kaybı olmadan kapatılabilir. |
+| Ölçeklenebilirlik | Azure SYNAPSE havuzlarındaki Apache Spark, havuzların gerektikçe düğüm ekleyerek veya kaldırarak ölçeklenmesi için otomatik ölçeklendirmeyi etkin olabilir. Ayrıca, tüm veriler Azure depolama 'da depolandığından veya Data Lake Storage, Spark havuzları veri kaybı olmadan kapatılabilir. |
 
 Azure SYNAPSE 'te Spark havuzları, havuzlarda varsayılan olarak bulunan aşağıdaki bileşenleri içerir.
 

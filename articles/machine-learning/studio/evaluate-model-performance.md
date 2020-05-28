@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 3c041834b9ad191817cdf1380b0a75efc7639bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: caa37dbc3a09236c8e9553eba506e6c0b25e51e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218150"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118432"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 'de model performansını değerlendirme (klasik)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Bu makalede, Azure Machine Learning Studio (klasik) ' de bir modelin performansının nasıl değerlendirileceği gösterilmektedir ve bu görev için kullanılabilen ölçümlere ilişkin kısa bir açıklama sunulmaktadır. Yaygın olarak denetlenen üç öğrenme senaryosu sunulmaktadır: 
 
@@ -151,7 +149,7 @@ Bağlantı noktalarını Şekil 10 ' da aşağıda gösterildiği gibi bağlayı
 
 [Model eğitimi][train-model] modülünün etiket sütun dizinini 5 olarak ayarlayın. DataSet 'in başlık satırı yok ancak sınıf etiketlerinin beşinci sütunda olduğunu biliyoruz.
 
-[Veri alma][import-data] modülüne tıklayın ve *VERI kaynağı* özelliğini *http Ile web URL 'si*ile *URL* 'ye ayarlayın http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
+[Veri alma][import-data] modülüne tıklayın ve *VERI kaynağı* özelliğini *http Ile web URL 'si*ile *URL* 'ye ayarlayın http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data .
 
 [Veri ayırma][split] modülündeki eğitim için kullanılacak örneklerin kesirini ayarlayın (örneğin, 0,7).
 

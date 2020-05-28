@@ -4,18 +4,18 @@ description: Application Insights, uygulama telemetrinizin akıllı analizini ya
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697164"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016857"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Akıllı algılama-performans bozuklukları
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) Web uygulamanızın performansını otomatik olarak analiz eder ve olası sorunlar hakkında sizi uyarabilir. Akıllı algılama bildirimlerimizden birini aldığınız için bunu okuyor olabilirsiniz.
 
-Bu özellik, uygulamanızı Application Insights ( [ASP.net](../../azure-monitor/app/asp-net.md), [Java](../../azure-monitor/app/java-get-started.md)veya [Node. js](../../azure-monitor/app/nodejs.md)üzerinde ve [Web sayfası kodunda](../../azure-monitor/app/javascript.md)) yapılandırma dışında özel bir kurulum gerektirmez. Uygulamanız yeterli telemetri ürettirse bu etkin olur.
+Bu özellik, [desteklenen dile](../../azure-monitor/app/platforms.md)yönelik Application Insights uygulamanızı yapılandırma dışında özel bir kurulum gerektirmez. Uygulamanız yeterli telemetri ürettirse bu etkin olur.
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>Ne zaman akıllı bir algılama bildirimi alabilirim?
 

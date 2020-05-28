@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b4fbfb65a609742105056fa7fb849f84579245cb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 855f0782f1979f91fcd83bcc469d8d2feaf8c643
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650492"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015711"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda bağlantı sorunlarını giderme
 
@@ -50,11 +50,11 @@ Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak i�
 
 ## <a name="check-your-firewall-settings"></a>Güvenlik duvarı ayarlarını denetleme
 
-SQL havuzu veritabanı 1433 bağlantı noktası üzerinden iletişim kurar.Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)ulaşabilirsiniz.
+SQL havuzu veritabanı 1433 bağlantı noktası üzerinden iletişim kurar.Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı takdirde [mantıksal sunucunuza](../../azure-sql/database/logical-servers.md) bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)ulaşabilirsiniz.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Sanal Ağ/Hizmet Uç Noktası ayarlarınızı denetleme
 
-40914 ve 40615 hatalarını alıyorsanız, [buraya hata açıklaması ve çözüm](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)bölümüne bakın.
+40914 ve 40615 hatalarını alıyorsanız, [buraya hata açıklaması ve çözüm](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)bölümüne bakın.
 
 ## <a name="check-for-the-latest-drivers"></a>En son sürücüleri denetleme
 
@@ -109,7 +109,7 @@ Sunucu üzerinde çok sayıda sıraya alınmış isteğin olduğu ağır yüklen
 
 ## <a name="common-error-messages"></a>Genel hata iletileri
 
-Hatalar 40914 ve 40615, [buradaki hata açıklamasına ve çözümüne](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)bakın.
+Hatalar 40914 ve 40615, [buradaki hata açıklamasına ve çözümüne](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)bakın.
 
 ## <a name="still-having-connectivity-issues"></a>Hala bağlantı sorunları var mı?
 

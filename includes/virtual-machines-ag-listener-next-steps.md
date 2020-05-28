@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 27b09ea9cc7ce3cf2559304a26d0c04f3ea30b54
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 70b7a869c8b8147f978987b99b4918f573da6d0f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67188323"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014834"
 ---
 İstemcileri birincil çoğaltmaya otomatik olarak bağlamaya ek olarak, salt okuma iş yüklerini ikinciye yeniden yönlendirmek için bir dinleyici kullanılabilir. Bu kullanım, genel çözümünüzün performansını ve ölçeklenebilirliğini iyileştirebilirler. Daha fazla bilgi için bkz. [Azure Always on kullanılabilirlik grubu dinleyicisiyle Readamaç yönlendirmeyi kullanma](https://go.microsoft.com/fwlink/?LinkId=522515).
 
@@ -18,5 +18,5 @@ ms.locfileid: "67188323"
 > 
 > 
 
-Azure 'da SQL Server kullanma hakkında daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Azure 'da SQL Server kullanma hakkında daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 
