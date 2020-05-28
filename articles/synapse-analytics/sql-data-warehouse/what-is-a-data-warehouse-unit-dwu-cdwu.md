@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3c2bdd2dcd5fcef62c0a4691160c5457d19f196
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408061"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112610"
 ---
 # <a name="data-warehouse-units-dwus"></a>Veri ambarı birimleri (DWU 'Lar)
 
@@ -36,7 +36,7 @@ Veri ambarı birimlerinin performansı, bu veri ambarı iş yükü ölçümlerin
 
 - Standart bir SQL havuzu sorgusunun çok sayıda satırı tarayabilmesi ve ardından karmaşık bir toplama işlemi gerçekleştirebilmesi. Bu işlem g/ç ve CPU yoğun.
 - SQL havuzunun verileri Azure depolama Bloblarından veya Azure Data Lake alabilir. Bu işlem ağ ve CPU yoğun.
-- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL komutunun bir tabloyu ne kadar hızlı kopyalayabilirler. Bu işlem, depolama alanından veri okumayı, gerecin düğümlerine dağıtmayı ve depolama alanına yeniden yazmayı içerir. Bu işlem CPU, GÇ ve ağ yoğunluğu.
+- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)T-SQL komutunun bir tabloyu ne kadar hızlı kopyalayabilirler. Bu işlem, depolama alanından veri okumayı, gerecin düğümlerine dağıtmayı ve depolama alanına yeniden yazmayı içerir. Bu işlem CPU, GÇ ve ağ yoğunluğu.
 
 DWUs 'yi artırma:
 
@@ -72,7 +72,7 @@ Her performans katmanı, veri ambarı birimleri için biraz farklı bir ölçü 
 
 Hem DWUs hem de cDWUs desteği, işlem ölçeğini artırma veya azaltma ve veri ambarını kullanmanıza gerek olmadığında işlem duraklatma. Bu işlemler isteğe bağlıdır. Gen2, performansı artırmak için işlem düğümlerinde yerel bir disk tabanlı önbellek kullanır. Sistemi ölçeklendirerek veya duraklatdığınızda, önbellek geçersiz kılınır ve en iyi performans elde etmeden önce bir süre sonra bir önbellek ısınmanız gerekir.  
 
-Her SQL Server (örneğin, myserver.database.windows.net), belirli sayıda veri ambarı birimine izin veren bir [veritabanı Işlem birimi (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kotasına sahiptir. Daha fazla bilgi için bkz. [iş yükü yönetim kapasitesi sınırları](sql-data-warehouse-service-capacity-limits.md#workload-management).
+Her SQL Server (örneğin, myserver.database.windows.net), belirli sayıda veri ambarı birimine izin veren bir [veritabanı Işlem birimi (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kotasına sahiptir. Daha fazla bilgi için bkz. [iş yükü yönetim kapasitesi sınırları](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
 ## <a name="capacity-limits"></a>Kapasite sınırları
 
@@ -107,7 +107,7 @@ SQL DB katılımcısı ve SQL Server katılımcısı gibi Azure kaynakları içi
 Geçerli DWU ayarını görüntülemek için:
 
 1. Visual Studio 'da SQL Server Nesne Gezgini açın.
-2. Mantıksal SQL veritabanı sunucusuyla ilişkili ana veritabanına bağlanın.
+2. Mantıksal SQL Server ile ilişkili ana veritabanına bağlanın.
 3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Örnek aşağıda verilmiştir:
 
 ```sql
@@ -149,7 +149,7 @@ T-SQL ile geçerli DWUsettings ayarlarını görüntüleyebilir, ayarları deği
 
 DWUs 'yi değiştirmek için:
 
-1. Mantıksal SQL veritabanı sunucunuz ile ilişkili ana veritabanına bağlanın.
+1. Sunucunuz ile ilişkili ana veritabanına bağlanın.
 2. [Alter database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL deyimini kullanın. Aşağıdaki örnek, hizmet düzeyi hedefini MySQLDW veritabanı için DW1000c olarak ayarlar.
 
 ```Sql
@@ -185,7 +185,7 @@ Azure portal genişleme işlemleri için veritabanı durumunu kontrol edebilirsi
 
 DWU değişikliklerinin durumunu denetlemek için:
 
-1. Mantıksal SQL veritabanı sunucunuz ile ilişkili ana veritabanına bağlanın.
+1. Sunucunuz ile ilişkili ana veritabanına bağlanın.
 2. Veritabanı durumunu denetlemek için aşağıdaki sorguyu gönder.
 
 ```sql

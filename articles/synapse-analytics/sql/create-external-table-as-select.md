@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cbf6d42f3b1d130a6bf89f07bd3a7009ff0e8fa8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d73e895371764d9dd28290648551d84181e022cd
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647527"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117587"
 ---
 # <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) kullanarak sorgu sonuçlarını depolamaya depolayın
 
@@ -22,17 +22,16 @@ Bu makalede, sorgu sonuçlarının SQL isteğe bağlı (Önizleme) kullanarak de
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-İlk adımınız aşağıdaki makaleleri gözden geçirdiğinizden ve önkoşulları karşıladığınızdan emin olmanızı sağlar:
+İlk adımınız sorguları yürütebileceğiniz **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde verileri okumak için kullanılan harici dosya biçimlerini oluşturacaktır.
 
-- [İlk kez kurulum](query-data-storage.md#first-time-setup)
-- [Önkoşullar](query-data-storage.md#prerequisites)
+Veri kaynakları, veritabanı kapsamlı kimlik bilgileri ve çıkış depolamaya veri yazmak için kullanılan harici dosya biçimleri oluşturmak için bu makaledeki yönergeleri izleyin.
 
 ## <a name="create-external-table-as-select"></a>Dış tabloyu seç olarak oluştur
 
 Sorgu sonuçlarını depolamaya depolamak için CREATE EXTERNAL TABLE AS SELECT (CETAS) ifadesini kullanabilirsiniz.
 
 > [!NOTE]
-> Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz. Bir veritabanı oluşturmadıysanız, lütfen [ilk kez kurulum 'u](query-data-storage.md#first-time-setup)okuyun. MyDataSource dış veri kaynağının konumunu, yazma izninizin olduğu konuma işaret etmek üzere değiştirmeniz gerekir. 
+> Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz.
 
 ```sql
 USE [mydbname];
@@ -63,8 +62,9 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
-        FORMAT='CSV'
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
     ) WITH (
         CountryCode varchar(4),
         CountryName varchar(64),
@@ -79,7 +79,7 @@ FROM
 Normal bir dış tablo gibi CETAS aracılığıyla oluşturulan dış tabloyu kullanabilirsiniz.
 
 > [!NOTE]
-> Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz. Bir veritabanı oluşturmadıysanız, lütfen [ilk kez kurulum 'u](query-data-storage.md#first-time-setup)okuyun.
+> Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz.
 
 ```sql
 USE [mydbname];
@@ -96,4 +96,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Farklı dosya türlerini sorgulama hakkında daha fazla bilgi için, [tek CSV dosyası](query-single-csv-file.md)sorgulama, [Parquet dosyalarını](query-parquet-files.md)sorgulama ve [JSON dosyaları sorgulama](query-json-files.md) makalelerini inceleyin.
+Farklı dosya türlerini sorgulama hakkında daha fazla bilgi için bkz. [tek CSV dosyası sorgulama](query-single-csv-file.md), [Parquet dosyalarını](query-parquet-files.md)sorgulama ve [JSON dosyaları sorgulama](query-json-files.md) makaleleri.

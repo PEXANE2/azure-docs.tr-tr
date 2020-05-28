@@ -3,12 +3,12 @@ title: Bilgi Bankası Soru-Cevap Oluşturma Düzenleme-
 description: Soru-Cevap Oluşturma, kullanımı kolay bir düzen deneyimi sağlayarak bilgi Bankalarınızın içeriğini yönetmenizi sağlar.
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 018e733dda06b7785b0a87ea3e08009967213134
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650824"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993584"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Bilgi bankasındaki QnA çiftlerini düzenleme
 
@@ -57,7 +57,7 @@ Yanıt metninizi zengin metin düzenlemesi, basit bir araç çubuğundan Markin 
     |Zengin metin düzenleyici özellikleri|Klavye kısayolu|
     |--|--|
     |Zengin metin düzenleyici ve markaşağı arasında geçiş yapın. `</>`|CTRL+M|
-    |Kalın. **Kenarı**|MRK + LB|
+    |Kalın. **B**|MRK + LB|
     |İtalik, italik ı ile gösterilir ** _I_**|CTRL + ı|
     |Sırasız liste||
     |Sıralı liste||
@@ -85,7 +85,7 @@ Yanıt metninizi zengin metin düzenlemesi, basit bir araç çubuğundan Markin 
 
 ## <a name="delete-a-qna-pair"></a>Bir QnA çiftini silme
 
-Bir QnA 'yi silmek için QnA satırının en sağındaki **Sil** simgesine tıklayın. Bu kalıcı bir işlemdir. Geri alınamaz. Kümeleri silmeden önce **Yayımla** sayfasından KB 'nizi dışarı aktarmayı düşünün.
+Bir QnA 'yi silmek için QnA satırının en sağındaki **Sil** simgesine tıklayın. Bu kalıcı bir işlemdir. Geri alınamaz. Çiftleri silinmeden önce **Yayımla** sayfasından KB 'nizi dışarı aktarmayı düşünün.
 
 ![QnA çiftini Sil](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -110,7 +110,7 @@ Yanıtın meta verilerinde QnA çiftlerini bağlayamazsınız.
 
 ## <a name="add-metadata"></a>Meta veri Ekle
 
-Önce **Görünüm seçeneklerini**belirleyip **meta verileri göster**' i seçerek meta veri kümeleri ekleyin. Bu, meta veri sütununu görüntüler. Sonra, **+** meta veri kümesi eklemek için imzala ' yı seçin. Bu küme bir anahtar ve bir değer içerir.
+Önce **Görünüm seçeneklerini**belirleyip **meta verileri göster**' i seçerek meta veri çiftleri ekleyin. Bu, meta veri sütununu görüntüler. Sonra, **+** bir meta veri çifti eklemek için imzala ' yı seçin. Bu çift bir anahtar ve bir değer içerir.
 
 ## <a name="save-changes-to-the-qna-pairs"></a>Değişiklikleri QnA çiftlerine Kaydet
 

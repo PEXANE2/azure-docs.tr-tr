@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: b7489c49b7469feacfd5b982615419741d286998
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: d0f12274f3cbc0cd2726097e0507079cb858d59f
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849714"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116567"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -49,13 +49,13 @@ Bu sürümde hiçbir davranış değişikliği yok. Yaklaşan değişikliklere h
 Gelecek sürümlerde aşağıdaki değişiklikler olur. 
 
 ### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 3,6 Spark kümesinde Spark 2,1 ve 2,2 ' nin kullanımdan kaldırılması
-1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 3,6 üzerinde Spark 2,1 ve 2,2 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 3,6 ' ye 30 2020 göre Spark 2,3 ' ye geçmek için göz önünde bulundurun.
+1 Temmuz 2020 ' den itibaren, müşteriler HDInsight 3,6 ' te Spark 2,1 ve 2,2 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 3,6 ' ye kadar Spark 2,3 ' ye geçerek 30 Haziran 2020 ' ye geçmeyi düşünün. Daha fazla bilgi için bkz. [Apache Spark 2,1 ve 2,2 iş yüklerini 2,3 ve 2,4 Için geçirme](./spark/migrate-versions.md).
 
 ### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>HDInsight 4,0 Spark kümesinde Spark 2,3 kullanımdan kaldırılması
-1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Spark 2,3 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 30 2020 4,0 ' ye 2,4 ' ye kadar Spark ' ye geçmeyi düşünün.
+1 Temmuz 2020 ' den itibaren, müşteriler HDInsight 4,0 üzerinde Spark 2,3 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye kadar Spark 2,4 ' ye geçerek 30 Haziran 2020 ' ye geçmeyi düşünün. Daha fazla bilgi için bkz. [Apache Spark 2,1 ve 2,2 iş yüklerini 2,3 ve 2,4 Için geçirme](./spark/migrate-versions.md).
 
 ### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4,0 Kafka kümesi 'nde Kafka 1,1 kullanımdan kaldırılması
-1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Kafka 1,1 ile yeni Kafka kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 30 2020 4,0 ' de Kafka 2,1 ' ye geçmeyi göz önünde bulundurun.
+1 2020 Temmuz 'da, müşteriler HDInsight 4,0 üzerinde Kafka 1,1 ile yeni Kafka kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 30 2020 4,0 ' de Kafka 2,1 ' ye geçmeyi göz önünde bulundurun. Daha fazla bilgi için bkz. [Apache Kafka iş yüklerini Azure HDInsight 'A geçirme 4,0](./kafka/migrate-versions.md).
 
 ### <a name="hbase-20-to-216"></a>HBase 2,0 2.1.6
 Yaklaşan HDInsight 4,0 sürümünde, HBase sürümü 2,0 sürümünden 2.1.6 sürümüne yükseltilir.

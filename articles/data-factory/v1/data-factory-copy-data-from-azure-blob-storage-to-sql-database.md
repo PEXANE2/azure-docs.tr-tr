@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c81c4cd72a34f69632c2b1264ba2d276ff03de4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75979737"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118594"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Öğretici: Data Factory kullanarak blob depolamadan SQL veritabanına veri kopyalama
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ Bu öğreticiyi yapmak için Azure depolama hesabınızın hesap adı ve hesap a
 7. **X**simgesini tıklayarak tüm dikey pencereleri kapatın.
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL Server, veritabanı, Kullanıcı adlarını toplayın
-Bu öğreticiyi yapmak için Azure SQL Server, veritabanı ve kullanıcı adlarına ihtiyacınız vardır. Azure SQL veritabanınız için **sunucu**, **veritabanı**ve **kullanıcının** adlarını aklınızda edin.
+Bu öğreticiyi yapmak için mantıksal SQL Server, veritabanı ve kullanıcı adlarına ihtiyacınız vardır. Azure SQL veritabanınız için **sunucu**, **veritabanı**ve **kullanıcının** adlarını aklınızda edin.
 
 1. **Azure Portal**, sol taraftaki **tüm hizmetler** ' e tıklayın ve **SQL veritabanları**' nı seçin.
 2. **SQL veritabanları dikey**penceresinde, bu öğreticide kullanmak istediğiniz **veritabanını** seçin. **Veritabanı adını**aklınızda edin.  
@@ -75,7 +75,7 @@ Bu öğreticiyi yapmak için Azure SQL Server, veritabanı ve kullanıcı adlar�
 5. **X**simgesini tıklayarak tüm dikey pencereleri kapatın.
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>Azure hizmetlerinin SQL Server 'a erişmesine izin ver
-Azure SQL Server için **Azure hizmetlerine erişime Izin ver** ayarının, Data Factory HIZMETININ Azure SQL sunucunuza **erişebilmesi için açık** olduğundan emin olun. Bu ayarı doğrulamak ve etkinleştirmek için aşağıdaki adımları uygulayın:
+Data Factory hizmetinin sunucunuza erişebilmesi için sunucunuz için **Azure hizmetlerine erişime Izin ver** **ayarının açık olduğundan** emin olun. Bu ayarı doğrulamak ve etkinleştirmek için aşağıdaki adımları uygulayın:
 
 1. Sol taraftaki **tüm hizmetler** hub 'ına tıklayın ve **SQL sunucuları**' na tıklayın.
 2. Sunucunuzu seçin ve **AYARLAR** altındaki **Güvenlik Duvarı**’na tıklayın.
@@ -107,9 +107,9 @@ Azure SQL Server için **Azure hizmetlerine erişime Izin ver** ayarının, Data
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Bilgisayarınızda SQL Server 2012/2014 yüklüyse:** Azure SQL sunucunuza bağlanmak ve SQL betiğini çalıştırmak için [SQL Server Management STUDIO kullanarak Azure SQL veritabanı 'nı yönetme](../../sql-database/sql-database-manage-azure-ssms.md) yönergelerini izleyin.
+    **Bilgisayarınızda SQL Server 2012/2014 yüklüyse:** sunucunuza bağlanmak ve SQL betiğini çalıştırmak için [SQL Server Management STUDIO kullanarak Azure SQL veritabanı 'nı yönetme](../../sql-database/sql-database-manage-azure-ssms.md) yönergelerini izleyin.
 
-    İstemcinizin Azure SQL sunucusuna erişim izni yoksa, makinenizden (IP adresi) erişim izni vermek için Azure SQL sunucunuzun güvenlik duvarını yapılandırmanız gerekir. Azure SQL sunucunuzun güvenlik duvarını yapılandırmaya yönelik adımlar için [bu makaleye](../../sql-database/sql-database-configure-firewall-settings.md) bakın.
+    İstemcinizin mantıksal SQL Server 'a erişmesine izin verilmiyorsa, makinenizde (IP adresi) erişime izin vermek için sunucunuzun güvenlik duvarını yapılandırmanız gerekir. Sunucunuza yönelik güvenlik duvarını yapılandırma adımları için [Bu makaleye](../../sql-database/sql-database-configure-firewall-settings.md) bakın.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 Önkoşulları tamamladınız. Aşağıdaki yollarla bir veri fabrikası oluşturabilirsiniz. Öğreticiyi uygulamak için üstteki aşağı açılan listedeki seçeneklerden birini veya aşağıdaki bağlantıları tıklatın.     

@@ -157,9 +157,9 @@ Lisans ürün adı | 'nin. Client. ServiceContent. about. LicenseProductName
 Önyükleme türü | 'nin. Config. bellenim
 Çekirdek sayısı | 'nin. Config. Hardware. NumCPU
 Bellek (MB) | 'nin. Config. Hardware. MemoryMB
-Disk sayısı | 'nin. Config. Hardware. Device. ToList (). FindAll (x => VirtualDisk). Count
-Disk boyutu listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x => VirtualDisk)
-Ağ bağdaştırıcıları listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x => Virtualalethernet). Count
+Disk sayısı | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). Count
+Disk boyutu listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
+Ağ bağdaştırıcıları listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > Virtualalethernet). Count
 CPU kullanımı | CPU. Usage. Average
 Bellek kullanımı |mem. kullanım. Ortalama
 **Disk başına Ayrıntılar** | 

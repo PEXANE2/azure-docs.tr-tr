@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: dcad90713227e55437523c91997175242078e9e4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d5484f5725047201770e5b3cbab89847b27117f9
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836490"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116917"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kullanmaya başlama
 
@@ -22,23 +22,15 @@ Bu öğretici, Azure SYNAPSE Analytics 'i kurmak ve kullanmak için gereken tüm
 
 ## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>Bir depolama hesabını bir Synapse çalışma alanıyla kullanılmak üzere hazırlama
 
-1. [Azure Portal](https://portal.azure.com) açın
-1. Aşağıdaki ayarlarla yeni bir depolama hesabı oluşturun:
-    * **Temel bilgiler** sekmesinde
-
-    |Ayar | Önerilen değer | Açıklama |
-    |---|---|---|
-    |**Depolama hesabı adı**| Herhangi bir ad verebilirsiniz.|Bu belgede, bu belgeye olarak başvuracağız `contosolake` .
-    |**Hesap türü**|Şu şekilde ayarlanmalıdır`StorageV2`||
-    |**Konum**|Herhangi bir konum seçebilirsiniz| SYNAPSE çalışma alanınızın ve Azure Data Lake Storage (ADLS) Gen2 hesabının aynı bölgede olması önerilir.|
-    ||||
-    
-    * **Gelişmiş** sekmesinde
-    
-    |Ayar | Önerilen değer | Açıklama |
-    |---|---|---|
-    |**Data Lake Storage Gen2**|`Enabled`| Azure SYNAPSE, yalnızca bu ayarın etkinleştirildiği depolama hesaplarıyla birlikte kullanılabilir.|
-    ||||
+* [Azure Portal](https://portal.azure.com) açın
+* Aşağıdaki ayarlarla yeni bir depolama hesabı oluşturun:
+    |Tab|Ayar | Önerilen değer | Açıklama |
+    |---|---|---|---|
+    |Temel Bilgiler|**Depolama hesabı adı**| Herhangi bir ad verebilirsiniz.|Bu belgede, bu belgeye olarak başvuracağız `contosolake` .|
+    |Temel Bilgiler|**Hesap türü**|Şu şekilde ayarlanmalıdır`StorageV2`||
+    |Temel Bilgiler|**Konum**|Herhangi bir konum seçebilirsiniz| SYNAPSE çalışma alanınızın ve Azure Data Lake Storage (ADLS) Gen2 hesabının aynı bölgede olması önerilir.|
+    |Gelişmiş|**Data Lake Storage 2. Nesil**|`Enabled`| Azure SYNAPSE, yalnızca bu ayarın etkinleştirildiği depolama hesaplarıyla birlikte kullanılabilir.|
+    |||||
 
 1. Depolama hesabı oluşturulduktan sonra sol gezinmede **erişim denetimi (IAM)** seçeneğini belirleyin. Ardından, aşağıdaki rolleri atayın veya zaten atanmış olduklarından emin olun. 
     a. * Depolama hesabı b 'deki **sahip** rolüne kendiniz atayın. * Depolama hesabındaki **Depolama Blobu veri sahibi** rolüne kendinizi atayın
@@ -46,16 +38,15 @@ Bu öğretici, Azure SYNAPSE Analytics 'i kurmak ve kullanmak için gereken tüm
 
 ## <a name="create-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
-1. [Azure Portal](https://portal.azure.com) açın ve için en üstteki arama ' yı açın `Synapse` .
-1. Arama sonuçlarında **Hizmetler**altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** seçeneğini belirleyin.
-1. **+ Ekle** ' yi seçin
-1. **Temel bilgiler** sekmesi:
+* [Azure Portal](https://portal.azure.com) açın ve için en üstteki arama ' yı açın `Synapse` .
+* Arama sonuçlarında **Hizmetler**altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** seçeneğini belirleyin.
+* Bu ayarlarla yeni bir çalışma alanı oluşturmak için **+ Ekle** ' yi seçin
 
-    |Ayar | Önerilen değer | Açıklama |
-    |---|---|---|
-    |**Çalışma alanı adı**|Her şeyi çağırabilirsiniz.| Bu belgede, şunu kullanacağız`myworkspace`
-    |**Geli**|Depolama hesabının bölgesiyle Eşleştir||
-    |||
+    |Tab|Ayar | Önerilen değer | Açıklama |
+    |---|---|---|---|
+    |Temel Bilgiler|**Çalışma alanı adı**|Her şeyi çağırabilirsiniz.| Bu belgede, şunu kullanacağız`myworkspace`|
+    |Temel Bilgiler|**Geli**|Depolama hesabının bölgesiyle Eşleştir|
+    ||||
 
 1. **Data Lake Storage Gen 2**' yi seçin altında, daha önce oluşturduğunuz hesabı ve kapsayıcıyı seçin.
     > [!NOTE]

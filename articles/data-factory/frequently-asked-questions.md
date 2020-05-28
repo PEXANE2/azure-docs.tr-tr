@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 8d0b49b73ef6b67653fbf32db1174880a51d432d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a3d3b990c750e96b840676097bb3677606bf68b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81412957"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118343"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory Hakkında SSS
 
@@ -72,7 +72,7 @@ Azure Data Factory görsel araçları, yinelemeli geliştirme ve hata ayıklamay
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>SSIS paketlerini Azure 'a dağıtma olanağı 
 SSIS iş yüklerinizi taşımak istiyorsanız, bir Data Factory oluşturabilir ve bir Azure-SSIS tümleştirme çalışma zamanı sağlayabilirsiniz. Azure-SSIS Integration Runtime, bulutta SSIS paketlerinizi çalıştırmaya ayrılmış Azure VM 'lerin (düğümler) tam yönetilen bir kümesidir. Adım adım yönergeler için bkz. [SSIS paketlerini Azure 'A dağıtma](tutorial-create-azure-ssis-runtime-portal.md) öğreticisi. 
  
-### <a name="sdks"></a>SDK’lar
+### <a name="sdks"></a>SDK
 İleri düzey bir kullanıcıysanız ve bir programlama arabirimi arıyorsanız Data Factory, sık kullandığınız IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek veya izlemek için kullanabileceğiniz zengin bir SDK kümesi sağlar. Dil desteği .NET, PowerShell, Python ve REST içerir.
 
 ### <a name="monitoring"></a>İzleme
@@ -83,7 +83,7 @@ Veri fabrikalarınızı PowerShell, SDK veya tarayıcı kullanıcı arabiriminde
 
 -    Proje/paketlerin SSIS veritabanını (SSıSDB) barındırmak için Azure SQL veritabanı 'nın üç daha yapılandırması/çeşitleri desteği:
 -    Sanal ağ hizmet uç noktaları ile SQL veritabanı
--    Yönetilen örnek
+-    SQL Yönetilen Örnek
 -    Elastik havuz
 -    Klasik bir sanal ağın en üstündeki Azure Resource Manager sanal ağı daha sonra kullanımdan kalkacak şekilde, Azure-SSIS tümleştirme çalışma zamanını, sanal ağ hizmeti uç noktaları/mı/şirket içi veri erişimi ile SQL veritabanı için yapılandırılmış bir sanal ağa eklemenize/eklemenize olanak sağlayan destek. Daha fazla bilgi için bkz. bir [Azure-SSIS tümleştirme çalışma zamanına bir sanal ağa ekleme](join-azure-ssis-integration-runtime-virtual-network.md).
 -    Azure Active Directory (Azure AD) kimlik doğrulaması ve SSıSDB 'ye bağlanmak için SQL kimlik doğrulaması desteği ve Azure kaynakları için Data Factory yönetilen Kimliğiniz ile Azure AD kimlik doğrulamasına izin verme
@@ -109,7 +109,7 @@ Bir veri fabrikasında sahip olabilirsiniz tümleştirme çalışma zamanı örn
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Azure Data Factory en üst düzey kavramları nelerdir?
 Azure aboneliğinin bir veya birden çok Azure Data Factory örneği (veya veri fabrikası) olabilir. Azure Data Factory, veri taşıma ve dönüştürme adımları ile veri odaklı iş akışları oluşturabileceğiniz bir platform olarak birlikte çalışan dört ana bileşeni içerir.
 
-### <a name="pipelines"></a>İşlem hatları
+### <a name="pipelines"></a>Pipelines
 Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir dizi iş gerçekleştirmeye yönelik mantıksal bir etkinlik gruplandırmasıdır. İşlem hattındaki etkinlikler birlikte bir görev gerçekleştirir. Örneğin, bir işlem hattı Azure blobundan verileri alan ve ardından HDInsight kümesinde verileri bölümlemek için bir Hive sorgusu çalıştıran bir etkinlik grubu içerebilir. Bu avantajda, etkinlikleri her bir etkinliği ayrı ayrı yönetmek yerine bir küme olarak yönetmek için bir işlem hattı kullanabilirsiniz. Etkinlikleri sırayla çalıştırmak için bir işlem hattındaki etkinlikleri birlikte zincirleyebilir veya bunları paralel olarak bağımsız olarak çalıştırabilirsiniz.
 
 ### <a name="data-flows"></a>Veri akışları
@@ -174,13 +174,13 @@ Evet, parametreler Data Factory ' de birinci sınıf, üst düzey bir kavramdır
 Evet. İşlem hatlarında parametreler için varsayılan değerleri tanımlayabilirsiniz. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>İşlem hattındaki bir etkinlik bir işlem hattı çalıştırmasına geçirilen bağımsız değişkenleri kullanıyor musunuz? 
-Evet. İşlem hattının içindeki her etkinlik, işlem hattına aktarılan ve `@parameter` yapı ile çalıştırılan parametre değerini tüketebilir. 
+Evet. İşlem hattının içindeki her etkinlik, işlem hattına aktarılan ve yapı ile çalıştırılan parametre değerini tüketebilir `@parameter` . 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Etkinlik çıktısı özelliği başka bir etkinlikte tüketilebilir mi? 
-Evet. Etkinlik çıktısı, `@activity` sonraki bir etkinlikte yapısıyla tüketilebilir.
+Evet. Etkinlik çıktısı, sonraki bir etkinlikte yapısıyla tüketilebilir `@activity` .
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Nasıl yaparım? etkinlik çıkışında null değerler düzgün şekilde işlenemedi mi? 
-Deyimlerdeki yapıyı, `@coalesce` null değerleri düzgün bir şekilde işlemek için kullanabilirsiniz. 
+`@coalesce`Deyimlerdeki yapıyı, null değerleri düzgün bir şekilde işlemek için kullanabilirsiniz. 
 
 ## <a name="mapping-data-flows"></a>Veri akışlarını eşleme
 

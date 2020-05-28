@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: b7b8606f7f15f8d6fdd66681a1c7ade60ff506f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9bdf1cd8832d311a71276fa18d407a5b4dd98d24
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217775"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115500"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) içinde örnek veri kümelerini kullanma
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [top]: #machine-learning-sample-datasets
 
@@ -46,7 +44,7 @@ Deneme Tuvalinize sürükleyerek bu veri kümelerinden herhangi birini kendi den
 <p></p>
 <b>Kullanım:</b> Bir kişinin 50 bin üzerinde bir yıl boyunca mi olduğunu tahmin etmek için demografik kullanan kişileri sınıflandırın.
 <p></p>
-<b>Ilgili araştırma:</b> Kohavi, R., Becker, B., (1996). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
+<b>Ilgili araştırma:</b> Kohavi, R., Becker, B., (1996). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
 </tr>
 
 <tr>
@@ -67,7 +65,7 @@ Risk puanı başlangıçta otomatik fiyatla ilişkilendirilir. Daha sonra, söz 
 <p></p>
 <b>Kullanım:</b> Gerileme veya çok sayıda sınıflandırma kullanarak, özellik ile risk Puanını tahmin edin. 
 <p></p>
-<b>Ilgili araştırma:</b> Schliyoya, J.C. (1987). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
+<b>Ilgili araştırma:</b> Schliyoya, J.C. (1987). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
 </tr>
 
 <tr>
@@ -98,7 +96,7 @@ Bağış yapan veriler, son bağandan itibaren ayları, sıklığı veya toplam 
 <p></p>
 <b>Kullanım:</b> Amaç, bir sınıflandırmanın 2007 Mart 'ta mi yoksa, 1 ' de hedef dönemde bir bağış yapana ve 0 ' ın bir bağış yapana sahip olup olmadığını sınıflandırma aracılığıyla tahmin etmek için kullanılır. 
 <p></p>
-<b>Ilgili araştırma:</b> Yeh, I.C., (2008). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi
+<b>Ilgili araştırma:</b> Yeh, I.C., (2008). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi
 <p></p>
 Yeh, I-Cheng, Yang, King-ocg ve dişli, Tao-Tatçi, "System ile uzman sistemleri, 2008,<a href="https://dx.doi.org/10.1016/j.eswa.2008.07.018">https://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
@@ -111,7 +109,7 @@ Makine öğrenimi belgelerinde sık görülen, Onkolombiya gy ile ilgili üç ve
 <p></p>
 <b>Kullanım:</b> , Bazıları doğrusal ve bazıları kategorik olan 9 özniteliğe göre Cancer türünü sınıflandırın. 
 <p></p>
-<b>Ilgili araştırma:</b> Wohlberg, W.H., Street, W.N., & Mangasarian, O.L. (1995). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
+<b>Ilgili araştırma:</b> Wohlberg, W.H., Street, W.N., & Mangasarian, O.L. (1995). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
 </tr>
 
 <tr>
@@ -164,7 +162,7 @@ KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler (<a href="http
 <p></p>
 <b>Kullanım:</b> İki gerçek değerli yanıtlardan biri olarak enerji verimliliği derecelendirmesini tahmin etmek için regresyon veya sınıflandırma kullanın. Çok sınıf sınıflandırması için, yanıt değişkenini en yakın tamsayıya yuvarlar. 
 <p></p>
-<b>Ilgili araştırma:</b> Xifara, A. & Tsanas, A. (2012). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
+<b>Ilgili araştırma:</b> Xifara, A. & Tsanas, A. (2012). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
 </tr>
 
 <tr>
@@ -189,7 +187,7 @@ Uçak kayıt kayıtları, 2011 Ekim ayının Birleşik Devletler dahilinde.
 <p></p>
 <b>Kullanım:</b> Uçuş gecikmelerini tahmin edin. 
 <p></p>
-<b>Ilgili araştırma:</b> , ABD 'den taşıma <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>.
+<b>Ilgili araştırma:</b> , ABD <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a> 'Den taşıma.
   </td>
 </tr>
 
@@ -200,9 +198,9 @@ Sıcaklık ve nem dizini ve rüzgar hızı gibi hava durumu verilerini içerir. 
 <p></p>
 <b>Kullanım:</b> Bu zor bir gerileme görevidir ve bu, hedefin, ormanın yazılan alanını tahmin etmek için tasarlanmıştır. 
 <p></p>
-<b>Ilgili araştırma:</b> Cortez, P. & moraa, A. (2008). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi
+<b>Ilgili araştırma:</b> Cortez, P. & moraa, A. (2008). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi
 <p></p>
-[Cortez ve morao, 2007] P. Cortez ve. Morasıs. Bir veri araştırma yaklaşımı, türüdür verisi kullanılarak ateşlenir. J. netes, a. F. Santos ve J. ve ADO eds., yapay zeka 'daki yeni eğilimler, 6. EPıA 2007-yapay zeka 'daki Portekizce Konferansı, Aralık, Guimarães, Portekiz, PP. 512-523, 2007. APPIA, ıSBN-13 978-989-95618-0-9. Şurada bulunabilir: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>.
+[Cortez ve morao, 2007] P. Cortez ve. Morasıs. Bir veri araştırma yaklaşımı, türüdür verisi kullanılarak ateşlenir. J. netes, a. F. Santos ve J. ve ADO eds., yapay zeka 'daki yeni eğilimler, 6. EPıA 2007-yapay zeka 'daki Portekizce Konferansı, Aralık, Guimarães, Portekiz, PP. 512-523, 2007. APPIA, ıSBN-13 978-989-95618-0-9. Şurada bulunabilir: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a> .
   </td>
 </tr>
 
@@ -229,7 +227,7 @@ Bu, büyük olasılıkla, model tanıma belgelerinde bulunan en iyi bilinen veri
 <p></p>
 <b>Kullanım:</b> Iris türünü ölçülerden tahmin edin.  
 <p></p>
-<b>Ilgili araştırma:</b> Fisher, R.A. (1988). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
+<b>Ilgili araştırma:</b> Fisher, R.A. (1988). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
 </tr>
 
 <tr>
@@ -248,7 +246,7 @@ Veriler, her galon için mil cinsinden çeşitli otomobil 'leri için yakıt tü
 <p></p>
 <b>Kullanım:</b> Üç değerli farklı özniteliğe ve beş sürekli özniteliğe göre yakıt ekonomisi tahmin edin. 
 <p></p>
-<b>Ilgili araştırma:</b> StatLib, Carnegie Mellon University, (1993). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
+<b>Ilgili araştırma:</b> StatLib, Carnegie Mellon University, (1993). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
 </tr>
 
 <tr>
@@ -258,7 +256,7 @@ Ulusal şekilde diabetes ve digestive ve Kidney Dimevsimses veritabanı veri kü
 <p></p>
 <b>Kullanım:</b> Konunun diabtes (ikili sınıflandırma) olup olmadığını tahmin edin. 
 <p></p>
-<b>Ilgili araştırma:</b> Sigilto, V. (1990). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml"</a>. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
+<b>Ilgili araştırma:</b> Sigilto, V. (1990). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml "</a>. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi </td>
 </tr>
 
 <tr>
@@ -268,7 +266,7 @@ Demografik ve Tercihler dahil olmak üzere müşteriler hakkında bir meta veri 
 <p></p>
 <b>Kullanım:</b> Bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanarak bir öneren sistemi eğitme ve test edin. 
 <p></p>
-<b>Ilgili araştırma:</b> Bache, K. ve Lichman, M. (2013). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.
+<b>Ilgili araştırma:</b> Bache, K. ve Lichman, M. (2013). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.
   </td>
 </tr>
 
@@ -279,7 +277,7 @@ Restoran ve bunların özellikleri (yiyecek türü, dinleme stili ve konum gibi)
 <p></p>
 <b>Kullanım:</b> Bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanarak bir öneren sistemi eğitme ve test edin. 
 <p></p>
-<b>Ilgili araştırma:</b> Bache, K. ve Lichman, M. (2013). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.
+<b>Ilgili araştırma:</b> Bache, K. ve Lichman, M. (2013). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.
   </td>
 </tr>
 
@@ -290,7 +288,7 @@ Kullanıcılar tarafından, 0 ' dan 2 ' ye kadar bir ölçeğe göre restoranlar
 <p></p>
 <b>Kullanım:</b> Bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanarak bir öneren sistemi eğitme ve test edin. 
 <p></p>
-<b>Ilgili araştırma:</b> Bache, K. ve Lichman, M. (2013). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.
+<b>Ilgili araştırma:</b> Bache, K. ve Lichman, M. (2013). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.
   </td>
 </tr>
 
@@ -303,7 +301,7 @@ Bu veri kümesi, çelik benzetilmiş denemelerinden bir dizi kayıt içerir. Bu,
 <p></p>
 Çelik dereceleri, SAE ve diğer kuruluşlar tarafından tanımlanan bir küme standardını izler. Belirli bir ' sınıf ' (sınıf değişkeni) arıyor ve gereken değerleri anlamak istiyorsunuz. 
 <p></p>
-<b>Ilgili araştırma:</b> Sterling, D. & Buntine, W. (NA). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi
+<b>Ilgili araştırma:</b> Sterling, D. & Buntine, W. (NA). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi
 <p></p>
 Bir çelik için faydalı bir kılavuza buradan ulaşabilirsiniz:<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
@@ -324,7 +322,7 @@ Veriler, kamera merkezine yönlendirilmekte olan uzun eksen ile bir elongeçişl
 <p></p>
 Ayrıca, arka plan olayı sayısının (hadronic showers için h) yeterince tahmin edilir olduğunu unutmayın. Gerçek ölçümlerde h veya gürültü sınıfı olayların çoğunu temsil eder. 
 <p></p>
-<b>Ilgili araştırma:</b> Bock, R.K. (1995). UCı Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>deposu. Irvine, CA: California Üniversitesi, bilgi Okulu </td>
+<b>Ilgili araştırma:</b> Bock, R.K. (1995). UCı Machine Learning deposu <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: California Üniversitesi, bilgi Okulu </td>
 </tr>
 
 <tr>
@@ -345,7 +343,7 @@ Hava durumu verileri, Havaalanı hava durumu istasyonlarından yapılan ve Nisan
 <tr>
   <td>Vikipedi SP 500 veri kümesi</td>
   <td>
-Veriler, XML verileri olarak depolanan<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>her bir S&P 500 şirketinin makalelerine bağlı olarak vikipden () türetilir.
+Veriler <a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a> , XML verileri olarak depolanan her bir S&P 500 şirketinin makalelerine bağlı olarak Vikipden () türetilir.
 <p></p>
 Azure Machine Learning Studio (klasik) yüklenmeden önce veri kümesi şu şekilde işlenir:
 <ul>
@@ -393,7 +391,7 @@ Veri kümesi, Azure Blob depolama (<a href="https://azuremlsampleexperiments.blo
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">RCV1-v2. konular. qrels. csv</a></td>
   <td>
-RCV1-v2 Rebilgisayarlarda Haberler veri kümesindeki haber makalelerine yönelik konu atamaları. Bir haber makalesi, birkaç konuya atanabilir. Her satırın&lt;biçimi "konu adı&gt; &lt;belge kimliği&gt; 1" dir. Veri kümesi, 2.6/konu atamalarını içerir. Veri kümesi David tarafından kullanılabilir hale getirilir. D. Lewis.
+RCV1-v2 Rebilgisayarlarda Haberler veri kümesindeki haber makalelerine yönelik konu atamaları. Bir haber makalesi, birkaç konuya atanabilir. Her satırın biçimi " &lt; Konu adı &gt; &lt; belge kimliği &gt; 1" dir. Veri kümesi, 2.6/konu atamalarını içerir. Veri kümesi David tarafından kullanılabilir hale getirilir. D. Lewis.
   </td>
 </tr>
 

@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2a2b4864232892f1940de5c8fe46fa23879c92f3
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641599"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112769"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Koşullu erişim öngörüleri ve raporlama
 
 Koşullu erişim öngörüleri ve raporlama çalışma kitabı, kuruluşunuzda koşullu erişim ilkelerinin zaman içinde etkisini anlamanıza olanak sağlar. Oturum açma sırasında, bir veya daha fazla koşullu erişim ilkesi uygulanabilir, bazı izin denetimleri karşılanmıyorsa veya erişimi reddettikten sonra erişim izni verebilir. Her oturum açma sırasında birden fazla koşullu erişim ilkesi değerlendirilebildiğinden, Öngörüler ve raporlama çalışma kitabı, tek bir ilkenin veya tüm ilkelerin bir alt kümesinin etkisini incelemenizi sağlar.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öngörüler ve raporlama çalışma kitabını etkinleştirmek için, kiracınızın oturum açma günlüğü verilerini sürdürmek için bir Log Analytics çalışma alanına sahip olması gerekir. Kullanıcıların koşullu erişimi kullanabilmesi için Azure AD Premium P1 veya P2 Lisansı olmalıdır.
 
@@ -98,6 +98,23 @@ Koşulların her biri için kullanıcıların veya oturum açma işlemlerinin d�
 Ayrıca, panonun alt kısmındaki oturum açma işlemlerini arayarak belirli bir kullanıcının oturum açma işlemlerini araştırabilirsiniz. Soldaki sorgu en sık kullanılan kullanıcıları görüntüler. Bir kullanıcı seçildiğinde sorgu sağa filtreedilir.  
 
 ## <a name="troubleshooting"></a>Sorun giderme
+
+### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Sorgular bir izin hatası nedeniyle neden başarısız oluyor?
+
+Çalışma kitabına erişebilmek için, uygun Azure AD izinlerinin yanı sıra Log Analytics çalışma alanı izinlerine de ihtiyacınız vardır. Örnek bir Log Analytics sorgusu çalıştırarak uygun çalışma alanı izinlerine sahip olup olmadığını test etmek için:
+
+1. **Azure portalında** oturum açın.
+1. **Azure Active Directory**  >  **günlüklere**gidin.
+1. `SigninLogs`Sorgu kutusuna yazın ve **Çalıştır**' ı seçin.
+1. Sorgu herhangi bir sonuç döndürmezse, çalışma alanınız doğru şekilde yapılandırılmamış olabilir. 
+
+![Başarısız sorguların sorunlarını giderme](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
+
+Azure AD oturum açma günlüklerinin Log Analytics çalışma alanına akışı hakkında daha fazla bilgi için Azure [ad günlüklerini Azure izleyici günlükleriyle tümleştirme](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)makalesine bakın.
+
+### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>Koşullu erişim ilkeleri parametresi neden boş?
+
+İlke listesi, en son oturum açma olayı için değerlendirilen ilkelere bakarak oluşturulur. Kiracınızda en son oturum açma işlemleri yoksa, çalışma kitabının koşullu erişim ilkeleri listesini yüklemesi için birkaç dakika beklemeniz gerekebilir. Bu, Log Analytics yapılandırıldıktan hemen sonra gerçekleşebilir veya bir kiracıda en son oturum açma etkinliği yoksa daha uzun sürebilir.
 
 ### <a name="why-is-the-workbook-taking-a-long-time-to-load"></a>Çalışma kitabının yüklenmesi uzun sürüyor mu?  
 

@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a9a14056e6be62fc1c1b5e542c1a3acceb738eac
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e06cad8e8ca62330b09e173cf6058905b49f19e4
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220715"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992921"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Bilgi Bankası 'na sohbet ekleme
 
-Botunuza sohbet eklemek, daha fazla konuşma ve ilgi çekici hale getirir. Soru-cevap Oluşturucu 'daki CHIT-chat özelliği, bilgi Tabanınızla (KB) en yüksek bir üst baskı sohbetini kolay bir şekilde eklemenizi sağlar. Bu, bot 'ın kişiliğine yönelik bir başlangıç noktası olabilir ve bu, bunları sıfırdan yazmanın zaman ve maliyetini kaydeder.  
+Botunuza sohbet eklemek, daha fazla konuşma ve ilgi çekici hale getirir. Soru-cevap Oluşturucu 'daki CHIT-chat özelliği, bilgi Tabanınızla (KB) en yüksek bir üst baskı sohbetini kolay bir şekilde eklemenizi sağlar. Bu, bot 'ın kişiliğine yönelik bir başlangıç noktası olabilir ve bu, bunları sıfırdan yazmanın zaman ve maliyetini kaydeder.
 
-Bu veri kümesinde, profesyonel, kolay ve WIT gibi birden çok kişinin sesinde, tek BT-sohbet için 100 senaryo vardır. Bot sesinize en yakından benzeyen kişiyi seçin. Bir Kullanıcı sorgusu verildiğinde Soru-Cevap Oluşturma, en yakın bilinen CHIT-chat QnA ile eşleştirmeye çalışır.  
+Bu veri kümesinde, profesyonel, kolay ve WIT gibi birden çok kişinin sesinde, tek BT-sohbet için 100 senaryo vardır. Bot sesinize en yakından benzeyen kişiyi seçin. Bir Kullanıcı sorgusu verildiğinde Soru-Cevap Oluşturma, en yakın bilinen CHIT-chat QnA ile eşleştirmeye çalışır.
 
 Farklı kişiselleştirimler için bazı örnekler aşağıda verilmiştir. Tüm kişilik [veri kümelerini](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) , kişiselleştirimler hakkındaki ayrıntılarla birlikte görebilirsiniz.
 
-Kullanıcı sorgusu `When is your birthday?`için her kişiliğinizi biçimlendirilmiş bir yanıt vardır:
+Kullanıcı sorgusu için `When is your birthday?` her kişiliğinizi biçimlendirilmiş bir yanıt vardır:
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
 |Kişilik|Örnek|
@@ -57,23 +57,23 @@ CHIT-chat veri kümeleri aşağıdaki dillerde desteklenmektedir:
 
 
 ## <a name="add-chit-chat-during-kb-creation"></a>KB oluşturma sırasında CHIT-chat ekleme
-Bilgi Bankası oluşturma sırasında, kaynak URL 'Leri ve dosyalarınız eklendikten sonra, CHIT-chat ekleme seçeneği vardır. Tek bir sohbet için istediğiniz kişiliğinizi seçin. CHIT-chat eklemek istemiyorsanız veya veri kaynaklarınızda zaten bir sohbet desteğine sahipseniz, **hiçbiri**' ni seçin. 
+Bilgi Bankası oluşturma sırasında, kaynak URL 'Leri ve dosyalarınız eklendikten sonra, CHIT-chat ekleme seçeneği vardır. Tek bir sohbet için istediğiniz kişiliğinizi seçin. CHIT-chat eklemek istemiyorsanız veya veri kaynaklarınızda zaten bir sohbet desteğine sahipseniz, **hiçbiri**' ni seçin.
 
 ## <a name="add-chit-chat-to-an-existing-kb"></a>Var olan bir KB 'ye sohbet ekleyin
-KB 'nizi seçin ve **Ayarlar** sayfasına gidin. Uygun **. tsv** biçimindeki tüm CHIT-chat veri kümelerine bir bağlantı vardır. İstediğiniz kişiliğinizi indirin, sonra dosyayı bir dosya kaynağı olarak karşıya yükleyin. Dosyayı indirip karşıya yüklerken biçimi veya meta verileri düzenlemediğinizden emin olun. 
-  
+KB 'nizi seçin ve **Ayarlar** sayfasına gidin. Uygun **. tsv** biçimindeki tüm CHIT-chat veri kümelerine bir bağlantı vardır. İstediğiniz kişiliğinizi indirin, sonra dosyayı bir dosya kaynağı olarak karşıya yükleyin. Dosyayı indirip karşıya yüklerken biçimi veya meta verileri düzenlemediğinizden emin olun.
+
 ![Var olan KB 'ye sohbet ekleme](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>CHIT-chat sorularınızı ve yanıtlarınızı düzenleyin
-KB 'nizi düzenlediğinizde, seçtiğiniz kişiliğinizi temel alarak, tek bir sohbet için yeni bir kaynak görürsünüz. Artık başka bir kaynakla olduğu gibi, değiştirilmiş sorular ekleyebilir veya yanıtları düzenleyebilirsiniz. 
+KB 'nizi düzenlediğinizde, seçtiğiniz kişiliğinizi temel alarak, tek bir sohbet için yeni bir kaynak görürsünüz. Artık başka bir kaynakla olduğu gibi, değiştirilmiş sorular ekleyebilir veya yanıtları düzenleyebilirsiniz.
 
 ![Chit-sohbet QnAs 'yi Düzenle](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
 Meta verileri görüntülemek için, araç çubuğunda **seçenekleri görüntüle** ' yi seçin ve **meta verileri göster**' i seçin.
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Ek CHIT-chat soruları ve yanıtları ekleyin
-Önceden tanımlanmış küme içinde olmayan yeni bir CHIT-chat QnA ekleyebilirsiniz. CHIT-chat kümesinde zaten kapsanan bir QnA çiftini çoğalttığınızdan emin olun. Yeni bir GIT-chat QnA eklediğinizde, **düzenleme** kaynağınıza eklenir. Derecelendiricisini 'ın bu tek bir sohbet olduğunu anlaması için, aşağıdaki görüntüde görüldüğü gibi "düzenleme: chitchat" meta veri anahtarını/değer çiftini ekleyin:
-   
+Önceden tanımlanmış veri kümesinde olmayan yeni bir CHIT-chat QnA çifti ekleyebilirsiniz. CHIT-chat kümesinde zaten kapsanan bir QnA çiftini çoğalttığınızdan emin olun. Yeni bir GIT-chat QnA eklediğinizde, **düzenleme** kaynağınıza eklenir. Derecelendiricisini 'ın bu tek bir sohbet olduğunu anlaması için, aşağıdaki görüntüde görüldüğü gibi "düzenleme: chitchat" meta veri anahtarını/değer çiftini ekleyin:
+
 ![! [CHIT-chat QnAs Ekle] (.. /media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Var olan bir KB 'den gelen sohbeti Sil
@@ -86,6 +86,6 @@ KB 'nizi seçin ve **Ayarlar** sayfasına gidin. Belirli bir CHIT-chat kaynağı
 > [!div class="nextstepaction"]
 > [Bilgi Bankası içeri aktarma](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>Ayrıca bkz. 
+## <a name="see-also"></a>Ayrıca bkz.
 
 [Soru-Cevap Oluşturma’ya genel bakış](../Overview/overview.md)

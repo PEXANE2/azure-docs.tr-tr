@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: e078893b3bbe0ef5661cd87bad62b320f78ceb5d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b81f1e49b2209d0a236f1fb453bb7fe679bb3608
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424863"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112766"
 ---
 # <a name="azure-synapse-analytics-sql-resource-consumption"></a>Azure SYNAPSE Analytics SQL kaynak tüketimi
 
@@ -37,7 +37,7 @@ Veri ambarı birimlerinin performansı, bu veri ambarı iş yükü ölçümlerin
 
 - Standart veri ambarı sorgusunun ne kadar hızlı bir şekilde çok sayıda satır tarayabilmesi ve ardından karmaşık bir toplama işlemi gerçekleştirebilmesi. Bu işlem g/ç ve CPU yoğun.
 - Veri ambarının Azure depolama Bloblarından veya Azure Data Lake veri alma hızını en kısa şekilde öğrenin. Bu işlem ağ ve CPU yoğun.
-- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL komutunun bir tabloyu ne kadar hızlı kopyalayabilirler. Bu işlem, depolama alanından veri okumayı, gerecin düğümlerine dağıtmayı ve depolama alanına yeniden yazmayı içerir. Bu işlem CPU, GÇ ve ağ yoğunluğu.
+- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)T-SQL komutunun bir tabloyu ne kadar hızlı kopyalayabilirler. Bu işlem, depolama alanından veri okumayı, gerecin düğümlerine dağıtmayı ve depolama alanına yeniden yazmayı içerir. Bu işlem CPU, GÇ ve ağ yoğunluğu.
 
 DWUs 'yi artırma:
 
@@ -77,7 +77,7 @@ Veri ambarı birimlerini artırdıkça, bilgi işlem kaynaklarını daha erken a
 
 #### <a name="capacity-limits"></a>Kapasite sınırları
 
-Her SQL Server (örneğin, myserver.database.windows.net), belirli sayıda veri ambarı birimine izin veren bir [veritabanı Işlem birimi (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kotasına sahiptir. Daha fazla bilgi için bkz. [iş yükü yönetim kapasitesi sınırları](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
+Her SQL Server (örneğin, myserver.database.windows.net), belirli sayıda veri ambarı birimine izin veren bir [veritabanı Işlem birimi (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kotasına sahiptir. Daha fazla bilgi için bkz. [iş yükü yönetim kapasitesi sınırları](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
 
 ### <a name="how-many-data-warehouse-units-do-i-need"></a>Kaç veri ambarı birimine ihtiyacım var?
 
@@ -106,7 +106,7 @@ SQL DB katılımcısı ve SQL Server katılımcısı gibi Azure kaynakları içi
 Geçerli DWU ayarını görüntülemek için:
 
 1. Visual Studio 'da SQL Server Nesne Gezgini açın.
-2. Mantıksal SQL veritabanı sunucusuyla ilişkili ana veritabanına bağlanın.
+2. Mantıksal SQL Server ile ilişkili ana veritabanına bağlanın.
 3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Örnek aşağıda verilmiştir:
 
 ```sql
@@ -120,7 +120,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ### <a name="change-data-warehouse-units"></a>Veri ambarı birimlerini değiştirme
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 DWUs 'yi değiştirmek için:
 
@@ -148,7 +148,7 @@ T-SQL ile geçerli DWUsettings ayarlarını görüntüleyebilir, ayarları deği
 
 DWUs 'yi değiştirmek için:
 
-1. Mantıksal SQL veritabanı sunucunuz ile ilişkili ana veritabanına bağlanın.
+1. Sunucunuz ile ilişkili ana veritabanına bağlanın.
 2. [Alter database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL deyimini kullanın. Aşağıdaki örnek, hizmet düzeyi hedefini MySQLDW veritabanı için DW1000c olarak ayarlar.
 
 ```Sql
@@ -184,7 +184,7 @@ Azure portal genişleme işlemleri için veritabanı durumunu kontrol edebilirsi
 
 DWU değişikliklerinin durumunu denetlemek için:
 
-1. Mantıksal SQL veritabanı sunucunuz ile ilişkili ana veritabanına bağlanın.
+1. Sunucunuz ile ilişkili ana veritabanına bağlanın.
 2. Veritabanı durumunu denetlemek için aşağıdaki sorguyu gönder.
 
 ```sql

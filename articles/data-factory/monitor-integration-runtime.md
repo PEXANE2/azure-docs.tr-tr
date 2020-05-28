@@ -10,12 +10,12 @@ ms.date: 07/25/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 6d2ea5c0b7354867086fc0cce43732f2d73c53ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfb40375fe841dd363681aea3d2cf6355046cd51
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81398958"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113697"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme
 
@@ -45,7 +45,7 @@ Aşağıdaki tabloda, bir Azure tümleştirme çalışma zamanı için cmdlet ta
 
 | Özellik | Açıklama |
 -------- | ------------- | 
-| Adı | Azure tümleştirme çalışma zamanının adı. |  
+| Name | Azure tümleştirme çalışma zamanının adı. |  
 | Durum | Azure tümleştirme çalışma zamanının durumu. | 
 | Konum | Azure tümleştirme çalışma zamanının konumu. Bir Azure tümleştirme çalışma zamanının konumu hakkındaki ayrıntılar için bkz. [Integration Runtime 'A giriş](concepts-integration-runtime.md). |
 | DataFactoryName | Azure tümleştirme çalışma zamanının ait olduğu veri fabrikasının adı. | 
@@ -72,7 +72,7 @@ Aşağıdaki tabloda **her düğüm**Için izleme özelliklerinin açıklamalar�
 
 | Özellik | Açıklama | 
 | -------- | ----------- | 
-| Adı | Şirket içinde barındırılan tümleştirme çalışma zamanının ve onunla ilişkili düğümlerin adı. Düğüm, şirket içinde barındırılan tümleştirme çalışma zamanının yüklü olduğu şirket içi bir Windows makinedir. |  
+| Name | Şirket içinde barındırılan tümleştirme çalışma zamanının ve onunla ilişkili düğümlerin adı. Düğüm, şirket içinde barındırılan tümleştirme çalışma zamanının yüklü olduğu şirket içi bir Windows makinedir. |  
 | Durum | Genel olarak barındırılan tümleştirme çalışma zamanının ve her düğümün durumu. Örnek: çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için sonraki bölüme bakın. | 
 | Sürüm | Şirket içinde barındırılan tümleştirme çalışma zamanının ve her düğümün sürümü. Şirket içinde barındırılan tümleştirme çalışma zamanının sürümü, gruptaki düğümlerin çoğunluğu sürümüne göre belirlenir. Şirket içinde barındırılan tümleştirme çalışma zamanı kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal şirket içinde barındırılan tümleştirme çalışma zamanı ile aynı sürüm numarasına sahip düğümler düzgün şekilde çalışır. Diğerleri sınırlı moddadır ve el ile güncelleştirilmesi gerekir (yalnızca büyük/küçük harfe otomatik güncelleştirme başarısız olur). | 
 | Kullanılabilir bellek | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünde kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. | 
@@ -170,17 +170,17 @@ Azure-SSIS Integration Runtime, SSIS paketlerinizi çalıştırmak için adanmı
 | NodeSize | Azure-SSIS tümleştirme çalışma zamanının her bir düğümünün boyutu. |
 | NodeCount | Azure-SSIS tümleştirme çalışma zamanının düğüm sayısı. |
 | MaxParallelExecutionsPerNode | Azure-SSIS tümleştirme çalışma zamanının düğüm başına paralel yürütmelerinin sayısı. |
-| CatalogServerEndpoint | SSıSDB barındırmak için mevcut Azure SQL veritabanı/yönetilen örnek sunucunuzun uç noktası. |
-| CatalogAdminUserName | Mevcut Azure SQL veritabanı/yönetilen örnek sunucunuzun Yönetici Kullanıcı adı. Data Factory hizmet bu bilgileri, sizin adınıza SSıSDB hazırlamak ve yönetmek için kullanır. |
-| CatalogAdminPassword | Mevcut Azure SQL veritabanı/yönetilen örnek sunucunuzun yönetici parolası. |
-| CatalogPricingTier | Mevcut Azure SQL veritabanı sunucunuz tarafından barındırılan SSSıSDB fiyatlandırma katmanı.  SSıSDB barındıran Azure SQL veritabanı yönetilen örneği için geçerli değildir. |
+| CatalogServerEndpoint | SSıSDB barındırmak için var olan SQL veritabanı/SQL yönetilen örneğinizin uç noktası. |
+| CatalogAdminUserName | Mevcut SQL veritabanı/SQL yönetilen örneğinizin Yönetici Kullanıcı adı. Data Factory hizmet bu bilgileri, sizin adınıza SSıSDB hazırlamak ve yönetmek için kullanır. |
+| CatalogAdminPassword | Mevcut SQL veritabanı/SQL yönetilen örneğinizin yönetici parolası. |
+| CatalogPricingTier | SQL veritabanı tarafından barındırılan SSSıSDB fiyatlandırma katmanı.  SSıSDB barındıran SQL yönetilen örneği için geçerli değildir. |
 | Vnetıd | Azure-SSIS tümleştirme çalışma zamanının katılması için sanal ağ kaynak KIMLIĞI. |
 | Alt ağ | Azure-SSIS tümleştirme çalışma zamanının katılması için alt ağ adı. |
-| Kimlik | Azure-SSIS tümleştirme çalışma zamanının kaynak KIMLIĞI. |
+| ID | Azure-SSIS tümleştirme çalışma zamanının kaynak KIMLIĞI. |
 | Tür | Azure-SSIS tümleştirme çalışma zamanının türü (yönetilen/kendiliğinden konak). |
 | ResourceGroupName | Veri Fabrikanızın ve Azure-SSIS tümleştirme çalışma zamanının oluşturulduğu Azure Kaynak grubunuzun adı. |
 | DataFactoryName | Azure Data Factory 'nizin adı. |
-| Adı | Azure-SSIS tümleştirme çalışma zamanının adı. |
+| Name | Azure-SSIS tümleştirme çalışma zamanının adı. |
 | Açıklama | Azure-SSIS tümleştirme çalışma zamanının açıklaması. |
 
   
@@ -199,7 +199,7 @@ Azure-SSIS Integration Runtime, SSIS paketlerinizi çalıştırmak için adanmı
 | -------------- | ----------- | 
 | Başlangıç | Azure-SSIS tümleştirme çalışma zamanının düğümleri ayrılmadı/hazırlandı. | 
 | Başlatılıyor | Azure-SSIS tümleştirme çalışma zamanının düğümleri ayrılmakta/hazırlanmakta ve faturalandırma başladı. |
-| Başlatıldı | Azure-SSIS tümleştirme çalışma zamanının düğümleri ayrıldı/hazırlandı ve SSIS paketlerini dağıtmanıza/yürütmeniz için hazır. |
+| Başlarken | Azure-SSIS tümleştirme çalışma zamanının düğümleri ayrıldı/hazırlandı ve SSIS paketlerini dağıtmanıza/yürütmeniz için hazır. |
 | Durduruluyor  | Azure-SSIS tümleştirme çalışma zamanının düğümleri serbest bırakılıyor. |
 | Durduruldu | Azure-SSIS tümleştirme çalışma zamanının düğümleri yayımlanmıştır ve faturalandırma durdurulur. |
 
@@ -224,8 +224,8 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 Azure-SSIS Integration Runtime hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Bu makalede, Azure-SSIS IR dahil olmak üzere genel olarak tümleştirme çalışma zamanları hakkında kavramsal bilgiler verilmektedir. 
-- [Öğretici: SSIS paketlerini Azure’a dağıtma](tutorial-create-azure-ssis-runtime-portal.md). Bu makale bir Azure-SSIS IR oluşturmaya ilişkin adım adım yönergeler sağlar ve SSIS kataloğunu barındırmak için bir Azure SQL veritabanı kullanır. 
-- [Nasıl yapılır: Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md). Bu makale öğreticiye genişleterek Azure SQL veritabanı yönetilen örneği kullanımı ve IR 'yi bir sanal ağa katma hakkında yönergeler sağlar. 
+- [Öğretici: SSIS paketlerini Azure’a dağıtma](tutorial-create-azure-ssis-runtime-portal.md). Bu makalede, bir Azure-SSIS IR oluşturmak ve SSIS kataloğunu barındırmak için SQL veritabanı 'nı kullanması için adım adım yönergeler sağlanmaktadır. 
+- [Nasıl yapılır: Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md). Bu makale öğreticide genişler ve SQL yönetilen örneği kullanma ve IR 'yi bir sanal ağa katma hakkında yönergeler sağlar. 
 - [Azure-SSIS IR’yi yönetme](manage-azure-ssis-integration-runtime.md). Bu makale bir Azure-SSIS IR’yi durdurma, başlatma veya kaldırma işlemini gösterir. Ayrıca, IR’ye daha fazla düğüm ekleyerek Azure-SSIS IR’nizi ölçeklendirmeyi gösterir. 
 - [Azure-SSIS IR’yi bir sanal ağa ekleyin](join-azure-ssis-integration-runtime-virtual-network.md). Bu makale Azure-SSIS IR’yi bir Azure sanal ağına ekleme hakkında kavramsal bilgiler sağlar. Ayrıca, Azure-SSIS IR sanal ağa katılabilmesi için sanal ağı yapılandırmak üzere Azure portal kullanma adımları da sağlar. 
 

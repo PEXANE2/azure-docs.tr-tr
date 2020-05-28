@@ -9,16 +9,14 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 3f22ce3b1fb750e33e35d35ee1fe5ad1893abcfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e70467d0ef956802e1ab7f416da7c2cbec37c58
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204145"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115558"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 'de uygulama yaşam döngüsü yönetimi (klasik)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure Machine Learning Studio (klasik), Azure bulut platformunda çalışır durumda olan Machine Learning denemeleri geliştirmeye yönelik bir araçtır. Visual Studio IDE ve ölçeklenebilir bulut hizmeti tek bir platformda birleştirilmiştir. Standart uygulama yaşam döngüsü yönetimi (ALM) uygulamalarını, çeşitli varlıkların dağıtımını otomatik yürütmeye ve dağıtıma, Azure Machine Learning Studio (klasik) içine ekleyebilirsiniz. Bu makalede bazı seçenekler ve yaklaşımların bazıları açıklanmaktadır.
 
@@ -46,7 +44,7 @@ Denemeyi silerseniz, bu denemenin tüm anlık görüntüleri silinir.
 JSON dosyası, bir veri kümesi veya eğitilen model gibi çalışma alanındaki varlıklara başvuru içerebilen deneme grafiğinin metinsel bir gösterimidir. Varlığın serileştirilmiş bir sürümünü içermez. JSON belgesini yeniden çalışma alanına aktarmaya çalışırsanız, başvurulan varlıkların denemeye başvuruda bulunulan varlık kimlikleri ile zaten mevcut olması gerekir. Aksi takdirde, içeri aktarılan denemenize erişemezsiniz.
 
 ## <a name="versioning-trained-model"></a>Eğitilen model sürümü
-Azure Machine Learning Studio (klasik) ' deki eğitilen bir model iLearner dosyası (`.iLearner`) olarak bilinen bir biçimde serileştirilir ve çalışma alanıyla Ilişkili Azure Blob depolama hesabında depolanır. İLearner dosyasının bir kopyasını almanın bir yolu yeniden eğitim API 'sidir. [Bu makalede](/azure/machine-learning/studio/retrain-machine-learning-model) , yeniden eğitim API 'sinin nasıl çalıştığı açıklanır. Üst düzey adımlar:
+Azure Machine Learning Studio (klasik) ' deki eğitilen bir model iLearner dosyası () olarak bilinen bir biçimde serileştirilir `.iLearner` ve çalışma alanıyla Ilişkili Azure Blob depolama hesabında depolanır. İLearner dosyasının bir kopyasını almanın bir yolu yeniden eğitim API 'sidir. [Bu makalede](/azure/machine-learning/studio/retrain-machine-learning-model) , yeniden eğitim API 'sinin nasıl çalıştığı açıklanır. Üst düzey adımlar:
 
 1. Eğitim denemenizi ayarlayın.
 2. Eğitim modeli modülüne bir Web hizmeti çıkış bağlantı noktası ya da model Hyperparameter ayarlama veya R modeli oluşturma gibi eğitilen modeli üreten modüle ekleyin.

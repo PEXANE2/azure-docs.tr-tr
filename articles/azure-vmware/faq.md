@@ -4,12 +4,12 @@ description: Azure VMware çözümü (AVS) ile ilgili bazı yaygın soruların y
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873312"
+ms.locfileid: "84112695"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware çözümü (AVS) önizleme hakkında sık sorulan sorular
 
@@ -67,34 +67,7 @@ CloudSimple ile mevcut Azure VMware çözümünde değişiklik yapılmaz. Azure 
 
 Evet, Azure VMware çözümü, HCX gibi tanıdık VMware araçları kullanılarak geçişi destekler. Yeni çözüme geçiş yapmak isteyen müşteriler için lütfen seçenekleri ve kullanılabilir desteği incelemek üzere Microsoft hesabı ekibinizle birlikte çalışın.
 
-<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**Nasıl yaparım? var olan bir Azure VMware çözümü için bir konak kotası artışı ister misiniz?**
 
-Bir [destek isteği göndererek](..\azure-portal\supportability\how-to-create-azure-support-request.md)kota artışı isteyebilirsiniz. Kota yönetimi ekibi, isteği değerlendirir ve üç iş günü içinde onaylar.  
-
-> [!IMPORTANT]
-> Kota artışı isteyebilmeniz için önce [ **MICROSOFT. AVS** kaynak sağlayıcısını](tutorial-create-private-cloud.md) Azure Portal kaydettiğinizden emin olun.  
-> ```azurecli-interactive
-> az provider register -n Microsoft.AVS --subscription <your subscription ID>
-> ```
-> Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types).
-
-1. Azure portal, **Yardım + Destek**altında, **Yeni bir destek isteği** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:
-   - **Sorun türü:** Teknik
-   - **Abonelik:** Abonelik KIMLIĞINIZ
-   - **Hizmet:**  Azure VMware çözümü 
-   - **Özet:** Kota artışı
-   - **Sorun türü:** Kapasite yönetimi sorunları
-   - **Sorun alt türü:** Ek konak kotası/kapasitesi için müşteri Isteği
-
-1. Destek bileti açıklamasında, Ayrıntılar sekmesinde şunları sağlayın:
-   - Ek düğüm sayısı   
-   - Düğüm SKU 'SU
-   - Bölge
-
-   > [!NOTE] 
-   > Varsayılan olarak, en az dört düğüm verilecektir.
-
-1. İsteği göndermek için **gözden geçir + oluştur** ' a tıklayın.
 
 ## <a name="compute-network-and-storage"></a>İşlem, ağ ve depolama
 
@@ -164,7 +137,7 @@ Hayır, NSX 'i şirket içinde kullanmak zorunda değilsiniz.
 
 **Özel buluttaki VMware yazılımı için yükseltme ve güncelleştirme zamanlaması nedir?**
 
-Özel bulut yazılım paketi yükseltmeleri, yazılımın en son sürümü olan VMware uygulamasının tek bir sürümünde kalmasını sağlamak için yapılır. Özel bulut yazılımı sürümleri, bireysel yazılım bileşenlerinin en son sürümlerinden (ESXi, NSX-T, vCenter, VSAN) farklı olabilir.
+Özel bulut yazılım paketi yükseltmeleri, Yazılımı VMware 'den en son yazılım paketi sürümünün bir sürümünde tutmak için yapılır. Özel bulut yazılımı sürümleri, bireysel yazılım bileşenlerinin en son sürümlerinden (ESXi, NSX-T, vCenter, VSAN) farklı olabilir.
 
 **Özel bulut yazılım yığını ne sıklıkla güncelleştirilir?**
 
@@ -233,6 +206,35 @@ AVS desteği Microsoft tarafından dağıtılır. Lütfen önizleme yönergeleri
 **AVS özel bulutu oluşturmak için hangi hesaplara ihtiyacım var?**
 
 Azure aboneliğinde bir Azure hesabınızın olması gerekir.
+
+<a name="how-to-request-a-quota-increase-for-avs"></a>**Nasıl yaparım? Azure VMware çözümü için bir konak kotası artışı ister misiniz?**
+
+Bir [destek isteği göndererek](..\azure-portal\supportability\how-to-create-azure-support-request.md)kota artışı isteyebilirsiniz. Kota yönetimi ekibi, isteği değerlendirir ve üç iş günü içinde onaylar.  
+
+> [!IMPORTANT]
+> Kota artışı isteyebilmeniz için önce **Microsoft. AVS** kaynak sağlayıcısını Azure Portal kaydettiğinizden emin olun.  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+
+1. Azure portal, **Yardım + Destek**altında, **Yeni bir destek isteği** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:
+   - **Sorun türü:** Teknik
+   - **Abonelik:** Abonelik KIMLIĞINIZ
+   - **Hizmet:**  Azure VMware çözümü 
+   - **Özet:** Kota artışı
+   - **Sorun türü:** Kapasite yönetimi sorunları
+   - **Sorun alt türü:** Ek konak kotası/kapasitesi için müşteri Isteği
+
+1. Destek bileti açıklamasında, Ayrıntılar sekmesinde şunları sağlayın:
+   - Ek düğüm sayısı   
+   - Düğüm SKU 'SU
+   - Bölge
+
+   > [!NOTE] 
+   > Varsayılan olarak, en az dört düğüm verilecektir.
+
+1. İsteği göndermek için **gözden geçir + oluştur** ' a tıklayın.
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952

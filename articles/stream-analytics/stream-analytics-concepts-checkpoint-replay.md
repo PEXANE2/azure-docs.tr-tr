@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f5bb2b97d7da770828c2f4f03167483ad2044c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426401"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020617"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure Stream Analytics işlerinde denetim noktası ve yeniden yürütme kavramları
 Bu makalede, Azure Stream Analytics ' deki iç denetim noktası ve yeniden yürütme kavramları ve bunların iş kurtarmasında etkileri açıklanmaktadır. Stream Analytics iş her çalıştığında durum bilgileri dahili olarak tutulur. Bu durum bilgileri düzenli aralıklarla bir denetim noktasına kaydedilir. Bazı senaryolarda, iş hatası veya yükseltme gerçekleşirse, iş kurtarma için denetim noktası bilgileri kullanılır. Başka bir durumda, denetim noktası kurtarma için kullanılamaz ve yeniden yürütme gereklidir.
@@ -47,7 +47,7 @@ Microsoft, Azure hizmetindeki Stream Analytics işleri çalıştıran ikilileri 
 
 Şu anda, kurtarma denetim noktası biçimi yükseltmeler arasında korunmaz. Sonuç olarak, akış sorgusunun durumu tamamen yeniden yürütme tekniği kullanılarak geri yüklenmelidir. Stream Analytics işlerin daha önce aynı girişi yeniden çalıştırmasına izin vermek için, kaynak veriler için bekletme ilkesinin en azından Sorgunuzdaki pencere boyutlarına ayarlanması önemlidir. Bunun başarısız olması, hizmet yükseltmesi sırasında yanlış veya kısmi sonuçlara neden olabilir. bu nedenle, kaynak veriler tam pencere boyutunu içerecek kadar geri saklanmayabilir.
 
-Genel olarak, gereken yeniden yürütme miktarı, ortalama olay oranı ile çarpılan pencere boyutuyla orantılıdır. Örnek olarak, saniye başına 1000 etkinlikten oluşan bir iş için, bir saatten büyük bir pencere boyutu büyük bir yeniden yürütme boyutuna sahip olacak şekilde değerlendirilir. Bir saatlik verilerin tam ve doğru sonuçlar üretebilmesi için, bu durum, bazı genişletilmiş bir süre için geciken çıkış (çıkış yok) oluşmasına neden olabilecek şekilde yeniden işlenmesi gerekebilir. Windows ya da gibi `JOIN` diğer zamana bağlı işleçlere sahip sorguların `LAG`sıfır yeniden oynamış olması gerekir.
+Genel olarak, gereken yeniden yürütme miktarı, ortalama olay oranı ile çarpılan pencere boyutuyla orantılıdır. Örnek olarak, saniye başına 1000 etkinlikten oluşan bir iş için, bir saatten büyük bir pencere boyutu büyük bir yeniden yürütme boyutuna sahip olacak şekilde değerlendirilir. Bir saatlik verilerin tam ve doğru sonuçlar üretebilmesi için, bu durum, bazı genişletilmiş bir süre için geciken çıkış (çıkış yok) oluşmasına neden olabilecek şekilde yeniden işlenmesi gerekebilir. Windows ya da gibi diğer zamana bağlı işleçlere sahip `JOIN` sorguların `LAG` sıfır yeniden oynamış olması gerekir.
 
 ## <a name="estimate-replay-catch-up-time"></a>Tahmin yeniden yürütme yakalama süresi
 Bir hizmet yükseltmesi nedeniyle gecikme süresini tahmin etmek için bu tekniği izleyebilirsiniz:

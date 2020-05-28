@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 2b23ffec76de3fa644abe3b65876a60c65c05eb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eecf7ba1471e35e2d9ab26394c7295f324c4ca20
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685998"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116398"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Şirket içi SSIS iş yüklerini ADF 'de SSIS 'ye geçirme
 
@@ -24,7 +24,7 @@ ms.locfileid: "81685998"
 
 ## <a name="overview"></a>Genel Bakış
 
-Veritabanı iş yüklerinizi şirket içi SQL Server Azure veritabanı hizmetlerine geçirdiğinizde Azure SQL veritabanı veya Azure SQL veritabanı yönetilen örneği olarak, birincil değer eklenmiş hizmetlerden biri olarak (SSIS) SQL Server Integration Services üzerindeki ETL iş yükleriniz de geçirilmesi gerekir.
+Veritabanı iş yüklerinizi, Azure SQL veritabanı veya Azure SQL yönetilen örneği gibi şirket içi SQL Server Azure veritabanı hizmetlerine geçirdiğinizde, birincil değer ile eklenen hizmetlerden biri olarak SQL Server Integration Services (SSIS) üzerindeki ETL iş yüklerinizin da geçirilmesi gerekir.
 
 Azure Data Factory (ADF) içindeki Azure-SSIS Integration Runtime (IR), SSIS paketlerinin çalıştırılmasını destekler. Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve çalıştırmak için SQL Server Veri Araçları (SSDT)/SQL Server Management Studio (SSMS) gibi tanıdık araçları ve dtınstall/dtutil/dtexec gibi komut satırı yardımcı programlarını kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure SSIS Asansör-ve-SHIFT 'e genel bakış](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
@@ -57,14 +57,14 @@ DMA, **DMA sürümü v 5.0**'Dan beri **dosya sistemi**, **paket deposu**ve **SS
 
 Kaynak SSIS paketlerinin [depolama türlerine](#four-storage-types-for-ssis-packages) ve veritabanı iş yüklerinin geçiş hedefine bağlı olarak, SSIS **paketlerini** geçirme adımları ve SSIS paket yürütmelerinin zamanlaması olan **SQL Server Agent işleri** farklılık gösterebilir. İki senaryo vardır:
 
-- [Veritabanı iş yükü hedefi olarak **Azure SQL veritabanı yönetilen örneği**](#azure-sql-database-managed-instance-as-database-workload-destination)
+- [Veritabanı iş yükü hedefi olarak **Azure SQL yönetilen örneği**](#azure-sql-managed-instance-as-database-workload-destination)
 - [Veritabanı iş yükü hedefi olarak **Azure SQL veritabanı**](#azure-sql-database-as-database-workload-destination)
 
-### <a name="azure-sql-database-managed-instance-as-database-workload-destination"></a>Veritabanı iş yükü hedefi olarak **Azure SQL veritabanı yönetilen örneği**
+### <a name="azure-sql-managed-instance-as-database-workload-destination"></a>Veritabanı iş yükü hedefi olarak **Azure SQL yönetilen örneği**
 
 | **Paket depolama türü** |SSIS paketlerini toplu geçirme|SSIS işlerinin toplu olarak geçirilmesi|
 |-|-|-|
-|SSıSDB|[**SSISDB** 'yi geçir](scenario-ssis-migration-ssisdb-mi.md)|[SSIS işlerini Azure SQL veritabanı yönetilen örnek aracısına geçirme](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-azure-sql-database-managed-instance-agent)|
+|SSıSDB|[**SSISDB** 'yi geçir](scenario-ssis-migration-ssisdb-mi.md)|[SSIS işlerini Azure SQL yönetilen örnek aracısına geçirme](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent)|
 |Dosya Sistemi|Onları dtınstall/dtutil/Manual Copy aracılığıyla dosya paylaşımlarına/Azure dosyalarına yeniden dağıtın veya dosya sistemlerinde VNet/şirket içinde barındırılan IR aracılığıyla erişmesini sağlayın. Daha fazla bilgi için bkz. [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|<li> [SSMS 'de SSIS Iş Geçiş Sihirbazı](how-to-migrate-ssis-job-ssms.md) ile geçiş <li>Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |SQL Server (MSDB)|Dosyaları SSMS/dtutil aracılığıyla dosya sistemlerine/dosya paylaşımlarına/Azure dosyalarına dışarı aktarın. Daha fazla bilgi için bkz. [SSIS paketlerini dışarı aktarma](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Paket deposu|Onları SSMS/dtutil aracılığıyla dosya sistemlerine/dosya paylaşımlarına/Azure dosyalarına dışarı aktarın veya dtınstall/dtutil/Manual Copy aracılığıyla dosya paylaşımlarına/Azure dosyalarına yeniden dağıtın ya da bunları VNet/şirket içinde barındırılan IR aracılığıyla erişmek için dosya sistemlerinde saklayın. Daha fazla bilgi için bkz. dtutil Utility. Daha fazla bilgi için bkz. [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Betikler/SSMS/ADF portalı aracılığıyla ADF işlem hattına/etkinliklere/tetikleyicilere Dönüştür. Daha fazla bilgi için bkz. [SSMS zamanlama özelliği](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
@@ -83,7 +83,7 @@ Kaynak SSIS paketlerinin [depolama türlerine](#four-storage-types-for-ssis-pack
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Veritabanı Geçiş Yardımcısı](https://docs.microsoft.com/sql/dma/dma-overview)
 - [SSIS iş yüklerini buluta yükselt ve Kaydır](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview?view=sql-server-2017)
-- [SSIS paketlerini Azure SQL Veritabanı yönetilen örneğine geçirme](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
+- [SSIS paketlerini Azure SQL yönetilen örneği 'ne geçirme](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 - [Paketleri Azure SQL veritabanı 'na yeniden dağıtın](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)
 
 ## <a name="next-steps"></a>Sonraki adımlar

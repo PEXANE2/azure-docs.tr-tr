@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab9a02efedb0e002ac13294429c06e39ea18019c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399001"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117462"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -88,7 +88,7 @@ DSVM 'yi bir geliştirme ortamı olarak kullanmak için:
     * Azure CLı:
 
         > [!IMPORTANT]
-        > * Azure CLı 'yı kullandığınızda, önce `az login` komutunu kullanarak Azure aboneliğinizde oturum açmanız gerekir.
+        > * Azure CLı 'yı kullandığınızda, önce komutunu kullanarak Azure aboneliğinizde oturum açmanız gerekir `az login` .
         >
         > * Bu adımdaki komutları kullandığınızda, bir kaynak grubu adı, VM için bir ad, Kullanıcı adı ve parola sağlamanız gerekir.
 
@@ -136,7 +136,7 @@ Daha fazla bilgi için bkz. [veri bilimi sanal makineleri](https://azure.microso
 
 ## <a name="local-computer"></a><a id="local"></a>Yerel bilgisayar
 
-Yerel bir bilgisayar (Ayrıca, uzak bir sanal makine de olabilir) kullandığınızda, bir Anaconda ortamı oluşturun ve SDK 'Yı kurun. Bir örneği aşağıda verilmiştir:
+Yerel bir bilgisayar (Ayrıca, uzak bir sanal makine de olabilir) kullandığınızda, bir Anaconda ortamı oluşturun ve SDK 'Yı kurun. İşte bir örnek:
 
 1. Henüz yoksa [Anaconda](https://www.anaconda.com/distribution/#download-section) (Python 3,7 sürümü) sürümünü indirip yükleyin.
 
@@ -145,7 +145,7 @@ Yerel bir bilgisayar (Ayrıca, uzak bir sanal makine de olabilir) kullandığın
     Ortamı oluşturmak için aşağıdaki komutu çalıştırın.
 
     ```bash
-    conda create -n myenv python=3.6.5
+    conda create -n myenv python=3.7.7
     ```
 
     Ardından ortamı etkinleştirin.
@@ -154,7 +154,7 @@ Yerel bir bilgisayar (Ayrıca, uzak bir sanal makine de olabilir) kullandığın
     conda activate myenv
     ```
 
-    Bu örnek, Python 3.6.5 kullanarak bir ortam oluşturur, ancak herhangi bir belirli alt sürüm seçilebilir. SDK uyumluluğu belirli ana sürümlerle garanti edilemez (3,5 + önerilir) ve hatalar halinde çalıştırırsanız, Anaconda ortamınızda farklı bir sürüm/alt sürüm denemek önerilir. Bileşenler ve paketler indirilirken ortamın oluşturulması birkaç dakika sürer.
+    Bu örnek, Python 3.7.7 kullanarak bir ortam oluşturur, ancak herhangi bir belirli alt sürüm seçilebilir. SDK uyumluluğu belirli ana sürümlerle garanti edilemez (3,5 + önerilir) ve hatalar halinde çalıştırırsanız, Anaconda ortamınızda farklı bir sürüm/alt sürüm denemek önerilir. Bileşenler ve paketler indirilirken ortamın oluşturulması birkaç dakika sürer.
 
 1. Ortama özel IPython kernels özelliğini etkinleştirmek için yeni ortamınızda aşağıdaki komutları çalıştırın. Bu, Anaconda ortamları içinde Jupyter Not defterleri ile çalışırken beklenen çekirdek ve paket içeri aktarma davranışının sağlanması gerekir:
 
@@ -170,7 +170,7 @@ Yerel bir bilgisayar (Ayrıca, uzak bir sanal makine de olabilir) kullandığın
 
 1. Paketleri yüklemek için aşağıdaki komutları kullanın:
 
-    Bu komut, temel Azure Machine Learning SDK 'sını Not defteri ve `automl` ek özellikler ile birlikte kurar. `automl` Ek büyük bir yüklemedir ve otomatik makine öğrenimi denemeleri çalıştırmayı düşünmüyorsanız ayraçlardan kaldırılabilir. Ek `automl` Ayrıca, bağımlılık olarak varsayılan olarak Azure Machine Learning veri hazırlama SDK 'sını içerir.
+    Bu komut, temel Azure Machine Learning SDK 'sını Not defteri ve `automl` ek özellikler ile birlikte kurar. `automl`Ek büyük bir yüklemedir ve otomatik makine öğrenimi denemeleri çalıştırmayı düşünmüyorsanız ayraçlardan kaldırılabilir. `automl`Ek Ayrıca, bağımlılık olarak varsayılan olarak Azure Machine Learning veri hazırlama SDK 'sını içerir.
 
     ```bash
     pip install azureml-sdk[notebooks,automl]
@@ -181,7 +181,7 @@ Yerel bir bilgisayar (Ayrıca, uzak bir sanal makine de olabilir) kullandığın
    >
    >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
    >
-   > * MacOS Catalina ile başlayarak, ZSH (Z kabuğu), varsayılan oturum açma kabuğu ve etkileşimli kabuktur. ZSH 'de, "\\" (ters eğik çizgi) ile köşeli parantezleri kaçış aşağıdaki komutu kullanın:
+   > * MacOS Catalina ile başlayarak, ZSH (Z kabuğu), varsayılan oturum açma kabuğu ve etkileşimli kabuktur. ZSH 'de, " \\ " (ters eğik çizgi) ile köşeli parantezleri kaçış aşağıdaki komutu kullanın:
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
@@ -189,13 +189,13 @@ Yerel bir bilgisayar (Ayrıca, uzak bir sanal makine de olabilir) kullandığın
 
 1. Machine Learning deneme için diğer paketleri yükler.
 
-    Aşağıdaki komutlardan birini kullanın ve * \<yeni paketi>* yüklemek istediğiniz paket ile değiştirin. Aracılığıyla `conda install` paket yükleme, paketin geçerli kanalların bir parçası olmasını gerektirir (yeni kanallar Anaconda buluta eklenebilir).
+    Aşağıdaki komutlardan birini kullanın ve öğesini yüklemek istediğiniz *\<new package>* paketle değiştirin. Aracılığıyla paket yükleme `conda install` , paketin geçerli kanalların bir parçası olmasını gerektirir (yeni kanallar Anaconda buluta eklenebilir).
 
     ```bash
     conda install <new package>
     ```
 
-    Alternatif olarak, paketini aracılığıyla `pip`yükleyebilirsiniz.
+    Alternatif olarak, paketini aracılığıyla yükleyebilirsiniz `pip` .
 
     ```bash
     pip install <new package>
@@ -234,7 +234,7 @@ Jupyter Notebook ortamınızda bu bileşenleri etkinleştirmek için:
     azureml.core.VERSION
     ```
 
-1. Modülleri içeri aktarma ve alma sorunlarıyla karşılaşırsanız `ModuleNotFoundError`, bir not defteri hücresinde aşağıdaki kodu çalıştırarak Jupyter çekirdeğin ortamınız için doğru yola bağlı olduğundan emin olun.
+1. Modülleri içeri aktarma ve alma sorunlarıyla karşılaşırsanız, bir `ModuleNotFoundError` Not defteri hücresinde aşağıdaki kodu çalıştırarak Jupyter çekirdeğin ortamınız için doğru yola bağlı olduğundan emin olun.
 
     ```python
     import sys
@@ -285,7 +285,7 @@ Azure Databricks Azure Machine Learning ile nasıl kullanılır:
 
 Şu ayarları kullanın:
 
-| Ayar |Uygulandığı öğe:| Değer |
+| Ayar |Şunlara uygulanır| Değer |
 |----|---|---|
 | Küme adı |Her| yourclustername |
 | Databricks Çalışma Zamanı |Her|ML olmayan çalışma zamanı 6,5 (Scala 2,11, Spark 2.4.3) |
@@ -299,11 +299,11 @@ Devam etmeden önce küme çalışmaya kadar bekleyin.
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Databricks kitaplığına doğru SDK 'Yı yükler
 Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini kümenize eklemek için [bir kitaplık oluşturun](https://docs.databricks.com/user-guide/libraries.html#create-a-library) .
 
-1. Kitaplığı depolamak istediğiniz geçerli çalışma alanı klasörüne sağ tıklayın. Kitaplık **Oluştur** > **Library**' u seçin.
+1. Kitaplığı depolamak istediğiniz geçerli çalışma alanı klasörüne sağ tıklayın. Kitaplık **Oluştur**' u seçin  >  **Library**.
 
 1. **Yalnızca bir** seçenek belirleyin (diğer SDK yüklemesi desteklenmez)
 
-   |SDK&nbsp;paketi&nbsp;ek özellikleri|Kaynak|Pypı&nbsp;adı&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |SDK &nbsp; paketi &nbsp; ek özellikleri|Kaynak|Pypı &nbsp; adı&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Databricks için| Python Yumurg veya Pypı yükleme | azureml-SDK [databricks]|
    |Databricks için-ile<br> Otomatik ML özellikleri| Python Yumurg veya Pypı yükleme | azureml-SDK [Oto ml]|
@@ -329,17 +329,17 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
 
 Yüklemesi başarılı olduysa, içeri aktarılan kitaplık aşağıdakilerden biri gibi görünmelidir:
 
-Databricks için otomatik **_without_** makine öğrenimi ![Azure Machine Learning SDK 'Sı olmadan DATABRICKS için SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+Databricks için otomatik **_without_** makine öğrenimi ![ Azure Machine Learning SDK 'Sı olmadan databricks için SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Databricks 'te otomatik **WITH** makine öğrenimi ile ![otomatik makine öğrenimi SDK 'Sı ile DATABRICKS için SDK](./media/how-to-configure-environment/automlonadb.png)
+**WITH** ![ Databricks 'te otomatik makine öğrenimi ile otomatik makine öğrenimi SDK 'Sı Ile databricks için SDK](./media/how-to-configure-environment/automlonadb.png)
 
 ### <a name="start-exploring"></a>Keşfetmeye başlayın
 
 Deneyin:
 + Birçok örnek Not defteri kullanılabilir, **ancak [Bu örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) yalnızca Azure Databricks çalışır.**
 
-+ Bu örnekleri doğrudan çalışma alanınızdan içeri aktarın. Aşağıya bakın: ![içeri aktarma](./media/how-to-configure-environment/azure-db-screenshot.png)
-![bölmesini seçin](./media/how-to-configure-environment/azure-db-import.png)
++ Bu örnekleri doğrudan çalışma alanınızdan içeri aktarın. Aşağıya bakın: içeri aktarma ![ ](./media/how-to-configure-environment/azure-db-screenshot.png)
+ ![ bölmesini seçin](./media/how-to-configure-environment/azure-db-import.png)
 
 + [Eğitim işlemi olarak Databricks ile bir işlem hattı oluşturmayı](how-to-create-your-first-pipeline.md)öğrenin.
 
@@ -357,7 +357,7 @@ Deneyin:
 
 Bu JSON dosyası, Python betikleri veya Jupyıter not defterlerini içeren dizin yapısında olmalıdır. Aynı dizinde, *. azureml*adlı bir alt dizin veya bir üst dizin içinde olabilir.
 
-Bu dosyayı kodunuzda kullanmak için kullanın `ws=Workspace.from_config()`. Bu kod, dosyadaki bilgileri yükler ve çalışma alanınıza bağlanır.
+Bu dosyayı kodunuzda kullanmak için kullanın `ws=Workspace.from_config()` . Bu kod, dosyadaki bilgileri yükler ve çalışma alanınıza bağlanır.
 
 Yapılandırma dosyasını üç şekilde oluşturabilirsiniz:
 

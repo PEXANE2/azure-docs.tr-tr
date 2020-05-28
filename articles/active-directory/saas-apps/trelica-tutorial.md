@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c68a95530f345d1ec0ed077681ec4cd6eb3775
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 733e7529af5de453462efb1a13c21203681e442c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402435"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994315"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Öğretici: Trelica ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -90,9 +90,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
     1. **Yanıt URL 'si** kutusuna, modele sahıp bir URL girin `https://app.trelica.com/Id/Saml2/<CUSTOM_IDENTIFIER>/Acs` .
 
     > [!NOTE]
-    > **Yanıt URL 'si** değeri gerçek değil. Bu değeri gerçek yanıt URL 'siyle güncelleştirin. Bu değeri almak için [Trelica istemci destek ekibine](mailto:support@trelica.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Yanıt URL 'SI değeri gerçek değil. Bu değeri gerçek yanıt URL 'siyle (ACS olarak da bilinir) güncelleştirin.
+    > Bunu Trelica ' da oturum açarak ve [SAML kimlik sağlayıcıları yapılandırma sayfasına](https://app.trelica.com/Admin/Profile/SAML) (yönetici > HESABı > SAML) giderek bulabilirsiniz. Bunu panoya koymak için **assertion Consumer Service (ACS) URL 'sinin** yanındaki Kopyala düğmesine tıklayın ve Azure AD 'de **yanıt URL 'si** metin kutusuna yapıştırmaya hazırlanın.
+    > [Trelica Yardım belgelerini](https://docs.trelica.com/admin/saml/azure-ad) okuyun veya sorularınız varsa [trelica istemci destek ekibine](mailto:support@trelica.com) başvurun.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümüne gidin. **Uygulama Federasyon meta veri URL 'sinin**sağında, URL 'yi kopyalamak için Kopyala düğmesini seçin. URL 'YI bilgisayarınıza kaydedin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde Kopyala düğmesine tıklayarak **uygulama Federasyon meta verileri URL 'sini** kopyalayın ve bilgisayarınıza kaydedin.
 
     ![Uygulama Federasyon meta verileri URL 'Sinin yanında bulunan Kopyala düğmesi vurgulanmış şekilde SAML Imzalama sertifikası bölümü](common/copy-metadataurl.png)
 
@@ -128,11 +130,11 @@ Bu bölümde, Trelica erişimi vererek Azure çoklu oturum açma özelliğini ku
 
 ## <a name="configure-trelica-sso"></a>Trelica SSO 'SU yapılandırma
 
-**Trelica** tarafında çoklu oturum açmayı yapılandırmak için, kopyalanmış **uygulama Federasyon meta veri URL 'Si** değerini [trelica destek ekibine](mailto:support@trelica.com)gönderin. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak için bu ayarı yapılandırır.
+**Trelica** tarafında çoklu oturum açmayı yapılandırmak için [SAML kimlik sağlayıcıları yapılandırma sayfasına](https://app.trelica.com/Admin/Profile/SAML) gidin (yönetıcı > hesabı > SAML). **Yeni** düğmesine tıklayın. Ad olarak **Azure AD** girin ve meta veri türü için **URL 'den meta veriler** ' i seçin. Azure AD 'den aldığınız **uygulama Federasyon meta verileri URL** 'Sini trelica Içindeki **meta veri URL 'si** alanına yapıştırın.
+
+[Trelica Yardım belgelerini](https://docs.trelica.com/admin/saml/azure-ad) okuyun veya sorularınız varsa [trelica istemci destek ekibine](mailto:support@trelica.com) başvurun.
 
 ### <a name="create-a-trelica-test-user"></a>Trelica test kullanıcısı oluşturma
-
-Bu bölümde Trelica içinde B. Simon adlı bir Kullanıcı oluşturacaksınız.
 
 Trelica, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde gerçekleştirmeniz gereken bir işlem yok. Bir Kullanıcı Trelica 'de zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 

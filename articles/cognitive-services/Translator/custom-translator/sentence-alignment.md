@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: cf5b2b84142c9104ea5b3afa3ad179fd0ec07449
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c8c4bbcfdd8f06d4c2b4759b84a72c5b3cff5a5d
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80370130"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996355"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Paralel belgelerde tümce eşleştirme ve hizalama
 
@@ -26,7 +26,7 @@ Eğitim sırasında, paralel belgelerde bulunan cümleler eşleştirilmiş veya 
 
 ## <a name="pre-aligned-documents"></a>Önceden hizalanmış belgeler
 
-Paralel belgeleriniz olduğunu biliyorsanız, önceden hizalanmış metin dosyaları sağlayarak cümle hizalamasını geçersiz kılabilirsiniz. Her iki belgedeki tüm tümceleri metin dosyasına çıkarabilir, her satır için bir cümleyi organize edebilir ve bir `.align` uzantıya sahip yükleyebilirsiniz. Uzantı `.align` , tümce hizalamasını atlayabilmesi Için özel çeviriciyi işaret eder.
+Paralel belgeleriniz olduğunu biliyorsanız, önceden hizalanmış metin dosyaları sağlayarak cümle hizalamasını geçersiz kılabilirsiniz. Her iki belgedeki tüm tümceleri metin dosyasına çıkarabilir, her satır için bir cümleyi organize edebilir ve bir uzantıya sahip yükleyebilirsiniz `.align` . `.align`Uzantı, tümce hizalamasını atlayabilmesi Için özel çeviriciyi işaret eder.
 
 En iyi sonuçlar için, dosyalarınızda her satırda bir cümle olduğuna emin olun.Tümce içinde yeni satır karakterleri eklemeyin ve bu işlem kötü hizalamalara neden olur.
 

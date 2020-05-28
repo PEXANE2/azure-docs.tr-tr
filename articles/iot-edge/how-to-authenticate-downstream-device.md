@@ -173,7 +173,7 @@ Hepsi birlikte, bir bağlantı dizesinin tamamı şöyle görünür:
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
-Bu aşağı akış cihazı için bir üst/alt ilişki kurduysanız, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. X. 509.440 kimlik doğrulaması için üst/alt ilişkileri gerekir, ancak simetrik anahtar kimlik doğrulaması için isteğe bağlıdır. Örnek:
+Bu aşağı akış cihazı için bir üst/alt ilişki kurduysanız, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. X. 509.440 kimlik doğrulaması için üst/alt ilişkileri gerekir, ancak simetrik anahtar kimlik doğrulaması için isteğe bağlıdır. Örneğin:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

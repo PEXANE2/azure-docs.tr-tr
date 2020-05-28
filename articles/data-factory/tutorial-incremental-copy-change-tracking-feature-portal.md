@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 40e4fed9755edc2204c7b6b24a003995a14212d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfe7a88cd02b109124b9d35247aa2d4cbc5373c5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415438"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116592"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Değişiklik izleme bilgilerini kullanarak Azure SQL Veritabanından Azure Blob Depolama alanına verileri artımlı olarak yükleme
 
@@ -70,11 +70,11 @@ Bu öğreticide, aşağıdaki iki işlemi gerçekleştiren iki işlem hattı olu
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure SQL veritabanı**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure SQL Veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md) makalesine bakın.
+* **Azure SQL veritabanı**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure SQL Veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) makalesine bakın.
 * **Azure depolama hesabı**. Blob depolamayı **Havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın. **adftutorial** adlı bir kapsayıcı oluşturun. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Azure SQL veritabanınızda bir veri kaynağı tablosu oluşturma
-1. **SQL Server Management Studio**’yu başlatın ve Azure SQL Server'ınıza bağlanın.
+1. **SQL Server Management Studio**başlatın ve SQL veritabanı 'na bağlanın.
 2. **Sunucu Gezgini**’nde **veritabanınıza** sağ tıklayın ve **Yeni Sorgu**’yu seçin.
 3. Azure SQL veritabanınızda aşağıdaki SQL komutunu çalıştırarak veri kaynağı deponuz olarak `data_source_table` adlı bir tablo oluşturun.  
 
@@ -154,7 +154,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. Sol taraftaki menüden > **veri ve analiz** >  **kaynak oluştur**' u seçin**Data Factory**:
+1. Sol taraftaki menüden veri ve analiz **kaynak oluştur**' u seçin  >  **Data + Analytics**  >  **Data Factory**:
 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -216,8 +216,8 @@ Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlarsınız.
 3. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin:
 
     1. **Ad** alanına **AzureSqlDatabaseLinkedService** adını girin.
-    2. **Sunucu adı** alanı için Azure SQL sunucunuzu seçin.
-    4. **Veritabanı adı** alanı için Azure SQL veritabanınızı seçin.
+    2. **Sunucu adı** alanı için sunucunuzu seçin.
+    4. **Veritabanı adı** alanı için veritabanınızı seçin.
     5. **Kullanıcı adı** alanına kullanıcının adını girin.
     6. **Parola** alanına kullanıcının parolasını girin.
     7. Bağlantıyı test etmek için **Bağlantıyı sına**’ya tıklayın.
@@ -263,7 +263,7 @@ Bu adımda, kaynak veri deposundan kopyalanan verileri temsil etmek için bir ve
 
     1. **Bağlı hizmet** için **AzureStorageLinkedService** hizmetini seçin.
     2. **filePath** yolunun **klasör** bölümü için **adftutorial/incchgtracking** yolunu girin.
-    3. ** \@Concat (' artımlı-', işlem hattı () girin. RunId, '. txt ')** FilePath **dosyasının dosya** bölümü. **filePath**  
+    3. ** \@ Concat (' artımlı-', işlem hattı () girin. RunId, '. txt ')** FilePath **dosyasının dosya** bölümü. **filePath**  
 
        ![Havuz veri kümesi - bağlantı](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -416,7 +416,7 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
     2. **Parametreyi içeri aktar**’ı seçin.
     3. **Saklı yordam parametreleri** bölümünde, parametreler için aşağıdaki değerleri belirtin:
 
-        | Adı | Tür | Değer |
+        | Name | Tür | Değer |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | Dize | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |

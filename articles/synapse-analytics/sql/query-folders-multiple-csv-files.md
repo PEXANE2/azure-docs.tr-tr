@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8f8af7fab7113e38b91c3f5f1bcc41b4e4fba2c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb5c01bac512504fc6bee52be7cf619f29bdf959
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457374"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117179"
 ---
 # <a name="query-folders-and-multiple-csv-files"></a>Sorgu klasörleri ve birden çok CSV dosyası  
 
@@ -24,25 +24,10 @@ Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullana
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalenin geri kalanını okumadan önce, aşağıda listelenen makaleleri gözden geçirdiğinizden emin olun:
+İlk adımınız sorguları yürütebileceğiniz **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 
-- [İlk kez kurulum](query-data-storage.md#first-time-setup)
-- [Ön koşullar](query-data-storage.md#prerequisites)
-
-## <a name="read-multiple-files-in-folder"></a>Klasördeki birden çok dosyayı oku
-
-Örnek sorguları izlemek için *CSV/Taxi* klasörünü kullanacaksınız. Bu, NYC Taxi-sarı TAXI 'yi içerir 2016 Temmuz 'dan 2018 Haziran 'a kadar verileri kaydeder.
-
-*CSV/TAXI* 'deki dosyalar yıl ve ay sonra adlandırılır:
-
-- yellow_tripdata_2016 -07. csv
-- yellow_tripdata_2016 -08. csv
-- yellow_tripdata_2016 -09. csv
-- ...
-- yellow_tripdata_2018 -04. csv
-- yellow_tripdata_2018 -05. csv
-- yellow_tripdata_2018 -06. csv
-
+Örnek sorguları izlemek için *CSV/Taxi* klasörünü kullanacaksınız. Bu, NYC Taxi-sarı TAXI 'yi içerir 2016 Temmuz 'dan 2018 Haziran 'a kadar verileri kaydeder. *CSV/TAXI* içindeki dosyalar şu model kullanılarak yıl ve ay sonra adlandırılır: yellow_tripdata_ <year> - <month> . csv
+        
 Her dosya aşağıdaki yapıya sahiptir:
         
     [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
@@ -57,28 +42,14 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/*.*',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-           trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-           payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        pickup_datetime DATETIME2 2, 
+        passenger_count INT 4
     ) AS nyc
 GROUP BY
     YEAR(pickup_datetime)
@@ -98,28 +69,14 @@ SELECT
     payment_type,  
     SUM(fare_amount) AS fare_total
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-        trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-        payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        payment_type INT 10,
+        fare_amount FLOAT 11
     ) AS nyc
 GROUP BY payment_type
 ORDER BY payment_type;
@@ -147,8 +104,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -184,7 +142,7 @@ ORDER BY
 Joker karakter kullanarak birden çok klasörden dosya okumak mümkündür. Aşağıdaki sorgu, *t* ile başlayan ve *i*ile biten adlara sahip *CSV* klasöründe bulunan tüm klasörlerdeki tüm dosyaları okur.
 
 > [!NOTE]
-> Aşağıdaki sorgudaki yolun sonundaki/sonunda yer almadığına göz önüne alın. Bir klasörü gösterir. /Belirtilmemişse, sorgu *t&ast;ı* adlı dosyaları hedefleyecek.
+> Aşağıdaki sorgudaki yolun sonundaki/sonunda yer almadığına göz önüne alın. Bir klasörü gösterir. /Belirtilmemişse, sorgu *t &ast; ı* adlı dosyaları hedefleyecek.
 
 ```sql
 SELECT
@@ -192,8 +150,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/', 
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -231,7 +190,7 @@ ORDER BY
 Farklı yol düzeylerinde birden çok joker karakter kullanabilirsiniz. Örneğin, yalnızca 2017 veri içeren dosyaları okumak için bir önceki sorguyu zenginleştirebilirsiniz. bu adların *t* ile başlayan ve *i*ile biten tüm klasörlerden.
 
 > [!NOTE]
-> Aşağıdaki sorgudaki yolun sonundaki/sonunda yer almadığına göz önüne alın. Bir klasörü gösterir. /Belirtilmemişse, sorgu *t&ast;ı* adlı dosyaları hedefleyecek.
+> Aşağıdaki sorgudaki yolun sonundaki/sonunda yer almadığına göz önüne alın. Bir klasörü gösterir. /Belirtilmemişse, sorgu *t &ast; ı* adlı dosyaları hedefleyecek.
 > Sorgu başına en fazla 10 joker sınır vardır.
 
 ```sql
@@ -240,8 +199,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (

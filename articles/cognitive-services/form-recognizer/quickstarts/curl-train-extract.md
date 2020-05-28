@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 32756187852de0834afc1dc034d3f7419f0c8087
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fd240abee3bb19b3c54650756a3329d4d1ef8ae5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118397"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113515"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Hızlı başlangıç: kıvrımlı ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama
 
@@ -41,31 +41,31 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Azure Blob kabınızda bulunan belgelerle bir form tanıyıcı modeli eğitmek için aşağıdaki kıvrımlı komutunu çalıştırarak **[özel model eğitimi](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
-1. Önceki `<subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
-1. Azure `<SAS URL>` BLOB depolama kapsayıcısının paylaşılan erişim IMZASı (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. `<Endpoint>`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
+1. `<subscription key>`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. `<SAS URL>`Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-Bir konum üst bilgisine `201 (Success)` sahip bir yanıt **Location** alacaksınız. Bu üstbilginin değeri, eğitilen yeni modelin KIMLIĞIDIR. 
+`201 (Success)`Bir **konum** üst bilgisine sahip bir yanıt alacaksınız. Bu üstbilginin değeri, eğitilen yeni modelin KIMLIĞIDIR. 
 
 ## <a name="get-training-results"></a>Eğitim sonuçlarını al
 
 Eğitme işlemini başlattıktan sonra, eğitim durumunu denetlemek için yeni bir işlem kullanın, **[özel model alın](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** . Eğitim durumunu denetlemek için model KIMLIĞINI bu API çağrısına geçirin:
 
-1. Form `<Endpoint>` tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin.
-1. Abonelik `<subscription key>` anahtarınızla değiştirin
-1. Önceki `<model ID>` adımda ALDıĞıNıZ model kimliğiyle değiştirin
+1. `<Endpoint>`Form tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin.
+1. `<subscription key>`Abonelik anahtarınızla değiştirin
+1. `<model ID>`Önceki adımda aldığınız model kimliğiyle değiştirin
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-Aşağıdaki biçimde bir JSON `200 (Success)` gövdesi ile yanıt alacaksınız. `"status"` Alanına dikkat edin. Eğitim tamamlandıktan sonra bu değer `"ready"` olacaktır. Modelde eğitim bitmiyor ise, komutu yeniden çalıştırarak hizmeti tekrar sorgulamanızı gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
+`200 (Success)`Aşağıdaki biçimde BIR JSON gövdesi ile yanıt alacaksınız. Alanına dikkat edin `"status"` . `"ready"`Eğitim tamamlandıktan sonra bu değer olacaktır. Modelde eğitim bitmiyor ise, komutu yeniden çalıştırarak hizmeti tekrar sorgulamanızı gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
 
-`"modelId"` Alan, eğitiminde olduğunuz modelin kimliğini içerir. Bu, bir sonraki adımda gerekli olacaktır.
+`"modelId"`Alan, eğitiminde olduğunuz MODELIN kimliğini içerir. Bu, bir sonraki adımda gerekli olacaktır.
 
 ```json
 { 
@@ -137,30 +137,30 @@ Aşağıdaki biçimde bir JSON `200 (Success)` gövdesi ile yanıt alacaksınız
 
 Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, anahtar-değer çiftlerini ve tabloları kümeden ayıklayın. Aşağıdaki kıvrımlı komutunu çalıştırarak **[formu çözümle](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` tanıyıcı abonelik anahtarınızdan edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. Önceki `<model ID>` bölümde ALDıĞıNıZ model kimliğiyle değiştirin.
-1. Azure `<SAS URL>` Storage 'daki dosyanız IÇIN BIR SAS URL 'si ile değiştirin. Eğitim bölümündeki adımları izleyin, ancak tüm blob kapsayıcısı için bir SAS URL 'SI almak yerine, çözümlemek istediğiniz belirli dosya için bir tane alın.
+1. `<Endpoint>`Form tanıyıcı abonelik anahtarınızdan edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
+1. `<model ID>`Önceki bölümde aldığınız model kimliğiyle değiştirin.
+1. `<SAS URL>`Azure Storage 'daki dosyanız için BIR SAS URL 'si ile değiştirin. Eğitim bölümündeki adımları izleyin, ancak tüm blob kapsayıcısı için bir SAS URL 'SI almak yerine, çözümlemek istediğiniz belirli dosya için bir tane alın.
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
 ```bash
 curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
 ```
 
-**Işlem konumu** üst bilgisi `202 (Success)` olan bir yanıt alacaksınız. Bu üstbilginin değeri, Çözümle işleminin sonuçlarını izlemek için kullandığınız bir sonuç KIMLIĞI içerir. Sonraki adım için bu sonuç KIMLIĞINI kaydedin.
+`202 (Success)` **İşlem konumu** üst bilgisi olan bir yanıt alacaksınız. Bu üstbilginin değeri, Çözümle işleminin sonuçlarını izlemek için kullandığınız bir sonuç KIMLIĞI içerir. Sonraki adım için bu sonuç KIMLIĞINI kaydedin.
 
 ## <a name="get-the-analyze-results"></a>Analiz sonuçlarını al
 
 Çözümle işleminin sonuçlarını sorgulamak için aşağıdaki API 'yi kullanın.
 
-1. Form `<Endpoint>` tanıyıcı abonelik anahtarınızdan edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. Önceki `<result ID>` bölümde aldığınız kimlik ile değiştirin.
+1. `<Endpoint>`Form tanıyıcı abonelik anahtarınızdan edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
+1. `<result ID>`Önceki bölümde ALDıĞıNıZ kimlik ile değiştirin.
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-Aşağıdaki biçimde bir JSON `200 (Success)` gövdesi ile yanıt alacaksınız. Çıktı basitlik için kısaltıldı. En alttaki `"status"` alana dikkat edin. Analiz işlemi tamamlandığında bu değer `"succeeded"` olacaktır. Çözümle işlemi tamamlanmadıysa, komutu yeniden çalıştırarak hizmeti tekrar sorgulamanızı gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
+`200 (Success)`Aşağıdaki biçimde BIR JSON gövdesi ile yanıt alacaksınız. Çıktı basitlik için kısaltıldı. `"status"`En alttaki alana dikkat edin. `"succeeded"`Analiz işlemi tamamlandığında bu değer olacaktır. Çözümle işlemi tamamlanmadıysa, komutu yeniden çalıştırarak hizmeti tekrar sorgulamanızı gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
 
 Ana anahtar/değer çifti ilişkilendirmeleri ve tabloları `"pageResults"` düğümüdür. Ayrıca, *ıncludetekxtdetails* URL parametresi aracılığıyla düz metin ayıklama belirttiyseniz, `"readResults"` düğüm belgedeki tüm metinlerin içeriğini ve konumlarını gösterir.
 

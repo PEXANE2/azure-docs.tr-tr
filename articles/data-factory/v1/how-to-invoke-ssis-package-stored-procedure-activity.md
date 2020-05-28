@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: ea86c4670a8eb6dc5e2133ed01045e8aada0f707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 225414760507bb023d0a514290420fc7cb59b950
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438796"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118311"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory saklı yordam etkinliğini kullanarak bir SSIS paketini çağırma
 Bu makalede, bir saklı yordam etkinliği kullanarak bir Azure Data Factory işlem hattından bir SSIS paketinin nasıl çağırılacağını açıklanmaktadır. 
@@ -29,7 +29,7 @@ Bu makalede, bir saklı yordam etkinliği kullanarak bir Azure Data Factory işl
 ## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-sql-database"></a>Azure SQL Veritabanı 
-Bu makaledeki izlenecek yol, SSIS kataloğunu barındıran bir Azure SQL veritabanı kullanır. Azure SQL veritabanı yönetilen örneği de kullanabilirsiniz.
+Bu makaledeki izlenecek yol, Azure SQL veritabanı 'nı kullanır. Azure SQL yönetilen örneği de kullanabilirsiniz.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Azure SSIS tümleştirme çalışma zamanı oluşturma
 Öğreticideki Adım adım yönergeleri izleyerek bir Azure-SSIS tümleştirme çalışma zamanı oluşturun [: SSIS paketlerini dağıtma](../tutorial-create-azure-ssis-runtime-portal.md). Azure-SSIS tümleştirme çalışma zamanı oluşturmak için Data Factory sürüm 1 ' i kullanamazsınız. 
@@ -87,7 +87,7 @@ SSIS kataloğunu barındıran Azure SQL veritabanınızı veri fabrikasına bağ
 1. **C:\adf\runssispackage** klasöründe aşağıdaki Içeriğe sahip **Azuressındatabaselinkedservice. JSON** adlı bir JSON dosyası oluşturun: 
 
     > [!IMPORTANT]
-    > Dosyayı &lt;kaydetmeden&gt;önce &lt;ServerName&gt;@&lt;,&gt; username &lt;ServerName&gt; ve Password değerlerini Azure SQL veritabanınızın değerleriyle değiştirin.
+    > &lt; &gt; &lt; &gt; @ &lt; Dosyayı kaydetmeden önce ServerName, username ServerName &gt; ve &lt; Password &gt; değerlerini Azure SQL veritabanınızın değerleriyle değiştirin.
 
     ```json
     {
@@ -138,7 +138,7 @@ Bu adımda, saklı yordam etkinliği ile bir işlem hattı oluşturacaksınız. 
 1. **C:\adf\runssispackage** klasöründe aşağıdaki Içeriğe sahip **Mypipeline. JSON** adlı bir JSON dosyası oluşturun:
 
     > [!IMPORTANT]
-    > Dosyayı &lt;kaydetmeden önce&gt;, &lt;klasör adı&gt;, &lt;proje adı&gt; , paket adı ' nı SSIS kataloğunda klasör, proje ve paket adlarıyla değiştirin.
+    > &lt; &gt; Dosyayı kaydetmeden önce, klasör adı, &lt; Proje adı &gt; , &lt; paket adı ' &gt; nı SSIS kataloğunda klasör, proje ve paket adlarıyla değiştirin.
 
     ```json
     {
@@ -190,7 +190,7 @@ Bu adımda, saklı yordam etkinliği ile bir işlem hattı oluşturacaksınız. 
 
     Dilimi **Hazır** durumunda veya **Başarısız** durumunda görene kadar bu cmdlet’i çalışır halde tutun. 
 
-    Paketin yürütüldüğünü doğrulamak için, Azure SQL sunucunuzdaki SSıSDB veritabanında aşağıdaki sorguyu çalıştırabilirsiniz. 
+    Paketin yürütüldüğünü doğrulamak için sunucunuzdaki SSıSDB veritabanında aşağıdaki sorguyu çalıştırabilirsiniz. 
 
     ```sql
     select * from catalog.executions

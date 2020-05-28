@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: a5cdb24a80dcbd95e4ccc59dd55f4acb9ae18060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 150ee15adb042841f74ffbf3b75338b2dd569333
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417904"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017673"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory Web etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -68,13 +68,13 @@ Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | Web etkinliğinin adı | Dize | Yes
-type | **Webactivity**olarak ayarlanmalıdır. | Dize | Yes
+name | Web etkinliğinin adı | Dize | Yes
+tür | **Webactivity**olarak ayarlanmalıdır. | Dize | Yes
 method | Hedef uç nokta için REST API yöntemi. | Dize. <br/><br/>Desteklenen türler: "GET", "POST", "PUT" | Yes
 url | Hedef uç nokta ve yol | Dize (veya dize resultType 'ı olan ifade). Bitiş noktasından yanıt almadıysanız etkinlik, bir hatayla 1 dakika sonra zaman aşımına uğrayacaktır. | Yes
-bilgisinde | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Dize (veya dize resultType 'ı olan ifade) | Evet, Content-Type üst bilgisi gereklidir. `"headers":{ "Content-Type":"application/json"}`
+bilgisinde | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Dize (veya dize resultType 'ı olan ifade) | Evet, Content-Type üst bilgisi gereklidir. `"headers":{ "Content-Type":"application/json"}`
 body | Uç noktaya gönderilen yükü temsil eder.  | Dize (veya dize resultType 'ı olan ifade). <br/><br/>İstek [yükü şeması](#request-payload-schema) 'nda istek yükü şeması bölümüne bakın. | POST/PUT yöntemleri için gereklidir.
-kimlik doğrulaması | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler "Basic, or ClientCertificate" dir. Daha fazla bilgi için bkz. [kimlik doğrulama](#authentication) bölümü. Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Dize (veya dize resultType 'ı olan ifade) | Hayır
+kimlik doğrulaması | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler "Basic, or ClientCertificate" dir. Daha fazla bilgi için bkz. [kimlik doğrulama](#authentication) bölümü. Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Dize (veya dize resultType 'ı olan ifade) | No
 veri kümeleri | Uç noktaya geçirilen veri kümelerinin listesi. | Veri kümesi başvuruları dizisi. Boş bir dizi olabilir. | Yes
 linkedServices | Uç noktaya geçirilen bağlı hizmetlerin listesi. | Bağlı hizmet başvuruları dizisi. Boş bir dizi olabilir. | Yes
 
@@ -95,7 +95,7 @@ Aşağıdaki tabloda JSON içeriği için gereksinimler gösterilmektedir:
 
 Aşağıda, Web etkinliğinde desteklenen kimlik doğrulama türleri verilmiştir.
 
-### <a name="none"></a>Hiçbiri
+### <a name="none"></a>Yok
 
 Kimlik doğrulaması gerekmiyorsa, "Authentication" özelliğini eklemeyin.
 
@@ -125,7 +125,7 @@ PFX dosyası ve parolanın Base64 ile kodlanmış içeriğini belirtin.
 
 ### <a name="managed-identity"></a>Yönetilen Kimlik
 
-Veri Fabrikası için yönetilen kimlik kullanılarak erişim belirtecinin istendiği Kaynak URI 'sini belirtin. Azure Kaynak yönetimi API 'sini çağırmak için kullanın `https://management.azure.com/`. Yönetilen kimliklerin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure kaynaklarına ilişkin Yönetilen kimlikler genel bakış sayfası](/azure/active-directory/managed-identities-azure-resources/overview).
+Veri Fabrikası için yönetilen kimlik kullanılarak erişim belirtecinin istendiği Kaynak URI 'sini belirtin. Azure Kaynak yönetimi API 'sini çağırmak için kullanın `https://management.azure.com/` . Yönetilen kimliklerin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure kaynaklarına ilişkin Yönetilen kimlikler genel bakış sayfası](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ```json
 "authentication": {
@@ -161,7 +161,7 @@ POST/PUT yöntemini kullandığınızda Body özelliği uç noktaya gönderilen 
 ```
 
 ## <a name="example"></a>Örnek
-Bu örnekte, işlem hattının Web etkinliği REST uç noktasını çağırır. Bir Azure SQL bağlı hizmetini ve bir Azure SQL veri kümesini uç noktaya geçirir. REST uç noktası Azure SQL Server 'a bağlanmak için Azure SQL bağlantı dizesini kullanır ve SQL Server örneğinin adını döndürür.
+Bu örnekte, işlem hattının Web etkinliği REST uç noktasını çağırır. Bir Azure SQL bağlı hizmetini ve bir Azure SQL veri kümesini uç noktaya geçirir. REST uç noktası, mantıksal SQL Server 'a bağlanmak için Azure SQL bağlantı dizesini kullanır ve SQL Server örneğinin adını döndürür.
 
 ### <a name="pipeline-definition"></a>İşlem hattı tanımı
 

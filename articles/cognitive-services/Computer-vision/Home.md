@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131760"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117525"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Görüntü İşleme Hizmeti, geliştiricilerin resimleri işleyen gelişmiş algoritmalara ve ilgilendiğiniz görsel özelliklere bağlı olarak bilgi döndürmesini sağlar. Örneğin, Görüntü İşleme bir görüntünün yetişkinlere yönelik içerik içerip içermediğini belirtebilir veya bir görüntüdeki tüm insan yüzlerini bulabilir.
+Azure Görüntü İşleme Hizmeti, geliştiricilere resimleri işleyen ve ilgilendiğiniz görsel özelliklere göre bilgi döndüren gelişmiş algoritmalara erişim sağlar. Örneğin, Görüntü İşleme bir görüntünün yetişkinlere yönelik içerik içerip içermediğini, belirli marka veya nesne bulmasını veya insan yüzlerini bulmanızı sağlayabilir.
 
-Uygulamanızda Yerel bir SDK aracılığıyla veya REST API doğrudan çağırarak Görüntü İşleme kullanabilirsiniz. Bu sayfa, Görüntü İşleme ile yapabileceklerinizi büyük ölçüde ele alır.
+Uygulamanızdaki Görüntü İşleme, bir istemci kitaplığı SDK 'Sı aracılığıyla veya REST API doğrudan çağırarak kullanabilirsiniz. Bu sayfa, Görüntü İşleme ile yapabileceklerinizi büyük ölçüde ele alır.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Dijital varlık yönetimi için Görüntü İşleme
 
@@ -32,7 +32,7 @@ Görüntü İşleme, birçok dijital varlık yönetimi (DAM) senaryosunu güçle
 
 ## <a name="analyze-images-for-insight"></a>İçgörü edinmek için görüntüleri analiz etme
 
-Görsel özellikleri ve özellikleri hakkında öngörüleri tespit etmek ve sağlamak için görüntüleri analiz edebilirsiniz. Aşağıdaki tabloda bulunan tüm özellikler, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'si tarafından sağlanır.
+Görsel özellikleri ve özellikleri hakkında Öngörüler sağlamak için görüntüleri çözümleyebilirsiniz. Aşağıdaki tabloda bulunan tüm özellikler, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'si tarafından sağlanır.
 
 | Eylem | Açıklama |
 | ------ | ----------- |
@@ -50,7 +50,7 @@ Görsel özellikleri ve özellikleri hakkında öngörüleri tespit etmek ve sa�
 
 ## <a name="extract-text-from-images"></a>Görüntülerdeki metinleri ayıklama
 
-Görüntülerden, yazdırılmış ve el yazısı metinleri makine tarafından okunabilen bir karakter akışına ayıklamak için Görüntü İşleme [okuma](concept-recognizing-text.md#read-api) API 'sini kullanabilirsiniz. Okuma API 'SI, en son modellerimizi kullanır ve alındılar, posterler, iş kartları, mektuplar ve beyaz tahtalar gibi çeşitli yüzeyler ve arka planlar üzerinde metinle birlikte çalışmaktadır. Şu anda yalnızca Ingilizce ve Ispanyolca desteklenen diller içindir.
+Görüntülerden görüntü okunabilir bir karakter akışına yazdırılmış ve el yazısı metinleri ayıklamak için Görüntü İşleme [okuma](concept-recognizing-text.md#read-api) API 'sini kullanabilirsiniz. Okuma API 'SI, en son modelleri kullanır ve alındılar, posterler, iş kartları, mektuplar ve beyaz tahtalar gibi çeşitli yüzeyler ve arka planlar üzerinde metin ile birlikte kullanılır. Şu anda yedi farklı dil için çalışmaktadır (bkz. [dil desteği](./language-support.md)).
 
 Aynı zamanda, yazdırılan metni birkaç dilde ayıklamak için [optik karakter tanıma (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API 'sini de kullanabilirsiniz. Gerekirse, OCR tanınan metnin dönüşünü düzeltir ve her sözcüğün kare koordinatlarını sağlar. OCR, 25 dili destekler ve tanınan metnin dilini otomatik olarak algılar.
 

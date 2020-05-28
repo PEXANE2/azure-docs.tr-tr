@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 14849dd1f68f281009808d1bd1dc1cae62927ab4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 003ee13220e9e8aae252e1a976d579beac870052
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594245"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015021"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 
@@ -34,12 +34,12 @@ Hive 'nin bir avantajı, meta verileri bir dış veritabanına dışarı aktarma
 HDInsight 3,6 ve HDInsight 4,0 ACID tabloları ACID değişimleri 'ı farklı şekilde anlayın. Geçişten önce gereken tek eylem, 3,6 kümesindeki her bir ACID tablosuna göre ' Ana ' sıkıştırmayı çalıştırmak içindir. Düzenleme hakkındaki ayrıntılar için [Hive dilinde el ile](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact) bakın.
 
 ### <a name="2-copy-sql-database"></a>2. SQL veritabanı 'nı kopyalayın
-Dış meta veri deposu 'nun yeni bir kopyasını oluşturun. Dış meta veri deposu kullanıyorsanız, meta veri geri yükleme 'nin bir kopyasını oluşturmanın güvenli ve kolay yöntemlerinden biri, SQL veritabanı geri yükleme işlevini kullanarak veritabanını farklı bir adla [geri yüklemektir](../../sql-database/sql-database-recovery-using-backups.md#point-in-time-restore) .  HDInsight kümesine dış meta veri deposu ekleme hakkında daha fazla bilgi edinmek için bkz. [Azure HDInsight 'ta dış meta veri depoları kullanma](../hdinsight-use-external-metadata-stores.md) .
+Dış meta veri deposu 'nun yeni bir kopyasını oluşturun. Dış meta veri deposu kullanıyorsanız, meta veri geri yükleme 'nin bir kopyasını oluşturmanın güvenli ve kolay yöntemlerinden biri, SQL veritabanı geri yükleme işlevini kullanarak veritabanını farklı bir adla [geri yüklemektir](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) .  HDInsight kümesine dış meta veri deposu ekleme hakkında daha fazla bilgi edinmek için bkz. [Azure HDInsight 'ta dış meta veri depoları kullanma](../hdinsight-use-external-metadata-stores.md) .
 
 ### <a name="3-upgrade-metastore-schema"></a>3. meta veri deposu şemasını yükselt
 Meta veri **kopyalama** işlemi tamamlandıktan sonra, yeni meta veri deposunu Hive 3 şemasına yükseltmek Için mevcut HDInsight 3,6 kümesindeki [komut dosyası eyleminde](../hdinsight-hadoop-customize-cluster-linux.md) bir şema yükseltme betiği çalıştırın. (Bu adım, yeni meta veri deposunu bir kümeye bağlanmasını gerektirmez.) Bu, veritabanının HDInsight 4,0 meta veri deposu olarak eklenmesini sağlar.
 
-Aşağıdaki tablodaki değerleri daha fazla kullanın. Hive meta veri deposu `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` **kopyası**için boşluklarla ayırarak uygun değerlerle değiştirin. SQL Server adını belirtirken ". database.windows.net" eklemeyin.
+Aşağıdaki tablodaki değerleri daha fazla kullanın. `SQLSERVERNAME DATABASENAME USERNAME PASSWORD`Hive meta veri deposu **kopyası**için boşluklarla ayırarak uygun değerlerle değiştirin. SQL Server adını belirtirken ". database.windows.net" eklemeyin.
 
 |Özellik | Değer |
 |---|---|
@@ -124,7 +124,7 @@ HDInsight 3,6 ve 4,0 kümelerinin aynı depolama hesabını kullanması gerekir.
     chmod 755 exporthive_hdi_3_6.sh
     ```
 
-    * Normal bir HDInsight kümesi için, ESP olmadan yalnızca yürütün `exporthive_hdi_3_6.sh`.
+    * Normal bir HDInsight kümesi için, ESP olmadan yalnızca yürütün `exporthive_hdi_3_6.sh` .
 
     * ESP içeren bir küme için, kinıt ve bağımsız değişkenleri Beeline ile değiştirin: Azure AD kullanıcısına yönelik kullanıcı ve etkı ALANıNı tam Hive izinleriyle tanımlayarak aşağıdakileri çalıştırın.
 
@@ -221,14 +221,14 @@ HDInsight 3,6 ' de Hive sunucusu ile etkileşim için GUI istemcisi, ambarı Hiv
 |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Düğüm türleri|Head|
 
-10 ila 15 dakika bekleyin ve ardından bu URL 'YI kullanarak Data Analytics Studio 'Yu başlatın `https://CLUSTERNAME.azurehdinsight.net/das/`:.
+10 ila 15 dakika bekleyin ve ardından bu URL 'YI kullanarak Data Analytics Studio 'Yu başlatın: `https://CLUSTERNAME.azurehdinsight.net/das/` .
 
 DAS 'e erişmeden önce, bir ambarı Kullanıcı arabirimi ve/veya tüm ambarı bileşenlerinin yeniden başlatılması gerekebilir.
 
 DAS yüklendikten sonra, sorgular görüntüleyicisinde çalıştırdığınız sorguları görmüyorsanız, aşağıdaki adımları uygulayın:
 
 1. [Das yüklemesinde sorun giderme için bu kılavuzda](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html)açıklanan Hive, tez ve das için yapılandırma ayarlayın.
-2. Aşağıdaki Azure depolama dizini yapılandırması 'nın sayfa Blobları olduğundan ve altında `fs.azure.page.blob.dirs`listelendiğinden emin olun:
+2. Aşağıdaki Azure depolama dizini yapılandırması 'nın sayfa Blobları olduğundan ve altında listelendiğinden emin olun `fs.azure.page.blob.dirs` :
     * `hive.hook.proto.base-directory`
     * `tez.history.logging.proto-base-dir`
 3. Her iki headnode üzerinde de IV, Hive, tez ve DAS 'i yeniden başlatın.

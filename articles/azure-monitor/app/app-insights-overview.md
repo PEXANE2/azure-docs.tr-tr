@@ -4,18 +4,18 @@ description: Uygulama Performansı Yönetimi ve canlı web uygulamanızın kulla
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 6630de971dd9cc7ece2e0f87821db5fd62c39af0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c25929100fdfa6f4652e99c0d2563d9e56cfb62b
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828738"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996100"
 ---
 # <a name="what-is-application-insights"></a>Application Insights nedir?
 [Azure izleyici](../overview.md)'nin bir özelliği olan Application Insights, geliştiriciler ve DevOps uzmanları için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı uygulamalarınızı izlemek için bu uygulamayı kullanın. Performans sorunlarını otomatik olarak algılar ve sorunları tanılamanıza ve hangi kullanıcıların uygulamanızla gerçekten ne yaptığını anlamanıza yardımcı olacak güçlü analiz araçları içerir.  Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. .NET, Node. js, Java ve şirket içi, karma veya herhangi bir genel bulutu içeren çok çeşitli platformlarda uygulamalar için geçerlidir. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır. Visual Studio App Center ile tümleştirerek mobil uygulamalardan telemetriyi izleyebilir ve çözümleyebilir.
 
 ## <a name="how-does-application-insights-work"></a>Application Insights nasıl çalışır?
-Uygulamanızda küçük bir izleme paketi (SDK) yüklersiniz veya [desteklense](../../azure-monitor/app/platforms.md)de Application Insights codelessly 'yi etkinleştirmelisiniz. İzleme, uygulamanızı izler ve bir Izleme anahtarı olarak başvurduğumuz benzersiz bir GUID kullanarak telemetri verilerini bir Azure Application Insights kaynağına yönlendirir.
+Uygulamanızda küçük bir izleme paketi (SDK) yüklersiniz veya [desteklenmiş](../../azure-monitor/app/platforms.md)olduğunda Application Insights Aracısı 'nı kullanarak Application Insights etkinleştirebilirsiniz. İzleme, uygulamanızı izler ve bir Izleme anahtarı olarak başvurduğumuz benzersiz bir GUID kullanarak telemetri verilerini bir Azure Application Insights kaynağına yönlendirir.
 
 Yalnızca web hizmeti uygulamasını değil, tüm arka plan bileşenlerini ve web sayfalarının kendisindeki JavaScript’i de izleyebilirsiniz. Uygulama ve bileşenleri, her yerde çalışabilir; Azure 'da barındırılması gerekmez.
 
@@ -26,7 +26,7 @@ Buna ek olarak performans sayaçları, Azure tanılama veya Docker günlükleri 
 Tüm bu telemetri akışları Azure Izleyici ile tümleşiktir. Azure portal, ham verilere güçlü analitik ve arama araçları uygulayabilirsiniz.
 
 ### <a name="whats-the-overhead"></a>Ne kadar ek yük getirir?
-Uygulamanızın performansı üzerindeki etkisi çok küçüktür. İzleme çağrıları engelleyici değildir ve toplanarak ayrı bir iş parçacığında gönderilir.
+Uygulamanızın performansı üzerindeki etkisi küçüktür. İzleme çağrıları engelleyici değildir ve toplanarak ayrı bir iş parçacığında gönderilir.
 
 ## <a name="what-does-application-insights-monitor"></a>Application Insights neleri izler?
 
@@ -69,7 +69,7 @@ Verilerinizi keşfetmenin birçok yolu vardır. Aşağıdaki makaleleri inceleyi
 ### <a name="monitor"></a>İzleme
 Application Insights’ı uygulamanıza yükleyin, [kullanılabilirlik web testleri](../../azure-monitor/app/monitor-web-app-availability.md) ayarlayın ve:
 
-* Yük, yanıt verme ve bağımlılıklarınızın, sayfa yüklerinizin ve AJAX çağrılarının performansını göz önünde tutmak için ekip odasına yönelik varsayılan [uygulama panosunu](../../azure-monitor/app/overview-dashboard.md) kullanıma alma.
+* Yük, yanıt verme ve bağımlılıklarınızın, sayfa yüklerinizin ve AJAX çağrılarının performansını göz önünde tutmak için ekip odasına yönelik varsayılan [uygulama panosuna](../../azure-monitor/app/overview-dashboard.md) göz atın.
 * En yavaş ve en çok başarısız olan isteklerin hangileri olduğunu keşfedin.
 * Yeni bir sürüm dağıttığınızda [Canlı Akış](../../azure-monitor/app/live-stream.md)’ı izleyerek herhangi bir performans düşüşünü anında görün.
 
@@ -101,7 +101,7 @@ Hizmeti kullanmaya başlamanın birkaç yolu vardır. Sizin için en uygun yönt
   * [ASP.NET Core uygulamalar](../../azure-monitor/app/asp-net-core.md)
   * [.NET konsol uygulamaları](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
-  * [Node.js](../../azure-monitor/app/nodejs.md)
+  * [Node. js](../../azure-monitor/app/nodejs.md)
   * [Python](../../azure-monitor/app/opencensus-python.md)
   * [Diğer platformlar](../../azure-monitor/app/platforms.md)
 * **[Web sayfalarınızı](../../azure-monitor/app/javascript.md)** sayfa görünümü, Ajax ve diğer istemci tarafı telemetri için işaretleyin.
@@ -120,7 +120,7 @@ Geliştirme zamanında şunlarla kullanmaya başlayın:
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
+* [Node. js](../../azure-monitor/app/nodejs.md)
 * [Python](../../azure-monitor/app/opencensus-python.md)
 
 

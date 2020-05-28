@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 9c9ad45ac1cf59f05454cba0babff8c3b7368f72
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3d166c8fd893f38d587dbeff1d86530c46f89630
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839122"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018795"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL veritabanı 'na Azure Stream Analytics çıkışı
 
 Bu makalede Azure Stream Analytics kullanarak SQL Azure veritabanına veri yüklerken daha iyi yazma performansı elde etme ipuçları ele alınmaktadır.
 
-Azure Stream Analytics içindeki SQL çıktısı, bir seçenek olarak paralel yazmayı destekler. Bu seçenek, birden çok çıkış bölümünün paralel olarak hedef tabloya yazıldığı [tam paralel](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) iş Topolojilerine izin verir. Azure Stream Analytics bu seçeneğin etkinleştirilmesi, SQL Azure veritabanı yapılandırmanıza ve tablo şemanıza önemli ölçüde bağlı olduğundan daha yüksek bir işlem elde etmek için yeterli olmayabilir. Dizinler, kümeleme anahtarı, Dizin doldurma faktörü ve sıkıştırma seçimi, tabloları yükleme zamanına göre bir etkiye sahiptir. SQL Azure veritabanınızı, iç kıyaslamalar temelinde sorgu ve yükleme performansını iyileştirmek üzere en iyi hale getirmeye yönelik daha fazla bilgi için bkz. [SQL veritabanı performans Kılavuzu](../sql-database/sql-database-performance-guidance.md). SQL Azure veritabanına paralel yazma sırasında yazma sıralaması garanti edilmez.
+Azure Stream Analytics içindeki SQL çıktısı, bir seçenek olarak paralel yazmayı destekler. Bu seçenek, birden çok çıkış bölümünün paralel olarak hedef tabloya yazıldığı [tam paralel](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) iş Topolojilerine izin verir. Azure Stream Analytics bu seçeneğin etkinleştirilmesi, SQL Azure veritabanı yapılandırmanıza ve tablo şemanıza önemli ölçüde bağlı olduğundan daha yüksek bir işlem elde etmek için yeterli olmayabilir. Dizinler, kümeleme anahtarı, Dizin doldurma faktörü ve sıkıştırma seçimi, tabloları yükleme zamanına göre bir etkiye sahiptir. SQL Azure veritabanınızı, iç kıyaslamalar temelinde sorgu ve yükleme performansını iyileştirmek üzere en iyi hale getirmeye yönelik daha fazla bilgi için bkz. [SQL veritabanı performans Kılavuzu](../azure-sql/database/performance-guidance.md). SQL Azure veritabanına paralel yazma sırasında yazma sıralaması garanti edilmez.
 
 Çözümünüzün genel verimini artırmaya yardımcı olabilecek her bir hizmet içindeki bazı konfigürasyonlar aşağıda verilmiştir.
 
@@ -37,7 +37,7 @@ Azure Stream Analytics içindeki SQL çıktısı, bir seçenek olarak paralel ya
 
 - **Bölümlenmiş tablo ve dizinler** [– bölümlemeli bir SQL](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tablosu ve bölümlenmiş dizinleri, Bölüm anahtarınızla aynı sütunla (örneğin, PartitionID) kullanarak, yazma işlemleri sırasında bölümler arasındaki çekişmeleri önemli ölçüde azaltabilir. Bölümlenmiş bir tablo için, BIRINCIL dosya grubunda bir [bölüm işlevi](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) ve bir [bölüm düzeni](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) oluşturmanız gerekir. Bu, yeni veriler yüklenirken mevcut verilerin kullanılabilirliğini de artırır. Günlük GÇ sınırı, SKU ile yükseltilerek artırılabilir olan bölüm sayısına bağlı olarak gelebilir.
 
-- **Benzersiz anahtar Ihlallerinden kaçının** – Azure Stream Analytics etkinlik günlüğünde [birden çok anahtar ihlali uyarı iletisi](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) alırsanız, işinizin kurtarma durumları sırasında gerçekleşmesi muhtemel olan benzersiz kısıtlama ihlallerinden etkilenmediğinden emin olun. Dizininizdeki [\_\_anahtar yok sayma](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) seçeneği ayarlanarak bu kaçınılabilir.
+- **Benzersiz anahtar Ihlallerinden kaçının** – Azure Stream Analytics etkinlik günlüğünde [birden çok anahtar ihlali uyarı iletisi](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) alırsanız, işinizin kurtarma durumları sırasında gerçekleşmesi muhtemel olan benzersiz kısıtlama ihlallerinden etkilenmediğinden emin olun. Dizininizdeki [ \_ \_ anahtar yok sayma](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) seçeneği ayarlanarak bu kaçınılabilir.
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory ve bellek Içi tablolar
 
