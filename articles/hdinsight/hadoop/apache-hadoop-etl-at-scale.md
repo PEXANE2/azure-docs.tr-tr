@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 5d6d4a41deb1ef96789a48eefba306be4dfb20eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3cf16c2cd119eb3eec64104b2573ff7de2cc76c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745128"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020090"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Ölçeklendirerek ayıklama, dönüştürme ve yükleme (ETL)
 
@@ -56,7 +56,7 @@ Azure Data Factory hakkında daha fazla bilgi için [belgelerine](../../data-fac
 
 Kaynak veri dosyaları genellikle Azure Storage veya Azure Data Lake Storage bir konuma yüklenir. Dosyalar genellikle CSV gibi düz bir biçimde olur. Ancak, herhangi bir biçimde olabilir.
 
-### <a name="azure-storage"></a>Azure Depolama
+### <a name="azure-storage"></a>Azure Storage
 
 Azure depolama 'nın belirli uyarlanabilir hedefleri vardır. Daha fazla bilgi için bkz. [BLOB depolama Için ölçeklenebilirlik ve performans hedefleri](../../storage/blobs/scalability-targets.md) . Birçok analitik düğüm için Azure depolama, çok daha küçük dosyalarla ilgilenirken en iyi şekilde ölçeklendirilir. Hesap sınırlarınız dahilinde olduğunuz sürece Azure Storage, dosyaların ne kadar büyük olduğuna bakılmaksızın aynı performansı garanti eder. Terabaytlarca veri saklayabilir ve yine de tutarlı performans sağlayabilirsiniz. Bu ifade, bir alt küme veya tüm verileri kullanıp kullanmayacağınızı de doğrudur.
 
@@ -106,9 +106,9 @@ HBase uyumluluk, HDInsight kümesindeki düğüm sayısına bağlıdır.
 
 Azure üç PaaS ilişkisel veritabanı sunar:
 
-- [Azure SQL veritabanı](../../sql-database/sql-database-technical-overview.md) Microsoft SQL Server uygulamasıdır. Performans hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda ayarlama performansı](../../sql-database/sql-database-performance-guidance.md).
-- [MySQL Için Azure veritabanı](../../mysql/overview.md) , Oracle MySQL 'in bir uygulamasıdır.
-- [PostgreSQL Için Azure veritabanı](../../postgresql/quickstart-create-server-database-portal.md) , PostgreSQL 'in bir uygulamasıdır.
+* [Azure SQL veritabanı](../../azure-sql/database/sql-database-paas-overview.md) Microsoft SQL Server uygulamasıdır. Performans hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda ayarlama performansı](../../azure-sql/database/performance-guidance.md).
+* [MySQL Için Azure veritabanı](../../mysql/overview.md) , Oracle MySQL 'in bir uygulamasıdır.
+* [PostgreSQL Için Azure veritabanı](../../postgresql/quickstart-create-server-database-portal.md) , PostgreSQL 'in bir uygulamasıdır.
 
 Bu ürünlerin ölçeğini ölçeklendirmek için daha fazla CPU ve bellek ekleyin.  Daha iyi g/ç performansı için ürünlerle Premium diskler kullanmayı da tercih edebilirsiniz.
 

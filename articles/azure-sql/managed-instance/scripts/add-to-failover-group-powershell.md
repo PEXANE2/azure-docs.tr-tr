@@ -1,0 +1,80 @@
+---
+title: 'PowerShell: otomatik yük devretme grubuna örnek ekleme'
+titleSuffix: Azure SQL Managed Instance
+description: Azure SQL yönetilen örneği oluşturmak için örnek betik Azure PowerShell, bir otomatik yük devretme grubuna ekleyin ve yük devretmeyi test edin.
+services: sql-database
+ms.service: sql-database
+ms.subservice: high-availability
+ms.custom: sqldbrb=1
+ms.devlang: PowerShell
+ms.topic: sample
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: carlrab
+ms.date: 07/16/2019
+ms.openlocfilehash: 0dbd6fbefababd36d87047a91d3ec320dc795e65
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84053984"
+---
+# <a name="use-powershell-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>Yük devretme grubuna Azure SQL yönetilen örneği eklemek için PowerShell 'i kullanma 
+[!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqlmi.md)]
+
+Bu PowerShell betiği örneği, iki SQL yönetilen örneği oluşturur, bunları bir yük devretme grubuna ekler ve ardından birincil SQL yönetilen örneğinden ikincil SQL yönetilen örneğine yük devretmeyi sınar. 
+
+[!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
+
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+
+## <a name="sample-scripts"></a>Örnek betikler
+
+[!code-powershell-interactive[main](../../../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
+
+## <a name="clean-up-deployment"></a>Dağıtımı temizleme
+
+Kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdaki komutu kullanın. Kaynak grubunu iki kez kaldırmanız gerekecektir. Kaynak grubunun ilk kez kaldırılması, SQL yönetilen örneğini ve sanal kümelerini kaldırır, ancak hata iletisiyle başarısız olur `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.` . Kalan kaynakları ve kaynak grubunu kaldırmak için Remove-AzResourceGroup komutunu ikinci kez çalıştırın.
+
+```powershell
+Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
+```
+
+## <a name="script-explanation"></a>Betik açıklaması
+
+Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+
+| Komut | Notlar |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Bir Azure Kaynak grubu oluşturur.  |
+| [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Sanal ağ oluşturur.  |
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Bir sanal ağa alt ağ yapılandırması ekler. | 
+| [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Bir kaynak grubundaki sanal ağı alır. | 
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Bir sanal ağ içindeki bir alt ağı alır. | 
+| [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Ağ güvenlik grubu oluşturur. | 
+| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Bir yol tablosu oluşturur. |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Bir sanal ağ için alt ağ yapılandırmasını güncelleştirir.  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Bir sanal ağı güncelleştirir.  |
+| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Bir ağ güvenlik grubu alır. |
+| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Ağ güvenlik grubuna ağ güvenlik kuralı yapılandırması ekler. |
+| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Bir ağ güvenlik grubunu güncelleştirir.  | 
+| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Rota tablosuna bir yol ekler. |
+| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Bir yol tablosunu güncelleştirir.  |
+| [New-Azsqlınstance](/powershell/module/az.sql/new-azsqlinstance) | Azure SQL yönetilen örneği oluşturur.  |
+| [Get-Azsqlınstance](/powershell/module/az.sql/get-azsqlinstance)| SQL yönetilen örneği hakkında bilgi döndürür. |
+| [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) | Genel bir IP adresi oluşturur.  | 
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Sanal ağ geçidi için bir IP yapılandırması oluşturur |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Bir sanal ağ geçidi oluşturur |
+| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | İki sanal ağ geçidi arasında bir bağlantı oluşturur.   |
+| [New-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Yeni bir Azure SQL yönetilen örnek yük devretme grubu oluşturur.  |
+| [Get-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | SQL yönetilen örnek yük devretme gruplarını alır veya listeler.| 
+| [Switch-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | SQL yönetilen örnek yük devretme grubunun yük devretmesini yürütür. | 
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu kaldırır. | 
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
+
+Ek SQL yönetilen örnek PowerShell betiği örnekleri, [Azure SQL yönetilen örnek PowerShell betikleri](../../database/powershell-script-content-guide.md)içinde bulunabilir.

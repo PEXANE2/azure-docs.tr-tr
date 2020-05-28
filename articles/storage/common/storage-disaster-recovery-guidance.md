@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6534e7d3a05434855503a9cbf1e675aa11799984
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: aab64e173b02ae991f7071da785434fa742de7de
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857779"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994706"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Olağanüstü durum kurtarma ve depolama hesabı yük devretme
 
@@ -26,8 +26,6 @@ Azure depolama, coğrafi olarak yedekli depolama hesapları için hesap yük dev
 Hesap yük devretmesi, genel amaçlı v1, genel amaçlı v2 ve Azure Resource Manager dağıtımlarıyla BLOB depolama hesabı türleri için kullanılabilir. Hesap yük devretmesi tüm ortak bölgeler için desteklenir, ancak şu anda sogeign veya National bulutlar içinde kullanılamaz.
 
 Bu makalede, hesap yük devretmesi ile ilgili kavramlar ve işlemler açıklanmakta ve depolama hesabınızın en az müşteri etkisi miktarına göre kurtarmaya nasıl hazırlanacağı anlatılmaktadır. Azure portal veya PowerShell 'de hesap yük devretmesini başlatmayı öğrenmek için bkz. [Hesap yük devretmesi başlatma](storage-initiate-account-failover.md).
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

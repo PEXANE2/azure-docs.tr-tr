@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/01/2020
+ms.date: 05/27/2020
 ms.author: memildin
-ms.openlocfilehash: 9d3fa1e0b62ea6f4762c3df6ac7da310d5703807
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22f66a7be27f42bfd0305ad1eaf297ca8c8029fa
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245245"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996763"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -97,24 +97,20 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 |------|------|-----|-----|
 | Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016| Hayır, işletim sisteminde yerleşik| Yes |
 | System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Yes |
-| Trend Micro – tüm sürümler * | Windows Server Ailesi  | Hayır | Yes |
+| Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Yes |
 | Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Yes |
 | McAfee v10+ | Windows Server Ailesi  | Hayır | Yes |
-| McAfee v10+ | Linux sunucu ailesi  | Hayır | Yes**\*** |
-| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes**\***  |
+| McAfee v10+ | Linux sunucu ailesi  | No | Yes**\*** |
+| Sophos v9 +| Linux sunucu ailesi  | No | Yes**\***  |
 
  **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
 
 > [!NOTE]
-> - Windows Server 2008 R2 sanal makinesi üzerinde System Center Endpoint Protection (SCEP) algılama, PowerShell 3,0 (veya bir üst sürüm) sonrasında SCEP 'in yüklenmesini gerektirir.
-> - Derinlemesine güvenlik aracıları için Trend mikro koruma algılama desteklenir.  OfficeScan aracıları desteklenmez.
+> Windows Server 2008 R2 sanal makinesi üzerinde System Center Endpoint Protection (SCEP) algılama, PowerShell 3,0 (veya bir üst sürüm) sonrasında SCEP 'in yüklenmesini gerektirir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Güvenlik Merkezi 'nin verileri ve Log Analytics aracısını nasıl topladığı](security-center-enable-data-collection.md)hakkında bilgi edinin.
 - [Güvenlik Merkezi 'nin verileri nasıl yönettiğini ve korumalarını](security-center-data-security.md)öğrenin.
-- [Azure Güvenlik Merkezi 'ni benimsemek için tasarım konularını nasıl planlayacağınızı ve anlayacağınızı](security-center-planning-and-operations-guide.md)öğrenin.
 - [Güvenlik Merkezi 'ni destekleyen platformları](security-center-os-coverage.md)gözden geçirin.
-- [Azure Güvenlik Merkezi 'Nde Windows ve Linux makineleri için tehdit koruması](threat-protection.md#windows-machines)hakkında daha fazla bilgi edinin.
-- [Azure Güvenlik Merkezi hakkında sık sorulan soruları](faq-general.md)bulun.

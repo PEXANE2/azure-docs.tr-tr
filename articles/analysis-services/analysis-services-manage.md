@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572804"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015511"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services’ı yönetme
 Azure 'da bir Analysis Services sunucusu oluşturduktan sonra, hemen gerçekleştirmeniz gereken bazı yönetim ve yönetim görevleri olabilir. Örneğin, işleme verilerini yenileme, sunucunuzdaki modellere kimlerin erişebileceğini denetleme veya sunucunuzun sistem durumunu izleme gibi işlemler gerçekleştirin. Bazı yönetim görevleri yalnızca Azure portal, diğer SQL Server Management Studio (SSMS) ve bazı görevlerde gerçekleştirilebilir.
@@ -51,7 +51,7 @@ En son özellikleri ve Azure Analysis Services sunucunuza bağlanırken en iyi d
 
     Bir kuruluş hesabı kullanmak için **parola kimlik doğrulaması Active Directory** . Örneğin, etki alanına katılmış bir bilgisayardan bağlantı kurulurken.
 
-    [Etkileşimli olmayan veya Multi-Factor Authentication](../sql-database/sql-database-ssms-mfa-authentication.md)kullanmak için **MFA desteğiyle Active Directory** . 
+    [Etkileşimli olmayan veya Multi-Factor Authentication](../azure-sql/database/authentication-mfa-ssms-overview.md)kullanmak için **MFA desteğiyle Active Directory** . 
    
     ![SSMS'de bağlanma](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

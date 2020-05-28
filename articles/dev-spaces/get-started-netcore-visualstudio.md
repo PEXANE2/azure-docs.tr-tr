@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Bu öğreticide, Azure Kubernetes hizmetinde bir .NET Core uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio 'Nun nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: a807af3ffe14da943786051a3ece03b777a0edf5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873619"
+ms.locfileid: "83995913"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Kubernetes geliştirme alanı oluşturma: Azure Dev Spaces Visual Studio ve .NET Core
 
@@ -26,28 +26,59 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 > [!Note]
 > Herhangi bir zamanda **takıldıysanız** , [sorun giderme](troubleshooting.md) bölümüne bakın.
 
+## <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
+Azure Dev Spaces, çok az yerel makine kurulumu gerektirir. Geliştirme ortamı yapılandırmanızın büyük bölümü bulutta depolanır ve diğer kullanıcılarla paylaşılabilir. İlk olarak [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) indirip yükleyin.
+
+### <a name="sign-in-to-azure-cli"></a>Azure CLI'da oturum açma
+Azure'da oturum açın. Bir terminal penceresine aşağıdaki komutu yazın:
+
+```azurecli
+az login
+```
+
+> [!Note]
+> Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
+
+#### <a name="if-you-have-multiple-azure-subscriptions"></a>Birden çok Azure aboneliğiniz varsa...
+Şunu çalıştırarak aboneliklerinizi görüntüleyebilirsiniz: 
+
+```azurecli
+az account list --output table
+```
+
+*IsDefault*Için *true değerine* sahip aboneliği bulun.
+Kullanmak istediğiniz abonelik bu değilse, varsayılan aboneliği değiştirebilirsiniz:
+
+```azurecli
+az account set --subscription <subscription ID>
+```
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaces için bir Kubernetes kümesi oluşturma
 
-1. https://portal.azure.com adresinden Azure portalında oturum açın.
-1. **Kaynak oluştur**’u seçin > **Kubernetes** ifadesini arayın > **Kubernetes Hizmeti** > **Oluştur** seçeneğini belirleyin.
+Komut isteminde, [Azure dev Spaces destekleyen bir bölgede][supported-regions]kaynak grubunu oluşturun.
 
-   *Kubernetes kümesi oluşturma* formunun her başlığı altında aşağıdaki adımları tamamlayarak seçtiğiniz [bölgenin Azure dev Spaces desteklediğini][supported-regions]doğrulayın.
+```azurecli
+az group create --name MyResourceGroup --location <region>
+```
 
-   - **Proje ayrıntıları**: bir Azure aboneliği ve yeni veya mevcut bir Azure Kaynak grubu seçin.
-   - **KÜME AYRINTILARI**: AKS kümesi için bir ad, bölge, sürüm ve DNS adı öneki girin.
-   - **ÖLÇEK**: AKS aracısı düğümleri için bir VM boyutu ve düğüm sayısı seçin. Azure Dev Spaces kullanmaya yeni başlıyorsanız tüm özellikleri keşfetmek için bir düğüm yeterli olacaktır. Küme dağıtıldıktan sonra da dilediğiniz zaman düğüm sayısını kolayca ayarlayabilirsiniz. AKS kümesi oluşturulduktan sonra VM boyutunu değiştiremeyeceğinizi unutmayın. Ancak ölçeklendirmeniz gerekirse AKS kümesi dağıtıldıktan sonra kolayca daha büyük VM'lere sahip yeni bir AKS kümesi oluşturabilir ve Dev Spaces özelliğini kullanarak bu büyük kümeye yeniden dağıtabilirsiniz.
+Şu komutu kullanarak bir Kubernetes kümesi oluşturun:
 
-   ![Kubernetes yapılandırma ayarları](media/common/Kubernetes-Create-Cluster-2.PNG)
+```azurecli
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
+```
 
+Kümenin oluşturulması birkaç dakika sürer.
 
-   Tamamladığınızda **İleri: Kimlik doğrulaması**'nı seçin.
+### <a name="configure-your-aks-cluster-to-use-azure-dev-spaces"></a>AKS kümenizi Azure Dev Spaces kullanacak şekilde yapılandırma
 
-1. Rol Tabanlı Erişim Denetimi (RBAC) için dilediğiniz ayarı seçin. Azure Dev Spaces, RBAC'nin etkin veya devre dışı olduğu kümeleri destekler.
+AKS kümenizi içeren kaynak grubuyla AKS kümesi adınızı kullanarak aşağıdaki Azure CLI komutunu girin. Komut, kümenizi Azure Dev Spaces desteğiyle yapılandırır.
 
-    ![RBAC ayarı](media/common/k8s-RBAC.PNG)
-
-1. **Gözden geçir + oluştur**’u seçin ve sonra tamamlandığında **Oluştur**’a tıklayın.
+   ```azurecli
+   az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+   ```
+   
+> [!IMPORTANT]
+> Azure Dev Spaces yapılandırma işlemi, varsa `azds` , kümedeki ad alanını kaldırır.
 
 ## <a name="get-the-visual-studio-tools"></a>Visual Studio araçlarını edinme
 Azure geliştirme iş yüküne sahip Windows üzerinde [Visual Studio 2019](https://www.visualstudio.com/vs/) ' in en son sürümünü yükler.

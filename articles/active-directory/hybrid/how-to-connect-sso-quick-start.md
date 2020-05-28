@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: sorunsuz çoklu oturum açma-hızlı başlangıç | Microsoft Docs'
+title: 'Azure AD Connect: sorunsuz çoklu oturum açma hızlı başlangıç | Microsoft Docs'
 description: Bu makalede Azure Active Directory sorunsuz çoklu oturum açma ile çalışmaya başlama açıklanmaktadır
 services: active-directory
 keywords: Azure AD Connect nedir, yükler Active Directory, Azure AD, SSO, çoklu oturum açma için gerekli bileşenler
@@ -16,14 +16,14 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef603141129be6a73e018fb3e3dcabf9c5d7961f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261209"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993499"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
+# <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
 ## <a name="deploy-seamless-single-sign-on"></a>Kesintisiz çoklu oturum açma dağıtın
 
@@ -37,7 +37,7 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun:
 
 * **Azure AD Connect sunucunuzu ayarlama**: [geçiş kimlik doğrulamasını](how-to-connect-pta.md) oturum açma yönteminiz olarak kullanırsanız, ek önkoşul denetimi gerekli değildir. Oturum açma yönteminiz olarak [Parola karması eşitlemesi](how-to-connect-password-hash-synchronization.md) kullanıyorsanız ve Azure AD Connect Ile Azure AD arasında bir güvenlik duvarı varsa, aşağıdakileri doğrulayın:
    - Azure AD Connect sürüm 1.1.644.0 veya üstünü kullanıyorsunuz. 
-   - Güvenlik duvarınız veya proxy DNS beyaz listeye izin veriyorsa, bağlantı noktası 443 üzerinden ** \*. msappproxy.net** URL 'lerine yönelik bağlantıları beyaz listeye ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin. Bu önkoşul yalnızca özelliği etkinleştirdiğinizde geçerlidir. Bu, gerçek Kullanıcı oturum açma işlemleri için gerekli değildir.
+   - Güvenlik duvarınız veya ara sunucunuz izin veriyorsa, bağlantı noktası 443 üzerinden ** \* . Msappproxy.net** URL 'leri için izin verilen listeye bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin. Bu önkoşul yalnızca özelliği etkinleştirdiğinizde geçerlidir. Bu, gerçek Kullanıcı oturum açma işlemleri için gerekli değildir.
 
     >[!NOTE]
     >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0, Parola karması eşitlemeyle ilgili bir sorun var. Parola karması eşitlemesini doğrudan kimlik doğrulamasıyla birlikte _kullanmayı düşünmüyorsanız,_ daha fazla bilgi edinmek için [Azure AD Connect sürüm notlarını](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) okuyun.
@@ -93,15 +93,16 @@ Sorunsuz SSO 'yu doğru şekilde etkinleştirdiğinizi doğrulamak için aşağ�
 ![Azure portal: Azure AD Connect bölmesi](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Sorunsuz SSO, her AD ormanında Şirket `AZUREADSSOACC` içi ACTIVE DIRECTORY (ad) adında bir bilgisayar hesabı oluşturur. Güvenlik `AZUREADSSOACC` nedenleriyle bilgisayar hesabının güçlü korunması gerekir. Bilgisayar hesabını yalnızca etki alanı yöneticileri yönetebilmelidir. Bilgisayar hesabında Kerberos temsilcisinin devre dışı bırakıldığından ve Active Directory ' deki başka hiçbir hesabın `AZUREADSSOACC` bilgisayar hesabında temsilciliizin izinlerine sahip olmadığından emin olun. Bilgisayar hesabını, yanlışlıkla silinmelerden güvenli oldukları ve yalnızca etki alanı yöneticilerinin erişimi olan bir kuruluş biriminde (OU) depolayın.
+> Sorunsuz SSO, `AZUREADSSOACC` her ad ormanında şirket içi Active Directory (ad) adında bir bilgisayar hesabı oluşturur. `AZUREADSSOACC`Güvenlik nedenleriyle bilgisayar hesabının güçlü korunması gerekir. Bilgisayar hesabını yalnızca etki alanı yöneticileri yönetebilmelidir. Bilgisayar hesabında Kerberos temsilcisinin devre dışı bırakıldığından ve Active Directory ' deki başka hiçbir hesabın bilgisayar hesabında temsilciliizin izinlerine sahip olmadığından emin olun `AZUREADSSOACC` . Bilgisayar hesabını, yanlışlıkla silinmelerden güvenli oldukları ve yalnızca etki alanı yöneticilerinin erişimi olan bir kuruluş biriminde (OU) depolayın.
 
 >[!NOTE]
 > Şirket içi ortamınızda, karma ve kimlik bilgisi hırsızlığı azaltma mimarilerini kullanıyorsanız, `AZUREADSSOACC` bilgisayar hesabının karantina kapsayıcısında bitmediğinden emin olmak için uygun değişiklikleri yapın. 
 
 ## <a name="step-3-roll-out-the-feature"></a>3. Adım: özelliği kullanıma alma
 
-Aşağıda belirtilen yönergeleri kullanarak kullanıcılarınıza sorunsuz SSO 'yu yavaş bir şekilde dağıtabilirsiniz. Aşağıdaki Azure AD URL 'sini, Active Directory grup ilkesi kullanarak, tüm kullanıcıların Intranet bölgesi ayarlarına ekleyerek başlayabilirsiniz:
+Aşağıda belirtilen yönergeleri kullanarak kullanıcılarınıza sorunsuz SSO 'yu yavaş bir şekilde dağıtabilirsiniz. Aşağıdaki Azure AD URL 'Lerini, Active Directory grup ilkesi kullanarak, tüm kullanıcıların Intranet Bölge ayarlarına ekleyerek başlayabilirsiniz:
 
+- `https://aadg.windows.net.nsatc.net`
 - `https://autologon.microsoftazuread-sso.com`
 
 Ayrıca, grup ilkesi aracılığıyla **betik aracılığıyla durum çubuğuna güncelleştirmelere Izin ver** adlı bir Intranet bölgesi ilkesi ayarını etkinleştirmeniz gerekir. 
@@ -111,7 +112,7 @@ Ayrıca, grup ilkesi aracılığıyla **betik aracılığıyla durum çubuğuna 
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Kullanıcıların Intranet bölgesi ayarlarını neden değiştirmeniz gerekiyor?
 
-Varsayılan olarak tarayıcı, doğru bölgeyi Internet veya Intranet ' i belirli bir URL 'den otomatik olarak hesaplar. Örneğin, `http://contoso/` Intranet bölgesine eşlenir, öte yandan `http://intranet.contoso.com/` Internet bölgesiyle eşlenir (URL bir nokta içereceğinden). URL 'YI tarayıcının Intranet bölgesine açıkça eklemediğiniz takdirde, tarayıcılar Azure AD URL 'SI gibi bir bulut uç noktasına Kerberos bileti göndermez.
+Varsayılan olarak tarayıcı, doğru bölgeyi Internet veya Intranet ' i belirli bir URL 'den otomatik olarak hesaplar. Örneğin, `http://contoso/` Intranet bölgesine eşlenir, öte yandan `http://intranet.contoso.com/` Internet bölgesiyle EŞLENIR (URL bir nokta içereceğinden). URL 'YI tarayıcının Intranet bölgesine açıkça eklemediğiniz takdirde, tarayıcılar Azure AD URL 'SI gibi bir bulut uç noktasına Kerberos bileti göndermez.
 
 Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol vardır:
 
@@ -124,7 +125,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 
 1. Grup İlkesi Yönetimi Düzenleyicisi aracını açın.
 2. Kullanıcılarınıza veya tümüne uygulanan Grup ilkesini düzenleyin. Bu örnek **varsayılan etki alanı ilkesi**kullanır.
-3.  > **Windows bileşenleri** > **Policy** > **Administrative Templates** >  **User Configuration** > **Internet**Explorer > **Internet Denetim Masası****Güvenlik sayfası**Yönetim Şablonları Kullanıcı yapılandırma ilkesi ' ne gidin. Ardından **siteden bölgeye atama listesi**' ni seçin.
+3. **User Configuration**  >  **Policy**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası**Yönetim Şablonları Kullanıcı yapılandırma ilkesi ' ne gidin. Ardından **siteden bölgeye atama listesi**' ni seçin.
     ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso6.png)
 4. İlkeyi etkinleştirin ve iletişim kutusuna aşağıdaki değerleri girin:
    - **Değer adı**: Kerberos biletleri Iletileceği Azure AD URL 'si.
@@ -144,7 +145,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 
     ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6.  > **Windows bileşenleri** > **Policy** > **Administrative Templates** >  **User Configuration** > **Internet**Explorer > **Internet Denetim Masası****güvenlik**sayfası > **Intranet bölgesi**Yönetim Şablonları Kullanıcı yapılandırma ilkesi ' ne gidin. Ardından **betik aracılığıyla durum çubuğunda güncelleştirmelere Izin ver**' i seçin.
+6. **User Configuration**  >  **Policy**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası**  >  **Intranet bölgesi**Yönetim Şablonları Kullanıcı yapılandırma ilkesi ' ne gidin. Ardından **betik aracılığıyla durum çubuğunda güncelleştirmelere Izin ver**' i seçin.
 
     ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -156,7 +157,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 
 1. Grup İlkesi Yönetimi Düzenleyicisi aracını açın.
 2. Kullanıcılarınıza veya tümüne uygulanan Grup ilkesini düzenleyin. Bu örnek **varsayılan etki alanı ilkesi**kullanır.
-3. **Kullanıcı yapılandırma** > **tercihleri** > **Windows ayarları** > **kayıt defteri** > **New**yeni > **kayıt defteri öğesine**gidin.
+3. **Kullanıcı yapılandırma**  >  **tercihleri**  >  **Windows ayarları**  >  **kayıt defteri**  >  **Yeni**  >  **kayıt defteri öğesine**gidin.
 
     ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso15.png)
 
@@ -175,10 +176,10 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (tüm platformlar)
 
 Mozilla Firefox, Kerberos kimlik doğrulamasını otomatik olarak kullanmaz. Her kullanıcının aşağıdaki adımları kullanarak, Azure AD URL 'sini Firefox ayarlarına el ile eklemesi gerekir:
-1. Firefox 'u çalıştırın ve `about:config` adres çubuğuna girin. Gördüğünüz tüm bildirimleri kapatın.
+1. Firefox 'u çalıştırın ve `about:config` Adres çubuğuna girin. Gördüğünüz tüm bildirimleri kapatın.
 2. **Network. Negotiate-Auth. Trusted-uris** tercihini arayın. Bu tercih edilecek Kerberos kimlik doğrulaması için Firefox 'un güvenilen siteleri listelenir.
 3. Sağ tıklayın ve **Değiştir**' i seçin.
-4. Alana `https://autologon.microsoftazuread-sso.com` girin.
+4. `https://autologon.microsoftazuread-sso.com`Alana girin.
 5. **Tamam** ' ı seçin ve ardından tarayıcıyı yeniden açın.
 
 #### <a name="safari-macos"></a>Safari (macOS)
@@ -187,19 +188,19 @@ MacOS çalıştıran makinenin AD 'ye katılmış olduğundan emin olun. MacOS c
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Kmıum temelinde Microsoft Edge (tüm platformlar)
 
-Ortamınızdaki [Authnegotiatedelegateallowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) veya [authserverallowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) ilke ayarlarını geçersiz KıLDıYSANıZ, Azure AD 'nin URL 'sini (`https://autologon.microsoftazuread-sso.com`) da eklemediğinizden emin olun.
+Ortamınızdaki [Authnegotiatedelegateallowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) veya [authserverallowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) ilke ayarlarını geçersiz KıLDıYSANıZ, Azure AD 'nin URL 'sini () da eklemediğinizden emin olun `https://autologon.microsoftazuread-sso.com` .
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Kmıum temelinde Microsoft Edge (macOS ve diğer Windows dışı platformlar)
 
-Mac OS ve diğer Windows dışı platformlarda Kmıum 'u temel alan Microsoft Edge için, tümleşik kimlik bilgilerine yönelik Azure AD URL 'sini izin verilenler listenize ekleme hakkında bilgi için, [Kmıum Ilke listesini temel alan Microsoft Edge](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) 'e bakın.
+MacOS ve diğer Windows dışı platformlarda Kmıum 'u temel alan Microsoft Edge için, tümleşik kimlik listesine yönelik Azure AD URL 'sini izin verilenler listenize ekleme hakkında bilgi için, [Kmıum Ilke listesini temel alan Microsoft Edge](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) 'e bakın.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (tüm platformlar)
 
-Ortamınızdaki [Authnegotiatedelegatewhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) veya [authserverwhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ilke ayarlarını geçersiz KıLDıYSANıZ, Azure AD 'nin URL 'sini (`https://autologon.microsoftazuread-sso.com`) da eklemediğinizden emin olun.
+Ortamınızdaki [Authnegotiatedelegatewhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) veya [authserverwhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ilke ayarlarını geçersiz KıLDıYSANıZ, Azure AD 'nin URL 'sini () da eklemediğinizden emin olun `https://autologon.microsoftazuread-sso.com` .
 
 #### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome (macOS ve diğer Windows dışı platformlar)
 
-Mac OS ve diğer Windows dışı platformlar için Google Chrome için, tümleşik kimlik doğrulaması için Azure AD URL 'sini beyaz listeye alma hakkında bilgi için, [Kmıum proje Ilkesi listesine](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) bakın.
+MacOS ve diğer Windows dışı platformlardaki Google Chrome için, tümleşik kimlik doğrulaması için Azure AD URL 'SI için izin verilenler listesini denetleme hakkında bilgi için, [Kmıum proje Ilkesi listesine](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) bakın.
 
 Mac kullanıcıları için Azure AD URL 'sini Firefox ve Google Chrome 'a aktarmak için üçüncü taraf Active Directory grup ilkesi uzantılarının kullanımı Bu makalenin kapsamı dışındadır.
 
@@ -216,11 +217,11 @@ Belirli bir kullanıcı için özelliği test etmek için aşağıdaki koşullar
   - Bu kullanıcıya grup ilkesi aracılığıyla [özelliği kullanıma](#step-3-roll-out-the-feature) sunulaştınız.
 
 Kullanıcının yalnızca Kullanıcı adını girdiği ancak parolayı değil, senaryoyu test etmek için:
-   - `https://myapps.microsoft.com/` Yeni bir özel tarayıcı oturumunda oturum açın.
+   - `https://myapps.microsoft.com/`Yeni bir özel tarayıcı oturumunda oturum açın.
 
 Kullanıcının Kullanıcı adı veya parola girmesi gereken senaryoyu test etmek için şu adımlardan birini kullanın: 
-   - `https://myapps.microsoft.com/contoso.onmicrosoft.com` Yeni bir özel tarayıcı oturumunda oturum açın. *Contoso* değerini kiracınızın adıyla değiştirin.
-   - `https://myapps.microsoft.com/contoso.com` Yeni bir özel tarayıcı oturumunda oturum açın. *Contoso.com* değerini, kiracınızda doğrulanmış bir etki alanıyla (Federasyon etki alanı değil) değiştirin.
+   - `https://myapps.microsoft.com/contoso.onmicrosoft.com`Yeni bir özel tarayıcı oturumunda oturum açın. *Contoso* değerini kiracınızın adıyla değiştirin.
+   - `https://myapps.microsoft.com/contoso.com`Yeni bir özel tarayıcı oturumunda oturum açın. *Contoso.com* değerini, kiracınızda doğrulanmış bir etki alanıyla (Federasyon etki alanı değil) değiştirin.
 
 ## <a name="step-5-roll-over-keys"></a>5. Adım: anahtarları atla
 

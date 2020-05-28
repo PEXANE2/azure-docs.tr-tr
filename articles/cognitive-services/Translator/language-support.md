@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592738"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996083"
 ---
 # <a name="language-and-region-support-for-translator"></a>Çevirmen için dil ve bölge desteği
 
@@ -40,80 +40,80 @@ ms.locfileid: "83592738"
 > [!NOTE]
 > Şu anda, sinir dillerinin bir alt kümesi özel çevirmende bulunabilir ve bunlar yavaş yavaş bir şekilde ekliyoruz. [Özel çevirmende mevcut olan dilleri görüntüleyin](#customization).
 
-|Dil|  Dil kodu|  V3 APı 'SI|
+|Dil|    Dil kodu|    V3 APı 'SI|
 |:-----|:-----:|:-----|
-|Afrikaner| `af`|   Sinir|
-|Arapça|    `ar`    |   Sinir|
-|Bangla|    `bn`    |   Sinir|
-|Boşnakça (Latin)|   `bs`    |   Sinir|
-|Bulgarca| `bg`    |   Sinir|
-|Cantonetıcı (Geleneksel)|   `yue`|  Ki|
-|Katalanca|   `ca`    |   Ki|
+|Afrikaner|    `af`|    Sinir|
+|Arapça|    `ar`    |    Sinir|
+|Bangla|    `bn`    |    Sinir|
+|Boşnakça (Latin)|    `bs`    |    Sinir|
+|Bulgarca|    `bg`    |    Sinir|
+|Cantonetıcı (Geleneksel)|    `yue`|    Ki|
+|Katalanca|    `ca`    |    Ki|
 |Basitleştirilmiş Çince|    `zh-Hans`|Sinir|
-|Geleneksel Çince|   `zh-Hant`       |Sinir|
-|Hırvatça|  `hr`    |Sinir|
-|Çekçe| `cs`    |   Sinir|
+|Geleneksel Çince|    `zh-Hant`        |Sinir|
+|Hırvatça|    `hr`    |Sinir|
+|Çekçe|    `cs`    |    Sinir|
 |Danca|    `da`        |Sinir|
-|Felemenkçe| `nl`|   Sinir|
-|İngilizce|   `en`    |   Sinir|
-|Estonya Dili|  `et`    |   Sinir|
-|Fiji Adaları dili|    `fj`    |   Ki|
-|Filipino|  `fil`   |   Ki|
-|Fince|   `fi`    |   Sinir|
-|Fransızca|    `fr`    |   Sinir|
-|Almanca|    `de`    |   Sinir|
-|Yunanca| `el`    |   Sinir|
-|Gucerat dili|  `gu`    |   Sinir|
+|Felemenkçe|    `nl`|    Sinir|
+|İngilizce|    `en`    |    Sinir|
+|Estonya Dili|    `et`    |    Sinir|
+|Fiji Adaları dili|    `fj`    |    Ki|
+|Filipino|    `fil`    |    Ki|
+|Fince|    `fi`    |    Sinir|
+|Fransızca|    `fr`    |    Sinir|
+|Almanca|    `de`    |    Sinir|
+|Yunanca|    `el`    |    Sinir|
+|Gucerat dili|    `gu`    |    Sinir|
 |Haian Creole|    `ht`        |Ki|
-|İbranice |`he`   |Sinir
-|Hintçe| `hi`    |   Sinir|
-|Hmong DAW| `mww`   |   Ki|
-|Macarca| `hu`    |   Sinir|
-|İzlandaca| `is`    |   Sinir|
-|Endonezce|    `id`    |   Ki|
+|İbranice    |`he`    |Sinir
+|Hintçe|    `hi`    |    Sinir|
+|Hmong DAW|    `mww`    |    Ki|
+|Macarca|    `hu`    |    Sinir|
+|İzlandaca|    `is`    |    Sinir|
+|Endonezce|    `id`    |    Ki|
 |İrlandaca | `ga`| Sinir
-|İtalyanca|   `it`    |   Sinir|
-|Japonca|  `ja`    |   Sinir|
+|İtalyanca|    `it`    |    Sinir|
+|Japonca|    `ja`    |    Sinir|
 |Kannada dili|`kn`| Sinir
-|Svahili dili| `sw`    |   Ki|
-|Klingon|   `tlh`   |   Ki|
-|Klingon (plqaD)|   `tlh-Qaak`  |   Ki|
-|Korece |`ko`   |   Sinir|
-|Letonca|   `lv`    |   Sinir|
-|Litvanca|    `lt`    |   Sinir|
-|Malgaşça|  `mg`    |   Ki|
-|Malayca| `ms`        |Ki|
+|Svahili dili|    `sw`    |    Ki|
+|Klingon|    `tlh`    |    Ki|
+|Klingon (plqaD)|    `tlh-Qaak`    |    Ki|
+|Korece    |`ko`    |    Sinir|
+|Letonca|    `lv`    |    Sinir|
+|Litvanca|    `lt`    |    Sinir|
+|Malgaşça|    `mg`    |    Ki|
+|Malayca|    `ms`        |Ki|
 |Malayalam dili| `ml` | Sinir
-|Maltaca|   `mt`    |   Ki|
+|Maltaca|    `mt`    |    Ki|
 |Maori dili| `mi`  | Sinir|
 |Marathi| `mr`  | Sinir|
-|Norveççe| `nb`    |   Sinir|
-|Farsça|   `fa`    |   Sinir|
-|Lehçe|    `pl`    |   Sinir|
-|Portekizce (Brezilya)|   `pt-br` |   Sinir|
+|Norveççe|    `nb`    |    Sinir|
+|Farsça|    `fa`    |    Sinir|
+|Lehçe|    `pl`    |    Sinir|
+|Portekizce (Brezilya)|    `pt-br`    |    Sinir|
 |Portekizce (Portekiz)| `pt-pt` | Sinir
 |Pencap dili|`pa`|Sinir
-|Queretaro Otomi|   `otq`   |   Ki|
-|Rumence|  `ro`    |   Sinir|
-|Rusça|   `ru`    |   Sinir|
-|Samoan|    `sm`    |   Ki|
-|Sırpça (Kiril)|    `sr-Cyrl`|  Ki|
-|Sırpça (Latin)|   `sr-Latn`       |Ki|
-|Slovakça|    `sk`    |   Sinir|
-|Slovence| `sl`    |   Sinir|
-|İspanyolca|   `es`    |   Sinir|
-|İsveççe|   `sv`    |Sinir|
-|Tahiti dili|  `ty`    |Ki|
-|Tamil dili| `ta`    |   Sinir|
-|Telugu dili|    `te`    |   Sinir|
-|Tayca|  `th`    |   Sinir|
-|Tonga dili|    `to`    |   Ki|
-|Türkçe|   `tr`        |Sinir|
-|Ukraynaca| `uk`    |   Sinir|
-|Urduca|  `ur`    |   Ki|
-|Vietnamca|    `vi`    |   Sinir|
-|Galce| `cy`    |   Sinir|
-|Yucatec Maya|  `yua`   |   Ki|
+|Queretaro Otomi|    `otq`    |    Ki|
+|Rumence|    `ro`    |    Sinir|
+|Rusça|    `ru`    |    Sinir|
+|Samoan|    `sm`    |    Ki|
+|Sırpça (Kiril)|    `sr-Cyrl`|    Ki|
+|Sırpça (Latin)|    `sr-Latn`        |Ki|
+|Slovakça|    `sk`    |    Sinir|
+|Slovence|    `sl`    |    Sinir|
+|İspanyolca|    `es`    |    Sinir|
+|İsveççe|    `sv`    |Sinir|
+|Tahiti dili|    `ty`    |Ki|
+|Tamil dili|    `ta`    |    Sinir|
+|Telugu dili|    `te`    |    Sinir|
+|Tayca|    `th`    |    Sinir|
+|Tonga dili|    `to`    |    Ki|
+|Türkçe|    `tr`        |Sinir|
+|Ukraynaca|    `uk`    |    Sinir|
+|Urduca|    `ur`    |    Ki|
+|Vietnamca|    `vi`    |    Sinir|
+|Galce|    `cy`    |    Sinir|
+|Yucatec Maya|    `yua`    |    Ki|
 
 > [!NOTE]
 > Dil kodu `pt` Varsayılan olarak `pt-br` , Portekizce (Brezilya) olur.
@@ -224,7 +224,7 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Boşnakça (Latin)      | `bs`          |
 | Bulgarca      | `bg`          |
 | Basitleştirilmiş Çince      | `zh-Hans`          |
-|Geleneksel Çince|   `zh-Hant`   |
+|Geleneksel Çince|    `zh-Hant`    |
 | Hırvatça      | `hr`          |
 | Çekçe      | `cs`          |
 | Danca      | `da`          |
@@ -239,15 +239,15 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Hintçe      | `hi`          |
 | Macarca      | `hu`          |
 | İzlandaca | `is` |
-| Endonezce|   `id`    |
-| İrlandaca | `ga`  |
+| Endonezce|    `id`    |
+| İrlandaca | `ga`    |
 | İtalyanca      | `it`          |
 | Japonca      | `ja`          |
 | Svahili dili|    `sw`    |
 | Korece      | `ko`          |
 | Letonca      | `lv`          |
 | Litvanca      | `lt`          |
-| Malgaşça| `mg`    |
+| Malgaşça|    `mg`    |
 | Maori dili| `mi`  |
 | Norveççe      | `nb`          |
 | Farsça      | `fa`          |
@@ -255,7 +255,7 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Portekizce (Brezilya) | `pt-br` |
 | Rumence      | `ro`          |
 | Rusça      | `ru`          |
-| Samoan|   `sm`    |
+| Samoan|    `sm`    |
 | Sırpça (Latin)      | `sr-Latn`          |
 | Slovakça     | `sk`          |
 | Slovence      | `sl`          |

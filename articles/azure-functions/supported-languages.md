@@ -1,26 +1,25 @@
 ---
 title: Azure Işlevlerinde desteklenen diller
-description: Hangi dillerin desteklendiğini (GA) ve hangilerinin önizlemede olduğunu öğrenin.
+description: Hangi dillerin desteklendiğini (GA) ve önizleme aşamasında olduğunu ve Işlevleri diğer dillere genişletmeyi sağlayan yolları öğrenin.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91a6ea886c3828678771b24d69bb7987af1fb105
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74942265"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994910"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Işlevlerinde desteklenen diller
 
-Bu makalede, Azure Işlevleri ile kullanabileceğiniz diller için sunulan destek düzeyleri açıklanmaktadır.
+Bu makalede, Azure Işlevleri ile kullanabileceğiniz diller için sunulan destek düzeyleri açıklanmaktadır. Ayrıca, yerel olarak desteklenmeyen diller kullanılarak işlev oluşturmaya yönelik stratejileri açıklar.
 
 ## <a name="levels-of-support"></a>Destek düzeyleri
 
-Üç destek düzeyi vardır:
+İki destek düzeyi vardır:
 
 * **Genel olarak kullanılabilir (GA)** -üretim kullanımı için tam olarak desteklenir ve onaylanır.
 * **Önizleme** -henüz desteklenmiyor, ancak gelecekte GA durumuna ulaşması bekleniyor.
-* **Deneysel** -desteklenmez ve gelecekte bırakılmış olabilir; Son önizleme veya GA durumu garantisi yoktur.
 
 ## <a name="languages-by-runtime-version"></a>Çalışma zamanı sürümüne göre diller 
 
@@ -28,15 +27,11 @@ Bu makalede, Azure Işlevleri ile kullanabileceğiniz diller için sunulan deste
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>Deneysel diller
+## <a name="custom-handlers-preview"></a>Özel işleyiciler (Önizleme) 
 
-1. x sürümündeki deneysel diller iyi ölçeklendirmez ve tüm bağlamaları desteklemez.
+Özel işleyiciler, Azure Işlevleri ana bilgisayarındaki olayları alan hafif Web sunucularıdır. HTTP temel öğelerini destekleyen herhangi bir dil, özel bir işleyici uygulayabilir. Bu, Özel işleyicilerin resmi olarak desteklenmeyen dillerde işlevler oluşturmak için kullanabileceği anlamına gelir. Daha fazla bilgi için bkz. [Azure işlevleri özel işleyiciler (Önizleme)](functions-custom-handlers.md).
 
-Sizin için herhangi bir resmi destek bulunmadığından, sizin kullandığınız her şey için deneysel özellikleri kullanmayın. Deneysel dillerle ilgili sorunlar için destek durumları açılmamalıdır. 
-
-Sonraki çalışma zamanı sürümleri deneysel dilleri desteklemez. Yeni diller için destek yalnızca dilin üretimde desteklenme sırasında eklenir. 
-
-### <a name="language-extensibility"></a>Dil genişletilebilirliği
+## <a name="language-extensibility"></a>Dil genişletilebilirliği
 
 Sürüm 2. x ile başlayarak, çalışma zamanı [dil genişletilebilirliği](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)sunacak şekilde tasarlanmıştır. 2. x çalışma zamanının JavaScript ve Java dilleri, bu genişletilebilirlik ile oluşturulmuştur.
 

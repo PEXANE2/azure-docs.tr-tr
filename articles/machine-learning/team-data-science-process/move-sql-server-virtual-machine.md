@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4de0686dbca803b9008c1b56c512a90fcfe2b3c0
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721379"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022444"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Bir Azure sanal makinesinde SQL Server’a veri taşıma
 
@@ -62,7 +62,7 @@ BCP, SQL Server ile yüklenen bir komut satırı yardımcı programıdır ve ver
 >
 >
 
-1. Veritabanının ve tabloların hedef SQL Server veritabanında oluşturulduğundan emin olun. `Create Database` Ve `Create Table` komutlarını kullanarak nasıl yapılacağını gösteren bir örnek aşağıda verilmiştir:
+1. Veritabanının ve tabloların hedef SQL Server veritabanında oluşturulduğundan emin olun. Ve komutlarını kullanarak nasıl yapılacağını gösteren bir örnek aşağıda verilmiştir `Create Database` `Create Table` :
 
     ```sql
     CREATE DATABASE <database_name>
@@ -174,7 +174,7 @@ Aşağıdaki geçiş stratejilerini de kullanabilirsiniz:
 Aşağıdaki seçeneklerin her birini aşağıda anladık:
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Microsoft Azure VM sihirbazına SQL Server veritabanı dağıtma
-**SQL Server veritabanını MICROSOFT Azure VM 'ye Dağıtma Sihirbazı** , verileri şirket içi SQL Server örneğinden BIR Azure sanal makinesinde SQL Server taşımak için basit ve önerilen bir yoldur. Ayrıntılı adımlar ve diğer alternatiflere ilişkin bir açıklama için bkz. bir [veritabanını Azure VM 'de SQL Server geçirme](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md).
+**SQL Server veritabanını MICROSOFT Azure VM 'ye Dağıtma Sihirbazı** , verileri şirket içi SQL Server örneğinden BIR Azure sanal makinesinde SQL Server taşımak için basit ve önerilen bir yoldur. Ayrıntılı adımlar ve diğer alternatiflere ilişkin bir açıklama için bkz. bir [veritabanını Azure VM 'de SQL Server geçirme](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md).
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>Düz dosyaya aktar
 [SQL Server verileri toplu Içe aktarma ve dışarı aktarma](https://msdn.microsoft.com/library/ms175937.aspx) konusunun belgelendiği gibi şirket içi SQL Server verileri toplu olarak dışarı aktarmak için çeşitli yöntemler kullanılabilir. Bu belge, örnek olarak toplu kopyalama programı (BCP) ile ele alınacaktır. Veriler düz bir dosyaya aktarıldığında, toplu içeri aktarma kullanılarak başka bir SQL Server 'a aktarılabilir.
@@ -182,7 +182,7 @@ Aşağıdaki seçeneklerin her birini aşağıda anladık:
 1. Şirket içi SQL Server verileri bcp yardımcı programını kullanarak aşağıdaki gibi bir dosyaya aktarın
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
-2. Adım 1 ' de bulunan tablo şeması için `create database` ve `create table` kullanarak Azure üzerinde SQL Server VM veritabanı ve tablo oluşturun.
+2. `create database` `create table` Adım 1 ' de bulunan tablo şeması için ve kullanarak Azure üzerinde SQL Server VM veritabanı ve tablo oluşturun.
 3. Aktarılan/içeri aktarılan verilerin tablo şemasını açıklayan bir biçim dosyası oluşturun. Biçim dosyasının ayrıntıları, [Biçim dosyası oluşturma (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx)bölümünde açıklanmaktadır.
 
     SQL Server makinesinden BCP çalıştırırken dosya oluşturmayı Biçimlendir
@@ -210,9 +210,9 @@ Veritabanı yedekleme/geri yükleme seçeneklerinin SQL Server Management Studio
 ![SQL Server Içeri aktarma aracı][1]
 
 ## <a name="resources"></a>Kaynaklar
-[Azure VM 'de bir veritabanını SQL Server geçirme](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
+[Azure VM 'de bir veritabanını SQL Server geçirme](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
-[Azure Sanal Makineler’de SQL Server’a genel bakış](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+[Azure Sanal Makineler’de SQL Server’a genel bakış](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 [1]: ./media/move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/move-sql-server-virtual-machine/database_migration_wizard.png
