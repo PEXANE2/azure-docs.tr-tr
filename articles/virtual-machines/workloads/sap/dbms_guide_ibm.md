@@ -12,17 +12,17 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4392fcee9b498a14841742e8313b9fa06dcc7983
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: fb9d46adf63f9cd0f4b19e4eace0a2f4a7129226
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977932"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022616"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
 
 Microsoft Azure, Linux, UNIX ve Windows (LUW) için IBM DB2 üzerinde çalışan mevcut SAP uygulamanızı Azure sanal makinelerine geçirebilirsiniz. LUW için IBM DB2 üzerinde SAP ile yöneticiler ve geliştiriciler, şirket içinde kullanılabilen aynı geliştirme ve yönetim araçlarını kullanmaya devam edebilir.
-SAP Business Suite 'i LUW için IBM DB2 üzerinde çalıştırmaya ilişkin genel bilgiler, adresindeki <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>SAP Community Network 'TE (SCN) bulunabilir.
+SAP Business Suite 'i LUW için IBM DB2 üzerinde çalıştırmaya ilişkin genel bilgiler, adresindeki SAP Community Network 'te (SCN) bulunabilir <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html> .
 
 Azure 'da LUW için DB2 üzerinde SAP hakkında daha fazla bilgi ve güncelleştirme için bkz. SAP Note [2233094]. 
 
@@ -54,7 +54,7 @@ Desteklenen SAP ürünleri ve Azure VM türleri hakkında daha fazla bilgi için
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM 'lerinde SAP yüklemeleri için Linux, UNIX ve Windows yapılandırma yönergeleri için IBM DB2
 ### <a name="storage-configuration"></a>Depolama Yapılandırması
-Tüm veritabanı dosyaları, doğrudan bağlı disklere bağlı olarak NTFS dosya sisteminde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve Azure sayfa BLOB depolama (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) veya yönetilen diskler (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>) temel alınarak hesaplanır. Aşağıdaki Azure Dosya Hizmetleri gibi her türlü ağ sürücüsü veya uzak paylaşım veritabanı dosyaları için **desteklenmez:** 
+Tüm veritabanı dosyaları, doğrudan bağlı disklere bağlı olarak NTFS dosya sisteminde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve Azure sayfa BLOB depolama ( <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs> ) veya yönetilen diskler () temel alınarak hesaplanır <https://docs.microsoft.com/azure/storage/storage-managed-disks-overview> . Aşağıdaki Azure Dosya Hizmetleri gibi her türlü ağ sürücüsü veya uzak paylaşım veritabanı dosyaları için **desteklenmez:** 
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
@@ -71,7 +71,7 @@ Alternatif olarak, Windows Storage havuzlarını (yalnızca Windows Server 2012 
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-Sapveriniz ve saptmp dizinleriniz için DB2 depolama yollarını içeren diskler için, 512 KB boyutundaki bir fiziksel disk sektör boyutu belirtmeniz gerekir. Windows Storage havuzlarını kullanırken, parametresini `-LogicalSectorSizeDefault`kullanarak komut satırı arabirimi aracılığıyla depolama havuzlarını el ile oluşturmanız gerekir. Daha fazla bilgi için bkz. <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+Sapveriniz ve saptmp dizinleriniz için DB2 depolama yollarını içeren diskler için, 512 KB boyutundaki bir fiziksel disk sektör boyutu belirtmeniz gerekir. Windows Storage havuzlarını kullanırken, parametresini kullanarak komut satırı arabirimi aracılığıyla depolama havuzlarını el ile oluşturmanız gerekir `-LogicalSectorSizeDefault` . Daha fazla bilgi için bkz. <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 Azure M serisi VM için, işlem günlüklerine yazma gecikmesi, Azure Yazma Hızlandırıcısı kullanılırken Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Bu nedenle, DB2 işlem günlüklerinin birimini oluşturan VHD 'ler için Azure Yazma Hızlandırıcısı dağıtmanız gerekir. Ayrıntılar belge [yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)okunabilir.
 
@@ -375,9 +375,9 @@ Azure kullanılabilirlik kümeleri veya SAP izleme gibi diğer tüm genel alanla
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/

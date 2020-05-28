@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ce69e3c783ad8d2fb42be4c358cd1c292bbe026
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75386740"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015378"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services ve ASP.NET kullanmaya başlama
 
@@ -152,7 +152,7 @@ Uygulama bulutta çalıştırıldığında bulut tabanlı bir veritabanı kullan
 8. **Azure hizmetlerinin sunucuya erişmesine izin ver** seçeneğini işaretleyin.
 9. Yeni sunucu için **Seçin**’e tıklayın.
 
-    ![Yeni SQL Veritabanı sunucusu](./media/cloud-services-dotnet-get-started/newdbserver.png)
+    ![Yeni sunucu](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. **Oluştur**' a tıklayın.
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
@@ -331,7 +331,7 @@ Contoso Ads uygulamasının oluşturulması aşağıdaki adımları içerir:
     ![Yeni Bulut Hizmeti Projesi](./media/cloud-services-dotnet-get-started/newcsproj.png)
 5. Web rolü için **Yeni ASP.NET Projesi** iletişim kutusunu gördüğünüzde MVC şablonunu seçin ve ardından **Kimlik Doğrulamayı Değiştir**’e tıklayın.
 
-    ![Kimlik Doğrulamayı Değiştirme](./media/cloud-services-dotnet-get-started/chgauth.png)
+    ![Kimlik Doğrulamasını değiştirin](./media/cloud-services-dotnet-get-started/chgauth.png)
 6. **Kimlik Doğrulamayı Değiştir** iletişim kutusunda **Kimlik Doğrulaması Yok**’u seçin ve ardından **Tamam**’a tıklayın.
 
     ![Kimlik Doğrulaması Yok](./media/cloud-services-dotnet-get-started/noauth.png)
@@ -353,7 +353,7 @@ Contoso Ads uygulamasının oluşturulması aşağıdaki adımları içerir:
 6. *Microsoft.WindowsAzure.ConfigurationManager* NuGet paketini bulun ve çalışan rolü projesine yükleyin.
 
 ### <a name="set-project-references"></a>Proje başvurularını ayarlama
-1. ContosoAdsWeb projesinde ContosoAdsCommon projesine bir başvuru ayarlayın. Contosoadsweb projesine sağ tıklayın ve ardından **Başvurular** - **Başvuru Ekle**' ye tıklayın. **Başvuru Yöneticisi** iletişim kutusunda sol bölmedeki **Çözüm – Projeler** öğesini seçin, **ContosoAdsCommon**’ı seçin ve ardından **Tamam**’a tıklayın.
+1. ContosoAdsWeb projesinde ContosoAdsCommon projesine bir başvuru ayarlayın. Contosoadsweb projesine sağ tıklayın ve ardından **Başvurular**  -  **Başvuru Ekle**' ye tıklayın. **Başvuru Yöneticisi** iletişim kutusunda sol bölmedeki **Çözüm – Projeler** öğesini seçin, **ContosoAdsCommon**’ı seçin ve ardından **Tamam**’a tıklayın.
 2. ContosoAdsWorker projesinde, ContosoAdsCommon projesine bir başvuru ayarlayın.
 
     ContosoAdsCommon hem ön uç ve arka uç tarafından kullanılacak olan Entity Framework veri modeli ve bağlam sınıfını içerir.
@@ -398,7 +398,7 @@ Bu bölümde, yerel olarak test etmek amacıyla Azure Storage ve SQL bağlantı 
 ### <a name="add-code-files"></a>Kod dosyaları ekleme
 Bu bölümde, indirilen çözümden yeni çözüme kod dosyaları kopyalarsınız. Aşağıdaki bölümlerde bu kodun temel kısımları gösterilmiş ve açıklanmıştır.
 
-Bir projeye veya klasöre dosya eklemek için, projeye veya klasöre sağ tıklayın ve**Varolan öğe** **Ekle** - ' ye tıklayın. İstediğiniz dosyaları seçin ve ardından **Ekle**’ye tıklayın. Mevcut dosyaları değiştirmek isteyip istemediğiniz sorulursa **Evet**’e tıklayın.
+Bir projeye veya klasöre dosya eklemek için, projeye veya klasöre sağ tıklayın ve **Add**  -  **Varolan öğe**Ekle ' ye tıklayın. İstediğiniz dosyaları seçin ve ardından **Ekle**’ye tıklayın. Mevcut dosyaları değiştirmek isteyip istemediğiniz sorulursa **Evet**’e tıklayın.
 
 1. ContosoAdsCommon projesinde *Class1.cs* dosyasını silin ve indirilen projedeki *Ad.cs* ve *ContosoAdscontext.cs* dosyalarını onun yerine ekleyin.
 2. ContosoAdsWeb projesinde indirilen projeden aşağıdaki dosyaları ekleyin.
@@ -528,7 +528,7 @@ imagesQueue.CreateIfNotExists();
 ```
 
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
-*AdController.cs* dosyasında, Oluşturucu blob ve kuyruklar ile çalışmak `InitializeStorage` üzere bir API sağlayan Azure Storage istemci Kitaplığı nesneleri oluşturmak için yöntemini çağırır.
+*AdController.cs* dosyasında, Oluşturucu `InitializeStorage` BLOB ve kuyruklar ile ÇALıŞMAK üzere bir API sağlayan Azure Storage istemci Kitaplığı nesneleri oluşturmak için yöntemini çağırır.
 
 Ardından kod daha önce gördüğünüz gibi *görüntüler* blob kapsayıcısı için *Global.asax.cs* içinde bir başvuru edinir. Bunu yaparken bir web uygulaması için uygun bir varsayılan [yeniden deneme ilkesi](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) ayarlar. Varsayılan üstel geri alma yeniden deneme ilkesi, web uygulamasını geçici bir hata için tekrarlanan yeniden denemelerde bir dakikadan uzun süre askıya alabilir. Burada belirtilen yeniden deneme ilkesi üç denemeye kadar her denemeden sonra en fazla üç saniye bekler.
 
@@ -774,7 +774,7 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 * [Azure Cloud Services Bölüm 1: Giriş](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [ Cloud Services nasıl yönetilir](cloud-services-how-to-manage-portal.md)
-* [Azure Storage](https://docs.microsoft.com/azure/storage/)
+* [Azure depolama](https://docs.microsoft.com/azure/storage/)
 * [Bulut hizmeti sağlayıcısı seçme](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
 
 

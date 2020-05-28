@@ -22,7 +22,7 @@ Hub ağ geçidini içerir. Hub oluşturulduktan sonra site eklemeseniz bile hub 
 3. **Sanal hub oluştur** sayfasında, aşağıdaki alanları doldurun:
 
    * Konum
-   * Adı
+   * Name
    * Hub özel adres alanı
 
 Hub’ı oluşturmak için **Onayla**'ya tıklayın. Hub 'ı **hub 'lar** sayfasında görüntülemek için **Yenile** ' ye tıklayın.

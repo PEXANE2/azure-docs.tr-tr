@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 05/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 23ba8b12651c4de05fd8fb0b2721839beb36a7a6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 398f1495fdfc9da7273ff372fbb57a6ba304c490
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660462"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117702"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET toplu yürütücü kitaplığı: Indirme bilgileri 
 
@@ -21,7 +21,7 @@ ms.locfileid: "83660462"
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.js](sql-api-sdk-node.md)
+> * [Node. js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
 > * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
@@ -38,7 +38,7 @@ ms.locfileid: "83660462"
 |**SDK indirmesi**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **GitHub 'da toplu yürütücü kitaplığı**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API belgeleri**|[.NET API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
-|**Kullanmaya başlayın**|[Toplu yürütücü kitaplığı .NET SDK ile çalışmaya başlama](bulk-executor-dot-net.md)|
+|**başlarken**|[Toplu yürütücü kitaplığı .NET SDK ile çalışmaya başlama](bulk-executor-dot-net.md)|
 | **Desteklenen geçerli çerçeve**| Microsoft .NET Framework 4.5.2, 4.6.1 ve .NET Standard 2,0 |
 
 > [!NOTE]
@@ -73,6 +73,10 @@ ms.locfileid: "83660462"
 ### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0-Önizleme
 
 * Toplu yürütücü kitaplığı 'nın .NET Core uygulamalarıyla çalışmasını sağlamak için desteklenen hedef çerçevelerinden biri olarak 2,0 .NET Standard eklendi.
+
+### <a name="189"></a><a name="1.8.9"/>1.8.9
+
+* Kaçış tekliflerine sahip değerler giriş parametresi olarak geçirildiğinde, BulkDeleteAsync ile ilgili bir sorun düzeltildi.
 
 ### <a name="188"></a><a name="1.8.8"/>1.8.8
 

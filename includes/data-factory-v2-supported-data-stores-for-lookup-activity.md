@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 622a527d8aae7991edd7cae7da953ec7dd8afa4e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d583c25afc5c328ef64a8c931e4209f0d88a14a9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696489"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84124218"
 ---
 | Kategori | Veri deposu |
 |:--- |:--- |
@@ -27,7 +27,7 @@ ms.locfileid: "83696489"
 | &nbsp; |[PostgreSQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Azure Dosyalar](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Veritabanı](../articles/data-factory/connector-azure-sql-database.md) |
-| &nbsp; |[Azure SQL Veritabanı Yönetilen Örneği](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
+| &nbsp; |[Azure SQL Yönetilen Örnek](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |
 | &nbsp; |[Azure Synapse Analytics (eski adı SQL Veri Ambarı)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Tablo depolama](../articles/data-factory/connector-azure-table-storage.md) |
 | **Veritabanınızı** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
@@ -59,7 +59,7 @@ ms.locfileid: "83696489"
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase (Önizleme)](../articles/data-factory/connector-couchbase.md) |
 | **Dosya** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
-| &nbsp; |[Dosya sistemi](../articles/data-factory/connector-file-system.md) |
+| &nbsp; |[Dosya Sistemi](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
 | &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
 | &nbsp; |[HDFS](../articles/data-factory/connector-hdfs.md) |

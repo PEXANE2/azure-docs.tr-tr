@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5120e7ca3a29f12066343e5c4a81d6e51278f9ef
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75611075"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020413"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Güvenlik Merkezi 'nde SQL Information Protection ilkesini özelleştirme (Önizleme)
  
@@ -29,7 +29,7 @@ Information Protection, Azure veri kaynaklarınızda hassas verileri bulmak, sı
 - Hassas verilere anormal erişimle izleme (denetim) ve uyarı verme gibi güvenlik senaryoları
 - Son derece hassas veriler içeren veri depolarının güvenliğine erişimi denetleme ve güvenliği artırma
  
-[Sql Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) Şu anda Azure SQL veritabanı IÇIN desteklenen SQL veri depolarınız için Bu paradigma uygular. SQL Information Protection, potansiyel olarak hassas verileri otomatik olarak bulur ve sınıflandırır, hassas verileri sınıflandırma öznitelikleriyle kalıcı olarak etiketlemek için etiketleme mekanizması sağlar ve veritabanının sınıflandırma durumunu gösteren ayrıntılı bir pano sağlar. Ayrıca, hassas verileri çıkaran sorguların açıkça denetlenmesi ve verilerin korunabilmesi için SQL sorgularının sonuç kümesi duyarlılığını hesaplar. SQL Information Protection hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı veri bulma ve sınıflandırma](../sql-database/sql-database-data-discovery-and-classification.md).
+[Sql Information Protection](../azure-sql/database/data-discovery-and-classification-overview.md) Şu anda Azure SQL veritabanı IÇIN desteklenen SQL veri depolarınız için Bu paradigma uygular. SQL Information Protection, potansiyel olarak hassas verileri otomatik olarak bulur ve sınıflandırır, hassas verileri sınıflandırma öznitelikleriyle kalıcı olarak etiketlemek için etiketleme mekanizması sağlar ve veritabanının sınıflandırma durumunu gösteren ayrıntılı bir pano sağlar. Ayrıca, hassas verileri çıkaran sorguların açıkça denetlenmesi ve verilerin korunabilmesi için SQL sorgularının sonuç kümesi duyarlılığını hesaplar. SQL Information Protection hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı veri bulma ve sınıflandırma](../azure-sql/database/data-discovery-and-classification-overview.md).
  
 Sınıflandırma mekanizması, sınıflandırma- **Etiketler** ve **bilgi türlerini**oluşturan iki birincil yapıları temel alır.
 - **Etiketler** : sütunda depolanan verilerin duyarlılık düzeyini tanımlamak için kullanılan ana sınıflandırma öznitelikleri. 
@@ -79,7 +79,7 @@ Bilgi koruma ilkeniz tam olarak tanımlandıktan ve kaydedildikten sonra, kirac�
  
 ## <a name="next-steps"></a>Sonraki adımlar
  
-Bu makalede, Azure Güvenlik Merkezi 'nde bir SQL Information Protection ilkesi tanımlamayı öğrendiniz. SQL veritabanlarındaki hassas verileri sınıflandırmak ve korumak için SQL Information Protection kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı veri bulma ve sınıflandırma](../sql-database/sql-database-data-discovery-and-classification.md). 
+Bu makalede, Azure Güvenlik Merkezi 'nde bir SQL Information Protection ilkesi tanımlamayı öğrendiniz. SQL veritabanlarındaki hassas verileri sınıflandırmak ve korumak için SQL Information Protection kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı veri bulma ve sınıflandırma](../azure-sql/database/data-discovery-and-classification-overview.md). 
 
 Azure Güvenlik Merkezi 'nde güvenlik ilkeleri ve veri güvenliği hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
  

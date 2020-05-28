@@ -1,7 +1,7 @@
 ---
 title: GenerateAnswer API 'SI ile meta veriler-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: Soru-Cevap Oluşturma, anahtar/değer çiftleri biçiminde meta verileri soru/yanıt kümelerine eklemenize olanak tanır. Sonuçları Kullanıcı sorgularıyla filtreleyebilir ve izleme konuşmalarında kullanılabilecek ek bilgileri saklayabilirsiniz.
+description: Soru-Cevap Oluşturma, anahtar/değer çiftleri biçiminde meta verileri soru/yanıt çiftlerine eklemenizi sağlar. Sonuçları Kullanıcı sorgularıyla filtreleyebilir ve izleme konuşmalarında kullanılabilecek ek bilgileri saklayabilirsiniz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659552"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993516"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API ve meta verileri ile bir yanıt alın
 
 Kullanıcının sorusunun tahmin edilen yanıtını almak için GenerateAnswer API 'sini kullanın. Bir Bilgi Bankası yayımladığınızda, **Yayımlama** SAYFASıNDA bu API 'nin nasıl kullanılacağına ilişkin bilgileri görebilirsiniz. API 'yi, meta veri etiketlerine göre yanıtları filtrelemek için de yapılandırabilir ve test sorgu dizesi parametresiyle uç noktadan Bilgi Bankası ' nı test edebilirsiniz.
 
-Soru-Cevap Oluşturma, anahtar ve değer çiftleri biçiminde meta verileri, soru ve yanıt kümelerinize eklemenizi sağlar. Daha sonra bu bilgileri Kullanıcı sorgularıyla sonuçları filtrelemek ve izleme konuşmalarında kullanılabilecek ek bilgileri depolamak için kullanabilirsiniz. Daha fazla bilgi için bkz. [Bilgi Bankası](../Concepts/knowledge-base.md).
+Soru-Cevap Oluşturma, anahtar ve değer çiftleri biçiminde meta verileri, soru ve yanıt çiftlerine eklemenizi sağlar. Daha sonra bu bilgileri Kullanıcı sorgularıyla sonuçları filtrelemek ve izleme konuşmalarında kullanılabilecek ek bilgileri depolamak için kullanabilirsiniz. Daha fazla bilgi için bkz. [Bilgi Bankası](../Concepts/knowledge-base.md).
 
 <a name="qna-entity"></a>
 
@@ -37,7 +37,7 @@ Her QnA varlığının benzersiz ve kalıcı bir KIMLIĞI vardır. Belirli bir Q
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>GenerateAnswer API 'SI ile yanıt tahminlerini alın
 
-Soru ve yanıt kümelerinden en iyi eşleşmeyi elde etmek için, bot veya uygulamanızdaki [Generateanswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) 'sini bir Kullanıcı sorusu ile sorgulamak için kullanırsınız.
+Soru ve yanıt çiftleriyle en iyi eşleşmeyi elde etmek için, bot veya uygulamanızdaki [Generateanswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) 'sini bir Kullanıcı sorusu ile sorgulamak için kullanırsınız.
 
 <a name="generateanswer-endpoint"></a>
 
@@ -196,7 +196,7 @@ Sonuçlar yalnızca Restoran "PARADISE" için gerekli olduğundan, "restoran ad�
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Konuşma bağlamını tutmak için soru ve yanıt sonuçlarını kullanın
 
-GenerateAnswer yanıtı, eşleşen soru ve yanıt kümesi için karşılık gelen meta veri bilgilerini içerir. Bu bilgileri, daha sonraki konuşmalarda kullanılmak üzere önceki görüşmenin bağlamını depolamak için istemci uygulamanızda kullanabilirsiniz.
+GenerateAnswer yanıtı, eşleşen soru ve yanıt çiftinin karşılık gelen meta veri bilgilerini içerir. Bu bilgileri, daha sonraki konuşmalarda kullanılmak üzere önceki görüşmenin bağlamını depolamak için istemci uygulamanızda kullanabilirsiniz.
 
 ```json
 {

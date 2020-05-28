@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1ab2b7860e8a75da5f8acef2fc4fa54d4b73a30d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf25c74f0190bc67e7da703e242d5d4bb3e299f5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80256972"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020651"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Bilişsel Arama Dizin oluşturucudan Azure sanal makinesinde SQL Server bağlantı yapılandırma
 
@@ -30,15 +30,15 @@ Azure Bilişsel Arama, genel bir internet bağlantısı üzerinden tüm Dizin Ol
 1. Konu adının Azure VM 'nin tam etki alanı adı (FQDN) olduğunu doğrulamak için sertifikanın özelliklerini denetleyin. Özellikleri görüntülemek için CertUtils veya Sertifikalar ek bileşeni gibi bir araç kullanabilirsiniz. FQDN 'yi VM hizmeti dikey penceresinin temel bileşenler bölümünden [Azure Portal](https://portal.azure.com/) **genel IP adresi/DNS ad etiketi** alanından edinebilirsiniz.
    
    * Yeni **Kaynak Yöneticisi** şablonu kullanılarak oluşturulan VM 'ler IÇIN, FQDN şöyle biçimlendirilir`<your-VM-name>.<region>.cloudapp.azure.com`
-   * **Klasik** VM olarak oluşturulan eski VM 'ler için FQDN olarak `<your-cloud-service-name.cloudapp.net>`biçimlendirilir.
+   * **Klasik** VM olarak oluşturulan eski VM 'ler için FQDN olarak biçimlendirilir `<your-cloud-service-name.cloudapp.net>` .
 
 2. SQL Server kayıt defteri Düzenleyicisi 'Ni (regedit) kullanarak sertifikayı kullanacak şekilde yapılandırın. 
    
     Bu görev için genellikle SQL Server Yapılandırma Yöneticisi kullanılmasına karşın, bu senaryo için kullanamazsınız. Azure üzerindeki VM 'nin FQDN 'si VM tarafından belirlendiği şekilde FQDN ile eşleşmediğinden, içeri aktarılan sertifika bulmaz (etki alanını yerel bilgisayar veya katıldığı ağ etki alanı olarak tanımlar). Adlar eşleşmezse, sertifikayı belirtmek için regedit ' i kullanın.
    
-   * Regedit ' de bu kayıt defteri anahtarına gidin: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`.
+   * Regedit ' de bu kayıt defteri anahtarına gidin: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate` .
      
-     Bölüm `[MSSQL13.MSSQLSERVER]` , sürüm ve örnek adına göre farklılık gösterir. 
+     `[MSSQL13.MSSQLSERVER]`Bölüm, sürüm ve örnek adına göre farklılık gösterir. 
    * **Sertifika** anahtarı değerini VM 'ye aktardığınız TLS/SSL sertifikasının **parmak izine** ayarlayın.
      
      Parmak izini almanın birkaç yolu vardır, bazıları diğerlerinden daha iyidir. Bunu MMC 'deki **Sertifikalar** ek bileşeninden kopyalarsanız, büyük olasılıkla [Bu destek makalesinde açıklandığı gibi](https://support.microsoft.com/kb/2023869/)görünmez bir öndeki karakter seçerek bir bağlantı girişiminizde hata oluşur. Bu sorunu düzeltmek için birkaç geçici çözüm vardır. En kolay geri alma işlemi yapılır ve sonra, regedit içindeki anahtar değer alanındaki baştaki karakteri kaldırmak için parmak izinin ilk karakterini yeniden yazın. Alternatif olarak, parmak izini kopyalamak için farklı bir araç kullanabilirsiniz.
@@ -52,7 +52,7 @@ Azure Bilişsel Arama, genel bir internet bağlantısı üzerinden tüm Dizin Ol
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>VM 'de SQL Server bağlantısını yapılandırma
 Azure Bilişsel Arama için gereken şifreli bağlantıyı ayarladıktan sonra, Azure VM 'lerinde SQL Server ek yapılandırma adımları vardır. Daha önce yapmadıysanız, sonraki adım Bu makalelerden birini kullanarak yapılandırmayı tamamlamadır:
 
-* **Kaynak Yöneticisi** VM için bkz. [Kaynak Yöneticisi kullanarak Azure 'Da SQL Server sanal makinesine bağlanma](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
+* **Kaynak Yöneticisi** VM için bkz. [Kaynak Yöneticisi kullanarak Azure 'Da SQL Server sanal makinesine bağlanma](../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md). 
 * **Klasik** bir VM için bkz. [Azure 'Da SQL Server sanal makinesine bağlanma](../virtual-machines/windows/classic/sql-connect.md).
 
 Özellikle, "internet üzerinden bağlantı" için her makaledeki bölümü gözden geçirin.
@@ -73,11 +73,11 @@ Aşağıdaki bağlantılar, VM dağıtımları için NSG yapılandırması hakk�
 IP adresleme, sorunu ve olası geçici çözümleri fark ediyorsanız kolayca ele alınması gereken birkaç zorluk ortaya çıkarabilir. Kalan bölümler, ACL 'deki IP adresleriyle ilgili sorunları işlemeye yönelik öneriler sağlar.
 
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>Azure Bilişsel Arama erişimi kısıtlama
-SQL Azure VM 'lerinizi tüm bağlantı isteklerine açık hale getirmek yerine, arama hizmetinizin IP adresine ve ACL 'deki `AzureCognitiveSearch` [hizmet etiketinin](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP adresi aralığına erişimi kısıtlamanız önemle önerilir.
+`AzureCognitiveSearch`SQL Azure VM 'lerinizi tüm bağlantı isteklerine açık hale getirmek yerine, arama HIZMETINIZIN IP adresine ve ACL 'deki [HIZMET etiketinin](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP adresi aralığına erişimi kısıtlamanız önemle önerilir.
 
-Arama hizmetinizin FQDN 'sini (örneğin, `<your-search-service-name>.search.windows.net`) PING yaparak IP adresini bulabilirsiniz.
+Arama hizmetinizin FQDN 'sini (örneğin,) ping yaparak IP adresini bulabilirsiniz `<your-search-service-name>.search.windows.net` .
 
-`AzureCognitiveSearch` [Hizmet](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) etiketinin IP adresi aralığını [indirilebilir JSON dosyalarını](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) veya [hizmet etiketi bulma API 'si](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)aracılığıyla bulabilirsiniz. IP adresi aralığı haftalık olarak güncelleştirilir.
+Hizmet etiketinin IP adresi aralığını `AzureCognitiveSearch` [service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) [Indirilebilir JSON dosyalarını](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) veya [hizmet etiketi bulma API 'si](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)aracılığıyla bulabilirsiniz. IP adresi aralığı haftalık olarak güncelleştirilir.
 
 #### <a name="managing-ip-address-fluctuations"></a>IP adresi dalgalanmaları yönetme
 Arama hizmetinizin yalnızca bir arama birimi (yani bir çoğaltma ve bir bölüm) varsa, hizmet yeniden başlatmaları sırasında IP adresi değişir ve bu, arama hizmetinizin IP adresine sahip mevcut bir ACL 'yi geçersiz kılmıştır.
@@ -89,7 +89,7 @@ Sonraki bağlantı hatasından kaçınmak için bir yol, Azure Bilişsel Arama '
 Bir üçüncü uygun (özellikle güvenli değil) yaklaşım, arama hizmetinizin sağlandığı Azure bölgesinin IP adresi aralığını belirtmektir. Genel IP adreslerinin Azure kaynaklarına ayrıldığı IP aralıklarının listesi, [Azure veri MERKEZI IP aralıklarında](https://www.microsoft.com/download/details.aspx?id=41653)yayımlanır. 
 
 #### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Azure Bilişsel Arama portal IP adreslerini ekleme
-Bir dizin oluşturucu oluşturmak için Azure portal kullanıyorsanız, Azure Bilişsel Arama portal mantığının oluşturma sırasında SQL Azure sanal makinenize erişmesi da gerekir. Azure Bilişsel Arama portal IP adresleri, ping işlemi `stamp2.search.ext.azure.com`tarafından bulunabilir.
+Bir dizin oluşturucu oluşturmak için Azure portal kullanıyorsanız, Azure Bilişsel Arama portal mantığının oluşturma sırasında SQL Azure sanal makinenize erişmesi da gerekir. Azure Bilişsel Arama portal IP adresleri, ping işlemi tarafından bulunabilir `stamp2.search.ext.azure.com` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Yapılandırma sayesinde artık Azure VM 'de bir Azure Bilişsel Arama Dizin Oluşturucu için veri kaynağı olarak bir SQL Server belirtebilirsiniz. Daha fazla bilgi için bkz. [Dizin oluşturucular kullanarak Azure SQL veritabanı 'Nı azure bilişsel arama bağlama](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) .

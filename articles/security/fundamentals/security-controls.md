@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9c3657a5b55303429d7825bd317c6f9eeb8c06c5
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2222c1d5e434e1c51cb66c2c5943badd58f95af9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583272"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013036"
 ---
 # <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Azure hizmetleri için "yerleşik güvenlik denetimleri" makaleleri dizini
 
@@ -34,8 +34,8 @@ Yerleşik güvenlik denetimi makaleleri aşağıdaki hizmetler için kullanılab
 - [Azure Service Bus geçişi](../../service-bus-relay/service-bus-relay-security-controls.md)
 - [Azure Service Fabric](../../service-fabric/service-fabric-security-controls.md)
 - [Azure Spring Cloud](../../spring-cloud/spring-cloud-concept-security-controls.md)
-- [Azure SQL Veritabanı](../../sql-database/sql-database-security-controls.md)
+- [Azure SQL Veritabanı](../../azure-sql/database/security-controls.md)
 - [Azure Sanal Makine Ölçek Kümeleri](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
 - [Linux Sanal Makineleri](../../virtual-machines/linux/virtual-machines-linux-security-controls.md)
 - [Windows Sanal Makineleri](../../virtual-machines/windows/virtual-machines-windows-security-controls.md)
-- [Azure VPN Ağ Geçidi](../../vpn-gateway/vpn-gateway-security-controls.md)
+- [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-security-controls.md)

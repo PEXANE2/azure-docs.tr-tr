@@ -3,12 +3,12 @@ title: Soru-Cevap Oluşturma Hizmeti nedir?
 description: Soru-Cevap Oluşturma, verileriniz üzerinde kolayca doğal bir konuşma katmanı oluşturan bulut tabanlı bir NLP hizmetidir. Özel bilgi tabanınızdan (KB), belirli bir doğal dil girişi için en uygun yanıtı bulmak üzere kullanılabilir.
 ms.topic: overview
 ms.date: 05/26/2020
-ms.openlocfilehash: 5962ab2294a19c600beb00816394d96059bd4108
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: d2ff2d789f2ea1ae6018d95ef1d880da87b4ff74
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873717"
+ms.locfileid: "83994876"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Soru-Cevap Oluşturma Hizmeti nedir?
 
@@ -40,9 +40,9 @@ Bir Soru-Cevap Oluşturma Bilgi Bankası yayımlandığında, istemci uygulamas�
 
 ## <a name="what-is-a-knowledge-base"></a>Bilgi Bankası nedir?
 
-Soru-Cevap Oluşturma [içeriğinizi](../concepts/knowledge-base.md) soru-cevap kümelerinin bilgi tabanına aktarır. İçeri aktarma işlemi, soru ve yanıt kümeleri arasındaki ilişkileri belirleyen, yapılandırılmış ve yarı yapılandırılmış içeriğinizin parçaları arasındaki ilişki hakkındaki bilgileri ayıklar. Bu soru ve cevap kümelerini düzenleyebilir veya yeni kümeler ekleyebilirsiniz.
+Soru-Cevap Oluşturma [içeriğinizi](../concepts/knowledge-base.md) bir soru-cevap çifti bilgi tabanına aktarır. İçeri aktarma işlemi, soru ve yanıt çiftleri arasındaki ilişkileri öğrenmek için yapılandırılmış ve yarı yapılandırılmış içeriğinizin kısımları arasındaki ilişki hakkındaki bilgileri ayıklar. Bu soruyu ve yanıt çiftlerini düzenleyebilir veya yeni çiftler ekleyebilirsiniz.
 
-Soru ve yanıt kümesi içeriği şunları içerir:
+Soru ve yanıt çiftinin içeriği şunları içerir:
 * Sorunun tüm alternatif formları
 * Arama sırasında yanıt seçimlerini filtrelemek için kullanılan meta veri etiketleri
 * Arama iyileştirmesi ile devam etmek için izleme istemleri
@@ -53,7 +53,7 @@ Bilgi tabanınızı yayımladıktan sonra bir istemci uygulaması, bir kullanıc
 
 ## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Kod olmadan bir bot oluşturun, yönetin ve yayımlayın
 
-Soru-Cevap Oluşturma Portal, tüm Bilgi Bankası yazma deneyimini sağlar. Belge bilgilerini geçerli biçiminde bilgi tabanınızı içeri aktarabilirsiniz. Bu belgeler (SSS, ürün el kitabı, elektronik tablo veya Web sayfası gibi), soru ve yanıt kümelerine dönüştürülür. Her küme, izleme istemleri için çözümlenir ve diğer kümelere bağlanır. Son _markaşağı_ biçimi, görüntüler ve bağlantılar dahil zengin sunumu destekler.
+Soru-Cevap Oluşturma Portal, tüm Bilgi Bankası yazma deneyimini sağlar. Belge bilgilerini geçerli biçiminde bilgi tabanınızı içeri aktarabilirsiniz. Bu belgeler (SSS, ürün el kitabı, elektronik tablo veya Web sayfası gibi), soru ve yanıt çiftlerine dönüştürülür. Her bir çift izleme istemleri için çözümlenir ve diğer çiftlerine bağlanır. Son _markaşağı_ biçimi, görüntüler ve bağlantılar dahil zengin sunumu destekler.
 
 Bilgi tabanınız düzenlendikten sonra, Bilgi Bankası 'nı herhangi bir kod yazmadan çalışan bir [Azure Web uygulaması bot](https://azure.microsoft.com/services/bot-service/) 'a yayımlayın. [Azure Portal](https://portal.azure.com) , botunuzu test edin veya geliştirmeye devam edin.
 
@@ -63,7 +63,7 @@ Soru-Cevap Oluşturma sistemi katmanlı bir derecelendirme yaklaşımıdır. Ver
 
 ## <a name="qna-maker-improves-the-conversation-process"></a>Soru-Cevap Oluşturma konuşma sürecini geliştirir
 
-Soru-Cevap Oluşturma, basit soru ve yanıt kümelerinizi iyileştirmenize yardımcı olmak için çok yönlü istemler ve etkin öğrenme sağlar.
+Soru-Cevap Oluşturma, basit soru ve yanıt eşlerinizi iyileştirebilmeniz için çok yönlü istemler ve etkin öğrenme sağlar.
 
 **Çoklu açma istemleri** , soru ve yanıt çiftlerini bağlama fırsatı sağlar. Bu bağlantı, istemci uygulamasının en iyi yanıtı sağlamasına ve nihai yanıt aramasını iyileştirmek için daha fazla soru sunmasına olanak tanır.
 

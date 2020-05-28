@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: fd5617af2da9aa00cb75deb82f83be29db78d79d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: e5e60fbcbdd7784cf131b7acb461065251a2dfd7
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873500"
+ms.locfileid: "84116151"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -211,7 +211,7 @@ Bkz. [işleme kuralları sırası](https://docs.microsoft.com/azure/application-
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Özel yoklamalar için, ana bilgisayar alanı ne işaret eder?
 
-Konak alanı, Application Gateway üzerinde çok siteli yapılandırdığınız zaman, araştırmanın gönderileceği adı belirtir. Aksi takdirde ' 127.0.0.1 ' kullanın. Bu değer, sanal makine ana bilgisayar adından farklıdır. Biçimi \< Protokol \> :// \< ana bilgisayar \> : \< bağlantı noktası \> \< yoludur \> .
+Konak alanı, Application Gateway üzerinde çok siteli yapılandırdığınız zaman, araştırmanın gönderileceği adı belirtir. Aksi takdirde ' 127.0.0.1 ' kullanın. Bu değer, sanal makine ana bilgisayar adından farklıdır. Biçimi \<protocol\> :// \<host\> : \<port\> \<path\> .
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Yalnızca birkaç kaynak IP adresine Application Gateway erişimine izin verebilir miyim?
 
@@ -411,8 +411,6 @@ Ancak Application Gateway v2 'yi yalnızca özel IP ile kullanmak istiyorsanız,
 
 Yalnızca özel IP erişimi için örnek NSG yapılandırması: ![ yalnızca özel IP erişimi için Application Gateway v2 NSG yapılandırması](./media/application-gateway-faq/appgw-privip-nsg.png)
 
-### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway benzeşim tanımlama bilgisi SameSite özniteliğini destekliyor mu?
-Evet, [Kmıum Browser](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) , SameSite = LAX olarak değerlendirilmeyeceği bir SAMESITE özniteliği olmadan http tanımlama bilgilerinde bir mantarih getirdi. Bu, Application Gateway benzeşim tanımlama bilgisinin tarayıcı tarafından üçüncü taraf bir bağlamda gönderilemeyeceği anlamına gelir. Bu senaryoyu desteklemek için, mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisini Application Gateway çıkartır.  Bu tanımlama bilgileri benzerdir, ancak *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenmiş iki özniteliği vardır: *SameSite = None; Güvenli*. Bu öznitelikler, çapraz kaynak istekleri için bile yapışkan oturumları korur. Daha fazla bilgi için [tanımlama bilgisi tabanlı benzeşim bölümüne](configuration-overview.md#cookie-based-affinity) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

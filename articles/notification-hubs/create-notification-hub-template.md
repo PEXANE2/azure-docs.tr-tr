@@ -10,20 +10,20 @@ ms.author: sethm
 ms.date: 05/15/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: aefccb831fe35898962893a173c5bd1125877def
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ede6b8ae22fb51a9586c6c4465d2cf9ac79f88df
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743525"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996678"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak bir Bildirim Hub 'ı oluşturma
 
 Azure Notification Hubs, herhangi bir arka uçtan (bulut veya şirket içi) herhangi bir platforma (iOS, Android, Windows, e, vb.) bildirimler göndermenizi sağlayan kullanımı kolay ve ölçeği genişletilmiş bir gönderim altyapısı sağlar. Hizmet hakkında daha fazla bilgi için bkz. [Azure Notification Hubs nedir?](notification-hubs-push-notification-overview.md).
 
-Bu hızlı başlangıç, bir Azure Notification Hubs ad alanı ve bu ad alanı içinde "MyHub" adlı bir Bildirim Hub 'ı oluşturmak için bir Azure Resource Manager şablonu kullanır.
-
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Bu hızlı başlangıç, bir Azure Notification Hubs ad alanı ve bu ad alanı içinde **Myhub** adlı bir Bildirim Hub 'ı oluşturmak için bir Azure Resource Manager şablonu kullanır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -32,8 +32,6 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 Yok.
 
 ## <a name="create-a-notification-hubs-namespace-and-hub"></a>Notification Hubs ad alanı ve hub oluşturma
-
-<!-- The second H2 must start with "Create a". For example,  'Create a Key Vault', 'Create a virtual machine', etc. -->
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirin
 
@@ -48,7 +46,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir Notification Hubs ad alanı adını parametre olarak alır. Şablon daha sonra bu adı taşıyan bir ad alanı ve bu ad alanı içinde **Myhub** adlı bir Bildirim Hub 'ı oluşturur.
 
-[![Azure’a dağıtın](./media/create-notification-hub-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 

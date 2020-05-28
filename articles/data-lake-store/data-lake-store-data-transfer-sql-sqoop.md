@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 154f8f1923874a3221597f1c0017fe99b5d31844
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73839072"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015939"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop kullanarak Data Lake Storage 1. ve Azure SQL veritabanı arasında veri kopyalama
 
@@ -28,14 +28,14 @@ Büyük veri uygulamaları, Günlükler ve dosyalar gibi yapılandırılmamış 
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 1. hesabı**. Hesabı oluşturma hakkında yönergeler için bkz. [Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)
 * Data Lake Storage 1. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Data Lake Storage 1. HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md). Bu makalede Data Lake Storage 1. erişimi olan bir HDInsight Linux kümeniz olduğunu varsaymaktadır.
 * **Azure SQL veritabanı**. Bir oluşturma hakkında yönergeler için bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started.md)
 
 ## <a name="create-sample-tables-in-the-azure-sql-database"></a>Azure SQL veritabanında örnek tablolar oluşturma
 
-1. Başlamak için, Azure SQL veritabanında iki örnek tablo oluşturun. Veritabanına bağlanmak ve ardından aşağıdaki sorguları çalıştırmak için [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) veya Visual Studio kullanın.
+1. Başlamak için, Azure SQL veritabanında iki örnek tablo oluşturun. Veritabanına bağlanmak ve ardından aşağıdaki sorguları çalıştırmak için [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) veya Visual Studio kullanın.
 
     **Table1 oluştur**
 
@@ -81,7 +81,7 @@ An HDInsight kümesinde Sqoop paketleri zaten var. HDInsight kümesini ek depola
 
 ### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Azure SQL veritabanındaki verileri Data Lake Storage 1. içine aktarın
 
-1. Sqoop paketlerinin kullanılabildiği dizine gidin. Genellikle, bu konum `/usr/hdp/<version>/sqoop/bin`.
+1. Sqoop paketlerinin kullanılabildiği dizine gidin. Genellikle, bu konum `/usr/hdp/<version>/sqoop/bin` .
 
 1. **Table1** 'deki verileri Data Lake Storage 1. hesabına aktarın. Aşağıdaki sözdizimini kullanın:
 
@@ -117,7 +117,7 @@ An HDInsight kümesinde Sqoop paketleri zaten var. HDInsight kümesini ek depola
 
        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-1. Verilerin SQL veritabanı tablosuna yüklendiğini doğrulayın. [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) veya Visual Studio kullanarak Azure SQL veritabanına bağlanın ve ardından aşağıdaki sorguyu çalıştırın.
+1. Verilerin SQL veritabanı tablosuna yüklendiğini doğrulayın. [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) veya Visual Studio kullanarak Azure SQL veritabanına bağlanın ve ardından aşağıdaki sorguyu çalıştırın.
 
        SELECT * FROM TABLE2
 

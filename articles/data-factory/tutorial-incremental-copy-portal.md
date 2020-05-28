@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 78cb58bca9b06b6dcf8549eefa5ebf0eb2b4b01c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b1660c3a6d3bfe262493722c5aad0a08778b1964
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409328"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119152"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal kullanarak bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
 
@@ -65,7 +65,7 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure SQL veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md).
+* **Azure SQL veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md).
 * **Azure depolama**. Blob depolamayı havuz veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). adftutorial adlı bir kapsayıcı oluşturun. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL veritabanınızda bir veri kaynağı tablosu oluşturma
@@ -152,7 +152,7 @@ END
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-2. Sol menüde, **kaynak** > **Analizi** > **Data Factory**oluştur ' u seçin:
+2. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory**oluştur ' u seçin:
 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -196,9 +196,9 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
 8. **Bağlı hizmet**için **Yeni**' yi seçin ve ardından aşağıdaki adımları uygulayın:
 
     1. **Ad** için **AzureSqlDatabaseLinkedService** adını girin.
-    2. **Sunucu adı** için Azure SQL Server’ınızı seçin.
+    2. **Sunucu adı**için sunucunuzu seçin.
     3. Açılan listeden **veritabanınızın adını** seçin.
-    4. **Kullanıcı adı** & **parolanızı**girin.
+    4. **Kullanıcı adı**  &  **parolanızı**girin.
     5. Azure SQL veritabanı bağlantısını test etmek için **Bağlantıyı sına**’ya tıklayın.
     6. **Son**'a tıklayın.
     7. **Bağlı hizmet**Için **Azuressqldatabaselinkedservice** 'in seçili olduğunu onaylayın.
@@ -255,10 +255,10 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
     2. **Depolama hesabı adı**Için Azure depolama hesabınızı seçin.
     3. Bağlantıyı test edin ve ardından **son**' a tıklayın.
 
-27. **Özellikleri ayarla** penceresinde, **bağlı hizmet**için **AzureStorageLinkedService** ' nin seçili olduğunu doğrulayın. Ardından **Son**’u seçin.
+27. **Özellikleri ayarla** penceresinde, **bağlı hizmet**için **AzureStorageLinkedService** ' nin seçili olduğunu doğrulayın. Ardından **son**' u seçin.
 28. SinkDataset 'in **bağlantı** sekmesine gidin ve aşağıdaki adımları uygulayın:
     1. **Dosya yolu** alanı için **adföğreticisi/incrementalcopy**girin. **adftutorial** blob kapsayıcısı adı, **incrementalcopy** klasör adıdır. Bu kod parçacığı blob depolama hesabınızda adftutorial adlı bir blob kapsayıcıya sahip olduğunuzu varsayar. Henüz yoksa kapsayıcıyı oluşturun veya var olan bir kapsayıcının adına ayarlayın. **incrementalcopy** adlı çıktı dosyası mevcut değilse Azure Data Factory tarafından otomatik olarak oluşturulur. Bir blob kapsayıcısındaki klasörlerden birine gitmek istiyorsanız **Dosya yolu** için **Gözat** düğmesini de kullanabilirsiniz.
-    2. **Dosya yolu** alanının **Dosya** bölümü Için, **dinamik Içerik Ekle [alt + P]** öğesini seçin ve açılan pencerede yazın `@CONCAT('Incremental-', pipeline().RunId, '.txt')`. Ardından **Son**’u seçin. Dosya adı, ifade kullanılarak dinamik olarak oluşturulur. Her işlem hattı çalıştırması benzersiz bir kimliğe sahiptir. Kopyalama etkinliği, dosya adını oluşturmak için çalışma kimliğini kullanır.
+    2. **Dosya yolu** alanının **Dosya** bölümü Için, **dinamik Içerik Ekle [alt + P]** öğesini seçin ve `@CONCAT('Incremental-', pipeline().RunId, '.txt')` açılan pencerede yazın. Ardından **son**' u seçin. Dosya adı, ifade kullanılarak dinamik olarak oluşturulur. Her işlem hattı çalıştırması benzersiz bir kimliğe sahiptir. Kopyalama etkinliği, dosya adını oluşturmak için çalışma kimliğini kullanır.
 
 28. Üstteki işlem hattı sekmesine veya soldaki ağaç görünümünden işlem hattının adına tıklayarak **işlem hattı** düzenleyicisine geçin.
 29. **Etkinlikler** araç kutusunda **Genel**’i genişletin ve **Etkinlikler** araç kutusundan **Saklı Yordam** etkinliğini sürükleyip işlem hattı tasarımcısının yüzeyine bırakın. **Kopyalama** etkinliğinin yeşil (Başarılı) çıktısını **Saklı Yordam** etkinliğine **bağlayın**.
@@ -272,7 +272,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
     1. **Saklı yordam adı**için **usp_write_watermark**' yi seçin.
     2. Saklı yordam parametrelerinin değerlerini belirtmek için, **Parametreyi içeri aktar**’a tıklayın ve parametreler için aşağıdaki değerleri girin:
 
-        | Adı | Tür | Değer |
+        | Name | Tür | Değer |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Dize | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |

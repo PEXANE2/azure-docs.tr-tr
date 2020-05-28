@@ -10,12 +10,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4f869c8b4ae6e90cfe64a2bf3d13839d72727be
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77157516"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015310"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Azure hizmetinde Azure Cloud Services’ı etkileyen kesintiler olduğunda yapılması gerekenler
 Microsoft 'ta, hizmetlerimizin ihtiyacınız olduğunda her zaman sizin için kullanılabilir olduğundan emin olmak için çok çalıştık. Denetiimizin ötesine geçmeye, planlanmamış hizmet kesintilerine neden olacak şekilde bizi etkilemekte yarar vardır.
@@ -47,7 +47,7 @@ Bulut hizmeti uygulaması oluşturma ve dağıtma hakkında daha fazla ayrıntı
 Uygulama veri kaynaklarınıza bağlı olarak, uygulama veri kaynağınız için kurtarma yordamlarını denetlemeniz gerekebilir.
 
 * Azure depolama veri kaynakları için bkz. [Azure depolama yedekliliği](../storage/common/storage-redundancy.md) , uygulamanız için seçilen artıklık modeline göre kullanılabilir seçenekleri denetlemek için kullanılır.
-* SQL veritabanı kaynakları için bkz. genel bakış: uygulamanıza yönelik seçili çoğaltma modeline göre kullanılabilir seçenekleri denetlemek için [SQL veritabanı Ile bulut iş sürekliliği ve veritabanı olağanüstü durum kurtarma](../sql-database/sql-database-business-continuity.md) .
+* SQL veritabanı kaynakları için bkz. genel bakış: uygulamanıza yönelik seçili çoğaltma modeline göre kullanılabilir seçenekleri denetlemek için [SQL veritabanı Ile bulut iş sürekliliği ve veritabanı olağanüstü durum kurtarma](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md) .
 
 
 ## <a name="option-3-wait-for-recovery"></a>Seçenek 3: kurtarma için bekle

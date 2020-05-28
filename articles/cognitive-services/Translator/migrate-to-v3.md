@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 47136ee9c2f0dee29571f310eb3b07d7c11888c0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8fae863c03ccbc17e9ec6621e73ddf475f759569
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592721"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996219"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2-v3 geçişine
 
@@ -116,10 +116,10 @@ Microsoft Translator v3 varsayılan olarak sinir makine çevirisini kullanır. B
 
 V3 metin API 'SI ile sinir çevirisi, standart kategorilerin (SMT, konuşma, teknik, generalnn) kullanımını desteklemez.
 
-| |Uç Nokta|    GDPR Işlemci uyumluluğu|  Çevirmen hub 'ı kullan| Özel çevirici kullan (Önizleme)|
+| |Uç Nokta|    GDPR Işlemci uyumluluğu|    Çevirmen hub 'ı kullan|    Özel çevirici kullan (Önizleme)|
 |:-----|:-----|:-----|:-----|:-----|
-|Translator sürüm 2|  api.microsofttranslator.com|    Hayır  |Yes    |Hayır|
-|Translator sürümü 3|  api.cognitive.microsofttranslator.com|  Yes|    Hayır| Yes|
+|Translator sürüm 2|    api.microsofttranslator.com|    Hayır    |Yes    |Hayır|
+|Translator sürümü 3|    api.cognitive.microsofttranslator.com|    Yes|    Hayır|    Yes|
 
 **Translator sürümü 3**
 * Genel olarak kullanılabilir ve tamamen desteklenir.

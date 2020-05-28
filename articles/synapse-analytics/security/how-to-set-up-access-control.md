@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 40078d33d2b89c2fcf3b90cd8a19405b1a29c5d7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 894f3002e292466a460c8f96bb7f35b590cb9552
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660092"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015837"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
 
@@ -130,7 +130,7 @@ Her roldeki kullanıcıların aşağıdaki adımları tamamlaması gerekir:
 
 ## <a name="step-8-network-security"></a>8. Adım: ağ güvenliği
 
-Çalışma alanı güvenlik duvarını, sanal ağı ve [özel bağlantıyı](../../sql-database/sql-database-private-endpoint-overview.md)yapılandırmak için.
+Çalışma alanı güvenlik duvarını, sanal ağı ve [özel bağlantıyı](../../azure-sql/database/private-endpoint-overview.md)yapılandırmak için.
 
 ## <a name="step-9-completion"></a>9. Adım: tamamlama
 
