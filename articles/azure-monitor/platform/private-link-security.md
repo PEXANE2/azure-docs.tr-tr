@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: a1b111ddfc134d2ec51fb2d0e9787a6eac8648f2
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4ef7e4058c4f9cb458f4036ad4b315f5e85036b1
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996457"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170724"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure Izleyici 'ye güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
 
@@ -199,9 +199,9 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -X
 $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace key>
 ```
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
-Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini kullanmak için, Azure portal ve Azure Izleyici uzantılarına özel ağlarda erişilebilir durumda izin vermeniz gerekir. Güvenlik duvarınızdan **AzureActiveDirectory**, **AzureResourceManager**, * * Azurefrontkapısı. Firstpartisi ve **Azurefrontkapısı. ön uç** [hizmeti etiketleri](../../firewall/service-tags.md) ekleyin.
+Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini kullanmak için, Azure portal ve Azure Izleyici uzantılarına özel ağlarda erişilebilir durumda izin vermeniz gerekir. Güvenlik duvarınızdan **AzureActiveDirectory**, **AzureResourceManager**, **Azurefrontkapısı. Firstpartisi**ve **Azurefrontkapısı. ön uç** [hizmeti etiketleri](../../firewall/service-tags.md) ekleyin.
 
 ### <a name="programmatic-access"></a>Programlı erişim
 

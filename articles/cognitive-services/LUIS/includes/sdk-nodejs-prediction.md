@@ -6,29 +6,29 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 9c15e4217c5331346c5a95329bae7e2a4f0e0841
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 504ba9106cc9d617858e8fad7ea421c8707707b3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732064"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171301"
 ---
 Node. js için Language Understanding (LUSıS) çalışma zamanı istemci kitaplığını kullanarak şunları yapın:
 
 * Yuvaya göre tahmin
 * Sürüme göre tahmin
 
-[Başvuru belge](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [çalışma zamanı paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_prediction.js)
+[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime)  |  [Çalışma zamanı paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_prediction.js)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Language Understanding çalışma zamanı kaynağı: [Azure Portal bir tane oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
 * [Node.js](https://nodejs.org)
-* Bir LUSıS uygulama KIMLIĞI-genel IoT uygulama KIMLIĞI ' ni kullanın `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Hızlı başlangıç kodunda kullanılan Kullanıcı sorgusu bu uygulamaya özeldir.
+* Bir LUSıS uygulama KIMLIĞI-genel IoT uygulama KIMLIĞI ' ni kullanın `df67dcdb-c37d-46af-88e1-8b97951ca1c2` . Hızlı başlangıç kodunda kullanılan Kullanıcı sorgusu bu uygulamaya özeldir.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -40,7 +40,7 @@ Bir LUSıS çalışma zamanı kaynağı oluşturarak [çalışma zamanı anahtar
 
 ### <a name="create-a-new-javascript-nodejs-file"></a>Yeni bir JavaScript (node. js) dosyası oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE 'de adlı `luis_prediction.js`yeni bir JavaScript dosyası oluşturun.
+Tercih ettiğiniz düzenleyicide veya IDE 'de adlı yeni bir JavaScript dosyası oluşturun `luis_prediction.js` .
 
 ### <a name="install-the-npm-library-for-the-luis-runtime"></a>LUSıS çalışma zamanı için NPM kitaplığını yükler
 
@@ -67,28 +67,28 @@ Bu kod parçacıkları Language Understanding (LUSıS) tahmini çalışma zaman�
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
-Proje dizininden `luis_prediction.js` dosyayı tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Aşağıdaki bağımlılıkları ekleyin:
+Proje dizininden `luis_prediction.js` dosyayı tercih ettiğiniz düzenleyicide veya IDE 'de açın. Aşağıdaki bağımlılıkları ekleyin:
 
-[!code-javascript [Dependencies](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=Dependencies)]
+[!code-javascript [Dependencies](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=Dependencies)]
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 1. Kendi gerekli LUSıS bilgileriniz için değişkenler oluşturun:
 
-    Adlı `LUIS_RUNTIME_KEY`bir ortam değişkeninden çekilen tahmin anahtarınızı yönetmek için değişken ekleyin. Uygulama başlatıldıktan sonra ortam değişkenini oluşturduysanız, bu değişkeni çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra oluşturulacak.
+    Adlı bir ortam değişkeninden çekilen tahmin anahtarınızı yönetmek için değişken ekleyin `LUIS_RUNTIME_KEY` . Uygulama başlatıldıktan sonra ortam değişkenini oluşturduysanız, bu değişkeni çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra oluşturulacak.
 
-    Kaynak adınızı `LUIS_RUNTIME_ENDPOINT`tutacak bir değişken oluşturun.
+    Kaynak adınızı tutacak bir değişken oluşturun `LUIS_RUNTIME_ENDPOINT` .
 
-    [!code-javascript [Azure resource variables](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=Variables)]
+    [!code-javascript [Azure resource variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=Variables)]
 
-1. Uygulama KIMLIĞI için adlı `LUIS_APP_ID`bir ortam değişkeni olarak bir değişken oluşturun. Ortam değişkenini genel IoT uygulaması olarak ayarlayın **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . `production` Yayınlanan yuvayı ayarlamak için bir değişken oluşturun.
+1. Uygulama KIMLIĞI için adlı bir ortam değişkeni olarak bir değişken oluşturun `LUIS_APP_ID` . Ortam değişkenini genel IoT uygulaması olarak ayarlayın **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Yayınlanan yuvayı ayarlamak için bir değişken oluşturun `production` .
 
-    [!code-javascript [LUIS app variables](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=OtherVariables)]
+    [!code-javascript [LUIS app variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=OtherVariables)]
 
 
 1. Anahtarınızla msRest. ApiKeyCredentials nesnesi oluşturun ve bir Lusıs oluşturmak için bunu uç noktanızla birlikte kullanın [. LUISRuntimeClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest) nesnesi.
 
-    [!code-javascript [LUIS Runtime client is required to access predictions for LUIS apps](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=AuthoringCreateClient)]
+    [!code-javascript [LUIS Runtime client is required to access predictions for LUIS apps](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=AuthoringCreateClient)]
 
 ## <a name="get-prediction-from-runtime"></a>Çalışma zamanından tahmin al
 
@@ -98,17 +98,17 @@ Kullanıcı söylenişi, [predictionRequest](https://docs.microsoft.com/javascri
 
 **[Luisruntimeclient. tahmine. Getslottahmine](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)** metodu, isteği yerine getirmek IÇIN uygulama kimliği, yuva adı ve tahmin isteği nesnesi gibi çeşitli parametrelere ihtiyaç duyuyor. Verbose gibi diğer seçenekler, tüm hedefleri gösterir ve günlük isteğe bağlıdır.
 
-[!code-javascript [LUIS prediction request and response in Node.js NPM SDK](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=predict)]
+[!code-javascript [LUIS prediction request and response in Node.js NPM SDK](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=predict)]
 
 ## <a name="main-code-for-the-prediction"></a>Tahmin için ana kod
 
 Tahmin sağlamak için değişkenleri ve yöntemleri birbirine bağlamak üzere aşağıdaki ana yöntemi kullanın.
 
-[!code-javascript [Main method and main call](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=Main)]
+[!code-javascript [Main method and main call](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=Main)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı uygulama dizininizdeki `node luis_prediction.js` komutla çalıştırın.
+Uygulamayı `node luis_prediction.js` uygulama dizininizdeki komutla çalıştırın.
 
 ```console
 node luis_prediction.js

@@ -2,13 +2,13 @@
 title: Soru-Cevap Oluşturma Hizmeti ayarlama-Soru-Cevap Oluşturma
 description: Herhangi bir Soru-Cevap Oluşturma bilgi tabanı oluşturabilmeniz için önce Azure 'da bir Soru-Cevap Oluşturma Hizmeti ayarlamanız gerekir. Bir abonelikte yeni kaynaklar oluşturmak için yetkilendirmeye sahip olan herkes, Soru-Cevap Oluşturma bir hizmet ayarlayabilir.
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/28/2020
+ms.openlocfilehash: 521d0388e4ee739b1ac840e482174ac466781f5f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402981"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171183"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -58,6 +58,7 @@ Bu yordam, Bilgi Bankası içeriğini yönetmek için gereken Azure kaynakların
    ![Kaynak yeni bir Soru-Cevap Oluşturma Hizmeti oluşturdu](../media/qnamaker-how-to-setup-service/resources-created.png)
 
     Bilişsel _Hizmetler_ türündeki kaynağın _abonelik_ anahtarları vardır.
+
 
 ## <a name="find-subscription-keys-in-the-azure-portal"></a>Azure portal abonelik anahtarlarını bulma
 
@@ -145,7 +146,7 @@ Birçok bilgi tabanınız varsa, Azure Bilişsel Arama Service fiyatlandırma ka
 
 QnAMaker çalışma zamanı, Azure portal [bir qnaoluşturucu hizmeti oluşturduğunuzda](./set-up-qnamaker-service-azure.md) dağıtılan Azure App Service örneğinin bir parçasıdır. Güncelleştirmeler çalışma zamanında düzenli olarak yapılır. Soru-Cevap Oluşturma App Service örneği, Nisan 2019 site uzantısı sürümünden (sürüm 5 +) sonra otomatik güncelleştirme modunda. Bu güncelleştirme, yükseltmeler sırasında sıfır kesinti olması için tasarlanmıştır.
 
-Geçerli sürümünüzü adresinde https://www.qnamaker.ai/UserSettingsdenetleyebilirsiniz. Sürümünüz 5. x sürümünden eskiyse, en son güncelleştirmeleri uygulamak için App Service yeniden başlatmanız gerekir:
+Geçerli sürümünüzü adresinde denetleyebilirsiniz https://www.qnamaker.ai/UserSettings . Sürümünüz 5. x sürümünden eskiyse, en son güncelleştirmeleri uygulamak için App Service yeniden başlatmanız gerekir:
 
 1. [Azure Portal](https://portal.azure.com)QnAMaker hizmetinize (kaynak grubu) gidin.
 
@@ -197,7 +198,7 @@ Yayımlanmış bir bilgi tabanı için Soru-Cevap Oluşturma tahmin çalışma z
 
 Tahmin uç noktası uygulamasının trafik olmadığında bile yüklenmesini sağlamak için boşta seçeneğini her zaman açık olarak ayarlayın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Soru-Cevap Oluşturma kaynağınızın App Service 'i arayın ve seçin. Soru-Cevap Oluşturma kaynağıyla aynı ada sahip olur, ancak farklı **türde** App Service olacaktır.
 1. **Ayarları** bulun ve **yapılandırma**' yı seçin.
 1. Yapılandırma bölmesinde **Genel ayarlar**' ı seçin, **her zaman açık**' i bulun ve değer olarak **Açık** ' ı seçin.
@@ -206,9 +207,32 @@ Tahmin uç noktası uygulamasının trafik olmadığında bile yüklenmesini sa�
     > ![Yapılandırma bölmesinde, * * Genel Ayarlar * * öğesini seçin, ardından * * Always on * * öğesini bulun ve değer olarak * * seçeneğini belirleyin.](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
 
 1. Yapılandırmayı kaydetmek için **Kaydet** ' i seçin.
-1. Yeni ayarı kullanmak için uygulamayı yeniden başlatmak isteyip istemediğiniz sorulur. **Devam**'ı seçin.
+1. Yeni ayarı kullanmak için uygulamayı yeniden başlatmak isteyip istemediğiniz sorulur. **Devam**’ı seçin.
 
 App Service [genel ayarlarını](../../../app-service/configure-common.md#configure-general-settings)yapılandırma hakkında daha fazla bilgi edinin.
+
+## <a name="business-continuity-with-traffic-manager"></a>Traffic Manager ile iş sürekliliği
+
+İş sürekliliği planının birincil amacı dayanıklı bir bilgi tabanı uç noktası oluşturmaktır, bu, bot veya onu kullanan uygulama için zaman kaybı olmamasını sağlar.
+
+> [!div class="mx-imgBorder"]
+> ![Soru-Cevap Oluşturma bcp planı](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
+
+Yukarıda gösterilen üst düzey fikir aşağıdaki gibidir:
+
+1. [Azure eşlenmiş bölgelerde](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)iki paralel [soru-cevap oluşturma hizmeti](set-up-qnamaker-service-azure.md) ayarlayın.
+
+1. Birincil Soru-Cevap Oluşturma App Service 'i [yedekleyin](../../../app-service/manage-backup.md) ve ikincil kuruluma [geri yükleyin](../../../app-service/web-sites-restore.md) . Bu, her iki kurulum 'un aynı ana bilgisayar adı ve anahtarlarla çalışmasını sağlayacaktır.
+
+1. Birincil ve ikincil Azure arama dizinlerini eşitlenmiş halde tutun. Azure dizinlerini yedekleme ve geri yükleme işlemlerinin nasıl yapılacağını görmek için [burada](https://github.com/pchoudhari/QnAMakerBackupRestore) GitHub örneğini kullanın.
+
+1. Application Insights [sürekli dışarı aktarma](../../../application-insights/app-insights-export-telemetry.md)kullanarak yedekleyin.
+
+1. Birincil ve ikincil yığınlar kurulduktan sonra, iki uç noktayı yapılandırmak ve bir yönlendirme yöntemi ayarlamak için [Traffic Manager](../../../traffic-manager/traffic-manager-overview.md) 'ı kullanın.
+
+1. Traffic Manager uç noktanız için önceden Güvenli Yuva Katmanı (SSL) olarak bilinen bir Aktarım Katmanı Güvenliği (TLS) oluşturmanız gerekir. Uygulama hizmetlerinize [TLS/SSL sertifikası bağlayın](../../../app-service/configure-ssl-bindings.md) .
+
+1. Son olarak, bot veya uygulamanızdaki Traffic Manager uç noktasını kullanın.
 
 ## <a name="delete-azure-resources"></a>Azure kaynaklarını silme
 
@@ -219,4 +243,4 @@ Soru-Cevap Oluşturma bilgi tabanlarınız için kullanılan Azure kaynaklarınd
 [Uygulama hizmeti](../../../app-service/index.yml) ve [Arama hizmeti](../../../search/index.yml)hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Bilgi bankası oluşturma ve yayımlama](../Quickstarts/create-publish-knowledge-base.md)
+> [Başkalarıyla nasıl yazarla ilgili bilgi edinin](../how-to/collaborate-knowledge-base.md)

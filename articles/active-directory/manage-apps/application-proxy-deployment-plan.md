@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.custom: has-adal-ref
-ms.openlocfilehash: a293bd33d3a25f26e5374184da42db335041284d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 040ad734cdf3b2d382baa55006fbda02fdcf457d
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610148"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169517"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Uygulama Ara Sunucusu dağıtımı planlayın
 
@@ -228,13 +228,13 @@ Normalde anonim olarak erişilebilen ve kimlik doğrulaması gerektirmeyen şirk
 
 Bu seçeneği Hayır olarak bırakmak, kullanıcıların şirket içi uygulamaya izinler olmadan Azure AD Uygulaması Proxy aracılığıyla erişmesini sağlar, bu nedenle dikkatli olun.
 
-Uygulamanız yayımlandıktan sonra, dış URL 'sini bir tarayıcıya veya konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com/)simgesine yazarak erişilebilir olmalıdır.
+Uygulamanız yayımlandıktan sonra, dış URL 'sini bir tarayıcıya veya konumundaki simgesine yazarak erişilebilir olmalıdır [https://myapps.microsoft.com](https://myapps.microsoft.com/) .
 
 ### <a name="enable-pre-authentication"></a>Ön kimlik doğrulamayı etkinleştir
 
 Uygulamanızın dış URL aracılığıyla ona erişen uygulama proxy 'Si aracılığıyla erişilebilir olduğunu doğrulayın.
 
-1. **Azure Active Directory** > **Kurumsal**uygulamalar > Azure Active Directory**tüm uygulamalar** ' a gidin ve yönetmek istediğiniz uygulamayı seçin.
+1. **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory  >  **tüm uygulamalar** ' a gidin ve yönetmek istediğiniz uygulamayı seçin.
 
 2. **Uygulama proxy 'si**seçin.
 
@@ -254,7 +254,7 @@ Uygulamalarınızı yapılandırırken en uygun SSO yöntemini seçmenize yardı
 
 ###  <a name="working-with-other-types-of-applications"></a>Diğer uygulama türleriyle çalışma
 
-Azure AD Uygulama Ara Sunucusu, Azure AD kimlik doğrulama kitaplığı ([adal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)) veya Microsoft kimlik doğrulama kitaplığı 'Nı ([msal](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)) kullanmak üzere geliştirilmiş uygulamaları da destekleyebilir. Kullanıcı adına ön kimlik doğrulaması gerçekleştirmek üzere istemci isteğinin üstbilgi bilgilerinde alınan Azure AD tarafından verilen belirteçleri tüketen yerel istemci uygulamalarını destekler.
+Azure AD Uygulama Ara Sunucusu, Microsoft kimlik doğrulama kitaplığı 'nı ([msal](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)) kullanmak üzere geliştirilmiş uygulamaları da destekleyebilir. Kullanıcı adına ön kimlik doğrulaması gerçekleştirmek üzere istemci isteğinin üstbilgi bilgilerinde alınan Azure AD tarafından verilen belirteçleri tüketen yerel istemci uygulamalarını destekler.
 
 Uygulama proxy 'sinin kullanılabilir yapılandırması hakkında bilgi edinmek için [yerel ve mobil istemci uygulamalarını](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) ve [talep tabanlı uygulamaları](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) yayımlama makalesini okuyun.
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 04/16/2020
-ms.openlocfilehash: 74aa17fb17d682449bd817945c3b8bbf3f95363e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 671609fc1db7325823e8ac40b2b8153682596588
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726616"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147826"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>OBS ile Azure Media Services canlı akış oluşturma
 
@@ -147,7 +147,7 @@ Sonraki yordamda, çıkış ayarlarına girmek üzere giriş URL 'sini kopyalama
 
    ![OBS çıkış ayarları](media/live-events-obs-quickstart/live-event-obs-advanced-output-settings.png)
 
-1. Geri kalan ayarları değiştiriciyi bırakın ve **Tamam**' a tıklayın.
+1. Geri kalan ayarları değiştirmeden bırakın ve **Tamam**' a tıklayın.
 
 ### <a name="start-streaming"></a>Akışı Başlat
 

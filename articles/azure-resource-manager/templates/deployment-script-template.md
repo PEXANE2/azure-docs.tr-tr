@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: jgao
-ms.openlocfilehash: 24a0891b57f67bfb78cf3699bddbcf8d345ee679
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+ms.openlocfilehash: e3f3301ac78480c4d8ebbf909bafcefa025ff395
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83708015"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168582"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -60,7 +60,7 @@ Dağıtım betiği kaynağı yalnızca Azure Container Instance 'ın kullanılab
   read resourceGroupName &&
   echo "Enter the managed identity name:" &&
   read idName &&
-  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  az identity show -g $resourceGroupName -n $idName --query id
   ```
 
   # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -166,7 +166,7 @@ Aşağıdaki şablonda, türüyle tanımlanmış bir kaynak vardır `Microsoft.R
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
 
 > [!NOTE]
-> Satır içi dağıtım betikleri çift tırnak içine alındığından, dağıtım betiklerinin içindeki dizelerin tek tırnak içine alınması gerekir. PowerShell için kaçış karakteri **&#92;**. Ayrıca, önceki JSON örneğinde gösterildiği üzere dize değiştirme kullanmayı da düşünebilirsiniz. Ad parametresinin varsayılan değerine bakın.
+> Satır içi dağıtım betikleri çift tırnak içine alındığından, dağıtım betiklerinin içindeki dizelerin bir **&#92;** kullanılarak veya tek tırnak içine alınmış olması gerekir. Ayrıca, önceki JSON örneğinde gösterildiği üzere dize değiştirme kullanmayı da düşünebilirsiniz.
 
 Betik bir parametre alır ve parametre değerini çıktı. **Deploymentscriptoutkoyar** , çıktıları depolamak için kullanılır.  Çıktılar bölümünde, **değer** satırı depolanan değerlere nasıl erişegösterdiğini gösterir. `Write-Output`hata ayıklama amacıyla kullanılır. Çıktı dosyasına nasıl erişebileceğinizi öğrenmek için bkz. [dağıtım betiklerine hata ayıklama](#debug-deployment-scripts).  Özellik açıklamaları için bkz. [örnek şablonlar](#sample-templates).
 
@@ -190,7 +190,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>Dış betikler kullanın
 
-Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örnek:
+Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örneğin:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -306,7 +306,20 @@ Portalda deploymentScripts kaynağını görmek için **gizli türleri göster**
 
 Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örneği gereklidir. Mevcut bir depolama hesabını belirtme seçenekleriniz vardır; Aksi takdirde, kapsayıcı örneğiyle birlikte depolama hesabı betik hizmeti tarafından otomatik olarak oluşturulur. Var olan bir depolama hesabını kullanma gereksinimleri:
 
-- Desteklenen depolama hesabı türleri şunlardır: genel amaçlı v2, genel amaçlı v1 ve dosya depolama hesapları. Yalnızca FileStorage, Premium SKU 'YU destekler. Daha fazla bilgi için bkz. [depolama hesabı türleri](../../storage/common/storage-account-overview.md).
+- Desteklenen depolama hesabı türleri şunlardır:
+
+    | SKU             | Desteklenen tür     |
+    |-----------------|--------------------|
+    | Premium_LRS     | Dosya depolama        |
+    | Premium_ZRS     | Dosya depolama        |
+    | Standard_GRS    | Depolama, StorageV2 |
+    | Standard_GZRS   | StorageV2          |
+    | Standard_LRS    | Depolama, StorageV2 |
+    | Standard_RAGRS  | Depolama, StorageV2 |
+    | Standard_RAGZRS | StorageV2          |
+    | Standard_ZRS    | StorageV2          |
+
+    Bu birleşimler dosya payını destekler.  Daha fazla bilgi için bkz. [Azure dosya paylaşma](../../storage/files/storage-how-to-create-file-share.md) ve [depolama hesabı türleri](../../storage/common/storage-account-overview.md)oluşturma.
 - Depolama hesabı güvenlik duvarı kuralları henüz desteklenmiyor. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../../storage/common/storage-network-security.md).
 - Dağıtım betiğinin Kullanıcı tarafından atanan yönetilen kimliğinin, okuma, oluşturma, dosya paylaşımlarını silme dahil olmak üzere depolama hesabını yönetme izinleri olmalıdır.
 
@@ -320,7 +333,7 @@ Mevcut bir depolama hesabını belirtmek için aşağıdaki JSON öğesini öğe
 ```
 
 - **storageAccountName**: depolama hesabının adını belirtin.
-- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. [`listKeys()`](./template-functions-resource.md#listkeys)Anahtarı almak için işlevini kullanabilirsiniz. Örnek:
+- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. [`listKeys()`](./template-functions-resource.md#listkeys)Anahtarı almak için işlevini kullanabilirsiniz. Örneğin:
 
     ```json
     "storageAccountSettings": {
