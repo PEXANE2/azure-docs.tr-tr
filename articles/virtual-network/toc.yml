@@ -80,8 +80,10 @@
           href: virtual-network-for-azure-services.md
     - name: IP hizmetleri
       items:
-        - name: IP adresi
-          href: virtual-network-ip-addresses-overview-arm.md
+        - name: Genel IP'ler
+          href: public-ip-addresses.md
+        - name: Özel IP’ler
+          href: private-ip-addresses.md
         - name: Genel IP ön eki
           href: public-ip-address-prefix.md
         - name: Azure Sanal Ağı için IPv6

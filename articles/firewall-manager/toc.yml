@@ -7,7 +7,7 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Güvenli sanal merkez
+    - name: Güvenli sanal merkez - ARM şablonu
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
 - name: Öğreticiler

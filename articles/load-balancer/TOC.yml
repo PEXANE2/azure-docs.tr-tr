@@ -135,12 +135,14 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: İç yük dengeleyici - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: Sorun giderme
-      items:
-        - name: Azure Load Balancer sorunlarını giderme
-          href: load-balancer-troubleshoot.md
-        - name: Sık karşılaşılan dağıtım hatalarını giderme
-          href: load-balancer-common-deployment-errors.md
+- name: Sorun giderme
+  items:
+    - name: Azure Load Balancer sorunlarını giderme
+      href: load-balancer-troubleshoot.md
+    - name: Sık karşılaşılan dağıtım hatalarını giderme
+      href: load-balancer-common-deployment-errors.md
+    - name: Yaygın giden bağlantı sorunlarını çözme
+      href: troubleshoot-outbound-connection.md
 - name: Başvuru
   items:
     - name: Kod örnekleri

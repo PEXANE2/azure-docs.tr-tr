@@ -54,6 +54,8 @@
       href: concepts/text-offsets.md
     - name: Veri sınırları
       href: concepts/data-limits.md
+    - name: Model sürümü oluşturma
+      href: concepts/model-versioning.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Metin Analizi API’sini çağırma
@@ -76,6 +78,8 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes hizmetini kullanma (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+    - name: API’nin 3. sürümüne geçirme
+      href: migration-guide.md
 - name: Başvuru
   items:
     - name: CLI başvurusu

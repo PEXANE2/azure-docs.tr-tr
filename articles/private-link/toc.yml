@@ -12,6 +12,8 @@
       href: create-private-endpoint-powershell.md
     - name: Özel Uç Nokta oluşturma - Azure CLI
       href: create-private-endpoint-cli.md
+    - name: Özel Uç Nokta oluşturma - ARM şablonu
+      href: create-private-endpoint-template.md
     - name: Özel Bağlantı Hizmeti oluşturma - Portal
       href: create-private-link-service-portal.md
     - name: Özel Bağlantı Hizmeti oluşturma - PowerShell
