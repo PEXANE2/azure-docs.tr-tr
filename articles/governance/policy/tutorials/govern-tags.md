@@ -3,16 +3,16 @@ title: 'Öğretici: etiket yönetimini yönetme'
 description: Bu öğreticide, yeni ve mevcut kaynaklarda bir etiket idare modeli oluşturmak ve zorlamak için Azure Ilkesinin değiştirme efektini kullanırsınız.
 ms.date: 04/21/2020
 ms.topic: tutorial
-ms.openlocfilehash: 6319bbde2fdc8f78e2743dd5f1565c8680433fea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759072"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142274"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Öğretici: Azure Ilkesiyle etiket yönetimini yönetme
 
-[Etiketler](../../../azure-resource-manager/management/tag-resources.md) , Azure kaynaklarınızı bir taksonomi halinde düzenlemenin önemli bir parçasıdır. [Etiket yönetimi için en iyi yöntemleri](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)takip eden Etiketler, Azure ilkesi ile iş ilkelerinizi uygulamak veya [maliyet yönetimi ile maliyetleri izlemek](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources)için temel olabilir.
+[Etiketler](../../../azure-resource-manager/management/tag-resources.md) , Azure kaynaklarınızı bir taksonomi halinde düzenlemenin önemli bir parçasıdır. [Etiket yönetimi için en iyi yöntemleri](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)takip eden Etiketler, Azure ilkesi ile iş ilkelerinizi uygulamak veya [maliyet yönetimi ile maliyetleri izlemek](../../../cost-management-billing/costs/cost-mgt-best-practices.md#tag-shared-resources)için temel olabilir.
 Etiketlerin nasıl veya neden kullanıldığı önemli değildir. bu etiketleri Azure kaynaklarınıza hızlıca ekleyebilir, değiştirebilir ve kaldırabilirsiniz. Azure kaynağınızın etiketlemeyi destekleyip desteklemediğini görmek için bkz. [etiket desteği](../../../azure-resource-manager/management/tag-support.md).
 
 Azure Ilkesinin [değişiklik](../concepts/effects.md#modify) etkisi, hangi kaynak İdaresi aşamasına bakılmaksızın etiketlerin tasarlanmasına yardımcı olmak için tasarlanmıştır. **Değiştirme** şu durumlarda yardımcı olur:
@@ -100,7 +100,7 @@ Kaynak grubunun _Costcenter_ 'ı kaynak grubunun adı tarafından belirlenemedi�
 }
 ```
 
-Bu ilke kuralı, mevcut [kaynakları düzeltirken etiket](../how-to/remediate-resources.md) değerini değiştirmek Istediğimiz Için **addorreplace** yerine **Add** işlemini kullanır. Ayrıca, üst kaynak `[resourcegroup()]` grubundan etiket değerini almak için şablon işlevini kullanır.
+Bu ilke kuralı, mevcut [kaynakları düzeltirken etiket](../how-to/remediate-resources.md) değerini değiştirmek Istediğimiz Için **addorreplace** yerine **Add** işlemini kullanır. Ayrıca, `[resourcegroup()]` üst kaynak grubundan etiket değerini almak için şablon işlevini kullanır.
 
 > [!NOTE]
 > Bu ilke kuralı, etiketleri destekleyen kaynakları hedeflediğinden, ilke tanımındaki _mod_ ' dizinli ' olmalıdır. Bu yapılandırma ayrıca bu ilkenin kaynak gruplarını atmasını de sağlar.
@@ -148,7 +148,7 @@ Azure ortamınızda bulunan her ortam için bir [değiştirme](../concepts/effec
 > [!NOTE]
 > Bu ilke kuralı bir kaynak grubunu hedeflediğinden, ilke tanımındaki _mod_ ' Indexed ' yerine ' All ' olmalıdır.
 
-Bu ilke yalnızca üretim kaynakları için kullanılan örnek adlandırma düzenine sahip kaynak gruplarıyla eşleşir `prd-`. Daha karmaşık adlandırma düzenleri, bu örnekte **olduğu gibi** birkaç **eşleşme** koşullarıyla elde edilebilir.
+Bu ilke yalnızca üretim kaynakları için kullanılan örnek adlandırma düzenine sahip kaynak gruplarıyla eşleşir `prd-` . Daha karmaşık adlandırma düzenleri, bu örnekte **olduğu gibi** birkaç **eşleşme** koşullarıyla elde edilebilir.
 
 ### <a name="modify-resources-to-inherit-the-env-tag"></a>Env etiketini devralacak kaynakları değiştirme
 

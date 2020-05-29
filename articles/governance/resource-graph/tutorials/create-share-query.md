@@ -3,12 +3,12 @@ title: 'Öğretici: Azure portal sorguları yönetme'
 description: Bu öğreticide, bir kaynak grafiği sorgusu oluşturur ve yeni sorguyu Azure portal başkalarıyla paylaşabilirsiniz.
 ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 80725bd03d31a4985374005fe68a62e16aaef000
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83637759"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148030"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Öğretici: Azure portal Azure Kaynak Grafiği sorgusu oluşturma ve paylaşma
 
@@ -44,7 +44,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Abon
 
    Alttaki bölmede sorgu sonuçlarını görmek için **Sorguyu Çalıştır** ' ı seçin.
 
-   Bu sorgu hakkında daha fazla bilgi için bkz. [Samples: sanal makineleri işletim sistemi türüne göre say](../samples/starter.md#count-virtual-machines-by-os-type).
+   Bu sorgu hakkında daha fazla bilgi için bkz. [Samples: sanal makineleri işletim sistemi türüne göre say](../samples/starter.md#count-os).
 
 
 1. **Farklı** **Kaydet ' i seçin,** ad **olarak işletim sistemine göre VM sayısını** girin, türü **özel sorgu**olarak bırakın ve ardından Save **Query** bölmesinin en altında bulunan **Kaydet** ' i seçin. Sekme başlığı, **sorgu 1** ' den **Işletim sistemine göre VM 'lere göre**değişir.
@@ -76,7 +76,7 @@ Yeni bir paylaşılan sorgu oluşturmak için aşağıdaki adımları izleyin:
     
    Alttaki bölmede sorgu sonuçlarını görmek için **Sorguyu Çalıştır** ' ı seçin.
 
-   Bu sorgu hakkında daha fazla bilgi için bkz. [Samples: sanal makineleri işletim sistemi türüne göre say](../samples/starter.md#count-virtual-machines-by-os-type).
+   Bu sorgu hakkında daha fazla bilgi için bkz. [Samples: sanal makineleri işletim sistemi türüne göre say](../samples/starter.md#count-os).
 
 1. **Kaydet** veya **farklı kaydet**' i seçin.
 

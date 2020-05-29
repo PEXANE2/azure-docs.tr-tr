@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: a9519be591581fa434825f1a1fb31749788a21a8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78395740"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141866"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -86,9 +86,9 @@ Tüm Metin Analizi API'si uç noktaları ham metin verisi kabul eder. Geçerli s
 
 | Sınır | Değer |
 |------------------------|---------------|
-| Tek belge için maksimum boyut | tarafından [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)ölçülen 5.120 karakter. |
+| Tek belge için maksimum boyut | tarafından ölçülen 5.120 karakter [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) . |
 | İsteğin tamamının maksimum boyutu | 1 MB |
-| Bir istekte bulunabilecek maksimum belge sayısı | 1000 belge |
+| Bir istekte bulunabilecek maksimum belge sayısı | En fazla 1.000 belge ([her bir özellik için farklılık gösterir](concepts/data-limits.md)) |
 
 Oran sınırınız fiyatlandırma katmanınızda farklılık gösterecektir.
 
@@ -105,7 +105,7 @@ Oran sınırınız fiyatlandırma katmanınızda farklılık gösterecektir.
 
 ## <a name="unicode-encoding"></a>Unicode kodlama
 
-Metin Analizi API'si, metin gösterimi ve karakter sayısı hesaplamaları için Unicode kodlamasını kullanır. İstekler UTF-8 ve UTF-16 olarak gönderilebilir, karakter sayısında fark olmayacaktır. Karakter uzunluğu için Unicode kod noktaları buluşsal değer olarak kullanılır ve metin analizi veri sınırları için eşdeğer kabul edilir. Karakter sayısını almak [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) için kullanırsanız, veri boyutunu ölçmek için kullandığımız yöntemi de kullanıyorsunuz.
+Metin Analizi API'si, metin gösterimi ve karakter sayısı hesaplamaları için Unicode kodlamasını kullanır. İstekler UTF-8 ve UTF-16 olarak gönderilebilir, karakter sayısında fark olmayacaktır. Karakter uzunluğu için Unicode kod noktaları buluşsal değer olarak kullanılır ve metin analizi veri sınırları için eşdeğer kabul edilir. [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)Karakter sayısını almak için kullanırsanız, veri boyutunu ölçmek için kullandığımız yöntemi de kullanıyorsunuz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

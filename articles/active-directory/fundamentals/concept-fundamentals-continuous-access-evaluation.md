@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdf904bb2c0d133ea07cd32274fad5b6601da5d9
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112584"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148132"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -50,13 +50,13 @@ Gelecekte konum ve cihaz durumu değişiklikleri gibi olaylar da dahil olmak üz
 Sürekli erişim değerlendirmesinden önce istemciler, süresi dolmayan sürece erişim belirtecini her zaman kendi önbelleğinden yeniden yürütmeye çalışır. CAE sayesinde, bir kaynak sağlayıcının, zaman aşımına ermese bile bir belirteci reddedebileceği yeni bir durum sunuyoruz. Önbelleğe alınmış belirteçlerin dolmasa bile, istemcilerin önbelleklerini atlamasına bildirmek için **talep sınaması**adlı bir mekanizma tanıtılmaktadır. CAE, talep sınamasını anlamak için bir istemci güncelleştirmesi gerektirir. Aşağıdaki uygulamaların en son sürümü talep sınamasını destekler:
 
 - Windows için Outlook 
-- Outlook iOS 
-- Outlook Android 
-- Outlook Mac 
+- İOS için Outlook 
+- Android için Outlook 
+- Mac için Outlook 
 - Windows için takımlar
-- Takımlar iOS 
-- Takımlar Android 
-- Takımlar Mac 
+- İOS için takımlar 
+- Android için takımlar 
+- Mac için takımlar 
 
 ## <a name="token-lifetime"></a>Belirteç Ömrü
 

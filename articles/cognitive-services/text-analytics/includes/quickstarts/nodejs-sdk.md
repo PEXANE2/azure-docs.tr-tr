@@ -9,33 +9,33 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 8bcc919aee7548e8596d1f44c8a357d3f84dfb14
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 0d2a4a8338880dc8063d6a3f088c0cd44e314e43
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82095986"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140774"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
-[v3 başvuru belgeleri](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [v3 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [V3 paketi (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3 örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[v3 başvuru belgeleri](https://aka.ms/azsdk-js-textanalytics-ref-docs)  |  [v3 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [V3 paketi (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3 örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 #### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
-[v2 başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [v2 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [v2 paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [v2 örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[v2 başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics)  |  [v2 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics)  |  [v2 paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics)  |  [v2 örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ---
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Node. js](https://nodejs.org/)' nin geçerli sürümü.
-* Azure aboneliğiniz olduktan <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="sonra, anahtarınızı ve uç noktanızı almak için"  target="_blank">Azure Portal bir metin analizi kaynağı <span class="docon docon-navigate-external x-hidden-focus"></span> </a> oluşturun metin analizi bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+* Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir metin analizi kaynağı oluşturun metin analizi bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
     * Uygulamanızı Metin Analizi API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
-    * Hizmeti denemek ve daha sonra üretime yönelik ücretli`F0`bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -49,19 +49,19 @@ mkdir myapp
 cd myapp
 ```
 
-Bir `package.json` dosya `npm init` ile bir düğüm uygulaması oluşturmak için komutunu çalıştırın. 
+`npm init`Bir dosya ile bir düğüm uygulaması oluşturmak için komutunu çalıştırın `package.json` . 
 
 ```console
 npm init
 ```
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
-`@azure/ai-text-analytics` NPM paketlerini yüklerken:
+`@azure/ai-text-analytics`NPM paketlerini yüklerken:
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.4
+npm install --save @azure/ai-text-analytics@1.0.0-preview.5
 ```
 
 > [!TIP]
@@ -69,7 +69,7 @@ npm install --save @azure/ai-text-analytics@1.0.0-preview.4
 
 #### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
-`@azure/cognitiveservices-textanalytics` NPM paketlerini yüklerken:
+`@azure/cognitiveservices-textanalytics`NPM paketlerini yüklerken:
 
 ```console
 npm install --save @azure/cognitiveservices-textanalytics
@@ -81,9 +81,9 @@ npm install --save @azure/cognitiveservices-textanalytics
 ---
 
 Uygulamanızın `package.json` dosyası bağımlılıklarla güncelleştirilir.
-Adlı `index.js` bir dosya oluşturun ve aşağıdakileri ekleyin:
+Adlı bir dosya oluşturun `index.js` ve aşağıdakileri ekleyin:
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
 ```javascript
 "use strict";
@@ -111,9 +111,9 @@ const endpoint = '<paste-your-text-analytics-endpoint-here>';
 
 ## <a name="object-model"></a>Nesne modeli
 
-Metin Analizi istemcisi, anahtarınızı kullanarak `TextAnalyticsClient` Azure 'da kimlik doğrulayan bir nesnedir. İstemci, tek bir dize veya bir toplu iş olarak metin çözümlemek için çeşitli yöntemler sağlar.
+Metin Analizi istemcisi, `TextAnalyticsClient` anahtarınızı kullanarak Azure 'da kimlik doğrulayan bir nesnedir. İstemci, tek bir dize veya bir toplu iş olarak metin çözümlemek için çeşitli yöntemler sağlar.
 
-Metin, kullanılan yöntemine bağlı `documents`olarak `dictionary` `id`, `text`ve `language` özniteliklerinin bir birleşimini içeren nesneler olan bir listesi olarak API 'ye gönderilir. `text` Özniteliği, kaynak `language`olarak çözümlenecek metni depolar ve `id` herhangi bir değer olabilir. 
+Metin, `documents` `dictionary` `id` `text` `language` kullanılan yöntemine bağlı olarak, ve özniteliklerinin bir birleşimini içeren nesneler olan bir listesi olarak API 'ye gönderilir. `text`Özniteliği, kaynak olarak çözümlenecek metni depolar `language` ve `id` herhangi bir değer olabilir. 
 
 Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir. 
 
@@ -128,9 +128,9 @@ Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir.
 
 ## <a name="client-authentication"></a>İstemci Kimlik Doğrulaması
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
-Anahtarınızla ve `TextAnalyticsClient` uç noktanızla parametreler olarak yeni bir nesne oluşturun.
+`TextAnalyticsClient`Anahtarınızla ve uç noktanızla parametreler olarak yeni bir nesne oluşturun.
 
 ```javascript
 const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCredential(key));
@@ -138,7 +138,7 @@ const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCrede
 
 #### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
-Parametresi olarak ve [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) `credentials` `endpoint` ile yeni bir TextAnalyticsClient nesnesi oluşturun.
+Parametresi olarak ve ile yeni bir [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) nesnesi oluşturun `credentials` `endpoint` .
 
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
@@ -146,7 +146,7 @@ Parametresi olarak ve [TextAnalyticsClient](https://docs.microsoft.com/javascrip
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
 Çözümlemek istediğiniz belgeyi içeren bir dize dizisi oluşturun. İstemcinin `analyzeSentiment()` metodunu çağırın ve döndürülen `SentimentBatchResult` nesneyi alın. Sonuçlar listesinde yineleme yapın ve her belgenin KIMLIĞINI, belge düzeyi yaklaşımını güven puanlarına göre yazdırın. Sonuç, her belge için kenar boşlukları, uzunluk ve güvenirlik puanlarıyla birlikte tümce düzeyinde yaklaşım içerir.
 
@@ -213,9 +213,9 @@ Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
 ## <a name="language-detection"></a>Dil algılama
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
-Çözümlemek istediğiniz belgeyi içeren bir dize dizisi oluşturun. İstemcinin `detectLanguage()` metodunu çağırın ve döndürülen geri `DetectLanguageResultCollection`alın. Sonra sonuçlar arasında yineleme yapın ve her belgenin KIMLIĞINI ilgili birincil dille yazdırın.
+Çözümlemek istediğiniz belgeyi içeren bir dize dizisi oluşturun. İstemcinin `detectLanguage()` metodunu çağırın ve döndürülen geri alın `DetectLanguageResultCollection` . Sonra sonuçlar arasında yineleme yapın ve her belgenin KIMLIĞINI ilgili birincil dille yazdırın.
 
 ```javascript
 async function languageDetection(client) {
@@ -262,10 +262,10 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="named-entity-recognition-ner"></a>Adlandırılmış varlık tanıma (NER)
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
 > [!NOTE]
-> Şu sürümde `3.0-preview`:
+> Şu sürümde `3.0-preview` :
 > * Varlık bağlama, NER 'den ayrı bir istek.
 
 Çözümlemek istediğiniz belgeyi içeren bir dize dizisi oluşturun. İstemcinin `recognizeEntities()` metodunu çağırın ve `RecognizeEntitiesResult` nesneyi alın. Sonuçlar listesinde yineleme yapın ve varlık adı, türü, alt tür, kaydırma, uzunluk ve puanı yazdırın.
@@ -283,7 +283,7 @@ async function entityRecognition(client){
         console.log(`Document ID: ${document.id}`);
         document.entities.forEach(entity => {
             console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tScore: ${entity.score}`);
+            console.log(`\tScore: ${entity.confidenceScore}`);
         });
     });
 }
@@ -297,31 +297,25 @@ Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 ```console
 Document ID: 0
         Name: Microsoft         Category: Organization  Subcategory: N/A
-        Score: 1
+        Score: 0.29
         Name: Bill Gates        Category: Person        Subcategory: N/A
-        Score: 0.67
+        Score: 0.78
         Name: Paul Allen        Category: Person        Subcategory: N/A
-        Score: 0.81
+        Score: 0.82
         Name: April 4, 1975     Category: DateTime      Subcategory: Date
         Score: 0.8
-        Name: interpreters      Category: PersonType    Subcategory: N/A
-        Score: 0.6
         Name: 8800      Category: Quantity      Subcategory: Number
         Score: 0.8
 Document ID: 1
-        Name: Microsoft         Category: Organization  Subcategory: N/A
-        Score: 0.96
-        Name: Redmond   Category: Location      Subcategory: GPE
-        Score: 0.09
         Name: 21        Category: Quantity      Subcategory: Number
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
-        Score: 0.31
+        Score: 0.25
 ```
 
 ## <a name="entity-linking"></a>Varlık Bağlama
 
-Çözümlemek istediğiniz belgeyi içeren bir dize dizisi oluşturun. İstemcinin `recognizeLinkedEntities()` metodunu çağırın ve `RecognizeLinkedEntitiesResult` nesneyi alın. Sonuçlar listesinde yineleme yapın ve varlık adı, KIMLIĞI, veri kaynağı, URL ve eşleşmeleri yazdırın. `matches` Dizideki her nesne, bu eşleşme için uzaklığa, uzunluğa ve puana sahip olur.
+Çözümlemek istediğiniz belgeyi içeren bir dize dizisi oluşturun. İstemcinin `recognizeLinkedEntities()` metodunu çağırın ve `RecognizeLinkedEntitiesResult` nesneyi alın. Sonuçlar listesinde yineleme yapın ve varlık adı, KIMLIĞI, veri kaynağı, URL ve eşleşmeleri yazdırın. Dizideki her nesne, `matches` Bu eşleşme için uzaklığa, uzunluğa ve puana sahip olur.
 
 ```javascript
 async function linkedEntityRecognition(client){
@@ -337,8 +331,8 @@ async function linkedEntityRecognition(client){
             console.log(`\tName: ${entity.name} \tID: ${entity.dataSourceEntityId} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
             console.log(`\tMatches:`)
             entity.matches.forEach(match => {
-                console.log(`\t\tText: ${match.text} \tScore: ${match.score.toFixed(2)}`);
-            });
+                console.log(`\t\tText: ${match.text} \tScore: ${match.confidenceScore.toFixed(2)}`);
+        })
         });
     });
 }
@@ -353,24 +347,24 @@ Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 Document ID: 0
         Name: Altair 8800       ID: Altair 8800         URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
-                Text: Altair 8800       Score: 0.78
+                Text: Altair 8800       Score: 0.88
         Name: Bill Gates        ID: Bill Gates  URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
-                Text: Bill Gates        Score: 0.55
-                Text: Gates     Score: 0.55
+                Text: Bill Gates        Score: 0.63
+                Text: Gates     Score: 0.63
         Name: Paul Allen        ID: Paul Allen  URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
-                Text: Paul Allen        Score: 0.53
+                Text: Paul Allen        Score: 0.60
         Name: Microsoft         ID: Microsoft   URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
-                Text: Microsoft         Score: 0.47
-                Text: Microsoft         Score: 0.47
+                Text: Microsoft         Score: 0.55
+                Text: Microsoft         Score: 0.55
         Name: April 4   ID: April 4     URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
-                Text: April 4   Score: 0.25
+                Text: April 4   Score: 0.32
         Name: BASIC     ID: BASIC       URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
-                Text: BASIC     Score: 0.28
+                Text: BASIC     Score: 0.33
 ```
 
 #### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
@@ -418,7 +412,7 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
 Çözümlemek istediğiniz belgeyi içeren bir dize dizisi oluşturun. İstemcinin `extractKeyPhrases()` metodunu çağırın ve döndürülen `ExtractKeyPhrasesResult` nesneyi alın. Sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve algılanan anahtar tümceleri yazdırın.
 
@@ -470,7 +464,7 @@ Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı hızlı başlangıç dosyanızdaki `node` komutla çalıştırın.
+Uygulamayı `node` hızlı başlangıç dosyanızdaki komutla çalıştırın.
 
 ```console
 node index.js

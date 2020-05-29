@@ -2,13 +2,13 @@
 title: Kapsayıcılar için Azure Izleyicisini etkinleştirme | Microsoft Docs
 description: Bu makalede, kapsayıcının nasıl çalıştığını ve performansla ilgili sorunları nasıl tanımladığınızı anlayabilmeniz için kapsayıcılar için Azure Izleyicisini etkinleştirme ve yapılandırma açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 284668dfe2aec809ce9a94e15f7c83cf0f2025b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/28/2020
+ms.openlocfilehash: 0348d580a42d4a522ac05f929c96547a47e831a9
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185940"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147911"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyicisini etkinleştirme
 
@@ -66,7 +66,6 @@ Aşağıdaki tablodaki bilgiler Kapsayıcılı aracının kapsayıcılar için A
 | *.ods.opinsights.azure.com | 443 |  
 | *.oms.opinsights.azure.com | 443 |
 | dc.services.visualstudio.com | 443 |
-| *.microsoftonline.com | 443 |
 | *. monitoring.azure.com | 443 |
 | login.microsoftonline.com | 443 |
 
@@ -76,7 +75,6 @@ Aşağıdaki tablodaki bilgiler, Azure Çin için proxy ve güvenlik duvarı yap
 |--------------|------|-------------|
 | *. ods.opinsights.azure.cn | 443 | Veri alımı |
 | *. oms.opinsights.azure.cn | 443 | OMS ekleme |
-| microsoft.com | 80 | Ağ bağlantısı için kullanılır. Bu yalnızca aracı görüntüsü sürümü ciprod09262019 veya daha önceki bir sürümdeyse gereklidir. |
 | dc.services.visualstudio.com | 443 | Azure genel bulut Application Insights kullanan aracı telemetri için. |
 
 Aşağıdaki tablodaki bilgiler, Azure ABD kamu için proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir.
@@ -85,7 +83,6 @@ Aşağıdaki tablodaki bilgiler, Azure ABD kamu için proxy ve güvenlik duvarı
 |--------------|------|-------------|
 | *. ods.opinsights.azure.us | 443 | Veri alımı |
 | *. oms.opinsights.azure.us | 443 | OMS ekleme |
-| microsoft.com | 80 | Ağ bağlantısı için kullanılır. Bu yalnızca aracı görüntüsü sürümü ciprod09262019 veya daha önceki bir sürümdeyse gereklidir. |
 | dc.services.visualstudio.com | 443 | Azure genel bulut Application Insights kullanan aracı telemetrisi için. |
 
 ## <a name="components"></a>Bileşenler
@@ -99,7 +96,7 @@ Performansı izleme özelliği, özellikle kapsayıcılar için Azure Izleyici i
 Aracının yeni bir sürümü yayınlandığında, Azure Kubernetes Service (AKS) üzerinde barındırılan yönetilen Kubernetes kümelerinizde otomatik olarak yükseltilir. Yayınlanan sürümleri izlemek için bkz. [Aracı Sürüm duyuruları](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
 
 >[!NOTE]
->Zaten bir AKS kümesi dağıttıysanız, bu makalede daha sonra gösterildiği gibi Azure CLı veya sağlanmış Azure Resource Manager şablonu kullanarak izlemeyi etkinleştirirsiniz. Aracıyı yükseltmek, `kubectl` silmek, yeniden dağıtmak veya dağıtmak için kullanamazsınız.
+>Zaten bir AKS kümesi dağıttıysanız, bu makalede daha sonra gösterildiği gibi Azure CLı veya sağlanmış Azure Resource Manager şablonu kullanarak izlemeyi etkinleştirirsiniz. `kubectl`Aracıyı yükseltmek, silmek, yeniden dağıtmak veya dağıtmak için kullanamazsınız.
 >Şablonun, kümeyle aynı kaynak grubunda dağıtılması gerekir.
 
 Aşağıdaki tabloda açıklanan aşağıdaki yöntemlerden birini kullanarak kapsayıcılar için Azure Izleyicisini etkinleştirirsiniz.

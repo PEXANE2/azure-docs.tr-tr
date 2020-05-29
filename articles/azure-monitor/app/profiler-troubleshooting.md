@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640956"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148353"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler etkinleştirme veya görüntüleme sorunlarını giderme
 
@@ -48,7 +48,7 @@ Profiler, izleme iletilerini ve özel olayları Application Insights kaynağına
 * Uygulamanızın .NET Framework 4,6 ' de çalıştığından emin olun.
 * Web uygulamanız ASP.NET Core bir uygulama ise, en az ASP.NET Core 2,0 çalıştırıyor olmalıdır.
 * Görüntülemeye çalıştığınız veriler birkaç haftadan daha eskiyse, zaman filtrenizi sınırlamayı deneyin ve yeniden deneyin. İzlemeler yedi gün sonra silinir.
-* Proxy 'lerin veya güvenlik duvarının öğesine https://gateway.azureserviceprofiler.neterişiminin engellenmediğinden emin olun.
+* Proxy 'lerin veya güvenlik duvarının öğesine erişiminin engellenmediğinden emin olun https://gateway.azureserviceprofiler.net .
 * Profil Oluşturucu ücretsiz veya paylaşılan App Service planlarında desteklenmez. Bu planlardan birini kullanıyorsanız, temel planların birine kadar ölçeği ölçeklendirmeyi deneyin ve profil oluşturucu çalışmaya başlaması gerekir.
 
 ### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>Paralel iş parçacıklarında Double sayma
@@ -87,7 +87,7 @@ Profil oluşturucunun düzgün çalışması için:
 
       ![Profiler-WebJob-log]
 
-Profil oluşturucunun neden sizin için çalışmadığını anlamak için günlüğü indirebilir ve yardım için ekibimize gönderebilirsiniz serviceprofilerhelp@microsoft.com. 
+Profil oluşturucunun neden sizin için çalışmadığını anlamak için günlüğü indirebilir ve yardım için ekibimize gönderebilirsiniz serviceprofilerhelp@microsoft.com . 
     
 ### <a name="manual-installation"></a>El ile yükleme
 
@@ -110,11 +110,11 @@ Profil oluşturucuyu yapılandırırken, Web uygulamasının ayarlarına güncel
 
 Şu anda, profil oluşturucuyu aynı hizmet planında çalışan en fazla dört Azure Web uygulaması ve dağıtım yuvası üzerinde etkinleştirebilirsiniz. Tek bir App Service planında çalışan dörtten fazla Web uygulamanız varsa, Profiler bir *Microsoft. ServiceProfiler. Exceptions. TooManyETWSessionException*oluşturabilir. Profil Oluşturucu her Web uygulaması için ayrı ayrı çalışır ve her bir uygulama için bir Windows için olay Izleme (ETW) oturumu başlatmaya çalışır. Ancak, sınırlı sayıda ETW oturumu tek seferde etkin olabilir. Profiler WebJob çok sayıda etkin profil oluşturma oturumu bildirirse, bazı Web uygulamalarını farklı bir hizmet planına taşıyın.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Dağıtım hatası: Dizin boş\\değil: Ana\\site\\Wwwroot\\App_Data\\işleri '
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Dağıtım hatası: Dizin boş değil: \\ ana \\ site \\ Wwwroot \\ App_Data \\ işleri '
 
 Web uygulamanızı Profiler özellikli bir Web Apps kaynağına yeniden dağıtıyorsanız, aşağıdaki iletiyi görebilirsiniz:
 
-*Dizin boş\\değil: Ana\\site\\Wwwroot\\App_Data\\işleri '*
+*Dizin boş değil: \\ ana \\ site \\ Wwwroot \\ App_Data \\ işleri '*
 
 Bu hata, betiklerden veya Azure DevOps dağıtım ardışık düzeninde Web Dağıtımı çalıştırırsanız oluşur. Çözüm, Web Dağıtımı görevine aşağıdaki ek dağıtım parametrelerini eklemektir:
 
@@ -128,7 +128,7 @@ Bu parametreler Application Insights Profiler tarafından kullanılan klasörü 
 
 Profiler, Web uygulamasında sürekli bir WebJob olarak çalışır. Web uygulaması kaynağını [Azure Portal](https://portal.azure.com)açabilirsiniz. **WebJobs** bölmesinde **Applicationınsightsprofiler**durumunu kontrol edin. Çalışmıyorsa, daha fazla bilgi almak için **günlükleri** açın.
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profil Oluşturucu ve Azure Tanılama sorunlarını giderme
+## <a name="troubleshoot-vms-and-cloud-services"></a>VM 'Ler ve Cloud Services sorunlarını giderme
 
 >**Cloud Services için WAD içinde yer alan Profiler 'daki hata düzeltildi.** Cloud Services için en son WAD (1.12.2.0) sürümü, App Insights SDK 'sının tüm son sürümleriyle birlikte çalışmaktadır. Bulut hizmeti ana bilgisayarları WAD 'yi otomatik olarak yükseltir, ancak bu işlem anında değil. Bir yükseltmeyi zorlamak için hizmetinizi yeniden dağıtabilirsiniz veya düğümü yeniden başlatabilirsiniz.
 
@@ -141,27 +141,45 @@ Profiler 'ın Azure Tanılama tarafından doğru yapılandırılıp yapılandır
 
 Azure Tanılama yapılandırmak için kullanılan ayarları denetlemek için:
 
-1. Sanal makinede (VM) oturum açın ve ardından günlük dosyasını bu konumda açın. (Sürücü c: veya d: olabilir ve eklenti sürümü farklı olabilir.)
-
-    ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
-    ```
-    or
+1. Sanal makinede (VM) oturum açın ve ardından günlük dosyasını bu konumda açın. Eklenti sürümü makinenizde daha yeni olabilir.
+    
+    VM 'Ler için:
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
+    ```
+    
+    Cloud Services için:
+    ```
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
 
 1. Dosyasında, Azure Tanılama yapılandırmak için sanal makineye geçirilen ayarları bulmak üzere **Wadcfg** dizesini arama yapabilirsiniz. Profil Oluşturucu havuzu tarafından kullanılan Ikey 'in doğru olup olmadığını kontrol edebilirsiniz.
 
-1. Profil oluşturucuyu başlatmak için kullanılan komut satırını kontrol edin. Profil oluşturucuyu başlatmak için kullanılan bağımsız değişkenler aşağıdaki dosyadır. (Sürücü c: veya d:) olabilir
+1. Profil oluşturucuyu başlatmak için kullanılan komut satırını kontrol edin. Profil oluşturucuyu başlatmak için kullanılan bağımsız değişkenler aşağıdaki dosyadır. (Sürücü c: veya d: olabilir ve dizin gizli olabilir.)
 
+    VM 'Ler için:
+    ```
+    C:\ProgramData\ApplicationInsightsProfiler\config.json
+    ```
+    
+    Cloud Services için:
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
 
 1. Profil oluşturucu komut satırındaki Ikey 'in doğru olduğundan emin olun. 
 
-1. Önceki *config. JSON* dosyasında bulunan yolu kullanarak profil oluşturucu günlük dosyasını kontrol edin. Profil oluşturucunun kullandığı ayarları gösteren hata ayıklama bilgilerini görüntüler. Ayrıca, profil oluşturucunun durum ve hata iletilerini görüntüler.  
+1. Önceki *config. JSON* dosyasında bulunan yolu kullanarak, **bootstrapn. log**adlı Profil Oluşturucu günlük dosyasını kontrol edin. Profil oluşturucunun kullandığı ayarları gösteren hata ayıklama bilgilerini görüntüler. Ayrıca, profil oluşturucunun durum ve hata iletilerini görüntüler.  
+
+    VM 'Ler için dosya genellikle şu şekildedir:
+    ```
+    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
+
+    Cloud Services için:
+    ```
+    C:\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
 
     Uygulamanız istek alırken profil oluşturucu çalışıyorsa şu ileti görüntülenir: *Ikey 'Den etkinlik algılandı*. 
 

@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588352"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148098"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure bilişsel hizmetler sanal ağlarını yapılandırma
 
@@ -484,6 +484,68 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
 
 > [!IMPORTANT]
 > [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
+
+## <a name="use-private-endpoints"></a>Özel uç noktaları kullanma
+
+Bir sanal ağdaki (VNet) istemcilerin [özel bir bağlantı](../private-link/private-link-overview.md)üzerinden güvenli bir şekilde verilere erişmesine izin vermek için bilişsel hizmetler kaynaklarınız için [Özel uç noktaları](../private-link/private-endpoint-overview.md) kullanabilirsiniz. Özel uç nokta, bilişsel hizmetler kaynağınız için VNet adres alanından bir IP adresi kullanır. VNet ve kaynak üzerindeki istemciler arasındaki ağ trafiği, VNet 'ten ve Microsoft omurga ağındaki bir özel bağlantıdan geçer ve bu da genel İnternet 'ten etkilenme olasılığını ortadan kaldırır.
+
+Bilişsel hizmetler kaynakları için özel uç noktalar şunları yapmanızı sağlar:
+
+- Güvenlik duvarını bilişsel hizmetler hizmeti için genel uç noktada tüm bağlantıları engelleyecek şekilde yapılandırarak bilişsel hizmetler kaynağınızın güvenliğini sağlayın.
+- VNET 'ten veri alımını engellemeyi etkinleştirerek VNet için güvenliği artırın.
+- [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../expressroute/expressroute-locations.md) kullanarak VNET 'e bağlanan şirket içi ağlardan bilişsel hizmetler kaynaklarına güvenli bir şekilde bağlanın.
+
+### <a name="conceptual-overview"></a>Kavramsal genel bakış
+
+Özel uç nokta, [VNET](../virtual-network/virtual-networks-overview.md)'iniz Içindeki bir Azure hizmeti için özel bir ağ arabirimidir. Bilişsel hizmetler kaynağınız için özel bir uç nokta oluşturduğunuzda, VNet 'iniz ve kaynağınızın istemcileri arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır. Özel uç nokta ve bilişsel hizmetler hizmeti arasındaki bağlantı güvenli bir özel bağlantı kullanır.
+
+VNet 'teki uygulamalar hizmete özel uç nokta üzerinden sorunsuz bir şekilde bağlanıp kullandıkları bağlantı dizelerini ve yetkilendirme mekanizmalarını kullanarak bağlanabilir. Özel durum, ayrı bir uç nokta gerektiren konuşma hizmetidir. [Konuşma hizmeti Ile özel uç noktalar](#private-endpoints-with-the-speech-service)bölümüne bakın. Özel uç noktalar bilişsel hizmetler kaynağı tarafından desteklenen ve REST dahil tüm protokollerle kullanılabilir.
+
+Özel uç noktalar, [hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)kullanan alt ağlarda oluşturulabilir. Bir alt ağdaki istemciler özel uç nokta kullanarak tek bir bilişsel hizmetler kaynağına bağlanarak diğer kullanıcılara erişmek için hizmet uç noktalarını kullanabilir.
+
+VNet 'iniz içindeki bilişsel hizmetler kaynağı için özel bir uç nokta oluşturduğunuzda, bilişsel hizmetler kaynak sahibine onay için bir izin isteği gönderilir. Özel uç noktanın oluşturulmasını isteyen kullanıcı aynı zamanda kaynağın sahibiyseniz, bu onay isteği otomatik olarak onaylanır.
+
+Bilişsel hizmetler kaynak sahipleri, [Azure Portal](https://portal.azure.com)bilişsel hizmetler kaynağı Için '*Özel uç noktalar*' sekmesi aracılığıyla izin isteklerini ve özel uç noktaları yönetebilir.
+
+### <a name="private-endpoints"></a>Özel uç noktalar
+
+Özel uç nokta oluştururken, bağlandığı bilişsel hizmetler kaynağını belirtmeniz gerekir. Özel uç nokta oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+
+- [Azure portal özel bağlantı merkezini kullanarak özel bir uç nokta oluşturma](../private-link/create-private-endpoint-portal.md)
+- [Azure CLı kullanarak özel uç nokta oluşturma](../private-link/create-private-endpoint-cli.md)
+- [Azure PowerShell kullanarak özel uç nokta oluşturma](../private-link/create-private-endpoint-powershell.md)
+
+### <a name="connecting-to-private-endpoints"></a>Özel uç noktalara bağlanma
+
+Özel uç nokta kullanan bir sanal ağdaki istemciler, ortak uç noktaya bağlanan istemciler için bilişsel hizmetler kaynağı için aynı bağlantı dizesini kullanmalıdır. Özel durum, ayrı bir uç nokta gerektiren konuşma hizmetidir. [Konuşma hizmeti Ile özel uç noktalar](#private-endpoints-with-the-speech-service)bölümüne bakın. DNS çözümlemesini, VNet 'ten gelen bağlantıları özel bir bağlantı üzerinden bilişsel hizmetler kaynağına otomatik olarak yönlendirmek için kullanır. Konuşma hizmeti 
+
+Varsayılan olarak, Özel uç noktalara yönelik gerekli güncelleştirmelerle VNet 'e bağlı [Özel BIR DNS bölgesi](../dns/private-dns-overview.md) oluşturacağız. Ancak, kendi DNS sunucunuzu kullanıyorsanız, DNS yapılandırmanızda ek değişiklikler yapmanız gerekebilir. Aşağıdaki [DNS değişikliklerinin](#dns-changes-for-private-endpoints) bölümünde, Özel uç noktalar için gereken güncelleştirmeler açıklanmaktadır.
+
+### <a name="private-endpoints-with-the-speech-service"></a>Konuşma hizmeti ile özel uç noktalar
+
+Konuşma hizmeti ile özel uç noktalar kullanırken, konuşma hizmeti API 'sini çağırmak için özel bir uç nokta kullanmanız gerekir. Genel uç noktasını kullanamazsınız. {Account} formunun bir uç noktasını kullanmanız gerekir. {STT | TTS | ses | DLS}. Speech. Microsoft. com.
+
+### <a name="dns-changes-for-private-endpoints"></a>Özel uç noktalar için DNS değişiklikleri
+
+Özel bir uç nokta oluşturduğunuzda, bilişsel hizmetler kaynağı için DNS CNAME kaynak kaydı, '*Privatelink*' önekine sahip bir alt etki alanındaki diğer ada güncelleştirilir. Varsayılan olarak, Özel uç noktalar için DNS A kaynak kayıtları ile '*Privatelink*' alt etki alanına karşılık gelen [özel bir DNS bölgesi](../dns/private-dns-overview.md)de oluşturacağız.
+
+Uç nokta URL 'sini özel uç noktayla VNet dışından çözümlediğinizde, bilişsel hizmetler kaynağının genel uç noktasına dönüşür. Özel uç noktasını barındıran VNet 'ten çözümlendiğinde, uç nokta URL 'SI özel uç noktanın IP adresine çözümlenir.
+
+Bu yaklaşım, Özel uç noktaları barındıran VNet 'teki istemciler ve sanal ağ dışındaki istemciler için aynı bağlantı dizesini kullanarak bilişsel hizmetler kaynağına erişim sağlar.
+
+Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler bilişsel hizmetler kaynak uç noktasının tam etki alanı adını (FQDN) özel uç nokta IP adresine çözümleyebilmelidir. DNS sunucunuzu, sanal ağın özel DNS bölgesine özel bağlantı alt etki alanı atamak üzere yapılandırmalısınız.
+
+> [!TIP]
+> Özel veya şirket içi bir DNS sunucusu kullanırken, DNS sunucunuzu, ' Privatelink ' alt etki alanındaki bilişsel hizmetler kaynak adını özel uç nokta IP adresine çözümlemek üzere yapılandırmalısınız. Bunu, sanal ağın özel DNS bölgesine ' Privatelink ' alt etki alanı temsilcisi seçerek veya DNS sunucunuzda DNS bölgesi yapılandırarak ve DNS A kayıtlarını ekleyerek yapabilirsiniz.
+
+Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+
+- [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [Özel uç noktalar için DNS yapılandırması](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+
+### <a name="pricing"></a>Fiyatlandırma
+
+Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

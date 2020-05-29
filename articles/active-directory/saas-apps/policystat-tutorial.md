@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f467e061ad52fdcc6d1e8706bb902088b237c24
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848779"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142053"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Öğretici: PolicyStat ile tümleştirme Azure Active Directory
 
@@ -175,11 +175,11 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
    
     a. **Kullanıcı adı özniteliği** metin kutusuna **uid**yazın.
 
-    b. **First Name öznitelik** metin kutusunda, Azure 'Dan ad özniteliği talep adınızı yazın **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
+    b. **First Name öznitelik** metin kutusunda, Azure 'Dan ad özniteliği talep adınızı yazın **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** .
 
-    c. **Son ad öznitelik** metin kutusunda, Azure 'Dan son ad öznitelik talebi adınızı yazın **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .
+    c. **Son ad öznitelik** metin kutusunda, Azure 'Dan son ad öznitelik talebi adınızı yazın **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** .
 
-    d. **E-posta özniteliği** metin kutusunda, Azure 'Dan e-posta öznitelik talep adınızı yazın **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
+    d. **E-posta özniteliği** metin kutusunda, Azure 'Dan e-posta öznitelik talep adınızı yazın **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
     e. **Değişiklikleri Kaydet**’e tıklayın.
 

@@ -7,12 +7,15 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Databricks çalışma alanı oluşturma - Portal
-      href: quickstart-create-databricks-workspace-portal.md
-    - name: Databricks çalışma alanı oluşturma - Kaynak Yöneticisi şablonu
-      href: quickstart-create-databricks-workspace-resource-manager-template.md
-    - name: Databricks çalışma alanı oluşturma - Sanal ağ
-      href: quickstart-create-databricks-workspace-vnet-injection.md
+    - name: Çalışma alanı oluşturma
+      items:
+        - name: Portal
+          href: quickstart-create-databricks-workspace-portal.md
+        - name: ARM şablonu
+          displayName: Resource Manager
+          href: quickstart-create-databricks-workspace-resource-manager-template.md
+        - name: Sanal ağ
+          href: quickstart-create-databricks-workspace-vnet-injection.md
 - name: Öğreticiler
   items:
     - name: Docker kapsayıcısında çalışan SQL Server’ı sorgulama

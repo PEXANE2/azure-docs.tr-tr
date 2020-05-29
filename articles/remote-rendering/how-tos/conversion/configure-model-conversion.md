@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 104a583122fa08cf145191b8bcee49ce5f042599
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021407"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147961"
 ---
 # <a name="configure-the-model-conversion"></a>Model dönüştürmeyi yapılandırma
 
@@ -178,7 +178,7 @@ Bir bileşeni uygulamasına zorlayarak `NONE` , çıkış kafesinin ilgili akı�
 
 Biçimlerin bellek yazmalar aşağıdaki gibidir:
 
-| Biçimlendir | Açıklama | Bayt başına:::no-loc text="vertex"::: |
+| Biçim | Açıklama | Bayt başına:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|iki bileşen tam kayan nokta duyarlığı|8
 |16_16_FLOAT|iki bileşenden oluşan yarı kayan nokta duyarlığı|4
@@ -202,6 +202,51 @@ Dokularla aydınlatma sağlayan bir photogrammetri modeliniz olduğunu varsayal�
 Varsayılan olarak, dönüştürücünün her zaman bir modelde PBR malzemeleri kullanmak isteyebileceğiniz varsayımında, bu nedenle `normal` `tangent` sizin için, ve verileri üretecektir `binormal` . Sonuç olarak, köşe başına bellek kullanımı (12 bayt) + (8 bayt) + (4 bayt) + ( `position` `texcoord0` `normal` `tangent` 4 bayt) + `binormal` (4 bayt) = 32 bayttır. Bu türün daha büyük modelleri, :::no-loc text="vertices"::: birden fazla gigabayt belleği elde eden çok sayıda daha fazla model elde edebilir. Bu çok büyük miktarlarda veri performansı etkiler ve hatta belleğiniz tükenmez.
 
 Model üzerinde hiçbir şey dinamik aydınlatma gerektirmez ve tüm doku koordinatlarının aralıkta olduğunu bilmenin yanı sıra,,, `[0; 1]` `normal` ve ile `tangent` `binormal` `NONE` `texcoord0` yarı duyarlık ( `16_16_FLOAT` ) ayarlayabilirsiniz :::no-loc text="vertex"::: . Ağ verilerini yarı bir şekilde kesmek, daha büyük modeller yüklemeniz ve potansiyel olarak performansı artırmanızı sağlar.
+
+## <a name="memory-optimizations"></a>Bellek iyileştirmeleri
+
+Yüklenen içeriğin bellek tüketimi, işleme sisteminde bir performans sorunu haline gelebilir. Bellek yükü çok büyük hale gelirse, işleme performansının güvenliğini tehlikeye atabilir veya modelin tamamen yüklenmemesine neden olabilir. Bu paragraf, bellek ayak izini azaltmaya yönelik bazı önemli stratejileri tartışır.
+
+### <a name="instancing"></a>Örnek Oluşturma
+
+Örnek oluşturma, kafeslerin ayrı uzamsal Dönüştürmelere sahip parçalar için yeniden kullanıldığı bir kavramdır. Bu, kendi benzersiz geometrisine başvuruda bulunan her parçanın aksine. Örnek oluşturma, bellek ayak izi üzerinde önemli bir etkiye sahiptir.
+Örnek kullanım örnekleri, bir altyapı modelindeki veya bir mimari modeldeki sandalyeler içindeki screws.
+
+> [!NOTE]
+> Örnek oluşturma, bellek tüketimini (ve dolayısıyla, yükleme sürelerini) önemli ölçüde iyileştirebilir, ancak işleme performansı tarafında iyileştirmeler önemli değildir.
+
+Dönüştürme hizmeti, parçalar kaynak dosyada uygun şekilde işaretlenmişse örnek oluşturma örneği. Bununla birlikte, dönüştürme, yeniden kullanılabilir parçaları belirlemek için ağ verilerinin ayrıntılı analizini gerçekleştirmez. Böylece, içerik oluşturma aracı ve dışa aktarma işlem hattı, doğru örnek oluşturma kurulumu için uygun ölçütlerdir.
+
+Dönüştürme sırasında örnek bilgilerinin korunup korunmayacağını sınamanın basit bir yolu, özel olarak üyenin [Çıkış istatistiklerine](get-information.md#example-info-file)göz atalım `numMeshPartsInstanced` . Değeri `numMeshPartsInstanced` sıfırdan büyükse, kafeslerin örnekler arasında paylaşıldığını gösterir.
+
+#### <a name="example-instancing-setup-in-3ds-max"></a>Örnek: 3ds Max 'da kurulum örnek oluşturma
+
+[Autodesk 3ds Max](https://www.autodesk.de/products/3ds-max) **`Copy`** ,, **`Instance`** , ve **`Reference`** verilen dosyadaki örnek oluşturma ile farklı şekilde davranan farklı nesne kopyalama modlarına sahiptir `.fbx` .
+
+![3ds Max 'da kopyalama](./media/3dsmax-clone-object.png)
+
+* **`Copy`**: Bu modda, kafes klonlanmıştır, bu nedenle hiçbir örnek kullanılmaz ( `numMeshPartsInstanced` = 0).
+* **`Instance`**: İki nesne aynı kafesi paylaşır, bu nedenle örnek oluşturma ( `numMeshPartsInstanced` = 1) kullanılır.
+* **`Reference`**: Benzersiz değiştiriciler geometrilere uygulanabilir, bu nedenle dışarı aktarıcı bir koruyucu yaklaşım seçer ve örnek oluşturma ( `numMeshPartsInstanced` = 0) kullanmaz.
+
+
+### <a name="depth-based-composition-mode"></a>Derinlik tabanlı bileşim modu
+
+Bellek bir sorun oluşturacaksa, oluşturucuyu [derinlik tabanlı kompozisyon moduyla](../../concepts/rendering-modes.md#depthbasedcomposition-mode)yapılandırın. Bu modda, GPU yükü birden fazla GPU genelinde dağıtılır.
+
+### <a name="decrease-vertex-size"></a>Köşe boyutunu azalt
+
+[Bileşen biçimi değişiklikleri için en iyi yöntemler](configure-model-conversion.md#best-practices-for-component-format-changes) bölümünde açıklandığı gibi, köşe biçiminin ayarlanması, bellek ayak izini düşürebilir. Ancak, bu seçenek son çare olmalıdır.
+
+### <a name="texture-sizes"></a>Doku boyutları
+
+Senaryonun türüne bağlı olarak, doku verileri miktarı, ağ verileri için kullanılan belleği engelleyebilir. Photogrammetri modelleri adaylardır.
+Dönüştürme yapılandırması, dokuları otomatik olarak ölçeklendirmek için bir yol sağlamaz. Gerekirse, doku ölçeklendirmesinin bir istemci tarafı ön işleme adımı olarak yapılması gerekir. Dönüştürme adımı ancak uygun bir [doku sıkıştırma biçimi](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)seçer:
+
+* `BC1`donuk renk dokuları için
+* `BC7`alfa kanallı kaynak renk dokuları için
+
+Biçim `BC7` için bellek parmak izi iki kez karşılaştırıldığından `BC1` , giriş dokuların gereksiz bir şekilde alfa kanalı sağlamadıklarından emin olmak önemlidir.
 
 ## <a name="typical-use-cases"></a>Tipik kullanım örnekleri
 

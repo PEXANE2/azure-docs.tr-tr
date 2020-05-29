@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/19/2019
 ms.author: assafi
-ms.openlocfilehash: 187565f2518145dcd554ae4d300174981eb55ea6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6fb6e62dbcf404f0c5f77592c2c8e6565f4bc687
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74284767"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84144983"
 ---
 > [!Tip]
 > Ayrıntılı API teknik belgeleri için aşağıdaki bağlantıları kullanın. Ayrıca, yerleşik API test konsolundan POST istekleri gönderebilirsiniz. Kurulum gerekmez, kaynak anahtarınızı ve JSON belgelerinizi isteğe yapıştırmanız yeterlidir:
-> - En son kararlı API- [v 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1)
-> - En son önizleme API- [v 3.0-Önizleme. 1](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1)
+> - En son kararlı API- [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0)
+> - En son Preview API- [v 3.1-Önizleme. 1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-1)
