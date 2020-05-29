@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: cedc400ac6659cf2b2d0e9c499bf8789a6311e32
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871369"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141900"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -143,7 +143,8 @@ Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin tanımasını 
     > * Değerleri formda göründükleri şekilde etiketleyin; iki farklı etikete sahip iki parçaya bir değeri bölmeye çalışmayın. Örneğin, bir adres alanının birden çok satıra yayılsa bile tek bir etiketle etiketlenmesi gerekir.
     > * Etiketli alanlarınıza anahtar eklemeyin &mdash; yalnızca değerleri.
     > * Tablo verileri otomatik olarak algılanmalı ve son çıktı JSON dosyasında kullanılabilir olacaktır. Ancak, model tüm tablo verilerinizi algılayamazsa, bu alanları da el ile etiketleyebilirsiniz. Tablodaki her hücreyi farklı bir etiketle etiketleyin. Formlarınızın farklı sayıda satır içeren tabloları varsa, en büyük olası tabloyla en az bir form etiketlediğinizden emin olun.
-    > * Uygulanan bir etiketi silmek için, belge görünümünde dikdörtgeni seçin ve DELETE tuşuna basın.
+    > * **+** Etiketlerinizi aramak, yeniden adlandırmak, yeniden sıralamak ve silmek için sağ tarafındaki düğmeleri kullanın.
+    > * Etiket kendisini silmeden uygulanan bir etiketi kaldırmak için belge görünümünde etiketli dikdörtgeni seçin ve DELETE tuşuna basın.
 
 ![Örnek etiketleme aracının ana düzenleyici penceresi](../media/label-tool/main-editor.png)
 

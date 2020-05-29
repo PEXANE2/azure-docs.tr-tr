@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/16/2020
+ms.date: 05/28/2020
 ms.author: shvija
-ms.openlocfilehash: e7f17c589b043a055bd541a0850d9efc8e1d96be
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 4851a3edad9726230a8fc0dd3085caa172c8d5f3
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628870"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147877"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Uygulamanızın birden çok örneği arasında bölüm yükünü dengeleme
 Olay işleme uygulamanızı ölçeklendirmek için, uygulamanın birden çok örneğini çalıştırabilir ve yükün kendileri arasında dengelenmesi sağlayabilirsiniz. Eski sürümlerde, [Eventprocessorhost](event-hubs-event-processor-host.md) , alma sırasında programınızın birden çok örneği ve kontrol noktası olayları arasındaki yükü dengelemenize izin verildi. Yeni sürümlerde (5,0 sonraki sürümler), **Eventprocessorclient** (.net ve Java) veya **Eventhubconsumerclient** (Python ve JavaScript) aynı şekilde yapmanıza olanak sağlar. Geliştirme modeli olayları kullanarak daha basit hale getirilir. Bir olay işleyicisini kaydederek ilgilendiğiniz olaylara abone olursunuz.
@@ -44,7 +44,7 @@ Tüketici dağıtılmış bir ortamda tasarlarken, senaryonun aşağıdaki gerek
 
 ## <a name="event-processor-or-consumer-client"></a>Olay işlemcisi veya tüketici istemcisi
 
-Bu gereksinimleri karşılamak için kendi çözümünüzü derlemeniz gerekmez. Azure Event Hubs SDK 'Ları bu işlevselliği sağlar. .NET veya Java SDK 'larında, bir olay işlemcisi istemcisi (EventProcessorClient) ve Python ve Java betik SDK 'lerinde EventHubConsumerClient komutunu kullanırsınız. SDK 'nın eski sürümünde bu özellikleri destekleyen olay işleyicisi ana bilgisayarı (EventProcessorHost).
+Bu gereksinimleri karşılamak için kendi çözümünüzü derlemeniz gerekmez. Azure Event Hubs SDK 'Ları bu işlevselliği sağlar. .NET veya Java SDK 'larında, bir olay işlemcisi istemcisi (EventProcessorClient) kullanır ve Python ve JavaScript SDK 'lerinde EventHubConsumerClient kullanırsınız. SDK 'nın eski sürümünde bu özellikleri destekleyen olay işleyicisi ana bilgisayarı (EventProcessorHost).
 
 Üretim senaryolarının çoğunluğunda, olayları okumak ve işlemek için olay işlemcisi istemcisini kullanmanızı öneririz. İşlemci istemcisinin, ilerleme durumunu kontrol etmek için bir yol sağlarken bir olay hub 'ının tüm bölümlerindeki olayları performans ve hataya dayanıklı bir şekilde işlemeye yönelik sağlam bir deneyim sağlamaya yöneliktir. Olay işlemcisi istemcileri, belirli bir olay hub 'ı için bir tüketici grubu bağlamında birlikte çalışabilme özelliği de vardır. İstemciler, grup için kullanılabilir veya kullanılamaz hale geldiğinde iş dağıtımını ve iş dengelemeyi otomatik olarak yönetir.
 
@@ -54,7 +54,7 @@ Bir olay işlemcisi örneği, genellikle bir veya daha fazla bölümden olaylar�
 
 Her olay işlemcisine, bir denetim noktası deposundaki bir girişi ekleyerek veya güncelleştirerek bölümlerin, benzersiz bir tanımlayıcı ve talep sahipliği olarak verilmiş olması sağlanır. Tüm olay işlemcisi örnekleri, kendi işleme durumunu güncelleştirmek ve diğer etkin örnekler hakkında bilgi edinmek için bu mağazanızla düzenli olarak iletişim kurar. Bu veriler daha sonra etkin işlemciler arasında yükü dengelemek için kullanılır. Yeni örnekler, ölçeği genişletmek için işleme havuzuna katılabilir. Örnekler doğru olduğunda, hatalardan veya ölçeği ölçeklendirilerek, Bölüm sahipliği diğer etkin işlemcilere düzgün şekilde aktarılır.
 
-Denetim noktası deposundaki bölüm sahipliği kayıtları, Event Hubs ad alanı, Olay Hub 'ı adı, Tüketici grubu, olay işlemci tanımlayıcısı (sahip olarak da bilinir), bölüm kimliği ve son değiştirilme zamanı izler.
+Denetim noktası deposundaki bölüm sahipliği kayıtları, Event Hubs ad alanı, Olay Hub 'ı adı, Tüketici grubu, olay işlemci tanımlayıcısı (sahip olarak da bilinir), bölüm KIMLIĞI ve son değiştirilme zamanı ' nın izini tutar.
 
 
 
@@ -92,7 +92,7 @@ Denetim noktası bir olayı işlenen olarak işaretlemek için gerçekleştirild
 
 ## <a name="thread-safety-and-processor-instances"></a>İş parçacığı güvenliği ve işlemci örnekleri
 
-Varsayılan olarak, olay işlemcisi veya tüketicisi iş parçacığı güvenlidir ve zaman uyumlu bir şekilde davranır. Bir bölüme yönelik olaylar geldiğinde, olayları işleyen işlev çağrılır. İleti göndericisi, arka planda diğer iş parçacıklarında çalışmaya devam ettiğinden, sonraki iletiler ve bu işlev için bu işleve yapılan çağrılar arka planda sıraya açılır. Bu iş parçacığı güvenliği, iş parçacığı açısından güvenli koleksiyonlar gereksinimini ortadan kaldırır ve performansı önemli ölçüde artırır.
+Varsayılan olarak, olayları işleyen işlev, belirli bir bölüm için sıralı olarak çağrılır. Olay göndericisi, diğer iş parçacıklarında arka planda çalışmaya devam ettiğinden, sonraki olaylar ve bu işleve yapılan aynı bölüm sırasından bu işleve yapılan çağrılar. Farklı bölümlerdeki olayların eşzamanlı olarak işlenebileceğini ve bölümler arasında erişilen tüm paylaşılan durumun eşitlenmesi gerektiğini unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki hızlı çalışmaya bakın:

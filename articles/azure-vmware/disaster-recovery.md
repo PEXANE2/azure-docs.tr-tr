@@ -3,18 +3,18 @@ title: Sanal makinelerin olağanüstü durum kurtarmasını tamamlanma
 description: Bu makalede, AVS kullanılarak sanal makinelerin olağanüstü durum kurtarmasının nasıl tamamlanacağı gösterilmektedir
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 86f823444d4fff3edf8651f4d949c71d2c981ec7
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 5fdfc252486d94fcc22ebba9705fa5e259539921
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740557"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148166"
 ---
-# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Azure VMWare çözümünü kullanarak sanal makinelerin olağanüstü durum kurtarmasını tamamlanma
+# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Azure VMware çözümünü kullanarak sanal makinelerin olağanüstü durum kurtarmasını tamamlanma
 
-Bu makale, VMWare karma bulut uzantısı (HCX) çözümü ile sanal makinelerinizin olağanüstü durum kurtarma işlemini tamamlamaya ve kurtarma veya hedef site olarak bir Azure VMWare çözüm özel bulutu kullanmaya yönelik süreci içerir.
+Bu makale, VMware karma bulut uzantısı (HCX) çözümü ile sanal makinelerinizin olağanüstü durum kurtarma işlemini tamamlamaya ve kurtarma veya hedef site olarak bir Azure VMware Çözüm özel bulutu kullanmaya yönelik süreci içerir.
 
-VMWare HCX, çoğaltma ilkelerinde ince denetim ve ayrıntı düzeyi sağlayan çeşitli işlemler sağlar. Kullanılabilir Işlemler şunları içerir:
+VMware HCX, çoğaltma ilkelerinde ince denetim ve ayrıntı düzeyi sağlayan çeşitli işlemler sağlar. Kullanılabilir Işlemler şunları içerir:
 
 - Ters: olağanüstü bir durum meydana geldi. Ters çevirme, site B 'nin, korunan VM 'nin artık yaşadığı kaynak site ve site için olmasına yardımcı olur.
 
@@ -144,7 +144,7 @@ Kaynak siteye geri çoğaltılacak sanal makineleri listeden seçin, **Eylemler*
 
 ## <a name="disaster-recovery-plan-automation"></a>Olağanüstü durum kurtarma planı Otomasyonu
 
-VMWare HCX Şu anda bir olağanüstü durum kurtarma planı oluşturmak ve otomatikleştirmek için yerleşik bir mekanizmaya sahip değildir. Bu özellik HCX içinde yok. Ancak, olağanüstü durum kurtarma işleminin API 'Leri de dahil olmak üzere bir dizi REST API 'si sağlar.
+VMware HCX Şu anda bir olağanüstü durum kurtarma planı oluşturmak ve otomatikleştirmek için yerleşik bir mekanizmaya sahip değildir. Bu özellik HCX içinde yok. Ancak, olağanüstü durum kurtarma işleminin API 'Leri de dahil olmak üzere bir dizi REST API 'si sağlar.
 
 API belirtimine URL içindeki HCX Yöneticisi içinde erişilebilir.
 

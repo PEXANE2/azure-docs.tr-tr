@@ -2,14 +2,14 @@
 title: 'Hızlı başlangıç: Language Understanding (LUSıS) yazma istemci kitaplığı'
 description: Bu hızlı başlangıç ile LUSıS istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 05/27/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: dab36a7688e510b4a23f285deedf7d670cd78d10
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 9a9b5ded11c1164b5608953433ee36a14b6e7659
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871256"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141526"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>Hızlı başlangıç: Language Understanding (LUSıS) yazma istemci kitaplığı
 
@@ -33,6 +33,6 @@ Language Understanding (LUSıS) istemci kitaplığı ile çalışmaya başlayın
 >[Tahmin uç noktasını sorgulamak için SDK 'Yı kullanma](sdk-query-prediction-endpoint.md)
 
 * [Language Understanding (LUSıS) API nedir?](what-is-luis.md)
-* [Yenilikler](whats-new.md)
+* [Yenilikler nelerdir?](whats-new.md)
 * [Amaçlar](luis-concept-intent.md), [varlıklar](luis-concept-entity-types.md)ve [örnek](luis-concept-utterance.md)bildirimler ve [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs)' da bulunabilir.

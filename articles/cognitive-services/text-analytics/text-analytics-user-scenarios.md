@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb82422aa0e3d45743539da623fcb919e8e77bbc
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219252"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141831"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Metin Analizi API'si için örnek kullanıcı senaryoları
 
@@ -50,6 +50,13 @@ Yapılandırılmamış metinsel biçimde gönderilen destek isteklerini işlemek
 Belgelerde kişisel ve hassas bilgileri tanımlamak için adlandırılmış varlık tanımayı kullanın. Belgeleri sınıflandırmak veya Redaksiyonları kullanarak güvenli bir şekilde paylaşılabilmesi için verileri kullanın.
 
 ![Kişisel bilgileri algılamak ve belgeleri sınıflandırmak ve Redaksiyonları belirlemek için NER 'in nasıl kullanılacağını açıklayan bir görüntü](media/use-cases/sensitive-docs.jpg)
+
+## <a name="perform-opinion-mining"></a>Fikrinizi araştırma gerçekleştirme
+
+Anketler, müşteri geri bildirimleri veya metnin bir en boy hakkındaki görüşlerinizi elinde tutan bir ürün ya da hizmetin belirli yönlerine ilişkin Grup eklentileri. Ürünün başlatma ve iyileştirmeler, pazarlama çabaları veya ürününüzün veya hizmetinizin nasıl çalıştığını vurgulamada yardımcı olması için bunu kullanın. 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="media/use-cases/aspect-based-sentiment.png" alt-text="Bir otel hakkında örnek opın.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

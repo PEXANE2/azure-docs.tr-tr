@@ -5,14 +5,14 @@ ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 06/19/2019
+ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77661541"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148268"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics verilerinin panolarını oluşturma ve paylaşma
 
@@ -35,6 +35,14 @@ Varsayılan [panonuzu](../../azure-portal/azure-portal-dashboards.md)açmak içi
 ![Azure portalı panosu](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 Burada tüm Azure kaynaklarınız arasında Azure Log Analytics telemetri verileri gibi BT için en önemli olan işlem verilerini bir araya getirebilirsiniz.  Bir günlük sorgusunu görselleştirmeye başlamadan önce, ilk olarak bir pano oluşturup paylaşalım.  Daha sonra, bir çizgi grafik olarak işlenecek ve panoya ekleyeceğiniz örnek performans günlüğü sorgusuna odaklanabiliyoruz.  
+
+> [!NOTE]
+> Aşağıdaki grafik türleri, günlük sorguları kullanılarak Azure panolarında desteklenir:
+> - areachart
+> - columnChart
+> - piechart (panoda halka olarak işlenir)
+> - dağınık tergrafik
+> - timechart
 
 Bir pano oluşturmak için geçerli pano adının yanındaki **Yeni pano** düğmesini seçin.
 

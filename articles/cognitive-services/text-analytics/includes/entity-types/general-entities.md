@@ -6,184 +6,53 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/06/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 60cd6b8ba2cbfca497ae1b92113b12e85a34bf26
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 32e80c50ff6f543679852cbd7e5ce9bda92d01e1
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778284"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140964"
 ---
-## <a name="general-entity-types"></a>Genel varlık türleri:
-
-### <a name="person"></a>Kişi
-
-Metindeki kişi adlarını tanır.
-
-Diller:
-* Genel Önizleme: `Arabic` , `Czech` , `Chinese-Simplified` , `Danish` , `Dutch` , `English` , `Finnish` , `French` , `German` , `Hungarian` , `Italian` , `Japanese` , `Korean` , `Norwegian (Bokmål)` , `Polish` , `Portuguese (Portugal)` , `Portuguese (Brazil)` , `Russian` , `Spanish` `Swedish` ,,,,, ve`Turkish`
-
-| Alt tür adı | Açıklama                                                      | Model sürümünden itibaren kullanılabilir |
-|--------------|------------------------------------------------------------------|---------------------------------------|
-| Yok          | Tanınan kişi adları `Bill Gates` , örneğin`Marie Curie` | `2019-10-01`                          | 
-
-### <a name="persontype"></a>Kişilik türü
-Bir kişi tarafından tutulan iş türü veya rol.
-
-Diller:
-* Genel Önizleme:`English`
-
-| Alt tür adı | Açıklama                                                                                | Model sürümünden itibaren kullanılabilir |
-|--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| Yok          | İş `civil engineer` türleri Örneğin,,,, `salesperson` `chef` `librarian``nursing aide` | `2020-02-01`                           |
-
-### <a name="location"></a>Konum
-
-Doğal ve insan tarafından oluşturulan yer işaretleri, yapılar, coğrafi özellikler ve geopolitik varlıklar.
-
-Diller:
-
-* Genel Önizleme: `Arabic` , `Czech` , `Chinese-Simplified` , `Danish` , `Dutch` , `English` , `Finnish` , `French` , `German` , `Hungarian` , `Italian` , `Japanese` , `Korean` , `Norwegian (Bokmål)` , `Polish` , `Portuguese (Portugal)` , `Portuguese (Brazil)` , `Russian` , `Spanish` `Swedish` ,,,,, ve`Turkish`
-
-| Alt tür adı              | Açıklama                                                                              | Model sürümünden itibaren kullanılabilir |
-|---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| Yok                       | konumlar `Atlantic Ocean` , örneğin,, `library` , `Eiffel Tower``Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitik varlık (GPE)-yalnızca Ingilizce| Şehirlerin, ülkelerin/bölgelerin `Seattle` , örneğin,,,, `Pennsylvania` `South Africa``Tokyo` | `2020-02-01`                           |
-
-### <a name="organization"></a>Kuruluş  
-
-Tanınan kuruluşlar, şirketler, kurumlar ve diğer kişi grupları. Örneğin: şirketler, siyatik gruplar, müzik bantları, spor sinek, kamu gövdeleri ve kamu kuruluşları. Bu varlık türünde ülke almallikleri ve dini dahil değildir. 
-
-Diller: 
-
-* Genel Önizleme: `Arabic` , `Czech` , `Chinese-Simplified` , `Danish` , `Dutch` , `English` , `Finnish` , `French` , `German` , `Hungarian` , `Italian` , `Japanese` , `Korean` , `Norwegian (Bokmål)` , `Polish` , `Portuguese (Portugal)` , `Portuguese (Brazil)` , `Russian` , `Spanish` `Swedish` ,,,,, ve`Turkish`
-
-| Alt tür adı | Açıklama                                                                                             | Model sürümünden itibaren kullanılabilir |
-|--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| Yok          | kuruluşlar `Microsoft` , örneğin,, `NASA` , `National Oceanic and Atmospheric Administration``VOA` | `2019-10-01`                           |
-
-### <a name="event"></a>Olay  
-
-Geçmiş, sosyal ve doğal ortaya çıkma olayları.  
-
-Diller: 
-
-* Genel Önizleme:`English`
-
-| Alt tür adı | Açıklama                                                            | Model sürümünden itibaren kullanılabilir |
-|--------------|------------------------------------------------------------------------|----------------------------------------|
-| Yok          | ,,, `wedding` ,,,, `hurricane` `car accident` ,, `solar eclipse``American Revolution` | `2020-02-01`                           |
-
-### <a name="product"></a>Ürün  
-
-Çeşitli kategorilerin fiziksel nesneleri.  
-
-Diller: 
-
-* Genel Önizleme:`English`
-
-| Alt tür adı | Açıklama                                                                        | Model sürümünden itibaren kullanılabilir |
-|--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| Yok          | Örneğin,,, `Microsoft Surface laptop` ,, `sunglasses` `motorcycle` `bag``Xbox` | `2020-02-01`                           |
-| Bilgi işlem    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
-
-### <a name="skill"></a>İmde  
-
-Bir özelliği veya uzmanlığı açıklayan bir varlık.  
-
-Diller: 
-
-* Genel Önizleme:`English`
-
-| Alt tür adı | Açıklama                                                                 | Model sürümünden itibaren kullanılabilir |
-|--------------|-----------------------------------------------------------------------------|----------------------------------------|
-| Yok          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
-
-### <a name="phone-number"></a>Telefon Numarası
-
-Telefon numaraları (yalnızca ABD telefon numaraları). 
-
-Diller:
-
-* Genel Önizleme:`English`
-
-| Alt tür adı | Açıklama                                    | Model sürümünden itibaren kullanılabilir |
-|--------------|------------------------------------------------|----------------------------------------|
-| Yok          | ABD telefon numaraları, örneğin`(312) 555-0176` | `2019-10-01`                           |
-
-### <a name="email"></a>E-posta
-
-E-posta adresi. 
-
-Diller:
-
-* Genel Önizleme:`English`
-
-| Alt tür adı | Açıklama                                      | Model sürümünden itibaren kullanılabilir |
-|--------------|--------------------------------------------------|----------------------------------------|
-| Yok          | Örneğin, e-posta adresi`support@contoso.com` | `2019-10-01`                           |
-
-### <a name="url"></a>URL
-
-Internet URL 'Leri.
-
-Diller:
-
-* Genel Önizleme:`English`
-
-| Alt tür adı | Açıklama                                          | Model sürümünden itibaren kullanılabilir |
-|--------------|------------------------------------------------------|----------------------------------------|
-| Yok          | Web sitelerine yönelik URL 'Ler, örneğin`https://www.bing.com` | `2019-10-01`                           |
-
-### <a name="ip-address"></a>IP Adresi
-
-Internet Protokolü adresi
-
-Diller:
-
-* Genel Önizleme:`English`
-
-| Alt tür adı | Açıklama                              | Model sürümünden itibaren kullanılabilir |
-|--------------|------------------------------------------|----------------------------------------|
-| Yok          | Örneğin ağ adresi`10.0.0.101` | `2019-10-01`                           |
-
-###  <a name="datetime"></a>DateTime
-
-Tarih ve saat varlıkları. 
-
-* Model sürümünden itibaren kullanılabilir`2019-10-01`
-
-Diller:
-
-* Genel Önizleme: `Chinese-Simplified` , `English` , `French` `German` ve`Spanish`
-
-| Alt tür adı    | Örnekler                     |
-|-------------|------------------------------|
-| Yok         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
-| Tarih  | `May 2nd, 2017`, `05/02/2017`       |
-| Zaman     | `8:15`, `6AM`              |
-| DateRange    | `August 2nd to August 5th`         |
-| TimeRange   | `4-6PM`, `10:00AM to Noon`          |
-| Süre | `2.5 minutes`, `one and a half hours`         |
-| Ayarla | `every Saturday`         |
-
-###  <a name="quantity"></a>Miktar
-
-Sayılar ve sayısal miktarlar. 
-
-* Model sürümünden itibaren kullanılabilir`2019-10-01`
-
-Diller:
-
-* Genel Önizleme: `Chinese-Simplified` , `English` , `French` `German` ve`Spanish`
-
-| Alt tür adı    | Örnekler                     |
-|-------------|------------------------------|
-| Sayı         | `6`, `six`                   |
-| Yüzde  | `50%`, `fifty percent`       |
-| Numarasını     | `2nd`, `second`              |
-| Yaş         | `90 day old`, `30 years old` |
-| Para birimi    | `$10.99`, `&euro;30.00`           |
-| Boyut   | `10 miles`, `40 cm`          |
-| Sıcaklık | `32 degrees`, `10°C`         |
+Uç noktaya istek gönderilirken aşağıdaki varlık kategorileri döndürülür `/entities/recognition/general` .
+
+| Kategori   | Subcategory | Açıklama                          | Model sürümü başlatılıyor                                                    | Notlar |
+|------------|-------------|--------------------------------------|-------------------------------------------------------------|--------------------------------------|
+| Kişi     | YOK         | Kişilerin adları.  | `2019-10-01`  | Ayrıca, NER v 2.1 tarafından döndürülen |
+| Kişilik türü | YOK         | Bir kişi tarafından tutulan iş türleri veya roller. | `2020-02-01` | |
+|Konum    | YOK         | Doğal ve insan tarafından oluşturulan yer işaretleri, yapılar, coğrafi özellikler ve geopolitik varlıklar     |  `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+|Konum     | Geopolitik varlık (GPE)        | Şehir, ülke/bölge, eyalet.      | `2020-02-01` | |
+|Konum     | Yapısal                       | Manın yapıları. | `2020-04-01` | |
+|Konum     | Coğrafi       | Rivers, Oceans ve deserler gibi coğrafi ve doğal Özellikler. |  `2020-04-01` | |
+|Kuruluş  | YOK | Şirketler, siyatik gruplar, müzik bantları, spor sinek, kamu gövdeleri ve kamu kuruluşları.  | `2019-10-01` | Bu varlık türünde ülke almallikleri ve dini dahil değildir. Ayrıca, NER v 2.1 tarafından döndürülen |
+|Kuruluş | Birinin | Tıbbi şirketler ve gruplar. | `2020-04-01` |  |
+|Kuruluş | Stok alışverişi | Kambiyo senedi grupları. | `2020-04-01` | |
+| Kuruluş | Spor | Spor ile ilgili kuruluşlar. | `2020-04-01` |  |
+| Olay  | YOK | Geçmiş, sosyal ve doğal olarak gerçekleşen olaylar. | `2020-02-01` |  |
+| Olay  | Kültürel | Kültürel olaylar ve tatiller. | `2020-04-01` | |
+| Olay  | Olmayan | Doğal olarak gerçekleşen olaylar. | `2020-04-01` |  |
+| Olay  | Spor | Spor olayları.  | `2020-04-01` | |
+| Ürün | YOK | Çeşitli kategorilerin fiziksel nesneleri. | `2020-02-01` | |
+| Ürün | Ürünleri hesaplama | Ürünleri hesaplama. |  `2020-02-01 ` | |
+| İmde | YOK | Yetenek, beceri veya uzmanlık. | `2020-02-01` |  |
+| Adres | YOK | Tam posta adresleri.  | `2020-04-01` |  |
+| PhoneNumber | YOK | Telefon numaraları (yalnızca ABD ve AB telefon numaraları). | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| E-posta | YOK | E-posta adresleri. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| URL | YOK | Web sitelerinin URL 'Leri. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen  |
+| IP | YOK | Ağ IP adresleri. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| DateTime | YOK | Günün tarihleri ve saatleri. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen | 
+| DateTime | Tarih | Takvim tarihleri. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| DateTime | Saat | Günün saati | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| DateTime | DateRange | Tarih aralıkları. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| DateTime | TimeRange | Zaman aralıkları. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| DateTime | Süre | Sürelerde. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| DateTime | Ayarla | Ayarlama, yinelenme süreleri. |  `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| Miktar | YOK | Sayılar ve sayısal miktarlar. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen  |
+| Miktar | Sayı | Sayılarının. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| Miktar | Yüzde | Değerleri.| `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| Miktar | Numarasını | Sıra sayıları. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| Miktar | Yaş | Geçirir. | `2019-10-01` |  Ayrıca, NER v 2.1 tarafından döndürülen |
+| Miktar | Para Birimi | Ayarlarsanız. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| Miktar | Boyut | Boyutlar ve ölçümler. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |
+| Miktar | Sıcaklık | Sıcak. | `2019-10-01` | Ayrıca, NER v 2.1 tarafından döndürülen |

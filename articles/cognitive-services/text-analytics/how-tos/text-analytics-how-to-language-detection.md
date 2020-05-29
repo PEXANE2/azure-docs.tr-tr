@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 07/30/2019
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 58f2dc39c185e158a2b4b1b5e73b6b7d589c8c03
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5b3893dce2d20b1de0a78f11263d880e262098d2
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745582"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142393"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Örnek: Metin Analizi Dili algıla
 
-Azure Metin Analizi REST API [dil algılama](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) özelliği, her belge için metin girişini değerlendirir ve analizin gücünü gösteren bir puanla birlikte Dil tanımlayıcıları döndürür.
+Azure Metin Analizi REST API [dil algılama](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) özelliği, her belge için metin girişini değerlendirir ve analizin gücünü gösteren bir puanla birlikte Dil tanımlayıcıları döndürür.
 
 Bu özellik, dilin bilinmediği rastgele metni toplayan içerik depoları için kullanışlıdır. Giriş belgesinde hangi dilin kullanıldığını belirlemek için bu analizin sonuçlarını ayrıştırabilirsiniz. Yanıt Ayrıca modelin güvenini yansıtan bir puan döndürür. Puan değeri 0 ile 1 arasındadır.
 
@@ -67,16 +67,16 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiy
 
 İstek tanımı hakkında daha fazla bilgi için bkz. [Metin Analizi API'si çağırma](text-analytics-how-to-call-api.md). Kolaylık olması için aşağıdaki noktalar yeniden belirtilmektedir:
 
-+ Bir POST isteği oluşturun. Bu isteğin API belgelerini gözden geçirmek için [DIL ALGıLAMA API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)'sine bakın.
++ Bir POST isteği oluşturun. Bu isteğin API belgelerini gözden geçirmek için [DIL ALGıLAMA API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)'sine bakın.
 
-+ Dil algılama için HTTP uç noktasını ayarlayın. Azure 'da bir Metin Analizi kaynağı veya örneği oluşturulmuş bir [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanın. URL 'ye dahil etmeniz gerekir `/text/analytics/v2.1/languages` . Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
++ Dil algılama için HTTP uç noktasını ayarlayın. Azure 'da bir Metin Analizi kaynağı veya örneği oluşturulmuş bir [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanın. URL 'ye dahil etmeniz gerekir `/text/analytics/v3.0/languages` . Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`.
 
 + Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
 
 + İstek gövdesinde, bu analiz için hazırladığınız JSON belgeleri koleksiyonunu sağlayın.
 
 > [!Tip]
-> İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya [belgelerdeki](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)**API testi konsolu**’nu açın.
+> İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya [belgelerdeki](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)**API testi konsolu**’nu açın.
 
 ## <a name="step-2-post-the-request"></a>2. Adım: isteği GÖNDERIN
 
@@ -96,61 +96,57 @@ Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya �
 1,0 pozitif puanı, analizin mümkün olan en yüksek güvenilirlik düzeyini ifade eder.
 
 ```json
-    {
-        "documents": [
-            {
-                "id": "1",
-                "detectedLanguages": [
-                    {
-                        "name": "English",
-                        "iso6391Name": "en",
-                        "score": 1
-                    }
-                ]
+{
+    "documents": [
+        {
+            "id": "1",
+            "detectedLanguage": {
+                "name": "English",
+                "iso6391Name": "en",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "2",
-                "detectedLanguages": [
-                    {
-                        "name": "Spanish",
-                        "iso6391Name": "es",
-                        "score": 1
-                    }
-                ]
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "3",
-                "detectedLanguages": [
-                    {
-                        "name": "French",
-                        "iso6391Name": "fr",
-                        "score": 1
-                    }
-                ]
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "detectedLanguage": {
+                "name": "French",
+                "iso6391Name": "fr",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "4",
-                "detectedLanguages": [
-                    {
-                        "name": "Chinese_Simplified",
-                        "iso6391Name": "zh_chs",
-                        "score": 1
-                    }
-                ]
+            "warnings": []
+        },
+        {
+            "id": "4",
+            "detectedLanguage": {
+                "name": "Chinese_Simplified",
+                "iso6391Name": "zh_chs",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "5",
-                "detectedLanguages": [
-                    {
-                        "name": "Russian",
-                        "iso6391Name": "ru",
-                        "score": 1
-                    }
-                ]
-            }
-        ],
-        "errors": []
-    }
+            "warnings": []
+        },
+        {
+            "id": "5",
+            "detectedLanguage": {
+                "name": "Russian",
+                "iso6391Name": "ru",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
+}
 ```
 
 ### <a name="ambiguous-content"></a>Belirsiz içerik
@@ -190,7 +186,7 @@ Hizmetin artık daha iyi bir değerlendirme yapmak için ek bağlamı vardır:
                     {
                         "name": "English",
                         "iso6391Name": "en",
-                        "score": 1
+                        "confidenceScore": 1
                     }
                 ]
             },
@@ -200,7 +196,7 @@ Hizmetin artık daha iyi bir değerlendirme yapmak için ek bağlamı vardır:
                     {
                         "name": "French",
                         "iso6391Name": "fr",
-                        "score": 1
+                        "confidenceScore": 1
                     }
                 ]
             }
@@ -218,7 +214,7 @@ Hizmetin artık daha iyi bir değerlendirme yapmak için ek bağlamı vardır:
             {
                 "name": "(Unknown)",
                 "iso6391Name": "(Unknown)",
-                "score": "NaN"
+                "confidenceScore": "NaN"
             }
         ]
     }
@@ -254,7 +250,7 @@ Elde edilen çıktı, daha zayıf bir güvenilirlik düzeyini belirten 1,0 ' den
             {
               "name": "Spanish",
               "iso6391Name": "es",
-              "score": 0.9375
+              "confidencescore": 0.94
             }
           ]
         }
@@ -267,17 +263,13 @@ Elde edilen çıktı, daha zayıf bir güvenilirlik düzeyini belirten 1,0 ' den
 
 Bu makalede, Azure bilişsel hizmetler 'de Metin Analizi kullanarak dil algılama kavramlarını ve iş akışını öğrendiniz. Aşağıdaki noktaları açıklanmaktadır ve gösterilmiştir:
 
-+ [Dil algılama](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) , çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel veya kültürel dilleri için kullanılabilir.
++ [Dil algılama](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) , çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel veya kültürel dilleri için kullanılabilir.
 + İstek gövdesindeki JSON belgeleri bir KIMLIK ve metin içerir.
 + POST isteği, `/languages` kişiselleştirilmiş bir [erişim anahtarı ve](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) aboneliğiniz için geçerli olan bir uç nokta kullanarak bir uç noktaya gönderilir.
 + Yanıt çıktısı her belge KIMLIĞI için dil tanımlayıcılarından oluşur. Çıktı, JSON kabul eden herhangi bir uygulamaya akışla eklenebilir. Örnek uygulamalar, birkaç kez ad vermek için Excel ve Power BI içerir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
- [Metin analizi genel bakış](../overview.md) hakkında [sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)</br>
- [Metin Analizi ürün sayfası](//go.microsoft.com/fwlink/?LinkID=759712)
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-> [!div class="nextstepaction"]
-> [Yaklaşımı analiz etme](text-analytics-how-to-sentiment-analysis.md)
+* [Metin Analizine genel bakış](../overview.md)
+* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/text-analytics-sdk.md)
+* [Yenilikler](../whats-new.md)

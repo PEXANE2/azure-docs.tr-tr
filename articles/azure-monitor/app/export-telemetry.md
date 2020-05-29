@@ -3,12 +3,12 @@ title: Application Insights 'ten Telemetriyi sürekli dışa aktarma | Microsoft
 description: Tanılama ve kullanım verilerini Microsoft Azure depolama alanına aktarın ve buradan indirin.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 42a96cf014d7d02e440af03bc3a9c1d40e5f0cbc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 91bce217b1b8d7c86c7d75ecd4ce6b698019e169
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017551"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147979"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights’tan telemetriyi dışarı aktarma
 Telemetrinizi standart saklama süresinden daha uzun süre tutmak mı istiyorsunuz? Ya da özel bir şekilde işlesin mi? Sürekli dışa aktarma bu için idealdir. Application Insights portalında gördüğünüz olaylar JSON biçiminde Microsoft Azure depoya aktarılabilir. Buradan, verilerinizi indirebilir ve işlemek için gereken her kodu yazabilirsiniz.  
@@ -33,8 +33,6 @@ Sürekli dışa aktarma Işlemi, verilerinizi depolama alanına kopyaladıktan s
 Sürekli dışarı aktarma, aşağıdaki Azure depolama özelliklerini/yapılandırmasını **desteklemez** :
 
 * Azure Blob depolama ile birlikte [VNET/Azure Storage güvenlik duvarları](https://docs.microsoft.com/azure/storage/common/storage-network-security) kullanımı.
-
-* Azure Blob depolama için [Sabit depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .
 
 * [Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
 

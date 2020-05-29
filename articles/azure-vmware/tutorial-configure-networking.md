@@ -3,18 +3,18 @@ title: Öğretici-Azure 'da VMware özel bulutunuz için ağı yapılandırma
 description: Özel bulutunuzu Azure 'da dağıtmak için gereken ağı oluşturmayı ve yapılandırmayı öğrenin
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 5a8086f78f465f52d0f9107932c09c4690f505e8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 6cac420fb77526746dbdbfef5a88b071c007d555
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873860"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148115"
 ---
-# <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Öğretici: Azure 'da VMWare özel bulutunuz için ağı yapılandırma
+# <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Öğretici: Azure 'da VMware özel bulutunuz için ağı yapılandırma
 
 Bir Azure VMware çözümü (AVS) özel bulutu bir sanal ağ gerektirir. AVS, önizleme sırasında şirket içi vCenter 'ı desteklemediğinden, şirket içi ortamınıza tümleştirme için ek adımlar gereklidir. ExpressRoute bağlantı hattını ve bir sanal ağ geçidini ayarlamak da gereklidir ve bu öğreticide değinilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Sanal Ağ Oluşturma
@@ -68,10 +68,10 @@ Kaynak grubunuzda, yeni bir kaynak eklemek için **+ Ekle** ' yi seçin.
 | **Abonelik** | Bu değer, kaynak grubunun ait olduğu abonelikle zaten doldurulmuştur. |
 | **Kaynak grubu** | Bu değer, geçerli kaynak grubu için zaten doldurulmuştur. Bu, önceki bir testte oluşturduğunuz kaynak grubu olmalıdır. |
 | **Adı** | Sanal ağ geçidi için benzersiz bir ad girin. |
-| **Geli** | Sanal ağ geçidinin coğrafi konumunu seçin. |
+| **Bölge** | Sanal ağ geçidinin coğrafi konumunu seçin. |
 | **Ağ geçidi türü** | **ExpressRoute**' ı seçin. |
 | **VPN türü** | **Rota tabanlı**' ı seçin. |
-| **ISTEYIN** | Varsayılan değeri bırakın: **Standart**. |
+| **SKU** | Varsayılan değeri bırakın: **Standart**. |
 | **Sanal ağ** | Daha önce oluşturduğunuz sanal ağı seçin. Sanal ağı görmüyorsanız, ağ geçidinin bölgesinin sanal ağınızın bölgesiyle eşleştiğinden emin olun. |
 | **Ağ geçidi alt ağ adres aralığı** | Bu değer, sanal ağı seçtiğinizde doldurulur. Varsayılan değeri değiştirmeyin. |
 | **Genel IP adresi** | **Yeni oluştur**’u seçin. |

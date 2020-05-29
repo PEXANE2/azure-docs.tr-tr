@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: 1a0015c12f942eebb0a26738f5d7144bbe28ef1c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fe32d67dd5d15ccf2f889cf40b79d35c890d5313
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022299"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148302"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırma
 
@@ -108,8 +108,9 @@ Azure SQL veritabanı yönetilen örnek Aracısı işinden paket yürütmeyi ipt
 1. **Msdb. dbo. sysjobs**öğesinden SQL Agent iş **kimliği** ' ni bulun.
 1. Bu sorguyu kullanarak, iş KIMLIĞINE göre karşılık gelen SSIS **ExecutionID** 'sini bulun:
    ```sql
-   select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
+   select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
+   SSIS paketleriniz SSSıSDB 'leriyse, iş yürütmesi için tablo olarak **SSISDB. Internal. execution_parameter_values** kullanın. SSIS paketleriniz dosya sistemiyse **SSISDB. Internal. execution_parameter_values_noncatalog**kullanın.
 1. SSıSDB kataloğuna sağ tıklayın ve ardından **etkin işlemler**' i seçin.
 
    ![SSSıSDB kataloğunun kısayol menüsünde "Etkin Işlemler"](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
