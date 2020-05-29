@@ -1,21 +1,21 @@
 ---
 title: CIS Microsoft Azure temel geçişleri kıyaslama şeması örnek denetimleri
 description: CIS, kıyaslama şeması örneğini Azure Ilkesine göre Microsoft Azure.
-ms.date: 05/06/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: 2163162f52eb4ad7f580c01d6539c242bd332645
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: b6029e147af49cfb91078c6228615c32ad2db5fe
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82863969"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167239"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel kıyaslama kıyaslama şeması örneği
 
 Aşağıdaki makalede, Azure şemaları CIS Microsoft Azure, kıyaslama şeması örnek haritaları olan CIS Microsoft Azure, kıyaslama önerilerini temel alarak ve Öneriler hakkında daha fazla bilgi için bkz. [cıs Microsoft Azure kuruluş kıyaslaması](https://www.cisecurity.org/benchmark/azure/).
 
 Aşağıdaki eşlemeler, **Yönetim ve kıyaslama v 1.1.0** önerilerini temel alarak Microsoft Azure. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir öneri eşlemesine atlayın.
-Eşlenmiş önerilerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, ** \[\] önizleme denetimi Microsoft Azure CIS 'yi bulun ve seçin. kıyaslama v 1.1.0 önerilerini temel alarak ve denetim gereksinimleri yerleşik ilke girişimi 'ni desteklemek için belirli VM uzantılarını dağıtın** .
+Eşlenmiş önerilerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, önizleme denetimi Microsoft Azure CIS 'yi bulun ve seçin. ** \[ \] kıyaslama v 1.1.0 önerilerini temel alarak ve denetim gereksinimleri yerleşik ilke girişimi 'ni desteklemek Için belirli VM uzantılarını dağıtın** .
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md)bakın.
@@ -192,14 +192,14 @@ Bu şema, SQL Server günlüklerinin en az 90 gün boyunca bekletildiğinden emi
 
 ## <a name="44-ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>4,4 SQL Server üzerinde ' Gelişmiş veri güvenliği 'nin ' açık ' olarak ayarlandığından emin olun
 
-Bu şema, SQL sunucularında ve SQL yönetilen örneklerinde gelişmiş veri güvenliğinin etkinleştirildiğinden emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+Bu şema, SQL veritabanı ve SQL yönetilen örnek sunucularında gelişmiş veri güvenliğinin etkin olmasını sağlamanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - Gelişmiş veri güvenliği, SQL yönetilen örneklerinizin üzerinde etkinleştirilmelidir
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4,5 ' tehdit algılama türleri ' ' All ' olarak ayarlandığından emin olun
 
-Bu şema, Gelişmiş tehdit korumasının SQL sunucularında ve SQL yönetilen örneklerinde düzgün şekilde yapılandırıldığından emin olmanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
+Bu şema, Gelişmiş tehdit korumasının SQL veritabanı ve SQL yönetilen örnek sunucularında düzgün şekilde yapılandırıldığından emin olmanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
 
 - Gelişmiş tehdit koruması türleri SQL Server Gelişmiş veri güvenliği ayarları 'nda ' tümü ' olarak ayarlanmalıdır
 - Gelişmiş tehdit koruması türleri SQL yönetilen örneği gelişmiş veri güvenliği ayarları içinde ' All ' olarak ayarlanmalıdır
@@ -232,7 +232,7 @@ Bu şema, SQL veritabanlarında saydam veri şifrelemesi etkinleştirildiğinden
 
 ## <a name="410-ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>4,10 SQL Server 'ın TDE koruyucunun BYOK ile şifrelendiğinden emin olun (kendi anahtarınızı kullanın)
 
-Bu şema, SQL Server 'lar için saydam veri şifrelenmiş koruyucunun ve SQL yönetilen örneklerin kendi anahtarınızla şifrelendiğinden emin olmanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
+Bu şema, SQL veritabanı için saydam veri şifrelenmiş koruyucunun ve SQL yönetilen örnek sunucularının kendi anahtarınızla şifrelendiğinden emin olmanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
 
 - SQL Server TDE koruyucusu kendi anahtarınızla şifrelenmelidir
 - SQL yönetilen örnek TDE koruyucusu kendi anahtarınızla şifrelenmelidir
@@ -524,8 +524,8 @@ Bu şema, Web uygulamalarının en son http sürümünü kullanmasını sağlama
 Artık CIS Microsoft Azure temel alan Kıyaslanmaların denetim eşlemesini gözden geçirdiğinize göre, girişimi atamak için Azure portal Azure Ilkesi şeması hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [CIS Microsoft Azure temel kıyaslanmaları kıyaslama şeması-genel bakış](./index.md)
-> [CIS Microsoft Azure temelleri kıyaslaması şeması, dağıtım adımları](./deploy.md)
+> [Cıs Microsoft Azure temel geçişleri kıyaslama şeması-genel bakış](./index.md) 
+>  [CIS Microsoft Azure temelleri kıyaslaması şeması şema-Deploy adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

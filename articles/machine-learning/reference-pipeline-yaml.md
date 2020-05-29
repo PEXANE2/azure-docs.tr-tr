@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: cee6de8fda45c429d0c74a3ecdc966b49e092567
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0bf5a722c611f4d1c5446eb739fdd95b7edbc934
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208508"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170537"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>YAML 'de makine öğrenimi işlem hatlarını tanımlama
 
@@ -25,14 +25,15 @@ Aşağıdaki tabloda, YAML 'de bir işlem hattı tanımlarken ne olduğu ve şu 
 
 | Adım türü | Destekleniyor mu? |
 | ----- | :-----: |
-| PythonScriptStep | Yes |
-| AdlaStep | Yes |
-| AzureBatchStep | Yes |
-| DatabricksStep | Yes |
-| DataTransferStep | Yes |
+| PythonScriptStep | Evet |
+| ParallelRunStep | Evet |
+| AdlaStep | Evet |
+| AzureBatchStep | Evet |
+| DatabricksStep | Evet |
+| DataTransferStep | Evet |
 | Oto Mlstep | Hayır |
 | HyperDriveStep | Hayır |
-| ModuleStep | Yes |
+| ModuleStep | Evet |
 | MPIStep | Hayır |
 | EstimatorStep | Hayır |
 
@@ -50,14 +51,14 @@ Aşağıdaki tabloda, YAML 'de bir işlem hattı tanımlarken ne olduğu ve şu 
 
 ## <a name="parameters"></a>Parametreler
 
-`parameters` Bölüm, [pipelineparameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py) sınıfına karşılık gelen aşağıdaki anahtarları kullanır:
+`parameters`Bölüm, [pipelineparameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py) sınıfına karşılık gelen aşağıdaki anahtarları kullanır:
 
 | YAML anahtarı | Açıklama |
 | ---- | ---- |
-| `type` | Parametrenin değer türü. `string`Geçerli türler `int`, `float` `bool`,, veya. `datapath` |
+| `type` | Parametrenin değer türü. Geçerli türler,,, `string` `int` `float` `bool` veya `datapath` . |
 | `default` | Varsayılan değer. |
 
-Her parametre olarak adlandırılır. Örneğin, aşağıdaki YAML kod parçacığı, ve `NumIterationsParameter` `DataPathParameter` `NodeCountParameter`adlı üç parametreyi tanımlar:
+Her parametre olarak adlandırılır. Örneğin, aşağıdaki YAML kod parçacığı, ve adlı üç parametreyi `NumIterationsParameter` tanımlar `DataPathParameter` `NodeCountParameter` :
 
 ```yaml
 pipeline:
@@ -78,14 +79,14 @@ pipeline:
 
 ## <a name="data-reference"></a>Veri başvurusu
 
-`data_references` Bölüm, [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)öğesine karşılık gelen aşağıdaki anahtarları kullanır:
+`data_references`Bölüm, [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)öğesine karşılık gelen aşağıdaki anahtarları kullanır:
 
 | YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `datastore` | Başvurulacak veri deposu. |
 | `path_on_datastore` | Veri başvurusu için yedekleme depolama alanındaki göreli yol. |
 
-Her veri başvurusu bir anahtarda yer alır. Örneğin, aşağıdaki YAML kod parçacığı adlı `employee_data`anahtarda depolanan bir veri başvurusunu tanımlar:
+Her veri başvurusu bir anahtarda yer alır. Örneğin, aşağıdaki YAML kod parçacığı adlı anahtarda depolanan bir veri başvurusunu tanımlar `employee_data` :
 
 ```yaml
 pipeline:
@@ -111,12 +112,13 @@ Adımlar, ortamda çalıştırılacak dosyalarla birlikte bir hesaplama ortamı 
 | `DatabricsStep` | Bir Databricks Not defteri, Python betiği veya JAR ekler. [Databricksstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) sınıfına karşılık gelir. |
 | `DataTransferStep` | Verileri depolama seçenekleri arasında aktarır. [Datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) sınıfına karşılık gelir. |
 | `PythonScriptStep` | Bir Python betiği çalıştırır. [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) sınıfına karşılık gelir. |
+| `ParallelRunStep` | Zaman uyumsuz ve paralel olarak büyük miktarlarda veriyi işlemek için bir Python betiği çalıştırır. [Parallelrunstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) sınıfına karşılık gelir. |
 
 ### <a name="adla-step"></a>ADLA adımı
 
 | YAML anahtarı | Açıklama |
 | ----- | ----- |
-| `script_name` | U-SQL betiğinin adı (öğesine göre `source_directory`). |
+| `script_name` | U-SQL betiğinin adı (öğesine göre `source_directory` ). |
 | `compute_target` | Bu adım için kullanılacak işlem hedefi Azure Data Lake. |
 | `parameters` | İşlem hattının [parametreleri](#parameters) . |
 | `inputs` | Girişler [ınputportbinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [portdatareference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DataSetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)veya [pipelinedataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)olabilir. |
@@ -176,7 +178,7 @@ pipeline:
 | `delete_batch_job_after_finish` | Işlem tamamlandıktan sonra Batch hesabından işin silinip silineceğini belirten Boole bayrağı. |
 | `delete_batch_pool_after_finish` | İş bittikten sonra havuzun silinip silineceğini belirten Boole bayrağı. |
 | `is_positive_exit_code_failure` | Görev pozitif bir kodla çıkış yaptığında işin başarısız olup olmadığını belirten Boole bayrağı. |
-| `vm_image_urn` | İse ve VM kullanıyorsa `VirtualMachineConfiguration` `create_pool` `True` |
+| `vm_image_urn` | İse `create_pool` `True` ve VM kullanıyorsa `VirtualMachineConfiguration` . |
 | `pool_id` | İşin çalıştırılacağı havuzun KIMLIĞI. |
 | `allow_reuse` | Aynı ayarlarla yeniden çalıştırıldığında adımın önceki sonuçları yeniden kullanıp kullanmayacağını belirler. |
 
@@ -321,7 +323,7 @@ pipeline:
 | ----- | ----- |
 | `inputs` | Girişler [ınputportbinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [portdatareference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DataSetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)veya [pipelinedataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)olabilir. |
 | `outputs` | Çıkışlar, [Pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) ya da [outputportbinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)olabilir. |
-| `script_name` | Python betiğinin adı (göreli `source_directory`). |
+| `script_name` | Python betiğinin adı (göreli `source_directory` ). |
 | `source_directory` | Betiği içeren dizin, Conda ortamı, vb. |
 | `runconfig` | Bir `.runconfig` dosyanın yolu. Bu dosya [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) sınıfının YAML gösterimidir. Bu dosyanın yapısı hakkında daha fazla bilgi için bkz. [runconfig. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
 | `allow_reuse` | Aynı ayarlarla yeniden çalıştırıldığında adımın önceki sonuçları yeniden kullanıp kullanmayacağını belirler. |
@@ -362,11 +364,63 @@ pipeline:
                     bind_mode: mount
 ```
 
+### <a name="parallel-run-step"></a>Paralel çalıştırma adımı
+
+| YAML anahtarı | Açıklama |
+| ----- | ----- |
+| `inputs` | Girişler [veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DataSetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)veya [pipelinedataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)olabilir. |
+| `outputs` | Çıkışlar, [Pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) ya da [outputportbinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)olabilir. |
+| `script_name` | Python betiğinin adı (göreli `source_directory` ). |
+| `source_directory` | Betiği içeren dizin, Conda ortamı, vb. |
+| `parallel_run_config` | Bir `parallel_run_config.yml` dosyanın yolu. Bu dosya [Parallelrunconfig](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?view=azure-ml-py) sınıfının bir YAML gösterimidir. |
+| `allow_reuse` | Aynı ayarlarla yeniden çalıştırıldığında adımın önceki sonuçları yeniden kullanıp kullanmayacağını belirler. |
+
+Aşağıdaki örnek bir paralel çalıştırma adımı içerir:
+
+```yaml
+pipeline:
+    description: SamplePipelineFromYaml
+    default_compute: cpu-cluster
+    data_references:
+        MyMinistInput:
+            dataset_name: mnist_sample_data
+    parameters:
+        PipelineParamTimeout:
+            type: int
+            default: 600
+    steps:        
+        Step1:
+            parallel_run_config: "yaml/parallel_run_config.yml"
+            type: "ParallelRunStep"
+            name: "parallel-run-step-1"
+            allow_reuse: True
+            arguments:
+            - "--progress_update_timeout"
+            - parameter:timeout_parameter
+            - "--side_input"
+            - side_input:SideInputData
+            parameters:
+                timeout_parameter:
+                    source: PipelineParamTimeout
+            inputs:
+                InputData:
+                    source: MyMinistInput
+            side_inputs:
+                SideInputData:
+                    source: Output4
+                    bind_mode: mount
+            outputs:
+                OutputDataStep2:
+                    destination: Output5
+                    datastore: workspaceblobstore
+                    bind_mode: mount
+```
+
 ### <a name="pipeline-with-multiple-steps"></a>Birden çok adımla işlem hattı 
 
 | YAML anahtarı | Açıklama |
 | ----- | ----- |
-| `steps` | Bir veya daha fazla ardışık düzen Inestep tanımı dizisi. Bir adımın `destination` anahtarlarının bir sonraki adımın `outputs` `source` anahtarlarına `inputs` dönüşdiğine unutmayın.| 
+| `steps` | Bir veya daha fazla ardışık düzen Inestep tanımı dizisi. `destination`Bir adımın anahtarlarının bir `outputs` `source` sonraki adımın anahtarlarına dönüşdiğine unutmayın `inputs` .| 
 
 ```yaml
 pipeline:
@@ -435,8 +489,8 @@ Bir işlem hattı için zamanlamayı tanımlarken, veri deposu tarafından tetik
 | `datastore_name` | Değiştirilen/eklenen Blobları izlemek için veri deposu. |
 | `polling_interval` | Değiştirme/ekleme Blobları için yoklama arasında dakika cinsinden süre. Varsayılan değer: 5 dakika. Yalnızca veri deposu zamanlamaları için desteklenir. |
 | `data_path_parameter_name` | Değiştirilen blob yoluyla ayarlanacak veri yolu ardışık düzen parametresinin adı. Yalnızca veri deposu zamanlamaları için desteklenir. |
-| `continue_on_step_failure` | Bir adım başarısız olursa, gönderilen ardışık düzen eylemsizlik içindeki diğer adımların yürütülmesine devam edilip edilmeyeceğini belirtir. Sağlanmışsa, işlem hattının `continue_on_step_failure` ayarını geçersiz kılar.
-| `path_on_datastore` | İsteğe bağlı. Değiştirilen/eklenen Blobları izlemek için veri deposundaki yol. Yol, veri deposu için kapsayıcının altındadır, bu nedenle zamanlama izleyicilerinin gerçek yolu container/`path_on_datastore`olur. Hiçbiri yoksa, veri deposu kapsayıcısı izlenir. Öğesinin `path_on_datastore` bir alt klasöründe yapılan ekler/değişiklikler izlenmez. Yalnızca veri deposu zamanlamaları için desteklenir. |
+| `continue_on_step_failure` | Bir adım başarısız olursa, gönderilen ardışık düzen eylemsizlik içindeki diğer adımların yürütülmesine devam edilip edilmeyeceğini belirtir. Sağlanmışsa, işlem `continue_on_step_failure` hattının ayarını geçersiz kılar.
+| `path_on_datastore` | İsteğe bağlı. Değiştirilen/eklenen Blobları izlemek için veri deposundaki yol. Yol, veri deposu için kapsayıcının altındadır, bu nedenle zamanlama izleyicilerinin gerçek yolu container/olur `path_on_datastore` . Hiçbiri yoksa, veri deposu kapsayıcısı izlenir. Öğesinin bir alt klasöründe yapılan ekler/değişiklikler `path_on_datastore` izlenmez. Yalnızca veri deposu zamanlamaları için desteklenir. |
 
 Aşağıdaki örnek, bir veri deposu tarafından tetiklenen bir zamanlamanın tanımını içerir:
 
@@ -454,18 +508,18 @@ Schedule:
       path_on_datastore: "file/path" 
 ```
 
-**Yinelenen bir zamanlama**tanımlarken aşağıdaki anahtarları kullanın `recurrence`:
+**Yinelenen bir zamanlama**tanımlarken aşağıdaki anahtarları kullanın `recurrence` :
 
 | YAML anahtarı | Açıklama |
 | ----- | ----- |
-| `frequency` | Zamanlamanın yinelenme sıklığı. `"Minute"`Geçerli değerler `"Hour"`, `"Day"` `"Week"`,, veya. `"Month"` |
+| `frequency` | Zamanlamanın yinelenme sıklığı. Geçerli değerler,,, `"Minute"` `"Hour"` `"Day"` `"Week"` veya `"Month"` . |
 | `interval` | Zamanlamanın ne sıklıkta tetiklendiği. Tamsayı değeri, zamanlama yeniden etkinleştirilinceye kadar beklenecek zaman birimi sayısıdır. |
-| `start_time` | Zamanlamanın başlangıç saati. Değerin dize biçimi `YYYY-MM-DDThh:mm:ss`. Başlangıç saati sağlanmazsa, ilk iş yükü anında çalıştırılır ve gelecekteki iş yükleri zamanlamaya göre çalıştırılır. Başlangıç zamanı geçmişte ise, ilk iş yükü bir sonraki hesaplanan çalışma zamanına göre çalıştırılır. |
+| `start_time` | Zamanlamanın başlangıç saati. Değerin dize biçimi `YYYY-MM-DDThh:mm:ss` . Başlangıç saati sağlanmazsa, ilk iş yükü anında çalıştırılır ve gelecekteki iş yükleri zamanlamaya göre çalıştırılır. Başlangıç zamanı geçmişte ise, ilk iş yükü bir sonraki hesaplanan çalışma zamanına göre çalıştırılır. |
 | `time_zone` | Başlangıç saatinin saat dilimi. Saat dilimi sağlanmazsa UTC kullanılır. |
-| `hours` | `frequency` `"Week"`Veya ise, ardışık düzenin çalışması gereken günün saatleri olarak, virgülle ayırarak 0 ile 23 arasında bir veya daha `"Day"` fazla tamsayı belirtebilirsiniz. Yalnızca `time_of_day` veya `hours` ve `minutes` kullanılabilir. |
-| `minutes` | `frequency` `"Week"`Veya ise, ardışık düzenin çalışması gereken saat sayısı olarak, virgülle ayırarak 0 ile 59 arasında bir veya daha `"Day"` fazla tamsayı belirtebilirsiniz. Yalnızca `time_of_day` veya `hours` ve `minutes` kullanılabilir. |
-| `time_of_day` | Veya `frequency` `"Week"`ise `"Day"` , zamanlamanın çalıştırılacağı günün bir saatini belirtebilirsiniz. Değerin dize biçimi `hh:mm`. Yalnızca `time_of_day` veya `hours` ve `minutes` kullanılabilir. |
-| `week_days` | `frequency` İse `"Week"`, zamanlamanın çalışması gerektiği zaman virgülle ayırarak bir veya daha fazla gün belirtebilirsiniz. Geçerli değerler şunlardır `"Monday"` `"Tuesday"` `"Wednesday"` `"Thursday"` `"Friday"`,,,,, ve `"Sunday"` `"Saturday"`. |
+| `hours` | `frequency`Veya ise `"Day"` `"Week"` , ardışık düzenin çalışması gereken günün saatleri olarak, virgülle ayırarak 0 ile 23 arasında bir veya daha fazla tamsayı belirtebilirsiniz. Yalnızca `time_of_day` veya `hours` ve `minutes` kullanılabilir. |
+| `minutes` | `frequency`Veya ise `"Day"` `"Week"` , ardışık düzenin çalışması gereken saat sayısı olarak, virgülle ayırarak 0 ile 59 arasında bir veya daha fazla tamsayı belirtebilirsiniz. Yalnızca `time_of_day` veya `hours` ve `minutes` kullanılabilir. |
+| `time_of_day` | `frequency`Veya ise `"Day"` `"Week"` , zamanlamanın çalıştırılacağı günün bir saatini belirtebilirsiniz. Değerin dize biçimi `hh:mm` . Yalnızca `time_of_day` veya `hours` ve `minutes` kullanılabilir. |
+| `week_days` | `frequency`İse, `"Week"` zamanlamanın çalışması gerektiği zaman virgülle ayırarak bir veya daha fazla gün belirtebilirsiniz. Geçerli değerler şunlardır,,,,, `"Monday"` `"Tuesday"` `"Wednesday"` `"Thursday"` `"Friday"` `"Saturday"` ve `"Sunday"` . |
 
 Aşağıdaki örnek yinelenen bir zamanlamanın tanımını içerir:
 

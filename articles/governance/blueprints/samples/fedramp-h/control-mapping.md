@@ -1,20 +1,20 @@
 ---
 title: Fedrampa yüksek şema örnek denetimleri
 description: Fedrampa yüksek şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-ms.date: 01/31/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f57f753c405e736a4c83dd6f10b6f38184ce74b6
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77150621"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168888"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Fedrampa yüksek şema örneğinin denetim eşlemesi
 
 Aşağıdaki makalede, Azure şemaları fedrampa yüksek şema örneği, fedrampa yüksek denetimlerine nasıl eşlenir. Denetimler hakkında daha fazla bilgi için bkz. [Fedrampa güvenlik denetimleri temeli](https://www.fedramp.gov/).
 
-Aşağıdaki eşlemeler **Fedrampa yüksek** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, ** \[önizlemeyi\]bulun ve seçin: yüksek denetimleri denetleyin ve denetim gereksinimleri yerleşik ilke girişimi ' ni desteklemek için belirli VM uzantılarını dağıtın** .
+Aşağıdaki eşlemeler **Fedrampa yüksek** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, önizlemeyi bulun ve seçin ** \[ \] : yüksek denetimleri denetleyin ve denetim gereksinimleri yerleşik ilke girişimi ' ni desteklemek Için belirli VM uzantılarını dağıtın** .
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir.
@@ -76,8 +76,8 @@ Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı
 
 Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın devre dışı olduğunu izleyicilerine ve parola olmadan hesaplardan uzak bağlantılara izin veren Linux sanal makinelerini denetleyen [ilke tanımlarına uzaktan](../../../policy/overview.md) erişimi izleyip denetlemenize yardımcı olur. Bu şema ayrıca depolama hesaplarına Kısıtlanmamış erişimi izlemenize yardımcı olan bir Azure ilke tanımı atar. Bu göstergeleri izlemek, uzaktan erişim yöntemlerinin güvenlik ilkenize uyduğundan emin olmanıza yardımcı olabilir.
 
-- \[Önizleme\]: parola olmadan hesaplardan uzak bağlantılara Izin veren Linux VM 'lerini denetleme
-- \[Önizleme\]: parola olmadan hesaplardan uzak bağlantılara Izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetleme
+- \[Önizleme \] : parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - API uygulaması için uzaktan hata ayıklama kapatılmalıdır
 - İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır
@@ -87,13 +87,13 @@ Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın devre d
 
 Azure Izleyici tarafından toplanan günlük verileri, merkezi yapılandırma ve yönetimi sağlayan bir Log Analytics çalışma alanında depolanır. Bu şema, Azure sanal makinelerinde Log Analytics aracısının dağıtımını denetleyen ve zorlayacağı [Azure ilke](../../../policy/overview.md) tanımları atayarak olayların günlüğe kaydedilmesini sağlamanıza yardımcı olur.
 
-- \[Önizleme\]: denetim Log Analytics aracı DAĞıTıMı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme\]: VMSS-VM GÖRÜNTÜSÜNDEKI (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme\]: VM Için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme\]: Linux VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)
-- \[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma
-- \[Önizleme\]: Windows VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)
-- \[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma
+- \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
+- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
+- \[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
+- \[Önizleme \] : WINDOWS VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-denetim Işleme hatalarının 5 yanıtı
 
@@ -108,23 +108,21 @@ Bu şema, denetim ve olay günlüğü yapılandırmasını izleyen [Azure ilke](
 
 Azure Izleyici tarafından toplanan günlük verileri, merkezi raporlama ve analizi sağlayan bir Log Analytics çalışma alanında depolanır. Bu şema, Azure sanal makinelerinde Log Analytics aracısının dağıtımını denetleyen ve zorlayacağı [Azure ilke](../../../policy/overview.md) tanımları atayarak olayların günlüğe kaydedilmesini sağlamanıza yardımcı olur.
 
-- \[Önizleme\]: denetim Log Analytics aracı DAĞıTıMı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme\]: VMSS-VM GÖRÜNTÜSÜNDEKI (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme\]: VM Için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme\]: Linux VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)
-- \[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma
-- \[Önizleme\]: Windows VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)
-- \[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma
+- \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
+- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
+- \[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
+- \[Önizleme \] : WINDOWS VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) denetim Incelemesi, analiz ve raporlama | Tümleştirme/tarama ve Izleme özellikleri
 
-Bu şema, sanal makinelerde, sanal makine ölçek kümelerinde, SQL yönetilen örneklerde ve SQL sunucularında güvenlik açığı değerlendirmesi ile kayıtları denetleyen ilke tanımları sağlar.
-Bu ilke tanımları Ayrıca Azure kaynakları içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlamak için tanılama günlüklerinin yapılandırmasını denetler. Bu Öngörüler, dağıtılan kaynaklarınızın güvenlik durumu hakkında gerçek zamanlı bilgiler sağlar ve düzeltme eylemlerinin önceliklerini belirlemenize yardımcı olabilir.
-Ayrıntılı güvenlik açığı taraması ve izleme için Azure Sentinel ve Azure Güvenlik Merkezi 'nin de faydalanmasını öneririz.
+Bu şema, sanal makinelerde, sanal makine ölçek kümelerinde, SQL veritabanı sunucularında ve SQL yönetilen örnek sunucularında güvenlik açığı değerlendirmesinin analizine sahip kayıtları denetleyen ilke tanımları sağlar. Bu ilke tanımları Ayrıca Azure kaynakları içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlamak için tanılama günlüklerinin yapılandırmasını denetler. Bu Öngörüler, dağıtılan kaynaklarınızın güvenlik durumu hakkında gerçek zamanlı bilgiler sağlar ve düzeltme eylemlerinin önceliklerini belirlemenize yardımcı olabilir. Ayrıntılı güvenlik açığı taraması ve izleme için Azure Sentinel ve Azure Güvenlik Merkezi 'nin de faydalanmasını öneririz.
 
-- \[Önizleme\]: güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
-- \[Önizleme\]: VM'ler için Azure izleyici etkinleştirme
-- \[Önizleme\]: VM Ölçek Kümeleri Için Azure izleyicisini etkinleştirin (VMSS)
+- \[Önizleme \] : güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
+- \[Önizleme \] : VM'ler için Azure izleyici etkinleştirme
+- \[Önizleme \] : VM Ölçek Kümeleri Için Azure izleyicisini etkinleştirin (VMSS)
 - Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir
 - Tanılama ayarını denetle
 - SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir
@@ -139,13 +137,13 @@ Ayrıntılı güvenlik açığı taraması ve izleme için Azure Sentinel ve Azu
 Bu şema, Azure sanal makinelerinde Log Analytics aracısının dağıtımını ve diğer Azure Kaynak türleri için denetim ayarlarının yapılandırılmasını denetleyen ve uygulayan ilke tanımları sağlar.
 Bu ilke tanımları Ayrıca Azure kaynakları içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlamak için tanılama günlüklerinin yapılandırmasını denetler. Ayrıca, denetim ve gelişmiş veri güvenliği SQL Server 'lar üzerinde yapılandırılır.
 
-- \[Önizleme\]: denetim Log Analytics aracı DAĞıTıMı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme\]: VMSS-VM GÖRÜNTÜSÜNDEKI (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme\]: VM Için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme\]: Linux VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)
-- \[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma
-- \[Önizleme\]: Windows VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)
-- \[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma
+- \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
+- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
+- \[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
+- \[Önizleme \] : WINDOWS VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 - Tanılama ayarını denetle
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
@@ -212,29 +210,29 @@ Bu şema, çok faktörlü kimlik doğrulaması etkinleştirilmemiş okuma izinle
 
 Bu şema, parola olmadan hesaplardan uzak bağlantılara izin veren ve/veya passwd dosyasında yanlış izinlere sahip olan Linux sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atar. Bu şema Ayrıca, Windows sanal makineleri için parola şifreleme türünün yapılandırılmasını denetleyen ilke tanımları atar. Bu göstergeleri izlemek, sistem kimlik doğrulamasının kuruluşunuzun kimlik ve kimlik doğrulama ilkesiyle uyumlu olmasını sağlamanıza yardımcı olur.
 
-- \[Önizleme\]: passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerini denetleyin
-- \[Önizleme\]: parola olmayan hesaplara sahip Linux VM 'lerini denetleyin
-- \[Önizleme\]: ters çevrilebilir şifreleme kullanarak parolaları Depolamamayan Windows sanal makinelerini denetleme
-- \[Önizleme\]: passwd dosyası izinleri 0644 olarak ayarlanan Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: parola olmayan hesaplara sahip Linux VM 'lerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: ters çevrilebilir şifreleme kullanarak parolaları Depolamamayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerini denetleyin
+- \[Önizleme \] : parola olmayan hesaplara sahip Linux VM 'lerini denetleyin
+- \[Önizleme \] : ters çevrilebilir şifreleme kullanarak parolaları Depolamamayan Windows sanal makinelerini denetleme
+- \[Önizleme \] : passwd dosyası izinleri 0644 olarak ayarlanan Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : parola olmayan hesaplara sahip Linux VM 'lerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : ters çevrilebilir şifreleme kullanarak parolaları Depolamamayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Authenticator yönetimi | Parola tabanlı kimlik doğrulaması
 
 Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Windows sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak güçlü parolalar zorlamanıza yardımcı olur. Parola gücü ilkesini ihlal eden sanal makinelerin farkında olmak, tüm sanal makine Kullanıcı hesaplarının parolalarının kuruluşunuzun parola ilkesiyle uyumlu olmasını sağlamak için düzeltici eylemler almanıza yardımcı olur.
 
-- \[Önizleme\]: önceki 24 parolanın yeniden kullanılmasına Izin veren Windows VM 'lerini denetleyin
-- \[Önizleme\]: en fazla 70 günlük parola yaşı olmayan Windows VM 'lerini denetleyin
-- \[Önizleme\]: en az 1 günlük parola yaşı olmayan Windows VM 'lerini denetleyin
-- \[Önizleme\]: parola karmaşıklığı ayarı etkin olmayan Windows VM 'leri denetleme
-- \[Önizleme\]: en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows VM 'lerini denetleyin
-- \[Önizleme\]: ters çevrilebilir şifreleme kullanarak parolaları Depolamamayan Windows sanal makinelerini denetleme
-- \[Önizleme\]: önceki 24 parolanın yeniden kullanılmasına Izin veren Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: 70 gün maksimum parola yaşı olmayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: en az 1 günlük parola yaşı olmayan Windows VM 'leri denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: parola karmaşıklığı ayarı etkin olmayan Windows VM 'leri denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: ters çevrilebilir şifreleme kullanarak parolaları Depolamamayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerini denetleyin
+- \[Önizleme \] : en fazla 70 günlük parola yaşı olmayan Windows VM 'lerini denetleyin
+- \[Önizleme \] : en az 1 günlük parola yaşı olmayan Windows VM 'lerini denetleyin
+- \[Önizleme \] : parola karmaşıklığı ayarı etkin olmayan Windows VM 'leri denetleme
+- \[Önizleme \] : en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows VM 'lerini denetleyin
+- \[Önizleme \] : ters çevrilebilir şifreleme kullanarak parolaları Depolamamayan Windows sanal makinelerini denetleme
+- \[Önizleme \] : önceki 24 parolanın yeniden kullanılmasına izin veren Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : 70 gün maksimum parola yaşı olmayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : en az 1 günlük parola yaşı olmayan Windows VM 'leri denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : parola karmaşıklığı ayarı etkin olmayan Windows VM 'leri denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : ters çevrilebilir şifreleme kullanarak parolaları Depolamamayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 güvenlik açığı taraması
 
@@ -331,13 +329,13 @@ Bu şema, Azure Güvenlik Merkezi 'ndeki sanal makinelerde eksik uç nokta korum
 
 Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyerek ve zorunlu tutarak sisteminizi izlemenize yardımcı olur. Özellikle, Log Analytics aracısının dağıtımını denetleme ve uygulamaya zorlama ve SQL veritabanları, depolama hesapları ve ağ kaynakları için gelişmiş güvenlik ayarları atanmış ilkeleridir. Bu yetenekler, uygun işlemleri yapabilmeniz için anormal davranışları ve saldırı göstergelerini tespit etmenize yardımcı olabilir.
 
-- \[Önizleme\]: denetim Log Analytics aracı DAĞıTıMı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme\]: VMSS-VM GÖRÜNTÜSÜNDEKI (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme\]: VM Için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme\]: Linux VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)
-- \[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma
-- \[Önizleme\]: Windows VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)
-- \[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma
+- \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
+- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
+- \[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
+- \[Önizleme \] : WINDOWS VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
+- \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
@@ -362,8 +360,8 @@ Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına erişmey
 Fedrampa yüksek şema öğesinin denetim eşlemesini gözden geçirdiğinize göre, şema ve bu örneği dağıtma hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Fedrampa yüksek şema-genel bakış](./index.md)
-> [fedrampa yüksek şema-Deploy adımları](./deploy.md)
+> [Fedrampa yüksek şema-genel bakış](./index.md) 
+>  [Fedrampa yüksek şema-Deploy adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

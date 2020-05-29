@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: d5484f5725047201770e5b3cbab89847b27117f9
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 75c8d52a750567d3b34ad2aea236477ca8c97245
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116917"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171421"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kullanmaya başlama
 
@@ -30,7 +30,6 @@ Bu öğretici, Azure SYNAPSE Analytics 'i kurmak ve kullanmak için gereken tüm
     |Temel Bilgiler|**Hesap türü**|Şu şekilde ayarlanmalıdır`StorageV2`||
     |Temel Bilgiler|**Konum**|Herhangi bir konum seçebilirsiniz| SYNAPSE çalışma alanınızın ve Azure Data Lake Storage (ADLS) Gen2 hesabının aynı bölgede olması önerilir.|
     |Gelişmiş|**Data Lake Storage 2. Nesil**|`Enabled`| Azure SYNAPSE, yalnızca bu ayarın etkinleştirildiği depolama hesaplarıyla birlikte kullanılabilir.|
-    |||||
 
 1. Depolama hesabı oluşturulduktan sonra sol gezinmede **erişim denetimi (IAM)** seçeneğini belirleyin. Ardından, aşağıdaki rolleri atayın veya zaten atanmış olduklarından emin olun. 
     a. * Depolama hesabı b 'deki **sahip** rolüne kendiniz atayın. * Depolama hesabındaki **Depolama Blobu veri sahibi** rolüne kendinizi atayın
@@ -45,8 +44,7 @@ Bu öğretici, Azure SYNAPSE Analytics 'i kurmak ve kullanmak için gereken tüm
     |Tab|Ayar | Önerilen değer | Açıklama |
     |---|---|---|---|
     |Temel Bilgiler|**Çalışma alanı adı**|Her şeyi çağırabilirsiniz.| Bu belgede, şunu kullanacağız`myworkspace`|
-    |Temel Bilgiler|**Geli**|Depolama hesabının bölgesiyle Eşleştir|
-    ||||
+    |Temel Bilgiler|**Bölge**|Depolama hesabının bölgesiyle Eşleştir|
 
 1. **Data Lake Storage Gen 2**' yi seçin altında, daha önce oluşturduğunuz hesabı ve kapsayıcıyı seçin.
     > [!NOTE]
@@ -61,7 +59,7 @@ Bu, sizin için zaten yapılmış olabilir. Herhangi bir durumda, doğrulamanız
 1. [Azure Portal](https://portal.azure.com) açın ve çalışma alanınız için seçilen birincil depolama hesabını açın.
 1. Sol gezinmede **erişim denetimi (IAM)** seçeneğini belirleyin. Ardından, aşağıdaki rolleri atayın veya zaten atanmış olduklarından emin olun. 
     a. Depolama hesabındaki **Depolama Blobu veri katılımcısı** rolüne çalışma alanı kimliğini atayın. Çalışma alanı kimliği, çalışma alanıyla aynı ada sahip. Bu belgede, çalışma alanı `myworkspace` kimliği`myworkspaced`
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
     
 ## <a name="launch-synapse-studio"></a>SYNAPSE Studio 'Yu Başlat
 
@@ -79,10 +77,9 @@ SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu açmak 
 1. **+ Yeni** ' yi seçin ve şu ayarları girin:
 
     |Ayar | Önerilen değer | 
-    |---|---|---|
+    |---|---|
     |**SQL havuzu adı**| `SQLDB1`|
     |**Performans düzeyi**|`DW100C`|
-    |||
 
 1. **Gözden geçir + oluştur** ' u ve ardından **Oluştur**' u seçin.
 1. SQL havuzunuz birkaç dakika içinde hazırlanacaktır.
@@ -100,11 +97,10 @@ SQL havuzunuz oluşturulduğunda, **SQLDB1**ADLı bir SQL havuzu veritabanı ile
 1. **+ Yeni** ' yi seçin ve şu ayarları girin:
 
     |Ayar | Önerilen değer | 
-    |---|---|---|
+    |---|---|
     |**Apache Spark havuzu adı**|`Spark1`
     |**Düğüm boyutu**| `Small`|
     |**Düğüm sayısı**| En az 3 ve en fazla 3 olarak ayarlayın|
-    |||
 
 1. **Gözden geçir + oluştur** ' u ve ardından **Oluştur**' u seçin.
 1. Apache Spark havuzunuz birkaç saniye içinde hazırlanacaktır.
@@ -128,7 +124,7 @@ Her çalışma alanı, **SQL isteğe bağlı**olarak adlandırılmış ve önced
 
 ## <a name="load-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>NYC TAXI örnek verilerini SQLDB1 veritabanına yükleme
 
-1. SYNAPSE Studio 'da, en üstteki mavi menüsünde **?** seçeneğini belirleyin. simgesini seçin.
+1. SYNAPSE Studio 'da, en üstteki mavi menüsünde **?** seçeneğini belirleyin. simge.
 1. Kullanmaya başlama **> başlangıç hub 'ını** seçin
 1. **Sorgu örnek verileri**etiketli kartta, adlı SQL havuzunu seçin`SQLDB1`
 1. **Sorgu verileri**' ni seçin. "Örnek verileri yükleme" diyerek görüntülenen ve sonra kaybolan bir bildirim görürsünüz.
@@ -333,11 +329,10 @@ Bir Power BI çalışma alanını SYNAPSE çalışma alanınıza bağlayabilirsi
 1. **+ Yeni** ' yi seçin ve **Power BI Bağlan** ' ı seçin ve bu alanları ayarlayın:
 
     |Ayar | Önerilen değer | 
-    |---|---|---|
+    |---|---|
     |**Adı**|`NYCTaxiWorkspace1`|
     |**Çalışma alanı adı**|`NYCTaxiWorkspace1`|
-    |||
-    
+        
 1. **Oluştur**’u seçin.
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-synapse-workspace"></a>SYNAPSE çalışma alanınızdaki verileri kullanan bir Power BI veri kümesi oluşturma
@@ -356,7 +351,7 @@ Bir Power BI çalışma alanını SYNAPSE çalışma alanınıza bağlayabilirsi
 1. Raporunuza **çizgi grafik** ekleyin.
     a. **Passsengercount** sütununu b **ekseni > görselleştirmelere** sürükleyin. **Sumüçlü mesafeyi** ve **avgüçlü uzaklığı** sütunlarını, **değerler > görselleştirmelere**sürükleyin.
 1. **Giriş** sekmesinde **Yayımla**' yı seçin.
-1. Değişikliklerinizi kaydetmek isteyip istemediğinizi sorar. **Kaydet**’i seçin.
+1. Değişikliklerinizi kaydetmek isteyip istemediğinizi sorar. **Kaydet**'i seçin.
 1. Bir dosya adı seçmeniz istenir. Seçin `PassengerAnalysis.pbix` ve **Kaydet**' i seçin.
 1. **Bir hedef** seçip Seç ' i seçmenizi ister `NYCTaxiWorkspace1` . **Select**
 1. Yayımlamanın bitmesini bekleyin.

@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 5bc71c5462ed1c721d2c94f889146400a07dd19e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 917a7ccbf17fdb1e2691f1a3a8368b40006f6d7b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119207"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170316"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
 
@@ -26,6 +26,10 @@ Bu makaledeki yordamları kullanmadan önce, şu tekniklerin birini kullanarak s
 * [Azure portal göz atarak Güncelleştirme Yönetimi etkinleştirin](automation-onboard-solutions-from-browse.md)
 * [Runbook’tan Güncelleştirme Yönetimi’ni etkinleştirme](automation-onboard-solutions.md)
 * [Azure VM’den Güncelleştirme Yönetimi’ni etkinleştirme](automation-onboard-solutions-from-vm.md)
+
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Dağıtımın kapsamını sınırlandırma
+
+Güncelleştirme Yönetimi, güncelleştirmeleri almak için bilgisayarları hedeflemek üzere çalışma alanı içinde bir kapsam yapılandırması kullanır. Daha fazla bilgi için bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](automation-scope-configurations-update-management.md).
 
 ## <a name="view-update-assessment"></a>Güncelleştirme değerlendirmesini görüntüleme
 
@@ -201,5 +205,10 @@ Güncelleştirme dağıtımınız tamamlandığında, dağıtım için kurulum s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* Kapsam konfigürasyonları hakkında daha fazla bilgi için bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](automation-scope-configurations-update-management.md).
+* Log Analytics çalışma alanınızda depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [Azure izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md).
 * Dağıtımlar ile işiniz bittiğinde, [güncelleştirme yönetimi için çalışma alanının Otomasyon hesabından bağlantısını kaldır](automation-unlink-workspace-update-management.md)' a bakın.
 * VM 'lerinizi Güncelleştirme Yönetimi silmek için bkz. [güncelleştirme yönetimi VM 'Leri kaldırma](automation-remove-vms-from-update-management.md).
+* Genel Güncelleştirme Yönetimi hatalarıyla ilgili sorunları gidermek için bkz. [güncelleştirme yönetimi sorunlarını giderme](troubleshoot/update-management.md).
+* Windows Update Aracısı sorunlarını gidermek için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
+* Linux Güncelleştirme Aracısı sorunlarını gidermek için bkz.[Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).

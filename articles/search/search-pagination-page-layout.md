@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 93f1da7db3962994611f70fc145d0e9b62cd4f26
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801782"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167868"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama sonuçlarıyla çalışma
 
@@ -23,7 +23,7 @@ Bir yanıtın yapısı, sorgudaki parametrelere göre belirlenir: REST API veya 
 
 ## <a name="result-composition"></a>Sonuç oluşturma
 
-Bir arama belgesi çok sayıda alandan oluşabilir, genellikle sonuç kümesindeki her bir belgeyi temsil etmek için yalnızca birkaç tane gerekir. Bir sorgu isteğinde, yanıtta hangi `$select=<field list>` alanların gösterileceğini belirtmek için sonuna ekleyin. Bir alan, bir sonuca dahil edilecek dizinde **alınabilir** olarak belirtilmelidir. 
+Bir arama belgesi çok sayıda alandan oluşabilir, genellikle sonuç kümesindeki her bir belgeyi temsil etmek için yalnızca birkaç tane gerekir. Bir sorgu isteğinde, `$select=<field list>` yanıtta hangi alanların gösterileceğini belirtmek için sonuna ekleyin. Bir alan, bir sonuca dahil edilecek dizinde **alınabilir** olarak belirtilmelidir. 
 
 En iyi şekilde çalışan alanlar, Kullanıcı bölümünde bir tıklama yanıtı davet etmek için yeterli bilgi sağlayan ve belgeler arasında ayrım yapan ve bunları ayırt eden alanlardır. Bir e-ticaret sitesinde bir ürün adı, açıklama, marka, renk, boyut, Fiyat ve derecelendirme olabilir. Oteller-örnek dizini yerleşik örneği için aşağıdaki örnekteki alanlar olabilir:
 
@@ -43,15 +43,15 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 
 Varsayılan olarak, arama altyapısı, sorgu tam metin aramasında veya tam eşleştirme sorguları için rastgele bir düzende, arama puanı tarafından belirlendiği şekilde ilk 50 eşleştirmeye kadar geri döner.
 
-Farklı sayıda eşleşen belge döndürmek için sorgu isteğine ve `$top` `$skip` parametreleri ekleyin. Aşağıdaki listede Logic açıklanmaktadır.
+Farklı sayıda eşleşen belge döndürmek için `$top` `$skip` sorgu isteğine ve parametreleri ekleyin. Aşağıdaki listede Logic açıklanmaktadır.
 
-+ Bir `$count=true` dizin içindeki toplam eşleşen belge sayısının sayısını almak için ekleyin.
++ `$count=true`Bir dizin içindeki toplam eşleşen belge sayısının sayısını almak için ekleyin.
 
 + İlk 15 eşleşen belge kümesini ve toplam eşleşme sayısını döndürün:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ İkinci kümeyi döndürün, sonraki 15 ' i almak için ilk 15 ' i atlayarak `$top=15&$skip=15`:. Üçüncü 15 kümesi için aynısını yapın:`$top=15&$skip=30`
++ İkinci kümeyi döndürün, sonraki 15 ' i almak için ilk 15 ' i atlayarak: `$top=15&$skip=15` . Üçüncü 15 kümesi için aynısını yapın:`$top=15&$skip=30`
 
-Temel alınan dizin değiştirilirken sayfalandırılmış sorguların sonuçlarının kararlı olmaması garanti edilmez. Sayfalama, her bir `$skip` sayfa için değerini değiştirir, ancak her sorgu bağımsızdır ve sorgu zamanında dizinde olduğu gibi verilerin geçerli görünümü üzerinde çalışır (başka bir deyişle, bir genel amaçlı veritabanında bulunanlar gibi, sonuçların önbelleğe alınması veya anlık görüntüsü yoktur).
+Temel alınan dizin değiştirilirken sayfalandırılmış sorguların sonuçlarının kararlı olmaması garanti edilmez. Sayfalama `$skip` , her bir sayfa için değerini değiştirir, ancak her sorgu bağımsızdır ve sorgu zamanında dizinde olduğu gibi verilerin geçerli görünümü üzerinde çalışır (başka bir deyişle, bir genel amaçlı veritabanında bulunanlar gibi, sonuçların önbelleğe alınması veya anlık görüntüsü yoktur).
  
 Yinelemeleri nasıl alabileceğiniz hakkında bir örnek aşağıda verilmiştir. Dört belge içeren bir dizin varsayın:
 
@@ -60,12 +60,12 @@ Yinelemeleri nasıl alabileceğiniz hakkında bir örnek aşağıda verilmiştir
     { "id": "3", "rating": 2 }
     { "id": "4", "rating": 1 }
  
-Şimdi sonuçların, derecelendirmeye göre sıralanmış olarak her seferinde bir kez döndürülmesini istediğinizi varsayın. Sonuçların ilk sayfasını almak için bu sorguyu yürütülecektir: `$top=2&$skip=0&$orderby=rating desc`, aşağıdaki sonuçları üretir:
+Şimdi sonuçların, derecelendirmeye göre sıralanmış olarak her seferinde bir kez döndürülmesini istediğinizi varsayın. Sonuçların ilk sayfasını almak için bu sorguyu yürütülecektir: `$top=2&$skip=0&$orderby=rating desc` , aşağıdaki sonuçları üretir:
 
     { "id": "1", "rating": 5 }
     { "id": "2", "rating": 3 }
  
-Hizmette, sorgu çağrıları arasındaki dizine beşinci bir belge eklendiğini varsayalım: `{ "id": "5", "rating": 4 }`.  Kısa süre sonra, ikinci sayfayı `$top=2&$skip=2&$orderby=rating desc`getirmek için bir sorgu yürütüyoruz ve şu sonuçları elde edersiniz:
+Hizmette, sorgu çağrıları arasındaki dizine beşinci bir belge eklendiğini varsayalım: `{ "id": "5", "rating": 4 }` .  Kısa süre sonra, ikinci sayfayı getirmek için bir sorgu yürütüyoruz `$top=2&$skip=2&$orderby=rating desc` ve şu sonuçları elde edersiniz:
 
     { "id": "2", "rating": 3 }
     { "id": "3", "rating": 2 }
@@ -98,7 +98,7 @@ Başka bir seçenek de [özel bir Puanlama profili](index-add-scoring-profiles.m
 
 Azure Bilişsel Arama, varsayılan olarak alan başına en fazla beş vurgu döndürür. Bu sayıyı alana ekleyerek bir kısa çizgi izleyen bir tamsayı ile ayarlayabilirsiniz. Örneğin, `highlight=Description-10` Açıklama alanında eşleşen içerik üzerinde en fazla 10 vurgu döndürür.
 
-Biçimlendirme, tüm terim sorgularına uygulanır. Biçimlendirme türü etiketlere `highlightPreTag` `highlightPostTag`göre belirlenir ve kodunuz yanıtı işler (örneğin, kalın yazı tipi veya sarı arka plan uygulama).
+Biçimlendirme, tüm terim sorgularına uygulanır. Biçimlendirme türü etiketlere göre belirlenir ve `highlightPreTag` `highlightPostTag` kodunuz yanıtı işler (örneğin, kalın yazı tipi veya sarı arka plan uygulama).
 
 Aşağıdaki örnekte, açıklama alanı içindeki "Sandy", "kum", "kirekler", "plaj" terimleri vurgulama için etiketlendi. Benzer ve joker karakter arama gibi altyapıda sorgu genişletmeyi tetikleyen sorgular, isabet vurgulama için sınırlı desteğe sahiptir.
 
@@ -126,8 +126,6 @@ Yeni davranışla:
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
   *Yongalar* teriminin, tam tümcecikle eşleşmediğinden hiçbir vurgulamaya sahip olmadığını unutmayın.
-  
-* Vurgu için döndürülen parça boyutunu belirtmek mümkün olacaktır. Parça boyutu karakter sayısı olarak belirtilir (en fazla 1000 karakter).
 
 İsabet vurgulama uygulayan istemci kodu yazarken, bu değişikliği unutmayın. Tamamen yeni bir arama hizmeti oluşturmadığınız takdirde bunu etkilemeyecektir.
 

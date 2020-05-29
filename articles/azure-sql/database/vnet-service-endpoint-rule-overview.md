@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: a89fd0ba39de3d4528dda44280d02a993bedd6b0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fb3246564c7902d1a99c28425ee7ee1789b00354
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047359"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171149"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -208,7 +208,7 @@ Bağlantı hatası 40914, Azure portal güvenlik duvarı bölmesinde belirtilen 
 
 *Hata çözümleme:* İstemcinin IP adresini bir IP kuralı olarak girin. Bu işlemi Azure portalındaki Güvenlik Duvarı bölmesini kullanarak yapabilirsiniz.
 
-<a name="anchor-how-to-by-using-firewall-portal-59j" />
+<a name="anchor-how-to-by-using-firewall-portal-59j"></a>
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portal, bir sanal ağ kuralı oluşturabilir
 
@@ -236,7 +236,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 - İlgili uç nokta türü adı **Microsoft. SQL**' dir.
 - Alt ağınız tür adıyla etiketlenmemişse, bkz. [alt ağınızın bir uç nokta olduğunu doğrulayın][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100].
 
-<a name="a-portal-steps-for-vnet-rule-200" />
+<a name="a-portal-steps-for-vnet-rule-200"></a>
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
@@ -275,7 +275,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 > - **Silindi:** Yalnızca silme işlemi için geçerlidir ve kuralın silindiğini ve artık geçerli olmadığını gösterir.
 > - **Sürüyor:** İşlemin devam ettiğini gösterir. İşlem bu durumdayken eski kural uygulanır.
 
-<a name="anchor-how-to-links-60h" />
+<a name="anchor-how-to-links-60h"></a>
 
 ## <a name="related-articles"></a>İlgili makaleler:
 

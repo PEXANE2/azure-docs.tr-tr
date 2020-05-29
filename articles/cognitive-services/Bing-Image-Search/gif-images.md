@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ad33b5a28728a8e7f9c0a70ff81ea5a9e65624bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 862a7f6c31df7395fe225cf89ad83425e917394e
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74072651"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169993"
 ---
 # <a name="search-for-gif-images"></a>GIF görüntülerini arama 
 
@@ -42,11 +42,11 @@ Sorgu parametreleri ve seçenekleri hakkında daha fazla bilgi için [resım ara
 - [MaxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) ve [minfilesize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) parametrelerini belirtebilirsiniz. Dizinimizde bulunan GIF sayısının çoğunluğunun 2 MB 'ın altında olduğundan, maxFileSize = 2000000 ayarlamayı öneririz.  Bu ayrıca bant genişliği sorun olduğunda (örneğin, mobil hücresel senaryolarda) veri boyutunu denetlemeye yardımcı olur.
 - Algılanan performansı artırmaya yardımcı olmak için, kaynak URL yüklemeden önce küçük resmi yükleyin.  
 - Henüz bir Kullanıcı sorgunuz olmayan ilk çalıştırma veya giriş sayfası deneyiminde, [popüler RESIMLER API](trending-images.md)'sinden yardım almak için popüler GIF aramalarımızı kullanmayı deneyin.
-- [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) parametresinin üç ayarı vardır.  `strict` Seçeneği yetişkinlere yönelik içeriği engeller.
+- [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) parametresinin üç ayarı vardır.  `strict`Seçeneği yetişkinlere yönelik içeriği engeller.
 - Desteklenen dillerin ve konumların tam listesi için bkz. [Mkt](supported-countries-markets.md) .
 - *Animatedgıhttps* yalnızca bir https adresinden gelen animasyonlu GIF görüntülerini döndürür. Güvenlik için birçok uygulamanın HTTPS üzerinden dış Web bağlantılarına bağlantısı olması gerekir. Örneğin, Apple App Store, iletim sırasında kullanıcı verilerini güvenli şekilde şifreleyen HTTPS üzerinden Web hizmetlerine bağlantı gerektirir.
 
-<a name="gifExample" />
+<a name="gifExample"></a>
 
 ## <a name="example-search-for-animated-gif-using-java"></a>Java kullanarak animasyonlu GIF için örnek arama
 

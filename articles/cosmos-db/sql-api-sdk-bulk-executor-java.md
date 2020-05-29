@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6fe075d2679ec13217200bc8b0da132e8f4d9b57
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c826b9f813c30a50d8b88b2cca1b188c328465b0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660448"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171659"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java toplu yürütücü kitaplığı: Indirme bilgileri
 
@@ -43,23 +43,23 @@ ms.locfileid: "83660448"
 
 ## <a name="release-notes"></a>Sürüm notları
 
-### <a name="2100"></a><a name="2.10.0"/>2.10.0
+### <a name="2100"></a><a name="2.10.0"></a>2.10.0
 
 * JSON 'dan iç içe bölüm anahtar değerlerini doğru bir şekilde ayıklamak için DocumentAnalyzer. Java için çözüm.
 
-### <a name="294"></a><a name="2.9.4"/>2.9.4
+### <a name="294"></a><a name="2.9.4"></a>2.9.4
 
 * Belirli hatalarda yeniden denemek için BulkDelete işlemlerine işlevsellik ekleyin ve ayrıca yeniden denenebilecek kullanıcıya hataların bir listesini geri döndürün.
 
-### <a name="293"></a><a name="2.9.3"/>2.9.3
+### <a name="293"></a><a name="2.9.3"></a>2.9.3
 
 * Cosmos SDK sürümü 2.4.7 için güncelleştirme.
 
-### <a name="292"></a><a name="2.9.2"/>2.9.2
+### <a name="292"></a><a name="2.9.2"></a>2.9.2
 
 * ' İd ' ve bölüm anahtarı değerinden sonra gelen düzeltme eki uygulanmış belge özellikleri güncelleştirilmiş öğe listesine eklendikten sonra, ' mergeAll ' için ' id ' ve bölüm anahtarı değeri ile devam etmek için düzeltme.
 
-### <a name="291"></a><a name="2.9.1"/>2.9.1
+### <a name="291"></a><a name="2.9.1"></a>2.9.1
 
 * Eşzamanlılık başlangıç derecesini 1 ' e güncelleştirin ve mini Batch için hata ayıklama günlüklerini eklendi.
 

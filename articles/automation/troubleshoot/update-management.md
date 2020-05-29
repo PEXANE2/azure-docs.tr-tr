@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735897"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170265"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -50,7 +50,7 @@ Bu hata, aşağıdaki nedenlerden dolayı oluşabilir:
 
 * Log Analytics aracısının çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ yapılandırması](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) ' na gidin.
 
-* Kapsam yapılandırma sorunlarını denetleyin. [Kapsam yapılandırması](../automation-onboard-solutions-from-automation-account.md#scope-configuration) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler. Makinenizin çalışma alanınızda gösterilmesi, ancak Güncelleştirme Yönetimi portalında olmaması durumunda, kapsam yapılandırmasını makineleri hedefleyecek şekilde ayarlamanız gerekir. Kapsam yapılandırması hakkında bilgi edinmek için bkz. [çalışma alanındaki makineleri etkinleştirme](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
+* Kapsam yapılandırma sorunlarını denetleyin. [Kapsam yapılandırması](../automation-scope-configurations-update-management.md) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler. Makinenizin çalışma alanınızda gösterilmesi, ancak Güncelleştirme Yönetimi portalında olmaması durumunda, kapsam yapılandırmasını makineleri hedefleyecek şekilde ayarlamanız gerekir. Kapsam yapılandırması hakkında bilgi edinmek için bkz. [çalışma alanındaki makineleri etkinleştirme](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 * [Karma runbook çalışanını şirket içi bir Windows bilgisayarından kaldırma](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) bölümündeki adımları Izleyerek veya [karma Runbook Worker 'ı şirket içi bir Linux bilgisayarından kaldırarak](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)çalışan yapılandırmasını kaldırın. 
 

@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: db764a73aa1bb18ef2fc0f8f6e5ffe8fd60d388c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5de1cc606f97655427c0c86aea0c5c722e1bab8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74075689"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171472"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing yerel Iş Arama API 'SI v7 başvurusu
 
@@ -41,27 +41,27 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 ```
   
-İstek, HTTPS protokolünü kullanmalıdır.  
+İsteğin HTTPS protokolünü kullanması gerekir.  
   
 > [!NOTE]
 > URL uzunluğu üst sınırı 2.048 karakterdir. URL uzunluğunun sınırı aşmadığından emin olmak için, sorgu parametrelerinizin en fazla uzunluğu 1.500 karakterden az olmalıdır. URL 2.048 karakteri aşarsa, sunucu 404 ' i döndürür.  
   
   
-## <a name="headers"></a>Üst bilgiler  
+## <a name="headers"></a>Üst Bilgiler  
 Bir istek ve yanıtın içerebilme üstbilgileri aşağıda verilmiştir.  
   
 |Üst bilgi|Açıklama|  
 |------------|-----------------|  
 |Kabul Et|İsteğe bağlı istek üst bilgisi.<br /><br /> Varsayılan medya türü uygulama/JSON ' dır. Yanıtın [JSON-ld](https://json-ld.org/)kullanmasını belirtmek için Accept üst bilgisini Application/ld + JSON olarak ayarlayın.|  
-|<a name="acceptlanguage" />Accept-Language|İsteğe bağlı istek üst bilgisi.<br /><br /> Kullanıcı arabirimi dizelerinde kullanılacak virgülle sınırlanmış bir dil listesi. Liste, tercih edilme durumuna göre azalan düzende sıralanır. Beklenen biçim de içinde olmak üzere daha fazla bilgi için bkz. [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Bu üst bilgi ve [](#setlang)setLang&mdash; sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Bu üst bilgiyi ayarlarsanız, cc sorgu parametresini de belirtmelisiniz. Hangi pazardan sonuç döndürüleceğini belirlemek için, Bing listeden bulduğu ilk desteklenen dili kullanır ve bunu `cc` parametresinin değeriyle birleştirir. Liste desteklenen bir dil içermiyorsa, Bing isteği destekleyen en yakın dili ve pazarı bulur ya da sonuçlar için toplu veya varsayılan bir pazar kullanır. Bing'in kullandığı pazarı saptamak için BingAPIs-Market üst bilgisine bakın.<br /><br /> Ancak birden çok dil belirtirseniz bu üst bilgiyi ve `cc` sorgu parametresini kullanın. Aksi takdirde, [mkt](#mkt) ile [setLang](#setlang) sorgu parametrelerini kullanın.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir.|  
-|<a name="market" />BingAPIs-Market|Yanıt üst bilgisi.<br /><br /> İstek tarafından kullanılan pazar. Biçimi şöyledir: \<languageCode\>-\<countryCode\>. Örneğin, tr-TR.|  
-|<a name="traceid" />BingAPIs-TraceId|Yanıt üst bilgisi.<br /><br /> İsteğin ayrıntılarını içeren günlük girdisinin kimliği. Hata oluştuğunda, bu kimliği yakalayın. Sorunu belirleyemez ve çözemezseniz, Destek ekibine diğer bilgilerle birlikte bu kimliği de sağlayın.|  
-|<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Gerekli istek üst bilgisi.<br /><br /> [Bilişsel Hizmetler](https://www.microsoft.com/cognitive-services/)'de bu hizmete kaydolduğunuzda aldığınız abonelik anahtarı.|  
-|<a name="pragma" />Pragma|İsteğe bağlı istek üst bilgisi<br /><br /> Varsayılan olarak, Bing önbelleğe alınmış içeriği (varsa) döndürür. Bing'in önbelleğe alınmış içeriği döndürmesini önlemek için, Pragma üst bilgisini no-cache olarak ayarlayın (örneğin, Pragma: no-cache).
-|<a name="useragent" />User-Agent|İsteğe bağlı istek üst bilgisi.<br /><br /> İsteği başlatan kullanıcı aracısı. Bing, mobil kullanıcılara iyileştirilmiş bir deneyim sağlamak için kullanıcı aracısını kullanır. İsteğe bağlı olsa da, bu üst bilgiyi her zaman belirtmeniz önerilir.<br /><br /> User-agent, yaygın olarak kullanılan tarayıcılardan gönderilen dizeyle aynı olmalıdır. Kullanıcı aracıları hakkında bilgi için bkz. [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Aşağıda örnek user-agent dizelerini bulabilirsiniz.<br /><ul><li>Windows Phone&mdash;Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)<br /><br /></li><li>Android&mdash;Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; SCH-I500 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML; like Gecko) Version/4.0 Mobile Safari/533.1<br /><br /></li><li>iPhone&mdash;Mozilla/5.0 (iPhone; CPU iPhone OS 6_1 like Mac OS X) AppleWebKit/536.26 (KHTML; like Gecko) Mobile/10B142 iPhone4;1 BingWeb/3.03.1428.20120423<br /><br /></li><li>PC&mdash;Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko<br /><br /></li><li>iPad&mdash;Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</li></ul>|
-|<a name="clientid" />X-MSEdge-ClientID|İsteğe bağlı istek ve yanıt üst bilgisi.<br /><br /> Bing, kullanıcılara tüm Bing API çağrılarında tutarlı bir davranış sağlamak için bu üst bilgiyi kullanır. Bing sık sık yeni özellikler ve geliştirmeler dağıtır ve farklı dağıtımlarda trafik ataması yapmak için anahtar olarak istemci kimliğini kullanır. Bir kullanıcı için birden çok istekte aynı istemci kimliğini kullanmazsanız, Bing kullanıcıyı birden çok çakışan dağıtıma atayabilir. Birden çok çakışan dağıtıma eklenmek, tutarsız bir kullanıcı deneyimine yol açabilir. Örneğin, ikinci isteğin dağıtım ataması ilkinden farklıysa, beklenmeyen bir deneyim yaşanabilir. Ayrıca, Bing istemci kimliğini kullanarak web sonuçlarını istemci kimliğinin arama geçmişine uyarlayabilir ve bu sayede kullanıcıya daha zengin bir deneyim sağlayabilir.<br /><br /> Bing, istemci kimliği tarafından oluşturulan etkinliği analiz ederek sonuç derecelendirmelerini geliştirmeye yardımcı olması için de bu üst bilgiyi kullanabilir. İlgi geliştirmeleri Bing API'lerinin daha kaliteli sonuçlar vermesine yardımcı olur ve böylelikle API tüketicisi için daha yüksek tıklama oranları getirir.<br /><br /> **ÖNEMLİ:** İsteğe bağlı olsa da, bu üst bilgiyi gerekli olarak kabul edebilirsiniz. Aynı son kullanıcı ile cihaz bileşimi için birden çok istekte aynı istemci kimliğini kullanıldığında, 1) API tüketicisi tutarlı bir kullanıcı deneyimi elde eder ve 2) Bing API'lerinden daha kaliteli sonuçlar alındığından tıklama oranları daha yüksek olur.<br /><br /> Bu üst bilgi için geçerli olan temel kullanım kuralları şunlardır:<br /><ul><li>Cihazda uygulamanızı kullanan her kullanıcının Bing tarafından oluşturulan benzersiz bir istemci kimliği olmalıdır.<br /><br/>İsteğe bu üst bilgiyi eklemezseniz, Bing bir kimlik oluşturur ve bu kimliği X-MSEdge-ClientID yanıt üst bilgisinde döndürür. İsteğe bu üst bilgiyi EKLEMEMENİZ gereken tek durum, söz konusu cihazda kullanıcının uygulamanızı ilk kez kullanmasıdır.<br /><br/></li><li>Cihazda uygulamanızın bu kullanıcı için yaptığı her Bing API'si isteğinde istemci kimliğini kullanın.<br /><br/></li><li>**Dikkat:** Bu Istemci KIMLIĞININ, herhangi bir kimlik doğrulayan Kullanıcı hesabı bilgisine bağlanabilir olmadığından emin olmanız gerekir.</li><br/><li>İstemci kimliğinin kalıcı olmasını sağlayın. Tarayıcı uygulamasında kimliği kalıcı hale getirmek için, tüm oturumlarda kimliğin kullanmasını sağlayacak bir kalıcı HTTP tanımlama bilgisi kullanın. Oturum tanımlama bilgisi kullanmayın. Mobil uygulamalar gibi diğer uygulamalarda, kimliği kalıcı hale getirmek için cihazın kalıcı depolamasını kullanın.<br /><br/>Kullanıcı o cihazda uygulamanızı yeniden kullandığında, kalıcı hale getirdiğiniz istemci kimliğini alın.</li></ul><br /> **NOT:** Bing yanıtları bu üst bilgiyi içerebilir veya içermeyebilir. Yanıt bu üst bilgiyi içeriyorsa, istemci kimliğini yakalayın ve o cihazda kullanıcı için bunu izleyen tüm Bing isteklerinde onu kullanın.<br /><br /> **NOT:** X-MSEdge-ClientID üst bilgisini eklerseniz, isteğe tanımlama bilgileri eklememelisiniz.|  
-|<a name="clientip" />X-MSEdge-ClientIP|İsteğe bağlı istek üst bilgisi.<br /><br /> İstemci cihazının IPv4 veya IPv6 adresi. IP adresi, kullanıcının konumunu bulmak için kullanılır. Bing konum bilgisini kullanarak güvenli arama davranışını saptar.<br /><br /> **NOT:** İsteğe bağlı olsa da, bu üst bilgiyi ve X-Search-Location üst bilgisini her zaman belirtmeniz önerilir.<br /><br /> Adresi karartmayın (örneğin, son sekiz karakteri 0'la değiştirerek). Adresin karartılması, cihazın gerçek konumuna yakın olmayan bir konum sonucu verir ve bu da Bing'in hatalı sonuçlar sağlamasına yol açabilir.|  
-|<a name="location" />X-Search-Location|İsteğe bağlı istek üst bilgisi.<br /><br /> İstemcinin coğrafi konumunu açıklayan noktalı virgülle sınırlanmış anahtar/değer çifti listesi. Bing konum bilgisini kullanarak güvenli arama davranışını saptar ve ilgili yerel içeriği döndürür. Anahtar/değer çiftini \<anahtar\>:\<değer\> olarak belirtin. Aşağıda, kullanıcının konumunu belirtmek için kullandığınız anahtarlar gösterilir.<br /><br /><ul><li>&mdash;istemci konumunu, derece cinsinden enlem. Enlem -90,0 değerinden büyük veya bu değere eşit ve +90,0 değerinden küçük veya bu değere eşit olmalıdır. Negatif değerler güney enlemlerini ve pozitif değerler de kuzey enlemlerini gösterir.<br /><br /></li><li>istemci&mdash;konumunun boyda derece cinsinden uzunluğu. Boylam -180,0 değerinden büyük veya bu değere eşit ve +180,0 değerinden küçük veya bu değere eşit olmalıdır. Negatif değerler batı boylamlarını ve pozitif değerler de doğu boylamlarını gösterir.<br /><br /></li><li>koordinatların yatay doğruluğunu belirten, ölçü cinsinden yarıçapı yeniden&mdash; yapın. Cihazın konum hizmeti tarafından döndürülen değeri geçirin. Normalde değerler GPS/Wi-Fi için 22 m, baz istasyonu triangülasyonu için 380 m ve ters IP araması için 18.000 m'dir.<br /><br /></li><li>&mdash; istemci konumda olduğu zaman UTC UNIX zaman damgası. (UNIX zaman damgası 1 Ocak 1970'den başlayarak saniye sayısıdır.)<br /><br /></li><li>head&mdash;İsteğe bağlı. İstemcinin göreli seyahat yönü. Gerçek kuzeye göre saat yönünün tersine 0 ile 360 derece arasında bir seyahat yönü belirtin. Bu anahtarı ancak `sp` anahtarı sıfırdan farklı bir değer olduğunda belirtin.<br /><br /></li><li>&mdash; istemci cihazının yolculukta olduğu, saniye başına düşen yatay hız (hız).<br /><br /></li><li>alt&mdash; , istemci cihazının ölçü cinsinden yüksekliği.<br /><br /></li><li>are&mdash;İsteğe bağlı. Koordinatların dikey doğruluğunu belirten metre cinsinden yarıçap. Yarıçap varsayılan olarak 50 Kiloters 'e sahiptir. Bu anahtarı ancak `alt` anahtarı belirttiğiniz durumda belirtin.<br /><br /></li></ul> **Note:** Bu anahtarlar isteğe bağlı olsa da, sağladığınız daha fazla bilgi, konum sonuçları daha doğru olur.<br /><br /> **Note:** Kullanıcının coğrafi konumunu her zaman belirtmeniz önerilir. İstemcinin IP adresi kullanıcının fiziksel konumunu doğru yansıtmıyorsa (örneğin istemci VPN kullanıyorsa), konumun belirtilmesi özellikle önemlidir. En iyi sonuçları elde etmek için, bu üst bilgiyi ve X-MSEdge-ClientIP üst bilgisini eklemelisiniz; ama en azından bu üst bilgiyi eklemeniz gerekir.|
+|<a name="acceptlanguage"></a>Accept-Language|İsteğe bağlı istek üst bilgisi.<br /><br /> Kullanıcı arabirimi dizelerinde kullanılacak virgülle sınırlanmış bir dil listesi. Liste, tercih edilme durumuna göre azalan düzende sıralanır. Beklenen biçim de içinde olmak üzere daha fazla bilgi için bkz. [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Bu üst bilgi ve [](#setlang)setLang&mdash; sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Bu üst bilgiyi ayarlarsanız, cc sorgu parametresini de belirtmelisiniz. Hangi pazardan sonuç döndürüleceğini belirlemek için, Bing listeden bulduğu ilk desteklenen dili kullanır ve bunu `cc` parametresinin değeriyle birleştirir. Liste desteklenen bir dil içermiyorsa, Bing isteği destekleyen en yakın dili ve pazarı bulur ya da sonuçlar için toplu veya varsayılan bir pazar kullanır. Bing'in kullandığı pazarı saptamak için BingAPIs-Market üst bilgisine bakın.<br /><br /> Ancak birden çok dil belirtirseniz bu üst bilgiyi ve `cc` sorgu parametresini kullanın. Aksi takdirde, [mkt](#mkt) ile [setLang](#setlang) sorgu parametrelerini kullanın.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir.|  
+|<a name="market"></a>BingAPIs-Market|Yanıt üst bilgisi.<br /><br /> İstek tarafından kullanılan pazar. Form \<languageCode\> - \<countryCode\> . Örneğin, tr-TR.|  
+|<a name="traceid"></a>BingAPIs-TraceId|Yanıt üst bilgisi.<br /><br /> İsteğin ayrıntılarını içeren günlük girdisinin kimliği. Hata oluştuğunda, bu kimliği yakalayın. Sorunu belirleyemez ve çözemezseniz, Destek ekibine diğer bilgilerle birlikte bu kimliği de sağlayın.|  
+|<a name="subscriptionkey"></a>Ocp-Apim-Subscription-Key|Gerekli istek üst bilgisi.<br /><br /> [Bilişsel Hizmetler](https://www.microsoft.com/cognitive-services/)'de bu hizmete kaydolduğunuzda aldığınız abonelik anahtarı.|  
+|<a name="pragma"></a>Pragma|İsteğe bağlı istek üst bilgisi<br /><br /> Varsayılan olarak, Bing önbelleğe alınmış içeriği (varsa) döndürür. Bing'in önbelleğe alınmış içeriği döndürmesini önlemek için, Pragma üst bilgisini no-cache olarak ayarlayın (örneğin, Pragma: no-cache).
+|<a name="useragent"></a>User-Agent|İsteğe bağlı istek üst bilgisi.<br /><br /> İsteği başlatan kullanıcı aracısı. Bing, mobil kullanıcılara iyileştirilmiş bir deneyim sağlamak için kullanıcı aracısını kullanır. İsteğe bağlı olsa da, bu üst bilgiyi her zaman belirtmeniz önerilir.<br /><br /> User-agent, yaygın olarak kullanılan tarayıcılardan gönderilen dizeyle aynı olmalıdır. Kullanıcı aracıları hakkında bilgi için bkz. [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Aşağıda örnek user-agent dizelerini bulabilirsiniz.<br /><ul><li>Windows Phone&mdash;Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)<br /><br /></li><li>Android&mdash;Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; SCH-I500 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML; like Gecko) Version/4.0 Mobile Safari/533.1<br /><br /></li><li>iPhone&mdash;Mozilla/5.0 (iPhone; CPU iPhone OS 6_1 like Mac OS X) AppleWebKit/536.26 (KHTML; like Gecko) Mobile/10B142 iPhone4;1 BingWeb/3.03.1428.20120423<br /><br /></li><li>PC&mdash;Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko<br /><br /></li><li>iPad&mdash;Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</li></ul>|
+|<a name="clientid"></a>X-MSEdge-ClientID|İsteğe bağlı istek ve yanıt üst bilgisi.<br /><br /> Bing, kullanıcılara tüm Bing API çağrılarında tutarlı bir davranış sağlamak için bu üst bilgiyi kullanır. Bing sık sık yeni özellikler ve geliştirmeler dağıtır ve farklı dağıtımlarda trafik ataması yapmak için anahtar olarak istemci kimliğini kullanır. Bir kullanıcı için birden çok istekte aynı istemci kimliğini kullanmazsanız, Bing kullanıcıyı birden çok çakışan dağıtıma atayabilir. Birden çok çakışan dağıtıma eklenmek, tutarsız bir kullanıcı deneyimine yol açabilir. Örneğin, ikinci isteğin dağıtım ataması ilkinden farklıysa, beklenmeyen bir deneyim yaşanabilir. Ayrıca, Bing istemci kimliğini kullanarak web sonuçlarını istemci kimliğinin arama geçmişine uyarlayabilir ve bu sayede kullanıcıya daha zengin bir deneyim sağlayabilir.<br /><br /> Bing, istemci kimliği tarafından oluşturulan etkinliği analiz ederek sonuç derecelendirmelerini geliştirmeye yardımcı olması için de bu üst bilgiyi kullanabilir. İlgi geliştirmeleri Bing API'lerinin daha kaliteli sonuçlar vermesine yardımcı olur ve böylelikle API tüketicisi için daha yüksek tıklama oranları getirir.<br /><br /> **ÖNEMLİ:** İsteğe bağlı olsa da, bu üst bilgiyi gerekli olarak kabul edebilirsiniz. Aynı son kullanıcı ile cihaz bileşimi için birden çok istekte aynı istemci kimliğini kullanıldığında, 1) API tüketicisi tutarlı bir kullanıcı deneyimi elde eder ve 2) Bing API'lerinden daha kaliteli sonuçlar alındığından tıklama oranları daha yüksek olur.<br /><br /> Bu üst bilgi için geçerli olan temel kullanım kuralları şunlardır:<br /><ul><li>Cihazda uygulamanızı kullanan her kullanıcının Bing tarafından oluşturulan benzersiz bir istemci kimliği olmalıdır.<br /><br/>İsteğe bu üst bilgiyi eklemezseniz, Bing bir kimlik oluşturur ve bu kimliği X-MSEdge-ClientID yanıt üst bilgisinde döndürür. İsteğe bu üst bilgiyi EKLEMEMENİZ gereken tek durum, söz konusu cihazda kullanıcının uygulamanızı ilk kez kullanmasıdır.<br /><br/></li><li>Cihazda uygulamanızın bu kullanıcı için yaptığı her Bing API'si isteğinde istemci kimliğini kullanın.<br /><br/></li><li>**Dikkat:** Bu Istemci KIMLIĞININ, herhangi bir kimlik doğrulayan Kullanıcı hesabı bilgisine bağlanabilir olmadığından emin olmanız gerekir.</li><br/><li>İstemci kimliğinin kalıcı olmasını sağlayın. Tarayıcı uygulamasında kimliği kalıcı hale getirmek için, tüm oturumlarda kimliğin kullanmasını sağlayacak bir kalıcı HTTP tanımlama bilgisi kullanın. Oturum tanımlama bilgisi kullanmayın. Mobil uygulamalar gibi diğer uygulamalarda, kimliği kalıcı hale getirmek için cihazın kalıcı depolamasını kullanın.<br /><br/>Kullanıcı o cihazda uygulamanızı yeniden kullandığında, kalıcı hale getirdiğiniz istemci kimliğini alın.</li></ul><br /> **NOT:** Bing yanıtları bu üst bilgiyi içerebilir veya içermeyebilir. Yanıt bu üst bilgiyi içeriyorsa, istemci kimliğini yakalayın ve o cihazda kullanıcı için bunu izleyen tüm Bing isteklerinde onu kullanın.<br /><br /> **NOT:** X-MSEdge-ClientID üst bilgisini eklerseniz, isteğe tanımlama bilgileri eklememelisiniz.|  
+|<a name="clientip"></a>X-MSEdge-ClientIP|İsteğe bağlı istek üst bilgisi.<br /><br /> İstemci cihazının IPv4 veya IPv6 adresi. IP adresi, kullanıcının konumunu bulmak için kullanılır. Bing konum bilgisini kullanarak güvenli arama davranışını saptar.<br /><br /> **NOT:** İsteğe bağlı olsa da, bu üst bilgiyi ve X-Search-Location üst bilgisini her zaman belirtmeniz önerilir.<br /><br /> Adresi karartmayın (örneğin, son sekiz karakteri 0'la değiştirerek). Adresin karartılması, cihazın gerçek konumuna yakın olmayan bir konum sonucu verir ve bu da Bing'in hatalı sonuçlar sağlamasına yol açabilir.|  
+|<a name="location"></a>X-Search-Location|İsteğe bağlı istek üst bilgisi.<br /><br /> İstemcinin coğrafi konumunu açıklayan noktalı virgülle sınırlanmış anahtar/değer çifti listesi. Bing konum bilgisini kullanarak güvenli arama davranışını saptar ve ilgili yerel içeriği döndürür. Anahtar/değer çiftini şöyle belirtin \<key\> : \<value\> . Aşağıda, kullanıcının konumunu belirtmek için kullandığınız anahtarlar gösterilir.<br /><br /><ul><li>&mdash;istemci konumunu, derece cinsinden enlem. Enlem -90,0 değerinden büyük veya bu değere eşit ve +90,0 değerinden küçük veya bu değere eşit olmalıdır. Negatif değerler güney enlemlerini ve pozitif değerler de kuzey enlemlerini gösterir.<br /><br /></li><li>&mdash;istemci konumunun boyda derece cinsinden uzunluğu. Boylam -180,0 değerinden büyük veya bu değere eşit ve +180,0 değerinden küçük veya bu değere eşit olmalıdır. Negatif değerler batı boylamlarını ve pozitif değerler de doğu boylamlarını gösterir.<br /><br /></li><li>&mdash;koordinatların yatay doğruluğunu belirten, ölçü cinsinden yarıçapı yeniden yapın. Cihazın konum hizmeti tarafından döndürülen değeri geçirin. Normalde değerler GPS/Wi-Fi için 22 m, baz istasyonu triangülasyonu için 380 m ve ters IP araması için 18.000 m'dir.<br /><br /></li><li>&mdash;istemci konumda olduğu zaman UTC UNIX zaman damgası. (UNIX zaman damgası 1 Ocak 1970'den başlayarak saniye sayısıdır.)<br /><br /></li><li>head&mdash;İsteğe bağlı. İstemcinin göreli seyahat yönü. Gerçek kuzeye göre saat yönünün tersine 0 ile 360 derece arasında bir seyahat yönü belirtin. Bu anahtarı ancak `sp` anahtarı sıfırdan farklı bir değer olduğunda belirtin.<br /><br /></li><li>&mdash;istemci cihazının yolculukta olduğu, saniye başına düşen yatay hız (hız).<br /><br /></li><li>alt, &mdash; istemci cihazının ölçü cinsinden yüksekliği.<br /><br /></li><li>are&mdash;İsteğe bağlı. Koordinatların dikey doğruluğunu belirten metre cinsinden yarıçap. Yarıçap varsayılan olarak 50 Kiloters 'e sahiptir. Bu anahtarı ancak `alt` anahtarı belirttiğiniz durumda belirtin.<br /><br /></li></ul> **Note:** Bu anahtarlar isteğe bağlı olsa da, sağladığınız daha fazla bilgi, konum sonuçları daha doğru olur.<br /><br /> **Note:** Kullanıcının coğrafi konumunu her zaman belirtmeniz önerilir. İstemcinin IP adresi kullanıcının fiziksel konumunu doğru yansıtmıyorsa (örneğin istemci VPN kullanıyorsa), konumun belirtilmesi özellikle önemlidir. En iyi sonuçları elde etmek için, bu üst bilgiyi ve X-MSEdge-ClientIP üst bilgisini eklemelisiniz; ama en azından bu üst bilgiyi eklemeniz gerekir.|
 
 > [!NOTE] 
 > Kullanım Koşulları'nın, bu üst bilgilerin kullanımıyla ilgili olanlar da dahil olmak üzere tüm ilgili yasalara uymayı gerektirdiğini unutmayın. Örneğin, Avrupa gibi bazı yasama bölgelerinde kullanıcı cihazlarına izleme cihazları takmadan önce kullanıcının iznini almak gerekir.
@@ -71,16 +71,16 @@ Bir istek ve yanıtın içerebilme üstbilgileri aşağıda verilmiştir.
 İstek aşağıdaki sorgu parametrelerini içerebilir. Gerekli parametreler için gereken sütuna bakın. Sorgu parametrelerini URL kodlamanız gerekir.  
   
   
-|Adı|Değer|Tür|Gerekli|  
+|Name|Değer|Tür|Gerekli|  
 |----------|-----------|----------|--------------|
-|<a name="count" />biriktirme|`offset` Parametresi tarafından belirtilen dizinden başlayarak döndürülecek sonuç sayısı.|Dize|Hayır|   
-|<a name="localCategories" />Yerel Kategoriler|İş kategorisine göre arama tanımlayan seçeneklerin listesi.  Bkz. [Yerel Iş kategorileri arama](local-categories.md)|Dize|Hayır|  
-|<a name="mkt" />mkt|Sonuçların geldiği pazar. <br /><br />Olası Pazar değerlerinin listesi için bkz. Pazar kodları.<br /><br /> **Note:** Yerel Iş Arama API 'SI Şu anda yalnızca en-ABD pazar ve dilini desteklemektedir.<br /><br />|Dize|Yes|
-|<a name="offset"/>konumu|`count` Parametre tarafından belirtilen sonuçları başlatacak dizin.|Tamsayı|Hayır|  
-|<a name="query" />ç|Kullanıcının arama terimi.|Dize|Hayır|  
-|<a name="responseformat" />responseFormat|Yanıt için kullanılacak medya türü. Aşağıdakiler, büyük/küçük harf duyarsız değerlerdir.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Varsayılan değer JSON ' dır. Yanıtın içerdiği JSON nesneleri hakkında daha fazla bilgi için bkz. [Response Objects](#response-objects).<br /><br />  JsonLd belirtirseniz, yanıt gövdesi, arama sonuçlarını içeren JSON-LD nesnelerini içerir. JSON-LD hakkında daha fazla bilgi için bkz. [JSON-ld](https://json-ld.org/).|Dize|Hayır|  
-|<a name="safesearch" />safeSearch|Yetişkinlere yönelik içeriği filtrelemek için kullanılan bir filtre. Aşağıdakiler, büyük/küçük harfe duyarlı olmayan olası filtre değerleridir.<br /><ul><li>Yetişkinlere&mdash;yönelik metin, resim veya video içeren Web sayfalarını geri döndürün.<br /><br/></li><li>Orta&mdash;, yetişkinlere yönelik metinler içeren Web sayfalarını, yetişkinlere yönelik görüntüleri veya videoları geri döndürür.<br /><br/></li><li>Sıkı&mdash;metin, resim veya video içeren Web sayfaları döndürün.</li></ul><br /> Varsayılan ayar Moderate değeridir.<br /><br /> **Note:** İstek, Bing yetişkin ilkesinin katı olarak ayarlanmasını gerektiren `safeSearch` bir marketten geliyorsa, Bing `safeSearch` değeri yoksayar ve katı kullanır.<br/><br/>**NOT:**`site:` sorgu işlecini kullanmanız durumunda, `safeSearch` parametresinin ayarına bakılmaksızın yanıtta yetişkinlere yönelik içerik bulunabilir. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın. |Dize|Hayır|  
-|<a name="setlang" />setLang|Kullanıcı arabirimi dizelerinde kullanılacak dil. Dili belirtirken ISO 639-1 2 harfi dil kodunu kullanın. Örneğin, Türkçe için dil kodu TR'dir. Varsayılan değer EN (İngilizce) ayarıdır.<br /><br /> İsteğe bağlı olsa da, her zaman dil belirtmelisiniz. Kullanıcı tarafından kullanıcı arabirimi dizelerinin farklı dilde görüntülenmesi istenmediği sürece, normalde `setLang` parametresini `mkt` parametresiyle aynı dile ayarlarsınız.<br /><br /> Bu parametre ve [](#acceptlanguage)Accept-Language&mdash; üst bilgisi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Ayrıca, yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir.|Dize|Hayır| 
+|<a name="count"></a>biriktirme|Parametresi tarafından belirtilen dizinden başlayarak döndürülecek sonuç sayısı `offset` .|Dize|Hayır|   
+|<a name="localCategories"></a>Yerel Kategoriler|İş kategorisine göre arama tanımlayan seçeneklerin listesi.  Bkz. [Yerel Iş kategorileri arama](local-categories.md)|Dize|Hayır|  
+|<a name="mkt"></a>mkt|Sonuçların geldiği pazar. <br /><br />Olası Pazar değerlerinin listesi için bkz. Pazar kodları.<br /><br /> **Note:** Yerel Iş Arama API 'SI Şu anda yalnızca en-ABD pazar ve dilini desteklemektedir.<br /><br />|Dize|Evet|
+|<a name="offset"></a>konumu|Parametre tarafından belirtilen sonuçları başlatacak Dizin `count` .|Tamsayı|Hayır|  
+|<a name="query"></a>ç|Kullanıcının arama terimi.|Dize|Hayır|  
+|<a name="responseformat"></a>responseFormat|Yanıt için kullanılacak medya türü. Aşağıdakiler, büyük/küçük harf duyarsız değerlerdir.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Varsayılan değer JSON ' dır. Yanıtın içerdiği JSON nesneleri hakkında daha fazla bilgi için bkz. [Response Objects](#response-objects).<br /><br />  JsonLd belirtirseniz, yanıt gövdesi, arama sonuçlarını içeren JSON-LD nesnelerini içerir. JSON-LD hakkında daha fazla bilgi için bkz. [JSON-ld](https://json-ld.org/).|Dize|Hayır|  
+|<a name="safesearch"></a>safeSearch|Yetişkinlere yönelik içeriği filtrelemek için kullanılan bir filtre. Aşağıdakiler, büyük/küçük harfe duyarlı olmayan olası filtre değerleridir.<br /><ul><li>&mdash;Yetişkinlere yönelik metin, resim veya video içeren Web sayfalarını geri döndürün.<br /><br/></li><li>Orta &mdash; , yetişkinlere yönelik metinler içeren Web sayfalarını, yetişkinlere yönelik görüntüleri veya videoları geri döndürür.<br /><br/></li><li>Sıkı &mdash; metin, resim veya video içeren Web sayfaları döndürün.</li></ul><br /> Varsayılan ayar Moderate değeridir.<br /><br /> **Note:** İstek, Bing yetişkin ilkesinin katı olarak ayarlanmasını gerektiren bir marketten geliyorsa `safeSearch` , Bing `safeSearch` değeri yoksayar ve katı kullanır.<br/><br/>**NOT:**`site:` sorgu işlecini kullanmanız durumunda, `safeSearch` parametresinin ayarına bakılmaksızın yanıtta yetişkinlere yönelik içerik bulunabilir. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın. |Dize|Hayır|  
+|<a name="setlang"></a>setLang|Kullanıcı arabirimi dizelerinde kullanılacak dil. Dili belirtirken ISO 639-1 2 harfi dil kodunu kullanın. Örneğin, Türkçe için dil kodu TR'dir. Varsayılan değer EN (İngilizce) ayarıdır.<br /><br /> İsteğe bağlı olsa da, her zaman dil belirtmelisiniz. Kullanıcı tarafından kullanıcı arabirimi dizelerinin farklı dilde görüntülenmesi istenmediği sürece, normalde `setLang` parametresini `mkt` parametresiyle aynı dile ayarlarsınız.<br /><br /> Bu parametre ve [](#acceptlanguage)Accept-Language&mdash; üst bilgisi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Ayrıca, yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir.|Dize|Hayır| 
 
 
 ## <a name="response-objects"></a>Yanıt nesneleri  
@@ -97,37 +97,37 @@ Oluşan hatayı tanımlar.
   
 |Öğe|Açıklama|Tür|  
 |-------------|-----------------|----------|  
-|<a name="error-code" />kodudur|Hata kategorisini tanımlayan hata kodu. Olası kodların listesi için bkz. [hata kodları](#error-codes).|Dize|  
-|<a name="error-message" />İleti|Hatanın açıklaması.|Dize|  
-|<a name="error-moredetails" />Ayrıntılı Ayrıntılar|Hata hakkında ek bilgi sağlayan bir açıklama.|Dize|  
-|<a name="error-parameter" />parametresinin|İstekte hataya neden olan sorgu parametresi.|Dize|  
-|<a name="error-subcode" />Alt|Hatayı tanımlayan hata kodu. Örneğin, `code` ınvalidrequest `subCode` Ise Parametergeçersiz veya parameterınvalidvalue olabilir. |Dize|  
-|<a name="error-value" />value|Sorgu parametresinin değeri geçerli değil.|Dize|  
+|<a name="error-code"></a>kodudur|Hata kategorisini tanımlayan hata kodu. Olası kodların listesi için bkz. [hata kodları](#error-codes).|Dize|  
+|<a name="error-message"></a>İleti|Hatanın açıklaması.|Dize|  
+|<a name="error-moredetails"></a>Ayrıntılı Ayrıntılar|Hata hakkında ek bilgi sağlayan bir açıklama.|Dize|  
+|<a name="error-parameter"></a>parametresinin|İstekte hataya neden olan sorgu parametresi.|Dize|  
+|<a name="error-subcode"></a>Alt|Hatayı tanımlayan hata kodu. Örneğin, `code` ınvalidrequest Ise `subCode` parametergeçersiz veya Parameterınvalidvalue olabilir. |Dize|  
+|<a name="error-value"></a>deeri|Sorgu parametresinin değeri geçerli değil.|Dize|  
   
 
 ### <a name="errorresponse"></a>ErrorResponse  
 İstek başarısız olduğunda yanıtın içerdiği en üst düzey nesne.  
   
-|Adı|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|İpucu yazın.|Dize|  
-|<a name="errors" />hatası|İsteğin başarısız olma nedenlerini betimleyen hataların listesi.|[Hata](#error)[]|  
+|<a name="errors"></a>hatası|İsteğin başarısız olma nedenlerini betimleyen hataların listesi.|[Hata](#error)[]|  
 
   
   
 ### <a name="license"></a>Lisans  
 Metin veya fotoğrafın kullanılabileceği lisansı tanımlar.  
   
-|Adı|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
-|ad|Lisansın adı.|Dize|  
+|name|Lisansın adı.|Dize|  
 |url|Kullanıcının lisans hakkında daha fazla bilgi alabileceğiniz bir Web sitesinin URL 'SI.<br /><br /> Köprü oluşturmak için adı ve URL 'YI kullanın.|Dize|  
 
 
 ### <a name="link"></a>Bağlantı  
 Bir köprünün bileşenlerini tanımlar.  
   
-|Adı|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|İpucu yazın.|Dize|  
 |metin|Görüntü metni.|Dize|  
@@ -141,9 +141,9 @@ Bir yayımcıyı tanımlar.
   
 Bir yayımcının adlarını veya Web sitelerini veya her ikisini de sağlayabileceğini unutmayın.  
   
-|Adı|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
-|ad|Yayımcının adı.|Dize|  
+|name|Yayımcının adı.|Dize|  
 |url|Yayımcının Web sitesinin URL 'SI.<br /><br /> Yayımcının bir Web sitesi sağlayamadığını unutmayın.|Dize|  
   
   
@@ -151,12 +151,12 @@ Bir yayımcının adlarını veya Web sitelerini veya her ikisini de sağlayabil
 ### <a name="place"></a>Yer  
 Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.  
   
-|Adı|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|Aşağıdakilerden birine ayarlanmış olabilecek tür İpucu:<br /><br /><ul><li>Otel</li><li>Yerel Iş<br /></li><li>Izın</ul><li>|Dize|  
 |adres|Varlığın bulunduğu posta adresi.|PostalAddress|  
-|Entitypresentationınfo|Varlığın türünü belirlemede kullanabileceğiniz ipuçları gibi varlıkla ilgili ek bilgiler. Örneğin, bir restoran veya otel olup olmadığı. `entityScenario` Alan ListItem olarak ayarlanır.|Entitypresentationınfo|  
-|ad|Varlığın adı.|Dize|  
+|Entitypresentationınfo|Varlığın türünü belirlemede kullanabileceğiniz ipuçları gibi varlıkla ilgili ek bilgiler. Örneğin, bir restoran veya otel olup olmadığı. `entityScenario`Alan ListItem olarak ayarlanır.|Entitypresentationınfo|  
+|name|Varlığın adı.|Dize|  
 |Telefon|Varlığın telefon numarası.|Dize|  
 |url|Varlığın Web sitesinin URL 'SI.<br /><br /> Tıklamadan kullanıcıyı varlığın Web sitesine götüren bir köprü oluşturmak için bu URL 'YI varlığın adıyla birlikte kullanın.|Dize|  
 |webSearchUrl|Bu yer için Bing 'in arama sonucunun URL 'SI.|Dize| 
@@ -169,27 +169,27 @@ Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.
 |-------------|-----------------|----------|  
 |Adultınkatlanmış|Belirtilen sorgunun yetişkinlere yönelik amaç olup olmadığını gösteren bir Boole değeri. Sorguda yetişkinlere yönelik amaç varsa değer **true** 'dur; Aksi takdirde, **false**.|Boole|  
 |alterationOverrideQuery|Bing 'in özgün dizeyi kullanmasına zorlamak için kullanılacak sorgu dizesi. Örneğin, sorgu dizesi *downwind salalıyorsa*, geçersiz kılma sorgu dizesi *+ sallama*olur. *% 2Bsaling + downrüzgar*ile sonuçlanan sorgu dizesini kodlamayı unutmayın.<br /><br /> Bu alan, yalnızca özgün sorgu dizesinde yazım hatası varsa dahil edilir.|Dize|  
-|alteredQuery|Sorguyu gerçekleştirmek için Bing tarafından kullanılan sorgu dizesi. Özgün sorgu dizesinde yazım hataları yer alıyorsa Bing değiştirilen sorgu dizesini kullanır. Örneğin, sorgu dizesi ise `saling downwind`, değiştirilen sorgu dizesi olacaktır. `sailing downwind`<br /><br /> Bu alan, yalnızca özgün sorgu dizesinde yazım hatası varsa dahil edilir.|Dize|  
+|alteredQuery|Sorguyu gerçekleştirmek için Bing tarafından kullanılan sorgu dizesi. Özgün sorgu dizesinde yazım hataları yer alıyorsa Bing değiştirilen sorgu dizesini kullanır. Örneğin, sorgu dizesi ise, `saling downwind` Değiştirilen sorgu dizesi olacaktır `sailing downwind` .<br /><br /> Bu alan, yalnızca özgün sorgu dizesinde yazım hatası varsa dahil edilir.|Dize|  
 |askUserForLocation|Bing 'in, kullanıcının konumunun doğru sonuçlar sağlamasını gerektirip gerektirmediğini belirten bir Boole değeri. Kullanıcının konumunu [X-MSEdge-ClientIP](#clientip) ve [x-Search-location](#location) üst bilgilerini kullanarak belirttiyseniz, bu alanı yoksayabilirsiniz.<br /><br /> "Bugün hava durumu" veya "Yakınımdaki Restoran" gibi konum duyarlı sorgularda, bu alan doğru sonuçlar sağlamak için kullanıcının konumuna ihtiyacı olan bu alan **true**olarak ayarlanır.<br /><br /> Konumu içeren konum duyarlı sorgular için (örneğin, "Seattle Hava durumu"), bu alan **false**olarak ayarlanır. Bu alan ayrıca "en iyi satıcılar" gibi konum duyarlı olmayan sorgular için **false** olarak ayarlanır.|Boole|  
 |originalQuery|İstekte belirtilen şekilde sorgu dizesi.|Dize|  
 
 ### <a name="identifiable"></a>Maya
 
-|Adı|Değer|Tür|  
+|Name|Değer|Tür|  
 |-------------|-----------------|----------|
-|id|Kaynak tanımlayıcısı|Dize|
+|kimlik|Kaynak tanımlayıcısı|Dize|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Mainline gibi bir arama sonuçları grubunu tanımlar.
 
-|Adı|Değer|Tür|  
+|Name|Değer|Tür|  
 |-------------|-----------------|----------|
 |öğeler|Grupta görüntülenecek arama sonuçlarının listesi.|Rankingıtem|
 
 ### <a name="rankingitem"></a>Rankingıtem
 Görüntülenecek bir arama sonuç öğesi tanımlar.
 
-|Adı|Değer|Tür|  
+|Name|Değer|Tür|  
 |-------------|-----------------|----------|
 |Resultındex|Görüntülenecek cevap içindeki öğenin sıfır tabanlı dizini. Öğe bu alanı içermiyorsa, yanıtdaki tüm öğeleri görüntüleyin. Örneğin, haber yanıtında tüm haber makalelerini görüntüleyin.|Tamsayı|
 |answerType|Görüntülenecek öğeyi içeren yanıt. Örneğin, Haberler.<br /><br />SearchResponse nesnesinde yanıtı bulmak için türü kullanın. Tür, SearchResponse alanının adıdır.<br /><br /> Ancak, yanıt türünü yalnızca bu nesne değer alanını içeriyorsa kullanın; Aksi takdirde, yoksayabilirsiniz.|Dize|
@@ -199,18 +199,18 @@ Görüntülenecek bir arama sonuç öğesi tanımlar.
 ### <a name="rankingresponse"></a>RankingResponse  
 Arama sonuçları sayfasının içeriğini ve ne sırada yerleştirileceğini tanımlar.  
   
-|Adı|Değer|  
+|Name|Değer|  
 |----------|-----------|  
-|<a name="ranking-mainline" />Ana hat|Ana satırda görüntülenecek arama sonuçları.|  
-|<a name="ranking-pole" />kutup|En sık görülen işleme (örneğin, ana hat ve kenar çubuğu üzerinde görüntülenir) uygun olması gereken arama sonuçları.|  
-|<a name="ranking-sidebar" />kutusuna|Kenar çubuğunda görüntülenecek arama sonuçları.| 
+|<a name="ranking-mainline"></a>Ana hat|Ana satırda görüntülenecek arama sonuçları.|  
+|<a name="ranking-pole"></a>kutup|En sık görülen işleme (örneğin, ana hat ve kenar çubuğu üzerinde görüntülenir) uygun olması gereken arama sonuçları.|  
+|<a name="ranking-sidebar"></a>kutusuna|Kenar çubuğunda görüntülenecek arama sonuçları.| 
 
 ### <a name="searchresponse"></a>SearchResponse  
 İstek başarılı olduğunda yanıtın içerdiği en üst düzey nesneyi tanımlar.  
   
 Hizmet bir hizmet reddi saldırısından şüpheleniyorsa, isteğin başarılı olacağını unutmayın (HTTP durum kodu 200 Tamam); Ancak, yanıt gövdesi boş olur.  
   
-|Adı|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|SearchResponse olarak ayarlanan tip ipucu.|Dize|  
 |yer|Arama sorgusuyla ilgili varlıkların listesi.|JSON nesnesi|  

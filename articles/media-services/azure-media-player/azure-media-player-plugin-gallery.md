@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: ee29d1c45896583ef5aa5837e8383159db855d52
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ca74e9c10175f2c34133886e1c8a06782b588c2
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124627"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148234"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player eklentisi Galerisi #
 
@@ -35,7 +35,7 @@ ms.locfileid: "83124627"
 | Tanılama çıkışı                  | [Tanıtım](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/diagnosticslogger/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-diagnostic-logger-plugin)                     | Bu eklenti, oynatıcınızın bir dizi tanılamayı çıktı ve bu işlemin nasıl çalıştığını görmek için tanıtım bağlantısına gidin ve JavaScript konsolunuzu açın. |
 | Erişim Kolaylığı                      | | | |
 | Yakınlaştır                             | [Tanıtım](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/zoom/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-zoom-plugin)                     | Bu eklenti, görüntüleyicilerin içeriğinizi yakınlaşabilmesi için oyuncular ekranında sürükle özellikli yakınlaştırma ölçeği görüntüler |
-| Canlı açıklamalı alt yazılar                       | [Azure blog gönderisi](https://azure.microsoft.com/blog/live-real-time-captions-with-azure-media-services-and-player/),[subply Post](http://www.subply.com/en/Products/AzureLiveCaptions.htm) | YOK | *Daha fazla bilgi için gönderi bölümüne bakın.* Canlı açıklamalı alt yazı için tasarlanan uçtan uca iş akışı Azure Media Player için, en sol üst düzey ' e tıklayarak ve çözüm hakkında daha fazla bilgi edinin |
+| Canlı açıklamalı alt yazılar                       | [Azure blog gönderisi](https://azure.microsoft.com/blog/live-real-time-captions-with-azure-media-services-and-player/),[subply Post](http://www.subply.com/en/Products/AzureLiveCaptions.htm) | YOK | *Daha fazla bilgi için gönderi bölümüne bakın.* Canlı açıklamalı altyazı için tasarlanan uçtan uca iş akışı Azure Media Player için, alt sayfanın sitesine gitmek ve çözüm hakkında daha fazla bilgi edinmek için en soldaki bağlantıya tıklayın |
 | Sık kullanılan tuşlar                            | <strike>[Tanıtım](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)</strike>                        | <strike>[GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-hot-keys-plugin)</strike>                     | Sık kullanılan anahtarlar eklentisi, görüntüleyicilerin, ekran için F, sessiz ve ilerleme çubuğu denetimi için ok tuşları gibi genel eklenti birleşimleri ile Player 'ın çeşitli yönlerini denetlemesine olanak sağlar. *Note: Bu eklenti zaten AMP ile tümleştirildi, ancak bunu kaynak olarak kullanma ücretsizdir* |
 | Sosyal                              | | | |
 | Paylaş                               | [Tanıtım](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/share/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-social-share-plugin)                     | Bu eklenti, görüntüleyicilerinizin Facebook, Twitter veya LinkedIn aracılığıyla arkadaşlarınızla yaptıkları videoyu paylaşabilmesi için Player 'ın denetim çubuğuna bir Paylaş düğmesi ekler. |

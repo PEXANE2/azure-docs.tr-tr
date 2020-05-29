@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: f7c6829d858e36b55f079f8ee03e431f67995e66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272585"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168208"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tablo .NET Standard API: Indirme ve sürüm notları
 > [!div class="op_single_selector"]
@@ -27,60 +27,60 @@ ms.locfileid: "81272585"
 |   |   |
 |---|---|
 |**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
-|**Örnek**|[Cosmos DB Tablo API'si .NET örneği](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
-|**Hızlı Başlangıç**|[Hızlı Başlangıç](create-table-dotnet.md)|
-|**Eğitmen**|[Eğitmen](tutorial-develop-table-dotnet.md)|
+|**Örnekli**|[Cosmos DB Tablo API'si .NET örneği](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
+|**Hızlı başlangıç**|[Hızlı başlangıç](create-table-dotnet.md)|
+|**Öğretici**|[Öğretici](tutorial-develop-table-dotnet.md)|
 |**Desteklenen geçerli çerçeve**|[Microsoft .NET Standart 2,0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Sorun bildir**|[Sorun bildir](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes-for-200-series"></a>2.0.0 serisi için sürüm notları
 2.0.0 serisi, uç nokta Cosmos DB için performans iyileştirmeleri ve ad alanı birleştirme ile [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)bağımlılığını alır.
 
-### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0-Önizleme
+### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-Önizleme
 * Cosmos DB uç noktası için performans iyileştirmeleri ve ad alanı birleştirme ile [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)bağımlılığını alan 2.0.0 tablo SDK 'sının ilk önizlemesi. Ortak API aynı kalır.
 
 ## <a name="release-notes-for-100-series"></a>1.0.0 serisi için sürüm notları
 1.0.0 Series, [Microsoft. Azure. DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)'a bağımlılığı alır.
 
-### <a name="107"></a><a name="1.0.7"/>1.0.7
+### <a name="107"></a><a name="1.0.7"></a>1.0.7
 * Tablo SDK varsayılan izleme düzeyini, App. config aracılığıyla kabul edilebilir SourceLevels. off olarak ayarlayarak performans iyileştirmesi
 
-### <a name="105"></a><a name="1.0.5"/>1.0.5
+### <a name="105"></a><a name="1.0.5"></a>1.0.5
 * Cosmos DB Tablo API'si iletişim kurmak için REST yürütücüsü kullanmak üzere TableClientConfiguration altında yeni yapılandırma tanıtın
 
-### <a name="105-preview"></a><a name="1.0.5-preview"/>1.0.5-Önizleme
+### <a name="105-preview"></a><a name="1.0.5-preview"></a>1.0.5-Önizleme
 * Hata düzeltmeleri
 
-### <a name="104"></a><a name="1.0.4"/>1.0.4
-* Hata düzeltmeleri
-* RestExecutorConfiguration için HttpClientTimeout seçeneğini belirtin.
-
-### <a name="104-preview"></a><a name="1.0.4-preview"/>1.0.4-Önizleme
+### <a name="104"></a><a name="1.0.4"></a>1.0.4
 * Hata düzeltmeleri
 * RestExecutorConfiguration için HttpClientTimeout seçeneğini belirtin.
 
-### <a name="101"></a><a name="1.0.1"/>1.0.1
+### <a name="104-preview"></a><a name="1.0.4-preview"></a>1.0.4-Önizleme
+* Hata düzeltmeleri
+* RestExecutorConfiguration için HttpClientTimeout seçeneğini belirtin.
+
+### <a name="101"></a><a name="1.0.1"></a>1.0.1
 * Hata düzeltmeleri
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * Genel kullanılabilirlik sürümü
 
-### <a name="0110-preview"></a><a name="0.11.0-preview"/>0.11.0-Önizleme
+### <a name="0110-preview"></a><a name="0.11.0-preview"></a>0.11.0-Önizleme
 * CloudTableClient 'ın nasıl yapılandırılabileceğini değişiklikler yapıldı. Şimdi oluşturma sırasında bir TableClientConfiguration nesnesi alır. TableClientConfiguration, hedef uç noktanın Cosmos DB Tablo API'si veya Azure Depolama Tablo API'si olmasına bağlı olarak istemci davranışını yapılandırmak için farklı özellikler sağlar.
 * Özel bir sütunda sonuçları sıralanmış sırada döndürecek şekilde TableQuery desteği eklendi. Bu özellik yalnızca Cosmos DB tablo uç noktalarında desteklenir.
 * Çeşitli sonuç türlerinde RequestCharges sergilemek için destek eklendi. Bu özellik yalnızca Cosmos DB tablo uç noktalarında desteklenir.
 
-### <a name="0101-preview"></a><a name="0.10.1-preview"/>0.10.1-Önizleme
+### <a name="0101-preview"></a><a name="0.10.1-preview"></a>0.10.1-Önizleme
 * Azure depolama tablo uç noktalarına yönelik SAS belirteci, TablePermissions, ServiceProperties ve ServiceStats işlemlerine yönelik destek ekleyin. 
    > [!NOTE]
    > Önceki Azure depolama tablo SDK 'larında bazı işlevler, istemci tarafı şifreleme gibi henüz desteklenmemektedir.
 
-### <a name="0100-preview"></a><a name="0.10.0-preview"/>0.10.0-Önizleme
+### <a name="0100-preview"></a><a name="0.10.0-preview"></a>0.10.0-Önizleme
 * Azure depolama tablo uç noktalarına yönelik çekirdek CRUD, toplu iş ve sorgu işlemleri için destek ekleyin. 
    > [!NOTE]
    > Önceki Azure depolama tablo SDK 'larında bazı işlevler, istemci tarafı şifreleme gibi henüz desteklenmemektedir.
 
-### <a name="091-preview"></a><a name="0.9.1-preview"/>0.9.1-Önizleme
+### <a name="091-preview"></a><a name="0.9.1-preview"></a>0.9.1-Önizleme
 * Azure Cosmos DB tablo .NET Standard SDK, Cosmos DB tablo veri modeline verimli erişim sağlayan bir platformlar arası .NET kitaplığıdır. Bu ilk sürüm, [.NET Framework için Cosmos db tablo SDK 'sı](table-sdk-dotnet.md)olarak benzer API 'Lerle birlikte tablo ve VARLıK CRUD + sorgu işlevleri 'nin tam kümesini destekler. 
    > [!NOTE]
    >  Azure Storage tablo uç noktaları, 0.9.1-Preview sürümünde henüz desteklenmiyor.

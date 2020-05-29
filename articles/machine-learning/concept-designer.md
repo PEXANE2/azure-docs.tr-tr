@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
 ms.custom: designer
-ms.openlocfilehash: 7a756a09e135f664074e64a611755845d8dfb8b7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7dcd2015a669d9640f4163e6decc96689bb4ca7b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654933"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167084"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) nedir? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,19 +38,19 @@ Tasarımcı, şu gibi paylaşılan kaynakları düzenlemek için Azure Machine L
 Tasarımcı, makine öğrenimi modellerini derlemek, test etmek ve dağıtmak için size görsel bir tuval sağlar. Tasarımcı ile şunları yapabilirsiniz:
 
 + [Veri kümelerini](#datasets) ve [modülleri](#module) tuval üzerine sürükleyip bırakın.
-+ Bir işlem [hattı taslağı](#pipeline-draft)oluşturmak için modülleri birbirine bağlayın.
++ İşlem [hattı taslağı](#pipeline-draft)oluşturmak için modülleri bağlayın.
 + Azure Machine Learning çalışma alanınızdaki işlem kaynaklarını kullanarak bir işlem [hattı çalıştırması](#pipeline-run) gönderebilirsiniz.
 + **Eğitim** işlem hatlarınızı **çıkarım**işlem hatlarına dönüştürün.
-+ Farklı parametrelerle ve veri kümeleriyle yeni işlem hattı çalıştırmaları göndermek için işlem hatlarınızı bir REST **ardışık düzen uç noktasına** [yayımlayın](#publish) .
++ Farklı parametrelerle ve veri kümeleriyle çalışan yeni bir işlem hattı göndermek için işlem hatlarınızı bir REST **ardışık düzen uç noktasına** [yayımlayın](#publish) .
     + Parametreleri ve veri kümelerini değiştirirken birden çok modeli eğitmek için tek bir işlem hattını yeniden kullanmak üzere bir **eğitim işlem hattı** yayımlayın.
     + Daha önce eğitilen bir modeli kullanarak yeni verilerde tahmine dayalı hale getirmek için bir **toplu çıkarım işlem hattı** yayımlayın.
-+ Gerçek zamanlı bir zaman noktasına gerçek zamanlı bir **çıkarım işlem hattı** [dağıtın](#deploy) ve yeni verilerde gerçek zamanlı olarak tahmine dayalı hale getirin.
++ Gerçek zamanlı yeni verilerde tahmine dayalı hale getirmek için gerçek zamanlı bir uç noktaya gerçek zamanlı bir **çıkarım işlem hattı** [dağıtın](#deploy) .
 
 ![Tasarımcıda eğitim, toplu çıkarım ve gerçek zamanlı çıkarım için iş akışı diyagramı](./media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>İşlem hattı
 
-İşlem [hattı](concept-azure-machine-learning-architecture.md#ml-pipelines) , birlikte bağlandığınız veri kümeleri ve analitik modüllerden oluşur. İşlem hatları birçok kullanımı vardır: tek bir modeli gösteren bir işlem hattını veya birden çok modeli gösteren bir işlem hattı yapabilirsiniz. Gerçek zamanlı veya toplu olarak tahmin yapan bir işlem hattı oluşturabilir veya yalnızca verileri temizlemeleri için bir işlem hattı oluşturabilirsiniz. İşlem hatları, işinizi yeniden kullanmanıza ve projelerinizi düzenlemenize olanak tanır.
+İşlem [hattı](concept-azure-machine-learning-architecture.md#ml-pipelines) , bağlandığınız veri kümeleri ve analitik modüllerden oluşur. İşlem hatları birçok kullanımı vardır: tek bir modeli gösteren bir işlem hattını veya birden çok modeli gösteren bir işlem hattı yapabilirsiniz. Tahminleri gerçek zamanlı veya toplu olarak uygulayan bir işlem hattı oluşturabilir veya yalnızca verileri temizlemeleri için bir işlem hattı oluşturabilirsiniz. İşlem hatları, işinizi yeniden kullanmanıza ve projelerinizi düzenlemenize olanak tanır.
 
 ### <a name="pipeline-draft"></a>Ardışık düzen taslağı
 
@@ -73,11 +73,11 @@ Geçerli bir işlem hattı şu özelliklere sahiptir:
 
 ## <a name="datasets"></a>Veri kümeleri
 
-Machine Learning veri kümesi, verilerinize erişmeyi ve bunlarla çalışmayı kolaylaştırır. Bir dizi örnek veri kümesi, tasarımcı ile denemeler yapmak için eklenmiştir. Gerektiğinde daha [fazla veri kümesi kaydedebilirsiniz.](how-to-create-register-datasets.md)
+Machine Learning veri kümesi, verilerinize erişmeyi ve bunlarla çalışmayı kolaylaştırır. Birkaç örnek veri kümesi, daha sonra denemek için tasarımcıya dahildir. Gerektiğinde daha [fazla veri kümesi kaydedebilirsiniz.](how-to-create-register-datasets.md)
 
 ## <a name="module"></a>Modül
 
-Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Tasarımcı, veri giriş işlevlerinden eğitim, Puanlama ve doğrulama işlemlerine kadar birçok modül içerir.
+Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Tasarımcı, veri giriş işlevlerinden eğitim, Puanlama ve doğrulama işlemlerine kadar çeşitli modüller içerir.
 
 Bir modül, modülün iç algoritmalarını yapılandırmak için kullanabileceğiniz parametreler kümesine sahip olabilir. Tuvalde bir modül seçtiğinizde, modülün parametreleri tuvalin sağındaki Özellikler bölmesinde görüntülenir  Modelinizi ayarlamak için, bu bölmedeki parametreleri değiştirebilirsiniz. Tasarımcıda bireysel modüller için işlem kaynaklarını ayarlayabilirsiniz. 
 
@@ -138,4 +138,3 @@ Varolan Visual Interface denemeleri ve Web hizmetlerini, tasarımcıda işlem ha
 
 * Öğretici ile tahmine dayalı analiz ve makine öğrenimi hakkında temel bilgileri öğrenin [: tasarımcı ile otomobil fiyatlarını tahmin](tutorial-designer-automobile-price-train-score.md) etme
 * Mevcut [Tasarımcı örneklerini](samples-designer.md) gereksinimlerinize uyarlayacak şekilde nasıl değiştireceğinizi öğrenin.
-

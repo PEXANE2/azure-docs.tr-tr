@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 54379c65850fa210e5523b53a64fe89705ed1f15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f998cc238b997f2dfb8e8043693379e4c5a53546
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79532119"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170418"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı'nda Sanal Ağ hizmet uç noktalarını ve kuralları kullanma
 
@@ -24,7 +24,7 @@ Bir sanal ağ kuralı oluşturmak için öncelikle kuralın başvurması için b
 > [!NOTE]
 > Bu özellik, Azure 'un, MariaDB için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş sunucular için dağıtıldığı tüm Azure bölgelerinde kullanılabilir.
 
-<a name="anch-terminology-and-description-82f" />
+<a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>Terminoloji ve açıklama
 
@@ -44,7 +44,7 @@ Bir sanal ağ kuralı, MariaDB sunucusu için Azure veritabanı 'na alt ağdaki 
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-benefits-of-a-vnet-rule-68b"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Bir sanal ağ kuralının avantajları
 
@@ -68,7 +68,7 @@ Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekteki tamam
 
 Ancak, Ağustos 2018 itibariyle, MariaDB için Azure veritabanı hizmeti henüz bir alt ağa atanabilen hizmetler arasında değil.
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>Sanal ağ kuralları hakkında ayrıntılar
 
@@ -88,8 +88,8 @@ Her bir sanal ağ kuralı, yalnızca sunucudaki belirli bir veritabanına değil
 
 Sanal ağ hizmet uç noktalarının yönetiminde güvenlik rollerinin bir ayrımı vardır. Aşağıdaki rollerden her biri için eylem gereklidir:
 
-- **Ağ Yöneticisi:** &nbsp; uç noktayı açın.
-- **Veritabanı Yöneticisi:** &nbsp; verilen alt ağı MariaDB sunucusu için Azure veritabanı 'na eklemek üzere erişim denetim listesini (ACL) güncelleştirin.
+- **Ağ Yöneticisi:** &nbsp; Uç noktasını açın.
+- **Veritabanı Yöneticisi:** &nbsp; Verilen alt ağı MariaDB sunucusu için Azure veritabanı 'na eklemek üzere erişim denetim listesini (ACL) güncelleştirin.
 
 *RBAC alternatifi:*
 

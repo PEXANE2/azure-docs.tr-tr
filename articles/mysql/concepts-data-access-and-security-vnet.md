@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4ca8fe3e217d3b4affc1bc0bda9ed193e91b2104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c0714bf27897de72246461ae3ad3250c55390e1
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537151"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170673"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>MySQL için Azure Veritabanı ile Sanal Ağ hizmet uç noktalarını ve kuralları kullanma
 
@@ -25,7 +25,7 @@ Bir sanal ağ kuralı oluşturmak için öncelikle kuralın başvurması için b
 > Bu özellik, MySQL için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş sunucular için dağıtıldığı tüm Azure bölgelerinde kullanılabilir.
 > VNet eşlemesi söz konusu olduğunda trafik, hizmet uç noktaları içeren bir ortak VNet ağ geçidi üzerinden akar ve eşe akışı gerekiyorsa, ağ geçidi VNet 'teki Azure sanal makinelerinin MySQL sunucusuna Azure veritabanı 'na erişmesine izin vermek için lütfen bir ACL/VNet kuralı oluşturun.
 
-<a name="anch-terminology-and-description-82f" />
+<a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>Terminoloji ve açıklama
 
@@ -45,7 +45,7 @@ Bir sanal ağ kuralı, MySQL için Azure veritabanı sunucunuzun alt ağdaki her
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-benefits-of-a-vnet-rule-68b"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Bir sanal ağ kuralının avantajları
 
@@ -69,7 +69,7 @@ Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekteki tamam
 
 Ancak, Ağustos 2018 itibariyle, MySQL için Azure veritabanı hizmeti, henüz bir alt ağa atanabileceği hizmetler arasında değil.
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>Sanal ağ kuralları hakkında ayrıntılar
 
@@ -89,8 +89,8 @@ Her bir sanal ağ kuralı, yalnızca sunucudaki belirli bir veritabanına değil
 
 Sanal ağ hizmet uç noktalarının yönetiminde güvenlik rollerinin bir ayrımı vardır. Aşağıdaki rollerden her biri için eylem gereklidir:
 
-- **Ağ Yöneticisi:** &nbsp; uç noktayı açın.
-- **Veritabanı Yöneticisi:** &nbsp; belirtilen alt ağı MySQL sunucusu için Azure veritabanı 'na eklemek üzere erişim denetim listesini (ACL) güncelleştirin.
+- **Ağ Yöneticisi:** &nbsp; Uç noktasını açın.
+- **Veritabanı Yöneticisi:** &nbsp; Verilen alt ağı MySQL sunucusu için Azure veritabanı 'na eklemek üzere erişim denetim listesini (ACL) güncelleştirin.
 
 *RBAC alternatifi:*
 

@@ -6,29 +6,29 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: eabec50f57785bde6760db053eb3b12f6f5b6452
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8aeb6b964ab38a68a6d8681a4e5c93e1650c6a69
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732057"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171302"
 ---
 Python için Language Understanding (LUSıS) tahmini istemci kitaplığını kullanın:
 
 * Yuvaya göre tahmin al
 * Sürüme göre tahmin al
 
-[Başvuru belge](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [tahmin çalışma zamanı paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  |  [ örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis)  |  [Tahmin çalışma zamanı paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Language Understanding (LUSıS) portal hesabı- [ücretsiz olarak bir tane oluşturun](https://www.luis.ai)
 * [Python 3.x](https://www.python.org/)
-* Bir LUSıS uygulama KIMLIĞI-genel IoT uygulama KIMLIĞI ' ni kullanın `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Hızlı başlangıç kodunda kullanılan Kullanıcı sorgusu bu uygulamaya özeldir.
+* Bir LUSıS uygulama KIMLIĞI-genel IoT uygulama KIMLIĞI ' ni kullanın `df67dcdb-c37d-46af-88e1-8b97951ca1c2` . Hızlı başlangıç kodunda kullanılan Kullanıcı sorgusu bu uygulamaya özeldir.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -40,9 +40,9 @@ Bir LUSıS çalışma zamanı kaynağı oluşturarak [çalışma zamanı anahtar
 
 ### <a name="create-a-new-python-file"></a>Yeni bir Python dosyası oluştur
 
-Tercih ettiğiniz düzenleyicide veya IDE 'de adlı `prediction_quickstart.py`yeni bir Python dosyası oluşturun.
+Tercih ettiğiniz düzenleyicide veya IDE 'de adlı yeni bir Python dosyası oluşturun `prediction_quickstart.py` .
 
-### <a name="install-the-sdk"></a>SDK yükle
+### <a name="install-the-sdk"></a>SDK Yükleme
 
 Uygulama dizini içinde, aşağıdaki komutla Python için Language Understanding (LUSıS) tahmin çalışma zamanı istemci Kitaplığı ' nı yükler:
 
@@ -67,28 +67,28 @@ Bu kod parçacıkları, Python için Language Understanding (LUSıS) tahmin çal
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
-Proje dizininden `prediction_quickstart.py` dosyayı tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Aşağıdaki bağımlılıkları ekleyin:
+Proje dizininden `prediction_quickstart.py` dosyayı tercih ettiğiniz düzenleyicide veya IDE 'de açın. Aşağıdaki bağımlılıkları ekleyin:
 
-[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=Dependencies)]
+[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=Dependencies)]
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 1. Kendi gerekli LUSıS bilgileriniz için değişkenler oluşturun:
 
-    Adlı `LUIS_RUNTIME_KEY`bir ortam değişkeninden çekilen tahmin anahtarınızı yönetmek için değişken ekleyin. Uygulama başlatıldıktan sonra ortam değişkenini oluşturduysanız, bu değişkeni çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra oluşturulacak.
+    Adlı bir ortam değişkeninden çekilen tahmin anahtarınızı yönetmek için değişken ekleyin `LUIS_RUNTIME_KEY` . Uygulama başlatıldıktan sonra ortam değişkenini oluşturduysanız, bu değişkeni çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra oluşturulacak.
 
-    Kaynak adınızı `LUIS_RUNTIME_ENDPOINT`tutacak bir değişken oluşturun.
+    Kaynak adınızı tutacak bir değişken oluşturun `LUIS_RUNTIME_ENDPOINT` .
 
-    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=AuthorizationVariables)]
+    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=AuthorizationVariables)]
 
-1. Uygulama KIMLIĞI için adlı `LUIS_APP_ID`bir ortam değişkeni olarak bir değişken oluşturun. Ortam değişkenini genel IoT uygulaması olarak ayarlayın **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . `production` Yayınlanan yuvayı ayarlamak için bir değişken oluşturun.
+1. Uygulama KIMLIĞI için adlı bir ortam değişkeni olarak bir değişken oluşturun `LUIS_APP_ID` . Ortam değişkenini genel IoT uygulaması olarak ayarlayın **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Yayınlanan yuvayı ayarlamak için bir değişken oluşturun `production` .
 
-    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=OtherVariables)]
+    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=OtherVariables)]
 
 
-1. Anahtarınızla bir kimlik bilgileri nesnesi oluşturun ve bir [LUISRuntimeClientConfiguration]https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+1. Anahtarınızla bir kimlik bilgileri nesnesi oluşturun ve bir [LUISRuntimeClientConfiguration] nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() .
 
-    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=Client)]
+    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=Client)]
 
 ## <a name="get-prediction-from-runtime"></a>Çalışma zamanından tahmin al
 
@@ -98,7 +98,7 @@ Kullanıcı söylenişi [prediction_request](https://docs.microsoft.com/python/a
 
 **[Get_slot_prediction](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)** yöntemi, isteği yerine getirmek IÇIN uygulama kimliği, yuva adı ve tahmin isteği nesnesi gibi çeşitli parametrelere ihtiyaç duyuyor. Verbose gibi diğer seçenekler, tüm hedefleri gösterir ve günlük isteğe bağlıdır. İstek bir [PredictionResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionresponse?view=azure-python) nesnesi döndürüyor.
 
-[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=predict)]
+[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=predict)]
 
 ## <a name="main-code-for-the-prediction"></a>Tahmin için ana kod
 
@@ -109,7 +109,7 @@ predict(luisAppID, luisSlotName)
 ```
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı uygulama dizininizdeki `python prediction_quickstart.py` komutla çalıştırın.
+Uygulamayı `python prediction_quickstart.py` uygulama dizininizdeki komutla çalıştırın.
 
 ```console
 python prediction_quickstart.py

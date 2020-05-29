@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab6be101e33fb29f96e2e5ea0fd2e79aa1cf0d09
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8f5e4e80af106de7c4bc8f09bdbecbc84199c2b3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744686"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171166"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -135,7 +135,7 @@ Cihaz kuralları için kullanılan özellikler için bkz. [Cihazlar Için kurall
 
 Aşağıdaki tabloda, tek bir ifade için desteklenen tüm işleçler ve bunların sözdizimi listelenmektedir. İşleçler, kısa çizgi (-) öneki ile veya bu önek olmadan kullanılabilir.
 
-| Operatör | Söz dizimi |
+| Operatör | Sözdizimi |
 | --- | --- |
 | Eşit değildir |-ne |
 | Eşittir |-EQ |
@@ -384,7 +384,7 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
  deviceManufacturer | herhangi bir dize değeri | (Device. deviceManufacturer-EQ "Samsung")
  deviceModel | herhangi bir dize değeri | (Device. deviceModel-EQ "iPad hava")
  Devicesahiplik | Kişisel, Şirket, bilinmeyen | (Device. Devicesahiplik-EQ "Şirket")
- KayıtAdı | Apple cihaz kayıt profili, cihaz kaydı-kurumsal cihaz tanımlayıcıları (Android-bilgi noktası) veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
+ KayıtAdı | Apple cihaz kayıt profili adı, Android kurumsal şirkete ait adanmış cihaz kayıt profili adı veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
  IBir kökü belirtilmiş | doğru yanlış | (Device. ısınroot-EQ true)
  managementType | MDM (mobil cihazlar için)<br>BILGISAYAR (Intune bılgısayar Aracısı tarafından yönetilen bilgisayarlar için) | (Device. managementType-EQ "MDM")
  deviceId | geçerli bir Azure AD cihaz KIMLIĞI | (Device. DeviceID-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

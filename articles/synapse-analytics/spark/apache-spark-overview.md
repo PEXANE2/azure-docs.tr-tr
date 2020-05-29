@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 291e81261f8841b3d4629b077f0a244f10aa1fd8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8ca2a3d55a98f96f704999d888761ea40fc4665f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118567"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140982"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark nedir?
 
@@ -32,7 +32,7 @@ Apache Spark, bellek içi küme bilgi işlem için temel öğeler sağlar. Bir S
 
 Azure 'daki Spark havuzları, tam olarak yönetilen bir Spark hizmeti sunar. SYNAPSE Analytics 'te Spark havuzu oluşturmanın avantajları burada listelenmiştir.
 
-| Özellik | Açıklama |
+| Öne çıkan özelliği | Açıklama |
 | --- | --- |
 | Hız ve verimlilik |Spark örnekleri 60 ' den az düğüm için yaklaşık 2 dakika ve 60 ' den fazla düğüm için yaklaşık 5 dakika içinde başlar. Örnek, varsayılan olarak, son işi bir not defteri bağlantısı tarafından etkin tutulmadığı takdirde 5 dakikada bir kapatır. |
 | Oluşturma kolaylığı |Azure portal, Azure PowerShell veya SYNAPSE Analytics .NET SDK kullanarak dakikalar içinde Azure SYNAPSE 'te yeni bir Spark havuzu oluşturabilirsiniz. Bkz. [SYNAPSE Analytics 'Te Spark havuzlarıyla çalışmaya başlama](../quickstart-create-apache-spark-pool-studio.md). |

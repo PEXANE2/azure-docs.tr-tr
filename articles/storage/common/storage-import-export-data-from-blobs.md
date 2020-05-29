@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a5afa6439caa6b7c1572447e3b212f3357bf296a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe58f59147db43b1c15298f83a2945b50766f8a8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282520"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169211"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Blob depolamadan verileri dışarı aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
@@ -27,10 +27,10 @@ Azure Blob depolama 'dan verileri aktarmak üzere bir dışarı aktarma işi olu
 - Içeri/dışarı aktarma hizmeti için kullanılabilen etkin bir Azure aboneliğine sahip olun.
 - En az bir Azure depolama hesabınız olmalıdır. [İçeri/dışarı aktarma hizmeti Için desteklenen depolama hesapları ve depolama türleri](storage-import-export-requirements.md)listesine bakın. Yeni bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-account-create.md).
 - [Desteklenen türlerde](storage-import-export-requirements.md#supported-disks)yeterli sayıda disk vardır.
-- FedEx/DHL hesabınız olmalıdır. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, ' de `adbops@microsoft.com`Azure Data Box işlemler ekibine başvurun.
+- FedEx/DHL hesabınız olmalıdır. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, ' de Azure Data Box Işlemler ekibine başvurun `adbops@microsoft.com` .
   - Hesap geçerli olmalıdır, bakiyesi olmalıdır ve dönüş teslim özelliklerine sahip olmalıdır.
   - Dışarı aktarma işi için bir izleme numarası oluştur.
-  - Her işin ayrı bir izleme numarası olmalıdır. Aynı izleme numarasına sahip birden çok iş desteklenmez.
+  - Her iş ayrı bir izleme numarasına sahip olmalıdır. Aynı izleme numarasına birden fazla işin eklenmesi desteklenmez.
   - Bir taşıyıcı hesabınız yoksa şuraya gidin:
     - [FedEX hesabı oluşturun](https://www.fedex.com/en-us/create-account.html)veya
     - [BIR DHL hesabı oluşturun](http://www.dhl-usa.com/en/express/shipping/open_account.html).
@@ -39,7 +39,7 @@ Azure Blob depolama 'dan verileri aktarmak üzere bir dışarı aktarma işi olu
 
 Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
 
-1. Oturum açın https://portal.azure.com/.
+1. Oturum açın https://portal.azure.com/ .
 2. **Tüm hizmetlere > depolama > içeri/dışarı aktarma işlerine**gidin.
 
     ![Içeri/dışarı aktarma işlerine git](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -83,7 +83,7 @@ Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımlar�
 
 6. **İade gönderimi bilgileri**:
 
-    - Açılan listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. Kullanmayı planladığınız taşıyıcı ile ilgili `adbops@microsoft.com` bilgilerle birlikte Azure Data Box işlemler ekibine başvurun.
+    - Açılan listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. `adbops@microsoft.com`Kullanmayı planladığınız taşıyıcı ile ilgili bilgilerle birlikte Azure Data Box işlemler ekibine başvurun.
     - Bu taşıyıcı ile oluşturduğunuz geçerli bir taşıyıcı hesap numarası girin. Microsoft bu hesabı, dışa aktarma işiniz tamamlandıktan sonra sürücüleri size geri göndermek için kullanır.
     - Tümü ve geçerli bir iletişim adı, telefon, e-posta, sokak adresi, şehir, posta, Eyalet/bölge ve ülke/bölge sağlayın.
 
@@ -129,7 +129,7 @@ Dışarı aktarma işlemi tamamlanmıştır.
 
 Waımportexport aracının sürüm 1.4.0.300 kullanıyorsanız, sürücünün kilidini açmak için aşağıdaki komutu kullanın:
 
-    `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
 
 Aracın önceki sürümlerini kullanıyorsanız sürücünün kilidini açmak için BitLocker iletişim kutusunu kullanın.
 
@@ -140,7 +140,7 @@ Aracın önceki sürümlerini kullanıyorsanız sürücünün kilidini açmak i�
 Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısını belirlemenize yardımcı olur. [Desteklenen BIR işletim sistemi sürümünü](storage-import-export-requirements.md#supported-operating-systems)çalıştıran bir Windows sisteminde bu adımı gerçekleştirin.
 
 1. Windows sisteminde [Waımportexport sürüm 1 ' i indirin](https://www.microsoft.com/download/details.aspx?id=42659) .
-2. Varsayılan klasöre `waimportexportv1`ayıklayın. Örneğin, `C:\WaImportExportV1`.
+2. Varsayılan klasöre ayıklayın `waimportexportv1` . Örneğin, `C:\WaImportExportV1`.
 3. Yönetici ayrıcalıklarına sahip bir PowerShell veya komut satırı penceresi açın. Dizini sıkıştırılmış klasöre dönüştürmek için aşağıdaki komutu çalıştırın:
 
     `cd C:\WaImportExportV1`
@@ -157,7 +157,7 @@ Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısı
     |**sn**|Gereklidir. Dışarı aktarma işi için depolama hesabının adı.|  
     |**sor**|Yalnızca bir kapsayıcı SAS belirtilmemişse gereklidir. Dışarı aktarma işi için depolama hesabının hesap anahtarı.|  
     |**/csas:**|Yalnızca bir depolama hesabı anahtarı belirtilmemişse gereklidir. Dışarı aktarma işine verilecek Blobları listelemek için kapsayıcı SAS.|  
-    |**/ExportBlobListFile:**|Gereklidir. Dışarı aktarılacak Bloblar için blob yollarının listesini veya blob yolu öneklerini içeren XML dosyasının yolu. Içeri/dışarı aktarma hizmetinin REST API `BlobListBlobPath` [İş yerleştirme](/rest/api/storageimportexport/jobs) işlemindeki öğesinde kullanılan dosya biçimi.|  
+    |**/ExportBlobListFile:**|Gereklidir. Dışarı aktarılacak Bloblar için blob yollarının listesini veya blob yolu öneklerini içeren XML dosyasının yolu. `BlobListBlobPath`İçeri/dışarı aktarma hizmetinin REST API [İş yerleştirme](/rest/api/storageimportexport/jobs) işlemindeki öğesinde kullanılan dosya biçimi.|  
     |**/DriveSize:**|Gereklidir. Bir dışa aktarma işi için kullanılacak sürücülerin boyutu, *örn.* 500 GB, 1,5 TB.|  
 
     [Önizleme dışa aktarma komutuna bir örnek](#example-of-previewexport-command)görüntüleyin.
@@ -166,7 +166,7 @@ Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısı
 
 ### <a name="example-of-previewexport-command"></a>PreviewExport komutu örneği
 
-Aşağıdaki örnek, `PreviewExport` komutunu göstermektedir:  
+Aşağıdaki örnek, komutunu göstermektedir `PreviewExport` :  
 
 ```powershell
     WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB

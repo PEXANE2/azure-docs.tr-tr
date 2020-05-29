@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007543"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171576"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -55,8 +55,7 @@ Verileriniz zaten Azure Blob depolamadaki etiketleme projesini oluşturmadan ön
 
 Proje oluşturmak için **Proje Ekle**' yi seçin. Projeye uygun bir ad verin ve **etiketleme görev türünü**seçin.
 
-![Proje oluşturma Sihirbazı etiketleme](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
-
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Proje oluşturma Sihirbazı etiketleme":::
 
 * Bir sınıf kümesinden bir görüntüye yalnızca *tek bir sınıf* uygulamak istediğinizde, projeler Için **görüntü sınıflandırması çoklu sınıfı** ' nı seçin.
 * Bir sınıf kümesinden bir görüntüye bir *veya daha fazla* etiket uygulamak istediğinizde, projeler Için **görüntü sınıflandırması çoklu etiketi** ' ni seçin. Örneğin, bir köpek fotoğrafı hem *köpek* hem de *Daytime*ile etiketlenebilir.
@@ -75,13 +74,13 @@ Verilerinizi içeren bir veri kümesi zaten oluşturduysanız, **mevcut bir veri
 
 Azure Blob depolamada zaten depoladığınız verilerden veri kümesi oluşturmak için:
 
-1. Veri > **deposundan** **veri kümesi oluştur**' u seçin.
+1. Veri **deposundan veri kümesi oluştur**' u seçin  >  **From datastore**.
 1. Veri kümenize bir **ad** atayın.
 1. **Veri kümesi türü**olarak **Dosya** ' yı seçin.  
 1. Veri deposunu seçin.
 1. Verileriniz blob depolamalarınızın içindeki bir alt klasördeyse, yolu seçmek için, **Araştır** ' ı seçin.
     * Seçili yolun alt klasörlerindeki tüm dosyaları dahil etmek için yola "/* *" ekleyin.
-    * Tüm verileri geçerli*/* kapsayıcıya ve alt klasörlerine dahil etmek için "*. *" ekleyin.
+    * */* Tüm verileri geçerli kapsayıcıya ve alt klasörlerine dahil etmek için "*. *" ekleyin.
 1. Veri kümeniz için bir açıklama sağlayın.
 1. **İleri**’yi seçin.
 1. Ayrıntıları onaylayın. Ayarları değiştirmek için **geri** ' yi veya veri kümesini oluşturmak için **Oluştur** ' u seçin.
@@ -93,7 +92,7 @@ Azure Blob depolamada zaten depoladığınız verilerden veri kümesi oluşturma
 
 Verilerinizi doğrudan karşıya yüklemek için:
 
-1.  > **Yerel dosyalardan** **veri kümesi oluştur**' u seçin.
+1. Yerel **dosyalardan veri kümesi oluştur**' u seçin  >  **From local files**.
 1. Veri kümenize bir **ad** atayın.
 1. **Veri kümesi türü**olarak "dosya" yı seçin.
 1. *Isteğe bağlı:* Veri deposu, kapsayıcı ve yolun yolunu özelleştirmek için **Gelişmiş ayarlar** ' ı seçin.
@@ -108,7 +107,7 @@ Veriler, Machine Learning çalışma alanınızın varsayılan blob deposuna ("W
 
 **Etiket sınıfları** sayfasında, verilerinizi sınıflandırmak için sınıflar kümesini belirtin. Bu özelliği dikkatle yapın, etiketlerinizin doğruluğu ve hızı sınıflar arasında seçim yapabileceğinden etkilenecektir. Örneğin, bitkiler veya hayvanlar için tam Genus ve türler yazım denetimi yapmak yerine bir alan kodu kullanın veya genabd 'yi kısaltılabilir.
 
-Satır başına bir etiket girin. Yeni bir **+** satır eklemek için düğmesini kullanın. 3 veya 4 ' ten fazla etiket varsa ve 10 ' dan küçükse, Etiketleyiciler, çalışmalarını hızlandırmak için sayı tuşlarını kullanabilmesi için, adlara ("1:", "2:") önek eklemek isteyebilirsiniz.
+Satır başına bir etiket girin. **+** Yeni bir satır eklemek için düğmesini kullanın. 3 veya 4 ' ten fazla etiket varsa ve 10 ' dan küçükse, Etiketleyiciler, çalışmalarını hızlandırmak için sayı tuşlarını kullanabilmesi için, adlara ("1:", "2:") önek eklemek isteyebilirsiniz.
 
 ## <a name="describe-the-labeling-task"></a>Etiketleme görevini açıkla
 
@@ -173,7 +172,7 @@ Projeyi başlattıktan sonra Azure bu uygulamayı çalıştırmaya başlayacakt�
 
 **Veri** sekmesinde, veri kümenizi görebilir ve etiketli verileri gözden geçirebilirsiniz. Hatalı etiketlenmiş verileri görürseniz, bunu seçin ve **Reddet**' i seçin. Bu, etiketleri kaldırır ve verileri etiketsiz kuyruğa geri koyar.
 
-Projeyi duraklatmak veya yeniden başlatmak için **Duraklat**/**Başlat** düğmesini seçin. Yalnızca proje çalışırken verileri etiketleyebilir.
+Projeyi duraklatmak veya yeniden başlatmak için **Duraklat** / **Başlat** düğmesini seçin. Yalnızca proje çalışırken verileri etiketleyebilir.
 
 **Etiket verileri**' ni seçerek doğrudan **proje ayrıntıları** sayfasından verileri etiketleyebilir.
 
@@ -187,7 +186,7 @@ Bir projeye bir veya daha fazla etiket eklemek için bu adımları kullanın:
 1. Sayfanın en üstünde bulunan etiketleyicilerinin etkinliğini durdurmak için **Duraklat** ' ı seçin.
 1. **Ayrıntılar** sekmesini seçin.
 1. Sol taraftaki listede **etiket sınıfları**' nı seçin.
-1. Listenin üst kısmında **+** ![etiket ekle etiket ekle ' yi seçin](media/how-to-create-labeling-projects/add-label.png)
+1. Listenin üst kısmında **+** etiket ekle ![ etiket ekle ' yi seçin](media/how-to-create-labeling-projects/add-label.png)
 1. Formunda, yeni etiketinizi ekleyin ve nasıl devam etmek istediğinizi seçin.  Bir görüntü için kullanılabilir etiketleri değiştirdiğiniz için, zaten etiketlenmiş verilerin nasıl davranalınacağını seçersiniz:
     * Tüm mevcut etiketleri kaldırarak baştan başlayın.  Yeni tam Etiketler kümesiyle başlayarak etiketlemeye başlamak istiyorsanız bu seçeneği belirleyin. 
     * Tüm mevcut etiketleri koruyarak, baştan başlayın.  Tüm verileri etiketsiz olarak işaretlemek için bu seçeneği belirleyin, ancak önceden etiketlenmiş görüntüler için mevcut etiketleri varsayılan etiket olarak tutun.

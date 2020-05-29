@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4c1c10dfbf384815c34af8436acdbb45cb8e242
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a4f136bc805cd48d05c2378b47966b4e4e4c60fb
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746993"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168514"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -82,7 +82,7 @@ Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 
 `indexed`Etiketler veya konumlar uygulayan ilkeler oluşturulurken kullanılmalıdır. Gerekli olmasa da, etiketleri ve konumları desteklemeyen kaynakların, uyumluluk sonuçlarında uyumlu değil olarak gösterilmesini engeller. Özel durum **kaynak grupları** ve **aboneliklerdir**. Bir kaynak grubunda veya abonelikte konum veya etiket uygulayan ilke tanımlarının **modu** olarak ayarlanması `all` ve ya da türünü hedeflemesi gerekir `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` . Bir örnek için bkz. [model: Etiketler-örnek #1](../samples/pattern-tags.md). Etiketleri destekleyen kaynakların listesi için bkz. [Azure kaynakları Için etiket desteği](../../../azure-resource-manager/management/tag-support.md).
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />Kaynak sağlayıcısı modları (Önizleme)
+### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Kaynak sağlayıcısı modları (Önizleme)
 
 Şu anda önizleme sırasında şu kaynak sağlayıcısı modları destekleniyor:
 
@@ -284,11 +284,11 @@ Aşağıdaki alanlar desteklenir:
 - `tags`
 - `tags['<tagName>']`
   - Bu köşeli ayraç sözdizimi, noktalama işareti, nokta veya boşluk gibi noktalama işaretlerinin bulunduğu etiket adlarını destekler.
-  - Burada ** \< TagName \> ** , koşulun doğrulanması için etiketin adıdır.
+  - Burada, **\<tagName\>** koşulun doğrulanması için etiketin adıdır.
   - Örnekler: `tags['Acct.CostCenter']` **ACCT. costcenter** etiketin adıdır.
 - `tags['''<tagName>''']`
   - Bu köşeli ayraç sözdizimi, çift tırnak işaretiyle kaçış ile kesme işareti olan etiket adlarını destekler.
-  - Burada **' \< TagName \> '** , koşulun doğrulanması için etiketin adıdır.
+  - Burada **' \<tagName\> '** , koşulun doğrulanması için etiketin adıdır.
   - Örnek: `tags['''My.Apostrophe.Tag''']` burada **' My. kesme Işareti. Tag '** etiketinin adıdır.
 - Özellik diğer adları-bir liste için bkz. [diğer adlar](#aliases).
 
@@ -432,7 +432,7 @@ Kaynak yükünde bir dizinin kaç üyesinin bir koşul ifadesini karşılayıp k
 - **Count. Field** (zorunlu): dizinin yolunu içerir ve bir dizi diğer adı olmalıdır. Dizi eksikse, ifade koşul ifadesi düşünülmeden _false_ olarak değerlendirilir.
 - **Count. where** (isteğe bağlı): **Count. Field**öğesinin her bir [ \[ \* \] diğer ad](#understanding-the--alias) dizisi üyesini ayrı ayrı değerlendirmek için koşul ifadesi. Bu özellik sağlanmazsa, ' Field ' yolunu taşıyan tüm dizi üyeleri _true_olarak değerlendirilir. Herhangi bir [koşul](../concepts/definition-structure.md#conditions) , bu özelliğin içinde kullanılabilir.
   [Mantıksal işleçler](#logical-operators) , bu özelliğin içinde karmaşık değerlendirme gereksinimleri oluşturmak için kullanılabilir.
-- ** \< koşul \> ** (zorunlu): değer **Count. where** koşul ifadesini karşılayan öğelerin sayısıyla karşılaştırılır. Sayısal bir [koşul](../concepts/definition-structure.md#conditions) kullanılmalıdır.
+- **\<condition\>**(gerekli): değer **Count. where** koşul ifadesini karşılayan öğelerin sayısıyla karşılaştırılır. Sayısal bir [koşul](../concepts/definition-structure.md#conditions) kullanılmalıdır.
 
 #### <a name="count-examples"></a>Sayı örnekleri
 

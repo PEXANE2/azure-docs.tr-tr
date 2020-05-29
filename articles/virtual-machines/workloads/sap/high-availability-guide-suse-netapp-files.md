@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: e1511882a1244aaf7783a330c2b5c7d1eb15e50d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 541c775897f95eda932d3e19653cf557756f3efd
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176031"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170894"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -78,7 +78,7 @@ Bu makalede, Azure NetApp Files ile SAP NetWeaver uygulaması için yüksek kull
 * SAP Note [2243692][2243692] , Azure 'da LINUX üzerinde SAP lisanslama hakkında bilgi içerir.
 * SAP Note [1984787][1984787] , SUSE Linux Enterprise Server 12 hakkında genel bilgiler içerir.
 * SAP Note [1999351][1999351] , SAP Için Azure Gelişmiş izleme uzantısı için ek sorun giderme bilgilerine sahiptir.
-* SAP Community WIKI] (https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) Linux için tüm gerekli SAP notları vardır.
+* SAP Community WIKI] ( https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) Linux için tüm gereklı SAP notları vardır.
 * [Linux 'ta SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
 * [Linux 'ta SAP için Azure sanal makineleri dağıtımı][deployment-guide]
 * [Linux üzerinde SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
@@ -103,32 +103,32 @@ SAP NetWeaver yoks, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı
 * Ön uç yapılandırması
   * IP adresi 10.1.1.20
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 620<strong>&lt;NR&gt;</strong>
+  * Bağlantı noktası 620<strong> &lt; NR &gt; </strong>
 * Yük Dengeleme kuralları
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-    * 32<strong>&lt;NR&gt; </strong> TCP
-    * 36<strong>&lt;NR&gt; </strong> TCP
-    * 39<strong>&lt;NR&gt; </strong> TCP
-    * 81<strong>&lt;NR&gt; </strong> TCP
-    * 5<strong>&lt;NR&gt;</strong>13 TCP
-    * 5<strong>&lt;NR&gt;</strong>14 TCP
-    * 5<strong>&lt;NR&gt;</strong>16 TCP
+    * 32<strong> &lt; NR &gt; </strong> TCP
+    * 36<strong> &lt; NR &gt; </strong> TCP
+    * 39<strong> &lt; NR &gt; </strong> TCP
+    * 81<strong> &lt; NR &gt; </strong> TCP
+    * 5<strong> &lt; NR &gt; </strong>13 TCP
+    * 5<strong> &lt; NR &gt; </strong>14 TCP
+    * 5<strong> &lt; NR &gt; </strong>16 TCP
 
 ### <a name="ers"></a>SÖZCÜKLERI
 
 * Ön uç yapılandırması
   * IP adresi 10.1.1.21
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 621<strong>&lt;NR&gt;</strong>
+  * Bağlantı noktası 621<strong> &lt; NR &gt; </strong>
 * Yük Dengeleme kuralları
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-    * 32<strong>&lt;NR&gt; </strong> TCP
-    * 33<strong>&lt;NR&gt; </strong> TCP
-    * 5<strong>&lt;NR&gt;</strong>13 TCP
-    * 5<strong>&lt;NR&gt;</strong>14 TCP
-    * 5<strong>&lt;NR&gt;</strong>16 TCP
+    * 32<strong> &lt; NR &gt; </strong> TCP
+    * 33<strong> &lt; NR &gt; </strong> TCP
+    * 5<strong> &lt; NR &gt; </strong>13 TCP
+    * 5<strong> &lt; NR &gt; </strong>14 TCP
+    * 5<strong> &lt; NR &gt; </strong>16 TCP
 
 * Arka uç yapılandırması
   * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
@@ -207,7 +207,7 @@ Bu bölümdeki yönergeler yalnızca NFSv 4.1 protokolüyle Azure NetApp Files b
 1. NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından emin olun, yani **`defaultv4iddomain.com`** ve eşleme **hiç kimse**olarak ayarlanmıştır.  
 
     > [!IMPORTANT]
-    > VM 'de `/etc/idmapd.conf` NFS etki alanını Azure NetApp Files ' deki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`**. NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri olarak `nobody`görüntülenir.  
+    > VM 'de NFS etki alanını `/etc/idmapd.conf` Azure NetApp Files ' deki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`** . NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri olarak görüntülenir `nobody` .  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -221,7 +221,7 @@ Bu bölümdeki yönergeler yalnızca NFSv 4.1 protokolüyle Azure NetApp Files b
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** doğrula `nfs4_disable_idmapping`. **Y**olarak ayarlanmalıdır. Bulunduğu `nfs4_disable_idmapping` dizin yapısını oluşturmak için Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
+4. **[A]** doğrula `nfs4_disable_idmapping` . **Y**olarak ayarlanmalıdır. Bulunduğu dizin yapısını oluşturmak için `nfs4_disable_idmapping` Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -452,9 +452,9 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind 10.1.0.4/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind 10.1.0.4:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=3,nobind 10.1.0.4:/trans
-   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind 10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind 10.1.0.4:/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
    </code></pre>
    
    NFSv 4.1 kullanılıyorsa, şunu içeren bir dosya oluşturun:
@@ -462,15 +462,15 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys 10.1.0.4/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/trans
-   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sec=sys 10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
    </code></pre>
    
    > [!NOTE]
    > Birimleri bağlama sırasında Azure NetApp Files birimlerinin NFS protokol sürümüyle eşleştiğinden emin olun. Azure NetApp Files birimleri NFSv3 birimleri olarak oluşturulduysa, ilgili NFSv3 yapılandırmasını kullanın. Azure NetApp Files birimleri NFSv 4.1 birimleri olarak oluşturulduysa, KIMLIK eşlemesini devre dışı bırakmak için yönergeleri izleyin ve karşılık gelen NFSv 4.1 yapılandırmasını kullandığınızdan emin olun. Bu örnekte Azure NetApp Files birimleri NFSv3 birimleri olarak oluşturulmuştur.  
    
-   Yeni `autofs` paylaşımları bağlamak için yeniden başlatın
+   `autofs`Yeni paylaşımları bağlamak için yeniden başlatın
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -516,7 +516,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
+   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -569,13 +569,13 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    sudo crm node online <b>anftstsapcl2</b>
    sudo crm node standby <b>anftstsapcl1</b>
    # If using NFSv3
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -834,7 +834,7 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
    sudo chattr +i /usr/sap/<b>QAS</b>/D<b>03</b>
    </code></pre>
 
-1. **[P]** pas `autofs` üzerinde yapılandırma
+1. **[P]** `autofs` pas üzerinde yapılandırma
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -847,9 +847,9 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
    </code></pre>
 
    NFSv 4.1 kullanılıyorsa, ile yeni bir dosya oluşturun:
@@ -857,19 +857,19 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
    </code></pre>
 
-   Yeni `autofs` paylaşımları bağlamak için yeniden başlatın
+   `autofs`Yeni paylaşımları bağlamak için yeniden başlatın
 
    <pre><code>
    sudo systemctl enable autofs
    sudo service autofs restart
    </code></pre>
 
-1. **[P]** AAS `autofs` üzerinde yapılandırma
+1. **[P]** `autofs` AAS üzerinde yapılandırma
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -882,9 +882,9 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
    </code></pre>
 
    NFSv 4.1 kullanılıyorsa, ile yeni bir dosya oluşturun:
@@ -892,12 +892,12 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
    </code></pre>
 
-   Yeni `autofs` paylaşımları bağlamak için yeniden başlatın
+   `autofs`Yeni paylaşımları bağlamak için yeniden başlatın
 
    <pre><code>
    sudo systemctl enable autofs
@@ -983,7 +983,7 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
 
 1. Test HAGetFailoverConfig, HACheckConfig ve HACheckFailoverConfig
 
-   ASCS örneğinin çalışmakta olduğu \<düğümde sapsıd>adm olarak aşağıdaki komutları çalıştırın. Komutlar hata vererek başarısız olursa, bu durum, ana bilgisayar bilgisayarınızdaki çizgilerden kaynaklanıyor olabilir. Bu bilinen bir sorundur ve SAP-SUSE-Cluster-Connector paketindeki SUSE tarafından düzeltilecektir.
+   \<sapsid>ASCS örneğinin Şu anda çalıştırıldığı düğümde aşağıdaki komutları adm olarak çalıştırın. Komutlar hata vererek başarısız olursa, bu durum, ana bilgisayar bilgisayarınızdaki çizgilerden kaynaklanıyor olabilir. Bu bilinen bir sorundur ve SAP-SUSE-Cluster-Connector paketindeki SUSE tarafından düzeltilecektir.
 
    <pre><code>
    anftstsapcl1:qasadm 52> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -1097,7 +1097,7 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   ASCS örneğini geçirmek için \<aşağıdaki komutları sapsıd>adm olarak çalıştırın.
+   \<sapsid>ASCS örneğini geçirmek için aşağıdaki komutları adm olarak çalıştırın.
 
    <pre><code>
    anftstsapcl1:qasadm 53> sapcontrol -nr 00 -host anftstsapvh -user <b>qas</b>adm &lt;password&gt; -function HAFailoverToNode ""
@@ -1225,7 +1225,7 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Bir sıraya alma kilidi oluşturun, örneğin işlem su01 içinde bir Kullanıcı düzenleyin. ASCS örneğinin çalıştırıldığı düğüm üzerinde <sapsid\>adm olarak aşağıdaki komutları çalıştırın. Komutlar, yoks örneğini durdurur ve yeniden başlatır. Sıraya alma sunucusu 1 mimarisi kullanılıyorsa, bu testte sıraya alma kilidinin kaybedilmesi beklenir. Sıraya alma sunucusu 2 mimarisi kullanılıyorsa, sıraya alma bekletilecektir. 
+   Bir sıraya alma kilidi oluşturun, örneğin işlem su01 içinde bir Kullanıcı düzenleyin. \>ASCS örneğinin çalıştırıldığı düğüm üzerinde <sapsid adm olarak aşağıdaki komutları çalıştırın. Komutlar, yoks örneğini durdurur ve yeniden başlatır. Sıraya alma sunucusu 1 mimarisi kullanılıyorsa, bu testte sıraya alma kilidinin kaybedilmesi beklenir. Sıraya alma sunucusu 2 mimarisi kullanılıyorsa, sıraya alma bekletilecektir. 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1279,7 +1279,7 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>anftstsapcl2:~ # pgrep ms.sapQAS | xargs kill -9
    </code></pre>
 
-   İleti sunucusunu yalnızca bir kez sonlandırdıysanız, tarafından `sapstart`yeniden başlatılır. Bunu yeterince fazla sonlandırdıysanız, Paceyapıcısı sonunda yoks örneğini diğer düğüme taşıyacaktır. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
+   İleti sunucusunu yalnızca bir kez sonlandırdıysanız, tarafından yeniden başlatılır `sapstart` . Bunu yeterince fazla sonlandırdıysanız, Paceyapıcısı sonunda yoks örneğini diğer düğüme taşıyacaktır. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
 
    <pre><code>
    anftstsapcl2:~ # crm resource cleanup rsc_sap_QAS_ASCS00

@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/28/2020
 tags: connectors
-ms.openlocfilehash: 1e1a7f2e82ba2e90a641a6559062348f8d4d3aea
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 1eb017740fb13dbc4f67b11ad8768e48e5b29010
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142461"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171540"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin
 
@@ -39,7 +39,7 @@ Istek tetikleyicisi, mantıksal uygulamanıza gelen çağrıları yetkilendirmek
 > * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 > * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -185,9 +185,9 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
    Bu adım, mantıksal uygulamayı tetikleyen isteği göndermek için kullanılacak URL 'YI oluşturur. Bu URL 'yi kopyalamak için URL 'nin yanındaki Kopyala simgesini seçin.
 
    ![Mantıksal uygulamanızı tetiklemenin kullanılacağı URL](./media/connectors-native-reqres/generated-url.png)
-   
+
    > [!NOTE]
-   > URL, "at" sembolünün () kullanılmasına izin verir **@** , ancak karma simgesini () değil **#** .
+   > **#** İstek tetikleyicisine çağrı yaparken URI 'ye karma veya sterlin () eklemek istiyorsanız, bunun yerine bu kodlanmış sürümü kullanın:`%25%23`
 
 1. Mantıksal uygulamanızı tetiklemek için, oluşturulan URL 'ye bir HTTP GÖNDERISI gönderin.
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 7db3ac13cd4e2f2e2b712f9d53b86f9ccda5e736
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 81dbbeda9d0132de63180cc13f6243761e0ba865
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021730"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171591"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell kullanarak özel uç nokta oluşturma
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. 
@@ -211,7 +211,7 @@ mstsc /v:<publicIpAddress>
     Aliases:   myserver.database.windows.net
     ```
     
-3. SQL Server Management Studio 'i yükler.
+3. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)'i yükler.
 4. **Sunucuya Bağlan**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
@@ -220,7 +220,7 @@ mstsc /v:<publicIpAddress>
     | Sunucu adı | myserver.database.windows.net |
     | Kullanıcı adı | Oluşturma sırasında belirtilen kullanıcı adını girin |
     | Parola | Oluşturma sırasında girilen parolayı girin |
-    | Parolayı anımsa | Yes |
+    | Parolayı anımsa | Evet |
     
 5. **Bağlan**'ı seçin.
 6. Sol menüden **veritabanlarına** gözatamazsınız. 

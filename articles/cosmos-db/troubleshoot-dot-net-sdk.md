@@ -8,12 +8,12 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e389df7cfe0e228030d2d0f730fc5e671ad4c052
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 55c462795b29cd678a5fd7816211bce720d554e1
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927641"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170367"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları tanılama ve giderme
 
@@ -69,7 +69,7 @@ RequestTimeout genellikle doğrudan/TCP kullanılırken gerçekleşir, ancak ağ
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Yüksek ağ gecikmesi
 Yüksek ağ gecikmesi, v2 SDK 'sindeki [Tanılama dizesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) veya v3 SDK 'daki [Tanılamalar](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) kullanılarak belirlenebilir.
 
-Bir [zaman aşımı](#request-timeouts) yoksa ve tanılama, yüksek gecikme süresinin ve `ResponseTime` `RequestStartTime`arasındaki farka göre (Bu örnekte >300 milisaniyelik) açık olduğu tek istekleri gösterir.
+Bir [zaman aşımı](#request-timeouts) yoksa ve tanılama, yüksek gecikme süresinin ve arasındaki farka göre `ResponseTime` `RequestStartTime` (Bu örnekte >300 milisaniyelik) açık olduğu tek istekleri gösterir.
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
@@ -94,10 +94,10 @@ Uygulamanız [Azure sanal makinelerinde genel IP adresi olmadan](../load-balance
 * Azure Cosmos DB hizmeti uç noktanızı Azure sanal makineler sanal ağınızın alt ağına ekleyin. Daha fazla bilgi için bkz. [Azure sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
     Hizmet uç noktası etkinleştirildiğinde, istekler artık genel bir IP Azure Cosmos DB ' e gönderilmez. Bunun yerine, sanal ağ ve alt ağ kimliği gönderilir. Yalnızca genel IP 'Lere izin veriliyorsa bu değişiklik güvenlik duvarı düşceye neden olabilir. Bir güvenlik duvarı kullanıyorsanız, hizmet uç noktasını etkinleştirdiğinizde, [sanal ağ ACL 'lerini](../virtual-network/virtual-networks-acl.md)kullanarak güvenlik duvarına bir alt ağ ekleyin.
-* [Azure sanal makinenize genel IP](../load-balancer/load-balancer-outbound-connections.md#assignilpip)atayın.
+* [Azure sanal makinenize genel IP](../load-balancer/troubleshoot-outbound-connection.md#assignilpip)atayın.
 
 ### <a name="http-proxy"></a>HTTP proxy 'si
-Bir HTTP proxy kullanıyorsanız, SDK `ConnectionPolicy`'da yapılandırılan bağlantı sayısını destekleyediğinden emin olun.
+Bir HTTP proxy kullanıyorsanız, SDK 'da yapılandırılan bağlantı sayısını destekleyediğinden emin olun `ConnectionPolicy` .
 Aksi halde bağlantı sorunlarıyla karşılaşın.
 
 ### <a name="request-rate-too-large"></a><a name="request-rate-too-large"></a>İstek hızı çok büyük

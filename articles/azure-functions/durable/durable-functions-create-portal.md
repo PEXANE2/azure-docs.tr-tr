@@ -4,12 +4,12 @@ description: Portal geliştirme için Azure Işlevleri Dayanıklı İşlevler uz
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 7aa283480d95693e2630e24d5642fc7cb909b34b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: a1d0e428da18d44705f4deaf6da3299957076d87
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848769"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171404"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal kullanarak Dayanıklı İşlevler oluşturun
 
@@ -58,7 +58,7 @@ JavaScript Dayanıklı İşlevler oluşturuyorsanız [ `durable-functions` NPM p
 
    ![Kudu çalıştırma NPM yüklemesi](./media/durable-functions-create-portal/kudu-npm-install.png)
    
-5. Son olarak, https://docs.microsoft.com/en-us/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1 değerine sahip bir uygulama ayarı ekleyerek (uyumluluk modunu etkinleştir) [] `FUNCTIONS_V2_COMPATIBILITY_MODE` `true` .
+5. Son olarak, değerine sahip bir uygulama ayarı ekleyerek [Uyumluluk modunu etkinleştirin](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1) `FUNCTIONS_V2_COMPATIBILITY_MODE` `true` .
 
 ## <a name="create-an-orchestrator-function"></a>Orchestrator işlevi oluşturma
 

@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: c5fad03788ee11488748c22d60c150e3de7e516d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e38e9a66db9e775023ff5c7940fd892eb0926824
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117242"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170741"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Otomasyon hesabından Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -36,10 +36,6 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 2. Log Analytics çalışma alanını ve otomasyon hesabını seçin ve Güncelleştirme Yönetimi etkinleştirmek için **Etkinleştir** ' e tıklayın. Kurulumun tamamlanabilmesi 15 dakika sürer.
 
     ![Güncelleştirme Yönetimi’ni etkinleştirme](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
-
-## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Dağıtımın kapsamını sınırlandırma
-
-Güncelleştirme Yönetimi, güncelleştirmeleri almak için bilgisayarları hedeflemek üzere çalışma alanı içinde bir kapsam yapılandırması kullanır. Daha fazla bilgi için bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](automation-scope-configurations-update-management.md).
 
 ## <a name="enable-azure-vms"></a>Azure VM 'lerini etkinleştirin
 
@@ -73,16 +69,13 @@ Güncelleştirme Yönetimi etkinleştirilmesi için, çalışma alanınıza zate
 
 5. Tüm kullanılabilir makineler ve gelecekteki makineler için özelliği etkinleştirmek üzere **tüm kullanılabilir ve gelecekteki makinelerde etkinleştir**' i seçin. Bu seçenek, kaydedilmiş aramaları ve kapsam yapılandırmasını çalışma alanından siler ve çalışma alanına raporlama yapan tüm Azure ve Azure dışı makineler için özelliği açar. Seçildiğinde, bu eylem, hiçbir kapsam yapılandırması bulunmadığından **makineleri Yönet** düğmesini kalıcı olarak devre dışı bırakır.
 
-6. Gerekirse, ilk kaydedilmiş aramaları yeniden ekleyerek kapsam yapılandırma işlemleri geri eklenebilir. Daha fazla bilgi için bkz. [güncelleştirme yönetimi için kapsam yapılandırmalarına sahip çalışma](automation-scope-configurations-update-management.md).
+6. Gerekirse, ilk kaydedilmiş aramaları yeniden ekleyerek kapsam yapılandırma işlemleri geri eklenebilir. Daha fazla bilgi için bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](automation-scope-configurations-update-management.md).
 
 7. Bir veya daha fazla makine için özelliği etkinleştirmek üzere **Seçili makinelerde etkinleştir** ' i seçin ve özelliği etkinleştirmek için her makinenin yanındaki **Ekle** ' ye tıklayın. Bu görev, seçilen makine adlarını, bu özellik için bilgisayar grubu kayıtlı arama sorgusuna ekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * VM 'Ler için Güncelleştirme Yönetimi kullanmak için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).
-* Kapsam yapılandırmalarında bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](automation-scope-configurations-update-management.md).
-* Artık Log Analytics çalışma alanına ihtiyacınız yoksa, [güncelleştirme yönetimi için çalışma alanının Otomasyon hesabından bağlantısını kaldır](automation-unlink-workspace-update-management.md)' daki yönergelere bakın.
-* VM 'Leri Güncelleştirme Yönetimi silmek için bkz. [güncelleştirme yönetimi VM 'Leri kaldırma](automation-remove-vms-from-update-management.md).
 * Genel Güncelleştirme Yönetimi hatalarıyla ilgili sorunları gidermek için bkz. [güncelleştirme yönetimi sorunlarını giderme](troubleshoot/update-management.md).
 * Windows Update Aracısı sorunlarını gidermek için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
 * Linux Güncelleştirme Aracısı sorunlarını gidermek için bkz.[Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).

@@ -1,31 +1,31 @@
 ---
 title: Azure Event Grid iş ortağı olarak ekleme
-description: Azure Event Grid Iş ortağı konu türü olarak ekleme. Iş ortağı konuları için kaynak modeli ve yayımlama akışını anlayın.
+description: Azure Event Grid iş ortağı konu türü olarak ekleme. İş ortağı konuları için kaynak modeli ve yayımlama akışını anlayın.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 2a1f35b86e21099c9fdd0397ae8a3b20aed3cd5d
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 2a7e2b9f731dbf05dfeb2ac01f1ae258c5250827
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758835"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170010"
 ---
-# <a name="onboard-as-an-azure-event-grid-partner"></a>Azure Event Grid Iş ortağı olarak ekleme
+# <a name="onboard-as-an-azure-event-grid-partner"></a>Azure Event Grid iş ortağı olarak ekleme
 
-Bu makalede, Event Grid iş ortağı kaynaklarını özel olarak kullanma ve genel kullanıma açık Iş ortağı konu türü olma konuları açıklanır.
+Bu makalede, Azure Event Grid iş ortağı kaynaklarını özel olarak kullanma ve genel kullanıma açık iş ortağı konu türü olma konuları açıklanır.
 
-Event Grid iş ortağı olarak yayımlama olayları ile ilişkili Event Grid kaynak türlerini kullanmaya başlamak için özel izninizin olması gerekmez. Aslında, her ikisi de kendi Azure aboneliklerinize özel olarak olay yayımlamak ve bir iş ortağı haline getiriyorsanız kaynak modelini test etmek için kullanabilirsiniz.
+Event Grid iş ortağı olarak yayımlama olayları ile ilişkili Event Grid kaynak türlerini kullanmaya başlamak için özel izninizin olması gerekmez. Aslında, kendi Azure aboneliklerinize özel olarak olay yayımlamak ve bir iş ortağı haline getiriyorsanız kaynak modelini test etmek için bunları bugün kullanabilirsiniz.
 
-## <a name="becoming-an-event-grid-partner"></a>Event Grid iş ortağı olma
+## <a name="become-an-event-grid-partner"></a>Event Grid iş ortağı olun
 
-Ortak bir Event Grid iş ortağı olmak istiyorsanız, [Bu formu](https://aka.ms/gridpartnerform)doldurarak ve sonra Event Grid ekibine başvurarak ' ı başlatın [GridPartner@microsoft.com](mailto:gridpartner@microsoft.com) .
+Ortak bir Event Grid iş ortağı olmak istiyorsanız, [Bu formu](https://aka.ms/gridpartnerform)doldurarak başlayın. Daha sonra Event Grid ekibine başvurun [GridPartner@microsoft.com](mailto:gridpartner@microsoft.com) .
 
 ## <a name="how-partner-topics-work"></a>İş ortağı konuları nasıl çalışır?
-İş ortağı konuları depolama ve IoT Hub gibi Azure kaynaklarından olayları yayımlamak için Event Grid zaten kullandığı mevcut mimariyi alır ve bu araçların herkesin kullanmasına açık bir şekilde kullanılabilmesini sağlar. Bu araçların kullanılması, varsayılan olarak yalnızca Azure aboneliğiniz için özeldir. Olaylarınızın genel kullanıma açık olmasını sağlamak için yukarıdaki formu doldurun ve [Event Grid ekibine başvurun](mailto:gridpartner@microsoft.com).
+İş ortağı konuları, Azure depolama ve Azure IoT Hub gibi Azure kaynaklarından olayları yayınlamak için Event Grid zaten kullandığı mevcut mimariyi alır ve bu araçların herkes tarafından kullanılabilmesini sağlar. Bu araçların kullanılması, varsayılan olarak yalnızca Azure aboneliğiniz için özeldir. Olaylarınızın genel kullanıma açık olması için formu doldurun ve [Event Grid ekibine başvurun](mailto:gridpartner@microsoft.com).
 
 İş ortağı konuları çok kiracılı tüketim için Azure Event Grid olayları yayımlamanıza olanak sağlar.
 
@@ -34,81 +34,82 @@ Ortak bir Event Grid iş ortağı olmak istiyorsanız, [Bu formu](https://aka.ms
 #### <a name="partner-flow"></a>İş ortağı akışı
 
 1. Henüz yoksa bir Azure kiracısı oluşturun.
-1. CLı kullanarak yeni bir Event Grid oluşturun `partnerRegistration` . Bu kaynak, görünen ad, açıklama, kurulum URI 'SI gibi bilgileri içerir.
+1. Yeni bir Event Grid oluşturmak için Azure CLı 'yi kullanın `partnerRegistration` . Bu kaynak, görünen ad, açıklama, kurulum URI 'SI vb. gibi bilgileri içerir.
 
-    ![Iş ortağı oluşturma konusu](./media/partner-onboarding-how-to/create-partner-registration.png)
+    ![İş ortağı oluşturma konusu](./media/partner-onboarding-how-to/create-partner-registration.png)
 
-1. Olayları yayımlamak istediğiniz her bölgede bir veya daha fazla oluşturun `partnerNamespaces` . Bunun bir parçası olarak, Event Grid hizmet bir yayımlama uç noktası (örneğin, `https://contoso.westus-1.eventgrid.azure.net/api/events` ) ve erişim anahtarları sağlayacak.
+1. Olayları yayımlamak istediğiniz her bölgede bir veya daha fazla iş ortağı ad alanı oluşturun. Event Grid hizmeti bir yayımlama uç noktası (örneğin, `https://contoso.westus-1.eventgrid.azure.net/api/events` ) ve erişim anahtarları sağlar.
 
-    ![Iş ortağı ad alanı oluştur](./media/partner-onboarding-how-to/create-partner-namespace.png)
+    ![İş ortağı ad alanı oluşturma](./media/partner-onboarding-how-to/create-partner-namespace.png)
 
-1. Müşterilerin sisteminize bir iş ortağı konusu gibi kaydolmaları için bir yol sağlayın.
-1. Iş ortağı konu tipinin Genel hale gelmesini istediğinizi bize bildirmek için Event Grid ekibine başvurun.
+1. Müşterilerin sisteminize bir iş ortağı konusu için kayıt yaptırmaları için bir yol sağlayın.
+1. İş ortağı konu türünün genel hale gelmesini istediğinizi bildirmek için Event Grid ekibine başvurun.
 
 #### <a name="customer-flow"></a>Müşteri akışı
 
-1. Müşteriniz, ' de Iş ortağı konusunun oluşturulmasını istediğiniz Azure abonelik KIMLIĞI ve kaynak grubu ' nu ziyaret edecek Azure portal.
-1. Müşteri, sisteminiz aracılığıyla bir Iş ortağı konusu talep eder. Yanıt olarak, Iş ortağı ad alanınızı bir olay tüneli olarak oluşturacaksınız.
-1. Event Grid, müşterinin Azure aboneliğinde ve kaynak grubunda **bekleyen** bir Iş ortağı konusu oluşturur.
+1. Müşteriniz, içinde iş ortağı konusunun oluşturulmasını istedikleri Azure abonelik KIMLIĞI ve kaynak grubu ' nu izlemek için Azure portal ziyaret ediyor.
+1. Müşteri, sisteminiz aracılığıyla bir iş ortağı konusu ister. Yanıt olarak, iş ortağı ad alanınız için bir olay tüneli oluşturursunuz.
+1. Event Grid müşterinin Azure aboneliğinde ve kaynak grubunda **bekleyen** bir iş ortağı konusu oluşturur.
 
-    ![Olay kanalı oluştur](./media/partner-onboarding-how-to/create-event-tunnel-partner-topic.png)
+    ![Olay kanalı oluşturma](./media/partner-onboarding-how-to/create-event-tunnel-partner-topic.png)
 
-1. Müşteri, Azure portal aracılığıyla Iş ortağı konusunu etkinleştirir. Olaylar artık hizmetinize müşterinin Azure aboneliğine akabilir.
+1. Müşteri, Azure portal aracılığıyla iş ortağı konusunu etkinleştirir. Olaylar artık hizmetinize müşterinin Azure aboneliğine akabilir.
 
-    ![Iş ortağı konusunu etkinleştirin](./media/partner-onboarding-how-to/activate-partner-topic.png)
+    ![İş ortağını etkinleştirme konuları](./media/partner-onboarding-how-to/activate-partner-topic.png)
 
 ## <a name="resource-model"></a>Kaynak modeli
 
-Iş ortağı konuları için kaynak modeli aşağıda verilmiştir.
+
+Aşağıdaki kaynak modeli iş ortağı konuları içindir.
 
 ### <a name="partner-registrations"></a>İş ortağı kayıtları
 * Kaynak`partnerRegistrations`
 * Kullanan: Iş ortakları
-* Açıklama: SaaS ortağının genel meta verilerini yakalar (örneğin, ad, görünen ad, açıklama, kurulum URI 'SI).
+* Açıklama: hizmet olarak yazılım (SaaS) iş ortağının genel meta verilerini yakalar (örneğin, ad, görünen ad, açıklama, kurulum URI 'SI).
     
-    İş ortağı kaydı oluşturma/güncelleştirme, iş ortakları için self servis bir işlemdir. Bu self servis özelliği, iş ortaklarının tam uçtan uca akışı oluşturmasını ve test etmesini sağlar.
+    İş ortağı kaydı oluşturma veya güncelleştirme, iş ortakları için self servis bir işlemdir. Bu self servis özelliği, iş ortaklarının tam uçtan uca akışı oluşturmasını ve test etmesini sağlar.
     
     Yalnızca Microsoft tarafından onaylanan iş ortağı kayıtları müşteriler tarafından bulunabilir.
-* Kapsam: iş ortağının Azure aboneliğinde oluşturuldu. Ortak olarak müşterilere görünür metaveri.
+* Kapsam: iş ortağının Azure aboneliğinde oluşturuldu. Meta veriler, genel kullanıma alındıktan sonra müşteriler tarafından görülebilir.
 
 ### <a name="partner-namespaces"></a>İş ortağı ad alanları
 * Kaynak: partnerNamespaces
 * Kullanan: Iş ortakları
-* Açıklama: müşteri olaylarını yayımlamak için bir bölgesel kaynak sağlar. Her Iş ortağı ad alanı bir yayımlama uç noktası ve kimlik doğrulama anahtarlarına sahiptir. Ad alanı Ayrıca ortağın belirli bir müşteri için bir Iş ortağı konusu istemesi ve etkin müşterileri listelemesidir.
+* Açıklama: müşteri olaylarını yayımlamak için bir bölgesel kaynak sağlar. Her iş ortağı ad alanı bir yayımlama uç noktası ve kimlik doğrulama anahtarlarına sahiptir. Ad alanı Ayrıca ortağın belirli bir müşteri için bir iş ortağı konusu istemesi ve etkin müşterileri listelemesidir.
 * Kapsam: iş ortağının aboneliğinde bulunur.
 
 ### <a name="event-channel"></a>Olay kanalı
 * Kaynak`partnerNamespaces/eventChannels`
 * Kullanan: Iş ortakları
-* Açıklama: olay tünelleri, müşterinin Iş ortağı konusunun bir yansımasıdır. Bir olay tüneli oluşturarak ve müşterinin Azure aboneliğini ve kaynak grubunu meta verilerde belirterek, müşteri için bir Iş ortağı konusu oluşturmak üzere Event Grid sinyalle karşılaşrsınız. Event Grid, müşterinin aboneliğine karşılık gelen bir partneri konusu oluşturmak için ARM çağrısı yayımlayacak. İş ortağı konusu "beklemede" durumunda oluşturulur. Her bir eventTunnel ve partnerTopic arasında bir 1-1 bağlantısı vardır.
+* Açıklama: olay tünelleri, müşterinin iş ortağı konusunun bir yansımasıdır. Bir olay tüneli oluşturarak ve müşterinin Azure aboneliğini ve kaynak grubunu meta verilerde belirterek, müşteri için bir iş ortağı konusu oluşturmak üzere Event Grid ' ı işaret edersiniz. Event Grid müşterinin aboneliğine karşılık gelen bir partneri konusu oluşturmak için ARM çağrısı yayınlar. İş ortağı konusu, bekleyen bir durumda oluşturulur. Her bir olay tüneli ve iş ortağı konusu arasında bire bir bağlantı vardır.
 * Kapsam: iş ortağının aboneliğinde bulunur.
 
 ### <a name="partner-topics"></a>İş ortağı konuları
 * Kaynak`partnerTopics`
 * Kullanan: müşteriler
-* Açıklama: Iş ortağı konuları, Event Grid özel konu ve sistem konusuna benzerdir. Her Iş ortağı konusu belirli bir "kaynak" (örneğin, `Contoso:myaccount` ) ve belirli bir iş ortağı konu türü (örneğin, "contoso") ile ilişkilendirilir. Müşteriler, olayları çeşitli olay işleyicilerine yönlendirmek için Iş ortağı konusunda olay abonelikleri oluşturur.
+* Açıklama: Iş ortağı konuları Event Grid içindeki özel konulara ve sistem konularına benzer. Her iş ortağı konusu belirli bir kaynak (örneğin, `Contoso:myaccount` ) ve belirli bir iş ortağı konu türü (örneğin, Contoso) ile ilişkilendirilir. Müşteriler, olayları çeşitli olay işleyicilerine yönlendirmek için iş ortağı konusunda olay abonelikleri oluşturur.
 
-    Müşteriler bu kaynağı doğrudan oluşturamaz. Iş ortağı konusu oluşturmanın tek yolu, bir olay tüneli oluşturan iş ortağı işlemidir.
-* Kapsam: müşterinin aboneliğindeki yaşamın.
+    Müşteriler bu kaynağı doğrudan oluşturamaz. İş ortağı konusu oluşturmanın tek yolu, bir olay tüneli oluşturan iş ortağı işlemidir.
+* Kapsam: müşterinin aboneliğinde bulunur.
 
 ### <a name="partner-topic-types"></a>İş ortağı konu türleri
 * Kaynak`partnerTopicTypes`
 * Kullanan: müşteriler
-* Açıklama: Iş ortağı konu türleri, müşterilerin onaylanan iş ortağı konu türleri listesini bulmasını sağlayan kiracı genelinde kaynak türleridir. URL şöyle görünür:https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* Açıklama: Iş ortağı konu türleri, müşterilerin onaylanan iş ortağı konu türleri listesini bulmasını sağlayan, çok sayıda kaynak türlerdir. URL şöyle görünürhttps://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * Kapsam: genel
 
-## <a name="publishing-events-to-event-grid"></a>Olayları Event Grid yayımlama
-Bir Azure bölgesinde bir partnerNamespace oluşturduğunuzda, bölgesel bir uç nokta ve buna karşılık gelen kimlik doğrulama anahtarlarını alırsınız. Bu ad alanındaki tüm müşteri olay tünelleri için olay toplu işlerini bu uç noktaya yayımlayın. Olaydaki "kaynak" alanı temelinde, Azure Event Grid her bir olayı ilgili iş ortağı konusuyla eşler.
+## <a name="publish-events-to-event-grid"></a>Olayları Event Grid yayımlayın
+Bir Azure bölgesinde bir iş ortağı ad alanı oluşturduğunuzda, bölgesel bir uç nokta ve karşılık gelen kimlik doğrulama anahtarlarını alırsınız. Bu ad alanındaki tüm müşteri olay tünelleri için olay toplu işlerini bu uç noktaya yayımlayın. Olaydaki kaynak alana göre her bir olayı ilgili iş ortağı konularıyla eşler Azure Event Grid.
 
 ### <a name="event-schema-cloudevents-v10"></a>Olay şeması: CloudEvents v 1.0
-CloudEvents 1,0 şemasını kullanarak Azure Event Grid olayları yayımlayın. Event Grid hem yapılandırılmış modu hem de toplu modunu destekler. CloudEvents 1,0, Iş ortağı ad alanları için desteklenen tek olay şemadır.
+CloudEvents 1,0 şemasını kullanarak olayları Azure Event Grid yayımlayın. Event Grid hem yapılandırılmış modu hem de toplu modunu destekler. CloudEvents 1,0, iş ortağı ad alanları için desteklenen tek olay şemadır.
 
 ### <a name="example-flow"></a>Örnek akış
 
 1.  Yayımlama hizmeti bir HTTP GÖNDERISINI `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
-2.  İstekte, kimlik doğrulaması için bir anahtar içeren AEG-SAS-Key adlı bir başlık değeri ekleyin. Bu anahtar, partnerNamespace oluşturma sırasında sağlanır. Örneğin, geçerli bir üst bilgi değeri AEG-SAS-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = = olur.
-3.  Content-Type üstbilgisini "Application/cloudevents-Batch + JSON" olarak ayarlayın. charset = UTF-8 ".
-4.  Yukarıdaki yayımlama URL 'sinde, bu bölgeye karşılık gelen bir olay toplu iş içeren bir HTTP POST işlemi gerçekleştirin. Örneğin:
+1.  İstekte, kimlik doğrulaması için bir anahtar içeren AEG-SAS-Key adlı bir başlık değeri ekleyin. Bu anahtar, iş ortağı ad alanının oluşturulması sırasında sağlanır. Örneğin, geçerli bir üst bilgi değeri AEG-SAS-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = = olur.
+1.  Content-Type üstbilgisini "Application/cloudevents-Batch + JSON" olarak ayarlayın. charset = UTF-8A ".
+1.  Yayımlama URL 'sinde, bu bölgeye karşılık gelen bir olay toplu iş içeren bir HTTP POST işlemi gerçekleştirin. Örneğin:
 
 ``` json
 [
@@ -153,7 +154,7 @@ PartnerNamespace uç noktasına gönderdikten sonra bir yanıt alırsınız. Yan
 | Geçersiz uç nokta                 | 404 Bulunamadı         |
 | Dizi veya olay boyut sınırlarını aşıyor | 413 yükü çok büyük |
 
-## <a name="reference"></a>Başvuru
+## <a name="references"></a>Başvurular
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM şablonu](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
@@ -170,8 +171,8 @@ PartnerNamespace uç noktasına gönderdikten sonra bir yanıt alırsınız. Yan
   * [Git](https://github.com/Azure/azure-sdk-for-go)
 
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 - [İş ortağı konularına genel bakış](partner-topics-overview.md)
 - [İş ortağı konuları ekleme formu](https://aka.ms/gridpartnerform)
-- [Auth0 Iş ortağı konusu](auth0-overview.md)
-- [Auth0 Iş ortağı konusunu kullanma](auth0-how-to.md)
+- [Auth0 iş ortağı konusu](auth0-overview.md)
+- [Auth0 iş ortağı konusunu kullanma](auth0-how-to.md)

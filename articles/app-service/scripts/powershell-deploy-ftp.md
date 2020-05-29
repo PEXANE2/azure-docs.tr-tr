@@ -6,18 +6,18 @@ ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 1dfcbec9530a66570244e8168faa84bfe0759038
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02c664f6a2bf80ac2f219995be5efd6235db8da0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74685085"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169568"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>FTP kullanarak bir web uygulamasına dosya yükleme
 
 Bu örnek betik, App Service’te ilgili kaynaklarıyla birlikte bir web uygulaması oluşturur ve sonra web uygulaması kodunuzu FTP kullanarak dağıtır ([WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx) üzerinden).
 
-Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeyi kullanarak Azure PowerShell yükleyip Azure ile bağlantı oluşturmak için öğesini çalıştırın `Connect-AzAccount` .
+Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeyi kullanarak Azure PowerShell yükleyip `Connect-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -30,7 +30,7 @@ Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan y�
 Betik örneği çalıştırıldıktan sonra, kaynak grubunu, web uygulamasını ve ilişkili tüm kaynakları kaldırmak için aşağıdaki komut kullanılabilir.
 
 ```powershell
-Remove-AzResourceGroup -Name $webappname -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="script-explanation"></a>Betik açıklaması

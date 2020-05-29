@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f2df8140d2eb791e83af5ae47b947d614ac2b899
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1704fb50586168be6f960e62b918019cb67ce4c8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199413"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167817"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Koşullu erişim SSS
 
@@ -31,19 +31,15 @@ Koşullu erişim ilkeleriyle çalışan uygulamalar hakkında daha fazla bilgi i
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>OneDrive Iş için bir SharePoint Online ilkesi de geçerlidir mı?
 
-Evet. Bir SharePoint Online ilkesi, OneDrive Iş için de geçerlidir.
+Evet. Bir SharePoint Online ilkesi, OneDrive Iş için de geçerlidir. Daha fazla bilgi için, [koşullu erişim hizmeti bağımlılıkları](service-dependencies.md) makalesine bakın ve bunun yerine ilkeleri [Office 365 uygulamasına](concept-conditional-access-cloud-apps.md#office-365-preview) hedeflemeyi düşünün.
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Neden bir ilkeyi Word veya Outlook gibi istemci uygulamalarında doğrudan ayarlayamıyorum?
 
-Koşullu erişim ilkesi, bir hizmete erişmek için gereksinimleri ayarlar. Bu hizmet için kimlik doğrulaması gerçekleştiğinde zorlanır. İlke doğrudan bir istemci uygulamasında ayarlanmadı. Bunun yerine, istemci bir hizmet çağırdığında uygulanır. Örneğin, SharePoint 'te ayarlanan bir ilke, SharePoint 'i çağıran istemciler için geçerlidir. Exchange üzerinde ayarlanan bir ilke Outlook için geçerlidir.
+Koşullu erişim ilkesi, bir hizmete erişmek için gereksinimleri ayarlar. Bu hizmet için kimlik doğrulaması gerçekleştiğinde zorlanır. İlke doğrudan bir istemci uygulamasında ayarlanmadı. Bunun yerine, istemci bir hizmet çağırdığında uygulanır. Örneğin, SharePoint 'te ayarlanan bir ilke, SharePoint 'i çağıran istemciler için geçerlidir. Exchange üzerinde ayarlanan bir ilke Outlook için geçerlidir. Daha fazla bilgi için, [koşullu erişim hizmeti bağımlılıkları](service-dependencies.md) makalesine bakın ve bunun yerine ilkeleri [Office 365 uygulamasına](concept-conditional-access-cloud-apps.md#office-365-preview) hedeflemeyi düşünün.
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Koşullu erişim ilkesi hizmet hesaplarına uygulanabilir mi?
 
-Koşullu erişim ilkeleri tüm Kullanıcı hesapları için geçerlidir. Bu, hizmet hesapları olarak kullanılan Kullanıcı hesaplarını içerir. Genellikle, katılımsız çalıştıran bir hizmet hesabı, koşullu erişim ilkesinin gereksinimlerini karşılayamaz. Örneğin, çok faktörlü kimlik doğrulaması gerekebilir. Hizmet hesapları, koşullu erişim ilkesi yönetim ayarları kullanılarak bir ilkeden dışlanamaz. 
-
-## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Koşullu erişim ilkelerini yapılandırmak için Microsoft Graph API 'Leri kullanılabilir mi?
-
-Şu anda, hayır. 
+Koşullu erişim ilkeleri tüm Kullanıcı hesapları için geçerlidir. Bu, hizmet hesapları olarak kullanılan Kullanıcı hesaplarını içerir. Genellikle, katılımsız çalıştıran bir hizmet hesabı, koşullu erişim ilkesinin gereksinimlerini karşılayamaz. Örneğin, çok faktörlü kimlik doğrulaması gerekebilir. Hizmet hesapları, bir [Kullanıcı veya grup dışlaması](concept-conditional-access-users-groups.md#exclude-users)kullanılarak bir ilkeden dışlanamaz. 
 
 ## <a name="what-is-the-default-exclusion-policy-for-unsupported-device-platforms"></a>Desteklenmeyen cihaz platformları için varsayılan dışlama ilkesi nedir?
 
@@ -53,9 +49,11 @@ Koşullu erişim ilkeleri tüm Kullanıcı hesapları için geçerlidir. Bu, hiz
 
 Microsoft ekipleri, toplantılar, takvimler ve dosya paylaşımı gibi temel üretkenlik senaryoları için Exchange Online ve SharePoint Online 'ı yoğun bir şekilde kullanır. Bu bulut uygulamaları için ayarlanan koşullu erişim ilkeleri, bir kullanıcı doğrudan Microsoft ekiplerine kaydolduğunda Microsoft ekipleri için geçerlidir.
 
-Microsoft ekipleri Ayrıca bir bulut uygulaması olarak Azure Active Directory Koşullu erişim ilkelerinde de desteklenir. Bir bulut uygulaması için ayarlanan koşullu erişim ilkeleri, bir Kullanıcı oturum açtığında Microsoft ekipleri için geçerlidir. Ancak, Exchange Online ve SharePoint Online kullanıcıları gibi diğer uygulamalarda doğru ilkeler olmadan bu kaynaklara doğrudan erişebiliyor olabilir.
+Microsoft ekipleri Ayrıca koşullu erişim ilkelerinde bir bulut uygulaması olarak da desteklenir. Bir bulut uygulaması için ayarlanan koşullu erişim ilkeleri, bir Kullanıcı oturum açtığında Microsoft ekipleri için geçerlidir. Ancak, Exchange Online ve SharePoint Online kullanıcıları gibi diğer uygulamalarda doğru ilkeler olmadan bu kaynaklara doğrudan erişebiliyor olabilir.
 
 Windows ve Mac için Microsoft ekipleri masaüstü istemcileri modern kimlik doğrulamayı destekler. Modern kimlik doğrulaması, platformlar arası istemci uygulamalarını Microsoft Office için Azure Active Directory kimlik doğrulama kitaplığı 'nı (ADAL) temel alan oturum açma olanağı sunar.
+
+Daha fazla bilgi için, [koşullu erişim hizmeti bağımlılıkları](service-dependencies.md) makalesine bakın ve bunun yerine ilkeleri [Office 365 uygulamasına](concept-conditional-access-cloud-apps.md#office-365-preview) hedeflemeyi düşünün.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

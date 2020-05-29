@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/23/2020
+ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cce3ef20a93c6d7a24bfa312501d2f8cc8ed9273
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 986e061c03634fe33af985c9d11569848500862c
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604894"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170503"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>Hızlı başlangıç: Azure Application Gateway-Kaynak Yöneticisi şablonuyla doğrudan web trafiği
 
@@ -57,16 +57,18 @@ Kaynak Yöneticisi şablonu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon, IIS çalıştıran arka uç havuzunda bir uygulama ağ geçidi, ağ altyapısı ve iki sanal makine oluşturur.
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+   [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
 2. Kaynak grubunuzu seçin veya oluşturun, sanal makine yöneticisinin Kullanıcı adını ve parolasını yazın.
-3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u seçin ve ardından **satın al**' ı seçin. Dağıtımın tamamlanması 20 dakika veya daha uzun sürebilir.
+3. **Gözden geçir + oluştur** ' u ve ardından **Oluştur**' u seçin.
+
+   Dağıtımın tamamlanması 20 dakika veya daha uzun sürebilir.
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
 Uygulama ağ geçidi oluşturmak için IIS gerekli olmasa da, Azure 'ın uygulama ağ geçidini başarıyla oluşturduğunu doğrulamak üzere yüklenir. Uygulama ağ geçidini test etmek için IIS kullanın:
 
-1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![Uygulama ağ GEÇIDI genel IP adresini](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) kaydedin veya **tüm kaynaklar**' ı seçip Arama kutusuna *myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
+1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![ Uygulama Ağ Geçidi genel IP adresini kaydedin ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) veya **tüm kaynaklar**' ı seçip Arama kutusuna *Myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
 2. Genel IP adresini kopyalayın ve ardından bu IP adresine gözatabilmek için tarayıcınızın adres çubuğuna yapıştırın.
 3. Yanıtı denetleyin. Geçerli bir yanıt, uygulama ağ geçidinin başarıyla oluşturulduğunu ve arka uca başarıyla bağlanıp bağlanabileceğini doğrular.
 

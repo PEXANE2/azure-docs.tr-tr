@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 9356ab0aec375a046a8f200838df296b2cf74bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 419c3f21c8606bb16112fd18cfe141655fd7b868
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984989"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168157"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API 'SI: Indirme ve sürüm notları
 
@@ -27,8 +27,8 @@ ms.locfileid: "80984989"
 |   |   |
 |---|---|
 |**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
-|**Hızlı Başlangıç**|[Azure Cosmos DB: .NET ve Tablo API'si ile uygulama derleme](create-table-dotnet.md)|
-|**Eğitmen**|[Azure Cosmos DB: .NET’te Tablo API’si ile geliştirme](tutorial-develop-table-dotnet.md)|
+|**Hızlı başlangıç**|[Azure Cosmos DB: .NET ve Tablo API'si ile uygulama derleme](create-table-dotnet.md)|
+|**Öğretici**|[Azure Cosmos DB: .NET’te Tablo API’si ile geliştirme](tutorial-develop-table-dotnet.md)|
 |**Desteklenen geçerli çerçeve**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
@@ -39,40 +39,40 @@ ms.locfileid: "80984989"
 
 ## <a name="release-notes"></a>Sürüm notları
 
-### <a name="212"></a><a name="2.1.2"/>2.1.2 'yi
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 
 * Hata düzeltmeleri
 
-### <a name="210"></a><a name="2.1.0"/>2.1.0
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 
 * Hata düzeltmeleri
 
-### <a name="200"></a><a name="2.0.0"/>2.0.0
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 
 * Çok bölgeli yazma desteği eklendi
 * Microsoft. Azure. DocumentDB, Microsoft. OData. Core, Microsoft. OData. Edm, Microsoft. uzamsal ile ilgili NuGet paketi bağımlılıkları düzeltildi
 
-### <a name="113"></a><a name="1.1.3"/>1.1.3
+### <a name="113"></a><a name="1.1.3"></a>1.1.3
 
 * Microsoft. Azure. Storage. Common ve Microsoft. Azure. DocumentDB 'de düzeltilen NuGet paketi bağımlılıkları.
 * JsonConvert. DefaultSettings yapılandırıldığında tablo serileştirmesine yönelik hata düzeltmeleri.
 
-### <a name="111"></a><a name="1.1.1"/>1.1.1
+### <a name="111"></a><a name="1.1.1"></a>1.1.1
 
 * Hatalı biçimlendirilmiş ETAGs için doğrudan modda doğrulama eklendi.
 * Ağ Geçidi modunda sabit LINQ sorgu hatası.
 * Zaman uyumlu API 'Ler artık SynchronizationContext ile iş parçacığı havuzunda çalışır.
 
-### <a name="110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 
 * Tablequerymaxıtemcount, TableQueryEnableScan, Tablequerymaxdegreeofparalleliı ve Tablequerycontinuationtokenlimitınkb 'yi TableRequestOptions 'a ekleyin
 * Hata Düzeltmeleri
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 
 * Genel kullanılabilirlik sürümü
 
-### <a name="090-preview"></a><a name="0.1.0-preview"/>0.9.0-Önizleme
+### <a name="090-preview"></a><a name="0.1.0-preview"></a>0.9.0-Önizleme
 
 * İlk önizleme yayını
 
@@ -80,7 +80,7 @@ ms.locfileid: "80984989"
 
 Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlar.
 
-`Microsoft.Azure.CosmosDB.Table` Kitaplık Şu anda yalnızca .NET Framework için kullanılabilir ve bakım modunda ve yakında kullanım dışı bırakılacak. Yeni özellikler ve işlevler ve iyileştirmeler yalnızca [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).NET Standard kitaplığına eklenir, bu nedenle [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)'a yükseltmeniz önerilir.
+`Microsoft.Azure.CosmosDB.Table`Kitaplık Şu anda yalnızca .NET Framework için kullanılabilir ve bakım modunda ve yakında kullanım dışı bırakılacak. Yeni özellikler ve işlevler ve iyileştirmeler yalnızca [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).NET Standard kitaplığına eklenir, bu nedenle [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)'a yükseltmeniz önerilir.
 
 [Windowsazure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) Önizleme paketi kullanım dışı bırakıldı. WindowsAzure. Storage-PremiumTable SDK, 15 Kasım 2018 tarihinde kullanımdan kaldırılacaktır, bu da kullanımdan kaldırılan SDK 'ya yönelik isteklere izin verilmez. 
 
@@ -89,7 +89,7 @@ Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler h
 
 | Sürüm | Yayın Tarihi | Emeklilik tarihi |
 | --- | --- | --- |
-| [2.1.2 'yi](#2.1.2) |16 Eylül 2019| |
+| [2.1.2](#2.1.2) |16 Eylül 2019| |
 | [2.1.0](#2.1.0) |22 Ocak 2019|01 Nisan 2020 |
 | [2.0.0](#2.0.0) |26 Eylül 2018|01 Mart 2020 |
 | [1.1.3](#1.1.3) |17 Temmuz 2018|01 Aralık 2019 |

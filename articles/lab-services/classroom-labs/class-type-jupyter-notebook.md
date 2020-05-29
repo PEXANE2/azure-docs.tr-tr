@@ -11,61 +11,173 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 05/21/2020
 ms.author: enewman
-ms.openlocfilehash: 222f5647248d27c3bdfabd0feaeb66dd9f543652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee37186c7ccbb9952843b932f4014fc1a4e66f32
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257734"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170859"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python ve Jupyıter Not defterleri ile veri bilimi öğretmek için laboratuvar ayarlama
+Bu makalede, öğrencilerin [jupi not defterlerini](http://jupyter-notebook.readthedocs.io/)nasıl kullanacağınızı ve öğrencilerin sanal makinelerinde (VM) kendi not defterlerine nasıl bağlanabilmelerini öğretmek için gereken araçlarla laboratuvar hizmetlerinde bir şablon sanal MAKINESINI (VM) nasıl ayarlayabileceğiniz özetlenmektedir.
 
-Bu makalede, öğrencilerin [Jupyıter not defterlerini](http://jupyter-notebook.readthedocs.io)nasıl kullanacağınızı öğretmek için gereken araçlarla laboratuvar hizmetlerinde bir şablon makinesinin nasıl ayarlanacağı özetlenmektedir.  Jupyter Not defterleri, zengin metin ve yürütülebilir [Python](https://www.python.org/) kaynak kodunu not defteri adlı tek bir tuval üzerinde kolayca birleştirebilmenizi sağlayan açık kaynaklı bir projem.  Bir not defteri çalıştırmak, giriş ve çıkışları doğrusal bir kaydıyla sonuçlanır.  Bu çıktılar metin, bilgi tabloları, dağılım çizimleri ve daha fazlasını içerebilir.
+Jupyter Not defterleri, zengin metin ve yürütülebilir Python kaynak kodunu not defteri adlı tek bir tuval üzerinde kolayca birleştirebilmenizi sağlayan açık kaynaklı bir projem. Bir not defteri çalıştırmak, giriş ve çıkışları doğrusal bir kaydıyla sonuçlanır. Bu çıktılar metin, bilgi tabloları, dağılım çizimleri ve daha fazlasını içerebilir.
 
-## <a name="lab-configuration"></a>Laboratuvar yapılandırması
+## <a name="set-up-the-lab"></a>Laboratuvarı ayarlama
 
-Bu Laboratuvarı ayarlamak için, başlamak üzere bir Azure aboneliğine ve laboratuvar hesabına sahip olmanız gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. Bir Azure aboneliği aldıktan sonra, Azure Lab Services yeni bir laboratuvar hesabı oluşturabilirsiniz. Yeni laboratuvar hesabı oluşturma hakkında daha fazla bilgi için bkz. [Laboratuvar hesabı kurmak için öğretici](tutorial-setup-lab-account.md).  Ayrıca var olan bir laboratuvar hesabı da kullanabilirsiniz.
+### <a name="lab-configuration"></a>Laboratuvar yapılandırması
+Bu Laboratuvarı ayarlamak için bir Azure aboneliğine ve bir laboratuvar hesabına erişmeniz gerekir. Mevcut bir Azure aboneliğine erişip erişetiğinizi öğrenmek için kuruluşunuzun Yöneticisi ile tartışın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+
+Azure aboneliğiniz olduğunda öğreticideki yönergeleri izleyerek Azure Lab Services yeni bir laboratuvar hesabı oluşturun: [bir laboratuvar hesabı kurun](tutorial-setup-lab-account.md). Ayrıca var olan bir laboratuvar hesabı da kullanabilirsiniz.
 
 ### <a name="lab-account-settings"></a>Laboratuvar hesabı ayarları
-
-Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](specify-marketplace-images.md).
+Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin etkinleştirilmesi hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](specify-marketplace-images.md).
 
 | Laboratuvar hesabı ayarı | Yönergeler |
 | ------------------- | ------------ |
-| Market görüntüsü | Laboratuvar hesabınızda kullanılmak üzere [veri bilimi sanal makinesi-Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) görüntüsünü etkinleştirin. |
+| Market görüntüsü | Laboratuvar hesabınızda, işletim sistemi ihtiyaçlarınıza göre Azure Marketi görüntülerinden birini etkinleştirin: <br/><ul><li>Veri Bilimi Sanal Makinesi – Windows Server 2019</li><li>Veri Bilimi Sanal Makinesi – Ubuntu 18,04</li></ul> |
 
->[!TIP]
->Bu makale, Windows Server işletim sistemini kullanan bir şablon makinesini yapılandırmaya odaklanacaktır.  Ayrıca, Azure Marketi 'nden [Linux (Ubuntu) görüntüleri için veri bilimi sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) kullanan Python ve jupi Notebook ile veri bilimi sınıfı ayarlamak da mümkündür.
+> [!NOTE]
+> Bu makalede, Jupyter Notebook ile önceden yapılandırılmış olduklarından Azure Marketi 'nde bulunan veri bilimi sanal makine görüntüleri kullanılmaktadır. Bununla birlikte, bu görüntüler veri bilimi için birçok farklı geliştirme ve modelleme aracı da içerir. Bu ek araçlara gerek duymuyorsanız ve yalnızca jupi Not defterleri ile hafif bir kurulum istiyorsanız, özel bir VM görüntüsü oluşturun. Örneğin, [Azure 'Da JupyperHub 'ı yükleme](http://tljh.jupyter.org/en/latest/install/azure.html). Özel görüntü oluşturulduktan sonra, Azure Lab Services içindeki görüntüyü kullanmak için paylaşılan bir görüntü galerisine karşıya yükleyebilirsiniz. [Azure Lab Services ' de paylaşılan görüntü galerisini kullanma](how-to-attach-detach-shared-image-gallery.md)hakkında daha fazla bilgi edinin. 
 
 ### <a name="lab-settings"></a>Laboratuvar ayarları
-
-Bir sınıf Laboratuvarı ayarlarken aşağıdaki tablodaki ayarları kullanın.  Sınıf Laboratuvarı oluşturma hakkında daha fazla bilgi için bkz. [bir derslik Laboratuvarı ayarlama öğreticisi](tutorial-setup-classroom-lab.md).
+Bir sınıf Laboratuvarı ayarlarken aşağıdaki tabloda gösterildiği gibi **sanal makine boyutunu** ve **sanal makine görüntüsü** ayarlarını yapılandırın. Sınıf Laboratuvarı oluşturma hakkında yönergeler için bkz. [sınıf Laboratuvarı ayarlama](tutorial-setup-classroom-lab.md).
 
 | Laboratuvar ayarları | Değer/yönergeler |
-| ------------ | ------------------ |
-|Sanal makine boyutu| Küçük GPU (Işlem). Bu boyut, yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. |
-|Sanal makine görüntüsü| Veri Bilimi Sanal Makinesi-Windows 2016|
+| ------------ | ------------------ | 
+| Sanal makine boyutu | <p>Burada seçtiğiniz boyut, çalıştırmak istediğiniz iş yüküne bağlıdır:</p><ul><li>Küçük veya Orta: Jupyıter not defterlerine erişim için temel kurulum için iyi</li><li>Küçük GPU (Işlem) – yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve ağ kullanımı yoğun uygulamalar için idealdir</li></ul> | 
+| Sanal makine görüntüsü | <p>İşletim sistemi ihtiyaçlarınıza göre aşağıdaki görüntülerden birini seçin:</p><ul><li>[Veri Bilimi Sanal Makinesi – Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)</li><li>[Veri Bilimi Sanal Makinesi – Ubuntu 18,04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview)</li></ul> |
 
-## <a name="template-machine"></a>Şablon makinesi
 
-[Veri bilimi sanal makinesi-Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) görüntüsü, bu tür bir sınıf için gereken ayrıntılı öğrenme çerçevelerini ve araçları sağlar.  Görüntü Jupyıter not defterlerini ve Visual Studio Code içerir.  [Jupi Not defterleri](http://jupyter-notebook.readthedocs.io) , veri bilimcilerinin ham veri almasına, hesaplamalar çalıştırmasına ve sonuçların tümünü aynı ortamda görüntülemesine olanak tanıyan bir Web uygulamasıdır.  Şablon makinemiz için Web uygulaması yerel olarak çalışır.  [Visual Studio Code](https://code.visualstudio.com/) , bir not defteri yazarken ve test edilirken zengin bir etkileşimli deneyim sağlayan bir IDE 'dir.  Daha fazla bilgi için bkz. [Visual Studio Code jupi Not defterleri Ile çalışma](https://code.visualstudio.com/docs/python/jupyter-support).
+### <a name="template-virtual-machine"></a>Şablon sanal makinesi
+Laboratuvar oluşturduktan sonra, seçtiğiniz sanal makine boyutu ve görüntü temel alınarak bir şablon VM 'si oluşturulur. Şablon VM 'yi, bu sınıf için öğrencilerinize sağlamak istediğiniz her şey ile yapılandırırsınız. Daha fazla bilgi edinmek için bkz. [şablon sanal makinesini yönetme](how-to-create-manage-template.md). 
 
-Sınıfını ayarlamak için kalan görev, yerel Not defterleri sağlamaktır.  Azure Machine Learning örneklerini kullanma hakkında yönergeler için bkz. [jupi Not defterleri ile ortam yapılandırma](../../machine-learning/how-to-configure-environment.md#jupyter).  Ayrıca, şablon makinesinde kendi not defterlerinizi de sağlayabilirsiniz.  Şablon yayımlandığında Not defterleri tüm öğrenci makinelerine kopyalanır.
+Veri Bilimi VM'si görüntüleri varsayılan olarak bu tür bir sınıf için gereken birçok veri bilimi çerçevesi ve aracı ile gelir. Örneğin, görüntüler şunları içerir:
+
+- [Jupyter Not defterleri](http://jupyter-notebook.readthedocs.io/): veri bilimcilerinin ham veri almasına, hesaplamalar çalıştırmasına ve sonuçların tümünü aynı ortamda görüntülemesine olanak tanıyan bir Web uygulaması. Şablon VM 'de yerel olarak çalışır.  
+- [Visual Studio Code](https://code.visualstudio.com/): bir not defteri yazarken ve test edilirken zengin etkileşimli bir deneyim sağlayan tümleşik bir geliştirme ORTAMı (IDE). Daha fazla bilgi için bkz. [Visual Studio Code jupi Not defterleri Ile çalışma](https://code.visualstudio.com/docs/python/jupyter-support).
+
+### <a name="provide-notebooks-for-the-class"></a>Sınıf için Not defterleri sağlama
+Sonraki görev, öğrencilerin kullanmasını istediğiniz not defterlerini sunmaları sağlamaktır. Kendi not defterlerinizi sağlamak için, not defterlerini şablon VM 'de yerel olarak kaydedebilirsiniz. 
+
+Azure Machine Learning örnek not defterlerini kullanmak istiyorsanız, bkz. [jupi Not defterleri ile ortam yapılandırma](../../machine-learning/how-to-configure-environment.md#jupyter). 
+
+### <a name="optional-enable-graphical-desktop-for-linux"></a>İsteğe bağlı: Linux için grafik Masaüstünü Etkinleştirme 
+**Veri bilimi sanal makinesi – Ubuntu** görüntüsü, X2GO Server ile zaten sağlanmış ve istemci bağlantılarını kabul etmeye hazır. Şablon sanal makinesi ayarlanırken başka bir adım gerekmez. 
+
+### <a name="publish-the-template-machine"></a>Şablon makinesini yayımlama
+Şablonu yayımladığınızda, laboratuvarınızda kayıtlı her öğrenci, bir şablon VM 'nin kopyasını, üzerinde ayarladığınız tüm yerel araçları ve not defterlerini alacak şekilde alır.
+
+## <a name="how-students-connect-to-jupyter-notebooks"></a>Öğrenciler jupi not defterlerine nasıl bağlanır?
+Şablonu yayımladıktan sonra, her öğrenci, jupi Not defterleri dahil olmak üzere sınıfı için önceden yapılandırdığınız her şeyi içeren bir VM 'ye erişebilir. Aşağıdaki bölümlerde, öğrencilerin jupi not defterlerine bağlanması için farklı yollar gösterilmektedir. 
+
+### <a name="for-windows-vms"></a>Windows VM'leri için
+Windows VM 'Leri ile öğrenciler sağladıysanız, sanal makinelerinize bağlanmaları ve yerel olarak kullanılabilir olan Jupyıter not defterlerini kullanması gerekir. 
+
+Bir Windows VM 'ye bağlanmak için bir öğrenci Uzak Masaüstü bağlantısı (RDP) kullanabilir. Ayrıntılı adımlar için bkz. [sınıf laboratuvarına erişme](how-to-use-classroom-lab.md). 
+
+Mac veya Kmebook kullanan bir öğrenci, veri bilimi Windows VM 'sine bağlanmak için aşağıdaki makalelerdeki yönergeleri izleyebilir. 
+
+- [Mac üzerinde RDP kullanarak VM 'ye bağlanma](connect-virtual-machine-mac-remote-desktop.md)
+- [Bir Kmebook 'ta RDP kullanarak VM 'ye bağlanma](connect-virtual-machine-chromebook-remote-desktop.md)
+
+### <a name="for-linux-vms"></a>Linux VM'leri için
+Linux VM 'Leri olan öğrenciler sağladıysanız, öğrencilerin VM 'lerdeki Jupyter not defterlerine bağlanmak için kullanabileceği birkaç seçenek vardır:
+
+- SANAL makineye bağlandıktan sonra Jupyıter not defterlerine yerel olarak erişin
+    - Terminal oturumları için sanal makineye SSH
+     - Grafik oturumları için VM 'ye X2Go bağlantısı
+- Öğrencinin yerel bilgisayarından VM 'deki jupi sunucusuna doğrudan bağlanmak için SSH tüneli kullanın. 
+
+Aşağıdaki bölümlerde, jupi not defterlerine bağlanmanın bu yolları hakkında ayrıntılı bilgi sağlanmaktadır. 
+
+#### <a name="ssh-to-virtual-machine"></a>SSH 'den sanal makineye
+Öğrenciler, bir Terminal oturumundan Linux sanal makinelerine SSH aracılığıyla bağlanabilir. Ayrıntılı adımlar için bkz. [sınıf laboratuvarına erişme](how-to-use-classroom-lab.md). Windows istemci makinesini kullanıyorsa, [Putty](https://www.putty.org/) 'i Indirerek veya [Windows 'da OpenSSH](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse) 'yi komut isteminden SSH 'ye etkinleştirerek bir SSH istemcisini etkinleştirmeleri gerekir. 
+
+1.  VM’yi başlatın.
+2.  VM çalışmaya başladıktan sonra **Bağlan**' a tıklayın, bu, aşağıdaki örnekte olduğu gibi SSH komut dizesini sağlayan bir iletişim kutusu açılır:
+    
+     ```shell
+    ssh -p 12345 student@ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com
+     ```
+3.  Komut isteminize veya terminale gidin ve bu komutu yapıştırın ve **ENTER**tuşuna basın.
+4.  VM 'de oturum açmak için parolayı girin. 
+
+Öğrenciler VM 'lere bağlandıktan sonra, jupi not defterlerini yerel olarak erişebilir ve çalıştırabilir.
+
+#### <a name="x2go-to-virtual-machine"></a>X2Go-sanal makineye
+**Veri bilimi sanal makinesi – Ubuntu** görüntüsü, X2GO Server ile zaten sağlanmış ve istemci bağlantılarını kabul etmeye hazır. Linux makinesinin grafik masaüstüne bağlanmak için öğrencilerin, istemci makinelerinde X2Go kurulumu için bu tek seferlik adımları izlemesi gerekir:
+
+1.  İstemci platformunuz için [X2Go istemcisini](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) indirin ve yükleyin.
+2.  [Azure Lab Services portalında](https://labs.azure.com), bağlanmak ISTEDIĞINIZ Linux VM 'nin başlatıldığından emin olun.
+3.  VM çalışmaya başladıktan sonra **Bağlan**' a tıklayın, bu, aşağıdaki örnekte olduğu gibi SSH komut dizesini sağlayan bir iletişim kutusu açılır:
+
+    ```
+     ssh -p 12345 student@ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com
+     ```    
+4. Bu bilgileri aldıktan sonra, X2Go istemci uygulamasını açın ve yeni bir oturum oluşturun. 
+5.  **Oturum tercihleri** bölmesinde aşağıdaki değerleri girin:
+    - **Oturum adı**: istediğiniz şey olabilir, ancak laboratuvar sanal makinenizin adını kullanmanızı öneririz.
+     - **Ana bilgisayar**:`ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com`
+     - **Oturum açma**: öğrenci
+     - **SSH bağlantı noktası**: 12345
+     - **Oturum türü**: Xfce
+6. **Tamam**’ı seçin. 
+
+    > [!NOTE]
+     > Yeni bir X2Go oturumu oluştururken, RDP bağlantı noktasını **DEĞIL** SSH bağlantı noktasını kullandığınızdan emin olun.
+
+Şimdi sanal makineye bağlanmak için şu adımları izleyin:    
+
+1.  X2Go istemcisinde, bağlanmak istediğiniz sanal makineye çift tıklayın. 
+
+    ![X2Go istemcisi](../media/class-type-jupyter-notebook/x2go-client.png)
+2. SANAL makineye bağlanmak için parolayı girin. (Bağlanmayı tamamlaması için güvenlik duvarınızı atlamak üzere X2Go izni vermeniz gerekebilir.)
+3.  Artık Ubuntu Veri Bilimi VM'si grafik arabirimini görmeniz gerekir.
+
+
+#### <a name="ssh-tunnel-to-jupyter-server-on-the-vm"></a>VM 'de jupi sunucusuna SSH tüneli
+Bazı öğrenciler doğrudan yerel bilgisayarından VM 'lerinin içindeki jupi sunucusuna doğrudan bağlamak isteyebilir. SSH protokolü, yerel bilgisayar ile uzak sunucu arasında bağlantı noktası iletmeyi (bizim örneğimizde, öğrencinin laboratuvar VM 'si), böylece sunucudaki belirli bir bağlantı noktası üzerinde çalışan bir uygulamanın yerel bilgisayardaki eşleme bağlantı noktasına **tünel** oluşturmasını sağlar. Öğrenciler, laboratuvar VM 'lerinde Jupyter sunucusuna SSH tüneli eklemek için aşağıdaki adımları izlemelidir:
+
+1.  [Azure Lab Services portalında](https://labs.azure.com), bağlanmak ISTEDIĞINIZ Linux VM 'nin başlatıldığından emin olun.
+2.  VM çalışmaya başladıktan sonra **Bağlan**' a TıKLAYARAK, SSH komut dizesini sağlayan bir iletişim kutusu açılır. Bu, aşağıdaki dize gibi görünür:
+
+    ```bash
+     ssh -p 12345 student@ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com
+     ```
+3. Yerel bilgisayarınızda bir Terminal veya komut istemi başlatın ve SSH bağlantı dizesini buna kopyalayın. Ardından, `-L 8888:localhost:8888` bağlantı noktaları arasında **tüneli** oluşturan komut dizesine ekleyin. Son dize şöyle görünmelidir:
+
+    ```bash
+     ssh –L 8888:localhost:8888 -p 12345 student@ml-lab-b720853e-570f-49ac-9cb2-bd0bd2aeec35.eastus.cloudapp.azure.com
+     ```
+4. Komutu çalıştırmak için **ENTER** tuşuna basın. 
+5.  İstendiğinde, laboratuvar VM 'sine bağlanmak için parolayı girin. 
+6.  SANAL makineye bağlandıktan sonra şu komutu kullanarak Jupyter sunucusunu başlatın: 
+
+    ```bash
+     jupyter notebook
+     ```
+7. Komutun çalıştırılması, size Terminal veya komut isteminde bir URL sağlar. URL şöyle görünmelidir:
+
+    ```bash
+     http://localhost:8888/?token=8c09ecfc93e6a8cbedf9c66dffdae19670a64acc1d37
+     ```
+8. Bu URL 'YI yerel bilgisayarınızdaki bir tarayıcıya yapıştırarak Jupyter Notebook bağlanın ve üzerinde çalışın. 
+
+    > [!NOTE]
+    > Visual Studio Code Ayrıca harika bir [Jupyter Notebook düzenlemesi deneyimi](https://code.visualstudio.com/docs/python/jupyter-support)sunar. [Uzak bir jupi sunucusuna bağlanma](https://code.visualstudio.com/docs/python/jupyter-support#_connect-to-a-remote-jupyter-server) ve önceki adımdan aynı URL 'yi kullanarak tarayıcıdan değil vs Code bağlantı kurmak için yönergeleri takip edebilirsiniz. 
+
 
 ## <a name="cost-estimate"></a>Maliyet tahmini
+Bu sınıf için olası bir maliyet tahminini ele alalım. 25 öğrencilerden oluşan bir sınıf kullanacağız. 20 saatlik zamanlanan sınıf zamanı vardır. Ayrıca, her öğrenci, zamanlanan sınıf zamanı dışında ev ödevleri veya atamalar için 10 saatlik kota alır. Seçtiğimiz VM boyutu, 139 laboratuvar birimi olan küçük GPU (işlem) idi. Küçük (20 laboratuvar birimi) veya orta boyut (42 Lab birimi) kullanmak istiyorsanız, aşağıdaki denklemde bulunan laboratuvar birimi bölümünü doğru sayı ile değiştirebilirsiniz.  
 
-Bu sınıf için olası bir maliyet tahminini ele alalım.  25 öğrencilerden oluşan bir sınıf kullanacağız.  20 saatlik zamanlanan sınıf zamanı vardır.  Ayrıca, her öğrenci, zamanlanan sınıf zamanı dışında ev ödevleri veya atamalar için 10 saatlik kota alır.  Seçtiğimiz sanal makine boyutu, 139 laboratuvar birimi olan küçük GPU (işlem) idi.
-
-Bu sınıf için olası bir maliyet tahmini örneği aşağıda verilmiştir:
-
-25 öğrenci \* (20 zamanlanan saat + 10 kota saati) \* 139 laboratuvar birimi \* 0,01 saat başına ABD Doları = 1042,5 ABD Doları
+Bu sınıf için olası bir maliyet tahmini örneği aşağıda verilmiştir: 25 öğrenci * (20 zamanlanan saat + 10 kota saati) * 139 Lab birim * 0,01 saat başına USD = 1042,5 ABD
 
 Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Lab Services fiyatlandırması](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Sonuç
-
 Bu makalede, bir Jupyıter Not defteri sınıfı için Laboratuvar oluşturma adımlarını ele aldık. Diğer makine öğrenimi sınıfları için benzer bir kurulum kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

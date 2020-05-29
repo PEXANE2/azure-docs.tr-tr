@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4a4d52ee3f39daef0e89ccb08cf5ab6a4ebfb735
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739108"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140811"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C teknik ve özelliklere genel bakış
 
@@ -36,7 +36,7 @@ Azure AD B2C kiracısında birlikte çalıştığınız birincil kaynaklar şunl
   * Uygulamalarınızda desteklemek istediğiniz Facebook, LinkedIn veya Twitter gibi *sosyal* kimlik sağlayıcıları.
   * OAuth 2,0, OpenID Connect gibi standart kimlik protokollerini destekleyen *dış* kimlik sağlayıcıları.
   * Kullanıcıların bir Kullanıcı adı (veya e-posta adresi veya diğer KIMLIK) ve parola ile kaydolup oturum açmasını sağlayan *Yerel* hesaplar.
-* **Anahtarlar** -belirteçleri imzalamak ve doğrulamak için şifreleme anahtarları ekleyin ve yönetin.
+* **Anahtarlar** -belirteçleri, istemci gizli dizilerini, sertifikaları ve parolaları imzalamak ve doğrulamak için şifreleme anahtarları ekleyin ve yönetin.
 
 Azure AD B2C kiracı, Azure AD B2C kullanmaya başlamak için oluşturmanız gereken ilk kaynaktır. [Öğretici: Azure Active Directory B2C kiracı oluşturma](tutorial-create-tenant.md)hakkında bilgi edinin.
 
@@ -69,7 +69,7 @@ Azure AD B2C, görünen ad, soyadı, verilen ad, şehir ve diğerleri gibi tüke
 
 ## <a name="external-identity-providers"></a>Harici kimlik sağlayıcıları
 
-Azure AD B2C, kullanıcıların uygulamanızda dış sosyal veya kurumsal kimlik sağlayıcılarından (IDP) kimlik bilgileriyle oturum açmalarına izin verecek şekilde yapılandırabilirsiniz. Azure AD B2C, Facebook, Microsoft hesabı, Google, Twitter ve OAuth 1,0, OAuth 2,0, OpenID Connect, SAML veya WS-Federation protokollerini destekleyen herhangi bir kimlik sağlayıcısı gibi harici kimlik sağlayıcılarını destekler.
+Azure AD B2C, kullanıcıların uygulamanızda dış sosyal veya kurumsal kimlik sağlayıcılarından (IDP) kimlik bilgileriyle oturum açmalarına izin verecek şekilde yapılandırabilirsiniz. Azure AD B2C, Facebook, Microsoft hesabı, Google, Twitter ve OAuth 1,0, OAuth 2,0, OpenID Connect ve SAML protokollerini destekleyen herhangi bir kimlik sağlayıcısı gibi harici kimlik sağlayıcılarını destekler.
 
 ![Harici kimlik sağlayıcıları](media/technical-overview/external-idps.png)
 
@@ -134,15 +134,13 @@ Her Kullanıcı yolculuğu bir ilke tarafından tanımlanır ve kuruluşunuz iç
 
 ## <a name="protocols-and-tokens"></a>Protokoller ve belirteçler
 
-Azure AD B2C, Kullanıcı yolculukları için [OpenID Connect ve OAuth 2,0 protokollerini](protocols-overview.md) destekler. OpenID Connect'in Azure AD B2C gerçekleştirmesinde uygulamanız kullanıcı yolculuğunu Azure AD B2C'ye kimlik doğrulama istekleri göndererek başlatır.
+- Uygulamalar için Azure AD B2C, Kullanıcı yolculukları için [OAuth 2,0](protocols-overview.md), [OpenID Connect](openid-connect.md)ve [SAML protokollerini](connect-with-saml-service-providers.md) destekler. Uygulamanız Azure AD B2C için kimlik doğrulama istekleri vererek Kullanıcı yolculuğu başlatır. Azure AD B2C bir isteğin sonucu, [kimlik belirteci, erişim belirteci](tokens-overview.md)veya SAML belirteci gibi bir güvenlik belirtecidir. Bu güvenlik belirteci, kullanıcının uygulama içindeki kimliğini tanımlar.
 
-Azure AD B2C bir isteğin sonucu, [kimlik belirteci veya erişim belirteci](tokens-overview.md)gibi bir güvenlik belirtecidir. Bu güvenlik belirteci, kullanıcının kimliğini tanımlar. Belirteçler, `/token` veya uç nokta gibi Azure AD B2C uç noktalarından alınır `/authorize` . Bu belirteçlerle, bir kimliği doğrulamak ve güvenli kaynaklara erişim sağlamak için kullanılabilecek taleplere erişebilirsiniz.
+- Dış kimlikler için Azure AD B2C, herhangi bir OAuth 1,0, OAuth 2,0, OpenID Connect ve SAML Identity sağlayıcılarıyla Federasyonu destekler.
 
-Dış kimlikler için Azure AD B2C, OAuth 1,0, OAuth 2,0, OpenID Connect, SAML ve WS-beslik kimlik sağlayıcısı ile Federasyonu destekler.
+Aşağıdaki diyagramda, Azure AD B2C aynı kimlik doğrulama akışındaki çeşitli protokoller kullanılarak nasıl iletişim kurabileceği gösterilmektedir:
 
 ![SAML tabanlı IDP ile federıdc tabanlı istemci uygulaması Federasyonun diyagramı](media/technical-overview/protocols.png)
-
-Yukarıdaki diyagramda Azure AD B2C aynı kimlik doğrulama akışındaki çeşitli protokoller kullanılarak nasıl iletişim kurabileceği gösterilmektedir:
 
 1. Bağlı olan taraf uygulaması, OpenID Connect kullanarak Azure AD B2C bir yetkilendirme isteği başlatır.
 1. Uygulamanın bir kullanıcısı SAML protokolünü kullanan bir dış kimlik sağlayıcısı kullanarak oturum açmayı seçtiğinde Azure AD B2C, bu kimlik sağlayıcısıyla iletişim kurmak için SAML protokolünü çağırır.

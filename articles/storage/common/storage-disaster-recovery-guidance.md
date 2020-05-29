@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: aab64e173b02ae991f7071da785434fa742de7de
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4b1abe8efb4baaf260005df1a4ee5b6d1645715a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994706"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169228"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Olağanüstü durum kurtarma ve depolama hesabı yük devretme
 
@@ -102,6 +102,8 @@ Bir yük devretmeyi zorlarsanız, ikincil bölge yeni birincil bölge olur ve de
 
 En iyi uygulama olarak, beklenen veri kaybını değerlendirmek için son eşitleme süresini kullanabilmeniz için uygulamanızı tasarlayın. Örneğin, tüm yazma işlemlerini günlüğe koyduysanız, hangi yazma işlemlerinin ikinciye eşitlenmediğini öğrenmek için son yazma işlemlerinizin saatini son eşitleme zamanına göre karşılaştırabilirsiniz.
 
+**Son eşitleme zamanı** özelliğini denetleme hakkında daha fazla bilgi için bkz. [bir depolama hesabı Için Son eşitleme zamanı özelliğini denetleme](last-sync-time-get.md).
+
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Özgün birincili geri yüklerken dikkatli olun
 
 Birincil sunucudan ikincil bölgeye yük devretme yaptıktan sonra, depolama hesabınız yeni birincil bölgede yerel olarak yedekli olacak şekilde yapılandırılır. Daha sonra hesabı coğrafi artıklık için yeniden yapılandırabilirsiniz. Hesap, yük devretmeden sonra coğrafi yedeklilik için yapılandırıldığında yeni birincil bölge, ilk yük devretmeden önce birincil olan yeni ikincil bölgeye doğrudan veri kopyalamaya başlar. Ancak, birincil içindeki mevcut verilerin yeni ikincil öğesine tamamen kopyalanabilmesi için bu işlem biraz zaman alabilir.
@@ -173,4 +175,5 @@ Depolama Hesabınız ikinciye okuma erişimi için yapılandırılmışsa, uygul
 
 - [Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi artıklığı kullanın](geo-redundant-design.md)
 - [Hesap yük devretmesi başlatma](storage-initiate-account-failover.md)
+- [Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin](last-sync-time-get.md)
 - [Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma](../blobs/storage-create-geo-redundant-storage.md)

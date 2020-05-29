@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 66682e953e4e262604d1b0c07720ebaab5995364
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 38f6cfef60cf3bfe66742cba204d74db1c22ca77
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195207"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169296"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Blok Blobları için noktadan noktaya geri yükleme (Önizleme)
 
@@ -26,15 +26,13 @@ Bir depolama hesabı için zaman içinde geri yükleme yapmayı nasıl etkinleş
 
 Noktadan noktaya geri yüklemeyi etkinleştirmek için, depolama hesabı için bir yönetim ilkesi oluşturup bir bekletme dönemi belirtirsiniz. Saklama süresi boyunca, blok bloblarını mevcut durumdan önceki bir zaman noktasına geri yükleyebilirsiniz.
 
-Bir zaman noktası geri yüklemesi başlatmak için [BLOB aralıklarını geri yükleme](/rest/api/storagerp/storageaccounts/restoreblobranges) işlemini ÇAĞıRıN ve UTC zamanında bir geri yükleme noktası belirtin. Geri yüklenecek bir lexıgrafik aralığı ve BLOB adları belirtebilir veya depolama hesabındaki tüm kapsayıcıları geri yüklemek için aralığı atlayabilirsiniz. **BLOB aralıklarını geri yükleme** işlemi, işlemi benzersiz şekilde tanımlayan bir GERI yükleme kimliği döndürüyor.
+Bir zaman noktası geri yüklemesi başlatmak için [BLOB aralıklarını geri yükleme](/rest/api/storagerp/storageaccounts/restoreblobranges) işlemini ÇAĞıRıN ve UTC zamanında bir geri yükleme noktası belirtin. Geri yüklemek için, kapsayıcı ve BLOB adlarının lexıgraf aralıklarını belirtebilir veya depolama hesabındaki tüm kapsayıcıları geri yüklemek için aralığı atlayabilirsiniz. Geri yükleme işlemi başına en fazla 10 lexıgraf aralığı desteklenir.
 
 Azure depolama, istenen geri yükleme noktası arasındaki belirtilen bloblarda UTC saatine ve mevcut anda belirtilen tüm değişiklikleri analiz eder. Geri yükleme işlemi atomik olduğundan tüm değişiklikleri geri yükleme işleminde tamamen başarılı olur ya da başarısız olur. Geri yüklenemeyecek blob varsa, işlem başarısız olur ve etkilenen kapsayıcılar sürdürülmesine okuma ve yazma işlemleri devam ettirir.
 
-Bir geri yükleme işlemi istediğinizde, Azure depolama, geri yüklenen aralıktaki bloblarda işlem süresince veri işlemlerini engeller. Birincil konumda okuma, yazma ve silme işlemleri engellenir. Depolama hesabı coğrafi olarak çoğaltılırsa, ikincil konumdaki okuma işlemleri geri yükleme işlemi sırasında devam edebilir.
-
 Tek seferde bir depolama hesabında yalnızca bir geri yükleme işlemi çalıştırılabilir. Devam eden bir geri yükleme işlemi iptal edilemez, ancak ilk işlemi geri almak için ikinci bir geri yükleme işlemi gerçekleştirilebilir.
 
-Bir zaman noktası geri yükleme işleminin durumunu denetlemek için, **BLOB aralıklarını geri** yükle işleminden döndürülen GERI yükleme kimliği Ile **geri yükleme durumunu Al** işlemini çağırın.
+**BLOB aralıklarını geri yükleme** işlemi, işlemi benzersiz şekilde tanımlayan bir GERI yükleme kimliği döndürüyor. Bir zaman noktası geri yükleme işleminin durumunu denetlemek için, **BLOB aralıklarını geri** yükle işleminden döndürülen GERI yükleme kimliği Ile **geri yükleme durumunu Al** işlemini çağırın.
 
 Geri yükleme işlemlerinde aşağıdaki sınırlamaları aklınızda bulundurun:
 
@@ -42,6 +40,11 @@ Geri yükleme işlemlerinde aşağıdaki sınırlamaları aklınızda bulundurun
 - Etkin kiralamaya sahip bir blob geri yüklenemez. Etkin bir kiralamaya sahip bir blob geri yüklenecek blob aralığına dahil edilmezse geri yükleme işlemi otomatik olarak başarısız olur.
 - Anlık görüntüler, geri yükleme işleminin bir parçası olarak oluşturulmaz veya silinmez. Yalnızca temel blob önceki durumuna geri yüklendi.
 - Bir blob, mevcut bir süre ve geri yükleme noktası arasındaki dönemdeki sık ve seyrek katmanlar arasında taşınırsa, blob önceki katmanına geri yüklenir. Ancak, arşiv katmanına taşınan bir blob geri yüklenmez.
+
+> [!IMPORTANT]
+> Geri yükleme işlemi gerçekleştirdiğinizde, Azure depolama, işlem süresince geri yüklenen aralıklardaki bloblarda veri işlemlerini engeller. Birincil konumda okuma, yazma ve silme işlemleri engellenir. Bu nedenle, Azure portal kapsayıcıları gibi işlemler geri yükleme işlemi devam ederken beklendiği gibi gerçekleştirilemeyebilir.
+>
+> Depolama hesabı coğrafi olarak çoğaltılırsa, ikincil konumdaki okuma işlemleri geri yükleme işlemi sırasında devam edebilir.
 
 > [!CAUTION]
 > Zaman içinde geri yükleme, yalnızca blok Bloblarındaki işlemleri geri yüklemeyi destekler. Kapsayıcılardaki işlemler geri yüklenemez. Bir kapsayıcıyı, zaman içinde geri yükleme önizlemesi sırasında [kapsayıcıyı silme](/rest/api/storageservices/delete-container) işlemini çağırarak depolama hesabından silerseniz, o kapsayıcı geri yükleme işlemiyle geri yüklenemez. Önizleme sırasında, bir kapsayıcıyı silmek, geri yüklemek istiyorsanız ayrı blob 'ları silin.

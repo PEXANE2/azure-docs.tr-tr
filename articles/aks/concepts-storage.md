@@ -4,12 +4,12 @@ description: Azure Kubernetes Service 'teki (AKS) birimler, kalıcı birimler, d
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596003"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171387"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için depolama seçenekleri
 
@@ -55,12 +55,14 @@ PersistentVolume bir küme yöneticisi tarafından *statik* olarak veya Kubernet
 
 Premium ve standart gibi farklı depolama katmanlarını tanımlamak için bir *Storageclass*oluşturabilirsiniz. StorageClass Ayrıca *reclaimPolicy*tanımlar. Bu reclaimPolicy, Pod silindiğinde ve kalıcı birim artık gerekmiyorsa, temel alınan Azure depolama kaynağının davranışını denetler. Temel alınan depolama kaynağı silinebilir veya gelecekteki bir pod ile kullanım için korunabilir.
 
-AKS 'de, iki adet ilk StorageClasses oluşturulur:
+AKS 'de ilk StorageClasses oluşturulur:
 
-- *varsayılan* -yönetilen bir disk oluşturmak Için Azure Standart depolama kullanır. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temeldeki Azure diskinin silindiğini gösterir.
+- *varsayılan* -yönetilen bir disk oluşturmak Için Azure standartssd depolama kullanır. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temeldeki Azure diskinin silindiğini gösterir.
 - *yönetilen-Premium* -yönetilen disk oluşturmak Için Azure Premium depolama kullanır. Geri kazanma ilkesi, kendisini kullanan kalıcı birim silindiğinde temeldeki Azure diskinin silindiğini gösterir.
+- *azurefile* -Azure Standart depolamayı kullanarak bir Azure dosya paylaşımının oluşturulmasını sağlar. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temeldeki Azure dosya paylaşımının silindiğini gösterir.
+- *azurefile-Premium* -Azure dosya paylaşımının oluşturulması Için Azure Premium depolama kullanır. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temeldeki Azure dosya paylaşımının silindiğini gösterir.
 
-Kalıcı birim için bir StorageClass belirtilmemişse, varsayılan StorageClass kullanılır. Kalıcı birimler istemek için gereken uygun depolama alanını kullanmaları için dikkatli olmanız gerekir. Kullanarak `kubectl`ek gereksinimler Için bir StorageClass oluşturabilirsiniz. Aşağıdaki örnek, Premium yönetilen diskleri kullanır ve pod silindiğinde temel alınan Azure diskinin *korunması* gerektiğini belirtir:
+Kalıcı birim için bir StorageClass belirtilmemişse, varsayılan StorageClass kullanılır. Kalıcı birimler istemek için gereken uygun depolama alanını kullanmaları için dikkatli olmanız gerekir. Kullanarak ek gereksinimler için bir StorageClass oluşturabilirsiniz `kubectl` . Aşağıdaki örnek, Premium yönetilen diskleri kullanır ve pod silindiğinde temel alınan Azure diskinin *korunması* gerektiğini belirtir:
 
 ```yaml
 kind: StorageClass

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f633c1816e9e2e977c52ab99b66a26f7d2c4d8e2
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3405a322b8498b0b1a29399811ddf188ea766ca8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800756"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170605"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltma (Önizleme)
 
@@ -54,7 +54,7 @@ Bir çoğaltma kuralı oluşturduğunuzda, varsayılan olarak yalnızca kaynak k
 
 Ayrıca, blok bloblarını ön eke göre filtrelemek için bir çoğaltma kuralının bir parçası olarak bir veya daha fazla filtre belirtebilirsiniz. Bir ön ek belirttiğinizde, yalnızca kaynak kapsayıcıda bu önekle eşleşen Bloblar hedef kapsayıcıya kopyalanacaktır.
 
-Kaynak ve hedef kapsayıcıların her ikisi de bir kuralda belirtmeleri için mevcut olmalıdır. Çoğaltma ilkesini oluşturduktan sonra, hedef kapsayıcı salt okunurdur. Hedef kapsayıcıya yazma girişimleri 409 (çakışma) hata koduyla başarısız olur. Ancak, farklı bir erişim katmanına taşımak için, hedef kapsayıcıdaki bir Blobun [BLOB katmanını ayarla](/rest/api/storageservices/set-blob-tier) işlemini çağırabilirsiniz. Örneğin, maliyetleri kazanmak için hedef kapsayıcıdaki Blobları arşiv katmanına taşıyabilirsiniz.
+Kaynak ve hedef kapsayıcıların her ikisi de bir kuralda belirtmeleri için mevcut olmalıdır. Çoğaltma ilkesini oluşturduktan sonra, hedef kapsayıcı salt okunurdur. Hedef kapsayıcıya yazma girişimleri 409 (çakışma) hata koduyla başarısız olur. Ancak, [BLOB katmanını ayarla](/rest/api/storageservices/set-blob-tier) işlemini arşiv katmanına taşımak için hedef kapsayıcıdaki bir blob üzerinde çağırabilirsiniz. Arşiv katmanı hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md#archive-access-tier).
 
 ## <a name="about-the-preview"></a>Önizleme hakkında
 
