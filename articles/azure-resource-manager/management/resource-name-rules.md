@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 553d0e33c4b9bc1aa238cf582f37be1e148eea5e
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 73e5f7ce7f5c13a0ce456372d299e49033c7e704
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758903"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170588"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -81,9 +81,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | kaynaktaki | atama kapsamı | 1-90 | Alfasayısal, nokta, alt çizgi, kısa çizgi ve parantez.<br><br>Süre içinde bitemez. |
-> | poliyasatamaları | atama kapsamı | 1-128 görünen adı<br><br>1-260 kaynak adı | Görünen ad herhangi bir karakter içerebilir.<br><br>Kaynak adı `%` , nokta veya boşluk içeremez ve bitemez. |
-> | PolicyDefinitions | Tanım kapsamı | 1-128 görünen adı<br><br>1-260 kaynak adı | Görünen ad herhangi bir karakter içerebilir.<br><br>Kaynak adı `%` , nokta veya boşluk içeremez ve bitemez. |
-> | policySetDefinitions | Tanım kapsamı | 1-128 görünen adı<br><br>1-260 kaynak adı | Görünen ad herhangi bir karakter içerebilir.<br><br>Kaynak adı `%` , nokta veya boşluk içeremez ve bitemez.  |
+> | Poliyasatamaları | atama kapsamı | 1-128 görünen adı<br><br>1-64 kaynak adı | Görünen ad herhangi bir karakter içerebilir.<br><br>Kaynak adı `%` , nokta veya boşluk içeremez ve bitemez. |
+> | policyDefinitions | Tanım kapsamı | 1-128 görünen adı<br><br>1-64 kaynak adı | Görünen ad herhangi bir karakter içerebilir.<br><br>Kaynak adı `%` , nokta veya boşluk içeremez ve bitemez. |
+> | policySetDefinitions | Tanım kapsamı | 1-128 görünen adı<br><br>1-64 kaynak adı<br><br>Yönetim grubu kapsamındaki 1-24 kaynak adı | Görünen ad herhangi bir karakter içerebilir.<br><br>Kaynak adı `%` , nokta veya boşluk içeremez ve bitemez.  |
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
@@ -540,7 +540,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | çözümler | çalışma alanı | Yok | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
+> | çözümler | çalışma alanı | YOK | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 

@@ -5,16 +5,18 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 23dfad844c17b0b8c8a35b6a94d6a96327afe19c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8e9b80c60c098e4daf247db07fa48baa322aa7f0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117447"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169463"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok özelliğinden VM’leri kaldırma
 
 Ortamınızdaki sanal makinelere değişiklikleri dağıtmaya bitirdiğinizde, [değişiklik izleme ve envanter](change-tracking.md) özelliğinden kaldırabilirsiniz.
+
+## <a name="to-remove-your-vms"></a>VM 'lerinizi kaldırmak için
 
 1. Otomasyon hesabınızdan, **yapılandırma yönetimi**altında **değişiklik izleme** veya **Stok** ' ı seçin.
 

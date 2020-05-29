@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688309"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170775"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service 'de yavaş uygulama performansı sorunlarını giderme
 Bu makale, [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)' deki yavaş uygulama performansı sorunlarını gidermenize yardımcı olur.
@@ -39,7 +39,7 @@ Sorun giderme üç farklı göreve sıralı sırayla ayrılabilir:
 
 [App Service](overview.md) her adımda çeşitli seçenekler sunar.
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. uygulama davranışını gözlemleyin ve izleyin
 #### <a name="track-service-health"></a>Hizmet durumunu izleme
@@ -84,7 +84,7 @@ Her App Service uygulaması, site uzantıları olarak dağıtılan güçlü bir 
 
 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) , aynı zamanda kullanılabilen bir performans izleme site uzantısıdır. Application Insights kullanmak için, kodunuzu bir SDK ile yeniden derleyin. Ek verilere erişim sağlayan bir uzantı da yükleyebilirsiniz. SDK, uygulamanızın kullanımını ve performansını daha ayrıntılı olarak izlemek için kod yazmanıza olanak tanır. Daha fazla bilgi için bkz. [Web uygulamalarında performansı izleme](../azure-monitor/app/web-monitor-performance.md).
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2. veri topla
 App Service, hem Web sunucusundan hem de Web uygulamasından günlüğe bilgi günlüğü için tanılama işlevselliği sağlar. Bilgiler, Web sunucusu tanılama ve Uygulama Tanılama ile ayrılmıştır.
@@ -114,7 +114,7 @@ Uzaktan profil oluşturma işlemi, işlemin CPU kullanımı yüksekse ve işlemi
 Daha fazla bilgi için bkz. [Azure App Service uzaktan profil oluşturma desteği](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service).
 
 ##### <a name="set-up-diagnostic-traces-manually"></a>Tanılama izlemelerini el ile ayarlama
-Web uygulaması kaynak koduna erişiminiz varsa, Application Diagnostics bir Web uygulaması tarafından üretilen bilgileri yakalamanızı sağlar. ASP.NET uygulamaları, uygulama tanılama `System.Diagnostics.Trace` günlüğüne bilgi kaydetmek için sınıfını kullanabilir. Ancak, kodu değiştirmeniz ve uygulamanızı yeniden dağıtmanız gerekir. Uygulamanız bir sınama ortamında çalışıyorsa bu yöntem önerilir.
+Web uygulaması kaynak koduna erişiminiz varsa, Application Diagnostics bir Web uygulaması tarafından üretilen bilgileri yakalamanızı sağlar. ASP.NET uygulamaları, `System.Diagnostics.Trace` Uygulama Tanılama günlüğüne bilgi kaydetmek için sınıfını kullanabilir. Ancak, kodu değiştirmeniz ve uygulamanızı yeniden dağıtmanız gerekir. Uygulamanız bir sınama ortamında çalışıyorsa bu yöntem önerilir.
 
 Uygulamanızı günlüğe kaydetmeye yönelik yapılandırma hakkında ayrıntılı yönergeler için, bkz. [Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme](troubleshoot-diagnostic-logs.md).
 
@@ -126,7 +126,7 @@ App Service tanılama 'ya erişmek için App Service uygulamanıza veya [Azure p
 #### <a name="use-the-kudu-debug-console"></a>Kudu hata ayıklama konsolunu kullanma
 App Service, hata ayıklama, keşfetme, yükleme dosyaları ve ortamınız hakkında bilgi almak için JSON uç noktaları için kullanabileceğiniz bir hata ayıklama konsoluyla birlikte gelir. Bu konsola *kudu konsolu* veya uygulamanız Için *SCM panosu* adı verilir.
 
-Bu panoya, **uygulamanızın adını>. scm.azurewebsites.net/olan https://&lt;** bağlantısına giderek erişebilirsiniz.
+Bu panoya, ** &lt; uygulamanızın adını>. scm.azurewebsites.net/olan https://** bağlantısına giderek erişebilirsiniz.
 
 Kudu 'nin sağladığı işlemlerden bazıları şunlardır:
 
@@ -139,7 +139,7 @@ Kudu 'nin başka bir faydalı özelliği de, uygulamanızın ilk şans özel dur
 
 Kudu 'de kullanılabilen özellikler hakkında daha fazla bilgi için, bkz. [bilmeniz gereken Azure DevOps araçları](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3. sorunu azaltma
 #### <a name="scale-the-app"></a>Uygulamayı ölçeklendirme

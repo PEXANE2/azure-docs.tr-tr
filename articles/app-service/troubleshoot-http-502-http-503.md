@@ -7,12 +7,12 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688320"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170809"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Azure App Service 'de "502 hatalı Ağ Geçidi" ve "503 hizmeti kullanılamıyor" HTTP hatalarında sorun giderme
 "502 hatalı Ağ Geçidi" ve "503 hizmeti kullanılamıyor" uygulamanızda [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)barındırılan yaygın hatalardır. Bu makale, bu hataları gidermenize yardımcı olur.
@@ -38,7 +38,7 @@ Sorun giderme üç farklı göreve sıralı sırayla ayrılabilir:
 
 [App Service](overview.md) her adımda çeşitli seçenekler sunar.
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. uygulama davranışını gözlemleyin ve izleyin
 #### <a name="track-service-health"></a>Hizmet durumunu izleme
@@ -62,7 +62,7 @@ Daha fazla bilgi için bkz.
 * [Azure App Service uygulamaları izleme](web-sites-monitor.md)
 * [Uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2. veri topla
 #### <a name="use-the-diagnostics-tool"></a>Tanılama aracını kullanma
@@ -73,7 +73,7 @@ App Service tanılama 'ya erişmek için App Service uygulamanıza veya [Azure p
 #### <a name="use-the-kudu-debug-console"></a>Kudu hata ayıklama konsolunu kullanma
 App Service, hata ayıklama, keşfetme, yükleme dosyaları ve ortamınız hakkında bilgi almak için JSON uç noktaları için kullanabileceğiniz bir hata ayıklama konsoluyla birlikte gelir. Bu, *kudu konsolu* veya uygulamanız Için *SCM panosu* olarak adlandırılır.
 
-Bu panoya, **uygulamanızın adını>. scm.azurewebsites.net/olan https://&lt;** bağlantısına giderek erişebilirsiniz.
+Bu panoya, ** &lt; uygulamanızın adını>. scm.azurewebsites.net/olan https://** bağlantısına giderek erişebilirsiniz.
 
 Kudu 'nin sağladığı işlemlerden bazıları şunlardır:
 
@@ -86,7 +86,7 @@ Kudu 'nin başka bir faydalı özelliği de, uygulamanızın ilk şans özel dur
 
 Kudu 'de kullanılabilen özellikler hakkında daha fazla bilgi için, bkz. [Azure Web siteleri çevrimiçi araçları hakkında bilmeniz gereken](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3. sorunu azaltma
 #### <a name="scale-the-app"></a>Uygulamayı ölçeklendirme

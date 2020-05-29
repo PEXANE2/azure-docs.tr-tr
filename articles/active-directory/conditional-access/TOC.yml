@@ -102,6 +102,8 @@
           href: troubleshoot-conditional-access.md
         - name: What If aracını kullanarak sorun giderme
           href: troubleshoot-conditional-access-what-if.md
+        - name: SSS
+          href: faqs.md
 - name: Kaynaklar
   items:
     - name: Azure geri bildirim forumu

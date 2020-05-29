@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: d419c213b3bcfef3631d68eb9d4cb485291bed31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6c7464eb1bf51a4e42d0db98d92459dc39fbb11
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78304200"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170826"
 ---
 # <a name="load-balancer-outbound-rules"></a>Giden kuralları Load Balancer
 
@@ -42,7 +42,7 @@ Giden kuralları, [giden bağlantılar](load-balancer-outbound-connections.md) m
 
 Tüm Load Balancer kuralları gibi giden kurallar da yük dengeleme ve gelen NAT kuralları ile aynı tanıdık sözdizimini izler:
 
-**ön uç** + **parametreleri** + **arka uç havuzu**
+**ön uç**  +  **Parametreler**  +  **arka uç havuzu**
 
 Giden bir kural _, arka uç havuzu tarafından belirtilen tüm sanal makineler_ IÇIN giden NAT 'yi _ön_uca çevrilecek şekilde yapılandırır.  Ve _Parametreler_ giden NAT algoritması üzerinde ek ayrıntılı denetim sağlar.
 
@@ -66,7 +66,7 @@ API sürümü "2018-07-01", aşağıdaki gibi yapılandırılmış bir giden kur
 
 ### <a name="scale-outbound-nat-with-multiple-ip-addresses"></a><a name="scale"></a>Birden çok IP adresiyle giden NAT 'yi ölçeklendirme
 
-Giden kuralı yalnızca tek bir genel IP adresiyle kullanılabilir ancak giden kuralları, giden NAT ölçeklendirme için yapılandırma yükünü kolaylaştırır. Büyük ölçekli senaryoları planlamak için birden çok IP adresi kullanabilir ve giden kurallarını, [SNAT tükenmesi](load-balancer-outbound-connections.md#snatexhaust) açısından yüksek desenleri azaltmak için kullanabilirsiniz.  
+Giden kuralı yalnızca tek bir genel IP adresiyle kullanılabilir ancak giden kuralları, giden NAT ölçeklendirme için yapılandırma yükünü kolaylaştırır. Büyük ölçekli senaryoları planlamak için birden çok IP adresi kullanabilir ve giden kurallarını, [SNAT tükenmesi](troubleshoot-outbound-connection.md#snatexhaust) açısından yüksek desenleri azaltmak için kullanabilirsiniz.  
 
 Ön uç tarafından sağlanan her ek IP adresi, Load Balancer SNAT bağlantı noktası olarak kullanılacak olan 64.000 kısa ömürlü bağlantı noktaları sağlar. Yük Dengeleme veya gelen NAT kurallarında tek bir ön uç olduğunda, giden kuralı ön uç kavramını genişletir ve kural başına birden fazla ön uç sağlar.  Kural başına birden çok ön uç ile, kullanılabilir SNAT bağlantı noktalarının miktarı her genel IP adresi ile çarpılır ve büyük senaryolar desteklenir.
 
@@ -95,7 +95,7 @@ Giden boşta kalma zaman aşımını 1 saate ayarlamak için aşağıdaki parame
 
           "idleTimeoutInMinutes": 60
 
-### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a> Boşta kalma zaman AŞıMı durumunda TCP sıfırlamayı etkinleştir
+### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a>Boşta kalma zaman aşımı durumunda TCP sıfırlamayı etkinleştir
 
 Load Balancer varsayılan davranışı, giden boşta kalma zaman aşımı ile erişildiğinde akışı sessizce düşürülemiyor.  Enabletcönayar parametresi ile, daha öngörülebilir bir uygulama davranışını etkinleştirebilir ve giden boşta kalma zaman aşımı süresi dolduğunda çift yönlü TCP sıfırlaması (TCP RST) göndermek isteyip istemediğinizi kontrol edebilirsiniz. 
 

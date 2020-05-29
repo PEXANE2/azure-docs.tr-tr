@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: bfb70aaa092cc62fbff87e9e3e327ee7364f8701
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 540c3eace72a1692a927916a48f772047115375f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833822"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167256"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Tasarımcı için özel durumlar ve hata kodları (Önizleme)
 
@@ -1106,7 +1106,7 @@ Makine öğrenimi için Hive sorgularıyla ilgili yardım için aşağıdaki mak
 
  Modül özel durumu tarafından bildirilen bir SQL tarafından oluşturulan ileti varsa, bildirilen hataya göre işlem yapın. Örneğin, hata iletileri bazen olası hataya özgü yönergeler içerir:
 + *Böyle bir sütun veya eksik veritabanı değil*, bir sütun adı yanlış yazmış olabileceğiniz. Sütun adının doğru olduğundan eminseniz, sütun tanımlayıcısını kapsamak için köşeli ayraç veya tırnak işaretleri kullanmayı deneyin.
-+ *Yakınında \< SQL Logic Error hatası \>* Belirtilen anahtar sözcükten önce bir sözdizimi hatası OLABILECEĞINI gösteren SQL anahtar sözcüğü
++ *Yakınında \<SQL keyword\> SQL Logic Error *, belirtilen anahtar sözcükten önce bir sözdizimi hatası olabileceğini belirtir
 
   
 |Özel durum Iletileri|
@@ -1500,7 +1500,7 @@ Bu hata, önceki bir işlem, bir aşağı akış işleminde yeterli sayıda sat�
 
 
 ## <a name="error-0159"></a>Hata 0159
- Modül modeli dizinine geçirilmediğinde özel durum oluşur. 
+ Modül modeli dizini geçersiz ise özel durum oluşur. 
 
 |Özel durum Iletileri|
 |------------------------------------------------------------|

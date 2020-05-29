@@ -5,20 +5,19 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 05/19/2020
 ms.author: victorh
-ms.openlocfilehash: b9839e51fcea1e8fe4adc4760e16ae2d73b163ee
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9c51fdb5142159e390ac4fcf59a04aa3dd747469
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83694238"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167205"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>Hızlı başlangıç: Azure Güvenlik Duvarı Yöneticisi 'Ni Kaynak Yöneticisi şablonu kullanarak sanal hub 'ınızı güvenli hale getirme
 
-Bu hızlı başlangıçta, Azure Güvenlik Duvarı Yöneticisi önizlemesi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirmek için bir Kaynak Yöneticisi şablonu kullanırsınız.
-
-Dağıtılan güvenlik duvarında bağlantılara izin veren bir uygulama kuralı vardır `www.microsoft.com` . Güvenlik duvarını test etmek için iki Windows Server 2019 sanal makine dağıtılır. Bir geçiş sunucusu, iş yükü sunucusuna bağlanmak için kullanılır. İş yükü sunucusundan yalnızca ' a bağlanabilirsiniz `www.microsoft.com` .
+Bu hızlı başlangıçta, Azure Güvenlik Duvarı Yöneticisi önizlemesi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirmek için bir Kaynak Yöneticisi şablonu kullanırsınız. Dağıtılan güvenlik duvarında bağlantılara izin veren bir uygulama kuralı vardır `www.microsoft.com` . Güvenlik duvarını test etmek için iki Windows Server 2019 sanal makine dağıtılır. Bir geçiş sunucusu, iş yükü sunucusuna bağlanmak için kullanılır. İş yükü sunucusundan yalnızca ' a bağlanabilirsiniz `www.microsoft.com` .
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,23 +33,23 @@ Bu şablon, senaryoyu desteklemek için gerekli kaynaklarla birlikte Azure Güve
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirin
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/fwm-docs-qs/azuredeploy.json).
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
 
 :::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
 
 Şablonda birden çok Azure kaynağı tanımlanmış:
 
-- [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
-- [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
-- [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Microsoft. Network/firewallPolicies**](/azure/templates/microsoft.network/firewallPolicies)
-- [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 - [**Microsoft. Network/Virtualwan 'Lar**](/azure/templates/microsoft.network/virtualWans)
 - [**Microsoft. Network/Virtualhub 'Ları**](/azure/templates/microsoft.network/virtualHubs)
+- [**Microsoft. Network/firewallPolicies**](/azure/templates/microsoft.network/firewallPolicies)
+- [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
+- [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 

@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 645565b0033324d6edc36a73fb59fa5a5d8689ee
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66597f0807e27e421d5f7001550533090d5936c0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650728"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171608"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Node. js SDK Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -44,23 +44,23 @@ ms.locfileid: "83650728"
 
 ## <a name="release-notes"></a>Sürüm notları
 
-### <a name=""></a><a name="3.1.0"/>3.1.0</a>
+### <a name="310"></a><a name="3.1.0"></a>3.1.0
 * Varsayılan Responsecontinuationtokenlimitınkb değerini 1kb olarak ayarlayın. Varsayılan olarak, uzun üstbilgileri önlemek için bunu 1 KB 'lık 'ye kadık (node. js ' nin genel üst bilgi boyutu sınırı vardır). Bir Kullanıcı bu alanı daha uzun üst bilgiler için izin verecek şekilde ayarlayabilir, bu da arka ucun sorgu yürütmesini iyileştirmenize yardımcı olabilir.
 * Disablessldoğrulaması 'nı kaldırın. Bu seçeneğin [#388](https://github.com/Azure/azure-cosmos-js/pull/388) açıklanan yeni alternatifleri vardır
 
-### <a name=""></a><a name="3.0.4"/>3.0.4</a>
+### <a name="304"></a><a name="3.0.4"></a>3.0.4
 * Initialheaders 'in bölüm anahtarı üst bilgisini açıkça ayarlamaya izin ver
 * Gereksiz dosyaların yayımlanmasını engellemek için Package. JSON # dosyalarını kullanın
 * Daha eski node + V8 sürümünde yönlendirme Haritası sıralama hatasını çözme
 * Kullanıcı kısmi yeniden deneme seçenekleri sağlarsa hatayı düzeltir
 
-### <a name=""></a><a name="3.0.3"/>3.0.3</a>
+### <a name="303"></a><a name="3.0.3"></a>3.0.3
 * WebPack 'in gerektir ile çağrılan modülleri çözmesini engelle
 
-### <a name=""></a><a name="3.0.2"/>3.0.2</a>
+### <a name="302"></a><a name="3.0.2"></a>3.0.2
 * , RUs 'in toplam sorgu için her zaman 0 olarak bildirildiği, uzun bir bekleyen hatayı düzeltir
 
-### <a name=""></a><a name="3.0.0"/>3.0.0</a>
+### <a name="300"></a><a name="3.0.0"></a>3.0.0
 
 🎉 v3 sürümü! birçok yeni özellik, hata düzeltmesi ve birkaç Son değişiklik 🎉. Bu sürümün birincil amaçları:
 
@@ -211,30 +211,30 @@ Her zaman en görünür değişiklikler değildir, ancak ekibimizin daha hızlı
 * Enable noUnusedLocals ve noUnusedParameters (#275)
 * CI derlemeler için Azure Pipelines YAML (#298)
 
-### <a name=""></a><a name="2.1.5"/>2.1.5</a>
+### <a name="215"></a><a name="2.1.5"></a>2.1.5
 * Kod değişikliği yok. 2.1.4 paketine bazı ek dosyaların dahil edildiği bir sorunu düzeltir.
 
-### <a name=""></a><a name="2.1.4"/>2.1.4</a>
+### <a name="214"></a><a name="2.1.4"></a>2.1.4
 * Yeniden deneme ilkesi içinde bölgesel yük devretmeyi Düzeltme
 * ChangeFeed hasMoreResults özelliğini düzeltir
 * Geliştirme bağımlılığı güncelleştirmeleri
 * Policheckdışlamalar. txt ekleyin
 
-### <a name=""></a><a name="2.1.3"/>2.1.3</a>
+### <a name="213"></a><a name="2.1.3"></a>2.1.3
 * Dizeden sayıya _ts türü Değiştir
 * Varsayılan dizin oluşturma testlerini çözme
 * Arka bağlantı noktası uniqueKeyPolicy-v2
 * Tanıtım ve tanıtım hata ayıklama düzeltmeleri
 
-### <a name=""></a><a name="2.1.2"/>2.1.2</a>
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 * V3 dalından geri bağlantı için düzeltme sunma
 * ExecuteNext () türü imzasında hata giderme
 * Typo düzeltmeleri
 
-### <a name=""></a><a name="2.1.1"/>2.1.1</a>
+### <a name="211"></a><a name="2.1.1"></a>2.1.1
 * Derleme yeniden yapılandırma. Derleme zamanında SDK sürümünün çekmesini sağlar.
 
-### <a name=""></a><a name="2.1.0"/>2.1.0</a>
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 #### <a name="new-features"></a>Yeni Özellikler
 * Değişiklik akışı desteği eklendi (#196)
 * Dizin oluşturma için MultiPolygon DataType eklendi (#191)
@@ -247,76 +247,76 @@ Her zaman en görünür değişiklikler değildir, ancak ekibimizin daha hızlı
 * TypeScript tüketim için tümleştirme testi ekleme (#199)
 * Doğrudan GitHub 'dan yüklemeyi etkinleştir (#194)
 
-### <a name=""></a><a name="2.0.5"/>2.0.5</a>
+### <a name="205"></a><a name="2.0.5"></a>2.0.5
 * Düğüm Aracısı türü için arabirim ekler. TypeScript kullanıcılarının artık bağımlılık olarak yüklenmesi gerekmez @types/node
 * Tercih edilen konumlar artık düzgün şekilde kabul edilir
 * Katkıda bulunan geliştirici belgelerine yönelik iyileştirmeler
 * Çeşitli yazım hatası düzeltmeleri
 
-### <a name=""></a><a name="2.0.4"/>2.0.4</a>
+### <a name="204"></a><a name="2.0.4"></a>2.0.4
 * 2.0.3 içinde tanıtılan düzeltme türü tanım sorunu
 
-### <a name=""></a><a name="2.0.3"/>2.0.3</a>
+### <a name="203"></a><a name="2.0.3"></a>2.0.3
 * `big-integer`Bağımlılığı kaldır
 * Asyncıtik tür için başvuru yönergelerine geçin. TypeScript kullanıcıları artık "lib" ayarını özelleştirmek zorunda değildir.
 * Typo düzeltmeleri
 
-### <a name=""></a><a name="2.0.2"/>2.0.2</a>
+### <a name="202"></a><a name="2.0.2"></a>2.0.2
 * Benioku bağlantılarını çözme
 
-### <a name=""></a><a name="2.0.1"/>2.0.1</a>
+### <a name="201"></a><a name="2.0.1"></a>2.0.1
 * Yeniden deneme arabirimi uygulamasını onarma
 
-### <a name=""></a><a name="2.0.0"/>2.0.0</a>
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 * JavaScript SDK 'sının 2.0.0 sürümü
 * Çok bölgeli yazma desteği eklendi.
 
-### <a name=""></a><a name="2.0.0-3"/>2.0.0-3</a>
+### <a name="200-3"></a><a name="2.0.0-3"></a>2.0.0-3
 * Genel önizleme için JavaScript SDK 'sının 2.0.0 sürümü.
 * En üst düzey CosmosClient ve yöntemlerle ilgili veritabanı, kapsayıcı ve öğe sınıflarında bölünen yeni nesne modeli. 
 * [Taahhüt](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises)desteği. 
 * SDK, TypeScript 'e dönüştürüldü.
 
-### <a name=""></a><a name="1.14.4"/>1.14.4</a>
+### <a name="1144"></a><a name="1.14.4"></a>1.14.4
 * NPM belgeleri düzeltildi.
 
-### <a name=""></a><a name="1.14.3"/>1.14.3</a>
+### <a name="1143"></a><a name="1.14.3"></a>1.14.3
 * Bağlantı sorunlarında varsayılan yeniden denemeler için destek eklendi.
 * Koleksiyon değişikliği akışını okuma desteği eklendi.
 * Zaman zaman "okuma oturumu kullanılamıyor" hatası veren sabit oturum tutarlılığı hatası.
 * Sorgu ölçümleri için destek eklendi.
 * Değiştirilen http aracısının bağlantı sayısı üst sınırı.
 
-### <a name=""></a><a name="1.14.2"/>1.14.2</a>
+### <a name="1142"></a><a name="1.14.2"></a>1.14.2
 * Belgeler, Azure DocumentDB yerine Azure Cosmos DB başvuracak şekilde güncelleştirildi.
 * ConnectionPolicy içindeki proxyUrl ayarı için destek eklendi.
 
-### <a name=""></a><a name="1.14.1"/>1.14.1</a>
+### <a name="1141"></a><a name="1.14.1"></a>1.14.1
 * Büyük/küçük harfe duyarlı dosya sistemleri için küçük bir çözüm.
 
-### <a name=""></a><a name="1.14.0"/>1.14.0</a>
+### <a name="1140"></a><a name="1.14.0"></a>1.14.0
 * Oturum tutarlılığı için destek ekler.
 * Bu SDK sürümü, [Azure Cosmos DB öykünücü](https://aka.ms/cosmosdb-emulator)'un en son sürümünü gerektirir.
 
-### <a name=""></a><a name="1.13.0"/>1.13.0</a>
+### <a name="1130"></a><a name="1.13.0"></a>1.13.0
 * Redaked çapraz bölüm sorgularını Böl.
 * Baştaki ve sondaki eğik çizgi (ve karşılık gelen testler) ile kaynak bağlantısı için destekler.
 
-### <a name=""></a><a name="1.12.2"/>1.12.2</a>
+### <a name="1122"></a><a name="1.12.2"></a>1.12.2
 *    NPM belgeleri düzeltildi.
 
-### <a name=""></a><a name="1.12.1"/>1.12.1</a>
+### <a name="1121"></a><a name="1.12.1"></a>1.12.1
 * Özel Unicode karakterlerine (LS, PS) sahip olan executeStoredProcedure içindeki bir hata düzeltildi.
 * Bölüm anahtarında Unicode karakterlerle belge işlemede hata düzeltildi.
 * Ad medyası ile koleksiyon oluşturmak için sabit destek. GitHub sorunu #114.
 * İzin yetkilendirme belirteci için sabit destek. GitHub sorunu #178.
 
-### <a name=""></a><a name="1.12.0"/>1.12.0</a>
+### <a name="1120"></a><a name="1.12.0"></a>1.12.0
 * Tutarlık ön eki olarak adlandırılan yeni bir [tutarlılık düzeyi](consistency-levels.md) için destek eklendi.
 * UriFactory için destek eklendi.
 * Unicode desteği hatası düzeltildi. GitHub sorunu #171.
 
-### <a name=""></a><a name="1.11.0"/>1.11.0</a>
+### <a name="1110"></a><a name="1.11.0"></a>1.11.0
 * Toplama sorguları (COUNT, MIN, MAX, SUM ve AVG) için destek eklendi.
 * Çapraz bölüm sorguları için paralellik derecesini denetleme seçeneği eklendi.
 * Azure Cosmos DB öykünücüsüyle çalışırken TLS doğrulamasını devre dışı bırakma seçeneği eklendi.
@@ -324,87 +324,87 @@ Her zaman en görünür değişiklikler değildir, ancak ekibimizin daha hızlı
 * Tek bölümlü koleksiyon için devamlılık belirteci hatası düzeltildi. GitHub sorunu #107.
 * Tek param olarak 0 işlenirken executeStoredProcedure hatası düzeltildi. GitHub sorunu #155.
 
-### <a name=""></a><a name="1.10.2"/>1.10.2</a>
+### <a name="1102"></a><a name="1.10.2"></a>1.10.2
 * SDK sürümünü dahil etmek için sabit Kullanıcı Aracısı üst bilgisi.
 * Küçük kod temizleme.
 
-### <a name=""></a><a name="1.10.1"/>1.10.1</a>
+### <a name="1101"></a><a name="1.10.1"></a>1.10.1
 * Öykünücüyü hedeflemek için SDK kullanılırken TLS doğrulaması devre dışı bırakılıyor (hostname = localhost).
 * Saklı yordam yürütülürken betik günlüğü tutmayı etkinleştirme desteği eklendi.
 
-### <a name=""></a><a name="1.10.0"/>1.10.0</a>
+### <a name="1100"></a><a name="1.10.0"></a>1.10.0
 * Çapraz bölüm Paralel sorguları için destek eklendi.
 * Bölümlenmiş koleksiyonlar için üst/sıra sorgularına yönelik destek eklendi.
 
-### <a name=""></a><a name="1.9.0"/>1.9.0</a>
+### <a name="190"></a><a name="1.9.0"></a>1.9.0
 * Kısıtlanmış istekler için yeniden deneme ilkesi desteği eklendi. (Kısıtlanan istekler çok büyük bir istek hızı alıyor, hata kodu 429.) Varsayılan olarak Azure Cosmos DB, 429 hata kodu ile karşılaşıldığında her bir istek için dokuz kez yeniden dener ve yanıt üst bilgisinde retryAfter saati belirlenir. Yeniden denemeler arasında sunucu tarafından döndürülen retryAfter süresini yoksaymak istiyorsanız, artık, ConnectionPolicy nesnesindeki RetryOptions özelliğinin bir parçası olarak sabit bir yeniden deneme aralığı zaman ayarlanabilir. Azure Cosmos DB, kısıtlanmış olan her istek için en fazla 30 saniye bekler (yeniden deneme sayısı ne olursa olsun) ve 429 hata koduyla yanıtı döndürür. Bu zaman, ConnectionPolicy nesnesindeki RetryOptions özelliğinde de geçersiz kılınabilir.
 * Cosmos DB, kısıtlama yeniden deneme sayısını ve isteğin yeniden denemeler arasında bekleyeceği kümülatif süreyi belirtmek için her istekteki yanıt üst bilgileri olarak x-MS-azaltma-retry-Count ve x-MS-azaltma-retry-WAIT-Time-MS döndürür.
 * RetryOptions sınıfı eklenmiştir ve bu, varsayılan yeniden deneme seçeneklerinden bazılarını geçersiz kılmak için kullanılabilecek ConnectionPolicy sınıfında RetryOptions özelliğini kullanıma sunma.
 
-### <a name=""></a><a name="1.8.0"/>1.8.0</a>
+### <a name="180"></a><a name="1.8.0"></a>1.8.0
 * Çok bölgeli veritabanı hesapları için destek eklendi.
 
-### <a name=""></a><a name="1.7.0"/>1.7.0</a>
+### <a name="170"></a><a name="1.7.0"></a>1.7.0
 * Belgeler için yaşam süresi (TTL) özelliğine yönelik destek eklendi.
 
-### <a name=""></a><a name="1.6.0"/>1.6.0</a>
+### <a name="160"></a><a name="1.6.0"></a>1.6.0
 * [Bölümlenmiş koleksiyonlar](partition-data.md) ve [Kullanıcı tanımlı performans düzeyleri](performance-levels.md)uygulandı.
 
-### <a name=""></a><a name="1.5.6"/>1.5.6</a>
+### <a name="156"></a><a name="1.5.6"></a>1.5.6
 * Hatalı bir sonuçların bir Concat nedeniyle bağlantıların döndürülmediğinden düzeltilen RangePartitionResolver. resolveForRead hatası.
 
-### <a name=""></a><a name="1.5.5"/>1.5.5</a>
+### <a name="155"></a><a name="1.5.5"></a>1.5.5
 * Düzeltilen hashPartitionResolver resolveForRead (): hiçbir bölüm anahtarı, kayıtlı tüm bağlantıların bir listesini döndürmek yerine özel durum oluşturmadıysa.
 
-### <a name=""></a><a name="1.5.4"/>1.5.4</a>
+### <a name="154"></a><a name="1.5.4"></a>1.5.4
 * [#100](https://github.com/Azure/azure-documentdb-node/issues/100) -adanmış https Aracısı sorunu giderilir: genel aracıyı Azure Cosmos DB amacıyla değiştirmekten kaçının. LIB 'in tüm istekleri için adanmış bir aracı kullanın.
 
-### <a name=""></a><a name="1.5.3"/>1.5.3</a>
+### <a name="153"></a><a name="1.5.3"></a>1.5.3
 * Düzeltmeler [#81](https://github.com/Azure/azure-documentdb-node/issues/81) sorun-medya kimliklerinde düzgün şekilde işleme çizgileri.
 
-### <a name=""></a><a name="1.5.2"/>1.5.2 planlama</a>
+### <a name="152"></a><a name="1.5.2"></a>1.5.2 planlama
 * [#95](https://github.com/Azure/azure-documentdb-node/issues/95) -eventemitter dinleyicisi sızıntısı uyarısı sorununu düzeltir.
 
-### <a name=""></a><a name="1.5.1"/>1.5.1</a>
+### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * Sorun düzeltme [#92](https://github.com/Azure/azure-documentdb-node/issues/90) , büyük/küçük harfe duyarlı sistemler Için klasör karmasını karma olarak yeniden adlandırın.
 
-### <a name=""></a><a name="1.5.0"/>1.5.0</a>
+### <a name="150"></a><a name="1.5.0"></a>1.5.0
 * Karma & aralığı bölüm çözümleyicilerini ekleyerek parçalama desteğini uygulayın.
 
-### <a name=""></a><a name="1.4.0"/>1.4.0</a>
+### <a name="140"></a><a name="1.4.0"></a>1.4.0
 * Upsert uygulama. DocumentClient üzerinde yeni upsertXXX yöntemleri.
 
-### <a name=""></a><a name="1.3.0"/>1.3.0</a>
+### <a name="130"></a><a name="1.3.0"></a>1.3.0
 * Sürüm numaralarını diğer SDK 'lara hizalı olarak getirmek için atlandı.
 
-### <a name=""></a><a name="1.2.2"/>1.2.2</a>
+### <a name="122"></a><a name="1.2.2"></a>1.2.2
 * Soru-cevap sarmalayıcısı yeni depoya bölünür.
 * Npm kayıt defteri için paket dosyasına güncelleştir.
 
-### <a name=""></a><a name="1.2.1"/>1.2.1</a>
+### <a name="121"></a><a name="1.2.1"></a>1.2.1
 * KIMLIK tabanlı yönlendirmeyi uygular.
 * [#49](https://github.com/Azure/azure-documentdb-node/issues/49) sorunu düzeltmeler-geçerli özellik geçerli () yöntemiyle çakışıyor.
 
-### <a name=""></a><a name="1.2.0"/>1.2.0</a>
+### <a name="120"></a><a name="1.2.0"></a>1.2.0
 * Jeo-uzamsal dizin desteği eklendi.
 * Tüm kaynaklar için ID özelliğini doğrular. Kaynak kimlikleri,?,/, #,  &#47;&#47;, karakter içeremez veya boşlukla bitemez.
 * Yeni "Dizin dönüştürme ilerlemesi" üst bilgisini Resourcereslik 'e ekler.
 
-### <a name=""></a><a name="1.1.0"/>1.1.0</a>
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 * V2 dizin oluşturma ilkesini uygular.
 
-### <a name=""></a><a name="1.0.3"/>1.0.3</a>
+### <a name="103"></a><a name="1.0.3"></a>1.0.3
 * Çekirdek ve Promise SDK 'sında [#40](https://github.com/Azure/azure-documentdb-node/issues/40) uygulanmış eslint ve grönlama yapılandırması sorun.
 
-### <a name=""></a><a name="1.0.2"/>1.0.2</a>
+### <a name="102"></a><a name="1.0.2"></a>1.0.2
 * Sorun [#45](https://github.com/Azure/azure-documentdb-node/issues/45) -taahhüt sarmalayıcısı, hata içeren üst bilgi içermez.
 
-### <a name=""></a><a name="1.0.1"/>1.0.1</a>
+### <a name="101"></a><a name="1.0.1"></a>1.0.1
 * ReadConflicts, readConflictAsync ve queryConflicts ekleyerek çakışmaları sorgulama özelliği uygulandı.
 * API belgeleri güncelleştirildi.
 * [#41](https://github.com/Azure/azure-documentdb-node/issues/41) -Client. Createbelgetasync hatası verme.
 
-### <a name=""></a><a name="1.0.0"/>1.0.0</a>
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * GA SDK.
 
 ## <a name="release--retirement-dates"></a>Yayın & kullanımdan kaldırma tarihleri

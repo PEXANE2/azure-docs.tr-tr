@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 14eda137d386146d96b6b9aa54e1ed57021db19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c64835ced558727718690138c3e7a7666cf0809
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81432144"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167307"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault temel kavramlar
 
@@ -77,7 +77,7 @@ Geliştiriciler ayrıca anahtarları doğrudan API'lerini kullanarak yönetebili
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kasanızın güvenliğini sağlama](secure-your-key-vault.md)hakkında bilgi edinin.
+[Kasalarınızın güvenliğini](secure-your-key-vault.md)nasıl sağlayacağınızı öğrenin.
 
 <!--Image references-->
 [1]: ../media/key-vault-whatis/AzureKeyVault_overview.png

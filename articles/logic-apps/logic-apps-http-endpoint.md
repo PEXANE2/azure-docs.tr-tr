@@ -5,13 +5,13 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 6c6191936f76431bd4e7b6f1d4eff2074ce4b04d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.date: 05/28/2020
+ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141798"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170282"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps ' de HTTPS uç noktalarını kullanarak Logic Apps 'i çağırma, tetikleme veya iç içe geçme
 
@@ -28,7 +28,7 @@ Mantıksal uygulamanızın diğer hizmetlerden gelen istekleri alabilmesi için 
 
 Logic Apps 'e yeni başladıysanız, bkz. [Azure Logic Apps nedir](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -154,9 +154,6 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
   Bu değerler bitiş noktasının URL 'sindeki göreli bir yol üzerinden geçirilir. Ayrıca, tetikleyicinin beklediği [yöntemi açıkça seçmeniz](#select-method) gerekir. Sonraki bir eylemde, bu çıkışlara doğrudan başvurarak parametre değerlerini tetikleyici çıkışları olarak alabilirsiniz.
 
-> [!NOTE]
-> URL, "at" sembolünün () kullanılmasına izin verir **@** , ancak karma simgesini () değil **#** .
-
 <a name="get-parameters"></a>
 
 ### <a name="accept-values-through-get-parameters"></a>Parametreleri al aracılığıyla kabul et
@@ -217,6 +214,9 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
    * 2. konum:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
+> [!NOTE]
+> URI 'ye karma veya sterlin simgesini () eklemek istiyorsanız **#** bunun yerine bu kodlanmış sürümü kullanın:`%25%23`
+
 <a name="relative-path"></a>
 
 ### <a name="accept-values-through-a-relative-path"></a>Değerleri göreli bir yol üzerinden kabul et
@@ -260,6 +260,9 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
    Tarayıcı şu metinle bir yanıt döndürür:`Postal Code: 123456`
 
    ![İsteği geri çağırma URL 'sine gönderme yanıtı](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
+
+> [!NOTE]
+> URI 'ye karma veya sterlin simgesini () eklemek istiyorsanız **#** bunun yerine bu kodlanmış sürümü kullanın:`%25%23`
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Uç nokta URL 'SI aracılığıyla mantıksal uygulama çağırma
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b0d6221aaafe3ade70bc23ce4196a7b53c9474c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec1d02cefcdb443a74fab52496cd9428a852139f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424723"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169976"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure Key Vault bir sertifikayı ayarlama ve alma
 
@@ -67,7 +67,8 @@ Sertifikanın başarıyla oluşturulduğunu belirten iletiyi aldıktan sonra lis
 
 ![Sertifika Özellikleri](../media/certificates/quick-create-portal/current-version-hidden.png)
 
-"CER biçiminde Indir" veya "PFX/ped biçiminde Indir" düğmesine tıklayarak sertifikayı yükleyebilirsiniz. 
+## <a name="export-certificate-from-key-vault"></a>Sertifikayı Key Vault dışarı aktar
+"CER biçiminde Indir" veya "PFX/ped biçiminde Indir" düğmesine tıklayarak sertifikayı indirebilirsiniz. 
 
 ![Sertifika indirme](../media/certificates/quick-create-portal/current-version-shown.png)
 

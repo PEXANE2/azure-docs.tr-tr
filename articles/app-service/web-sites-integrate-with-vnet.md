@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 78b49b8b7e17f12d49825390a302e28a61e10d16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b7df06ea7ff07907a292bdcc32e66aafa44ae68
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770848"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170792"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağıyla tümleştirin
 
@@ -117,17 +117,17 @@ Ağ Geçidi için gerekli VNet tümleştirmesini eşleme ile kullanırsanız, bi
 
 1. Uygulamanızın bağlandığı VNet 'e bir eşleme bağlantısı ekleyin. Eşleme bağlantısını eklediğinizde **sanal ağ erişimine Izin ver** ' i etkinleştirin ve **Iletilen trafiğe izin ver** ' i seçin ve **ağ geçidi aktarımına izin verin**.
 1. Bağlı olduğunuz VNet 'e eşlenmekte olan VNet 'e bir eşleme bağlantısı ekleyin. Eşleme bağlantısını hedef VNet 'e eklediğinizde, **sanal ağ erişimine Izin ver** ' i etkinleştirin ve **Iletilen trafiğe izin ver** ' i seçin ve **uzak ağ geçitlerine izin**verin.
-1. Portalda > **Networking**ağ > **VNET tümleştirmesi** Kullanıcı arabirimine **App Service plan**bölümüne gidin. Uygulamanızın bağlandığı sanal ağı seçin. Yönlendirme bölümünde, uygulamanızın bağlı olduğu VNet ile ilişkilendirilen VNet 'in adres aralığını ekleyin.
+1. **App Service plan**  >  Portalda**ağ**  >  **VNET tümleştirmesi** Kullanıcı arabirimine App Service plan bölümüne gidin. Uygulamanızın bağlandığı sanal ağı seçin. Yönlendirme bölümünde, uygulamanızın bağlı olduğu VNet ile ilişkilendirilen VNet 'in adres aralığını ekleyin.
 
 ## <a name="manage-vnet-integration"></a>VNet tümleştirmesini yönetme
 
-VNet ile bağlanma ve bağlantı kesilmesi uygulama düzeyindedir. Birden çok uygulama genelinde VNet tümleştirmesini etkileyebilecek işlemler App Service plan düzeyidir. App > **ağ** > **VNET tümleştirme** portalından, VNET 'iniz hakkında ayrıntılı bilgi edinebilirsiniz. **App Service plan** > **ağı** > **VNET tümleştirme** portalındaki App Service plan düzeyinde benzer bilgiler görebilirsiniz.
+VNet ile bağlanma ve bağlantı kesilmesi uygulama düzeyindedir. Birden çok uygulama genelinde VNet tümleştirmesini etkileyebilecek işlemler App Service plan düzeyidir. App > **ağ**  >  **VNET tümleştirme** portalından, VNET 'iniz hakkında ayrıntılı bilgi edinebilirsiniz. **App Service plan**  >  **ağı**  >  **VNET tümleştirme** portalındaki App Service plan düzeyinde benzer bilgiler görebilirsiniz.
 
 VNet tümleştirme örneğinizin uygulama görünümünde gerçekleştirebileceğiniz tek işlem, uygulamanızın o anda bağlı olduğu VNet 'ten bağlantısını kesmesidir. Uygulamanızın VNet bağlantısını kesmek için **bağlantıyı kes**' i seçin. VNet bağlantısı kesildiğinde uygulamanız yeniden başlatılır. Bağlantı kesilmesi VNet 'i değiştirmez. Alt ağ veya ağ geçidi kaldırılmaz. Daha sonra sanal ortamınızı silmek istiyorsanız, öncelikle uygulamanızın VNet bağlantısını kesin ve içindeki kaynakları (örneğin, ağ geçitleri) silin.
 
 App Service planı VNet tümleştirmesi Kullanıcı arabirimi, App Service planınızdaki uygulamalar tarafından kullanılan tüm VNet tümleştirmelerini gösterir. Her VNet hakkındaki ayrıntıları görmek için ilgilendiğiniz sanal ağı seçin. Ağ Geçidi için gereken VNet tümleştirmesi için burada gerçekleştirebileceğiniz iki eylem vardır:
 
-* **Ağ eşitleme**: ağ eşitleme işlemi yalnızca ağ geçidine bağımlı VNET tümleştirme özelliği için kullanılır. Bir eşitleme ağı işleminin gerçekleştirilmesi, sertifikalarınızın ve ağ bilgilerinizin eşitlenmiş olmasını sağlar. VNet 'nizin DNS 'sini ekler veya değiştirirseniz, bir eşitleme ağı işlemi gerçekleştirin. Bu işlem, bu VNet 'i kullanan tüm uygulamaları yeniden başlatır.
+* **Ağ eşitleme**: ağ eşitleme işlemi yalnızca ağ geçidine bağımlı VNET tümleştirme özelliği için kullanılır. Bir eşitleme ağı işleminin gerçekleştirilmesi, sertifikalarınızın ve ağ bilgilerinizin eşitlenmiş olmasını sağlar. VNet 'nizin DNS 'sini ekler veya değiştirirseniz, bir eşitleme ağı işlemi gerçekleştirin. Bu işlem, bu VNet 'i kullanan tüm uygulamaları yeniden başlatır. Farklı aboneliklere ait bir uygulama ve VNET kullanıyorsanız bu işlem çalışmayacaktır.
 * **Rotalar ekleme**: yollar ekleme giden trafiği sanal ağınıza yönlendirir.
 
 ### <a name="gateway-required-vnet-integration-routing"></a>Ağ Geçidi-gerekli VNet tümleştirme yönlendirmesi

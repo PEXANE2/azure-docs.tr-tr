@@ -7,31 +7,31 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 4d96f28b98cccada2ac5c77589acc6df1430bb02
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a13b9339c55d4d70c19ce737e81f34106dd3d6f6
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700662"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168008"
 ---
-# <a name="event-delivery-with-managed-identity"></a>Yönetilen kimlikle olay teslimi
-Bu makalede, bir olay Kılavuzu konusu veya etki alanı için [yönetilen hizmet kimliğinin](../active-directory/managed-identities-azure-resources/overview.md) nasıl etkinleştirileceği açıklanır. Olayları, Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kullanın.
+# <a name="event-delivery-with-a-managed-identity"></a>Yönetilen bir kimlikle olay teslimi
+Bu makalede bir Azure Event Grid konusu veya etki alanı için [yönetilen hizmet kimliğinin](../active-directory/managed-identities-azure-resources/overview.md) nasıl etkinleştirileceği açıklanır. Olayları, Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kullanın.
 
 Bu makalede ayrıntılı olarak ele alınan adımlar aşağıda verilmiştir:
-1. Kimliği etkinleştirmek için, sistem tarafından atanan kimliğe sahip bir konu veya etki alanı oluşturun (veya) var olan bir konuyu veya etki alanını güncelleştirin. 
-2. Kimliği, hedef üzerinde uygun bir role (örnek: Service Bus veri gönderici) ekleyin (örnek: bir Service Bus kuyruğu)
-3. Olay abonelikleri oluştururken, kimlik kullanımının hedefe olay sunmaya olanak sağlayın. 
+1. Bir sistem tarafından atanan kimliğe sahip bir konu veya etki alanı oluşturun ya da kimliği etkinleştirmek için mevcut bir konuyu veya etki alanını güncelleştirin. 
+1. Kimliği, hedef üzerinde (örneğin, bir Service Bus kuyruğu) uygun bir role (örneğin, Service Bus veri gönderici) ekleyin.
+1. Olay abonelikleri oluşturduğunuzda, hedefe olayları iletmek için kimliğin kullanımını etkinleştirin. 
 
 ## <a name="create-a-topic-or-domain-with-an-identity"></a>Kimlik ile konu veya etki alanı oluşturma
 İlk olarak, bir konu veya sistem tarafından yönetilen kimliğe sahip bir etki alanı oluşturma konusuna bakalım.
 
-### <a name="using-azure-portal"></a>Azure portalını kullanma
-Bir konu/etki alanı için sistem tarafından atanan kimliği Azure portal oluştururken etkinleştirebilirsiniz. Aşağıdaki görüntüde, bir konu için sistem tarafından yönetilen kimliğin nasıl etkinleştirileceği gösterilmektedir. Temel olarak, konu oluşturma sihirbazının **Gelişmiş** sayfasında **sistem tarafından atanan kimliği etkinleştir** seçeneğini belirleyin. Bu seçeneği, etki alanı oluşturma sihirbazının **Gelişmiş** sayfasında da görürsünüz. 
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+Azure portal oluştururken bir konu veya etki alanı için sistem tarafından atanan kimliği etkinleştirebilirsiniz. Aşağıdaki görüntüde, bir konu için sistem tarafından yönetilen kimliğin nasıl etkinleştirileceği gösterilmektedir. Temel olarak, konu oluşturma sihirbazının **Gelişmiş** sayfasında **sistem tarafından atanan kimliği etkinleştir** seçeneğini belirleyin. Bu seçeneği, etki alanı oluşturma sihirbazının **Gelişmiş** sayfasında de görürsünüz. 
 
 ![Konu oluştururken kimliği etkinleştirin](./media/managed-service-identity/create-topic-identity.png)
 
-### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
-Ayrıca, sistem tarafından atanan kimliğe sahip bir konu veya etki alanı oluşturmak için Azure CLı 'yi de kullanabilirsiniz. `az eventgrid topic create`Komutunu `--identity` parametresi olarak ayarlanmış şekilde kullanın `systemassigned` . Bu parametre için bir değer belirtmezseniz, varsayılan değer `noidentity` kullanılır. 
+### <a name="use-the-azure-cli"></a>Azure CLI kullanma
+Ayrıca, sistem tarafından atanan bir kimlikle bir konu veya etki alanı oluşturmak için Azure CLı 'yi de kullanabilirsiniz. `az eventgrid topic create`Komutunu `--identity` parametresi olarak ayarlanmış şekilde kullanın `systemassigned` . Bu parametre için bir değer belirtmezseniz, varsayılan değer `noidentity` kullanılır. 
 
 ```azurecli-interactive
 # create a topic with a system-assigned identity
@@ -40,19 +40,19 @@ az eventgrid topic create -g <RESOURCE GROUP NAME> --name <TOPIC NAME> -l <LOCAT
 
 Benzer şekilde, `az eventgrid domain create` sistem tarafından yönetilen kimliğe sahip bir etki alanı oluşturmak için komutunu kullanabilirsiniz.
 
-## <a name="enable-identity-for-an-existing-topic-or-domain"></a>Mevcut konu veya etki alanı için kimliği etkinleştir
-Son bölümde, bir konu veya etki alanı oluştururken sistem tarafından yönetilen kimliği nasıl etkinleştireceğinizi öğrendiniz. Bu bölümde, mevcut bir konu veya etki alanı için sistem tarafından yönetilen kimliği nasıl etkinleştireceğinizi öğreneceksiniz. 
+## <a name="enable-an-identity-for-an-existing-topic-or-domain"></a>Mevcut konu veya etki alanı için bir kimlik etkinleştir
+Önceki bölümde, bir konu veya etki alanı oluştururken sistem tarafından yönetilen bir kimliği nasıl etkinleştireceğinizi öğrendiniz. Bu bölümde, var olan konu veya etki alanı için sistem tarafından yönetilen bir kimliği nasıl etkinleştireceğinizi öğreneceksiniz. 
 
-### <a name="using-azure-portal"></a>Azure portalını kullanma
-1. [Azure Portal](https://portal.azure.com) gidin
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+1. [Azure Portal](https://portal.azure.com)gidin.
 2. Arama çubuğundaki **olay Kılavuzu konularını** arayın.
 3. Yönetilen kimliği etkinleştirmek istediğiniz **konuyu** seçin. 
 4. **Kimlik** sekmesine geçin. 
 5. Kimliği etkinleştirmek için anahtarı açın. 
 
-    Event Grid etki alanı için kimliği etkinleştirmek üzere benzer adımları kullanabilirsiniz.
+Event Grid etki alanı için bir kimlik etkinleştirmek üzere benzer adımları kullanabilirsiniz.
 
-### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
+### <a name="use-the-azure-cli"></a>Azure CLI kullanma
 `az eventgrid topic update` `--identity` `systemassigned` Mevcut bir konu için sistem tarafından atanan kimliği etkinleştirmek üzere olarak ayarla komutunu kullanın. Kimliği devre dışı bırakmak istiyorsanız `noidentity` değer olarak belirtin. 
 
 ```azurecli-interactive
@@ -62,40 +62,40 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 
 Var olan bir etki alanını güncelleştirme komutu benzerdir ( `az eventgrid domain update` ).
 
-## <a name="supported-destinations-and-role-based-access-check-rbac-roles"></a>Desteklenen hedefler ve rol tabanlı erişim denetimi (RBAC) rolleri
-Olay kılavuzunuzun konusu veya etki alanı için kimliği etkinleştirdikten sonra Azure, Azure Active Directory (Azure AD) içinde otomatik olarak bir kimlik oluşturur. Konunun veya etki alanının olayları desteklenen hedeflere iletebilmesi için bu kimliği uygun RBAC rollerine ekleyin. Örneğin, olay Kılavuzu konusunun olayları bu ad alanındaki Olay Hub 'larına iletebilmesi için, bir Event Hubs ad alanı için **Azure Event Hubs Data sender** rolüne kimliği ekleyin.  
+## <a name="supported-destinations-and-rbac-roles"></a>Desteklenen hedefler ve RBAC rolleri
+Olay kılavuzunuzun konusu veya etki alanı için kimliği etkinleştirdikten sonra Azure, Azure Active Directory içinde otomatik olarak bir kimlik oluşturur. Bu kimliği uygun rol tabanlı erişim denetimi (RBAC) rollerine ekleyerek konunun veya etki alanının olayları desteklenen hedeflere iletebilmesini sağlayın. Örneğin, olay Kılavuzu konusunun olayları bu ad alanındaki Olay Hub 'larına iletebilmesi için, Azure Event Hubs ad alanı için **azure Event Hubs Data sender** rolüne kimliği ekleyin. 
 
-Şu anda Azure Event Grid, olayları aşağıdaki hedeflere iletmek için sistem tarafından atanan yönetilen kimlikle yapılandırılan konuları veya etki alanlarını destekler. Bu tabloda, konunun olayları iletebilmesi için kimliğin içinde olması gereken roller de sunulur.
+Şu anda Azure Event Grid, olayları aşağıdaki hedeflere iletmek için sistem tarafından atanan yönetilen kimlikle yapılandırılmış konuları veya etki alanlarını destekler. Bu tabloda, konunun olayları iletebilmesi için kimliğin içinde olması gereken roller de sunulur.
 
 | Hedef | RBAC rolü | 
 | ----------- | --------- | 
 | Service Bus kuyrukları ve konuları | [Veri Göndericisini Azure Service Bus](../service-bus-messaging/authenticate-application.md#built-in-rbac-roles-for-azure-service-bus) |
-| Olay hub'ı | [Azure Event Hubs veri gönderici](../event-hubs/authorize-access-azure-active-directory.md#built-in-rbac-roles-for-azure-event-hubs) | 
-| Blob depolama | [Depolama Blobu veri Katılımcısı](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
-| Kuyruk depolama |[Depolama kuyruğu veri Iletisi gönderici](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
+| Azure Event Hubs | [Azure Event Hubs veri gönderici](../event-hubs/authorize-access-azure-active-directory.md#built-in-rbac-roles-for-azure-event-hubs) | 
+| Azure Blob depolama | [Depolama Blobu veri Katılımcısı](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
+| Azure Kuyruk Depolama |[Depolama kuyruğu veri Iletisi gönderici](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
 
-## <a name="add-identity-to-rbac-roles-on-destinations"></a>Hedeflerdeki RBAC rollerine kimlik ekleme
+## <a name="add-an-identity-to-rbac-roles-on-destinations"></a>Hedeflerdeki RBAC rollerine bir kimlik ekleme
 Bu bölümde, konağınız veya etki alanınız için bir RBAC rolüne nasıl kimlik ekleneceği açıklanmaktadır. 
 
-### <a name="using-azure-portal"></a>Azure portalını kullanma
-Konunun/etki alanının olayları hedefe iletebilmesi için konuyu/etki alanı kimliğini uygun bir role atamak üzere **Azure Portal** kullanabilirsiniz. 
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+Konunun veya etki alanının olayları hedefe iletebilmesi için konuyu veya etki alanı kimliğini uygun bir role atamak üzere Azure portal kullanabilirsiniz. 
 
-Aşağıdaki örnek, bir kuyruk veya konu kaynağı içeren bir Service Bus **ad alanı** Için **Azure Service Bus veri gönderici** rolüne **msitesttopic** adlı bir olay Kılavuzu konusu için yönetilen bir kimlik ekler. Ad alanı düzeyinde role eklediğinizde, konu ad alanındaki tüm varlıklara olayları iletebilirler. 
+Aşağıdaki örnek, bir kuyruk veya konu kaynağı içeren bir Service Bus ad alanı için **Azure Service Bus veri gönderici** rolüne **msitesttopic** adlı bir olay Kılavuzu konusu için yönetilen bir kimlik ekler. Ad alanı düzeyinde role eklediğinizde, konu ad alanı içindeki tüm varlıklara olayları iletebilir. 
 
 1. [Azure portal](https://portal.azure.com) **Service Bus ad alanına** gidin. 
-2. Sol bölmedeki **Access Control** seçin. 
-3. **Rol ataması Ekle** bölümünde **Ekle** ' yi seçin. 
-4. **Rol ataması Ekle** sayfasında, aşağıdaki adımları uygulayın:
+1. Sol bölmedeki **Access Control** seçin. 
+1. **Rol ataması Ekle** bölümünde **Ekle** ' yi seçin. 
+1. **Rol ataması Ekle** sayfasında, aşağıdaki adımları uygulayın:
     1. Rolü seçin. Bu durumda, **veri gönderici Azure Service Bus**. 
-    2. Konağınız veya etki alanınız için **kimlik** seçin. 
-    3. yapılandırmayı kaydetmek için **Kaydet** ' i seçin.
+    1. Konağınız veya etki alanınız için **kimlik** seçin. 
+    1. Yapılandırmayı kaydetmek için **Kaydet** ' i seçin.
 
 Bu adımlar, tabloda bahsedilen diğer rollere bir kimlik eklemeye benzer. 
 
-### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
-Bu bölümdeki örnekte, bir RBAC rolüne kimlik eklemek için **Azure CLI** 'nin nasıl kullanılacağı gösterilmektedir. Örnek komutlar Event Grid konularına yöneliktir. Event Grid etki alanları için komutlar benzerdir. 
+### <a name="use-the-azure-cli"></a>Azure CLI kullanma
+Bu bölümdeki örnekte, bir RBAC rolüne kimlik eklemek için Azure CLı 'nın nasıl kullanılacağı gösterilmektedir. Örnek komutlar Event Grid konularına yöneliktir. Event Grid etki alanları için komutlar benzerdir. 
 
-#### <a name="get-principal-id-for-the-topics-system-identity"></a>Konunun sistem kimliği için sorumlu KIMLIĞI al 
+#### <a name="get-the-principal-id-for-the-topics-system-identity"></a>Konunun sistem kimliği için sorumlu KIMLIĞI al 
 İlk olarak, konunun sistem tarafından yönetilen kimliğin asıl KIMLIĞINI alın ve kimliği uygun rollere atayın.
 
 ```azurecli-interactive
@@ -103,7 +103,7 @@ topic_pid=$(az ad sp list --display-name "$<TOPIC NAME>" --query [].objectId -o 
 ```
 
 #### <a name="create-a-role-assignment-for-event-hubs-at-various-scopes"></a>Çeşitli kapsamlardaki Olay Hub 'ları için rol ataması oluşturma 
-Aşağıdaki CLı örneği, bir konunun kimliğini ad alanı düzeyinde veya Olay Hub 'ı düzeyinde **Azure Event Hubs veri gönderici** rolüne nasıl ekleneceğini gösterir. Rol atamasını ad alanında oluşturursanız, konu, bu ad alanındaki tüm olay hub 'larına olay iletebilir. Olay Hub 'ı düzeyinde oluşturursanız, konusu olayları yalnızca ilgili olay hub 'ına iletebilir. 
+Aşağıdaki CLı örneği, bir konunun kimliğini ad alanı düzeyinde veya Olay Hub 'ı düzeyinde **Azure Event Hubs veri gönderici** rolüne nasıl ekleneceğini gösterir. Rol atamasını ad alanı düzeyinde oluşturursanız, konu, bu ad alanındaki tüm olay hub 'larına olay iletebilir. Olay Hub 'ı düzeyinde bir rol ataması oluşturursanız, bu konu olayları yalnızca ilgili olay hub 'ına iletebilir. 
 
 
 ```azurecli-interactive
@@ -118,8 +118,8 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$names
 az role assignment create --role "$role" --assignee "$topic_pid" --scope "$eventhubresourceid" 
 ```
 
-#### <a name="create-a-role-assignment-for-service-bus-topic-at-various-scopes"></a>Çeşitli kapsamlardaki Service Bus konusu için rol ataması oluşturma 
-Aşağıdaki CLı örneği, bir konunun kimliğini ad alanı düzeyinde veya Service Bus konu düzeyinde **Azure Service Bus Data sender** rolüne nasıl ekleneceğini gösterir. Rol atamasını ad alanında oluşturursanız, olay Kılavuzu konusu ad alanı içindeki olayları (Service Bus kuyrukları veya konuları) iletebilirler. Service Bus kuyruğu veya konu düzeyinde oluşturursanız, olay Kılavuzu konusu yalnızca belirli bir Service Bus kuyruğu veya konusunun olaylarını iletebilir. 
+#### <a name="create-a-role-assignment-for-a-service-bus-topic-at-various-scopes"></a>Çeşitli kapsamlar üzerinde Service Bus konu başlığı için rol ataması oluşturma 
+Aşağıdaki CLı örneği, bir konunun kimliğini ad alanı düzeyinde veya Service Bus konu düzeyinde **Azure Service Bus Data sender** rolüne nasıl ekleneceğini gösterir. Rol atamasını ad alanı düzeyinde oluşturursanız, olay Kılavuzu konusu ad alanı içinde olayları tüm varlıklara (Service Bus kuyruklar veya konular) iletebilir. Service Bus kuyruğu veya konu düzeyinde bir rol ataması oluşturursanız, olay Kılavuzu konusu olayları yalnızca belirli bir Service Bus kuyruğuna veya konuya iletebilir. 
 
 ```azurecli-interactive
 role="Azure Service Bus Data Sender" 
@@ -133,20 +133,20 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$names
 az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbustopicresourceid" 
 ```
 
-## <a name="create-event-subscriptions-that-use-identity"></a>Kimlik kullanan olay abonelikleri oluşturma
+## <a name="create-event-subscriptions-that-use-an-identity"></a>Kimlik kullanan olay abonelikleri oluşturma
 Sistem tarafından yönetilen kimliğe sahip bir konuya veya etki alanına sahip olduktan sonra kimliği hedefteki uygun role ekledikten sonra, kimliği kullanan abonelikler oluşturmaya hazırsınız demektir. 
 
-### <a name="using-azure-portal"></a>Azure portalını kullanma
-Bir olay aboneliği oluştururken, **uç nokta ayrıntıları** bölümünde bir uç nokta için sistem tarafından atanan kimliğin kullanımını etkinleştirme seçeneği görüntülenir. 
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+Bir olay aboneliği oluşturduğunuzda, **uç nokta ayrıntıları** bölümünde bir uç nokta için sistem tarafından atanan kimliğin kullanımını etkinleştirme seçeneğini görürsünüz. 
 
-![Service Bus kuyruğu için olay aboneliği oluştururken kimliği etkinleştir](./media/managed-service-identity/service-bus-queue-subscription-identity.png)
+![Service Bus kuyruğu için olay aboneliği oluştururken kimliği etkinleştirin](./media/managed-service-identity/service-bus-queue-subscription-identity.png)
 
-Ayrıca, **ek özellikler** sekmesinde atılacak kullanım için kullanılacak sistem tarafından atanan kimliğin kullanılmasını da etkinleştirebilirsiniz. 
+Ayrıca, **ek özellikler** sekmesinde atılacak kullanım için kullanılacak sistem tarafından atanan bir kimlik kullanmayı da etkinleştirebilirsiniz. 
 
 ![Yok sayılma için sistem tarafından atanan kimliği etkinleştirme](./media/managed-service-identity/enable-deadletter-identity.png)
 
-### <a name="using-azure-cli---service-bus-queue"></a>Azure CLı-Service Bus kuyruğu kullanma 
-Bu bölümde, sistem tarafından atanan kimliğin Service Bus kuyruğuna olay teslim etmek üzere kullanımını etkinleştirmek için **Azure CLI** 'yi nasıl kullanacağınızı öğreneceksiniz. Kimliğin **Azure Service Bus veri gönderici** rolünün bir üyesi olması gerekir. Ayrıca, yük atılacak için kullanılan depolama hesabındaki **Depolama Blobu veri katılımcısı** rolünün bir üyesi olmalıdır. 
+### <a name="use-the-azure-cli---service-bus-queue"></a>Azure CLı-Service Bus kuyruğunu kullanma 
+Bu bölümde, bir Service Bus kuyruğuna olayları teslim etmek üzere sistem tarafından atanan kimliğin kullanımını etkinleştirmek için Azure CLı 'nın nasıl kullanılacağını öğrenirsiniz. Kimliğin **Azure Service Bus veri gönderici** rolünün bir üyesi olması gerekir. Ayrıca, yük atılacak için kullanılan depolama hesabındaki **Depolama Blobu veri katılımcısı** rolünün bir üyesi olmalıdır. 
 
 #### <a name="define-variables"></a>Değişkenleri tanımlama
 İlk olarak, CLı komutunda kullanılacak aşağıdaki değişkenlerin değerlerini belirtin. 
@@ -161,8 +161,8 @@ queueid=$(az servicebus queue show --namespace-name <SERVICE BUS NAMESPACE NAME>
 sb_esname = "<Specify a name for the event subscription>" 
 ```
 
-#### <a name="create-an-event-subscription-using-managed-identity-for-delivery"></a>dağıtım için yönetilen kimlik kullanarak bir olay aboneliği oluşturma 
-Bu örnek komut, uç nokta türü **Service Bus kuyruğuna**ayarlanmış bir olay Kılavuzu konusu için bir olay aboneliği oluşturur. 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Dağıtım için yönetilen bir kimlik kullanarak olay aboneliği oluşturma 
+Bu örnek komut, **Service Bus kuyruğu**olarak ayarlanmış bir uç nokta türü olan Event Grid konusu için bir olay aboneliği oluşturur. 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -173,8 +173,8 @@ az eventgrid event-subscription create
     -n $sb_esname 
 ```
 
-#### <a name="create-an-event-subscription-using-managed-identity-for-delivery-and-dead-lettering"></a>Dağıtım ve atılacak kullanım için yönetilen kimlik kullanarak bir olay aboneliği oluşturma
-Bu örnek komut, uç nokta türü **Service Bus kuyruğuna**ayarlanmış bir olay Kılavuzu konusu için bir olay aboneliği oluşturur. Ayrıca, atılacak kullanım için kullanılacak sistem tarafından yönetilen kimliği belirtir. 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery-and-dead-lettering"></a>Dağıtım ve atılacak kullanım için yönetilen kimlik kullanarak olay aboneliği oluşturma
+Bu örnek komut, **Service Bus kuyruğu**olarak ayarlanmış bir uç nokta türü olan Event Grid konusu için bir olay aboneliği oluşturur. Ayrıca, sistem tarafından yönetilen kimliğin, atılacak kullanım için kullanılacağını belirtir. 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -190,8 +190,8 @@ az eventgrid event-subscription create
     -n $sb_esnameq 
 ```
 
-### <a name="azure-cli---event-hubs"></a>Azure CLı-Event Hubs 
-Bu bölümde, bir olay hub 'ına olayları teslim etmek üzere sistem tarafından atanan kimliğin kullanımını etkinleştirmek için **Azure CLI** 'yi nasıl kullanacağınızı öğreneceksiniz. Kimliğin **Azure Event Hubs veri gönderici** rolünün bir üyesi olması gerekir. Ayrıca, yük atılacak için kullanılan depolama hesabındaki **Depolama Blobu veri katılımcısı** rolünün bir üyesi olmalıdır. 
+### <a name="use-the-azure-cli---event-hubs"></a>Azure CLı-Event Hubs kullanma 
+Bu bölümde, bir olay hub 'ına olayları teslim etmek üzere sistem tarafından atanan kimliğin kullanımını etkinleştirmek için Azure CLı 'nın nasıl kullanılacağını öğrenirsiniz. Kimliğin **Azure Event Hubs veri gönderici** rolünün bir üyesi olması gerekir. Ayrıca, yük atılacak için kullanılan depolama hesabındaki **Depolama Blobu veri katılımcısı** rolünün bir üyesi olmalıdır. 
 
 #### <a name="define-variables"></a>Değişkenleri tanımlama
 ```azurecli-interactive
@@ -203,8 +203,8 @@ hubid=$(az eventhubs eventhub show --name <EVENT HUB NAME> --namespace-name <NAM
 eh_esname = "<SPECIFY EVENT SUBSCRIPTION NAME>" 
 ```
 
-#### <a name="create-event-subscription-using-managed-identity-for-delivery"></a>dağıtım için yönetilen kimlik kullanarak olay aboneliği oluştur 
-Bu örnek komut, uç nokta türü **Event Hubs**olarak ayarlanmış bir olay Kılavuzu konusu için bir olay aboneliği oluşturur. 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Dağıtım için yönetilen bir kimlik kullanarak olay aboneliği oluşturma 
+Bu örnek komut, **Event Hubs**olarak ayarlanmış bir uç nokta türü olan Event Grid konusu için bir olay aboneliği oluşturur. 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -215,8 +215,8 @@ az eventgrid event-subscription create
     -n $sbq_esname 
 ```
 
-#### <a name="create-event-subscription-using-managed-identity-for-delivery--deadletter"></a>Dağıtım için yönetilen kimlik ve sahipsiz mektup kullanarak olay aboneliği oluştur 
-Bu örnek komut, uç nokta türü **Event Hubs**olarak ayarlanmış bir olay Kılavuzu konusu için bir olay aboneliği oluşturur. Ayrıca, atılacak kullanım için kullanılacak sistem tarafından yönetilen kimliği belirtir. 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery--deadletter"></a>Dağıtım için yönetilen bir kimlik ve sahipsiz mektup kullanarak olay aboneliği oluşturma 
+Bu örnek komut, **Event Hubs**olarak ayarlanmış bir uç nokta türü olan Event Grid konusu için bir olay aboneliği oluşturur. Ayrıca, sistem tarafından yönetilen kimliğin, atılacak kullanım için kullanılacağını belirtir. 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -232,8 +232,8 @@ az eventgrid event-subscription create
     -n $eh_esname 
 ```
 
-### <a name="azure-cli---azure-storage-queue"></a>Azure CLı-Azure depolama kuyruğu 
-Bu bölümde, bir Azure depolama kuyruğuna olayları teslim etmek üzere sistem tarafından atanan kimliğin kullanımını etkinleştirmek için **Azure CLI** 'yi nasıl kullanacağınızı öğreneceksiniz. Kimlik, depolama hesabındaki **Depolama Blobu veri katılımcısı** rolünün bir üyesi olmalıdır.
+### <a name="use-the-azure-cli---azure-storage-queue"></a>Azure CLı-Azure depolama kuyruğunu kullanma 
+Bu bölümde, Azure depolama kuyruğuna olayları teslim etmek üzere sistem tarafından atanan kimliğin kullanımını etkinleştirmek için Azure CLı 'yı nasıl kullanacağınızı öğreneceksiniz. Kimlik, depolama hesabındaki **Depolama Blobu veri katılımcısı** rolünün bir üyesi olmalıdır.
 
 #### <a name="define-variables"></a>Değişkenleri tanımlama  
 
@@ -251,7 +251,7 @@ queueid="$storageid/queueservices/default/queues/<QUEUE NAME>"
 sa_esname = "<SPECIFY EVENT SUBSCRIPTION NAME>" 
 ```
 
-#### <a name="create-event-subscription-using-managed-identity-for-delivery"></a>Dağıtım için yönetilen kimlik kullanarak olay aboneliği oluştur 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Dağıtım için yönetilen bir kimlik kullanarak olay aboneliği oluşturma 
 
 ```azurecli-interactive
 az eventgrid event-subscription create 
@@ -262,7 +262,7 @@ az eventgrid event-subscription create
     -n $sa_esname 
 ```
 
-#### <a name="create-event-subscription-using-managed-identity-for-delivery--deadletter"></a>Dağıtım için yönetilen kimlik ve sahipsiz mektup kullanarak olay aboneliği oluştur 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery--deadletter"></a>Dağıtım için yönetilen bir kimlik ve sahipsiz mektup kullanarak olay aboneliği oluşturma 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)

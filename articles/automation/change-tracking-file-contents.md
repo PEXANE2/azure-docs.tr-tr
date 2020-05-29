@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6afa3d4d2d62541a51c3bab85843d41b48397100
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2738605680a7035e4e2da95b0f53b4d5e227304b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118768"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170299"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok yönetimi
 
@@ -22,6 +22,10 @@ Bu makaledeki yordamları kullanmadan önce, aşağıdaki tekniklerden birini ku
 * [Azure portal göz atarak Değişiklik İzleme ve envanteri etkinleştirin](automation-enable-changes-from-browse.md)
 * [Runbook’tan Değişiklik İzleme ve Stok özelliğini etkinleştirme](automation-enable-changes-from-runbook.md)
 * [Azure VM’den Değişiklik İzleme ve Stok özelliğini etkinleştirme](automation-enable-changes-from-vm.md)
+
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Dağıtımın kapsamını sınırlandırma
+
+Değişiklik İzleme ve stok, değişiklikleri almak üzere bilgisayarları hedeflemek için çalışma alanındaki kapsam yapılandırmasını kullanır. Daha fazla bilgi için bkz. [Limit değişiklik izleme ve Inventory Deployment Scope](automation-scope-configurations-change-tracking.md).
 
 ## <a name="track-files"></a>Dosyaları izle
 
@@ -165,5 +169,8 @@ Bu örneği bir değişiklik üzerinde uyarı oluşturma adımlarını tartışm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* Kapsam konfigürasyonları hakkında daha fazla bilgi için bkz. [Limit değişiklik izleme and Inventory Deployment Scope](automation-scope-configurations-change-tracking.md).
 * Log Analytics çalışma alanınızda depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [Azure izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md).
+* Dağıtımlar ile tamamlandıysa, [değişiklik izleme ve envanter için çalışma alanının Otomasyon hesabından bağlantısını](automation-unlink-workspace-change-tracking.md)kaldırma bölümüne bakın.
+* VM 'lerinizi Değişiklik İzleme ve envanterden silmek için bkz. [VM 'leri değişiklik izleme ve envanterden kaldırma](automation-remove-vms-from-change-tracking.md).
 * Özellik hatalarını gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md).

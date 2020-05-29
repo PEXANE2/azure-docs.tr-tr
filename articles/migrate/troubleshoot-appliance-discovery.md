@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4559cd40bf9482ece80d0b6123ca73b7a0cbb3aa
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677334"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170911"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -31,7 +31,7 @@ Gereç destek gereksinimlerini [gözden geçirin](migrate-appliance.md) .
 2. Dağıtım hala başarısız olursa ve OVF dosyasını dağıtmak için VMware vSphere istemcisini kullanıyorsanız, vSphere Web istemcisi aracılığıyla dağıtmayı deneyin. Dağıtım hala başarısız olursa, farklı bir Web tarayıcısı kullanmayı deneyin.
 3. VSphere Web istemcisini kullanıyorsanız ve vCenter Server 6,5 veya 6,7 ' de dağıtmaya çalışıyorsanız, OVA 'yı doğrudan ESXi konağına dağıtmayı deneyin:
    - Web istemcisi (https://<*ana BILGISAYAR IP adresi*>/UI) Ile ESXi konağına doğrudan (vCenter Server yerine) bağlanın.
-   - **Ev** > **envanterinde**,**ovf şablonu**' nu Dağıt ' **ı seçin.** >  OVA 'ya gidin ve dağıtımı doldurun.
+   - **Ev**  >  **envanterinde**, **File**  >  **ovf şablonu**' nu Dağıt ' ı seçin. OVA 'ya gidin ve dağıtımı doldurun.
 4. Dağıtım hala başarısız olursa Azure geçiş desteği 'ne başvurun.
 
 ## <a name="cant-connect-to-the-internet"></a>İnternet 'e bağlanılamıyor
@@ -62,7 +62,7 @@ Tarih ve saat eşitleme (802) ile ilgili bir hata, sunucu saatinin beş dakikada
 
 ## <a name="unabletoconnecttoserver"></a>"UnableToConnectToServer"
 
-Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğesine bağlanamadıysanız. Hata ayrıntıları, iletiyi kabul edebilecek `https://\*servername*.com:9443/sdk` bir uç nokta dinleme olmadığını gösterir.
+Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğesine bağlanamadıysanız. Hata ayrıntıları, `https://\*servername*.com:9443/sdk` iletiyi kabul edebilecek bir uç nokta dinleme olmadığını gösterir.
 
 - En son gereç sürümünü çalıştırıp çalıştırmadığını denetleyin. Değilseniz, gereci [en son sürüme](https://docs.microsoft.com/azure/migrate/concepts-collector)yükseltin.
 - Sorun hala en son sürümde gerçekleşirse, Gereç belirtilen vCenter Server adını çözemeyebilir veya belirtilen bağlantı noktası yanlış olabilir. Varsayılan olarak, bağlantı noktası belirtilmemişse, toplayıcı 443 numaralı bağlantı noktası numarasına bağlanmayı dener.
@@ -135,7 +135,7 @@ Bu işe yaramazsa ve VMware sunucularını keşfederken:
 
 Bulunan VM 'Ler portalda görünmezse veya VM verileri güncel değilse, birkaç dakika bekleyin. Keşfedilen VM yapılandırma verilerinde yapılan değişikliklerin portalda görünmesi 30 dakika kadar sürer. Uygulama verilerinde değişikliklerin görünmesi birkaç saat sürebilir. Bu süreden sonra veri yoksa yenilemeyi şu şekilde deneyin
 
-1. **Sunucular** > **Azure geçişi sunucu değerlendirmesi**' nde, **genel bakış**' ı seçin.
+1. **Sunucular**  >  **Azure geçişi sunucu değerlendirmesi**' nde, **genel bakış**' ı seçin.
 2. **Yönet**altında **Aracı durumu**' yi seçin.
 3. **Aracıyı Yenile**' yi seçin.
 4. Yenileme işleminin tamamlanmasını bekleyin. Şimdi güncel bilgileri görmeniz gerekir.
@@ -151,7 +151,7 @@ Azure geçişi, Azure geçişi: Sunucu değerlendirmesi kullanılarak uygulama, 
 Tipik uygulama bulma hataları tabloda özetlenir. 
 
 **Hata** | **Sağlamak** | **Eylem**
---- | --- | --- | ---
+--- | --- | --- 
 10000: "sunucuda yüklü olan uygulamalar bulunamıyor". | Makine işletim sistemi Windows veya Linux değilse bu durum oluşabilir. | Yalnızca Windows/Linux için uygulama bulmayı kullanın.
 10001: "sunucu yüklü uygulamalar alınamıyor". | İç hata-gereç içindeki bazı dosyalar eksik. | Microsoft Desteği'ne başvurun.
 10002: "sunucu yüklü uygulamalar alınamıyor". | Gereç üzerindeki bulma Aracısı düzgün çalışmıyor olabilir. | Sorun, 24 saat içinde kendiliğinden çözümlenmezse desteğe başvurun.
@@ -170,8 +170,8 @@ Tipik uygulama bulma hataları tabloda özetlenir.
 9010: "sunucu yüklü uygulamalar alınamıyor". | Bir iç hata olabilir.  | TF sorun, 24 saat içinde kendiliğinden çözümlenmiyor, desteğe başvurun.
 9011: "konuğa indirilecek dosya Konuk sanal makinede bulunamadı" | Sorun, bir iç hata nedeniyle oluşabilir. | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
 9012: "sonuç dosyası içeriği boş." | Sorun, bir iç hata nedeniyle oluşabilir. | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
-9013: "VMware VM 'de her oturum açma işlemi için yeni bir geçici profil oluşturulur" | VM 'de her oturum açma için yeni bir geçici profil oluşturulur | Konuk VM kimlik bilgilerinde belirtilen kullanıcı adının UPN biçiminde olduğundan emin olun.
-9015: "vCenter üzerinde yetersiz ayrıcalıklar nedeniyle VMware VM 'lerine bağlanılamıyor" | VCenter Kullanıcı hesabında Konuk Işlemler rolü etkin değil | VCenter Kullanıcı hesabında Konuk Işlemleri rolünün etkinleştirildiğinden emin olun.
+9013: "VMware VM 'de her oturum açma işlemi için yeni bir geçici profil oluşturulur" | VM 'de her oturum açma için yeni bir geçici profil oluşturulur. | Konuk VM kimlik bilgilerinde belirtilen kullanıcı adının UPN biçiminde olduğundan emin olun. Konuk VM kimlik bilgilerinde belirtilen kullanıcı adını UPN biçiminde değiştirdikten sonra, Gereç üzerindeki Görev Yöneticisi ' nde, yeni bulmayı bulmak için Microsoft Azure VMWare bulma hizmetini yeniden başlatın.
+9015: "vCenter üzerinde yetersiz ayrıcalıklar nedeniyle VMware VM 'lerine bağlanılamıyor" | Konuk Işlemler rolü vCenter Kullanıcı hesabında etkin değil. | VCenter Kullanıcı hesabında Konuk Işlemleri rolünün etkinleştirildiğinden emin olun.
 9016: "Konuk işlem Aracısı veri dışında, VMware VM 'lerine bağlanılamıyor" | VMware araçları düzgün yüklenmemiş veya güncel değil. | VMware araçlarının düzgün bir şekilde yüklendiğinden ve güncel olduğundan emin olun.
 9017: "bulunan meta verileri içeren dosya VM 'de bulunamadı." | Sorun, bir iç hata nedeniyle oluşabilir. | Bir çözüm için Microsoft Desteği başvurun.
 9018: "PowerShell, Konuk VM 'lerde yüklü değil." | PowerShell, Konuk VM 'de kullanılamıyor. | PowerShell 'i Konuk VM 'ye yükler.
@@ -182,7 +182,7 @@ Tipik uygulama bulma hataları tabloda özetlenir.
 9023: "SystemRoot ortam değişkeni değeri boş." | Bilinmiyor | Lütfen Microsoft Desteği başvurun.
 9024: "TEMP ortam değişkeni değeri boş." | Bilinmiyor | Lütfen Microsoft Desteği başvurun.
 9025: "PowerShell, Konuk VM 'lerde bozuk." | Bilinmiyor | PowerShell 'i Konuk VM 'de yeniden yükleyin ve PowerShell 'in Konuk VM 'de çalıştırıp çalıştırabileceğinizden emin olun.
-8084: "VMware hatası nedeniyle uygulamalar bulunamıyor: <Exception from VMware>" | Azure geçişi gereci, uygulamaları bulmaya yönelik VMware API 'Lerini kullanır. Bu sorun, uygulamalar bulunmaya çalışılırken vCenter Server tarafından bir özel durum oluşturulursa meydana gelebilir. VMware 'den hata iletisi, portalda gösterilen hata iletisinde görüntülenir. | [VMware belgelerindeki](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)iletiyi arayın ve onarmak için adımları izleyin. Bu hatayı düzeltemedi, Microsoft destek 'e başvurun.
+8084: "VMware hatası nedeniyle uygulamalar bulunamıyor:  <Exception from VMware> " | Azure geçişi gereci, uygulamaları bulmaya yönelik VMware API 'Lerini kullanır. Bu sorun, uygulamalar bulunmaya çalışılırken vCenter Server tarafından bir özel durum oluşturulursa meydana gelebilir. VMware 'den hata iletisi, portalda gösterilen hata iletisinde görüntülenir. | [VMware belgelerindeki](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)iletiyi arayın ve onarmak için adımları izleyin. Bu hatayı düzeltemedi, Microsoft destek 'e başvurun.
 
 
 

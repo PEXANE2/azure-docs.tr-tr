@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79474d85d9b2349c79aeff0c33ffed9afad690fb
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262249"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169769"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal kullanarak cihaz kimliklerini yönetme
 
@@ -27,12 +27,14 @@ Bu makalede:
 - [Azure Active Directory içinde cihaz kimliği yönetimine giriş](overview.md) hakkında bilgi sahibi olduğunuzu varsayar.
 - Azure AD portalını kullanarak cihaz kimliklerinizi yönetme hakkında bilgi sağlar
 
+![Azure portal tüm cihazlar görünümü](./media/device-management-azure-portal/all-devices-azure-portal.png)
+
 ## <a name="manage-device-identities"></a>Cihaz kimliklerini yönetme
 
 Azure AD portalı, cihaz kimliklerinizi yönetmek için size merkezi bir yer sağlar. Bu yere [doğrudan bir bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) kullanarak ulaşabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory** > **cihazlara**gidin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. **Azure Active Directory**  >  **cihazlara**gidin.
 
 **Cihazlar** sayfası şunları yapmanızı sağlar:
 
@@ -47,7 +49,7 @@ Azure AD portalını kullanarak cihaz kimliklerinizi yönetmek için, cihazları
 
 Cihaz ayarları sayfası, cihaz kimlikleriyle ilgili ayarları yapılandırmanıza olanak sağlar:
 
-![Intune cihazını yönetme](./media/device-management-azure-portal/21.png)
+![Azure AD ile ilgili cihaz ayarları](./media/device-management-azure-portal/device-settings-azure-portal.png)
 
 - **Kullanıcılar cihazları Azure AD 'ye katabilir** -Bu ayar, CIHAZLARıNı Azure AD 'ye katılmış cihazlar olarak kaydedebilen kullanıcıları seçmenize olanak sağlar. Varsayılan değer **Tümü**' dir.
 
@@ -82,13 +84,9 @@ Her iki seçenekten de şunları yapabilirsiniz:
 - Kayıtlı ve birleştirilmiş cihazlara ayrıntılı bir genel bakış sağlar
 - Ortak cihaz yönetim görevleri gerçekleştirmenizi sağlar
 
-![Tüm cihazlar](./media/device-management-azure-portal/51.png)
-
 >[!TIP]
 >
 >* KAYıTLı sütun altında "bekliyor" durumuna sahip "hibrit Azure AD 'ye katılmış" bir cihaz görürseniz, cihazın Azure AD Connect 'ten eşitlendiğini ve istemciden kayıt tamamlamayı beklediğini gösterir. [Hibrit Azure AD JOIN uygulamanızın nasıl planlanacağı](hybrid-azuread-join-plan.md)hakkında daha fazla bilgi edinin. Daha fazla bilgi için, [cihazlar sık sorulan sorular](faq.md)makalesinde bulunabilir.
->
->   ![Bekleyen cihazlar](./media/device-management-azure-portal/75.png)
 >
 >* Bazı iOS cihazlarında, kesme işaretleri içeren cihaz adları, kesme işareti gibi farklı karakterler kullanabilir. Bu nedenle, bu tür cihazları aramak biraz karmaşık değildir. arama sonuçlarını doğru şekilde görmüyorsanız, arama dizesinin eşleşen kesme işareti karakteri içerdiğinden emin olun.
 
@@ -97,7 +95,7 @@ Her iki seçenekten de şunları yapabilirsiniz:
 Genel yönetici veya bulut cihaz yöneticisi olarak, kayıtlı veya katılmış cihazları yönetebilirsiniz. Intune hizmet yöneticileri şunları yapabilir:
 
 - Cihazları güncelleştirme-örnekleri cihazları etkinleştirme/devre dışı bırakma gibi günlük işlemlerdir
-- Cihazları Sil – bir cihaz kullanımdan kaldırıldığında ve Azure AD 'de silinmeli
+- Cihazları Sil-bir cihaz kullanımdan kaldırıldığında ve Azure AD 'de silinmeli
 
 Bu bölüm, ortak cihaz kimlik yönetimi görevleri hakkında bilgi sağlar.
 
@@ -170,6 +168,27 @@ BitLocker anahtarlarını görüntülemek veya kopyalamak için, cihazın sahibi
 
 > [!NOTE]
 > Karma Azure AD 'ye katılmış Windows 10 cihazlarının sahibi yok. Bu nedenle, bir cihazı sahibine göre arıyorsanız ve bulamıyorsanız, cihaz KIMLIĞINE göre arama yapın.
+
+### <a name="device-list-filtering-preview"></a>Cihaz listesi filtrelemesi (Önizleme)
+
+Daha önce, cihaz listesini etkinliğe ve etkin duruma göre filtreleyebilirsiniz. Bu önizleme artık cihazlar listesini bir cihazda aşağıdaki özniteliklere göre filtrelemenize olanak tanır:
+
+- Etkin durum
+- Uyumlu durum
+- Katılım türü (Azure AD 'ye katılmış, karma Azure AD 'ye katılmış, Azure AD kayıtlı)
+- Etkinlik zaman damgası
+- İşletim Sistemi
+- Cihaz türü (yazıcılar, güvenli VM 'Ler, paylaşılan cihazlar, kayıtlı cihazlar)
+
+**Tüm cihazlar** görünümünde önizleme filtreleme işlevini etkinleştirmek için:
+
+![Önizleme işlevselliğinin filtrelenmesini etkinleştir](./media/device-management-azure-portal/device-filter-preview-enable.png)
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. **Azure Active Directory**  >  **cihazlara**gidin.
+1. Görüntülenen başlığı seçin, **yeni cihaz filtreleme geliştirmelerini deneyin. Önizlemeyi etkinleştirmek için tıklayın.**
+
+Artık, **tüm cihazlar** görünümlarınıza **filtre ekleme** imkanına sahip olursunuz.
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 

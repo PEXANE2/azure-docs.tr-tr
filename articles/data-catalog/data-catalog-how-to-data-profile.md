@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 698da509be2f375925459bbdd4a35d21c6ff4407
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68950230"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171234"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri profili veri kaynakları
 
@@ -45,7 +45,7 @@ Veri varlıklarını kaydederken veri profillerinin dahil edilmesi, kullanıcıl
 > Ayrıca, verilerin bir uygulamayla nasıl tümleştirilebileceğini betimleyen bir varlığa belgeler ekleyebilirsiniz. Bkz. [veri kaynaklarını belgeleme](data-catalog-how-to-documentation.md).
 >
 
-<a name="howto"/>
+<a name="howto"></a>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Veri kaynağı kaydedilirken veri profili ekleme
 
@@ -57,7 +57,7 @@ Veri kaynaklarını kaydetme hakkında daha fazla bilgi edinmek için bkz. [veri
 
 ## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Veri profillerini içeren veri varlıklarının filtrelenmesi
 
-Bir veri profili `has:tableDataProfiles` `has:columnsDataProfiles` içeren veri varlıklarını bulmak için arama koşullarınızdan birini ekleyebilirsiniz.
+Bir veri profili içeren veri varlıklarını bulmak için `has:tableDataProfiles` `has:columnsDataProfiles` arama koşullarınızdan birini ekleyebilirsiniz.
 
 > [!NOTE]
 > Veri kaynağı kayıt aracında **veri profili Ekle** ' nin seçilmesi, hem tablo hem de sütun düzeyi profil bilgilerini içerir. Ancak, veri kataloğu API 'SI, veri varlıklarının yalnızca tek bir profil bilgileri kümesiyle kaydedilmesini sağlar.

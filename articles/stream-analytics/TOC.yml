@@ -9,14 +9,18 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: İş oluşturma - Azure portalı
-      href: stream-analytics-quick-create-portal.md
-    - name: İş oluşturma - PowerShell
-      href: stream-analytics-quick-create-powershell.md
-    - name: İş oluşturma - Visual Studio
-      href: stream-analytics-quick-create-vs.md
-    - name: İş oluşturma - Visual Studio Code
-      href: quick-create-vs-code.md
+    - name: Bir iş oluşturma
+      items:
+        - name: Azure portal
+          href: stream-analytics-quick-create-portal.md
+        - name: ARM şablonu
+          href: quick-create-azure-resource-manager.md
+        - name: PowerShell
+          href: stream-analytics-quick-create-powershell.md
+        - name: Visual Studio
+          href: stream-analytics-quick-create-vs.md
+        - name: Visual Studio Code
+          href: quick-create-vs-code.md
 - name: Öğreticiler
   items:
     - name: 1 - İş oluşturma / yönetme

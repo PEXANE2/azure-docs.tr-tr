@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cbfc5667fb35b8f807a3a806dda4647af10e9392
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fe98e04c37172dc6b91c86fab8200022ed860d4f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118220"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170112"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Blok Blobları için noktadan noktaya geri yüklemeyi etkinleştirin ve yönetin (Önizleme)
 
@@ -99,14 +99,19 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Geri yükleme işlemi gerçekleştirme
 
-Geri yükleme işlemini başlatmak için restore-AzStorageBlobRange komutunu çağırın ve geri yükleme noktasını UTC **Tarih saat** değeri olarak belirtin. Geri yüklenecek bir veya daha fazla BLOB aralığı belirtebilir veya depolama hesabındaki tüm kapsayıcılardaki tüm Blobları geri yüklemek için bir aralığı atlayabilirsiniz. Geri yükleme işleminin tamamlanması birkaç dakika sürebilir.
+Geri yükleme işlemini başlatmak için restore-AzStorageBlobRange komutunu çağırın ve geri yükleme noktasını UTC **Tarih saat** değeri olarak belirtin. Geri yüklemek için lexıgrafik aralıklarını belirtebilir veya depolama hesabındaki tüm kapsayıcılardaki tüm Blobları geri yüklemek için bir aralığı atlayabilirsiniz. Geri yükleme işlemi başına en fazla 10 lexıgraf aralığı desteklenir. Geri yükleme işleminin tamamlanması birkaç dakika sürebilir.
 
 Geri yüklenecek bir blob aralığı belirtirken aşağıdaki kuralları aklınızda bulundurun:
 
 - Başlangıç aralığı ve bitiş aralığı için belirtilen kapsayıcı deseninin en az üç karakter içermesi gerekir. Bir blob adından kapsayıcı adını ayırmak için kullanılan eğik çizgi (/), bu en düşük değere doğru sayılmaz.
-- Her geri yükleme işlemi için yalnızca bir Aralık belirtilebilir.
+- Geri yükleme işlemi başına en fazla 10 Aralık belirtilebilir.
 - Joker karakterler desteklenmez. Bunlar standart karakter olarak kabul edilir.
 - `$root` `$web` Geri yükleme işlemine geçirilen bir aralığa açıkça belirtilerek ve kapsayıcılardaki Blobları geri yükleyebilirsiniz. `$root`Ve `$web` kapsayıcıları yalnızca açık olarak belirtilmişse geri yüklenir. Diğer sistem kapsayıcıları geri yüklenemez.
+
+> [!IMPORTANT]
+> Geri yükleme işlemi gerçekleştirdiğinizde, Azure depolama, işlem süresince geri yüklenen aralıklardaki bloblarda veri işlemlerini engeller. Birincil konumda okuma, yazma ve silme işlemleri engellenir. Bu nedenle, Azure portal kapsayıcıları gibi işlemler geri yükleme işlemi devam ederken beklendiği gibi gerçekleştirilemeyebilir.
+>
+> Depolama hesabı coğrafi olarak çoğaltılırsa, ikincil konumdaki okuma işlemleri geri yükleme işlemi sırasında devam edebilir.
 
 ### <a name="restore-all-containers-in-the-account"></a>Hesaptaki tüm kapsayıcıları geri yükle
 
@@ -147,7 +152,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 ### <a name="restore-multiple-ranges-of-block-blobs"></a>Blok bloblarının birden çok aralığını geri yükleme
 
-Blok bloblarının birden çok aralığını geri yüklemek için, parametre için bir Aralık dizisi belirtin `-BlobRestoreRange` . Aşağıdaki örnek, *kapsayıcı1* ve *container4*' nin tüm içeriğini geri yükler:
+Blok bloblarının birden çok aralığını geri yüklemek için, parametre için bir Aralık dizisi belirtin `-BlobRestoreRange` . Geri yükleme işlemi başına en fazla 10 Aralık desteklenir. Aşağıdaki örnek, *kapsayıcı1* ve *container4*' nin tüm içeriğini geri yüklemek için iki aralığı belirtir:
 
 ```powershell
 $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2

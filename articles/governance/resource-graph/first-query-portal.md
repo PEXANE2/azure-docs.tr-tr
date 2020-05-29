@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: ilk portal sorgunuz'
 description: Bu hızlı başlangıçta, Azure Kaynak Grafiği gezginini kullanarak Azure portal ilk sorgunuzu çalıştırmak için adımları izleyin.
 ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 69fb1262de706185d8968e9381bb34dd0d84a3b7
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a4b8e0b792dfda1bbd1866444ddc6c4ec8d289b6
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872095"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148047"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak Graph sorgunuzu çalıştırma
 
@@ -51,7 +51,7 @@ Kaynak türünü seçme `where type =="<resource type>"` sorgu kutusuna yer koya
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Kaynak grafik sorgusundan grafik oluşturma
 
-Yukarıdaki son sorguyu çalıştırdıktan sonra, **grafikler** sekmesini seçerseniz "sonuç kümesi bir pasta grafik görselleştirmesi ile uyumlu değildir." iletisini alırsınız. Sonuçları listelemek için gereken sorgular bir grafiğe yapılamaz, ancak kaynak sayısı sağlayan sorgular olabilir. [Örnek sorgu-sayı sanal makinelerini işletim sistemi türüne göre](./samples/starter.md#count-virtual-machines-by-os-type)kullanarak, kaynak Graph sorgusundan bir görselleştirme oluşturalım.
+Yukarıdaki son sorguyu çalıştırdıktan sonra, **grafikler** sekmesini seçerseniz "sonuç kümesi bir pasta grafik görselleştirmesi ile uyumlu değildir." iletisini alırsınız. Sonuçları listelemek için gereken sorgular bir grafiğe yapılamaz, ancak kaynak sayısı sağlayan sorgular olabilir. [Örnek sorgu-sayı sanal makinelerini işletim sistemi türüne göre](./samples/starter.md#count-os)kullanarak, kaynak Graph sorgusundan bir görselleştirme oluşturalım.
 
 1. Pencerenin **sorgu 1** bölümünde aşağıdaki sorguyu girin ve **Sorguyu Çalıştır**' ı seçin.
 

@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 624bb45de3e2ff184326949611d437f71f3e2def
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7b4de3b1d2998a1b6083283c3f397fc77fe9670
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501813"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167596"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure veri paylaşımında desteklenen veri depoları
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, Azure veri paylaşımında desteklenen veri kaynaklarını
 | Veri deposu | Anlık görüntü tabanlı paylaşım | Yerinde paylaşım 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob depolama |✓ | |
-| Azure Data Lake Storage Gen1 |✓ | |
+| Azure Data Lake Storage 1. Nesil |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
 | Azure SQL Veritabanı |Genel Önizleme | |
 | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) |Genel Önizleme | |
@@ -41,13 +41,13 @@ Aşağıdaki tabloda veri tüketicilerinin veri payını kabul edip yapılandır
 |  | Azure Blob Depolama | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Veritabanı | Azure Synapse Analytics 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob depolama | ✓ || ✓|
-| Azure Data Lake Storage Gen1 | ✓ | | ✓|
+| Azure Data Lake Storage 1. Nesil | ✓ | | ✓|
 | Azure Data Lake Storage Gen2 | ✓ | | ✓|
 | Azure SQL Veritabanı | ✓ | | ✓| ✓| ✓|
 | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) | ✓ | | ✓| ✓| ✓|
 
 ## <a name="share-from-a-storage-account"></a>Depolama hesabından paylaşma
-Azure veri paylaşımı, dosya, klasör ve dosya sistemlerinin Azure Data Lake gen1 ve Azure Data Lake Gen2 ' den paylaşılmasını destekler. Ayrıca, Azure Blob depolamadan blob, klasör ve kapsayıcı paylaşımını da destekler. Şu anda yalnızca Blok Blobu destekleniyor. Klasörler anlık görüntü tabanlı paylaşımda paylaşıldığında, veri tüketicisinin paylaşım verilerinin tam bir kopyasını yapmayı seçebilir veya yalnızca yeni veya güncelleştirilmiş dosyaları kopyalamak için Artımlı anlık görüntü özelliğinden faydalanabilirsiniz. Aynı ada sahip varolan dosyaların üzerine yazılacak.
+Azure veri paylaşımı, dosya, klasör ve dosya sistemlerinin Azure Data Lake gen1 ve Azure Data Lake Gen2 ' den paylaşılmasını destekler. Ayrıca, Azure Blob depolamadan blob, klasör ve kapsayıcı paylaşımını da destekler. Şu anda yalnızca Blok Blobu destekleniyor. Klasörler anlık görüntü tabanlı paylaşımda paylaşıldığında, veri tüketicisi paylaşma verilerinin tam bir kopyasını yapmayı seçebilir veya yalnızca yeni veya güncelleştirilmiş dosyaları kopyalamak için Artımlı anlık görüntü özelliğinden yararlanın. Aynı ada sahip varolan dosyaların üzerine yazılacak.
 
 ## <a name="share-from-a-sql-based-source"></a>SQL tabanlı bir kaynaktan paylaşma
 Azure veri paylaşımı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) tabloları veya görünümlerinin paylaşılmasını destekler. Veri tüketicileri, verileri Azure Data Lake Store Gen2 veya Azure Blob depolama alanına CSV veya Parquet dosyası olarak kabul edebilir. Varsayılan olarak, dosya biçimlerinin CSV olduğunu unutmayın. Veri TÜKETİCİSİNDE, isterseniz verileri Parquet biçiminde almayı tercih edebilirsiniz. Bu, verileri alırken veri kümesi eşleme ayarlarında yapılabilir. 

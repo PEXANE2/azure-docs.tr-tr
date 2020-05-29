@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2906c947e24bf5053760e9b83429ae7c6ecd3f4
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254631"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170129"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınızı açma veya kapatma
 
@@ -86,12 +86,12 @@ Güç kesintisi veya kesinti, StorSimple cihazını kapatabilir. Güç kesintisi
 * [Yalnızca birincil Kasası olan cihaz](#8100)
 * [EBOD kasası ile cihaz](#8600)
 
-### <a name="device-with-primary-enclosure-only-a-name8100"></a>Yalnızca birincil Kasası olan cihaz<a name="8100">
+### <a name="device-with-primary-enclosure-only"></a>Yalnızca birincil Kasası olan cihaz<a name="8100"></a>
 Güç kaynaklarının birine güç kaybı olursa sistem normal işlemine devam edebilir. Ancak, cihazın yüksek oranda kullanılabilirliğini sağlamak için güç kaynağına mümkün olan en kısa sürede yeniden yükleyin.
 
 Her iki güç kaynağı üzerinde güç kesintisi veya güç kesintisi varsa, sistem düzenli olarak ve denetimli bir şekilde kapanır. Güç geri yüklendiğinde sistem otomatik olarak açılır.
 
-### <a name="device-with-ebod-enclosure-a-name8600"></a>EBOD kasası ile cihaz<a name="8600">
+### <a name="device-with-ebod-enclosure"></a>EBOD kasası ile cihaz<a name="8600"></a>
 #### <a name="power-loss-on-one-power-supply"></a>Bir güç kaynağında güç kaybı
 Birincil kasadan veya EBOD kasasında güç kaynaklarının birine güç kaybı varsa, Sistem normal işlemine devam edebilir. Ancak, cihazın yüksek oranda kullanılabilirliğini sağlamak için lütfen güç kaynağına en kısa sürede gücü geri yükleyin.
 
@@ -140,21 +140,21 @@ Hem seri bağlı SCSI (SAS) kabloları kaldırıldığında ya da EBOD kasası i
 * [Birincil Kasası olan cihaz](#8100a)
 * [EBOD kasası ile cihaz](#8600a)
 
-### <a name="device-with-primary-enclosure-a-name8100a"></a>Birincil Kasası olan cihaz<a name="8100a">
+### <a name="device-with-primary-enclosure"></a>Birincil Kasası olan cihaz<a name="8100a"></a>
 Cihazı düzenli ve denetimli bir şekilde kapatmak için Azure portal veya StorSimple için Windows PowerShell aracılığıyla yapabilirsiniz. 
 
 > [!IMPORTANT]
 > Çalışan bir cihazı cihazın arkasında bulunan güç düğmesini kullanarak kapatmayın.
 > 
-> Cihazı kapatmadan önce tüm cihaz bileşenlerinin sağlıklı olduğundan emin olun. Azure Portal, **cihazlar** > **Monitor** > **Donanım durumunu**İzle ' ye gidin ve tüm bileşenlerin durumunun yeşil olduğunu doğrulayın. Bu, yalnızca sağlıklı bir sistem için geçerlidir. Sistem hatalı çalışan bir bileşeni değiştirmek için kapalıysa, **donanım durumundaki**ilgili bileşen için başarısız (kırmızı) veya düşürülmüş (sarı) durumu görürsünüz.
+> Cihazı kapatmadan önce tüm cihaz bileşenlerinin sağlıklı olduğundan emin olun. Azure Portal, **cihazlar**  >  **Monitor**  >  **Donanım durumunu**İzle ' ye gidin ve tüm bileşenlerin durumunun yeşil olduğunu doğrulayın. Bu, yalnızca sağlıklı bir sistem için geçerlidir. Sistem hatalı çalışan bir bileşeni değiştirmek için kapalıysa, **donanım durumundaki**ilgili bileşen için başarısız (kırmızı) veya düşürülmüş (sarı) durumu görürsünüz.
 > 
 > 
 
 StorSimple için Windows PowerShell veya Azure portal erişduktan sonra, [StorSimple cihazını kapatma](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device)bölümündeki adımları izleyin. 
 
-### <a name="device-with-ebod-enclosure-a-name8600a"></a>EBOD kasası ile cihaz<a name="8600a">
+### <a name="device-with-ebod-enclosure"></a>EBOD kasası ile cihaz<a name="8600a"></a>
 > [!IMPORTANT]
-> Birincil kasası ve EBOD Kasası 'nı kapatmadan önce tüm cihaz bileşenlerinin sağlıklı olduğundan emin olun. Azure Portal, **cihazlar** > **Monitor** > **Donanım durumunu**İzle ' ye gidin ve tüm bileşenlerin sağlıklı olduğunu doğrulayın.
+> Birincil kasası ve EBOD Kasası 'nı kapatmadan önce tüm cihaz bileşenlerinin sağlıklı olduğundan emin olun. Azure Portal, **cihazlar**  >  **Monitor**  >  **Donanım durumunu**İzle ' ye gidin ve tüm bileşenlerin sağlıklı olduğunu doğrulayın.
 
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Çalışan bir cihazı EBOD kasası ile kapatmak için

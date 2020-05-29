@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 24e18f5b1766f0dde5e677ac40d24edd5597a20d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5ba82b34da8e4c3156d6854934ad873428bf121a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609961"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168735"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Azure Active Directory uygulama proxy 'Si aracılığıyla şirket içi uygulamalara uzaktan erişim
 
@@ -41,7 +41,7 @@ Uygulama proxy 'Si ile birlikte kullanılabilir:
 * Form tabanlı veya [üst bilgi tabanlı](application-proxy-configure-single-sign-on-with-ping-access.md) erişim kullanan Web uygulamaları
 * Farklı cihazlarda zengin uygulamalarda kullanıma sunmak istediğiniz Web API 'Leri
 * [Uzak Masaüstü Ağ Geçidi](application-proxy-integrate-with-remote-desktop-services.md) arkasında barındırılan uygulamalar
-* Active Directory Authentication Library (ADAL) ile tümleştirilmiş zengin istemci uygulamaları
+* Microsoft kimlik doğrulama kitaplığı (MSAL) ile tümleştirilmiş zengin istemci uygulamaları
 
 Uygulama proxy 'Si çoklu oturum açmayı destekler. Desteklenen yöntemler hakkında daha fazla bilgi için bkz. [Çoklu oturum açma yöntemi seçme](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
 
