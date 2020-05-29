@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238168"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745847"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
 
@@ -144,8 +144,8 @@ Bir aboneliğin hesap yöneticisinin kim olduğunu bilmiyorsanız aşağıdaki a
 
 Sanal Makineler, diskler ve web siteleri gibi tüm kaynaklarınız yeni hesaba aktarılır. Bununla birlikte, aboneliği başka bir Azure AD kiracısındaki bir hesaba aktarırsanız, abonelikteki hiçbir [yönetici rolü](add-change-subscription-administrator.md) ve [Rol Tabanlı Erişim Denetimi (RBAC)](../../role-based-access-control/role-assignments-portal.md) ataması [aktarılmaz](#transfer-a-subscription-to-another-azure-ad-tenant-account). Ayrıca, [uygulama kayıtları](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) ve kiracıya özgü diğer hizmetler abonelikle birlikte aktarılmaz.
 
-### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Sahipliği başka bir ülkedeki bir hesaba aktarabilir miyim?
-Ne yazık ki, Azure portalında ülkeler arası aktarımlar gerçekleştirilemez. Aboneliğinizi ülkeler arasında aktarmak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>Sahipliği başka bir ülkedeki/bölgedeki bir hesaba aktarabilir miyim?
+Ne yazık ki, Azure portalında ülkeler/bölgeler arası aktarımlar gerçekleştirilemez. Aboneliğinizi ülkeler/bölgeler arasında aktarmak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>İki hesabın yöneticisiyim. Bir hesabımdan diğerine abonelik aktarabilir miyim?
 Evet, hesaplarınız arasında abonelik aktarabilirsiniz. Hesaplarınız kavramsal olarak iki farklı kullanıcının hesabı olarak kabul edildiği için, yukarıdaki adımları kullanarak hesaplarınız arasında abonelikleri aktarabilirsiniz.

@@ -6,7 +6,7 @@
   href: override-hierarchical-state.md
 - name: Geç aşama yeniden projeksiyonu
   href: late-stage-reprojection.md
-- name: Işıklar
+- name: Sahne aydınlatması
   href: lights.md
 - name: PBR malzemeleri
   href: pbr-materials.md

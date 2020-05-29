@@ -3,34 +3,26 @@ title: Azure EA sözleşmeleri ve düzeltmeleri
 description: Bu makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure EA portalı kullanımınızı nasıl etkilediği açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 570a7b3bef702d0e42e23bc4b7af41cc431b9cc8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 356b08526d96b6aa51a537a3dd1f7266cbf47141
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691004"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648190"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA sözleşmeleri ve düzeltmeleri
 
 Makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure hizmetleri erişiminizi, kullanımınızı ve ödemelerinizi nasıl etkileyebileceği açıklanır.
 
-## <a name="amendment-status"></a>Düzeltme durumu
-
-Azure müşterilerine yönelik tüm düzeltmelerin iş ortaklarından veya Microsoft hesabı takımından geçmesi ve bölgesel işlemler merkezinde işlenmesi gerekir. Bir düzeltmenin işlenmediğini düşünüyorsanız iş ortağınıza, yazılım danışmanınıza veya Microsoft hesabı takımına danışın.
-
 ## <a name="enrollment-provisioning-status"></a>Kayıt sağlama durumu
 
 Yeni parasal taahhüdün başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen parasal taahhüt siparişleri UTC saat dilimine göre işleme alındığından parasal taahhüt satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. [https://www.explore.ms](https://www.explore.ms ) adresinde satın alma siparişindeki karşılama başlangıç tarihi parasal taahhüdün başlangıcını gösterir. Karşılama başlangıç tarihi parasal taahhüdün Azure EA portalında gösterildiği tarihtir.
 
-## <a name="support-offer-not-provisioned"></a>Destek teklifi sağlanmadı
-
-Desteğe özgün SKU'ları satın alarak Standart veya Pro-Direct destek siparişi verebilirsiniz. Bu sipariş EA Azure Nakit SKU satın alma siparişine benzer. Örneğin, 6QK-00001. Destek SKU numaraları W6T-00002 (Pro-Direct) ve W6T-00003'tür (Standart). Destek SKU'larını satın almadan önce geçerli destek tekliflerini gözden geçirin.
-
-Destek teklifinin sağlanması için kaydın en azından bir etkin hesabı olmalıdır.
+## <a name="support-for-enterprise-customers"></a>Kurumsal müşterilere yönelik destek
 
  Bazı müşterilere Azure [Kurumsal Anlaşma Destek Planı Teklifi](https://azure.microsoft.com/offers/enterprise-agreement-support/) sağlanır.
 
@@ -158,24 +150,6 @@ Dilediğiniz zaman [çevrimi istek](https://g.microsoftonline.com/0WAEP00en/6) g
 - Hizmetinizle ilişkilendirilmiş Azure Geliştirici Portalı Abonelik Kimliği.
   - Abonelik kimliğinizi nasıl alacağınızı öğrenmek için lütfen [destek ekibiyle iletişime geçin](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-## <a name="azure-compute-pre-purchase-plan-cpp"></a>Azure İşlem Ön Satın Alma Planı (CPP)
-
-Azure İşlem Ön Satın Alma Planı (CPP, eski adıyla Azure İşlem Promosyonu), sabit duruma ve tahmin edilebilir iş yüklerine sahip olan müşterilere 12 aylık Azure işlem kapasitesini önceden satın alarak yüksek indirim oranlarından faydalanma imkanı sunmaktadır. Bu hizmet EA için kullanılabilir ve EA Portal'da mevcuttur.
-
-Bir CPP SKU siparişi oluşturduysanız, siparişin içeriği belirli bir veri merkezinde bulunan belirli bir makine türünü kapsayacaktır. Bu özelliğin mevcut durumunda müşterinin gerçekleştirdiği tüm CPP satın alma işlemlerinin listesini sunmadığımız için bekleyen kredinin de bir listesi mevcut olmayacaktır. Ancak satın aldığınız veri merkezinde satın alınan makine türlerini yapılandırdığınızda EA Portal'daki Kullanım Özeti raporunda aylık ayırma durumunu görebilirsiniz.
-
-Önceden satın alınan tutar, "Dahil Edilen Birimler" sütununda kredi olarak gösterilir ve "Dahil Edilen Birimler" tüketilene kadar yapılan kullanımlardan ücret alınmaz. Birimler tüketildikten sonra ek kullanım normal EA müşteri fiyat listesinde belirlenen ücretler üzerinden hesaplanır.
-
-Kredilerin satın alınma şekli, belirli bir sınıftaki makinelerin ay içindeki kullanım miktarına göre hesaplanır. Örneğin ABD Doğu 2 bölgesinde yılda 70 A2 VM satın aldıysanız bunu EA Portal'da tam olarak satın aldığınız şekilde görmezsiniz.
-
-Aylık makineler, ayda 744 saat çalışan birimler olarak hesaplanır. Bu süreyi saate çevirecek olursak 70 çarpı 744 eşittir ayda 52.080 A2 VM satın almış olursunuz. EA Portal Kullanım Özetinde A2 VM'ler 100 saatlik artışlarla gösterildiğinden aylık 520,8 (52.080/100) "Dahil Edilen Birim" kredi ve ay içinde o ana kadar tüketilmiş olan birim sayısını görürsünüz. Ay içinde kullanılan birim sayısı aylık dahil edilen birim sayısını geçmediği sürece kullanım ücreti sıfır görünmelidir.
-
-Farklı makine türleri farklı ölçüm birimleri kullanır. Örneğin D3 ve D4 gibi VM'ler Kullanım Özeti raporunda 10 Saatlik ölçüm birimi kullanır ve bunlardan 70 adet satın aldığınızda aylık 5208 dahil edilen birim (52.080/10) görünür.
-
-Aşağıdaki formül, ölçü birimine göre satın alınan VM sayısını gösterecektir:
-
-<center><b> ("Dahil Edilen Miktar" * "Ölçü Birimi") / 744 </b></center>
-
 ## <a name="plan-skus"></a>Plan SKU'ları
 
 Plan SKU'ları, tümleşik hizmetlerden oluşan bir paketi indirimli ücretlerle satın alma imkanı sunar. Plan SKU'ları, tümleşik teklifler ve paketler ile birbirini tamamlayacak ve daha fazla tasarruf sağlayacak şekilde tasarlanmıştır.
@@ -191,35 +165,6 @@ Kuruluş Yöneticileri, şu adımları izleyerek Hesap Yöneticilerini önceden 
 1. **Fiyat Listesi** sekmesine tıklayın.
 1. Sağ üst köşedeki "İndir" sekmesine tıklayın.
 1. "Dahil Edilen Miktar" sütununu filtreleyip "0" üzerindeki değerleri seçerek karşılık gelen Plan SKU parça numaralarını bulun.
-
-### <a name="provision-the-plan-skus"></a>Plan SKU'larını sağlama
-
-Kuruluş Yöneticileri aşağıdaki adımları izleyerek yeni hesap sahibi ekleyebilir, mevcut hesap sahiplerini ilişkilendirebilir veya mevcut hesap sahiplerinin daha önceden satın alınan Plan SKU'larını Azure EA Portal'da sağlamaları için hesap yöneticilerinin Azure EA Portal'da oturum açmasını isteyebilir.  
-
-**Yeni bir Hesap Sahibi ekleme (EA yöneticisi tarafından tamamlanması gerekir):**
-
-1. Azure EA Portal'ın sol tarafındaki gezinti menüsünden **Yönet**'i seçin.
-1. **Hesap** sekmesine tıklayın.
-1. Hesap sayfasında **+Hesap Ekle**'ye tıklayın.
-1. Bir bölüm seçin veya atanmamış olarak bırakın.
-1. İstenen kimlik doğrulaması türünü seçin.
-1. Bu hesabı raporlarda tanımlayabilmek için kullanmak istediğiniz kolay adı yazın.
-1. Yeni hesapla ilişkilendirmek istediğiniz hesap sahibinin e-posta adresini girin.
-1. Yeni hesapla ilişkilendirilmesini istediğiniz e-posta adresini onaylayın.
-1. **Ekle**'ye tıklayın.
-1. **Başka Bir Hesap Ekle**’ye tıklayarak başka bir hesap ekleyebilir ya da soldaki araç çubuğunun sağ alt köşesindeki **Ekle** düğmesine tıklayabilirsiniz.
-1. Artık hesap sahibi oturum açtıktan sonra ilgili abonelikleri ekleyerek Plan SKU'larını sağlayabilir.
-
-**Mevcut bir Hesap Sahibini ilişkilendirme:**
-
-1. Enterprise Portal'da **Yönet**'e tıklayın.
-1. **Hesap** sekmesine tıklayın.
-1. **+Hesap ekle**'ye tıklayın. Mevcut hesapla ilişkilendirilmiş olan Microsoft hesabını ya da iş veya okul hesabını girin.
-1. Mevcut hesapla ilişkilendirilmiş olan Microsoft hesabını ya da iş veya okul hesabını doğrulayın.
-1. Bu hesabı raporlarda tanımlayabilmek için kullanmak istediğiniz adı yazın.
-1. **Ekle**'ye tıklayın.
-1. **+ Hesap Ekle** seçeneğini kullanarak başka bir hesap ekleyebilir veya **Yönetim** düğmesini seçerek giriş sayfasına dönebilirsiniz.  
-1. Hesap sayfasını görüntülemek için tıkladığınızda yeni hesabın "Beklemede" olduğunu görürsünüz. Hesap Sahibi EA Portal'da ilk kez oturum açtıktan sonra bu durum "Etkin" olarak değişir.
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Yeni abonelik oluşturmak için mevcut/yeni hesap sahipleri
 

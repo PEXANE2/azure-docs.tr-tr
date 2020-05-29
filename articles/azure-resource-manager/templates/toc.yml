@@ -156,6 +156,8 @@
       href: templates-cloud-consistency.md
     - name: Dağıtım modları
       href: deployment-modes.md
+    - name: Dağıtım geçmişi silme işlemleri
+      href: deployment-history-deletions.md
     - name: Tam modda silme
       href: complete-mode-deletion.md
     - name: Dağıtım Yöneticisi

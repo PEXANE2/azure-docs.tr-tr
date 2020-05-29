@@ -11,12 +11,12 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/27/2020
 ms.locfileid: "68669855"
 ---
-Azure 'da işlev uygulamanızın akış günlüklerini açmak için:
+Azure’daki işlev uygulamanızda akış günlüklerini açmak için:
 
-1. F1 ' i seçerek komut paletini açın ve ardından **Azure işlevleri: akış günlüklerini Başlat**komutunu arayıp çalıştırın.
+1. Komut paletini açmak için F1’i seçin ve sonra **Azure İşlevleri: Akış Günlüklerini Başlat** komutunu arayıp çalıştırın.
 
-1. Azure 'da işlev uygulamanızı seçin ve ardından işlev uygulaması için uygulama günlüğünü etkinleştirmek üzere **Evet** ' i seçin.
+1. Azure’da işlev uygulamanızı seçin ve sonra işlev uygulamasında günlüğü kaydetmeyi etkinleştirmek için **Evet**’i seçin.
 
-1. İşlevlerinizi Azure 'da tetikleyin. Günlük verilerinin Visual Studio Code çıktı penceresinde görüntülendiğini unutmayın.
+1. Azure’da işlevlerinizi tetikleyin. Günlük verilerinin Visual Studio Code’daki Çıkış penceresinde görüntülendiğini unutmayın.
 
-1. İşiniz bittiğinde, işlev uygulaması için günlüğü devre dışı bırakmak üzere **Azure işlevleri: akış günlüklerini durdur** komutunu çalıştırmayı unutmayın.
+1. İşiniz bittiğinde, işlev uygulamasının günlüğe kaydetmesini durdurmak için **Azure İşlevleri: Akış Günlüklerini Durdur** komutunu alıştırmayı unutmayın.

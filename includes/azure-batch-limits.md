@@ -15,18 +15,18 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81734099"
 ---
-| **Kaynak** | **Varsayılan limit** | **Maksimum sınır** |
+| **Kaynak** | **Varsayılan sınır** | **Üst sınır** |
 | --- | --- | --- |
-| Abonelik başına bölge başına Azure Batch hesapları | 1-3 |50 |
-| Batch hesabı başına adanmış çekirdekler | 90-900 | Desteğe başvurun |
-| Batch hesabı başına düşük öncelikli çekirdekler | 10-100 | Desteğe başvurun |
-| Batch hesabı başına **[etkin](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)** işler ve iş zamanlamaları (**Tamamlanan** işlerin sınırı yoktur) | 100-300 | 1.000<sup>1</sup> |
+| Her abonelikteki bölge başına Azure Batch hesabı sayısı | 1-3 |50 |
+| Batch hesabı başına ayrılmış çekirdek sayısı | 90-900 | Desteğe başvurun |
+| Batch hesabı başına düşük öncelikli çekirdek sayısı | 10-100 | Desteğe başvurun |
+| Batch hesabı başına **[Etkin](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)** işler ve iş zamanlamaları (**tamamlanan** işlerin sınırı yoktur) | 100-300 | 1\.000<sup>1</sup> |
 | Batch hesabı başına havuz sayısı | 20-100 | 500<sup>1</sup> |
 
-<sup>1</sup> Bu sınırın ötesinde bir artış istemek için Azure desteği 'ne başvurun.
+<sup>1</sup>Bu sınırlarda artış istemek için Azure Desteği’ne ulaşın.
 
 > [!NOTE]
-> Varsayılan sınırlar, bir Batch hesabı oluşturmak için kullandığınız abonelik türüne bağlı olarak farklılık gösterir. Toplu hizmet modundaki Batch hesapları için gösterilen çekirdekler kotaları. [Batch hesabınızdaki kotaları görüntüleyin](../articles/batch/batch-quota-limit.md#view-batch-quotas).
+> Varsayılan sınırlar, Batch hesabı oluşturmak için kullandığınız abonelik türüne bağlı olarak değişiklik gösterir. Gösterilen çekirdek kotaları, Batch hizmet modundaki Batch hesapları içindir. [Batch hesabınızdaki kotaları görüntüleme](../articles/batch/batch-quota-limit.md#view-batch-quotas).
 
 > [!IMPORTANT]
-> Küresel sistem durumu pandemik sırasında kapasiteyi daha iyi yönetmemize yardımcı olmak için, bazı bölgelerde yeni Batch hesapları için varsayılan çekirdek kotaları ve bazı abonelik türleri yukarıdaki değer aralığından düşürüldü, bazı durumlarda ise sıfır çekirdeğe sahip olur. Yeni bir Batch hesabı oluşturduğunuzda, [çekirdek kotayı denetleyin](../articles/batch/batch-quota-limit.md#view-batch-quotas) ve gerekirse [çekirdek kota artışı isteyin](../articles/batch/batch-quota-limit.md#increase-a-quota). 
+> Küresel pandemi sırasında kapasiteyi daha iyi yönetmemize yardımcı olması için bazı bölgelerdeki yeni Batch hesaplarına ve bazı abonelik türlerine yönelik varsayılan çekirdek kotaları, yukarıdaki değer aralıklarından azaltılmıştır ve bazılarında çekirdek yoktur. Yeni Batch hesabı oluşturduğunuzda [çekirdek kotanızı denetleyin](../articles/batch/batch-quota-limit.md#view-batch-quotas) ve gerekirse [çekirdek kotasında artış talep edin](../articles/batch/batch-quota-limit.md#increase-a-quota). 

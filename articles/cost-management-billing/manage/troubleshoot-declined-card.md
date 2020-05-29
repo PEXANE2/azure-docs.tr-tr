@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0eeddc26ac1a1f286d8ed253f3fe097f0e7de91f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7cf42950bc25ad501fd11b1b28c74b5f63066c32
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409398"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745519"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Azure kaydı sırasında reddedilen bir kartın sorunlarını giderme
 
@@ -20,9 +20,9 @@ Azure portalında veya Azure hesap merkezinde Azure kaydı sırasında kredi kar
 
 Sorununuzu çözmek için aşağıda hatanıza en çok benzeyen konu başlığını seçin.
 
-## <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>Ülkeniz için kredi kartı sağlayıcısı kabul edilmiyor
+## <a name="the-credit-card-provider-is-not-accepted-for-your-countryregion"></a>Ülkeniz/bölgeniz için kredi kartı sağlayıcısı kabul edilmiyor
 
-Bir kart seçtiğinizde Azure, seçtiğiniz ülkede geçerli olan kart seçeneklerini görüntüler. Kredi kartınızın uluslararası işlemler için etkinleştirildiğini doğrulamak için bankanızla veya kartı düzenleyen kurumla iletişim kurun. Desteklenen ülkeler ve para birimleri hakkında daha fazla bilgi için bkz. [Azure Satın Alma ile İlgili SSS](https://azure.microsoft.com/pricing/faq/).
+Bir kart seçtiğinizde Azure, seçtiğiniz ülkede/bölgede geçerli olan kart seçeneklerini görüntüler. Kredi kartınızın uluslararası işlemler için etkinleştirildiğini doğrulamak için bankanızla veya kartı düzenleyen kurumla iletişim kurun. Desteklenen ülkeler/bölgeler ve para birimleri hakkında daha fazla bilgi için bkz. [Azure Satın Alma ile İlgili SSS](https://azure.microsoft.com/pricing/faq/).
 
 >[!Note]
 >American Express kredi kartları şu anda Hindistan’da ödeme aracı olarak desteklenmemektedir. Bunun ödeme aracı olarak kabul edilebileceği bir zaman dilimi söz konusu değildir.

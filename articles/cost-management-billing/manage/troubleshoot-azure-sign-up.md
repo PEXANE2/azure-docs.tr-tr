@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 2ccb2b7fca8a5615d56c25b9ea09a26caf295a2b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133177"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745540"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portalında veya Azure hesap merkezinde yeni bir hesap için kaydolduğunuzda oluşan sorunları giderme
 
@@ -63,7 +63,7 @@ Tarayıcınızın tanımlama bilgisi ayarlarını güncelleştirmek için aşağ
 
 ### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Kredi kartı formu, fatura adresimi desteklemiyor
 
-Fatura adresiniz, **Hakkınızda** bölümünde seçtiğiniz ülkede bulunmalıdır. Doğru ülkeyi seçtiğinizden emin olun.
+Fatura adresiniz, **Hakkınızda** bölümünde seçtiğiniz ülkede/bölgede bulunmalıdır. Doğru ülkeyi/bölgeyi seçtiğinizden emin olun.
 
 ### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>Kayıt hesabı doğrulaması sırasında SMS mesajı veya arama yok
 
@@ -72,7 +72,7 @@ Fatura adresiniz, **Hakkınızda** bölümünde seçtiğiniz ülkede bulunmalıd
 Burada birkaç ek ipucu bulabilirsiniz:
 
 - IP üzerinden ses (VoiP) telefon numarası, telefon doğrulama işlemi için kullanılamaz.
-- Açılan menüde seçtiğiniz ülke kodu da dahil olmak üzere girdiğiniz telefon numarasını iki kez kontrol edin.
+- Açılan menüde seçtiğiniz ülke/bölge kodu da dahil olmak üzere girdiğiniz telefon numarasını iki kez kontrol edin.
 - Telefonunuza SMS mesajı gelmezse **Beni ara** seçeneğini deneyin.
 - Telefonunuzun Birleşik Devletler’de bulunan bir telefon numarasından arama veya SMS mesajı alabildiğinden emin olun.
 

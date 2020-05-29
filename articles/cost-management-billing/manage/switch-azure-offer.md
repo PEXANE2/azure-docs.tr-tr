@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/14/2020
 ms.author: banders
-ms.openlocfilehash: 4aa02dae521844f2654a50f77be9b2ee3c46a74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ee2de33fadb068ee2697f79c1ebcb1b2fa4e5fcc
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199526"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715894"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure aboneliğinizi farklı bir teklife geçirme
 
@@ -51,10 +51,10 @@ Kullandıkça öde ücretlendirmesiyle çalışan bireysel bir abonelikten şu t
 1. Aboneliğinizin geçirebileceği tekliflerin yer aldığı listeden **istediğiniz teklifi seçin**. Bu liste, hesabınızın ilişkilendirildiği üyeliklere göre değişir. Kullanılabilir bir şey yoksa [geçiş yapabileceğiniz kullanılabilir tekliflerin listesine](#whats-supported) bakın ve doğru üyeliklere sahip olduğunuzdan emin olun.
 
    ![Geçiş yapmak istediğiniz bir teklifi seçin](./media/switch-azure-offer/selectoffer.png)
-1. Geçtiğiniz teklife bağlı olarak, geçişin etkisine ilişkin bir not görebilirsiniz. Devam etmeden önce bu listenin üzerinden dikkatle geçin ve yönergeleri izleyin.
+1. Geçtiğiniz teklife bağlı olarak, geçişin etkisine ilişkin bir not görebilirsiniz. Devam etmeden önce listenin üzerinden dikkatle geçin ve yönergeleri izleyin.
 
    ![Notları gözden geçirin](./media/switch-azure-offer/thingstonote.png)
-1. Aboneliğinizi yeniden adlandırabilirsiniz. Varsayılan olarak yeni teklif adına ayarlanır. İşlemi tamamlamak için **Teklifi Değiştir**’e tıklayın.
+1. Aboneliğinizi yeniden adlandırabilirsiniz. Varsayılan olarak yeni teklif adına ayarlanmaz. İşlemi tamamlamak için **Teklifi Değiştir**’e tıklayın.
 
    ![Yeşil düğmeye tıklayın](./media/switch-azure-offer/confirmpage.png)
 1. Başarılı! Şimdi aboneliğiniz yeni teklife geçer.
@@ -94,13 +94,13 @@ Abonelikle ilişkili kullanıcılar için hizmet kapalı kalma süresi yoktur. A
 
 Teklifleri değiştirdiğinizde, [varsayılan limitin üzerindeki limit veya kota artışları](../../azure-portal/supportability/resource-manager-core-quotas-request.md) sıfırlanır. Varsayılan limiti aşan kaynaklarınız olsa bile hizmet kapalı kalma süresi yoktur. Örneğin, aboneliğinizde 200 çekirdek kullanıyorsanız, teklifler değiştirildiğinde çekirdeklerinizin kotası varsayılan 20 çekirdek sayısına geri getirilir. 200 çekirdek kullanan sanal makineler etkilenmez ve çalışmaya devam eder. Ancak başka bir kota artışı isteğinde bulunmazsanız başka çekirdek sağlayamazsınız.
 
-#### <a name="billing"></a>Faturalama
+#### <a name="billing"></a>Faturalandırma
 
 Geçiş yaptığınız gün, kalan tüm ücretler için bir fatura oluşturulur. Daha sonra aboneliğiniz yeni teklifin fiyatlandırma koşullarına göre faturalanır. Abonelik faturanızın yıldönümü, teklifleri değiştirdiğiniz tarihe değiştirilir. Teklif değişikliğinden önceki kullanım ve faturalama verileri saklanmadığından, geçiş yapmadan önce bir kopya indirmenizi öneririz.
 
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Kullandıkça öde fiyatlarına tabi bir abonelikten Bulut Çözümü Sağlayıcısı (CSP) veya Kurumsal Anlaşma (EA) teklifine geçebilir miyim?
 
-* CSP’ye geçiş yapmak için bkz. [Azure Kullandıkça Öde Aboneliğinin CSP’ye Geçişi](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
+* CSP’ye geçirmek için bkz. [Azure aboneliklerini aboneler ile CSP’ler arasında aktarma](transfer-subscriptions-subscribers-csp.md).
 * Kurumsal Anlaşmaya geçiş yapmak için Kayıt Yöneticinizin hesabınızı Kurumsal Anlaşmaya eklemesini sağlayın. Aboneliklerinizin Kurumsal Anlaşma kaydı kapsamına taşınmasını sağlamak için davet e-postasındaki yönergeleri izleyin. Daha fazla bilgi edinmek için, Kurumsal Anlaşma portalında [Mevcut Bir Hesabı İlişkilendirme](https://ea.azure.com/helpdocs/associateExistingAccount) bölümüne bakın.
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Veri ve hizmetleri yeni bir aboneliğe geçirebilir miyim?

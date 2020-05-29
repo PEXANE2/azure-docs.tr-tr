@@ -1,0 +1,145 @@
+### YamlMime:Landing
+title: Azure SQL Veritabanı belgeleri
+summary: Azure SQL Veritabanı’ndaki tek ve havuza alınmış veritabanlarına yönelik kavramlar, hızlı başlangıç, öğretici ve örneklere ulaşın.
+metadata:
+  title: Azure SQL Veritabanı belgeleri
+  description: Microsoft SQL Server’ın en son kararlı sürümünü temel alan ve hizmet olarak platform (PaaS) ürünü olan Azure SQL Veritabanı belgelerine ulaşın.
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 05/27/2020
+  ms.openlocfilehash: 0faf1311e3a570028884f826b7d8b4ff3cd5e9e2
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023832"
+landingContent:
+- title: Azure SQL Veritabanı
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: SQL Veritabanı oluşturma
+      url: single-database-create-quickstart.md
+    - text: Güvenlik duvarını yapılandırma
+      url: firewall-create-server-level-portal-quickstart.md
+  - linkListType: concept
+    links:
+    - text: Yenilikler
+      url: doc-changes-updates-release-notes.md?tabs=single-database
+    - text: SQL Database nedir?
+      url: sql-database-paas-overview.md
+    - text: Satın alma seçenekleri
+      url: purchasing-models.md
+    - text: Hizmet katmanları
+      url: service-tiers-general-purpose-business-critical.md
+    - text: Sunucusuz işlem
+      url: serverless-tier-overview.md
+    - text: Hiper ölçekli hizmet katmanı
+      url: service-tier-hyperscale.md
+    - text: SQL Server’dan geçirme
+      url: migrate-to-database-from-sql-server.md
+    - text: SQL Server ile T-SQL arasındaki farklar
+      url: transact-sql-tsql-differences-sql-server.md
+- title: İş sürekliliği
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: İş sürekliliği
+      url: business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: Yüksek kullanılabilirlik
+      url: high-availability-sla.md
+    - text: Etkin-coğrafi çoğaltma
+      url: active-geo-replication-overview.md
+    - text: Otomatik yük devretme grupları
+      url: auto-failover-group-overview.md
+    - text: Otomatik yedeklemeler
+      url: automated-backups-overview.md
+    - text: Yedekleme ile kurtarma
+      url: recovery-using-backups.md
+    - text: Uzun süreli yedek saklama
+      url: long-term-retention-overview.md
+- title: Gelişmiş güvenlik
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Güvenlik özellikleri
+      url: security-overview.md
+    - text: En iyi güvenlik uygulamaları
+      url: security-best-practice.md
+    - text: Oturum açmalar, kullanıcı hesapları, roller ve izinler
+      url: logins-create-manage.md
+    - text: Azure Active Directory
+      url: authentication-aad-overview.md
+    - text: Denetim
+      url: auditing-overview.md
+    - text: Saydam Veri Şifrelemesi (TDE)
+      url: transparent-data-encryption-tde-overview.md
+    - text: Dinamik Veri Maskeleme
+      url: dynamic-data-masking-overview.md
+- title: Esnek havuzlar
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Elastik havuz nedir?
+      url: elastic-pool-overview.md
+    - text: Yönetme
+      url: elastic-pool-manage.md
+    - text: Ölçek
+      url: elastic-pool-scale.md
+    - text: Kaynak yönetimi
+      url: elastic-pool-resource-management.md
+- title: Başvuru
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Eğitim için SQL kaynakları
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI örnekleri
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell örnekleri
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: ARM şablon örnekleri
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Veri Araçları
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: Geçiş kılavuzu
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/
+- title: Ölçeklenebilirlik
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Dinamik olarak ölçeği artırma veya azaltma
+      url: scale-resources.md
+    - text: Okuma Amaçlı Ölçeği Genişletme
+      url: read-scale-out.md
+    - text: Çapraz veritabanı işleri
+      url: elastic-jobs-overview.md
+    - text: Esnek ölçek
+      url: elastic-scale-introduction.md
+    - text: Esnek sorgu
+      url: elastic-query-overview.md

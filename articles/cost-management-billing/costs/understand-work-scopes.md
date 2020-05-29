@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: ebae9d1c66a721926ca07b21059ec57b05b99a0f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 2f61345cd55fc9541f9e1b707389d0b9d06685b0
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877941"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873426"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
@@ -67,9 +67,12 @@ Maliyet Yönetimi, aşağıdaki kapsamlar için aşağıda belirtilen yerleşik 
 
 Maliyet Yönetimi Katkıda Bulunanı, önerilen en düşük ayrıcalıklı roldür. İnsanlara maliyetleri daha etkili şekilde izlemek ve raporlamak için bütçe ve dışarı aktarım oluşturma ve yönetme erişimi sağlar. Maliyet Yönetimi Katkıda Bulunanları, uçtan uca maliyet yönetimi senaryolarını destekleyecek ek rollere de ihtiyaç duyabilir. Aşağıdaki senaryoları göz önünde bulundurun:
 
+- **Kaynak kullanımı ile ilgili raporlama**: Azure Maliyet Yönetimi, maliyetleri Azure portalında gösterir. Ayrıca tam kullanım ile ücretler API’si ve indirme maliyetleriyle ilgili olduğundan kullanımı da içerir. Daha iyi anlamak amacıyla Azure İzleyici’deki ayrıntılı kullanım ölçümlerini de incelemeniz gerekebilir. Ayrıntılı kullanım ölçümleriyle ilgili raporlamaya da ihtiyaç duyduğunuz tüm kapsamlarda [İzleyici Okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader)’nu etkinleştirebilirsiniz.
 - **Bütçeler aşıldığında harekete geçme**: Maliyet Yönetimi Katkıda Bulunanlarının fazla kullanım durumlarına otomatik olarak müdahale edebilmek için eylem grubu oluşturma ve/veya yönetme izinlerine de sahip olması gerekir. Bütçe eşikleri aşıldığında kullanılacak eylem grubunu içeren kaynak grubuna [İzleme Katkıda Bulunanı](../../role-based-access-control/built-in-roles.md#monitoring-contributor) iznini verebilirsiniz. Belirli eylemlerin otomatikleştirilmesi için Otomasyon ve Azure İşlevleri gibi kullanılan hizmetlere özgü ek rollere ihtiyaç duyulur.
 - **Maliyet verilerini dışarı aktarmayı zamanlama**: Maliyet Yönetimi Katkıda Bulunanlarının, verileri depolama hesabına kopyalamak üzere bir dışarı aktarma işlemi zamanlamak için depolama hesaplarını yönetme izinlerine de sahip olması gerekir. Maliyet verilerinin dışarı aktarıldığı depolama hesabını içeren kaynak grubuna [Depolama Hesabı Katkıda Bulunanı](../../role-based-access-control/built-in-roles.md#storage-account-contributor) iznini verebilirsiniz.
 - **Maliyet tasarrufu önerilerini görüntüleme**: Maliyet Yönetimi Okuyucuları ve Maliyet Yönetimi Katkıda Bulunanları, varsayılan olarak maliyet önerilerini *görüntüleme* erişimine sahiptir. Ancak maliyet önerilerine göre işlem yapmak için ilgili kaynaklar üzerinde erişim sahibi olmaları gerekir. Maliyet tabanlı önerilere göre hareket etmek istiyorsanız [hizmete özgü bir rol](../../role-based-access-control/built-in-roles.md#all) atamayı düşünebilirsiniz.
+
+Yönetim grupları yalnızca Kurumsal Anlaşma (EA), Kullandıkça Öde (PAYG) veya Microsoft iş abonelikleri içeriyorsa desteklenir. Microsoft Müşteri Sözleşmesi veya Azure Active Directory abonelikleri gibi diğer abonelik türlerine sahip yönetim gruplarında maliyetler görüntülenemez. Abonelik türleriniz karışıksa desteklenen abonelikler için Maliyet Yönetimi’ni etkinleştirmek amacıyla, desteklenmeyen abonelikleri ayrı bir yönetim grubu hiyerarşisi koluna taşıyın. Örneğin, kök yönetim grubu kapsamında iki yönetim grubu oluşturun: **Azure AD** ve **Kuruluşum**. Azure AD aboneliğinizi **Azure AD** yönetim grubuna taşıyın ve sonra **Kuruluşum** yönetim grubunu kullanarak maliyetlerin görüntüleyip yönetin.
 
 ## <a name="enterprise-agreement-scopes"></a>Kurumsal Anlaşma kapsamları
 

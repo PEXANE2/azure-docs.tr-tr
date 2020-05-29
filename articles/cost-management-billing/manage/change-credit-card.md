@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 99b6d86a65ec05a1299abfffae779113e573310c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199866"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834977"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure için kredi kartı ekleme, güncelleştirme veya kaldırma
 
@@ -29,9 +29,9 @@ Microsoft Müşteri Sözleşmeniz varsa, ödeme yöntemleriniz faturalama profil
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Azure aboneliğindeki kredi kartlarını yönetme
 
-Aşağıdaki bölümler Microsoft Online Services Program ödeme hesabına sahip olan müşteriler için geçerlidir. [Ödeme hesabınızın türünü denetlemeyi](#check-the-type-of-your-account) öğrenin. Ödeme hesabınızın türü Microsoft Online Services Program ise ödeme yöntemleri bireysel Azure abonelikleriyle ilişkilendirilir.
+Aşağıdaki bölümler Microsoft Online Services Program ödeme hesabına sahip olan müşteriler için geçerlidir. [Ödeme hesabınızın türünü denetlemeyi](#check-the-type-of-your-account) öğrenin. Ödeme hesabınızın türü Microsoft Online Services Program ise ödeme yöntemleri bireysel Azure abonelikleriyle ilişkilendirilir. Kredi kartını ekledikten sonra hatayla karşılaşırsanız bkz. [Azure’a kaydolurken kredi kartı reddedildi](../../billing/billing-credit-card-fails-during-azure-sign-up.md).
 
-### <a name="change-credit-card-for-a-subscription"></a>Abonelikte kullanılan kredi kartını değiştirme
+### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>Yeni kredi kartı ekleyerek bir abonelikte kullanılan kredi kartını değiştirme
 
 Azure aboneliğinizin varsayılan kredi kartını yeni bir kredi kartıyla veya Azure portalına kayıtlı kredi kartlarından biriyle değiştirebilirsiniz. Kredi kartını değiştirmek için Hesap Yöneticisi olmanız gerekir. Birden fazla aboneliğiniz aynı etkin ödeme yöntemine sahipse, bu aboneliklerden birinde etkin ödeme yöntemi değiştirildiğinde diğer aboneliklerdeki etkin ödeme yöntemi de güncelleştirilir.
 
@@ -57,7 +57,7 @@ Aboneliğinizin varsayılan kredi kartını değiştirmek için aşağıdaki ad�
 
 1. **İleri**’yi seçin.
 
-Kredi kartını ekledikten sonra hatayla karşılaşırsanız bkz. [Azure’a kaydolurken kredi kartı reddedildi](../../billing/billing-credit-card-fails-during-azure-sign-up.md).
+### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>Abonelikte kullanılan kredi kartını önceden kaydedilen bir kredi kartıyla değiştirme
 
 İsterseniz aşağıdaki adımları izleyerek aboneliğinizin varsayılan kredi kartını hesabınıza kayıtlı olan kredi kartlarından biriyle de değiştirebilirsiniz:
 
@@ -116,16 +116,17 @@ Kredi kartınız herhangi bir Microsoft aboneliğiniz için etkin ödeme yöntem
 Aşağıdaki bölümler, Microsoft Müşteri Sözleşmesi'ne sahip olan ve Azure'a çevrimiçi olarak kredi kartıyla kaydolmuş müşteriler için geçerlidir. [Microsoft Müşteri Sözleşmesi'ne sahip olup olmadığınızı nasıl denetleyebileceğinizi öğrenin](#check-the-type-of-your-account).
 
 ### <a name="change-default-credit-card"></a>Varsayılan kredi kartını değiştirme
+
 Microsoft Müşteri Sözleşmeniz varsa, kredi kartınız bir faturalama profiliyle ilişkilendirilir. Bir faturalama profilinin ödeme yöntemini değiştirmek için, Azure’a kaydolan ve ödeme hesabını oluşturan kişi siz olmalısınız.
 
 Faturalama profilinizin varsayılan ödeme yöntemini çek/havale olarak değiştirmek isterseniz bkz. [Azure abonelikleri için fatura ile ödeme](pay-by-invoice.md).
 
 Kredi kartınızı değiştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
 1. Soldaki menüde **Faturalama profili**’ne tıklayın.
-1. Bir faturalama profili seçin.
+1. Faturalama profilini seçin.
 1. Soldaki menüden **Ödeme yöntemleri**’ni seçin.
 
    ![Menüde ödeme yöntemlerini gösteren ekran görüntüsü](./media/change-credit-card/payment-methods-tab-mca.png)
@@ -142,10 +143,10 @@ Azure portalındaki hesap sayfanızdan kredi kartı bilgilerini düzenleyebilir 
 
 Bir kredi kartını düzenlemek veya silmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
 1. Soldaki menüde **Faturalama profili**’ne tıklayın.
-1. Bir faturalama profili seçin.
+1. Faturalama profilini seçin.
 1. Soldaki menüden **Ödeme yöntemleri**’ni seçin.
 
    ![Menüde ödeme yöntemlerini gösteren ekran görüntüsü](./media/change-credit-card/payment-methods-tab-mca.png)
@@ -159,9 +160,11 @@ Bir kredi kartını düzenlemek veya silmek için şu adımları izleyin:
 1. Kredi kartınızı silmek için bağlam menüsünden **Sil**'i seçin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
+
 Sanal veya ön ödemeli kartları desteklemiyoruz. Geçerli bir kredi kartı eklerken veya güncelleştirirken hata alıyorsanız tarayıcınızı gizli modda açmayı deneyin.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+
 Aşağıdaki bölümlerde, kredi kartı bilgilerinizi değiştirmeye ilişkin yaygın olarak sorulan soruların yanıtları verilmektedir.
 
 ### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>Aboneliğim devre dışı bırakıldı. Neden şimdi kredi kartımı kaldıramıyorum?
@@ -189,6 +192,7 @@ Ne yazık ki abonelikleriniz zaten aynı kartı kullanıyorsa, bu abonelikleri f
 Vergi numarası eklemek veya güncelleştirmek için [Azure Hesap Merkezi](https://account.azure.com/Profile)’nde profilinizi güncelleştirin ve **Vergi numarası**’nı seçin. Vergi numarası, vergi muafiyeti hesaplamaları için kullanılır ve faturanızda görünür.
 
 ## <a name="check-the-type-of-your-account"></a>Hesabınızın türünü denetleme
+
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
@@ -196,4 +200,5 @@ Vergi numarası eklemek veya güncelleştirmek için [Azure Hesap Merkezi](https
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 - Para tasarruf etmenizi sağlayıp sağlayamadığını görmek için [Azure rezervasyonları](../reservations/save-compute-costs-reservations.md) hakkında bilgi edinin.

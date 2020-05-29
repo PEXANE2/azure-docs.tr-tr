@@ -3,16 +3,16 @@ title: Azure EA portalı erişim sorunlarını giderme
 description: Bu makalede, Azure EA portalında Azure Kurumsal Anlaşma (EA) ile ilişkili olarak oluşabilen bazı sorunlar açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: fdcce868cb53c0fdd6a51f2b351491e1ee998d61
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 97ba4e77c96859115c974b630a455f4bea62051a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691176"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654752"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA portalı erişim sorunlarını giderme
 
@@ -64,15 +64,15 @@ Azure EA portalında oturum açmaya çalışırken hata iletisi alıyorsanız a�
   - Birincil diğer adı denetlemeniz gerekiyorsa [https://account.live.com](https://account.live.com) adresine gidin. Ardından **Bilgileriniz**'e ve **Microsoft'ta oturum açma şeklinizi yönetin**'e tıklayın. Alternatif bir e-posta adresini doğrulamak ve hassas bilgilere erişim kodunu almak için yönergeleri izleyin. Güvenlik kodunu girin. İki öğeli kimlik doğrulaması ayarlamak istemiyorsanız **Daha sonra ayarla**’yı seçin.
   - Hesap diğer adlarınızı görüntüleyebileceğiniz **Microsoft'ta oturum açma şeklinizi yönetin** sayfasını görürsünüz. Azure EA portalında oturum açmak için kullandığınız diğer adın birincil diğer ad olduğundan emin olun. Değilse, bunu birincil diğer adınız olarak ayarlayabilirsiniz. Öte yandan bunun yerine Azure EA portalı için olan birincil adı da kullanabilirsiniz.
 
-## <a name="no-activation-email-received"></a>Etkinleştirme e-postası alınmadı
+## <a name="azure-ea-activation-faq"></a>Azure EA Etkinleştirme hakkında SSS
+
+Makalenin bu bölümünde Azure EA Etkinleştirme işlemleriyle ilgili yaygın sorunların çözümlerine yer verilmiştir.
+
+### <a name="i-didnt-receive-an-activation-email"></a>Etkinleştirme e-postası almadım
 
 Azure EA portalından gelen etkinleştirme e-postası *waep@microsoft.com* adresinden gönderilir. Etkinleştirme e-postasını almadıysanız istenmeyen veya gereksiz posta klasörünüzü gözden geçirin. Bu e-posta _Microsoft Azure service_subject Görüntüleme/Yönetme Daveti_ ile gönderilir. Yeni eklenen tüm EA yöneticilerine gönderilir.
 
 EA yöneticisi olarak ayarladığınızdan eminseniz, Azure EA portalında oturum açmak için etkinleştirme e-postasını beklemeniz gerekmez. Bunun yerine https://ea.azure.com adresine giderek e-posta adresinizle (iş, okul veya Microsoft hesabı) ve parolanızla oturum açabilirsiniz.
-
-## <a name="azure-ea-activation-faq"></a>Azure EA Etkinleştirme hakkında SSS
-
-Makalenin bu bölümünde Azure EA Etkinleştirme işlemleriyle ilgili yaygın sorunların çözümlerine yer verilmiştir.
 
 ### <a name="i-would-like-to-add-a-new-ea-administrator-to-my-enrollment"></a>Kaydıma yeni bir EA yöneticisi eklemek istiyorum
 

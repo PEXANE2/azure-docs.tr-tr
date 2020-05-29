@@ -972,6 +972,8 @@
           href: insights/container-insights-update-metrics.md
         - name: Sistem durumu izleme yapılandırması
           href: insights/container-insights-health-monitors-config.md
+        - name: Maliyeti ve kullanımı yönetme
+          href: insights/container-insights-cost.md
         - name: İzlemeyi devre dışı bırakma
           items:
             - name: AKS’yi izlemeyi devre dışı bırakma
@@ -991,7 +993,7 @@
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
         - name: Key Vault
-          href: insights/key-vault-insights-overview.md
+          href: insights/key-vaults-insights-overview.md
         - name: Ağlar
           href: insights/network-insights-overview.md
         - name: Depolama

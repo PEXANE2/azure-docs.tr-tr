@@ -10,6 +10,8 @@
 - name: Hızlı Başlangıçlar
   expaned: true
   items:
+    - name: İstemci kitaplığını kullanma
+      href: quickstarts/client-library.md
     - name: Örnek etiketleme aracını kullanma
       items:
         - name: Özel modeli etiketlerle eğitme
@@ -36,8 +38,6 @@
           items:
             - name: Python
               href: quickstarts/python-layout.md
-    - name: .NET SDK’sini kullanma
-      href: quickstarts/dotnet-sdk.md
 - name: Öğreticiler
   items:
     - name: Logic Apps ile Form Tanıma'yı kullanma
@@ -67,7 +67,13 @@
     - name: SDK’lar
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-preview'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview'
+        - name: JavaScript
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer?view=azure-node-preview'
 - name: Kaynaklar
   items:
     - name: Fiyatlandırma ve limitler

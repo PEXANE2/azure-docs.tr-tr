@@ -1,0 +1,1143 @@
+- name: Azure SQL Belgeleri
+  href: index.yml
+- name: Azure SQL nedir?
+  href: azure-sql-iaas-vs-paas-what-is-overview.md
+- name: Paylaşılan SQL DB ve SQL MI belgeleri
+  items:
+    - name: Satın alma modelleri
+      items:
+        - name: Genel Bakış
+          href: database/purchasing-models.md
+        - name: Sanal çekirdek modeline genel bakış
+          href: database/service-tiers-vcore.md
+        - name: Azure Hibrit Avantajı
+          href: azure-hybrid-benefit.md
+        - name: Ayrılmış kapasite
+          href: database/reserved-capacity-overview.md
+    - name: İşlem ve depolama
+      items:
+        - name: Genel Bakış
+          href: database/service-tiers-general-purpose-business-critical.md
+          displayName: provisioned compute tier
+        - name: Genel amaçlı / Standart
+          href: database/service-tier-general-purpose.md
+        - name: İş açısından kritik / Premium
+          href: database/service-tier-business-critical.md
+    - name: Paylaşılan kavramlar
+      itemS:
+        - name: Özellik karşılaştırması
+          href: database/features-comparison.md
+        - name: Çok modelli özellikler
+          href: multi-model-features.md
+        - name: Bellek içi OLTP
+          href: in-memory-oltp-overview.md
+        - name: Zamana bağlı tablolar
+          href: temporal-tables.md
+        - name: Ölçeği artırma/azaltma
+          href: database/scale-resources.md
+        - name: Güvenlik
+          items:
+            - name: Genel Bakış
+              href: database/security-overview.md
+              displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
+            - name: En iyi uygulamalar
+              href: database/security-best-practice.md
+            - name: Güvenlik temeli
+              href: database/security-baseline.md
+            - name: Güvenlik öznitelikleri
+              href: database/security-controls.md
+            - name: Gelişmiş Veri Güvenliği
+              href: database/advanced-data-security.md
+            - name: Gelişmiş Tehdit Koruması
+              href: database/threat-detection-overview.md
+            - name: Dinamik veri maskeleme
+              href: database/dynamic-data-masking-overview.md
+            - name: SQL Güvenlik Açığı Değerlendirmesi
+              href: database/sql-vulnerability-assessment.md
+            - name: 'Oturum açmalar, kullanıcı hesapları, roller ve izinler'
+              href: database/logins-create-manage.md
+            - name: Azure AD Kimlik Doğrulaması
+              href: database/authentication-aad-overview.md
+              items:
+                - name: Azure AD kimlik doğrulamasını yapılandırma
+                  href: database/authentication-aad-configure.md
+                - name: Çok faktörlü AAD kimlik doğrulaması
+                  href: database/authentication-mfa-ssms-overview.md
+                - name: Çok faktörlü kimlik doğrulamasını yapılandırma
+                  href: database/authentication-mfa-ssms-configure.md
+                - name: Koşullu Erişim
+                  href: database/conditional-access-configure.md
+            - name: Saydam Veri Şifrelemesi (TDE)
+              items:
+                - name: Genel Bakış
+                  href: database/transparent-data-encryption-tde-overview.md
+                - name: Kendi Anahtarını Getir (KAG)
+                  href: database/transparent-data-encryption-byok-overview.md
+                - name: Veri bulma ve sınıflandırma
+                  href: database/data-discovery-and-classification-overview.md
+        - name: İş sürekliliği
+          displayName: 'Backup, back up, restore, recovery'
+          items:
+            - name: Genel Bakış
+              href: database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+            - name: Yüksek kullanılabilirlik
+              href: database/high-availability-sla.md
+            - name: Otomatik yük devretme grupları
+              href: database/auto-failover-group-overview.md
+            - name: Yedekleme ve kurtarma
+              items:
+                - name: Otomatik yedeklemeler
+                  href: database/automated-backups-overview.md
+                - name: Hızlandırılmış veritabanı kurtarma
+                  href: accelerated-database-recovery.md
+                - name: Yedeklemeleri kullanarak kurtarma
+                  href: database/recovery-using-backups.md
+                - name: Uzun süreli yedek saklama
+                  href: database/long-term-retention-overview.md
+        - name: İzleme ve ayarlama
+          items:
+            - name: Belgeler
+              href: database/monitoring-tuning-index.yml
+            - name: Genel Bakış
+              href: database/monitor-tune-overview.md
+            - name: Intelligent Insights
+              href: database/intelligent-insights-overview.md
+            - name: SQL Analytics
+              href: /azure/log-analytics/log-analytics-azure-sql?toc=/azure/azure-sql/toc.json
+            - name: Otomatik ayarlama
+              href: database/automatic-tuning-overview.md
+            - name: Bellek içi OLTP
+              href: in-memory-oltp-overview.md
+            - name: Genişletilmiş olaylar
+              items:
+                - name: Genişletilmiş olaylar
+                  href: database/xevent-db-diff-from-svr.md
+                - name: Genişletilmiş olaylar - olay dosyası
+                  href: database/xevent-code-event-file.md
+                - name: Genişletilmiş olaylar - halka arabelleği
+                  href: database/xevent-code-ring-buffer.md
+    - name: Paylaşılan Nasıl yapılır kaynakları
+      items:
+        - name: Kota artışı isteme
+          href: database/quota-increase-request.md
+        - name: İş otomasyonu
+          href: database/job-automation-overview.md
+        - name: İş sürekliliği
+          items:
+            - name: Yük devretme grubu yapılandırma
+              href: database/auto-failover-group-configure.md
+            - name: Zamana bağlı saklama ilkesini yapılandırma
+              href: database/temporal-tables-retention-policy.md
+            - name: Azure Blob depolamayı kullanarak yedekleme tutma süresini yapılandırma
+              href: database/long-term-backup-retention-configure.md
+        - name: Güvenlik
+          items:
+            - name: KAG ile TDE Yapılandırması
+              href: database/transparent-data-encryption-byok-configure.md
+            - name: Güvenlik açığı taramalarını depolama alanında depolama
+              href: database/sql-database-vulnerability-assessment-storage.md
+            - name: Always Encrypted
+              items:
+                - name: Azure Key Vault kullanma
+                  href: database/always-encrypted-azure-key-vault-configure.md
+                - name: Sertifika depolama alanını kullanma
+                  href: database/always-encrypted-certificate-store-configure.md
+        - name: İzleme ve ayarlama
+          items:
+            - name: Sorgu performansı sorunlarını tanımlama
+              href: identify-query-performance-issues.md
+            - name: Performans için toplu işlem oluşturma
+              href: performance-improve-use-batching.md
+            - name: BCP ile veri yükleme
+              href: load-from-csv-with-bcp.md
+            - name: Uygulama ve veritabanı ayarlama kılavuzu
+              href: database/performance-guidance.md
+            - name: Performansı izlemek için DMV’leri kullanma
+              href: database/monitoring-with-dmvs.md
+            - name: Tanılama telemetrisini günlüğe kaydetme
+              href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
+            - name: Bellek içi OLTP
+              items:
+                - name: Bellek içi OLTP’yi yapılandırma
+                  href: in-memory-oltp-configure.md
+                - name: Bellek içi özellikleri deneme
+                  href: in-memory-sample.md
+                - name: Bellek İçi OLTP alanını izleme
+                  href: in-memory-oltp-monitor-space.md
+        - name: Verileri yükleme ve taşıma
+          items:
+            - name: BACPAC dosyasından veritabanını içeri aktarma
+              href: database/database-import.md
+            - name: BACPAC dosyasından veritabanını dışarı aktarma
+              href: database/database-export.md
+            - name: Kaynakları yeni bir bölgeye taşıma
+              href: database/move-resources-across-regions.md
+            - name: ADF ile veri yükleme
+              href: ../data-factory/connector-azure-sql-database.md?toc=/azure/azure-sql/toc.json
+        - name: Veri uygulamaları geliştirme
+          items:
+            - name: Genel Bakış
+              href: database/develop-overview.md
+            - name: JSON verileriyle çalışma
+              href: database/json-features.md
+            - name: Spark Bağlayıcısı kullanma
+              href: database/spark-connector.md
+            - name: ASP.NET App Service'i kullanma
+              href: /azure/app-service/app-service-web-tutorial-dotnet-sqldatabase?toc=/azure/azure-sql/toc.json
+            - name: Azure İşlevleri’ni kullanma
+              href: /azure/azure-functions/functions-scenario-database-table-cleanup?toc=/azure/azure-sql/toc.json
+            - name: Azure Logic Apps'i kullanma
+              href: /azure/connectors/connectors-create-api-sqlazure?toc=/azure/azure-sql/toc.json
+            - name: Azure Bilişsel Arama ile dizinleme
+              href: /azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers?toc=/azure/azure-sql/toc.json
+            - name: Sunucu tarafı CLR/.NET tümleştirmesi
+              href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json'
+            - name: Java
+              items:
+                - name: Spring Verilerini Kullanma JDBC
+                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                - name: Spring Verilerini Kullanma JPA
+                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/sql-database/toc.json
+- name: SQL Veritabanı (SQL DB)
+  items:
+    - name: Belgeler
+      href: database/index.yml
+    - name: Genel Bakış
+      items:
+        - name: SQL Database nedir?
+          href: database/sql-database-paas-overview.md
+        - name: Tek veritabanları
+          href: database/single-database-overview.md
+        - name: Esnek havuzlar
+          href: database/elastic-pool-overview.md
+        - name: Mantıksal SQL sunucuları
+          href: database/logical-servers.md
+        - name: Sürüm notları
+          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
+        - name: Hizmet Katmanları
+          items:
+            - name: Sunucusuz
+              href: database/serverless-tier-overview.md
+            - name: DTU modeline genel bakış
+              href: database/service-tiers-dtu.md
+            - name: Hiper Ölçek
+              href: database/service-tier-hyperscale.md
+            - name: Hiper Ölçek hakkında SSS
+              href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+            - name: Premium RS'den geçiş
+              href: database/service-tiers-prs.md
+    - name: Hızlı Başlangıçlar
+      href: database/quickstart-content-reference-guide.md
+      items:
+        - name: Veritabanı oluşturma
+          items:
+            - name: Azure portal
+              href: database/single-database-create-quickstart.md
+            - name: ARM şablonu
+              displayName: Resource Manager
+              href: database/single-database-create-arm-template-quickstart.md
+        - name: Yapılandırma
+          items:
+            - name: Sunucu düzeyinde IP güvenlik duvarı kuralları
+              href: database/firewall-create-server-level-portal-quickstart.md
+    - name: Öğreticiler
+      items:
+        - name: Veritabanı tasarlama
+          items:
+            - name: SMSS kullanarak veritabanı tasarlama
+              href: database/design-first-database-tutorial.md
+            - name: .NET kullanarak veritabanı tasarlama
+              href: database/design-first-database-csharp-tutorial.md
+        - name: İş sürekliliği
+          items:
+            - name: Yük devretme grubuna veritabanı ekleme
+              href: database/failover-group-add-single-database-tutorial.md
+            - name: Yük devretme grubuna havuz ekleme
+              href: database/failover-group-add-elastic-pool-tutorial.md
+            - name: Çoğaltmalar için güvenliği yapılandırma
+              href: database/active-geo-replication-security-configure.md
+            - name: Coğrafi olarak dağıtılmış uygulama
+              href: database/geo-distributed-application-configure-tutorial.md
+            - name: Etkin coğrafi çoğaltma
+              href: database/active-geo-replication-configure-portal.md
+        - name: Güvenlik
+          items:
+            - name: Güvenliği yapılandırma
+              href: database/secure-database-tutorial.md
+            - name: TDE KAG anahtarlarını döndürme
+              href: database/transparent-data-encryption-byok-key-rotation.md
+            - name: TDE koruyucusunu kaldırma
+              href: database/transparent-data-encryption-byok-remove-tde-protector.md
+        - name: Veri taşıma
+          items:
+            - name: DMS kullanarak geçiş
+              href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/azure-sql/toc.json
+            - name: SQL Data Sync’i ayarlama
+              href: database/sql-data-sync-sql-server-configure.md
+            - name: SQLite’ı sunucusuza geçirme
+              href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+    - name: Kavramlar
+      items:
+        - name: Bağlantı mimarisi
+          href: database/connectivity-architecture.md
+        - name: Bağlantı ayarları
+          href: database/connectivity-settings.md
+        - name: Okuma Amaçlı Ölçeği Genişletme
+          href: database/read-scale-out.md
+        - name: T-SQL farklılıkları
+          href: database/transact-sql-tsql-differences-sql-server.md
+        - name: Azure Otomasyonu
+          href: database/automation-manage.md
+        - name: Esnek sorgular
+          href: database/elastic-query-overview.md
+        - name: Elastik işlemler
+          href: database/elastic-transactions-overview.md
+        - name: Kaynak yönetimi
+          items:
+            - name: Tek veritabanı kaynakları
+              items:
+                - name: Sanal çekirdek kaynak sınırları
+                  href: database/resource-limits-vcore-single-databases.md
+                - name: DTU kaynak sınırları
+                  href: database/resource-limits-dtu-single-databases.md
+            - name: Elastik havuz kaynakları
+              items:
+                - name: Sanal çekirdek kaynak sınırları
+                  href: database/resource-limits-vcore-elastic-pools.md
+                - name: DTU kaynak sınırları
+                  href: database/resource-limits-dtu-elastic-pools.md
+            - name: Mantıksal SQL sunucu kaynakları
+              items:
+                - name: Veritabanı kaynak sınırları
+                  href: database/resource-limits-logical-server.md
+        - name: İş sürekliliği
+          items:
+            - name: Etkin coğrafi çoğaltma
+              href: database/active-geo-replication-overview.md
+            - name: Kesinti kurtarma kılavuzu
+              href: database/disaster-recovery-guidance.md
+            - name: Kurtarma tatbikatları
+              href: database/disaster-recovery-drills.md
+        - name: SQL Data Sync
+          items:
+            - name: Genel Bakış
+              href: database/sql-data-sync-data-sql-server-sql-database.md
+            - name: Veri Eşitleme Aracısı
+              href: database/sql-data-sync-agent-overview.md
+            - name: Data Sync için en iyi deneyimler
+              href: database/sql-data-sync-best-practices.md
+            - name: Data Sync’de sorun giderme
+              href: database/sql-data-sync-troubleshoot.md
+        - name: Güvenlik
+          items:
+            - name: Azure SQL Denetimi
+              href: database/auditing-overview.md
+            - name: Denetim günlüğü biçimi
+              href: database/audit-log-format.md
+            - name: Ağ erişim denetimleri
+              href: database/network-access-controls-overview.md
+            - name: DNS diğer adları
+              href: database/dns-alias-overview.md
+            - name: vNet uç noktaları
+              href: database/vnet-service-endpoint-rule-overview.md
+            - name: Özel Bağlantı
+              href: database/private-endpoint-overview.md
+        - name: Machine Learning Services
+          items:
+            - name: Genel Bakış
+              href: database/machine-learning-services-overview.md
+            - name: Temel farklılıklar
+              href: database/machine-learning-services-differences.md
+            - name: Hızlı Başlangıçlar
+              items:
+                - name: R betikleri oluşturma
+                  href: database/r-script-create-quickstart.md
+                - name: Modeli eğitme ve puanlama
+                  href: database/r-train-score-model-create-quickstart.md
+            - name: Öğreticiler
+              items:
+                - name: R’de tahmine dayalı model oluşturma
+                  items:
+                    - name: 1 - Verileri hazırlama
+                      href: database/predictive-model-prepare-data-tutorial.md
+                    - name: 2 - Modeli oluşturma
+                      href: database/predictive-model-build-compare-tutorial.md
+                    - name: 3 - Modeli dağıtma
+                      href: database/predictive-model-deploy-tutorial.md
+                - name: R’de kümeleme modeli oluşturma
+                  items:
+                    - name: 1 - Verileri hazırlama
+                      href: database/clustering-model-prepare-data-tutorial.md
+                    - name: 2 - Modeli oluşturma
+                      href: database/clustering-model-build-tutorial.md
+                    - name: 3 - Modeli dağıtma
+                      href: database/clustering-model-deploy-tutorial.md
+            - name: Nasıl yapılır
+              items:
+                - name: Gelişmiş R işlevleri yazma
+                  href: database/machine-learning-services-functions.md
+                - name: R ve SQL verileriyle çalışma
+                  href: database/machine-learning-services-data-issues.md
+                - name: R paketleri ekleme
+                  href: database/machine-learning-services-add-r-packages.md
+        - name: Veritabanı parçalama
+          items:
+            - name: Veritabanı parçalama
+              href: database/elastic-scale-introduction.md
+            - name: Sözlük
+              href: database/elastic-scale-glossary.md
+            - name: Elastik istemci kitaplığı
+              href: database/elastic-database-client-library.md
+            - name: Parça eşlemeleri
+              href: database/elastic-scale-shard-map-management.md
+            - name: Sorgu yönlendirme
+              href: database/elastic-scale-data-dependent-routing.md
+            - name: Kimlik bilgilerini yönetme
+              href: database/elastic-scale-manage-credentials.md
+            - name: Parçalı verileri taşıma
+              href: database/elastic-scale-overview-split-and-merge.md
+            - name: Elastik araçlar hakkında SSS
+              href: database/elastic-scale-faq.md
+    - name: Nasıl yapılır
+      href: database/how-to-content-reference-guide.md
+      items:
+        - name: Bağlanma ve sorgulama
+          href: database/connect-query-content-reference-guide.md
+          items:
+            - name: Geçici sorgular oluşturma ve çalıştırma
+              items:
+                - name: Azure Data Studio
+                  href: 'https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json'
+                - name: SSMS
+                  href: database/connect-query-ssms.md
+                - name: Azure portal
+                  href: database/connect-query-portal.md
+                - name: VS Code
+                  href: database/connect-query-vscode.md
+            - name: Uygulamalardan bağlanma ve sorgu yürütme
+              items:
+                - name: Visual Studio ile .NET
+                  href: database/connect-query-dotnet-visual-studio.md
+                - name: .NET Core
+                  href: database/connect-query-dotnet-core.md
+                - name: Active Directory MFA ile .NET
+                  href: database/active-directory-interactive-connect-azure-sql-db.md
+                - name: Başlayın
+                  href: database/connect-query-go.md
+                - name: Java
+                  href: database/connect-query-java.md
+                - name: Node.js
+                  href: database/connect-query-nodejs.md
+                - name: PHP
+                  href: database/connect-query-php.md
+                - name: Python
+                  href: database/connect-query-python.md
+                - name: Ruby
+                  href: database/connect-query-ruby.md
+                - name: R
+                  href: database/connect-query-r.md
+        - name: Yönetme
+          items:
+            - name: Yönetim API'si başvurusu
+              href: database/single-database-manage.md
+            - name: DNS diğer adı PowerShell
+              href: database/dns-alias-powershell-create.md
+            - name: Dosya alanını yönetme
+              href: database/file-space-manage.md
+            - name: Bağlantı sorunları için Kaynak Durumu kullanma
+              href: database/resource-health-to-troubleshoot-connectivity.md
+            - name: DTU’yu sanal çekirdeğe geçirme
+              href: database/resource-health-to-troubleshoot-connectivity.md
+            - name: Veritabanı kaynaklarını ölçeklendirme
+              href: database/single-database-scale.md
+            - name: Havuz kaynaklarını ölçeklendirme
+              href: database/elastic-pool-scale.md
+            - name: Havuz kaynaklarını yönetme
+              href: database/elastic-pool-manage.md
+            - name: Yoğun elastik havuzlardaki kaynak yönetimi
+              href: database/elastic-pool-resource-management.md
+            - name: Hiper ölçek performans tanılama
+              href: database/hyperscale-performance-diagnostics.md
+        - name: Güvenlik
+          items:
+            - name: Sanal ağ veya güvenlik duvarının arkasındaki depolama hesabına yönelik denetim
+              href: database/audit-write-storage-account-behind-vnet-firewall.md
+            - name: Tehdit algılamayı yapılandırma
+              href: database/threat-detection-configure.md
+            - name: Dinamik veri maskelemeyi yapılandırma
+              href: database/dynamic-data-masking-configure-portal.md
+            - name: IP tabanlı güvenlik duvarı
+              href: database/firewall-configure.md
+            - name: vNet uç noktaları - PowerShell
+              href: database/scripts/vnet-service-endpoint-rule-powershell-create.md
+        - name: İş sürekliliği
+          items:
+            - name: Azure Blob depolamayı kullanarak yedekleme tutma süresini yapılandırma
+              href: database/long-term-backup-retention-configure.md
+            - name: Coğrafi çoğaltmayı yapılandırma - Portal
+              href: database/active-geo-replication-configure-portal.md
+            - name: Coğrafi çoğaltmalar için güvenliği yapılandırma
+              href: database/active-geo-replication-security-configure.md
+        - name: Performans
+          items:
+            - name: Sorgu Performansı İçgörüleri’ni kullanma
+              href: database/query-performance-insight-use.md
+            - name: Otomatik ayarlamayı etkinleştirme
+              href: database/automatic-tuning-enable.md
+            - name: E-posta bildirimlerinde otomatik ayarlamayı etkinleştirme
+              href: database/automatic-tuning-email-notifications-configure.md
+            - name: Performans önerilerini uygulama
+              href: database/database-advisor-find-recommendations-portal.md
+            - name: Uyarı oluşturma
+              href: database/alerts-insights-configure-portal.md
+            - name: Veritabanı danışmanı önerilerini uygulama
+              href: database/database-advisor-implement-performance-recommendations.md
+            - name: Stream Analytics ile verilerin akışını yapma
+              href: database/stream-data-stream-analytics-integration.md
+        - name: Verileri yükleme ve taşıma
+          items:
+            - name: SQL Veritabanına geçiş
+              href: database/migrate-to-database-from-sql-server.md
+            - name: Geçişten sonra SQL veritabanını yönetme
+              href: database/manage-data-after-migrating-to-database.md
+            - name: İçeri/dışarı aktarma (Azure hizmetlerinin devre dışı çalışmasına izin verme)
+              href: database/database-import-export-azure-services-off.md
+            - name: BACPAC dosyasından veritabanını içeri aktarma
+              href: database/database-import.md
+            - name: Azure’da bir veritabanını kopyalama
+              href: database/database-copy.md
+            - name: SQL Veritabanı’na çoğaltma
+              href: database/replication-to-sql-database.md
+            - name: SQL Data Sync
+              items:
+                - name: Şema değişikliklerini çoğaltma
+                  href: database/sql-data-sync-update-sync-schema.md
+                - name: OMS ile izleme
+                  href: database/sql-data-sync-monitor-sync.md
+        - name: Veritabanı parçalama
+          items:
+            - name: İstemci kitaplığını yükseltme
+              href: database/elastic-scale-upgrade-client-library.md
+            - name: Parçalı uygulama oluşturma
+              href: database/elastic-scale-get-started.md
+            - name: Yatay olarak parçalı verileri sorgulama
+              href: database/elastic-query-getting-started.md
+            - name: Çok parçalı sorgular
+              href: database/elastic-scale-multishard-querying.md
+            - name: Parçalı verileri taşıma
+              href: database/elastic-scale-configure-deploy-split-and-merge.md
+            - name: Güvenlik yapılandırması
+              href: database/elastic-scale-split-merge-security-configuration.md
+            - name: Parça ekleme
+              href: database/elastic-scale-add-a-shard.md
+            - name: Parça eşleme sorunlarını giderme
+              href: database/elastic-database-recovery-manager.md
+            - name: Parçalı veritabanını geçirme
+              href: database/elastic-convert-to-use-elastic-tools.md
+            - name: Sayaç oluşturma
+              href: database/elastic-database-perf-counters.md
+            - name: Entity framework kullanma
+              href: database/elastic-scale-use-entity-framework-applications-visual-studio.md
+            - name: Dapper çerçevesini kullanma
+              href: database/elastic-scale-working-with-dapper.md
+        - name: Sorgu dağıtılmış verileri
+          items:
+            - name: Dikey olarak bölümlenmiş verileri sorgulama
+              href: database/elastic-query-getting-started-vertical.md
+            - name: Ölçeklendirilmiş veri katmanı üzerinden raporlama
+              href: database/elastic-query-horizontal-partitioning.md
+            - name: Farklı şemalarla tablolar üzerinden sorgulama
+              href: database/elastic-query-vertical-partitioning.md
+        - name: Esnek işler
+          items:
+            - name: İşleri yapılandırma
+              href: database/elastic-jobs-overview.md
+            - name: Oluşturma ve yönetme (PowerShell)
+              href: database/elastic-jobs-powershell-create.md
+            - name: Oluşturma ve yönetme (T-SQL)
+              href: database/elastic-jobs-tsql-create-manage.md
+            - name: Geçirme (eski Elastik işlerden)
+              href: database/elastic-jobs-migrate.md
+        - name: Veri uygulamaları tasarımı
+          items:
+            - name: Uygulamanın kimliğini doğrulama
+              href: database/application-authentication-get-client-id-keys.md
+            - name: Olağanüstü durum kurtarmaya yönelik tasarım
+              href: database/designing-cloud-solutions-for-disaster-recovery.md
+            - name: Elastik havuzlara yönelik tasarım
+              href: database/disaster-recovery-strategies-for-applications-with-elastic-pool.md
+            - name: Uygulama yükseltmelerine yönelik tasarım
+              href: database/manage-application-rolling-upgrade.md
+            - name: C ve C++
+              href: database/develop-cplusplus-simple.md
+            - name: Excel
+              href: database/connect-excel.md
+            - name: Bağlantı noktaları - ADO.NET
+              href: database/adonet-v12-develop-direct-route-ports.md
+            - name: Çok kiracılı SaaS
+              items:
+                - name: SaaS tasarım desenleri
+                  href: database/saas-tenancy-app-design-patterns.md
+                - name: SaaS video dizinleyicisi
+                  href: database/saas-tenancy-video-index-wingtip-brk3120-20171011.md
+                - name: SaaS uygulama güvenliği
+                  href: database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
+                - name: Çok kiracılı SaaS örnek uygulaması
+                  items:
+                    - name: Wingtip Tickets örneği
+                      href: database/saas-tenancy-welcome-wingtip-tickets-app.md
+                    - name: Genel kılavuz
+                      href: database/saas-tenancy-wingtip-app-guidance-tips.md
+                    - name: Tek uygulama
+                      items:
+                        - name: Örnek uygulamayı dağıtma
+                          href: database/saas-standaloneapp-get-started-deploy.md
+                        - name: Kiracı sağlama
+                          href: database/saas-standaloneapp-provision-and-catalog.md
+                    - name: Kiracı başına veritabanı
+                      items:
+                        - name: Öğreticiye giriş
+                          href: database/saas-dbpertenant-wingtip-app-overview.md
+                        - name: Örnek uygulamayı dağıtma
+                          href: database/saas-dbpertenant-get-started-deploy.md
+                        - name: Kiracı sağlama
+                          href: database/saas-dbpertenant-provision-and-catalog.md
+                        - name: Veritabanı performansını izleme
+                          href: database/saas-dbpertenant-performance-monitoring.md
+                        - name: Azure İzleyici günlükleri ile izleme
+                          href: database/saas-dbpertenant-log-analytics.md
+                        - name: Bir kiracıyı geri yükleme
+                          href: database/saas-dbpertenant-restore-single-tenant.md
+                        - name: Kiracı şemasını yönetme
+                          href: database/saas-tenancy-schema-management.md
+                        - name: Kiracılar arası raporlama
+                          href: database/saas-tenancy-cross-tenant-reporting.md
+                        - name: Kiracı analizi
+                          items:
+                            - name: SQL Veritabanı ile
+                              href: database/saas-tenancy-tenant-analytics.md
+                            - name: SQL Veri Ambarı ile
+                              href: database/saas-tenancy-tenant-analytics-adf.md
+                    - name: Coğrafi geri yüklemeyi kullanarak olağanüstü durum kurtarma
+                      href: database/saas-dbpertenant-dr-geo-restore.md
+                    - name: Coğrafi veri tabanı çoğaltmayı kullanarak olağanüstü durum kurtarma
+                      href: database/saas-dbpertenant-dr-geo-replication.md
+                - name: Çok kiracılı veritabanı
+                  items:
+                    - name: Örnek uygulamayı dağıtma
+                      href: database/saas-multitenantdb-get-started-deploy.md
+                    - name: Kiracı sağlama
+                      href: database/saas-multitenantdb-provision-and-catalog.md
+                    - name: Veritabanı performansını izleme
+                      href: database/saas-multitenantdb-performance-monitoring.md
+                    - name: Geçici sorgular çalıştırma
+                      href: database/saas-multitenantdb-adhoc-reporting.md
+                    - name: Kiracı şemasını yönetme
+                      href: database/saas-multitenantdb-schema-management.md
+                    - name: Analiz için ETL
+                      href: database/saas-multitenantdb-tenant-analytics.md
+    - name: Örnekler
+      items:
+        - name: Azure CLI
+          href: database/az-cli-script-samples-content-guide.md?tabs=single-database
+        - name: Azure PowerShell
+          href: database/powershell-script-content-guide.md?tabs=single-database
+        - name: Azure Resource Manager
+          href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Kod örnekleri
+          href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
+- name: SQL Yönetilen Örnek (SQL MI)
+  items:
+    - name: Belgeler
+      href: managed-instance/index.yml
+    - name: Genel Bakış
+      items:
+        - name: SQL Yönetilen Örnek nedir?
+          href: managed-instance/sql-managed-instance-paas-overview.md
+        - name: Örnek havuzları
+          href: managed-instance/instance-pools-overview.md
+        - name: Sık sorulan sorular
+          displayName: faq
+          href: managed-instance/frequently-asked-questions-faq.md
+        - name: Sürüm notları
+          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
+    - name: Hızlı Başlangıçlar
+      href: managed-instance/quickstart-content-reference-guide.md
+      items:
+        - name: Oluştur
+          items:
+            - name: Azure portalını kullanma
+              href: managed-instance/instance-create-quickstart.md
+            - name: PowerShell’i kullanma
+              href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+            - name: Örnek havuzları oluşturma
+              href: managed-instance/instance-pools-configure.md
+        - name: Yapılandırma
+          items:
+            - name: Hizmet destekli alt ağ yapılandırması
+              href: managed-instance/subnet-service-aided-configuration-enable.md
+            - name: Genel uç nokta
+              href: managed-instance/public-endpoint-configure.md
+            - name: En düşük TLS sürümü
+              href: managed-instance/minimal-tls-version-configure.md
+            - name: İstemci VM bağlantısı
+              href: managed-instance/connect-vm-instance-configure.md
+            - name: Noktadan siteye bağlantılar
+              href: managed-instance/point-to-site-p2s-configure.md
+            - name: Uzun süreli yedek saklama
+              href: managed-instance/long-term-backup-retention-configure.md
+        - name: Veri yükleme
+          items:
+            - name: Örnek veritabanını geri yükleme
+              href: managed-instance/restore-sample-database-quickstart.md
+    - name: Öğreticiler
+      items:
+        - name: DMS kullanarak geçiş
+          href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/azure-sql/toc.json
+        - name: Güvenliği yapılandırma
+          href: managed-instance/aad-security-configure-tutorial.md
+        - name: Yük devretme grubuna örnek ekleme
+          href: managed-instance/failover-group-add-instance-tutorial.md
+        - name: Şirket içi kullanıcıları ve grupları geçirme
+          href: managed-instance/migrate-sql-server-users-to-instance-transact-sql-tsql-tutorial.md
+        - name: İşlem çoğaltması
+          items:
+            - name: MI pub - MI sub
+              href: managed-instance/replication-between-two-instances-configure-tutorial.md
+            - name: 'MI pub, MI dist, SQL sub'
+              href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
+    - name: Kavramlar
+      items:
+        - name: İşlem çoğaltması
+          href: managed-instance/replication-transactional-overview.md
+        - name: Yönetim API'si başvurusu
+          href: managed-instance/api-references-create-manage-instance.md
+        - name: Kaynak sınırları
+          href: managed-instance/resource-limits.md
+        - name: Bağlantı mimarisi
+          href: managed-instance/connectivity-architecture-overview.md
+        - name: T-SQL farklılıkları
+          href: managed-instance/transact-sql-tsql-differences-sql-server.md
+        - name: Machine Learning Services
+          items:
+            - name: Genel Bakış
+              href: managed-instance/machine-learning-services-overview.md
+            - name: Temel farklılıklar
+              href: managed-instance/machine-learning-services-differences.md
+            - name: Hızlı Başlangıçlar
+              items:
+                - name: Python
+                  items:
+                    - name: Python betiklerini çalıştırma
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Veri yapıları ve nesneler
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-data-structures?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Python işlevleri
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Modeli eğitme ve puanlama
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: R
+                  items:
+                    - name: R betiklerini çalıştırma
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Veri türleri ve nesneler
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-data-types-and-objects?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: R işlevleri
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Modeli eğitme ve puanlama
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+            - name: Öğreticiler
+              items:
+                - name: Python
+                  items:
+                    - name: Kayak kiralama (doğrusal regresyon)
+                      items:
+                        - name: 1 - Giriş
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2 - Verileri hazırlama
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3 - Modeli eğitme
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4 - Modeli dağıtma
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Müşterileri kategorilere ayırma (k-ortalamalar kümelemesi)
+                      items:
+                        - name: 1 - Giriş
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2 - Verileri hazırlama
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3 - Modeli oluşturma
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4 - Modeli dağıtma
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: R
+                  items:
+                    - name: Kayak kiralama (karar ağacı)
+                      items:
+                        - name: 1 - Giriş
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2 - Verileri hazırlama
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3 - Modeli eğitme
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-train?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4 - Modeli dağıtma
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Müşterileri kategorilere ayırma (k-ortalamalar kümelemesi)
+                      items:
+                        - name: 1 - Giriş
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2 - Verileri hazırlama
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3 - Modeli oluşturma
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4 - Modeli dağıtma
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+            - name: 'Python, R paketlerini yönetme'
+              items:
+                - name: Python
+                  items:
+                    - name: Python paket bilgilerini alma
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Sqlmlutils ile yükleme
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: R
+                  items:
+                    - name: R paket bilgilerini alma
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Sqlmlutils ile yükleme
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: MiniCRAN deposu oluşturma
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: R paketlerini kullanmaya yönelik ipuçları
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+        - name: Özellikler
+          items:
+            - name: Bağlı sunucular
+              href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/azure-sql/toc.json'
+            - name: Hizmet Aracısı
+              href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
+            - name: Veritabanı posta
+              href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
+        - name: Güvenlik
+          items:
+            - name: Genel uç noktaların güvenliğini sağlama
+              href: managed-instance/public-endpoint-overview.md
+            - name: Denetim
+              href: managed-instance/auditing-configure.md
+    - name: Nasıl yapılır
+      items:
+        - name: Genel Bakış
+          href: managed-instance/how-to-content-reference-guide.md
+        - name: SQL Yönetilen Örneğe geçirme
+          href: managed-instance/migrate-to-instance-from-sql-server.md
+        - name: Saat dilimini özelleştirme
+          href: managed-instance/timezones-overview.md
+        - name: Bağlantı türlerini yapılandırma
+          href: managed-instance/connection-types-overview.md
+        - name: TDE sertifikasını geçirme
+          href: managed-instance/tde-certificate-migrate.md
+        - name: Belirli bir noktadan önceye geri yükleme
+          href: managed-instance/point-in-time-restore.md
+        - name: Yönetilen örnek alt ağının boyutunu belirleme
+          href: managed-instance/vnet-subnet-determine-size.md
+        - name: Yönetilen örnek için yeni VNet ve alt ağ oluşturma
+          href: managed-instance/virtual-network-subnet-create-arm-template.md
+        - name: Yönetilen örnek için mevcut VNet’i ve alt ağı yapılandırma
+          href: managed-instance/vnet-existing-add-subnet.md
+        - name: Yönetilen örneği sildikten sonra alt ağı silme
+          href: managed-instance/virtual-cluster-delete.md
+        - name: Özel API'yi yapılandırma
+          href: managed-instance/custom-dns-configure.md
+        - name: Eşitleme ağı yapılandırması
+          href: managed-instance/azure-app-sync-network-configuration.md
+        - name: Yönetim uç noktası IP adresini bulma
+          href: managed-instance/management-endpoint-find-ip-address.md
+        - name: Yerleşik güvenlik duvarı korumasını doğrulama
+          href: managed-instance/management-endpoint-verify-built-in-firewall.md
+        - name: Tehdit algılamayı yapılandırma
+          href: managed-instance/threat-detection-configure.md
+        - name: Uygulamaları bağlama
+          href: managed-instance/connect-application-instance.md
+        - name: Uyarı oluşturma
+          href: managed-instance/alerts-create.md
+    - name: Örnekler
+      items:
+        - name: Azure CLI
+          href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
+        - name: Azure PowerShell
+          href: database/powershell-script-content-guide.md?tabs=managed-instance
+        - name: Azure Resource Manager
+          href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Kod örnekleri
+          href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
+- name: Azure VM’lerde SQL Server
+  items:
+    - name: Belgeler
+      href: virtual-machines/index.yml
+    - name: Windows
+      items:
+        - name: Genel Bakış
+          items:
+            - name: SQL Server VM nedir?
+              href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+            - name: Belge değişiklikleri
+              href: virtual-machines/windows/doc-changes-updates-release-notes.md
+        - name: Hızlı Başlangıçlar
+          items:
+            - name: SQL VM Oluşturma - Portal
+              href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
+            - name: SQL VM Oluşturma - PowerShell
+              href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
+        - name: Kavramlar
+          items:
+            - name: En iyi uygulamalar
+              items:
+                - name: Performans için en iyi yöntemler
+                  href: virtual-machines/windows/performance-guidelines-best-practices.md
+                - name: Güvenlikle ilgili dikkat edilmesi gerekenler
+                  href: virtual-machines/windows/security-considerations-best-practices.md
+                - name: Uygulama desenleri
+                  href: virtual-machines/windows/application-patterns-development-strategies.md
+            - name: İş Sürekliliği
+              items:
+                - name: Yüksek kullanılabilirlik seçenekleri
+                  href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+                - name: AlwaysOn kullanılabilirlik grubu
+                  href: virtual-machines/windows/availability-group-overview.md
+                - name: Yedekleme ve geri yükleme
+                  href: virtual-machines/windows/backup-restore.md
+                - name: SQL Server 2014 için otomatik yedekleme
+                  href: virtual-machines/windows/automated-backup-sql-2014.md
+                - name: SQL Server 2016+ için otomatik yedekleme
+                  href: virtual-machines/windows/automated-backup.md
+            - name: Yönetim
+              items:
+                - name: Ayrılmış konak
+                  href: virtual-machines/windows/dedicated-host.md
+                - name: Azure portal ile
+                  href: virtual-machines/windows/manage-sql-vm-portal.md
+                - name: SQL 2008 ve R2 için genişletilmiş destek
+                  href: virtual-machines/windows/sql-server-2008-extend-end-of-support.md
+                - name: Bir VM’ye bağlanma
+                  href: virtual-machines/windows/ways-to-connect-to-sql.md
+                - name: Depolama alanını yapılandırma
+                  href: virtual-machines/windows/storage-configuration.md
+                - name: Yönetim görevlerini otomatik hale getirme
+                  items:
+                    - name: SQL Server IaaS Aracısı Uzantısını kullanma
+                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
+                    - name: Otomatik Düzeltme Eki Uygulama
+                      href: virtual-machines/windows/automated-patching.md
+                    - name: Azure Key Vault Tümleştirme Yapılandırması
+                      href: virtual-machines/windows/azure-key-vault-integration-configure.md
+        - name: Nasıl yapılır kılavuzları
+          items:
+            - name: SQL VM oluşturma
+              items:
+                - name: Portalı kullanma
+                  href: virtual-machines/windows/create-sql-vm-portal.md
+                - name: Azure PowerShell kullanma
+                  href: virtual-machines/windows/create-sql-vm-powershell.md
+            - name: SQL VM RP ile kaydolma
+              displayName: 'resource provider, registration'
+              items:
+                - name: Tek VM
+                  href: virtual-machines/windows/sql-vm-resource-provider-register.md
+                - name: Birden fazla VM'yi toplu kaydetme
+                  href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
+            - name: Yönetme
+              items:
+                - name: Lisanslama modeli
+                  displayName: 'ahb, ahub, payg, change, modify, update'
+                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+                - name: Sürüm
+                  displayName: 'change, modify, update'
+                  href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Yedekleme ve geri yükleme için Azure Depolama
+                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+            - name: Geçiş
+              items:
+                - name: SQL Server veritabanından VM'ye
+                  href: virtual-machines/windows/migrate-to-vm-from-sql-server.md
+                - name: Yeni bir bölgeye yönelik VM
+                  href: virtual-machines/windows/move-sql-vm-different-region.md
+            - name: Yüksek Kullanılabilirliği Yapılandırma
+              items:
+                - name: AlwaysOn kullanılabilirlik grubu
+                  items:
+                    - name: Azure SQL VM CLI
+                      href: virtual-machines/windows/availability-group-az-cli-configure.md
+                    - name: Azure portalı şablonu
+                      href: virtual-machines/windows/availability-group-azure-marketplace-template-configure.md
+                    - name: Azure Hızlı Başlangıç şablonları
+                      href: virtual-machines/windows/availability-group-quickstart-template-configure.md
+                    - name: Birden çok bölge
+                      href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
+                    - name: Etki alanından bağımsız (çalışma grubu)
+                      href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
+                    - name: El ile yapılandırma
+                      items:
+                        - name: Ön koşullar
+                          href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
+                        - name: Öğretici
+                          href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
+                        - name: Yük dengeleyici - Azure portalı
+                          href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
+                        - name: Yük dengeleyici - Azure PowerShell
+                          href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                - name: Yük Devretme Kümesi Örneği
+                  items:
+                    - name: Depolama Alanları Doğrudan ile
+                      href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+                    - name: Premium Dosya Paylaşımı ile
+                      href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+        - name: Başvuru
+          items:
+            - name: Azure PowerShell
+              href: /powershell/azure/overview
+            - name: Azure CLI
+              href: /cli/azure/
+            - name: T-SQL
+              href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
+            - name: SQL Server Sürücüleri
+              href: 'https://docs.microsoft.com/sql/connect/sql-connection-libraries'
+            - name: REST
+              href: /rest/api/
+        - name: Kaynaklar
+          items:
+            - name: SSS
+              href: virtual-machines/windows/frequently-asked-questions-faq.md
+            - name: Fiyatlandırma
+              href: virtual-machines/windows/pricing-guidance.md
+            - name: SQL Server Veri Araçları (SSDT)
+              href: '/https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
+            - name: SQL Server Management Studio (SSMS)
+              href: 'https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms'
+            - name: SQL Server Araçları
+              href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
+            - name: Azure Yol Haritası
+              href: 'https://azure.microsoft.com/roadmap/?category=compute'
+            - name: MSDN forumu
+              href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
+            - name: Stack Overflow
+              href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+    - name: Linux
+      items:
+        - name: Genel Bakış
+          items:
+            - name: Linux SQL Server VM’leri hakkında
+              href: virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md
+        - name: Hızlı Başlangıçlar
+          items:
+            - name: SQL VM Oluşturma - Portal
+              href: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+        - name: Öğreticiler
+          items:
+            - name: STONITH ile Azure RHEL VM kullanılabilirlik grubunu ayarlama
+              href: virtual-machines/linux/rhel-high-availability-stonith-tutorial.md
+            - name: Azure’daki RHEL sanal makineleri üzerinde SQL Server için kullanılabilirlik grubu dinleyicisini yapılandırma
+              href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
+        - name: Kaynaklar
+          items:
+            - name: SSS
+              href: virtual-machines/linux/frequently-asked-questions-faq.md
+            - name: Linux üzerinde SQL Server belgeleri
+              href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
+            - name: SQL Server Veri Araçları (SSDT)
+              href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
+            - name: SQL Server Araçları
+              href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
+            - name: Azure Yol Haritası
+              href: 'https://azure.microsoft.com/roadmap/?category=compute'
+            - name: Stack Overflow
+              href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+- name: Başvuru
+  items:
+    - name: T-SQL dil başvurusu
+      href: /sql/t-sql/language-reference
+    - name: Azure CLI
+      href: /cli/azure/sql
+    - name: Azure PowerShell
+      href: /powershell/module/az.sql
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.sql.models
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.sql
+    - name: REST
+      href: /rest/api/sql/
+    - name: SQL için Resource Manager şablonları
+      displayName: ARM
+      href: /azure/templates/microsoft.sql/allversions
+    - name: SQL araçları
+      href: /sql/tools/overview-sql-tools
+    - name: SQL Server Management Studio (SSMS)
+      href: /sql/ssms/download-sql-server-management-studio-ssms
+    - name: SQL Server Veri Araçları (SSDT)
+      href: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - name: BCP
+      href: /sql/tools/bcp-utility
+    - name: SQLCMD
+      href: /sql/tools/sqlcmd-utility
+    - name: SqlPackage
+      href: 'https://docs.microsoft.com/sql/tools/sqlpackage?toc=/azure/azure-sql/toc.json'
+    - name: SQL Veritabanı Yönetim Kitaplığı paketi
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Sql'
+    - name: SQL bağlantı dizeleri
+      href: /sql/connect/sql-connection-libraries
+    - name: SQL Server sürücüleri
+      href: /sql/connect/sql-server-drivers
+      items:
+        - name: ADO.NET
+          href: /sql/connect/ado-net/microsoft-ado-net-for-sql-server
+        - name: JDBC
+          href: /sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server
+        - name: Node.js
+          href: /sql/connect/node-js/node-js-driver-for-sql-server
+        - name: ODBC
+          href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
+        - name: PHP
+          href: /sql/connect/php/microsoft-php-driver-for-sql-server
+        - name: Python
+          href: /sql/connect/python/python-driver-for-sql-server
+        - name: Ruby
+          href: /sql/connect/ruby/ruby-driver-for-sql-server
+- name: Kaynaklar
+  items:
+    - name: Microsoft Learn ile becerilerinizi geliştirin
+      href: /learn/browse/?products=azure-sql-database
+    - name: SQL Server Blogu
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: Microsoft Azure Blogu
+      href: 'https://azure.microsoft.com/blog/'
+    - name: Azure Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Genel veri kümeleri
+      href: public-data-sets.md
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
+    - name: MSDN forumu
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
+    - name: Sorun giderme
+      items:
+        - name: Bağlantı hataları
+          href: database/troubleshoot-common-errors-issues.md
+        - name: Yaygın bağlantı sorunları
+          href: database/troubleshoot-common-connectivity-issues.md
+        - name: İçeri/Dışarı aktarma hizmetinin yanıt vermemeye başlaması
+          href: database/database-import-export-hang.md
+    - name: Hizmet güncelleştirmeleri
+      items:
+        - name: Ağ geçidi IP adresi güncelleştirmeleri
+          href: database/gateway-migration.md
+        - name: Periyodik bakım olayları
+          href: database/planned-maintenance.md
+    - name: Videolar
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?service=sql-database'
+    - name: Mimari merkezi
+      href: /azure/architecture/
+    - name: Müşteri hikayeleri
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'

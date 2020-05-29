@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: de24895334ec4c864e6daae84a6aab47a47d7b9b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82103642"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830319"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>Hızlı Başlangıç: Bir Azure Resource Manager şablonuyla bütçe oluşturma
 
@@ -39,21 +39,23 @@ Aşağıdaki Azure izinleri veya kapsamları abonelik başına kullanıcı ve gr
 
 Maliyet Yönetimi verilerine izin atama hakkında daha fazla bilgi için bkz. [Maliyet Yönetimi verilerine erişim atama](assign-access-acm-data.md).
 
-## <a name="review-the-template"></a>Şablonu gözden geçirme
+## <a name="create-a-budget"></a>Bütçe oluşturma
+
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/create-budget) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
 
 Şablonda bir Azure kaynağı tanımlanmıştır:
 
 * [Microsoft.Consumption/budgets](/azure/templates/microsoft.consumption/budgets): Azure bütçesi oluşturma.
 
-## <a name="deploy-the-template"></a>Şablonu dağıtma
+### <a name="deploy-the-template"></a>Şablonu dağıtma
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir bütçe oluşturur.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json"><img src="./media/quick-create-budget-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
 
 2. Aşağıdaki değerleri seçin veya girin.
 
@@ -97,6 +99,37 @@ az consumption budget list
 
 ```azurepowershell-interactive
 Get-AzConsumptionBudget
+```
+
+---
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bütçeye ihtiyacınız olmadığında, aşağıdaki yöntemlerden birini kullanarak bütçeyi silin:
+
+### <a name="azure-portal"></a>Azure portal
+
+**Maliyet Yönetimi + Faturalandırma**’ya gidip bir faturalama kapsamı seçin, **Bütçeler**’den bir bütçe seçin ve sonra **Bütçeyi sil** seçeneğini belirleyin.
+
+### <a name="command-line"></a>Komut satırı
+
+Azure CLI veya Azure PowerShell kullanarak bütçeyi kaldırabilirsiniz.
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the budget name:" &&
+read budgetName &&
+az consumption budget delete --budget-name $budgetName &&
+echo "Press [ENTER] to continue ..."
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$budgetName = Read-Host -Prompt "Enter the budget name"
+Remove-AzConsumptionBudget -Name $budgetName
+Write-Host "Press [ENTER] to continue..."
 ```
 
 ---

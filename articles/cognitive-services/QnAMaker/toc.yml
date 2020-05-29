@@ -44,7 +44,7 @@
           href: Concepts/knowledge-base.md
         - name: İçerik türlerini içeri aktarma
           href: Concepts/content-types.md
-        - name: Soru ve yanıt kümeleri
+        - name: Soru ve yanıt çiftleri
           href: Concepts/question-answer-set.md
     - name: Bilgi bankası yaşam döngüsü
       items:
