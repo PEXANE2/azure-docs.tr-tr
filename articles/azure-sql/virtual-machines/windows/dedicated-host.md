@@ -1,6 +1,6 @@
 ---
-title: Azure ayrılmış ana bilgisayar üzerinde SQL Server VM
-description: Azure adanmış bir konakta SQL Server VM çalıştırmaya ilişkin ayrıntılar hakkında bilgi edinin.
+title: Azure adanmış bir konakta SQL Server VM çalıştırma
+description: Azure adanmış bir konakta SQL Server VM çalıştırmayı öğrenin.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,17 +14,17 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a16ec7a3fa1f41d8c9339f84be6a0ffc3842d099
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1c16c2cdae671a9b18a34b88b9490b5b61c24c8e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046029"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220235"
 ---
-# <a name="sql-server-vm-on-an-azure-dedicated-host"></a>Azure ayrılmış ana bilgisayar üzerinde SQL Server VM 
+# <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Azure adanmış bir konakta SQL Server VM çalıştırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Bu makalede, [Azure adanmış ana bilgisayar](/azure/virtual-machines/windows/dedicated-hosts)ile SQL Server VM kullanmanın özellikleri ayrıntılı olarak açıklanır. Azure adanmış ana bilgisayar hakkında ek bilgilere, [Azure adanmış ana bilgisayarı tanıtma](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)blog gönderisine ulaşabilirsiniz. 
+Bu makalede, [Azure adanmış ana bilgisayarı](/azure/virtual-machines/windows/dedicated-hosts)ile SQL Server sanal MAKINESI (VM) kullanmanın özellikleri ayrıntılı olarak açıklanır. Azure adanmış ana bilgisayar hakkında ek bilgilere, [Azure adanmış ana bilgisayarı tanıtma](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)blog gönderisine ulaşabilirsiniz. 
 
 ## <a name="overview"></a>Genel Bakış
 [Azure adanmış ana bilgisayar](/azure/virtual-machines/windows/dedicated-hosts) , bir veya daha fazla sanal makineyi bir Azure aboneliğine ayrılmış olarak barındırabilecek fiziksel sunucular sağlayan bir hizmettir. Adanmış konaklar, Microsoft 'un bir kaynak olarak sağlanmış olan veri merkezlerinde kullanılan fiziksel sunuculardır. Bir bölge, kullanılabilirlik alanı ve hata etki alanı içinde adanmış konaklar sağlayabilirsiniz. Daha sonra, gereksinimlerinizi en iyi şekilde karşılayan her yapılandırma için VM 'Leri doğrudan sağlanan konaklarınıza yerleştirebilirsiniz.
@@ -36,35 +36,35 @@ Bu makalede, [Azure adanmış ana bilgisayar](/azure/virtual-machines/windows/de
 
 ## <a name="licensing"></a>Lisanslama
 
-SQL Server VM Azure ayrılmış bir konağa eklerken iki farklı lisans seçeneği arasından seçim yapabilirsiniz. 
+SQL Server VM Azure ayrılmış bir konağa yerleştirdiğinizde iki farklı lisans seçeneği arasından seçim yapabilirsiniz. 
 
   - **SQL VM lisanslama**: Bu, her SQL Server VM lisansı için ayrı olarak ödediğiniz mevcut lisanslama seçeneğidir. 
   - **Adanmış konak lisanslama**: Azure adanmış ana bilgisayar için sunulan yeni lisanslama modeli, SQL Server lisanslarının paketlenmiş ve ana bilgisayar düzeyinde için ödendiği yerdir. 
 
 
 Mevcut SQL Server lisanslarını kullanmaya yönelik konak düzeyi seçenekleri: 
-  - SQL Server Enterprise Edition Azure Hibrit Avantajı
+  - SQL Server Enterprise Edition Azure Hibrit Avantajı (AHB)
     - SA veya aboneliği olan müşteriler tarafından kullanılabilir.
     - Tüm kullanılabilir fiziksel çekirdekleri lisanslayın ve sınırsız sanallaştırmadan yararlanın (konak tarafından desteklenen maks. sanal CPU 'lara kadar).
-        - Azure adanmış ana bilgisayara Azure Hibrit Avantajı uygulama hakkında daha fazla bilgi için [Azure HIBRIT AVANTAJı SSS](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)bölümüne bakın. 
-  - SQL Server Lisans 1 Ekim 'Den önce alındı
+        - AHB 'yi Azure adanmış ana bilgisayara uygulama hakkında daha fazla bilgi için bkz. [Azure HIBRIT AVANTAJı SSS](https://azure.microsoft.com/pricing/hybrid-benefit/faq/). 
+  - SQL Server Lisans 1 Ekim 'den önce alındı
       - SQL Server Enterprise sürümünde hem ana bilgisayar düzeyi hem de VM 'ler lisans seçenekleri vardır. 
-      - SQL Server Standard Edition 'ın yalnızca sanal makine lisansı seçeneği kullanılabilir. 
-          - Ayrıntılar için bkz. [Microsoft 'un ürün koşulları](https://www.microsoft.com/licensing/product-licensing/products). 
-  - SQL Server adanmış bir konak düzeyi seçeneği seçili değilse, tıpkı çok kiracılı VM 'Lerde olduğu gibi, tek tek sanal makineler düzeyinde SQL Server AHB seçilebilir.
+      - SQL Server Standard sürümünde yalnızca bir-VM lisans seçeneği kullanılabilir. 
+          - Ayrıntılar için bkz. [Microsoft ürün koşulları](https://www.microsoft.com/licensing/product-licensing/products). 
+  - SQL Server ayrılmış bir konak düzeyi seçeneği yoksa, çok kiracılı VM 'lerle yaptığınız gibi tek tek sanal makineler düzeyinde AHB SQL Server seçebilirsiniz.
 
 
 
 ## <a name="provisioning"></a>Sağlama  
 Adanmış konağa SQL Server VM sağlama diğer Azure sanal makinenden farklı değildir. [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), [Azure Portal](../../../virtual-machines/windows/dedicated-hosts-portal.md)ve [Azure CLI](../../../virtual-machines/linux/dedicated-hosts-cli.md)kullanarak bunu yapabilirsiniz.
 
-Ayrılmış konağa var olan bir SQL Server VM ekleme işlemi kapalı kalma süresi gerektirir, ancak verileri etkilemez ve veri kaybına neden olmayacaktır. Nonetheless, sistem veritabanları da dahil olmak üzere tüm veritabanlarının taşımadan önce yedeklenmesi gerekir.
+Ayrılmış konağa mevcut bir SQL Server VM ekleme işleminin kapalı kalması gerekir, ancak verileri etkilemeyecektir ve veri kaybı olmayacaktır. Nonetheless, sistem veritabanları da dahil olmak üzere tüm veritabanlarının taşımadan önce yedeklenmesi gerekir.
 
 ## <a name="virtualization"></a>Sanallaştırma 
 
-Adanmış bir konağın avantajlarından biri sınırsız sanallaştırmadır. Örneğin, 64 sanal çekirdek lisanslarına sahip olabilirsiniz, ancak ana bilgisayarı 128 sanal çekirdeğe sahip olacak şekilde yapılandırabilir, bu sayede sanal çekirdekleri yalnızca SQL Server lisanslarının ücretini ödeirsiniz. 
+Adanmış bir konağın avantajlarından biri sınırsız sanallaştırmadır. Örneğin, 64 sanal çekirdek lisanslarına sahip olabilirsiniz, ancak ana bilgisayarı 128 sanal çekirdeğe sahip olacak şekilde yapılandırabilir, böylece sanal çekirdekleri de yalnızca SQL Server lisanslarınızın yarısını ödeyin. 
 
-Ana bilgisayarınız olduğundan bu yana bir 1:2 oranıyla sanallaştırmayı ayarlamaya uygun olursunuz. 
+Ana bilgisayarınız olduğundan, sanallaştırmayı 1:2 oranıyla ayarlamaya uygun olursunuz. 
 
 ## <a name="faq"></a>SSS
 

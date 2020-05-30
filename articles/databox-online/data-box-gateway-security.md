@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2476cf360909374f711564fb5fad5c9e0706083d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562483"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195864"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway Güvenlik ve veri koruması
 
@@ -27,7 +27,6 @@ Data Box Gateway çözümü, birbirleriyle etkileşime geçen dört ana bileşen
 - **Data Box Gateway cihaz**. Sağladığınız sistemin Hiper yöneticide sağladığınız sanal cihaz. Bu sanal cihaz, şirket içi verilerinizi Azure 'a aktarmak için kullanılır.
 - **Cihaza bağlı istemciler/konaklar**. Altyapınızda Data Box Gateway cihaza bağlanan ve korunması gereken verileri içeren istemciler.
 - **Bulut depolama alanı**. Azure bulut platformunda verilerin depolandığı konum. Bu konum genellikle oluşturduğunuz Data Box Gateway kaynağına bağlı depolama hesabıdır.
-
 
 ## <a name="data-box-gateway-service-protection"></a>Data Box Gateway hizmeti koruması
 
@@ -56,14 +55,13 @@ Daha fazla bilgi için bkz. [etkinleştirme anahtarı edinme](data-box-gateway-d
 
 Parolalar yalnızca yetkili kullanıcıların verilerinize erişebilmesini güvence altına alabilir. Data Box Gateway cihazların kilitli durumda olması.
 
-Şunları yapabilirsiniz:
+Seçenekleriniz şunlardır:
 
 - Cihazın yerel Web Kullanıcı arabirimine bir tarayıcı aracılığıyla bağlanın ve ardından cihazda oturum açmak için bir parola sağlayın.
 - HTTP üzerinden cihazın PowerShell arabirimine uzaktan bağlanın. Uzaktan yönetim varsayılan olarak açıktır. Daha sonra cihazda oturum açmak için cihaz parolasını sağlayabilirsiniz. Daha fazla bilgi için bkz. [Data Box Gateway cihazınıza uzaktan bağlanma](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
 [!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
 - [Parolayı değiştirmek](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)için yerel Web Kullanıcı arabirimini kullanın. Parolayı değiştirirseniz, tüm uzaktan erişim kullanıcılarına, oturum açma sorunları yaşamadıklarından emin olun.
-
 
 ## <a name="protect-your-data"></a>Verilerinizi koruma
 
@@ -77,10 +75,18 @@ Bu bölümde, geçişi ve depolanan verileri koruyan Data Box Gateway Güvenlik 
 
 [!INCLUDE [data-box-edge-gateway-data-flight](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>Depolama hesapları aracılığıyla verileri koruma
+### <a name="protect-data-using-storage-accounts"></a>Depolama hesaplarını kullanarak verileri koruma
 
 [!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
+
 - Depolama hesabınızı yetkisiz kullanıcılara karşı korumaya yardımcı olmak için [depolama hesabı anahtarlarınızı](data-box-gateway-manage-shares.md#sync-storage-keys) düzenli olarak döndürün ve eşitleyin.
+
+### <a name="protect-the-device-data-using-bitlocker"></a>BitLocker kullanarak cihaz verilerini koruma
+
+Data Box Gateway sanal makinenizde sanal disklerin güvenliğini sağlamak için BitLocker 'ı etkinleştirmenizi öneririz. Varsayılan olarak, BitLocker etkin değildir. Daha fazla bilgi için bkz.
+
+- [Hyper-V Yöneticisi 'nde şifreleme desteği ayarları](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [Sanal makinede BitLocker desteği](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>Kişisel bilgileri yönetme
 

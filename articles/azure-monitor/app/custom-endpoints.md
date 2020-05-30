@@ -3,16 +3,17 @@ title: Azure Application Insights geçersiz kılma varsayılan SDK uç noktalar�
 description: Azure Kamu gibi bölgeler için varsayılan Azure Izleyici Application Insights SDK uç noktalarını değiştirin.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: f5bf5b07f7c058b4778e7695f150fdc71e048182
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.custom: references_regions
+ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629193"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194828"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Varsayılan uç noktaları geçersiz kılmak Application Insights
 
-Application Insights verileri belirli bölgelere göndermek için varsayılan uç nokta adreslerini geçersiz kılmanız gerekir. Her SDK, hepsi bu makalede açıklanan biraz farklı değişiklik gerektirir. Bu değişiklikler, örnek kodu ayarlamayı ve,, ve `QuickPulse_Endpoint_Address` `TelemetryChannel_Endpoint_Address` `Profile_Query_Endpoint_address` için yer tutucu değerlerini, belirli bölgeniz için gerçek uç nokta adresleriyle değiştirmeyi gerektirir. Bu makalenin sonunda, bu yapılandırmanın gerekli olduğu bölgelere yönelik uç nokta adreslerinin bağlantıları bulunur.
+Application Insights verileri belirli bölgelere göndermek için varsayılan uç nokta adreslerini geçersiz kılmanız gerekir. Her SDK, hepsi bu makalede açıklanan biraz farklı değişiklik gerektirir. Bu değişiklikler, örnek kodu ayarlamayı ve,, ve için yer tutucu değerlerini `QuickPulse_Endpoint_Address` , `TelemetryChannel_Endpoint_Address` `Profile_Query_Endpoint_address` belirli bölgeniz için gerçek uç nokta adresleriyle değiştirmeyi gerektirir. Bu makalenin sonunda, bu yapılandırmanın gerekli olduğu bölgelere yönelik uç nokta adreslerinin bağlantıları bulunur.
 
 > [!NOTE]
 > [Bağlantı dizeleri](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) Application Insights içindeki özel uç noktaları ayarlamanın yeni tercih edilen yöntemidir.
@@ -59,7 +60,7 @@ Ana uç noktayı ayarlamak için projenizdeki appSettings. json dosyasını aşa
   }
 ```
 
-Canlı ölçümler ve profil sorgu uç noktası değerleri yalnızca kod aracılığıyla ayarlanabilir. Tüm uç nokta değerlerinin varsayılan değerlerini kod aracılığıyla geçersiz kılmak için, `ConfigureServices` `Startup.cs` dosyanın yönteminde aşağıdaki değişiklikleri yapın:
+Canlı ölçümler ve profil sorgu uç noktası değerleri yalnızca kod aracılığıyla ayarlanabilir. Tüm uç nokta değerlerinin varsayılan değerlerini kod aracılığıyla geçersiz kılmak için, dosyanın yönteminde aşağıdaki değişiklikleri yapın `ConfigureServices` `Startup.cs` :
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -76,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure İşlevleri](#tab/functions)
 
-Azure Işlevleri için artık Işlevin uygulama ayarlarında ayarlanan [bağlantı dizelerini](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) kullanmanız önerilir. İşlevinizin uygulama ayarlarına işlevler bölmesinde erişmek için **Ayarlar** > **yapılandırma** > **uygulama ayarları**' nı seçin. 
+Azure Işlevleri için artık Işlevin uygulama ayarlarında ayarlanan [bağlantı dizelerini](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) kullanmanız önerilir. İşlevinizin uygulama ayarlarına işlevler bölmesinde erişmek için **Ayarlar**  >  **yapılandırma**  >  **uygulama ayarları**' nı seçin. 
 
 Ad: `APPLICATIONINSIGHTS_CONNECTION_STRING` değer:`Connection String Value`
 
@@ -109,7 +110,7 @@ ApplicationInsights. xml dosyasını değiştirerek varsayılan uç nokta adresi
 
 ### <a name="spring-boot"></a>Spring Boot
 
-`application.properties` Dosyayı değiştirin ve ekleyin:
+Dosyayı değiştirin `application.properties` ve ekleyin:
 
 ```yaml
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address

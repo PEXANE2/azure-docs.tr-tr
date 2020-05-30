@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 04/10/2020
-ms.openlocfilehash: 023f00e30809126a1be7df5330f27453477ed9cf
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 05bd4b83a6387eefb243ed8058c3fe833615cfb4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048038"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188287"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance--azure-synapse"></a>SQL veritabanı için saydam veri şifrelemesi, SQL yönetilen örnek & Azure SYNAPSE
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -65,7 +65,7 @@ Azure 'daki işlemler için veritabanlarının şifresini çözmeniz gerekmez. K
 
 Bir TDE korumalı veritabanını dışarı aktardığınızda, veritabanının dışarı aktarılmış içeriği şifrelenmez. Bu içe aktarılmış içerik şifrelenmemiş BACPAC dosyalarında depolanır. BACPAC dosyalarını uygun şekilde koruduğunuzdan emin olun ve yeni veritabanını içeri aktarma işlemi tamamlandıktan sonra TDE 'ı etkinleştirin.
 
-Örneğin, BACPAC dosyası şirket içi SQL Server örneğinden aktarılmışsa, yeni veritabanının içeri aktarılan içeriği otomatik olarak şifrelenmez. Benzer şekilde, BACPAC dosyası bir şirket içi SQL Server örneğine aktarılmışsa, yeni veritabanı da otomatik olarak şifrelenmez.
+Örneğin, BACPAC dosyası bir SQL Server örneğinden aktarılmışsa, yeni veritabanının içeri aktarılan içeriği otomatik olarak şifrelenmez. Benzer şekilde, BACPAC dosyası bir SQL Server örneğine aktarılmışsa, yeni veritabanı da otomatik olarak şifrelenmez.
 
 Bir SQL veritabanına veya sunucudan dışarı aktardığınızda tek bir istisna olur. TDE, yeni veritabanında etkinleştirilmiştir, ancak BACPAC dosyası hala şifrelenmemiştir.
 

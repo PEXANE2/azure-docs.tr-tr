@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 05/28/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 6e6be4cd0f8053d356183a75c5a012dee0bd8c68
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: cded8fef70e22ffebc412ea37898100cda4bb3df
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771324"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219030"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme
 
@@ -50,7 +50,14 @@ Log Analytics adanmış kümeler, [müşteri tarafından yönetilen anahtarlar](
 
 Küme kapasitesi ayırma düzeyi, altındaki parametresi kullanılarak Azure Resource Manager ile program aracılığıyla aracılığıyla yapılandırılır `Capacity` `Sku` . `Capacity`GB cinsinden belirtilir ve 100 GB/gün artışlarla 1000 GB veya daha fazla değere sahip olabilir. [Burada](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)ayrıntılı olarak verilmiştir. Kümenizin 2000 GB/gün üzerinde bir ayırmaya ihtiyacı varsa bizimle iletişime geçin [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
-Alınan veriler için faturalandırma küme düzeyinde yapıldığından, bir kümeyle ilişkili çalışma alanlarının artık fiyatlandırma katmanı yoktur. Kümeyle ilişkilendirilen her çalışma alanından alınan veri miktarları, küme için günlük faturanızı hesaplamak üzere toplanır. [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/) 'ndeki düğüm başına ayırmaların, kümedeki tüm çalışma alanları genelinde toplanan verilerin toplanmasından önce çalışma alanı düzeyinde uygulandığını unutmayın. Veri saklama, hala çalışma alanı düzeyinde faturalandırılır. Küme faturalandırma, küme oluşturulduğunda, çalışma alanlarının kümeyle ilişkilendirilmediğine bakılmaksızın başlar. 
+Bir kümede kullanıma yönelik iki faturalandırma modu vardır. Bu, `billingType` [kümeniz yapılandırılırken](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#cmk-manage)parametresi tarafından belirtilebilir. İki mod şunlardır: 
+
+1. **Küme**: Bu durumda (varsayılan), alınan verilerin faturalandırılması küme düzeyinde yapılır. Kümeyle ilişkilendirilen her çalışma alanından alınan veri miktarları, küme için günlük faturanızı hesaplamak üzere toplanır. [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/) 'ndeki düğüm başına ayırmaların, kümedeki tüm çalışma alanları genelinde toplanan verilerin toplanmasından önce çalışma alanı düzeyinde uygulandığını unutmayın. 
+
+2. **Çalışma alanları**: kümenizin kapasite ayırma maliyeti, kümedeki çalışma alanlarıyla orantılı olarak atanır (her çalışma alanı Için [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/) 'nden düğüm başına ayırmalar için hesap oluşturulduktan sonra). Bir gün için bir çalışma alanına alınan toplam veri birimi kapasite rezervasyonundan azsa, her çalışma alanı, kapasite rezervasyonunun bir kısmı faturalanarak, her bir çalışma alanı geçerli GB başına kapasite rezervasyon fiyatı üzerinden faturalandırılır ve kapasite rezervasyonunun kullanılmayan bölümü küme kaynağına faturalandırılır. Bir gün için bir çalışma alanına alınan toplam veri birimi kapasite ayırmasından daha fazla ise, her çalışma alanı, o gün için ayrılan verilerin kesiri ve her çalışma alanı ise kapasite rezervasyonunun üzerinde alınan verilerin bir kesri için her bir alan için faturalandırılır. Bir gün için bir çalışma alanına alınan toplam veri birimi kapasite rezervasyonunun üzerinde ise, küme kaynağına faturalandırılan bir şey yoktur.
+
+
+Küme faturalandırma seçeneklerinde, veri saklama, çalışma alanı düzeyinde faturalandırılır. Küme faturalandırma, küme oluşturulduğunda, çalışma alanlarının kümeyle ilişkilendirilmediğine bakılmaksızın başlar. Ayrıca, bir kümeyle ilişkili çalışma alanlarının artık fiyatlandırma katmanına sahip olmadığını unutmayın.
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>Ortamınızı yönetme maliyetlerini tahmin etme 
 
@@ -398,12 +405,13 @@ Belirli bir veri türü için veri kaynağını daha ayrıntılı bir şekilde i
 + **AzureDiagnostics** veri türü
   - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
 
-### <a name="tips-for-reducing-data-volume"></a>Veri hacmi azaltma ipuçları
+## <a name="tips-for-reducing-data-volume"></a>Veri hacmi azaltma ipuçları
 
 Toplanan günlüklerin hacmini azaltmaya yönelik bazı öneriler şunlardır:
 
 | Yüksek veri hacminin kaynağı | Veri hacmi nasıl azaltılır |
 | -------------------------- | ------------------------- |
+| Kapsayıcı öngörüleri         | [Kapsayıcı öngörülerini](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost) yalnızca gerekli verileri toplayacak şekilde yapılandırın. |
 | Güvenlik olayları            | [Yaygın veya en az güvenlik olaylarını](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) seçin <br> Güvenlik denetimi ilkesini yalnızca gerekli olayları toplayacak şekilde değiştirin. Özellikle, şunlarla ilgili olayları toplamak gerekip gerekmediğini gözden geçirin: <br> - [filtre platformu denetimi](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [kayıt defteri denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [dosya sistemi denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [çekirdek nesnesi denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [tanıtıcı değiştirme denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - çıkarılabilir depolama birimi denetimi |
 | Performans sayaçları       | [Performans sayacı yapılandırmasını](data-sources-performance-counters.md) şöyle değiştirin: <br> - Koleksiyonun sıklığını azaltın <br> - Performans sayaçlarının sayısını azaltın |
 | Olay günlükleri                 | [Olay günlüğü yapılandırmasını](data-sources-windows-events.md) şöyle değiştirin: <br> - Toplanan olay günlüklerinin sayısını azaltın <br> - Yalnızca gerekli olay düzeylerini toplayın. Örneğin, *Bilgi* düzeyindeki olayları toplamayın |

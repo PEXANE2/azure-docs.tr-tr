@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 64acfcffed597640402df557ae419a67ff1e0dcb
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 988434a72359ebe6ef84c4fd94041b2d4b90d5d9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170401"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221096"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure’da giden bağlantılar
 
@@ -43,7 +43,7 @@ Azure Load Balancer ve ilgili kaynaklar [Azure Resource Manager](https://docs.mi
 | SKU'lar | Senaryo | Yöntem | IP protokolleri | Açıklama |
 | --- | --- | --- | --- | --- |
 | Standart, temel | [1. örnek düzeyi genel IP adresine sahip VM (Load Balancer ile veya olmayan)](#ilpip) | SNAT, bağlantı noktası aşağı olarak kullanılmıyor | TCP, UDP, ıCMP, ESP | Azure, örneğin NIC 'in IP yapılandırmasına atanan genel IP 'yi kullanır. Örnekte, tüm kısa ömürlü bağlantı noktaları kullanılabilir. Standart Load Balancer kullanırken, sanal makineye genel IP atanmışsa [giden kuralları](load-balancer-outbound-rules-overview.md) desteklenmez. |
-| Standart, temel | [2. bir VM ile ilişkili ortak Load Balancer (örnekte genel IP adresi yok)](#lb) | Load Balancer ön uçları kullanarak bağlantı noktası geçici olarak (PAT) SNAT | TCP, UDP |Azure, genel Load Balancer ön uçlarının genel IP adresini birden çok özel IP adresi ile paylaşır. Azure, ön uçların kısa ömürlü bağlantı noktalarını kullanır. Giden bağlantıları açıkça tanımlamak için [giden kurallarını](load-balancer-outbound-rules-overview.md) kullanmanız gerekir. |
+| Standart, temel | [2. bir VM ile ilişkili ortak Load Balancer (örnekte genel IP adresi yok)](#lb) | Load Balancer ön uçları kullanarak bağlantı noktası geçici olarak (PAT) SNAT | TCP, UDP |Azure, genel Load Balancer ön uçlarının genel IP adresini birden çok özel IP adresi ile paylaşır. Azure, ön uçların kısa ömürlü bağlantı noktalarını kullanır. Standart Load Balancer kullanırken, giden bağlantıyı açıkça tanımlamak için [giden kurallarını](load-balancer-outbound-rules-overview.md) kullanmanız gerekir. |
 | hiçbiri veya temel | [3. tek başına VM (Load Balancer yok, genel IP adresi yok)](#defaultsnat) | Bağlantı noktası geçici olarak SNAT (PAT) | TCP, UDP | Azure, SNAT için bir genel IP adresi otomatik olarak atar, bu genel IP adresini kullanılabilirlik kümesinin birden çok özel IP adresi ile paylaşır ve bu genel IP adresinin kısa ömürlü bağlantı noktalarını kullanır. Bu senaryo, önceki senaryolar için bir geri dönüş olur. Görünürlük ve denetime ihtiyacınız varsa bunu önermiyoruz. |
 
 Bir VM 'nin genel IP adresi alanında Azure dışındaki uç noktalarla iletişim kurmasını istemiyorsanız, erişimi gerektiği şekilde engellemek için ağ güvenlik grupları (NSG 'ler) kullanabilirsiniz. [Giden bağlantının önlenmesi](#preventoutbound) bölümünde NSG 'ler daha ayrıntılı şekilde anlatılmaktadır. Bir sanal ağın herhangi bir giden erişimi olmadan tasarlanması, uygulanması ve yönetilmesi ile ilgili yönergeler bu makalenin kapsamı dışındadır.

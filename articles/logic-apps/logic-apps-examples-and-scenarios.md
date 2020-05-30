@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: ad5cc696892764ce68d4714ead98b8afd9c37669
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144150"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190729"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps için genel senaryolar, örnekler, öğreticiler ve izlenecek yollar
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) , şirket içi SQL Server veya SAP 'den Azure bilişsel hizmetler 'e kadar çeşitli [kullanıma açık bağlayıcılar](../connectors/apis-list.md)sunarak farklı Hizmetleri düzenlemenize ve tümleştirmenize yardımcı olur. Logic Apps hizmeti "sunucusuz" olduğundan ölçek veya örnekler hakkında endişelenmeniz gerekmez. Yapmanız gereken tek şey, bir tetikleyiciyle iş akışını ve iş akışının gerçekleştirdiği eylemleri tanımlar. Temel alınan platform ölçek, kullanılabilirlik ve performansı işler. Logic Apps, özellikle birden çok sistem ve hizmet arasında eylemleri koordine etmeniz gereken kullanım durumları ve senaryolar için yararlıdır.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) , SQL Server veya SAP 'den Azure bilişsel hizmetler 'e kadar [olan yüzlerce kullanıma yönelik bağlayıcı](../connectors/apis-list.md)sağlayarak farklı Hizmetleri düzenlemenize ve tümleştirmenize yardımcı olur. Logic Apps hizmeti "sunucusuz" olduğundan ölçek veya örnekler hakkında endişelenmeniz gerekmez. Yapmanız gereken tek şey, bir tetikleyiciyle iş akışını ve iş akışının gerçekleştirdiği eylemleri tanımlar. Temel alınan platform ölçek, kullanılabilirlik ve performansı işler. Logic Apps, özellikle birden çok sistem ve hizmet arasında eylemleri koordine etmeniz gereken kullanım durumları ve senaryolar için yararlıdır.
 
 Azure Logic Apps desteklediği yetenekler ve desenler hakkında bilgi edinmenize yardımcı olması için, bu makalede yaygın başlangıç noktaları, örnekler ve senaryolar açıklanmaktadır.
 
@@ -126,9 +126,9 @@ Visual Studio, Azure DevOps veya diğer kaynak denetimleri ve otomatikleştirilm
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>İçerik türlerini, dönüştürmeleri ve dönüştürmeleri işleme
 
-Azure Logic Apps [iş akışı tanımlama dilindeki](https://aka.ms/logicappsdocs)birçok işlevi kullanarak birden çok içerik türüne erişebilir, dönüşüm ve dönüştürme yapabilirsiniz. Örneğin, `@json()` ve `@xml()` iş akışı IFADELERIYLE bir STRING, JSON ve XML arasında dönüştürme yapabilirsiniz. Logic Apps altyapısı, hizmetler arasında kayıpsız bir biçimde içerik aktarımını desteklemek için içerik türlerini korur.
+Azure Logic Apps [iş akışı tanımlama dilindeki](https://aka.ms/logicappsdocs)birçok işlevi kullanarak birden çok içerik türüne erişebilir, dönüşüm ve dönüştürme yapabilirsiniz. Örneğin, `@json()` ve `@xml()` iş akışı ifadeleriyle bir STRING, JSON ve XML arasında dönüştürme yapabilirsiniz. Logic Apps altyapısı, hizmetler arasında kayıpsız bir biçimde içerik aktarımını desteklemek için içerik türlerini korur.
 
-* , Ve gibi `application/` `application/octet-stream` [Azure Logic Apps içerik türlerini işleme](../logic-apps/logic-apps-content-type.md).`multipart/formdata`
+* , Ve gibi [Azure Logic Apps içerik türlerini işleme](../logic-apps/logic-apps-content-type.md). `application/` `application/octet-stream``multipart/formdata`
 * [Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu](../logic-apps/workflow-definition-language-functions-reference.md)
 * [Azure Logic Apps için iş akışı tanımı dil şeması](../logic-apps/logic-apps-workflow-definition-language.md)
 

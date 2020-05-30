@@ -10,17 +10,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 519ed71977a1e31bcf3f88fbff56f35656789271
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1b27eac1a8b5989734d3451bf21c5b13dd5cc0af
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054620"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220560"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-T-SQL sorguları çalıştırmak ve bakım görevlerini gerçekleştirmek için bir veya daha fazla veritabanına göre düzenli olarak yürütülen işleri oluşturabilir ve zamanlayabilirsiniz.
+Transact-SQL (T-SQL) sorgularını çalıştırmak ve bakım görevlerini gerçekleştirmek için, bir veya daha fazla veritabanına göre düzenli olarak yürütülen işleri oluşturabilir ve zamanlayabilirsiniz.
 
 İşin gerçekleştirileceği hedef veritabanını veya veritabanı gruplarını tanımlayabilir ve ayrıca bir işi çalıştırmaya yönelik zamanlamalar tanımlayabilirsiniz.
 Bir iş, hedef veritabanında oturum açma görevini işler. Ayrıca, bir veritabanı grubu genelinde yürütülecek Transact-SQL betiklerini tanımlar, korur ve kalıcı hale getirin.
@@ -48,13 +48,13 @@ Her iş, yürütme durumunu günlüğe kaydeder ve herhangi bir hata oluşursa i
 Aşağıdaki iş zamanlama teknolojileri kullanılabilir:
 
 - **SQL Aracısı işleri** , Azure SQL yönetilen örneği 'nde kullanılabilen, klasik ve yeniden çalıştırılan SQL Server iş zamanlama bileşenidir. SQL Aracısı Işleri Azure SQL veritabanı 'nda kullanılamıyor.
-- **Elastik veritabanı işleri (Önizleme)** bir veya birden çok Azure SQL veritabanında özel Işler çalıştıran iş zamanlama hizmetlerdir.
+- **Elastik veritabanı işleri (Önizleme)** , Azure SQL veritabanı 'ndaki bir veya daha fazla veritabanında özel Işleri yürütülen iş zamanlama hizmetlerdir.
 
 SQL Aracısı (Şirket içi ve SQL yönetilen örneğinin parçası olarak kullanılabilir) ve veritabanı elastik Iş Aracısı (Azure SQL veritabanı ve SQL veri ambarı 'ndaki veritabanları için kullanılabilir) arasında birkaç farklılık olduğunu belirtmekte bir değer.
 
 | |Elastik İşler |SQL Aracısı |
 |---------|---------|---------|
-|Kapsam | İş aracısıyla aynı Azure bulutunda herhangi bir sayıda Azure SQL Veritabanı ve/veya veri ambarı. Hedefler farklı sunucularda, aboneliklerde ve/veya bölgelerde olabilir. <br><br>Hedef gruplar tek veritabanı veya veri ambarlarının yanı sıra bir sunucu, havuz veya parça eşlemesi içindeki tüm veritabanlarından (iş zamanında dinamik olarak numaralandırılır) oluşabilir. | SQL aracısıyla aynı örnekteki her bir veritabanı. |
+|Kapsam | Azure SQL veritabanı ve/veya veri ambarlarında iş aracısıyla aynı Azure bulutundaki tüm veritabanları. Hedefler farklı sunucularda, aboneliklerde ve/veya bölgelerde olabilir. <br><br>Hedef gruplar tek veritabanı veya veri ambarlarının yanı sıra bir sunucu, havuz veya parça eşlemesi içindeki tüm veritabanlarından (iş zamanında dinamik olarak numaralandırılır) oluşabilir. | SQL aracısıyla aynı örnekteki her bir veritabanı. |
 |Desteklenen API’ler ve Araçlar | Portal, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL Aracısı İşleri
@@ -70,7 +70,8 @@ SQL Aracısı Işlerinde birkaç temel kavram vardır:
 ### <a name="job-steps"></a>İş adımları
 
 SQL Aracısı Iş adımları SQL aracısının yürütmesi gereken eylem dizileridir. Her adımda, adım başarılı veya başarısız olursa yürütülmesi gereken adım, hata durumunda yeniden deneme sayısı.
-SQL Aracısı, veritabanında tek bir Transact-SQL toplu işi yürüten Transact-SQL iş adımı veya özel işletim sistemi betiği yürütebilen IŞLETIM sistemi komutu/PowerShell adımları gibi farklı türlerde iş adımları oluşturmanızı sağlar, SSIS iş adımları, veritabanınızdaki değişiklikleri veritabanından diğer veritabanlarına yayımlayabilen bir [çoğaltma](../managed-instance/replication-transactional-overview.md) adımları veya veritabanlarını yükleyebilir.
+
+SQL Aracısı, veritabanında tek bir Transact-SQL toplu işi çalıştıran Transact-SQL iş adımları veya özel işletim sistemi betiği yürütebilen IS komutu/PowerShell adımları gibi farklı türlerde iş adımları oluşturmanızı sağlar. bu sayede, SSIS çalışma zamanı 'nı kullanarak veri [yükleyebilir veya değişiklikleri](../managed-instance/replication-transactional-overview.md) veritabanınızdaki diğer veritabanlarına yayımlayabilirsiniz.
 
 [İşlemsel çoğaltma](../managed-instance/replication-transactional-overview.md) , bir veya birden çok tabloda yapılan değişiklikleri tek bir veritabanında yayımlamanıza ve bunları bir abone veritabanları kümesine yayımlamanıza/dağıtmanıza olanak sağlayan bir veritabanı altyapısı özelliğidir. Değişiklikleri yayımlamak aşağıdaki SQL Aracısı işi adım türleri kullanılarak uygulanır:
 
@@ -138,8 +139,8 @@ GO
 RECONFIGURE
 ```
 
-SQL Agent işleriniz ile ilgili bir şeyin olduğunu işlecine bildirebilirsiniz. Bir işleç, bir veya daha fazla yönetilen örnek bakımda sorumlu için kişi bilgilerini tanımlar. Bazen, operatör sorumlulukları tek bir kişiye atanır.
-Birden çok Azure SQL yönetilen örneği veya SQL Server örneği olan sistemlerde birçok kişi işleç sorumluluklarını paylaşabilir. Operatör güvenlik bilgilerini içermez ve bir güvenlik sorumlusu tanımlamaz.
+SQL Agent işleriniz ile ilgili bir şeyin olduğunu işlecine bildirebilirsiniz. Bir işleç, SQL yönetilen örneğindeki bir veya daha fazla örneği bakımın bir sorumlusu için kişi bilgilerini tanımlar. Bazen, operatör sorumlulukları tek bir kişiye atanır.
+SQL yönetilen örneği veya SQL Server birden çok örneğe sahip sistemlerde birçok kişi işleç sorumluluklarını paylaşabilir. Operatör güvenlik bilgilerini içermez ve bir güvenlik sorumlusu tanımlamaz.
 
 SSMS veya Transact-SQL komut dosyasını kullanarak aşağıdaki örnekte gösterilen işleçler oluşturabilirsiniz:
 
@@ -188,7 +189,7 @@ Aşağıdaki resimde farklı türlerdeki hedef gruplarda iş yürüten bir iş a
 |Bileşen | Açıklama (ek ayrıntılar tablonun altındadır) |
 |---------|---------|
 |[**Elastik İş aracısı**](#elastic-job-agent) | İşleri çalıştırmak ve yönetmek için oluşturduğunuz Azure kaynağıdır. |
-|[**İş veritabanı**](#job-database) | İş aracısının işle ilgili verileri, iş tanımlarını vb. depolamak için kullandığı bir Azure SQL veritabanı. |
+|[**İş veritabanı**](#job-database) | Azure SQL veritabanı 'nda iş aracısının işle ilgili verileri, iş tanımlarını vb. depolamak için kullandığı bir veritabanı. |
 |[**Hedef grup**](#target-group) | Bir işin çalıştırılacağı sunucu, havuz, veritabanı ve parça eşlemesi kümesidir. |
 |[**İşinden**](#job) | İş, bir veya daha fazla [iş adımından](#job-step)oluşan bir iş birimidir. İş adımları çalıştırılacak T-SQL betiğinin yanı sıra betiğin yürütülmesi için gerekli olan diğer ayrıntıları belirtir. |
 
@@ -196,15 +197,15 @@ Aşağıdaki resimde farklı türlerdeki hedef gruplarda iş yürüten bir iş a
 
 Elastik İş aracısı; işlerin oluşturulması, çalıştırılması ve yönetilmesi için kullanılan Azure kaynağıdır. Elastik İş aracısı, portalda oluşturduğunuz bir Azure kaynağıdır ([PowerShell](elastic-jobs-powershell-create.md) ve REST de desteklenir).
 
-**Elastik iş Aracısı** oluşturmak için var olan BIR Azure SQL veritabanı gerekir. Aracı, mevcut veritabanını [*İş veritabanı*](#job-database) olarak yapılandırır.
+**Elastik iş Aracısı** oluşturmak IÇIN Azure SQL veritabanı 'nda mevcut bir veritabanı gerekir. Aracı, mevcut veritabanını [*İş veritabanı*](#job-database) olarak yapılandırır.
 
-Elastik İş aracısı ücretsizdir. İş veritabanı, herhangi bir Azure SQL veritabanı ile aynı hızda faturalandırılır.
+Elastik İş aracısı ücretsizdir. İş veritabanı, Azure SQL veritabanı 'ndaki tüm veritabanları ile aynı hızda faturalandırılır.
 
 #### <a name="job-database"></a>İş veritabanı
 
 *İş veritabanı*, işleri tanımlamanın yanı sıra iş yürütme durumunu ve geçmişini takip etmek için kullanılır. *İş veritabanı* , aracı meta verilerini, günlükleri, sonuçları, iş tanımlarını depolamak için de kullanılır ve T-SQL ' i kullanarak iş oluşturmak, çalıştırmak ve yönetmek için çok sayıda kullanışlı saklı yordam ve diğer veritabanı nesneleri içerir.
 
-Geçerli önizleme için, elastik bir Iş Aracısı oluşturmak için var olan bir Azure SQL veritabanı (S0 veya üzeri) gereklidir.
+Geçerli önizleme için, elastik bir Iş Aracısı oluşturmak için Azure SQL veritabanı 'nda (S0 veya üzeri) var olan bir veritabanı gereklidir.
 
 *İş veritabanının* yeni olması gerekmez, ancak temiz, boş, S0 veya daha yüksek bir hizmet hedefi olmalıdır. *İş veritabanının* önerilen hizmet hedefi S1 veya daha yükseği, ancak en uygun seçenek, işinizin performans ihtiyaçlarına bağlıdır: iş adımları sayısı, iş hedefi sayısı ve işlerin ne sıklıkta çalıştırıldığı. Örneğin, bir S0 veritabanı, çok sayıda işi çalıştıran bir iş Aracısı için yeterli olabilir, ancak her dakika, bir S0 veritabanı ile yeterince hızlı olmayabilir ve daha yüksek bir hizmet katmanı daha iyi olabilir.
 
@@ -216,7 +217,7 @@ Geçerli önizleme için, elastik bir Iş Aracısı oluşturmak için var olan b
 
 |Rol adı |'jobs' şeması izinleri |'jobs_internal' şeması izinleri |
 |---------|---------|---------|
-|**jobs_reader** | SELECT | Yok |
+|**jobs_reader** | SELECT | Hiçbiri |
 
 > [!IMPORTANT]
 > Veritabanı yöneticisi olarak *İş veritabanına* erişim izni vermeden önce güvenlik durumunu gözden geçirin. İş oluşturma veya düzenleme izinlerine sahip olan kötü niyetli bir kullanıcı, kendi denetimindeki bir veritabanına bağlanmak için kayıtlı kimlik bilgisini kullanan bir iş oluşturarak veya düzenleyerek ilgili kimlik bilgisinin parolasını belirleyebilir.

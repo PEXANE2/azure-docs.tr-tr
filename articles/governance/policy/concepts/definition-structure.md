@@ -1,14 +1,14 @@
 ---
 title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
-ms.date: 04/03/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: a4f136bc805cd48d05c2378b47966b4e4e4c60fb
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: de9b3c5242f361c9f0cf7128a5ec32c0e7dce428
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168514"
+ms.locfileid: "84205033"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -17,14 +17,15 @@ Azure Ilkesi, kaynaklar için kurallar oluşturur. İlke tanımları, kaynak uyu
 
 Kuralları tanımlayarak, maliyetlerinizi denetleyebilir ve kaynaklarınızı daha kolay yönetebilirsiniz. Örneğin, yalnızca belirli türlerdeki sanal makinelere izin verileceğini belirtebilirsiniz. Ya da, tüm kaynakların belirli bir etikete sahip olmasını zorunlu kılabilirsiniz. İlkeler tüm alt kaynaklar tarafından devralınır. Bir ilke bir kaynak grubuna uygulanmışsa, bu kaynak grubundaki tüm kaynaklar için geçerlidir.
 
-İlke tanımı şeması şurada bulunur:[https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
+İlke tanımı şeması şurada bulunur:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 Bir ilke tanımı oluşturmak için JSON kullanırsınız. İlke tanımı öğeleri içerir:
 
-- mod
-- parametreler
 - görünen ad
 - açıklama
+- mod
+- meta veriler
+- parametreler
 - ilke kuralı
   - mantıksal değerlendirme
   - etkinleşmesi
@@ -34,7 +35,13 @@ Bir ilke tanımı oluşturmak için JSON kullanırsınız. İlke tanımı öğel
 ```json
 {
     "properties": {
+        "displayName": "Allowed locations",
+        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
         "mode": "all",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "Locations"
+        },
         "parameters": {
             "allowedLocations": {
                 "type": "array",
@@ -46,8 +53,6 @@ Bir ilke tanımı oluşturmak için JSON kullanırsınız. İlke tanımı öğel
                 "defaultValue": [ "westus2" ]
             }
         },
-        "displayName": "Allowed locations",
-        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
         "policyRule": {
             "if": {
                 "not": {
@@ -63,7 +68,22 @@ Bir ilke tanımı oluşturmak için JSON kullanırsınız. İlke tanımı öğel
 }
 ```
 
-Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
+Azure Ilkesi yerleşik bileşenleri ve desenleri [Azure ilke örnekleri](../samples/index.md)' nde bulunur.
+
+## <a name="display-name-and-description"></a>Görünen ad ve açıklama
+
+**DisplayName** ve **Description** kullanarak ilke tanımını tanımlayabilir ve ne zaman kullanılacağı için bağlam sağlayabilirsiniz. **DisplayName** , en fazla _128_ karakter uzunluğunda ve en fazla _512_ karakter uzunluğunda bir **Açıklama** içeriyor.
+
+> [!NOTE]
+> Bir ilke tanımı, **kimliği**, **türü**ve **ADıNıN** oluşturulması veya güncelleştirilmesi sırasında JSON harici özellikleri tarafından tanımlanır ve json dosyasında gerekli değildir. İlke tanımını SDK aracılığıyla getirmek, JSON 'ın bir parçası olarak **kimliği**, **türü**ve **ad** özelliklerini döndürür, ancak her biri ilke tanımıyla ilgili salt okunurdur.
+
+## <a name="type"></a>Tür
+
+**Tür** özelliği ayarlanılarken, SDK tarafından döndürülen ve portalda görünen üç değer vardır:
+
+- `Builtin`: Bu ilke tanımları Microsoft tarafından sağlanır ve sürdürülür.
+- `Custom`: Müşteriler tarafından oluşturulan tüm ilke tanımlarında bu değer vardır.
+- `Static`: Microsoft **sahiplik**Ile [mevzuat uyumluluk](./regulatory-compliance.md) ilkesi tanımını gösterir. Bu ilke tanımlarının uyumluluk sonuçları, Microsoft altyapısına ilişkin üçüncü taraf denetimlerin sonuçlardır. Azure portal, bu değer bazen **Microsoft tarafından yönetilen**olarak görüntülenir. Daha fazla bilgi için bkz. [bulutta paylaşılan sorumluluk](../../../security/fundamentals/shared-responsibility.md).
 
 ## <a name="mode"></a>Mod
 
@@ -93,6 +113,20 @@ Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 > [!NOTE]
 > Kaynak sağlayıcısı modları yalnızca yerleşik ilke tanımlarını destekler ve önizleme aşamasında girişimleri desteklemez.
 
+## <a name="metadata"></a>Meta Veriler
+
+İsteğe bağlı `metadata` özelliği, ilke tanımıyla ilgili bilgileri depolar. Müşteriler, ' de kuruluşları için yararlı olan özellikleri ve değerleri tanımlayabilir `metadata` . Ancak, Azure Ilkesi tarafından ve yerleşik olarak kullanılan bazı _ortak_ özellikler vardır.
+
+### <a name="common-metadata-properties"></a>Ortak meta veri özellikleri
+
+- `version`(dize): bir ilke tanımının içeriğinin sürümü hakkındaki ayrıntıları Izler.
+- `category`(dize): ilke tanımının Azure portal hangi kategori altında görüntülendiğini belirler.
+- `preview`(Boolean): ilke tanımı _Önizleme_Ise, true veya false bayrağı.
+- `deprecated`(Boolean): ilke tanımı _kullanım dışı_olarak işaretlenmişse true veya false bayrağı.
+
+> [!NOTE]
+> Azure Ilke hizmeti `version` , `preview` `deprecated` bir yerleşik ilke tanımına veya girişim ve duruma yapılan değişiklik düzeyini iletmek için, ve özelliklerini kullanır. Biçimi `version` : `{Major}.{Minor}.{Patch}` . _Kullanım dışı_ veya _Önizleme_gibi belirli durumlar, `version` özelliğe veya başka bir özellikte **Boole**olarak eklenir. Azure Ilke sürümlerinin yerleşik yolu hakkında daha fazla bilgi için bkz. [yerleşik sürüm oluşturma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
+
 ## <a name="parameters"></a>Parametreler
 
 Parametreler, ilke tanımlarının sayısını azaltarak ilke yönetiminizi basitleştirmeye yardımcı olur. Parametreleri,,,, biçiminde alanlar gibi düşünün `name` `address` `city` `state` . Bu parametreler her zaman aynı kalır, ancak değerleri formu dolduran kişiye göre değişir.
@@ -105,17 +139,11 @@ Parametreler, ilke oluştururken de aynı şekilde çalışır. Bir ilke tanım�
 
 Bir parametre, ilke tanımında kullanılan aşağıdaki özelliklere sahiptir:
 
-- **ad**: parametresinin adı. `parameters`İlke kuralı içindeki dağıtım işlevi tarafından kullanılır. Daha fazla bilgi için bkz. [parametre değeri kullanma](#using-a-parameter-value).
+- `name`: Parametresinin adı. `parameters`İlke kuralı içindeki dağıtım işlevi tarafından kullanılır. Daha fazla bilgi için bkz. [parametre değeri kullanma](#using-a-parameter-value).
 - `type`: Parametrenin **dize**, **dizi**, **nesne**, **Boole**, **tamsayı**, **float**veya **TarihSaat**olduğunu belirler.
 - `metadata`: Kullanıcı dostu bilgileri göstermek için öncelikle Azure portal tarafından kullanılan alt özellikleri tanımlar:
   - `description`: Parametresinin hangi amaçla kullanıldığına ilişkin açıklama. , Kabul edilebilir değer örnekleri sağlamak için kullanılabilir.
   - `displayName`: Parametre için portalda gösterilen kolay ad.
-  - `version`: (İsteğe bağlı) bir ilke tanımının içeriğinin sürümü hakkındaki ayrıntıları Izler.
-
-    > [!NOTE]
-    > Azure Ilke hizmeti `version` , `preview` `deprecated` bir yerleşik ilke tanımına veya girişim ve duruma yapılan değişiklik düzeyini iletmek için, ve özelliklerini kullanır. Biçimi `version` : `{Major}.{Minor}.{Patch}` . _Kullanım dışı_ veya _Önizleme_gibi belirli durumlar, `version` özelliğe veya başka bir özellikte **Boole**olarak eklenir.
-
-  - `category`: (İsteğe bağlı) ilke tanımının Azure portal hangi kategori altında görüntülendiğini belirler.
   - `strongType`: (İsteğe bağlı) Portal üzerinden ilke tanımı atanırken kullanılır. Bağlama duyarlı bir liste sağlar. Daha fazla bilgi için bkz. [Strongtype](#strongtype).
   - `assignPermissions`: (İsteğe bağlı) ilke ataması sırasında rol atamaları oluşturmak Azure portal için _true_ olarak ayarlayın. Bu özellik, izinleri atama kapsamının dışına atamak istemeniz durumunda faydalıdır. İlkede rol tanımı başına bir rol ataması vardır (veya girişim içindeki tüm ilkelerin her biri için rol tanımı). Parametre değeri geçerli bir kaynak veya kapsam olmalıdır.
 - `defaultValue`: (İsteğe bağlı) değer verilmezse bir atamadaki parametresinin değerini ayarlar.
@@ -180,13 +208,6 @@ Tanım konumu bir ise:
 
 - Yalnızca **abonelik** kapsamındaki kaynaklara ilke atanabilir.
 - **Yönetim grubu** -yalnızca alt yönetim grupları ve alt abonelikler içindeki kaynaklara ilke atanabilir. İlke tanımını birkaç aboneliğe uygulamayı planlıyorsanız, konumun bu abonelikleri içeren bir yönetim grubu olması gerekir.
-
-## <a name="display-name-and-description"></a>Görünen ad ve açıklama
-
-**DisplayName** ve **Description** kullanarak ilke tanımını tanımlayabilir ve ne zaman kullanılacağı için bağlam sağlayabilirsiniz. **DisplayName** , en fazla _128_ karakter uzunluğunda ve en fazla _512_ karakter uzunluğunda bir **Açıklama** içeriyor.
-
-> [!NOTE]
-> Bir ilke tanımı, **kimliği**, **türü**ve **ADıNıN** oluşturulması veya güncelleştirilmesi sırasında JSON harici özellikleri tarafından tanımlanır ve json dosyasında gerekli değildir. İlke tanımını SDK aracılığıyla getirmek, JSON 'ın bir parçası olarak **kimliği**, **türü**ve **ad** özelliklerini döndürür, ancak her biri ilke tanımıyla ilgili salt okunurdur.
 
 ## <a name="policy-rule"></a>İlke kuralı
 
@@ -713,88 +734,9 @@ Bu örnek kural, **ıprules \[ \* \] . Value** ile **10.0.4.1** arasında herhan
 
 Daha fazla bilgi için bkz. [[ \* ] diğer adını değerlendirme](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
-## <a name="initiatives"></a>Girişimler
-
-Girişimler, tek bir öğe olarak bir grupla birlikte çalışırken atamaları ve yönetimi basitleştirmek için çeşitli ilgili ilke tanımlarını gruplandırmaya olanak sağlar. Örneğin, ilgili etiketleme ilkesi tanımlarını tek bir girişimde gruplandırabilirsiniz. Her ilkeyi ayrı ayrı atamak yerine girişim uygularsınız.
-
-> [!NOTE]
-> Bir girişim atandıktan sonra, girişim düzeyi parametreleri değiştirilemez. Bu nedenle, parametresini tanımlarken bir **DefaultValue** ayarlaması önerilir.
-
-Aşağıdaki örnek, iki etiket işlemek için bir girişim oluşturmayı gösterir: `costCenter` ve `productName` . Varsayılan etiket değerini uygulamak için iki yerleşik ilke kullanır.
-
-```json
-{
-    "properties": {
-        "displayName": "Billing Tags Policy",
-        "policyType": "Custom",
-        "description": "Specify cost Center tag and product name tag",
-        "parameters": {
-            "costCenterValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for Cost Center tag"
-                },
-                "defaultValue": "DefaultCostCenter"
-            },
-            "productNameValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for product Name tag"
-                },
-                "defaultValue": "DefaultProduct"
-            }
-        },
-        "policyDefinitions": [{
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            }
-        ]
-    }
-}
-```
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Girişim tanımı yapısına](./initiative-definition-structure.md) bakın
 - [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.

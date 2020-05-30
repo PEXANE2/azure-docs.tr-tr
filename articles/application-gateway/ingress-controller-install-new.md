@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42443cac199c4ba9a5df25e13393bb2103cb340e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585892"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205084"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Yeni bir Application Gateway kullanarak Application Gateway giriş denetleyicisi (AGIC) nasıl yüklenir
 
@@ -38,7 +38,7 @@ Alternatif olarak, aşağıdaki simgeyi kullanarak Azure portal Cloud Shell baş
 
 ## <a name="create-an-identity"></a>Kimlik oluşturma
 
-Azure Active Directory (AAD) [hizmet sorumlusu nesnesi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)oluşturmak için aşağıdaki adımları izleyin. Lütfen `appId`, `password`ve `objectId` değerlerini kaydedin; bunlar aşağıdaki adımlarda kullanılacaktır.
+Azure Active Directory (AAD) [hizmet sorumlusu nesnesi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)oluşturmak için aşağıdaki adımları izleyin. Lütfen `appId` , `password` ve değerlerini kaydedin; `objectId` bunlar aşağıdaki adımlarda kullanılacaktır.
 
 1. AD hizmet sorumlusu oluşturma ([RBAC hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/role-based-access-control/overview)):
     ```azurecli
@@ -46,14 +46,14 @@ Azure Active Directory (AAD) [hizmet sorumlusu nesnesi](https://docs.microsoft.c
     appId=$(jq -r ".appId" auth.json)
     password=$(jq -r ".password" auth.json)
     ```
-    JSON `appId` çıkışındaki ve `password` değerleri aşağıdaki adımlarda kullanılacaktır
+    `appId` `password` JSON çıkışındaki ve değerleri aşağıdaki adımlarda kullanılacaktır
 
 
-1. `appId` Yeni hizmet sorumlusunu almak `objectId` için önceki komutun çıktısından öğesini kullanın:
+1. `appId`Yeni hizmet sorumlusunu almak için önceki komutun çıktısından öğesini kullanın `objectId` :
     ```azurecli
     objectId=$(az ad sp show --id $appId --query "objectId" -o tsv)
     ```
-    Bu komutun çıktısı `objectId`, aşağıdaki Azure Resource Manager şablonunda kullanılacak olur.
+    Bu komutun çıktısı `objectId` , aşağıdaki Azure Resource Manager şablonunda kullanılacak olur.
 
 1. Azure Resource Manager şablonu dağıtımında kullanılacak parametre dosyasını daha sonra oluşturun.
     ```bash
@@ -66,7 +66,7 @@ Azure Active Directory (AAD) [hizmet sorumlusu nesnesi](https://docs.microsoft.c
     }
     EOF
     ```
-    **RBAC** etkin bir küme dağıtmak için `aksEnabledRBAC` alanını olarak ayarlayın`true`
+    **RBAC** etkin bir küme dağıtmak için `aksEnableRBAC` alanını olarak ayarlayın`true`
 
 ## <a name="deploy-components"></a>Bileşenleri dağıtma
 Bu adım, aboneliğinize aşağıdaki bileşenleri ekleyecek:
@@ -82,7 +82,7 @@ Bu adım, aboneliğinize aşağıdaki bileşenleri ekleyecek:
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/deploy/azuredeploy.json -O template.json
     ```
 
-1. Azure Resource Manager şablonunu kullanarak `az cli`dağıtın. Bu işlem 5 dakikaya kadar sürebilir.
+1. Azure Resource Manager şablonunu kullanarak dağıtın `az cli` . Bu işlem 5 dakikaya kadar sürebilir.
     ```azurecli
     resourceGroupName="MyResourceGroup"
     location="westus2"
@@ -99,7 +99,7 @@ Bu adım, aboneliğinize aşağıdaki bileşenleri ekleyecek:
             --parameters parameters.json
     ```
 
-1. Dağıtım tamamlandıktan sonra, dağıtım çıkışını adlı `deployment-outputs.json`bir dosyaya indirin.
+1. Dağıtım tamamlandıktan sonra, dağıtım çıkışını adlı bir dosyaya indirin `deployment-outputs.json` .
     ```azurecli
     az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
@@ -109,7 +109,7 @@ Bu adım, aboneliğinize aşağıdaki bileşenleri ekleyecek:
 Önceki bölümde yer alarak, yeni bir AKS kümesi oluşturulup yapılandırdık ve bir Application Gateway. Şimdi yeni Kubernetes altyapısına örnek bir uygulama ve giriş denetleyicisi dağıtmaya hazırsınız.
 
 ### <a name="setup-kubernetes-credentials"></a>Kubernetes kimlik bilgilerini ayarlama
-Aşağıdaki adımlarda, yeni Kubernetes kümenize bağlanmak için kullanabilmemiz için [kubectl](https://kubectl.docs.kubernetes.io/) komutunu kurun. [Cloud Shell](https://shell.azure.com/) `kubectl` zaten yüklü. Kubernetes kimlik bilgilerini almak için CLI kullanacağız `az` .
+Aşağıdaki adımlarda, yeni Kubernetes kümenize bağlanmak için kullanabilmemiz için [kubectl](https://kubectl.docs.kubernetes.io/) komutunu kurun. [Cloud Shell](https://shell.azure.com/) `kubectl` zaten yüklü. `az`Kubernetes kimlik bilgilerini almak için CLI kullanacağız.
 
 Yeni dağıtılan AKS ([daha fazla bilgi](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)) için kimlik bilgilerini alın:
 ```azurecli
@@ -124,7 +124,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
   Azure Active Directory Pod kimliği, [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)belirteç tabanlı erişim sağlar.
 
   [AAD Pod kimliği](https://github.com/Azure/aad-pod-identity) , Kubernetes kümenize aşağıdaki bileşenleri ekleyecek:
-   * Kubernetes [CRD 'ler](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/) `AzureIdentity`: `AzureAssignedIdentity`,,`AzureIdentityBinding`
+   * Kubernetes [CRD 'ler](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` ,`AzureIdentityBinding`
    * [Yönetilen kimlik denetleyicisi (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic) bileşeni
    * [Düğüm yönetilen kimliği (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi) bileşeni
 
@@ -144,9 +144,9 @@ AAD Pod kimliğini kümenize yüklemek için:
      ```
 
 ### <a name="install-helm"></a>Held 'yi yükler
-[Held](https://docs.microsoft.com/azure/aks/kubernetes-helm) , Kubernetes için bir paket yöneticisidir. `application-gateway-kubernetes-ingress` Paketi yüklemek için bunu kullanacağız:
+[Held](https://docs.microsoft.com/azure/aks/kubernetes-helm) , Kubernetes için bir paket yöneticisidir. Paketi yüklemek için bunu kullanacağız `application-gateway-kubernetes-ingress` :
 
-1. [Held](https://docs.microsoft.com/azure/aks/kubernetes-helm) 'yi yükleyip hele paketi eklemek `application-gateway-kubernetes-ingress` için aşağıdakileri çalıştırın:
+1. [Held](https://docs.microsoft.com/azure/aks/kubernetes-helm) 'yi yükleyip hele paketi eklemek için aşağıdakileri çalıştırın `application-gateway-kubernetes-ingress` :
 
     - *RBAC etkin* AKS kümesi
 
@@ -170,7 +170,7 @@ AAD Pod kimliğini kümenize yüklemek için:
 
 ### <a name="install-ingress-controller-helm-chart"></a>Giriş denetleyicisi Held grafiğini yükler
 
-1. Yukarıda oluşturulan `deployment-outputs.json` dosyayı kullanın ve aşağıdaki değişkenleri oluşturun.
+1. `deployment-outputs.json`Yukarıda oluşturulan dosyayı kullanın ve aşağıdaki değişkenleri oluşturun.
     ```bash
     applicationGatewayName=$(jq -r ".applicationGatewayName.value" deployment-outputs.json)
     resourceGroupName=$(jq -r ".resourceGroupName.value" deployment-outputs.json)
@@ -237,7 +237,7 @@ AAD Pod kimliğini kümenize yüklemek için:
         apiServerAddress: <aks-api-server-address>
     ```
 
-1. Yeni indirilen Held-config. YAML dosyasını düzenleyin ve bölümleri `appgw` ve `armAuth`alanlarını doldurun.
+1. Yeni indirilen Held-config. YAML dosyasını düzenleyin ve bölümleri ve alanlarını doldurun `appgw` `armAuth` .
     ```bash
     sed -i "s|<subscriptionId>|${subscriptionId}|g" helm-config.yaml
     sed -i "s|<resourceGroupName>|${resourceGroupName}|g" helm-config.yaml
@@ -254,16 +254,16 @@ AAD Pod kimliğini kümenize yüklemek için:
      - `appgw.subscriptionId`: Application Gateway yer aldığı Azure abonelik KIMLIĞI. Örnek: `a123b234-a3b4-557d-b2df-a0bc12de1234`
      - `appgw.resourceGroup`: Application Gateway oluşturulduğu Azure Kaynak grubunun adı. Örnek: `app-gw-resource-group`
      - `appgw.name`: Application Gateway adı. Örnek: `applicationgatewayd0f0`
-     - `appgw.shared`: Bu Boole bayrağı varsayılan olarak `false`ayarlanmalıdır. Paylaşılan bir `true` [Application Gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)gerekli olacak şekilde ayarlayın.
+     - `appgw.shared`: Bu Boole bayrağı varsayılan olarak ayarlanmalıdır `false` . `true` [Paylaşılan bir Application Gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)gerekli olacak şekilde ayarlayın.
      - `kubernetes.watchNamespace`: AGIC 'in izlemeniz gereken ad alanını belirtin. Bu tek bir dize değeri ya da virgülle ayrılmış ad alanları listesi olabilir.
     - `armAuth.type`: `aadPodIdentity` veya`servicePrincipal`
     - `armAuth.identityResourceID`: Azure tarafından yönetilen kimliğin kaynak KIMLIĞI
     - `armAuth.identityClientId`: Kimliğin Istemci KIMLIĞI. Kimlik hakkında daha fazla bilgi için aşağıya bakın
-    - `armAuth.secretJSON`: Yalnızca hizmet sorumlusu gizli türü seçildiğinde gereklidir ( `armAuth.type` ayarlandığında) `servicePrincipal` 
+    - `armAuth.secretJSON`: Yalnızca hizmet sorumlusu gizli türü seçildiğinde gereklidir (ayarlandığında `armAuth.type` `servicePrincipal` ) 
 
 
    > [!NOTE]
-   > Ve `identityResourceID` `identityClientID` , [bileşen dağıtma](ingress-controller-install-new.md#deploy-components) adımları sırasında oluşturulan değerlerdir ve aşağıdaki komut kullanılarak yeniden edinilebilir:
+   > `identityResourceID`Ve, `identityClientID` [bileşen dağıtma](ingress-controller-install-new.md#deploy-components) adımları sırasında oluşturulan değerlerdir ve aşağıdaki komut kullanılarak yeniden edinilebilir:
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: SQL Server çevrimiçi bir SQL yönetilen örneğine geçirme'
 titleSuffix: Azure Database Migration Service
-description: Azure veritabanı geçiş hizmeti 'ni kullanarak şirket içi SQL Server Azure SQL veritabanı yönetilen örneğine çevrimiçi geçiş gerçekleştirmeyi öğrenin.
+description: Azure veritabanı geçiş hizmeti 'ni kullanarak SQL Server Azure SQL yönetilen örneğine çevrimiçi geçiş gerçekleştirmeyi öğrenin.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 82d6fe190b191b6aca3bd51dcefb03ecda95b4f2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 817e1d740ce34704acb4b20a7c3f71807bfa66bc
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020447"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187945"
 ---
-# <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Öğretici: DMS kullanarak Azure SQL veritabanı yönetilen örneğine çevrimiçi olarak SQL Server geçirme
+# <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Öğretici: DMS kullanarak Azure SQL yönetilen örneği 'ne çevrimiçi SQL Server geçirme
 
-Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını şirket içi SQL Server örneğinden bir [Azure SQL veritabanı yönetilen örneğine](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) en az kapalı kalma süresiyle geçirebilirsiniz. Bazı el ile efor gerektirebilecek ek yöntemler için bkz. [Azure SQL veritabanı yönetilen örneği 'ne örnek geçişi SQL Server](../azure-sql/managed-instance/migrate-to-instance-from-sql-server.md)makalesi.
+Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını bir SQL Server örneğinden [Azure SQL yönetilen örneğine](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) en az kapalı kalma süresiyle geçirebilirsiniz. Bazı el ile çaba gerektirebilecek ek yöntemler için bkz. [Azure SQL yönetilen örneği 'ne örnek geçişi SQL Server](../azure-sql/managed-instance/migrate-to-instance-from-sql-server.md)makalesi.
 
-Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak, **Adventureworks2012** veritabanını SQL Server şirket içi ÖRNEĞINDEN bir SQL veritabanı yönetilen örneğine geçirmiş olursunuz.
+Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak bir SQL Server şirket içi örneğinden bir SQL yönetilen örneğine **Adventureworks2012** veritabanını geçirmiş olursunuz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Hazırsanız geçiş geçişini gerçekleştirin.
 
 > [!IMPORTANT]
-> Azure veritabanı geçiş hizmeti 'ni kullanarak SQL Server ile SQL veritabanı yönetilen örneği arasında çevrimiçi geçişler için, tam veritabanı yedeklemesini ve hizmetin veritabanlarınızı geçirmek için kullanabileceği SMB ağ paylaşımında sonraki günlük yedeklemelerini sağlamanız gerekir. Azure veritabanı geçiş hizmeti herhangi bir yedekleme başlatmaz ve bunun yerine, geçiş için olağanüstü durum kurtarma planınız kapsamında olabilecek mevcut yedeklemeleri kullanır.
+> Azure veritabanı geçiş hizmeti 'ni kullanarak SQL Server ile SQL yönetilen örneğine çevrimiçi geçişler için, tam veritabanı yedeklemesini ve hizmetin veritabanlarınızı geçirmek için kullanabileceği SMB ağ paylaşımında sonraki günlük yedeklemelerini sağlamanız gerekir. Azure veritabanı geçiş hizmeti herhangi bir yedekleme başlatmaz ve bunun yerine, geçiş için olağanüstü durum kurtarma planınız kapsamında olabilecek mevcut yedeklemeleri kullanır.
 > [Sağlama toplamı seçeneğini kullanarak yedeklemeler](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)aldığınızdan emin olun. Ayrıca, birden çok yedeklemeyi (yani tam ve t-log) tek bir yedekleme medyasına eklemediğinizden emin olun; Her bir yedeklemeyi ayrı bir yedekleme dosyasında alın. Son olarak, büyük yedeklemeleri geçirmeye ilişkin olası sorunların oluşma olasılığını azaltmak için sıkıştırılmış yedeklemeleri kullanabilirsiniz.
 
 > [!NOTE]
@@ -48,13 +48,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Bu makalede, SQL Server bir SQL veritabanı yönetilen örneğine çevrimiçi geçiş açıklanmaktadır. Çevrimdışı geçiş için bkz. [DMS kullanarak SQL Server SQL veritabanı yönetilen örneğine çevrimdışı geçirme](tutorial-sql-server-to-managed-instance.md).
+Bu makalede, SQL Server bir SQL yönetilen örneğine çevrimiçi geçiş açıklanmaktadır. Çevrimdışı geçiş için bkz. [DMS kullanarak SQL Server SQL yönetilen örneğine çevrimdışı geçirme](tutorial-sql-server-to-managed-instance.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
-* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun. Azure [veritabanı geçiş hizmeti 'ni kullanarak Azure SQL veritabanı yönetilen örnek geçişleri için ağ topolojilerini öğrenin](https://aka.ms/dmsnetworkformi). Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
+* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun. [Azure veritabanı geçiş hizmeti 'ni kullanarak SQL yönetilen örnek geçişleri için ağ topolojilerini öğrenin](https://aka.ms/dmsnetworkformi). Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
 
     > [!NOTE]
     > Sanal ağ kurulumu sırasında, Microsoft 'a ağ eşlemesi ile ExpressRoute kullanırsanız, hizmetin sağlanacağı alt ağa aşağıdaki hizmet [uç noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ekleyin:
@@ -77,7 +77,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 * Azure veritabanı geçiş hizmeti 'nin varsayılan olarak TCP bağlantı noktası 1433 olan kaynak SQL Server erişmesine izin vermek için Windows Güvenlik duvarınızı açın.
 * Dinamik bağlantı noktaları kullanarak birden çok adlandırılmış SQL Server örneği çalıştırıyorsanız, Azure veritabanı geçiş hizmeti 'nin kaynak sunucunuzdaki adlandırılmış bir örneğe bağlanabilmesi için SQL Browser hizmetini etkinleştirmek ve güvenlik duvarlarınız aracılığıyla UDP bağlantı noktası 1434 erişimine izin vermek isteyebilirsiniz.
 * Kaynak veritabanlarınızın önünde bir güvenlik duvarı gereci kullanıyorsanız, Azure veritabanı geçiş hizmeti 'nin geçiş için kaynak veritabanlarına, ayrıca SMB bağlantı noktası 445 üzerinden dosyalara erişmesine izin vermek için güvenlik duvarı kuralları eklemeniz gerekebilir.
-* [Azure Portal Azure SQL veritabanı yönetilen örneği oluşturma](https://aka.ms/sqldbmi)makalesindeki ayrıntıyı IZLEYEREK bir SQL veritabanı yönetilen örneği oluşturun.
+* [Azure Portal BIR SQL yönetilen örneği oluşturma](https://aka.ms/sqldbmi)makalesindeki ayrıntıyı IZLEYEREK bir SQL yönetilen örneği oluşturun.
 * Kaynak SQL Server ve hedef yönetilen örnek bağlantısı kurmak için kullanılan oturum açma bilgilerinin sysadmin sunucu rolüne üye olduğundan emin olun.
 * Veritabanı geçişi için Azure veritabanı geçiş hizmeti 'nin kullanabileceği tüm veritabanınızın tam veritabanı yedekleme dosyalarını ve sonraki işlem günlüğü yedekleme dosyalarını içeren bir SMB ağ paylaşımının sağlanması.
 * Kaynak SQL Server örneğini çalıştıran hizmet hesabının oluşturduğunuz ağ paylaşımında yazma ayrıcalıklarına sahip olduğundan ve kaynak sunucunun bilgisayar hesabının aynı paylaşımda okuma/yazma erişimine sahip olduğundan emin olun.
@@ -85,7 +85,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 * Azure veritabanı geçiş hizmeti 'nin hedef Azure veritabanı yönetilen örneği ve Azure depolama kapsayıcısına bağlanmak için kullanabileceği uygulama KIMLIĞI anahtarını üreten bir Azure Active Directory uygulama KIMLIĞI oluşturun. Daha fazla bilgi için bkz. [Kaynaklara erişebilen bir Azure Active Directory uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
   > [!NOTE]
-  > Azure veritabanı geçiş hizmeti, belirtilen uygulama KIMLIĞI için abonelikte katkıda bulunan izni gerektirir. Alternatif olarak, Azure veritabanı geçiş hizmeti 'nin gerektirdiği belirli izinleri veren özel roller de oluşturabilirsiniz. Özel rolleri kullanma hakkında adım adım yönergeler için, [SQL veritabanı yönetilen örnek çevrimiçi geçişleri SQL Server Için özel roller](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance)makalesine bakın.
+  > Azure veritabanı geçiş hizmeti, belirtilen uygulama KIMLIĞI için abonelikte katkıda bulunan izni gerektirir. Alternatif olarak, Azure veritabanı geçiş hizmeti 'nin gerektirdiği belirli izinleri veren özel roller de oluşturabilirsiniz. Özel rolleri kullanma hakkında adım adım yönergeler için, [SQL yönetilen örnek çevrimiçi geçişleri SQL Server Için özel roller](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance)makalesine bakın.
 
 * DMS hizmetinin veritabanı yedekleme dosyalarını yükleyebileceği ve veritabanlarını geçirmek için kullanabileceği bir **Standart Performans katmanı** Azure Depolama Hesabı oluşturun veya belirtin.  Azure veritabanı geçiş hizmeti örneği oluşturulduğu bölgede Azure Storage hesabını oluşturmayı unutmayın.
 
@@ -119,11 +119,11 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 5. Var olan bir sanal ağı seçin veya bir tane oluşturun.
 
-    Sanal ağ, kaynak SQL Server ve hedef SQL veritabanı yönetilen örneğine erişimi olan Azure veritabanı geçiş hizmeti sağlar.
+    Sanal ağ, Azure veritabanı geçiş hizmeti 'ni, kaynak SQL Server ve hedef SQL yönetilen örneği erişimi sağlar.
 
     Azure portal bir sanal ağ oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](https://aka.ms/DMSVnet)makalesine bakın.
 
-    Daha fazla ayrıntı için [Azure veritabanı geçiş hizmeti 'ni kullanarak Azure SQL veritabanı yönetilen örnek geçişleri Için ağ topolojileri](https://aka.ms/dmsnetworkformi)makalesine bakın.
+    Daha fazla ayrıntı için [Azure veritabanı geçiş hizmeti 'ni kullanarak SQL yönetilen örnek geçişleri Için ağ topolojileri](https://aka.ms/dmsnetworkformi)makalesine bakın.
 
 6. Premium fiyatlandırma katmanından bir SKU seçin.
 
@@ -148,7 +148,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
 3. +**Yeni Geçiş Projesi**'ni seçin.
 
-4. **Yeni geçiş projesi** ekranında, proje için bir ad belirtin, **kaynak sunucu türü** metin kutusunda **SQL Server**' i seçin, **hedef sunucu türü** metin kutusunda, **Azure SQL veritabanı yönetilen örneği**' ni seçin ve ardından **etkinlik türü seç**' i seçin, **çevrimiçi veri geçişi**' ni seçin.
+4. **Yeni geçiş projesi** ekranında, proje için bir ad belirtin, **kaynak sunucu türü** metin kutusunda **SQL Server**' i seçin, **hedef sunucu türü** metin kutusunda, **Azure SQL yönetilen örneği**' ni seçin ve ardından **etkinlik türü seç**' i seçin, **çevrimiçi veri geçişi**' ni seçin.
 
    ![Azure veritabanı geçiş hizmeti projesi oluştur](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 
@@ -174,21 +174,21 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
    ![Kaynak veritabanlarını seçme](media/tutorial-sql-server-to-managed-instance-online/dms-source-database1.png)
 
     > [!IMPORTANT]
-    > SQL Server Integration Services (SSIS) kullanıyorsanız, DMS Şu anda SSIS projeleriniz/paketleriniz (SSıSDB) için katalog veritabanını SQL Server Azure SQL veritabanı yönetilen örneği 'ne geçirmeyi desteklememektedir. Ancak, SSIS 'yi Azure Data Factory (ADF) olarak temin edebilir ve SSIS projelerinizi/paketlerinizi Azure SQL veritabanı yönetilen örneği tarafından barındırılan hedef SSıSDB 'ye yeniden dağıtabilirsiniz. SSIS paketlerini geçirme hakkında daha fazla bilgi için [SQL Server Integration Services paketlerini Azure 'A geçirme](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)makalesine bakın.
+    > SQL Server Integration Services (SSIS) kullanıyorsanız, DMS Şu anda SSIS projeleriniz/paketleriniz (SSıSDB) için katalog veritabanını SQL Server SQL yönetilen örneğine geçirmeyi desteklememektedir. Ancak, SSIS 'yi Azure Data Factory (ADF) olarak temin edebilir ve SSIS projelerinizi/paketlerinizi SQL yönetilen örneği tarafından barındırılan hedef SSıSDB 'ye yeniden dağıtabilirsiniz. SSIS paketlerini geçirme hakkında daha fazla bilgi için [SQL Server Integration Services paketlerini Azure 'A geçirme](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)makalesine bakın.
 
 5. **Kaydet**’i seçin.
 
 ## <a name="specify-target-details"></a>Hedef ayrıntılarını belirtme
 
-1. **Geçiş hedefi ayrıntıları** EKRANıNDA, DMS ÖRNEĞININ Azure SQL veritabanı yönetilen örneği ve Azure depolama hesabı 'nın hedef örneğine bağlanmak Için KULLANABILECEĞI **uygulama kimliğini** ve **anahtarını** belirtin.
+1. **Geçiş hedefi ayrıntıları** EKRANıNDA, DMS örneğinin SQL yönetilen örneği ve Azure depolama hesabı 'nın hedef örneğine bağlanmak Için KULLANABILECEĞI **uygulama kimliğini** ve **anahtarını** belirtin.
 
     Daha fazla bilgi için bkz. [Kaynaklara erişebilen bir Azure Active Directory uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
-2. Azure SQL veritabanı yönetilen örneği 'nin hedef örneğini içeren **aboneliği** seçin ve ardından hedef örneği seçin.
+2. SQL yönetilen örneği 'nin hedef örneğini içeren **aboneliği** seçin ve ardından hedef örneği seçin.
 
-    Azure SQL veritabanı yönetilen örneğini henüz sağlamadıysanız, örneği sağlamanıza yardımcı olacak [bağlantıyı](https://aka.ms/SQLDBMI) seçin. Azure SQL veritabanı yönetilen örneği hazırsanız, geçişi yürütmek için bu belirli projeye dönün.
+    SQL yönetilen örneğini henüz sağlamadıysanız, örneği sağlamanıza yardımcı olacak [bağlantıyı](https://aka.ms/SQLDBMI) seçin. SQL yönetilen örneği hazırsanız, geçişi yürütmek için bu belirli projeye dönün.
 
-3. Azure SQL veritabanı yönetilen örneğine bağlanmak için **SQL kullanıcısını** ve **parolayı** belirtin.
+3. SQL Managed örneğine bağlanmak için **SQL kullanıcısını** ve **parolayı** belirtin.
 
     ![Hedef seçme](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
@@ -246,7 +246,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
 ## <a name="performing-migration-cutover"></a>Tam geçişi gerçekleştirme
 
-Tam veritabanı yedeklemesi SQL veritabanı yönetilen örneği 'nin hedef örneğine geri yüklendikten sonra, veritabanı geçiş cutover işlemini gerçekleştirmek için kullanılabilir.
+Tam veritabanı yedeklemesi SQL yönetilen örneğinin hedef örneğine geri yüklendikten sonra, veritabanı geçiş cutover işlemini gerçekleştirmek için kullanılabilir.
 
 1. Çevrimiçi veritabanı geçişini tamamlamaya hazır olduğunuzda **Tam Geçişi Başlat**'ı seçin.
 
@@ -260,7 +260,7 @@ Tam veritabanı yedeklemesi SQL veritabanı yönetilen örneği 'nin hedef örne
 
     ![Tam geçişi tamamlamaya hazırlanma](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
-5. Veritabanı geçiş durumu **tamamlandı**olarak görüntülendiğinde, UYGULAMALARıNıZı Azure SQL veritabanı yönetilen örneği 'nin yeni hedef örneğine bağlayın.
+5. Veritabanı geçiş durumu **tamamlandı**olarak görüntülendiğinde, uygulamalarınızı SQL yönetilen örneği 'nin yeni hedef örneğine bağlayın.
 
     ![Tam geçiş tamamlandı](media/tutorial-sql-server-to-managed-instance-online/dms-cutover-complete.png)
 

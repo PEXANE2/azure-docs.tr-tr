@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: b596e349d789584de07943332ede6f6897a1fd22
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658633"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221003"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Azure Load Balancer ile yaygın Azure dağıtım hatalarını giderme
 
@@ -28,6 +28,7 @@ Bu makalede bazı yaygın Azure Load Balancer dağıtım hataları açıklanmakt
 |DifferentSkuLoadBalancersAndPublicIPAddressNotAllowed| Hem genel IP SKU 'SU hem de Load Balancer SKU 'SU eşleşmelidir. Azure Load Balancer ve genel IP SKU 'Larının eşleştiğinden emin olun. Standart SKU, üretim iş yükleri için önerilir. [SKU 'lardaki farklılıklar](./skus.md) hakkında daha fazla bilgi edinin  |
 |DifferentSkuLoadBalancerAndPublicIPAddressNotAllowedInVMSS | SKU belirtilmediğinde veya standart genel IP 'Ler olmadan dağıtıldığında, sanal makine ölçek kümeleri varsayılan olarak temel yük dengeleyiciler olarak ayarlanır. Standart Load Balancer seçili olduğundan emin olmak için tek örneklerde standart genel IP 'Ler ile sanal makine ölçek kümesini yeniden dağıtın veya Azure portal sanal makine ölçek kümesini dağıtırken yalnızca bir standart LB seçin. |
 |Maxkullanılabilirliği Bilitysetsınloadbalancerulaşıldı | Bir Load Balancer arka uç havuzunda en fazla 150 kullanılabilirlik kümesi bulunabilir. Arka uç havuzundaki sanal makinelerinize açık olarak tanımlanmış kullanılabilirlik kümeleriniz yoksa, her bir VM kendi kullanılabilirlik kümesine gider. Bu nedenle, 150 tek başına VM 'Leri dağıtmak, 150 kullanılabilirlik kümesi olduğunu ve bu nedenle sınıra vurarak olduğunu kapsıyor. Bir kullanılabilirlik kümesi dağıtabilir ve bu çözüme geçici bir çözüm olarak ek VM 'Ler ekleyebilirsiniz. |
+|Networkınterfaceandloadbalancerareınfarklıentavailabilitysets | Temel SKU yük dengeleyici için, ağ arabirimi ve yük dengeleyici aynı Kullanılabilirlik kümesinde olmalıdır. |
 |Rulesofsameloadbalancertypeusesamebackendportprotocolandıpconfig| Aynı sanal makine ölçek kümesi tarafından başvurulan aynı arka uç bağlantı noktası ve protokolüne sahip belirli bir yük dengeleyici türünde (iç, genel) birden fazla kural olamaz. Bu yinelenen kural oluşturmayı değiştirmek için kuralınızı güncelleştirin. |
 |Rulesofsameloadbalancertypeusesamebackendportprotocolandvmssıpconfig| Aynı sanal makine ölçek kümesi tarafından başvurulan aynı arka uç bağlantı noktası ve protokolüne sahip belirli bir yük dengeleyici türünde (iç, genel) birden fazla kural olamaz. Bu yinelenen kural oluşturmayı değiştirmek için kural parametrelerinizi güncelleştirin. |
 |Anotherınternalloadbalancerexists| Load Balancer arka ucunda aynı VM/ağ arabirimi kümesine iç başvuru türünden yalnızca bir Load Balancer sahip olabilirsiniz. Aynı türde yalnızca bir Load Balancer oluşturduğunuzdan emin olmak için dağıtımınızı güncelleştirin. |

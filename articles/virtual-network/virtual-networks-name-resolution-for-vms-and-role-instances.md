@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262205"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204778"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure sanal ağlarındaki kaynaklar için ad çözümlemesi
 
@@ -70,7 +70,7 @@ Azure tarafından sunulan ad çözümlemesi aşağıdaki özellikleri içerir:
 * Bir FQDN 'ye gerek duymadan Azure Resource Manager dağıtım modelini kullanan sanal ağlardaki VM 'Ler arasında ad çözümlemesini kullanabilirsiniz. Klasik dağıtım modelindeki sanal ağlar, farklı bulut hizmetlerindeki adları çözerken bir FQDN gerektirir. 
 * Otomatik olarak oluşturulan adlarla çalışmak yerine dağıtımlarınızı en iyi şekilde tanımlayan ana bilgisayar adlarını kullanabilirsiniz.
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 
 Azure tarafından sağlanmış ad çözümlemesi kullanırken göz önünde bulundurmanız gereken noktaları:
 * Azure tarafından oluşturulan DNS son eki değiştirilemez.
@@ -84,9 +84,9 @@ Azure tarafından sağlanmış ad çözümlemesi kullanırken göz önünde bulu
 
 ### <a name="reverse-dns-considerations"></a>Ters DNS konuları
 Ters DNS, tüm ARM tabanlı sanal ağlarda desteklenir. Sanal makinelerin IP adreslerini FQDN 'leri sanal makinelerin FQDN 'leri ile eşlemek için ters DNS sorguları (PTR sorguları) verebilirsiniz.
-* Sanal makinelerin IP adresleri için tüm PTR sorguları, VMName \[\]. internal.cloudapp.net biçiminde FQDN 'ler döndürür
-* VMName \[\]. internal.cloudapp.net biçimindeki FQDN 'lerde ileriye doğru arama, sanal makineye atanan IP adresine çözümlenir.
-* Sanal ağ, kayıt sanal ağı olarak bir [Azure DNS özel bölgesine](../dns/private-dns-overview.md) bağlanmışsa, ters DNS sorguları iki kayıt döndürür. Bir kayıt, VMName \[\]biçiminde olur. [primi nsbölgeadı] ve diğeri VMName \[\]. internal.cloudapp.net biçiminde olabilir
+* Sanal makinelerin IP adresleri için tüm PTR sorguları, \[ VMName. internal.cloudapp.net biçiminde FQDN 'ler \] döndürür
+* VMName. internal.cloudapp.net biçimindeki FQDN 'lerde ileriye doğru arama, \[ \] sanal MAKINEYE atanan IP adresine çözümlenir.
+* Sanal ağ, kayıt sanal ağı olarak bir [Azure DNS özel bölgesine](../dns/private-dns-overview.md) bağlanmışsa, ters DNS sorguları iki kayıt döndürür. Bir kayıt, VMName biçiminde olacaktır \[ \] . [ privatednszonename] ve diğeri \[ VMName \] . internal.cloudapp.net biçiminde olabilir
 * Ters DNS arama, diğer sanal ağlara eşlense bile, belirli bir sanal ağın kapsamına alınır. Eşlenen sanal ağlarda bulunan sanal makinelerin IP adresleri için ters DNS sorguları (PTR sorguları) NXDOMAIN döndürür.
 * Bir sanal ağda ters DNS işlevini devre dışı bırakmak istiyorsanız, [Azure DNS özel bölgeler](../dns/private-dns-overview.md) ' i kullanarak bir geriye doğru arama bölgesi oluşturup bu bölgeyi sanal ağınızla bağlantılandırarak bunu yapabilirsiniz. Örneğin, sanal Ağınızın IP adresi alanı 10.20.0.0/16 ise boş bir özel DNS bölgesi 20.10.in-addr. arpa oluşturabilir ve bunu sanal ağa bağlayabilirsiniz. Bölgeyi sanal ağınıza bağlarken bağlantıda otomatik kaydı devre dışı bırakmanız gerekir. Bu bölge, sanal ağ için varsayılan geriye doğru arama bölgelerini geçersiz kılacak ve bu bölge boş olduğu için ters DNS sorgularınız için NXDOMAIN alacaksınız. Özel bir DNS bölgesi oluşturma ve bunu bir sanal ağa bağlama hakkındaki ayrıntılar için [hızlı başlangıç kılavuzumuza](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) bakın.
 
@@ -108,19 +108,19 @@ Varsayılan Windows DNS istemcisinde yerleşik bir DNS önbelleği vardır. Baz�
 Kullanılabilir farklı DNS önbelleğe alma paketleri vardır (dnsmasq gibi). Aşağıda, en yaygın dağıtımlardan dnsmasq 'nin nasıl yükleneceği açıklanmaktadır:
 
 * **Ubuntu (resolvconf kullanır)**:
-  * Dnsmasq paketini ile birlikte `sudo apt-get install dnsmasq`yükler.
+  * Dnsmasq paketini ile birlikte yükler `sudo apt-get install dnsmasq` .
 * **SUSE (netconf kullanır)**:
-  * Dnsmasq paketini ile birlikte `sudo zypper install dnsmasq`yükler.
-  * Dnsmasq hizmetini ile `systemctl enable dnsmasq.service`etkinleştirin. 
-  * Dnsmasq hizmetini ile `systemctl start dnsmasq.service`başlatın. 
+  * Dnsmasq paketini ile birlikte yükler `sudo zypper install dnsmasq` .
+  * Dnsmasq hizmetini ile etkinleştirin `systemctl enable dnsmasq.service` . 
+  * Dnsmasq hizmetini ile başlatın `systemctl start dnsmasq.service` . 
   * **/Etc/sysconfig/Network/config**' i düzenleyin ve *NETCONFIG_DNS_FORWARDER = ""* değerini *dnsmasq*olarak değiştirin.
-  * Önbelleği yerel DNS Çözümleyicisi olarak ayarlamak `netconfig update`için resolv. conf ile güncelleştirin.
+  * `netconfig update`Önbelleği yerel DNS Çözümleyicisi olarak ayarlamak için resolv. conf ile güncelleştirin.
 * **CentOS (NetworkManager kullanır)**:
-  * Dnsmasq paketini ile birlikte `sudo yum install dnsmasq`yükler.
-  * Dnsmasq hizmetini ile `systemctl enable dnsmasq.service`etkinleştirin.
-  * Dnsmasq hizmetini ile `systemctl start dnsmasq.service`başlatın.
+  * Dnsmasq paketini ile birlikte yükler `sudo yum install dnsmasq` .
+  * Dnsmasq hizmetini ile etkinleştirin `systemctl enable dnsmasq.service` .
+  * Dnsmasq hizmetini ile başlatın `systemctl start dnsmasq.service` .
   * **/Etc/dhclient-ah0.conf**' e *etki alanı-adı-sunucu 127.0.0.1;* ekleyin.
-  * Önbelleği yerel DNS Çözümleyicisi olarak `service network restart`ayarlamak için ile ağ hizmetini yeniden başlatın.
+  * `service network restart`Önbelleği yerel DNS Çözümleyicisi olarak ayarlamak için ile ağ hizmetini yeniden başlatın.
 
 > [!NOTE]
 > Dnsmasq paketi yalnızca Linux için kullanılabilen birçok DNS Önbelleklerinden biridir. Kullanmadan önce, belirli gereksinimleriniz için uygunluğu denetleyin ve başka bir önbelleğin yüklenmediğini denetleyin.
@@ -133,7 +133,7 @@ DNS birincil olarak bir UDP protokolüdür. UDP Protokolü ileti teslimini garan
 * Windows işletim sistemleri bir saniye sonra yeniden dener ve sonra bir sonraki iki saniye, dört saniye ve dört saniye sonra yeniden dener. 
 * Varsayılan Linux Kurulumu beş saniye sonra yeniden dener. Yeniden deneme belirtimlerinin beş kez, tek saniyelik aralıklarla değiştirilmesini öneririz.
 
-Bir Linux VM 'deki geçerli ayarları kontrol edin `cat /etc/resolv.conf`. *Seçenekler* satırına bakın, örneğin:
+Bir Linux VM 'deki geçerli ayarları kontrol edin `cat /etc/resolv.conf` . *Seçenekler* satırına bakın, örneğin:
 
 ```bash
 options timeout:1 attempts:5
@@ -143,13 +143,13 @@ Resolv. conf dosyası genellikle otomatik olarak oluşturulur ve düzenlenmemeli
 
 * **Ubuntu** (resolvconf kullanır):
   1. *Options* satırını **/etc/resolvconf/resolv.exe**' ye ekleyin.
-  2. Güncelleştirmek `resolvconf -u` için çalıştırın.
+  2. `resolvconf -u`Güncelleştirmek için çalıştırın.
 * **SUSE** (netconf kullanır):
   1. *Zaman aşımı: 1 deneme: 5* ' e, **/Etc/sysconfig/Network/config**içindeki **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametresine ekleyin.
-  2. Güncelleştirmek `netconfig update` için çalıştırın.
+  2. `netconfig update`Güncelleştirmek için çalıştırın.
 * **CentOS** (NetworkManager kullanır):
   1. **/Etc/NetworkManager/Dispatcher,d/11-dhclient**için *echo "Options timeout: 1 deneme: 5"* ekleyin.
-  2. İle `service network restart`güncelleştirin.
+  2. İle güncelleştirin `service network restart` .
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>Kendi DNS sunucunuzu kullanan ad çözümlemesi
 
@@ -218,7 +218,7 @@ Azure Resource Manager dağıtım modelini kullanırken, bir sanal ağ ve bir a�
 Klasik dağıtım modelini kullanırken, Azure portal veya [ağ yapılandırma dosyasında](https://msdn.microsoft.com/library/azure/jj157100)sanal ağ için DNS sunucuları belirtebilirsiniz. Bulut hizmetleri için, [hizmet yapılandırma dosyası](https://msdn.microsoft.com/library/azure/ee758710) aracılığıyla veya PowerShell kullanarak [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm)ile DNS sunucuları belirtebilirsiniz.
 
 > [!NOTE]
-> Zaten dağıtılmış bir sanal ağ veya sanal makine için DNS ayarlarını değiştirirseniz, yeni DNS ayarlarının etkili olabilmesi için, sanal ağdaki tüm etkilenen VM 'lerde bir DHCP kira yenilemesi gerçekleştirmeniz gerekir. Windows işletim sistemini çalıştıran VM 'Ler için, bunu doğrudan VM 'ye yazarak `ipconfig /renew` yapabilirsiniz. Adımlar, işletim sistemine bağlı olarak değişir. İşletim sistemi türü için ilgili belgelere bakın.
+> Zaten dağıtılmış bir sanal ağ veya sanal makine için DNS ayarlarını değiştirirseniz, yeni DNS ayarlarının etkili olabilmesi için, sanal ağdaki tüm etkilenen VM 'lerde bir DHCP kira yenilemesi gerçekleştirmeniz gerekir. Windows işletim sistemini çalıştıran VM 'Ler için, bunu doğrudan VM 'ye yazarak yapabilirsiniz `ipconfig /renew` . Adımlar, işletim sistemine bağlı olarak değişir. İşletim sistemi türü için ilgili belgelere bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

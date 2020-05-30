@@ -6,12 +6,12 @@ ms.custom: subject-armqs
 ms.date: 04/29/2020
 author: davidsmatlak
 ms.author: v-dasmat
-ms.openlocfilehash: 47c25ebd0fe18d470b04ccbcc85a8638c1ce0346
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598410"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217294"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak bir kurtarma hizmetleri Kasası oluşturma
 
@@ -27,7 +27,7 @@ Yok.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/).
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 Şablonda iki Azure kaynağı tanımlanmıştır:
 
-- [Microsoft. RecoveryServices kasaları](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults): kasayı oluşturur.
+- [Microsoft. RecoveryServices kasaları](/azure/templates/microsoft.recoveryservices/vaults): kasayı oluşturur.
 - [Microsoft. RecoveryServices/Vaults/backupstorageconfig](/rest/api/backup/backupresourcestorageconfigs): kasanın yedek artıklığı ayarlarını yapılandırır.
 
 Şablon, kasanın yedekleme yapılandırması için isteğe bağlı parametreler içerir. Depolama artıklığı ayarları yerel olarak yedekli depolama (LRS) veya coğrafi olarak yedekli depolama (GRS). Daha fazla bilgi için bkz. [depolama yedekliliği ayarlama](../backup/backup-create-rs-vault.md#set-storage-redundancy).
@@ -60,7 +60,7 @@ Daha fazla Azure Kurtarma Hizmetleri şablonu için bkz. [Azure hızlı başlang
    - **Kasa adı**: kasa için bir ad sağlayın.
    - **Depolama türünü değiştir**: varsayılan değer **false**'dur. Yalnızca kasanın depolama türünü değiştirmeniz gerekiyorsa **true** ' ı seçin.
    - **Kasa depolama türü**: varsayılan: **GloballyRedundant**. Depolama türü **true**olarak ayarlandıysa, **locallyyedekli**' i seçin.
-   - **Konum**: işlev `[resourceGroup().location]` , kaynak grubunun konumunu varsayılan olarak belirler. Konumu değiştirmek için **westus**gibi bir değer girin.
+   - **Konum**: işlev, `[resourceGroup().location]` kaynak grubunun konumunu varsayılan olarak belirler. Konumu değiştirmek için **westus**gibi bir değer girin.
    - **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**onay kutusunu seçin.
 
 1. Kasanın dağıtımına başlamak için, **satın al** düğmesini seçin. Başarılı bir dağıtımdan sonra bir bildirim görüntülenir.

@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 4559cd40bf9482ece80d0b6123ca73b7a0cbb3aa
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 14503299b241b87459517818b0d0b2be6dde9072
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170911"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219240"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -143,6 +143,23 @@ Bulunan VM 'Ler portalda görünmezse veya VM verileri güncel değilse, birkaç
 ## <a name="deleted-vms-appear-in-portal"></a>Portalda silinen VM 'Ler görüntülenir
 
 VM 'Leri silerseniz ve portalda hala görünüyorsa 30 dakika bekleyin. Hala görünüyorsa, yukarıda açıklandığı gibi yenileyin.
+
+## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Hata: karşıya yüklenen dosya beklenen biçimde değil
+Bazı araçların, bir sınırlayıcı olarak noktalı virgül ile CSV dosyası oluşturan bölgesel ayarları vardır. Sınırlandırıcının virgül olduğundan emin olmak için lütfen ayarları değiştirin.
+
+## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>CSV 'yi içeri aktardım, ancak "bulma devam ediyor" görüyorum
+Bu durum, CSV yüklemeniz doğrulama hatası nedeniyle başarısız olduysa görüntülenir. CSV 'yi yeniden içeri aktarmayı deneyin. Önceki karşıya yükleme işleminin hata raporunu indirebilir ve hataları onarmak için dosyadaki düzeltme kılavuzunu takip edebilirsiniz. Hata raporu ' bilgisayarları Bul ' sayfasındaki ' Içeri aktarma ayrıntıları ' bölümünden indirilebilir.
+
+## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>Konuk kimlik bilgilerini güncelleştirdikten sonra bile uygulama ayrıntılarını görmeyin
+Uygulama bulma her 24 saatte bir çalışır. Ayrıntıları hemen görmek isterseniz aşağıdaki gibi yenileyin. Hayır öğesine bağlı olarak bu işlem birkaç dakika sürebilir. bulunan VM 'Ler.
+
+1. **Sunucular**  >  **Azure geçişi sunucu değerlendirmesi**' nde, **genel bakış**' ı seçin.
+2. **Yönet**altında **Aracı durumu**' yi seçin.
+3. **Aracıyı Yenile**' yi seçin.
+4. Yenileme işleminin tamamlanmasını bekleyin. Şimdi güncel bilgileri görmeniz gerekir.
+
+## <a name="unable-to-export-application-inventory"></a>Uygulama envanteri dışarı aktarılamıyor
+Portalda envanterden indirilen kullanıcının abonelik üzerinde katkıda bulunan ayrıcalıklara sahip olduğundan emin olun.
 
 ## <a name="common-app-discovery-errors"></a>Ortak uygulama bulma hataları
 

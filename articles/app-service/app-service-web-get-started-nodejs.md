@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/04/2020
 ms.custom: mvc, devcenter, seodec18
 ms.openlocfilehash: df1e0809c0122eae593543cd193a6477b03d0938
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 05/29/2020
 ms.locfileid: "82690788"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure App Service'te Node.js web uygulaması oluşturma 
@@ -19,7 +19,7 @@ Visual Studio Code kullanarak yerel olarak bir Node. js/Express uygulaması olu�
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
-- [Node.js ve npm](https://nodejs.org). Node. js `node --version` ' nin yüklü olduğunu doğrulamak için komutunu çalıştırın.
+- [Node.js ve npm](https://nodejs.org). `node --version`Node. js ' nin yüklü olduğunu doğrulamak için komutunu çalıştırın.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - Visual Studio Code için [Azure App Service uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) .
 
@@ -43,9 +43,9 @@ Visual Studio Code kullanarak yerel olarak bir Node. js/Express uygulaması olu�
     npm start
     ```
     
-1. Tarayıcınızı açın ve adresine `http://localhost:1337`gidin. Tarayıcının "Merhaba Dünya!" görüntülemesi gerekir.
+1. Tarayıcınızı açın ve adresine gidin `http://localhost:1337` . Tarayıcının "Merhaba Dünya!" görüntülemesi gerekir.
 
-1. Sunucuyu durdurmak için terminalde **CTRL**+**C** tuşlarına basın.
+1. **Ctrl** + Sunucuyu durdurmak için terminalde CTRL**C** tuşlarına basın.
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
@@ -64,7 +64,7 @@ Bu bölümde, VS Code ve Azure App Service uzantısını kullanarak Node. js uyg
 
     ![Azure'da oturum açma](containers/media/quickstart-nodejs/sign-in.png)
 
-1. VS Code **Azure App SERVICE** Gezgini ' nde, uygulamanızı Azure 'a dağıtmak için mavi yukarı ok simgesini seçin. (' Web uygulamasına Dağıt ' yazıp **Azure App Service: Web uygulamasına dağıt**) seçeneğini belirleyerek **komut paletinden** aynı komutu da çağırabilirsiniz (**CTRL**+**SHIFT**+**P**).
+1. VS Code **Azure App SERVICE** Gezgini ' nde, uygulamanızı Azure 'a dağıtmak için mavi yukarı ok simgesini seçin. (' Web uygulamasına**Ctrl**Dağıt ' yazıp **Command Palette** + **Shift** + **Azure App Service: Web uygulamasına dağıt**) seçeneğini belirleyerek komut paletinden aynı komutu da çağırabilirsiniz (CTRL SHIFT**P**).
 
     ![Web uygulamasına dağıtma](containers/media/quickstart-nodejs/deploy.png)
         
@@ -80,15 +80,15 @@ Bu bölümde, VS Code ve Azure App Service uzantısını kullanarak Node. js uyg
 1. Linux hedefleniyorsa, sorulduğunda bir Node. js sürümü seçin. **LTS** sürümü önerilir.
 
 1. Windows 'u hedefliyorsanız, ek istemleri izleyin:
-    1. **Yeni kaynak grubu oluştur**' u seçin, ardından kaynak grubu için gibi `AppServiceQS-rg`bir ad girin.
+    1. **Yeni kaynak grubu oluştur**' u seçin, ardından kaynak grubu için gibi bir ad girin `AppServiceQS-rg` .
     1. İşletim sistemi için **Windows** ' u seçin.
-    1. **Yeni App Service planı oluştur**' u seçin, sonra plan için bir ad girin (gibi `AppServiceQS-plan`) ve ardından fiyatlandırma katmanı için **F1 ücretsiz** ' i seçin.
+    1. **Yeni App Service planı oluştur**' u seçin, sonra plan için bir ad girin (gibi `AppServiceQS-plan` ) ve ardından fiyatlandırma katmanı için **F1 ücretsiz** ' i seçin.
     1. Application Insights sorulduğunda **Şu anda atla** ' yı seçin.
     1. Size yakın bir bölge veya erişmek istediğiniz kaynakları seçin.
 
 1. Tüm istemlere yanıt verdikten sonra, VS Code bildirim açılan penceresinde uygulamanız için oluşturulmakta olan Azure kaynaklarını gösterir.
 
-    Linux 'a dağıtım yaparken, yapılandırmanızı **Yes** hedef Linux sunucusunda çalışacak `npm install` şekilde güncellemek isteyip istemediğiniz sorulduğunda Evet ' i seçin.
+    Linux 'a dağıtım yaparken, yapılandırmanızı hedef Linux sunucusunda çalışacak şekilde güncellemek isteyip istemediğiniz sorulduğunda **Evet** ' i seçin `npm install` .
 
     ![Hedef Linux sunucusunda yapılandırmayı güncelleştirmek için sor](containers/media/quickstart-nodejs/server-build.png)
 
@@ -102,8 +102,8 @@ Bu bölümde, VS Code ve Azure App Service uzantısını kullanarak Node. js uyg
 
         ![Uygulama ayarı komutu Ekle](containers/media/quickstart-nodejs/add-setting.png)
 
-    1. Ayar `WEBSITE_NODE_DEFAULT_VERSION` anahtarı için girin.
-    1. Ayar `10.15.2` değeri için girin.
+    1. `WEBSITE_NODE_DEFAULT_VERSION`Ayar anahtarı için girin.
+    1. `10.15.2`Ayar değeri için girin.
     1. App Service düğümüne sağ tıklayın ve **Yeniden Başlat** ' ı seçin.
 
         ![App Service komutunu yeniden Başlat](containers/media/quickstart-nodejs/restart.png)
@@ -115,7 +115,7 @@ Bu bölümde, VS Code ve Azure App Service uzantısını kullanarak Node. js uyg
 
 ### <a name="troubleshooting-azure-sign-in"></a>Azure oturum açma sorunlarını giderme
 
-Azure 'da oturum açarken **"adı [ABONELIK kimliği] olan abonelik bulunamıyor"** hatasını görürseniz, bunun nedeni bir ara sunucu arkasında olduğunuzdan ve Azure API 'sine ulaşamamanıza kaynaklanabilir. Kullanarak `HTTP_PROXY` `export`terminalinizdeki proxy bilgileriniz ile değişkenleri yapılandırın ve `HTTPS_PROXY` ortam değişkenlerini kullanın.
+Azure 'da oturum açarken **"adı [ABONELIK kimliği] olan abonelik bulunamıyor"** hatasını görürseniz, bunun nedeni bir ara sunucu arkasında olduğunuzdan ve Azure API 'sine ulaşamamanıza kaynaklanabilir. `HTTP_PROXY` `HTTPS_PROXY` Kullanarak terminalinizdeki proxy bilgileriniz ile değişkenleri yapılandırın ve ortam değişkenlerini kullanın `export` .
 
 ```bash
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -130,7 +130,7 @@ VS Code düzenleme yaparak, dosyalarınızı kaydederek ve sonra yalnızca var o
 
 ## <a name="viewing-logs"></a>Günlükleri görüntüleme
 
-Günlük çıktısını (çağrıları `console.log`) uygulamadan doğrudan vs Code çıkış penceresinde görüntüleyebilirsiniz.
+Günlük çıktısını (çağrıları `console.log` ) uygulamadan doğrudan vs Code çıkış penceresinde görüntüleyebilirsiniz.
 
 1. **Azure App SERVICE** Gezgini ' nde uygulama düğümüne sağ tıklayın ve **akış günlüklerini Başlat**' ı seçin.
 

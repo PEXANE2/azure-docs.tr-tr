@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f9e576599fe1b329807427181d5de3fa37c9adea
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: efe7a68f7102da0b39def676306ce96ad00f5ff8
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041843"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204965"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Sanal Makinelerinde SQL Server nedir? (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -112,7 +112,7 @@ Azure portal, SQL sanal makineleriniz dahil olmak üzere [tüm Azure SQL kaynakl
 ![Azure SQL araması](./media/sql-server-on-azure-vm-iaas-what-is-overview/search-for-azure-sql.png)
 
 > [!NOTE]
-> **Azure SQL** , tüm SQL veritabanlarına, elastik havuzlara, veritabanı SUNUCULARıNA, SQL yönetilen örneklere ve SQL sanal makinelerinize erişmenin hızlı ve kolay bir yolunu sunar. Azure SQL bir hizmet veya kaynak değil. 
+> **Azure SQL** , tüm Azure SQL veritabanlarına, elastik havuzlarınıza, mantıksal sunuculara, yönetilen örneklere ve sanal makinelere erişmenin hızlı ve kolay bir yolunu sunar. Azure SQL bir hizmet veya kaynak değil. 
 
 Mevcut kaynakları yönetmek için listeden istediğiniz öğeyi seçin. Yeni Azure SQL kaynakları oluşturmak için **+ Ekle**' yi seçin. 
 

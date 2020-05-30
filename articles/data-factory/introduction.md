@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 327aadbc2996e91ef0f7639da86a647ddd42247c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 937b836582cfcbf11564aa28b11cd8647afa835c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81410936"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191105"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory nedir?
 
@@ -83,7 +83,7 @@ Bağlı hizmetler, dış kaynaklara bağlanmak için Data Factory'ye gereken ba�
 
 Bağlı hizmetler Data Factory’de iki amaçla kullanılır:
 
-- Bir **veri deposunu**, buradakilerle, ancak bunlarla sınırlı olmamak şartıyla göstermek için: şirket içi SQL Server veritabanı, Oracle veritabanı, dosya paylaşımı veya bir Azure blob depolama hesabı. Desteklenen veri depolarının listesi için [kopyalama etkinliği](copy-activity-overview.md) makalesine bakın.
+- Bir SQL Server veritabanı, Oracle veritabanı, dosya paylaşma veya Azure Blob depolama hesabı içeren, ancak bunlarla sınırlı olmayan bir **veri deposunu** temsil etmek için. Desteklenen veri depolarının listesi için [kopyalama etkinliği](copy-activity-overview.md) makalesine bakın.
 
 - Bir etkinliğin yürütülmesini barındırameyen bir **işlem kaynağını** temsil etmek için. Örneğin, HDInsightHive etkinliği bir HDInsight Hadoop kümesinde yürütülür. Dönüştürme etkinlikleri ve desteklenen işlem ortamlarının listesi için [veri dönüştürme](transform-data.md) makalesine bakın.
 

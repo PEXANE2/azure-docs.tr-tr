@@ -12,12 +12,12 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab; jrasnick
 ms.date: 03/10/2020
-ms.openlocfilehash: 8536c1cfbeefc36774b5423aee39f345dc23cd18
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 50322f69ff1cbb58cd5461646ca057718696e0eb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042711"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193888"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde performans için uygulamaları ve veritabanlarını ayarlama
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Bu makalede, Azure SQL veritabanı [veritabanı Danışmanı önerileri](databas
 
 ## <a name="tune-your-application"></a>Uygulamanızı ayarlama
 
-Geleneksel şirket içi SQL Server, ilk kapasite planlaması süreci genellikle üretimde bir uygulama çalıştırma süreciyle ayrılır. İlk olarak donanım ve ürün lisansları satın alınır ve performans ayarlaması daha sonra yapılır. Azure SQL veritabanı veya Azure SQL yönetilen örneği kullandığınızda, bir uygulamayı çalıştırma ve ayarlama sürecini interweave iyi bir fikir olabilir. İsteğe bağlı kapasite için ödeme modeliyle, uygulamanızı, genellikle yanlış olan bir uygulama için gelecekteki büyüme planlarının tahminlerini temel alarak donanım üzerinde sağlama yerine, şimdi gereken minimum kaynakları kullanacak şekilde ayarlayabilirsiniz. Bazı müşteriler bir uygulamayı ayarlamayı tercih edebilir, bunun yerine donanım kaynakları sağlamayı tercih edebilir. Bu yaklaşım, yoğun bir dönemde anahtar uygulamayı değiştirmek istemediğiniz durumlarda iyi bir fikir olabilir. Ancak, bir uygulamanın ayarlanması, Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde hizmet katmanlarını kullandığınızda kaynak gereksinimlerini en aza indirebilir ve aylık faturaları azaltır.
+Geleneksel şirket içi SQL Server, ilk kapasite planlaması süreci genellikle üretimde bir uygulama çalıştırma süreciyle ayrılır. İlk olarak donanım ve ürün lisansları satın alınır ve performans ayarlaması daha sonra yapılır. Azure SQL kullandığınızda, bir uygulamayı çalıştırma ve ayarlama sürecini interweave iyi bir fikir olabilir. İsteğe bağlı kapasite için ödeme modeliyle, uygulamanızı, genellikle yanlış olan bir uygulama için gelecekteki büyüme planlarının tahminlerini temel alarak donanım üzerinde sağlama yerine, şimdi gereken minimum kaynakları kullanacak şekilde ayarlayabilirsiniz. Bazı müşteriler bir uygulamayı ayarlamayı tercih edebilir, bunun yerine donanım kaynakları sağlamayı tercih edebilir. Bu yaklaşım, yoğun bir dönemde anahtar uygulamayı değiştirmek istemediğiniz durumlarda iyi bir fikir olabilir. Ancak, bir uygulamanın ayarlanması, Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde hizmet katmanlarını kullandığınızda kaynak gereksinimlerini en aza indirebilir ve aylık faturaları azaltır.
 
 ### <a name="application-characteristics"></a>Uygulama özellikleri
 

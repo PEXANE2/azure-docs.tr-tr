@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici aracı veri toplamayı yapılandırma
 description: Bu makalede stdout/stderr ve ortam değişkenleri günlük toplamayı denetlemek için kapsayıcılar aracısının Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 28b93190298ae61732ff7d2e297899af4ba0e5f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 000f68d5498324fa0e68bce178688a79f3ce9c5b
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933017"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220238"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici için aracı veri toplamayı yapılandırma
 
@@ -35,12 +35,12 @@ Aşağıda, veri toplamayı denetlemek için yapılandırılabilecek ayarlar ver
 |----|----------|------|------------|
 |`schema-version` |Dize (büyük/küçük harfe duyarlı) |v1 |Bu, bu ConfigMap ayrıştırılırken aracı tarafından kullanılan şema sürümüdür. Şu anda desteklenen şema sürümü v1. Bu değerin değiştirilmesi desteklenmez ve ConfigMap değerlendirildiğinde reddedilir.|
 |`config-version` |Dize | | , Kaynak denetimi sisteminizde/deponuzda bu yapılandırma dosyasının sürümünün izini sürme yeteneğini destekler. İzin verilen en fazla karakter sayısı 10 ' dur ve diğer tüm karakterler kesilir. |
-|`[log_collection_settings.stdout] enabled =` |Boole | true veya false | Bu, stdout kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. Olarak `true` ayarlandığında ve STDOUT günlük toplama için hiçbir ad alanı dışlandığında (`log_collection_settings.stdout.exclude_namespaces` aşağıdaki ayar), stdout günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacaktır. ConfigMaps içinde belirtilmemişse, varsayılan değer `enabled = true`. |
-|`[log_collection_settings.stdout] exclude_namespaces =`|Dize | Virgülle ayrılmış dizi |Stdout günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca `log_collection_settings.stdout.enabled` , olarak `true`ayarlandıysa geçerlidir. ConfigMap içinde belirtilmemişse, varsayılan değer `exclude_namespaces = ["kube-system"]`.|
-|`[log_collection_settings.stderr] enabled =` |Boole | true veya false |Bu, stderr kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. Olarak `true` ayarlandığında ve STDOUT günlük toplama (`log_collection_settings.stderr.exclude_namespaces` ayarı) için hiçbir ad alanı dışlandığında, stderr günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacaktır. ConfigMaps içinde belirtilmemişse, varsayılan değer `enabled = true`. |
-|`[log_collection_settings.stderr] exclude_namespaces =` |Dize |Virgülle ayrılmış dizi |Stderr günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca `log_collection_settings.stdout.enabled` , olarak `true`ayarlandıysa geçerlidir. ConfigMap içinde belirtilmemişse, varsayılan değer `exclude_namespaces = ["kube-system"]`. |
-| `[log_collection_settings.env_var] enabled =` |Boole | true veya false | Bu ayar, kümedeki tüm düğüm/düğümler genelinde ortam değişkeni toplamayı denetler ve ConfigMaps 'ta belirtilmediğinde `enabled = true` varsayılan değerleri alır. Ortam değişkenlerinin `AZMON_COLLECT_ENV` toplanması genel olarak etkinleştirilmişse, ortam değişkenini bir Dockerfile ayarıyla veya **env:** bölümünün altındaki [pod için yapılandırma dosyasında](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) **yanlış** olarak ayarlayarak belirli bir kapsayıcı için devre dışı bırakabilirsiniz. Ortam değişkenlerinin toplanması genel olarak devre dışıysa, belirli bir kapsayıcı için koleksiyonu etkinleştiremezsiniz (yani, kapsayıcı düzeyinde uygulanabilecek tek geçersiz kılma, genel olarak etkinleştirildiğinde koleksiyonu devre dışı bırakmalıdır.). |
-| `[log_collection_settings.enrich_container_logs] enabled =` |Boole | true veya false | Bu ayar kapsayıcı günlüğü zenginleştirme, kümedeki tüm kapsayıcı günlükleri için ContainerLog tablosuna yazılan her günlük kaydına ilişkin ad ve görüntü özellik değerlerini doldurmak üzere kontrol eder. ConfigMap içinde `enabled = false` belirtilmediğinde varsayılan değer olarak belirlenir. |
+|`[log_collection_settings.stdout] enabled =` |Boole | true veya false | Bu, stdout kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. Olarak ayarlandığında `true` ve STDOUT günlük toplama için hiçbir ad alanı dışlandığında ( `log_collection_settings.stdout.exclude_namespaces` Aşağıdaki ayar), stdout günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacaktır. ConfigMaps içinde belirtilmemişse, varsayılan değer `enabled = true` . |
+|`[log_collection_settings.stdout] exclude_namespaces =`|Dize | Virgülle ayrılmış dizi |Stdout günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca `log_collection_settings.stdout.enabled` , olarak ayarlandıysa geçerlidir `true` . ConfigMap içinde belirtilmemişse, varsayılan değer `exclude_namespaces = ["kube-system"]` .|
+|`[log_collection_settings.stderr] enabled =` |Boole | true veya false |Bu, stderr kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. Olarak ayarlandığında `true` ve STDOUT günlük toplama (ayarı) için hiçbir ad alanı dışlandığında `log_collection_settings.stderr.exclude_namespaces` , stderr günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacaktır. ConfigMaps içinde belirtilmemişse, varsayılan değer `enabled = true` . |
+|`[log_collection_settings.stderr] exclude_namespaces =` |Dize |Virgülle ayrılmış dizi |Stderr günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca `log_collection_settings.stdout.enabled` , olarak ayarlandıysa geçerlidir `true` . ConfigMap içinde belirtilmemişse, varsayılan değer `exclude_namespaces = ["kube-system"]` . |
+| `[log_collection_settings.env_var] enabled =` |Boole | true veya false | Bu ayar, kümedeki tüm düğüm/düğümler genelinde ortam değişkeni toplamayı denetler ve `enabled = true` ConfigMaps 'ta belirtilmediğinde varsayılan değerleri alır. Ortam değişkenlerinin toplanması genel olarak etkinleştirilmişse, ortam değişkenini `AZMON_COLLECT_ENV` bir Dockerfile ayarıyla veya **env:** bölümünün altındaki [pod için yapılandırma dosyasında](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) **yanlış** olarak ayarlayarak belirli bir kapsayıcı için devre dışı bırakabilirsiniz. Ortam değişkenlerinin toplanması genel olarak devre dışıysa, belirli bir kapsayıcı için koleksiyonu etkinleştiremezsiniz (yani, kapsayıcı düzeyinde uygulanabilecek tek geçersiz kılma, genel olarak etkinleştirildiğinde koleksiyonu devre dışı bırakmalıdır.). |
+| `[log_collection_settings.enrich_container_logs] enabled =` |Boole | true veya false | Bu ayar kapsayıcı günlüğü zenginleştirme, kümedeki tüm kapsayıcı günlükleri için ContainerLog tablosuna yazılan her günlük kaydına ilişkin ad ve görüntü özellik değerlerini doldurmak üzere kontrol eder. `enabled = false`ConfigMap içinde belirtilmediğinde varsayılan değer olarak belirlenir. |
 
 ConfigMaps genel bir liste ve aracıya yalnızca bir ConfigMap uygulanmış olabilir. Koleksiyonlar üzerine başka bir ConfigMaps olamaz.
 
@@ -53,13 +53,13 @@ ConfigMap yapılandırma dosyanızı yapılandırmak ve kümenize dağıtmak iç
    >[!NOTE]
    >ConfigMap şablonu kümede zaten mevcut olduğundan, bu adım Azure Red Hat OpenShift ile çalışırken gerekli değildir.
 
-2. Stdout, stderr ve/veya ortam değişkenlerini toplamak için, özelleştirmelerinizle ConfigMap YAML dosyasını düzenleyin. Azure Red Hat OpenShift için ConfigMap YAML dosyasını düzenliyorsanız, önce dosyayı bir metin düzenleyicisinde açmak için komutunu `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` çalıştırın.
+2. Stdout, stderr ve/veya ortam değişkenlerini toplamak için, özelleştirmelerinizle ConfigMap YAML dosyasını düzenleyin. Azure Red Hat OpenShift için ConfigMap YAML dosyasını düzenliyorsanız, önce `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` dosyayı bir metin düzenleyicisinde açmak için komutunu çalıştırın.
 
-    - Stdout günlük toplama için belirli ad alanlarını dışlamak için anahtar/değer aşağıdaki örneği kullanarak yapılandırılır: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
+    - Stdout günlük toplama için belirli ad alanlarını dışlamak için anahtar/değer aşağıdaki örneği kullanarak yapılandırılır: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]` .
     
-    - Belirli bir kapsayıcı için ortam değişkeni toplamayı devre dışı bırakmak için, değişken toplamayı küresel `[log_collection_settings.env_var] enabled = true` olarak etkinleştirmek üzere anahtar/değer ayarlayın ve ardından belirli bir kapsayıcının yapılandırmasını gerçekleştirmek için [buradaki](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) adımları izleyin.
+    - Belirli bir kapsayıcı için ortam değişkeni toplamayı devre dışı bırakmak için, `[log_collection_settings.env_var] enabled = true` değişken toplamayı küresel olarak etkinleştirmek üzere anahtar/değer ayarlayın ve ardından belirli bir kapsayıcının yapılandırmasını gerçekleştirmek için [buradaki](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) adımları izleyin.
     
-    - Stderr günlük toplama kümesi genelinde devre dışı bırakmak için anahtar/değer aşağıdaki örneği kullanarak yapılandırılır: `[log_collection_settings.stderr] enabled = false`.
+    - Stderr günlük toplama kümesi genelinde devre dışı bırakmak için anahtar/değer aşağıdaki örneği kullanarak yapılandırılır: `[log_collection_settings.stderr] enabled = false` .
 
 3. Azure Red Hat OpenShift dışındaki kümeler için aşağıdaki kubectl komutunu çalıştırarak ConfigMap oluşturun: `kubectl apply -f <configmap_yaml_file.yaml>` Azure Red Hat OpenShift dışındaki kümeler üzerinde. 
     
@@ -67,11 +67,11 @@ ConfigMap yapılandırma dosyanızı yapılandırmak ve kümenize dağıtmak iç
 
     Azure Red Hat OpenShift için değişikliklerinizi düzenleyicide kaydedin.
 
-Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında, aşağıdakine benzer bir ileti görüntülenir ve sonucu içerir: `configmap "container-azm-ms-agentconfig" created`.
+Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında, aşağıdakine benzer bir ileti görüntülenir ve sonucu içerir: `configmap "container-azm-ms-agentconfig" created` .
 
 ## <a name="verify-configuration"></a>Yapılandırmayı Doğrula
 
-Yapılandırmanın Azure Red Hat OpenShift dışında bir kümeye başarıyla uygulandığını doğrulamak için, bir aracı Pod 'dan günlükleri gözden geçirmek üzere aşağıdaki komutu kullanın: `kubectl logs omsagent-fdf58 -n=kube-system`. Omsagent pods 'den yapılandırma hataları varsa, çıktıda aşağıdakine benzer hatalar gösterilir:
+Yapılandırmanın Azure Red Hat OpenShift dışında bir kümeye başarıyla uygulandığını doğrulamak için, bir aracı Pod 'dan günlükleri gözden geçirmek üzere aşağıdaki komutu kullanın: `kubectl logs omsagent-fdf58 -n kube-system` . Omsagent pods 'den yapılandırma hataları varsa, çıktıda aşağıdakine benzer hatalar gösterilir:
 
 ``` 
 ***************Start Config Processing******************** 
@@ -80,7 +80,7 @@ config::unsupported/missing config schema version - 'v21' , using defaults
 
 Yapılandırma değişikliklerini uygulamayla ilgili hatalar İnceleme için de kullanılabilir. Yapılandırma değişikliklerinde ek sorun giderme işlemleri gerçekleştirmek için aşağıdaki seçenekler kullanılabilir:
 
-- Aynı `kubectl logs` komutu kullanarak bir aracı Pod günlüklerinden. 
+- Aynı komutu kullanarak bir aracı Pod günlüklerinden `kubectl logs` . 
 
     >[!NOTE]
     >Bu komut, Azure Red Hat OpenShift kümesi için geçerli değildir.
@@ -96,7 +96,7 @@ Yapılandırma değişikliklerini uygulamayla ilgili hatalar İnceleme için de 
 
 - Azure Red Hat OpenShift ile, OpenShift-Azure-Logging günlük koleksiyonunun etkinleştirilip etkinleştirilmediğini doğrulamak üzere **ContainerLog** tablosunu arayarak omsagent günlüklerini kontrol edin.
 
-Azure Red Hat OpenShift dışındaki kümelerdeki ConfigMap 'teki hataları düzelttikten sonra, YAML dosyasını kaydedin ve şu komutu çalıştırarak güncelleştirilmiş ConfigMaps 'leri uygulayın: `kubectl apply -f <configmap_yaml_file.yaml`. Azure Red Hat OpenShift için komutunu çalıştırarak güncelleştirilmiş ConfigMaps 'leri düzenleyin ve kaydedin:
+Azure Red Hat OpenShift dışındaki kümelerdeki ConfigMap 'teki hataları düzelttikten sonra, YAML dosyasını kaydedin ve şu komutu çalıştırarak güncelleştirilmiş ConfigMaps 'leri uygulayın: `kubectl apply -f <configmap_yaml_file.yaml` . Azure Red Hat OpenShift için komutunu çalıştırarak güncelleştirilmiş ConfigMaps 'leri düzenleyin ve kaydedin:
 
 ``` bash
 oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
@@ -104,13 +104,13 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 
 ## <a name="applying-updated-configmap"></a>Güncelleştirilmiş ConfigMap uygulanıyor
 
-Azure Red Hat OpenShift dışındaki kümeler üzerinde zaten bir ConfigMap dağıttıysanız ve daha yeni bir yapılandırmayla güncelleştirmek istiyorsanız, daha önce kullandığınız ConfigMap dosyasını düzenleyebilir ve daha sonra aynı komutu kullanarak uygulayabilirsiniz `kubectl apply -f <configmap_yaml_file.yaml`. Azure Red Hat OpenShift için komutunu çalıştırarak güncelleştirilmiş ConfigMaps 'leri düzenleyin ve kaydedin:
+Azure Red Hat OpenShift dışındaki kümeler üzerinde zaten bir ConfigMap dağıttıysanız ve daha yeni bir yapılandırmayla güncelleştirmek istiyorsanız, daha önce kullandığınız ConfigMap dosyasını düzenleyebilir ve daha sonra aynı komutu kullanarak uygulayabilirsiniz `kubectl apply -f <configmap_yaml_file.yaml` . Azure Red Hat OpenShift için komutunu çalıştırarak güncelleştirilmiş ConfigMaps 'leri düzenleyin ve kaydedin:
 
 ``` bash
 oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 ```
 
-Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında, aşağıdakine benzer bir ileti görüntülenir ve sonucu içerir: `configmap "container-azm-ms-agentconfig" updated`.
+Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında, aşağıdakine benzer bir ileti görüntülenir ve sonucu içerir: `configmap "container-azm-ms-agentconfig" updated` .
 
 ## <a name="verifying-schema-version"></a>Şema sürümü doğrulanıyor
 

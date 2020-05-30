@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 80b8adfc26cd87e0788852e98fddb0fd3f2e8cd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188595"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204744"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure operasyonel güvenlik en iyi uygulamaları
 Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
@@ -215,8 +215,8 @@ Daha fazla bilgi için bkz. [uyumluluğu zorlamak için Ilke oluşturma ve yöne
 **En iyi yöntem**: ilke ihlallerinin izlenmesinden sorumlu rolleri ve doğru düzeltme eyleminin hızlı bir şekilde alınmasını sağlar.   
 **Ayrıntı**: atanan rol izleyicisine [Azure Portal](../../governance/policy/how-to/get-compliance-data.md#portal) veya [komut satırı](../../governance/policy/how-to/get-compliance-data.md#command-line)aracılığıyla uyumluluğunu sağlayabilirsiniz.
 
-**En iyi yöntem**: Azure ilkesi, kuruluşun yazılı ilkelerinin teknik bir gösterimidir. Karışıklığı azaltmak ve tutarlılığı artırmak için tüm Azure ilkelerini kuruluş ilkelerine eşleyin.   
-**Ayrıntı**: [Azure Ilke tanımında](../../governance/policy/concepts/definition-structure.md#display-name-and-description) veya [Azure Policy Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) açıklamasında kuruluş ilkesine bir başvuru ekleyerek kuruluşunuzun belgelerindeki veya Azure ilke tanımındaki belge eşlemesini belgeleyin.
+**En iyi yöntem**: Azure ilkesi, kuruluşun yazılı ilkelerinin teknik bir gösterimidir. Karışıklığı azaltmak ve tutarlılığı artırmak için tüm Azure Ilke tanımlarını kurumsal ilkelerle eşleyin.   
+**Ayrıntı**: [ilke tanımında](../../governance/policy/concepts/definition-structure.md#display-name-and-description) veya [girişim tanımı](../../governance/policy/concepts/initiative-definition-structure.md#metadata) açıklamasında kuruluş ilkesine bir başvuru ekleyerek kuruluşunuzun belgelerindeki veya Azure ilke tanımındaki belge eşlemesini belgeleyin.
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD risk raporlarını izleme
 Saldırganlar bir kullanıcının kimliğini çalarak bir ortama erişim kazanıyorsa güvenlik ihlallerinin büyük çoğunluğu bu şekilde gerçekleşir. Güvenliği aşılmış kimlikleri bulma işlemi kolay bir görev değildir. Azure AD, kullanıcı hesaplarınızla ilgili şüpheli eylemleri algılamak için uyarlamalı makine öğrenimi algoritmaları ve buluşsal yöntemler kullanır. Algılanan her şüpheli eylem, [risk algılama](../../active-directory/reports-monitoring/concept-risk-events.md)adlı bir kayıtta saklanır. Risk algılamaları Azure AD güvenlik raporlarında kaydedilir. Daha fazla bilgi için [risk altındaki kullanıcılar güvenlik raporu](../../active-directory/reports-monitoring/concept-user-at-risk.md) ve [riskli oturum açma güvenlik raporu](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)hakkında bilgi edinin.

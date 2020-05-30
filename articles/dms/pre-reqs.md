@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 904ebb2e97ef84e1b0c2a83e5cb153bdb7e44746
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9aaf334b328b2e20ed94f0c7c87727add1f2baee
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018931"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195659"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Azure Veritabanı Geçiş Hizmeti'ni kullanmak için önkoşullara genel bakış
 
@@ -125,9 +125,9 @@ Azure veritabanı geçiş hizmeti 'ni kullanarak Azure SQL veritabanı geçişle
    > Azure veritabanı geçiş hizmeti 'ni kullanarak SQL Server Azure SQL veritabanı 'na geçiş işlemi gerçekleştirmek için gereken önkoşulların tüm listesi için bkz. [Azure SQL veritabanı 'Na geçiş SQL Server](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
    >
 
-## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>SQL Server Azure SQL veritabanı yönetilen örneği 'ne geçirme önkoşulları
+## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance"></a>SQL Server Azure SQL yönetilen örneği 'ne geçirme önkoşulları
 
-* [Azure Portal Azure SQL veritabanı yönetilen örneği oluşturma](https://aka.ms/sqldbmi)makalesindeki ayrıntıyı IZLEYEREK Azure SQL veritabanı yönetilen örneği oluşturun.
+* [Azure Portal Azure SQL yönetilen örneği oluşturma](https://aka.ms/sqldbmi)makalesindeki ayrıntıyı IZLEYEREK bir SQL yönetilen örneği oluşturun.
 * Azure veritabanı geçiş hizmeti IP adresi veya alt ağ aralığı için bağlantı noktası 445 üzerindeki SMB trafiğine izin vermek üzere güvenlik duvarlarını açın.
 * Azure Veritabanı Geçiş Hizmeti'ne kaynak SQL Server erişimi sağlamak için Windows güvenlik duvarınızı açın. Varsayılan ayarlarda 1433 numaralı TCP bağlantı noktası kullanılır.
 * Dinamik bağlantı noktası kullanarak birden fazla adlandırılmış SQL Server örneği çalıştırıyorsanız, Azure Veritabanı Geçiş Hizmeti'nin kaynak sunucunuzdaki adlandırılmış örneğe bağlanabilmesi için SQL Browser Hizmeti'ni etkinleştirebilir ve güvenlik duvarınızda 1434 numaralı UDP bağlantı noktasına erişim izni verebilirsiniz.
@@ -138,7 +138,7 @@ Azure veritabanı geçiş hizmeti 'ni kullanarak Azure SQL veritabanı geçişle
 * [Depolama Gezgini Ile Azure Blob depolama kaynaklarını yönetme](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)makalesindeki adımları kullanarak bir blob kapsayıcısı oluşturun ve SAS URI 'sini alın. SAS URI 'sini oluştururken ilke penceresinde tüm izinleri (okuma, yazma, silme, liste) seçtiğinizden emin olun.
 
    > [!NOTE]
-   > Azure veritabanı geçiş hizmeti 'ni kullanarak SQL Server Azure SQL veritabanı yönetilen örneği 'ne geçiş işlemi gerçekleştirmek için gereken önkoşulların tüm listesi için bkz. [Azure SQL veritabanı yönetilen örneği 'Ne geçiş SQL Server](https://aka.ms/migratetomiusingdms).
+   > Azure veritabanı geçiş hizmeti 'ni SQL Server SQL yönetilen örneği 'ne geçiş gerçekleştirmek üzere kullanmak için gereken önkoşulların tamamen listesi için, bkz. [SQL Server SQL yönetilen örneği 'Ne geçirme](https://aka.ms/migratetomiusingdms)öğreticisi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

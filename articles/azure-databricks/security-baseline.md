@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e6c51e80a0a9a68dc6ec11e03c133f3480eb4329
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 66043ae4f569e4151be829ca361232accb2f0ebd
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170486"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219376"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure Databricks için Azure Güvenlik temeli
 
@@ -404,7 +404,7 @@ Note: Azure Databricks tanılama günlükleri Azure Databricks Premium planı ge
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: Kullanıcı erişimini düzenli olarak gözden geçirin ve karşılaştırın
 
-**Kılavuz**: Azure AD, eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi incelemelerini kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir. Ayrıca, Kullanıcı erişimini gözden geçirmek için SCıM API 'Leri ve tanılama günlükleri Azure Databricks de uygulayabilirsiniz. Ayrıca, Kullanıcı erişimini gözden geçirmek için SCıM API 'Lerini ve tanılama günlüklerini Azure Databricks de kullanabilirsiniz.
+**Kılavuz**: Azure AD, eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi incelemelerini kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir. Ayrıca, Kullanıcı erişimini gözden geçirmek için SCıM API 'Leri ve tanılama günlükleri Azure Databricks de uygulayabilirsiniz.
 
 Ayrıca, Azure Databricks Yönetici Konsolu 'nda Kullanıcı erişimini düzenli olarak gözden geçirin ve yönetin.
 

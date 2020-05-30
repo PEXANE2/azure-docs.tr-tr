@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/09/2020
+ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 69eef6d8457b183f61bae98c0bc80feb0ff2e263
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7f98fee687fca6a2b6e746b24ca582671e28391f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635456"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216383"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Netezza 'ten veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,11 +40,11 @@ Netezza Bağlayıcısı kaynaktan paralel kopyalamayı destekler. Ayrıntılar i
 
 Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar. Bu bağlayıcıyı kullanmak için herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 .NET SDK, Python SDK, Azure PowerShell, REST API veya Azure Resource Manager şablonu kullanarak kopyalama etkinliği kullanan bir işlem hattı oluşturabilirsiniz. Kopyalama etkinliğine sahip bir işlem hattı oluşturma hakkında adım adım yönergeler için [kopyalama etkinliği öğreticisine](quickstart-create-data-factory-dot-net.md) bakın.
 
@@ -56,18 +56,18 @@ Netezza bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | **Type** özelliği **Netezza**olarak ayarlanmalıdır. | Yes |
-| Dizisi | Netezza 'e bağlanmak için bir ODBC bağlantı dizesi. <br/>Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `pwd` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| tür | **Type** özelliği **Netezza**olarak ayarlanmalıdır. | Evet |
+| Dizisi | Netezza 'e bağlanmak için bir ODBC bağlantı dizesi. <br/>Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `pwd` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. |Hayır |
 
 Tipik bir bağlantı dizesi `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>` . Aşağıdaki tabloda ayarlayabileceğiniz daha fazla özellik açıklanmaktadır:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| SecurityLevel | Sürücünün veri deposuyla bağlantı için kullandığı güvenlik düzeyi (SSL/TLS). Sürücü SSL sürüm 3 kullanılarak tek yönlü kimlik doğrulamasıyla SSL bağlantılarını destekler. <br>Örnek: `SecurityLevel=preferredSecured`. Desteklenen değerler şunlardır:<br/>- **Yalnızca güvenli olmayan** (yalnızca güvenli**olmayan**): sürücü TLS kullanmaz.<br/>- **Tercih edilen güvenli olmayan (Preferredgüvensiz) (varsayılan)**: sunucu bir seçenek sağlıyorsa, sürücü TLS kullanmaz. <br/>- **Tercih edilen güvenli (Preferredgüvenli)**: sunucu bir seçenek sağlıyorsa, sürücü TLS kullanır. <br/>- **Yalnızca güvenli (yalnızca güvenli)**: bir TLS bağlantısı yoksa sürücü bağlanamaz. | Hayır |
-| CaCertFile | Sunucu tarafından kullanılan TLS/SSL sertifikasının tam yolu. Örnek: `CaCertFile=<cert path>;`| Evet, TLS etkinse |
+| SecurityLevel | Sürücünün veri deposuyla bağlantı için kullandığı güvenlik düzeyi. Sürücü SSL sürüm 3 kullanılarak tek yönlü kimlik doğrulamasıyla SSL bağlantılarını destekler. <br>Örnek: `SecurityLevel=preferredSecured`. Desteklenen değerler şunlardır:<br/>- **Yalnızca güvenli olmayan** (yalnızca güvenli**olmayan**): sürücü SSL kullanmaz.<br/>- **Tercih edilen güvenli olmayan (Preferredgüvensiz) (varsayılan)**: sunucu bir seçenek sağlıyorsa, sürücü SSL kullanmaz. <br/>- **Tercih edilen güvenli (Preferredgüvenli)**: sunucu bir seçenek sağlıyorsa, sürücü SSL kullanır. <br/>- **Yalnızca güvenli (yalnızca güvenli)**: bir SSL bağlantısı yoksa sürücü bağlanamaz. | Hayır |
+| CaCertFile | Sunucu tarafından kullanılan SSL sertifikasının tam yolu. Örnek: `CaCertFile=<cert path>;`| Evet, SSL etkinse |
 
-**Örnek**
+**Örneğinde**
 
 ```json
 {
@@ -121,12 +121,12 @@ Netezza öğesinden veri kopyalamak için, veri kümesinin **Type** özelliğini
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **NetezzaTable** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **NetezzaTable** olarak ayarlanmalıdır | Evet |
 | manızı | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örnek**
+**Örneğinde**
 
 ```json
 {
@@ -157,7 +157,7 @@ Netezza 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** türün�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının **Type** özelliği **NetezzaSource**olarak ayarlanmalıdır. | Yes |
+| tür | Kopyalama etkinliği kaynağının **Type** özelliği **NetezzaSource**olarak ayarlanmalıdır. | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örnek: `"SELECT * FROM MyTable"` | Hayır (veri kümesinde "tableName" belirtilmişse) |
 | partitionOptions | Netezza 'ten veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>Değerlere izin ver: **none** (default), **Dataslice**ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani, `None` ), bir Netezza veritabanından eşzamanlı olarak veri yükleme derecesi, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğinde ayarlanarak denetlenir. | Hayır |
 | partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında Uygula `None` . | Hayır |
@@ -165,7 +165,7 @@ Netezza 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** türün�
 | Partitionüstsınırı | Verilerin kopyalanacağı bölüm sütununun en büyük değeri. <br>Bölüm seçeneği olduğunda Uygula `DynamicRange` . Kaynak verileri almak için sorgu kullanırsanız `?AdfRangePartitionUpbound` WHERE yan tümcesinde kanca. Bir örnek için, [Netezza öğesinden paralel kopyalama](#parallel-copy-from-netezza) bölümüne bakın. | Hayır |
 | Partitionalme sınırı | Verilerin kopyalanacağı bölüm sütununun en küçük değeri. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionLowbound` WHERE yan tümcesinde kanca. Bir örnek için, [Netezza öğesinden paralel kopyalama](#parallel-copy-from-netezza) bölümüne bakın. | Hayır |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: ab104463ad0bd3db88af47176d541dd4074037d7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9069ec574af54c5c44efac5a6a9df1da62053219
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048444"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195081"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL veritabanı elastik sorguya genel bakış (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Elastik sorgu özelliği (önizlemede), Azure SQL veritabanı 'nda birden çok v
 
 ### <a name="azure-sql-database"></a>Azure SQL Veritabanı
 
-Azure SQL veritabanındaki veritabanları genelinde T-SQL ' i tamamen sorgulayın. Bu, uzak veritabanlarının salt okunurdur sorgulanmasını sağlar ve geçerli şirket içi SQL Server müşterilerin, üç ve dört bölümden oluşan ve SQL veritabanı 'na bağlı sunucu kullanarak uygulamaları geçirmesinde bir seçenek sağlar.
+Azure SQL veritabanındaki veritabanları genelinde T-SQL ' i tamamen sorgulayın. Bu, uzak veritabanlarının salt okunurdur sorgulanmasını sağlar ve geçerli SQL Server müşterilerin, üç ve dört parçalı ad veya bağlı sunucu kullanarak uygulamaları SQL veritabanı 'na geçirmesinde bir seçenek sağlar.
 
 ### <a name="available-on-standard-tier"></a>Standart katmanda kullanılabilir
 
@@ -146,7 +146,7 @@ Esnek sorgu, Azure SQL veritabanı maliyetine dahildir. Uzak veritabanlarınız�
 * Nvarchar (max) dışında, LOB türleri (uzamsal türler dahil) dış tablo tanımlarında desteklenmez. Geçici bir çözüm olarak, LOB türünü nvarchar (max) olarak veren uzak veritabanında bir görünüm oluşturabilir, dış tablonuzu temel tablo yerine görünüm üzerinden tanımlayabilir ve sonra Sorgularınızdaki özgün LOB türüne geri çevirebilirsiniz.
 * Sonuç kümesindeki nvarchar (max) veri türü sütunları, esnek sorgu uygulamasında kullanılan gelişmiş toplu işlem Technics devre dışı bırakır ve bir büyüklük sırası için sorgunun performansını etkileyebilir, hatta büyük miktarda toplanmış verilerin bir sorgu sonucu olarak aktarılmakta olduğu gibi, kurallı olmayan kullanım durumlarında iki farklı şekilde büyüklüğü olabilir.
 * Dış tablolar üzerinde sütun istatistikleri Şu anda desteklenmiyor. Tablo istatistikleri desteklenir, ancak el ile oluşturulması gerekir.
-* Elastik sorgu yalnızca Azure SQL veritabanı ile birlikte kullanılabilir. Şirket içi SQL Server veya bir VM 'de SQL Server sorgulamak için kullanamazsınız.
+* Elastik sorgu yalnızca Azure SQL veritabanı ile birlikte kullanılabilir. SQL Server örneğini sorgulamak için kullanamazsınız.
 
 ## <a name="feedback"></a>Geri Bildirim
 

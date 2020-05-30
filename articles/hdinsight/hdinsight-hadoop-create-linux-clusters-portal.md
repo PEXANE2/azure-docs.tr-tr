@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 8d4e9a1e255884b9250879ab486d7a4e2849473a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2a9b149bd76ed276f3210f27ea0f60bbc7b7662
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192102"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190883"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun
 
@@ -37,9 +37,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     ![Azure portal yeni bir küme oluşturun](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Azure portal yeni bir küme oluşturma")
 
-1. **Analiz** > **Azure HDInsight** ' ı seçerek **HDInsight kümesi oluşturma** sayfasına gidin.
+1. **Analiz**  >  **Azure HDInsight** ' ı seçerek **HDInsight kümesi oluşturma** sayfasına gidin.
 
-## <a name="basics"></a>Temel Bilgiler
+## <a name="basics"></a>Temel bilgiler
 
 ![HDInsight küme oluşturma temelleri](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Azure portal yeni bir küme oluşturma")
 
@@ -62,6 +62,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Ileri ' yi seçin: bir sonraki sekmeye ilerlemek için **depolama >>** .
 
 ## <a name="storage"></a>Depolama
+
+> [!WARNING] 
+> 15 Haziran 2020 ' den itibaren müşteriler HDInsight kullanarak yeni hizmet sorumlusu oluşturamayacak. Bkz. Azure Active Directory kullanarak [hizmet sorumlusu ve sertifikaları oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) .
 
 ![HDInsight küme depolaması oluştur](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Azure portal depolamada yeni bir küme oluşturma")
 

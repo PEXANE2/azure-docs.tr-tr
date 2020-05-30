@@ -1,6 +1,6 @@
 ---
-title: Azure SQL veritabanı yönetilen örneği ile çevrimiçi geçişlerle ilgili bilinen sorunlar ve sınırlamalar
-description: Azure SQL veritabanı yönetilen örneği 'ne çevrimiçi geçişlerle ilişkili bilinen sorunlar/geçiş sınırlamaları hakkında bilgi edinin.
+title: Azure SQL yönetilen örneği 'ne çevrimiçi geçişlerle ilgili bilinen sorunlar ve sınırlamalar
+description: Azure SQL yönetilen örneği 'ne çevrimiçi geçişlerle ilişkili bilinen sorunlar/geçiş sınırlamaları hakkında bilgi edinin.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 88e2b5894686ee93caecf33e04940803eb75f394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65bbc9f66ceb732a8f773f0b49cd46f99750a7d5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77648674"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196319"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği 'ne çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
+# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'ne çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
-SQL Server ile Azure SQL veritabanı yönetilen örneği arasındaki çevrimiçi geçişlerle ilişkili bilinen sorunlar ve sınırlamalar aşağıda açıklanmaktadır.
+SQL Server ile Azure SQL yönetilen örneği arasındaki çevrimiçi geçişlerle ilişkili bilinen sorunlar ve sınırlamalar aşağıda açıklanmaktadır.
 
 > [!IMPORTANT]
 > Azure SQL veritabanı 'na SQL Server çevrimiçi geçişlerde SQL_variant veri türlerinin geçirilmesi desteklenmez.
@@ -29,7 +29,7 @@ SQL Server ile Azure SQL veritabanı yönetilen örneği arasındaki çevrimiçi
 
 - **Sağlama toplamı olan yedeklemeler**
 
-    Azure veritabanı geçiş hizmeti, şirket içi veritabanlarınızı SQL veritabanı yönetilen örneğine geçirmek için yedekleme ve geri yükleme yöntemini kullanır. Azure veritabanı geçiş hizmeti yalnızca sağlama toplamı kullanılarak oluşturulan yedeklemeleri destekler.
+    Azure veritabanı geçiş hizmeti, şirket içi veritabanlarınızı SQL yönetilen örneğine geçirmek için yedekleme ve geri yükleme yöntemini kullanır. Azure veritabanı geçiş hizmeti yalnızca sağlama toplamı kullanılarak oluşturulan yedeklemeleri destekler.
 
     [Yedekleme veya geri yükleme sırasında yedekleme sağlama toplamlarını etkinleştirme veya devre dışı bırakma (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
 
@@ -52,16 +52,16 @@ SQL Server ile Azure SQL veritabanı yönetilen örneği arasındaki çevrimiçi
 
 - **FILESTREAM/dosya tabloları**
 
-    SQL veritabanı yönetilen örneği şu anda FILESTREAM ve FileTables 'ı desteklemiyor. Bu özelliklere bağımlı olan iş yükleri için Azure hedefi olarak Azure VM 'lerinde çalışan SQL Server 'Lar için tercih etmenizi öneririz.
+    SQL yönetilen örneği şu anda FILESTREAM ve FileTables 'ı desteklemiyor. Bu özelliklere bağımlı olan iş yükleri için Azure hedefi olarak Azure VM 'lerinde çalışan SQL Server 'Lar için tercih etmenizi öneririz.
 
 - **Bellek içi tablolar**
 
-    Bellek içi OLTP, SQL veritabanı yönetilen örneği için Premium ve İş Açısından Kritik katmanlarında kullanılabilir; Genel Amaçlı katmanı bellek Içi OLTP 'Yi desteklemez.
+    Bellek içi OLTP, SQL yönetilen örneği için Premium ve İş Açısından Kritik katmanlarında kullanılabilir; Genel Amaçlı katmanı bellek Içi OLTP 'Yi desteklemez.
 
 ## <a name="migration-resets"></a>Geçiş sıfırlamaları
 
 - **Dağıtımlar**
 
-    SQL veritabanı yönetilen örneği, otomatik düzeltme eki uygulama ve sürüm güncelleştirmeleri içeren bir PaaS hizmetidir. SQL veritabanı yönetilen örneğinizin geçirilmesi sırasında kritik olmayan güncelleştirmeler 36 saate kadar yardımcı olur. Daha sonra (ve kritik güncelleştirmeler için), geçiş kesintiye uğratılıyor ise işlem tam geri yükleme durumuna sıfırlanır.
+    SQL yönetilen örneği, otomatik düzeltme eki uygulama ve sürüm güncelleştirmeleri içeren bir PaaS hizmetidir. SQL yönetilen örneğinizin geçirilmesi sırasında kritik olmayan güncelleştirmeler 36 saate kadar yardımcı olur. Daha sonra (ve kritik güncelleştirmeler için), geçiş kesintiye uğratılıyor ise işlem tam geri yükleme durumuna sıfırlanır.
 
     Tam geçişi geçişi yalnızca tam yedekleme geri yüklendikten sonra çağrılabilir ve tüm günlük yedeklemeleriyle yapılır. Üretim geçişiniz etkileniyorsa [Azure DMS geri bildirim diğer adı](mailto:dmsfeedback@microsoft.com)ile iletişime geçin.

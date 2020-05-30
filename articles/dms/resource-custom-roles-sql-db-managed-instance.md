@@ -1,7 +1,7 @@
 ---
 title: 'Özel roller: SQL yönetilen örnek geçişlere çevrimiçi SQL Server'
 titleSuffix: Azure Database Migration Service
-description: Azure SQL veritabanı yönetilen örnek çevrimiçi geçişleri SQL Server için özel rolleri kullanmayı öğrenin.
+description: Azure SQL yönetilen örnek çevrimiçi geçişleri SQL Server için özel rolleri kullanmayı öğrenin.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: e9a1024ca3ab68841474ab051c029042df4915b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d9f222818726fa81dd28fe70042cbfc51162e27
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78254937"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187460"
 ---
-# <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>SQL veritabanı yönetilen örnek çevrimiçi geçişleri SQL Server için özel roller
+# <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>Azure SQL yönetilen örnek çevrimiçi geçişleri SQL Server için özel roller
 
 Azure veritabanı geçiş hizmeti, Azure hizmetleriyle etkileşim kurmak için bir uygulama KIMLIĞI kullanır. UYGULAMA KIMLIĞI, abonelik düzeyinde katılımcı rolü (birçok kurumsal güvenlik departmanının izin vermeyeceği) veya Azure veritabanı geçişleri hizmeti 'nin gerektirdiği belirli izinleri veren özel roller oluşturmayı gerektirir. Azure Active Directory 'de özel rol 2.000 sınırlaması olduğundan, özellikle uygulama KIMLIĞI tarafından gereken tüm izinleri bir veya iki özel rolde birleştirmek ve ardından uygulama KIMLIĞINI belirli nesnelerde veya kaynak gruplarında (abonelik düzeyinde) özel rol olarak vermek isteyebilirsiniz. Özel rol sayısı sorun yaratmıyorsa, aşağıda açıklandığı gibi, toplamda üç özel rol oluşturmak için özel rolleri kaynak türüne göre bölebilirsiniz.
 
@@ -30,7 +30,7 @@ Rol tanımı JSON dizesinin Astifblescopes bölümü, portalda **rol ataması ek
 Şu anda uygulama KIMLIĞI için, biri kaynak düzeyinde ve diğeri abonelik düzeyinde olmak üzere en az iki özel rol oluşturmanızı öneririz.
 
 > [!NOTE]
-> Yeni SQL veritabanı yönetilen örnek kodu Azure 'a dağıtıldığı için son özel rol gereksinimi sonunda kaldırılabilir.
+> Yeni SQL yönetilen örnek kodu Azure 'a dağıtıldığı için son özel rol gereksinimi sonunda kaldırılabilir.
 
 **Uygulama kimliği Için özel rol**. Bu rol, *kaynak* veya *kaynak grubu* düzeyinde Azure veritabanı geçiş hizmeti GEÇIŞI IÇIN gereklidir (uygulama kimliği hakkında daha fazla bilgi Için, bkz. [Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)makalesine bakın).
 
@@ -87,14 +87,14 @@ Daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](https://docs.
 
 Bu özel rolleri oluşturduktan sonra, kullanıcılara ve uygulama KIMLIĞINE, uygun kaynaklara veya kaynak gruplarına rol atamaları eklemeniz gerekir:
 
-* "DMS rol-uygulama KIMLIĞI" rolü, geçişler için kullanılacak uygulama KIMLIĞINE, Ayrıca depolama hesabında, Azure veritabanı geçiş hizmeti örneğine ve SQL veritabanı yönetilen örnek kaynak düzeylerine verilmelidir.
+* Geçişler için kullanılacak uygulama KIMLIĞINE ve ayrıca depolama hesabında, Azure veritabanı geçiş hizmeti örneğine ve SQL yönetilen örnek kaynak düzeylerinde "DMS rol-uygulama KIMLIĞI" rolü verilmelidir.
 * Abonelik düzeyindeki (kaynak veya kaynak grubunda verme başarısız olur) uygulama KIMLIĞINE "DMS rol-uygulama KIMLIĞI-Sub" rolü verilmelidir. Bu gereksinim, bir kod güncelleştirmesi dağıtılana kadar geçicidir.
 
 ## <a name="expanded-number-of-roles"></a>Genişletilmiş rol sayısı
 
 Azure Active Directory özel rol sayısı sorun yaratmıyorsa, toplam üç rol oluşturmanız önerilir. Yine de "DMS rol-uygulama KIMLIĞI – Sub" rolüne ihtiyacınız vardır, ancak yukarıdaki "DMS rol-uygulama KIMLIĞI" rolü kaynak türüne göre iki farklı role bölünür.
 
-**SQL veritabanı yönetilen örneği için uygulama KIMLIĞI için özel rol**
+**SQL yönetilen örneği için uygulama KIMLIĞI için özel rol**
 
 ```json
 {

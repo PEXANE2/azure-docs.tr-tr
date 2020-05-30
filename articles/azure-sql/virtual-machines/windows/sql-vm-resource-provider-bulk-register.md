@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d59c022d72269e0e353f52727d36e18f1c321598
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 49b669627507af0e3e7386f31e344082cc4686df
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051139"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219317"
 ---
-# <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısıyla Azure'da SQL sanal makinelerini toplu kaydetme
+# <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile Azure 'da birden çok SQL sanal makinesi kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)][!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Bu makalede, PowerShell cmdlet 'ini kullanarak SQL VM kaynak sağlayıcısı ile Azure 'da SQL Server sanal makinenizin (VM) toplu olarak nasıl kaydedileceği açıklanmaktadır `Register-SqlVMs` .
+Bu makalede, PowerShell cmdlet 'ini kullanarak SQL Server sanal makinelerinizin (VM) SQL VM kaynak sağlayıcısı ile Azure 'da toplu olarak nasıl kaydedileceği açıklanmaktadır `Register-SqlVMs` .
 
 `Register-SqlVMs`Cmdlet 'i belirli bir abonelik, kaynak grubu veya belirli bir sanal makine listesi listesindeki tüm sanal makineleri kaydetmek için kullanılabilir. Cmdlet 'i, sanal makineleri _hafif_ yönetim modunda kaydeder ve sonra hem [rapor hem de günlük dosyası](#output-description)oluşturur. 
 
@@ -40,15 +40,15 @@ SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir:
 - En son [az PowerShell](/powershell/azure/new-azureps-module-az)sürümü. 
 - En son [az. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)sürümü.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="get-started"></a>başlarken
 
 Devam etmeden önce, önce betiğin yerel bir kopyasını oluşturmanız, PowerShell modülü olarak içeri aktarmanız ve Azure 'a bağlanmanız gerekir. 
 
-### <a name="create-script"></a>Betik oluştur
+### <a name="create-the-script"></a>Betiği oluşturma
 
 Betiği oluşturmak için, bu makalenin sonundaki [tam betiği](#full-script) kopyalayın ve yerel olarak kaydedin `RegisterSqlVMs.psm1` . 
 
-### <a name="import-script"></a>Betiği içeri aktar
+### <a name="import-the-script"></a>Betiği içeri aktar
 
 Betik oluşturulduktan sonra, PowerShell terminalinde bir modül olarak içeri aktarabilirsiniz. 
 
@@ -67,7 +67,7 @@ Connect-AzAccount
 ```
 
 
-## <a name="all-vms-in-list-of-subscriptions"></a>Abonelikler listesindeki tüm VM 'Ler 
+## <a name="register-all-vms-in-a-list-of-subscriptions"></a>Tüm VM 'Leri bir abonelik listesine kaydet 
 
 Tüm SQL Server sanal makinelerini bir abonelik listesine kaydetmek için aşağıdaki cmdlet 'i kullanın:
 
@@ -91,7 +91,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-single-subscription"></a>Tek bir abonelikteki tüm VM 'Ler
+## <a name="register-all-vms-in-a-single-subscription"></a>Tüm VM 'Leri tek bir aboneliğe Kaydet
 
 Tüm SQL Server sanal makinelerini tek bir aboneliğe kaydetmek için aşağıdaki cmdlet 'i kullanın: 
 
@@ -113,7 +113,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-multiple-resource-groups"></a>Birden çok kaynak grubunda bulunan tüm VM 'Ler
+## <a name="register-all-vms-in-multiple-resource-groups"></a>Tüm VM 'Leri birden çok kaynak grubuna Kaydet
 
 Tüm SQL Server sanal makinelerini tek bir abonelik içindeki birden çok kaynak grubuna kaydetmek için aşağıdaki cmdlet 'i kullanın:
 
@@ -134,7 +134,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-resource-group"></a>Bir kaynak grubundaki tüm VM 'Ler
+## <a name="resister-all-vms-in-a-resource-group"></a>Bir kaynak grubundaki tüm VM 'Leri yeniden oluşturma
 
 Tüm SQL Server sanal makinelerini tek bir kaynak grubuna kaydetmek için aşağıdaki cmdlet 'i kullanın: 
 
@@ -155,7 +155,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="specific-vms-in-single-resource-group"></a>Tek kaynak grubundaki belirli VM 'Ler
+## <a name="register-specific-vms-in-single-resource-group"></a>Belirli VM 'Leri tek kaynak grubuna Kaydet
 
 Belirli SQL Server sanal makinelerini tek bir kaynak grubuna kaydetmek için aşağıdaki cmdlet 'i kullanın:
 
@@ -176,7 +176,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="specific-vm"></a>Belirli VM
+## <a name="register-a-specific-vm"></a>Belirli bir VM 'yi kaydetme
 
 Belirli bir SQL Server sanal makinesini kaydetmek için aşağıdaki cmdlet 'i kullanın: 
 
@@ -197,7 +197,7 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 ## <a name="output-description"></a>Çıkış açıklaması
 
-Her iki rapor ve günlük dosyası, cmdlet her kullanıldığında oluşturulur `Register-SqlVMs` . 
+Cmdlet her kullanıldığında hem rapor hem de günlük dosyası oluşturulur `Register-SqlVMs` . 
 
 ### <a name="report"></a>Rapor
 
@@ -217,11 +217,11 @@ Rapor, bir dosya olarak oluşturulur `.txt` `RegisterSqlVMScriptReport<Timestamp
 
 ### <a name="log"></a>Günlük 
 
-Hatalar, `VMsNotRegisteredDueToError<Timestamp>.log` komut dosyasının başlatıldığı zaman damgasıdır adlı günlük dosyasında günlüğe kaydedilir. Hata abonelik düzeyindedir, günlük, virgülle ayrılmış SubscriptionID ve hata mesajını içerir. Hata sanal makine kaydıyla çalışıyorsa, günlük abonelik KIMLIĞI, kaynak grubu adı, sanal makine adı, hata kodu ve virgülle ayrılmış ileti içerir. 
+Hatalar `VMsNotRegisteredDueToError<Timestamp>.log` , komut dosyasının başlatıldığı zaman damgasıdır adlı günlük dosyasına kaydedilir. Hata abonelik düzeyindedir, günlük, virgülle ayrılmış abonelik KIMLIĞINI ve hata iletisini içerir. Hata sanal makine kaydıyla çalışıyorsa, günlük abonelik KIMLIĞINI, kaynak grubu adını, sanal makine adını, hata kodunu ve virgülle ayrılmış iletiyi içerir. 
 
 ## <a name="remarks"></a>Açıklamalar
 
-Kaynak sağlayıcısına SQL Server VM 'Leri, belirtilen betiği kullanarak kaydettiğinizde aşağıdakileri göz önünde bulundurun:
+Kaynak sağlayıcıya SQL Server VM 'Leri, belirtilen betiği kullanarak kaydettiğinizde aşağıdakileri göz önünde bulundurun:
 
 - Kaynak sağlayıcısına kayıt, SQL Server VM çalışan bir Konuk Aracısı gerektirir. Windows Server 2008 görüntülerinin Konuk Aracısı yoktur, bu nedenle bu sanal makineler başarısız olur ve [Noagent yönetim modu](sql-vm-resource-provider-register.md#management-modes)kullanılarak el ile kaydedilmelidir.
 - Saydam hataları aşmak için yeniden deneme mantığı yerleşik olarak bulunur. Sanal makine başarıyla kaydedilmişse, hızlı bir işlemdir. Ancak kayıt başarısız olursa, her sanal makine yeniden denenir.  Bu nedenle, kayıt işlemini tamamlamaya yönelik önemli bir zamana izin vermeniz gerekir; ancak gerçek zamanlı gereksinim, hataların türüne ve sayısına bağlıdır. 

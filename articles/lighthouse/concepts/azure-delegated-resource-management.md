@@ -1,14 +1,14 @@
 ---
 title: Azure tarafından atanan temsilcinin kaynak yönetimi
 description: Yönetilen hizmetler, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
-ms.date: 04/01/2020
+ms.date: 05/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: db9f562ca4f42d1c1d85eeac44495a8ec7e01beb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6f741ccbf0d52e0859722aa304aa6c273fb5acf
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548415"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219081"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure tarafından atanan temsilcinin kaynak yönetimi
 
@@ -40,7 +40,7 @@ Yüksek düzeyde, Azure tarafından atanan kaynak yönetiminin nasıl çalışt�
 3. Müşteri eklendi olduktan sonra yetkili kullanıcılar, hizmet sağlayıcı kiracınızda oturum açabilir ve tanımladığınız erişime göre belirtilen müşteri kapsamında yönetim görevleri gerçekleştirebilir.
 
 > [!NOTE]
-> Ayrı bulutlar genelinde iki kiracı arasında bir aboneliğin temsili desteklenmez.
+> Farklı [bölgelerde](../../availability-zones/az-overview.md#regions)bulunan temsilcili kaynakları yönetebilirsiniz. Ancak, bir [Ulusal bulut](../../active-directory/develop/authentication-national-cloud.md) ve Azure genel bulutu genelinde veya iki ayrı ulusal bulutta abonelikler temsilciliğini desteklemez.
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Azure tarafından yetkilendirilen kaynak yönetimi desteği
 

@@ -1,6 +1,6 @@
 ---
 title: Azure SQL veritabanı 'na veri taşıma-ekip veri bilimi Işlemi
-description: Verileri düz dosyalardan (CSV veya TSV biçimlerinden) veya şirket içi SQL Server depolanan verilerden Azure SQL veritabanı 'na taşıyın.
+description: Verileri düz dosyalardan (CSV veya TSV biçimlerinden) veya SQL Server depolanan verilerden Azure SQL veritabanı 'na taşıyın.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f9a1424f2afe6c5153e208601b21dff9651880a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99e637099e54698e9d6eabb14920251a9d4a81f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722467"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194386"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Azure Machine Learning için Azure SQL Veritabanına veri taşıma
 
-Bu makalede, verileri düz dosyalardan (CSV veya TSV biçimlerinden) ya da şirket içi SQL Server depolanan verilerden Azure SQL veritabanına taşıma seçenekleri özetlenmektedir. Verileri buluta taşımaya yönelik bu görevler, ekip veri bilimi sürecinin bir parçasıdır.
+Bu makalede, verileri düz dosyalardan (CSV veya TSV biçimlerinden) veya SQL Server ' de depolanan verilerden Azure SQL veritabanı 'na taşıma seçenekleri özetlenmektedir. Verileri buluta taşımaya yönelik bu görevler, ekip veri bilimi sürecinin bir parçasıdır.
 
-Machine Learning için verileri şirket içi SQL Server taşıma seçeneklerini özetleyen bir konu için bkz. [Azure sanal makinesinde SQL Server verileri taşıma](move-sql-server-virtual-machine.md).
+Machine Learning için SQL Server verileri taşıma seçeneklerini özetleyen bir konu için bkz. [Azure sanal makinesinde SQL Server verileri taşıma](move-sql-server-virtual-machine.md).
 
 Aşağıdaki tabloda, verileri bir Azure SQL veritabanına taşıma seçenekleri özetlenmektedir.
 
@@ -41,7 +41,7 @@ Burada özetlenen yordamlarda şunları yapmanız gerekir:
 
 **Veri**: geçiş Işlemi, [NYC TAXI veri kümesi](https://chriswhong.com/open-data/foil_nyc_taxi/)kullanılarak gösterilmiştir. NYC TAXI veri kümesi, seyahat verileri ve FAIRS hakkında bilgiler içerir ve Azure Blob depolama alanında kullanılabilir: [NYC TAXI verileri](https://www.andresmh.com/nyctaxitrips/). Bu dosyaların bir örneği ve açıklaması [NYC TAXI gezme veri kümesi açıklamasında](sql-walkthrough.md#dataset)verilmiştir.
 
-Burada açıklanan yordamları kendi verilerinize uyarlayabilirsiniz ya da NYC TAXI veri kümesini kullanarak açıklanan adımları izleyebilirsiniz. NYC TAXI veri kümesini şirket içi SQL Server veritabanınıza yüklemek için, [verileri SQL Server veritabanına toplu Içeri aktarma](sql-walkthrough.md#dbload)bölümünde özetlenen yordamı izleyin. Bu yönergeler bir Azure sanal makinesinde SQL Server yöneliktir, ancak şirket içi SQL Server yükleme yordamı aynıdır.
+Burada açıklanan yordamları kendi verilerinize uyarlayabilirsiniz ya da NYC TAXI veri kümesini kullanarak açıklanan adımları izleyebilirsiniz. NYC TAXI veri kümesini SQL Server veritabanınıza yüklemek için, [verileri SQL Server veritabanına toplu Içeri aktarma](sql-walkthrough.md#dbload)bölümünde özetlenen yordamı izleyin.
 
 ## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a>Verileri düz bir dosya kaynağından Azure SQL veritabanına taşıma
 Düz dosyalardaki (CSV veya TSV biçimli) veriler, toplu ekleme SQL sorgusu kullanarak bir Azure SQL veritabanına taşınabilir.
@@ -49,8 +49,8 @@ Düz dosyalardaki (CSV veya TSV biçimli) veriler, toplu ekleme SQL sorgusu kull
 ### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a>SQL sorgusunu toplu ekleme
 Toplu ekleme SQL sorgusunu kullanan yordamın adımları, verileri bir Azure VM üzerindeki SQL Server bir düz dosya kaynağından taşıma yönlerine benzer. Ayrıntılar için bkz. [toplu ekleme SQL sorgusu](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="moving-data-from-on-premises-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>Verileri şirket içi SQL Server Azure SQL veritabanına taşıma
-Kaynak veriler şirket içi SQL Server depolanıyorsa, verileri bir Azure SQL veritabanına taşımaya yönelik çeşitli olanaklar vardır:
+## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>SQL Server verileri Azure SQL veritabanına taşıma
+Kaynak veriler SQL Server depolanıyorsa, verileri bir Azure SQL veritabanına taşımaya yönelik çeşitli olanaklar vardır:
 
 1. [Düz dosyaya aktar](#export-flat-file)
 2. [SQL Veritabanı Geçiş Sihirbazı](#insert-tables-bcp)
@@ -69,6 +69,6 @@ SQL veritabanı geçiş Sihirbazı 'Nı kullanma adımları [SQL veritabanı ge�
 Veritabanı yedeklemesini ve geri yüklemeyi kullanma adımları, [veritabanı yedekleme ve geri yükleme](move-sql-server-virtual-machine.md#sql-backup)bölümünde listelenen yönlere benzerdir.
 
 ### <a name="azure-data-factory"></a><a name="adf"></a>Azure Data Factory
-Bu konudaki verileri bir Azure SQL veritabanına taşıma hakkında bilgi edinin Azure Data Factory (ADF), Şirket [ıçı SQL Server 'dan verileri Azure Data Factory SQL Azure taşıyın](move-sql-azure-adf.md). Bu konu başlığı altında, Azure Blob depolama aracılığıyla şirket içi SQL Server veritabanından Azure SQL veritabanına veri taşımak için ADF 'nin nasıl kullanılacağı gösterilmektedir.
+Bu konudaki verileri bir Azure SQL veritabanına taşıma hakkında bilgi edinin Azure Data Factory (ADF), [SQL Server verileri Azure Data Factory ile SQL Azure 'e taşıyın](move-sql-azure-adf.md). Bu konuda, Azure Blob depolama aracılığıyla bir SQL Server veritabanından Azure SQL veritabanına veri taşımak için ADF 'nin nasıl kullanılacağı gösterilmektedir.
 
 Verilerin karma şirket içi ve bulut kaynaklarıyla sürekli geçirilmesi gerektiğinde ADF kullanmayı göz önünde bulundurun.  ADF Ayrıca verilerin Dönüştürmelere ihtiyacı olduğunda veya geçiş sırasında yeni iş mantığına ihtiyacı olduğunda de yardımcı olur. ADF, verilerin düzenli aralıklarla taşınmasını yöneten basit JSON betikleri kullanılarak işlerin zamanlamasını ve izlenmesini sağlar. ADF Ayrıca karmaşık işlemler için destek gibi başka yetenekler de içerir.

@@ -1,5 +1,5 @@
 ---
-title: Bağlanmak ve sorgulamak için VS Code kullanma
+title: Bağlanmak ve sorgulamak için Visual Studio Code kullanma
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Visual Studio Code kullanarak Azure SQL veritabanı 'na veya SQL yönetilen örneği 'ne nasıl bağlanacağınızı öğrenin. Ardından, verileri sorgulamak ve düzenlemek için Transact-SQL (T-SQL) deyimleri çalıştırın.
 keywords: sql veritabanına bağlanma
@@ -13,31 +13,31 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: b67748a9bfb22eed4afb76c960f992a56c10e546
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ed7cd7db24e26ea8705628916e31ce95b5c17a6e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054362"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84189010"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Hızlı başlangıç: bağlanmak ve sorgulamak için Visual Studio Code kullanma 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Visual Studio Code](https://code.visualstudio.com/docs) , Linux, MacOS ve Windows için bir grafik kod düzenleyicisidir. Microsoft SQL Server, Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'i sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler. Bu hızlı başlangıçta, Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak için Visual Studio Code kullanacaksınız ve sonra verileri sorgulamak, eklemek, güncelleştirmek ve silmek için Transact-SQL deyimlerini çalıştırmanız gerekir.
+[Visual Studio Code](https://code.visualstudio.com/docs) , Linux, MacOS ve Windows için bir grafik kod düzenleyicisidir. SQL Server örneği, Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'teki bir veritabanını sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler. Bu hızlı başlangıçta, Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak için Visual Studio Code kullanacaksınız ve sonra verileri sorgulamak, eklemek, güncelleştirmek ve silmek için Transact-SQL deyimlerini çalıştırmanız gerekir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Bir Azure SQL veritabanı veya SQL yönetilen örneği. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
+- Azure SQL veritabanı veya SQL yönetilen örneği içindeki bir veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
-  || Azure SQL Veritabanı | SQL Yönetilen Örnek |
+  || SQL Veritabanı | SQL Yönetilen Örnek |
   |:--- |:--- |:---|
   | Oluştur| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) |
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) |
-  | Yapılandırma | [Sunucu DÜZEYI IP güvenlik duvarı kuralı](firewall-create-server-level-portal-quickstart.md))| [Bir VM 'den bağlantı](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Siteden bağlantı](../managed-instance/point-to-site-p2s-configure.md)
+  | Yapılandırma | [Sunucu DÜZEYI IP güvenlik duvarı kuralı](firewall-create-server-level-portal-quickstart.md))| [Bir sanal makineden (VM) bağlantı](../managed-instance/connect-vm-instance-configure.md)|
+  |||[Şirket içinden bağlantı](../managed-instance/point-to-site-p2s-configure.md)
   |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](../managed-instance/restore-sample-database-quickstart.md)
-  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan [bacpac](database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içe aktarma|
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan bir [bacpac](database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içeri aktarma|
   |||
 
   > [!IMPORTANT]
@@ -45,7 +45,7 @@ ms.locfileid: "84054362"
 
 ## <a name="install-visual-studio-code"></a>Visual Studio Code'u yükleme
 
-En son [Visual Studio Code](https://code.visualstudio.com/Download) yüklediğinizden ve [MSSQL uzantısını](https://aka.ms/mssql-marketplace)yüklediğinizden emin olun. MSSQL uzantısını yükleme hakkında yönergeler için, bkz. [yükleme vs Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) ve [MSSQL Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql).
+En son [Visual Studio Code](https://code.visualstudio.com/Download) yüklediğinizden ve [MSSQL uzantısını](https://aka.ms/mssql-marketplace)yüklediğinizden emin olun. MSSQL uzantısını yükleme hakkında yönergeler için, bkz. [yükleme Visual Studio Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) ve [MSSQL Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql).
 
 ## <a name="configure-visual-studio-code"></a>Visual Studio Code Yapılandır
 
@@ -70,11 +70,11 @@ Hiçbir özel yapılandırma gerekmez.
 
 Hiçbir özel yapılandırma gerekmez.
 
-## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
+## <a name="get-server-connection-information"></a>Sunucu bağlantı bilgilerini al
 
 Azure SQL veritabanı 'na bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -193,6 +193,6 @@ Yeni ürünü kaldırmak için aşağıdaki [Delete](https://docs.microsoft.com/
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- SQL Server Management Studio kullanarak bağlanmak ve sorgulamak için bkz. [hızlı başlangıç: Azure SQL veritabanına bağlanmak ve verileri sorgulamak için SQL Server Management Studio kullanma](connect-query-ssms.md).
+- SQL Server Management Studio kullanarak bağlanmak ve sorgulamak için bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda bir veritabanına bağlanmak ve verileri sorgulamak için SQL Server Management Studio kullanma](connect-query-ssms.md).
 - Azure portal kullanarak bağlanmak ve sorgulamak için bkz. [hızlı başlangıç: veri bağlamak ve sorgulamak için Azure Portal SQL sorgu düzenleyicisini kullanın](connect-query-portal.md).
 - Visual Studio Code'u kullanmaya ilişkin MSDN dergisi makalesi için bkz. [MSSQL uzantısı blog gönderisinden yararlanarak veritabanı IDE'si oluşturma](https://msdn.microsoft.com/magazine/mt809115).

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be6b5f0af17aa8343dcb74fd5f0710d44332ce0e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085000"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193303"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service dağıtma
 
@@ -21,7 +21,7 @@ ms.locfileid: "82085000"
 > GitHub eylemleri Şu anda beta aşamasındadır. GitHub hesabınızı kullanarak [önizlemeye katmak için önce kaydolmanız](https://github.com/features/actions) gerekir.
 > 
 
-Bir iş akışı, deponuzdaki `/.github/workflows/` yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır. Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
+Bir iş akışı, deponuzdaki yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır `/.github/workflows/` . Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
 
 Azure App Service iş akışı için, dosyanın üç bölümü vardır:
 
@@ -29,7 +29,7 @@ Azure App Service iş akışı için, dosyanın üç bölümü vardır:
 |---------|---------|
 |**Kimlik Doğrulaması** | 1. hizmet sorumlusu tanımlama <br /> 2. GitHub parolası oluşturma |
 |**Yapı** | 1. ortamı ayarlama <br /> 2. Web uygulamasını oluşturma |
-|**Dağıt** | 1. Web uygulamasını dağıtma |
+|**Dağıtma** | 1. Web uygulamasını dağıtma |
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
@@ -59,12 +59,12 @@ Uygulama düzeyi kimlik bilgilerini de kullanabilirsiniz. Örneğin, dağıtım 
 
 3. İndirilen yayımlama profili dosyasının içeriğini gizli alanının değer alanına yapıştırın.
 
-4. Şimdi dalınızdaki iş akışı dosyasında: `.github/workflows/workflow.yml` Azure Web uygulaması dağıtma eyleminin girişi `publish-profile` için parolayı değiştirin.
+4. Şimdi dalınızdaki iş akışı dosyasında: `.github/workflows/workflow.yml` `publish-profile` Azure Web uygulaması dağıtma eyleminin girişi için parolayı değiştirin.
     
     ```yaml
         - uses: azure/webapps-deploy@v2
           with:
-            creds: ${{ secrets.azureWebAppPublishProfile }}
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
     ```
 
 5. Gizli anahtarı, tanımlandıktan sonra aşağıda gösterildiği gibi görürsünüz.

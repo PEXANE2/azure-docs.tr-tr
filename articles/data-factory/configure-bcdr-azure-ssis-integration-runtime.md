@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: 479e57a6001e143e233457967d55ea0e2fb6d3de
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e1b70e0e3eb54253972afded1bd37363d1a868e7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021067"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195721"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>Azure-SSIS tümleştirme çalışma zamanını SQL veritabanı coğrafi çoğaltma ve yük devretme ile yapılandırma
 
@@ -29,11 +29,11 @@ SQL veritabanı için coğrafi çoğaltma ve yük devretme hakkında daha fazla 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-ssis-ir-failover-with-a-sql-database-managed-instance"></a>SQL veritabanı yönetilen örneği ile yük devretmeyi Azure-SSIS IR
+## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>SQL yönetilen örneği ile yük devretmeyi Azure-SSIS IR
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-Azure SQL veritabanı yönetilen örneği, veri, kimlik bilgileri ve bir veritabanında depolanan bağlantı bilgilerinin güvenliğinin sağlanmasına yardımcı olmak için bir *veritabanı ana anahtarı (DMK)* kullanır. DMK otomatik şifre çözmeyi etkinleştirmek için, anahtarın bir kopyası *sunucu ana anahtarı (SMK)* ile şifrelenir. 
+Azure SQL yönetilen örneği, veri, kimlik bilgileri ve bir veritabanında depolanan bağlantı bilgilerinin güvenliğinin sağlanmasına yardımcı olmak için bir *veritabanı ana anahtarı (DMK)* kullanır. DMK otomatik şifre çözmeyi etkinleştirmek için, anahtarın bir kopyası *sunucu ana anahtarı (SMK)* ile şifrelenir. 
 
 SMK bir yük devretme grubunda çoğaltılmaz. Yük devretmenin ardından DMK şifre çözme için hem birincil hem de ikincil örneklere bir parola eklemeniz gerekir.
 
@@ -43,7 +43,7 @@ SMK bir yük devretme grubunda çoğaltılmaz. Yük devretmenin ardından DMK ş
     ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
     ```
 
-2. Azure SQL veritabanı yönetilen örneği üzerinde bir yük devretme grubu oluşturun.
+2. SQL yönetilen örneği üzerinde bir yük devretme grubu oluşturun.
 
 3. Yeni şifreleme parolasını kullanarak ikincil örnekte **sp_control_dbmasterkey_password** çalıştırın.
 
@@ -97,9 +97,9 @@ Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın:
 
 3. Restart the Azure-SSIS IR.
 
-### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Database managed instance
+### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Managed Instance
 
-This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of an Azure SQL Database managed instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
+This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of a Azure SQL Managed Instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
 
 #### Solution
 

@@ -3,12 +3,12 @@ title: Azure Stack SQL Server iş yüklerini yedekleme
 description: Bu makalede, Azure Stack SQL Server veritabanlarını korumak için Microsoft Azure Backup sunucusu (MABS) yapılandırma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 03211e1147f96429a8406c4c95654161ed2bf308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2d41bdccd67539205b74a0ce277b3b01a685c6c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74172305"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192975"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack SQL Server yedekleme
 
@@ -38,7 +38,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
     ![Koruma grubu türünü seçin-' sunucular '](./media/backup-azure-backup-sql/pg-servers.png)
 
-4. **Grup üyelerini seçin** ekranında, kullanılabilir Üyeler listesinde çeşitli veri kaynakları görüntülenir. Bir **+** klasörü genişletmek ve alt klasörleri göstermek için tıklayın. Bir öğeyi seçmek için onay kutusuna tıklayın.
+4. **Grup üyelerini seçin** ekranında, kullanılabilir Üyeler listesinde çeşitli veri kaynakları görüntülenir. **+** Bir klasörü genişletmek ve alt klasörleri göstermek için tıklayın. Bir öğeyi seçmek için onay kutusuna tıklayın.
 
     ![SQL DB 'yi seçin](./media/backup-azure-backup-sql/pg-databases.png)
 
@@ -65,7 +65,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
     ![İlk çoğaltma yöntemi](./media/backup-azure-backup-sql/pg-manual.png)
 
-    İlk yedekleme kopyası, tüm veri kaynağını (SQL Server veritabanı) üretim sunucusundan (SQL Server makine) Azure Backup Sunucusu 'e aktarmayı gerektirir. Bu veriler büyük olabilir ve verilerin ağ üzerinden aktarılması bant genişliğini aşabilir. Bu nedenle, ilk yedeklemeyi aktarmayı seçebilirsiniz: bant genişliği tıkanıklığını önlemek için **el ile** (çıkarılabilir medya kullanarak) veya **ağ üzerinden otomatik olarak** (belirli bir zamanda).
+    İlk yedekleme kopyası, tüm veri kaynağını (SQL Server veritabanı) üretim sunucusundan (SQL Server bilgisayar) Azure Backup Sunucusu 'e aktarmayı gerektirir. Bu veriler büyük olabilir ve verilerin ağ üzerinden aktarılması bant genişliğini aşabilir. Bu nedenle, ilk yedeklemeyi aktarmayı seçebilirsiniz: bant genişliği tıkanıklığını önlemek için **el ile** (çıkarılabilir medya kullanarak) veya **ağ üzerinden otomatik olarak** (belirli bir zamanda).
 
     İlk yedekleme tamamlandıktan sonra, yedeklemelerin geri kalanı ilk yedekleme kopyasında artımlı yedeklemelerdir. Artımlı yedeklemeler küçük olma eğilimindedir ve ağ üzerinden kolayca aktarılır.
 
@@ -73,7 +73,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
     ![Tutarlılık denetimi](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    Azure Backup Sunucusu, yedekleme noktasının bütünlüğü üzerinde bir tutarlılık denetimi gerçekleştirir. Azure Backup Sunucusu, üretim sunucusundaki (Bu senaryodaki SQL Server makine) yedekleme dosyasının sağlama toplamını ve bu dosya için yedeklenmiş verileri hesaplar. Çakışma varsa, Azure Backup Sunucusu yedeklenen dosyanın bozuk olduğu varsayılır. Azure Backup Sunucusu, sağlama toplamı uyuşmazlığına karşılık gelen blokları göndererek yedeklenen verileri yeniden toplayın. Tutarlılık denetimleri performans açısından yoğun olduğundan, tutarlılık denetimini zamanlayabilir veya otomatik olarak çalıştırabilirsiniz.
+    Azure Backup Sunucusu, yedekleme noktasının bütünlüğü üzerinde bir tutarlılık denetimi gerçekleştirir. Azure Backup Sunucusu, üretim sunucusundaki (Bu senaryodaki SQL Server bilgisayar) yedekleme dosyasının sağlama toplamını ve bu dosya için yedeklenmiş verileri hesaplar. Çakışma varsa, Azure Backup Sunucusu yedeklenen dosyanın bozuk olduğu varsayılır. Azure Backup Sunucusu, sağlama toplamı uyuşmazlığına karşılık gelen blokları göndererek yedeklenen verileri yeniden toplayın. Tutarlılık denetimleri performans açısından yoğun olduğundan, tutarlılık denetimini zamanlayabilir veya otomatik olarak çalıştırabilirsiniz.
 
 10. Veri kaynaklarının çevrimiçi korumasını belirtmek için, Azure 'da korunacak veritabanlarını seçin ve **İleri**' ye tıklayın.
 

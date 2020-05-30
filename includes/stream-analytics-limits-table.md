@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 1bf7f3c15b40590c400e8a730de20c199bb1b4c2
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e90a374917239ae1a20d25795757811a12cee80c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67188767"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200327"
 ---
 ---
 | Sınır tanımlayıcı | Sınır | Açıklamalar |
@@ -16,4 +16,5 @@ ms.locfileid: "67188767"
 | İş başına en fazla akış birimi sayısı |192 |Stream Analytics iş başına 192 akış birimi için sabit bir sınır vardır. |
 | Bölge başına en fazla işi sayısı |1.500 |Her abonelik, coğrafi bölge başına en fazla 1.500 iş olabilir. |
 | MB cinsinden başvuru veri blob’u | 300 | Başvuru verileri Blobları her biri 300 MB 'tan büyük olamaz. |
+| Sorgudaki en fazla karakter sayısı | 512000 | Azure Stream Analytics iş sorgusunda 512k karakterlik sabit bir sınır vardır.|
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064991"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194481"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Veri Yönetimi Ağ Geçidi için sürüm notları
 > [!NOTE]
@@ -49,8 +49,8 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 -   Güvenlik duvarınızdan tüm Azure IP adreslerini beyaz listeye almak yerine, Service Bus beyaz listeye DNS girişleri ekleyebilirsiniz (gerekirse). Diğer ayrıntıları burada bulabilirsiniz.
 -   Artık Blok Blobu için desteklenen en büyük boyut olan 4,75 TB 'a kadar tek bir blok blobundan veri kopyalayabilirsiniz. (önceki sınır 195 GB idi).
 -   Düzeltildi: kopyalama etkinliği sırasında birkaç küçük dosyanın sıkıştırması kaldırılırken yetersiz bellek sorunu.
--   Düzeltildi: belge DB 'den şirket içi SQL Server, ıdempottik özelliğiyle kopyalarken Dizin aralık dışında bir sorun oluştu.
--   Düzeltildi: SQL Temizleme betiği, kopyalama sihirbazından şirket içi SQL Server birlikte çalışmıyor.
+-   Düzeltildi: belge DB 'den ıdempottik özelliğiyle SQL Server kopyalanırken Dizin aralık dışında bir sorun oluştu.
+-   Düzeltildi: SQL Temizleme betiği kopyalama sihirbazından SQL Server çalışmıyor.
 -   Düzeltildi: sonunda boşluk olan sütun adı kopyalama etkinliğinde çalışmıyor.
 
 ## <a name="28662833"></a>2.8.66283.3
@@ -111,7 +111,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 *  DB2 sürücüsü artık desteklenen platformlar (Linux, Unix ve Windows) ile birlikte ı (AS/400) için z/OS ve DB2 'yi desteklemektedir.
 *  Şirket içi veri depoları için kaynak veya hedef olarak Azure Cosmos DB kullanmayı destekler
 *  , Zaten desteklenen genel amaçlı depolama hesabıyla ve soğuk/etkin blob depolamadan veri kopyalamayı destekler.
-*  Uzaktan oturum açma ayrıcalıklarıyla ağ geçidi aracılığıyla şirket içi SQL Server bağlanmanızı sağlar.  
+*  Uzaktan oturum açma ayrıcalıklarıyla ağ geçidi aracılığıyla SQL Server bağlanmanızı sağlar.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
@@ -126,7 +126,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
     *  Yeniden düzenlenen ve Basitleştirilmiş denetimler.
 
     *  [Kod içermeyen kopyalama aracını](data-factory-copy-data-wizard-tutorial.md)kullanarak bir depolamadan veri kopyalayabilirsiniz. Bu özellik hakkında genel bilgi için bkz. [aşamalı kopya](data-factory-copy-activity-performance.md#staged-copy) .
-*  Veri Yönetimi ağ geçidini, verileri doğrudan şirket içi SQL Server veritabanından Azure Machine Learning 'e almak için kullanabilirsiniz.
+*  Veri Yönetimi ağ geçidini, verileri doğrudan bir SQL Server veritabanından Azure Machine Learning içine almak için kullanabilirsiniz.
 
 *  Performans iyileştirmeleri
 

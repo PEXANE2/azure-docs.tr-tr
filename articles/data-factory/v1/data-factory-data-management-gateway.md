@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 76f8b741eb49949bb59ab5e1a4b7279f84b77111
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021577"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188299"
 ---
 # <a name="data-management-gateway"></a>Veri Yönetimi Ağ Geçidi
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "84021577"
 
 Veri yönetimi ağ geçidi, bulut ve şirket içi veri depoları arasında veri kopyalamak için şirket içi ortamınıza kurmanız gereken bir istemci aracısıdır. Data Factory tarafından desteklenen şirket içi veri depoları, [desteklenen veri kaynakları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) bölümünde listelenmiştir.
 
-Bu makale, Şirket [içi ve bulut veri depoları arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesindeki izlenecek yolu tamamlar. İzlenecek yolda, verileri şirket içi SQL Server veritabanından Azure blobuna taşımak için ağ geçidini kullanan bir işlem hattı oluşturacaksınız. Bu makalede, veri yönetimi ağ geçidi hakkında ayrıntılı bilgi verilmektedir.
+Bu makale, Şirket [içi ve bulut veri depoları arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesindeki izlenecek yolu tamamlar. İzlenecek yolda, verileri bir SQL Server veritabanından Azure blobuna taşımak için ağ geçidini kullanan bir işlem hattı oluşturacaksınız. Bu makalede, veri yönetimi ağ geçidi hakkında ayrıntılı bilgi verilmektedir.
 
 Birden çok şirket içi makineyi ağ geçidiyle ilişkilendirerek bir veri yönetimi ağ geçidini ölçeklendirebilirsiniz. Bir düğümde aynı anda çalışabilen veri taşıma işlerinin sayısını artırarak ölçeği artırabilirsiniz. Bu özellik, tek düğümlü bir mantıksal ağ geçidi için de kullanılabilir. Ayrıntılar için [Azure Data Factory makalesindeki veri yönetimi ağ geçidini ölçeklendirme](data-factory-data-management-gateway-high-availability-scalability.md) bölümüne bakın.
 
@@ -103,7 +103,7 @@ Veri yönetimi ağ geçidi aşağıdaki yollarla yüklenebilir:
 10. Makinenizde çalışan **veri yönetimi ağ geçidi Configuration Manager** **ağ geçidini kaydet** sayfasında, aşağıdaki adımları uygulayın:
     1. Metni metne yapıştırın.
     2. İsteğe bağlı olarak, anahtar metnini görmek için **ağ geçidi anahtarını göster** ' e tıklayın.
-    3. **Kaydol**' a tıklayın.
+    3. **Kaydet**’e tıklayın.
 
 ### <a name="register-gateway-using-key"></a>Anahtar kullanarak ağ geçidini kaydetme
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>Portalda zaten bir mantıksal ağ geçidi oluşturmadıysanız
@@ -164,7 +164,7 @@ Güvenlik Duvarı kurallarının kurumsal güvenlik duvarı, ağ geçidi makines
 * Mantıksal SQL Server 'ın güvenlik duvarı ayarlarını, ağ geçidi makinesinin IP adresini izin verilen IP adresleri listesine ekleyecek şekilde yapılandırın.
 
 > [!NOTE]
-> Güvenlik duvarınız giden bağlantı noktası 1433 ' ye izin vermediğinden, ağ geçidi Azure SQL 'e doğrudan erişemez. Bu durumda, veritabanı/SQL Azure DW SQL Azure için [hazırlanan kopyayı](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) kullanabilirsiniz. Bu senaryoda, veri taşıma için yalnızca HTTPS (bağlantı noktası 443) gereklidir.
+> Güvenlik duvarınız giden bağlantı noktası 1433 ' ye izin vermediğinden, ağ geçidi Azure SQL 'e doğrudan erişemez. Bu durumda, [hazırlanan KOPYAYı](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) SQL Database/SQL yönetilen örnek/SQL Azure DW olarak kullanabilirsiniz. Bu senaryoda, veri taşıma için yalnızca HTTPS (bağlantı noktası 443) gereklidir.
 >
 >
 
@@ -364,7 +364,7 @@ Aşağıdaki tabloda **ağ geçidi düğümleri** listesindeki sütunların aç�
 
 İzleme özelliği | Açıklama
 :------------------ | :----------
-Name | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı. Düğüm, ağ geçidinin yüklü olduğu şirket içi bir Windows makinedir. Tek bir mantıksal ağ geçidinde birden fazla düğüm (en fazla dört düğüme) olma hakkında bilgi için, bkz. [veri yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik](data-factory-data-management-gateway-high-availability-scalability.md).
+Adı | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı. Düğüm, ağ geçidinin yüklü olduğu şirket içi bir Windows makinedir. Tek bir mantıksal ağ geçidinde birden fazla düğüm (en fazla dört düğüme) olma hakkında bilgi için, bkz. [veri yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik](data-factory-data-management-gateway-high-availability-scalability.md).
 Durum | Mantıksal ağ geçidinin ve ağ geçidi düğümlerinin durumu. Örnek: çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için bkz. [ağ geçidi durumu](#gateway-status) bölümü.
 Sürüm | Mantıksal ağ geçidi ve her ağ geçidi düğümünün sürümünü gösterir. Mantıksal ağ geçidinin sürümü, gruptaki düğümlerin çoğunluğu sürümüne göre belirlenir. Mantıksal ağ geçidi kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal ağ geçidi ile aynı sürüm numarasına sahip düğümler düzgün şekilde çalışır. Diğerleri sınırlı moddadır ve el ile güncelleştirilmesi gerekir (yalnızca büyük/küçük harfe otomatik güncelleştirme başarısız olur).
 Kullanılabilir bellek | Bir ağ geçidi düğümündeki kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür.
@@ -388,7 +388,7 @@ Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından f
 
 Aşağıdaki tabloda, **mantıksal bir ağ geçidinin**olası durumları verilmiştir. Ağ Geçidi, ağ geçidi düğümlerinin durumlarına bağlıdır.
 
-Durum | Yorumlar
+Durum | Açıklamalar
 :----- | :-------
 Kayıt gerekiyor | Henüz bu mantıksal ağ geçidine kayıtlı düğüm yok
 Çevrimiçi | Ağ Geçidi düğümleri çevrimiçi
@@ -543,4 +543,4 @@ Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_Re
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bkz. Şirket [içi ve bulut veri depoları arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesi. İzlenecek yolda, verileri şirket içi SQL Server veritabanından Azure blobuna taşımak için ağ geçidini kullanan bir işlem hattı oluşturacaksınız.
+* Bkz. Şirket [içi ve bulut veri depoları arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesi. İzlenecek yolda, verileri bir SQL Server veritabanından Azure blobuna taşımak için ağ geçidini kullanan bir işlem hattı oluşturacaksınız.

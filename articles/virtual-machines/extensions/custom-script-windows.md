@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8b1c53a5c060f2124a36b69365bdd9b62896b56
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478157"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220951"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
 
@@ -30,7 +30,17 @@ Bu belgede, Windows sistemlerinde Azure PowerShell modülü, Azure Resource Mana
 
 ### <a name="operating-system"></a>İşletim Sistemi
 
-Windows için özel Betik uzantısı, uzantı tarafından desteklenen dosya uzantısının üzerinde çalışacak. daha fazla bilgi için, bu [Azure uzantısının desteklenen işletim sistemlerine](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems)bakın.
+Windows için özel Betik uzantısı, uzantı tarafından desteklenen OSs uzantısında çalışır;
+### <a name="windows"></a>Windows
+
+* Windows Server 2008 R2
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows 10
+* Windows Server 2016
+* Windows Server 2016 Core
+* Windows Server 2019
+* Windows Server 2019 Core
 
 ### <a name="script-location"></a>Betik konumu
 
@@ -114,7 +124,7 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | yayımcı | Microsoft.Compute | string |
-| type | CustomScriptExtension | string |
+| tür | CustomScriptExtension | string |
 | typeHandlerVersion | 1.10 | int |
 | Dosya URI 'leri (ör.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | zaman damgası (ör.) | 123456789 | 32 bit tamsayı |
@@ -131,7 +141,7 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 * `commandToExecute`: (**gerekli**, dize) yürütülecek giriş noktası betiği. Komutunuz parolalar gibi gizli dizileri içeriyorsa veya dosya URI 'larınız hassas ise bu alanı kullanın.
 * `fileUris`: (isteğe bağlı, dize dizisi) indirilecek dosya (ler) i URL 'Leri.
 * `timestamp`(isteğe bağlı, 32-bit tamsayı) bu alanı yalnızca bu alanın değerini değiştirerek betiğin yeniden çalıştırılması tetiklenecek şekilde kullanın.  Herhangi bir tamsayı değeri kabul edilebilir; yalnızca önceki değerden farklı olmalıdır.
-* `storageAccountName`: (isteğe bağlı, dize) depolama hesabının adı. Depolama kimlik bilgilerini belirtirseniz, Azure Blobları için tümünün `fileUris` URL 'si olması gerekir.
+* `storageAccountName`: (isteğe bağlı, dize) depolama hesabının adı. Depolama kimlik bilgilerini belirtirseniz, `fileUris` Azure Blobları için tümünün URL 'si olması gerekir.
 * `storageAccountKey`: (isteğe bağlı, dize) depolama hesabının erişim anahtarı
 * `managedIdentity`: (isteğe bağlı, JSON nesnesi) dosya indirmek için [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
   * `clientId`: (isteğe bağlı, dize) yönetilen kimliğin istemci KIMLIĞI
@@ -196,7 +206,7 @@ Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. 
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
 
-Komut `Set-AzVMCustomScriptExtension` , var olan bir sanal makineye özel Betik uzantısı eklemek için kullanılabilir. Daha fazla bilgi için bkz. [set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension).
+`Set-AzVMCustomScriptExtension`Komut, var olan bir sanal makineye özel Betik uzantısı eklemek için kullanılabilir. Daha fazla bilgi için bkz. [set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension).
 
 ```powershell
 Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
@@ -211,7 +221,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
 
 ### <a name="using-multiple-scripts"></a>Birden çok komut dosyası kullanma
 
-Bu örnekte, sunucunuzu oluşturmak için kullanılan üç betiğinin olması gerekir. **Commandtoexecute** ilk betiği çağırır, ardından diğerlerinin nasıl çağrıldığını gösteren seçenekleriniz vardır. Örneğin, doğru hata işleme, günlüğe kaydetme ve durum yönetimiyle birlikte yürütmeyi denetleyen ana bir betiğe sahip olabilirsiniz. Betikler, çalıştırmak için yerel makineye indirilir. Örneğin `1_Add_Tools.ps1` , betiğe ekleyerek `2_Add_Features.ps1` `.\2_Add_Features.ps1` çağrın ve içinde `$settings`tanımladığınız diğer betikler için bu işlemi yineleyebilirsiniz.
+Bu örnekte, sunucunuzu oluşturmak için kullanılan üç betiğinin olması gerekir. **Commandtoexecute** ilk betiği çağırır, ardından diğerlerinin nasıl çağrıldığını gösteren seçenekleriniz vardır. Örneğin, doğru hata işleme, günlüğe kaydetme ve durum yönetimiyle birlikte yürütmeyi denetleyen ana bir betiğe sahip olabilirsiniz. Betikler, çalıştırmak için yerel makineye indirilir. Örneğin, `1_Add_Tools.ps1` `2_Add_Features.ps1` betiğe ekleyerek çağrın `.\2_Add_Features.ps1` ve içinde tanımladığınız diğer betikler için bu işlemi yineleyebilirsiniz `$settings` .
 
 ```powershell
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",
@@ -265,7 +275,7 @@ Alternatif olarak, [Forceupdatetag](/dotnet/api/microsoft.azure.management.compu
 
 ### <a name="using-invoke-webrequest"></a>Invoke-WebRequest kullanma
 
-Betiğinizdeki [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) kullanıyorsanız, parametresini `-UseBasicParsing` belirtmeniz gerekir, aksi takdirde ayrıntılı durumu denetlerken şu hatayı alırsınız:
+Betiğinizdeki [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) kullanıyorsanız, parametresini belirtmeniz gerekir, `-UseBasicParsing` Aksi takdirde ayrıntılı durumu denetlerken şu hatayı alırsınız:
 
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
@@ -328,17 +338,17 @@ Belirtilen dosyalar hedef sanal makinede aşağıdaki klasöre indirilir.
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
 
-Burada `<n>` , uzantının yürütmeleri arasında değişebilir bir ondalık tamsayıdır.  `1.*` Değer, uzantının gerçek, geçerli `typeHandlerVersion` değeriyle eşleşir.  Örneğin, gerçek dizin olabilir `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
+Burada `<n>` , uzantının yürütmeleri arasında değişebilir bir ondalık tamsayıdır.  `1.*`Değer, uzantının gerçek, geçerli `typeHandlerVersion` değeriyle eşleşir.  Örneğin, gerçek dizin olabilir `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2` .  
 
-`commandToExecute` Komutu yürütürken, uzantı bu dizini (örneğin, `...\Downloads\2`) geçerli çalışma dizini olarak ayarlar. Bu işlem, `fileURIs` özelliği aracılığıyla indirilen dosyaları bulmak için göreli yolların kullanılmasını sağlar. Örnekler için aşağıdaki tabloya bakın.
+`commandToExecute`Komutu yürütürken, uzantı bu dizini (örneğin, `...\Downloads\2` ) geçerli çalışma dizini olarak ayarlar. Bu işlem, özelliği aracılığıyla indirilen dosyaları bulmak için göreli yolların kullanılmasını sağlar `fileURIs` . Örnekler için aşağıdaki tabloya bakın.
 
-Mutlak indirme yolu zaman içinde farklılık gösterebileceğinden, mümkün olduğunda `commandToExecute` dizedeki göreli betik/dosya yollarını kabul etmek daha iyidir. Örneğin:
+Mutlak indirme yolu zaman içinde farklılık gösterebileceğinden, mümkün olduğunda dizedeki göreli betik/dosya yollarını kabul etmek daha iyidir `commandToExecute` . Örneğin:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
 ```
 
-İlk URI segmentinden sonraki yol bilgileri, `fileUris` özellik listesi aracılığıyla indirilen dosyalar için tutulur.  Aşağıdaki tabloda gösterildiği gibi, indirilen dosyalar `fileUris` değerlerin yapısını yansıtmak için indirme alt dizinlerinde eşleştirilir.  
+İlk URI segmentinden sonraki yol bilgileri, özellik listesi aracılığıyla indirilen dosyalar için tutulur `fileUris` .  Aşağıdaki tabloda gösterildiği gibi, indirilen dosyalar değerlerin yapısını yansıtmak için indirme alt dizinlerinde eşleştirilir `fileUris` .  
 
 #### <a name="examples-of-downloaded-files"></a>Indirilen dosya örnekleri
 

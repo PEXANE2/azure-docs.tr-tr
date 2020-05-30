@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3c299e9ec42d63812804b5ff7e50324a2de94200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720512"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195075"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Team Data Science Işleminin veri alımı ve anlama aşaması
 
@@ -55,7 +55,7 @@ TDSP, verileri görselleştirmeye ve veri özeti raporlarının hazırlanmasına
 Temizleme verilerinin kalitesinden memnun kaldıktan sonra, bir sonraki adım veride bulunan desenleri daha iyi anlamak için kullanılır. Bu veri analizi, hedef için uygun bir tahmine dayalı model seçmenize ve geliştirmenize yardımcı olur. Verilerin hedefe ne kadar iyi bağlandığını bulun. Ardından, sonraki modelleme adımlarıyla ileri doğru hareket etmek için yeterli veri olup olmadığını saptayın. Bu işlem, genellikle yinelemeli bir işlemdir. Başlangıçta önceki aşamada tanımlanan veri kümesini genişletmek için daha doğru veya daha fazla ilgili veriye sahip yeni veri kaynakları bulmanız gerekebilir. 
 
 ### <a name="set-up-a-data-pipeline"></a>Veri işlem hattı ayarlama
-Verilerin ilk alımı ve temizlenmesinin yanı sıra, genellikle yeni verileri skor veya devam eden bir öğrenme sürecinin bir parçası olarak verileri düzenli olarak yenilemek için bir işlem ayarlamanız gerekir. Puanlama, bir veri işlem hattı veya iş akışı ile tamamlanabilir. [Şirket içi SQL Server örneğinden verileri Azure SQL veritabanı 'na Azure Data Factory makale Ile taşıma](move-sql-azure-adf.md) , [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)ile işlem hattının nasıl ayarlanacağı hakkında bir örnek sağlar. 
+Verilerin ilk alımı ve temizlenmesinin yanı sıra, genellikle yeni verileri skor veya devam eden bir öğrenme sürecinin bir parçası olarak verileri düzenli olarak yenilemek için bir işlem ayarlamanız gerekir. Puanlama, bir veri işlem hattı veya iş akışı ile tamamlanabilir. [SQL Server örneğinden Azure SQL veritabanı 'na veri taşıma Azure Data Factory makale ile](move-sql-azure-adf.md) [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)ile işlem hattının nasıl ayarlanacağı hakkında bir örnek sağlar. 
 
 Bu aşamada, veri işlem hattının çözüm mimarisini geliştirirsiniz. Veri bilimi projesinin bir sonraki aşamasına sahip işlem hattını paralel olarak geliştirirsiniz. İş gereksinimlerinize ve bu çözümün tümleştirildiği mevcut sistemlerinizin kısıtlamalarına bağlı olarak, işlem hattı aşağıdaki seçeneklerden biri olabilir: 
 
@@ -63,7 +63,7 @@ Bu aşamada, veri işlem hattının çözüm mimarisini geliştirirsiniz. Veri b
    * Akış veya gerçek zamanlı 
    * Karma 
 
-## <a name="artifacts"></a>Yapıtlar
+## <a name="artifacts"></a>Artifacts
 Bu aşamada teslim edilebilirler aşağıda verilmiştir:
 
    * [Veri kalitesi raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Bu rapor, veri özetlerini, her öznitelik ve hedef, değişken derecelendirmesi ve daha fazlasını içeren ilişkileri içerir. TDSP 'nin bir parçası olarak sunulan [ıdear](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) Aracı, bu raporu bir CSV dosyası veya ilişkisel tablo gibi tablosal veri kümesi üzerinde hızlı bir şekilde oluşturabilir. 

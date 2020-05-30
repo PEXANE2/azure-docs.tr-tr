@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: eb0c88797dc23c912ce360dbcfd10f210b694fbd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4d0800d109d17c1233a18966d84a498596e8e834
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043943"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188202"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -209,7 +209,7 @@ Bu makalede açıklanan çoğaltma mantığı bazı durumlarda çalışmayı dur
 
 -   Şema değişikliklerini yalnızca DDL tetikleyicisinin oluşturulduğu veritabanında yapabilirsiniz.
 
--   Şirket içi SQL Server veritabanında değişiklik yapıyorsanız, şema değişikliğinin Azure SQL veritabanı 'nda desteklendiğinden emin olun.
+-   SQL Server veritabanında değişiklik yapıyorsanız, şema değişikliğinin Azure SQL veritabanı 'nda desteklendiğinden emin olun.
 
 -   Şema değişiklikleri DDL tetikleyicisinin oluşturulduğu veritabanı dışındaki veritabanlarında yapılırsa, değişiklikler çoğaltılmaz. Bu sorundan kaçınmak için, diğer uç noktalarda değişiklikleri engellemek üzere DDL Tetikleyicileri oluşturabilirsiniz.
 
@@ -225,7 +225,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
 -   Genel Bakış- [Azure SQL Data Sync ile birden çok bulut ve şirket içi veritabanı arasında veri eşitleme](sql-data-sync-data-sql-server-sql-database.md)
 -   Veri eşitlemesini ayarlama
-    - Portalda- [öğreticide, Azure SQL veritabanı ve şirket içi SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-data-sync-sql-server-configure.md)
+    - Portalda- [öğretici: Azure SQL veritabanı ile SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-data-sync-sql-server-configure.md)
     - PowerShell ile
         -  [Azure SQL veritabanı 'nda birden çok veritabanı arasında eşitleme yapmak için PowerShell 'i kullanma](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak Azure SQL veritabanındaki bir veritabanı ile SQL Server örneğindeki bir veritabanı arasında eşitleme](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

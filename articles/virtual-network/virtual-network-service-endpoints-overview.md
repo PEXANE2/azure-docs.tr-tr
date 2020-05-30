@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 4a2a7af23005e3c033d455d52f61cef2b7564b7f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9dd4bc79760dde00808358fe489f6e539c2b9a2e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018761"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220423"
 ---
 # <a name="virtual-network-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
 
-Sanal ağ (VNet) hizmeti uç noktaları, sanal ağ özel adres alanınızı genişletir. Uç noktalar Ayrıca sanal ağınızın kimliğini doğrudan bir bağlantı üzerinden Azure hizmetlerine genişletir. Uç noktalar kritik Azure hizmeti kaynaklarınızı sanal ağlarınızla sınırlayarak güvenliğini sağlamanıza imkan verir. Sanal ağınızdan Azure hizmetine giden trafik her zaman Microsoft Azure omurga ağında kalır.
+Sanal ağ (VNet) hizmeti uç noktası, Azure omurga ağı üzerinden iyileştirilmiş bir yol üzerinden Azure hizmetlerine güvenli ve doğrudan bağlantı sağlar. Uç noktalar kritik Azure hizmeti kaynaklarınızı sanal ağlarınızla sınırlayarak güvenliğini sağlamanıza imkan verir. Hizmet uç noktaları, VNet 'teki özel IP adreslerinin VNet üzerinde genel bir IP adresi gerekmeden bir Azure hizmeti uç noktasına ulaşmasını sağlar.
 
 Bu özellik aşağıdaki Azure hizmetleri ve bölgeleri için kullanılabilir. *Microsoft. \* * Resource parantez içinde. Hizmetiniz için hizmet uç noktalarını yapılandırırken bu kaynağı alt ağ tarafında etkinleştirin:
 
@@ -88,7 +88,7 @@ Hizmet uç noktaları aşağıdaki avantajları sağlar:
 - Uç noktanın yapılandırıldığı sanal ağ, Azure hizmet kaynağıyla aynı veya ondan farklı abonelikte olabilir. Uç noktaları ayarlamak ve Azure hizmetlerinin güvenliğini sağlamak için gerekli olan izinler hakkında daha fazla bilgi için [Sağlama](#provisioning) bölümüne bakın.
 - Desteklenen hizmetler için yeni veya mevcut kaynaklar ile sanal ağlar arasındaki güvenliği hizmet uç noktaları kullanarak sağlayabilirsiniz.
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 
 - Hizmet uç noktasını etkinleştirdikten sonra, alt ağ anahtarındaki sanal makinelerin kaynak IP adresleri. Kaynak IP adresleri, bu alt ağdan hizmetle iletişim kurarken özel IPv4 adreslerini kullanmak için ortak IPv4 adreslerini kullanmaya geçiş yapar. Hizmete giden mevcut açık TCP bağlantıları bu geçiş sırasında kapatılır. Bir alt ağ için hizmete yönelik hizmet uç noktasını etkinleştirmeden veya devre dışı bırakmadan önce çalışan kritik görev olmadığından emin olun. Ayrıca uygulamalarınızın IP adresi değişikliğinin ardından Azure hizmetlerine otomatik olarak bağlanabildiğinden emin olun.
 

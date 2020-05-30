@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
-ms.openlocfilehash: 524fc747e8e3dc70bdcc594a38b2a083b8381daa
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124083"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196434"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics aramalar için başvuru verilerini kullanma
 
@@ -96,13 +96,13 @@ Delta sorgu seçeneği ile, Stream Analytics taban çizgisi başvuru veri kümes
 
 SQL veritabanı başvuru verilerinizi yapılandırmak için önce **başvuru veri** girişi oluşturmanız gerekir. Aşağıdaki tabloda, başvuru verileri girişini açıklamasıyla oluştururken sağlamanız gereken her özellik açıklanmaktadır. Daha fazla bilgi için bkz. [Azure Stream Analytics bir iş IÇIN SQL veritabanından başvuru verileri kullanma](sql-reference-data.md).
 
-[Azure SQL veritabanı yönetilen örneğini](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) , başvuru veri girişi olarak kullanabilirsiniz. [Azure SQL veritabanı yönetilen örneği 'nde genel uç noktasını yapılandırmanız](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) ve ardından Azure Stream Analytics aşağıdaki ayarları el ile yapılandırmanız gerekir. SQL Server çalıştıran bir veritabanı ile birlikte çalışan Azure sanal makinesi, aşağıdaki ayarları el ile yapılandırarak de desteklenir.
+[Azure SQL yönetilen örneğini](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) , başvuru veri girişi olarak kullanabilirsiniz. [SQL yönetilen örneği 'nde genel uç noktasını yapılandırmanız](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) ve ardından Azure Stream Analytics aşağıdaki ayarları el ile yapılandırmanız gerekir. SQL Server çalıştıran bir veritabanı ile birlikte çalışan Azure sanal makinesi, aşağıdaki ayarları el ile yapılandırarak de desteklenir.
 
 |**Özellik Adı**|**Açıklama**  |
 |---------|---------|
 |Girdi diğer adı|Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.|
 |Abonelik|Aboneliğinizi seçin|
-|Veritabanı|Başvuru verilerinizi içeren Azure SQL veritabanı. Azure SQL veritabanı yönetilen örneği için 3342 numaralı bağlantı noktasını belirtmeniz gerekir. Örneğin, *sampleserver. public. Database. Windows. net, 3342*|
+|Veritabanı|Başvuru verilerinizi içeren Azure SQL veritabanı. SQL yönetilen örneği için 3342 numaralı bağlantı noktasını belirtmeniz gerekir. Örneğin, *sampleserver. public. Database. Windows. net, 3342*|
 |Kullanıcı adı|Azure SQL veritabanınız ile ilişkilendirilen Kullanıcı adı.|
 |Parola|Azure SQL veritabanınız ile ilişkilendirilen parola.|
 |Düzenli aralıklarla Yenile|Bu seçenek, yenileme ücreti seçmenizi sağlar. "Açık" seçilirse yenileme hızını gg: ss: dd olarak belirtmenize izin verirsiniz.|

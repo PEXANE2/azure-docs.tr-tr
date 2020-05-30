@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: c5d2ad481124f5ae048d010cdf632ee661bbd6ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f108c8b9d86a527764d2c7b8dddc6fb239b00d2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649116"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196259"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Yaygın Azure veritabanı geçiş hizmeti sorunlarını ve hatalarını giderme
 
@@ -32,7 +32,7 @@ Azure veritabanı geçiş hizmeti projesinde yeni etkinlikler oluşturduğunuzda
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>Geçiş için seçilen en fazla veritabanı sayısı
 
-Azure SQL veritabanı 'na veya Azure SQL veritabanı yönetilen örneğine geçmek üzere bir veritabanı geçiş projesi için etkinlik oluşturulurken aşağıdaki hata oluşur:
+Azure SQL veritabanı 'na veya Azure SQL yönetilen örneğine geçmek üzere veritabanı geçiş projesi için bir etkinlik oluşturulurken aşağıdaki hata oluşur:
 
 * **Hata**: geçiş ayarları doğrulama hatası "," ErrorDetail ":" en fazla ' 4 ' taneden fazla sayıda ' veritabanı ' nesnesi geçiş için seçildi. "
 
@@ -58,7 +58,7 @@ Azure veritabanı geçiş hizmeti örneğini durdururken şu hatayı alırsını
 
 | Nedeni         | Çözüm |
 | ------------- | ------------- |
-| Bu hata, durdurmaya çalıştığınız hizmet örneği, hala çalışmakta olan veya geçiş projelerinde bulunan etkinlikleri içerdiğinde görüntülenir. <br><br><br><br><br><br> | Durdurmaya çalıştığınız Azure veritabanı geçiş hizmeti örneğinde çalışan bir etkinlik bulunmadığından emin olun. Ayrıca, hizmeti durdurmayı denemeden önce etkinlikleri veya projeleri de silebilirsiniz. Aşağıdaki adımlarda, çalışan tüm görevleri silerek geçiş hizmeti örneğini temizlemek için projelerin nasıl kaldırılacağı gösterilmektedir:<br>1. Install-Module-Name Azurerd. DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName "\<subName>" <br> 4. Remove-AzureRmDataMigrationProject-Name \<ProjectName>-resourcegroupname \<RgName>-ServiceName \<ServiceName>-DeleteRunningTask |
+| Bu hata, durdurmaya çalıştığınız hizmet örneği, hala çalışmakta olan veya geçiş projelerinde bulunan etkinlikleri içerdiğinde görüntülenir. <br><br><br><br><br><br> | Durdurmaya çalıştığınız Azure veritabanı geçiş hizmeti örneğinde çalışan bir etkinlik bulunmadığından emin olun. Ayrıca, hizmeti durdurmayı denemeden önce etkinlikleri veya projeleri de silebilirsiniz. Aşağıdaki adımlarda, çalışan tüm görevleri silerek geçiş hizmeti örneğini temizlemek için projelerin nasıl kaldırılacağı gösterilmektedir:<br>1. Install-Module-Name Azurerd. DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName " \<subName> " <br> 4. Remove-AzureRmDataMigrationProject-Name \<projectName> -resourcegroupname \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti başlatılmaya çalışılırken hata oluştu
 
@@ -72,13 +72,13 @@ Azure veritabanı geçiş hizmeti örneğini başlatırken aşağıdaki hatayı 
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>SQL Azure SQL VERITABANı yönetilen örneği 'ne geçirilirken veritabanı geri yüklenirken hata oluştu
 
-Azure SQL veritabanı yönetilen örneğine SQL Server çevrimiçi geçiş gerçekleştirdiğinizde, tam geçişi aşağıdaki hatayla başarısız olur:
+SQL Server Azure SQL yönetilen örneği 'ne çevrimiçi geçiş gerçekleştirdiğinizde, tam geçişi aşağıdaki hatayla başarısız olur:
 
 * **Hata**: ' operationId ' işlem kimliği için geri yükleme işlemi başarısız oldu. ' AuthorizationFailed ' kodu, ' ObjectID ' nesne kimliğine sahip ' ClientID ' istemcisinin '/Subscriptions/SubscriptionID ' kapsamı üzerinde ' Microsoft. SQL/Locations/managedDatabaseRestoreAzureAsyncOperation/Read ' eylemini gerçekleştirme yetkisi yok.
 
 | Nedeni         | Çözüm    |
 | ------------- | ------------- |
-| Bu hata, SQL Server 'den bir Azure SQL veritabanı yönetilen örneğine çevrimiçi geçiş için kullanılan uygulama sorumlusunun, abonelik üzerinde katkıda bulunan iznine sahip olmadığını gösterir. Mevcut olan yönetilen örnekle bazı API çağrıları geri yükleme işlemi için abonelikte bu izni gerektirir. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Kullanılan uygulama `Get-AzureADServicePrincipal` kimliğinin görünen adını `-ObjectId` listelemek için hata iletisinden kullanılabilir PowerShell cmdlet 'ini kullanın.<br><br> Bu uygulama için izinleri doğrulayın ve abonelik düzeyinde [katkıda bulunan rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) sahip olduğundan emin olun. <br><br> Azure veritabanı geçiş hizmeti mühendislik ekibi, abonelik üzerindeki geçerli katkıda bulunma rolünden gerekli erişimi kısıtlamak için çalışmaktadır. Katkıda bulunma rolünün kullanılmasına izin veren bir iş gereksinimiyle karşılaşırsanız, ek yardım için Azure desteğine başvurun. |
+| Bu hata, SQL Server 'den SQL yönetilen örneğine çevrimiçi geçiş için kullanılan uygulama sorumlusunun, abonelik üzerinde katkıda bulunan iznine sahip olmadığını gösterir. Mevcut olan yönetilen örnekle bazı API çağrıları geri yükleme işlemi için abonelikte bu izni gerektirir. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | `Get-AzureADServicePrincipal` `-ObjectId` Kullanılan uygulama kimliğinin görünen adını listelemek için hata iletisinden kullanılabilir PowerShell cmdlet 'ini kullanın.<br><br> Bu uygulama için izinleri doğrulayın ve abonelik düzeyinde [katkıda bulunan rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) sahip olduğundan emin olun. <br><br> Azure veritabanı geçiş hizmeti mühendislik ekibi, abonelik üzerindeki geçerli katkıda bulunma rolünden gerekli erişimi kısıtlamak için çalışmaktadır. Katkıda bulunma rolünün kullanılmasına izin veren bir iş gereksinimiyle karşılaşırsanız, ek yardım için Azure desteğine başvurun. |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti ile ilişkili NIC silinirken hata oluştu
 

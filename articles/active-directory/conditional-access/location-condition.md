@@ -6,69 +6,74 @@ ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
 ms.workload: identity
-ms.date: 11/21/2019
+ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 781d8b89dd1b7fa6b2ed9707f6d4c485b4abdf20
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263237"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220673"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory konum koşulu nedir? 
+# <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Bir koşullu erişim ilkesinde konum koşulunu kullanma 
 
-[Azure Active Directory (Azure AD) koşullu erişimi](../active-directory-conditional-access-azure-portal.md)sayesinde, yetkili kullanıcıların bulut uygulamalarınıza nasıl erişebileceğini denetleyebilirsiniz. Koşullu erişim ilkesinin konum koşulu, erişim denetimleri ayarlarını kullanıcılarınızın ağ konumlarına bağlamamanızı sağlar.
+[Genel bakış makalesinde](overview.md) açıklandığı gibi, koşullu erişim ilkeleri en temel bir if-then deyimlerinin birleştirme sinyallerinde, kararlar almak ve kuruluş ilkelerini zorlamak için kullanılır. Karar verme işlemine dahil edilebilir sinyallerden biri ağ konumudur.
 
-Bu makale, konum koşulunu yapılandırmak için ihtiyacınız olan bilgileri sağlar.
+![Kavramsal koşullu sinyal ve zorlaması alma kararı](./media/location-condition/conditional-access-signal-decision-enforcement.png)
 
-## <a name="locations"></a>Konumlar
-
-Azure AD, cihazlar, uygulamalar ve hizmetler için genel İnternet 'te herhangi bir yerden çoklu oturum açma imkanı sağlar. Konum koşulu ile, bir kullanıcının ağ konumuna bağlı olarak bulut uygulamalarınıza erişimi kontrol edebilirsiniz. Konum koşulunun yaygın kullanım örnekleri şunlardır:
+Kuruluşlar, aşağıdaki gibi yaygın görevler için bu ağ konumunu kullanabilir: 
 
 - Şirket ağı kapalıyken bir hizmete erişen kullanıcılar için Multi-Factor Authentication gerektirme.
 - Belirli ülkelerden veya bölgelerden bir hizmete erişen kullanıcılar için erişimi engelleme.
 
-Konum, adlandırılmış bir konumu veya Multi-Factor Authentication güvenilen IP 'Leri temsil eden bir ağ konumunun etikettir.
+Ağ konumu, istemcinin Azure Active Directory için sağladığı genel IP adresi tarafından belirlenir. Koşullu erişim ilkeleri, varsayılan olarak tüm IPv4 ve IPv6 adresleri için geçerlidir. 
+
+> [!TIP]
+> IPV6 aralıkları yalnızca **[adlandırılmış konum (Önizleme)](#preview-features)** arabiriminde desteklenir. 
 
 ## <a name="named-locations"></a>Adlandırılmış konumlar
 
-Adlandırılmış konumlarla, IP adresi aralıkları veya ülkeler ve bölgeler için mantıksal gruplandırmaları oluşturabilirsiniz.
+Konumlar, **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişim**  >  **adlı konumlarda**Azure Portal belirlenir. Bu adlandırılmış ağ konumları, bir kuruluşun Yönetim Merkezi ağ aralıkları, VPN ağ aralıkları veya engellemek istediğiniz aralıklar gibi konumlar içerebilir. 
 
-Koşullu erişim sayfasının **Yönet** bölümünde, adlandırılmış konumlarınıza erişebilirsiniz.
+![Azure portal adlandırılmış konumlar](./media/location-condition/new-named-location.png)
 
-![Koşullu erişimde adlandırılmış konumlar](./media/location-condition/02.png)
-
-Adlandırılmış bir konum aşağıdaki bileşenlere sahiptir:
-
-![Yeni bir adlandırılmış konum oluştur](./media/location-condition/42.png)
-
-- **Ad** -adlandırılmış konumun görünen adı.
-- **IP aralıkları** -CIDR biçimindeki bir veya daha fazla IPv4 adresi aralığı. IPv6 adres aralığı belirtilmesi desteklenmez.
-
-   > [!NOTE]
-   > IPv6 adres aralıkları Şu anda adlandırılmış bir konuma dahil edilemez. Bu, IPv6 aralıklarının koşullu erişim ilkesinden dışlanmadığı anlamına gelir.
-
-- **Güvenilen konum olarak işaretle** -güvenilen bir konum göstermek için adlandırılmış bir konum için ayarlayabileceğiniz bayrak. Genellikle, güvenilen konumlar BT departmanınız tarafından denetlenen ağ alanlarıdır. Koşullu erişime ek olarak, güvenilir adlandırılmış konumlar da Azure kimlik koruması ve Azure AD güvenlik raporları tarafından [Hatalı pozitif](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)sonuçları azaltmak için kullanılır.
-- **Ülkeler/bölgeler** -Bu seçenek, adlandırılmış bir konum tanımlamak için bir veya daha fazla ülke veya bölge seçmenizi sağlar.
-- **Bilinmeyen bölgeleri dahil et** -bazı IP adresleri belirli bir ülkeye veya bölgeye eşlenmedi. Bu seçenek, bu IP adreslerinin adlandırılmış konuma dahil edilip edilmeyeceğini seçmenizi sağlar. Adlandırılmış konumu kullanan ilke bilinmeyen konumlara uygulanacaksa bu ayarı kullanın.
+Bir konum yapılandırmak için en az bir **ad** ve IP aralığı sağlamanız gerekir. 
 
 Yapılandırabileceğiniz adlandırılmış konumların sayısı, Azure AD 'de ilgili nesnenin boyutuyla sınırlıdır. Aşağıdaki sınırlamalara göre konumları yapılandırabilirsiniz:
 
-- En fazla 1200 IP aralığına sahip bir adlandırılmış konum.
+- En fazla 1200 IPv4 aralığına sahip bir adlandırılmış konum.
 - Her birine bir IP aralığı atanmış en fazla 90 adlandırılmış konum.
 
-Koşullu erişim ilkesi, IPv4 ve IPv6 trafiği için geçerlidir. Şu anda adlandırılmış konumlar IPv6 aralıklarının yapılandırılmasına izin vermez. Bu sınırlama aşağıdaki durumlara neden olur:
+> [!TIP]
+> IPV6 aralıkları yalnızca **[adlandırılmış konum (Önizleme)](#preview-features)** arabiriminde desteklenir. 
 
-- Koşullu erişim ilkesi belirli IPv6 aralıklarına hedeflenemez
-- Koşullu erişim ilkesi belirli ıPV6 aralıklarını dışlayamazsınız
+### <a name="trusted-locations"></a>Güvenilen konumlar
 
-Bir ilke "herhangi bir konum" için uygulanmak üzere yapılandırılmışsa, bu, IPv4 ve IPv6 trafiği için de geçerlidir. Belirtilen ülkeler ve bölgeler için yapılandırılmış adlandırılmış konumlar yalnızca IPv4 adreslerini destekler. IPv6 trafiği yalnızca "bilinmeyen alan Ekle" seçeneği belirlenmişse dahil edilir.
+Bir ağ konumu oluştururken, yöneticinin bir konumu güvenilir bir konum olarak işaretleme seçeneği vardır. 
 
-## <a name="trusted-ips"></a>Güvenilen IP'ler
+![Azure portal güvenilen konumlar](./media/location-condition/new-trusted-location.png)
+
+Bu seçenek, örneğin, güvenilir bir ağ konumundan Multi-Factor Authentication için kayıt gerekli kılmak üzere koşullu erişim ilkelerini etkileyebilir. Ayrıca, güvenilir olarak işaretlenmiş bir konumdan geldiği sırada kullanıcıların oturum açma riskini azaltmak için Azure AD Kimlik Koruması risk hesaplamasına da yönelik olarak da etken vardır.
+
+### <a name="countries-and-regions"></a>Ülkeler ve bölgeler
+
+Bazı kuruluşlar, tüm ülkelerin veya bölgelerin IP sınırlarının koşullu erişim ilkeleri için adlandırılmış konumlar olarak tanımlanması tercih edebilir. Bu konumlar, geçerli kullanıcıların, Kuzey Kore gibi bir konumdan hiçbir zaman gelmeyeceğinden gereksiz trafiği engellediği durumlarda bu konumları kullanabilirler. IP adresinin ülkeye olan bu eşlemeleri düzenli aralıklarla güncelleştirilir. 
+
+> [!NOTE]
+> Ülkeler IPv6 adres aralıklarını, yalnızca bilinen IPv4 adres aralıklarını içermez.
+
+![Azure portal yeni bir ülke veya bölge tabanlı konum oluşturma](./media/location-condition/new-named-location-country-region.png)
+
+#### <a name="include-unknown-areas"></a>Bilinmeyen alan ekle
+
+Bazı IP adresleri belirli bir ülkeye veya bölgeye eşlenmedi. Bu IP konumlarını yakalamak için, bir konum tanımlarken **bilinmeyen alanı dahil et** kutusunu işaretleyin. Bu seçenek, bu IP adreslerinin adlandırılmış konuma dahil edilip edilmeyeceğini seçmenizi sağlar. Adlandırılmış konumu kullanan ilke bilinmeyen konumlara uygulanacaksa bu ayarı kullanın.
+
+### <a name="configure-mfa-trusted-ips"></a>MFA güvenilir IP 'lerini yapılandırma
 
 Ayrıca, [Multi-Factor Authentication hizmeti ayarlarındaki](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)kuruluşunuzun yerel intranetinizi temsıl eden IP adresi aralıklarını yapılandırabilirsiniz. Bu özellik, en fazla 50 IP adresi aralığı yapılandırmanızı sağlar. IP adresi aralıkları CıDR biçimindedir. Daha fazla bilgi için bkz. [Güvenilen IP 'ler](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
@@ -83,19 +88,44 @@ Bu seçeneği denetledikten sonra, **MFA güvenilir IP 'leri** de dahil olmak ü
 Uzun süreli oturum yaşam süreleri olan mobil ve masaüstü uygulamalarında, koşullu erişim düzenli aralıklarla yeniden değerlendirilecektir. Varsayılan değer bir saattir. Şirket içi ağ talebi yalnızca ilk kimlik doğrulama sırasında verildiğinde, Azure AD 'nin güvenilir IP aralıkları listesi olmayabilir. Bu durumda, kullanıcının hala şirket ağında olup olmadığını belirlemek daha zordur:
 
 1. Kullanıcının IP adresinin güvenilir IP aralıklarından birinde olup olmadığını denetleyin.
-2. Kullanıcının IP adresinin ilk üç sekizlinin ilk kimlik doğrulamanın IP adresinin ilk üç sekizlisi ile eşleşip eşleşmediğini denetleyin. Şirket içi ağ talebi ilk yayımlandığında ve Kullanıcı konumu doğrulandığında, IP adresi ilk kimlik doğrulamasıyla karşılaştırılır.
+1. Kullanıcının IP adresinin ilk üç sekizlinin ilk kimlik doğrulamanın IP adresinin ilk üç sekizlisi ile eşleşip eşleşmediğini denetleyin. Şirket içi ağ talebi ilk yayımlandığında ve Kullanıcı konumu doğrulandığında, IP adresi ilk kimlik doğrulamasıyla karşılaştırılır.
 
 Her iki adım da başarısız olursa, kullanıcının artık güvenilen bir IP 'de olmaması kabul edilir.
 
-## <a name="location-condition-configuration"></a>Konum koşulu yapılandırması
+## <a name="preview-features"></a>Önizleme özellikleri
+
+Genel olarak kullanılabilir adlandırılmış konum özelliğine ek olarak, adlandırılmış bir konum (Önizleme) de vardır. Adlandırılmış Konum önizlemesine, geçerli adlı konum dikey penceresinin en üstündeki başlığı kullanarak erişebilirsiniz.
+
+![Adlandırılmış konumlar önizlemesini deneyin](./media/location-condition/preview-features.png)
+
+Adlandırılmış Konum önizlemesi sayesinde,
+
+- En fazla 195 adlandırılmış konum yapılandırın
+- Adlandırılmış Konum başına en fazla 2000 IP aralığı yapılandırın
+- IPv6 adreslerini yapılandırma
+
+Yanlış yapılandırmanın değiştirilmesini azaltmaya yardımcı olmak için bazı ek denetimler de ekledik.
+
+- Özel IP aralıkları artık yapılandırılamaz
+- Bir aralığa dahil edilebilir IP adresi sayısı sınırlıdır. Bir IP aralığı yapılandırılırken yalnızca/8 ' den büyük CıDR maskelerine izin verilir.
+
+Önizleme ile, artık iki oluşturma seçeneği vardır: 
+
+- **Ülke konumu**
+- **IP aralıkları konumu**
+
+> [!NOTE]
+> Ülkeler IPv6 adres aralıklarını, yalnızca bilinen IPv4 adres aralıklarını içermez.
+
+![Adlandırılmış konumlar önizleme arabirimi](./media/location-condition/named-location-preview.png)
+
+## <a name="location-condition-in-policy"></a>İlkede konum koşulu
 
 Konum koşulunu yapılandırırken şunları ayırt etme seçeneğiniz vardır:
 
 - Herhangi bir konum
 - Tüm güvenilen konumlar
 - Seçili konumlar
-
-![Konum koşulu yapılandırması](./media/location-condition/01.png)
 
 ### <a name="any-location"></a>Herhangi bir konum
 
@@ -129,12 +159,9 @@ Varsayılan olarak, Azure AD, saatlik olarak bir belirteç yayınlar. Şirket a�
 
 İlke değerlendirmesinde kullanılan IP adresi, kullanıcının genel IP adresidir. Özel bir ağdaki cihazlar için, bu IP adresi intranetteki Kullanıcı cihazının istemci IP 'si değildir, ağ tarafından genel İnternet 'e bağlanmak için kullanılan adrestir.
 
-> [!WARNING]
-> Cihazınızın yalnızca bir IPv6 adresi varsa, konum koşulunu yapılandırmak desteklenmez.
-
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Adlandırılmış konumların toplu karşıya yüklenmesi ve indirilmesi
 
-Adlandırılmış konumları oluştururken veya güncelleştirdiğinizde, toplu güncelleştirmeler için IP aralıklarıyla bir CSV dosyasını karşıya yükleyebilir veya indirebilirsiniz. Karşıya yükleme, listedeki IP aralıklarını, dosyadaki dosyalarla değiştirir. Dosyanın her satırı CıDR biçiminde bir IP adresi aralığı içerir.
+Adlandırılmış konumları oluştururken veya güncelleştirdiğinizde, toplu güncelleştirmeler için IP aralıklarıyla bir CSV dosyasını karşıya yükleyebilir veya indirebilirsiniz. Karşıya yükleme, listedeki IP aralıklarını, dosyadaki aralıklar ile değiştirir. Dosyanın her satırı CıDR biçiminde bir IP adresi aralığı içerir.
 
 ### <a name="cloud-proxies-and-vpns"></a>Bulut proxy 'leri ve VPN 'Ler
 
@@ -144,9 +171,9 @@ Bir bulut proxy 'si olduğunda, etki alanına katılmış bir cihaz istemek içi
 
 ### <a name="api-support-and-powershell"></a>API desteği ve PowerShell
 
-API ve PowerShell, adlandırılmış konumlar veya koşullu erişim ilkeleri için henüz desteklenmiyor.
+API ve PowerShell, adlandırılmış konumlar için henüz desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek isterseniz bkz. [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](app-based-mfa.md).
-- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [Azure Active Directory Koşullu erişim için en iyi yöntemlere](best-practices.md)bakın.
+- Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek isterseniz, [koşullu erişim Ilkesi oluşturma](concept-conditional-access-policies.md)makalesine bakın.
+- Konum koşulunu kullanarak örnek bir ilke mi arıyorsunuz? [Koşullu erişim: konuma göre erişimi engelleme](howto-conditional-access-policy-location.md) makalesine bakın

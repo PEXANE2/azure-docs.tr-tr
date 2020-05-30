@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: f4bec780fcf40b4fbee7ccf6c59463a5efb1adc0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 73f0a733d4f32042e5ea3439282f88db0c065433
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048780"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188706"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Veri eşitleme, bir eşitleme grubu kavramını temel alarak. Eşitleme grubu, e
 Veri eşitleme, verileri eşitlemek için bir hub ve bağlı bileşen topolojisi kullanır. Eşitleme grubundaki veritabanlarından birini hub veritabanı olarak tanımlarsınız. Veritabanlarının geri kalanı üye veritabanlarıdır. Eşitleme yalnızca Hub ve bireysel Üyeler arasında gerçekleşir.
 
 - **Merkez veritabanı** BIR Azure SQL veritabanı olmalıdır.
-- **Üye veritabanları** Azure SQL veritabanı, şirket içi SQL Server veritabanları ya da Azure sanal makinelerinde SQL Server örnekleri olabilir.
+- **Üye veritabanları** , Azure SQL veritabanı 'nda ya da SQL Server örneklerinde veritabanları olabilir.
 - **Eşitleme veritabanı** , veri eşitleme için meta verileri ve günlüğü içerir. Eşitleme veritabanı, hub veritabanıyla aynı bölgede bulunan bir Azure SQL veritabanı olmalıdır. Eşitleme veritabanı müşteri tarafından oluşturulur ve müşterinin sahibi olur.
 
 > [!NOTE]
@@ -64,7 +64,7 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 | Olağanüstü Durum Kurtarma | [Azure coğrafi olarak yedekli yedeklemeler](automated-backups-overview.md) |
 | Ölçeği oku | [Salt okunurdur ve salt okuma sorgu iş yüklerinin yükünü dengelemek için salt okuma çoğaltmaları kullanın (Önizleme)](read-scale-out.md) |
 | ETL (OLTP-OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) veya [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| Şirket içi SQL Server Azure SQL veritabanı 'na geçiş | [Azure Veritabanı Geçiş Hizmeti](https://azure.microsoft.com/services/database-migration/) |
+| SQL Server 'den Azure SQL veritabanı 'na geçiş | [Azure Veritabanı Geçiş Hizmeti](https://azure.microsoft.com/services/database-migration/) |
 |||
 
 
@@ -184,9 +184,9 @@ SQL Data Sync tüm bölgelerde kullanılabilir.
 
 Evet. Hub veritabanını barındırmak için bir SQL veritabanı hesabınızın olması gerekir.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Yalnızca şirket içi SQL Server veritabanları arasında eşitleme yapmak için veri eşitlemeyi kullanabilir miyim
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-databases-only"></a>Yalnızca SQL Server veritabanları arasında eşitleme yapmak için veri eşitlemeyi kullanabilir miyim
 
-Doğrudan değil. Azure 'da bir hub veritabanı oluşturup daha sonra şirket içi veritabanlarını eşitleme grubuna ekleyerek şirket içi veritabanlarını dolaylı olarak SQL Server eşitleyebilirsiniz.
+Doğrudan değil. Ancak, Azure 'da bir hub veritabanı oluşturup sonra şirket içi veritabanlarını eşitleme grubuna ekleyerek SQL Server veritabanları arasında dolaylı olarak eşitleme yapabilirsiniz.
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Farklı aboneliklere ait olan SQL veritabanları arasında eşitleme yapmak için veri eşitleme kullanabilir miyim
 

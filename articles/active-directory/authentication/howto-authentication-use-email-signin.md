@@ -10,24 +10,24 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: ed317039e683ef36054d5ace612e09ca75dfa11e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9a02a01bb55e63322964b52a5f4d6113b3280360
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837391"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220714"
 ---
-# <a name="sign-in-to-azure-using-email-as-an-alternate-login-id-preview"></a>Alternatif oturum açma KIMLIĞI (Önizleme) olarak e-posta kullanarak Azure 'da oturum açın
+# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Alternatif oturum açma KIMLIĞI (Önizleme) olarak e-posta kullanarak Azure Active Directory için oturum açın
 
-Birçok kuruluş, kullanıcıların şirket içi dizin ortamıyla aynı kimlik bilgilerini kullanarak Azure 'da oturum açmalarına izin vermek ister. Karma kimlik doğrulaması olarak bilinen bu yaklaşım sayesinde, kullanıcıların yalnızca bir kimlik bilgileri kümesini hatırlamaları gerekir.
+Birçok kuruluş, kullanıcıların şirket içi dizin ortamıyla aynı kimlik bilgilerini kullanarak Azure Active Directory (Azure AD) üzerinde oturum açmalarına izin vermek ister. Karma kimlik doğrulaması olarak bilinen bu yaklaşım sayesinde, kullanıcıların yalnızca bir kimlik bilgileri kümesini hatırlamaları gerekir.
 
 Bazı kuruluşlar aşağıdaki nedenlerden dolayı karma kimlik doğrulamasına taşınmadı:
 
-* Varsayılan olarak, Azure Active Directory (Azure AD) Kullanıcı asıl adı (UPN) Şirket içi dizinle aynı UPN 'ye ayarlanır.
-* Azure AD UPN 'nin değiştirilmesi, şirket içi ve Azure ortamları arasında, belirli uygulama ve hizmetlerle ilgili sorunlara neden olabilecek bir eşleşmeyen eşleşme oluşturur.
-* İşletme veya uyumluluk nedeniyle, kuruluş Azure 'da oturum açmak için şirket içi UPN 'yi kullanmak istemiyor.
+* Varsayılan olarak, Azure AD Kullanıcı asıl adı (UPN) Şirket içi dizinle aynı UPN 'ye ayarlanır.
+* Azure AD UPN 'nin değiştirilmesi, şirket içi ve Azure AD ortamları arasında, belirli uygulama ve hizmetlerle ilgili sorunlara neden olabilecek bir eşleşmeyen eşleşme oluşturur.
+* İşletme veya uyumluluk nedenlerinden dolayı kuruluş, Azure AD 'de oturum açmak için şirket içi UPN 'yi kullanmak istemiyor.
 
-Karma kimlik doğrulamasına taşımaya yardımcı olması için artık Azure AD 'yi, kullanıcıların doğrulanmış etki alanındaki bir e-posta ile farklı bir oturum açma KIMLIĞI olarak Azure 'da oturum açmalarına olanak verecek şekilde yapılandırabilirsiniz. Örneğin, *contoso* , eski UPN ile oturum açmaya devam etmek yerine *fabrikam*'a yeniden markalı ise, `balas@contoso.com` alternatif bir oturum açma kimliği olarak e-posta artık kullanılabilir. Bir uygulamaya veya hizmetlere erişmek için, kullanıcılar, kendi atanmış e-postalarını kullanarak Azure 'da oturum açabilirler `balas@fabrikam.com` .
+Karma kimlik doğrulamasına taşımaya yardımcı olması için artık Azure AD 'yi yapılandırarak kullanıcıların doğrulanmış etki alanındaki bir e-posta ile farklı bir oturum açma KIMLIĞI olarak oturum açmasını sağlayabilirsiniz. Örneğin, *contoso* , eski UPN ile oturum açmaya devam etmek yerine *fabrikam*'a yeniden markalı ise, `balas@contoso.com` alternatif bir oturum açma kimliği olarak e-posta artık kullanılabilir. Bir uygulamaya veya hizmetlere erişmek için kullanıcılar, atanmış e-postalarını kullanarak Azure AD 'de oturum açabilirler `balas@fabrikam.com` .
 
 |     |
 | --- |
@@ -36,17 +36,15 @@ Karma kimlik doğrulamasına taşımaya yardımcı olması için artık Azure AD
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD oturum açma yaklaşımlarına genel bakış
 
-Kullanıcı asıl adları (UPN), hem şirket içi dizininizde hem de Azure AD 'de bir kullanıcı hesabı için benzersiz tanımlayıcılardır. Dizindeki her kullanıcı hesabı, gibi bir UPN ile temsil edilir `balas@contoso.com` . Varsayılan olarak, Azure AD ile şirket içi Active Directory Domain Services (AD DS) bir ortamı eşitlediğinizde Azure AD UPN, şirket içi UPN ile eşleşecek şekilde ayarlanmıştır.
+Azure AD 'de oturum açmak için kullanıcılar hesabını benzersiz şekilde tanımlayan bir ad girer. Tarihsel olarak, Azure AD UPN 'yi yalnızca oturum açma adı olarak kullanabilirsiniz.
 
-Birçok kuruluşta, şirket içi UPN ve Azure AD UPN 'yi eşleşecek şekilde ayarlamak iyi bir hale gelir. Kullanıcılar Azure uygulamalarında ve hizmetlerinde oturum açtıklarında, Azure AD UPN 'sini kullanırlar. Bununla birlikte, bazı kuruluşlar iş ilkeleri veya Kullanıcı deneyimi sorunları nedeniyle oturum açmak için eşleşen UPN 'leri kullanamaz.
+Şirket içi UPN 'nin kullanıcının tercih ettiği oturum açma e-postası olduğu kuruluşlarda bu yaklaşım harika. Bu kuruluşlar, Azure AD UPN 'yi şirket içi UPN ile tam aynı değere ayarlar ve kullanıcıların tutarlı bir oturum açma deneyimi vardır.
 
-Azure AD 'de eşleşen UPN 'leri kullanmıyorum kuruluşların birkaç seçeneği vardır:
+Ancak, bazı kuruluşlarda şirket içi UPN, oturum açma adı olarak kullanılmaz. Şirket içi ortamlarda, yerel AD DS alternatif bir oturum açma KIMLIĞIYLE oturum açmaya izin verecek şekilde yapılandırırsınız. Azure AD UPN 'yi şirket içi UPN ile aynı değere ayarlamak, daha sonra kullanıcıların bu değerle oturum açmasını gerektirirken bir seçenek değildir.
 
-* Bir yaklaşım, Azure AD UPN 'yi, gibi iş gereksinimlerine göre farklı bir şeye ayarlamaya yönelik bir yaklaşımdır `balas@fabrikam.com` .
-    * Ancak, tüm uygulama ve hizmetler, şirket içi UPN ve Azure AD UPN için farklı bir değer kullanımıyla uyumlu değildir.
-* Daha iyi bir yaklaşım, Azure AD ve şirket içi UPN 'nin aynı değere ayarlandığından emin olunması ve Azure AD 'yi yapılandırarak kullanıcıların, diğer bir oturum açma KIMLIĞI olarak e-postalarıyla Azure 'da oturum açmalarına olanak tanır.
+Bu sorunun tipik geçici çözümü, Azure AD UPN 'yi kullanıcının oturum açmasını beklediği e-posta adresine ayarlamaya yönelik bir çözümdür. Bu yaklaşım işe yarar, ancak şirket içi AD ile Azure AD arasında farklı UPN 'ler ile sonuçlanır ve bu yapılandırma tüm Microsoft 365 iş yükleri ile uyumlu değildir.
 
-Alternatif bir oturum açma kimliği olarak, kullanıcılar, UPN 'sini girerek Azure 'da oturum açabilirler, ancak e-postalarını kullanarak da oturum açabilirler. Bunu desteklemek için, kullanıcının şirket içi dizinindeki *proxyAddresses* özniteliğinde bir e-posta adresi tanımlarsınız. Bu *ProxyAddress* özniteliği bir veya daha fazla e-posta adresini destekler.
+Farklı bir yaklaşım, Azure AD ve şirket içi UPN 'leri aynı değere eşitler ve ardından Azure AD 'yi, kullanıcıların Azure AD 'de doğrulanmış bir e-posta ile oturum açmalarına izin verecek şekilde yapılandırır. Bu özelliği sağlamak için, kullanıcının şirket içi dizinindeki *proxyAddresses* özniteliğinde bir veya daha fazla e-posta adresi tanımlarsınız. *ProxyAddresses* daha sonra Azure AD Connect KULLANıLARAK Azure AD ile otomatik olarak eşitlenir.
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>Oturum açma e-posta adreslerini Azure AD ile eşitlemeyi
 

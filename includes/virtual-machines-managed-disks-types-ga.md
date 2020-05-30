@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6740ea320f2d950386da12eb44726e2c826b60a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d263a1fb329f5a18fec760413300296643768c1d
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80386105"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200418"
 ---
 ## <a name="premium-ssd"></a>Premium SSD
 
@@ -70,6 +70,6 @@ Yönetilen diskler kullanılırken, aşağıdaki faturalandırma konuları geçe
 - Giden veri aktarımları
 - İşlem sayısı
 
-**Yönetilen disk boyutu**: yönetilen diskler sağlanan boyutta faturalandırılır. Azure sağlanan boyutu (yuvarlanır) en yakın sunulan disk boyutuna eşler. Sunulan disk boyutlarının ayrıntıları için bkz. önceki tablolar. Her disk desteklenen bir sağlanan disk boyutu teklifiyle eşlenir ve buna göre faturalandırılır. Örneğin, bir 200 GiB Standart SSD sağladıysanız, E15 (256 GiB) disk boyutu teklifiyle eşlenir. Sağlanan tüm diskler için faturalandırma, Premium Depolama teklifi için aylık fiyat kullanılarak günlere eşit olarak dağıtılır. Örneğin, bir E10 diski sağladıysanız ve 20 saat sonra sildiyseniz, E10 teklifi için 20 saate göre faturalandırılırsınız. Bu, diske yazılan gerçek veri miktarına bakılmaksızın olur.
+**Yönetilen disk boyutu**: yönetilen diskler sağlanan boyutta faturalandırılır. Azure sağlanan boyutu (yuvarlanır) en yakın sunulan disk boyutuna eşler. Sunulan disk boyutlarının ayrıntıları için bkz. önceki tablolar. Her disk desteklenen bir sağlanan disk boyutu teklifiyle eşlenir ve buna göre faturalandırılır. Örneğin, bir 200 GiB Standart SSD sağladıysanız, E15 (256 GiB) disk boyutu teklifiyle eşlenir. Sağlanan tüm diskler için faturalandırma, depolama teklifi için aylık fiyat kullanılarak günlere eşit olarak dağıtılır. Örneğin, bir E10 diski sağladıysanız ve 20 saat sonra sildiyseniz, E10 teklifi için 20 saate göre faturalandırılırsınız. Bu, diske yazılan gerçek veri miktarına bakılmaksızın olur.
 
 **Anlık görüntüler**: anlık görüntüler kullanılan boyuta göre faturalandırılır. Örneğin, sağlanan 64 GiB kapasitesine sahip bir yönetilen diskin anlık görüntüsünü ve 10 GiB 'nin gerçek kullanılan veri boyutunu oluşturursanız, anlık görüntü yalnızca 10 GiB 'nin kullanılan veri boyutu için faturalandırılır.

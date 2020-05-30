@@ -2,14 +2,14 @@
 title: Geliştiriciler için API 'Ler ve araçlar
 description: Azure Batch hizmeti ile çözüm geliştirmek için kullanılabilen API’ler ve araçlar hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 05/22/2010
+ms.date: 05/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: cd87419cd8c389be861cb88071884f8da1c3c1a3
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: c05ab55f087710028f51231aec6094b350aface2
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870592"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220361"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API'lerine ve araçlarına genel bakış
 
@@ -41,7 +41,7 @@ Etkinlik günlüğünde yalnızca yönetim API 'Lerine ait eylemler izlenir. Hiz
 
 Uygulamalarınız ve hizmetleriniz doğrudan REST API çağrıları kullanabilir veya Azure Batch iş yüklerinizi çalıştırmak ya da yönetmek için aşağıdaki istemci kitaplıklardan birini veya daha fazlasını kullanabilir.
 
-| API | API başvurusu | İndir | Öğretici | Kod örnekleri | Daha Fazla Bilgi |
+| API | API başvurusu | İndirme | Öğretici | Kod örnekleri | Daha Fazla Bilgi |
 | --- | --- | --- | --- | --- | --- |
 | **Batch REST** |[docs.microsoft.com](https://docs.microsoft.com/rest/api/batchservice/) |Yok |- |- | [Desteklenen sürümler](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Batch/) |[Öğretici](tutorial-parallel-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) | [Sürüm notları](https://aka.ms/batch-net-dataplane-changelog) |
@@ -53,7 +53,7 @@ Uygulamalarınız ve hizmetleriniz doğrudan REST API çağrıları kullanabilir
 
 Batch için Azure Resource Manager API'leri, Batch hesaplarına programlı erişim sağlar. Bu API’leri kullanarak Batch hesaplarını, kotaları, uygulama paketlerini ve diğer kaynakları Microsoft.Batch sağlayıcısı üzerinden programlı bir şekilde yönetebilirsiniz.  
 
-| API | API başvurusu | İndir | Öğretici | Kod örnekleri |
+| API | API başvurusu | İndirme | Öğretici | Kod örnekleri |
 | --- | --- | --- | --- | --- |
 | **Batch Yönetimi REST** |[docs.microsoft.com](https://docs.microsoft.com/rest/api/batchmanagement/) |- |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Batch Yönetimi .NET** |[docs.microsoft.com](https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/) | [Öğretici](batch-management-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) |

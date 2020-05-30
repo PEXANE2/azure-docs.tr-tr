@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
-ms.openlocfilehash: dd3e77610749eb5d146b0c0b7cf9d307fba0dd83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e63f073c4f7166cd205b85ef06589f6056b2a70f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79370245"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195684"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Hızlı başlangıç: Azure portal & Azure veritabanı geçiş hizmeti ile karma mod örneği oluşturma
 
@@ -26,7 +26,7 @@ Azure veritabanı geçiş hizmeti karma modu, bulutta çalışan bir Azure verit
 >[!NOTE]
 >Şu anda, karma modda çalışan Azure veritabanı geçiş hizmeti, ' ye SQL Server geçişleri destekler:
 >
->- Neredeyse sıfır kapalı kalma süresi (çevrimiçi) olan Azure SQL veritabanı yönetilen örneği.
+>- Neredeyse sıfır kapalı kalma süresi (çevrimiçi) olan Azure SQL yönetilen örneği.
 >- Azure SQL veritabanı 'nın bazı kapalı kalma süresi (çevrimdışı) ile tek veritabanı.
 >- Neredeyse sıfır kapalı kalma süresi (çevrimiçi) ile Azure CosmosDB 'ye MongoDb.
 >- MongoDb, bazı kapalı kalma süresi (çevrimdışı) ile Azure CosmosDB 'ye.
@@ -191,5 +191,5 @@ Komut dosyasının en üstündeki parametreleri doldurup bir yönetici PowerShel
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [SQL Server Azure SQL veritabanı yönetilen örneği 'ne geçirme çevrimiçi](tutorial-sql-server-managed-instance-online.md)
-> [geçiş SQL Server Azure SQL veritabanı 'nın çevrimdışı olduğu tek bir veritabanına veya havuza alınmış veritabanına geçirme](tutorial-sql-server-to-azure-sql.md)
+> [SQL Server çevrimiçi](tutorial-sql-server-managed-instance-online.md) 
+>  olarak Azure SQL yönetilen örneğine geçirme [SQL Server Azure SQL veritabanı 'na çevrimdışı geçirme](tutorial-sql-server-to-azure-sql.md)

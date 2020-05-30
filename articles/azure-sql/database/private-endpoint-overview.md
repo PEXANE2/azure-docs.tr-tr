@@ -9,17 +9,17 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 302a755dc32ad36e214ba4982a03da126f6aed04
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e1093e57757d780bf5393b6cb1bb45a706b18b11
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054668"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219873"
 ---
 # <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için özel bağlantı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Özel bağlantı, Azure 'daki çeşitli PaaS hizmetlerine **özel bir uç nokta**aracılığıyla bağlanmanızı sağlar. Özel bağlantı işlevselliğini destekleyen PaaS hizmetlerinin bir listesi için [özel bağlantı belgeleri](../index.yml) sayfasına gidin. Özel uç nokta, belirli bir [sanal](../../virtual-network/virtual-networks-overview.md) ağ ve alt ağ içindeki özel bir IP adresidir.
+Özel bağlantı, Azure 'daki çeşitli PaaS hizmetlerine **özel bir uç nokta**aracılığıyla bağlanmanızı sağlar. Özel bağlantı işlevselliğini destekleyen PaaS hizmetlerinin bir listesi için [özel bağlantı belgeleri](../../private-link/index.yml) sayfasına gidin. Özel uç nokta, belirli bir [sanal](../../virtual-network/virtual-networks-overview.md) ağ ve alt ağ içindeki özel bir IP adresidir.
 
 > [!IMPORTANT]
 > Bu makale hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için geçerlidir. Basitlik için, ' Database ' terimi, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına başvurur. Benzer şekilde, ' Server ' öğesine yapılan tüm başvurular, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i barındıran [MANTıKSAL SQL Server](logical-servers.md) 'a başvurmaktadır. Bu *Makale,* **Azure SQL yönetilen örneği**için geçerlidir.

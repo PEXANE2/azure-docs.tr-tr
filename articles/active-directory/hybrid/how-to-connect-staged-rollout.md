@@ -6,20 +6,20 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbe76fb18e33efaa161d2e2b488b48fa5c8580d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 886a25fbf78f6071db55c02517621146b507f4ac
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644161"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221286"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
-Hazırlanmış bir dağıtım yaklaşımı kullanarak, federal kimlik doğrulamasından bulut kimlik doğrulamasına geçiş yapabilirsiniz. Bu makalede, anahtarın nasıl yapılacağı açıklanır. Ancak, hazırlanan piyasaya başlamadan önce, aşağıdaki koşullardan biri veya daha fazlası doğru olduğunda etkilerini göz önünde bulundurmanız gerekir:
+Hazırlanmış bir dağıtım yaklaşımı kullanarak, tüm etki alanınızı kullanmaktan kaçınabilirsiniz.  Bu, Azure Multi-Factor Authentication (MFA), koşullu erişim, sızdırılan kimlik bilgileri için kimlik koruması, kimlik yönetimi ve diğerleri gibi bulut kimlik doğrulama özelliklerine sahip kullanıcı gruplarını seçmeli olarak test etmenize olanak tanır.  Bu makalede, anahtarın nasıl yapılacağı açıklanır. Ancak, hazırlanan piyasaya başlamadan önce, aşağıdaki koşullardan biri veya daha fazlası doğru olduğunda etkilerini göz önünde bulundurmanız gerekir:
     
 -  Şu anda bir şirket içi Multi-Factor Authentication sunucusu kullanıyorsunuz. 
 -  Kimlik doğrulaması için akıllı kartlar kullanıyorsunuz. 
@@ -33,13 +33,13 @@ Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavu
 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 -   Federasyon etki alanları içeren bir Azure Active Directory (Azure AD) kiracınız vardır.
 
 -   İki seçenekten birine taşımaya karar verdiniz:
-    - **Seçenek A**  -  *Parola karması eşitleme (eşitleme)*  +  *kesintisiz çoklu oturum açma (SSO)*
-    - **Seçenek B**  -  *geçişli kimlik doğrulaması*  +  *sorunsuz SSO*
+    - **Seçenek A**  -  *Parola karması eşitleme (eşitleme)*  +  *sorunsuz çoklu oturum açma (SSO)*.  Daha fazla bilgi için bkz. [Parola karması eşitleme](whatis-phs.md) nedir ve [sorunsuz SSO nedir?](how-to-connect-sso.md)
+    - **Seçenek B**  -  *geçişli kimlik doğrulaması*  +  *sorunsuz SSO*.  Daha fazla bilgi için bkz. [doğrudan kimlik doğrulama nedir](how-to-connect-pta.md)  
     
     *Kusursuz SSO* isteğe bağlı olsa da, bir kurumsal ağın içinden etki alanına katılmış makineler çalıştıran kullanıcılar için sessiz oturum açma deneyimi elde etmenizi öneririz.
 
@@ -76,12 +76,14 @@ Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
     - Dinamik Gruplar, hazırlanan dağıtım için *desteklenmez* .
     - Grup içindeki kişi nesneleri grubun eklenmesini engeller.
 
-- Azure AD Connect veya PowerShell kullanarak, Federasyon kimlik doğrulamasından en son tam geçişi ' i yine de yapmanız gerekir. Hazırlanan dağıtım etki alanlarını federe 'dan yönetilene geçmez.
+- Azure AD Connect veya PowerShell kullanarak, Federasyon kimlik doğrulamasından en son tam geçişi ' i yine de yapmanız gerekir. Hazırlanan dağıtım etki alanlarını federe 'dan yönetilene geçmez.  Etki alanı cutover hakkında daha fazla bilgi için bkz. [Federasyon 'dan Parola karması eşitlemesine geçiş](plan-migrate-adfs-password-hash-sync.md) ve [Federasyondan geçişli kimlik doğrulamasına geçirme](plan-migrate-adfs-pass-through-authentication.md)
+
+
 
 - Hazırlanmış dağıtım için ilk olarak bir güvenlik grubu eklediğinizde, bir UX zaman aşımını önlemek için 200 kullanıcıyla sınırlı olursunuz. Grubu ekledikten sonra, gerektiğinde doğrudan buna daha fazla kullanıcı ekleyebilirsiniz.
 
 >[!NOTE]
-> Kiracı uç noktaları, oturum açma ipuçları göndermediğinden, hazırlanan dağıtım için desteklenmez.  SAML uygulamaları kiralanan uç noktaları kullanır ve ayrıca, hazırlanan dağıtım için de destek vermez.
+> Kiracı uç noktaları, oturum açma ipuçları göndermediğinden, hazırlanan dağıtım için desteklenmez. 
 
 ## <a name="get-started-with-staged-rollout"></a>Hazırlanan piyasaya çıkma ile çalışmaya başlama
 

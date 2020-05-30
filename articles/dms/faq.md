@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3383a16624ecf045753609865931f9d0c44b6b3f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650990"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196583"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS
 
@@ -49,7 +49,7 @@ Azure veritabanı geçiş hizmeti 'ni kullanarak çevrimdışı ve çevrimiçi g
 Azure veritabanı geçiş hizmeti, veritabanı geçişinin ölçeğe Microsoft Azure için tercih edilen yöntemdir. Azure veritabanı geçiş hizmeti 'nin diğer Microsoft veritabanı geçiş araçlarıyla nasıl Karşılaştırıldığı hakkında daha fazla bilgi için ve hizmeti çeşitli senaryolar için kullanmayla ilgili öneriler için, [Microsoft 'un veritabanı geçiş araçları ve Hizmetleri 'Ni farklılaştırmayı](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)açıklayan blog gönderisine bakın.
 
 **S. Azure veritabanı geçiş hizmeti Azure geçiş teklifiyle nasıl karşılaştırılmaktadır?**
-Azure geçişi, şirket içi sanal makinelerin Azure IaaS 'ye geçişine yardımcı olur. Service değerlendirir geçiş uygunluğu ve performans tabanlı boyutlandırma, şirket içi sanal makinelerinizi Azure 'da çalıştırmaya yönelik maliyet tahminleri sağlar. Azure geçişi, şirket içi VM tabanlı iş yüklerinin Azure IaaS VM 'lerine geçiş ve kaydırma geçişleri için yararlıdır. Ancak, Azure veritabanı geçiş hizmeti 'nin aksine Azure geçişi, Azure SQL veritabanı veya Azure SQL veritabanı yönetilen örneği gibi Azure PaaS ilişkisel veritabanı platformları için özel bir veritabanı geçiş hizmeti teklifi değildir.
+Azure geçişi, şirket içi sanal makinelerin Azure IaaS 'ye geçişine yardımcı olur. Service değerlendirir geçiş uygunluğu ve performans tabanlı boyutlandırma, şirket içi sanal makinelerinizi Azure 'da çalıştırmaya yönelik maliyet tahminleri sağlar. Azure geçişi, şirket içi VM tabanlı iş yüklerinin Azure IaaS VM 'lerine geçiş ve kaydırma geçişleri için yararlıdır. Ancak, Azure veritabanı geçiş hizmeti 'nin aksine Azure geçişi, Azure SQL veritabanı veya Azure SQL yönetilen örneği gibi Azure PaaS ilişkisel veritabanı platformları için özel bir veritabanı geçiş hizmeti teklifi değildir.
 
 ## <a name="setup"></a>Kurulum
 

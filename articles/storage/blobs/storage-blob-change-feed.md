@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 4287bd766d73d7fae42aec54950ad5a3f09b5ba3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bf22e10bc0a4b969c41d4a377ddba7fcadd9c147
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120428"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193389"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada akış desteğini değiştirme (Önizleme)
 
@@ -37,7 +37,7 @@ Değişiklik akışı desteği, değiştirilen nesnelere göre verileri işleyen
 
   - Oluşturulan veya değiştirilen nesneye göre değişiklik olaylarına tepki veren veya yürütmeleri zamanlamaya dayalı bağlantılı uygulama işlem hatları oluşturun.
   
-Değişiklik akışı, [blok Blobları Için noktadan noktaya geri yükleme](point-in-time-restore-overview.md)için bir önkoşul özelliğidir.
+Değişiklik akışı, [nesne çoğaltma](object-replication-overview.md) ve [blok Blobları için noktadan noktaya geri yükleme](point-in-time-restore-overview.md)için bir önkoşul özelliğidir.
 
 > [!NOTE]
 > Değişiklik akışı, blob 'a gerçekleşen değişikliklerin dayanıklı ve sıralı bir günlük modelini sağlar. Değişiklikler yazılır ve değişiklik akışı günlüğünde değişiklik için birkaç dakika içinde kullanılabilir hale getirilir. Uygulamanızın olaylara çok daha hızlı yanıt vermesini istiyorsanız, bunun yerine [BLOB Storage olaylarını](storage-blob-event-overview.md) kullanmayı göz önünde bulundurun. [BLOB depolama olayları](storage-blob-event-overview.md) , Azure işlevlerinizin veya uygulamalarınızın blob 'da oluşan değişikliklere hızlı bir şekilde tepki vermesini sağlayan gerçek zamanlı bir kerelik olaylar sağlar. 

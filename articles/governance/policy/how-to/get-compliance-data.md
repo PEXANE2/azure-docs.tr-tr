@@ -3,12 +3,12 @@ title: İlke uyumluluk verilerini al
 description: Azure Ilke değerlendirmeleri ve etkileri uyumluluğu tespit edin. Azure kaynaklarınızın uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 55f0b471eff15140de0a586fd5d326d9cd913b1a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e4d63355b793f69ccc2ed7aaa44bfb60a3a8440e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747080"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204846"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -148,6 +148,9 @@ Uyumluluk yüzdesi, **uyumlu** kaynakları _Toplam kaynağa_bölerek belirlenir.
 _Toplam kaynak_ , **uyumlu**, **uyumlu olmayan**ve **Çakışan** kaynakların toplamı olarak tanımlanır. Genel uyumluluk numaraları, tüm ayrı kaynakların **toplamına ayrılan ayrı** kaynakların toplamıdır. Aşağıdaki görüntüde, uygulanabilir ve yalnızca bir tane **uyumlu olmayan**20 farklı kaynak vardır. Genel kaynak uyumluluğu %95 ' dir (19/20).
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Uyumluluk sayfasından ilke uyumluluğu örneği" border="false":::
+
+> [!NOTE]
+> Azure Ilkesinde mevzuata uyumluluğu bir önizleme özelliğidir. SDK 'dan ve portaldaki sayfalardan uyumluluk özellikleri, etkin girişimler için farklıdır. Daha fazla bilgi için bkz. [mevzuat uyumluluğu](../concepts/regulatory-compliance.md)
 
 ## <a name="portal"></a>Portal
 

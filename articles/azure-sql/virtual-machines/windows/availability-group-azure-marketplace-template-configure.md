@@ -3,7 +3,7 @@ title: Azure Resource Manager sanal makineler için yüksek kullanılabilirliği
 description: Bu öğreticide, Azure Resource Manager modunda Azure sanal makineleri ile her zaman açık kullanılabilirlik grubu oluşturma gösterilmektedir.
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: f824ef4964a1039c5ed866e470d19e1306107afe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d00d8245f14b042b5fa779697ed74edacaf397a6
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049592"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219610"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure sanal makinelerinde Always on kullanılabilirlik gruplarını otomatik olarak yapılandırma: Kaynak Yöneticisi
 
@@ -67,12 +67,12 @@ Azure, tüm çözüm için bir galeri görüntüsü sağlar. Şablonu bulmak iç
 1. Hesabınızı kullanarak Azure portal oturum açın.
 2. Azure portal **Yeni** bölmeyi açmak Için **kaynak oluştur** ' u seçin.
 3. **Yeni** bölmede **AlwaysOn**' ı arayın.
-   ![AlwaysOn şablonu bul](./media/availability-group-azure-marketplace-template-configure/16-findalwayson.png)
-4. Arama sonuçlarında **SQL Server AlwaysOn kümesi**' ni bulun.
-   ![AlwaysOn şablonu](./media/availability-group-azure-marketplace-template-configure/17-alwaysontemplate.png)
-5. **Bir dağıtım modeli seçin**sayfasında **Kaynak Yöneticisi**' yi seçin.
+  Azure Marketi SQL Server kümesini içeren arama sonuçlarını gösterir. Bu özellik önizlemede.
+4. Arama sonuçlarında **SQL Server AlwaysOn kümesi (Önizleme)** öğesini bulup tıklayın. Çözümü oluşturmak için yönergeleri izleyin.
 
-### <a name="basics"></a>Temel Bilgiler
+Aşağıdaki bölümlerde çözüm girişi açıklanmaktadır. 
+
+### <a name="basics"></a>Temel bilgiler
 
 **Temel bilgiler** ' i seçin ve aşağıdaki ayarları yapılandırın:
 
@@ -84,7 +84,7 @@ Azure, tüm çözüm için bir galeri görüntüsü sağlar. Şablonu bulmak iç
 
 Aşağıdaki ekran görüntüsünde, tamamlanmış bir **temel bilgiler** dikey penceresi verilmiştir:
 
-![Temel Bilgiler](./media/availability-group-azure-marketplace-template-configure/1-basics.png)
+![Temel bilgiler](./media/availability-group-azure-marketplace-template-configure/1-basics.png)
 
 **Tamam**’ı seçin.
 

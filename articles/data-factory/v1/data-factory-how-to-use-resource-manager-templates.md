@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 73498b3537f4cf9313fc9e2464785f63c2af0d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460741"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194454"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Azure Data Factory varlıkları oluşturmak için şablonları kullanma
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "81460741"
 ## <a name="overview"></a>Genel Bakış
 Veri tümleştirme gereksinimleriniz için Azure Data Factory kullanırken, kendinizi farklı ortamlarda aynı kalıbı yeniden kullanmayı veya aynı çözüm içinde aynı görev kaldı uygulamayı de bulabilirsiniz. Şablonlar, bu senaryoları kolay bir şekilde uygulamanıza ve yönetmenize yardımcı olur. Azure Data Factory şablonlar, yeniden kullanılabilirlik ve yineleme gerektiren senaryolar için idealdir.
 
-Bir kuruluşun dünya genelinde 10 üretim bitkiler olduğu durumu göz önünde bulundurun. Her bir bitki günlüğü ayrı bir şirket içi SQL Server veritabanında depolanır. Şirket, geçici analiz için bulutta tek bir veri ambarı oluşturmak istiyor. Ayrıca, geliştirme, test ve üretim ortamları için aynı mantığa ancak farklı yapılandırmalara sahip olmak istiyor.
+Bir kuruluşun dünya genelinde 10 üretim bitkiler olduğu durumu göz önünde bulundurun. Her bir bitki günlüğü ayrı bir SQL Server veritabanında depolanır. Şirket, geçici analiz için bulutta tek bir veri ambarı oluşturmak istiyor. Ayrıca, geliştirme, test ve üretim ortamları için aynı mantığa ancak farklı yapılandırmalara sahip olmak istiyor.
 
 Bu durumda, bir görevin aynı ortamda tekrarlanması gerekir, ancak her bir üretim tesisi için 10 veri fabrikasının içinde farklı değerler vardır. Aslında, **yineleme** vardır. Şablon oluşturma, bu genel akışın soyutlamasını (yani, her veri fabrikasında aynı etkinliklere sahip olan işlem hatları) sağlar, ancak her üretim tesisi için ayrı bir parametre dosyası kullanır.
 

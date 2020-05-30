@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a5fc216abc890c19ce3a2d75335431fe2a6799
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41761f8724f1913972298a50d2c35489ddd715b9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79528651"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219043"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory için Federasyondan geçişli kimlik doğrulamaya geçiş
 
@@ -25,6 +25,9 @@ Bu makalede, kuruluş etki alanlarınızı Active Directory Federasyon Hizmetler
 
 > [!NOTE]
 > Kimlik doğrulama yönteminizi değiştirmek için planlama, test ve olası kapalı kalma süresi gerekir. [Hazırlanmış dağıtım](how-to-connect-staged-rollout.md) , doğrudan kimlik doğrulama kullanarak Federasyondan bulut kimlik doğrulamasına test etmek ve bu bilgisayardan yavaş geçiş yapmak için alternatif bir yol sağlar.
+> 
+> Hazırlanmış dağıtımı kullanmayı planlıyorsanız, üzerine getirmeyi bitirdikten sonra, hazırlanan dağıtım özelliklerini kapatmayı unutmayın.  Daha fazla bilgi için bkz. [aşamalı dağıtım kullanarak bulut kimlik doğrulamasına geçirme](how-to-connect-staged-rollout.md)
+
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>Geçişli kimlik doğrulamasına geçiş için Önkoşullar
 
@@ -223,7 +226,7 @@ Doğrudan kimlik doğrulama ve sorunsuz SSO dağıtıldıktan sonra, Office 365 
 
 Cihazlarınızın sorunsuz SSO kullanması için, Active Directory ' de bir Grup İlkesi kullanarak kullanıcıların intranet bölgesi ayarlarına bir Azure AD URL 'SI eklemeniz gerekir.
 
-Varsayılan olarak, Web tarayıcıları bir URL 'den Internet veya intranet gibi doğru bölgeyi otomatik olarak hesaplar. Örneğin, **http\/\/: contoso/** intranet bölgesine eşlenir ve **\/\/http: intranet.contoso.com** Maps for Internet Zone (URL bir nokta içerdiğinden). Tarayıcılar, yalnızca URL 'YI tarayıcının intranet bölgesine eklediğinizde Azure AD URL 'SI gibi bir bulut uç noktasına Kerberos bileti gönderir.
+Varsayılan olarak, Web tarayıcıları bir URL 'den Internet veya intranet gibi doğru bölgeyi otomatik olarak hesaplar. Örneğin, **http: \/ \/ contoso/** intranet bölgesine eşlenir ve **http: \/ \/ intranet.contoso.com** Maps for Internet Zone (URL bir nokta içerdiğinden). Tarayıcılar, yalnızca URL 'YI tarayıcının intranet bölgesine eklediğinizde Azure AD URL 'SI gibi bir bulut uç noktasına Kerberos bileti gönderir.
 
 Cihazlarınızda gerekli değişiklikleri [almak](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) için adımları izleyin.
 
@@ -269,7 +272,7 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
 
 İleri'ye basın. ek kimlik doğrulama yöntemleri dağıtma:
 
-1. Azure Portal, **Azure Active Directory** > **Azure AD Connect**' e gidin ve ardından **geçişli kimlik doğrulaması**' nı seçin.
+1. Azure Portal, **Azure Active Directory**  >  **Azure AD Connect**' e gidin ve ardından **geçişli kimlik doğrulaması**' nı seçin.
 2. **Geçişli kimlik doğrulaması** sayfasında **İndir** düğmesini seçin.
 3. **Aracı indir** sayfasında, **Koşulları kabul et ve indir**' i seçin.
 
@@ -331,7 +334,7 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
 
 Ardından, ek kimlik doğrulama aracılarını dağıtın:
 
-1. Azure Portal, **Azure Active Directory** > **Azure AD Connect**' e gidin ve ardından **geçişli kimlik doğrulaması**' nı seçin.
+1. Azure Portal, **Azure Active Directory**  >  **Azure AD Connect**' e gidin ve ardından **geçişli kimlik doğrulaması**' nı seçin.
 2. **Geçişli kimlik doğrulaması** sayfasında **İndir** düğmesini seçin. 
 3. **Aracı indir** sayfasında, **Koşulları kabul et ve indir**' i seçin.
  
@@ -359,7 +362,7 @@ Azure AD PowerShell modülünü kullanarak dönüştürmeyi doldurun:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
  
-3. Azure AD portalında **Azure Active Directory** > **Azure AD Connect**' ni seçin.
+3. Azure AD portalında **Azure Active Directory**  >  **Azure AD Connect**' ni seçin.
 4. Tüm Federasyon etki alanlarınızı dönüştürdükten sonra, bu ayarları doğrulayın:
    * **Federasyon** **devre dışı**olarak ayarlandı.
    * **Kesintisiz çoklu oturum açma** **özelliği etkin**olarak ayarlanmıştır.
@@ -378,7 +381,7 @@ Kiracınızda Federal Kimlik kullanılıyorsa, kullanıcılar Azure AD oturum a�
 Doğrudan kimlik doğrulamasını test etmek için:
 
 1. Sorunsuz SSO 'nun oturumunuzu otomatik olarak açmasını sağlamak için Internet Explorer 'ı InPrivate modda açın.
-2. Office 365 oturum açma sayfasına ([https://portal.office.com](https://portal.office.com/)) gidin.
+2. Office 365 oturum açma sayfasına ( [https://portal.office.com](https://portal.office.com/) ) gidin.
 3. Bir Kullanıcı UPN 'si girin ve ardından **İleri**' yi seçin. Şirket içi Active Directory örneğinden eşitlenmiş bir karma kullanıcının UPN 'sini girdiğinizden ve daha önce federal kimlik doğrulamasını kullanmış olduğunuzdan emin olun. Kullanıcı adını ve parolayı girdiğiniz bir sayfa görüntülenir:
 
    ![Kullanıcı adı gireceğiniz oturum açma sayfasını gösteren ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
@@ -396,8 +399,8 @@ Sorunsuz SSO 'yu test etmek için:
 1. Şirket ağına bağlı olan, etki alanına katılmış bir makinede oturum açın.
 2. Internet Explorer veya Chrome 'da aşağıdaki URL 'Lerden birine gidin ("contoso" yerine etki alanınızı değiştirin):
 
-   * https:\/\/myapps.Microsoft.com/contoso.com
-   * https:\/\/myapps.Microsoft.com/contoso.onmicrosoft.com
+   * https: \/ \/ myapps.Microsoft.com/contoso.com
+   * https: \/ \/ myapps.Microsoft.com/contoso.onmicrosoft.com
 
    Kullanıcı, "oturumunuzu açmaya çalışırken" iletisini gösteren Azure AD oturum açma sayfasına kısaca yönlendirilir. Kullanıcıdan Kullanıcı adı veya parola istenmez.<br />
 

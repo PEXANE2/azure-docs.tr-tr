@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a3180593eaf8c01c772fd761d88b5f5b9f7657ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f6d2be3760a28a8702b221dbd484901918441d9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75941500"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195198"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy kullanarak Amazon S3 'ten Azure depolama 'ya veri kopyalama
 
@@ -30,7 +30,7 @@ AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceği
 AzCopy 'i indirmek için [AzCopy kullanmaya başlama](storage-use-azcopy-v10.md) makalesine bakın ve depolama hizmetine yetkilendirme kimlik bilgilerini nasıl sağlayacağınız seçin.
 
 > [!NOTE]
-> Bu makaledeki örneklerde, `AzCopy login` komutunu kullanarak kimliğinizi doğruladığınızı varsayalım. AzCopy daha sonra blob depolamadaki verilere erişim yetkisi vermek için Azure AD hesabınızı kullanır.
+> Bu makaledeki örneklerde, komutunu kullanarak kimliğinizi doğruladığınızı varsayalım `AzCopy login` . AzCopy daha sonra blob depolamadaki verilere erişim yetkisi vermek için Azure AD hesabınızı kullanır.
 >
 > Blob verilerine erişim yetkisi vermek için bir SAS belirteci kullanıyorsanız, bu belirteci her AzCopy komutunda kaynak URL 'sine ekleyebilirsiniz.
 >
@@ -56,11 +56,11 @@ AzCopy, [URL API 'Den put bloğunu](https://docs.microsoft.com/rest/api/storages
 > [!TIP]
 > Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak (' ') ile çevreler. Windows komut kabuğu (cmd. exe) dışında tüm komut kabukleriyle tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd. exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
- Bu örnekler, hiyerarşik bir ad alanı olan hesaplarla de çalışır. [Data Lake Storage çoklu protokol erişimi](../blobs/data-lake-storage-multi-protocol-access.md) , bu HESAPLARDA aynı URL sözdizimini (`blob.core.windows.net`) kullanmanıza olanak sağlar. 
+ Bu örnekler, hiyerarşik bir ad alanı olan hesaplarla de çalışır. [Data Lake Storage çoklu protokol erişimi](../blobs/data-lake-storage-multi-protocol-access.md) , bu HESAPLARDA aynı URL sözdizimini () kullanmanıza olanak sağlar `blob.core.windows.net` . 
 
 ### <a name="copy-an-object"></a>Nesne kopyalama
 
-Hiyerarşik bir ad alanı olan hesaplar`blob.core.windows.net`IÇIN aynı URL söz dizimini () kullanın.
+`blob.core.windows.net`Hiyerarşik bir ad alanı olan hesaplar için aynı URL söz dizimini () kullanın.
 
 |    |     |
 |--------|-----------|
@@ -69,15 +69,15 @@ Hiyerarşik bir ad alanı olan hesaplar`blob.core.windows.net`IÇIN aynı URL s�
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
 
 > [!NOTE]
-> Bu makaledeki örnekler AWS S3 demetleri için yol stili URL 'Leri kullanır (örneğin: `http://s3.amazonaws.com/<bucket-name>`). 
+> Bu makaledeki örnekler AWS S3 demetleri için yol stili URL 'Leri kullanır (örneğin: `http://s3.amazonaws.com/<bucket-name>` ). 
 >
-> Ayrıca, sanal barındırılan stil URL 'Leri de kullanabilirsiniz (örneğin: `http://bucket.s3.amazonaws.com`). 
+> Ayrıca, sanal barındırılan stil URL 'Leri de kullanabilirsiniz (örneğin: `http://bucket.s3.amazonaws.com` ). 
 >
-> Demetlerin sanal barındırılması hakkında daha fazla bilgi edinmek için bkz. [demetlerin sanal barındırılması]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
+> Demetlerin sanal barındırılması hakkında daha fazla bilgi edinmek için bkz. [demetlerin sanal barındırılması]] ( https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) .
 
 ### <a name="copy-a-directory"></a>Bir dizini kopyalama
 
-Hiyerarşik bir ad alanı olan hesaplar`blob.core.windows.net`IÇIN aynı URL söz dizimini () kullanın.
+`blob.core.windows.net`Hiyerarşik bir ad alanı olan hesaplar için aynı URL söz dizimini () kullanın.
 
 |    |     |
 |--------|-----------|
@@ -87,7 +87,7 @@ Hiyerarşik bir ad alanı olan hesaplar`blob.core.windows.net`IÇIN aynı URL s�
 
 ### <a name="copy-a-bucket"></a>Demeti kopyalama
 
-Hiyerarşik bir ad alanı olan hesaplar`blob.core.windows.net`IÇIN aynı URL söz dizimini () kullanın.
+`blob.core.windows.net`Hiyerarşik bir ad alanı olan hesaplar için aynı URL söz dizimini () kullanın.
 
 |    |     |
 |--------|-----------|
@@ -97,7 +97,7 @@ Hiyerarşik bir ad alanı olan hesaplar`blob.core.windows.net`IÇIN aynı URL s�
 
 ### <a name="copy-all-buckets-in-all-regions"></a>Tüm bölgelerdeki tüm demetleri Kopyala
 
-Hiyerarşik bir ad alanı olan hesaplar`blob.core.windows.net`IÇIN aynı URL söz dizimini () kullanın.
+`blob.core.windows.net`Hiyerarşik bir ad alanı olan hesaplar için aynı URL söz dizimini () kullanın.
 
 |    |     |
 |--------|-----------|
@@ -107,7 +107,7 @@ Hiyerarşik bir ad alanı olan hesaplar`blob.core.windows.net`IÇIN aynı URL s�
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Belirli bir S3 bölgesindeki tüm demetleri Kopyala
 
-Hiyerarşik bir ad alanı olan hesaplar`blob.core.windows.net`IÇIN aynı URL söz dizimini () kullanın.
+`blob.core.windows.net`Hiyerarşik bir ad alanı olan hesaplar için aynı URL söz dizimini () kullanın.
 
 |    |     |
 |--------|-----------|
@@ -119,15 +119,15 @@ Hiyerarşik bir ad alanı olan hesaplar`blob.core.windows.net`IÇIN aynı URL s�
 
 AWS S3, demet adları için Azure Blob kapsayıcılarıyla karşılaştırıldığında farklı bir adlandırma kuralları kümesine sahiptir. [Buradan](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules)hakkında bilgi edinebilirsiniz. Bir demet grubunu bir Azure depolama hesabına kopyalamayı seçerseniz, adlandırma farklılıkları nedeniyle kopyalama işlemi başarısız olabilir.
 
-AzCopy, ortaya çıkabilecek en yaygın sorunların ikisini de gerçekleştirir; ardışık kısa çizgi içeren noktalar ve demetleri içeren demetler. AWS S3 demet adları nokta ve ardışık tireler içerebilir, ancak Azure 'da bir kapsayıcı olamaz. AzCopy, ardışık çizgilerden oluşan sayıları temsil eden bir sayı ile kısa çizgilerden ve ardışık çizgilerden oluşan noktaları değiştirir (örneğin: adlı `my----bucket` bir demet. `my-4-bucket` 
+AzCopy, ortaya çıkabilecek en yaygın sorunların ikisini de gerçekleştirir; ardışık kısa çizgi içeren noktalar ve demetleri içeren demetler. AWS S3 demet adları nokta ve ardışık tireler içerebilir, ancak Azure 'da bir kapsayıcı olamaz. AzCopy, ardışık çizgilerden oluşan sayıları temsil eden bir sayı ile kısa çizgilerden ve ardışık çizgilerden oluşan noktaları değiştirir (örneğin: adlı bir demet `my----bucket` `my-4-bucket` . 
 
-Ayrıca, dosya üzerinde AzCopy kopyaları olarak, adlandırma çakışmalarını denetler ve bunları çözmeye çalışır. `bucket-name` Örneğin, ve `bucket.name`adında demetler varsa AzCopy, `bucket.name` ilk `bucket-name` ve sonra adlı bir demetini çözer. `bucket-name-2`
+Ayrıca, dosya üzerinde AzCopy kopyaları olarak, adlandırma çakışmalarını denetler ve bunları çözmeye çalışır. Örneğin, ve adında demetler varsa `bucket-name` `bucket.name` AzCopy, `bucket.name` ilk ve sonra adlı bir demetini çözer `bucket-name` `bucket-name-2` .
 
 ## <a name="handle-differences-in-object-metadata"></a>Nesne meta verilerinde farkları işleme
 
 AWS S3 ve Azure, nesne anahtarlarının adlarındaki farklı karakter kümelerine izin veriyor. AWS S3 tarafından [burada](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)kullanılan karakterler hakkında bilgi edinebilirsiniz. Azure tarafında, blob nesne anahtarları [C# tanımlayıcıları](https://docs.microsoft.com/dotnet/csharp/language-reference/)için adlandırma kurallarına uyar.
 
-AzCopy `copy` komutunun bir parçası olarak, dosyanın meta verilerinin uyumsuz anahtar adlarını içerdiği dosyaları nasıl `s2s-invalid-metadata-handle` işlemek istediğinizi belirten isteğe bağlı bayrak için bir değer sağlayabilirsiniz. Aşağıdaki tabloda her bayrak değeri açıklanmaktadır.
+AzCopy komutunun bir parçası olarak `copy` , `s2s-invalid-metadata-handle` dosyanın meta verilerinin uyumsuz anahtar adlarını içerdiği dosyaları nasıl işlemek istediğinizi belirten isteğe bağlı bayrak için bir değer sağlayabilirsiniz. Aşağıdaki tabloda her bayrak değeri açıklanmaktadır.
 
 | Bayrak değeri | Açıklama  |
 |--------|-----------|
@@ -135,7 +135,7 @@ AzCopy `copy` komutunun bir parçası olarak, dosyanın meta verilerinin uyumsuz
 | **Failifgeçersiz** | Nesneler kopyalanmaz. AzCopy bir hatayı günlüğe kaydeder ve aktarım özetinde görüntülenen başarısız olan sayıma bu hatayı ekler.  |
 | **Renameifgeçersiz**  | AzCopy geçersiz meta veri anahtarını çözer ve çözümlenen meta veri anahtar değer çiftini kullanarak nesneyi Azure 'a kopyalar. AzCopy 'ın nesne anahtarlarını yeniden adlandırma hakkında tam olarak hangi adımların alınacağını öğrenmek için aşağıdaki aşağıdaki [nesne anahtarlarını](#rename-logic) yeniden adlandırma bölümüne bakın. AzCopy anahtarı yeniden adlandıramaz, nesne kopyalanmaz. |
 
-<a id="rename-logic" />
+<a id="rename-logic"></a>
 
 ### <a name="how-azcopy-renames-object-keys"></a>AzCopy nesne anahtarlarını yeniden adlandırmalar
 
@@ -143,11 +143,11 @@ AzCopy şu adımları gerçekleştirir:
 
 1. Geçersiz karakterleri ' _ ' ile değiştirir.
 
-2. Dizeyi `rename_` yeni bir geçerli anahtarın başlangıcına ekler.
+2. Dizeyi `rename_` Yeni bir geçerli anahtarın başlangıcına ekler.
 
    Bu anahtar, özgün meta veri **değerini**kaydetmek için kullanılacaktır.
 
-3. Dizeyi `rename_key_` yeni bir geçerli anahtarın başlangıcına ekler.
+3. Dizeyi `rename_key_` Yeni bir geçerli anahtarın başlangıcına ekler.
    Bu anahtar, özgün meta veriler geçersiz **anahtarını**kaydetmek için kullanılacaktır.
    Meta veri anahtarı BLOB depolama hizmetindeki bir değer olarak korunduğu için Azure tarafında meta verileri denemek ve kurtarmak üzere bu anahtarı kullanabilirsiniz.
 

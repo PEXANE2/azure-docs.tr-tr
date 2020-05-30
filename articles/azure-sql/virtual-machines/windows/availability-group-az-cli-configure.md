@@ -1,5 +1,5 @@
 ---
-title: Kullanılabilirlik grubu yapılandırma (Azure CLı)
+title: Azure CLı kullanarak bir kullanılabilirlik grubu yapılandırma
 description: Windows Yük devretme kümesi, kullanılabilirlik grubu dinleyicisi ve Azure 'daki bir SQL Server VM iç yük dengeleyici oluşturmak için Azure CLı 'yi kullanın.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a48095343fd24071a20d789704b8146be79d02c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 23667e8a50d2ef3a7a31aeb165c0b5d43bcf3eca
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041983"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219616"
 ---
-# <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure sanal makinesinde SQL Server için her zaman açık kullanılabilirlik grubu yapılandırmak üzere Azure CLı 'yi kullanma
+# <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-azure-vm"></a>Azure sanal makinesinde SQL Server için her zaman açık kullanılabilirlik grubu yapılandırmak için Azure CLı 'yi kullanma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu makalede, [Azure CLI](/cli/azure/sql/vm?view=azure-cli-latest/) kullanarak bir Windows Yük devretme kümesi dağıtma, kümeye SQL Server VM ekleme, her zaman açık kullanılabilirlik grubu için iç yük dengeleyici ve dinleyici oluşturma işlemlerinin nasıl yapılacağı açıklanır. Always on kullanılabilirlik grubunun dağıtımı SQL Server Management Studio (SSMS) üzerinden el ile yapılır. 
@@ -38,7 +38,7 @@ Azure CLı kullanarak her zaman açık kullanılabilirlik grubunun kurulumunu ot
 Azure CLı kullanarak Always on kullanılabilirlik grubunu yapılandırmak için aşağıdaki hesap izinlerine sahip olmanız gerekir: 
 
 - Etki alanında **bilgisayar nesnesi oluşturma** iznine sahip olan mevcut bir etki alanı kullanıcı hesabı. Örneğin, bir etki alanı yönetici hesabı genellikle yeterli izne sahiptir (örneğin: account@domain.com ). _Bu hesap, kümeyi oluşturmak için her VM 'de yerel yönetici grubunun da bir parçası olmalıdır._
-- SQL Server hizmetini denetleyen etki alanı kullanıcı hesabı. 
+- SQL Server denetleyen etki alanı kullanıcı hesabı. 
  
 ## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>1. Adım: bulut tanığı olarak depolama hesabı oluşturma
 Kümenin bulut tanığı olarak davranması için bir depolama hesabı olması gerekir. Mevcut bir depolama hesabını kullanabilir veya yeni bir depolama hesabı oluşturabilirsiniz. Mevcut bir depolama hesabını kullanmak istiyorsanız, sonraki bölüme atlayın. 

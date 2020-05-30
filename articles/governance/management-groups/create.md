@@ -3,12 +3,12 @@ title: Kaynakları düzenlemek için yönetim grupları oluşturma-Azure Idare
 description: Portal, Azure PowerShell ve Azure CLı kullanarak birden çok kaynağı yönetmek için Azure Yönetim grupları oluşturmayı öğrenin.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 34815089367512c4aa54f148c118a669625d0ea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0abecf02062dd4461274a9bc3722d46e6e7cc3d1
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381594"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220749"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Kaynak organizasyonu ve yönetimi için yönetim grupları oluşturma
 
@@ -27,11 +27,9 @@ Portal, [Kaynak Yöneticisi şablonu](../../azure-resource-manager/templates/dep
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmetler** > **yönetimi + idare**' ı seçin.
+1. **Tüm hizmetler**  >  **yönetimi + idare**' ı seçin.
 
-1. **Maliyet yönetimi + faturalandırma** seçin
-
-1. Maliyet yönetimi + faturalandırma-yönetim grupları sayfasında **Yönetim grupları** ' yi seçin.
+1. **Yönetim grupları**seçin.
 
 1. **+ Yönetim grubu Ekle**' yi seçin.
 

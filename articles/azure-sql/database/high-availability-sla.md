@@ -1,6 +1,6 @@
 ---
 title: Yüksek kullanılabilirlik
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database and SQL Managed Instance
 description: Azure SQL veritabanı ve SQL yönetilen örnek hizmeti yüksek kullanılabilirlik özellikleri ve özellikleri hakkında bilgi edinin
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,17 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: ca340ce86dc4e6c028840fd7bfdb909ea097629e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 527fe8fa2ad8916f9e5209e4823457d81e745034
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043327"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219364"
 ---
-# <a name="high-availability-for-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği için yüksek kullanılabilirlik
+# <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL veritabanı ve SQL yönetilen örneğindeki yüksek kullanılabilirlik mimarisinin hedefi, veritabanınızın en az% 99,99 ' un çalışır durumda olduğundan emin olmaktır (farklı katmanlara yönelik belirli SLA hakkında daha fazla bilgi Için lütfen [Azure SQL veritabanı & SQL yönetilen örneği Için SLA](https://azure.microsoft.com/support/legal/sla/sql-database/)'ya bakın) ve bakım işlemlerinin ve kesintilerin etkisi konusunda endişelenmenize gerek yoktur. Azure, düzeltme eki uygulama, yedeklemeler, Windows ve SQL yükseltmeleri gibi kritik bakım görevlerini ve temel alınan donanım, yazılım veya ağ arızalarına yönelik planlanmamış olayları otomatik olarak işler.  Temel alınan SQL örneği düzeltme eki uygulanmış veya başarısız olduğunda, uygulamanızda [yeniden deneme mantığı](develop-overview.md#resiliency) kullanırsanız kesinti olmaz. SQL veritabanı ve SQL yönetilen örneği, verilerinizin her zaman kullanılabilir olmasını sağlamak için en kritik koşullarda bile hızlı bir şekilde kurturabilir.
+Azure SQL veritabanı ve SQL yönetilen örneği 'nin yüksek kullanılabilirlik mimarisinin hedefi, veritabanınızın en az% 99,99 ' un çalışır durumda olmasını sağlamaktır (farklı katmanlara yönelik belirli SLA hakkında daha fazla bilgi Için, lütfen [Azure SQL veritabanı ve SQL yönetilen örneği Için SLA](https://azure.microsoft.com/support/legal/sla/sql-database/)'ya başvurun), bakım işlemlerinin ve kesintilerin etkisi hakkında endişelenmeden emin olmaktır. Azure, düzeltme eki uygulama, yedeklemeler, Windows ve Azure SQL yükseltmeleri gibi kritik bakım görevlerini ve temel alınan donanım, yazılım veya ağ arızaları gibi planlanmamış olayları otomatik olarak işler.  Azure SQL veritabanı 'nda temel alınan veritabanı düzeltme eki uygulanmış veya başarısız olduğunda, uygulamanızda [yeniden deneme mantığı](develop-overview.md#resiliency) kullanırsanız kesinti olmaz. SQL veritabanı ve SQL yönetilen örneği, verilerinizin her zaman kullanılabilir olmasını sağlamak için en kritik koşullarda bile hızlı bir şekilde kurturabilir.
 
 Yüksek kullanılabilirlik çözümü, hatalar nedeniyle kaydedilmiş verilerin kaybolmamasını, bakım işlemlerinin iş yükünüzü etkilememesini ve veritabanının yazılım mimarinizdeki tek hata noktası olmamasını sağlamak üzere tasarlanmıştır. Veritabanı yükseltilirken veya korunurken iş yükünü durdurmanız gereken bakım pencereleri veya daha az zaman yoktur.
 
@@ -52,9 +52,9 @@ Premium ve İş Açısından Kritik hizmet katmanları, işlem kaynaklarını ( 
 
 ![Veritabanı altyapısı düğümlerinin kümesi](./media/high-availability-sla/business-critical-service-tier.png)
 
-Temel alınan veritabanı dosyaları (. mdf/. ldf), iş yükünüze çok düşük gecikmeli GÇ sağlamak üzere eklenmiş SSD depolama alanına yerleştirilir. Yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)SQL Server benzer bir teknoloji kullanılarak uygulanır. Küme, okuma/yazma müşteri iş yükleri için erişilebilen tek bir birincil çoğaltma ve verilerin kopyalarını içeren üç ikincil çoğaltma (işlem ve depolama) içerir. Birincil düğüm değişiklikleri sürekli olarak ikincil düğümlere gönderir ve her bir işlem gerçekleştirilmeden önce verilerin en az bir ikincil çoğaltmayla eşitlenmesini sağlar. Bu işlem, birincil düğüm herhangi bir nedenden dolayı kilitlenirse, her zaman yük devretmek için tamamen eşitlenmiş bir düğüm vardır. Yük devretme işlemi Azure Service Fabric tarafından başlatılır. İkincil çoğaltma yeni birincil düğüm olduktan sonra, kümede yeterli düğüm (çekirdek kümesi) olduğundan emin olmak için başka bir ikincil çoğaltma oluşturulur. Yük devretme işlemi tamamlandıktan sonra, SQL bağlantıları otomatik olarak yeni birincil düğüme yönlendirilir.
+Temel alınan veritabanı dosyaları (. mdf/. ldf), iş yükünüze çok düşük gecikmeli GÇ sağlamak üzere eklenmiş SSD depolama alanına yerleştirilir. Yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)SQL Server benzer bir teknoloji kullanılarak uygulanır. Küme, okuma/yazma müşteri iş yükleri için erişilebilen tek bir birincil çoğaltma ve verilerin kopyalarını içeren üç ikincil çoğaltma (işlem ve depolama) içerir. Birincil düğüm değişiklikleri sürekli olarak ikincil düğümlere gönderir ve her bir işlem gerçekleştirilmeden önce verilerin en az bir ikincil çoğaltmayla eşitlenmesini sağlar. Bu işlem, birincil düğüm herhangi bir nedenden dolayı kilitlenirse, her zaman yük devretmek için tamamen eşitlenmiş bir düğüm vardır. Yük devretme işlemi Azure Service Fabric tarafından başlatılır. İkincil çoğaltma yeni birincil düğüm olduktan sonra, kümede yeterli düğüm (çekirdek kümesi) olduğundan emin olmak için başka bir ikincil çoğaltma oluşturulur. Yük devretme işlemi tamamlandıktan sonra Azure SQL bağlantıları otomatik olarak yeni birincil düğüme yönlendirilir.
 
-Ek bir avantaj olarak Premium kullanılabilirlik modeli, salt okunurdur SQL bağlantılarını ikincil çoğaltmalardan birine yeniden yönlendirebilme özelliği içerir. Bu özelliğe [okuma ölçeği](read-scale-out.md)genişletme denir. Birincil çoğaltmadan, analitik iş yükleri gibi salt okuma işlemlerini yük dışı bırakmak için ek ücret olmadan %100 ek işlem kapasitesi sağlar.
+Ek bir avantaj olarak Premium kullanılabilirlik modeli, salt okunurdur Azure SQL bağlantılarını ikincil çoğaltmalardan birine yeniden yönlendirebilme özelliği içerir. Bu özelliğe [okuma ölçeği](read-scale-out.md)genişletme denir. Birincil çoğaltmadan, analitik iş yükleri gibi salt okuma işlemlerini yük dışı bırakmak için ek ücret olmadan %100 ek işlem kapasitesi sağlar.
 
 ## <a name="hyperscale-service-tier-availability"></a>Hiper ölçek hizmet katmanı kullanılabilirliği
 
@@ -102,7 +102,7 @@ Yük devretme, REST API veya PowerShell kullanılarak başlatılabilir. REST API
 
 ## <a name="conclusion"></a>Sonuç
 
-Azure SQL veritabanı ve Azure SQL yönetilen örnek özelliği, Azure platformuyla derin bir şekilde tümleştirilmiş yerleşik yüksek kullanılabilirlik çözümüdür. Hata algılama ve kurtarma, veri koruma için Azure Blob depolama ve daha yüksek hata toleransı için Kullanılabilirlik Alanları Service Fabric bağımlıdır. Ayrıca, SQL veritabanı ve SQL yönetilen örneği, çoğaltma ve yük devretme için SQL Server 'dan her zaman açık kullanılabilirlik grubu teknolojisini de devreder. Bu teknolojilerin birleşimi, uygulamaların karma depolama modelinin avantajlarını tam olarak elde etmesini ve en zorlu SLA 'Ları desteklemesini sağlar.
+Azure SQL veritabanı ve Azure SQL yönetilen örnek özelliği, Azure platformuyla derin bir şekilde tümleştirilmiş yerleşik yüksek kullanılabilirlik çözümüdür. Hata algılama ve kurtarma, veri koruma için Azure Blob depolama ve daha yüksek hata toleransı için Kullanılabilirlik Alanları Service Fabric bağımlıdır. Ayrıca, SQL veritabanı ve SQL yönetilen örneği, çoğaltma ve yük devretme için SQL Server örneğinden her zaman açık kullanılabilirlik grubu teknolojisini de devreder. Bu teknolojilerin birleşimi, uygulamaların karma depolama modelinin avantajlarını tam olarak elde etmesini ve en zorlu SLA 'Ları desteklemesini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

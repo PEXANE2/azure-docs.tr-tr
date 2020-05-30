@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 387ec3f792b5d61b6c909b4955a588146aa258f5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0f1e43e4300cff6fba1c71d2b7740a3b2b678253
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050684"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218934"
 ---
 # <a name="data-discovery--classification"></a>Veri Bulma ve Sınıflandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -34,7 +34,7 @@ En hassas verileriniz arasında işletme, finans, sağlık hizmetleri veya kişi
 Veri bulma & sınıflandırması, gelişmiş Azure SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [Gelişmiş veri güvenliği](advanced-data-security.md) sunumunun bir parçasıdır. Azure portal Merkezi **SQL gelişmiş veri güvenliği** bölümü aracılığıyla veri bulma & sınıflandırmasına erişip yönetebilirsiniz.
 
 > [!NOTE]
-> SQL Server (Şirket içi) hakkında daha fazla bilgi için bkz. [SQL veri bulma ve sınıflandırma](https://go.microsoft.com/fwlink/?linkid=866999).
+> Şirket içi SQL Server hakkında daha fazla bilgi için bkz. [SQL veri bulma & sınıflandırması](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Veri bulma & sınıflandırması nedir?
 
@@ -42,7 +42,7 @@ Veri bulma & sınıflandırması, Azure 'da bir dizi gelişmiş hizmet ve yeni �
 
 - **Bulma ve öneriler:** Sınıflandırma Altyapısı, veritabanınızı tarar ve potansiyel olarak hassas veriler içeren sütunları tanımlar. Daha sonra, Azure portal aracılığıyla önerilen sınıflandırmayı gözden geçirmek ve uygulamak için kolay bir yol sağlar.
 
-- **Etiketleme:** SQL veritabanı altyapısına eklenen yeni meta veri özniteliklerini kullanarak, duyarlı sınıflandırma etiketlerini kalıcı olarak sütunlara uygulayabilirsiniz. Bu meta veriler daha sonra Gelişmiş, duyarlılık tabanlı denetim ve koruma senaryoları için kullanılabilir.
+- **Etiketleme:** SQL Server veritabanı altyapısına eklenmiş olan yeni meta veri özniteliklerini kullanarak, duyarlılık sınıflandırma etiketlerini kalıcı olarak sütunlara uygulayabilirsiniz. Bu meta veriler daha sonra Gelişmiş, duyarlılık tabanlı denetim ve koruma senaryoları için kullanılabilir.
 
 - **Sorgu sonucu-ayarlanan duyarlılık:** Sorgu sonuç kümesinin duyarlılığı, denetim amaçlarıyla gerçek zamanlı olarak hesaplanır.
 
@@ -66,9 +66,9 @@ Veri bulma & sınıflandırması, yerleşik bir duyarlılık etiketleri kümesi 
 
 Sınıflandırma taksonominizi Azure kuruluşunuzun tamamı için tek bir yerde tanımlayabilir ve özelleştirebilirsiniz. Bu konum, güvenlik ilkenizin bir parçası olarak [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro)'nde bulunur. Yalnızca kuruluşun kök yönetim grubunda yönetici haklarına sahip bir kişi bu görevi gerçekleştirebilir.
 
-SQL Information Protection ilke yönetiminin bir parçası olarak özel Etiketler tanımlayabilir, bunları derecelendirip bunları seçili bir bilgi türleri kümesiyle ilişkilendirebilirsiniz. Ayrıca, kendi özel bilgi türlerinizi ekleyebilir ve bunları dize desenleriyle yapılandırabilirsiniz. Desenler, veritabanlarınızdaki bu tür verileri tanımlamak için bulma mantığına eklenir.
+Bilgi koruması için ilke yönetiminin bir parçası olarak, Özel Etiketler tanımlayabilir, bunları derecelendirip bunları seçili bir bilgi türleri kümesiyle ilişkilendirebilirsiniz. Ayrıca, kendi özel bilgi türlerinizi ekleyebilir ve bunları dize desenleriyle yapılandırabilirsiniz. Desenler, veritabanlarınızdaki bu tür verileri tanımlamak için bulma mantığına eklenir.
 
-[SQL Information Protection ilkesi nasıl yapılır kılavuzunda](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)ilkenizi özelleştirme ve yönetme hakkında daha fazla bilgi edinin.
+Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'NDE SQL Information Protection Ilkesini özelleştirme (Önizleme)](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
 
 Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kullanarak ayrı veritabanlarını sınıflandırarak devam edebilirsiniz.
 
@@ -89,7 +89,7 @@ Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kull
 
 4. Excel biçiminde bir rapor indirmek için bölmenin üst menüsünde **dışarı aktar** ' ı seçin.
 
-5. <a id="step-5"></a>Verilerinizi **sınıflandırmayla** başlamak için **veri bulma & sınıflandırma** sayfasında sınıflandırma sekmesini seçin.
+5. <a id="step-5"></a>Verilerinizi **sınıflandırmayla** başlamak Için **veri bulma & sınıflandırma** sayfasında sınıflandırma sekmesini seçin.
 
     Sınıflandırma Altyapısı, veritabanınızı potansiyel olarak hassas veriler içeren sütunlar için tarar ve önerilen sütun sınıflandırmalarının bir listesini sağlar.
 
@@ -193,4 +193,4 @@ Sınıflandırmaları ve önerileri programlı bir şekilde yönetmek için REST
 
 - [Gelişmiş veri güvenliği](advanced-data-security.md)hakkında daha fazla bilgi edinin.
 - Sınıflandırılan gizli verilerinize erişimi izlemek ve denetlemek için [Azure SQL denetimini](../../azure-sql/database/auditing-overview.md) yapılandırmayı düşünün.
-- Veri bulma ve sınıflandırma içeren bir sunum için bkz. [SQL verilerini korumak & bulma, sınıflandırma ve etiketleme | Veriler kullanıma sunuldu](https://www.youtube.com/watch?v=itVi9bkJUNc).
+- Veri bulma & sınıflandırması içeren bir sunum için bkz. [SQL verilerini koruma, sınıflandırma ve etiketleme & | Veriler kullanıma sunuldu](https://www.youtube.com/watch?v=itVi9bkJUNc).

@@ -13,14 +13,15 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 34c790ee77c05e9e8c5a57a23e153bd9898c1cff
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 53bfe029038e9bf2a85cc8c571417be462fd4502
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045560"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188043"
 ---
-# <a name="troubleshooting-transient-connection-errors"></a>Geçici bağlantı hatalarıyla ilgili sorunları giderme
+# <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>SQL veritabanı ve SQL yönetilen örneği 'nde geçici bağlantı hatalarıyla ilgili sorunları giderme
+
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Bu makalede, bağlantı hatalarının ve istemci uygulamanızın Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics ile etkileşime geçtiğinde karşılaştığı geçici hataların nasıl engelleneceği, giderileceği, tanılanacağı ve azaltılacağını açıklanmaktadır. Yeniden deneme mantığını yapılandırmayı, bağlantı dizesini derlemeyi ve diğer bağlantı ayarlarını ayarlamayı öğrenin.
@@ -29,7 +30,7 @@ Bu makalede, bağlantı hatalarının ve istemci uygulamanızın Azure SQL verit
 
 ## <a name="transient-errors-transient-faults"></a>Geçici hatalar (geçici hatalar)
 
-Geçici hata olarak da bilinen geçici bir hata, kendisini en kısa sürede çözümleyen bir hataya sahiptir. Geçici hataların geçici bir nedeni, Azure sisteminin çeşitli iş yüklerinin daha iyi yük dengelenmesi için donanım kaynaklarını hızlı bir şekilde kaydırır. Bu yeniden yapılandırma olaylarının çoğu 60 saniyeden az bir süre içinde tamamlanır. Bu yeniden yapılandırma sırasında zaman dilimi sırasında SQL veritabanı 'na bağlantı sorunlarıyla karşılaşabilirsiniz. SQL veritabanına bağlanan uygulamalar bu geçici hataların beklenildiği için oluşturulmalıdır. Bunları işlemek için, kullanıcıların uygulama hataları olarak kullanıcılara sunulmasını sağlamak yerine, yeniden deneme mantığını uygulayın.
+Geçici hata olarak da bilinen geçici bir hata, kendisini en kısa sürede çözümleyen bir hataya sahiptir. Geçici hataların geçici bir nedeni, Azure sisteminin çeşitli iş yüklerinin daha iyi yük dengelenmesi için donanım kaynaklarını hızlı bir şekilde kaydırır. Bu yeniden yapılandırma olaylarının çoğu 60 saniyeden az bir süre içinde tamamlanır. Bu yeniden yapılandırma süresi boyunca, SQL veritabanı 'nda veritabanınıza bağlanma sorunlarıyla karşılaşabilirsiniz. Veritabanınıza bağlanan uygulamalar, bu geçici hataların beklenildiği için oluşturulmalıdır. Bunları işlemek için, kullanıcıların uygulama hataları olarak kullanıcılara sunulmasını sağlamak yerine, yeniden deneme mantığını uygulayın.
 
 İstemci programınız ADO.NET kullanıyorsa, programınız **SqlException**throw tarafından geçici hata ile bildirilir.
 
@@ -37,13 +38,13 @@ Geçici hata olarak da bilinen geçici bir hata, kendisini en kısa sürede çö
 
 ### <a name="connection-vs-command"></a>Bağlantı ve komut karşılaştırması
 
-SQL bağlantısını yeniden deneyin veya aşağıdakilere bağlı olarak yeniden oluşturun:
+SQL veritabanı ve SQL yönetilen örnek bağlantısını yeniden deneyin veya aşağıdakilere bağlı olarak yeniden oluşturun:
 
 - **Bağlantı deneme sırasında geçici bir hata oluşur**
 
 Birkaç saniyelik bir gecikmeden sonra bağlantıyı yeniden deneyin.
 
-- **SQL sorgu komutu sırasında geçici bir hata oluşuyor**
+- **SQL veritabanı ve SQL yönetilen örnek sorgu komutu sırasında geçici bir hata oluşur**
 
 Komutu hemen yeniden denemeyin. Bunun yerine, bir gecikmeden sonra bağlantıyı tekrar oluşturun. Sonra komutu yeniden deneyin.
 
@@ -51,15 +52,15 @@ Komutu hemen yeniden denemeyin. Bunun yerine, bir gecikmeden sonra bağlantıyı
 
 ## <a name="retry-logic-for-transient-errors"></a>Geçici hatalar için yeniden deneme mantığı
 
-Bazen geçici bir hatayla karşılaşan istemci programları, yeniden deneme mantığı içerdiğinde daha sağlamdır. Programınız üçüncü taraf ara yazılım aracılığıyla SQL veritabanıyla iletişim kurduğunda, satıcıdan geçici hatalar için yeniden deneme mantığı içerip içermediğini öğrenin.
+Bazen geçici bir hatayla karşılaşan istemci programları, yeniden deneme mantığı içerdiğinde daha sağlamdır. Programınız, üçüncü taraf ara yazılım aracılığıyla SQL veritabanı 'nda veritabanınıza iletişim kurduğunda, satıcıdan geçici hatalar için yeniden deneme mantığı içerip içermediğini öğrenin.
 
 <a id="principles-for-retry" name="principles-for-retry"></a>
 
 ### <a name="principles-for-retry"></a>Yeniden deneme ilkeleri
 
 - Hata geçicidir, bir bağlantıyı açmayı yeniden deneyin.
-- Geçici bir hatayla başarısız olan bir SQL ifadesini doğrudan yeniden denemeyin `SELECT` . Bunun yerine, yeni bir bağlantı oluşturun ve sonra yeniden deneyin `SELECT` .
-- Bir SQL `UPDATE` açıklaması geçici bir hata ile başarısız olduğunda, güncelleştirmeyi yeniden denemeden önce yeni bir bağlantı kurun. Yeniden deneme mantığı, tüm veritabanı işleminin bittiğini veya işlemin tamamının geri alındığından emin olmalıdır.
+- Geçici bir hatayla başarısız olan bir SQL veritabanını veya SQL yönetilen örnek ifadesini doğrudan yeniden denemeyin `SELECT` . Bunun yerine, yeni bir bağlantı oluşturun ve sonra yeniden deneyin `SELECT` .
+- Bir SQL veritabanı veya SQL yönetilen örnek `UPDATE` açıklaması geçici bir hata ile başarısız olduğunda, güncelleştirmeyi yeniden denemeden önce yeni bir bağlantı kurun. Yeniden deneme mantığı, tüm veritabanı işleminin bittiğini veya işlemin tamamının geri alındığından emin olmalıdır.
 
 ### <a name="other-considerations-for-retry"></a>Yeniden denemeye yönelik diğer noktalar
 
@@ -78,8 +79,8 @@ Ayrıca, programın kendiliğinden sonlandırmadan önce en fazla yeniden deneme
 
 Yeniden deneme mantığına sahip kod örnekleri şurada bulunabilir:
 
-- [Dayanıklı bağlantısı 'i ADO.NET ile SQL 'e bağlama][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-- [PHP ile dayanıklı bağlantısı 'i SQL 'e bağlama][step-4-connect-resiliently-to-sql-with-php-p42h]
+- [Dayanıklı bağlantısı 'i ADO.NET ile Azure SQL 'e bağlama][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [PHP ile dayanıklı bağlantısı 'i Azure SQL 'e bağlama][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
@@ -126,7 +127,7 @@ Bu testi pratik hale getirmek için programınız programın şunları yapmasın
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>Bağlantı yeniden deneme için .NET SqlConnection parametreleri
 
-İstemci programınız **System. Data. SqlClient. SqlConnection**.NET Framework SıNıFıNı kullanarak SQL veritabanı 'na bağlanırsa, bağlantı yeniden deneme özelliğini kullanabilmeniz için .NET 4.6.1 veya üstünü (veya .NET Core) kullanın. Özelliği hakkında daha fazla bilgi için [Bu Web sayfasına](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection)bakın.
+İstemci programınız **System. Data. SqlClient. SqlConnection**.NET Framework Class ' ı kullanarak SQL veritabanında veritabanınıza bağlanıyorsa, bağlantı yeniden deneme özelliğini kullanabilmeniz için .NET 4.6.1 veya üstünü (veya .NET Core) kullanın. Özelliği hakkında daha fazla bilgi için [Bu Web sayfasına](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection)bakın.
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -159,13 +160,13 @@ Uygulamanızın sağlam özel yeniden deneme mantığı olduğunu varsayalım. B
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
 
-## <a name="connections-to-sql-database"></a>SQL veritabanı bağlantıları
+## <a name="connections-to-your-database-in-sql-database"></a>SQL veritabanı 'nda veritabanınıza bağlantı
 
 <a id="c-connection-string" name="c-connection-string"></a>
 
 ### <a name="connection-connection-string"></a>Bağlantı: bağlantı dizesi
 
-SQL veritabanına bağlanmak için gerekli olan bağlantı dizesi, SQL Server bağlanmak için kullanılan dizeden biraz farklıdır. Veritabanınızın bağlantı dizesini [Azure Portal](https://portal.azure.com/)kopyalayabilirsiniz.
+Veritabanınıza bağlanmak için gerekli olan bağlantı dizesi, SQL Server bağlanmak için kullanılan dizeden biraz farklıdır. Veritabanınızın bağlantı dizesini [Azure Portal](https://portal.azure.com/)kopyalayabilirsiniz.
 
 [!INCLUDE [sql-database-include-connection-string-20-portalshots](../../../includes/sql-database-include-connection-string-20-portalshots.md)]
 
@@ -193,7 +194,7 @@ Genellikle, istemci programınızı barındıran bilgisayardaki giden iletişim 
 
 İstemci programınız bir Azure sanal makinesinde (VM) barındırılıyorsa, [ADO.NET 4,5 ve SQL veritabanı için 1433 ' den sonraki bağlantı noktalarını](adonet-v12-develop-direct-route-ports.md)okuyun.
 
-Bağlantı noktalarının ve IP adreslerinin Azure SQL veritabanı yapılandırmasıyla ilgili arka plan bilgileri için bkz. [Azure SQL veritabanı güvenlik duvarı](firewall-configure.md).
+Veritabanınızdaki bağlantı noktalarının ve IP adreslerinin yapılandırılması hakkında arka plan bilgileri için bkz. [Azure SQL veritabanı güvenlik duvarı](firewall-configure.md).
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
@@ -222,7 +223,7 @@ ADO.NET 4,0 veya önceki bir sürümünü kullanıyorsanız en son ADO.NET sür�
 
 ### <a name="diagnostics-test-whether-utilities-can-connect"></a>Tanılama: yardımcı programların bağlanıp bağlanamayacağını test edin
 
-Programınız SQL veritabanı 'na bağlanamıyorsa, tek bir tanılama seçeneği, bir yardımcı programı ile bağlanmayı denemenize yardımcı olur. İdeal olarak, yardımcı program, programınızın kullandığı kitaplığı kullanarak bağlanır.
+Programınız SQL veritabanı 'nda veritabanınıza bağlanamıyorsa, tek bir tanılama seçeneği, bir yardımcı programı ile bağlanmayı denemenize yardımcı olur. İdeal olarak, yardımcı program, programınızın kullandığı kitaplığı kullanarak bağlanır.
 
 Herhangi bir Windows bilgisayarında, bu yardımcı programları deneyebilirsiniz:
 
@@ -242,7 +243,7 @@ Linux 'ta aşağıdaki yardımcı programlar yararlı olabilir:
 - `netstat -nap`
 - `nmap -sS -O 127.0.0.1`: Örnek değeri IP adresiniz olacak şekilde değiştirin.
 
-Windows 'da, [PortQry. exe](https://www.microsoft.com/download/details.aspx?id=17148) yardımcı programı yararlı olabilir. SQL veritabanı 'nda bağlantı noktası durumu sorgulanırken ve bir dizüstü bilgisayarda çalıştırılan örnek bir yürütme aşağıda verilmiştir:
+Windows 'da, [PortQry. exe](https://www.microsoft.com/download/details.aspx?id=17148) yardımcı programı yararlı olabilir. Aşağıda SQL veritabanı 'ndaki ve bir dizüstü bilgisayarda çalışan bir veritabanında bağlantı noktası durumu sorgulanan örnek bir yürütme verilmiştir:
 
 ```cmd
 [C:\Users\johndoe\]
@@ -326,7 +327,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 ## <a name="enterprise-library-6"></a>Kuruluş kitaplığı 6
 
-Enterprise Library 6 (EntLib60), biri SQL veritabanı hizmeti olan bulut hizmetleri için güçlü istemcileri uygulamanıza yardımcı olan bir .NET sınıfları çerçevesidir. EntLib60 'in yardımcı olduğu her bir alana adanmış konuları bulmak için bkz. [Enterprise Library 6-nisan 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
+Enterprise Library 6 (EntLib60), biri SQL veritabanı olan bulut hizmetlerinden oluşan güçlü istemcileri uygulamanıza yardımcı olan bir .NET sınıfları çerçevesidir. EntLib60 'in yardımcı olduğu her bir alana adanmış konuları bulmak için bkz. [Enterprise Library 6-nisan 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
 
 Geçici hataları işlemek için yeniden deneme mantığı, EntLib60 'in yardımcı olabilecek tek bir alandır. Daha fazla bilgi için bkz. [4-Perseverance, tüm üç aylık gizlilik: geçici hata Işleme uygulama bloğunu kullanma](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b23cc2f69e78135998dcaa8a182f3d3ccc0eba82
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658889"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190406"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Hizmet sağlayıcıları için Azure Izleyici günlükleri
 
@@ -19,7 +19,7 @@ Azure Izleyici 'deki Log Analytics çalışma alanları, yönetilen hizmet sağl
 
 Büyük kuruluşlar, özellikle birçok farklı iş birimi için yönetmekten sorumlu bir merkezi BT ekibi olduğunda, servis sağlayıcılarıyla birçok benzerlik paylaşır. Kolaylık olması için, bu belge *hizmet sağlayıcısını* kullanır, ancak kuruluşlar ve diğer müşteriler için aynı işlevsellik de mevcuttur.
 
-[Bulut çözümü sağlayıcısı (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) programının parçası olan iş ortakları ve hizmet sağlayıcıları Için Azure izleyici 'de log ANALYTICS Azure CSP aboneliklerinde bulunan Azure hizmetlerinden biridir.
+[Bulut çözümü sağlayıcısı (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) programının parçası olan iş ortakları ve hizmet sağlayıcıları Için Azure izleyici 'de log ANALYTICS Azure CSP aboneliklerinde bulunan Azure hizmetlerinden biridir.
 
 Azure Izleyici 'de Log Analytics Ayrıca, Azure açık [Thouse](https://docs.microsoft.com/azure/lighthouse/overview)'daki Azure Temsilcili kaynak yönetimi özelliği aracılığıyla müşteri kaynaklarını yöneten bir hizmet sağlayıcısı tarafından da kullanılabilir.
 

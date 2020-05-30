@@ -12,23 +12,23 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: e55b75b26eec3112472d78c0c22c147a80177007
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e23b772c6f57a2649d626e879d404e76ab2ab380
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118710"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219353"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği ile işlemsel çoğaltma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-İşlem çoğaltma, Azure SQL yönetilen örneği 'nin bir özelliğidir ve Azure SQL yönetilen örneğindeki bir tablodan veya bir SQL Server uzak veritabanlarına yerleştirilmiş tablolara veri çoğaltmanıza olanak tanıyan SQL Server. Bu özellik, farklı veritabanlarındaki birden çok tabloyu eşitlemenize olanak tanır.
+İşlem çoğaltma, Azure SQL yönetilen örneği 'nin bir özelliğidir ve Azure SQL yönetilen örneğindeki bir tablodan veya bir SQL Server örneğindeki verileri uzak veritabanlarına yerleştirilmiş tablolara çoğaltmanıza olanak tanıyan SQL Server. Bu özellik, farklı veritabanlarındaki birden çok tabloyu eşitlemenize olanak tanır.
 
 ## <a name="overview"></a>Genel Bakış
 
 Azure SQL yönetilen örneğinde yapılan değişiklikleri şu şekilde göndermek için işlem çoğaltmayı kullanabilirsiniz:
 
-- Şirket içinde veya bir Azure VM 'de SQL Server veritabanı
+- Şirket içinde veya Azure VM 'de SQL Server veritabanı
 - Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanı
 - Azure SQL yönetilen örneği 'nde tek veya havuza alınmış bir veritabanı
 
@@ -49,11 +49,11 @@ Aşağıdaki resimde gösterildiği gibi, işlemsel çoğaltma 'daki anahtar bil
 | **İtme abonesi**| Evet | Yes|
 | &nbsp; | &nbsp; | &nbsp; |
 
-**Yayımcı** , güncelleştirmeleri dağıtıcıya göndererek bazı tablolarda (makaleler) yapılan değişiklikleri yayımlar. Yayımcı bir Azure SQL yönetilen örneği veya bir SQL Server olabilir.
+**Yayımcı** , güncelleştirmeleri dağıtıcıya göndererek bazı tablolarda (makaleler) yapılan değişiklikleri yayımlar. Yayımcı bir Azure SQL yönetilen örneği veya bir SQL Server örneği olabilir.
 
-**Dağıtıcı** , bir yayımcının makalelerindeki değişiklikleri toplar ve bunları abonelere dağıtır. Dağıtıcı, Azure SQL yönetilen örneği veya SQL Server (yayımcı sürümüne eşit veya daha yüksek bir sürüm) olabilir.
+**Dağıtıcı** , bir yayımcının makalelerindeki değişiklikleri toplar ve bunları abonelere dağıtır. Dağıtıcı bir Azure SQL yönetilen örneği ya da bir SQL Server örneği (yayımcı sürümüne eşit veya daha yüksek bir sürüm) olabilir.
 
-**Abone** , yayımcı üzerinde yapılan değişiklikleri alır. SQL Server ve Azure SQL yönetilen örneği hem itme hem de çekme aboneleri alabilir, ancak dağıtıcı bir Azure SQL yönetilen örneği olduğunda ve abone olmadığında bir çekme aboneliği desteklenmez. Azure SQL veritabanı yalnızca bir anında iletme abonesi olabilir.
+**Abone** , yayımcı üzerinde yapılan değişiklikleri alır. Bir SQL Server örneği ve Azure SQL yönetilen örneği hem itme hem de çekme aboneleri olabilir, ancak dağıtıcı bir Azure SQL yönetilen örneği olduğunda ve abone olmadığında bir çekme aboneliği desteklenmez. Azure SQL veritabanındaki bir veritabanı yalnızca bir itme abonesi olabilir.
 
 Azure SQL yönetilen örneği, aşağıdaki SQL Server sürümlerinden abone olmak için destek alabilir:
 
@@ -82,7 +82,7 @@ Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-database
 
 ### <a name="supportability-matrix"></a>Desteklenebilirlik matrisi
 
-  Azure SQL yönetilen örneği için işlemsel çoğaltma desteklenebilirliği, şirket içi SQL Server ile aynıdır.
+  Azure SQL yönetilen örneği için işlemsel çoğaltma desteklenebilirliği, SQL Server ile aynıdır.
   
 | **Publisher**   | **Dağıtım** | **Abone** |
 | :------------   | :-------------- | :------------- |
@@ -114,15 +114,15 @@ Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-database
 
 Genellikle, yayımcı ve dağıtıcı bulutta ya da şirket içinde olmalıdır. Aşağıdaki yapılandırmalar desteklenir:
 
-### <a name="publisher-with-local-distributor-on-sql-mi"></a>SQL mı 'de yerel dağıtıcıya sahip Yayımcı
+### <a name="publisher-with-local-distributor-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde yerel dağıtıcıya sahip Yayımcı
 
 ![Yayımcı ve dağıtıcı olarak tek örnek](./media/replication-transactional-overview/01-single-instance-asdbmi-pubdist.png)
 
-Yayımcı ve dağıtıcı tek bir yönetilen örnek içinde yapılandırılır ve değişiklikleri diğer Azure SQL Server, Azure SQL yönetilen örneği veya şirket içinde veya bir VM 'de SQL Server dağıtılır.
+Yayımcı ve dağıtıcı tek bir SQL yönetilen örneği içinde yapılandırılır ve değişiklikleri başka bir SQL yönetilen örneği, SQL veritabanı veya SQL Server örneğine dağıtmaktadır.
 
-### <a name="publisher-with-remote-distributor-on-sql-mi"></a>SQL MI üzerinde uzak dağıtıcıya sahip Yayımcı
+### <a name="publisher-with-remote-distributor-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde uzak dağıtıcıya sahip Yayımcı
 
-Bu yapılandırmada, bir yönetilen örnek, çok sayıda kaynak yönetilen örneğe yönelik başka bir yönetilen örneğe yerleştirilmiş ve değişiklikleri Azure SQL Server, Azure SQL yönetilen örneği veya şirket içinde ya da bir VM 'de SQL Server bir veya daha fazla hedefe dağıtabilecek başka bir yönetilen örneğe yerleştirilmiş olan dağıtıcıda yayınlar.
+Bu yapılandırmada, bir yönetilen örnek, çok sayıda kaynak SQL yönetilen örneğe yönelik olan ve değişiklikleri Azure SQL veritabanı, Azure SQL yönetilen örneği veya SQL Server bir veya daha fazla hedefe dağıtan başka bir SQL yönetilen örneğine yerleştirilmiş bir dağıtıcıda yayınlar.
 
 ![Yayımcı ve dağıtıcı için ayrı örnekler](./media/replication-transactional-overview/02-separate-instances-asdbmi-pubdist.png)
 
@@ -131,11 +131,11 @@ Yayımcı ve dağıtıcı iki yönetilen örnek üzerinde yapılandırılır. Bu
 - Her iki yönetilen örnek de aynı vNet üzerinde.
 - Her iki yönetilen örnek de aynı konumdadır.
 
-### <a name="on-prem-pubdist-with-remote-subscriber"></a>Uzak abone ile şirket içi yayın/dağ
+### <a name="on-premises-publisherdistributor-with-remote-subscriber"></a>Uzak abone ile şirket içi Yayımcı/dağıtıcı
 
 ![Abone olarak Azure SQL veritabanı](./media/replication-transactional-overview/03-azure-sql-db-subscriber.png)
 
-Bu yapılandırmada, bir Azure SQL veritabanı veya Azure SQL yönetilen örnek veritabanı bir abone olur. Bu yapılandırma Şirket içinden Azure 'a geçişi destekler. Bir abone Azure SQL veritabanı ise, gönderim modunda olmalıdır.  
+Bu yapılandırmada, Azure SQL veritabanı veya Azure SQL yönetilen örneği için bir veritabanı abone olur. Bu yapılandırma Şirket içinden Azure 'a geçişi destekler. Bir abone Azure SQL veritabanı 'nda bir veritabanı ise, gönderim modunda olmalıdır.  
 
 ## <a name="requirements"></a>Gereksinimler
 
@@ -151,7 +151,7 @@ Bu yapılandırmada, bir Azure SQL veritabanı veya Azure SQL yönetilen örnek 
 
 ## <a name="with-failover-groups"></a>Yük devretme gruplarıyla
 
-[Etkin coğrafi çoğaltma](../database/active-geo-replication-overview.md) , işlemsel çoğaltma kullanılarak SQL yönetilen örneği ile desteklenmez. Etkin coğrafi çoğaltma yerine, [otomatik yük devretme grupları](../database/auto-failover-group-overview.md)kullanın, ancak yayının birincil yönetilen örnekten [el ile silinmesini](transact-sql-tsql-differences-sql-server.md#replication) ve yük DEVRETMEDEN sonra ikincil SQL yönetilen örneği üzerinde yeniden oluşturulmasını unutmayın.
+[Etkin coğrafi çoğaltma](../database/active-geo-replication-overview.md) , işlemsel çoğaltma kullanılarak SQL yönetilen örneği ile desteklenmez. Etkin coğrafi çoğaltma yerine, [otomatik yük devretme grupları](../database/auto-failover-group-overview.md)kullanın, ancak yayının, birincil yönetilen örnekten [el ile silinmesini](transact-sql-tsql-differences-sql-server.md#replication) ve yük DEVRETMEDEN sonra ikincil SQL yönetilen örneği üzerinde yeniden oluşturulmasını unutmayın.
 
 Bir [Yük devretme grubundaki](../database/auto-failover-group-overview.md)bir **Yayımcı** veya **dağıtıcı** SQL yönetilen ÖRNEĞI üzerinde coğrafi çoğaltma etkinse, SQL yönetilen örnek yöneticisinin eski birincil üzerindeki tüm yayınları temizlemesi ve yük devretme gerçekleştikten sonra yeni birincil üzerinde yeniden yapılandırması gerekir. Bu senaryoda aşağıdaki etkinlikler gereklidir:
 
@@ -193,14 +193,14 @@ Bir yük devretme grubundaki bir **abone** örneğinde coğrafi çoğaltma etkin
 
 İşlem çoğaltmasını yapılandırma hakkında daha fazla bilgi için aşağıdaki öğreticilere bakın:
 
-- [Mı yayımcısı ile abone arasında çoğaltmayı yapılandırma](../managed-instance/replication-between-two-instances-configure-tutorial.md)
-- [Mı yayımcısı, mı dağıtıcısı ve SQL Server abonesi arasında çoğaltmayı yapılandırma](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
+- [SQL yönetilen örnek yayımcısı ve abonesi arasında çoğaltmayı yapılandırma](../managed-instance/replication-between-two-instances-configure-tutorial.md)
+- [SQL yönetilen örnek yayımcısı, SQL yönetilen örnek dağıtıcısı ve SQL Server abonesi arasında çoğaltmayı yapılandırma](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
 - [Bir yayın oluşturun](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-- Abone olarak sunucu adını (örneğin, hedef veritabanı olarak Azure SQL veritabanı adı) kullanarak [bir anında iletme aboneliği oluşturun](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) `N'azuresqldbdns.database.windows.net` (örneğin **AdventureWorks**. )
+- [Create a push subscription](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) Abone olarak sunucu adını (örneğin `N'azuresqldbdns.database.windows.net` , hedef VERITABANı olarak Azure SQL veritabanı adı (örneğin **AdventureWorks**) kullanarak bir anında iletme aboneliği oluşturun. )
 
-## <a name="see-also"></a>Ayrıca Bkz.  
+## <a name="see-also"></a>Ayrıca bkz.  
 
-- [Mı ve bir yük devretme grubuyla çoğaltma](transact-sql-tsql-differences-sql-server.md#replication)
+- [SQL yönetilen örneği ve bir yük devretme grubu ile çoğaltma](transact-sql-tsql-differences-sql-server.md#replication)
 - [SQL Veritabanına Çoğaltma](../database/replication-to-sql-database.md)
 - [Yönetilen örneğe çoğaltma](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [Yayın oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)

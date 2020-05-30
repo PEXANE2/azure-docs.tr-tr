@@ -3,12 +3,12 @@ title: Azure Application Insights bağımlılık Izleme | Microsoft Docs
 description: Şirket içi veya Microsoft Azure Web uygulamanızdan gelen bağımlılık çağrılarını Application Insights ile izleyin.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 2b7a20731fa5eae8313adcf07d877626fcaa4dce
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 759e465a21b421c22a62245536827546acc2d79e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980856"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204761"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
@@ -16,7 +16,7 @@ ms.locfileid: "82980856"
 
 ## <a name="automatically-tracked-dependencies"></a>Otomatik olarak izlenen bağımlılıklar
 
-.NET ve .NET Core `DependencyTrackingTelemetryModule` Için Application Insights SDK 'ları, otomatik olarak bağımlılıkları toplayan bir telemetri modülüdür. Bu bağımlılık koleksiyonu, bağlantılı resmi belgelere göre yapılandırıldığında [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) ve [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) uygulamaları için otomatik olarak etkinleştirilir. `DependencyTrackingTelemetryModule` , [Bu](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet paketi olarak sevk edilir ve NuGet paketlerinden `Microsoft.ApplicationInsights.Web` ya da ya da ya da herhangi biri kullanılırken `Microsoft.ApplicationInsights.AspNetCore`otomatik olarak getirilir.
+.NET ve .NET Core için Application Insights SDK 'Ları `DependencyTrackingTelemetryModule` , otomatik olarak bağımlılıkları toplayan bir telemetri modülüdür. Bu bağımlılık koleksiyonu, bağlantılı resmi belgelere göre yapılandırıldığında [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) ve [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) uygulamaları için otomatik olarak etkinleştirilir. `DependencyTrackingTelemetryModule`, [Bu](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet paketi olarak sevk edilir ve NuGet paketlerinden ya da ya da ya da herhangi biri kullanılırken otomatik olarak getirilir `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.AspNetCore` .
 
  `DependencyTrackingTelemetryModule`Şu anda aşağıdaki bağımlılıkları otomatik olarak izler:
 
@@ -24,7 +24,7 @@ ms.locfileid: "82980856"
 |---------------|-------|
 |Http/https | Yerel veya uzak http/https çağrıları |
 |WCF çağrıları| Yalnızca HTTP tabanlı bağlamalar kullanılıyorsa otomatik olarak izlenir.|
-|SQL | İle `SqlClient`yapılan çağrılar. SQL sorgusunu yakalamak için [bunu](#advanced-sql-tracking-to-get-full-sql-query) inceleyin.  |
+|SQL | İle yapılan çağrılar `SqlClient` . SQL sorgusunu yakalamak için [bunu](#advanced-sql-tracking-to-get-full-sql-query) inceleyin.  |
 |[Azure depolama (blob, tablo, kuyruk)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Azure Storage Istemcisi ile yapılan çağrılar. |
 |[EventHub Istemci SDK 'Sı](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | Sürüm 1.1.0 ve üstü. |
 |[ServiceBus Istemci SDK 'Sı](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Sürüm 3.0.0 ve üstü. |
@@ -34,7 +34,7 @@ Bir bağımlılığı eksik ise veya farklı bir SDK kullanıyorsanız, [otomati
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Konsol uygulamalarında otomatik bağımlılık izlemeyi ayarla
 
-.NET konsol uygulamalarından bağımlılıkları otomatik olarak izlemek için, NuGet paketini `Microsoft.ApplicationInsights.DependencyCollector`yükledikten sonra aşağıdaki gibi başlatın `DependencyTrackingTelemetryModule` :
+.NET konsol uygulamalarından bağımlılıkları otomatik olarak izlemek için, NuGet paketini yükledikten `Microsoft.ApplicationInsights.DependencyCollector` sonra `DependencyTrackingTelemetryModule` aşağıdaki gibi başlatın:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
@@ -60,7 +60,7 @@ Aşağıda, otomatik olarak toplanmayan ve bu nedenle el ile izleme gerektiren b
 
 SDK tarafından otomatik olarak toplanmayan bağımlılıklar için, standart otomatik toplama modülleri tarafından kullanılan [Trackdependency API](api-custom-events-metrics.md#trackdependency) 'sini kullanarak bunları el ile izleyebilirsiniz.
 
-Örneğin, kodunuzun kendinize yazmadığınız bir derlemeyle derlenmesi durumunda, yanıt süreleriniz için hangi katkıyı yaptığını öğrenmek için tüm çağrıları zaman içinde oluşturabilirsiniz. Bu verilerin Application Insights içindeki bağımlılık grafiklerde görüntülenmesini sağlamak için, kullanarak `TrackDependency`gönderin.
+Örneğin, kodunuzun kendinize yazmadığınız bir derlemeyle derlenmesi durumunda, yanıt süreleriniz için hangi katkıyı yaptığını öğrenmek için tüm çağrıları zaman içinde oluşturabilirsiniz. Bu verilerin Application Insights içindeki bağımlılık grafiklerde görüntülenmesini sağlamak için, kullanarak gönderin `TrackDependency` .
 
 ```csharp
 
@@ -78,7 +78,7 @@ SDK tarafından otomatik olarak toplanmayan bağımlılıklar için, standart ot
     }
 ```
 
-Alternatif olarak `TelemetryClient` , burada gösterildiği `StartOperation` gibi `StopOperation` , bağımlılıkları el ile izlemek için kullanılabilecek uzantı yöntemlerini ve bu [here](custom-operations-tracking.md#outgoing-dependencies-tracking) yöntemleri sağlar
+Alternatif olarak, `TelemetryClient` `StartOperation` `StopOperation` [burada](custom-operations-tracking.md#outgoing-dependencies-tracking) gösterildiği gibi, bağımlılıkları el ile izlemek için kullanılabilecek uzantı yöntemlerini ve bu yöntemleri sağlar
 
 Standart bağımlılık izleme modülünü devre dışı bırakmak istiyorsanız, ASP.NET uygulamaları için [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) içindeki DependencyTrackingTelemetryModule başvurusunu kaldırın. ASP.NET Core uygulamalar için [buradaki](asp-net-core.md#configuring-or-removing-default-telemetrymodules)yönergeleri izleyin.
 
@@ -88,9 +88,12 @@ Web sayfaları için Application Insights JavaScript SDK 'Sı otomatik olarak AJ
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Tam SQL sorgusu almak için gelişmiş SQL izleme
 
-SQL çağrıları için sunucu ve veritabanının adı her zaman toplanır ve toplanan `DependencyTelemetry`adı olarak depolanır. Tam SQL sorgu metnini içerebilen ' Data ' adlı ek bir alan var.
+SQL çağrıları için sunucu ve veritabanının adı her zaman toplanır ve toplanan adı olarak depolanır `DependencyTelemetry` . Tam SQL sorgu metnini içerebilen ' Data ' adlı ek bir alan var.
 
-ASP.NET Core uygulamalar için, tam SQL sorgusunu almak için ek bir adım gerekmez.
+ASP.NET Core uygulamalar için, artık kullanarak SQL metin toplamayı tercih etmek gerekir.
+```csharp
+services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module. EnableSqlCommandTextInstrumentation = true; });
+```
 
 ASP.NET uygulamaları için tam SQL sorgusu, izleme altyapısı gerektiren veya System. Data. SqlClient kitaplığı yerine [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanan bayt kodu izleme yardımıyla birlikte toplanır. Aşağıda açıklandığı gibi platforma özgü ek adımlar gereklidir.
 
@@ -101,7 +104,7 @@ ASP.NET uygulamaları için tam SQL sorgusu, izleme altyapısı gerektiren veya 
 | Azure Cloud Service | [StatusMonitor 'ı yüklemek için başlangıç görevi](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) ekleme <br> [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) veya [ASP.NET Core uygulamalarına](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) yönelik NuGet paketlerini yükleyerek uygulamanızın derleme zamanında eklendi to ApplicationInsights SDK 'sı olması gerekir |
 | IIS Express | [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanın
 
-Yukarıdaki durumlarda, izleme altyapısının doğru şekilde doğrulandığının doğru şekilde doğrulanması, toplanan `DependencyTelemetry` SDK sürümünün ' rddp ' olduğunu doğrulamakdır. ' rdddsd ' veya ' rddf ', bağımlılıkların DiagnosticSource veya EventSource Callbacks aracılığıyla toplanacağını ve bu nedenle tam SQL sorgusunun yakalanmayacağını gösterir.
+Yukarıdaki durumlarda, izleme altyapısının doğru şekilde doğrulandığının doğru şekilde doğrulanması, toplanan SDK sürümünün `DependencyTelemetry` ' rddp ' olduğunu doğrulamakdır. ' rdddsd ' veya ' rddf ', bağımlılıkların DiagnosticSource veya EventSource Callbacks aracılığıyla toplanacağını ve bu nedenle tam SQL sorgusunun yakalanmayacağını gösterir.
 
 ## <a name="where-to-find-dependency-data"></a>Bağımlılık verilerinin nerede bulunacağı
 
@@ -184,7 +187,7 @@ Burada, başarısız bağımlılık sayısını görebileceksiniz. Alt tablodaki
 
 ### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Otomatik bağımlılık toplayıcı raporu bağımlılıklara nasıl çağrı başarısız oldu?*
 
-* Başarısız bağımlılık çağrılarında ' success ' alanı false olarak ayarlanmalıdır. `DependencyTrackingTelemetryModule`Rapor `ExceptionTelemetry`etmez. Bağımlılık için tam veri modeli [burada](data-model-dependency-telemetry.md)açıklanmıştır.
+* Başarısız bağımlılık çağrılarında ' success ' alanı false olarak ayarlanmalıdır. `DependencyTrackingTelemetryModule`rapor etmez `ExceptionTelemetry` . Bağımlılık için tam veri modeli [burada](data-model-dependency-telemetry.md)açıklanmıştır.
 
 ## <a name="open-source-sdk"></a>Açık kaynaklı SDK
 Her Application Insights SDK gibi bağımlılık koleksiyonu modülü de açık kaynaktır. [Resmi GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server)deposunda kodu okuyun ve katkıda bulunun veya sorunları raporla.

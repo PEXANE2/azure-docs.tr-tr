@@ -6,13 +6,13 @@ ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 4c25c64268b38e5929c73891f7c48e79b9b8593e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: seodec18, references_regions
+ms.openlocfilehash: e56e5878c2f3528bee50137b4d40d947feda3ece
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856051"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197163"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Ortamı kilitleme
 
@@ -92,7 +92,7 @@ Uygulamanız için gelen trafiğin geldiği adres aralığını biliyorsanız, b
 
 Bu Application Gateway kullanımı, sisteminizi yapılandırmaya yönelik yalnızca bir örnektir. Bu yolu izledikten sonra, Application Gateway gönderilen yanıt trafiğinin doğrudan gidebilmesi için ATıCı alt ağ yolu tablosuna bir yol eklemeniz gerekir. 
 
-## <a name="logging"></a>Günlüğe Kaydetme 
+## <a name="logging"></a>Günlüğe kaydetme 
 
 Azure Güvenlik Duvarı, Azure depolama, Olay Hub 'ı veya Azure Izleyici günlüklerine Günlükler gönderebilir. Uygulamanızı desteklenen herhangi bir hedefle tümleştirmek için Azure Güvenlik Duvarı portalı > tanılama günlükleri ' ne gidin ve istediğiniz hedefe yönelik günlükleri etkinleştirin. Azure Izleyici günlükleri ile tümleştirirseniz, Azure Güvenlik Duvarı 'na gönderilen tüm trafik için günlüğe kaydetmeyi görebilirsiniz. Reddedilen trafiği görmek için Log Analytics çalışma alanı portalınızı > günlüklerine açın ve şu şekilde bir sorgu girin: 
 
@@ -225,7 +225,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 | Uç Nokta |
 |----------|
-|gr-prod-\*. cloudapp.net:443 |
+|gr-prod- \* . cloudapp.net:443 |
 | \*. management.azure.com:443 |
 | \*. update.microsoft.com:443 |
 | \*. windowsupdate.microsoft.com:443 |

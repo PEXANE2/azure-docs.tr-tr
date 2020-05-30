@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281892"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195979"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Kopyalama etkinliğini kullanarak verileri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -81,7 +81,7 @@ Kopyalama etkinliği aynı zamanda belirtilen biçimlerdeki dosyaları okur ve y
 
 Örneğin, aşağıdaki kopyalama etkinliklerini yapabilirsiniz:
 
-* Verileri şirket içi SQL Server kopyalayın ve Azure Data Lake Store ORC biçiminde yazın.
+* Verileri bir SQL Server veritabanına kopyalayın ve Azure Data Lake Store ORC biçiminde yazın.
 * Metin (CSV) biçimindeki dosyaları şirket içi dosya sisteminden kopyalayın ve avro biçiminde Azure Blob 'a yazın.
 * ZIP dosyalarını şirket içi dosya sisteminden kopyalayın ve Azure Data Lake Store ' ye açıp açın.
 * Verileri Azure Blob 'dan GZip sıkıştırılmış metin (CSV) biçiminde kopyalayın ve Azure SQL veritabanı 'na yazın.
@@ -94,7 +94,7 @@ Hem kaynak hem de havuz veri deposu bulutta olduğunda Data Factory, verileri ta
 
 | Hedef veri depolarının Coğrafya | Hedef veri deposunun bölgesi | Veri taşıma için kullanılan bölge |
 |:--- |:--- |:--- |
-| Amerika Birleşik Devletleri | Doğu ABD | Doğu ABD |
+| Birleşik Devletler | Doğu ABD | Doğu ABD |
 | &nbsp; | Doğu ABD 2 | Doğu ABD 2 |
 | &nbsp; | Orta ABD | Orta ABD |
 | &nbsp; | Orta Kuzey ABD | Orta Kuzey ABD |
@@ -121,7 +121,7 @@ Hem kaynak hem de havuz veri deposu bulutta olduğunda Data Factory, verileri ta
 | Güney Kore | Güney Kore - Orta | Güney Kore - Orta |
 | &nbsp; | Güney Kore - Güney | Güney Kore - Orta |
 
-Alternatif olarak, kopyalama etkinliği `executionLocation` `typeProperties`altındaki özelliği belirterek kopyayı gerçekleştirmek için kullanılacak Data Factory hizmetin bölgesini açıkça belirtebilirsiniz. Bu özellik için desteklenen değerler, **veri taşıma sütunu için kullanılan yukarıdaki bölgede** listelenmiştir. Verileriniz, kopyalama sırasında, bu bölgeden gelen bölge üzerinden gider. Örneğin, Kore 'deki Azure mağazalarını kopyalamak için, Japonya bölgesi üzerinden yönlendirmeyi `"executionLocation": "Japan East"` belirtebilirsiniz (bkz. başvuru olarak [örnek JSON](#by-using-json-scripts) ).
+Alternatif olarak, `executionLocation` kopyalama etkinliği altındaki özelliği belirterek kopyayı gerçekleştirmek için kullanılacak Data Factory hizmetin bölgesini açıkça belirtebilirsiniz `typeProperties` . Bu özellik için desteklenen değerler, **veri taşıma sütunu için kullanılan yukarıdaki bölgede** listelenmiştir. Verileriniz, kopyalama sırasında, bu bölgeden gelen bölge üzerinden gider. Örneğin, Kore 'deki Azure mağazalarını kopyalamak için, `"executionLocation": "Japan East"` Japonya bölgesi üzerinden yönlendirmeyi belirtebilirsiniz (bkz. başvuru olarak [örnek JSON](#by-using-json-scripts) ).
 
 > [!NOTE]
 > Hedef veri deposunun bölgesi önceki listede yoksa veya algılanamaz ise, varsayılan olarak kopyalama etkinliği bir alternatif bölge yerine başarısız olur, `executionLocation` ancak belirtilmemişse. Desteklenen bölge listesi zaman içinde genişletilir.
@@ -139,7 +139,7 @@ Data Factory kopyalama Sihirbazı, kopyalama etkinliğine sahip bir işlem hatt�
 ### <a name="by-using-json-scripts"></a>JSON betiklerini kullanarak
 Visual Studio 'da Data Factory düzenleyicisini veya Azure PowerShell bir işlem hattı için JSON tanımı oluşturmak için (kopyalama etkinliğini kullanarak) kullanabilirsiniz. Daha sonra, Data Factory işlem hattını oluşturmak için dağıtabilirsiniz. Adım adım yönergeler için bkz. [öğretici: Azure Data Factory işlem hattındaki kopyalama etkinliği kullanma](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .    
 
-JSON özellikleri (ad, açıklama, giriş ve çıkış tabloları ve ilkeler gibi) tüm etkinlik türleri için kullanılabilir. Etkinliğin `typeProperties` bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir.
+JSON özellikleri (ad, açıklama, giriş ve çıkış tabloları ve ilkeler gibi) tüm etkinlik türleri için kullanılabilir. `typeProperties`Etkinliğin bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir.
 
 Kopyalama etkinliği için, `typeProperties` bölüm, kaynak ve havuz türlerine göre değişir. Bu veri deposu için kopyalama etkinliğinin desteklediği tür özellikleri hakkında bilgi edinmek için [desteklenen kaynaklar ve havuzlar](#supported-data-stores-and-formats) bölümünde bir kaynak/havuz öğesine tıklayın.
 
@@ -196,7 +196,7 @@ Azure Data Factory içindeki veri taşıma (kopyalama etkinliği) performansın�
 ## <a name="fault-tolerance"></a>Hataya dayanıklılık
 Varsayılan olarak, kopyalama etkinliği veri kopyalamayı durdurur ve kaynak ve havuz arasında uyumsuz verilerle karşılaşmanız durumunda başarısız olur; uyumsuz satırları atlayıp günlüğe kaydetmek ve yalnızca bu uyumlu verileri kopyalamak için açıkça yapılandırabilmeniz gerekir. Daha fazla ayrıntı için [kopyalama etkinliği hata toleransını](data-factory-copy-activity-fault-tolerance.md) inceleyin.
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 Verilerinizin güvenliğini sağlamak için Azure Data Factory veri taşıma hizmetlerinin kullandığı güvenlik altyapısını açıklayan [güvenlik konularını](data-factory-data-movement-security-considerations.md)inceleyin.
 
 ## <a name="scheduling-and-sequential-copy"></a>Zamanlama ve sıralı kopya

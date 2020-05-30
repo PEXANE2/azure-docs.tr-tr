@@ -11,18 +11,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 3da51d1e08676d2794c6e95e7ffb359aff26084a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: aa8500e0e301de5f015d074646bf4da82e4de0a1
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118400"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192552"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Veri Içeri aktarma ve veri dışa aktarma modülleri kullanan Azure Machine Learning Studio (klasik) Web hizmetlerini dağıtma
 
 Tahmine dayalı bir deneme oluşturduğunuzda, genellikle bir Web hizmeti girişi ve çıkışı eklersiniz. Denemeyi dağıttığınızda, müşteriler girişler ve çıktılar aracılığıyla Web hizmetinden veri gönderebilir ve alabilir. Bazı uygulamalarda, bir tüketicinin verileri bir veri akışından bulunabilir veya Azure Blob depolama gibi bir dış veri kaynağında yer alabilir. Bu durumlarda, Web hizmeti girişleri ve çıkışları kullanılarak okuma ve yazma verilerine gerek kalmaz. Bunun yerine, veri kaynağı alma modülünü kullanarak veri kaynağından veri okumak için Batch yürütme hizmeti 'ni (BES) kullanabilir ve veri dışa aktarma modülünü kullanarak Puanlama sonuçlarını farklı bir veri konumuna yazabilir.
 
-Verileri Içeri aktarma ve dışarı aktarma modülleri, HTTP, Hive sorgusu, Azure SQL veritabanı, Azure Tablo depolama, Azure Blob depolama, veri akışı sağlama veya şirket içi SQL veritabanı gibi çeşitli veri konumlarına okuma ve yazma işlemi yapabilir.
+Verileri Içeri aktarma ve dışarı aktarma modülleri, HTTP, Hive sorgusu, Azure SQL veritabanı, Azure Tablo depolama, Azure Blob depolama, veri akışı sağlama veya SQL Server veritabanı aracılığıyla Web URL 'SI gibi çeşitli veri konumlarında okuma ve yazma işlemi yapabilir.
 
 Bu konu, "örnek 5: eğitme, test, Ikili sınıflandırma için değerlendirme: yetişkin veri kümesi" örneğini kullanır ve veri kümesinin, censusdata adlı bir Azure SQL tablosuna zaten yüklendiğini varsayar.
 

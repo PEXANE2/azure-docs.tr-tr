@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
-ms.openlocfilehash: 749b733039e89421ac33ef76a11f3291b296e718
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6944d2e6a8f762e62c14f6f3fa3f600a9b3c333e
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673161"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195013"
 ---
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
@@ -17,7 +17,7 @@ Yerel Azure Işlevleri çalışma zamanı konağını *Localfunctionproj* klasö
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-javascript,programming-language-python"
 ```
-func start
+func host start
 ```
 ::: zone-end
 
@@ -51,12 +51,12 @@ Http Functions:
 </pre>
 
 >[!NOTE]  
-> HttpExample aşağıda gösterildiği gibi görünmezse, büyük olasılıkla ana bilgisayarı projenin kök klasörü dışından başlatmış olursunuz. Bu durumda, Konağı durdurmak için **CTRL**+**C** 'yi kullanın, projenin kök klasörüne gidin ve önceki komutu yeniden çalıştırın.
+> HttpExample aşağıda gösterildiği gibi görünmezse, büyük olasılıkla ana bilgisayarı projenin kök klasörü dışından başlatmış olursunuz. Bu durumda, **Ctrl** + Konağı durdurmak için CTRL**C** 'yi kullanın, projenin kök klasörüne gidin ve önceki komutu yeniden çalıştırın.
 
-İşlevinizin `HttpExample` URL 'sini bu çıktıdan tarayıcıya kopyalayın ve sorgu dizesini `?name=<your-name>`ekleyerek tam URL 'yi yapın. `http://localhost:7071/api/HttpExample?name=Functions` Tarayıcı şöyle `Hello Functions`bir ileti görüntülemelidir:
+`HttpExample`İşlevinizin URL 'sini bu çıktıdan tarayıcıya kopyalayın ve sorgu dizesini ekleyerek `?name=<your-name>` tam URL 'yi yapın `http://localhost:7071/api/HttpExample?name=Functions` . Tarayıcı şöyle bir ileti görüntülemelidir `Hello Functions` :
 
 ![İşlevin sonuçları tarayıcıda yerel olarak çalıştırıldı](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
 
 Projenizi başlattığınız Terminal Ayrıca, istek yaptığınız sürece günlük çıktısını gösterir.
 
-Hazırsanız, **CTRL**+**C** 'yi kullanın ve işlevler ana bilgisayarını `y` durdurmayı seçin.
+Hazırsanız, **CTRL** + **C** 'yi kullanın ve `y` işlevler ana bilgisayarını durdurmayı seçin.

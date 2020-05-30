@@ -3,12 +3,12 @@ title: SQL Server Azure 'a DPM iş yükü olarak yedekleme
 description: Azure Backup hizmetini kullanarak SQL Server veritabanlarını yedeklemeye giriş
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 01504fcfd81040d75e57ce62a9f77a5bb248d59b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6a612bc56d1fa6b70ac89ed48f28d1ae48da2e6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183798"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195788"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server Azure 'a DPM iş yükü olarak yedekleme
 
@@ -43,7 +43,7 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 1. **Sunucular**' ı seçin.
 
     ![Sunucular koruma grubu türünü seçin](./media/backup-azure-backup-sql/pg-servers.png)
-1. Yedeklemek istediğiniz veritabanlarının bulunduğu SQL Server makineyi genişletin. Bu sunucudan yedeklenebileceği veri kaynaklarını görürsünüz. **Tüm SQL paylaşımlarını** genişletin ve ardından yedeklemek istediğiniz veritabanlarını seçin. Bu örnekte, ReportServer $ MSDPM2012 ve ReportServer $ MSDPM2012TempDB ' ı seçeceğiz. Ardından **İleri**' yi seçin.
+1. Yedeklemek istediğiniz veritabanlarının bulunduğu SQL Server sanal makineyi genişletin. Bu sunucudan yedeklenebileceği veri kaynaklarını görürsünüz. **Tüm SQL paylaşımlarını** genişletin ve ardından yedeklemek istediğiniz veritabanlarını seçin. Bu örnekte, ReportServer $ MSDPM2012 ve ReportServer $ MSDPM2012TempDB ' ı seçeceğiz. Ardından **İleri**' yi seçin.
 
     ![SQL Server veritabanı seçin](./media/backup-azure-backup-sql/pg-databases.png)
 1. Koruma grubunu adlandırın ve **çevrimiçi koruma**istiyorum ' u seçin.
@@ -72,7 +72,7 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 
     ![Çoğaltma oluşturma yöntemi seçin](./media/backup-azure-backup-sql/pg-manual.png)
 
-    İlk yedekleme kopyası, tüm veri kaynağının (SQL Server veritabanı) aktarılmasını gerektirir. Yedekleme verileri, üretim sunucusundan (SQL Server makineden) DPM sunucusuna gider. Bu yedekleme büyükse, verilerin ağ üzerinden aktarılması bant genişliği tıkanıklığı sağlayabilir. Bu nedenle, Yöneticiler ilk yedeklemenin **el ile**aktarılması için çıkarılabilir medya kullanmayı seçebilir. Ya da verileri belirli bir zamanda **ağ üzerinden otomatik olarak** aktarabilirler.
+    İlk yedekleme kopyası, tüm veri kaynağının (SQL Server veritabanı) aktarılmasını gerektirir. Yedekleme verileri, üretim sunucusundan (SQL Server bilgisayardan) DPM sunucusuna gider. Bu yedekleme büyükse, verilerin ağ üzerinden aktarılması bant genişliği tıkanıklığı sağlayabilir. Bu nedenle, Yöneticiler ilk yedeklemenin **el ile**aktarılması için çıkarılabilir medya kullanmayı seçebilir. Ya da verileri belirli bir zamanda **ağ üzerinden otomatik olarak** aktarabilirler.
 
     İlk yedekleme tamamlandıktan sonra yedeklemeler ilk yedekleme kopyasında artımlı olarak devam eder. Artımlı yedeklemeler küçük olma eğilimindedir ve ağ üzerinden kolayca aktarılır.
 
@@ -80,7 +80,7 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 
     ![Tutarlılık denetiminin ne zaman çalıştırılacağını seçin](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    DPM, yedekleme noktasının bütünlüğü üzerinde bir tutarlılık denetimi çalıştırabilir. Bu dosya, üretim sunucusundaki (Bu örnekteki SQL Server makine) yedekleme dosyasının sağlama toplamını ve DPM 'deki bu dosyanın yedeklenen verilerini hesaplar. Denetim bir çakışma bulursa DPM 'deki yedeklenen dosyanın bozuk olduğu varsayılır. DPM, sağlama toplamı uyuşmazlığına karşılık gelen blokları göndererek yedeklenen verileri düzeltir. Tutarlılık denetimi performansı yoğun bir işlem olduğundan, Yöneticiler tutarlılık denetimini zamanlamayı veya otomatik olarak çalıştırmayı seçebilirler.
+    DPM, yedekleme noktasının bütünlüğü üzerinde bir tutarlılık denetimi çalıştırabilir. Bu dosya, üretim sunucusundaki (Bu örnekteki SQL Server bilgisayar) yedekleme dosyasının sağlama toplamını ve DPM 'deki bu dosyanın yedeklenen verilerini hesaplar. Denetim bir çakışma bulursa DPM 'deki yedeklenen dosyanın bozuk olduğu varsayılır. DPM, sağlama toplamı uyuşmazlığına karşılık gelen blokları göndererek yedeklenen verileri düzeltir. Tutarlılık denetimi performansı yoğun bir işlem olduğundan, Yöneticiler tutarlılık denetimini zamanlamayı veya otomatik olarak çalıştırmayı seçebilirler.
 
 1. Azure 'da korunacak veri kaynaklarını seçin. Ardından **İleri**' yi seçin.
 

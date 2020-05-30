@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 3d166c8fd893f38d587dbeff1d86530c46f89630
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e0fcbec2e502088024805ebc1f02007c09a12c9d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018795"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192501"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL veritabanı 'na Azure Stream Analytics çıkışı
 
-Bu makalede Azure Stream Analytics kullanarak SQL Azure veritabanına veri yüklerken daha iyi yazma performansı elde etme ipuçları ele alınmaktadır.
+Bu makalede, Azure Stream Analytics kullanarak Azure SQL veritabanı 'na veri yüklerken daha iyi yazma performansı elde etme ipuçları ele alınmaktadır.
 
-Azure Stream Analytics içindeki SQL çıktısı, bir seçenek olarak paralel yazmayı destekler. Bu seçenek, birden çok çıkış bölümünün paralel olarak hedef tabloya yazıldığı [tam paralel](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) iş Topolojilerine izin verir. Azure Stream Analytics bu seçeneğin etkinleştirilmesi, SQL Azure veritabanı yapılandırmanıza ve tablo şemanıza önemli ölçüde bağlı olduğundan daha yüksek bir işlem elde etmek için yeterli olmayabilir. Dizinler, kümeleme anahtarı, Dizin doldurma faktörü ve sıkıştırma seçimi, tabloları yükleme zamanına göre bir etkiye sahiptir. SQL Azure veritabanınızı, iç kıyaslamalar temelinde sorgu ve yükleme performansını iyileştirmek üzere en iyi hale getirmeye yönelik daha fazla bilgi için bkz. [SQL veritabanı performans Kılavuzu](../azure-sql/database/performance-guidance.md). SQL Azure veritabanına paralel yazma sırasında yazma sıralaması garanti edilmez.
+Azure Stream Analytics içindeki SQL çıktısı, bir seçenek olarak paralel yazmayı destekler. Bu seçenek, birden çok çıkış bölümünün paralel olarak hedef tabloya yazıldığı [tam paralel](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) iş Topolojilerine izin verir. Azure Stream Analytics içinde bu seçeneğin etkinleştirilmesi, veritabanı yapılandırmanıza ve tablo şemanıza önemli ölçüde bağlı olduğundan daha yüksek bir işlem elde etmek için yeterli olmayabilir. Dizinler, kümeleme anahtarı, Dizin doldurma faktörü ve sıkıştırma seçimi, tabloları yükleme zamanına göre bir etkiye sahiptir. Dahili kıyaslamalar temelinde sorgu ve yükleme performansını iyileştirmek üzere veritabanınızı en iyi hale getirmeye yönelik daha fazla bilgi için bkz. [SQL veritabanı performans Kılavuzu](../azure-sql/database/performance-guidance.md). SQL veritabanına paralel yazma sırasında yazma sıralaması garanti edilmez.
 
 Çözümünüzün genel verimini artırmaya yardımcı olabilecek her bir hizmet içindeki bazı konfigürasyonlar aşağıda verilmiştir.
 

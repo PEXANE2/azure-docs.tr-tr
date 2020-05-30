@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97bc3c8571793ec8c8b67fe0e7c5cb3b6a56fde4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4ca22c39fcd7b488f527326e4fdeaa56b0485cb9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726052"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220302"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge dağıtımlarını izleme
 
@@ -101,4 +101,4 @@ Dağıtımınızda değişiklik yapmak için bkz. [bir dağıtımı değiştirme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Yerleşik doğrudan yöntemler kullanarak EdgeAgent ile iletişim kurmayı](how-to-edgeagent-direct-method.md)öğrenin.
+IoT Edge dağıtımlarınızın bağlantısı ve sistem durumu için öncelikle IoT Edge Aracısı ve IoT Edge hub çalışma zamanı modülleri olan [Modül TWINS 'i izlemeyi](how-to-monitor-module-twins.md)öğrenin.

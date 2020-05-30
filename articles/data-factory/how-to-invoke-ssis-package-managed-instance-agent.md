@@ -1,6 +1,6 @@
 ---
 title: Azure SQL yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırma
-description: Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırmayı öğrenin.
+description: Azure SQL yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırmayı öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: fe32d67dd5d15ccf2f889cf40b79d35c890d5313
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: f911a8dad094949f0a515116a79fff698a326547
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148302"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191078"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırma
 
-Bu makalede, Azure SQL veritabanı yönetilen örnek Aracısı kullanılarak bir SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır. Bu özellik, SSIS paketlerini şirket içi ortamınızda SQL Server Agent kullanarak zamanladığınızda benzer davranışlar sağlar.
+Bu makalede, Azure SQL yönetilen örnek Aracısı kullanılarak bir SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır. Bu özellik, SSIS paketlerini şirket içi ortamınızda SQL Server Agent kullanarak zamanladığınızda benzer davranışlar sağlar.
 
-Bu özellikle, SSıSDB 'de depolanan SSIS paketlerini bir Azure SQL veritabanı yönetilen örneğinde veya Azure dosyaları gibi bir dosya sisteminde çalıştırabilirsiniz.
+Bu özellikle, SSıSDB 'de depolanan SSIS paketlerini bir SQL yönetilen örneğinde veya Azure dosyaları gibi bir dosya sisteminde çalıştırabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu özelliği kullanmak için sürüm 18,5 olan SQL Server Management Studio (SSMS) en son sürümünü [indirip](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) yükleyin.
 
-Ayrıca, Azure Data Factory 'de [bir Azure-SSIS tümleştirme çalışma zamanı](tutorial-create-azure-ssis-runtime-portal.md) sağlamanız gerekir. Uç nokta sunucusu olarak Azure SQL veritabanı yönetilen örneğini kullanır. 
+Ayrıca, Azure Data Factory 'de [bir Azure-SSIS tümleştirme çalışma zamanı](tutorial-create-azure-ssis-runtime-portal.md) sağlamanız gerekir. Uç nokta sunucusu olarak SQL yönetilen örneği kullanır. 
 
 ## <a name="run-an-ssis-package-in-ssisdb"></a>SSSıSDB 'de bir SSIS paketi çalıştırma
-Bu yordamda, SSıSDB 'de depolanan bir SSIS paketini çağırmak için Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanırsınız.
+Bu yordamda, SSıSDB 'de depolanan bir SSIS paketini çağırmak için SQL yönetilen örnek Aracısı 'nı kullanırsınız.
 
-1. SSMS 'nin en son sürümünde Azure SQL veritabanı yönetilen örneğine bağlanın.
+1. SSMS 'nin en son sürümünde bir SQL yönetilen örneğine bağlanın.
 1. Yeni bir aracı işi ve yeni bir iş adımı oluşturun. **SQL Server Agent**altında **işler** klasörüne sağ tıklayın ve ardından **yeni iş**' ı seçin.
 
    ![Yeni bir aracı işi oluşturmaya yönelik seçimler](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
@@ -40,7 +40,7 @@ Bu yordamda, SSıSDB 'de depolanan bir SSIS paketini çağırmak için Azure SQL
    ![Yeni bir SSIS iş adımı oluşturmaya yönelik seçimler](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
 
 1. **Paket** sekmesinde, paket kaynak türü olarak **SSIS Kataloğu** ' nu seçin.
-1. SSıSDB bir Azure SQL veritabanı yönetilen örneği içinde olduğundan, kimlik doğrulaması belirtmeniz gerekmez.
+1. SSıSDB bir SQL yönetilen örneği içinde olduğundan, kimlik doğrulaması belirtmeniz gerekmez.
 1. SSSıSDB 'den bir SSIS paketi belirtin.
 
    ![Paket kaynak türü için seçimleri olan paket sekmesi](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
@@ -58,9 +58,9 @@ Bu yordamda, SSıSDB 'de depolanan bir SSIS paketini çağırmak için Azure SQL
 
 
 ## <a name="run-an-ssis-package-in-the-file-system"></a>Dosya sisteminde bir SSIS paketi çalıştırma
-Bu yordamda, dosya sisteminde depolanan bir SSIS paketini çalıştırmak için Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanırsınız.
+Bu yordamda, dosya sisteminde depolanan bir SSIS paketini çalıştırmak için SQL yönetilen örnek Aracısı 'nı kullanırsınız.
 
-1. SSMS 'nin en son sürümünde Azure SQL veritabanı yönetilen örneğine bağlanın.
+1. SSMS 'nin en son sürümünde bir SQL yönetilen örneğine bağlanın.
 1. Yeni bir aracı işi ve yeni bir iş adımı oluşturun. **SQL Server Agent**altında **işler** klasörüne sağ tıklayın ve ardından **yeni iş**' ı seçin.
 
    ![Yeni bir aracı işi oluşturmaya yönelik seçimler](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
@@ -103,7 +103,7 @@ Bu yordamda, dosya sisteminde depolanan bir SSIS paketini çalıştırmak için 
 
 
 ## <a name="cancel-ssis-package-execution"></a>SSIS paketi yürütmeyi iptal et
-Azure SQL veritabanı yönetilen örnek Aracısı işinden paket yürütmeyi iptal etmek için, aracı işini doğrudan durdurmak yerine aşağıdaki adımları uygulayın:
+Bir SQL yönetilen örnek Aracısı işinden paket yürütmeyi iptal etmek için, aracı işini doğrudan durdurmak yerine aşağıdaki adımları uygulayın:
 
 1. **Msdb. dbo. sysjobs**öğesinden SQL Agent iş **kimliği** ' ni bulun.
 1. Bu sorguyu kullanarak, iş KIMLIĞINE göre karşılık gelen SSIS **ExecutionID** 'sini bulun:

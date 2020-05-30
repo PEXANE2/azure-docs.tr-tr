@@ -2,13 +2,13 @@
 title: Kapsayıcılar için Azure Izleyici izleme maliyeti | Microsoft Docs
 description: Bu makalede, müşterilerin kullanımını ve ilişkili maliyetlerini yönetmesine yardımcı olmak üzere kapsayıcılar için Azure Izleyici tarafından toplanan ölçüm verileri & ölçümleri için izleme maliyeti açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.openlocfilehash: 44802f611919fbf88894576eecf581a668e05b5b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 05/29/2020
+ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122468"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204659"
 ---
 # <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'nin izleme maliyetlerini anlama
 
@@ -140,6 +140,8 @@ Kuruluşunuzun farklı iş biriminin Kubernetes altyapısını ve bir Log Analyt
 - Günlük kaynak girişi tarafından alınan faturalanabilir kapsayıcı günlük verileri
 
 - Tanılama ana düğüm günlükleri tarafından alınan faturalandırılabilir Tanılama verileri
+
+Çalışma kitabı için hakları ve izinleri yönetme hakkında bilgi edinmek için [erişim denetimi](../platform/workbooks-access-control.md)' ni inceleyin.
 
 Analizinizi tamamladıktan sonra, hangi kaynak veya kaynakların en çok veri oluşturduğunu veya gereksinimlerinizi aşan verileri oluşturduğunu belirleme hakkında veri toplamayı yeniden yapılandırabilirsiniz. Stdout, stderr ve ortam değişkenlerinin toplanmasını yapılandırma hakkında ayrıntılar, [aracı veri koleksiyonu ayarlarını yapılandırma](container-insights-agent-config.md) makalesinde açıklanmıştır.
 

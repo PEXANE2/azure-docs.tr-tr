@@ -3,12 +3,12 @@ title: İlke atama yapısının ayrıntıları
 description: Değerlendirme için kaynaklarla ilke tanımlarını ve parametreleri ilişkilendirmek üzere Azure Ilkesi tarafından kullanılan ilke atama tanımını açıklar.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683211"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205050"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure İlkesi atama yapısı
 
@@ -63,8 +63,8 @@ Bu özellik aşağıdaki değerlere sahiptir:
 
 |Mod |JSON değeri |Tür |El ile düzelt |Etkinlik günlüğü girişi |Açıklama |
 |-|-|-|-|-|-|
-|Etkin |Varsayılan |string |Yes |Yes |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
-|Devre dışı |Donotenzorlamalı |string |Yes |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
+|Etkin |Varsayılan |string |Evet |Evet |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
+|Devre dışı |Donotenzorlamalı |string |Evet |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
 
 İlke veya girişim tanımında **Enforcementmode** belirtilmemişse, _varsayılan_ değer kullanılır. **Enforcementmode** , _Donotenzorlamalı_olarak ayarlandığında bile, dağıtım [görevleri](../how-to/remediate-resources.md) [deployifnotexists](./effects.md#deployifnotexists) ilkeleri için başlatılabilir.
 
@@ -75,7 +75,7 @@ Atamanın **kapsamı** tüm alt kaynak kapsayıcılarını ve alt kaynakları i�
 ## <a name="policy-definition-id"></a>İlke tanımı KIMLIĞI
 
 Bu alan, bir ilke tanımının ya da bir girişim tanımının tam yol adı olmalıdır.
-`policyDefinitionId`dizi değil bir dizedir. Bunun yerine bir [girişim](./definition-structure.md#initiatives) kullanmak için birden çok ilke genellikle birlikte atanırsa, bu önerilir.
+`policyDefinitionId`dizi değil bir dizedir. Bunun yerine bir [girişim](./initiative-definition-structure.md) kullanmak için birden çok ilke genellikle birlikte atanırsa, bu önerilir.
 
 ## <a name="parameters"></a>Parametreler
 
@@ -93,7 +93,7 @@ Bu tasarım, farklı kaynaklarla bir ilke veya girişim tanımını yeniden kull
 }
 ```
 
-Bu örnekte, daha önce ilke tanımında tanımlanan parametreler ve `prefix` `suffix`' dir. Bu ilke ataması, `prefix` **depta** ve `suffix` to **-LC**olarak ayarlanır. Aynı ilke tanımı farklı bir departman için farklı bir parametre kümesiyle yeniden kullanılabilir, ancak esneklik sağlarken ilke tanımlarının çoğaltılmasını ve karmaşıklığını azaltır.
+Bu örnekte, daha önce ilke tanımında tanımlanan parametreler ve ' dir `prefix` `suffix` . Bu ilke ataması `prefix` , **depta** ve `suffix` to **-LC**olarak ayarlanır. Aynı ilke tanımı farklı bir departman için farklı bir parametre kümesiyle yeniden kullanılabilir, ancak esneklik sağlarken ilke tanımlarının çoğaltılmasını ve karmaşıklığını azaltır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
