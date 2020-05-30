@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: d57eb2718f79e9243426a59245abc44c98dc6249
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e5af5c6b30c6f03930a61200a11bfa0bd2f72093
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118600"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196441"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hibrit Avantajı-Azure SQL veritabanı & SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-Sanal çekirdek tabanlı satın alma modelinin sağlanan işlem katmanında, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde indirimli ücretler için mevcut lisanslarınızı Exchange 'e dönüştürebilirsiniz. Bu Azure avantajı, Yazılım Güvencesi kapsamındaki şirket içi SQL Server lisanslarınızı kullanarak SQL veritabanı & SQL yönetilen örneği üzerinde en az %30 ' a kadar daha yüksek bir tasarruf etmenizi sağlar. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) sayfasında, tasarrufları belirlemede yardımcı olması için bir Hesaplayıcı vardır.  Azure Hibrit Avantajı Azure SQL veritabanı sunucusuz için uygulanmadığını unutmayın.
+Sanal çekirdek tabanlı satın alma modelinin sağlanan işlem katmanında, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde indirimli ücretler için mevcut lisanslarınızı Exchange 'e dönüştürebilirsiniz. Bu Azure avantajı, Yazılım Güvencesi kapsamındaki SQL Server lisanslarınızı kullanarak SQL veritabanı & SQL yönetilen örneği 'ne en az %30 tasarruf etmenize olanak tanır. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) sayfasında, tasarrufları belirlemede yardımcı olması için bir Hesaplayıcı vardır.  Azure Hibrit Avantajı Azure SQL veritabanı sunucusuz için uygulanmadığını unutmayın.
 
 > [!NOTE]
 > Azure Hibrit Avantajı değiştirmek için kapalı kalma süresi gerekmez.
@@ -77,7 +77,7 @@ Yazılım Güvencesi kapsamındaki müşterilere SQL Server için lisans taşın
 SQL Server için Azure Hibrit Avantajı, iki anahtar alanındaki lisans taşınabilirliğine göre farklılık gösterir:
 
 - Yüksek oranda sanallaştırılmış iş yüklerini Azure 'a taşımak için ekonomik avantajlar sağlar. SQL Server Enterprise Edition müşterileri, Azure 'da, yüksek oranda sanallaştırılmış uygulamalar için şirket içinde sahip oldukları her çekirdeğe yönelik Genel Amaçlı SKU 'sunda dört çekirdek alabilir. Lisans Taşınabilirliği, sanallaştırılmış iş yüklerini buluta taşımak için özel maliyet avantajlarına izin vermez.
-- Şirket içi SQL Server ile yüksek oranda uyumlu Azure 'da (SQL veritabanı yönetilen örneği) bir PaaS hedefi sağlar.
+- Azure 'da (SQL veritabanı yönetilen örneği) SQL Server ile yüksek oranda uyumlu bir PaaS hedefi sağlar.
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>SQL Server için Azure Hibrit Avantajı belirli hakları nelerdir?
 

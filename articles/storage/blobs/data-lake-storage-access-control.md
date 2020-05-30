@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: dd23745f811cf67aa5e7ef7aa96b877b5980c270
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793134"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193528"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'de Erişim Denetimi
 
 Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (RBAC) hem de POSIX benzeri erişim denetim listelerini (ACL 'Ler) destekleyen bir erişim denetimi modeli uygular. Bu makalede Data Lake Storage 2. için erişim denetimi modelinin temelleri özetlenmektedir.
 
-<a id="azure-role-based-access-control-rbac" />
+<a id="azure-role-based-access-control-rbac"></a>
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
@@ -76,7 +76,7 @@ Dosya ve dizin düzeyindeki izinleri ayarlamak için aşağıdaki makalelerden b
 |REST API |[Yol-Güncelleştir](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> Güvenlik sorumlusu bir *hizmet* sorumlusu ise, ilgili uygulama KAYDıNıN nesne kimliğini değil, hizmet sorumlusunun nesne kimliğini kullanmak önemlidir. Hizmet sorumlusunun nesne KIMLIĞINI almak için Azure CLı 'yı açın ve ardından şu komutu kullanın: `az ad sp show --id <Your App ID> --query objectId`. yer tutucusunu, `<Your App ID>` uygulama KAYDLARıNıZıN uygulama kimliğiyle değiştirdiğinizden emin olun.
+> Güvenlik sorumlusu bir *hizmet* sorumlusu ise, ilgili uygulama KAYDıNıN nesne kimliğini değil, hizmet sorumlusunun nesne kimliğini kullanmak önemlidir. Hizmet sorumlusunun nesne KIMLIĞINI almak için Azure CLı 'yı açın ve ardından şu komutu kullanın: `az ad sp show --id <Your App ID> --query objectId` . `<Your App ID>`yer tutucusunu, uygulama kaydlarınızın uygulama kimliğiyle değiştirdiğinizden emin olun.
 
 ### <a name="types-of-access-control-lists"></a>Erişim denetim listelerinin türleri
 
@@ -123,7 +123,7 @@ Data Lake Storage 2. tarafından kullanılan POSIX stili modelde bir öğe için
 
 Aşağıdaki tabloda, bir depolama hesabında belirli işlemleri gerçekleştirmek için hangi izinlerin gerekli olduğunu anlamanıza yardımcı olacak bazı yaygın senaryolar listelenmektedir.
 
-|    İşlem             |    /    | 'Daki | Portland | Data. txt     |
+|    Çalışma             |    /    | 'Daki | Portland | Data. txt     |
 |--------------------------|---------|----------|-----------|--------------|
 | Data. txt dosyasını oku            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Data. txt dosyasına Ekle       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |

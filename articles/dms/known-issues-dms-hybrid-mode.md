@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649611"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196273"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Karma mod kullanımıyla ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -93,10 +93,10 @@ Artık çalışan bilgisayara erişiminiz yoksa, aşağıdaki adımları uygulay
 
 Aşağıdaki bölümler, çevrimiçi bir geçiş gerçekleştirmek için Azure veritabanı geçiş hizmeti karma modunu kullanmayla ilgili senaryoya özgü sorunları anlatmaktadır.
 
-### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğine çevrimiçi geçişler
+### <a name="online-migrations-to-azure-sql-managed-instance"></a>Azure SQL yönetilen örneğine çevrimiçi geçişler
 
 **Yüksek CPU kullanımı**
 
-**Sorun**: SQL veritabanı yönetilen örneği 'ne çevrimiçi geçişler için, çok fazla yedekleme veya yedeklemeler çok büyük olduğunda karma çalışanı çalıştıran bılgısayar yüksek CPU kullanımıyla karşılaşacaktır.
+**Sorun**: SQL yönetilen örneği için çevrimiçi geçişlerde, çok fazla yedek varsa veya yedeklemeler çok büyükse karma çalışanı çalıştıran bılgısayar yüksek CPU kullanımıyla karşılaşacaktır.
 
 **Risk azaltma**: Bu sorunu azaltmak için sıkıştırılmış yedeklemeleri kullanın, geçişi birden çok paylaşım kullanacak şekilde bölüştürün veya karma çalışanı çalıştıran bilgisayarın ölçeğini ölçeklendirin.

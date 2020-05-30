@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 3405a322b8498b0b1a29399811ddf188ea766ca8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170605"
+ms.locfileid: "84193429"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltma (Önizleme)
 
@@ -73,7 +73,9 @@ Kaynak ve hedef hesapların her ikisi de, nesne çoğaltmasını kullanmak için
 
 ### <a name="prerequisites-for-object-replication"></a>Nesne çoğaltma önkoşulları
 
-Nesne çoğaltma, aşağıdaki Azure depolama özelliklerinin etkinleştirilmesini gerektirir:
+Nesne çoğaltma, aşağıdaki Azure depolama özelliklerinin etkinleştirilmesini gerektirir: 
+- [Akışı Değiştir](storage-blob-change-feed.md)
+- [Sürüm Oluşturma](versioning-overview.md)
 
 Nesne çoğaltmasını yapılandırmadan önce, önkoşullarını etkinleştirin. Kaynak hesapta değişiklik akışı etkinleştirilmelidir ve hem kaynak hem de hedef hesapta blob sürümü oluşturma etkinleştirilmiş olmalıdır. Bu özellikleri etkinleştirme hakkında daha fazla bilgi için şu makalelere bakın:
 
@@ -157,3 +159,5 @@ Nesne çoğaltma önizlemesi hakkında sorular sormak veya geri bildirim sağlam
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Nesne çoğaltmasını yapılandırma (Önizleme)](object-replication-configure.md)
+- [Azure Blob depolamada akış desteğini değiştirme (Önizleme)](storage-blob-change-feed.md)
+- [Blob sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md)

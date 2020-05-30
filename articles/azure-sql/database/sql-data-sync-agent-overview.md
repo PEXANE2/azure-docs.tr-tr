@@ -1,6 +1,6 @@
 ---
 title: SQL Data Sync için veri eşitleme Aracısı
-description: Şirket içi SQL Server veritabanları ile verileri eşitlemek için Azure 'daki SQL Data Sync veri eşitleme aracısını yüklemeyi ve çalıştırmayı öğrenin
+description: SQL Server veritabanları ile verileri eşitlemek için Azure 'daki SQL Data Sync veri eşitleme aracısını yüklemeyi ve çalıştırmayı öğrenin
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 0026f160c247d2b0bfdd32613676b04d6f350081
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8033e64924b5faa1cfdc9c04cdd8711850185dca
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049788"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195456"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL Data Sync için veri eşitleme Aracısı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure 'da SQL Data Sync için veri eşitleme aracısını yükleyip yapılandırarak şirket içi SQL Server veritabanları ile verileri eşitleyin. SQL Data Sync hakkında daha fazla bilgi için bkz. [SQL Data Sync ile birden çok bulutta ve şirket içi veritabanlarında veri eşitleme](sql-data-sync-data-sql-server-sql-database.md).
+Azure 'da SQL Data Sync için veri eşitleme aracısını yükleyip yapılandırarak SQL Server veritabanlarıyla verileri eşitleyin. SQL Data Sync hakkında daha fazla bilgi için bkz. [SQL Data Sync ile birden çok bulutta ve şirket içi veritabanlarında veri eşitleme](sql-data-sync-data-sql-server-sql-database.md).
 
 > [!IMPORTANT]
 > SQL Data Sync Şu anda Azure SQL yönetilen **örneğini desteklemez.**
@@ -36,7 +36,7 @@ Veri eşitleme aracısını komut isteminden sessizce yüklemek için aşağıda
 
 - **Targetı**için bir değer sağlamazsanız, varsayılan değer olur `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0` .
 
-- `LocalSystem` **SERVICEACCOUNT**değeri olarak sağlarsanız, aracıyı şirket içi SQL Server bağlanacak şekilde yapılandırırken SQL Server kimlik doğrulaması kullanın.
+- `LocalSystem` **SERVICEACCOUNT**değeri olarak sağlarsanız, aracıyı SQL Server bağlanacak şekilde yapılandırırken SQL Server kimlik doğrulaması kullanın.
 
 - **SERVICEACCOUNT**değeri olarak bir etki alanı kullanıcı hesabı veya yerel bir kullanıcı hesabı sağlarsanız, **ServicePassword** bağımsız değişkeni ile de parola sağlamanız gerekir. Örneğin, `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
 
@@ -44,9 +44,9 @@ Veri eşitleme aracısını komut isteminden sessizce yüklemek için aşağıda
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
 ```
 
-## <a name="sync-data-with-sql-server-on-premises"></a>Şirket içi SQL Server verileri eşitleme
+## <a name="sync-data-with-a-sql-server-database"></a>SQL Server veritabanı ile verileri eşitleme
 
-Veri eşitleme aracısını, verileri bir veya daha fazla şirket içi SQL Server veritabanlarıyla eşitleyebilmeniz için, bkz. Şirket [içi SQL Server veritabanı ekleme](sql-data-sync-sql-server-configure.md#add-on-prem).
+Verileri bir veya daha fazla SQL Server veritabanıyla eşitleyebilmeniz için veri eşitleme aracısını yapılandırmak için, bkz. [SQL Server veritabanı ekleme](sql-data-sync-sql-server-configure.md#add-on-prem).
 
 ## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a>Veri eşitleme Aracısı hakkında SSS
 
@@ -321,7 +321,7 @@ SQL Data Sync hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 -   Genel Bakış- [Azure 'da SQL Data Sync birden çok bulutta ve şirket içi veritabanlarında veri eşitleme](sql-data-sync-data-sql-server-sql-database.md)
 -   Veri eşitlemesini ayarlama
-    - Portalda- [öğreticide, Azure SQL veritabanı ve şirket içi SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-data-sync-sql-server-configure.md)
+    - Portalda- [öğretici: Azure SQL veritabanı ile SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-data-sync-sql-server-configure.md)
     - PowerShell ile
         -  [Azure SQL veritabanı 'nda birden çok veritabanı arasında eşitleme yapmak için PowerShell 'i kullanma](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak Azure SQL veritabanındaki bir veritabanı ile SQL Server örneğindeki bir veritabanı arasında eşitleme](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

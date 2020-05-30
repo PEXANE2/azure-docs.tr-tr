@@ -11,14 +11,15 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 07af9fa20fd6a331313050d3ba2cfbbe9c3fe7e8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: dfd8051c7fc803d57a14cd740a830b8f6b63d9ac
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050306"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195096"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu makalede, şu anda genel önizleme aşamasında olan Azure SQL veritabanı ve Azure SQL yönetilen örnek özellikleri listelenmektedir. SQL veritabanı ve SQL yönetilen örnek güncelleştirmeleri ve geliştirmeleri için bkz. SQL [veritabanı & SQL yönetilen örnek hizmeti güncelleştirmeleri](https://azure.microsoft.com/updates/?product=sql-database). Diğer Azure hizmetlerine yönelik güncelleştirmeler ve geliştirmeler için bkz. [hizmet güncelleştirmeleri](https://azure.microsoft.com/updates).
@@ -29,7 +30,7 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği belgeleri ayrı bölümle
 
 Bazı özellikler ve işlevler büyük ölçüde tek bir veritabanı ve yönetilen örnek arasında farklılık gösterdiğinden bu işlemi yaptık ve bireysel olarak ' paylaşılan ' makalelerde Azure SQL veritabanı ile Azure SQL yönetilen örneği arasındaki karmaşık nusların açıklanmasının daha fazla zor hale gelmesi.
 
-Farklı Azure SQL ürünleri arasında bu açıklama, Azure SQL veritabanı 'nda tek bir yönetilen veritabanı, Azure SQL yönetilen örneği 'nde birden çok veritabanını barındıran veya tanıdık şirket içi SQL Server ürünü olan ancak Azure 'da bir sanal makinede barındırılan, tamamen güvenilir bir yönetilen örnek olan Azure 'da SQL Server Veritabanı altyapısıyla çalışma sürecini basitleştirmeye ve kolaylaştırmalıdır.
+Farklı Azure SQL ürünleri arasında bu açıklama, Azure SQL veritabanı 'nda tek bir yönetilen veritabanı, Azure SQL yönetilen örneği 'nde birden çok veritabanını barındıran tam olarak güvenilir bir yönetilen örnek veya Azure 'da bir sanal makinede barındırılan tanıdık SQL Server ürün gibi Azure 'da SQL Server Veritabanı altyapısıyla çalışma sürecini basitleştirmeye ve kolaylaştırmalıdır.
 
 Bunun devam eden bir iş olduğunu ve her makale henüz güncelleştirilmemiş olduğunu göz önünde bulundurun. Örneğin Transact-SQL (T-SQL) deyimleri, saklı yordamlar ve Azure SQL veritabanı ile Azure SQL yönetilen örneği arasında paylaşılan birçok özellik henüz tamamlanmadığından, içeriği açıklığa kavuşturmaya devam ettiğimiz için size teşekkür ederiz. 
 
@@ -48,7 +49,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 
 ### <a name="azure-sql-database"></a>[Azure SQL Veritabanı](#tab/single-database)
 
-| Özellik | Ayrıntılar |
+| Öne çıkan özelliği | Ayrıntılar |
 | ---| --- |
 | Yeni Fsv2 serisi ve d serisi donanım nesilleri| Bilgi için bkz. [donanım nesilleri](service-tiers-vcore.md#hardware-generations).|
 | Tek veritabanları ve elastik havuzlarla hızlandırılmış veritabanı kurtarma | Bilgi için bkz. [hızlandırılmış veritabanı kurtarma](../accelerated-database-recovery.md).|
@@ -67,7 +68,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 
 ### <a name="azure-sql-managed-instance"></a>[Azure SQL Yönetilen Örnek](#tab/managed-instance)
 
-| Özellik | Ayrıntılar |
+| Öne çıkan özelliği | Ayrıntılar |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Örnek havuzları</a> | Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Dış SAĞLAYıCıDAN oturum oluştur</a> ekstresini kullanarak örnek düzeyinde oturum açma oluşturun. |

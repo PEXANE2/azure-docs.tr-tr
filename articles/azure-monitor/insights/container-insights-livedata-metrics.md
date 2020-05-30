@@ -3,16 +3,17 @@ title: Kapsayıcılar için Azure Izleyici ile ölçümleri gerçek zamanlı ola
 description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullanılmadan ölçümlerin gerçek zamanlı görünümü açıklanır.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: 54d751769005dabb4708eb198bcc765d830ba605
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79216569"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196141"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Ölçümleri gerçek zamanlı görüntüleme
 
-Kapsayıcılar için Azure Izleyici canlı veriler (Önizleme) özelliği, bir kümede gerçek zamanlı olarak düğüm ve pod durumu hakkında ölçümleri görselleştirmenize olanak tanır. Bu öngörüye dahil edilen performans `kubectl top nodes`grafiklerindeki `kubectl get pods –all-namespaces`verileri çağırmak `kubectl get nodes` , ayrıştırmak ve görselleştirmek için,, ve komutlarına doğrudan erişim sağlar. 
+Kapsayıcılar için Azure Izleyici canlı veriler (Önizleme) özelliği, bir kümede gerçek zamanlı olarak düğüm ve pod durumu hakkında ölçümleri görselleştirmenize olanak tanır. `kubectl top nodes` `kubectl get pods –all-namespaces` `kubectl get nodes` Bu öngörüye dahil edilen performans grafiklerindeki verileri çağırmak, ayrıştırmak ve görselleştirmek için,, ve komutlarına doğrudan erişim sağlar. 
 
 Bu makale ayrıntılı bir genel bakış sağlar ve bu özelliğin nasıl kullanılacağını anlamanıza yardımcı olur.  
 
@@ -28,7 +29,7 @@ Canlı veri (Önizleme) özelliğini ayarlama veya sorunlarını gidermeyle ilgi
 
 Canlı veriler (Önizleme) özelliği, Kubernetes API 'sine doğrudan erişir ve kimlik doğrulama modeliyle ilgili ek bilgilere [buradan](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)ulaşabilirsiniz. 
 
-Bu özellik, varsayılan olarak her beş saniyede bir olan ölçüm uç `/api/v1/nodes`noktalarına `/apis/metrics.k8s.io/v1beta1/nodes`(, `/api/v1/pods`ve dahil) karşı bir yoklama işlemi gerçekleştirir. Bu veriler tarayıcınızda önbelleğe alınır ve **canlı çalış (Önizleme)** seçeneği belirlenerek **küme** sekmesindeki kapsayıcılar için Azure izleyici 'de yer alan dört Performans grafiklerinde görüntülenir. Sonraki her yoklama, beş dakikalık bir görselleştirme penceresine göre yapılır. 
+Bu özellik, `/api/v1/nodes` `/apis/metrics.k8s.io/v1beta1/nodes` `/api/v1/pods` Varsayılan olarak her beş saniyede bir olan ölçüm uç noktalarına (, ve dahil) karşı bir yoklama işlemi gerçekleştirir. Bu veriler tarayıcınızda önbelleğe alınır ve **canlı çalış (Önizleme)** seçeneği belirlenerek **küme** sekmesindeki kapsayıcılar için Azure izleyici 'de yer alan dört Performans grafiklerinde görüntülenir. Sonraki her yoklama, beş dakikalık bir görselleştirme penceresine göre yapılır. 
 
 ![Küme görünümündeki canlı git seçeneği](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 
@@ -62,7 +63,7 @@ Bu Ayrıca, hangi düğümlerin sınırlarına itilmekte olduğunu ve ölçek ge
 
 ### <a name="node-count"></a>Düğüm sayısı
 
-Bu performans grafiği, durum sütununu çağırma `kubectl get nodes` ve eşleme ile durum sütununu **STATUS** gruplanmış bir grafik ile eşleme eşdeğerini ile eşlenir.
+Bu performans grafiği `kubectl get nodes` , durum sütununu çağırma ve eşleme ile durum sütununu **STATUS** gruplanmış bir grafik ile eşleme eşdeğerini ile eşlenir.
 
 ![Kubectl düğüm al örnek sonuçları](./media/container-insights-livedata-metrics/kubectl-get-nodes-example.png)
 
@@ -73,14 +74,14 @@ Düğümler, **Ready** ya da **Ready** durumunda bildirilir. Bunlar sayılır (v
 
 ### <a name="active-pod-count"></a>Etkin Pod sayısı
 
-Bu performans grafiği, çağırma `kubectl get pods –all-namespaces` ve **durum sütununu,** durum türlerine göre gruplanmış şekilde eşleştiren bir eşdeğerine eşlenir.
+Bu performans grafiği, çağırma `kubectl get pods –all-namespaces` ve durum sütununu, durum türlerine göre **STATUS** gruplanmış şekilde eşleştiren bir eşdeğerine eşlenir.
 
 ![Kubectl Get Pod örnek sonuçları](./media/container-insights-livedata-metrics/kubectl-get-pods-example.png)
 
 ![Düğüm Pod sayısı grafiği](./media/container-insights-livedata-metrics/cluster-view-node-pod-count.png)
 
 >[!NOTE]
->Tarafından `kubectl` yorumlanan durum adları, grafikte tam olarak eşleşmeyebilir. 
+>Tarafından yorumlanan durum adları `kubectl` , grafikte tam olarak eşleşmeyebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

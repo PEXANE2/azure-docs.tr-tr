@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 97d78b5bc77fef30bf7e3ad082a70f16a2ec74d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 820e50d9fe60b76639bf74067129e65c7394ff4c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146605"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194199"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure portal kullanarak sanal makinelere birden çok IP adresi atama
 
@@ -52,8 +52,8 @@ Aşağıdaki adımları tamamlayarak bir Azure ağ arabirimine özel ve genel IP
 
 Yeni bir özel IP adresi eklemek için aşağıdaki adımları izleyin:
 
-1. Bu makalenin [temel adımlar](#coreadd) bölümündeki adımları uygulayın.
-2. **Ekle**'ye tıklayın. Görüntülenen **IP Yapılandırması Ekle** bölmesinde, *kısmına 10.0.0.7* Ile bir *statik* özel IP adresi olarak *Ipconfig-4* adlı bir IP yapılandırması oluşturun ve ardından **Tamam**' a tıklayın.
+1. Bu makalenin [temel adımlar](#coreadd) bölümündeki ADıMLARı tamamlayarak VM ağ arabiriminin **IP konfigürasyonları** bölümünde olduğunuzdan emin olun.  Varsayılan olarak gösterilen alt ağı (10.0.0.0/24 gibi) gözden geçirin.
+2. **Ekle**'ye tıklayın. Görüntülenen **IP Yapılandırması Ekle** bölmesinde, son sekizli için yeni bir sayı seçerek yeni bir *statik* özel IP adresi ile *IPCONFIG-4* adlı bir IP yapılandırması oluşturun ve ardından **Tamam**' a tıklayın.  (10.0.0.0/24 alt ağı için örnek bir IP *kısmına 10.0.0.7*olacaktır.)
 
     > [!NOTE]
     > Statik bir IP adresi eklerken, NIC 'nin bağlı olduğu alt ağda kullanılmamış, geçerli bir adres belirtmeniz gerekir. Seçtiğiniz adres yoksa, Portal IP adresi için bir X görüntüler ve farklı bir tane seçmeniz gerekir.
@@ -75,7 +75,7 @@ Genel IP adresi kaynağı yeni bir IP yapılandırmasına veya var olan bir IP y
 Genel IP adresi, genel IP adresi kaynağı için bir ayardır. IP yapılandırması ile ilişkilendirmek istediğiniz bir IP yapılandırması ile ilişkili olmayan bir genel IP adresi kaynağınız varsa, aşağıdaki adımları atlayın ve gerekli olan bölümlerden birindeki adımları tamamlayın. Kullanılabilir bir genel IP adresi kaynağınız yoksa, bir tane oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portal gidin https://portal.azure.com ve gerekirse oturum açın.
-3. Portalda **kaynak** > **ağı** > **genel IP adresi**oluştur ' a tıklayın.
+3. Portalda **kaynak**  >  **ağı**  >  **genel IP adresi**oluştur ' a tıklayın.
 4. Görüntülenen **genel IP adresi oluştur** bölmesinde, bir **ad**girin, bir **IP adresi atama** türü, **abonelik**, **kaynak grubu**ve **konum**seçin ve ardından aşağıdaki resimde gösterildiği gibi **Oluştur**' a tıklayın:
 
     ![Genel IP adresi kaynağı oluşturma](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)

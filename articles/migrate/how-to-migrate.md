@@ -3,12 +3,12 @@ title: Azure geçişi 'ne geçiş araçları ekleme
 description: Azure geçişi 'ne geçiş araçları ekleme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901466"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195815"
 ---
 # <a name="add-migration-tools"></a>Geçiş araçları ekleme
 
@@ -23,7 +23,7 @@ Bu makalede, [Azure](migrate-overview.md)geçişi 'nde geçiş araçlarının na
 2. Kullanmak istediğiniz geçiş senaryosunu seçin:
 
     - Makineleri ve iş yüklerini Azure 'a geçirmek için, **sunucuları değerlendir ve geçir**' i seçin.
-    - Şirket içi SQL makinelerini geçirmek için **veritabanlarını değerlendir ve geçir**' i seçin.
+    - Şirket içi SQL Server veritabanlarını geçirmek için **veritabanlarını değerlendir ve geçir**' i seçin.
     - Şirket içi Web uygulamalarını geçirmek için **Web uygulamalarını değerlendir ve geçir**' i seçin.
     - Çevrimiçi modda büyük miktarlarda şirket içi verileri Azure 'a geçirmek için **Data Box Sırala**' yı seçin.
 

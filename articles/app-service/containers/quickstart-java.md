@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8f2e99ffc9f9ee5c5553e8d933d82f83999c8ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4c65160cb648954ef97bd2a3d3e9ac0d38440ce7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81732894"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193841"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service Java uygulaması oluşturma
 
@@ -31,7 +31,7 @@ ms.locfileid: "81732894"
 
 ## <a name="create-a-java-app"></a>Java uygulaması oluşturma
 
-Aşağıdaki Maven komutunu Cloud Shell istemine yürütün, adlı `helloworld`yeni bir uygulama oluşturun:
+Aşağıdaki Maven komutunu Cloud Shell istemine yürütün, adlı yeni bir uygulama oluşturun `helloworld` :
 
 ```bash
 mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
@@ -93,11 +93,11 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > Bu makalede yalnızca WAR dosyalarıyla paketlenmiş Java uygulamalarıyla çalışacağız. Eklenti ayrıca JAR web uygulamalarını da destekler. Denemek için [Linux'ta App Service'e Java SE JAR dosyası dağıtma](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-Eklenti yapılandırmasının `pom.xml` güncelleştirildiğini görmek için bir kez daha App Service diğer yapılandırmaları, gerekirse doğrudan Pod dosyanızda değiştirebilirsiniz, bazı yaygın olanlar aşağıda listelenmiştir:
+`pom.xml`Eklenti yapılandırmasının güncelleştirildiğini görmek için bir kez daha App Service diğer yapılandırmaları, gerekirse doğrudan Pod dosyanızda değiştirebilirsiniz, bazı yaygın olanlar aşağıda listelenmiştir:
 
  Özellik | Gerekli | Açıklama | Sürüm
 ---|---|---|---
-`<schemaVersion>` | yanlış | Yapılandırma şemasının sürümünü belirtin. Desteklenen değerler şunlardır: `v1`, `v2`. | 1.5.2
+`<schemaVersion>` | yanlış | Yapılandırma şemasının sürümünü belirtin. Desteklenen değerler şunlardır: `v1` , `v2` . | 1.5.2
 `<resourceGroup>` | true | Web uygulamanız için Azure Kaynak grubu. | 0.1.0 +
 `<appName>` | true | Web uygulamanızın adı. | 0.1.0 +
 `<region>` | true | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westeurope**' dir. [Desteklenen bölgelerde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) tüm geçerli bölgeler bölümü. | 0.1.0 +
@@ -147,7 +147,7 @@ Bu komutun çalıştırılması bir dakika sürebilir.
 > [Java ile PostgreSQL için Azure DB 'ye bağlanma](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
-> [Java uygulamasını yapılandırma](configure-custom-container.md)
+> [Java uygulamasını yapılandırma](configure-language-java.md)
 
 > [!div class="nextstepaction"]
 > [Jenkins ile CI/CD](/azure/jenkins/deploy-jenkins-app-service-plugin)

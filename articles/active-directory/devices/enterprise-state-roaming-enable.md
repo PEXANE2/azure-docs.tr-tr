@@ -10,13 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ddbb62a758da2f55e05add7f675deec947629af
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672405"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194030"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory'de Kurumsal Durumda Dolaşımı etkinleştirme
 
@@ -30,7 +31,7 @@ Enterprise State Roaming etkinleştirdiğinizde, kuruluşunuza Azure Rights Mana
 ## <a name="to-enable-enterprise-state-roaming"></a>Enterprise State Roaming etkinleştirmek için
 
 1. [Azure AD Yönetim Merkezi](https://aad.portal.azure.com/)' nde oturum açın.
-1. **Azure Active Directory** &gt; **Devices** cihazları &gt; **Enterprise State Roaming**seçin.
+1. **Azure Active Directory** &gt; **cihazları** &gt; **Enterprise State Roaming**seçin.
 1. **Kullanıcılar ayarları ve uygulama verilerini cihazlar arasında eşitleyebilir '** i seçin. Daha fazla bilgi için bkz. [cihaz ayarlarını yapılandırma](/azure/active-directory/device-management-azure-portal).
   
    ![Kullanıcılar, cihazlar arasında ayarları ve uygulama verilerini eşitleyebileceği cihaz ayarı görüntüsü](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -55,7 +56,7 @@ Enterprise State Roaming veriler, Azure Active Directory örneğinde ayarlanan �
 Kullanıcı başına cihaz eşitleme durumu raporunu görüntülemek için bu adımları izleyin.
 
 1. [Azure AD Yönetim Merkezi](https://aad.portal.azure.com/)' nde oturum açın.
-1. **Azure Active Directory** &gt; **Users** kullanıcıları &gt; **tüm kullanıcılar**' ı seçin.
+1. **Azure Active Directory** &gt; **kullanıcıları** &gt; **tüm kullanıcılar**' ı seçin.
 1. Kullanıcıyı seçin ve ardından **cihazlar**' ı seçin.
 1. **Göster**altında, eşitleme durumunu göstermek için **ayarları ve uygulama verilerini eşitleyen cihazlar** ' ı seçin.
   

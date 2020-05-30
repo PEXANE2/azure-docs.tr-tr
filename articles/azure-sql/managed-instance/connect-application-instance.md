@@ -1,5 +1,5 @@
 ---
-title: Uygulamayı yönetilen örneğe bağla
+title: Uygulamanızı SQL yönetilen örneğine bağlama
 titleSuffix: Azure SQL Managed Instance
 description: Bu makalede, uygulamanızı Azure SQL yönetilen örneği 'ne nasıl bağlayabileceğinizi anlatmaktadır.
 services: sql-database
@@ -12,94 +12,94 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 051d589ec13c1fa8642701fe94a361e1dfbe4aab
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fea16b3e1e5df056c241d07c0e1dd7a5a30819a5
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044391"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219776"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uygulamanızı Azure SQL yönetilen örneğine bağlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Bugün, uygulamanızı nasıl ve nerede barındırmanıza karar verirken birden çok seçeneğiniz vardır.
 
-Azure App Service Ortamı, sanal makine, sanal makine ölçek kümesi gibi Azure App Service veya Azure 'un sanal ağ (sanal ağ) ile tümleşik seçeneklerinden birini kullanarak bulutta uygulamayı barındırabilirsiniz. Ayrıca karma bulut yaklaşımı alabilir ve uygulamalarınızı şirket içinde tutabilirsiniz.
+Azure App Service veya Azure 'un Azure App Service Ortamı, Azure sanal makineleri ve sanal makine ölçek kümeleri gibi sanal ağ tümleşik seçeneklerinden birini kullanarak bulutta uygulamayı barındırın. Ayrıca karma bulut yaklaşımı alabilir ve uygulamalarınızı şirket içinde tutabilirsiniz.
 
-Yaptığınız seçim ne olursa olsun, bir SQL yönetilen örneğine bağlanabilirsiniz. 
+Yaptığınız seçim ne olursa olsun, Azure SQL yönetilen örneği 'ne bağlayabilirsiniz. 
 
-![yüksek kullanılabilirlik](./media/connect-application-instance/application-deployment-topologies.png)
+![Yüksek kullanılabilirlik](./media/connect-application-instance/application-deployment-topologies.png)
 
 Bu makalede, çeşitli uygulama senaryolarında bir uygulamanın Azure SQL yönetilen örneği 'ne nasıl bağlanacağı açıklanır. 
 
 ## <a name="connect-inside-the-same-vnet"></a>Aynı VNet içinde Bağlan
 
-Bir uygulamayı SQL yönetilen örneği ile aynı sanal ağ içinde bağlamak en basit senaryodur. Sanal ağ içindeki sanal makineler, farklı alt ağlarda olsalar bile birbirlerine doğrudan bağlanabilir. Diğer bir deyişle, uygulamayı bir Azure uygulama ortamı veya sanal makine içinde bağlamanız gerektiği anlamına gelir.  
+Bir uygulamayı SQL yönetilen örneği ile aynı sanal ağ içinde bağlamak en basit senaryodur. Sanal ağ içindeki sanal makineler, farklı alt ağlarda olsalar bile birbirlerine doğrudan bağlanabilir. Diğer bir deyişle, App Service Ortamı veya bir sanal makine içinde bir uygulamayı bağlamanız gereken bağlantı dizesini uygun şekilde ayarlayabilmeniz anlamına gelir.  
 
 ## <a name="connect-inside-a-different-vnet"></a>Farklı bir VNet içinde Bağlan
 
-SQL yönetilen örneği, kendi sanal ağında özel IP adreslerine sahip olduğundan, bir uygulamayı farklı bir sanal ağ içinde olduğunda bağlama işlemi biraz daha karmaşıktır. Bağlanmak için, bir uygulamanın SQL yönetilen örneğinin dağıtıldığı sanal ağa erişmesi gerekir. Bu nedenle, uygulama ile SQL yönetilen örnek sanal ağı arasında bir bağlantı oluşturmanız gerekir. Bu senaryonun çalışması için sanal ağların aynı abonelikte olması gerekmez.
+SQL yönetilen örneği kendi sanal ağında özel IP adreslerine sahip olduğundan, bir uygulamayı SQL yönetilen örneğinden farklı bir sanal ağ içinde bulunduğunda bağlamak biraz daha karmaşıktır. Bağlanmak için, bir uygulamanın SQL yönetilen örneğinin dağıtıldığı sanal ağa erişmesi gerekir. Bu nedenle, uygulama ile SQL yönetilen örnek sanal ağı arasında bir bağlantı oluşturmanız gerekir. Bu senaryonun çalışması için sanal ağların aynı abonelikte olması gerekmez.
 
 Sanal ağları bağlamak için iki seçenek vardır:
 
 - [Azure VPN eşlemesi](../../virtual-network/virtual-network-peering-overview.md)
-- VNet-VNet VPN Gateway: ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
+- VNet-VNet VPN Gateway ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
-Eşleme Microsoft omurga ağını kullandığından eşleme işlemi tercih edilir, çünkü bağlantı açısından, eşlenen sanal ağdaki ve aynı sanal ağdaki sanal makineler arasındaki gecikmede fark yoktur. Sanal ağ eşlemesi, aynı bölgedeki ağlarla sınırlıdır.  
+Eşleme, Microsoft omurga ağını kullandığından tercih edilir, bu nedenle bağlantı perspektifinden, eşlenmiş bir sanal ağdaki ve aynı sanal ağdaki sanal makineler arasındaki gecikmede fark yoktur. Sanal ağ eşlemesi, aynı bölgedeki ağlarla sınırlıdır.  
 
 > [!IMPORTANT]
-> SQL yönetilen örneği için sanal ağ eşleme senaryosu, [Genel sanal ağ eşlemesi kısıtlamalarına](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)bağlı olarak aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
+> SQL yönetilen örneği için sanal ağ eşleme senaryosu, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
 
 ## <a name="connect-from-on-premises"></a>Şirket içinden Bağlan 
 
-Ayrıca, şirket içi uygulamanızı SQL yönetilen örneğinize bağlayabilirsiniz. SQL yönetilen örneğine yalnızca özel bir IP adresi üzerinden erişilebilir. Şirket içinden erişmek için, uygulama ile SQL yönetilen örnek sanal ağı arasında siteden siteye bağlantı oluşturmanız gerekir.
+Şirket içi uygulamanızı SQL yönetilen örneğine de bağlayabilirsiniz. SQL yönetilen örneğine yalnızca özel bir IP adresi üzerinden erişilebilir. Şirket içinden erişmek için, uygulama ile SQL yönetilen örnek sanal ağı arasında siteden siteye bağlantı oluşturmanız gerekir.
 
-Şirket içinde Azure sanal ağına nasıl bağlanıbir iki seçenek vardır:
+Şirket içinde bir Azure sanal ağına nasıl bağlanay, iki seçenek vardır:
 
 - Siteden siteye VPN bağlantısı ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
-- [ExpressRoute](../../expressroute/expressroute-introduction.md) bağlantısı  
+- [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) bağlantısı  
 
-Şirket içinde Azure bağlantısı kurmayı başarıyla yaptıysanız ve SQL yönetilen örneği ile bağlantı kuramıyoruz, güvenlik duvarınızın SQL bağlantı noktası 1433 ' de giden bağlantı bağlantısı ve yeniden yönlendirme için 11000-11999 bağlantı noktası aralığı olduğunu denetleyin.
+Şirket içinde Azure bağlantısı kurmayı başarıyla yaptıysanız ve SQL yönetilen örneği ile bağlantı kuramıyoruz, güvenlik duvarınızın SQL bağlantı noktası 1433 ' de açık bir giden bağlantı olup olmadığını ve yeniden yönlendirme için 11000-11999 bağlantı noktası aralığını kontrol edin.
 
-## <a name="connect-the-developers-box"></a>Geliştiriciler kutusunu bağlama
+## <a name="connect-the-developer-box"></a>Geliştirici kutusunu bağlama
 
-Ayrıca, geliştiriciler kutusunu SQL yönetilen örneğine bağlamak de mümkündür. SQL yönetilen örneğine yalnızca özel bir IP adresi üzerinden erişilebilir. böylece Geliştirici kutudan erişebilmek için öncelikle geliştirici kutusu ile SQL yönetilen örnek sanal ağı arasında bir bağlantı oluşturmanız gerekir. Bunu yapmak için yerel Azure sertifika kimlik doğrulamasını kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırın. Daha fazla bilgi için bkz. [Şirket içi bilgisayardan Azure SQL yönetilen örneğine bağlanmak için Noktadan siteye bağlantı yapılandırma](point-to-site-p2s-configure.md).
+Geliştirici kutusunu SQL yönetilen örneğine bağlamak de mümkündür. SQL yönetilen örneğine yalnızca özel bir IP adresi üzerinden erişilebilir, bu nedenle geliştirici kutudan erişebilmek için öncelikle geliştirici kutusu ve SQL yönetilen örnek sanal ağı arasında bir bağlantı oluşturmanız gerekir. Bunu yapmak için yerel Azure sertifika kimlik doğrulamasını kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırın. Daha fazla bilgi için bkz. Şirket [içi bir bilgisayardan Azure SQL yönetilen örneğine bağlanmak için Noktadan siteye bağlantı yapılandırma](point-to-site-p2s-configure.md).
 
 ## <a name="connect-with-vnet-peering"></a>VNet eşlemesi ile bağlanma
 
 Müşteriler tarafından uygulanan başka bir senaryo, bir VPN ağ geçidinin ayrı bir sanal ağa ve bir SQL yönetilen örneği barındıran aboneliğe yüklendiği yerdir. İki sanal ağ daha sonra eşlenmez. Aşağıdaki örnek mimari diyagramı, bunun nasıl uygulankullanılabileceğini gösterir.
 
-![sanal ağ eşlemesi](./media/connect-application-instance/vnet-peering.png)
+![Sanal ağ eşleme](./media/connect-application-instance/vnet-peering.png)
 
-Temel altyapıyı ayarladıktan sonra, VPN Gateway, SQL yönetilen örneği barındıran sanal ağdaki IP adreslerini görebilmesi için bazı ayarları değiştirmeniz gerekir. Bunu yapmak için, **eşleme ayarları**altında aşağıdaki belirli değişiklikleri yapın.
+Temel altyapıyı ayarladıktan sonra, VPN ağ geçidinin SQL yönetilen örneği barındıran sanal ağdaki IP adreslerini görebilmesi için bazı ayarları değiştirmeniz gerekir. Bunu yapmak için, **eşleme ayarları**altında aşağıdaki belirli değişiklikleri yapın.
 
-1. VPN ağ geçidini barındıran sanal ağda, eşlemeler **' e gidin**, ardından SQL yönetilen örneği eşlenen sanal ağ bağlantısı ' na gidin ve **ağ geçidi aktarımına izin ver**' e tıklayın.
-2. SQL yönetilen örneğini barındıran sanal **ağda, eşlemeler ' e**gidin, sonra eşlenen sanal ağ bağlantısına VPN Gateway ve ardından **uzak ağ geçitlerini kullan**' a tıklayın.
+1. VPN ağ geçidini barındıran sanal ağda, eşlemeler **' e gidin**, SQL yönetilen örneği için eşlenen sanal ağ bağlantısına gidin ve **ağ geçidi aktarımına izin ver**' e tıklayın.
+2. SQL yönetilen örneğini barındıran sanal **ağda, eşlemeler ' e gidin**, VPN ağ geçidinin eşlenen sanal ağ bağlantısına gidin ve **uzak ağ geçitlerini kullan**' a tıklayın.
 
 ## <a name="connect-azure-app-service"></a>Azure App Service Bağlan 
 
-Ayrıca, Azure App Service tarafından barındırılan bir uygulamayı da bağlayabilirsiniz. SQL yönetilen örneğine yalnızca özel bir IP adresi aracılığıyla erişilebilir. Azure App Service bu sayede, uygulama ile SQL yönetilen örnek sanal ağı arasında bir bağlantı oluşturmanız gerekir. Bkz. [uygulamanızı Azure sanal ağıyla tümleştirme](../../app-service/web-sites-integrate-with-vnet.md).  
+Ayrıca, Azure App Service tarafından barındırılan bir uygulamayı da bağlayabilirsiniz. SQL yönetilen örneği 'ne yalnızca özel bir IP adresi aracılığıyla erişilebilir, bu nedenle Azure App Service 'ten erişebilmek için öncelikle uygulamayla SQL yönetilen örnek sanal ağı arasında bir bağlantı oluşturmanız gerekir. Bkz. [uygulamanızı Azure sanal ağıyla tümleştirme](../../app-service/web-sites-integrate-with-vnet.md).  
 
 Sorun giderme için bkz. [sanal ağlarda ve uygulamalarda sorun giderme](../../app-service/web-sites-integrate-with-vnet.md#troubleshooting). Bir bağlantı kurulamazsa [ağ yapılandırmasını eşitlemeyi](azure-app-sync-network-configuration.md)deneyin.
 
-Azure App Service SQL yönetilen örneğine bağlama işlemi, Azure App Service SQL yönetilen örnek sanal ağı ile eşlenen bir ağla tümleştirmeniz durumunda oluşur. Bu durum, aşağıdaki yapılandırmanın ayarlanmasını gerektirir:
+Azure App Service SQL yönetilen örneğine bağlama işlemi, Azure App Service bir SQL yönetilen örnek sanal ağı ile eşlenen bir ağla tümleştirmeniz durumunda oluşur. Bu durum, aşağıdaki yapılandırmanın ayarlanmasını gerektirir:
 
-- SQL yönetilen örneği sanal ağı ağ geçidine sahip olmamalıdır  
-- SQL yönetilen örnek sanal ağının `Use remote gateways` seçenek kümesi olmalıdır
-- Eşlenen sanal ağda ağ geçidi aktarım Izni verme seçeneği ayarlanmış olmalıdır
+- SQL yönetilen örneği sanal ağı bir ağ geçidine sahip olmamalıdır  
+- SQL yönetilen örneği sanal ağı, `Use remote gateways` seçenek kümesine sahip olmalıdır
+- Eşlenen sanal ağın `Allow gateway transit` seçenek kümesi olmalıdır
 
 Bu senaryo aşağıdaki diyagramda gösterilmiştir:
 
 ![Tümleşik uygulama eşlemesi](./media/connect-application-instance/integrated-app-peering.png)
 
 >[!NOTE]
->Sanal ağ tümleştirme özelliği, ExpressRoute ağ geçidine sahip bir sanal ağla bir uygulamayı tümleştirmez. ExpressRoute ağ geçidi, birlikte bulunma modunda yapılandırılmış olsa bile, sanal ağ tümleştirmesi çalışmaz. Kaynaklara bir ExpressRoute bağlantısı aracılığıyla erişmeniz gerekiyorsa, sanal ağınızda çalışan bir App Service Ortamı kullanabilirsiniz.
+>Sanal ağ tümleştirme özelliği, ExpressRoute ağ geçidine sahip bir sanal ağla bir uygulamayı tümleştirmez. ExpressRoute ağ geçidi, birlikte bulunma modunda yapılandırılmış olsa bile, sanal ağ tümleştirmesi çalışmaz. Kaynaklara bir ExpressRoute bağlantısı aracılığıyla erişmeniz gerekiyorsa, sanal ağınızda çalışan App Service Ortamı kullanabilirsiniz.
 
 ## <a name="troubleshooting-connectivity-issues"></a>Bağlantı sorunlarını giderme
 
 Bağlantı sorunlarını gidermek için aşağıdakileri gözden geçirin:
 
-- Aynı sanal ağ içindeki bir Azure sanal makinesinden ancak farklı alt ağda SQL yönetilen örneği 'ne bağlanamıyorsanız, VM alt ağında erişimi engelliyor olabilecek bir ağ güvenlik grubu olup olmadığını kontrol edin. Ayrıca, Azure sınırının içindeki yeniden yönlendirme yoluyla bağlantı kurulması gerektiğinden, SQL bağlantı noktası 1433 ' de giden bağlantı ' yı ve 11000-11999 aralığı içindeki bağlantı noktalarını açın.
+- Aynı sanal ağ içindeki bir Azure sanal makinesinden, farklı bir alt ağda SQL yönetilen örneği 'ne bağlanamıyorsanız, VM alt ağında erişimi engelliyor olabilecek bir ağ güvenlik grubu olup olmadığını kontrol edin. Ayrıca, Azure sınırının içindeki yeniden yönlendirme yoluyla bağlantı kurulması gerektiğinden, SQL bağlantı noktası 1433 ' de giden bağlantı ' yı ve 11000-11999 aralığındaki bağlantı noktalarını açın.
 - BGP yayılması 'nın, sanal ağla ilişkili yol tablosu için **etkin** olarak ayarlandığından emin olun.
 - P2S VPN kullanıyorsanız, giriş **/Çıkış** numaraları olup olmadığını görmek için Azure Portal yapılandırmayı kontrol edin. Sıfır olmayan sayılar, Azure 'un Şirket içi/içeri trafiği yönlendirme olduğunu gösterir.
 
@@ -137,7 +137,7 @@ Bağlantı sorunlarını gidermek için aşağıdakileri gözden geçirin:
 
 - Sanal ağ eşlemesi kullanıyorsanız, [ağ geçidi aktarımına Izin ver ' i ayarlama ve uzak ağ geçitleri kullanma](#connect-from-on-premises)yönergelerini izlediğinizden emin olun.
 
-- Azure App Service barındırılan bir uygulamayı bağlamak için sanal ağ eşlemesi kullanıyorsanız ve SQL yönetilen örnek sanal ağının ortak bir IP adresi aralığı varsa, barındırılan uygulama ayarlarınızın giden trafiğinizin ortak IP ağlarına yönlendirilmesine izin verdiğinden emin olun. [Bölgesel sanal ağ tümleştirmesinde](../../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)yönergeleri izleyin.
+- Azure App Service barındırılan bir uygulamayı bağlamak için sanal ağ eşlemesi kullanıyorsanız ve SQL yönetilen örnek sanal ağının ortak bir IP adresi aralığı varsa, barındırılan uygulama ayarlarınızın, giden trafiğinizin ortak IP ağlarına yönlendirilmesine izin verdiğinden emin olun. [Bölgesel sanal ağ tümleştirmesinde](../../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)yönergeleri izleyin.
 
 ## <a name="required-versions-of-drivers-and-tools"></a>Gerekli sürücü ve araç sürümleri
 
@@ -157,4 +157,4 @@ SQL yönetilen örneğine bağlanmak istiyorsanız, araçların ve sürücüleri
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - SQL yönetilen örneği hakkında daha fazla bilgi için bkz. [SQL yönetilen örneği nedir?](sql-managed-instance-paas-overview.md).
-- Yeni bir SQL yönetilen örneği oluşturmayı gösteren bir öğretici için bkz. [SQL yönetilen örneği oluşturma](instance-create-quickstart.md).
+- Yeni bir yönetilen örnek oluşturma hakkında bir öğretici için bkz. [yönetilen örnek oluşturma](instance-create-quickstart.md).

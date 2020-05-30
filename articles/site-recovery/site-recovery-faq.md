@@ -4,12 +4,12 @@ description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular 
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2e6cbac9896fc2bc6b3d4d95a28a25d8177bd7a5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744112"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193553"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
@@ -195,7 +195,37 @@ Evet. Aşağıdaki makalelerde azaltma bant genişliği hakkında daha fazla bil
 * [VMware VM 'lerini ve fiziksel sunucuları çoğaltmak için kapasite planlaması](site-recovery-plan-capacity-vmware.md)
 * [Hyper-V VM 'lerini Azure 'a çoğaltmak için kapasite planlaması](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Linux sunucularında uygulama tutarlılığı ile çoğaltmayı etkinleştirebilir miyim? 
+Evet. Linux Işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve son seçenekleri olan özel betik, uygulama tutarlılığı sırasında Azure Site Recovery Mobility Aracısı tarafından kullanılır. Aşağıda, etkinleştirme adımları verilmiştir.
 
+1. Makinede kök olarak oturum açın.
+2. Dizini Mobility Aracısı yüklemesi konumuna Azure Site Recovery değiştirin. Varsayılan değer "/usr/local/ASR"<br>
+    `# cd /usr/local/ASR`
+3. Dizini, install location altındaki "bir", "dosyası" olarak değiştirin<br>
+    `# cd VX/scripts`
+4. Kök kullanıcı için yürütme izinleriyle "customscript.sh" adlı bir bash Shell betiği oluşturun.<br>
+    a. Betik "--Pre" ve "--Post" (çift kesik çizgi) komut satırı seçeneklerini desteklemelidir<br>
+    b. Betik, ön seçenekle çağrıldığında, uygulama giriş/çıkışını dondurmalı ve son seçenek ile çağrıldığında, uygulama girişini/çıkışını çözülmelidir.<br>
+    c. Örnek şablon-<br>
+
+    `# cat customscript.sh`<br>
+
+```
+    #!/bin/bash
+
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 [--pre | --post]"
+        exit 1
+    elif [ "$1" == "--pre" ]; then
+        echo "Freezing app IO"
+        exit 0
+    elif [ "$1" == "--post" ]; then
+        echo "Thawed app IO"
+        exit 0
+    fi
+```
+
+5. Uygulama tutarlılığı gerektiren uygulamalar için ön ve son adımlara yönelik dondurma ve çözme giriş/çıkış komutlarını ekleyin. Bunları belirten başka bir betik eklemeyi ve ön ve sonrası seçenekleri olan "customscript.sh" öğesinden çağırmayı seçebilirsiniz.
 
 ## <a name="failover"></a>Yük devretme
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Azure 'a yük devretdiğimde yük devretmeden sonra Azure VM 'lerine nasıl erişebilirim?

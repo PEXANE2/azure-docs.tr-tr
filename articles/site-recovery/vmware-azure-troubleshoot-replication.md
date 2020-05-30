@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 3a3d8ee1d0c1625c9e7d3d83b590f38dcd8847fe
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836422"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197036"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için çoğaltma sorunlarını giderme
 
@@ -77,7 +77,7 @@ Sorunu çözmek için:
     - Etkilenen çoğaltılan makinenin diskler dikey penceresine gidin ve çoğaltma diski adını kopyalayın
     - Bu çoğaltma yönetilen diskine git
     - Genel Bakış dikey penceresinde bir SAS URL 'sinin oluşturulduğunu söyleyen bir başlık görebilirsiniz. Bu başlık üzerine tıklayın ve dışarı aktarmayı iptal edin. Başlığı görmüyorsanız bu adımı yoksayın.
-    - SAS URL 'SI iptal edildiğinde, yönetilen diskin yapılandırma dikey penceresine gidin ve ASR 'nin kaynak diskte gözlemlenen dalgalanma oranını desteklemesi için boyutu artırın
+    - SAS URL 'SI iptal edildiğinde, yönetilen diskin yapılandırma dikey penceresine gidin ve Azure Site Recovery kaynak diskte gözlemlenen dalgalanma oranını desteklemesi için boyutu artırın
 - Gözlenen karmaşıklık geçicidir, bekleyen veri yüklemesinin yakalanması ve kurtarma noktaları oluşturması için birkaç saat bekleyin.
 - Disk geçici Günlükler gibi kritik olmayan veriler içeriyorsa, verileri test edin. bu verileri başka bir yere taşımayı veya bu diski çoğaltmanın tamamen dışlanmasını göz önünde bulundurun
 - Sorun devam ederse, çoğaltmayı planlamaya yardımcı olması için Site Recovery [dağıtım planlayıcısı](site-recovery-deployment-planner.md#overview) ' nı kullanın.
@@ -146,6 +146,8 @@ En yaygın sorunlardan bazıları aşağıda listelenmiştir
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Neden 3: SQL Server 2016 ve 2017 ' de bilinen sorun
 **Nasıl düzeltilir** : KB [makalesine](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) başvurun
 
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Neden 4: uygulama tutarlılığı Linux sunucularında etkinleştirilmemiş
+**Nasıl düzeltilir** : Linux işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve gönderi seçenekleriyle özel betik, uygulama tutarlılığı için Azure Site Recovery Mobility Aracısı tarafından kullanılır. Etkinleştirme adımları [aşağıda](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) verilmiştir.
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS ile ilgili sorunlardan kaynaklanan nedenler:
 
@@ -162,12 +164,12 @@ Yukarıdaki örnekte **2147754994** , hatayı aşağıda gösterildiği gibi bil
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS yazıcısı yüklü değil-hata 2147221164
 
-*Nasıl düzeltilir*: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için işlemi için bir VSS sağlayıcısı yüklenir. Bu VSS sağlayıcısı bir hizmet olarak yüklendi. VSS sağlayıcısı hizmetinin yüklü olmaması durumunda, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi, 0x80040154 "sınıf kayıtlı değil" hata kimliğiyle başarısız olur. </br>
+*Nasıl düzeltilir*: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için işlemi için bir VSS sağlayıcısı yüklenir. Bu VSS sağlayıcısı bir hizmet olarak yüklendi. VSS sağlayıcısı hizmetinin yüklü olmaması durumunda, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi, 0x80040154 "sınıf kayıtlı değil" hata KIMLIĞIYLE başarısız olur. </br>
 [VSS yazıcı yükleme sorunlarını giderme makalesine](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) bakın
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS yazıcı devre dışı-hata 2147943458
 
-**Nasıl düzeltilir**: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için işlemi için bir VSS sağlayıcısı yüklenir. Bu VSS sağlayıcısı bir hizmet olarak yüklendi. VSS sağlayıcısı hizmetinin devre dışı bırakılması durumunda, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi hata kimliğiyle başarısız olur "belirtilen hizmet devre dışı bırakıldı ve başlatılamıyor (0x80070422)". </br>
+**Nasıl düzeltilir**: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için işlemi için bir VSS sağlayıcısı yüklenir. Bu VSS sağlayıcısı bir hizmet olarak yüklendi. VSS sağlayıcısı hizmetinin devre dışı bırakılması durumunda, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi hata KIMLIĞIYLE başarısız olur "belirtilen hizmet devre dışı bırakıldı ve başlatılamıyor (0x80070422)". </br>
 
 - VSS devre dışıysa,
     - VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarlandığını doğrulayın.

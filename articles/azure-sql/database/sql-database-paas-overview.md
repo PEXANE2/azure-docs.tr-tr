@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 635cf32fa27a8bc5be12964852c451190e7f1aae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 643c94736d6ee519907913bc9ec59f808081f089
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050761"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216413"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL veritabanı nedir?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ SQL veritabanı iki farklı satın alma modelinde performansı kolayca tanımlam
 
 ## <a name="deployment-models"></a>Dağıtım modelleri
 
-Azure SQL Veritabanı, bir Azure SQL veritabanı için aşağıdaki dağıtım seçeneklerini sunar:
+Azure SQL veritabanı, bir veritabanı için aşağıdaki dağıtım seçeneklerini sağlar:
 
 - [Tek veritabanı](single-database-overview.md) , tam olarak yönetilen, yalıtılmış bir veritabanını temsil eder. Tek bir güvenilir veri kaynağı gerektiren modern bulut Uygulamalarınız ve mikro hizmetlerinize sahipseniz bu seçeneği kullanabilirsiniz. Tek bir veritabanı, [Microsoft SQL Server veritabanı altyapısında](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) [Kapsanan veritabanına](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json) benzerdir.
 - [Elastik havuz](elastic-pool-overview.md) , CPU veya bellek gibi paylaşılan bir kaynak kümesiyle [tek bir veritabanı](single-database-overview.md) koleksiyonudur. Tek veritabanları, elastik bir havuzun içine ve dışına taşınabilir.
@@ -190,18 +190,13 @@ SQL Veritabanı, [Azure Active Directory tümleştirmesi](authentication-aad-ove
 
 SQL Veritabanı uygulama oluşturma ve uygulamaların bakımını yapma işlemlerinin daha kolay ve daha verimli şekilde yapılmasını sağlar. SQL Veritabanı size, en iyi yaptığınız işe; mükemmel uygulamalar oluşturmaya odaklanma seçeneği sunar. Zaten sahip olduğunuz araçları ve becerileri kullanarak SQL veritabanı 'nda yönetebilir ve geliştirebilirsiniz.
 
-- [Azure Portal](https://portal.azure.com/):
-
-  Tüm Azure hizmetlerini yönetmek için Web tabanlı bir uygulama.
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms):
-
-  SQL Server SQL veritabanı 'na kadar herhangi bir SQL altyapısını yönetmeye yönelik ücretsiz, indirilebilir bir istemci uygulaması.
-- [Visual Studio 'da SQL Server veri araçları](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt):
-
-  SQL Server ilişkisel veritabanları geliştirmeye yönelik ücretsiz, indirilebilir bir istemci uygulaması, Microsoft Azure SQL veritabanları, Tümleştirme Hizmetleri paketleri, Analysis Services veri modelleri ve Raporlama Hizmetleri raporları.
-- [Visual Studio Code](https://code.visualstudio.com/docs):
-
-  Windows, macOS ve Linux için ücretsiz, indirilebilir, açık kaynaklı bir kod Düzenleyicisi. Microsoft SQL Server, Azure SQL veritabanı ve Azure SQL veri ambarı 'nı sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler.
+|Araç|Açıklama|
+|:---|:---|
+|[Azure portal](https://portal.azure.com/)|Tüm Azure hizmetlerini yönetmek için Web tabanlı bir uygulama.|
+|[Azure Data Studio](/sql/azure-data-studio/)|Windows, MacOS ve Linux üzerinde çalışan platformlar arası bir veritabanı aracı.|
+|[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|SQL Server SQL veritabanı 'na kadar herhangi bir SQL altyapısını yönetmeye yönelik ücretsiz, indirilebilir bir istemci uygulaması.|
+|[Visual Studio 'da SQL Server Veri Araçları](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|SQL Server ilişkisel veritabanları geliştirmeye yönelik ücretsiz, indirilebilir bir istemci uygulaması, Microsoft Azure SQL veritabanları, Tümleştirme Hizmetleri paketleri, Analysis Services veri modelleri ve Raporlama Hizmetleri raporları.|
+|[Visual Studio Code](https://code.visualstudio.com/docs)|Windows, macOS ve Linux için ücretsiz, indirilebilir, açık kaynaklı bir kod Düzenleyicisi. Microsoft SQL Server, Azure SQL veritabanı ve Azure SQL veri ambarı 'nı sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler.|
 
 SQL veritabanı, macOS, Linux ve Windows 'da Python, Java, Node. js, PHP, Ruby ve .NET ile uygulama oluşturmayı destekler. SQL Veritabanı, SQL Server ile aynı [bağlantı kitaplıklarını destekler](connect-query-content-reference-guide.md#libraries).
 

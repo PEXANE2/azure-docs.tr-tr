@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: e2b37e0f3ccf5fcebe4723c05d644f2cbb7c1d56
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f9e0a137dff6fc2376d156f9c72066055b1f59af
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596949"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196953"
 ---
 # <a name="configure-replication-to-azure-sql-edge-preview"></a>Azure SQL Edge 'e çoğaltmayı yapılandırma (Önizleme) 
 
@@ -25,12 +25,12 @@ Azure SQL Edge örneği, tek yönlü bir işlem çoğaltması veya anlık görü
 - Azure SQL Edge örneği, yayımcı için bir anında iletme abonesi olmalıdır.
 - Yayımcı ve dağıtıcı şunlardan biri olabilir
    - Şirket içinde çalışan bir SQL Server örneği veya bir Azure sanal makinesinde çalışan bir SQL Server örneği. Daha fazla bilgi için bkz. [Azure sanal makinelerine genel bakış SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/). SQL Server örneklerin SQL Server 2016 ' den büyük bir sürümü kullanıyor olması gerekir.
-   - Azure SQL veritabanı yönetilen örneği örneği. Yönetilen örnek, Yayımcı, dağıtıcı ve abone veritabanlarını barındırabilirler. Daha fazla bilgi için bkz. [SQL veritabanı yönetilen örneği Ile çoğaltma](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/).
+   - Azure SQL yönetilen örneği örneği. Yönetilen örnek, Yayımcı, dağıtıcı ve abone veritabanlarını barındırabilirler. Daha fazla bilgi için bkz. [SQL veritabanı yönetilen örneği Ile çoğaltma](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/).
 
 - Dağıtım veritabanı ve çoğaltma aracıları bir Azure SQL Edge örneğine yerleştirilemez.  
 
 > [!NOTE]
-> Desteklenmeyen bir sürüm kullanılarak çoğaltmayı yapılandırmaya çalışmak, hata numarası MSSQL_REPL20084 (işlem aboneye bağlanamaz.) ve MSSQL_REPL40532 ( \< oturum açma tarafından istenen sunucu adı> açılamıyor. Oturum açılamadı.).  
+> Desteklenmeyen bir sürüm kullanılarak çoğaltmayı yapılandırma denemesi, hata numarası MSSQL_REPL20084 (işlem aboneye bağlanamaz.) ve MSSQL_REPL40532 ( \<name> oturum açma tarafından istenen sunucu açılamıyor. Oturum açılamadı.).  
 
 Azure SQL Edge 'in tüm özelliklerini kullanmak için, en son [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)sürümlerini kullanıyor olmanız gerekir.  
 
@@ -40,20 +40,20 @@ Azure SQL Edge 'in tüm özelliklerini kullanmak için, en son [SQL Server Manag
 - Çoğaltma, Azure SQL Edge örneğine bağlanmak için yalnızca SQL Server kimlik doğrulaması oturum açma bilgilerini kullanabilir.
 - Çoğaltılan tablolarda birincil anahtar olmalıdır.
 - SQL Server tek bir yayını hem Azure SQL Edge hem de SQL Server (Şirket içi ve SQL Server bir Azure sanal makinesinde) abonelerine destekleyebilir.  
-- Şirket içi SQL Server çoğaltma yönetimi, izleme ve sorun giderme işlemleri yapılmalıdır.  
+- Çoğaltma yönetimi, izleme ve sorun giderme SQL Server örneğinden gerçekleştirilmelidir.  
 - Yalnızca Azure SQL Edge 'e yönelik gönderme abonelikleri desteklenir.  
 - Yalnızca `@subscriber_type = 0` Azure SQL Edge için **sp_addsubscription** desteklenir.  
 - Azure SQL Edge, çift yönlü, anında, güncelleştirilebilir veya eşler arası çoğaltmayı desteklemez.
-- Azure SQL Edge, bir veya daha fazla desteklenmeyen özellik içeren bir veritabanını (veya veritabanı içindeki nesneleri) çoğaltma girişimi nedeniyle yalnızca SQL Server veya Azure SQL veritabanı yönetilen örneği 'nde kullanılabilen özelliklerin bir alt kümesini destekler. Örneğin, uzamsal veri türlerine sahip nesneler içeren bir veritabanını çoğaltma girişimi bir hatayla sonuçlanır. Azure SQL Edge tarafından desteklenen özellikler hakkında daha fazla bilgi için bkz. [Azure SQL Edge 'In desteklenen özellikleri](features.md).
+- Azure SQL Edge, bir veya daha fazla desteklenmeyen özellik içeren bir veritabanını (veya veritabanı içindeki nesneleri) çoğaltma girişimi nedeniyle yalnızca SQL Server veya SQL yönetilen örneği 'nde kullanılabilen özelliklerin bir alt kümesini destekler. Örneğin, uzamsal veri türlerine sahip nesneler içeren bir veritabanını çoğaltma girişimi bir hatayla sonuçlanır. Azure SQL Edge tarafından desteklenen özellikler hakkında daha fazla bilgi için bkz. [Azure SQL Edge 'In desteklenen özellikleri](features.md).
 
 ## <a name="scenarios"></a>Senaryolar  
 
 ### <a name="initializing-reference-data-on-an-edge-instance"></a>Bir kenar örneğinde başvuru verilerini başlatma
 
-Zaman içinde değişen başvuru verileriyle kenar örneğini başlatmak için gerekli olan, çoğaltmanın yararlı olduğu yaygın bir senaryodur. Örneğin, Edge örneğindeki ML modellerini, şirket içi SQL Server örneği üzerinde eğitilen bir şekilde güncelleştirme.
+Zaman içinde değişen başvuru verileriyle kenar örneğini başlatmak için gerekli olan, çoğaltmanın yararlı olduğu yaygın bir senaryodur. Örneğin, bir SQL Server örneği üzerinde eğitilen kenar örneğindeki ML modellerini güncelleştirme.
 
-1. Şirket içi SQL Server veritabanında bir işlem çoğaltması yayını oluşturun.  
-2. Şirket içi SQL Server, Azure SQL Edge 'e yönelik bir aboneliğe gönderim oluşturmak için **yeni abonelik Sihirbazı 'nı** veya Transact-SQL deyimlerini kullanın.  
+1. SQL Server veritabanında bir işlem çoğaltma yayını oluşturun.  
+2. SQL Server örneğinde, Azure SQL Edge 'e yönelik bir aboneliğe gönderim oluşturmak için **yeni abonelik Sihirbazı 'nı** veya Transact-SQL deyimlerini kullanın.  
 3. Azure SQL Edge 'deki çoğaltılan veritabanı, anlık görüntü Aracısı tarafından oluşturulan ve Dağıtım Aracısı tarafından dağıtılan ve sunulan bir anlık görüntü kullanılarak veya yayımcının bir veritabanı yedeklemesi kullanılarak başlatılabilir. Bir kez daha, veritabanı yedeklemesi Azure SQL Edge tarafından desteklenmeyen nesneler/özellikler içeriyorsa geri yükleme işlemi başarısız olur.
 
 ## <a name="limitations"></a>Sınırlamalar

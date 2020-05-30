@@ -10,13 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88ae3c45126403161e35ec46e5ccc2666c3edb55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4abc2dee6b83820169173d965d53381ead9f4d0b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050072"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194011"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -63,10 +64,10 @@ Aşağıdaki Windows dağıtımları Şu anda bu özelliğin önizlemesi sıras�
 
 Azure 'da Windows sanal makinelerinize yönelik Azure AD kimlik doğrulamasını etkinleştirmek için, VM 'Lerin ağ yapılandırmanızın TCP bağlantı noktası 443 üzerinden aşağıdaki uç noktalara giden erişime izin verdiğinden emin olmanız gerekir:
 
-- https:\//enterpriseregistration.Windows.net
+- https: \/ /enterpriseregistration.Windows.net
 - https:\//login.microsoftonline.com
-- https:\//Device.Login.microsoftonline.com
-- https:\//pas.Windows.net
+- https: \/ /Device.Login.microsoftonline.com
+- https: \/ /pas.Windows.net
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Azure 'da Windows VM için Azure AD oturum açmayı etkinleştirme
 
@@ -141,7 +142,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-`Succeeded` , `provisioningState` Uzantısı VM 'ye yüklendikten sonra gösterilir.
+, `provisioningState` `Succeeded` Uzantısı VM 'ye yüklendikten sonra gösterilir.
 
 ## <a name="configure-role-assignments-for-the-vm"></a>VM için rol atamalarını yapılandırma
 
@@ -188,7 +189,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> AAD etki alanı ve oturum açma Kullanıcı adı etki alanınız eşleşmezse, Kullanıcı hesabınızın nesne KIMLIĞINI yalnızca Kullanıcı adı değil ile `--assignee-object-id`belirtmeniz gerekir. `--assignee` Kullanıcı hesabınızın nesne KIMLIĞINI [az ad kullanıcı listesi](/cli/azure/ad/user#az-ad-user-list)ile elde edebilirsiniz.
+> AAD etki alanı ve oturum açma Kullanıcı adı etki alanınız eşleşmezse, Kullanıcı hesabınızın nesne KIMLIĞINI yalnızca Kullanıcı adı değil ile belirtmeniz gerekir `--assignee-object-id` `--assignee` . Kullanıcı hesabınızın nesne KIMLIĞINI [az ad kullanıcı listesi](/cli/azure/ad/user#az-ad-user-list)ile elde edebilirsiniz.
 
 Azure abonelik kaynaklarınıza erişimi yönetmek için RBAC kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -243,21 +244,21 @@ VM 'nin Azure AD JOIN işlemini tamamlaması için AADLoginForWindows uzantısı
    | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | Bu VM 'ye atanmış yönetilen kimlik için Azure Active Directory tarafından verilen geçerli erişim belirteci |
 
    > [!NOTE]
-   > Erişim belirteci, gibi [http://calebb.net/](http://calebb.net/)bir araç kullanılarak çözülebilir. Erişim belirtecindeki "AppID" nin VM 'ye atanan yönetilen kimlikle eşleştiğini doğrulayın.
+   > Erişim belirteci, gibi bir araç kullanılarak çözülebilir [http://calebb.net/](http://calebb.net/) . Erişim belirtecindeki "AppID" nin VM 'ye atanan yönetilen kimlikle eşleştiğini doğrulayın.
 
 1. Komut satırını kullanarak gerekli uç noktaların VM 'den erişilebilir olduğundan emin olun:
    
-   - çapraz kıvır\/:/login.microsoftonline.com/-D –
-   - çapraz kıvır\/:/`<TenantID>`Login.microsoftonline.com//-D –
+   - çapraz kıvır: \/ /login.microsoftonline.com/-D –
+   - çapraz kıvır: \/ /login.microsoftonline.com/ `<TenantID>` /-D –
 
    > [!NOTE]
-   > Azure `<TenantID>` aboneliğiyle ILIŞKILI Azure AD Kiracı kimliği ile değiştirin.
+   > `<TenantID>`Azure aboneliğiyle Ilişkili Azure AD KIRACı kimliği ile değiştirin.
 
-   - çapraz kıvır\/:/enterpriseregistration.Windows.net/-D-
-   - çapraz kıvır\/:/Device.Login.microsoftonline.com/-D-
-   - çapraz kıvır\/:/pas.Windows.net/-D-
+   - çapraz kıvır: \/ /enterpriseregistration.Windows.net/-D-
+   - çapraz kıvır: \/ /Device.Login.microsoftonline.com/-D-
+   - çapraz kıvır: \/ /pas.Windows.net/-D-
 
-1. Cihaz durumu çalıştırılarak `dsregcmd /status`görüntülenebilir. Amaç, cihaz durumunun as olarak `AzureAdJoined : YES`gösterilmesi içindir.
+1. Cihaz durumu çalıştırılarak görüntülenebilir `dsregcmd /status` . Amaç, cihaz durumunun as olarak gösterilmesi içindir `AzureAdJoined : YES` .
 
    > [!NOTE]
    > Azure AD JOIN etkinliği, Olay Görüntüleyicisi 'nde Kullanıcı aygıtı Registration\Admin günlüğü altında yakalanır.
@@ -278,26 +279,26 @@ Uzantı Azure AD kiracı bilgilerini sorgulayamadığından, bu çıkış kodu D
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Sorun 2: AADLoginForWindows uzantısı, çıkış kodu ile yüklenemedi:-2145648607
 
-Uzantı `https://enterpriseregistration.windows.net` uç noktaya ulaşamadığından, bu çıkış kodu DSREG_AUTOJOIN_DISC_FAILED çevrilir.
+Uzantı uç noktaya ulaşamadığından, bu çıkış kodu DSREG_AUTOJOIN_DISC_FAILED çevrilir `https://enterpriseregistration.windows.net` .
 
 1. Komut satırını kullanarak gerekli uç noktaların VM 'den erişilebilir olduğundan emin olun:
 
-   - çapraz kıvır\/:/login.microsoftonline.com/-D –
-   - çapraz kıvır\/:/`<TenantID>`Login.microsoftonline.com//-D –
+   - çapraz kıvır: \/ /login.microsoftonline.com/-D –
+   - çapraz kıvır: \/ /login.microsoftonline.com/ `<TenantID>` /-D –
    
    > [!NOTE]
-   > Azure `<TenantID>` aboneliğiyle ILIŞKILI Azure AD Kiracı kimliği ile değiştirin. Kiracı KIMLIĞINI bulmanız gerekiyorsa, Dizin/kiracı KIMLIĞINI almak için hesap adınızın üzerine gelebilirler veya Azure portal > dizin KIMLIĞI > Azure Active Directory seçebilirsiniz.
+   > `<TenantID>`Azure aboneliğiyle Ilişkili Azure AD KIRACı kimliği ile değiştirin. Kiracı KIMLIĞINI bulmanız gerekiyorsa, Dizin/kiracı KIMLIĞINI almak için hesap adınızın üzerine gelebilirler veya Azure portal > dizin KIMLIĞI > Azure Active Directory seçebilirsiniz.
 
-   - çapraz kıvır\/:/enterpriseregistration.Windows.net/-D-
-   - çapraz kıvır\/:/Device.Login.microsoftonline.com/-D-
-   - çapraz kıvır\/:/pas.Windows.net/-D-
+   - çapraz kıvır: \/ /enterpriseregistration.Windows.net/-D-
+   - çapraz kıvır: \/ /Device.Login.microsoftonline.com/-D-
+   - çapraz kıvır: \/ /pas.Windows.net/-D-
 
-1. Komutlardan herhangi biri "ana bilgisayar `<URL>`çözümlenemedi" ile başarısız olursa, VM tarafından KULLANıLMAKTA olan DNS sunucusunu öğrenmek için bu komutu çalıştırmayı deneyin.
+1. Komutlardan herhangi biri "ana bilgisayar çözümlenemedi" ile başarısız olursa `<URL>` , VM tarafından kullanılmakta olan DNS sunucusunu öğrenmek için bu komutu çalıştırmayı deneyin.
    
    `nslookup <URL>`
 
    > [!NOTE] 
-   > Uç `<URL>` noktalar tarafından kullanılan "Login.microsoftonline.com" gibi tam etki alanı adlarıyla değiştirin.
+   > `<URL>`Uç noktalar tarafından kullanılan "Login.microsoftonline.com" gibi tam etki alanı adlarıyla değiştirin.
 
 1. Daha sonra, genel bir DNS sunucusu belirtme komutunun başarılı olmasına izin verir:
 
@@ -315,7 +316,7 @@ Genel önizlemede, AADLoginForWindows uzantısının yalnızca Windows Server 20
 
 Azure AD kimlik bilgileriyle RDP kullanmaya çalıştığınızda karşılaşılan bazı yaygın hatalar, hiçbir RBAC rolü atanmamış, yetkisiz istemci veya 2FA oturum açma yöntemi gerekli değildir. Bu sorunları gidermek için aşağıdaki bilgileri kullanın.
 
-Cihaz ve SSO durumu çalıştırılarak `dsregcmd /status`görüntülenebilir. Amaç, cihaz durumunun olarak `AzureAdJoined : YES` gösterilmesi ve `SSO State` gösterilmesi `AzureAdPrt : YES`içindir.
+Cihaz ve SSO durumu çalıştırılarak görüntülenebilir `dsregcmd /status` . Amaç, cihaz durumunun olarak gösterilmesi `AzureAdJoined : YES` ve `SSO State` gösterilmesi içindir `AzureAdPrt : YES` .
 
 Ayrıca, Azure AD hesaplarını kullanan RDP oturum açma işlemi, Aad\işletimsel olay günlükleri altında Olay Görüntüleyicisi 'nde yakalanır.
 

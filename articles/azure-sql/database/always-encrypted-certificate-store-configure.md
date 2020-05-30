@@ -12,17 +12,18 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 0287e5a965710ea5c3b1ada73fc32dda49c05819
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8b1b8297f285a5481909e2e2d91118e15d7d5095
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047709"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190400"
 ---
-# <a name="configure-always-encrypted-using-windows-certificate-store"></a>Windows sertifika deposu kullanarak Always Encrypted yapılandırma
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Windows sertifika deposu kullanarak Always Encrypted yapılandırma
 
-Bu öğreticide, [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx)' de [Always Encrypted SIHIRBAZıNı](/sql/relational-databases/security/encryption/always-encrypted-wizard) kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ndeki bir veritabanında hassas verilerin nasıl güvenli hale kullanılacağı gösterilir. Ayrıca, şifreleme anahtarlarınızı Windows sertifika depolama alanında nasıl depolayabileceği de gösterilmektedir.
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+Bu makalede, [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx)' de [Always Encrypted SIHIRBAZıNı](/sql/relational-databases/security/encryption/always-encrypted-wizard) kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde hassas verilerin nasıl güvenli hale kullanılacağı gösterilmektedir. Ayrıca, şifreleme anahtarlarınızı Windows sertifika depolama alanında nasıl depolayabileceği de gösterilmektedir.
 
 Always Encrypted, istemci ve sunucu arasında hareket edilirken ve veriler kullanımda olduğunda, gizli verilerin veritabanı sisteminde hiçbir zaman düz metin olarak göründüğünden emin olmak için, sunucudaki bekleyen hassas verileri korumaya yardımcı olan bir veri şifreleme teknolojisidir. Verileri şifreledikten sonra, yalnızca anahtarlara erişimi olan istemci uygulamaları veya uygulama sunucuları düz metin verilerine erişebilir. Ayrıntılı bilgi için bkz. [Always Encrypted (veritabanı altyapısı)](https://msdn.microsoft.com/library/mt163865.aspx).
 
@@ -56,7 +57,7 @@ Bir Azure Active Directory (AAD) uygulaması ayarlayarak ve uygulamanızın kiml
 
 ## <a name="connect-with-ssms"></a>SSMS ile bağlanma
 
-SQL Server yönetilen Studio 'Yu (SSMS) açın ve sunucuya bağlanın ya da veritabanıyla birlikte yönetilir.
+SQL Server Management Studio (SSMS) açın ve sunucuya bağlanın ya da veritabanınıza birlikte yönetilir.
 
 1. SSMS’i açın. ( **Bağlan**  >  'a tıklayın Açık değilse **sunucuya Bağlan** penceresini açmak Için **veritabanı altyapısı** .
 2. Sunucu adınızı ve kimlik bilgilerinizi girin.

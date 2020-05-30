@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 60df6597d13ea5c8ca265959b0dba5cb83bcdcba
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a45fc5f4e56ff3a5d7f0be167c5d758aa0e47caf
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044741"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196363"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL Data Sync için en iyi yöntemler 
 
@@ -34,7 +34,7 @@ SQL Data Sync hizmetine genel bakış için bkz. [Azure SQL Data Sync ile birden
 ### <a name="client-agent"></a>İstemci Aracısı
 
 -   İstemci aracısını, ağ hizmeti erişimi olan en az ayrıcalıklı kullanıcı hesabını kullanarak yükler.  
--   İstemci aracısını, şirket içi SQL Server bilgisayar olmayan bir bilgisayara yükler.  
+-   İstemci aracısını SQL Server bilgisayar olmayan bir bilgisayara yükler.  
 -   Birden fazla aracıyla şirket içi bir veritabanını kaydetmeyin.    
     -   Farklı eşitleme grupları için farklı tabloları eşitleseniz bile bunu önleyin.  
     -   Birden çok istemci aracılarıyla şirket içi bir veritabanını kaydettirmek, eşitleme gruplarından birini sildiğinizde zorluk doğurur.
@@ -197,7 +197,7 @@ Bazı durumlarda, bir istemci aracısıyla bir veritabanının kaydını silmek 
 
 #### <a name="scenario"></a>Senaryo
 
-1. A adlı eşitleme grubu, bir SQL veritabanı örneği ve yerel aracı 1 ile ilişkili bir şirket içi SQL Server veritabanı kullanılarak oluşturulmuştur.
+1. A adlı eşitleme grubu, bir SQL veritabanı örneği ve yerel aracı 1 ile ilişkili bir SQL Server veritabanı kullanılarak oluşturulmuştur.
 2. Aynı şirket içi veritabanı yerel aracı 2 ile kaydedilir (Bu aracı herhangi bir eşitleme grubuyla ilişkili değildir).
 3. Şirket içi veritabanının kaydını yerel aracı 2 ' den silmek, şirket içi veritabanı için bir eşitleme grubu için izleme ve meta tabloları kaldırır.
 4. Eşitleme grubu A işlemleri başarısız oldu, bu hata: "veritabanı eşitleme için sağlanmadığından veya eşitleme yapılandırma tabloları için izinleriniz olmadığından geçerli işlem tamamlanamadı."
@@ -232,8 +232,8 @@ Bu sorunu azaltmak için, lütfen eşitleme meta verileri veritabanınızı S3 g
 SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
 -   Genel Bakış- [Azure SQL Data Sync ile birden çok bulut ve şirket içi veritabanı arasında veri eşitleme](sql-data-sync-data-sql-server-sql-database.md)
--   SQL Data Sync ayarlama
-    - Portalda- [öğreticide, Azure SQL veritabanı ve şirket içi SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-data-sync-sql-server-configure.md)
+-   SQL Data Sync’i ayarlama
+    - Portalda- [öğretici: Azure SQL veritabanı ile SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-data-sync-sql-server-configure.md)
     - PowerShell ile
         -  [Azure SQL veritabanı 'nda birden çok veritabanı arasında eşitleme yapmak için PowerShell 'i kullanma](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak SQL veritabanındaki bir veritabanı ile bir SQL Server örneğindeki bir veritabanı arasında eşitleme](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

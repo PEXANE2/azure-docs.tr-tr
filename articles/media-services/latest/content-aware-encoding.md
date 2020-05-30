@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cb38037b905e9d7f938b648954bcb9e419be5af
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76772074"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217433"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Belirli bir çözüm için en iyi bit hızı değerini bulmak için içerik algılayan kodlama ön ayarını kullanın
 
@@ -76,8 +76,10 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> `ContentAwareEncoding` Ön ayarı kullanan kodlama işleri, çıkış dakikalarına göre faturalandırılır. 
+> Ön ayarı kullanan kodlama işleri, `ContentAwareEncoding` Çıkış dakikalarına göre faturalandırılır. 
 
+**Contentawareencoding** ön ayarını kullandığınızdan emin olun ContentAwareEncodingExperimental.
+  
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Öğretici: Media Services v3 ile videoları karşıya yükleme, kodlama ve akışla](stream-files-tutorial-with-api.md)

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: b2694d83f3059ac9d291f5164a76acd8b011c9a7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a462c3480d58a7895429863cb3d09874cd6ef0f8
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049998"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217927"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği ile yaygın güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,7 +35,7 @@ Bu belge, Azure SQL veritabanı ve Azure SQL yönetilen örneği kullanılarak y
 
 - Azure SQL Veri Ambarı
 - Azure SQL VM 'Leri (IaaS)
-- Şirket içi SQL Server
+- SQL Server
 
 ### <a name="audience"></a>Hedef kitle
 

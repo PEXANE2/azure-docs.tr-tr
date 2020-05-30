@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: eebf0bb2a5f2a813ff282854b62f10957475e3b1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ec0aebc10d47b3e9945e63e818240da7bf2451e4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046442"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192961"
 ---
 # <a name="replication-to-azure-sql-database"></a>Azure SQL veritabanı 'na çoğaltma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Bir Azure SQL veritabanını, tek yönlü bir işlem veya anlık görüntü ço�
 
 Bir Azure SQL veritabanına başarıyla çoğaltma yapmak için SQL Server yayımcılar ve dağıtımcılar aşağıdaki sürümlerden birini kullanıyor olmalıdır: 
 
-Şirket içi SQL Server herhangi bir Azure SQL veritabanına yayımlama, aşağıdaki SQL Server sürümleri tarafından desteklenir:
+SQL Server veritabanından herhangi bir Azure SQL veritabanına yayımlama, aşağıdaki SQL Server sürümleri tarafından desteklenir:
 
 - SQL Server 2016 ve üzeri
 - SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) veya [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
@@ -54,11 +54,11 @@ Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-database
 
 | Çoğaltma | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Yes | 
-| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Yes|
+| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Evet | 
+| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Evet|
 | [**Birleştirme çoğaltması**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Hayır | Hayır|
 | [**Eşler arası**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Hayır | Hayır|
-| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
+| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Evet|
 | [**Güncelleştirilebilir abonelikler**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Hayır | Hayır|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -84,13 +84,13 @@ Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-database
 
 ### <a name="typical-replication-scenario"></a>Tipik çoğaltma senaryosu  
 
-1. Şirket içi SQL Server veritabanında bir işlem çoğaltması yayını oluşturun.  
-2. Şirket içi SQL Server Azure SQL veritabanı 'na bir abonelik gönderimi oluşturmak için **yeni abonelik Sihirbazı 'nı** veya Transact-SQL deyimlerini kullanın.  
+1. SQL Server veritabanında bir işlem çoğaltma yayını oluşturun.  
+2. SQL Server Azure SQL veritabanı 'na bir abonelik gönderimi oluşturmak için **yeni abonelik Sihirbazı 'nı** veya Transact-SQL deyimlerini kullanın.  
 3. Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanları sayesinde, ilk veri kümesi, anlık görüntü Aracısı tarafından oluşturulan ve Dağıtım Aracısı tarafından dağıtılan ve uygulanan bir anlık görüntüdür. SQL yönetilen örnek yayımcısı ile Azure SQL veritabanı abonesini temel almak için bir veritabanı yedeklemesi de kullanabilirsiniz.
 
 ### <a name="data-migration-scenario"></a>Veri geçiş senaryosu  
 
-1. Şirket içi SQL Server veritabanından Azure SQL veritabanı 'na veri çoğaltmak için işlem çoğaltmayı kullanın.  
+1. SQL Server veritabanından Azure SQL veritabanı 'na veri çoğaltmak için işlem çoğaltmayı kullanın.  
 2. Veritabanı kopyasını güncelleştirmek için istemciyi veya orta katman uygulamaları yeniden yönlendirin.  
 3. Tablonun SQL Server sürümünün güncelleştirilmesini durdurun ve yayını kaldırın.  
 

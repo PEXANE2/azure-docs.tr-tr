@@ -15,17 +15,17 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 01e8eae154172cc48decb209e4964dc5ff0d835f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8476029fb189db846eca3eba31fe8cc62d3726f8
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049144"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219452"
 ---
-# <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-an-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırmak üzere Azure hızlı başlangıç şablonlarını kullanma
+# <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırmak üzere Azure hızlı başlangıç şablonlarını kullanma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Bu makalede, Azure 'da SQL Server sanal makineler için her zaman açık kullanılabilirlik grubu yapılandırmasının dağıtımını kısmen otomatik hale getirmek üzere Azure hızlı başlangıç şablonlarının nasıl kullanılacağı açıklanır. Bu işlemde iki Azure hızlı başlangıç şablonu kullanılır: 
+Bu makalede, Azure 'da SQL Server sanal makineler (VM) için her zaman açık kullanılabilirlik grubu yapılandırmasının dağıtımını kısmen otomatik hale getirmek üzere Azure hızlı başlangıç şablonlarının nasıl kullanılacağı açıklanır. Bu işlemde iki Azure hızlı başlangıç şablonu kullanılır: 
 
    | Şablon | Açıklama |
    | --- | --- |
@@ -47,11 +47,11 @@ Hızlı Başlangıç şablonlarını kullanarak her zaman açık kullanılabilir
 Azure hızlı başlangıç şablonlarını kullanarak Always on kullanılabilirlik grubunu yapılandırmak için aşağıdaki izinler gereklidir: 
 
 - Etki alanında **bilgisayar nesnesi oluşturma** iznine sahip olan mevcut bir etki alanı kullanıcı hesabı.  Örneğin, bir etki alanı yönetici hesabı genellikle yeterli izne sahiptir (örneğin: account@domain.com ). _Bu hesap, kümeyi oluşturmak için her VM 'de yerel yönetici grubunun da bir parçası olmalıdır._
-- SQL Server hizmetini denetleyen etki alanı kullanıcı hesabı. 
+- SQL Server denetleyen etki alanı kullanıcı hesabı. 
 
 
 ## <a name="step-1-create-the-failover-cluster-and-join-sql-server-vms-to-the-cluster-by-using-a-quickstart-template"></a>1. Adım: bir hızlı başlangıç şablonu kullanarak yük devretme kümesi oluşturma ve SQL Server VM 'Leri kümeye katma 
-SQL Server sanal makinelerinizin SQL VM kaynak sağlayıcısına kaydolduktan sonra, SQL Server sanal *makinelerinizi Sqlvirtualmachinegroups*öğesine ekleyebilirsiniz. Bu kaynak Windows Yük devretme kümesinin meta verilerini tanımlar. Meta veriler, hem kümeyi hem de SQL Server hizmetini ve depolama hesabını bulut tanığı olarak yönetmek için sürüm, sürüm, tam etki alanı adı, Active Directory hesapları içerir. 
+SQL Server sanal makinelerinizin SQL VM kaynak sağlayıcısına kaydolduktan sonra, SQL Server sanal *makinelerinizi Sqlvirtualmachinegroups*öğesine ekleyebilirsiniz. Bu kaynak Windows Yük devretme kümesinin meta verilerini tanımlar. Meta veriler, hem kümeyi hem SQL Server ve depolama hesabını bulut tanığı olarak yönetmek için sürüm, sürüm, tam etki alanı adı, Active Directory hesapları içerir. 
 
 SQL Server VM 'Leri *Sqlvirtualmachinegroups* kaynak grubuna eklemek Için Windows Yük devretme kümesi hizmeti 'ni önyükleme ve ardından SQL Server bu sanal makineleri bu kümeye birleştirir. Bu adım **101-SQL-VM-AG-Setup** hızlı başlangıç şablonuyla otomatikleştirilir. Aşağıdaki adımları kullanarak gerçekleştirebilirsiniz:
 
@@ -71,10 +71,10 @@ SQL Server VM 'Leri *Sqlvirtualmachinegroups* kaynak grubuna eklemek Için Windo
    | **Var olan etki alanı hesabı** | Şablon dağıtımı sırasında [CNO](/windows-server/failover-clustering/prestage-cluster-adds) olarak etki alanında **bilgisayar nesnesi oluşturma** iznine sahip olan mevcut bir etki alanı kullanıcı hesabı. Örneğin, bir etki alanı yönetici hesabı genellikle yeterli izne sahiptir (örneğin: account@domain.com ). *Bu hesap, kümeyi oluşturmak için her VM 'de yerel yönetici grubunun da bir parçası olmalıdır.*| 
    | **Etki alanı hesabı parolası** | Daha önce bahsedilen etki alanı kullanıcı hesabının parolası. | 
    | **Mevcut SQL hizmeti hesabı** | Kullanılabilirlik grubu dağıtımı sırasında [SQL Server hizmetini](/sql/database-engine/configure-windows/configure-windows-service-accounts-and-permissions) denetleyen etki alanı kullanıcı hesabı (örneğin: account@domain.com ). |
-   | **SQL hizmeti parolası** | SQL Server hizmetini denetleyen etki alanı kullanıcı hesabı tarafından kullanılan parola. |
+   | **SQL hizmeti parolası** | SQL Server denetleyen etki alanı kullanıcı hesabı tarafından kullanılan parola. |
    | **Bulut tanığı adı** | Bulut tanığı için oluşturulacak ve kullanılacak yeni bir Azure depolama hesabı. Bu adı değiştirebilirsiniz. |
    | **\_yapıt konumu** | Bu alan varsayılan olarak ayarlanır ve değiştirilmemelidir. |
-   | **\_yapıt konumu SAS belirteci** | Bu alan kasıtlı olarak boş bırakılır. |
+   | **\_yapıt konumu SaS belirteci** | Bu alan kasıtlı olarak boş bırakılır. |
    | &nbsp; | &nbsp; |
 
 1. Hüküm ve koşulları kabul ediyorsanız, **yukarıda belirtilen hüküm ve koşulları kabul** ediyorum onay kutusunu işaretleyin. Ardından, hızlı başlangıç şablonunun dağıtımını son vermek için **satın al** ' ı seçin. 
@@ -188,7 +188,7 @@ Bu davranışı çözümlemek için, [PowerShell](#remove-the-availability-group
 Bu hata, dinleyicinin SQL Server Management Studio (SSMS) ile silinmiş ancak SQL VM kaynak sağlayıcısından silinmediğinden **101-SQL-VM-aglistener-Setup** şablonunu dağıttığınızda meydana gelebilir. SSD 'ler aracılığıyla dinleyicinin silinmesi, SQL VM kaynak sağlayıcısından dinleyicinin meta verilerini kaldırmaz. Dinleyici, [PowerShell](#remove-the-availability-group-listener)aracılığıyla kaynak sağlayıcısından silinmelidir. 
 
 ### <a name="domain-account-does-not-exist"></a>Etki alanı hesabı yok
-Bu hatanın iki nedeni olabilir. Belirtilen etki alanı hesabı yok veya [Kullanıcı asıl adı (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) verileri eksik. **101-SQL-VM-AG-Setup** şablonu, UPN formunda (yani,) bir etki alanı hesabı bekler *user@domain.com* , ancak bazı etki alanı hesaplarında bu hesap eksik olabilir. Bu genellikle, sunucu bir etki alanı denetleyicisine yükseltildiğinde veya PowerShell aracılığıyla bir kullanıcı oluşturulduğunda, yerel bir Kullanıcı ilk etki alanı yönetici hesabı olacak şekilde geçirildiğinde gerçekleşir. 
+Bu hatanın iki nedeni olabilir. Belirtilen etki alanı hesabı yok veya [Kullanıcı asıl adı (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) verileri eksik. **101-SQL-VM-AG-Setup** şablonu, UPN formunda (yani,) bir etki alanı hesabı bekler user@domain.com , ancak bazı etki alanı hesaplarında bu hesap eksik olabilir. Bu genellikle, sunucu bir etki alanı denetleyicisine yükseltildiğinde veya PowerShell aracılığıyla bir kullanıcı oluşturulduğunda, yerel bir Kullanıcı ilk etki alanı yönetici hesabı olacak şekilde geçirildiğinde gerçekleşir. 
 
 Hesabın var olduğunu doğrulayın. Bu durumda, ikinci duruma çalışıyor olabilirsiniz. Bunu çözmek için aşağıdakileri yapın:
 

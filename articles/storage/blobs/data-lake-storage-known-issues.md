@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4b6def2ce2b0c1ba6d3a45e64bb7f82b5948a524
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 315bab473ccb42c3ca7b481c16bf8d8fbcfaac67
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642200"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193455"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -60,7 +60,7 @@ Bu blob REST API 'Leri desteklenmez:
 
 Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklenmez. Bir depolama hesabında hiyerarşik bir ad alanı etkinleştirmek istiyorsanız, yönetilmeyen VM disklerini hiyerarşik ad alanı özelliği etkin olmayan bir depolama hesabına yerleştirin.
 
-<a id="api-scope-data-lake-client-library" />
+<a id="api-scope-data-lake-client-library"></a>
 
 ## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK 'lar, PowerShell ve Azure CLı 'da dosya sistemi desteği
 
@@ -79,25 +79,25 @@ Blob anlık görüntülerini silme henüz desteklenmiyor.
 
 Blobsigortası desteklenmez.
 
-<a id="known-issues-tools" />
+<a id="known-issues-tools"></a>
 
 ## <a name="azcopy"></a>AzCopy
 
 AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)).AzCopy v 8.1 gibi önceki AzCopy sürümleri desteklenmez.
 
-<a id="storage-explorer" />
+<a id="storage-explorer"></a>
 
 ## <a name="azure-storage-explorer"></a>Azure Depolama Gezgini
 
 Yalnızca sürümlerini  `1.6.0`   veya üstünü kullanın.
 
-<a id="explorer-in-portal" />
+<a id="explorer-in-portal"></a>
 
 ## <a name="storage-explorer-in-the-azure-portal"></a>Azure portal Depolama Gezgini
 
 ACL 'Ler henüz desteklenmiyor.
 
-<a id="third-party-apps" />
+<a id="third-party-apps"></a>
 
 ## <a name="thirdpartyapplications"></a>Üçüncü taraf uygulamalar
 
@@ -111,7 +111,7 @@ Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md)
 
 ### <a name="diagnostic-logs"></a>Tanılama günlükleri
 
-Tanılama günlükleri henüz Azure portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirebilirsiniz. Örnek:
+Tanılama günlükleri henüz Azure portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirebilirsiniz. Örneğin:
 
 ```powershell
 #To login

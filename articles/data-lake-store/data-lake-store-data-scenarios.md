@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: a8f9b66bf9a301888f2371fb1c58a4845c2232b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536165"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193682"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 1. kullanma
 
@@ -40,7 +40,7 @@ Bu, büyük bir veri uygulamasını prototip yazmak için kullanılan daha küç
 
 | veri kaynağı | Şunu kullanarak Al |
 | --- | --- |
-| Yerel bilgisayar |<ul> <li>[Azure portalı](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[Visual Studio için Data Lake araçları kullanma](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| Yerel bilgisayar |<ul> <li>[Azure portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[Visual Studio için Data Lake araçları kullanma](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Depolama Blobu |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy aracı](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight kümesinde çalışan DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Akışlı veriler
@@ -78,7 +78,7 @@ Web sunucusu günlük verilerini karşıya yüklemek ve aynı zamanda diğer ver
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Şirket içinde veya IaaS Hadoop kümelerinde depolanan veriler
 Büyük miktarlarda veri, var olan Hadoop kümelerinde yerel olarak,,, işlem kullanan makinelerde depolanabilir. Hadoop kümeleri şirket içi bir dağıtımda olabilir veya Azure 'da bir IaaS kümesi içinde olabilir. Bu tür verileri tek kapalı bir yaklaşım veya yinelenen bir biçimde kopyalamak için Azure Data Lake Storage 1. gereksinimler olabilir. Bunu başarmak için kullanabileceğiniz çeşitli seçenekler vardır. Aşağıda, alternatifleri ve ilişkili ticaretin bir listesi verilmiştir.
 
-| Yaklaşım | Ayrıntılar | Yararları | Dikkat edilmesi gerekenler |
+| Yaklaşım | Ayrıntılar | Yararları | Önemli noktalar |
 | --- | --- | --- | --- |
 | Verileri doğrudan Hadoop kümelerinden Azure Data Lake Storage 1. kopyalamak için Azure Data Factory (ADF) kullanın |[ADF, bir veri kaynağı olarak mı 'yi destekler](../data-factory/connector-hdfs.md) |ADF, ve ilk sınıf uçtan uca yönetim ve izleme için kullanıma hazır destek sağlar |Şirket içinde veya IaaS kümesinde dağıtılması için Veri Yönetimi ağ geçidi gerekir |
 | Verileri Hadoop 'dan dosya olarak dışarı aktarın. Ardından uygun mekanizmayı kullanarak dosyaları Azure Data Lake Storage 1. kopyalayın. |Kullanarak dosyaları Azure Data Lake Storage 1. kopyalayabilirsiniz: <ul><li>[Windows işletim sistemi için Azure PowerShell](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li><li>Herhangi bir Data Lake Storage 1. SDK kullanarak özel uygulama</li></ul> |Kullanmaya başlamak için hızlı. Özelleştirilmiş karşıya yüklemeler gerçekleştirebilir |Birden çok teknolojiyi kapsayan çok adımlı işlem. Yönetim ve izleme, araçların özelleştirilmiş doğası sırasında zaman içinde bir bilgi olarak büyüyecektir |
@@ -108,7 +108,7 @@ Aşağıdaki örneklere bakabilirsiniz.
 ## <a name="download-data-from-data-lake-storage-gen1"></a>Data Lake Storage 1. verileri indirin
 Ayrıca, gibi senaryolar için Azure Data Lake Storage 1. verileri indirmek veya taşımak isteyebilirsiniz:
 
-* Mevcut veri işleme işlem hatlarınız ile, verileri diğer depolara, arayüze taşıyın. Örneğin, Data Lake Storage 1. verileri Azure SQL veritabanı 'na veya şirket içi SQL Server taşımak isteyebilirsiniz.
+* Mevcut veri işleme işlem hatlarınız ile, verileri diğer depolara, arayüze taşıyın. Örneğin, Data Lake Storage 1. verileri Azure SQL veritabanı 'na veya SQL Server taşımak isteyebilirsiniz.
 * Uygulama prototipleri oluştururken IDE ortamlarında işlenmek üzere verileri yerel bilgisayarınıza indirin.
 
 ![Data Lake Storage 1. çıkış verileri](./media/data-lake-store-data-scenarios/egress-data.png "Data Lake Storage 1. çıkış verileri")

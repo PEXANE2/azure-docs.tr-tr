@@ -3,12 +3,12 @@ title: Azure Advisor ile Azure uygulamalarının performansını geliştirme
 description: Azure dağıtımlarınızın performansını iyileştirmek için Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 230466c7c0e8de2681737bbf9d74341dea7f7b8f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787949"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196408"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor ile Azure uygulamalarının performansını geliştirme
 
@@ -22,7 +22,7 @@ Azure Advisor, daha uzun bir TTL yapılandırılmış Traffic Manager profilleri
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>SQL DB Danışmanı ile veritabanı performansını geliştirin
 
-Advisor, tüm Azure kaynaklarınız için önerilerin tutarlı, birleştirilmiş bir görünümünü sağlar. SQL Azure veritabanınızın performansını iyileştirmeye yönelik öneriler getirmek için SQL Veritabanı Danışmanı ile tümleşir.SQL Veritabanı Danışmanı kullanım geçmişinizi çözümleyerek SQL Azure veritabanlarınızın performansını değerlendirir. Daha sonra veritabanının tipik iş yükünü çalıştırmaya en uygun öneriler sunar.
+Advisor, tüm Azure kaynaklarınız için önerilerin tutarlı, birleştirilmiş bir görünümünü sağlar. Veritabanınızın performansını iyileştirmeye yönelik öneriler getirmek için SQL Veritabanı Danışmanı ile tümleşir.SQL Veritabanı Danışmanı kullanım geçmişinizi çözümleyerek veritabanlarınızın performansını değerlendirir. Daha sonra veritabanının tipik iş yükünü çalıştırmaya en uygun öneriler sunar.
 
 > [!NOTE]
 > Öneriler almak için, bir veritabanının kullanım haftası ile ilgili olması gerekir ve bu hafta içinde bazı tutarlı etkinlik olması gerekir. SQL Veritabanı Danışmanı, rastgele ek etkinlik için daha kolay olan tutarlı sorgu desenleri için daha kolay iyileştirebilirler.
@@ -80,19 +80,19 @@ Bir Azure bölgesi, abonelik başına en fazla 250 depolama hesabını destekley
 
 ## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>VNet ağ geçidi SKU 'sunun boyutunu, P2S kullanımı yüksek olacak şekilde artırmayı düşünün
 
-Her ağ geçidi SKU 'SU yalnızca belirtilen sayıda eşzamanlı P2S bağlantı sayısını destekleyebilir. Bağlantı sayınız ağ geçidi sınırınıza yakınsa, ek bağlantı girişimleri başarısız olabilir. Ağ geçidinizin boyutunu artırmak, daha fazla eşzamanlı P2S kullanıcısı destekkullanmanıza olanak tanır. Advisor, bunun için öneri ve işlemler sağlar.
+Her ağ geçidi SKU'su yalnızca belirli sayıda eşzamanlı P2S bağlantısını destekleyebilir. Bağlantı sayınız ağ geçidi sınırınıza yakınsa, ek bağlantı girişimleri başarısız olabilir. Ağ geçidinizin boyutunu artırmak, daha fazla eşzamanlı P2S kullanıcısı destekkullanmanıza olanak tanır. Advisor, bunun için öneri ve işlemler sağlar.
 
-## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>VNet ağ geçidi SKU 'sunun boyutunu yüksek CPU 'ya göre artırmayı düşünün
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Yüksek CPU kullanımını karşılamak için sanal ağ geçidi SKU'nuzun boyutunu artırın
 
-Yüksek trafik yükü altında VPN Gateway, yüksek CPU nedeniyle paketleri bırakabilir. VPN 'niz ' de sürekli olarak çalıştığı için VPN Gateway SKU 'nuzu yükseltmeniz gerekir. VPN ağ geçidinizin boyutunu artırmak, bağlantıların yüksek CPU nedeniyle bırakılmadığından emin olur. Danışman, bu sorunu önceden gidermek için öneri önerisine sahiptir. 
+VPN ağ geçidi, yoğun trafik yükü altında yüksek CPU kullanımı nedeniyle paket bırakabilir. VPN 'niz ' de sürekli olarak çalıştığı için VPN Gateway SKU 'nuzu yükseltmeniz gerekir. VPN ağ geçidinizin boyutunu artırmak, bağlantıların yüksek CPU nedeniyle bırakılmadığından emin olur. Danışman, bu sorunu önceden gidermek için öneri önerisine sahiptir. 
 
-## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>Yükleme aktarım hızını, veri sıkıştırmayı ve sorgu performansını en üst düzeye çıkarmak için yüklerken toplu iş boyutunu artırın
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>Yük aktarım hızını, veri sıkıştırma oranını ve sorgu performansını en üst düzeye çıkarmak için yükleme sırasında toplu iş boyutunu artırın
 
-Danışman, veritabanınıza yüklerken toplu iş boyutunu artırarak yük performansını ve aktarım hızını artırabildiğini algılayabilir. COPY ifadesini kullanmayı düşünebilirsiniz. COPY ifadesini kullandıysanız, SQLBulkCopy API veya BCP gibi yükleme yardımcı programlarını kullanırken toplu iş boyutunu artırmayı düşünün. Thumb 'in iyi bir kuralı, 100K ila 1M satır arasında bir toplu iş boyutudur. Bu, yük aktarım hızı, veri sıkıştırma ve sorgu performansının artmasıyla sonuçlanır.
+Danışman, veritabanınıza yüklerken toplu iş boyutunu artırarak yük performansını ve aktarım hızını artırabildiğini algılayabilir. COPY ifadesini kullanmayı düşünebilirsiniz. COPY deyimini kullanma imkanınız yoksa SQLBulkCopy API veya BCP gibi yükleme yardımcı programlarını kullanırken toplu iş boyutunu artırın. Toplu iş boyutlarını 100 bin ile 1 milyon satır arasında tutmanız önerilir. Bu, yük aktarım hızı, veri sıkıştırma ve sorgu performansının artmasıyla sonuçlanır.
 
-## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>Yükleme sırasında gecikme süresini en aza indirmek için depolama hesabını aynı bölgede birlikte bulun
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>Yükleme sırasındaki gecikme süresini en aza indirmek için depolama hesabını aynı bölgeye yerleştirin
 
-Danışman, SQL havuzunuzdaki farklı bir bölgeden yükleme yaptığınız tespit edebilir. Verileri yüklerken gecikme süresini en aza indirmek için SQL havuzunuzun bulunduğu bölge içindeki bir depolama hesabından yüklemeyi göz önünde bulundurmanız gerekir. Bu, gecikme süresini en aza indirmeye ve yük performansını artırmaya yardımcı olur.
+Danışman, SQL havuzunuzdaki farklı bir bölgeden yükleme yaptığınız tespit edebilir. Verileri yüklerken gecikme süresini en aza indirmek için SQL havuzunuzun bulunduğu bölgedeki bir depolama hesabından yükleme yapmanız önerilir. Bu, gecikme süresini en aza indirmeye ve yük performansını artırmaya yardımcı olur.
 
 ## <a name="unsupported-kubernetes-version-is-detected"></a>Desteklenmeyen Kubernetes sürümü algılandı
 
@@ -107,7 +107,7 @@ CPU 'nun genişletilmiş bir süre içinde çok yüksek kullanımı, iş yükün
 Düşük önbellek isabet oranı, daha yavaş sorgu performansına ve daha fazla ıOPS oluşmasına neden olabilir. Bunun nedeni hatalı bir sorgu planı veya bellek yoğun iş yükünü çalıştırıyor olabilir. Sorgu planını [düzeltme veya](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) PostgreSQL Için Azure veritabanı veritabanı sunucusu, Azure MySQL veritabanı sunucusu veya Azure MariaDB sunucusu, veritabanı iş yükünün yürütülmesini iyileştirmenize yardımcı olur. Azure Advisor, bu yüksek arabellek havuzu karmaşıklığı nedeniyle etkilenen sunucuları tanımlar ve sorgu planını düzeltmeyi, daha fazla belleğe sahip daha yüksek bir SKU 'ya taşımayı veya daha fazla ıOPS almak için depolama boyutunu artırmayı önerir.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Okuma yoğunluğu yoğun iş yükleri için okuma ölçeğini genişletmek için bir Azure MySQL veya Azure PostgreSQL okuma çoğaltması kullanın
-Azure Advisor, okuma yoğunluklu iş yüklerini belirlemek için son yedi gün içinde sunucuda yazma işlemleri için okuma oranı gibi iş yükü tabanlı buluşsal yöntemler kullanır. PostgreSQL için Azure veritabanı kaynağı veya çok yüksek bir okuma/yazma oranıyla, MySQL için Azure veritabanı kaynağı, sorgu performansının yavaşlamasına neden olabilir.  [Çoğaltma](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) eklemek, Çoğaltma sunucusuna yapılan okumaların ölçeklendirilmesine, BIRINCIL sunucuda CPU ve/veya bellek kısıtlamalarını engellemeye yardımcı olur. Danışman, yoğun okuma yoğunluklu iş yükleri olan sunucuları belirler ve bazı okuma iş yüklerini boşaltmak için bir [okuma çoğaltması](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) eklemeyi önerir.
+Azure Advisor, okuma yoğunluklu iş yüklerini belirlemek için son yedi gün içinde sunucuda yazma işlemleri için okuma oranı gibi iş yükü tabanlı buluşsal yöntemler kullanır. PostgreSQL için Azure veritabanı kaynağı veya çok yüksek bir okuma/yazma oranıyla, MySQL için Azure veritabanı kaynağı, sorgu performansının yavaşlamasına neden olabilir.  [Çoğaltma](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) eklemek, Çoğaltma sunucusuna yapılan okumaların ölçeklendirilmesine, BIRINCIL sunucuda CPU ve/veya bellek kısıtlamalarını engellemeye yardımcı olur. Danışman, yoğun okuma yoğunluklu iş yükleri olan sunucuları belirler ve [read replica](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas)   bazı okuma iş yüklerini boşaltmak için bir okuma çoğaltması eklemeyi önerir.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Bağlantı kısıtlamalarını engellemek için Azure MySQL, Azure PostgreSQL veya Azure MariaDB sunucunuzu daha yüksek bir SKU 'ya ölçeklendirin
@@ -140,7 +140,7 @@ Azure Advisor, 100 sorgu sayfası boyutunu kullanan Azure Cosmos DB kapsayıcıl
 Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 
 * [Advisor 'a giriş](advisor-overview.md)
-* [Danışman’ı kullanmaya başlama](advisor-get-started.md)
+* [Danışman'ı kullanmaya başlama](advisor-get-started.md)
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)
 * [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)

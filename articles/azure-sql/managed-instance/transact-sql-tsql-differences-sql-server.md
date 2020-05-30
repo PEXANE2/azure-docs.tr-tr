@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 89b33f22cf5e6f08b42fca0e8966a36001bdb29f
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d3b337a697151f7f9ae1e3a1fb75795068da9e68
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116745"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204982"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "84116745"
 Bu makalede, Azure SQL yönetilen örneği ve SQL Server arasındaki sözdizimi ve davranış farklılıkları özetlenmektedir ve açıklanmaktadır. 
 
 
-SQL yönetilen örneği, şirket içi SQL Server veritabanı altyapısı ile yüksek uyumluluk sağlar ve birçok özellik SQL yönetilen örneğinde desteklenir.
+SQL yönetilen örneği SQL Server veritabanı altyapısı ile yüksek uyumluluk sağlar ve birçok özellik SQL yönetilen örneğinde desteklenir.
 
 ![Geçiş](./media/transact-sql-tsql-differences-sql-server/migration.png)
 
@@ -506,6 +506,9 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 - VNet, kaynak modeli kullanılarak dağıtılabilir-sanal ağ için klasik model desteklenmez.
 - SQL yönetilen örneği oluşturulduktan sonra, SQL yönetilen örneği veya VNet 'in başka bir kaynak grubuna veya aboneliğe taşınması desteklenmez.
 - App Service ortamları, Logic Apps ve SQL yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları [genel eşleme](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)kullanılarak bağlanmışsa farklı bölgelerdeki SQL yönetilen örneklerine erişemez. Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
+
+### <a name="failover-groups"></a>Yük devretme grupları
+Sistem veritabanları, bir yük devretme grubundaki ikincil örneğe çoğaltılmaz. Bu nedenle, nesneler ikincil üzerinde el ile oluşturulmadığı takdirde, sistem veritabanlarından nesnelere bağlı senaryolar ikincil örnekte imkansız olur.
 
 ### <a name="tempdb"></a>'Nın
 

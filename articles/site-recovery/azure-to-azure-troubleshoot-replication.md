@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: c27bf9a29bdb6e75e10fcafc597f40a88f995461
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901345"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196084"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da çoğaltma sorunlarını giderme
 
@@ -28,7 +28,7 @@ Aşağıdaki bölümlerde nedenler ve çözümler açıklanır.
 
 ## <a name="high-data-change-rate-on-the-source-virtual-machine"></a>Kaynak sanal makinede yüksek veri değişim oranı
 
-Kaynak sanal makinedeki veri değişim oranı desteklenen limitlerden fazlaysa Azure Site Recovery bir olay oluşturur. Sorunun yüksek dalgalanma göre olup olmadığını görmek için **çoğaltılan öğeler** > **VM** > **olayları-Son 72 saat**öğesine gidin.
+Kaynak sanal makinedeki veri değişim oranı desteklenen limitlerden fazlaysa Azure Site Recovery bir olay oluşturur. Sorunun yüksek dalgalanma göre olup olmadığını görmek için **çoğaltılan öğeler**  >  **VM**  >  **olayları-Son 72 saat**öğesine gidin.
 Olay **veri değişikliği oranını desteklenen limitlerin ötesinde**görmeniz gerekir:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png" alt-text="Çok yüksek veri değişim hızını gösteren Azure Site Recovery sayfası.":::
@@ -105,6 +105,10 @@ En yaygın sorunlardan bazıları aşağıda verilmiştir.
 ### <a name="youre-using-azure-storage-spaces-direct-configuration"></a>Azure Depolama Alanları Doğrudan yapılandırması kullanıyorsunuz
 
 **Nasıl düzeltilir**: Azure Site Recovery depolama alanları doğrudan yapılandırma için uygulamayla tutarlı kurtarma noktası oluşturamıyor. [Çoğaltma Ilkesini yapılandırın](azure-to-azure-how-to-enable-replication-s2d-vms.md).
+
+### <a name="app-consistency-not-enabled-on-linux-servers"></a>Uygulama tutarlılığı Linux sunucularında etkinleştirilmemiş
+
+**Nasıl düzeltilir** : Linux işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve gönderi seçenekleriyle özel betik, uygulama tutarlılığı için Azure Site Recovery Mobility Aracısı tarafından kullanılır. Etkinleştirme adımları [aşağıda](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) verilmiştir.
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>VSS ile ilgili sorunlar nedeniyle daha fazla neden:
 

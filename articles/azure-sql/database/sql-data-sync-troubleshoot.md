@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 0a013d702b48864a182180fa6fe382973bff2cd0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f4a851377128577cc7e50af777b502c9f59211c7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043950"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188254"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL Data Sync ile ilgili sorunları giderme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -123,7 +123,7 @@ Veri eşitleme döngüsel başvuruları işlemez. Kaçındığınızdan emin olu
 
 - [Eşitleme grubumu silemiyorum](#setup-delete)
 
-- [Şirket içi SQL Server veritabanının kaydını silemiyor](#setup-unreg)
+- [SQL Server veritabanının kaydını silemiyor](#setup-unreg)
 
 - [Sistem hizmetlerini başlatmak için yeterli ayrıcalıklara sahip değil](#setup-perms)
 
@@ -166,11 +166,11 @@ Bir eşitleme grubunu silme denemeniz başarısız olur. Aşağıdaki senaryolar
 
 - **Çözümleme**. Sağlama veya eşitleme işlemi bitene kadar bekleyin ve ardından eşitleme grubunu silmeyi yeniden deneyin.
 
-### <a name="i-cant-unregister-an-on-premises-sql-server-database"></a><a name="setup-unreg"></a>Şirket içi SQL Server veritabanının kaydını silemiyor
+### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a>SQL Server veritabanının kaydını silemiyor
 
 - **Neden**. Büyük olasılıkla, zaten silinmiş olan bir veritabanının kaydını silmeye çalışıyorsunuz.
 
-- **Çözümleme**. Şirket içi SQL Server veritabanının kaydını silmek için veritabanını seçin ve sonra **silmeyi zorla**' yı seçin.
+- **Çözümleme**. SQL Server veritabanının kaydını silmek için veritabanını seçin ve sonra **silmeyi zorla**' yı seçin.
 
   Bu işlem veritabanını eşitleme grubundan kaldıramazsa:
 
@@ -244,7 +244,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
 -   Genel Bakış- [Azure 'da SQL Data Sync birden çok bulutta ve şirket içi veritabanlarında veri eşitleme](sql-data-sync-data-sql-server-sql-database.md)
 -   Veri eşitlemesini ayarlama
-    - Portalda- [öğreticide, Azure SQL veritabanı ve şirket içi SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-data-sync-sql-server-configure.md)
+    - Portalda- [öğretici: Azure SQL veritabanı ile SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-data-sync-sql-server-configure.md)
     - PowerShell ile
         -  [Azure SQL veritabanı 'nda birden çok veritabanı arasında eşitleme yapmak için PowerShell 'i kullanma](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak Azure SQL veritabanındaki bir veritabanı ile SQL Server örneğindeki bir veritabanı arasında eşitleme](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

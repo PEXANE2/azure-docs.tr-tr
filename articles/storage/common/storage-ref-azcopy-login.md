@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295399"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219959"
 ---
 # <a name="azcopy-login"></a>azcopy oturum açma
 
@@ -101,7 +101,7 @@ Sertifika tabanlı hizmet sorumlusu kimlik doğrulaması yapılırken sertifika-
 
 |Seçenek|Açıklama|
 |--|--|
-|--aad-uç nokta|Kullanılacak Azure Active Directory uç noktası. Varsayılan (`https://login.microsoftonline.com`), genel Azure bulutu için doğrudur. Ulusal bir bulutta kimlik doğrulanırken bu parametreyi ayarlayın. Bkz. [Azure AD kimlik doğrulaması uç noktaları](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+|--aad-uç nokta|Kullanılacak Azure Active Directory uç noktası. Varsayılan ( `https://login.microsoftonline.com` ), genel Azure bulutu için doğrudur. Ulusal bir bulutta kimlik doğrulanırken bu parametreyi ayarlayın. Bkz. [Azure AD kimlik doğrulaması uç noktaları](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Yönetilen Hizmet Kimliği için bu bayrak gerekli değildir.|
 |--Uygulama kimliği dizesi|Kullanıcı tarafından atanan kimliğin uygulama KIMLIĞI. Hizmet sorumlusu kimlik doğrulaması için gereklidir.|
 |--Sertifika-yol dizesi|SPN kimlik doğrulaması için sertifika yolu. Sertifika tabanlı hizmet sorumlusu kimlik doğrulaması için gereklidir.|
@@ -110,7 +110,7 @@ Yönetilen Hizmet Kimliği için bu bayrak gerekli değildir.|
 |--Identity-Client-id dizesi|Kullanıcı tarafından atanan kimliğin istemci KIMLIĞI.|
 |--Identity-Object-id dizesi|Kullanıcı tarafından atanan kimliğin nesne KIMLIĞI.|
 |--Identity-Resource-id dizesi|Kullanıcı tarafından atanan kimliğin kaynak KIMLIĞI.|
-|--hizmet-asıl|Bir sertifika veya gizli dizi kullanarak SPN (hizmet sorumlusu adı) aracılığıyla oturum açın. İstemci parolası veya sertifika parolasının uygun ortam değişkenine yerleştirilmesi gerekir. Ortam `AzCopy env` değişkenlerinin adlarını ve açıklamalarını görmek için yazın.|
+|--hizmet-asıl|Bir sertifika veya gizli dizi kullanarak SPN (hizmet sorumlusu adı) aracılığıyla oturum açın. İstemci parolası veya sertifika parolasının uygun ortam değişkenine yerleştirilmesi gerekir. `AzCopy env`Ortam değişkenlerinin adlarını ve açıklamalarını görmek için yazın.|
 |--Kiracı kimliği dizesi| OAuth cihaz etkileşimli oturum açma için kullanılacak Azure Active Directory kiracı KIMLIĞI.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
@@ -119,7 +119,8 @@ Yönetilen Hizmet Kimliği için bu bayrak gerekli değildir.|
 |---|---|
 |--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
 |--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
+|--Güvenilen-Microsoft-sonekler dizesi   |Azure Active Directory oturum açma belirteçlerinin gönderilebileceği ek etki alanı soneklerini belirtir.  Varsayılan değer '*. Core.Windows.net;*' dir. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Burada listelenenler varsayılan olarak eklenir. Güvenlik için yalnızca Microsoft Azure etki alanlarını Buraya yerleştirmeniz gerekir. Birden çok girişi noktalı virgülle ayırın.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

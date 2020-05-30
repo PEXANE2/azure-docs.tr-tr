@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7fdced5a777c5303e402a5cc58048e076b104b4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: bfb273ec0013925076669c99f08933bd10ffc465
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049270"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197119"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server her zaman açık kullanılabilirlik grupları oluşturmaya yönelik önkoşullar
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +42,7 @@ Bu öğreticide, SQL Server Always on kullanılabilirlik grupları hakkında tem
 Bir Azure hesabınız olmalıdır. [Ücretsiz bir Azure hesabı açabilir](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) veya [Visual Studio abonesi avantajlarından](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits)yararlanabilirsiniz.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **+** Portalda yeni bir nesne oluşturmak için tıklayın.
 
    ![Yeni nesne](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -230,7 +230,7 @@ Aşağıdaki adımlarda, **ad-birincil DC** makinesini Corp.contoso.com için bi
 12. **Tüm sunucu görevi ayrıntıları** Iletişim kutusunun **eylem** sütununda **Bu sunucuyu etki alanı denetleyicisi olarak yükselt ' e**tıklayın.
 13. **Active Directory Domain Services Yapılandırma sihirbazında**aşağıdaki değerleri kullanın:
 
-    | **Sayfasında** | Ayar |
+    | **Sayfa** | Ayar |
     | --- | --- |
     | **Dağıtım Yapılandırması** |**Yeni orman ekle**<br/> **Kök etki alanı adı** = Corp.contoso.com |
     | **Etki Alanı Denetleyicisi Seçenekleri** |**DSRM parolası** = contoso! 0000<br/>**Parolayı onaylayın** = contoso! 0000 |
@@ -376,7 +376,7 @@ Ardından, üç VM oluşturun--iki SQL Server VM ve ek bir küme düğümü içi
 <br/>
 
 > [!NOTE]
-> Burada önerilen makine boyutları, Azure VM 'lerinde kullanılabilirlik gruplarının test edilmesine yöneliktir. Üretim iş yükleri için en iyi performans için, [Azure sanal makinelerinde SQL Server yönelik performans en iyi uygulamalarında](performance-guidelines-best-practices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)SQL Server makine boyutlarına ve yapılandırmaya yönelik önerilere bakın.
+> Burada önerilen makine boyutları, Azure VM 'lerinde kullanılabilirlik gruplarının test edilmesine yöneliktir. Üretim iş yükleri için en iyi performans için, [Azure sanal makinelerinde SQL Server için En Iyi performans uygulamalarında](performance-guidelines-best-practices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)SQL Server sanal makine boyutlarına ve yapılandırmasına yönelik önerilere bakın.
 >
 >
 

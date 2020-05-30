@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 127c924da44c7e596d93b21d89ff4591a90ba7cf
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b2f2939c6b7d07e128688f43e98b2a6b29595e1f
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827684"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204398"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur Yapılandır
 
@@ -44,11 +44,15 @@ Eylemi bir abonelik ve kaynak grubuna karşı hedefleyerek veya VM 'lerin belirl
 
 ### <a name="target-the-start-and-stop-action-by-vm-list"></a>VM listesine göre Başlat ve Durdur eylemini hedefleme
 
-1. **ScheduledStartStop_Parent** runbook 'U **başlatma** **eylemi** ile çalıştırın, **vmlist** parametre alanına VM 'Lerin virgülle ayrılmış bir listesini ekleyin ve ardından **whatIf** parametre alanını true olarak ayarlayın. Değişikliklerinizi önizleyin.
+1. **ScheduledStartStop_Parent** runbook 'u **başlatmak**için ayarla **eylemini** çalıştırın.
 
-2. Değişkeni, `External_ExcludeVMNames` virgülle ayrılmış VM 'ler listesiyle yapılandırın (VM1, VM2, VM3).
+2. **Vmlist** parametre alanına VM 'lerin virgülle ayrılmış bir listesini (boşluk olmadan) ekleyin. Örnek bir liste `vm1,vm2,vm3` .
 
-3. Bu senaryo ve değişkenlerini dikkate almaz `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupnames` . Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](shared-resources/schedules.md).
+3. **WhatIf** parametre alanını true olarak ayarlayın.
+
+4. Değişkeni, `External_ExcludeVMNames` virgülle ayrılmış VM 'ler listesiyle yapılandırın (VM1, VM2, VM3).
+
+5. Bu senaryo ve değişkenlerini dikkate almaz `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupnames` . Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](shared-resources/schedules.md).
 
     > [!NOTE]
     > **Hedef ResourceGroup adları** için değeri hem hem de için değerler olarak depolanır `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` . Daha fazla ayrıntı düzeyi için, bu değişkenlerin her birini farklı kaynak gruplarını hedefleyecek şekilde değiştirebilirsiniz. Başlat eylemi için, kullanın `External_Start_ResourceGroupNames` ve `External_Stop_ResourceGroupNames` Durdur eylemini kullanın. VM 'Ler başlatma ve durdurma zamanlamalarına otomatik olarak eklenir.
@@ -71,13 +75,17 @@ Dağıtılmış bir iş yükünü destekleyen birden çok VM üzerinde iki veya 
 
 1. `sequencestart` `sequencestop` Parametreye eklemeyi planladığınız VM 'lere pozitif tamsayı değerleri olan bir ve bir etiketi ekleyin `VMList` .
 
-2. **SequencedStartStop_Parent** runbook 'U **başlatma** **eylemi** ile çalıştırın, **vmlist** parametre alanında VM 'Lerin virgülle ayrılmış bir listesini ekleyin ve ardından **whatIf** değerini true olarak ayarlayın. Değişikliklerinizi önizleyin.
+2. **SequencedStartStop_Parent** runbook 'u **başlatmak**için ayarla **eylemini** çalıştırın.
 
-3. Değişkeni, `External_ExcludeVMNames` virgülle ayrılmış VM 'ler listesiyle yapılandırın (VM1, VM2, VM3).
+3. **Vmlist** parametre alanına VM 'lerin virgülle ayrılmış bir listesini (boşluk olmadan) ekleyin. Örnek bir liste `vm1,vm2,vm3` .
 
-4. Bu senaryo ve değişkenlerini dikkate almaz `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupnames` . Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](shared-resources/schedules.md).
+4. **WhatIf** değerini true olarak ayarlayın. 
 
-5. Üretim VM 'lerine göre uygulamadan önce eylemin önizlemesini görüntüleyin ve gerekli değişiklikleri yapın. Hazırlandığınızda, **izleme-ve-Tanılama/izleme-eylem-groupsrunbook** ' u, parametresini **false**olarak ayarlanmış şekilde el ile yürütün. Alternatif olarak, Otomasyon zamanlamalarının **sıralı-startvm** ve **sıralı-stopvm** ' y i belirtilen zamanlamanızı izleyerek otomatik olarak çalıştırmasını sağlar.
+5. Değişkeni, `External_ExcludeVMNames` virgülle ayrılmış VM 'ler listesiyle yapılandırın.
+
+6. Bu senaryo ve değişkenlerini dikkate almaz `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupnames` . Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](shared-resources/schedules.md).
+
+7. Üretim VM 'lerine göre uygulamadan önce eylemin önizlemesini görüntüleyin ve gerekli değişiklikleri yapın. Hazırlandığınızda, **izleme-ve-Tanılama/izleme-eylem-groupsrunbook** ' u, parametresini **false**olarak ayarlanmış şekilde el ile yürütün. Alternatif olarak, Otomasyon zamanlamalarının **sıralı-startvm** ve **sıralı-stopvm** ' y i belirtilen zamanlamanızı izleyerek otomatik olarak çalıştırmasını sağlar.
 
 ## <a name="scenario-3-start-or-stop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>Senaryo 3: CPU kullanımına göre otomatik olarak Başlat veya Durdur
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 09d51de3ae0bd4baca585d2abdd936b1a29567d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 390cddf557905e95e313896f9f172e30b81352b9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065022"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195936"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Veri Yönetimi Ağ Geçidi kullanımıyla ilgili sorunları giderme
 Bu makalede Veri Yönetimi ağ geçidi kullanmayla ilgili sorunları giderme hakkında bilgi sağlanır.
@@ -24,7 +24,7 @@ Bu makalede Veri Yönetimi ağ geçidi kullanmayla ilgili sorunları giderme hak
 > [!NOTE]
 > Bu makale, Azure Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory içinde şirket içinde barındırılan tümleştirme çalışma zamanı](../create-self-hosted-integration-runtime.md).
 
-Ağ Geçidi hakkında ayrıntılı bilgi için [veri yönetimi Gateway](data-factory-data-management-gateway.md) makalesine bakın. Şirket içi bir SQL Server veritabanından ağ geçidini Microsoft Azure Blob depolama alanına taşıma hakkında yönergeler için bkz. Şirket [içi ve bulut aracılığıyla verileri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
+Ağ Geçidi hakkında ayrıntılı bilgi için [veri yönetimi Gateway](data-factory-data-management-gateway.md) makalesine bakın. Bir SQL Server veritabanından ağ geçidini Microsoft Azure Blob depolama alanına taşıma hakkında izlenecek yol için bkz. [Şirket içi ve bulut hakkındaki verileri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
 ## <a name="failed-to-install-or-register-gateway"></a>Ağ Geçidi yüklenemedi veya kaydedilemedi
 ### <a name="1-problem"></a>1. sorun
@@ -279,7 +279,7 @@ Bu senaryolar için, ağ geçidi günlüklerini bir zip dosyası olarak kaydedeb
 Ayrıntılı ağ geçidi günlük bilgilerini Windows olay günlüklerinde bulabilirsiniz.
 
 1. Windows **Olay Görüntüleyicisi**başlatın.
-2. **Uygulama ve hizmet günlükleri** > **veri yönetimi ağ geçidi** klasöründeki günlükleri bulun.
+2. **Uygulama ve hizmet günlükleri**  >  **veri yönetimi ağ geçidi** klasöründeki günlükleri bulun.
 
    Ağ geçidine ilişkin sorunlarda sorun giderirken, Olay Görüntüleyicisi 'nde hata düzeyi olayları arayın.
 

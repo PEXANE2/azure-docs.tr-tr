@@ -10,12 +10,12 @@ ms.date: 04/21/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: cea5fb507225f063e2d48c56fae254e123a8f72b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81772125"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193401"
 ---
 # <a name="query-acceleration-sql-language-reference-preview"></a>Sorgu hızlandırma SQL dil başvurusu (Önizleme)
 
@@ -32,7 +32,7 @@ Sorgu hızlandırma tarafından desteklenen tek SQL deyimleri SELECT deyimidir. 
 SELECT * FROM table [WHERE expression] [LIMIT limit]
 ```
 
-CSV biçimli veriler için *tablo* olmalıdır `BlobStorage`.  Bu, sorgunun REST çağrısında belirtilen Blobun göre çalışacağı anlamına gelir.
+CSV biçimli veriler için *tablo* olmalıdır `BlobStorage` .  Bu, sorgunun REST çağrısında belirtilen Blobun göre çalışacağı anlamına gelir.
 JSON biçimli veriler için *tablo* bir "Tablo tanımlayıcısıdır."   Bu makalenin [tablo tanımlayıcıları](#table-descriptors) bölümüne bakın.
 
 Aşağıdaki örnekte, WHERE *ifadesinin* true döndüğü her satır için, bu deyim, projeksiyon ifadelerinin her birini değerlendirmeden oluşturulan yeni bir satır döndürür.
@@ -54,7 +54,7 @@ Aşağıdaki örnek, CSV biçimli bir blobu bölmek için uygun uzaklıkları d�
 SELECT sys.split(split_size)FROM BlobStorage
 ```
 
-<a id="data-types" />
+<a id="data-types"></a>
 
 ## <a name="data-types"></a>Veri Türleri
 
@@ -109,7 +109,7 @@ Sorgu hızlandırma SQL dili, aşağıdaki standart SQL dize işlevlerini destek
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
 
-[LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) işlevi, bir model aramanıza yardımcı olur. Veri dizesinde ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i ``arama yapmak için [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) işlevini kullanan birkaç örnek aşağıda verilmiştir.
+[LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) işlevi, bir model aramanıza yardımcı olur. Veri dizesinde arama yapmak için [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) işlevini kullanan birkaç örnek aşağıda verilmiştir ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i `` .
 
 |Sorgu|Örnek|
 |--|--|
@@ -129,7 +129,7 @@ Aşağıdaki standart SQL tarih işlevleri desteklenir:
 
 #### <a name="date_add-function"></a>DATE_ADD işlevi
 
-Sorgu hızlandırma SQL dili, ``DATE_ADD`` işlevin yıl, ay, gün, saat, dakika ve saniyeyi destekler.
+Sorgu hızlandırma SQL dili, işlevin yıl, ay, gün, saat, dakika ve saniyeyi destekler ``DATE_ADD`` .
 
 Örnekler:
 
@@ -140,7 +140,7 @@ DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 
 #### <a name="date_diff-function"></a>DATE_DIFF işlevi
 
-Sorgu hızlandırma SQL dili, ``DATE_DIFF`` işlevin yıl, ay, gün, saat, dakika ve saniyeyi destekler.
+Sorgu hızlandırma SQL dili, işlevin yıl, ay, gün, saat, dakika ve saniyeyi destekler ``DATE_DIFF`` .
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -149,7 +149,7 @@ DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00')
 
 #### <a name="extract-function"></a>EXTRACT işlevi
 
-``DATE_ADD`` İşlev için desteklenen tarih bölümü dışında ayıklama için, sorgu hızlandırma SQL dili timezone_hour ve timezone_minute Tarih parçası olarak destekler.
+İşlev için desteklenen tarih bölümü dışında ayıklama için ``DATE_ADD`` , sorgu HıZLANDıRMA SQL dili timezone_hour ve timezone_minute Tarih parçası olarak destekler.
 
 Örnekler:
 
@@ -167,7 +167,7 @@ TO_STRING(TimeStamp , format)
 TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 ```
 
-Bu tablo, ``TO_STRING`` işlevinin çıkış biçimini belirtmek için kullanabileceğiniz dizeleri açıklar.
+Bu tablo, işlevinin çıkış biçimini belirtmek için kullanabileceğiniz dizeleri açıklar ``TO_STRING`` .
 
 |Biçim dizesi    |Çıktı                               |
 |-----------------|-------------------------------------|
@@ -211,16 +211,16 @@ TO_TIMESTAMP('2007T')
 ```
 
 > [!NOTE]
-> Ayrıca, ``UTCNOW`` sistem saatini almak için işlevini de kullanabilirsiniz.
+> Ayrıca, ``UTCNOW`` Sistem saatini almak için işlevini de kullanabilirsiniz.
 
 
 ## <a name="aggregate-expressions"></a>Toplama Ifadeleri
 
 SELECT deyimi bir veya daha fazla İzdüşüm ifadesi ya da tek bir toplama ifadesi içerebilir.  Aşağıdaki toplama ifadeleri desteklenir:
 
-|İfadeler|Açıklama|
+|İfade|Açıklama|
 |--|--|
-|[COUNT (\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Koşul ifadesiyle eşleşen kayıt sayısını döndürür.|
+|[COUNT ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Koşul ifadesiyle eşleşen kayıt sayısını döndürür.|
 |[COUNT (ifade)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan kayıt sayısını döndürür.|
 |[AVERAGE (ifade)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan değerlerinin ortalamasını döndürür.|
 |[MIN (ifade)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan en küçük değerini döndürür.|
@@ -229,13 +229,13 @@ SELECT deyimi bir veya daha fazla İzdüşüm ifadesi ya da tek bir toplama ifad
 
 ### <a name="missing"></a>BULUNMAYAN
 
-``IS MISSING`` İşleç, sorgu hızlandırma SQL dilinin desteklediği tek standart olmayan bir dildir.  JSON verileri için belirli bir giriş kaydındaki bir alan eksikse, ifade alanı ``IS MISSING`` true Boole değeri olarak değerlendirilir.
+``IS MISSING``İşleç, sorgu HıZLANDıRMA SQL dilinin desteklediği tek standart olmayan bir dildir.  JSON verileri için belirli bir giriş kaydındaki bir alan eksikse, ifade alanı ``IS MISSING`` true Boole değeri olarak değerlendirilir.
 
-<a id="table-descriptors" />
+<a id="table-descriptors"></a>
 
 ## <a name="table-descriptors"></a>Tablo tanımlayıcıları
 
-CSV verileri için tablo adı her zaman `BlobStorage`olur.  Örneğin:
+CSV verileri için tablo adı her zaman olur `BlobStorage` .  Örneğin:
 
 ```sql
 SELECT * FROM BlobStorage
@@ -279,7 +279,7 @@ Bu örnek verilerimize örnektir:
 }
 ```
 
-Yalnızca yukarıdaki verilerden `warehouses` JSON nesnesiyle ilgileniyor olabilirsiniz. `warehouses` NESNESI bir JSON dizisi türüdür, bu nedenle bunu from yan tümcesinde bahsetmeniz gerekir. Örnek sorgunuz aşağıdakine benzer şekilde görünür.
+Yalnızca `warehouses` Yukarıdaki verilerden JSON nesnesiyle ilgileniyor olabilirsiniz. `warehouses`Nesnesi BIR JSON dizisi türüdür, bu nedenle bunu from yan tümcesinde bahsetmeniz gerekir. Örnek sorgunuz aşağıdakine benzer şekilde görünür.
 
 ```sql
 SELECT latitude FROM BlobStorage[*].warehouses[*]
@@ -293,16 +293,16 @@ Yalnızca `dimensions` JSON nesne değerine erişmek isterseniz, sorgunuzda bu n
 SELECT length FROM BlobStorage[*].dimensions
 ```
 
-Bu ayrıca `dimensions` nesnenin üyelerine erişiminizi sınırlandırır. JSON alanlarının diğer üyelerine ve JSON nesnelerinin iç değerlerine erişmek istiyorsanız, aşağıdaki örnekte gösterildiği gibi bir sorgu kullanabilirsiniz:
+Bu ayrıca nesnenin üyelerine erişiminizi sınırlandırır `dimensions` . JSON alanlarının diğer üyelerine ve JSON nesnelerinin iç değerlerine erişmek istiyorsanız, aşağıdaki örnekte gösterildiği gibi bir sorgu kullanabilirsiniz:
 
 ```sql
 SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 ```
 
 > [!NOTE]
-> BlobStorage ve BlobStorage [\*] her ikisi de tüm nesneye başvurur. Bununla birlikte, FROM yan tümcesinde bir yolunuz varsa BlobStorage [\*]. Path kullanmanız gerekir
+> BlobStorage ve BlobStorage [ \* ] her ikisi de tüm nesneye başvurur. Bununla birlikte, FROM yan tümcesinde bir yolunuz varsa BlobStorage [ \* ]. Path kullanmanız gerekir
 
-<a id="sys-split" />
+<a id="sys-split"></a>
 
 ## <a name="syssplit"></a>Sys. Split
 
@@ -314,7 +314,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 CSV veri kayıtlarını toplu olarak indirmek ve işlemek istediğiniz durumlarda bu ifadeyi kullanın. Bu şekilde, kayıtları tek seferde indirmek yerine, paralel olarak işleyebilirsiniz. Bu ifade CSV dosyasından kayıtları döndürmez. Bunun yerine, toplu iş boyutlarının bir koleksiyonunu döndürür. Daha sonra her toplu iş boyutunu kullanarak veri kayıtlarını toplu olarak alabilirsiniz. 
 
-Her toplu işin içermesini istediğiniz bayt sayısını belirtmek için *split_size* parametresini kullanın. Örneğin, aynı anda yalnızca 10 MB 'lık verileri işlemek istiyorsanız, şu şekilde ifade edersiniz: `SELECT sys.split(10485760)FROM BlobStorage` 10 mb, 10.485.760 bayta eşit. Her Batch, bu 10 MB 'a sığacak kadar çok kayıt içerecektir. 
+Her toplu işin içermesini istediğiniz bayt sayısını belirtmek için *split_size* parametresini kullanın. Örneğin, aynı anda yalnızca 10 MB 'lık verileri işlemek istiyorsanız, şu şekilde ifade edersiniz: `SELECT sys.split(10485760)FROM BlobStorage` 10 MB, 10.485.760 bayta eşit. Her Batch, bu 10 MB 'a sığacak kadar çok kayıt içerecektir. 
 
 Çoğu durumda, her bir toplu işin boyutu belirttiğiniz sayıdan biraz daha yüksek olacaktır. Bunun nedeni, bir Batch 'in kısmi bir kayıt içeremeyeceği. Bir toplu işteki son kayıt eşiğin sonundan önce başlarsa, toplu işlem, tüm kaydı içerebilecek şekilde daha büyük olur. Son toplu işlemin boyutu büyük olasılıkla belirttiğiniz boyuttan daha küçük olacaktır.
 

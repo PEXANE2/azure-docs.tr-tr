@@ -6,13 +6,13 @@ ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: 7ab04e23b838f2dfd39b73476db7492947d62e6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, references_regions
+ms.openlocfilehash: 04ba8e7b3ccd18306cb8da0fd15d2cd88f363c70
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688807"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193315"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>App Service Ortamları ile Coğrafi Olarak Dağıtılmış Ölçek
 ## <a name="overview"></a>Genel Bakış
@@ -79,7 +79,7 @@ Her bir uygulama örneği için *Add-AzureTrafficManagerEndpointConfig* ' e bir 
 Üç uç noktanın hepsi, *Ağırlık* parametresi için aynı değeri (10) kullanır.  Bu, müşteri isteklerinin tüm üç uygulama örneğine görece eşit olarak yayılmasına Traffic Manager neden olur. 
 
 ## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Uygulamanın özel etki alanını Traffic Manager etki alanında gösterme
-Gerekli son adım, uygulamanın özel etki alanını Traffic Manager etki alanında göstermelidir.  Örnek uygulama için bu işaret üzerine gelin `www.scalableasedemo.com` `scalable-ase-demo.trafficmanager.net`.  Bu adımın, özel etki alanını yöneten etki alanı kaydedicisi ile tamamlanması gerekir.  
+Gerekli son adım, uygulamanın özel etki alanını Traffic Manager etki alanında göstermelidir.  Örnek uygulama için bu işaret üzerine gelin `www.scalableasedemo.com` `scalable-ase-demo.trafficmanager.net` .  Bu adımın, özel etki alanını yöneten etki alanı kaydedicisi ile tamamlanması gerekir.  
 
 Kaydedicinizin etki alanı yönetim araçlarını kullanarak, Traffic Manager etki alanında özel etki alanını işaret eden bir CNAME kayıtlarının oluşturulması gerekir.  Aşağıdaki resimde bu CNAME yapılandırmasının nasıl göründüğü hakkında bir örnek gösterilmektedir:
 
@@ -87,14 +87,14 @@ Kaydedicinizin etki alanı yönetim araçlarını kullanarak, Traffic Manager et
 
 Bu konuda ele alınmasa da, her bir uygulama örneğinin özel etki alanının da kayıtlı olması gerektiğini unutmayın.  Aksi takdirde, bir istek bir uygulama örneğine bunu yapıyorsa ve uygulamanın uygulamayla birlikte kayıtlı özel etki alanı yoksa, istek başarısız olur.  
 
-Bu örnekte, özel etki alanı olur `www.scalableasedemo.com`ve her uygulama örneğine ilişkili özel etki alanı vardır.
+Bu örnekte, özel etki alanı olur `www.scalableasedemo.com` ve her uygulama örneğine ilişkili özel etki alanı vardır.
 
 ![Özel Etki Alanı][CustomDomain] 
 
 Azure App Service uygulamalarla özel bir etki alanı kaydetmenin bir üst sınırı için, [özel etki alanlarını kaydettirme][RegisterCustomDomain]konusunda aşağıdaki makaleye bakın.
 
 ## <a name="trying-out-the-distributed-topology"></a>Dağıtılmış topoloji deneniyor
-Traffic Manager ve DNS yapılandırmasının nihai sonucu, için `www.scalableasedemo.com` istekleri aşağıdaki sırayla akacaktır:
+Traffic Manager ve DNS yapılandırmasının nihai sonucu, için istekleri `www.scalableasedemo.com` aşağıdaki sırayla akacaktır:
 
 1. Tarayıcı veya cihaz, için DNS araması yapar`www.scalableasedemo.com`
 2. Etki alanı kaydedicisinde CNAME girişi DNS aramasının Azure Traffic Manager yeniden yönlendirilmesine neden olur.

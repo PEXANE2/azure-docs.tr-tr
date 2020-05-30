@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41b7dc2b7ddcf5d8bd15043d117a25771a278f95
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393699"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204880"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
@@ -59,9 +59,9 @@ Seyrek Erişimli erişim katmanının depolama maliyetleri ve daha yüksek eriş
 
 ## <a name="archive-access-tier"></a>Arşiv erişim katmanı
 
-Arşiv erişim katmanının en düşük depolama maliyeti vardır. Ancak sık ve seyrek katmanlara kıyasla veri alma maliyetlerini daha yüksektir. Arşiv katmanındaki verilerin alınması birkaç saat sürebilir. Verilerin arşiv katmanında en az 180 gün kalması veya erken bir silme ücretine tabi olması gerekir.
+Arşiv erişim katmanının en düşük depolama maliyeti vardır. Ancak sık ve seyrek katmanlara kıyasla veri alma maliyetlerini daha yüksektir. Verilerin arşiv katmanında en az 180 gün kalması veya erken bir silme ücretine tabi olması gerekir. Arşiv katmanındaki verilerin alınması, yeniden doldurma önceliğine bağlı olarak birkaç saat sürebilir. Küçük nesneler için, yüksek öncelikli bir yeniden doldurma, nesneyi 1 saat içinde arşivden alabilir. Daha fazla bilgi edinmek için [Arşiv katmanından blob verilerini yeniden doldurma](storage-blob-rehydration.md) bölümüne bakın.
 
-Blob arşiv depolamadaki sırada blob verileri çevrimdışı olduğundan okunamaz, üzerine yazılamaz veya değiştirilemez. Arşivdeki bir blobu okumak veya indirmek için önce çevrimiçi bir katmana yeniden yazmanız gerekir. Arşiv depolamadaki bir Blobun anlık görüntülerini alamazsınız. Ancak, blob meta verileri çevrimiçi ve kullanılabilir durumda kalır ve bu da blobu ve özelliklerini listelemenize olanak tanır. Arşivdeki Bloblar için, tek geçerli işlemler şunlardır. GetBlobProperties, GetBlobMetadata, Listbloblar, SetBlobTier, CopyBlob ve DeleteBlob. Daha fazla bilgi edinmek için [Arşiv katmanından blob verilerini yeniden doldurma](storage-blob-rehydration.md) bölümüne bakın.
+Blob arşiv depolamadaki sırada blob verileri çevrimdışı olduğundan okunamaz, üzerine yazılamaz veya değiştirilemez. Arşivdeki bir blobu okumak veya indirmek için önce çevrimiçi bir katmana yeniden yazmanız gerekir. Arşiv depolamadaki bir Blobun anlık görüntülerini alamazsınız. Ancak, blob meta verileri çevrimiçi ve kullanılabilir durumda kalır, bu da blobu, özelliklerini, meta verilerini ve BLOB Dizin etiketlerini listelemenize olanak sağlar. Arşiv sırasında blob meta verilerini ayarlamaya veya değiştirmeye izin verilmiyor; Ancak blob dizini etiketlerini ayarlayabilir ve değiştirebilirsiniz. Arşivdeki Bloblar için, tek geçerli işlemler şunlardır. GetBlobProperties, GetBlobMetadata, SetBlobTags, GetBlobTags, FindBlobsByTags, Listbloblar, SetBlobTier, CopyBlob ve DeleteBlob.
 
 Arşiv erişim katmanı için örnek kullanım senaryoları şunları içerir:
 
@@ -156,7 +156,7 @@ Bu bölümde, aşağıdaki senaryolar Azure portal ve PowerShell kullanılarak g
 ![Depolama hesabı katmanını değiştirme](media/storage-tiers/account-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Hesap katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. Değişken `$rgName` , kaynak grubu adınızla başlatılmalıdır. Değişken `$accountName` , depolama hesabı adınızla başlatılmalıdır. 
+Hesap katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. `$rgName`Değişken, kaynak grubu adınızla başlatılmalıdır. `$accountName`Değişken, depolama hesabı adınızla başlatılmalıdır. 
 ```powershell
 #Initialize the following with your resource group and storage account names
 $rgName = ""
@@ -186,7 +186,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 ![Depolama hesabı katmanını değiştirme](media/storage-tiers/blob-access-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Blob katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. Değişken `$rgName` , kaynak grubu adınızla başlatılmalıdır. Değişken `$accountName` , depolama hesabı adınızla başlatılmalıdır. Değişken `$containerName` , kapsayıcı adınızla başlatılmalıdır. Değişken `$blobName` , blob adınızla başlatılmalıdır. 
+Blob katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. `$rgName`Değişken, kaynak grubu adınızla başlatılmalıdır. `$accountName`Değişken, depolama hesabı adınızla başlatılmalıdır. `$containerName`Değişken, kapsayıcı adınızla başlatılmalıdır. `$blobName`Değişken, blob adınızla başlatılmalıdır. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -252,7 +252,7 @@ Seyrek Erişimli erişim katmanındaki Bloblar, sık erişimli erişim katmanın
 
 **İşlemler sık erişimli, seyrek erişimli ve arşiv katmanları arasında aynı mıdır?**
 
-Sık erişimli ve seyrek erişimli arasında tüm işlemleri %100 tutarlıdır. GetBlobProperties, GetBlobMetadata, Listbloblar, SetBlobTier ve DeleteBlob dahil tüm geçerli arşiv işlemleri, sık erişimli ve seyrek erişimli %100 tutarlıdır. Blob verileri, yeniden doldurma yapılıncaya kadar arşiv katmanında okunamaz veya değiştirilemez; Arşiv sırasında yalnızca blob meta veri okuma işlemleri desteklenir.
+Sık erişimli ve seyrek erişimli arasında tüm işlemleri %100 tutarlıdır. GetBlobProperties, GetBlobMetadata, SetBlobTags, GetBlobTags, FindBlobsByTags, Listbloblar, SetBlobTier ve DeleteBlob dahil tüm geçerli arşiv işlemleri, sık erişimli ve seyrek erişimli %100 tutarlıdır. Blob verileri, yeniden doldurma yapılıncaya kadar arşiv katmanında okunamaz veya değiştirilemez; Arşiv sırasında yalnızca blob meta veri okuma işlemleri desteklenir. Ancak, blob dizin etiketleri arşiv sırasında okunabilir, ayarlanabilir veya değiştirilebilir.
 
 **Blobu arşiv katmanından sık erişimli veya seyrek erişimli katmana yeniden doldururken işlemin ne zaman tamamlandığını nasıl bilebilirim?**
 

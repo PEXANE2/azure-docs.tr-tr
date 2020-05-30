@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f55b22938bd6f18bae1576a0c64e673996d38bf
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253348"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220128"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -81,7 +81,7 @@ Bir SAS belirteci kullanarak tüm dizini karşıya yükleyin:
   
 - AzCopy CP "/Path/to/dir" "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
 
-or
+veya
 
 - AzCopy CP "/Path/to/dir" "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true--put-MD5
 
@@ -147,25 +147,25 @@ Bir SAS belirteci kullanarak tüm blob kapsayıcılarını, dizinleri ve bloblar
 
 Bir erişim anahtarı ve SAS belirteci kullanarak Amazon Web Services (AWS) S3 ' den blob depolamaya tek bir nesne kopyalama. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
   
-- AzCopy CP "https://s3.amazonaws.com/[Bucket]/[nesne]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[yol/to/blob]? [SAS] "
+- AzCopy CP " https://s3.amazonaws.com/ [Bucket]/[nesne]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [ SAS] "
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak AWS S3 'ten bir dizinin tamamını blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3.amazonaws.com/[Bucket]/[klasör]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
+- AzCopy CP " https://s3.amazonaws.com/ [Bucket]/[klasör]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [ SAS] "--özyinelemeli = doğru
 
-[Folder] https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html yer tutucusunu daha iyi anlamak için lütfen bölümüne bakın.
+https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html[Folder] yer tutucusunu daha iyi anlamak için lütfen bölümüne bakın.
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak tüm demetleri Amazon Web Services (AWS) ' den blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP " https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. net? [ SAS] "--özyinelemeli = doğru
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak, tüm demetleri bir Amazon Web Services (AWS) bölgesinden blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3-[Bölge]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP " https://s3- [Bölge]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [ SAS] "--özyinelemeli = doğru
 
 Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt kümesini kopyalayın. Önceki örneklerde olduğu gibi, bir erişim anahtarına ve SAS belirtecine ihtiyacınız olacaktır. AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarladığınızdan emin olun.
 
-- AzCopy CP "https://s3.amazonaws.com/[demet * adı]/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP " https://s3.amazonaws.com/ [demet * adı]/" "https://[destaccount]. blob. Core. Windows. net? [ SAS] "--özyinelemeli = doğru
 
 ## <a name="options"></a>Seçenekler
 
@@ -225,11 +225,11 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--Preserve-son değiştirilme zamanı**          Yalnızca hedef dosya sistemi olduğunda kullanılabilir.
 
-**--Preserve-SMB-Permissions** dize varsayılan olarak false. , Aware kaynakları (Windows ve Azure dosyaları) arasında SMB ACL 'Lerini korur. İndirilenler için, yeni sahibin AzCopy çalıştıran kullanıcı `--backup` olmadığı izinleri geri yüklemek için bayrağını da kullanmanız gerekir. Bu bayrak, salt dosya filtresi belirtilmediği takdirde (ör. `include-pattern`) hem dosya hem de klasörler için geçerlidir.
+**--Preserve-SMB-Permissions** dize varsayılan olarak false. , Aware kaynakları (Windows ve Azure dosyaları) arasında SMB ACL 'Lerini korur. İndirilenler için, `--backup` Yeni sahibin AzCopy çalıştıran kullanıcı olmadığı izinleri geri yüklemek için bayrağını da kullanmanız gerekir. Bu bayrak, salt dosya filtresi belirtilmediği takdirde (ör.) hem dosya hem de klasörler için geçerlidir `include-pattern` .
 
 **--Preserve-SMB-Info** dizesi varsayılan olarak false. SMB kullanan kaynaklar (Windows ve Azure dosyaları) arasında SMB Özellik bilgilerini (son yazma saati, oluşturma saati, öznitelik bitleri) korur. Yalnızca Azure dosyaları tarafından desteklenen öznitelik bitleri aktarılır; diğerleri yok sayılır. Bu bayrak, salt dosya filtresi belirtilmediği takdirde (örn. include-model) dosya ve klasörler için geçerlidir. Klasörler için aktarılan bilgiler, klasörler için hiçbir zaman korunmamış son yazma zamanı dışında dosyalar için de aynıdır.
 
-**--Preserve-Owner**                       Yalnızca verileri indirirken ve yalnızca `--preserve-smb-permissions` kullanıldığında bir etkiye sahiptir. True ise (varsayılan), dosya sahibi ve grup indirmelerde korunur. Bu bayrak false olarak ayarlandıysa, ACL 'Leri `--preserve-smb-permissions` korur, ancak sahip ve grup AzCopy çalıştıran kullanıcıyı temel alır.
+**--Preserve-Owner**                       Yalnızca verileri indirirken ve yalnızca kullanıldığında bir etkiye sahiptir `--preserve-smb-permissions` . True ise (varsayılan), dosya sahibi ve grup indirmelerde korunur. Bu bayrak false olarak ayarlandıysa, `--preserve-smb-permissions` ACL 'leri korur, ancak sahip ve grup AzCopy çalıştıran kullanıcıyı temel alır.
 
 **--PUT-MD5**                             Her bir dosyanın MD5 karmasını oluşturun ve karmayı hedef Blobun veya dosyanın Content-MD5 özelliği olarak kaydedin. (Varsayılan olarak, karma oluşturulmaz.) Yalnızca karşıya yükleme sırasında kullanılabilir.
 
@@ -249,6 +249,8 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--komut çıktısının çıkış türü** dize biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer ' text ' değeridir. (varsayılan "metin")
 
+**--Güvenilen-Microsoft-Suffixes** dizesi Azure Active Directory oturum açma belirteçlerinin gönderilebileceği ek etki alanı soneklerini belirtir.  Varsayılan değer '*. Core.Windows.net;*' dir. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Burada listelenenler varsayılan olarak eklenir. Güvenlik için yalnızca Microsoft Azure etki alanlarını Buraya yerleştirmeniz gerekir. Birden çok girişi noktalı virgülle ayırın.
+
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

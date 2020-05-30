@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: f18672b9e3a368a833fc8cba279d748dfe3c2a9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f39c9cf159f8ce5068cf10460ba6f195baa7806
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366777"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205067"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Azure Uygulama yapılandırması için özel uç noktaları kullanma
 
@@ -44,25 +44,21 @@ Hizmet hesabı sahipleri, `Private Endpoints` [Azure Portal](https://portal.azur
 
 ### <a name="connecting-to-private-endpoints"></a>Özel uç noktalara bağlanma
 
-Azure, VNet 'ten gelen bağlantıları özel bir bağlantı üzerinden yapılandırma deposuna yönlendirmek için DNS çözümlemesine bağımlıdır. Azure Portal bağlantı dizelerini, uygulama yapılandırma deponuzu seçerek ve ardından **Ayarlar** > **erişim anahtarları**' nı seçerek hızlı bir şekilde bulabilirsiniz.  
+Azure, VNet 'ten gelen bağlantıları özel bir bağlantı üzerinden yapılandırma deposuna yönlendirmek için DNS çözümlemesine bağımlıdır. Azure Portal bağlantı dizelerini, uygulama yapılandırma deponuzu seçerek ve ardından **Ayarlar**  >  **erişim anahtarları**' nı seçerek hızlı bir şekilde bulabilirsiniz.  
 
 > [!IMPORTANT]
-> Ortak bir uç nokta için kullandığınız gibi özel uç noktaları kullanarak uygulama yapılandırma deponuza bağlanmak için aynı bağlantı dizesini kullanın. Alt `privatelink` etki alanı URL 'sini kullanarak depolama hesabına bağlanmayın.
+> Ortak bir uç nokta için kullandığınız gibi özel uç noktaları kullanarak uygulama yapılandırma deponuza bağlanmak için aynı bağlantı dizesini kullanın. Alt `privatelink` etki alanı URL 'sini kullanarak mağazaya bağlanmayın.
 
 ## <a name="dns-changes-for-private-endpoints"></a>Özel uç noktalar için DNS değişiklikleri
 
-Özel bir uç nokta oluşturduğunuzda, yapılandırma deposu için DNS CNAME kaynak kaydı, ön ek `privatelink`içeren bir alt etki alanındaki diğer ada güncelleştirilir. Azure, Özel uç noktalar için DNS A kaynak kayıtlarıyla `privatelink` birlikte alt etki alanına karşılık gelen [özel bir DNS bölgesi](../dns/private-dns-overview.md) de oluşturur.
+Özel bir uç nokta oluşturduğunuzda, yapılandırma deposu için DNS CNAME kaynak kaydı, ön ek içeren bir alt etki alanındaki diğer ada güncelleştirilir `privatelink` . Azure, [private DNS zone](../dns/private-dns-overview.md) `privatelink` Özel uç noktalar için DNS a kaynak kayıtlarıyla birlikte alt etki alanına karşılık gelen özel bir DNS bölgesi de oluşturur.
 
-Uç nokta URL 'sini VNet dışından çözdüğünde, deponun genel uç noktasına çözümlenir. Özel uç noktasını barındıran VNet içinden çözümlendiğinde, uç nokta URL 'SI özel uç noktaya dönüşür.
+Uç nokta URL 'sini özel uç noktasını barındıran VNet içinden çözdüğünde, deponun özel uç noktasına çözümlenir. VNet dışından çözümlendiğinde, uç nokta URL 'SI genel uç noktaya dönüşür. Özel bir uç nokta oluşturduğunuzda, genel uç nokta devre dışıdır.
 
-Azure Güvenlik Duvarı hizmetini kullanarak, VNet dışındaki istemciler için genel uç nokta aracılığıyla erişimi denetleyebilirsiniz.
-
-Bu yaklaşım, Özel uç noktaların yanı sıra VNet dışındaki istemcileri barındıran VNet 'teki istemciler için **aynı bağlantı dizesini kullanarak** mağazaya erişim sağlar.
-
-Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler hizmet uç noktasının tam etki alanı adını (FQDN) özel uç nokta IP adresine çözümleyebilmelidir. DNS sunucunuzu özel bağlantı alt etki alanınızı, sanal ağın özel DNS bölgesine devretmek veya özel uç nokta IP adresi ile için `AppConfigInstanceA.privatelink.azconfig.io` bir kayıt yapılandırmak üzere yapılandırın.
+Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler hizmet uç noktasının tam etki alanı adını (FQDN) özel uç nokta IP adresine çözümleyebilmelidir. DNS sunucunuzu özel bağlantı alt etki alanınızı, sanal ağın özel DNS bölgesine devretmek veya `AppConfigInstanceA.privatelink.azconfig.io` Özel uç nokta IP adresi ile Için bir kayıt yapılandırmak üzere yapılandırın.
 
 > [!TIP]
-> Özel veya şirket içi bir DNS sunucusu kullanırken, DNS sunucunuzu, alt `privatelink` etki alanındaki depo adını özel uç nokta IP adresine çözümlemek üzere yapılandırmanız gerekir. Bunu, alt `privatelink` etki alanını VNET 'ın özel DNS bölgesine devredererek veya DNS sunucunuzda DNS bölgesini YAPıLANDıRARAK ve DNS A kayıtlarını ekleyerek yapabilirsiniz.
+> Özel veya şirket içi bir DNS sunucusu kullanırken, DNS sunucunuzu, alt etki alanındaki depo adını `privatelink` Özel uç nokta IP adresine çözümlemek üzere yapılandırmanız gerekir. Bunu, alt `privatelink` etki alanını VNET 'in özel DNS bölgesine devredererek veya DNS SUNUCUNUZDA DNS bölgesini yapılandırarak ve DNS A kayıtlarını ekleyerek yapabilirsiniz.
 
 ## <a name="pricing"></a>Fiyatlandırma
 

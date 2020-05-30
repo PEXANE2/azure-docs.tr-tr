@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 3eef7476a729c7b83290b9d8d86ba06524bed72b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4421ad4260ff8eada87cdebc031d09922860324f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297091"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196323"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Kaynak veritabanlarına bağlanırken DMS hatalarını giderme
 
@@ -30,9 +30,9 @@ Kaynak SQL Server veritabanına bağlanma ile ilişkili olası sorunlar ve bunla
 | Hata         | Neden ve sorun giderme ayrıntısı |
 | ------------- | ------------- |
 | SQL bağlantısı başarısız oldu. SQL Server ile bağlantı kurulmaya çalışılırken ağ ile ilişkili veya örneğe özgü bir hata oluştu. Sunucu bulunamadı veya erişilebilir değildi. Örnek adının doğru olduğundan ve SQL Server uzak bağlantılara izin verecek şekilde yapılandırıldığından emin olun.<br> | Bu hata, hizmet kaynak sunucuyu bulamıyorsa oluşur. Sorunu gidermek için [dinamik bağlantı noktası veya adlandırılmış örnek kullanılırken kaynak SQL Server bağlantı hatası](https://docs.microsoft.com/azure/dms/known-issues-troubleshooting-dms#error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance)makalesine bakın. |
-| **Hata 53** -SQL bağlantısı başarısız oldu. (Ayrıca, hata kodları 1, 2, 5, 53, 233, 258, 1225, 11001 için)<br><br> | Hizmet kaynak sunucuya bağlanamıyorsa bu hata oluşur. Sorunu gidermek için aşağıdaki kaynaklara bakın ve sonra yeniden deneyin. <br><br>  [Bağlantı sorununu gidermek için etkileşimli Kullanıcı Kılavuzu](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [SQL Server Azure SQL veritabanı 'na geçirmek için Önkoşullar](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [SQL Server Azure SQL veritabanı yönetilen örneği 'ne geçirme önkoşulları](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
+| **Hata 53** -SQL bağlantısı başarısız oldu. (Ayrıca, hata kodları 1, 2, 5, 53, 233, 258, 1225, 11001 için)<br><br> | Hizmet kaynak sunucuya bağlanamıyorsa bu hata oluşur. Sorunu gidermek için aşağıdaki kaynaklara bakın ve sonra yeniden deneyin. <br><br>  [Bağlantı sorununu gidermek için etkileşimli Kullanıcı Kılavuzu](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [SQL Server Azure SQL veritabanı 'na geçirmek için Önkoşullar](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [SQL Server Azure SQL yönetilen örneği 'ne geçirme önkoşulları](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
 | **Hata 18456** -oturum açma başarısız.<br> | Bu hata, hizmet, kaynak veritabanına, belirtilen T-SQL kimlik bilgilerini kullanarak bağlanamıyorsa oluşur. Sorunu gidermek için, girilen kimlik bilgilerini doğrulayın. Ayrıca, bu tablonun altındaki notta listelenen [MSSQLSERVER_18456](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) veya sorun giderme belgelerine de başvurabilirsiniz ve sonra yeniden deneyin. |
-| Hatalı biçimlendirilmiş AccountName değeri{0}' ' belirtildi. AccountName için beklenen biçim etkialanı \ Kullanıcı adı<br> | Kullanıcı Windows kimlik doğrulaması seçerse bu hata oluşur ancak kullanıcı adını geçersiz biçimde sağlar. Sorunu gidermek için, Windows kimlik doğrulaması için doğru biçimde Kullanıcı adı sağlayın ya da **SQL kimlik doğrulaması**' nı seçin. |
+| Hatalı biçimlendirilmiş AccountName değeri ' {0} ' belirtildi. AccountName için beklenen biçim etkialanı \ Kullanıcı adı<br> | Kullanıcı Windows kimlik doğrulaması seçerse bu hata oluşur ancak kullanıcı adını geçersiz biçimde sağlar. Sorunu gidermek için, Windows kimlik doğrulaması için doğru biçimde Kullanıcı adı sağlayın ya da **SQL kimlik doğrulaması**' nı seçin. |
 
 ## <a name="aws-rds-mysql"></a>AWS RDS MySQL
 

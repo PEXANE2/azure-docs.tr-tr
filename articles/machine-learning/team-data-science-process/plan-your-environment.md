@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 281a6b713c5480c6bd25539eeacc304670352667
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76710318"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194357"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Senaryoları tanımlama ve gelişmiş analiz verileri işlemeyi planlama
 
@@ -75,7 +75,7 @@ Verilerin sürekli geçirilmesi gerektiğinde Azure Data Factory (ADF) kullanmay
 * hem şirket içi hem de bulut kaynaklarını içeren karma bir senaryo
 * geçiş sırasında verilerin işlenen, değiştirildiği veya iş mantığı tarafından değiştirildiği bir senaryo
 
-Daha fazla bilgi için bkz. Şirket [ıçı SQL Server 'dan Azure Data Factory SQL Azure için verileri taşıma](move-sql-azure-adf.md).
+Daha fazla bilgi için bkz. [Azure Data Factory ile SQL Azure SQL Server veritabanından verileri taşıma](move-sql-azure-adf.md).
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Verilerin ne kadarını Azure 'a taşınacak?
 
@@ -145,7 +145,7 @@ Diller, geliştirme ortamları ve araçlar için birçok seçenek vardır. Gerek
 
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>Veri analizi için hangi araçları kullanmanız gerekir?
 
-* [Microsoft Azure PowerShell](/powershell/azure/overview) -Azure kaynaklarınızı bir betik dilinde yönetmek için kullanılan bir betik dili
+* [Microsoft Azure PowerShell](/powershell/azure/overview) -bir betik dilinde Azure kaynaklarınızı yönetmek için kullanılan bir betik dili
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
 * [Devrimanalytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)

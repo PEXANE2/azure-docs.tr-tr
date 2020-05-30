@@ -1,6 +1,6 @@
 ---
 title: Gelişmiş veri güvenliği
-description: Hassas verileri bulma ve sınıflandırma, veritabanınızın güvenlik açıklarını yönetme ve Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE için tehdit oluşturabilecek anormal etkinlikleri algılama işlevleri hakkında bilgi edinin.
+description: Hassas verileri bulma ve sınıflandırma, veritabanınızın güvenlik açıklarını yönetme ve Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE 'de veritabanınızın bir tehdidi oluşturabilecek anormal etkinlikleri algılamayla ilgili işlevsellik hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,28 +12,27 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: ed7d4b10219f4d4a3c437331bd1daf870495949d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d600d174aa37c5c4d5d1011b9cb61e4487256c13
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047856"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195139"
 ---
 # <a name="advanced-data-security"></a>Gelişmiş veri güvenliği
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 
-Gelişmiş veri güvenliği (ADS), gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE için REKLAMLARı mevcuttur. Hassas verileri keşfedip sınıflandırma, veritabanındaki olası güvenlik açıklarını belirleme ve yol açabileceği sorunları azaltma ve veritabanınıza ilişkin bir tehdit belirtisi olabilecek anormal etkinlikleri algılamaya yönelik işlevsellik sağlar. Bu özellikler tek bir konumdan etkinleştirilebilir ve yönetilebilir.
+Gelişmiş veri güvenliği (ADS), gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. REKLAMLAR Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics için kullanılabilir. Hassas verileri keşfedip sınıflandırma, veritabanındaki olası güvenlik açıklarını belirleme ve yol açabileceği sorunları azaltma ve veritabanınıza ilişkin bir tehdit belirtisi olabilecek anormal etkinlikleri algılamaya yönelik işlevsellik sağlar. Bu özellikler tek bir konumdan etkinleştirilebilir ve yönetilebilir.
 
 ## <a name="overview"></a>Genel Bakış
 
-Gelişmiş veri güvenliği (ADS), veri bulma & sınıflandırması, güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması gibi bir dizi gelişmiş SQL güvenlik özelliği sağlar.
+ADS, veri bulma & sınıflandırması, SQL güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması gibi gelişmiş SQL güvenlik özellikleri kümesi sağlar.
+- [Veri bulma & sınıflandırması](data-discovery-and-classification-overview.md) , Azure SQL veritabanı, Azure SQL yönetilen örneği ve veritabanlarınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve raporlamak Için Azure SYNAPSE 'da yerleşik olan yetenekler sağlar. Veri sınıflandırma durumunuz için görünürlük sağlamanın yanı sıra veritabanı içindeki ve dışındaki hassas verilere erişimin izlenmesi için kullanılabilir.
+- [Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) , olası veritabanı güvenlik açıklarını düzeltebileceğiniz, izleyebileceğiniz ve bu sorunları gidermenize yardımcı olabilecek, kolay yapılandırmalı bir hizmettir. Güvenlik durumlarınızın görünürlüğünü sağlar ve güvenlik sorunlarını çözmek ve veritabanınızın Fortifications artırılmasına yönelik eylem yapılabilir adımları içerir.
+- [Gelişmiş Tehdit Koruması](threat-detection-overview.md), veritabanlarınıza erişme veya bunları kullanma konusunda olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri belirler. Veritabanınızı sürekli şüpheli etkinlikler için izler ve olası güvenlik açıkları, Azure SQL ekleme saldırıları ve anormal veritabanı erişim desenleri hakkında anında güvenlik uyarıları sağlar. Gelişmiş Tehdit Koruması uyarıları, şüpheli etkinliğin ayrıntılarının yanı sıra tehdidi araştırmak ve ortadan kaldırmak için önerilen eylemleri de içerir.
 
-- [Veri bulma & sınıflandırması](data-discovery-and-classification-overview.md) , Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE 'da yerleşik olarak bulunan ve veritabanlarınızdaki hassas verileri raporlayan, sınıflandırmak ve & etiketleme için Azure 'daki özellikleri sağlar. Veri sınıflandırma durumunuz için görünürlük sağlamanın yanı sıra veritabanı içindeki ve dışındaki hassas verilere erişimin izlenmesi için kullanılabilir.
-- [Güvenlik Açığı Değerlendirmesi](sql-vulnerability-assessment.md) olası veritabanı güvenlik açıklarını keşfetmenizi ve izlemenizi sağlamanın yanı sıra bunları gidermeye yardımcı olan yapılandırması kolay bir hizmettir. Güvenlik durumunuz hakkında görünürlük sağlamasının yanı sıra güvenlik sorunlarınızı çözmek ve veritabanı güçlendirmelerinizi geliştirmek için eyleme dönüştürülebilir adımlar sunar.
-- [Gelişmiş Tehdit Koruması](threat-detection-overview.md), veritabanlarınıza erişme veya bunları kullanma konusunda olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri belirler. Veritabanınızı şüpheli etkinliklere karşı sürekli izler ve olası güvenlik açıkları, SQL ekleme saldırıları ve anormal veritabanı erişim modelleri hakkında anında güvenlik uyarıları sunar. Gelişmiş Tehdit Koruması uyarıları, şüpheli etkinliğin ayrıntılarının yanı sıra tehdidi araştırmak ve ortadan kaldırmak için önerilen eylemleri de içerir.
-
-Bu dahil edilen tüm özellikleri etkinleştirmek için SQL REKLAMLARıNı bir kez etkinleştirin. Tek tıklamayla, Azure 'da [sunucunuzdaki](logical-servers.md) tüm VERITABANLARı için reklamları ETKINLEŞTIREBILIR (SQL veritabanı veya Azure SYNAPSE Analytics 'i barındırır) veya Azure SQL yönetilen örneği ' nde örneğini kullanabilirsiniz. ADS ayarlarının etkinleştirilmesi veya yönetilmesi [SQL Güvenlik Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) rolü, SQL veritabanı yönetici rolü veya SQL Server Yöneticisi rolüne ait olmalıdır.
+Bu dahil edilen tüm özellikleri etkinleştirmek için gelişmiş veri güvenliğini etkinleştirin. Tek tıklamayla, Azure 'da veya SQL yönetilen örneğiniz üzerindeki [sunucunuzdaki](logical-servers.md) tüm VERITABANLARı için reklamları etkinleştirebilirsiniz. ADS ayarlarının etkinleştirilmesi veya yönetilmesi [SQL Güvenlik Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) rolüne veya veritabanı ya da Sunucu Yöneticisi rollerinden birine ait olmalıdır.
 
 ADS fiyatlandırması, her korumalı sunucu veya yönetilen örnek tek bir düğüm olarak sayılan Azure Güvenlik Merkezi Standart katmanı ile hizalanır. Yeni korunan kaynaklar, ücretsiz bir güvenlik merkezi standart katmanı denemesine hak kazanın. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 

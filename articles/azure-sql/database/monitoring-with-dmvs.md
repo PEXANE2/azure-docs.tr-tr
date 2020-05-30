@@ -12,12 +12,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 04/19/2020
-ms.openlocfilehash: 757b11c7fd6eaeac1ef0d6d3bb8cea9be2af983c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 68ae42faaf4f3aea851fa1649ba033f60f2b199a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047149"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193908"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Dinamik yönetim görünümlerini kullanarak Microsoft Azure SQL Veritabanı ve Azure SQL yönetilen örnek performansını izleme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -43,7 +43,7 @@ GRANT VIEW DATABASE STATE TO database_user;
 
 Azure SQL yönetilen örneği 'nde, dinamik bir yönetim görünümünü sorgulamak için **sunucu durumu Izinlerinin görünüm** olması gerekir. Daha fazla bilgi için bkz. [sistem dinamik yönetim görünümleri](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views#required-permissions).
 
-Şirket içi SQL Server ve Azure SQL yönetilen örneği örneğinde, dinamik yönetim görünümleri sunucu durum bilgilerini döndürür. Azure SQL veritabanı 'nda yalnızca geçerli mantıksal veritabanınızla ilgili bilgileri döndürür.
+SQL Server örneğinde ve Azure SQL yönetilen örneği 'nde, dinamik yönetim görünümleri sunucu durum bilgilerini döndürür. Azure SQL veritabanı 'nda yalnızca geçerli mantıksal veritabanınızla ilgili bilgileri döndürür.
 
 Bu makale, aşağıdaki sorgu performans sorunlarının türlerini algılamak için SQL Server Management Studio veya Azure Data Studio kullanarak yürütebilmeniz gereken DMV sorgularının bir koleksiyonunu içerir:
 
@@ -673,7 +673,7 @@ SELECT COUNT(*) AS [Concurrent_Requests]
 FROM sys.dm_exec_requests R;
 ```
 
-Şirket içi SQL Server veritabanının iş yükünü çözümlemek için, bu sorguyu çözümlemek istediğiniz belirli veritabanına göre filtrelemek üzere değiştirin. Örneğin, MyDatabase adlı bir şirket içi veritabanınız varsa, bu Transact-SQL sorgusu söz konusu veritabanındaki eşzamanlı isteklerin sayısını döndürür:
+Bir SQL Server veritabanının iş yükünü çözümlemek için, bu sorguyu çözümlemek istediğiniz belirli veritabanına göre filtrelemek üzere değiştirin. Örneğin, MyDatabase adlı bir şirket içi veritabanınız varsa, bu Transact-SQL sorgusu söz konusu veritabanındaki eşzamanlı isteklerin sayısını döndürür:
 
 ```sql
 SELECT COUNT(*) AS [Concurrent_Requests]
@@ -702,7 +702,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections
 ```
 
-Şirket içi SQL Server iş yükünü analiz ediyorsanız, sorguyu belirli bir veritabanına odaklanmak üzere değiştirin. Bu sorgu, Azure 'a taşımayı düşünüyorsanız veritabanına yönelik olası oturum ihtiyaçlarını belirlemenize yardımcı olur.
+Bir SQL Server iş yükünü analiz ediyorsanız, sorguyu belirli bir veritabanına odaklanmak üzere değiştirin. Bu sorgu, Azure 'a taşımayı düşünüyorsanız veritabanına yönelik olası oturum ihtiyaçlarını belirlemenize yardımcı olur.
 
 ```sql
 SELECT COUNT(*) AS [Sessions]

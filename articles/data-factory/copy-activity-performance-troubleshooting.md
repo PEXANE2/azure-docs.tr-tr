@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e41f6346f2ce32ed65aefb7d50680d1302ca26
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414136"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193706"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Kopyalama etkinliği performansını sorun giderme
 
@@ -70,7 +70,7 @@ Kopyalama etkinliği performansı beklentilerinizi karşılamıyorsa, Azure Inte
 
 - **"Aktarım listeleme kaynağı" uzun çalışma süresi yaşadı**: kaynak dosyalarının listelenmesi veya kaynak veritabanının veri bölümlerinin yavaş olması anlamına gelir.
 
-  - Dosya tabanlı kaynaktan veri kopyalarken, klasör yolu veya dosya adı`wildcardFolderPath` ( `wildcardFileName`veya) üzerinde **joker karakter filtresi** kullanırsanız veya **dosya son değiştirme zamanı filtresi** (`modifiedDatetimeStart` veya`modifiedDatetimeEnd`) kullanıyorsanız, bu filtre kopyalama etkinliğinin belirtilen klasörün altındaki tüm dosyaları istemci tarafına listelemesine neden olur ve sonra filtreyi uygular. Bu tür dosya numaralandırması, özellikle de yalnızca küçük bir dosya kümesi filtre kuralını karşıladığında performans sorunlarına neden olabilir.
+  - Dosya tabanlı kaynaktan veri kopyalarken, klasör yolu veya dosya adı (veya) üzerinde **joker karakter filtresi** kullanırsanız `wildcardFolderPath` `wildcardFileName` veya **dosya son değiştirme zamanı filtresi** ( `modifiedDatetimeStart` veya `modifiedDatetimeEnd` ) kullanıyorsanız, bu filtre kopyalama etkinliğinin belirtilen klasörün altındaki tüm dosyaları istemci tarafına listelemesine neden olur ve sonra filtreyi uygular. Bu tür dosya numaralandırması, özellikle de yalnızca küçük bir dosya kümesi filtre kuralını karşıladığında performans sorunlarına neden olabilir.
 
     - [Dosyaları, tarih saat bölümlenmiş dosya yoluna veya adına göre kopyalayıp kopyalayamayacağını](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)denetleyin. Bu şekilde, kaynak tarafında liste üzerinde yük getirmez.
 
@@ -124,7 +124,7 @@ Kopyalama performansı beklentilerinizi karşılamıyorsa, Azure Integration Run
 
   - Şirket içinde barındırılan IR makinesinin, kaynak veri deposuna bağlanmak için düşük gecikme süresine sahip olup olmadığını denetleyin. Kaynağınız Azure 'da ise, şirket içinde barındırılan IR makinesinden Azure bölgesine gecikme süresini denetlemek için [Bu aracı](http://www.azurespeed.com/Azure/Latency) kullanabilirsiniz.
 
-  - Dosya tabanlı kaynaktan veri kopyalarken, klasör yolu veya dosya adı`wildcardFolderPath` ( `wildcardFileName`veya) üzerinde **joker karakter filtresi** kullanırsanız veya **dosya son değiştirme zamanı filtresi** (`modifiedDatetimeStart` veya`modifiedDatetimeEnd`) kullanıyorsanız, bu filtre kopyalama etkinliğinin belirtilen klasörün altındaki tüm dosyaları istemci tarafına listelemesine neden olur ve sonra filtreyi uygular. Bu tür dosya numaralandırması, özellikle de yalnızca küçük bir dosya kümesi filtre kuralını karşıladığında performans sorunlarına neden olabilir.
+  - Dosya tabanlı kaynaktan veri kopyalarken, klasör yolu veya dosya adı (veya) üzerinde **joker karakter filtresi** kullanırsanız `wildcardFolderPath` `wildcardFileName` veya **dosya son değiştirme zamanı filtresi** ( `modifiedDatetimeStart` veya `modifiedDatetimeEnd` ) kullanıyorsanız, bu filtre kopyalama etkinliğinin belirtilen klasörün altındaki tüm dosyaları istemci tarafına listelemesine neden olur ve sonra filtreyi uygular. Bu tür dosya numaralandırması, özellikle de yalnızca küçük bir dosya kümesi filtre kuralını karşıladığında performans sorunlarına neden olabilir.
 
     - [Dosyaları, tarih saat bölümlenmiş dosya yoluna veya adına göre kopyalayıp kopyalayamayacağını](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)denetleyin. Bu şekilde, kaynak tarafında liste üzerinde yük getirmez.
 
@@ -181,7 +181,7 @@ Desteklenen bazı veri depoları için performans izleme ve ayarlama başvurular
 * Azure SQL veritabanı: [performansı izleyebilir](../sql-database/sql-database-single-database-monitor.md) ve veritabanı işlem BIRIMI (DTU) yüzdesini kontrol edebilirsiniz.
 * Azure SQL veri ambarı: yeteneği, veri ambarı birimlerinde (DWU) ölçülür. Bkz. [Azure SQL veri ambarı 'nda işlem gücünü yönetme (genel bakış)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Azure Cosmos DB performans düzeyleri](../cosmos-db/performance-levels.md).
-* Şirket içi SQL Server: [performansı izleme ve ayarlama](https://msdn.microsoft.com/library/ms189081.aspx).
+* SQL Server: [performansı izleme ve ayarlama](https://msdn.microsoft.com/library/ms189081.aspx).
 * Şirket içi dosya sunucusu: [dosya sunucuları Için performans ayarlama](https://msdn.microsoft.com/library/dn567661.aspx).
 
 ## <a name="next-steps"></a>Sonraki adımlar
