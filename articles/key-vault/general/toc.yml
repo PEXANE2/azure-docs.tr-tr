@@ -1,6 +1,7 @@
 - name: Genel
   href: index.yml
 - name: Genel Bakış
+  expanded: true
   items:
     - name: Azure Key Vault hakkında
       href: overview.md

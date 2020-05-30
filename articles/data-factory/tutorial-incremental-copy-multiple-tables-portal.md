@@ -1,6 +1,6 @@
 ---
 title: Azure portal kullanarak birden çok tabloyu artımlı olarak kopyalama
-description: Bu öğreticide, değişim verileri şirket içi SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanına artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
+description: Bu öğreticide, Delta verileri bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: 4649ac8bbef23711ed45baffa15bb9e8bff8daec
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3c29d7b30541e0d289182d448b5bcbf69d02a3dc
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119192"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194566"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server’daki birden fazla tablodan Azure SQL veritabanı’na artımlı olarak veri yükleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, değişim verileri şirket içi SQL Server’daki birden çok tablodan Azure SQL Veritabanına yükleyen bir Azure veri fabrikası işlem hattı oluşturacaksınız.    
+Bu öğreticide, bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na Delta verileri yükleyen bir işlem hattı ile bir Azure Data Factory oluşturacaksınız.    
 
 Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -68,12 +68,12 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **SQL Server**. Bu öğreticide şirket içi SQL Server veritabanını kaynak veri deposu olarak kullanırsınız. 
+* **SQL Server**. Bu öğreticide kaynak veri deposu olarak bir SQL Server veritabanı kullanırsınız. 
 * **Azure SQL veritabanı**. SQL veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md). 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server veritabanınızda kaynak tabloları oluşturma
 
-1. SQL Server Management Studio’yu açın ve şirket içi SQL Server veritabanınıza bağlanın.
+1. SQL Server Management Studio’yu açın ve SQL Server veritabanınıza bağlanın.
 
 1. **Sunucu Gezgini**’nde veritabanına sağ tıklayın ve **Yeni Sorgu**’yu seçin.
 
@@ -281,10 +281,10 @@ END
 1. Tümleştirme çalışma zamanları listesinde **MySelfHostedIR** öğesini gördüğünüzü doğrulayın.
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
-Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, şirket içi SQL Server veritabanı ve Azure SQL veritabanı hesabınızla bağlı hizmetler oluşturacaksınız. 
+Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, SQL Server veritabanınıza ve Azure SQL veritabanınıza bağlı hizmetler oluşturacaksınız. 
 
 ### <a name="create-the-sql-server-linked-service"></a>SQL Server bağlı hizmet oluşturma
-Bu adımda, şirket içi SQL Server veritabanınızı veri fabrikasına bağlarsınız.
+Bu adımda, SQL Server veritabanınızı veri fabrikasına bağlarsınız.
 
 1. **Bağlantılar** penceresinde **Tümleştirme Çalışma Zamanları** sekmesinden **Bağlı Hizmetler** sekmesine geçip **+ Yeni**’ye tıklayın.
 
@@ -469,7 +469,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
     1. **Parametreyi içeri aktar**’ı seçin. 
     1. Parametreler için aşağıdaki değerleri belirtin: 
 
-        | Name | Tür | Değer | 
+        | Adı | Tür | Değer | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Dize | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

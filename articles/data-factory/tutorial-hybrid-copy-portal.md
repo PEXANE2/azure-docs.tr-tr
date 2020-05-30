@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 03/12/2020
-ms.openlocfilehash: 7e222762c8bfa7218fd27e15b97de7b1166d749d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/29/2020
+ms.openlocfilehash: 708236cbbd9bf10c6e9edf6b59a3d8e814a40e9f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418584"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194610"
 ---
-# <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Verileri şirket içi SQL Server veritabanından Azure Blob depolamaya kopyalama
+# <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>SQL Server veritabanından Azure Blob depolama alanına veri kopyalama
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, Azure Data Factory kullanıcı arabirimini (UI) kullanarak verileri şirket içi bir SQL Server veritabanından Azure Blob depolama alanına kopyalayan bir veri fabrikası işlem hattı oluşturursunuz. Verileri şirket içi ile bulut veri depoları arasında taşıyan, şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturup kullanabilirsiniz.
+Bu öğreticide, verileri bir SQL Server veritabanından Azure Blob depolama alanına kopyalayan bir veri fabrikası işlem hattı oluşturmak için Azure Data Factory Kullanıcı arabirimini (UI) kullanırsınız. Verileri şirket içi ile bulut veri depoları arasında taşıyan, şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturup kullanabilirsiniz.
 
 > [!NOTE]
 > Bu makale, Data Factory’ye giriş konusunda ayrıntılı bilgi sağlamaz. Daha fazla bilgi için bkz. [Data Factory'ye giriş](introduction.md).
@@ -48,7 +48,7 @@ Veri fabrikası örnekleri oluşturmak için Azure’da oturum açarken kulland�
 Abonelikte sahip olduğunuz izinleri görüntülemek için Azure portalına gidin. Sağ üst köşeden kullanıcı adınızı ve sonra **İzinler**’i seçin. Birden çok aboneliğe erişiminiz varsa uygun aboneliği seçin. Bir role kullanıcı eklemeye ilişkin örnek yönergeler için, bkz. [RBAC ve Azure portalı kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 ve 2017
-Bu öğreticide, şirket içi SQL Server veritabanını bir *kaynak* veri deposu olarak kullanırsınız. Bu öğreticide oluşturduğunuz veri fabrikasındaki işlem hattı, verileri bu şirket içi SQL Server veritabanından (kaynak) Blob depolama alanına (havuz) kopyalar. Daha sonra SQL Server veritabanınızda **"adlı bir** tablo oluşturur ve tabloya birkaç örnek girdi eklersiniz.
+Bu öğreticide, bir SQL Server veritabanını *kaynak* veri deposu olarak kullanırsınız. Bu öğreticide oluşturduğunuz veri fabrikasındaki işlem hattı, verileri bu SQL Server veritabanından (kaynak) BLOB depolama alanına (havuz) kopyalar. Daha sonra SQL Server veritabanınızda **"adlı bir** tablo oluşturur ve tabloya birkaç örnek girdi eklersiniz.
 
 1. SQL Server Management Studio’yu başlatın. Makinenizde zaten yüklü değilse [SQL Server Management Studio'yu indirme](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) sayfasına gidin.
 
@@ -74,7 +74,7 @@ Bu öğreticide, şirket içi SQL Server veritabanını bir *kaynak* veri deposu
    ```
 
 ### <a name="azure-storage-account"></a>Azure depolama hesabı
-Bu öğreticide, genel amaçlı Azure depolama hesabını (özel olarak Blob depolama) hedef/havuz veri deposu olarak kullanırsınız. Genel amaçlı bir Azure depolama hesabınız yoksa bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). Bu öğreticide oluşturduğunuz veri fabrikasındaki işlem hattı, verileri bu şirket içi SQL Server veritabanından (kaynak) Blob depolama alanına (havuz) kopyalar. 
+Bu öğreticide, genel amaçlı Azure depolama hesabını (özel olarak Blob depolama) hedef/havuz veri deposu olarak kullanırsınız. Genel amaçlı bir Azure depolama hesabınız yoksa bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). Bu öğreticide oluşturduğunuz veri fabrikasındaki işlem hattı, verileri SQL Server veritabanından (kaynak) BLOB depolama alanına (havuz) kopyalar. 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Depolama hesabı adını ve hesap anahtarını alma
 Bu öğreticide, depolama hesabınızın adını ve anahtarını kullanırsınız. Depolama hesabınızın adını ve anahtarını almak için aşağıdaki adımları gerçekleştirin:
@@ -110,7 +110,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem hattı oluşturmak için Data Factory kullanıcı arabirimini başlatacaksınız.
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. Sol menüde, **kaynak** > **Analizi** > **Data Factory**oluştur ' u seçin:
+1. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory**oluştur ' u seçin:
 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -144,7 +144,7 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
 
    ![Başlayalım sayfası](./media/doc-common-process/get-started-page.png)
 
-1. **Özellikler** penceresinin altındaki **genel** sekmesinde, **ad**için **sqlservertoblobpipeline**adını girin.
+1. Genel panelinde **Özellikler**altında, **ad**Için **sqlservertoblobpipeline** ' ı belirtin. Sonra sağ üst köşedeki Özellikler simgesine tıklayarak paneli daraltın.
 
 1. **Etkinlikler** araç kutusunda **Taşı & Dönüştür**' ü genişletin. **Kopyalama** etkinliğini kopyalayıp işlem hattı tasarım yüzeyine bırakın. Etkinliğin adını **CopySqlServerToAzureBlobActivity** olarak ayarlayın.
 
@@ -178,7 +178,7 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
 
     d. **Kimlik doğrulaması türü** bölümünde, Data Factory’nin SQL Server veritabanınıza bağlanmak için kullanması gereken uygun kimlik doğrulaması türünü seçin.
 
-    e. **Kullanıcı adı** ve **Parola** bölümlerine kullanıcı adını ve parolasını girin. Kullanıcı hesabınızda veya sunucu adında ters eğik çizgi karakteri (\\) kullanmanız gerekirse önüne kaçış karakterini (\\) koyun. Örneğin, *\\\\etkialanım \ Kullanıcı*' yı kullanın.
+    e. **Kullanıcı adı** ve **Parola** bölümlerine kullanıcı adını ve parolasını girin. Kullanıcı hesabınızda veya sunucu adında ters eğik çizgi karakteri (\\) kullanmanız gerekirse önüne kaçış karakterini (\\) koyun. Örneğin, *etkialanım \\ \\ \ Kullanıcı*' yı kullanın.
 
     f. **Bağlantıyı sına**’yı seçin. Bu adım, Data Factory oluşturduğunuz şirket içinde barındırılan tümleştirme çalışma zamanını kullanarak SQL Server veritabanınıza bağlanabildiğini doğrulamadır.
 
@@ -219,7 +219,7 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
     c. **Dosya** bölümü için **dinamik içerik Ekle**' yi seçin.
     ![Dosya adını çözümlemek için dinamik ifade](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-    d. Ekle `@CONCAT(pipeline().RunId, '.txt')`' yi ve ardından **son**' u seçin. Bu eylem, dosyayı ardışık düzen eylemsizlik. txt ile yeniden adlandırır.
+    d. Ekle `@CONCAT(pipeline().RunId, '.txt')` ' yi ve ardından **son**' u seçin. Bu eylem, dosyayı ardışık düzen eylemsizlik. txt ile yeniden adlandırır.
 
 1. İşlem hattının açık olduğu sekmeye gidin veya ağaç görünümünde işlem hattını seçin. **Havuz Veri Kümesi** bölümünde **AzureBlobDataset**’in seçili olduğunu onaylayın.
 

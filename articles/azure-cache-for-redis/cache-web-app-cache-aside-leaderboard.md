@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75411949"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195588"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Öğretici: ASP.NET üzerinde edilgen önbellekli puan tablosu oluşturma
 
@@ -226,7 +226,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
     <title>@ViewBag.Title - Contoso Team Stats</title>
     ```
 
-1. `body` Bölümünde, *Redsıs testi için Azure Cache*bağlantısının hemen altındaki *contoso Team stats* için aşağıdaki yeni `Html.ActionLink` ifadeyi ekleyin.
+1. `body`Bölümünde, `Html.ActionLink` *Redsıs testi için Azure Cache*bağlantısının hemen altındaki *contoso Team stats* için aşağıdaki yeni ifadeyi ekleyin.
 
     ```csharp
     @Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
@@ -642,9 +642,9 @@ Uygulamayı yerel olarak çalıştırmak için:
 
 ## <a name="publish-and-run-in-azure"></a>Azure’da yayımlama ve çalıştırma
 
-### <a name="provision-a-sql-azure-database-for-the-app"></a>Uygulama için bir SQL Azure veritabanı sağlama
+### <a name="provision-a-database-for-the-app"></a>Uygulama için bir veritabanı sağlama
 
-Bu bölümde, Azure’da barındırılan, kullanılacak uygulama için yeni bir SQL Azure veritabanı sağlayacaksınız.
+Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL veritabanı 'nda yeni bir veritabanı sağlayacaksınız.
 
 1. [Azure portalında](https://portal.azure.com/), Azure portalının sol üst köşesindeki **Kaynak oluştur**’a tıklayın.
 

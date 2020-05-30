@@ -1,6 +1,6 @@
 ---
-title: 'Az CL: elastik havuzu ölçeklendirme'
-description: Azure SQL veritabanı 'nda elastik bir havuzu ölçeklendirmek için Azure CLı örnek betiği
+title: 'Azure CLı: elastik havuzu ölçeklendirme'
+description: Azure SQL veritabanında esnek havuzu ölçeklendirmek için bir Azure CLı örnek betiği kullanın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,19 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 04736fbfeef9cf0584cf7c1f1a5daf91813ecbc7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 30862a85796fbe4373a88d80d9a6d26c8cf98901
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053948"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196728"
 ---
-# <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik bir havuzu ölçeklendirmek için CLı kullanma
+# <a name="use-the-azure-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Azure SQL veritabanı 'nda esnek havuzu ölçeklendirmek için Azure CLı 'yi kullanma
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
 Bu Azure CLı betik örneği, Azure SQL veritabanı 'nda elastik havuzlar oluşturur, havuza alınmış veritabanlarını taşımaktadır ve elastik havuz işlem boyutlarını değiştirir.
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
+Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu, Azure CLı sürüm 2,0 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Örnek betik
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: b1660c3a6d3bfe262493722c5aad0a08778b1964
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: f5a7bc3cd22d49a65ba3b83d2a9ff41112d07c1a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119152"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194539"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal kullanarak bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
 
@@ -204,7 +204,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
     7. **Bağlı hizmet**Için **Azuressqldatabaselinkedservice** 'in seçili olduğunu onaylayın.
 
         ![Yeni bağlı hizmet penceresi](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
-    8. **Son**' u seçin.
+    8. **Son**'u seçin.
 9. **Bağlantı** sekmesinde **[dbo] öğesini seçin. [ Tablo için su marktable]** . **Table** Tablodaki verilerin önizlemesini yapmak istiyorsanız **Veri önizlemesini görüntüle**’ye tıklayın.
 
     ![Filigran veri kümesi - bağlantı ayarları](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
@@ -217,7 +217,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
 13. **Yeni veri kümesi** PENCERESINDE **Azure SQL veritabanı**' nı seçin ve **devam**' a tıklayın.
 14. **Özellikleri ayarla** penceresinde, **ad**için **sourceDataset** girin. **Bağlı hizmet** için **AzureSqlDatabaseLinkedService** hizmetini seçin.
 15. **[Dbo] öğesini seçin. [ Tablo için data_source_table]** . Bu öğreticinin sonraki bölümlerinde, bu veri kümesinde bir sorgu belirtirsiniz. Bu sorgu, bu adımda belirttiğiniz tablodan önceliklidir.
-16. **Son**' u seçin.
+16. **Son**'u seçin.
 17. Üstteki işlem hattı sekmesine veya soldaki ağaç görünümünden işlem hattının adına tıklayarak işlem hattı düzenleyicisine geçin. **Arama** etkinliğinin özellikler penceresinde **Kaynak Veri Kümesi** alanı için **SourceDataset** seçeneğinin belirlendiğinden emin olun.
 18. **Sorgu Kullan** alanı için **Sorgu**’yu seçin ve aşağıdaki sorguyu girin: **data_source_table** tablosundan yalnızca en yüksek **LastModifytime** değerini seçersiniz. Lütfen **yalnızca ilk satırı**da seçtiğinizden emin olun.
 
@@ -272,7 +272,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
     1. **Saklı yordam adı**için **usp_write_watermark**' yi seçin.
     2. Saklı yordam parametrelerinin değerlerini belirtmek için, **Parametreyi içeri aktar**’a tıklayın ve parametreler için aşağıdaki değerleri girin:
 
-        | Name | Tür | Değer |
+        | Adı | Tür | Değer |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Dize | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
@@ -398,7 +398,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştirdiniz:
 > * İkinci işlem hattı çalıştırmasını izleme
 > * İkinci çalıştırmanın sonuçlarını gözden geçirme
 
-Bu öğreticide, işlem hattı SQL veritabanındaki tek bir tablodan Blob depolama alanına veri kopyalamıştır. Şirket içi SQL Server veritabanındaki birden çok tablodan SQL veritabanına veri kopyalama hakkında bilgi edinmek için şu öğreticiye ilerleyin.
+Bu öğreticide, işlem hattı SQL veritabanındaki tek bir tablodan Blob depolama alanına veri kopyalamıştır. SQL Server veritabanındaki birden çok tablodan SQL veritabanı 'na veri kopyalama hakkında bilgi edinmek için aşağıdaki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
 >[SQL Server’daki birden fazla tablodan Azure SQL Veritabanı’na artımlı olarak veri yükleme](tutorial-incremental-copy-multiple-tables-portal.md)

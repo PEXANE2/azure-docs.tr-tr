@@ -1,6 +1,6 @@
 ---
-title: PowerShell örneği-Azure SQL veritabanı 'nda izleme-ölçeklendirme-tek veritabanı
-description: Azure SQL veritabanı 'nda tek bir veritabanını izlemek ve ölçeklendirmek için örnek betik Azure PowerShell
+title: Azure SQL veritabanı 'nda tek bir veritabanını izlemek ve ölçeklendirmek için PowerShell 'i kullanma
+description: Azure SQL veritabanı 'nda tek bir veritabanını izlemek ve ölçeklendirmek için Azure PowerShell örnek betiği kullanın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,23 +11,24 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 9fa70e5888ecde8437c7d6ea6bbd52827eb6639d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d4f33a2601d9c19896c006af010a394f21fc8219
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054074"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196847"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek bir veritabanını izlemek ve ölçeklendirmek için PowerShell 'i kullanma
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Bu PowerShell betiği örneği, bir veritabanının performans ölçümlerini izler, veritabanını daha yüksek bir işlem boyutuna ölçeklendirir ve performans ölçümlerinden birinde bir uyarı kuralı oluşturur.
+Bu PowerShell betiği örneği, tek bir veritabanının performans ölçümlerini izler, daha yüksek bir işlem boyutuna ölçeklendirir ve performans ölçümlerinden birinde bir uyarı kuralı oluşturur.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici az PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -55,7 +56,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek bir veritabanı veya elastik havuz barındıran bir sunucu oluşturur. |
 | [Get-AzMetric](/powershell/module/az.monitor/get-azmetric) | Veritabanı için boyut kullanım bilgilerini gösterir.|
-| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Veritabanı özelliklerini güncelleştirir veya bir veritabanını elastik havuzun içine veya dışına ya da elastik havuzlar arasında taşır. |
+| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Veritabanı özelliklerini güncelleştirir veya veritabanlarını elastik havuzların içine veya dışına taşıdıkça. |
 | [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) | Gelecekte ölçümleri otomatik olarak izlemek için bir uyarı kuralı ayarlar. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||

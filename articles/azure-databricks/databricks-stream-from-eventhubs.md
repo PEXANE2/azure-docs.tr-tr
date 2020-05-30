@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 12/08/2019
 ms.author: alehall
-ms.openlocfilehash: fa5568a5af483a61b4e0854cbc7c2ade3b8dc4b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4461ad5e1ddd867305b5fbbd01bc84f3af9035d7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75889141"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197143"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Öğretici: Event Hubs kullanarak Azure Databricks’e veri akışı yapma
 
@@ -62,7 +62,7 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure Portal **kaynak** > oluştur**veri ve analiz** > **Azure Databricks**' yı seçin.
+1. Azure Portal **kaynak oluştur**  >  **veri ve analiz**  >  **Azure Databricks**' yı seçin.
 
     ![Azure portal databricks](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -76,7 +76,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     |---------|---------|
     |**Çalışma alanı adı**     | Databricks çalışma alanınız için bir ad sağlayın        |
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
-    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/management/overview.md). |
+    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümüne ilişkin kaynakları tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/management/overview.md). |
     |**Konum**     | **Doğu ABD 2**’yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
     |**Fiyatlandırma Katmanı**     |  **Standart** veya **Premium** arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
 
@@ -102,7 +102,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
    * Küme için bir ad girin.
    * Bu makalede, **6,0** çalışma zamanına sahip bir küme oluşturun.
-   * Süre **etkinlik süresi dolduktan \_ \_ sonra Sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
+   * Süre ** \_ \_ etkinlik süresi dolduktan sonra Sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
    Teknik ölçüt ve [Bütçe](https://azure.microsoft.com/pricing/details/databricks/)için uygun olan küme çalışanını ve sürücü düğümü boyutunu seçin.
 
@@ -143,7 +143,7 @@ Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerin
    * Spark Event Hubs bağlayıcısı - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12`
    * Twitter API’si - `org.twitter4j:twitter4j-core:4.0.7`
 
-3. **Yükle**’yi seçin.
+3. **Yükle**'yi seçin.
 
 4. Küme menüsünde, her iki kitaplıkların de yüklendiğinden ve doğru şekilde eklendiğinden emin olun.
 
@@ -175,7 +175,7 @@ Bu bölümde, Databricks çalışma alanında aşağıdaki adlarla iki not defte
 **Sendtweetstoeventhub** not defterine aşağıdaki kodu yapıştırın ve yer tutucuları, daha önce oluşturduğunuz Event Hubs ad alanı ve Twitter uygulamanızın değerleriyle değiştirin. Bu not defteri, gerçek zamanlı olarak "Azure" anahtar sözcüğünü içeren tweet’leri Event Hubs’ta akışa alır.
 
 > [!NOTE]
-> Twitter API 'SI belirli istek kısıtlamalarına ve [kotalara](https://developer.twitter.com/en/docs/basics/rate-limiting.html)sahiptir. Twitter API 'sinde standart fiyat sınırlandırmasını tatmin ediyorsanız, bu örnekte Twitter API 'sini kullanmadan metin içeriği oluşturabilirsiniz. Bunu yapmak için, değişken **veri kaynağını** yerine `test` olarak ayarlayın `twitter` ve **TestSource** listesini tercih edilen test girişi ile doldurun.
+> Twitter API 'SI belirli istek kısıtlamalarına ve [kotalara](https://developer.twitter.com/en/docs/basics/rate-limiting.html)sahiptir. Twitter API 'sinde standart fiyat sınırlandırmasını tatmin ediyorsanız, bu örnekte Twitter API 'sini kullanmadan metin içeriği oluşturabilirsiniz. Bunu yapmak için, değişken **veri kaynağını** yerine olarak ayarlayın `test` `twitter` ve **TestSource** listesini tercih edilen test girişi ile doldurun.
 
 ```scala
     import scala.collection.JavaConverters._
@@ -283,7 +283,7 @@ Not defterlerini çalıştırmak için **SHIFT + ENTER** tuşlarına basın. Aş
 
     Sent event: 4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie
 
-    Sent event: Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
+    Sent event: Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
 
     Sent event: Top 10 Tricks to #Save Money with #Azure Virtual Machines https://t.co/F2wshBXdoz #Cloud
 
@@ -388,7 +388,7 @@ Aşağıdaki çıkışı alırsınız:
     |0     |2018-03-09 05:49:08.86 |1520574548|Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
     https://t.co/7vs7cKtvah
     #cloudcomputing #Azure          |
-    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
+    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
     |0     |2018-03-09 05:49:02.936|1520574542|@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|
     |176   |2018-03-09 05:49:20.801|1520574560|4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |
     +------+-----------------+----------+-------+
@@ -398,7 +398,7 @@ Aşağıdaki çıkışı alırsınız:
     ...
     ...
 
-İşte bu kadar! Azure Databricks kullanarak gerçek zamanlıya yakın şekilde verileri başarıyla Azure Event Hubs’ta akışa aldınız Daha sonra Apache Spark için Event Hubs bağlayıcısını kullanarak akış verilerini kullandınız. Spark için Event Hubs bağlayıcısını kullanma hakkında daha fazla bilgi için [bağlayıcı belgesi](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs)ne başvurun.
+Hepsi bu! Azure Databricks kullanarak gerçek zamanlıya yakın şekilde verileri başarıyla Azure Event Hubs’ta akışa aldınız Daha sonra Apache Spark için Event Hubs bağlayıcısını kullanarak akış verilerini kullandınız. Spark için Event Hubs bağlayıcısını kullanma hakkında daha fazla bilgi için [bağlayıcı belgesi](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs)ne başvurun.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -406,7 +406,7 @@ Aşağıdaki çıkışı alırsınız:
 
 ![Databricks kümesini durdurma](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Küme oluşturma sırasında **işlem yapılmadan dakika \_ \_ sonra Sonlandır** onay kutusunu seçtiğiniz takdirde otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Küme oluşturma sırasında ** \_ \_ işlem yapılmadan dakika sonra Sonlandır** onay kutusunu seçtiğiniz takdirde otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:

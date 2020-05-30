@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 2d80291909b29576c60f39afc63ec174c091f1c5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 93fac2e3ae8d83f0fa49f94a3ba7880a2ecc2b4c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053360"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193899"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği için Azure PowerShell örnekleri
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,7 +54,7 @@ Aşağıdaki tablo, Azure SQL Veritabanı’na yönelik örnek Azure PowerShell 
 | [Bacpac dosyasından bir veritabanını içeri aktarma](scripts/import-from-bacpac-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği bir veritabanını bacpac dosyasından Azure SQL veritabanı 'na aktarır. |
 | **Veritabanları arasında verileri eşitleme**||
 | [SQL veritabanları arasında verileri eşitleme](scripts/sql-data-sync-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği, Azure SQL veritabanı 'nda birden çok veritabanı arasında eşitlenecek veri eşitlemesini yapılandırır. |
-| [SQL Veritabanı ile şirket içi SQL Server arasında verileri eşitleme](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği, Azure SQL veritabanı 'ndaki bir veritabanı ile SQL Server şirket içi veritabanı arasında eşitlenecek veri eşitlemesini yapılandırır. |
+| [SQL veritabanı ve SQL Server arasında veri eşitleme](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği, Azure SQL veritabanındaki bir veritabanı ile SQL Server veritabanı arasında eşitlenecek veri eşitlemesini yapılandırır. |
 | [SQL Data Sync için eşitleme şemasını güncelleştirme](scripts/update-sync-schema-in-sync-group.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği, Veri Eşitleme için eşitleme şemasından öğeler ekler veya öğeleri kaldırır. |
 |||
 

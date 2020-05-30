@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: ef0d79cae11a382bcca0ddb61e1d4a04b5db41e9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5b3db919056f24ad8b46c9925c044453e671d99f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79501867"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219156"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Öğretici: verileri Azure Data Box kopyalamak için veri kopyalama hizmetini kullanma (Önizleme)
 
@@ -50,11 +50,12 @@ NAS cihazına bağlandıktan sonra, bir sonraki adım verilerinizi kopyalayacağ
 
 * Veri kopyası hizmeti okurken veri değiştiriliyorsa, verilerin başarısızlıklarını veya bozulmasını görebilirsiniz.
 
-* Data Box verilerinizi Azure depolama 'ya aktardığından emin olana kadar kaynak verilerinin bir kopyasını sürdürtığınızdan emin olun.
+> [!IMPORTANT]
+> Data Box verilerinizi Azure depolama 'ya aktardığından emin olana kadar kaynak verilerinin bir kopyasını sürdürtığınızdan emin olun.
 
 Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız gerekir:
 
-1. Data Box cihazınızın yerel Web Kullanıcı arabiriminde,**kopyalama verilerini** **Yönet** > ' e gidin.
+1. Data Box cihazınızın yerel Web Kullanıcı arabiriminde, **Manage**  >  **kopyalama verilerini**Yönet ' e gidin.
 2. **Verileri Kopyala** sayfasında **Oluştur**' u seçin.
 
     !["Verileri Kopyala" sayfasında oluştur ' u seçin.](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
@@ -63,14 +64,14 @@ Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız
     
     |Alan                          |Değer    |
     |-------------------------------|---------|
-    |**İş adı**                       |İş için 230 karakterden daha az benzersiz bir ad. İş adında Bu karakterlere izin verilmez: \<, \>, \|, \?, \*, \\, \: \/, ve\\\.         |
-    |**Kaynak konumu**                |Veri kaynağına ilişkin SMB yolunu şu biçimde belirtin: `\\<ServerIPAddress>\<ShareName>` veya. `\\<ServerName>\<ShareName>`        |
-    |**Nitelen**                       |Veri kaynağına `\\<DomainName><UserName>` erişmek için biçimdeki Kullanıcı adı. Bir yerel yönetici bağlanıyorsa, açık güvenlik izinleri gerekecektir. Klasöre sağ tıklayın, **Özellikler** ' i seçin ve ardından **güvenlik**' i seçin. Bu, **güvenlik** sekmesine yerel yönetici eklemesi gerekir.       |
+    |**İş adı**                       |İş için 230 karakterden daha az benzersiz bir ad. İş adında Bu karakterlere izin verilmez: \<, \> ,,, \| \? \* , \\ , \: , \/ ve\\\.         |
+    |**Kaynak konumu**                |Veri kaynağına ilişkin SMB yolunu şu biçimde belirtin: `\\<ServerIPAddress>\<ShareName>` veya `\\<ServerName>\<ShareName>` .        |
+    |**Nitelen**                       |`\\<DomainName><UserName>`Veri kaynağına erişmek için biçimdeki Kullanıcı adı. Bir yerel yönetici bağlanıyorsa, açık güvenlik izinleri gerekecektir. Klasöre sağ tıklayın, **Özellikler** ' i seçin ve ardından **güvenlik**' i seçin. Bu, **güvenlik** sekmesine yerel yönetici eklemesi gerekir.       |
     |**Parola**                       |Veri kaynağına erişmek için parola.           |
     |**Hedef depolama hesabı**    |Verileri listeden karşıya yüklemek için hedef depolama hesabını seçin.         |
     |**Hedef türü**       |Listeden hedef depolama türünü seçin: **Blok Blobu**, **Sayfa Blobu**veya **Azure dosyaları**.        |
-    |**Hedef kapsayıcı/paylaşma**    |Hedef depolama hesabınızda veri yüklemek istediğiniz kapsayıcının veya paylaşımın adını girin. Ad bir paylaşma adı veya kapsayıcı adı olabilir. Örneğin `myshare` veya `mycontainer` kullanın. Adı veya `sharename\directory_name` `containername\virtual_directory_name`biçiminde de girebilirsiniz.        |
-    |**Dosya düzeniyle eşleşen dosya Kopyala**    | Dosya adı eşleştirme modelini aşağıdaki iki şekilde girebilirsiniz:<ul><li>**Joker karakter Ifadesi kullanın:** Yalnızca `*` ve `?` joker ifadelerinde desteklenir. Örneğin, ifadesi `*.vhd` `.vhd` uzantısına sahip olan tüm dosyalarla eşleşir. Benzer şekilde `*.dl?` , uzantısı `.dl` olan veya ile `.dl`başlayan tüm dosyalarla eşleşir. `.dll` Benzer şekilde `*foo` , adları ile `foo`biten tüm dosyalarla eşleşir.<br>Joker karakter ifadesini alana doğrudan girebilirsiniz. Varsayılan olarak, alana girdiğiniz değer joker karakter ifadesi olarak değerlendirilir.</li><li>**Normal Ifadeleri kullan:** POSIX tabanlı normal ifadeler desteklenir. Örneğin, normal ifade `.*\.vhd` `.vhd` uzantısına sahip olan tüm dosyalarla eşleşir. Normal ifadeler için `<pattern>` doğrudan olarak `regex(<pattern>)`' ı belirtin. Normal ifadeler hakkında daha fazla bilgi için bkz. [normal ifade dili-hızlı başvuru](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
+    |**Hedef kapsayıcı/paylaşma**    |Hedef depolama hesabınızda veri yüklemek istediğiniz kapsayıcının veya paylaşımın adını girin. Ad bir paylaşma adı veya kapsayıcı adı olabilir. Örneğin `myshare` veya `mycontainer` kullanın. Adı veya biçiminde de girebilirsiniz `sharename\directory_name` `containername\virtual_directory_name` .        |
+    |**Dosya düzeniyle eşleşen dosya Kopyala**    | Dosya adı eşleştirme modelini aşağıdaki iki şekilde girebilirsiniz:<ul><li>**Joker karakter Ifadesi kullanın:** Yalnızca `*` ve `?` Joker ifadelerinde desteklenir. Örneğin, ifadesi `*.vhd` uzantısına sahip olan tüm dosyalarla eşleşir `.vhd` . Benzer şekilde, `*.dl?` uzantısı olan `.dl` veya ile başlayan tüm dosyalarla eşleşir `.dl` `.dll` . Benzer şekilde, `*foo` adları ile biten tüm dosyalarla eşleşir `foo` .<br>Joker karakter ifadesini alana doğrudan girebilirsiniz. Varsayılan olarak, alana girdiğiniz değer joker karakter ifadesi olarak değerlendirilir.</li><li>**Normal Ifadeleri kullan:** POSIX tabanlı normal ifadeler desteklenir. Örneğin, normal ifade `.*\.vhd` uzantısına sahip olan tüm dosyalarla eşleşir `.vhd` . Normal ifadeler için `<pattern>` doğrudan olarak ' ı belirtin `regex(<pattern>)` . Normal ifadeler hakkında daha fazla bilgi için bkz. [normal ifade dili-hızlı başvuru](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
     |**Dosya iyileştirme**              |Bu özellik etkinleştirildiğinde 1 MB 'den küçük dosyalar alma sırasında paketlenmiştir. Bu paketleme, küçük dosyalar için veri kopyasının hızlanmasını hızlandırır. Ayrıca dosya sayısının dizin sayısını aştığında önemli miktarda zaman kazandırır.        |
  
 4. **Başlat**'ı seçin. Girişler onaylanır ve doğrulama başarılı olursa iş başlatılır. İşin başlatılması birkaç dakika sürebilir.
@@ -150,4 +151,3 @@ Data Box cihazınızı Microsoft 'a geri gönderme hakkında bilgi edinmek için
 
 > [!div class="nextstepaction"]
 > [Azure Data Box cihazınızı Microsoft 'a gönderin](./data-box-deploy-picked-up.md)
-

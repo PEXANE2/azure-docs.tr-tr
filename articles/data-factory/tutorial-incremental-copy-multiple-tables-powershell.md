@@ -1,6 +1,6 @@
 ---
 title: PowerShell kullanarak birden çok tabloyu artımlı olarak kopyalama
-description: Bu öğreticide, Delta verilerini şirket içi SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
+description: Bu öğreticide, Delta verileri bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
-ms.openlocfilehash: 84df242cdbfedd0cd1442ac4c4da7f4b6139d244
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a3fc4a7fa905e7538199d3b26a0cd8b9791aaac4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020753"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194521"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server birden çok tablodan Azure SQL veritabanına artımlı olarak veri yükleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, şirket içi SQL Server birden çok tablodan Azure SQL veritabanına Delta verileri yükleyen bir işlem hattı ile bir Azure Data Factory oluşturacaksınız.    
+Bu öğreticide, bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na Delta verileri yükleyen bir işlem hattı ile bir Azure Data Factory oluşturacaksınız.    
 
 Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -69,12 +69,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **SQL Server**. Bu öğreticide şirket içi SQL Server veritabanını kaynak veri deposu olarak kullanırsınız. 
+* **SQL Server**. Bu öğreticide kaynak veri deposu olarak bir SQL Server veritabanı kullanırsınız. 
 * **Azure SQL veritabanı**. SQL veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md). 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server veritabanınızda kaynak tabloları oluşturma
 
-1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) veya [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)açın ve şirket içi SQL Server veritabanınıza bağlanın.
+1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) veya [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)açın ve SQL Server veritabanınıza bağlanın.
 
 2. **Sunucu Gezgini (SSMS)** veya **bağlantılar bölmesinde (Azure Data Studio)**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
 
@@ -113,7 +113,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Azure SQL veritabanınızda hedef tablolar oluşturma
 
-1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) veya [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)açın ve şirket içi SQL Server veritabanınıza bağlanın.
+1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) veya [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)açın ve SQL Server veritabanınıza bağlanın.
 
 2. **Sunucu Gezgini (SSMS)** veya **bağlantılar bölmesinde (Azure Data Studio)**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
 
@@ -289,11 +289,11 @@ Aşağıdaki noktalara dikkat edin:
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 
-Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, şirket içi SQL Server veritabanınıza ve Azure SQL veritabanınıza bağlı hizmetler oluşturacaksınız. 
+Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, SQL Server veritabanınıza ve Azure SQL veritabanınıza bağlı hizmetler oluşturacaksınız. 
 
 ### <a name="create-the-sql-server-linked-service"></a>SQL Server bağlı hizmet oluşturma
 
-Bu adımda, şirket içi SQL Server veritabanınızı veri fabrikasına bağlarsınız.
+Bu adımda, SQL Server veritabanınızı veri fabrikasına bağlarsınız.
 
 1. C:\adftutorials\ınccopymultitabletutorial klasöründe **Sqlserverlinkedservice. JSON** ADLı bir JSON dosyası oluşturun (zaten mevcut değilse yerel klasörleri oluşturun) ve aşağıdaki içeriği yapın. SQL Server’a bağlanmak için kullandığınız kimlik doğrulaması yöntemine göre doğru bölümü seçin.  
 
@@ -812,7 +812,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. **Foreach etkin
 
 ## <a name="monitor-the-pipeline"></a>İşlem hattını izleme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Tüm hizmetler**’i seçin, *Veri fabrikaları* anahtar sözcüğüyle arama yapın ve **Veri fabrikaları** seçeneğini belirleyin. 
 

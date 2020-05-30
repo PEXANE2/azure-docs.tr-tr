@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 917a7ccbf17fdb1e2691f1a3a8368b40006f6d7b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 79cffa7aedd0fc04dd4a747ef28bc67cacf37905
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170316"
+ms.locfileid: "84204897"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
 
@@ -211,4 +211,4 @@ Güncelleştirme dağıtımınız tamamlandığında, dağıtım için kurulum s
 * VM 'lerinizi Güncelleştirme Yönetimi silmek için bkz. [güncelleştirme yönetimi VM 'Leri kaldırma](automation-remove-vms-from-update-management.md).
 * Genel Güncelleştirme Yönetimi hatalarıyla ilgili sorunları gidermek için bkz. [güncelleştirme yönetimi sorunlarını giderme](troubleshoot/update-management.md).
 * Windows Update Aracısı sorunlarını gidermek için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
-* Linux Güncelleştirme Aracısı sorunlarını gidermek için bkz.[Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).
+* Linux Güncelleştirme Aracısı sorunlarını gidermek için bkz. [Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).

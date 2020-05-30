@@ -11,23 +11,23 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: a361ce058c9bc54ab1e669faf1ca8c9870b54969
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ae2a4ce3c8c1b3760dc83d01def9694b1d20fea0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053744"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196948"
 ---
 # <a name="use-powershell-to-copy-a-database-to-a-new-server"></a>Bir veritabanını yeni bir sunucuya kopyalamak için PowerShell 'i kullanma
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Bu PowerShell betiği örneği, yeni bir sunucuda mevcut bir veritabanının kopyasını oluşturur.
+Bu Azure PowerShell betik örneği, yeni bir sunucuda Azure SQL veritabanı 'nda var olan veritabanının bir kopyasını oluşturur.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici az PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="copy-a-database-to-a-new-server"></a>Bir veritabanını yeni bir sunucuya kopyalama
 

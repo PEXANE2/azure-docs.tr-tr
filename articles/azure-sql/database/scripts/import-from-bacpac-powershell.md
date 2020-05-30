@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell: BACPAC dosyasını Içeri aktarma (Azure SQL veritabanı)'
+title: "PowerShell: BACPAC dosyasını Azure SQL veritabanı 'nda yeni bir veritabanına aktarma"
 description: BACPAC dosyasını SQL veritabanı 'nda bir veritabanına aktarmak için örnek betik Azure PowerShell
 services: sql-database
 ms.service: sql-database
@@ -11,23 +11,23 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 6ee3363be0e59ab6b14ea6c1f385ba3012f412a5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5cd4b4049b5584673a6988ab175c1a5da5fdc18b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054086"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196894"
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>PowerShell kullanarak BACPAC dosyasını SQL veritabanı 'ndaki bir veritabanına aktarma
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Bu PowerShell betiği örneği, BACPAC dosyasından bir veritabanını SQL veritabanı 'ndaki bir veritabanına aktarır.  
+Bu Azure PowerShell betik örneği BACPAC dosyasından bir veritabanını SQL veritabanı 'ndaki yeni bir veritabanına aktarır.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici az PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="sample-script"></a>Örnek betik
 

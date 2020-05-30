@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 315d8bce655cdf21160e3b4c75d2182ff41200a4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 37d3127ed9082c73218aede7daf054f0bfe3df2c
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666057"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204434"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-colortokens-ztna"></a>Öğretici: ColorTokens ZTNA ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -82,11 +82,8 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<COLORMASTER_HOST>/colormaster/api/v1/<TENANT_NAME>/saml/login?resourceId=<RESOURCEID>&iwa=<TRUE/FALSE>`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<tenantname>.spectrum.colortokens.com`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<COLORMASTER_HOST>.com/<TENANT_NAME>`
-
-    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<COLORMASTER_HOST>.com/<TENANT_NAME>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Colortokens ZTNA istemci destek ekibine](mailto:support@colortokens.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -97,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki ' a ek olarak, ColorTokens ZTNA uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Name | Kaynak özniteliği|
+    | Adı | Kaynak özniteliği|
     | ------------- | --------- |
     | bölüm | User. UserPrincipalName |
     | Grup | Kullanıcı. gruplar |

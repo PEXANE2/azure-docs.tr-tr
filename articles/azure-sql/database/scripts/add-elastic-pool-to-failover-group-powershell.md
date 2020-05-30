@@ -11,23 +11,23 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b756ad44c9702d7b8a2e1fe02c1404e0309f4f10
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d9c387a095f81978bc57f6ce6365596cafffc39c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054116"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196989"
 ---
-# <a name="use-powershell-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Yük devretme grubuna Azure SQL veritabanı elastik havuzu eklemek için PowerShell 'i kullanma
+# <a name="use-powershell-to-add-an-elastic-pool-to-a-failover-group"></a>Yük devretme grubuna esnek havuz eklemek için PowerShell 'i kullanma
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Bu PowerShell betiği örneği tek bir veritabanı oluşturur, bunu elastik bir havuza ekler, bir yük devretme grubu oluşturur ve yük devretmeyi sınar.
+Bu Azure PowerShell betik örneği, Azure SQL veritabanı 'nda bir veritabanı oluşturur, bir elastik havuza ekler, bir yük devretme grubu oluşturur ve yük devretmeyi sınar.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici az PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="sample-scripts"></a>Örnek betikler
 

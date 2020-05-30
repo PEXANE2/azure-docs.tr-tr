@@ -87,8 +87,6 @@
           href: howto-manage-devices.md
         - name: Kuralları yapılandırma
           href: howto-configure-rules.md
-        - name: Diğer hizmetlerle tümleştirmek için iş akışlarını kullanma
-          href: howto-configure-rules-advanced.md
         - name: Cihaz verilerinizi analiz etme
           href: howto-create-analytics.md
         - name: Panonuza kutucuklar ekleme
@@ -103,6 +101,8 @@
           href: howto-export-data.md
         - name: Kurallar üzerinde web kancaları oluşturma
           href: howto-create-webhooks.md
+        - name: Diğer hizmetlerle tümleştirmek için iş akışlarını kullanma
+          href: howto-configure-rules-advanced.md
         - name: Kurallar üzerinde Azure İzleyici eylem gruplarını bağlama
           href: howto-use-action-groups.md
         - name: Özel kurallar oluşturma

@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 54adcb6c6da62406dda5df738dde06dee5d6b1e0
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 95370a45b9fce69e5c1d06ac9bb987e1bfcfba4f
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167392"
+ms.locfileid: "84204081"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Runbook’tan Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -105,4 +105,4 @@ Bu runbook 'u başlatmak için bir Azure VM için Güncelleştirme Yönetimi etk
 * VM 'Ler için Güncelleştirme Yönetimi kullanmak için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).
 * Genel Güncelleştirme Yönetimi hatalarıyla ilgili sorunları gidermek için bkz. [güncelleştirme yönetimi sorunlarını giderme](troubleshoot/update-management.md).
 * Windows Update Aracısı sorunlarını gidermek için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
-* Linux Güncelleştirme Aracısı sorunlarını gidermek için bkz.[Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).
+* Linux Güncelleştirme Aracısı sorunlarını gidermek için bkz. [Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).

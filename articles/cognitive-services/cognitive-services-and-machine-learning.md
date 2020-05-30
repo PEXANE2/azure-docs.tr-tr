@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584629"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220209"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
@@ -26,7 +26,7 @@ Bilişsel [Hizmetler](welcome.md) , her biri farklı, genelleştirilmiş tahmin 
 |--|--|
 |[Karar](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bilgiye dayalı ve verimli kararlar almak için öneriler sunan uygulamalar derleyin.|
 |[Dil](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Önceden oluşturulmuş betiklerle uygulamalarınızın doğal dil işlemesine, duyguları değerlendirmesine ve kullanıcıların ne istediğini tanımayı öğrenmesine imkan sağlayın.|
-|[Arama](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Uygulamalarınıza Bing Arama API'leri ekleyin ve tek bir API çağrısıyla milyarlarca web sayfası, resim, video ve haberi tarama imkanından yararlanın.|
+|[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Uygulamalarınıza Bing Arama API'leri ekleyin ve tek bir API çağrısıyla milyarlarca web sayfası, resim, video ve haberi tarama imkanından yararlanın.|
 |[Konuşma](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Konuşmaları metne, metinleri kulağa doğal gelen konuşmalara dönüştürün. Bir dilden başka bir dile çeviri yapın, konuşmacı doğrulama ve tanıma özelliğini etkinleştirin.|
 |[Görsel](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Resimlerinizi, videolarınızı ve dijital mürekkep içeriğinizi tanıyın, tanımlayın, altyazı ekleyin, dizine alın ve yönetin.|
 ||||
@@ -95,8 +95,8 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
 |Bing Arama |x|||
 |[Görüntü İşleme](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
-|[Özel Görüntü İşleme](./Custom-Vision-Service/home.md)||x||
-|[Yüz Tanıma](./Face/Overview.md)|x|x||
+|[Özel Görüntü](./Custom-Vision-Service/home.md)||x||
+|[Yüz](./Face/Overview.md)|x|x||
 |[Form Tanıma](./form-recognizer/overview.md)||x||
 |[Tam Ekran Okuyucu](./immersive-reader/overview.md)|x|||
 |[Mürekkep Tanıma](./Ink-recognizer/overview.md)|x|x||
@@ -108,7 +108,7 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
 |[Konuşmayı metne dönüştürme (STT)](speech-service/speech-to-text.md)|x|x||
 |[Konuşma Çevirisi](speech-service/speech-translation.md)|x|||
 |[Metin Analizi](./text-analytics/overview.md)|x|||
-|[Translator](./translator/translator-info-overview.md)|x|||
+|[Çevirmen](./translator/translator-info-overview.md)|x|||
 |[Translator-özel çevirici](./translator/custom-translator/overview.md)||x||
 
 * Kişiselleştirici, ilkenizi ve verilerinizi değerlendirmek için yalnızca hizmet tarafından toplanan eğitim verilerine (gerçek zamanlı olarak çalışırken) ihtiyaç duyuyor. Kişiselleştirici, ön veya Batch eğitimi için büyük geçmiş veri kümelerine gerek duyuyor. 
@@ -129,7 +129,7 @@ Diğer makine öğrenimi araçları için aktarılmış modeller sağlayan bili�
 
 |Bilişsel hizmet|Model bilgileri|
 |--|--|
-|[Özel Görüntü İşleme](./custom-vision-service/home.md)|Android için TensorFlow için [dışarı aktarma](./Custom-Vision-Service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
+|[Özel Görüntü](./custom-vision-service/home.md)|Android için TensorFlow için [dışarı aktarma](./Custom-Vision-Service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
 
 ## <a name="learn-more"></a>Daha fazlasını öğrenin
 

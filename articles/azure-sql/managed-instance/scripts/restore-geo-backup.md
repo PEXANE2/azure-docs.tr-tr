@@ -1,6 +1,6 @@
 ---
 title: 'PowerShell: Azure SQL yönetilen örneği için coğrafi yedeklemeyi geri yükleme'
-description: Coğrafi olarak yedekli bir yedeklemeden Azure SQL yönetilen örneğini geri yüklemek için örnek betik Azure PowerShell.
+description: Azure SQL yönetilen örnek veritabanını coğrafi olarak yedekli bir yedekten geri yüklemek için örnek betik Azure PowerShell.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,14 +11,15 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 3ec73fd54ddb482e9d8df6d406b77f57596b95e7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: eeb20f51b22805775ed491267b69d0ba60c90bc3
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053462"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220861"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-managed-instance-database-to-another-geo-region"></a>Azure SQL yönetilen örnek veritabanını başka bir coğrafi bölgeye geri yüklemek için PowerShell 'i kullanma
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqlmi.md)]
 
 Bu PowerShell betiği örneği, bir Azure SQL yönetilen örnek veritabanını uzak bir coğrafi bölgede (coğrafi geri yükleme) geri yükler.  
@@ -27,7 +28,7 @@ Bu PowerShell betiği örneği, bir Azure SQL yönetilen örnek veritabanını u
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure PowerShell 1.4.0 veya üzeri bir sürüm gerekir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -83,4 +84,4 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
 
-Ek SQL Veritabanı PowerShell betiği örnekleri [Azure SQL Veritabanı PowerShell betikleri](../../database/powershell-script-content-guide.md) içinde bulunabilir.
+Azure SQL veritabanı için ek PowerShell betiği örnekleri, [Azure SQL veritabanı PowerShell betikleri](../../database/powershell-script-content-guide.md)içinde bulunabilir.

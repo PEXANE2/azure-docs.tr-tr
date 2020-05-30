@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: f0a4bb23d8a868e7c11153748259eba23a0cca38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 81732f13b85a7c0b514aad61c40802f4547957c2
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79501832"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219120"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Öğretici: NFS aracılığıyla Azure Data Box verileri kopyalama
 
@@ -34,7 +34,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 1. [Öğretici: Azure Data Box'ı kurma](data-box-deploy-set-up.md) konusunu tamamladınız.
 2. Data Box’ınızı teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
 3. Data Box üzerinden kopyalamak istediğiniz verileri içeren bir ana bilgisayarınız var. Konak bilgisayarınızda:
-    - [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
+    - Desteklenen bir [işletim sistemi](data-box-system-requirements.md)çalıştırın.
     - Yüksek hızlı bir ağa bağlı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10-GbE bağlantı kullanılamıyorsa, 1-GbE veri bağlantısı kullanılabilir ancak kopyalama hızları etkilenecektir. 
 
 ## <a name="connect-to-data-box"></a>Data Box'a bağlanma
@@ -93,8 +93,10 @@ Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsi
   * Durum, ad içinde korunur.
   * Dosyalar büyük/küçük harfe duyarlıdır.
 
-    Örneğin, ve `Samplefile.Txt`kopyalama yaptıysanız `SampleFile.txt` , bu durum Data Box kopyalanırken saklanır, ancak ikinci dosya aynı dosya olarak kabul edildiği sürece ikinci dosya birincisinin üzerine yazılır.
-* Data Box verilerinizi Azure depolama 'ya aktardığından emin olana kadar kaynak verilerinin bir kopyasını sürdürtığınızdan emin olun.
+    Örneğin, ve kopyalama yaptıysanız `SampleFile.txt` `Samplefile.Txt` , bu durum Data Box kopyalanırken saklanır, ancak ikinci dosya aynı dosya olarak kabul edildiği sürece ikinci dosya birincisinin üzerine yazılır.
+
+> [!IMPORTANT]
+> Data Box verilerinizi Azure depolama 'ya aktardığından emin olana kadar kaynak verilerinin bir kopyasını sürdürtığınızdan emin olun.
 
 Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardımcı programı kullanabilirsiniz. Linux için kullanabileceğiniz bazı alternatifler: [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) veya [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -102,31 +104,31 @@ Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardım
 
 Çok iş parçacığına sahip olan bir kopyalama işlemi için rsync seçeneğini kullanıyorsanız şu yönergeleri izleyin:
 
- - Linux istemcinizde kullanılan dosya sistemine bağlı olarak **CIFS Utils** veya **NFS Utils** paketini yükleyebilirsiniz.
+* Linux istemcinizde kullanılan dosya sistemine bağlı olarak **CIFS Utils** veya **NFS Utils** paketini yükleyebilirsiniz.
 
     `sudo apt-get install cifs-utils`
 
     `sudo apt-get install nfs-utils`
 
- -  **Rsync** ve **Parallel** uygulamalarını yükleyin (Linux dağıtımınıza göre değişir).
+* **Rsync** ve **Parallel** (Linux dağıtılmış sürümüne bağlı olarak değişir) ' i yükler.
 
     `sudo apt-get install rsync`
    
     `sudo apt-get install parallel` 
 
- - Bağlama noktası oluşturun.
+* Bağlama noktası oluşturun.
 
     `sudo mkdir /mnt/databox`
 
- - Birimi bağlayın.
+* Birimi bağlayın.
 
     `sudo mount -t NFS4  //Databox IP Address/share_name /mnt/databox` 
 
- - Klasör dizin yapısını kopyalayın.  
+* Klasör dizin yapısını kopyalayın.  
 
     `rsync -za --include='*/' --exclude='*' /local_path/ /mnt/databox`
 
- - Dosyaları kopyalayın. 
+* Dosyaları kopyalayın.
 
     `cd /local_path/; find -L . -type f | parallel -j X rsync -za {} /mnt/databox/{}`
 
@@ -140,22 +142,20 @@ Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardım
 Kopyalanan dosyaları görüntülemek ve doğrulamak için hedef klasörü açın. Kopyalama işlemi sırasında hatayla karşılaşırsanız sorun giderme için hata dosyalarını indirin. Daha fazla bilgi için bkz. [Data Box’a veri kopyalama sırasında hata günlüklerini görüntüleme](data-box-logs.md#view-error-log-during-data-copy). Veri kopyalama sırasında karşılaşılan hataların ayrıntılı bir listesi için bkz. [Data Box sorunlarını giderme](data-box-troubleshoot.md).
 
 Veri bütünlüğünü sağlamak için sağlama toplamı veri kopyalama sırasında satır içinde hesaplanır. Kopyalama tamamlandıktan sonra cihazınızdaki kullanılan alanı ve boş alanı doğrulayın.
-    
-   ![Panoda boş ve kullanılan alanı doğrulama](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
+   ![Panoda boş ve kullanılan alanı doğrulama](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 
 > [!div class="checklist"]
+>
 > * Ön koşullar
 > * Data Box'a bağlanma
 > * Data Box'a veri kopyalama
-
 
 Data Box'ı Microsoft’a geri gönderme hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Azure Data Box verilerinizi Microsoft'a gönderme](./data-box-deploy-picked-up.md)
-

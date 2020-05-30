@@ -1,6 +1,6 @@
 ---
 title: Azure Veri Kopyalama aracını kullanarak şirket içi verileri kopyalama
-description: Şirket içi bir SQL Server veritabanındaki verileri Azure Blob depolamaya kopyalamak için bir Azure veri fabrikası oluşturun ve Veri Kopyalama aracını kullanın.
+description: Bir Azure Veri Fabrikası oluşturun ve ardından Veri Kopyalama aracını kullanarak SQL Server veritabanından Azure Blob depolama alanına veri kopyalayın.
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/09/2018
-ms.openlocfilehash: 6b4df324fec38d08355754146d8be76d225e6cb7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: badf6ed4e4a330aae288cd6a2b102941901a0461
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418601"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194600"
 ---
-# <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak şirket içi bir SQL Server veritabanındaki verileri Azure Blob depolamaya kopyalama
+# <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak bir SQL Server veritabanından Azure Blob depolama alanına veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](tutorial-hybrid-copy-data-tool.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, Azure portalını kullanarak bir veri fabrikası oluşturursunuz. Sonra, Veri Kopyalama aracını kullanarak şirket içi bir SQL Server veritabanındaki verileri Azure Blob depolamaya kopyalarsınız.
+Bu öğreticide, Azure portalını kullanarak bir veri fabrikası oluşturursunuz. Daha sonra, verileri bir SQL Server veritabanından Azure Blob depolama alanına kopyalayan bir işlem hattı oluşturmak için Veri Kopyalama aracını kullanırsınız.
 
 > [!NOTE]
 > - Azure Data Factory’yi ilk kez kullanıyorsanız bkz. [Data Factory'ye giriş](introduction.md).
@@ -47,7 +47,7 @@ Data Factory örnekleri oluşturmak için, Azure 'da oturum açmak için kulland
 Abonelikte sahip olduğunuz izinleri görüntülemek için Azure portalına gidin. Sağ üst köşeden kullanıcı adınızı ve sonra **İzinler**’i seçin. Birden çok aboneliğe erişiminiz varsa uygun aboneliği seçin. Bir role kullanıcı eklemeye ilişkin örnek yönergeler için, bkz. [RBAC ve Azure portalı kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 ve 2017
-Bu öğreticide, şirket içi SQL Server veritabanını bir *kaynak* veri deposu olarak kullanırsınız. Bu öğreticide oluşturduğunuz veri fabrikasındaki işlem hattı, verileri bu şirket içi SQL Server veritabanından (kaynak) Blob depolama alanına (havuz) kopyalar. Daha sonra SQL Server veritabanınızda **"adlı bir** tablo oluşturur ve tabloya birkaç örnek girdi eklersiniz.
+Bu öğreticide, bir SQL Server veritabanını *kaynak* veri deposu olarak kullanırsınız. Bu öğreticide oluşturduğunuz veri fabrikasındaki işlem hattı, verileri bu SQL Server veritabanından (kaynak) BLOB depolama alanına (havuz) kopyalar. Daha sonra SQL Server veritabanınızda **"adlı bir** tablo oluşturur ve tabloya birkaç örnek girdi eklersiniz.
 
 1. SQL Server Management Studio’yu başlatın. Makinenizde zaten yüklü değilse [SQL Server Management Studio'yu indirme](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) sayfasına gidin.
 
@@ -74,7 +74,7 @@ Bu öğreticide, şirket içi SQL Server veritabanını bir *kaynak* veri deposu
     ```
 
 ### <a name="azure-storage-account"></a>Azure depolama hesabı
-Bu öğreticide, genel amaçlı Azure depolama hesabını (özel olarak Blob depolama) hedef/havuz veri deposu olarak kullanırsınız. Genel amaçlı bir depolama hesabınız yoksa yeni hesap oluşturma yönergeleri için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). Bu öğreticide oluşturduğunuz veri fabrikasındaki işlem hattı, verileri şirket içi SQL Server veritabanından (kaynak) bu Blob depolama alanına (havuz) kopyalar. 
+Bu öğreticide, genel amaçlı Azure depolama hesabını (özel olarak Blob depolama) hedef/havuz veri deposu olarak kullanırsınız. Genel amaçlı bir depolama hesabınız yoksa yeni hesap oluşturma yönergeleri için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). Bu öğreticide oluşturduğunuz veri fabrikasındaki işlem hattı, verileri SQL Server veritabanından (kaynak) bu blob depolama alanına (havuz) kopyalar. 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Depolama hesabı adını ve hesap anahtarını alma
 Bu öğreticide, depolama hesabınızın adını ve anahtarını kullanırsınız. Depolama hesabınızın adını ve anahtarını almak için aşağıdaki adımları gerçekleştirin:
@@ -109,7 +109,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Soldaki menüden **+ kaynak** > **Analizi** > **Data Factory**oluştur ' u seçin.
+1. Soldaki menüden **+ kaynak**  >  **Analizi**  >  **Data Factory**oluştur ' u seçin.
 
    ![Yeni veri fabrikası oluşturma](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -169,13 +169,13 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
     a. **Ad** bölümüne **SqlServerLinkedService** adını girin.
 
-    b. **Sunucu adı** bölümüne şirket içi SQL Server örneğinizin adını girin.
+    b. **Sunucu adı** bölümüne SQL Server örneğinizin adını girin.
 
     c. **Veritabanı adı** bölümüne şirket içi veritabanınızın adını girin.
 
     d. **Kimlik doğrulaması türü** bölümünde uygun kimlik doğrulamasını seçin.
 
-    e. **Kullanıcı adı** bölümüne şirket içi SQL Server’a erişimi olan kullanıcının adını girin.
+    e. **Kullanıcı adı**altında, SQL Server erişimi olan kullanıcının adını girin.
 
     f. Kullanıcının **parolasını** girin.
 
@@ -202,7 +202,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
    c. **Depolama hesabı adı** bölümünde, açılan listeden depolama hesabınızı seçin.
 
-   d. **Son**' u seçin.
+   d. **Son**'u seçin.
 
 1. **Hedef veri deposu** Iletişim kutusunda **Azure Blob Storage** ' ın seçili olduğundan emin olun. Ardından **İleri**' yi seçin.
 
@@ -233,7 +233,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu örnekteki işlem hattı, şirket içi bir SQL Server veritabanındaki verileri Blob depolama alanına kopyalar. Şunları öğrendiniz:
+Bu örnekteki işlem hattı, verileri bir SQL Server veritabanından BLOB depolama alanına kopyalar. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 > * Veri fabrikası oluşturma.

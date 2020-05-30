@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLı: yük devretme grubuna veritabanı ekleme'
-description: Azure CLı örnek betiği bir Azure SQL veritabanı oluşturun, bir otomatik yük devretme grubuna ekleyin ve yük devretmeyi test edin.
+title: 'Azure CLı: bir yük devretme grubuna veritabanı ekleme'
+description: Azure SQL veritabanı 'nda bir veritabanı oluşturmak için Azure CLı örnek betiğini kullanın, bir otomatik yük devretme grubuna ekleyin ve yük devretmeyi test edin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,18 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: fcad936c6fe4b50e0e16b6a059e9565418b5bdad
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 09c98f626d9f32a2a6f9f3e31e0db0e4751adacb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053954"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196968"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-into-a-failover-group"></a>CLı kullanarak bir yük devretme grubuna Azure SQL veritabanı ekleme
+# <a name="use-the-azure-cli-to-add-a-database-to-a-failover-group"></a>Azure CLı kullanarak bir yük devretme grubuna veritabanı ekleme
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Bu Azure CLı betiği örneği, bir Azure SQL veritabanı oluşturur, bir yük devretme grubu oluşturur, veritabanını buna ekler ve yük devretmeyi sınar.
+Bu Azure CLı betik örneği, Azure SQL veritabanı 'nda bir veritabanı oluşturur, bir yük devretme grubu oluşturur, veritabanını buna ekler ve yük devretmeyi sınar.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 

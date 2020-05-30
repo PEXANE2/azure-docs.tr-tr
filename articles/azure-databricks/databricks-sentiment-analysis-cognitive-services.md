@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 382dff156c088f367200f0dd46c3758193ade189
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4979129331114cf22f459ce632ac3674a7d866d1
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75889238"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197172"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak akış verileri ile ilgili yaklaşım analizi
 
@@ -63,7 +63,7 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure Portal **kaynak** > oluştur**veri ve analiz** > **Azure Databricks**' yı seçin.
+1. Azure Portal **kaynak oluştur**  >  **veri ve analiz**  >  **Azure Databricks**' yı seçin.
 
     ![Azure portal databricks](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -77,7 +77,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     |---------|---------|
     |**Çalışma alanı adı**     | Databricks çalışma alanınız için bir ad sağlayın        |
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
-    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/management/overview.md). |
+    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümüne ilişkin kaynakları tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/management/overview.md). |
     |**Konum**     | **Doğu ABD 2**’yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/?WT.mc_id=sparkeventhubs-docs-alehall).        |
     |**Fiyatlandırma Katmanı**     |  **Standart** veya **Premium** arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).       |
 
@@ -103,7 +103,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
    * Küme için bir ad girin.
    * Bu makalede, **6,0** çalışma zamanına sahip bir küme oluşturun.
-   * Süre **etkinlik süresi dolduktan \_ \_ sonra Sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
+   * Süre ** \_ \_ etkinlik süresi dolduktan sonra Sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
    Teknik ölçüt ve [Bütçe](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall)için uygun olan küme çalışanını ve sürücü düğümü boyutunu seçin.
 
@@ -148,7 +148,7 @@ Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerin
 
      ![Maven koordinatları sağlama](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Maven koordinatları ara")
 
-3. **Yükle**’yi seçin.
+3. **Yükle**'yi seçin.
 
 4. Küme menüsünde, her iki kitaplıkların de yüklendiğinden ve doğru şekilde eklendiğinden emin olun.
 
@@ -164,7 +164,7 @@ Bu öğreticide, Azure bilişsel [hizmetler metin analizi API 'lerini](../cognit
 
 2. **+ Kaynak oluştur**’u seçin.
 
-3. Azure Marketi altında **yapay zeka ve bilişsel hizmetler** > **Metin Analizi API'si**' ni seçin.
+3. Azure Marketi altında **yapay zeka ve bilişsel hizmetler**  >  **Metin Analizi API'si**' ni seçin.
 
     ![Bilişsel Hizmetler hesabı oluşturma](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Bilişsel Hizmetler hesabı oluşturma")
 
@@ -216,7 +216,7 @@ Bu bölümde, Databricks çalışma alanında aşağıdaki adlarla iki not defte
 **Sendtweetstoeventhub** not defterine aşağıdaki kodu yapıştırın ve yer tutucuları, daha önce oluşturduğunuz Event Hubs ad alanı ve Twitter uygulamanızın değerleriyle değiştirin. Bu not defteri, gerçek zamanlı olarak "Azure" anahtar sözcüğünü içeren tweet’leri Event Hubs’ta akışa alır.
 
 > [!NOTE]
-> Twitter API 'SI belirli istek kısıtlamalarına ve [kotalara](https://developer.twitter.com/en/docs/basics/rate-limiting.html)sahiptir. Twitter API 'sinde standart fiyat sınırlandırmasını tatmin ediyorsanız, bu örnekte Twitter API 'sini kullanmadan metin içeriği oluşturabilirsiniz. Bunu yapmak için, değişken **veri kaynağını** yerine `test` olarak ayarlayın `twitter` ve **TestSource** listesini tercih edilen test girişi ile doldurun.
+> Twitter API 'SI belirli istek kısıtlamalarına ve [kotalara](https://developer.twitter.com/en/docs/basics/rate-limiting.html)sahiptir. Twitter API 'sinde standart fiyat sınırlandırmasını tatmin ediyorsanız, bu örnekte Twitter API 'sini kullanmadan metin içeriği oluşturabilirsiniz. Bunu yapmak için, değişken **veri kaynağını** yerine olarak ayarlayın `test` `twitter` ve **TestSource** listesini tercih edilen test girişi ile doldurun.
 
 ```scala
     import scala.collection.JavaConverters._
@@ -324,7 +324,7 @@ Not defterlerini çalıştırmak için **SHIFT + ENTER** tuşlarına basın. Aş
 
     Sent event: 4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie
 
-    Sent event: Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
+    Sent event: Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
 
     Sent event: Top 10 Tricks to #Save Money with #Azure Virtual Machines https://t.co/F2wshBXdoz #Cloud
 
@@ -429,7 +429,7 @@ Aşağıdaki çıkışı alırsınız:
     |0     |2018-03-09 05:49:08.86 |1520574548|Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
     https://t.co/7vs7cKtvah
     #cloudcomputing #Azure          |
-    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
+    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
     |0     |2018-03-09 05:49:02.936|1520574542|@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|
     |176   |2018-03-09 05:49:20.801|1520574560|4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |
     +------+-----------------+----------+-------+
@@ -607,14 +607,14 @@ Aşağıdaki kod parçacığı gibi bir çıktı görmeniz gerekir:
     +--------------------------------+------------------+
     |Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
     https://t.co/7vs7cKtvah   #cloudcomputing #Azure          |0.7761918306350708|
-    |Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |0.8558163642883301|
+    |Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |0.8558163642883301|
     |@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|0.5               |
     |4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |0.5               |
     +--------------------------------+------------------+
 
 **Yaklaşım** sütununda bir değerin **1** değerine yakın olması, Azure deneyiminin mükemmel olduğunu ifade eder. Bir değerin **0** değerine yakın olması, kullanıcının Microsoft Azure ile çalışırken sorunlarla karşılaştığını ifade eder.
 
-İşte bu kadar! Azure Databricks kullanarak, verileri Azure Event Hubs 'a başarıyla akıtıyordınız ve Event Hubs bağlayıcısını kullanarak akış verilerini tüketilip neredeyse gerçek zamanlı olarak akış verilerinde yaklaşım analizini çalıştırdınız.
+Hepsi bu! Azure Databricks kullanarak, verileri Azure Event Hubs 'a başarıyla akıtıyordınız ve Event Hubs bağlayıcısını kullanarak akış verilerini tüketilip neredeyse gerçek zamanlı olarak akış verilerinde yaklaşım analizini çalıştırdınız.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -622,7 +622,7 @@ Aşağıdaki kod parçacığı gibi bir çıktı görmeniz gerekir:
 
 ![Databricks kümesini durdurma](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Küme oluşturma sırasında **işlem yapılmadan dakika \_ \_ sonra Sonlandır** onay kutusunu seçtiğiniz takdirde otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Küme oluşturma sırasında ** \_ \_ işlem yapılmadan dakika sonra Sonlandır** onay kutusunu seçtiğiniz takdirde otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, verileri Azure Event Hubs’ta akışa almak ve sonra gerçek zamanlı olarak Event Hubs’tan akış verilerini okumak için Azure Databricks’i kullanmayı öğrendiniz. Şunları öğrendiniz:

@@ -1237,6 +1237,8 @@
       href: whitepapers.md
     - name: İş Ortakları
       href: partners-migration-cosmosdb.md
+    - name: Microsoft Soru-Cevap soru sayfası
+      href: 'https://docs.microsoft.com/answers/topics/azure-cosmos-db.html'
     - name: Videolar
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
     - name: Azure Yol Haritası

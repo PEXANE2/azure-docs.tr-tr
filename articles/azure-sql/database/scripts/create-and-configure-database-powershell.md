@@ -1,6 +1,6 @@
 ---
 title: 'PowerShell: tek bir veritabanı oluşturma'
-description: Tek bir Azure SQL veritabanı oluşturmak için örnek betik Azure PowerShell.
+description: Azure SQL veritabanı 'nda tek bir veritabanı oluşturmak için Azure PowerShell örnek betiği kullanın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,23 +11,24 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 9468ebd91ac0742c928bfd5cd1e1c449ae62c69b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d8cc407e09702472978e645650ebe8df0963ff7b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053738"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196907"
 ---
-# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-server-level-firewall-rule"></a>PowerShell kullanarak tek bir Azure SQL veritabanı oluşturun ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırın
+# <a name="use-powershell-to-create-a-single-database-and-configure-a-server-level-firewall-rule"></a>PowerShell kullanarak tek bir veritabanı oluşturun ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırın
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Bu PowerShell betiği örneği, bir Azure SQL veritabanı oluşturur ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırır. Betik başarılı şekilde çalıştırıldıktan sonra, SQL Veritabanı tüm Azure hizmetlerinden ve yapılandırılmış IP adresinden erişilebilir.
+Bu Azure PowerShell betik örneği, Azure SQL veritabanı 'nda tek bir veritabanı oluşturur ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırır. Betik başarıyla çalıştırıldıktan sonra, veritabanına tüm Azure hizmetlerinden ve yapılandırılmış IP adresinden erişilebilir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici az PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="sample-script"></a>Örnek betik
 

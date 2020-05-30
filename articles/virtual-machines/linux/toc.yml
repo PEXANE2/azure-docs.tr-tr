@@ -422,6 +422,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: VM oluşturma
                   items:
+                    - name: Özelleştirilmiş
+                      href: ../vm-specialized-image-version-cli.md
                     - name: Genelleştirilmiş
                       href: ../vm-generalized-image-version-cli.md
                 - name: Görüntü kaynaklarını güncelleştirme

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 22fa0e1cc6bdad109c5dcb82cc08b81d91674f9a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: bb2679d0f681ae82bbe1a50671bd2ff70a239dfb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022463"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194514"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell kullanarak bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
 
@@ -732,7 +732,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştirdiniz:
 > * İşlem hattını çalıştırma.
 > * İşlem hattı çalıştırmasını izleme.
 
-Bu öğreticide, işlem hattı SQL veritabanındaki tek bir tablodan Blob depolama alanına veri kopyalamıştır. Şirket içi SQL Server veritabanındaki birden çok tablodan SQL veritabanına veri kopyalama hakkında bilgi edinmek için şu öğreticiye ilerleyin.
+Bu öğreticide, işlem hattı SQL veritabanındaki tek bir tablodan Blob depolama alanına veri kopyalamıştır. SQL Server veritabanındaki birden çok tablodan SQL veritabanı 'na veri kopyalama hakkında bilgi edinmek için aşağıdaki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
 >[SQL Server’daki birden fazla tablodan Azure SQL Veritabanı’na artımlı olarak veri yükleme](tutorial-incremental-copy-multiple-tables-powershell.md)

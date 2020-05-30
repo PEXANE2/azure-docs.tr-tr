@@ -7,12 +7,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d8c3bde0f32c1df6c98f6a71f6ab830c21256903
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 62ee95db0e3b35c996cb4ee68d772a21c00778fb
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76906280"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220279"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Öğretici: Azure Stream Analytics IoT Edge modülü olarak dağıtma
 
@@ -60,7 +60,7 @@ Bu bölümde, aşağıdaki adımları sağlayacak bir Azure Stream Analytics iş
 
 IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analytics işinin cihazdan çağrılabilecek bir şekilde depolanması gerekir. Mevcut bir Azure Depolama hesabını kullanabilir veya şimdi yeni bir tane oluşturabilirsiniz.
 
-1. Azure Portal, **kaynak** > **depolama** > **depolama hesabı**oluştur ' a gidin.
+1. Azure Portal, **kaynak**  >  **depolama**  >  **depolama hesabı**oluştur ' a gidin.
 
 1. Depolama hesabınızı oluşturmak için aşağıdaki değerleri girin:
 
@@ -77,7 +77,7 @@ IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analyti
 
 ### <a name="create-a-new-job"></a>Yeni bir iş oluşturma
 
-1. Azure Portal **kaynak** > oluşturma**nesnelerin interneti** > **Stream Analytics işi**' ne gidin.
+1. Azure Portal **kaynak oluşturma**  >  **nesnelerin interneti**  >  **Stream Analytics işi**' ne gidin.
 
 1. İşinizi oluşturmak için aşağıdaki değerleri girin:
 
@@ -169,7 +169,7 @@ Bu öğreticide iki modül dağıtacaksınız. Birincisi, sıcaklık ve nem sens
    1. **Ekle**'ye tıklayıp **IoT Edge Modülü**'nü seçin.
    1. Ad için **SimulatedTemperatureSensor**yazın.
    1. Görüntü URI'si alanına **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** yazın.
-   1. Diğer ayarları değiştirmeden bırakın ve **Kaydet**' i seçin.
+   1. Diğer ayarları değiştirmeden bırakın ve **Ekle**' yi seçin.
 
 1. Aşağıdaki adımları uygulayarak Azure Stream Analytics Edge işinizi ekleyin:
 
@@ -187,13 +187,13 @@ Bu öğreticide iki modül dağıtacaksınız. Birincisi, sıcaklık ve nem sens
 
    Varsayılan olarak Stream Analytics modülü, temel aldığı işle aynı adı alır. İsterseniz bu sayfada modül adını değiştirebilirsiniz, ancak gerekli değildir.
 
-1. **İptal** veya **Kaydet**' i seçin.
+1. **Güncelleştir** veya **iptal**' i seçin.
 
 1. Stream Analytics modülünüzün adını, bir sonraki adımda gerekli olacak şekilde bir yere unutmayın, ardından Ileri ' yi seçin: devam etmek için **yollar** .
 
-1. **Rotalar** sekmesinde, iletilerin modüller arasında nasıl geçtiğini tanımlar ve IoT Hub. İletiler ad/değer çiftleri kullanılarak oluşturulur. Default `route` ve `upstream` Name ve Values değerlerini aşağıdaki tabloda gösterilen çiftler ile değiştirin, aşağıdaki ad/değer çiftleri, _{ModuleName}_ örneklerini Azure Stream Analytics modülünüzün adıyla değiştirir.
+1. **Rotalar** sekmesinde, iletilerin modüller arasında nasıl geçtiğini tanımlar ve IoT Hub. İletiler ad/değer çiftleri kullanılarak oluşturulur. Default `route` ve `upstream` Name ve Values değerlerini aşağıdaki tabloda gösterilen çiftler ile değiştirin, aşağıdaki ad/değer çiftleri, _{moduleName}_ örneklerini Azure Stream Analytics modülünüzün adıyla değiştirir.
 
-    | Adı | Değer |
+    | Name | Değer |
     | --- | --- |
     | `telemetryToCloud` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream` |
     | `alertsToCloud` | `FROM /messages/modules/{moduleName}/* INTO $upstream` |

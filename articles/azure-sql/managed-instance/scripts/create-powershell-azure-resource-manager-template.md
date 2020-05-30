@@ -1,7 +1,7 @@
 ---
-title: 'Örnek oluşturma (ARM şablonu & PowerShell) '
+title: Yönetilen örnek oluşturma (ARM şablonu & PowerShell)
 titleSuffix: Azure SQL Managed Instance
-description: Azure SQL yönetilen örneği oluşturmak için bu Azure PowerShell örnek betiği kullanın.
+description: Yönetilen bir örnek oluşturmak için bu Azure PowerShell örnek betiği kullanın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,27 +12,28 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 55b0c8f569a91075d4cd87541af7aeff5da69f9a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9024759f87d30cddfa2f3b7ea6b965ce03632f59
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053972"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220878"
 ---
-# <a name="use-powershell-with-azure-resource-manager-template-to-create-an-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği oluşturmak için PowerShell 'i Azure Resource Manager şablonuyla kullanma
+# <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>Yönetilen bir örnek oluşturmak için PowerShell 'i Azure Resource Manager şablonuyla kullanma
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqlmi.md)]
 
-Azure SQL yönetilen örneği, Azure PowerShell kitaplığı ve Azure Resource Manager şablonları kullanılarak oluşturulabilir.
+Azure PowerShell kitaplığı ve Azure Resource Manager şablonlarını kullanarak yönetilen bir örnek oluşturabilirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure PowerShell 1.4.0 veya üzeri bir sürüm gerekir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
 Azure PowerShell komutlar, önceden tanımlanmış bir Azure Resource Manager şablonu kullanarak dağıtımı başlatabilir. Şablonda aşağıdaki özellikler belirtilebilir:
 
-- SQL yönetilen örnek adı
+- Yönetilen örnek adı
 - SQL Yönetici Kullanıcı adı ve parolası.
 - Örneğin boyutu (çekirdek sayısı ve en fazla depolama boyutu).
 - Örneğin yerleştirileceği VNet ve alt ağ.
@@ -42,10 +43,10 @@ Azure PowerShell komutlar, önceden tanımlanmış bir Azure Resource Manager ş
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu örnek, [geçerli bir ağ ortamı oluşturduğunuzu](../virtual-network-subnet-create-arm-template.md) veya SQL yönetilen örneğiniz için [mevcut bir VNET 'i değiştirdiğinizi](../vnet-existing-add-subnet.md) varsayar. Gerekirse, farklı bir [Azure Kaynak yönetilen şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment)kullanarak ağ ortamını hazırlayabilirsiniz. 
+Bu örnek, [geçerli bir ağ ortamı oluşturduğunuzu](../virtual-network-subnet-create-arm-template.md) veya yönetilen örneğiniz için [mevcut bir VNET 'i değiştirdiğinizi](../vnet-existing-add-subnet.md) varsayar. Gerekirse, ayrı bir [Azure Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment)kullanarak ağ ortamını hazırlayabilirsiniz. 
 
 
-Örnek, [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) ve [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) cmdlet 'lerini kullanır, bu nedenle aşağıdaki PowerShell modüllerini yüklediğinizden emin olun:
+Örnek [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) ve [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork)cmdlet 'lerini kullanır, bu nedenle aşağıdaki PowerShell modüllerini yüklediğinizden emin olun:
 
 ```powershell
 Install-Module Az.Network
@@ -112,7 +113,7 @@ Aşağıdaki PowerShell betiğini, daha önce kaydettiğiniz. JSON dosyası içi
 $subscriptionId = "ed827499-xxxx-xxxx-xxxx-xxxxxxxxxx"
 Select-AzSubscription -SubscriptionId $subscriptionId
 
-# Managed Instance properties
+# Managed instance properties
 $resourceGroup = "rg_mi"
 $location = "West Central US"
 $name = "managed-instance-name"
@@ -127,16 +128,16 @@ $vNet = Get-AzVirtualNetwork -Name $vNetName -ResourceGroupName $vNetResourceGro
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $vNet
 $subnetId = $subnet.Id
 
-# Deploy Instance using Azure Resource Manager template:
+# Deploy instance using Azure Resource Manager template:
 New-AzResourceGroupDeployment  -Name MyDeployment -ResourceGroupName $resourceGroup  `
                                     -TemplateFile 'C:\...\create-managed-instance.json' `
                                     -instance $name -user $user -pwd $secpasswd -subnetId $subnetId
 ```
 
-Betik tamamlandıktan sonra, SQL yönetilen örneğine tüm Azure hizmetlerinden ve yapılandırılmış IP adresinden erişilebilir.
+Betik tamamlandıktan sonra, yönetilen örneğe tüm Azure hizmetlerinden ve yapılandırılmış IP adresinden erişilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
 
-Ek SQL yönetilen örnek PowerShell betiği örnekleri, [Azure SQL yönetilen örnek PowerShell betikleri](../../database/powershell-script-content-guide.md)içinde bulunabilir.
+Azure SQL yönetilen [örnek PowerShell betikleri](../../database/powershell-script-content-guide.md)' nde, Azure SQL yönetilen örneği Için ek PowerShell betiği örnekleri bulunabilir.

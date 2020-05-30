@@ -1,6 +1,6 @@
 ---
 title: Değişiklik İzleme kullanarak verileri artımlı olarak kopyalama
-description: Bu öğreticide, değişim verileri şirket içi SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanına artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
+description: Bu öğreticide, Delta verilerini bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 7937c2c623fdca4e59dc0aac059bd1b8fd735a21
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b83b10c15bcc5d1a8ea9fc094e1d709d57221902
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119159"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196155"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Değişiklik izleme bilgilerini kullanarak Azure SQL Veritabanından Azure Blob Depolama alanına verileri artımlı olarak yükleme
 
@@ -44,7 +44,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 Değişiklik İzleme teknolojisini kullanarak verileri artımlı olarak yüklemek için sık kullanılan uçtan uca iş akışı adımları burada verilmiştir.
 
 > [!NOTE]
-> Hem Azure SQL Veritabanı hem de SQL Server, Değişiklik İzleme teknolojisini destekler. Bu öğreticide, Azure SQL Veritabanını kaynak veri deposu olarak kullanılır. Dilerseniz şirket içi bir SQL Server kullanabilirsiniz.
+> Hem Azure SQL Veritabanı hem de SQL Server, Değişiklik İzleme teknolojisini destekler. Bu öğreticide, Azure SQL Veritabanını kaynak veri deposu olarak kullanılır. Ayrıca, bir SQL Server örneği de kullanabilirsiniz.
 
 1. **Geçmiş verilerin ilk yüklemesi** (bir kez çalıştır):
     1. Kaynak Azure SQL veritabanında Değişiklik İzleme teknolojisini etkinleştirin.

@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: db2ff5916b8a90b0ef3ec8ff8af2de7ae3265f6a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 057ffcdc8a21567e909d768236e454ee10036115
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053900"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216553"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>Öğretici: Azure SQL veritabanı C&#x23; ve ADO.NET 'de ilişkisel veritabanı tasarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,11 +40,11 @@ Azure SQL veritabanı, Microsoft Bulut (Azure) içindeki ilişkisel bir hizmet o
 
 [Visual Studio 2019](https://www.visualstudio.com/downloads/) veya sonraki bir sürümünü yükleme.
 
-## <a name="create-a-blank-azure-sql-database"></a>Boş bir Azure SQL veritabanı oluşturma
+## <a name="create-a-blank-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda boş bir veritabanı oluşturma
 
-Azure SQL veritabanı, tanımlı bir dizi işlem ve depolama kaynağı ile oluşturulur. Veritabanı bir [Azure Kaynak grubu](../../active-directory-b2c/overview.md) içinde oluşturulur ve [mantıksal bir SQL Server](logical-servers.md)kullanılarak yönetilir.
+Azure SQL veritabanı 'ndaki bir veritabanı, tanımlı bir dizi işlem ve depolama kaynağı ile oluşturulur. Veritabanı bir [Azure Kaynak grubu](../../active-directory-b2c/overview.md) içinde oluşturulur ve [mantıksal bir SQL Server](logical-servers.md)kullanılarak yönetilir.
 
-Boş bir SQL veritabanı oluşturmak için bu adımları izleyin.
+Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 2. **Yeni** sayfasında, Azure Market bölümünde **Veritabanları**’nı seçin ve ardından **Öne Çıkan** bölümünde **SQL Veritabanı**’na tıklayın.
@@ -86,10 +86,10 @@ Boş bir SQL veritabanı oluşturmak için bu adımları izleyin.
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Sunucu düzeyinde IP güvenlik duvarı kuralı oluşturma
 
-SQL veritabanı hizmeti, sunucu düzeyinde bir IP güvenlik duvarı oluşturur. Bu güvenlik duvarı, bir güvenlik duvarı kuralı tarafından IP 'nin güvenlik duvarından geçmesine izin verilmediği takdirde, dış uygulamaların ve araçların sunucuya ve sunucu üzerindeki veritabanlarına bağlanmasını engeller. Veritabanınıza dış bağlantıyı etkinleştirmek için, önce IP adresiniz (veya IP adres aralığı) için bir IP güvenlik duvarı kuralı eklemeniz gerekir. [Sunucu düzeyinde BIR IP güvenlik duvarı kuralı](firewall-configure.md)oluşturmak için bu adımları izleyin.
+SQL veritabanı, sunucu düzeyinde bir IP güvenlik duvarı oluşturur. Bu güvenlik duvarı, bir güvenlik duvarı kuralı tarafından IP 'nin güvenlik duvarından geçmesine izin verilmediği takdirde, dış uygulamaların ve araçların sunucuya ve sunucu üzerindeki veritabanlarına bağlanmasını engeller. Veritabanınıza dış bağlantıyı etkinleştirmek için, önce IP adresiniz (veya IP adres aralığı) için bir IP güvenlik duvarı kuralı eklemeniz gerekir. [Sunucu düzeyinde BIR IP güvenlik duvarı kuralı](firewall-configure.md)oluşturmak için bu adımları izleyin.
 
 > [!IMPORTANT]
-> SQL veritabanı hizmeti 1433 bağlantı noktası üzerinden iletişim kurar. Bu hizmete bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, yöneticiniz 1433 numaralı bağlantı noktasını açmadığı takdirde veritabanınıza bağlanamazsınız.
+> SQL Veritabanı 1433 numaralı bağlantı noktası üzerinden iletişim kurar. Bu hizmete bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, yöneticiniz 1433 numaralı bağlantı noktasını açmadığı takdirde veritabanınıza bağlanamazsınız.
 
 1. Dağıtım tamamlandıktan sonra, sol taraftaki menüden **SQL veritabanları** ' na ve ardından **SQL veritabanları** sayfasında *YourDatabase* ' e tıklayın. Veritabanınızın genel bakış sayfası açılır ve tam **sunucu adı** (örneğin, *yourserver.Database.Windows.net*) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
 
@@ -110,7 +110,7 @@ SQL veritabanı hizmeti, sunucu düzeyinde bir IP güvenlik duvarı oluşturur. 
 IP adresiniz artık IP güvenlik duvarından geçebilirler. Artık SQL Server Management Studio veya seçtiğiniz başka bir aracı kullanarak veritabanınıza bağlanabilirsiniz. Daha önce oluşturduğunuz sunucu yöneticisi hesabını kullandığınızdan emin olun.
 
 > [!IMPORTANT]
-> Varsayılan olarak, SQL veritabanı IP güvenlik duvarı üzerinden erişim tüm Azure hizmetleri için etkinleştirilir. Tüm Azure hizmetleri için devre dışı bırakmak isterseniz bu sayfadaki **KAPALI** öğesine tıklayın.
+> Varsayılan olarak, SQL veritabanı IP güvenlik duvarı üzerinden erişim tüm Azure hizmetleri için etkinleştirilir. Tüm Azure hizmetlerine erişimi devre dışı bırakmak için bu sayfadaki **kapalı** ' yı tıklatın.
 
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../../includes/sql-database-csharp-adonet-create-query-2.md)]
 

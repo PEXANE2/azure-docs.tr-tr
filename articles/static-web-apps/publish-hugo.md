@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: c6f3a912a9b3c9ff65fb9975eaf13b38ee3d9483
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870703"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195299"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Hugo sitesi yayımlama
 
@@ -153,7 +153,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. Bir metin düzenleyicisinde Kugo uygulamasını açın ve _. GitHub/iş akışları/Azure-Pages-<WORKFLOW_NAME>. yıml_ dosyasını açın.
 
-1. `- uses: actions/checkout@v2`Kugo uygulamasını derlemek için çizgiyi (18. satır) aşağıdaki ile değiştirin.
+1. `- uses: actions/checkout@v2`Kugo uygulamasını derlemek için çizgiyi (18. satır) aşağıdaki ile değiştirin. Hugo Extended gerektiriyorsa, açıklama kaldırın `extended: true` .
 
    ```yml
    - uses: actions/checkout@v2
@@ -164,6 +164,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
      uses: peaceiris/actions-hugo@v2.4.8
      with:
        hugo-version: "latest"
+       # extended: true
 
    - name: Build
      run: hugo

@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLı: veritabanlarını elastik havuzlar arasında taşıma'
-description: İki elastik havuz oluşturan ve SQL veritabanındaki bir veritabanını Azure CLı kullanarak bir elastik havuzdan diğerine taşırken Azure CLı örnek betiği.
+title: 'Azure CLı: bir veritabanını elastik havuzlar arasında taşıma'
+description: İki elastik havuz oluşturmak ve SQL veritabanında bir veritabanını bir elastik havuzdan diğerine taşımak için bir Azure CLı örnek betiği kullanın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,17 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 2bcf9f4218f535556ff83ccaad130bb1da28ef69
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 85b78ad92997344ff6ea0f30da25205790d90eef
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054062"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196771"
 ---
-# <a name="use-cli-to-move-a-database-in-sql-database-in-a-sql-elastic-pool"></a>CLı kullanarak SQL veritabanı 'ndaki bir veritabanını SQL elastik havuzunda taşıma
+# <a name="use-the-azure-cli-to-move-a-database-in-sql-database-in-a-sql-elastic-pool"></a>SQL veritabanı 'ndaki bir veritabanını SQL elastik havuzunda taşımak için Azure CLı 'yi kullanma
 
-
-Bu Azure CLı betik örneği iki elastik havuz oluşturur ve SQL veritabanı 'ndaki bir veritabanını bir SQL elastik havuzundan başka bir SQL elastik havuzuna taşımaktadır ve sonra veritabanını elastik havuzun dışına tek bir veritabanı işlem boyutuna taşımaktadır.
+Bu Azure CLı betik örneği iki elastik havuz oluşturur, SQL veritabanında havuza alınmış bir veritabanını bir SQL elastik havuzundan başka bir SQL elastik havuzuna taşımaktadır ve sonra havuza alınan veritabanını SQL veritabanı 'nda tek bir veritabanı olacak şekilde SQL elastik havuzunun dışına taşımalıdır.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 

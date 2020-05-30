@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell: SQL veritabanında bir veritabanı için yedeklemeyi geri yükleme'
-description: SQL veritabanındaki bir veritabanını otomatik yedeklemelerden önceki bir zaman noktasına geri yüklemek için örnek betik Azure PowerShell
+title: "PowerShell: SQL veritabanı 'nda bir veritabanının otomatik yedeklemesini geri yükleme"
+description: SQL veritabanındaki bir veritabanını otomatik yedeklemelerden önceki bir zaman noktasına geri yüklemek için Azure PowerShell örnek betiği kullanın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,14 +11,15 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 52398fa083765acf70b11602e939fbcd2b1f6da6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 321c0ee7448a977366ac727c9435a88685a6a5c7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054056"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196797"
 ---
-# <a name="use-powershell-to-restore-an-azure-sql-database-to-an-earlier-point-in-time"></a>Azure SQL veritabanını önceki bir zaman noktasına geri yüklemek için PowerShell 'i kullanma
+# <a name="use-powershell-to-restore-a-database-to-an-earlier-point-in-time"></a>Bir veritabanını önceki bir zaman noktasına geri yüklemek için PowerShell 'i kullanma
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
 Bu PowerShell betiği örneği, SQL veritabanında bir veritabanını belirli bir zaman noktasına geri yükler.  
@@ -27,7 +28,7 @@ Bu PowerShell betiği örneği, SQL veritabanında bir veritabanını belirli bi
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici az PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="sample-script"></a>Örnek betik
 

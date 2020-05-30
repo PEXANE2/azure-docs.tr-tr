@@ -1,6 +1,6 @@
 ---
 title: 'Azure CLı: tek bir veritabanı oluşturma'
-description: Tek bir Azure SQL veritabanı oluşturmak için bu Azure CLı örnek betiğini kullanın.
+description: Tek bir veritabanı oluşturmak için bu Azure CLı örnek betiğini kullanın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,17 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: ab847f13b6c75eeb31c4d20877d7a314e53f47ac
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: de554f48297c228df9345a6e822096d05b85652f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054092"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196870"
 ---
-# <a name="use-the-azure-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Azure CLı kullanarak tek bir Azure SQL veritabanı oluşturun ve bir güvenlik duvarı kuralı yapılandırın
+# <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>Azure CLı kullanarak tek bir veritabanı oluşturun ve bir güvenlik duvarı kuralı yapılandırın
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Bu Azure CLı betiği örneği, bir Azure SQL veritabanı oluşturur ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırır. Betik başarılı şekilde çalıştırıldıktan sonra, SQL Veritabanı tüm Azure hizmetlerinden ve yapılandırılmış IP adresinden erişilebilir.
+Bu Azure CLı betik örneği, Azure SQL veritabanı 'nda tek bir veritabanı oluşturur ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırır. Betik başarıyla çalıştırıldıktan sonra, veritabanına tüm Azure hizmetlerinden ve yapılandırılmış IP adresinden erişilebilir.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 

@@ -1,6 +1,6 @@
 ---
 title: T-SQL kullanarak SQL Server Windows kullanıcılarını ve gruplarını SQL yönetilen örneği 'ne geçirme
-description: Şirket içi Windows kullanıcılarını ve gruplarını Azure SQL yönetilen örneği 'ne SQL Server geçirme hakkında bilgi edinin
+description: Windows kullanıcılarını ve gruplarını bir SQL Server örneğindeki Azure SQL yönetilen örneği 'ne geçirme hakkında bilgi edinin
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,14 +10,14 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: aba5013bbba95efcb5f27af5aa61f91d880601aa
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 79a9f59b4fb6f7ae71c1e6866e8c50baa4e7974b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053558"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193761"
 ---
-# <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Öğretici: T-SQL DDL sözdizimini kullanarak şirket içi Windows kullanıcılarını ve gruplarını Azure SQL yönetilen örneği 'ne SQL Server geçirme
+# <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Öğretici: T-SQL DDL sözdizimini kullanarak bir SQL Server örneğindeki Windows kullanıcılarını ve gruplarını Azure SQL yönetilen örneği 'ne geçirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 > [!NOTE]
@@ -53,7 +53,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullar geçerlidir:
 
 ## <a name="t-sql-ddl-syntax"></a>T-SQL DDL sözdizimi
 
-Aşağıda, Azure AD kimlik doğrulamasıyla SQL yönetilen örneği 'ne geçişi SQL Server şirket içi Windows kullanıcılarını ve gruplarını desteklemek için kullanılan T-SQL DDL sözdizimi aşağıda verilmiştir.
+Aşağıda, Azure AD kimlik doğrulamasıyla bir SQL Server örneğinden SQL yönetilen örneğine Windows kullanıcıları ve gruplarının geçişini desteklemek için kullanılan T-SQL DDL sözdizimi aşağıda verilmiştir.
 
 ```sql
 -- For individual Windows users with logins
@@ -63,7 +63,7 @@ ALTER USER [domainName\userName] WITH LOGIN = [loginName@domainName.com];
 ALTER USER [domainName\groupName] WITH LOGIN=[groupName]
 ```
 
-## <a name="arguments"></a>Bağımsız değişkenler
+## <a name="arguments"></a>Arguments
 
 _Etki_</br>
 Kullanıcının etki alanı adını belirtir.
@@ -77,7 +77,7 @@ Bir kullanıcıyı Azure AD oturum açmayla yeniden eşler
 _adýdýr_</br>
 Veritabanı içinde tanımlanan grubun adını belirtir.
 
-## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>1. kısım: şirket içi kullanıcılar ve gruplar SQL Server için oturum açma oluşturma
+## <a name="part-1-create-logins-in-sql-server-for-windows-users-and-groups"></a>1. kısım: Windows kullanıcıları ve grupları için SQL Server oturum açma bilgileri oluşturma
 
 > [!IMPORTANT]
 > Aşağıdaki sözdizimi SQL Server bir Kullanıcı ve grup oturumu oluşturur. Aşağıdaki sözdizimini yürütmeden önce, Kullanıcı ve grubun Active Directory (AD) içinde mevcut olduğundan emin olmanız gerekir. </br> </br>

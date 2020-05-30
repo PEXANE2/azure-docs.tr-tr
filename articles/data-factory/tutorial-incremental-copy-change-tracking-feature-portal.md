@@ -1,6 +1,6 @@
 ---
 title: Değişiklik İzleme kullanarak verileri artımlı olarak kopyalama
-description: Bu öğreticide, değişim verileri şirket içi SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanına artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
+description: Bu öğreticide, Delta verileri bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: cfe7a88cd02b109124b9d35247aa2d4cbc5373c5
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 842531b7f4bdd3690258262b32a42a19366c1830
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116592"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196288"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Değişiklik izleme bilgilerini kullanarak Azure SQL Veritabanından Azure Blob Depolama alanına verileri artımlı olarak yükleme
 
@@ -42,7 +42,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 Değişiklik İzleme teknolojisini kullanarak verileri artımlı olarak yüklemek için sık kullanılan uçtan uca iş akışı adımları burada verilmiştir.
 
 > [!NOTE]
-> Hem Azure SQL Veritabanı hem de SQL Server, Değişiklik İzleme teknolojisini destekler. Bu öğreticide, Azure SQL Veritabanını kaynak veri deposu olarak kullanılır. Dilerseniz şirket içi bir SQL Server kullanabilirsiniz.
+> Hem Azure SQL Veritabanı hem de SQL Server, Değişiklik İzleme teknolojisini destekler. Bu öğreticide, Azure SQL Veritabanını kaynak veri deposu olarak kullanılır. Ayrıca, bir SQL Server örneği de kullanabilirsiniz.
 
 1. **Geçmiş verilerin ilk yüklemesi** (bir kez çalıştır):
     1. Kaynak Azure SQL veritabanında Değişiklik İzleme teknolojisini etkinleştirin.
@@ -416,7 +416,7 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
     2. **Parametreyi içeri aktar**’ı seçin.
     3. **Saklı yordam parametreleri** bölümünde, parametreler için aşağıdaki değerleri belirtin:
 
-        | Name | Tür | Değer |
+        | Adı | Tür | Değer |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | Dize | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |

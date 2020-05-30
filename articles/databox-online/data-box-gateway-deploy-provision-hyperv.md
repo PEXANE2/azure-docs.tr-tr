@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b3616a338666dbb10fe7500bad8c1e8239fd2c92
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561624"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196631"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Öğretici: Hyper-V ' d a Azure Data Box Gateway sağlama
 
@@ -64,8 +64,8 @@ Cihazı dağıtmadan önce şunlardan emin olun:
 
 Başlamadan önce:
 
-- Data Box Gateway dağıtma ağ gereksinimlerini gözden geçirin ve veri merkezi ağını gereksinimlere göre yapılandırın. Daha fazla bilgi için bkz. [Data Box Gateway ağ gereksinimleri](data-box-gateway-system-requirements.md#networking-port-requirements).
-- Cihazın en iyi şekilde çalışması için Internet bant genişliğinin en az 20 Mb/sn olduğundan emin olun.
+* Data Box Gateway dağıtma ağ gereksinimlerini gözden geçirin ve veri merkezi ağını gereksinimlere göre yapılandırın. Daha fazla bilgi için bkz. [Data Box Gateway ağ gereksinimleri](data-box-gateway-system-requirements.md#networking-port-requirements).
+* Cihazın en iyi şekilde çalışması için Internet bant genişliğinin en az 20 Mb/sn olduğundan emin olun.
 
 ## <a name="check-the-host-system"></a>Ana bilgisayar sistemini denetleyin
 
@@ -75,11 +75,17 @@ Sanal cihaz oluşturmak için şunlara ihtiyacınız vardır:
 * Ana bilgisayara bağlı Microsoft Windows istemcisine yüklenmiş Microsoft Hyper-V Yöneticisi.
 * Sanal cihazı oluşturduğunuz donanımın (ana bilgisayar sisteminin) sanal cihaza aşağıdaki kaynakları ayırabildiğinden emin olun:
 
-    * En az 4 sanal işlemci.
-    * En az 8 GB RAM.
-    * İnternet trafiği için ağa bağlı bir ağ arabirimi. 
-    * 250 GB işletim sistemi diski.
-    * Sistem verileri için 2 TB sanal disk.
+  * En az 4 sanal işlemci.
+  * En az 8 GB RAM.
+  * İnternet trafiği için ağa bağlı bir ağ arabirimi.
+  * 250 GB işletim sistemi diski.
+  * Sistem verileri için 2 TB sanal disk.
+
+## <a name="bitlocker-considerations"></a>BitLocker konuları
+
+* Data Box Gateway sanal makinenizde BitLocker 'ı etkinleştirmenizi öneririz. Varsayılan olarak, BitLocker etkin değildir. Daha fazla bilgi için bkz.
+  * [Hyper-V Yöneticisi 'nde şifreleme desteği ayarları](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+  * [Sanal makinede BitLocker desteği](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="provision-a-virtual-device-in-hypervisor"></a>Hiper yöneticide bir sanal cihaz sağlama
 
@@ -136,7 +142,7 @@ Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleşti
 
     ![Ad ve konum sayfasını belirtin](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
 19. **Diski Yapılandır** sayfasında **Yeni boş sanal sabit disk oluştur** seçeneğini belirleyin ve **2 TB** (veya üzeri) boyutunu seçin.
-    
+
     2 TB minimum gereksinimdir ancak isterseniz daha büyük bir disk de sağlayabilirsiniz. Sağlanan diskin boyutunu küçültemeyeceğinizi unutmayın. Diskin küçültülmeye çalışılması, cihazdaki tüm yerel verilerin kaybedilmesine neden olur. Veri diskinin genişletilmesi desteklenmiyor. **İleri**’ye tıklayın.
 
     ![Disk sayfasını yapılandırma](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
@@ -148,37 +154,38 @@ Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleşti
     ![Ayarlar sayfası](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>Sanal cihazı başlatma ve IP adresini alma
+
 Sanal cihazınızı başlatmak ve bağlantı kurmak için aşağıdaki adımları izleyin.
 
 #### <a name="to-start-the-virtual-device"></a>Sanal cihazı başlatmak için
+
 1. Sanal cihazı başlatın.
 
    ![Sanal cihazı Başlat](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
 2. Cihaz çalışmaya başladıktan sonra cihazı ve **Bağlan**'ı seçin.
 
-3. Cihazın hazır olması için 10-15 dakika beklemeniz gerekebilir. Konsolda ilerleme durumunu gösteren bir durum iletisi görüntülenir. Cihaz hazır olduktan sonra **Eylem** bölümüne gidin. Sanal `Ctrl + Alt + Delete` cihazda oturum açmak için tuşuna basın. Varsayılan kullanıcı *EdgeUser*, varsayılan parola ise *Password1* şeklindedir.
+3. Cihazın hazır olması için 10-15 dakika beklemeniz gerekebilir. Konsolda ilerleme durumunu gösteren bir durum iletisi görüntülenir. Cihaz hazır olduktan sonra **Eylem** bölümüne gidin. `Ctrl + Alt + Delete`Sanal cihazda oturum açmak için tuşuna basın. Varsayılan kullanıcı *EdgeUser*, varsayılan parola ise *Password1* şeklindedir.
 
    ![Sanal cihazda oturum açın](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
-   
-6. Adım 5-7 yalnızca DHCP bulunmayan bir ortamdaki önyükleme süreci için geçerlidir. DHCP ortamındaysanız bu adımları atlayabilirsiniz. Cihazınızı DHCP olmayan bir ortamda çalıştırdıysanız bunu belirten bir ileti açılacaktır.
-    
-7. Ağı yapılandırmak için `Get-HcsIpAddress` komutunu kullanarak sanal cihazınızda etkinleştirilmiş olan ağ arabirimlerini listeleyin. Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
 
-8. Ağı yapılandırmak için `Set-HcsIpAddress` cmdlet'ini kullanın. Aşağıdaki örneğe bakın:
+4. Adım 5-7 yalnızca DHCP bulunmayan bir ortamdaki önyükleme süreci için geçerlidir. DHCP ortamındaysanız bu adımları atlayabilirsiniz. Cihazınızı DHCP olmayan bir ortamda çalıştırdıysanız bunu belirten bir ileti açılacaktır.
+
+5. Ağı yapılandırmak için `Get-HcsIpAddress` komutunu kullanarak sanal cihazınızda etkinleştirilmiş olan ağ arabirimlerini listeleyin. Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
+
+6. Ağı yapılandırmak için `Set-HcsIpAddress` cmdlet'ini kullanın. Aşağıdaki örneğe bakın:
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
-    
-9. İlk kurulum işlemleri tamamlandıktan ve cihaz önyüklendikten sonra cihaz başlık metnini görürsünüz. Cihazı yönetmek için başlık metninde görüntülenen IP adresini ve URL'yi not edin. Bu IP adresini kullanarak sanal cihazınızın web arabirimine bağlanıp yerel kurulum ve etkinleştirme işlemlerini gerçekleştirebilirsiniz.
+
+7. İlk kurulum işlemleri tamamlandıktan ve cihaz önyüklendikten sonra cihaz başlık metnini görürsünüz. Cihazı yönetmek için başlık metninde görüntülenen IP adresini ve URL'yi not edin. Bu IP adresini kullanarak sanal cihazınızın web arabirimine bağlanıp yerel kurulum ve etkinleştirme işlemlerini gerçekleştirebilirsiniz.
 
    ![IP adresi ve bağlantı URL 'SI olan sanal cihaz başlığı](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
-      
 
 Cihazınız minimum yapılandırma gereksinimlerini karşılamıyorsa başlık metninde hata iletisi görüntülenir. Cihaz yapılandırmasını minimum gereksinimleri karşılayacak şekilde değiştirin. Ardından cihazı yeniden başlatıp bağlantı kurabilirsiniz. En düşük yapılandırma gereksinimleri için bkz. [Konağın en düşük cihaz gereksinimlerini karşıladığından emin olma](#check-the-host-system).
 
 Yerel Web Kullanıcı arabirimini kullanarak ilk yapılandırma sırasında başka bir hata varsa, aşağıdaki iş akışlarına başvurun:
 
-- [Web UI kurulumu sorunlarını gidermek için tanılama testlerini çalıştırın](data-box-gateway-troubleshoot.md#run-diagnostics).
-- [Günlük paketi oluşturun ve günlük dosyalarını görüntüleyin](data-box-gateway-troubleshoot.md#collect-support-package).
+* [Web UI kurulumu sorunlarını gidermek için tanılama testlerini çalıştırın](data-box-gateway-troubleshoot.md#run-diagnostics).
+* [Günlük paketi oluşturun ve günlük dosyalarını görüntüleyin](data-box-gateway-troubleshoot.md#collect-support-package).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

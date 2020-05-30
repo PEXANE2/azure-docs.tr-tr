@@ -1,6 +1,6 @@
 ---
 title: 'PowerShell: Azure SQL veritabanı için etkin Coğrafi çoğaltmayı yapılandırma'
-description: Azure SQL veritabanı için etkin coğrafi çoğaltma ayarlamak ve yük devretmek için örnek betik Azure PowerShell.
+description: Azure SQL veritabanı için etkin coğrafi çoğaltma ayarlamak ve yük devretmek için Azure PowerShell örnek bir komut dosyası kullanın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,23 +11,24 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 4dbe896211e03a068975df8aabdce78632ab7fd7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d63e6a58caf218022e3ebf7423e2495e98d9485c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053306"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196752"
 ---
-# <a name="use-powershell-to-configure-active-geo-replication---azure-sql-database"></a>PowerShell kullanarak etkin Coğrafi çoğaltmayı Yapılandırma-Azure SQL veritabanı
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-database-in-azure-sql-database"></a>Azure SQL veritabanında bir veritabanı için etkin Coğrafi çoğaltmayı yapılandırmak için PowerShell kullanma
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Bu PowerShell betiği örneği, bir Azure SQL veritabanı için etkin Coğrafi çoğaltmayı yapılandırır ve veritabanının ikincil bir çoğaltmasına yük devreder.
+Bu Azure PowerShell betiği örneği, Azure SQL veritabanındaki bir veritabanı için etkin Coğrafi çoğaltmayı yapılandırır ve veritabanının ikincil bir çoğaltmasına yük devreder.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici az PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="sample-scripts"></a>Örnek betikler
 
