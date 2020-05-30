@@ -4,12 +4,12 @@ description: Azure geçişi hizmeti için destek ayarlarının ve sınırlamalar
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: ec267053a0bc675d05e6488665f77467da9370e0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c1ed127834b826488d02b39304dd943866171441
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746847"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193568"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -40,7 +40,7 @@ Azure Geçişi Sunucu Geçişi | NA | [VMware VM 'leri](tutorial-migrate-vmware.
 [Cloudamize](https://www.cloudamize.com/platform#tab-0)| VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin. | NA
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin ve geçirin. |  VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri geçirin.
 [Cihaz 42](https://go.microsoft.com/fwlink/?linkid=2097158) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin.| NA
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | Şirket içi SQL Server veritabanlarını değerlendirin. | NA
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | SQL Server veritabanlarını değerlendirin. | NA
 [DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB geçirin. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Sanal Masaüstü altyapısını (VDı) değerlendirme | NA
 [Movere](https://www.movere.io/) | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'Leri, fiziksel makineler, iş istasyonları (VDı dahil), genel bulut iş yükleri | NA

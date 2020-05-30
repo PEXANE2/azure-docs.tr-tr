@@ -1,6 +1,6 @@
 ---
 title: Excel ile bağlanma
-description: Microsoft Excel 'i Azure SQL veritabanı 'na bağlamayı öğrenin. Raporlama ve veri araştırması için Excel'e veri aktarın.
+description: Microsoft Excel 'i Azure SQL veritabanı 'nda bir veritabanına bağlamayı öğrenin. Raporlama ve veri araştırması için Excel'e veri aktarın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,27 +11,28 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
-ms.openlocfilehash: 08bf78e6cc548ed717d6bc57946067a16ec13e2b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 332620699e30facb2fbbfee90e3328b8dcf1e179
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043453"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195494"
 ---
-# <a name="connect-excel-to-azure-sql-database-and-create-a-report"></a>Excel 'i Azure SQL veritabanı 'na bağlama ve rapor oluşturma
+# <a name="connect-excel-to-a-database-in-azure-sql-database-and-create-a-report"></a>Excel 'i Azure SQL veritabanı 'nda bir veritabanına bağlama ve rapor oluşturma
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Excel 'i Azure SQL veritabanı 'na bağlayın ve verileri içeri aktarın ve veritabanındaki değerlere göre tablolar ve grafikler oluşturun. Bu öğreticide, Excel ile bir veritabanı tablosu arasındaki bağlantıyı ayarlayacak, Excel'e ilişkin verilerin ve bağlantı bilgilerinin depolandığı dosyayı kaydedecek ve ardından veritabanı değerlerini kullanarak bir özet grafik oluşturacaksınız.
+Excel 'i Azure SQL veritabanı 'nda bir veritabanına bağlayıp, verileri içeri aktarabilir ve veritabanındaki değerlere göre tablolar ve grafikler oluşturabilirsiniz. Bu öğreticide, Excel ile bir veritabanı tablosu arasındaki bağlantıyı ayarlayacak, Excel'e ilişkin verilerin ve bağlantı bilgilerinin depolandığı dosyayı kaydedecek ve ardından veritabanı değerlerini kullanarak bir özet grafik oluşturacaksınız.
 
-Başlamadan önce bir SQL veritabanı gerekir. Bir tane yoksa, örnek veri içeren bir SQL veritabanını birkaç dakikada çalışır duruma getirmek için bkz. [Azure SQL veritabanı oluşturma](single-database-create-quickstart.md) ve [sunucu düzeyinde IP güvenlik duvarı oluşturma](firewall-create-server-level-portal-quickstart.md) .
+Başlamadan önce SQL veritabanında bir veritabanı oluşturmanız gerekir. Bir tane yoksa, örnek veri içeren bir veritabanını birkaç dakikada çalışır duruma getirmek için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](single-database-create-quickstart.md) ve [sunucu düzeyinde IP güvenlik duvarı oluşturma](firewall-create-server-level-portal-quickstart.md) .
 
 Bu makalede, bu makaleden Excel 'e örnek veri aktarırsınız, ancak kendi verilerinize benzer adımları izleyebilirsiniz.
 
 Ayrıca, bir Excel kopyanızın olması gerekir. Bu makalede [Microsoft Excel 2016](https://products.office.com/) kullanılmıştır.
 
-## <a name="connect-excel-to-a-sql-database-and-load-data"></a>Excel 'i bir SQL veritabanına bağlama ve verileri yükleme
+## <a name="connect-excel-and-load-data"></a>Excel 'i bağlama ve verileri yükleme
 
-1. Excel 'i bir SQL veritabanına bağlamak için Excel 'i açın ve yeni bir çalışma kitabı oluşturun veya var olan bir Excel çalışma kitabını açın.
+1. Excel 'i SQL veritabanı 'ndaki bir veritabanına bağlamak için Excel 'i açın ve yeni bir çalışma kitabı oluşturun veya var olan bir Excel çalışma kitabını açın.
 2. Sayfanın üstündeki menü çubuğunda, **veri** sekmesini seçin, **veri al**' ı seçin, Azure 'dan seçim YAPıN ve ardından **Azure SQL veritabanı**' nı seçin.
 
    ![Veri kaynağı seçin: Excel 'i SQL veritabanı 'na bağlama.](./media/connect-excel/excel_data_source.png)
@@ -53,7 +54,7 @@ Ayrıca, bir Excel kopyanızın olması gerekir. Bu makalede [Microsoft Excel 20
 
 ## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>Excel'e veri aktarma ve özet grafik oluşturma
 
-Artık bağlantıyı oluşturduğunuza göre, verilerin nasıl yükleneceği ile ilgili birkaç farklı seçeneğiniz vardır. Örneğin, aşağıdaki adımlarda SQL veritabanınızda bulunan verilere göre bir Özet Grafik oluşturulur.
+Artık bağlantıyı oluşturduğunuza göre, verilerin nasıl yükleneceği ile ilgili birkaç farklı seçeneğiniz vardır. Örneğin, aşağıdaki adımlar SQL veritabanı 'nda veritabanınızda bulunan verileri temel alan bir Özet Grafik oluşturur.
 
 1. Önceki bölümdeki adımları izleyin, ancak bu kez Yükle ' **yi seçmek yerine** **yük açılır listesinden** **Yükle ' yi**seçin.
 2. Sonra, bu verileri çalışma kitabınızda nasıl görüntülemek istediğinizi seçin. Biz **PivotChart** seçeneğini belirledik. Ayrıca, **Yeni çalışma sayfası** oluşturmayı veya **Bu verileri Veri Modeline ekle** seçeneğini belirlemeyi de tercih edebilirsiniz. Veri Modelleri hakkında daha fazla bilgi için bkz. [Excel'de veri modeli oluşturma](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B).

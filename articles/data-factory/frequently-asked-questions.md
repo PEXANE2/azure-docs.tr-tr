@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 3a3d3b990c750e96b840676097bb3677606bf68b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118343"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187286"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory Hakkında SSS
 
@@ -72,7 +72,7 @@ Azure Data Factory görsel araçları, yinelemeli geliştirme ve hata ayıklamay
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>SSIS paketlerini Azure 'a dağıtma olanağı 
 SSIS iş yüklerinizi taşımak istiyorsanız, bir Data Factory oluşturabilir ve bir Azure-SSIS tümleştirme çalışma zamanı sağlayabilirsiniz. Azure-SSIS Integration Runtime, bulutta SSIS paketlerinizi çalıştırmaya ayrılmış Azure VM 'lerin (düğümler) tam yönetilen bir kümesidir. Adım adım yönergeler için bkz. [SSIS paketlerini Azure 'A dağıtma](tutorial-create-azure-ssis-runtime-portal.md) öğreticisi. 
  
-### <a name="sdks"></a>SDK
+### <a name="sdks"></a>SDK’lar
 İleri düzey bir kullanıcıysanız ve bir programlama arabirimi arıyorsanız Data Factory, sık kullandığınız IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek veya izlemek için kullanabileceğiniz zengin bir SDK kümesi sağlar. Dil desteği .NET, PowerShell, Python ve REST içerir.
 
 ### <a name="monitoring"></a>İzleme
@@ -87,7 +87,7 @@ Veri fabrikalarınızı PowerShell, SDK veya tarayıcı kullanıcı arabiriminde
 -    Elastik havuz
 -    Klasik bir sanal ağın en üstündeki Azure Resource Manager sanal ağı daha sonra kullanımdan kalkacak şekilde, Azure-SSIS tümleştirme çalışma zamanını, sanal ağ hizmeti uç noktaları/mı/şirket içi veri erişimi ile SQL veritabanı için yapılandırılmış bir sanal ağa eklemenize/eklemenize olanak sağlayan destek. Daha fazla bilgi için bkz. bir [Azure-SSIS tümleştirme çalışma zamanına bir sanal ağa ekleme](join-azure-ssis-integration-runtime-virtual-network.md).
 -    Azure Active Directory (Azure AD) kimlik doğrulaması ve SSıSDB 'ye bağlanmak için SQL kimlik doğrulaması desteği ve Azure kaynakları için Data Factory yönetilen Kimliğiniz ile Azure AD kimlik doğrulamasına izin verme
--    Azure Hibrit Avantajı seçeneğinden önemli maliyet tasarruflarını kazanmak için kendi şirket içi SQL Server lisansınızı getirme desteği
+-    Azure Hibrit Avantajı seçeneğinden önemli maliyet tasarruflarını kazanmak için mevcut SQL Server lisansınızı getirme desteği
 -    Gelişmiş/Premium özellikleri, ek bileşenleri/uzantıları yüklemek için özel bir kurulum arabirimi ve bir iş ortağı ekosistemi kullanmanıza olanak tanıyan Azure-SSIS tümleştirme çalışma zamanının Enterprise Edition desteği. Daha fazla bilgi için bkz. [Enterprise Edition, özel kurulum ve SSIS için üçüncü taraf GENIŞLETILEBILIRLIĞI ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/). 
 -    SSIS 'in daha derin tümleştirilmesi, Data Factory Işlem hatlarında birinci sınıf Execute SSIS paketi etkinliklerini çağırmanıza/tetiklemenize ve onları SSMS aracılığıyla zamanlamanıza imkan tanıyan Data Factory. Daha fazla bilgi için bkz. Ayrıca, [ADF işlem hatlarında SSIS etkinlikleriyle ETL/ELT iş akışlarınızı modernleştirin ve genişletme](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/).
 
@@ -126,7 +126,7 @@ Bağlı hizmetler, dış kaynaklara bağlanmak için Data Factory’ye gereken b
 
 Bağlı hizmetlerin Data Factory iki amacı vardır:
 
-- Bir şirket içi SQL Server örneği, bir Oracle veritabanı örneği, dosya paylaşma veya bir Azure Blob depolama hesabı içeren, ancak bunlarla sınırlı olmayan bir *veri deposunu* temsil etmek için. Desteklenen veri depolarının bir listesi için, bkz. [kopyalama etkinliği Azure Data Factory](copy-activity-overview.md).
+- Bir SQL Server örneği, Oracle veritabanı örneği, dosya paylaşma veya bir Azure Blob depolama hesabı içeren, ancak bunlarla sınırlı olmayan bir *veri deposunu* temsil etmek için. Desteklenen veri depolarının bir listesi için, bkz. [kopyalama etkinliği Azure Data Factory](copy-activity-overview.md).
 - Bir etkinliğin yürütülmesini barındırameyen bir *işlem kaynağını* temsil etmek için. Örneğin, HDInsight Hive etkinliği bir HDInsight Hadoop kümesinde çalışır. Dönüştürme etkinlikleri ve desteklenen işlem ortamlarının listesi için bkz. [Azure Data Factory verileri dönüştürme](transform-data.md).
 
 ### <a name="triggers"></a>Tetikleyiciler

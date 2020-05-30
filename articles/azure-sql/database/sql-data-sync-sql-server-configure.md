@@ -1,5 +1,5 @@
 ---
-title: SQL Data Sync ayarlama
+title: SQL Data Sync’i ayarlama
 description: Bu öğreticide Azure için SQL Data Sync ayarlama gösterilmektedir
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: d0380239fde2c58e7c9a2e7dc3638881dbd8fd73
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 405705bee3ada2d2c43e9a243724d823a5e28602
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043978"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188693"
 ---
-# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Öğretici: Azure SQL veritabanı ve şirket içi SQL Server arasında SQL Data Sync ayarlama
+# <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Öğretici: Azure SQL veritabanı ve SQL Server veritabanları arasında SQL Data Sync ayarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu öğreticide, hem Azure SQL veritabanı hem de SQL Server örnekleri içeren bir eşitleme grubu oluşturarak SQL Data Sync ayarlamayı öğreneceksiniz. Eşitleme grubu özel olarak yapılandırılır ve ayarladığınız zamanlamaya göre eşitlenir.
@@ -27,7 +27,7 @@ Bu öğreticide, SQL veritabanı ve SQL Server ile ilgili en az bir önceki dene
 
 SQL Data Sync genel bir bakış için bkz. [SQL Data Sync ile bulut ve şirket içi veritabanları arasında verileri eşitleme](sql-data-sync-data-sql-server-sql-database.md).
 
-SQL Data Sync nasıl yapılandırılacağı hakkında PowerShell örnekleri için bkz. SQL veritabanı veya Azure SQL veritabanı ['nda veritabanları arasında eşitleme](scripts/sql-data-sync-sync-data-between-sql-databases.md) [ve şirket içi veritabanı SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
+SQL Data Sync nasıl yapılandırılacağı hakkında PowerShell örnekleri için bkz. [SQL veritabanı 'nda veritabanları arasında](scripts/sql-data-sync-sync-data-between-sql-databases.md) veya [Azure SQL veritabanı 'nda](scripts/sql-data-sync-sync-data-between-azure-onprem.md) veritabanları arasında eşitleme ve SQL Server
 
 > [!IMPORTANT]
 > SQL Data Sync Şu anda Azure SQL yönetilen **örneğini desteklemez.**
@@ -96,9 +96,9 @@ Yeni eşitleme grubu oluşturulup dağıtıldıktan sonra, **eşitleme üyeleri 
 
 <a name="add-on-prem"></a>
 
-### <a name="to-add-an-on-premises-sql-server-database"></a>Şirket içi SQL Server veritabanı eklemek için
+### <a name="to-add-a-sql-server-database"></a>SQL Server veritabanı eklemek için
 
-**Üye veritabanı** bölümünde, isteğe bağlı olarak, Şirket **içi veritabanı Ekle**' yi seçerek eşitleme grubuna şirket içi SQL Server ekleyin. **Şirket Içi yapılandırma** sayfası açılır ve aşağıdaki işlemleri yapabilirsiniz:
+**Üye veritabanı** bölümünde, isteğe bağlı olarak, **bir şirket içi veritabanı Ekle**' yi seçerek eşitleme grubuna bir SQL Server veritabanı ekleyin. **Şirket Içi yapılandırma** sayfası açılır ve aşağıdaki işlemleri yapabilirsiniz:
 
 1. **Eşitleme Aracısı ağ geçidini Seç**' i seçin. **Eşitleme aracısını seçin** sayfası açılır.
 

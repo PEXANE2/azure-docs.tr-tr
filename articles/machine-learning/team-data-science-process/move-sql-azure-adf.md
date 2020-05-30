@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory Team Data Science süreciyle SQL Azure verileri SQL Server
+title: Azure Data Factory Team Data Science Işlemi ile SQL veritabanı 'na veri SQL Server
 description: Birlikte verileri şirket içinde ve bulutta veritabanları arasında günlük olarak taşıyacağınız iki veri geçiş etkinliğini oluşturan bir ADF işlem hattı ayarlayın.
 services: machine-learning
 author: marktab
@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a484a6c9a55eac4d166a711a9eae7990c4305cb4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722501"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194399"
 ---
-# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Verileri şirket içi SQL Server 'dan Azure Data Factory ile SQL Azure taşıma
+# <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>SQL Server veritabanından SQL veritabanı 'na veri taşıma Azure Data Factory
 
-Bu makalede, Azure Blob depolama aracılığıyla Azure Data Factory (ADF) kullanarak verileri şirket içi SQL Server veritabanından SQL Azure veritabanına taşıma işlemi gösterilmektedir: Bu yöntem, çoğaltılan bir hazırlama kopyasının avantajlarına sahip desteklenen bir eski yaklaşımdır, ancak [en son seçenekler için veri geçiş sayfamıza bakmak tavsiye ederiz](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
+Bu makalede, Azure Data Factory (ADF) kullanılarak Azure Blob depolama aracılığıyla SQL Server veritabanından Azure SQL veritabanı 'na veri taşıma işlemi gösterilmektedir: Bu yöntem, çoğaltılan bir hazırlama kopyasının avantajları olan, desteklenen bir eski yaklaşım olsa da, [en son seçenekler için veri geçiş sayfamıza bakmak tavsiye ederiz](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
 
 Verileri bir Azure SQL veritabanına taşımaya yönelik çeşitli seçenekleri özetleyen bir tablo için bkz. [Azure Machine Learning için verileri Azure SQL veritabanına taşıma](move-sql-azure.md).
 
@@ -37,13 +37,13 @@ ADF 'yi kullanmayı düşünün:
 ADF, verilerin düzenli aralıklarla taşınmasını yöneten basit JSON betikleri kullanılarak işlerin zamanlamasını ve izlenmesini sağlar. ADF Ayrıca karmaşık işlemler için destek gibi başka yetenekler de içerir. ADF hakkında daha fazla bilgi için [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/)belgelerine bakın.
 
 ## <a name="the-scenario"></a><a name="scenario"></a>Senaryo
-İki veri geçiş etkinliğini oluşturan bir ADF işlem hattı ayarladık. Bir arada, verileri şirket içi SQL veritabanı ve buluttaki bir Azure SQL veritabanı arasında günlük olarak taşır. İki etkinlik şunlardır:
+İki veri geçiş etkinliğini oluşturan bir ADF işlem hattı ayarladık. Bir arada, verileri bir SQL Server veritabanı ve Azure SQL veritabanı arasında günlük olarak taşır. İki etkinlik şunlardır:
 
-* Şirket içi SQL Server veritabanından Azure Blob depolama hesabına veri kopyalama
-* Azure Blob depolama hesabından Azure SQL veritabanına veri kopyalama.
+* SQL Server veritabanından Azure Blob depolama hesabına veri kopyalama
+* Azure Blob depolama hesabından Azure SQL veritabanı 'na veri kopyalama.
 
 > [!NOTE]
-> Burada gösterilen adımlar, ADF ekibi tarafından sunulan daha ayrıntılı öğreticiden uyarlanmıştır: Şirket [içi SQL Server veritabanından Azure Blob depolama başvurularına veri kopyalama](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) ilgili konunun ilgili bölümlerine, uygun olduğunda verilmiştir.
+> Burada gösterilen adımlar, ADF ekibi tarafından sunulan daha ayrıntılı öğreticiden uyarlanmıştır: [bir SQL Server veritabanından Azure Blob depolama başvurularına veri kopyalama](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) ilgili konunun ilgili bölümlerine, uygun olduğunda sağlanır.
 >
 >
 
@@ -60,10 +60,10 @@ Bu öğreticide şunları kabul edersiniz:
 >
 >
 
-## <a name="upload-the-data-to-your-on-premises-sql-server"></a><a name="upload-data"></a>Verileri şirket içi SQL Server yükleyin
+## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>Verileri SQL Server örneğine yükleme
 Geçiş işlemini göstermek için [NYC TAXI veri kümesini](https://chriswhong.com/open-data/foil_nyc_taxi/) kullanıyoruz. NYC TAXI veri kümesi, Azure Blob Storage [NYC TAXI verilerinde](https://www.andresmh.com/nyctaxitrips/)bu gönderde belirtildiği gibi kullanılabilir. Verilerin iki dosyası vardır; seyahat ayrıntılarını içeren trip_data. csv dosyası ve her yolculuğa yönelik tarifeli havayolu ayrıntılarını içeren trip_far. csv dosyası. Bu dosyaların bir örneği ve açıklaması [NYC TAXI gezme veri kümesi açıklamasında](sql-walkthrough.md#dataset)verilmiştir.
 
-Burada belirtilen yordamı kendi verilerinizin kümesine uyarlayabilir veya NYC TAXI veri kümesini kullanarak açıklanan adımları izleyebilirsiniz. NYC TAXI veri kümesini şirket içi SQL Server veritabanınıza yüklemek için, [verileri SQL Server veritabanına toplu Içeri aktarma](sql-walkthrough.md#dbload)bölümünde özetlenen yordamı izleyin. Bu yönergeler bir Azure sanal makinesinde SQL Server yöneliktir, ancak şirket içi SQL Server yükleme yordamı aynıdır.
+Burada belirtilen yordamı kendi verilerinizin kümesine uyarlayabilir veya NYC TAXI veri kümesini kullanarak açıklanan adımları izleyebilirsiniz. NYC TAXI veri kümesini SQL Server veritabanınıza yüklemek için, [verileri SQL Server veritabanına toplu Içeri aktarma](sql-walkthrough.md#dbload)bölümünde özetlenen yordamı izleyin.
 
 ## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Azure Data Factory oluşturma
 Yeni bir Azure Data Factory ve [Azure Portal](https://portal.azure.com/) kaynak grubu oluşturma yönergeleri [Azure Data Factory oluşturma](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Yeni ADF örneğini *adfdsp* olarak adlandırın ve kaynak grubunun adını *adfdsprg*olarak adlandırın.
@@ -87,13 +87,13 @@ Bağlı hizmetler oluşturmak için adım adım yordam, [bağlı hizmetler oluş
 Aşağıdaki komut dosyası tabanlı yordamlarla veri kümelerinin yapısını, konumunu ve kullanılabilirliğini belirten tablolar oluşturun. JSON dosyaları tabloları tanımlamak için kullanılır. Bu dosyaların yapısı hakkında daha fazla bilgi için bkz. [veri kümeleri](../../data-factory/concepts-datasets-linked-services.md).
 
 > [!NOTE]
-> Komut yürütmesi için doğru `Add-AzureAccount` Azure aboneliğinin seçili olduğunu onaylamak üzere [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet 'ini yürütmeden önce cmdlet 'ini yürütmelisiniz. Bu cmdlet 'in belgeleri için bkz. [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0).
+> `Add-AzureAccount`Komut yürütmesi için doğru Azure aboneliğinin seçili olduğunu onaylamak üzere [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet 'ini yürütmeden önce cmdlet 'ini yürütmelisiniz. Bu cmdlet 'in belgeleri için bkz. [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0).
 >
 >
 
 Tablolardaki JSON tabanlı tanımlar aşağıdaki adları kullanır:
 
-* Şirket içi SQL Server 'daki **tablo adı** *nyctaxi_data*
+* SQL Server **tablo adı** *nyctaxi_data*
 * Azure Blob depolama hesabındaki **kapsayıcı adı** *ContainerName*
 
 Bu ADF işlem hattı için üç tablo tanımı gereklidir:
@@ -108,7 +108,7 @@ Bu ADF işlem hattı için üç tablo tanımı gereklidir:
 >
 
 ### <a name="sql-on-premises-table"></a><a name="adf-table-onprem-sql"></a>SQL şirket içi tablosu
-Şirket içi SQL Server için tablo tanımı aşağıdaki JSON dosyasında belirtilmiştir:
+SQL Server için tablo tanımı aşağıdaki JSON dosyasında belirtilmiştir:
 
 ```json
 {
@@ -226,12 +226,12 @@ Daha önce sunulan tablo tanımlarını kullanarak ADF 'nin işlem hattı tanım
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from an on-premises SQL to Azure blob",
+        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
         "activities":
         [
             {
                 "name": "CopyFromSQLtoBlob",
-                "description": "Copy data from on-premises SQL server to blob",
+                "description": "Copy data from SQL Server to blob",
                 "type": "CopyActivity",
                 "inputs": [ {"name": "OnPremSQLTable"} ],
                 "outputs": [ {"name": "OutputBlobTable"} ],

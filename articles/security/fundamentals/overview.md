@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 401317f6b47c97a76ef2ded603063821a420933a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731713"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192532"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -308,7 +308,7 @@ Kuruluşunuzun [iş sürekliliği/olağanüstü durum kurtarma (BCDR)](../../bes
 
 Azure Key Vault (AKV) hizmeti, güvenli ve yüksek oranda kullanılabilir bir konumda bu anahtarların güvenliğini ve yönetimini geliştirmek için tasarlanmıştır. SQL Server Bağlayıcısı, SQL Server Azure Key Vault bu anahtarları kullanmasına olanak sağlar.
 
-Şirket içi makinelerle SQL Server çalıştırıyorsanız, şirket içi SQL Server makinenizden Azure Key Vault erişmek için izleyebileceğiniz adımlar vardır. Ancak Azure VM 'lerinde SQL Server için Azure Key Vault tümleştirme özelliğini kullanarak zamandan tasarruf edebilirsiniz. Bu özelliği etkinleştirmek için birkaç Azure PowerShell cmdlet 'i sayesinde, anahtar kasanıza erişmek için bir SQL sanal makinesi için gereken yapılandırmayı otomatikleştirin.
+Şirket içi makinelerle SQL Server çalıştırıyorsanız, şirket içi SQL Server örneğinden Azure Key Vault erişmek için izleyebileceğiniz adımlar vardır. Ancak Azure VM 'lerinde SQL Server için Azure Key Vault tümleştirme özelliğini kullanarak zamandan tasarruf edebilirsiniz. Bu özelliği etkinleştirmek için birkaç Azure PowerShell cmdlet 'i sayesinde, anahtar kasanıza erişmek için bir SQL sanal makinesi için gereken yapılandırmayı otomatikleştirin.
 
 ### <a name="vm-disk-encryption"></a>VM disk şifrelemesi
 [Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md) , Windows ve Linux IaaS sanal makine disklerinizi şifrelemenize yardımcı olan yeni bir özelliktir. İşletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un sektör standardı BitLocker özelliğini ve Linux 'un DM-Crypt özelliğini uygular. Çözüm, Key Vault aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için Azure Key Vault ile tümleşiktir. Çözüm Ayrıca, sanal makine disklerindeki tüm verilerin Azure depolamadaki geri kalanta şifrelenmesini de sağlar.

@@ -16,12 +16,12 @@ ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6c84be9a23713080f348daf8dddf0ad6b0390ded
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7439aa360395490f31a638ac690ed7e5cad1054b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014715"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195830"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Azure sanal makinelerinde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (klasik)
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "84014715"
 > [!IMPORTANT] 
 > Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir.
 
-Şirket içi makinelerle SQL Server çalıştırıyorsanız, Şirket [içi SQL Server makinenizden Azure Key Vault erişmek için izleyebileceğiniz adımlar](https://msdn.microsoft.com/library/dn198405.aspx)vardır. Ancak Azure VM 'lerinde SQL Server için *Azure Key Vault tümleştirme* özelliğini kullanarak zamandan tasarruf edebilirsiniz. Bu özelliği etkinleştirmek için birkaç Azure PowerShell cmdlet 'i sayesinde, anahtar kasanıza erişmek için bir SQL sanal makinesi için gereken yapılandırmayı otomatikleştirin.
+Şirket içi makinelerle SQL Server çalıştırıyorsanız, Şirket [içi SQL Server bilgisayarınızdan Azure Key Vault erişmek için izleyebileceğiniz adımlar](https://msdn.microsoft.com/library/dn198405.aspx)vardır. Ancak Azure VM 'lerinde SQL Server için *Azure Key Vault tümleştirme* özelliğini kullanarak zamandan tasarruf edebilirsiniz. Bu özelliği etkinleştirmek için birkaç Azure PowerShell cmdlet 'i sayesinde, anahtar kasanıza erişmek için bir SQL sanal makinesi için gereken yapılandırmayı otomatikleştirin.
 
 Bu özellik etkinleştirildiğinde, SQL Server Bağlayıcısı otomatik olarak yüklenir, EKM sağlayıcısını Azure Key Vault erişim için yapılandırır ve kasanıza erişmenize izin veren kimlik bilgisini oluşturur. Daha önce bahsedilen şirket içi belgelerdeki adımlara bakarsanız, bu özelliğin 2 ve 3. adımları otomatikleştirdiği hakkında bilgi alabilirsiniz. Hala el ile yapmanız gereken tek şey, anahtar kasasını ve anahtarları oluşturmaktır. Buradan, SQL sanal makinenizin tüm kurulumu otomatikleştirilir. Bu özellik bu kurulumu tamamladıktan sonra, veritabanlarını veya yedeklemelerinizi normal şekilde şifrelemeye başlamak için T-SQL deyimlerini çalıştırabilirsiniz.
 

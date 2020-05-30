@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu kullanarak SQL Server yedekleme
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak SQL Server veritabanlarının yedeklenme yapılandırmasını öğrenin.
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9cd6a8b76e4618031f4d21dc04a82a78fad0076d
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 2bb172ca36f3f932fdaaf5b71e8fa183c04d1510
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159259"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194192"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Azure Backup Sunucusu kullanarak SQL Server Azure 'a yedekleme
 
@@ -36,7 +36,7 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 1. Koruma grubu türü için **sunucular**' ı seçin.
 
     ![Sunucular koruma grubu türünü seçin](./media/backup-azure-backup-sql/pg-servers.png)
-1. Yedeklemek istediğiniz veritabanlarının bulunduğu SQL Server makineyi genişletin. Bu sunucudan yedeklenebileceği veri kaynaklarını görürsünüz. **Tüm SQL paylaşımlarını** genişletin ve ardından yedeklemek istediğiniz veritabanlarını seçin. Bu örnekte, ReportServer $ MSDPM2012 ve ReportServer $ MSDPM2012TempDB ' ı seçeceğiz. **İleri**’yi seçin.
+1. Yedeklemek istediğiniz veritabanlarının bulunduğu SQL Server örneğini genişletin. Bu sunucudan yedeklenebileceği veri kaynaklarını görürsünüz. **Tüm SQL paylaşımlarını** genişletin ve ardından yedeklemek istediğiniz veritabanlarını seçin. Bu örnekte, ReportServer $ MSDPM2012 ve ReportServer $ MSDPM2012TempDB ' ı seçeceğiz. **İleri**’yi seçin.
 
     ![SQL Server veritabanı seçin](./media/backup-azure-backup-sql/pg-databases.png)
 1. Koruma grubunu adlandırın ve **çevrimiçi koruma**istiyorum ' u seçin.
@@ -64,14 +64,14 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 
     ![MABS 'te çoğaltma oluşturma yöntemi seçme](./media/backup-azure-backup-sql/pg-manual.png)
 
-    İlk yedekleme kopyası, tüm veri kaynağının (SQL Server veritabanı) aktarılmasını gerektirir. Yedekleme verileri üretim sunucusundan (SQL Server makineden) MABS 'ye gider. Bu yedekleme büyükse, verilerin ağ üzerinden aktarılması bant genişliği tıkanıklığı sağlayabilir. Bu nedenle, Yöneticiler ilk yedeklemenin **el ile**aktarılması için çıkarılabilir medya kullanmayı seçebilir. Ya da verileri belirli bir zamanda **ağ üzerinden otomatik olarak** aktarabilirler.
+    İlk yedekleme kopyası, tüm veri kaynağının (SQL Server veritabanı) aktarılmasını gerektirir. Yedekleme verileri, üretim sunucusundan (SQL Server bilgisayardan) MABS 'ye gider. Bu yedekleme büyükse, verilerin ağ üzerinden aktarılması bant genişliği tıkanıklığı sağlayabilir. Bu nedenle, Yöneticiler ilk yedeklemenin **el ile**aktarılması için çıkarılabilir medya kullanmayı seçebilir. Ya da verileri belirli bir zamanda **ağ üzerinden otomatik olarak** aktarabilirler.
 
     İlk yedekleme tamamlandıktan sonra yedeklemeler ilk yedekleme kopyasında artımlı olarak devam eder. Artımlı yedeklemeler küçük olma eğilimindedir ve ağ üzerinden kolayca aktarılır.
 1. Tutarlılık denetiminin ne zaman çalıştırılacağını seçin. Ardından **İleri**' yi seçin.
 
     ![Tutarlılık denetiminin ne zaman çalıştırılacağını seçin](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    MABS, yedekleme noktasının bütünlüğü üzerinde bir tutarlılık denetimi çalıştırabilir. Üretim sunucusundaki (Bu örnekteki SQL Server makine) yedekleme dosyasının sağlama toplamını ve bu dosya için MABS içindeki yedeklenen verileri hesaplar. Denetim bir çakışma bulursa, MABS içindeki yedeklenen dosyanın bozuk olduğu varsayılır. MABS, sağlama toplamı uyuşmazlığına karşılık gelen blokları göndererek yedeklenen verileri düzeltir. Tutarlılık denetimi performansı yoğun bir işlem olduğundan, Yöneticiler tutarlılık denetimini zamanlamayı veya otomatik olarak çalıştırmayı seçebilirler.
+    MABS, yedekleme noktasının bütünlüğü üzerinde bir tutarlılık denetimi çalıştırabilir. Üretim sunucusundaki (Bu örnekteki SQL Server bilgisayar) yedekleme dosyasının sağlama toplamını ve bu dosya için MABS içindeki yedeklenen verileri hesaplar. Denetim bir çakışma bulursa, MABS içindeki yedeklenen dosyanın bozuk olduğu varsayılır. MABS, sağlama toplamı uyuşmazlığına karşılık gelen blokları göndererek yedeklenen verileri düzeltir. Tutarlılık denetimi performansı yoğun bir işlem olduğundan, Yöneticiler tutarlılık denetimini zamanlamayı veya otomatik olarak çalıştırmayı seçebilirler.
 1. Azure 'da korunacak veri kaynaklarını seçin. Ardından **İleri**' yi seçin.
 
     ![Azure 'da korunacak veri kaynaklarını seçin](./media/backup-azure-backup-sql/pg-sqldatabases.png)

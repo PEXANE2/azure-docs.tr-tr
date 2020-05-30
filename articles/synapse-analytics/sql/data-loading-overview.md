@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 596f4bcf2e3f829430fdc90eb1806a44a84b2bc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 750898d8b3bb74672a44b8073563a4fca0b7eade
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429596"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194095"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
 
@@ -121,7 +121,7 @@ Hazırlama tablosuna veri yüklemek en iyi uygulamadır. Hazırlama tabloları, 
 PolyBase ile veri yüklemek için, bu yükleme seçeneklerinden herhangi birini kullanabilirsiniz:
 
 - [T-SQL Ile PolyBase](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , verileriniz Azure Blob depolama veya Azure Data Lake Store olduğunda iyi bir şekilde çalışabilir. Bu, yükleme işlemi üzerinde en fazla denetim sağlar, ancak dış veri nesneleri tanımlamanızı da gerektirir. Diğer yöntemler, kaynak tablolarını hedef tablolarla eşleştirdiğinizde arka planda bu nesneleri tanımlar.  T-SQL yüklemelerini düzenlemek için Azure Data Factory, SSIS veya Azure işlevlerini kullanabilirsiniz.
-- [SSIS Ile PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , kaynak verileriniz SQL Server, şirket içinde veya bulutta SQL Server olduğunda iyi çalışacaktır. SSIS, kaynağı hedef tablo eşlemelerine tanımlar ve ayrıca yükü düzenler. SSIS paketleriniz zaten varsa, yeni veri ambarı hedefle çalışacak şekilde paketleri değiştirebilirsiniz.
+- [SSIS Ile PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , kaynak verileriniz SQL Server olduğunda iyi sonuç verir. SSIS, kaynağı hedef tablo eşlemelerine tanımlar ve ayrıca yükü düzenler. SSIS paketleriniz zaten varsa, yeni veri ambarı hedefle çalışacak şekilde paketleri değiştirebilirsiniz.
 - [Azure Data Factory (ADF) Ile PolyBase](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) başka bir düzenleme aracıdır.  İşlem hattını tanımlar ve işleri zamanlar.
 - [Azure Databricks Ile PolyBase,](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) bir SQL veri ambarı tablosundan Databricks veri çerçevesine veri aktarır ve/veya databricks veri çerçevesindeki verileri PolyBase kullanarak bir SQL veri ambarı tablosuna yazar.
 

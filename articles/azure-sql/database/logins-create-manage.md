@@ -1,7 +1,7 @@
 ---
 title: Oturum açma bilgilerini ve Kullanıcı hesaplarını kullanarak sunucu ve veritabanı erişimini yetkilendir
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
-description: Azure SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE, oturum açma bilgileri ve Kullanıcı hesapları kullanarak erişim için kullanıcıların kimliğini nasıl doğrulayacağınızı öğrenin. Ayrıca, oturum açma bilgileri ve kullanıcıların eylemleri gerçekleştirmesini ve sorgu verilerini yetkilendirmek için veritabanı rollerini ve açık izinleri nasıl kullanacağınızı öğrenin.
+description: Azure SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE 'in, oturum açma bilgileri ve Kullanıcı hesapları kullanarak erişim için kullanıcıların kimliğini nasıl doğrulayacağını öğrenin. Ayrıca, Kullanıcı Yetkilendirme ve kullanıcılara işlem ve sorgu verileri sağlamak için veritabanı rolleri ve açık izinler verme hakkında bilgi edinin.
 keywords: sql veritabanı güvenliği,veritabanı güvenliği yönetimi,oturum açma güvenliği,veritabanı güvenliği,veritabanı erişimi
 services: sql-database
 ms.service: sql-database
@@ -13,20 +13,20 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 0bf5a16624579a5dc15382b3ec9f2b5641a3b9fc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 296bf84c22313723c328e1775f697ee19dcb8f04
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048395"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220545"
 ---
-# <a name="authorizing-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics 'e veritabanı erişimi verme
+# <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics 'e veritabanı erişimi verme
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Bu makalede şunları öğreneceksiniz:
 
-- Kullanıcıların yönetim görevleri gerçekleştirmesini ve bu veritabanlarında depolanan verilere erişimini sağlamak için Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı) yapılandırma seçenekleri.
-- İlk olarak yeni bir sunucu oluşturulduktan sonra erişim ve yetkilendirme yapılandırması. 
+- Kullanıcıların yönetim görevleri gerçekleştirmesini ve bu veritabanlarında depolanan verilere erişmesini sağlamak için Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı) yapılandırma seçenekleri.
+- İlk olarak yeni bir sunucu oluşturulduktan sonra erişim ve yetkilendirme yapılandırması.
 - Ana veritabanına ve Kullanıcı hesaplarına oturum açma bilgileri ve Kullanıcı hesapları ekleme ve ardından bu hesaplara yönetici izinleri verme.
 - Kullanıcı veritabanlarına, oturum açmalar veya dahil edilen kullanıcı hesaplarıyla ilişkili kullanıcı hesapları ekleme.
 - Veritabanı rollerini ve açık izinleri kullanarak Kullanıcı veritabanlarında izinleri olan kullanıcı hesaplarını yapılandırın.
@@ -44,7 +44,7 @@ Bir Kullanıcı bir veritabanına bağlanmaya çalıştığında, bir kullanıc�
   Bu kimlik doğrulama yöntemiyle kullanıcı bir bağlantı kurmak için bir kullanıcı hesabı adı ve ilişkili parola gönderir. Bu parola, bir oturum açma ile bağlantılı veya bir oturum açma ile bağlantılı *olmayan* Kullanıcı hesaplarını içeren veritabanında depolanan kullanıcı hesapları için ana veritabanında depolanır.
 - [Azure Active Directory Kimlik Doğrulaması](authentication-aad-overview.md)
 
-  Bu kimlik doğrulama yöntemiyle kullanıcı, bir kullanıcı hesabı adı ve hizmetin Azure Active Directory depolanan kimlik bilgisi bilgilerini kullandığı istekleri gönderir.
+  Bu kimlik doğrulama yöntemiyle kullanıcı, bir kullanıcı hesabı adı ve hizmetin Azure Active Directory (Azure AD) ' de depolanan kimlik bilgisi bilgilerini kullandığı istekleri gönderir.
 
 **Oturum açmalar ve kullanıcılar**: bir veritabanındaki bir kullanıcı hesabı, ana veritabanında depolanan bir oturum ile ilişkilendirilebilir veya ayrı bir veritabanında depolanan bir Kullanıcı adı olabilir.
 
@@ -57,8 +57,8 @@ Veri erişimi ve çeşitli eylemleri gerçekleştirme [**yetkilendirmesi**](secu
 
 Azure SQL 'i ilk kez dağıttığınızda, bu oturum açma için yönetici oturumu ve ilişkili bir parola belirtirsiniz. Bu yönetim hesabına **Sunucu Yöneticisi**adı verilir. Dağıtım sırasında, ana ve Kullanıcı veritabanlarındaki oturum açma ve kullanıcıların aşağıdaki yapılandırması oluşur:
 
-- Yönetim ayrıcalıklarına sahip bir SQL oturumu açma, belirttiğiniz oturum açma adı kullanılarak oluşturulur. [Oturum açma](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) , SQL VERITABANı, SQL yönetilen örneği ve Azure SYNAPSE 'de oturum açmaya yönelik bireysel bir kullanıcı hesaplarıdır.
-- Bu oturum açma, tüm veritabanlarında [sunucu düzeyi sorumlusu](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)olarak tam yönetim izinleri verilmesini ister. Bu oturum açma tüm kullanılabilir izinlere sahip ve sınırlandırılamıyor. SQL yönetilen örneğinde, bu oturum açma [sysadmin sabit sunucu rolüne](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) eklenir (Bu rol Azure SQL veritabanında bulunmaz).
+- Yönetim ayrıcalıklarına sahip bir SQL oturumu açma, belirttiğiniz oturum açma adı kullanılarak oluşturulur. [Oturum açma](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) , SQL VERITABANı, SQL yönetilen örneği ve Azure SYNAPSE 'da oturum açmak için bireysel bir kullanıcı hesabıdır.
+- Bu oturum açma, tüm veritabanlarında [sunucu düzeyi sorumlusu](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)olarak tam yönetim izinleri verilmesini ister. Oturum açma tüm kullanılabilir izinlere sahiptir ve bunlarla sınırlı olamaz. SQL yönetilen örneğinde, bu oturum açma [sysadmin sabit sunucu rolüne](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) eklenir (Bu rol Azure SQL veritabanında bulunmaz).
 - [user account](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` Bu oturum için her kullanıcı veritabanında çağrılan bir kullanıcı hesabı oluşturulur. [Dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) kullanıcısı veritabanında tüm veritabanı izinlerine sahiptir ve `db_owner` sabit veritabanı rolüne eşlenir. Ek sabit veritabanı rolleri bu makalenin ilerleyen kısımlarında ele alınmıştır.
 
 Bir veritabanının yönetici hesaplarını belirlemek için, Azure portal açın ve sunucunuzun veya yönetilen örneğinizin **Özellikler** sekmesine gidin.
@@ -74,23 +74,23 @@ Bir veritabanının yönetici hesaplarını belirlemek için, Azure portal açı
 
 Bu noktada, sunucunuz veya yönetilen örneğiniz yalnızca tek bir SQL oturum açma ve Kullanıcı hesabı kullanılarak erişim için yapılandırılmıştır. Tam veya kısmi yönetim izinleriyle ek oturumlar oluşturmak için aşağıdaki seçeneklere (dağıtım modunuza bağlı olarak) sahipsiniz:
 
-- **Tam yönetim izinlerine sahip bir Azure Active Directory yönetici hesabı oluşturun**
+- **Tam yönetici izinleriyle bir Azure Active Directory yönetici hesabı oluşturun**
 
-  Azure Active Directory kimlik doğrulamasını etkinleştirin ve bir Azure AD yönetici oturumu oluşturun. Bir Azure Active Directory hesap, tam yönetici izinleriyle SQL dağıtımının Yöneticisi olarak yapılandırılabilir. Bu hesap, bir bireysel veya güvenlik grubu hesabı olabilir. SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'e bağlanmak için Azure AD hesapları kullanmak istiyorsanız bir Azure **ad Yöneticisi yapılandırılmalıdır** . Tüm SQL dağıtım türleri için Azure AD kimlik doğrulamasını etkinleştirme hakkında ayrıntılı bilgi için aşağıdaki makalelere bakın:
+  Azure Active Directory kimlik doğrulamasını etkinleştirin ve bir Azure AD yönetici oturumu oluşturun. Bir Azure Active Directory hesap, Azure SQL dağıtımının Yöneticisi olarak tam yönetici izinleriyle yapılandırılabilir. Bu hesap, bir bireysel veya güvenlik grubu hesabı olabilir. SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'e bağlanmak için Azure AD hesapları kullanmak istiyorsanız bir Azure **ad Yöneticisi yapılandırılmalıdır** . Tüm Azure SQL dağıtım türleri için Azure AD kimlik doğrulamasını etkinleştirme hakkında ayrıntılı bilgi için aşağıdaki makalelere bakın:
 
   - [SQL ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullanma](authentication-aad-overview.md)
   - [SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](authentication-aad-configure.md)
 
-- **SQL yönetilen örneği 'nde, tam yönetim izinlerine sahip SQL oturum açmaları oluşturun**
+- **SQL yönetilen örneği 'nde, tam yönetici izinleriyle SQL oturumları oluşturun**
 
-  - Ana veritabanında ek bir SQL oturumu oluşturma
+  - Ana veritabanında ek bir SQL oturum açma oluşturun.
   - [Alter Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) deyimini kullanarak [sysadmin sabit sunucu rolüne](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) oturum açma ekleyin. Bu oturum açma tam yönetim izinlerine sahip olacaktır.
   - Alternatif olarak, [create LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) sözdizimini kullanarak BIR [Azure ad oturum açma](authentication-aad-configure.md)#provision-Azure-AD-admin-SQL-Managed-Instance) oluşturun.
 
-- **SQL veritabanı 'nda, sınırlı yönetim izinlerine sahip SQL oturum açmaları oluşturun**
+- **SQL veritabanı 'nda, sınırlı yönetim izinleriyle SQL oturumları oluşturun**
 
-  - Ana veritabanında ek bir SQL oturumu oluşturma
-  - Ana veritabanında bu yeni oturum açmayla ilişkili bir kullanıcı hesabı oluşturun
+  - Ana veritabanında ek bir SQL oturum açma oluşturun.
+  - Ana veritabanında bu yeni oturum açmayla ilişkili bir kullanıcı hesabı oluşturun.
   - `dbmanager` `loginmanager` Alter Server role deyimini kullanarak veritabanında, role veya her ikisine de Kullanıcı hesabını ekleyin `master` (Azure [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) SYNAPSE için [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) deyimini kullanın).
 
   > [!NOTE]
@@ -112,13 +112,13 @@ Yönetici olmayan kullanıcılar için, iki yöntemden birini kullanarak hesap o
 
   Bir kullanıcının erişim ihtiyacı olan veritabanında ( [Kapsanan kullanıcı](/sql/relational-databases/security/contained-database-users-making-your-database-portable)olarak da adlandırılır) bir kullanıcı hesabı oluşturun.
 
-  - Bir SQL veritabanı ile, her zaman bu tür bir kullanıcı hesabı oluşturabilirsiniz.
+  - SQL veritabanı ile, her zaman bu tür bir kullanıcı hesabı oluşturabilirsiniz.
   - [Azure AD Server sorumlularını](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)destekleyen SQL yönetilen örneği sayesinde, veritabanı kullanıcılarının kapsanan veritabanı kullanıcısı olarak OLUŞTURULMASıNı gerektirmeden SQL yönetilen örneği için kimlik doğrulaması yapmak üzere Kullanıcı hesapları oluşturabilirsiniz.
 
-  Bu yaklaşımda, Kullanıcı kimlik doğrulama bilgileri her bir veritabanında depolanır ve coğrafi olarak çoğaltılan veritabanlarına otomatik olarak çoğaltılır. Ancak, birden çok veritabanında aynı hesap varsa ve SQL kimlik doğrulaması kullanıyorsanız, parolaları el ile eşitlenmiş tutmanız gerekir. Ayrıca, bir kullanıcının farklı parolalara sahip farklı veritabanlarında bir hesabı varsa, bu Parolaları hatırlama bir sorun haline gelebilir.
+  Bu yaklaşımda, Kullanıcı kimlik doğrulama bilgileri her bir veritabanında depolanır ve coğrafi olarak çoğaltılan veritabanlarına otomatik olarak çoğaltılır. Ancak, birden çok veritabanında aynı hesap varsa ve Azure SQL kimlik doğrulaması kullanıyorsanız, parolaları el ile eşitlenmiş tutmanız gerekir. Ayrıca, bir kullanıcının farklı parolalara sahip farklı veritabanlarında bir hesabı varsa, bu Parolaları hatırlama bir sorun haline gelebilir.
 
 > [!IMPORTANT]
-> Azure AD kimlikleriyle eşleştirilmiş kapsanan kullanıcıları oluşturmak için, SQL veritabanında yönetici olan bir Azure AD hesabı kullanarak oturum açmış olmanız gerekir. SQL yönetilen örneğinde, izinlerle bir SQL oturumu açma `sysadmin` da Azure AD oturum açma veya Kullanıcı oluşturabilir.
+> Azure AD kimlikleriyle eşleştirilmiş kapsanan kullanıcıları oluşturmak için Azure SQL veritabanı 'nda veritabanında yönetici olan bir Azure AD hesabı kullanarak oturum açmış olmanız gerekir. SQL yönetilen örneğinde, izinlerle bir SQL oturumu açma `sysadmin` da Azure AD oturum açma veya Kullanıcı oluşturabilir.
 
 Oturum açma ve Kullanıcı oluşturma işlemlerini gösteren örnekler için bkz.:
 
@@ -171,4 +171,4 @@ Verimli erişim yönetimi, bireysel kullanıcılar yerine Active Directory güve
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tüm SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış için bkz. [SQL güvenliğine genel bakış](security-overview.md).
+Tüm Azure SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış için bkz. [Güvenliğe genel bakış](security-overview.md).

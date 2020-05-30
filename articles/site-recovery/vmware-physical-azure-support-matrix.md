@@ -3,12 +3,12 @@ title: Azure Site Recovery 'de VMware/fiziksel olağanüstü durum kurtarma içi
 description: Azure Site Recovery kullanarak, VMware VM 'Leri ve fiziksel sunucu ile Azure arasında olağanüstü durum kurtarma desteğini özetler.
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: d8e7b2f8f6483d462f781d95011ef7b972e83b87
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 52c5b20a4411d865f88a5010ed1b0b3b309345ac
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801799"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190641"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -19,14 +19,14 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak VMware V
 
 ## <a name="deployment-scenarios"></a>Dağıtım senaryoları
 
-**Senaryo** | **Bilgileri**
+**Senaryo** | **Ayrıntılar**
 --- | ---
 VMware VM 'lerinin olağanüstü durum kurtarması | Şirket içi VMware VM 'lerinin Azure 'a çoğaltılması. Bu senaryoyu Azure portal veya [PowerShell](vmware-azure-disaster-recovery-powershell.md)kullanarak dağıtabilirsiniz.
 Fiziksel sunucuların olağanüstü durum kurtarması | Şirket içi Windows/Linux fiziksel sunucularını Azure 'a çoğaltma. Bu senaryoyu Azure portal dağıtabilirsiniz.
 
 ## <a name="on-premises-virtualization-servers"></a>Şirket içi sanallaştırma sunucuları
 
-**Sunucu** | **Gereksinimler** | **Bilgileri**
+**Sunucu** | **Gereksinimler** | **Ayrıntılar**
 --- | --- | ---
 vCenter Server | Sürüm 6,7, 6,5, 6,0 veya 5,5 | Olağanüstü durum kurtarma dağıtımınızda bir vCenter sunucusu kullanmanızı öneririz.
 vSphere Konakları | Sürüm 6,7, 6,5, 6,0 veya 5,5 | VSphere konaklarının ve vCenter sunucularının, işlem sunucusuyla aynı ağda bulunmasını öneririz. Varsayılan olarak, işlem sunucusu yapılandırma sunucusunda çalışır. [Daha fazla bilgi edinin](vmware-physical-azure-config-process-server-overview.md).
@@ -63,7 +63,7 @@ Site Recovery, desteklenen bir makinede çalışan herhangi bir iş yükünün �
 > [!Note]
 > Aşağıdaki tabloda, BIOS önyüklemesi olan makineler için destek listelenmiştir. UEFı tabanlı makinelerde destek için lütfen [depolama](#storage) bölümüne bakın.
 
-**Bileşen** | **Bilgileri**
+**Bileşen** | **Ayrıntılar**
 --- | ---
 Makine ayarları | Azure 'a çoğaltılan makinelerin [Azure gereksinimlerini](#azure-vm-requirements)karşılaması gerekir.
 Makine iş yükü | Site Recovery, desteklenen bir makinede çalışan herhangi bir iş yükünün çoğaltılmasını destekler. [Daha fazla bilgi edinin](https://aka.ms/asr_workload).
@@ -117,7 +117,7 @@ Debian 8 | [9,29][9.29 UR] | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AM
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 desteklenen çekirdek sürümü
 
-**Yayınla** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
+**Yayın** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,28][9.28 UR] | SP1 3.12.49-11-varsayılan olarak 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-varsayılan olarak 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69-varsayılan olarak 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-varsayılan olarak 4.4.121-92.117-default</br></br>SP3 4.4.73-5-varsayılan olarak 4.4.180-94.100-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41-varsayılan olarak 4.12.14-95.29-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.23-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,27][9.27 UR] | SP1 3.12.49-11-varsayılan olarak 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-varsayılan olarak 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-varsayılan olarak 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-varsayılan olarak 4.4.121-92.114-default</br></br>SP3 4.4.73-5-varsayılan olarak 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41-varsayılan olarak 4.12.14-95.19-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.15-Azure |
@@ -126,7 +126,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,25][9.25 UR] | SP1 3.1
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 desteklenen çekirdek sürümü
 
-**Yayınla** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
+**Yayın** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,32](https://support.microsoft.com/help/4550047/) | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir. </br></br> 4.12.14-5,5-Azure to 4.12.14-8.22-Azure
 
@@ -146,12 +146,12 @@ Cihaz/bağlama noktası adlandırma kuralı | Cihaz adı veya bağlama noktası 
 Dizinler | Mobility hizmetinin sürüm 9,20 ' den önceki bir sürümünü çalıştırıyorsanız ( [güncelleştirme paketi 31](https://support.microsoft.com/help/4478871/)' de yayımlanmıştır), bu kısıtlamalar uygulanır:<br/><br/> -Bu dizinler (ayrı bölümler/dosya sistemleri olarak ayarlandıysa) kaynak sunucudaki aynı işletim sistemi diskinde olmalıdır:/(kök),/Boot,/usr,/usr/local,/var,/etc.</br> -/Boot dizini bir disk bölümünde olmalı ve bir LVM birimi olmamalıdır.<br/><br/> Sürüm 9,20 ' den itibaren bu kısıtlamalar uygulanmaz. 
 Önyükleme dizini | -Önyükleme diskleri, GPT bölüm biçiminde olmamalıdır. Bu bir Azure mimarisi kısıtlamasıdır. GPT diskleri, veri diskleri olarak desteklenir.<br/><br/> Bir VM 'de birden çok önyükleme diski desteklenmez<br/><br/> -bir LVM biriminde birden fazla disk arasında-/Boot desteklenmez.<br/> -Önyükleme diski olmayan bir makine çoğaltılamıyor.
 Boş alan gereksinimleri| /root bölümünde 2 GB <br/><br/> yükleme klasöründe 250 MB
-XFSv5 | Meta veri sağlama toplamı gibi XFS dosya sistemlerindeki XFSv5 özellikleri desteklenir (Mobility hizmeti sürüm 9,10 ve üzeri).<br/> Bölüm için XFS süper bloğunu denetlemek üzere xfs_info yardımcı programını kullanın. `ftype` 1 olarak ayarlanırsa, XFSv5 özellikleri kullanımda olur.
+XFSv5 | Meta veri sağlama toplamı gibi XFS dosya sistemlerindeki XFSv5 özellikleri desteklenir (Mobility hizmeti sürüm 9,10 ve üzeri).<br/> Bölüm için XFS süper bloğunu denetlemek üzere xfs_info yardımcı programını kullanın. `ftype`1 olarak ayarlanırsa, XFSv5 özellikleri kullanımda olur.
 BTRFS | BTRFS, [güncelleştirme paketi 34](https://support.microsoft.com/help/4490016) (Mobility hizmetinin sürüm 9,22) ve sonraki sürümlerde desteklenir. Şu durumlarda BTRFS desteklenmez:<br/><br/> -BTRFS dosya sistemi alt birimi, koruma etkinleştirildikten sonra değiştirilir.</br> -BTRFS dosya sistemi birden çok diske yayılır.</br> -BTRFS dosya sistemi RAID 'i destekler.
 
 ## <a name="vmdisk-management"></a>VM/disk yönetimi
 
-**Eylem** | **Bilgileri**
+**Eylem** | **Ayrıntılar**
 --- | ---
 Çoğaltılan VM 'de diski yeniden boyutlandır | Yük devretmeden önce kaynak VM 'de, doğrudan VM özelliklerinde desteklenir. Çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeye gerek yoktur.<br/><br/> Yük devretmeden sonra kaynak VM 'yi değiştirirseniz, değişiklikler yakalanmazlar.<br/><br/> Yük devretmeden sonra Azure VM 'de disk boyutunu değiştirirseniz, geri döndüğünüzde Site Recovery güncelleştirmeler ile yeni bir VM oluşturur.
 Çoğaltılan VM 'ye disk ekleme | Desteklenmiyor.<br/> VM için çoğaltmayı devre dışı bırakın, diski ekleyin ve ardından çoğaltmayı yeniden etkinleştirin.
@@ -176,86 +176,86 @@ Konuk/sunucu ağı birden çok NIC | Evet.
 
 **Bileşen** | **Destek**
 --- | ---
-Azure ExpressRoute | Yes
-ILB | Yes
-ELB | Yes
-Azure Traffic Manager | Yes
-Çoklu NIC | Yes
-Ayrılmış IP adresi | Yes
-IPv4 | Yes
-Kaynak IP adresini sakla | Yes
-Azure sanal ağ hizmet uç noktaları<br/> | Yes
-Hızlandırılmış ağ iletişimi | No
+Azure ExpressRoute | Evet
+ILB | Evet
+ELB | Evet
+Azure Traffic Manager | Evet
+Çoklu NIC | Evet
+Ayrılmış IP adresi | Evet
+IPv4 | Evet
+Kaynak IP adresini sakla | Evet
+Azure sanal ağ hizmet uç noktaları<br/> | Evet
+Hızlandırılmış ağ iletişimi | Hayır
 
 ## <a name="storage"></a>Depolama
 **Bileşen** | **Destek**
 --- | ---
 Dinamik disk | İşletim sistemi diski, temel bir disk olmalıdır. <br/><br/>Veri diskleri dinamik diskler olabilir
-Docker disk yapılandırması | No
+Docker disk yapılandırması | Hayır
 Konak NFS | VMware için Evet<br/><br/> Fiziksel sunucular için Hayır
-Ana bilgisayar SAN (Iscsı/FC) | Yes
+Ana bilgisayar SAN (Iscsı/FC) | Evet
 Ana bilgisayar vSAN | VMware için Evet<br/><br/> Fiziksel sunucular için yok
 Ana bilgisayar çok yollu (MPIO) | Evet, Microsoft DSM ile test edildi, EMC PowerPath 5,7 SP4, Clariiyon için EMC PowerPath DSM
 Konak sanal birimleri (Vvir) | VMware için Evet<br/><br/> Fiziksel sunucular için yok
-Konuk/sunucu VMDK | Yes
-Konuk/sunucu paylaşılan küme diski | No
-Konuk/sunucu tarafından şifrelenen disk | No
-Konuk/sunucu NFS | No
+Konuk/sunucu VMDK | Evet
+Konuk/sunucu paylaşılan küme diski | Hayır
+Konuk/sunucu tarafından şifrelenen disk | Hayır
+Konuk/sunucu NFS | Hayır
 Konuk/sunucu Iscsı | Geçiş için-Evet<br/>Olağanüstü durum kurtarma için-Hayır, Iscsı sanal makineye bağlı bir disk olarak yeniden çalışır
-Konuk/sunucu SMB 3,0 | No
-Konuk/sunucu RDM | Yes<br/><br/> Fiziksel sunucular için yok
+Konuk/sunucu SMB 3,0 | Hayır
+Konuk/sunucu RDM | Evet<br/><br/> Fiziksel sunucular için yok
 Konuk/sunucu diski > 1 TB | Evet, disk 1024 MB 'tan büyük olmalıdır<br/><br/>Yönetilen disklere çoğaltma yaparken 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br></br> Depolama hesaplarına çoğaltma yaparken 4.095 GB 'a kadar
-4K mantıksal ve 4k fiziksel sektör boyutuna sahip konuk/sunucu diski | No
-4K mantıksal ve 512 bayt fiziksel kesim boyutuna sahip konuk/sunucu diski | No
-Şeritli disk >4 TB olan konuk/sunucu birimi | Yes
+4K mantıksal ve 4k fiziksel sektör boyutuna sahip konuk/sunucu diski | Hayır
+4K mantıksal ve 512 bayt fiziksel kesim boyutuna sahip konuk/sunucu diski | Hayır
+Şeritli disk >4 TB olan konuk/sunucu birimi | Evet
 Mantıksal birim yönetimi (LVM)| Kalın sağlama-Evet <br></br> Ölçülü kaynak sağlama-Hayır
-Konuk/sunucu-depolama alanları | No
-Konuk/sunucu Hot Add/Remove disk | No
-Konuk/sunucu-diski hariç tut | Yes
-Konuk/sunucu çok yollu (MPIO) | No
+Konuk/sunucu-depolama alanları | Hayır
+Konuk/sunucu Hot Add/Remove disk | Hayır
+Konuk/sunucu-diski hariç tut | Evet
+Konuk/sunucu çok yollu (MPIO) | Hayır
 Konuk/sunucu GPT bölümleri | Beş bölüm [güncelleştirme paketi 37](https://support.microsoft.com/help/4508614/) (Mobility hizmetinin sürüm 9,25) ve sonraki sürümlerde desteklenir. Daha önce dört destekleniyordu.
 ReFS | Dayanıklı dosya sistemi, Mobility hizmeti sürüm 9,23 veya üzeri sürümlerde desteklenir
-Konuk/sunucu EFı/UEFı önyüklemesi | -Windows Server 2012 veya üzeri için desteklenir, Mobility Aracısı sürüm 9,30 ve sonraki sürümleri içeren SLES 12 SP4 ve RHEL 8,0<br/> -Secure UEFı önyükleme türü desteklenmez.
+Konuk/sunucu EFı/UEFı önyüklemesi | -Windows Server 2012 veya üzeri için desteklenir, Mobility Aracısı sürüm 9,30 ve sonraki sürümleri içeren SLES 12 SP4 ve RHEL 8,0<br/> -Secure UEFı önyükleme türü desteklenmez. [Daha fazla bilgi edinin.](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Çoğaltma kanalları
 
 |**Çoğaltma türü**   |**Destek**  |
 |---------|---------|
-|Boşaltılan veri aktarımları (ODX)    |       No  |
-|Çevrimdışı dengeli dağıtım        |   No      |
-| Azure Data Box | No
+|Boşaltılan veri aktarımları (ODX)    |       Hayır  |
+|Çevrimdışı dengeli dağıtım        |   Hayır      |
+| Azure Data Box | Hayır
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure depolama
 
 **Bileşen** | **Destek**
 --- | ---
-Yerel olarak yedekli depolama | Yes
-Coğrafi olarak yedekli depolama | Yes
-Okuma erişimli coğrafi olarak yedekli depolama | Yes
-Seyrek Erişimli Depolama | No
-Sık erişimli depolama| No
-Blok blobları | No
-Bekleyen şifreleme (SSE)| Yes
+Yerel olarak yedekli depolama | Evet
+Coğrafi olarak yedekli depolama | Evet
+Okuma erişimli coğrafi olarak yedekli depolama | Evet
+Seyrek Erişimli Depolama | Hayır
+Sık erişimli depolama| Hayır
+Blok blobları | Hayır
+Bekleyen şifreleme (SSE)| Evet
 Bekleyen şifreleme (CMK)| Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller)
-Premium depolama | Yes
-İçeri/dışarı aktarma hizmeti | No
+Premium depolama | Evet
+İçeri/dışarı aktarma hizmeti | Hayır
 Sanal ağlar için Azure Storage güvenlik duvarları | Evet.<br/> Hedef depolama/önbellek depolama hesabında yapılandırıldı (çoğaltma verilerini depolamak için kullanılır).
 Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katmanlar) | Evet (v1 ile karşılaştırıldığında v2 için Işlem maliyetleri önemli ölçüde yüksektir)
 
 ## <a name="azure-compute"></a>Azure işlem
 
-**Özellik** | **Destek**
+**Öne çıkan özelliği** | **Destek**
 --- | ---
-Kullanılabilirlik kümeleri | Yes
-Kullanılabilirlik alanları | No
-HUB | Yes
-Yönetilen diskler | Yes
+Kullanılabilirlik kümeleri | Evet
+Kullanılabilirlik alanları | Hayır
+HUB | Evet
+Yönetilen diskler | Evet
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri
 
 Azure 'a çoğaltılan şirket içi VM 'Ler, bu tabloda özetlenen Azure VM gereksinimlerini karşılamalıdır. Site Recovery, çoğaltma için bir önkoşul denetimi çalıştırdığında, bazı gereksinimler karşılanmazsa denetim başarısız olur.
 
-**Bileşen** | **Gereksinimler** | **Bilgileri**
+**Bileşen** | **Gereksinimler** | **Ayrıntılar**
 --- | --- | ---
 Konuk işletim sistemi | Çoğaltılan makineler için [desteklenen işletim sistemlerini](#replicated-machines) doğrulayın. | Desteklenmiyorsa denetim başarısız olur.
 Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısız olur.
@@ -290,7 +290,7 @@ Premium P20 veya P30 veya P40 veya P50 disk | 8 KB    | 5 MB/sn | Disk başına 
 Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sn | disk başına 1684 GB
 
 
-**Kaynak veri değişim sıklığı** | **Üst Sınır**
+**Kaynak veri değişim sıklığı** | **Maksimum sınır**
 ---|---
 VM üzerindeki tüm disklerde en yüksek veri değişim sıklığı | 54 MB/sn
 İşlem Sunucusu tarafından desteklenen günlük en fazla veri değişim sıklığı | 2 TB
@@ -303,15 +303,15 @@ VM üzerindeki tüm disklerde en yüksek veri değişim sıklığı | 54 MB/sn
 
 **Eylem** | **Destek**
 --- | ---
-Kasayı kaynak grupları arasında taşıma | No
-Kasayı abonelik içinde ve abonelikler arasında taşıma | No
-Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma | No
-Depolama, ağ, Azure VM 'Leri ve abonelikler arasında taşıma. | No
+Kasayı kaynak grupları arasında taşıma | Hayır
+Kasayı abonelik içinde ve abonelikler arasında taşıma | Hayır
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma | Hayır
+Depolama, ağ, Azure VM 'Leri ve abonelikler arasında taşıma. | Hayır
 
 
 ## <a name="obtain-latest-components"></a>En son bileşenleri edinin
 
-**Adı** | **Açıklama** | **Bilgileri**
+**Adı** | **Açıklama** | **Ayrıntılar**
 --- | --- | ---
 Yapılandırma Sunucusu | Şirket içi yüklendi.<br/> Şirket içi VMware sunucuları veya fiziksel makineler ile Azure arasındaki iletişimleri koordine eder. | - Yapılandırma sunucusu [hakkında bilgi edinin](vmware-physical-azure-config-process-server-overview.md) .<br/> - En son sürüme yükseltme [hakkında bilgi edinin](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) .<br/> - Yapılandırma sunucusunu ayarlama [hakkında bilgi edinin](vmware-azure-deploy-configuration-server.md) .
 İşlem sunucusu | Varsayılan olarak yapılandırma sunucusuna yüklenir.<br/> Çoğaltma verilerini alır, önbelleğe alma, sıkıştırma ve şifreleme ile iyileştirir ve Azure 'a gönderir.<br/> Dağıtımınız büyüdükçe, daha büyük hacimde çoğaltma trafiğini işlemek için ek işlem sunucuları ekleyebilirsiniz. | - İşlem sunucusu [hakkında bilgi edinin](vmware-physical-azure-config-process-server-overview.md) .<br/> - En son sürüme yükseltme [hakkında bilgi edinin](vmware-azure-manage-process-server.md#upgrade-a-process-server) .<br/> - Genişleme işlem sunucularını ayarlama [hakkında bilgi edinin](vmware-physical-large-deployment.md#set-up-a-process-server) .

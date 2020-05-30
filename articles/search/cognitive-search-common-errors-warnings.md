@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 00494a4e071cb3e8b18f04ad7f201935e20c6b3d
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 83c3797cc3d9232f8589527285cc56c5cbff9a8a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171115"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221308"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -71,7 +71,7 @@ Dizin Oluşturucu veri kaynağından belgeyi okudu, ancak belge içeriği belirt
 
 | Nedeni | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
-| Belge anahtarı eksik | Belge anahtarı eksik veya boş olamaz | Tüm belgelerin geçerli belge anahtarlarına sahip olduğundan emin olun |
+| Belge anahtarı eksik | Belge anahtarı eksik veya boş olamaz | Tüm belgelerin geçerli belge anahtarlarına sahip olduğundan emin olun. Belge anahtarı, [Dizin tanımının](https://docs.microsoft.com/rest/api/searchservice/create-index#request-body)bir parçası olarak ' Key ' özelliği ayarlanarak belirlenir. ' Key ' olarak işaretlenen özellik belirli bir belgede bulunamazsa, Dizin oluşturucular bu hatayı alır. |
 | Belge anahtarı geçersiz | Belge anahtarı 1024 karakterden uzun olamaz | Belge anahtarını doğrulama gereksinimlerini karşılayacak şekilde değiştirin. |
 | Alan eşlemesi bir alana uygulanamadı | Eşleme işlevi `'functionName'` alana uygulanamadı `'fieldName'` . Dizi null olamaz. Parametre adı: bayt | Dizin oluşturucuda tanımlı [alan eşlemelerini](search-indexer-field-mappings.md) iki kez kontrol edin ve başarısız olan belgenin belirtilen alanındaki verilerle karşılaştırın. Alan eşlemelerini veya belge verilerini değiştirmek gerekebilir. |
 | Alan değeri okunamadı | Dizindeki sütunun değeri okunamadı `'fieldName'` `'fieldIndex'` . Sunucudan sonuçlar alınırken aktarım düzeyi hatası oluştu. (sağlayıcı: TCP sağlayıcısı, hata: 0-var olan bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı.) | Bu hatalar genellikle veri kaynağının temelindeki hizmet ile ilgili beklenmedik bağlantı sorunlarından kaynaklanır. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |

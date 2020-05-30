@@ -1,6 +1,6 @@
 ---
-title: Denetim Günlüğü Biçimi
-description: Azure SQL ve Azure SYNAPSE denetim günlüklerinin nasıl yapılandırıldığını anlayın.
+title: SQL veritabanı denetim günlüğü biçimi
+description: Azure SQL veritabanı denetim günlüklerinin nasıl yapılandırıldığını anlayın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,30 +10,30 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
-ms.openlocfilehash: 33a82cb5e4daac96d51f19de21e817b07237ec20
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 82e0cec514849eb41272e6b25dcce74eabfa2b8d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041664"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190304"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL veritabanı denetim günlüğü biçimi
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 [Azure SQL veritabanı denetimi](auditing-overview.md) , veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar veya bunları aşağı akış işleme ve analiz Için Olay Hub 'ına veya Log Analytics gönderir.
 
-## <a name="naming-conventions"></a>Adlandırma Kuralları
+## <a name="naming-conventions"></a>Adlandırma kuralları
 
 ### <a name="blob-audit"></a>Blob denetimi
 
-Blob depolamada depolanan denetim günlükleri `sqldbauditlogs` , Azure depolama hesabında adlı bir kapsayıcıda depolanır. Kapsayıcı içindeki dizin hiyerarşisi formundadır `<ServerName>/<DatabaseName>/<AuditName>/<Date>/` . Blob filename biçimi `<CreationTime>_<FileNumberInSession>.xel` , burada `CreationTime` UTC `hh_mm_ss_ms` biçimindedir ve `FileNumberInSession` oturum günlüklerinin birden çok blob dosyasına yayıldığı durumlarda çalışan bir dizindir.
+Azure Blob depolamada depolanan denetim günlükleri `sqldbauditlogs` , Azure depolama hesabında adlı bir kapsayıcıda depolanır. Kapsayıcı içindeki dizin hiyerarşisi formundadır `<ServerName>/<DatabaseName>/<AuditName>/<Date>/` . BLOB dosya adı biçimi biçimindedir `<CreationTime>_<FileNumberInSession>.xel` , burada `CreationTime` UTC `hh_mm_ss_ms` biçimindedir ve `FileNumberInSession` oturum günlüklerinin birden çok blob dosyasına yayıldığı durumlarda çalışan bir dizindir.
 
 Örneğin, aşağıdaki veritabanı için `Database1` `Server1` olası geçerli bir yol verilmiştir:
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-[Salt okuma çoğaltmaları](read-scale-out.md) Denetim günlükleri aynı kapsayıcıda depolanır. Kapsayıcı içindeki dizin hiyerarşisi formundadır `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` . BLOB dosya adı aynı biçimi paylaşır. Salt okuma çoğaltmalarının denetim günlükleri aynı kapsayıcıda depolanır.
+[Salt okuma çoğaltmaları](read-scale-out.md) denetim günlükleri aynı kapsayıcıda depolanır. Kapsayıcı içindeki dizin hiyerarşisi formundadır `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` . BLOB dosya adı aynı biçimi paylaşır. Salt okuma çoğaltmalarının denetim günlükleri aynı kapsayıcıda depolanır.
 
 
 ### <a name="event-hub"></a>Olay Hub'ı
@@ -92,6 +92,6 @@ Denetim olayları, denetim yapılandırması sırasında tanımlanan Log Analyti
 | user_defined_event_id | user_defined_event_id_d | Sp_audit_write bir bağımsız değişken olarak Kullanıcı tanımlı olay KIMLIĞI geçirildi. Sistem olayları için NULL (varsayılan) ve Kullanıcı tanımlı olay için sıfır olmayan değer. Daha fazla bilgi için bkz. [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
 | user_defined_information | user_defined_information_s | Sp_audit_write için bir bağımsız değişken olarak geçirilen kullanıcı tanımlı bilgiler. Sistem olayları için NULL (varsayılan) ve Kullanıcı tanımlı olay için sıfır olmayan değer. Daha fazla bilgi için bkz. [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar (4000) | string |
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure SQL veritabanı denetimi](auditing-overview.md)hakkında daha fazla bilgi edinin.

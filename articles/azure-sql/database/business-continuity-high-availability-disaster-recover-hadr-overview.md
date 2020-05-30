@@ -1,7 +1,7 @@
 ---
 title: Bulut iş sürekliliği-veritabanı kurtarma
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Azure SQL veritabanı ve SQL yönetilen örneği 'nin bulut iş sürekliliği ve veritabanı kurtarmayı nasıl desteklediğini ve görev açısından kritik bulut uygulamalarının çalışır durumda tutulmasına yardımcı olun.
+description: Azure SQL veritabanı ve SQL yönetilen örneği 'nin bulut iş sürekliliği ve veritabanı kurtarmayı nasıl destekledikleri ve görev açısından kritik bulut uygulamalarının çalışır durumda tutulmasına yardımcı olun.
 keywords: iş sürekliliği, bulutta iş sürekliliği, veritabanı olağanüstü durum kurtarma, veritabanı kurtarma
 services: sql-database
 ms.service: sql-database
@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 8ae58cedecf0b1dab488dac00b68e2b9a8c12e46
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8312fe1370ded990bd3523d531d168fd2cac5564
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043607"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84189772"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Veritabanı'nda iş sürekliliğine genel bakış
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ Azure SQL veritabanı ve SQL yönetilen örneğindeki **iş sürekliliği** , i�
 
 - Kullanıcı yanlışlıkla tablodaki bir satırı sildi veya güncelleştirdik.
 - Kötü amaçlı saldırgan, verileri silme veya bir veritabanını bırakma işlemi başarılı oldu.
-- Deprem, güç kesintisi ve geçici olarak devre dışı olan veri merkezine neden oldu.
+- Deprem, güç kesintisi ve geçici olarak devre dışı bir veri merkezi.
 
 Bu genel bakışta, SQL veritabanı ve SQL yönetilen örneğinin iş sürekliliği ve olağanüstü durum kurtarma için sağladığı yetenekler açıklanır. Veri kaybına neden olabilecek veya veritabanınızın ve uygulamanızın kullanılamaz hale gelmesine neden olabilecek kurtarmayan olaylardan kurtarmaya yönelik seçenekler, öneriler ve öğreticiler hakkında bilgi edinin. Bir kullanıcı veya uygulama hatası veri bütünlüğünü etkiliyorsa, bir Azure bölgesinin kesintiye neden olması veya uygulamanızın bakım gerektirmesi durumunda ne yapılacağını öğrenin.
 
@@ -51,7 +51,7 @@ SQL veritabanı ve SQL yönetilen örneği, çeşitli planlanmamış senaryolar�
 - Silinen bir veritabanını, **sunucu silinmediği**zaman silinmiş [bir noktaya geri yükleyebilirsiniz](recovery-using-backups.md#deleted-database-restore) .
 - [Uzun süreli yedek saklama](long-term-retention-overview.md) , yedeklemeleri 10 yıla kadar tutmanıza olanak sağlar. Bu, SQL yönetilen örneği için sınırlı genel önizleme aşamasındadır
 - [Etkin coğrafi çoğaltma](active-geo-replication-overview.md) , veri merkezi kesintisi veya uygulama yükseltmesi durumunda okunabilir çoğaltmalar oluşturmanıza ve herhangi bir çoğaltmaya el ile yük devretmenize olanak sağlar.
-- [Otomatik yük devretme grubu](auto-failover-group-overview.md#terminology-and-capabilities) , veri merkezi kesintisi durumunda uygulamanın otomatik olarak kurtarılmasını sağlar.
+- [Otomatik yük devretme grubu](auto-failover-group-overview.md#terminology-and-capabilities) , bir veri merkezi kesintisi durumunda uygulamanın otomatik olarak kurtarılmasını sağlar.
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>Aynı Azure bölgesi içindeki bir veritabanını kurtarma
 
@@ -76,9 +76,9 @@ Zaman içinde nokta geri yükleme (ıNR) için desteklenen en fazla yedekleme sa
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Bir veritabanını mevcut sunucuya kurtar
 
-Çok sık olmasa da Azure veri merkezlerinde kesintiler yaşanabilir. Kesinti yaşandığında yalnızca birkaç dakika sürebilecek veya saatler alacak bir hizmet kesintisi söz konusu olabilir.
+Nadir olarak, bir Azure veri merkezinde kesinti olabilir. Kesinti yaşandığında yalnızca birkaç dakika sürebilecek veya saatler alacak bir hizmet kesintisi söz konusu olabilir.
 
-- Seçeneklerden biri, veri merkezi kesintisi sona erdiğinde veritabanınızın çevrimdışı olmasını beklemektir. Bu, veritabanının çevrimdışı olmasının kabul edilebildiği uygulamalar için geçerlidir. Örnek olarak üzerinde sürekli çalışma yapmadığınız bir geliştirme projesi veya ücretsiz deneme sürümü verilebilir. Bir veri merkezinde kesinti olduğunda, kesinti ne kadar süreyle en son olabileceğini bilemezsiniz, bu nedenle bu seçenek yalnızca veritabanınızın bir süredir olması gerekmiyorsa geçerlidir.
+- Tek bir seçenek, veri merkezi kesintisi olduğunda veritabanınızın çevrimiçi duruma gelmesini bekleyeyöneliktir. Bu, veritabanının çevrimdışı olmasının kabul edilebildiği uygulamalar için geçerlidir. Örnek olarak üzerinde sürekli çalışma yapmadığınız bir geliştirme projesi veya ücretsiz deneme sürümü verilebilir. Bir veri merkezinde kesinti olduğunda, kesintiden en son ne kadar süre sürdüğünü bilemezsiniz, bu nedenle bu seçenek yalnızca veritabanınızın bir süredir gerekli olmadığı durumlarda işe yarar.
 - Diğer bir seçenek de, [coğrafi olarak yedekli veritabanı yedeklemeleri](recovery-using-backups.md#geo-restore) (coğrafi geri yükleme) kullanarak herhangi bir Azure bölgesindeki sunucuda bir veritabanını geri yüklemektir. Coğrafi geri yükleme, kaynağı olarak coğrafi olarak yedekli bir yedek kullanır ve veritabanı ya da veri merkezi bir kesinti nedeniyle erişilemez olsa bile bir veritabanını kurtarmak için kullanılabilir.
 - Son olarak, [etkin coğrafi çoğaltma](active-geo-replication-overview.md) veya veritabanınız ya da veritabanlarınız için bir [otomatik yük devretme grubu](auto-failover-group-overview.md) kullanarak coğrafi ikincil yapılandırma yaptıysanız bir kesinti ile hızlı bir şekilde kurtarma yapabilirsiniz. Bu teknolojilerin seçiminize bağlı olarak, el ile veya otomatik yük devretmeyi kullanabilirsiniz. Yük devretme işlemi yalnızca birkaç saniye sürer, ancak hizmeti etkinleştirmek için en az 1 saat sürer. Bu, yük devretmenin kesinti ölçeğinde bir şekilde hizalı olduğundan emin olmak için gereklidir. Ayrıca, yük devretme, zaman uyumsuz çoğaltmanın doğası nedeniyle küçük veri kaybına neden olabilir.
 
@@ -109,7 +109,7 @@ Uygulamanız şu ölçütlerden herhangi birini karşılıyorsa otomatik yük de
 
 Uygulama gereksinimlerinize bağlı olarak, bir veritabanı yedeklemeleri ve etkin coğrafi çoğaltma birleşimini kullanmayı tercih edebilirsiniz. Tek başına veritabanlarına yönelik tasarım konuları ve bu iş sürekliliği özelliklerini kullanan elastik havuzlar hakkında bir tartışma için bkz. [bulut olağanüstü durum kurtarma](designing-cloud-solutions-for-disaster-recovery.md) ve [Esnek havuz olağanüstü durum kurtarma stratejileri](disaster-recovery-strategies-for-applications-with-elastic-pool.md)için uygulama tasarlama.
 
-Aşağıdaki bölümlerde, veritabanı yedeklemeleri veya etkin coğrafi çoğaltma kullanarak kurtarmaya yönelik adımlara genel bir bakış sağlanmaktadır. Planlama gereksinimleri, kurtarma sonrası adımları ve olağanüstü durum kurtarma detayına yönelik bir kesinti benzetimi yapma hakkında ayrıntılı adımlar için bkz. [SQL veritabanını bir kesinti Ile kurtarma](disaster-recovery-guidance.md).
+Aşağıdaki bölümlerde, veritabanı yedeklemeleri veya etkin coğrafi çoğaltma kullanarak kurtarmaya yönelik adımlara genel bir bakış sağlanmaktadır. Planlama gereksinimleri, kurtarma sonrası adımları ve olağanüstü durum kurtarma detayına yönelik bir kesinti benzetimi yapma hakkında ayrıntılı adımlar için bkz. [SQL veritabanı 'nda bir veritabanını bir kesinti Ile kurtarma](disaster-recovery-guidance.md).
 
 ### <a name="prepare-for-an-outage"></a>Kesinti için hazırlanma
 
@@ -133,17 +133,17 @@ Kurtarma mekanizmanız olarak etkin coğrafi çoğaltma veya otomatik yük devre
 Otomatik yedeklemeleri coğrafi olarak yedekli depolama (varsayılan olarak etkindir) ile kullanıyorsanız, [coğrafi geri yükleme](disaster-recovery-guidance.md#recover-using-geo-restore)kullanarak veritabanını kurtarabilirsiniz. Kurtarma genellikle, son günlük yedeklemenin alındığı ve çoğaltılıp çoğaltılma göre belirlenen bir saate kadar bir saatlik veri kaybı ile 12 saat içinde gerçekleşir. Kurtarma işlemi tamamlanana kadar veritabanı işlem kaydedemez ve sorgulara yanıt veremez. Coğrafi geri yükleme, yalnızca veritabanını zaman içinde son kullanılabilir noktaya geri yükler.
 
 > [!NOTE]
-> Uygulamanızı kurtarılan veritabanına geçiş yapmadan önce veri merkezi tekrar çevrimiçi duruma gelirse, kurtarmayı iptal edebilirsiniz.
+> Uygulamanızı kurtarılan veritabanına geçiş yapmadan önce, veri merkezi yeniden çevrimiçi duruma gelirse kurtarmayı iptal edebilirsiniz.
 
 ### <a name="perform-post-failover--recovery-tasks"></a>Yük devretme/kurtarma sonrası görevleri gerçekleştirme
 
 Bu iki kurtarma sisteminden herhangi biriyle gerçekleştirilen kurtarma işleminden sonra kullanıcılarınızın ve uygulamalarınızın çalışmaya devam etmesi için aşağıdaki ek görevleri gerçekleştirmeniz gerekir:
 
-- İstemcilerin ve istemci uygulamalarının yeni sunucuya ve geri yüklenen veritabanına nasıl yönlendirileceğini belirleme
+- İstemcileri ve istemci uygulamalarını yeni sunucuya ve geri yüklenen veritabanına yeniden yönlendirin.
 - Uygun kuralları etkinleştirmek üzere kullanıcıların bağlanabilmesi veya [veritabanı düzeyinde güvenlik duvarlarını](firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) kullanabilmesi için uygun sunucu düzeyinde IP Güvenlik Duvarı kurallarının yapıldığından emin olun.
-- Uygun giriş bilgilerinin ve ana veritabanı düzeyi izinlerin mevcut olduğunu doğrulama ([kapsanan kullanıcıları](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) da kullanabilirsiniz)
-- Denetimi uygun şekilde yapılandırma
-- Uyarıları uygun şekilde yapılandırma
+- Uygun oturum açma ve ana veritabanı düzeyi izinlerinin yerinde olduğundan emin olun (veya [Kapsanan kullanıcıları](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)kullanın).
+- Uygun şekilde denetimi yapılandırın.
+- Uyarıları uygun şekilde yapılandırın.
 
 > [!NOTE]
 > Bir yük devretme grubu kullanıyorsanız ve okuma-yazma dinleyicisi kullanarak veritabanlarına bağlanıyorsanız, yük devretmeden sonra yeniden yönlendirme otomatik olarak gerçekleşir ve uygulamaya saydam olarak uygulanır.
@@ -154,4 +154,4 @@ Uygulama yükseltmesi gibi planlı bakım nedeniyle bazen bir uygulamanın çevr
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tek başına veritabanları ve elastik havuzlara yönelik uygulama tasarımı değerlendirmeleri hakkında bir tartışma için bkz. [bulut olağanüstü durum kurtarma](designing-cloud-solutions-for-disaster-recovery.md) ve [Esnek havuz olağanüstü durum kurtarma stratejileri](disaster-recovery-strategies-for-applications-with-elastic-pool.md)için uygulama tasarlama.
+Tek veritabanları ve elastik havuzlara yönelik uygulama tasarımı değerlendirmeleri hakkında bir tartışma için bkz. [bulut olağanüstü durum kurtarma](designing-cloud-solutions-for-disaster-recovery.md) ve [elastik havuz olağanüstü durum kurtarma stratejileri](disaster-recovery-strategies-for-applications-with-elastic-pool.md)için uygulama tasarlama.

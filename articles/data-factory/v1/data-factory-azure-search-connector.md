@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281567"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194911"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir Azure Bilişsel Arama dizinine veri gönderme
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -47,7 +47,7 @@ Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri depos
 2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
 3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun.
 
-Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız.  Verileri arama dizinine kopyalamak için kullanılan Data Factory varlıkları için JSON tanımlarına sahip bir örnek için, bkz. [JSON örneği: verileri şirket içi SQL Server kopyalama, bu makalenin Azure bilişsel arama dizini bölümüne kopyalama](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index) .
+Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız.  Verileri arama dizinine kopyalamak için kullanılan Data Factory varlıkları için JSON tanımlarının bulunduğu bir örnek için, bkz. [JSON örneği: SQL Server verileri Bu makalenin Azure bilişsel arama dizinine kopyalama](#json-example-copy-data-from-sql-server-to-azure-cognitive-search-index) .
 
 Aşağıdaki bölümler, bir arama dizinine özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
@@ -57,9 +57,9 @@ Aşağıdaki tabloda, Azure Bilişsel Arama bağlı hizmetine özgü JSON öğel
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
-| type | Type özelliği: **Azuresearch**olarak ayarlanmalıdır. | Yes |
-| url | Arama Hizmeti URL 'SI. | Yes |
-| anahtar | Arama hizmeti için yönetici anahtarı. | Yes |
+| tür | Type özelliği: **Azuresearch**olarak ayarlanmalıdır. | Evet |
+| url | Arama Hizmeti URL 'SI. | Evet |
+| key | Arama hizmeti için yönetici anahtarı. | Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
@@ -67,8 +67,8 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
-| type | Type özelliği **AzureSearchIndex**olarak ayarlanmalıdır.| Yes |
-| indexName | Arama dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Bilişsel Arama mevcut olması gerekir. | Yes |
+| tür | Type özelliği **AzureSearchIndex**olarak ayarlanmalıdır.| Evet |
+| indexName | Arama dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Bilişsel Arama mevcut olması gerekir. | Evet |
 
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
@@ -99,16 +99,16 @@ Aşağıdaki tabloda bir Azure Bilişsel Arama veri türünün desteklenip deste
 
 | Azure Bilişsel Arama veri türü | Azure Bilişsel Arama havuzunda desteklenir |
 | ---------------------- | ------------------------------ |
-| Dize | E |
-| Int32 | E |
-| Int64 | E |
-| Çift | E |
-| Boole | E |
-| Veri Timesapmayı | E |
+| Dize | Y |
+| Int32 | Y |
+| Int64 | Y |
+| Çift | Y |
+| Boole | Y |
+| Veri Timesapmayı | Y |
 | Dize dizisi | N |
 | GeographyPoint | N |
 
-## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>JSON örneği: verileri şirket içi SQL Server Azure Bilişsel Arama dizinine kopyalama
+## <a name="json-example-copy-data-from-sql-server-to-azure-cognitive-search-index"></a>JSON örneği: SQL Server verileri Azure Bilişsel Arama dizinine kopyalayın
 
 Aşağıdaki örnek şunu gösterir:
 
@@ -118,7 +118,7 @@ Aşağıdaki örnek şunu gösterir:
 4. [AzureSearchIndex](#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
 4. [SQLSource](data-factory-sqlserver-connector.md#copy-activity-properties) ve [AzureSearchIndexSink](#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md) .
 
-Örnek, saat serisi verilerini şirket içi SQL Server veritabanından saatlik arama dizinine kopyalar. Bu örnekte kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
+Örnek, zaman serisi verilerini bir SQL Server veritabanından arama dizinine saat başı olarak kopyalar. Bu örnekte kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
 
 İlk adım olarak, şirket içi makinenizde veri yönetimi ağ geçidini kurun. Yönergeler, [Şirket içi konumlar ve bulut makaleleri arasında hareketli verilerde](data-factory-move-data-between-onprem-and-cloud.md) yer alır.
 
@@ -255,7 +255,7 @@ Aşağıdaki örnek şunu gösterir:
 }
 ```
 
-Bir bulut veri deposundan Azure Bilişsel Arama veri kopyalıyorsanız, `executionLocation` özellik gereklidir. Aşağıdaki JSON kod parçacığında örnek olarak kopyalama etkinliği `typeProperties` altında gereken değişiklik gösterilmektedir. Desteklenen değerler ve daha fazla ayrıntı için [bulut veri depoları arasında veri kopyalama](data-factory-data-movement-activities.md#global) bölümüne bakın.
+Bir bulut veri deposundan Azure Bilişsel Arama veri kopyalıyorsanız, `executionLocation` özellik gereklidir. Aşağıdaki JSON kod parçacığında örnek olarak kopyalama etkinliği altında gereken değişiklik gösterilmektedir `typeProperties` . Desteklenen değerler ve daha fazla ayrıntı için [bulut veri depoları arasında veri kopyalama](data-factory-data-movement-activities.md#global) bölümüne bakın.
 
 ```JSON
 "typeProperties": {
@@ -271,7 +271,7 @@ Bir bulut veri deposundan Azure Bilişsel Arama veri kopyalıyorsanız, `executi
 
 
 ## <a name="copy-from-a-cloud-source"></a>Bulut kaynağından kopyalama
-Bir bulut veri deposundan Azure Bilişsel Arama veri kopyalıyorsanız, `executionLocation` özellik gereklidir. Aşağıdaki JSON kod parçacığında örnek olarak kopyalama etkinliği `typeProperties` altında gereken değişiklik gösterilmektedir. Desteklenen değerler ve daha fazla ayrıntı için [bulut veri depoları arasında veri kopyalama](data-factory-data-movement-activities.md#global) bölümüne bakın.
+Bir bulut veri deposundan Azure Bilişsel Arama veri kopyalıyorsanız, `executionLocation` özellik gereklidir. Aşağıdaki JSON kod parçacığında örnek olarak kopyalama etkinliği altında gereken değişiklik gösterilmektedir `typeProperties` . Desteklenen değerler ve daha fazla ayrıntı için [bulut veri depoları arasında veri kopyalama](data-factory-data-movement-activities.md#global) bölümüne bakın.
 
 ```JSON
 "typeProperties": {

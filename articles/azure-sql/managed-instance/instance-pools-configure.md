@@ -1,5 +1,5 @@
 ---
-title: Örnek havuzuna SQL yönetilen örneği dağıtma
+title: SQL yönetilen örneğini bir örnek havuzuna dağıtma
 titleSuffix: Azure SQL Managed Instance
 description: Bu makalede, Azure SQL yönetilen örnek havuzlarının (Önizleme) nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
 services: sql-database
@@ -12,17 +12,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c781e23b23f5dbaf8eba9efe4c27428ef35c7be1
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9b59f6e091143e5c10be393620e4cc042faac36a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113622"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216368"
 ---
-# <a name="deploy-an-azure-sql-managed-instance-to-an-instance-pool"></a>Örnek havuzuna Azure SQL yönetilen örneği dağıtma
+# <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL yönetilen örneğini bir örnek havuzuna dağıtma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Bu makalede, [örnek havuzların](instance-pools-overview.md) nasıl oluşturulacağı ve buna BIR Azure SQL yönetilen örneği dağıtmanın ayrıntıları sağlanmaktadır. 
+Bu makalede, [örnek havuzu](instance-pools-overview.md) oluşturma ve Azure SQL yönetilen örneği dağıtma hakkında ayrıntılı bilgi verilmektedir. 
 
 ## <a name="instance-pool-operations"></a>Örnek havuzu işlemleri
 
@@ -31,22 +31,22 @@ Aşağıdaki tabloda, Azure portal ve PowerShell 'de örnek havuzlarla ilgili ku
 |Komut|Azure portal|PowerShell|
 |:---|:---|:---|
 |Örnek havuzu oluşturma|Hayır|Evet|
-|Örnek havuzunu güncelleştir (sınırlı sayıda özellik)|Hayır |Evet |
-|Örnek havuzunun kullanımını ve özelliklerini denetleme|Hayır|Evet |
-|Örnek havuzunu Sil|Hayır|Evet|
-|Örnek havuzu içinde SQL yönetilen örneği oluştur|Hayır|Evet|
-|SQL yönetilen örnek kaynak kullanımını Güncelleştir|Evet |Yes|
-|SQL yönetilen örnek kullanımını ve özelliklerini denetle|Evet|Yes|
-|SQL yönetilen örneğini havuzdan Sil|Evet|Yes|
+|Örnek havuzunu güncelleştirme (sınırlı sayıda özellik)|Hayır |Evet |
+|Örnek havuzu kullanımını ve özelliklerini denetleme|Hayır|Evet |
+|Örnek havuzu silme|Hayır|Evet|
+|Örnek havuzu içinde yönetilen bir örnek oluşturma|Hayır|Evet|
+|Yönetilen örnek için kaynak kullanımını güncelleştirme|Evet |Yes|
+|Yönetilen örnek için kullanımı ve özellikleri denetleyin|Evet|Yes|
+|Yönetilen bir örneği havuzdan silme|Evet|Yes|
 |Havuzda bir örnek içinde veritabanı oluşturma|Evet|Yes|
 |SQL yönetilen örneğinden bir veritabanını silme|Evet|Yes|
 
-Kullanılabilir [PowerShell komutları](https://docs.microsoft.com/powershell/module/az.sql/)
+Kullanılabilir [PowerShell komutları](https://docs.microsoft.com/powershell/module/az.sql/):
 
 |Cmdlet |Açıklama |
 |:---|:---|
 |[New-Azsqlınstancepool](/powershell/module/az.sql/new-azsqlinstancepool/) | SQL yönetilen örnek havuzu oluşturur. |
-|[Get-Azsqlınstancepool](/powershell/module/az.sql/get-azsqlinstancepool/) | Örnek havuzu hakkında bilgi döndürür. |
+|[Get-Azsqlınstancepool](/powershell/module/az.sql/get-azsqlinstancepool/) | Örnek havuz hakkında bilgi döndürür. |
 |[Set-Azsqlınstancepool](/powershell/module/az.sql/set-azsqlinstancepool/) | SQL yönetilen örneğindeki örnek havuzun özelliklerini ayarlar. |
 |[Remove-Azsqlınstancepool](/powershell/module/az.sql/remove-azsqlinstancepool/) | SQL yönetilen örneğindeki bir örnek havuzunu kaldırır. |
 |[Get-Azsqlınstancepoolusage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | SQL yönetilen örnek havuzu kullanımı hakkında bilgi döndürür. |
@@ -58,13 +58,13 @@ Hem havuzların hem de tek örneklerin içindeki örneklerle ilgili işlemler i�
 
 ## <a name="deployment-process"></a>Dağıtım süreci
 
-Bir SQL yönetilen örneğini bir örnek havuzuna dağıtmak için, ilk olarak, sürenin [boş bir alt ağda oluşturulan tek bir örneği](sql-managed-instance-paas-overview.md#management-operations)dağıtmasıyla aynı olduğu zaman uzun süreli bir işlem olan örnek havuzunu dağıtmanız gerekir. Bundan sonra, genellikle beş dakikaya kadar süren görece hızlı bir işlem olan SQL yönetilen örnekleri havuza dağıtabilirsiniz. Örnek havuzu parametresi, bu işlemin bir parçası olarak açıkça belirtilmelidir.
+Yönetilen bir örneği bir örnek havuzuna dağıtmak için, ilk olarak, sürenin [boş bir alt ağda oluşturulan tek bir örneği](sql-managed-instance-paas-overview.md#management-operations)dağıtmasıyla aynı olduğu zaman uzun süreli bir işlem olan örnek havuzunu dağıtmanız gerekir. Bundan sonra, tipik olarak beş dakikalık bir işlem yapan görece hızlı bir işlem olan bir yönetilen örneği havuza dağıtabilirsiniz. Örnek havuzu parametresi, bu işlemin bir parçası olarak açıkça belirtilmelidir.
 
-Genel önizlemede, her iki eylem yalnızca PowerShell ve Kaynak Yöneticisi şablonları kullanılarak desteklenir. Azure portal deneyimi şu anda kullanılamıyor.
+Genel önizlemede, her iki eylem yalnızca PowerShell ve Azure Resource Manager şablonları kullanılarak desteklenir. Azure portal deneyimi şu anda kullanılamıyor.
 
-SQL yönetilen örneği bir havuza dağıtıldıktan sonra, fiyatlandırma katmanı sayfasında özelliklerini değiştirmek için *Azure Portal kullanabilirsiniz.*
+Yönetilen bir örnek bir havuza dağıtıldıktan sonra, fiyatlandırma katmanı sayfasında özelliklerini değiştirmek için *Azure Portal kullanabilirsiniz.*
 
-## <a name="create-virtual-network-with-a-subnet"></a>Alt ağ ile sanal ağ oluşturma 
+## <a name="create-a-virtual-network-with-a-subnet"></a>Alt ağ ile sanal ağ oluşturma 
 
 Aynı sanal ağın içine birden çok örnek havuzu yerleştirmek için aşağıdaki makalelere bakın:
 
@@ -72,15 +72,15 @@ Aynı sanal ağın içine birden çok örnek havuzu yerleştirmek için aşağı
 - [Azure portal şablonunu](virtual-network-subnet-create-arm-template.md) kullanarak yeni bir sanal ağ ve alt ağ oluşturun veya [var olan bir sanal ağı hazırlama](vnet-existing-add-subnet.md)yönergelerini izleyin.
  
 
-## <a name="create-instance-pool"></a>Örnek havuzu oluşturma 
+## <a name="create-an-instance-pool"></a>Örnek havuzu oluşturma 
 
 Önceki adımları tamamladıktan sonra bir örnek havuzu oluşturmaya hazırlanın.
 
 Aşağıdaki kısıtlamalar örnek havuzlar için geçerlidir:
 
 - Yalnızca Genel Amaçlı ve 5. nesil genel önizlemede kullanılabilir.
-- Havuz adı yalnızca küçük harf, rakam ve kısa çizgi içerebilir ve kısa çizgi ile başlayamaz.
-- AHB 'yi (Azure Hibrit Avantajı) kullanmak istiyorsanız, örnek havuzu düzeyinde uygulanır. Havuz oluşturma sırasında lisans türünü ayarlayabilir veya oluşturulduktan sonra dilediğiniz zaman güncelleştirebilirsiniz.
+- Havuz adı yalnızca küçük harf, sayı ve kısa çizgi içerebilir ve kısa çizgi ile başlayamaz.
+- Azure Hibrit Avantajı kullanmak istiyorsanız, örnek havuzu düzeyinde uygulanır. Havuz oluşturma sırasında lisans türünü ayarlayabilir veya oluşturulduktan sonra dilediğiniz zaman güncelleştirebilirsiniz.
 
 > [!IMPORTANT]
 > Örnek havuzun dağıtımı, yaklaşık 4,5 saat süren uzun süredir çalışan bir işlemdir.
@@ -109,11 +109,11 @@ $instancePool = New-AzSqlInstancePool `
 > [!IMPORTANT]
 > Örnek havuzu dağıtmak uzun süredir çalışan bir işlem olduğundan, bu makalede aşağıdaki adımlardan herhangi birini çalıştırmadan önce tamamlanana kadar beklemeniz gerekir.
 
-## <a name="create-sql-managed-instance"></a>SQL Yönetilen Örnek oluşturma
+## <a name="create-a-managed-instance"></a>Yönetilen örnek oluşturma
 
-Örnek havuzunun başarılı dağıtımından sonra, içinde bir SQL yönetilen örneği oluşturma zamanı.
+Örnek havuzunun başarılı dağıtımından sonra, içinde yönetilen bir örnek oluşturma zamanı.
 
-SQL yönetilen örneği oluşturmak için aşağıdaki komutu yürütün:
+Yönetilen bir örnek oluşturmak için aşağıdaki komutu yürütün:
 
 ```powershell
 $instanceOne = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 2 -StorageSizeInGB 256
@@ -127,9 +127,9 @@ $instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 4 -
 
 ## <a name="create-a-database"></a>Veritabanı oluşturma 
 
-Bir havuz içinde olan bir SQL yönetilen örneğinde veritabanları oluşturup yönetmek için tek örnek komutlarını kullanın.
+Bir havuz içindeki yönetilen bir örnekte veritabanları oluşturup yönetmek için tek örnek komutlarını kullanın.
 
-SQL yönetilen örneği içinde veritabanı oluşturmak için:
+Yönetilen bir örnek içinde veritabanı oluşturmak için:
 
 ```powershell
 $poolinstancedb = New-AzSqlInstanceDatabase -Name "mipooldb1" -InstanceName "poolmi-001" -ResourceGroupName "myResourceGroup"
@@ -172,8 +172,8 @@ $databases = Get-AzSqlInstanceDatabase -InstanceName "pool-mi-001" -ResourceGrou
 ## <a name="scale"></a>Ölçek 
 
 
-Veritabanlarına sahip bir SQL yönetilen örneği doldurduktan sonra, depolama veya performansla ilgili örnek sınırlarına ulaşabiliriz. Bu durumda, havuz kullanımı aşılmışsa, örneğinizi ölçeklendirebilirsiniz.
-Bir havuz içindeki bir SQL yönetilen örneğinin ölçeklendirilmesi, birkaç dakika süren bir işlemdir. Ölçeklendirme için önkoşul, örnek havuzu düzeyindeki sanal çekirdekler ve depolama alanı ile kullanılabilir.
+Yönetilen bir örneği veritabanlarıyla doldurduktan sonra, depolama veya performansla ilgili örnek sınırlarına ulaşırsınız. Bu durumda, havuz kullanımı aşılmışsa, örneğinizi ölçeklendirebilirsiniz.
+Bir havuz içinde yönetilen bir örneğin ölçeklendirilmesi, birkaç dakika süren bir işlemdir. Ölçeklendirme için önkoşul, örnek havuzu düzeyindeki sanal çekirdekler ve depolama alanı ile kullanılabilir.
 
 Sanal çekirdek sayısını ve depolama boyutunu güncelleştirmek için:
 
@@ -190,14 +190,14 @@ $instance | Set-AzSqlInstance -StorageSizeInGB 1024 -InstancePoolName "mi-pool-n
 
 ## <a name="connect"></a>Bağlan 
 
-Bir havuzdaki SQL yönetilen örneğine bağlanmak için aşağıdaki iki adım gereklidir:
+Bir havuzdaki yönetilen bir örneğe bağlanmak için aşağıdaki iki adım gereklidir:
 
-1. [Örnek için genel uç noktasını etkinleştirin](#enable-public-endpoint).
+1. [Örnek için genel uç noktasını etkinleştirin](#enable-the-public-endpoint).
 2. [Ağ güvenlik grubuna (NSG) bir gelen kuralı ekleyin](#add-an-inbound-rule-to-the-network-security-group).
 
 Her iki adım tamamlandıktan sonra, örnek oluşturma sırasında sağlanmış olan genel bir uç nokta adresini, bağlantı noktasını ve kimlik bilgilerini kullanarak örneğe bağlanabilirsiniz. 
 
-### <a name="enable-public-endpoint"></a>Ortak uç noktayı etkinleştir
+### <a name="enable-the-public-endpoint"></a>Genel uç noktayı etkinleştirme
 
 Bir örnek için genel bitiş noktasının etkinleştirilmesi Azure portal aracılığıyla veya aşağıdaki PowerShell komutu kullanılarak yapılabilir:
 
@@ -215,7 +215,7 @@ Bu adım Azure portal veya PowerShell komutları kullanılarak yapılabilir ve a
 Ayrıntılar için bkz. [ağ güvenlik grubunda genel uç nokta trafiğine Izin verme](public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group).
 
 
-## <a name="move-existing-single-instance-to-pool"></a>Mevcut tek örneği havuza taşı
+## <a name="move-an-existing-single-instance-to-a-pool"></a>Mevcut bir örneği havuza taşıma
  
 Örnekleri bir havuzun içine ve dışına taşımak, genel önizleme sınırlamalarından biridir. Geçici bir çözüm, havuzun dışındaki bir örnekten gelen veritabanlarının zaman içinde, zaten havuzda olan bir örneğe geri yüklenmesini kullanır. 
 
@@ -225,7 +225,7 @@ Bu işlem bir süre kapalı kalma süresine sahip olur.
 
 Mevcut veritabanlarını taşımak için:
 
-1. Geçiş yaptığınız SQL yönetilen örneği üzerinde iş yüklerini duraklatın.
+1. Geçiş yaptığınız yönetilen örnekteki iş yüklerini duraklatın.
 2. Sistem veritabanları oluşturmak ve bunları örnek havuzunun içindeki örnekte yürütmek için komut dosyaları oluşturun.
 3. Her bir veritabanının tek örneğinden havuzdaki örneğe bir noktadan noktaya geri yükleme yapın.
 
@@ -248,7 +248,7 @@ Mevcut veritabanlarını taşımak için:
       -TargetInstanceName $targetInstanceName
     ```
 
-4. Uygulamanızı yeni örneğe getirin ve iş yüklerinin yeniden sürdürülemez.
+4. Uygulamanızı yeni örneğe getirin ve iş yüklerini sürdürülemez.
 
 Birden çok veritabanı varsa, her veritabanı için işlemi yineleyin.
 
@@ -257,7 +257,7 @@ Birden çok veritabanı varsa, her veritabanı için işlemi yineleyin.
 
 - Özellikler ve karşılaştırma listesi için bkz. [SQL ortak özellikleri](../database/features-comparison.md).
 - VNet yapılandırması hakkında daha fazla bilgi için bkz. [SQL yönetilen örnek VNET yapılandırması](connectivity-architecture-overview.md).
-- Yönetilen bir örnek oluşturan ve bir veritabanını bir yedekleme dosyasından geri yükleyen hızlı başlangıç için bkz. [SQL yönetilen örneği oluşturma](instance-create-quickstart.md).
-- Geçiş için Azure veritabanı geçiş hizmeti 'ni (DMS) kullanan bir öğretici için bkz. [DMS kullanarak SQL yönetilen örnek geçişi](../../dms/tutorial-sql-server-to-managed-instance.md).
+- Yönetilen bir örnek oluşturan ve bir veritabanını bir yedekleme dosyasından geri yükleyen hızlı başlangıç için bkz. [yönetilen örnek oluşturma](instance-create-quickstart.md).
+- Geçiş için Azure veritabanı geçiş hizmeti 'ni kullanma hakkında bir öğretici için bkz. [veritabanı geçiş hizmeti kullanılarak SQL yönetilen örnek geçişi](../../dms/tutorial-sql-server-to-managed-instance.md).
 - Yerleşik sorun giderme zekası ile SQL yönetilen örnek veritabanı performansının gelişmiş izlenmesi için bkz. [Azure SQL Analytics kullanarak Azure SQL yönetilen örneğini izleme](../../azure-monitor/insights/azure-sql.md).
 - Fiyatlandırma bilgileri için bkz. [SQL yönetilen örnek fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/managed/).

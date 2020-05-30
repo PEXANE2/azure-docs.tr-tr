@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 968a880568743867c2bdfc11f98de322a591c009
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 13ca1ed4abef1eb367239a60ee7fe3d40ffee8d5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117263"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195553"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -131,7 +131,7 @@ Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin.
    ![Veritabanınızı içeren yük devretme grubunuzun yükünü devreder](./media/auto-failover-group-configure/failover-sql-db.png)
 
 1. Hangi sunucunun artık birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır.
-1. Sunucuları ilk rollerine geri dönmek için **Yük devretmeyi** yeniden seçin.
+1. Sunucuları özgün rollerine geri dönmek için **Yük devretmeyi** yeniden seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -344,9 +344,9 @@ PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
 
 ## <a name="sql-managed-instance"></a>SQL Yönetilen Örnek
 
-Azure portal veya PowerShell 'i kullanarak SQL yönetilen örneğindeki iki yönetilen örnek arasında bir yük devretme grubu oluşturun.
+Azure portal veya PowerShell 'i kullanarak Azure SQL yönetilen örneği 'nde iki yönetilen örnek arasında bir yük devretme grubu oluşturun.
 
-Her bir yönetilen örneğin sanal ağı için [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmanız veya ağ geçidi oluşturmanız gerekir, iki ağ geçidini birbirine bağlamanız ve ardından yük devretme grubu oluşturmanız gerekir.
+[ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmanız veya her bir SQL yönetilen örneğinin sanal ağı için bir ağ geçidi oluşturmanız, iki ağ geçidini bağlamanız ve ardından yük devretme grubu oluşturmanız gerekir.
 
 ### <a name="prerequisites"></a>Ön koşullar
 
@@ -382,10 +382,10 @@ Azure portal kullanarak birincil sanal ağ geçidini oluşturun.
     | --- | --- |
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
     | **Adı** | Sanal ağ geçidinizin adı. |
-    | **Geli** | Birincil yönetilen örneğinizin bulunduğu bölge. |
+    | **Bölge** | Birincil yönetilen örneğinizin bulunduğu bölge. |
     | **Ağ geçidi türü** | **VPN**' yi seçin. |
     | **VPN türü** | **Rota tabanlı** seçin |
-    | **ISTEYIN**| Varsayılan bırakın `VpnGw1` . |
+    | **SKU**| Varsayılan bırakın `VpnGw1` . |
     | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
     | **Sanal ağ**| İkincil yönetilen örneğiniz için sanal ağı seçin. |
     | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
@@ -444,10 +444,10 @@ Aşağıdaki tabloda, ikincil yönetilen örnek için ağ geçidi için gereken 
    | --- | --- |
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
    | **Adı** | Sanal ağ geçidinizin adı, örneğin `secondary-mi-gateway` . |
-   | **Geli** | İkincil yönetilen örneğinizin bulunduğu bölge. |
+   | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
    | **Ağ geçidi türü** | **VPN**' yi seçin. |
    | **VPN türü** | **Rota tabanlı** seçin |
-   | **ISTEYIN**| Varsayılan bırakın `VpnGw1` . |
+   | **SKU**| Varsayılan bırakın `VpnGw1` . |
    | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
    | **Sanal ağ**| 2. bölümde oluşturulan sanal ağı seçin `vnet-sql-mi-secondary` . |
    | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
@@ -557,7 +557,7 @@ Azure portal veya PowerShell 'i kullanarak yönetilen örneklerinizin yük devre
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal kullanarak yönetilen örneklerinizin yük devretme grubunu oluşturun.
+Azure portal kullanarak, SQL yönetilen örneklerinizin yük devretme grubunu oluşturun.
 
 1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
 1. Yük devretme grubuna eklemek istediğiniz birincil yönetilen örneği seçin.  

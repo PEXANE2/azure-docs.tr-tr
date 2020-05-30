@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 6aef6ea5881bbde8eb1c9287eafd3ebdc0f1d18e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b7c801d75d778deccae645e0945fba557dbc6782
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044027"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188792"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle SQL Data Sync izleme 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -203,7 +203,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
 -   Genel Bakış- [Azure 'da SQL Data Sync birden çok bulutta ve şirket içi veritabanlarında veri eşitleme](sql-data-sync-data-sql-server-sql-database.md)
 -   Veri eşitlemesini ayarlama
-    - Portalda- [öğreticide, Azure SQL veritabanı ve şirket içi SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-data-sync-sql-server-configure.md)
+    - Portalda- [öğretici: Azure SQL veritabanı ile SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-data-sync-sql-server-configure.md)
     - PowerShell ile
         -  [Azure SQL veritabanı 'nda birden çok veritabanı arasında eşitleme yapmak için PowerShell 'i kullanma](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak Azure SQL veritabanındaki bir veritabanı ile SQL Server örneğindeki bir veritabanı arasında eşitleme](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

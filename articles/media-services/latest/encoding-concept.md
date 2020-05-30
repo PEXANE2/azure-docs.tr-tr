@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6e1c9aa5c2e049d5fc1ebd8bf745417f56d232ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366569"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220172"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video ve ses Media Services kodlama
 
@@ -98,7 +98,10 @@ Media Services aşağıdaki yerleşik kodlama önayarlarını destekler:
 
 - **Encodernamedönayar. AACGoodQualityAudio**: yalnızca 192 Kbps hızında kodlanmış tek bir MP4 dosyası üretir.
 - **Encodernamedönayar. Uyarlantivestreaming** (önerilir): daha fazla bilgi için bkz. [bit hızı el ile oluşturma](autogen-bitrate-ladder.md).
-- **Encodernamedönayar. ContentAwareEncodingExperimental**: içeriğe duyarlı kodlama için deneysel önayar gösterir. Herhangi bir giriş içeriği verildiğinde, hizmet en iyi katman sayısını ve uyarlamalı akış gönderimi için uygun bit hızı ve çözüm ayarlarını otomatik olarak saptamaya çalışır. Temel algoritmalar zaman içinde gelişmeye devam edecektir. Çıktı, video ve ses Aralanmış MP4 dosyaları içerir. Daha fazla bilgi için bkz. [içerik kullanan kodlama Için deneysel önayar](content-aware-encoding.md).
+- **Encodernamedönayar. ContentAwareEncoding**: içeriğe duyarlı kodlama için önceden ayarlanmış bir ön ayar sunar. Herhangi bir giriş içeriği verildiğinde, hizmet en iyi katman sayısını ve uyarlamalı akış gönderimi için uygun bit hızı ve çözüm ayarlarını otomatik olarak saptamaya çalışır. Temel algoritmalar zaman içinde gelişmeye devam edecektir. Çıktı, video ve ses Aralanmış MP4 dosyaları içerir. Daha fazla bilgi için bkz. [içeriğe duyarlı kodlama](content-aware-encoding.md).
+
+  > [!NOTE]
+  > **Contentawareencoding** 'i ContentAwareEncodingExperimental olarak kullandığınızdan emin olun.
 - **Encodernamedönayar. H264MultipleBitrate1080p**: 6000 kbps 'den 400 Kbps 'e ve stereo AAC ses arasında değişen sekiz GOP hizalanmış MP4 dosyası kümesi oluşturur. Çözüm, 1080p ' de başlar ve 360p 'ye gider.
 - **Encodernamedönayar. H264MultipleBitrate720p**: altı GOP hizalanmış MP4 dosyası kümesi oluşturur ve 3400 kbps ile 400 Kbps arasında ve stereo AAC sesde vardır. Çözüm 720p ' de başlar ve 360p 'ye gider.
 - **Encodernamedönayar. H264MultipleBitrateSD**: beş adet GOP hizalanmış MP4 dosyası kümesi oluşturur ve 1600 kbps ila 400 Kbps ve stereo AAC sestir. Çözüm 480p 'de başlar ve 360p 'ye gider.
@@ -114,7 +117,7 @@ En güncel ön ayar listesini görmek için bkz. [videoları kodlamada kullanıl
 
 [Standardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) , giriş videosunu standart kodlayıcıyla kodlarken kullanılacak ayarları açıklar. Dönüşüm önayarlarını özelleştirirken bu ön ayarı kullanın.
 
-#### <a name="considerations"></a>Dikkat edilmesi gerekenler
+#### <a name="considerations"></a>Önemli noktalar
 
 Özel ön ayarlar oluşturulurken aşağıdaki noktalar geçerlidir:
 

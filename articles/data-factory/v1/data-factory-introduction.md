@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4175214219350620ae44d0249243e23b1a25144a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73666809"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196602"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory'ye giriş 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -112,7 +112,7 @@ Bağlı hizmetler, dış kaynaklara bağlanmak için Data Factory'ye gereken ba�
 
 Bağlı hizmetler Data Factory'de iki nedenle kullanılır:
 
-* Bir *veri deposunu*, buradakilerle, ancak bunlarla sınırlı olmamak şartıyla göstermek için: şirket içi SQL Server veritabanı, Oracle veritabanı, dosya paylaşımı veya bir Azure blob depolama hesabı. Desteklenen veri depolarının bir listesi için [Veri taşıma etkinlikleri](#data-movement-activities) bölümüne bakın.
+* Bir SQL Server veritabanı, Oracle veritabanı, dosya paylaşma veya Azure Blob depolama hesabı içeren, ancak bunlarla sınırlı olmayan bir *veri deposunu* temsil etmek için. Desteklenen veri depolarının bir listesi için [Veri taşıma etkinlikleri](#data-movement-activities) bölümüne bakın.
 
 * Bir etkinliğin yürütülmesini barındırameyen bir *işlem kaynağını* temsil etmek için. Örneğin, HDInsightHive etkinliği bir HDInsight Hadoop kümesinde yürütülür. Desteklenen işlem ortamlarının listesi için [Veri dönüştürme etkinlikleri](#data-transformation-activities) bölümüne bakın.
 
@@ -140,8 +140,8 @@ Azure Data Factory'de veri işlem hatları oluşturmak için bu araç veya API'l
 
 Veri işlem hatları ile veri fabrikaları oluşturmayı öğrenmek için aşağıdaki öğreticilerde yer alan adım adım yönergeleri izleyin:
 
-| Eğitmen | Açıklama |
+| Öğretici | Açıklama |
 | --- | --- |
 | [İki bulut veri deposu arasında veri taşıma](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Blob depolamadan SQL veritabanına veri taşıyan bir işlem hattı ile veri fabrikası oluşturun. |
 | [Hadoop kümesi kullanarak veri dönüştürme](data-factory-build-your-first-pipeline.md) |Bir Azure HDInsight (Hadoop) kümesinde Hive betiği çalıştırarak veri işleyen bir veri işlem hattı ile ilk Azure veri fabrikanızı oluşturun. |
-| [Veri Yönetimi Ağ Geçidini kullanarak verileri şirket içi veri deposu ile bulut veri deposu arasında taşıma](data-factory-move-data-between-onprem-and-cloud.md) |Şirket içi SQL Server veritabanından Azure blobuna veri taşıyan bir işlem hattı ile veri fabrikası oluşturun. Adım adım kılavuzun bir parçası olarak makinenize Veri Yönetimi Ağ Geçidi yükleyip bunu yapılandıracaksınız. |
+| [Veri Yönetimi Ağ Geçidini kullanarak verileri şirket içi veri deposu ile bulut veri deposu arasında taşıma](data-factory-move-data-between-onprem-and-cloud.md) |Verileri bir SQL Server veritabanından Azure blobuna taşıyan bir işlem hattı ile veri fabrikası oluşturun. Adım adım kılavuzun bir parçası olarak makinenize Veri Yönetimi Ağ Geçidi yükleyip bunu yapılandıracaksınız. |

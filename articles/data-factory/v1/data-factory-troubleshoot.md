@@ -13,12 +13,12 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 81ae5c3c702108d854e4dfde93001d5c99875666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931575"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195910"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory'de sorun giderme
 > [!NOTE]
@@ -49,7 +49,7 @@ Azure PowerShell ile doğru Azure hesabını veya aboneliğini kullanmıyor olab
 
 1. Connect-AzAccount-doğru kullanıcı KIMLIĞINI ve parolayı kullanın
 2. Get-AzSubscription-hesaba ait tüm abonelikleri görüntüleyin.
-3. Select-AzSubscription &lt;abonelik adı&gt; -doğru aboneliği seçin. Azure portal bir veri fabrikası oluşturmak için kullandığınız aynısını kullanın.
+3. Select-AzSubscription &lt; abonelik adı &gt; -doğru aboneliği seçin. Azure portal bir veri fabrikası oluşturmak için kullandığınız aynısını kullanın.
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Sorun: Azure portal Veri Yönetimi ağ geçidi hızlı kurulumu başlatılamadı
 Veri Yönetimi Ağ Geçidi Hızlı Kurulumu için Internet Explorer veya Microsoft ClickOnce uyumlu bir web tarayıcısı gerekir. Hızlı Kurulum başlatılamıyorsa, aşağıdakilerden birini yapın:
@@ -61,10 +61,10 @@ Veri Yönetimi Ağ Geçidi Hızlı Kurulumu için Internet Explorer veya Microso
     Firefox için aynısını yapın (eklenti yüklemesi). Araç çubuğundaki Menüyü Aç düğmesine tıklayın (sağ üst köşede yer alan üç yatay çizgi), Eklentiler’e tıklayın, “ClickOnce” araması yapın, ClickOnce uzantılarından birini seçin ve yükleyin.
 * Portalda aynı dikey pencerede gösterilen **El Ile kurulum** bağlantısını kullanın. Yükleme dosyasını indirmek ve el ile çalıştırmak için bu yaklaşımı kullanın. Yükleme başarılı olduktan sonra Veri Yönetimi ağ geçidi yapılandırması iletişim kutusunu görürsünüz. Portal ekranındaki **anahtarı** kopyalayın ve ağ geçidini hizmete elle kaydetmek için yapılandırma yöneticisi içinde kullanın.  
 
-### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Sorun: şirket içi SQL Server bağlanılamadı
+### <a name="problem-fail-to-connect-to-sql-server"></a>Sorun: SQL Server bağlantı başarısız oldu
 Ağ Geçidi makinesinde **veri yönetimi ağ geçidi Configuration Manager** başlatın ve ağ geçidi makinesinden SQL Server bağlantısını test etmek Için **sorun giderme** sekmesini kullanın. Bağlantı/ağ geçidi ile ilgili sorunları gidermeye yönelik ipuçları için bkz. [ağ geçidi sorunlarını giderme](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Sorun: giriş dilimleri her zaman bekleme durumunda
+### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Sorun: giriş dilimleri sonsuza kadar bekliyor
 Dilimler çeşitli nedenlerden dolayı **bekleme** durumunda olabilir. Yaygın nedenlerinden biri, **External** özelliğinin **true**olarak ayarlanmamalıdır. Azure Data Factory kapsamı dışında üretilen tüm veri kümeleri **External** özelliği ile işaretlenmelidir. Bu özellik, verilerin dış olduğunu ve Veri Fabrikası içindeki herhangi bir işlem hattı tarafından yedeklenmedi olduğunu gösterir. İlgili depoda veriler kullanılabilir duruma geldiğinde veri dilimleri **Hazır** olarak işaretlenir.
 
 **External** özelliğinin kullanımı ile ilgili olarak aşağıdaki örneğe bakın. External ' i true olarak belirlediğinizde, isteğe bağlı olarak **Externaldata*** belirtebilirsiniz.

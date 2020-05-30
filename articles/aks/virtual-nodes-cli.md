@@ -5,12 +5,13 @@ description: Pods 'leri çalıştırmak için sanal düğümleri kullanan bir Az
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 826c7f98b9540d84ac151e05cd81f2cc6042776c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: a5f930df37200531cce709d77130e1e1b7930883
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128907"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193978"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLı kullanarak sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
@@ -73,7 +74,7 @@ Sanal düğümler işlevselliği, ACI 'nin özellik kümesine yoğun bir şekild
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
-Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.49 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
@@ -156,7 +157,7 @@ Bir AKS kümesini önceki bir adımda oluşturulan AKS alt ağına dağıtırsı
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-AKS kümesi oluşturmak için [az aks create][az-aks-create] komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Önceki `<subnetId>` adımda elde edilen kimlikle ve daha sonra `<appId>` ve `<password>` önceki bölümde toplanan değerlerle değiştirin.
+AKS kümesi oluşturmak için [az aks create][az-aks-create] komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. `<subnetId>`Önceki adımda elde EDILEN kimlikle ve daha sonra `<appId>` ve `<password>` önceki bölümde toplanan değerlerle değiştirin.
 
 ```azurecli-interactive
 az aks create \
@@ -210,7 +211,7 @@ aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Örnek uygulama dağıtma
 
-Aşağıdaki YAML 'de `virtual-node.yaml` adlı bir dosya oluşturun ve kopyalayın. Düğüm üzerinde kapsayıcıyı zamanlamak için bir [Nodeselector][node-selector] ve [toleranation][toleration] tanımlanmıştır.
+`virtual-node.yaml`Aşağıdaki YAML 'de adlı bir dosya oluşturun ve kopyalayın. Düğüm üzerinde kapsayıcıyı zamanlamak için bir [Nodeselector][node-selector] ve [toleranation][toleration] tanımlanmıştır.
 
 ```yaml
 apiVersion: apps/v1
@@ -249,7 +250,7 @@ Uygulamayı [kubectl Apply][kubectl-apply] komutuyla çalıştırın.
 kubectl apply -f virtual-node.yaml
 ```
 
-[Kubectl Get Pod][kubectl-get] komutunu `-o wide` bağımsız değişkenle birlikte kullanarak bir pod ve zamanlanan düğüm listesini çıkış. `aci-helloworld` Pod 'ın `virtual-node-aci-linux` düğüm üzerinde zamanlandığına dikkat edin.
+[Kubectl Get Pod][kubectl-get] komutunu bağımsız değişkenle birlikte kullanarak `-o wide` bir pod ve zamanlanan düğüm listesini çıkış. `aci-helloworld`Pod 'ın düğüm üzerinde zamanlandığına dikkat edin `virtual-node-aci-linux` .
 
 ```console
 kubectl get pods -o wide
@@ -263,7 +264,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 Pod 'a sanal düğümlerle kullanılmak üzere atanan Azure sanal ağ alt ağından bir iç IP adresi atanır.
 
 > [!NOTE]
-> Azure Container Registry depolanan görüntüleri kullanıyorsanız, [bir Kubernetes gizli anahtarını yapılandırın ve kullanın][acr-aks-secrets]. Sanal düğümlerin geçerli sınırlaması, tümleşik Azure AD hizmet sorumlusu kimlik doğrulamasını kullanamıyoruz. Gizli anahtar kullanmıyorsanız, sanal düğümlerde zamanlanan Pod 'ler başlatılamaz ve hatayı `HTTP response status code 400 error code "InaccessibleImage"`bildirebilir.
+> Azure Container Registry depolanan görüntüleri kullanıyorsanız, [bir Kubernetes gizli anahtarını yapılandırın ve kullanın][acr-aks-secrets]. Sanal düğümlerin geçerli sınırlaması, tümleşik Azure AD hizmet sorumlusu kimlik doğrulamasını kullanamıyoruz. Gizli anahtar kullanmıyorsanız, sanal düğümlerde zamanlanan Pod 'ler başlatılamaz ve hatayı bildirebilir `HTTP response status code 400 error code "InaccessibleImage"` .
 
 ## <a name="test-the-virtual-node-pod"></a>Sanal düğüm Pod 'u test etme
 
@@ -273,13 +274,13 @@ Sanal düğümde çalışan Pod 'u test etmek için, bir web istemcisiyle tanıt
 kubectl run --generator=run-pod/v1 -it --rm testvk --image=debian
 ```
 
-Şunu `curl` kullanarak `apt-get`Pod 'a yüklensin:
+Şunu `curl` kullanarak Pod 'a yüklensin `apt-get` :
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Artık, kullanarak `curl`Pod 'nizin adresine erişin *http://10.241.0.4*. Önceki `kubectl get pods` komutta gösterilen kendı iç IP adresini belirtin:
+Artık, kullanarak Pod 'nizin adresine erişin `curl` *http://10.241.0.4* . Önceki komutta gösterilen kendi iç IP adresini belirtin `kubectl get pods` :
 
 ```console
 curl -L http://10.241.0.4
@@ -295,15 +296,15 @@ Demo uygulaması aşağıdaki sıkıştırılmış örnek çıktıda gösterildi
 [...]
 ```
 
-İle `exit`test Pod 'unuzla Terminal oturumunu kapatın. Oturumunuz sona erdikten sonra Pod silinir.
+İle test Pod 'unuzla Terminal oturumunu kapatın `exit` . Oturumunuz sona erdikten sonra Pod silinir.
 
 ## <a name="remove-virtual-nodes"></a>Sanal düğümleri kaldır
 
 Artık sanal düğümleri kullanmak istemiyorsanız, [az aks Disable-addons][az aks disable-addons] komutunu kullanarak bunları devre dışı bırakabilirsiniz. 
 
-Gerekirse, tarayıcınızda Azure Cloud Shell açmak [https://shell.azure.com](https://shell.azure.com) için bölümüne gidin.
+Gerekirse, [https://shell.azure.com](https://shell.azure.com) tarayıcınızda Azure Cloud Shell açmak için bölümüne gidin.
 
-İlk olarak, sanal `aci-helloworld` düğümde çalışan Pod 'yi silin:
+İlk olarak, `aci-helloworld` sanal düğümde çalışan Pod 'yi silin:
 
 ```console
 kubectl delete -f virtual-node.yaml

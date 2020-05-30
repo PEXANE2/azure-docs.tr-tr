@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: a2f55798afe7b817ab366e8fa55f07078277352d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 1dd17d3ac715c2b32f645602203aa2551c91b42a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117305"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195339"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>ML Studio (klasik) ve PowerShell ile bir deneyden birden çok Web hizmeti uç noktası oluşturma
 
@@ -50,7 +50,7 @@ Deneme, bir Azure Storage hesabından *customer001. csv* veri kümesini içeri a
 Bu deneme bir Web hizmeti olarak dağıtıldığında, bu çıktı ile ilişkili uç nokta, eğitilen modeli bir. ilearner dosyası biçiminde döndürür.
 
 Ayrıca, **veri alma** modülünün kullandığı URL 'yi tanımlayan bir Web hizmeti parametresi ayarlamayacağınızı unutmayın. Bu, her konum için modeli eğitmek üzere bireysel eğitim veri kümelerini belirtmek için parametresini kullanmanıza olanak sağlar.
-Bunu yaptığınız başka yollar vardır. Bir SQL Azure veritabanından veri almak için bir Web hizmeti parametresiyle birlikte bir SQL sorgusu kullanabilirsiniz. Ya da Web hizmetine bir veri kümesi geçirmek için **Web hizmeti giriş** modülünü kullanabilirsiniz.
+Bunu yaptığınız başka yollar vardır. Azure SQL veritabanı 'ndaki bir veritabanından veri almak için bir Web hizmeti parametresiyle SQL sorgusu kullanabilirsiniz. Ya da Web hizmetine bir veri kümesi geçirmek için **Web hizmeti giriş** modülünü kullanabilirsiniz.
 
 ![Eğitilen model modülü bir Web hizmeti çıkış modülüne çıkış verir](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 27336028fb6b141d8ece4d975b7590b3daf875f2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c0b34e17c202cb060773c53aa5775343ade9c2ee
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050964"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193782"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL yönetilen örneğine örnek geçişi SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ Yüksek düzeyde, veritabanı geçiş işlemi şöyle görünür:
 
 ## <a name="assess-sql-managed-instance-compatibility"></a>SQL yönetilen örnek uyumluluğunu değerlendir
 
-İlk olarak, SQL yönetilen örneğinin uygulamanızın veritabanı gereksinimleriyle uyumlu olup olmadığını saptayın. SQL yönetilen örneği, şirket içinde veya sanal makinelerde SQL Server kullanan mevcut uygulamaların çoğunluğu için kolay yükseltme ve kaydırma geçişi sağlamak üzere tasarlanmıştır. Ancak bazen henüz desteklenmeyen özellikler veya yetenekler gerektirebilir, geçici çözüm uygulama maliyeti de çok yüksektir.
+İlk olarak, SQL yönetilen örneğinin uygulamanızın veritabanı gereksinimleriyle uyumlu olup olmadığını saptayın. SQL yönetilen örneği, SQL Server kullanan mevcut uygulamaların çoğunluğu için kolay yükseltme ve kaydırma geçişi sağlamak üzere tasarlanmıştır. Ancak bazen henüz desteklenmeyen özellikler veya yetenekler gerektirebilir, geçici çözüm uygulama maliyeti de çok yüksektir.
 
 Azure SQL veritabanında veritabanı işlevselliğini etkileyen olası uyumluluk sorunlarını algılamak için [Data Migration Yardımcısı (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) kullanın. Bazı bildirilmiş engelleme sorunları varsa, [Azure sanal makinelerinde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)gibi alternatif bir seçeneği göz önünde bulundurmanız gerekebilir. İşte bazı örnekler:
 
@@ -121,7 +121,7 @@ DMS için bu senaryo ve yapılandırma adımları hakkında daha fazla bilgi edi
 
 ### <a name="native-restore-from-url"></a>URL'den yerel RESTORE
 
-[Azure Storage](https://azure.microsoft.com/services/storage/)'da bulunan SQL Server şirket içi veya [sanal makinelerde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)tarafından gerçekleştirilen yerel yedeklemelerin (. bak dosyaları) geri yüklenmesi, SQL yönetilen örneği 'nin hızlı ve kolay bir şekilde çevrimdışı veritabanı geçişini sağlayan temel yeteneklerinden biridir.
+[Azure depolama](https://azure.microsoft.com/services/storage/)'da bulunan bir SQL Server örneğinden alınan yerel yedeklemelerin (. bak dosyaları) geri YÜKLENMESI, SQL yönetilen örneği 'nin hızlı ve kolay bir şekilde çevrimdışı veritabanı geçişini sağlayan temel yeteneklerinden biridir.
 
 Aşağıdaki diyagramda, işleme ilişkin üst düzey bir genel bakış sunulmaktadır:
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4ca328aa0ddc61d86a435b93fe775f294287b98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527393"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196099"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Kopyalama Etkinliği performansı ve ayarlama kılavuzu
 
@@ -366,8 +366,8 @@ Kopyalamak istediğiniz verilerin boyutu büyükse, Data Factory Dilimleme mekan
 
 Aynı anda aynı veri deposuna bağlayıcı Data Factory gerektiren veri kümeleri ve kopyalama etkinliklerinin sayısı hakkında dikkatli olun. Birçok eşzamanlı kopyalama işi bir veri deposunu kısıtlayabilir ve performansı azalmasına, iş iç yeniden denemelerini kopyalamaya ve bazı durumlarda yürütme hatalarına neden olabilirler.
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Örnek senaryo: şirket içi SQL Server blob depolamaya kopyalama
-**Senaryo**: bir işlem hattı, verileri şirket ıçı SQL Server CSV biçiminde blob depolamaya kopyalamak için oluşturulmuştur. Kopyalama işini daha hızlı hale getirmek için CSV dosyalarının bzip2 biçiminde sıkıştırılması gerekir.
+## <a name="sample-scenario-copy-from-a-sql-server-database-to-blob-storage"></a>Örnek senaryo: bir SQL Server veritabanından blob depolamaya kopyalama
+**Senaryo**: bir işlem hattı, verileri bir SQL Server veritabanından CSV biçiminde blob depolamaya kopyalamak için oluşturulmuştur. Kopyalama işini daha hızlı hale getirmek için CSV dosyalarının bzip2 biçiminde sıkıştırılması gerekir.
 
 **Test ve analiz**: kopyalama etkinliğinin verimlilik 2 Mbps 'den azdır, bu da performans kıyaslamasından çok daha yavaştır.
 
@@ -385,7 +385,7 @@ Aşağıdaki faktörlerden biri veya birkaçı performans sorununa neden olabili
 
 * **Kaynak**: SQL Server kendisi ağır yükler nedeniyle düşük aktarım hızına sahiptir.
 * **Veri yönetimi ağ geçidi**:
-  * **LAN**: Gateway, SQL Server makineden uzakta bulunur ve düşük bant genişliğine sahip bir bağlantıya sahiptir.
+  * **LAN**: Gateway, SQL Server bilgisayarından uzakta bulunur ve düşük bant genişliğine sahip bir bağlantıya sahiptir.
   * **Ağ geçidi**: ağ geçidi, aşağıdaki işlemleri gerçekleştirmek için yük kısıtlamalarına ulaştı:
     * Serileştirme: veri akışının CSV biçiminde **serileştirilmesi**, performansı düşürür.
     * **Sıkıştırma**: yavaş bir sıkıştırma codec 'i seçtiniz (örneğin, bzip2, Çekirdek i7 Ile 2,8 Mbps).

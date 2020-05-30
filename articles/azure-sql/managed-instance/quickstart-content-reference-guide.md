@@ -12,17 +12,17 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 2ef242b95bdafd1781e4db6e72a6374ecf8298c5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 105c7ae2b0e7f39c29500634391b4388fa2a4723
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054350"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194943"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği ile çalışmaya başlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md) , en son SQL Server şirket Içi (Enterprise Edition) veritabanı altyapısı ile %100 uyumluluğuna sahip bir veritabanı oluşturur ve ortak güvenlik sorunlarını ele alan yerel bir [sanal ağ (VNet)](../../virtual-network/virtual-networks-overview.md) uygulamasını ve şirket içi SQL Server müşterileri için bir [iş modelini](https://azure.microsoft.com/pricing/details/sql-database/) sağlar.
+[Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md) , en son SQL Server (Enterprise Edition) veritabanı altyapısı ile %100 uyumluluğuna sahip bir veritabanı oluşturur. Bu, yaygın güvenlik sorunlarını gideren yerel bir [sanal ağ (VNet)](../../virtual-network/virtual-networks-overview.md) uygulamasını ve mevcut SQL Server müşterileri için uygun bir [iş modelini](https://azure.microsoft.com/pricing/details/sql-database/) sağlar.
 
 Bu makalede, bir SQL yönetilen örneğini hızlı bir şekilde yapılandırmayı ve oluşturmayı ve veritabanlarınızı geçirmeyi öğreten içeriklere yönelik başvurular bulacaksınız.
 
@@ -48,7 +48,7 @@ SQL yönetilen örneği 'nin el ile oluşturulmasına alternatif olarak, bu işl
 
 ### <a name="migrate-your-databases"></a>Veritabanlarınızı geçirin
 
-Bir SQL yönetilen örneği oluşturup erişimi yapılandırdıktan sonra, veritabanlarınızı SQL Server şirket içi veya Azure VM 'lerinden geçirmeye başlayabilirsiniz. Geçiş başarısız olabilir f geçiş yapmak istediğiniz kaynak veritabanında bazı desteklenmeyen özelliklerden bazılarıdır. Hatalardan kaçınmak ve uyumluluğu denetlemek için [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) kullanarak SQL Server veritabanlarınızı çözümleyebilir ve [FILESTREAM](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) veya birden çok günlük dosyasının varlığı gibi bir SQL yönetilen örneğine geçişi engelleyebilen herhangi bir sorun bulabilirsiniz. Bu sorunları çöziyorsanız, veritabanlarınız SQL yönetilen örneği 'ne geçirmeye hazırız. [Veritabanı yükseltme deneyimi Yardımcısı](/sql/dea/database-experimentation-assistant-overview) , iş yükünüzü SQL Server KAYDEDIP bir SQL yönetilen örneği üzerinde yürütebilen, bir SQL yönetilen örneği 'ne geçiş yaparsanız herhangi bir performans sorunu olduğunu belirleyebilecek başka bir kullanışlı araçtır.
+Bir SQL yönetilen örneği oluşturup erişimi yapılandırdıktan sonra, SQL Server veritabanlarınızı geçirmeye başlayabilirsiniz. Geçiş başarısız olabilir f geçiş yapmak istediğiniz kaynak veritabanında bazı desteklenmeyen özelliklerden bazılarıdır. Hatalardan kaçınmak ve uyumluluğu denetlemek için [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) kullanarak SQL Server veritabanlarınızı çözümleyebilir ve [FILESTREAM](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) veya birden çok günlük dosyasının varlığı gibi bir SQL yönetilen örneğine geçişi engelleyebilen herhangi bir sorun bulabilirsiniz. Bu sorunları çöziyorsanız, veritabanlarınız SQL yönetilen örneği 'ne geçirmeye hazırız. [Veritabanı yükseltme deneyimi Yardımcısı](/sql/dea/database-experimentation-assistant-overview) , iş yükünüzü SQL Server KAYDEDIP bir SQL yönetilen örneği üzerinde yürütebilen, bir SQL yönetilen örneği 'ne geçiş yaparsanız herhangi bir performans sorunu olduğunu belirleyebilecek başka bir kullanışlı araçtır.
 
 Veritabanınızı bir SQL yönetilen örneğine geçirebilmeniz için, yerel SQL Server geri yükleme yeteneklerini kullanarak bir veritabanını bir dosyadaki SQL yönetilen örneğine geri yükleyebilirsiniz `.bak` . Bu yöntemi, şirket içi veya Azure VM yüklü SQL Server veritabanı altyapısından veritabanları geçirmek için kullanabilirsiniz. Hızlı başlangıç için bkz. [SQL tarafından yönetilen bir örneğe yedekten geri yükleme](restore-sample-database-quickstart.md). Bu hızlı başlangıçta `.bak` `RESTORE` Transact-SQL komutunu kullanarak Azure Blob depolama alanında depolanan bir dosyadan geri yükleme yapabilirsiniz.
 

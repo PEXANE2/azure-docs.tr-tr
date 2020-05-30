@@ -1,6 +1,6 @@
 ---
-title: Azure SQL veritabanı yönetilen örneğini Azure-SQL Server Integration Services (SSIS) ile birlikte kullanın Azure Data Factory
-description: Azure Data Factory Azure SQL veritabanı yönetilen örneğini SQL Server Integration Services (SSIS) ile kullanmayı öğrenin.
+title: Azure SQL yönetilen örneğini Azure-SQL Server Integration Services (SSIS) ile birlikte kullanın Azure Data Factory
+description: Azure Data Factory Azure SQL yönetilen örneğini SQL Server Integration Services (SSIS) ile kullanmayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,30 +11,30 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: cd07bf86852d608a6d872f4c6b973b0a81b2a1c3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f53c7ccec5e82b79966807f12978adfb00940354
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015304"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195378"
 ---
-# <a name="use-azure-sql-database-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory Azure SQL veritabanı yönetilen örneğini SQL Server Integration Services (SSIS) ile kullanın
+# <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory Azure SQL yönetilen örneğini SQL Server Integration Services (SSIS) ile kullanın
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş yüklerinizi Azure bulutuna taşıyabilirsiniz. Azure SQL veritabanı veya SQL veritabanı yönetilen örneği 'nde SQL Server Management Studio (SSMS) gibi tanıdık araçlarla SSIS projelerini ve paketlerini dağıtın, çalıştırın ve yönetin. Bu makalede, Azure-SSIS tümleştirme çalışma zamanı (IR) ile Azure SQL veritabanı yönetilen örneği kullanılırken aşağıdaki belirli bölgeler vurgulanmıştır:
+Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş yüklerinizi Azure bulutuna taşıyabilirsiniz. Azure SQL veritabanı veya SQL yönetilen örneği üzerinde SQL Server Management Studio (SSMS) gibi tanıdık araçlarla SSIS projelerini ve paketlerini dağıtın, çalıştırın ve yönetin. Bu makalede, Azure-SSIS tümleştirme çalışma zamanı (IR) ile Azure SQL yönetilen örneği kullanılırken aşağıdaki belirli bölgeler vurgulanmıştır:
 
-- [Azure SQL veritabanı yönetilen örneği tarafından barındırılan SSIS Kataloğu (SSSıSDB) ile bir Azure-SSIS IR sağlama](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
+- [Azure SQL yönetilen örneği tarafından barındırılan SSIS Kataloğu (SSSıSDB) ile bir Azure-SSIS IR sağlama](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [SSIS paketlerini Azure SQL yönetilen örnek Aracısı işine göre yürütme](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [SSSıSDB günlüklerini Azure SQL yönetilen örnek Aracısı işine göre temizle](#clean-up-ssisdb-logs)
-- [Azure SQL veritabanı yönetilen örneği ile yük devretmeyi Azure-SSIS IR](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-database-managed-instance)
-- [Azure SQL veritabanı yönetilen örneği ile veritabanı iş yükü hedefi olarak on-premises SSIS iş yüklerini OBSıS 'e geçirme](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
+- [Azure SQL yönetilen örneği ile yük devretmeyi Azure-SSIS IR](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [Şirket içi SSIS iş yüklerini, veritabanı iş yükü hedefi olarak Azure SQL yönetilen örneği ile ADF 'de SSIS 'ye geçirme](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği tarafından barındırılan SSSıSDB ile Azure-SSIS IR sağlama
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-1. Azure Active Directory kimlik doğrulaması seçerken [Azure SQL veritabanı yönetilen örneği 'nde Azure Active Directory (Azure AD) etkinleştirin](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
+1. Azure Active Directory kimlik doğrulaması seçerken [Azure SQL yönetilen örneği üzerinde Azure Active Directory (Azure AD) etkinleştirin](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
 1. Özel uç nokta veya genel uç nokta üzerinden SQL yönetilen örneği bağlamayı seçin:
 
@@ -44,13 +44,13 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
             - Aynı sanal ağın içinde, **farklı bir alt ağla**SQL yönetilen örneği ile.
             - SQL yönetilen örneğinden farklı bir sanal ağın içinde, sanal ağ eşlemesi (genel VNet eşleme kısıtlamaları nedeniyle aynı bölge ile sınırlıdır) veya sanal ağdan sanal ağa bağlantı aracılığıyla.
 
-            SQL yönetilen örnek bağlantısı hakkında daha fazla bilgi için bkz. [uygulamanızı Azure SQL veritabanı yönetilen örneğine bağlama](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
+            SQL yönetilen örnek bağlantısı hakkında daha fazla bilgi için bkz. [uygulamanızı Azure SQL yönetilen örneğine bağlama](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 
         1. [Sanal ağı yapılandırın](#configure-virtual-network).
 
     - Ortak uç nokta üzerinden
 
-        Azure SQL veritabanı yönetilen örnekleri, [genel uç noktalar](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)üzerinden bağlantı sağlayabilir. Gelen ve giden gereksinimlerin SQL yönetilen örneği ve Azure-SSIS IR arasında trafiğe izin vermek için karşılaması gerekir:
+        Azure SQL yönetilen örnekleri, [genel uç noktalar](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)üzerinden bağlantı sağlayabilir. Gelen ve giden gereksinimlerin SQL yönetilen örneği ve Azure-SSIS IR arasında trafiğe izin vermek için karşılaması gerekir:
 
         - bir sanal ağ içinde Azure-SSIS IR (tercih edilen)
 
@@ -105,13 +105,13 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
     1. Ağ güvenlik grubu (NSG) kuralındaki trafiğe, SQL yönetilen örneği ve Azure-SSIS IR arasında trafiğe izin ver ve Azure-SSIS IR gereken trafik.
         1. Azure-SSIS IR gelen trafiğe izin vermek için **SQL yönetilen örneğinin gelen gereksinimi**.
 
-            | Aktarım Protokolü | Kaynak | Kaynak bağlantı noktası aralığı | Hedef | Hedef bağlantı noktası aralığı | Yorumlar |
+            | Aktarım Protokolü | Kaynak | Kaynak bağlantı noktası aralığı | Hedef | Hedef bağlantı noktası aralığı | Açıklamalar |
             |---|---|---|---|---|---|
             |TCP|VirtualNetwork|*|VirtualNetwork|1433, 11000-11999|SQL veritabanı sunucusu bağlantı ilkeniz **yeniden yönlendirme**yerine **proxy** olarak ayarlandıysa yalnızca bağlantı noktası 1433 gerekir.|
 
         1. **Azure-SSIS IR giden**TRAFIĞE, SQL yönetilen örneği ve Azure-SSIS IR için gereken diğer trafiğe izin vermek için giden bir gereksinim.
 
-        | Aktarım Protokolü | Kaynak | Kaynak bağlantı noktası aralığı | Hedef | Hedef bağlantı noktası aralığı | Yorumlar |
+        | Aktarım Protokolü | Kaynak | Kaynak bağlantı noktası aralığı | Hedef | Hedef bağlantı noktası aralığı | Açıklamalar |
         |---|---|---|---|---|---|
         | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 |SQL yönetilen örneği 'ne giden trafiğe izin verin. Bağlantı ilkesi **yeniden yönlendirme**yerine **Ara sunucu** olarak ayarlandıysa, yalnızca bağlantı noktası 1433 gerekir. |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | Sanal ağdaki Azure-SSIS IR düğümleri Azure depolama ve Azure Event Hubs gibi Azure hizmetlerine erişmek için bu bağlantı noktasını kullanır. |
@@ -121,7 +121,7 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
 
         1. Azure-SSIS IR için gereken trafiğe izin vermek üzere **Azure-SSIS IR gelen gereksinimi**.
 
-        | Aktarım Protokolü | Kaynak | Kaynak bağlantı noktası aralığı | Hedef | Hedef bağlantı noktası aralığı | Yorumlar |
+        | Aktarım Protokolü | Kaynak | Kaynak bağlantı noktası aralığı | Hedef | Hedef bağlantı noktası aralığı | Açıklamalar |
         |---|---|---|---|---|---|
         | TCP | BatchNodeManagement | * | VirtualNetwork | 29876, 29877 (IR 'ye Kaynak Yöneticisi sanal bir ağa katılırsanız) <br/><br/>10100, 20100, 30100 (IR 'yi klasik bir sanal ağa katılırsanız)| Data Factory hizmeti, sanal ağdaki Azure-SSIS IR düğümlerle iletişim kurmak için bu bağlantı noktalarını kullanır. <br/><br/> Bir alt ağ düzeyinde NSG oluşturup oluşturamadıkça, Data Factory Azure-SSIS IR barındıran sanal makinelere bağlı ağ arabirimi kartları (NIC 'ler) düzeyinde her zaman bir NSG yapılandırır. Yalnızca belirtilen bağlantı noktalarında Data Factory IP adreslerinden gelen trafiğe NIC düzeyinde NSG tarafından izin verilir. Bu bağlantı noktalarını alt ağ düzeyinde internet trafiğine açmış olsanız bile, IP adreslerinden Data Factory IP adreslerinden gelen trafik NIC düzeyinde engellenir. |
         | TCP | Corpnetgördünüz | * | VirtualNetwork | 3389 | Seçim Bu kural yalnızca Microsoft Supporter 'ın müşteriyi gelişmiş sorun giderme için açmasını istediğinde gereklidir ve sorun giderme sonrasında hemen kapatılabilir. **Corpnetgördünüz** hizmet etiketi, yalnızca Microsoft Kurumsal ağındaki güvenli erişim iş istasyonlarının uzak masaüstünü kullanmasına izin verir. Ve bu hizmet etiketi portaldan seçilemez ve yalnızca Azure PowerShell veya Azure CLı aracılığıyla kullanılabilir. <br/><br/> NIC düzeyi NSG 'de, bağlantı noktası 3389 varsayılan olarak açıktır ve Windows Güvenlik Duvarı 'nda, koruma için her IR düğümünde Varsayılan olarak giden bağlantı noktası 3389 Azure-SSIS IR izin vermediği sırada 3389 numaralı bağlantı noktasını denetlemenize izin veririz. |
@@ -147,7 +147,7 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
 
     ![Katalog-ortak uç nokta](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
 
-    Azure AD kimlik doğrulamasını etkinleştirme hakkında daha fazla bilgi için bkz. Azure [SQL veritabanı yönetilen örneği üzerinde Azure AD 'Yi etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
+    Azure AD kimlik doğrulamasını etkinleştirme hakkında daha fazla bilgi için bkz. Azure [SQL yönetilen örneği üzerinde Azure AD etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
 1. Azure-SSIS IR, geçerli olduğunda sanal ağa birleştirin.
 

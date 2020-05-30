@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: fd7900eb9de55b29cc06ed338514e5a46d160f11
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e36e11e4150c977b72b445e5bda7dce410c77925
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047457"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193937"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Bulutta yeni DBA: geçişten sonra Azure SQL veritabanı 'nı yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -82,7 +82,7 @@ Bir otomatik yük devretme grubu yapılandırılmamışsa, uygulamanızın olağ
 
 ### <a name="how-does-my-disaster-recovery-plan-change-from-on-premises-to-sql-database"></a>Olağanüstü durum kurtarma planımın şirket içi sunucudan SQL veritabanı 'na nasıl değiştirileceği
 
-Özet olarak, geleneksel şirket içi SQL Server kurulumu yük devretme kümelemesi, veritabanı yansıtma, Işlem çoğaltma veya günlük aktarma gibi özellikleri kullanarak ve Iş sürekliliği sağlamak üzere yedeklemeleri koruyup yönetmek için, kullanılabilirliği etkin bir şekilde yönetmenizi gerektiriyordu. SQL veritabanı ile, platform bunları sizin için yönettiğinden, veritabanı uygulamanızı geliştirmeye ve iyileştirmenize ve olağanüstü durum yönetimi konusunda endişelenmenize odaklanmanız gerekir. Yedekleme ve olağanüstü durum kurtarma planlarınızın Azure portal (veya PowerShell API 'Lerini kullanarak birkaç komut) üzerinde yalnızca birkaç tıklamayla yapılandırıldığını ve çalışmasını sağlayabilirsiniz.
+Özet olarak, SQL Server Kurulum yük devretme kümelemesi, veritabanı yansıtma, Işlem çoğaltma veya günlük aktarma gibi özellikleri kullanarak ve Iş sürekliliği sağlamak için yedeklemelerin bakımını yapma ve yönetme gibi özellikleri kullanarak etkin bir şekilde yönetmenizi gerektirir. SQL veritabanı ile, platform bunları sizin için yönettiğinden, veritabanı uygulamanızı geliştirmeye ve iyileştirmenize ve olağanüstü durum yönetimi konusunda endişelenmenize odaklanmanız gerekir. Yedekleme ve olağanüstü durum kurtarma planlarınızın Azure portal (veya PowerShell API 'Lerini kullanarak birkaç komut) üzerinde yalnızca birkaç tıklamayla yapılandırıldığını ve çalışmasını sağlayabilirsiniz.
 
 Olağanüstü durum kurtarma hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı olağanüstü durum kurtarma 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
@@ -125,7 +125,7 @@ Elden çıkarmada, uygulamanız için en uygun bağlantı kuruluşunu sağlamak 
 - VNet hizmet uç noktaları
 - Ayrılmış IP’ler
 
-#### <a name="firewall"></a>Güvenlik Duvarı
+#### <a name="firewall"></a>Güvenlik duvarı
 
 Bir güvenlik duvarı, sunucunuza yalnızca belirli varlıkların erişmesine izin vererek bir dış varlıktan sunucunuza erişimi engeller. Varsayılan olarak, sunucu içindeki veritabanlarına yönelik tüm bağlantılara, diğer Azure hizmetlerinden gelen (optionally7) bağlantılar dışında izin verilmez. Bir güvenlik duvarı kuralıyla, bu bilgisayarın IP adresine güvenlik duvarı üzerinden izin vererek, yalnızca onayladığınız varlıklara (örneğin, bir geliştirici makinesi) erişimi açabilirsiniz. Ayrıca, sunucuya erişime izin vermek istediğiniz bir IP aralığı belirtmenize olanak tanır. Örneğin, kuruluşunuzdaki geliştirici makinesi IP adresleri, güvenlik duvarı ayarları sayfasında bir Aralık belirtilerek bir kerede eklenebilir.
 
@@ -170,7 +170,7 @@ Hassas verilerinizi uçuş sırasında ve bekleyen bir şekilde korumak için SQ
 |**Özellikler**|**Always Encrypted**|**Saydam Veri Şifrelemesi**|
 |---|---|---|
 |**Şifreleme kapsamı**|Uçtan uca|Rest verileri|
-|**Sunucu, hassas verilere erişebilir**|No|Evet, çünkü şifreleme bekleyen veriler için|
+|**Sunucu, hassas verilere erişebilir**|Hayır|Evet, çünkü şifreleme bekleyen veriler için|
 |**İzin verilen T-SQL işlemleri**|Eşitlik karşılaştırması|Tüm T-SQL Surface alanı kullanılabilir|
 |**Özelliği kullanmak için gereken uygulama değişiklikleri**|En az|Çok küçük|
 |**Şifreleme ayrıntı düzeyi**|Sütun düzeyi|Veritabanı düzeyinde Kimlik Bilgileri belirleme seçeneği|
@@ -330,8 +330,8 @@ SQL veritabanı, belirli veri bozulması sınıflarının otomatik olarak ve ver
 
 Bunu başarmanın birkaç yolu vardır:
 
-- **[Veri eşitleme](sql-data-sync-data-sql-server-sql-database.md)** : Bu özellik, birden çok şirket içi SQL Server VERITABANLARı ve SQL veritabanı arasında veri çift ile eşitleme yapmanıza yardımcı olur. Şirket içi SQL Server veritabanlarıyla eşitleme yapmak için, eşitleme aracısını yerel bir bilgisayara yükleyip yapılandırmanız ve giden TCP bağlantı noktası 1433 ' u açmanız gerekir.
-- **[Işlem çoğaltma](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – işlem çoğaltma ile verilerinizi şirket IÇINDEN Azure SQL veritabanı 'na, şirket içi yayımcı ve Azure SQL veritabanı abonesine sahip olacak şekilde eşzamanlı olarak aktarabilirsiniz. Şimdilik yalnızca bu kurulum desteklenir. Verilerinizi Şirket içinden Azure SQL 'e en az kapalı kalma süresiyle geçirme hakkında daha fazla bilgi için bkz. [Işlem çoğaltmasını kullanma](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
+- **[Veri eşitleme](sql-data-sync-data-sql-server-sql-database.md)** – bu özellik, birden çok SQL Server VERITABANı ve SQL veritabanı arasında veri ve veritabanlarını eşitlemenize yardımcı olur. SQL Server veritabanlarıyla eşitleme yapmak için, bir yerel bilgisayara veya bir sanal makineye eşitleme Aracısı yükleyip yapılandırmanız ve giden TCP bağlantı noktası 1433 ' u açmanız gerekir.
+- **[Işlem çoğaltma](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – işlem çoğaltma ile verilerinizi bir SQL Server veritabanından Azure SQL veritabanı ile, yayımcı ve Azure SQL veritabanı gibi SQL Server örnek ile Azure SQL veritabanı arasında eşitleme yapabilirsiniz. Şimdilik yalnızca bu kurulum desteklenir. Verilerinizi bir SQL Server veritabanından Azure SQL 'e en az kapalı kalma süresiyle geçirme hakkında daha fazla bilgi için bkz. [Işlem çoğaltmasını kullanma](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d855019be7f357a35a26d14e68ba3d427d984e17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4b43b590b147335a70877a7c3c0b07f8b818e3c
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086037"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221051"
 ---
 # <a name="azcopy-sync"></a>azcopy eşitleme
 
@@ -67,7 +67,7 @@ azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[contai
 ```
 
 > [!NOTE]
-> Hedef blobu var *olmalıdır* . Hedefte `azcopy copy` henüz mevcut olmayan tek bir dosyayı kopyalamak için kullanın. Aksi takdirde, şu hata oluşur: `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`.
+> Hedef blobu var *olmalıdır* . `azcopy copy`Hedefte henüz mevcut olmayan tek bir dosyayı kopyalamak için kullanın. Aksi takdirde, şu hata oluşur: `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container` .
 
 Yukarıdaki gibi, ancak bu kez dosya içeriğinin MD5 karmasını de hesaplar ve BLOB 'un Content-MD5 özelliği olarak kaydeder:
 
@@ -81,7 +81,7 @@ Tüm dizini alt dizinleriyle birlikte eşitleyin (özyinelemeli, varsayılan ola
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
 ```
 
-or
+veya
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
@@ -144,13 +144,13 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--exclude-yol** dizesi kopyalama sırasında bu yolları hariç tutar. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler (örneğin: myFolder; myFolder/subDirName/File. PDF). Hesap çapraz geçiş ile birlikte kullanıldığında, yollar kapsayıcı adını içermez.
 
-**--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örneğin: \*. jpg; \*. PDF; exactName
+**--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örneğin: \* . jpg; \* . PDF; exactName
 
 **-h,--** eşitleme için yardım yardımı
 
 **--Include-Attributes** dizesi (yalnızca Windows) öznitelikleri öznitelik listesiyle eşleşen dosyaları içerir. Örneğin: A; Malar Sağ
 
-**--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örneğin: \*. jpg; \*. PDF; exactName
+**--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örneğin: \* . jpg; \* . PDF; exactName
 
 **--günlük düzeyi** dize günlük dosyası, kullanılabilir düzeyler: bilgi (tüm istekler ve yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve hiçbiri (çıktı günlüğü yok) için günlük ayrıntı düzeylerini tanımlar. (varsayılan BILGI). (varsayılan "BILGI")
 
@@ -164,7 +164,8 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |---|---|
 |--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
 |--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
+|--Güvenilen-Microsoft-sonekler dizesi   |Azure Active Directory oturum açma belirteçlerinin gönderilebileceği ek etki alanı soneklerini belirtir.  Varsayılan değer '*. Core.Windows.net;*' dir. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Burada listelenenler varsayılan olarak eklenir. Güvenlik için yalnızca Microsoft Azure etki alanlarını Buraya yerleştirmeniz gerekir. Birden çok girişi noktalı virgülle ayırın.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

@@ -3,12 +3,12 @@ title: Azure geçişi 'nde değerlendirme araçları ekleme
 description: Azure geçişi 'nde değerlendirme araçları eklemeyi öğrenin.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901048"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195628"
 ---
 # <a name="add-assessment-tools"></a>Değerlendirme araçları ekleme
 
@@ -23,7 +23,7 @@ Bu makalede, [Azure geçişi](migrate-overview.md)'nde değerlendirme araçları
 2. Kullanmak istediğiniz değerlendirme senaryosunu seçin:
 
     - Azure 'a geçiş için makineleri ve iş yüklerini bulup değerlendirmek üzere **sunucuları değerlendir ve geçir**' i seçin.
-    - Şirket içi SQL makinelerini değerlendirmek için **veritabanlarını değerlendir ve geçir**' i seçin.
+    - Şirket içi SQL Server veritabanlarını değerlendirmek için **veritabanlarını değerlendir ve geçir**' i seçin.
     - Şirket içi Web uygulamalarını değerlendirmek için **Web uygulamalarını değerlendir ve geçir**' i seçin.
 
     ![Değerlendirme senaryosu](./media/how-to-assess/assess-scenario.png)

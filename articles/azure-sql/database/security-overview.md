@@ -1,7 +1,7 @@
 ---
 title: Güvenlik Genel Bakış
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Azure SQL veritabanı 'nda güvenlik hakkında bilgi edinin ve Azure SQL yönetilen örneği, şirket içi SQL Server nasıl farklılık gösterir.
+description: Azure SQL veritabanı 'nda güvenlik hakkında bilgi edinin ve Azure SQL yönetilen örneği, SQL Server nasıl farklılık gösterir.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,14 +12,15 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 0f2f412045ddb86996ec98965a147d80944c642a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 617c06c9f9a86e8377f32a5e80102eb92e9f029c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049963"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191701"
 ---
 # <a name="an-overview-of-azure-sql-database--sql-managed-instance-security-capabilities"></a>SQL yönetilen örnek güvenlik özellikleri & Azure SQL veritabanı 'na genel bakış
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu makalede, [Azure SQL veritabanı](sql-database-paas-overview.md) ve [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)kullanılarak bir uygulamanın veri katmanını güvenli hale getirmenin temelleri özetlenmektedir. Açıklanan güvenlik stratejisi aşağıdaki resimde gösterildiği gibi katmanlı derinlemesine savunma yaklaşımını takip eder ve dışarıdan şu şekilde gider:
@@ -41,7 +42,7 @@ IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre veritaban
 [Sanal ağ kuralları](vnet-service-endpoint-rule-overview.md) , Azure SQL veritabanı 'nın yalnızca bir sanal ağ içindeki seçili alt ağlardan gönderilen iletişimleri kabul etmesine olanak tanır.
 
 > [!NOTE]
-> Güvenlik Duvarı kurallarıyla erişimi denetlemek **SQL yönetilen örneği** *için uygulanmaz.* Gereken ağ yapılandırması hakkında daha fazla bilgi için bkz. [SQL yönetilen örneğine bağlanma](../managed-instance/connect-application-instance.md)
+> Güvenlik Duvarı kurallarıyla erişimi denetlemek **SQL yönetilen örneği** *için uygulanmaz.* Gereken ağ yapılandırması hakkında daha fazla bilgi için bkz. [SQL yönetilen örneğine bağlanma](../managed-instance/connect-application-instance.md).
 
 ## <a name="access-management"></a>Erişim yönetimi
 

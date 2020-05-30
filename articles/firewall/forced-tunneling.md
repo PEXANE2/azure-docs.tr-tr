@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: cf0af93d95c5af56be6168bc8e4f79d3005e2ec2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d9afb93611712109d5e8fcc8a686f4f9196f3396
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649588"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204047"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Azure Güvenlik Duvarı Zorlamalı tünel
 
@@ -26,7 +26,7 @@ Zorlamalı tüneli desteklemek için, hizmet yönetimi trafiği müşteri trafi�
 
 Şirket içi trafiği zorlamak için BGP aracılığıyla tanıtılan bir varsayılan yönlendirmenize sahipseniz, güvenlik duvarınızı dağıtmadan önce *AzureFirewallSubnet* ve *AzureFirewallManagementSubnet* oluşturmanız ve Internet 'e varsayılan bir rota ile bir UDR oluşturmanız ve **sanal ağ geçidi yol yayılması** devre dışı bırakılması gerekir.
 
-Bu yapılandırmada, *AzureFirewallSubnet* artık trafiği Internet 'e geçirilmeden önce işlemek üzere herhangi bir şirket içi güvenlik duvarının veya NVA 'nın yollarını içerebilir. Bu alt ağda **sanal ağ geçidi yol yayılması** etkinse, bu yolları BGP üzerinden *AzureFirewallSubnet* 'e yayımlayabilirsiniz.
+Bu yapılandırmada, *AzureFirewallSubnet* artık, Internet 'e geçirilmeden önce trafiği işlemek için herhangi bir şirket içi güvenlik duvarı veya NVA için yollar içerebilir. Bu alt ağda **sanal ağ geçidi yol yayılması** etkinse, bu yolları BGP üzerinden *AzureFirewallSubnet* 'e yayımlayabilirsiniz.
 
 Örneğin, *AzureFirewallSubnet* üzerinde VPN ağ geçidiniz ile şirket içi cihazınıza ulaşmak için bir sonraki atlama olarak varsayılan bir yol oluşturabilirsiniz. Ya da **sanal ağ geçidi yol yaymayı** etkinleştirerek, şirket içi ağa uygun yolları alabilirsiniz.
 

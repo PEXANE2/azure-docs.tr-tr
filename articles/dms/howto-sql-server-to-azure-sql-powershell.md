@@ -1,7 +1,7 @@
 ---
 title: 'PowerShell: SQL Server SQL veritabanına geçirme'
 titleSuffix: Azure Database Migration Service
-description: Azure veritabanı geçiş hizmeti ile Azure PowerShell kullanarak şirket içi SQL Server Azure SQL veritabanı 'na geçirmeyi öğrenin.
+description: Azure veritabanı geçiş hizmeti ile Azure PowerShell kullanarak SQL Server bir datagbase 'i Azure SQL veritabanı 'na geçirmeyi öğrenin.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 323d6b006d3e790a7517e90f34241976904b3ba3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 494ef67938df161915390d9adc74093bafa550f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021492"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192655"
 ---
-# <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell kullanarak şirket içi SQL Server Azure SQL veritabanı 'na geçirme
+# <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell kullanarak SQL Server veritabanını Azure SQL veritabanı 'na geçirme
 
-Bu makalede, Microsoft Azure PowerShell kullanarak bir Azure SQL veritabanına SQL Server 2016 veya üzeri bir şirket içi örneğine geri yüklenen **Adventureworks2012** veritabanını geçirolursunuz. Microsoft Azure PowerShell modülünü kullanarak şirket içi SQL Server örneğinden veritabanlarını Azure SQL veritabanı 'na geçirebilirsiniz `Az.DataMigration` .
+Bu makalede, Microsoft Azure PowerShell kullanarak bir Azure SQL veritabanına SQL Server 2016 veya üzeri bir şirket içi örneğine geri yüklenen **Adventureworks2012** veritabanını geçirolursunuz. Microsoft Azure PowerShell modülünü kullanarak bir SQL Server örneğinden Azure SQL veritabanı 'na veritabanlarını geçirebilirsiniz `Az.DataMigration` .
 
 Bu makalede şunları öğreneceksiniz:
 > [!div class="checklist"]

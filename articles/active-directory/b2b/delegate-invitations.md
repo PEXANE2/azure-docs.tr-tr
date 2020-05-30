@@ -11,14 +11,14 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf872991adbf1361a482f6618e57304e33ec1261
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fa2b5f17af466d5ea2b6e3ba942fafc24cc94713
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591293"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204268"
 ---
-# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B dış işbirliğini etkinleştirin ve konukları kimlerin davet edebileceğini yönetin
+# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B dış işbirliğini etkinleştirme ve konuk davet edebilecek kişileri yönetme
 
 Bu makalede Azure Active Directory (Azure AD) B2B işbirliğinin nasıl etkinleştirileceği ve konukları kimlerin davet edebileceğinizi belirleme açıklanmaktadır. Varsayılan olarak, dizininizdeki tüm kullanıcılar ve konuklar bir yönetici rolüne atanmasa bile konukları davet edebilir. Dış işbirliği ayarları, kuruluşunuzdaki farklı türlerdeki kullanıcılar için konuk davetlerini açmanıza veya kapaetmenize olanak tanır. Ayrıca, konukların konuk davet etmesini sağlayan roller atayarak bireysel kullanıcılara davetiye da atayabilirsiniz.
 
@@ -48,6 +48,9 @@ Varsayılan olarak, konukları dahil tüm kullanıcılar Konuk kullanıcıları 
    - **Konuklar davet edebilir**: konukların diğer konukları davet etmesini sağlamak için bu ilkeyi **Evet**olarak ayarlayın.
    - **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)**: tek seferlik geçiş kodu özelliği hakkında daha fazla bilgi için bkz. [e-posta bir kerelik geçiş kodu doğrulaması (Önizleme)](one-time-passcode.md).
    - **İşbirliği kısıtlamaları**: belirli etki alanlarına davetlere izin verme veya bunları engelleme hakkında daha fazla bilgi için bkz. [belirli kuruluşlardan B2B kullanıcılarına izin verme veya bu kullanıcıları engelleme](allow-deny-list.md).
+   
+   > [!NOTE]
+   > **Üyeler davet** etmek için **Hayır** ve **Yöneticiler ve konuk davet eden rolündeki kullanıcılar davet** **olarak ayarlanırsa,** **konuk davet** eden rolündeki kullanıcılar konukları davet edebilir.
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Konuk davet eden rolünü bir kullanıcıya atama
 
@@ -66,5 +69,4 @@ Azure AD B2B işbirliği ile ilgili aşağıdaki makalelere bakın:
 - [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
 - [Bir davetiye olmadan B2B işbirliği Konuk kullanıcıları ekleme](add-user-without-invite.md)
 - [Bir role B2B işbirliği kullanıcısı ekleme](add-guest-to-role.md)
-
 

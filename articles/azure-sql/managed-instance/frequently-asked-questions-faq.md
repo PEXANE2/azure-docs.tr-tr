@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: c1a7f22314af472037194150b78e881395c14c2e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 518c4b83721e80aeaadfbdf5b03cddc62ae5479f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117376"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216339"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL yönetilen örnek hakkında sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ Bu makale, [Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md
 
 SQL yönetilen örneğindeki desteklenen özelliklerin listesi için bkz. [Azure SQL yönetilen örnek özellikleri](../database/features-comparison.md).
 
-Azure SQL yönetilen örneği ve şirket içi SQL Server arasındaki sözdizimi ve davranıştaki farklar için, bkz. [T-SQL farkları SQL Server](transact-sql-tsql-differences-sql-server.md).
+Azure SQL yönetilen örneği ve SQL Server arasındaki sözdizimi ve davranıştaki farklar için, bkz. [T-SQL farkları SQL Server](transact-sql-tsql-differences-sql-server.md).
 
 
 ## <a name="tech-spec--resource-limits"></a>Teknik belirtim & kaynak limitleri
@@ -60,7 +60,7 @@ Bir SQL yönetilen örneği oluşturmak için beklenen süre veya hizmet katman�
 
 ## <a name="naming-convention"></a>Adlandırma kuralı
 
-**Bir SQL yönetilen örneği, şirket içi SQL Server aynı ada sahip olabilir mi?**
+**Bir SQL yönetilen örneği, şirket içi SQL Server örneğiyle aynı ada sahip olabilir mi?**
 
 SQL yönetilen örnek adının değiştirilmesi desteklenmiyor.
 
@@ -240,3 +240,44 @@ Evet, SQL yönetilen örneğine geri yüklemek için veritabanınızın şifresi
 **Azure SQL veritabanından SQL yönetilen örneğine nasıl geçiş yapabilirim?**
 
 SQL yönetilen örneği, Azure SQL veritabanı olarak işlem ve depolama boyutu başına aynı performans düzeylerini sunar. Tek bir örnekteki verileri birleştirmek istiyorsanız veya yalnızca SQL yönetilen örneği 'nde yalnızca desteklenen bir özelliğe ihtiyacınız varsa, dışarı aktarma/içeri aktarma (BACPAC) işlevini kullanarak verilerinizi geçirebilirsiniz.
+
+## <a name="password-policy"></a>Parola ilkesi 
+
+**SQL yönetilen örnek SQL oturumları için hangi parola ilkeleri uygulandı?**
+
+SQL oturum açmaları için SQL yönetilen örnek parola ilkesi, yönetilen örneği tutan sanal kümeyi oluşturan VM 'lere uygulanan Azure platform ilkelerini devralır. Bu ayarlar Azure tarafından tanımlandığından ve yönetilen örnek tarafından devralındığından, bu ayarlardan herhangi birini değiştirmek mümkün değildir.
+
+ > [!IMPORTANT]
+ > Azure platformu, bu ilkelere bağlı hizmetleri bilgilendirmeden ilke gereksinimlerini değiştirebilir.
+
+**Geçerli Azure platformu ilkeleri nelerdir?**
+
+Her oturum açma sırasında parolasını ayarlaması ve en yüksek yaşına ulaştıktan sonra parolasını değiştirmesi gerekir.
+
+| **İlke** | **Güvenlik Ayarı** |
+| --- | --- |
+| Maksimum parola yaşı | 42 gün |
+| En az parola yaşı | 1 gün |
+| Minimum parola uzunluğu | 10 karakter |
+| Parolanın karmaşıklık gereksinimlerini karşılaması gerekir | Etkin |
+
+**Oturum açma düzeyindeki SQL yönetilen örneği 'nde parola karmaşıklığını ve kullanım süresini devre dışı bırakmak mümkün mü?**
+
+Evet, oturum açma düzeyinde CHECK_POLICY ve CHECK_EXPIRATION alanlarını denetlemek mümkündür. Aşağıdaki T-SQL komutunu yürüterek geçerli ayarları denetleyebilirsiniz:
+
+```sql
+SELECT *
+FROM sys.sql_logins
+```
+
+Bundan sonra, şunu yürüterek belirtilen oturum açma ayarlarını değiştirebilirsiniz:
+
+```sql
+ALTER LOGIN test WITH CHECK_POLICY = ON;
+ALTER LOGIN test WITH CHECK_EXPIRATION = ON;
+```
+
+(' test ' öğesini istenen oturum açma adıyla değiştirin)
+
+ > [!Note]
+ > CHECK_POLICY ve CHECK_EXPIRATION için varsayılan değerler OFF olarak ayarlanır.

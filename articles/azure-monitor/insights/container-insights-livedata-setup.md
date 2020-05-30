@@ -3,12 +3,13 @@ title: Kapsayıcılar için Azure Izleyicisini ayarlama Canlı veriler (Önizlem
 description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullanmadan kapsayıcı günlüklerinin (stdout/stderr) ve olayların gerçek zamanlı görünümünün nasıl ayarlanacağı açıklanır.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: ec75cc0a014b8a4f8c9b9d89a5bdca93936eb68a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275379"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196032"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Canlı veriler (Önizleme) özelliğini ayarlama
 
@@ -36,15 +37,15 @@ Bu makalede, kümeden canlı veriler (Önizleme) özelliğinin erişimini denetl
 
 ## <a name="authentication-model"></a>Kimlik doğrulaması modeli
 
-Canlı veriler (Önizleme) özellikleri, `kubectl` komut satırı aracıyla aynı şekilde Kubernetes API 'sini kullanır. Kubernetes API uç noktaları, tarayıcınızın doğrulayamayacak olan otomatik olarak imzalanan bir sertifika kullanır. Bu özellik, trafiğin güvenilir olduğundan emin olmak için, AKS hizmetiyle sertifikayı doğrulamak üzere bir iç proxy kullanır.
+Canlı veriler (Önizleme) özellikleri, komut satırı aracıyla aynı şekilde Kubernetes API 'sini kullanır `kubectl` . Kubernetes API uç noktaları, tarayıcınızın doğrulayamayacak olan otomatik olarak imzalanan bir sertifika kullanır. Bu özellik, trafiğin güvenilir olduğundan emin olmak için, AKS hizmetiyle sertifikayı doğrulamak üzere bir iç proxy kullanır.
 
-Azure portal, bir Azure Active Directory kümesi için oturum açma kimlik bilgilerinizi doğrulamanızı ve küme oluşturma sırasında sizi istemci kayıt kurulumuna yönlendirmenizi ister (Bu makalede yeniden yapılandırılır). Bu davranış, tarafından `kubectl`gereken kimlik doğrulama sürecine benzerdir. 
+Azure portal, bir Azure Active Directory kümesi için oturum açma kimlik bilgilerinizi doğrulamanızı ve küme oluşturma sırasında sizi istemci kayıt kurulumuna yönlendirmenizi ister (Bu makalede yeniden yapılandırılır). Bu davranış, tarafından gereken kimlik doğrulama sürecine benzerdir `kubectl` . 
 
 >[!NOTE]
->Kümenizin yetkilendirmesi, Kubernetes tarafından ve ile yapılandırılan güvenlik modeliyle yönetilir. Bu özelliğe erişen kullanıcılar, çalıştırmaya `az aks get-credentials -n {your cluster name} -g {your resource group}`benzer Kubernetes yapılandırmasını (*kubeconfig*) indirme izni gerektirir. Bu yapılandırma dosyası, RBAC yetkilendirmesi etkin olmayan Azure RBAC özellikli ve AKS kümelerinde **Azure Kubernetes hizmet kümesi Kullanıcı rolü**için yetkilendirme ve kimlik doğrulama belirtecini içerir. AKS Azure Active Directory (AD) SAML tabanlı çoklu oturum açma özelliği etkinken Azure AD ve istemci kayıt ayrıntıları hakkında bilgi içerir.
+>Kümenizin yetkilendirmesi, Kubernetes tarafından ve ile yapılandırılan güvenlik modeliyle yönetilir. Bu özelliğe erişen kullanıcılar, çalıştırmaya benzer Kubernetes yapılandırmasını (*kubeconfig*) indirme izni gerektirir `az aks get-credentials -n {your cluster name} -g {your resource group}` . Bu yapılandırma dosyası, RBAC yetkilendirmesi etkin olmayan Azure RBAC özellikli ve AKS kümelerinde **Azure Kubernetes hizmet kümesi Kullanıcı rolü**için yetkilendirme ve kimlik doğrulama belirtecini içerir. AKS Azure Active Directory (AD) SAML tabanlı çoklu oturum açma özelliği etkinken Azure AD ve istemci kayıt ayrıntıları hakkında bilgi içerir.
 
 >[!IMPORTANT]
->Bu özelliklerin kullanıcıları indirmek `kubeconfig` ve bu özelliği kullanmak Için [Azure Kubernetes küme kullanıcı rolünü](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) kümeye gerektirir. Kullanıcılar bu özelliği kullanmak için kümeye katılımcı **erişimi gerektirmez.** 
+>Bu özelliklerin kullanıcıları indirmek ve bu özelliği kullanmak için [Azure Kubernetes küme kullanıcı rolünü](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) kümeye gerektirir `kubeconfig` . Kullanıcılar bu özelliği kullanmak için kümeye katılımcı **erişimi gerektirmez.** 
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>RBAC özellikli kümeler ile clusterMonitoringUser kullanma
 
@@ -60,7 +61,7 @@ Kubernetes RBAC yetkilendirmesi ile yapılandırılmayan veya Azure AD çoklu ot
 
 ## <a name="configure-kubernetes-rbac-authorization"></a>Kubernetes RBAC yetkilendirmesini yapılandırma
 
-Kubernetes RBAC yetkilendirmesini etkinleştirdiğinizde, iki kullanıcı kullanılır: Kubernetes API 'sine erişmek için **Clusteruser** ve **clusteradmin** . Bu, yönetim seçeneği olmadan `az aks get-credentials -n {cluster_name} -g {rg_name}` çalışmaya benzer. Bu, **Clusteruser** 'ın Kubernetes API 'sindeki bitiş noktalarına erişim verilmesi gerektiği anlamına gelir.
+Kubernetes RBAC yetkilendirmesini etkinleştirdiğinizde, iki kullanıcı kullanılır: Kubernetes API 'sine erişmek için **Clusteruser** ve **clusteradmin** . Bu, `az aks get-credentials -n {cluster_name} -g {rg_name}` Yönetim seçeneği olmadan çalışmaya benzer. Bu, **Clusteruser** 'ın Kubernetes API 'sindeki bitiş noktalarına erişim verilmesi gerektiği anlamına gelir.
 
 Aşağıdaki örnek adımlarda, bu YAML yapılandırma şablonundan küme rolü bağlamasının nasıl yapılandırılacağı gösterilmektedir.
 
@@ -96,10 +97,10 @@ Aşağıdaki örnek adımlarda, bu YAML yapılandırma şablonundan küme rolü 
       apiGroup: rbac.authorization.k8s.io 
     ```
 
-2. Yapılandırmanızı güncelleştirmek için şu komutu çalıştırın: `kubectl apply -f LogReaderRBAC.yaml`.
+2. Yapılandırmanızı güncelleştirmek için şu komutu çalıştırın: `kubectl apply -f LogReaderRBAC.yaml` .
 
 >[!NOTE] 
-> `LogReaderRBAC.yaml` Dosyanın önceki bir sürümünü kümenize uyguladıysanız, yukarıdaki 1. adımda gösterilen yeni kodu kopyalayıp yapıştırarak güncelleştirin ve ardından 2. adımda gösterilen komutu çalıştırarak kümenize uygulayın.
+> Dosyanın önceki bir sürümünü `LogReaderRBAC.yaml` kümenize uyguladıysanız, yukarıdaki 1. adımda gösterilen yeni kodu kopyalayıp yapıştırarak güncelleştirin ve ardından 2. adımda gösterilen komutu çalıştırarak kümenize uygulayın.
 
 ## <a name="configure-ad-integrated-authentication"></a>AD ile tümleşik kimlik doğrulamasını yapılandırma 
 
@@ -118,10 +119,10 @@ Kubernetes 'te gelişmiş güvenlik kurulumu hakkında daha fazla bilgi için [K
 
 2. Sol bölmedeki **kimlik doğrulaması** ' nı seçin. 
 
-3. Bu listeye **Web** uygulaması türleri olarak iki yeniden yönlendirme URL 'si ekleyin. İlk temel URL değeri olmalıdır `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` ve ıkıncı taban URL değeri olmalıdır. `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`
+3. Bu listeye **Web** uygulaması türleri olarak iki yeniden yönlendirme URL 'si ekleyin. İlk temel URL değeri olmalıdır `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` ve ikinci taban URL değeri olmalıdır `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` .
 
     >[!NOTE]
-    >Bu özelliği Azure Çin 'de kullanıyorsanız ilk temel URL değeri olmalıdır `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` ve ıkıncı taban URL değeri olmalıdır. `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` 
+    >Bu özelliği Azure Çin 'de kullanıyorsanız ilk temel URL değeri olmalıdır `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` ve ikinci taban URL değeri olmalıdır `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` . 
     
 4. Yeniden yönlendirme URL 'Lerini kaydettikten sonra, **örtük izin**' ın altında, Seçenekler **erişim belirteçleri** ve **Kimlik belirteçleri** ' ni seçin ve ardından değişikliklerinizi kaydedin.
 

@@ -7,19 +7,19 @@ ms.reviewer: klam, logicappspm
 ms.date: 08/18/2016
 ms.topic: article
 tags: connectors
-ms.openlocfilehash: 179c7538d8072f0e1a4f7d049cf521971efd7a21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0361d42ea614b394142e32a9193ab1d48d1a4a6c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75666865"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194229"
 ---
 # <a name="get-and-manage-profiles-in-office-365-users-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Office 365 kullanıcıları 'nda profilleri edinme ve yönetme
 
 Profilleri almak, kullanıcıları aramak ve daha fazlasını yapmak için Office 365 kullanıcılarına bağlanın. Office 365 kullanıcıları ile şunları yapabilirsiniz:
 
 * İş akışınızı Office 365 kullanıcılarından aldığınız verilere göre oluşturun. 
-* Doğrudan rapor alan eylemleri, yöneticinin kullanıcı profilini al ve daha fazlasını kullanın. Bu eylemler bir yanıt alır ve daha sonra çıktıyı diğer eylemler için kullanılabilir hale getirir. Örneğin, bir kişinin doğrudan raporlarını alın ve bu bilgileri alıp SQL Azure bir veritabanını güncelleştirin. 
+* Doğrudan rapor alan eylemleri, yöneticinin kullanıcı profilini al ve daha fazlasını kullanın. Bu eylemler bir yanıt alır ve daha sonra çıktıyı diğer eylemler için kullanılabilir hale getirir. Örneğin, bir kişinin doğrudan raporlarını alın ve bu bilgileri alıp Azure SQL veritabanı 'nda bir veritabanını güncelleştirin. 
 
 Şimdi bir mantıksal uygulama oluşturarak çalışmaya başlamak için bkz. [mantıksal uygulama oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 

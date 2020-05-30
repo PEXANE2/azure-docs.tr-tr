@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 204ac3be46ac7ba0e1ea96e50379ca417b1299ce
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1a9e38d2718643212848105e09c60d93f497a34a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847642"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193541"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Yakınlık yerleştirme gruplarında çalışan Azure sanal makinelerini başka bir bölgeye çoğaltma
 
@@ -22,11 +22,14 @@ Bu makalede, bir yakınlık yerleştirme grubunda çalışan sanal makinelerin i
 
 Tipik bir senaryoda, uygulamanızın çeşitli katmanları arasındaki ağ gecikmesini önlemek için sanal makineleriniz bir yakınlık yerleşimi grubunda çalışıyor olabilir. Bu, uygulamanızın en iyi ağ gecikmesini sağlayabildiği sürece, herhangi bir bölge düzeyindeki başarısızlık için Site Recovery kullanarak bu uygulamaları korumak istersiniz. Site Recovery, verileri bir bölgeden başka bir Azure bölgesine çoğaltır ve yük devretme durumunda makineleri olağanüstü durum kurtarma bölgesinde getirir.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 - En iyi çaba, sanal makineleri bir yakınlık yerleşimi grubuna devretmek/yeniden çalıştırmanız olacaktır. Ancak, VM yük devretme/yeniden çalışma sırasında yakınlık yerleşimi içinde getirilemeiyorsa, yük devretme/yeniden çalışma işlemi devam eder ve sanal makineler bir yakınlık yerleşimi grubu dışında oluşturulur.
 -  Bir kullanılabilirlik kümesi bir yakınlık yerleşimi grubuna sabitlenmiştir ve kullanılabilirlik kümesindeki yük devretme/yeniden çalışma VM 'Leri için bir ayırma kısıtlaması varsa, sanal makineler hem kullanılabilirlik kümesi hem de yakınlık yerleşimi grubu dışında oluşturulur.
 -  Yönetilmeyen diskler için Site Recovery yakınlık yerleştirme grupları desteklenmez.
+
+> [!Note]
+> Azure Site Recovery, Hyper-V ' d e Azure senaryolarına yönelik yönetilen disklerden yeniden çalışmayı desteklemez. Bu nedenle, Azure 'daki yakınlık yerleşimi grubundan Hyper-V ' d e yeniden çalışma desteklenmez.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

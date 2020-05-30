@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
-ms.openlocfilehash: 59c7a34e975a53226b032827feae436202c8fa30
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 05/28/2020
+ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683338"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187608"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Eşleme veri akışında arama dönüşümü
 
@@ -21,7 +21,9 @@ ms.locfileid: "83683338"
 
 Veri akışı akışındaki başka bir kaynaktaki verilere başvurmak için arama dönüşümünü kullanın. Arama dönüştürmesi, eşleşen verilerden alınan sütunları kaynak verilerinize ekler.
 
-Bir arama dönüştürmesi, bir sol dış birleşime benzer. Birincil akıştaki tüm satırlar, arama akışından ek sütunları olan çıkış akışında bulunur. 
+Bir arama dönüştürmesi, bir sol dış birleşime benzer. Birincil akıştaki tüm satırlar, arama akışından ek sütunları olan çıkış akışında bulunur.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xsVT]
 
 ## <a name="configuration"></a>Yapılandırma
 
@@ -69,7 +71,7 @@ Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dı�
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Söz dizimi
+### <a name="syntax"></a>Sözdizimi
 
 ```
 <leftStream>, <rightStream>

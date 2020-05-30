@@ -13,14 +13,15 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 0d6ab6152d7025098006c580673848fe0268346b
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 7ee69feccb59270d14e86185d0cd6112e5e2ab4a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141849"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190064"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Hem Azure SQL veritabanı hem de Azure SQL yönetilen örneği, yapılandırılan bekletme döneminin süresi boyunca tutulan veritabanı yedeklemeleri oluşturur. Azure [Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../../storage/common/storage-redundancy.md) , veri merkezi kullanılabilir olsa bile yedeklemelerin korunacağından emin olmak için kullanılır.
@@ -43,7 +44,7 @@ Bu yedeklemeleri kullanarak şunları yapabilirsiniz:
 Geri yükleme gerçekleştirmek için bkz. [veritabanlarını yedeklerden geri yükleme](recovery-using-backups.md).
 
 > [!NOTE]
-> Azure depolama 'da, *çoğaltma* terimi dosyaları bir konumdan diğerine kopyalamayı belirtir. SQL 'de, *veritabanı çoğaltması* , birden çok ikincil veritabanının birincil veritabanıyla eşitlenmiş kalmasını sağlar.
+> Azure depolama 'da, *çoğaltma* terimi dosyaları bir konumdan diğerine kopyalamayı belirtir. Azure SQL veritabanı ve SQL yönetilen örneği 'nde, *veritabanı çoğaltması* , birden fazla ikincil veritabanının birincil veritabanıyla eşitlenmiş kalmasını sağlar.
 
 Aşağıdaki örnekleri kullanarak bu işlemlerden bazılarını deneyebilirsiniz:
 
@@ -61,7 +62,7 @@ Aşağıdaki örnekleri kullanarak bu işlemlerden bazılarını deneyebilirsini
 
 SQL veritabanı ve SQL yönetilen örneği, otomatik olarak tam yedeklemeler, fark yedeklemeleri ve işlem günlüğü yedeklemeleri oluşturarak noktadan noktaya geri yükleme (ıNR) için self servis hizmetini destekler. Tam veritabanı yedeklemeleri haftalık olarak oluşturulur ve fark veritabanı yedeklemeleri genellikle her 12 saatte bir oluşturulur. İşlem günlüğü yedeklemeleri genellikle her 5 ila 10 dakika oluşturulur. İşlem günlüğü yedeklemelerinin sıklığı, işlem boyutuna ve veritabanı etkinliğinin miktarına göre belirlenir.
 
-İlk tam yedekleme, bir veritabanı oluşturulduktan hemen sonra zamanlanır. Bu yedekleme genellikle 30 dakika içinde tamamlanır, ancak veritabanı büyükse daha uzun sürebilir. Örneğin, ilk yedekleme geri yüklenen bir veritabanında veya bir veritabanı kopyasında daha uzun sürebilir. İlk tam yedeklemeden sonra diğer tüm yedeklemeler otomatik olarak zamanlanır ve arka planda sessizce yönetilir. Tüm veritabanı yedeklerinin tam zamanlaması, genel sistem iş yükünü dengeleyerek SQL veritabanı veya SQL yönetilen örnek hizmeti tarafından belirlenir. Yedekleme işlerini değiştiremez veya devre dışı bırakamazsınız.
+İlk tam yedekleme, bir veritabanı oluşturulduktan hemen sonra zamanlanır. Bu yedekleme genellikle 30 dakika içinde tamamlanır, ancak veritabanı büyükse daha uzun sürebilir. Örneğin, ilk yedekleme geri yüklenen bir veritabanında veya bir veritabanı kopyasında daha uzun sürebilir. İlk tam yedeklemeden sonra diğer tüm yedeklemeler otomatik olarak zamanlanır ve arka planda sessizce yönetilir. Tüm veritabanı yedeklerinin tam zamanlaması, genel sistem iş yükünü dengeleyerek SQL veritabanı veya SQL yönetilen örneği tarafından belirlenir. Yedekleme işlerini değiştiremez veya devre dışı bırakamazsınız.
 
 ### <a name="default-backup-retention-period"></a>Varsayılan yedekleme saklama süresi
 
@@ -142,7 +143,7 @@ Yedekleme depolama maliyetlerini anlamak için Azure portal **maliyet yönetimi 
 
 ## <a name="backup-retention"></a>Yedekleri bekletme
 
-Microsoft Azure SQL 'deki tüm veritabanlarının varsayılan yedekleme saklama süresi 7 gündür. [Yedekleme saklama süresini](#change-the-pitr-backup-retention-period) 1-35 gün arasında herhangi bir yere değiştirebilirsiniz.
+SQL veritabanı ve SQL yönetilen örneğindeki tüm veritabanlarının varsayılan yedekleme saklama süresi 7 gündür. [Yedekleme saklama süresini](#change-the-pitr-backup-retention-period) 35 gün olarak değiştirebilirsiniz.
 
 Bir veritabanını silerseniz Azure, yedeklemeleri çevrimiçi bir veritabanı için olduğu gibi korur. Örneğin, bir saklama süresi yedi güne sahip olan temel bir veritabanını silerseniz, dört gün öncesine ait bir yedek üç gün boyunca kaydedilir.
 
@@ -156,7 +157,7 @@ Yedeklemeleri maksimum saklama süresinden daha uzun süre tutmanız gerekiyorsa
 
 ## <a name="encrypted-backups"></a>Şifrelenmiş yedeklemeler
 
-Veritabanınız TDE ile şifrelenirse, yedeklemeler, LTR yedeklemeler de dahil olmak üzere Rest 'de otomatik olarak şifrelenir. TDE, SQL veritabanı veya SQL yönetilen örneği için etkinleştirildiğinde yedeklemeler de şifrelenir. Azure SQL 'deki tüm yeni veritabanları, TDE varsayılan olarak etkin ile yapılandırılır. TDE hakkında daha fazla bilgi için bkz. SQL [veritabanı & SQL yönetilen örneği saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Veritabanınız TDE ile şifrelenirse, yedeklemeler, LTR yedeklemeler de dahil olmak üzere Rest 'de otomatik olarak şifrelenir. TDE, SQL veritabanı veya SQL yönetilen örneği için etkinleştirildiğinde yedeklemeler de şifrelenir. SQL veritabanı ve SQL yönetilen örneğindeki tüm yeni veritabanları, varsayılan olarak TDE etkin ile yapılandırılır. TDE hakkında daha fazla bilgi için bkz. SQL [veritabanı & SQL yönetilen örneği saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 ## <a name="backup-integrity"></a>Yedekleme bütünlüğü
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 10b3a6bb9592c955d16b070ae412374b8a1f4444
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4468025f6389d31269d9e587fca25390f19bdbbc
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196955"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200360"
 ---
 Azure Ultra diskler, Azure IaaS sanal makineleri (VM 'Ler) için yüksek aktarım hızı, yüksek ıOPS ve tutarlı düşük gecikme süreli disk depolama alanı sunar. Bu yeni teklif, var olan diskler tekliflerimiz ile aynı Kullanılabilirlik düzeylerinde satır performansının üst kısmında yer sağlar. Ultra disklerin büyük bir avantajı, sanal makinelerinizi yeniden başlatmanıza gerek kalmadan SSD 'nin performansını ve iş yüklerinizde dinamik olarak değiştirme yeteneğidir. Ultra diskler SAP HANA, en üst katman veritabanları ve ağır işlem içeren iş yükleri gibi yoğun veri kullanan iş yüklerine uygundur.
 
@@ -30,11 +30,11 @@ Ultra disklerden yararlanmak için, hangi kullanılabilirlik bölgesinin bulundu
 #### <a name="cli"></a>CLI
 
 ```azurecli
-$subscription = "<yourSubID>"
+subscription = "<yourSubID>"
 # example value is southeastasia
-$region = "<yourLocation>"
+region = "<yourLocation>"
 # example value is Standard_E64s_v3
-$vmSize = "<yourVMSize>"
+vmSize = "<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
@@ -51,7 +51,7 @@ Yanıt aşağıdaki biçimde olacaktır; burada X, seçtiğiniz bölgede dağıt
 
 Bölge değerini koru, kullanılabilirlik **bölgenizi** temsil eder ve bir ultra disk dağıtmak için bu alana ihtiyacınız olur.
 
-|ResourceType  |Name  |Konum  |Bölgeler  |Kısıtlama  |Özellik  |Değer  |
+|ResourceType  |Adı  |Konum  |Bölgeler  |Kısıtlama  |Özellik  |Değer  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disklerinden     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -65,10 +65,10 @@ Hangi bölgeyi dağıtacağınızı bildiğinize göre, bu makaledeki dağıtım
 Batı ABD dağıtılan Ultra disklerin, şimdilik hiçbir artıklık seçeneği olmadan dağıtılması gerekir. Ancak, Ultra diskleri destekleyen her disk boyutu bu bölgede olabilir. Batı ABD hangi nesnelerin Ultra diskleri desteklediğini öğrenmek için aşağıdaki kod parçacıklarında birini kullanabilirsiniz. `vmSize`Önce ve değerlerini değiştirdiğinizden emin olun `subscription` :
 
 ```azurecli
-$subscription = "<yourSubID>"
-$region = "westus"
+subscription = "<yourSubID>"
+region = "westus"
 # example value is Standard_E64s_v3
-$vmSize = "<yourVMSize>"
+vmSize = "<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
 ```
@@ -219,12 +219,12 @@ az vm start -n $vmName -g $rgName
 Artık Ultra diskler iliştirebilen bir VM 'ye sahip olduğunuza göre, buna bir ultra disk oluşturup ekleyebilirsiniz.
 
 ```azurecli-interactive
-$location="eastus2"
-$subscription="xxx"
-$rgname="ultraRG"
-$diskname="ssd1"
-$vmname="ultravm1"
-$zone=123
+location="eastus2"
+subscription="xxx"
+rgname="ultraRG"
+diskname="ssd1"
+vmname="ultravm1"
+zone=123
 
 #create an ultra disk
 az disk create `
@@ -244,10 +244,10 @@ az disk create `
 Alternatif olarak, mevcut sanal makinenizin Ultra diskler kullanabilen bir bölge/kullanılabilirlik bölgesi varsa, yeni bir VM oluşturmak zorunda kalmadan Ultra disklerin kullanımını sağlayabilirsiniz.
 
 ```azurecli
-$rgName = "<yourResourceGroupName>"
-$vmName = "<yourVMName>"
-$diskName = "<yourDiskName>"
-$subscriptionId = "<yourSubscriptionID>"
+rgName = "<yourResourceGroupName>"
+vmName = "<yourVMName>"
+diskName = "<yourDiskName>"
+subscriptionId = "<yourSubscriptionID>"
 
 az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $subscriptionId
 ```

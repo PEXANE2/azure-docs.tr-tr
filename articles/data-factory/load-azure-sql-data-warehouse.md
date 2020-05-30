@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Veri Ambarı’na veri yükleme
-description: Azure SQL veri ambarı 'na veri kopyalamak için Azure Data Factory kullanma
+title: Azure SYNAPSE Analytics 'e veri yükleme
+description: Azure SYNAPSE Analytics 'e veri kopyalamak için Azure Data Factory kullanma
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,38 +10,38 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/16/2020
-ms.openlocfilehash: e0a9a00aa6abd35ad723f02a30869e8f7734b1f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 2f3932f3374367e260685ae5145da8858384c3a2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020566"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194763"
 ---
-# <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Azure SQL Veri Ambarı’na yükleme
+# <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri yükleme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Azure SQL veri ambarı](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) , hem ilişkisel hem de ilişkisel olmayan büyük hacimli verileri işleyebilen bulut tabanlı, genişleme bir veritabanıdır. SQL veri ambarı, kurumsal veri ambarı iş yükleri için en iyi duruma getirilmiş, yüksek düzeyde paralel işleme (MPP) mimarisi üzerine kurulmuştur. Depolama ve işlem ölçeğini bağımsız olarak ölçeklendirmeye yönelik esnekliğe sahip bulut esnekliği sunar.
+[Azure SYNAPSE Analytics (eski ADıYLA SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) , hem ilişkisel hem de ilişkisel olmayan çok büyük hacimli verileri işleyebilen bulut tabanlı, genişleme veritabanıdır. Azure SYNAPSE Analytics, kurumsal veri ambarı iş yükleri için optimize edilmiş, yüksek düzeyde paralel işleme (MPP) mimarisi üzerine kurulmuştur. Depolama ve işlem ölçeğini bağımsız olarak ölçeklendirmeye yönelik esnekliğe sahip bulut esnekliği sunar.
 
-Azure Data Factory kullandığınızda Azure SQL veri ambarı 'nı kullanmaya artık hiç olmadığı kadar kolay. Azure Data Factory, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. Hizmeti kullanarak bir SQL veri ambarını mevcut sisteminizdeki verilerle doldurabilir ve analiz çözümlerinizi oluştururken zamandan tasarruf edebilirsiniz.
+Azure Data Factory kullandığınızda Azure SYNAPSE Analytics 'i kullanmaya artık hiç olmadığı kadar kolay. Azure Data Factory, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. Hizmeti kullanarak bir Azure SYNAPSE analizini mevcut sisteminizdeki verilerle doldurabilir ve analiz çözümlerinizi oluştururken zamandan tasarruf edebilirsiniz.
 
-Azure Data Factory Azure SQL veri ambarı 'na veri yüklemek için aşağıdaki avantajları sunmaktadır:
+Azure Data Factory, verileri Azure SYNAPSE Analytics 'e yüklemek için aşağıdaki avantajları sunmaktadır:
 
 * **Kolayca ayarlanabilir**: komut dosyası gerekmeden sezgisel 5 adımlı bir sihirbaz.
 * **Zengin veri deposu desteği**: zengin bir şirket içi ve bulut tabanlı veri deposu kümesi için yerleşik destek. Ayrıntılı bir liste için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)tablosuna bakın.
 * **Güvenli ve uyumlu**: veriler HTTPS veya ExpressRoute üzerinden aktarılır. Küresel hizmet varlığı, verilerinizin hiçbir şekilde coğrafi sınır bırakmamasını sağlar.
-* **PolyBase kullanarak benzersiz olmayan performans**: PolyBase, VERILERI Azure SQL veri ambarı 'na taşımanın en etkili yoludur. Azure Blob depolama ve Data Lake Store dahil olmak üzere tüm veri deposu türlerinden yüksek yük hızları elde etmek için hazırlama blobu özelliğini kullanın. (PolyBase, Azure Blob depolamayı ve varsayılan olarak Azure Data Lake Store destekler.) Ayrıntılar için bkz. [etkinlik performansını kopyalama](copy-activity-performance.md).
+* **PolyBase kullanarak benzersiz olmayan performans**: PolyBase, verileri Azure SYNAPSE Analytics 'e taşımanın en etkili yoludur. Azure Blob depolama ve Data Lake Store dahil olmak üzere tüm veri deposu türlerinden yüksek yük hızları elde etmek için hazırlama blobu özelliğini kullanın. (PolyBase, Azure Blob depolamayı ve varsayılan olarak Azure Data Lake Store destekler.) Ayrıntılar için bkz. [etkinlik performansını kopyalama](copy-activity-performance.md).
 
-Bu makalede, _Azure SQL veritabanından Azure SQL veri ambarı 'na veri yüklemek_için Data Factory veri kopyalama aracının nasıl kullanılacağı gösterilmektedir. Diğer veri deposu türlerinden veri kopyalamak için benzer adımları izleyebilirsiniz.
+Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yüklemek_için Data Factory veri kopyalama aracının nasıl kullanılacağı gösterilmektedir. Diğer veri deposu türlerinden veri kopyalamak için benzer adımları izleyebilirsiniz.
 
 > [!NOTE]
-> Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Azure SQL veri ambarı 'na veya buradan veri kopyalama](connector-azure-sql-data-warehouse.md).
+> Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri kopyalama](connector-azure-sql-data-warehouse.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* Azure SQL veri ambarı: veri ambarı, SQL veritabanından kopyalandığı verileri tutar. Azure SQL veri ambarınız yoksa, [SQL veri ambarı oluşturma](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)' daki yönergelere bakın.
+* Azure SYNAPSE Analytics: veri ambarı, SQL veritabanından kopyalandığı verileri tutar. Azure SYNAPSE analizlerinizi bilmiyorsanız [Azure SYNAPSE Analytics oluşturma](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)' daki yönergelere bakın.
 * Azure SQL veritabanı: Bu öğretici, Adventure Works LT örnek verileriyle bir Azure SQL veritabanından veri kopyalar. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümündeki yönergeleri IZLEYEREK bir SQL veritabanı oluşturabilirsiniz.
 * Azure depolama hesabı: Azure depolama, toplu kopyalama işleminde _hazırlama_ blobu olarak kullanılır. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) bölümündeki yönergelere bakın.
 
@@ -64,7 +64,7 @@ Bu makalede, _Azure SQL veritabanından Azure SQL veri ambarı 'na veri yükleme
 
    Veri Tümleştirme Uygulamasını ayrı bir sekmede açmak için **Oluştur ve İzle** kutucuğunu seçin.
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı’na veri yükleme
+## <a name="load-data-into-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'e veri yükleme
 
 1. **Başlayalım** sayfasında, Veri Kopyalama aracını açmak için **Veri Kopyala** kutucuğunu seçin.
 
@@ -115,7 +115,7 @@ Bu makalede, _Azure SQL veritabanından Azure SQL veri ambarı 'na veri yükleme
 1. **Tablo eşleme** sayfasında, içeriği gözden geçirin ve **İleri**' yi seçin. Akıllı tablo eşleştirmesi görüntülenir. Kaynak tablolar, tablo adlarına göre hedef tablolarla eşleştirilir. Hedefte bir kaynak tablosu yoksa, Azure Data Factory varsayılan olarak aynı ada sahip bir hedef tablo oluşturur. Ayrıca, bir kaynak tabloyu var olan bir hedef tabloyla eşleyebilirsiniz.
 
    > [!NOTE]
-   > SQL veri ambarı havuzu için otomatik tablo oluşturma, SQL Server veya Azure SQL veritabanı kaynak olduğunda geçerlidir. Verileri başka bir kaynak veri deposundan kopyalarsanız, veri kopyasını yürütmeden önce şemayı Azure SQL veri ambarı 'nda önceden oluşturmanız gerekir.
+   > Azure SYNAPSE Analytics havuzu için otomatik tablo oluşturma, SQL Server veya Azure SQL veritabanı kaynak olduğunda geçerlidir. Verileri başka bir kaynak veri deposundan kopyalarsanız, veri kopyasını yürütmeden önce şemayı Azure SYNAPSE Analytics 'te önceden oluşturmanız gerekir.
 
    ![Tablo eşleme sayfası](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
@@ -125,7 +125,7 @@ Bu makalede, _Azure SQL veritabanından Azure SQL veri ambarı 'na veri yükleme
 
 1. **Ayarlar** sayfasında, aşağıdaki adımları izleyin:
 
-    a. **Hazırlama ayarları** bölümünde, yeni bir hazırlama depolaması Için **+ Yeni** öğesine tıklayın. Depolama, PolyBase kullanılarak SQL veri ambarı 'na yüklenmeden önce verileri hazırlamak için kullanılır. Kopyalama işlemi tamamlandıktan sonra, Azure Blob depolama alanındaki geçici veriler otomatik olarak temizlenir.
+    a. **Hazırlama ayarları** bölümünde, yeni bir hazırlama depolaması Için **+ Yeni** öğesine tıklayın. Depolama, PolyBase kullanılarak Azure SYNAPSE Analytics 'e yüklenmeden önce verileri hazırlamak için kullanılır. Kopyalama işlemi tamamlandıktan sonra, Azure Blob depolama alanındaki geçici veriler otomatik olarak temizlenir.
 
     b. **Yeni bağlı hizmet** sayfasında, depolama hesabınızı seçin ve bağlı hizmeti dağıtmak için **Oluştur** ' u seçin.
 
@@ -152,7 +152,7 @@ Bu makalede, _Azure SQL veritabanından Azure SQL veri ambarı 'na veri yükleme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure SQL veri ambarı desteği hakkında bilgi edinmek için aşağıdaki makaleye ilerleyin:
+Azure SYNAPSE Analytics desteği hakkında bilgi edinmek için aşağıdaki makaleye ilerleyin:
 
 > [!div class="nextstepaction"]
->[Azure SQL veri ambarı Bağlayıcısı](connector-azure-sql-data-warehouse.md)
+>[Azure SYNAPSE Analytics Bağlayıcısı](connector-azure-sql-data-warehouse.md)

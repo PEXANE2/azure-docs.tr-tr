@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Azure Media Services canlı dökümü hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 11/19/2019
-ms.author: juliako
-ms.openlocfilehash: b364b6e70e3b5723c483bc3435f0c3a152c03aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: inhenkel
+ms.openlocfilehash: 9481b4ee2f225c7f76337d73b27630e4c67cc780
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79499864"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193601"
 ---
 # <a name="live-transcription-preview"></a>Canlı döküm (Önizleme)
 
@@ -41,54 +41,113 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 İşlem aşağıdaki gövdeye sahiptir (burada, bir geçiş canlı olayı, alma protokolü olarak RTMP ile oluşturulur). Döküm özelliğinin eklenmesini aklınızda edin. Dil için yalnızca izin verilen değer en-US ' dir.
 
 ```
-{ 
-  "properties": { 
-    "description": "Demonstrate how to enable live transcriptions", 
-    "input": { 
-      "streamingProtocol": "RTMP", 
-      "accessControl": { 
-        "ip": { 
-          "allow": [ 
-            { 
-              "name": "Allow All", 
-              "address": "0.0.0.0", 
-              "subnetPrefixLength": 0 
-            } 
-          ] 
-        } 
-      } 
-    }, 
-    "preview": { 
-      "accessControl": { 
-        "ip": { 
-          "allow": [ 
-            { 
-              "name": "Allow All", 
-              "address": "0.0.0.0", 
-              "subnetPrefixLength": 0 
-            } 
-          ] 
-        } 
-      } 
-    }, 
-    "encoding": { 
-      "encodingType": "None" 
-    }, 
-    "transcriptions": [ 
-      { 
-        "language": "en-US" 
-      } 
-    ], 
-    "vanityUrl": false, 
-    "streamOptions": [ 
-      "Default" 
-    ] 
-  }, 
-  "location": "West US 2" 
-} 
+{
+  "properties": {
+    "description": "Demonstrate how to enable live transcriptions",
+    "input": {
+      "streamingProtocol": "RTMP",
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "preview": {
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "encoding": {
+      "encodingType": "None"
+    },
+    "transcriptions": [
+      {
+        "language": "en-US"
+      }
+    ],
+    "vanityUrl": false,
+    "streamOptions": [
+      "Default"
+    ]
+  },
+  "location": "West US 2"
+}
 ```
 
 Canlı etkinliğin durumunu yoklayın "çalışıyor" durumuna gelene kadar, şimdi bir RTMP akışı gönderebilirsiniz. Artık, önizleme akışını denetleme ve canlı çıktılar oluşturma gibi bu öğreticideki adımların aynısını izleyebilirsiniz.
+
+## <a name="start-transcription-after-live-event-has-started"></a>Canlı etkinlik başlatıldıktan sonra dökümü Başlat
+
+Canlı döküm, canlı bir olay başladıktan sonra başlatılabilir. Canlı döküm 'yi açmak için canlı etkinliği "Transcriptions" özelliğini içerecek şekilde yama yapın. Canlı dökümleri devre dışı bırakmak için, "Transcriptions" özelliği canlı olay nesnesinden kaldırılacak.
+
+> [!NOTE]
+> Canlı olay sırasında bir defadan fazla açma veya kapatma işlemi, desteklenen bir senaryo değildir.
+
+Bu, canlı dökümlerini açmak için örnek çağrıdır.
+
+DÜZELTMESI```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
+
+```
+{
+  "properties": {
+    "description": "Demonstrate how to enable live transcriptions", 
+    "input": {
+      "streamingProtocol": "RTMP",
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "preview": {
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "encoding": {
+      "encodingType": "None"
+    },
+    "transcriptions": [
+      {
+        "language": "en-US"
+      }
+    ],
+    "vanityUrl": false,
+    "streamOptions": [
+      "Default"
+    ]
+  },
+  "location": "West US 2"
+}
+```
 
 ## <a name="transcription-delivery-and-playback"></a>Dağıtım ve kayıttan yürütme
 

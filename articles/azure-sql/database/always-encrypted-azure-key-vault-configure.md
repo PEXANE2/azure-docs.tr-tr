@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault kullanarak Always Encrypted yapılandırma
-description: Bu öğreticide, SQL Server Management Studio Always Encrypted Sihirbazı kullanılarak bir Azure SQL veritabanında veri şifreleme ile hassas verilerin nasıl güvenli hale kullanılacağı gösterilmektedir.
+description: Bu öğreticide, SQL Server Management Studio Always Encrypted Sihirbazı 'nı kullanarak Azure SQL veritabanı 'nda veri şifreleme ile hassas verilerin nasıl güvenli hale kullanılacağı gösterilmektedir.
 keywords: veri şifreleme, şifreleme anahtarı, bulut şifreleme
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,18 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 8f828d11d5351565c112b7e4b9dccaaef4607056
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2ff3df74c4cf3175fbbec5097a98c51e7f97ac16
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047702"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190518"
 ---
-# <a name="configure-always-encrypted-using-azure-key-vault"></a>Azure Key Vault kullanarak Always Encrypted yapılandırma 
+# <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Azure Key Vault kullanarak Always Encrypted yapılandırma 
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb-sqlmi.md)]
 
-Bu makalede, [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms)' de [Always Encrypted SIHIRBAZı](/sql/relational-databases/security/encryption/always-encrypted-wizard) kullanılarak Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde veritabanınız için hassas verilerin nasıl güvenli hale kullanılacağı gösterilir. Ayrıca, her şifreleme anahtarını Azure Key Vault nasıl depolayacağınız hakkında yönergeler de içerir.
+Bu makalede, [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms)' de [Always Encrypted SIHIRBAZıNı](/sql/relational-databases/security/encryption/always-encrypted-wizard) kullanarak Azure SQL veritabanı 'ndaki bir veritabanında hassas verilerin nasıl güvenli hale kullanılacağı gösterilmektedir. Ayrıca, her şifreleme anahtarını Azure Key Vault nasıl depolayacağınız hakkında yönergeler de içerir.
 
 Always Encrypted, istemci ve sunucu arasındaki hareket sırasında ve veriler kullanımda olduğunda, sunucudaki bekleyen hassas verileri korumaya yardımcı olan bir veri şifreleme teknolojisidir. Always Encrypted, gizli verilerin veritabanı sisteminde hiçbir şekilde düz metin olarak görünmemesini sağlar. Veri şifrelemesini yapılandırdıktan sonra, yalnızca anahtarlara erişimi olan istemci uygulamaları veya uygulama sunucuları düz metin verilerine erişebilir. Ayrıntılı bilgi için bkz. [Always Encrypted (veritabanı altyapısı)](https://msdn.microsoft.com/library/mt163865.aspx).
 
@@ -48,7 +49,7 @@ Bu makaledeki adımları izleyin ve Azure SQL veritabanı veya SQL yönetilen ö
 
 ## <a name="enable-client-application-access"></a>İstemci uygulama erişimini etkinleştir
 
-Bir Azure Active Directory (AAD) uygulaması ayarlayarak ve uygulamanızın kimliğini doğrulamak için ihtiyaç duyduğunuz *uygulama kimliğini* ve *anahtarını* kopyalayarak, istemci uygulamanızın SQL veritabanı 'Na veya SQL yönetilen örneğine erişmesini etkinleştirmeniz gerekir.
+Bir Azure Active Directory (Azure AD) uygulaması ayarlayarak ve uygulamanızın kimliğini doğrulamak için ihtiyaç duyduğunuz *uygulama kimliğini* ve *anahtarını* kopyalayarak, istemci uygulamanızın SQL veritabanı 'nda veritabanınıza erişmesini etkinleştirmeniz gerekir.
 
 *Uygulama kimliğini* ve *anahtarını*almak için, [kaynaklara erişebilen Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md)bölümündeki adımları izleyin.
 
@@ -88,7 +89,7 @@ Set-AzKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceG
 $subscriptionName = '<subscriptionName>'
 $userPrincipalName = '<username@domain.com>'
 $applicationId = '<applicationId from AAD application>'
-$resourceGroupName = '<resourceGroupName>' # use the same resource group name when creating your SQL Database below
+$resourceGroupName = '<resourceGroupName>' # use the same resource group name when creating your database in Azure SQL Database below
 $location = '<datacenterLocation>'
 $vaultName = '<vaultName>'
 
@@ -103,12 +104,9 @@ az keyvault set-policy --name $vaultName --key-permissions create, get, list, si
 az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
 ```
 
-* * *
-
-
 ## <a name="connect-with-ssms"></a>SSMS ile bağlanma
 
-SQL Server yönetilen Studio 'Yu (SSMS) açın ve sunucuya bağlanın ya da veritabanıyla birlikte yönetilir.
+SQL Server Management Studio (SSMS) açın ve sunucuya bağlanın ya da veritabanınıza birlikte yönetilir.
 
 1. SSMS’i açın. ( **Bağlan**  >  'a git Açık değilse **sunucuya Bağlan** penceresini açmak Için **veritabanı altyapısı** .)
 

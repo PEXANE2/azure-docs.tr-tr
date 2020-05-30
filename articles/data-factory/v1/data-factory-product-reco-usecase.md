@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 49ad9be7c70602132436b14234f01a4086d8e1fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70139155"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195881"
 ---
 # <a name="use-case---product-recommendations"></a>Kullanım örneği-ürün önerileri
 Azure Data Factory, çözüm Hızlandırıcıların Cortana Intelligence Suite uygulamak için kullanılan birçok hizmetlerden biridir.  Bu paket hakkındaki ayrıntılar için bkz. [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) sayfası. Bu belgede, Azure kullanıcılarının Azure Data Factory ve diğer Cortana Intelligence bileşen hizmetlerini kullanarak zaten çözmesinin ve uyguladığı yaygın bir kullanım durumu açıklanır.
@@ -41,7 +41,7 @@ Son olarak, perakendecinin, genel ürün satışı ve çapraz satış tıklama s
 ## <a name="solution-overview"></a>Çözüme Genel Bakış
 Bu örnek kullanım örneği, [HDInsight](https://azure.microsoft.com/services/hdinsight/) ve [Power BI](https://powerbi.microsoft.com/)de dahil olmak üzere Azure Data Factory ve diğer Cortana Intelligence Bileşen Hizmetleri kullanılarak gerçek Azure kullanıcıları tarafından çözüldü ve uygulanmıştır.
 
-Çevrimiçi satıcı bir Azure Blob Mağazası, şirket içi SQL Server, Azure SQL VERITABANı ve iş akışı boyunca veri depolama seçenekleri olarak ilişkisel bir veri reyonunu kullanır.  Blob deposu müşteri bilgilerini, müşteri davranış verilerini ve ürün bilgileri verilerini içerir. Ürün bilgileri verileri, ürün markası bilgilerini ve şirket içinde bir SQL veri ambarı 'nda depolanan bir ürün kataloğunu içerir. 
+Çevrimiçi satıcı bir Azure Blob Mağazası, şirket içi SQL Server, Azure SQL veritabanı ve iş akışı boyunca veri depolama seçenekleri olarak ilişkisel bir veri reyonunu kullanır.  Blob deposu müşteri bilgilerini, müşteri davranış verilerini ve ürün bilgileri verilerini içerir. Ürün bilgileri verileri, ürün markası bilgilerini ve şirket içinde bir SQL veri ambarı 'nda depolanan bir ürün kataloğunu içerir. 
 
 Tüm veriler, müşteri ilgi alanları ve eylemlerine bağlı olarak kişiselleştirilmiş öneriler sunmak üzere bir ürün öneri sistemine birleştirilir ve bu, Kullanıcı Web sitesinde katalogda bulunan ürünlere gözatacak. Müşteriler Ayrıca, herhangi bir kullanıcıyla ilgili olmayan genel Web sitesi kullanım desenlerine göre baktıkları ürünle ilgili ürünleri de görür.
 

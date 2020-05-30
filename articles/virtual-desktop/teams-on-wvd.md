@@ -5,69 +5,145 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a860b005457c6e02187423a3ffbbc63fe7c758b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65f0cf66dc6cef33e98258106e5f1573efdf39e5
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187537"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84203877"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
-> Uygulama hedefi: Windows 10 ve Windows 10 IoT Enterprise
+>[!IMPORTANT]
+>Microsoft ekipleri için medya iyileştirmesi Şu anda genel önizlemededir. Üretim iş yükleri için takımlar dağıtılmadan önce en iyi duruma getirilmiş takımlar Kullanıcı deneyimini değerlendirmenizi öneririz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 
-Sanallaştırılmış ortamlar, daha fazla gecikme, yüksek ana bilgisayar CPU kullanımı ve genel ses ve video performansı gibi Microsoft ekipleri gibi işbirliği uygulamalarına yönelik benzersiz bir zorluk kümesi sunar. VDı ortamlarında Microsoft ekiplerini kullanma hakkında daha fazla bilgi edinmek için, [sanallaştırılmış Masaüstü Altyapısı Için ekipler](https://docs.microsoft.com/microsoftteams/teams-for-vdi)' ı inceleyin.
+>[!NOTE]
+>Microsoft ekipleri için medya iyileştirmesi yalnızca Windows 10 makinelerinde Windows Masaüstü istemcisi için kullanılabilir. Medya iyileştirmeleri Windows Masaüstü istemcisi sürümü 1.2.1026.0 veya üstünü gerektirir.
+
+Windows sanal masaüstündeki Microsoft ekipleri sohbet ve işbirliğini destekler. Medya iyileştirmeleriyle, çağrı ve toplantı işlevlerini de destekler. Sanal Masaüstü Altyapısı (VDı) ortamlarında Microsoft ekipleri kullanma hakkında daha fazla bilgi edinmek için bkz. [sanallaştırılmış Masaüstü Altyapısı Için takımlar](/microsoftteams/teams-for-vdi/).
+
+Microsoft ekipleri için medya iyileştirmesi sayesinde, Windows Masaüstü istemcisi, takımlar ve toplantılar için ses ve videoyu yerel olarak işler. Windows sanal masaüstündeki Microsoft ekiplerini, iyileştirilmiş çağrı ve toplantılar olmadan diğer istemcilerle kullanmaya devam edebilirsiniz. Takımlar sohbeti ve işbirliği özellikleri tüm platformlarda desteklenir. Uzak oturumunuzdaki yerel cihazları yeniden yönlendirmek için [bir konak havuzunun Uzak Masaüstü Protokolü özelliklerini Özelleştir](#customize-remote-desktop-protocol-properties-for-a-host-pool)' e bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Windows sanal masaüstü 'nde Microsoft ekipleri kullanabilmeniz için şu işlemleri yapmanız gerekir:
 
-- [Windows Masaüstü Istemcisini](connect-windows-7-and-10.md) Microsoft ekipleri [donanım gereksinimlerini](https://docs.microsoft.com/microsoftteams/hardware-requirements-for-the-teams-app)karşılayan bir Windows 10 cihazına yükler.
+- [Ağınızı](/microsoftteams/prepare-network/) Microsoft ekipleri için hazırlayın.
+- [Windows Masaüstü Istemcisini](connect-windows-7-and-10.md) Microsoft ekipleri [donanım gereksinimlerini](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)karşılayan bir Windows 10 cihazına yükler.
 - Windows 10 çoklu oturum veya Windows 10 Enterprise sanal makinesine (VM) bağlanın.
-- [Ağınızı](https://docs.microsoft.com/microsoftteams/prepare-network) Microsoft ekipleri için hazırlayın.
 
-## <a name="use-unoptimized-microsoft-teams"></a>En iyi duruma getirilmiş Microsoft ekiplerini kullanma
+## <a name="install-the-teams-desktop-app"></a>Takımlar masaüstü uygulamasını yükler
 
-Microsoft ekiplerinizin sohbet ve işbirliği özelliklerinden yararlanmak için Windows sanal masaüstü ortamlarınızdaki Microsoft ekiplerini kullanabilirsiniz. Windows sanal masaüstü, VDı ses/video (AV) iyileştirmeleri üzerinde takımları desteklemez. Çağrılar ve toplantılar desteklenmez. Kuruluşunuzun ilkeleri izin verir, hala ses çağrıları yapabilir ve ses ile toplantılara katılabilir, ancak en iyi duruma getirilmiş ses kalitesi, ana bilgisayar yapılandırmanıza göre farklılık gösterir ve güvenilir olmayabilir. Daha fazla bilgi edinmek için bkz. [VDI performans değerlendirmesi üzerinde takımlar](https://docs.microsoft.com/microsoftteams/teams-for-vdi#teams-on-vdi-performance-considerations).
+Bu bölümde, Windows 10 çoklu oturum veya Windows 10 Enterprise VM yansımanıza takımlar masaüstü uygulamasını nasıl yükleyeceğiniz gösterilmektedir. Daha fazla bilgi edinmek için bkz. [VDI üzerinde takımlar masaüstü uygulamasını yüklemeyi veya güncelleştirmeyi](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi/)deneyin.
 
 ### <a name="prepare-your-image-for-teams"></a>Görüntünüzü takımlar için hazırlama
 
 Ekipte makine başına yüklemeyi etkinleştirmek için konakta aşağıdaki kayıt defteri anahtarını ayarlayın:
 
-```shell
-  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
-  Type: REG_DWORD
-  Value: 1
-```
+1. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **HKEY_LOCAL_MACHINE \Software\microsoft\ekiplerine**gidin.
+2. Takımlar anahtarı için aşağıdaki değeri oluşturun:
+
+| Adı             | Tür   | Veri/değer  |
+|------------------|--------|-------------|
+| IsWVDEnvironment | DWORD  | 1           |
+
+### <a name="install-the-teams-websocket-service"></a>Takımlar WebSocket hizmetini yükler
+
+[WebSocket HIZMETINI](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vkL6) VM yansımanıza yükler. Yükleme hatasıyla karşılaşırsanız, yeniden [dağıtılabilir en son Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yükleyip yeniden deneyin.
 
 ### <a name="install-microsoft-teams"></a>Microsoft ekipleri 'nı yükler
 
 Ekipler masaüstü uygulamasını makine başına yükleme kullanarak dağıtabilirsiniz. Microsoft ekiplerinizi Windows sanal masaüstü ortamınıza yüklemek için:
 
-1. Ortamınızla eşleşen [TAKıMLAR MSI paketini](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) indirin. 64 bitlik bir yükleyicinin bir 64 bit işletim sisteminde kullanılması önerilir.
+1. Ortamınızla eşleşen [TAKıMLAR MSI paketini](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) indirin. 64 bitlik bir yükleyicinin bir 64 bit işletim sisteminde kullanılması önerilir.
 2. MSI 'yi konak VM 'ye yüklemek için bu komutu çalıştırın.
 
-      ```shell
-      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSER=1
+      ```console
+      msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
       ```
 
-      Bu, takımları program dosyalarına veya program dosyalarına (x86) yükler. Bir sonraki oturum açışınızda ve takımları başlattığınızda, uygulama kimlik bilgilerinizi ister.
+      Bu, ekipleri 64 bitlik bir işletim sisteminde Program Files (x86) klasörüne ve 32 bit işletim sistemindeki Program Files klasörüne yüklenir. Bu noktada, altın görüntü kurulumu tamamlanmıştır. Kalıcı olmayan kurulum için makine başına takımlar yükleme gerekir.
+
+      Ekipleri bir oturumda bir sonraki açışınızda kimlik bilgileriniz istenir.
 
       > [!NOTE]
       > Kullanıcılar ve Yöneticiler, oturum açma sırasında şu anda takımlar için otomatik başlatmayı devre dışı bırakamıyorum.
 
       MSI 'yi konak VM 'den kaldırmak için şu komutu çalıştırın:
 
-      ```shell
+      ```console
       msiexec /passive /x <msi_name> /l*v <uninstall_logfile_name>
       ```
 
+      Bu, işletim sistemi ortamına bağlı olarak, takımları Program Files (x86) klasöründen veya Program Files klasöründen kaldırır.
+
       > [!NOTE]
-      > Ekipleri ALLUSER = 1 MSI ayarı ile yüklerseniz otomatik güncelleştirmeler devre dışı bırakılır. Ekipleri ayda en az bir kez güncelleştirdiğinizden emin olmanızı öneririz. Ekipler masaüstü uygulamasını dağıtma hakkında daha fazla bilgi edinmek için, [takımlar masaüstü UYGULAMASıNı VM 'ye dağıtmayı](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm)inceleyin.
+      > Ekipleri ALLUSER = 1 MSI ayarıyla yüklediğinizde otomatik güncelleştirmeler devre dışı bırakılır. Ekipleri ayda en az bir kez güncelleştirdiğinizden emin olmanızı öneririz. Ekipler masaüstü uygulamasını dağıtma hakkında daha fazla bilgi edinmek için, [takımlar masaüstü UYGULAMASıNı VM 'ye dağıtmayı](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/)inceleyin.
+
+### <a name="verify-media-optimizations-loaded"></a>Medya iyileştirmelerinin yüklendiğini doğrulama
+
+WebSocket hizmetini ve takımlar masaüstü uygulamasını yükledikten sonra, takımlar medya iyileştirmelerinin yüklendiğini doğrulamak için aşağıdaki adımları izleyin:
+
+1. Kullanıcı profili görüntünüzü seçin ve ardından **hakkında**' yı seçin.
+2. **Sürüm**seçin.
+
+      Medya iyileştirmesi yüklüyse, başlık, **WVD Media optimize edilmiş**olarak gösterilir. Başlıkta **WVD Media bağlı değil**görünüyorsa, takımlar uygulamasından çıkıp yeniden deneyin.
+
+3. Kullanıcı profili görüntünüzü seçin ve ardından **Ayarlar**' ı seçin.
+
+      Medya iyileştirmesi yüklüyse, yerel olarak bulunan ses cihazları ve kameralar cihaz menüsünde numaralandırılır. Menü **uzak sesi**gösteriyorsa, takımlar uygulamasından çıkıp yeniden deneyin. Cihazlar hala menüde görünmezse, yukarıdaki tüm yükleme adımlarının yapıldığından emin olun.
+
+## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
+
+Sanallaştırılmış bir ortamda takımlar kullanmak, sanallaştırılmamış bir ortamda takımlar kullanmaktan farklıdır. Sanallaştırılmış ortamlarda ekiplerin sınırlamaları hakkında daha fazla bilgi için, [sanallaştırılmış Masaüstü Altyapısı Için takımları](/microsoftteams/teams-for-vdi#known-issues-and-limitations/)inceleyin.
+
+### <a name="client-deployment-installation-and-setup"></a>İstemci dağıtımı, yükleme ve kurulum
+
+- Makine başına yüklemede, VDı 'daki takımlar, VDı ekipleri olmayan ekipler istemcilerinin de aynı şekilde otomatik olarak güncellenmez. İstemciyi güncelleştirmek için yeni bir MSI yükleyerek VM görüntüsünü güncelleştirmeniz gerekir.
+- Takımlar şu anda yalnızca sohbet, kanallar ve takvim 'de UTC saat dilimini gösterir.
+- Takımlar için medya iyileştirmesi yalnızca Windows 10 çalıştıran makinelerde Windows Masaüstü istemcisi için desteklenir.
+- Bir uç noktada tanımlanan açık HTTP proxy 'lerinin kullanımı desteklenmez.
+
+### <a name="calls-and-meetings"></a>Çağrılar ve toplantılar
+
+- Windows sanal masaüstü ortamlarında takımlar masaüstü istemcisi canlı olayları desteklemez. Şimdilik, uzak oturumunuzda [takımlar web istemcisinden](https://teams.microsoft.com) canlı olaylara katılmanız önerilir.
+- Bir çağrı veya toplantı sırasında takımlar uygulamasının en aza indirmek, uygulamayı genişlettiğinizde gelen video akışı 'nın görünmesine neden olabilir.
+- Çağrılar veya toplantılar Şu anda uygulama paylaşımını desteklememektedir. Masaüstü oturumları masaüstü paylaşımını destekler.
+- Çoklu izleyici kurulumunda Masaüstü Paylaşımı olduğunda tüm izleyiciler paylaşılır.
+- Denetimi verme ve denetimi alma şu anda desteklenmiyor.
+- Windows sanal masaüstündeki takımlar tek seferde yalnızca bir gelen video girişini destekler. Diğer bir deyişle, her biri Ekranınızı paylaşmaya çalıştığında, Toplantı lideri ekranının yerine ekranın görünmesini sağlar.
+- WebRTC sınırlamaları nedeniyle, gelen ve giden video akış çözünürlüğü 720p ile sınırlıdır.
+- Takımlar uygulaması, diğer cihazlarla HID düğmelerini veya LED denetimlerini desteklemez.
+
+Ekipler, sanallaştırılmış ortamlarla ilgili olmayan bilinen sorunlar için bkz. [kuruluşunuzdaki destek takımları](/microsoftteams/known-issues/)
+
+## <a name="feedback"></a>Geri Bildirim
+
+Takımlar [UserVoice sitesindeki](https://microsoftteams.uservoice.com/)Windows sanal masaüstündeki Microsoft ekipleri için geri bildirim sağlayın.
+
+## <a name="collect-teams-logs"></a>Takımlar günlüklerini topla
+
+Windows sanal masaüstü ortamınızda takımlar masaüstü uygulamasıyla ilgili sorunlarla karşılaşırsanız, konak VM 'de **%AppData%\microsoft\teams\logs.txt** altında istemci günlüklerini toplayın.
+
+Çağrılar ve toplantılar ile ilgili sorunlarla karşılaşırsanız, takımlar Web istemci günlüklerini, **CTRL**  +  **alt**  +  **SHIFT**  +  **1**tuş bileşimiyle toplayın. Günlükler, konak VM 'sindeki **%userprofile%\downloads\msteams tanılama günlüğü DATE_TIME. txt** dosyasına yazılır.
+
+## <a name="contact-microsoft-teams-support"></a>Microsoft ekipleri desteğiyle iletişim kurun
+
+Microsoft ekipleri desteğiyle iletişim kurmak için [Microsoft 365 yönetim merkezine](https://docs.microsoft.com/microsoft-365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=online)gidin.
 
 ## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
-Çoklu izleyici deneyimi gibi bir konak havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini özelleştirmek, mikrofon ve ses yeniden yönlendirmeyi etkinleştirmek, kullanıcılarınız için gereksinimlerinize göre en iyi deneyimi sunmanızı sağlar. **Set-RdsHostPool** cmdlet 'inde **-customrdpproperty** parametresini kullanarak Windows sanal masaüstündeki RDP özelliklerini özelleştirebilirsiniz.
-Desteklenen özelliklerin tam listesi ve bunların varsayılan değerleri için bkz. [desteklenen RDP dosyası ayarları](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
+
+Bir konak havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini, çok Monitor deneyimi veya mikrofon ve ses yeniden yönlendirmeyi etkinleştirme gibi özelleştirme, kullanıcılarınız için gereksinimlerinize göre en iyi deneyim sunmanızı sağlar.
+
+Mikrofon ve kamera yeniden yönlendirmeyi etkinleştirmek için aşağıdaki RDP özelliklerini ayarlayın:
+
+|RDP özellikleri   | Açıklama |
+|-----------------|-------------|
+|audiocapturemode: ı: 1  | Yerel cihazdan ses yakalamayı etkinleştirme ve Uzak oturumdaki bir ses uygulamasına yeniden yönlendirme |
+|audiomode: ı: 0         | Yerel bilgisayarda ses çal |
+|camerastoredirect: s: * | Tüm kameraları yeniden yönlendir |
+
+Daha fazla bilgi edinmek için, [bir konak havuzunun Uzak Masaüstü Protokolü özelliklerini özelleştirin](customize-rdp-properties.md)' i inceleyin.

@@ -3,16 +3,17 @@ title: Kapsayıcılar için Azure Izleyici dağıtımlarını görüntüleme (Ö
 description: Bu makalede, Azure Izleyici 'de kapsayıcılar için kubectl kullanılmadan Kubernetes dağıtımlarının gerçek zamanlı görünümü açıklanır.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: 98901ba8622404c03f3456b4ca404715d7016d9c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75404768"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195010"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Dağıtımı (Önizleme) gerçek zamanlı görüntüleme
 
-Kapsayıcılar için Azure Izleyici ile, görünüm dağıtımları (Önizleme) özelliği, `kubeclt get deployments` ve `kubectl describe deployment {your deployment}` komutlarını ortaya çıkaran gerçek zamanlı olarak Kubernetes dağıtım nesnelerine doğrudan erişim sağlar. 
+Kapsayıcılar için Azure Izleyici ile, görünüm dağıtımları (Önizleme) özelliği, ve komutlarını ortaya çıkaran gerçek zamanlı olarak Kubernetes dağıtım nesnelerine doğrudan erişim sağlar `kubeclt get deployments` `kubectl describe deployment {your deployment}` . 
 
 >[!NOTE]
 >Bu özellikle [özel kümeler](https://azure.microsoft.com/updates/aks-private-cluster/) olarak etkinleştirilen aks kümeleri desteklenmez. Bu özellik, tarayıcınızdan bir ara sunucu aracılığıyla Kubernetes API 'sine doğrudan erişim sağlar. Bu proxy 'den Kubernetes API 'sini engellemek için ağ güvenliğinin etkinleştirilmesi, bu trafiği engeller. 
@@ -26,9 +27,9 @@ Daha fazla bilgi edinmek için [dağıtımlar](https://kubernetes.io/docs/concep
 
 Canlı veriler (Önizleme) özelliği, Kubernetes API 'sine doğrudan erişir ve kimlik doğrulama modeliyle ilgili ek bilgilere [buradan](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)ulaşabilirsiniz. 
 
-Dağıtımlar (Önizleme) özelliği, dağıtımlar uç noktasında `/apis/apps/v1/deployments`bir kerelik (yenilenebilir) bir yük gerçekleştirir. Bu, belirli bir dağıtımı seçmenizi ve dağıtım uç noktasına `/apis/apps/v1/namespaces/${nameSpace}/deployments/${deploymentName}`karşı ilgili dağıtımın ayrıntılarını yapılandırmanızı sağlar. 
+Dağıtımlar (Önizleme) özelliği, dağıtımlar uç noktasında bir kerelik (yenilenebilir) bir yük gerçekleştirir `/apis/apps/v1/deployments` . Bu, belirli bir dağıtımı seçmenizi ve dağıtım uç noktasına karşı ilgili dağıtımın ayrıntılarını yapılandırmanızı sağlar `/apis/apps/v1/namespaces/${nameSpace}/deployments/${deploymentName}` . 
 
-Sayfanın sol üst kısmında **Yenile** seçeneği belirlendiğinde dağıtım listesi yenilenir. Bu, `kubectl` komutu yeniden çalıştırmaya benzetir. 
+Sayfanın sol üst kısmında **Yenile** seçeneği belirlendiğinde dağıtım listesi yenilenir. Bu, komutu yeniden çalıştırmaya benzetir `kubectl` . 
 
 >[!IMPORTANT]
 >Bu özelliğin çalışması sırasında hiçbir veri kalıcı olarak depolanmaz. Tarayıcınızı kapattığınızda veya uygulamadan çıktığınızda, oturum sırasında yakalanan tüm bilgiler silinir.  
@@ -38,7 +39,7 @@ Sayfanın sol üst kısmında **Yenile** seçeneği belirlendiğinde dağıtım 
 
 ## <a name="deployments-describe"></a>Dağıtımlar şunları anlatmaktadır
 
-İle `kubectl describe deployment`eşdeğer olan bir dağıtımın ayrıntılarını görüntülemek için aşağıdaki adımları gerçekleştirin.
+İle eşdeğer olan bir dağıtımın ayrıntılarını görüntülemek için `kubectl describe deployment` aşağıdaki adımları gerçekleştirin.
 
 1. Azure portal, AKS kümesi kaynak grubuna gidin ve AKS kaynağınızı seçin.
 
@@ -48,11 +49,11 @@ Sayfanın sol üst kısmında **Yenile** seçeneği belirlendiğinde dağıtım 
 
     ![Azure portal dağıtımlar görünümü](./media/container-insights-livedata-deployments/deployment-view.png)
 
-Görünüm, çalışan tüm dağıtımların bir listesini, ad alanıyla birlikte ve diğer ayrıntılı bilgileri gösterir `kubectl get deployments –all-namespaces`. Sütunlardan birini seçerek sonuçları sıralayabilirsiniz. 
+Görünüm, çalışan tüm dağıtımların bir listesini, ad alanıyla birlikte ve diğer ayrıntılı bilgileri gösterir `kubectl get deployments –all-namespaces` . Sütunlardan birini seçerek sonuçları sıralayabilirsiniz. 
 
 ![Dağıtımlar Özellikler bölmesi ayrıntıları](./media/container-insights-livedata-deployments/deployment-properties-pane-details.png)
 
-Listeden bir dağıtım seçtiğinizde, sayfanın sağ tarafında otomatik olarak bir özellik bölmesi görüntülenir. Komutu `kubectl describe deployment {deploymentName}`çalıştırdığınız seçili dağıtımla ilgili bilgileri gösterir. Açıklama bilgilerinde bazı ayrıntılar eksik olduğunu fark etmiş olabilirsiniz. Çoğu özellikle **şablon** eksik. **Ham** sekmesinin seçilmesi, ayrıştırmayana ayrıntıları ayrıntılarına gitmenizi sağlar.  
+Listeden bir dağıtım seçtiğinizde, sayfanın sağ tarafında otomatik olarak bir özellik bölmesi görüntülenir. Komutu çalıştırdığınız seçili dağıtımla ilgili bilgileri gösterir `kubectl describe deployment {deploymentName}` . Açıklama bilgilerinde bazı ayrıntılar eksik olduğunu fark etmiş olabilirsiniz. Çoğu özellikle **şablon** eksik. **Ham** sekmesinin seçilmesi, ayrıştırmayana ayrıntıları ayrıntılarına gitmenizi sağlar.  
 
 ![Dağıtımlar Özellikler bölmesi ham ayrıntıları](./media/container-insights-livedata-deployments/deployment-properties-pane-raw.png)
 

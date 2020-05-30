@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c5643b0ce9d93c28372b30e6fc114816cafbce6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b45b2294d56de896849dca0f387a4e26b845aa93
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690453"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204200"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Koşullu erişim yalnızca rapor modu nedir?
 
@@ -30,7 +30,7 @@ Yalnızca rapor modu, yöneticilerin koşullu erişim ilkelerinin ortamlarında 
 - Azure Izleyici aboneliğine sahip müşteriler, koşullu erişim öngörüleri çalışma kitabını kullanarak koşullu erişim ilkelerinin etkilerini izleyebilir.
 
 > [!WARNING]
-> Yalnızca rapor modundaki, uyumlu cihazlar gerektiren ilkeler, cihaz uyumluluğu zorlanmasa da, ilke değerlendirmesi sırasında bir cihaz sertifikası seçmesini, Mac, iOS ve Android 'de kullanıcılara istem verebilir. Bu istemler, cihaz uyumlu hale gelene kadar yinelenir. Son kullanıcıların oturum açma sırasında istemler almasını engellemek için cihaz platformları Mac, iOS ve Android cihaz uyumluluk denetimleri yapan yalnızca rapor ilkelerinden hariç tutun.
+> Yalnızca rapor modundaki, uyumlu cihazlar gerektiren ilkeler, cihaz uyumluluğu zorlanmasa da, ilke değerlendirmesi sırasında bir cihaz sertifikası seçmesini, Mac, iOS ve Android 'de kullanıcılara istem verebilir. Bu istemler, cihaz uyumlu hale gelene kadar yinelenir. Son kullanıcıların oturum açma sırasında istemler almasını engellemek için cihaz platformları Mac, iOS ve Android cihaz uyumluluk denetimleri yapan yalnızca rapor ilkelerinden hariç tutun. Yalnızca rapor modunun "Kullanıcı eylemleri" kapsamına sahip CA ilkeleri için geçerli olmadığına unutmayın.
 
 ![Azure AD oturum açma günlüğünde yalnızca rapor sekmesi](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e17eee8de789b813e5aab726207233e8607ec97f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74903105"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200335"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Özel IPsec/IKE ilkesi tüm Azure VPN Gateway SKU’larında desteklenir mi?
 Özel IPSec/ıKE ilkesi, temel SKU dışında tüm Azure SKU 'Larında desteklenir.
@@ -104,7 +104,7 @@ Evet. VNet-VNet tüneli, her iki yön için birer tane olmak üzere Azure’daki
 Hayır. IPsec/IKE ilkesi yalnızca Azure VPN ağ geçitleri aracılığıyla kurulan S2S VPN ve VNet-VNet bağlantılarında çalışır.
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Nasıl yaparım? IKEv1 veya Ikev2 protokol türüyle bağlantı oluşturulsun mu?
-IKEv1 bağlantısı, temel SKU dışında tüm RouteBased VPN türü SKU 'Larında oluşturulabilir. Bağlantılar oluştururken, IKEv1 veya Ikev2 bağlantı protokolü türünü belirtebilirsiniz. Bağlantı protokolü türü belirtmezseniz, Ikev2 varsayılan seçenek olarak kullanılır. Daha fazla bilgi için bkz. [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) belgeleri. SKU türleri ve IKEv1/Ikev2 desteği için bkz. [ağ geçitlerini ilke tabanlı VPN cihazlarına bağlama](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+, Eski SKU dışında tüm RouteBased VPN türü SKU 'Larında IKEv1 bağlantıları oluşturulabilir. Bağlantılar oluştururken, IKEv1 veya Ikev2 bağlantı protokolü türünü belirtebilirsiniz. Bağlantı protokolü türü belirtmezseniz, Ikev2 varsayılan seçenek olarak kullanılır. Daha fazla bilgi için bkz. [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) belgeleri. SKU türleri ve IKEv1/Ikev2 desteği için bkz. [ağ geçitlerini ilke tabanlı VPN cihazlarına bağlama](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
 ### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>IKEv1 ve IKEv2 bağlantıları arasında aktarım yapılmasına izin veriliyor mu?
 Evet. IKEv1 ve IKEv2 bağlantıları arasındaki aktarım desteklenir.

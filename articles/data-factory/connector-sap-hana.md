@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/22/2020
-ms.openlocfilehash: 945ef895304a151ea7e0ef5b94ed0b42757743ad
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: ac351e688eba274c989b4b475c6d61607b9ea5c1
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890626"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219299"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP HANA verileri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -67,11 +67,11 @@ SAP HANA bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **Saphana** olarak ayarlanmalıdır | Yes |
-| Dizisi | **Temel kimlik doğrulaması** veya **Windows kimlik doğrulaması**kullanarak SAP HANA bağlanmak için gereken bilgileri belirtin. Aşağıdaki örneklere bakın.<br>Bağlantı dizesinde, sunucu/bağlantı noktası zorunludur (varsayılan bağlantı noktası 30015 ' dir), temel kimlik doğrulaması kullanılırken Kullanıcı adı ve parola zorunludur. Ek Gelişmiş ayarlar için [SAP HANA ODBC bağlantı özellikleri](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>) ' ne bakın.<br/>Parolayı Azure Key Vault de yerleştirebilir ve parola yapılandırmasını bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault makalesinde mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. | Yes |
-| userName | Windows kimlik doğrulaması kullanırken kullanıcı adını belirtin. Örnek: `user@domain.com` | No |
-| password | Kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Yes |
+| tür | Type özelliği: **Saphana** olarak ayarlanmalıdır | Evet |
+| Dizisi | **Temel kimlik doğrulaması** veya **Windows kimlik doğrulaması**kullanarak SAP HANA bağlanmak için gereken bilgileri belirtin. Aşağıdaki örneklere bakın.<br>Bağlantı dizesinde, sunucu/bağlantı noktası zorunludur (varsayılan bağlantı noktası 30015 ' dir), temel kimlik doğrulaması kullanılırken Kullanıcı adı ve parola zorunludur. Ek Gelişmiş ayarlar için [SAP HANA ODBC bağlantı özellikleri](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>) ' ne bakın.<br/>Parolayı Azure Key Vault de yerleştirebilir ve parola yapılandırmasını bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault makalesinde mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. | Evet |
+| userName | Windows kimlik doğrulaması kullanırken kullanıcı adını belirtin. Örnek: `user@domain.com` | Hayır |
+| password | Kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
 
 **Örnek: temel kimlik doğrulaması kullanma**
 
@@ -116,7 +116,7 @@ SAP HANA bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 Aşağıdaki yük ile SAP HANA bağlı hizmeti kullanıyorsanız, hala olduğu gibi desteklenirken, ileri ' yi kullanmanız önerilir.
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -148,11 +148,11 @@ SAP HANA verileri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği: **Saphanatable** olarak ayarlanmalıdır | Yes |
+| tür | Veri kümesinin Type özelliği: **Saphanatable** olarak ayarlanmalıdır | Evet |
 | manızı | SAP HANA veritabanındaki şemanın adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 | tablo | SAP HANA veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -172,7 +172,7 @@ SAP HANA verileri kopyalamak için aşağıdaki özellikler desteklenir:
 }
 ```
 
-`RelationalTable` Türü belirtilmiş veri kümesi kullanıyorsanız, hala olduğu gibi desteklenir, ancak yeni bir adım ileri kullanmanız önerilir.
+`RelationalTable`Türü belirtilmiş veri kümesi kullanıyorsanız, hala olduğu gibi desteklenir, ancak yeni bir adım ileri kullanmanız önerilir.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
@@ -187,14 +187,14 @@ SAP HANA verileri kopyalamak için, etkinlik **kaynağını** kopyalama bölüm�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **Saphanasource** olarak ayarlanmalıdır | Yes |
-| sorgu | SAP HANA örneğinden verileri okumak için SQL sorgusunu belirtir. | Yes |
-| partitionOptions | SAP HANA verileri almak için kullanılan veri bölümleme seçeneklerini belirtir. [SAP HANA bölümünden paralel kopyadan](#parallel-copy-from-sap-hana) daha fazla bilgi edinin.<br>İzin verme değerleri: **none** (varsayılan), **physicalpartitionsoftable**, **SapHanaDynamicRange**. [SAP HANA bölümünden paralel kopyadan](#parallel-copy-from-sap-hana) daha fazla bilgi edinin. `PhysicalPartitionsOfTable`yalnızca bir tablodan veri kopyalanırken ve sorgu olmadığında kullanılabilir. <br>Bir bölüm seçeneği etkinleştirildiğinde (yani, değil `None`), SAP HANA eşzamanlı olarak veri yükleme için paralellik derecesi kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) ayar tarafından denetlenir. | False |
-| partitionSettings | Veri bölümleme için ayarların grubunu belirtin.<br>Bölüm seçeneği olduğunda Uygula `SapHanaDynamicRange`. | False |
-| partitionColumnName | Paralel kopya için bölüm tarafından kullanılacak kaynak sütunun adını belirtin. Belirtilmemişse, tablonun dizini veya birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır.<br>Bölüm seçeneği olduğunda uygulayın `SapHanaDynamicRange`. Kaynak verileri almak için bir sorgu kullanırsanız, WHERE yan tümcesinde kanca `?AdfHanaDynamicRangePartitionCondition` . [SAP HANA bölümünde paralel kopyalama](#parallel-copy-from-sap-hana) örneğine bakın. | Bölüm kullanılırken `SapHanaDynamicRange` Evet. |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Saphanasource** olarak ayarlanmalıdır | Evet |
+| sorgu | SAP HANA örneğinden verileri okumak için SQL sorgusunu belirtir. | Evet |
+| partitionOptions | SAP HANA verileri almak için kullanılan veri bölümleme seçeneklerini belirtir. [SAP HANA bölümünden paralel kopyadan](#parallel-copy-from-sap-hana) daha fazla bilgi edinin.<br>İzin verme değerleri: **none**   (varsayılan), **physicalpartitionsoftable**, **SapHanaDynamicRange**. [SAP HANA bölümünden paralel kopyadan](#parallel-copy-from-sap-hana) daha fazla bilgi edinin. `PhysicalPartitionsOfTable`yalnızca bir tablodan veri kopyalanırken ve sorgu olmadığında kullanılabilir. <br>Bir bölüm seçeneği etkinleştirildiğinde (yani, değil `None` ), SAP HANA eşzamanlı olarak veri yükleme için paralellik derecesi [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayar tarafından denetlenir. | False |
+| partitionSettings | Veri bölümleme için ayarların grubunu belirtin.<br>Bölüm seçeneği olduğunda Uygula `SapHanaDynamicRange` . | False |
+| partitionColumnName | Paralel kopya için bölüm tarafından kullanılacak kaynak sütunun adını belirtin. Belirtilmemişse, tablonun dizini veya birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır.<br>Bölüm seçeneği olduğunda uygulayın  `SapHanaDynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız,  `?AdfHanaDynamicRangePartitionCondition` WHERE yan tümcesinde kanca. [SAP HANA bölümünde paralel kopyalama](#parallel-copy-from-sap-hana) örneğine bakın. | Bölüm kullanılırken Evet `SapHanaDynamicRange` . |
 | packetSize | Verilerin birden çok bloğuyla bölüneceği ağ paketi boyutunu (kilobayt olarak) belirtir. Kopyalanacak büyük miktarda veriniz varsa, paket boyutunu artırmak çoğu durumda SAP HANA okuma hızını artırabilir. Paket boyutu ayarlanırken performans testi önerilir. | Hayır.<br>Varsayılan değer 2048 ' dir (2MB). |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -226,7 +226,7 @@ SAP HANA verileri kopyalamak için, etkinlik **kaynağını** kopyalama bölüm�
 ]
 ```
 
-Yazılı kopyalama kaynağı kullanıyorsanız `RelationalSource` , hala olduğu gibi desteklenirken, ileri ' yi kullanmanız önerilir.
+`RelationalSource`Yazılı kopyalama kaynağı kullanıyorsanız, hala olduğu gibi desteklenirken, ileri ' yi kullanmanız önerilir.
 
 ## <a name="parallel-copy-from-sap-hana"></a>SAP HANA paralel kopyası
 
@@ -234,14 +234,14 @@ Data Factory SAP HANA Bağlayıcısı, verileri SAP HANA paralel olarak kopyalam
 
 ![Bölüm seçeneklerinin ekran görüntüsü](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
-Bölümlenmiş kopyayı etkinleştirdiğinizde Data Factory, verileri bölümlere göre almak için SAP HANA kaynağınıza paralel sorgular çalıştırır. Paralel derece kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) ayar tarafından denetlenir. Örneğin, dört olarak ayarlarsanız `parallelCopies` , Data Factory aynı anda, belirtilen bölüm seçeneğiniz ve ayarlarınıza göre dört sorgu üretir ve çalışır ve her sorgu, SAP HANA verilerin bir kısmını alır.
+Bölümlenmiş kopyayı etkinleştirdiğinizde Data Factory, verileri bölümlere göre almak için SAP HANA kaynağınıza paralel sorgular çalıştırır. Paralel derece [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayar tarafından denetlenir. Örneğin, `parallelCopies` dört olarak ayarlarsanız, Data Factory aynı anda, belirtilen bölüm seçeneğiniz ve ayarlarınıza göre dört sorgu üretir ve çalışır ve her sorgu, SAP HANA verilerin bir kısmını alır.
 
 SAP HANA, özellikle de büyük miktarda veri aldığınızda, verilerin bölümlenmesi ile paralel kopyayı etkinleştirmeniz önerilir. Farklı senaryolar için önerilen yapılandırma aşağıda verilmiştir. Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adı belirtin) yazılması önerilir, bu durumda performans tek bir dosyaya yazılmasından daha iyidir.
 
 | Senaryo                                           | Önerilen ayarlar                                           |
 | -------------------------------------------------- | ------------------------------------------------------------ |
 | Büyük tablodan tam yük.                        | **Bölüm seçeneği**: tablonun fiziksel bölümleri. <br><br/>Yürütme sırasında Data Factory, belirtilen SAP HANA tablosunun fiziksel bölüm türünü otomatik olarak algılar ve ilgili bölüm stratejisini seçer:<br>- **Aralık bölümleme**: tablo için tanımlanan bölüm sütununu ve bölüm aralıklarını alın, sonra verileri aralığa göre kopyalayın. <br>- **Karma bölümlendirme**: karma bölüm anahtarını bölüm sütunu olarak kullanın, ardından verileri BÖLÜMLEYIP ADF hesaplanan aralıklar temelinde kopyalayın. <br>- Hepsini bir **kez deneme bölümlendirme** veya **bölüm yok**: birincil anahtarı bölüm sütunu olarak kullanın, ardından verileri bölümleyip ADF hesaplanan aralıklar temelinde kopyalayın. |
-| Özel bir sorgu kullanarak büyük miktarda veriyi yükleyin. | **Bölüm seçeneği**: Dinamik Aralık bölümü.<br>**Sorgu**: `SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>`.<br>**Bölüm sütunu**: Dinamik Aralık bölümünü uygulamak için kullanılan sütunu belirtin. <br><br>Yürütme sırasında Data Factory, belirtilen bölüm sütununun değer aralıklarını eşit bir şekilde dağıtarak, satırları ayrı bölüm sütun değerleri ve ADF paralel kopyalama ayarı sayısına göre eşit bir şekilde dağıtır ve ardından her bölüm için bölüm sütunu değer aralığını filtreleyerek yerini alır `?AdfHanaDynamicRangePartitionCondition` ve SAP HANA gönderir.<br><br>Birden çok sütunu bölüm sütunu olarak kullanmak istiyorsanız, her bir sütunun değerlerini sorgudaki tek bir sütun olarak birleştirebilir ve ADF 'de, gibi `SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition`bir bölüm sütunu olarak belirtebilirsiniz. |
+| Özel bir sorgu kullanarak büyük miktarda veriyi yükleyin. | **Bölüm seçeneği**: Dinamik Aralık bölümü.<br>**Sorgu**: `SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Bölüm sütunu**: Dinamik Aralık bölümünü uygulamak için kullanılan sütunu belirtin. <br><br>Yürütme sırasında Data Factory, belirtilen bölüm sütununun değer aralıklarını eşit bir şekilde dağıtarak, satırları ayrı bölüm sütun değerleri ve ADF paralel kopyalama ayarı sayısına göre eşit bir şekilde dağıtır `?AdfHanaDynamicRangePartitionCondition` ve ardından her bölüm için bölüm sütunu değer aralığını filtreleyerek yerini alır ve SAP HANA gönderir.<br><br>Birden çok sütunu bölüm sütunu olarak kullanmak istiyorsanız, her bir sütunun değerlerini sorgudaki tek bir sütun olarak birleştirebilir ve ADF 'de, gibi bir bölüm sütunu olarak belirtebilirsiniz `SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition` . |
 
 **Örnek: bir tablonun fiziksel bölümleri ile sorgulama**
 
@@ -299,7 +299,7 @@ SAP HANA verileri kopyalarken, SAP HANA veri türlerinden aşağıdaki eşlemele
 | ILIŞKIN          | DateTime                       |
 | IKILI          | Byte []                         |
 
-### <a name="sap-hana-sink"></a>SAP HANA havuzu
+## <a name="sap-hana-sink"></a>SAP HANA havuzu
 
 Şu anda SAP HANA Bağlayıcısı havuz olarak desteklenmez, ancak SAP HANA 'e veri yazmak için SAP HANA sürücüyle Genel ODBC bağlayıcısını kullanabilirsiniz. 
 

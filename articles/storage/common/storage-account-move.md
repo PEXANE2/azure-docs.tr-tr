@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 34f1c96d8336447b6ca2a4f55fefa9a061c38fa2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 64d987ff01e596eefa98e8086788546c465e2d83
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198499"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195385"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Bir Azure Depolama hesabını başka bir bölgeye taşıma
 
@@ -37,7 +37,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 - Önizleme özellikleri için, aboneliğinizin hedef bölge için beyaz listeye kaydedildiğinden emin olun.
 
-<a id="prepare" />
+<a id="prepare"></a>
 
 ## <a name="prepare"></a>Hazırlama
 
@@ -174,7 +174,7 @@ PowerShell kullanarak şablonu dağıtmak için:
     ```
 ---
 
-<a id="move" />
+<a id="move"></a>
 
 ## <a name="move"></a>Taşı
 
@@ -219,7 +219,7 @@ Bazı özellikler bir şablona aktarmayacaktır, bu nedenle bunları yeni depola
 
 Aşağıdaki tablo, bu özellikleri yeni depolama hesabınıza ekleme kılavuzlarıyla birlikte listelemektedir.
 
-| Özellik    | Rehber    |
+| Öne çıkan özelliği    | Rehber    |
 |--------|-----------|
 | **Yaşam döngüsü yönetim ilkeleri** | [Azure Blob depolama yaşam döngüsünü yönetme](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statik web siteleri** | [Azure depolama 'da statik bir Web sitesi barındırma](../blobs/storage-blob-static-website-how-to.md) |

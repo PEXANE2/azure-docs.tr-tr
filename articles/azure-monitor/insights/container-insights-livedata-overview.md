@@ -3,16 +3,17 @@ title: Kapsayıcılar için Azure Izleyici ile canlı verileri (Önizleme) gör�
 description: Bu makalede, Azure Izleyici 'de kapsayıcılar için kubectl kullanmadan Kubernetes günlüklerinin, olaylarının ve pod ölçümlerinin gerçek zamanlı görünümü açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 38615acf079c33c49e27394bfdb9b8104e5a68ac
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: references_regions
+ms.openlocfilehash: 80bf3e50ac63ae9b48d6f3b314bc52bcb209072f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872120"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196049"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme
 
-Kapsayıcılar için Azure Izleyici, Azure Kubernetes Service (AKS) kapsayıcı günlüklerine (stdout/stderror), olaylara ve pod ölçümlere doğrudan erişim sağlayan gelişmiş bir tanılama özelliği olan canlı veriler (Önizleme) özelliğini içerir. `kubectl logs -c`, `kubectl get` Ve `kubectl top pods`olaylarına doğrudan erişim sunar. Konsol bölmesi, sorun giderme sorunlarını gerçek zamanlı olarak daha fazla yardımcı olmak için kapsayıcı altyapısı tarafından oluşturulan günlükleri, olayları ve ölçümleri gösterir.
+Kapsayıcılar için Azure Izleyici, Azure Kubernetes Service (AKS) kapsayıcı günlüklerine (stdout/stderror), olaylara ve pod ölçümlere doğrudan erişim sağlayan gelişmiş bir tanılama özelliği olan canlı veriler (Önizleme) özelliğini içerir. `kubectl logs -c`, Ve olaylarına doğrudan erişim sunar `kubectl get` `kubectl top pods` . Konsol bölmesi, sorun giderme sorunlarını gerçek zamanlı olarak daha fazla yardımcı olmak için kapsayıcı altyapısı tarafından oluşturulan günlükleri, olayları ve ölçümleri gösterir.
 
 Bu makale ayrıntılı bir genel bakış sağlar ve bu özelliğin nasıl kullanılacağını anlamanıza yardımcı olur. 
 
@@ -57,7 +58,7 @@ Gerçek zamanlı günlük verilerini **düğümler**, **denetleyiciler**ve **kap
 4. Performans kılavuzundan bir nesne seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı seçin ve Azure ile kimlik doğrulamayı doldurun.  
 
     >[!NOTE]
-    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. İçinde `kubectl` kullanılamayan bir kapsayıcı için günlüklere arama girişimi de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
+    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. İçinde kullanılamayan bir kapsayıcı için günlüklere arama girişimi `kubectl` de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
 
 Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme) konsol bölmesi, günlük verilerini sürekli bir akışta görüntüleyebileceğiniz performans verileri kılavuzunun altında görüntülenir. Getirme durumu göstergesi, bölmenin en sağında yer alan yeşil bir onay işareti gösteriyorsa, verilerin alınabilmesi ve konsolunuza akışa başlaması anlamına gelir.  
 
@@ -78,7 +79,7 @@ Bir kapsayıcı, Pod, Node, ReplicaSet, DaemonSet, Job, CronJob veya Deployment 
 4. Performans kılavuzundan bir nesne seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı seçin ve Azure ile kimlik doğrulamayı doldurun.  
 
     >[!NOTE]
-    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. İçinde `kubectl` kullanılamayan bir kapsayıcı için günlüklere arama girişimi de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
+    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. İçinde kullanılamayan bir kapsayıcı için günlüklere arama girişimi `kubectl` de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
 
 Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme) konsol bölmesi performans verileri kılavuzunun altında görüntülenir. Getirme durumu göstergesi, bölmenin en sağında yer alan yeşil bir onay işareti gösteriyorsa, verilerin alınabilmesi ve konsolunuza akışa başlaması anlamına gelir. 
     
@@ -105,7 +106,7 @@ Gerçek zamanlı ölçüm verilerini, **düğüm** veya **denetleyiciler** gör�
 4. Performans kılavuzundan bir **Pod** nesnesi seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı seçin ve Azure ile kimlik doğrulamayı doldurun.  
 
     >[!NOTE]
-    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. İçinde `kubectl` kullanılamayan bir kapsayıcı için günlüklere arama girişimi de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
+    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. İçinde kullanılamayan bir kapsayıcı için günlüklere arama girişimi `kubectl` de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
 
 Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme) konsol bölmesi performans verileri kılavuzunun altında görüntülenir. Ölçüm verileri alınır ve iki grafikte sunum için konsolunuza akışa başlar. Bölme başlığı, kapsayıcının gruplandırıldığı Pod 'ın adını gösterir.
 

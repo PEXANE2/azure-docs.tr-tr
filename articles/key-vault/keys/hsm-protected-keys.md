@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
-ms.date: 02/17/2020
+ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 58cf3358a9e908070ce9003d05dd0b576b1d2d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b624e521ee102f331100f2836d2e33fd8f2b3ec8
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429700"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193664"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM korumalı anahtarları Key Vault’a içeri aktarma
 
@@ -33,11 +33,14 @@ HSM korumalı anahtarların Key Vault aktarmak, kullandığınız HSMs 'ye bağl
 
 |Satıcı adı|Satıcı türü|Desteklenen HSM modelleri|Desteklenen HSM-anahtar aktarım yöntemi|
 |---|---|---|---|
-|nCipher|Üretici|<ul><li>HSM 'lerin nShield ailesi</li></ul>|[Eski BYOK yöntemini kullan](hsm-protected-keys-legacy.md)|
-|Thales|Üretici|<ul><li>Üretici yazılımı 7,3 veya daha yeni bir sürümü ile SafeNet Luna HSM 7 ailesi</li></ul>| [Yeni BYOK yöntemini kullan (Önizleme)](hsm-protected-keys-vendor-agnostic-byok.md)|
-|Fortanx|Hizmet olarak HSM|<ul><li>Kendi kendine savunma anahtar yönetimi hizmeti (SDKMS)</li></ul>|[Yeni BYOK yöntemini kullan (Önizleme)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Üreticisini<br/>Hizmet olarak HSM|<ul><li>HSM 'lerin nShield ailesi</li><li>hizmet olarak nShield</ul>|**Yöntem 1:** [nCipher bYok](hsm-protected-keys-ncipher.md) (anahtar içeri aktarma ve HSM doğrulaması için güçlü kanıtlama ile)<br/>**Yöntem 2:** [Yeni bYok yöntemini kullanma](hsm-protected-keys-byok.md) |
+|Thales|Üretici|<ul><li>Üretici yazılımı 7,3 veya daha yeni bir sürümü ile SafeNet Luna HSM 7 ailesi</li></ul>| [Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
+|Fortanx|Hizmet olarak HSM|<ul><li>Kendi kendine savunma anahtar yönetimi hizmeti (SDKMS)</li></ul>|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
+|Marvell|Üretici|Tüm LiquidSecurity HSM 'leri<ul><li>Bellenim sürümü 2.0.4 veya üzeri</li><li>Bellenim sürüm 3,2 veya daha yenisi</li></ul>|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
+|Cryptomathic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>nCipher</li><li>Thales</li><li>Utıco</li></ul>[Ayrıntılar için bkz. Cryptopmathic site](https://www.cryptomathic.com/azurebyok)|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Anahtarlarınız için güvenlik, dayanıklılık ve izleme sağlamak üzere [en iyi Key Vault uygulamaları](../general/best-practices.md) izleyin.
+* Anahtarlarınız için güvenlik, dayanıklılık ve izleme sağlamak üzere [en iyi Key Vault uygulamaları](../general/best-practices.md) izleyin.
+* Yeni BYOK yönteminin tamamen açıklaması için [bYok belirtimine](https://docs.microsoft.com/azure/key-vault/keys/byok-specification) başvurun

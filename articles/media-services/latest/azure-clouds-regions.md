@@ -3,20 +3,21 @@ title: Azure Media Services v3 'nin kullanılabildiği bulutlar ve bölgeler
 description: Bu makalede, Azure Media Services v3 'nin kullanılabildiği Azure bulutları ve bölgeleri hakkında bilgi sağlanır.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
-ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/28/2020
+ms.author: inhenkel
+ms.custom: references_regions
+ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382979"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196249"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 'nin bulunduğu bulutlar ve bölgeler
 
@@ -24,7 +25,7 @@ Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 2
 
 ## <a name="feature-availability-in-azure-clouds"></a>Azure bulutlarında özellik kullanılabilirliği
 
-| Özellik|Küresel Azure bölgeleri | Azure Kamu|Azure Almanya|Azure Çin 21Vianet|
+| Öne çıkan özelliği|Küresel Azure bölgeleri | Azure Kamu|Azure Almanya|Azure Çin 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
 | [Videoanaliz Zerönayar](analyzing-video-audio-files-concept.md) |  Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
@@ -32,6 +33,19 @@ Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 2
 | [Standardencoderönayar](encoding-concept.md) | Kullanılabilir | Kullanılabilir | Kullanılabilir | Kullanılabilir |
 | [Canlı olaylar](live-streaming-overview.md) | Kullanılabilir | Kullanılabilir | Kullanılabilir | Kullanılabilir |
 | [Streammingendpoints](streaming-endpoint-concept.md) | Kullanılabilir | Kullanılabilir | Kullanılabilir | Kullanılabilir |
+
+## <a name="feature-availability-in-preview"></a>Önizlemede özellik kullanılabilirliği
+
+[Livetranscription](live-transcription.md) aşağıdaki bölgelerde kullanılabilir:
+
+- Güneydoğu Asya
+- Batı Avrupa
+- Kuzey Avrupa
+- Doğu ABD
+- Orta ABD
+- Orta Güney ABD
+- Batı ABD 2
+- Güney Brezilya
 
 ## <a name="regionsgeographieslocations"></a>Bölgeler/geographler/konumlar
 

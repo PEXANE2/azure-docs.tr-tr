@@ -3,12 +3,12 @@ title: Önizleme-Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin. Bu bir önizleme özelliğidir.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb66510b55f9d3f08ab8e058bb8f67fb1954db6f
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 9969bed9cb7c84faf9736bff2fb8337dc05d1bb0
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800349"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221152"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes kümeleri için Azure Ilkesini anlama (Önizleme)
 
@@ -35,6 +35,9 @@ Azure Ilkesini Kubernetes kümenizle etkinleştirmek ve kullanmak için aşağı
    - [Azure Kubernetes Hizmeti (AKS)](#install-azure-policy-add-on-for-aks)
    - [Azure Arc özellikli Kubernetes](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
    - [AKS altyapısı](#install-azure-policy-add-on-for-aks-engine)
+
+   > [!NOTE]
+   > Yüklemeyle ilgili yaygın sorunlar için bkz. [sorun giderme-Azure ilke eklentisi](../troubleshoot/general.md#add-on-installation-errors).
 
 1. [Kubernetes için Azure Ilke dilini anlayın](#policy-language)
 
@@ -403,7 +406,7 @@ Aşağıdaki adımlarla Azure portal kullanarak kümenizi yönetmeye yönelik ye
 
 1. **Parametre değerlerini** ayarla 
 
-   - Kubernetes ad alanlarını ilke değerlendirmesinden dışlamak için, parametre **ad uzayı dışlamaları**içindeki ad alanlarının listesini belirtin. Şunları hariç tutmak önerilir: _Kue-sistem_ 
+   - Kubernetes ad alanlarını ilke değerlendirmesinden dışlamak için, parametre **ad uzayı dışlamaları**içindeki ad alanlarının listesini belirtin. Şunları hariç tutmak önerilir: _KUVE sistem_, _Gatekeeper-System_ve _Azure-Arc_.
 
 1. **İncele ve oluştur**’u seçin.
 

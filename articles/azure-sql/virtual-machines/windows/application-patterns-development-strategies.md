@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 209445378b71b4d6da2f40ea2744d3a2da0d8c45
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4b4a852f0f102277701191eb24158763998e7b5d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046330"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195759"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Azure Sanal Makineler'de SQL Server için Uygulama Desenleri ve Geliştirme Stratejileri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,8 +59,9 @@ Bu makaleyi okumaya başlamadan önce, SQL Server ve Azure 'un temel kavramları
 Bu makalede, basit uygulamalarınızın yanı sıra son derece karmaşık kurumsal uygulamalar için uygun olabilecek çeşitli uygulama desenleri açıklanmaktadır. Her bir modele göre ayrıntıdan önce, Azure [depolama](../../../storage/common/storage-introduction.md), [Azure SQL veritabanı](../../database/sql-database-paas-overview.md)ve [Azure sanal makinesinde SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md)gibi Azure 'daki kullanılabilir veri depolama hizmetlerini öğrenmeniz önerilir. Uygulamalarınız için en iyi tasarım kararları almak için hangi veri depolama hizmetini açık olarak kullanacağınızı anlayın.
 
 ### <a name="choose-sql-server-in-an-azure-virtual-machine-when"></a>Azure sanal makinesinde SQL Server seçin, ne zaman:
+
 * SQL Server ve Windows üzerinde denetiminiz olması gerekir. Örneğin, bu SQL Server sürümü, özel düzeltmeler, performans yapılandırması vb. içerebilir.
-* Şirket içinde SQL Server tam uyumlulukla ve mevcut uygulamaları Azure 'a olduğu gibi taşımak istemeniz gerekir.
+* SQL Server ile tam uyumluluk gerekir ve mevcut uygulamaları Azure 'a olduğu gibi taşımak isteyebilirsiniz.
 * Azure ortamının özelliklerinden yararlanmak istiyorsunuz, ancak Azure SQL veritabanı, uygulamanızın gerektirdiği tüm özellikleri desteklemiyor. Bu, aşağıdaki alanlara dahil olabilir:
   
   * **Veritabanı boyutu**: Bu makalenin GÜNCELLEŞTIRILDIĞI sırada SQL veritabanı, 1 TB 'a kadar veri veritabanını destekler. Uygulamanız 1 TB 'den fazla veri gerektiriyorsa ve özel parçalama çözümleri uygulamak istemiyorsanız, bir Azure sanal makinesinde SQL Server kullanmanız önerilir. En son bilgiler için bkz. [Azure SQL veritabanı](https://msdn.microsoft.com/library/azure/dn495641.aspx), [DTU tabanlı satın alma modeli](../../database/service-tiers-dtu.md)ve [sanal çekirdek tabanlı satın alma modeli](../../database/service-tiers-vcore.md)(Önizleme) ölçekleme.

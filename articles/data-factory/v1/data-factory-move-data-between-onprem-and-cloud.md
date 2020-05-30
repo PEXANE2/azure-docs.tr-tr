@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982193"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195990"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Veri Yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma
 > [!NOTE]
@@ -47,7 +47,7 @@ Bu yönergeyi başlamadan önce, aşağıdaki önkoşullara sahip olmanız gerek
 
 * **Azure aboneliği**.  Bir aboneliğiniz yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılar için [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/) makalesine bakın.
 * **Azure depolama hesabı**. Blob depolamayı Bu öğreticide **hedef/havuz** veri deposu olarak kullanırsınız. bir Azure depolama hesabınız yoksa, oluşturma adımları için [depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın.
-* **SQL Server**. Bu öğreticide şirket içi SQL Server veritabanını bir **kaynak** veri deposu olarak kullanırsınız.
+* **SQL Server**. Bu öğreticide bir SQL Server veritabanını **kaynak** veri deposu olarak kullanırsınız.
 
 ## <a name="create-data-factory"></a>Veri fabrikası oluşturma
 Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluşturmak için Azure Portal kullanırsınız.
@@ -120,7 +120,7 @@ Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluştu
 6. Bilgisayarınızda **veri yönetimi Gateway Configuration Manager** uygulamasını başlatın. **Ara** penceresinde, bu yardımcı programa erişmek Için **veri yönetimi ağ geçidi** yazın. Ayrıca, çalıştırılabilir **Configmanager. exe** dosyasını şu klasörde bulabilirsiniz: **C:\Program Files\Microsoft veri yönetimi Gateway\2.0\Shared**
 
     ![Ağ Geçidi Configuration Manager](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
-7. İleti görtığınızdan `adftutorialgateway is connected to the cloud service` emin olun. Alttaki durum çubuğu, bir **yeşil onay işaretiyle**birlikte **bulut hizmetine bağlı** görüntüler.
+7. İleti görtığınızdan emin olun `adftutorialgateway is connected to the cloud service` . Alttaki durum çubuğu, bir **yeşil onay işaretiyle**birlikte **bulut hizmetine bağlı** görüntüler.
 
     **Giriş** sekmesinde, aşağıdaki işlemleri de yapabilirsiniz:
 
@@ -138,7 +138,7 @@ Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluştu
    * Ağ Geçidi tarafından kullanılan sertifikayı görüntüleyin veya dışarı aktarın.
    * Ağ Geçidi tarafından kullanılan HTTPS uç noktasını değiştirin.    
    * Ağ Geçidi tarafından kullanılacak bir HTTP proxy 'si ayarlayın.     
-9. seçim **Tanılama** sekmesine geçin, ağ geçidiyle ilgili sorunları gidermek için kullanabileceğiniz ayrıntılı günlüğü etkinleştirmek istiyorsanız **ayrıntılı günlüğü etkinleştir** seçeneğini işaretleyin. Günlük bilgileri, **uygulama ve hizmet günlükleri** -> **veri yönetimi ağ geçidi** düğümü altında **Olay Görüntüleyicisi** bulunabilir.
+9. seçim **Tanılama** sekmesine geçin, ağ geçidiyle ilgili sorunları gidermek için kullanabileceğiniz ayrıntılı günlüğü etkinleştirmek istiyorsanız **ayrıntılı günlüğü etkinleştir** seçeneğini işaretleyin. Günlük bilgileri, **uygulama ve hizmet günlükleri** **Event Viewer**  ->  **veri yönetimi ağ geçidi** düğümü altında Olay Görüntüleyicisi bulunabilir.
 
     ![Tanılama sekmesi](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
 
@@ -152,9 +152,9 @@ Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluştu
 12. Sol taraftaki ağaç görünümünde **veri ağ geçitleri** altında **adftutorialgateway** görmeniz gerekir.  Bu öğeyi tıklatırsanız, ilişkili JSON 'u görmeniz gerekir.
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
-Bu adımda, iki bağlı hizmet oluşturacaksınız: **AzureStorageLinkedService** ve **sqlserverlinkedservice**. **Sqlserverlinkedservice** , bir şirket içi SQL Server veritabanını ve **AzureStorageLinkedService** bağlı hizmetini bir Azure blob deposunu veri fabrikasına bağlar. Bu izlenecek yolda daha sonra şirket içi SQL Server veritabanından Azure Blob deposuna veri kopyalayan bir işlem hattı oluşturursunuz.
+Bu adımda, iki bağlı hizmet oluşturacaksınız: **AzureStorageLinkedService** ve **sqlserverlinkedservice**. **Sqlserverlinkedservice** bir SQL Server veritabanını bağlar ve **AzureStorageLinkedService** bağlı hizmeti bir Azure blob deposunu veri fabrikasına bağlar. Bu izlenecek yolda daha sonra SQL Server veritabanından Azure Blob deposuna veri kopyalayan bir işlem hattı oluşturursunuz.
 
-#### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>Şirket içi SQL Server veritabanına bağlı hizmet ekleme
+#### <a name="add-a-linked-service-to-a-sql-server-database"></a>SQL Server veritabanına bağlı hizmet ekleme
 1. **Data Factory düzenleyicisinde**, araç çubuğundaki **Yeni veri deposu** ' na tıklayın ve **SQL Server**' ı seçin.
 
    ![Yeni SQL Server bağlantılı hizmet](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
@@ -189,7 +189,7 @@ Bu adımda, kopyalama işlemi için girdi ve çıktı verilerini temsil eden gir
 * Veri fabrikasına bağlı hizmet olarak eklediğiniz Azure blob depolama hesabında **adftutorial** adlı bir blob kapsayıcı oluşturun.
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>Eğitim için şirket içi SQL Server hazırlama
-1. Şirket içi SQL Server bağlı hizmeti için belirttiğiniz veritabanında (**SqlServerLinkedService**), aşağıdaki SQL betiğini kullanarak veritabanında **emp** tablosunu oluşturun.
+1. SQL Server bağlı hizmeti için belirttiğiniz veritabanında (**Sqlserverlinkedservice**), veritabanında bir veritabanını oluşturmak IÇIN aşağıdaki SQL betiğini kullanın. **emp**
 
     ```SQL   
     CREATE TABLE dbo.emp
@@ -359,7 +359,7 @@ Bu adımda, Input ve **Outputblobtable** olarak **Emponpremsqltable** adlı bir 
    * Etkinlikler bölümünde, yalnızca **türü** **Kopyala**olarak ayarlanan etkinlik vardır.
    * Etkinliğin **girişi** **Emponpremsqltable** olarak, etkinliğin **çıktısı** ise **outputblobtable**olarak ayarlanır.
    * **Typeproperties** bölümünde, **kaynak türü** olarak **SQLSource** belirtilir ve **blobsink** **Havuz türü**olarak belirtilir.
-   * `select * from emp` **SQLSource**'un **SQLREADERQUERY** özelliği için SQL sorgusu belirtildi.
+   * `select * from emp` **SQLSource**'un **sqlreaderquery** özelliği için SQL sorgusu belirtildi.
 
    Başlangıç ve bitiş tarih saatleri [ISO biçiminde](https://en.wikipedia.org/wiki/ISO_8601) olmalıdır. Örneğin: 2014-10-14T16:32:41Z. **End** zamanı isteğe bağlıdır; ancak bu öğreticide bunu kullanacağız.
 

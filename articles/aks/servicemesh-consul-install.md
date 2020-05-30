@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef77037526beba1be2e4e8a834dbd09c8a73310c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273731"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197226"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Tüketil 'ı yükleyip kullanma
 
@@ -20,9 +20,9 @@ ms.locfileid: "78273731"
 Bu makalede, Tüketil 'nin nasıl yükleneceği gösterilmektedir. Tüketil bileşenleri AKS 'teki bir Kubernetes kümesine yüklenir.
 
 > [!NOTE]
-> Bu yönergeler, Tüketil sürümüne `1.6.0`başvurur ve en az Helm sürümünü `2.14.2`kullanır.
+> Bu yönergeler, Tüketil sürümüne başvurur `1.6.0` ve en az Helm sürümünü kullanır `2.14.2` .
 >
-> Tüketil `1.6.x` sürümleri Kubernetes sürümleriyle `1.13+`çalıştırılabilir. [GitHub-Tüketil yayınlarına][consul-github-releases] ek tüketil sürümleri ve her bir yayın hakkında bilgi edinmek için, her zaman [Tüketim l-sürüm notları][consul-release-notes]bulabilirsiniz.
+> Tüketil `1.6.x` sürümleri Kubernetes sürümleriyle çalıştırılabilir `1.13+` . [GitHub-Tüketil yayınlarına][consul-github-releases] ek tüketil sürümleri ve her bir yayın hakkında bilgi edinmek için, her zaman [Tüketim l-sürüm notları][consul-release-notes]bulabilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -33,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede açıklanan adımlarda bir AKS kümesi (RBAC etkinleştirilmiş Kubernetes `1.13` ve üzeri) oluşturduğunuz ve kümeyle bir `kubectl` bağlantı oluşturmuş olduğunuz varsayılır. Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, [aks hızlı başlangıç][aks-quickstart]bölümüne bakın. Kümenizin Linux düğüm havuzunda en az 3 düğüm olduğundan emin olun.
+Bu makalede açıklanan adımlarda bir AKS kümesi (RBAC etkinleştirilmiş Kubernetes `1.13` ve üzeri) oluşturduğunuz ve kümeyle bir bağlantı oluşturmuş olduğunuz varsayılır `kubectl` . Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, [aks hızlı başlangıç][aks-quickstart]bölümüne bakın. Kümenizin Linux düğüm havuzunda en az 3 düğüm olduğundan emin olun.
 
 Bu yönergeleri izlemek ve Tüketil 'yi yüklemek için [Helm][helm] gerekir. En son kararlı sürümü kümenize doğru yüklenip yapılandırılmış olmalıdır. Held 'yi yüklemeyle ilgili yardıma ihtiyacınız varsa bkz. [aks helk Yükleme Kılavuzu][helm-install]. Tüm Tüketil 'lerin da Linux düğümlerinde çalışacak şekilde zamanlanması gerekir.
 
@@ -41,7 +41,7 @@ Bu makale, Tüketil yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Nih
 
 ### <a name="install-the-consul-components-on-aks"></a>AKS 'e Tüketil bileşenlerini yükler
 
-Tüketil Helm grafiğinin sürümünü `v0.10.0` indirerek başlayacağız. Grafiğin bu sürümü, Tüketil sürümünü `1.6.0`içerir.
+`v0.10.0`Tüketil Helm grafiğinin sürümünü indirerek başlayacağız. Grafiğin bu sürümü, Tüketil sürümünü içerir `1.6.0` .
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -61,7 +61,7 @@ Tüketil Helm grafiğinin sürümünü `v0.10.0` indirerek başlayacağız. Graf
 
 ::: zone-end
 
-AKS kümenizdeki `consul` ad alanına tüketim `consul-helm` l bileşenlerini yüklemek için Helm ve indirilen grafiği kullanın. 
+`consul-helm`AKS kümenizdeki ad alanına tüketim l bileşenlerini yüklemek Için Helm ve indirilen grafiği kullanın `consul` . 
 
 > [!NOTE]
 > **Yükleme seçenekleri**
@@ -94,13 +94,13 @@ AKS kümenizdeki `consul` ad alanına tüketim `consul-helm` l bileşenlerini y�
 
 ::: zone-end
 
-`Consul` Helb grafiği bir dizi nesne dağıtır. Yukarıdaki `helm install` komutun çıktısından listesini görebilirsiniz. Tüketil bileşenlerinin dağıtımı, küme ortamınıza bağlı olarak 3 dakika kadar sürebilir.
+`Consul`Helb grafiği bir dizi nesne dağıtır. Yukarıdaki komutun çıktısından listesini görebilirsiniz `helm install` . Tüketil bileşenlerinin dağıtımı, küme ortamınıza bağlı olarak 3 dakika kadar sürebilir.
 
 Bu noktada, AKS kümenize Tüketil 'yi dağıttık. Tüketil 'nin başarılı bir şekilde dağıtımına sahip olduğunuzdan emin olmak için, tüketim l yüklemesini doğrulamak üzere bir sonraki bölüme geçeceğiz.
 
 ## <a name="validate-the-consul-installation"></a>Tüketil yüklemesini doğrulama
 
-Kaynakların başarıyla oluşturulduğunu doğrulayın. [Kubectl Get svc][kubectl-get] ve `helm install` [kubectl Get Pod][kubectl-get] komutunu kullanarak, tüketim l bileşenlerinin `consul` komut tarafından yüklendiği ad alanını sorgulayın:
+Kaynakların başarıyla oluşturulduğunu doğrulayın. [Kubectl Get svc][kubectl-get] ve [kubectl Get Pod][kubectl-get] `consul` komutunu kullanarak, tüketim l bileşenlerinin komut tarafından yüklendiği ad alanını sorgulayın `helm install` :
 
 ```console
 kubectl get svc --namespace consul --output wide
@@ -128,7 +128,7 @@ consul-consul-sync-catalog-d846b79c-8ssr8                         1/1     Runnin
 consul-consul-tz2t5                                               1/1     Running   0          3m9s   10.240.0.12   aks-linux-92468653-vmss000000   <none>           <none>
 ```
 
-Tüm FID 'ler durumunu göstermelidir `Running`. Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
+Tüm FID 'ler durumunu göstermelidir `Running` . Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
 
 ## <a name="accessing-the-consul-ui"></a>Tüketil Kullanıcı arabirimine erişme
 
@@ -138,7 +138,7 @@ Tüketimizdeki Kullanıcı arabirimi, yukarıdaki kurulumla yüklendi ve Tüketi
 kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 ```
 
-Artık bir tarayıcı açabilir ve bunu, Tüketil Kullanıcı `http://localhost:8080/ui` arabirimini açmak için üzerine yazabilirsiniz. Kullanıcı arabirimini açtığınızda şunları görmeniz gerekir:
+Artık bir tarayıcı açabilir ve bunu `http://localhost:8080/ui` , Tüketil Kullanıcı arabirimini açmak için üzerine yazabilirsiniz. Kullanıcı arabirimini açtığınızda şunları görmeniz gerekir:
 
 ![Tüketil Kullanıcı arabirimi](./media/servicemesh/consul/consul-ui.png)
 
@@ -149,7 +149,7 @@ Artık bir tarayıcı açabilir ve bunu, Tüketil Kullanıcı `http://localhost:
 
 ### <a name="remove-consul-components-and-namespace"></a>Tüketil bileşenlerini ve ad alanını kaldır
 
-AKS kümenizdeki Tüketil 'yi kaldırmak için aşağıdaki komutları kullanın. `helm delete` Komutlar `consul` grafiği kaldırır ve `kubectl delete namespace` komut `consul` ad alanını kaldırır.
+AKS kümenizdeki Tüketil 'yi kaldırmak için aşağıdaki komutları kullanın. `helm delete`Komutlar `consul` grafiği kaldırır ve `kubectl delete namespace` komut `consul` ad alanını kaldırır.
 
 ```console
 helm delete --purge consul
@@ -166,6 +166,8 @@ Tüketil için daha fazla yükleme ve yapılandırma seçeneği araştırmak iç
 Ayrıca şunları kullanarak ek senaryolar izleyebilirsiniz:
 
 - [Tüketil örnek uygulaması][consul-app-example]
+- [Tüketil Kubernetes başvuru mimarisi][consul-reference]
+- [Tüketil ağ geçitleri][consul-mesh-gateways]
 
 <!-- LINKS - external -->
 [Hashicorp]: https://hashicorp.com
@@ -177,9 +179,11 @@ Ayrıca şunları kullanarak ek senaryolar izleyebilirsiniz:
 [consul-github-releases]: https://github.com/hashicorp/consul/releases
 [consul-release-notes]: https://github.com/hashicorp/consul/blob/master/CHANGELOG.md
 [consul-install-download]: https://www.consul.io/downloads.html
-[consul-install-k8]: https://www.consul.io/docs/platform/k8s/run.html
+[consul-install-k8]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-deployment-guide
 [consul-install-helm-options]: https://www.consul.io/docs/platform/k8s/helm.html#configuration-values-
-[consul-app-example]: https://github.com/hashicorp/demo-consul-101/tree/master/k8s
+[consul-mesh-gateways]: https://learn.hashicorp.com/consul/kubernetes/mesh-gateways
+[consul-reference]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-reference
+[consul-app-example]: https://learn.hashicorp.com/consul?track=gs-consul-service-mesh#gs-consul-service-mesh
 [install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10
 
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

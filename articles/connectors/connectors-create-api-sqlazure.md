@@ -7,16 +7,16 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: 5090d772be4f68c696e8dd4882a78ba6954b6058
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f63553ced8484b3ce328fb9537d5831ae1e27fe8
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020736"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191482"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server veya Azure SQL veritabanı için iş akışlarını Azure Logic Apps kullanarak otomatikleştirin
 
-Bu makalede, SQL veritabanınızdaki verilere SQL Server Bağlayıcısı ile bir mantıksal uygulama içinden nasıl erişebileceğiniz gösterilmektedir. Bu şekilde, mantıksal uygulamalar oluşturarak SQL verilerinizi ve kaynaklarınızı yöneten görevleri, işlemleri veya iş akışlarını otomatikleştirebileceğinizi unutmayın. SQL Server bağlayıcısı hem [Şirket içi SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) hem de [bulut tabanlı Azure SQL veritabanı](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)için geçerlidir.
+Bu makalede, SQL veritabanınızdaki verilere SQL Server Bağlayıcısı ile bir mantıksal uygulama içinden nasıl erişebileceğiniz gösterilmektedir. Bu şekilde, mantıksal uygulamalar oluşturarak SQL verilerinizi ve kaynaklarınızı yöneten görevleri, işlemleri veya iş akışlarını otomatikleştirebileceğinizi unutmayın. SQL Server Bağlayıcısı, [Azure SQL veritabanı](../azure-sql/database/sql-database-paas-overview.md) ve [Azure SQL yönetilen örneği](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)ile [SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) için de kullanılabilir.
 
 SQL veritabanınızda veya Dynamics CRM Online gibi diğer sistemlerde olaylar tarafından tetiklendiğinde çalışan Logic Apps oluşturabilirsiniz. Mantıksal uygulamalarınız, çalışan SQL sorguları ve saklı yordamlar ile birlikte verileri de alabilir, ekleyebilir ve silebilir. Örneğin, Dynamics CRM Online 'da yeni kayıtları otomatik olarak denetleyen bir mantıksal uygulama oluşturabilir, her yeni kayıt için SQL veritabanınıza öğe ekler ve ardından eklenen öğeler hakkında e-posta uyarıları gönderir.
 

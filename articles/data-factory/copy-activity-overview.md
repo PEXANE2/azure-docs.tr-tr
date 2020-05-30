@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414230"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187677"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
 
@@ -55,7 +55,7 @@ Verileri bir kaynaktan havuza kopyalamak için kopyalama etkinliğini çalışt�
 
 Kopyalama etkinliğini, dosyaları iki dosya tabanlı veri deposu arasında olduğu gibi kopyalamak için kullanabilirsiniz. Bu durumda, veriler serileştirme veya seri durumundan çıkarma yapılmadan verilerin verimli bir şekilde kopyalanabilmesi. Ayrıca, belirli bir biçimin dosyalarını ayrıştırarak veya oluşturabilirsiniz, örneğin, aşağıdakileri yapabilirsiniz:
 
-* Şirket içi SQL Server veritabanından veri kopyalayın ve Parquet biçiminde Azure Data Lake Storage 2. yazın.
+* SQL Server veritabanından verileri kopyalayın ve Parquet biçiminde Azure Data Lake Storage 2. yazın.
 * Metin (CSV) biçimindeki dosyaları şirket içi bir dosya sisteminden kopyalayın ve avro biçiminde Azure Blob depolama alanına yazın.
 * ZIP dosyalarını şirket içi bir dosya sisteminden kopyalayın, açık olarak açıp Azure Data Lake Storage 2. ve ayıklanan dosyaları yazın.
 * Verileri Azure Blob depolama alanından gzip sıkıştırılmış metin (CSV) biçiminde kopyalayın ve Azure SQL veritabanı 'na yazın.
@@ -129,12 +129,12 @@ Bir kopyalama etkinliğinin aşağıdaki şablonu desteklenen özelliklerin kaps
 
 | Özellik | Açıklama | Gerekli mi? |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği için,`Copy` | Yes |
-| girişi | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Yes |
-| çıkışı | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Yes |
-| typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Yes |
-| source | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
-| Ev | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
+| tür | Kopyalama etkinliği için,`Copy` | Evet |
+| girişi | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Evet |
+| çıkışı | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Evet |
+| typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Evet |
+| kaynak | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
+| Ev | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
 | çevirmen | Kaynaktan havuza açık sütun eşlemeleri belirtin. Bu özellik, varsayılan kopyalama davranışı gereksinimlerinizi karşılamıyorsa geçerlidir.<br/>Daha fazla bilgi için bkz. [kopyalama etkinliğinde şema eşleme](copy-activity-schema-and-type-mapping.md). | Hayır |
 | Veri tümleştirme birimleri | [Azure Integration Runtime](concepts-integration-runtime.md) 'ın veri kopyalama için kullandığı güç miktarını temsil eden bir ölçü belirtin. Bu birimler daha önce bulut veri taşıma birimi (DMU) olarak bilinirdi. <br/>Daha fazla bilgi için bkz. [veri tümleştirme birimleri](copy-activity-performance-features.md#data-integration-units). | Hayır |
 | Paralellkopyalar | Kaynaktan veri okurken ve havuza veri yazarken kopyalama etkinliğinin kullanmasını istediğiniz paralellik belirleyin.<br/>Daha fazla bilgi için bkz. [paralel kopya](copy-activity-performance-features.md#parallel-copy). | Hayır |
@@ -196,13 +196,13 @@ Kopyalama etkinliği kaynağı sekmesine aşağıdaki yapılandırmayı bulabili
 >[!TIP]
 >Bu özellik, en son veri kümesi modeliyle birlikte kullanılır. Bu seçeneği kullanıcı arabiriminden görmüyorsanız, yeni bir veri kümesi oluşturmayı deneyin.
 
-Program aracılığıyla yapılandırmak için kopyalama etkinlik kaynağınıza `additionalColumns` özelliği ekleyin:
+Program aracılığıyla yapılandırmak için `additionalColumns` kopyalama etkinlik kaynağınıza özelliği ekleyin:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| additionalColumns | Havuza kopyalamak için ek veri sütunları ekleyin.<br><br>`additionalColumns` Dizideki her nesne bir ek sütunu temsil eder. , `name` Sütun adını tanımlar ve bu sütunun veri `value` değerini gösterir.<br><br>İzin verilen veri değerleri şunlardır:<br>- **`$$FILEPATH`**-ayrılmış bir değişken, kaynak dosyaların göreli yolunu veri kümesinde belirtilen klasör yoluna depolayacağını gösterir. Dosya tabanlı kaynağa uygulayın.<br>- **İfadesini**<br>- **Statik değer** | Hayır |
+| additionalColumns | Havuza kopyalamak için ek veri sütunları ekleyin.<br><br>Dizideki her nesne `additionalColumns` bir ek sütunu temsil eder. , `name` Sütun adını tanımlar ve `value` Bu sütunun veri değerini gösterir.<br><br>İzin verilen veri değerleri şunlardır:<br>- **`$$FILEPATH`**-ayrılmış bir değişken, kaynak dosyaların göreli yolunu veri kümesinde belirtilen klasör yoluna depolayacağını gösterir. Dosya tabanlı kaynağa uygulayın.<br>- **İfadesini**<br>- **Statik değer** | Hayır |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -250,4 +250,4 @@ Aşağıdaki hızlı başlangıçlara, öğreticilere ve örneklere bakın:
 
 - [Verileri bir konumdan aynı Azure Blob depolama hesabındaki başka bir konuma kopyalama](quickstart-create-data-factory-dot-net.md)
 - [Azure Blob depolamadan Azure SQL veritabanı 'na veri kopyalama](tutorial-copy-data-dot-net.md)
-- [Şirket içi SQL Server veritabanından Azure 'a veri kopyalama](tutorial-hybrid-copy-powershell.md)
+- [SQL Server veritabanından Azure 'a veri kopyalama](tutorial-hybrid-copy-powershell.md)

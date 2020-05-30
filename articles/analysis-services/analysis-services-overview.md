@@ -7,12 +7,13 @@ ms.topic: overview
 ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 992aa8a4cb0ff31f7f1657be45fa1a64fdb27e7c
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.custom: references_regions
+ms.openlocfilehash: 0fb0e9e2611ed882bffa1df62adeb617e7211354
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780555"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191977"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -159,7 +160,7 @@ Azure Analysis Services, birden fazla düzeyde hassas verileriniz için güvenli
 
 Sunucu düzeyinde Analysis Services, güvenlik duvarı, Azure kimlik doğrulaması, sunucu yöneticisi rolleri ve sunucu tarafı şifreleme sağlar. Veri modeli düzeyinde, Kullanıcı rolleri, satır düzeyi ve nesne düzeyinde güvenlik, verilerinizin güvende olduğundan ve yalnızca bunu gördüğü kullanıcılar tarafından görülendiğinden emin olmanızı sağlar.
 
-### <a name="firewall"></a>Güvenlik Duvarı
+### <a name="firewall"></a>Güvenlik duvarı
 
 Azure Analysis Services Güvenlik Duvarı, kurallarda belirtilen IP adresleri dışındaki tüm istemci bağlantılarını engeller. Varsayılan olarak, güvenlik duvarı koruması yeni sunucular için etkin değildir. Önerilen güvenlik duvarı koruması etkinleştirilir ve kurallar sunucu sağlama komut dosyasının bir parçası olarak veya sunucu oluşturulduktan hemen sonra portalda yapılandırılır. İstemci IP’lerine veya aralığa göre izin verilen IP adreslerini belirten kuralları yapılandırın. Power BI (hizmet) bağlantılarına da izin verilebilir veya bağlantılar engellenebilir. Güvenlik duvarı ve kuralları portaldan ya da PowerShell kullanarak yapılandırın. Daha fazla bilgi için bkz. [Sunucu güvenlik duvarı yapılandırma](analysis-services-qs-firewall.md).
 

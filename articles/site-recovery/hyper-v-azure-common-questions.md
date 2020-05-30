@@ -3,12 +3,12 @@ title: Azure Site Recovery ile Hyper-V olağanüstü durum kurtarma için sık s
 description: Bu makalede, şirket içi Hyper-V sanal makineleri için Azure Site Recovery sitesini kullanarak Azure 'a olağanüstü durum kurtarma ayarlama hakkında sık sorulan sorular özetlenmektedir.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7c5f55fbea67567ddf7a2afa6a61f6c76568d829
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b175e7157364f0471192dd713db8767e074dd483
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75498200"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195254"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Sık sorulan sorular - Hyper-V'den Azure'a olağanüstü durum kurtarma
 
@@ -159,7 +159,7 @@ Azure 'a çoğalttığınızda, çoğaltma trafiği bir Azure depolama hesabın�
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Azure 'a ne sıklıkta çoğaltma yapabilirim?
 
-Hyper-V VM 'Leri, her 30 saniyede bir (Premium Depolama hariç), 5 dakika veya 15 dakika olabilir.
+Hyper-V VM 'Leri, her 30 saniyede bir çoğaltılır (Premium Depolama hariç) veya 5 dakika olabilir.
 
 ### <a name="can-i-extend-replication"></a>Çoğaltmayı genişletebilir miyim?
 Genişletilmiş veya zincir çoğaltma desteklenmez. Bu özelliği [geri bildirim forumuna](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)iste.

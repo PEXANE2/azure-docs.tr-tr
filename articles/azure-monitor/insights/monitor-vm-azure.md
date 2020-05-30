@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 1121b5324368f8b8c6c062868f5072f4a0e7ac86
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ebb25d49250b71ab8d948833ac982ef244225539
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654382"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216435"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinelerini izleme
 Bu makalede, Azure Izleyici 'nin, Azure sanal makinelerindeki izleme verilerini toplamak ve analiz etmek için, sistem durumlarını korumak üzere nasıl kullanılacağı açıklanır. Sanal makineler, Azure Izleyici ile [diğer Azure kaynakları](monitor-azure-resource.md)gibi kullanılabilirlik ve performans için izlenebilir, ancak Konuk işletim sistemini ve sistemi ve içinde çalışan iş yüklerini izlemeniz gerektiğinden diğer kaynaklardan benzersizdir. 
@@ -110,9 +110,7 @@ Azure portal her bir sanal makine konağı için toplanan platform ölçümlerin
 Sanal makine için bir tanılama ayarıyla platform ölçümleri toplayın. Diğer Azure kaynaklarından farklı olarak, Azure portal bir sanal makine için tanılama ayarı oluşturamazsınız, ancak [başka bir yöntem](../platform/diagnostic-settings.md#create-diagnostic-settings-using-powershell)kullanmanız gerekir. Aşağıdaki örneklerde, PowerShell ve CLı kullanarak bir sanal makine için ölçümlerin nasıl toplanacağı gösterilmektedir.
 
 ```powershell
-Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/monitor diagnostic-settings create \
-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/monitor diagnostic-settings create \
-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
+Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
 ```
 
 ```CLI

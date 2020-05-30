@@ -12,17 +12,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/09/2020
-ms.openlocfilehash: a2f1ee064660b8a34d97875cdf5ddd3a2ac2959f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a437cd1b3cb8018229cf6445e23314cf17bf10a2
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048150"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219851"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database--sql-managed-instance"></a>VCore ve DTU satın alma modelleri arasında seçim yapın-Azure SQL veritabanı & SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-SQL yönetilen & Azure SQL veritabanı, performans ve maliyet gereksinimlerinize uyan, tam olarak yönetilen bir hizmet olarak platform (PaaS) veritabanı altyapısını kolayca satın almanızı sağlar. Azure SQL veritabanı için seçtiğiniz dağıtım modeline bağlı olarak, sizin için uygun olan satın alma modelini seçebilirsiniz:
+Azure SQL veritabanı & SQL yönetilen örneği, performansı ve maliyet gereksinimlerinize uyan, tam olarak yönetilen bir hizmet olarak platform (PaaS) veritabanı altyapısını kolayca satın almanıza olanak tanır. Azure SQL veritabanı için seçtiğiniz dağıtım modeline bağlı olarak, sizin için uygun olan satın alma modelini seçebilirsiniz:
 
 - [Sanal çekirdek (vCore) tabanlı satın alma modeli](service-tiers-vcore.md) (önerilir). Bu satın alma modeli, sağlanan bir işlem katmanı ve sunucusuz bir işlem katmanı arasında seçim sağlar. Sağlanan işlem katmanıyla birlikte, iş yükünüz için her zaman sağlanan işlem kaynaklarının tam miktarını seçin. Sunucusuz bilgi işlem katmanı ile, işlem kaynaklarını yapılandırılabilir bir işlem aralığı üzerinden otomatik ölçeklendirmeyi belirtirsiniz. Bu işlem katmanıyla birlikte, iş yükü etkinliğine göre veritabanını otomatik olarak duraklatabilir ve devam ettirebilirsiniz. Birim başına sanal çekirdek birim fiyatı, sağlanan işlem katmanında sunucusuz işlem katmanında olduğundan daha düşüktür.
 - [Veritabanı işlem birimi (DTU) tabanlı satın alma modeli](service-tiers-dtu.md). Bu satın alma modeli, ortak iş yükleri için dengeli işlem ve depolama paketleri sağlar.

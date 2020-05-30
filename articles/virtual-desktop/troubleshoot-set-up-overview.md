@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 196c4f692b425d2fc6592888ba89f2fa6dafd3de
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c5be26509eccdaebf1b504c1b0b8c7edb35e101c
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612512"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84203876"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Sorun çözümüne genel bakış, geri bildirim ve destek
 
@@ -53,6 +53,7 @@ Uzak Masaüstü istemcisi 'ni kullanarak bir kiracı ortamı ayarlarken karşıl
 | Lisanslama iletileri veya hataları                                                          | Sorunlar belirli bir uygulama veya ürüne bağlıysa, bu üründen sorumlu olan ekibe başvurun. |
 | Üçüncü taraf kimlik doğrulama yöntemleriyle ilgili sorunlar | Üçüncü taraf sağlayıcınızın Windows sanal masaüstü senaryolarını desteklediğini ve bilinen sorunlarla ilgili olarak bunları yaklaşımını doğrulayın. |
 | Windows sanal masaüstü için Log Analytics kullanan sorunlar | Tanılama şeması ile ilgili sorunlar için [bir Azure destek isteği açın](https://azure.microsoft.com/support/create-ticket/).<br><br>Log Analytics sorguları, görselleştirme veya diğer sorunlar için Log Analytics altında uygun sorun türünü seçin. |
+| M365 uygulamaları kullanma sorunları | [M365 Yönetim Merkezi yardım seçeneklerinden](/microsoft-365/admin/contact-support-for-business-products/)biriyle M365 yönetim merkezine başvurun. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

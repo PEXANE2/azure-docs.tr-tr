@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b0ebe6cb505fa2a145dd3cbb94398912f2933a4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77369703"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193500"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 2. kullanma
 
@@ -97,7 +97,7 @@ HDInsight kümeleriyle ilişkili verileri almak için kullanabileceğiniz araçl
 
 Büyük miktarlarda veri, var olan Hadoop kümelerinde yerel olarak,,, işlem kullanan makinelerde depolanabilir. Hadoop kümeleri şirket içi bir dağıtımda olabilir veya Azure 'da bir IaaS kümesi içinde olabilir. Bu tür verileri tek kapalı bir yaklaşım veya yinelenen bir biçimde kopyalamak için Azure Data Lake Storage 2. gereksinimler olabilir. Bunu başarmak için kullanabileceğiniz çeşitli seçenekler vardır. Aşağıda, alternatifleri ve ilişkili ticaretin bir listesi verilmiştir.
 
-| Yaklaşım | Ayrıntılar | Yararları | Dikkat edilmesi gerekenler |
+| Yaklaşım | Ayrıntılar | Yararları | Önemli noktalar |
 | --- | --- | --- | --- |
 | Verileri doğrudan Hadoop kümelerinden Azure Data Lake Storage 2. kopyalamak için Azure Data Factory (ADF) kullanın |[ADF, bir veri kaynağı olarak mı 'yi destekler](../../data-factory/connector-hdfs.md) |ADF, ve ilk sınıf uçtan uca yönetim ve izleme için kullanıma hazır destek sağlar |Şirket içinde veya IaaS kümesinde dağıtılması için Veri Yönetimi ağ geçidi gerekir |
 | Hadoop 'tan Azure depolama 'ya veri kopyalamak için Distcp 'yi kullanın. Ardından uygun mekanizmayı kullanarak Azure depolama alanından Data Lake Storage 2. verileri kopyalayın. |Azure depolama 'dan Data Lake Storage 2. kullanarak veri kopyalayabilirsiniz: <ul><li>[Azure Data Factory](../../data-factory/copy-activity-overview.md)</li><li>[AzCopy aracı](../common/storage-use-azcopy-v10.md)</li><li>[HDInsight kümelerinde çalışan Apache DistCp](data-lake-storage-use-distcp.md)</li></ul> |Açık kaynak araçları 'nı kullanabilirsiniz. |Birden çok teknolojiyi kapsayan çok adımlı işlem |
@@ -118,8 +118,8 @@ Data Lake Storage 2. depolanan veriler üzerinde veri analizi işlerini çalış
 
 |Araç | Rehber |
 |---|--|
-|Azure HDInsight | [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Hızlı başlangıç: Azure Databricks kullanarak Azure Data Lake Storage 2. verileri çözümleme](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure HDInsight | [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
+|Azure Databricks | [Azure Data Lake Storage 2. Nesil](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Hızlı başlangıç: Azure Databricks kullanarak Azure Data Lake Storage 2. verileri çözümleme](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>Verileri görselleştirme
 
@@ -129,7 +129,7 @@ Data Lake Storage 2. depolanan verilerin görsel sunumlarını oluşturmak için
 
 Ayrıca, gibi senaryolar için Azure Data Lake Storage 2. verileri indirmek veya taşımak isteyebilirsiniz:
 
-* Mevcut veri işleme işlem hatlarınız ile, verileri diğer depolara, arayüze taşıyın. Örneğin, Data Lake Storage 2. verileri Azure SQL veritabanı 'na veya şirket içi SQL Server taşımak isteyebilirsiniz.
+* Mevcut veri işleme işlem hatlarınız ile, verileri diğer depolara, arayüze taşıyın. Örneğin, Data Lake Storage 2. verileri Azure SQL veritabanı 'na veya bir SQL Server örneğine taşımak isteyebilirsiniz.
 
 * Uygulama prototipleri oluştururken IDE ortamlarında işlenmek üzere verileri yerel bilgisayarınıza indirin.
 

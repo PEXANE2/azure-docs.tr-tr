@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4de0686dbca803b9008c1b56c512a90fcfe2b3c0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022444"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194379"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Bir Azure sanal makinesinde SQL Server’a veri taşıma
 
@@ -185,7 +185,7 @@ Aşağıdaki seçeneklerin her birini aşağıda anladık:
 2. `create database` `create table` Adım 1 ' de bulunan tablo şeması için ve kullanarak Azure üzerinde SQL Server VM veritabanı ve tablo oluşturun.
 3. Aktarılan/içeri aktarılan verilerin tablo şemasını açıklayan bir biçim dosyası oluşturun. Biçim dosyasının ayrıntıları, [Biçim dosyası oluşturma (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx)bölümünde açıklanmaktadır.
 
-    SQL Server makinesinden BCP çalıştırırken dosya oluşturmayı Biçimlendir
+    SQL Server bilgisayardan BCP çalıştırırken dosya oluşturmayı Biçimlendir
 
         bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n
 
@@ -203,7 +203,7 @@ Aşağıdaki seçeneklerin her birini aşağıda anladık:
 SQL Server şunları destekler:
 
 1. [Veritabanı yedekleme ve geri yükleme işlevselliği](https://msdn.microsoft.com/library/ms187048.aspx) (hem yerel bir dosya ya da bacpac blob 'a dışarı aktarma) ve [veri katmanı uygulamaları](https://msdn.microsoft.com/library/ee210546.aspx) (bacpac kullanılarak).
-2. Kopyalanmış bir veritabanı ile Azure 'da doğrudan SQL Server VM 'Ler oluşturma veya var olan bir SQL Azure veritabanına kopyalama özelliği. Daha fazla bilgi için bkz. [veritabanını kopyalama Sihirbazı 'Nı kullanma](https://msdn.microsoft.com/library/ms188664.aspx).
+2. Kopyalanmış bir veritabanıyla Azure 'da doğrudan SQL Server VM 'Ler oluşturma veya SQL veritabanı 'nda var olan bir veritabanına kopyalama özelliği. Daha fazla bilgi için bkz. [veritabanını kopyalama Sihirbazı 'Nı kullanma](https://msdn.microsoft.com/library/ms188664.aspx).
 
 Veritabanı yedekleme/geri yükleme seçeneklerinin SQL Server Management Studio ekran görüntüsü aşağıda gösterilmiştir.
 
