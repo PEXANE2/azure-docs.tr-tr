@@ -2,19 +2,19 @@
 title: Azure SQL Edge 'de T-SQL akış işi oluşturma (Önizleme)
 description: Azure SQL Edge 'de Stream Analytics işleri oluşturma hakkında bilgi edinin (Önizleme)
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 323ec00667350917e6b16827f908ac1abeee77d6
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685166"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233316"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de Stream Analytics işi oluşturma (Önizleme) 
 
@@ -44,10 +44,10 @@ Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aş
 
 | Veri Kaynağı Türü | Girdi | Çıktı | Açıklama |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub 'ı | E | E | Azure IoT Edge hub 'ına akış verilerini okumak/yazmak için veri kaynağı. Azure IoT Edge hub hakkında daha fazla bilgi için [IoT Edge hub 'ına](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) başvurun|
-| SQL Veritabanı | N | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. SQL veritabanı, yerel bir SQL Edge veritabanı veya uzak SQL Server ya da Azure SQL veritabanı olabilir|
-| Azure Blob Depolama | N | E | Azure depolama hesabındaki bir bloba veri yazmak için veri kaynağı. |
-| Kafka | E | N | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Bu bağdaştırıcı Şu anda yalnızca Azure SQL Edge 'in Intel/AMD sürümünde kullanılabilir ve SQL Edge 'in ARM64 sürümünde kullanılamaz.|
+| Azure IoT Edge hub 'ı | Y | Y | Azure IoT Edge hub 'ına akış verilerini okumak/yazmak için veri kaynağı. Azure IoT Edge hub hakkında daha fazla bilgi için [IoT Edge hub 'ına](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) başvurun|
+| SQL Veritabanı | N | Y | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. SQL veritabanı, yerel bir SQL Edge veritabanı veya uzak SQL Server ya da Azure SQL veritabanı olabilir|
+| Azure Blob Depolama | N | Y | Azure depolama hesabındaki bir bloba veri yazmak için veri kaynağı. |
+| Kafka | Y | N | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Bu bağdaştırıcı Şu anda yalnızca Azure SQL Edge 'in Intel/AMD sürümünde kullanılabilir ve SQL Edge 'in ARM64 sürümünde kullanılamaz.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Örnek: Azure IoT Edge hub 'ı için dış akış giriş/çıkış nesnesi oluşturma
 

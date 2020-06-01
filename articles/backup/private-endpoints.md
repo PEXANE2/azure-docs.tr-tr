@@ -3,12 +3,12 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: bc778506819c44291bb2d8f69cdd9ac0aed51399
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 2696f3fdbc4e9061afee266ae36ae8d3507026fc
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007862"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231428"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -110,9 +110,9 @@ Azure 'da ayrı bir özel DNS bölgesi oluşturmak isterseniz, zorunlu DNS bölg
 
 Bölge kodları [listesine](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) bakın.
 
-Ulusal geos 'da URL adlandırma kuralları için:
+Ulusal bölgelerdeki URL adlandırma kuralları için:
 
-- [Çin](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [Arasında](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
 - [Almanya](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
 - [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
 
@@ -544,7 +544,7 @@ Kuyruk hizmeti () için DNS bölgesi `privatelink.queue.core.windows.net` :
 
     ![Kuyruk hizmeti için bir tür kaydı olarak FQDN ve özel IP girdisi ekleme](./media/private-endpoints/add-type-a-record-for-queue.png)
 
-## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
+## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
 
 S. Var olan bir yedekleme Kasası için özel bir uç nokta oluşturabilir miyim?<br>
 A. Hayır, Özel uç noktalar yalnızca yeni yedekleme kasaları için oluşturulabilir. Bu nedenle kasada hiç öğe korunmamış olmalıdır. Aslında, özel bitiş noktaları oluşturulmadan önce herhangi bir öğeyi kasaya koruma girişimi yapılabilir.

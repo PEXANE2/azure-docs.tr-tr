@@ -24,6 +24,8 @@
       href: classroom-labs-concepts.md
     - name: Sınıf Laboratuvarları mimarisinin temelleri
       href: classroom-labs-fundamentals.md
+    - name: Kapasite sınırları
+      href: capacity-limits.md
     - name: Senaryolar
       items:
         - name: Sınıfları yönetmek için laboratuvarları kullanma

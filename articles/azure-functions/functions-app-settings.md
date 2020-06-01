@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6f42c411263575040d4392b85542920e8f2463d4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690754"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235360"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -20,27 +20,27 @@ Bir işlev uygulamasındaki uygulama ayarları, bu işlev uygulaması için tüm
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Application Insights için izleme anahtarı. `APPINSIGHTS_INSTRUMENTATIONKEY` Ya da `APPLICATIONINSIGHTS_CONNECTIONSTRING`yalnızca birini kullanın. Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md). 
+Application Insights için izleme anahtarı. Ya da yalnızca birini `APPINSIGHTS_INSTRUMENTATIONKEY` kullanın `APPLICATIONINSIGHTS_CONNECTION_STRING` . Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md). 
 
 |Anahtar|Örnek değer|
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
 
-## <a name="applicationinsights_connectionstring"></a>APPLICATIONINSIGHTS_CONNECTIONSTRING
+## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
-Application Insights için bağlantı dizesi. İşlev uygulamanız, bağlantı dizesi kullanılarak desteklenen eklenmiş özelleştirmeleri gerektirdiğinde kullanın `APPLICATIONINSIGHTS_CONNECTIONSTRING` `APPINSIGHTS_INSTRUMENTATIONKEY` Daha fazla bilgi için bkz. [bağlantı dizeleri](../azure-monitor/app/sdk-connection-string.md). 
+Application Insights için bağlantı dizesi. `APPLICATIONINSIGHTS_CONNECTION_STRING` `APPINSIGHTS_INSTRUMENTATIONKEY` İşlev uygulamanız, bağlantı dizesi kullanılarak desteklenen eklenmiş özelleştirmeleri gerektirdiğinde kullanın. Daha fazla bilgi için bkz. [bağlantı dizeleri](../azure-monitor/app/sdk-connection-string.md). 
 
 |Anahtar|Örnek değer|
 |---|------------|
-|APPLICATIONINSIGHTS_CONNECTIONSTRING|Instrumentationkey = [anahtar]; ınestionendpoint = [URL]; LiveEndpoint = [URL]; ProfilerEndpoint = [URL]; Anlık görüntü Tendpoint = [URL];|
+|APPLICATIONINSIGHTS_CONNECTION_STRING|Instrumentationkey = [anahtar]; ınestionendpoint = [URL]; LiveEndpoint = [URL]; ProfilerEndpoint = [URL]; Anlık görüntü Tendpoint = [URL];|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-2. x ve sonraki Işlevler çalışma zamanının sürümlerinde, çalışma zamanı ortamı temelinde uygulama davranışını yapılandırır. Bu değer [başlatma sırasında okundu](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Herhangi bir değere `AZURE_FUNCTIONS_ENVIRONMENT` ayarlayabilirsiniz, ancak [üç değer](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) desteklenir: [geliştirme](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [hazırlık](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)ve [Üretim](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). `AZURE_FUNCTIONS_ENVIRONMENT` Ayarlanmadıysa, varsayılan `Development` olarak yerel bir ortamda ve `Production` Azure 'da olur. Bu ayar, çalışma zamanı ortamını ayarlamak `ASPNETCORE_ENVIRONMENT` için yerine kullanılmalıdır. 
+2. x ve sonraki Işlevler çalışma zamanının sürümlerinde, çalışma zamanı ortamı temelinde uygulama davranışını yapılandırır. Bu değer [başlatma sırasında okundu](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). `AZURE_FUNCTIONS_ENVIRONMENT`Herhangi bir değere ayarlayabilirsiniz, ancak [üç değer](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) desteklenir: [geliştirme](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [hazırlık](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)ve [Üretim](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). `AZURE_FUNCTIONS_ENVIRONMENT`Ayarlanmadıysa, varsayılan olarak `Development` yerel bir ortamda ve `Production` Azure 'da olur. Bu ayar, `ASPNETCORE_ENVIRONMENT` çalışma zamanı ortamını ayarlamak için yerine kullanılmalıdır. 
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
-Işlev çalışma zamanının sürüm 2. x ve sonraki sürümlerinde, uygulama ayarları geçerli ortamdaki [Host. JSON](functions-host-json.md) ayarlarını geçersiz kılabilir. Bu geçersiz kılmalar, adlı `AzureFunctionsJobHost__path__to__setting`uygulama ayarları olarak ifade edilir. Daha fazla bilgi için bkz. [Host. JSON değerlerini geçersiz kılma](functions-host-json.md#override-hostjson-values).
+Işlev çalışma zamanının sürüm 2. x ve sonraki sürümlerinde, uygulama ayarları geçerli ortamdaki [Host. JSON](functions-host-json.md) ayarlarını geçersiz kılabilir. Bu geçersiz kılmalar, adlı uygulama ayarları olarak ifade edilir `AzureFunctionsJobHost__path__to__setting` . Daha fazla bilgi için bkz. [Host. JSON değerlerini geçersiz kılma](functions-host-json.md#override-hostjson-values).
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -48,10 +48,10 @@ Günlükleri depolamak ve portaldaki **izleyici** sekmesinde görüntülemek iç
 
 |Anahtar|Örnek değer|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName =<name>; AccountKey =<key>|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName = <name> ; AccountKey =<key>|
 
 > [!NOTE]
-> Daha iyi performans ve deneyim için, çalışma zamanı sürüm 2. x ve sonraki sürümleri, APPINSIGHTS_INSTRUMENTATIONKEY ve izleme için uygulama öngörülerini kullanır `AzureWebJobsDashboard`.
+> Daha iyi performans ve deneyim için, çalışma zamanı sürüm 2. x ve sonraki sürümleri, APPINSIGHTS_INSTRUMENTATIONKEY ve izleme için uygulama öngörülerini kullanır `AzureWebJobsDashboard` .
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -61,13 +61,13 @@ Günlükleri depolamak ve portaldaki **izleyici** sekmesinde görüntülemek iç
 |---|------------|
 |AzureWebJobsDisableHomepage|true|
 
-Bu uygulama ayarı atlandığında veya olarak `false`AYARLANDıĞıNDA, URL `<functionappname>.azurewebsites.net`'ye yanıt olarak aşağıdaki örneğe benzer bir sayfa görüntülenir.
+Bu uygulama ayarı atlandığında veya olarak ayarlandığında `false` , URL 'ye yanıt olarak aşağıdaki örneğe benzer bir sayfa görüntülenir `<functionappname>.azurewebsites.net` .
 
 ![İşlev uygulaması giriş sayfası](media/functions-app-settings/function-app-landing-page.png)
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`, .NET kodu derlenirken yayın modunun kullanılacağı anlamına gelir; `false` hata ayıklama modunu kullanma anlamına gelir. `true` varsayılan değerdir.
+`true`, .NET kodu derlenirken yayın modunun kullanılacağı anlamına gelir; `false`hata ayıklama modunu kullanma anlamına gelir. `true` varsayılan değerdir.
 
 |Anahtar|Örnek değer|
 |---|------------|
@@ -105,51 +105,51 @@ TypeScript için kullanılan derleyicinin yolu. Gerekirse varsayılan ayarı ge�
 |---|------------|
 |AzureWebJobs_TypeScriptPath|%HOME%\typescript|
 
-## <a name="function_app_edit_mode"></a>Işlev\_uygulaması\_düzenleme\_modu
+## <a name="function_app_edit_mode"></a>Işlev \_ uygulaması \_ düzenleme \_ modu
 
 Azure portal düzenlemenin etkinleştirilip etkinleştirilmeyeceğini belirler. Geçerli değerler şunlardır "ReadWrite" ve "ReadOnly".
 
 |Anahtar|Örnek değer|
 |---|------------|
-|Işlev\_uygulaması\_düzenleme\_modu|readonly|
+|Işlev \_ uygulaması \_ düzenleme \_ modu|readonly|
 
-## <a name="functions_extension_version"></a>Işlev\_uzantısı\_sürümü
+## <a name="functions_extension_version"></a>Işlev \_ Uzantısı \_ sürümü
 
-Bu işlev uygulamasında kullanılacak Işlevler çalışma zamanının sürümü. Ana sürümü olan bir tilde, bu ana sürümün en son sürümünü (örneğin, "~ 2") kullanır. Aynı ana sürüme yönelik yeni sürümler kullanılabilir olduğunda, bunlar işlev uygulamasına otomatik olarak yüklenir. Uygulamayı belirli bir sürüme sabitlemek için, tam sürüm numarasını (örneğin, "2.0.12345") kullanın. Varsayılan değer "~ 2" dir. Bir değeri, `~1` uygulamanızı çalışma zamanının 1. x sürümüne sabitlemelerini sağlar.
+Bu işlev uygulamasında kullanılacak Işlevler çalışma zamanının sürümü. Ana sürümü olan bir tilde, bu ana sürümün en son sürümünü (örneğin, "~ 2") kullanır. Aynı ana sürüme yönelik yeni sürümler kullanılabilir olduğunda, bunlar işlev uygulamasına otomatik olarak yüklenir. Uygulamayı belirli bir sürüme sabitlemek için, tam sürüm numarasını (örneğin, "2.0.12345") kullanın. Varsayılan değer "~ 2" dir. Bir değeri `~1` , uygulamanızı çalışma zamanının 1. x sürümüne sabitlemelerini sağlar.
 
 |Anahtar|Örnek değer|
 |---|------------|
-|Işlev\_uzantısı\_sürümü|~ 2|
+|Işlev \_ Uzantısı \_ sürümü|~ 2|
 
-## <a name="functions_v2_compatibility_mode"></a>IŞLEVLER\_v2\_uyumluluk\_modu
+## <a name="functions_v2_compatibility_mode"></a>IŞLEVLER \_ v2 \_ Uyumluluk \_ modu
 
 Bu ayar, işlev uygulamanızın sürüm 3. x çalışma zamanı üzerinde sürüm 2. x uyumlu modda çalışmasını sağlar. Bu ayarı yalnızca [, işlev uygulamanızı çalışma zamanının 2. x sürümünden 3. x sürümüne yükseltirken](functions-versions.md#migrating-from-2x-to-3x)sorunlarla karşılaşırsanız kullanın. 
 
 >[!IMPORTANT]
 > Bu ayar yalnızca, uygulamanızı 3. x sürümünde doğru şekilde çalışacak şekilde güncelleştirdiğinizde kısa süreli geçici bir çözüm olarak tasarlanmıştır. [2. x çalışma zamanının desteklendiği](functions-versions.md)sürece bu ayar desteklenir. Uygulamanızın bu ayarı kullanmadan sürüm 3. x üzerinde çalışmasını engelleyen sorunlarla karşılaşırsanız, lütfen [sorununuzu bildirin](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md).
 
-[\_İşlev uzantısı\_sürümünün](functions-app-settings.md#functions_extension_version) olarak `~3`ayarlanmasını gerektirir.
+[İşlev \_ Uzantısı \_ sürümünün](functions-app-settings.md#functions_extension_version) olarak ayarlanmasını gerektirir `~3` .
 
 |Anahtar|Örnek değer|
 |---|------------|
-|IŞLEVLER\_v2\_uyumluluk\_modu|true|
+|IŞLEVLER \_ v2 \_ Uyumluluk \_ modu|true|
 
-## <a name="functions_worker_process_count"></a>Işlev\_çalışan\_işlem\_sayısı
+## <a name="functions_worker_process_count"></a>Işlev \_ çalışan \_ işlem \_ sayısı
 
-Varsayılan değeri olan en fazla dil çalışan işlemi sayısını belirtir `1`. İzin verilen en büyük değer `10`. İşlev etkinleştirmeleri, dil çalışan süreçler arasında eşit olarak dağıtılır. Dil çalışan işlemleri, IŞLEVLERIN\_çalışan\_işlem\_sayısına göre ayarlanan sayıya ulaşılana kadar her 10 saniyede bir oluşturulur. Birden çok dil çalışan işleminin kullanılması, [ölçeklendirmeyle](functions-scale.md)aynı değildir. İş yükünüz, CPU ile bağlantılı ve g/ç bağlantılı çağırma karışımına sahip olduğunda bu ayarı kullanmayı göz önünde bulundurun. Bu ayar tüm non-.NET dilleri için geçerlidir.
+Varsayılan değeri olan en fazla dil çalışan işlemi sayısını belirtir `1` . İzin verilen en büyük değer `10` . İşlev etkinleştirmeleri, dil çalışan süreçler arasında eşit olarak dağıtılır. Dil çalışan işlemleri, IŞLEVLERIN \_ çalışan işlem sayısına göre ayarlanan sayıya ulaşılana kadar her 10 saniyede bir oluşturulur \_ \_ . Birden çok dil çalışan işleminin kullanılması, [ölçeklendirmeyle](functions-scale.md)aynı değildir. İş yükünüz, CPU ile bağlantılı ve g/ç bağlantılı çağırma karışımına sahip olduğunda bu ayarı kullanmayı göz önünde bulundurun. Bu ayar tüm non-.NET dilleri için geçerlidir.
 
 |Anahtar|Örnek değer|
 |---|------------|
-|Işlev\_çalışan\_işlem\_sayısı|2|
+|Işlev \_ çalışan \_ işlem \_ sayısı|2|
 
 
-## <a name="functions_worker_runtime"></a>IŞLEVLER\_Worker\_çalışma zamanı
+## <a name="functions_worker_runtime"></a>IŞLEVLER \_ Worker \_ çalışma zamanı
 
 İşlev uygulamasında yüklenecek dil çalışanı çalışma zamanı.  Bu, uygulamanızda kullanılan dile karşılık gelir (örneğin, "DotNet"). Birden çok dildeki işlevler için, bunları her biri karşılık gelen bir çalışan çalışma zamanı değeri olan birden çok uygulamaya yayımlamanız gerekir.  Geçerli değerler şunlardır `dotnet` (C#/f #), `node` (JavaScript/TypeScript), `java` (Java), `powershell` (PowerShell) ve `python` (Python).
 
 |Anahtar|Örnek değer|
 |---|------------|
-|IŞLEVLER\_Worker\_çalışma zamanı|dotnet|
+|IŞLEVLER \_ Worker \_ çalışma zamanı|dotnet|
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
@@ -159,7 +159,7 @@ Yalnızca tüketim & Premium planlar için. İşlev uygulaması kodu ve yapılan
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [ad]; AccountKey = [anahtar]|
 
-## <a name="website_contentshare"></a>Web\_sitesi contentshare
+## <a name="website_contentshare"></a>Web sItesI \_ contentshare
 
 Yalnızca tüketim & Premium planlar için. İşlev uygulaması kodu ve yapılandırmasının dosya yolu. WEBSITE_CONTENTAZUREFILECONNECTIONSTRING ile kullanılır. Varsayılan değer, işlev uygulaması adı ile başlayan benzersiz bir dizedir. Bkz. [işlev uygulaması oluşturma](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -167,7 +167,7 @@ Yalnızca tüketim & Premium planlar için. İşlev uygulaması kodu ve yapılan
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-## <a name="website_max_dynamic_application_scale_out"></a>Web\_sitesi\_en\_büyük\_dinamik\_uygulama ölçeği genişletme
+## <a name="website_max_dynamic_application_scale_out"></a>Web sItesI \_ en büyük \_ dinamik \_ uygulama \_ ölçeği \_ genişletme
 
 İşlev uygulamasının ölçeklenebilen en fazla örnek sayısı. Varsayılan sınır yoktur.
 
@@ -176,26 +176,26 @@ Yalnızca tüketim & Premium planlar için. İşlev uygulaması kodu ve yapılan
 
 |Anahtar|Örnek değer|
 |---|------------|
-|Web\_sitesi\_en\_büyük\_dinamik\_uygulama ölçeği genişletme|5|
+|Web sItesI \_ en büyük \_ dinamik \_ uygulama \_ ölçeği \_ genişletme|5|
 
-## <a name="website_node_default_version"></a>Web\_sitesi\_düğümü DEFAULT_VERSION
+## <a name="website_node_default_version"></a>Web sItesI \_ düğümü \_ DEFAULT_VERSION
 
 _Yalnızca Windows._  
-Windows üzerinde işlev uygulamanızı çalıştırırken kullanılacak Node. js sürümünü ayarlar. Çalışma zamanının hedeflenen ana sürümün kullanılabilir en son sürümünü kullanmasını sağlamak için bir tilde (~) kullanmanız gerekir. Örneğin, olarak `~10`ayarlandığında, Node. js 10 ' un en son sürümü kullanılır. Ana sürüm bir tilde ile hedeflenirse, ikincil sürümü el ile güncelleştirmeniz gerekmez. 
+Windows üzerinde işlev uygulamanızı çalıştırırken kullanılacak Node. js sürümünü ayarlar. Çalışma zamanının hedeflenen ana sürümün kullanılabilir en son sürümünü kullanmasını sağlamak için bir tilde (~) kullanmanız gerekir. Örneğin, olarak ayarlandığında `~10` , Node. js 10 ' un en son sürümü kullanılır. Ana sürüm bir tilde ile hedeflenirse, ikincil sürümü el ile güncelleştirmeniz gerekmez. 
 
 |Anahtar|Örnek değer|
 |---|------------|
-|Web\_sitesi\_düğümü DEFAULT_VERSION|~ 10|
+|Web sItesI \_ düğümü \_ DEFAULT_VERSION|~ 10|
 
-## <a name="website_run_from_package"></a>paketten Web sItesI çalıştırma\_\_\_
+## <a name="website_run_from_package"></a>paketten Web sItesI \_ çalıştırma \_ \_
 
 İşlev uygulamanızın bağlı bir paket dosyasından çalıştırılmasını sağlar.
 
 |Anahtar|Örnek değer|
 |---|------------|
-|paketten Web sItesI çalıştırma\_\_\_|1|
+|paketten Web sItesI \_ çalıştırma \_ \_|1|
 
-Geçerli değerler, bir dağıtım paketi dosyasının konumunu çözen bir URL ya da `1`. Olarak `1`ayarlandığında, paketin `d:\home\data\SitePackages` klasörde olması gerekir. Bu ayar ile ZIP dağıtımı kullanılırken, paket otomatik olarak bu konuma yüklenir. Önizlemede, bu ayar adlandırılmıştı `WEBSITE_RUN_FROM_ZIP`. Daha fazla bilgi için bkz. [işlevlerinizi bir paket dosyasından çalıştırma](run-functions-from-deployment-package.md).
+Geçerli değerler, bir dağıtım paketi dosyasının konumunu çözen bir URL ya da `1` . Olarak ayarlandığında `1` , paketin klasörde olması gerekir `d:\home\data\SitePackages` . Bu ayar ile ZIP dağıtımı kullanılırken, paket otomatik olarak bu konuma yüklenir. Önizlemede, bu ayar adlandırılmıştı `WEBSITE_RUN_FROM_ZIP` . Daha fazla bilgi için bkz. [işlevlerinizi bir paket dosyasından çalıştırma](run-functions-from-deployment-package.md).
 
 ## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
 

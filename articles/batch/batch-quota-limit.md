@@ -4,12 +4,12 @@ description: Varsayılan Azure Batch kotaları, sınırları ve kısıtlamaları
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: b172800e6ed2a28315da3b45eb39f2207f8f1c16
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 3168c6fc60b2552129e9a11fbf6e8e24d9b37b14
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779997"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84229845"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch hizmet kotaları ve limitleri
 
@@ -37,7 +37,7 @@ Havuz ayırma modu **Kullanıcı aboneliğine**ayarlanmış bir Batch hesabı ol
 
 Havuz boyutu sınırları Batch hizmeti tarafından ayarlanır. [Kaynak kotalarından](#resource-quotas)farklı olarak, bu değerler değiştirilemez. Yalnızca düğümler arası iletişim ve özel görüntülere sahip havuzlar standart kotadan farklı kısıtlamalara sahiptir.
 
-| **Kaynak** | **Üst Sınır** |
+| **Kaynak** | **Maksimum sınır** |
 | --- | --- |
 | **[Düğüm içi iletişim etkin havuzunda](batch-mpi.md) işlem düğümleri**  ||
 | Batch hizmeti havuz ayırma modu | 100 |
@@ -52,7 +52,7 @@ düğüm içi iletişim olmayan havuzlar için <sup>1</sup> .
 
 Batch hizmeti tarafından ayarlanan ek sınırlar. [Kaynak kotalarından](#resource-quotas)farklı olarak, bu değerler değiştirilemez.
 
-| **Kaynak** | **Üst Sınır** |
+| **Kaynak** | **Maksimum sınır** |
 | --- | --- |
 | İşlem düğümü başına [eşzamanlı görevler](batch-parallel-node-tasks.md) | 4 x düğüm çekirdeği sayısı |
 | Batch hesabı başına [uygulamalar](batch-application-packages.md) | 20 |
@@ -126,7 +126,7 @@ Destek isteğinizi gönderdikten sonra, Azure desteği sizinle iletişim kuracak
 Bir Azure sanal ağında dağıtılan sanal makine yapılandırmasındaki toplu iş havuzları, otomatik olarak ek Azure ağ kaynakları ayırır. Bir sanal ağdaki her 50 havuz düğümü için aşağıdaki kaynaklar gereklidir:
 
 * Bir [ağ güvenlik grubu](../virtual-network/security-overview.md#network-security-groups)
-* Bir [genel IP adresi](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* Bir [genel IP adresi](../virtual-network/public-ip-addresses.md)
 * Bir [yük dengeleyici](../load-balancer/load-balancer-overview.md)
 
 Bu kaynaklar, Batch havuzu oluşturulurken sağlanan sanal ağı içeren abonelikte ayrılır. Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Büyük havuz dağıtımlarını bir sanal ağda planlarsanız, bu kaynaklar için aboneliğin kotalarını kontrol edin. Gerekirse, **Yardım + Destek**' i seçerek Azure Portal bir artış isteyin.

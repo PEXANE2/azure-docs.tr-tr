@@ -3,12 +3,12 @@ title: Azure kurtarma hizmetleri kasalarını ve sunucularını yönetme
 description: Bu makalede, kurtarma hizmetleri kasalarınızı izlemek ve yönetmek için kurtarma hizmetleri Kasası genel bakış panosunu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131969"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234606"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Kurtarma Hizmetleri kasalarını izleme ve yönetme
 
@@ -223,15 +223,15 @@ Filtreleri değiştirmek için:
 * Tüm öğe türleri
 * Azure sanal makine
 * Dosyalar ve klasörler
-* Azure Storage
+* Azure Depolama
 * Azure iş yükü
 
-#### <a name="operation"></a>İşlem
+#### <a name="operation"></a>Çalışma
 
 Bir işlemi veya tüm işlemleri görüntüleyebilirsiniz. İki veya üç işlem seçemezsiniz. Kullanılabilir Işlemler şunlardır:
 
 * Tüm İşlemler
-* Kaydettir
+* Kaydol
 * Yedeklemeyi yapılandırma
 * Backup
 * Geri Yükleme
@@ -244,7 +244,7 @@ Tüm durumu veya birini görüntüleyebilirsiniz. İki veya üç durumu seçemez
 
 * Tüm durum
 * Tamamlandı
-* Devam ediyor
+* Sürüyor
 * Başarısız
 * İptal edildi
 * Uyarılarla tamamlandı
@@ -274,9 +274,9 @@ Panodaki yedekleme depolama kutucuğu, Azure 'da tüketilen depolamayı gösteri
 
 **Sorun:** Azure Backup aracısındaki işler ve/veya uyarılar portalda görünmez.
 
-**Sorun giderme adımları:** İşlem ```OBRecoveryServicesManagementAgent```, Azure Backup hizmetine iş ve uyarı verilerini gönderir. Bazen bu işlem, takılmış veya kapalı hale gelebilir.
+**Sorun giderme adımları:** İşlem, ```OBRecoveryServicesManagementAgent``` Azure Backup hizmetine iş ve uyarı verilerini gönderir. Bazen bu işlem, takılmış veya kapalı hale gelebilir.
 
-1. İşlemin çalışmadığını doğrulamak için, **Görev Yöneticisi**'ni açın ve denetleyin ```OBRecoveryServicesManagementAgent``` ' ı çalıştırın.
+1. İşlemin çalışmadığını doğrulamak için, **Görev Yöneticisi**'ni açın ve denetleyin ' ı ```OBRecoveryServicesManagementAgent``` çalıştırın.
 
 2. İşlem çalışmıyorsa, **Denetim Masası**'nı açın ve hizmetler listesine gözatamazsınız. **Microsoft Azure Kurtarma Hizmetleri yönetim aracısını**başlatın veya yeniden başlatın.
 

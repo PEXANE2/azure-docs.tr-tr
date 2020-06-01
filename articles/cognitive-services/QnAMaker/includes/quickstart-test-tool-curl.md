@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: d890fcb6a43b43e0be0df8e6f6ff0817bdd03115
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 161dde34a4f459640d262197fd5ccbb16ac51d04
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83998079"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237670"
 ---
 Bu kıvrımlı tabanlı hızlı başlangıç, bilgi tabanınızdan yanıt alma konusunda size yol gösterir.
 
@@ -80,6 +80,8 @@ Meta verilere dayalı bir yanıt için önceki hızlı bir şekilde sorgu Bilgi 
     Arama terimini karşılamayan ancak filtreye uyan bir soru ve yanıt çifti varsa döndürülmüyor. Bunun yerine, genel yanıt `No good match found in KB.` döndürülür.
 
 ## <a name="use-debug-query-property"></a>Hata ayıklama sorgu özelliğini kullan
+> [!NOTE]
+>Herhangi bir bağımlılık için hata ayıklama özelliğini kullanmanızı önermiyoruz. Bu özellik, ürün ekibine sorun gidermeye yardımcı olmak için eklenmiştir.
 
 Hata ayıklama bilgileri döndürülen yanıtın nasıl belirlendiğini anlamanıza yardımcı olur. Faydalı olsa da gerekli değildir. Hata ayıklama bilgileriyle bir yanıt oluşturmak için, özelliği ekleyin `debug` :
 

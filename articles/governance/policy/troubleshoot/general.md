@@ -3,12 +3,12 @@ title: Sık karşılaşılan hataları giderme
 description: İlke tanımları, çeşitli SDK ve Kubernetes için eklenti oluşturma sorunlarını giderme hakkında bilgi edinin.
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8935176badabf559d494c3d60fb1dec236efbdc2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b1cb8ab51ecc00610f1e04532ba3063be5415607
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221380"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234181"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Azure Ilkesini kullanarak hatalarda sorun giderme
 
@@ -130,7 +130,7 @@ Oluşturulan parola, `,` helb grafiğinin bölünmesi için bir virgül () içer
 
 #### <a name="resolution"></a>Çözüm
 
-`,` `helm install azure-policy-addon` Bir Backspace () ile çalışırken Password değerindeki virgül () karakterini kaçış `\` .
+`,` `helm install azure-policy-addon` Bir ters eğik çizgiyle () çalışırken parola değerindeki virgül () karakterini kaçış `\` .
 
 ### <a name="scenario-install-using-helm-chart-fails-as-name-already-exists"></a>Senaryo: ad zaten mevcut olduğu için Held grafiğini kullanarak Install başarısız olur
 

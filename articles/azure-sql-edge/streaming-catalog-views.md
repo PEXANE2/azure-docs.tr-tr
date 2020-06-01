@@ -2,19 +2,19 @@
 title: Akış Katalog görünümleri (Transact-SQL)-Azure SQL Edge (Önizleme)
 description: Azure SQL Edge 'de kullanılabilir akış Kataloğu görünümleri ve dinamik yönetim görünümleri hakkında bilgi edinin (Önizleme)
 keywords: sys. external_streams, SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: f947d4ee84f4d08f3b0e40b54ab3fc4598460a03
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5b1cd58b8947e376ac70ee307041ae7864ed7e24
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597306"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233107"
 ---
 # <a name="streaming-catalog-views-transact-sql"></a>Akış Kataloğu görünümleri (Transact-SQL)
 
@@ -22,7 +22,7 @@ Bu bölüm, T-SQL akışıyla ilgili kullanılabilir katalog görünümlerini ve
   
 ## <a name="in-this-section"></a>Bu Bölümde  
   
-|Görüntüle|Açıklama|  
+|Görünüm|Açıklama|  
 |:---|:---|
 |[sys. external_streams](sys-external-streams.md) |Veritabanı kapsamında oluşturulan her dış akış nesnesi için bir satır döndürür.|
 |[sys. external_streaming_jobs](sys-external-streaming-jobs.md) |Veritabanı kapsamında oluşturulan her bir dış akış işi için bir satır döndürür.|

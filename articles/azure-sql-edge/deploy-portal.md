@@ -2,19 +2,19 @@
 title: Azure portal kullanarak Azure SQL Edge (Önizleme) dağıtma
 description: Azure SQL Edge 'i (Önizleme) Azure portal kullanarak dağıtmayı öğrenin
 keywords: SQL Edge dağıtma
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 0ddfc445ee8bd67b39de4ddd013a25f20fd75315
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681241"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233253"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Azure SQL Edge 'i dağıtma (Önizleme) 
 
@@ -23,7 +23,7 @@ Azure SQL Edge (Önizleme), IoT ve Azure IoT Edge dağıtımları için iyileşt
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)oluşturun.
-* [Azure portalında](https://portal.azure.com/) oturum açın.
+* [Azure Portal](https://portal.azure.com/) oturum açın.
 * [Azure IoT Hub](../iot-hub/iot-hub-create-through-portal.md)oluşturun.
 * Azure portal bir [IoT Edge cihazı](../iot-edge/how-to-register-device-portal.md)kaydedin.
 * [Azure portal IoT Edge modülünü dağıtmak](../iot-edge/how-to-deploy-modules-portal.md)üzere IoT Edge cihazı hazırlayın.
@@ -57,7 +57,7 @@ Azure Marketi, [IoT Edge modüller](https://azuremarketplace.microsoft.com/marke
 
    |**Parametre**  |**Açıklama**|
    |---------|---------|
-   | Name | Modülün adı. |
+   | Adı | Modülün adı. |
    |SA_PASSWORD  | SQL Edge yönetici hesabı için güçlü bir parola belirtin. |
    |MSSQL_LCID   | SQL Server için kullanılacak dil KIMLIĞINI ayarlar. Örneğin, 1036, Fransızca ' dır. |
    |MSSQL_COLLATION | SQL Server için Varsayılan harmanlamayı ayarlar. Bu ayar, dil KIMLIĞI 'nin (LCıD) varsayılan eşlemesini harmanlama olarak geçersiz kılar. |

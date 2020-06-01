@@ -3,12 +3,12 @@ title: Soru-Cevap Oluşturma Hizmeti ayarlama-Soru-Cevap Oluşturma
 description: Herhangi bir Soru-Cevap Oluşturma bilgi tabanı oluşturabilmeniz için önce Azure 'da bir Soru-Cevap Oluşturma Hizmeti ayarlamanız gerekir. Bir abonelikte yeni kaynaklar oluşturmak için yetkilendirmeye sahip olan herkes, Soru-Cevap Oluşturma bir hizmet ayarlayabilir.
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 521d0388e4ee739b1ac840e482174ac466781f5f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171183"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235529"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -198,7 +198,7 @@ Yayımlanmış bir bilgi tabanı için Soru-Cevap Oluşturma tahmin çalışma z
 
 Tahmin uç noktası uygulamasının trafik olmadığında bile yüklenmesini sağlamak için boşta seçeneğini her zaman açık olarak ayarlayın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Soru-Cevap Oluşturma kaynağınızın App Service 'i arayın ve seçin. Soru-Cevap Oluşturma kaynağıyla aynı ada sahip olur, ancak farklı **türde** App Service olacaktır.
 1. **Ayarları** bulun ve **yapılandırma**' yı seçin.
 1. Yapılandırma bölmesinde **Genel ayarlar**' ı seçin, **her zaman açık**' i bulun ve değer olarak **Açık** ' ı seçin.
@@ -210,6 +210,11 @@ Tahmin uç noktası uygulamasının trafik olmadığında bile yüklenmesini sa�
 1. Yeni ayarı kullanmak için uygulamayı yeniden başlatmak isteyip istemediğiniz sorulur. **Devam**’ı seçin.
 
 App Service [genel ayarlarını](../../../app-service/configure-common.md#configure-general-settings)yapılandırma hakkında daha fazla bilgi edinin.
+## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>App Service Ortamı QNA Maker 'ı barındıracak şekilde yapılandırın App Service
+App Service Ortamı, Soru-Cevap Oluşturma App Service 'i barındırmak için kullanılabilir. App Service Ortamı iç ise aşağıdaki adımları izlemeniz gerekir:
+1. Bir App Service ve bir Azure Search hizmeti oluşturun.
+2. App Service 'i ortak bir DNS üzerinde kullanıma sunun Soru-Cevap Oluşturma hizmet etiketi: Biliveservicesmanagement veya internet 'e açık tutun.
+3. Azure Resource Manager kullanarak Soru-Cevap Oluşturma bilişsel hizmet örneği (Microsoft. Biliveservices/hesaplar) oluşturun; burada Soru-Cevap Oluşturma uç nokta App Service Ortamı olarak ayarlanmalıdır. 
 
 ## <a name="business-continuity-with-traffic-manager"></a>Traffic Manager ile iş sürekliliği
 

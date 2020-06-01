@@ -2,19 +2,19 @@
 title: Azure SQL Edge 'de IoT Edge modülleri ayarlama
 description: Bu üç parçalı Azure SQL Edge öğreticisinin ikinci bölümünde, Iron ve yamallikleri tahmin etmek için IoT Edge modüller ve bağlantılar ayarlayacaksınız.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: bbbbe09aac30165a2f9b7bbe54f58e0c09a6cf09
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599688"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235031"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge modülleri ve bağlantıları ayarlama
 
@@ -25,7 +25,7 @@ Azure SQL Edge 'deki Iron ve yamallikleri tahmin etmek için üç bölümden olu
 
 ## <a name="create-azure-stream-analytics-module"></a>Azure Stream Analytics modülü oluşturma
 
-Bu öğreticide kullanılacak bir Azure Stream Analytics modülü oluşturun. SQL Edge ile akış işlerini kullanma hakkında daha fazla bilgi için bkz. [SQL veritabanı Edge ile akış Işlerini kullanma](https://docs.microsoft.com/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge).
+Bu öğreticide kullanılacak bir Azure Stream Analytics modülü oluşturun. SQL Edge ile akış işlerini kullanma hakkında daha fazla bilgi için bkz. [SQL Edge ile akış Işlerini kullanma](stream-analytics.md).
 
 Azure Stream Analytics işi, uç olarak ayarlanan barındırma ortamı ile oluşturulduktan sonra öğretici için giriş ve çıkışları ayarlayın.
 
@@ -35,7 +35,7 @@ Azure Stream Analytics işi, uç olarak ayarlanan barındırma ortamı ile oluş
    -----|-----
    Olay serileştirme biçimi|JSON
    Encoding|UTF-8
-   Olay sıkıştırma türü|Yok
+   Olay sıkıştırma türü|Hiçbiri
 
 2. **Çıktıyı**oluşturmak Için **+ Ekle** ' ye tıklayın ve SQL veritabanı ' nı seçin. Aşağıdaki bilgileri kullanarak Ayrıntılar bölümünü girin.
 
@@ -77,7 +77,7 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
 
    _Alan_|_Değer_
    -------|-------
-   Name|Kayıt defteri adı
+   Adı|Kayıt defteri adı
    Adres|Oturum açma sunucusu
    User Name|Kullanıcı adı
    Parola|Parola
@@ -91,7 +91,7 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
 
    containerregistry 'nin oturum *açma sunucusu* / *Depo adı*:*etiket adı*
 
-   Örnek:
+   Örneğin:
 
    ```
    ASEdemocontregistry.azurecr.io/silicaprediction:amd64
@@ -101,7 +101,7 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Azure SQL Edge modülünü dağıtma
 
-1. Azure SQL [veritabanı Edge önizlemesi 'Ni dağıtma](https://docs.microsoft.com/azure/sql-database-edge/deploy-portal#deploy-sql-database-edge)bölümünde listelenen adımları IZLEYEREK Azure SQL Edge modülünü dağıtın.
+1. Azure SQL Edge modülünü dağıtma [(Önizleme)](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)bölümünde listelenen adımları IZLEYEREK Azure SQL Edge modülünü dağıtın.
 
 2. Modül **Ayarla** ' nın **yolunu belirt** sayfasında, aşağıdaki gibi, modül için yol IoT Edge hub iletişimini belirtin. 
 
@@ -110,7 +110,7 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
    BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/<your_input_stream_name>")
    ```
 
-   Örnek:
+   Örneğin:
 
    ```
    FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/Input1")

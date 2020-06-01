@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cfdb41f9be83f8a410dff089b9150739017403cb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d3efad49fe3fac7fb87c2dffc1f5c007c3289500
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639424"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233939"
 ---
-|Name |Açıklama |İlkeler |Sürüm |
+|Adı |Açıklama |İlkeler |Sürüm |
 |---|---|---|---|
 |[Belirtilen uygulamaların yüklü olmadığı Linux VM 'lerini denetleyin](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationLinux.json) |Bu girişim, ilke gereksinimlerini dağıtır ve belirtilen uygulamaların yüklü olmadığı Linux sanal makinelerini denetler. Konuk yapılandırma ilkeleri hakkında daha fazla bilgi için lütfen şu adresi ziyaret edin[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.1.0 |
 |[Belirtilen uygulamaların yüklü olduğu Linux VM 'lerini denetleyin](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApplicationLinux.json) |Bu girişim, ilke gereksinimlerini dağıtır ve belirtilen uygulamaların yüklü olduğu Linux sanal makinelerini denetler. Konuk yapılandırma ilkeleri hakkında daha fazla bilgi için lütfen şu adresi ziyaret edin[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.1.0 |

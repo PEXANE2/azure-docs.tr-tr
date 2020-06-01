@@ -4,12 +4,12 @@ description: Uygulamanız için önceden oluşturulmuş bir PHP kapsayıcısın�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 97ccc309e6fd4efd48a609ab558e9842f376ccf5
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142121"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234946"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service için bir Linux PHP uygulaması yapılandırma
 
@@ -109,7 +109,7 @@ Popüler Web çerçeveleri `X-Forwarded-*` Standart uygulama hiyerarşinizdeki b
 PHP yüklemenizde değişiklik yapmanız gerekiyorsa, bu adımları izleyerek [php. ini yönergelerinden](https://www.php.net/manual/ini.list.php) herhangi birini değiştirebilirsiniz.
 
 > [!NOTE]
-> PHP sürümünü ve geçerli *php. ini* yapılandırmasını görmenin en iyi yolu, uygulamanızda [PHPINFO ()](https://php.net/manual/function.phpinfo.php) öğesini çağırmanız.
+> PHP sürümünü ve geçerli *php. ini* yapılandırmasını görmenin en iyi yolu, uygulamanızda [PHPINFO ()](https://www.php.net/manual/function.phpinfo.php) öğesini çağırmanız.
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Özelleştirme-PHP_INI_SYSTEM olmayan yönergeler

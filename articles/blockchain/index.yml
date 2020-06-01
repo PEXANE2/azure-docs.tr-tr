@@ -11,12 +11,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 10/23/2019
-  ms.openlocfilehash: a0e43171e70923cfb3af551391204f118be01970
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 11c3c464de5efc9b38426fa7ea015f63b37a8b52
+  ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75932659"
+  ms.lasthandoff: 05/31/2020
+  ms.locfileid: "84235508"
 productDirectory:
   items:
   - title: Azure Blok Zinciri Hizmeti
@@ -32,13 +32,6 @@ productDirectory:
     - url: ./workbench/overview.md
       text: Azure Blockchain Workbench nedir?
     - url: ./workbench/index.yml
-      text: Daha fazla göster >
-  - title: Azure Blok Zinciri Belirteçleri
-    imageSrc: ./media/index/blockchain-tokens.svg
-    links:
-    - url: ./tokens/overview.md
-      text: Azure Blok Zinciri Belirteçleri nedir?
-    - url: ./tokens/index.yml
       text: Daha fazla göster >
 conceptualContent:
   title: başlarken
@@ -71,17 +64,6 @@ conceptualContent:
     - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
       itemType: video
       text: İlk uygulamanızın nasıl oluşturulacağını izleyin
-  - title: Belirteçleri oluşturma ve yönetme
-    links:
-    - url: ./tokens/templates.md
-      itemType: concept
-      text: Önceden oluşturulmuş şablonu kullanarak belirtecinizi tanımlama
-    - url: ./tokens/account-management.md
-      itemType: concept
-      text: Azure Blok Zinciri Belirteçleri'ni kullanarak belirteçleri yönetme
-    - url: https://aka.ms/ABTokensPartI
-      itemType: video
-      text: Azure Blok Zinciri Belirteçleri'ne girişi izleyin
   - title: Blok Zinciri Veri Yöneticisi'ni kullanarak blok zinciri verilerini yayımlama
     links:
     - url: ./service/data-manager.md

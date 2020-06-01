@@ -2,19 +2,19 @@
 title: Azure SQL Edge 'in desteklenen özellikleri (Önizleme)
 description: Azure SQL Edge (Önizleme) tarafından desteklenen özelliklerin ayrıntıları hakkında bilgi edinin
 keywords: SQL Edge 'e giriş, SQL Edge nedir, SQL Edge 'e genel bakış
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f0994ac1d28118869f0d5c2844a034623d101ee8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e3bac1cbb0e57f9be4a489207f2fe8b30b5d457e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684376"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233203"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Azure SQL Edge 'in desteklenen özellikleri (Önizleme) 
 
@@ -68,7 +68,7 @@ Aşağıdaki liste, şu anda Azure SQL Edge 'de desteklenmeyen Linux özellikler
 | &nbsp; | DB ve ilgili DDL komutlarını ve Transact-SQL işlevlerini, katalog görünümlerini ve dinamik yönetim görünümlerini uzat |
 | &nbsp; | Tam metin dizinleri ve arama ve ilgili DDL komutları ve Transact-SQL işlevleri, katalog görünümleri ve dinamik yönetim görünümleri|
 | &nbsp; | FileTable, FıLESTREAM ve ilgili DDL komutları ve Transact-SQL işlevleri, katalog görünümleri ve dinamik yönetim görünümleri|
-| **Veritabanı Altyapısı** | Çoğaltma. Ancak Azure SQL Edge, çoğaltma topolojisinin bir itme abonesi olarak yapılandırılabilir. |
+| **Veritabanı Altyapısı** | Yinelemesi. Ancak Azure SQL Edge, çoğaltma topolojisinin bir itme abonesi olarak yapılandırılabilir. |
 | &nbsp; | PolyBase. Ancak Azure SQL Edge, PolyBase 'deki dış tablolar için hedef olarak yapılandırılabilir |
 | &nbsp; | Java ve Spark ile dil genişletilebilirliği |
 | &nbsp; | Active Directory Tümleştirmesi |
@@ -88,7 +88,7 @@ Aşağıdaki liste, şu anda Azure SQL Edge 'de desteklenmeyen Linux özellikler
 | **SQL Server Agent** |  Alt sistemler: CmdExec, PowerShell, Queue Reader, SSIS, SSAS, SSRS |
 | &nbsp; | Uyarılar |
 | &nbsp; | Yönetilen Yedekleme |
-| **Yüksek Kullanılabilirlik** | Always on kullanılabilirlik grupları  |
+| **Yüksek kullanılabilirlik** | Always on kullanılabilirlik grupları  |
 | &nbsp; | Temel kullanılabilirlik grupları |
 | &nbsp; | Her zaman yük devretme kümesi örneği |
 | &nbsp; | Veritabanı Yansıtması |

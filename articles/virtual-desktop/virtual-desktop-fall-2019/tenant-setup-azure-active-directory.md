@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8b08e8e4d6623277d1935fc85e302e8ce3c88eea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: da5211206c12f2fe3259fcbbf196a7728c026b26
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124406"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234112"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Öğretici: Windows sanal masaüstünde kiracı oluşturma
 
@@ -152,9 +152,6 @@ New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinition
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Daha ayrıntılı bir anlatım için [Windows sanal masaüstü öğrenimi yolumuzu](https://docs.microsoft.com/learn/paths/m365-wvd/)inceleyin.
-
 Kiracınızı oluşturduktan sonra, Azure Active Directory bir hizmet sorumlusu oluşturmanız ve Windows sanal masaüstü 'nde bir rol atamanız gerekir. Hizmet sorumlusu, bir konak havuzu oluşturmak için Windows sanal masaüstü Azure Marketi teklifini başarıyla dağıtmanıza olanak tanır. Konak havuzları hakkında daha fazla bilgi edinmek için Windows sanal masaüstü 'nde bir konak havuzu oluşturma öğreticisine geçin.
 
 > [!div class="nextstepaction"]

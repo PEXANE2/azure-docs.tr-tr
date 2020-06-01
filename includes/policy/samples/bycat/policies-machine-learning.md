@@ -1,0 +1,21 @@
+---
+author: DCtheGeek
+ms.service: azure-policy
+ms.topic: include
+ms.date: 05/29/2020
+ms.author: dacoulte
+ms.custom: generated
+ms.openlocfilehash: 807dde49c352c3a4fc64fd540a0387e4cf77ae86
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233462"
+---
+|Adı |Açıklama |Efekt (ler) |Sürüm |GitHub |
+|---|---|---|---|---|
+|[Belirtilen Azure Machine Learning hesaplar için izin verilen modül yazarlarını yapılandırın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53c70b02-63dd-11ea-bc55-0242ac130003) |Bu ilke, belirtilen Azure Machine Learning izin verilen modül yazarlarının çalışma alanına atanmasını sağlar. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) . |enforceSetting, devre dışı |1.0.0-Önizleme |[Bağlantısının](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedModuleAuthors_EnforceSetting.json) |
+|[Belirtilen Azure Machine Learning hesaplar için izin verilen Python paketlerini yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77eeea86-7e81-4a7d-9067-de844d096752) | Bu ilke, belirtilen Azure Machine Learning için izin verilen Python paketlerinin oluşturulmasına ve çalışma alanına atanabilirler. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) . |enforceSetting, devre dışı |1.0.0-Önizleme |[Bağlantısının](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedPythonPackageChannels_EnforceSetting.json) |
+|[Belirtilen Azure Machine Learning hesaplar için izin verilen kayıt defterlerini yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5853517a-63de-11ea-bc55-0242ac130003) |Bu ilke, belirtilen Azure Machine Learning olarak izin verilen ve çalışma alanında atanabileceği kayıt defterlerinin sağlanmasına yardımcı olur. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) . |enforceSetting, devre dışı |1.0.0-Önizleme |[Bağlantısının](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedACRs_EnforceSetting.json) |
+|[Belirtilen Azure Machine Learning hesaplar için çalışan işlerden önce çağrılan bir onay uç noktası yapılandırın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3948394e-63de-11ea-bc55-0242ac130003) |Bu ilke, belirtilen Azure Machine Learning hesaplar için çalışan işlerden önce çağrılan bir onay uç noktasının oluşturulmasına ve çalışma alanında atanabilmenize yardımcı olur. Daha fazla bilgi için. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) . |enforceSetting, devre dışı |1.0.0-Önizleme |[Bağlantısının](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/ApprovalEndpoint_EnforceSetting.json) |
+|[Belirtilen Azure Machine Learning hesaplar için tam günlüklerde kullanılacak günlük filtresi ifadelerini ve veri deposunu yapılandırın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d413020-63de-11ea-bc55-0242ac130003) |Bu ilke, belirtilen Azure Machine Learning hesaplar ve çalışma alanında atanabileceği tam Günlükler için kullanılacak günlük filtresi ifadesi ve veri deposunun sağlanmasına yardımcı olur. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) . |enforceSetting, devre dışı |1.0.0-Önizleme |[Bağlantısının](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedLogFilter_EnforceSetting.json) |

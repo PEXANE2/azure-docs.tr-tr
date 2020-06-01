@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5995242f84738eca1b2be680e3f744e36831d78f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758954"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235330"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -180,7 +180,7 @@ IPv6 adresleri | 'nin. Guest.Net
 Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
 Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
 **Envanter yolu ayrıntıları** | 
-Name | kapsayıcı. GetType (). Ada
+Adı | kapsayıcı. GetType (). Ada
 Alt nesnenin türü | kapsayıcı. ChildType
 Başvuru ayrıntıları | kapsayıcı. MoRef
 Üst Ayrıntılar | Container. Parent
@@ -206,11 +206,77 @@ Saniye başına disk yazma işlemleri | virtualDisk. Numberwriteortalama. Ortala
 NIC okuma üretilen işi (MB/saniye) | net. alınan. Ortalama | VM boyutu için hesaplama
 NIC yazma üretilen işi (MB/saniye) | net. iletilmiş. Average  |VM boyutu için hesaplama
 
+
+### <a name="installed-apps-metadata"></a>Yüklü uygulamalar meta verileri
+
+Uygulama bulma, yüklü uygulamaları ve işletim sistemi verilerini toplar.
+
+#### <a name="windows-vm-apps-data"></a>Windows VM Apps verileri
+
+Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı yüklü uygulama verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
+
+**Veri** | **Kayıt Defteri Konumu** | **Anahtar**
+--- | --- | ---
+Uygulama Adı  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
+Sürüm  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+Sağlayıcı  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+
+#### <a name="windows-vm-features-data"></a>Windows VM özellikleri verileri
+
+Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı Özellikler verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
+
+**Veri**  | **PowerShell cmdlet 'i** | **Özelliði**
+--- | --- | ---
+Adı  | Get-WindowsFeature  | Adı
+Özellik türü | Get-WindowsFeature  | FeatureType
+Üst  | Get-WindowsFeature  | Üst
+
+#### <a name="windows-vm-sql-server-metadata"></a>Windows VM SQL Server meta verileri
+
+Uygulamanın, uygulama bulma için etkinleştirilmiş Microsoft SQL Server çalıştıran VM 'lerden topladığı SQL Server meta verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
+
+**Veri**  | **Kayıt Defteri Konumu**  | **Anahtar**
+--- | --- | ---
+Adı  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
+Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
+Hizmet Paketi  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP2
+Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
+
+#### <a name="windows-vm-operating-system-data"></a>Windows VM işletim sistemi verileri
+
+Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi verileri. Bu veriler Azure 'a gönderilir.
+
+Veri  | WMI sınıfı  | WMI sınıfı özelliği
+--- | --- | ---
+Adı  | Win32_operatingsystem  | Başlık
+Sürüm  | Win32_operatingsystem  | Sürüm
+Mimari  | Win32_operatingsystem  | OSArchitecture
+
+#### <a name="linux-vm-apps-data"></a>Linux VM Apps verileri
+
+Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı yüklü uygulama verileri aşağıda verilmiştir. VM 'nin işletim sistemine bağlı olarak, bir veya daha fazla komut çalıştırılır. Bu veriler Azure 'a gönderilir.
+
+Veri  | Komut
+--- | --- 
+Adı | RPM, dpkg-Query, Snap
+Sürüm | RPM, dpkg-Query, Snap
+Sağlayıcı | RPM, dpkg-Query, Snap
+
+#### <a name="linux-vm-operating-system-data"></a>Linux VM işletim sistemi verileri
+
+Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi verileri. Bu veriler Azure 'a gönderilir.
+
+**Veri**  | **Komut** 
+--- | --- | ---
+Adı <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
+Mimari | uname
+
+
 ### <a name="app-dependencies-metadata"></a>Uygulama bağımlılıkları meta verileri
 
 Aracısız bağımlılık analizi, bağlantı ve işlem verilerini toplar.
 
-#### <a name="connection-data"></a>Bağlantı verileri
+#### <a name="windows-vm-app-dependencies-data"></a>Windows VM uygulama bağımlılıkları verileri
 
 Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir VM 'den topladığı bağlantı verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
 
@@ -224,7 +290,7 @@ TCP bağlantı durumu | Netstat
 İşlem Kimliği | Netstat
 Etkin bağlantı sayısı | Netstat
 
-#### <a name="process-data"></a>Veri işleme
+
 Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir VM 'den topladığı işlem verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
 
 **Veri** | **WMI sınıfı** | **WMI sınıfı özelliği**
@@ -233,7 +299,7 @@ Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir VM 
 İşlem bağımsız değişkenleri | Win32_Process | CommandLine
 Uygulama adı | Win32_Process | ExecutablePath özelliğinin VersionInfo. ProductName parametresi
 
-#### <a name="linux-vm-data"></a>Linux VM verileri
+#### <a name="linux-vm-app-dependencies-data"></a>Linux VM uygulama bağımlılıkları verileri
 
 Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir Linux VM 'den topladığı bağlantı ve işleme verilerini aşağıda bulabilirsiniz. Bu veriler Azure 'a gönderilir.
 

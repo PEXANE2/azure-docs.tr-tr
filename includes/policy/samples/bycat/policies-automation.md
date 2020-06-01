@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5c8099bb0998364484ed03dd3aabf3ed2aa8b268
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f7aa6a5d401f48d235056f910d1e6e580f01bc65
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651422"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233714"
 ---
-|Name |Açıklama |Efekt (ler) |Sürüm |GitHub |
+|Adı |Açıklama |Efekt (ler) |Sürüm |GitHub |
 |---|---|---|---|---|
-|[Otomasyon hesabı değişkenleri şifrelenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |Hassas verileri depolarken Otomasyon hesabı değişken varlıklarının şifrelenmesini etkinleştirmek önemlidir |Denetim, reddetme, devre dışı |1.1.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
+|[Otomasyon hesabı değişkenleri şifrelenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |Hassas verileri depolarken Otomasyon hesabı değişken varlıklarının şifrelenmesini etkinleştirmek önemlidir |Denetim, reddetme, devre dışı |1.1.0 |[Bağlantısının](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |

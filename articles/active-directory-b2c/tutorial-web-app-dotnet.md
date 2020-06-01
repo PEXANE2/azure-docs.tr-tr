@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: e4b56f18bf8a2ed1c22b00b8a57efdbf06eb7fa2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9bf7339e500a006c168311145a9a5d992b07f145
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183345"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231814"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir Web uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -50,7 +50,7 @@ Uygulamayı güncelleştirmek için geçerli **uygulamalar** deneyimini veya yen
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar**' ı seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Yanıt URL 'si**altında, `https://localhost:44316`ekleyin.
+1. **Yanıt URL 'si**altında, ekleyin `https://localhost:44316` .
 1. **Kaydet**’i seçin.
 1. Özellikler sayfasında, Web uygulamasını yapılandırırken daha sonraki bir adımda kullanmak üzere uygulama KIMLIĞINI kaydedin.
 
@@ -61,8 +61,8 @@ Uygulamayı güncelleştirmek için geçerli **uygulamalar** deneyimini veya yen
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları (Önizleme)** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
 1. **Kimlik doğrulaması**' nı seçin ve ardından **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
-1. **Web**altında **URI Ekle** bağlantısını seçin, girin `https://localhost:44316`ve ardından **Kaydet**' i seçin.
-1. **Genel Bakış**’ı seçin.
+1. **Web**altında **URI Ekle** bağlantısını seçin, girin `https://localhost:44316` ve ardından **Kaydet**' i seçin.
+1. **Genel bakış**'ı seçin.
 1. Web uygulamasını yapılandırırken daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
 
 * * *
@@ -92,12 +92,13 @@ Web. config dosyasındaki ayarları Kullanıcı akışınız ile çalışacak ş
 
 1. **B2C-WebAPI-DotNet** çözümünü Visual Studio’da açın.
 1. **Taskwebapp** projesinde **Web. config** dosyasını açın.
-    1. `ida:Tenant` Ve `ida:AadInstance` değerlerini, oluşturduğunuz Azure AD B2C kiracının adıyla güncelleştirin. Örneğin, ile `contoso`değiştirin `fabrikamb2c` .
-    1. Değerini `ida:ClientId` , KAYDETTIĞINIZ uygulama kimliğiyle değiştirin.
-    1. `ida:ClientSecret` değerini kaydettiğiniz anahtarla değiştirin. İstemci gizli dizisi, örneğin küçüktür`<`(), büyüktür (`>`), ampersan (`&`) veya çift tırnak (`"`) gibi önceden tanımlanmış XML varlıkları içeriyorsa, Web. config dosyasına eklemeden önce bu karakterleri XML ile, istemci gizliliğini kodlayarak kaçış yapmanız gerekir.
-    1. Değerini `ida:SignUpSignInPolicyId` ile `b2c_1_signupsignin1`değiştirin.
-    1. Değerini `ida:EditProfilePolicyId` ile `b2c_1_profileediting1`değiştirin.
-    1. Değerini `ida:ResetPasswordPolicyId` ile `b2c_1_passwordreset1`değiştirin.
+    1. Ve değerlerini, `ida:Tenant` `ida:AadInstance` oluşturduğunuz Azure AD B2C kiracının adıyla güncelleştirin. Örneğin, ile değiştirin `fabrikamb2c` `contoso` .
+    1. Değerini, `ida:TenantId` Azure B2C kiracınız için özelliklerde bulabileceğiniz Dizin kimliğiyle değiştirin ( **Azure Active Directory**  >  **Properties**  >  **dizin kimliği**altındaki Azure Portal).
+    1. Değerini, `ida:ClientId` kaydettiğiniz uygulama kimliğiyle değiştirin.
+    1. `ida:ClientSecret` değerini kaydettiğiniz anahtarla değiştirin. İstemci gizli dizisi, örneğin küçüktür ( `<` ), büyüktür () `>` , ampersan () veya çift tırnak () gibi önceden tanımlanmış XML varlıkları Içeriyorsa `&` `"` , Web. config dosyasına EKLEMEDEN önce bu karakterleri XML ile, istemci gizliliğini kodlayarak kaçış yapmanız gerekir.
+    1. Değerini `ida:SignUpSignInPolicyId` ile değiştirin `b2c_1_signupsignin1` .
+    1. Değerini `ida:EditProfilePolicyId` ile değiştirin `b2c_1_profileediting1` .
+    1. Değerini `ida:ResetPasswordPolicyId` ile değiştirin `b2c_1_passwordreset1` .
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 095f3396c483f4b8f80ab6c31ee369f2082f560c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a5af58c645720f0643e9245dc106248e36f2658f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83998083"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237739"
 ---
 Bu Postman tabanlı hızlı başlangıç, bilgi tabanınızdan yanıt alma konusunda size yol gösterir.
 
@@ -37,7 +37,7 @@ Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini y
 
 1. Bilgi Bankası 'nın **Ayarlar** sayfasında, bilgi bankasından yanıt oluşturmak için kullanılan yapılandırmayı görmek Için **Postman** sekmesini seçin. Postman 'da kullanmak için aşağıdaki bilgileri kopyalayın.
 
-    |Name|Ayar|Amaç ve değer|
+    |Adı|Ayar|Amaç ve değer|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Bu, URL için HTTP yöntemidir ve yoldur.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Bu, URL 'nin ana bilgisayarı. Tüm generateAnswer URL 'sini almak için Konağı ve gönderi değerlerini birleştirin.|
@@ -108,7 +108,7 @@ Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini y
 ## <a name="use-debug-query-property"></a>Hata ayıklama sorgu özelliğini kullan
 
 > [!NOTE]
->Herhangi bir bağımlılık için hata ayıklama poreperty kullanılması önerilmez. Bu özellik, ürün ekibine sorun gidermeye yardımcı olmak için eklenmiştir.
+>Herhangi bir bağımlılık için hata ayıklama özelliğini kullanmanızı önermiyoruz. Bu özellik, ürün ekibine sorun gidermeye yardımcı olmak için eklenmiştir.
 
 Hata ayıklama bilgileri döndürülen yanıtın nasıl belirlendiğini anlamanıza yardımcı olur. Faydalı olsa da gerekli değildir. Hata ayıklama bilgileriyle bir yanıt oluşturmak için, özelliği ekleyin `debug` :
 

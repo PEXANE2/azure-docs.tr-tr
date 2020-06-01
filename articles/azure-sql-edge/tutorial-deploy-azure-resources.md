@@ -2,19 +2,19 @@
 title: Azure SQL Edge 'de ML modeli dağıtmak için kaynak ayarlama
 description: Bu üç bölümden oluşan Azure SQL Edge öğreticisinin bir parçası olarak Iron ile ilgili öngörüleri tahmin etmek için, Önkoşul yazılımını yükleyecek ve Azure SQL Edge 'de bir makine öğrenimi modelinin dağıtımı için gerekli Azure kaynaklarını ayarlayacaksınız.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: c74e402fa1faa883b1e456f11a8d9d7b1e750d27
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 30c024aafc1cf8f479de77107b7f0aaaa262d47c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772854"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235087"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Yazılım yükleyip öğreticiye yönelik kaynakları ayarlayın
 

@@ -2,19 +2,19 @@
 title: Azure SQL Edge 'de ONNX 'i dağıtma ve tahmine dayalı hale getirme (Önizleme)
 description: Bir modeli eğitme, ONNX 'e dönüştürme, Azure SQL Edge 'e (Önizleme) dağıtma ve ardından karşıya yüklenen ONNX modelini kullanarak verileri yerel olarak tahmın etme hakkında bilgi edinin.
 keywords: SQL Edge dağıtma
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.subservice: ''
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 2dd5af1a23618b063f094e4974f705a51a1b2bcf
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 66e2fb663d14ed2590af9c0cc62e6dad119d086f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171030"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233255"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de bir ONNX modeliyle tahminlere dağıtım yapın ve tahmin edin (Önizleme)
 

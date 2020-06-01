@@ -3,12 +3,12 @@ title: MABS ile bir SharePoint grubunu Azure 'a yedekleme
 description: SharePoint verilerinizi yedeklemek ve geri yüklemek için Azure Backup Sunucusu kullanın. Bu makalede, SharePoint grubunuzu istenen verilerin Azure 'da depolanabilmesi için yapılandırma bilgileri sağlanmaktadır. Korumalı SharePoint verilerini diskten veya Azure 'dan geri yükleyebilirsiniz.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e429eeb5319a12c3483510072fd82c69c8d8ab3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657277"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234798"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS ile bir SharePoint grubunu Azure 'a yedekleme
 
@@ -30,7 +30,7 @@ Bir SharePoint grubunu Azure 'a yedeklemebilmeniz için öncelikle onaylamanız 
 
 * MABS, genişleme dosya sunucusu (SOFS) paylaşımlarında barındırılan SharePoint SQL Server veritabanlarının yedeklemesini sağlamıyor.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Devam etmeden önce, iş yüklerini korumak için [Microsoft Azure Backup kullanmaya yönelik tüm önkoşulları](backup-azure-dpm-introduction.md#prerequisites-and-limitations) karşıladığınızdan emin olun. Önkoşullar için bazı görevler şunlardır: bir yedekleme Kasası oluşturun, kasa kimlik bilgilerini indirin, Azure Backup Aracısı yükleyin ve Azure Backup Sunucusu kasaya kaydedin.
 
@@ -68,10 +68,9 @@ SharePoint grubunu yedeklemek için, ConfigureSharePoint. exe ' yi kullanarak Sh
 
     * Grup yöneticisi kimlik bilgilerini girin. Bu hesap, WFE sunucusunda yerel Yönetici grubunun bir üyesi olmalıdır. Grup Yöneticisi yerel bir yönetici değilse WFE sunucusunda aşağıdaki izinleri verin:
 
-        * WSS \_ yönetici \_ WPG grubuna tam denetim ' \( % Data Protection Manager DPM% Program Files \\ \\ \) .
-            -A
+        * MABS klasörüne () **WSS_Admin_WPG** grubuna Tam Denetim izni verin `%Program Files%\Data Protection Manager\DPM\` .
 
-        * WSS \_ yönetici \_ WPG grubuna, Mabs kayıt defteri anahtarı \( HKEY \_ Local \_ MACHINE \\ Software \\ Microsoft \\ Microsoft Data Protection Manager \) için okuma erişimi verin.
+        * MABS kayıt defteri anahtarına () **WSS_Admin_WPG** grubuna Okuma erişimi verin `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager` .
 
         ConfigureSharePoint. exe dosyasını çalıştırdıktan sonra SharePoint grubu yönetici kimlik bilgilerinde bir değişiklik olursa yeniden çalıştırmanız gerekir.
 

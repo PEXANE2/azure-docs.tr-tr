@@ -2,19 +2,19 @@
 title: Azure SQL Edge 'de ONNX ile makine öğrenimi ve AI (Önizleme)
 description: Azure SQL Edge 'de makine öğrenimi (Önizleme), Open sinir Network Exchange (ONNX) biçimindeki modelleri destekler. ONNX, çeşitli makine öğrenimi çerçeveleri ve araçları arasındaki modelleri değiş tokuş etmek için kullanabileceğiniz bir açık biçimdir.
 keywords: SQL Edge dağıtma
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.subservice: ''
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 12c1294a804c2063d405c5ec08440865283d51d3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3b36052fa3ee0d7d449be1719e67554b539d0207
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597369"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233171"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>SQL Edge 'de ONNX ile Machine Learning ve AI (Önizleme)
 
