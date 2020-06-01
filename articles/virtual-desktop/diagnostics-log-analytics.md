@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bd28117350913bc25f5bf7cec08d28683ad9daca
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 04c02cb493941d101cf230b1ca3dab32aaa7a2fc
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020073"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234548"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
 
@@ -117,6 +117,9 @@ Azure portal veya Azure Izleyici üzerinde Log Analytics çalışma alanına eri
 4. Sorgunuzun kapsamını ayarlamak için günlük sayfasındaki yönergeleri izleyin.  
 
 5. Tanılamayı sorgulamaya hazırlanın. Tüm tanılama tablolarının "WVD" öneki vardır.
+
+>[!NOTE]
+>Azure Izleyici günlüklerinde depolanan tablolar hakkında daha ayrıntılı bilgi için bkz. [Azure izleyici veri refti](https://docs.microsoft.com/azure/azure-monitor/reference/). Windows sanal masaüstü ile ilgili tüm tablolar "WVD" olarak etiketlenir.
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>Tanılama olaylarını göndermek için temposunda
 
@@ -239,10 +242,32 @@ WVDErrors
 | render barchart 
 ```
 
+Tüm kullanıcılar genelinde bir hata oluşmasını bulmak için:
+
+```kusto
+WVDErrors 
+| where ServiceError =="false" 
+| summarize usercount = count(UserName) by CodeSymbolic 
+| sort by usercount desc
+| render barchart 
+```
+
+Kullanıcıların açtığı uygulamaları sorgulamak için şu sorguyu çalıştırın:
+
+```kusto
+WVDCheckpoints 
+| where TimeGenerated > ago(7d)
+| where Name == "LaunchExecutable"
+| extend App = parse_json(Parameters).filename
+| summarize Usage=count(UserName) by tostring(App)
+| sort by Usage desc
+| render columnchart
+```
 >[!NOTE]
->Sorun giderme için en önemli tablo WVDErrors ' dir. Bir Kullanıcı uygulama veya masaüstü bilgisayar listesine abone olduğunda bağlantılar veya akışlar gibi kullanıcı etkinlikleri için hangi sorunların gerçekleşeceğini anlamak için bu sorguyu kullanın. Tablo, yönetim hatalarının yanı sıra ana bilgisayar kayıt sorunlarını da gösterecektir.
->
->Genel Önizleme sırasında, bir sorunu çözümlemek için yardıma ihtiyacınız varsa yardım talebinizdeki hatanın Correlationnsunun olduğuna emin olun. Ayrıca, hizmet hata değerinin her zaman ServiceError = "false" ifadesini yaztığınızdan emin olun. "False" değeri, sorunun sonunda bir yönetim göreviyle çözülebileceği anlamına gelir. ServiceError = "true" ise, sorunu Microsoft 'a ilerletebilirsiniz.
+>- Kullanıcı tam masaüstü açtığında, oturumdaki uygulama kullanımı WVDCheckpoints tablosunda denetim noktaları olarak izlenmez.
+>- WVDConnections tablosundaki ResourcesAlias sütunu, bir kullanıcının tam bir masaüstüne veya yayımlanmış bir uygulamaya bağlanıp bağlanmadığını gösterir. Sütun yalnızca bağlantı sırasında açıldıkları ilk uygulamayı gösterir. Kullanıcının açtığı tüm yayımlanmış uygulamalar WVDCheckpoints içinde izlenir.
+>- WVDErrors tablosu, yönetim hatalarını, ana bilgisayar kayıt sorunlarını ve Kullanıcı bir uygulama veya masaüstü bilgisayar listesine abone olduğunda gerçekleşen diğer sorunları gösterir.
+>- WVDErrors, yönetici görevleri tarafından çözümlenebilen sorunları belirlemenize yardımcı olur. ServiceError üzerindeki değer her zaman bu tür sorunlar için "false" diyor. ServiceError = "true" ise, sorunu Microsoft 'a ilerletebilirsiniz. Yönettiğiniz hatalar için CorrelationId sağladığınızdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

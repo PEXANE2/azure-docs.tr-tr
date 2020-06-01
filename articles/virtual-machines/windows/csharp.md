@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 07c66b2955f3df1ffae1a0cb0c2b0888bdc790e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fd7ccc7b6df85397fd547f8e1e48b776f12c0df
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082892"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234528"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>C kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme # #
 
@@ -32,14 +32,14 @@ Bu adımların uygulanması yaklaşık 20 dakika sürer.
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
 1. Henüz yapmadıysanız, [Visual Studio 'yu](https://docs.microsoft.com/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **.net masaüstü geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özet içinde, **.NET Framework 4-4,6 geliştirme araçlarının** sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak .NET iş yükünü ekleyebilirsiniz.
-2. Visual Studio 'da **Dosya** > **Yeni** > **Proje**' ye tıklayın.
-3. **Şablonlar** > **Visual C#**' de **konsol uygulaması (.NET Framework)** seçeneğini belirleyin, projenin adı için *myDotnetProject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
+2. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' ye tıklayın.
+3. **Şablonlar**  >  **Visual C#**' de **konsol uygulaması (.NET Framework)** seçeneğini belirleyin, projenin adı için *myDotnetProject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
 
 ## <a name="install-the-package"></a>Paketi yükler
 
 NuGet paketleri, bu adımları tamamlaması için gereken kitaplıkları yüklemenin en kolay yoludur. Visual Studio 'da ihtiyacınız olan kitaplıkları almak için şu adımları uygulayın:
 
-1. **Araçlar** > **NuGet Paket Yöneticisi**' ne ve ardından **Paket Yöneticisi konsolu**' na tıklayın.
+1. **Araçlar**  >  **NuGet Paket Yöneticisi**' ne ve ardından **Paket Yöneticisi konsolu**' na tıklayın.
 2. Konsola bu komutu yazın:
 
     ```
@@ -52,7 +52,7 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
 
 ### <a name="create-the-authorization-file"></a>Yetkilendirme dosyasını oluşturma
 
-1. Çözüm Gezgini ' de, *myDotnetProject* > **Add** > **Yeni öğe**Ekle ' ye sağ tıklayın ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *azureauth. Properties*olarak adlandırın ve **Ekle**' ye tıklayın.
+1. Çözüm Gezgini ' de, *myDotnetProject*yeni öğe Ekle ' ye sağ tıklayın  >  **Add**  >  **New Item**ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *azureauth. Properties*olarak adlandırın ve **Ekle**' ye tıklayın.
 2. Şu yetkilendirme özelliklerini ekleyin:
 
     ```
@@ -66,7 +66,7 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
     graphURL=https://graph.microsoft.com/
     ```
 
-    Abonelik ** &lt;kimliği&gt; ** , abonelik tanımlayıcıınız, ** &lt;uygulama kimliği&gt; ** Active Directory uygulama tanımlayıcısı, ** &lt;kimlik doğrulama anahtarı&gt; ** ve ** &lt;kiracı tanımlayıcısı ile Kiracı kimliği&gt; ** ile değiştirin.
+    Abonelik ** &lt; kimliği &gt; ** , abonelik tanımlayıcıınız, uygulama ** &lt; kimliği &gt; ** Active Directory uygulama tanımlayıcısı, ** &lt; kimlik doğrulama &gt; anahtarı** ve kiracı tanımlayıcısı ile ** &lt; Kiracı kimliği &gt; ** ile değiştirin.
 
 3. Azureauth. Properties dosyasını kaydedin. 
 4. Windows adlandırılmış AZURE_AUTH_LOCATION içinde, oluşturduğunuz yetkilendirme dosyasının tam yolu ile bir ortam değişkeni ayarlayın. Örneğin, aşağıdaki PowerShell komutu kullanılabilir:
@@ -136,7 +136,7 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 ### <a name="create-the-public-ip-address"></a>Genel IP adresini oluşturma
 
-Sanal makineyle iletişim kurmak için [Genel BIR IP adresi](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) gerekir.
+Sanal makineyle iletişim kurmak için [Genel BIR IP adresi](../../virtual-network/public-ip-addresses.md) gerekir.
 
 Sanal makine için genel IP adresi oluşturmak için, bu kodu Main yöntemine ekleyin:
    

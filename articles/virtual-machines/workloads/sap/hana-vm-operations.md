@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c4f3ec2727d06528eab788a2a24a6190fe26533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ede0f5d74ceb5ce79cdfc095b3ffeccd96a1b3b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606137"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84230131"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri
 Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyapısını ve işletim SAP HANA sistemlerini yapılandırmaya yönelik yönergeler sağlanmaktadır. Belge ayrıca, M128s VM SKU 'SU için SAP HANA genişleme için yapılandırma bilgilerini içerir. Bu belge, aşağıdaki içeriği içeren standart SAP belgelerinin yerine geçecek şekilde tasarlanmamıştır:
@@ -34,7 +34,7 @@ Bu kılavuzu kullanmak için aşağıdaki Azure bileşenleriyle temel bilgilere 
 
 - [Azure sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [Azure ağ iletişimi ve sanal ağlar](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Azure Depolama](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
 Azure 'da SAP NetWeaver ve diğer SAP bileşenleri hakkında daha fazla bilgi edinmek için [Azure belgelerinin](https://docs.microsoft.com/azure/) [Azure 'da SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) bölümüne bakın.
 
@@ -104,7 +104,7 @@ Ancak, bir yandan, Azure 'da bir sanal veri merkezi ağ mimarisi oluşturmanız 
 >[Azure VNET eşlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kullanan bir hub VNET ve bağlı ağ VNET arasında akan trafik, ek [maliyetlerin](https://azure.microsoft.com/pricing/details/virtual-network/)konusudur. Bu maliyetlere bağlı olarak, katı bir hub ve bağlı bileşen ağı tasarımı çalıştırıp VNet eşlemesini atlamak için ' bağlı bileşenleri ' ile bağlandığınız birden çok [Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) Gateway 'i çalıştırmayı göz önünde bulundurmanız gerekebilir. Ancak, Azure ExpressRoute ağ geçitleri ek [maliyetler](https://azure.microsoft.com/pricing/details/vpn-gateway/) de sunar. Ayrıca, ağ trafiği günlüğü, denetim ve izleme için kullandığınız üçüncü taraf yazılımlar için ek maliyetlerle karşılaşabilirsiniz. Bir taraftaki VNet eşlemesi ve ek Azure ExpressRoute ağ geçitleri ve ek yazılım lisansları tarafından oluşturulan maliyetler ile veri değişimi maliyetlerine bağlı olarak, alt ağları sanal ağlar yerine yalıtım birimi olarak kullanarak bir VNet içinde mikro kesimlemeye karar verebilirsiniz.
 
 
-IP adreslerini atamaya yönelik farklı yöntemlere genel bir bakış için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 
+IP adreslerini atamaya yönelik farklı yöntemlere genel bir bakış için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](../../../virtual-network/public-ip-addresses.md). 
 
 SAP HANA çalıştıran VM 'Ler için, atanan statik IP adresleriyle çalışmanız gerekir. Nedeni, HANA başvuru IP adreslerine yönelik bazı yapılandırma öznitelikleridir.
 
@@ -175,7 +175,7 @@ Azure VM altyapınız dağıtıldığında ve diğer tüm hazırlıklar yapıld�
 - SAP HANA ana düğümünü SAP belgelerine göre yükler
 - Azure Premium Storage veya/Hana/Data ve/Hana/log olmayan diskler ile ultra disk depolaması kullanmak durumunda Global. ini dosyasını değiştirmeniz ve ' basepath_shared = No ' parametresini Global. ini dosyasına eklemeniz gerekir. Bu parametre SAP HANA, düğümler arasında ' Shared ' **/Hana/Data** ve **/Hana/log** birimleri olmadan ölçek genişletme içinde çalışmasına olanak sağlar. Ayrıntılar [SAP Note #2080991](https://launchpad.support.sap.com/#/notes/2080991)bölümünde belgelenmiştir. /Hana/Data ve/Hana/log için ANF tabanlı NFS birimleri kullanıyorsanız, bu değişikliği yapmanız gerekmez
 - Global. ini parametresindeki son değişiklikten sonra SAP HANA örneğini yeniden başlatın
-- Ek çalışan düğümleri ekleyin. Ayrıca <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>bkz.. Yükleme sırasında veya daha sonra (örneğin, yerel hdblcm) düğümler arası iletişim SAP HANA iç ağı belirtin. Daha ayrıntılı belgeler için Ayrıca bkz. [SAP Note #2183363](https://launchpad.support.sap.com/#/notes/2183363). 
+- Ek çalışan düğümleri ekleyin. Ayrıca bkz <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html> .. Yükleme sırasında veya daha sonra (örneğin, yerel hdblcm) düğümler arası iletişim SAP HANA iç ağı belirtin. Daha ayrıntılı belgeler için Ayrıca bkz. [SAP Note #2183363](https://launchpad.support.sap.com/#/notes/2183363). 
 
 SUSE Linux 'ta bekleme moduna sahip bir SAP HANA genişleme sistemi ayarlama ayrıntıları, [SUSE Linux Enterprise Server üzerinde Azure NetApp Files kullanarak Azure VM 'lerinde bekleme moduna sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)konusunda ayrıntılı olarak açıklanmıştır. Red hat için eşdeğer belgeler, [Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme moduna sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)makalesinde bulunabilir. 
 

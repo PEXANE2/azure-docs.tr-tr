@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: b2172d44b4136b51c0ea459868ebd5b0572bb004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81b8f83115a8bcb953fc4445899f7ea9afc1007c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098077"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233343"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -32,8 +32,8 @@ Bu adımların uygulanması yaklaşık 20 dakika sürer.
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
 1. Henüz yapmadıysanız, [Visual Studio 'yu](https://docs.microsoft.com/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **Python geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özette, **Python 3 64-bit (3.6.0)** ' in sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak Python iş yükünü ekleyebilirsiniz.
-2. Visual Studio 'yu yükleyip başlattıktan sonra **Dosya** > **Yeni** > **Proje**' ye tıklayın.
-3. **Şablonlar** > **Python**Python > **Python uygulaması**' na tıklayın, projenin adı için *mypyıthonproject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
+2. Visual Studio 'yu yükleyip başlattıktan sonra **Dosya**  >  **Yeni**  >  **Proje**' ye tıklayın.
+3. **Şablonlar**  >  **Python**  >  **Python uygulaması**' na tıklayın, projenin adı için *mypyıthonproject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
 
 ## <a name="install-packages"></a>Paketleri yükler
 
@@ -164,7 +164,7 @@ Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/management/ove
     input('Availability set created. Press enter to continue...')
     ```
 
-Sanal makineyle iletişim kurmak için [Genel BIR IP adresi](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) gerekir.
+Sanal makineyle iletişim kurmak için [Genel BIR IP adresi](../../virtual-network/public-ip-addresses.md) gerekir.
 
 1. Sanal makine için genel bir IP adresi oluşturmak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
 

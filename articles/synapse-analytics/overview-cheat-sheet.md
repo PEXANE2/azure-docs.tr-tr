@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: c49e5f421f88b4d2676204ff0a32a0aa2b808be1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 660e77e130d5546d29730680c5863e25c052e5d2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652648"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234841"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure SYNAPSE Analytics, yemek sayfası
 
@@ -27,14 +27,14 @@ Azure SYNAPSE Analytics, hizmet ve önemli komutların temel kavramları boyunca
 > [!div class="mx-imgBorder"]
 >![SYNAPSE mimarisi](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
 
-## <a name="concepts"></a>Kavramlar
-| Adlar ve fiiller                         | Ne yapar?       |
+## <a name="terminology"></a>Terminoloji
+| Terim                         | Tanım      |
 |:---                                 |:---                 |
 | **SYNAPSE çalışma alanı (Önizleme)** | Azure 'da bulut tabanlı kurumsal analizler gerçekleştirmek için güvenli kılınabilir bir işbirliği sınırı. Çalışma alanı belirli bir bölgeye dağıtılır ve ilişkili bir ADLS 2. hesabına ve dosya sistemine sahiptir (geçici verileri depolamak için). Çalışma alanı bir kaynak grubu altında. |
 | **Synapse SQL**   | Analytics 'i havuzlarla veya isteğe bağlı yetenekler ile çalıştırın.  |
 | **SQL havuzu**   | karşılık gelen veritabanları ile birlikte 0-N SQL sağlanan kaynaklar bir çalışma alanına dağıtılabilir. Her SQL havuzunun ilişkili bir veritabanı vardır. Bir SQL havuzu el ile veya otomatik olarak ölçeklendirilebilir, duraklatılıp devam edebilir. Bir SQL havuzu 100 DWU 'dan 30.000 DWU 'ya kadar ölçeklendirebilir.       |
 | **İsteğe bağlı SQL (Önizleme)**   | Veri Gölü veri üzerinde T-SQL sorguları çalıştırmanıza olanak sağlayan, büyük ölçekli veriler için oluşturulmuş dağıtılmış veri işleme sistemi. Bu, sunucusuz olduğundan altyapıyı yönetmeniz gerekmez.       |
-|**Apache Spark** | Spark havuzunda kullanılan Spark çalışma zamanı. Desteklenen geçerli sürüm, Python 3.6.1, Scala 2.11.12, Apache Spark 0,5 ve Delta Lake 0,3 için .NET desteğiyle Spark 2,4.  | 
+|**SYNAPSE için Apache Spark** | Spark havuzunda kullanılan Spark çalışma zamanı. Desteklenen geçerli sürüm, Python 3.6.1, Scala 2.11.12, Apache Spark 0,5 ve Delta Lake 0,3 için .NET desteğiyle Spark 2,4.  | 
 | **Apache Spark Havuzu (Önizleme)**  | karşılık gelen veritabanları ile 0--N Spark tarafından sağlanan kaynaklar bir çalışma alanında dağıtılabilir. Spark havuzu otomatik duraklatılabilir, devam ettirilebilir ve ölçeklendirilebilir.  |
 | **Spark uygulaması**  |   Bir sürücü işlemi ve bir yürütücü işlemleri kümesinden oluşur. Spark uygulaması Spark havuzunda çalışır.            |
 | **Spark oturumu**  |   Spark uygulamasının Birleşik giriş noktası. Spark 'ın çeşitli işlevleri ve daha az sayıda yapı ile etkileşime geçmek için bir yol sağlar. Bir not defteri çalıştırmak için bir oturumun oluşturulması gerekir. Bir oturum, belirli bir boyuttaki belirli sayıda yürüticiler üzerinde çalışacak şekilde yapılandırılabilir. Bir not defteri oturumunun varsayılan yapılandırması 2 orta ölçekli yürütmeçiler üzerinde çalıştırılır. |

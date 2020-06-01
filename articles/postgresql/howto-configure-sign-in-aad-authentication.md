@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 81d02b32bc1eb6edf22845a4d02ba2ba02536855
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652556"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236330"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -54,21 +54,19 @@ Azure AD tümleştirmesini, Azure AD Aware olmayan ve yalnızca PostgreSQL 'e ba
 
 Bu adımlar, bir kullanıcı/uygulamanın, aşağıda açıklanan Azure AD ile kimlik doğrulaması yapmak için gereken adımlardır:
 
+### <a name="prerequisites"></a>Ön koşullar
+
+Azure Cloud Shell, bir Azure VM veya yerel makinenizde da izleyebilirsiniz. [Azure CLI 'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>1. Adım: Azure AD ile kimlik doğrulama
 
-[Azure CLI 'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
+Azure CLı aracını kullanarak Azure AD ile kimlik doğrulaması yaparak başlayın. Azure Cloud Shell Bu adım gerekli değildir.
 
-Azure AD ile kimlik doğrulaması gerçekleştirmek için Azure CLı aracını çağırın. Azure AD Kullanıcı KIMLIĞINIZ ve parolanızı sağlamanız gerekir.
-
-```azurecli-interactive
+```
 az login
 ```
 
-Bu komut, Azure AD kimlik doğrulama sayfasında bir tarayıcı penceresi başlatır.
-
-> [!NOTE]
-> Bu adımları gerçekleştirmek için Azure Cloud Shell de kullanabilirsiniz.
-> Lütfen Azure Cloud Shell Azure AD erişim belirtecini alırken, açıkça çağırmanız `az login` ve yeniden oturum açmanız (bir kodla ayrı pencerede) gerektiğini unutmayın. Komutun bu oturum açma işleminden sonra `get-access-token` beklendiği gibi çalışacaktır.
+Bu komut, Azure AD kimlik doğrulama sayfasında bir tarayıcı penceresi başlatır. Azure AD Kullanıcı KIMLIĞINIZ ve parolanızı sağlamanız gerekir.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>2. Adım: Azure AD erişim belirtecini alma
 
@@ -144,7 +142,7 @@ PostgreSQL için Azure veritabanı veritabanınıza bir Azure AD kullanıcısı 
 3. `<user>@yourtenant.onmicrosoft.com`PostgreSQL Için Azure veritabanı 'nda rol oluştur.
 4. `<user>@yourtenant.onmicrosoft.com`Azure_ad_user rolün bir üyesini oluşturun. Bu yalnızca Azure AD kullanıcılarına verilmelidir.
 
-**Örneğinde**
+**Örnek:**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
@@ -157,7 +155,7 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 
 Veritabanınıza erişim için bir Azure AD grubunu etkinleştirmek üzere, kullanıcılar için aynı mekanizmayı kullanın, bunun yerine grup adını belirtin:
 
-**Örneğinde**
+**Örnek:**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;

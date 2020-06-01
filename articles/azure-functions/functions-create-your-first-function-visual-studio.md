@@ -5,22 +5,18 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: a4549bd2947332d7140f4f440a5344f417430554
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: aa1999df83c3a3926f3410ea7ee48af75b2dd515
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122757"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231623"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure 'da ilk işlevinizi oluşturma
 
-Azure Işlevleri, öncelikle bir VM oluşturmak veya bir Web uygulaması yayımlamak zorunda kalmadan kodunuzu sunucusuz bir ortamda çalıştırmanızı sağlar.
+Bu makalede, HTTP isteklerine yanıt veren C# sınıf kitaplığı tabanlı bir işlev oluşturmak için Visual Studio 'Yu kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız.  
 
-Bu hızlı başlangıçta, daha sonra Azure 'Da yayımladığınız bir "Hello World" HTTP tetikleyicisi C# işlev uygulamasını yerel olarak oluşturmak ve test etmek için Visual Studio 2019 ' ı nasıl kullanacağınızı öğreneceksiniz. 
-
-![Tarayıcıdaki işlev localhost yanıtı](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
-
-Bu hızlı başlangıç, Visual Studio 2019 için tasarlanmıştır. 
+Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -34,11 +30,19 @@ Bu öğreticiyi tamamlayabilmeniz için, önce [Visual Studio 2019](https://azur
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio, HTTP tetikleyici işlev türü için ortak kod içeren bir proje ve sınıf oluşturur. `FunctionName`Yöntem özniteliği, varsayılan olarak olduğu gibi işlevin adını ayarlar `Function1` . `HttpTrigger`Özniteliği, işlevin BIR http isteği tarafından tetiklendiğini belirtir. Ortak kod, istek gövdesi veya sorgu dizesinde yer alan bir değeri içeren bir HTTP yanıtı gönderir.
+Visual Studio, HTTP tetikleyici işlev türü için ortak kod içeren bir proje ve sınıf oluşturur. Ortak kod, istek gövdesi veya sorgu dizesinde yer alan bir değeri içeren bir HTTP yanıtı gönderir. `HttpTrigger`Özniteliği, işlevin BIR http isteği tarafından tetiklendiğini belirtir. 
 
-Yöntemine uygun öznitelikleri uygulayarak giriş ve çıkış bağlamalarıyla işlevinizin yeteneklerini genişletin. Daha fazla bilgi için, [Azure İşlevleri C# geliştirici başvurusu](functions-dotnet-class-library.md) konusunun [Tetikleyiciler ve bağlayıcılar](functions-dotnet-class-library.md#triggers-and-bindings) bölümüne göz atın.
+## <a name="rename-the-function"></a>İşlevi yeniden adlandırma
 
-Artık işlev projenizi ve bir HTTP tetikleyici işlevini oluşturduğunuza göre, bunu yerel bilgisayarınızda test edebilirsiniz.
+`FunctionName`Yöntem özniteliği, varsayılan olarak olarak oluşturulan işlevin adını ayarlar `Function1` . Araç, projenizi oluştururken varsayılan işlev adını geçersiz kılmanıza izin vermediğinden, işlev sınıfı, dosya ve meta veriler için daha iyi bir ad oluşturmak üzere bir dakikanızı alın.
+
+1. **Dosya Gezgini**'nde, function1.cs dosyasına sağ tıklayın ve olarak yeniden adlandırın `HttpExample.cs` .
+
+1. Kodda, Işlev1 sınıfını ' HttpExample ' olarak yeniden adlandırın.
+
+1. `HttpTrigger`Adlı yöntemde `run` , `FunctionName` yöntemi özniteliğini olarak yeniden adlandırın `HttpExample` .
+
+Artık işlevi yeniden adlandırdığınıza göre, bunu yerel bilgisayarınızda test edebilirsiniz.
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
@@ -56,19 +60,41 @@ Projenizi yayımlayabilmeniz için önce Azure aboneliğinizde bir işlev uygula
 
 ## <a name="test-your-function-in-azure"></a>Azure'da işlevinizi test etme
 
-1. **Yayımlama** profili sayfasından işlev UYGULAMASıNıN temel URL 'sini kopyalayın. `localhost:port`İşlevi yerel olarak test etmek için KULLANDıĞıNıZ URL 'nin bölümünü yeni temel URL ile değiştirin. Sorgu dizesini `?name=<YOUR_NAME>` Bu URL 'ye ekleyin ve isteği çalıştırın.
+1. Cloud Explorer 'da yeni işlev uygulamanız seçilmelidir. Aksi takdirde, abonelik > **uygulama hizmetleri**' ni genişletin ve yeni işlev uygulamanızı seçin.
+
+1. İşlev uygulamasına sağ tıklayın ve **tarayıcıda aç**' ı seçin. Bu, işlev uygulamanızın kökünü varsayılan Web tarayıcınızda açar ve işlev uygulamanızın çalıştığını gösteren sayfayı görüntüler. 
+
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure.png" alt-text="İşlev uygulaması çalışıyor":::
+
+1. Tarayıcıdaki Adres çubuğunda, dizeyi `/api/HttpExample?name=Functions` temel URL 'ye ekleyin ve isteği çalıştırın.
 
     HTTP tetikleyici işlevinizi çağıran URL aşağıdaki biçimdedir:
 
-    `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
+    `http://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
 
-2. HTTP isteğinin yeni URL’sini tarayıcınızın adres çubuğuna yapıştırın. Aşağıdaki görüntüde, işlevi tarafından döndürülen uzaktan GET isteğine tarayıcıda yapılan yanıt gösterilmektedir:
+2. Bu URL 'ye gidin ve aşağıdaki örnekte olduğu gibi işlev tarafından döndürülen uzaktan GET isteğine tarayıcıda bir yanıt görürsünüz:
 
-    ![Tarayıcıdaki işlev yanıtı](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="Tarayıcıda işlev yanıtı":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
+Bu koleksiyondaki diğer hızlı başlangıçlar, bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıçlarla, öğreticilerle veya bu hızlı başlangıçta oluşturduğunuz hizmetlerden herhangi biriyle çalışmayı planlıyorsanız, kaynakları temizlemeyin.
+
+Azure’da *Kaynaklar*; işlev uygulamalarını, işlevleri, depolama hesaplarını ve benzeri öğeleri ifade eder. Bunlar *kaynak grupları*halinde gruplandırılır ve grubu silerek bir gruptaki her şeyi silebilirsiniz. 
+
+Bu hızlı başlangıçları tamamlamak için kaynaklar oluşturdunuz. [Hesap durumunuza](https://azure.microsoft.com/account/) ve [hizmet fiyatlandırmanıza](https://azure.microsoft.com/pricing/) bağlı olarak size bu kaynakların ücretleri yansıtılabilir. Kaynaklara artık ihtiyacınız yoksa, şunları yaparak silebilirsiniz:
+
+1. Cloud Explorer 'da, abonelik > **uygulama hizmetleri**' ni genişletin, işlev uygulamanıza sağ tıklayın ve **portalda aç**' ı seçin. 
+
+1. İşlev uygulaması sayfasında **genel bakış** sekmesini seçin ve **kaynak grubu**' nun altındaki bağlantıyı seçin.
+
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="İşlev uygulaması sayfasından silinecek kaynak grubunu seçin":::
+
+2. **Kaynak grubu** sayfasında, dahil edilen kaynakların listesini gözden geçirin ve silmek istedikleriniz olduklarından emin olun.
+ 
+3. **Kaynak grubunu sil**’i seçin ve yönergeleri izleyin.
+
+   Silme işlemi birkaç dakika sürebilir. İşlem tamamlandığında, birkaç saniye boyunca bir bildirim görüntülenir. Bildirimi görüntülemek için sayfanın üst kısmındaki zil simgesini de seçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

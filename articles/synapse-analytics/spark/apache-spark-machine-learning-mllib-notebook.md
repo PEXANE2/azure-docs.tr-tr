@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: c2e1dbba61399ee3a4435f4f287b47f4bfd6f872
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: f00df1bc204e4d271f1c903ec50759cba3c56774
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774438"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235883"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Apache Spark MLlib ve Azure SYNAPSE Analytics ile makine öğrenimi uygulaması oluşturma
 
@@ -70,48 +70,32 @@ Aşağıdaki adımlarda, belirli bir yolculuğa bir tıp içerip içermediğini 
 
 Ham veriler bir Parquet biçiminde olduğundan, dosyayı doğrudan veri çerçevesi olarak belleğe çekmek için Spark bağlamını kullanabilirsiniz. Aşağıdaki kod varsayılan seçenekleri kullandığından, gerekirse veri türlerinin ve diğer şema özniteliklerinin eşlenmesini zorlamak mümkündür.
 
-1. Kodu yeni bir hücreye yapıştırarak Spark dataframe oluşturmak için aşağıdaki satırları çalıştırın. İlk bölüm, Azure depolama erişim bilgilerini değişkenlere atar. İkinci bölüm Spark 'ın blob depolamadan uzaktan okunmasını sağlar. Kodun son satırı Parquet okur, ancak bu noktada hiç veri yüklenmedi.
+1. Kodu yeni bir hücreye yapıştırarak Spark dataframe oluşturmak için aşağıdaki satırları çalıştırın. Bu, verileri açık veri kümeleri API 'SI aracılığıyla alır. Bu verilerin tümünün çekilerek 1.500.000.000 satır hakkında bilgi oluşturulur. Spark havuzunuzun boyutuna (Önizleme) bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Bu verileri daha küçük bir değere filtreleyerek azaltabilirsiniz. Start_date ve end_date kullanımı, bir ay veri döndüren bir filtre uygular.
 
     ```python
-    # Azure storage access info
-    blob_account_name = "azureopendatastorage"
-    blob_container_name = "nyctlc"
-    blob_relative_path = "yellow"
-    blob_sas_token = r""
+    from azureml.opendatasets import NycTlcYellow
 
-    # Allow SPARK to read from Blob remotely
-    wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
-    spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
-
-    # SPARK read parquet, note that it won't load any data yet by now
-    df = spark.read.parquet(wasbs_path)
+    end_date = parser.parse('2018-06-06')
+    start_date = parser.parse('2018-05-01')
+    nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)
+    filtered_df = nyc_tlc.to_spark_dataframe()
     ```
 
-2. Bu verilerin tümünün çekilerek 1.500.000.000 satır hakkında bilgi oluşturulur. Spark havuzunuzun boyutuna (Önizleme) bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Bu verileri daha küçük bir değere filtreleyerek azaltabilirsiniz. Gerekirse, daha fazla yanıt veren bir deneyim için verileri 2.000.000 satıra kadar filtrelemek için aşağıdaki satırları ekleyin. Bir haftalık veri çekmek için bu parametreleri kullanın.
-
-    ```python
-    # Create an ingestion filter
-    start_date = '2018-05-01 00:00:00'
-    end_date = '2018-05-08 00:00:00'
-
-    filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
-    ```
-
-3. Daha basit filtrelemeye yönelik aşağı, istatistiksel bir perspektiften verilere yönelik sapma gösterebilir. Diğer bir yaklaşım, Spark içinde yerleşik olarak bulunan örneklemeyi kullanmaktır. Aşağıdaki kod, yukarıdaki koddan sonra uygulanırsa veri kümesini 2000 satır kadar azaltır. Bu örnekleme adımı basit filtre yerine veya basit filtreyle birlikte kullanılabilir.
+2. Daha basit filtrelemeye yönelik aşağı, istatistiksel bir perspektiften verilere yönelik sapma gösterebilir. Diğer bir yaklaşım, Spark içinde yerleşik olarak bulunan örneklemeyi kullanmaktır. Aşağıdaki kod, yukarıdaki koddan sonra uygulanırsa veri kümesini 2000 satır kadar azaltır. Bu örnekleme adımı basit filtre yerine veya basit filtreyle birlikte kullanılabilir.
 
     ```python
     # To make development easier, faster and less expensive down sample for now
     sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
     ```
 
-4. Artık okunmuş olduğunu görmek için verilere bakmak mümkündür. Veri kümesinin boyutuna bağlı olarak tam küme yerine bir alt kümeyle verileri gözden geçirmek genellikle daha iyidir. Aşağıdaki kod, verileri görüntülemenin iki yolunu sunar: daha basit olan ve ikincisi daha zengin bir kılavuz deneyimi sağlama ve verileri grafiksel olarak görselleştirme özelliği.
+3. Artık okunmuş olduğunu görmek için verilere bakmak mümkündür. Veri kümesinin boyutuna bağlı olarak tam küme yerine bir alt kümeyle verileri gözden geçirmek genellikle daha iyidir. Aşağıdaki kod, verileri görüntülemenin iki yolunu sunar: daha basit olan ve ikincisi daha zengin bir kılavuz deneyimi sağlama ve verileri grafiksel olarak görselleştirme özelliği.
 
     ```python
-    sampled_taxi_df.show(5)
-    display(sampled_taxi_df.show(5))
+    #sampled_taxi_df.show(5)
+    display(sampled_taxi_df)
     ```
 
-5. Oluşturulan veri kümesi boyutunun boyutuna ve Not defterini birçok kez denemenize veya çalıştırmaya ihtiyaç duyuyorsanız, veri kümesini çalışma alanında yerel olarak önbelleğe almak önerilir. Açık önbelleğe alma gerçekleştirmek için üç yol vardır:
+4. Oluşturulan veri kümesi boyutunun boyutuna ve Not defterini birçok kez denemenize veya çalıştırmaya ihtiyaç duyuyorsanız, veri kümesini çalışma alanında yerel olarak önbelleğe almak önerilir. Açık önbelleğe alma gerçekleştirmek için üç yol vardır:
 
    - Veri çerçevesini yerel olarak bir dosya olarak kaydet
    - Veri çerçevesini geçici bir tablo veya görünüm olarak kaydet

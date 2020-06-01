@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 8cf6d59d93a1b26d79911fc9fa9251ea3d0689ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78aac1e49b23cf7fd294314f335aa429e8458639
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098450"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233358"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure sanal ağları için ortak PowerShell komutları
 
@@ -31,7 +31,7 @@ Bazı değişkenler, bu makaledeki komutlardan birden fazlasını çalıştırı
 | ---- | ------- |
 | Alt ağ yapılandırmaları oluşturma |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1"-Addresspredüzeltmesini xx. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-Name "mySubnet2"-Addresspredüzeltmesini XX. X. X. X/XX<BR><BR>Tipik bir ağ, [İnternet 'e yönelik yük dengeleyici](../../load-balancer/load-balancer-internet-overview.md) için bir alt ağa ve bir [iç yük dengeleyici](../../load-balancer/load-balancer-internal-overview.md)için ayrı bir alt ağa sahip olabilir. |
 | Sanal ağ oluşturma |$vnet = [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) -Name "myvnet"-resourcegroupname $MyResourceGroup-Location $Location-Addresspredüzeltmesini xx. X. X. X/XX-subnet $subnet 1, $subnet 2 |
-| Benzersiz bir etki alanı adı için test |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -domainnamelabel "mydns"-Location $Location<BR><BR>[Genel IP kaynağı](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)IÇIN bir DNS etki alanı adı belirtebilirsiniz ve bu, DomainName.Location.cloudapp.Azure.com için Azure tarafından yönetilen DNS SUNUCULARıNDAKI genel IP adresine bir eşleme oluşturur. Ad yalnızca küçük harf, sayı ve kısa çizgi içerebilir. İlk ve son karakter bir harf veya sayı olmalıdır ve etki alanı adı, Azure konumu içinde benzersiz olmalıdır. **Değer** döndürülürse, önerilen adınız genel olarak benzersizdir. |
+| Benzersiz bir etki alanı adı için test |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -domainnamelabel "mydns"-Location $Location<BR><BR>[Genel IP kaynağı](../../virtual-network/public-ip-addresses.md)IÇIN bir DNS etki alanı adı belirtebilirsiniz ve bu, DomainName.Location.cloudapp.Azure.com için Azure tarafından yönetilen DNS SUNUCULARıNDAKI genel IP adresine bir eşleme oluşturur. Ad yalnızca küçük harf, sayı ve kısa çizgi içerebilir. İlk ve son karakter bir harf veya sayı olmalıdır ve etki alanı adı, Azure konumu içinde benzersiz olmalıdır. **Değer** döndürülürse, önerilen adınız genel olarak benzersizdir. |
 | Genel IP adresi oluşturma |$pip = [New-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) -Name "Mypublicıp"-resourcegroupname $MyResourceGroup-DomainNameLabel "mydns"-Location $Location-Allocationmethod Dynamic<BR><BR>Genel IP adresi, daha önce test ettiğiniz ve yük dengeleyicinin ön uç yapılandırması tarafından kullanılan etki alanı adını kullanır. |
 | Ön uç IP yapılandırması oluşturma |$frontendIP = [New-Azloadbalancerfrontendıpconfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -Name "Myfrontendıp"-publicıpaddress $Pip<BR><BR>Ön uç yapılandırması, gelen ağ trafiği için daha önce oluşturduğunuz genel IP adresini içerir. |
 | Arka uç adres havuzu oluşturma |$beAddressPool = [New-Azloadbalancerbackendadddresspoolconfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) -Name "Mybackendadddresspool"<BR><BR>Bir ağ arabiriminden erişilen yük dengeleyicinin arka ucu için iç adresler sağlar. |

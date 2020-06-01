@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 03/03/2020
-ms.openlocfilehash: 48f37a29b227c714552596337d3ff3c692830488
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 03884a7d1b834ef8c176434ad4127e1638aabcb1
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041412"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235739"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modelini kullanarak elastik havuzlar için kaynak sınırları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -46,7 +46,7 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Sanal çekirdek|1|2|3|4|5|6|
 |Bellek (GB)|7|14|21|28|35|42|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|100|200|500|500|500|500|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|512|756|1536|1536|1536|2048|
 |En büyük günlük boyutu|154|227|461|461|461|614|
@@ -78,7 +78,7 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Sanal çekirdek|7|8|9|10|16|24|
 |Bellek (GB)|49|56|63|70|112|159,5|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|500|500|500|500|500|500|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|2048|2048|2048|2048|3584|4096|
 |En fazla günlük boyutu (GB)|614|614|614|614|1075|1229|
@@ -112,7 +112,7 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Sanal çekirdek|2|4|6|8|10|12|14|
 |Bellek (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|100|200|500|500|500|500|500|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|512|756|1536|1536|1536|2048|2048|
 |En fazla günlük boyutu (GB)|154|227|461|461|461|614|614|
@@ -144,14 +144,14 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Sanal çekirdek|16|18|20|24|32|40|80|
 |Bellek (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|500|500|500|500|500|500|500|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|2048|3072|3072|3072|4096|4096|4096|
 |En fazla günlük boyutu (GB)|614|922|922|922|1229|1229|1229|
 |TempDB en fazla veri boyutu (GB)|512|576|640|768|1024|1280|2560|
 |Depolama türü|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
-|Havuz başına en fazla veri ıOPS <sup>2</sup> |6.400|7.200|8,000|9.600|12.800|16.000|32.000|
+|Havuz başına en fazla veri ıOPS <sup>2</sup> |6.400|7.200|8,000|9.600|12.800|16.000|16.000|
 |Havuz başına en fazla günlük hızı (MBps)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
 |Havuz başına en fazla eş zamanlı çalışan (istek) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |Havuz başına en fazla eşzamanlı oturum açma sayısı (istek) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
@@ -178,7 +178,7 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Sanal çekirdek|72|
 |Bellek (GB)|136,2|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|500|
-|Columnstore desteği|Yes|
+|Columnstore desteği|Evet|
 |Bellek içi OLTP depolaması (GB)|Yok|
 |En fazla veri boyutu (GB)|4096|
 |En fazla günlük boyutu (GB)|1024|
@@ -215,7 +215,7 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Sanal çekirdek|2|3|4|5|6|
 |Bellek (GB)|14|21|28|35|42|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|50|100|100|100|100|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|2|3|4|5|6|
 |Depolama türü|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|
 |En fazla veri boyutu (GB)|1024|1024|1024|1024|1024|
@@ -229,8 +229,8 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Çoğaltma sayısı|4|4|4|4|4|
-|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|
+|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 <sup>1</sup> daha fazla dikkat edilmesi için [yoğun esnek havuzlarda kaynak yönetimine](elastic-pool-resource-management.md) bakın.
@@ -261,8 +261,8 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
 |Çoğaltma sayısı|4|4|4|4|4|4|
-|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
+|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 <sup>1</sup> daha fazla dikkat edilmesi için [yoğun esnek havuzlarda kaynak yönetimine](elastic-pool-resource-management.md) bakın.
@@ -281,7 +281,7 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Sanal çekirdek|4|6|8|10|12|14|
 |Bellek (GB)|20,8|31,1|41,5|51,9|62,3|72,7|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|50|100|100|100|100|100|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|3,14|4,71|6,28|8,65|11,02|13,39|
 |En fazla veri boyutu (GB)|1024|1536|1536|1536|3072|3072|
 |En fazla günlük boyutu (GB)|307|307|461|461|922|922|
@@ -295,8 +295,8 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Çoğaltma sayısı|4|4|4|4|4|4|
-|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
+|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 <sup>1</sup> daha fazla dikkat edilmesi için [yoğun esnek havuzlarda kaynak yönetimine](elastic-pool-resource-management.md) bakın.
@@ -313,7 +313,7 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Sanal çekirdek|16|18|20|24|32|40|80|
 |Bellek (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|100|100|100|100|100|100|100|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|15,77|18,14|20,51|25,25|37,94|52,23|131,68|
 |En fazla veri boyutu (GB)|3072|3072|3072|4096|4096|4096|4096|
 |En fazla günlük boyutu (GB)|922|922|922|1229|1229|1229|1229|
@@ -327,8 +327,8 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 20, 24, 32, 40|0, 0,25, 0,5, 1... 20, 24, 32, 40, 80|
 |Çoğaltma sayısı|4|4|4|4|4|4|4|
-|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 <sup>1</sup> daha fazla dikkat edilmesi için [yoğun esnek havuzlarda kaynak yönetimine](elastic-pool-resource-management.md) bakın.
@@ -347,7 +347,7 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Sanal çekirdek|128|
 |Bellek (GB)|3767,1|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|100|
-|Columnstore desteği|Yes|
+|Columnstore desteği|Evet|
 |Bellek içi OLTP depolaması (GB)|1768|
 |En fazla veri boyutu (GB)|4096|
 |En fazla günlük boyutu (GB)|2048|
@@ -361,8 +361,8 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](elast
 |Maks. eş zamanlı oturum|30.000|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0-128|
 |Çoğaltma sayısı|4|
-|Çoklu-AZ|Yes|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|
+|Çoklu-AZ|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|
 
 <sup>1</sup> daha fazla dikkat edilmesi için [yoğun esnek havuzlarda kaynak yönetimine](elastic-pool-resource-management.md) bakın.

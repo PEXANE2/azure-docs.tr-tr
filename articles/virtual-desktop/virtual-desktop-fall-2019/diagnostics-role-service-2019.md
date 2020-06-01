@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657237"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235560"
 ---
 # <a name="identify-and-diagnose-issues"></a>Sorunları belirleme ve tanılama
 
@@ -161,7 +161,7 @@ Aşağıdaki tabloda, yöneticilerinizin çalıştırabilecek yaygın hatalar li
 
 |Sayısal kod|Hata kodu|Önerilen çözüm|
 |---|---|---|
-|-2147467259|Connectionfailedadderrornosuchmember|Kullanıcı Azure Active Directory üyesi değil. [Active Directory Yönetim Merkezi](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) içindeki yönergeleri izleyerek bunları ekleyin.|
+|-2147467259|Connectionfailedadderrornosuchmember|Kullanıcı Active Directory üyesi değil. [Active Directory Yönetim Merkezi](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) içindeki yönergeleri izleyerek bunları ekleyin.|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|Oturum Ana bilgisayarı Active Directory doğru şekilde katılmadı.|
 |-2146233088|Connectionfaileduserhasvalidsessionbutrdshıssağlıksız|Oturum Konağı kullanılamadığından bağlantı başarısız oldu. Oturum konağının sistem durumunu kontrol edin.|
 |-2146233088|ConnectionFailedClientDisconnect|Bu hatayla sık karşılaşırsanız, kullanıcının bilgisayarının ağa bağlı olduğundan emin olun.|
@@ -172,6 +172,7 @@ Aşağıdaki tabloda, yöneticilerinizin çalıştırabilecek yaygın hatalar li
 |8|Connectionkopuk|Istemci ve ağ geçidi veya sunucu bağlantısı kesilen bağlantı. Beklenmedik bir şekilde gerçekleşmediği takdirde eyleme gerek yoktur.|
 |14|UnexpectedNetworkDisconnect|Ağ bağlantısı bırakıldı. Kullanıcıdan tekrar bağlanmasını isteyin.|
 |24|Smarconnectfailed|Konak sanal makinesinde RD Ağ Geçidi doğrudan bir görüş satırı yoktur. Ağ geçidi IP adresinin çözümlenebildiğinden emin olun.|
+|1322|Connectionfailednomappingofsıdinad|Kullanıcı Active Directory üyesi değil. [Active Directory Yönetim Merkezi](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) içindeki yönergeleri izleyerek bunları ekleyin.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

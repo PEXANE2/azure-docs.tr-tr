@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 03/09/2020
-ms.openlocfilehash: a437cd1b3cb8018229cf6445e23314cf17bf10a2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.date: 05/28/2020
+ms.openlocfilehash: 88d5c36829e2920e18a1be44ba43d7defe883d3e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219851"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231234"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database--sql-managed-instance"></a>VCore ve DTU satın alma modelleri arasında seçim yapın-Azure SQL veritabanı & SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -82,15 +82,7 @@ Sanal çekirdek tabanlı satın alma modeli, işlem ve depolama kaynaklarını b
 
 Azure SQL veritabanınız 300 ' den fazla DTU kullanıyorsa, sanal çekirdek tabanlı satın alma modeline dönüştürmek maliyetlerinizi azaltabilir. İstediğiniz API 'nizi veya Azure portal kullanarak, kapalı kalma süresi olmadan dönüştürme yapabilirsiniz. Ancak, dönüştürme gerekli değildir ve otomatik olarak yapılmaz. DTU tabanlı satın alma modeli, performans ve iş gereksinimlerinizi karşılıyorsa, uygulamayı kullanmaya devam etmelisiniz.
 
-DTU tabanlı satın alma modelinden sanal çekirdek tabanlı satın alma modeline dönüştürmek için aşağıdaki Thumb kurallarını kullanarak işlem boyutunu seçin:
-
-- Standart katmandaki her 100 DTU, Genel Amaçlı hizmet katmanında en az 1 sanal çekirdek gerektirir.
-- Premium katmandaki her 125 DTU, İş Açısından Kritik hizmet katmanında en az 1 sanal çekirdek gerektirir.
-
-> [!NOTE]
-> VCore 'a yönelik DTU, boyutlandırma yönergeleri yaklaşık değerlerdir ve hedef veritabanı hizmet hedefi 'nin ilk tahminde yardımcı olmak için sağlanır. Hedef veritabanının en iyi yapılandırması iş yüküne bağımlıdır.
->
-> En iyi fiyat/performans oranının sağlanması, sanal çekirdek modelinin esnekliğinden yararlanarak vCore sayısını, [donanım oluşturmayı](service-tiers-vcore.md#hardware-generations), [hizmet](service-tiers-vcore.md#service-tiers) ve [işlem](service-tiers-vcore.md#compute-tiers) katmanlarını, ayrıca [en fazla paralellik derecesi](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)gibi diğer veritabanı yapılandırma parametrelerini ayarlamayı gerektirebilir.
+DTU tabanlı satın alma modelinden sanal çekirdek tabanlı satın alma modeline dönüştürmek için, bkz. [DTU 'Dan vCore 'A geçiş](migrate-dtu-to-vcore.md).
 
 ## <a name="dtu-based-purchasing-model"></a>DTU tabanlı satın alma modeli
 

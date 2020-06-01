@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5825466c099a8c57477f2d9d0420da74ccb2e96d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 195668886a0c1ba9f96939a7e5e3960a6932dee5
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615402"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235905"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
 
@@ -28,13 +28,29 @@ Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle ta
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise çoklu oturum görüntüsünü edinme
 
-Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marketi ' ne gidin, [sanal masaüstleri, sürüm 1809 için](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice) **Başlangıç** > **Microsoft Windows 10** > ve Windows 10 Enterprise ' ı seçin.
+Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marketi ' ne gidin, **Get Started**  >  [sanal masaüstleri, sürüm 1809 için](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)başlangıç**Microsoft Windows 10** > ve Windows 10 Enterprise ' ı seçin.
 
 ![Sanal masaüstleri için Windows 10 Enterprise, sürüm 1809 ' ı seçme ekran görüntüsü.](../media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Windows sanal masaüstü kiracısı oluşturuluyor
 
 Bu bölümde, Windows sanal masaüstü kiracısı oluşturulurken olası sorunlar ele alınmaktadır.
+
+### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>Hata: AADSTS650052 uygulamanın bir hizmete erişmesi gerekiyor.
+
+Ham hata örneği:
+
+```Error
+AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+configuration of your service subscriptions.650052 Message The app needs access to a service
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+Contact your IT Admin to review the configuration of your service subscriptions.
+```
+
+**Neden:** Azure Active Directory örneğinde Windows sanal masaüstüne izin verilmedi.
+
+**Çözüm:** izin vermek için [Bu kılavuzu izleyin](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) .
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
 
@@ -122,7 +138,7 @@ Azure Resource Manager şablonlarının ve PowerShell DSC 'nin başarısız dağ
 3. Hata tanımlandıktan sonra, sorunu gidermek için [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](../../azure-resource-manager/resource-manager-common-deployment-errors.md) bölümündeki hata iletisini ve kaynakları kullanın.
 4. Önceki dağıtım sırasında oluşturulan tüm kaynakları silin ve şablonu yeniden dağıtma işlemini yeniden deneyin.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hata: dağıtımınız başarısız oldu....\<ana bilgisayar adı>/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hata: dağıtımınız başarısız oldu.... \<hostname> /JoinDomain
 
 ![Dağıtımınız ekran görüntüsünde başarısız oldu.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 

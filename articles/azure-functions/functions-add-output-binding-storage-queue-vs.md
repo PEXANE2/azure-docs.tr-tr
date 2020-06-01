@@ -4,12 +4,12 @@ description: C# sınıf kitaplığı işlevlerinizi Visual Studio kullanarak bir
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b18401037bf14c99ed198eb3754438ece5718c9b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74849216"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235362"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Visual Studio kullanarak işlevleri Azure depolama 'ya bağlama
 
@@ -17,13 +17,13 @@ ms.locfileid: "74849216"
 
 Bu makalede, Visual Studio 'Yu kullanarak [önceki hızlı başlangıç makalesinde] oluşturduğunuz Işlevi Azure depolama 'ya nasıl bağlayabilmeniz gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, HTTP isteğinden verileri bir Azure kuyruk depolama kuyruğundaki bir iletiye yazar. 
 
-Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Daha kolay hale getirmek için, işlev uygulamanız ile oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten adlı `AzureWebJobsStorage`bir uygulama ayarında depolanıyor.  
+Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Daha kolay hale getirmek için, işlev uygulamanız ile oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten adlı bir uygulama ayarında depolanıyor `AzureWebJobsStorage` .  
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleye başlamadan önce şunları yapmanız gerekir: 
 
- - [Visual Studio hızlı](./functions-create-first-function-vs-code.md)başlangıcının 1. kısmını doldurun. 
+ - [Visual Studio hızlı](./functions-create-your-first-function-visual-studio.md)başlangıcının 1. kısmını doldurun. 
 
 - Visual Studio 'dan Azure aboneliğinizde oturum açın.
 
@@ -39,13 +39,13 @@ Bu makaleye başlamadan önce şunları yapmanız gerekir:
 
 1. **AzureWebJobsStorage**altında, **uzak** dize değerini **Yerel**olarak kopyalayın ve ardından **Tamam**' ı seçin. 
 
-Bağlantı `AzureWebJobsStorage` ayarını kullanan depolama bağlaması artık yerel olarak çalışırken kuyruk depolamaya bağlanabilir.
+Bağlantı ayarını kullanan depolama bağlaması `AzureWebJobsStorage` artık yerel olarak çalışırken kuyruk depolamaya bağlanabilir.
 
 ## <a name="register-binding-extensions"></a>Bağlama uzantılarını kaydetme
 
 Kuyruk depolama çıkış bağlaması kullandığınızdan, projeyi çalıştırmadan önce depolama bağlamaları uzantısının yüklü olması gerekir. HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketleri olarak uygulanır. 
 
-1. **Araçlar** menüsünde **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin. 
+1. **Araçlar** menüsünde **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin. 
 
 1. Konsolunda, depolama uzantılarını yüklemek için aşağıdaki [Install-Package](/nuget/tools/ps-ref-install-package) komutunu çalıştırın:
 
@@ -61,7 +61,7 @@ Kuyruk depolama çıkış bağlaması kullandığınızdan, projeyi çalıştır
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlaması kullanan kod ekleme
 
-Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişmek `name` için bağlamayı kullanabilirsiniz. Bir çıkış bağlaması kullanarak kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
+Bağlama tanımlandıktan sonra, `name` işlev imzasında bir öznitelik olarak erişmek için bağlamayı kullanabilirsiniz. Bir çıkış bağlaması kullanarak kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
@@ -69,7 +69,7 @@ Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişme
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
-Çıktı bağlama ilk kullanıldığında `outqueue` , işlevler çalışma zamanı tarafından depolama hesabınızda adlı yeni bir kuyruk oluşturulur. Kuyruğun yeni iletiyle birlikte oluşturulduğunu doğrulamak için Cloud Explorer 'ı kullanacaksınız.
+`outqueue`Çıktı bağlama ilk kullanıldığında, işlevler çalışma zamanı tarafından depolama hesabınızda adlı yeni bir kuyruk oluşturulur. Kuyruğun yeni iletiyle birlikte oluşturulduğunu doğrulamak için Cloud Explorer 'ı kullanacaksınız.
 
 ## <a name="examine-the-output-queue"></a>Çıkış kuyruğunu inceleme
 
@@ -91,7 +91,7 @@ Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişme
 
 1. **Çözüm Gezgini**, projeye sağ tıklayın ve **Yayımla**' yı seçin ve ardından projeyi Azure 'Da yeniden yayımlamak için **Yayımla** ' yı seçin.
 
-1. Dağıtım tamamlandıktan sonra yeniden dağıtılan işlevi test etmek için tarayıcıyı kullanabilirsiniz. Daha önce olduğu gibi, URL 'ye `&name=<yourname>` sorgu dizesi ekleyin.
+1. Dağıtım tamamlandıktan sonra yeniden dağıtılan işlevi test etmek için tarayıcıyı kullanabilirsiniz. Daha önce olduğu gibi, URL 'ye sorgu dizesi ekleyin `&name=<yourname>` .
 
 1. Çıktı bağlamasının sırada yeni bir ileti oluşturmadığını doğrulamak için, [depolama sırasındaki iletiyi yeniden görüntüleyin](#examine-the-output-queue) .
 

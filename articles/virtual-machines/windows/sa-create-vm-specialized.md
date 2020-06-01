@@ -9,12 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 60b0a0f0d83b9b83c9cf8d530881508af591de59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2466cc1d36206d0a6a382c948969ad6c28a199f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099657"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232820"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Depolama hesabındaki özelleştirilmiş bir VHD 'den VM oluşturma
 
@@ -112,7 +112,7 @@ Yeni, yinelenen bir VM oluştururken kullanmak üzere bir VHD 'yi başka bir dep
 ### <a name="deallocate-the-vm"></a>VM 'yi serbest bırakma
 Kopyalanacak VHD 'yi serbest bırakma VM 'yi serbest bırakın. 
 
-* **Portal**: **sanal makineler** > **myvm** > Durdur ' a tıklayın
+* **Portal**: **sanal makineler**  >  **myvm** > Durdur ' a tıklayın
 * **PowerShell**: **myresourcegroup**kaynak grubundaki **myvm** adlı VM 'yi durdurmak (serbest bırakmak) için [stop-azvm](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) kullanın.
 
 ```powershell
@@ -122,11 +122,11 @@ Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Azure portal sanal makinenin **durumu** durduruldu durumundan **durduruldu (serbest bırakıldı)** **olarak değişir** .
 
 ### <a name="get-the-storage-account-urls"></a>Depolama hesabı URL 'Lerini al
-Kaynak ve hedef depolama hesaplarının URL 'Lerine ihtiyacınız vardır. URL 'Ler şöyle görünür: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Depolama hesabı ve kapsayıcı adını zaten biliyorsanız, URL 'nizi oluşturmak için köşeli ayraçları arasındaki bilgileri değiştirebilirsiniz. 
+Kaynak ve hedef depolama hesaplarının URL 'Lerine ihtiyacınız vardır. URL 'Ler şöyle görünür: `https://<storageaccount>.blob.core.windows.net/<containerName>/` . Depolama hesabı ve kapsayıcı adını zaten biliyorsanız, URL 'nizi oluşturmak için köşeli ayraçları arasındaki bilgileri değiştirebilirsiniz. 
 
 URL 'YI almak için Azure portal veya Azure PowerShell kullanabilirsiniz:
 
-* **Portal** **>** : **tüm hizmetler** > **depolama hesapları** > *depolama hesabı* > **Blobları** ' na tıklayın ve kaynak VHD dosyanız büyük olasılıkla **VHD** kapsayıcısında bulunur. Kapsayıcının **Özellikler** ' e tıklayın ve **URL**etiketli metni kopyalayın. Kaynak ve hedef kapsayıcıların URL 'Lerine ihtiyacınız olacaktır. 
+* **Portal**: **>** **tüm hizmetler**  >  **depolama hesapları**  >  *depolama hesabı*  >  **Blobları** ' na tıklayın ve kaynak VHD dosyanız büyük olasılıkla **VHD** kapsayıcısında bulunur. Kapsayıcının **Özellikler** ' e tıklayın ve **URL**etiketli metni kopyalayın. Kaynak ve hedef kapsayıcıların URL 'Lerine ihtiyacınız olacaktır. 
 * **PowerShell**: **myresourcegroup**kaynak GRUBUNDAKI **myvm** adlı VM 'Nin bilgilerini almak için [Get-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) ' i kullanın. Sonuçlarda, **VHD URI 'si**için **depolama profili** bölümüne bakın. URI 'nin ilk bölümü kapsayıcının URL 'sidir ve son parça VM 'nin işletim sistemi VHD adıdır.
 
 ```powershell
@@ -136,7 +136,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>Depolama erişim anahtarlarını al
 Kaynak ve hedef depolama hesapları için erişim anahtarlarını bulun. Erişim anahtarları hakkında daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../../storage/common/storage-create-storage-account.md).
 
-* **Portal**: **tüm hizmetler** > **depolama hesapları** > *depolama hesabı* > **erişim anahtarları**' na tıklayın. **KEY1**olarak etiketlenen anahtarı kopyalayın.
+* **Portal**: **tüm hizmetler**  >  **depolama hesapları**  >  *depolama hesabı*  >  **erişim anahtarları**' na tıklayın. **KEY1**olarak etiketlenen anahtarı kopyalayın.
 * **PowerShell**: **myresourcegroup**kaynak grubundaki depolama hesabı **Mystorageaccount** depolama anahtarını almak Için [Get-azstorageaccountkey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) komutunu kullanın. **KEY1**etiketli anahtarı kopyalayın.
 
 ```powershell
@@ -148,7 +148,7 @@ AzCopy kullanarak, depolama hesapları arasında dosya kopyalayabilirsiniz. Hede
 
 AzCopy kullanmak için yerel makinenizde bir komut istemi açın ve AzCopy 'in yüklü olduğu klasöre gidin. Bu, *C:\Program Files (x86) \Microsoft SDKs\Azure\AzCopy*ile benzerdir. 
 
-Bir kapsayıcı içindeki tüm dosyaları kopyalamak için **/s** anahtarını kullanın. Bu, işletim sistemi VHD 'sini ve aynı kapsayıcıda olmaları durumunda tüm veri disklerini kopyalamak için kullanılabilir. Bu örnek, **mysourcestokıgeaccount** depolama hesabındaki **mysourcecontainer** kapsayıcısındaki tüm dosyaların **mydestinationstorageaccount** depolama hesabındaki Container **mydestinationcontainer** öğesine nasıl kopyalanacağını gösterir. Depolama hesaplarının ve kapsayıcıların adlarını kendi ile değiştirin. Ve `<sourceStorageAccountKey1>` ' `<destinationStorageAccountKey1>` i kendi anahtarlarınız ile değiştirin.
+Bir kapsayıcı içindeki tüm dosyaları kopyalamak için **/s** anahtarını kullanın. Bu, işletim sistemi VHD 'sini ve aynı kapsayıcıda olmaları durumunda tüm veri disklerini kopyalamak için kullanılabilir. Bu örnek, **mysourcestokıgeaccount** depolama hesabındaki **mysourcecontainer** kapsayıcısındaki tüm dosyaların **mydestinationstorageaccount** depolama hesabındaki Container **mydestinationcontainer** öğesine nasıl kopyalanacağını gösterir. Depolama hesaplarının ve kapsayıcıların adlarını kendi ile değiştirin. `<sourceStorageAccountKey1>`Ve ' i `<destinationStorageAccountKey1>` kendi anahtarlarınız ile değiştirin.
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -225,7 +225,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location
 Uç noktalar ve NSG kuralları hakkında daha fazla bilgi için bkz. [PowerShell kullanarak Azure 'DA VM 'ye bağlantı noktalarını açma](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Genel IP adresi ve NIC oluşturma
-Sanal makinenin sanal ağda iletişimini etkinleştirmeniz için, [genel IP adresi](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) ve ağ arabirimi gereklidir.
+Sanal makinenin sanal ağda iletişimini etkinleştirmeniz için, [genel IP adresi](../../virtual-network/public-ip-addresses.md) ve ağ arabirimi gereklidir.
 
 1. Genel IP 'yi oluşturun. Bu örnekte, genel IP adresi adı **MYIP**olarak ayarlanır.
    
@@ -278,7 +278,7 @@ $dataDiskName = $vmName + "dataDisk"
 $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
 ```
 
-Bir depolama hesabı kullanırken, veri ve işletim sistemi disk URL 'Leri şuna benzer: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. Bunu portalda, hedef depolama kapsayıcısına giderek, kopyalanan işletim sistemine veya veri VHD 'sine tıklayarak ve ardından URL 'nin içeriğini kopyalayarak bulabilirsiniz.
+Bir depolama hesabı kullanırken, veri ve işletim sistemi disk URL 'Leri şuna benzer: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd` . Bunu portalda, hedef depolama kapsayıcısına giderek, kopyalanan işletim sistemine veya veri VHD 'sine tıklayarak ve ardından URL 'nin içeriğini kopyalayarak bulabilirsiniz.
 
 
 ### <a name="complete-the-vm"></a>VM 'yi doldurun 
@@ -300,7 +300,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>VM 'nin oluşturulduğunu doğrulama
-Yeni oluşturulan VM 'yi [Azure Portal](https://portal.azure.com), **tüm hizmetler** > **sanal makineler**altında veya aşağıdaki PowerShell komutlarını kullanarak görmeniz gerekir:
+Yeni oluşturulan VM 'yi [Azure Portal](https://portal.azure.com), **tüm hizmetler**  >  **sanal makineler**altında veya aşağıdaki PowerShell komutlarını kullanarak görmeniz gerekir:
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $rgName

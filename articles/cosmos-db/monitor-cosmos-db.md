@@ -8,27 +8,44 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 5056762dab18ae23980c7d3b3ebfbb3c3014fa56
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: a31636e4e56ddeb9f48cd8c955dc4415dacdc178
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798707"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234914"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>İzleme Azure Cosmos DB
 
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure Cosmos veritabanları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
 
+Verilerinizi, istemci tarafı ve sunucu tarafı ölçümleriyle izleyebilirsiniz. Sunucu tarafı ölçümlerini kullanırken, Azure Cosmos DB ' de depolanan verileri aşağıdaki seçeneklerle izleyebilirsiniz:
+
+* **Azure Cosmos DB portalından izleme:** Azure Cosmos hesabının **ölçümler** sekmesinde bulunan ölçülerle izleyebilirsiniz. Bu sekmedeki ölçümler aktarım hızı, depolama, kullanılabilirlik, gecikme süresi, tutarlılık ve sistem düzeyi ölçümlerini içerir. Varsayılan olarak, bu ölçümler 7 günlük bir bekletme dönemine sahiptir. Daha fazla bilgi edinmek için bu makalenin [Azure Cosmos DB toplanan izleme verileri](#monitoring-from-azure-cosmos-db) bölümüne bakın.
+
+* **Azure izleyici 'de ölçümlerle izleme:** Azure Cosmos hesabınızın ölçümlerini izleyebilir ve Azure Izleyici 'den panolar oluşturabilirsiniz. Azure Izleyici, varsayılan olarak Azure Cosmos DB ölçümleri toplar, açıkça hiçbir şey yapılandırmamanız gerekmez. Bu ölçümler bir dakikalık ayrıntı düzeyi ile toplanır ve ayrıntı düzeyi, seçtiğiniz ölçüme göre farklılık gösterebilir. Varsayılan olarak, bu ölçümler 30 günlük bir bekletme dönemine sahiptir. Önceki seçeneklerden kullanılabilen ölçümlerin çoğu bu ölçümlerde de mevcuttur. Daha fazla bilgi edinmek için bu makalenin [ölçüm verilerini çözümleme](#analyze-metric-data) bölümüne bakın.
+
+* **Azure izleyici 'de tanılama günlükleri Ile izleme:** Azure Cosmos hesabınızın günlüklerini izleyebilir ve Azure Izleyici 'den panolar oluşturabilirsiniz. İkinci bir ayrıntı düzeyinde gerçekleşen olaylar ve izlemeler gibi telemetri Günlükler olarak depolanır. Örneğin, bir kapsayıcının üretilen işi değişirse, Cosmos hesabının özellikleri değiştirilir ve bu olaylar Günlükler içinde yakalar. Toplanan verilerde sorgular çalıştırarak bu günlükleri analiz edebilirsiniz. Daha fazla bilgi edinmek için bu makalenin [günlük verilerini çözümleme](#analyze-log-data) bölümüne bakın.
+
+* **SDK 'ları kullanarak program aracılığıyla izleme:** .NET, Java, Python, Node. js SDK 'Ları ve REST API üst bilgilerini kullanarak Azure Cosmos hesabınızı programlama yoluyla izleyebilirsiniz. Daha fazla bilgi edinmek için bu makaledeki [izleme Azure Cosmos DB Programlama](#monitor-cosmosdb-programmatically) bölümüne bakın.
+
+Aşağıdaki görüntüde Azure Cosmos DB hesabı Azure portal aracılığıyla izlemek için kullanabileceğiniz farklı seçenekler gösterilmektedir:
+
+![Azure portal 'de kullanılabilen izleme seçenekleri](media/monitor-cosmos-db/monitoring-options-portal.png)
+
+Azure Cosmos DB kullanırken, istemci tarafında, oluşabilecek herhangi bir sorunu gidermek için istek ücreti, etkinlik KIMLIĞI, özel durum/yığın izleme bilgileri, HTTP durumu/alt durum kodu, tanılama dizesi ayrıntılarını toplayabilirsiniz. Bu bilgiler, Azure Cosmos DB destek ekibine erişmeniz gerekiyorsa de gereklidir.  
+
 ## <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
+
 Azure Cosmos DB, Azure 'da, diğer bulutlardaki ve Şirket içindeki kaynaklara ek olarak Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sunan Azure [izleyici](../azure-monitor/overview.md) 'yi kullanarak izleme verileri oluşturur.
 
 Azure hizmetlerini izleme konusunda bilginiz yoksa, aşağıdakileri açıklayan Azure [izleyici Ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md) makalesindeki makaleye başlayın:
 
-- Azure İzleyici nedir?
-- İzleme ile ilişkili maliyetler
-- Azure 'da toplanan verileri izleme
-- Veri toplamayı yapılandırma
-- İzleme verilerini analiz etmek ve uyarı vermek için Azure 'da standart araçlar
+* Azure İzleyici nedir?
+* İzleme ile ilişkili maliyetler
+* Azure 'da toplanan verileri izleme
+* Veri toplamayı yapılandırma
+* İzleme verilerini analiz etmek ve uyarı vermek için Azure 'da standart araçlar
 
 Aşağıdaki bölümler, Azure Cosmos DB toplanan belirli verileri açıklayarak ve veri toplamayı yapılandırmaya ve bu verileri Azure araçlarıyla çözümlemeye yönelik örnekler sunarak bu makaleye yöneliktir.
 
@@ -39,9 +56,29 @@ Azure Cosmos DB için Azure Izleyici, [Azure izleyici 'nin çalışma kitapları
 > [!NOTE]
 > Kapsayıcılar oluştururken, aynı ada ancak büyük küçük harflere sahip iki kapsayıcı oluşturmadığınızdan emin olun. Bunun nedeni, Azure platformunun bazı bölümlerinin büyük/küçük harfe duyarlı olmaması ve bu nedenle, bu tür adlara sahip kapsayıcılar ve telemetri ve eylemlerin karışmasına ve çakışmasına neden olabilir.
 
-## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB için işlem düzeyi ölçümlerini görüntüleyin
+## <a name="monitor-data-collected-from-azure-cosmos-db-portal"></a><a id="monitoring-from-azure-cosmos-db"></a>Azure Cosmos DB portalından toplanan verileri izleme
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+Azure Cosmos DB, [Azure kaynaklarından gelen verileri izleme](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. Azure Cosmos DB tarafından oluşturulan günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure Cosmos DB izleme verileri başvurusu](monitor-cosmos-db-reference.md) .
+
+Her Azure Cosmos veritabanı için Azure portal **genel bakış** sayfası, isteği ve saatlik faturalandırma kullanımı dahil olmak üzere veritabanı kullanımının kısa bir görünümünü içerir. Bu yararlı bir bilgi olmakla kalmaz, yalnızca küçük miktarda izleme verisi kullanılabilir. Bu verilerden bazıları otomatik olarak toplanır ve analiz için kullanılabilir, ancak bazı yapılandırma ile ek veri toplamayı etkinleştirebilirsiniz.
+
+![Genel Bakış sayfası](media/monitor-cosmos-db/overview-page.png)
+
+## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a>Ölçüm verileri çözümleniyor
+
+Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu deneyimi kullanmayla ilgili ayrıntılar ve farklı Azure Cosmos DB senaryoları çözümlemek için bkz. [Azure izleyici 'de Azure Cosmos DB ölçümleri izleme ve hata ayıklama](cosmos-db-azure-monitor-metrics.md) .
+
+**Azure izleyici** menüsünden **ölçümler** ' i açarak Ölçüm Gezgini 'ni kullanarak diğer Azure hizmetlerinden ölçümlerle Azure Cosmos DB için ölçümleri çözümleyebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) kullanmaya başlama. Tüm Azure Cosmos DB ölçümleri **Standart ölçümlerde Cosmos DB**ad alanıdır. Bir grafiğe filtre eklerken bu ölçümler ile aşağıdaki boyutları kullanabilirsiniz:
+
+* CollectionName
+* DatabaseName
+* OperationType
+* Bölge
+* Durum
+
+### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB için işlem düzeyi ölçümlerini görüntüleyin
+
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
 
@@ -67,34 +104,14 @@ Ayrıca ölçümleri ve belirli bir **CollectionName**, **DatabaseName**, **Oper
 
 ![Uygulama bölme filtresi ekle](./media/monitor-cosmos-db/apply-metrics-splitting.png)
 
-## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>Azure Cosmos DB toplanan verileri izleme
+## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a>Günlük verileri çözümleniyor
 
-Azure Cosmos DB, [Azure kaynaklarından gelen verileri izleme](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. Azure Cosmos DB tarafından oluşturulan günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure Cosmos DB izleme verileri başvurusu](monitor-cosmos-db-reference.md) .
-
-Her Azure Cosmos veritabanı için Azure portal **genel bakış** sayfası, isteği ve saatlik faturalandırma kullanımı dahil olmak üzere veritabanı kullanımının kısa bir görünümünü içerir. Bu yararlı bir bilgi olmakla kalmaz, yalnızca küçük miktarda izleme verisi kullanılabilir. Bu verilerden bazıları otomatik olarak toplanır ve analiz için kullanılabilir, ancak bazı yapılandırma ile ek veri toplamayı etkinleştirebilirsiniz.
-
-![Genel Bakış sayfası](media/monitor-cosmos-db/overview-page.png)
-
-## <a name="analyzing-metric-data"></a>Ölçüm verileri çözümleniyor
-
-Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu deneyimi kullanmayla ilgili ayrıntılar ve farklı Azure Cosmos DB senaryoları çözümlemek için bkz. [Azure izleyici 'de Azure Cosmos DB ölçümleri izleme ve hata ayıklama](cosmos-db-azure-monitor-metrics.md) .
-
-**Azure izleyici** menüsünden **ölçümler** ' i açarak Ölçüm Gezgini 'ni kullanarak diğer Azure hizmetlerinden ölçümlerle Azure Cosmos DB için ölçümleri çözümleyebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) kullanmaya başlama. Tüm Azure Cosmos DB ölçümleri **Standart ölçümlerde Cosmos DB**ad alanıdır. Bir grafiğe filtre eklerken bu ölçümler ile aşağıdaki boyutları kullanabilirsiniz:
-
-- CollectionName
-- DatabaseName
-- OperationType
-- Bölge
-- Durum
-
-## <a name="analyzing-log-data"></a>Günlük verileri çözümleniyor
 Azure Izleyici günlüklerindeki veriler, her tablonun kendine ait benzersiz özellikler kümesine sahip olduğu tablolarda depolanır. Azure Cosmos DB, verileri aşağıdaki tablolarda depolar.
 
 | Tablo | Açıklama |
 |:---|:---|
 | AzureDiagnostics | Kaynak günlüklerini depolamak için birden çok hizmet tarafından kullanılan ortak tablo. Azure Cosmos DB kaynak günlükleri ile tanımlanabilir `MICROSOFT.DOCUMENTDB` .   |
-| AzureActivity    | Etkinlik günlüğünden tüm kayıtları depolayan ortak tablo. 
-
+| AzureActivity    | Etkinlik günlüğünden tüm kayıtları depolayan ortak tablo.
 
 > [!IMPORTANT]
 > Azure Cosmos DB menüsünden **Günlükler** ' i seçtiğinizde, Log Analytics geçerli Azure Cosmos veritabanı olarak ayarlanan sorgu kapsamıyla açılır. Bu, günlük sorgularının yalnızca bu kaynaktaki verileri dahil olacağı anlamına gelir. Diğer veritabanlarından veya diğer Azure hizmetlerinden verileri içeren bir sorgu çalıştırmak istiyorsanız, **Azure izleyici** menüsünden **Günlükler** ' i seçin. Ayrıntılar için bkz. [Azure izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics](../azure-monitor/log-query/scope.md) .
@@ -130,7 +147,7 @@ Azure Cosmos veritabanlarınızı izlemenize yardımcı olması için kullanabil
     | summarize count() by Resource
     ```
 
-## <a name="monitor-azure-cosmos-db-programmatically"></a>Program aracılığıyla Azure Cosmos DB izleme
+## <a name="monitor-azure-cosmos-db-programmatically"></a><a id="monitor-cosmosdb-programmatically"></a>Program aracılığıyla Azure Cosmos DB izleme
 
 Portalda kullanılabilen hesap düzeyi ölçümleri, hesap depolama kullanımı ve toplam istek gibi SQL API 'Leri aracılığıyla kullanılamaz. Ancak, SQL API 'Lerini kullanarak koleksiyon düzeyinde kullanım verilerini alabilirsiniz. Koleksiyon düzeyindeki verileri almak için aşağıdakileri yapın:
 
@@ -146,9 +163,7 @@ Tek tek ölçümleri almak için sorgular aşağıdaki biçimi kullanır:
 
     https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
 
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Cosmos DB tarafından oluşturulan günlüklerin ve ölçümlerin bir başvurusu için bkz. [Azure Cosmos DB izleme verileri başvurusu](monitor-cosmos-db-reference.md) .
-- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md) .
+* Azure Cosmos DB tarafından oluşturulan günlüklerin ve ölçümlerin bir başvurusu için bkz. [Azure Cosmos DB izleme verileri başvurusu](monitor-cosmos-db-reference.md) .
+* Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md) .

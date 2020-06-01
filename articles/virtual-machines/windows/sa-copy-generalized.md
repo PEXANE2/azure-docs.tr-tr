@@ -9,14 +9,14 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 130764ad5504ded398a9fdf9fa27d6cb936fbacc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31b8200b63780388fb53db588c418951c500ac19
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099793"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232897"
 ---
-# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Azure VM 'den yönetilmeyen VM görüntüsü oluşturma
+# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Azure VM'sinden yönetilmeyen VM görüntüsü oluşturma
 
 Bu makalede, depolama hesaplarının kullanımı ele alınmaktadır. Depolama hesabı yerine yönetilen diskleri ve yönetilen görüntüleri kullanmanızı öneririz. Daha fazla bilgi için bkz. [Azure 'da Genelleştirilmiş BIR VM 'nin yönetilen görüntüsünü yakalama](capture-image-resource.md).
 
@@ -34,11 +34,11 @@ Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emi
 > 
 > 
 
-Ayrıca, kullanarak `sudo waagent -deprovision+user` BIR Linux VM 'yi GENELLEŞTIRDIĞINIZDE, VM 'yi yakalamak için PowerShell 'i kullanabilirsiniz. Bir VM yakalamak için CLı kullanma hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak Linux sanal makinesi Genelleştirme ve yakalama](../linux/capture-image.md).
+Ayrıca, kullanarak bir Linux VM 'yi genelleştirdiğinizde, `sudo waagent -deprovision+user` VM 'yi yakalamak Için PowerShell 'i kullanabilirsiniz. Bir VM yakalamak için CLı kullanma hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak Linux sanal makinesi Genelleştirme ve yakalama](../linux/capture-image.md).
 
 
 1. Windows sanal makinesinde oturum açın.
-2. Yönetici olarak Komut İstemi penceresini açın. Dizini **%windir%\system32\sysprep**olarak değiştirip komutunu çalıştırın `sysprep.exe`.
+2. Yönetici olarak Komut İstemi penceresini açın. Dizini **%windir%\system32\sysprep**olarak değiştirip komutunu çalıştırın `sysprep.exe` .
 3. **Sistem Hazırlama Aracı** iletişim kutusunda ** Sistem İlk Çalıştırma Deneyimi (OOBE) Moduna Gir**'i seçin ve **Genelleştir** onay kutusunun seçili olduğundan emin olun.
 4. **Kapalı seçenekleri**' nde, **kapatır**' ı seçin.
 5. **Tamam**'a tıklayın.
@@ -97,7 +97,7 @@ Ayrıca, kullanarak `sudo waagent -deprovision+user` BIR Linux VM 'yi GENELLEŞT
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Bu komutu kullanarak hedef depolama kapsayıcısında bir yönetilmeyen sanal makine görüntüsü oluşturun. Görüntü, özgün sanal makine ile aynı depolama hesabında oluşturulur. `-Path` Parametresi, kaynak VM için JSON şablonunun bir kopyasını yerel bilgisayarınıza kaydeder. `-DestinationContainerName` Parametresi, görüntülerinizi tutmak istediğiniz kapsayıcının adıdır. Kapsayıcı yoksa, sizin için oluşturulur.
+Bu komutu kullanarak hedef depolama kapsayıcısında bir yönetilmeyen sanal makine görüntüsü oluşturun. Görüntü, özgün sanal makine ile aynı depolama hesabında oluşturulur. `-Path`Parametresi, kaynak VM IÇIN JSON şablonunun bir kopyasını yerel bilgisayarınıza kaydeder. `-DestinationContainerName`Parametresi, görüntülerinizi tutmak istediğiniz kapsayıcının adıdır. Kapsayıcı yoksa, sizin için oluşturulur.
    
 ```powershell
 Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -105,7 +105,7 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-Resminizin URL 'sini JSON dosya şablonundan alabilirsiniz. Görüntünüzün tüm yolu için **kaynaklar** > **storageprofile** > **OSDisk** > **görüntü** > **Uri 'si** bölümüne gidin. Görüntünün URL 'SI şöyle görünür: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
+Resminizin URL 'sini JSON dosya şablonundan alabilirsiniz. **resources**  >  Görüntünüzün tüm yolu için kaynaklar**storageprofile**  >  **OSDisk**  >  **görüntü**  >  **Uri 'si** bölümüne gidin. Görüntünün URL 'SI şöyle görünür: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` .
    
 Ayrıca, portalda URI 'yi doğrulayabilirsiniz. Görüntü, depolama hesabınızda **sistem** adlı bir kapsayıcıya kopyalanır. 
 
@@ -115,7 +115,7 @@ Artık yönetilmeyen görüntüden bir veya daha fazla sanal makine oluşturabil
 
 ### <a name="set-the-uri-of-the-vhd"></a>VHD URI 'sini ayarlama
 
-Kullanılacak VHD için URI şu biçimdedir: https://**mystorageaccount**. blob.Core.Windows.net/**myContainer**/**myvhdname**. vhd. Bu örnekte, **myvhd** adlı VHD, kapsayıcıda Container **mystorageaccount** depolama **hesabıdır.**
+Kullanılacak VHD için URI şu biçimdedir: https://**mystorageaccount**. blob.Core.Windows.net/**myContainer** / **myvhdname**. vhd. Bu örnekte, **myvhd** adlı VHD, kapsayıcıda Container **mystorageaccount** depolama **hesabıdır.**
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -142,7 +142,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>Genel IP adresi ve ağ arabirimi oluşturma
-Sanal makinenin sanal ağda iletişimini etkinleştirmeniz için, [genel IP adresi](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) ve ağ arabirimi gereklidir.
+Sanal makinenin sanal ağda iletişimini etkinleştirmeniz için, [genel IP adresi](../../virtual-network/public-ip-addresses.md) ve ağ arabirimi gereklidir.
 
 1. Genel bir IP adresi oluşturun. Bu örnek **Mypıp**adlı BIR genel IP adresi oluşturur. 
    
@@ -243,7 +243,7 @@ Aşağıdaki PowerShell sanal makine yapılandırmasını tamamlar ve yeni yükl
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>VM 'nin oluşturulduğunu doğrulama
-Tamamlandığında,**sanal makinelere** **gözatadaki** >  [Azure Portal](https://portal.azure.com) yeni oluşturulan VM 'yi görmeniz veya aşağıdaki PowerShell komutlarını kullanmanız gerekir:
+Tamamlandığında, sanal makinelere **gözatadaki** [Azure Portal](https://portal.azure.com) yeni oluşturulan VM 'yi görmeniz  >  **Virtual machines**veya aşağıdaki PowerShell komutlarını kullanmanız gerekir:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

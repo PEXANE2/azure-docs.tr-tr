@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6218906760baad0673b6599a278d50c6c73e1a0
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870021"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232968"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -45,7 +45,7 @@ Bu adımların uygulanması yaklaşık 20 dakika sürer.
 
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 
-1. Uygulamanızın yapısını `testAzureApp` etkinleştirmek için klasörü açın `pom.xml` ve derleme yapılandırması ' nı &lt;projeye&gt; ekleyin:
+1. `testAzureApp` `pom.xml` &lt; Uygulamanızın yapısını etkinleştirmek için klasörü açın ve derleme yapılandırması ' nı projeye ekleyin &gt; :
 
     ```xml
     <build>
@@ -114,7 +114,7 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
 
 ### <a name="create-the-authorization-file"></a>Yetkilendirme dosyasını oluşturma
 
-1. Adlı `azureauth.properties` bir dosya oluşturun ve bu özellikleri buna ekleyin:
+1. Adlı bir dosya oluşturun `azureauth.properties` ve bu özellikleri buna ekleyin:
 
     ```
     subscription=<subscription-id>
@@ -127,14 +127,14 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
     graphURL=https://graph.microsoft.com/
     ```
 
-    Abonelik ** &lt;kimliği&gt; ** , abonelik tanımlayıcıınız, ** &lt;uygulama kimliği&gt; ** Active Directory uygulama tanımlayıcısı, ** &lt;kimlik doğrulama anahtarı&gt; ** ve ** &lt;kiracı tanımlayıcısı ile Kiracı kimliği&gt; ** ile değiştirin.
+    Abonelik ** &lt; kimliği &gt; ** , abonelik tanımlayıcıınız, uygulama ** &lt; kimliği &gt; ** Active Directory uygulama tanımlayıcısı, ** &lt; kimlik doğrulama &gt; anahtarı** ve kiracı tanımlayıcısı ile ** &lt; Kiracı kimliği &gt; ** ile değiştirin.
 
 2. Dosyayı kaydedin.
 3. Kimlik doğrulama dosyasının tam yolu ile kabukta AZURE_AUTH_LOCATION adlı bir ortam değişkeni ayarlayın.
 
 ### <a name="create-the-management-client"></a>Yönetim istemcisi oluşturma
 
-1. Altında `App.java` `src\main\java\com\fabrikam` dosyayı açın ve bu paket ifadesinin en üstte olduğundan emin olun:
+1. `App.java`Altında dosyayı açın `src\main\java\com\fabrikam` ve bu paket ifadesinin en üstte olduğundan emin olun:
 
     ```java
     package com.fabrikam.testAzureApp;
@@ -211,7 +211,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>Genel IP adresini oluşturma
 
-Sanal makineyle iletişim kurmak için [Genel BIR IP adresi](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) gerekir.
+Sanal makineyle iletişim kurmak için [Genel BIR IP adresi](../../virtual-network/public-ip-addresses.md) gerekir.
 
 Sanal makinenin genel IP adresini oluşturmak için, bu kodu ana yöntemdeki try bloğuna ekleyin:
 

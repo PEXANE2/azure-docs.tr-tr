@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/29/2020
 ms.author: b-juche
-ms.openlocfilehash: 6cb3fa56e679bc911f12e99379152fc8e1fb7526
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef54eddd52d67f595fe78cd8bba9f308a4f19a94
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832850"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235234"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -175,9 +175,6 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
     Oluşturduğunuz Active Directory bağlantı görüntülenir.
 
     ![Active Directory bağlantıları](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
-
-> [!NOTE] 
-> Active Directory bağlantısını kaydettikten sonra Kullanıcı adı ve parola alanlarını düzenleyebilirsiniz. Bağlantı kaydedildikten sonra başka hiçbir değer düzenlenemez. Başka herhangi bir değeri değiştirmeniz gerekiyorsa, önce dağıtılan tüm SMB birimlerini silmeniz, sonra Active Directory bağlantısını silip yeniden oluşturmanız gerekir.
 
 ## <a name="add-an-smb-volume"></a>SMB birimi ekleme
 

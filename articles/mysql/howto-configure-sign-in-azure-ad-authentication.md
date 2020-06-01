@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 8ef16f581a4b945d3a5e6ef58166eeed900f3bb3
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9d607f0ad1ab9d9924cd05ce1a66bee34e4ff18d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140897"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84229855"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -57,21 +57,19 @@ Ayrıca, en yaygın uygulama sürücülerini test ettik, bu sayfanın sonundaki 
 
 Bu adımlar, bir kullanıcı/uygulamanın, aşağıda açıklanan Azure AD ile kimlik doğrulaması yapmak için gereken adımlardır:
 
+### <a name="prerequisites"></a>Ön koşullar
+
+Azure Cloud Shell, bir Azure VM veya yerel makinenizde da izleyebilirsiniz. [Azure CLI 'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>1. Adım: Azure AD ile kimlik doğrulama
 
-[Azure CLI 'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
-
-Azure AD ile kimlik doğrulaması gerçekleştirmek için Azure CLı aracını çağırın. Azure AD Kullanıcı KIMLIĞINIZ ve parolanızı sağlamanız gerekir.
+Azure CLı aracını kullanarak Azure AD ile kimlik doğrulaması yaparak başlayın. Azure Cloud Shell Bu adım gerekli değildir.
 
 ```
 az login
 ```
 
-Bu komut, Azure AD kimlik doğrulama sayfasında bir tarayıcı penceresi başlatır.
-
-> [!NOTE]
-> Bu adımları gerçekleştirmek için Azure Cloud Shell de kullanabilirsiniz.
-> Lütfen Azure Cloud Shell Azure AD erişim belirtecini alırken, açıkça çağırmanız `az login` ve yeniden oturum açmanız (bir kodla ayrı pencerede) gerektiğini unutmayın. Komutun bu oturum açma işleminden sonra `get-access-token` beklendiği gibi çalışacaktır.
+Bu komut, Azure AD kimlik doğrulama sayfasında bir tarayıcı penceresi başlatır. Azure AD Kullanıcı KIMLIĞINIZ ve parolanızı sağlamanız gerekir.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>2. Adım: Azure AD erişim belirtecini alma
 
@@ -79,19 +77,19 @@ Azure AD kimliği doğrulanmış kullanıcı için adım 1 ' den MySQL için Azu
 
 Örnek (genel bulut için):
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
 Yukarıdaki kaynak değeri tam olarak gösterildiği gibi belirtilmelidir. Diğer bulutlarda, kaynak değeri şu kullanılarak aranabilir:
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
 Azure CLı sürüm 2.0.71 ve üzeri için, komut tüm bulutlar için aşağıdaki daha uygun sürümde belirtilebilir:
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 
@@ -138,7 +136,7 @@ MySQL veritabanı için Azure veritabanı 'na bir Azure AD kullanıcısı ekleme
 2. MySQL için Azure veritabanı örneğinde Azure AD Yönetici kullanıcısı olarak oturum açın.
 3. `<user>@yourtenant.onmicrosoft.com`MySQL Için Azure veritabanı 'nda kullanıcı oluşturun.
 
-**Örneğinde**
+**Örnek:**
 
 ```sql
 CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
@@ -159,7 +157,7 @@ CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShor
 
 Veritabanınıza erişim için bir Azure AD grubunu etkinleştirmek üzere, kullanıcılar için aynı mekanizmayı kullanın, bunun yerine grup adını belirtin:
 
-**Örneğinde**
+**Örnek:**
 
 ```sql
 CREATE AADUSER 'Prod_DB_Readonly';

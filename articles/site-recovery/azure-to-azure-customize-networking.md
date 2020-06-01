@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 96ffa34166797945afc04c66b03fe151d26c65bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce3bfd85656972cb93b74a85a1bd6d469837ce22
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76292867"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236310"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Hedef Azure VM’nin ağ yapılandırmalarını özelleştirme
 
@@ -28,7 +28,7 @@ Site Recovery [Bu senaryo](azure-to-azure-architecture.md)için olağanüstü du
 Azure VM 'Leri çoğaltılırken yük devretme VM 'si için aşağıdaki temel kaynak yapılandırmasını sağlayabilirsiniz:
 
 - [İç yük dengeleyici](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
-- [Genel IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
+- [Genel IP](../virtual-network/public-ip-addresses.md)
 - Hem alt ağ hem de NIC için [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
 
 ## <a name="prerequisites"></a>Ön koşullar

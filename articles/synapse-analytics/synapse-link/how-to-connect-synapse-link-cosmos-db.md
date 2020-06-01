@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6bdc2eca3bdf02814ee851ff266e04bb57f7978c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 32087b1b2340508f7f868455e2db476046eaa4b5
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658834"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235266"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısına (Önizleme) bağlanma
 
@@ -23,6 +23,9 @@ Bu makalede Azure SYNAPSE bağlantısıyla Azure SYNAPSE Analytics Studio 'dan b
 ## <a name="prerequisites"></a>Ön koşullar
 
 Azure Cosmos DB bir veritabanını çalışma alanınıza bağlanmadan önce şunlar gerekir:
+
+> [!IMPORTANT]
+> Azure Cosmos DB için Azure SYNAPSE bağlantısı şu anda yönetilen sanal ağ etkin olmayan çalışma alanlarında destekleniyor. 
 
 * Mevcut Azure Cosmos DB veritabanı veya bu [hızlı](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account) başlangıcı izleyerek yeni bir hesap oluştur
 * Bu [hızlı](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) başlangıcı izleyerek var olan SYNAPSE çalışma alanı veya yeni bir çalışma alanı oluştur 

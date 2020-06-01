@@ -9,16 +9,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510a5562740260eb2946ded074a5c37804c55375
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec74b9391c780cf673fe47bd82cc6d92534eb56d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67109512"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234048"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD, şirket Içi Iş yükleri için bulut tarafından yönetilen yönetim sağlar
 
@@ -93,7 +93,7 @@ Bir kuruluş, uygulamayı barındıran işletim sistemini Azure 'a taşıyarak b
 
 ![Azure AD evrimi](media/cloud-governed-management-for-on-premises/image5.png)
 
-Federasyon uygulamalarını kimlik sağlayıcısı olarak Azure AD 'ye geçirmeye başlamak için şu bağlantıları içeren öğesine https://aka.ms/migrateapps başvurun:
+Federasyon uygulamalarını kimlik sağlayıcısı olarak Azure AD 'ye geçirmeye başlamak için şu https://aka.ms/migrateapps bağlantıları içeren öğesine başvurun:
 
 * Geçiş avantajlarının yanı sıra, açıkça Seviyelendirilmiş dört aşamada geçişin nasıl planlanacağını gösteren [Azure Active Directory, uygulamalarınızı geçirme](https://aka.ms/migrateapps/whitepaper)teknik incelemesi: bulma, sınıflandırma, geçiş ve devam eden yönetim. İşlemin nasıl düşündüğünü ve projenizi kullanımı kolay parçalara nasıl başlayacağınızı öğreneceksiniz. Belge genelinde, bu şekilde size yardımcı olacak önemli kaynakların bağlantıları bulunur.
 
@@ -117,4 +117,4 @@ Karma ortamlarda, Microsoft 'un stratejisi, **bulutun kimlik için denetim düzl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu yolculuğa nasıl başlacağınız hakkında daha fazla bilgi için, adresinde <https://aka.ms/deploymentplans> bulunan Azure AD Dağıtım planlarına bakın. Azure Active Directory (Azure AD) yeteneklerini dağıtma hakkında uçtan uca yönergeler sağlar. Her plan, yaygın Azure AD yeteneklerini başarıyla almak için gereken iş değerini, planlama konularını, tasarımı ve işletimsel yordamları açıklar. Microsoft, Azure AD ile buluttan yönetmeye yönelik yeni yetenekler eklediğimiz zaman, müşteri dağıtımlarından ve diğer geri bildirimlerden öğrenilen en iyi uygulamalarla dağıtım planlarını sürekli olarak güncelleştirir.
+Bu yolculuğa nasıl başlacağınız hakkında daha fazla bilgi için, adresinde bulunan Azure AD Dağıtım planlarına bakın <https://aka.ms/deploymentplans> . Azure Active Directory (Azure AD) yeteneklerini dağıtma hakkında uçtan uca yönergeler sağlar. Her plan, yaygın Azure AD yeteneklerini başarıyla almak için gereken iş değerini, planlama konularını, tasarımı ve işletimsel yordamları açıklar. Microsoft, Azure AD ile buluttan yönetmeye yönelik yeni yetenekler eklediğimiz zaman, müşteri dağıtımlarından ve diğer geri bildirimlerden öğrenilen en iyi uygulamalarla dağıtım planlarını sürekli olarak güncelleştirir.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65f0cf66dc6cef33e98258106e5f1573efdf39e5
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 90432d3aa0ce9ebdecc7d0314b1352e46db0ac47
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84203877"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234576"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
@@ -94,7 +94,7 @@ WebSocket hizmetini ve takımlar masaüstü uygulamasını yükledikten sonra, t
 
 3. Kullanıcı profili görüntünüzü seçin ve ardından **Ayarlar**' ı seçin.
 
-      Medya iyileştirmesi yüklüyse, yerel olarak bulunan ses cihazları ve kameralar cihaz menüsünde numaralandırılır. Menü **uzak sesi**gösteriyorsa, takımlar uygulamasından çıkıp yeniden deneyin. Cihazlar hala menüde görünmezse, yukarıdaki tüm yükleme adımlarının yapıldığından emin olun.
+      Medya iyileştirmesi yüklüyse, yerel olarak bulunan ses cihazları ve kameralar cihaz menüsünde numaralandırılır. Menü **uzak sesi**gösteriyorsa, takımlar uygulamasından çıkıp yeniden deneyin. Cihazlar hala menüde görünmüyorsa, [Microsoft ekipleri](#install-microsoft-teams) ' nı yüklemek için geri dönün ve yükleme sürecini tamamladığınızdan emin olun.
 
 ## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
 
@@ -140,10 +140,8 @@ Bir konak havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini, çok Monito
 
 Mikrofon ve kamera yeniden yönlendirmeyi etkinleştirmek için aşağıdaki RDP özelliklerini ayarlayın:
 
-|RDP özellikleri   | Açıklama |
-|-----------------|-------------|
-|audiocapturemode: ı: 1  | Yerel cihazdan ses yakalamayı etkinleştirme ve Uzak oturumdaki bir ses uygulamasına yeniden yönlendirme |
-|audiomode: ı: 0         | Yerel bilgisayarda ses çal |
-|camerastoredirect: s: * | Tüm kameraları yeniden yönlendir |
+- `audiocapturemode:i:1`Uzak oturumdaki yerel cihazdan ve redirets ses uygulamalarından ses yakalamaya izin vermez.
+- `audiomode:i:0`Yerel bilgisayarda ses çalar.
+- `camerastoredirect:s:*`Tüm kameraları yeniden yönlendirir.
 
 Daha fazla bilgi edinmek için, [bir konak havuzunun Uzak Masaüstü Protokolü özelliklerini özelleştirin](customize-rdp-properties.md)' i inceleyin.
