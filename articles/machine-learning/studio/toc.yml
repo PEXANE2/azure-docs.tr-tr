@@ -58,7 +58,7 @@
       items:
         - name: Veri içeri aktarma
           href: import-data.md
-        - name: Şirket içi SQL’deki verileri kullanma
+        - name: SQL Server'dan veri kullanma
           displayName: on-premises
           href: use-data-from-an-on-premises-sql-server.md
     - name: Modelleri eğitme

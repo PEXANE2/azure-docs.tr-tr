@@ -20,6 +20,8 @@
       href: create-private-link-service-powershell.md
     - name: Özel Bağlantı Hizmeti oluşturma - Azure CLI
       href: create-private-link-service-cli.md
+    - name: Özel Bağlantı hizmeti oluşturma - ARM şablonu
+      href: create-private-link-service-template.md
 - name: Kavramlar
   items:
     - name: Özel Uç Nokta

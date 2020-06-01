@@ -24,28 +24,28 @@
           href: work-remotely-support.md
     - name: Bağlantı modelleri
       href: expressroute-connectivity-models.md
-    - name: Bağlantı hatları ve eşleme
-      href: expressroute-circuit-peerings.md
     - name: Konumlar ve iş ortakları
       items:
         - name: Konuma göre sağlayıcılar
           href: expressroute-locations-providers.md
         - name: Sağlayıcıya Göre Konumlar
           href: expressroute-locations.md
-    - name: Sanal ağ geçitleri hakkında
-      href: expressroute-about-virtual-network-gateways.md
     - name: Ön koşullar
       href: expressroute-prerequisites.md
     - name: İş akışları
       href: expressroute-workflows.md
     - name: Yönlendirme gereksinimleri
       href: expressroute-routing.md
+    - name: Bağlantı hatları ve eşleme
+      items:
+        - name: Bağlantı hatları ve eşleme hakkında
+          href: expressroute-circuit-peerings.md
+        - name: Devreleri klasikten Resource Manager’a taşıma
+          href: expressroute-move.md
     - name: ExpressRoute üzerinden BFD
       href: expressroute-bfd.md
     - name: QoS gereksinimleri
       href: expressroute-qos.md
-    - name: Devrelerin klasikten Resource Manager’a taşınması hakkında
-      href: expressroute-move.md
     - name: ExpressRoute FastPath hakkında
       href: about-fastpath.md
     - name: ExpressRoute Direct hakkında
@@ -54,6 +54,10 @@
       href: expressroute-global-reach.md
     - name: ExpressRoute şifrelemesi hakkında
       href: expressroute-about-encryption.md
+    - name: Güvenlik denetimleri
+      href: expressroute-security-controls.md
+    - name: Sanal ağ geçitleri hakkında
+      href: expressroute-about-virtual-network-gateways.md
     - name: Azure'ı genel buluta bağlama
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Arka Uç Bağlantısı Birlikte Çalışabilirliği
@@ -68,11 +72,9 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Ağlar arası bağlantı
       href: cross-network-connectivity.md
-    - name: Yerleşik güvenlik denetimleri
-      href: expressroute-security-controls.md
-    - name: Yüksek Kullanılabilirlik Tasarımı
+    - name: Yüksek Kullanılabilirlik - Tasarım
       href: designing-for-high-availability-with-expressroute.md
-    - name: Olağanüstü Durum Kurtarma Tasarımı
+    - name: Olağanüstü Durum Kurtarma - Tasarım
       items:
         - name: Özel Eşleme
           href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
@@ -165,6 +167,8 @@
           href: expressroute-monitoring-metrics-alerts.md
         - name: ExpressRoute için Ağ Performansı İzleyicisi’ni Yapılandırma
           href: how-to-npm.md
+        - name: Kullanıma sunulan yolları izlemek için özel uyarılar yapılandırma
+          href: how-to-custom-route-alert.md
     - name: Klasik ve eski makaleler
       items:
         - name: Devreyi değiştirme

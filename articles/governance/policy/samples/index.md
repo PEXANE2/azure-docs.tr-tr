@@ -1,14 +1,14 @@
 ---
 title: İlke örnekleri dizini
 description: Azure İlkesi için yerleşik ilkeler dizini. Kategori Etiketleri, Mevzuat Uyumluluğu, Key Vault, Kubernetes, Konuk Yapılandırması ve daha fazlası.
-ms.date: 03/25/2020
+ms.date: 05/29/2020
 ms.topic: sample
-ms.openlocfilehash: 41a08a70df24f80ea324860d6d1db16c9ed99760
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6e9c3b92942f24ae0a9972fa61340775262af761
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697188"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84203911"
 ---
 # <a name="azure-policy-samples"></a>Azure İlkesi Örnekleri
 
@@ -32,6 +32,14 @@ Aşağıda, Azure İlkesi’nde dil ve işleçler kullanılarak elde edilen fark
 - [Sayım işleci](./pattern-count-operator.md)
 - [Bir girişimde ilke tanımlarını gruplandırma](./pattern-group-with-initiative.md)
 - [deployIfNotExists ile kaynak dağıtma](./pattern-deploy-resources.md)
+
+## <a name="regulatory-compliance"></a>Mevzuata Uyumluluğu
+
+[Mevzuat Uyumluluğu](../concepts/regulatory-compliance.md) bileşenleri şunlardır:
+
+- [Azure Güvenlik Karşılaştırması](./azure-security-benchmark.md)
+- [CIS Microsoft Azure Yönetim Temelleri Kıyaslama v1.1.0](./cis-azure-1-1-0.md)
+- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
 
 ## <a name="other-samples"></a>Diğer Örnekler
 

@@ -98,6 +98,8 @@
               href: virtual-wan-route-table.md
         - name: Sanal merkezin geçerli yollarını görüntüleme
           href: effective-routes-virtual-hub.md
+        - name: Birden çok ISP bağlantısı - Azure Yol Seçimi
+          href: path-selection-multiple-links.md
     - name: Güvenlik
       items:
         - name: Bir merkeze Azure Güvenlik Duvarı yükleme

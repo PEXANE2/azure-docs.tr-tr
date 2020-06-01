@@ -14,6 +14,7 @@
     - name: Bildirim hub'ı oluşturma - Azure CLI
       href: create-notification-hub-azure-cli.md
     - name: Bildirim hub’ı oluşturma - ARM şablonu
+      displayName: Resource Manager
       href: create-notification-hub-template.md
     - name: Bildirim hub’ını yapılandırma
       href: configure-notification-hub-portal-pns-settings.md
@@ -23,7 +24,9 @@
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: Tüm kayıtlara anında iletme bildirimleri gönderme
+            - name: Tüm kayıtlara anında iletme bildirimleri gönderme (SDK sürüm 1.0.0-preview1)
+              href: android-sdk.md
+            - name: Tüm kayıtlara anında iletme bildirimleri gönderme (SDK sürüm 0.6)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
             - name: Belirli cihazlara anında iletme bildirimleri gönderme
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
@@ -139,7 +142,7 @@
     - name: Uygulama arka ucuna kaydetme
       href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
     - name: Apple cihazları ile belirteç temelli kimlik doğrulaması kullanma
-      href: notification-hubs-push-notification-http2-token-authentification.md
+      href: notification-hubs-push-notification-http2-token-authentication.md
     - name: Bırakılan bildirim sorunlarını giderme
       href: notification-hubs-push-notification-fixer.md
     - name: Baidu bulut anında iletme kullanarak anında iletme bildirimleri gönderme

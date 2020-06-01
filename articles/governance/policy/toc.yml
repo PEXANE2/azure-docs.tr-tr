@@ -60,20 +60,34 @@
           href: ./samples/pattern-group-with-initiative.md
         - name: Kaynakları dağıtma
           href: ./samples/pattern-deploy-resources.md
+    - name: Mevzuat Uyumluluğu bileşenleri
+      items:
+        - name: Azure Güvenlik Karşılaştırması
+          href: ./samples/azure-security-benchmark.md
+        - name: CIS Microsoft Azure Foundations Benchmark 1.1.0
+          href: ./samples/cis-azure-1-1-0.md
+        - name: NIST SP 800-53 R4
+          href: ./samples/nist-sp-800-53-r4.md
 - name: Kavramlar
   items:
-    - name: Azure İlkesi tanım yapısı
+    - name: Tanım yapısı
       displayName: 'parameters, location, rule, alias, initiatives'
       href: ./concepts/definition-structure.md
-    - name: İlke etkilerini anlama
+    - name: Etkileri anlama
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
-    - name: Azure İlkesi atama yapısı
+    - name: Girişim yapısı
+      displayName: 'parameters, groups, domains, policies'
+      href: ./concepts/initiative-definition-structure.md
+    - name: Atama yapısı
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
     - name: Yeni ilkenin etkisini değerlendirme
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Mevzuata Uyumluluğu
+      displayName: 'standards, domains, controls'
+      href: ./concepts/regulatory-compliance.md
     - name: İlkeyi Kod iş akışları olarak tasarklama
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
@@ -127,6 +141,8 @@
         - name: VM’ler için Azure İzleyici’yi etkinleştirme (önizleme)
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+- name: Sorun giderme
+  href: ./troubleshoot/general.md
 - name: Başvuru
   items:
     - name: Azure CLI
@@ -198,7 +214,7 @@
     - name: GitHub - Topluluk İlkesi deposu
       href: 'https://github.com/Azure/Community-Policy'
     - name: Azure İlkesi için Microsoft Soru-Cevap
-      href: /answers/topics/azure-policy.html.html
+      href: /answers/topics/azure-policy.html
     - name: Governance YouTube Kanalı
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Konuk Yapılandırma videoları

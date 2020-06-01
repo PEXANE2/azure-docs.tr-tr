@@ -449,6 +449,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: VM oluşturma
                   items:
+                    - name: Özelleştirilmiş
+                      href: ../vm-specialized-image-version-cli.md
                     - name: Genelleştirilmiş
                       href: ../vm-generalized-image-version-cli.md
                 - name: Görüntü kaynaklarını güncelleştirme
@@ -664,7 +666,7 @@
                       items:
                         - name: Sanal Makine
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                        - name: VM ölçek kümesi
+                        - name: Ölçek kümesi
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: Event Hubs’a gönderme
                       href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

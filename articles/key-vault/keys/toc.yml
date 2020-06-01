@@ -17,12 +17,12 @@
       href: quick-create-python.md
 - name: Öğreticiler
   items:
-    - name: HSM korumalı anahtarları içeri aktarma
+    - name: HSM korumalı anahtarları içeri aktarma (genel bakış)
       href: hsm-protected-keys.md
-    - name: HSM korumalı anahtarları içeri aktarma (önizleme)
-      href: hsm-protected-keys-vendor-agnostic-byok.md
-    - name: HSM korumalı anahtarları içeri aktarma (eski)
-      href: hsm-protected-keys-legacy.md
+    - name: HSM korumalı anahtarları içeri aktarma (KAG)
+      href: hsm-protected-keys-byok.md
+    - name: HSM korumalı anahtarları içeri aktarma (nCipher)
+      href: hsm-protected-keys-ncipher.md
 - name: Örnekler
   items:
     - name: Azure İlkesi yerleşik ilkeler
@@ -47,6 +47,8 @@
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Kendi anahtarını getir belirtimi
+      href: byok-specification.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

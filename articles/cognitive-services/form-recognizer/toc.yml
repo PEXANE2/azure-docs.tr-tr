@@ -42,6 +42,8 @@
   items:
     - name: Logic Apps ile Form Tanıma'yı kullanma
       href: tutorial-form-recognizer-with-logic-apps.md
+    - name: Bilişsel Arama ile Form Tanıma
+      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Eğitim verileri kümesi oluşturma
