@@ -7,12 +7,8 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: 'C# kullanma'
-      href: Quickstart.md
-    - name: Node.js'yi kullanma
-      href: quickstart-nodejs.md
-    - name: Swift kullanma (iOS)
-      href: ios-quickstart.md
+    - name: İstemci kitaplığını kullanma
+      href: ./quickstarts/client-libraries.md
 - name: Öğreticiler
   items:
     - name: Tam Ekran Okuyucu’yu Başlatma (Python)

@@ -123,6 +123,8 @@
               href: howto-customize-ui.md
             - name: Uygulamanızı dışarı aktarma
               href: howto-use-app-templates.md
+            - name: Uygulamanın durumunu izleme
+              href: howto-monitor-application-health.md
         - name: Başka yerlerden yönetme
           items:
             - name: Azure portalından yönetme

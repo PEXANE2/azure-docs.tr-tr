@@ -50,6 +50,8 @@
               href: database/advanced-data-security.md
             - name: Gelişmiş Tehdit Koruması
               href: database/threat-detection-overview.md
+            - name: Veri bulma ve sınıflandırma
+              href: database/data-discovery-and-classification-overview.md
             - name: Dinamik veri maskeleme
               href: database/dynamic-data-masking-overview.md
             - name: SQL Güvenlik Açığı Değerlendirmesi
@@ -73,8 +75,6 @@
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: Kendi Anahtarını Getir (KAG)
                   href: database/transparent-data-encryption-byok-overview.md
-                - name: Veri bulma ve sınıflandırma
-                  href: database/data-discovery-and-classification-overview.md
         - name: İş sürekliliği
           displayName: 'Backup, back up, restore, recovery'
           items:

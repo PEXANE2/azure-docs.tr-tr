@@ -90,7 +90,7 @@
 - name: Başvuru
   items:
     - name: Azure CLI Eklentisi
-      href: spring-cloud-cli-reference.md
+      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
     - name: Kaynaklar
       href: spring-cloud-resources.md
     - name: Sık Sorulan Sorular

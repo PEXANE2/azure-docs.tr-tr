@@ -199,8 +199,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Örnek Olay İncelemeleri
       href: data-factory-customer-case-studies.md
-    - name: Öğrenme yolu
-      href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
     - name: Microsoft Soru-Cevap soru sayfası
       href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
     - name: Fiyatlandırma

@@ -92,6 +92,8 @@
       href: template-samples.md
     - name: Kod örnekleri
       href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
+    - name: Azure İlkesi yerleşik ilkeler
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Event Grid terminolojisi
