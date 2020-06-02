@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 9606bf0108186cd73adbdb38aef3ac428da229d6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828415"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266126"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Güvenlik bilgilerini kullanarak iş veya okul parolanızı sıfırlayın
 
 İş veya okul parolanızı unuttuysanız, kuruluşunuzda hiç parola yoksa veya hesabınızı kilitlediyseniz, iş veya okul parolanızı sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz. Bilgilerinizi ayarlayabilmeniz ve [kendi parolanızı sıfırlayabilmeniz](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register)için yöneticinizin bu özelliği açmanız gerekir.
 
-Parolanızı biliyorsanız, ancak bunu değiştirmek istiyorsanız, bu makalenin [parola adımlarınızı değiştirme](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) başlıklı bölüme bakın.
+Parolanızı biliyorsanız ve değiştirmek istiyorsanız, bu makalenin [parola adımlarınızı değiştirme](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) başlıklı bölüme bakın.
 
 >[!Important]
 >Bu makale, unutulan veya bilinmeyen bir iş veya okul hesabı parolasını sıfırlama kullanmaya çalışan kullanıcılara yöneliktir. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı açma hakkında bilgi için bkz. [Azure AD self servis parola sıfırlama ve diğer makalelere dağıtım](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
@@ -103,7 +103,7 @@ Azure Active Directory (Azure AD) Hesabınıza erişemiyorsanız aşağıdakiler
 
      Hesabınıza hala erişemiyorsanız, daha fazla yardım için kuruluşunuzun yöneticisiyle iletişim kurmanız gerekir.
 
-Parolanızı sıfırladıktan sonra, "Microsoft 'un adına your_organization> gibi bir hesaptan gelen bir onay e-postası alabilirsiniz \< *your_organization* ." Benzer bir e-posta alırsanız ancak parolanızı kısa süre önce sıfırlamadıysanız, kuruluşunuzun yöneticisiyle hemen iletişim kurmanız gerekir.
+Parolanızı sıfırladıktan sonra, "Microsoft adına Microsoft" gibi bir hesaptan gelen bir onay e-postası alabilirsiniz \<*your_organization*> . Benzer bir e-posta alırsanız ancak parolanızı kısa süre önce sıfırlamadıysanız, kuruluşunuzun yöneticisiyle hemen iletişim kurmanız gerekir.
 
 ## <a name="how-to-change-your-password"></a>Parolanızı değiştirme
 

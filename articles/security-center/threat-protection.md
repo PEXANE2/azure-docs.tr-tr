@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744170"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267163"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde tehdit koruması
 
@@ -162,11 +162,15 @@ Daha fazla bilgi için bkz.
 
 ## <a name="threat-protection-for-azure-storage"></a>Azure depolama için tehdit koruması<a name="azure-storage"></a>
 
-Depolama için Gelişmiş tehdit koruması, depolama hesaplarına erişmeye veya açıktan yararlanmaya yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılar. Bu koruma katmanı, güvenlik uzmanı olmanıza gerek kalmadan tehditleri sağlamanıza olanak tanır ve güvenlik izleme sistemlerinizi yönetmenize yardımcı olur.
+Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına erişmeye veya açıktan yararlanmaya yönelik olağan dışı ve zararlı olabilecek girişimleri algılar. Bu koruma katmanı, güvenlik uzmanı olmanıza gerek kalmadan tehditleri sağlamanıza olanak tanır ve güvenlik izleme sistemlerinizi yönetmenize yardımcı olur. 
 
-Azure depolama için Gelişmiş tehdit koruması Şu anda yalnızca [BLOB depolama alanı](https://azure.microsoft.com/services/storage/blobs/)için kullanılabilir. 
+Güvenlik uyarıları, depolama hesabınızda şüpheli etkinlikler olduğunda veya anormal davranış algılandığında tetiklenir. Şüpheli etkinlikler, bir blob 'un kötü amaçlı yazılımdan şüphelenildiği bir blob karşıya yüklenmesini içerebilir. Anormal davranış uyarıları, bir depolama hesabına erişim deseninin değişikliklerini içerir.
 
-Bu hizmet tüm genel bulutlarda ve ABD kamu bulutlarında kullanılabilir, ancak başka bir egeign veya Azure Kamu bulut bölgesi yoktur.
+Uyarılar, bunları tetikleyen olayın ayrıntılarını ve tehditleri İnceleme ve düzeltme önerilerini içerir.
+
+Azure depolama için tehdit koruması Şu anda yalnızca [BLOB depolama alanı](https://azure.microsoft.com/services/storage/blobs/)için kullanılabilir. 
+
+Bu hizmet tüm genel bulutlarda ve ABD kamu bulutlarında kullanılabilir, ancak başka bir egeign veya Azure Kamu bulut bölgesi yoktur. 
 
 30 günlük ücretsiz deneme sürümü de dahil olmak üzere fiyatlandırma ayrıntıları için bkz. [Azure Güvenlik Merkezi fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 

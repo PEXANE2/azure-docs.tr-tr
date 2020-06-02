@@ -12,24 +12,24 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: ed7cd7db24e26ea8705628916e31ce95b5c17a6e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: e0554711aa6db436bc0c3076ec468555c47fff39
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189010"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267265"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Hızlı başlangıç: bağlanmak ve sorgulamak için Visual Studio Code kullanma 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 [Visual Studio Code](https://code.visualstudio.com/docs) , Linux, MacOS ve Windows için bir grafik kod düzenleyicisidir. SQL Server örneği, Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'teki bir veritabanını sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler. Bu hızlı başlangıçta, Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak için Visual Studio Code kullanacaksınız ve sonra verileri sorgulamak, eklemek, güncelleştirmek ve silmek için Transact-SQL deyimlerini çalıştırmanız gerekir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure SQL veritabanı veya SQL yönetilen örneği içindeki bir veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
+- Azure SQL veritabanı veya Azure SQL yönetilen örneği içindeki bir veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
-  || SQL Veritabanı | SQL Yönetilen Örnek |
+  || Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
   |:--- |:--- |:---|
   | Oluştur| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) |
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |

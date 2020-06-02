@@ -9,20 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 02/25/2020
+ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: c54d3187af1faee3a47a794dcf5b9b91733e5592
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d6191a5f4dcfc3d25072e0cfa00418fb64311773
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683346"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248541"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı başlangıç: Azure Data Factory Kullanıcı arabirimini kullanarak veri fabrikası oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Geçerli sürüm](quickstart-create-data-factory-portal.md)
+> * [Güncel sürüm](quickstart-create-data-factory-portal.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -143,12 +143,13 @@ Bağlı hizmet ayarlarında, kaynak verileri içeren Azure Depolama hesabını b
     f. **Tamam**’ı seçin.   
 
     ![OutputDataset özelliklerini ayarlama](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
+
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma 
 Bu yordamda, giriş ve çıkış veri kümelerini kullanan kopyalama etkinliğiyle bir işlem hattı oluşturur ve doğrularsınız. Kopyalama etkinliği, giriş veri kümesi ayarlarında belirttiğiniz dosyadaki verileri çıkış veri kümesi ayarlarında belirttiğiniz dosyaya kopyalar. Giriş veri kümesi yalnızca bir klasörü belirtiyorsa (dosya adını belirtmiyorsa), kopyalama etkinliği kaynak klasördeki tüm dosyaları hedefe kopyalar. 
 
 1. **+**(Artı) düğmesini seçin ve ardından Işlem **hattı**' nı seçin. 
 
-1. **Genel** sekmesinde **Ad** için **CopyPipeline** değerini belirtin. 
+1. Genel panelinde **Özellikler**altında, **ad**için **copypipeline** ' yı belirtin. Sonra sağ üst köşedeki Özellikler simgesine tıklayarak paneli daraltın.
 
 1. **Etkinlikler** araç kutusunda **Taşı ve Dönüştür**’ü genişletin. **Etkinlikler** araç kutusundan **veri kopyalama** etkinliğini ardışık düzen Tasarımcısı yüzeyine sürükleyin. Ayrıca, **Etkinlikler** araç kutusunda etkinlikler için arama yapabilirsiniz. **Ad** için **CopyFromBlobToBlob** adını belirtin.
    ![Veri kopyalama etkinliği oluşturma](./media/quickstart-create-data-factory-portal/copy-activity.png)

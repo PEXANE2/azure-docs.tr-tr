@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 58f5d2e641cfe4913d6a06621b663d8a61cd00bb
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800282"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266772"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Azure üzerinde güvenli uygulamalar geliştirme
 Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -128,7 +128,7 @@ Dinamik uygulama güvenliği testi (DAVST), güvenlik açıklarını bulmak içi
 
 Bast, statik uygulama güvenliği testi 'nden (SAST) farklıdır. SAST araçları, kod yürütülemediği zaman güvenlik kusurunu bulmak için kaynak kodu veya derlenmiş kod sürümlerini analiz eder.
 
-Bir güvenlik uzmanı (bir [sızma Sınayıcısı](../fundamentals/pen-testing.md) veya güvenlik açığı denetçisi) ile birlikte, tercihen Bir güvenlik uzmanı yoksa, bir Web proxy tarayıcısı ve bazı eğitimlerle kendiniz de gerçekleştirebilirsiniz. Kodunuzda açık güvenlik sorunları sunmatığınızdan emin olmak için bir VAST tarayıcıyı erken takın. Web uygulaması güvenlik açığı tarayıcıları listesi için [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) sitesine bakın.
+Bir güvenlik uzmanı (bir [sızma Sınayıcısı](../fundamentals/pen-testing.md) veya güvenlik açığı denetçisi) ile birlikte, tercihen Bir güvenlik uzmanı yoksa, bir Web proxy tarayıcısı ve bazı eğitimlerle kendiniz de gerçekleştirebilirsiniz. Kodunuzda açık güvenlik sorunları sunmatığınızdan emin olmak için bir VAST tarayıcıyı erken takın. Web uygulaması güvenlik açığı tarayıcıları listesi için [OWASP](https://owasp.org/www-community/Vulnerability_Scanning_Tools) sitesine bakın.
 
 ### <a name="perform-fuzz-testing"></a>Belirsizlik testi gerçekleştir
 

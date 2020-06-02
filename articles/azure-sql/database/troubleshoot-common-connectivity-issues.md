@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 53bfe029038e9bf2a85cc8c571417be462fd4502
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4aa8d35e48c28cadecb6acc1f56ca6c44a145719
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188043"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266976"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>SQL veritabanı ve SQL yönetilen örneği 'nde geçici bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -357,7 +357,7 @@ Aşağıdaki EntLib60 sınıfları, yeniden deneme mantığı için özellikle k
 EntLib60 hakkındaki bilgilerin bazı bağlantıları aşağıda verilmiştir:
 
 - Ücretsiz kitap indirme: [Geliştirici Kılavuzu Microsoft Kurumsal kitaplığı, 2. sürümde](https://www.microsoft.com/download/details.aspx?id=41145).
-- En iyi uygulamalar: [yeniden deneme genel Kılavuzu](/architecture/best-practices/transient-faults) , yeniden deneme mantığı hakkında harika bir tartışmaya sahiptir.
+- En iyi uygulamalar: [yeniden deneme genel Kılavuzu](/azure/architecture/best-practices/transient-faults) , yeniden deneme mantığı hakkında harika bir tartışmaya sahiptir.
 - NuGet indirme: [Kurumsal kitaplık-geçici hata Işleme uygulama bloğu 6,0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>

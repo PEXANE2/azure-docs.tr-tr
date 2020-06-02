@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 9497e665d024b583c261ade3e6fb5393a9322ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0dd5c8cd61d1c7abf11d97e858fdc30d774e456
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759127"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259125"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure sanal makinelerinde özel veriler ve Cloud-Init
 
@@ -84,7 +84,7 @@ Azure Şu anda iki sağlama aracısını desteklemektedir:
 
 ## <a name="faq"></a>SSS
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>VM oluşturulduktan sonra özel verileri güncelleştirebilir miyim?
-Tek VM 'Lerde, VM modelindeki özel veriler güncelleştirilemez, ancak VMSS için, REST API aracılığıyla VMSS özel verilerini güncelleştirebilirsiniz (PS veya AZ CLı istemcileri için geçerli değildir). VMSS modelinde özel verileri güncelleştirdiğinizde:
+Tek VM 'Lerde, VM modelindeki özel veriler güncelleştirilemez, ancak VMSS için, [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) aracılığıyla VMSS özel verilerini GÜNCELLEŞTIREBILIRSINIZ (PS veya az CLI istemcileri için geçerli değildir). VMSS modelinde özel verileri güncelleştirdiğinizde:
 * VMSS 'deki mevcut örnekler, yalnızca yeniden yansıma oluşturuluncaya kadar güncelleştirilmiş özel verileri almaz.
 * VMSS yükseltilen mevcut örnekler güncelleştirilmiş özel verileri almaz.
 * Yeni örnekler yeni özel verileri alır.

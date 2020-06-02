@@ -410,6 +410,8 @@
               href: id-tokens.md
             - name: Erişim belirteçleri
               href: access-tokens.md
+            - name: UserInfo uç noktası
+              href: userinfo.md
             - name: Sertifika kimlik bilgileri
               href: active-directory-certificate-credentials.md
         - name: SAML 2.0 protokolü

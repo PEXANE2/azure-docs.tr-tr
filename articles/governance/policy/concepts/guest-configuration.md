@@ -3,16 +3,16 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ff24f14281712497798f2c5231a8d98d7d89055
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f37364f62550a76360ea0dbb35b92f8aac67f22f
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684285"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259159"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Ilkesinin Konuk yapılandırmasını anlama
 
-Azure Ilkesi, Azure kaynaklarını denetlemeye ve yeniden [düzeltmelere](../how-to/remediate-resources.md) göre, bir makine içindeki ayarları denetleyebilir. Doğrulama, Konuk Yapılandırması uzantısı ve istemcisi tarafından gerçekleştirilir. Uzantı, istemci aracılığıyla şunun gibi ayarları doğrular:
+Azure Ilkesi, bir makine içindeki ayarları denetleyebilir. Doğrulama, Konuk Yapılandırması uzantısı ve istemcisi tarafından gerçekleştirilir. Uzantı, istemci aracılığıyla şunun gibi ayarları doğrular:
 
 - İşletim sisteminin yapılandırması
 - Uygulama yapılandırması veya varlığı
@@ -46,8 +46,8 @@ Aşağıdaki tabloda, desteklenen her bir işletim sisteminde kullanılan yerel 
 
 |İşletim sistemi|Doğrulama Aracı|Notlar|
 |-|-|-|
-|Windows|[Windows PowerShell Istenen durum yapılandırması](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby ve Python makinede yoksa, Konuk yapılandırma uzantısı tarafından yüklenir. |
+|Windows|[PowerShell Istenen durum yapılandırması](/powershell/scripting/dsc/overview/overview) v2| Yan yana yalnızca Azure Ilkesi tarafından kullanılan bir klasöre yüklenir. Windows PowerShell DSC ile çakışmaz. PowerShell Core, sistem yoluna eklenmedi.|
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Chef InSpec Version 2.2.61 'i varsayılan konuma yükleyip sistem yoluna eklenir. Ruby ve Python dahil InSpec paketinin bağımlıtları de yüklenir. |
 
 ### <a name="validation-frequency"></a>Doğrulama sıklığı
 
@@ -87,7 +87,7 @@ Uzantıyı sanal makinelere ekleyen **Deployifnotexists** ilkeleri Ayrıca, sist
 
 ## <a name="guest-configuration-definition-requirements"></a>Konuk yapılandırma tanımı gereksinimleri
 
-Konuk yapılandırması tarafından çalıştırılan her denetim, bir **Deployifnotexists** tanımı ve bir **auditınotexists** tanımı olmak üzere iki ilke tanımı gerektirir.
+Konuk yapılandırması tarafından çalıştırılan her denetim, bir **Deployifnotexists** tanımı ve bir **auditınotexists** tanımı olmak üzere iki ilke tanımı gerektirir. **Deployifnotexists** ilke tanımları, her makinede denetim gerçekleştirmeye yönelik bağımlılıkları yönetir.
 
 **Deployifnotexists** ilke tanımı, aşağıdaki öğeleri doğrular ve düzeltir:
 

@@ -46,6 +46,8 @@
           href: test-createuidefinition.md
         - name: Tam zamanında erişim isteme
           href: request-just-in-time-access.md
+        - name: Mevcut sanal ağı ekleme
+          href: existing-vnet-integration.md
         - name: Yönetilen kaynakları güncelleştirme
           href: update-managed-resources.md
         - name: Uygulama tanımı yayımlamak için portalı kullanma

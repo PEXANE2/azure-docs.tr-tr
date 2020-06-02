@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 31d326b19c560981531ebf0716b614046b2337b6
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 1b2db92106e0dad79c90188c904b07d7bb1d7212
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217257"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258649"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Işlevleri ile Azure statik Web Apps önizlemesine API ekleme
 
@@ -31,7 +31,7 @@ Azure Işlevleri ile tümleştirme yoluyla, Azure statik Web Apps sunucusuz API 
 
 Aşağıdaki adımlarda, yeni bir depoyu oluşturma ve dosyaları bilgisayarınıza kopyalama işlemleri gösterilmektedir.
 
-1. https://github.com/staticwebdev/vanilla-basic/generateYeni bir depo oluşturmak için ' a gidin.
+1. GitHub ' da oturum açtığınızdan emin olun ve https://github.com/staticwebdev/vanilla-basic/generate Yeni bir depo oluşturmak için ' a gidin.
 1. _Depo adı_ kutusuna **My-Vanilla-API**yazın.
 1. **Şablondan depo oluştur**' a tıklayın.
 

@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258778"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259482"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Küme kullanarak bir Service Fabric kümesini açıkla Kaynak Yöneticisi
 Azure Service Fabric 'ın Küme Kaynak Yöneticisi özelliği, bir kümeyi açıklamak için çeşitli mekanizmalar sağlar:
@@ -83,9 +83,9 @@ Aşağıdaki diyagramda, üç hata etki alanı üzerinde dizili üç yükseltme 
 
 Çok sayıda yükseltme etki alanı sağlamak için olumlu ve olumsuz yönleri vardır. Daha fazla yükseltme etki alanı, yükseltmenin her bir adımının daha ayrıntılı olduğu ve daha az sayıda düğüm veya hizmeti etkilediği anlamına gelir. Aynı anda, sisteme daha az dalgalanmaya yönelik daha az sayıda hizmetin taşınması gerekir. Bu, hizmetin daha az bir yükseltme sırasında tanıtılan herhangi bir sorundan etkilenmemesi nedeniyle güvenilirliği artırmaya eğilimindedir. Daha fazla yükseltme etki alanı, yükseltmenin etkisini işlemek için diğer düğümlerde daha az kullanılabilir arabelleğe ihtiyacınız olduğu anlamına da gelir. 
 
-Örneğin, beş yükseltme etki alanına sahipseniz, her birinde düğümleri trafiğinizin yaklaşık olarak yüzde 20 ' sini işliyor. Yükseltme için bu yükseltme etki alanını kapatmanız gerekiyorsa, bu yükün genellikle bir yere gitmesi gerekir. Kalan dört yükseltme etki alanına sahip olduğunuzdan, her birinin toplam trafiğin yüzde 5 ' inin üzerinde yer alan olması gerekir. Daha fazla yükseltme etki alanı, kümedeki düğümlerde daha az arabelleğe sahip olmanız gerektiği anlamına gelir. 
+Örneğin, beş yükseltme etki alanına sahipseniz, her birinde düğümleri trafiğinizin yaklaşık olarak yüzde 20 ' sini işliyor. Yükseltme için bu yükseltme etki alanını kapatmanız gerekiyorsa, bu yükün genellikle bir yere gitmesi gerekir. Kalan dört yükseltme etki alanına sahip olduğunuz için, her birinin toplam trafiğin yüzde 25 ' ünü alan olması gerekir. Daha fazla yükseltme etki alanı, kümedeki düğümlerde daha az arabelleğe sahip olmanız gerektiği anlamına gelir.
 
-Bunun yerine 10 yükseltme etki alanı olup olmadığını göz önünde bulundurun. Bu durumda, her yükseltme etki alanı toplam trafiğin yalnızca yüzde 10 ' unu işliyor. Küme üzerinde bir yükseltme adımları olduğunda, her etki alanının Toplam trafiğin yalnızca yüzde 1,1 ' unun üzerinde yer alan olması gerekir. Daha az ayrılmış kapasiteye ihtiyaç duyduğunuzda, daha fazla yükseltme etki alanı genellikle düğümlerinizi daha yüksek kullanım sırasında çalıştırmanıza izin verir. Hata etki alanları için de aynı değer geçerlidir.  
+Bunun yerine 10 yükseltme etki alanı olup olmadığını göz önünde bulundurun. Bu durumda, her yükseltme etki alanı toplam trafiğin yalnızca yüzde 10 ' unu işliyor. Küme üzerinde bir yükseltme adımları olduğunda, her etki alanının Toplam trafiğin yalnızca yüzde 11 ' inin üzerinde yer olması gerekir. Daha az ayrılmış kapasiteye ihtiyaç duyduğunuzda, daha fazla yükseltme etki alanı genellikle düğümlerinizi daha yüksek kullanım sırasında çalıştırmanıza izin verir. Hata etki alanları için de aynı değer geçerlidir.  
 
 Birçok yükseltme etki alanına sahip olmanın dezavantajı, yükseltmelerin daha uzun sürme eğilimindedir. Service Fabric, bir yükseltme etki alanı tamamlandıktan sonra kısa bir süre bekler ve sonraki bir sürüme yükseltmeye başlamadan önce denetimleri gerçekleştirir. Bu gecikmeler, yükseltme devam etmeden önce yükseltme tarafından tanıtılan sorunları saptamaya olanak sağlar. Zorunluluğunu getirir, kötü değişikliklerin aynı anda hizmetin çok fazla etkilemesini önlediği için kabul edilebilir.
 
@@ -363,7 +363,7 @@ Bu yapılandırma türlerini desteklemek için Service Fabric düğümlere uygul
 ### <a name="built-in-node-properties"></a>Yerleşik düğüm özellikleri
 Service Fabric, otomatik olarak kullanılabilecek bazı varsayılan düğüm özelliklerini tanımlar, böylece bunları tanımlamanız gerekmez. Her düğümde tanımlanan varsayılan Özellikler **NodeType** ve **düğüdir**. 
 
-Örneğin, olarak `"(NodeType == NodeType03)"`bir yerleştirme kısıtlaması yazabilirsiniz. **NodeType** yaygın olarak kullanılan bir özelliktir. Bir makine türü ile 1:1 ' a karşılık geldiği için yararlıdır. Her makine türü geleneksel n katmanlı bir uygulamadaki bir iş yükü türüne karşılık gelir.
+Örneğin, olarak bir yerleştirme kısıtlaması yazabilirsiniz `"(NodeType == NodeType03)"` . **NodeType** yaygın olarak kullanılan bir özelliktir. Bir makine türü ile 1:1 ' a karşılık geldiği için yararlıdır. Her makine türü geleneksel n katmanlı bir uygulamadaki bir iş yükü türüne karşılık gelir.
 
 <center>
 
@@ -416,7 +416,7 @@ ClusterManifest. xml dosyasındaki düğüm türü için aşağıdaki düğüm �
 Aşağıdaki örnek, tek başına dağıtımlar veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla tanımlanan düğüm özelliklerini gösterir. 
 
 > [!NOTE]
-> Azure Resource Manager şablonunuzda, düğüm türü genellikle parametrelenir. NodeType01 yerine gibi `"[parameters('vmNodeType1Name')]"` görünür.
+> Azure Resource Manager şablonunuzda, düğüm türü genellikle parametrelenir. NodeType01 yerine gibi görünür `"[parameters('vmNodeType1Name')]"` .
 >
 
 ```json
@@ -447,7 +447,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceType -Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementConstraint "HasSSD == true && SomeProperty >= 4"
 ```
 
-Tüm NodeType01 düğümleri geçerliyse, kısıtlama `"(NodeType == NodeType01)"`ile bu düğüm türünü de seçebilirsiniz.
+Tüm NodeType01 düğümleri geçerliyse, kısıtlama ile bu düğüm türünü de seçebilirsiniz `"(NodeType == NodeType01)"` .
 
 Hizmetin yerleştirme kısıtlamaları, çalışma zamanı sırasında dinamik olarak güncelleştirilir. Gerekirse, bir hizmeti kümedeki etrafında taşıyabilir, gereksinimleri ekleyebilir ve kaldırabilir ve benzeri devam edebilirsiniz. Service Fabric, bu tür değişiklikler yapıldığında bile hizmetin çalışır durumda kalmasını sağlar.
 

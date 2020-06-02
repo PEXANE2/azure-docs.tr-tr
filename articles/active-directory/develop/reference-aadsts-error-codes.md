@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 51567ff07930599b0c13d8a9546ebeca396c4b45
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993550"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266602"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD kimlik doğrulaması ve yetkilendirme hatası kodları
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) güvenlik belirteci hizmeti 'nden (STS) dönd�
 | Hata Kodu         | Açıklama        | İstemci eylemi    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Eksik gerekli bir parametre gibi protokol hatası. | İsteği onarın ve yeniden gönderin.|
-| `invalid_grant`    | Bazı kimlik doğrulama malzemeleri (auth kodu, yenileme belirteci, erişim belirteci, PKCE çekişmesi) geçersiz, çözümlenemez, eksik veya başka bir şekilde unuseable | `/authorize`Yeni bir yetkilendirme kodu almak için uç noktaya yeni bir istek deneyin.  Uygulamanın protokollerin kullanımını gözden geçirmeyi ve doğrulamayı düşünün. |
+| `invalid_grant`    | Bazı kimlik doğrulama malzemeleri (auth kodu, yenileme belirteci, erişim belirteci, PKCE çekişmesi) geçersiz, çözümlenemez, yok veya başka bir şekilde kullanılamıyor | `/authorize`Yeni bir yetkilendirme kodu almak için uç noktaya yeni bir istek deneyin.  Uygulamanın protokollerin kullanımını gözden geçirmeyi ve doğrulamayı düşünün. |
 | `unauthorized_client` | Kimliği doğrulanmış istemci, bu yetkilendirme verme türünü kullanma yetkisine sahip değil. | Bu durum genellikle istemci uygulaması Azure AD 'de kayıtlı olmadığında veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir. |
 | `invalid_client` | İstemci kimlik doğrulaması başarısız oldu.  | İstemci kimlik bilgileri geçerli değil. Bu uygulamayı onarmak için, uygulama Yöneticisi kimlik bilgilerini güncelleştirir.   |
 | `unsupported_grant_type` | Yetkilendirme sunucusu yetkilendirme verme türünü desteklemiyor. | İstekteki izin türünü değiştirin. Bu tür bir hata yalnızca geliştirme sırasında ve ilk test sırasında algılanarak gerçekleştirilmelidir. |
@@ -126,8 +126,8 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided-kiracı tanımlama bilgileri istekte bulunamadı veya belirtilen kimlik bilgileri tarafından kapsanıyor. Kullanıcı, sorunu çözmeye yardımcı olmak için kiracı yöneticisine bağlanabilir. |
 | AADSTS50061 | Signoutınvalidrequest-oturum kapatma isteği geçersiz. |
 | AADSTS50064 | CredentialAuthenticationError-Kullanıcı adı veya parola üzerinde kimlik bilgisi doğrulaması başarısız oldu. |
-| AADSTS50068 | Signoutınitiatornotkatılımcı-SignOut başarısız oldu. SignOut 'i başlatan uygulama geçerli oturumda bir katılımcı değil. |
-| AADSTS50070 | Signoutunknownsessionıdentifier-SignOut başarısız oldu. SignOut isteği, mevcut oturumunuzla eşleşmeyen bir ad tanımlayıcısı belirtti. |
+| AADSTS50068 | Signoutınitiatornotkatılımcı-oturumu kapatma başarısız oldu. Oturumu kapatma işlemi başlatılan uygulama geçerli oturumda bir katılımcı değildir. |
+| AADSTS50070 | Signoutunknownsessionıdentifier-oturumu kapatma başarısız oldu. Oturumu kapatma isteği, mevcut oturumla eşleşmeyen bir ad tanımlayıcısı belirtti. |
 | AADSTS50071 | Signoutmessagedoldu-oturum kapatma isteğinin süresi doldu. |
 | AADSTS50072 | Userstrongauthkayıtlarını Mentrequiredınterrupt-kullanıcının İkinci faktör kimlik doğrulamasına (etkileşimli) kaydolması gerekir. |
 | AADSTS50074 | Userstrongauthclientauthnrequiredınterrupt-güçlü kimlik doğrulaması gereklidir ve Kullanıcı MFA sınamasını geçirmedi. |
@@ -173,14 +173,14 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS50187 | Deviceınformationnotsaðlanan-hizmet, cihaz kimlik doğrulaması yapamadı. |
 | AADSTS50196 | Loopalgılanan-bir istemci döngüsü algılandı. Belirtecin önbelleğe alma işleminin uygulandığından ve hata koşullarının doğru işlendiğinden emin olmak için uygulamanın mantığını denetleyin.  Uygulama, çok kısa bir süre içinde çok fazla sayıda istek yaptı. Bu, hatalı durumda olduğunu veya belirteç isteğinde bulunduğunu gösterir. |
 | AADSTS50197 | Conflictıngidentities-Kullanıcı bulunamadı. Yeniden oturum açmayı deneyin. |
-| AADSTS50199 | Cmsiınterrupt-güvenlik nedenleriyle bu istek için Kullanıcı onayı gerekir.  Bu bir "interaction_required" hatası olduğundan, istemcinin etkileşimli kimlik doğrulaması yapması gerekir.  Bu durum, yerel bir uygulama için belirteç istemek üzere kullanılan bir sistem Web görünümü olduğundan, kullanıcının oturum açmak istediği uygulama olup olmadığını istemesi gerekir.|
+| AADSTS50199 | Cmsiınterrupt-güvenlik nedenleriyle bu istek için Kullanıcı onayı gerekir.  Bu bir "interaction_required" hatası olduğundan, istemcinin etkileşimli kimlik doğrulaması yapması gerekir.  Bu durum, yerel bir uygulama için belirteç istemek üzere kullanılan bir sistem Web görünümü olduğundan, kullanıcının oturum açmak istediği uygulama olup olmadığını istemesi gerekir. Bu istemden kaçınmak için, yeniden yönlendirme URI 'SI aşağıdaki güvenli listesinin bir parçası olmalıdır: <br />http://<br />https://<br />msauth://(yalnızca iOS)<br />msauthv2://(yalnızca iOS)<br />Chrome-uzantı://(yalnızca masaüstü Chrome tarayıcısı) |
 | AADSTS51000 | RequiredFeatureNotEnabled-özellik devre dışı bırakıldı. |
 | AADSTS51001 | Domainhintmustbesun-Domain ipucu, şirket içi güvenlik tanımlayıcısı veya şirket içi UPN ile birlikte bulunmalıdır. |
 | AADSTS51004 | UserAccountNotInDirectory-Kullanıcı hesabı dizinde yok. |
 | AADSTS51005 | TemporaryRedirect-istenen bilgilerin konum üstbilgisinde belirtilen URI 'de bulunduğunu gösteren HTTP durum 307 ' e eşdeğerdir. Bu durumu aldığınızda, Yanıtla ilişkili konum başlığını izleyin. Özgün istek yöntemi gönderilirken, yeniden yönlendirilen istek POST yöntemini de kullanacaktır. |
 | AADSTS51006 | ForceReauthDueToInsufficientAuth-tümleşik Windows kimlik doğrulaması gerekir. Kullanıcı, tümleşik Windows kimlik doğrulaması talebi eksik olan bir oturum belirteci kullanarak oturum açtı. Kullanıcıyı yeniden oturum açmasını isteyin. |
 | AADSTS52004 | Delegationyok Notexistforlinkedın-Kullanıcı LinkedIn kaynaklarına erişim onayı sağlamamıştır. |
-| AADSTS53000 | Devicenotuyumlu-koşullu erişim ilkesi için uyumlu bir cihaz gerekir ve cihaz uyumlu değildir. Kullanıcı, cihazlarını Intune gibi onaylanmış bir MDM sağlayıcısına kaydetmelidir. |
+| AADSTS53000 | Devicenotuyumlu-koşullu erişim ilkesi için uyumlu bir cihaz gerekir ve cihaz uyumlu değildir. Kullanıcının cihazını Intune gibi onaylı bir MDM sağlayıcısına kaydetmesi gerekir. |
 | AADSTS53001 | Devicenotdomainkatılmış-koşullu erişim ilkesi, etki alanına katılmış bir cihaz gerektirir ve cihaz etki alanına katılmış değildir. Kullanıcının etki alanına katılmış bir cihaz kullanmasını sağlayabilirsiniz. |
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp-kullanılan uygulama, koşullu erişim için onaylanan bir uygulama değil. Kullanıcının erişim sağlamak için kullanılacak onaylanan uygulamalar listesinden uygulamalardan birini kullanması gerekir. |
 | AADSTS53003 | BlockedByConditionalAccess-erişim koşullu erişim ilkeleri tarafından engellendi. Erişim ilkesi belirteç verilmesine izin vermiyor. |
@@ -314,7 +314,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS700022 | Invalidmultipleresourcesscope-giriş parametresi kapsamı için girilen değer, birden fazla kaynak içerdiğinden geçerli değil. |
 | AADSTS700023 | Invalidresourcelessscope-girilen parametre kapsamı için girilen değer, erişim belirteci isteğinde geçerli değildir. |
 | AADSTS7000215 | Geçersiz istemci parolası belirtildi. Geliştirici hatası-uygulama, gerekli veya doğru kimlik doğrulama parametreleri olmadan oturum açmaya çalışıyor.|
-| AADSTS7000222| Invalidclientsecretexpiredkeyssaðlanan-belirtilen istemci gizli anahtarı anahtarlarının geçerliliği dolmuştur. Uygulamanız için yeni anahtarlar oluşturmak üzere Azure portalını ziyaret edin veya ek güvenlik için sertifika kimlik bilgilerini kullanmayı düşünün:https://aka.ms/certCreds |
+| AADSTS7000222 | Invalidclientsecretexpiredkeyssaðlanan-belirtilen istemci gizli anahtarı anahtarlarının geçerliliği dolmuştur. Uygulamanız için yeni anahtarlar oluşturmak üzere Azure portal ziyaret edin veya ek güvenlik için sertifika kimlik bilgilerini kullanmayı düşünün:[https://aka.ms/certCreds](https://aka.ms/certCreds) |
 | AADSTS700005 | Invalidgrantredeemagaınstyanlışlıkla Gtenant tarafından sağlanmış yetkilendirme kodu, diğer kiracılarda kullanılmak üzere tasarlanmıştır, bu nedenle reddedilir. OAuth2 yetkilendirme kodu, (/Common veya/{tenant-ID} için uygun olan) için alınan aynı kiracıya göre kullanılmalıdır |
 | AADSTS1000000 | UserNotBoundError-bağlama API 'SI, Azure AD kullanıcısının, henüz gerçekleşmemiş bir dış ıDP ile kimlik doğrulaması yapmasını gerektirir. |
 | AADSTS1000002 | BindCompleteInterruptError-bağlama başarıyla tamamlandı, ancak kullanıcının bilgilendirilmesi gerekiyor. |

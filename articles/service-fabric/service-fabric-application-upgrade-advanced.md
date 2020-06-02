@@ -3,12 +3,12 @@ title: Gelişmiş uygulama yükseltme konuları
 description: Bu makalede, Service Fabric uygulamasını yükseltmeyle ilgili bazı gelişmiş konular ele alınmaktadır.
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414495"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263100"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Uygulama yükseltmesini Service Fabric: gelişmiş konular
 
@@ -20,18 +20,18 @@ Benzer şekilde, hizmet türleri bir yükseltmeden bir uygulamanın parçası ol
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Durum bilgisi olmayan hizmet planlanmış kapalı kalma süresi sırasında bağlantı kesintilerine
 
-Uygulama/küme yükseltme veya düğüm devre dışı bırakma gibi planlı durum bilgisi olmayan örnek için bağlantılar, örnek bittikten sonra, zorlamalı bağlantı kapanışlarını elde eden bir şekilde kaldırılır.
+Uygulama/küme yükseltme veya düğüm devre dışı bırakma gibi planlı durum bilgisi olmayan örnek için bağlantılar, kullanıma alındıktan sonra kaldırılan uç nokta kaldırılır ve bu da zorla bağlantı kapanışları elde edilir.
 
-Bu sorunu önlemek için, hizmet yapılandırmasında bir *örnek kapatma gecikme süresi* ekleyerek, küme içindeki diğer hizmetlerden gelen istekleri alırken boşaltma 'Yı ve ters proxy 'yi kullanarak ya da uç noktaları güncelleştirmek için bildirim modeliyle API 'yi Çözümle ' yi kullanarak *requestdrenajı* (Önizleme) özelliğini yapılandırın. Bu, örneği kapatmadan önce, durum bilgisiz örnek tarafından tanıtılan bitiş noktasının, gecikmeden *önce başlamadan önce* kaldırılmasını sağlar. Bu gecikme, örnek gerçekten kapatmadan önce mevcut isteklerin düzgün şekilde boşaltılabilmesini sağlar. İstemciler, gecikme süresini yeniden çözümleyebilmeleri ve örneğe yeni istekler gönderilmesini önlemek için gecikmeyi başlatma sırasında geri çağırma işlevi tarafından uç nokta değişikliği hakkında bilgilendirilir.
+Bu durumu önlemek için, hizmet yapılandırmasında bir *örnek kapatma gecikme süresi* ekleyerek, küme içinden mevcut isteklerin ortaya çıkarılan uç noktalar üzerinde boşalmasına izin vermek üzere, *requestdrenajı* özelliğini yapılandırın. Bu, örneği kapatmadan önce gecikmeden *önce* durum bilgisiz örneği tarafından tanıtılan uç nokta kaldırılarak gerçekleştirilir. Bu gecikme, örnek gerçekten kapatmadan önce mevcut isteklerin düzgün şekilde boşaltılabilmesini sağlar. İstemciler, gecikme süresini yeniden çözümleyebilmeleri ve örneğe yeni istekler gönderilmesini önlemek için gecikmeyi başlatma sırasında geri çağırma işlevi tarafından uç nokta değişikliği hakkında bilgilendirilir. Bu istekler, uç noktaları güncelleştirmek için [ters proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) kullanan istemcilerden veya bildirim modeliyle ([Servicenocertificate ationfilterdescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) hizmet uç noktası çözümleme API 'leri kullanılarak kaynak olabilir.
 
 ### <a name="service-configuration"></a>Hizmet yapılandırması
 
 Hizmet tarafında gecikmeyi yapılandırmanın birkaç yolu vardır.
 
- * **Yeni bir hizmet oluştururken**şunu belirtin `-InstanceCloseDelayDuration`:
+ * **Yeni bir hizmet oluştururken**şunu belirtin `-InstanceCloseDelayDuration` :
 
     ```powershell
-    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
  * **Uygulama bildiriminde bulunan varsayılanlar bölümünde hizmeti tanımlarken**, `InstanceCloseDelayDurationSeconds` özelliği atayın:
@@ -42,10 +42,37 @@ Hizmet tarafında gecikmeyi yapılandırmanın birkaç yolu vardır.
           </StatelessService>
     ```
 
- * **Mevcut bir hizmeti güncelleştirirken**şunu belirtin `-InstanceCloseDelayDuration`:
+ * **Mevcut bir hizmeti güncelleştirirken**şunu belirtin `-InstanceCloseDelayDuration` :
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+ * **ARM şablonu aracılığıyla mevcut bir hizmeti oluştururken veya güncelleştirirken**, `InstanceCloseDelayDuration` değeri belirtin (desteklenen en düşük apı sürümü: 2019-11-01-Önizleme):
+
+    ```ARM template to define InstanceCloseDelayDuration of 30seconds
+    {
+      "apiVersion": "2019-11-01-preview",
+      "type": "Microsoft.ServiceFabric/clusters/applications/services",
+      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
+      "location": "[variables('clusterLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applications/', parameters('applicationName'))]"
+      ],
+      "properties": {
+        "provisioningState": "Default",
+        "serviceKind": "Stateless",
+        "serviceTypeName": "[parameters('serviceTypeName')]",
+        "instanceCount": "-1",
+        "partitionDescription": {
+          "partitionScheme": "Singleton"
+        },
+        "serviceLoadMetrics": [],
+        "servicePlacementPolicies": [],
+        "defaultMoveCost": "",
+        "instanceCloseDelayDuration": "00:00:30.0"
+      }
+    }
     ```
 
 ### <a name="client-configuration"></a>İstemci yapılandırması
@@ -55,7 +82,7 @@ Değişiklik bildirimi, uç noktaların değiştiği bir göstergesidir, istemci
 
 ### <a name="optional-upgrade-overrides"></a>İsteğe bağlı yükseltme geçersiz kılmaları
 
-Hizmet başına varsayılan gecikme sürelerini ayarlamanın yanı sıra, aynı (`InstanceCloseDelayDurationSec`) seçeneğini kullanarak uygulama/küme yükseltmesi sırasında gecikme süresini de geçersiz kılabilirsiniz:
+Hizmet başına varsayılan gecikme sürelerini ayarlamanın yanı sıra, aynı () seçeneğini kullanarak uygulama/küme yükseltmesi sırasında gecikme süresini de geçersiz kılabilirsiniz `InstanceCloseDelayDurationSec` :
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
@@ -63,15 +90,17 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-Gecikme süresi yalnızca çağrılan yükseltme örneği için geçerlidir ve farklı hizmet gecikmesi yapılandırmalarının hiçbir şekilde değiştirilmesine izin vermez. Örneğin, önceden yapılandırılmış tüm yükseltme gecikmelerini atlamak için bir gecikme `0` belirtmek üzere bunu kullanabilirsiniz.
+Geçersiz kılınan gecikme süresi yalnızca çağrılan yükseltme örneği için geçerlidir ve farklı hizmet gecikmesi yapılandırmalarının hiçbir şekilde değiştirilmesine izin vermez. Örneğin, `0` önceden yapılandırılmış tüm yükseltme gecikmelerini atlamak için bir gecikme belirtmek üzere bunu kullanabilirsiniz.
 
 > [!NOTE]
-> İstekleri boşaltma ayarı, Azure yük dengeleyiciden gelen istekler için kabul edilmez. Çağıran hizmet, şikayet tabanlı çözüm kullanıyorsa ayar desteklenmez.
+> * İstekleri boşaltma ayarları, Azure Yük dengeleyicinin, boşaltma yapılmakta olan uç noktalara yeni istekler göndermesini engelleyemez.
+> * Şikayet tabanlı bir çözüm mekanizması, bir hatadan sonra bir hizmet çözümlemesini tetiklediği için isteklerin düzgün boşaltılmasına neden olmaz. Daha önce açıklandığı gibi, bu, bunun yerine [Servicenocertificate. Descfilterdescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)kullanılarak Endpoint değişiklik bildirimlerine abone olmak için geliştirilmiştir.
+> * Yükseltme, bir saldırgan daha az bir değilse ayarlar dikkate alınmayabilir, yani çoğaltmalar yükseltme sırasında uygulanmaz.
 >
 >
 
 > [!NOTE]
-> Bu özellik, küme kodu sürümü 7.1.XXX veya üzeri olduğunda, yukarıda bahsedilen Update-ServiceFabricService cmdlet 'i kullanılarak mevcut hizmetlerde yapılandırılabilir.
+> Bu özellik, küme kodu sürümü 7.1.XXX veya üzeri olduğunda, yukarıda bahsedilen Update-ServiceFabricService cmdlet 'i veya ARM şablonunu kullanarak mevcut hizmetlerde yapılandırılabilir.
 >
 >
 

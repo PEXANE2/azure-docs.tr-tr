@@ -1,5 +1,7 @@
 - name: Media Services Belgeleri
   href: ./index.yml
+- name: IoT Edge’de Canlı Video Analizi’ne geçiş belgeleri
+  href: ../live-video-analytics-edge/overview.md
 - name: Genel Bakış
   items:
     - name: Media Services hakkında
@@ -369,7 +371,7 @@
         - name: Python
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
-          href: 'https://aka.ms/ams-v3-nodejs-ref'
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management'
         - name: Başlayın
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu

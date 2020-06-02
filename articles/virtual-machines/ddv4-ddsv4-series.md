@@ -1,0 +1,95 @@
+---
+title: Ddv4 ve Ddsv4 serisi-Azure sanal makineleri
+description: Dv4, Ddv4, Dsv4 ve Ddsv4 serisi VM 'Ler için Özellikler.
+author: brbell
+ms.author: brbell
+ms.reviewer: cynthn
+ms.custom: mimckitt
+ms.service: virtual-machines
+ms.topic: conceptual
+ms.date: 06/01/2020
+ms.openlocfilehash: 42b42a7477326196546ad445367691192f00569a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263254"
+---
+# <a name="ddv4-and-ddsv4-series"></a>Ddv4 ve Ddsv4 serisi
+
+Ddv4 ve Ddsv4 serisi, &reg; &reg; bir hiper iş yükleri için daha iyi bir değer teklifi sağlayan, bir hiper iş parçacığı yapılandırmasındaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcilerde çalışır. 3,4 GHz, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)için tüm çekirdek Turbo saat hızını sürekli olarak sunar. Bu yeni VM boyutları %50 daha büyük yerel depolamaya sahip olacak ve [Gen2 VM 'leri](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)ile [Dv3/Dsv3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) boyutlarına kıyasla hem okuma hem de yazma için daha iyi yerel disk IOPS olacaktır.
+
+D Serisi Kullanım örnekleri arasında kurumsal düzeyde uygulamalar, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz bulunur.
+
+> [!IMPORTANT]
+> Ddv4 veya Ddsv4 serisi kullanarak yeni bir sanal makine dağıtıyorsanız ve bir Linux görüntüsü kullanmayı planlıyorsanız, RHEL 8. x, CentOS 8. x veya Oracle 7. x ya da daha yeni bir sürümünü kullanmanız gerekir. RHEL 7. x, CentOS 7. x veya Orcale 6. x seçilirse bir çekirdek Panic hatası olacaktır. Microsoft, bir onarımı etkin bir şekilde dağıtmakta. Yalnızca RHEL, CentOS ve Oracle etkilendi. 
+
+## <a name="ddv4-series"></a>Ddv4 serisi
+
+Ddv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Ddv4-Series, çoğu üretim iş yükleri için vCPU, bellek ve geçici disk birleşimini sunmaktadır.
+
+Yeni Ddv4 VM boyutları, hızlı, daha büyük yerel SSD depolama (2.400 GiB 'ye kadar) içerir ve düşük gecikme süresi, geçici depolama alanına hızlı okuma/yazma veya önbellek ya da geçici dosyalar için geçici depolamaya ihtiyaç duyulan uygulamalar gibi, yüksek hızlı yerel depolama alanı için tasarlanmıştır. Ddv4 VM 'lerine standart SSD 'ler ve standart HDD depolama alanı ekleyebilirsiniz. Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır.
+
+ACU: 195-210
+
+Premium Depolama: desteklenmiyor
+
+Premium depolama önbelleği: desteklenmiyor
+
+Dinamik Geçiş: destekleniyor
+
+Güncelleştirmeleri koruyan bellek: desteklenir
+
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+|---|---|---|---|---|---|---|
+| Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19000/120 | 2/1000 |
+| Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38500/242 | 2/2000 |
+| Standard_D8d_v4 | 8 | 32 | 300 | 16 | 77000/485 | 4/4000 |
+| Standard_D16d_v4 | 16 | 64 | 600 | 32 | 154000/968 | 8/8000 |
+| Standard_D32d_v4 | 32 | 128 | 1200 | 32 | 308000/1936 | 8/16000 |
+| Standard_D48d_v4 | 48 | 192 | 1800 | 32 | 462000/2904 | 8/24000 |
+| Standard_D64d_v4 | 64 | 256 | 2400 | 32 | 615000/3872 | 8/30000 |
+
+## <a name="ddsv4-series"></a>Ddsv4 serisi
+
+Ddsv4-Series, Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Ddsv4-Series, çoğu üretim iş yükleri için vCPU, bellek ve geçici disk birleşimini sunmaktadır.
+
+Yeni Ddsv4 VM boyutları, hızlı, daha büyük yerel SSD depolama (2.400 GiB 'ye kadar) içerir ve düşük gecikme süresi, geçici depolama alanına hızlı okuma/yazma veya önbellek ya da geçici dosyalar için geçici depolamaya ihtiyaç duyulan uygulamalar gibi, yüksek hızlı yerel depolama alanı için tasarlanmıştır. 
+
+ > [!NOTE]
+ >Ddsv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri Ddv4 serisi ile aynıdır.
+
+ACU: 195-210
+
+Premium Depolama: desteklenir
+
+Premium depolama önbelleği: desteklenir
+
+Dinamik Geçiş: destekleniyor
+
+Güncelleştirmeleri koruyan bellek: desteklenir
+
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+|---|---|---|---|---|---|---|---|
+| Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120 (50) | 3000/48 | 2/1000 |
+| Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242 (100) | 6400/96 | 2/2000 |
+| Standard_D8ds_v4 | 8 | 32 | 300 | 16 | 77000/485 (200) | 12800/192 | 4/4000 |
+| Standard_D16ds_v4 | 16 | 64 | 600 | 32 | 154000/968 (400) | 25600/384 | 8/8000 |
+| Standard_D32ds_v4 | 32 | 128 | 1200 | 32 | 308000/1936 (800) | 51200/768 | 8/16000 |
+| Standard_D48ds_v4 | 48 | 192 | 1800 | 32 | 462000/2904 (1200) | 76800/1152 | 8/24000 |
+| Standard_D64ds_v4 | 64 | 256 | 2400 | 32 | 615000/3872 (1600) | 80000/1200 | 8/30000 |
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes"></a>Diğer boyutlar
+
+- [Genel amaçlı](sizes-general.md)
+- [Bellek için iyileştirilmiş](sizes-memory.md)
+- [Depolama için iyileştirilmiş](sizes-storage.md)
+- [GPU için iyileştirilmiş](sizes-gpu.md)
+- [Yüksek performanslı işlem](sizes-hpc.md)
+- [Önceki nesiller](sizes-previous-gen.md)
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

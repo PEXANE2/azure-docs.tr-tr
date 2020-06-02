@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 01/11/2018
-ms.openlocfilehash: f5a7bc3cd22d49a65ba3b83d2a9ff41112d07c1a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 5b7c7219c15f6c9b687aecd2e9d9f46ea4a71efa
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194539"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249102"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal kullanarak bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
 
@@ -182,7 +182,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
 1. Data Factory kullanıcı arabiriminin **başlarken** sayfasında **İşlem hattı oluştur** kutucuğuna tıklayın.
 
    ![Data Factory kullanıcı arabiriminin başlarken sayfası](./media/doc-common-process/get-started-page.png)    
-3. İşlem hattının **Özellikler** penceresinin **Genel** sayfasında **IncrementalCopyPipeline** adını girin.
+3. Genel panelinde **Özellikler**altında, **ad**için **ıncrementalcopypipeline** belirtin. Sonra sağ üst köşedeki Özellikler simgesine tıklayarak paneli daraltın.
 
 4. Eski filigran değerini almak için ilk arama etkinliğini ekleyelim. **Etkinlikler** araç kutusunda **Genel**’i genişletin ve bir **Arama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. Etkinliğin adını **LookupOldWaterMarkActivity** olarak değiştirin.
 
@@ -272,7 +272,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
     1. **Saklı yordam adı**için **usp_write_watermark**' yi seçin.
     2. Saklı yordam parametrelerinin değerlerini belirtmek için, **Parametreyi içeri aktar**’a tıklayın ve parametreler için aşağıdaki değerleri girin:
 
-        | Adı | Tür | Değer |
+        | Name | Tür | Değer |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Dize | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |

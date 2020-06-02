@@ -1,6 +1,7 @@
 ---
 title: Bir veritabanını sorgulamak için Python kullanma
 description: Bu konu başlığı altında, Python kullanarak Azure SQL veritabanı 'nda bir veritabanına bağlanan ve Transact-SQL deyimlerini kullanarak sorgulayan bir program oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,18 +11,18 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: 4a6bcee7e2868c80491471640f33bb7709f740a5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 1d1d4ca6d3ccd20d851f0a88d1879f9e9a8175c4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189167"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267333"
 ---
-# <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanı 'nda bir veritabanını sorgulamak için Python kullanma
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için Python kullanma
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Bu hızlı başlangıçta Python kullanarak bir Azure SQL veritabanına bağlanır ve T-SQL deyimlerini kullanarak verileri sorgulayın.
+Bu hızlı başlangıçta Python kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanır ve T-SQL deyimlerini kullanarak verileri sorgulayın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

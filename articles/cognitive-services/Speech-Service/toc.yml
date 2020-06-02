@@ -390,7 +390,7 @@
           href: voice-assistants.md
     - name: Özel Komutlar (Önizleme)
       items:
-        - name: Özel Komutlar uygulaması nedir?
+        - name: Özel Komutlar nedir?
           href: custom-commands.md
         - name: Hızlı Başlangıçlar
           items:
@@ -454,6 +454,18 @@
           href: speech-devices-sdk-kws-guidelines.md
         - name: Özel klavye tanıma
           href: speech-devices-sdk-create-kws.md
+- name: Konuşmacı Tanıma
+  items:
+    - name: Genel Bakış
+      items:
+        - name: Konuşmacı Tanıma nedir?
+          href: speaker-recognition-overview.md
+    - name: Başvuru
+      items:
+        - name: REST API'leri
+          items:
+            - name: Konuşma Tanıma REST API’si
+              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Barındırma
   items:
     - name: Barındırma belgeleri

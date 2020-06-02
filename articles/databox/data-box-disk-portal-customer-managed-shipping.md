@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 74828bfd3a110739afc211a530c11c74387b70ed
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 70c37b60d3b01c939b9b06d6b053b526e036904a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749315"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266517"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Azure portal Azure Data Box Disk için kendi kendine yönetilen dağıtımı kullanın
 
@@ -43,7 +43,7 @@ Data Box Disk bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim se
 
    ![Kendi kendine yönetilen kargo](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. Cihaz hazırlandıktan sonra bir toplama zamanlayabilirsiniz. Azure Data Box Disk sırada **genel bakış** ' a gidin ve ardından **çekme zamanlaması**' nı seçin.
+4. Cihaz hazırlandıktan ve bir e-posta bildirimi aldıktan sonra bir toplama zamanlayabilirsiniz. Azure Data Box Disk sırada **genel bakış** ' a gidin ve ardından **çekme zamanlaması**' nı seçin.
 
    ![Data Box cihazını toplama için sıralama](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-01b.png)
 
@@ -57,11 +57,11 @@ Data Box Disk bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim se
 
    Bu **Yetkilendirme kodunu**bir yere getirin.
 
-   Güvenlik gereksinimlerine göre, zamanlama alma ve bırakma sırasında, çekme ve bırakma için ulaşan kişinin adının sağlanması gerekir...
+   Güvenlik gereksinimlerine göre, zamanlama alma sırasında, çekme işlemi için verilecek kişinin adının sağlanması gerekir ve bu, alma işlemi için ulaşacaktır.
 
    Ayrıca, toplama için veri merkezine kimlerin gönderileceğini de öğreneceksiniz. Siz veya iletişim noktası, veri merkezinde doğrulanacak bir kamu onaylı fotoğraf KIMLIĞI içermelidir.
 
-   Ayrıca, cihazı alan kişinin da **Yetkilendirme koduna**sahip olması gerekir. Yetkilendirme kodu, veri merkezi 'nin çekme zamanında onaylanır.
+   Ayrıca, cihazı alan kişinin da **Yetkilendirme koduna**sahip olması gerekir. Yetkilendirme kodu, bir toplama veya bırakma için benzersizdir ve veri merkezinde onaylanır.
 
 7. Cihaz veri merkezinden alındıktan sonra siparişiniz otomatik olarak **çekme** durumuna getirilir.
 

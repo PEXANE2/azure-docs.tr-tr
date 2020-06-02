@@ -1,6 +1,7 @@
 ---
 title: Bir veritabanını sorgulamak için Node. js kullanma
-description: Node. js kullanarak Azure SQL veritabanı 'nda bir veritabanına bağlanan ve T-SQL deyimlerini kullanarak sorgulayan bir program oluşturma.
+description: Node. js kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği içindeki bir veritabanına bağlanan ve T-SQL deyimlerini kullanarak sorgulayan bir program oluşturma.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -9,19 +10,19 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-ms.date: 03/25/2019
+ms.date: 05/29/2020
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2 
-ms.openlocfilehash: b666e053c16e4dcac50505e3d36012f2a8677eb2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6860aa07d7547df6eeebf5d35fa9a921f0f9dada
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189366"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267387"
 ---
-# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanı 'nda bir veritabanını sorgulamak için Node. js kullanma
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için Node. js kullanma
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Bu hızlı başlangıçta, Node. js kullanarak Azure SQL veritabanındaki bir veritabanına bağlanır ve T-SQL deyimlerini kullanarak verileri sorgulayın.
+Bu hızlı başlangıçta, bir veritabanına bağlanmak ve verileri sorgulamak için Node. js ' yi kullanırsınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

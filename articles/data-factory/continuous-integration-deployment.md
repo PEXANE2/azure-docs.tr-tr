@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 77cba087ec578a478f4de9c8eebec3eb1e8d41b2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 51f583b946d6f5a18325e77cfe12404daab83d22
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022410"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84268032"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -570,7 +570,7 @@ Dağıtım görevinden önce ve sonra, CI/CD işlem hattınızda Data Factory be
 
 Git 'in yapılandırılıp yapılandırılmadığını, **ARM şablon** listesindeki **ARM şablonunu dışarı aktar** aracılığıyla bağlı şablonlara erişebilirsiniz.
 
-## <a name="hotfix-production-branch"></a>Düzeltme üretim Dalı
+## <a name="hotfix-production-environment"></a>Düzeltme üretim ortamı
 
 Bir üretime fabrika dağıtımı yaptıysanız ve hemen düzeltilmesi gereken bir hata olduğunu fark ederseniz, ancak geçerli işbirliği dalını dağıtamazsınız, bir düzeltme dağıtmanız gerekebilir. Bu yaklaşım, hızlı çözüm Mühendisliği veya QFE olarak bilinir.
 
@@ -611,7 +611,7 @@ Veri fabrikanınızla git tümleştirmesi kullanıyorsanız ve değişikliklerin
 - Tasarım yaparak Data Factory işleme veya kaynakların seçmeli yayımlamasına izin vermez. Yayınlar, veri fabrikasında yapılan tüm değişiklikleri içerir.
 
     - Data Factory varlıkları birbirlerine bağlıdır. Örneğin, tetikler, işlem hatlarına ve işlem hatları, veri kümelerine ve diğer işlem hattına bağlıdır. Bir kaynak alt kümesinin seçmeli olarak yayımlanması beklenmeyen davranışlara ve hatalara neden olabilir.
-    - Seçmeli yayımlamaya ihtiyacınız olduğunda nadir olarak bir düzeltme kullanmayı düşünün. Daha fazla bilgi için bkz. [Düzeltme üretim Dalı](#hotfix-production-branch).
+    - Seçmeli yayımlamaya ihtiyacınız olduğunda nadir olarak bir düzeltme kullanmayı düşünün. Daha fazla bilgi için bkz. [Düzeltme üretim ortamı](#hotfix-production-environment).
 
 -   Özel dallardan yayımlayamazsınız.
 

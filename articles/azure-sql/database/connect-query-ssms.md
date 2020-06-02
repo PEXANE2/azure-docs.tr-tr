@@ -12,16 +12,16 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/10/2020
-ms.openlocfilehash: bc1e767227f0bdd4ac6b90124c9ccca8f4a0669b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 5ecf180b71c43d5df25d7c3c948a59482dd06a1c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054380"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267316"
 ---
-# <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanı 'na bağlanmak ve veritabanını sorgulamak için SSMS kullanma
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak ve veritabanını sorgulamak için SSMS kullanma
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu hızlı başlangıçta, SQL Server Management Studio (SSMS) kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanıp bazı sorguları nasıl çalıştıracağınızı öğreneceksiniz.
 
@@ -53,7 +53,7 @@ Yalnızca bazı geçici sorguları SSMS yüklemeden çalıştırmak istiyorsanı
 
 Veritabanınıza bağlanmak için gereken bağlantı bilgilerini alın. Bu hızlı başlangıcı tamamlayabilmeniz için tam [sunucu](logical-servers.md) adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. Sorgulamak istediğiniz **veritabanına** veya **yönetilen örneğe** gidin.
 
@@ -96,7 +96,7 @@ SSMS 'de sunucunuza bağlanın.
 
 ## <a name="query-data"></a>Verileri sorgulama
 
-Kategoriye göre ilk 20 ürünü sorgulamak için bu [Select](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL kodunu çalıştırın.
+Kategoriye göre ilk 20 ürünü sorgulamak için bu [Select](/sql/t-sql/queries/select-transact-sql/) Transact-SQL kodunu çalıştırın.
 
 1. Nesne Gezgini, **Mysampledatabase** ' e sağ tıklayın ve **Yeni sorgu**' yu seçin. Veritabanınıza bağlı yeni bir sorgu penceresi açılır.
 
@@ -115,7 +115,7 @@ Kategoriye göre ilk 20 ürünü sorgulamak için bu [Select](https://msdn.micro
 
 ### <a name="insert-data"></a>Veri ekleme
 
-Tabloda yeni bir ürün oluşturmak için bu [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL kodunu çalıştırın `SalesLT.Product` .
+Tabloda yeni bir ürün oluşturmak için bu [Insert](/sql/t-sql/statements/insert-transact-sql/) Transact-SQL kodunu çalıştırın `SalesLT.Product` .
 
 1. Önceki sorguyu bununla değiştirin.
 
@@ -155,7 +155,7 @@ Tabloda yeni bir ürün oluşturmak için bu [Insert](https://msdn.microsoft.com
 
 ### <a name="update-data"></a>Verileri güncelleştirme
 
-Yeni ürününüzü değiştirmek için bu [güncelleştirme](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL kodunu çalıştırın.
+Yeni ürününüzü değiştirmek için bu [güncelleştirme](/sql/t-sql/statements/update-transact-sql) Transact-SQL kodunu çalıştırın.
 
 1. Önceki sorguyu, daha önce oluşturulan yeni kaydı döndüren bir ile değiştirin:
 
@@ -169,7 +169,7 @@ Yeni ürününüzü değiştirmek için bu [güncelleştirme](https://msdn.micro
 
 ### <a name="delete-data"></a>Verileri silme
 
-Yeni ürününüzü kaldırmak için bu [Delete](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL kodunu çalıştırın.
+Yeni ürününüzü kaldırmak için bu [Delete](/sql/t-sql/statements/delete-transact-sql/) Transact-SQL kodunu çalıştırın.
 
 1. Önceki sorguyu bununla değiştirin.
 
@@ -182,7 +182,7 @@ Yeni ürününüzü kaldırmak için bu [Delete](https://msdn.microsoft.com/libr
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- SSMS hakkında daha fazla bilgi için bkz. [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
+- SSMS hakkında daha fazla bilgi için bkz. [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms/).
 - Azure portal kullanarak bağlanmak ve sorgulamak için bkz. [Azure Portal SQL sorgu Düzenleyicisi Ile bağlanma ve sorgulama](connect-query-portal.md).
 - Visual Studio Code’u kullanarak bağlanmak ve sorgulamak için bkz. [Visual Studio Code ile bağlanma ve sorgulama](connect-query-vscode.md).
 - .NET kullanarak bağlanıp sorgulamak için bkz. [.NET ile bağlanma ve sorgulama](connect-query-dotnet-visual-studio.md).

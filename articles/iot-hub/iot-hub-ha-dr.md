@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 615dc1b7bd1a31069a542ebb7ea44693c404cb40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79499102"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267639"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
@@ -60,7 +60,7 @@ Bu yük devretme seçeneklerinin her ikisi de aşağıdaki kurtarma noktası hed
 IoT Hub 'ı için yük devretme işlemi tamamlandıktan sonra, cihazdaki ve arka uç uygulamalardaki tüm işlemlerin el ile müdahale gerekmeden çalışmaya devam etmesi beklenir. Bu, cihazdan buluta iletilerinizin çalışmaya devam etmesi ve tüm cihaz kayıt defterinin bozulmadan emin olması anlamına gelir. Event Grid aracılığıyla yayılan olaylar, daha önce yapılandırılan ve bu Event Grid abonelikleri kullanılabilir olmaya devam eden abonelik (ler) i üzerinden tüketilebilir.
 
 > [!CAUTION]
-> - IoT Hub yerleşik olaylar uç noktasının Olay Hub 'ı ile uyumlu adı ve uç noktası, yük devretmeden sonra değişir ve yapılandırılan tüketici grupları kaldırılır (Bu bir hata, 2020 Mayıs 'tan önce düzeltilecektir). Olay Hub 'ı istemcisini ya da olay işlemcisi konağını kullanarak yerleşik uç noktadan telemetri iletileri alırken, bağlantıyı kurmak için [IoT Hub bağlantı dizesini kullanmanız](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) gerekir. Bu, arka uç uygulamalarınızın el ile müdahale sonrası yük devretmeye gerek kalmadan çalışmaya devam etmesini sağlar. Uygulamanızda Olay Hub 'ı ile uyumlu adı ve uç noktayı doğrudan kullanırsanız, [kullandıkları tüketici grubunu yeniden yapılandırmanız ve devam etmek için yük devretmeden sonra yeni Olay Hub 'ı ile uyumlu uç noktasını getirmek](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) zorundasınız. Yerleşik uç noktayı bağlamak için Azure Işlevleri veya Azure Stream Analytics kullanıyorsanız, **yeniden başlatma**gerçekleştirmeniz gerekebilir.
+> - IoT Hub yerleşik olaylar uç noktasının Olay Hub 'ı ile uyumlu adı ve uç noktası, yük devretmeden sonra değişir. Olay Hub 'ı istemcisini ya da olay işlemcisi konağını kullanarak yerleşik uç noktadan telemetri iletileri alırken, bağlantıyı kurmak için [IoT Hub bağlantı dizesini kullanmanız](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) gerekir. Bu, arka uç uygulamalarınızın el ile müdahale sonrası yük devretmeye gerek kalmadan çalışmaya devam etmesini sağlar. Uygulamanızda doğrudan olay hub 'ı ile uyumlu ad ve uç nokta kullanırsanız, devam etmek için yük devretmeden sonra [Yeni Olay Hub 'ı ile uyumlu uç noktasını](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) almanız gerekir. Yerleşik uç noktayı bağlamak için Azure Işlevleri veya Azure Stream Analytics kullanıyorsanız, **yeniden başlatma**gerçekleştirmeniz gerekebilir.
 >
 > - Depolama alanına yönlendirirken, tüm Blobların veya dosyaların bölüm üzerinde herhangi bir varsayımından okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bunları yinelemenizi öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) listesini listelemek Için, [LISTE bloblarını API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. 
 

@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79014d318da1732d48eeb893aa383e948e1036cd
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78330728"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267112"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Bir tam ekran okuyucu kaynağı oluşturma ve Azure Active Directory kimlik doğrulamasını yapılandırma
 
@@ -29,7 +29,7 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
 
 ## <a name="set-up-powershell-environment"></a>PowerShell ortamını ayarlama
 
-1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)açarak başlayın. Cloud Shell 'in sol üst taraftaki açılan menüde veya yazarak `pwsh`PowerShell olarak ayarlandığından emin olun.
+1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)açarak başlayın. Cloud Shell, sol üst taraftaki açılan menüde veya yazarak PowerShell olarak ayarlandığından emin olun `pwsh` .
 
 1. Aşağıdaki kod parçacığını kopyalayıp kabuğa yapıştırın.
 
@@ -141,7 +141,7 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
     }
     ```
 
-1. Uygun şekilde parametreleri `Create-ImmersiveReaderResource`sağlayarak işlevi çalıştırın.
+1. `Create-ImmersiveReaderResource`Uygun şekilde parametreleri sağlayarak işlevi çalıştırın.
 
     ```azurepowershell-interactive
     Create-ImmersiveReaderResource
@@ -157,15 +157,15 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
       -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
     ```
 
-    | Parametre | Açıklamalar |
+    | Parametre | Yorumlar |
     | --- | --- |
     | SubscriptionName |Tam ekran okuyucu kaynağınız için kullanılacak Azure aboneliğinin adı. Kaynak oluşturmak için bir aboneliğinizin olması gerekir. |
     | ResourceName |  '-' Karakteri ilk veya son karakter olmadığı sürece alfasayısal olmalı ve '-' karakterlerini içerebilir. Uzunluk 63 karakterden uzun olamaz.|
     | ResourceSubdomain |Tam ekran okuyucu kaynağınız için özel bir alt etki alanı gereklidir. Bu alt etki alanı, okuyucuyu başlatmak için derinlikli okuyucu hizmeti çağrılırken SDK tarafından kullanılır. Alt etki alanı, genel olarak benzersiz olmalıdır. '-' İlk veya son karakter olmadığı sürece alt etki alanı alfasayısal olmalıdır ve '-' karakterlerini içerebilir. Uzunluk 63 karakterden uzun olamaz. Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
-    | ResourceSKU |Seçenekler: `S0`. Kullanılabilir her SKU hakkında daha fazla bilgi edinmek için bilişsel [Hizmetler fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) sayfamızı ziyaret edin. Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
-    | ResourceLocation |Seçenekler: `eastus`, `eastus2`, `southcentralus` `westus`,, `westus2`, `australiaeast`, `southeastasia`, `centralindia`, `japaneast`, `northeurope`, `uksouth`, `westeurope`. Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
+    | ResourceSKU |Seçenekler: `S0` . Kullanılabilir her SKU hakkında daha fazla bilgi edinmek için bilişsel [Hizmetler fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) sayfamızı ziyaret edin. Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
+    | ResourceLocation |Seçenekler: `eastus` , `eastus2` ,,, `southcentralus` `westus` `westus2` , `australiaeast` , `southeastasia` , `centralindia` , `japaneast` , `northeurope` , `uksouth` , `westeurope` . Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
     | ResourceGroupName |Kaynaklar, abonelikler içindeki kaynak gruplarında oluşturulur. Mevcut bir kaynak grubunun adını sağlayın. Kaynak grubu henüz yoksa, bu adı taşıyan yeni bir tane oluşturulur. |
-    | ResourceGroupLocation |Kaynak grubunuz yoksa, grubun oluşturulacağı bir konum sağlamanız gerekir. Konumların bir listesini bulmak için öğesini çalıştırın `az account list-locations`. Döndürülen sonucun *Name* özelliğini (boşluk olmadan) kullanın. Kaynak grubunuz zaten varsa, bu parametre isteğe bağlıdır. |
+    | ResourceGroupLocation |Kaynak grubunuz yoksa, grubun oluşturulacağı bir konum sağlamanız gerekir. Konumların bir listesini bulmak için öğesini çalıştırın `az account list-locations` . Döndürülen sonucun *Name* özelliğini (boşluk olmadan) kullanın. Kaynak grubunuz zaten varsa, bu parametre isteğe bağlıdır. |
     | AADAppDisplayName |Azure Active Directory Uygulama görünen adı. Mevcut bir Azure AD uygulaması bulunamazsa, bu adı taşıyan yeni bir tane oluşturulur. Azure AD uygulaması zaten mevcutsa bu parametre isteğe bağlıdır. |
     | Aadappıdentifieruri |Azure AD uygulaması için URI. Mevcut bir Azure AD uygulaması bulunamazsa, bu URI 'ye sahip yeni bir tane oluşturulur. Örneğin, `https://immersivereaderaad-mycompany`. |
     | AADAppClientSecret |Daha sonra, derinlikli okuyucuyu başlatmak üzere bir belirteç alırken kimlik doğrulaması için kullanılacak bir parola. Parola en az 16 karakter uzunluğunda olmalı, en az 1 özel karakter içermeli ve en az 1 sayısal karakter içermelidir. |
@@ -183,7 +183,7 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Node. js kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi görmek için [Node. js hızlı](./quickstart-nodejs.md) başlangıcını görüntüleyin
+* Node. js kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi görmek için [Node. js hızlı](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) başlangıcını görüntüleyin
 * Python kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](./tutorial-python.md) görüntüleyin
 * Swift [öğreticisini](./tutorial-ios-picture-immersive-reader.md) kullanarak tam ekran okuyucu SDK 'sı ile neler yapabileceğinizi görün.
 * [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet

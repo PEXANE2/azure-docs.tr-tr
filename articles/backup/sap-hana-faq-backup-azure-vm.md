@@ -3,12 +3,12 @@ title: SSS - Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 description: Bu makalede, Azure Backup hizmetini kullanarak SAP HANA veritabanlarının yedeklenmesi hakkında sık sorulan soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 56f98dddb00eb3ffc87eb27da73066de807a1ee1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 08e0eaf5f744ebb0ada07a944f627cc1ff1ac496
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701019"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248813"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Sık sorulan sorular – Azure VM 'lerinde SAP HANA veritabanlarını yedekleyin
 
@@ -86,6 +86,10 @@ Geri yükleme sırasında **üzerine yazmayı zorla** seçeneğinin seçildiğin
 ### <a name="why-do-i-see-the-source-and-target-systems-for-restore-are-incompatible-error"></a>Neden "geri yükleme için kaynak ve hedef sistemler uyumsuz" hatası görüyorum?
 
 Şu anda hangi geri yükleme türlerinin desteklendiğini görmek için SAP HANA Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) bölümüne bakın.
+
+### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-a-rhel-hana-system-or-vice-versa"></a>SLES üzerinde çalışan bir veritabanının yedeklemesini bir RHEL HANA sistemine geri yüklemek veya bunun tersini yapabilir miyim?
+
+Evet, SLES üzerinde çalışan bir HANA veritabanında tetiklenen akış yedeklerini kullanarak bir RHEL HANA sistemine geri yükleyebilir ve bunun tersini yapabilirsiniz. Diğer bir deyişle, akış yedeklemeleri kullanılarak platformlar arası geri yükleme mümkündür. Ancak, geri yüklemek istediğiniz HANA sisteminin ve geri yükleme için kullanılan HANA sisteminin hem SAP 'ye göre geri yükleme için uyumlu olduğundan emin olmanız gerekir. Hangi geri yükleme türlerinin uyumlu olduğunu görmek için SAP HANA Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 20a2066dc0228fe9c2fee09387d96bf6aafeb32f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0573456e6f7c5adc2b1efbce8dd12611fae788cd
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79531983"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266279"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda izleme
 Sunucularınız hakkındaki izleme verileri, iş yükünüz için sorun gidermenize ve iyileştirmenize yardımcı olur. MariaDB için Azure veritabanı, sunucunuzun davranışına ilişkin Öngörüler sağlayan çeşitli ölçümler sunar.
@@ -35,7 +35,7 @@ Bu ölçümler, MariaDB için Azure veritabanı 'nda kullanılabilir:
 |serverlog_storage_usage|Kullanılan sunucu günlüğü depolaması|Bayt|Kullanımdaki sunucu günlüğü depolama miktarı.|
 |serverlog_storage_limit|Sunucu günlüğü depolama sınırı|Bayt|Bu sunucu için en fazla sunucu günlük depolama alanı.|
 |storage_limit|Depolama sınırı|Bayt|Bu sunucu için en fazla depolama alanı.|
-|active_connections|Etkin bağlantılar|Sayı|Sunucuya etkin bağlantı sayısı.|
+|active_connections|Etkin Bağlantılar|Sayı|Sunucuya etkin bağlantı sayısı.|
 |connections_failed|Başarısız Bağlantılar|Sayı|Sunucuya yönelik başarısız bağlantı sayısı.|
 |network_bytes_egress|Ağ Çıkışı|Bayt|Etkin bağlantılar arasında ağ çıkışı.|
 |network_bytes_ingress|Ağ Girişi|Bayt|Etkin bağlantılar genelinde ağ.|
@@ -77,7 +77,7 @@ Sorgu [deposu](concepts-query-store.md) sorgu çalışma zamanı istatistikleri 
 **Hizmet durumu uyarıları**oluşturma hakkında ayrıntılı adımlar için, [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications.md)konusuna bakın.
 
 > [!IMPORTANT]
-> Planlı bakım bildirimleri şu anda önizleme aşamasındadır
+> Planlı bakım bildirimleri şu anda tüm bölgelerde önizleme aşamasında mevcuttur Orta Batı ABD **hariç**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

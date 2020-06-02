@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 301e2be0c8b971a0236de6a8b5c8bd5f278c3aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686745"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267966"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Tahmine dayalı bakım çözümleri için Azure AI Kılavuzu
 
@@ -231,7 +231,7 @@ Bir varlığın etiketlendiği her kayıt için, _w-<sub>k</sub> _ boyutundaki b
 
 Şimdiye kadar tartışılan veri hazırlama çabaları aşağıda gösterildiği gibi verilerin düzenlenmesine neden olmalıdır. Eğitim, test ve doğrulama verileri bu mantıksal şemaya sahip olmalıdır (Bu örnek gün cinsinden saati gösterir).
 
-| Varlık KIMLIĞI | Zaman | \<Özellik sütunları> | Etiketle |
+| Varlık KIMLIĞI | Saat | \<Feature Columns> | Etiketle |
 | ---- | ---- | --- | --- |
 | A123 |Gün 1 | . . . | . |
 | A123 |Gün 2 | . . . | . |
@@ -427,12 +427,11 @@ Bu kılavuzun son bölümü, Azure 'da uygulanan PdM çözüm şablonlarının, 
 |--:|:------|-------------|
 | 2 | [Azure tahmine dayalı bakım çözüm şablonu](https://github.com/Azure/AI-PredictiveMaintenance) | Azure ML modelleme ve IoT uzaktan izleme bağlamında tahmine dayalı bakım senaryolarını destekleyebilen tam bir Azure altyapısını gösteren açık kaynaklı bir çözüm şablonu. |
 | 3 | [Tahmine Dayalı Bakım için Derin Öğrenme](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Tahmine dayalı bakım için LSTM (uzun kısa süreli bellek) ağları (yinelenen bir sinir Networks sınıfı) kullanarak Azure Not defteri 'nin [Bu örnekteki bir blog gönderisine](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)sahip olması.|
-| 4 | [R 'de tahmine dayalı bakım modelleme Kılavuzu](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | R 'deki betiklerle PdM modelleme Kılavuzu.|
-| 5 | [Aerospace için Azure tahmine dayalı bakım](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Airustmaintenance için Azure ML v 1.0 'ı temel alan ilk PdM çözüm şablonlarından biri. Bu kılavuz bu projeden kaynaklı. |
-| 6 | [IoT Edge için Azure AI araç seti](https://github.com/Azure/ai-toolkit-iot-edge) | TensorFlow kullanarak IoT Edge AI araç seti, Azure IoT Edge uyumlu Docker kapsayıcılarındaki derin öğrenme modellerini paketler ve bu modelleri REST API 'Ler olarak kullanıma sunar.
-| 7 | [Azure IoT tahmine dayalı bakım](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite BILGISAYARLARı-önceden yapılandırılmış çözüm. IoT Suite ile airustmaintenance PdM şablonu. Aynı projeyle ilgili [başka bir belge](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) ve [izlenecek yol](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) . |
-| 8 | [SQL Server R Services kullanarak tahmine dayalı bakım şablonu](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | R Services tabanlı kalan yararlı ömür senaryosu gösterimi. |
-| 9 | [Tahmine dayalı bakım modelleme Kılavuzu](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | R ile [denemeleri](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) ve [veri kümeleri](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) ile [Azure Not defteri](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) ve [denemeleri](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2) kullanılarak tasarlanan airustmaintenance veri kümesi özelliği, AzureML v 1.0|
+| 4 | [Aerospace için Azure tahmine dayalı bakım](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Airustmaintenance için Azure ML v 1.0 'ı temel alan ilk PdM çözüm şablonlarından biri. Bu kılavuz bu projeden kaynaklı. |
+| 5 | [IoT Edge için Azure AI araç seti](https://github.com/Azure/ai-toolkit-iot-edge) | TensorFlow kullanarak IoT Edge AI araç seti, Azure IoT Edge uyumlu Docker kapsayıcılarındaki derin öğrenme modellerini paketler ve bu modelleri REST API 'Ler olarak kullanıma sunar.
+| 6 | [Azure IoT tahmine dayalı bakım](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite BILGISAYARLARı-önceden yapılandırılmış çözüm. IoT Suite ile airustmaintenance PdM şablonu. Aynı projeyle ilgili [başka bir belge](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) ve [izlenecek yol](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) . |
+| 7 | [SQL Server R Services kullanarak tahmine dayalı bakım şablonu](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | R Services tabanlı kalan yararlı ömür senaryosu gösterimi. |
+| 8 | [Tahmine dayalı bakım modelleme Kılavuzu](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | R ile [denemeleri](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) ve [veri kümeleri](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) ile Azure Not defteri ve [denemeleri](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2) kullanılarak tasarlanan Airustmaintenance veri kümesi özelliği, AzureML v 1.0|
 
 ## <a name="training-resources-for-predictive-maintenance"></a>Tahmine dayalı bakım için eğitim kaynakları
 

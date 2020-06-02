@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32ec55a2ed6e0158a05f81067dc834fdc1e6e765
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: cd1bd85e76bdda52e2f3b3b60c705792ca82a6eb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738260"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247997"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanmaya başlama
 
@@ -32,7 +32,7 @@ ms.locfileid: "83738260"
 
 ## <a name="add-signing-and-encryption-keys"></a>İmzalama ve şifreleme anahtarları Ekle
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 1. Genel Bakış sayfasında, **ilkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -78,7 +78,7 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için **uygulama kayıtları
 
 #### <a name="applications"></a>[Uygulamalar](#tab/applications/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Azure portal, araması yapın ve **Azure Active Directory**seçin.
 1. **Azure Active Directory** genel bakış menüsünde, **Yönet**altında **uygulama kayıtları (eski)** seçeneğini belirleyin.
 1. **Yeni uygulama kaydı**’nı seçin.
@@ -151,7 +151,7 @@ Sonra, uygulamanın ortak istemci olarak değerlendirilip değerlendirilmeyeceğ
 1. **Yönetici onayı ver ' i (kiracı adınız)** seçin.
 1. Şu anda oturum açmış olan yönetici hesabınızı seçin veya Azure AD B2C kiracınızda, en azından *bulut uygulama Yöneticisi* rolüne atanan bir hesapla oturum açın.
 1. **Kabul Et**’i seçin.
-1. **Yenile**' yi seçin ve ardından "verilen..." öğesini doğrulayın Her iki kapsam için **durum** altında görünür. İzinlerin yayılması birkaç dakika sürebilir.
+1. **Yenile**' yi seçin ve ardından "verilen..." öğesini doğrulayın offline_access, OpenID ve user_impersonation kapsamların **durumu** altında görüntülenir. İzinlerin yayılması birkaç dakika sürebilir.
 
 * * *
 

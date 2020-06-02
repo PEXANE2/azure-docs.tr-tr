@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0e7a2e9e5feb848971c4858415510f98a7bdaf78
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6ade9baaf7dc125bac6738b44134ee496b8a2be4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655340"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265939"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısında standart (el ile) aktarım hızı sağlama
 
@@ -19,7 +19,7 @@ Bu makalede, Azure Cosmos DB bir kapsayıcı (koleksiyon, grafik veya tablo) üz
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos hesabı seçin.
 
@@ -46,9 +46,9 @@ Adanmış aktarım hızı içeren bir kapsayıcı oluşturmak için bkz.
 ## <a name="net-sdk"></a>.NET SDK
 
 > [!Note]
-> Cassandra API dışında tüm Cosmos DB API 'Leri için işleme sağlamak üzere SQL API için Cosmos SDK 'larını kullanın.
+> Cassandra ve MongoDB API hariç tüm Cosmos DB API 'Leri için üretilen iş sağlamak üzere SQL API için Cosmos SDK 'larını kullanın.
 
-### <a name="sql-mongodb-gremlin-and-table-apis"></a><a id="dotnet-most"></a>SQL, MongoDB, Gremlin ve Tablo API'leri
+### <a name="sql-gremlin-and-table-apis"></a><a id="dotnet-most"></a>SQL, Gremlin ve tablo API 'Leri
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -97,6 +97,27 @@ offer.content.offerThroughput = 2000;
 
 // Replace the offer.
 await client.offer(offer.id).replace(offer);
+```
+
+### <a name="mongodb-api"></a><a id="dotnet-cassandra"></a>MongoDB API’si
+
+```csharp
+// refer to MongoDB .NET Driver
+// https://docs.mongodb.com/drivers/csharp
+
+// Create a new Client
+String mongoConnectionString = "mongodb://DBAccountName:Password@DBAccountName.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+mongoUrl = new MongoUrl(mongoConnectionString);
+mongoClientSettings = MongoClientSettings.FromUrl(mongoUrl);
+mongoClient = new MongoClient(mongoClientSettings);
+
+// Change the database name
+mongoDatabase = mongoClient.GetDatabase("testdb");
+
+// Change the collection name, throughput value then update via MongoDB extension commands
+// https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-custom-commands#update-collection
+
+var result = mongoDatabase.RunCommand<BsonDocument>(@"{customAction: ""UpdateCollection"", collection: ""testcollection"", offerThroughput: 400}");
 ```
 
 ### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API’si

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2e3a08521e503a9f73bdccca3a125c7d2416b534
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 13cafdcd7ac4b7f46bd5f7c3b007372228234ba6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219649"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267809"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure sanal makineleri için otomatik yedekleme v2 (Kaynak Yöneticisi)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,13 +37,11 @@ Otomatik yedekleme v2 'yi kullanmak için aşağıdaki önkoşulları gözden ge
 
 **İşletim sistemi**:
 
-- Windows Server 2012 R2
-- Windows Server 2016
+- Windows Server 2012 R2 veya üzeri
 
 **SQL Server sürüm/sürüm**:
 
-- SQL Server 2016: geliştirici, standart veya kurumsal
-- SQL Server 2017: geliştirici, standart veya kurumsal
+- SQL Server 2016 veya üzeri: geliştirici, standart veya kurumsal
 
 > [!IMPORTANT]
 > Otomatik yedekleme v2, SQL Server 2016 veya üzeri sürümlerle birlikte kullanılabilir. SQL Server 2014 kullanıyorsanız, veritabanlarınızı yedeklemek için otomatik yedekleme v1 kullanabilirsiniz. Daha fazla bilgi için bkz. [otomatik yedekleme SQL Server 2014 Azure sanal makineleri (VM)](automated-backup-sql-2014.md).

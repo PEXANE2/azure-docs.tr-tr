@@ -56,6 +56,10 @@
           href: howto-legacy-exchange-portal.md
         - name: Azure PowerShell
           href: howto-legacy-exchange-powershell.md
+    - name: Yönlendirme sunucusuyla bir Exchange eşlemesi oluşturma veya değiştirme
+      items:
+        - name: Portal
+          href: how-to-exchange-route-server-portal.md
 - name: Başvuru
   items:
     - name: Azure CLI

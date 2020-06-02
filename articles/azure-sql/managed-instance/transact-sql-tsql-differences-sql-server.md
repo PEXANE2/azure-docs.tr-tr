@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: d3b337a697151f7f9ae1e3a1fb75795068da9e68
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: f6909acc5e4d4f56fb301a225f6dd854ba6f21e4
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204982"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259567"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -389,7 +389,7 @@ Daha fazla bilgi için bkz. [FILESTREAM](/sql/relational-databases/blob/filestre
 
 SQL yönetilen örneklerinde bağlantılı sunucular sınırlı sayıda hedef destekler:
 
-- Desteklenen hedefler SQL yönetilen örneği, SQL veritabanı ve SQL Server örnekleridir. 
+- Desteklenen hedefler SQL yönetilen örneği, SQL veritabanı, Azure SYNAPSE SQL ve SQL Server örnekleri. 
 - Bağlı sunucular dağıtılmış yazılabilir işlemleri (MS DTC) desteklemez.
 - Desteklenmeyen hedefler dosya, Analysis Services ve diğer RDBMS ' dir. `BULK INSERT` `OPENROWSET` Dosya içeri aktarma için alternatif olarak veya kullanarak Azure Blob depolama 'DAN yerel CSV içeri aktarmayı kullanmayı deneyin.
 
@@ -502,7 +502,7 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 - Bir bölgede dağıtabileceğiniz sanal çekirdek sayısı ve örnek türleri bazı [kısıtlamalar ve sınırlara](resource-limits.md#regional-resource-limitations)sahiptir.
 - [Alt ağda uygulanması gereken bazı güvenlik kuralları](connectivity-architecture-overview.md#network-requirements)vardır.
 
-### <a name="vnet"></a>ADLı
+### <a name="vnet"></a>Sanal ağ
 - VNet, kaynak modeli kullanılarak dağıtılabilir-sanal ağ için klasik model desteklenmez.
 - SQL yönetilen örneği oluşturulduktan sonra, SQL yönetilen örneği veya VNet 'in başka bir kaynak grubuna veya aboneliğe taşınması desteklenmez.
 - App Service ortamları, Logic Apps ve SQL yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları [genel eşleme](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)kullanılarak bağlanmışsa farklı bölgelerdeki SQL yönetilen örneklerine erişemez. Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.

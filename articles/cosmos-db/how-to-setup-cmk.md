@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: fd69e8b50fdd66267b5751e9c706d5181f7795a0
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: d551f05dd0700a93a94c6b836b896a99d7f5d96c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148200"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267095"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault ile Azure Cosmos hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -222,7 +222,7 @@ az cosmosdb show \
 
 ## <a name="error-handling"></a>Hata işleme
 
-Azure Cosmos DB içinde müşteri tarafından yönetilen anahtarlar (CMK) kullanılırken, herhangi bir hata oluşursa Azure Cosmos DB, yanıtta bir HTTP alt durum kodu ile birlikte hata ayrıntılarını döndürür. Sorunun kök nedenini ayıklamak için bu alt durum kodunu kullanabilirsiniz. Desteklenen HTTP alt durum kodlarının listesini almak için [Azure Cosmos DB Için http durum kodları](/rest/api/cosmos-db/http-status-codes-for-cosmosdb.md) makalesine bakın.
+Azure Cosmos DB içinde müşteri tarafından yönetilen anahtarlar (CMK) kullanılırken, herhangi bir hata oluşursa Azure Cosmos DB, yanıtta bir HTTP alt durum kodu ile birlikte hata ayrıntılarını döndürür. Sorunun kök nedenini ayıklamak için bu alt durum kodunu kullanabilirsiniz. Desteklenen HTTP alt durum kodlarının listesini almak için [Azure Cosmos DB Için http durum kodları](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) makalesine bakın.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 

@@ -1,6 +1,7 @@
 ---
 title: Sorguya git 'i kullanma
-description: Git ' i kullanarak Azure SQL veritabanı 'nda bir veritabanına bağlanan ve Transact-SQL deyimleriyle verileri sorgulama ve değiştirme gibi bir program oluşturun.
+description: Git ' i kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına bağlanan ve sorguları çalıştıran bir program oluşturun.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -8,27 +9,27 @@ ms.custom: sqldbrb=2 
 ms.devlang: go
 ms.topic: quickstart
 author: David-Engel
-ms.author: craigg
+ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
-ms.openlocfilehash: d9cb49fdc425028e718216e0127821933fcc3b9f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1dd92a8178b7da475e44298f09d696ab1907bc0f
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189542"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267418"
 ---
-# <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanı 'nda bir veritabanını sorgulamak için Golang kullanma
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için Golang kullanma
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Bu hızlı başlangıçta, Azure SQL veritabanı 'nda bir veritabanına bağlanmak için [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) programlama dilini kullanacaksınız. Ardından, verileri sorgulamak ve değiştirmek için Transact-SQL deyimlerini çalıştıracaksınız. [Golang](https://golang.org/) basit, güvenilir ve verimli yazılım oluşturmayı kolaylaştıran açık kaynaklı bir programlama dilidir.  
+Bu hızlı başlangıçta, Azure SQL veritabanı veya Azure SQL yönetilen örneği ' nde bir veritabanına bağlanmak için [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) programlama dilini kullanacaksınız. Ardından, verileri sorgulamak ve değiştirmek için Transact-SQL deyimlerini çalıştıracaksınız. [Golang](https://golang.org/) basit, güvenilir ve verimli yazılım oluşturmayı kolaylaştıran açık kaynaklı bir programlama dilidir.  
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Azure SQL veritabanı 'nda bir veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
+- Azure SQL veritabanı veya Azure SQL yönetilen örneği içindeki bir veritabanı. Bir veritabanı oluşturmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
   || SQL Veritabanı | SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
   |:--- |:--- |:---|:---|
@@ -52,7 +53,7 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 ## <a name="get-server-connection-information"></a>Sunucu bağlantı bilgilerini al
 
-Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
+Veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 

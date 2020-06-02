@@ -4,19 +4,19 @@ description: Windows 'da Azure dosyaları sorunlarını giderme
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40b8616f40f2ce33332fc42ec68532e4ae0ecdb0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383896"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267826"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
 
-Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak için [azfilediagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) 'i de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Bu bilgileri Azure dosya [paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) de bulabilirsiniz. Bu bilgiler, Azure dosya paylaşımlarını bağlama/eşleme/bağlama sorunları konusunda size yardımcı olacak adımlar sağlar.
+Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)   Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak Için azfilediagnostics 'i de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Bu bilgileri Azure dosya [paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) de bulabilirsiniz. Bu bilgiler, Azure dosya paylaşımlarını bağlama/eşleme/bağlama sorunları konusunda size yardımcı olacak adımlar sağlar.
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Bir Azure dosya paylaşımından bağlama yaparken hata 5
@@ -67,7 +67,7 @@ Bir Azure dosyaları veri merkezi ile bağlantı noktası 445 giden iletişim en
 
 Güvenlik duvarınızın veya ISS 'nizin bağlantı noktası 445 ' i engelleyip engellemediğini denetlemek için [Azfilediagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) aracını veya `Test-NetConnection` cmdlet 'ini kullanın. 
 
-`Test-NetConnection` Cmdlet 'ini kullanmak için Azure PowerShell modülünün yüklenmesi gerekir. daha fazla bilgi için bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps) . `<your-storage-account-name>` ile `<your-resource-group-name>` yerine depolama hesabınızla ilgili bilgileri yazmayı unutmayın.
+`Test-NetConnection`Cmdlet 'ini kullanmak için Azure PowerShell modülünün yüklenmesi gerekir. daha fazla bilgi için bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps) . `<your-storage-account-name>` ile `<your-resource-group-name>` yerine depolama hesabınızla ilgili bilgileri yazmayı unutmayın.
 
    
     $resourceGroupName = "<your-resource-group-name>"
@@ -255,7 +255,7 @@ Aşağıdaki çözümlerden birini kullanın:
 
 -   Sürücüyü uygulamayı içeren kullanıcı hesabından bağlayın. PsExec gibi bir araç kullanabilirsiniz.
 - Depolama hesabı adını ve anahtarını net use komutunun Kullanıcı adı ve parola parametrelerine geçirin.
-- Kimlik bilgilerini kimlik bilgileri Yöneticisi 'ne eklemek için cmdkey komutunu kullanın. Bunu, hizmet hesabı bağlamı altındaki bir komut satırından, etkileşimli oturum açma yoluyla veya kullanarak `runas`gerçekleştirin.
+- Kimlik bilgilerini kimlik bilgileri Yöneticisi 'ne eklemek için cmdkey komutunu kullanın. Bunu, hizmet hesabı bağlamı altındaki bir komut satırından, etkileşimli oturum açma yoluyla veya kullanarak gerçekleştirin `runas` .
   
   `cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
 - Eşlenen bir sürücü harfi kullanmadan doğrudan paylaşma eşleyin. Bazı uygulamalar sürücü harfine düzgün şekilde yeniden bağlanmayabilir, bu nedenle tam UNC yolunun kullanılması daha güvenilir olabilir. 
@@ -332,7 +332,7 @@ Hata ' sistem hatası 1359 oluştu. Bir iç hata ', bir sayısal karakterle baş
 
 İkinci olarak, [depolama hesabı anahtarıyla Azure dosya paylaşımının bağlanmasını](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)deneyin. Bağlama işlemi başarısız olursa, istemci çalıştıran istemciyi doğrulamanıza yardımcı olması için [Azfilediagnostics. ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) Indirin, Azure dosyaları için erişim hatasına neden olacak uyumsuz istemci yapılandırmasını tespit edin, kendi kendine düzeltmeyle ilgili yönergeler sağlar ve tanılama izlemelerini toplayın.
 
-Üçüncü olarak, oturum açmış AD kullanıcısı ile AD yapılandırmanızda basit denetimler kümesi yürütmek için Debug-AzStorageAccountAuth cmdlet 'ini çalıştırabilirsiniz. Bu cmdlet [AzFilesHybrid v 0.1.2 + sürümünde](https://github.com/Azure-Samples/azure-files-samples/releases)desteklenir. Bu cmdlet 'i, hedef depolama hesabında sahip iznine sahip bir AD kullanıcısı ile çalıştırmanız gerekir.  
+Üçüncü olarak, oturum açmış AD kullanıcısı ile AD yapılandırmanızda basit denetimler kümesi yürütmek için Debug-AzStorageAccountAuth cmdlet 'ini çalıştırabilirsiniz. Bu cmdlet, [AzFilesHybrid v0.1.2+ sürümünde](https://github.com/Azure-Samples/azure-files-samples/releases) desteklenir. Bu cmdlet'i hedef depolama hesabında sahip izinlerine sahip bir AD kullanıcısıyla çalıştırmanız gerekir.  
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"
 $StorageAccountName = "<storage-account-name-here>"
@@ -348,6 +348,18 @@ Cmdlet bu denetimleri sırayla gerçekleştirir ve hatalara yönelik rehberlik s
 6. Checksıdhasaaduser: oturum açan AD kullanıcısının Azure AD ile eşitlendiğinden emin olun
 
 Daha iyi sorun giderme kılavuzu sağlamak için bu tanılama cmdlet 'ini genişletme üzerinde etkin bir şekilde çalışıyoruz.
+
+## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows Dosya Gezgini ile dizin/dosya düzeyi izinleri (Windows ACL 'Leri) yapılandırılamıyor
+
+### <a name="symptom"></a>Belirti
+
+Windows ACL 'Leri bağlı bir dosya paylaşımında dosya Gezgini ile yapılandırmaya çalışırken aşağıda açıklanan belirtilerden biriyle karşılaşabilirsiniz:
+- Güvenlik sekmesi altındaki Düzenle iznine tıkladıktan sonra, Izin Sihirbazı yüklenmez. 
+- Yeni bir kullanıcı veya grup seçmeyi denediğinizde, etki alanı konumu doğru AD DS etki alanını görüntülemez. 
+
+### <a name="solution"></a>Çözüm
+
+Geçici bir çözüm olarak dizin/dosya düzeyi izinlerini yapılandırmak için [ıacl 'ler aracını](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) kullanmanızı öneririz. 
 
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

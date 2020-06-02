@@ -1,28 +1,32 @@
 ---
 title: Azure Güvenlik Duvarı SNAT özel IP adresi aralıkları
-description: IP adresi özel aralıklarını, güvenlik duvarının bu IP adreslerine gelen trafiği SNAT olmayacak şekilde yapılandırabilirsiniz.
+description: SNAT için IP adresi aralıklarını yapılandırabilirsiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/20/2020
+ms.date: 06/01/2020
 ms.author: victorh
-ms.openlocfilehash: ed8cef00b7de67458c607373c724a3717f14a7cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28ec61c4aefeacb8014e0a5d48d0259cf7fcf7f3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064804"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267043"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Güvenlik Duvarı SNAT özel IP adresi aralıkları
 
-Hedef IP adresi, [ıANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına özel bir IP adresi aralığında olduğunda Azure Güvenlik Duvarı ağ kurallarıyla SNAT yapmaz. Uygulama kuralları, hedef IP adresinden bağımsız olarak her zaman [saydam bir proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) kullanılarak uygulanır.
+Azure Güvenlik Duvarı, genel IP adreslerine giden tüm trafik için otomatik SNAT sağlar. Varsayılan olarak, hedef IP adresi [ıANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına özel bir IP adresi aralığında olduğunda Azure Güvenlik Duvarı ağ kurallarıyla SNAT yapmaz. Uygulama kuralları, hedef IP adresinden bağımsız olarak her zaman [saydam bir proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) kullanılarak uygulanır.
+
+Bu mantık, trafiği doğrudan Internet 'e yönlendirdiğinizde iyi sonuç verir. Bununla birlikte, [Zorlamalı tünel](forced-tunneling.md)seçeneğini etkinleştirdiyseniz, Internet 'e bağlı trafik AzureFirewallSubnet içindeki güvenlik DUVARı özel IP adreslerinden birine karşı, kaynağı şirket içi güvenlik duvarından gizleyerek gizler.
 
 Kuruluşunuz özel ağlar için genel bir IP adresi aralığı kullanıyorsa, Azure Güvenlik Duvarı AzureFirewallSubnet 'deki güvenlik duvarı özel IP adreslerinden birine giden trafiği yeniden çıkarır. Ancak, Azure Güvenlik duvarını genel IP adresi **aralığınızı SNAT olarak** yapılandırmak için yapılandırabilirsiniz.
 
-## <a name="configure-snat-private-ip-address-ranges"></a>SNAT özel IP adresi aralıklarını yapılandırma
+Azure Güvenlik duvarını hedef IP adresinden bağımsız olarak hiçbir şekilde hiçbir şekilde hiçbir şekilde hiçbir şekilde SNAT olarak yapılandırmak için, özel IP adresi aralığınız olarak **0.0.0.0/0** kullanın Bu yapılandırmayla, Azure Güvenlik Duvarı trafiği hiçbir şekilde doğrudan Internet 'e yönlendirmez. Güvenlik duvarını, hedef adresten bağımsız olarak her zaman SNAT olarak yapılandırmak için, özel IP adresi aralığınızdan **255.255.255.255/32** kullanın.
 
-Güvenlik duvarının SNAT olmayacak bir IP adresi aralığı belirtmek için Azure PowerShell kullanabilirsiniz.
+## <a name="configure-snat-private-ip-address-ranges---azure-powershell"></a>SNAT özel IP adresi aralıklarını Yapılandırma-Azure PowerShell
+
+Güvenlik Duvarı için özel IP adresi aralıklarını belirtmek üzere Azure PowerShell kullanabilirsiniz.
 
 ### <a name="new-firewall"></a>Yeni güvenlik duvarı
 
@@ -47,7 +51,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ### <a name="templates"></a>Şablonlar
 
-`additionalProperties` Bölümüne aşağıdakileri ekleyebilirsiniz:
+Bölümüne aşağıdakileri ekleyebilirsiniz `additionalProperties` :
 
 ```
 "additionalProperties": {
@@ -55,6 +59,20 @@ Set-AzFirewall -AzureFirewall $azfw
                 },
 ```
 
+## <a name="configure-snat-private-ip-address-ranges---azure-portal"></a>SNAT özel IP adresi aralıklarını Yapılandırma-Azure portal
+
+Güvenlik Duvarı için özel IP adresi aralıklarını belirtmek üzere Azure portal kullanabilirsiniz.
+
+1. Kaynak grubunuzu seçin ve ardından güvenlik duvarınızı seçin.
+2. **Genel bakış** SAYFASıNDA **özel IP aralıkları**' nı seçerek **IANA RFC 1918**varsayılan değerini seçin.
+
+   **Özel IP öneklerini Düzenle** sayfası açılır:
+
+   :::image type="content" source="media/snat-private-range/private-ip.png" alt-text="Özel IP öneklerini Düzenle":::
+
+1. Varsayılan olarak, **IANAPrivateRanges** yapılandırılır.
+2. Ortamınız için özel IP adresi aralıklarını düzenleyin ve ardından **Kaydet**' i seçin.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Güvenlik duvarını dağıtmayı ve yapılandırmayı](tutorial-firewall-deploy-portal.md)öğrenin.
+- [Azure Güvenlik Duvarı Zorlamalı tünel oluşturma](forced-tunneling.md)hakkında bilgi edinin.

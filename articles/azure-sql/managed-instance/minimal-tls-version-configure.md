@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: bf09994e8ebae09771ce110f9284aa3e99fc1816
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 309649fe099d5226ba6a4972e22a4e3d7ff0e526
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122482"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267129"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde en düşük TLS sürümünü yapılandırma
 Minimum [Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) sürümü ayarı, MÜŞTERILERIN Azure SQL yönetilen örneği tarafından kullanılan TLS sürümünü denetlemesine olanak tanır.
@@ -24,7 +24,7 @@ Minimum [Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help
 
 TLS 'nin eski sürümlerini kullanan uygulamalar için, uygulamalarınızın gereksinimlerine göre en düşük TLS sürümünü ayarlamayı öneririz. Şifrelenmemiş bir bağlantı kullanarak bağlanmak için uygulamalara bağlı olan müşteriler için, en az TLS sürümü ayarlamamız önerilir. 
 
-Daha fazla bilgi için bkz. [SQL veritabanı bağlantısı Için TLS konuları](../database/connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity).
+Daha fazla bilgi için bkz. [SQL veritabanı bağlantısı Için TLS konuları](../database/connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 
 En düşük TLS sürümünü ayarladıktan sonra, sunucunun en düşük TLS sürümünü kullanarak bir TLS sürümü kullanan istemcilerden gelen oturum açma girişimleri aşağıdaki hatayla başarısız olur:
 

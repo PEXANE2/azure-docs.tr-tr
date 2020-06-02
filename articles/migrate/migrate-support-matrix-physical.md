@@ -3,12 +3,12 @@ title: Azure geçişi 'nde fiziksel sunucu değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile fiziksel sunucu değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 31fd676a339a6c82cec84e0f355ac875f68a653c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2a6149da95501b106a57466ad923c0480f52e065
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983678"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267928"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Fiziksel sunucu değerlendirmesi için destek matrisi 
 
@@ -24,8 +24,8 @@ Fiziksel sunucuları değerlendirmek için bir Azure geçişi projesi oluşturun
 --- | ---
 **Değerlendirme limitleri** | Tek bir [Azure geçişi projesinde](migrate-support-matrix.md#azure-migrate-projects)35.000 fiziksel sunucuyu bulabilir ve değerlendirebilirsiniz.
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Fiziksel sunuculara ek olarak bir proje, VMware VM 'leri ve Hyper-V VM 'lerini, her biri için değerlendirme sınırlarına kadar içerebilir.
-**Bulma** | Azure geçişi gereci en fazla 250 fiziksel sunucu bulabilir.
-**Değerlendirme** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede en fazla 35.000 makine değerlendirebilirsiniz.
+**Keşfini** | Azure geçişi gereci en fazla 250 fiziksel sunucu bulabilir.
+**Değerlendirmesini** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede en fazla 35.000 makine değerlendirebilirsiniz.
 
 Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
 
@@ -35,7 +35,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 | :-------------------       | :------------------- |
 | **Fiziksel sunucu dağıtımı**       | Fiziksel sunucu tek başına olabilir veya bir kümede dağıtılabilir. |
 | **İzinler**           | **Windows:** Keşfetmesini istediğiniz tüm Windows sunucularında bir etki alanı yöneticisi veya yerel yönetici olmanız gerekir. Kullanıcı hesabı şu gruplara eklenmelidir: uzak yönetim kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları. <br/><br/> **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir. |
-| **İşletim sistemi** | Windows Server 2003 ve SUSE Linux dışında, Azure tarafından desteklenen tüm [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Server işletim sistemleri.<br/><br/> Windows 10 ve Windows 8 istemci işletim sistemleri. |
+| **İşletim sistemi** | Geçiş için tüm işletim sistemleri değerlendirilenebilir. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Geçişi aleti gereksinimleri
@@ -51,7 +51,7 @@ Azure Kamu 'da gereci [bu betiği kullanarak](deploy-appliance-script-government
 
 Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri özetlenmektedir.
 
-**Cihaz** | **Bağlanma**
+**Cihaz** | **Bağlantı**
 --- | ---
 **Elektrikli** | TCP bağlantı noktası 3389 ' deki gelen bağlantılar, Gereç ile Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> Bağlantı noktası 44368 ' de, URL 'YI kullanarak gereç yönetimi uygulamasına uzaktan erişmek için gelen bağlantılar:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS) bağlantı noktalarında giden bağlantılar.
 **Fiziksel sunucular** | **Windows:** WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerinde gelen bağlantılar, Windows sunucularından yapılandırma ve performans meta verilerini çekme. <br/><br/> **Linux:**  22 (UDP) bağlantı noktasındaki gelen bağlantılar, Linux sunucularından yapılandırma ve performans meta verilerini çekme. |

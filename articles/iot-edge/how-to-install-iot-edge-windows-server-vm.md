@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: philmea
-ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 380e354beb2f58b958e3c88d9f93ad0bda655971
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77045884"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266483"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Windows Server sanal makinelerinde Azure IoT Edge çalıştırma
 
@@ -22,11 +22,11 @@ Azure IoT Edge çalışma zamanı, bir cihazı IoT Edge cihazına dönüştürü
 
 IoT Edge çalışma zamanının nasıl çalıştığı ve hangi bileşenlerin dahil olduğu hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
 
-Bu makalede, Windows [Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketi teklifini kullanarak windows Server 2019 sanal makinesinde Azure IoT Edge çalışma zamanını çalıştırma adımları listelenir. Diğer sürümlerle kullanmak üzere Windows 'da [Azure IoT Edge çalışma zamanını yüklerken](how-to-install-iot-edge-windows.md) yönergeleri izleyin.
+Bu makalede, Windows [Server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure Marketi teklifini kullanarak windows Server 2019 sanal makinesinde Azure IoT Edge çalışma zamanını çalıştırma adımları listelenir. Diğer sürümlerle kullanmak üzere Windows 'da [Azure IoT Edge çalışma zamanını yüklerken](how-to-install-iot-edge-windows.md) yönergeleri izleyin.
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Azure Marketi 'nden dağıtma
 
-1. [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketi teklifine veya [Azure Marketi](https://azuremarketplace.microsoft.com/) 'nde "Windows Server" arayarak gidin
+1. [Windows Server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure Marketi teklifine veya [Azure Marketi](https://azuremarketplace.microsoft.com/) 'nde "Windows Server" arayarak gidin
 2. **Şimdi al** seçeneğini belirleyin
 3. **Yazılım planında**, "kapsayıcılarla Windows Server 2019 Datacenter Server Core" öğesini bulun ve ardından İleri Iletişim kutusunda **devam** ' ı seçin.
     * Bu yönergeleri, kapsayıcılarla Windows Server 'ın diğer sürümleri için de kullanabilirsiniz
@@ -87,8 +87,8 @@ Bu makalede, Windows [Server](https://azuremarketplace.microsoft.com/marketplace
    az vm create -g IoTEdgeResources -n EdgeVM --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter-Core-with-Containers:latest  --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
-   * Bu komut sizden bir parola isteyecek, ancak bunu bir betikte daha kolay bir `--admin-password` şekilde ayarlamaya yönelik bir seçenek de ekleyebilirsiniz
-   * Windows Server çekirdek görüntüsünün yalnızca uzak masaüstü ile komut satırı desteği bulunur, bu nedenle tam masaüstü deneyimi istiyorsanız görüntü olarak belirtin `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest`
+   * Bu komut sizden bir parola isteyecek, ancak `--admin-password` bunu bir betikte daha kolay bir şekilde ayarlamaya yönelik bir seçenek de ekleyebilirsiniz
+   * Windows Server çekirdek görüntüsünün yalnızca uzak masaüstü ile komut satırı desteği bulunur, bu nedenle tam masaüstü deneyimi istiyorsanız `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` görüntü olarak belirtin
 
 1. Cihaz bağlantı dizesini ayarlayın (Bu işleme alışkın değilseniz [Azure CLI ile bağlantı dizesini alma](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) yordamını izleyebilirsiniz):
 

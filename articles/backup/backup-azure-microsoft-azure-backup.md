@@ -3,12 +3,12 @@ title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: bbe3e21840f094fbd3f34d94e7af64ca98d884df
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735880"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247283"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -95,7 +95,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
 ### <a name="downloading-the-software-package"></a>Yazılım paketi indiriliyor
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Zaten açık bir kurtarma hizmetleri Kasası varsa adım 3 ' e geçin. Bir kurtarma hizmetleri Kasası açık değilse, ancak Azure portal, ana menüde, **Araştır**' a tıklayın.
 
    * Kaynak listesinde **Kurtarma Hizmetleri** yazın.
@@ -174,7 +174,7 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
 
     ![Azure Backup Sunucusu-SQL denetimi](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    Makineyi yeniden başlatma önerisiyle ilgili bir hata oluşursa, bunu yapın ve **yeniden denetle**' ye tıklayın. Herhangi bir SQL yapılandırma sorunu varsa, SQL yönergeleri başına SQL 'i yeniden yapılandırın ve mevcut SQL örneğini kullanarak MABS 'i yüklemeyi/yükseltmeyi yeniden deneyin.
+    Makineyi yeniden başlatma önerisiyle ilgili bir hata oluşursa, bunu yapın ve **yeniden denetle**' ye tıklayın. Herhangi bir SQL yapılandırma sorunu varsa, SQL 'e göre SQL 'i yeniden yapılandırın ve mevcut SQL örneğini kullanarak MABS 'i yüklemeyi/yükseltmeyi yeniden deneyin.
 
    **El ile yapılandırma**
 
@@ -186,9 +186,9 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
 
     SSRS yapılandırması için aşağıdaki değerleri kullanın:
     * Hizmet hesabı: ' yerleşik hesabı kullan ' ağ hizmeti olmalıdır
-    * Web hizmeti URL 'SI: ' sanal dizin ' ReportServer_ \< SqlInstanceName olmalıdır>
-    * Veritabanı: DatabaseName ReportServer $ \< SqlInstanceName> olmalıdır
-    * Web portalı URL 'SI: ' sanal dizin ' Reports_ \< SqlInstanceName olmalıdır>
+    * Web hizmeti URL 'SI: ' sanal dizin ' ReportServer_ olmalıdır\<SQLInstanceName>
+    * Veritabanı: DatabaseName ReportServer $ olmalıdır\<SQLInstanceName>
+    * Web portalı URL 'SI: ' sanal dizin ' Reports_ olmalıdır\<SQLInstanceName>
 
     SSRS yapılandırması hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) .
 
@@ -343,7 +343,7 @@ MABS 'yi yükseltmek için aşağıdaki adımları kullanın:
 
    > [!NOTE]
    >
-   > SQL örneğiniz yükseltilirken çıkmayın, çıkılıyor SQL Raporlama örneğini kaldıracak ve bu nedenle MABS 'i yeniden yükseltme girişimi başarısız olur.
+   > SQL örneğiniz yükseltilirken çıkmayın, çıkılıyor SQL Raporlama örneğini kaldırır ve MABS 'i yeniden yükseltme girişimi başarısız olur.
 
    > [!IMPORTANT]
    >

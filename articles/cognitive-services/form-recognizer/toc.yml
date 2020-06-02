@@ -60,6 +60,8 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Kapsayıcı örnekleri kullanma
           href: deploy-form-recognizer-on-container-instances.md
+    - name: Olağanüstü durum kurtarma için modelleri kopyalama
+      href: disaster-recovery.md
 - name: Başvuru
   items:
     - name: Form Tanıma API'si v2.0

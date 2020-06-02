@@ -2,13 +2,13 @@
 title: Azure Site Recovery yenilikleri
 description: Azure Site Recovery hizmetindeki yeni özelliklerin ve en son güncelleştirmelerin özetini sağlar.
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: abb1592bcacf025e9a052d7a9222f6fb3d2b72d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257439"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259227"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -22,16 +22,27 @@ Site Recovery bileşenleri için n-4 sürümlerini destekliyoruz, burada N en so
 
 **Güncelleştir** |  **Birleşik kurulum** | **Yapılandırma sunucusu ova** | **Mobility hizmeti Aracısı** | **Site Recovery sağlayıcı** | **Kurtarma Hizmetleri Aracısı**
 --- | --- | --- | --- | --- | ---
+[Toplu 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [Toplu 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [Toplu 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [Toplu 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [Toplu 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
-[Toplu 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 
 Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-updates-how-to.md) .
 
 > [!NOTE]
 > Güncelleştirme paketi 44, Site Recovery sağlayıcıları ve aracıları için güncelleştirmeler içermediği için tabloda gösterilmez.
+
+## <a name="updates-june-2020"></a>Güncelleştirmeler (Haziran 2020)
+
+### <a name="update-rollup-46"></a>Güncelleştirme paketi 46
+
+[Güncelleştirme paketi 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar:
+
+**Güncelleştir** | **Bilgileri**
+--- | ---
+**Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları toplu olarak, toplamada ayrıntılı olarak güncelleştirir.
+**Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
 
 ## <a name="updates-march-2020"></a>Güncelleştirmeler (Mart 2020)
 

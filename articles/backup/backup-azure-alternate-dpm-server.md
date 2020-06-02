@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu verileri kurtarma
 description: Bu kasaya kayıtlı tüm Azure Backup Sunucusu kurtarma hizmetleri kasasına koruduğunuz verileri kurtarın.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 2a89697899fc244848854978de4b25e79ef6f184
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5531a2a9599465bd5ad3410504cbf341fb6c0c0f
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74173494"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249085"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Sunucusu’ndan veri kurtarma
 
@@ -83,7 +83,7 @@ Azure Backup Sunucusu verileri kurtarmak için:
 | 1. |Bu sunucu, kasa kimlik bilgisi tarafından belirtilen kasaya kayıtlı değil. |**Neden:** Bu hata, seçilen kasa kimlik bilgileri dosyası kurtarmanın denendiği Azure Backup Sunucusu ilişkili kurtarma hizmetleri kasasına ait olmadığında görüntülenir. <br> **Çözüm:** Azure Backup Sunucusu kaydedildiği kurtarma hizmetleri kasasından kasa kimlik bilgileri dosyasını indirin. |
 | 2. |Kurtarılabilir veriler kullanılamıyor ya da seçilen sunucu bir DPM sunucusu değil. |**Neden:** Kurtarma Hizmetleri kasasına kayıtlı başka bir Azure Backup sunucusu yok veya sunucular henüz meta verileri yüklemedi veya seçili sunucu bir Azure Backup Sunucusu (Windows Server veya Windows Istemcisi kullanılarak) değil. <br> **Çözüm:** Kurtarma Hizmetleri kasasına kayıtlı başka Azure Backup sunucuları varsa, en son Azure Backup aracısının yüklü olduğundan emin olun. <br>Kurtarma Hizmetleri kasasına kayıtlı başka Azure Backup sunucular varsa, kurtarma işlemini başlatmak için yüklemeden sonra bir gün bekleyin. Gecelik işi tüm korumalı yedeklemelerin meta verilerini buluta yükleyecek. Veriler kurtarma için kullanılabilir olacaktır. |
 | 3. |Bu kasaya kayıtlı başka hiçbir DPM sunucusu yok. |**Neden:** Kurtarmanın denendiği kasaya kayıtlı başka bir Azure Backup sunucusu yok.<br>**Çözüm:** Kurtarma Hizmetleri kasasına kayıtlı başka Azure Backup sunucuları varsa, en son Azure Backup aracısının yüklü olduğundan emin olun.<br>Kurtarma Hizmetleri kasasına kayıtlı başka Azure Backup sunucular varsa, kurtarma işlemini başlatmak için yüklemeden sonra bir gün bekleyin. Gecelik işi tüm korumalı yedeklemelerin meta verilerini buluta yükler. Veriler kurtarma için kullanılabilir olacaktır. |
-| 4. |Belirtilen şifreleme parolası şu sunucuyla ilişkili parolayla eşleşmiyor: ** \<sunucu adı>** |**Neden:** Verilerin kurtarıldığı Azure Backup Sunucusu verileri şifreleme işleminde kullanılan şifreleme parolası, belirtilen şifreleme parolası ile eşleşmiyor. Aracı verilerin şifresini çözemez. Bu nedenle kurtarma başarısız olur.<br>**Çözüm:** Lütfen verileri kurtarılan Azure Backup Sunucusu ilişkili şifreleme parolasının aynısını sağlayın. |
+| 4. |Belirtilen şifreleme parolası, aşağıdaki sunucuyla ilişkili parolayla eşleşmiyor:**\<server name>** |**Neden:** Verilerin kurtarıldığı Azure Backup Sunucusu verileri şifreleme işleminde kullanılan şifreleme parolası, belirtilen şifreleme parolası ile eşleşmiyor. Aracı verilerin şifresini çözemez ve kurtarma başarısız olur.<br>**Çözüm:** Lütfen verileri kurtarılan Azure Backup Sunucusu ilişkili şifreleme parolasının aynısını sağlayın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

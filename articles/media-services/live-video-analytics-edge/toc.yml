@@ -1,0 +1,82 @@
+- name: IoT Edge’de Canlı Video Analizi (önizleme) belgeleri
+  href: index.yml
+- name: Azure Media Services v3’e geçiş belgeleri
+  href: ../latest/index.yml
+- name: Genel Bakış
+  items:
+    - name: IoT Edge’de Canlı Video Analizi hakkında
+      href: overview.md
+    - name: Terminoloji
+      href: terminology.md
+    - name: Yenilikler
+      items:
+        - name: Sürüm notları
+          href: release-notes.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Kullanmaya başlama - IoT Edge’de Canlı Video Analizi
+      href: get-started-detect-motion-emit-events-quickstart.md
+    - name: 'Media Services’ta hareket algılama, video kaydetme'
+      href: detect-motion-record-video-clips-media-services-quickstart.md
+    - name: Hareket algılama ve olayları gösterme
+      href: detect-motion-emit-events-quickstart.md
+    - name: 'Edge cihazlarında hareket algılama, video kaydetme'
+      href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: Kendi modelinizle Canlı Video Analizi’ni çalıştırma
+      href: use-your-model-quickstart.md
+- name: Öğreticiler
+  items:
+    - name: Sürekli video kaydı
+      href: continuous-video-recording-tutorial.md
+    - name: Olay tabanlı video kaydı
+      href: event-based-video-recording-tutorial.md
+    - name: Çok günlük kayıtları yürütme
+      href: playback-multi-day-recordings-tutorial.md
+- name: Örnekler
+  items:
+    - name: 'IoT Edge’de Canlı Video Analizi C# örnekleri'
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+- name: Kavramlar
+  items:
+    - name: Medya grafiği
+      href: media-graph-concept.md
+    - name: Video kaydı
+      href: video-recording-concept.md
+    - name: Video kayıttan yürütme
+      href: video-playback-concept.md
+    - name: Senaryolar
+      items:
+        - name: Sürekli video kaydı
+          href: continuous-video-recording-concept.md
+        - name: Olay tabanlı video kaydı
+          href: event-based-video-recording-concept.md
+        - name: Video kaydı olmadan Canlı Video Analizi
+          href: analyze-live-video-concept.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Özel Azure Resource Manager rolü oluşturma
+      href: create-custom-azure-resource-manager-role-how-to.md
+    - name: IoT Edge cihazına dağıtma
+      href: deploy-iot-edge-device.md
+    - name: İzleme ve günlüğe kaydetme
+      href: monitoring-logging.md
+    - name: Kayıt yürütme
+      href: playback-recordings-how-to.md
+    - name: Kayıt ilkesini yönetme
+      href: manage-recording-policy-how-to.md
+    - name: Seçtiğiniz yapay zeka ile canlı video analiz etme
+      href: analyze-with-ai-your-choice-how-to.md
+    - name: Sorun giderme
+      href: troubleshoot-how-to.md
+- name: Başvuru
+  items:
+    - name: Doğrudan yöntemler
+      href: direct-methods.md
+    - name: Modül İkizi yapılandırma şeması
+      href: module-twin-configuration-schema.md
+    - name: Kotalar ve sınırlamalar
+      href: quotas-limitations.md
+    - name: SSS
+      href: faq.md
+    - name: Üretim hazırlığı ve en iyi uygulamalar
+      href: production-readiness.md

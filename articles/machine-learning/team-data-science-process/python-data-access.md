@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c5269488b1c449580d56a0c1506c59b89c76ca6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720988"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267980"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python istemci kitaplığını kullanarak Python ile veri kümelerine erişim
 Microsoft Azure Machine Learning Python istemci kitaplığının önizlemesi, yerel bir Python ortamından Azure Machine Learning veri kümelerine güvenli erişim sağlayabilir ve bir çalışma alanında veri kümelerinin oluşturulmasını ve yönetilmesini sağlar.
@@ -40,7 +40,7 @@ Aşağıdaki paketlere bir bağımlılığı vardır:
 * Python-dateutil
 * Pandas
 
-Python, IPython ve yukarıda listelenen üç paket ile birlikte gelen [Anaconda](http://continuum.io/downloads#all) veya [Canopy](https://store.enthought.com/downloads/)gibi bir Python dağıtımı kullanmanızı öneririz. IPython kesinlikle gerekli olmasa da, verileri etkileşimli bir şekilde işlemek ve görselleştirmek için harika bir ortamdır.
+Python, IPython ve yukarıda listelenen üç paket ile birlikte gelen [Anaconda](https://www.anaconda.com/) veya [Canopy](https://store.enthought.com/downloads/)gibi bir Python dağıtımı kullanmanızı öneririz. IPython kesinlikle gerekli olmasa da, verileri etkileşimli bir şekilde işlemek ve görselleştirmek için harika bir ortamdır.
 
 ### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Azure Machine Learning Python istemci kitaplığı 'nı yüklemek
 Bu konuda özetlenen görevleri gerçekleştirmek için Python istemci kitaplığı Azure Machine Learning ' nı yükler. Bu kitaplık, [Python paket dizininden](https://pypi.python.org/pypi/azureml)kullanılabilir. Bunu Python ortamınıza yüklemek için, yerel Python ortamınızdan aşağıdaki komutu çalıştırın:
@@ -110,7 +110,7 @@ Aşağıdaki biçimler desteklenir (Bu biçimler için sabitler `azureml.DataTyp
 
 Bir modül çıkış düğümünün üzerine gelerek biçimi belirleyebilirsiniz. Bir araç ipucunda düğüm adıyla birlikte görüntülenir.
 
-[Bölünmüş][split] modül gibi bazı modüller, Python istemci kitaplığı tarafından desteklenmeyen adlı `Dataset`bir biçime çıkış.
+[Bölünmüş][split] modül gibi bazı modüller, `Dataset` Python istemci kitaplığı tarafından desteklenmeyen adlı bir biçime çıkış.
 
 ![Veri kümesi biçimi][dataset-format]
 
@@ -141,7 +141,7 @@ Aşağıdaki adımlarda bir deneme oluşturan, çalıştıran ve ara veri kümes
 
 ## <a name="use-the-machine-learning-python-client-library-to-access-read-create-and-manage-datasets"></a><a name="clientApis"></a>Veri kümelerine erişmek, okumak, oluşturmak ve yönetmek için Python istemci kitaplığı Machine Learning kullanın
 ### <a name="workspace"></a>Çalışma alanı
-Çalışma alanı, Python istemci kitaplığının giriş noktasıdır. Bir örnek `Workspace` oluşturmak için çalışma alanı kimliğiniz ve yetkilendirme belirtecinizle birlikte sınıfı sağlayın:
+Çalışma alanı, Python istemci kitaplığının giriş noktasıdır. `Workspace`Bir örnek oluşturmak için çalışma alanı kimliğiniz ve yetkilendirme belirtecinizle birlikte sınıfı sağlayın:
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
                    authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
@@ -188,10 +188,10 @@ Diğer kullanıcılar Azure ML tarafından atanan değerlerdir:
     print(ds.created_date)
     print(ds.size)
 
-Kullanılabilir meta `SourceDataset` veriler hakkında daha fazla bilgi için sınıfına bakın.
+`SourceDataset`Kullanılabilir meta veriler hakkında daha fazla bilgi için sınıfına bakın.
 
 ### <a name="read-contents"></a>İçeriği oku
-Machine Learning Studio (klasik) tarafından sunulan kod parçacıkları, veri kümesini bir Pandas DataFrame nesnesine otomatik olarak indirip serisini kaldıramıyor. Bu `to_dataframe` yöntem ile yapılır:
+Machine Learning Studio (klasik) tarafından sunulan kod parçacıkları, veri kümesini bir Pandas DataFrame nesnesine otomatik olarak indirip serisini kaldıramıyor. Bu yöntem ile yapılır `to_dataframe` :
 
     frame = ds.to_dataframe()
 
@@ -255,7 +255,7 @@ Mevcut bir veri kümesini güncelleştirmek için önce var olan veri kümesine 
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Ardından, `update_from_dataframe` Azure 'da veri kümesinin içeriğini seri hale getirmek ve değiştirmek için kullanın:
+Ardından `update_from_dataframe` , Azure 'da veri kümesinin içeriğini seri hale getirmek ve değiştirmek için kullanın:
 
     dataset = ws.datasets['existing dataset']
 
@@ -265,7 +265,7 @@ Ardından, `update_from_dataframe` Azure 'da veri kümesinin içeriğini seri ha
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Verileri farklı bir biçimde seri hale getirmek istiyorsanız, isteğe bağlı `data_type_id` parametre için bir değer belirtin.
+Verileri farklı bir biçimde seri hale getirmek istiyorsanız, isteğe bağlı parametre için bir değer belirtin `data_type_id` .
 
     from azureml import DataTypeIds
 
@@ -280,7 +280,7 @@ Verileri farklı bir biçimde seri hale getirmek istiyorsanız, isteğe bağlı 
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-İsteğe bağlı olarak, `description` parametresi için bir değer belirterek yeni bir açıklama ayarlayabilirsiniz.
+İsteğe bağlı olarak, parametresi için bir değer belirterek yeni bir açıklama ayarlayabilirsiniz `description` .
 
     dataset = ws.datasets['existing dataset']
 
@@ -293,7 +293,7 @@ Verileri farklı bir biçimde seri hale getirmek istiyorsanız, isteğe bağlı 
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to feb 2015'
 
-İsteğe bağlı olarak, `name` parametresi için bir değer belirterek yeni bir ad belirleyebilirsiniz. Şu andan itibaren veri kümesini yalnızca yeni adı kullanarak alacaksınız. Aşağıdaki kod, verileri, adı ve açıklamayı günceller.
+İsteğe bağlı olarak, parametresi için bir değer belirterek yeni bir ad belirleyebilirsiniz `name` . Şu andan itibaren veri kümesini yalnızca yeni adı kullanarak alacaksınız. Aşağıdaki kod, verileri, adı ve açıklamayı günceller.
 
     dataset = ws.datasets['existing dataset']
 
@@ -310,9 +310,9 @@ Verileri farklı bir biçimde seri hale getirmek istiyorsanız, isteğe bağlı 
     print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
     print(ws.datasets['existing dataset'].name)    # IndexError
 
-Ve `data_type_id` `description` parametreleri `name` , isteğe bağlıdır ve varsayılan olarak önceki değerlerine ayarlanır. `dataframe` Parametresi her zaman gereklidir.
+`data_type_id` `name` Ve parametreleri, `description` isteğe bağlıdır ve varsayılan olarak önceki değerlerine ayarlanır. `dataframe`Parametresi her zaman gereklidir.
 
-Verileriniz zaten serileştirilmiş ise yerine kullanın `update_from_raw_data` `update_from_dataframe`. Yerine yalnızca ' `raw_data` `dataframe`i geçirirseniz, benzer bir şekilde işe yarar.
+Verileriniz zaten serileştirilmiş ise yerine kullanın `update_from_raw_data` `update_from_dataframe` . Yerine yalnızca ' i geçirirseniz `raw_data` `dataframe` , benzer bir şekilde işe yarar.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png

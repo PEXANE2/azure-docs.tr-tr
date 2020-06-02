@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1ee6920d1870b7449f4b77394aaf918947f57ea5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6ebca3df6971d545234f45551ebd008a4ad90c1d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744324"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266075"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook sorunlarını giderme
 
@@ -50,7 +50,7 @@ Azure Otomasyonu 'nda runbook yürütmesi sırasında hata aldığınızda, soru
 
 1. Bu adımı, runbook işi veya karma Runbook Worker ortamı yanıt vermezse yapın.
 
-    Runbook 'larınızı Azure Otomasyonu yerine karma Runbook Worker üzerinde çalıştırıyorsanız, [karma çalışanın üzerinde sorun gidermeniz](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)gerekebilir.
+    Runbook 'larınızı Azure Otomasyonu yerine karma Runbook Worker üzerinde çalıştırıyorsanız, [karma çalışanın üzerinde sorun gidermeniz](hybrid-runbook-worker.md)gerekebilir.
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>Senaryo: runbook, izin olmadan veya Yasak 403 hatasıyla başarısız oluyor
 
@@ -64,7 +64,7 @@ Farklı Çalıştır hesapları, Azure kaynaklarında geçerli Otomasyon hesabı
 
 ### <a name="resolution"></a>Çözüm
 
-Farklı Çalıştır hesabınızın betikte kullanılan [kaynaklara erişmek için izinlere](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) sahip olduğundan emin olun.
+Farklı Çalıştır hesabınızın betikte kullanılan [kaynaklara erişmek için izinlere](../../role-based-access-control/role-assignments-portal.md) sahip olduğundan emin olun.
 
 ## <a name="scenario-sign-in-to-azure-account-failed"></a><a name="sign-in-failed"></a>Senaryo: Azure hesabında oturum açma başarısız oldu
 
@@ -99,7 +99,7 @@ Neyin yanlış olduğunu belirlemek için şu adımları izleyin:
    Connect-AzAccount –Credential $Cred
    ```
 
-1. Kimlik doğrulama işlemi yerel olarak başarısız olursa, Azure Active Directory (Azure AD) kimlik bilgilerinizi düzgün bir şekilde kurmadınız. Azure AD hesabını doğru bir şekilde ayarlamak için [Azure Active Directory kullanarak Azure 'Da kimlik doğrulaması](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)için blog gönderisine bakın.
+1. Kimlik doğrulama işlemi yerel olarak başarısız olursa, Azure Active Directory (Azure AD) kimlik bilgilerinizi düzgün bir şekilde kurmadınız. Azure AD hesabını doğru bir şekilde ayarlamak için [Azure Active Directory kullanarak Azure 'Da kimlik doğrulama](../automation-use-azure-ad.md)makalesine bakın.
 
 1. Hata geçici gibi görünüyorsa, kimlik doğrulamasının daha sağlam olması için kimlik doğrulama yordamınızın yeniden deneme mantığını eklemeyi deneyin.
 
@@ -137,7 +137,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, farklı çalıştır hesabı kullanmadığınız veya farklı çalıştır hesabının süresi dolduğunda oluşabilir. Daha fazla bilgi için bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](https://docs.microsoft.com/azure/automation/manage-runas-account).
+Bu hata, farklı çalıştır hesabı kullanmadığınız veya farklı çalıştır hesabının süresi dolduğunda oluşabilir. Daha fazla bilgi için bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](../manage-runas-account.md).
 
 Bu hatanın iki birincil nedeni vardır:
 
@@ -274,7 +274,7 @@ Azure hesabınızda çok faktörlü kimlik doğrulamanız varsa, Azure 'da kimli
 
 ### <a name="resolution"></a>Çözüm
 
-Azure klasik dağıtım modeli cmdlet 'leriyle bir sertifika kullanmak için bkz. [Azure hizmetlerini yönetmek için sertifika oluşturma ve ekleme](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx). Azure Resource Manager cmdlet 'leriyle hizmet sorumlusu kullanmak için bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md) ve [Azure Resource Manager Ile hizmet sorumlusu kimlik doğrulama](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Klasik bir farklı çalıştır hesabını Azure klasik dağıtım modeli cmdlet 'leriyle birlikte kullanmak için bkz. [Azure hizmetlerini yönetmek Için klasik farklı çalıştır hesabı oluşturma](../automation-create-standalone-account.md#create-a-classic-run-as-account). Azure Resource Manager cmdlet 'leriyle hizmet sorumlusu kullanmak için bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md) ve [Azure Resource Manager Ile hizmet sorumlusu kimlik doğrulama](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>Senaryo: runbook "bir görev iptal edildi" hata iletisiyle başarısız oluyor
 
@@ -383,7 +383,7 @@ Add-AzAccount : Object reference not set to an instance of an object
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, runbook `Add-AzAccount` Otomasyon hesabını eklemek için çağrılmadan önce doğru adımları gerçekleştirmezse meydana gelebilir. Gerekli adımlardan birine örnek olarak bir farklı çalıştır hesabı ile oturum açma işlemi yapılır. Runbook 'unda kullanılacak doğru işlemler için bkz. [Azure Otomasyonu 'Nda runbook yürütme](https://docs.microsoft.com/azure/automation/automation-runbook-execution).
+Bu hata, runbook `Add-AzAccount` Otomasyon hesabını eklemek için çağrılmadan önce doğru adımları gerçekleştirmezse meydana gelebilir. Gerekli adımlardan birine örnek olarak bir farklı çalıştır hesabı ile oturum açma işlemi yapılır. Runbook 'unda kullanılacak doğru işlemler için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md).
 
 ## <a name="scenario-object-reference-not-set-to-an-instance-of-an-object"></a><a name="child-runbook-object"></a>Senaryo: nesne başvurusu bir nesnenin örneğine ayarlanmadı
 
@@ -652,16 +652,16 @@ Bu sorunun olası nedenleri şunlardır:
 
 #### <a name="not-using-a-run-as-account"></a>Farklı Çalıştır hesabı kullanmıyor
 
-Key Vault erişmek için bir farklı çalıştır hesabı kullandığınızdan emin olmak için [Adım 5-Azure kaynaklarını yönetmek için kimlik doğrulaması ekleme](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) ' ye uyun.
+Key Vault erişmek için bir farklı çalıştır hesabı kullandığınızdan emin olmak için [Adım 5-Azure kaynaklarını yönetmek için kimlik doğrulaması ekleme](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources) ' ye uyun.
 
 #### <a name="insufficient-permissions"></a>Yetersiz izinler
 
-Farklı Çalıştır hesabınızın Key Vault erişmek için yeterli izinlere sahip olduğundan emin olmak için [Key Vault Izinleri ekleyin](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) .
+Farklı Çalıştır hesabınızın Key Vault erişmek için yeterli izinlere sahip olduğundan emin olmak için [Key Vault Izinleri ekleyin](../manage-runas-account.md#add-permissions-to-key-vault) .
 
 ## <a name="recommended-documents"></a>Önerilen belgeler
 
 * [Azure Otomasyonu’nda runbook yürütme](../automation-runbook-execution.md)
-* [Azure Otomasyonu 'nda runbook başlatma](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Azure Otomasyonu 'nda runbook başlatma](../automation-starting-a-runbook.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/30/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 167d50e5c7f3049f46fd8540630e47044240809f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d470160a9b54af8751371aa4ca58202646c8fab8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536599"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263386"
 ---
-[Azure dosyaları](../articles/storage/files/storage-files-introduction.md) , sunucu ileti bloğu (SMB) üzerinden [Şirket içi Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) (Önizleme) ve [Azure Active Directory Domain Services (Azure AD DS)](../articles/active-directory-domain-services/overview.md)üzerinden kimlik tabanlı kimlik doğrulamasını destekler. Bu makale, Azure dosya paylaşımlarının, SMB üzerinden Azure dosya paylaşımlarına kimlik tabanlı erişimi desteklemek için şirket içinde veya Azure 'da etki alanı hizmetlerini nasıl kullanabileceği konusunda odaklanır. Azure dosya paylaşımlarınız için kimlik tabanlı erişimin etkinleştirilmesi, var olan dizin hizmetinizi değiştirmeden mevcut dosya sunucularını Azure dosya paylaşımlarıyla değiştirmenize izin verir. böylece, paylaşımlara sorunsuz Kullanıcı erişimi sağlayabilirsiniz. 
+[Azure dosyaları](../articles/storage/files/storage-files-introduction.md) , [Şirket içi Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) ve [Azure Active Directory Domain Services (Azure AD DS)](../articles/active-directory-domain-services/overview.md)aracılığıyla sunucu ileti bloğu (SMB) üzerinden kimlik tabanlı kimlik doğrulamasını destekler. Bu makale, Azure dosya paylaşımlarının, SMB üzerinden Azure dosya paylaşımlarına kimlik tabanlı erişimi desteklemek için şirket içinde veya Azure 'da etki alanı hizmetlerini nasıl kullanabileceği konusunda odaklanır. Azure dosya paylaşımlarınız için kimlik tabanlı erişimin etkinleştirilmesi, var olan dizin hizmetinizi değiştirmeden mevcut dosya sunucularını Azure dosya paylaşımlarıyla değiştirmenize izin verir. böylece, paylaşımlara sorunsuz Kullanıcı erişimi sağlayabilirsiniz. 
 
 Azure dosyaları, Kullanıcı erişimi üzerinde hem paylaşıma hem de dizin/dosya düzeylerine yönelik yetkilendirmeyi zorlar. Paylaşma düzeyi izin ataması, [rol tabanlı erişim denetimi (RBAC)](../articles/role-based-access-control/overview.md) modeliyle yönetilen Azure Active Directory (Azure AD) kullanıcıları veya grupları üzerinde gerçekleştirilebilir. RBAC ile, dosya erişimi için kullandığınız kimlik bilgileri kullanılabilir olmalıdır veya Azure AD ile eşitlenmelidir. Azure dosya paylaşımında okuma erişimi sağlamak için, Azure AD 'de kullanıcılara veya gruplara depolama dosya veri SMB paylaşma okuyucusu gibi yerleşik RBAC rolleri atayabilirsiniz.
 
